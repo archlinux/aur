@@ -1,0 +1,27 @@
+--- A/CMakeLists.txt	2024-11-24 03:02:03.931058090 -0600
++++ B/CMakeLists.txt	2024-11-24 03:02:16.450109832 -0600
+@@ -279,8 +279,6 @@
+ add_definitions(-DHIPRT_PUBLIC_REPO)
+ 
+ 
+-# Enable CUDA if possible
+-include(${CMAKE_CURRENT_SOURCE_DIR}/contrib/Orochi/Orochi/enable_cuew.cmake)
+ 
+ 
+ 
+@@ -347,13 +345,13 @@
+ # precompile kernels:
+ if(PRECOMPILE)
+ 	execute_process(
+-		COMMAND ${PYTHON_EXECUTABLE} compile.py --nvidia --hipSdkPath ${HIP_PATH}
++		COMMAND ${PYTHON_EXECUTABLE} compile.py --hipSdkPath ${HIP_PATH}
+ 		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/scripts/bitcodes
+ 		)
+ 		
+ 	if(NOT NO_UNITTEST)
+ 		execute_process(
+-			COMMAND ${PYTHON_EXECUTABLE} precompile_bitcode.py --nvidia --hipSdkPath ${HIP_PATH}
++			COMMAND ${PYTHON_EXECUTABLE} precompile_bitcode.py --hipSdkPath ${HIP_PATH}
+ 			WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/scripts/bitcodes
+ 			)
+ 	endif()
