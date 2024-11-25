@@ -1,0 +1,4 @@
+1. Update PKGBUILD (version, deps, SHASUM): `sha256sum defguard-client_X.Y.Z_amd64.deb`
+2. makepkg --printsrcinfo > .SRCINFO
+3. Test build: makepkg -si
+4. git commit -> rollout

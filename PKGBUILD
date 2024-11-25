@@ -1,15 +1,16 @@
 # Maintainer: Robert Olejnik <robert [/.at./] teonite.com>
 pkgname=defguard-client
 pkgsrc=defguard-client
-pkgver=0.4.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="WireGuard Desktop Client with Multi-Factor Authentication"
+pkgdesc="WireGuard Desktop Client with Zero-Trust Multi-Factor Authentication"
 arch=('x86_64')
 url="https://github.com/DefGuard/client"
 license=('custom')
 depends=('cairo' 'desktop-file-utils'  'gdk-pixbuf2'  'glib2'  'gtk3'  'hicolor-icon-theme'  'libayatana-appindicator'  'libsoup'  'pango'  'webkit2gtk' 'systemd-resolvconf')
 source_x86_64=(https://github.com/DefGuard/client/releases/download/v${pkgver}/defguard-client_${pkgver}_amd64.deb)
-sha256sums_x86_64=('7a291220f22e2933493b571115c2bb51685014f22bb0b784a070b6e1c8657de1')
+# Update to actual SHA sum of package
+sha256sums_x86_64=('5f31bb9c984887b330f590efc14a3da462b65e8e25bd3c9b1b6d6f45d5fb9472')
 
 package() {
     msg2 "Extracting the source debian package data.tar.xz..."
