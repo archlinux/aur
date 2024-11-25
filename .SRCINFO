@@ -1,0 +1,17 @@
+pkgbase = python-pyshorteners
+	pkgdesc = Generating short urls with python has never been easier.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/ellisonleao/pyshorteners
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pytest-runner
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = python-pyshorteners-1.0.1.tar.gz::https://github.com/ellisonleao/pyshorteners/archive/refs/tags/1.0.1.tar.gz
+	sha512sums = 53d81860970e28e2ac63c6b400317b1c688cd055b3a358ccb7dd23c0c408ff5d61e2d4481f9541018c5047d1f302836a28128d4371005f8e04eb6a111d8f6445
+
+pkgname = python-pyshorteners
