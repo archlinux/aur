@@ -1,0 +1,21 @@
+pkgbase = hiprt-2.3
+	pkgdesc = HIP-RT's a ray tracing library for HIP (2.3)
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://gpuopen.com/hiprt/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = rocm-hip-sdk
+	depends = glibc
+	depends = gcc-libs
+	depends = rocm-hip-runtime
+	conflicts = hiprt
+	replaces = hiprt
+	source = https://github.com/GPUOpen-LibrariesAndSDKs/HIPRT/archive/refs/tags/2.3.bd75b7c.rc7.tar.gz
+	source = disable-cuda.patch
+	sha256sums = 2ebbff51ea7e9e5f82b32cdff0ed5c2d5ac6d5061dfe3231a798c8597f436a1a
+	sha256sums = 6e80236b57577e7e8455feb7eb103a184058d7279c2c69a5d513b7341fd57dec
+
+pkgname = hiprt-2.3
