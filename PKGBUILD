@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=devtoolbox
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Development tools at your fingertips"
 arch=('any')
@@ -44,7 +44,7 @@ makedepends=(
   'meson'
 )
 source=("git+https://github.com/aleiepure/devtoolbox#tag=v$pkgver")
-sha256sums=('6a95c415827cc7b9720360b0bdc943094cb04541a5e68fc6ecc3e9499ccebdaf')
+sha256sums=('902527fee63f6e58526fcb73542f0c1369efca75b8c18719151d7e72bf5ac448')
 
 build() {
   arch-meson "$pkgname" build
