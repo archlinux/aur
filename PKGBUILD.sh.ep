@@ -10,8 +10,8 @@
 
 % end
 \
-pkgver=5.15.15
-pkgrel=2
+pkgver=5.15.16
+pkgrel=1
 arch=('any')
 pkgdesc="ActiveX integration framework (mingw-w64)"
 depends=(<%== qt5deps qw(base) %>)
