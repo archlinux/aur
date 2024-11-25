@@ -3,9 +3,7 @@
 set -euo pipefail
 
 readonly REPO_URL="https://api.github.com/repos/Voxelum/x-minecraft-launcher/releases/latest"
-readonly DOWNLOAD_URL="https://github.com/Voxelum/x-minecraft-launcher/releases/download"
-readonly CACHE_DIR="./cache"
-readonly ARCHITECTURES=("amd64" "arm64")
+readonly RELEASE_URL="https://github.com/Voxelum/x-minecraft-launcher/releases"
 
 log() {
     printf "\e[%sm%s\e[0m\n" "$1" "$2"
@@ -15,59 +13,65 @@ fetch_latest_version() {
     curl --silent "$REPO_URL" | jq -r '.tag_name'
 }
 
-fetch_sha256() {
-    local sha256_file="${CACHE_DIR}/xmcl-${latest_version#v}-$1.deb.sha256"
-    [[ -f "$sha256_file" ]] || {
-        log "36" "Fetching SHA256 for $1..."
-        curl -sSL -o "$sha256_file" "${DOWNLOAD_URL}/${latest_version}/xmcl-${latest_version#v}-$1.deb.sha256"
-    }
-    awk '{print $1}' "$sha256_file"
-}
-update_file_content() {
-    sed -i "s|$2|$3|g" "$1"
-}
-
 update_package_info() {
     log "35" "Updating $1..."
-    update_file_content "$1" "^pkgver=.*" "pkgver=${2#v}"
-    update_file_content "$1" "^sha256sums_x86_64=('.*')" "sha256sums_x86_64=('$3')"
-    update_file_content "$1" "^sha256sums_aarch64=('.*')" "sha256sums_aarch64=('$4')"
+    local version="${2#v}"
+
+    # Create temporary file
+    local tmp_file=$(mktemp)
+
+    # Process PKGBUILD line by line
+    while IFS= read -r line; do
+        if [[ $line =~ ^pkgver= ]]; then
+            echo "pkgver=${version}"
+        else
+            echo "$line"
+        fi
+    done < "$1" > "$tmp_file"
+
+    # Replace original file with modified content
+    mv "$tmp_file" "$1"
 }
 
-update_srcinfo() {
+create_srcinfo() {
+    [ -f "./.SRCINFO" ] && rm "./.SRCINFO"
     log "35" "Updating .SRCINFO..."
-    update_file_content ".SRCINFO" "^\tpkgver = .*" "\tpkgver = ${latest_version#v}"
-    update_file_content ".SRCINFO" "^\tsource = .*" "\tsource = ${DOWNLOAD_URL}/${latest_version}"
-}
+    local version="${1#v}"
 
-build_package() {
-    log "34" "Building package..."
-    makepkg -sf --noconfirm
-}
+    cat > .SRCINFO << EOF
+pkgbase = xmcl-launcher
+	pkgdesc = X Minecraft Launcher - A modern Minecraft launcher
+	pkgver = ${version}
+	pkgrel = 1
+	url = https://xmcl.app/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	optdepends = jre8-openjdk: Minimum requirement for launching older game versions
+	optdepends = jre11-openjdk: Recommended Java version for launching versions 1.12-1.17
+	optdepends = jre17-openjdk: Recommended Java version for launching version 1.17 and above
+	optdepends = jre22-openjdk: Recommended Java version for launching version 1.20.5+ and above
+	provides = xmcl
+	conflicts = xmcl-launcher-bin
+	source = ${RELEASE_URL}/v${version}
 
-cleanup() {
-    log "33" "Cleaning up..."
-    rm -rf xmcl-*-amd64.deb xmcl-*-arm xmcl-launcher-*-x86_64.pkg.tar.zst ./src ./pkg "$CACHE_DIR"
+pkgname = xmcl-launcher
+EOF
 }
 
 main() {
     latest_version=$(fetch_latest_version)
     log "33" "Latest version: ${latest_version}"
 
-    mkdir -p "$CACHE_DIR"
-
-    declare -A sha256sums
-    for arch in "${ARCHITECTURES[@]}"; do
-        sha256sums["$arch"]=$(fetch_sha256 "$arch")
-    done
-
-    update_package_info "PKGBUILD" "$latest_version" "${sha256sums[amd64]}" "${sha256sums[arm64]}"
-    update_srcinfo
+    update_package_info "PKGBUILD" "$latest_version"
+    create_srcinfo "$latest_version"
 
     log "32" "Updated to version ${latest_version}"
 
-    build_package
-    cleanup
+    read -p "Do you want to build the package? (y/N) " response
+    if [[ "$response" =~ ^[Yy]$ ]]; then
+        makepkg -s
+    fi
 }
 
 main
