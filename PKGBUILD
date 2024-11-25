@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=gnome-shell-extension-wintile
 _uuid=wintile@nowsci.com
-_pkgver=2024.11.22-1
+_pkgver=2024.11.25-1
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Windows 10 window tiling for GNOME"
@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=('gnome-shell')
 makedepends=('zip')
 source=("wintile-${_pkgver}.tar.gz::https://github.com/fmstrat/wintile/archive/v${_pkgver}.tar.gz")
-sha256sums=('9a3e3748b4d96253cfeb75929ded021a35029c2ae9d0608b870c0623f69fc4bf')
+sha256sums=('ca96576bf9ea4c93d64d0b45365ed4a9dfda49d47b5e2e040872d46aa6f2557e')
 
 build() {
 	cd "wintile-${_pkgver}"
