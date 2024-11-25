@@ -1,11 +1,12 @@
 pkgbase = python-humblebundle-downloader
 	pkgdesc = Download all of your content from your Humble Bundle Library!
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xtream1101/humblebundle-downloader
 	arch = x86_64
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-poetry
 	depends = python
 	depends = python-parsel
 	source = https://github.com/xtream1101/humblebundle-downloader/archive/refs/tags/0.4.3.tar.gz
