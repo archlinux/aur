@@ -1,6 +1,6 @@
 pkgbase = youtube
 	pkgdesc = Unnofficial Youtube desktop application
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/youtube-desktop
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = youtube
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/youtube-desktop/application/-/archive/1.1.2-1/application-1.1.2-1.tar.bz2
-	sha256sums = 6bf27760c1177769d7c756dadf1714b47bb17dfeab20e19139394f49102e616e
+	source = https://gitlab.com/linuxbombay/youtube-desktop/application/-/archive/1.1.3/application-1.1.3.tar.bz2
+	sha256sums = 069735a00093237f68f8b19d994a684425622b28f5f09e12ad198869eef80ed7
 
 pkgname = youtube
