@@ -1,0 +1,57 @@
+.\" Man page for yaylog
+.TH yaylog 1 "November 2024" "yaylog 1.0.0" "User Commands"
+.SH NAME
+yaylog \- List recently installed packages on Arch-based systems.
+.SH SYNOPSIS
+.B yaylog
+.RI [ \-n <number> ] [ \-e ] [ \-a ]
+.SH DESCRIPTION
+.B yaylog
+is a CLI utility for Arch and Arch-based Linux distributions to list recently installed packages. It works with any package manager that logs installations to
+.B /var/log/pacman.log ,
+including
+.B pacman ,
+.B yay ,
+and others. The utility supports optional filters for explicitly installed packages or dependencies.
+
+.SH OPTIONS
+.TP
+.B \-n <number>
+Display the specified number of recent packages (default: 20).
+.TP
+.B \-e
+Show only explicitly installed packages.
+.TP
+.B \-a
+Show all installed packages.
+.TP
+.B \-h
+Display help information.
+
+.SH EXAMPLES
+.TP
+Show the last 10 installed packages:
+.PP
+.EX
+yaylog -n 10
+.EE
+.TP
+Show all explicitly installed packages:
+.PP
+.EX
+yaylog -ae
+.EE
+.TP
+Show the 15 most recent explicitly installed packages:
+.PP
+.EX
+yaylog -en 15
+.EE
+
+.SH AUTHOR
+Written by Fernando Nunez <me@fernandonunez.io>.
+.SH LICENSE
+This project is licensed under the MIT License. See the
+.B LICENSE
+file for details.
+

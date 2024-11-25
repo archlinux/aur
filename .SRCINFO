@@ -1,0 +1,14 @@
+pkgbase = yaylog
+	pkgdesc = A CLI util to list recently installed packages with filtering.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/zweih/yaylog
+	arch = any
+	license = MIT
+	depends = expac
+	source = yaylog.sh
+	source = yaylog.1
+	sha256sums = 80706d8a4aff84f716729cbe48da892995bf757e6b77f1c9d682aac542fb2149
+	sha256sums = 7fedc1f3bcfab09acedbe9d4b508c6ecb6619ed197dd702f4c3d987fec34d197
+
+pkgname = yaylog
