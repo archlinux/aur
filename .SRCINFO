@@ -1,6 +1,6 @@
 pkgbase = youtubemusic
 	pkgdesc = Youtube Music is a unofficial client to play your music.
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/youtube-music
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = youtubemusic
 	depends = libxss
 	depends = git
 	depends = playerctl
-	source = https://gitlab.com/linuxbombay/youtube-music/application/-/archive/1.0.9-1/application-1.0.9-1.tar.bz2
-	sha256sums = d00ce2deb334154e5e0a89d8d9127b0f6a24535d47ef971d24de2a2ce71f836d
+	source = https://gitlab.com/linuxbombay/youtube-music/application/-/archive/1.0.10/application-1.0.10.tar.bz2
+	sha256sums = a84093766aa7e713a0715e9013c2e2c85735d7cb625276201efdccc470d34410
 
 pkgname = youtubemusic

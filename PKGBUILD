@@ -1,19 +1,19 @@
 pkgname=youtubemusic
 _pkgname=YoutubeMusic
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Youtube Music is a unofficial client to play your music."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/youtube-music"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git' 'playerctl')
-source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('d00ce2deb334154e5e0a89d8d9127b0f6a24535d47ef971d24de2a2ce71f836d')
+source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
+sha256sums=('a84093766aa7e713a0715e9013c2e2c85735d7cb625276201efdccc470d34410')
 
 package() {
-        for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
+        for dir in application-$pkgver ; do mv "${dir}" "$_pkgname" ;done
     cd "$srcdir/$_pkgname"
-    chmod +x $pkgname.sh
+    chmod +x $pkgname
     ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
@@ -23,7 +23,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgname/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
     install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" \
