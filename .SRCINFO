@@ -1,0 +1,23 @@
+pkgbase = bilibili-magical-danmaku
+	pkgdesc = bilibili神奇弹幕,整合弹幕姬+答谢姬+点歌姬+回复姬+工作流
+	pkgver = 4.10.7
+	pkgrel = 1
+	url = https://github.com/iwxyi/Bilibili-MagicalDanmaku
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	depends = qt5-base>=5.15
+	depends = qt5-multimedia
+	depends = qt5-speech
+	depends = qt5-websockets
+	depends = zlib
+	depends = gcc-libs
+	depends = glibc
+	source = Bilibili-MagicalDanmaku-4.10.7.tar.gz::https://github.com/iwxyi/Bilibili-MagicalDanmaku/archive/refs/tags/v4.10.7.tar.gz
+	source = 0001-fix-build-explicitly-include-QPainterPath.patch
+	source = 0002-fix-build-remove-reference-to-missing-file.patch
+	sha256sums = d547ca405f728874a03b0ee77c803ab8b9bed72a6bf55adc7a95ad201e44658b
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = bilibili-magical-danmaku

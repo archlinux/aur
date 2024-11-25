@@ -1,0 +1,202 @@
+From 4a0d9436e09ad072da8c31993a4e52f26500377d Mon Sep 17 00:00:00 2001
+From: Tianhao Wang <shrik3@mailbox.org>
+Date: Sat, 23 Nov 2024 00:40:11 +0100
+Subject: [PATCH 1/2] fix build: explicitly include QPainterPath
+
+I don't know about others but for me it fails to build otherwise. Simply
+adding #include <QPainterPath> fixes the problem
+
+Signed-off-by: Tianhao Wang <shrik3@mailbox.org>
+---
+ services/live_services/bili_liveservice.cpp               | 1 +
+ third_party/facile_menu/facilemenu.cpp                    | 1 +
+ third_party/facile_menu/facilemenuitem.cpp                | 1 +
+ third_party/interactive_buttons/infobutton.cpp            | 1 +
+ third_party/interactive_buttons/interactivebuttonbase.cpp | 1 +
+ third_party/interactive_buttons/pointmenubutton.cpp       | 1 +
+ third_party/interactive_buttons/threedimenbutton.cpp      | 1 +
+ third_party/interactive_buttons/watercirclebutton.cpp     | 1 +
+ third_party/interactive_buttons/waterfloatbutton.cpp      | 1 +
+ third_party/interactive_buttons/waterzoombutton.cpp       | 1 +
+ third_party/interactive_buttons/winclosebutton.cpp        | 1 +
+ third_party/interactive_buttons/winminbutton.cpp          | 1 +
+ third_party/interactive_buttons/winrestorebutton.cpp      | 1 +
+ third_party/interactive_buttons/winsidebarbutton.cpp      | 3 ++-
+ third_party/picture_browser/picturebrowser.cpp            | 1 +
+ widgets/mytabwidget.cpp                                   | 1 +
+ 16 files changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/services/live_services/bili_liveservice.cpp b/services/live_services/bili_liveservice.cpp
+index 4ad1fc0..35476d4 100644
+--- a/services/live_services/bili_liveservice.cpp
++++ b/services/live_services/bili_liveservice.cpp
+@@ -3,6 +3,7 @@
+ #include <QInputDialog>
+ #include <QTableView>
+ #include <QStandardItemModel>
++#include <QPainterPath>
+ #include <QClipboard>
+ #include <QLabel>
+ #include "bili_liveservice.h"
+diff --git a/third_party/facile_menu/facilemenu.cpp b/third_party/facile_menu/facilemenu.cpp
+index 7aad80c..9e33fe9 100644
+--- a/third_party/facile_menu/facilemenu.cpp
++++ b/third_party/facile_menu/facilemenu.cpp
+@@ -1,4 +1,5 @@
+ #include <QLabel>
++#include <QPainterPath>
+ #include "facilemenu.h"
+ 
+ QColor FacileMenu::normal_bg = QColor(255, 255, 255);
+diff --git a/third_party/facile_menu/facilemenuitem.cpp b/third_party/facile_menu/facilemenuitem.cpp
+index cf706a1..133811a 100644
+--- a/third_party/facile_menu/facilemenuitem.cpp
++++ b/third_party/facile_menu/facilemenuitem.cpp
+@@ -1,4 +1,5 @@
+ #include "facilemenuitem.h"
++#include <QPainterPath>
+ 
+ FacileMenuItem::FacileMenuItem(QWidget *parent) : InteractiveButtonBase(parent)
+ {
+diff --git a/third_party/interactive_buttons/infobutton.cpp b/third_party/interactive_buttons/infobutton.cpp
+index 6b99f59..afdcf90 100644
+--- a/third_party/interactive_buttons/infobutton.cpp
++++ b/third_party/interactive_buttons/infobutton.cpp
+@@ -1,4 +1,5 @@
+ #include "infobutton.h"
++#include <QPainterPath>
+ 
+ InfoButton::InfoButton(QWidget *parent) : InteractiveButtonBase(parent)
+ {
+diff --git a/third_party/interactive_buttons/interactivebuttonbase.cpp b/third_party/interactive_buttons/interactivebuttonbase.cpp
+index 1537283..f0eb6d7 100644
+--- a/third_party/interactive_buttons/interactivebuttonbase.cpp
++++ b/third_party/interactive_buttons/interactivebuttonbase.cpp
+@@ -1,4 +1,5 @@
+ #include "interactivebuttonbase.h"
++#include <QPainterPath>
+ 
+ /**
+  * 所有内容的初始化
+diff --git a/third_party/interactive_buttons/pointmenubutton.cpp b/third_party/interactive_buttons/pointmenubutton.cpp
+index 53fd75a..a44a67f 100644
+--- a/third_party/interactive_buttons/pointmenubutton.cpp
++++ b/third_party/interactive_buttons/pointmenubutton.cpp
+@@ -1,4 +1,5 @@
+ #include "pointmenubutton.h"
++#include <QPainterPath>
+ 
+ PointMenuButton::PointMenuButton(QWidget *parent) : InteractiveButtonBase(parent)
+ {
+diff --git a/third_party/interactive_buttons/threedimenbutton.cpp b/third_party/interactive_buttons/threedimenbutton.cpp
+index acb8f32..7196ccf 100644
+--- a/third_party/interactive_buttons/threedimenbutton.cpp
++++ b/third_party/interactive_buttons/threedimenbutton.cpp
+@@ -1,4 +1,5 @@
+ #include "threedimenbutton.h"
++#include <QPainterPath>
+ 
+ ThreeDimenButton::ThreeDimenButton(QWidget* parent) : InteractiveButtonBase (parent)
+ {
+diff --git a/third_party/interactive_buttons/watercirclebutton.cpp b/third_party/interactive_buttons/watercirclebutton.cpp
+index e6d9dc4..e52f6fd 100644
+--- a/third_party/interactive_buttons/watercirclebutton.cpp
++++ b/third_party/interactive_buttons/watercirclebutton.cpp
+@@ -1,4 +1,5 @@
+ #include "watercirclebutton.h"
++#include <QPainterPath>
+ 
+ WaterCircleButton::WaterCircleButton(QWidget* parent) : InteractiveButtonBase (parent), in_circle(false), radius(16)
+ {
+diff --git a/third_party/interactive_buttons/waterfloatbutton.cpp b/third_party/interactive_buttons/waterfloatbutton.cpp
+index 70324f9..61caff7 100644
+--- a/third_party/interactive_buttons/waterfloatbutton.cpp
++++ b/third_party/interactive_buttons/waterfloatbutton.cpp
+@@ -1,4 +1,5 @@
+ ﻿#include "waterfloatbutton.h"
++#include <QPainterPath>
+ 
+ WaterFloatButton::WaterFloatButton(QWidget *parent) : InteractiveButtonBase(parent),
+         in_area(false), mwidth(16), radius(8)
+diff --git a/third_party/interactive_buttons/waterzoombutton.cpp b/third_party/interactive_buttons/waterzoombutton.cpp
+index 4f6fbf9..a0b419e 100644
+--- a/third_party/interactive_buttons/waterzoombutton.cpp
++++ b/third_party/interactive_buttons/waterzoombutton.cpp
+@@ -1,4 +1,5 @@
+ #include "waterzoombutton.h"
++#include <QPainterPath>
+ 
+ WaterZoomButton::WaterZoomButton(QString text, QWidget *parent) : InteractiveButtonBase(text, parent)
+ {
+diff --git a/third_party/interactive_buttons/winclosebutton.cpp b/third_party/interactive_buttons/winclosebutton.cpp
+index d409641..c687191 100644
+--- a/third_party/interactive_buttons/winclosebutton.cpp
++++ b/third_party/interactive_buttons/winclosebutton.cpp
+@@ -1,4 +1,5 @@
+ #include "winclosebutton.h"
++#include <QPainterPath>
+ 
+ WinCloseButton::WinCloseButton(QWidget *parent)
+     : InteractiveButtonBase (parent), tr_radius(0)
+diff --git a/third_party/interactive_buttons/winminbutton.cpp b/third_party/interactive_buttons/winminbutton.cpp
+index 0b886e2..af1555b 100644
+--- a/third_party/interactive_buttons/winminbutton.cpp
++++ b/third_party/interactive_buttons/winminbutton.cpp
+@@ -1,4 +1,5 @@
+ #include "winminbutton.h"
++#include <QPainterPath>
+ 
+ WinMinButton::WinMinButton(QWidget* parent)
+ 	: InteractiveButtonBase(parent)
+diff --git a/third_party/interactive_buttons/winrestorebutton.cpp b/third_party/interactive_buttons/winrestorebutton.cpp
+index 1baa4b8..79f10fd 100644
+--- a/third_party/interactive_buttons/winrestorebutton.cpp
++++ b/third_party/interactive_buttons/winrestorebutton.cpp
+@@ -1,4 +1,5 @@
+ #include "winrestorebutton.h"
++#include <QPainterPath>
+ 
+ WinRestoreButton::WinRestoreButton(QWidget* parent)
+     : InteractiveButtonBase(parent)
+diff --git a/third_party/interactive_buttons/winsidebarbutton.cpp b/third_party/interactive_buttons/winsidebarbutton.cpp
+index 9e2f099..eeea956 100644
+--- a/third_party/interactive_buttons/winsidebarbutton.cpp
++++ b/third_party/interactive_buttons/winsidebarbutton.cpp
+@@ -1,4 +1,5 @@
+ #include "winsidebarbutton.h"
++#include <QPainterPath>
+ 
+ WinSidebarButton::WinSidebarButton(QWidget* parent)
+     : InteractiveButtonBase (parent), tl_radius(0)
+@@ -92,4 +93,4 @@ QPainterPath WinSidebarButton::getBgPainterPath()
+ QPainterPath WinSidebarButton::getWaterPainterPath(Water water)
+ {
+     return InteractiveButtonBase::getWaterPainterPath(water) & WinSidebarButton::getBgPainterPath();
+-}
+\ No newline at end of file
++}
+diff --git a/third_party/picture_browser/picturebrowser.cpp b/third_party/picture_browser/picturebrowser.cpp
+index a905335..00f9970 100644
+--- a/third_party/picture_browser/picturebrowser.cpp
++++ b/third_party/picture_browser/picturebrowser.cpp
+@@ -1,5 +1,6 @@
+ #include "picturebrowser.h"
+ #include "ui_picturebrowser.h"
++#include <QPainterPath>
+ 
+ PictureBrowser::PictureBrowser(QSettings *settings, QWidget *parent) :
+     QMainWindow(parent),
+diff --git a/widgets/mytabwidget.cpp b/widgets/mytabwidget.cpp
+index 811d6b8..11b7d9d 100644
+--- a/widgets/mytabwidget.cpp
++++ b/widgets/mytabwidget.cpp
+@@ -1,5 +1,6 @@
+ #include <QPropertyAnimation>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QDebug>
+ #include "mytabwidget.h"
+ 
+-- 
+2.47.0
+

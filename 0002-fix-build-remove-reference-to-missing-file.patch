@@ -1,0 +1,27 @@
+From 13665be6066c5dc58c24a9726c22cc6bad9b6bb7 Mon Sep 17 00:00:00 2001
+From: Tianhao Wang <shrik3@mailbox.org>
+Date: Sat, 23 Nov 2024 00:41:49 +0100
+Subject: [PATCH 2/2] fix build: remove reference to missing file
+
+I have no idea what kk.key is .... but it's missing and fails the build
+
+Signed-off-by: Tianhao Wang <shrik3@mailbox.org>
+---
+ resources/resource.qrc | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/resources/resource.qrc b/resources/resource.qrc
+index d5638d6..42f1204 100644
+--- a/resources/resource.qrc
++++ b/resources/resource.qrc
+@@ -185,7 +185,6 @@
+         <file alias="dynamic_config">documents/dynamic_config.json</file>
+         <file alias="code_syntax_introduction">documents/code_syntax_introduction.txt</file>
+         <file>resource.rc</file>
+-        <file alias="kk">documents/kk.key</file>
+     </qresource>
+     <qresource prefix="/bubbles">
+         <file alias="bubble1">bubbles/bubble1.png</file>
+-- 
+2.47.0
+
