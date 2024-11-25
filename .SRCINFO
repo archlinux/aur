@@ -1,6 +1,6 @@
 pkgbase = dfzitarev1
 	pkgdesc = A feedback-delay-network reverb CLAP, LV2 and VST3 plugin
-	pkgver = 0.2.4
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/SpotlightKid/dfzitarev1
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = dfzitarev1
 	optdepends = clap-host: for loading the CLAP plugin
 	optdepends = lv2-host: for loading the LV2 plugin
 	optdepends = vst3-host: for loading VST3 plugin
-	source = https://github.com/SpotlightKid/dfzitarev1/releases/download/v0.2.4/dfzitarev1-0.2.4-source.tar.gz
-	sha256sums = b5efa8eb17ba1bbd9fdc1209a5a16b9d4e8809ddd76bbb0dcaca02d4b5d026c4
+	source = https://github.com/SpotlightKid/dfzitarev1/releases/download/v0.2.6/dfzitarev1-0.2.6-source.tar.gz
+	sha256sums = 9b52e4cd3bf090326d0217fa9098fa6e818196f7732b10a5011297d5aeada12e
 
 pkgname = dfzitarev1
