@@ -1,8 +1,8 @@
 # Maintainer: Ashley Bone <ashley DOT bone AT pm DOT me>
 # Orginally Packaged By: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=rasdaemon
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc="Logging daemon for Platform Reliability, Availability and Serviceability (RAS), replacing mcelog"
 arch=(i686 x86_64)
 url="https://github.com/mchehab/rasdaemon"
@@ -17,15 +17,11 @@ depends=(
   perl-dbd-sqlite
 )
 
-source=("https://www.infradead.org/~mchehab/rasdaemon/rasdaemon-${pkgver}.tar.bz2"
-	"havememfail.patch")
-sha256sums=('77aac14ba5b4c478438c497f573c8a0c11380d5a2877a75fafbc77f10c20a693'
-	    '2f3bbe8b68fae8ee934ee2501f2816b6f4b32e389eb67f1505d64c460dfd1219')
+source=("https://www.infradead.org/~mchehab/rasdaemon/rasdaemon-${pkgver}.tar.bz2")
+sha256sums=('9747d970ad1dd85d4c75e424b19f1362c2a26c814df8d406d8a3ef410f9e7de0')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 < "${srcdir}/havememfail.patch"
-  autoreconf -vfi
 }
 
 build() {
@@ -45,6 +41,7 @@ build() {
     --enable-devlink        \
     --enable-hisi-ns-decode \
     --enable-memory-ce-pfa  \
+    --enable-memory-row-ce-pfa \
     --enable-cpu-fault-isolation \
     ;
   make
