@@ -1,7 +1,7 @@
 pkgbase = primitive
 	pkgdesc = Reproducing images with geometric primitives
 	pkgver = r152.0373c21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fogleman/primitive
 	arch = i686
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = primitive
 	md5sums = SKIP
 
 pkgname = primitive
-

@@ -1,8 +1,9 @@
 # Maintainer: Bastien Traverse <firstname at lastname dot email>
+# Maintainer: Felix Buehler <account@buehler.rocks>
 
 pkgname=primitive
 pkgver=r152.0373c21
-pkgrel=1
+pkgrel=2
 pkgdesc='Reproducing images with geometric primitives'
 arch=('i686' 'x86_64')
 url="https://github.com/fogleman/primitive"
@@ -24,8 +25,8 @@ pkgver() {
 
 build() {
 	unset GOBIN
-	GOPATH="$srcdir" go get -v -gcflags "-trimpath $GOPATH/src" \
-	  "${url#https://}"
+  GOPATH="$srcdir" go install -v -gcflags "-trimpath $GOPATH/src" \
+    "${url#https://}@latest"
 }
 
 package() {
@@ -35,4 +36,3 @@ package() {
 	cp -r "$srcdir/$pkgname"/{bot,examples,scripts} "$pkgdir/usr/share/$pkgname"
 	find "$pkgdir/usr/share/$pkgname" -type f -name *.py -exec chmod +x {} \;
 }
-
