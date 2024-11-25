@@ -2,7 +2,7 @@
 # Contributor: Sainnhe Park <sainnhe@gmail.com>
 pkgname=basedpyright-git
 _pkgname=basedpyright
-pkgver=v1.19.0.r3.ge169caf01
+pkgver=v1.22.0.r7.ge25e9a8e2
 pkgrel=1
 pkgdesc="Fork of pyright, a static type checker for Python, with various improvements and new features"
 arch=('any')
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  ./pw pdm build --verbose
+  ./pw uv build
 }
 
 package() {
