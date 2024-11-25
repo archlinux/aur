@@ -1,4 +1,4 @@
-# Maintainer: Lexi <@alexis@foxgirl.land> (a fediverse address)
+# Maintainer: Lexi <@alexis@fearness.org> (a fediverse address)
 
 pkgname=catgirl-engine-git
 pkgdesc="A game engine for cool moddability and procedurally generated data"
@@ -16,7 +16,7 @@ depends=()
 makedepends=(
     "git"
     "rustup"
-    "cargo-nightly"
+    "cargo"
     "sed"
 )
 optdepends=(
@@ -32,19 +32,19 @@ pkgver() {
 
 # Prepares for building
 prepare() {
-    export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=stable
     cd "catgirl-engine"
-    rustup install nightly
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    rustup install $RUSTUP_TOOLCHAIN
+    cargo +RUSTUP_TOOLCHAIN fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 # Builds files
 build() {
     export RUSTFLAGS="-L/usr/lib -lzstd"
-    export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cd "catgirl-engine"
-    cargo build --frozen --release
+    cargo +RUSTUP_TOOLCHAIN build --frozen --release
 }
 
 # Checks built files
