@@ -1,6 +1,6 @@
 pkgbase = docker-git
 	pkgdesc = Pack, ship and run any application as a lightweight container -git latest
-	pkgver = 27.3.1+r50521+gfc68ffcb1
+	pkgver = 27.3.1+r50591+g54fff36d9
 	pkgrel = 1
 	url = https://www.docker.com/
 	arch = x86_64
@@ -29,8 +29,6 @@ pkgbase = docker-git
 	optdepends = docker-buildx: extended build capabilities
 	provides = docker
 	conflicts = docker
-	conflicts = containerd
-	conflicts = runc
 	options = !lto
 	source = git+https://github.com/docker/cli.git
 	source = git+https://github.com/moby/moby.git
