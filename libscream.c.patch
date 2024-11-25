@@ -1,0 +1,10 @@
+--- libscream.c	2009-11-20 22:58:10.000000000 -0500
++++ libscream.c.diff	2024-11-12 18:10:34.710539726 -0500
+@@ -44,6 +44,7 @@
+ 
+ #include "config.h"
+ #include "feature.h"
++#include "misc.h"
+ 
+ /* use libast if we have it */
+ #ifdef DEBUG_ESCREEN

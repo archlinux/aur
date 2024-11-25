@@ -1,0 +1,11 @@
+--- screen.c	2011-03-16 01:16:59.000000000 -0400
++++ screen.c.diff	2024-11-12 18:09:26.993875057 -0500
+@@ -2912,7 +2912,7 @@
+ #endif
+ 
+     stp1 = stp = &(screen.text[beg_row + row_offset][beg_col]);
+-    w1 = DELIMIT_TEXT(*stp);
++    w1 = (int)DELIMIT_TEXT(*stp);
+     if (w1 == 2)
+         w1 = 0;
+ #ifdef MULTI_CHARSET

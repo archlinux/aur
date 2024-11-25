@@ -1,0 +1,11 @@
+--- pixmap.h	2009-01-06 04:05:36.000000000 -0500
++++ pixmap.h.diff	2024-11-12 18:05:53.933881290 -0500
+@@ -221,7 +221,7 @@
+ extern const char *get_image_type(unsigned char);
+ extern unsigned char image_mode_any(unsigned char);
+ #ifdef PIXMAP_SUPPORT
+-extern const char *imlib_strerror(Imlib_Load_Error);
++extern const char *eterm_imlib_strerror(Imlib_Load_Error);
+ extern unsigned short parse_pixmap_ops(char *);
+ extern unsigned short set_pixmap_scale(const char *, pixmap_t *);
+ extern unsigned char check_image_ipc(unsigned char);

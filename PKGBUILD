@@ -1,25 +1,50 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Adam 'battlemidget' Stokes <adam.stokes@gmail.com>
-# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
-# Contributor: Brad Fanella <bradfanella@archlinux.us>
+# Maintainer: Mike Pento <mpento@darkforge.net>
+
+# list of source files to be patched
+_file_list=(
+    'libscream.c'
+    'options.c'
+    'pixmap.c'
+    'pixmap.h'
+    'screen.c'
+)
+
 pkgname=eterm
 _pkgname=Eterm
 pkgver=0.9.6
-pkgrel=3
+pkgrel=1
 pkgdesc="A vt102 terminal emulator intended as a replacement for xterm."
 arch=('i686' 'x86_64')
-url="http://eterm.org/"
+url="https://launchpad.net/ubuntu/+source/eterm/0.9.6-1"
 license=('custom')
 depends=('libast>=0.7' 'libxmu' 'libxres' 'libutempter')
 options=('!libtool')
 provides=('esetroot')
 conflicts=('esetroot')
 install=${pkgname}.install
-source=(http://eterm.org/download/${_pkgname}-${pkgver}.tar.gz
-	http://eterm.org/download/${_pkgname}-bg-${pkgver}.tar.gz)
+source=(https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/${pkgname}/${pkgver}-${pkgrel}/${pkgname}_${pkgver}.orig.tar.gz 
+    eterm.install
+    libscream.c.patch
+    options.c.patch
+    pixmap.c.patch
+    pixmap.h.patch
+    screen.c.patch)
 md5sums=('90e424584c22d4050496874d14f78bb1'
-         'e8c6567b13d7fb760bded56c1d1a181d')
+    '17f21ca8c1b224fdfed244f4cd22781b'
+    '7fbfdca8ed67ff4872ba703b23b0c900'
+    'e9062f21600ab9829c4f056818785e62'
+    '9ca51d90d07a0ea770e32a453be979ac'
+    '300891726fe97cf1b5196d970a4cf3fd'
+    '055a664ebfa477f28705a4bd74aefe5d')
+
+prepare() {
+    cd ${_pkgname}-${pkgver}/src
+
+    # patch sources
+    for _file in ${_file_list[@]}; do
+	patch -b ${_file} < ../../../${_file}.patch
+    done
+}
 
 build() {
   cd ${_pkgname}-${pkgver}
@@ -38,10 +63,5 @@ package() {
   cd ${_pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  cd ../bg
-  install -dm755 "${pkgdir}/usr/share/${_pkgname}/pix/tile"
-  install -m644 tile/* "${pkgdir}/usr/share/${_pkgname}/pix/tile"
-  install -dm755 "${pkgdir}/usr/share/${_pkgname}/pix/scale"
-  install -m644 scale/* "${pkgdir}/usr/share/${_pkgname}/pix/scale"
 }
 

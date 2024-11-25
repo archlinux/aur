@@ -1,0 +1,12 @@
+--- options.c	2011-03-16 01:16:59.000000000 -0400
++++ options.c.diff	2024-11-12 18:07:31.760545128 -0500
+@@ -3888,7 +3888,8 @@
+     fprintf(fp, "    min_anchor_size %d\n", rs_min_anchor_size);
+     fprintf(fp, "    border_width %d\n", TermWin.internalBorder);
+     fprintf(fp, "    term_name %s\n", getenv("TERM"));
+-    fprintf(fp, "    beep_command \"%s\"\n", (char *) ((rs_beep_command) ? (rs_beep_command) : ("")));
++    fprintf(fp, "    beep_command \"%s\"\n", (char *) ((rs_beep_command)
++? (rs_beep_command) : (spif_charptr_t) ("")));
+ 
+     fprintf(fp, "    debug %d\n", DEBUG_LEVEL);
+     if (save_theme && rs_exec_args && rs_theme && strcmp(rs_theme, PACKAGE)) {
