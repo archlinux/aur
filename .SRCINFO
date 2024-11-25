@@ -1,16 +1,17 @@
 pkgbase = mullvad-wg.sh-git
 	pkgdesc = Bash script that generates WireGuard configuration files to use Mullvad VPN with WireGuard on linux.
 	pkgver = r5.20230710.ce91d41
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mullvad.net/en/help/wireguard-and-mullvad-vpn
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = gnupg
-	depends = bash
+	depends = bash>=4
 	depends = coreutils
 	depends = curl
 	depends = jq
+	optdepends = sudo: For the script to be able to change to superuser when invoked as non-superuser.
 	optdepends = wireguard-tools: To control the wireguard tunnel (userspace tools).
 	optdepends = WIREGUARD-MODULE: To be able to make a wireguard connection (Linux kernel support).
 	provides = mullvad-wg.sh

@@ -4,7 +4,7 @@ _gitname="mullvad-wg.sh"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=r5.20230710.ce91d41
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash script that generates WireGuard configuration files to use Mullvad VPN with WireGuard on linux."
 arch=(
   "any"
@@ -13,7 +13,7 @@ url="https://mullvad.net/en/help/wireguard-and-mullvad-vpn"
 _giturl="https://github.com/mullvad/mullvad-wg.sh"
 license=(GPL-2.0-or-later)
 depends=(
-  "bash"
+  "bash>=4"
   "coreutils"
   "curl"
   "jq"
@@ -23,6 +23,7 @@ makedepends=(
   "gnupg"
 )
 optdepends=(
+  "sudo:             For the script to be able to change to superuser when invoked as non-superuser."
   "wireguard-tools:  To control the wireguard tunnel (userspace tools)."
   "WIREGUARD-MODULE: To be able to make a wireguard connection (Linux kernel support)."
 )
