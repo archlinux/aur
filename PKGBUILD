@@ -1,7 +1,7 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=kcc
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Kindle Comic Converter converts comic files or folders to ePub or Panel View MOBI"
 arch=(any)
 url="https://github.com/ciromattia/kcc"
@@ -22,13 +22,13 @@ optdepends=(
   'kindlegen>=2.9: for .mobi generation'
   'p7zip: for zip/CBZ, rar/CBZ, 7z/CB7 support'
 )
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 source=(kindlecomicconverter.desktop
-        https://github.com/ciromattia/$pkgname/archive/refs/tags/v$pkgver.tar.gz)
+        "kcc::git+https://github.com/ciromattia/$pkgname#tag=v$pkgver")
 sha256sums=('3502c38d756f5a812ac06f63fe25e062d8720f620ffd7d25641e6accef9fdd9f'
-            '1a30977d84cfc32b017141cc04dcdc7cfe459ebfd99c8ed562e34c9ade22fe8c')
+            'SKIP')
 b2sums=('c6f59ebe0f5ec03b83c258226459b0f044726776b35a37535daeed497743bb12d35de180a7ffdb9a7215ba3bfb69dfaa29eb570955b19af011743ffa72229fe9'
-        'f9228a6e5aa1d58511aeaa4b729eb88c15aec41152335cb115351f1b63c8d42129856e2102c04d95b6b2a3be766824dd41f967b6771479251867266dfb92a4d6')
+        'SKIP')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -50,3 +50,7 @@ package() {
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt"
   install -Dm644 README.md "$pkgdir/usr/share/docs/${pkgname}/README.md"
 }
+
+# Local Variables:
+# pkgbuild-update-sums-on-save: nil
+# End:

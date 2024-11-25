@@ -1,10 +1,11 @@
 pkgbase = kcc
 	pkgdesc = Kindle Comic Converter converts comic files or folders to ePub or Panel View MOBI
 	pkgver = 7.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ciromattia/kcc
 	arch = any
 	license = ISC
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python>=3.12
 	depends = pyside6>=6.5.1
@@ -19,10 +20,10 @@ pkgbase = kcc
 	optdepends = kindlegen>=2.9: for .mobi generation
 	optdepends = p7zip: for zip/CBZ, rar/CBZ, 7z/CB7 support
 	source = kindlecomicconverter.desktop
-	source = https://github.com/ciromattia/kcc/archive/refs/tags/v7.0.0.tar.gz
+	source = kcc::git+https://github.com/ciromattia/kcc#tag=v7.0.0
 	sha256sums = 3502c38d756f5a812ac06f63fe25e062d8720f620ffd7d25641e6accef9fdd9f
-	sha256sums = 1a30977d84cfc32b017141cc04dcdc7cfe459ebfd99c8ed562e34c9ade22fe8c
+	sha256sums = SKIP
 	b2sums = c6f59ebe0f5ec03b83c258226459b0f044726776b35a37535daeed497743bb12d35de180a7ffdb9a7215ba3bfb69dfaa29eb570955b19af011743ffa72229fe9
-	b2sums = f9228a6e5aa1d58511aeaa4b729eb88c15aec41152335cb115351f1b63c8d42129856e2102c04d95b6b2a3be766824dd41f967b6771479251867266dfb92a4d6
+	b2sums = SKIP
 
 pkgname = kcc
