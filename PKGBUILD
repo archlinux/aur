@@ -129,7 +129,7 @@ package_angie() {
 
   install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
   install -Dm644 ../angie.service "$pkgdir"/usr/lib/systemd/system/angie.service
-  ln -s "$pkgdir"/usr/lib/systemd/system/angie.service "$pkgdir"/usr/lib/systemd/system/nginx.service
+  ln -sf /usr/lib/systemd/system/angie.service "$pkgdir"/usr/lib/systemd/system/nginx.service
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgbase/LICENSE
 
   rmdir "$pkgdir"/run
