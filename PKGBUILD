@@ -4,9 +4,9 @@
 pkgname=gog-x4_tides_of_avarice
 _dlcparent=x4_foundations
 _pkgname=x4_tides_of_avarice
-pkgver=7.10_hotfix_2
-_pkgver=7_10_hotfix_2
-_build=75856
+pkgver=7.10_hotfix_3
+_pkgver=7_10_hotfix_3
+_build=76760
 pkgrel=1
 pkgdesc="DLC for the $(echo ${_dlcparent} | sed 's/_/ /g') game."
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=($(echo gog-${_dlcparent}))
 source=("${_pkgname}_${_pkgver}_${_build}.sh::gog://${_pkgname}_${_pkgver}_${_build}.sh")
 # don't download anything via makepkg
 DLAGENTS+=("gog::/usr/bin/perl -E print\(\"${RED}\"\ .\ substr\(\"%u\",\ 6\)\ .\ \"\ not\ found.\ \ Check\ the\ PKGBUILD\ for\ further\ information.${ALL_OFF}\\\\n\"\)\;\ exit\ 1")
-sha256sums=('0acbdb5899eed91f3439509c0122a99fd1072e5ea324d72b363ff272c529ba33')
+sha256sums=('1095a8a38e19afc417a0ef397999786f39faa8e5c2f2f3a264dc541cabdfcbb4')
 noextract=("${_pkgname}_${_pkgver}_${_build}.sh")
 options=("!strip")
 
