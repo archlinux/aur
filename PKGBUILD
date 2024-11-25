@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=moekoemusic-bin
 _pkgname='MoeKoe Music'
-pkgver=1.0.10
+pkgver=1.1.0
 _electronversion=33
 pkgrel=1
-pkgdesc="An open-source, concise, and aesthetically pleasing third-party client for KuGou.(Use system-wide electron)一款开源简洁高颜值的酷狗第三方客户端"
+pkgdesc="An open-source, concise, and aesthetically pleasing third-party client for KuGou.(Prebuilt version.Use system-wide electron)一款开源简洁高颜值的酷狗第三方客户端"
 arch=('x86_64')
 url="https://moejue.cn/"
 _ghurl="https://github.com/iAJue/MoeKoeMusic"
@@ -26,7 +26,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/iAJue/MoeKoeMusic/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('73fbd89a10508087c25cb35e8c7a33b8ba77e4a78791968f1bf66f3139e93a04'
+sha256sums=('95c944d94fe9e6964779e9a902d9d7e630f0db58d5fe98ecf7bdd13cac70cc1a'
             'f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
