@@ -3,7 +3,7 @@
 
 pkgname='golangci-lint-bin'
 pkgver=1.62.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast linters runner for Go.'
 url='https://golangci.com'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -24,6 +24,9 @@ source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/golangci/
 sha256sums_x86_64=('5101292b7925a6a14b49c5c3d845c5021399698ffd2f41bcfab8a111b5669939')
 
 package() {
+  local x86_64=amd64 i686=386 aarch64=arm64 armv6h=armv6 armv7h=armv7
+  cd "golangci-lint-${pkgver}-linux-${!CARCH}"
+
   # bin
   install -Dm755 "./golangci-lint" "${pkgdir}/usr/bin/golangci-lint"
 
