@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-nlopt
 	pkgdesc = nonlinear optimization library (mingw-w64)
-	pkgver = 2.8.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = http://ab-initio.mit.edu/wiki/index.php/NLopt
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-nlopt
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = https://github.com/stevengj/nlopt/archive/v2.8.0.tar.gz
-	sha256sums = e02a4956a69d323775d79fdaec7ba7a23ed912c7d45e439bc933d991ea3193fd
+	source = https://github.com/stevengj/nlopt/archive/v2.9.0.tar.gz
+	sha256sums = 6e899e297485e457ec1bf84844de29921aeef674f9d5caf60277df45dca6ff76
 
 pkgname = mingw-w64-nlopt
