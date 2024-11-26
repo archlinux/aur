@@ -14,7 +14,7 @@ source=(
   "llama-server.conf.sample"
   "llama-server.env"
 )
-sha256sums=('37be8ba4f9802b5e43c76c3ab81580700ce7c4e11d145fa8babe49fe875c18e6'
+sha256sums=('b22a3e8a855eb17a1b62fb351e35d8139b249358dfc11668d5d06cca8ce2b547'
             '56ccc5e5894cca0f6142eacd509782187ade6aa22d16cdd3dfa124ec19232fb3'
             '8610d11eb5ef719d5a814acb0ed5cda6d05ca8a2f2fb8c4f0065ec35f123346d'
             '1b1a18bdf343b97ed70ebc2b64af20517dc88d1d3540886f3817779c1dda344f')
