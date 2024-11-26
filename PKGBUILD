@@ -1,8 +1,7 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=dfjpverb
-_plugin_uri="https://chrisarndt.de/plugins/$pkgname"
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='A lush algorithmic reverb CLAP, LV2 and VST3 plugin'
 arch=(x86_64 aarch64)
@@ -17,7 +16,7 @@ optdepends=(
 )
 groups=(clap-plugins lv2-plugins pro-audio vst3-plugins)
 source=("https://github.com/SpotlightKid/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-source.tar.gz")
-sha256sums=('d9d898f1e15594cb6d0afda1139405d2a489ab6b34268e9d65c3918129181a14')
+sha256sums=('6530f9fadeb043f066de2a3ae930eec9bd15b576b09464cf5992f6ac424bb9fd')
 
 build() {
   cd $pkgname-$pkgver
