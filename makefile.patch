@@ -1,0 +1,18 @@
+19a20
+> #	-std=c++17
+25c26,27
+< 	-std=c++14 \
+---
+> #	-std=c++14 \
+> 	-std=c++17 \
+35c37
+< 	-labsl_flags \
+---
+> 	-labsl_flags_usage \
+62c64
+< LIBEDGETPU_CSRCS := $(TFROOT)/tensorflow/lite/c/common.c
+---
+> #LIBEDGETPU_CSRCS := $(TFROOT)/tensorflow/lite/c/common.c
+142a145
+>         $(TFROOT)/tensorflow/lite/c/common_internal.cc \
+
