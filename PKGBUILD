@@ -3,7 +3,7 @@
 _reponame=hid-logitech-dj
 pkgname=hid-logitech-dj-lightspeed12-dkms-git
 pkgver=0.2.r1.gec38a6a
-pkgrel=1
+pkgrel=2
 pkgdesc="hid-logitech-dj with G502 X Plus (and others) support"
 arch=('x86_64')
 url="https://github.com/fridtjof/hid-logitech-dj"
@@ -17,8 +17,7 @@ makedepends=(
 source=(
   'git+https://github.com/fridtjof/hid-logitech-dj'
 )
-sha256sums=('SKIP'
-            'daad4466b9c1221e562c75adf809e622ee282484394aef860311d9759154265c')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_reponame"
