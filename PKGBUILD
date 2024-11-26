@@ -2,7 +2,7 @@
 pkgname=thorium-reader-git
 _pkgname="Thorium Reader"
 _appname="EDRLab.${_pkgname// /}"
-pkgver=3.0.0.r105.g323875f
+pkgver=3.0.0.r115.gb643725
 _electronversion=33
 _nodeversion=20
 pkgrel=1
