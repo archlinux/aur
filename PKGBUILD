@@ -3,7 +3,7 @@
 _binname="flow"
 _pkgname="${_binname}-cli"
 pkgname="${_pkgname}-bin"
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A command-line interface that provides useful utilities for building Flow applications"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.tar.gz")
-b2sums_x86_64=('9a8b213f2992d9b45a1196062961cf6db7b39ef78318f25a5c1f6245da311bd9111af620bb99f56ef847a9986b0fb5b406ba108fcc283d30053b3790a88b32b3')
-b2sums_aarch64=('5a47cf54da0cfb2889eaa403bb7c8d19d0eb102a88fb280128178a89979898d46e282ec815701fe42c597cd11685c7976d131e4597ebdf34dc0d4437903f6596')
+b2sums_x86_64=('3530866c822c33cb6b3d2e9c28d460bc1649cac3a73d1327d94ffbb20db31943e5392537d6f501476c442ba1b932d92e46e2ebaacdeacb0e31e79ad4830b9bfa')
+b2sums_aarch64=('81872f095d68fc547a72112a782215c73327f84118f03d75d365bcefc58bd74d5dcb6aaa0f0778a44f9f90cbacf527c24664161248fb2156fb9e16c6b43cf7fc')
 
 prepare() {
   cd "${srcdir}"
