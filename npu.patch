@@ -1,9 +1,9 @@
 From git@z Thu Jan  1 00:00:00 1970
-Subject: [PATCH v10 1/10] accel/amdxdna: Add documentation for AMD NPU
+Subject: [PATCH v11 1/10] accel/amdxdna: Add documentation for AMD NPU
  accelerator driver
 From: Lizhi Hou <lizhi.hou@amd.com>
-Date: Tue, 12 Nov 2024 11:47:36 -0800
-Message-Id: <20241112194745.854626-2-lizhi.hou@amd.com>
+Date: Mon, 18 Nov 2024 09:29:33 -0800
+Message-Id: <20241118172942.2014541-2-lizhi.hou@amd.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
@@ -345,10 +345,10 @@ index e94a0160b6a0..bc85f26533d8 100644
 2.34.1
 
 From git@z Thu Jan  1 00:00:00 1970
-Subject: [PATCH v10 2/10] accel/amdxdna: Add a new driver for AMD AI Engine
+Subject: [PATCH v11 2/10] accel/amdxdna: Add a new driver for AMD AI Engine
 From: Lizhi Hou <lizhi.hou@amd.com>
-Date: Tue, 12 Nov 2024 11:47:37 -0800
-Message-Id: <20241112194745.854626-3-lizhi.hou@amd.com>
+Date: Mon, 18 Nov 2024 09:29:34 -0800
+Message-Id: <20241118172942.2014541-3-lizhi.hou@amd.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
@@ -408,7 +408,7 @@ Signed-off-by: Lizhi Hou <lizhi.hou@amd.com>
  create mode 100644 include/uapi/drm/amdxdna_accel.h
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index a27407950242..18f4feaed030 100644
+index 08e1f793ee45..cde77eb0bf1e 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
 @@ -1178,6 +1178,16 @@ M:	Sanjay R Mehta <sanju.mehta@amd.com>
@@ -1878,10 +1878,10 @@ index 000000000000..6d97e8e90cf6
 2.34.1
 
 From git@z Thu Jan  1 00:00:00 1970
-Subject: [PATCH v10 3/10] accel/amdxdna: Support hardware mailbox
+Subject: [PATCH v11 3/10] accel/amdxdna: Support hardware mailbox
 From: Lizhi Hou <lizhi.hou@amd.com>
-Date: Tue, 12 Nov 2024 11:47:38 -0800
-Message-Id: <20241112194745.854626-4-lizhi.hou@amd.com>
+Date: Mon, 18 Nov 2024 09:29:35 -0800
+Message-Id: <20241118172942.2014541-4-lizhi.hou@amd.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
@@ -1933,7 +1933,7 @@ Signed-off-by: Lizhi Hou <lizhi.hou@amd.com>
  create mode 100644 include/trace/events/amdxdna.h
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 18f4feaed030..76054963fa3c 100644
+index cde77eb0bf1e..0ddb471f8601 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
 @@ -1186,6 +1186,7 @@ S:	Supported
@@ -3958,10 +3958,10 @@ index 000000000000..33343d8f0622
 2.34.1
 
 From git@z Thu Jan  1 00:00:00 1970
-Subject: [PATCH v10 4/10] accel/amdxdna: Add hardware resource solver
+Subject: [PATCH v11 4/10] accel/amdxdna: Add hardware resource solver
 From: Lizhi Hou <lizhi.hou@amd.com>
-Date: Tue, 12 Nov 2024 11:47:39 -0800
-Message-Id: <20241112194745.854626-5-lizhi.hou@amd.com>
+Date: Mon, 18 Nov 2024 09:29:36 -0800
+Message-Id: <20241118172942.2014541-5-lizhi.hou@amd.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
@@ -4558,10 +4558,10 @@ index 64bce970514b..c0710d3130fd 100644
 2.34.1
 
 From git@z Thu Jan  1 00:00:00 1970
-Subject: [PATCH v10 5/10] accel/amdxdna: Add hardware context
+Subject: [PATCH v11 5/10] accel/amdxdna: Add hardware context
 From: Lizhi Hou <lizhi.hou@amd.com>
-Date: Tue, 12 Nov 2024 11:47:40 -0800
-Message-Id: <20241112194745.854626-6-lizhi.hou@amd.com>
+Date: Mon, 18 Nov 2024 09:29:37 -0800
+Message-Id: <20241118172942.2014541-6-lizhi.hou@amd.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
@@ -5696,10 +5696,10 @@ index 6d97e8e90cf6..a0dc821c1363 100644
 2.34.1
 
 From git@z Thu Jan  1 00:00:00 1970
-Subject: [PATCH v10 6/10] accel/amdxdna: Add GEM buffer object management
+Subject: [PATCH v11 6/10] accel/amdxdna: Add GEM buffer object management
 From: Lizhi Hou <lizhi.hou@amd.com>
-Date: Tue, 12 Nov 2024 11:47:41 -0800
-Message-Id: <20241112194745.854626-7-lizhi.hou@amd.com>
+Date: Mon, 18 Nov 2024 09:29:38 -0800
+Message-Id: <20241118172942.2014541-7-lizhi.hou@amd.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
@@ -6952,10 +6952,10 @@ index a0dc821c1363..e3e78b79a8e7 100644
 2.34.1
 
 From git@z Thu Jan  1 00:00:00 1970
-Subject: [PATCH v10 7/10] accel/amdxdna: Add command execution
+Subject: [PATCH v11 7/10] accel/amdxdna: Add command execution
 From: Lizhi Hou <lizhi.hou@amd.com>
-Date: Tue, 12 Nov 2024 11:47:42 -0800
-Message-Id: <20241112194745.854626-8-lizhi.hou@amd.com>
+Date: Mon, 18 Nov 2024 09:29:39 -0800
+Message-Id: <20241118172942.2014541-8-lizhi.hou@amd.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
@@ -6965,6 +6965,7 @@ completion.
 
 Co-developed-by: Min Ma <min.ma@amd.com>
 Signed-off-by: Min Ma <min.ma@amd.com>
+Reviewed-by: Jeffrey Hugo <quic_jhugo@quicinc.com>
 Signed-off-by: Lizhi Hou <lizhi.hou@amd.com>
 ---
  drivers/accel/amdxdna/aie2_ctx.c              | 607 +++++++++++++++++-
@@ -6989,7 +6990,7 @@ Signed-off-by: Lizhi Hou <lizhi.hou@amd.com>
  19 files changed, 1531 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/accel/amdxdna/aie2_ctx.c b/drivers/accel/amdxdna/aie2_ctx.c
-index ae8a91dad042..09d8479bf560 100644
+index ae8a91dad042..2040a01256eb 100644
 --- a/drivers/accel/amdxdna/aie2_ctx.c
 +++ b/drivers/accel/amdxdna/aie2_ctx.c
 @@ -8,8 +8,12 @@
@@ -7069,7 +7070,7 @@ index ae8a91dad042..09d8479bf560 100644
 +	}
 +
 +out:
-+	drm_sched_start(&hwctx->priv->sched);
++	drm_sched_start(&hwctx->priv->sched, 0);
 +	XDNA_DBG(xdna, "%s restarted, ret %d", hwctx->name, ret);
 +	return ret;
 +}
@@ -8790,7 +8791,7 @@ index 172109cc9617..2262157b26a6 100644
  	ret = xdna->dev_info->ops->init(xdna);
  	mutex_unlock(&xdna->dev_lock);
 diff --git a/drivers/accel/amdxdna/amdxdna_pci_drv.h b/drivers/accel/amdxdna/amdxdna_pci_drv.h
-index 3dddde4ac12a..5592831b5e3f 100644
+index 3dddde4ac12a..30ea8da55d69 100644
 --- a/drivers/accel/amdxdna/amdxdna_pci_drv.h
 +++ b/drivers/accel/amdxdna/amdxdna_pci_drv.h
 @@ -20,6 +20,7 @@ extern const struct drm_driver amdxdna_drm_drv;
@@ -8821,7 +8822,7 @@ index 3dddde4ac12a..5592831b5e3f 100644
  	struct list_head		node;
  	pid_t				pid;
  	struct mutex			hwctx_lock; /* protect hwctx */
-+	/* do NOT wait this srcu when hwctx_lock is hold */
++	/* do NOT wait this srcu when hwctx_lock is held */
 +	struct srcu_struct		hwctx_srcu;
  	struct idr			hwctx_idr;
  	struct amdxdna_dev		*xdna;
@@ -9024,10 +9025,10 @@ index e3e78b79a8e7..3e88ed386fac 100644
 2.34.1
 
 From git@z Thu Jan  1 00:00:00 1970
-Subject: [PATCH v10 8/10] accel/amdxdna: Add suspend and resume
+Subject: [PATCH v11 8/10] accel/amdxdna: Add suspend and resume
 From: Lizhi Hou <lizhi.hou@amd.com>
-Date: Tue, 12 Nov 2024 11:47:43 -0800
-Message-Id: <20241112194745.854626-9-lizhi.hou@amd.com>
+Date: Mon, 18 Nov 2024 09:29:40 -0800
+Message-Id: <20241118172942.2014541-9-lizhi.hou@amd.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
@@ -9053,7 +9054,7 @@ Signed-off-by: Lizhi Hou <lizhi.hou@amd.com>
  7 files changed, 185 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/accel/amdxdna/aie2_ctx.c b/drivers/accel/amdxdna/aie2_ctx.c
-index 09d8479bf560..f21143295662 100644
+index 2040a01256eb..90e8d87666a9 100644
 --- a/drivers/accel/amdxdna/aie2_ctx.c
 +++ b/drivers/accel/amdxdna/aie2_ctx.c
 @@ -137,6 +137,36 @@ static void aie2_hwctx_wait_for_idle(struct amdxdna_hwctx *hwctx)
@@ -9377,7 +9378,7 @@ index 2262157b26a6..c4df674fdf50 100644
  
  module_pci_driver(amdxdna_pci_driver);
 diff --git a/drivers/accel/amdxdna/amdxdna_pci_drv.h b/drivers/accel/amdxdna/amdxdna_pci_drv.h
-index 5592831b5e3f..89e0bbc5e962 100644
+index 30ea8da55d69..52c59249c8a0 100644
 --- a/drivers/accel/amdxdna/amdxdna_pci_drv.h
 +++ b/drivers/accel/amdxdna/amdxdna_pci_drv.h
 @@ -28,10 +28,14 @@ struct amdxdna_sched_job;
@@ -9399,10 +9400,10 @@ index 5592831b5e3f..89e0bbc5e962 100644
 2.34.1
 
 From git@z Thu Jan  1 00:00:00 1970
-Subject: [PATCH v10 9/10] accel/amdxdna: Add error handling
+Subject: [PATCH v11 9/10] accel/amdxdna: Add error handling
 From: Lizhi Hou <lizhi.hou@amd.com>
-Date: Tue, 12 Nov 2024 11:47:44 -0800
-Message-Id: <20241112194745.854626-10-lizhi.hou@amd.com>
+Date: Mon, 18 Nov 2024 09:29:41 -0800
+Message-Id: <20241118172942.2014541-10-lizhi.hou@amd.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
@@ -9936,10 +9937,10 @@ index 72691c9eebd7..4422dd6c985e 100644
 2.34.1
 
 From git@z Thu Jan  1 00:00:00 1970
-Subject: [PATCH v10 10/10] accel/amdxdna: Add query functions
+Subject: [PATCH v11 10/10] accel/amdxdna: Add query functions
 From: Lizhi Hou <lizhi.hou@amd.com>
-Date: Tue, 12 Nov 2024 11:47:45 -0800
-Message-Id: <20241112194745.854626-11-lizhi.hou@amd.com>
+Date: Mon, 18 Nov 2024 09:29:42 -0800
+Message-Id: <20241118172942.2014541-11-lizhi.hou@amd.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
@@ -10331,7 +10332,7 @@ index c4df674fdf50..02533732d4ca 100644
  
  static const struct file_operations amdxdna_fops = {
 diff --git a/drivers/accel/amdxdna/amdxdna_pci_drv.h b/drivers/accel/amdxdna/amdxdna_pci_drv.h
-index 89e0bbc5e962..11d017c17ac3 100644
+index 52c59249c8a0..c50d65a050ad 100644
 --- a/drivers/accel/amdxdna/amdxdna_pci_drv.h
 +++ b/drivers/accel/amdxdna/amdxdna_pci_drv.h
 @@ -17,7 +17,9 @@
