@@ -1,0 +1,21 @@
+pkgbase = vnrez
+pkgdesc = All-in-one Linux tool for recording, screenshots to share your files online.
+pkgver = 1.0
+pkgrel = 1
+url = https://github.com/verysillycat/vnrez
+arch = any
+license = AGPL-3.0
+depends = jq
+depends = ffmpeg
+depends = curl
+optdepends = kooha: COSMIC & GNOME & KDE wayland support
+optdepends = wl-clipboard: Wayland Clipboard support
+optdepends = slurp: Wayland wlroots based support
+optdepends = wf-recorder: Wayland wlroots based support
+optdepends = wl-screenrec: Alternative for Wayland wlroots based support
+optdepends = xclip: X11 Clipboard support
+optdepends = slop: X11 Support
+source = https://github.com/verysillycat/vnrez/archive/refs/tags/v1.0.tar.gz
+sha256sums = SKIP
+
+pkgname = vnrez

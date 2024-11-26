@@ -1,0 +1,21 @@
+post_install() {
+    sleep 1
+    printf "\e[1;32m[!] - - - - - - - - - - - - - - - - - - - -  | IMPORTANT | - - - - - - - - - - - - - - - - - - - - [!]\e[0m\n"
+    printf "\e[1;32mCheck the Optional Dependencies section to install the required Dependencies based on your DE / WM :\e[0m\n"
+    printf "• \e[30m\e[46m Wayland wlroots based \e[0m: wl-clipboard, slurp & wf-recorder or wl-screenrec\n"
+    printf "• \e[30m\e[46m COSMIC & GNOME / KDE Wayland \e[0m: wl-clipboard & kooha\n"
+    printf "• \e[30m\e[46m Any X11 \e[0m: xclip & slop\n"
+    echo ""
+    printf "\e[1;32m✱ Otherwise, the script will refuse to work.\e[0m\n"
+    sleep 2
+}
+
+post_remove() {
+    printf "\e[1;31mRemove the Configuration Folder:\e[0m\n"
+    printf "\e[30m\e[46m rm -rf ~/.config/vnrez \e[0m\n"
+    echo ""
+    printf "\e[1;31mDelete All the Dependencies:\e[0m\n"
+    printf "• \e[30m\e[46m Wayland wlroots based \e[0m: wl-clipboard, slurp & wf-recorder\n"
+    printf "• \e[30m\e[46m COSMIC & GNOME / KDE Wayland \e[0m: wl-clipboard & kooha\n"
+    printf "• \e[30m\e[46m Any X11 \e[0m: xclip & slop\n"
+}
