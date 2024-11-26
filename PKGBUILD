@@ -1,7 +1,7 @@
 # Maintainer: Sieve Lau <sievelau@gmail.com>
 
 pkgname=bililiverecorder-git
-pkgver=r907.f48fbf4
+pkgver=r914.9859c32
 pkgrel=1
 pkgdesc='BiliBili Stream Recorder. Git version.'
 url="https://github.com/BililiveRecorder/BililiveRecorder"
@@ -9,7 +9,8 @@ arch=(x86_64)
 provides=('bililiverecorder')
 conflicts=('bililiverecorder')
 license=(GPL3)
-makedepends=('npm' 'dotnet-sdk-6.0-bin>6.0.22.sdk400')
+makedepends=('npm' 'dotnet-sdk>8.0' 'dotnet-runtime>8.0' 'dotnet-targeting-pack>8.0')
+depends=('dotnet-runtime>8.0')
 source=(
   "${pkgname%-git}::git+https://github.com/BililiveRecorder/BililiveRecorder#branch=dev"
   "webui-source::git+https://github.com/BililiveRecorder/BililiveRecorder-WebUI.git"
