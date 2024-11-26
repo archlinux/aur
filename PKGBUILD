@@ -6,7 +6,7 @@
 _pkgname=pa-dlna
 pkgname="${_pkgname}-git"
 pkgver=0.14.r389.20241103.6c16282
-pkgrel=3
+pkgrel=4
 pkgdesc="Forwards audio streams to DLNA devices. For PulseAudio or PipeWira (via 'python-libpulse'). Latest git checkout."
 arch=(
   'any'
@@ -19,7 +19,6 @@ provides=(
   "upnp-cmd-git=${pkgver}"
   "python-pa_dlna=${pkgver}"
   "python-pa_dlna-git=${pkgver}"
-  "PIPEWIRE-DLNA-SINK"
   "PULSEAUDIO-DLNA-SINK"
 )
 conflicts=(
@@ -47,7 +46,7 @@ optdepends=(
   'flac: flac transcoding support'
   'lame: mp3 transcoding support'
   'pulse-native-provider: To be used by a local pulseaudio implementation'
-  'pipewire: To be used by a local pipewire implementation'
+  'pipewire-pulse: To be used by a local pipewire implementation'
 )
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
