@@ -63,7 +63,6 @@ build() {
     # configure can read RUST_TARGET now
     if [[ ${_arch} = i686-w64-mingw32 ]] ; then
       export RUST_TARGET=i686-pc-windows-gnu
-      cp meson/cargo_wrapper_bak meson/cargo_wrapper.py
     fi
     if [[ ${_arch} = x86_64-w64-mingw32 ]] ; then
       export RUST_TARGET=x86_64-pc-windows-gnu
