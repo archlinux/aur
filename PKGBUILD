@@ -4,9 +4,9 @@
 
 pkgname=crashplan-pro
 _pkgname=crashplan
-pkgver=11.3.1
-_pkgbuild=3
-pkgrel=2
+pkgver=11.5.0
+_pkgbuild=445
+pkgrel=1
 pkgdesc="A business online/offsite backup solution"
 url="https://www.crashplan.com/en-us/small-business/"
 arch=('x86_64')
@@ -14,18 +14,16 @@ license=('custom')
 depends=('bash' 'java-runtime-headless=8' 'alsa-lib' 'gtk3' 'libxss' 'inetutils' 'slf4j')
 makedepends=('cpio')
 conflicts=('crashplan')
-source=(https://download.crashplan.com/installs/agent/cloud/${pkgver}/${_pkgbuild}/install/CrashPlanSmb_${pkgver}_${_pkgbuild}_Linux.tgz
+source=(https://download.crashplan.com/installs/agent/cloud/${pkgver}/${_pkgbuild}/install/CrashPlan_${pkgver}_${_pkgbuild}_Linux.tgz
         crashplan-pro.service
         upgrade.sh
         crashplan-pro_upgrade.service
-        crashplan-pro_upgrade.path
-        unsupported-os.patch)
-sha1sums=('3193707179b103bebbd7aeae9c6c0b81bc4179ef'
+        crashplan-pro_upgrade.path)
+sha1sums=('8d9d38bce262c1ea3b9c16a8a104aa20c1386bef'
           '194c2022af9809ba9a4694c747db01124c550ffb'
           '8135b6e0fca07b5e3793faa8064ec480efda0063'
           'c24e2ba2b2d6831246ea4af072305ddf5d1fd774'
-          '0dfbf0ef3df2ad386419def132c28d63560f6e4e'
-          '2eaf643ec82bd49e4cca0e3d22fd176126ecb629')
+          '0dfbf0ef3df2ad386419def132c28d63560f6e4e')
 options=(!strip)
 build() {
   cd $srcdir/crashplan-install
@@ -54,9 +52,6 @@ EOF
   sed -i '/^install_service_script/ s/./#&/' install.sh
   sed -i '/^install_launcher/ s/./#&/' install.sh
   sed -i '/^start_service/ s/./#&/' install.sh
-
-  # make the unsupported os prompt default to 'y'
-  patch install.sh $srcdir/unsupported-os.patch
 
   mkdir -vp $srcdir/CrashPlan
 

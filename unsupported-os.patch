@@ -1,4 +1,0 @@
-217c217
-<     get_yn_response YN n
----
->     get_yn_response YN y
