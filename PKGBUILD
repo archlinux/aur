@@ -24,11 +24,11 @@ package() {
     tar -xvzf "cyberghostvpn-gui_linux_amd64_${pkgver}.tar.gz"
 
     # Copy the uncompressed binary to /usr/sbin/
-    install -Dm755 "${srcdir}/cyberghostvpn-gui_linux_amd64_${pkgver}" "/usr/sbin/cyberghostvpn-gui"
+    sudo install -Dm755 "${srcdir}/cyberghostvpn-gui_linux_amd64_${pkgver}" "/usr/sbin/cyberghostvpn-gui"
 
     # Copy the .desktop file
-    install -Dm644 "${srcdir}/cyberghostvpn-gui.desktop" "/usr/share/applications/cyberghostvpn-gui.desktop"
+    sudo install -Dm644 "${srcdir}/cyberghostvpn-gui.desktop" "/usr/share/applications/cyberghostvpn-gui.desktop"
 
     # Copy the icon to the icons directory
-    install -Dm644 "${srcdir}/cyberghostvpn-gui.png" "/usr/share/icons/cyberghostvpn-gui.png"
+    sudo install -Dm644 "${srcdir}/cyberghostvpn-gui.png" "/usr/share/icons/cyberghostvpn-gui.png"
 }
