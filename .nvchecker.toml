@@ -1,0 +1,5 @@
+[wallust]
+source="gitea"
+host="codeberg.org"
+gitea="explosion-mental/wallust"
+use_max_tag=true
