@@ -1,7 +1,7 @@
 pkgbase = python-prance
 	pkgdesc = Resolving Swagger/OpenAPI 2.0 and 3.0 Parser
 	pkgver = 0.22.11.04.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/jfinkhaeuser/prance
 	arch = any
 	license = MITNFA
