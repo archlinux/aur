@@ -4,7 +4,7 @@
 pkgname=python-nptyping
 _name="${pkgname#python-}"
 pkgver=2.5.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Type hints for Numpy'
 url="https://github.com/ramonhagenaars/nptyping"
 arch=(x86_64)
