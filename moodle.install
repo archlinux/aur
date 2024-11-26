@@ -1,0 +1,20 @@
+post_install() {
+echo "Now you need to create database, edit config file and run install script:
+
+Create the moodle database:
+# mariadb -uroot -p << 'EOF'
+# CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+# CREATE USER 'moodle'@'localhost' IDENTIFIED BY 'yourpassword';
+# GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON moodle.* TO 'moodle'@'localhost';
+# FLUSH PRIVILEGES;
+# EOF
+
+Edit config file:
+# nano /etc/webapps/moodle/config.php
+
+Then run install script:
+# /usr/bin/php /usr/share/webapps/moodle/admin/cli/install.php"
+
+And enable cron tasks:
+# systemctl enable --now moodle-cron.timer
+}
