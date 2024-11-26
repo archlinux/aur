@@ -8,7 +8,7 @@ pkgname=(
   "${pkgbase}-firefox"
   "${pkgbase}-google-chrome"
 )
-pkgver=12.1.3
+pkgver=12.7.2
 pkgrel=1
 pkgdesc='Browser extension that enables browsing Ethereum blockchain enabled websites'
 url="https://github.com/MetaMask/metamask-extension"
@@ -16,7 +16,7 @@ license=('LicenseRef-ConsenSys')
 groups=('firefox-addons')
 arch=('any')
 depends=()
-makedepends=('git' 'nvm' 'yarn-berry' 'chromium')
+makedepends=('git' 'nodejs-lts-iron' 'chromium')
 source=(
   "${pkgbase}::git+$url.git#tag=v${pkgver}"
   "chrome.pem"
@@ -27,31 +27,19 @@ sha512sums=(
 )
 _chromium_extension_id="cfcbhkcbidaoaeljekeilbnebipmnkjm"
 
-_ensure_local_nvm() {
-    # let's be sure we are starting clean
-    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-    export NVM_DIR="${srcdir}/.nvm"
-
-    # The init script returns 3 if version specified
-    # in ./.nvrc is not (yet) installed in $NVM_DIR
-    # but nvm itself still gets loaded ok
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
-
 prepare() {
   cd "${srcdir}/${pkgbase}"
   cp .metamaskrc.dist .metamaskrc
   # set infura project id
   sed -i -e 's/00000000000/2f8ebfee0f81453d83fe6219b9a59754/g' .metamaskrc
-  # nodejs 20.15 fails with:
-  # TypeError: Cannot read properties of undefined (reading '0')
-  _ensure_local_nvm
-  nvm install 20.14
+  corepackdir="${srcdir}/corepack"
+  mkdir -p "${corepackdir}"
+  corepack enable --install-directory="${corepackdir}"
 }
 
 build() {
   cd "${srcdir}/${pkgbase}"
-  _ensure_local_nvm
+  export PATH="${srcdir}/corepack:$PATH"
   yarn # setup
   yarn dist:mv2
   chromium \
