@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-librsvg
 	pkgdesc = SVG rendering library (mingw-w64)
 	pkgver = 2.59.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/action/show/Projects/LibRsvg
 	arch = any
 	license = LGPL-2.1-or-later

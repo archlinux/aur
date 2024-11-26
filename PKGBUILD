@@ -5,7 +5,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-librsvg
 pkgver=2.59.2
-pkgrel=1
+pkgrel=2
 pkgdesc="SVG rendering library (mingw-w64)"
 arch=('any')
 url="https://wiki.gnome.org/action/show/Projects/LibRsvg"
@@ -43,6 +43,14 @@ prepare() {
 
   cd "${srcdir}/librsvg"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
+  # do not add host bindir to PATH
+  # https://gitlab.gnome.org/GNOME/librsvg/-/issues/1141
+  sed -i "s|extra_env.prepend('PATH', x)|# skip|g" meson.build
+
+  # use RSVG_STATIC when build static libs
+  # https://gitlab.gnome.org/GNOME/librsvg/-/issues/1143
+  sed -i "s|^api_test = |if get_option('default_library') == 'static' or get_option('default_library') == 'both'\n  test_c_args += ['-DRSVG_STATIC']\nendif\n\napi_test = |" librsvg-c/tests-c/meson.build
 }
 
 build() {
@@ -67,11 +75,10 @@ build() {
     if [[ ${_arch} = x86_64-w64-mingw32 ]] ; then
       export RUST_TARGET=x86_64-pc-windows-gnu
     fi
-    # do not add host bindir to PATH
-    # https://gitlab.gnome.org/GNOME/librsvg/-/issues/1141
-    sed -i "s|extra_env.prepend('PATH', x)|# skip|g" meson.build
+
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-meson \
+      --default-library both \
       -Dintrospection=disabled \
       -Dpixbuf-loader=disabled \
       ..
