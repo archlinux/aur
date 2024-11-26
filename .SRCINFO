@@ -1,15 +1,17 @@
 pkgbase = llama.cpp-server-tray
 	pkgdesc = Companion system tray app for llama.cpp-server-service
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/envolution/llama.cpp-server-tray
 	arch = any
 	license = MIT
 	depends = pyside6
 	depends = python
+	depends = leafpad
+	depends = qt-sudo
 	options = !strip
 	options = !debug
-	source = llama.cpp-server-tray-0.3::https://github.com/envolution/llama.cpp-server-tray/archive/refs/tags/0.3.tar.gz
-	sha256sums = 2c38f03c72dcb4fbe0314130cc5462b3ea25ddf2a8a188cf178a0980aaf33160
+	source = llama.cpp-server-tray-0.4::https://github.com/envolution/llama.cpp-server-tray/archive/refs/tags/0.4.tar.gz
+	sha256sums = c7da6a9b9971964d84bdb62237cfb738232fe869777286d58f492c930763a5ff
 
 pkgname = llama.cpp-server-tray
