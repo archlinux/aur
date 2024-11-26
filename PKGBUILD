@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=inkdown-bin
 _pkgname=Inkdown
-pkgver=1.2.0
+pkgver=1.2.1
 _electronversion=29
 pkgrel=1
 pkgdesc="A WYSIWYG Markdown editor,improve reading and editing experience,and generate your Markdown files into online documents in the easiest and fastest way.(Prebuilt version.Use system-wide electron)"
@@ -21,8 +21,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('6e897cd1f4ea854f01481bee84aba55ea1f62b9c4126c4520e2244b0472d190a')
-sha256sums_x86_64=('644cad1abbe84da01d271b173f57155651ca0c7f58f8ea7b4a35a4ab9ee0d4fa')
+sha256sums_aarch64=('87b87b35ec02247a1f493ba78757919b169b9ba8f8d055516ab0867a43128345')
+sha256sums_x86_64=('8e39619bde99263925201a88250de443809b7b75e26dbc9d3e45240dd898977f')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
