@@ -1,15 +1,16 @@
 # Maintainer: Douglas Creager <dcreager at dcreager dot net>
 # Co-Maintainer: shtrophic <aur at shtrophic dot net>
+# Contributor: andreafeletto
 
 pkgname=gmid
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast Gemini server written with security in mind.'
 arch=('x86_64' 'aarch64')
 url='https://gmid.omarpolo.com'
 license=('ISC')
 makedepends=('signify')
-depends=('libevent' 'openssl')
+depends=('libevent')
 conflicts=('gmid-git' 'gmid-bin')
 _signkey=gmid-2.1.pub
 source=(
