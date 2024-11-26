@@ -1,0 +1,24 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 674dbd6..1ba8329 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.1)
+ project(TinyEXIF)
+ include(GNUInstallDirs)
+ 
++find_package(tinyxml2 REQUIRED)
++
+ #CMAKE_BUILD_TOOL
+ 
+ ################################
+@@ -141,6 +143,10 @@ if(BUILD_STATIC_LIBS)
+ 		endif()
+ 	endif()
+ 
++	# export targets for find_package config mode
++	export(TARGETS TinyEXIFstatic
++			FILE ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}Targets.cmake)
++
+ 	install(TARGETS TinyEXIFstatic
+ 			EXPORT ${CMAKE_PROJECT_NAME}Targets
+ 			RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}

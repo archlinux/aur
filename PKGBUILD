@@ -12,7 +12,7 @@ pkgname=aseprite
 pkgver=1.3.10.1
 _skiaver=m102
 _skiahash=861e4743af
-pkgrel=1
+pkgrel=3
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -49,7 +49,8 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2523.patch
         shared-libwebp.patch
         shared-skia-deps.patch
-        optional-pixman.patch)
+        optional-pixman.patch
+        fix-shared-tinyxml2.patch)
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
 sha256sums=('8eea1db7f3465c5d1442c19599de53ab6d69431767ffa320459f5c3ff8cc80b4'
@@ -59,8 +60,9 @@ sha256sums=('8eea1db7f3465c5d1442c19599de53ab6d69431767ffa320459f5c3ff8cc80b4'
             '89cd28a5a90ee9dd42e85866b6f954bde526068d94311b0730a62f00f9cfffdb'
             '0f8adb959d7000697af453d6cf5aaf9984b74868008382aad541d2c29871c751'
             'eb9f544e68b41b5cb1a9ab7a6648db51587e67e94f1a452cb5a84f3d224bf5d0'
-            'c2d14f9738a96a9db3695c00ac3d14b1312b6a595b151bd56e19422c86517654')
-
+            'c2d14f9738a96a9db3695c00ac3d14b1312b6a595b151bd56e19422c86517654'
+            'ba02fc060dc930cfd66a8903a5d8a59f981753bdf416e91cc77a48c56c86aea3')
+_debug="true"
 prepare() {
 	# Extract Aseprite's sources
 	mkdir -p aseprite
@@ -69,15 +71,24 @@ prepare() {
 	mkdir -p skia
 	bsdtar xf skia-$_skiaver.tar.gz  --strip-components=1 -C skia
 	# Fix up Aseprite's desktop integration
+	[[ -n $_debug ]] && echo desktop.patch
 	env -C aseprite patch -tp1 <desktop.patch
 	# Allow using more shared libs
+	[[ -n $_debug ]] && echo shared-fmt.patch
 	env -C aseprite patch -tp1 <shared-fmt.patch
+	[[ -n $_debug ]] && echo shared-libarchive.patch
 	env -C aseprite patch -tp1 <shared-libarchive.patch
+	[[ -n $_debug ]] && echo shared-libwebp.patch
 	env -C aseprite patch -tp1 <shared-libwebp.patch
+	[[ -n $_debug ]] && echo shared-pixman.patch
 	env -C aseprite patch -tp1 <optional-pixman.patch
 	# Their "FindSkia" module forcefully tries to use Skia's FreeType and HarfBuzz,
 	# but we don't clone those because we use the shared ones. Avoid overwriting the settings instead.
+	[[ -n $_debug ]] && echo shared-skia-deps.patch
 	env -C aseprite patch -tp1 <shared-skia-deps.patch
+	# TinyEXIF cannot find tinyxml2 otherwise
+	[[ -n $_debug ]] && echo fix-shared-tinyxml2.patch
+	env -C aseprite/third_party/TinyEXIF patch -tp1 <fix-shared-tinyxml2.patch
 }
 
 build() {
