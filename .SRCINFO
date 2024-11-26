@@ -1,7 +1,7 @@
 pkgbase = python-apeye-core
 	pkgdesc = Core (offline) functionality for the apeye library
 	pkgver = 1.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/domdfcoding/apeye-core
 	arch = any
 	license = MIT
