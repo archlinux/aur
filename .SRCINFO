@@ -1,7 +1,7 @@
 pkgbase = ttf-tw
 	pkgdesc = Set of KAI and SONG fonts from the Ministry of Education of Taiwan. These fonts follow all the official recommendations and their shapes are calligraphically correct. (TTF/UTF-8)
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = http://www.moe.gov.tw/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ttf-tw
 	source = https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/edukai.pdf
 	source = https://language.moe.gov.tw/001/Upload/Files/site_content/M0001/edusun.pdf
 	sha256sums = 57411e9ca399f372bda62fadd521a875d2062d34a0c654ace4a4c61539f3e10b
-	sha256sums = 3b0dadd40938d100fdace2082183e01d5a6c26cb2174513d495c39861f154eb6
+	sha256sums = 759845f43141011a1cfdaf0f5cb4e929d1b867c6a6702a837f7ffb9ebdc559d4
 	sha256sums = 40926d906d806f8c27f6da4c4770c957aa30588fff8a8fe413797bbcf9bc9de8
 	sha256sums = bd2c6ddf6c18acd1d671f8768cb192bbda410882afee679a3c9b0a93ff393037
 
