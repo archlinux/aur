@@ -1,7 +1,7 @@
 pkgbase = python-pynamodb
 	pkgdesc = A pythonic interface to Amazon's DynamoDB
 	pkgver = 6.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pynamodb.readthedocs.io/
 	arch = any
 	license = MIT
