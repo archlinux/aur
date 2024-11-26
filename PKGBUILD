@@ -1,4 +1,4 @@
-# Maintainer: ewanduck <ewan@patchoulihq.cc>
+# Maintainer: Alex Epelde <alex@epelde.net>
 # Contributor: Tim Cassels <cassels2025@gmail.com>
 
 pkgname=brother-hll8360cdw-cups-bin
