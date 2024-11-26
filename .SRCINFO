@@ -1,6 +1,6 @@
 pkgbase = jdnbtexplorer
 	pkgdesc = An Editor for Minecraft NBT files
-	pkgver = 2.0
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://codeberg.org/JakobDev/jdNBTExplorer
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = jdnbtexplorer
 	depends = python-pyqt6
 	depends = python-nbt
 	depends = python-setuptools
-	source = jdnbtexplorer-2.0.tar.gz::https://codeberg.org/JakobDev/jdNBTExplorer/archive/2.0.tar.gz
-	sha256sums = 5a615548edc3c07449903b157c54b8e655804e0d5ae06deebf2586d75809ae0f
+	source = jdnbtexplorer-2.2.tar.gz::https://codeberg.org/JakobDev/jdNBTExplorer/archive/2.2.tar.gz
+	sha256sums = 33026cdc823df6e612acf95272d9762c2a2891ce8b6ee9e27bc90e62590c575b
 
 pkgname = jdnbtexplorer
