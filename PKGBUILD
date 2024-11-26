@@ -25,9 +25,10 @@ build() {
 package() {
     cd "$srcdir"
 
-    # Assume the script places the binary in $srcdir/bin or similar
-    #install -Dm755 "$srcdir/syncterm" "$pkgdir/usr/bin/syncterm"
+    # Find the newly built binary
     binary_file="$(find $srcdir -name syncterm|tail -1)"
     binary_file="$(echo "$binary_file"|sed 's|^\./||')"
+
+    # Install the newly built binary
     install -Dm755 "${binary_file}" "$pkgdir/usr/bin/syncterm"
 }
