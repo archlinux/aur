@@ -4,8 +4,8 @@
 # Contributor: Roni Choudhury <aichoudh@gmail.com>
 
 pkgname=pin
-pkgver=3.30
-_pkgver=3.30-98830-g1d7b601b3
+pkgver=3.31
+_pkgver=3.31-98869-gfa6f126a8
 pkgrel=1
 pkgdesc="A tool for the dynamic instrumentation of programs"
 arch=('x86_64')
@@ -13,13 +13,13 @@ url="https://software.intel.com/content/www/us/en/develop/articles/pin-a-dynamic
 license=('custom')
 depends=('gcc' 'bash' 'lib32-gcc-libs')
 options=('!strip' 'staticlibs')
-source=("http://software.intel.com/sites/landingpage/pintool/downloads/${pkgname}-${_pkgver}-gcc-linux.tar.gz"
+source=("http://software.intel.com/sites/landingpage/pintool/downloads/${pkgname}-external-${_pkgver}-gcc-linux.tar.gz"
         "pin.sh")
-sha256sums=('be4f1130445c3fc4d83b7afad85c421d418f60013c33e8ee457bc7c9c194de1b'
+sha256sums=('82216144e3df768f0203b671ff48605314f13266903eb42dac01b91310eba956'
             '7198073c94e785cbd9002cdd174ab3bb1d28cc4e26626905c12173ad31ae82fc')
 
 package() {
-    cd "${srcdir}/${pkgname}-${_pkgver}-gcc-linux"
+    cd "${srcdir}/${pkgname}-external-${_pkgver}-gcc-linux"
 
     # Copy pin executables, etc. to the /opt/pin directory (because pin
     # uses a non-standard FHS for its stuff).
