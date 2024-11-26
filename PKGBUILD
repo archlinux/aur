@@ -1,58 +1,66 @@
 # Maintainer: envolution
 # Contributor: Eric Berquist <eric dot berquist at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
-pkgbase=openbabel
-pkgname=(${pkgbase}-git python-${pkgbase}-git)
+pkgbase=openbabel-git
+pkgname=(openbabel-git python-openbabel-git)
+_pkgname=openbabel
 pkgver=3.1.1+r6091+g7acf50c9d
 pkgrel=1
-pkgdesc='A library designed to interconvert between many file formats used in molecular modeling and computational chemistry (git version, builds Python bindings)'
-arch=('x86_64')
-url='https://github.com/openbabel/openbabel'
-license=('GPL')
-makedepends=('git' 'cmake' 'eigen' 'wxgtk3' 'boost' 'python' 'swig' 'maeparser' 'rapidjson')
-source=("${pkgbase}::git+https://github.com/openbabel/openbabel.git#branch=master")
-md5sums=('SKIP')
+pkgdesc='A library designed to interconvert between many file formats used in molecular modeling and computational chemistry'
+arch=(x86_64)
+url='https://openbabel.org/wiki/Main_Page'
+license=(GPL)
+makedepends=(boost
+  cmake
+  coordgen
+  eigen
+  maeparser
+  python-setuptools
+  rapidjson
+  swig
+  wxwidgets-gtk3)
+source=("${_pkgname}::git+https://github.com/openbabel/openbabel.git#branch=master")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgbase}"
-  _version=$(git tag --sort=-v:refname --list | head -n1 | sed 's/-/./g' | grep -o '[0-9.]*' | cut -c2-)
+  cd "${_pkgname}"
+  _version=$(git tag --sort=-v:refname --list | head -n1 | tr - . | grep -o '[0-9.]*' | cut -c2-)
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
   echo "${_version}+r${_commits}+g${_short_commit_hash}"
 }
 
 build() {
-  mkdir -p build && cd build
-
-  cmake "../${pkgbase}" \
+  cmake -B build -S $_pkgname \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config \
     -DRUN_SWIG=ON \
     -DPYTHON_BINDINGS=ON
-
-  make
+  cmake --build build
 
   # To split python bindings
-  sed -i '/scripts.cmake_install.cmake/d' cmake_install.cmake
+  sed -i '/scripts.cmake_install.cmake/d' build/cmake_install.cmake
 }
 
 package_openbabel-git() {
-  depends=('wxgtk3' 'maeparser')
-  provides=("${pkgbase}")
-  conflicts=("${pkgbase}")
+  depends=(cairo
+    coordgen
+    libxml2)
+  provides=(openbabel)
+  conflicts=(openbabel)
+  optdepends=('wxwidgets-gtk3: GUI interface')
 
-  cd build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 package_python-openbabel-git() {
-  depends=('python' 'openbabel')
-  provides=("python-${pkgbase}")
-  conflicts=("python-${pkgbase}")
+  depends=(openbabel
+    python)
+  provides=(python-openbabel)
+  conflicts=(python-openbabel)
 
-  cd build/scripts
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build/scripts
 }
 # vim:set ts=2 sw=2 et:
