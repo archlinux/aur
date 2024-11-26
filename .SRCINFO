@@ -1,16 +1,18 @@
 pkgbase = syncterm-src
-	pkgdesc = SyncTERM - A terminal for connecting to BBSes
+	pkgdesc = SyncTERM - A terminal for connecting to BBSes (built from source)
 	pkgver = latest
 	pkgrel = 1
 	url = https://syncterm.bbsdev.net/
 	arch = x86_64
 	license = GPL
-	makedepends = git
+	makedepends = wget
+	makedepends = unzip
 	makedepends = gcc
 	makedepends = make
+	makedepends = base-devel
 	depends = ncurses
 	depends = glibc
-	source = get-syncterm.sh::https://erb.pw/get-syncterm.sh
-	sha256sums = fe8fff71e078ca5b9a4c6fac9006d7a7821a8dc1399deecb7e1fd92a644c1674
+	depends = sdl12-compat
+	depends = sdl2
 
 pkgname = syncterm-src
