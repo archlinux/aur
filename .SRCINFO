@@ -7,8 +7,10 @@ pkgbase = trackpointsound
 	license = MIT
 	makedepends = cmake
 	makedepends = base-devel
+	makedepends = systemd
+	makedepends = git
 	depends = sfml
-	source = https://github.com/WindowsKonon1337/TrackPointSound.git
-	sha256sums = 89c914c2976fa39bc917aaf46d60f32ab02343a134ece82aa05ab5dcc12f5680
+	source = git+https://github.com/WindowsKonon1337/TrackPointSound.git
+	sha256sums = SKIP
 
 pkgname = trackpointsound
