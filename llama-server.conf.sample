@@ -4,7 +4,7 @@
 LLAMA_SERVER_BINARY="/usr/bin/llama-server"
 
 # Additional flags for the llama-server
-LLAMA_SERVER_FLAGS="--port=8000"
+LLAMA_SERVER_FLAGS="--port 8000"
 
 # -m, --model FNAME: Model path (default: `models/7B/ggml-model-f16.gguf`)
 LLAMA_SERVER_FLAGS+=" -m edit-etc-llama.cpp-service-config"
