@@ -1,0 +1,4 @@
+[dedoc]
+source = "github"
+github = "toiletbril/dedoc"
+use_latest_release = true
