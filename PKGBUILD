@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.'
 arch=(i686 x86_64)
 url='https://github.com/PXLogic/PXView'
-license=(GPL-3.0-only)
+license=(GPL-3.0-or-later)
 # Upstream added VCS dependency to libsigrokdecode :/
 depends=(hicolor-icon-theme glib2 python fftw
         libusb zlib qt5-base boost-libs saribbon)
