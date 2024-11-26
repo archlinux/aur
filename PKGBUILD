@@ -1,5 +1,5 @@
 # Maintainer: Your Name <your.email@example.com>
-pkgname=python-qtile_ebenezer
+pkgname=python-qtile-ebenezer
 pkgver=0.1.8
 pkgrel=1
 provides=("$pkgname")
