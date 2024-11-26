@@ -1,0 +1,4 @@
+[batman-alfred]
+source = "regex"
+url = "https://downloads.open-mesh.org/batman/releases/"
+regex = "batman-adv-([^/]*)/"
