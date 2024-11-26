@@ -1,6 +1,6 @@
 # Maintainer: Alexander Nicholi <me@nicholatian.com>
 pkgname=grit
-pkgver=0.8.17
+pkgver=0.9.2
 pkgrel=1
 epoch=
 pkgdesc='Game Raster Image Transmogrifier'
@@ -11,14 +11,14 @@ depends=('freeimage')
 makedepends=()
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("https://github.com/devkitPro/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fa0da0f8dca64b7fa296b704eccc512ec84458b6b00935ce5d240951f041f534')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/devkitPro/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('b6f7f4441ed29adc33191e3d809358f57411e60514174cdec4cce728ef2091ce')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./autogen.sh
   ./configure
-  make -j$(($(nproc) * 2))
+  make
 }
 
 package() {
