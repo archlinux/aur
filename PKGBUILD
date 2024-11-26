@@ -7,7 +7,7 @@
 
 _pkgname=neovim
 pkgname="$_pkgname-nightly"
-pkgver=0.10.0.r2250.g6bba4beced
+pkgver=0.11.0.r1238.g66bb1e577c
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -55,13 +55,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  cmake \
-    -Bbuild \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_BUNDLED=OFF \
-    -W no-dev
-  cmake --build build --verbose
+  make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=/usr
 }
 
 check() {
