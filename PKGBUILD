@@ -6,7 +6,7 @@
 _pkgname=pulseaudio-dlna-cygn
 pkgname="${_pkgname}-git"
 pkgver=0.6.6+1+4.r839.20221229.8fa3215
-pkgrel=2
+pkgrel=3
 pkgdesc='Small DLNA server which brings DLNA/UPnP support to PulseAudio, Cygn edition. Latest git checkout.'
 arch=(
   'any'
@@ -18,11 +18,16 @@ provides=(
   "pulseaudio-dlna=${pkgver}"
   "pulseaudio-dlna-git=${pkgver}"
   "pulseaudio-dlna-cygn=${pkgver}"
+  "python-pulseaudio_dlna=${pkgver}"
+  "python-pulseaudio_dlna-git=${pkgver}"
+  "PULSEAUDIO-DLNA-SINK"
 )
 conflicts=(
   "pulseaudio-dlna"
   "pulseaudio-dlna-git"
   "pulseaudio-dlna-cygn"
+  "python-pulseaudio_dlna"
+  "python-pulseaudio_dlna-git"
 )
 depends=(
   'glib2'
