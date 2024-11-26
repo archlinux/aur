@@ -4,13 +4,13 @@
 pkgname=swayosd-git
 _pkgname="${pkgname%-git}"
 _reponame=SwayOSD
-pkgver=0.1.0.r0.gdbb8b72
+pkgver=0.1.0.r3.g3ccc06a
 pkgrel=1
 pkgdesc="A GTK based on screen display for keyboard shortcuts like caps-lock and volume"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/ErikReider/SwayOSD"
 license=('GPL3')
-depends=('gtk3' 'gtk-layer-shell' 'pulse-native-provider' 'libinput')
+depends=('gtk4' 'gtk4-layer-shell' 'pulse-native-provider' 'libinput')
 makedepends=('git' 'cargo' 'meson' 'ninja' 'sassc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
