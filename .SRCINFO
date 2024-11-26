@@ -1,0 +1,23 @@
+pkgbase = openmohaa-bin
+	pkgdesc = Open re-implementation of Medal of Honor: Allied Assault
+	pkgver = 0.80.0
+	pkgrel = 1
+	url = https://github.com/openmoh/openmohaa
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = sdl2
+	depends = openal
+	source_x86_64 = https://github.com/openmoh/openmohaa/releases/download/v0.80.0/openmohaa-v0.80.0-linux-amd64.zip
+	sha256sums_x86_64 = ca0aa51cfd0495dc424611b41fe5bd1c933e66dad8410acdf9cdb91b1df1af74
+	source_i686 = https://github.com/openmoh/openmohaa/releases/download/v0.80.0/openmohaa-v0.80.0-linux-i686.zip
+	sha256sums_i686 = 0db0096c9e2355a0b00349b23e63fcb64e8a1230032ca7f3e401a845295afd15
+	source_armv7h = https://github.com/openmoh/openmohaa/releases/download/v0.80.0/openmohaa-v0.80.0-linux-armhf.zip
+	sha256sums_armv7h = 11262853bd2855849ef1fcfdabd9545adf1ab598bc1ace1fbd8cdc40b6d1683f
+	source_aarch64 = https://github.com/openmoh/openmohaa/releases/download/v0.80.0/openmohaa-v0.80.0-linux-arm64.zip
+	sha256sums_aarch64 = 01fb7a572a795872f90ce307cc97bd1edf204babdf87967ecbdfcf4aec8a5abf
+
+pkgname = openmohaa-bin
