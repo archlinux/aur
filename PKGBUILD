@@ -9,7 +9,7 @@ backup=("etc/$pkgname/llama-server.conf")
 install=$pkgname.install
 depends=('systemd')
 optdepends=(
-  'llama.cpp-service-tray: Companion system tray app for llama.cpp-server-service'
+  'llama.cpp-server-tray: Companion system tray app for llama.cpp-server-service'
 )
 source=(
   "llama.cpp.service"
