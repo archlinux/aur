@@ -3,7 +3,7 @@
 _pkgname='mplhep_data'
 pkgname="python-${_pkgname}"
 pkgver='0.0.3'
-pkgrel=3
+pkgrel=4
 pkgdesc="Sub-package to hold data (fonts) for mplhep."
 arch=('any')
 url='https://github.com/scikit-hep/mplhep_data'
