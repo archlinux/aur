@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-gbalzss
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Compresses data for the GBA LZSS algorithm.'
 arch=(any)
 url='https://github.com/devkitPro/gba-tools'
@@ -19,14 +19,13 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   for _arch in ${_architectures}; do
-    unset LDFLAGS
     mkdir -p "${srcdir}/${pkgname}-${pkgver}-build-${_arch}"
     cd "${srcdir}/${pkgname}-${pkgver}-build-${_arch}"
     ${srcdir}/gba-tools-${pkgver}/configure \
       --prefix=/usr/${_arch} \
       --build=$CHOST \
       --host=${_arch}
-    make -j$(($(nproc) * 2))
+    make
   done
 }
 
