@@ -2,16 +2,16 @@
 pkgbase=mmseqs2
 pkgname=('mmseqs2-sse4' 'mmseqs2-avx2')
 _pkgbase=${pkgbase//mm/MM}
-pkgver=15.6f452
-_pkgver=15-6f452
-pkgrel=2
+pkgver=16.747c6
+_pkgver=16-747c6
+pkgrel=1
 pkgdesc="ultra fast and sensitive search and clustering suite. https://doi.org/10.1038/nbt.3988"
 arch=('x86_64')
 url="https://github.com/soedinglab/mmseqs2"
 license=('GPL3')
 makedepends=('cmake' 'zlib' 'openmp' 'vim')
 source=("$_pkgbase-$_pkgver.tar.gz::https://github.com/soedinglab/MMseqs2/archive/refs/tags/${_pkgver}.tar.gz")
-sha256sums=('7115ac5a7e2a49229466806aaa760d00204bb08c870e3c231b00e525c77531dc')
+sha256sums=('faeb6841feb8e028651c2391de1346c55c2091a96520b625525d27b99d07ef1d')
 
 build() {
   cd $_pkgbase-$_pkgver
