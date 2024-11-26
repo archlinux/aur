@@ -1,0 +1,11 @@
+pkgbase = hello-world-learning
+	pkgdesc = A simple Hello World script
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://example.com
+	arch = any
+	license = MIT
+	source = hello.sh
+	sha256sums = SKIP
+
+pkgname = hello-world-learning
