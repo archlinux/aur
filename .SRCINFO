@@ -1,14 +1,17 @@
 pkgbase = dmtx-utils
 	pkgdesc = Utilities to libdmtx
 	pkgver = 0.7.6
-	pkgrel = 1
-	url = http://www.libdmtx.org/
+	pkgrel = 2
+	url = https://github.com/dmtx/dmtx-utils
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
+	depends = glibc
 	depends = libdmtx
 	depends = imagemagick
-	source = https://github.com/dmtx/dmtx-utils/archive/v0.7.6.tar.gz
+	source = dmtx-utils-0.7.6::https://github.com/dmtx/dmtx-utils/archive/v0.7.6.tar.gz
+	source = 0001-Attempt-to-prevent-buffer-overflow-when-reading-inpu.patch
 	sha256sums = 0d396ec14f32a8cf9e08369a4122a16aa2e5fa1675e02218f16f1ab777ea2a28
+	sha256sums = fcb483c2df05db40890a5d44bc7de54c93b4ecc5e67ad1ed6045e85cc08b127e
 
 pkgname = dmtx-utils

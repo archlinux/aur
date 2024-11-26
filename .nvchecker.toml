@@ -1,0 +1,4 @@
+[dmtx-utils]
+source = "github"
+github = "dmtx/dmtx-utils"
+use_max_tag = true

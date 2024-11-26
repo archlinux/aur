@@ -1,0 +1,26 @@
+From f7b97efc3bd6fc2e4403803f46514ae28318743b Mon Sep 17 00:00:00 2001
+From: "Beau V.C. Bellamy" <bellamy.beau@gmail.com>
+Date: Sat, 5 Aug 2023 17:32:24 -0500
+Subject: [PATCH] Attempt to prevent buffer overflow when reading input.
+
+The line is explicitly flagged by gcc when using _FORTIFY_SOURCE=3
+---
+ dmtxwrite/dmtxwrite.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dmtxwrite/dmtxwrite.c b/dmtxwrite/dmtxwrite.c
+index 2ece7e0986e1..014bffa6153d 100644
+--- a/dmtxwrite/dmtxwrite.c
++++ b/dmtxwrite/dmtxwrite.c
+@@ -340,7 +340,7 @@ ReadInputData(unsigned char *codeBuffer, UserOptions *opt)
+ 
+    /* Read input contents into buffer */
+    for(bytesReadTotal = 0;; bytesReadTotal += bytesRead) {
+-      bytesRead = read(fd, codeBuffer + bytesReadTotal, DMTXWRITE_BUFFER_SIZE);
++      bytesRead = read(fd, codeBuffer + bytesReadTotal, DMTXWRITE_BUFFER_SIZE - bytesReadTotal);
+       if(bytesRead == 0)
+          break;
+ 
+-- 
+2.47.1
+
