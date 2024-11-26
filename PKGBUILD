@@ -1,6 +1,7 @@
-# Maintainer: James Williams <jowilliams12000 at gmail dot com>
+# Maintainer: envolution
+# Contributor: James Williams <jowilliams12000 at gmail dot com>
 pkgname=wallust
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="generate colors from an image"
 arch=('any')
@@ -13,22 +14,23 @@ options=('!lto')
 sha256sums=('145ca5f09aa4905484541f7b68777097aa277b9ba6565f0ff17699c2a9e19767')
 
 prepare() {
-	cd "$pkgname"-"$pkgver"
-	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cd "$pkgname"-"$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$pkgname"-"$pkgver"
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	cargo build --features themes,doc --frozen --release
+  cd "$pkgname"-"$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --features themes,doc --frozen --release
 }
 
 package() {
-	cd "$pkgname"-"$pkgver"
-	install -Dm755 -t "${pkgdir}/usr/bin" target/release/wallust
-	install -Dm644 -t "${pkgdir}/usr/share/man/man1" man/wallust.1 man/wallust-theme.1 man/wallust-cs.1 man/wallust-run.1
-	install -Dm644 -t "${pkgdir}/usr/share/man/man5" man/wallust.5
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/wallust/LICENSE"
+  cd "$pkgname"-"$pkgver"
+  install -Dm755 -t "${pkgdir}/usr/bin" target/release/wallust
+  install -Dm644 -t "${pkgdir}/usr/share/man/man1" man/wallust.1 man/wallust-theme.1 man/wallust-cs.1 man/wallust-run.1
+  install -Dm644 -t "${pkgdir}/usr/share/man/man5" man/wallust.5
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/wallust/LICENSE"
 }
+# vim:set ts=2 sw=2 et:
