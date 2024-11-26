@@ -4,7 +4,7 @@
 
 pkgname=kubectl-no-mask
 pkgver=1.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="kubectl patched to skip secret mask and some minor diff fix"
 arch=(x86_64)
 url="https://kubernetes.io/"
@@ -19,7 +19,7 @@ source=(
   kubernetes-1.24.0-static_cgo_enabled.patch
 )
 sha512sums=('7848802bbd6d6818e55dca4741f4cf32ebd83b2f2f7914323235e0d016ed142feeea16556f6d5ffc7c8a57d122067cfc04e2c1e85368c1a562085e4f479b26c2'
-            'dd3c47a1871cc48fa6c6aa29955156d334ce38e9feb7beafc98cc8d71fb1a6a567fe5c8458698755b7bf14050f29473f571dbef85d0f7a8dcfe19b2273b4479b'
+            '71571e1559fe3572faeb3f317af10d470cf2bc308b0889718a07ce034fb8ac4834bf0d1a60a560a3568191c1c06f5f06a50311984f2f09c275f6b1cb62223d40'
             'e98921d111fabf2c353df589dea0fab57b0b174079483b4092741cc50553a3b765cea4c784e42ad9ab90827581cac028af4fc7a2db5acde1877446882393ae78')
 
 prepare() {
