@@ -6,19 +6,17 @@
 # Contributor: realqhc <https://github.com/realqhc>
 # Contributor: Brett Alcox <https://github.com/brettalcox>
 # Contributor: runsisi <https://github.com/runsisi>
-
-# Archlinux credits:
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-# Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Fabian Bornschein <fabiscafe@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
-# Ubuntu credits:
-# Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch>
+# Ubuntu patches:
+# https://salsa.debian.org/gnome-team/mutter/-/tree/ubuntu/latest/debian/patches/ubuntu
 
 pkgname=mutter-x11-scaling
-pkgver=47.1
-pkgrel=2
+pkgver=47.2
+pkgrel=1
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -96,7 +94,7 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/gvdb.git#commit=b54bc5da25127ef416858a3ad92e57159ff565b3"
   "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/ba70d29f5d6b2dc6333fe2728ab056b12161bac9/x11-Add-support-for-fractional-scaling-using-Randr.patch"
 )
-b2sums=('c9899ea626a1df7d60bc8852b915aa51b88ccbffd924b683d14cb9c38992c949f29572630fec233c538ac3a67166be660878ce9019410bb11dfa481f5e003af9'
+b2sums=('7d46865b8a969a124c2482e7ede4f67c9fd8c30ddbb8bd3a43a74ef8fd646e4e85fb171419551aaa866b05908ac73c80be9c5ea121d31787e04382f04648f1e7'
         'f989bc2ceb52aad3c6a23c439df3bbc672bc11d561a247d19971d30cc85ed5d42295de40f8e55b13404ed32aa44f12307c9f5b470f2e288d1c9c8329255c43bf'
         'e64825f246d344a9226b3473d4368b8e27cc1348508342c82de3553581eb45d46505fdbf099c6fc7257ad2e65b20589d1bd8bb7965f7f7a7d4cc0cf5c8fa8ff6')
 
@@ -109,7 +107,7 @@ prepare() {
 
 build() {
   local meson_options=(
-    -D docs=true
+    -D docs=false
     -D egl_device=true
     -D installed_tests=false
     -D libdisplay_info=enabled
@@ -133,4 +131,3 @@ package() {
 
   meson install -C build --destdir "$pkgdir"
 }
-
