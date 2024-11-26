@@ -3,14 +3,14 @@
 
 pkgname=perl-pgplot
 _dist=PGPLOT
-pkgver=2.33
+pkgver=2.34
 pkgrel=1
 pkgdesc='PGPLOT module for Perl'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
 url="https://metacpan.org/release/$_dist"
 source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz")
-sha256sums=('8daefefcb9ea6e597fdb381d25b50861f61f4154ca44b5b25b0402cacc6d87e9')
+sha256sums=('ff241ed87033bd5b836e3721f8c7d1e154c76db4468ba5e286716610a19510c8')
 
 arch=(x86_64)
 depends=(
