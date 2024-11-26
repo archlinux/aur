@@ -1,0 +1,11 @@
+pkgbase = q2tools-220-bin
+	pkgdesc = Quake II (Quake 2) BSP map compiler tools with v220 map support
+	pkgver = 240130
+	pkgrel = 1
+	url = https://github.com/qbism/q2tools-220
+	arch = x86_64
+	license = GPL-2.0-only
+	source = https://github.com/qbism/q2tools-220/releases/download/01-30-24/q2tool-release-01-30-24.zip
+	sha256sums = 5d4c93add748817e96e9f66b8735d7b892c60c47db755ed8097ecf6615d0020b
+
+pkgname = q2tools-220-bin
