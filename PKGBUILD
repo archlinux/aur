@@ -2,8 +2,8 @@
 # Maintainer: fridtjof <fridtjof@das-labor.org>
 _reponame=hid-logitech-dj
 pkgname=hid-logitech-dj-lightspeed12-dkms-git
-pkgver=0.2.r1.gec38a6a
-pkgrel=2
+pkgver=0.2.r2.g51bd2f0
+pkgrel=1
 pkgdesc="hid-logitech-dj with G502 X Plus (and others) support"
 arch=('x86_64')
 url="https://github.com/fridtjof/hid-logitech-dj"
