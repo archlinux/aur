@@ -22,7 +22,7 @@ depends=(
 conflicts=('pristine-tar-git')
 checkdepends=('shunit2' 'diffoscope')
 source=(
-  http://ftp.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${_pkgver}.tar.xz
+  "http://ftp.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${_pkgver}.tar.xz"
   remove-sys-cpuaffinity-dep.patch
 )
 sha256sums=('4b6c801bd6bd72a93b37e040ecef9113728016ba3baa35be2f8736c3d725c06c'
@@ -56,10 +56,10 @@ check() {
 package() {
   cd "$srcdir/$pkgname-$_pkgver"
 
-  make install DESTDIR=$pkgdir PREFIX=/usr INSTALLSITESCRIPT=/usr/bin
-  install -d $pkgdir/usr/share/doc/pristine-tar
-  install -D GPL TODO delta-format.txt $pkgdir/usr/share/doc/pristine-tar
-  install -D -t $pkgdir/usr/share/bash-completion/completions bash_completion/pristine-tar
+  make install "DESTDIR=$pkgdir" PREFIX=/usr INSTALLSITESCRIPT=/usr/bin
+  install -d "$pkgdir/usr/share/doc/pristine-tar"
+  install -D GPL TODO delta-format.txt "$pkgdir/usr/share/doc/pristine-tar"
+  install -D -t "$pkgdir/usr/share/bash-completion/completions" bash_completion/pristine-tar
 }
 
 # vim:set ts=2 sw=2 et:
