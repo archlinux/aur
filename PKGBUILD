@@ -25,7 +25,7 @@ package() {
   install -Dm644 "${srcdir}/llama.cpp.socket" "${pkgdir}/usr/lib/systemd/system/llama.cpp.socket"
 
   # Install configuration sample end env wrapper
-  install -Dm644 "${srcdir}/llama-server.conf.sample" "${pkgdir}/etc/llama.cpp-service/llama-server.conf"
   install -Dm644 "${srcdir}/llama-server.conf.sample" "${pkgdir}/etc/llama.cpp-service/llama-server.conf.sample"
   install -Dm644 "${srcdir}/llama-server.env" "${pkgdir}/etc/llama.cpp-service/llama-server.env"
 }
+# vim:set ts=2 sw=2 et:
