@@ -1,10 +1,11 @@
-# Maintainer: Eric Berquist <eric dot berquist at gmail dot com>
+# Maintainer: envolution
+# Contributor: Eric Berquist <eric dot berquist at gmail dot com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
 pkgbase=openbabel
 pkgname=(${pkgbase}-git python-${pkgbase}-git)
-pkgver=3.0.90.r5774.686ee22f2
+pkgver=3.1.1+r6091+g7acf50c9d
 pkgrel=1
 pkgdesc='A library designed to interconvert between many file formats used in molecular modeling and computational chemistry (git version, builds Python bindings)'
 arch=('x86_64')
@@ -15,32 +16,19 @@ source=("${pkgbase}::git+https://github.com/openbabel/openbabel.git#branch=maste
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgbase}"
-  _parent_ver=$(git tag --sort=version:refname | tail -n 1 | cut -d "-" -f 2- | tr - .)
-  _parent_major_ver=$(echo "${_parent_ver}" | cut -d "." -f 1)
-  _parent_minor_ver=$(echo "${_parent_ver}" | cut -d "." -f 2)
-  _parent_patch_ver=$(echo "${_parent_ver}" | cut -d "." -f 3)
-  # Git patch versions always start with 90. Don't use the patch
-  # version of the parent tag.
-  _git_patch_ver=90
-  printf "%s.%s.%s.r%s.%s" \
-         "${_parent_major_ver}" \
-         "${_parent_minor_ver}" \
-         "${_git_patch_ver}" \
-         "$(git rev-list --count HEAD)" \
-         "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd "${pkgbase}"
+  _version=$(git tag --sort=-v:refname --list | head -n1 | sed 's/-/./g' | grep -o '[0-9.]*' | cut -c2-)
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version}+r${_commits}+g${_short_commit_hash}"
 }
 
 build() {
-  cd build
+  mkdir -p build && cd build
 
-  cmake "${srcdir}/${pkgbase}" \
+  cmake "../${pkgbase}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config \
     -DRUN_SWIG=ON \
     -DPYTHON_BINDINGS=ON
 
@@ -67,3 +55,4 @@ package_python-openbabel-git() {
   cd build/scripts
   make DESTDIR="${pkgdir}" install
 }
+# vim:set ts=2 sw=2 et:

@@ -1,0 +1,5 @@
+[openbabel-git]
+source="cmd"
+cmd="~/nvchecker/github_version.py openbabel/openbabel --releases -strip openbabel-"
+from_pattern="-"
+to_pattern="."
