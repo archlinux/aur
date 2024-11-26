@@ -3,7 +3,7 @@
 
 pkgname=python-pypugjs
 pkgver=5.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='PugJS syntax adapter for Django, Jinja2 and Mako templates'
 url='https://github.com/kakulukia/pypugjs'
 depends=(python python-six python-charset-normalizer)
