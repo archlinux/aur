@@ -6,7 +6,7 @@
 _pkgname=pa-dlna
 pkgname="${_pkgname}-git"
 pkgver=0.14.r389.20241103.6c16282
-pkgrel=4
+pkgrel=5
 pkgdesc="Forwards audio streams to DLNA devices. For PulseAudio or PipeWira (via 'python-libpulse'). Latest git checkout."
 arch=(
   'any'
@@ -39,7 +39,10 @@ makedepends=(
   'python-flit-core'
   'python-installer'
   'python-setuptools'
+  'python-sphinx'
+  'python-sphinx_rtd_theme'
   'python-wheel'
+  'texinfo'
 )
 optdepends=(
   'ffmpeg: multiple formats support'
@@ -76,12 +79,42 @@ build() {
   cd "${srcdir}/${_pkgname}"
 
   python -m build --wheel --no-isolation
+
+  cd docs
+  for _target in man info text html; do
+    make -j1 "${_target}"
+  done
+  gzip -9 build/man/*
+  gzip -9 build/texinfo/*.info
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
 
   python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  _docdirs=(
+    docs/build/html
+    # docs/build/qthelp
+    docs/build/text
+  )
+  _manfiles=(
+    docs/build/man/*.gz
+  )
+  _infofiles=(
+    docs/build/texinfo/*.info.gz
+  )
+  install -dvm755 "${pkgdir}/usr/share/doc/${_pkgname}"
+  for _docdir in "${_docdirs[@]}"; do
+    cp -rv "${_docdir}" "${pkgdir}/usr/share/doc/${_pkgname}"/
+  done
+  for _manfile in "${_manfiles[@]}"; do
+    _section="$(basename "${_manfile}" .gz | sed -E -e 's|^.*\.([^.]*)$|\1|')"
+    install -Dvm644 -t "${pkgdir}/usr/share/man/man${_section}" "${_manfile}"
+  done
+  for _infofile in "${_infofiles[@]}"; do
+    install -Dvm644 -t "${pkgdir}/usr/share/info" "${_infofile}"
+  done
 
   install -D -m644 -v -t "${pkgdir}/usr/share/doc/${_pkgname}" README.rst git.log
   install -D -m644 -v -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
