@@ -6,8 +6,8 @@ pkgname='python-atproto-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 pkgver=0.0.55.r11.ge011bb4
-pkgrel=1
-pkgdesc='The AT Protocol (🦋 Bluesky) SDK for Python 🐍 (latest commit)'
+pkgrel=2
+pkgdesc='The AT Protocol (Bluesky) SDK for Python (latest commit)'
 arch=('any')
 url='https://github.com/MarshalX/atproto'
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -31,8 +31,8 @@ depends=(
   'python-websockets'
 )
 source=("git+$url.git")
-provides=("$_pkgname"{,_{cli,clint,codegen,core,crypto,firehosemidentity,lexicon,server}})
-conflicts=("$_pkgname"{,_{cli,clint,codegen,core,crypto,firehosemidentity,lexicon,server}})
+provides=("$_pkgname"{,_{cli,clint,codegen,core,crypto,firehose,identity,lexicon,server}})
+conflicts=("$_pkgname"{,_{cli,clint,codegen,core,crypto,firehose,identity,lexicon,server}})
 sha256sums=('SKIP')
 
 pkgver() {
