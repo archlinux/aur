@@ -11,7 +11,7 @@ makedepends=('cargo')
 optdepends=('imagemagick')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 options=('!lto')
-sha256sums=('145ca5f09aa4905484541f7b68777097aa277b9ba6565f0ff17699c2a9e19767')
+sha256sums=('571abd71812bf9ac1f1fca8523b0e84db5f2815e2860861824c06e91fc453dbb')
 
 prepare() {
   cd "$pkgname"-"$pkgver"
