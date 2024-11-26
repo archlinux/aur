@@ -2,7 +2,7 @@
 # Maintainer: Leo Robinovitch <leorobinovitch@gmail.com>
 
 pkgname='kl-bin'
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='An interactive Kubernetes log viewer for your terminal.'
 url='https://github.com/robinovitch61/kl'
@@ -12,14 +12,14 @@ provides=('kl')
 conflicts=('kl')
 depends=('glibc')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/robinovitch61/kl/releases/download/v0.3.0/kl_0.3.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('bc1a23da6c2671c1ee8bfb054f37d51fac62ce674813256a3e74425e1155de53')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/robinovitch61/kl/releases/download/v0.4.0/kl_0.4.0_Linux_arm64.tar.gz")
+sha256sums_aarch64=('d10aea936c9c0254dcd87560095f1f6c8702aa4347ce80bb7e72a4c074d49b22')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/robinovitch61/kl/releases/download/v0.3.0/kl_0.3.0_Linux_i386.tar.gz")
-sha256sums_i686=('803d2a777f333a96c4e02034064a46016122f7a4941618ce54e8865cdd2546cf')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/robinovitch61/kl/releases/download/v0.4.0/kl_0.4.0_Linux_i386.tar.gz")
+sha256sums_i686=('aa83800a663c39f8089c54d64c271c1714ffafd9ddc860b95c60f952e01ba22a')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/robinovitch61/kl/releases/download/v0.3.0/kl_0.3.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('e129abf27bf7d4898e2863f83e669b0f75e0691fab5e0be407aef50412933a1f')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/robinovitch61/kl/releases/download/v0.4.0/kl_0.4.0_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('b6d490a66e32bd59db2b2227e279dce0d379e77de834aab95e48bf8c23294ac2')
 
 package() {
   install -Dm755 "./kl" "${pkgdir}/usr/bin/kl"
