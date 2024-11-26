@@ -2,7 +2,7 @@
 
 pkgbase=pytorch-kineto-git
 pkgname=(libkineto-git torch-tb-profiler-git)
-pkgver=r577.d975313
+pkgver=r622.4e0fec8
 pkgrel=1
 pkgdesc="Kineto is part of the PyTorch Profiler"
 arch=('x86_64')
