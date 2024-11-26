@@ -11,7 +11,7 @@ depends=('bash' 'git' 'glibc')
 optdepends=('yad: allows you to run the diablo-project-manager gui.')
 makedepends=('shc')
 provides=("diablo-project-manager")
-conflicts=("diablo-project-manager-git")
+conflicts=("diablo-project-manager")
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 

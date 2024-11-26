@@ -12,7 +12,7 @@ pkgbase = diablo-project-manager-git
 	depends = glibc
 	optdepends = yad: allows you to run the diablo-project-manager gui.
 	provides = diablo-project-manager
-	conflicts = diablo-project-manager-git
+	conflicts = diablo-project-manager
 	source = diablo-project-manager-git::git+https://gitlab.com/diablodev/dpm.git
 	sha256sums = SKIP
 
