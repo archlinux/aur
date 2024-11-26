@@ -1,13 +1,14 @@
 # Maintainer: Alexander Nicholi <alex@caveoforig.in>
 
 pkgname=agbcc
-pkgver=1
+pkgver=2
 pkgrel=1
 epoch=
 pkgdesc='GCC 2.95.1 reworked to match games compiled for the Game Boy Advance.'
 arch=('i686' 'x86_64')
 url="https://github.com/pret/$pkgname"
 license=('GPL-2.0')
+depends=('arm-none-eabi-binutils')
 makedepends=('git')
 provides=("$pkgname")
 conflicts=("$pkgname")
@@ -39,6 +40,7 @@ package() {
   install -s -m755 "$srcdir/agbcc.elf" "$pkgdir/opt/pret/agbcc/bin/agbcc"
   install -m644 "$srcdir/libgcc.a" "$pkgdir/opt/pret/agbcc/lib/libgcc.a"
   install -m644 "$srcdir/libc.a" "$pkgdir/opt/pret/agbcc/lib/libc.a"
+  ln -sf "$pkgdir/opt/pret/agbcc/bin/agbcc" "/usr/local/bin/agbcc"
   mv "$srcdir/$pkgname/ginclude" "$srcdir/$pkgname/include"
   cp -r "$srcdir/$pkgname/include" "$pkgdir/opt/pret/agbcc/"
   cp -r "$srcdir/$pkgname/libc/include" "$pkgdir/opt/pret/agbcc/"
