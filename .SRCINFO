@@ -1,7 +1,7 @@
 pkgbase = libreoffice-extension-coooder
 	pkgdesc = Coooder is a syntax highlighting extension for Writer.
 	pkgver = 1.1.2
-	pkgrel = 7
+	pkgrel = 8
 	url = https://extensions.libreoffice.org/extensions/coooder
 	arch = any
 	license = LGPL
