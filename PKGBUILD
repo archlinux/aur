@@ -1,6 +1,6 @@
 # Maintainer: Max Harmathy <harmathy@alumni.tum.de>
 pkgname=openstack_tui
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Terminal User Interface for the OpenStack written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=()
 makedepends=('cargo')
 options=('!lto')
 source=("git+$url.git#tag=$pkgname-v$pkgver")
-sha256sums=('d47d8b0c31c6a0d95ceb01f18d921d8adee58024b1b7a0aa88de1fa5b034d4fc')
+sha256sums=('62f454f768bccf6b2fc94c58e3ce6b941f858876279ccf6a3b104d3ddf0146a7')
 
 build() {
   cd openstack
