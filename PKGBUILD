@@ -1,21 +1,16 @@
 # Maintainer: Simon Désaulniers <sim.desaulniers@gmail.com>
 pkgname='dpaste'
-pkgver=0.4.0
+pkgver=0.4.1
 epoch=1
 pkgrel=1
 pkgdesc="A simple pastebin for light values (max 64KB) using OpenDHT distributed hash table."
 arch=('x86_64')
 license=('GPL3')
 url='https://github.com/sim590/dpaste'
-source=('git+https://github.com/sim590/dpaste#tag=0.4.0')
+source=("git+https://github.com/sim590/dpaste#tag=$pkgver")
 depends=('gnutls' 'libb64' 'libcurlpp>=0.8.1' 'opendht' 'glibmm')
 makedepends=('git' 'nlohmann-json' 'msgpack-cxx')
 sha256sums=('SKIP')
-
-prepare () {
-  cd "${srcdir}/dpaste"
-  git apply "${startdir}/include_dir.patch"
-}
 
 build() {
   cd "${srcdir}/dpaste"
