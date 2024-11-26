@@ -10,6 +10,12 @@
   makepkg -g >> PKGBUILD
   ```
 
+- [ ] Update `.SRCINFO`:
+
+  ```bash
+  makepkg --printsrcinfo > .SRCINFO
+  ```
+
 - [ ] Check for common formatting issues:
 
   ```bash
