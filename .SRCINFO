@@ -1,7 +1,7 @@
 pkgbase = pulseaudio-dlna-cygn-git
 	pkgdesc = Small DLNA server which brings DLNA/UPnP support to PulseAudio, Cygn edition. Latest git checkout.
 	pkgver = 0.6.6+1+4.r839.20221229.8fa3215
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Cygn/pulseaudio-dlna
 	arch = any
 	license = GPL-3.0-or-later
@@ -20,6 +20,7 @@ pkgbase = pulseaudio-dlna-cygn-git
 	depends = python-dbus
 	depends = python-docopt
 	depends = python-gobject
+	depends = python-ifaddr
 	depends = python-lxml
 	depends = python-netaddr
 	depends = python-netifaces
