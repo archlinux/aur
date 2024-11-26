@@ -5,7 +5,7 @@
 pkgname='docfd-bin'
 _pkgname="${pkgname/-bin}"
 pkgver=8.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='TUI multiline fuzzy document finder (pre-compiled)'
 arch=('x86_64')
 url='https://github.com/darrenldl/docfd'
