@@ -4,7 +4,7 @@ pkgname="${_appname}next-bin"
 _pkgname="TriliumNext Notes"
 pkgver=0.90.12
 _electronversion=31
-pkgrel=1
+pkgrel=2
 pkgdesc="Build your personal knowledge base with TriliumNext Notes.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -25,6 +25,9 @@ depends=(
     "electron${_electronversion}"
     'nodejs'
 )
+makedepends=(
+    'asar'
+)
 source=(
     "${pkgname%-bin}.sh"
 )
@@ -43,10 +46,13 @@ build() {
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
+    asar e "${srcdir}/usr/lib/${_appname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    find "${srcdir}/app.asar.unpacked" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/lib/${_appname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/${_appname}/resources/"{app.asar.unpacked,translations} "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/${_appname}/dump-db" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/lib/${_appname}/anonymize-database.sql" -t "${pkgdir}/usr/lib/${pkgname%-bin}"

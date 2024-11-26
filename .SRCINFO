@@ -1,11 +1,12 @@
 pkgbase = triliumnext-bin
 	pkgdesc = Build your personal knowledge base with TriliumNext Notes.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.90.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TriliumNext/Notes
 	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-only
+	makedepends = asar
 	depends = electron31
 	depends = nodejs
 	provides = trilium
