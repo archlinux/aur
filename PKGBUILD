@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spie-bin
 _pkgname=SPIE
-pkgver=0.1.0
+pkgver=0.2.0
 _electronversion=31
 pkgrel=1
 pkgdesc="A minimal serial monitor application using Electron, Node SerialPort and Ionic/Angular.(Prebuilt version.Use system-wide electron)"
@@ -12,7 +12,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'nodejs'
 )
 makedepends=(
     'gendesk'
@@ -24,7 +23,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/robsonos/spie/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('51c6fe880e3646d0c858279c218229f86ffcf22cb2ed6d0d2947b019e8433595'
+sha256sums=('2fceb67a73689673565fbf6e0d67b248a1ab260be5cc54642f4e3bfe6a81dcc8'
             '5dbb6967af509e69054c662c537915b0c4a025b3ed099c7684deed08eeb6985f'
             '2f5007c3cf090c9851c50bcfa349730ca9ed47f48b40b7fa5b48739599774ac3'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
