@@ -2,7 +2,7 @@
 
 pkgname=python-babelfont
 _pyname=${pkgname#python-}
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='Interrogate and manipulate UFO, TTF and OTF fonts with a common interface'
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('60b4ac870f81ccf49045671abee5d78f334121b96027b95d2eeb91740d831ec4')
+sha256sums=('9b18c236378afa4e25f83bc2743cbbce05dbdd2121f7370ca27348240740030e')
 
 prepare() {
 	cd "$_archive"
