@@ -1,7 +1,7 @@
 pkgbase = python-deltalake
 	pkgdesc = Native Delta Lake Python binding based on delta-rs with Pandas integration
 	pkgver = 0.22.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://delta.io/
 	arch = x86_64
 	license = MIT
