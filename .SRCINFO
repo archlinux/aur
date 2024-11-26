@@ -1,0 +1,25 @@
+pkgbase = astralrinth-bin
+	pkgdesc = (none)
+	pkgver = 0.8.9
+	pkgrel = 1
+	url = https://github.com/DIDIRUS4/AstralRinth
+	install = astralrinth-bin.install
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = openssl
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	options = !debug
+	source = https://github.com/DIDIRUS4/AstralRinth/releases/download/ARF-v0.8.9/AstralRinth.App_0.8.9_amd64.deb
+	sha512sums = fb5095d3b48532f662a4c481f234b0b338e04f8b829987d10aec4472e143194a9f6680fd374fe96c579d2583f673e29577e2c631828dd9a5f4d33480ca62bfcb
+
+pkgname = astralrinth-bin
