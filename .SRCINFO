@@ -1,6 +1,6 @@
 pkgbase = uyou-todo-bin
-	pkgdesc = A todo list with electron
-	pkgver = 3.0.3
+	pkgdesc = A todo list with electron.(Prebuilt version.Use system-wide electron)
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/tonylu110/uyou-todo-electron
 	arch = aarch64
@@ -8,16 +8,16 @@ pkgbase = uyou-todo-bin
 	license = MIT
 	makedepends = fuse2
 	makedepends = asar
-	depends = electron31
-	provides = uyou-todo=3.0.3
+	depends = electron33
+	provides = uyou-todo=3.1.0
 	conflicts = uyou-todo
-	source = LICENSE-3.0.3::https://raw.githubusercontent.com/tonylu110/uyou-todo-electron/3.0.3/LICENSE
+	source = LICENSE-3.1.0::https://raw.githubusercontent.com/tonylu110/uyou-todo-electron/3.1.0/LICENSE
 	source = uyou-todo.sh
 	sha256sums = 39db5a38eec57377569ab296b6a804062b8e7a72908db228ae1d6d91bcbb61d3
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
-	source_aarch64 = uyou-todo-3.0.3-aarch64.AppImage::https://github.com/tonylu110/uyou-todo-electron/releases/download/3.0.3/uyou.ToDo-3.0.3-arm64.AppImage
-	sha256sums_aarch64 = aa84c2bb682402bbf1cd723b3163d810ef0501f137d356bfa7ee55678086d0ba
-	source_x86_64 = uyou-todo-3.0.3-x86_64.AppImage::https://github.com/tonylu110/uyou-todo-electron/releases/download/3.0.3/uyou.ToDo-3.0.3.AppImage
-	sha256sums_x86_64 = 1bae20fb273ae578a76bce81c39add9dea9a1d2579a1e2c31e8c49ee4df7f71c
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_aarch64 = uyou-todo-3.1.0-aarch64.AppImage::https://github.com/tonylu110/uyou-todo-electron/releases/download/3.1.0/uyou.ToDo-3.1.0-arm64.AppImage
+	sha256sums_aarch64 = a727c3ac6feca7e96602ac31565e7987699fb85733222e8b64e121f77995bd7a
+	source_x86_64 = uyou-todo-3.1.0-x86_64.AppImage::https://github.com/tonylu110/uyou-todo-electron/releases/download/3.1.0/uyou.ToDo-3.1.0.AppImage
+	sha256sums_x86_64 = 59dcbc0949d782d2b325af63d462f694f41fb58926d2e4f9b00b782ed7b6bdc1
 
 pkgname = uyou-todo-bin
