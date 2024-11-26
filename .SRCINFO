@@ -1,0 +1,17 @@
+pkgbase = cyberghostvpn-gui
+	pkgdesc = A GUI for CyberGhost VPN
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/picharly/cyberghostvpn-gui
+	arch = x86_64
+	license = MIT
+	depends = cyberghostvpn
+	depends = sudo
+	source = https://github.com/picharly/cyberghostvpn-gui/releases/download/1.0.0/cyberghostvpn-gui_linux_amd64_1.0.0.tar.gz
+	source = https://raw.githubusercontent.com/picharly/cyberghostvpn-gui/refs/heads/main/extras/cyberghostvpn-gui.desktop
+	source = https://raw.githubusercontent.com/picharly/cyberghostvpn-gui/refs/heads/main/extras/cyberghostvpn-gui.png
+	sha256sums = f0fca0e55115ef85a4dccfe23b6c6df72ac68f5fa40bcc988f8843e92d48545f
+	sha256sums = 1df2b448a5e5386162ea8a467ead6987f17cd3220538e7c0b8891335168296fb
+	sha256sums = a9d8cd955a0435741d460145918532295a44e1dfc2c1dab10c6f88cddd438980
+
+pkgname = cyberghostvpn-gui
