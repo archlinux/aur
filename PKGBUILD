@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=trezor-suite-bin
 _pkgname=Trezor-Suite
-pkgver=24.11.2
+pkgver=24.11.3
 _electronversion=33
 pkgrel=1
 pkgdesc="desktop app for Trezor hardware wallets.(Prebuilt version.Use system-wide electron)"
@@ -29,8 +29,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('0bb9e6855d6aa4f013a87ed9ceb2ef47b6eddc44858cc85ed3faf5d53677f67a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('539459c73856289d7f2e72c9ec7c1d7d4f8f2847f5cff0827bfb5c67f9d36e95')
-sha256sums_x86_64=('7c20fe539ab1aa428bc0e9f4acf64832bbcd26dbdfd88d11f6ab948a393b2b08')
+sha256sums_aarch64=('934c1ea5b18f80db39e108e1ddce3a81fcc1e38fa634144c0f65933e74742dd7')
+sha256sums_x86_64=('db46fa3dd241e3a8f25f813de3e6275a9a5ec6e59de38882dbb355e820dc4d90')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
