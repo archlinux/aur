@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8194d0f..c0c94d3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -628,6 +628,8 @@ install(FILES PXView/icons/logo.svg DESTINATION share/pixmaps RENAME pxview.svg)
+ 
+ if(CMAKE_SYSTEM_NAME MATCHES "Linux")	
+ 	install(FILES PXView/PXView.desktop DESTINATION /usr/share/applications RENAME pxview.desktop)
++	 
++	add_compile_definitions(_DEFAULT_SOURCE)
+ 	
+ 	if(IS_DIRECTORY /usr/lib/udev/rules.d)
+ 		install(FILES PXView/px.rules DESTINATION /usr/lib/udev/rules.d RENAME 60-px.rules)

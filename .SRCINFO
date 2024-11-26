@@ -1,0 +1,26 @@
+pkgbase = pxview-git
+	pkgdesc = GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.
+	pkgver = 1.3.4.472bd4b
+	pkgrel = 1
+	url = https://github.com/PXLogic/PXView
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = glib2
+	depends = python
+	depends = fftw
+	depends = libusb
+	depends = zlib
+	depends = qt5-base
+	depends = boost-libs
+	depends = saribbon
+	source = pxview-git::git+https://github.com/PXLogic/PXView
+	source = 0001-make-glibc-happy.patch
+	sha1sums = SKIP
+	sha1sums = c36f3d81501bc35b207631483179ca663308926b
+
+pkgname = pxview-git
