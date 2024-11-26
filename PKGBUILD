@@ -1,7 +1,7 @@
 # Maintainer: TurboPunk <turbopunk@telenet.be>
 # Contributor: José San Juan <josesj@gmail.com>
 pkgname=snapmaker-luban
-pkgver=4.13.0
+pkgver=4.14.0
 pkgrel=1
 pkgdesc="Snapmaker Luban is an easy-to-use 3-in-1 software tailor-made for Snapmaker machines."
 url="https://github.com/Snapmaker/Luban"
@@ -49,7 +49,7 @@ build() {
 }
 
 package() {
-  mv ${srcdir}/Luban/output/${pkgname}-${pkgver}-linux-x64.pacman ${srcdir}/Luban/output/${pkgname}-${pkgver}.tar.xz
+  mv ${srcdir}/Luban/output/S${pkgname#s}-${pkgver}-linux-x64.pacman ${srcdir}/Luban/output/${pkgname}-${pkgver}.tar.xz
   tar xf ${srcdir}/Luban/output/${pkgname}-${pkgver}.tar.xz --exclude='.*' -C ${pkgdir}
   chown -R root:root "${pkgdir}"
 }
