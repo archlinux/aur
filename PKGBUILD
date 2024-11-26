@@ -3,7 +3,7 @@
 
 pkgname=mayland-git
 _pkgname=mayland
-pkgver=r197.40b0f27
+pkgver=r242.22b1439
 pkgrel=1
 pkgdesc="a bad wayland compositor"
 arch=('x86_64')
@@ -45,7 +45,7 @@ pkgver() {
 prepare() {
 	cd "${_pkgname}"
 	
-	export RUSTUP_TOOLCHAN=stable
+	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked
 }
 
