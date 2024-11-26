@@ -1,0 +1,4 @@
+['llama.cpp-server-tray']
+source="github"
+github="envolution/llama.cpp-server-tray"
+use_latest_release=true
