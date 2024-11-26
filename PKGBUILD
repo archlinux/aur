@@ -2,7 +2,7 @@
 
 pkgname=python-dom-toml
 pkgver=0.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Dom's tools for Tom's Obvious, Minimal Language"
 arch=('any')
 url='https://dom-toml.readthedocs.io/en/latest/'

@@ -1,7 +1,7 @@
 pkgbase = python-dom-toml
 	pkgdesc = Dom's tools for Tom's Obvious, Minimal Language
 	pkgver = 0.6.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://dom-toml.readthedocs.io/en/latest/
 	arch = any
 	license = MIT
