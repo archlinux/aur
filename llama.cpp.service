@@ -1,7 +1,7 @@
 [Unit]
 Description=Llama.cpp Server
 After=network.target llama.cpp.socket
-Require=llama.cpp.socket
+Requires=llama.cpp.socket
 
 [Service]
 Type=simple
