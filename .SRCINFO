@@ -1,6 +1,6 @@
 pkgbase = toit
 	pkgdesc = Toit programming language SDK
-	pkgver = 2.0.0alpha.168
+	pkgver = 2.0.0alpha.169
 	pkgrel = 1
 	url = https://toitlang.org
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = toit
 	makedepends = vim
 	depends = gcc-libs
 	depends = esptool
-	optdepends = toit-vessels-bin=2.0.0alpha.168: Vessels for cross-compilation
-	source = git+https://github.com/toitlang/toit.git#commit=93b092a359b26aaa63c75e5bd65deeb0aaed5aa2
+	optdepends = toit-vessels-bin=2.0.0alpha.169: Vessels for cross-compilation
+	source = git+https://github.com/toitlang/toit.git#commit=df1c11d5eed0e16199848939450850801046bc02
 	md5sums = SKIP
 
 pkgname = toit
