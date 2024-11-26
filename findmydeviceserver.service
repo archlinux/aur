@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=findmydevice
 Group=findmydevice
-ExecStart=/usr/bin/fmdserver -c /etc/fmdserver/ -w /usr/share/webapps/fmdserver/ -d /var/lib/fmdserver/
+ExecStart=/usr/bin/fmdserver serve -c /etc/fmdserver/config.yml -w /usr/share/webapps/fmdserver/ -d /var/lib/fmdserver/db
 Restart=on-abort
 
 [Install]
