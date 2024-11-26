@@ -2,8 +2,8 @@
 
 pkgname=libastal-cava-git
 _pkgname=cava
-pkgver=r501.078dc04
-pkgrel=1
+pkgver=r617.12fa0fb
+pkgrel=2
 provides=(astal-cava libastal-cava libastal-cava.so=0-64)
 pkgdesc="Audio visaulization library using cava."
 arch=(x86_64)
@@ -21,7 +21,7 @@ makedepends=(
   vala
 )
 groups=("libastal")
-source=("git+${url}.git#branch=feat/cava")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
