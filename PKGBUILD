@@ -4,7 +4,7 @@
 _commit="24229ff9f592315118410fc5c6e59e9b4fa3f58b"
 pkgname="pam_rssh"
 pkgver="1.1.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A PAM module that provides ssh-agent based authentication"
 url="https://github.com/z4yx/pam_rssh"
 arch=("x86_64")
