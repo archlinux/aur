@@ -1,7 +1,7 @@
 pkgbase = python-consolekit
 	pkgdesc = Additional utilities for click
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://consolekit.readthedocs.io/
 	arch = any
 	license = MIT
