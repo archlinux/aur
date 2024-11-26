@@ -1,7 +1,7 @@
 pkgbase = python-apeye
 	pkgdesc = Handy tools for working with URLs and APIs
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://apeye.readthedocs.io/
 	arch = any
 	license = MIT

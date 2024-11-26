@@ -2,7 +2,7 @@
 
 pkgname=python-apeye
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Handy tools for working with URLs and APIs'
 arch=('any')
 url='https://apeye.readthedocs.io/'
