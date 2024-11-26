@@ -6,8 +6,8 @@ _gemname=docker-api
 ################################################################################
 
 pkgname="ruby-${_gemname}"
-pkgver=2.3.0
-pkgrel=3
+pkgver=2.4.0
+pkgrel=1
 pkgdesc='A simple REST client for the Docker Remote API.'
 arch=(any)
 url="https://github.com/upserve/${_gemname}"
@@ -16,7 +16,7 @@ depends=("ruby" "ruby-excon" "ruby-multi_json")
 makedepends=("rubygems")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 options=(!emptydirs)
-sha256sums=('639e2253edb405f9a94b40b4aa10d4c80b6780d02502ec92196c689e36118a41')
+sha256sums=('242172a69b44a0b76cc080f1fbf16368c5bbbf5850009edac704128ab20970b4')
 
 ################################################################################
 
