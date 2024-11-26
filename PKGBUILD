@@ -3,13 +3,13 @@
 _name=deltalake
 pkgname="python-${_name}"
 pkgver=0.22.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Native Delta Lake Python binding based on delta-rs with Pandas integration"
 arch=("x86_64")
 url="https://delta.io/"
 license=('MIT')
 depends=('python' 'python-pyarrow')
-otions=('!lto')
+options=('!lto')
 optdepends=('python-pandas: for interoperability with pandas frames'
             'python-pyspark: for spark integration')
 makedepends=(python-build python-installer python-wheel python-maturin)
