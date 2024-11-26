@@ -14,7 +14,7 @@ url="https://github.com/WindowsKonon1337/TrackPointSound"
 license=('MIT')
 groups=()
 depends=("sfml")
-makedepends=("cmake" "base-devel")
+makedepends=("cmake" "base-devel" "systemd" "git")
 checkdepends=()
 optdepends=()
 provides=()
@@ -24,10 +24,10 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/WindowsKonon1337/TrackPointSound.git")
+source=("git+https://github.com/WindowsKonon1337/TrackPointSound.git")
 
 noextract=()
-sha256sums=('89c914c2976fa39bc917aaf46d60f32ab02343a134ece82aa05ab5dcc12f5680')
+sha256sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
