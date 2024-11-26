@@ -1,4 +1,4 @@
-From 83bca2b324458c98be95b4b76fe37a065130ad97 Mon Sep 17 00:00:00 2001
+From 4ef5f277fdd8afe8ac246f51255a95857f8b4eca Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:33:14 +0800
 Subject: [PATCH 2/2] Cleanup
@@ -269,7 +269,7 @@ index a5d8bee8b..5ee7e554a 100644
                  this.server = ((BoundAuthlibInjectorAccountFactory) factory).getServer();
  
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java
-index 3d4a3c3ef..5d6702733 100644
+index a64bf1aea..2be9fed0c 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java
 @@ -46,7 +46,6 @@ import org.jackhuang.hmcl.ui.SVG;
