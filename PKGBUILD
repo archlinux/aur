@@ -8,7 +8,7 @@
 
 _pkgname=conky
 pkgname=conky-cli
-pkgver=1.21.7
+pkgver=1.21.8
 pkgrel=1
 pkgdesc="Lightweight system monitor for X, without X11 dependencies"
 url='https://github.com/brndnmtthws/conky'
@@ -20,7 +20,7 @@ makedepends=('cmake' 'docbook2x' 'docbook-xsl' 'gperf' 'man-db' 'git' 'catch2' '
 depends=('curl' 'lua' 'wireless_tools' 'libxml2')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/brndnmtthws/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('ebdd6798bd5baf77b8c5e2674492123a4baee09120452baf728bdb004e616d39')
+sha256sums=('f90ce9ba999197ad62b8b1224e412c52e9e0231fb46a64ba7b868c2e989959ec')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
