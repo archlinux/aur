@@ -1,7 +1,7 @@
 pkgbase = python-shippinglabel
 	pkgdesc = Utilities for handling Python packages
 	pkgver = 1.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://shippinglabel.readthedocs.io/
 	arch = any
 	license = MIT
