@@ -27,7 +27,7 @@ build() {
       --prefix=/usr/${_arch} \
       --build=$CHOST \
       --host=${_arch}
-    make -j$(($(nproc) * 2))
+    make
   done
 }
 
