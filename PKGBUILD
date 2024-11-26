@@ -6,7 +6,7 @@
 _pkgname=pulseaudio-dlna-cygn
 pkgname="${_pkgname}-git"
 pkgver=0.6.6+1+4.r839.20221229.8fa3215
-pkgrel=3
+pkgrel=4
 pkgdesc='Small DLNA server which brings DLNA/UPnP support to PulseAudio, Cygn edition. Latest git checkout.'
 arch=(
   'any'
@@ -68,7 +68,7 @@ optdepends=(
   'flac: flac transcoding support'
   'lame: mp3 transcoding support'
   'opus-tools: opus transcoding support'
-  'pulseaudio: To be used by a local pulseaudio implementation'  # It seems that it needs native pulseaudio and not just pipewire-pulse? Please check by yourself.
+  "pulseaudio: To be used by a local pulseaudio implementation (it needs native pulseaudio, not 'pipewire-pulse')."
   'sox: wav transcoding support'
   'vorbis-tools: ogg transcoding support'
 )
