@@ -1,6 +1,6 @@
 # Maintainer: Sam Toxopeus <sam@toxopeus.it>
 pkgname=kubectl-cnpg
-pkgver=1.24.1
+pkgver=1.24.1 # renovate: datasource=github-tags depName=cloudnative-pg/cloudnative-pg
 pkgrel=1
 pkgdesc="A kubectl plugin to interact with CloudNativePG"
 arch=('x86_64')
