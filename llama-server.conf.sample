@@ -1,0 +1,89 @@
+# Configuration for llama.cpp service
+
+# Path to the llama-server binary
+LLAMA_SERVER_BINARY="/usr/bin/llama-server"
+
+# Additional flags for the llama-server
+LLAMA_SERVER_FLAGS="--port=8000"
+
+# -m, --model FNAME: Model path (default: `models/7B/ggml-model-f16.gguf`)
+LLAMA_SERVER_FLAGS+=" -m edit-etc-llama.cpp-service-config"
+
+# General Options
+# ----------------
+
+# --verbose-prompt: Print a verbose prompt before generation (default: false)
+# LLAMA_SERVER_FLAGS+=" --verbose-prompt"
+
+# -t, --threads N: Number of threads to use during generation (default: -1)
+# LLAMA_SERVER_FLAGS+=" -t 4"
+
+# -tb, --threads-batch N: Number of threads for batch and prompt processing (default: same as --threads)
+# LLAMA_SERVER_FLAGS+=" -tb 2"
+
+# -C, --cpu-mask M: CPU affinity mask (default: "")
+# LLAMA_SERVER_FLAGS+=" -C 0xff"
+
+# -Cr, --cpu-range lo-hi: Range of CPUs for affinity
+# LLAMA_SERVER_FLAGS+=" -Cr 0-3"
+
+# --cpu-strict <0|1>: Use strict CPU placement (default: 0)
+# LLAMA_SERVER_FLAGS+=" --cpu-strict 1"
+
+# --prio N: Set process/thread priority: 0-normal, 1-medium, 2-high, 3-realtime (default: 0)
+# LLAMA_SERVER_FLAGS+=" --prio 2"
+
+# -c, --ctx-size N: Size of the prompt context (default: 4096, 0 = loaded from model)
+# LLAMA_SERVER_FLAGS+=" -c 2048"
+
+# -n, --predict, --n-predict N: Number of tokens to predict (default: -1, -1 = infinity)
+# LLAMA_SERVER_FLAGS+=" -n 100"
+
+# --keep N: Number of tokens to keep from the initial prompt (default: 0, -1 = all)
+# LLAMA_SERVER_FLAGS+=" --keep 10"
+
+# -b, --batch-size N: Logical maximum batch size (default: 2048)
+# LLAMA_SERVER_FLAGS+=" -b 128"
+
+# Advanced Options
+# ----------------
+
+# -fa, --flash-attn: Enable Flash Attention (default: disabled)
+# LLAMA_SERVER_FLAGS+=" -fa"
+
+# --no-perf: Disable internal libllama performance timings (default: false)
+# LLAMA_SERVER_FLAGS+=" --no-perf"
+
+# -f, --file FNAME: File containing the prompt (default: none)
+# LLAMA_SERVER_FLAGS+=" -f /path/to/prompt.txt"
+
+# --mlock: Force the system to keep the model in RAM
+# LLAMA_SERVER_FLAGS+=" --mlock"
+
+# GPU Options
+# -----------
+
+# -ngl, --gpu-layers N: Number of layers to store in VRAM
+# LLAMA_SERVER_FLAGS+=" -ngl 10"
+
+# -sm, --split-mode {none,layer,row}: Split model across multiple GPUs (default: layer)
+# LLAMA_SERVER_FLAGS+=" -sm row"
+
+# Logging Options
+# ---------------
+
+# --log-file FNAME: Log output to a file
+# LLAMA_SERVER_FLAGS+=" --log-file /var/log/llama.cpp.log"
+
+# --log-colors: Enable colored logging
+# LLAMA_SERVER_FLAGS+=" --log-colors"
+
+# --log-timestamps: Enable timestamps in log messages
+# LLAMA_SERVER_FLAGS+=" --log-timestamps"
+
+# Example Usage
+# -------------
+# Combine multiple flags by appending them to LLAMA_SERVER_FLAGS
+# LLAMA_SERVER_FLAGS+=" -t 4 -c 2048 --verbose-prompt"
+
+

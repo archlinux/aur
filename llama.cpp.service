@@ -1,0 +1,12 @@
+[Unit]
+Description=Llama.cpp Server
+After=network.target llama.cpp.socket
+Require=llama.cpp.socket
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/llama.cpp-service/llama-server.env
+ExecStart=/bin/bash -c "source $LLAMA_CONFIG; exec $LLAMA_SERVER_BINARY $LLAMA_SERVER_FLAGS"
+
+[Install]
+WantedBy=multi-user.target

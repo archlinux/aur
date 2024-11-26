@@ -1,0 +1,9 @@
+[Unit]
+Description=Llama.cpp Socket
+After=network.target
+
+[Socket]
+ListenStream=/run/llama.cpp.sock
+
+[Install]
+WantedBy=sockets.target

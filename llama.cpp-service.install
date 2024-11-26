@@ -1,0 +1,55 @@
+note() {
+  all_off="$(tput sgr0)"
+  bold="${all_off}$(tput bold)"
+  blue="${bold}$(tput setaf 4)"
+  yellow="${bold}$(tput setaf 3)"
+  echo "${blue}==>${yellow} NOTE:${bold} ${1}${all_off}"
+}
+post_install() {
+  note """
+llama.cpp-service has been successfully installed!
+
+Usage Instructions:
+
+1. Configuration:
+   The default configuration file has been installed as:
+   /etc/llama.cpp-service/llama-server.conf.sample
+
+   You can copy this file to /etc/llama.cpp-service/llama-server.conf:
+   sudo cp /etc/llama.cpp-service/llama-server.conf.sample /etc/llama.cpp-service/llama-server.conf
+"""
+  note """
+   *** Make sure to point the $LLAMA_SERVER_BINARY to your llama-server binary. ***
+   *** If you modify and or include flags, make sure they begin with a space - ie. LLAMA_SERVER_FLAGS+=" -t 4" ***
+
+   Edit the configuration file to specify the binary path and flags. For example:
+   - Set the correct model path using the '--model' flag.
+   - Adjust other flags like '--port' and '--threads' according to your needs.
+"""
+  note """
+2. Enabling and Starting the Service:
+   After configuring the service, you can enable and start the systemd service:
+   
+   sudo systemctl enable llama.cpp.service
+   sudo systemctl start llama.cpp.service
+
+   The service will now run automatically on system startup.
+"""
+  note """
+3. Checking the Status:
+   To check the status of the service:
+   
+   sudo systemctl status llama.cpp.service
+
+4. Stopping the Service:
+   To stop the service:
+   
+   sudo systemctl stop llama.cpp.service
+"""
+  note """
+5. Troubleshooting:
+   - Logs for the service can be viewed using:
+     sudo journalctl -u llama.cpp.service
+   - If the service fails, check the configuration file to ensure all paths and flags are correctly set.
+"""
+}
