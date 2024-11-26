@@ -1,14 +1,14 @@
 # Maintainer: Firebleu <firebluedark@proton.me>
 pkgname=autoinstallpackages
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="Shell Script to Automate Package Installation on Arch Linux"
 arch=('x86_64')
 url="https://github.com/Firebleudark/Autoinstallpackages"
 license=('MIT')
 depends=('bash')
-source=("https://github.com/Firebleudark/Autoinstallpackages/archive/refs/tags/release3.1.tar.gz")
-sha256sums=('f5e007153af21a4ab3d5e69974b7a2a0c9dfc440730e17d396163e92548ee70b') 
+source=("https://github.com/Firebleudark/Autoinstallpackages/archive/refs/tags/release3.2.tar.gz")
+sha256sums=('a05ffa54c48d7bf18dff170b3f9e98b8b0cec7e52b67bba14184f37b874b9709') 
 
 build() {
     cd "$srcdir"/*/
