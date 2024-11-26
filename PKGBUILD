@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=alist-desktop-bin
-pkgver=3.39.1
-pkgrel=0
+pkgver=3.40.0
+pkgrel=1
 pkgdesc="File list program that supports multiple storage"
 arch=('x86_64')
 url="https://github.com/AlistGo/desktop-release"
@@ -27,7 +27,7 @@ makedepends=('libarchive')
 backup=()
 options=('!strip' '!debug')
 source=("${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('b3db5ed8a6dd33f42744d5c346ff446d6d7f77390e2d2270d8a520824dc4897b')
+sha256sums=('e7a8d4257cfc027abcf35b7d94ac62c9c569139e2c9132793db4bcc4ec8c63b4')
 noextract=("${pkgname%-bin}_${pkgver}_amd64.deb")
 
 package() {
