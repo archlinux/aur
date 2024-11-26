@@ -19,7 +19,7 @@ source=(
 )
 sha256sums=('b22a3e8a855eb17a1b62fb351e35d8139b249358dfc11668d5d06cca8ce2b547'
             '56ccc5e5894cca0f6142eacd509782187ade6aa22d16cdd3dfa124ec19232fb3'
-            '8610d11eb5ef719d5a814acb0ed5cda6d05ca8a2f2fb8c4f0065ec35f123346d'
+            '7a232c4eac8a6cf1436189398f4378aa990fe053f697344fc0ccc7c0b16b4048'
             '1b1a18bdf343b97ed70ebc2b64af20517dc88d1d3540886f3817779c1dda344f')
 
 package() {
@@ -28,7 +28,7 @@ package() {
   install -Dm644 "${srcdir}/llama.cpp.socket" "${pkgdir}/usr/lib/systemd/system/llama.cpp.socket"
 
   # Install configuration sample end env wrapper
-  install -Dm644 "${srcdir}/llama-server.conf.sample" "${pkgdir}/etc/llama.cpp-service/llama-server.conf"
-  install -Dm644 "${srcdir}/llama-server.env" "${pkgdir}/etc/llama.cpp-service/llama-server.env"
+  install -Dm644 "${srcdir}/llama-server.conf.sample" "${pkgdir}/etc/${pkgname}/llama-server.conf"
+  install -Dm644 "${srcdir}/llama-server.env" "${pkgdir}/etc/${pkgname}/llama-server.env"
 }
 # vim:set ts=2 sw=2 et:
