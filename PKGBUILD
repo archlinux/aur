@@ -1,35 +1,61 @@
+# Maintainer:
+# Contributor: James Williams <jowilliams12000 at gmail dot com>
 
-# Maintainer: James Williams <jowilliams12000 at gmail dot com>
-pkgname=wallust-git
-_pkgname=wallust
-pkgver=3.0.0.r0.g2fe6f57
-pkgrel=1
-pkgdesc="generate colors from an image"
-arch=('any')
+: ${CARGO_HOME:=$SRCDEST/cargo-home}
+: ${CARGO_TARGET_DIR:=target}
+: ${RUSTUP_TOOLCHAIN:=stable}
+export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
+
+_pkgname="wallust"
+pkgname="$_pkgname-git"
+pkgver=3.1.0.r4.g7ff46aa
+pkgrel=2
+pkgdesc="Generate colors from an image"
 url="https://codeberg.org/explosion-mental/wallust"
-license=('custom:MIT')
-makedepends=('cargo' 'git' 'make')
-optdepends=('imagemagick')
-provides=('wallust=$pkgver')
-conflicts=('wallust')
-source=("$_pkgname::git+$url#branch=master")
+license=('MIT')
+arch=('x86_64')
+
+depends=(
+  'gcc-libs'
+)
+makedepends=(
+  'cargo'
+  'git'
+  'make'
+)
+optdepends=(
+  'imagemagick'
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
 options=('!lto')
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_pkgsrc"
+  sed -E '/FISHPREFIX/s&(\$\{PREFIX\})/fish&\1/share/fish&' -i Makefile
+
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$_pkgname"
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_BUILD_DIR=target
-	cargo build --release
+  cd "$_pkgsrc"
+  cargo build --frozen --release --all-features
 }
 
 package() {
-	cd "$_pkgname"
-	make PREFIX=/usr DESTDIR="$pkgdir" install
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/wallust/LICENSE"
+  cd "$_pkgsrc"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
