@@ -1,17 +1,17 @@
 # Contributor: loserMcloser <reebydobalina@gmail.com>
 pkgname=perl-xs-parse-sublike
-pkgver=0.23
+pkgver=0.30
 pkgrel=1
 pkgdesc='XS functions to assist in parsing C<sub>-like syntax'
 _dist=XS-Parse-Sublike
-arch=('any')
+arch=('x86_64' 'i686')
 url="https://metacpan.org/release/$_dist"
 license=('GPL' 'PerlArtistic')
 depends=('perl' 'perl-file-sharedir')
 makedepends=('perl-module-build')
 options=('!emptydirs' 'purge')
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/$_dist-$pkgver.tar.gz")
-sha512sums=('094fcd3e67dc44176a995aad8ea5a67d4b6dde73f546636654f1d2c425f0f0bfc8a0053b134022a936660daf4fb5976c08ed665d04690036b062d7cacba28814')
+sha512sums=('4b17d5fcf79b84f092a5c81b89f5c45d614e8a4b4316a21d0e517146bc6962dd2b5c548ffbae8f75ea5b9ea09079104f28adf7a5e209558675de5dce7ff09bdf')
 
 build() {
   cd $_dist-$pkgver
