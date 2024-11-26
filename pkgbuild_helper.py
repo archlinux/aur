@@ -5,6 +5,7 @@ import subprocess
 import re
 import sys
 import json
+import argparse
 
 PKGBUILD_FILE = "PKGBUILD"
 SRCINFO_FILE = ".SRCINFO"
@@ -53,7 +54,7 @@ def get_current_version():
         return None
 
 def update_pkgbuild(version):
-    """更新 PKGBUILD 文件中的 pkgver, pkgrel 和 sums，并生成 .SRCINFO"""
+    """更新 PKGBUILD 文件中的 pkgver, pkgrel"""
     if not os.path.exists(PKGBUILD_FILE):
         print(f"Error: {PKGBUILD_FILE} not found.")
         return 1
@@ -67,7 +68,7 @@ def update_pkgbuild(version):
         current_version = get_current_version()
         if current_version == version:
             print("No update needed. Version is already up-to-date.")
-            return 0
+            return False  # 版本没有更新
 
         # 更新 pkgver
         content = re.sub(
@@ -90,6 +91,21 @@ def update_pkgbuild(version):
             f.write(content)
 
         print(f"PKGBUILD updated successfully with version {version}.")
+        return True  # 返回 True 表示版本已更新
+    except Exception as e:
+        print(f"Unexpected error updating PKGBUILD: {e}")
+        return False
+
+def update_sums():
+    """更新 PKGBUILD 文件中的 sums 校验和"""
+    if not os.path.exists(PKGBUILD_FILE):
+        print(f"Error: {PKGBUILD_FILE} not found.")
+        return 1
+
+    try:
+        # 读取 PKGBUILD 文件内容
+        with open(PKGBUILD_FILE, "r") as f:
+            content = f.read()
 
         # 运行 makepkg -g 来生成新的校验和
         result = subprocess.run(
@@ -124,7 +140,15 @@ def update_pkgbuild(version):
             f.write(content)
 
         print("Sums updated successfully.")
+        return 0
 
+    except Exception as e:
+        print(f"Unexpected error updating sums: {e}")
+        return 1
+
+def generate_srcinfo():
+    """生成 .SRCINFO 文件"""
+    try:
         # 生成 .SRCINFO 文件
         result = subprocess.run(
             ["makepkg", "--printsrcinfo"],
@@ -142,21 +166,56 @@ def update_pkgbuild(version):
             f.write(result.stdout)
 
         print(f"{SRCINFO_FILE} generated successfully.")
-
         return 0
 
     except Exception as e:
-        print(f"Unexpected error updating PKGBUILD: {e}")
+        print(f"Unexpected error generating .SRCINFO: {e}")
         return 1
 
 def main():
-    latest_version = fetch_latest_version()
-    if not latest_version:
-        print("Failed to fetch the latest version.")
-        return 1
+    parser = argparse.ArgumentParser(description="Update PKGBUILD, sums or generate .SRCINFO.")
+    
+    # 添加命令行选项
+    parser.add_argument(
+        "--version", action="store_true", help="Fetch the latest version and update PKGBUILD"
+    )
+    parser.add_argument(
+        "--sums", action="store_true", help="Update the sums in PKGBUILD"
+    )
+    parser.add_argument(
+        "--info", action="store_true", help="Generate the .SRCINFO file"
+    )
 
-    print(f"Latest version: {latest_version}")
-    return update_pkgbuild(latest_version)
+    args = parser.parse_args()
+
+    # 如果没有任何参数，则执行所有任务
+    if not any(vars(args).values()):
+        args.version = args.sums = args.info = True
+
+    # 如果更新版本，则更新 pkgver
+    version_updated = False
+    if args.version:
+        latest_version = fetch_latest_version()
+        if not latest_version:
+            print("Failed to fetch the latest version.")
+            return 1
+
+        print(f"Latest version: {latest_version}")
+        version_updated = update_pkgbuild(latest_version)
+
+    # 如果版本已更新或需要单独更新 sums
+    if args.sums:
+        # 只在版本更新时才更新 sums
+        if version_updated:
+            update_sums()
+        elif not args.version:  # 如果是单独执行 sums，则直接更新 sums
+            update_sums()
+
+    # 如果需要生成 .SRCINFO 文件
+    if args.info:
+        generate_srcinfo()
+
+    return 0
 
 if __name__ == "__main__":
     sys.exit(main())
