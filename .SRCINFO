@@ -1,11 +1,12 @@
 pkgbase = llama.cpp-service
 	pkgdesc = Systemd service files and /etc/ configuration for Llama.cpp Server
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	install = llama.cpp-service.install
 	arch = any
 	license = MIT
 	depends = systemd
+	optdepends = llama.cpp-service-tray: Companion system tray app for llama.cpp-server-service
 	backup = etc/llama.cpp-service/llama-server.conf
 	source = llama.cpp.service
 	source = llama.cpp.socket

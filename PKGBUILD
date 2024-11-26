@@ -1,6 +1,6 @@
 # Maintainer: envolution
 pkgname=llama.cpp-service
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Systemd service files and /etc/ configuration for Llama.cpp Server"
 arch=('any')
@@ -8,6 +8,9 @@ license=('MIT')
 backup=("etc/$pkgname/llama-server.conf")
 install=$pkgname.install
 depends=('systemd')
+optdepends=(
+  'llama.cpp-service-tray: Companion system tray app for llama.cpp-server-service'
+)
 source=(
   "llama.cpp.service"
   "llama.cpp.socket"
@@ -25,7 +28,7 @@ package() {
   install -Dm644 "${srcdir}/llama.cpp.socket" "${pkgdir}/usr/lib/systemd/system/llama.cpp.socket"
 
   # Install configuration sample end env wrapper
-  install -Dm644 "${srcdir}/llama-server.conf.sample" "${pkgdir}/etc/llama.cpp-service/llama-server.conf.sample"
+  install -Dm644 "${srcdir}/llama-server.conf.sample" "${pkgdir}/etc/llama.cpp-service/llama-server.conf"
   install -Dm644 "${srcdir}/llama-server.env" "${pkgdir}/etc/llama.cpp-service/llama-server.env"
 }
 # vim:set ts=2 sw=2 et:
