@@ -1,7 +1,7 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=ollama-rocm-git
-pkgver=0.4.1.git+c2e8cbaa
+pkgver=0.4.5.git+52bbad12
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
 arch=(x86_64)
@@ -9,9 +9,9 @@ url='https://github.com/ollama/ollama'
 license=(MIT)
 provides=(ollama)
 conflicts=(ollama)
-depends=(comgr hip-runtime-amd hipblas hsa-rocr libdrm libelf numactl rocblas rocsolver rocsparse)
+depends=(comgr "hip-runtime-amd>=6.2.4" hipblas hsa-rocr libdrm libelf numactl rocblas rocsolver rocsparse)
 optdepends=('rocm-smi-lib: monitor GPU usage with rocm-smi')
-makedepends=(git go hip-runtime-amd hipblas hsa-rocr libdrm libelf numactl rocblas rocm-hip-sdk rocm-opencl-sdk rocsolver rocsparse)
+makedepends=(git "go>=1.23" "hip-runtime-amd>=6.2.4" hipblas hsa-rocr libdrm libelf numactl rocblas rocm-hip-sdk rocm-opencl-sdk rocsolver rocsparse)
 source=(git+$url#branch=main
         ollama.service
         sysusers.conf
@@ -30,12 +30,15 @@ pkgver() {
 
 build() {
   export ROCM_PATH=/opt/rocm/
-  export AMDGPU_TARGETS="gfx1030;gfx1100"
+  export AMDGPU_TARGETS="gfx1030;gfx1100;gfx1101"
   export CFLAGS+=" -fcf-protection=none" CXXFLAGS+=" -fcf-protection=none"
   export CGO_CFLAGS="$CFLAGS" CGO_CPPFLAGS="$CPPFLAGS" CGO_CXXFLAGS="$CXXFLAGS" CGO_LDFLAGS="$LDFLAGS"
   export OLLAMA_SKIP_CUDA_GENERATE=on
 
   cd ollama
+  sed -i 's/gfx900 gfx940 gfx941 gfx942 gfx1010 gfx1012 gfx1030 gfx1100 gfx1101 gfx1102/gfx1030 gfx1100 gfx1101/g' llama/make/Makefile.rocm
+  sed -i 's/gfx906:xnack- gfx908:xnack- gfx90a:xnack+ gfx90a:xnack-//g' llama/make/Makefile.rocm
+
   go generate ./...
   go build .
 }
