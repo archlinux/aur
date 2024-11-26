@@ -1,0 +1,4 @@
+[melody]
+source = "git"
+git = "https://github.com/yoav-lavi/melody.git"
+prefix = "v"
