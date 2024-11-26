@@ -2,7 +2,7 @@
 
 pkgname=login-ng
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A greeter with addition functionalities'
 url='https://github.com/neroreflex/login-ng'
 license=()
@@ -24,7 +24,7 @@ b2sums=(
     '71538bbae869b04f01dd214ae21879ca8be20dfc253fda866d197f0bf4c58ddf2e99b2f55438d9f0f885133ee1fc3afa4258b107447eb37b1dc6cfe5223299c7' # login_ng-autologin.pam
     'ce6b01d713277810b2eb64e8437a0b8bea684c0aec6aeb8e5ec4f8bcd37f94e68ab31f3bc70836f3fb61cc3fc1b007c3db68f9f9c86e8742325c4d5caea1f983' # login_ng.rules
     '60571e761369edb44c6a962baa586891aa3d2879187b8dbd0fa99cac8c82a7ed3077e5e214562609e5ce36d9805e27a2c58beffd7b037adcb5e1767345f645f9' # login_ng.sysusers
-    '509f97e1a4b9c253eca99bdf3f9deb3bf90c6a1367c1686fe6ec6317bac58f71172d6953c588adafc36c8a4bdba2e65b0a4919cec368956b586317f15dad9004' # login_ng.service
+    '0e341005791a034b13c0b8c5cc4478ffc00f5c514c0e48caf07e229d42ec64c99ba9384f09d2eb477fe29cede3a0a605bc8165c3dfbf110a14b515a45bd66fc9' # login_ng.service
     '22625e6acd4174a0af77650653183ca21765cbb4e7d288fdcf49b13dd61462a789cb1b66b6e815f57047e16a2fb403ec65e19daccff30682565dcede910a84a9' # login_ng.tmpfiles
 )
 backup=(
