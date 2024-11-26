@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-gbafix
 	pkgdesc = Fix GBA ROM file headers.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/devkitPro/gba-tools
 	arch = any
 	license = GPL-2.0
@@ -15,4 +15,3 @@ pkgbase = mingw-w64-gbafix
 	sha1sums = aad9a673b4578ad8617a5e8397266ee9028a0d42
 
 pkgname = mingw-w64-gbafix
-
