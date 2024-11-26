@@ -1,0 +1,18 @@
+pkgbase = python-kivy-garden-matplotlib
+	pkgdesc = Matplotlib backends using kivy
+	pkgver = r60.gf08698d
+	pkgrel = 1
+	url = https://github.com/kivy-garden/matplotlib
+	arch = any
+	groups = kivy
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-kivy
+	depends = python-matplotlib
+	source = python-kivy-garden-matplotlib-r60.gf08698d.tar.gz::https://github.com/kivy-garden/matplotlib/archive/f08698d1816b5574b58b96c4466cf91eefd0248e.tar.gz
+	sha256sums = 4f00f669a3a5b9ccd89b02dc1e9b262294dd7269a86d010f2ac86a5ba7e4835b
+
+pkgname = python-kivy-garden-matplotlib
