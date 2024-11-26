@@ -1,7 +1,7 @@
 # Maintainer: Yangtse Su <yangtsesu@gmail.com>
 _pkgname=libretro-melondsds
 pkgname=$_pkgname-bin
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="An enhanced remake of the melonDS core for libretro"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}_${arch}_${pkgver}.zip::${url}/releases/download/v${pkgver}/melondsds_libretro-linux-${arch}-Release.zip")
 source_aarch64=("${_pkgname}_arm64_${pkgver}.zip::${url}/releases/download/v${pkgver}/melondsds_libretro-linux-arm64-Release.zip")
-b2sums_x86_64=('fbb66f12968283d0bbcbe9ee748a4f2a76e131ee92a7107516a72052bda6d49a48d86cb1141b5ac2bcfaa84828c96cf13830f7a5f1a8eef1fa6b448d95766ae6')
-b2sums_aarch64=('99eb4e33793cfa396738523d90b3557e2dc7b719971c5dfceb1f0549eb680b1a6188a219eebd04a63452a61337aadfe649aad873b25b9e836eadce385a975527')
+b2sums_x86_64=('acebae093912db1e8d8384a304b7b5ea0beb30623828088dd89a0e8ed802cb80a44aedc56ee58b45b3ae237322b0a8c4ad4b03a9fd8cda2c45f119df97ec0549')
+b2sums_aarch64=('5116cfdffaecfd9618e00c3fd812e8b1f6b090b9633d040e3f74f50bbb9248934e274e2a42fa9128adf9ba01641b0beb8bd6f3c8cfd4f70ab4a7e884aa9defe8')
 
 package() {
         _pkg=melondsds_libretro-linux-x86_64-Release

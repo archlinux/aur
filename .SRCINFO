@@ -1,6 +1,6 @@
 pkgbase = libretro-melondsds-bin
 	pkgdesc = An enhanced remake of the melonDS core for libretro
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/JesseTG/melonds-ds
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = libretro-melondsds-bin
 	license = GPL-3.0-or-later
 	depends = libgl
 	depends = libretro-core-info
-	provides = libretro-melondsds=1.1.7
+	provides = libretro-melondsds=1.1.8
 	conflicts = libretro-melondsds
-	source_x86_64 = libretro-melondsds_x86_64_1.1.7.zip::https://github.com/JesseTG/melonds-ds/releases/download/v1.1.7/melondsds_libretro-linux-x86_64-Release.zip
-	b2sums_x86_64 = fbb66f12968283d0bbcbe9ee748a4f2a76e131ee92a7107516a72052bda6d49a48d86cb1141b5ac2bcfaa84828c96cf13830f7a5f1a8eef1fa6b448d95766ae6
-	source_aarch64 = libretro-melondsds_arm64_1.1.7.zip::https://github.com/JesseTG/melonds-ds/releases/download/v1.1.7/melondsds_libretro-linux-arm64-Release.zip
-	b2sums_aarch64 = 99eb4e33793cfa396738523d90b3557e2dc7b719971c5dfceb1f0549eb680b1a6188a219eebd04a63452a61337aadfe649aad873b25b9e836eadce385a975527
+	source_x86_64 = libretro-melondsds_x86_64_1.1.8.zip::https://github.com/JesseTG/melonds-ds/releases/download/v1.1.8/melondsds_libretro-linux-x86_64-Release.zip
+	b2sums_x86_64 = acebae093912db1e8d8384a304b7b5ea0beb30623828088dd89a0e8ed802cb80a44aedc56ee58b45b3ae237322b0a8c4ad4b03a9fd8cda2c45f119df97ec0549
+	source_aarch64 = libretro-melondsds_arm64_1.1.8.zip::https://github.com/JesseTG/melonds-ds/releases/download/v1.1.8/melondsds_libretro-linux-arm64-Release.zip
+	b2sums_aarch64 = 5116cfdffaecfd9618e00c3fd812e8b1f6b090b9633d040e3f74f50bbb9248934e274e2a42fa9128adf9ba01641b0beb8bd6f3c8cfd4f70ab4a7e884aa9defe8
 
 pkgname = libretro-melondsds-bin
