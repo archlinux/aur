@@ -1,25 +1,26 @@
 # Maintainer: Popolon <popolon@popolon.org>
 
 _module='mozjpeg-lossless-optimization'
+_module_underscore="${_module//-/_}"
 pkgname=python-${_module}
-pkgver='1.1.3'
-pkgrel=5
+pkgver='1.1.5'
+pkgrel=1
 pkgdesc="Optimize JPEGs losslessly using MozJPEG"
 url="https://github.com/wanadev/mozjpeg-lossless-optimization"
 depends=('python>=3')
 makedepends=('cmake' 'python-build' 'python-installer' 'python-pip' 'gcc')
 license=('BSD')
 arch=(x86_64 armv7h aarch64 riscv32 riscv64)
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('725d98772e943fca18b0801cb94e645c477ff52e56ad0b27bddb76ddf091ca3e')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module_underscore-$pkgver.tar.gz")
+sha256sums=('a78cb0fd361b01c26bb5f1d986ef4fa4026877b1a95925facaeec997ff250288')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python -m build --wheel --no-isolation
+  cd "${srcdir}/${_module_underscore}-${pkgver}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
-    python  -m installer --destdir="${pkgdir}" dist/*.whl
+  depends+=()
+  cd "${srcdir}/${_module_underscore}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
