@@ -3,7 +3,7 @@
 
 pkgname=cyberghostvpn-gui
 pkgver=1.0.1   # Update with the latest release version
-pkgrel=3
+pkgrel=4
 pkgdesc="A GUI for CyberGhost VPN"
 arch=('x86_64')
 url="https://github.com/picharly/cyberghostvpn-gui"
@@ -28,7 +28,7 @@ package() {
     _installdir=usr/local/cyberghostvpn-gui
 
     # Copy the uncompressed binary to /usr/sbin/
-    install -Dm 755 "${srcdir}/cyberghostvpn-gui_linux_amd64_${pkgver}" "$pkgdir/${_installdir}/cyberghostvpn-gui"
+    install -Dm 755 "${srcdir}/bin/cyberghostvpn-gui_linux_amd64_${pkgver}" "$pkgdir/${_installdir}/cyberghostvpn-gui"
 
     # Copy the .desktop file
     install -Dm 644 "${srcdir}/cyberghostvpn-gui.desktop" "$pkgdir/usr/share/applications/cyberghostvpn-gui.desktop"
