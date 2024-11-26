@@ -1,0 +1,21 @@
+pkgbase = python-libipld-git
+	pkgdesc = Fast Python library to work with IPLD: DAG-CBOR, CID, CAR, multibase (latest commit)
+	pkgver = 3.0.0.r0.g7bf9fb9
+	pkgrel = 1
+	url = https://github.com/MarshalX/python-libipld
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	makedepends = python-wheel
+	depends = gcc-libs
+	depends = glibc
+	depends = python
+	provides = python-libipld
+	conflicts = python-libipld
+	source = git+https://github.com/MarshalX/python-libipld.git
+	sha256sums = SKIP
+
+pkgname = python-libipld-git
