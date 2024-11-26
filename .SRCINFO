@@ -1,0 +1,12 @@
+pkgbase = aurders
+	pkgdesc = Simple tool to generate PKGBUILD and more
+	pkgver = 2.0.0
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/mithcs/aurders
+	arch = x86_64
+	license = MIT
+	source = https://github.com/mithcs/aurders/releases/download/v2.0.0/aurders
+	sha256sums = fde9a5b8764eac1eef9a39e79b586ac22774b5cdbbe338e3e1a892554e5f1d8c
+
+pkgname = aurders
