@@ -2,15 +2,12 @@
 # Contributor: Mark Wagie <mark@manjaro.org>
 # Contributor: realqhc <https://github.com/realqhc>
 # Contributor: Brett Alcox <https://github.com/brettalcox>
-
-# Arch credits:
-# Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Fabian Bornschein <fabiscafe@archlinux.org>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-# Ubuntu credits:
-# Robert Ancell: <https://salsa.debian.org/gnome-team/gnome-control-center>
-# Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch>
+# Ubuntu patches:
+# https://salsa.debian.org/gnome-team/gnome-control-center/-/tree/ubuntu/latest/debian/patches/ubuntu
 
 pkgbase=gnome-control-center-x11-scaling
 pkgname=(
@@ -18,8 +15,8 @@ pkgname=(
   gnome-keybindings-x11-scaling
 )
 _pkgname=gnome-control-center
-pkgver=47.1.1
-pkgrel=2
+pkgver=47.2
+pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL-2.0-or-later)
@@ -97,7 +94,7 @@ source=(
   "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/9908feab583115670991929d4334601f43fcf786/display-Allow-fractional-scaling-to-be-enabled.patch"
   "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/c3a04acf0cd0f9f48c938c6b34b391d9aedb2b58/display-Support-UI-scaled-logical-monitor-mode.patch"
 )
-b2sums=('1edf322c66ca62986bfe79c0e4cd9552aaa937d124552f49769d406cdf9a1219ea4c74a72b6a48e6b6ca9c8c50e6b58a67bf43ae33b9f254f6b06fba4142af8c'
+b2sums=('06a6d955691c752205bbd593ec3ccd8876a23ace2b17642b461fd95887e896ca0ef0304c83b0184ae03b9f53c58d38c0de73e821ca1c6fc70669fb9c98a21d41'
         'SKIP'
         '7f580b64e491d4dd4ee89da00d0e98cd50780dee1d1a4665e54e3e6f46d9c3291d1695e3f2920e7c5686f2f57fa4bbb430d56dda4ad87f8046990f3f2db4cecb'
         '85002082e967f63284a1b95a0f2dc19590a46c1711ebf6ed934094a85a4a1b20c1336e9b6e9a0e37b5235bbe217ee0b6851a06bcc1e282242a0676b9080a0eac')
@@ -178,4 +175,3 @@ package_gnome-keybindings-x11-scaling() {
 
   mv gkb/* "$pkgdir"
 }
-
