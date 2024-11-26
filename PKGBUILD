@@ -1,7 +1,7 @@
 # Maintainer: Moritz Oberjatzas <post@moritz-oberjatzas.eu>
 # Contributor: Alexander Sulfrian <asulfrian@zedat.fu-berlin.de>
 pkgname=webex-bin
-pkgver=44.10.1.31028
+pkgver=44.10.2.31237
 pkgrel=1
 pkgdesc="Webex for Linux"
 arch=('x86_64')
@@ -33,9 +33,9 @@ depends=('alsa-lib'
          'xcb-util-renderutil'
          'xcb-util-wm'
          'xdg-utils')
-source=("$pkgname-$pkgver.deb::https://binaries.webex.com/WebexDesktop-Ubuntu-Gold/20241022103918/Webex.deb"
+source=("$pkgname-$pkgver.deb::https://binaries.webex.com/WebexDesktop-Ubuntu-Official-Package/Webex.deb"
         'webex.xml')
-sha256sums=('f654a57bb75d493fa3133bf2dc8683c858c7dd6bfe52f616273c20f080944a97'
+sha256sums=('f3a3c68df2f290d7ec66f3a453e9b133e54b3ae0e9cc702a77ebc7d1121946cf'
             '736a3ee2f30c947493eb01787205fc650f08a664a2c6a4a17c4189b8e2420c5a')
 options=('!strip')
 
@@ -58,4 +58,3 @@ package() {
     mkdir -p "$pkgdir/usr/bin/"
     ln -s "/opt/Webex/bin/CiscoCollabHost" "$pkgdir/usr/bin/webex"
 }
-
