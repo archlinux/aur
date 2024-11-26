@@ -2,7 +2,7 @@
 # Co-maintainer: Coriollis <nixillomax@live.com.mx>
 
 pkgname=resolve-march-native
-pkgver=5.0.2
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="Tool to determine what GCC flags -march=native would resolve into"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python>=3.7')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hartwork/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('b22a408479889afab5e1a877caae8d9534f4285fbdaa8f552bbdc8b13f063ed1')
+sha256sums=('6695a4ae9188656b81364ae18e99fd53588faa9b2bb6a8010a1f7f4c56d60de7')
 
 build() {
 	cd "$srcdir"/$pkgname-$pkgver
