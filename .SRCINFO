@@ -1,13 +1,13 @@
 pkgbase = hjson-cpp
 	pkgdesc = Hjson for C++
-	pkgver = 2.4.1
+	pkgver = 2.5
 	pkgrel = 1
 	url = https://github.com/hjson/hjson-cpp
 	arch = i686
 	arch = x86_64
 	makedepends = cmake
 	provides = hjson-cpp
-	source = https://github.com/hjson/hjson-cpp/archive/2.4.1.tar.gz
-	sha256sums = 03bf3f559eb84f299752b64b4033b68bf0850696db5566160eb403db74b3ef11
+	source = https://github.com/hjson/hjson-cpp/archive/refs/tags/2.5.tar.gz
+	sha256sums = f064235842a39b5d8b70b296c2782226a4df73bfbbc5f7df83fb4ce522a3d665
 
 pkgname = hjson-cpp
