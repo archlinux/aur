@@ -3,12 +3,9 @@ pkgbase = calibre-plugin-dedrm
 	pkgver = 10.0.3
 	pkgrel = 1
 	url = https://github.com/noDRM/DeDRM_tools/
-	arch = x86_64
-	license = GPL3
-	makedepends = unzip
-	makedepends = zip
+	arch = any
+	license = GPL-3.0-only
 	depends = calibre>=5.15
-	optdepends = openssl: for crytographic primitives
 	optdepends = python-pycryptodome: for crytographic primitives
 	source = DeDRM_tools-10.0.3.tar.gz::https://github.com/noDRM/DeDRM_tools/archive/refs/tags/v10.0.3.tar.gz
 	sha256sums = 19af048a4caef3e3e7539a496ee2d4906fe500d238c5db66b5aff5df3fdbde73

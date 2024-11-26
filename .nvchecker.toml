@@ -1,0 +1,4 @@
+[calibre-plugin-dedrm]
+source = "github"
+github = "noDRM/DeDRM_tools"
+use_latest_release = true
