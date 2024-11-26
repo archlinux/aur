@@ -3,7 +3,7 @@
 _pyname=qdldl-python
 pkgname=python-qdldl
 pkgver=0.1.7.post4
-pkgrel=2
+pkgrel=3
 pkgdesc='Python interface to the QDLDL free LDL factorization routine for quasi-definite linear systems'
 url='https://github.com/oxfordcontrol/qdldl-python/'
 license=(Apache-2.0)
