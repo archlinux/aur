@@ -6,21 +6,21 @@ pkgdesc="DNA/RNA/etc simulator, with CUDA support and analysis tools."
 
 url="https://github.com/lorenzo-rovigatti/oxDNA"
 
-pkgver=3.6.1
+pkgver=3.7.0
 arch=('x86_64')
 license=('GPL3')
 provides=('oxdna')
 conflicts=('oxdna')
-pkgrel=2
+pkgrel=1
 
 depends=('python3' 'python-matplotlib' 'python-scikit-learn' 'python-setuptools' 'ipython')
 
 makedepends=('git' 'cmake' 'gsl' 'cuda>=12.6.1' 'gcc12' 'python-build' 'python-wheel' 'python-installer' 'cython' 'python-setuptools-scm')
 optdepends=('python-matplotlib: for plotting')
 
-source=("https://github.com/lorenzo-rovigatti/oxDNA/archive/refs/tags/v3.6.1.tar.gz")
+source=("https://github.com/lorenzo-rovigatti/oxDNA/archive/refs/tags/v3.7.0.tar.gz")
 
-sha256sums=('7e08c9d3551e18401de495cfccfe5dfcb8a8c162cc765cabc2875fc47897826b')
+sha256sums=('74d6675a544e9c7a52ff692e698744f190a508c65d62dd08c065ff887414a787')
 
 build() {
     cmake -B build -S "oxDNA-${pkgver}" \
@@ -33,7 +33,8 @@ build() {
         -DPython=ON \
         -DCMAKE_SKIP_RPATH=YES \
         -DCMAKE_INSTALL_LIBDIR='lib/oxdna' \
-        -DOxpySystemInstall=ON
+        -DOxpySystemInstall=ON \
+        -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF \
 
     cmake --build build
 
@@ -54,5 +55,5 @@ package() {
     cd "${srcdir}/build/oxpy/python/oxpy"
     python setup.py install --root="$pkgdir" --optimize=1
 
-    install -Dm644 "${srcdir}/build/src/liboxdna_common.so" "${pkgdir}/usr/lib/liboxdna_common.so"
+    install -Dm644 "${srcdir}/build/src/liboxdna_common.so" "${pkgdir}/usr/lib/"
 }
