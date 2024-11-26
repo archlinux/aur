@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy-bin
 _pkgname=Escrcpy
-pkgver=1.27.1
+pkgver=1.27.2
 _electronversion=33
 pkgrel=1
 pkgdesc="📱 Graphical Scrcpy to display and control Android, devices powered by Electron(Prebuilt version.Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
@@ -26,8 +26,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('03202e39e0a2a826979dcec4b2c9b392d48145556ed0ab05cd47e6e1dbe391da')
-sha256sums_x86_64=('2c248cbe47c4d0e10b10157a04c00a27bcffd5b67cbf482ae09c450656d83594')
+sha256sums_aarch64=('4224944188fbc16e18b3f3029efddbcbc1145f498af43ee025a3c4c15171d396')
+sha256sums_x86_64=('2c11758036e7ceebf4ad7ec64a400a4ce5369a402b02bf6644859cd5ed8ce8a0')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/
