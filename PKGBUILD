@@ -3,7 +3,7 @@
 
 pkgname=cyberghostvpn-gui
 pkgver=1.0.1   # Update with the latest release version
-pkgrel=2
+pkgrel=3
 pkgdesc="A GUI for CyberGhost VPN"
 arch=('x86_64')
 url="https://github.com/picharly/cyberghostvpn-gui"
