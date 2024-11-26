@@ -19,8 +19,10 @@ makedepends=(
 )
 source=(
   "${pkgname}::git+https://github.com/z4yx/pam_rssh.git#commit=${_commit}"
+  "cargo-update-time.diff"
 )
 sha256sums=(
+  "SKIP"
   "SKIP"
 )
 
@@ -29,6 +31,7 @@ prepare() {
   git submodule init
   git -c protocol.file.allow=always submodule update
   export RUSTUP_TOOLCHAIN=stable
+  git apply < "${srcdir}/cargo-update-time.diff"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
