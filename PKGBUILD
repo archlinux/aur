@@ -1,0 +1,86 @@
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: pika02 (https://aur.archlinux.org/account/pika02, <pikakolendo02 ät gmail döt com>)
+# Contributor: Cygn
+# Contributor: masmu
+
+_pkgname=pa-dlna
+pkgname="${_pkgname}-git"
+pkgver=0.14.r389.20241103.6c16282
+pkgrel=1
+pkgdesc="Forwards audio streams to DLNA devices. For PulseAudio or PipeWira (via 'python-libpulse'). Latest git checkout."
+arch=(
+  'any'
+)
+url="https://gitlab.com/xdegaye/pa-dlna"
+license=('MIT')
+provides=(
+  "pa-dlna=${pkgver}"
+  "upnp-cmd=${pkgver}"
+  "upnp-cmd-git=${pkgver}"
+  "PULSEAUDIO-DLNA-SINK"
+)
+conflicts=(
+  "pa-dlna"
+  "upnp-cmd"
+)
+depends=(
+  'libpulse' # For `parec` executable
+  'python>=3.8'
+  'python-psutil'
+  'python-libpulse'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-flit-core'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+optdepends=(
+  'ffmpeg: multiple formats support'
+  'flac: flac transcoding support'
+  'lame: mp3 transcoding support'
+  'pulse-native-provider: To be used by a local pulseaudio implementation'
+  'pipewire: To be used by a local pipewire implementation'
+)
+source=("${_pkgname}::git+${url}.git")
+sha256sums=('SKIP')
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  git log > git.log
+}
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+
+  _ver="$(git describe  --tags | sed -E -e 's|^pa-dlna-||' -e 's|^[vV]||' | sed 's|-g[0-9a-fA-F]*$||' | tr '-' '+')"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
+
+  if [ -z "${_ver}" ]; then
+    error "Version could not be determined."
+    return 1
+  else
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+  fi
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}"
+
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  install -D -m644 -v -t "${pkgdir}/usr/share/doc/${_pkgname}" README.rst git.log
+  install -D -m644 -v -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE"
+}
+
