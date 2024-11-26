@@ -13,7 +13,7 @@
 
 pkgname=docker-git
 _pkgname=docker
-pkgver=27.3.1+r50595+g7a23d69f7
+pkgver=27.3.1+r50606+g2f6953fcd
 pkgrel=1
 pkgdesc='Pack, ship and run any application as a lightweight container -git latest'
 arch=('x86_64' 'aarch64')
