@@ -2,11 +2,11 @@
 pkgname=wordpress-studio-git
 _appname=Studio
 _pkgname="WordPress ${_appname}"
-pkgver=1.1.4.r1.g407317a
+pkgver=1.2.2.r0.gf3462c5
 _electronversion=29
 _nodeversion=20
 pkgrel=1
-pkgdesc="A free desktop app that helps developers streamline their local WordPress development workflow."
+pkgdesc="A free desktop app that helps developers streamline their local WordPress development workflow.(Use system-wide electron)"
 arch=('any')
 url="https://developer.wordpress.com/studio/"
 _ghurl="https://github.com/Automattic/studio"
@@ -57,6 +57,7 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
