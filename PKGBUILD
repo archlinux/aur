@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-libevent
 pkgver=2.1.12
-pkgrel=2
+pkgrel=3
 pkgdesc="An event notification library (mingw-w64)"
 arch=(any)
 url="http://www.monkey.org/~provos/libevent"

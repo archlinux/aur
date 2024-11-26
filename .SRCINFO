@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libevent
 	pkgdesc = An event notification library (mingw-w64)
 	pkgver = 2.1.12
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.monkey.org/~provos/libevent
 	arch = any
 	license = BSD
