@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=avda-bin
 _pkgname="Aegis Vault Desktop App"
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="A desktop app for viewing one-time passwords generated from Aegis Authenticator backups.(Written in GO,prebuilt version)"
 arch=("x86_64")
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux.zip"
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/Sammy-T/avda/v${pkgver}/build/appicon.png"
 )
-sha256sums=('7d76adc7716fb2bb52210003ff84b2658773521fb415404b9bcd151918ece6f6'
+sha256sums=('2cccc70a6eb39490d1329ab943255ed9cd1d358cfb6f647c47f48912de9f921d'
             'e83f71b586a1e3aaff6e91877a290433c49c40ff4dea526fd35ea1bc887b452b')
 build() {
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin}"
