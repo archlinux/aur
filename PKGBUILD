@@ -3,7 +3,7 @@
 # Maintainer: Patrick Münch <patrick@mondoo.com>
 #
 pkgname=cnquery
-orignalVersion="11.31.1"
+orignalVersion="11.32.0"
 pkgver="${orignalVersion/-/_}"
 pkgrel=1
 pkgdesc="Cloud-Native Query - Asset Inventory Framework"
@@ -14,7 +14,7 @@ source=("https://releases.mondoo.com/cnquery/${orignalVersion}/cnquery_${orignal
 arch=('x86_64')
 depends=()
 
-sha256sums=('c9719fae8d67cef9c50a94e090c1a628a863c3b0510f464d39c4152db9b00e2e'
+sha256sums=('0b28a30f659c714fe6bc9d8ca9f575aa66a5f39f70a6695873eca91f73a39ecc'
             )
 
 
