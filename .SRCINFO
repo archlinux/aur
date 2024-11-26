@@ -1,7 +1,7 @@
 pkgbase = openarc-git
 	pkgdesc = Open source implementation of the ARC email authentication system
 	pkgver = 1.2.0.r17.g3ff4b07
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/flowerysong/OpenARC
 	arch = x86_64
 	license = BSD-2-Clause
@@ -18,11 +18,11 @@ pkgbase = openarc-git
 	optdepends = smtp-server: for using a local mail server
 	optdepends = bind: required only for signature verification (alternatives available)
 	optdepends = python: required for build, but also for "openarc-keygen"
+	optdepends = libmilter-sharedlib: libmilter, built with local CFLAGS, LDFLAGS, and shared library instead of static archive (recommended)
 	optdepends = dkimpy-milter: for optional tests
 	optdepends = perl-mail-dkim: for optional tests
 	provides = openarc
 	conflicts = openarc
-	conflicts = openarc-unofficial-patches
 	backup = etc/openarc/openarc.conf
 	source = git+https://github.com/flowerysong/OpenARC.git#branch=main
 	source = openarc.service
