@@ -4,7 +4,7 @@
 pkgname='python-metno-locationforecast'
 _pkgname="${pkgname#python-}"
 epoch=1
-pkgver=1.2.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Python interface for the MET Norway Locationforecast/2.0 weather service'
 arch=('any')
@@ -12,15 +12,16 @@ license=('MIT')  # SPDX-License-Identifier: MIT
 url='https://github.com/Rory-Sullivan/metno-locationforecast'
 source=(
   "$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
-  'setup-py.diff'
 )
 depends=(
-  'python'
-  'python-requests'
+  'python>=3.9'
+  'python-requests>=2.25.1'
+  'python-tzdata>=2020.5'
 )
 makedepends=(
   'python-build'
   'python-installer'
+  'python-setuptools>=75.2'
   'python-wheel'
 )
 changelog="$pkgname.changelog"
@@ -28,7 +29,8 @@ changelog="$pkgname.changelog"
 prepare() {
   cd "$_pkgname-$pkgver"
 
-  patch -Np1 -i "$srcdir/setup-py.diff"
+  # See https://github.com/Rory-Sullivan/metno-locationforecast/issues/10
+  sed -i 's/"setuptools>=75.6"/"setuptools>=75.2"/g' pyproject.toml
 }
 
 build() {
@@ -42,18 +44,17 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -vDm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     {CHANGELOG,README}.md
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+    LICENSE
 }
 
 sha256sums=(
-  '1b5cc928fe8cededdd2eb86443e73130591f9414b6d3e0e81712053facf395f1'
-  'd8c2128c2deb3dc5ac2b0d27817269f2b830466b3b6553b96bea2d1c7c4fd14a'
+  '4ec5b8284bf1dca04c040a79823abff84101dcff68fb6fe418c18757329314a9'
 )
 b2sums=(
-  'de9e2182692db57101dee8217b539db4cd0fab97e86b54c9bed3f285bf2128e1279dd36dbf60eaf5f1e08111c8d097c80865a288bf3ffe156c1e5bb5cd3d300c'
-  '09f0f08eb3bfb6a1be64e65cb4ec1d1d8714ef3c73faa181b5652090aee7ab33ce166a41a14b959bf0a2fc69cc11e75b35fcf3295ea3c6486f5de66e64145d75'
+  '04429571d96dc4ecd6f11c5f8c0d47ee6ff035701415f203043505788937accd8c6e07b5937f7a95c6b53d6fdb1cca54e0647b3dd01bc5863f59a9b2780ec989'
 )
 
 # eof
