@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-gjs-osk-git
+	pkgdesc = A (marginally) better on screen keyboard for GNOME 45+.
+	pkgver = r177.3e461bb
+	pkgrel = 1
+	url = https://github.com/Vishram1123/gjs-osk
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = dconf
+	provides = gnome-shell-extension-gjs-osk
+	conflicts = gnome-shell-extension-gjs-osk
+	source = git+https://github.com/Vishram1123/gjs-osk.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-gjs-osk-git
