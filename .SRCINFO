@@ -1,11 +1,15 @@
 pkgbase = fusesoc
 	pkgdesc = Package manager and build abstraction tool for FPGA/ASIC development
 	pkgver = 2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/olofk/fusesoc
 	arch = any
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = python-setuptools-scm
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-edalize
 	depends = python-pyparsing
