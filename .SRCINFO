@@ -1,6 +1,6 @@
 pkgbase = python-bump-my-version
 	pkgdesc = A small command line tool to simplify releasing software by updating all version strings
-	pkgver = 0.27.0
+	pkgver = 0.28.1
 	pkgrel = 0
 	url = https://github.com/callowayproject/bump-my-version
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-bump-my-version
 	depends = python-rich-click
 	depends = python-tomlkit
 	depends = python-wcmatch
-	source = https://github.com/callowayproject/bump-my-version/releases/download/0.27.0/bump_my_version-0.27.0.tar.gz
-	sha256sums = 483c517af91559644d45036648e5d99f4f8c85f8d01394097d3d3e42c9e6acad
+	source = https://github.com/callowayproject/bump-my-version/releases/download/0.28.1/bump_my_version-0.28.1.tar.gz
+	sha256sums = e608def5191baf505b6cde88bd679a0a95fc4cfeace4247adb60ac0f8a7e57ee
 
 pkgname = python-bump-my-version
