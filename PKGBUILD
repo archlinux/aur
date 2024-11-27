@@ -1,7 +1,7 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=phasher
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Simple CLI program hashing passwords into PHC strings"
 arch=("x86_64" "aarch64")
