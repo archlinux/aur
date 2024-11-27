@@ -1,7 +1,7 @@
 pkgbase = anydesk-bin
 	pkgdesc = The Fast Remote Desktop Application
 	pkgver = 6.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://anydesk.com
 	arch = x86_64
 	license = custom

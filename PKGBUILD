@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=anydesk-bin
 pkgver=6.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The Fast Remote Desktop Application"
 arch=('x86_64')
 url="https://anydesk.com"
@@ -20,6 +20,8 @@ package() {
 
     # install desktop entry
     install -Dm 644 "${srcdir}/anydesk-${pkgver}/anydesk.desktop" "${pkgdir}/usr/share/applications/anydesk.desktop"
+    # workaround to fix crashes
+    sed -i 's/^Exec=/Exec=env GDK_BACKEND=x11 /' "${pkgdir}/usr/share/applications/anydesk.desktop"
 
     # install polkit action
     install -Dm 644 "${srcdir}/anydesk-${pkgver}/polkit-1/com.anydesk.anydesk.policy" "${pkgdir}/usr/share/polkit-1/actions/com.anydesk.anydesk.policy"
