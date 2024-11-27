@@ -1,7 +1,7 @@
 # Maintainer: Snowstorm64
 
 pkgname=librashader
-pkgver=0.5.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A preprocessor, compiler, and runtime for RetroArch 'slang' shaders, rewritten in pure Rust."
 arch=("x86_64" "aarch64")
@@ -13,7 +13,7 @@ options=(!lto) # workaround for some missing symbols
 provides=("librashader")
 conflicts=("librashader")
 source=("https://github.com/SnowflakePowered/librashader/archive/refs/tags/librashader-v${pkgver}.tar.gz")
-sha512sums=("21e860ba2b2ce4d94fea949db152f22fe4cdc399b70ae5cabd58c49c95384ea42b95fa46cbdd7b2d5a4470314750f65837dab82dc9367623c08277e559f1f430")
+sha512sums=("ce1a81d02ecbaafc81ff53c7482df4c3ada255d01eb537705a6029f0a9cc8c2ced5464058237c750d684e90e4198e0d006dc9cadaee3612d653df255918a3f9f")
 _build_profile="optimized"
 _fix_pkgname="${pkgname}-${pkgname}"
 
