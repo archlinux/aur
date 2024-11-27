@@ -10,7 +10,7 @@ index 85b75f3..b890f50 100644
  CLEAN="make clean"
  BUILT_MODULE_NAME[0]="hid-universal-pidff"
 diff --git a/hid-pidff-wrapper.c b/hid-pidff-wrapper.c
-index a5a66dd..944ea5a 100644
+index a5a66dd..bec8a50 100644
 --- a/hid-pidff-wrapper.c
 +++ b/hid-pidff-wrapper.c
 @@ -52,19 +52,19 @@ static const struct hid_device_id pidff_wheel_devices[] = {
@@ -20,7 +20,7 @@ index a5a66dd..944ea5a 100644
 -static u8 *moza_report_fixup(struct hid_device *hdev, __u8 *rdesc,
 -                                        unsigned int *rsize)
 +static const u8 *moza_report_fixup(struct hid_device *hdev, __u8 *rdesc,
-+                                   unsigned int *rsize)
++				   unsigned int *rsize)
  {
 -		// Fix data type on PID Device Control
 +	// Fix data type on PID Device Control
