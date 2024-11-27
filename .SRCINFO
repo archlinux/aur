@@ -1,6 +1,6 @@
 pkgbase = certbot-dns-duckdns
 	pkgdesc = Plugin for certbot for a DNS-01 challenge with a DuckDNS domain
-	pkgver = 1.3.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/infinityofspace/certbot_dns_duckdns
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = certbot-dns-duckdns
 	depends = certbot
 	depends = python-dnspython
 	depends = python-requests
-	source = https://github.com/infinityofspace/certbot_dns_duckdns/archive/refs/tags/v1.3.tar.gz
-	sha256sums = 1faa4ebfb4902056dd90d45f8544a925d81ce8df34ab5d232acfb97e1bf12848
+	source = https://github.com/infinityofspace/certbot_dns_duckdns/archive/refs/tags/v1.5.tar.gz
+	sha256sums = 76ffe14b0bff703be3c5a6ebc0c390cb7941c26d14cca0da742d6ef3534e22b9
 
 pkgname = certbot-dns-duckdns
