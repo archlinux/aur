@@ -1,15 +1,16 @@
-# Maintainer: <craven@gmx.net>
-# Former Maintainer: Milos Negovanovic <milos.negovanovic@gmail.com>
+# Maintainer: Farzin Monsef <farzin@inphraz.ir>
+# Maintainer: ecraven <craven@gmx.net>
+# Contributor: Milos Negovanovic <milos.negovanovic@gmail.com>
 
 pkgname=ocilib
-pkgver=4.2.0
+pkgver=4.7.6
 pkgrel=1
 pkgdesc='OCILIB (C and C++ Driver for Oracle)'
 arch=('i686' 'x86_64')
 url='https://github.com/vrogier/ocilib'
-license=('LGPL2')
+license=('Apache-2.0')
 source=("https://github.com/vrogier/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-gnu.tar.gz")
-md5sums=('2705be616149b68419e27dafec0d7010')
+md5sums=('6ec396573d171ced7276f0f45cd33dd4')
 depends=(oracle-instantclient-sdk)
 
 build() {
