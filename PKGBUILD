@@ -3,22 +3,17 @@
 
 
 pkgname=('python-mdtraj')
-pkgver=1.9.7
+pkgver=1.10.1
 pkgrel=1
 pkgdesc='A modern, open library for the analysis of molecular dynamics trajectories'
 url='http://mdtraj.org/'
 license=("LGPL")
 arch=('x86_64')
 depends=('python-astunparse') 
-makedepends=('python-setuptools' 'cython')
+makedepends=('python-versioneer' 'python-setuptools' 'cython')
 options=('!libtool')
 source=("https://github.com/SimTk/mdtraj/archive/${pkgver}.tar.gz")
-sha256sums=('5c84c41e3a01e6512ac7077d153c8cb1ee01d82140ca532507c50c87650937e6')
-
-#Using gcc8 as compiler due to compilation problems
-#export CC=gcc-8
-#export CXX=g++-8
-
+sha256sums=('7272a6c6aed8902ac43dce2bf503db39879289c07307300285cf3ecc0f213ca9')
 
 build() {
   msg2 "Building mdtraj"
