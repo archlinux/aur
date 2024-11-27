@@ -1,8 +1,8 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=hurrycurry-server
-pkgver=2.2.0
-pkgrel=6
+pkgver=2.2.1
+pkgrel=7
 pkgdesc="A game about cooking (server)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://codeberg.org/hurrycurry/hurrycurry"
@@ -14,7 +14,7 @@ source=("hurrycurry-$pkgver.tar.gz::https://codeberg.org/hurrycurry/hurrycurry/a
         "hurrycurry.yaml"
         "tmpfiles.conf"
         "sysusers.conf")
-sha256sums=('55612d9d7fa10af650582dcaf4d5f03bc227b5b279c2b62aea754fa9fabeefc6'
+sha256sums=('c33ac0383534d30c107438cc022ea1656c80fbbdeaa2398bbe3b9a363a9346dd'
             '2e10c8882ef4847586f03ac5feb469294c1b2304928f8df41db12a1d84569eb7'
             'dec75b020f3a0bfc5c22f0fa013fe03d06feab608f9d4a42fb46d05dbed56844'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
@@ -53,5 +53,6 @@ package() {
     install -Dm644 hurrycurry/data/index.yaml "$pkgdir/usr/share/hurrycurry/data/index.yaml"
     install -Dm664 -t "$pkgdir/usr/share/hurrycurry/data/recipes" hurrycurry/data/recipes/*.yaml 
     install -Dm664 -t "$pkgdir/usr/share/hurrycurry/data/maps" hurrycurry/data/maps/*.yaml 
+    install -Dm664 hurrycurry/data/book.json "$pkgdir/usr/share/hurrycurry/data/book.json" 
     install -Dm664 -t "$pkgdir/usr/share/doc/hurrycurry/recipes" hurrycurry/data/recipes/*.svg 
 }
