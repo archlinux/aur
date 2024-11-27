@@ -1,10 +1,11 @@
-# Maintainer: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
+# Maintainer: envolution
+# Contributor: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Miguel Revilla <yo@miguelrevilla.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
-
+# shellcheck shell=bash disable=SC2034,SC2154
 pkgname=lib32-tcl-ar
-pkgver=8.6.14
+pkgver=8.6.15
 pkgrel=1
 pkgdesc='The Tcl scripting language (with *.a files)'
 arch=(x86_64)
@@ -20,7 +21,7 @@ depends=(
 makedepends=(multilib-devel)
 options=('staticlibs' '!lto')
 source=("https://cfhcable.dl.sourceforge.net/project/tcl/Tcl/${pkgver}/tcl${pkgver}-src.tar.gz")
-sha256sums=('5880225babf7954c58d4fb0f5cf6279104ce1cd6aa9b71e9a6322540e1c4de66')
+sha256sums=('861e159753f2e2fbd6ec1484103715b0be56be3357522b858d3cbb5f893ffef1')
 
 prepare() {
   cd tcl${pkgver}
@@ -53,14 +54,14 @@ package() {
     -e "s#${srcdir}/tcl${pkgver}#/usr/include#" \
     -i "${pkgdir}/usr/lib32/tclConfig.sh"
 
-  tdbcver=1.1.7
+  tdbcver=1.1.9
   sed -e "s#${srcdir}/tcl${pkgver}/unix/pkgs/tdbc${tdbcver}#/usr/lib32/tdbc${tdbcver}#" \
     -e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc${tdbcver}/generic#/usr/include#" \
     -e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc${tdbcver}/library#/usr/lib32/tcl${pkgver%.*}#" \
     -e "s#${srcdir}/tcl${pkgver}/pkgs/tdbc${tdbcver}#/usr/include#" \
     -i "${pkgdir}/usr/lib32/tdbc${tdbcver}/tdbcConfig.sh"
 
-  itclver=4.2.4
+  itclver=4.3.0
   sed -e "s#${srcdir}/tcl${pkgver}/unix/pkgs/itcl${itclver}#/usr/lib32/${itclver}#" \
     -e "s#${srcdir}/tcl${pkgver}/pkgs/itcl${itclver}/generic#/usr/include#" \
     -e "s#${srcdir}/tcl${pkgver}/pkgs/itcl${itclver}#/usr/include#" \
@@ -71,3 +72,4 @@ package() {
 }
 
 # vim: ts=2 sw=2 et:
+# vim:set ts=2 sw=2 et:

@@ -1,0 +1,6 @@
+[lib32-tcl-ar]
+source="cmd"
+cmd="""
+curl -s https://www.tcl.tk/software/tcltk/download.html | grep -o 'tcl8[0-9.]*-src\\.tar\\.gz' | sed -E 's/^tcl(8[0-9.]+)-src\\.tar\\.gz$/\\1/' | sort -V | tail -n 1
+"""
+
