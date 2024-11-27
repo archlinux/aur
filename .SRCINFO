@@ -1,6 +1,6 @@
 pkgbase = spla
 	pkgdesc = Specialized Parallel Linear Algebra
-	pkgver = 1.5.5
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/eth-cscs/spla
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = spla
 	license = BSD
 	makedepends = cmake
 	makedepends = gcc-fortran
+	makedepends = ninja
 	depends = openmpi
 	depends = cblas
-	optdepends = cuda: GPU Backend
-	source = spla-1.5.5.tar.gz::https://github.com/eth-cscs/spla/archive/refs/tags/v1.5.5.tar.gz
-	sha256sums = bc0c366e228344b1b2df55b9ce750d73c1165380e512da5a04d471db126d66ce
+	source = spla-1.6.1.tar.gz::https://github.com/eth-cscs/spla/archive/refs/tags/v1.6.1.tar.gz
+	sha256sums = 62b51e6ce05c41cfc1c6f6600410f9549a209c50f0331e1db41047f94493e02f
 
 pkgname = spla
