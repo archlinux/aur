@@ -11,7 +11,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/swpu-acm/algohub/releases/download/algohub-v$pkgver/algohub_0.1.1-nightly.11_amd64.deb")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('3635914e1843957328a7bac7b04de86a6824c4d2bcc8e40a1852aa4c7ce797d1')
 package() {
   tar -xz -f data.tar.gz -C "${pkgdir}"
 }
