@@ -4,7 +4,7 @@
 
 _pkgname="legcord"
 pkgname="$_pkgname-bin"
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Discord client with builtin client mod & theme support."
 url="https://github.com/Legcord/Legcord"
@@ -17,26 +17,22 @@ conflicts=("$_pkgname")
 options=('!strip')
 
 _pkgsrc="${_pkgname^}-$pkgver-linux-$CARCH"
-_pkgext="zip"
+_pkgext="rpm"
 
-noextract=("$_pkgsrc.$_pkgext")
+source_x86_64=("${_pkgname^}-$pkgver-linux-x86_64.$_pkgext"::"$url/releases/download/v$pkgver/${_pkgname^}-$pkgver-linux-x86_64.$_pkgext")
+source_aarch64=("${_pkgname^}-$pkgver-linux-aarch64.$_pkgext"::"$url/releases/download/v$pkgver/${_pkgname^}-$pkgver-linux-aarch64.$_pkgext")
 
-source=("legcord.png")
-source_x86_64=("${_pkgname^}-$pkgver-linux-x86_64.$_pkgext"::"$url/releases/download/v$pkgver/${_pkgname^}-$pkgver-linux-x64.zip")
-source_aarch64=("${_pkgname^}-$pkgver-linux-aarch64.$_pkgext"::"$url/releases/download/v$pkgver/${_pkgname^}-$pkgver-linux-arm64.zip")
-
-sha256sums=('2ac8985edf862912d42083007d1687cb6679f755b5e27ccd015d8266da51eb81')
-sha256sums_x86_64=('b8b8f2c03fc46e0c826c3f047fd6356c9e85489f69ffe44acd154a46a4e91b24')
-sha256sums_aarch64=('f1e7de556bf1a6c1f85c68b667bf03cb404ef27211aee15d47aa66fb20a4260c')
+sha256sums_x86_64=('cea3d705cc7b8a4ddafec48a53d14fabed80c9b783537bd66273055ba88ef634')
+sha256sums_aarch64=('5b359ea07e09bbe4bdb575eb98cb5fd03aef9023e9e3be306b15ced7bf7486a1')
 
 package() {
   install -dm755 "$pkgdir/$_install_path/$_pkgname"
-  bsdtar -C "$pkgdir/$_install_path/$_pkgname" -xf "$srcdir/$_pkgsrc.$_pkgext"
+  mv opt/Legcord/* "$pkgdir/$_install_path/$_pkgname/"
 
   install -dm755 "$pkgdir/usr/bin"
   ln -srf "$pkgdir/$_install_path/$_pkgname/legcord" "$pkgdir/usr/bin/legcord"
 
-  install -Dm644 "legcord.png" -t "$pkgdir/usr/share/pixmaps/"
+  install -Dm644 "usr/share/icons/hicolor/1024x1024/apps/legcord.png" -t "$pkgdir/usr/share/pixmaps/"
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
