@@ -1,21 +1,21 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=muon-meson
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="meson implementation in C"
 arch=(x86_64)
 url="https://muon.build"
 license=(GPL3)
-source=("https://git.sr.ht/~lattis/muon/archive/$pkgver.tar.gz")
-sha256sums=('d73db1be5388821179a25a15ba76fd59a8bf7c8709347a4ec2cb91755203f36c')
+source=("$url/releases/v$pkgver/muon-v$pkgver.tar.gz")
+sha256sums=('45f6ad728946a0788188004e3a88a77a7d07b48525ce0646430589d1db4c832e')
 depends=(pkgconf curl libarchive)
 makedepends=(ninja python-yaml scdoc)
 checkdepends=(git)
 provides=(muon)
 
 build() {
-  cd muon-$pkgver
+  cd "muon-v$pkgver"
   rm -rf build*
 
   msg2 "Building stage 1 (bootstrap)"
@@ -35,12 +35,12 @@ build() {
 }
 
 check() {
-  cd muon-$pkgver/build
+  cd "muon-v$pkgver/build"
   ./muon test
 }
 
 package() {
-  cd muon-$pkgver/build
+  cd "muon-v$pkgver/build"
   DESTDIR="$pkgdir" ./muon install
 
   # remove this as the `meson` package also provides it
