@@ -2,8 +2,8 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='mstflint'
-pkgver='4.28.0.1'
-_pkgver='4.28.0-1'
+pkgver='4.30.0.0'
+_pkgver='4.30.0-1'
 pkgrel='1'
 pkgdesc='Open source version of MFT (Mellanox Firmware Tools)'
 arch=('x86_64' 'aarch64')
@@ -11,10 +11,10 @@ url="https://github.com/Mellanox/${pkgname}"
 license=('GPL2' 'custom:"OpenIB.org BSD"')
 depends=('python' 'iniparser' 'openssl' 'libxml2' 'libidn2' 'libpsl'
 	 'libunistring' 'zlib' 'xz' 'icu' 'keyutils' 'brotli' 'sqlite'
-	 'jsoncpp' 'curl' 'libnghttp2')
+	 'libxml2' 'jsoncpp' 'curl' 'libnghttp2')
 makedepends=('rdma-core')
 source=("${url}/archive/v${_pkgver}/${pkgname}-${_pkgver}.tar.gz")
-sha256sums=('dca6bb3fc3571a16bbac310fe776ce829d22a67d399e888b4774308aad2058e8')
+sha256sums=('e4bc23f0512ecd3d6321bac9d80d4cca4f885b5264a12adbbc333c74b1baedae')
 
 prepare() {
   cd "${pkgname}-${_pkgver}"
@@ -28,7 +28,8 @@ prepare() {
     --libexecdir="/usr/lib" \
     --sysconfdir="/etc" \
     --localstatedir="/var/${pkgname}" \
-    --enable-fw-mgr
+    --enable-fw-mgr \
+    --enable-xml2
 }
 
 build() {
