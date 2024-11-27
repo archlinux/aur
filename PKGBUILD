@@ -2,7 +2,7 @@
 # Maintainer: Ferdinand Bachmann <theferdi265@gmail.com>
 
 pkgname=sv2v
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="SystemVerilog to Verilog conversion"
 url="https://github.com/zachjs/sv2v"
@@ -10,8 +10,17 @@ license=("custom: BSD3")
 arch=('x86_64')
 depends=('ghc-libs' 'haskell-cmdargs' 'haskell-githash' 'haskell-hashable' 'haskell-vector')
 makedepends=('ghc' 'alex' 'happy')
-source=("https://github.com/zachjs/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('06a5304b8b5c3cdfd9b43231d91d50f93b83c3dbf1c410e96b9e55705b8ca431')
+source=("https://github.com/zachjs/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
+        "commit-5374679e4bb26e115b9a9b4a2d8ef4253d7a8bf3.patch")
+sha256sums=('b64312c995f2d2792fbe610f4a0440259e7e2a9ad9032b37beabf621da51c6da'
+            '3c00cd5d53310a45ddbeadaf7e63008e5e48ca7594c80e28992e5f0e8bd76902')
+
+prepare() {
+  cd $pkgname-$pkgver
+  # allow building with happy v2
+  # https://github.com/zachjs/sv2v/commit/5374679e4bb26e115b9a9b4a2d8ef4253d7a8bf3
+  patch -p1 < "$srcdir/commit-5374679e4bb26e115b9a9b4a2d8ef4253d7a8bf3.patch"
+}
 
 build() {
   cd $pkgname-$pkgver
