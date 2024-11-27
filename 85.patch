@@ -1,0 +1,31 @@
+From 8aed502984426e008710bab2b44249489b549a22 Mon Sep 17 00:00:00 2001
+From: Robert Scheck <robert@fedoraproject.org>
+Date: Mon, 27 Sep 2021 23:15:48 +0200
+Subject: [PATCH] Check for gobjc availability on CentOS/RHEL/Rocky 8 (and
+ later) (fixes #79)
+
+Red Hat decided to remove the support for the Objective C language for Red
+Hat Enterprise Linux 8 (and later) from the GCC packages. Unfortunately GCC
+is not really modular, so /usr/bin/gcc keeps telling "Objective-C compiler
+not installed on this system" until the alternative GCC /usr/bin/gobjc from
+the gcc-objc RPM package from Fedora EPEL 8 is being used.
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index bcc0be5..8f2c8d8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -6,9 +6,9 @@ AC_CONFIG_HEADERS(config.h)
+ AC_CANONICAL_SYSTEM
+ 
+ # Compiler
+-AC_PROG_CC(clang gcc)
++AC_PROG_CC(clang gobjc gcc)
+ AC_PROG_CC_C99
+-AC_PROG_OBJC(clang gcc)
++AC_PROG_OBJC(clang gobjc gcc)
+ TR_WERROR
+ AC_CACHE_SAVE
+ 

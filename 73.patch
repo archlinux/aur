@@ -1,0 +1,22 @@
+From be9385c6f6b402c69a529a7412ea99d322669008 Mon Sep 17 00:00:00 2001
+From: Aniol Marti <amarti@caliu.cat>
+Date: Fri, 2 Aug 2019 23:42:52 +0000
+Subject: [PATCH] Delete empty CFLAGS from tools/Makefile.in in order to use
+ the ones provided by autoconf
+
+---
+ tools/Makefile.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tools/Makefile.in b/tools/Makefile.in
+index 4e49b48..e5796d3 100755
+--- a/tools/Makefile.in
++++ b/tools/Makefile.in
+@@ -11,7 +11,6 @@ include ${top_builddir}/Mk/subdir.mk
+ LEMON_OBJS=	lemon.o
+ 
+ MAKEHEADERS_OBJS=	makeheaders.o
+-CFLAGS=
+ 
+ all:: lemon makeheaders
+ 

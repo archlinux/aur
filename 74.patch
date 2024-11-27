@@ -1,0 +1,25 @@
+From 4ff4bbdef3fe10ffa565fd7e3be1c993a92cb2e5 Mon Sep 17 00:00:00 2001
+From: Aniol Marti <amarti@caliu.cat>
+Date: Fri, 2 Aug 2019 23:44:43 +0000
+Subject: [PATCH] Load LDFLAGS passed when running configure
+
+---
+ platform.m4 | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/platform.m4 b/platform.m4
+index d1f4ecf..16f31cb 100644
+--- a/platform.m4
++++ b/platform.m4
+@@ -95,9 +95,9 @@ AC_DEFUN(OD_CONFIG_PLUGIN, [
+ 	    # A sensible default
+ 	    PLUGIN_CFLAGS="-fPIC"
+ 	    PLUGIN_LD="${CC} -shared"
+-	    PLUGIN_LD_FLAGS=""
++	    PLUGIN_LD_FLAGS="${LDFLAGS}"
+ 	    PLUGIN_SUFFIX=".so"
+-	    LDFLAGS="-export-dynamic"
++	    LDFLAGS="-export-dynamic ${LDFLAGS}"
+ 	    ;;
+     esac
+ 

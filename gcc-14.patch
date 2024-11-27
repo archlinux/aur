@@ -1,0 +1,70 @@
+Description: Fix FTBFS with GCC 14.
+Author: Yavor Doganov <yavor@gnu.org>
+Forwarded: no
+Last-Update: 2024-08-19
+---
+
+--- openvpn-auth-ldap-2.0.4.orig/aclocal.m4
++++ openvpn-auth-ldap-2.0.4/aclocal.m4
+@@ -71,11 +71,12 @@
+ 		# '@:>@' = ']'
+ 		AC_LINK_IFELSE([
+ 				AC_LANG_PROGRAM([
++						#include <stdio.h>
+ 						#include <objc/objc.h>
+ 						#include <objc/Object.h>
+ 					], [
+ 						Object *obj = @<:@Object alloc@:>@;
+-						puts(@<:@obj name@:>@);
++						puts((const char*)@<:@obj name@:>@);
+ 					])
+ 				], [
+ 					# Linked without -pthread
+@@ -92,11 +93,12 @@
+ 			OBJCFLAGS="${OBJCFLAGS} ${PTHREAD_CFLAGS}"
+ 			AC_LINK_IFELSE([
+ 					AC_LANG_PROGRAM([
++							#include <stdio.h>
+ 							#include <objc/objc.h>
+ 							#include <objc/Object.h>
+ 						], [
+ 							Object *obj = @<:@Object alloc@:>@;
+-							puts(@<:@obj name@:>@);
++							puts((const char*)@<:@obj name@:>@);
+ 						])
+ 					], [
+ 						# Linked with -lpthread 
+@@ -134,7 +136,7 @@
+ 						], [
+ 							id class = objc_lookUpClass("Object");
+ 							id obj = @<:@class alloc@:>@;
+-							puts(@<:@obj name@:>@);
++							puts((const char*)@<:@obj name@:>@);
+ 						])
+ 					], [
+ 						od_cv_objc_runtime_apple="yes"
+@@ -156,6 +158,7 @@
+ 			# '@:>@' = ']'
+ 			AC_LINK_IFELSE([
+ 					AC_LANG_PROGRAM([
++							#include <stdio.h>
+ 							#include <objc/objc.h>
+ 							#ifdef __GNU_LIBOBJC__
+ 							#include <objc/runtime.h>
+@@ -163,13 +166,13 @@
+ 							#include <objc/objc-api.h>
+ 							#endif
+ 						], [
+-							#ifdef __GNU_LIBOBJC_
++							#ifdef __GNU_LIBOBJC__
+ 							Class class = objc_lookUpClass("Object");
+-							puts(class_getName(class));_
++							puts(class_getName(class));
+ 							#else
+ 							id class = objc_lookup_class("Object");
+ 							id obj = @<:@class alloc@:>@;
+-							puts(@<:@obj name@:>@);
++							puts((const char*)@<:@obj name@:>@);
+ 							#endif
+ 						])
+ 					], [
