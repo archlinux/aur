@@ -1,7 +1,7 @@
 pkgbase = archipelagomw-bin
 	pkgdesc = A Multi-Game Randomizer and Server
-	pkgver = 0.5.0
-	pkgrel = 3
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/ArchipelagoMW/Archipelago
 	arch = x86_64
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = archipelagomw-bin
 	depends = python-cymem
 	depends = python-orjson
 	depends = python-typing_extensions
-	source = https://github.com/ArchipelagoMW/Archipelago/releases/download/0.5.0/Archipelago_0.5.0_linux-x86_64.tar.gz
-	sha512sums = 2a326246b6ff72b4b0c91462da38a2f35deec31dd4f189eebea5f2502f8f16acb8c9e1502c4daee5cc60b57aff3f10cc9c80c425e3a3d5ebfeed3a53cc67a3ca
+	source = https://github.com/ArchipelagoMW/Archipelago/releases/download/0.5.1/Archipelago_0.5.1_linux-x86_64.tar.gz
+	sha512sums = 61240eaff8583f64b715ee151f7fa6d84df5abbfad46966cda7384cd4cb2fbffe1572195b0491604d173f8308302ddbb20663f3bc01a67e2c11282e6d59f8128
 
 pkgname = archipelagomw-bin
