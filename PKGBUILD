@@ -2,7 +2,7 @@
 
 pkgname=python-whey
 pkgver=0.0.24
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple Python wheel builder for simple projects'
 arch=('any')
 url='https://whey.readthedocs.io/'

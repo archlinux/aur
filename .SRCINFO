@@ -1,7 +1,7 @@
 pkgbase = python-whey
 	pkgdesc = A simple Python wheel builder for simple projects
 	pkgver = 0.0.24
-	pkgrel = 2
+	pkgrel = 3
 	url = https://whey.readthedocs.io/
 	arch = any
 	license = MIT
