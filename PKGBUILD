@@ -1,16 +1,16 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=DepotDownloader
 pkgname=steamdepotdownloader
-pkgver=2.7.3
+pkgver=2.7.4
 pkgrel=1
 pkgdesc="Steam depot downloader utilizing the SteamKit2 library."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/SteamRE/DepotDownloader"
 license=('GPL-2.0-only')
 depends=('glibc' 'gcc-libs' 'zlib')
-makedepends=('dotnet-sdk>=8.0.0')
+makedepends=('dotnet-sdk-bin') #Dotnet 9
 source=("$url/archive/refs/tags/DepotDownloader_${pkgver}.tar.gz")
-sha256sums=('ff17209c7bf47627aa1cc2abf2d652b198852f966cd0fa157f8668dd9499a034')
+sha256sums=('abc4ccb04f720d12b8907efff8ae3d1232b1ad28bcb7a7a3beba8a859f7a2055')
 options=('!strip')
 validpgpkeys=()
 
@@ -32,13 +32,13 @@ build() {
 package() {
 	case $CARCH in
 		x86_64)
-		install -Dm755 "$srcdir/$_pkgname-${_pkgname}_$pkgver/${_pkgname}/bin/Release/net8.0/linux-x64/publish/${_pkgname}" "$pkgdir/usr/bin/depotdownloader"
+		install -Dm755 "$srcdir/$_pkgname-${_pkgname}_$pkgver/${_pkgname}/bin/Release/net9.0/linux-x64/publish/${_pkgname}" "$pkgdir/usr/bin/depotdownloader"
 		;;
 		armv7h)
-		install -Dm755 "$srcdir/$_pkgname-${_pkgname}_$pkgver/${_pkgname}/bin/Release/net8.0/linux-arm/publish/${_pkgname}" "$pkgdir/usr/bin/depotdownloader"
+		install -Dm755 "$srcdir/$_pkgname-${_pkgname}_$pkgver/${_pkgname}/bin/Release/net9.0/linux-arm/publish/${_pkgname}" "$pkgdir/usr/bin/depotdownloader"
 		;;
 		aarch64)
-		install -Dm755 "$srcdir/$_pkgname-${_pkgname}_$pkgver/${_pkgname}/bin/Release/net8.0/linux-arm/publish/${_pkgname}" "$pkgdir/usr/bin/depotdownloader"
+		install -Dm755 "$srcdir/$_pkgname-${_pkgname}_$pkgver/${_pkgname}/bin/Release/net9.0/linux-arm/publish/${_pkgname}" "$pkgdir/usr/bin/depotdownloader"
 		;;
 	esac
 }
