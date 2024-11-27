@@ -3,12 +3,12 @@
 pkgname=monero-vanity-git
 _pkgname=monero-vanity
 pkgver=v0.6.0.r0.gdb90d31
-pkgrel=1
+pkgrel=2
 pkgdesc='Monero Vanity Address Generator GUI/CLI'
 url='https://github.com/hinto-janai/monero-vanity'
 arch=('x86_64')
 license=('custom')
-makedepends=('git')
+makedepends=('git' 'rust' 'cargo')
 conflicts=('monero-vanity-bin' 'monero-vanity')
 provides=('monero-vanity')
 source=("git+$url.git"
@@ -22,7 +22,6 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/-/.r/;s/-/./'
 }
 
-# prepare external repo dependencies... needs to be fixed...
 prepare() {
   cd $_pkgname/external
   rm -rf *

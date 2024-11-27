@@ -1,11 +1,13 @@
 pkgbase = monero-vanity-git
 	pkgdesc = Monero Vanity Address Generator GUI/CLI
 	pkgver = v0.6.0.r0.gdb90d31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hinto-janai/monero-vanity
 	arch = x86_64
 	license = custom
 	makedepends = git
+	makedepends = rust
+	makedepends = cargo
 	provides = monero-vanity
 	conflicts = monero-vanity-bin
 	conflicts = monero-vanity
