@@ -2,7 +2,7 @@
 
 _pkgname=libheif
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.19.1
+pkgver=1.19.5
 pkgrel=1
 pkgdesc='HEIF file format decoder and encoder (mingw-w64)'
 url='https://github.com/strukturag/libheif'
@@ -26,7 +26,7 @@ makedepends=('mingw-w64-cmake' 'ninja')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=('21510a709ab7eba6435cdb47e42eb54409319231ac9620c8997fe001dc5bee09')
+sha256sums=('5cd9a3e28493310358e1c1299cd596cc4c7ae5fb985eceb758fa6141424e58bb')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/${_pkgname}/archive/v${pkgver}.tar.gz")
 
 _srcdir="${_pkgname}-${pkgver}"
@@ -40,7 +40,7 @@ _flags=(
 	-DWITH_SvtEnc=ON # Only supported on 64 bits platforms
 	-DWITH_SvtEnc_PLUGIN=OFF
 	-DWITH_EXAMPLES=OFF
-	-DWITH_REDUCED_VISIBILITY=ON
+	-DWITH_REDUCED_VISIBILITY=OFF
 	-DWITH_DAV1D=ON
 	-DWITH_DAV1D_PLUGIN=OFF
 	-DWITH_FFMPEG_DECODER=ON
@@ -61,17 +61,32 @@ EOF
 	) > 'cmake/modules/FindRAV1E.cmake'
 
   sed -i 's/${${varName}_INCLUDE_DIR}/${${varName}_INCLUDE_DIRS}/' 'libheif/plugins/CMakeLists.txt'
+  sed -i 's|./${TEST_NAME}|${TEST_NAME}|g' 'tests/CMakeLists.txt'
+  sed -i \
+		-e 's/__declspec(dllexport)/__attribute__((__dllexport__))/' \
+		-e 's/__declspec(dllimport)/__attribute__((__dllimport__))/' \
+		'libheif/api/libheif/heif.h'
 }
 
 build() {
 	for _arch in ${_architectures}; do
 		${_arch}-cmake -G Ninja -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
 			-DBUILD_SHARED_LIBS=OFF \
+			-DBUILD_TESTING=OFF \
 			-DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
 
-		${_arch}-cmake -G Ninja -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}"
+		${_arch}-cmake -G Ninja -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
+			-DBUILD_TESTING=OFF
 		cmake --build "build-${_arch}"
+	done
+}
+
+check() {
+	for _arch in ${_architectures}; do
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=ON
+		cmake --build "build-${_arch}"
+		cmake --build "build-${_arch}" --target test
 	done
 }
 
