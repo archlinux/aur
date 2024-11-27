@@ -2,14 +2,14 @@
 
 _pkgname=uiua
 pkgname=uiua-git
-pkgver=0.13.0.r1.gd360def7
+pkgver=0.14.0.dev.3.r1.ga56d089f
 pkgrel=1
 pkgdesc='A stack-based array programming language'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://www.uiua.org/'
 license=('MIT')
-depends=('alsa-lib' 'gcc-libs' 'glibc')
-makedepends=('cargo' 'git')
+depends=('alsa-lib' 'gcc-libs' 'glibc' 'libffi')
+makedepends=('cargo' 'clang' 'git')
 provides=("uiua=${pkgver}")
 conflicts=('uiua')
 source=("${_pkgname}::git+https://github.com/uiua-lang/uiua")
@@ -33,7 +33,7 @@ build() {
     export CARGO_TARGET_DIR=target
 
     cd $_pkgname
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release --features 'full system'
 }
 
 check() {
@@ -41,7 +41,7 @@ check() {
     export CARGO_TARGET_DIR=target
 
     cd $_pkgname
-    cargo test --frozen --all-features
+    cargo test --frozen --features 'full system'
 }
 
 package() {

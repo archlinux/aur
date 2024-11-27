@@ -1,6 +1,6 @@
 pkgbase = uiua-git
 	pkgdesc = A stack-based array programming language
-	pkgver = 0.13.0.r1.gd360def7
+	pkgver = 0.14.0.dev.3.r1.ga56d089f
 	pkgrel = 1
 	url = https://www.uiua.org/
 	arch = aarch64
@@ -11,11 +11,13 @@ pkgbase = uiua-git
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = clang
 	makedepends = git
 	depends = alsa-lib
 	depends = gcc-libs
 	depends = glibc
-	provides = uiua=0.13.0.r1.gd360def7
+	depends = libffi
+	provides = uiua=0.14.0.dev.3.r1.ga56d089f
 	conflicts = uiua
 	options = !lto
 	source = uiua::git+https://github.com/uiua-lang/uiua
