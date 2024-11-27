@@ -2,7 +2,7 @@
 
 pkgname=harbor-cli
 pkgver=0.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Official Harbor CLI'
 arch=('x86_64')
 url='https://goharbor.io'
@@ -20,18 +20,11 @@ prepare() {
   mkdir build
 
   # download dependencies
-  export GOPATH="${srcdir}"
   go mod download
 }
 
 build() {
   cd "$pkgname"
-
-  # set Go flags
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOPATH="${srcdir}"
 
   # build harbor
   go build -o build/harbor \
