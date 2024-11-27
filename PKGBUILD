@@ -1,8 +1,8 @@
 # Maintainer: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 _author=olrtg
 pkgname=emmet-language-server
-pkgver=2.6.0
-pkgrel=3
+pkgver=2.6.1
+pkgrel=1
 pkgdesc="A language server for emmet.io"
 arch=("any")
 url="https://www.npmjs.com/package/@$_author/$pkgname"
@@ -11,7 +11,7 @@ depends=("nodejs")
 makedepends=("npm")
 noextract=("$pkgname-$pkgver.tgz")
 source=("https://registry.npmjs.org/@$_author/$pkgname/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('01df7e6c64939edde55e1f61bc1d04ac9b395465ff36d606408e19fe61abfe22')
+sha256sums=('578b85af828393585f1ba46469e14a059be6b2f11b906233d0c0447fc1795a68')
 
 package() {
 	cd $srcdir
