@@ -2,7 +2,7 @@
 
 pkgname=python-pyproject-parser
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Parser for pyproject.toml'
 arch=('any')
 url='https://github.com/repo-helper/pyproject-parser'

@@ -1,7 +1,7 @@
 pkgbase = python-pyproject-parser
 	pkgdesc = Parser for pyproject.toml
 	pkgver = 0.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/repo-helper/pyproject-parser
 	arch = any
 	license = MIT
