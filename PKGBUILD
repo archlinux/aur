@@ -5,7 +5,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=2.3.10.r0.g5441c7ed59
+pkgver=2.3.34.r0.ga71ea9917a
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -23,6 +23,7 @@ depends=(
     ffmpeg
     sdl2
     lld
+    shaderc
     qt6-base
     qt6-svg
     soundtouch
@@ -68,28 +69,9 @@ INSTALLDIR="${srcdir}/deps-build"
 source=(
     git+https://github.com/PCSX2/pcsx2.git
     git+https://github.com/PCSX2/pcsx2_patches.git
-    git+https://github.com/ianlancetaylor/libbacktrace.git#commit=$LIBBACKTRACE
-    git+https://github.com/google/shaderc.git#tag=v$SHADERC
-    git+https://github.com/KhronosGroup/glslang.git#commit=$SHADERC_GLSLANG
-    git+https://github.com/KhronosGroup/SPIRV-Headers.git#commit=$SHADERC_SPIRVHEADERS
-    git+https://github.com/KhronosGroup/SPIRV-Tools.git#commit=$SHADERC_SPIRVTOOLS
-    ShaderName.patch
 )
 install=pcsx2-git.install
 
-prepare() 
-{
-    cd "shaderc/third_party"
-    mv -n ../../glslang . 
-    mv -n ../../SPIRV-Headers spirv-headers
-    mv -n ../../SPIRV-Tools spirv-tools
-    cd ..
-    patch -p1 < "${srcdir}/pcsx2/.github/workflows/scripts/common/shaderc-changes.patch"
-
-    cd ${srcdir}/pcsx2
-
-    patch -p1 < "${srcdir}/ShaderName.patch"
-}
 
 pkgver() {
     cd pcsx2
@@ -98,30 +80,6 @@ pkgver() {
 
 build() 
 {
-    echo "Building libbacktrace..."
-    cd libbacktrace
-    ./configure --prefix="${srcdir}/deps-build"
-    make
-    make install
-
-    cd ${srcdir}
-
-    echo "Building shaderc..."
-    cd shaderc
-    cmake -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_PREFIX_PATH="${srcdir}/deps-build" \
-        -DCMAKE_INSTALL_PREFIX="${srcdir}/deps-build" \
-        -DSHADERC_SKIP_TESTS=ON \
-        -DSHADERC_SKIP_EXAMPLES=ON \
-        -DSHADERC_SKIP_COPYRIGHT_CHECK=ON \
-        -B build -G Ninja
-    cmake --build build --parallel
-    ninja -C build install
-    cd ..
-
-    mv ${srcdir}/deps-build/lib/libshaderc_shared.so.1 ${srcdir}/deps-build/lib/libshaderc_pcsx2.so.1
-
-
     # See .github/workflows/scripts/linux/generate-cmake-qt.sh
     cmake -S pcsx2 -B build \
     -G Ninja \
@@ -154,16 +112,9 @@ package() {
     install -Dm644 pcsx2/bin/resources/icons/AppIconLarge.png \
     "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/PCSX2.png
     install -Dm644 -t "${pkgdir}"/usr/share/PCSX2/resources/ patches.zip
-    install -Dm644 -t "${pkgdir}"/usr/lib/ ${srcdir}/deps-build/lib/libshaderc_pcsx2.so.1
 }
 
 sha256sums=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
     'SKIP'
     'SKIP'
 )
