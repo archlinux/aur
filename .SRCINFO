@@ -1,15 +1,17 @@
 pkgbase = ttf-juliamono-nerd-font
 	pkgdesc = JuliaMono, a font for programming, patched with Nerd Fonts (Regular, Mono, Propo)
-	pkgver = 0.056
-	pkgrel = 2
+	pkgver = 0.057
+	pkgrel = 1
 	url = https://github.com/mietzen/juliamono-nerd-font
 	arch = any
 	license = custom:SIL Open Font License v1.1
-	source = ttf-juliamono-nerd-font-mono-v0.056::https://github.com/mietzen/juliamono-nerd-font/releases/download/v0.056/fonts.zip
-	source = ttf-juliamono-nerd-font-variant-v0.056::https://github.com/dendarrion/juliamono-nerd-font-variant/releases/download/v0.056/ttf-juliamono-nerd-font-variant-v0.056.zip
+	noextract = ttf-juliamono-nerd-font-mono-v0.057
+	noextract = ttf-juliamono-nerd-font-variant-v0.057
+	source = ttf-juliamono-nerd-font-mono-v0.057::https://github.com/mietzen/juliamono-nerd-font/releases/download/v0.057/fonts.zip
+	source = ttf-juliamono-nerd-font-variant-v0.057::https://github.com/dendarrion/juliamono-nerd-font-variant/releases/download/v0.057/ttf-juliamono-nerd-font-variant-v0.057.zip
 	source = ttf-juliamono-nerd-font-license::https://raw.githubusercontent.com/mietzen/juliamono-nerd-font/main/LICENSE
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 5ae04001374093c52db7cc1726e4c0519d051022643c348477c32a034eaf4ddb
+	sha256sums = a89d190df85fdbb628c4d561fa98a3b67cc900eba8990fad0a35bc84cc3f7575
+	sha256sums = d27b85137453d4eb0893eee45bdc6eb79a661693680856f3f7df8bc77dfe902f
 
 pkgname = ttf-juliamono-nerd-font

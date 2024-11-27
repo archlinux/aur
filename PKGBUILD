@@ -1,8 +1,8 @@
 # Maintainer: James Barrios <hey@dendarrion.com>
 
 pkgname=ttf-juliamono-nerd-font
-pkgver=0.056
-pkgrel=2
+pkgver=0.057
+pkgrel=1
 pkgdesc="JuliaMono, a font for programming, patched with Nerd Fonts (Regular, Mono, Propo)"
 arch=('any')
 url="https://github.com/mietzen/juliamono-nerd-font"
@@ -27,4 +27,8 @@ package() {
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" "${pkgname}-license"
 }
 
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=(
+    '5ae04001374093c52db7cc1726e4c0519d051022643c348477c32a034eaf4ddb'
+    'a89d190df85fdbb628c4d561fa98a3b67cc900eba8990fad0a35bc84cc3f7575'
+    'd27b85137453d4eb0893eee45bdc6eb79a661693680856f3f7df8bc77dfe902f'
+)
