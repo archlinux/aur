@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop
 _pkgname=NVM-Desktop
-pkgver=4.0.4
+pkgver=4.0.5
 _nvmdver="${pkgver}"
 _nodeversion=20
 pkgrel=1
@@ -34,9 +34,9 @@ source_x86_64=("nvmd-${_nvmdver}-x86_64::${_nvmdurl}/releases/download/v${_nvmdv
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('a7c76584accb2257bd2eb0c830c645d7f4401c540cbf9f4fd700cf7f9ad11bbb')
-sha256sums_aarch64=('fa0002a185d1b1e5786bae6cbcdfc60f05394ee6f6ccd0c5773ae4ba4c9279d5')
-sha256sums_x86_64=('ef0dcca06f2bb6f929a3fd44779c487a3dc446e17de0fe72682642f954c253eb')
+sha256sums=('77c2fb01b5c90b8f619c97593ced3ca3867328d60ac56fbe4a6050b47d6d2676')
+sha256sums_aarch64=('da00acd5a6c1bfb3bd770fbbd4f1a945037a82d89d6259b108d94d25833a1bca')
+sha256sums_x86_64=('f1b560b0d2ba1c2f739c6c5576c2aae7c83e3f673fec9ca7dc30471fffb00228')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
