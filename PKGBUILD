@@ -3,7 +3,7 @@
 
 pkgname=qucs-s
 pkgver=24.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A spin-off of Qucs that supports other free SPICE circuit simulators like ngspice with the same Qucs GUI"
 arch=(
   x86_64
@@ -41,7 +41,7 @@ build() {
 	  -DCMAKE_INSTALL_PREFIX=/usr \
     -DWITH_QT6=ON \
 	  ..
-  cmake --build .
+  cmake --build . -j $(nproc)
 }
 
 package() {
