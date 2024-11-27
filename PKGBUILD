@@ -12,7 +12,7 @@ depends=('alsa-lib' 'gtk3' 'libnotify' 'libsecret' 'nss' 'xdg-utils')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("https://github.com/tagspaces/tagspaces/releases/download/v$pkgver/${pkgname%-bin}-linux-amd64-$pkgver.deb")
-sha256sums=('90b01323b9f6d5f85af26ade4303fc5b56b77aa63d5e9287bec1304813fb8f9f')
+sha256sums=('0899b89b5d29f40937f7e94ec6e6fad3ac7db2c0ec3670d411b9b13af17cefd4')
 
 package() {
   bsdtar -xvf data.tar.xz -C "$pkgdir/"
