@@ -3,19 +3,17 @@
 
 _pkgname=yojson
 pkgname=ocaml-${_pkgname}
-pkgver=2.1.2
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Low level JSON binary for OCaml"
 arch=('x86_64')
 url="https://github.com/ocaml-community/${_pkgname}"
 license=('BSD')
 options=('!strip' 'staticlibs')
-provides=('ocaml-yojson')
-conflicts=('ocaml-yojson')
 depends=('ocaml' 'ocaml-biniou' 'ocaml-easy-format')
-makedepends=('dune' 'cppo')
+makedepends=('dune')
 source=(https://github.com/ocaml-community/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tbz)
-sha256sums=('59f2f1abbfc8a7ccbdbf608894e5c75e8a76006e34899254446f83e200dfb4f9')
+sha256sums=('9abfad8c9a79d4723ad2f6448e669c1e68dbfc87cc54a1b7c064b0c90912c595')
 
 build() {
 	cd ${_pkgname}-${pkgver}
@@ -26,13 +24,13 @@ build() {
 	# we're using ocaml > 4.08
 	sed -i '/libraries seq/d' lib/dune
 
-	make all
+    dune build -p yojson
 }
 
 package() {
 	cd ${_pkgname}-${pkgver}
 
-	DESTDIR="${pkgdir}" dune install --prefix=/usr --libdir="/usr/lib/ocaml"
+	DESTDIR="${pkgdir}" dune install -p yojson --prefix=/usr --libdir="/usr/lib/ocaml"
 
 	# remove rogue dune-package file
 	rm -r "${pkgdir}"/usr/doc
