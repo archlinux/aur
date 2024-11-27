@@ -1,0 +1,4 @@
+[gnome-shell-frippery]
+source="regex"
+regex="gnome-shell-frippery-([0-9.]*).tgz"
+url="https://frippery.org/extensions/index.html"
