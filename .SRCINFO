@@ -1,17 +1,24 @@
 pkgbase = uiua
-	pkgdesc = An array-oriented stack programming language
-	pkgver = 0.0.20
+	pkgdesc = A stack-based array programming language
+	pkgver = 0.13.0
 	pkgrel = 1
-	url = https://www.uiua.org
+	url = https://www.uiua.org/
+	arch = aarch64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = cargo
+	makedepends = clang
 	makedepends = git
-	makedepends = rust
-	depends = glibc
-	depends = gcc-libs
 	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	depends = libffi
 	options = !lto
-	source = uiua::git+https://github.com/uiua-lang/uiua#commit=8b049494c2baabb62647291e2c32c8540b88c81c
-	b2sums = SKIP
+	source = uiua-0.13.0.tar.gz::https://github.com/uiua-lang/uiua/archive/0.13.0.tar.gz
+	b2sums = e56589ce6f576e9fd98e874a7fc65b2f74f759fe76febd86ec2448cf15d4c65439c3eb6003015b0ef6974fa037a42aa38cfc2d7cc8dcc34175cce188d9b7ac71
 
 pkgname = uiua

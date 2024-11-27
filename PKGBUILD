@@ -1,54 +1,44 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: wackbyte <wackbyte@protonmail.com>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=uiua
-pkgver=0.0.20
+pkgver=0.13.0
 pkgrel=1
-pkgdesc='An array-oriented stack programming language'
-arch=('x86_64')
-url='https://www.uiua.org'
+pkgdesc='A stack-based array programming language'
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
+url='https://www.uiua.org/'
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'alsa-lib')
-makedepends=('git' 'rust')
-options=('!lto')
-_commit='8b049494c2baabb62647291e2c32c8540b88c81c'
-source=("$pkgname::git+https://github.com/uiua-lang/uiua#commit=$_commit")
-b2sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
+depends=('alsa-lib' 'gcc-libs' 'glibc' 'libffi')
+makedepends=('cargo' 'clang' 'git')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/uiua-lang/uiua/archive/${pkgver}.tar.gz")
+b2sums=('e56589ce6f576e9fd98e874a7fc65b2f74f759fe76febd86ec2448cf15d4c65439c3eb6003015b0ef6974fa037a42aa38cfc2d7cc8dcc34175cce188d9b7ac71')
+options=(!lto)
 
 prepare() {
-  cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
 
-  # download dependencies
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cd "${pkgname}-${pkgver}"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
 
-  cargo build --frozen --release --features audio
+    cd "${pkgname}-${pkgver}"
+    cargo build --frozen --release --all-features
 }
 
 check() {
-  cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
 
-  cargo test --frozen --all-features
+    cd "${pkgname}-${pkgver}"
+    cargo test --frozen --all-features
 }
 
 package() {
-  cd "$pkgname"
-
-  # binary
-  install -vDm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
-
-  # documentation
-  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" readme.md
-  cp -vr site "$pkgdir/usr/share/doc/$pkgname"
-
-  # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" license
+    cd "${pkgname}-${pkgver}"
+    install -Dm755 -t "${pkgdir}/usr/bin" "target/release/${pkgname}"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" license
 }
