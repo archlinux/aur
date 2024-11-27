@@ -1,8 +1,10 @@
 # Maintainer: tdiant <i@tdiant.net>
+# Contributor: Azure Zeng <weedycn at outlook dot com>
 # Contributor: Josh Cass <archlinux.okyuf@passmail.net>
+
 pkgname=quarkuscli-bin
-pkgver=3.16.4
-checksum=a466f8adcf96e58c19e1c7ab959f820c08e86f107b6255afcba9977e77babe9d
+pkgver=3.17.0
+checksum=39f41ab01d920787713b4d668a2a0cc140080bae1d6717985f3e9a9405d87fc5
 pkgrel=1
 pkgdesc='Create projects, manage extensions and perform build and development tasks for Quarkus, the Kubernetes Native Java stack tailored for OpenJDK HotSpot and GraalVM.'
 url='https://github.com/quarkusio/quarkus'
@@ -13,10 +15,11 @@ depends=('java-runtime')
 optdepends=()
 conflicts=()
 provides=('quarkus')
+options=(!strip)
 sha256sums_x86_64=("$checksum")
 
 package() {
   install -Dm0755 "${srcdir}/quarkus-cli-$pkgver/bin/quarkus" "${pkgdir}/usr/bin/quarkus"
-  install -Dm0644 "${srcdir}/quarkus-cli-$pkgver/bin/quarkus.bat" "${pkgdir}/usr/bin/quarkus.bat"
+  #install -Dm0644 "${srcdir}/quarkus-cli-$pkgver/bin/quarkus.bat" "${pkgdir}/usr/bin/quarkus.bat"
   install -Dm0644 "${srcdir}/quarkus-cli-$pkgver/lib/quarkus-cli-$pkgver-runner.jar" "${pkgdir}/usr/lib/quarkus-cli-$pkgver-runner.jar"
 }
