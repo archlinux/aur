@@ -5,24 +5,21 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=vocabsieve
 epoch=
-pkgver=0.12.0
+pkgver=0.12.4
 pkgrel=00
 pkgdesc='A simple, effective sentence mining tool.'
 arch=(any)
 url=https://github.com/FreeLanguageTools/vocabsieve
 license=(GPL3)
-depends=(python python-beautifulsoup4 python-bidict python-charset-normalizer python-ebooklib python-flask python-gevent python-loguru python-lxml python-markdown python-markdownify python-mobi python-packaging python-pymorphy3 python-pymorphy3-dicts-ru python-pymorphy3-dicts-uk python-pynput python-pyqt5 python-pyqtdarktheme python-pyqtgraph python-pystardict python-pysubs2 python-lzo python-readmdict python-requests python-sentence-splitter python-simplemma python-slpp python-typing_extensions)
-## EXTRA_DEPENDS ##
+depends=(python qt5-multimedia python-beautifulsoup4 python-bidict python-charset-normalizer python-ebooklib python-flask python-waitress python-loguru python-lxml python-markdown python-markdownify python-mobi python-packaging python-pymorphy3 python-pymorphy3-dicts-ru python-pymorphy3-dicts-uk python-pynput python-pyqt5 python-pyqtdarktheme-fork python-pyqtgraph python-pystardict python-pysubs2 python-lzo python-readmdict python-requests python-sentence-splitter python-simplemma python-slpp python-typing_extensions)
 makedepends=(python-pip)
 checkdepends=()
 provides=()
 conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
-source=(PKGBUILD_EXTRAS)
-md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/df/d8/8899c0360ac5ad4d8b7c259b1b1e8c2ba020c9c4cf2938addac1154c419e/vocabsieve-0.12.0-py3-none-any.whl)
-md5sums+=(2afca5d735ad0a3806f09c744a951421)
-noextract+=(vocabsieve-0.12.0-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/fa/41/914f18e114bd92de7c45fc9749bea605f15f014065d6f40f73eaf17d1c14/vocabsieve-0.12.4-py3-none-any.whl)
+md5sums+=(7fb241fa8f8dc1428deac777dda34d49)
+noextract+=(vocabsieve-0.12.4-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(1ebbd3e34237af26da5dc08a4e440464)
 
