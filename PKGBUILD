@@ -1,6 +1,6 @@
 # Maintainer: Talon <diablodev@googlegroups.com>
 pkgname=diablo-project-manager
-pkgver=git
+pkgver=1.6
 pkgrel=1
 pkgdesc="A Basic Project Manager"
 arch=("x86_64")
@@ -11,20 +11,15 @@ optdepends=('yad: allows you to run diablo-project-manager with passing -h and p
 makedepends=('shc')
 provides=("diablo-project-manager")
 conflicts=("diablo-project-manager-git")
-source=("$pkgname::git+$url.git")
+source=("$url/-/archive/${pkgver}/dpm-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
-pkgver() {
-	cd "$srcdir/$pkgname"
-	git describe --tags --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/dpm-1.6"
 	make PACKAGE="$pkgname" PREFIX="/usr" build
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/dpm-1.6"
 	make PACKAGE="$pkgname" DESTDIR="$pkgdir" PREFIX="/usr" install
 }
