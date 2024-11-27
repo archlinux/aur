@@ -1,7 +1,7 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
 pkgname=webtorrent-mpv-hook
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="script that allows mpv to stream torrents"
 arch=(any)
@@ -20,4 +20,4 @@ package() {
 	ln -srvf "$pkgdir/usr/lib/node_modules/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('b985a65e43081fc886bd1933eab36f5a3a01e9f257d20371f401170f2ef4df34')
+sha256sums=('73faf2a672581ef993f8ac678e37fe10b9a466a28ec21bd3c3050e54dd722539')
