@@ -5,7 +5,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=2.3.34.r0.ga71ea9917a
+pkgver=2.3.35.r0.g4eae1b7127
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -19,6 +19,7 @@ depends=(
     libpcap
     libglvnd
     libxrandr
+    libbacktrace
     alsa-lib
     ffmpeg
     sdl2
