@@ -1,8 +1,8 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 
 pkgname=kwin-effects-forceblur-git
-pkgver=r22.f93eeffb1
-pkgrel=2
+pkgver=r264.fb56661da
+pkgrel=1
 pkgdesc="KWin Blur effect fork with window class force blur feature (Wayland & X11)"
 arch=(x86_64)
 url="https://github.com/taj-ny/kwin-effects-forceblur"
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
     cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S "$pkgname"
-    make -j"$(nproc)" -C build
+    make -C build
 }
 
 package() {
