@@ -30,21 +30,26 @@ package() {
        
        install -Dm 755 ./usr/bin/SecureCRT ${pkgdir}/usr/bin/SecureCRT
 
-       install -Dm 755 ./usr/lib/scrt/libQt6Core5Compat.so.6 ${pkgdir}/usr/lib/scrt/libQt6Core5Compat.so.6
-       install -Dm 755 ./usr/lib/scrt/libQt6Multimedia.so.6 ${pkgdir}/usr/lib/scrt/libQt6Multimedia.so.6
-       install -Dm 755 ./usr/lib/scrt/libClientConfigUiQt.so ${pkgdir}/usr/lib/scrt/libClientConfigUiQt.so
-       install -Dm 755 ./usr/lib/scrt/libQt6Core.so.6 ${pkgdir}/usr/lib/scrt/libQt6Core.so.6
-       install -Dm 755 ./usr/lib/scrt/libQt6Network.so.6 ${pkgdir}/usr/lib/scrt/libQt6Network.so.6
+       install -Dm 755 ./usr/lib/scrt/libpython312Qt.so ${pkgdir}/usr/lib/scrt/libpython312Qt.so
+       install -Dm 755 ./usr/lib/scrt/libSSH2ClientQt.so ${pkgdir}/usr/lib/scrt/libSSH2ClientQt.so
        install -Dm 755 ./usr/lib/scrt/libCommonUiQt.so ${pkgdir}/usr/lib/scrt/libCommonUiQt.so
+       install -Dm 755 ./usr/lib/scrt/libQt6Multimedia.so.6 ${pkgdir}/usr/lib/scrt/libQt6Multimedia.so.6
+       install -Dm 755 ./usr/lib/scrt/libtlscore.so ${pkgdir}/usr/lib/scrt/libtlscore.so
        install -Dm 755 ./usr/lib/scrt/libQt6PrintSupport.so.6 ${pkgdir}/usr/lib/scrt/libQt6PrintSupport.so.6
-       install -Dm 755 ./usr/lib/scrt/libpython310Qt.so ${pkgdir}/usr/lib/scrt/libpython310Qt.so
        install -Dm 755 ./usr/lib/scrt/libQt6Gui.so.6 ${pkgdir}/usr/lib/scrt/libQt6Gui.so.6
        install -Dm 755 ./usr/lib/scrt/libQt6Widgets.so.6 ${pkgdir}/usr/lib/scrt/libQt6Widgets.so.6
-       install -Dm 755 ./usr/lib/scrt/libQt6DBus.so.6 ${pkgdir}/usr/lib/scrt/libQt6DBus.so.6
+       install -Dm 755 ./usr/lib/scrt/libQt6Core5Compat.so.6 ${pkgdir}/usr/lib/scrt/libQt6Core5Compat.so.6
+       install -Dm 755 ./usr/lib/scrt/plugins/printsupport/libcupsprintersupport.so ${pkgdir}/usr/lib/scrt/plugins/printsupport/libcupsprintersupport.so
+       install -Dm 755 ./usr/lib/scrt/plugins/platformthemes/libqgtk3.so ${pkgdir}/usr/lib/scrt/plugins/platformthemes/libqgtk3.so
        install -Dm 755 ./usr/lib/scrt/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so ${pkgdir}/usr/lib/scrt/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so
        install -Dm 755 ./usr/lib/scrt/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so ${pkgdir}/usr/lib/scrt/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so
        install -Dm 755 ./usr/lib/scrt/plugins/platforms/libqxcb.so ${pkgdir}/usr/lib/scrt/plugins/platforms/libqxcb.so
+       install -Dm 755 ./usr/lib/scrt/libssh2core.so ${pkgdir}/usr/lib/scrt/libssh2core.so
        install -Dm 755 ./usr/lib/scrt/lib/libQt6XcbQpa.so.6 ${pkgdir}/usr/lib/scrt/lib/libQt6XcbQpa.so.6
+       install -Dm 755 ./usr/lib/scrt/libClientConfigUiQt.so ${pkgdir}/usr/lib/scrt/libClientConfigUiQt.so
+       install -Dm 755 ./usr/lib/scrt/libQt6Core.so.6 ${pkgdir}/usr/lib/scrt/libQt6Core.so.6
+       install -Dm 755 ./usr/lib/scrt/libQt6Network.so.6 ${pkgdir}/usr/lib/scrt/libQt6Network.so.6
+       install -Dm 755 ./usr/lib/scrt/libQt6DBus.so.6 ${pkgdir}/usr/lib/scrt/libQt6DBus.so.6
 
 
        install -Dm 644 ./usr/share/vandyke/data/SecureCRT_fr.qm ${pkgdir}/usr/share/vandyke/data/SecureCRT_fr.qm
