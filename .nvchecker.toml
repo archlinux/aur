@@ -1,3 +1,3 @@
 [stygiansift-git]
 source="cmd"
-cmd="~/nvchecker/github_version.sh Mauitron StygianSift"
+cmd="~/nvchecker/github_version.py Mauitron/StygianSift --commits"
