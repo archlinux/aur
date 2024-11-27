@@ -18,6 +18,6 @@ pkgbase = algohub
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = https://github.com/swpu-acm/algohub/releases/download/algohub-v0.1.1-nightly.15/algohub_0.1.1-nightly.15_amd64.deb
-	sha256sums_x86_64 = 0742ab335960fbbbec71212ff42ba07c50e07b2f1123359e6b1409f86a20cadf
+	sha256sums_x86_64 = fbd8973d3b37752c4d20fadf78877c4b2b10765db1768dae26cc829cfc1cbc4d
 
 pkgname = algohub
