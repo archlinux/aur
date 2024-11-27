@@ -11,6 +11,7 @@ pkgbase = bobcat-git
 	depends = python-requests
 	depends = python-lxml
 	depends = python-beautifulsoup4
+	optdepends = python-unicodeit: LaTeX to unicode conversion
 	source = git+https://github.com/0WN463/bobcat
 	sha256sums = SKIP
 
