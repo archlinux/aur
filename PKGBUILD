@@ -1,5 +1,5 @@
 pkgname=rl_custom_rime
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="rime for readline"
 arch=(i686 x86_64 arm aarch64)
@@ -14,8 +14,8 @@ source=(
 )
 depends=(librime glib2 readline rl_custom_function)
 makedepends=(xmake)
-sha256sums=('41088dc9a03a53a0c2a99f2e1e0687b8a44059261cf5dba63dadc87db2de2696'
-            '012d1b8e8fe265fbd927af113fa7d54fc8704a449f9b86904767fe20378bea81'
+sha256sums=('f40e7052167b730ec9b0f695c1cbaed6eab03e0c54a9ae8ba1103abcf53fdfa8'
+            'f40e7052167b730ec9b0f695c1cbaed6eab03e0c54a9ae8ba1103abcf53fdfa8'
             'f4a75ea7b86ed7b652e514337746ea0232f88513ec6ab61a3c687a91b31d4a3c')
 
 export XMAKE_ROOT=y
