@@ -3,11 +3,11 @@
 
 pkgname=udp-over-tcp
 pkgver=0.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Proxy UDP traffic over a TCP stream"
 arch=('i686' 'x86_64')
 url="https://github.com/mullvad/udp-over-tcp"
-license=('Apache-2.0 OR MIT')
+license=('Apache-2.0 AND MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -18,7 +18,7 @@ prepare() {
   RUSTUP_TOOLCHAIN=stable \
   cargo fetch \
   --locked \
-  --target "$CARCH-unknown-linux-gnu"
+  --target "$(rustc -vV | sed -n 's/host: //p')"
 
 }
 
