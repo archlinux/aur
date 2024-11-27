@@ -1,15 +1,16 @@
 pkgbase = capa-bin
 	pkgdesc = The FLARE team's open-source tool to identify capabilities in executable files
 	pkgver = 7.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mandiant/capa
-	arch = x86_64
+	arch = any
 	license = Apache-2.0
-	optdepends = python2
+	provides = capa
 	conflicts = capa
+	conflicts = capa-git
 	source = https://github.com/mandiant/capa/releases/download/v7.4.0/capa-v7.4.0-linux-py312.zip
-	source = https://raw.githubusercontent.com/mandiant/capa/master/LICENSE.txt
-	sha512sums = c9f3f8f6f219bd93e8a46af4910a4011642fa1737889e09d40502aa613ffedb6773b5710317fbbb689ed69a5b7a4076df1d88ad21bbbeb2794befbef3b2d553d
+	source = LICENSE-7.4.0::https://raw.githubusercontent.com/mandiant/capa/master/LICENSE.txt
+	sha512sums = 38243f89582cb7a8511ccab85fd4a049c58393780d6304575efd9335f5ab203409175ddcc8d0d6126d9110d5f3db04772da6954b68ed214c02bfab690846ad6a
 	sha512sums = cfc7776e12281307fdbc69bad4fbe2572342466f4928e3e8f9c56020df4749003812586119b5a70bd008d74776c8bf157ae046c443d884793b8dec076e8f377a
 
 pkgname = capa-bin

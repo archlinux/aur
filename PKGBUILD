@@ -3,22 +3,19 @@
 pkgname=capa-bin
 _pkg=capa
 pkgver=7.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The FLARE team's open-source tool to identify capabilities in executable files"
 url="https://github.com/mandiant/capa"
-arch=('x86_64')
+arch=('any')
 license=('Apache-2.0')
-optdepends=('python2')
-conflicts=('capa')
-source=("$url/releases/download/v$pkgver/${_pkg}-v$pkgver-linux-py312.zip"
-        "https://raw.githubusercontent.com/mandiant/capa/master/LICENSE.txt")
-sha512sums=('c9f3f8f6f219bd93e8a46af4910a4011642fa1737889e09d40502aa613ffedb6773b5710317fbbb689ed69a5b7a4076df1d88ad21bbbeb2794befbef3b2d553d'
+provides=('capa')
+conflicts=('capa' 'capa-git')
+source=("$url/releases/download/v$pkgver/$_pkg-v$pkgver-linux-py312.zip"
+        "LICENSE-$pkgver::https://raw.githubusercontent.com/mandiant/capa/master/LICENSE.txt")
+sha512sums=('38243f89582cb7a8511ccab85fd4a049c58393780d6304575efd9335f5ab203409175ddcc8d0d6126d9110d5f3db04772da6954b68ed214c02bfab690846ad6a'
             'cfc7776e12281307fdbc69bad4fbe2572342466f4928e3e8f9c56020df4749003812586119b5a70bd008d74776c8bf157ae046c443d884793b8dec076e8f377a')
 
 package() {
-  install -Dm755 "${srcdir}/capa" "$pkgdir/opt/${_pkg}/capa"
-  install -Dm644 "${srcdir}/LICENSE.txt" "$pkgdir/usr/share/licenses/${_pkg}/LICENSE"
- 
-  install -d "${pkgdir}/usr/bin"
-  ln -s /opt/${_pkg}/capa "${pkgdir}/usr/bin"
+  install -Dm755 $_pkg "$pkgdir/usr/bin/$_pkg"
+  install -Dm644 LICENSE-$pkgver "$pkgdir/usr/share/licenses/$_pkg/LICENSE"
 }
