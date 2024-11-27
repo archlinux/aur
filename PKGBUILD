@@ -7,8 +7,8 @@
 _pkgbase=tuned
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-git" "${_pkgbase}-ppd-git")
-pkgver=2.24.0.r6.g35eed3c
-pkgrel=2
+pkgver=2.24.1.r0.g90c24ee
+pkgrel=1
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
 url="https://github.com/redhat-performance/${_pkgbase}"
@@ -30,7 +30,6 @@ prepare() {
 
 	sed -i 's|/libexec/|/lib/|g' Makefile
 	sed -i 's|/sbin/|/bin/|g' Makefile tuned.service tuned-gui.py tuned-gui.desktop tuned/ppd/tuned-ppd.service
-	sed -i 's|install-ppd: install$|install-ppd: install-dirs|' Makefile
 }
 
 package_tuned-git() {
@@ -67,7 +66,6 @@ package_tuned-ppd-git() {
 	provides=("${_pkgbase}-ppd" 'power-profiles-daemon')
 	conflicts=("${_pkgbase}-ppd" 'power-profiles-daemon')
 	backup=('etc/tuned/ppd.conf')
-	options=('!emptydirs')
 
 	cd "${_pkgbase}"
 

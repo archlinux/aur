@@ -1,7 +1,7 @@
 pkgbase = tuned-git
 	pkgdesc = Daemon that performs monitoring and adaptive configuration of devices in the system
-	pkgver = 2.24.0.r6.g35eed3c
-	pkgrel = 2
+	pkgver = 2.24.1.r0.g90c24ee
+	pkgrel = 1
 	url = https://github.com/redhat-performance/tuned
 	arch = any
 	license = GPL-2.0-or-later
@@ -46,5 +46,4 @@ pkgname = tuned-ppd-git
 	provides = power-profiles-daemon
 	conflicts = tuned-ppd
 	conflicts = power-profiles-daemon
-	options = !emptydirs
 	backup = etc/tuned/ppd.conf
