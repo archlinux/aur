@@ -1,0 +1,19 @@
+pkgbase = pipes-rs-bin
+	pkgdesc = An over-engineered rewrite of pipes.sh in Rust
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/lhvy/pipes-rs
+	arch = x86_64
+	license = MIT
+	makedepends = help2man
+	depends = glibc
+	provides = pipes-rs
+	conflicts = pipes-rs
+	source = LICENSE-1.6.3::https://raw.githubusercontent.com/lhvy/pipes-rs/v1.6.3/LICENSE.md
+	source = README-1.6.3.md::https://raw.githubusercontent.com/lhvy/pipes-rs/v1.6.3/README.md
+	sha256sums = 2c7c5d22ed5a8ee968c64757710979afcd77438c48b4a265b94e615babd8a901
+	sha256sums = d8c6b16acf66ee20d8716e0b7962d1a2d4e4ea85a3df458015972ecd3368ec9e
+	source_x86_64 = https://github.com/lhvy/pipes-rs/releases/download/v1.6.3/pipes-rs-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 057a196dac3631f47a05a14b9b22486ed2f4968c0a28c87439f5f22abcad2f8d
+
+pkgname = pipes-rs-bin
