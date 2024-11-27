@@ -3,7 +3,7 @@
 
 pkgname=uiua
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A stack-based array programming language'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://www.uiua.org/'
@@ -26,7 +26,7 @@ build() {
     export CARGO_TARGET_DIR=target
 
     cd "${pkgname}-${pkgver}"
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release 'full system'
 }
 
 check() {
@@ -34,7 +34,7 @@ check() {
     export CARGO_TARGET_DIR=target
 
     cd "${pkgname}-${pkgver}"
-    cargo test --frozen --all-features
+    cargo test --frozen 'full system'
 }
 
 package() {
