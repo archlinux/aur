@@ -1,0 +1,4 @@
+[pmdk]
+source="github"
+github="pmem/pmdk"
+use_latest_release=true
