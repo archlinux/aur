@@ -1,13 +1,18 @@
 pkgbase = java-debug
 	pkgdesc = The debug server implementation for Java.
 	pkgver = 0.53.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/java-debug
 	arch = any
 	license = EPL-1.0
-	makedepends = java-environment-openjdk
 	depends = java-runtime>=17
-	source = java-debug-0.53.1.tar.gz::https://github.com/microsoft/java-debug/archive/refs/tags/0.53.1.tar.gz
-	sha256sums = 8a16e39837b1d21826cc31160c294e6bf87ede050b2a3fb8c985b50819841646
+	noextract = com.microsoft.java.debug.core-0.53.1.jar
+	noextract = com.microsoft.java.debug.plugin-0.53.1.jar
+	source = https://repo1.maven.org/maven2/com/microsoft/java/com.microsoft.java.debug.core/0.53.1/com.microsoft.java.debug.core-0.53.1.jar
+	source = https://repo1.maven.org/maven2/com/microsoft/java/com.microsoft.java.debug.plugin/0.53.1/com.microsoft.java.debug.plugin-0.53.1.jar
+	source = https://raw.githubusercontent.com/microsoft/java-debug/refs/heads/main/LICENSE.txt
+	sha256sums = 50c58683cc97e91e95d73a6160df0316f3a1832045d33e7ea93fdf852a65fb38
+	sha256sums = 4f4778d452a6a0665536f43ce4e32403a24be6593336b80dc85a322912859e24
+	sha256sums = f494326c16bc95ebb14874ea5fa2c16a963eb36d1f2ab6fe99490073709771c1
 
 pkgname = java-debug
