@@ -1,7 +1,7 @@
 # Maintainer: Piroro-hs
 
 pkgname=ptyxis
-pkgver=47.4
+pkgver=47.5
 pkgrel=1
 pkgdesc='A terminal for a container-oriented desktop'
 arch=('x86_64')
@@ -29,7 +29,7 @@ conflicts=()
 replaces=()
 backup=()
 source=("$pkgname::git+$url#tag=$pkgver")
-sha256sums=('c233918d600a6a9d57bb3716a5b9913a635fb961b1ad934ecdad3b753f75766a')
+sha256sums=('af8c414be27ab2b532b926c73c63a72643152e09021c68cbf91bcf3288bcb6f7')
 
 build() {
   arch-meson "$pkgname" build --buildtype=release
