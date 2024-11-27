@@ -1,4 +1,4 @@
-pkgbase = gap-riscv-toolchain
+pkgbase = gap-gnu-toolchain
 	pkgdesc = GAP RISC-V Toolchain installer
 	pkgver = 1.8
 	pkgrel = 1
@@ -8,4 +8,4 @@ pkgbase = gap-riscv-toolchain
 	source = git+https://github.com/GreenWaves-Technologies/gap_gnu_toolchain.git
 	md5sums = SKIP
 
-pkgname = gap-riscv-toolchain
+pkgname = gap-gnu-toolchain

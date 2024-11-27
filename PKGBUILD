@@ -1,5 +1,5 @@
 # Maintainer: Jonas Schmid <aur at jonasschmid dot ch>
-pkgname=gap-riscv-toolchain
+pkgname=gap-gnu-toolchain
 pkgver=1.8
 pkgrel=1
 pkgdesc="GAP RISC-V Toolchain installer"
