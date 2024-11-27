@@ -1,7 +1,7 @@
 # Maintainer: Jeff Dickey <releases at mise dot jdx dot dev>
 
 pkgname=mise-bin
-pkgver=2024.11.31
+pkgver=2024.11.32
 pkgrel=1
 pkgdesc='The front-end to your dev env'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('mise' 'rtx-bin' 'rtx')
 replaces=('rtx-bin')
 options=('!lto')
 source=("mise-$pkgver.tar.gz::https://github.com/jdx/mise/releases/download/v$pkgver/mise-v$pkgver-linux-x64.tar.gz")
-sha512sums=('b9c5750ef746437828474584046061f8e004b01e4208c848ea2e09c228f156ca5e87d10459b7c0f88b8ce712ec7936ce9917f459aa5e3d76ca399e3ef71976c0')
+sha512sums=('14adf77cc75f834b201ac97b21a81fb3a6c25f202f9eeaaa77a20f59b60c9f1951e4c51f21b8b87a81071ce2f5be5c9ad3b4c9b51cf2cf3364374a574fcd9691')
 optdepends=('usage-bin: completion support')
 
 build() {
