@@ -1,6 +1,6 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
 pkgname=python-mashumaro
-pkgver=3.13.1
+pkgver=3.15
 pkgrel=1
 pkgdesc="A fast and well tested serialization library on top of dataclasses."
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
 )
 _name=${pkgname#python-}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Fatal1ty/$_name/archive/v$pkgver.tar.gz")
-sha256sums=('373a0f22f902fc304626a081d37e261b89d419c6747cbde713bff14e54253c8f')
+sha256sums=('eddd24c470c639ca271ea80bda56a640b1113236a9193ba1d72e11c9ac198e9e')
 
 build() {
     cd $_name-$pkgver

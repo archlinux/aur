@@ -1,6 +1,6 @@
 pkgbase = python-mashumaro
 	pkgdesc = A fast and well tested serialization library on top of dataclasses.
-	pkgver = 3.13.1
+	pkgver = 3.15
 	pkgrel = 1
 	url = https://github.com/Fatal1ty/mashumaro
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-mashumaro
 	optdepends = python-tomli: for TOML deserialization
 	optdepends = python-tomli-w: for TOML serialization
 	optdepends = python-orjson: for JSON serialization
-	source = python-mashumaro-3.13.1.tar.gz::https://github.com/Fatal1ty/mashumaro/archive/v3.13.1.tar.gz
-	sha256sums = 373a0f22f902fc304626a081d37e261b89d419c6747cbde713bff14e54253c8f
+	source = python-mashumaro-3.15.tar.gz::https://github.com/Fatal1ty/mashumaro/archive/v3.15.tar.gz
+	sha256sums = eddd24c470c639ca271ea80bda56a640b1113236a9193ba1d72e11c9ac198e9e
 
 pkgname = python-mashumaro
