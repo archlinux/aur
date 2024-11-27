@@ -1,13 +1,13 @@
 pkgbase = lib32-apitrace
 	pkgdesc = Graphics API Tracing (32-bit)
-	pkgver = 11.1
-	pkgrel = 2
+	pkgver = 12.0
+	pkgrel = 1
 	url = https://github.com/apitrace/apitrace
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
-	depends = apitrace=11.1
+	depends = apitrace=12.0
 	depends = lib32-brotli
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
@@ -18,7 +18,7 @@ pkgbase = lib32-apitrace
 	depends = python
 	depends = python-numpy
 	depends = python-pillow
-	source = apitrace::git+https://github.com/apitrace/apitrace.git#tag=11.1
+	source = apitrace::git+https://github.com/apitrace/apitrace.git#tag=12.0
 	source = git+https://github.com/apitrace/gltrim-tests.git
 	source = git+https://github.com/google/brotli.git
 	source = git+https://github.com/google/googletest.git
@@ -27,7 +27,7 @@ pkgbase = lib32-apitrace
 	source = git+https://github.com/google/snappy.git
 	source = git+https://github.com/madler/zlib.git
 	source = git+https://github.com/microsoft/DirectXMath.git
-	sha256sums = 2f641d885a7d69a6118a4348c4af85232194200c3ac1e6d7df140e283c2f2496
+	sha256sums = 022d88388c4b702da43aa21e7f552035ecbb6f458f24b0fb8f29683d714ebdcc
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

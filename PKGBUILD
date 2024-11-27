@@ -4,8 +4,8 @@
 
 pkgname=lib32-apitrace
 _name="${pkgname//lib32-/}"
-pkgver=11.1
-pkgrel=2
+pkgver=12.0
+pkgrel=1
 pkgdesc="Graphics API Tracing (32-bit)"
 arch=('x86_64')
 url="https://github.com/apitrace/apitrace"
@@ -38,7 +38,7 @@ source=(
   git+https://github.com/madler/zlib.git
   git+https://github.com/microsoft/DirectXMath.git
 )
-sha256sums=('2f641d885a7d69a6118a4348c4af85232194200c3ac1e6d7df140e283c2f2496'
+sha256sums=('022d88388c4b702da43aa21e7f552035ecbb6f458f24b0fb8f29683d714ebdcc'
             'SKIP'
             'SKIP'
             'SKIP'
