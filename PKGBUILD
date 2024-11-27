@@ -2,7 +2,7 @@
 pkgname=dolfinx
 pkgdesc="Next generation FEniCS problem solving environment"
 pkgver=0.9.0.post1
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/FEniCS/${pkgname}"
 license=(LGPL-3.0-or-later GPL-3.0-or-later)
@@ -17,6 +17,8 @@ source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('5aa98937f00e37a57f0c5b083f1475d4ce0cf1bec6ccca5a8556cf1e8e9a180f48f5094f3526f57af08cb73e19e32a3eb9f81050840fa5b15a19bdfccc99ed68')
 
 build() {
+  export LDFLAGS="-lkahip $LDFLAGS"
+
   cmake \
     -S ${pkgname}-${pkgver}/cpp \
     -B build \
@@ -25,7 +27,6 @@ build() {
     -DBUILD_SHARED_LIBS=TRUE \
     -DCMAKE_CXX_STANDARD=20 \
     -DCMAKE_C_COMPILER=gcc \
-    -DCMAKE_SHARED_LINKER_FLAGS_INIT="-lkahip" \
     -DCMAKE_CXX_COMPILER=g++ \
     -DDOLFINX_BASIX_PYTHON=ON \
     -DDOLFINX_ENABLE_ADIOS2=ON \
