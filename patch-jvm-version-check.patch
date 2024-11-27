@@ -1,5 +1,5 @@
---- package.orig/IPMIView_2.21.1_build.230720_bundleJRE_Linux_x64/iKVM
-+++ package.new/IPMIView_2.21.1_build.230720_bundleJRE_Linux_x64/iKVM
+--- IPMIView_2.22.0_build.241017_bundleJRE_Linux_x64/iKVM
++++ IPMIView_2.22.0_build.241017_bundleJRE_Linux_x64/iKVM
 @@ -871,12 +871,7 @@
  getJavaVersion()
  {
@@ -14,9 +14,9 @@
  	unset javaExe
  }
  #
---- package.orig/IPMIView_2.21.1_build.230720_bundleJRE_Linux_x64/IPMIView20
-+++ package.new/IPMIView_2.21.1_build.230720_bundleJRE_Linux_x64/IPMIView20
-@@ -871,12 +871,7 @@
+--- IPMIView_2.22.0_build.241017_bundleJRE_Linux_x64/IPMIView20
++++ IPMIView_2.22.0_build.241017_bundleJRE_Linux_x64/IPMIView20
+@@ -874,12 +874,7 @@
  getJavaVersion()
  {
  	javaExe=$1
@@ -27,11 +27,11 @@
 -}
 -	' `
 +	javaVersion=` "${javaExe}" -version 2>&1 | $AWK -F '"' '/version/ {print $2}' `
- 	unset javaExe
- }
- #
---- package.orig/IPMIView_2.21.1_build.230720_bundleJRE_Linux_x64/JViewerX9
-+++ package.new/IPMIView_2.21.1_build.230720_bundleJRE_Linux_x64/JViewerX9
+ 	
+ 	#Added for only jre9 which has java.version as 9
+ 	if [ "$javaVersion" = "" ]; then
+--- IPMIView_2.22.0_build.241017_bundleJRE_Linux_x64/JViewerX9
++++ IPMIView_2.22.0_build.241017_bundleJRE_Linux_x64/JViewerX9
 @@ -871,10 +871,8 @@
  getJavaVersion()
  {
@@ -45,8 +45,8 @@
  }
  	' `
  	unset javaExe
---- package.orig/IPMIView_2.21.1_build.230720_bundleJRE_Linux_x64/TrapReceiver
-+++ package.new/IPMIView_2.21.1_build.230720_bundleJRE_Linux_x64/TrapReceiver
+--- IPMIView_2.22.0_build.241017_bundleJRE_Linux_x64/TrapReceiver
++++ IPMIView_2.22.0_build.241017_bundleJRE_Linux_x64/TrapReceiver
 @@ -871,12 +871,7 @@
  getJavaVersion()
  {
