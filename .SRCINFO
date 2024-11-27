@@ -1,6 +1,6 @@
 pkgbase = namedicon-git
 	pkgdesc = Get system icons from the name using the default icon theme.
-	pkgver = v1.0.0.r0.g1964aff
+	pkgver = 1.1.0.r0.g8a405a5
 	pkgrel = 1
 	url = https://codeberg.org/grafcube/namedicon
 	arch = x86_64
