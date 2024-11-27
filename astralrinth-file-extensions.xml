@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/zip+x-astralrinth-mrpack">
+        <glob pattern="*.mrpack"/>
+        <sub-class-of type="application/zip"/>
+        <icon name="astralrinth-app"/>
+        <comment>AstralRinth Modpack</comment>
+    </mime-type>
+</mime-info>
