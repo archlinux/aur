@@ -1,7 +1,7 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=hurrycurry-client
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=2
 pkgdesc="A game about cooking (client)"
 arch=('any')

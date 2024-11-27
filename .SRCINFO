@@ -1,6 +1,6 @@
 pkgbase = hurrycurry-client
 	pkgdesc = A game about cooking (client)
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 2
 	url = https://codeberg.org/hurrycurry/hurrycurry
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = hurrycurry-client
 	makedepends = godot
 	makedepends = ffmpeg
 	depends = godot
-	source = hurrycurry-2.2.0.tar.gz::https://codeberg.org/hurrycurry/hurrycurry/archive/v2.2.0.tar.gz
+	source = hurrycurry-2.2.1.tar.gz::https://codeberg.org/hurrycurry/hurrycurry/archive/v2.2.1.tar.gz
 	source = hurrycurry-client
 	source = hurrycurry-client.desktop
 	sha256sums = 55612d9d7fa10af650582dcaf4d5f03bc227b5b279c2b62aea754fa9fabeefc6
