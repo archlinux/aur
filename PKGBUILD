@@ -3,7 +3,7 @@
 # Maintainer: Filip Matzner <floop@floop.cz>
 
 pkgname=libedgetpu-git
-pkgver=20240314  # google-coral/libedgetp has no numeric versioning; using yyyymmdd instead
+pkgver=20240314  # google-coral/libedgetpu has no numeric versioning; using yyyymmdd instead
 pkgrel=1
 pkgdesc="Google Coral Edge TPU library and headers"
 arch=('x86_64' 'armv7h' 'aarch64')
