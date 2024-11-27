@@ -2,15 +2,27 @@
 
 pkgname=python-crowdin-api-client
 pkgdesc='Lightweight interface to the Crowdin API'
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 url='https://support.crowdin.com/api/v2/'
 license=('MIT')
 arch=('any')
 
-depends=('python-deprecated' 'python-requests')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-cov' 'python-requests-mock')
+depends=(
+  'python-deprecated'
+  'python-requests'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+checkdepends=(
+  'python-pytest'
+  'python-pytest-cov'
+  'python-requests-mock'
+)
 
 _pkgname=crowdin-api-client-python
 _pyname=crowdin_api_client
@@ -18,7 +30,7 @@ source=(
   "$_pkgname-$pkgver.tar.gz::https://github.com/crowdin/crowdin-api-client-python/archive/refs/tags/$pkgver.tar.gz"
 )
 sha256sums=(
-  'a2760a53ef1b18d381ca3d5cb5b43d18946313ed5ad755df794c78b6336b1084'
+  '8051bd3e435e5cd645635bf33c3f8cdad95726bef2726b985789dd5c2c9f80e8'
 )
 
 build() {
