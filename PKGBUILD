@@ -2,8 +2,8 @@
 
 pkgbase=libjxl
 pkgname=('libjxl' 'libjxl-doc')
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.11.1
+pkgrel=1
 pkgdesc='JPEG XL image format reference implementation'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
@@ -23,7 +23,7 @@ source=("git+https://github.com/libjxl/libjxl.git#tag=v${pkgver}"
         'git+https://github.com/madler/zlib.git'
         'libjxl-testdata'::'git+https://github.com/libjxl/testdata.git'
         'git+https://github.com/libjpeg-turbo/libjpeg-turbo.git')
-sha256sums=('e8bd4fd3d3a561aa1875cc5253f9d0308474fa9825c07961b8a36ddda19f4011'
+sha256sums=('6420adcb5ccd23547eed91feb38ac9d7bdaac77def7183776e00699880148e3e'
             'SKIP'
             'SKIP'
             'SKIP'
