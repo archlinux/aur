@@ -1,0 +1,4 @@
+[harbor-cli]
+source = "git"
+git = "https://github.com/goharbor/harbor-cli.git"
+prefix = "v"
