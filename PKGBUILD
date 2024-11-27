@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mlr3tuning
-_pkgver=1.2.0
+_pkgver=1.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-xgboost
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d0a43875f6cc01bcbe8b75d84f7bc938')
-b2sums=('351824341239192725f7394ea883c016073a3183c9126bbba4050bf673c8ecea813b25022cee18d2d90395b87184809363d29faf695d6ebd1a719cb2b8bd612a')
+md5sums=('bdbd39a45037875c95e9bd43f9c79420')
+b2sums=('c402c8c117415a8c61aed2549aff69356b6f1a5340b49ce6d86f82f37e465bee9d991ac87653d8d6585dca20d2bf4d70c38a6631e2a959d95c47b9223d53ead7')
 
 build() {
   mkdir build
