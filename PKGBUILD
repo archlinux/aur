@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=serial-studio-bin
 _pkgname=Serial-Studio
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
-pkgdesc="Multi-purpose serial data visualization & processing program.Prebuilt version."
+pkgdesc="Multi-purpose serial data visualization & processing program.(Prebuilt version)"
 arch=('x86_64')
 url="https://serial-studio.github.io/"
 _ghurl="https://github.com/Serial-Studio/Serial-Studio"
@@ -24,16 +24,18 @@ makedepends=(
 )
 options=('!strip')
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux-${CARCH}.AppImage"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/Serial-Studio/Serial-Studio/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('401c742851d803789c2942357ef3aa4da1b83fdb7795685f70c5adf7e0400283'
+sha256sums=('63e961ad0e1fdebe3583f38e66061c1c93b6a4493b88a64561421f1c071fe5bf'
             'd2d20f56865ebe59a1a3ce0843cee2808f0c69f7a2ba2b9f7808f1d2df331586'
-            '2a39e193905c92b426b83c70095b30ce7df9900c60f7c2e29ab2a2973eded130')
+            'd67fe66c244eaefa8a7693f97bd20d159492d241a9f42f61cab75c9a84499b36')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
 }
