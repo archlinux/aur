@@ -1,0 +1,21 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 875ce8b..69a16a9 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools>=75.6"]
++requires = ["setuptools>=75.2"]
+ build-backend = "setuptools.build_meta"
+ 
+ [project]
+@@ -12,8 +12,7 @@ description = "A Python interface for MET Norway's Locationforecast 2.0 service.
+ readme = "README.md"
+ requires-python = ">=3.9"
+ dependencies = [
+-    "requests>=2.25.1",
+-    "tzdata>=2020.5",
++    "requests>=2.25.1"
+ ]
+ license = { file = "LICENSE" }
+ keywords = [
