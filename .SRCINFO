@@ -1,6 +1,6 @@
 pkgbase = merlin
 	pkgdesc = Context sensitive completion for OCaml in Vim and Emacs
-	pkgver = 4.8
+	pkgver = 5.3
 	pkgrel = 1
 	url = https://github.com/ocaml/merlin
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = merlin
 	depends = ocaml-csexp
 	conflicts = vim-ocaml-merlin-git
 	options = !strip
-	source = https://github.com/ocaml/merlin/releases/download/v4.8-500/merlin-4.8-500.tbz
-	sha256sums = 9f93472aea34fe56667deed6b24aa75b7c66d52d0f9972924bddc10caae98c22
+	source = https://github.com/ocaml/merlin/releases/download/v5.3-502/merlin-5.3-502.tbz
+	sha256sums = 2cea46f12397fa6e31ef0c0d4f5e11c1cfd916ee49420694005c95ebb3aa24bc
 
 pkgname = merlin
