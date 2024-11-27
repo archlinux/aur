@@ -4,10 +4,10 @@ Edition=Vivado ML Standard
 Product=Vivado
 
 # Path where AMD FPGAs & Adaptive SoCs software will be installed.
-Destination=/opt/Xilinx
+Destination=/tools/Xilinx
 
 # Choose the Products/Devices the you would like to install.
-Modules=Virtex UltraScale+ HBM:0,Kintex UltraScale:0,Vitis Networking P4:0,Artix UltraScale+:0,Spartan-7:1,Artix-7:0,Virtex UltraScale+:0,Vitis Model Composer(Toolbox for MATLAB and Simulink. Includes the functionality of System Generator for DSP):0,DocNav:0,Zynq UltraScale+ MPSoC:0,Zynq-7000:0,Virtex UltraScale+ 58G:0,Power Design Manager (PDM):0,Vitis Embedded Development:0,Kintex-7:0,Install Devices for Kria SOMs and Starter Kits:0,Kintex UltraScale+:0
+Modules=Kintex UltraScale:0,Versal AI Edge Series:0,Vitis Networking P4:0,Artix UltraScale+:0,Spartan-7:0,Artix-7:0,Vitis Model Composer(Toolbox for MATLAB and Simulink. Includes the functionality of System Generator for DSP):0,Versal Prime Series:0,DocNav:0,Zynq UltraScale+ MPSoC:0,Zynq-7000:1,Virtex UltraScale+:0,Virtex UltraScale+ HBM:0,Power Design Manager (PDM):0,Vitis Embedded Development:0,Kintex UltraScale+:0,Virtex UltraScale+ 58G:0,Kintex-7:0,Install Devices for Kria SOMs and Starter Kits:0,Versal ACAP:0
 
 # Choose the post install scripts you'd like to run as part of the finalization step. Please note that some of these scripts may require user interaction during runtime.
 InstallOptions=

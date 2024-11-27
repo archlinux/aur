@@ -31,7 +31,7 @@
 # editions. "Vitis Unified Software Platform" includes Vivado.
 #
 # Selecting only the features or component support you need will save space.
-# Two example configuration files for 2024.1
+# Two example configuration files for 2024.2
 # `install_config-{vitis,vivado}.txt` are included. If you want to create the
 # install configuration yourself, follow the following steps:
 #
