@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="winPEAS, but for Active Directory"
 arch=('any')
 url="https://github.com/ajm4n/adpeas"
-license=(custom)
+license=('MIT')
 depends=('python'
          'bloodhound'
          'certi'
@@ -15,7 +15,8 @@ depends=('python'
          'netexec'
          'python-importlib-metadata'
          'python-ldap3'
-         'python-regex')
+         'python-regex'
+         'python-termcolor')
 makedepends=('git' 'python-setuptools')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$pkgname-bin")
