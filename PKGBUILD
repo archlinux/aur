@@ -1,45 +1,39 @@
-# Maintainer: vimacs <https://vimacs.lcpu.club>
+# Maintainer: poscat
 
 pkgname=mrustc-git
-pkgver=v0.9.15
+pkgver=v0.10.1.r259.g1827564
 pkgrel=1
 pkgdesc='Alternative rust compiler written in C++'
 arch=('x86_64')
 url='https://github.com/thepowersgang/mrustc'
 license=('MIT')
-depends=('clang') # mrustc will crash if built with GCC 9
-makedepends=()
-provides=()
-conflicts=()
+depends=(gcc zlib python)
+makedepends=(cmake)
+provides=(mrustc)
+conflicts=(mrustc)
 source=('git+https://github.com/thepowersgang/mrustc.git'
-	'minicargo-use-system-mrustc.patch')
+        'mrustc.sh')
 sha256sums=('SKIP'
-	'b2d0ed78257ff18aebdb556532140f43d041468f7da479bac153a9bb88870d5b')
+            'fdec13fa9f2b75e3950d2874ab1e1d121af556609a4ebca290394d4674530746')
 
 pkgver() {
 	cd "$srcdir/mrustc"
-	git describe --tags | sed -e 's/-g.*//g' -e 's/-/./g'
+        git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
 	cd "$srcdir/mrustc"
-	patch -p1 -i "$srcdir/minicargo-use-system-mrustc.patch"
-	sed -i 's/x86_64-linux-gnu/x86_64-pc-linux-gnu/g' tools/common/target_detect.h src/trans/target.cpp
-	make CXX=clang++
-	make CXX=clang++ -C tools/minicargo
+        export PARLEVEL=$(nproc)
+        export RUSTC_VERSION=1.54.0 MRUSTC_TARGET_VER=1.54
+        make -f minicargo.mk bin/mrustc bin/minicargo LIBS
 }
 
 package() {
 	cd "$srcdir/mrustc"
-	install -D bin/mrustc "$pkgdir/usr/bin/mrustc"
-	install -D tools/bin/minicargo "$pkgdir/usr/bin/minicargo"
-	install -d "$pkgdir/usr/share/mrustc"
-	cp -r script-overrides lib run_rustc "$pkgdir/usr/share/mrustc/"
+	install -Dt "$pkgdir/usr/bin" bin/mrustc bin/minicargo
 
-	sed -e 's/bin\/mrustc/\/usr\/bin\/mrustc/g' \
-		-e 's/tools\/bin/\/usr\/bin/g' \
-		-e 's/\(script-overrides\|lib\)\//\/usr\/share\/mrustc\/\1\//g' \
-		-e '/Makefile all/d' -e '/tools\/minicargo/d' \
-		-e 's/$(RUSTCSRC)build\/bin\/llvm-config/\/usr\/bin\/llvm-config/g' \
-		minicargo.mk > "$pkgdir/usr/share/mrustc/minicargo.mk"
+        install -d "$pkgdir"/usr/share/mrustc
+        cp -r output-1.54.0/*rlib{,.o,.hir} "$pkgdir"/usr/share/mrustc
+
+        install -Dt "$pkgdir"/etc/profile.d "$srcdir"/mrustc.sh
 }
