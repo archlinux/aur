@@ -2,8 +2,8 @@
 pkgname=betterbird-fr-bin
 _pkgname=betterbird
 pkgver=115.18.0
-_build=bb36-build2
-pkgrel=1
+_build=bb36-build3
+pkgrel=2
 pkgdesc="FRENCH // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
 url="https://www.betterbird.eu/index.html"
@@ -43,7 +43,7 @@ package() {
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
     done
 }
-sha256sums=('5342a3a812eced00486edbc2df2582215f4e56d1919961a126dd3a0670587aa5'
+sha256sums=('3581bc2cd32aa78240c8902614cbe4ee95c687d4069cb3acaf19df74005e532c'
             'b664d5453512ba1c8a58699d106fb1248991dbae0ee44464484be0886278945b'
             'b11745416d2b2f8bac1ccd3dcb99411c7239b067adf9eb973903c448f8747d09')
 
