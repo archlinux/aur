@@ -2,10 +2,10 @@
 
 pkgname=harbor-cli
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Harbor CLI'
 arch=('x86_64')
-url='https://dagger.io'
+url='https://goharbor.io'
 license=('Apache-2.0')
 makedepends=('git' 'go')
 # options=('!lto')
