@@ -2,7 +2,7 @@
 pkgname=certi-git
 _pkgname="${pkgname%-git}"
 pkgver=r6.6cfa656
-pkgrel=1
+pkgrel=2
 pkgdesc="Active Directory Certificate Services (ADCS) abuser. impacket copy of Certify."
 arch=('any')
 url="https://github.com/zer1t0/certi"
@@ -10,9 +10,9 @@ license=(AGPL-3.0-only)
 depends=('python'
          'python-cryptography'
          'impacket')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-provides=('certi')
-conflicts=('certi' 'certi-bin')
+makedepends=('git' 'python-setuptools')
+provides=("$_pkgname")
+conflicts=("$_pkgname" "$pkgname-bin")
 source=("git+$url")
 sha512sums=('SKIP')
 
@@ -22,8 +22,15 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
+# https://wiki.archlinux.org/title/Python_package_guidelines#setuptools_or_distutils
+build() {
+  cd "$_pkgname"
+
+  python setup.py build
+}
+
 package() {
   cd "$_pkgname"
+  python setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
   install -Dm644 -t "$pkgdir/usr/share/licenses/$_pkgname" LICENSE
-  install -Dm0755 $srcdir/$_pkgname/certi.py "$pkgdir/usr/bin/certi.py"
 }
