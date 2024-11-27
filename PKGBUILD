@@ -1,9 +1,9 @@
 # Maintainer: envolution
 # Contributor: Carl Smedstad <carsme@archlinux.org>
-
+# shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.6.4
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -41,9 +41,10 @@ optdepends=(
   'python-anthropic: support for Anthropic models'
   'python-cohere: support for Cohere models'
   'python-google-generativeai: support for Google Gemini models'
+  'python-writerai: Writer authenticates your API requests using your account’s API keys.'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('4d42ca856b1bbcc7d7f191c2d1fb10ba47bd8d40ff4a73dabc9f65a57930c0fe')
+sha256sums=('506c29877853b492f927322f14e992c741ab69f10f57435f7e1ae2477875a553')
 
 _archive="$_pkgname-$pkgver"
 
@@ -70,6 +71,7 @@ check() {
     --ignore tests/llm/test_vertexai \
     --ignore tests/llm/test_fireworks \
     --ignore tests/llm/test_gemini \
+    --ignore tests/llm/test_writer \
     --deselect tests/dsl/test_partial.py \
     --deselect tests/llm/test_anthropic/evals/test_simple.py \
     --deselect tests/llm/test_anthropic/test_stream.py \
@@ -78,7 +80,7 @@ check() {
     --deselect tests/llm/test_new_client.py \
     --deselect tests/test_simple_types.py::test_partial_not_simple \
     --deselect tests/llm/test_anthropic/test_multimodal.py \
-    --deselect tests/test_response_model_conversion.py::test_json_preserves_description_of_non_english_characters_in_json_mode 
+    --deselect tests/test_response_model_conversion.py::test_json_preserves_description_of_non_english_characters_in_json_mode
 
 }
 
@@ -89,3 +91,4 @@ package() {
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
+# vim:set ts=2 sw=2 et:
