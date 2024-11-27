@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=WiiPartitionBinChanger
+Comment=Modify Nintendo Wii partition tickets, TMDs, certs, and more
+Exec=wiipartitionbinchanger
+Icon=wiipartitionbinchanger
+Terminal=false
+Categories=Wine;Utility;

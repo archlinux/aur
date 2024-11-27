@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=PartitionBuilder
+Comment=Create Nintendo Wii Partitions
+Exec=partitionbuilder
+Icon=partitionbuilder
+Terminal=false
+Categories=Wine;Utility;

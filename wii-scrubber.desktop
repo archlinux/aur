@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Wii Scrubber
+Comment=Extract and Scrub Nintendo Wii ISOs and WADs
+Exec=wii-scrubber
+Icon=wii-scrubber
+Terminal=false
+Categories=Wine;Utility;

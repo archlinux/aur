@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=MakeKeyBin
+Comment=Generate Wii common keys for Wii Scrubber
+Exec=makekeybin
+Icon=makekeybin
+Terminal=false
+Categories=Wine;System;Utility;

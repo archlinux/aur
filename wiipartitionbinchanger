@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# WINE Launcher script for Wii Scrubber programs
+
+export WINEPREFIX=~/.wii-scrubber
+export WIIDIR=/usr/share/wii-scrubber # installation dir for AUR package
+
+cat << EOF
+WiiScrubber Linux Loader by Atapi/Sterophonick
+Original Program: (c) 2009 Dack
+
+Important note: You MUST run makekeybin and generate keys first!
+Keys will be stored in /usr/share/wii-scrubber if you ever want to replace your key with an NDEV key
+
+Currently launching WiiPartitionBinChanger
+EOF
+
+cd $WIIDIR
+wine WiiPartitionBinChanger.exe
