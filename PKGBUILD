@@ -10,7 +10,7 @@
 pkgname=scrt
 pkgver=9.6.0
 incrver=3472
-pkgrel=0
+pkgrel=1
 pkgdesc="Vandyke SecureCRT SSH Client"
 arch=('x86_64')
 url="http://www.vandyke.com/products/securecrt/"
@@ -19,8 +19,8 @@ depends=('fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'krb5' 'libcups'
 		'libpng' 'libx11' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'openssl'
 		'qt6-base' 'qt6-multimedia' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm' 'zlib' 'icu74')
 options=('!strip' '!emptydirs')
-source=("local://${pkgname}-${pkgver}-${incrver}.ubuntu22-64.x86_64.deb")
-md5sums=('7e8bb57766987dc2c08572d218233cca')
+source=("local://${pkgname}-${pkgver}-${incrver}.ubuntu24-64.x86_64.deb")
+md5sums=('1f782a6ec6d5828edeeae44c70a2607a')
 
 package() {
 
