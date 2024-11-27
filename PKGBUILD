@@ -10,6 +10,7 @@ url="https://github.com/0WN463/bobcat"
 license=('MIT')
 depends=('python' 'python-requests' 'python-lxml' 'python-beautifulsoup4')
 makedepends=('git' 'python-setuptools')
+optdepends=('python-unicodeit: LaTeX to unicode conversion')
 source=("git+$url")
 sha256sums=('SKIP')
 
