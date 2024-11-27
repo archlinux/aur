@@ -5,9 +5,9 @@
 
 _pkgname="dxvk"
 pkgname="$_pkgname-async-git"
-pkgver=2.4.1.r422.g62970d2
-pkgrel=1
-pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 - Windows DLL version)"
+pkgver=2.5.1.r13.gd7bd3cd
+pkgrel=2
+pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 - Windows DLL version"
 url="https://gitlab.com/Ph42oN/dxvk-gplasync/"
 license=('Zlib')
 arch=('x86_64')
@@ -24,17 +24,10 @@ makedepends=(
   'wine'
 )
 
-provides=(
-  'd9vk'
-  "dxvk=$pkgver"
-)
-conflicts=(
-  'd9vk'
-  'dxvk'
-)
+provides=("dxvk=$pkgver")
+conflicts=('dxvk')
 
 options=('!strip' '!buildflags' 'staticlibs')
-
 backup=('etc/environment.d/dxvk-async-env.conf')
 
 _pkgsrc="$_pkgname"
@@ -54,7 +47,7 @@ sha256sums=(
   'SKIP'
   'SKIP'
   '2bce3bf5dc5a3c7312bbaae96daf82e0fe6c370e96017ce5a0c49f40901866e3'
-  '0f688815530ab5e8cc89b9b45d9b1d66cd8cd5a7770fb8249339af555a30dfe7'
+  'c5ac42de128630e6d8a9e46a7729630edbfb7626eb293ec5c74c8210c932f0e7'
 )
 
 pkgver() {
@@ -104,11 +97,13 @@ package() {
   meson install -C build/x64 --destdir "$pkgdir"
   meson install -C build/x32 --destdir "$pkgdir"
 
-  install -Dm755 "$srcdir/setup_dxvk.sh" "$pkgdir/usr/share/dxvk/setup_dxvk.sh"
+  install -Dm755 "setup_dxvk.sh" "$pkgdir/usr/share/dxvk/setup_dxvk.sh"
 
   install -dm755 "$pkgdir/usr/bin"
   ln -srf "$pkgdir/usr/share/dxvk/setup_dxvk.sh" "$pkgdir/usr/bin/setup_dxvk"
 
   # Async environment variable
-  install -Dm644 "$srcdir/dxvk-async-env.conf" "$pkgdir/etc/environment.d/dxvk-async-env.conf"
+  install -Dm644 "dxvk-async-env.conf" "$pkgdir/etc/environment.d/dxvk-async-env.conf"
+
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

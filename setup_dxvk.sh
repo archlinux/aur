@@ -11,14 +11,13 @@ basedir="$(dirname "$(readlink -f "$0")")"
 action="$1"
 
 case "$action" in
-install)
-  ;;
-uninstall)
-  ;;
-*)
-  echo "Unrecognized action: $action"
-  echo "Usage: $0 [install|uninstall] [--without-dxgi] [--symlink]"
-  exit 1
+  install) ;;
+  uninstall) ;;
+  *)
+    echo "Unrecognized action: $action"
+    echo "Usage: $0 [install|uninstall] [--without-dxgi] [--symlink]"
+    exit 1
+    ;;
 esac
 
 # process arguments
@@ -29,12 +28,12 @@ file_cmd="cp -v --reflink=auto"
 
 while (($# > 0)); do
   case "$1" in
-  "--without-dxgi")
-    with_dxgi=false
-    ;;
-  "--symlink")
-    file_cmd="ln -s -v"
-    ;;
+    "--without-dxgi")
+      with_dxgi=false
+      ;;
+    "--symlink")
+      file_cmd="ln -s -v"
+      ;;
   esac
   shift
 done
@@ -63,15 +62,15 @@ wineboot="wineboot"
 wine_path=$(dirname "$(which $wineboot)")
 wow64=true
 if ! [ -f "$wine_path/$wine" ]; then
-   wine=$wine64
-   wow64=false
+  wine=$wine64
+  wow64=false
 fi
 
 # resolve 32-bit and 64-bit system32 path
 winever=$($wine --version | grep wine)
 if [ -z "$winever" ]; then
-    echo "$wine:"' Not a wine executable. Check your $wine.' >&2
-    exit 1
+  echo "$wine:"' Not a wine executable. Check your $wine.' >&2
+  exit 1
 fi
 
 # ensure wine placeholder dlls are recreated
@@ -92,7 +91,7 @@ fi
 
 # create native dll override
 overrideDll() {
-  $wine reg add 'HKEY_CURRENT_USER\Software\Wine\DllOverrides' /v $1 /d native /f >/dev/null 2>&1
+  $wine reg add 'HKEY_CURRENT_USER\Software\Wine\DllOverrides' /v $1 /d native /f > /dev/null 2>&1
   if [ $? -ne 0 ]; then
     echo -e "Failed to add override for $1"
     exit 1
@@ -175,7 +174,7 @@ install() {
     inst32_ret="$?"
   fi
 
-  if (( ($inst32_ret == 0) || ($inst64_ret == 0) )); then
+  if ((($inst32_ret == 0) || ($inst64_ret == 0))); then
     overrideDll "$1"
   fi
 }
@@ -190,7 +189,7 @@ uninstall() {
     uninst32_ret="$?"
   fi
 
-  if (( ($uninst32_ret == 0) || ($uninst64_ret == 0) )); then
+  if ((($uninst32_ret == 0) || ($uninst64_ret == 0))); then
     restoreDll "$1"
   fi
 }
@@ -201,6 +200,7 @@ if $with_dxgi || [ "$action" == "uninstall" ]; then
   $action dxgi
 fi
 
+$action d3d8
 $action d3d9
 $action d3d10core
 $action d3d11
