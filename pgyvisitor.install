@@ -53,6 +53,8 @@ pre_remove() {
 
     /usr/share/pgyvpn/script/pgyvpn_track uninstall
 
+    rm /etc/systemd/system/pgyvpn.service > /dev/null 2>&1
+    rm /etc/bash_completion.d/pgyvpn_sh_prompt > /dev/null 2>&1
     rm -rf /var/log/oray > /dev/null 2>&1
     rm -rf /etc/oray > /dev/null 2>&1
     rm /tmp/pgyconfig.ini > /dev/null 2>&1

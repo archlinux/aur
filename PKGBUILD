@@ -2,7 +2,7 @@
 
 pkgname=pgyvisitor
 _pkgname=PgyVisitor
-pkgver=6.2.0
+pkgver=6.9.0
 pkgrel=1
 pkgdesc="贝锐蒲公英客户端 Oray Pgy Visitor"
 arch=("x86_64" "i686" "aarch64" "armv7h")
@@ -11,16 +11,16 @@ license=('custom')
 options=("!strip" "!debug")
 
 source=('LICENSE::https://service.oray.com/question/1820.htm')
-source_x86_64=("$_pkgname-$pkgver.deb::${url}/softwares/153/download/2156/$_pkgname$pkgver_x86_64.deb")
-source_i686=("$_pkgname-$pkgver.deb::${url}/softwares/153/download/2156/$_pkgname$pkgver_i386.deb")
-source_aarch64=("$_pkgname-$pkgver.deb::${url}/softwares/153/download/2156/$_pkgname$pkgver_arm64.deb")
-source_armv7h=("$_pkgname-$pkgver.deb::${url}/softwares/153/download/2156/$_pkgname$pkgver_arm32.deb")
+source_x86_64=("$_pkgname-$pkgver.deb::${url}/softwares/153/download/2549/$_pkgname-$pkgver-amd64.deb")
+source_i686=("$_pkgname-$pkgver.deb::${url}/softwares/153/download/2549/$_pkgname-$pkgver-i386.deb")
+source_aarch64=("$_pkgname-$pkgver.deb::${url}/softwares/153/download/2549/$_pkgname-$pkgver-arm64.deb")
+source_armv7h=("$_pkgname-$pkgver.deb::${url}/softwares/153/download/2549/$_pkgname-$pkgver-arm32.deb")
 
 sha256sums=('SKIP')
-sha256sums_x86_64=('e062a592f1f127fa589f6919b3c6e96b71e403854d22d30d75b2cd753c45f2bc')
-sha256sums_i686=('a68066fa0b910a4dba6766c6a4d75807daa33ab3ebe9bfe9b093aee907d46705')
-sha256sums_aarch64=('4b71ac53e7f87ff49e1b9b7aa3d3499fa6f2b56679d27a368dd5a19f32d1df66')
-sha256sums_armv7h=('94fadf907b9f0376e35c6de2d2ae019ff06be9b5848856022f1c58075a9f98ff')
+sha256sums_x86_64=('3a53e1b36266f5031c9b4d35c02df18583437fedb384a58e897dde7c2ac8b60d')
+sha256sums_i686=('ea36cb6ada55c8dc01438cbc4a3df33465bceecd74f1c6f7ff21809cf1a2834d')
+sha256sums_aarch64=('ff29a02dc9d2c19e1978288cd43904ce1d6066dd5ce237196deb800066a0c659')
+sha256sums_armv7h=('bda082aad45c929f5019e9bb0605246f5d9eeffa9df0bb93afa12d674e4782f0')
 
 prepare() {
 	cd "${srcdir}"
