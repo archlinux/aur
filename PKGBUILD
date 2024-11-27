@@ -9,13 +9,13 @@ _v=0.0.3
 _version=9e39ee6a9c9a4c43192b95b7efcc95ea1c79a28d
 source=(
 	"$url/archive/$pkgver.tar.gz"
-	"https://github.com/Freed-Wu/tmux-rime/archive/$_v.tar.gz"
+	"tmux.tar.gz::https://github.com/Freed-Wu/tmux-rime/archive/$_v.tar.gz"
 	"https://github.com/xmake-io/xmake-repo/archive/$_version.tar.gz"
 )
 depends=(librime glib2 readline rl_custom_function)
 makedepends=(xmake)
 sha256sums=('f40e7052167b730ec9b0f695c1cbaed6eab03e0c54a9ae8ba1103abcf53fdfa8'
-            'f40e7052167b730ec9b0f695c1cbaed6eab03e0c54a9ae8ba1103abcf53fdfa8'
+            '012d1b8e8fe265fbd927af113fa7d54fc8704a449f9b86904767fe20378bea81'
             'f4a75ea7b86ed7b652e514337746ea0232f88513ec6ab61a3c687a91b31d4a3c')
 
 export XMAKE_ROOT=y
