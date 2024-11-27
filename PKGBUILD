@@ -2,46 +2,69 @@
 
 _pkgname=gnome-settings-daemon
 pkgname="${_pkgname}-git"
-pkgver=44.1+28+gebdb3305
+pkgver=47.2
 pkgrel=1
 pkgdesc="GNOME Settings Daemon"
 _gnome_git="https://gitlab.gnome.org/GNOME"
-url="${_gnome_git}/${_pkgname}"
+url="${_gnome_git}/${_pkgname}.git"
 arch=(
   x86_64
   i686
   pentium4
   aarch64
-  armv7h)
-license=(GPL)
+  armv7h
+)
+license=(LGPL-2.1-only)
 depends=(
+  alsa-lib
+  bash
+  cairo
   dconf
+  fontconfig
+  gcc-libs
   gcr-4
   geoclue
   geocode-glib-2
+  glib2
+  glibc
   gnome-desktop
   gsettings-desktop-schemas
   gtk3
   libcanberra-pulse
+  libcolord
+  libcups
   libgudev
   libgweather-4
+  libmm-glib
   libnm
   libnotify
+  libp11-kit
+  libpulse
   librsvg
   libwacom
+  libx11
+  libxext
+  libxfixes
+  libxi
   nss
-  pulseaudio
-  pulseaudio-alsa
+  pango
+  polkit
+  pulse-native-provider
   systemd
+  systemd-libs
   upower
+  wayland
+  xorg-xrdb
 )
 makedepends=(
   docbook-xsl
   git
+  glib2-devel
   libxslt
   meson
   python
-  usbguard)
+  usbguard
+)
 checkdepends=(
   python-dbusmock
   python-gobject
@@ -51,10 +74,14 @@ groups=(gnome gnome-git)
 backup=(etc/xdg/Xwayland-session.d/00-xrdb)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+${url}"
-        "git+${_gnome_git}/libgnome-volume-control.git")
-sha256sums=('SKIP'
-            'SKIP')
+source=(
+  "git+${url}"
+  "git+${_gnome_git}/libgnome-volume-control.git"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
   cd "${_pkgname}"
