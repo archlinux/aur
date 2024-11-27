@@ -1,0 +1,14 @@
+pkgbase = xmind2md
+	pkgdesc = A tool to convert XMind files to Markdown format
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/chiragbharambe/xmind2md
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = python-virtualenv
+	depends = python
+	source = xmind2md-1.0.0.tar.gz::https://github.com/chiragbharambe/xmind2md/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = xmind2md
