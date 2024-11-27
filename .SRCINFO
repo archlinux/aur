@@ -1,0 +1,23 @@
+pkgbase = algohub
+	pkgdesc = ACM Algorithm Hub
+	pkgver = 0.1.1_nightly.11
+	pkgrel = 1
+	url = https://github.com/swpu-acm/algohub.git
+	install = algohub.install
+	arch = x86_64
+	license = agplv3
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	source_x86_64 = https://github.com/swpu-acm/algohub/releases/download/algohub-v0.1.1_nightly.11/algohub_0.1.1-nightly.11_amd64.deb
+
+pkgname = algohub
