@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Samuel Walladge <samuel at swalladge dot net>
 pkgname=tagspaces-bin
-pkgver=6.0.2
+pkgver=6.0.4
 pkgrel=1
 pkgdesc="An offline, open source, document manager with tagging support"
 arch=('x86_64')
