@@ -1,9 +1,13 @@
-# Maintainer: Anatol Pomozov
-# Co-Maintainer: Abdelhak Bougouffa <abougouffa@fedoraproject.org>
-# Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
+
+# Maintainer:  yjun <jerrysteve1101 at gmail dot com>
+
+# based on the PKGBUILD of dsview
+# Origin Contributor: Anatol Pomozov
+# Origin Contributor: Abdelhak Bougouffa <abougouffa@fedoraproject.org>
+# Origin Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=pxview-git
-pkgver=1.3.4.472bd4b
+pkgver=1.3.4.r5.fac9f01
 pkgrel=1
 pkgdesc='GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.'
 arch=(i686 x86_64)
@@ -22,7 +26,7 @@ pkgver() {
   cd "${srcdir}/${pkgname}"
   px_version="$(grep -oP 'PX_VERSION_MAJOR \K[0-9]+' CMakeLists.txt).$(grep -oP 'PX_VERSION_MINOR \K[0-9]+' CMakeLists.txt).$(grep -oP 'PX_VERSION_MICRO \K[0-9]+' CMakeLists.txt)"
   
-  printf "%s.%s" ${px_version} "$(git rev-parse --short=7 HEAD)"
+  printf "%s.r%s.%s" "${px_version}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
