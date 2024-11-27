@@ -1,6 +1,6 @@
 pkgbase = python-tokenizers
 	pkgdesc = Fast State-of-the-Art Tokenizers optimized for Research and Production
-	pkgver = 0.20.3
+	pkgver = 0.20.4
 	pkgrel = 1
 	url = https://github.com/huggingface/tokenizers
 	arch = i686
@@ -14,9 +14,8 @@ pkgbase = python-tokenizers
 	makedepends = python-setuptools-rust
 	makedepends = python-wheel
 	depends = python
-	depends = oniguruma
 	options = !lto
-	source = tokenizers-0.20.3.tar.gz::https://github.com/huggingface/tokenizers/archive/refs/tags/v0.20.3.tar.gz
-	sha256sums = 21e9a235c72e49cafb7ed29829650f6a49f0a951194e1f0168b3b2f547362569
+	source = tokenizers-0.20.4.tar.gz::https://github.com/huggingface/tokenizers/archive/refs/tags/v0.20.4.tar.gz
+	sha256sums = c7dd77a63d95113add5f4c85a41f117cbf41d2cbc7f6609b72650e14c7f42f31
 
 pkgname = python-tokenizers
