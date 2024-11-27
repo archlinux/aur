@@ -1,7 +1,7 @@
 # Maintainer: James Barrios <hey@dendarrion.com>
 
 pkgname=ttf-juliamono-nerd-font
-pkgver=0.057
+pkgver=0.058
 pkgrel=1
 pkgdesc="JuliaMono, a font for programming, patched with Nerd Fonts (Regular, Mono, Propo)"
 arch=('any')
@@ -28,7 +28,7 @@ package() {
 }
 
 sha256sums=(
-    '5ae04001374093c52db7cc1726e4c0519d051022643c348477c32a034eaf4ddb'
-    'a89d190df85fdbb628c4d561fa98a3b67cc900eba8990fad0a35bc84cc3f7575'
+    '63005090fb5060393bedf41f4740aa42a731ae38190580452d41bf09ea58160a'
+    '5dbeefe6f0a89b3fcf2a11819650dc970c94543ec5b1f5df368e3e955bb38146'
     'd27b85137453d4eb0893eee45bdc6eb79a661693680856f3f7df8bc77dfe902f'
 )
