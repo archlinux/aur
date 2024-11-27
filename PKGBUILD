@@ -58,20 +58,11 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 options=(!lto)
 
-LIBBACKTRACE=ad106d5fdd5d960bd33fae1c48a351af567fd075
-SHADERC=2024.1
-SHADERC_GLSLANG=142052fa30f9eca191aa9dcf65359fcaed09eeec
-SHADERC_SPIRVHEADERS=5e3ad389ee56fca27c9705d093ae5387ce404df4
-SHADERC_SPIRVTOOLS=dd4b663e13c07fea4fbb3f70c1c91c86731099f7
-# See .github/workflows/scripts/linux/build-dependencies-qt.sh
-INSTALLDIR="${srcdir}/deps-build"
-
 source=(
     git+https://github.com/PCSX2/pcsx2.git
     git+https://github.com/PCSX2/pcsx2_patches.git
 )
 install=pcsx2-git.install
-
 
 pkgver() {
     cd pcsx2
