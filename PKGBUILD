@@ -132,8 +132,8 @@ options=('!strip' '!debug')
 
 prepare() {
     rm -rf "$srcdir/installer_temp"
-    # If not removed, may lead to `Program group entry already exists` in
-    # if srcdir is reused, e.g., with `makepkg --noextract -f`.
+    # If not removed, may lead to `Program group entry already exists` if
+    # srcdir is reused, e.g., with `makepkg --noextract -f`.
 
     mkdir -p "$srcdir/installer_temp"
 }
@@ -145,8 +145,8 @@ build() {
 
 _installprefix=/opt/Xilinx
 package_common_pre() {
-    # If installer is restarted using `makepkg --noextract -f`, then the folder
-    # `installer_temp` stops the installer.
+    # If the installer is restarted using `makepkg --noextract -f`, then the
+    # folder `installer_temp` stops the installer.
     rm -rf installer_temp 
 
     cd "${_srcname}_${pkgver}_${_more_ver}" || exit
@@ -227,7 +227,8 @@ package_vitis_() {
     # Vitis installer installs lopper etc packages into a Python virtual
     # environment, but these will point to the PKGBUILD folder. The following
     # fixes the exec paths only in executables. Fixing the path in all files
-    # corrupts installed libraries in the virtual path.
+    # using a more general wildcard corrupts installed libraries in the virtual
+    # path.
     #
     # An improvement idea is to reinstall the virtualenv after installation
     # using a script. However I could not get it working (see vitis.install).
