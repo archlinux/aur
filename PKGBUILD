@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Utilities for editing and extracting Nintendo Wii partitions and WADs'
 arch=(x86_64 i686)
 depends=('wine' 'winetricks')
-source=(https://dlhb.gamebrew.org/wiihomebrews/wiiscrubber.7z
+source=(wiiscrubber.7z
         makekeybin
         makekeybin.desktop
         makekeybin.png
@@ -19,7 +19,7 @@ source=(https://dlhb.gamebrew.org/wiihomebrews/wiiscrubber.7z
         wiipartitionbinchanger
         wiipartitionbinchanger.desktop
         wiipartitionbinchanger.png)
-md5sums=('926c5119c15e0998962988ad70177abd'
+md5sums=('5836c45974bed2b87e73a241b8ed6a31'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -36,7 +36,6 @@ options=(!debug !strip)
 
 prepare() {
   7z x wiiscrubber.7z -o$srcdir -aoa
-  7z x $srcdir/WiiScrubber140Multiboot.rar -o$srcdir -aoa
 }
 
 
@@ -46,7 +45,7 @@ package() {
   mkdir -p $pkgdir/usr/share/applications
   mkdir -p $pkgdir/usr/share/pixmaps
 
-  cp -r $srcdir/WiiScrubber140Multiboot/* $pkgdir/usr/share/wii-scrubber
+  cp -r $srcdir/* $pkgdir/usr/share/wii-scrubber
   cp $srcdir/makekeybin $pkgdir/usr/bin
   cp $srcdir/partitionbuilder $pkgdir/usr/bin
   cp $srcdir/wii-scrubber $pkgdir/usr/bin
