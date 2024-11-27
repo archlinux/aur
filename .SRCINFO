@@ -8,7 +8,7 @@ pkgbase = slc-bin
 	depends = fftw
 	depends = gsl
 	depends = hdf5
-	source_x86_64 = https://github.com/sanchezcarlosjr/occultation_light_curves/releases/download/v2.4.0/slc
+	source_x86_64 = https://github.com/sanchezcarlosjr/occultation_light_curve_simulator/releases/download/v2.4.0/slc
 	sha256sums_x86_64 = 691cea6d486111fff0f0b2947971e40ffa36510bc2adfe1e14ec056fe650dd07
 
 pkgname = slc-bin
