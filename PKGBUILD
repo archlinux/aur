@@ -1,8 +1,8 @@
 pkgname=ipmiview
 pkgver=2.22.0
-pkgrel=2
-_pkghash=241017
-_softwareID=832
+pkgrel=3
+_pkgdate=241017
+_downloadID=832
 pkgdesc="Supermicro IPMI tool"
 makedepends=('tar')
 depends=("glibc" "java-runtime")
@@ -20,7 +20,7 @@ backup=(
     )
 
 source=(
-    "IPMIView_${pkgver}-${_pkghash}.tar.gz::https://www.supermicro.com/support/resources/getfile.php?SoftwareItemID=${_softwareID}&type=serversoftwarefile"
+    "IPMIView_${pkgver}-${_pkgdate}.tar.gz::https://www.supermicro.com/support/resources/getfile.php?SoftwareItemID=${_downloadID}&type=serversoftwarefile"
     'ipmiview.desktop'
     'ipmiview.png'
     )
@@ -34,7 +34,7 @@ package() {
   mkdir -p ${pkgdir}/usr/bin
   mkdir -p ${pkgdir}/usr/share/applications
 
-  pushd ${srcdir}/IPMIView_${pkgver}_build.${_pkghash}_bundleJRE_Linux_x64
+  pushd ${srcdir}/IPMIView_${pkgver}_build.${_pkgdate}_bundleJRE_Linux_x64
   rm -rf jre/ # Remove bundled jre
   cp -rf . ${pkgdir}/opt/${pkgname}
   popd
