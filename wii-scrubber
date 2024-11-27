@@ -12,7 +12,7 @@ Original Program: (c) 2009 Dack
 Important note: You MUST run makekeybin and generate keys first!
 Keys will be stored in /usr/share/wii-scrubber if you ever want to replace your key with an NDEV key
 
-Currently launching Wii Scrubber
+Currently launching WiiScrubber
 EOF
 
 cd $WIIDIR
