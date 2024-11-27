@@ -1,6 +1,6 @@
 pkgbase = nvm-desktop-bin
 	pkgdesc = Node Version Manager Desktop - A desktop application to manage multiple active node.js versions.(Prebuilt version)
-	pkgver = 4.0.4
+	pkgver = 4.0.5
 	pkgrel = 1
 	url = https://github.com/1111mp/nvm-desktop
 	arch = aarch64
@@ -8,13 +8,13 @@ pkgbase = nvm-desktop-bin
 	license = MIT
 	depends = webkit2gtk-4.1
 	depends = gtk3
-	provides = nvm-desktop=4.0.4
+	provides = nvm-desktop=4.0.5
 	conflicts = nvm-desktop
-	source = LICENSE-4.0.4::https://raw.githubusercontent.com/1111mp/nvm-desktop/v4.0.4/LICENSE
+	source = LICENSE-4.0.5::https://raw.githubusercontent.com/1111mp/nvm-desktop/v4.0.5/LICENSE
 	sha256sums = 8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b
-	source_aarch64 = nvm-desktop-4.0.4-aarch64.rpm::https://github.com/1111mp/nvm-desktop/releases/download/v4.0.4/NVM.Desktop-4.0.4-1.aarch64.rpm
-	sha256sums_aarch64 = f7ce078db75305acf0ea22c3c90850111d701b4af46e47d0229cf793d6c6586b
-	source_x86_64 = nvm-desktop-4.0.4-x86_64.rpm::https://github.com/1111mp/nvm-desktop/releases/download/v4.0.4/NVM.Desktop-4.0.4-1.x86_64.rpm
-	sha256sums_x86_64 = 3fa8c70feedec625b0e71da3d6bc8bc6f569c0dcab56b14b77e32d567295a214
+	source_aarch64 = nvm-desktop-4.0.5-aarch64.rpm::https://github.com/1111mp/nvm-desktop/releases/download/v4.0.5/NVM.Desktop-4.0.5-1.aarch64.rpm
+	sha256sums_aarch64 = 35da58d49f9dc4ef836ea76046c1273f4c6eb975168d7c933c33e3f5a8298deb
+	source_x86_64 = nvm-desktop-4.0.5-x86_64.rpm::https://github.com/1111mp/nvm-desktop/releases/download/v4.0.5/NVM.Desktop-4.0.5-1.x86_64.rpm
+	sha256sums_x86_64 = e2c80c12177728f309048f81e6ded147af0fa88e87a11e9bab7fcf215f384bc2
 
 pkgname = nvm-desktop-bin
