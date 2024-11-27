@@ -1,0 +1,14 @@
+pkgbase = termpicker
+	pkgdesc = A color picker for the terminal
+	pkgver = 1.3.5
+	pkgrel = 1
+	url = https://github.com/ChausseBenjamin/termpicker
+	arch = x86_64
+	license = Beerware
+	optdepends = wl-clipboard: clipboard support on wayland
+	optdepends = xsel: clipboard support on X11
+	provides = termpicker
+	source = termpicker-v1.3.5.tar.gz::https://github.com/ChausseBenjamin/termpicker/releases/download/v1.3.5/termpicker_Linux_x86_64.tar.gz
+	sha256sums = accd5ea9b06f012fefa6f0be49ceee7f4d26ed1da6a20447916e4e715beb37f6
+
+pkgname = termpicker
