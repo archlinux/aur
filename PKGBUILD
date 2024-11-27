@@ -1,7 +1,7 @@
 # Maintainer: xan <xxdr@duck.com>
 pkgname="xfetch-bin"
-pkgver=3.0.2
-pkgrel=3
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Lightweight Linux fetch written in Rust."
 arch=('x86_64')
 url="https://codeberg.org/pparaxan/xFetch"
@@ -12,7 +12,7 @@ source=(
 	"https://codeberg.org/pparaxan/xFetch/raw/branch/master/LICENSE"
 )
 sha256sums=(
-	'541662961354c4d0bde69f045a7c44d1adad43bbe05dde7b9686189ed793f8ac'
+	'43361110aee91c50c39e12b06af99b700be984b8e9fc7183ba1fa42c8d9c6984'
 	'SKIP'
 )
 
