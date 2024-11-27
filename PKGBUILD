@@ -1,19 +1,19 @@
 # Maintainer: Levitating <me@levitati.ng>
 pkgname=incus-ui
-pkgver=0.12
+pkgver=0.14
 pkgrel=1
-epoch=1
+epoch=
 pkgdesc="LXD-UI patched for Incus"
 arch=(any)
 url="https://github.com/canonical/lxd-ui"
 license=('GPL')
 makedepends=('yarn' 'git' 'npm')
 source=("git+https://github.com/zabbly/incus.git"
-        "lxd-ui-$pkgver.tar.gz::https://github.com/canonical/lxd-ui/archive/refs/tags/${pkgver}.tar.gz"
-        "incus-ui.conf"
+		"lxd-ui-$pkgver.tar.gz::https://github.com/canonical/lxd-ui/archive/refs/tags/${pkgver}.tar.gz"
+		"incus-ui.conf"
 )
 sha256sums=('SKIP'
-            'a82779ba405bda6bf0c704edbd3c153a7719197383928512e8a9519650662849'
+            'e54e681d1ae40b90a57df00b126deaf085b1697154db442d9eaa1980a26e091e'
             'f6f1a4669e7ac2c733544c6ee96ae739f77981184603d36fc8ae906481177bee')
 
 prepare() {
@@ -24,14 +24,14 @@ prepare() {
 		echo Applying $patchfile
 		git apply -v $patchfile
 	done
-    sed -i -f "$srcdir/incus/patches/ui-canonical-renames.sed" src/*/*.ts* src/*/*/*.ts* src/*/*/*/*.ts* src/*/*/*/*/*.ts*
+	sed -i -f "$srcdir/incus/patches/ui-canonical-renames.sed" src/*/*.ts* src/*/*/*.ts* src/*/*/*/*.ts* src/*/*/*/*/*.ts*
 
-    yarn install
+	yarn install
 }
 
 build() {
 	cd "$srcdir/lxd-ui-$pkgver"
-   	yarn build
+	yarn build
 }
 
 package() {
