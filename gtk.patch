@@ -1,0 +1,23 @@
+--- Gtk/Makefile	2005-07-26 12:03:44.000000000 +0200
++++ Gtk1/Makefile	2012-05-18 00:22:20.883487513 +0200
+@@ -69,7 +69,7 @@
+ 
+ #######################################################################
+ 
+-LIBS = $(GTK_LIBS) $(SOUND_LIBS)
++LIBS = $(GTK_LIBS) $(SOUND_LIBS) -lm
+ 
+ gtkmagnetic: $(OBJS)
+ 	$(CC) -o gtkmagnetic $(OBJS) $(LIBS)
+diff -Nur Gtk/main.c Gtk1/main.c
+--- Gtk/main.c	2008-08-24 08:52:08.000000000 +0200
++++ Gtk1/main.c	2011-10-20 08:05:11.435125131 +0200
+@@ -304,7 +304,7 @@
+     if (applicationExiting)
+ 	return FALSE;
+ 
+-    if (!ms_init ((type8s *) game_filename, (type8s *) graphics_filename, (type8s *) hints_filename), NULL)
++    if (!ms_init ((type8s *) game_filename, (type8s *) graphics_filename, (type8s *) hints_filename, NULL))
+     {
+ 	GtkWidget *error;
+ 	gchar *basename;
