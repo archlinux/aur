@@ -2,7 +2,7 @@
 
 pkgname=fastanime
 pkgver=2.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc="FastAnime, anime site experience from the terminal."
 arch=('x86_64')
 url="https://github.com/Benex254/FastAnime"
@@ -33,6 +33,7 @@ optdepends=('mpv: video player'
             'syncplay: watch with friends'
             'feh: image viewer (for manga mode)')
 provides=('fastanime')
+install="${pkgname}.install"
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 build() {
@@ -46,5 +47,8 @@ package() {
     cd "FastAnime-${pkgver}" || exit
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 completions/fastanime.bash "$pkgdir/usr/share/bash-completion/completions/fastanime"
+    install -Dm644 completions/fastanime.zsh "$pkgdir/usr/share/zsh/site-functions/_fastanime"
+    install -Dm644 completions/fastanime.fish "$pkgdir/usr/share/fish/vendor_completions.d/fastanime.fish"
 }
 sha256sums=('SKIP')
