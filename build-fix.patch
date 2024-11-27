@@ -1,0 +1,59 @@
+diff --git a/dkms.conf b/dkms.conf
+index 85b75f3..b890f50 100644
+--- a/dkms.conf
++++ b/dkms.conf
+@@ -1,5 +1,5 @@
+ PACKAGE_NAME="universal-pidff"
+-PACKAGE_VERSION="0.0.10"
++PACKAGE_VERSION="0.0.11"
+ MAKE[0]="make KVERSION=$kernelver"
+ CLEAN="make clean"
+ BUILT_MODULE_NAME[0]="hid-universal-pidff"
+diff --git a/hid-pidff-wrapper.c b/hid-pidff-wrapper.c
+index a5a66dd..944ea5a 100644
+--- a/hid-pidff-wrapper.c
++++ b/hid-pidff-wrapper.c
+@@ -52,19 +52,19 @@ static const struct hid_device_id pidff_wheel_devices[] = {
+ MODULE_DEVICE_TABLE(hid, pidff_wheel_devices);
+ 
+ 
+-static u8 *moza_report_fixup(struct hid_device *hdev, __u8 *rdesc,
+-                                        unsigned int *rsize)
++static const u8 *moza_report_fixup(struct hid_device *hdev, __u8 *rdesc,
++                                   unsigned int *rsize)
+ {
+-		// Fix data type on PID Device Control
++	// Fix data type on PID Device Control
+         if (rdesc[1002] == 0x91 && rdesc[1003] == 0x02) {
+-			rdesc[1003] = 0x00; // Fix header, it needs to be Array.
++		rdesc[1003] = 0x00; // Fix header, it needs to be Array.
+         }
+         return rdesc;
+ }
+ 
+ 
+-static u8 *universal_pidff_report_fixup(struct hid_device *hdev, __u8 *rdesc,
+-                                        unsigned int *rsize)
++static const u8 *universal_pidff_report_fixup(struct hid_device *hdev, __u8 *rdesc,
++        				      unsigned int *rsize)
+ {
+ 		if (hdev->vendor == USB_VENDOR_ID_MOZA) {
+ 			return moza_report_fixup(hdev, rdesc, rsize);
+@@ -108,7 +108,7 @@ static int universal_pidff_input_mapping(struct hid_device *hdev, struct hid_inp
+  * Add quirks after initialisation
+  */
+ static int universal_pidff_probe(struct hid_device *hdev,
+-				const struct hid_device_id *id)
++				 const struct hid_device_id *id)
+ {
+ 	int ret;
+ 	ret = hid_parse(hdev);
+@@ -135,7 +135,7 @@ err:
+ }
+ 
+ static int universal_pidff_input_configured(struct hid_device *hdev,
+-				struct hid_input *hidinput)
++					    struct hid_input *hidinput)
+ {
+ 	// Remove fuzz and deadzone from the wheel axis
+ 	struct input_dev *input = hidinput->input;
