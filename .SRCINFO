@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-sqlite
 	pkgdesc = A C library that implements an SQL database engine (mingw-w64)
-	pkgver = 3.46.1
+	pkgver = 3.47.1
 	pkgrel = 1
 	url = https://www.sqlite.org/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-sqlite
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://www.sqlite.org/2024/sqlite-autoconf-3460100.tar.gz
-	sha256sums = 67d3fe6d268e6eaddcae3727fce58fcc8e9c53869bdd07a0c61e38ddf2965071
+	source = https://www.sqlite.org/2024/sqlite-autoconf-3470100.tar.gz
+	sha256sums = 416a6f45bf2cacd494b208fdee1beda509abda951d5f47bc4f2792126f01b452
 
 pkgname = mingw-w64-sqlite
