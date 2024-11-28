@@ -1,4 +1,6 @@
 # Maintainer: envolution
+# Contributor: SoleSoul
+# shellcheck shell=bash disable=SC2034,SC2154
 
 _appname=lm-studio
 pkgname=lmstudio
@@ -12,7 +14,7 @@ depends=('zlib' 'hicolor-icon-theme' 'fuse2' 'clblast')
 options=(!strip !debug)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://releases.lmstudio.ai/linux/x86/${pkgver%.*}/${pkgver##*.}/LM_Studio-${pkgver%.*}.AppImage")
-conflicts=(lmstusio-appimage)
+conflicts=(lmstudio-appimage)
 noextract=("${_appimage}")
 sha256sums_x86_64=('ca5512e96ac66af356d566eba019c22de78c05e057e35a27b7029e40bba0ebfb')
 
@@ -50,3 +52,4 @@ package() {
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
   ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
+# vim:set ts=2 sw=2 et:
