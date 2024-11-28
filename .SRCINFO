@@ -1,6 +1,6 @@
 pkgbase = python-pylink-square
 	pkgdesc = Python interface for the SEGGER J-Link
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/Square/pylink
 	arch = any
@@ -13,14 +13,15 @@ pkgbase = python-pylink-square
 	depends = python
 	depends = python-psutil
 	depends = python-six
+	depends = jlink-software-and-documentation
 	provides = pylink
 	conflicts = pylink
 	replaces = pylink
-	source = python-pylink-square-1.2.1.tar.gz::https://github.com/square/pylink/archive/refs/tags/v1.2.1.tar.gz
+	source = python-pylink-square-1.3.0.tar.gz::https://github.com/square/pylink/archive/refs/tags/v1.3.0.tar.gz
 	source = python-pylink-square-0.14.3-remove_mock.patch
-	sha512sums = 7f2097eea46f4a284ded95677a220e4c004e8378d2ad2c8082b8442e93d697d5c4c1d3f1fc8348daa43a5963b374e089d71316727c9e830751b951bef1a9b7cc
+	sha512sums = 572ec0ff3779f507d8a6f6e96efc47d3abc6fadd0757775f1c417dec8d8173056d8ea05ea1ae3e87b2a0edaed54a57c44a7243f68b09a52c67b3ad013d08fbd7
 	sha512sums = 35ff6497171de4acb6eebbca0619419ba8fa74da9487181dcbd90068fe2c7122e79d0d3e54dfc9a0bf010e398d144ff6ce20ca5e76e426269f6274b1d66287da
-	b2sums = 2ab64ce7cfde84836f43c48c235ffd035fd4fbddc814f378f5084aabb4a862ad34b5db385900a8e6c36d464717442360591624cfb9f8c959eeb71ea6c8855d95
+	b2sums = 2db3fd0d772e736684725020334f79b29d9e7601cf4d9ca3077abe7d5d38763621cf34282a8400f9027064633ff846e5b7a31da00c54a44cb5cfdc32a896722c
 	b2sums = 4cc08b683975b3400caa0d73efb986737971c1003f1c0632d7440c25c9f0cc661f847275753c6ba03dc214e303a3cfd1ea8d3fb2bb6824c7560945fe1f2ecb05
 
 pkgname = python-pylink-square
