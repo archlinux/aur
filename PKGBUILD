@@ -1,4 +1,4 @@
-# Maintainer: Farzin Monsef <farzin@inphraz.ir>
+# Maintainer: Farzin Monsef <farzin [at] inphraz [dot] ir>
 # Contributor: Henrik Juul Pedersen <henrikjuul AT gmail>
 
 pkgname=libiec61850
