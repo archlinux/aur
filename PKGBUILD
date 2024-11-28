@@ -4,8 +4,8 @@
 
 _pkgname=flet
 pkgname=python-${_pkgname}
-pkgver=0.24.1
-pkgrel=2
+pkgver=0.25.0
+pkgrel=1
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
 license=('Apache')
@@ -36,11 +36,11 @@ arch=('x86_64')
 source=(
 	"${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}-dev/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 	'flet-linux.patch')
-sha256sums=('8e007f71953fae93f8c808e07b527406f1784f10885879523c6a92fa08114c01'
-            'af9718b926a07ac8e8689a2c623fe6921d88d0bcd52263f63848d11175e3b828')
+sha256sums=('9d083547f708c30881957b6a73aa04c303b34838360af43142f568fbe4b0fe87'
+            '2d7372f0a8a6f7ccbeb3f91a4c866cce002da39d3326b1f9ceab2b2162bf8e7c')
 
 _srcdir="${_pkgname}-${pkgver}"
-_engine_version=3.24.2
+_engine_version=3.24.5
 
 prepare() {
 	cd "${_srcdir}"
@@ -65,7 +65,7 @@ build() {
 		APPVEYOR_BUILD_VERSION=${pkgver} goreleaser build --clean --snapshot --single-target
 	popd
 
-	for dir in 'sdk/python/packages/'{flet-core,flet,flet-runtime}; do
+	for dir in 'sdk/python/packages/'{flet-cli,flet-desktop,flet}; do
 		pushd "$dir"
 			python -m build --wheel --no-isolation
 		popd
@@ -77,7 +77,7 @@ package() {
 
 	install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 
-	for dir in 'sdk/python/packages/'{flet-core,flet,flet-runtime}; do
+	for dir in 'sdk/python/packages/'{flet-cli,flet-desktop,flet}; do
 		pushd "$dir"
 			python -m installer --destdir="$pkgdir" 'dist/'*.whl
 		popd
@@ -104,4 +104,11 @@ package() {
 	install -dm0755 'site-packages/flet/bin'
 	ln -s '/usr/bin/fletd' 'site-packages/flet/bin/fletd'
 	#ln -s "/usr/share/$pkgname/web" 'site-packages/flet/web'
+
+	local site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"
+	install -Dm755 <(cat << EOF
+#!/usr/bin/env sh
+python '$site_packages/flet_cli/cli.py' "\$@"
+EOF
+	) "${pkgdir}/usr/bin/${_pkgname}_cli"
 }

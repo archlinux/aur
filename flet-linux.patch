@@ -1,7 +1,7 @@
-diff --git a/sdk/python/packages/flet-runtime/src/flet_runtime/app.py b/sdk/python/packages/flet-runtime/src/flet_runtime/app.py
+diff --git a/sdk/python/packages/flet-desktop/src/flet_desktop/__init__.py b/sdk/python/packages/flet-desktop/src/flet_desktop/__init__.py
 index ae1474c..990387b 100644
---- a/sdk/python/packages/flet-runtime/src/flet_runtime/app.py
-+++ b/sdk/python/packages/flet-runtime/src/flet_runtime/app.py
+--- a/sdk/python/packages/flet-desktop/src/flet_desktop/__init__.py
++++ b/sdk/python/packages/flet-desktop/src/flet_desktop/__init__.py
 @@ -673,6 +673,9 @@ def __locate_and_unpack_flet_view(page_url, assets_dir, hidden):
          app_path = temp_flet_dir.joinpath(app_name)
          args = ["open", str(app_path), "-n", "-W", "--args", page_url, pid_file]
@@ -11,4 +11,4 @@ index ae1474c..990387b 100644
 +    elif 0:
          # build version-specific path to flet folder
          temp_flet_dir = Path.home().joinpath(".flet", "bin", f"flet-{version.version}")
- 
+
