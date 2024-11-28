@@ -2,7 +2,7 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 
 pkgname=ogre-legacy
-pkgver=14.3.0
+pkgver=14.3.2
 pkgrel=1
 pkgdesc='Scene-oriented, flexible 3D engine written in C++ (Latest version with legacy features enabled for older games)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('ogre')
 install=ogre.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OGRECave/ogre/archive/v${pkgver}.tar.gz")
 optdepends=('python: python bindings')
-sha512sums=('5834ef3c6b1757ff73d511de79212a6533fcb5eb42e34fe4c21c71f2a7f28a096f454e51131fdfe7b782dcef8575dd853780569ee72fe1fafdbc7b0ad1fd727f')
+sha512sums=('637dfa427c2094688fda850a46746734dafb29eaee4d28c7f294db9ccfc2b53eb05f4d34460926807658db3c8cb614b7669d3fb190e7c8a9ee9bd1d68adf0a64')
 
 prepare() {
   cd ogre-${pkgver}
