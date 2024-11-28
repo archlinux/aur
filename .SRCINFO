@@ -1,17 +1,18 @@
 pkgbase = python-arabic-reshaper
 	pkgdesc = Reconstruct Arabic sentences to be used in applications that do not support Arabic
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mpcabd/python-arabic-reshaper
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	optdepends = python-fonttools
-	source = arabic-reshaper-3.0.0.tar.gz::https://files.pythonhosted.org/packages/source/a/arabic_reshaper/arabic_reshaper-3.0.0.tar.gz
-	sha256sums = ffcd13ba5ec007db71c072f5b23f420da92ac7f268512065d49e790e62237099
+	optdepends = python-fonttools>=4: TTF support
+	source = python-arabic-reshaper-3.0.0.tar.gz::https://github.com/mpcabd/python-arabic-reshaper/archive/refs/tags/v3.0.0/python-arabic-reshaper-3.0.0.tar.gz
+	sha256sums = cff356dd4001851c464cda3f840ed4713c6b53ee1c0a19b79bad12b508e06cda
 
 pkgname = python-arabic-reshaper

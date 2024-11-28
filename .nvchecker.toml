@@ -1,0 +1,4 @@
+[python-arabic-reshaper]
+source = "git"
+git = "https://github.com/mpcabd/python-arabic-reshaper.git"
+prefix = "v"
