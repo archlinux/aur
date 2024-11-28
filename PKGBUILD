@@ -4,7 +4,7 @@ _base=pyprecice
 pkgname=python-${_base}
 pkgdesc="Python language bindings for the preCICE coupling library"
 pkgver=3.1.2
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 url="https://github.com/${_base/py/}/python-bindings"
 license=(LGPL-3.0-or-later)
@@ -26,9 +26,12 @@ build() {
 }
 
 check() {
-  cd python-bindings-${pkgver}
   # FIXME: https://github.com/precice/python-bindings/issues/1
-  python setup.py test
+  cd python-bindings-${pkgver}/examples/solverdummy
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer ../../dist/*.whl
+  mpiexec -n 1 test-env/bin/python solverdummy.py precice-config.xml SolverOne &
+  mpiexec -n 1 test-env/bin/python solverdummy.py precice-config.xml SolverTwo
 }
 package() {
   cd python-bindings-${pkgver}
