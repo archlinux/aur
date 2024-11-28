@@ -25,18 +25,18 @@ prepare()
 }
 
 build() {
-	mkdir -p ${_srcname}/build
-	cd ${_srcname}/build
-	cmake .. \
+    mkdir -p ${_srcname}/build
+    cd ${_srcname}/build
+    cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ \
         -DBUILD_EXAMPLES=OFF
 
-	make
+    make
 }
 
 #Install prefix set by cmake
 package() {
-	cd ${_srcname}/build
-	make install
+    cd ${_srcname}/build
+    make install
 }
