@@ -1,0 +1,6 @@
+[clang17-bin]
+source="regex"
+regex="Package: clang-17.*\\:([0-9.]*-[0-9]+)"
+url="https://packages.debian.org/sid/clang-17"
+from_pattern="-"
+to_pattern="."
