@@ -11,10 +11,6 @@ makedepends=(
     'go'
 )
 
-_latest() {
-    curl -s https://api.github.com/repos/kubernetes-sigs/kubebuilder/releases | jq -r '.[0].tag_name'
-}
-
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/kubernetes-sigs/kubebuilder/archive/v${pkgver}.tar.gz"
 )
