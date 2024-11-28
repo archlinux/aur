@@ -1,8 +1,8 @@
 # Maintainer: Aethar <elliott.ashby88@gmail.com>
 
 pkgname=fastanime
-pkgver=2.8.3
-pkgrel=3
+pkgver=2.8.4
+pkgrel=1
 pkgdesc="FastAnime, anime site experience from the terminal."
 arch=('x86_64')
 url="https://github.com/Benex254/FastAnime"
