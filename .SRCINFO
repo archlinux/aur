@@ -1,6 +1,6 @@
 pkgbase = phylum
 	pkgdesc = Command line interface for the Phylum API
-	pkgver = 7.1.4
+	pkgver = 7.1.5
 	pkgrel = 1
 	url = https://phylum.io
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = phylum
 	depends = gcc-libs
 	depends = glibc
 	depends = zlib
-	source = cli-7.1.4.tar.gz::https://github.com/phylum-dev/cli/archive/refs/tags/v7.1.4.tar.gz
-	b2sums = 9907def5994c7ad6492d467ea34cbb14d0500c1cddfc581ee81362515d5300d039d29854da1421af4001a734ed74c8adac19a4080a0ef0eef808f5e9fb9e2d49
+	source = cli-7.1.5.tar.gz::https://github.com/phylum-dev/cli/archive/refs/tags/v7.1.5.tar.gz
+	b2sums = 82e0705509593e7a113cbdf8c7dbfdefb47bc97ed62edf855f0894226a617393795161993b5dbdf979a0ddd624b380d6cb734d7a6fa3ed40eb2af54f35477621
 
 pkgname = phylum
