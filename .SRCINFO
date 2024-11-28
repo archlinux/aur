@@ -1,0 +1,16 @@
+pkgbase = jpeg-quantsmooth
+	pkgdesc = JPEG artifacts removal based on quantization coefficients
+	pkgver = 1.20240129
+	pkgrel = 1
+	url = https://github.com/ilyakurdyukov/jpeg-quantsmooth
+	arch = x86_64
+	arch = i686
+	license = LGPL-2.1
+	makedepends = gcc
+	makedepends = make
+	makedepends = libjpeg-turbo
+	provides = jpegqs
+	source = https://github.com/ilyakurdyukov/jpeg-quantsmooth/archive/refs/tags/1.20240129.tar.gz
+	sha256sums = fd29e96eede90575de12664556d30d5fd81261da23e70f555af4cb4ecaab640f
+
+pkgname = jpeg-quantsmooth
