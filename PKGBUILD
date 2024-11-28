@@ -2,10 +2,10 @@
 
 pkgbase=zen-browser
 pkgname=()
-pkgver=1.0.1_a.19
+pkgver=1.0.1_a.20
 _zen_version=${pkgver//_/-}
-_firefox_version=132.0.1
-pkgrel=2
+_firefox_version=133.0
+pkgrel=1
 pkgdesc='Experience tranquillity while browsing the web without people tracking you'
 url='https://zen-browser.app/'
 arch=('x86_64')
@@ -77,14 +77,12 @@ source=("git+$_repo.git#tag=$_zen_version"
         "git+https://github.com/mozilla-l10n/firefox-l10n"
         "https://archive.mozilla.org/pub/firefox/releases/${_firefox_version}/source/firefox-${_firefox_version}.source.tar.xz"
         desktop.patch
-        enable-jack-instead-of-pulseaudio.patch
         download-language-packs.patch
         do-not-auto-disable-extensions-in-system-directories.patch)
-sha256sums=('148680d55e075d8a22f2a188e73d3d7a4b69d416872fae08b5ac61af6a38649f'
+sha256sums=('8483f00e996d015929ca7d2a12913c4db80359169818cd6ae779beb259e63429'
             'SKIP'
-            '5c031b572c1da726677e2ff97b6ad5a7e3b23387a6fc3963391cb562f80a5e48'
+            '492b2c9a3b6d215e38ce490624e8b2b9473419accdeaddb24ba00bc6adc3cc60'
             'fb8a1373a1e9f1b8b1443f75368b647f370735e5b95da82bab106000ef71fa76'
-            'd5f41103ed28b1abf4f7cffed1d53708dbff39d2c2b8db4d9ddff10530a13edb'
             'f2a917dea2c5cbd702da69c0c8648047f2f28ae77c5807350f4cb4d2dd5fe4fb'
             '8c1dec4e17516ecc737cb4fd37a215a59a4a3dea49770290125973038d987e01')
 noextract=("firefox-${_firefox_version}.source.tar.xz")
@@ -141,6 +139,8 @@ prepare() {
   # Apply patches
   msg2 "apply patches"
   git apply -3 "$srcdir"/*.patch
+  # use the --enable-jack option to keep in sync with the official repository of Firefox
+  sed -i 's/--enable-pulseaudio/--enable-jack/g' "$srcdir"/desktop/configs/linux/mozconfig
 
   msg2 "prepare dependencies"
   pnpm config set store-dir "$srcdir"/pnpm-store
