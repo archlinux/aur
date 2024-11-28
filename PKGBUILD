@@ -5,7 +5,7 @@ pkgdesc="Kubernetes webhook token authentication plugin implementation using lda
 pkgver=4.0.0
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
-url="https://github.com/vbouchaud/k8s-ldap-auth"
+url="https://github.com/HopopOps/k8s-ldap-auth"
 license=('MPL2')
 conflicts=('k8s-ldap-auth')
 provides=('k8s-ldap-auth')
@@ -24,16 +24,16 @@ sha256sums_aarch64=(
 )
 
 source_x86_64=(
-    "k8s-ldap-auth::https://github.com/vbouchaud/k8s-ldap-auth/releases/download/v${pkgver}/k8s-ldap-auth.linux.amd64"
+    "k8s-ldap-auth::https://github.com/HopopOps/k8s-ldap-auth/releases/download/v${pkgver}/k8s-ldap-auth.linux.amd64"
 )
 source_armv7l=(
-    "k8s-ldap-auth::https://github.com/vbouchaud/k8s-ldap-auth/releases/download/v${pkgver}/k8s-ldap-auth.linux.arm"
+    "k8s-ldap-auth::https://github.com/HopopOps/k8s-ldap-auth/releases/download/v${pkgver}/k8s-ldap-auth.linux.arm"
 )
 source_armv7h=(
     "${source_armv7l}"
 )
 source_aarch64=(
-    "k8s-ldap-auth::https://github.com/vbouchaud/k8s-ldap-auth/releases/download/v${pkgver}/k8s-ldap-auth.linux.arm64"
+    "k8s-ldap-auth::https://github.com/HopopOps/k8s-ldap-auth/releases/download/v${pkgver}/k8s-ldap-auth.linux.arm64"
 )
 
 package() {
