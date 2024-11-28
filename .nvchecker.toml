@@ -1,0 +1,4 @@
+[puffin]
+source = "git"
+git = "https://github.com/siddhantac/puffin.git"
+prefix = "v"
