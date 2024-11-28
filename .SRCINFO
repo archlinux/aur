@@ -1,6 +1,6 @@
 pkgbase = qt5-gamepad
 	pkgdesc = Adds support for getting events from gamepad devices
-	pkgver = 5.15.15
+	pkgver = 5.15.16
 	pkgrel = 2
 	url = https://www.qt.io
 	arch = x86_64

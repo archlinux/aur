@@ -2,9 +2,9 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-gamepad
-_qtver=5.15.2
-_basever=5.15.15
-pkgver=5.15.15
+_qtver=5.15.6
+_basever=5.15.16
+pkgver=5.15.16
 pkgrel=2
 _commit=e9109dadba5c8f2419af67139106b4c30f90332e
 arch=('x86_64')
