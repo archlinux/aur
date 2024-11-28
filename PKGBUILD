@@ -1,4 +1,5 @@
 # Maintainer: Renner03 <Renner03@protonmail.com>
+# Contributor: Vianney Bouchaud <aur dot vianney at bouchaud dot org>
 
 pkgname=swaysome-git
 _pkgname=swaysome
@@ -13,7 +14,6 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url")
 md5sums=('SKIP')
-
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
