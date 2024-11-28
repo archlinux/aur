@@ -4,7 +4,7 @@
 
 pkgname=python-haversine
 _name=haversine
-pkgver=2.8.1
+pkgver=2.9.0
 pkgrel=1
 pkgdesc='Calculate the distance between two points on Earth using their latitude and longitude.'
 url='https://github.com/mapado/haversine'
@@ -16,7 +16,7 @@ optdepends=('python-numpy: for haversine calculations'
             'python-numba: for jit')
 checkdepends=('python-pytest' 'python-numba')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('468de642154e98019f86dfe54bb379254b4bfc633a502a22ce6eb69ef65ba00888026058299b11b73237b146b603f336918c6c8dc1507e645c8fd5ef33b7cf9c')
+b2sums=('d95b41d50958784b767bf22836f6f992dca0996d52a574fea127bf356352ebdfd2a6e5e4b3144939ce6f39090cd5c567e5fce82acd8bfb8d8b94dfb4fd7b1b47')
 
 build() {
     cd "$_name-$pkgver"
