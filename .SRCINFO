@@ -1,6 +1,6 @@
 pkgbase = 10mb.video-git
 	pkgdesc = Fit a video into a 10mb file (Discord nitro pls?)
-	pkgver = r4.99b795a
+	pkgver = r5.940b95e
 	pkgrel = 1
 	url = https://github.com/ugjka/10mb.video
 	arch = any
