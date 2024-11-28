@@ -1,4 +1,3 @@
-
 # Maintainer:  yjun <jerrysteve1101 at gmail dot com>
 
 # based on the PKGBUILD of dsview
