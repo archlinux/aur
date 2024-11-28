@@ -14,8 +14,8 @@ source=("${pkgname}::git+https://github.com/ugjka/${_name}.git#branch=main")
 md5sums=("SKIP")
 
 pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+ 	cd "$pkgname"
+ 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -26,5 +26,5 @@ build() {
 package() {
 	cd "$pkgname"
 	install -Dm755 ${_name} "${pkgdir}"/usr/bin/${_name}
-    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${_name}/LICENSE
+	install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${_name}/LICENSE
 }
