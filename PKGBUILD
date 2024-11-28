@@ -1,7 +1,7 @@
 # Maintainer: Faugus <felix.ribeiro@live.com>
 
 pkgname=faugus-launcher-git
-pkgver=r218.1520b6a
+pkgver=r221.069010a
 pkgrel=1
 pkgdesc="A simple and lightweight app for running Windows games using UMU-Launcher"
 arch=('x86_64')
@@ -27,5 +27,9 @@ package() {
     install -Dm755 faugus-components.py "$pkgdir/usr/bin/faugus-components"
     install -Dm644 faugus-launcher.desktop "$pkgdir/usr/share/applications/faugus-launcher.desktop"
     install -Dm644 faugus-shortcut.desktop "$pkgdir/usr/share/applications/faugus-shortcut.desktop"
-    install -Dm644 faugus-launcher.png "$pkgdir/usr/share/icons/faugus-launcher.png"
+    install -Dm644 faugus-launcher.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/faugus-launcher.png"
+    install -Dm644 faugus-launcher.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/faugus-battlenet.png"
+    install -Dm644 faugus-launcher.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/faugus-ea.png"
+    install -Dm644 faugus-launcher.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/faugus-epic-games.png"
+    install -Dm644 faugus-launcher.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/faugus-ubisoft-connect.png"
 }
