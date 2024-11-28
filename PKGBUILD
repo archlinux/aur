@@ -3,7 +3,7 @@
 _pkgauthor=pvolok
 pkgname=mprocs
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Run multiple commands in parallel"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_pkgauthor}/${pkgname}"
@@ -21,7 +21,7 @@ build() {
 
 	RUSTFLAGS="--remap-path-prefix=$(pwd)=/build/" cargo build --release --locked
 
-	help2man ${pkgname} --output "${pkgname}.1"
+	help2man ${pkgname} --output "${pkgname}.1" --no-info
 	gzip "${pkgname}.1"
 }
 
