@@ -1,6 +1,6 @@
 pkgbase = p4d
-	pkgdesc = Minimal Perforce Server
-	pkgver = 2024.2
+	pkgdesc = Minimal Perforce Helix Core Server
+	pkgver = 2024.2.2675662
 	pkgrel = 1
 	url = https://www.perforce.com
 	install = p4d.install

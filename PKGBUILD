@@ -3,9 +3,9 @@
 # Contributor: Andrew Boktor andrew dot boktor at gmail dot com
 
 pkgname=p4d
-pkgver=2024.2
+pkgver=2024.2.2675662
 pkgrel=1
-pkgdesc="Minimal Perforce Server"
+pkgdesc="Minimal Perforce Helix Core Server"
 arch=('x86_64')
 url="https://www.perforce.com"
 license=('custom:p4d')
