@@ -1,71 +1,41 @@
-# Maintainer: M Novick <mnovick1988@gmail.com>
+# Maintainer: Shadow Wizard Money Gang <test@example.org>
+# Contributor: M Novick <mnovick1988@gmail.com>
 # Contributor: matthiaskrgr <matthiaskrgr _strange_curverd_character_ freedroid D0T org>
-#
-# NOTE: Copied from AUR3 and updated.
-#
 
-
-pkgname=gmqcc-git
-pkgver=r1.3714a50
-pkgrel=1
-pkgdesc="An Improved Quake C Compiler"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-depends=('glibc')
-conflicts=('gmqcc')
-provides=('gmqcc=0.2.4')
-makedepends=('git')
-url="https://github.com/graphitemaster/gmqcc.git"
+pkgname='gmqcc-git'
+pkgver='r3045.2fe0af0'
+pkgrel='1'
+pkgdesc='A QuakeC compiler by graphitemaster bundled with a QuakeC VM (git main branch)'
+arch=('i686' 'x86_64')
+url='https://github.com/graphitemaster/gmqcc'
 license=('MIT')
-
-_gitroot="git://github.com/graphitemaster/gmqcc.git"
-_gitname="gmqcc"
+provides=('gmqcc')
+conflicts=('gmqcc')
+makedepends=('git')
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir"/"$_gitname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$pkgname"
+  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd $srcdir
-	msg "Connecting to the GIT server..."
-	if [[ -d $srcdir/$_gitname ]] ; then
-		cd $_gitname
-		msg "Removing build files..."
-		git clean -dfx
-		msg "Updating..."
-		git pull --no-tags
-		msg "The local files are updated."
-	else
-		msg "Cloning..."
-		git clone $_gitroot $_gitname --depth 1
-		msg "Clone done."
-	fi
-
-	msg "Starting compilation..."
-	cd "$srcdir"/"$_gitname"
-        
-        msg "Configuring..."
-        cmake .
-        
-	msg "Compiling..."
-	make
+  cd "$srcdir/$pkgname"
+  make gmqcc qcvm
 }
 
-#check() {
-#	cd "$srcdir"/"$_gitname"
-#	make test
-#}
-
 package() {
-	cd "$srcdir"/"$_gitname"
-	msg "Building Pkg."
-	#make install DESTDIR=$pkgdir PREFIX=/usr
-	#msg "Compiling done."
-	mkdir -p ${pkgdir}/usr/lib
-        mkdir -p ${pkgdir}/usr/bin
-        install -D "$srcdir"/"$_gitname"/gmqcc ${pkgdir}/usr/bin/gmqcc
-        install -D "$srcdir"/"$_gitname"/testsuite ${pkgdir}/usr/bin/testsuite
-        install -D "$srcdir"/"$_gitname"/qcvm ${pkgdir}/usr/bin/qcvm
-        install -D "$srcdir"/"$_gitname"/libgmqcclib.a ${pkgdir}/usr/lib/libgmqcclib.a
-	install -D LICENSE ${pkgdir}/usr/share/licenses/gmqcc/LICENSE
+  cd "$srcdir/$pkgname"
+
+  install -D -m755 gmqcc "$pkgdir/usr/bin/gmqcc"
+  install -D -m755 qcvm "$pkgdir/usr/bin/qcvm"
+
+  install -D -m644 AUTHORS "$pkgdir/usr/share/doc/$pkgname/AUTHORS"
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  
+  install -D -m644 gmqcc.ini.example "$pkgdir/usr/share/doc/$pkgname/gmqcc.ini.example"
+
+  install -D -m644 doc/gmqcc.1 "$pkgdir/usr/share/man/gmqcc.1"
+  install -D -m644 doc/qcvm.1 "$pkgdir/usr/share/man/qcvm.1"
 }
