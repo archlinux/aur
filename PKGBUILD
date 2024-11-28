@@ -3,11 +3,11 @@
 # https://github.com/brokenpip3/my-pkgbuilds
 # Contributor: Kris Nóva R.I.P. <kris@nivenly.com>
 
-pkgbase=falco-modules-dmks
-pkgname=falco-modules-dmks
-provides=(falco-modules-dmks)
+pkgbase=falco-module-dmks
+pkgname=falco-module-dmks
+provides=(falco-module-dmks)
 pkgver=0.37.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cloud native runtime security - dkms module"
 arch=(x86_64)
 license=(Apache)
