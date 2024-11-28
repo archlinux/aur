@@ -1,15 +1,17 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 pkgname=z-library-electron
-pkgver=2.0.0
+pkgver=2.3.0
 pkgrel=1
-pkgdesc="Stay connected to our library! use system electron"
+pkgdesc="Your gateway to knowledge and culture. use system electron"
 arch=(x86_64 aarch64)
-url="https://go-to-zlibrary.se/#desktop_app_tab"
+url="https://singlelogin.re"
 license=('unknown')
 makedepends=(asar)
+# Chrome/112.0.5615.204 Electron/24.8.8
 depends=(electron bash hicolor-icon-theme)
-source=("https://s3proxy.cdn-zlib.se/te_public_files/soft/linux/zlibrary-setup-latest.deb")
-sha256sums=('d3d6c845fafd3a16bd1cb28451bfa8295767c6942fb0449930ee51db54b94c7f')
+source=("https://articles.sk/soft/linux/zlibrary-setup-latest.deb")
+sha256sums=('a2de6205e37ad8a50e61ad792c06549646cfe570fa1715058dd14cb178262c6f')
+options=(!emptydirs)
 
 package() {
 	bsdtar -xf data.tar.* -C $pkgdir
@@ -33,8 +35,7 @@ package() {
 	popd
 
 	printf "#!/bin/sh
-exec electron /opt/Z-Library/resources/app \"\$@\"
+exec env ELECTRON_ENABLE_LOGGING=1 electron /opt/Z-Library/resources/app \"\$@\"
 " | install -Dm755 /dev/stdin $pkgdir/usr/bin/z-library
 	find $pkgdir -name "*.desktop" -print -exec sed -i "s/^Exec=.*/Exec=z-library/g" {} \;
-	find $pkgdir -type d -empty -delete
 }

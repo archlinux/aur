@@ -1,8 +1,8 @@
 pkgbase = z-library-electron
-	pkgdesc = Stay connected to our library! use system electron
-	pkgver = 2.0.0
+	pkgdesc = Your gateway to knowledge and culture. use system electron
+	pkgver = 2.3.0
 	pkgrel = 1
-	url = https://go-to-zlibrary.se/#desktop_app_tab
+	url = https://singlelogin.re
 	arch = x86_64
 	arch = aarch64
 	license = unknown
@@ -10,7 +10,8 @@ pkgbase = z-library-electron
 	depends = electron
 	depends = bash
 	depends = hicolor-icon-theme
-	source = https://s3proxy.cdn-zlib.se/te_public_files/soft/linux/zlibrary-setup-latest.deb
-	sha256sums = d3d6c845fafd3a16bd1cb28451bfa8295767c6942fb0449930ee51db54b94c7f
+	options = !emptydirs
+	source = https://articles.sk/soft/linux/zlibrary-setup-latest.deb
+	sha256sums = a2de6205e37ad8a50e61ad792c06549646cfe570fa1715058dd14cb178262c6f
 
 pkgname = z-library-electron
