@@ -1,0 +1,21 @@
+pkgbase = mipsel-none-elf-gcc-git
+	pkgdesc = up-to-date GCC (C, C++) for baremetal MIPS
+	pkgver = 15.r5740.066f309db6
+	pkgrel = 1
+	url = https://www.gnu.org/software/gcc/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	makedepends = git
+	depends = mipsel-none-elf-binutils
+	provides = mipsel-none-elf-gcc
+	conflicts = mipsel-none-elf-gcc
+	options = !ccache
+	options = !distcc
+	options = !emptydirs
+	options = !libtool
+	options = !strip
+
+pkgname = mipsel-none-elf-gcc-git
