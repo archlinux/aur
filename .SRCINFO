@@ -1,7 +1,7 @@
 pkgbase = photomatix
 	pkgdesc = Professional HDR Creation Program (license removes watermark)
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hdrsoft.com/download/photomatix-linux.html
 	install = photomatix.install
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = photomatix
 	depends = libtiff
 	depends = openexr
 	depends = gtkmm3
-	source = https://hdrsoft.com/download/linux/ubuntu/PhotomatixLinux2.0.1_Ubuntu20.04.deb
-	sha1sums = ab13a236b1036c3ddef333b3af0d04489ba14b17
+	source = "https://www.hdrsoft.com/download/linux/ubuntu/PhotomatixLinux2.0.1_Ubuntu23_24.deb"
+	sha1sums = "15c11d30d8ee459a5432e9031459ff633f2fe93e"
 
 pkgname = photomatix
 
