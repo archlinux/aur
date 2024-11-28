@@ -1,6 +1,6 @@
 pkgbase = python-astc-encoder-py-git
         pkgdesc = A Python binding of astc-encoder.
-        pkgver = r47.6ef13bb
+        pkgver = r53.a0d704a
         pkgrel = 1
         url = https://github.com/K0lb3/astc-encoder-py
         arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = python-astc-encoder-py-git
         makedepends = python-setuptools
         makedepends = python-wheel
         makedepends = git
+        depends = python
         depends = python-archspec
         provides = python-astc-encoder-py
         conflicts = python-astc-encoder-py
