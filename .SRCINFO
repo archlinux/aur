@@ -1,0 +1,23 @@
+pkgbase = python-sorpo-git
+	pkgdesc = Library to find, create and check PKGBUILD updates (main branch)
+	pkgver = r65.38776db
+	pkgrel = 1
+	url = https://codeberg.org/Vekhir/python-sorpo
+	arch = any
+	license = EUPL-1.2+
+	makedepends = git
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = pyalpm
+	depends = python
+	depends = python-gitpython
+	depends = python-networkx
+	depends = python-srcinfo
+	provides = python-sorpo
+	conflicts = python-sorpo
+	source = python-sorpo-git::git+https://codeberg.org/Vekhir/python-sorpo
+	sha512sums = SKIP
+
+pkgname = python-sorpo-git
