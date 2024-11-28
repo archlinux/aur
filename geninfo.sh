@@ -9,8 +9,28 @@ pytoml="src/${_pipname}-${pkgver}/pyproject.toml"
 
 makepkg -do
 pkgdesc=$(yq eval -o=json "$pytoml" | jq -r '.tool.poetry.description')
-depends=$(yq eval -o=json "$pytoml" | jq -r '.tool.poetry.dependencies | to_entries | map(select(.value | type != "object")) | .[].key' | tr 'A-Z' 'a-z' | sort -u | sed 's|^|python-|' | sed 's|python-python-|python-|' | sed '/^python-python$/d' | tr '\n' ' ' | sed 's| $||')
-optdepends=$(yq eval -o=json "$pytoml" |  jq -r '.tool.poetry.extras.[].[]' | tr 'A-Z' 'a-z' | sort -u | sed 's|^|python-|' | sed 's|python-python-|python-|' | sed '/^python-python$/d' | tr '\n' ' ' | sed 's| $||')
+optdepends=$(yq eval -o=json "$pytoml" | 
+    jq -r '.tool.poetry.extras.[].[]' | 
+    tr 'A-Z' 'a-z' | 
+    sed 's|^|python-|' | 
+    sed 's|python-python-|python-|' | 
+    sed '/^python-python$/d' | 
+    sort -u | 
+    tr '\n' ' ' | 
+    sed 's| $||'
+)
+depends=$(yq eval -o=json "$pytoml" | 
+    jq '.tool.poetry.dependencies | keys' | 
+    jq -r '.[]' |
+    tr 'A-Z' 'a-z' | 
+    sed 's|^|python-|' | 
+    sed 's|python-python-|python-|' | 
+    sed '/^python-python$/d' | 
+    grep -vP "^(${optdepends// /\|})$" |
+    sort -u | 
+    tr '\n' ' ' | 
+    sed 's| $||'
+)
 # url=$(yq eval -o=json "$pytoml" | jq -r '.tool.poetry.homepage')
 
 sed -e "s|^pkgdesc=.*|pkgdesc=\"$pkgdesc\"|" \
