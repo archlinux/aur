@@ -2,7 +2,7 @@
 
 pkgname=fastanime
 pkgver=2.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="FastAnime, anime site experience from the terminal."
 arch=('x86_64')
 url="https://github.com/Benex254/FastAnime"
@@ -34,7 +34,7 @@ optdepends=('mpv: video player'
             'feh: image viewer (for manga mode)')
 provides=('fastanime')
 install="${pkgname}.install"
-source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 
 build() {
     cd "${srcdir}" || exit
