@@ -2,7 +2,7 @@
 
 pkgname=kubebuilder
 pkgdesc="SDK for building Kubernetes APIs"
-pkgver=3.14.0
+pkgver=4.3.1
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://github.com/kubernetes-sigs/kubebuilder"
@@ -17,6 +17,10 @@ _latest() {
 
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/kubernetes-sigs/kubebuilder/archive/v${pkgver}.tar.gz"
+)
+
+sha256sums=(
+    "4b93e065add42f67bf2829b07209722477c7426ce483a47321d6cdc492856130"
 )
 
 build() {
@@ -37,7 +41,7 @@ build() {
       -ldflags "\
         -linkmode=external \
         -buildid=''
-        -extldflags=\"${LDFLAGS}\" \
+        -extldflags \"${LDFLAGS}\" \
         -X main.kubeBuilderVersion=v${pkgver} \
         -X main.goos=$(go env GOOS) \
         -X main.goarch=$(go env GOARCH) \
@@ -52,7 +56,3 @@ package() {
     "${pkgdir}/usr/bin/kubebuilder" completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/kubebuilder"
     "${pkgdir}/usr/bin/kubebuilder" completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_kubebuilder"
 }
-
-sha256sums=(
-    612c782b67c211a034b700876cc4c74cbcbeccd6ffdb696ab28073367232e149
-)
