@@ -1,0 +1,16 @@
+pkgbase = mipsel-none-elf-binutils-git
+	pkgdesc = Up-to-date binutils for baremetal MIPS
+	pkgver = 15.branchpoint.r1649.cbb4051c3
+	pkgrel = 1
+	url = https://www.gnu.org/software/binutils
+	arch = x86_64
+	license = GPL-3.0-or-later AND GFDL-1.3-no-invariants-or-later AND FSFAP
+	makedepends = git
+	depends = glibc
+	depends = zstd
+	depends = libelf
+	depends = bison
+	provides = mipsel-none-elf-binutils
+	conflicts = mipsel-none-elf-binutils
+
+pkgname = mipsel-none-elf-binutils-git
