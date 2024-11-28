@@ -2,10 +2,10 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=affine
 _pkgname=AFFiNE
-pkgver=0.18.1
+pkgver=0.18.2
 _electronversion=33
 pkgrel=1
-pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.(Prebuilt version.Use system-wide electron)"
+pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use."
 arch=('x86_64')
 url="https://affine.pro/"
 _ghurl="https://github.com/toeverything/AFFiNE"
@@ -17,13 +17,60 @@ provides=("${pkgname}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
-source=(
-    "git+https://github.com/toeverything/AFFiNE#tag=${pkgver}"
-    "${pkgname}.sh"
+makedepends=(
+    # https://github.com/toeverything/AFFiNE/blob/canary/docs/BUILDING.md#prerequisites
+    nodejs-lts-iron yarn
+    # node gyp
+    python
+    # electron-packager
+    zip unzip
+    # Rust
+    cargo
+    # Misc
+    git jq
 )
-sha256sums=('6e2aa80ab84fdd7edef25c84c38f0a008207cd4b97722567fb0707f70177041a'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+source=(
+    "${_pkgname}::git+https://github.com/toeverything/AFFiNE#tag=v${pkgver}"
+    "${pkgname}.sh"
+    "${pkgname}.desktop"
+)
+sha256sums=('1ed6689ebbcacdc3ad9cb4773ccad0b0358c8fb32f636d581a1aa740ea0caf3b'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980'
+            '18724474ab2351ed00965f9fe9adea04967458dec810866b572cf44ca8185b5b')
+
+case "${CARCH}" in
+    x86_64)
+        _arch=x64
+        ;;
+    *)
+        _arch="${CARCH}"
+esac
+
+prepare() {
+    cd "$_pkgname"
+    export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 ELECTRON_SKIP_BINARY_DOWNLOAD=1 SENTRYCLI_SKIP_DOWNLOAD=1
+    yarn install
+}
+
 build() {
+    # https://github.com/toeverything/AFFiNE/blob/canary/docs/building-desktop-client-app.md
+    cd "$_pkgname"
+    # https://github.com/toeverything/AFFiNE/blob/v0.18.2/.github/actions/setup-version/action.yml
+    export APP_VERSION="${pkgver}"
+    ./scripts/set-version.sh $APP_VERSION
+    CFLAGS+=' -ffat-lto-objects' # https://github.com/launchbadge/sqlx/issues/3149
+    yarn workspace @affine/native build
+    export BUILD_TYPE=stable
+    SKIP_NX_CACHE=1 yarn workspace @affine/electron generate-assets
+    yarn config set nmMode classic
+    yarn config set nmHoistingLimits workspaces
+    find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +
+    yarn install
+    SKIP_WEB_BUILD=1 SKIP_BUNDLE=1 HOIST_NODE_MODULES=1 DEBUG='*' yarn workspace @affine/electron make --platform=linux --arch="${_arch}"
+    unzip packages/frontend/apps/electron/out/stable/make/zip/linux/${_arch}/${_pkgname}-linux-${_arch}-${pkgver}.zip
+}
+
+package() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -31,15 +78,12 @@ build() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname}.sh"
-    bsdtar -xf "${srcdir}/data."*
-}
-
-package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/usr/lib/${pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm755 "${srcdir}/usr/lib/${pkgname}/resources/app.asar.unpacked/dist/${pkgname}.linux-x64-gnu.node" \
-        -t "${pkgdir}/usr/lib/${pkgname}/app.asar.unpacked/dist"
-    install -Dm644 "${srcdir}/usr/share/doc/${pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    cd "$_pkgname/${_pkgname}-linux-${_arch}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
+    cp -r resources/* "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "../LICENSE-MIT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
+    install -Dm644 "../packages/frontend/apps/electron/resources/icons/icon_stable_64x64.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }

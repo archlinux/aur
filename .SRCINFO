@@ -1,17 +1,26 @@
-pkgbase = affine-bin
-	pkgdesc = There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.18.1
+pkgbase = affine
+	pkgdesc = There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = https://affine.pro/
 	arch = x86_64
 	license = LicenseRef-custom
 	license = MIT
+	makedepends = nodejs-lts-iron
+	makedepends = yarn
+	makedepends = python
+	makedepends = zip
+	makedepends = unzip
+	makedepends = cargo
+	makedepends = git
+	makedepends = jq
 	depends = electron33
-	provides = affine=0.18.1
-	conflicts = affine
-	source = affine-0.18.1.deb::https://github.com/toeverything/AFFiNE/releases/download/v0.18.1/affine-0.18.1-stable-linux-x64.deb
+	provides = affine=0.18.2
+	source = AFFiNE::git+https://github.com/toeverything/AFFiNE#tag=v0.18.2
 	source = affine.sh
-	sha256sums = 6e2aa80ab84fdd7edef25c84c38f0a008207cd4b97722567fb0707f70177041a
+	source = affine.desktop
+	sha256sums = 1ed6689ebbcacdc3ad9cb4773ccad0b0358c8fb32f636d581a1aa740ea0caf3b
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 18724474ab2351ed00965f9fe9adea04967458dec810866b572cf44ca8185b5b
 
-pkgname = affine-bin
+pkgname = affine

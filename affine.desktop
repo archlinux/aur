@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=AFFiNE
+Comment=AFFiNE Desktop App
+GenericName=AFFiNE
+Exec=affine %U
+Icon=affine
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;
+MimeType=x-scheme-handler/affine;
+
