@@ -1,6 +1,6 @@
 pkgbase = python-fluiddyn
 	pkgdesc = Framework for studying fluid dynamics
-	pkgver = 0.6.6
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://foss.heptapod.net/fluiddyn/fluiddyn
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-fluiddyn
 	optdepends = python-mpi4py: MPI support
 	optdepends = python-scikit-image
 	optdepends = python-opencv
-	source = https://foss.heptapod.net/fluiddyn/fluiddyn/-/archive/0.6.6/fluiddyn-0.6.6.tar.gz
-	sha512sums = 5e9f2b8b62e366148d5fdc2d2c454af0368a59e8a7e15b192eecb0fa3b1cb082b4fc74c32550d2bf061105b22474aa07cd1833317158c32cd733bd85515595f9
+	source = https://foss.heptapod.net/fluiddyn/fluiddyn/-/archive/0.7.0/fluiddyn-0.7.0.tar.gz
+	sha512sums = 4fe1b175a53adf0d289c25d213ad24759a73c4eb5842fcf84243c349e3f2520ceb31319df10dde0e4ddb7e674d3e5cb8b398bcfc3df5e6059ba09aadc6ff0dc9
 
 pkgname = python-fluiddyn
