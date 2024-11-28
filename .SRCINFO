@@ -1,13 +1,15 @@
 pkgbase = bee
 	pkgdesc = A tool for helping develop with beego app framework
-	pkgver = 2.1.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/beego/bee
-	arch = any
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = Apache-2.0
 	makedepends = go
 	depends = glibc
-	source = bee-2.1.0.tar.gz::https://github.com/beego/bee/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = 970b95936b19ea9a984d4a5774452d5fa55b40f754a8302a8c9fa5397f10d872
+	source = bee-2.3.0.tar.gz::https://github.com/beego/bee/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = 2902b4f29549da9c47b3fc784c3d48535c0212f6fd95db67445d3f40e84a564d
 
 pkgname = bee
