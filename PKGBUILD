@@ -2,7 +2,7 @@
 pkgname=ember-zli
 pkgver=2.9.1
 githash=6f85ecb
-pkgrel=1
+pkgrel=2
 pkgdesc="Interact with EmberZNet-based adapters using zigbee-herdsman 'ember' driver"
 url="https://github.com/Nerivec/ember-zli"
 license=('GPL-3.0')
@@ -12,7 +12,7 @@ makedepends=()
 
 source_x86_64=("https://github.com/Nerivec/ember-zli/releases/download/v$pkgver/ember-zli-v$pkgver-$githash-linux-x64.tar.gz")
 source_armv7h=("https://github.com/Nerivec/ember-zli/releases/download/v$pkgver/ember-zli-v$pkgver-$githash-linux-arm.tar.gz")
-source_armv7h=("https://github.com/Nerivec/ember-zli/releases/download/v$pkgver/ember-zli-v$pkgver-$githash-linux-arm64.tar.gz")
+source_aarch64=("https://github.com/Nerivec/ember-zli/releases/download/v$pkgver/ember-zli-v$pkgver-$githash-linux-arm64.tar.gz")
 
 sha256sums_x86_64=(a40407ee8c994e27588f4108923d8f08a9a09aaae9dbdd2a5a0abbfeff2b44cb)
 sha256sums_armv7h=(2194264641b22090d9b702f643cfba55e9aaec5300ff22b184345561975e06d2)
