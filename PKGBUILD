@@ -1,7 +1,7 @@
 _pkgname=xml2lua
 pkgbase=lua-${_pkgname}
 pkgname=(lua{51,52,53,}-$_pkgname)
-pkgver=1.4_5
+pkgver=1.6_2
 pkgrel=1
 pkgdesc="use xml in lua"
 arch=('x86_64' 'i686' 'aarch64' 'armv7l')
@@ -12,7 +12,7 @@ makedepends=('luarocks'
              'lua53'
              'lua')
 source=("https://github.com/manoelcampos/xml2lua/archive/v${pkgver/_/-}.tar.gz")
-md5sums=('d3b394fc6bf1a9f139b6f6f87f2bc7f2')
+sha512sums=('c5131004281257259211cfaa933bd1d158ee4caa136d6374fc3b202198dead104eb57ff42b2e14bb38beec26b248f871767f886df8b10f823d537ae27479c896')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver/_/-}"
