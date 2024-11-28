@@ -24,30 +24,28 @@ _pkg_sh_name="st-${_pkg_name}_${_prefix}_${_date}_${_suffix}_amd64.sh"
 _pkg_tar_name="st-${_pkg_name}_${_prefix}_${_date}_${_suffix}_amd64.tar.gz"
 _pkg_zip_name="en.${_pkg_sh_name}.zip"
 
-# User Agent
-# copy from stm32cubeide
-_curl_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
-                        AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/124.0.0.0 \
-                        Safari/537.36"
-_curl_useragent="$(printf '%s' "$_curl_useragent" | sed 's/[[:space:]]\+/ /g')"
-_useragent_escaped="${_curl_useragent// /\\ }"
-DLAGENTS=("https::/usr/bin/curl \
-              -gqb '' --retry 3 --retry-delay 3 \
-              -H ${_useragent_escaped} \
-              -o %o --compressed %u")
-
+# sync from stm32cubeide, thanks to @kumencz!
+# Download file with list of URLs to files
 _curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-to\
 ols/stm32-software-development-tools/stm32-ides/stm32cubeclt/_jcr_content/get-software/getsw-table-nli.no\
 cache.html/st-site-cx/components/containers/product/get-software-table-body.html"
+_curl_req="$(curl -s --compressed -H "@${srcdir}http_headers" "$_curl_req_url")"
 
-_curl_req="$(curl -s --compressed -H "$_curl_useragent" "$_curl_req_url")"
+# Extract actual download link to the desired file
 _pkg_url="$(grep -m 1 "${_pkg_zip_name}" <<< "$_curl_req")"
 _pkg_url="$(awk -F'"' '{print $4}' <<< "$_pkg_url")"
 _download_path="https://www.st.com""$_pkg_url"
+# echo $_download_path
+
+DLAGENTS=("https::/usr/bin/curl \
+              -gqb '' --retry 3 --retry-delay 3 \
+              -H "@${srcdir}http_headers" \
+              -o %o --compressed %u")
 source=("${_pkg_zip_name}"::"$_download_path"
+        'http_headers'
         "https://www.st.com/resource/en/license/${_pkg_license_name}")
 sha256sums=('f66be954b886d8c104b8316d833a3e4d85f6abd652862cba477627424e3eb9a0'
+            'e390db4335686f4a99f04002625a9dce0058b631cb3205b700c1910bf129d73c'
             'c6d92c00dee63e0f4a54d8ea62f82a646243c3e1480142ae3e7f4ca5d77d5702')
 
 # not used, reserved.
