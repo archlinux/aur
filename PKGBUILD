@@ -13,15 +13,15 @@ _mbedtls_pkgver=3.6.0
 _mbedtls=mbedtls-${_mbedtls_pkgver}
 _srcname=${pkgname}-${pkgver}
 source=("https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/v$_mbedtls_pkgver.tar.gz"
-		"https://github.com/mz-automation/libiec61850/archive/refs/tags/v$pkgver.tar.gz"
+        "https://github.com/mz-automation/libiec61850/archive/refs/tags/v$pkgver.tar.gz"
 )
 sha256sums=('32c500e73ee878e193e7d66bf5e4c34fb42bb968a6c9f9488aa466b16f6f3bff'
-			'0dd0adc7f13215e961d22511bcb1dadfdbdaab969f11a0d975775a6ebdff8099')
+            '0dd0adc7f13215e961d22511bcb1dadfdbdaab969f11a0d975775a6ebdff8099')
 
 prepare()
 {
     # CMake automatically builds with TLS support if mbedtls is present.
-	mv --force ${_mbedtls} ${_srcname}/third_party/mbedtls/
+    mv --force ${_mbedtls} ${_srcname}/third_party/mbedtls/
 }
 
 build() {
