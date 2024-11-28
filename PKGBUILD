@@ -11,6 +11,7 @@ url="https://smith.langchain.com/"
 license=('MIT')
 depends=(python-httpx python-orjson python-pydantic python-requests python-requests-toolbelt)
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
+optdepends=(python-langsmith-pyo3 python-vcrpy)
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('2e933220318a4e73034657103b3b1a3a6109cc5db3566a7e8e03be8d6d7def7a')
 

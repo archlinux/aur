@@ -14,6 +14,8 @@ pkgbase = python-langsmith
 	depends = python-pydantic
 	depends = python-requests
 	depends = python-requests-toolbelt
+	optdepends = python-langsmith-pyo3
+	optdepends = python-vcrpy
 	source = langsmith-0.1.147.tar.gz::https://files.pythonhosted.org/packages/source/l/langsmith/langsmith-0.1.147.tar.gz
 	sha256sums = 2e933220318a4e73034657103b3b1a3a6109cc5db3566a7e8e03be8d6d7def7a
 
