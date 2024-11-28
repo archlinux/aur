@@ -28,7 +28,7 @@ package_lua51-prompt-style() {
 	local version=5.1
 	_package $version
 	rm -r "${pkgdir:?}/usr/bin"
-	install -D "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-$_revision/bin/nvimp" -t "$pkgdir/usr/bin"
+	install -D "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-$_revision/bin/"{nvimp,texluajitp} -t "$pkgdir/usr/bin"
 }
 
 package_lua52-prompt-style() {
