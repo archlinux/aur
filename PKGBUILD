@@ -5,7 +5,7 @@
 
 pkgbase=postgresql13
 pkgname=($pkgbase-libs $pkgbase-docs $pkgbase)
-pkgver=13.15
+pkgver=13.18
 _majorver=${pkgver%.*}
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
@@ -24,27 +24,27 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql-check-db-dir
         postgresql.sysusers
         postgresql.tmpfiles)
-md5sums=('fd2ebdc901a6f1f40a2934ef820fbc62'
+md5sums=('3d4d71cbb0da76f10d8c0417854e1510'
          '0f96c09cb07cb5bf7c0f74b399128f33'
-         '21816c9949ab9766c409421314045d2e'
+         '51b84c6a60e269ca71024f0b2350aa68'
          '96f82c38f3f540b53f3e5144900acf17'
          'd28e443f9f65a5712c52018b84e27137'
          '0418d1b78f15b969c1575657d47ab130'
          '38fe206c794e2eff95556947af0e5ce5'
          '2050d34e4dfa05f3c6fe4cd7615eaa4b'
          '02d017978f0bba21f455feceb3f0a45a')
-sha256sums=('42edd415446d33b8c242be76d1ad057531b2264b2e86939339b7075c6e4ec925'
+sha256sums=('ceea92abee2a8c19408d278b68de6a78b6bd3dbb4fa2d653fa7ca745d666aab1'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
-            'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
+            '6be18dd92e62dab41c476cadc127ae90187f2e6b6ab562b66cb4bfa8c5539b70'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
             '25fb140b90345828dc01a4f286345757e700a47178bab03d217a7a5a79105b57'
             '7db9626c322928b2465aa126b48ba7f0eebd366bf2aa19c9c0a92b488cb469c5'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
             '4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57')
-b2sums=('63631ea73e42fb846a9a78473d5929a2c9bf91016ef0808578d6ff6ce1e3d862ae1f8524f26f074f2adb30e55fd941ef6ce9b27c5eaa83f41d165f45958e0445'
+b2sums=('dd8c5906f7d53b5447e8c307960a5ff7cf25cec711a508acf80609e12f9411c9382753da313e31a546be528ff8263327befadcb5f8a40c3164a56f582710bc43'
         '71dc1b4e41294fd235db05317c991d42de082c49d38a2f97d1394572a93a4aa77f42ec29b4e6cf0a17adb3a4471afcb1e2464870f2b9e847906bf49541763a53'
-        '5135c5f9dafe427de8d3740d4a67c6dba2869be47dc52b4190b8aa1148e702992fde1821371b68e93b224f5805f697d490ea28ec80d7ce55e5a224551b0a6247'
+        'bef0e6024fac8a4fc7c8ca5b456de5bd8929e263605fef700a293cde447c3aea1fc6e55d7b82e90c16361f70db4461b62d3e06e97cc29ed6971dca27ffb70ca3'
         '3eab84d332d96678fe6e435ee243c8f1a82b838f601d61d3604d11e918aed7a62202edca5e476c4b9031ed284570e6fcd6c659cfdbd9624aa0019d3233755f81'
         '2209b7550acad7955102ec6922754b4046b2a2ad2a7e1cfb2cc4053c0705abac7aa7d7968eab617f50894797d06345f51c9a669926bd2a77dcf688206a2027e0'
         'a4255df47b7ac1418d20aa73aa0f6e70c7952a10d706e5523043c48b2c3b6d8e39838049dfcc826913cd0f2c06502561d1abe8b19cce7071db66139ae93a37bf'
@@ -55,7 +55,7 @@ b2sums=('63631ea73e42fb846a9a78473d5929a2c9bf91016ef0808578d6ff6ce1e3d862ae1f852
 prepare() {
   cd postgresql-${pkgver}
   patch -p1 < ../postgresql-run-socket.patch
-  patch -p1 < ../postgresql-perl-rpath.patch
+  patch -p0 < ../postgresql-perl-rpath.patch
 }
 
 build() {
