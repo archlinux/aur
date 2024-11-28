@@ -1,0 +1,12 @@
+pkgbase = nodejs-utf8-byte-length
+	pkgdesc = Get the utf8 byte length of a string, taking into account multi-byte characters and surrogate pairs.
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/parshap/utf8-byte-length#readme
+	arch = any
+	license = WTFPL OR MIT
+	makedepends = npm
+	source = https://registry.npmjs.org/utf8-byte-length/-/utf8-byte-length-1.0.5.tgz
+	b2sums = 389881e234f5b3b8394b28aa89a01d7f33794cd6085c066255e21fe218348f5b186ec15729e78a61def672b66504a1359ed64c2e16f4486b8f661bf6d6d0fcb4
+
+pkgname = nodejs-utf8-byte-length
