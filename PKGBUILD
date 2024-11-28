@@ -4,7 +4,7 @@ _tag=3.0.0-rc.12
 pkgname=watt-toolkit-bin
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=${_tag//-/.}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url=https://steampp.net/
 license=('GPL-3.0-only')
@@ -24,7 +24,7 @@ sha256sums_x86_64=('e9cac12799f2d6aa1e038ab20f291b9f0f604a624a6168a9341d4861cf37
 package(){
     depends=(
         # runtime
-        'libcap' 'aspnet-runtime-8.0' 'nss' 'dotnet-runtime-8.0' 'sh' 'hicolor-icon-theme'
+        'libcap' 'aspnet-runtime-9.0' 'nss' 'dotnet-runtime-9.0' 'sh' 'hicolor-icon-theme'
         # e_sqlite3.so libHarfBuzzSharp.so libSkiaSharp.so
         'glibc'
         # Steam++.Accelerator
