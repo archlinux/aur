@@ -1,7 +1,7 @@
 # Maintainer: Neko_Rikka <yjzyl9008 at gmail dot com>
 
 pkgname=python-xxtea-git
-pkgver=r186.9b9698a
+pkgver=r187.461d11f
 pkgrel=1
 pkgdesc="Python extension module xxtea."
 arch=('x86_64')
@@ -22,6 +22,6 @@ pkgver() {
 package() {
   cd xxtea
   python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
