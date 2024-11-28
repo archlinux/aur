@@ -2,7 +2,7 @@
 
 pkgname=e2-sat-editor
 pkgdesc="Satellite channel lists editor: Enigma2, Neutrino, dreambox"
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 arch=('any')
 url="https://github.com/ctlcltd/e2-sat-editor"
@@ -14,7 +14,7 @@ provides=('e2-sat-editor')
 conflicts=('e2-sat-editor')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ctlcltd/e2-sat-editor/archive/v$pkgver.tar.gz")
-sha256sums=('9ec0c1231fded4ecabee6cad87ad59169b94112a51ebd7b59ce4b1357d99ae06')
+sha256sums=('a043cc532b7b7fe4aa6da59249b5f41257e054466448a3aac938890e59f94a59')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver/src"
