@@ -1,7 +1,7 @@
 # Maintainer: Uģis Gērmanis <ugis@germanis.lv>
 _name=ds360go
 pkgname=${_name}-git
-pkgver=r19.d7254c5
+pkgver=r20.f5233db
 pkgrel=1
 pkgdesc="xboxdrv wrapper to use a Dualsense as a Xbox 360 controller on Linux "
 arch=(any)
@@ -9,8 +9,9 @@ url="https://github.com/ugjka/ds360go"
 license=('MIT')
 depends=(xboxdrv)
 makedepends=(go git)
-provides=(ds360go)
-install=ds360go.install
+provides=("${_name}")
+install="${_name}".install
+options=(!debug)
 source=("${pkgname}::git+https://github.com/ugjka/ds360go.git#branch=main")
 md5sums=("SKIP")
 
