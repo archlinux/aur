@@ -2,8 +2,8 @@
 
 _pkgname=fastanime
 pkgname="${_pkgname}-git"
-pkgver=2.8.3.r1.e668f93
-pkgrel=3
+pkgver=2.8.4.r2.8cbbcf4
+pkgrel=1
 pkgdesc="FastAnime, anime site experience from the terminal."
 arch=('x86_64')
 url="https://github.com/Benex254/FastAnime"
