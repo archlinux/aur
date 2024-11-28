@@ -1,7 +1,7 @@
 pkgbase = python-langsmith
 	pkgdesc = Client library to connect to the LangSmith LLM Tracing and Evaluation Platform.
 	pkgver = 0.1.147
-	pkgrel = 1
+	pkgrel = 2
 	url = https://smith.langchain.com/
 	arch = any
 	license = MIT
@@ -10,7 +10,6 @@ pkgbase = python-langsmith
 	makedepends = python-poetry-core
 	makedepends = python-wheel
 	depends = python-httpx
-	depends = python-langsmith-pyo3
 	depends = python-orjson
 	depends = python-pydantic
 	depends = python-requests
