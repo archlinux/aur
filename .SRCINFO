@@ -1,7 +1,7 @@
 pkgbase = minetest-voxelibre
 	pkgdesc = VoxeLibre (formerly known as MineClone2), a voxel-based sandbox game for Minetest
 	pkgver = 0.87.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.minetest.land/VoxeLibre/VoxeLibre
 	arch = any
 	license = GPL3
