@@ -1,0 +1,7 @@
+[ollama-cuda-git]
+source="github-graphql"
+github="ollama/ollama"
+prefix="v"
+use_latest_release=true
+use_commit_number=true
+use_commit_hash=true

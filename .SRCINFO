@@ -1,23 +1,28 @@
 pkgbase = ollama-cuda-git
 	pkgdesc = Create, run and share large language models (LLMs) with CUDA
-	pkgver = 0.3.11.g504a410f
+	pkgver = 0.4.6+r3691+gce7455a8e
 	pkgrel = 1
-	url = https://github.com/jmorganca/ollama
+	url = https://github.com/ollama/ollama
 	arch = x86_64
 	license = MIT
+	makedepends = clblast
 	makedepends = cmake
-	makedepends = cuda
 	makedepends = git
 	makedepends = go
+	makedepends = pigz
+	depends = cuda
+	optdepends = nvidia-utils: monitor GPU usage with nvidia-smi
 	provides = ollama
+	provides = ollama-cuda
 	conflicts = ollama
-	conflicts = ollama-cuda
-	source = git+https://github.com/jmorganca/ollama
+	source = git+https://github.com/ollama/ollama.git#branch=main
+	source = ollama-ld.conf
 	source = ollama.service
 	source = sysusers.conf
 	source = tmpfiles.d
 	b2sums = SKIP
-	b2sums = a773bbf16cf5ccc2ee505ad77c3f9275346ddf412be283cfeaee7c2e4c41b8637a31aaff8766ed769524ebddc0c03cf924724452639b62208e578d98b9176124
+	b2sums = 121a7854b5a7ffb60226aaf22eed1f56311ab7d0a5630579525211d5c096040edbcfd2608169a4b6d83e8b4e4855dbb22f8ebf3d52de78a34ea3d4631b7eff36
+	b2sums = 031e0809a7f564de87017401c83956d43ac29bd0e988b250585af728b952a27d139b3cad0ab1e43750e2cd3b617287d3b81efc4a70ddd61709127f68bd15eabd
 	b2sums = 3aabf135c4f18e1ad745ae8800db782b25b15305dfeaaa031b4501408ab7e7d01f66e8ebb5be59fc813cfbff6788d08d2e48dcf24ecc480a40ec9db8dbce9fec
 	b2sums = e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed
 
