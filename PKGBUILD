@@ -2,7 +2,7 @@
 # Contributor: James Williams <jowilliams12000 at gmail dot com>
 pkgname=wallust
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="generate colors from an image"
 arch=('any')
 url="https://codeberg.org/explosion-mental/wallust"
