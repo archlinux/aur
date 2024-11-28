@@ -1,0 +1,23 @@
+--- setup.py	2022-09-18 07:05:01.000000000 -0400
++++ setup.py_patched	2024-11-27 19:38:16.338296940 -0500
+@@ -1,8 +1,4 @@
+-"""Setup module for PyPI / pip integration.
+-"""
+-
+-import imp
+-
++import importlib.util
+ import setuptools
+ 
+ with open("readme.md", encoding="utf-8") as file:
+@@ -12,7 +8,9 @@
+     # only go to first import since that module is not yet installed
+     CUTIE_CONTENTS = file.read().split("import")[0]
+ 
+-cutie = imp.new_module("cutie")
++# Replace imp.new_module with importlib.util.module_from_spec
++spec = importlib.util.spec_from_loader("cutie", loader=None)
++cutie = importlib.util.module_from_spec(spec)
+ exec(CUTIE_CONTENTS, cutie.__dict__)
+ 
+ setuptools.setup(
