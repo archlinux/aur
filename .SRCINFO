@@ -1,13 +1,53 @@
 pkgbase = umi-ocr-bin
-	pkgdesc = 免费，开源，可批量的离线OCR软件 Free, open source, batch-capable offline OCR software, Free, open source, offline OCR software that can batch
+	pkgdesc = Free, Open-source, Batch Offline OCR Software.(Prebuilt version)开源、免费的离线OCR软件。支持截屏/批量导入图片，PDF文档识别，排除水印/页眉页脚，扫描/生成二维码。内置多国语言库
 	pkgver = 2.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hiroi-sora/Umi-OCR
 	arch = x86_64
 	license = MIT
-	makedepends = bash
-	makedepends = tar
-	source = Umi-OCR_Linux_Paddle_2.1.4.tar.xz::https://github.com/hiroi-sora/Umi-OCR/releases/download/v2.1.4/Umi-OCR_Linux_Paddle_2.1.4.tar.xz
+	makedepends = gendesk
+	depends = pyside6
+	depends = python-pymupdf>=1.23
+	depends = python-fonttools>=4.47
+	depends = python-pillow>=10.2
+	depends = python-psutil>=5.9
+	depends = python-pynput
+	depends = zxing-cpp
+	depends = qt6-webengine
+	depends = python-wheel
+	depends = python-defusedxml
+	depends = python-attrs
+	depends = libxrandr
+	depends = gdk-pixbuf2
+	depends = python-brotli
+	depends = libxcomposite
+	depends = python-setuptools
+	depends = qt6-virtualkeyboard
+	depends = python-pyqt6
+	depends = python-tornado
+	depends = python-reportlab
+	depends = libpulse
+	depends = python-typing_extensions
+	depends = python-jinja
+	depends = python-wxpython
+	depends = python-pyqt5
+	depends = python-cairo
+	depends = qt6-multimedia
+	depends = python-simplejson
+	depends = python-cryptography
+	depends = python-lz4
+	depends = python-mako
+	depends = qt6-quick3d
+	depends = python-lxml
+	depends = python-pip
+	depends = qt6-charts
+	depends = python-pyopenssl
+	depends = python-cffi
+	depends = python-docutils
+	depends = python-requests
+	depends = qt6-webengine
+	options = !strip
+	source = umi-ocr-2.1.4.tar.gz::https://github.com/hiroi-sora/Umi-OCR/releases/download/v2.1.4/Umi-OCR_Linux_Paddle_2.1.4.tar.xz
 	sha256sums = 0dae3a93eb4fc8da23097944f403d143430ec27a91ce3fa563ac5d363b69246e
 
 pkgname = umi-ocr-bin
