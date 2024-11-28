@@ -1,5 +1,5 @@
-# Maintainer: Farzin Monsef <farzin@inphraz.ir>
-# Maintainer: ecraven <craven@gmx.net>
+# Maintainer: Farzin Monsef <farzin [at] inphraz [dot] ir>
+# Contributor: ecraven <craven@gmx.net>
 # Contributor: Milos Negovanovic <milos.negovanovic@gmail.com>
 
 pkgname=ocilib
