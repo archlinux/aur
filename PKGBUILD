@@ -1,29 +1,28 @@
-# Maintainer: Julie Shapiro <jshapiro at nvidia dot com>
+# Maintainer: Robert Zhou <meep dot aur at meepzh dot com>
+# Contributor: Julie Shapiro <jshapiro at nvidia dot com>
 
 pkgname=p4
-_version=2024.1
-pkgver=2024.1.2625008
+_version=2024.2
+pkgver=2024.2.2675662
 pkgrel=1
 
-pkgdesc="Perforce command line client"
+pkgdesc="Perforce's Helix command-line client"
+arch=('x86_64')
 depends=('glibc')
-arch=('i686' 'x86_64')
 url="https://www.perforce.com"
 license=('custom:p4')
 
 _url="${url}/downloads/perforce"
 _filename="${pkgver:2:4}-$(date +%Y%m%d)-${pkgname}"
 
-source=(LICENSE)
-source_x86_64=("${_filename}"::"${_url}/r${pkgver:2:4}/bin.linux26x86_64/${pkgname}"
-               "${_filename}.asc"::"${_url}/r${pkgver:2:4}/bin.linux26x86_64/${pkgname}.asc")
-source_i686=("${_filename}"::"${_url}/r${pkgver:2:4}/bin.linux26x86/${pkgname}"
-             "${_filename}.asc"::"${_url}/r${pkgver:2:4}/bin.linux26x86/${pkgname}.asc")
+source=(LICENSE
+        "${_filename}"::"${_url}/r${pkgver:2:4}/bin.linux26x86_64/${pkgname}"
+        "${_filename}.asc"::"${_url}/r${pkgver:2:4}/bin.linux26x86_64/${pkgname}.asc")
 
 
-sha256sums=('c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32')
-sha256sums_i686=('SKIP' 'SKIP')
-sha256sums_x86_64=('SKIP' 'SKIP')
+sha256sums=('c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32'
+            'ee9cd514717dc7ef7d3f2fffb91d67b625291e740dcd72ba929a4c93ed0944c7'
+            'SKIP')
 
 # Perforce Software (Package Signing) <support+packaging@perforce.com>
 validpgpkeys=('7123CB760FF18869'
