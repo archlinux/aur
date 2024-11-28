@@ -1,12 +1,12 @@
 pkgbase = catgirl-engine
 	pkgdesc = A game engine for cool moddability and procedurally generated data
 	pkgver = 0.14.37.alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lexi-the-cute/catgirl-engine
 	arch = any
 	license = Zlib
 	makedepends = rustup
-	makedepends = cargo-nightly
+	makedepends = cargo
 	makedepends = sed
 	optdepends = wayland: Graphics display server
 	optdepends = xorg-server: Graphics display server
