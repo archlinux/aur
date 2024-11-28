@@ -1,20 +1,23 @@
 # Maintainer: Lexi <@alexis@fearness.org> (a fediverse address)
 
 pkgname=catgirl-engine-git
+enginename=catgirl-engine
 pkgdesc="A game engine for cool moddability and procedurally generated data"
 arch=('any')
 license=(Zlib)
-url="https://github.com/lexi-the-cute/catgirl-engine"
-pkgver=v0.14.36.alpha.r2.gbcf5489
+url="https://github.com/Foxgirl-Labs/catgirl-engine"
+pkgver=v0.14.37.alpha.r20.g83921a2
 pkgrel=1
 provides=("catgirl-engine=${pkgver%%.r*}")
 conflicts=(catgirl-engine)
-source=("git+https://github.com/lexi-the-cute/catgirl-engine.git")
-b2sums=("SKIP")
+repo=("https://github.com/Foxgirl-Labs/$enginename.git")
+# source=("git+https://github.com/Foxgirl-Labs/catgirl-engine.git")
+# b2sums=("SKIP")
 options=(!strip !debug)
 depends=()
 makedepends=(
     "git"
+    "git-lfs"
     "rustup"
     "cargo"
     "sed"
@@ -26,7 +29,7 @@ optdepends=(
 
 # Automatically updates pkgver variable
 pkgver() {
-    cd "catgirl-engine"
+    cd "$enginename"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -34,9 +37,17 @@ pkgver() {
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
 
-    cd "catgirl-engine"
+    clone
+
+    cd "$enginename"
     rustup install $RUSTUP_TOOLCHAIN
     cargo +$RUSTUP_TOOLCHAIN fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+# Clones repo to workaround lack of git+lfs support
+clone() {
+    rm -rf $enginename --preserve-root=all
+    git clone --recursive $repo $enginename
 }
 
 # Builds files
@@ -45,7 +56,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
-    cd "catgirl-engine"
+    cd "$enginename"
     cargo +$RUSTUP_TOOLCHAIN build --frozen --release
 }
 
@@ -53,17 +64,21 @@ build() {
 check() {
     export RUSTUP_TOOLCHAIN=stable
 
-    cd "catgirl-engine"
+    cd "$enginename"
     cargo +$RUSTUP_TOOLCHAIN test --frozen --workspace
 }
 
 # Packages built files
 package() {
-    cd "catgirl-engine"
-    sed -i "s/\${engine_path}/\/usr\/bin\/catgirl-engine/" client/assets/resources/catgirl-engine.desktop
-    mv client/assets/vanilla/texture/logo/logo.svg client/assets/vanilla/texture/logo/catgirl-engine.svg
+    cd "$enginename"
 
-    install -Dm0755 -t "$pkgdir/usr/share/icons" "client/assets/vanilla/texture/logo/catgirl-engine.svg"
-    install -Dm0755 -t "$pkgdir/usr/share/applications/" "client/assets/resources/catgirl-engine.desktop"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/catgirl-engine"
+    # Install Engine
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$enginename"
+
+    # Setup Helper Files
+    sed -i "s/\${engine_path}/\/usr\/bin\/$enginename/" "resources/linux/install/game-engine.desktop"
+
+    # Install Helper Files
+    install -Dm0755 -t "$pkgdir/usr/share/icons/$pkgname.svg" "resources/assets/vanilla/texture/logo/logo.svg"
+    install -Dm0755 -t "$pkgdir/usr/share/applications/$pkgname.desktop" "resources/linux/install/game-engine.desktop"
 }

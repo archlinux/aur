@@ -1,21 +1,20 @@
 pkgbase = catgirl-engine-git
 	pkgdesc = A game engine for cool moddability and procedurally generated data
-	pkgver = v0.14.36.alpha.r2.gbcf5489
+	pkgver = v0.14.37.alpha.r20.g83921a2
 	pkgrel = 1
-	url = https://github.com/lexi-the-cute/catgirl-engine
+	url = https://github.com/Foxgirl-Labs/catgirl-engine
 	arch = any
 	license = Zlib
 	makedepends = git
+	makedepends = git-lfs
 	makedepends = rustup
 	makedepends = cargo
 	makedepends = sed
 	optdepends = wayland: Graphics display server
 	optdepends = xorg-server: Graphics display server
-	provides = catgirl-engine=v0.14.36.alpha
+	provides = catgirl-engine=v0.14.37.alpha
 	conflicts = catgirl-engine
 	options = !strip
 	options = !debug
-	source = git+https://github.com/lexi-the-cute/catgirl-engine.git
-	b2sums = SKIP
 
 pkgname = catgirl-engine-git
