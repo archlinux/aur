@@ -1,4 +1,6 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: envolution
+# Contributor: Carl Smedstad <carsme@archlinux.org>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=python-pybrowsers
 _pkgname=browsers
@@ -36,3 +38,4 @@ package() {
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
+# vim:set ts=2 sw=2 et:
