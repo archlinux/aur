@@ -1,8 +1,9 @@
 # Maintainer: Aethar <elliott.ashby88@gmail.com>
 
 pkgname=fastanime
-pkgver=2.8.4
-pkgrel=3
+pkgver=2.8.3
+pkgrel=4
+epoch=1
 pkgdesc="FastAnime, anime site experience from the terminal."
 arch=('x86_64')
 url="https://github.com/Benex254/FastAnime"
@@ -34,7 +35,7 @@ optdepends=('mpv: video player'
             'feh: image viewer (for manga mode)')
 provides=('fastanime')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 build() {
     cd "${srcdir}" || exit
