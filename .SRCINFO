@@ -1,0 +1,20 @@
+pkgbase = viewnior-gtk3-git
+	pkgdesc = Simple, fast and elegant image viewer program. Gtk3 fork
+	pkgver = r314.23ce6e5
+	pkgrel = 1
+	url = https://github.com/Artturin/Viewnior
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	makedepends = glib2-devel
+	depends = exiv2
+	depends = gtk3
+	optdepends = webp-pixbuf-loader
+	provides = viewnior
+	conflicts = viewnior
+	source = viewnior-artturin::git+https://github.com/Artturin/Viewnior.git
+	sha256sums = SKIP
+
+pkgname = viewnior-gtk3-git
