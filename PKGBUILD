@@ -3,19 +3,19 @@
 
 pkgname=photomatix
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional HDR Creation Program"
 url="http://hdrsoft.com/download/photomatix-linux.html"
 arch=('x86_64')
 license=('custom')
 depends=('libtiff' 'openexr' 'gtkmm3')
-source=("https://hdrsoft.com/download/linux/ubuntu/PhotomatixLinux2.0.1_Ubuntu20.04.deb")
-sha1sums=('ab13a236b1036c3ddef333b3af0d04489ba14b17')
+source=("https://www.hdrsoft.com/download/linux/ubuntu/PhotomatixLinux2.0.1_Ubuntu23_24.deb")
+sha1sums=('15c11d30d8ee459a5432e9031459ff633f2fe93e')
 install="photomatix.install"
 
 package() {
 	# extract the deb file's data.tar.gz archive
-	tar -xJf data.tar.xz -C "${srcdir}"
+	tar -x --zstd -f data.tar.zst -C "${srcdir}"
 
 	install -d ${pkgdir}/usr/share
 	mv ${srcdir}/usr/share/{applications,photomatix} ${pkgdir}/usr/share/
