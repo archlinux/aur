@@ -1,8 +1,8 @@
 # Maintainer: Denis Benato <benato.denis96@gmail.org>
 
 pkgname=login-ng
-pkgver=0.1.3
-pkgrel=3
+pkgver=0.1.5
+pkgrel=1
 pkgdesc='A greeter with addition functionalities'
 url='https://github.com/neroreflex/login-ng'
 license=()
@@ -19,7 +19,7 @@ source=(
     'login_ng.tmpfiles'
 )
 b2sums=(
-    '6fd1a2223205b09e738532cf240ab24f0b76c624da67aac914353b284266eafe01611810552a45845cc9bc8cf22f4b8f542afe2b9811032a87e8a9660cbc192d' # login-ng-${pkgver}.tar.gz
+    'a9b381571752d58aa629af3c0394d02b1e302813d1374840e8f7087a7bd7898603bcda9b2b367990253466c58a67b7c25863ea4ec7d63eb5a02f67fc76c5ff5a' # login-ng-${pkgver}.tar.gz
     '0ad4cff08634a22ece4a2a37832ff080fcf57dcea4eb7551535f7068e38f55c6c60886dc9f82e8b8370f3f92bc00c7848a40978fe0493885e6ab6d5fb048bf1a' # login_ng.pam
     '71538bbae869b04f01dd214ae21879ca8be20dfc253fda866d197f0bf4c58ddf2e99b2f55438d9f0f885133ee1fc3afa4258b107447eb37b1dc6cfe5223299c7' # login_ng-autologin.pam
     'ce6b01d713277810b2eb64e8437a0b8bea684c0aec6aeb8e5ec4f8bcd37f94e68ab31f3bc70836f3fb61cc3fc1b007c3db68f9f9c86e8742325c4d5caea1f983' # login_ng.rules
@@ -34,20 +34,20 @@ backup=(
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
+    export RUSTUP_TOOLCHAIN=nightly
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
+    export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
 
 check() {
     cd "$srcdir/$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
+    export RUSTUP_TOOLCHAIN=nightly
     cargo test --frozen --all-features
 }
 
