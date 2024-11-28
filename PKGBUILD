@@ -1,6 +1,6 @@
 # Maintainer: Richard Holt <meowxiik@gmail.com>
 pkgname=boring
-pkgver=0.4.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="The \`boring\` SSH tunnel manager"
 arch=('x86_64')
