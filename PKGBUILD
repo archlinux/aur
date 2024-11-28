@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=annimate-bin
 _pkgname=Annimate
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="A tool for the convenient export of query results (matches) from the ANNIS1 system for linguistic corpora.(Prebuilt version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
 )
-sha256sums=('0d4a0a21b56d49aa319d27fbfc83c9a06043236b13a0fe64a0d4e401c8dcba03')
+sha256sums=('3a7584da13d55b4508843898bf5831ec52a279c794f0cda3cab5c93f6f4f8125')
 build() {
     bsdtar -xf "${srcdir}/data."*
     sed -e "
