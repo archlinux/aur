@@ -55,10 +55,9 @@ package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 
     # Setup Helper Files
-    cd "install"
-    sed -i "s/\${engine_path}/\/usr\/bin\/$pkgname/" "$pkgname.desktop"
+    sed -i "s/\${engine_path}/\/usr\/bin\/$pkgname/" "resources/linux/install/game-engine.desktop"
 
     # Install Helper Files
-    install -Dm0755 -t "$pkgdir/usr/share/icons/" "$pkgname.svg"
-    install -Dm0755 -t "$pkgdir/usr/share/applications/" "$pkgname.desktop"
+    install -Dm0755 -t "$pkgdir/usr/share/icons/$pkgname.svg" "resources/assets/vanilla/texture/logo/logo.svg"
+    install -Dm0755 -t "$pkgdir/usr/share/applications/$pkgname.desktop" "resources/linux/install/game-engine.desktop"
 }
