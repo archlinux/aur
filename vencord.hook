@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=discord
+Target=discord-canary
+Target=discord-ptb
+
+[Action]
+When=PostTransaction
+Exec=/etc/pacman.d/hookbin/vencord.sh
