@@ -1,7 +1,7 @@
 # Maintainer: Chris Watson <cawatson1993@gmail.com>
 
 pkgname=windsurf
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Tomorrow's Editor, Today. Built to keep you in flow state with instant, invaluable AI developer assistance."
 arch=('x86_64')
