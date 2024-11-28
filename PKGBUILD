@@ -5,14 +5,14 @@ pkgdesc="Kubernetes webhook token authentication plugin implementation using lda
 pkgver=4.0.0
 pkgrel=2
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
-url="https://github.com/vbouchaud/k8s-ldap-auth"
+url="https://github.com/HopopOps/k8s-ldap-auth"
 license=('MPL2')
 makedepends=(
     'go'
 )
 
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/vbouchaud/k8s-ldap-auth/archive/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/HopopOps/k8s-ldap-auth/archive/v${pkgver}.tar.gz"
 )
 
 sha256sums=(
@@ -32,7 +32,7 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
 
     goversion=$(go version | sed -r 's/go version go(.+)\s.+/\1/')
-    gopkg=vbouchaud/$pkgname
+    gopkg=hopopops/$pkgname
 
     go build \
       -trimpath \
@@ -42,7 +42,7 @@ build() {
       -ldflags "\
         -linkmode=external \
         -buildid=''
-        -extldflags=\"${LDFLAGS}\" \
+        -extldflags \"${LDFLAGS}\" \
         -X $gopkg/version.APPNAME=${pkgname} \
         -X $gopkg/version.VERSION=v${pkgver} \
         -X $gopkg/version.GOVERSION=${goversion}" \
