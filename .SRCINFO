@@ -1,6 +1,6 @@
 pkgbase = zen-browser
 	pkgdesc = Experience tranquillity while browsing the web without people tracking you
-	pkgver = 1.0.1_a.20
+	pkgver = 1.0.1_a.21
 	pkgrel = 1
 	url = https://zen-browser.app/
 	arch = x86_64
@@ -67,13 +67,13 @@ pkgbase = zen-browser
 	options = !lto
 	options = !makeflags
 	options = !debug
-	source = git+https://github.com/zen-browser/desktop.git#tag=1.0.1-a.20
+	source = git+https://github.com/zen-browser/desktop.git#tag=1.0.1-a.21
 	source = git+https://github.com/mozilla-l10n/firefox-l10n
 	source = https://archive.mozilla.org/pub/firefox/releases/133.0/source/firefox-133.0.source.tar.xz
 	source = desktop.patch
 	source = download-language-packs.patch
 	source = do-not-auto-disable-extensions-in-system-directories.patch
-	sha256sums = 8483f00e996d015929ca7d2a12913c4db80359169818cd6ae779beb259e63429
+	sha256sums = 14582f3323e4a687c257a47ee4d208c0566a22dfa1665d62ff44e8704629fba6
 	sha256sums = SKIP
 	sha256sums = 492b2c9a3b6d215e38ce490624e8b2b9473419accdeaddb24ba00bc6adc3cc60
 	sha256sums = fb8a1373a1e9f1b8b1443f75368b647f370735e5b95da82bab106000ef71fa76
@@ -82,28 +82,28 @@ pkgbase = zen-browser
 
 pkgname = zen-browser-generic
 	pkgdesc = Experience tranquillity while browsing the web without people tracking you
-	provides = zen-browser=1.0.1_a.20
+	provides = zen-browser=1.0.1_a.21
 	conflicts = zen-browser
 
 pkgname = zen-browser-specific
 	pkgdesc = Experience tranquillity while browsing the web without people tracking you (optimized for modern devices)
-	provides = zen-browser=1.0.1_a.20
+	provides = zen-browser=1.0.1_a.21
 	conflicts = zen-browser
 
 pkgname = zen-browser-i18n-zh-cn
 	pkgdesc = Language pack for Zen Browser (zh-CN)
 	arch = any
-	depends = zen-browser>=1.0.1_a.20
+	depends = zen-browser>=1.0.1_a.21
 	optdepends = 
 
 pkgname = zen-browser-i18n-zh-tw
 	pkgdesc = Language pack for Zen Browser (zh-TW)
 	arch = any
-	depends = zen-browser>=1.0.1_a.20
+	depends = zen-browser>=1.0.1_a.21
 	optdepends = 
 
 pkgname = zen-browser-i18n-ja
 	pkgdesc = Language pack for Zen Browser (ja)
 	arch = any
-	depends = zen-browser>=1.0.1_a.20
+	depends = zen-browser>=1.0.1_a.21
 	optdepends = 
