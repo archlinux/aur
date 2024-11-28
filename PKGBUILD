@@ -1,21 +1,21 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="bee"
-pkgver=2.1.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A tool for helping develop with beego app framework"
-arch=('any')
+arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/beego/${pkgname}"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('970b95936b19ea9a984d4a5774452d5fa55b40f754a8302a8c9fa5397f10d872')
+sha256sums=('2902b4f29549da9c47b3fc784c3d48535c0212f6fd95db67445d3f40e84a564d')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  [ -d "build" ] || mkdir "build"
+  mkdir -p "build"
 }
 
 build() {
@@ -28,14 +28,14 @@ build() {
   go build -o "build/${pkgname}" .
 }
 
-# check() {
-#   cd "${srcdir}/${_pkgsrc}"
-#   go test ./...
-# }
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  go test ./...
+}
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
