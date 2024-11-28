@@ -1,14 +1,14 @@
 pkgbase = lua-prompt-style
 	pkgdesc = Lua plugin for powerlevel10k style prompt and WakaTime time tracking
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/wakatime/prompt-style.lua
 	arch = any
 	license = GPL3
 	makedepends = luarocks
 	optdepends = git: get project name
-	source = https://github.com/wakatime/prompt-style.lua/releases/download/0.0.1/prompt-style-0.0.1-0.all.rock
-	sha256sums = 86b9f9853eef70bbc7c5d9be8bfc296eb0c4246669bfcb53135333e186824c56
+	source = https://luarocks.org/manifests/Freed-Wu/prompt-style-0.0.2-1.src.rock
+	sha256sums = debb145a7de3643b2f790e29bb7e04b2b385423af8086dbbf6c57a97e003ae69
 
 pkgname = lua-prompt-style
 	depends = lua-ansicolors
