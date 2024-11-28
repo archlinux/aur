@@ -1,6 +1,7 @@
 #!/bin/bash
 
 BASE=$PWD
+rm -rf tmp/*
 mkdir -p tmp
 git clone mozc tmp/mozc
 (cd tmp/mozc; git fetch;git submodule update --init)
