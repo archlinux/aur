@@ -1,3 +1,6 @@
 pkg/
 src/
 *.tar.*
+
+# Just a file I use for testing
+test.kt
