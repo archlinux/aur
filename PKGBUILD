@@ -12,7 +12,7 @@ depends=(
   python-six
   python-yaml
 )
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-flit-core')
 license=('custom:Apache Software License')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/31/f9/74689ff3e3ff6e4ec8616887cb00c9c66bca7e6243fd328358ea3665d547/ml_collections-1.0.0.tar.gz")
