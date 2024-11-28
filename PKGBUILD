@@ -3,8 +3,8 @@
 
 # basic info
 pkgname="vinyl"
-pkgver=6.2.3.r4864928
-pkgrel=1
+pkgver=6.2.4.df777bd
+pkgrel=2
 pkgdesc="Vinyl Theme for KDE Plasma 6"
 url="https://github.com/ekaaty/vinyl-theme"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ build_dir="build_kf6"
 
 makedepends=(
   'cmake'
-  'extra-cmake-modules'
+  'extra-cmake-modules>=6.7.0'
   'git'
 )
 
