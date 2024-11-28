@@ -1,6 +1,6 @@
 pkgbase = sftpgo-git
 	pkgdesc = Full-featured and highly configurable SFTP, HTTP/S, FTP/S and WebDAV server - S3, Google Cloud Storage, Azure Blob
-	pkgver = r2040.59833fba
+	pkgver = r2050.d3e76898
 	pkgrel = 1
 	url = https://github.com/drakkan/sftpgo
 	install = sftpgo-git.install
