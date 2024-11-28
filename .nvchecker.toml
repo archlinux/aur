@@ -1,0 +1,4 @@
+[autotrace-git]
+source="github"
+github="autotrace/autotrace"
+use_latest_release=true
