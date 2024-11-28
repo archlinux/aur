@@ -1,4 +1,6 @@
 [autotrace-git]
-source="github"
+source="github-graphql"
 github="autotrace/autotrace"
 use_latest_release=true
+use_commit_number=true
+use_commit_hash=true

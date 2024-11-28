@@ -10,7 +10,7 @@
 
 _pkgname=autotrace
 pkgname="${_pkgname}-git"
-pkgver=0.31.10
+pkgver=0.31.10+r709+g938616658
 pkgrel=1
 epoch=1
 pkgdesc='AutoTrace is a utility for converting bitmap into vector graphics.'
@@ -21,24 +21,44 @@ depends=('libpng' 'pstoedit' 'graphicsmagick' 'glib2')
 makedepends=('intltool' 'git' 'autoconf' 'automake')
 provides=(autotrace)
 conflicts=('autotrace' 'autotrace-nomagick')
+checkdepends=('procps-ng')
 options=('!libtool')
-source=("${_pkgname}::git+https://github.com/autotrace/autotrace.git#branch=master")
-sha256sums=('SKIP')
+source=("${_pkgname}::git+https://github.com/autotrace/autotrace.git#branch=master"
+  '010-autotrace-fix-swf-output.patch'
+)
+sha256sums=('SKIP'
+            'c0698678cb37b4a82d732f113ad4829d1b453d9db18001ffbe3044697b4852bc')
+
+prepare() {
+  cd "$_pkgname"
+  #since we're rolling with git, don't break the package when updstream fixes this
+  patch -Np1 -i "${srcdir}/010-autotrace-fix-swf-output.patch" || msg2 "*** Patch failed - mark package out of date please https://aur.archlinux.org/packages/autotrace-git ***"
+  ./autogen.sh
+}
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed 's/^travis.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _version=$(git tag --sort=-v:refname --list | grep '^[0-9.]*$' | head -n1)
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version}+r${_commits}+g${_short_commit_hash}"
 }
-
 build() {
   cd "$_pkgname"
-  autoreconf -ivf
-  intltoolize --force
-  aclocal
-  ./configure --prefix=/usr --with-pstoedit --with-magick=GraphicsMagick --with-png
+  export CFLAGS+=' -Wno-incompatible-pointer-types'
+  ./configure \
+    --prefix=/usr \
+    --with-pstoedit \
+    --disable-static \
+    --with-magick \
+    --with-png
   make
+  sed -i "s|@MAGICK_LIBS@|$(pkg-config --libs ImageMagick)|" autotrace.pc
+  sed -i "s|@MAGICK_CFLAGS@|$(pkg-config --cflags ImageMagick)|" autotrace.pc
 }
-
+check() {
+  make -C "${_pkgname}" check
+}
 package() {
   cd "$_pkgname"
   DESTDIR="${pkgdir}" make install
