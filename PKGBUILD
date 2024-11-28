@@ -19,6 +19,6 @@ package() {
   cd voxelibre
 
   for f in $(find . -type f); do
-    install -Dm644 "$f" "$pkgdir/usr/share/minetest/games/mineclone2/$f"
+    install -Dm644 "$f" "$pkgdir/usr/share/luanti/games/voxelibre/$f"
   done
 }
