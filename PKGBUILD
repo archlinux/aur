@@ -1,6 +1,6 @@
 # Maintainer: David Grimm < david[dot]dg[dot]grimm [replace this with the swirly a sign] gmail[dot]com >
 pkgname=ov-client
-pkgver="0.25.1"
+pkgver="0.26.1"
 pkgrel=1
 epoch=
 pkgdesc="Client to share and receive spatial realtime Audio"
@@ -71,12 +71,12 @@ prepare() {
 	else
 		cd ov-client
 		git checkout master
-		git pull
 		cd ..
 	fi
 	cd ov-client
-	git checkout -q 4fa893aa264dcc4df436560ec8447daf32bd3322
+	git pull
 	git submodule update --init --recursive
+	git checkout -q --recurse-submodules 49697ea82fafc4f17418801261a88ba658e4065b
 }
 
 build() {
