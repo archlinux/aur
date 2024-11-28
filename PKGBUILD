@@ -8,7 +8,7 @@ pkgname=falco-bin
 provides=(falco)
 conflicts=(falco)
 backup=('etc/falco/falco_rules.yaml'  'etc/falco/falco.yaml')
-pkgver=0.37.1
+pkgver=0.39.2
 pkgrel=3
 pkgdesc="Cloud native runtime security. Modern ebpf and config files"
 arch=(x86_64)
@@ -20,14 +20,14 @@ optdepends=(
     "falcosidekick: connect Falco to your ecosystem"
 )
 url="https://github.com/falcosecurity/falco"
-_rules_tag="falco-rules-3.0.1"
+_rules_tag="falco-rules-3.2.0"
 source_x86_64=(
     "https://download.falco.org/packages/bin/${arch}/falco-${pkgver}-x86_64.tar.gz"
     "git+https://github.com/falcosecurity/rules#tag=${_rules_tag}"
     "falco-modern-bpf.service"
 )
-sha256sums_x86_64=('8d441495f72489be1bcab1ce8476ae26007fe2063c8053e8082b264066c46f25'
-                   'b33034564398503bac9cb0088759710ddf176e64c249dfcdd47d9310f0692c6e'
+sha256sums_x86_64=('c830e108ab8daf6030d011f4a3fd817fc471e9292bf54c381f2cde42473213fb'
+                   'e2c117951ccbab473569894bd22aa95aac3704e52aefd7023563806eb9f5e98c'
                    '0709add709184db8a275a5c7c6b6b4123b6dc418e72f7c9d4ab6dcc1d5ab2644')
 install="falco.install"
 
