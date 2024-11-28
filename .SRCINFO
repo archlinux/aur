@@ -1,13 +1,15 @@
 pkgbase = libiec61850
 	pkgdesc = libIEC61850 provides a server and client library for IEC 61850
-	pkgver = 1.0.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = http://libiec61850.com/
 	arch = x86_64
 	arch = i686
 	license = GPLv3
-	source = http://libiec61850.com/libiec61850/wp-content/uploads/2017/03/libiec61850-1.0.1.tgz
-	sha256sums = 9769059f5e9640f497b45610873695fd202116565b827a5d503ff9923d198b78
+	makedepends = mbedtls
+	source = https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/v3.6.0.tar.gz
+	source = https://github.com/mz-automation/libiec61850/archive/refs/tags/v1.6.0.tar.gz
+	sha256sums = 32c500e73ee878e193e7d66bf5e4c34fb42bb968a6c9f9488aa466b16f6f3bff
+	sha256sums = 0dd0adc7f13215e961d22511bcb1dadfdbdaab969f11a0d975775a6ebdff8099
 
 pkgname = libiec61850
-

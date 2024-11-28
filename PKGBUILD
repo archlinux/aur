@@ -1,28 +1,42 @@
-#Package for libIEC61850
-#Library headers are prefixed with libiec61850 (standard with cmake install)
-#I've tested the library for x86_64 and ARM architectures;
-#	(ARM v5 softfloat, and ARM v7 hardfloat.) However this package has so far
-#	only been tested on x86_64 - I've included i686 as well, as it ought to work.
-#Packager Henrik Juul Pedersen <henrikjuul AT gmail>
+# Maintainer: Farzin Monsef <farzin@inphraz.ir>
+# Contributor: Henrik Juul Pedersen <henrikjuul AT gmail>
 
 pkgname=libiec61850
-pkgver=1.0.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="libIEC61850 provides a server and client library for IEC 61850"
 arch=('x86_64' 'i686')
 url="http://libiec61850.com/"
 license=('GPLv3')
-source=("http://libiec61850.com/libiec61850/wp-content/uploads/2017/03/$pkgname-$pkgver.tgz")
-sha256sums=('9769059f5e9640f497b45610873695fd202116565b827a5d503ff9923d198b78')
+makedepends=('mbedtls')
+_mbedtls_pkgver=3.6.0
+_mbedtls=mbedtls-${_mbedtls_pkgver}
+_srcname=${pkgname}-${pkgver}
+source=("https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/v$_mbedtls_pkgver.tar.gz"
+		"https://github.com/mz-automation/libiec61850/archive/refs/tags/v$pkgver.tar.gz"
+)
+sha256sums=('32c500e73ee878e193e7d66bf5e4c34fb42bb968a6c9f9488aa466b16f6f3bff'
+			'0dd0adc7f13215e961d22511bcb1dadfdbdaab969f11a0d975775a6ebdff8099')
+
+prepare()
+{
+    # CMake automatically builds with TLS support if mbedtls is present.
+	mv --force ${_mbedtls} ${_srcname}/third_party/mbedtls/
+}
 
 build() {
-	cd $pkgname-$pkgver
-	cmake -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ CMakeLists.txt
-	make -j
+	mkdir -p ${_srcname}/build
+	cd ${_srcname}/build
+	cmake .. \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ \
+        -DBUILD_EXAMPLES=OFF
+
+	make
 }
 
 #Install prefix set by cmake
 package() {
-	cd $pkgname-$pkgver
+	cd ${_srcname}/build
 	make install
 }
