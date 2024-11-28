@@ -1,0 +1,19 @@
+pkgbase = jpeg2png
+	pkgdesc = Silky smooth JPEG decoder
+	pkgver = 1.02
+	pkgrel = 1
+	url = https://github.com/ThioJoe/jpeg2png
+	arch = x86_64
+	arch = i686
+	license = GPL-3.0
+	makedepends = gcc
+	makedepends = make
+	makedepends = libjpeg-turbo
+	makedepends = libpng
+	makedepends = help2man
+	provides = jpeg2png
+	conflicts = jpeg2png-git
+	source = https://github.com/ThioJoe/jpeg2png/archive/refs/tags/v1.02.tar.gz
+	sha256sums = 6b2467e44db60e6d11f347f356be6b29a8bf0597ca97ad5afae9d461e8dcf119
+
+pkgname = jpeg2png
