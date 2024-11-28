@@ -17,7 +17,7 @@ pkgver=9.31.r20240204164417
 pkgrel=1
 epoch=2
 arch=('x86_64')
-url='http://software.schmorp.de/pkg/rxvt-unicode.html'
+url='https://software.schmorp.de/pkg/rxvt-unicode.html'
 license=('GPL')
 makedepends=(
   'libxft'
