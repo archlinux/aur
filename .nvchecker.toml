@@ -1,0 +1,10 @@
+[osm2world]
+source = "regex"
+url="https://osm2world.org/download/files"
+#regex = "osm2world.org.download.files.([0-9.]+)"
+
+#regex="href=\"0.3.1  /\">([0-9.]+)/"
+regex=".*DIR.*href=\"[0-9.]+/\">([0-9.]+)/"
+
+#https://osm2world.org/download/files/0.3.1/
+
