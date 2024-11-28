@@ -7,7 +7,7 @@ pkgrel=1
 arch=(any)
 url="https://github.com/adtzlr/${_base}"
 license=(GPL-3.0-or-later)
-depends=(python-scipy python-tensortrax)
+depends=(python-scipy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-meshio python-h5py-openmpi python-tensortrax
   python-pyvista hdf5-openmpi fmt verdict libxcursor glew xorg-server-xvfb)
@@ -16,6 +16,8 @@ optdepends=('python-einsumt: for parallel assembly'
   'python-matplotlib: plotting graphs'
   'python-meshio: for mesh-related I/O'
   'python-pyvista: for interactive visualizations'
+  'python-tensortrax: for automatic differentiation support'
+  'python-jax: for automatic differentiation support'
   'python-tqdm: for showing progress bars during job evaluation')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('cd86a1c109c57f9463a052f63adeff16100ccf9307cd4f0eaf75edd69dbbf1303f87b37808f4e2ddbcc4b5425ed4e795705cb1e222e21a3ff87a3f5b63bea1f0')
