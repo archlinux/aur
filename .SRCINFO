@@ -1,6 +1,6 @@
 pkgbase = python-torchquad
 	pkgdesc = Package providing torch-based numerical integration methods
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/esa/torchquad
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-torchquad
 	depends = python-scipy
 	depends = python-tqdm
 	depends = python-autoray
-	source = torchquad-0.4.0.tar.gz::https://github.com/esa/torchquad/archive/v0.4.0.tar.gz
-	sha512sums = 5ac7303c0a160a8857e59c85b7dd65fdd8d91dd3e0197cf568b06254f166af7c4f11f2ca4565a4bf3062c429aeb779216938a9934ea09ddcfba92ef174b53cf2
+	source = torchquad-0.4.1.tar.gz::https://github.com/esa/torchquad/archive/v0.4.1.tar.gz
+	sha512sums = ad3b8b049a1c9ae09554e2dc90a2ff395dbc29c50c90ee9c8faebad6e587799b931858039136941ad6a377f1aa3531d943a4419db3cb0e5ea5fc2b846329f9dc
 
 pkgname = python-torchquad
