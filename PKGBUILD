@@ -3,10 +3,10 @@
 pkgname=k8s-ldap-auth-git
 _pkgname=k8s-ldap-auth
 pkgdesc="Kubernetes webhook token authentication plugin implementation using ldap."
-pkgver=4.0.0.r0.gef268b9
-pkgrel=2
+pkgver=4.0.0.r77.g8dc4e32
+pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
-url="https://github.com/vbouchaud/k8s-ldap-auth"
+url="https://github.com/HopopOps/k8s-ldap-auth"
 license=('MPL2')
 conflicts=('k8s-ldap-auth')
 provides=('k8s-ldap-auth')
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 source=(
-    "$_pkgname::git+https://github.com/vbouchaud/k8s-ldap-auth#branch=master"
+    "$_pkgname::git+https://github.com/HopopOps/k8s-ldap-auth#branch=master"
 )
 
 sha256sums=(
