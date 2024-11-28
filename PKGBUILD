@@ -4,7 +4,7 @@
 pkgname=stlink-server
 _pkgname=st-link-server
 pkgver=2.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="An application to share the debug interface of a single ST-LINK board among several host applications, typically a debugging tool and a monitoring tool"
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/st-link-server.html"
@@ -19,30 +19,27 @@ _pkg_zip_name="en.${_pkgname}-v${pkgver}.zip"
 _pkg_uncompress_dir="en.${_pkgname}_v${pkgver}-2"
 _stlink_server_bin="${pkgname}.${pkgver}-1"
 
-# User Agent
-# sync from stm32cubeprog
-_curl_useragent="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:129.0) Gecko/20100101 Firefox/129.0"
-_curl_accept_language="Accept-Language: en-US,en;q=0.9"
-_curl_useragent="$(printf '%s' "$_curl_useragent" | sed 's/[[:space:]]\+/ /g')"
-_useragent_escaped="${_curl_useragent// /\\ }"
-_accept_language_escaped="${_curl_accept_language// /\\ }"
-
+# sync from stm32cubeide, thanks to @kumencz!
+# Download file with list of URLs to files
 _curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/\
 stm32-software-development-tools/stm32-performance-and-debuggers/st-link-server/_jcr_content/get-software/\
 getsw-table-nli.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
+_curl_req="$(curl -s --compressed -H "@${srcdir}http_headers" "${_curl_req_url}")"
 
-_curl_req="$(curl -s --compressed -H "${_curl_useragent}" -H "${_curl_accept_language}" "${_curl_req_url}")"
+# Extract actual download link to the desired file
 _pkg_url="$(grep -m 1 "${_pkg_zip_name}" <<<"${_curl_req}")"
 _pkg_url="$(awk -F'"' '{print $4}' <<<"${_pkg_url}")"
 _download_path="https://www.st.com""${_pkg_url}"
+# echo $_download_path
 DLAGENTS=("https::/usr/bin/curl \
               -gqb '' --retry 3 --retry-delay 3 \
-              -H ${_useragent_escaped} \
-              -H ${_accept_language_escaped} \
+              -H "@${srcdir}http_headers" \
               -o %o --compressed %u")
 source=("${_pkg_zip_name}::${_download_path}"
+        'http_headers'
         "https://www.st.com/resource/en/license/${_pkg_license_name}")
 sha256sums=('a84a0ada7c9b6343e559dacd37e42a815c500d0f4a517db3d1e511d056903bf6'
+            'e390db4335686f4a99f04002625a9dce0058b631cb3205b700c1910bf129d73c'
             'SKIP')
 
 _bundle_sh_extract() {
