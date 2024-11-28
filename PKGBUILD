@@ -5,10 +5,10 @@
 # Contributor: Steve Sansom <snsansom@gmail.com>
 
 pkgname=units
-pkgver=2.23
+pkgver=2.24
 pkgrel=1
 pkgdesc="converts between different units"
-arch=('x86_64' 'aarch64' 'armv7h')
+arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 url="https://www.gnu.org/software/units/units.html"
 depends=('readline')
 optdepends=('python-unidecode: for live currency rates'
@@ -16,11 +16,13 @@ optdepends=('python-unidecode: for live currency rates'
 makedepends=('python-unidecode' 'python-requests')
 license=("GPL-3.0-or-later")
 options=('!makeflags')
-validpgpkeys=('9AD8FC4162D7937CF64F972E1889D5F0E0636F49')
+validpgpkeys=(
+  '927D02FA733C3D902D21CAC02D649F2B7B4C8179' # Adrian Mariano <avm4@cornell.edu>
+)
 source=(https://ftp.gnu.org/gnu/units/$pkgname-$pkgver.tar.gz{,.sig}
         'units_currency.timer'
         'units_currency.service')
-sha256sums=('d957b451245925c9e614c4513397449630eaf92bd62b8495ba09bbe351a17370'
+sha256sums=('1e502c4edfacf20b29284716c72e5ddb51a495a2365d7b03e7960494c4a0c902'
             'SKIP'
             'c1cb48a6157c850a0b7ecbf4387b82820d6e42f4a2c7ff0eb9de293bad6b128f'
             '52e8cd68110e797e3ee3737f06200505225039b18f3f9b87ae38b6c539c9ccb2')
