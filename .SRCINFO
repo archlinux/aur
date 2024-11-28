@@ -1,0 +1,15 @@
+pkgbase = 10mb.video-git
+	pkgdesc = Fit a video into a 10mb file (Discord nitro pls?)
+	pkgver = r4.99b795a
+	pkgrel = 1
+	url = https://github.com/ugjka/10mb.video
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = 10mb.video
+	options = !debug
+	source = 10mb.video-git::git+https://github.com/ugjka/10mb.video.git#branch=main
+	md5sums = SKIP
+
+pkgname = 10mb.video-git
