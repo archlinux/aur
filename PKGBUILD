@@ -3,11 +3,11 @@
 _name=keopscore
 pkgname=python-${_name}
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="keopscore is the KeOps meta programming engine. This python module should be used through a binder (e.g. pykeops or rkeops)"
 arch=('any')
 url="https://pypi.org/project/${_name}"
-license=('BSD')
+license=('MIT')
 depends=('python')
 makedepends=(
 	'python-wheel'
