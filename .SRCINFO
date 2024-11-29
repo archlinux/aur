@@ -1,13 +1,14 @@
 pkgbase = pacfish
 	pkgdesc = Lightweight AUR helper written in Ruby, following the KISS principles.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://codeberg.org/Ryba37/pacfish
 	arch = any
 	license = GPL3
 	depends = ruby
 	depends = pacman
-	source = git+https://codeberg.org/Ryba37/pacfish.git
+	depends = ruby-colorize
+	source = git+https://codeberg.org/Ryba37/pacfish
 	sha256sums = SKIP
 
 pkgname = pacfish
