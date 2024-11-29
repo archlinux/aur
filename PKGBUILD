@@ -2,7 +2,7 @@
 
 pkgname="locus"
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An intelligent activity tracker that helps you understand and improve your focus habits."
 arch=('x86_64')
 url="https://github.com/Sushants-Git/locus"
