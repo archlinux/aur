@@ -1,6 +1,4 @@
 # Maintainer: Shadow Wizard Money Gang <test@example.org>
-# Contributor: M Novick <mnovick1988@gmail.com>
-# Contributor: matthiaskrgr <matthiaskrgr _strange_curverd_character_ freedroid D0T org>
 
 pkgname='gmqcc-git'
 pkgver='r3045.2fe0af0'
