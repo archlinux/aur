@@ -1,7 +1,7 @@
 pkgbase = radware
 	pkgdesc = Software package for interactive graphical analysis of gamma-ray coincidence data
 	pkgver = 05.3
-	pkgrel = 5
+	pkgrel = 6
 	url = http://radware.phy.ornl.gov/
 	install = radware.install
 	arch = i686
