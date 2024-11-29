@@ -1,20 +1,19 @@
 pkgbase = caps-log-git
 	pkgdesc = A small, terminal-based journaling tool
 	pkgver = 1.0.1.r2.ga6ae873
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/NikolaDucak/caps-log
-	arch = any
+	arch = x86_64
 	license = MIT
-	makedepends = git
-	makedepends = cmake
 	makedepends = boost
+	makedepends = cmake>=3.14
 	makedepends = ftxui
-	depends = glibc
-	depends = gcc-libs
 	depends = boost-libs
+	depends = fmt9
+	depends = gcc-libs
+	depends = glibc
 	depends = libgit2
 	depends = openssl
-	depends = fmt
 	provides = caps-log=1.0.1
 	conflicts = caps-log
 	source = caps-log::git+https://github.com/NikolaDucak/caps-log.git

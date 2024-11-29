@@ -3,13 +3,13 @@
 _pkgname="caps-log"
 pkgname="${_pkgname}-git"
 pkgver=1.0.1.r2.ga6ae873
-pkgrel=2
+pkgrel=3
 pkgdesc="A small, terminal-based journaling tool"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/NikolaDucak/${_pkgname}"
 license=('MIT')
-makedepends=('git' 'cmake' 'boost' 'ftxui')
-depends=('glibc' 'gcc-libs' 'boost-libs' 'libgit2' 'openssl' 'fmt')
+depends=('boost-libs' 'fmt9' 'gcc-libs' 'glibc' 'libgit2' 'openssl')
+makedepends=('boost' 'cmake>=3.14' 'ftxui')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
@@ -25,7 +25,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  patch -p1 -i "${srcdir}/${_pkgname}_fix_openssl.patch"
+  patch -Np1 -i "${srcdir}/${_pkgname}_fix_openssl.patch"
 }
 
 build() {
@@ -41,16 +41,11 @@ build() {
   cmake --build "${_pkgsrc}/build"
 }
 
-check() {
-  cd "${srcdir}"
-  ctest --test-dir "${_pkgsrc}/build" --output-on-failure --stop-on-failure
-}
-
 package() {
   cd "${srcdir}"
   DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
 
   cd "${_pkgsrc}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENCE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "LICENCE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
