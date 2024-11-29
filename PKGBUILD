@@ -1,7 +1,7 @@
 # Maintainer: Stephan Raabe <mail@ml4w.com>
 pkgname='ml4w-hyprland'
-pkgver=2.9.6.7
-pkgrel=4
+pkgver=2.9.7.0
+pkgrel=1
 pkgdesc="The ML4W Dotfiles for Hyprland - An advanced and full-featured configuration for the dynamic tiling window manager Hyprland including an easy to use installation script for Arch based Linux distributions. "
 arch=(any)
 url="https://github.com/mylinuxforwork/dotfiles"
@@ -64,9 +64,9 @@ package() {
 
     # message
     echo
-    echo ":: ML4W Dotfiles for Hyprland"
-    echo ":: --------------------------"
-    echo ":: Please execute the command ml4w-hyprland-setup when the installation of the packages is complete."
+    echo ":: ML4W Dotfiles ${pkgver} for Hyprland - Main Release"
+    echo ":: ---------------------------------------------------"
+    echo ":: Please execute the command ml4w-hyprland-setup when the installation is complete."
     echo ":: You can start Hyprland already with command Hyprland or from your display manager."
     echo
 
