@@ -1,17 +1,15 @@
 pkgbase = makebootfat
 	pkgdesc = Command line tool to make bootable FAT file systems
 	pkgver = 1.6
-	pkgrel = 1
-	url = https://sourceforge.net/p/advancemame/makebootfat
+	pkgrel = 2
+	url = https://github.com/amadvance/makebootfat
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = git
 	makedepends = automake
 	depends = glibc
-	source = makebootfat::git+https://git.code.sf.net/p/advancemame/makebootfat#commit=391146bd56b13fe17b356b0415434d59d8d5a211
-	source = https://github.com/amadvance/advancemame/raw/1ac78eb12cf69dc5c01df4195d58f333530a4d87/advance/d2/d2.cc
-	b2sums = SKIP
-	b2sums = 37aa18680461181591ef13457b6dddee6808d31c96e4fcba2bb6b31a8f4b0e492a08c511e8fade1e39831cd8e80d229b8af070b321027f5561f53c04302f38d2
+	source = https://github.com/amadvance/makebootfat/releases/download/v1.6/makebootfat-1.6.tar.gz
+	b2sums = 5c6d69bc629914393e6b75f4102687b47921fb547969565aa39054aaa917b690cf60b2015d85ba5f7510d4a8b4402d20569d62352675592e23aed9e591061a91
 
 pkgname = makebootfat
