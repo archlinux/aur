@@ -1,12 +1,12 @@
 pkgbase = v4l-utils-git
 	pkgdesc = Userspace tools and conversion library for Video 4 Linux
-	pkgver = 1.24.1.r35.g54893534
+	pkgver = 1.28.1.r52.g363495b6
 	pkgrel = 1
 	url = https://linuxtv.org/
 	arch = i686
 	arch = x86_64
-	license = GPL
-	license = LGPL
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
 	makedepends = git
 	makedepends = alsa-lib
 	makedepends = meson
@@ -16,8 +16,10 @@ pkgbase = v4l-utils-git
 	depends = json-c
 	depends = libbpf
 	depends = libjpeg-turbo
-	provides = v4l-utils=1.24.1.r35.g54893534
+	provides = v4l-utils=1.28.1.r52.g363495b6
+	provides = edid-decode
 	conflicts = v4l-utils
+	conflicts = edid-decode
 	options = staticlibs
 	source = git+https://git.linuxtv.org/v4l-utils.git
 	sha256sums = SKIP

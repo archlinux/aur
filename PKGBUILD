@@ -1,16 +1,16 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=v4l-utils-git
-pkgver=1.24.1.r35.g54893534
+pkgver=1.28.1.r52.g363495b6
 pkgrel=1
 pkgdesc="Userspace tools and conversion library for Video 4 Linux"
 arch=('i686' 'x86_64')
 url="https://linuxtv.org/"
-license=('GPL' 'LGPL')
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
 depends=('gcc-libs' 'hicolor-icon-theme' 'json-c' 'libbpf' 'libjpeg-turbo')
 makedepends=('git' 'alsa-lib' 'meson' 'qt5-base')
-provides=("v4l-utils=$pkgver")
-conflicts=('v4l-utils')
+provides=("v4l-utils=$pkgver" 'edid-decode')
+conflicts=('v4l-utils' 'edid-decode')
 options=('staticlibs')
 source=("git+https://git.linuxtv.org/v4l-utils.git")
 sha256sums=('SKIP')
