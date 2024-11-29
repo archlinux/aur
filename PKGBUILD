@@ -2,8 +2,8 @@
 
 pkgname=python-objprint
 _pkgname=objprint
-pkgver=0.2.3
-pkgrel=4
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='A library that can print Python objects in human readable format.'
 arch=('x86_64')
 url="https://github.com/gaogaotiantian/objprint"
@@ -18,7 +18,7 @@ checkdepends=(
   python-setuptools
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/gaogaotiantian/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('fc4defba274c3c9ff91eb71623417f490ed68f54aa04c9ca04f1df021b177f3d')
+sha256sums=('5d7e7fefb9f562bbfaa2585f83b58da1c0ffd3a8d9534dcbd3ccb6ab956424ab')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver" || exit
