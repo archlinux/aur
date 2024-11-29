@@ -3,11 +3,11 @@
 # Maintainer: Lawrence Stalder <lawrence.stalder@pm.me>
 
 pkgname=nym-vpn-app
-pkgver=0.2.3
+pkgver=1.0.0
 # upstream version
-_pkgver=0.2.3
-_release_tag=nym-vpn-app-v0.2.3
-pkgrel=2
+_pkgver=1.0.0
+_release_tag=nym-vpn-app-v1.0.0
+pkgrel=1
 pkgdesc='NymVPN desktop client'
 arch=('x86_64')
 url='https://github.com/nymtech/nym-vpn-client'
@@ -18,20 +18,18 @@ provides=('nym-vpn-app')
 conflicts=('nymvpn-x' 'nym-vpn-app')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_release_tag.tar.gz"
-    'nym-vpn-wrapper.sh'
     'nym-vpn.desktop'
     'nym-vpn.svg')
 sha256sums=(
-    'd549096076c6c7f98bcc917a4947bf04a7ba8795fc24d49b2eb8d9c21dc652f2' 
-    '963d0e778b1f2639e735bd4943ba617e4786d6ce973a8855f86824b6f15cdfa5' 
-    'c1709d30f1756d0665d8763b8e70b6121d045c07e922f18a625e165c63faf583' 
+    '4d9b74a7331a12a2188bc31687d5f64fb9a03c82bfc80b8a59edffed9605c357' 
+    '89d01a49dac087c987b2741dddb3bcb9e7f1461d9c0f50b7f75044ed45db575e' 
     'c15b6028f25ea931c9bedf2b5600f91d6f94f15066afdbd7f789c770ea250e06')
 _srcdir="nym-vpn-client-$_release_tag"
 
 prepare() {
   pushd "$_srcdir"
 
-  # rip off all useless sources
+  # rip off useless sources
   rm -rf nym-vpn-android
   rm -rf nym-vpn-apple
   popd
@@ -62,8 +60,7 @@ package() {
   install -Dm755 "src-tauri/target/release/nym-vpn-app" "$pkgdir/usr/bin/nym-vpn-app"
   popd
 
-  install -Dm755 "nym-vpn-wrapper.sh" "$pkgdir/usr/bin/nym-vpn-wrapper.sh"
-  install -Dm644 "nym-vpn.desktop"    "$pkgdir/usr/share/applications/nym-vpn.desktop"
-  install -Dm644 "nym-vpn.svg"        "$pkgdir/usr/share/icons/nym-vpn.svg"
+  install -Dm644 "nym-vpn.desktop" "$pkgdir/usr/share/applications/nym-vpn.desktop"
+  install -Dm644 "nym-vpn.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/nym-vpn.svg"
 }
 
