@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=chromstaR
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Combinatorial and Differential Chromatin State Analysis for ChIP-Seq Data'
 arch=('x86_64')
@@ -33,7 +33,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6f383c2cf32596a9d1b0535d59f6c8b7ede8ce78f89ee75b03538d0b0a96936b')
+sha256sums=('9f3620171f5b344449f7eb86fa45b803dddf12d197babf613899ab30f98d2a1c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
