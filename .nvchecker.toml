@@ -1,0 +1,5 @@
+[pyp]
+source="github-graphql"
+github="hauntsaninja/pyp"
+use_latest_release=true
+prefix="v"
