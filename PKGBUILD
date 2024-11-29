@@ -3,15 +3,14 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 _pkgname="memos"
-pkgname="${_pkgname}-git"
-pkgver=0.22.5+r3136+g2aa3795e5
-pkgrel=1
+pkgname="memos-git"
+pkgver=0.23.0.rc.2+r3136+g2aa3795e5
+pkgrel=2
 pkgdesc="A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts."
-url="https://github.com/usememos/${_pkgname}"
+url="https://github.com/usememos/memos"
 arch=("any")
 license=('MIT')
 makedepends=("go" "git" "npm" "pnpm" "nvm")
-provides=("$pkgname")
 backup=('etc/memos.conf')
 options=(!strip !debug)
 provides=('memos')
