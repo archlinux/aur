@@ -1,6 +1,6 @@
 # Maintainer: Stephen Seo <seo.disparate@gmail.com>
 pkgname=mingw-w64-raylib
-pkgver=5.0
+pkgver=5.5
 pkgrel=1
 pkgdesc="Simple and easy to use game programming library (mingw-w64)"
 arch=(any)
@@ -18,10 +18,10 @@ source=(
 )
 noextract=()
 md5sums=(
-    6d855d7bd87b506eb58308d4ed67ab97
+    61638c4c2c097fbca1d6a71e4da36c16
 )
 sha256sums=(
-    98f049b9ea2a9c40a14e4e543eeea1a7ec3090ebdcd329c4ca2cf98bc9793482
+    aea98ecf5bc5c5e0b789a76de0083a21a70457050ea4cc2aec7566935f5e258e
 )
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -40,9 +40,6 @@ build() {
             -D CMAKE_C_FLAGS="$CFLAGS -fPIC -w" \
             -D USE_EXTERNAL_GLFW=ON \
             -D BUILD_EXAMPLES=OFF \
-            -D BUILD_GAMES=OFF \
-            -D SHARED=ON \
-            -D STATIC=OFF \
             -G Ninja
         ninja
         popd
