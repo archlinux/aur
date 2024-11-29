@@ -1,14 +1,14 @@
 pkgbase = qodana-cli
 	pkgdesc = Simple cross-platform command-line tool to run Qodana linters anywhere with minimum effort required.
-	pkgver = 2024.2.6
+	pkgver = 2024.3.1
 	pkgrel = 1
 	url = https://github.com/JetBrains/qodana-cli
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	source_x86_64 = qodana-cli-2024.2.6.tar.zst::https://github.com/JetBrains/qodana-cli/releases/download/v2024.2.6/qodana_2024.2.6_linux_amd64.pkg.tar.zst
-	sha256sums_x86_64 = 48fd9566f3650c8b82b57320820ecc8a339741292ce0d9f825f1c3423a8b0251
-	source_aarch64 = qodana-cli-2024.2.6.tar.zst::https://github.com/JetBrains/qodana-cli/releases/download/v2024.2.6/qodana_2024.2.6_linux_arm64.pkg.tar.zst
-	sha256sums_aarch64 = 48fd9566f3650c8b82b57320820ecc8a339741292ce0d9f825f1c3423a8b0251
+	source_x86_64 = qodana-cli-2024.3.1.tar.zst::https://github.com/JetBrains/qodana-cli/releases/download/v2024.3.1/qodana_2024.3.1_linux_amd64.pkg.tar.zst
+	sha256sums_x86_64 = 04a448134ed17a018c55258fd996fe51c8bd00a67a030145662c23998a65bdac
+	source_aarch64 = qodana-cli-2024.3.1.tar.zst::https://github.com/JetBrains/qodana-cli/releases/download/v2024.3.1/qodana_2024.3.1_linux_arm64.pkg.tar.zst
+	sha256sums_aarch64 = 04a448134ed17a018c55258fd996fe51c8bd00a67a030145662c23998a65bdac
 
 pkgname = qodana-cli
