@@ -1,5 +1,5 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
-# Maintainer: ARKye03 <rafa03-dev@proton.me>
+# Contributor: ARKye03 <rafa03-dev@proton.me>
 
 pkgname=lumen
 pkgver=1.6.0

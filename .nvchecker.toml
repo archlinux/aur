@@ -1,4 +1,4 @@
-[intentrace]
+[lumen]
 source = "git"
 git = "https://github.com/jnsahaj/lumen.git"
 prefix = "v"
