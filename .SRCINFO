@@ -1,0 +1,22 @@
+pkgbase = asciigen-bin
+	pkgdesc = Convert images/video to ASCII art
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/seatedro/asciigen
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = ffmpeg4.4
+	depends = glibc
+	provides = asciigen
+	conflicts = asciigen
+	source = README-1.0.4.md::https://github.com/seatedro/asciigen/raw/refs/tags/v1.0.4/readme.md
+	source = LICENSE-1.0.4::https://github.com/seatedro/asciigen/raw/38240db30522b10a7dcee1e62a0a568d89ef5f06/LICENSE
+	b2sums = 92c45d45df93abc554d21fcef24396641793ed5cc91ab1ca614ead400c49891f1b60c76e7821b8730f823b0ba6b7519038b42bb4133a91fad3ea32727d2e4570
+	b2sums = 6e30329dd26cee83c8466084acbe1c8ab3d1f9bcd025b4e224e3f727fd8a23a22ebbfe6d52e92fc0ffa8d9aa5113b8cd1775ec7523c4563702d7ee16c8ef0598
+	source_x86_64 = asciigen-1.0.4-x86_64::https://github.com/seatedro/asciigen/releases/download/v1.0.4/asciigen-x86_64-linux
+	b2sums_x86_64 = d83a541a183975245a40c432a575ba2eaa8168528d04a8d24bc173dc426825b98a24d0a727c5d6fa1577fd16d1ae96621f0c340c9cc90b37815fb80c210db790
+	source_aarch64 = asciigen-1.0.4-aarch64::https://github.com/seatedro/asciigen/releases/download/v1.0.4/asciigen-aarch64-linux
+	b2sums_aarch64 = 5d9418c1caecdf1b926a86f3196a442b84918f298529a6bd307cf4364e396126de0007405321a427be1b48c62117f316c0d4d5f2676f3d005beefd33ee538407
+
+pkgname = asciigen-bin

@@ -1,0 +1,4 @@
+[asciigen-bin]
+source = "git"
+git = "https://github.com/seatedro/asciigen.git"
+prefix = "v"
