@@ -11,7 +11,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/Sushants-Git/locus/releases/download/v$pkgver/locus_"$pkgver"_amd64.deb")
-sha256sums_x86_64=('9886942103dbdbc776a8eff0b9bda9cdcedd106d78809cf94d7a2975b04a900b')
+sha256sums_x86_64=('90ebc22f5048a47d38299423bfaf3db74f729dcb0c28d18ac1e5e536cee6489d')
 
 package() {
   tar -xz -f data.tar.gz -C "${pkgdir}"
