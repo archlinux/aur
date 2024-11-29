@@ -2,16 +2,16 @@
 
 pkgname=gdsdecomp-bin
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Godot reverse engineering tools"
 arch=(x86_64)
-url=https://github.com/bruvzg/gdsdecomp
+url=https://github.com/GDRETools/gdsdecomp
 license=(MIT)
 provides=('gdre_tools')
 options=('!strip')
-source=("https://github.com/bruvzg/gdsdecomp/releases/download/v$pkgver/GDRE_tools-v$pkgver-linux.zip"
-        "https://raw.githubusercontent.com/bruvzg/gdsdecomp/refs/tags/v$pkgver/LICENSE"
-        "https://raw.githubusercontent.com/bruvzg/gdsdecomp/f42ffbae16a21606aefeec94d123dc566104b6a7/icons/RELogo.svg")
+source=("https://github.com/GDRETools/gdsdecomp/releases/download/v$pkgver/GDRE_tools-v$pkgver-linux.zip"
+        "https://raw.githubusercontent.com/GDRETools/gdsdecomp/refs/tags/v$pkgver/LICENSE"
+        "https://raw.githubusercontent.com/GDRETools/gdsdecomp/f42ffbae16a21606aefeec94d123dc566104b6a7/icons/RELogo.svg")
 sha256sums=('cb5131aa33c543e18e48f2202a94185851e20161737dbb582cf151b9a143f0a2'
             '6181b7004272970cff8063ac38dffa7a673328b1eb26647770448e46e20412f4'
             'de40d5447df5ace1f909464ca76ea9d4d203a6e221ad55416f2658980181c28f')
