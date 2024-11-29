@@ -1,5 +1,5 @@
 [screenpipe]
-source="github"
+source="github-graphql"
 github="mediar-ai/screenpipe"
 use_latest_release=true
 prefix="v"

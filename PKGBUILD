@@ -1,7 +1,8 @@
 # Maintainer: envolution
 # Contributor: Tony Benoy <me@tonybenoy.com>
+# shellcheck shell=bash disable=SC2034,SC2154
 pkgname=screenpipe
-pkgver=0.2.4
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="24/7 Screen and Audio Capture with AI-powered tools"
 arch=('x86_64')
@@ -12,7 +13,7 @@ makedepends=('rust' 'cargo' 'git' 'cmake')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/mediar-ai/screenpipe/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('92d23a6b13fbf86a931de2a016fbe1aa55aedffd34242d976c4739b9f7245544')
+sha256sums=('05db0c5dc260d939e14109e2df1e6ee32b562135d6e3e36ec7619471ca8cb7b2')
 options=(!lto !debug)
 
 build() {
@@ -28,3 +29,4 @@ package() {
   # Install additional documentation
   install -Dm644 "$pkgname-$pkgver/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+# vim:set ts=2 sw=2 et:
