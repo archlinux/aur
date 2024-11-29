@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-pinyin-sougou-dict-git
 _pkgname=sougouscel
-pkgver=20241110.r2.gef10c01
+pkgver=20241130.r0.g110582a
 pkgrel=1
 pkgdesc="Fcitx5-pinyin搜狗官网词库全部词量"
 arch=('any')
@@ -25,6 +25,7 @@ prepare(){
 }
 
 build() {
+	cp -r "${srcdir}/${_pkgname}/百度个人词库.txt" "${srcdir}/${_pkgname}/scel/百度个人词库.txt"
 	cat ${_pkgname}/scel/*.txt > sougouciku.txt
 	libime_pinyindict sougouciku.txt sougouciku.dict
 }
