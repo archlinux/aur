@@ -1,7 +1,7 @@
 # Maintainer : envolution
 
 pkgname=codai
-pkgver=1.7.6
+pkgver=1.8.0
 pkgrel=2
 pkgdesc="AI code assistant that helps developers through a session CLI"
 arch=("x86_64")
@@ -17,7 +17,7 @@ source=(
   "config.yml.sample"
   "codai.install"
 )
-sha256sums=('27276d9329d05e051becdc310d4b6e98f48f7f19727f81e817592325021c5379'
+sha256sums=('fa76bfda49b61b43b99f5268734915e19ba4caf2ce60ece32d244591c6e1b936'
             '678cfc4e7653b954d33a64118591f8f37568c6b801d541138b7f315cef19d313'
             '0045a2a6c2dfe2b2931d7e3009f32a16fcb6ec55fb6cc46fc98f03fe64a0a26b'
             'c0177646a2285135f7f223d40352cbecc840ac22e7eb776c96de0fc017ccc07f'
