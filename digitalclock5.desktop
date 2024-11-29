@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=DigitalClock5
+GenericName=Digital Clock
+Comment=A stylish digital clock application
+Exec=digitalclock5
+Icon=digitalclock5
+Terminal=false
+Categories=Utility;Clock;

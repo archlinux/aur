@@ -1,0 +1,4 @@
+[digitalclock5]
+source="github-graphql"
+github="Kolcha/DigitalClock5"
+use_max_tag=true
