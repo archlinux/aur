@@ -1,11 +1,9 @@
-# Maintainer : envolution
-# Contributor: mnussbaum
-# Contributor: j.r <j.r@jugendhacker.de>
+# Maintainer: envolution
 
 pkgname=stygiansift-git
 _pkgname="StygianSift"
-pkgver=r137+g95506d465
-pkgrel=2
+pkgver=r167+g9bd22dbe6
+pkgrel=1
 pkgdesc="A highly customizable TUI file explorer"
 arch=("x86_64")
 url="https://github.com/Mauitron/StygianSift"
@@ -17,7 +15,7 @@ conflicts=("stygiansift")
 source=("$_pkgname::git+https://github.com/Mauitron/StygianSift.git")
 sha256sums=('SKIP')
 
-pkgver(){
+pkgver() {
   cd "${srcdir}/${_pkgname}"
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
@@ -39,7 +37,8 @@ build() {
 
 package() {
   install -Dm755 "$srcdir/$_pkgname/target/release/StygianSift" "$pkgdir/usr/bin/stygiansift"
-  install -Dm644 "$srcdir/$_pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+  install -Dm644 "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/$_pkgname/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 # vim: ts=2 sw=2 et:
