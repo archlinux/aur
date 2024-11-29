@@ -10,7 +10,7 @@ license=('MIT')
 depends=('rsync' 'tmux' 'libnotify')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mccarthee/gmsync/archive/v$pkgver.tar.gz")
-sha256sums=('0a00be33eca246fe433a3e18af85911dd99f8f7c383615ef5c3913d4f3367a6e')
+sha256sums=('6f7bee047bed09f429be0493229ae1745fd4712dbf37ccb5e5f982bf648e6ddb')
 
 build() {
     cd "$pkgname-$pkgver"
