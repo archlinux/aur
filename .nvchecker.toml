@@ -1,3 +1,8 @@
-["testssl.sh-git"]
-source="cmd"
-cmd="~/nvchecker/github_version.py drwetter/testssl.sh --releases -strip v"
+['testssl.sh-git']
+source="github-graphql"
+github="drwetter/testssl.sh"
+use_latest_release=true
+prefix="v"
+use_commit_number=true
+use_commit_hash=true
+
