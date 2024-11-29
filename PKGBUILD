@@ -2,8 +2,8 @@
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 
 pkgname=photoqt
-pkgver=4.6
-pkgrel=2
+pkgver=4.7
+pkgrel=1
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface."
 arch=('x86_64')
 url="http://photoqt.org/"
@@ -14,7 +14,7 @@ optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt6-tools' 'extra-cmake-modules')
 source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
-sha256sums=('e556c6309d41f720db4e2ae2ed267eafe73d2dd7c6fc2d5cd3fd3540152f6c26')
+sha256sums=('b9909e249b10a080d9ea77fe25b1616d71386472fca42634a49386e70eafe2fb')
 
 # NOTE
 # To use GraphicsMagick instead of ImageMagick replace it in the depends array above and change
