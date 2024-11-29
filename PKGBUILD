@@ -8,7 +8,7 @@
 pkgname=ollama-cuda-git
 _pkgbase=ollama
 pkgdesc='Create, run and share large language models (LLMs) with CUDA'
-pkgver=0.4.6+r3691+gce7455a8e
+pkgver=0.4.6+r3693+g39e29ae5d
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/ollama/ollama'
