@@ -1,4 +1,5 @@
-# Maintainer: Nicolas Lorin <androw95220@gmail.com>
+# Maintainer: aarto <aarto@aur.archlinux.org>
+# Contributor: Nicolas Lorin <androw95220@gmail.com>
 # Contributor: Jan Misiak <fijam@archlinux.ux>
 
 pkgname=ttf-exljbris
