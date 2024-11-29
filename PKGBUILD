@@ -1,7 +1,7 @@
 # Maintainer: Sushant Mishra <sushantsgml@gmail.com>
 
 pkgname="locus"
-pkgver=0.1.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="An intelligent activity tracker that helps you understand and improve your focus habits."
 arch=('x86_64')
