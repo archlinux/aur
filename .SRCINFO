@@ -1,0 +1,14 @@
+pkgbase = cjlu-exams2calendar
+	pkgdesc = Convert exams info of CJLU to calendar events
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/neoluxis/CJLU_Exam2Calendar
+	arch = x86_64
+	arch = arm64
+	depends = python
+	depends = python-pytesseract
+	depends = python-pillow
+	source = exams2calendar::git+https://github.com/neoluxis/CJLU_Exam2Calendar
+	sha256sums = SKIP
+
+pkgname = cjlu-exams2calendar
