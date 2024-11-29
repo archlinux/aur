@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=quicktions
 pkgname=python-${_base}
-pkgver=1.18
+pkgver=1.19
 pkgrel=1
 pkgdesc="Fast fractions data type for rational numbers"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(python glibc)
 makedepends=(python-build python-installer python-setuptools python-wheel cython)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('7c25e44f7be0219900405775c83167500b39e4070bf7950e45f8bc6d0b60e1322e3b8ea7837e4eacf4afeb44a378aaa866ca92d872a89f4143ce91d45b58f4b5')
+sha512sums=('151fb92c07c411c3d6b3fb98ad15f9688a3ce7c19493d4b855fed18b0e775e3feaa76c89d2f1f0770274822d99c176fd76c2605765a566264910466ba4b98030')
 
 build() {
   cd ${_base}-${pkgver}
