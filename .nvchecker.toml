@@ -1,3 +1,8 @@
 [docker-git]
-source = "cmd"
-cmd="~/nvchecker/github_version.py moby/moby --releases -strip v"
+source="github-graphql"
+github="moby/moby"
+use_latest_release=true
+prefix="v"
+use_commit_number=true
+use_commit_hash=true
+
