@@ -1,7 +1,7 @@
 # Maintainer: Posi<posi1981@gmail.com>
 pkgname=betterbird-ja-bin
 _pkgname=betterbird
-pkgver=128.5.0esr
+pkgver=128.5.0
 _build=bb18
 pkgrel=1
 pkgdesc="JAPANESE // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
@@ -12,8 +12,12 @@ depends=('dbus-glib')
 provides=("betterbird=${pkgver}")
 conflicts=('betterbird')
 source=(
+#	"https://www.betterbird.eu/downloads/get.php?os=linux&lang=de&version=release"
+#    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-replacement.ja.linux-x86_64.tar.bz2"
+#    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-hotfix.ja.linux-x86_64.tar.bz2"
+#    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-build2.ja.linux-x86_64.tar.bz2"
     "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}.ja.linux-x86_64.tar.bz2"
-    "betterbird.desktop"
+    "eu.betterbird.Betterbird"
 )
 
 package() {
@@ -22,7 +26,7 @@ package() {
     install -d "${pkgdir}/usr/share/applications"
 
     cp -r "${srcdir}/${_pkgname}/" "${pkgdir}/opt/${_pkgname}"
-    install -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -m644 "${srcdir}/eu.${_pkgname}.Betterbird" "${pkgdir}/usr/share/applications/eu.${_pkgname}.Betterbird"
     ln -s /opt/$_pkgname/betterbird "$pkgdir"/usr/bin/$_pkgname
 
     echo     "
