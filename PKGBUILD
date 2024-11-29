@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=ente
 pkgname="${_pkgname}-desktop-bin"
-pkgver=1.7.6
+pkgver=1.7.7
 _electronversion=33
 pkgrel=1
-pkgdesc="Desktop app for ente Photos.Prebuilt version.Use system-wide electron."
+pkgdesc="Desktop app for ente Photos.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
@@ -25,8 +25,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.pacman")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('4ef7bea1de8f6cf43dabe56193cd7cc21e518a7c694342a65a5797c6e03f530a')
-sha256sums_x86_64=('9817524f04d009e462b6d90f1a3feb277285865de39f883c3acb2d3b3d8b12bc')
+sha256sums_aarch64=('04e9cb4da8ec0793e9f3e00830c2ba4aca0e57edeac19810660145b75073d96b')
+sha256sums_x86_64=('8272288c1bd379c4e2f3fc888f91d8acbdb998df3a56b709e6f41e240bb63482')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
