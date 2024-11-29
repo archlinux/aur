@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your@email.com>
 
 pkgname=gmsync
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A parallel rsync transfer manager with tmux integration"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('rsync' 'tmux' 'libnotify')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mccarthee/gmsync/archive/v$pkgver.tar.gz")
-sha256sums=('9cd872a03412704759a1acac9aaf51f5f85efe3573e4f03390453f9e17ad5af3')
+sha256sums=('0a00be33eca246fe433a3e18af85911dd99f8f7c383615ef5c3913d4f3367a6e')
 
 build() {
     cd "$pkgname-$pkgver"
