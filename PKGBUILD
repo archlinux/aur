@@ -1,6 +1,6 @@
 pkgname=hyperhdr-git
-pkgver=v20.0.0.0.r38.62949605
-pkgrel=2
+pkgver=v20.0.0.0.r47.c34ce22b
+pkgrel=1
 pkgdesc="Highly optimized open source ambient lighting implementation based on modern digital video and audio stream analysis"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/awawa-dev/HyperHDR.git"
