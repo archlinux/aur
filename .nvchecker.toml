@@ -1,0 +1,4 @@
+[kyanos-bin]
+source = "git"
+git = "https://github.com/hengyoush/kyanos.git"
+prefix = "v"

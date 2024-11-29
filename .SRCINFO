@@ -1,0 +1,16 @@
+pkgbase = kyanos-bin
+	pkgdesc = Visualize the time packets spend in the kernel, watch & analyze in command line
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://https://kyanos.io
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = kyanos
+	conflicts = kyanos
+	source_x86_64 = kyanos-1.4.0-x86_64.tar.gz::https://github.com/hengyoush/kyanos/releases/download/v1.4.0/kyanos_1.4.0_linux_amd64.tar.gz
+	b2sums_x86_64 = 4b2353edabc83b37fe394989253788c5a5e7d7aca2585b346e4df295e8c9cd7c30684dcc1741352f5f6bfea0b0781c5eedacc36d3525e746e4d7bdc4e296ce5c
+	source_aarch64 = kyanos-1.4.0-aarch64.tar.gz::https://github.com/hengyoush/kyanos/releases/download/v1.4.0/kyanos_1.4.0_linux_arm64.tar.gz
+	b2sums_aarch64 = bad850940cf5283c8561a7d923f22dd570e77c6c207de773f8f895609082c9524041f543b957dff693c6bebed9d4369f026cf9105d5537e70ad83c302bf96aa2
+
+pkgname = kyanos-bin
