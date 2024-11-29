@@ -1,4 +1,4 @@
-# Maintainer: archtux <antonio dot arias99999 at gmail dot com>
+# Maintainer: Craig <fast dot code dot studio at gmail dot com>
 
 pkgname=grits-git
 provides=('grits')
