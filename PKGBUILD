@@ -1,7 +1,7 @@
 # Maintainer: killab33z <killab33z @ protonmail-dot-ch>
 pkgname=breads-git
 _pkgname="${pkgname%-git}"
-pkgver=r129.dc012d7
+pkgver=131.2d97bcc
 pkgrel=1
 pkgdesc="BREADS - BREaking Active Directory Security; focused on enumerating and attacking Active Directory environments through LDAP and SMB protocols."
 arch=('any')
@@ -20,7 +20,12 @@ sha512sums=('SKIP')
 # https://wiki.archlinux.org/title/VCS_package_guidelines
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  ( set -o pipefail
+    git describe --long --tags --abbrev=7 2>/dev/null |
+      sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.%s" "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 # https://wiki.archlinux.org/title/Python_package_guidelines#Standards_based_(PEP_517)

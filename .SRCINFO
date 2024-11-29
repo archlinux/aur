@@ -1,6 +1,6 @@
 pkgbase = breads-git
 	pkgdesc = BREADS - BREaking Active Directory Security; focused on enumerating and attacking Active Directory environments through LDAP and SMB protocols.
-	pkgver = r129.dc012d7
+	pkgver = 131.2d97bcc
 	pkgrel = 1
 	url = https://github.com/oppsec/breads
 	arch = any
