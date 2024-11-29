@@ -1,0 +1,5 @@
+[harsh]
+source="github-graphql"
+github="wakatara/harsh"
+use_latest_release=true
+prefix="v"
