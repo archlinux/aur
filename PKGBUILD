@@ -1,10 +1,10 @@
 # Maintainer: Posi<posi1981@gmail.com>
-pkgname=betterbird-pt-bin
+pkgname=betterbird-nl-bin
 _pkgname=betterbird
 pkgver=128.5.0esr
 _build=bb18
 pkgrel=1
-pkgdesc="PORTUGUESE // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
+pkgdesc="DUTCH // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
 url="https://www.betterbird.eu/index.html"
 license=('MPL2')
@@ -16,7 +16,7 @@ source=(
 #    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-replacement.pt-BR.linux-x86_64.tar.bz2"
 #    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-hotfix.pt-BR.linux-x86_64.tar.bz2"
 #    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-build2.pt-BR.linux-x86_64.tar.bz2"
-    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}.pt-BR.linux-x86_64.tar.bz2"
+    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}.nl.linux-x86_64.tar.bz2"
     "eu.betterbird.Betterbird"
 )
 
@@ -31,8 +31,8 @@ package() {
 
     echo     "
 
-	  >>>>>    Por favor, não se esqueça de votar neste pacote. OBRIGADO
-	  >>>>>    https://aur.archlinux.org/packages/betterbird-pt-bin
+	  >>>>>    Vergeet niet te stemmen op dit pakket. BEDANKT
+	  >>>>>    https://aur.archlinux.org/packages/betterbird-nl-bin
 
 	  "
     #icons
@@ -42,6 +42,6 @@ package() {
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
     done
 }
-sha256sums=('feb6616b4ea65bed1a6e3c8c6a8c47913edb2e06dace2ab5c8d679d39eacf610'
+sha256sums=('cb41eb7393fdd44894d2f8ee55e7e94838bd717f1bf1363a6e5c0d4eff3bcd1f'
             'b664d5453512ba1c8a58699d106fb1248991dbae0ee44464484be0886278945b')
 
