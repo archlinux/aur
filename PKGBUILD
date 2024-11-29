@@ -2,26 +2,26 @@
 # Maintainer: Achille Lacoin <achille.lacoin@gmail.com>
 
 pkgname='sunbeam-bin'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Generate powerful UIs from simple scripts written in any language.'
-url='https://sunbeam.sh'
+url='https://sunbeam.pomdtr.me'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('MIT')
 provides=('sunbeam')
 conflicts=('sunbeam')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/pomdtr/sunbeam/releases/download/v1.0.0/sunbeam-linux_arm64.tar.gz")
-sha256sums_aarch64=('d379432fb814899a03642040056c245adbc88668224c28f68a5ac5560e3c7fc2')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/pomdtr/sunbeam/releases/download/v1.0.1/sunbeam-linux_arm64.tar.gz")
+sha256sums_aarch64=('4db567310e37d5b58144d168816e2550a9ce48f8c2832869c7e4041a1bae5282')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/pomdtr/sunbeam/releases/download/v1.0.0/sunbeam-linux_arm.tar.gz")
-sha256sums_armv7h=('32af152ae51ebdf44ab9fb2a6e13076360b7a9281130b64df76316e60c9a441d')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/pomdtr/sunbeam/releases/download/v1.0.1/sunbeam-linux_arm.tar.gz")
+sha256sums_armv7h=('c764684162e4f821bd9b9e7c34030bd75a77f7321ca8a2f18708627fad8bd1b4')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/pomdtr/sunbeam/releases/download/v1.0.0/sunbeam-linux_386.tar.gz")
-sha256sums_i686=('98d24a43c67f91ade78dc2fc70860f09cdffe3d2546f0e1161eb2b7e6972aaa6')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/pomdtr/sunbeam/releases/download/v1.0.1/sunbeam-linux_386.tar.gz")
+sha256sums_i686=('7f797d50c959aa64385377e0298e133ea28ec3585ae9d960bec50ef7b6b5b323')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/pomdtr/sunbeam/releases/download/v1.0.0/sunbeam-linux_amd64.tar.gz")
-sha256sums_x86_64=('6f984cbc4e4c9aea43fdf8756c27ccee9896ec8ce876e12190b6fffabbebb35e')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/pomdtr/sunbeam/releases/download/v1.0.1/sunbeam-linux_amd64.tar.gz")
+sha256sums_x86_64=('d0a31e0a22cdb801d020452f395a816342c5f81e65012ea7a83291f1383a93a6')
 
 package() {
   # bin
