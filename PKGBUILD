@@ -1,6 +1,6 @@
 # Maintainer: Pidchenko Matvii <pidchenkomatvii@gmail.com>
 pkgname=pacfish
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Lightweight AUR helper written in Ruby, following the KISS principles."
 arch=('any')
