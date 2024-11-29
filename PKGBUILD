@@ -1,7 +1,7 @@
 # Maintainer: tam1m <tbacc plus aur at pm dot me>
 pkgname=fladder-git
 _pkgname=Fladder
-pkgver=r167.043e465
+pkgver=r206.a065910
 pkgrel=1
 pkgdesc="Fladder - A Simple Jellyfin Frontend"
 arch=('x86_64')
@@ -12,17 +12,15 @@ makedepends=('patchelf' 'cmake' 'clang' 'base-devel' 'git' 'ninja')
 _branch="develop"
 source=("git+https://github.com/Fladder-App/Fladder.git#branch=${_branch}"
     "https://gsdview.appspot.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.4-stable.tar.xz"
-    "fladder.desktop"
-    "pubspec.patch")
+    "fladder.desktop")
 sha256sums=('SKIP'
-            '2ce78d4a51f063efa7f04666ae010d026d119eea6bdea7e08b736840fe88ddb4'
-            '76f8c52297b4f423dd6767a37b56c30ea3398e16f2e0500911ba01df40635ce1'
-            'ebe0c9506079977487d5acfcde63293b81cc69966a6c084f5f456d5fec89677e')
+    '2ce78d4a51f063efa7f04666ae010d026d119eea6bdea7e08b736840fe88ddb4'
+    '76f8c52297b4f423dd6767a37b56c30ea3398e16f2e0500911ba01df40635ce1'
+)
 conflicts=('fladder')
 
 # if set, fladder will autoconnect to the given server
-# example: http://192.168.1.100:8096
-BASE_URL=""
+# _base_url="http://192.168.1.100:8096"
 
 pkgver() {
     cd "$_pkgname"
@@ -31,12 +29,6 @@ pkgver() {
         git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
             printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
-}
-
-prepare() {
-    cd "$srcdir/$_pkgname"
-    # currently the latest media_kit release has a backscreen bug on linux. replace dependency with git main til next release
-    patch -p1 <"${srcdir}/pubspec.patch"
 }
 
 build() {
@@ -67,8 +59,8 @@ package() {
     patchelf --set-rpath '$ORIGIN/lib' "$pkgdir/usr/bin/$_pkgname/Fladder"
 
     # set baseurl
-    if [ -n "$BASE_URL" ]; then
-        sed -i "s|\"baseUrl\": null|\"baseUrl\": \"$BASE_URL\"|" "${pkgdir}/usr/bin/${_pkgname}/data/flutter_assets/config/config.json"
+    if [ -n "$_base_url" ]; then
+        sed -i "s|\"baseUrl\": null|\"baseUrl\": \"$_base_url\"|" "${pkgdir}/usr/bin/${_pkgname}/data/flutter_assets/config/config.json"
     fi
 
     install -Dm644 "$srcdir/$_pkgname/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}"
