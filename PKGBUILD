@@ -1,25 +1,37 @@
+# Maintainer: envolution
+# shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer : Frederik Wegner <wegnerfrederik at gmail dot com>
-_name="pyDeprecate"
-_pkgname="pydeprecate"
-_repourl="https://github.com/Borda/$_name"
-pkgname=python-$_pkgname
+pkgname=python-pydeprecate
+_pkgname=pydeprecate
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module for deprecation documentation"
 arch=('any')
-url=$_repourl
-license=('BSD')
-depends=('python>=3.6')
-provides=("python-$_pkgname")
-conflicts=("python-$_pkgname")
+url="https://github.com/Borda/pydeprecate"
+license=('Apache-2.0')
+depends=('python')
+checkdepends=(python-scikit-learn python-pytest)
 makedepends=(
-	'python-setuptools'
-	)
-source=("$_repourl/archive/v$pkgver/$_name-v$pkgver.tar.gz")
-sha256sums=('SKIP')
+  python-build
+  python-installer
+  python-wheel
+  python-setuptools
+)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Borda/pyDeprecate/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('cc49adae216e3f9bf30358cecd4eaf3cb5d61ae0379107a4e22dfae6a7e07a16')
+
+build() {
+  cd pyDeprecate-$pkgver
+  python -m build --wheel --no-isolation
+}
+check() {
+  cd pyDeprecate-$pkgver
+  pytest tests/ #--tb=short
+}
 
 package() {
-	cd ${srcdir}/$_name-$pkgver
-	install -D -m644 LICENSE "${pkgdir}/usr/share/license/${pkgname}/LICENSE"
-	python setup.py install --optimize=1 --root="$pkgdir"
+  cd pyDeprecate-$pkgver
+  install -D -m644 LICENSE "${pkgdir}/usr/share/license/${pkgname}/LICENSE"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
+# vim:set ts=2 sw=2 et:
