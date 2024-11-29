@@ -2,7 +2,7 @@
 _pkgname=snekstudio
 pkgname=snekstudio-bin
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source VTuber software using Godot Engine!"
 arch=("x86_64" "aarch64")
 url="https://github.com/ExpiredPopsicle/SnekStudio"
@@ -20,9 +20,11 @@ md5sums_x86_64=("09bca36167000c2075c4b51d6604f18f")
 source_aarch64=("https://github.com/ExpiredPopsicle/SnekStudio/releases/download/v$pkgver/SnekStudio_Linux-arm64_0.1.1.tar.gz")
 md5sums_aarch64=("4bcf79a7a8d510771660fec59e658fde")
 
-# Unpacked folder name differs depending on architecture, so create a symlink
-prepare_x86_64() { ln -s SnekStudio_Linux-x86_64 "$_pkgname"; }
-prepare_aarch64() { ln -s SnekStudio_Linux-arm64 "$_pkgname"; }
+prepare() {
+	# Unpacked folder name differs depending on architecture, so create a symlink
+	if [ "$arch" = "x86_64" ]; then ln -s SnekStudio_Linux-x86_64 "$_pkgname"; fi
+	if [ "$arch" = "aarch64" ]; then ln -s SnekStudio_Linux-arm64 "$_pkgname"; fi
+}
 
 package() {
 	# Copy application icon, .desktop and license files
