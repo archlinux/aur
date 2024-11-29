@@ -35,14 +35,14 @@
  #  UNCOMMENT the line defining FC as gcc if orphlib was compiled using gcc
 -#        HISLIBS = /usr/hhirf/orphlib.a
 -#             FC = g77
-+        HISLIBS = /usr/local/hhirf/orphlib.a
++        HISLIBS = /opt/hhirf/orphlib.a
 +             FC = gfortran
  
  #------------------------------------------------------------------------
  
 -      LIB_PATHS = -L. -L$(X_WIN_TOP)/lib
 -   XM_LIB_PATHS = -L$(MOTIF_TOP)/lib
-+      LIB_PATHS = /usr/local/hhirf/orphlib.a -L.
++      LIB_PATHS = /opt/hhirf/orphlib.a -L.
 +   XM_LIB_PATHS = -L/usr/lib
             GTK2 = TRUE
  
