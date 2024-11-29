@@ -13,8 +13,12 @@ optdepends=('hunspell-en_US')
 provides=("betterbird=${pkgver}")
 conflicts=()
 source=(
+#    "https://www.betterbird.eu/downloads/get.php?os=linux&lang=en-US&version=release"
+#    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-replacement.en-US.linux-x86_64.tar.bz2"
+#    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-hotfix.en-US.linux-x86_64.tar.bz2"
+#    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-build2.en-US.linux-x86_64.tar.bz2"
     "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}.en-US.linux-x86_64.tar.bz2"
-    "betterbird.desktop"
+    "eu.betterbird.Betterbird"
     "vendor-prefs.js"
 )
 
@@ -24,7 +28,7 @@ package() {
     install -d "${pkgdir}/usr/share/applications"
 
     cp -r "${srcdir}/${_pkgname}/" "${pkgdir}/opt/${_pkgname}"
-    install -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -m644 "${srcdir}/eu.${_pkgname}.Betterbird" "${pkgdir}/usr/share/applications/eu.${_pkgname}.Betterbird"
     install -m644 "${srcdir}/vendor-prefs.js" -t "${pkgdir}/opt/${_pkgname}/defaults/pref"
     ln -s /opt/$_pkgname/betterbird "$pkgdir"/usr/bin/$_pkgname
     ln -s /usr/share/hunspell "${pkgdir}/opt/${_pkgname}/dictionaries"
@@ -44,5 +48,5 @@ package() {
     done
 }
 sha256sums=('e9e59ee5bc17ac55a6779c7157b483defa27163f5fd9355ed9bade544b6ae7af'
-            'b664d5453512ba1c8a58699d106fb1248991dbae0ee44464484be0886278945b'
+            'd3818d266e11ab06238449db5b24e27d35f910f150c259c012d3adce695b93b5'
             'b11745416d2b2f8bac1ccd3dcb99411c7239b067adf9eb973903c448f8747d09')
