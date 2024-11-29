@@ -1,6 +1,8 @@
-pkgname=PlastikStyle
+# Maintainer: Martin Fritz <Fritz.Martin99@web.de>
+
+pkgname=plastikstyle
 pkgver=1.0.4
-pkgrel=0
+pkgrel=1
 license=(LGPL-2.1-or-later)
 pkgdesc="QStyle for qt5 and qt6 providing the look of KDE3's plastik"
 arch=(x86_64)
@@ -11,15 +13,15 @@ makedepends=(qt5-tools
 			qt6-tools
 			cmake)
 depends=(qt5-base qt6-base)
-
+conflicts=(PlastikStyle PlastikStyle-debug)
 build(){
-	cd "$pkgname-$pkgver"
+	cd "PlastikStyle-$pkgver"
 	mkdir build
 	cd build
 	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
 }
 package(){
-	cd "$pkgname-$pkgver/build"
+	cd "PlastikStyle-$pkgver/build"
 	DESTDIR="$pkgdir" make install
 }
