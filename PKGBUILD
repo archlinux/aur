@@ -1,15 +1,19 @@
-# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Maintainer: Martchus <martchus@gmx.net>
+# Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
+
+# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
+# you also find the URL of a binary repository.
 
 pkgname=hw-probe-git
 pkgver=1.6.5
 pkgrel=1
-pkgdesc="Tool to probe for hardware, check its operability and upload result to the Linux hardware DB: http://linux-hardware.org"
+pkgdesc="Probe for hardware, check its operability and upload result to https://linux-hardware.org"
 arch=('any')
 url="https://github.com/linuxhw/hw-probe"
-license=('GPLv2')
+license=('LGPL-2.1-or-later OR BSD-4-Clause')
 source=("git+$url")
-md5sums=('SKIP')
-depends=('perl>=5' 'hwinfo' 'curl' 'dmidecode' 'pciutils' 'usbutils' 'net-tools' 'edid-decode' 'acpica')
+sha256sums=('SKIP')
+depends=('perl>=5' 'hwinfo' 'curl' 'dmidecode' 'pciutils' 'usbutils' 'net-tools' 'v4l-utils-git' 'acpica')
 optdepends=('hdparm' 'smartmontools' 'inxi' 'pnputils')
 makedepends=('git')
 conflicts=('hw-probe')

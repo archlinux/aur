@@ -1,10 +1,10 @@
 pkgbase = hw-probe-git
-	pkgdesc = Tool to probe for hardware, check its operability and upload result to the Linux hardware DB: http://linux-hardware.org
+	pkgdesc = Probe for hardware, check its operability and upload result to https://linux-hardware.org
 	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://github.com/linuxhw/hw-probe
 	arch = any
-	license = GPLv2
+	license = LGPL-2.1-or-later OR BSD-4-Clause
 	makedepends = git
 	depends = perl>=5
 	depends = hwinfo
@@ -13,7 +13,7 @@ pkgbase = hw-probe-git
 	depends = pciutils
 	depends = usbutils
 	depends = net-tools
-	depends = edid-decode
+	depends = v4l-utils-git
 	depends = acpica
 	optdepends = hdparm
 	optdepends = smartmontools
@@ -22,6 +22,6 @@ pkgbase = hw-probe-git
 	provides = hw-probe=1.6.5
 	conflicts = hw-probe
 	source = git+https://github.com/linuxhw/hw-probe
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = hw-probe-git
