@@ -1,16 +1,18 @@
 pkgbase = gpowned-git
-	pkgdesc = Buggy script to play with GPOs
-	pkgver = r13.b524eb7
+	pkgdesc = GPOs manipulation tool.
+	pkgver = r16.cf2dfcf
 	pkgrel = 1
-	url = https://github.com/X-C3LL/gpowned/
+	url = https://github.com/X-C3LL/gpowned
 	arch = any
 	license = custom
 	makedepends = git
+	depends = impacket
 	depends = python
+	depends = python-ldap3
 	provides = gpowned
 	conflicts = gpowned
 	conflicts = gpowned-git-bin
-	source = git+https://github.com/X-C3LL/gpowned/
+	source = git+https://github.com/X-C3LL/gpowned
 	sha512sums = SKIP
 
 pkgname = gpowned-git
