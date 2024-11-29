@@ -1,32 +1,51 @@
-# Maintainer: Jordan James Klassen (forivall) <forivall@gmail.com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Jordan James Klassen (forivall) <forivall@gmail.com>
 pkgname=caprine-bin
-pkgver=1.5.0
+_pkgname=Caprine
+pkgver=2.60.1
+_electronversion=29
 pkgrel=1
-pkgdesc="Unofficial Facebook Messenger app"
+pkgdesc="Elegant Facebook Messenger desktop app.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
-url="https://github.com/sindresorhus/caprine"
-repo="git://github.com/sindresorhus/caprine.git"
+url="https://sindresorhus.com/caprine"
+_ghurl="https://github.com/sindresorhus/caprine"
 license=('MIT')
-options=(!strip)
-makedepends=('xdg-utils' 'desktop-file-utils')
-depends=('gconf' 'gtk2' 'libnotify' 'libxtst' 'nss' 'alsa-lib')
-optdepends=('gvfs')
-conflicts=('caprine')
-
+conflicts=("${pkgname%-bin}")
+prodives=("${pkgname%-bin}=${pkgver}")
+depends=(
+    "electron${_electronversion}"
+)
+options=(
+    '!emptydirs'
+)
 source=(
-  "Caprine-linux-v${pkgver}.zip::https://github.com/sindresorhus/caprine/releases/download/${pkgver}/Caprine-linux-${pkgver}.zip"
-  "https://raw.githubusercontent.com/sindresorhus/caprine/${pkgver}/static/Icon.png"
-  "caprine.desktop")
-noextract=("Caprine-linux-v${pkgver}.zip")
-sha256sums=('e4cea592e183f67fafae2702114780cef7b8c39098004fa686fd0104ecedb905'
-            'e9cf18877fe54746d16d5f2106a67899c38f91b24d039cef43d75c62da25fc38'
-            '12b68650885651f78c6c7c2eb81fe0042474a0e7b1a857213732a449106aeaf8')
-
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/sindresorhus/caprine/v${pkgver}/license"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('93c0c5cf457662c406186e5751bc6e11215e38f3cd355918051a20cbf13d4974'
+            '48da2f39e100d4085767e94966b43f4fa95ff6a0698fba57ed460914e35f94a0'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+build() {
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
+    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+}
 package() {
-  mkdir -p "${pkgdir}/usr/share/caprine"
-  bsdtar -C "${pkgdir}/usr/share/caprine" -xf "${srcdir}/Caprine-linux-v${pkgver}.zip"
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/usr/share/caprine/Caprine" "${pkgdir}/usr/bin/caprine"
-  RPM_BUILD_ROOT="$pkgdir" desktop-file-install "${srcdir}/caprine.desktop"
-  install -Dm644 "${srcdir}/Icon.png" "${pkgdir}/usr/share/pixmaps/Caprine.png"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
