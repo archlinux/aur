@@ -10,7 +10,7 @@ url="http://www.triplea-game.org/"
 license=('GPL')
 install=${pkgname}.install
 depends=('gtk-update-icon-cache' 'java-runtime')
-source=( "https://github.com/triplea-game/releases/download/${pkgver}/${appname}.zip")
+source=( "https://github.com/triplea-game/triplea/releases/download/${pkgver}/${appname}.zip")
 sha256sums=('09f6683ac7468dbbecbb7e8d19d1abdd0fcc63f29b07145ba56268c82c17a760')
 package() {
     install -d ${pkgdir}/usr/share/${pkgname}
