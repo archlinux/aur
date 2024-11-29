@@ -20,6 +20,9 @@ package() {
     cp -rfpv ${srcdir}/.triplea-root ${pkgdir}/usr/share/${pkgname}
     cp ${srcdir}/.triplea-root ${pkgdir}/usr/share/${pkgname}
     cd ${pkgdir}/usr/bin
-    printf "#! /usr/bin/bash \n cd /usr/share/${pkgname}/bin \n java -jar ${appname}.jar" > triplea 
+    # Replace the last . in version with #
+    newVer=$(echo "$pkgver" | sed 's/\([0-9]*\.[0-9]*\)\.\([0-9]*\)/\1+\2/')
+    newAppName=${appname}-${newVer}.jar
+    printf "#! /usr/bin/bash \n cd /usr/share/${pkgname}/bin \n java -jar ${newAppName}" > triplea 
     chmod +x triplea
 }
