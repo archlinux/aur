@@ -1,4 +1,5 @@
 # Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
+# Contributor: Morgenstern <charles [at] charlesbwise [dot] com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mce'
@@ -6,7 +7,8 @@ pkgver='1.900'
 pkgrel='1'
 pkgdesc="Many-Core Engine for Perl providing parallel processing capabilities"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl'
+         'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl>=5.8.1')
 makedepends=()
