@@ -1,0 +1,18 @@
+pkgbase = rwth-linux-kernel-programming
+	pkgdesc = Needed tools to for RWTH lecture \"Linux Kernel Programming\"
+	pkgver = 2024
+	pkgrel = 1
+	url = https://teaching.os.rwth-aachen.de/LKP/
+	arch = any
+	license = GPL
+	depends = base-devel
+	depends = bc
+	depends = cpio
+	depends = git
+	depends = perl-authen-sasl
+	depends = perl-io-socket-ssl
+	depends = perl-mime-tools
+	depends = qemu-desktop
+	options = !debug
+
+pkgname = rwth-linux-kernel-programming
