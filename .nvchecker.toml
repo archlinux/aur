@@ -1,3 +1,6 @@
 [stygiansift-git]
-source="cmd"
-cmd="~/nvchecker/github_version.py Mauitron/StygianSift --commits"
+source="github-graphql"
+github="Mauitron/StygianSift"
+use_commit_number=true
+use_commit_hash=true
+

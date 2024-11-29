@@ -1,4 +1,6 @@
-# Maintainer: envolution
+# Maintainer : envolution
+# Contributor: mnussbaum
+# Contributor: j.r <j.r@jugendhacker.de>
 
 pkgname=stygiansift-git
 _pkgname="StygianSift"
