@@ -1,0 +1,22 @@
+pkgbase = syncterm-git
+	pkgdesc = A BBS terminal program, supporting ANSI music and IBM charset.
+	pkgver = 1.3.r0.g4b05587
+	pkgrel = 1
+	url = https://gitlab.synchro.net/main/sbbs
+	arch = x86_64
+	arch = i686
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = unzip
+	makedepends = sdl2
+	makedepends = libx11
+	depends = ncurses
+	optdepends = hicolor-icon-theme: for GUI icon support
+	optdepends = sdl2: for SDL GUI support
+	optdepends = libx11: for X11 GUI support
+	provides = syncterm
+	conflicts = syncterm
+	source = syncterm::git+https://gitlab.synchro.net/main/sbbs.git#branch=syncterm-1.3
+	sha256sums = SKIP
+
+pkgname = syncterm-git
