@@ -1,6 +1,6 @@
 _basepgkname=llamafile
 pkgname="${_basepgkname}"
-pkgver=0.8.13
+pkgver=0.8.16
 pkgrel=1
 pkgdesc="Distribute and run LLMs with a single file."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(    "${pkgname}::https://github.com/Mozilla-Ocho/llamafile/releases/down
        )
 
 sha256sums=(
-            '672f3661f2f4a2f7a6b692f04cd9b662cdf77a5193a62771c3432cb4d420dea7'
+            '719fa60a506c71c42613e652dc61d0eacbc1e1235f5c73755d655ad657580327'
            )
 
 provides=(  
@@ -29,6 +29,8 @@ provides=(
             'llamafile-tokenize'
             'llava-quantize'
             'llamafile-upgrade-engine'
+            'sdfile'
+            'whisperfile'
             'zipalign'
         )
 conflicts=('llamafile-git' 'android-sdk-build-tools' 'zipalign')
@@ -56,7 +58,18 @@ package() {
   pushd $man_dir
   for man_page in $(find . -type f); do
     man_page_name=$(basename "$man_page")
-    install -Dm644 "$man_page" "${pkgdir}/usr/share/man/man1/${man_page_name%.*}.1"
+    install -Dm600 "$man_page" "${pkgdir}/usr/share/man/man1/${man_page_name%.*}.1"
+  done
+  popd
+  
+  doc_dir="${_basepgkname}-${pkgver}/share/doc/llamafile"
+
+  mkdir -p "${pkgdir}/usr/share/doc/llamafile"
+
+  pushd $doc_dir
+  for doc in $(find . -type f); do
+      doc_file_name=$(basename "$doc")
+      install -Dm600 "$doc" "${pkgdir}/usr/share/doc/llamafile/${doc_file_name}"
   done
   popd
 }
