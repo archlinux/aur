@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt-bin
 pkgver=3.12.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries by AMA"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -36,7 +36,7 @@ source_x86_64=("https://github.com/amagovpt/autenticacao.gov/releases/download/v
  "autenticacao-gov-pt-bin.install")
 
 sha512sums_x86_64=('01fec7530b9c918e4d357a03152faa78754230e281eb3826355c4cc80163ad2653b71fd0846fdfd4078295f2f241d1c775376d95e94387feba8e097e9077f7fc'
-                   'd38b9748f386fcf64f3f0cb717eccf7936c64f0e7b6370ae3b1b079902015ce56d3057afcf2877ca4eee38776269ac3642701803ba96b24a81cfccc9a4d3245f')
+                   '99913f9f62110e45e951f55321dbd44cedbf9c4877148cc07c66b9cb27f1993d4496cd80e251c8094958c30f0c9b6891ec59071a194b02bc92df4f14335e686e')
 
 install='autenticacao-gov-pt-bin.install'
 
@@ -51,6 +51,7 @@ prepare() {
 
 package() {
   mkdir -p "${pkgdir}/usr/"
+  mkdir -p "${pkgdir}/usr/lib/"
   mkdir -p "${pkgdir}/app/share"
   mv "${srcdir}"/pteid_out/files/{bin,include,lib,share} "${pkgdir}/usr/"
   # Create symlinks: until better alternative
