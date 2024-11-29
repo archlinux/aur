@@ -3,7 +3,7 @@
 
 _pkgname='ved'
 pkgname='ved-git'
-pkgver=0.1+r358+g9daeead93
+pkgver=0.1+r362+gda0aa7ead
 pkgrel=1
 pkgdesc='1 MB text editor written in V with hardware accelerated text rendering (development version)'
 arch=('x86_64')
