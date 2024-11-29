@@ -2,10 +2,10 @@
 # Contributor: nightuser <nightuser.android@gmail.com>
 
 pkgname="stm32cubeide"
-pkgver=1.16.1
-_pkgver_ext=1.16.1_22882_20240916_0822
-_pkg_file_name=st-stm32cubeide_1.16.1_22882_20240916_0822_amd64.sh.zip
-pkgrel=3
+pkgver=1.17.0
+_pkgver_ext=1.17.0_23558_20241125_2245
+_pkg_file_name=en.st-stm32cubeide_1.17.0_23558_20241125_2245_amd64.sh.zip
+pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
@@ -39,7 +39,7 @@ source=("${_pkg_file_name}"::"$_download_path"
 	"stm32cubeide"
 	"stm32cubeide_wayland"
 	)
-sha256sums=('a455ab7cfb82990913b1569493b8716f32e953e00450f0f6e484c1b8963a8996'
+sha256sums=('783c426695def184a50294149fa929b19a9caa979aea5e23461d8df55283c732'
 	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
 	'SKIP'
 	'e390db4335686f4a99f04002625a9dce0058b631cb3205b700c1910bf129d73c'
@@ -94,8 +94,8 @@ package() {
 	magick "${pkgdir}/opt/${pkgname}/icon.xpm" "${srcdir}/${pkgname}.png"
 	install -dm 755 "${pkgdir}/usr/share/pixmaps/"
 	install -dm 755 "${pkgdir}/usr/share/applications/"
-	install -Dm 644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-	install -Dm 644 "${srcdir}/stm32cubeide.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm 644 "${srcdir}/${pkgname}.png" 	"${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	install -Dm 644 "${srcdir}/${pkgname}.desktop" 	"${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
 	#msg2 'Replace GDB by system'
 	#rm "${pkgdir}/opt/stm32cubeide/plugins/"com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32*/tools/bin/arm-none-eabi-gdb
