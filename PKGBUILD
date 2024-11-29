@@ -1,6 +1,6 @@
 # Maintainer: Fatih Bakal fatihbakal7@protonmail.com
 pkgname=am
-pkgver=9.0.0
+pkgver=placeholder
 pkgrel=1
 pkgdesc="AppImage package manager to install, update and manage ALL of them, system-wide or locally."
 url="https://github.com/ivan-hc/AM"
@@ -22,12 +22,6 @@ depends=(
 
 source=("https://raw.githubusercontent.com/ivan-hc/AM/main/APP-MANAGER")
 sha256sums=('SKIP')
-
-pkgver() {
-    # Get the latest tag from the GitHub repository
-    curl -s "https://api.github.com/repos/ivan-hc/AM/releases/latest" |
-        jq -r '.tag_name' | sed 's/^v//'
-}
 
 package() {
     # Create the main directory for AM

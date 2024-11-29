@@ -1,6 +1,6 @@
 pkgbase = am
 	pkgdesc = AppImage package manager to install, update and manage ALL of them, system-wide or locally.
-	pkgver = 9.0.0
+	pkgver = placeholder
 	pkgrel = 1
 	url = https://github.com/ivan-hc/AM
 	arch = any
