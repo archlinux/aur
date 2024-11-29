@@ -12,6 +12,9 @@ if [[ -z ${1} ]]; then
 fi
 VERSION="${1}"
 
+echo "Inserting package version '${VERSION}'."
+sed -i -e "s/^pkgver=.*$/pkgver=${VERSION}/" PKGBUILD
+
 # Source PKGBUILD to get access to variables.
 . PKGBUILD
 
@@ -26,9 +29,6 @@ done
 
 echo "Inserting checksum."
 sed -i -e "s/^sha512sums=.*$/sha512sums=(${CHECKSUMS[@]})/" PKGBUILD
-
-echo "Inserting package version '${VERSION}'."
-sed -i -e "s/^pkgver=.*$/pkgver=${VERSION}/" PKGBUILD
 
 echo "Updating .SRCINFO."
 makepkg --printsrcinfo > .SRCINFO
