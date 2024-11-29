@@ -1,9 +1,10 @@
 # Maintainer: envolution
 # Contributor: Lindasy Zhou <i@lin.moe>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 _pkgname="memos"
 pkgname="${_pkgname}-git"
-pkgver=0.22.5+r3132+ga51e363c7
+pkgver=0.22.5+r3136+g2aa3795e5
 pkgrel=1
 pkgdesc="A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts."
 url="https://github.com/usememos/${_pkgname}"
@@ -28,51 +29,51 @@ sha512sums=('SKIP'
             '251e01c4f5fc8aea209453d91da5dde91d58397668e34b78e52a31940e30a89be5601a6ea8cdebe791a96c9324733095de3567998b45ce1542578b1d9b7a5b76'
             'cf88b91a88825dcfda35f45461513b8a2e03b07890189fd1cf7b60aa4085c9e88d8338596b69a3d9c3e513e668093ab7cb246febbb7f6ac7796d37e1189db565')
 
-
-pkgver(){
+pkgver() {
   cd "$srcdir/$_pkgname"
-  _version=$(git tag --sort=-v:refname --list | grep '^v[0-9.]*$' | head -n1 )
+  _version=$(git tag --sort=-v:refname --list | head -n1 | tr - .)
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
   echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
 }
 
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install
-    nvm use
-    echo "in _ensure nvm dir = ${NVM_DIR}"
+  export NVM_DIR="${srcdir}/.nvm"
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+  nvm install
+  nvm use
+  echo "in _ensure nvm dir = ${NVM_DIR}"
 }
 
 build() {
-    export COREPACK_ENABLE_STRICT=0
-    export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
-    cd $_pkgname/web
-    # Build frontend
-    echo "lts/iron" > .nvmrc
-    _ensure_local_nvm
-    pnpm install --frozen-lockfile
+  export COREPACK_ENABLE_STRICT=0
+  export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+  cd $_pkgname/web
+  # Build frontend
+  echo "lts/iron" >.nvmrc
+  _ensure_local_nvm
+  pnpm install --frozen-lockfile
 
-    pnpm build
+  pnpm build
 
-    # Set up backend build environment
-    mkdir -p "$srcdir/$_pkgname/backend_build_dir/server/router/frontend/dist/"
-    rm -rf "${srcdir}/${_pkgname}/server/router/frontend/dist"
-    cp -r "$srcdir/$_pkgname/web/dist" "$srcdir/$_pkgname/server/router/frontend/"
+  # Set up backend build environment
+  mkdir -p "$srcdir/$_pkgname/backend_build_dir/server/router/frontend/dist/"
+  rm -rf "${srcdir}/${_pkgname}/server/router/frontend/dist"
+  cp -r "$srcdir/$_pkgname/web/dist" "$srcdir/$_pkgname/server/router/frontend/"
 
-    # Compile the backend Go binary
-    CGO_ENABLED=0 go build -o "$srcdir/${_pkgname}.bin" "$srcdir/$_pkgname/bin/memos/main.go"
+  # Compile the backend Go binary
+  CGO_ENABLED=0 go build -o "$srcdir/${_pkgname}.bin" "$srcdir/$_pkgname/bin/memos/main.go"
 }
-package () {
+package() {
   install -vDm644 systemd.service "$pkgdir/usr/lib/systemd/system/${_pkgname}.service"
-  install -vDm644 sysusers.conf   "$pkgdir/usr/lib/sysusers.d/${_pkgname}.conf"
-  install -vDm644 tmpfiles.conf   "$pkgdir/usr/lib/tmpfiles.d/${_pkgname}.conf"
-  install -vDm644 memos.conf      "$pkgdir/etc/memos.conf"
+  install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/${_pkgname}.conf"
+  install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/${_pkgname}.conf"
+  install -vDm644 memos.conf "$pkgdir/etc/memos.conf"
 
   pwd
   ls -latr
-  install -Dm755  "memos.bin"            "$pkgdir/usr/bin/memos"
+  install -Dm755 "memos.bin" "$pkgdir/usr/bin/memos"
   install -Dm0644 "${_pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
+# vim:set ts=2 sw=2 et:
