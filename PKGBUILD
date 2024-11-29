@@ -12,12 +12,19 @@ depends=('dkms')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 makedepends=('sed' 'binutils' 'git')
-source=("git+https://github.com/google/gasket-driver.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/google/gasket-driver.git"
+        "https://github.com/google/gasket-driver/commit/4b2a1464f3b619daaf0f6c664c954a42c4b7ce00.patch")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
         cd "${srcdir}/gasket-driver/"
         printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd gasket-driver
+  patch -Np1 -i ../../4b2a1464f3b619daaf0f6c664c954a42c4b7ce00.patch
 }
 
 package() {
