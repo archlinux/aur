@@ -1,8 +1,8 @@
 pkgbase = gpxviewer
 	pkgdesc = GPS trace viewer
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
-	url = http://andrewgee.org/blog/projects/gpxviewer/
+	url = https://github.com/andrewgee/gpxviewer
 	arch = any
 	license = GPL3
 	makedepends = python-distutils-extra
@@ -12,8 +12,7 @@ pkgbase = gpxviewer
 	depends = python-dateutil
 	depends = python-gpxpy
 	depends = osm-gps-map
-	source = http://andrewgee.org/downloads/gpxviewer/gpxviewer-1.1.0.tar.gz
-	sha256sums = 9630334e58961fc61e00d32e87b6afb06f1d53fc2ed7c9371781a4e615f79671
+	source = https://github.com/andrewgee/gpxviewer/archive/refs/tags/1.2.0.tar.gz
+	sha256sums = 541bf661dd777581054747b8fdd489362fada8b924a0e372743d4833b99f5c27
 
 pkgname = gpxviewer
-

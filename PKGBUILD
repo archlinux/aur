@@ -1,17 +1,17 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
-# Maintainer: SanskritFritz
+# Maintainer: SanskritFritz (gmail)
 
 pkgname=gpxviewer
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="GPS trace viewer"
 arch=('any')
-url="http://andrewgee.org/blog/projects/gpxviewer/"
+url="https://github.com/andrewgee/gpxviewer"
 license=('GPL3')
 depends=('python-matplotlib' 'python-cairo' 'python-gobject' 'python-dateutil' 'python-gpxpy' 'osm-gps-map')
 makedepends=('python-distutils-extra')
-source=("http://andrewgee.org/downloads/gpxviewer/gpxviewer-$pkgver.tar.gz")
-sha256sums=('9630334e58961fc61e00d32e87b6afb06f1d53fc2ed7c9371781a4e615f79671')
+source=("https://github.com/andrewgee/gpxviewer/archive/refs/tags/1.2.0.tar.gz")
+sha256sums=('541bf661dd777581054747b8fdd489362fada8b924a0e372743d4833b99f5c27')
 
 build() {
 	cd $pkgname-$pkgver
