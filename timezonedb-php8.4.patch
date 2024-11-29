@@ -1,28 +1,3 @@
-index 18b8106..3d1f63c 100644
---- a/ext/date/config0.m4
-+++ b/ext/date/config0.m4
-@@ -4,6 +4,19 @@ AC_CHECK_HEADERS([io.h])
- dnl Check for strtoll, atoll
- AC_CHECK_FUNCS(strtoll atoll)
- 
-+PHP_ARG_WITH(system-tzdata, for use of system timezone data,
-+[  --with-system-tzdata[=DIR]      to specify use of system timezone data],
-+no, no)
-+
-+if test "$PHP_SYSTEM_TZDATA" != "no"; then
-+   AC_DEFINE(HAVE_SYSTEM_TZDATA, 1, [Define if system timezone data is used])
-+
-+   if test "$PHP_SYSTEM_TZDATA" != "yes"; then
-+      AC_DEFINE_UNQUOTED(HAVE_SYSTEM_TZDATA_PREFIX, "$PHP_SYSTEM_TZDATA",
-+                         [Define for location of system timezone data])
-+   fi
-+fi
-+
- PHP_DATE_CFLAGS="-Wno-implicit-fallthrough -I@ext_builddir@/lib -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DHAVE_TIMELIB_CONFIG_H=1"
- timelib_sources="lib/astro.c lib/dow.c lib/parse_date.c lib/parse_tz.c lib/parse_posix.c
-                  lib/timelib.c lib/tm2unixtime.c lib/unixtime2tm.c lib/parse_iso_intervals.c lib/interval.c"
-diff --git a/ext/date/lib/parse_tz.c b/ext/date/lib/parse_tz.c
-index e41315e..ba01fab 100644
 --- a/ext/date/lib/parse_tz.c
 +++ b/ext/date/lib/parse_tz.c
 @@ -26,9 +26,22 @@
@@ -627,3 +602,25 @@ index e41315e..ba01fab 100644
  	} else {
  		*error_code = TIMELIB_ERROR_NO_SUCH_TIMEZONE;
  		tmp = NULL;
+--- a/ext/date/config0.m4
++++ b/ext/date/config0.m4
+@@ -4,6 +4,19 @@
+ dnl Check for strtoll, atoll
+ AC_CHECK_FUNCS(strtoll atoll)
+ 
++PHP_ARG_WITH(system-tzdata, for use of system timezone data,
++[  --with-system-tzdata[=DIR]      to specify use of system timezone data],
++no, no)
++
++if test "$PHP_SYSTEM_TZDATA" != "no"; then
++   AC_DEFINE(HAVE_SYSTEM_TZDATA, 1, [Define if system timezone data is used])
++
++   if test "$PHP_SYSTEM_TZDATA" != "yes"; then
++      AC_DEFINE_UNQUOTED(HAVE_SYSTEM_TZDATA_PREFIX, "$PHP_SYSTEM_TZDATA",
++                         [Define for location of system timezone data])
++   fi
++fi
++
+ AX_CHECK_COMPILE_FLAG([-Wno-implicit-fallthrough],
+   [PHP_DATE_CFLAGS="$PHP_DATE_CFLAGS -Wno-implicit-fallthrough"],,
+   [-Werror])

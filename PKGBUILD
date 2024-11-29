@@ -18,11 +18,11 @@
 ###############################################################################
 _phpbase="84"
 _suffix=""
-pkgver="8.4.0beta3"
-pkgbase_rc="beta3"
+pkgver="8.4.1"
+pkgbase_rc=""
 pkgrel="1"
 pkgbase="php84"
-pkgdesc="PHP 8.4.0beta3 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.4.1 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
@@ -127,8 +127,9 @@ source=(
     "php-makefile-patcher.php"
     "php-apache.conf"
     "pear-config-patcher.php"
-    "https://downloads.php.net/~calvinb/php-8.4.0beta3.tar.xz"
-    "php-phpinfo.patch"
+    "https://php.net/distributions/php-${pkgver}.tar.xz"
+    "apache-php8.4.patch"
+    "php-phpinfo-8.4.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.4.patch"
 )
@@ -194,7 +195,8 @@ makedepends=(
 arch=(
 )
 _patches=(
-    "php-phpinfo.patch"
+    "apache-php8.4.patch"
+    "php-phpinfo-8.4.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.4.patch"
 )
@@ -205,20 +207,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php84=8.4.0beta3"
+    "php84=8.4.1"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php84=8.4.0beta3"
+    "php84=8.4.1"
     "openssl"
 )
 _ext_depends_intl=(
-    "php84=8.4.0beta3"
+    "php84=8.4.1"
     "icu"
 )
 _ext_depends_imap=(
-    "php84=8.4.0beta3"
+    "php84=8.4.1"
     "pam"
     "krb5"
     "c-client"
@@ -226,45 +228,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php84=8.4.0beta3"
+    "php84=8.4.1"
     "gd"
 )
 _ext_depends_mysql=(
-    "php84=8.4.0beta3"
-    "php84-pdo=8.4.0beta3"
-    "php84-openssl=8.4.0beta3"
+    "php84=8.4.1"
+    "php84-pdo=8.4.1"
+    "php84-openssl=8.4.1"
 )
 _ext_depends_dba=(
-    "php84=8.4.0beta3"
+    "php84=8.4.1"
     "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php84=8.4.0beta3"
+    "php84=8.4.1"
     "unixodbc"
-    "php84-pdo=8.4.0beta3"
+    "php84-pdo=8.4.1"
 )
 _ext_depends_pgsql=(
-    "php84=8.4.0beta3"
+    "php84=8.4.1"
     "postgresql-libs"
-    "php84-pdo=8.4.0beta3"
+    "php84-pdo=8.4.1"
 )
 _ext_depends_firebird=(
-    "php84=8.4.0beta3"
+    "php84=8.4.1"
     "libfbclient"
-    "php84-pdo=8.4.0beta3"
+    "php84-pdo=8.4.1"
 )
 _ext_depends_sqlite=(
-    "php84=8.4.0beta3"
+    "php84=8.4.1"
     "sqlite"
-    "php84-pdo=8.4.0beta3"
+    "php84-pdo=8.4.1"
 )
 _ext_depends_mbstring=(
-    "php84=8.4.0beta3"
+    "php84=8.4.1"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php84=8.4.0beta3"
+    "php84=8.4.1"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -406,9 +408,11 @@ prepare() {
     sed -E "s|(include_dir[\t ]*=.*php)|\1${_phpbase}${_suffix}|g" \
         -i scripts/php-config.in
 
-    echo "[SED] sapi/apache2handler/config.m4"
-    sed -e '/APACHE_THREADED_MPM=/d' \
-        -i sapi/apache2handler/config.m4
+    if ((_phpbase < 84)); then
+        echo "[SED] sapi/apache2handler/config.m4"
+        sed -e '/APACHE_THREADED_MPM=/d' \
+            -i sapi/apache2handler/config.m4
+    fi
 
     echo "[SED] sapi/fpm/Makefile.frag"
     # sed -e 's#php-fpm\$(program_suffix)#php\$(program_suffix)-fpm#'
@@ -1470,7 +1474,8 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
-            '6938140a64b7b5d577d38020d390d939b2ca4d0f178293487c70116e1a59500c'
-            '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
+            '94c8a4fd419d45748951fa6d73bd55f6bdf0adaefb8814880a67baa66027311f'
+            '6f674d415bf54d60a2ee3bdeadd43e8e754fb2ec8b13476f9a8d0faa67011103'
+            'c537b06cc5d2645b566021d038f28bc32c4037efc3605023b3d37196b3b744cc'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
-            'e2b4bad971ed569e9e898dcb2c7451d53e9b55f473123bbd4765d126efea6466')
+            '267c8ea589c2aec13e481ebfa2ae2e78176ce070000ed25fbc613ab52abd4e21')
