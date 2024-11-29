@@ -8,14 +8,14 @@
 pkgname=python-pygatt
 _module=pygatt
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Bluetooth LE (Low Energy) and GATT Library"
 url="https://github.com/peplin/pygatt"
-license=('custom:partly Apache, partly MIT')
+license=('Apache-2.0 AND MIT')
 arch=('any')
-depends=(python-pexpect python-pyserial)
-makedepends=(python-build python-installer python-wheel)
-checkdepends=(python-mock python-pytest)
+depends=(python python-pexpect python-pyserial)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+checkdepends=(python-coverage python-mock python-pytest)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/peplin/${_module}/archive/refs/tags/v${pkgver}.tar.gz
         0001-Remove-dependency-on-enum-compat.patch
         0002-Relax-version-requirements.patch)
