@@ -4,13 +4,14 @@
 pkgname=digitalclock5
 _pkgname=DigitalClock5
 pkgver=5.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern digital clock application"
 arch=('x86_64')
 url="https://github.com/Kolcha/DigitalClock5"
 license=('GPL3')
 depends=('qt6-base' 'ninja' 'cmake')
 makedepends=('git')
+install=$pkgname.install
 source=("git+https://github.com/Kolcha/DigitalClock5.git#tag=${pkgver}"
   https://digitalclock4.sourceforge.io/media/skins.zip
   digitalclock5.desktop

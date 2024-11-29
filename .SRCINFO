@@ -1,8 +1,9 @@
 pkgbase = digitalclock5
 	pkgdesc = A modern digital clock application
 	pkgver = 5.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kolcha/DigitalClock5
+	install = digitalclock5.install
 	arch = x86_64
 	license = GPL3
 	makedepends = git
