@@ -1,8 +1,8 @@
 pkgbase = hts-engine
 	pkgdesc = Engine to synthesize speech waveform from HMMs trained by hts.
 	pkgver = 1.10
-	pkgrel = 3
-	url = http://hts-engine.sourceforge.net/
+	pkgrel = 4
+	url = https://hts-engine.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -14,4 +14,3 @@ pkgbase = hts-engine
 	sha256sums = e2132be5860d8fb4a460be766454cfd7c3e21cf67b509c48e1804feab14968f7
 
 pkgname = hts-engine
-
