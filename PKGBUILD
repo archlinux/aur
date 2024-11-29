@@ -3,7 +3,7 @@
 _org='vsg-dev'
 _pkgname=vsgXchange
 pkgname=vsgxchange
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Utility library for converting data+materials to/from VulkanSceneGraph"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('freetype2' 'glibc' 'gdal' 'assimp' 'gcc-libs' 'vulkanscenegraph' 'vulkan-icd-loader' 'openexr')
 makedepends=('cmake' 'vulkan-headers' 'libxcb' 'curl')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ea2979ad1df529437b068bb5e3e37cd2e9f18b4795a743359027482eb2ea6a83')
+sha256sums=('0b79369ddcb3676b6998a6660fcf938314ae34eea9fbababf8471e0b94502597')
 
 build() {
     cmake -B "build-$pkgver" -S "$_pkgname-$pkgver" \
