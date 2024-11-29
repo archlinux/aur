@@ -1,12 +1,12 @@
 #Maintainer: rmbgame<rmb@rmbgame.net>
 #Maintainer: AigioL<https://github.com/AigioL>
 
-_dotnet_version=8.0
+_dotnet_version=9.0
 _download_dotnet_version=9.0
 
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.0.0.rc11.r31.g1648d65c4
+pkgver=3.0.0.rc12.r0.gcc8dbeb3f
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
