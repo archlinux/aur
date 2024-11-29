@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mogan-bin
-pkgver=1.2.9.5
+pkgver=1.2.9.7
 _libgit2ver=1.1.1
 pkgrel=1
 pkgdesc="A structured wysiwyg scientific text editor"
@@ -29,10 +29,10 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-research-v${pkgver}-ubuntu24.04.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-research-v${pkgver}-fedora41.rpm"
     "libgit2-${_libgit2ver}.tar.gz::${_libgit2url}/archive/refs/tags/v${_libgit2ver}.tar.gz"
 )
-sha256sums=('a97f622ec0b48b81e35681eecbf0619d43481f0f59a050ee6e8fa0fbc982fac5'
+sha256sums=('fc6171d44e29351c2bd16fffbbb18ed287ef20b8871f7b9ca2ce898587dd948c'
             '13a525373f64c711a00a058514d890d1512080265f98e0935ab279393f21a620')
 build() {
     cd "${srcdir}/libgit2-${_libgit2ver}"
@@ -42,6 +42,6 @@ build() {
     cmake --build .
 }
 package() {
-    bsdtar -xf "${srcdir}/data."* -C "${pkgdir}"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr" "${pkgdir}"
     install -Dm644 "${srcdir}/libgit2-${_libgit2ver}/build/libgit2.so.1.1.1" "${pkgdir}/usr/lib/libgit2.so.1.1"
 }
