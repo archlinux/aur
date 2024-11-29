@@ -1,6 +1,6 @@
 pkgbase = nodejs-addon-api
 	pkgdesc = Node.js API (N-API)
-	pkgver = 8.2.2
+	pkgver = 8.3.0
 	pkgrel = 1
 	url = https://github.com/nodejs/node-addon-api
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = nodejs-addon-api
 	makedepends = moreutils
 	makedepends = npm
 	depends = nodejs>=14
-	source = https://github.com/nodejs/node-addon-api/archive/v8.2.2/node-addon-api-8.2.2.tar.gz
-	sha256sums = b9fe0f1535deb17825ff57fb97b4690f49517a42c923e475e960870831f2fa79
+	source = https://github.com/nodejs/node-addon-api/archive/v8.3.0/node-addon-api-8.3.0.tar.gz
+	sha256sums = a5ddbbe7c4a04aa4d438205e2f90bfc476042951e8ebddac6883f123a7e88cae
 
 pkgname = nodejs-addon-api
