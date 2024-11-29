@@ -11,8 +11,12 @@ url="https://github.com/Kolcha/DigitalClock5"
 license=('GPL3')
 depends=('qt6-base' 'ninja' 'cmake')
 makedepends=('git')
-source=("git+https://github.com/Kolcha/DigitalClock5.git#tag=${pkgver}" digitalclock5.desktop)
+source=("git+https://github.com/Kolcha/DigitalClock5.git#tag=${pkgver}"
+  https://digitalclock4.sourceforge.io/media/skins.zip
+  digitalclock5.desktop
+)
 sha256sums=('ab17b51ffdef57de7927a0f103aef012e9b1171a4efd3024512a846de9d190e8'
+            'deedaf6da31a24eea3e2e146bdbcde316453cde52cfaaef3c03f86307d63177a'
             '353cab3b079779c5ad3255fe3ffae21c28f4140e1e1c92f5b1c860c6f06e24e8')
 
 prepare() {
@@ -46,29 +50,19 @@ build() {
 package() {
   install -dm755 "${pkgdir}/usr/share/applications"
   install -Dm644 digitalclock5.desktop "${pkgdir}/usr/share/applications/"
-  cd "${_pkgname}"
-
-  cmake --install build --prefix="${pkgdir}/usr" #does nothing
-  install -dm755 "${pkgdir}/usr/share/digitalclock5"
-  cp -r app/res "${pkgdir}/usr/share/digitalclock5/"
-  cp -r build/skins "${pkgdir}/usr/share/digitalclock5/"
-  cp -r build/textures "${pkgdir}/usr/share/digitalclock5/"
-
   install -dm755 "${pkgdir}/usr/share/digitalclock5/plugins"
-  cp -r build/plugins/* "${pkgdir}/usr/share/digitalclock5/plugins/"
-  #
-  # Install shared libraries
-  install -Dm755 "${srcdir}/src/DigitalClock5/build/3rdparty/paletteicon/libpaletteicon.so" \
-    "${pkgdir}/usr/share/digitalclock5/libpaletteicon.so"
-  install -Dm755 "${srcdir}/src/DigitalClock5/build/clock_common/libClockCommon.so" \
-    "${pkgdir}/usr/share/digitalclock5/libClockCommon.so"
-  install -Dm755 "${srcdir}/src/DigitalClock5/build/plugin_core/libPluginCore.so" \
-    "${pkgdir}/usr/share/digitalclock5/libPluginCore.so"
-  install -Dm755 "${srcdir}/src/DigitalClock5/build/skin_engine/libSkinEngine.so" \
-    "${pkgdir}/usr/share/digitalclock5/libSkinEngine.so"
+  install -dm755 "${pkgdir}/usr/share/digitalclock5/skins"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -Dm755 "${_pkgname}/build/app/DigitalClock5" "${pkgdir}/usr/share/digitalclock5/"
+  ln -s "/usr/share/digitalclock5/DigitalClock5" "${pkgdir}/usr/bin/digitalclock5"
 
-  install -Dm755 "build/app/${_pkgname}" "${pkgdir}/usr/bin/digitalclock5"
-  install -Dm644 "app/res/icons/clock.svg" \
-    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/digitalclock5.svg"
+  install -Dm644 "${_pkgname}/app/res/icons/clock.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/digitalclock5.svg"
+  find "${_pkgname}/build/clock_common/" -name 'lib*.so' -exec install -v -Dm 0755 {} -t "${pkgdir}/usr/share/digitalclock5/" \;
+  find "${_pkgname}/build/plugin_core/" -name 'lib*.so' -exec install -v -Dm 0755 {} -t "${pkgdir}/usr/share/digitalclock5/" \;
+  find "${_pkgname}/build/skin_engine/" -name 'lib*.so' -exec install -v -Dm 0755 {} -t "${pkgdir}/usr/share/digitalclock5/" \;
+  find "${_pkgname}/build/plugins/" -name '*.so' -not -name '*sample*' -exec install -v -Dm 0755 {} -t "${pkgdir}/usr/share/digitalclock5/plugins/" \;
+  find "${_pkgname}/build/3rdparty/paletteicon/" -name '*.so' -exec install -v -Dm 0755 {} -t "${pkgdir}/usr/share/digitalclock5/" \;
+
+  cp -r "skins/"* "${pkgdir}/usr/share/digitalclock5/skins/"
 }
 # vim:set ts=2 sw=2 et:
