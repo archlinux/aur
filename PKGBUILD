@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=devkitty
 _pkgname=Devkitty
-pkgver=2.11.1
-_electronversion=31
+pkgver=2.11.5
+_electronversion=33
 _nodeversion=20
-pkgrel=2
-pkgdesc="Swiss army knife for developers.Use system-wide electron."
+pkgrel=1
+pkgdesc="Swiss army knife for developers.(Use system-wide electron)"
 arch=('any')
 url="https://devkitty.app/"
 _ghurl="https://github.com/egor-xyz/devkitty"
@@ -24,7 +24,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('11f0c1b74cfd2d7cc709c6a4bc49d567306ed83f50f58ccaa96c24ad1ac4045b'
+sha256sums=('58517be3486e45379a7d1bae205ccb0745069d8f9ef0f3a497e989707657ef9e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -43,6 +43,7 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -54,7 +55,6 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
