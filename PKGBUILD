@@ -32,6 +32,11 @@ build() {
 	python -m build --wheel --no-isolation
 }
 
+check(){
+    cd ${srcdir}/${_name}-$pkgver
+    pytest
+}
+
 package() {
 	cd ${srcdir}/$_name-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
