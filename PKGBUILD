@@ -2,7 +2,7 @@
 # Maintainer: Andreas Baumann <mail at andreasbaumann dot cc>
 
 pkgname=thruk
-pkgver=3.18
+pkgver=3.20
 pkgrel=1
 pkgdesc="Multibackend monitoring webinterface for Naemon, Nagios, Icinga and Shinken"
 arch=('any')
@@ -21,11 +21,14 @@ backup=('etc/thruk/cgi.cfg' 'etc/thruk/htpasswd'
         'etc/thruk/naglint.conf' 'etc/httpd/conf/extra/thruk.conf'
         'etc/thruk/thruk_local.conf' 'etc/logrotate.d/thruk-base')
 source=(http://download.thruk.org/pkg/v$pkgver/src/$pkgname-$pkgver.tar.gz)
-md5sums=('e4030a17e7088121ea1abf95f34869a8')
+md5sums=('072a2a378b1ea009860aa337829087f8')
 install="thruk.install"
 
 build() {
   cd $pkgname-$pkgver
+
+  # ArchlinuxARM and other distros might not be recognized
+  sed -i 's/\(die(sprintf("Unable to detect distribution and version\)/#\1/g' configure
 
   ./configure --prefix=/usr \
     --exec-prefix=/bin \
