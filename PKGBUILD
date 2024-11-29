@@ -12,8 +12,8 @@ options=(!debug !strip)
 
 makedepends+=()
 
-provides+=(wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-universal-bwrap)
-replaces+=(wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-universal-bwrap)
+provides+=(wechat-uos wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-universal-bwrap wechat-bin)
+replaces+=(wechat-uos wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-universal-bwrap wechat-bin)
 
 depends=(
 	"portable"
