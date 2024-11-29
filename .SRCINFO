@@ -1,7 +1,7 @@
 pkgbase = hw-probe
 	pkgdesc = Probe for hardware, check its operability and upload result to https://linux-hardware.org
 	pkgver = 1.6.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/linuxhw/hw-probe
 	arch = any
 	license = LGPL-2.1-or-later OR BSD-4-Clause
@@ -12,7 +12,7 @@ pkgbase = hw-probe
 	depends = pciutils
 	depends = usbutils
 	depends = net-tools
-	depends = edid-decode
+	depends = v4l-utils-git
 	depends = ddcutil
 	depends = acpica
 	optdepends = hdparm
