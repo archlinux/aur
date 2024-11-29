@@ -13,6 +13,10 @@ install=${pkgname}.install
 source_x86_64=("https://github.com/Sushants-Git/locus/releases/download/v$pkgver/locus_"$pkgver"_amd64.deb")
 sha256sums_x86_64=('f3e6f1927b9bac7f66f8f31318839097b2e77bcee1d81928352631ad539d5076')
 
+prepare() {
+  rm -f "${srcdir}/locus_*.deb"
+}
+
 package() {
   tar -xz -f data.tar.gz -C "${pkgdir}"
 }
