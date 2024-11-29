@@ -23,6 +23,12 @@ depends=(
 source=("https://raw.githubusercontent.com/ivan-hc/AM/main/APP-MANAGER")
 sha256sums=('SKIP')
 
+pkgver() {
+    # Get the latest tag from the GitHub repository
+    curl -s "https://api.github.com/repos/ivan-hc/AM/releases/latest" |
+        jq -r '.tag_name' | sed 's/^v//'
+}
+
 package() {
     # Create the main directory for AM
     install -dm755 "$pkgdir/opt/am/modules"
