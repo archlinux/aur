@@ -4,7 +4,7 @@ _gitname="edid-generator"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=r30.20231120.476a016
-pkgrel=1
+pkgrel=2
 pkgdesc="Hackerswork to generate an EDID binary file from given Xorg Modelines."
 arch=(
   'any'
@@ -18,7 +18,7 @@ depends=(
   'binutils'  # for 'objcopy'
   'coreutils' # for 'cat' and 'mktemp'
   'dos2unix'
-  'edid-decode'
+  'v4l-utils'
   'gcc'       # for 'cc'
   'make'      # to run the Makefile
   'zsh'       # Interpreter for the upstream script
