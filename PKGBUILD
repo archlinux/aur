@@ -1,10 +1,9 @@
-# Maintainer: 
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
-# Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=veyon-bin
-pkgver=4.9.0
-pkgrel=2
-pkgdesc="Cross-platform computer monitoring and classroom management.Prebuilt version."
+pkgver=4.9.1
+pkgrel=1
+pkgdesc="Cross-platform computer monitoring and classroom management.(Prebuilt version)"
 arch=('x86_64')
 url="https://veyon.io/"
 _ghurl="https://github.com/veyon/veyon"
@@ -33,7 +32,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.0-fedora.40.${CARCH}.rpm"
 )
-sha256sums=('ec7d9f756d4e0b88c12e808d99d085222de126bb18824c40ae245406ac270cfd')
+sha256sums=('9182088cffcf6c03c7f69447fbcb3d3a9cc1c7f9b4f4a39b4dbcca3a074047a4')
 
 build() {
     sed -i "s/\/usr\/bin\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}-"{master,configurator}.desktop
