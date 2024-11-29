@@ -1,0 +1,4 @@
+[caps-log]
+source = "git"
+git = "https://github.com/NikolaDucak/caps-log.git"
+prefix = "v"
