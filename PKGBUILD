@@ -3,10 +3,10 @@
 # Maintainer: Lawrence Stalder <lawrence.stalder@pm.me>
 
 pkgname=nym-vpnd
-pkgver=0.2.4
+pkgver=1.0.0
 # upstream version
-_pkgver=0.2.4
-_release_tag=nym-vpn-core-v0.2.4
+_pkgver=1.0.0
+_release_tag=nym-vpn-core-v1.0.0
 pkgrel=1
 pkgdesc='NymVPN daemon as a systemd service'
 arch=('x86_64')
@@ -20,7 +20,7 @@ options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_release_tag.tar.gz"
     'nym-vpnd.service')
 sha256sums=(
-    '2646177dfbcfae8583a973275dd9ac1b1138adf723443d60c840d6e401e54ab1' 
+    '373889eb9f2c337bded92f6ffdf82806e14e057509ecd04298d8b0641de99496' 
     'e8e234098c198ba3d0692543922fc53434f9a4355338d01c5a8dd5abfb97d255')
 _srcdir="nym-vpn-client-$_release_tag"
 
@@ -41,7 +41,6 @@ build() {
   pushd wireguard
   ./build-wireguard-go.sh
   popd
-  wg_go=$srcdir/$_srcdir/build/lib/$CARCH-unknown-linux-gnu
 
   # build nym-vpnd
   pushd nym-vpn-core/crates/nym-vpnd/
@@ -49,7 +48,7 @@ build() {
   # sqlx does not support LTO build flag, which is enabled by default in Arch
   # set the C flag -ffat-lto-objects to solve the issue
   # see https://github.com/launchbadge/sqlx/issues/3149
-  CFLAGS+=" -ffat-lto-objects" RUSTFLAGS="-L $wg_go" cargo build --release --locked
+  CFLAGS+=" -ffat-lto-objects" cargo build --release --locked
 }
 
 package() {
