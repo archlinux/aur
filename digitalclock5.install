@@ -1,0 +1,14 @@
+note() {
+  all_off="$(tput sgr0)"
+  bold="${all_off}$(tput bold)"
+  blue="${bold}$(tput setaf 4)"
+  yellow="${bold}$(tput setaf 3)"
+  echo "${blue}==>${yellow} NOTE:${bold} ${1}${all_off}"
+}
+post_install() {
+  note "******************************************************************************"
+  note "-In order to enable the default skins"
+  note "mkdir -p ~/.local/share/NickKorotysh/DigitalClock5"
+  note "ln -s /usr/share/digitalclock5/skins ~/.local/share/NickKorotysh/DigitalClock5"
+  note "******************************************************************************"
+}

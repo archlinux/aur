@@ -15,10 +15,12 @@ install=$pkgname.install
 source=("git+https://github.com/Kolcha/DigitalClock5.git#tag=${pkgver}"
   https://digitalclock4.sourceforge.io/media/skins.zip
   digitalclock5.desktop
+  digitalclock5.install
 )
 sha256sums=('ab17b51ffdef57de7927a0f103aef012e9b1171a4efd3024512a846de9d190e8'
             'deedaf6da31a24eea3e2e146bdbcde316453cde52cfaaef3c03f86307d63177a'
-            '353cab3b079779c5ad3255fe3ffae21c28f4140e1e1c92f5b1c860c6f06e24e8')
+            '353cab3b079779c5ad3255fe3ffae21c28f4140e1e1c92f5b1c860c6f06e24e8'
+            'b3953c72141ea3a80ad353a2f66eee22614722571d8306fc1989a60df4858c81')
 
 prepare() {
   # Initialize submodules
