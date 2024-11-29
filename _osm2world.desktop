@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=OSM2World
+GenericName=3D Map Viewer
+Comment=Converter that creates three-dimensional models of the world from OpenStreetMap data.
+Categories=Education;Graphics;
+Path=/opt/osm2world
+Exec=/opt/osm2world/osm2world.sh
+Terminal=false
+StartupNotify=true

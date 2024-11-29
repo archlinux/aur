@@ -1,0 +1,16 @@
+pkgbase = osm2world-git
+	pkgdesc = Converter that creates three-dimensional models of the world from OpenStreetMap data. -git latest
+	pkgver = 2024.11.18
+	pkgrel = 1
+	url = http://osm2world.org/
+	arch = any
+	license = LGPL3
+	depends = java-runtime>=17
+	source = https://osm2world.org/download/files/latest/OSM2World-latest-bin.zip
+	source = _osm2world.desktop
+	source = _osm2world.sh
+	sha256sums = e9d256e06a9ecfd730a9296f666daf10488df9955fd45aaa39b0c6d27cf6b3fb
+	sha256sums = 5656a70927e40a08038fa49f8f54ea5eb2be5e69b117c8e06d1360f67677f1a6
+	sha256sums = fa2b2fb8a595b83ff12c1c57c6a23dcd44d7339e23c9f9fd209cec9c4de8e510
+
+pkgname = osm2world-git

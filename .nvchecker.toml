@@ -1,0 +1,5 @@
+[osm2world-git]
+source="cmd"
+cmd="""
+curl -s "https://osm2world.org/download/files/latest/" | grep -oP 'OSM2World-latest-bin.zip.*\\K[0-9]{4}-[0-9]{2}-[0-9]{2}' | tr - .
+"""
