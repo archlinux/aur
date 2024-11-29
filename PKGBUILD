@@ -1,18 +1,18 @@
 # Maintainer: Eugene Babichenko <eugene.babichenko@gmail.com>
 
 pkgname=fixit-bin
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 url='https://github.com/eugene-babichenko/fixit'
 pkgdesc='A utility to fix mistakes in your commands.'
 license=('MIT')
 arch=('x86_64' 'aarch64')
 
-source_x86_64=('fixit-x86_64-0.8.1.tar.gz::https://github.com/eugene-babichenko/fixit/releases/download/v0.8.1/fixit-v0.8.1-x86_64-unknown-linux-musl.tar.gz')
-sha256sums_x86_64=('fdc3da05582e00a663ce522f0addeaf647e1378983fe8125a6d289fae11a025c')
+source_x86_64=('fixit-x86_64-0.9.0.tar.gz::https://github.com/eugene-babichenko/fixit/releases/download/v0.9.0/fixit-v0.9.0-x86_64-unknown-linux-musl.tar.gz')
+sha256sums_x86_64=('11114d43dba617728c08ece12fcab7d88ec1bfbd47175c4e54887e455e4c0183')
 
-source_aarch64=('fixit-aarch64-0.8.1.tar.gz::https://github.com/eugene-babichenko/fixit/releases/download/v0.8.1/fixit-v0.8.1-aarch64-unknown-linux-musl.tar.gz')
-sha256sums_aarch64=('201543159a9c671e4882a77670ab98b64919b501e71974c11154004a30a8810c')
+source_aarch64=('fixit-aarch64-0.9.0.tar.gz::https://github.com/eugene-babichenko/fixit/releases/download/v0.9.0/fixit-v0.9.0-aarch64-unknown-linux-musl.tar.gz')
+sha256sums_aarch64=('8aad364ef870a37cec02b0cdd3e2439b5c6f97d1a9263bfaee843f25cefe9e50')
 
 package() {
   install -Dm755 fixit -t "$pkgdir/usr/bin"
