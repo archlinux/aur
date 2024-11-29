@@ -32,6 +32,12 @@ pkgver() {
   	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+
+check(){
+    cd ${srcdir}/${_name}-$pkgver
+    pytest
+}
+
 build() {
 	cd ${srcdir}/${_name}
 	python -m build --wheel --no-isolation
