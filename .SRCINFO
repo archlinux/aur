@@ -1,7 +1,7 @@
 pkgbase = quiet-git
 	pkgdesc = libquiet library
-	pkgver = r279.d60aea7
-	pkgrel = 6
+	pkgver = r280+gb64a058ed
+	pkgrel = 2
 	url = https://github.com/quiet/quiet
 	arch = x86_64
 	license = BSD
@@ -9,6 +9,8 @@ pkgbase = quiet-git
 	makedepends = gcc
 	makedepends = make
 	makedepends = cmake
+	depends = glibc
+	depends = libsndfile
 	depends = jansson
 	depends = portaudio
 	depends = liquid-dsp-quiet-devel-git
@@ -16,7 +18,10 @@ pkgbase = quiet-git
 	conflicts = quiet
 	options = staticlibs
 	source = git+https://github.com/quiet/quiet.git
+	source = usleep.patch
+	source = cmake.patch
 	md5sums = SKIP
+	md5sums = f4242df7d846925e45c06a4cb91bc2f2
+	md5sums = 3ff45a87c1644beb961fc81c418888f2
 
 pkgname = quiet-git
-

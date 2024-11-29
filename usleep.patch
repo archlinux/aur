@@ -1,0 +1,107 @@
+diff -ur --new-file quiet/include/myusleep.h quiet_patched/include/myusleep.h
+--- quiet/include/quiet/myusleep.h	1969-12-31 19:00:00.000000000 -0500
++++ quiet_patched/include/myusleep.h	2024-11-29 17:13:49.220889388 -0500
+@@ -0,0 +1,7 @@
++#ifndef MYUSLEEP_H
++#define MYUSLEEP_H
++
++void myusleep(unsigned int microseconds);
++
++#endif // MYUSLEEP_H
++
+diff -ur --new-file quiet/src/myusleep.c quiet_patched/src/myusleep.c
+--- quiet/src/myusleep.c	1969-12-31 19:00:00.000000000 -0500
++++ quiet_patched/src/myusleep.c	2024-11-29 17:13:09.324929713 -0500
+@@ -0,0 +1,8 @@
++#include <unistd.h>
++#include <time.h>
++
++void myusleep(unsigned int microseconds) {
++    struct timespec ts = {0, microseconds * 1000};
++    nanosleep(&ts, NULL);
++}
++
+diff -ur --new-file quiet/src/portaudio_decoder.c quiet_patched/src/portaudio_decoder.c
+--- quiet/src/portaudio_decoder.c	2024-11-29 17:12:25.175711137 -0500
++++ quiet_patched/src/portaudio_decoder.c	2024-11-29 17:15:47.358791732 -0500
+@@ -1,4 +1,5 @@
+ #include "quiet/portaudio_decoder.h"
++#include "quiet/myusleep.h"
+ #include <unistd.h>
+ 
+ static void decoder_dealloc(portaudio_decoder *dec) {
+@@ -94,7 +95,7 @@
+     free(pcm);
+ 
+     while (Pa_IsStreamActive(dec->stream)) {
+-        usleep(100);
++        myusleep(100);
+     }
+     quiet_decoder_close(dec->dec);
+ 
+diff -ur --new-file quiet/src/portaudio_encoder.c quiet_patched/src/portaudio_encoder.c
+--- quiet/src/portaudio_encoder.c	2024-11-29 17:12:25.175711137 -0500
++++ quiet_patched/src/portaudio_encoder.c	2024-11-29 17:15:29.209114368 -0500
+@@ -1,4 +1,7 @@
+ #include "quiet/portaudio_encoder.h"
++#include "quiet/myusleep.h"
++
++
+ 
+ static int encoder_callback(const void *input_buffer, void *output_buffer_v,
+                             unsigned long frame_count, const PaStreamCallbackTimeInfo *time_info,
+@@ -118,7 +121,7 @@
+ void quiet_portaudio_encoder_close(portaudio_encoder *enc) {
+     quiet_encoder_close(enc->enc);
+     while (Pa_IsStreamActive(enc->stream)) {
+-        usleep(100);
++        myusleep(100);
+     }
+ }
+ 
+diff -ur --new-file quiet/tests/ring_atomic.c quiet_patched/tests/ring_atomic.c
+--- quiet/tests/ring_atomic.c	2024-11-29 17:12:25.175711137 -0500
++++ quiet_patched/tests/ring_atomic.c	2024-11-29 17:16:36.511250711 -0500
+@@ -1,4 +1,6 @@
+ #include "quiet/ring_atomic.h"
++#include "quiet/myusleep.h"
++
+ 
+ #include <stdio.h>
+ #include <stdbool.h>
+@@ -78,7 +80,7 @@
+             if (nread != -1) {
+                 break;
+             }
+-            usleep(10);
++            myusleep(10);
+         }
+         for (size_t j = 0; j < nitems; j++) {
+             if (arg->multi) {
+diff -ur --new-file quiet/tests/ring_blocking.c quiet_patched/tests/ring_blocking.c
+--- quiet/tests/ring_blocking.c	2024-11-29 17:12:25.179044412 -0500
++++ quiet_patched/tests/ring_blocking.c	2024-11-29 17:17:10.947304317 -0500
+@@ -1,4 +1,5 @@
+ #include "quiet/ring_blocking.h"
++#include "quiet/myusleep.h"
+ 
+ #include <stdio.h>
+ #include <stdbool.h>
+@@ -44,7 +45,7 @@
+             if (nwritten != -1) {
+                 break;
+             }
+-            usleep(10);
++            myusleep(10);
+         }
+         i += nitems;
+     }
+@@ -78,7 +79,7 @@
+             if (nread != -1) {
+                 break;
+             }
+-            usleep(10);
++            myusleep(10);
+         }
+         for (size_t j = 0; j < nitems; j++) {
+             if (arg->multi) {
