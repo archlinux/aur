@@ -1,0 +1,16 @@
+pkgbase = gmsync
+	pkgdesc = A parallel rsync transfer manager with tmux integration
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mccarthee/gmsync
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = rsync
+	depends = tmux
+	depends = libnotify
+	source = gmsync-0.1.0.tar.gz::https://github.com/mccarthee/gmsync/archive/v0.1.0.tar.gz
+	sha256sums = 9cd872a03412704759a1acac9aaf51f5f85efe3573e4f03390453f9e17ad5af3
+
+pkgname = gmsync
