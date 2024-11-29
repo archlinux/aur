@@ -1,0 +1,5 @@
+[ccextractor-gui]
+source="github-graphql"
+github="CCExtractor/ccextractorfluttergui"
+use_max_tag=true
+prefix="v"
