@@ -4,7 +4,7 @@
 #
 # shellcheck disable=SC2034,SC2154
 pkgname=kctrl
-pkgver=0.53.1
+pkgver=0.54.0
 pkgrel=1
 pkgdesc='Continuous delivery and package management for Kubernetes.'
 url='https://carvel.dev/kapp-controller'
@@ -13,7 +13,7 @@ license=(apache-2.0)
 install=''
 makedepends=(bash go)
 provides=(kctrl)
-source=(kctrl-0.53.1::https://github.com/carvel-dev/kapp-controller/archive/v0.53.1.tar.gz)
+source=(kctrl-0.54.0::https://github.com/carvel-dev/kapp-controller/archive/v0.54.0.tar.gz)
 prepare () 
 { 
     set -eo pipefail;
@@ -39,7 +39,7 @@ package ()
     BIN=$pkgname;
     install -Dm755 $BIN -t "$pkgdir/usr/bin"
 }
-sha256sums=('c6e61a97458b7fcf1e629d62d096e8be48d446c03a2850f756b43ba7eba3981e')
+sha256sums=('240f8c1e01f7a7cdeafe35a4c0f6958a3fa07d64470518fd59f89ab81ef46d99')
 
 
 # Custom variables
