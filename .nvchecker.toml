@@ -1,0 +1,3 @@
+[liquid-dsp-quiet-devel-git]
+source="cmd"
+cmd="echo 1.2.0.r1586.g4951bbbf"
