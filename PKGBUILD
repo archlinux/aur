@@ -1,7 +1,7 @@
 # Maintainer: nomisge <nomisge @ live . de>
 pkgname=qt6-tools-desktop
 pkgver=6.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds desktop integration files for qt6-tools
  (assistent, designer, linguist and qdbusviewer)"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://www.qt.io"
 license=('GPL3')
 groups=('qt6')
 depends=("qt6-tools>=${pkgver}")
-makedepends=()
+makedepends=('git')
 options=()
 #install=
 _pkgfn=qttools
