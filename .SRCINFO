@@ -1,6 +1,6 @@
 pkgbase = ente-desktop-appimage
 	pkgdesc = Secure backups for photos and videos
-	pkgver = 1.7.5
+	pkgver = 1.7.7
 	pkgrel = 1
 	url = https://ente.io/
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = ente-desktop-appimage
 	depends = fuse-common
 	depends = libsecret
 	conflicts = ente-bin
-	noextract = ente-1.7.5-x86_64.AppImage
+	noextract = ente-1.7.7-x86_64.AppImage
 	options = !strip
-	source_x86_64 = ente-1.7.5-x86_64.AppImage::https://github.com/ente-io/photos-desktop/releases/download/v1.7.5/ente-1.7.5-x86_64.AppImage
-	sha256sums_x86_64 = 015d8b26fff18e478ff01904e56866f149513d4ab15818df926a45bb4f0d1b83
+	source_x86_64 = ente-1.7.7-x86_64.AppImage::https://github.com/ente-io/photos-desktop/releases/download/v1.7.7/ente-1.7.7-x86_64.AppImage
+	sha256sums_x86_64 = 3c6112c77d5203bac30b45a60c0ca0fb614096a019734ffccd7cd3c335caabb6
 
 pkgname = ente-desktop-appimage
