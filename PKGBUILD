@@ -8,7 +8,7 @@
 
 _pkgname=tuxedo-drivers
 pkgname=kc57-drivers-dkms
-pkgver=4.8.0
+pkgver=$(curl https://raw.githubusercontent.com/tuxedocomputers/tuxedo-drivers/refs/heads/main/debian/changelog | sed -n 's/.*tuxedo-drivers (\([0-9]\+\.[0-9]\+\.[0-9]\+\)).*/\1/p' | head -n1 )
 pkgrel=1
 pkgdesc="Intel NUC X15(LAPKC51E, LAPKC71E, LAPKC71F) kernel module drivers for general hardware I/O using the SysFS interface"
 url="https://github.com/tuxedocomputers/tuxedo-drivers"
@@ -31,7 +31,7 @@ source=($_pkgname-$pkgver.tar.gz::https://github.com/tuxedocomputers/tuxedo-driv
         dkms.conf
         0001-remove-the-unnecessary-for-NUC-X15.patch)
 
-sha256sums=('2dfbce978fd8f31fc9545bf00de5b6cd2b50a7ec180984e7fa986a7ed90fb3a3'
+sha256sums=('SKIP'
             'e0cd6dc583fffc92f3a10d51f7cba7bde7e2f5c65d87db630a2f1468175168a0'
             '9ee323b90ec7fc3512dd8db9bf359cb1422c41a9f0f0dd31e8a8ea9714663173'
             '1debb5fe0f454295746712286198399486fd3a08692916bf17846f9d93f4bdbb'
