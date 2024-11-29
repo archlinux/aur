@@ -1,16 +1,19 @@
 pkgbase = wmmp3
 	pkgdesc = mp3 player dock app for windowmaker: frontend to mpg123
 	pkgver = 0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dockapps.net/wmmp3
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libxpm
 	source = http://www.dockapps.net/download/wmmp3-0.12.tar.gz
-	source = wmmp3.patch
+	source = wmmp3-0.12-fix-implicit-function-declaration-clang16.patch
+	source = wmmp3-0.12-fno-common.patch
+	source = wmmp3-0.12-x_includes_n_libraries.patch
 	md5sums = 4bbc839c48cb13680f94b2fa133ca423
-	md5sums = 91a3315eba63195dbd58ac83cab1e698
+	md5sums = 59324e874d2430ae23b683298b06f650
+	md5sums = 79ab9fc757007f4e42f6a52baaf361d6
+	md5sums = 7a28e94dfd20a12c8707ba52b7c4e760
 
 pkgname = wmmp3
-

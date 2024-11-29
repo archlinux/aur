@@ -1,0 +1,20 @@
+--- a/configure	2000-04-02 20:12:15.000000000 -0400
++++ b/configure_patch	2024-11-29 07:26:21.222524661 -0500
+@@ -1977,11 +1977,15 @@
+ 
+ 
+ if test "$x_includes" != "NONE"; then
+-        CFLAGS="$CFLAGS -I$x_includes"
++        if test "$x_includes" != ""; then
++                CFLAGS="$CFLAGS -I$x_includes"
++        fi
+ fi
+ 
+ if test "$x_libraries" != "NONE"; then
+-        LDFLAGS="$LDFLAGS -L$x_libraries"
++        if test "$x_libraries" != ""; then
++                LDFLAGS="$LDFLAGS -L$x_libraries"
++        fi
+ fi
+ 
+ echo $ac_n "checking for XOpenDisplay in -lX11""... $ac_c" 1>&6
