@@ -3,8 +3,8 @@
 
 _pkgname='superproductivity'
 pkgname="${_pkgname}-bin"
-pkgver=10.1.1
-pkgrel=4
+pkgver=10.2.3
+pkgrel=1
 pkgdesc="ToDo List / Time Tracker / Personal Jira Task Manager"
 arch=('x86_64')
 url="http://super-productivity.com/"
@@ -12,15 +12,15 @@ license=('MIT')
 depends=('gtk3' 'nss')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}"
-  "${_pkgname}-git")
+		   "${_pkgname}-git")
 md5sums=('SKIP')
 source=("https://github.com/johannesjo/super-productivity/releases/download/v${pkgver}/superProductivity-amd64.deb")
 
 package() {
-  tar -xvf data.tar.xz -C "${pkgdir}"
-  rm -rf "${pkgdir}/usr/share/doc"
-  install -d "${pkgdir}/usr/bin"
-  ln -sf "/opt/Super Productivity/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
+	tar -xvf data.tar.xz -C "${pkgdir}"
+	rm -rf "${pkgdir}/usr/share/doc"
+    install -d "${pkgdir}/usr/bin"
+	ln -sf "/opt/Super Productivity/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
     "${pkgdir}/opt/Super Productivity/"{'LICENSE.electron.txt','LICENSES.chromium.html'}
 }
