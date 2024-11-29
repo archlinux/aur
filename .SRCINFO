@@ -1,7 +1,7 @@
 pkgbase = mail-deduplicate
 	pkgdesc = Command-line tool to deduplicate mails from a set of boxes
-	pkgver = 7.5.0
-	pkgrel = 2
+	pkgver = 7.6.0
+	pkgrel = 1
 	url = https://mail-deduplicate.readthedocs.io/
 	arch = any
 	license = GPL2
@@ -17,7 +17,7 @@ pkgbase = mail-deduplicate
 	provides = maildir-deduplicate
 	conflicts = maildir-deduplicate
 	replaces = maildir-deduplicate
-	source = https://files.pythonhosted.org/packages/source/m/mail-deduplicate/mail_deduplicate-7.5.0.tar.gz
-	sha256sums = e6a93d7ed70b4176e427c15c90b735619275d8eca67be5995339f7b8076eb48c
+	source = https://files.pythonhosted.org/packages/source/m/mail-deduplicate/mail_deduplicate-7.6.0.tar.gz
+	sha256sums = d7eb0ea2f14db707c0f566f1f8222ebae51398387b9601ab0db99c4472a0f6f7
 
 pkgname = mail-deduplicate
