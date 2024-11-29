@@ -1,7 +1,7 @@
 pkgbase = gmsync
 	pkgdesc = A parallel rsync transfer manager with tmux integration
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mccarthee/gmsync
 	arch = x86_64
 	license = MIT
