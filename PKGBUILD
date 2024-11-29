@@ -2,7 +2,7 @@
 
 pkgname="locus"
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An intelligent activity tracker that helps you understand and improve your focus habits."
 arch=('x86_64')
 url="https://github.com/Sushants-Git/locus"
@@ -11,7 +11,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/Sushants-Git/locus/releases/download/v$pkgver/locus_"$pkgver"_amd64.deb")
-sha256sums_x86_64=('90ebc22f5048a47d38299423bfaf3db74f729dcb0c28d18ac1e5e536cee6489d')
+sha256sums_x86_64=('f3e6f1927b9bac7f66f8f31318839097b2e77bcee1d81928352631ad539d5076')
 
 package() {
   tar -xz -f data.tar.gz -C "${pkgdir}"
