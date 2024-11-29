@@ -4,7 +4,7 @@
 pkgname='stratis-cli'
 pkgver=3.6.0
 _pkgver=$pkgver
-pkgrel=2
+pkgrel=3
 pkgdesc='A CLI for the Stratis Project.'
 arch=('any')
 license=('Apache')
