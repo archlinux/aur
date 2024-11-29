@@ -1,7 +1,7 @@
 pkgbase = perl-dbd-oracle
 	pkgdesc = DBD::Oracle - Oracle database driver for the DBI module
-	pkgver = 1.83
-	pkgrel = 2
+	pkgver = 1.90
+	pkgrel = 1
 	url = http://search.cpan.org/dist/DBD-Oracle
 	arch = any
 	license = GPL-1.0-or-later OR Artistic-1.0-Perl
@@ -10,7 +10,7 @@ pkgbase = perl-dbd-oracle
 	depends = oracle-instantclient-basic
 	depends = perl-dbi
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/Z/ZA/ZARQUON/DBD-Oracle-1.83.tar.gz
-	sha256sums = 51fe9c158955fda0ca917a806863f0bc51068b533fbbc7423b3cc4ad595ed153
+	source = https://cpan.metacpan.org/authors/id/Z/ZA/ZARQUON/DBD-Oracle-1.90.tar.gz
+	sha256sums = 2fcfdf5f1c2775d1a2e5f4d86d2a9d8dcf8f49792f6ce465b828b16df6d100cf
 
 pkgname = perl-dbd-oracle

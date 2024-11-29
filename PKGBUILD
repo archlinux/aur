@@ -3,8 +3,8 @@
 # Contributor: Georg Grabler (STiAT) <ggrabler@gmail.com>
 
 pkgname=perl-dbd-oracle
-pkgver=1.83
-pkgrel=2
+pkgver=1.90
+pkgrel=1
 pkgdesc="DBD::Oracle - Oracle database driver for the DBI module"
 arch=('any')
 url="http://search.cpan.org/dist/DBD-Oracle"
@@ -13,7 +13,7 @@ depends=('oracle-instantclient-basic' 'perl-dbi')
 makedepends=('oracle-instantclient-sdk' 'oracle-instantclient-sqlplus')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/Z/ZA/ZARQUON/DBD-Oracle-${pkgver}.tar.gz")
-sha256sums=('51fe9c158955fda0ca917a806863f0bc51068b533fbbc7423b3cc4ad595ed153')
+sha256sums=('2fcfdf5f1c2775d1a2e5f4d86d2a9d8dcf8f49792f6ce465b828b16df6d100cf')
 
 prepare() {
 	if [[ -z ${ORACLE_HOME} ]]; then
