@@ -3,7 +3,7 @@
 
 pkgname=upak
 pkgver=10.6.8 # <-- current source doesn't have a version. We keep the last known one
-pkgrel=11
+pkgrel=12
 pkgdesc="HRIBF Data Acquisition and analysis."
 url="ftp://ftp.phy.ornl.gov/pub/upak/README.html"
 arch=('x86_64')
@@ -12,26 +12,26 @@ depends=('libx11' 'tcsh' 'bash')
 makedepends=('gcc-fortran>=4.2')
 options=(staticlibs emptydirs)
 source=(
-  "https://ftp.phy.ornl.gov/fauxtp/${pkgname}/${pkgname}-src.tgz"
+  "upak-2021.tar.bz2::https://orruba.org/?mdocs-file=1159"
+  #"https://ftp.phy.ornl.gov/fauxtp/${pkgname}/${pkgname}-src.tgz"
   "upak.install")
 md5sums=(
-  'e41040fe104b97be91697b94a78bcdee'
-  '8f74428b994ee5000ece375945b65171')
+  '75b58c32a5e339dcba36c2ca3039bff6'
+  '28ee91c3b9ad3ac1be306fb8c0eb1f35')
 
 install="${pkgname}.install"
 
 package(){
-  cd ${srcdir}
+  cd ${srcdir}/${pkgname}
   make clean
-  make -j1 INSTALLDIR="${pkgdir}/usr/local/hhirf" all  # <-- this already goes to ${pkgdir} therefore must be package() not build()
+  make -j1 INSTALLDIR="${pkgdir}/opt/hhirf" all  # <-- this already goes to ${pkgdir} therefore must be package() not build()
 
-  cd ${srcdir}
-  install -m644 Dreadme/README-Apr07     $pkgdir/usr/local/hhirf/doc
-  install -m644 Dreadme/readme.{tex,doc} $pkgdir/usr/local/hhirf/doc
-  install -m644 Dreadme/dvd.{tex,doc}    $pkgdir/usr/local/hhirf/doc
-  ln -s $pkgdir/usr/local/hhirf $pkgdir/usr/hhirf
+  cd ${srcdir}/${pkgname}
+  install -m644 Dreadme/README-Apr07 ${pkgdir}/opt/hhirf/doc
+  install -m644 Dreadme/readme.{tex,doc} ${pkgdir}/opt/hhirf/doc
+  install -m644 Dreadme/dvd.{tex,doc} ${pkgdir}/opt/hhirf/doc
 
-  cd $pkgdir/usr/local/hhirf
+  cd $pkgdir/opt/hhirf
   for file in $(ls doc/*.doc);do
     file=$(basename -s .doc $file)
     ./txx doc/$file x
@@ -39,5 +39,4 @@ package(){
     rm $file.txx
     mv $file.ps doc/
   done
-
 }

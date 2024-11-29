@@ -1,7 +1,7 @@
 pkgbase = upak
 	pkgdesc = HRIBF Data Acquisition and analysis.
 	pkgver = 10.6.8
-	pkgrel = 11
+	pkgrel = 12
 	url = ftp://ftp.phy.ornl.gov/pub/upak/README.html
 	install = upak.install
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = upak
 	depends = bash
 	options = staticlibs
 	options = emptydirs
-	source = https://ftp.phy.ornl.gov/fauxtp/upak/upak-src.tgz
+	source = upak-2021.tar.bz2::https://orruba.org/?mdocs-file=1159
 	source = upak.install
-	md5sums = e41040fe104b97be91697b94a78bcdee
-	md5sums = 8f74428b994ee5000ece375945b65171
+	md5sums = 75b58c32a5e339dcba36c2ca3039bff6
+	md5sums = 28ee91c3b9ad3ac1be306fb8c0eb1f35
 
 pkgname = upak

@@ -3,15 +3,15 @@ post_install() {
 
   if [ -z $SUDO_USER ]; then
     if [ $SUDO_USER=root ]; then
-      echo "/usr/local/hhirf/upak/doc" > \/root/upak_help_path
+      echo "/opt/hhirf/upak/doc" > \/root/upak_help_path
     else
       cat <<EOF
 >>>  please create a file in your home directory named 'upak_help_path' containing
->>>  /usr/local/hhirf/upak/doc
+>>>  /opt/hhirf/upak/doc
 EOF
     fi
   else
-    echo "/usr/local/hhirf/upak/doc" > \/home/${SUDO_USER}/upak_help_path
+    echo "/opt/hhirf/upak/doc" > \/home/${SUDO_USER}/upak_help_path
   fi
 
 }
