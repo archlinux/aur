@@ -1,0 +1,13 @@
+pkgbase = gimoji
+	pkgdesc = Easily add emojis to your git commit messages 🎉
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/zeenix/gimoji
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = gimoji-1.1.1.tar.gz::https://static.crates.io/crates/gimoji/gimoji-1.1.1.crate
+	b2sums = 3dac5d3334fd0a7aa922017279a546ec20ab1a83d896414b75e14ddca710bd4cc07da0216ef81b1207d875e85ad257f00e62c4937b271f5299ce69da6f643677
+
+pkgname = gimoji
