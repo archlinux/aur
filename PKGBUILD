@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=redisinsight-git
 _pkgname="Redis Insight"
-pkgver=2.60.0.r1.gc045afa
-_electronversion=31
+pkgver=2.62.0.r30.g4fcb17a
+_electronversion=33
 _nodeversion=20
 pkgrel=1
 pkgdesc="Desktop manager that provides an intuitive and efficient GUI for Redis, allowing you to interact with your databases, monitor, and manage your data."
@@ -68,7 +68,6 @@ build() {
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
-        echo "${pkgname%-git}/"{./,api,ui} tests/e2 | xargs -n 1 cp .yarnrc
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     #find "${pkgname%-git}" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
