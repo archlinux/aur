@@ -34,4 +34,3 @@ package() {
 	install -m0644 -D $(find -type f -name "*.otf") ${pkgdir}/usr/share/fonts/OTF
 	install -m0644 -D exljbris-font-licence.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
-
