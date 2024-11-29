@@ -3,8 +3,8 @@
 
 pkgname=photoqt-bin
 _pkgname=photoqt
-pkgver=4.6
-pkgrel=4
+pkgver=4.7
+pkgrel=1
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface (binary release)"
 arch=('x86_64')
 url="http://photoqt.org/"
@@ -15,7 +15,7 @@ depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 source=(https://photoqt.org/downloads/bin/$_pkgname-$pkgver.tar.gz)
-sha256sums=('c456cc9de480b2feac4044a9b89c6350375e50985094b612f82faf98706becee')
+sha256sums=('e67d690f2e4224fbd8e9f0523876ef1584c1b15fa088b6df0d5ff0d403c28e16')
 
 package() {
 
