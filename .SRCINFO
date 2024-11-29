@@ -1,5 +1,5 @@
 pkgbase = otf-exljbris
-	pkgdesc = A collection of free OpenType fonts by Jos Buivenga. Includes Delicious, Diavlo, Fontin, Fontin Sans and Tallys
+	pkgdesc = A collection of free OpenType fonts by Jos Buivenga. Includes: Delicious, Diavlo, Fontin, Fontin Sans and Tallys
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://exljbris.com
