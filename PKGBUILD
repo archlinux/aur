@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=smoothie
-_pkgver=1.0-3
+_pkgver=1.0-4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Two-Dimensional Field Smoothing"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-spatialvx
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('55e5de4a42d4e85033840cb9734b6572')
-b2sums=('f242146e75b0aefad9c3e23d79fa8ba3cce13653e21980a6ee993055e8f5f52dcb0cabb11eb16d0d6634c89c1ade33e4aa8ec567d03161942e101465b97044b2')
+md5sums=('a57b76cf9b6622970b446c0aac8a8a64')
+b2sums=('cba8b681a2b61768c6a3611adebabf084854905369e412de31b793722fcd9e9e7e781c253af08334b5f5cc366fa3b899c033dd6b830f7e7453280ba22ae110e5')
 
 build() {
   mkdir build
