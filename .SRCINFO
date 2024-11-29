@@ -1,11 +1,12 @@
 pkgbase = pnpm-cli
 	pkgdesc = Fast, disk space efficient package manager (Pure Packaging, no dependencies)
 	pkgver = 9.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pnpm/pnpm
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	provides = pnpm
 	conflicts = pnpm
 	options = !strip
 	source_x86_64 = pnpm-cli-9.14.2-x86_64::https://github.com/pnpm/pnpm/releases/download/v9.14.2/pnpm-linux-x64

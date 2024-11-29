@@ -1,12 +1,14 @@
 # Maintainer: mapleafgo <mapleafgo at 163 dot com>
 pkgname=pnpm-cli
+_pkgname=pnpm
 pkgver=9.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, disk space efficient package manager (Pure Packaging, no dependencies)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pnpm/pnpm"
 license=('MIT')
-conflicts=('pnpm')
+conflicts=(${_pkgname})
+provides=(${_pkgname})
 options=('!strip')
 source_x86_64=(${pkgname}-${pkgver}-x86_64::https://github.com/pnpm/pnpm/releases/download/v${pkgver}/pnpm-linux-x64)
 source_aarch64=(${pkgname}-${pkgver}-aarch64::https://github.com/pnpm/pnpm/releases/download/v${pkgver}/pnpm-linux-arm64)
