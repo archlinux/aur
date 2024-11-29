@@ -4,26 +4,26 @@ pkgname=metapac
 pkgver=0.2.5
 pkgrel=1
 pkgdesc="multi-backend declarative package manager"
-url="https://github.com/ripytide/$pkgname"
+url="https://github.com/ripytide/${pkgname}"
 license=("GPL-3.0-or-later")
 arch=("x86_64")
 provides=("metapac")
 conflicts=("metapac")
 makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
 options=(!debug !lto)
 sha256sums=('7290be0af2d3be54f82ba2c6faa4a0fd37b545f7550c7225e0ed93dec86d02ed')
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "${pkgname}-${pkgver}"
 
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "${pkgname}-${pkgver}"
 
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
@@ -31,14 +31,14 @@ build() {
 }
 
 check() {
-	cd "$pkgname-$pkgver"
+	cd "${pkgname}-${pkgver}"
 
 	export RUSTUP_TOOLCHAIN=stable
 	cargo test --frozen --all-features
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "${pkgname}-${pkgver}"
 
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+	install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgname}"
 }
