@@ -38,12 +38,12 @@ build() {
   test -d build || mkdir build
   cd build
   cmake -DCMAKE_BUILD_TYPE=Release \
-        -DQT_DIR=/usr/lib/cmake/Qt6 \
         -DPROTOBUF_PROTOC_EXECUTABLE=/usr/bin/protoc \
         -DUSE_SYSTEM_PROTO_LIBS=OFF \
         -DUSE_SYSTEM_MBEDTLS_LIBS=ON \
         -DUSE_SYSTEM_FLATBUFFERS_LIBS=ON \
         -DENABLE_MDNS= \
+        -DENABLE_QT=OFF \
         ..
   make
 }
