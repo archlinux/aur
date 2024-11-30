@@ -1,12 +1,14 @@
 pkgbase = algolia-git
 	pkgdesc = Interact with and configure Algolia applications
-	pkgver = 1.6.11.r3.gf960c07
-	pkgrel = 2
-	url = https://github.com/algolia/cli
-	arch = any
+	pkgver = 1.6.11.r6.g666f84e
+	pkgrel = 1
+	url = https://www.algolia.com/doc/tools/cli
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	arch = armv6h
 	license = MIT
 	makedepends = git
-	makedepends = make
 	makedepends = go
 	depends = glibc
 	provides = algolia=1.6.11

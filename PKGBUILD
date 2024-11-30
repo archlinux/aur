@@ -1,19 +1,20 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _pkgname="algolia"
 pkgname="${_pkgname}-git"
-pkgver=1.6.11.r3.gf960c07
-pkgrel=2
+pkgver=1.6.11.r6.g666f84e
+pkgrel=1
 pkgdesc="Interact with and configure Algolia applications"
-arch=('any')
-url="https://github.com/${_pkgname}/cli"
+arch=('x86_64' 'aarch64' 'i686' 'armv6h')
+url="https://www.algolia.com/doc/tools/cli"
+_url="https://github.com/algolia/cli"
 license=('MIT')
 depends=('glibc')
-makedepends=('git' 'make' 'go')
+makedepends=('git' 'go')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="cli"
-source=("${_pkgsrc}::git+${url}.git")
+source=("${_pkgsrc}::git+${_url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,7 +24,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  ./"scripts/completions.sh"
+  mkdir -p "build" "completions"
 }
 
 build() {
@@ -33,22 +34,28 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  make build
+  go build -v -o "build/${_pkgname}" -ldflags "\
+    -X ${_url#https://}/pkg/version.Version=${pkgver}" \
+    ./"cmd/${_pkgname}"
+
+  for _sh in bash fish zsh powershell; do
+    ./"build/${_pkgname}" completion "${_sh}" > "completions/${_pkgname}.${_sh}"
+  done
 }
 
 check() {
   cd "${srcdir}/${_pkgsrc}"
-  make test
+  go test ./...
 }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
   cd "completions"
-  install -Dm644 "${_pkgname}.bash" "$pkgdir/usr/share/bash-completion/completions/${_pkgname}"
-  install -Dm644 "${_pkgname}.fish" "$pkgdir/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
-  install -Dm644 "${_pkgname}.zsh" "$pkgdir/usr/share/zsh/site-functions/_${_pkgname}"
+  install -vDm644 "${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+  install -vDm644 "${_pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+  install -vDm644 "${_pkgname}.zsh"  "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
 }
