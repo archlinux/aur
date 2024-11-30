@@ -14,9 +14,8 @@ source=("git+https://github.com/Fladder-App/Fladder.git#branch=${_branch}"
     "https://gsdview.appspot.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.4-stable.tar.xz"
     "fladder.desktop")
 sha256sums=('SKIP'
-    '2ce78d4a51f063efa7f04666ae010d026d119eea6bdea7e08b736840fe88ddb4'
-    '76f8c52297b4f423dd6767a37b56c30ea3398e16f2e0500911ba01df40635ce1'
-)
+            '2ce78d4a51f063efa7f04666ae010d026d119eea6bdea7e08b736840fe88ddb4'
+            '76f8c52297b4f423dd6767a37b56c30ea3398e16f2e0500911ba01df40635ce1')
 conflicts=('fladder')
 provides=("fladder")
 
