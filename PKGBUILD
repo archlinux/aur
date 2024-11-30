@@ -1,6 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=materialious
-pkgver=1.6.22
+_app_id=us.materialio.Materialious
+pkgver=1.6.23
 pkgrel=1
 _electronversion=33
 pkgdesc="Modern material design for Invidious."
@@ -15,9 +16,9 @@ makedepends=(
   'npm'
   'python'
 )
-source=("Materialious-$pkgver.tar.gz::https://github.com/Materialious/Materialious/archive/refs/tags/v$pkgver.tar.gz"
+source=("Materialious-$pkgver.tar.gz::https://github.com/Materialious/Materialious/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.sh")
-sha256sums=('5ca22d1d3794b840f573038af11066f77eef044bb93fcca8a876a89fd6560026'
+sha256sums=('f7eb51017c420f5982e82074c17a29caf8078747a3f55031f6fce12991da4812'
             '2109a2f0353f1cc04e12539f55ed4dbb58d59f4d12e000d86f6668369c224c4c')
 
 prepare() {
@@ -53,7 +54,8 @@ package() {
   cd "Materialious-$pkgver/$pkgname/electron"
   install -Dm644 dist/linux-unpacked/resources/app.asar -t "$pkgdir/usr/lib/$pkgname/"
   install -Dm644 assets/appIcon.png \
-    "$pkgdir/usr/share/icons/hicolor/512x512/apps/us.materialio.Materialious.png"
-  install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+    "$pkgdir/usr/share/icons/hicolor/512x512/apps/${_app_id}.png"
+  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/${_app_id}.desktop"
+  install -Dm644 "$pkgname.metainfo.xml" "$pkgdir/usr/share/metainfo/${_app_id}.metainfo.xml"
   install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 }
