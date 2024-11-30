@@ -1,5 +1,5 @@
 pkgname=hunt
-pkgver=2.4.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Highly-opinionated simplified Find command made with Rust'
 arch=('i686' 'x86_64' 'aarch64')
@@ -7,8 +7,8 @@ url="https://github.com/LyonSyonII/$pkgname-rs"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('822e369982be71c2922f713e03cb7db208504294f2361e1ad05b2a525a68788ac1d7b329bbc4a0fa70fdac9e3623220c3c84d5caaeae9b8648fe607c6186e9ef')
-b2sums=('4a4ba3b43adbf929cbacc14f5430da4d49f2f511fa8e33318fa92d826db730ee6a6e8bd785ca178c6c7e62e2348cb6b649c8e42fad2ebc1d17793753f3d3f4e1')
+sha512sums=('0e9e44c81fe0eeff25cf856a21966e2dd028ff93ff4d5494ffb18fe2552b0fc365d38e2bac410a29fda3f25074b2a6657e6748bc362c6e27774b6a35168ff33b')
+b2sums=('993ef81ef87c7815b7eb099f413530104aabeba0fb0b1efa5f5e97d622bae5663967bbbd49c619e15e02cd4b001980213538a4a771037e28d22f203d937127e3')
 
 prepare() {
 	cd "$pkgname-$pkgver"
