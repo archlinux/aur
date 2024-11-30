@@ -1,20 +1,19 @@
 pkgbase = python-gemmi
 	pkgdesc = macromolecular crystallography library (Python bindings)
-	pkgver = 0.6.6
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://gemmi.readthedocs.io/
 	arch = x86_64
 	license = MPL-2.0
+	makedepends = nanobind
 	makedepends = cmake
-	makedepends = pybind11
-	makedepends = python-pybind11-stubgen
 	makedepends = python-scikit-build-core
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
 	depends = python-numpy
-	source = https://github.com/project-gemmi/gemmi/archive/refs/tags/v0.6.6.tar.gz
-	sha256sums = 722369495f7374bb938d14da2c3a9f8444b753e2d9536cf097c161a53dbbae19
+	source = https://github.com/project-gemmi/gemmi/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 7673b005846c661196dd49ac23bac3b1acc07b3afbdaff0e5d7f0f19b491e8c4
 
 pkgname = python-gemmi
