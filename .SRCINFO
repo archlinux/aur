@@ -1,6 +1,6 @@
 pkgbase = mipsel-none-elf-binutils-git
 	pkgdesc = Up-to-date binutils for baremetal MIPS
-	pkgver = 15.branchpoint.r1649.cbb4051c3
+	pkgver = 15.branchpoint.r1664.5ca6fa33e
 	pkgrel = 1
 	url = https://www.gnu.org/software/binutils
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = mipsel-none-elf-binutils-git
 	depends = zstd
 	depends = libelf
 	depends = bison
+	depends = flex
 	provides = mipsel-none-elf-binutils
 	conflicts = mipsel-none-elf-binutils
 

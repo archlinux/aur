@@ -6,14 +6,14 @@ target_="mipsel-none-elf"
 sysroot_="/usr/lib/${target_}"
 
 pkgname=${target_}-binutils-git
-pkgver=15.branchpoint.r1649.cbb4051c3
+pkgver=15.branchpoint.r1664.5ca6fa33e
 pkgrel=1
 pkgdesc="Up-to-date binutils for baremetal MIPS"
 arch=('x86_64')
 url="https://www.gnu.org/software/binutils"
 license=('GPL-3.0-or-later AND GFDL-1.3-no-invariants-or-later AND FSFAP')
 groups=()
-depends=(glibc zstd libelf bison)
+depends=(glibc zstd libelf bison flex)
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
