@@ -1,18 +1,37 @@
-# Maintainer: Jean-Gabriel Young <info@jgyoung.ca>
+# Maintainer: envolution
+# Contributor: Jean-Gabriel Young <info@jgyoung.ca>
+# shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-httpstan
-pkgver=4.7.2
+_pkgname=httpstan
+pkgver=4.13.0
 pkgrel=1
 pkgdesc="HTTP-based REST interface to Stan, a package for Bayesian inference."
 arch=('i686' 'x86_64')
 url='https://httpstan.readthedocs.org'
 license=(ISCL)
 depends=(python-numpy python-marshmallow python-webargs python-setuptools python-appdirs python-aiohttp)
-_name=${pkgname#python-}
-source=("https://files.pythonhosted.org/packages/25/66/702bd3793c1593590635ae0d54192c3f767071b829136106fab7f037b0aa/httpstan-4.7.2-cp310-cp310-manylinux_2_24_x86_64.whl")
-sha256sums=('89836d6126bd2dcb9eecd691be18fcbd5db2fa146766a4718ad96e1e72edb4f9')
+makedepends=(python-build python-installer python-wheel python-setuptools python-poetry-core)
+checkdepends=(python-apispec python-sphinx_rtd_theme)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/stan-dev/httpstan/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('6b15a07557715e79e6fd66993930003b270f8b8b0c9e65f84978afe5e6bb3047')
 
-# skipping build as the package is only distrbutted as a wheel
+build() {
+  cd $_pkgname-$pkgver
+  make
+  python -m poetry build
+  #python -m build --wheel --no-isolation
+}
+
+#check() {
+#  cd $_pkgname-$pkgver
+# python -m pytest -s -v tests
+# tests work, but a not of them need disabling due to external services
+#}
 
 package() {
-    python -m install --destdir="$pkgdir" *.whl
+  cd $_pkgname-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 README.rst "$pkgdir"/usr/share/doc/$pkgname/README.rst
 }
+# vim:set ts=2 sw=2 et:
