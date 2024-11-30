@@ -15,4 +15,7 @@ launchTarget="an-anime-game-launcher"
 # Takes boolean value. When enabled, do not process XAuth files and forces wayland input method. Generally this should be true when possible.
 waylandOnly="false"
 
+# Takes boolean value.
+bindInputDevices="true"
+
 # Below you can set envs that will be imported into the application sandbox
