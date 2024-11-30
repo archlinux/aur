@@ -1,7 +1,7 @@
 pkgbase = ebay-nativefier
 	pkgdesc = eBay desktop built with nativefier (electron)
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ebay.com
 	arch = armv7l
 	arch = i686
