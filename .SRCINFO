@@ -1,5 +1,6 @@
 pkgbase = magothy-git
-	pkgver = r104.f5fb92b
+	pkgdesc = Hardware profiling tool
+	pkgver = r185.97e7ef6
 	pkgrel = 1
 	url = https://codeberg.org/serebit/magothy
 	arch = x86_64
@@ -8,6 +9,8 @@ pkgbase = magothy-git
 	license = Apache-2.0
 	makedepends = cargo
 	makedepends = git
+	depends = hicolor-icon-theme
+	depends = hwdata
 	depends = lua
 	provides = magothy
 	conflicts = magothy
