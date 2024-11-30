@@ -18,16 +18,16 @@
 : ${_build_pgo_xvfb:=true}
 
 : ${_ver_clang=17}
-: ${RUSTUP_TOOLCHAIN:=1.77}
+: ${RUSTUP_TOOLCHAIN:=1.77.2}
 
 # set to download only one language; en-US does not work
 : ${_lang:=}
 
 ## update
-_icver="115.17.0"
-_commit="a0b1a124e8e063a35389e1f20653047f37ca069b"
-_icsum="cef78116adb0a14e45e57cd7e8a064cac50f1065213d615eabb81c54ab3b5096"
-_ffsum="80f184a102a743ee75401e86dd86af0be5f1e5ebf07c81119d9ca77422d716c3"
+_icver="115.18.0"
+_commit="dc99e15355412bc9b11b34d3fe5729bed1c251de"
+_icsum="400d9708accf038af69ea991cec4357c5ff7188e62152f8993053736746b2a62"
+_ffsum="2a79174f743caa1bffcc6f4e95e4642b0f36ab24cfa94e4dca0663e0d45c344c"
 
 if [ -n "$_srcinfo" ]; then
   : ${_lang:=en-US}
