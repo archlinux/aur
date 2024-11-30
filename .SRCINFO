@@ -1,0 +1,12 @@
+pkgbase = adgobye-bin
+	pkgdesc = Content / Adblock for Social VR
+	pkgver = 4.0.2
+	pkgrel = 3
+	url = https://github.com/AdGoBye/AdGoBye
+	arch = x86_64
+	license = MIT
+	makedepends = unzip
+	source = https://github.com/AdGoBye/AdGoBye/releases/download/v4.0.2%2Bv4IsBrokenPullMe/AGBv4.0.2+v4IsBrokenPullMe-linux-x64.zip
+	b2sums = 9df6e810bd0fceb2ff0879d6b354d4f1f8ffd26f5227ab66dfb17f212c215f970f6fb03ce4f4a81f8f9e0b1b1446c17db96706dc642a496a63695e7559eb3526
+
+pkgname = adgobye-bin
