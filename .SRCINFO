@@ -6,10 +6,9 @@ pkgbase = catppuccin-fcitx5-git
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = fcitx5
 	provides = catppuccin-fcitx5
 	conflicts = catppuccin-fcitx5
 	source = catppuccin-fcitx5-git::git+https://github.com/catppuccin/fcitx5.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = catppuccin-fcitx5-git
