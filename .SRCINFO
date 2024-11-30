@@ -1,13 +1,13 @@
 pkgbase = pwnat
 	pkgdesc = A tool that allows clients behind NAT to communicate without any port forwarding
-	pkgver = 0.3_beta
+	pkgver = 0.3.0
 	pkgrel = 1
-	url = http://samy.pl/pwnat
-	arch = i686
+	url = https://samy.pl/pwnat
 	arch = x86_64
-	license = GPL3
-	source = http://samy.pl/pwnat/pwnat-0.3-beta.tgz
-	md5sums = d1f2b556a32669484f0358d009a20feb
+	arch = i686
+	license = GPL-3.0-or-later
+	depends = glibc
+	source = pwnat-0.3.0.tar.gz::https://github.com/samyk/pwnat/archive/refs/tags/v0.3.0.tar.gz
+	b2sums = 96f91039a6244eb0c9028722f72440c3437cdc38b4c463eaa5d07534650b39ef263683be2f20d10383e7d9795cf137476985033a7f6c827fdedb9ce87a43d4e7
 
 pkgname = pwnat
-
