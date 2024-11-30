@@ -1,7 +1,7 @@
 pkgbase = python-vllm-bin
 	pkgdesc = faster implementation for TTS models, to be used in highly async environment
 	pkgver = 0.6.4.post1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
 	license = Apache-2.0
@@ -9,8 +9,8 @@ pkgbase = python-vllm-bin
 	depends = python
 	provides = python-vllm
 	conflicts = python-vllm
-	noextract = vllm-0.6.4.post1-cp38-abi3-manylinux1_x86_64.whl
-	source = https://files.pythonhosted.org/packages/06/ab/2d562d5d4475f1a071b831564971752c085830793a6d9033383926d5eb9c/vllm-0.6.4.post1-cp38-abi3-manylinux1_x86_64.whl
-	sha256sums = dc151793688376904ca54129a4aa0b83aed9d7ad8e458666775f62b37ecbddcc
+	noextract = vllm-0.6.4.post1+cu118-cp38-abi3-manylinux1_x86_64.whl
+	source = https://github.com/vllm-project/vllm/releases/download/v0.6.4.post1/vllm-0.6.4.post1+cu118-cp38-abi3-manylinux1_x86_64.whl
+	sha256sums = 8b9b1a7785acf1d85f1c2eea53fe929ed32d5e9707c130d98a5998248dd67b5d
 
 pkgname = python-vllm-bin

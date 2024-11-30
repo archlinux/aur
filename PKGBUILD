@@ -3,7 +3,7 @@
 pkgname=python-vllm-bin
 _pkgname=vllm
 pkgver=0.6.4.post1
-pkgrel=2
+pkgrel=3
 pkgdesc="faster implementation for TTS models, to be used in highly async environment"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
@@ -11,11 +11,11 @@ provides=(python-vllm)
 conflicts=(python-vllm)
 license=(Apache-2.0)
 depends=(python-installer python)
-source=("https://files.pythonhosted.org/packages/06/ab/2d562d5d4475f1a071b831564971752c085830793a6d9033383926d5eb9c/vllm-${pkgver}-cp38-abi3-manylinux1_x86_64.whl")
-noextract=("vllm-${pkgver}-cp38-abi3-manylinux1_x86_64.whl")
-sha256sums=('dc151793688376904ca54129a4aa0b83aed9d7ad8e458666775f62b37ecbddcc')
+source=("https://github.com/vllm-project/vllm/releases/download/v${pkgver}/vllm-${pkgver}+cu118-cp38-abi3-manylinux1_x86_64.whl")
+noextract=("vllm-${pkgver}+cu118-cp38-abi3-manylinux1_x86_64.whl")
+sha256sums=('8b9b1a7785acf1d85f1c2eea53fe929ed32d5e9707c130d98a5998248dd67b5d')
 
 package() {
-  python -m pip install --no-deps --root="${pkgdir}" vllm-${pkgver}-cp38-abi3-manylinux1_x86_64.whl --break-system-packages --no-warn-script-location --ignore-installed
+  python -m installer --destdir="${pkgdir}" vllm-${pkgver}+cu118-cp38-abi3-manylinux1_x86_64.whl
 }
 # vim:set ts=2 sw=2 et:
