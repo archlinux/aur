@@ -1,0 +1,29 @@
+pkgbase = r-dtwclust
+	pkgdesc = Time series clustering along with optimized techniques related to the Dynamic Time Warping distance and its corresponding lower bounds.
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=dtwclust
+	arch = any
+	license = GPL3
+	makedepends = gcc
+	depends = r
+	depends = r-Matrix
+	depends = r-clue
+	depends = r-cluster
+	depends = r-dpylr
+	depends = r-dtw
+	depends = r-flexclust
+	depends = r-foreach
+	depends = r-ggplot2
+	depends = r-ggrepel
+	depends = r-parallel
+	depends = r-proxy
+	depends = r-reshape2
+	depends = r-shiny
+	depends = r-shinyjs
+	depends = r-states
+	depends = r-utils
+	source = https://cran.r-project.org/src/contrib/dtwclust_6.0.0.tar.gz
+	sha256sums = 104fc7eb154752593158dccea4ada556d70580a99507438b8d37b88b490fc02f
+
+pkgname = r-dtwclust
