@@ -1,7 +1,7 @@
 pkgbase = python-pytest-celery
 	pkgdesc = A shim pytest plugin to enable celery.contrib.pytest
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/celery/pytest-celery
 	arch = any
 	license = BSD
