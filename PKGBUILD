@@ -1,4 +1,5 @@
-# Maintainer: GI Jack <GI_Jack@hackermail.com>
+# Maintainer: Laura Demkowicz-Duffy <dev at demkowiczduffy.co.uk>
+# Contributor: GI Jack <GI_Jack@hackermail.com>
 
 pkgname=python-cherrypy-cors
 _pkgname=cherrypy-cors
