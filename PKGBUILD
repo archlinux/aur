@@ -3,7 +3,7 @@
 pkgname=python-cherrypy-cors
 _pkgname=cherrypy-cors
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CORS support for CherryPy"
 arch=('any')
 url="https://pypi.org/project/cherrypy-cors/"
@@ -21,4 +21,5 @@ build() {
 package() {
     cd "${_pkgname}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

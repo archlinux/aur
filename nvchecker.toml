@@ -1,0 +1,4 @@
+[python-cherrypy-cors]
+source = "github"
+github = "cherrypy/cherrypy-cors"
+use_latest_release = true
