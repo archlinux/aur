@@ -2,3 +2,4 @@
 source = "git"
 git = "https://git.kemitix.net/kemitix/git-next.git"
 prefix = "v"
+include_regex = 'v\d+\.\d+\.\d+'
