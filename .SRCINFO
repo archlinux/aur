@@ -1,7 +1,7 @@
 pkgbase = cursor-bin-patched
 	pkgdesc = Cursor App - AI-first coding environment
 	pkgver = 0.43.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cursor.com/
 	arch = x86_64
 	license = custom:Proprietary

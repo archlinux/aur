@@ -2,7 +2,7 @@
 
 pkgname=cursor-bin-patched
 pkgver=0.43.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Cursor App - AI-first coding environment"
 arch=('x86_64')
 url="https://www.cursor.com/"
@@ -33,15 +33,15 @@ package() {
     cat <<EOF > "${pkgdir}/usr/bin/cursor"
 #!/bin/bash
 
-XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+XDG_CONFIG_HOME=\${XDG_CONFIG_HOME:-~/.config}
 
 # Allow users to override command-line options
 if [[ -f $XDG_CONFIG_HOME/cursor-flags.conf ]]; then
-   CURSOR_USER_FLAGS="\$(sed 's/#.*//' $XDG_CONFIG_HOME/cursor-flags.conf | tr '\n' ' ')"
+   CURSOR_USER_FLAGS="\$(sed 's/#.*//' \$XDG_CONFIG_HOME/cursor-flags.conf | tr '\n' ' ')"
 fi
 
 # Launch
-exec /opt/cursor-bin/cursor "$@" $CURSOR_USER_FLAGS
+exec /opt/cursor-bin/cursor "\$@" \$CURSOR_USER_FLAGS
 EOF
     chmod +x "${pkgdir}/usr/bin/cursor"
 
