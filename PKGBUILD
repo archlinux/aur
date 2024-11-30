@@ -2,7 +2,7 @@
 # Maintainer: Roy Williams <fang64@gmail.com>
 
 pkgname=hamclock-huge
-pkgver=4.09
+pkgver=4.10
 pkgrel=2
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (3200x1920 version)"
@@ -26,7 +26,7 @@ source=(
   "no-libgpio.patch"
 )
 noextract=()
-sha256sums=('83cd29794b8af1a6dd210e8003379700a56556c8c8b697ed49fc346f75bc0ec5'
+sha256sums=('71a85120b1c565c22e57ce13f38881ffc890605b35dcc374c321a6da42ad2fb6'
             '2ce4e64ba5583c533eef3f885854e3bd7fd544f85bc35a92248d19b9a59c7c65')
 validpgpkeys=()
 
