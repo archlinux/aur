@@ -8,7 +8,7 @@ pkgname=(
   sqlitestudio-plugins
 )
 _pkgname=SQLiteStudio
-pkgver=3.4.6
+pkgver=3.4.7
 pkgrel=1
 pkgdesc='Database manager for SQLite'
 arch=(i686 x86_64)
@@ -24,30 +24,22 @@ makedepends=(
   qt5-svg
   qt5-tools
   qt5-wayland
+  python
+  tcl
 )
 source=(
   ${_url}/archive/refs/tags/${pkgver}.tar.gz
-  b690.patch::${_url}/commit/b6907882161473f36ef06c1f25bd79c830b428a5.patch
-  4ca9.patch::${_url}/commit/4ca9fabbc8eab13ce4984996a7b2846be8a97dd5.patch
-  cc9b.patch::${_url}/commit/cc9baed11f10649df3cfc895e39ea107259a9f4b.patch
   ${pkgbase}.desktop
 )
 noextract=(
   ${pkgver}.tar.gz
 )
-sha256sums=('b21758383d100f7444c8c67975f9adb402d73cd7aa74645344c2df22b12e16f0'
-            'b1921d0f6d7e0e192953b328c805a0283f0dd97dbdd86bb0a0de7bae1be96f98'
-            '787cf2ecfc665d598b0f0eb3317055cfc136612f6bf9b9fb6cf3be1060ea6225'
-            'f49ea26b15dfbdacb26a9271a2bc6bb8d61fd1894cd1eb9b0ae5746ed2f240d1'
+sha256sums=('d9402c86a7290b1f2d3a3dcec3009dfb12665fa5b21f7de3a4393fcca1641bec'
             'c5a26a9b9003b04274887a0e0febda13eea49bb46c618eaad0b5b5c88b1cc1d2')
 
 prepare(){
   cd "$srcdir"
   tar -xf ${pkgver}.tar.gz --strip-components=1
-  sed -i 's|0x03110000|0x030b0000|' Plugins/ScriptingPython/scriptingpython.cpp
-  patch -p1 < b690.patch
-  patch -p1 < 4ca9.patch
-  patch -p1 < cc9b.patch
 }
 
 build(){
@@ -62,7 +54,7 @@ build(){
 
   msg2 "Making sqlitestudio3-plugins"
   cd "$srcdir"/output/build/Plugins
-  PYTHON3=`pkgconf --cflags python3`
+  export PYTHON3=`pkgconf --cflags python3`
   sed -i 's|python3.*9|python3.12|' "$srcdir"/Plugins/ScriptingPython/ScriptingPython.pro
   qmake ../../../Plugins \
     "INCLUDEPATH += ${PYTHON3#*I}" \
