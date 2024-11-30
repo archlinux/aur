@@ -2,7 +2,7 @@
 
 pkgname=grits-git
 provides=('grits')
-pkgver=0.8.1
+pkgver=0.8.1.r5
 pkgrel=1
 pkgdesc="Virtual Globe library using GTK+ and OpenGL"
 arch=('aarch64' 'x86_64')
@@ -12,6 +12,12 @@ depends=('gtk2' 'libsoup' 'libglvnd' 'glu')
 options=('!libtool')
 source=('git+https://github.com/i3Craig/grits.git')
 sha512sums=('SKIP')
+
+# Generate a version number based on the number of commits to the default branch.
+pkgver() {
+  cd grits
+  printf "0.8.1.r%s" "$(git rev-list --count HEAD)"
+}
 
 prepare() {
   cd grits
