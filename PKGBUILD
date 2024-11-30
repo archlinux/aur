@@ -6,7 +6,7 @@ pkgdesc="Pacman hook to automatically install Vencord after Discord updates"
 arch=('any')
 url="https://vencord.dev"
 license=('MIT')
-depends=()
+depends=('curl')
 source=("vencord.hook"
 		"vencord.sh")
 sha256sums=('da560df0c33a4b61f0c2ecf146ae80bd91368d16300e66b9d39589f7481bca76'
