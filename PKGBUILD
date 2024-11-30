@@ -5,7 +5,7 @@
 
 pkgname=libfprint-cs9711
 pkgver=1.94.8
-pkgrel=1
+pkgrel=2
 pkgdesc="libfprint with proprietary FPC match on host device CS9711Fingprint driver"
 url="https://fprint.freedesktop.org/"
 arch=(x86_64)
@@ -41,9 +41,6 @@ conflicts=(libfprint)
 groups=(fprint)
 source=("git+https://github.com/someone5678/libfprint")
 b2sums=('SKIP')
-validpgpkeys=(
-  D4C501DA48EB797A081750939449C2F50996635F # Marco Trevisan (Treviño) <mail@3v1n0.net>
-)
 
 prepare() {
   cd libfprint
