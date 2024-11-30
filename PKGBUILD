@@ -1,4 +1,4 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: Rafael Baboni Dominiquini <rafaeldominiquini@gmail.com>
 
 pkgname=gql-bin
 _pkgname=${pkgname%-bin}
