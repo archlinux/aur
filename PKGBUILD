@@ -4,9 +4,9 @@
 # Contributor: ZhenDong Wu <wzd04062@sina.com>
 
 pkgname=libfprint-cs9711
-pkgver=1.94.7
+pkgver=1.94.8
 pkgrel=1
-pkgdesc="Library for fingerprint readers"
+pkgdesc="libfprint with proprietary FPC match on host device CS9711Fingprint driver"
 url="https://fprint.freedesktop.org/"
 arch=(x86_64)
 license=(LGPL-2.1-or-later)
