@@ -2,7 +2,7 @@
 _pkgname=i915-sriov-dkms
 pkgname=i915-sriov-dkms-bbaa-git
 pkgver=2024.11.30.r0.ga5a82c0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux i915 module patched with SR-IOV support"
 arch=('x86_64')
 url="https://github.com/bbaa-bbaa/i915-sriov-dkms"
@@ -18,12 +18,18 @@ sha256sums=('SKIP'
 
 package() {
   cd "$srcdir/$_pkgname"
+
+  local module_version
+  module_version=$(grep -oP '(?<=^PACKAGE_VERSION=").*(?="$)' dkms.conf)
+
+  echo module_version: $module_version
+
   # Copy dkms.conf
-  install -Dm644 dkms.conf "${pkgdir}"/usr/src/${_pkgname}-${pkgver}/dkms.conf
+  install -Dm644 dkms.conf "${pkgdir}"/usr/src/${_pkgname}-${module_version}/dkms.conf
 
   echo "* Copying module into /usr/src..."
-  install -dm755 "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
-  cp -rv ${srcdir}/$_pkgname/* "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
+  install -dm755 "${pkgdir}/usr/src/${_pkgname}-${_module_version}"
+  cp -r ${srcdir}/$_pkgname/* "${pkgdir}/usr/src/${_pkgname}-${module_version}"
 
   cd "$srcdir"
   install -Dm644 i915-set-sriov-numvfs.conf "${pkgdir}/etc/tmpfiles.d/i915-set-sriov-numvfs.conf"
