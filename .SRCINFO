@@ -1,0 +1,20 @@
+pkgbase = python-auralis
+	pkgdesc = faster implementation for TTS models, to be used in highly async environment
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://httpstan.readthedocs.org
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-safetensors
+	depends = python-numpy
+	depends = python-transformers
+	depends = python-tokenizers
+	source = https://files.pythonhosted.org/packages/39/bf/cb7b149d02a9dea88cff79b92d873ead02dff1a932226ac76eeb73b3de3b/auralis-0.2.5.tar.gz
+	sha256sums = dd7c08cf2cac4f4b4dee408a454d6f01018f694640e83102f8fdad13e03f3d2e
+
+pkgname = python-auralis
