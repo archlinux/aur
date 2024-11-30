@@ -10,8 +10,8 @@ _deps_gui=('libgtk-4.so' 'libadwaita-1.so')
 
 pkgbase=openscq30
 pkgname=("$pkgbase"-{cli,gui}) 
-pkgver=1.13.1
-pkgrel=2
+pkgver=1.14.1
+pkgrel=1
 pkgdesc="Cross platform application for controlling settings of Soundcore headphones"
 arch=(x86_64 aarch64 armv7l)
 url="https://github.com/$_powner/$_pname"
@@ -20,20 +20,20 @@ groups=("$pkgbase")
 makedepends=('cargo')
 depends=("${_deps_common[@]}" "${_deps_gui[@]}")
 source=("$_pname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('31c0c442d1b8ba5c239041308f6beea3')
-sha512sums=('8a1406f1d2f3517d7c988b4c6db71000640ba514d3267614736d560ebcef2d4cafc8fc8b065d779ca7303af8141d7afcb5f69fa3da8144382e47f6428972d6db')
-b2sums=('19ea1ac8098d460c9b542a9b1d7cca5e3a7036aacae5ad0cc6379b10a0684c69707d8398412bfabb6cf5871f1d00aa095a5933a943128b69702fc3aa353278be')
+md5sums=('c452569aae7f981c718bf1b23113980b')
+sha512sums=('0d29bec8c603598ad280f1c73e4ceb7c83445450a88f723c7f479d2d3375740d164b8f76287ac5618bccca0d044733c5f2b7d5ecb3319c0b97bed4656545ed19')
+b2sums=('cb1b3e2272572d55180fe5a17a07a69dbd97ee4be25f116a3bbc1d9c9345253bd79aa8659001302a2d94c69fde7f1c65312318aad7239ab230602dcc607a6cdb')
 
 prepare() {
 	cd "$srcdir/$_pname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
 	cd "$srcdir/$_pname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
+	export CARGO_TARGET_DIR=target
 	# shellcheck disable=SC2046
 	cargo build --release --frozen $(echo "-p openscq30_"{cli,gui})
 }
