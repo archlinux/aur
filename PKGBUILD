@@ -1,6 +1,6 @@
 _name=7-zip
 pkgname=${_name}-bin
-pkgver=24.08
+pkgver=24.09
 pkgrel=1
 pkgdesc='File archiver with a high compression ratio (binary release)'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -21,10 +21,10 @@ source_i686=("$(_get_source x86)")
 source_aarch64=("$(_get_source arm64)")
 source_armv7h=("$(_get_source arm)")
 
-sha256sums_x86_64=('9b3a2edf0644a2b00b0a39ab6843f426128e4a6f6f98c40f8c02a668e5b5b59b')
-sha256sums_i686=('d260712a3d6535a00310fa310eae52e3c35d4e0c99c1b526fa3d9d9ac0450356')
-sha256sums_aarch64=('45f467562911ceb817a47f47a39451faaae8f8686caca7898d46f1c78043be33')
-sha256sums_armv7h=('4bfc54f2ec5a6ba292280a2125ebc52a59746bc91b1753888cd13881f882f9eb')
+sha256sums_x86_64=('914c7e20ad5ef8e4d3cf08620ff8894b28fe11b7eb99809d6930870fbe48a281')
+sha256sums_i686=('cb5e49caaf761df67add54729553bef89a38071b0c455461452578018625fee5')
+sha256sums_aarch64=('fbe331697c9417bbc06fc92d3f4576dca6a5a1442fad7ae810304446a9153e2c')
+sha256sums_armv7h=('ea446c3843a468155da8313fa99eac9264305ed75d3b3ff0fa91dee07a665da2')
 
 package() {
     install -Dm755 -t "${pkgdir}/usr/bin" \
