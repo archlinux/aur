@@ -1,0 +1,4 @@
+[signal-cli]
+source = "git"
+git = "https://github.com/AsamK/signal-cli.git"
+prefix = "v"
