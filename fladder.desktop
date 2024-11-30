@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Fladder
+Comment=A Simple Jellyfin Frontend
+Exec=fladder
+Icon=fladder
+Terminal=false
+Categories=Video;AudioVideo;TV;Player;
+StartupNotify=true
+StartupWMClass=Fladder
