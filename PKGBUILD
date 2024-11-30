@@ -1,7 +1,7 @@
 # Maintainer: Orhun Parmaksız <orhun@archlinux.org>
 
 pkgname=vault-tasks
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A TUI Markdown Task Manager"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MPL-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a839a71b7e26eb65291bbdd2ec46a65c6da1d70cf5ef0cc176cc208e9e49d9b3')
+sha256sums=('2e3baaa7def44a1d1404b8ff7b763115aa54522b12c7b39a5c4a84d2a5a50614')
 
 prepare() {
   cd "$pkgname-$pkgver"
