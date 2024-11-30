@@ -1,17 +1,23 @@
 pkgbase = libbpf-git
-	pkgdesc = BPF library
-	pkgver = 0.0.6.r41.e7a82fc
-	pkgrel = 2
+	pkgdesc = Library for loading eBPF programs and reading and manipulating eBPF objects from user-space
+	pkgver = 1.5.0.r22.gc5f22aca
+	pkgrel = 1
 	url = https://github.com/libbpf/libbpf
+	arch = i686
 	arch = x86_64
-	license = custom
+	license = BSD-2-Clause
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = linux-api-headers
 	makedepends = rsync
+	depends = glibc
 	depends = libelf
-	depends = linux-api-headers>=5.4
-	provides = libbpf
+	depends = zlib
+	provides = libbpf=1.5.0.r22.gc5f22aca
+	provides = libbpf.so
 	conflicts = libbpf
-	source = git+https://github.com/libbpf/libbpf
+	options = staticlibs
+	source = git+https://github.com/libbpf/libbpf.git
 	sha256sums = SKIP
 
 pkgname = libbpf-git
-
