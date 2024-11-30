@@ -1,7 +1,7 @@
 pkgbase = algohub
 	pkgdesc = ACM Algorithm Hub
 	pkgver = 0.1.1_alpha.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/swpu-acm/algohub.git
 	install = algohub.install
 	arch = x86_64

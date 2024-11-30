@@ -2,7 +2,7 @@
 # Contributor: 苏向夜 <fu050409@163.com>
 pkgname=algohub
 pkgver=0.1.1_alpha.5
-pkgrel=1
+pkgrel=2
 pkgdesc="ACM Algorithm Hub"
 arch=('x86_64')
 url="https://github.com/swpu-acm/algohub.git"
