@@ -3,7 +3,7 @@
 
 pkgname=hamclock-bigger
 pkgver=4.10
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (2400x1440 version)"
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
@@ -27,7 +27,7 @@ source=(
 )
 noextract=()
 sha256sums=('71a85120b1c565c22e57ce13f38881ffc890605b35dcc374c321a6da42ad2fb6'
-            '2ce4e64ba5583c533eef3f885854e3bd7fd544f85bc35a92248d19b9a59c7c65')
+            '2fee906da830600a480e7ba1a83318a2485b241689b3d186ee04e56887da2dd3')
 validpgpkeys=()
 
 prepare() {
