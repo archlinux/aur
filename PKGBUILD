@@ -10,8 +10,6 @@ depends=('java-runtime>=17' 'libvips')
 makedepends=('git' 'cmake' 'ninja' 'pkgconf' 'npm' 'gradle' 'webkit2gtk-4.1')
 optdepends=(
 	'webkit2gtk-4.1: epub reader support'
-	'onnxruntime: onnxruntime image upscaling support'
-	'cuda: gpu accelerated image upscaling for onnxruntime'
 )
 source=(
 	'git+https://github.com/Snd-R/Komelia.git#commit=4009a37c530f204119119e7e6621b65741b4d034'
