@@ -10,7 +10,7 @@ license=('agplv3')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://github.com/swpu-acm/algohub/releases/download/algohub-v${pkgver//_/-}/algohub_${pkgver//_/-}_amd64.deb")
+source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/swpu-acm/algohub/releases/download/algohub-v${pkgver//_/-}/algohub_${pkgver//_/-}_amd64.deb")
 sha256sums_x86_64=('e560d6ace0ce7594f0f0279522844b83b3068903bf0cb17d1988175c1f1b7fc9')
 
 package() {
