@@ -1,7 +1,7 @@
 pkgbase = python-pytzdata
 	pkgdesc = Official timezone database for Python.
 	pkgver = 2020.1
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/sdispater/pytzdata
 	arch = any
 	license = MIT
