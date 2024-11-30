@@ -24,8 +24,11 @@ prepare() {
   # This prevents version mismatch errors when running 'make' below if automake versions change.
   autoreconf -ifv
 
-  # Tell the configure script where the tirpc library is located at so rsl can compile and link correctly.
-  ./configure LDFLAGS="-ltirpc" CFLAGS="-I/usr/include/tirpc/" --prefix=/usr
+  # Tell the configure script where the tirpc library is located (with LDFLAGS and CFLAGS) so rsl can compile and link correctly.
+  # Set --exec_prefix and --prefix to 'hard-code' directory / file locations in the source code, including the wsr88d_locations.dat file.
+  # We override these below in the 'make install' call to be in $pkgdir so that the object files, header files,
+  # and data files are copied to the temp direcotry for packaging instead of the system /usr folder.
+  ./configure LDFLAGS="-ltirpc" CFLAGS="-I/usr/include/tirpc/" --exec_prefix=/usr/lib --prefix=/usr
 }
 
 build() {
@@ -35,7 +38,5 @@ build() {
 
 package() {
   cd rsl
-  # We set prefix to /usr above so the .h files and .c files reference /usr/xxxx to find necessary files.
-  # We override prefix here to force all installed .h files to be copied to the PKGDIR. Setting DESTDIR="$pkgdir}" results in the makefile copying rsl.h to /usr/include, which won't work.
-  make prefix="${pkgdir}/usr" install
+  make prefix="${pkgdir}/usr" exec_prefix="${pkgdir}/usr" install
 }
