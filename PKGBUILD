@@ -1,8 +1,8 @@
 # Maintainer: Martin Dünkelmann <nc-duenkekl3 at netcologne.de>
 
 pkgname=moneymanagerex
-pkgver=1.8.0
-pkgrel=10
+pkgver=1.8.1
+pkgrel=1
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -54,10 +54,6 @@ prepare() {
   git config submodule.general-reports.url "$srcdir/general-reports"
   git config submodule.themes.url "$srcdir/themes"
   git -c protocol.file.allow=always submodule update
-  
-  # Fix https://github.com/moneymanagerex/moneymanagerex/issues/6693
-  git cherry-pick -n df127e7e995f4746b101a79e92927b2460907ab4
-  git cherry-pick -n bb98eab92d95b7315d27f4e59ae59b50587106d8
 }
 
 build() {
