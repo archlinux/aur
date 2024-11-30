@@ -2,7 +2,7 @@
 # Contributor: 苏向夜 <fu050409@163.com>
 pkgname=algohub
 pkgver=0.1.1_alpha.6
-pkgrel=1
+pkgrel=2
 pkgdesc="ACM Algorithm Hub"
 arch=('x86_64')
 url="https://github.com/swpu-acm/algohub.git"
@@ -12,6 +12,7 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/swpu-acm/algohub/releases/download/algohub-v${pkgver//_/-}/algohub_${pkgver//_/-}_amd64.deb")
 sha256sums_x86_64=('e560d6ace0ce7594f0f0279522844b83b3068903bf0cb17d1988175c1f1b7fc9')
+
 package() {
   tar -xz -f data.tar.gz -C "${pkgdir}"
   echo "[Desktop Entry]
