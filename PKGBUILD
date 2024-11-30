@@ -1,6 +1,6 @@
 # Maintainer: tobiko461 <aur@skillissue.de>
 pkgname=fanbox-dl-bin
-pkgver=0.26.2
+pkgver=0.27.1
 pkgrel=1
 pkgdesc="Pixiv Fanbox Downloader"
 arch=('aarch64' 'i386' 'x86_64')
