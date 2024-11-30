@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.4.0.r55.g15d6b095
+pkgver=0.4.0.r93.g5f4d0317
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -19,10 +19,11 @@ depends=(
 makedepends=(
 	'boost>=1.84'
 	'cmake>=3.16.3'
-	'ffmpeg'
+	'ffmpeg>=2:5.1.2'
 	'fmt>=10.2'
 	'git'
 	'half>=1.12'
+	'libpng>=1.6'
 	'magic_enum>=0.9.6'
 	'qt6-base'
 	'qt6-multimedia'
@@ -36,8 +37,7 @@ makedepends=(
 	'vulkan-memory-allocator>=3.1'
 	'xbyak>=7.07'
 	'xxhash>=0.8.2'
-	'zlib'
-	'zlib-ng>=2.1.7'
+	'zlib>=1:1.3'
 	'zycore-c' # 'zydis>=5'
 )
 optdepends=(
@@ -53,11 +53,9 @@ source=(
 	"$_pkgname-libatrac9::git+https://github.com/shadps4-emu/ext-LibAtrac9.git"
 	"$_pkgname-sirit::git+https://github.com/shadps4-emu/sirit.git"
 	"$_pkgname-tracy::git+https://github.com/shadps4-emu/tracy.git"
-	"libpng::git+https://github.com/pnggroup/libpng.git"
 	"zydis::git+https://github.com/zyantific/zydis.git"
 )
 b2sums=(
-	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -77,12 +75,11 @@ prepare() {
 	git config submodule.externals/dear_imgui.url ../$_pkgname-imgui
 	git config submodule.externals/discord-rpc.url ../$_pkgname-discord-rpc
 	git config submodule.externals/LibAtrac9.url ../$_pkgname-libatrac9
-	git config submodule.externals/libpng.url ../libpng
 	git config submodule.externals/sirit.url ../$_pkgname-sirit
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
-	sed -i '/\/zlib-ng/d' externals/CMakeLists.txt
+	sed -i '/glslang/s/14.2.0/15/' CMakeLists.txt
 }
 
 build() {
@@ -105,6 +102,7 @@ package() {
 		'libavformat.so'
 		'libavutil.so'
 		'libfmt.so'
+		'libpng16.so'
 		'libswresample.so'
 		'libswscale.so'
 		'libxxhash.so'

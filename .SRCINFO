@@ -1,6 +1,6 @@
 pkgbase = shadps4-git
 	pkgdesc = Sony PlayStation 4 emulator
-	pkgver = 0.4.0.r55.g15d6b095
+	pkgver = 0.4.0.r93.g5f4d0317
 	pkgrel = 1
 	url = https://shadps4.net/
 	arch = aarch64
@@ -8,10 +8,11 @@ pkgbase = shadps4-git
 	license = GPL-2.0-or-later
 	makedepends = boost>=1.84
 	makedepends = cmake>=3.16.3
-	makedepends = ffmpeg
+	makedepends = ffmpeg>=2:5.1.2
 	makedepends = fmt>=10.2
 	makedepends = git
 	makedepends = half>=1.12
+	makedepends = libpng>=1.6
 	makedepends = magic_enum>=0.9.6
 	makedepends = qt6-base
 	makedepends = qt6-multimedia
@@ -25,8 +26,7 @@ pkgbase = shadps4-git
 	makedepends = vulkan-memory-allocator>=3.1
 	makedepends = xbyak>=7.07
 	makedepends = xxhash>=0.8.2
-	makedepends = zlib
-	makedepends = zlib-ng>=2.1.7
+	makedepends = zlib>=1:1.3
 	makedepends = zycore-c
 	depends = crypto++>=8.9
 	depends = gcc-libs
@@ -37,7 +37,7 @@ pkgbase = shadps4-git
 	depends = sdl3>=1:3.1.3
 	optdepends = renderdoc: for graphics debugging
 	optdepends = vulkan-validation-layers: for vulkan debugging
-	provides = shadps4=0.4.0.r55.g15d6b095
+	provides = shadps4=0.4.0.r93.g5f4d0317
 	conflicts = shadps4
 	source = shadps4::git+https://github.com/shadps4-emu/shadPS4.git
 	source = shadps4-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git
@@ -45,9 +45,7 @@ pkgbase = shadps4-git
 	source = shadps4-libatrac9::git+https://github.com/shadps4-emu/ext-LibAtrac9.git
 	source = shadps4-sirit::git+https://github.com/shadps4-emu/sirit.git
 	source = shadps4-tracy::git+https://github.com/shadps4-emu/tracy.git
-	source = libpng::git+https://github.com/pnggroup/libpng.git
 	source = zydis::git+https://github.com/zyantific/zydis.git
-	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -68,6 +66,7 @@ pkgname = shadps4-git
 	depends = libavformat.so
 	depends = libavutil.so
 	depends = libfmt.so
+	depends = libpng16.so
 	depends = libswresample.so
 	depends = libswscale.so
 	depends = libxxhash.so
