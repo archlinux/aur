@@ -1,38 +1,28 @@
-# Maintainer: caiye <ye dot jingchen at gmail dot com>
-pkgbase=python-pynat
-pkgname=(python-pynat python2-pynat)
+# Maintainer: envolution
+# Contributor: caiye <ye dot jingchen at gmail dot com>
+# shellcheck shell=bash disable=SC2034,SC2154
+
+pkgname=python-pynat
 _module='pynat'
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Discover external IP addresses and NAT topologies using STUN."
 url="https://github.com/arantonitis/pynat"
-depends=()
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=(python-wheel python-installer python-build)
+depends=(python)
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('db107c85f7c8c5368e93dbf1dff21f88cabbd30f288a0c07c699bf3cb6319e67')
-
-prepare() {
-    cp -a "${srcdir}/${_module}-${pkgver}"{,-python2}
-}
+sha256sums=('96168d472b7abc47c348cd4f6c4c1f13180bdc8c796918b1e98b4de9d0a59ede')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
-
-    cd "${srcdir}/${_module}-${pkgver}-python2"
-    python2 setup.py build
+  cd "${_module}-${pkgver}"
+  python -m build --wheel --no-isolation
 }
 
-package_python-pynat() {
-    depends+=('python')
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+package() {
+  cd "${_module}-${pkgver}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-package_python2-pynat() {
-    depends+=('python2')
-    cd "${srcdir}/${_module}-${pkgver}-python2"
-    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-}
+# vim:set ts=2 sw=2 et:
