@@ -1,7 +1,7 @@
 # Maintainer: Snd <snd.scrape (at) gmail dot com>
 pkgname=komelia
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Komga media client"
 arch=('x86_64')
 url="https://github.com/Snd-R/Komelia"
