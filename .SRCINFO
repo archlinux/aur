@@ -1,0 +1,22 @@
+pkgbase = ttf-lxgw-bright-code-git
+	pkgdesc = LXGW Bright Code 是由 Monaspace Argon 与 霞鹜文楷系列字体 合并而成的字体
+	pkgver = 2.602.r0.gbe0b148
+	pkgrel = 1
+	url = https://github.com/lxgw/LxgwBright-Code
+	arch = any
+	license = OFL
+	makedepends = git
+	source = git+https://github.com/lxgw/LxgwBright-Code.git
+	sha256sums = SKIP
+
+pkgname = ttf-lxgw-bright-code-git
+	provides = ttf-lxgw-bright-code=2.602.r0.gbe0b148
+	conflicts = ttf-lxgw-bright-code
+
+pkgname = ttf-lxgw-bright-code-gb-git
+	provides = ttf-lxgw-bright-code-gb=2.602.r0.gbe0b148
+	conflicts = ttf-lxgw-bright-code-gb
+
+pkgname = ttf-lxgw-bright-code-tc-git
+	provides = ttf-lxgw-bright-code-tc=2.602.r0.gbe0b148
+	conflicts = ttf-lxgw-bright-code-tc
