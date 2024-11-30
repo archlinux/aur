@@ -10,7 +10,7 @@ pkgbase = betterbird-bin
 	optdepends = hunspell-en_US
 	provides = betterbird=128.5.0esr
 	source = https://www.betterbird.eu/downloads/LinuxArchive/betterbird-128.5.0esr-bb18.en-US.linux-x86_64.tar.bz2
-	source = eu.betterbird.Betterbird
+	source = eu.betterbird.Betterbird.desktop
 	source = vendor-prefs.js
 	sha256sums = e9e59ee5bc17ac55a6779c7157b483defa27163f5fd9355ed9bade544b6ae7af
 	sha256sums = d3818d266e11ab06238449db5b24e27d35f910f150c259c012d3adce695b93b5
