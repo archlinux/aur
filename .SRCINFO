@@ -1,0 +1,16 @@
+pkgbase = gupaxx-git
+	pkgdesc = GUI Uniting P2Pool And XMRig
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/Cyrix126/gupaxx
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	depends = p2pool
+	depends = xmrig
+	source = git+https://github.com/Cyrix126/gupaxx
+	source = gupaxx.desktop
+	b2sums = SKIP
+	b2sums = 404d394d1e46411eabe9be5f12009829309292033055abfad8296790f568ab962cf1ea26f653563b28c4833912723d444851dca6b281fd95943d65d9688a13ec
+
+pkgname = gupaxx-git
