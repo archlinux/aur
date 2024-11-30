@@ -10,7 +10,7 @@
 # Contributor: Julien Duponchelle <julien@gns3.net>
 
 pkgname=python-cx-freeze
-pkgver=7.2.6
+pkgver=7.2.7
 pkgrel=1
 pkgdesc='Create standalone executables from Python scripts'
 arch=('x86_64')
@@ -25,7 +25,7 @@ replaces=('python-cx_freeze')
 provides=('python-cx_freeze')
 conflicts=('python-cx_freeze')
 source=("https://github.com/marcelotduarte/cx_Freeze/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('4acc5c782be6fa1e7a9824aeda89a95d4d3ec9a13e5eeddee008c605ffb3c8fdcffd2fc3974332b82d4c8f8bf1bcece911759737bd7144384586039032b48780')
+sha512sums=('0c6a1173eae6e25309491282f156aac4a9dd8163f45f7508f9c220ac5152b167ec9b32a7180886f9e545f3c549b4f2074e917dc0a3ab1ad334c5d0fcb0f0f923')
 
 prepare() {
   sed -e 's|75|80|g' -i cx_Freeze-$pkgver/pyproject.toml # Support setuptools 75
