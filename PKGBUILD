@@ -3,7 +3,7 @@
 
 pkgname=cassette
 pkgver=0.2.0
-pkgrel=6
+pkgrel=7
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 x86_64)
 url="https://gitlab.gnome.org/Rirusha/${pkgname^}"
@@ -25,6 +25,7 @@ depends=(
   libxml2
   sqlite
   webkitgtk-6.0
+  xdg-desktop-portal-impl
 )
 makedepends=(
   blueprint-compiler
