@@ -1,0 +1,23 @@
+pkgbase = xuantie-900-llvm-toolchain-bin
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://www.xrvm.cn/community/download?id=4382929556173033472
+	arch = x86_64
+	license = unknown
+	noextract = xuantie-900-llvm-elf-newlib-bin-2.0.1.tar.gz
+	noextract = xuantie-900-llvm-linux-glibc-bin-2.0.1.tar.gz
+	source = xuantie-900-llvm-elf-newlib-bin-2.0.1.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1732890326920/Xuantie-900-llvm-elf-newlib-x86_64-V2.0.1-20241121.tar.gz
+	source = xuantie-900-llvm-linux-glibc-bin-2.0.1.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1732893794797/Xuantie-900-llvm-linux-6.6.0-glibc-x86_64-V2.0.1-20241121.tar.gz
+	sha256sums = 4e71a6efd86203a180775be78068204e21c12dfcc400bf221b2d8f41da101f5c
+	sha256sums = 2359597e3b88fb5817bb894d6c82e15d62f8575abc82bad7e1a53678dca377cc
+
+pkgname = xuantie-900-llvm-toolchain-bin
+	pkgdesc = Xuantie 900 LLVM toolchain
+	depends = xuantie-900-llvm-elf-newlib-bin
+	depends = xuantie-900-llvm-linux-glibc-bin
+
+pkgname = xuantie-900-llvm-elf-newlib-bin
+	pkgdesc = Xuantie 900 LLVM elf newlib toolchain
+
+pkgname = xuantie-900-llvm-linux-glibc-bin
+	pkgdesc = Xuantie 900 LLVM glibc toolchain
