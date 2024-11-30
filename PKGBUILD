@@ -18,6 +18,7 @@ sha256sums=('SKIP'
     '76f8c52297b4f423dd6767a37b56c30ea3398e16f2e0500911ba01df40635ce1'
 )
 conflicts=('fladder')
+provides=("fladder")
 
 # if set, fladder will autoconnect to the given server
 # _base_url="http://192.168.1.100:8096"
@@ -43,7 +44,6 @@ package() {
     install -dm755 "$pkgdir/usr/bin/$_pkgname"
     install -dm755 "$pkgdir/usr/share/applications"
     install -dm755 "$pkgdir/usr/share/icons"
-    install -Dm644 "$srcdir/$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname"
 
     cp -r "$srcdir/$_pkgname/build/linux/x64/release/bundle/"* "$pkgdir/usr/bin/$_pkgname/"
 
@@ -63,5 +63,5 @@ package() {
         sed -i "s|\"baseUrl\": null|\"baseUrl\": \"$_base_url\"|" "${pkgdir}/usr/bin/${_pkgname}/data/flutter_assets/config/config.json"
     fi
 
-    install -Dm644 "$srcdir/$_pkgname/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+    install -Dm644 "$srcdir/$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
