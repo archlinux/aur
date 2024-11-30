@@ -1,9 +1,9 @@
-# Maintainer:
+# Maintainer: Laura Demkowicz-Duffy <dev at demkowiczduffy.co.uk>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-cucumber-tag-expressions
 _name=tag-expressions
-pkgver=6.1.0
+pkgver=6.1.1
 pkgrel=1
 pkgdesc="Provides a tag-expression parser and evaluation logic for cucumber/behave"
 url="https://github.com/cucumber/tag-expressions"
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 # checkdepends=('python-pytest')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('304f5da3ca46a214cf15ba93b7e4e89d2387f8c10d48f3eae7708994eb4d32a1e6410c65dd1c5736449e46edcf6050389e1f4e6e7d7acb0b04c2a88924d65ed2')
+sha512sums=('46247511aec7b5b7206fa88b57f0755225b7983343ecb4b16368322403939cafe40aeea0c4127f3a8d6f4efa7b9a6a67a2eef370d6890de4cb3544b04217fe59')
 
 build() {
     cd "${_name}-${pkgver}/python"
