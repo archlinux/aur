@@ -2,7 +2,7 @@
 
 pkgname=nemo-run-with-nvidia-prime-run
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Nemo action to run a program with prime-run for nvidia-GPUs"
 arch=('any')
 url="https://github.com/schinfo/${pkgname}"
