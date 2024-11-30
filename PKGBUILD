@@ -3,10 +3,12 @@
 pkgname=python-vllm-bin
 _pkgname=vllm
 pkgver=0.6.4.post1
-pkgrel=1
+pkgrel=2
 pkgdesc="faster implementation for TTS models, to be used in highly async environment"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
+provides=(python-vllm)
+conflicts=(python-vllm)
 license=(Apache-2.0)
 depends=(python-installer python)
 source=("https://files.pythonhosted.org/packages/06/ab/2d562d5d4475f1a071b831564971752c085830793a6d9033383926d5eb9c/vllm-${pkgver}-cp38-abi3-manylinux1_x86_64.whl")
