@@ -5,6 +5,7 @@ pkgbase = akash-provider-bin
 	url = https://github.com/akash-network/provider
 	arch = x86_64
 	license = Apache-2.0
+	provides = akash-provider
 	conflicts = akash-provider
 	source = https://raw.githubusercontent.com/akash-network/provider/v0.6.4/LICENSE
 	sha256sums = d53de0e9b85bcca85ce57eb42002bd24f6a5e8cf03f25af48fb0f769f0966727
