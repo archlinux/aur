@@ -1,8 +1,9 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
+# Contributor: ZhenDong Wu <wzd04062@sina.com>
 
-pkgname=libfprint-CS9711-git
+pkgname=libfprint-cs9711
 pkgver=1.94.7
 pkgrel=1
 pkgdesc="Library for fingerprint readers"
@@ -27,10 +28,13 @@ makedepends=(
   python-cairo
   python-gobject
   systemd
+  opencv
+  cmake
 )
 checkdepends=(
   cairo
   umockdev
+  doctest
 )
 provides=(libfprint libfprint-2.so)
 conflicts=(libfprint)

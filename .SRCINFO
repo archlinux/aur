@@ -1,4 +1,4 @@
-pkgbase = libfprint
+pkgbase = libfprint-cs9711
 	pkgdesc = Library for fingerprint readers
 	pkgver = 1.94.8
 	pkgrel = 1
@@ -28,4 +28,4 @@ pkgbase = libfprint
 	validpgpkeys = D4C501DA48EB797A081750939449C2F50996635F
 	b2sums = 594b70dae6bb52c479ff8ba09966b63c97d327361412e1fc472e96a82cb0343147f09bf30cfcba4e2549076e1b628e7ae52743d564eb2d2ba94054dc79947887
 
-pkgname = libfprint
+pkgname = libfprint-cs9711
