@@ -4,7 +4,7 @@
 
 _pkgname=flet
 pkgname=python-${_pkgname}
-pkgver=0.25.0
+pkgver=0.25.1
 pkgrel=1
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
@@ -36,7 +36,7 @@ arch=('x86_64')
 source=(
 	"${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}-dev/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 	'flet-linux.patch')
-sha256sums=('9d083547f708c30881957b6a73aa04c303b34838360af43142f568fbe4b0fe87'
+sha256sums=('cfe9c50bc37146ddfc05a87fe17a8d193ba9365c303425e0da61d37161b3ad23'
             '2d7372f0a8a6f7ccbeb3f91a4c866cce002da39d3326b1f9ceab2b2162bf8e7c')
 
 _srcdir="${_pkgname}-${pkgver}"
@@ -85,7 +85,7 @@ package() {
 
 	local _client_installdir="${_install_path}/$pkgname"
 	install -dm0755 "${pkgdir}/${_client_installdir}"
-	cp -r "client/build/linux/x64/release/bundle/"* "$pkgdir/${_client_installdir}"
+	cp -r 'client/build/linux/x64/release/bundle/'* "$pkgdir/${_client_installdir}"
 	ln -s "/${_client_installdir}/flet" "$pkgdir/usr/bin/flet_view"
 
 	# Fix runpath
