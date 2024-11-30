@@ -1,0 +1,19 @@
+pkgbase = gpu-state-tray
+	pkgdesc = Tray icon showing the power state of an Nvidia Optimus GPU
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/technologicalMayhem/gpu-state-tray
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = dbus
+	source = gpu-state-tray-0.1.0.tar.gz::https://github.com/technologicalMayhem/gpu-state-tray/archive/v0.1.0.tar.gz
+	sha256sums = 9c603c433d6f5f2f710320bc096901389f9f5f1f0f2d31bef00875b8c8681f1b
+
+pkgname = gpu-state-tray
