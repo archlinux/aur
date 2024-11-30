@@ -14,4 +14,13 @@ source_x86_64=("https://github.com/swpu-acm/algohub/releases/download/algohub-v0
 sha256sums_x86_64=('666595aeb283f2d44d885c18a4f12f4b9f83337493717d481b8bf619a99702e5')
 package() {
   tar -xz -f data.tar.gz -C "${pkgdir}"
+  echo "[Desktop Entry]
+Categories=Network;
+Comment=ACM Algorithm Hub
+Exec=WEBKIT_DISABLE_COMPOSITING_MODE=1 algohub
+Icon=algohub
+Name=algohub
+Terminal=false
+Type=Application
+" > "${pkgdir}/usr/share/applications/algohub.desktop"
 }
