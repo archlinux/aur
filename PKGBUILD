@@ -2,13 +2,18 @@
 # Contributor: Sven Fischer <aur.archlinux@linux4tw.de>
 
 pkgname=guayadeque-git
-pkgver=0.5.2.r0.gca56337c
-pkgrel=3
+pkgver=0.6.1.r0.g9f06f00b
+pkgrel=1
 pkgdesc="Lightweight music player"
 arch=(x86_64 i686)
 url="https://github.com/thothix/guayadeque"
 license=(GPL-3.0-only)
-depends=(wxsqlite3 wxwidgets-gtk3 taglib gst-plugins-base gst-plugins-good jsoncpp)
+depends=(wxsqlite3 wxwidgets-gtk3 taglib gst-plugins-base gst-plugins-good jsoncpp
+
+         # namcap implicit depends
+         wxwidgets-common gstreamer curl glibc gcc-libs gst-plugins-base-libs dbus glib2 icu
+
+         libicuuc.so libicui18n.so)
 makedepends=(cmake git)
 optdepends=('gst-libav: additional codecs'
             'gst-plugins-bad: additional codecs'
