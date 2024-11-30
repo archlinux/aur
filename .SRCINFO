@@ -1,0 +1,13 @@
+pkgbase = brother-dcpl3560cdw-cups-bin
+	pkgdesc = CUPS driver for the Brother DCP-L3560CDW printer
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=dcpl3560cdw_us_eu_as
+	arch = x86_64
+	license = LicenseRef-Brother
+	depends = perl
+	options = !debug
+	source = https://download.brother.com/welcome/dlf105772/dcpl3560cdwpdrv-3.5.1-1.i386.rpm
+	b2sums = 8cefe00cb540d8c48d65091e5978f261db5b355328385cded88f1fd1ff10229503d9bed8a57c4a40f7433709f2a7a12aac9b900f03dfc120a23ad31fb10b9e13
+
+pkgname = brother-dcpl3560cdw-cups-bin
