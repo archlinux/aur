@@ -2,7 +2,7 @@
 # Contributor: jasch <jasch dot io at protonmail dot com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=liquid-dsp-quiet-devel-git
-pkgver=v1.2.0.r1586.g4951bbbf
+pkgver=1.2.0.r1586.g4951bbbf
 pkgrel=1
 pkgdesc="libliquid compatible with libquiet"
 arch=('x86_64')
