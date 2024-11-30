@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=proton-mail-bin
-pkgver=1.4.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Proton official desktop application for Proton Mail and Proton Calendar"
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" 'protonmail-desktop')
 source=("ProtonMail-desktop-beta-$pkgver.deb::https://proton.me/download/mail/linux/$pkgver/ProtonMail-desktop-beta.deb")
-sha256sums=('7259a5a1dbd680751ecdf752c31d3fc40f443abdc0e02649444d6a4016b102ce')
+sha256sums=('3e4c495334a649e21ffd68d70a3e4f9dee431eb5e74d189bd48a87b5b7b794d0')
 
 package() {
   bsdtar -xvf data.tar.xz -C "$pkgdir/"
