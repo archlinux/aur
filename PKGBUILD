@@ -1,4 +1,4 @@
-# Maintainer: Federico Maria Morrone <aur at morrone dot dev>
+# Maintainer: LJ
 
 pkgname=gupaxx-git
 _name=gupaxx
