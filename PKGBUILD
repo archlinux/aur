@@ -1,7 +1,7 @@
 # Maintainer: bbaa <bbaa@bbaa.fun>
 _pkgname=i915-sriov-dkms
 pkgname=i915-sriov-dkms-bbaa-git
-pkgver=2024.11.20
+pkgver=2024.11.30.r0.ga5a82c0
 pkgrel=1
 pkgdesc="Linux i915 module patched with SR-IOV support"
 arch=('x86_64')
@@ -31,5 +31,5 @@ package() {
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  grep -oP '(?<=^PACKAGE_VERSION=").*(?="$)' dkms.conf
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
