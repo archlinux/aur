@@ -1,7 +1,7 @@
 pkgbase = rwth-linux-kernel-programming
-	pkgdesc = Needed tools to for RWTH lecture \"Linux Kernel Programming\"
+	pkgdesc = Needed tools to for RWTH lecture "Linux Kernel Programming"
 	pkgver = 2024
-	pkgrel = 1
+	pkgrel = 2
 	url = https://teaching.os.rwth-aachen.de/LKP/
 	arch = any
 	license = GPL
@@ -9,10 +9,14 @@ pkgbase = rwth-linux-kernel-programming
 	depends = bc
 	depends = cpio
 	depends = git
+	depends = perl
 	depends = perl-authen-sasl
 	depends = perl-io-socket-ssl
 	depends = perl-mime-tools
 	depends = qemu-desktop
+	optdepends = clang: clang language server
+	optdepends = python: needed to run scripts/clang-tools/gen_compile_commands.py to generate clang symbols (clang will find linux kernel symbols now)
+	optdepends = virtme-ng: easily and quickly recompile and test Kernel (alternative to provided vm at later labs)
 	options = !debug
 
 pkgname = rwth-linux-kernel-programming
