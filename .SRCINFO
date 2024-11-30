@@ -1,10 +1,11 @@
 pkgbase = lean
 	pkgdesc = Lean 4 programming language and theorem prover
 	pkgver = 4.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leanprover/lean4
 	arch = x86_64
 	license = Apache
+	makedepends = ccache
 	makedepends = cmake
 	depends = gmp
 	depends = libuv

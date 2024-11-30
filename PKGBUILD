@@ -3,16 +3,16 @@
 pkgname=lean
 _pkgname=${pkgname#python-}
 pkgver=4.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lean 4 programming language and theorem prover'
 arch=('x86_64')
 url='https://github.com/leanprover/lean4'
 license=('Apache')
 groups=()
 depends=('gmp' 'libuv' 'llvm-libs')
-makedepends=('cmake')
+makedepends=('ccache' 'cmake')
 optdepends=()
-options=(ccache)
+options=('ccache')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('8392396c1b5fb6650277c1eac29ff6549a559c64c3eb3d88acb3cb2db05d3de1')
 
