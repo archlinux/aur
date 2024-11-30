@@ -1,0 +1,3 @@
+post_install() {
+	echo "You will need to enable the watch-sensors service if you wish to automatically switch to tablet mode."
+}

@@ -1,0 +1,23 @@
+pkgbase = iio-sensor-proxy-tuxedo-git
+	pkgdesc = IIO accelerometer sensor to input device proxy with Tuxedo patches
+	pkgver = 3.5.5tux1.cfeee94
+	pkgrel = 1
+	url = https://gitlab.com/tuxedocomputers/development/tuxedo_os/tuxedo-packages/iio-sensor-proxy
+	install = iio-sensor-proxy-tuxedo-git.install
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = gtk3
+	makedepends = meson
+	depends = systemd
+	depends = libgudev
+	depends = glib2
+	depends = polkit
+	provides = iio-sensor-proxy
+	conflicts = iio-sensor-proxy
+	source = git+https://gitlab.com/tuxedocomputers/development/tuxedo_os/tuxedo-packages/iio-sensor-proxy.git
+	source = iio-sensor-proxy-tuxedo-git.install
+	sha256sums = SKIP
+	sha256sums = 1afad7b6a787a70d7f127933b0fe7c26e685f140e528c4bd4735b5b6fae627a9
+
+pkgname = iio-sensor-proxy-tuxedo-git
