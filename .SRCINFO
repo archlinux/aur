@@ -1,6 +1,6 @@
 pkgbase = ape
 	pkgdesc = A plasmid editor
-	pkgver = 3.1.3
+	pkgver = 3.1.7
 	pkgrel = 1
 	url = http://biologylabs.utah.edu/jorgensen/wayned/ape/
 	arch = any
@@ -9,6 +9,6 @@ pkgbase = ape
 	depends = tclkit
 	depends = sdx
 	source = https://jorgensen.biology.utah.edu/wayned/ape/Download/Linux/ApE_linux_current.zip
-	md5sums = SKIP
+	md5sums = 21b527009e578394741c730710538b1f
 
 pkgname = ape
