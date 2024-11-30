@@ -11,11 +11,11 @@ pkgname=(
     xuantie-900-series-manual
 )
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url=https://www.xrvm.cn/community/download?id=4382928864901402624
 license=('unknown')
-_dwurl="https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/"
+_dwurl=https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/
 _linux_ver=6.6.0
 source=(
     "ReleaseNote ${pkgver}.pdf::${_dwurl}/1732866280418/ReleaseNote.pdf"
@@ -53,9 +53,11 @@ noextract=(
     riscv64-xuantie-900-linux-${_linux_ver}-musl32-gcc-bin-${pkgver}.tar.gz
     riscv64-xuantie-900-linux-${_linux_ver}-musl64-gcc-bin-${pkgver}.tar.gz
 )
+options=('!strip')
+_toolchain_name="xuantie-900-gcc"
 
 package_xuantie-900-series-toolchain-bin() {
-    pkgdesc="Xuantie 900 Series Toolchain"
+    pkgdesc="Xuantie 900 series toolchain"
     depends=(
         riscv64-xuantie-900-linux-glibc-gcc-bin 
         riscv64-xuantie-900-elf-newlib-gcc-bin 
@@ -67,13 +69,13 @@ package_xuantie-900-series-toolchain-bin() {
 
 package_riscv64-xuantie-900-linux-glibc-gcc-bin() {
     pkgdesc="Xuantie 900 riscv64 glibc toolchain"
-    install -dm0755 "${pkgdir}/opt/xuantie-900/${pkgname%-bin}"
+    install -dm0755 ${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin}
 
-    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" --strip-components=1 -C "${pkgdir}/opt/xuantie-900/${pkgname%-bin}" --no-same-owner  --no-same-permissions
+    bsdtar -xf ${srcdir}/${pkgname}-${pkgver}.tar.gz --strip-components=1 -C ${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin} --no-same-owner  --no-same-permissions
 
-    install -Dm0755 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" << EOF
+    install -Dm0755 /dev/stdin ${pkgdir}/etc/profile.d/${pkgname%-bin}.sh << EOF
 #!/bin/sh
-[ -d /opt/xuantie-900/${pkgname%-bin}/bin ] && append_path '/opt/xuantie-900/${pkgname%-bin}/bin'
+[ -d /opt/${_toolchain_name}/${pkgname%-bin}/bin ] && append_path '/opt/${_toolchain_name}/${pkgname%-bin}/bin'
 
 export PATH
 EOF
@@ -81,13 +83,13 @@ EOF
 
 package_riscv64-xuantie-900-elf-newlib-gcc-bin() {
     pkgdesc="Xuantie 900 riscv64 elf newlib toolchain"
-    install -dm0755 "${pkgdir}/opt/xuantie-900/${pkgname%-bin}"
+    install -dm0755 ${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin}
 
-    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" --strip-components=1 -C "${pkgdir}/opt/xuantie-900/${pkgname%-bin}" --no-same-owner  --no-same-permissions
+    bsdtar -xf ${srcdir}/${pkgname}-${pkgver}.tar.gz --strip-components=1 -C ${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin} --no-same-owner  --no-same-permissions
 
-    install -Dm0755 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" << EOF
+    install -Dm0755 /dev/stdin ${pkgdir}/etc/profile.d/${pkgname%-bin}.sh << EOF
 #!/bin/sh
-[ -d /opt/xuantie-900/${pkgname%-bin}/bin ] && append_path '/opt/xuantie-900/${pkgname%-bin}/bin'
+[ -d /opt/${_toolchain_name}/${pkgname%-bin}/bin ] && append_path '/opt/${_toolchain_name}/${pkgname%-bin}/bin'
 
 export PATH
 EOF
@@ -95,13 +97,13 @@ EOF
 
 package_riscv64-xuantie-900-linux-musl32-gcc-bin() {
     pkgdesc="Xuantie 900 riscv64 musl32 toolchain"
-    install -dm0755 "${pkgdir}/opt/xuantie-900/${pkgname%-bin}"
+    install -dm0755 ${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin}
 
-    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" --strip-components=1 -C "${pkgdir}/opt/xuantie-900/${pkgname%-bin}" --no-same-owner  --no-same-permissions
+    bsdtar -xf ${srcdir}/${pkgname}-${pkgver}.tar.gz --strip-components=1 -C ${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin} --no-same-owner  --no-same-permissions
 
-    install -Dm0755 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" << EOF
+    install -Dm0755 /dev/stdin ${pkgdir}/etc/profile.d/${pkgname%-bin}.sh << EOF
 #!/bin/sh
-[ -d /opt/xuantie-900/${pkgname%-bin}/bin ] && append_path '/opt/xuantie-900/${pkgname%-bin}/bin'
+[ -d /opt/${_toolchain_name}/${pkgname%-bin}/bin ] && append_path '/opt/${_toolchain_name}/${pkgname%-bin}/bin'
 
 export PATH
 EOF
@@ -109,13 +111,13 @@ EOF
 
 package_riscv64-xuantie-900-linux-musl64-gcc-bin() {
     pkgdesc="Xuantie 900 riscv64 musl64 toolchain"
-    install -dm0755 "${pkgdir}/opt/xuantie-900/${pkgname%-bin}"
+    install -dm0755 ${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin}
 
-    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" --strip-components=1 -C "${pkgdir}/opt/xuantie-900/${pkgname%-bin}" --no-same-owner  --no-same-permissions
+    bsdtar -xf ${srcdir}/${pkgname}-${pkgver}.tar.gz --strip-components=1 -C ${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin} --no-same-owner  --no-same-permissions
 
-    install -Dm0755 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" << EOF
+    install -Dm0755 /dev/stdin ${pkgdir}/etc/profile.d/${pkgname%-bin}.sh << EOF
 #!/bin/sh
-[ -d /opt/xuantie-900/${pkgname%-bin}/bin ] && append_path '/opt/xuantie-900/${pkgname%-bin}/bin'
+[ -d /opt/${_toolchain_name}/${pkgname%-bin}/bin ] && append_path '/opt/${_toolchain_name}/${pkgname%-bin}/bin'
 
 export PATH
 EOF
@@ -123,8 +125,8 @@ EOF
 
 
 package_xuantie-900-series-manual() {
-    pkgdesc="Xuantie 900 Series Manual"
-    install -dm0755 "${pkgdir}/opt/xuantie-900/${pkgname%-bin}"
+    pkgdesc="Xuantie 900 series manual"
+    install -dm0755 ${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin}
 
-    cp -rva "${srcdir}"/*${pkgver}.pdf "${pkgdir}/opt/xuantie-900/${pkgname%-bin}"
+    cp -ar ${srcdir}/*${pkgver}.pdf ${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin}
 }

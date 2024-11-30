@@ -1,6 +1,6 @@
 pkgbase = xuantie-900-series-toolchain-bin
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xrvm.cn/community/download?id=4382928864901402624
 	arch = x86_64
 	license = unknown
@@ -8,6 +8,7 @@ pkgbase = xuantie-900-series-toolchain-bin
 	noextract = riscv64-xuantie-900-elf-newlib-gcc-bin-3.0.1.tar.gz
 	noextract = riscv64-xuantie-900-linux-6.6.0-musl32-gcc-bin-3.0.1.tar.gz
 	noextract = riscv64-xuantie-900-linux-6.6.0-musl64-gcc-bin-3.0.1.tar.gz
+	options = !strip
 	source = ReleaseNote 3.0.1.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1732866280418/ReleaseNote.pdf
 	source = riscv64-xuantie-900-linux-glibc-gcc-bin-3.0.1.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1732863205852/Xuantie-900-gcc-linux-6.6.0-glibc-x86_64-V3.0.1-20241120.tar.gz
 	source = riscv64-xuantie-900-elf-newlib-gcc-bin-3.0.1.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1732862099878/Xuantie-900-gcc-elf-newlib-x86_64-V3.0.1-20241120.tar.gz
@@ -36,7 +37,7 @@ pkgbase = xuantie-900-series-toolchain-bin
 	sha256sums = 521450390bb4df0d86b8cbc0b1db136974f168db724ebaf3ecb2b635ae678aac
 
 pkgname = xuantie-900-series-toolchain-bin
-	pkgdesc = Xuantie 900 Series Toolchain
+	pkgdesc = Xuantie 900 series toolchain
 	depends = riscv64-xuantie-900-linux-glibc-gcc-bin
 	depends = riscv64-xuantie-900-elf-newlib-gcc-bin
 	depends = riscv64-xuantie-900-linux-musl32-gcc-bin
@@ -56,4 +57,4 @@ pkgname = riscv64-xuantie-900-linux-musl64-gcc-bin
 	pkgdesc = Xuantie 900 riscv64 musl64 toolchain
 
 pkgname = xuantie-900-series-manual
-	pkgdesc = Xuantie 900 Series Manual
+	pkgdesc = Xuantie 900 series manual
