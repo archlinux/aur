@@ -6,8 +6,9 @@
 # Origin Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=pxview-git
-pkgver=1.3.4.r5.fac9f01
+pkgver=1.3.4.r4.2eb1149
 pkgrel=1
+epoch=1
 pkgdesc='GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.'
 arch=(i686 x86_64)
 url='https://github.com/PXLogic/PXView'
@@ -17,7 +18,7 @@ depends=(hicolor-icon-theme glib2 python fftw
         libusb zlib qt5-base boost-libs saribbon)
 makedepends=(boost cmake git)
 source=("${pkgname}::git+https://github.com/PXLogic/PXView"
-        "0001-make-glibc-happy.patch") #branch=develop
+        "0001-make-glibc-happy.patch")
 sha1sums=('SKIP'
           'c36f3d81501bc35b207631483179ca663308926b')
 
@@ -33,10 +34,13 @@ prepare() {
   cd "${srcdir}"/${pkgname}/
 
   sed -i 's#MODE="0666"#TAG+="uaccess"#' PXView/px.rules
+
+  # temporary fix icon display
+  convert -resize 256x256 PXView/icons/logo.svg  PXView/icons/logo.png
   
   # https://github.com/PXLogic/PXView/pull/1
   # fix archlinux gcc 14 build failure issue
-  git cherry-pick ba80efab017d71647b1f4027a8b1fa
+  git cherry-pick --no-commit ba80efab017d71647b1f4027a8b1fa
 
   # patch
   git apply ${srcdir}/0001-make-glibc-happy.patch
@@ -62,6 +66,11 @@ package() {
   cd "${srcdir}"/${pkgname}/
 
   DESTDIR="${pkgdir}" cmake --install build
+
+  # temporary fix icon display
+  rm -rf ${pkgdir}/usr/share/pixmaps/pxview.svg \
+        ${pkgdir}/usr/share/icons/
+  install -Dm644 PXView/icons/logo.png ${pkgdir}/usr/share/pixmaps/pxview.png
 }
 
 # vim: set sw=2 ts=2 et:

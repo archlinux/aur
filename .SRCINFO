@@ -1,7 +1,8 @@
 pkgbase = pxview-git
 	pkgdesc = GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.
-	pkgver = 1.3.4.r5.fac9f01
+	pkgver = 1.3.4.r4.2eb1149
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/PXLogic/PXView
 	arch = i686
 	arch = x86_64
