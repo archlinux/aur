@@ -2,7 +2,7 @@
 # Co-maintainer: Nebulosa <nebulosa2007 at yandex dot ru>
 
 pkgname=cassette-git
-pkgver=0.2.0.r33.g3bed575
+pkgver=0.2.0.r36.g82c6937
 pkgrel=1
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 x86_64)
@@ -25,6 +25,7 @@ depends=(
   libxml2
   sqlite
   webkitgtk-6.0
+  xdg-desktop-portal-impl
 )
 makedepends=(
   blueprint-compiler
