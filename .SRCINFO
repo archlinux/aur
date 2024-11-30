@@ -1,0 +1,16 @@
+pkgbase = python-hangul-romanize
+	pkgdesc = Romanize Hangul strings. If you know, you know.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/youknowone/hangul-romanize
+	arch = x86_64
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/1d/5b/006eff88384092edb1f2171e6515d9c28bbc7d99f3f163af67517ea3a382/hangul-romanize-0.1.0.tar.gz
+	sha256sums = fae69ba181af6e75a86460fd7f57a6b304cd5f1973d8c425ed8602fee2c9276c
+
+pkgname = python-hangul-romanize
