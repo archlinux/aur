@@ -26,6 +26,7 @@ noextract=(
     xuantie-900-llvm-linux-glibc-bin-${pkgver}.tar.gz
 )
 options=('!strip')
+_toolchain_name="xuantie-900-llvm"
 
 package_xuantie-900-llvm-toolchain-bin() {
     pkgdesc="Xuantie 900 LLVM toolchain"
@@ -34,13 +35,13 @@ package_xuantie-900-llvm-toolchain-bin() {
 
 package_xuantie-900-llvm-elf-newlib-bin() {
     pkgdesc="Xuantie 900 LLVM elf newlib toolchain"
-    install -dm0755 "${pkgdir}/opt/xuantie-900-llvm/${pkgname%-bin}"
+    install -dm0755 "${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin}"
 
-    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" --strip-components=1 -C "${pkgdir}/opt/xuantie-900-llvm/${pkgname%-bin}" --no-same-owner  --no-same-permissions
+    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" --strip-components=1 -C "${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin}" --no-same-owner  --no-same-permissions
 
     install -Dm0755 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" << EOF
 #!/bin/sh
-[ -d /opt/xuantie-900-llvm/${pkgname%-bin}/bin ] && append_path '/opt/xuantie-900-llvm/${pkgname%-bin}/bin'
+[ -d /opt/${_toolchain_name}/${pkgname%-bin}/bin ] && append_path '/opt/${_toolchain_name}/${pkgname%-bin}/bin'
 
 export PATH
 EOF
@@ -48,13 +49,13 @@ EOF
 
 package_xuantie-900-llvm-linux-glibc-bin() {
     pkgdesc="Xuantie 900 LLVM glibc toolchain"
-    install -dm0755 "${pkgdir}/opt/xuantie-900-llvm/${pkgname%-bin}"
+    install -dm0755 "${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin}"
 
-    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" --strip-components=1 -C "${pkgdir}/opt/xuantie-900-llvm/${pkgname%-bin}" --no-same-owner  --no-same-permissions
+    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" --strip-components=1 -C "${pkgdir}/opt/${_toolchain_name}/${pkgname%-bin}" --no-same-owner  --no-same-permissions
 
     install -Dm0755 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" << EOF
 #!/bin/sh
-[ -d /opt/xuantie-900-llvm/${pkgname%-bin}/bin ] && append_path '/opt/xuantie-900-llvm/${pkgname%-bin}/bin'
+[ -d /opt/${_toolchain_name}/${pkgname%-bin}/bin ] && append_path '/opt/${_toolchain_name}/${pkgname%-bin}/bin'
 
 export PATH
 EOF

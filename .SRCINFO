@@ -1,6 +1,6 @@
 pkgbase = xuantie-900-llvm-toolchain-bin
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xrvm.cn/community/download?id=4382929556173033472
 	arch = x86_64
 	license = unknown
