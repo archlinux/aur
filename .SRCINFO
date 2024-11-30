@@ -1,6 +1,6 @@
 pkgbase = zooc-git
 	pkgdesc = A C re-write of tsoding's boomer with some added features.
-	pkgver = r13.7d03add
+	pkgver = r17.86f5757
 	pkgrel = 1
 	url = https://github.com/fami-fish/zooc
 	arch = x86_64

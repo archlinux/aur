@@ -1,6 +1,6 @@
 # Maintainer: Nicholas Bors-Sterian <fami_fish@proton.me>
 pkgname='zooc-git'
-pkgver=r13.7d03add
+pkgver=r17.86f5757
 pkgrel=1
 pkgdesc="A C re-write of tsoding's boomer with some added features."
 arch=('x86_64')
