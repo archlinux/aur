@@ -1,0 +1,4 @@
+[liberation-circuit]
+source="cmd"
+cmd="echo 1.3+r19e33635477"
+#pinned as it seems no further updates
