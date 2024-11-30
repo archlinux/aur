@@ -7,11 +7,11 @@ pkgdesc="Fladder - A Simple Jellyfin Frontend"
 arch=('x86_64')
 url="https://github.com/Fladder-App/Fladder"
 license=('GPL-3.0-or-later')
-depends=('glibc' 'mpv' 'gtk3')
+depends=('mpv' 'gtk3')
 makedepends=('patchelf')
 source=(
     "${pkgname}-${pkgver}.zip::https://github.com/DonutWare/Fladder/releases/download/v${pkgver}/Fladder-Linux-${pkgver}.zip"
-    "https://raw.githubusercontent.com/DonutWare/Fladder/refs/heads/develop/LICENSE"
+    "https://raw.githubusercontent.com/DonutWare/Fladder/refs/heads/main/LICENSE"
     "fladder.desktop"
 )
 sha256sums=('1ca78bf5534c466c289a5fd3d6a9407adb22d3bd6bb55d66b1cc76c875c1d17c'
