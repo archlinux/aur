@@ -17,7 +17,7 @@ pkgbase = algohub
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/swpu-acm/algohub/releases/download/algohub-v0.1.1-alpha.6/algohub_0.1.1-alpha.6_amd64.deb
+	source_x86_64 = algohub-0.1.1_alpha.6.tar.gz::https://github.com/swpu-acm/algohub/releases/download/algohub-v0.1.1-alpha.6/algohub_0.1.1-alpha.6_amd64.deb
 	sha256sums_x86_64 = e560d6ace0ce7594f0f0279522844b83b3068903bf0cb17d1988175c1f1b7fc9
 
 pkgname = algohub
