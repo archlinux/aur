@@ -1,7 +1,7 @@
 pkgbase = python-setuptools-declarative-requirements
 	pkgdesc = File support for setuptools declarative setup.cfg
 	pkgver = 1.3.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/s0undt3ch/setuptools-declarative-requirements
 	arch = any
 	license = Apache-2.0
