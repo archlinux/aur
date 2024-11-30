@@ -1,4 +1,5 @@
-# Maintainer: Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
+# Maintainer: jacko <obri.jack.02 at gmail dot com>
+# Contributor: Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
 
 _pkgroot=vision_msgs
 _pkgname=vision_msgs
