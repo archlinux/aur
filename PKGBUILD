@@ -2,7 +2,7 @@
 
 pkgname='rsl-git'
 provides=('rsl')
-pkgver=1.50
+pkgver=1.50.r10
 pkgrel=1
 pkgdesc="Radar Software Library"
 arch=('aarch64' 'x86_64')
@@ -10,6 +10,12 @@ url="http://pileus.org/aweather/rsl"
 license=('GPL2')
 source=("git+https://github.com/i3Craig/rsl.git")
 sha512sums=('SKIP')
+
+# Generate a version number based on the number of commits to the default branch.
+pkgver() {
+  cd rsl
+  printf "1.50.r%s" "$(git rev-list --count HEAD)"
+}
 
 prepare() {
   cd rsl
