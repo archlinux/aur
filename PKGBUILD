@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=ultimate-tic-tac-toe
-pkgver=1.0.1
+pkgver=1.0.2
 _commit=14f02401f4c6b24753a91ccca5917336f1c8d471
 pkgrel=1
 pkgdesc='Play Ultimate Tic Tac Toe'
