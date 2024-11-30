@@ -1,0 +1,4 @@
+[python-adblockparser]
+source = "github"
+github = "scrapinghub/adblockparser"
+use_max_tag = true
