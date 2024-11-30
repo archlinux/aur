@@ -1,15 +1,14 @@
 pkgbase = xlights-appimage
-	pkgdesc = xLights is a sequencer for Lights.
-	pkgver = 2022.22
+	pkgdesc = Sequencer for Lights
+	pkgver = 2024.19
 	pkgrel = 1
-	url = https://xlights.org/
+	url = https://github.com/xLightsSequencer/xLights
 	arch = x86_64
-	license = GPL
-	provides = xlights
+	license = GPL3
+	depends = fuse2
+	conflicts = xlights
 	options = !strip
-	source = https://github.com/smeighan/xLights/releases/download/2022.22/xLights-2022.22-x86_64.AppImage
-	source = xlights.desktop
-	md5sums = 8eed73261c469f80ea839f86a03380ab
-	md5sums = db5ba2bc1711d6517d819fad728b76b9
+	source = https://github.com/xLightsSequencer/xLights/releases/download/2024.19/xLights-2024.19-x86_64.AppImage
+	sha512sums = fecf50e9d00fcfe45ea3b7b2c2d1996381d01a497ca7958aed5e4e1f047422ccece1a5ef8386ee3799cef33b580bb89ddebe5ecfe3050a6ff1892785f985897e
 
 pkgname = xlights-appimage

@@ -1,0 +1,4 @@
+[xlights-appimage]
+source = "github"
+github = "xLightsSequencer/xLights"
+use_latest_release = true
