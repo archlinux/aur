@@ -1,7 +1,7 @@
 # Maintainer Pol Marcet Sardà <polmarcetsarda@gmail.com>
 
 pkgname=doomseeker
-pkgver=1.4.1.r0.g973e20aa
+pkgver=1.5.1.r0.g2098b2ee
 pkgrel=1
 epoch=1
 pkgdesc="A cross-platform Doom server browser"
@@ -15,7 +15,7 @@ optdepends=('zandronum: GZDoom fork supporting client/server multiplayer'
             'odamex: Classic client/server multiplayer fork'
             'chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom')
 
-source=('doomseeker::git+https://bitbucket.org/Doomseeker/doomseeker#tag=1.4.1')
+source=('doomseeker::git+https://bitbucket.org/Doomseeker/doomseeker#tag=1.5.1')
 sha256sums=('SKIP')
 
 pkgver() {
