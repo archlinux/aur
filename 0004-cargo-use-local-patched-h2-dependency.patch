@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Thomas Lamprecht <thomas@lamprecht.org>
+Date: Sat, 30 Nov 2024 11:56:16 +0100
+Subject: [PATCH] cargo: use local patched h2 dependency
+
+Signed-off-by: Thomas Lamprecht <thomas@lamprecht.org>
+---
+ Cargo.toml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index 27fec0ef..98a68309 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -163,6 +163,7 @@ zstd-safe = "6.0"
+ # Local path overrides
+ # NOTE: You must run `cargo update` after changing this for it to take effect!
+ [patch.crates-io]
++h2 = { path = "../h2" }
+ 
+ #proxmox-apt = { path = "../proxmox/proxmox-apt" }
+ proxmox-apt-api-types = { path = "../proxmox/proxmox-apt-api-types" }
+-- 
+2.47.1
+

@@ -1,7 +1,7 @@
 pkgbase = proxmox-backup-client
 	pkgdesc = Client for Proxmox Backup Server
-	pkgver = 3.2.7
-	pkgrel = 2
+	pkgver = 3.3.0
+	pkgrel = 1
 	url = https://pbs.proxmox.com
 	arch = x86_64
 	arch = aarch64
@@ -18,15 +18,19 @@ pkgbase = proxmox-backup-client
 	depends = gcc-libs
 	depends = openssl
 	options = !lto
-	source = proxmox-backup-client-3.2.7::git://git.proxmox.com/git/proxmox-backup.git#tag=v3.2.7
-	source = proxmox::git://git.proxmox.com/git/proxmox.git#commit=3545d67b1f3624a920e0a2c2150041e2eb267029
+	source = proxmox-backup-client-3.3.0::git://git.proxmox.com/git/proxmox-backup.git#tag=v3.3.0
+	source = proxmox::git://git.proxmox.com/git/proxmox.git#commit=8a1166be4b404a53abf12488a0c5686703eebf43
 	source = proxmox-fuse::git://git.proxmox.com/git/proxmox-fuse.git
 	source = pxar::git://git.proxmox.com/git/pxar.git
 	source = pathpatterns::git://git.proxmox.com/git/pathpatterns.git
+	source = h2::git+https://github.com/hyperium/h2.git#tag=v0.4.7
 	source = 0001-re-route-dependencies-not-available-on-crates.io-to-.patch
 	source = 0002-docs-drop-all-but-client-man-pages.patch
-	source = 0003-sys-cherry-pick-type-cast-fix-for-foreign-arch-build.patch
+	source = 0003-cargo-downgrade-http-to-0.2.12.patch
+	source = 0004-cargo-use-local-patched-h2-dependency.patch
 	source = elf-strip-unused-dependencies.sh
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP

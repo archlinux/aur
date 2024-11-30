@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Thomas Lamprecht <thomas@lamprecht.org>
+Date: Sat, 30 Nov 2024 11:41:27 +0100
+Subject: [PATCH] cargo: downgrade http to 0.2.12
+
+Signed-off-by: Thomas Lamprecht <thomas@lamprecht.org>
+---
+ Cargo.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index 34ca3d6..12fc1a8 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -45,7 +45,7 @@ futures-sink = { version = "0.3", default-features = false }
+ tokio-util = { version = "0.7.1", features = ["codec", "io"] }
+ tokio = { version = "1", features = ["io-util"] }
+ bytes = "1"
+-http = "1"
++http = "0.2.12"
+ tracing = { version = "0.1.35", default-features = false, features = ["std"] }
+ fnv = "1.0.5"
+ slab = "0.4.2"
+-- 
+2.47.1
+

@@ -5,14 +5,14 @@ Subject: [PATCH] re-route dependencies not available on crates.io to git repos
 
 Signed-off-by: Thomas Lamprecht <thomas@lamprecht.org>
 ---
- Cargo.toml | 141 +++++++++++--------------------------------------------------
- 1 file changed, 24 insertions(+), 117 deletions(-)
+ Cargo.toml | 155 +++++++++++--------------------------------------------------
+ 1 file changed, 31 insertions(+), 124 deletions(-)
 
 diff --git a/Cargo.toml b/Cargo.toml
-index 837e4363..9d0a8fdd 100644
+index d14f320a..27fec0ef 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -41,8 +41,6 @@ members = [
+@@ -42,8 +42,6 @@ members = [
  
      "proxmox-backup-banner",
      "proxmox-backup-client",
@@ -21,46 +21,41 @@ index 837e4363..9d0a8fdd 100644
  
      "pxar-bin",
  ]
-@@ -103,7 +101,6 @@ pbs-tools = { path = "pbs-tools" }
+@@ -112,7 +110,6 @@ pbs-tools = { path = "pbs-tools" }
  # regular crates
  anyhow = "1.0"
  async-trait = "0.1.56"
 -apt-pkg-native = "0.3.2"
  base64 = "0.13"
- bitflags = "1.2.1"
+ bitflags = "2.4"
  bytes = "1.0"
-@@ -117,7 +114,6 @@ flate2 = "1.0"
+@@ -126,7 +123,6 @@ flate2 = "1.0"
  foreign-types = "0.3"
  futures = "0.3"
- h2 = { version = "0.3", features = [ "stream" ] }
+ h2 = { version = "0.4", features = [ "stream" ] }
 -handlebars = "3.0"
  hex = "0.4.3"
  http = "0.2"
  hyper = { version = "0.14", features = [ "full" ] }
-@@ -152,132 +148,43 @@ walkdir = "2"
- xdg = "2.2"
+@@ -162,139 +158,50 @@ xdg = "2.2"
  zstd = { version = "0.12", features = [ "bindgen" ] }
+ zstd-safe = "6.0"
  
 -[dependencies]
 -anyhow.workspace = true
 -async-trait.workspace = true
--apt-pkg-native.workspace = true
 -base64.workspace = true
--bitflags.workspace = true
 -bytes.workspace = true
 -cidr.workspace = true
 -const_format.workspace = true
 -crc32fast.workspace = true
 -crossbeam-channel.workspace = true
 -endian_trait.workspace = true
--flate2.workspace = true
 -futures.workspace = true
 -h2.workspace = true
--handlebars.workspace = true
 -hex.workspace = true
 -http.workspace = true
 -hyper.workspace = true
--lazy_static.workspace = true
 -libc.workspace = true
 -log.workspace = true
 -nix.workspace = true
@@ -73,7 +68,6 @@ index 837e4363..9d0a8fdd 100644
 -rustyline.workspace = true
 -serde.workspace = true
 -serde_json.workspace = true
--siphasher.workspace = true
 -syslog.workspace = true
 -termcolor.workspace = true
 -thiserror.workspace = true
@@ -81,24 +75,27 @@ index 837e4363..9d0a8fdd 100644
 -tokio-openssl.workspace = true
 -tokio-stream.workspace = true
 -tokio-util = { workspace = true, features = [ "codec" ] }
--tower-service.workspace = true
+-tracing.workspace = true
 -udev.workspace = true
 -url.workspace = true
 -walkdir.workspace = true
--xdg.workspace = true
 -zstd.workspace = true
 -
  #valgrind_request = { git = "https://github.com/edef1c/libvalgrind_request", version = "1.1.0", optional = true }
  
 -# proxmox workspace
 -proxmox-apt.workspace = true
+-proxmox-apt-api-types.workspace = true
 -proxmox-async.workspace = true
 -proxmox-auth-api = { workspace = true, features = [ "api", "pam-authenticator" ] }
 -proxmox-compression.workspace = true
+-proxmox-config-digest.workspace = true
+-proxmox-daemon.workspace = true
 -proxmox-http = { workspace = true, features = [ "client-trait", "proxmox-async", "rate-limited-stream" ] } # pbs-client doesn't use these
 -proxmox-human-byte.workspace = true
 -proxmox-io.workspace = true
 -proxmox-lang.workspace = true
+-proxmox-log.workspace = true
 -proxmox-ldap.workspace = true
 -proxmox-metrics.workspace = true
 -proxmox-notify = { workspace = true, features = [ "pbs-context" ] }
@@ -108,16 +105,18 @@ index 837e4363..9d0a8fdd 100644
 -proxmox-schema = { workspace = true, features = [ "api-macro" ] }
 -proxmox-section-config.workspace = true
 -proxmox-serde = { workspace = true, features = [ "serde_json" ] }
+-proxmox-shared-cache.workspace = true
 -proxmox-shared-memory.workspace = true
 -proxmox-sortable-macro.workspace = true
 -proxmox-subscription.workspace = true
 -proxmox-sys = { workspace = true, features = [ "timer" ] }
+-proxmox-systemd.workspace = true
 -proxmox-tfa.workspace = true
 -proxmox-time.workspace = true
 -proxmox-uuid.workspace = true
+-proxmox-worker-task.workspace = true
 -
 -# in their respective repo
--pathpatterns.workspace = true
 -proxmox-acme.workspace = true
 -pxar.workspace = true
 -
@@ -131,61 +130,70 @@ index 837e4363..9d0a8fdd 100644
 -pbs-tape.workspace = true
 -pbs-tools.workspace = true
 -proxmox-rrd.workspace = true
+-proxmox-rrd-api-types.workspace = true
 -
  # Local path overrides
  # NOTE: You must run `cargo update` after changing this for it to take effect!
  [patch.crates-io]
  
--#proxmox-apt = { path = "../proxmox/proxmox-apt" }
+ #proxmox-apt = { path = "../proxmox/proxmox-apt" }
+-#proxmox-apt-api-types = { path = "../proxmox/proxmox-apt-api-types" }
 -#proxmox-async = { path = "../proxmox/proxmox-async" }
 -#proxmox-auth-api = { path = "../proxmox/proxmox-auth-api" }
 -#proxmox-borrow = { path = "../proxmox/proxmox-borrow" }
 -#proxmox-compression = { path = "../proxmox/proxmox-compression" }
+-#proxmox-config-digest = { path = "../proxmox/proxmox-config-digest" }
++proxmox-apt-api-types = { path = "../proxmox/proxmox-apt-api-types" }
++proxmox-async = { path = "../proxmox/proxmox-async" }
++proxmox-auth-api = { path = "../proxmox/proxmox-auth-api" }
++proxmox-borrow = { path = "../proxmox/proxmox-borrow" }
++proxmox-compression = { path = "../proxmox/proxmox-compression" }
++proxmox-config-digest = { path = "../proxmox/proxmox-config-digest" }
+ #proxmox-daemon = { path = "../proxmox/proxmox-daemon" }
 -#proxmox-fuse = { path = "../proxmox-fuse" }
 -#proxmox-http = { path = "../proxmox/proxmox-http" }
 -#proxmox-human-byte = { path = "../proxmox/proxmox-human-byte" }
 -#proxmox-io = { path = "../proxmox/proxmox-io" }
 -#proxmox-lang = { path = "../proxmox/proxmox-lang" }
-+proxmox-apt = { path = "../proxmox/proxmox-apt" }
-+proxmox-async = { path = "../proxmox/proxmox-async" }
-+proxmox-auth-api = { path = "../proxmox/proxmox-auth-api" }
-+proxmox-borrow = { path = "../proxmox/proxmox-borrow" }
-+proxmox-compression = { path = "../proxmox/proxmox-compression" }
+-#proxmox-log = { path = "../proxmox/proxmox-log" }
 +proxmox-fuse = { path = "../proxmox-fuse" }
 +proxmox-http = { path = "../proxmox/proxmox-http" }
 +proxmox-human-byte = { path = "../proxmox/proxmox-human-byte" }
 +proxmox-io = { path = "../proxmox/proxmox-io" }
 +proxmox-lang = { path = "../proxmox/proxmox-lang" }
++proxmox-log = { path = "../proxmox/proxmox-log" }
  #proxmox-ldap = { path = "../proxmox/proxmox-ldap" }
  #proxmox-metrics = { path = "../proxmox/proxmox-metrics" }
 -#proxmox-notify = { path = "../proxmox/proxmox-notify" }
 +proxmox-notify = { path = "../proxmox/proxmox-notify" }
  #proxmox-openid = { path = "../proxmox/proxmox-openid" }
--#proxmox-rest-server = { path = "../proxmox/proxmox-rest-server" }
+ #proxmox-rest-server = { path = "../proxmox/proxmox-rest-server" }
 -#proxmox-router = { path = "../proxmox/proxmox-router" }
-+proxmox-rest-server = { path = "../proxmox/proxmox-rest-server" }
 +proxmox-router = { path = "../proxmox/proxmox-router" }
  #proxmox-rrd = { path = "../proxmox/proxmox-rrd" }
+ #proxmox-rrd-api-types = { path = "../proxmox/proxmox-rrd-api-types" }
 -#proxmox-schema = { path = "../proxmox/proxmox-schema" }
 -#proxmox-section-config = { path = "../proxmox/proxmox-section-config" }
 -#proxmox-serde = { path = "../proxmox/proxmox-serde" }
 -#proxmox-shared-memory = { path = "../proxmox/proxmox-shared-memory" }
 -#proxmox-sortable-macro = { path = "../proxmox/proxmox-sortable-macro" }
--#proxmox-subscription = { path = "../proxmox/proxmox-subscription" }
--#proxmox-sys = { path = "../proxmox/proxmox-sys" }
--#proxmox-tfa = { path = "../proxmox/proxmox-tfa" }
--#proxmox-time = { path = "../proxmox/proxmox-time" }
--#proxmox-uuid = { path = "../proxmox/proxmox-uuid" }
 +proxmox-schema = { path = "../proxmox/proxmox-schema" }
 +proxmox-section-config = { path = "../proxmox/proxmox-section-config" }
 +proxmox-serde = { path = "../proxmox/proxmox-serde" }
 +proxmox-shared-memory = { path = "../proxmox/proxmox-shared-memory" }
 +proxmox-sortable-macro = { path = "../proxmox/proxmox-sortable-macro" }
-+proxmox-subscription = { path = "../proxmox/proxmox-subscription" }
+ #proxmox-subscription = { path = "../proxmox/proxmox-subscription" }
+-#proxmox-sys = { path = "../proxmox/proxmox-sys" }
+-#proxmox-systemd = { path = "../proxmox/proxmox-systemd" }
 +proxmox-sys = { path = "../proxmox/proxmox-sys" }
-+proxmox-tfa = { path = "../proxmox/proxmox-tfa" }
++proxmox-systemd = { path = "../proxmox/proxmox-systemd" }
+ #proxmox-tfa = { path = "../proxmox/proxmox-tfa" }
+-#proxmox-time = { path = "../proxmox/proxmox-time" }
+-#proxmox-uuid = { path = "../proxmox/proxmox-uuid" }
+-#proxmox-worker-task = { path = "../proxmox/proxmox-worker-task" }
 +proxmox-time = { path = "../proxmox/proxmox-time" }
 +proxmox-uuid = { path = "../proxmox/proxmox-uuid" }
++proxmox-worker-task = { path = "../proxmox/proxmox-worker-task" }
  
  #proxmox-acme = { path = "../proxmox/proxmox-acme" }
 -#pathpatterns = {path = "../pathpatterns" }
