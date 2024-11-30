@@ -32,7 +32,7 @@ source=($_pkgname-$pkgver.tar.gz::https://github.com/tuxedocomputers/tuxedo-driv
         0001-remove-the-unnecessary-for-NUC-X15.patch)
 
 sha256sums=('SKIP'
-            'e0cd6dc583fffc92f3a10d51f7cba7bde7e2f5c65d87db630a2f1468175168a0'
+            'SKIP'
             '9ee323b90ec7fc3512dd8db9bf359cb1422c41a9f0f0dd31e8a8ea9714663173'
             '1debb5fe0f454295746712286198399486fd3a08692916bf17846f9d93f4bdbb'
             '3e041d1838dc5fc83ac76c88a246e71e128fb4b3f26f963b46af4ac9f31d7a74'
