@@ -1,11 +1,11 @@
 # Maintainer: robertxy <prfiredragon at gmail dot com>
 
 pkgname='omada-controller-rxy'
-pkgver=5.14.32.2
-pkgrel=6
+pkgver=5.14.32.3
+pkgrel=1
 pkgdesc='Omada SDN Controller'
 _basepkgname='Omada_SDN_Controller'
-_basepkgpath='upload/software/2024/202410/20241015'
+_basepkgpath='upload/software/2024/202411/20241101'
 _baseos='linux_x64'
 arch=('x86_64' 'aarch64')
 url='https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software'
@@ -15,10 +15,10 @@ makedepends=('git')
 conflicts=('omada-sdn-controller' 'omada-controller')
 install=omada-controller.install
 source=(
-    "https://static.tp-link.com/${_basepkgpath}/${_basepkgname}_v${pkgver}_${_baseos}.gz"
+    "https://static.tp-link.com/${_basepkgpath}/${_basepkgname}_v${pkgver}_${_baseos}.tar.gz"
     "git+https://github.com/prfiredragon/omada-controller-scripts.git"
 )
-sha256sums=('f3b7e09ed62d1fab0c3ea6785d97998b226a72987ff5873e23a847a03190d5a5'
+sha256sums=('04d0f34e2c4e7604629ae055d9ee61a6b1bb76c043869a82709b0aeb380e7132'
             'SKIP')
 
 package() {
