@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=chawan-git
-pkgver=r2201.a766983b
+pkgver=r2552.965fc542
 pkgrel=1
 pkgdesc="Web browser for your terminal"
 arch=(x86_64)
@@ -9,8 +9,9 @@ url="https://git.sr.ht/~bptato/${pkgname%-git}"
 license=(Unlicense)
 depends=(
   bash
+  gcc-libs
   glibc
-  libseccomp
+  libssh2
   ncurses
   openssl
 )
