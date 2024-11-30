@@ -2,8 +2,8 @@
 
 _pkgname=ansible_navigator
 pkgname=ansible-navigator
-pkgver=24.9.0
-pkgrel=2
+pkgver=24.10.0
+pkgrel=1
 pkgdesc="A text-based user interface (TUI) for Ansible."
 arch=('any')
 url="https://github.com/ansible/ansible-navigator"
@@ -14,8 +14,8 @@ checkdepends=('python-pytest')
 optdepends=('ansible: check official ansible collections')
 provides=('ansible-navigator')
 conflicts=('ansible-navigator')
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/4d/13/7e2700329ed9b866c10dcf696a2e1633da2eb3ac705c49abe0d63ab4beba/ansible_navigator-24.9.0.tar.gz")
-sha256sums=('796dfcfe7def87697684aae1d71a56d9f881e723a44e72bbec09debc34ad0fbb')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/3c/57/ae38c42784df6cab8f268aa2683b2f22b06b1ab45a30ed8e8a06210913ac/ansible_navigator-24.10.0.tar.gz")
+sha256sums=('50f7d17f10e40fa1c70a505dac5a386bce302c6b453b330d732f11ac8813ea29')
 
 build() {
   ln -sf "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/${pkgname}-${pkgver}"
