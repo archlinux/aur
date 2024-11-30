@@ -28,7 +28,7 @@ prepare() {
   # Set --exec_prefix and --prefix to 'hard-code' directory / file locations in the source code, including the wsr88d_locations.dat file.
   # We override these below in the 'make install' call to be in $pkgdir so that the object files, header files,
   # and data files are copied to the temp direcotry for packaging instead of the system /usr folder.
-  ./configure LDFLAGS="-ltirpc" CFLAGS="-I/usr/include/tirpc/" --exec_prefix=/usr/lib --prefix=/usr
+  ./configure LDFLAGS="-ltirpc" CFLAGS="-I/usr/include/tirpc/" --exec_prefix=/usr --prefix=/usr
 }
 
 build() {
