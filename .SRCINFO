@@ -1,6 +1,6 @@
 pkgbase = openmv-ide-bin
 	pkgdesc = QtCreator based OpenMV IDE.
-	pkgver = 4.2.4
+	pkgver = 4.4.7
 	pkgrel = 1
 	url = https://github.com/openmv/openmv-ide
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = openmv-ide-bin
 	provides = openmv-ide
 	conflicts = openmv-ide
 	options = !strip
-	source_x86_64 = https://github.com/openmv/openmv-ide/releases/download/v4.2.4/openmv-ide-linux-x86_64-4.2.4.tar.gz
-	sha256sums_x86_64 = 82b1771896dc550dd8861baded9b4cce882d52e68431739cd664347b8017d333
+	source_x86_64 = https://github.com/openmv/openmv-ide/releases/download/v4.4.7/openmv-ide-linux-x86_64-4.4.7.tar.gz
+	sha256sums_x86_64 = bc0bf75e4acfec4f988b61503902630e4b0112bd2f94c2618cf02b20ccaedf9b
 
 pkgname = openmv-ide-bin
