@@ -1,11 +1,11 @@
 pkgbase = nywida
 	pkgdesc = Declarative package helper for pacman and existing aur helper
-	pkgver = 0.1.0alpha
+	pkgver = 0.1.1alpha
 	pkgrel = 1
 	url = https://github.com/0drng/nywida
 	arch = x86_64
 	makedepends = cargo
-	source = nywida-0.1.0alpha.tar.gz::https://github.com/0drng/nywida/archive/0.1.0alpha.tar.gz
-	sha256sums = d792dae13dd9e11dfb43aed7cc8239efb603db982408f90b824f2c49cb57d13e
+	source = nywida-0.1.1alpha.tar.gz::https://github.com/0drng/nywida/archive/0.1.1alpha.tar.gz
+	sha256sums = e8645543ccc82fe86b2ad76fe02484506f3f0024570a6c5ced55d85f0e6e4635
 
 pkgname = nywida
