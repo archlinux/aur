@@ -1,14 +1,35 @@
 pkgbase = gdlmm
 	pkgdesc = C++ bindings for the gdl library
 	pkgver = 3.7.3
-	pkgrel = 5
-	url = https://git.gnome.org/browse/gdlmm/
+	pkgrel = 6
+	url = https://gitlab.gnome.org/Archive/gdlmm
 	arch = x86_64
-	license = LGPL
-	depends = gdl
-	depends = gtkmm3
-	options = !emptydirs
-	source = https://ftp.gnome.org/pub/GNOME/sources/gdlmm/3.7/gdlmm-3.7.3.tar.xz
+	license = LGPL-2.0-or-later
+	makedepends = atkmm
+	makedepends = gcc-libs
+	makedepends = gdl>=3.7
+	makedepends = glib2
+	makedepends = glibc
+	makedepends = glibmm>=2.16
+	makedepends = gtk3
+	makedepends = gtkmm3
+	makedepends = libsigc++
+	makedepends = mm-common
+	source = gdlmm-3.7.3.tar.xz::https://ftp.gnome.org/pub/GNOME/sources/gdlmm/3.7/gdlmm-3.7.3.tar.xz
 	sha256sums = e280ed9233877b63ad0a0c8fb04d2c35dc6a29b3312151ee21a15b5932fef79b
 
 pkgname = gdlmm
+	depends = atkmm
+	depends = gcc-libs
+	depends = gdl>=3.7
+	depends = glib2
+	depends = glibc
+	depends = glibmm>=2.16
+	depends = gtk3
+	depends = gtkmm3
+	depends = libsigc++
+	provides = libgdlmm-3.0.so
+
+pkgname = gdlmm-docs
+	pkgdesc = C++ bindings for the gdl library (documentation)
+	arch = any
