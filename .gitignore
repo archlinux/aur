@@ -1,5 +1,4 @@
-/backrest
 /pkg
 /src
 *.tar.gz
-*.pkg.tar.zst
+*.pkg.tar.*
