@@ -7,11 +7,11 @@ pkgname=(
     xuantie-900-llvm-linux-glibc-bin
 )
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url=https://www.xrvm.cn/community/download?id=4382929556173033472
 license=('unknown')
-_dwurl="https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/"
+_dwurl=https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/
 _linux_ver=6.6.0
 source=(
     "xuantie-900-llvm-elf-newlib-bin-${pkgver}.tar.gz::${_dwurl}/1732890326920/Xuantie-900-llvm-elf-newlib-${arch}-V${pkgver}-20241121.tar.gz"
@@ -25,7 +25,7 @@ noextract=(
     xuantie-900-llvm-elf-newlib-bin-${pkgver}.tar.gz
     xuantie-900-llvm-linux-glibc-bin-${pkgver}.tar.gz
 )
-_toolchain_name="xuantie-900-llvm"
+options=('!strip')
 
 package_xuantie-900-llvm-toolchain-bin() {
     pkgdesc="Xuantie 900 LLVM toolchain"
