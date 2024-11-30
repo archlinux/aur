@@ -1,0 +1,4 @@
+[meteoinfo]
+source="regex"
+regex="MeteoInfo_([\\d.]+).zip"
+url="http://meteothink.org/downloads/"
