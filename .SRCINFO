@@ -1,0 +1,17 @@
+pkgbase = python-pyloudnorm
+	pkgdesc = Implementation of ITU-R BS.1770-4 loudness algorithm in Python
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/saffsd/langid.py
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	source = https://files.pythonhosted.org/packages/75/b5/39d59c44ecd828fabfdbd796b50a561e6543ca90ef440ab307374f107856/pyloudnorm-0.1.1.tar.gz
+	sha256sums = 63cd4e197dea4e7795160ea08ed02d318091bce883e436a6dbc5963326b71e1e
+
+pkgname = python-pyloudnorm
