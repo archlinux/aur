@@ -2,7 +2,7 @@
 
 pkgname=libg15
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides low-level access to the Logitech G15 and G11 keyboards and Z10 speakers"
 arch=('x86_64')
 url="https://github.com/vividnightmare/libg15"
@@ -14,7 +14,7 @@ sha512sums=('7a76b4fd9358d65f82009e9b448e158f6ca4424256ecf24608f1a47d87a50095228
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  chmod -R 777 ${srcdir}
+  chmod +x configure
   ./configure --prefix=/usr
   make
 }
