@@ -12,10 +12,6 @@ depends=('dbus-glib')
 provides=("betterbird=${pkgver}")
 conflicts=('betterbird')
 source=(
-#	"https://www.betterbird.eu/downloads/get.php?os=linux&lang=de&version=release"
-#    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-replacement.pt-BR.linux-x86_64.tar.bz2"
-#    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-hotfix.pt-BR.linux-x86_64.tar.bz2"
-#    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-build2.pt-BR.linux-x86_64.tar.bz2"
     "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}.nl.linux-x86_64.tar.bz2"
     "eu.betterbird.Betterbird"
 )
@@ -26,7 +22,7 @@ package() {
     install -d "${pkgdir}/usr/share/applications"
 
     cp -r "${srcdir}/${_pkgname}/" "${pkgdir}/opt/${_pkgname}"
-    install -m644 "${srcdir}/eu.${_pkgname}.Betterbird" "${pkgdir}/usr/share/applications/eu.${_pkgname}.Betterbird"
+    install -m644 "${srcdir}/eu.${_pkgname}.Betterbird.desktop" "${pkgdir}/usr/share/applications/eu.${_pkgname}.Betterbird.desktop"
     ln -s /opt/$_pkgname/betterbird "$pkgdir"/usr/bin/$_pkgname
 
     echo     "
@@ -43,5 +39,5 @@ package() {
     done
 }
 sha256sums=('cb41eb7393fdd44894d2f8ee55e7e94838bd717f1bf1363a6e5c0d4eff3bcd1f'
-            'b664d5453512ba1c8a58699d106fb1248991dbae0ee44464484be0886278945b')
+            'd3818d266e11ab06238449db5b24e27d35f910f150c259c012d3adce695b93b5')
 
