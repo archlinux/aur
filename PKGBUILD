@@ -2,7 +2,7 @@
 
 pkgname=aweather-git
 provides=('aweather')
-pkgver=0.9.0
+pkgver=0.9.0.r5
 pkgrel=1
 pkgdesc="Free real-time weather data viewer designed for weather enthusiasts."
 arch=('aarch64' 'x86_64')
@@ -12,6 +12,12 @@ depends=("grits" 'mesa' 'rsl')
 optdepends=('gpsd')
 source=('git+https://github.com/i3Craig/aweather.git')
 sha512sums=('SKIP')
+
+# Generate a version number based on the number of commits to the default branch.
+pkgver() {
+  cd aweather
+  printf "0.9.0.r%s" "$(git rev-list --count HEAD)"
+}
 
 prepare() {
   cd aweather
