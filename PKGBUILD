@@ -1,6 +1,6 @@
 _basepgkname=cosmopolitan
 pkgname="${_basepgkname}-bin"
-pkgver=3.9.3
+pkgver=3.9.7
 pkgrel=2
 pkgdesc="Build-once run-anywhere c library."
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ source=(
         )
 
 sha256sums=(
-            '37cfb39217b980b04dc256dc9a4ae55646c371a1b0e63d5a1e45bed3cc14ceae'
+            '3f559555d08ece35bab1a66293a2101f359ac9841d563419756efa9c79f7a150'
             '0a5d918ef46aaf764293fb18794eac021cb93637fe6abed7c9d3f06b7b2f4cad'
             '9351247b53d34dc584170c435512954b8eb1a69c7b3ff0bee43ce21264b8d467'
           )
