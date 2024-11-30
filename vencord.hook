@@ -9,3 +9,4 @@ Target=discord-ptb
 [Action]
 When=PostTransaction
 Exec=/etc/pacman.d/hookbin/vencord.sh
+NeedsTargets

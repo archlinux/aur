@@ -9,8 +9,8 @@ license=('MIT')
 depends=('curl')
 source=("vencord.hook"
 		"vencord.sh")
-sha256sums=('da560df0c33a4b61f0c2ecf146ae80bd91368d16300e66b9d39589f7481bca76'
-			'7502de11bbeeb33aec7babb89476ae3d68cc01c0e2caa33fb681f39c0e4cb271')
+sha256sums=('d9207be523421dd747e99f4e618673338cb657fb96bc53eec1323c56ee7d7814'
+			'35e23a2c9ae728922ff572bb2f0be374179c99f98e1c44744c346d53f325957a')
 
 package() {
 	install -Dm644 vencord.hook "${pkgdir}/etc/pacman.d/hooks/vencord.hook"
