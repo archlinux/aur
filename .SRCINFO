@@ -1,6 +1,6 @@
 pkgbase = shlink-web-client
 	pkgdesc = A ReactJS-based progressive web application for Shlink
-	pkgver = 4.2.2
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/shlinkio/shlink-web-client
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = shlink-web-client
 	makedepends = nodejs
 	makedepends = npm
 	optdepends = nginx: reverse-proxy
-	source = shlink-web-client-4.2.2.tar.gz::https://github.com/shlinkio/shlink-web-client/archive/refs/tags/v4.2.2.tar.gz
-	sha512sums = 752667a153d1db6fe86859cb16b75c6bfae6269f2c68053e431fbf855f0f696fd0ecc79576060e52d3ac9829d289dc8ccf4dd8761bf863eced6c6f94b4364073
+	source = shlink-web-client-4.3.0.tar.gz::https://github.com/shlinkio/shlink-web-client/archive/refs/tags/v4.3.0.tar.gz
+	sha512sums = 9686c7ec9b2dec5add5bcd2d7250415389bffb6ee3cfdbd5fcf9cd8a29af818c5a72c0dcb5bca0b576719400e751d6a75e15c5c74078191204d2c2cdad825a2b
 
 pkgname = shlink-web-client
