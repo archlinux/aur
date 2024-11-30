@@ -3,7 +3,7 @@
 
 pkgname=libbpf-git
 pkgver=1.5.0.r22.gc5f22aca
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for loading eBPF programs and reading and manipulating eBPF objects from user-space"
 arch=('i686' 'x86_64')
 url="https://github.com/libbpf/libbpf"
@@ -44,5 +44,4 @@ package() {
     install_headers
   install -Dm644 "LICENSE.BSD-2-Clause" -t "$pkgdir/usr/share/licenses/libbpf"
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/libbpf"
-
 }

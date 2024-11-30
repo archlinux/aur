@@ -1,7 +1,7 @@
 pkgbase = libbpf-git
 	pkgdesc = Library for loading eBPF programs and reading and manipulating eBPF objects from user-space
 	pkgver = 1.5.0.r22.gc5f22aca
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/libbpf/libbpf
 	arch = i686
 	arch = x86_64
