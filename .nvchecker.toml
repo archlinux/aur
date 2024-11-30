@@ -1,0 +1,3 @@
+[python-vllm-bin]
+source="pypi"
+pypi="vllm"
