@@ -2,7 +2,7 @@
 
 pkgname=ttf-juliamono-nerd-font
 pkgver=0.058
-pkgrel=2
+pkgrel=3
 pkgdesc="JuliaMono, a font for programming, patched with Nerd Fonts (Regular, Mono, Propo)"
 arch=('any')
 url="https://github.com/mietzen/juliamono-nerd-font"
@@ -22,7 +22,7 @@ prepare() {
 }
 
 package() {
-    install -dm744 "${pkgdir}/usr/share/fonts/TTF/juliamono-nerd"/{mono,propo,regular}
+    install -dm755 "${pkgdir}/usr/share/fonts/TTF/juliamono-nerd"/{mono,propo,regular}
     cp -rt "${pkgdir}/usr/share/fonts/TTF/juliamono-nerd" "font/"{mono,propo,regular}
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" "${pkgname}-license"
 }
