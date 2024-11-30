@@ -1,0 +1,18 @@
+pkgbase = hellwal
+	pkgdesc = fast, extensible color palette generator
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/danihek/hellwal
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	arch = riscv
+	license = MIT
+	makedepends = make
+	source = https://github.com/danihek/hellwal/archive/refs/tags/v1.0.0/v1.0.0.tar.gz
+	md5sums = e8e5c8efce4453b31b6987ad03f1ac31
+	sha256sums = f6c974274c092d1e6962f2724e8572923d67a259c097c3f1d7207617633d6e78
+	sha512sums = 5bad21b387ec17bd81e9f3ef682ca988d552a0201fdeac181d2544b88ed6c9033bf311fdc71b2089c710689efe56009689e5be8254f06235697848ccae7fb4b1
+
+pkgname = hellwal
