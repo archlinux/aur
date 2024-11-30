@@ -13,6 +13,11 @@ sha512sums=('SKIP')
 
 prepare() {
   cd rsl
+
+  # Regenerate auto-generated files with the latest version of automake tools available on this system.
+  # This prevents version mismatch errors when running 'make' below if automake versions change.
+  autoreconf -ifv
+
   # Tell the configure script where the tirpc library is located at so rsl can compile and link correctly.
   ./configure LDFLAGS="-ltirpc" CFLAGS="-I/usr/include/tirpc/" --prefix=/usr
 }
