@@ -1,15 +1,16 @@
 pkgbase = alohomora
 	pkgdesc = Alohomora is a free and open-source password manager
 	pkgver = v1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/z0o0p/alohomora
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
 	makedepends = git
+	makedepends = vala
 	depends = granite
 	depends = libsecret
-	source = https://github.com/z0o0p/alohomora/archive/131d82a8e6fa30a129422fd8b63bd9d54bcc5ea0.zip
-	sha256sums = e651c2b58651a488cfcde95f91dc73b0fcd1c7515592b0639f57a283bda9f047
+	source = https://github.com/z0o0p/alohomora/archive/39dab4093d727c26015f639007f2244002c34da1.zip
+	sha256sums = 7756e6c991ab1686120953d0101766316d5b37f9eadbb6f346a244824b298415
 
 pkgname = alohomora
