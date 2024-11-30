@@ -1,7 +1,7 @@
 pkgbase = python-sanic-testing
 	pkgdesc = Core testing clients for Sanic
 	pkgver = 23.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sanic-org/sanic-testing/
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = python-sanic-testing
 	makedepends = python-setuptools
 	depends = python
 	depends = python-httpx
+	depends = python-typing_extensions
 	source = https://github.com/sanic-org/sanic-testing/archive/v23.12.0/python-sanic-testing-23.12.0.tar.gz
 	sha256sums = 427c47577d9eab69e2b51fb6bef027ca076646fd98c58900b18cae4abbaa05be
 

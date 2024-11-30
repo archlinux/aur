@@ -2,12 +2,12 @@
 
 pkgname=python-sanic-testing
 pkgver=23.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Core testing clients for Sanic'
 arch=("any")
 url='https://github.com/sanic-org/sanic-testing/'
 license=(MIT)
-depends=(python python-httpx)
+depends=(python python-httpx python-typing_extensions)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest python-sanic python-pytest-asyncio)
 source=("https://github.com/sanic-org/sanic-testing/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
