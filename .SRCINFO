@@ -1,6 +1,6 @@
 pkgbase = royalguard-bin
 	pkgdesc = Secure Ergonomic Command Line Password Manager
-	pkgver = 0.4.3
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = https://github.com/zahash/royalguard
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = royalguard-bin
 	depends = glibc
 	provides = royalguard
 	conflicts = royalguard
-	source_x86_64 = https://github.com/zahash/royalguard/releases/download/v0.4.3/royalguard-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 1e8336d8d690542fe14eadb8681b13d30ca00f0c5ffa5e879b81ffb3ecee53e9
+	source_x86_64 = https://github.com/zahash/royalguard/releases/download/v0.4.9/royalguard-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = a6fb9a72f0083b94bfc8990bfadd48a42dd759d96c508065c9c6bda27e4b3773
 
 pkgname = royalguard-bin

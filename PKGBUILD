@@ -3,7 +3,7 @@
 _pkgauthor=zahash
 _pkgname=royalguard
 pkgname=${_pkgname}-bin
-pkgver=0.4.3
+pkgver=0.4.9
 pkgrel=1
 pkgdesc='Secure Ergonomic Command Line Password Manager'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -14,7 +14,7 @@ depends=('glibc')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[0]}-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('1e8336d8d690542fe14eadb8681b13d30ca00f0c5ffa5e879b81ffb3ecee53e9')
+sha256sums_x86_64=('a6fb9a72f0083b94bfc8990bfadd48a42dd759d96c508065c9c6bda27e4b3773')
 
 package() {
   cd "${srcdir}/${_pkgname}-${arch[0]}-unknown-linux-gnu/" || exit
