@@ -1,7 +1,7 @@
 pkgbase = python-pytest-helpers-namespace
 	pkgdesc = PyTest Helpers Namespace
 	pkgver = 2021.12.29
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/saltstack/pytest-helpers-namespace
 	arch = any
 	license = Apache-2.0
