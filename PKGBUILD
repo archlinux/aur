@@ -1,7 +1,7 @@
 # Maintainer: Alexander Jacocks <alexander@redhat.com>
 
 pkgname=mii_emu
-pkgver=1.96
+pkgver=1.97
 pkgrel=1
 pkgdesc="Apple //e Emulator for Linux"
 arch=('any')
@@ -15,7 +15,7 @@ conflicts=('mii_emu')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/buserror/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
   "mii_emu.desktop")
-sha256sums=('43d8f0912943d43d4deb2afa2c8dd23822e96606d7dd78bf98d0e0245f18e98a'
+sha256sums=('4bf8d3bf9b23f99e587a9b313f7f59a8716fed955afdf15d8527958a46614173'
             '30ed9a8f75daf97aad8933d0409dd6dc0933e1b4ec4f077a8121eff14e53f951')
 
 build() {
