@@ -1,7 +1,7 @@
 pkgbase = gollama
 	pkgdesc = Go manage your Ollama models
 	pkgver = 1.27.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sammcj/gollama
 	arch = x86_64
 	license = MIT
