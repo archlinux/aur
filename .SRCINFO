@@ -1,0 +1,24 @@
+pkgbase = python-thinc-bin-8.3.2
+	pkgdesc = Industrial-strength Natural Language Processing (NLP) in Python
+	pkgver = 8.3.2
+	pkgrel = 1
+	url = https://github.com/explosion/thinc
+	arch = x86_64
+	license = MIT
+	depends = python-blis
+	depends = python-catalogue
+	depends = python-confection
+	depends = python-cymem
+	depends = python-murmurhash
+	depends = python-numpy
+	depends = python-packaging
+	depends = python-preshed
+	depends = python-pydantic
+	depends = python-srsly
+	depends = python-wasabi
+	provides = python-thinc=8.3.2
+	conflicts = python-thinc
+	source = https://files.pythonhosted.org/packages/50/8a/4dcf7aae62c208b2decf65c03ab502d096b848f59f7dade00dbdefd952eb/thinc-8.3.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	md5sums = abfbfa05d42977ab6b92075498997a52
+
+pkgname = python-thinc-bin-8.3.2
