@@ -1,22 +1,32 @@
 pkgbase = aeskulap
 	pkgdesc = Medical image viewer and DICOM client
-	pkgver = 0.2.2.beta2.8.ge710562
-	pkgrel = 2
+	pkgver = 0.2.2beta2+r8+ge710562
+	pkgrel = 1
 	url = http://www.nongnu.org/aeskulap
-	arch = i686
 	arch = x86_64
-	license = GPL
-	makedepends = git
-	makedepends = intltool
-	makedepends = perl-xml-parser
-	makedepends = gconf
-	makedepends = icu
-	depends = libglademm
-	depends = dconf
+	arch = i686
+	license = GPL-2.0-or-later AND LGPL-2.0-or-later AND custom:Public Domain
+	makedepends = intltool>=0.25
+	depends = atkmm
 	depends = dcmtk
-	options = !libtool
-	options = !makeflags
-	source = git+https://gitlab.com/stefanhusmann/aeskulap.git#commit=e710562d45303cd3b5f8c3260f9c1ed6b9648bdc
-	md5sums = SKIP
+	depends = dconf
+	depends = gcc-libs
+	depends = glib2>=2.2
+	depends = glibc
+	depends = glibmm
+	depends = gtkmm>=2.6
+	depends = hicolor-icon-theme
+	depends = libglade>=0.29
+	depends = libsigc++
+	depends = pangomm
+	options = !lto
+	source = aeskulap-e710562d45303cd3b5f8c3260f9c1ed6b9648bdc.tar.gz::https://gitlab.com/stefanhusmann/aeskulap/-/archive/e710562d45303cd3b5f8c3260f9c1ed6b9648bdc/aeskulap-e710562d45303cd3b5f8c3260f9c1ed6b9648bdc.tar.gz
+	source = aeskulap_newDicomElement_member_of_DcmItem.patch::https://sources.debian.org/data/main/a/aeskulap/0.2.2-beta2%2Bgit20190406.ef77f01-4/debian/patches/newDicomElement.patch
+	source = aeskulap_gsettings_configuration_storage.patch::https://sources.debian.org/data/main/a/aeskulap/0.2.2-beta2%2Bgit20190406.ef77f01-4/debian/patches/GSettings-configuratio-storage.patch
+	source = aeskulap_remove_gconf_schemas.patch::https://sources.debian.org/data/main/a/aeskulap/0.2.2-beta2%2Bgit20190406.ef77f01-4/debian/patches/ignore_gconf_schemas.patch
+	b2sums = 5c0ecea466912ffb13e33347ee8805177b36a4e43202b8fcb9f7e5da2b11f673976adcef04d27c4969987c600407e97a9271f052ff2b8878db3dc4fe01cd0a32
+	b2sums = fa03f307a84e3ac6f051ec677a3e311f5d76a61bf449e40ecb795b36fdf0cb2701cae287e345e5ab7c7c9fceb8d5e752e2e010b7e370b369060b4cd9bb7819d7
+	b2sums = c6768b4f917e53fd9f165e5cb0daf841efa7114a69a5cdaf8e413eed14a24cc155b7a15cca7fb95014cee7de90c64c0bba99b0d88d9818f313f7a6f0a2ef0880
+	b2sums = f49223f5d4b37bddc3b3fbebe4a42c5e3aafbe7a773b1e80409ac3bea8cfb22b3b238d4c6ce395c46b2357e5c8cb9922bd78c92f6ac7e0b036b2006279f09003
 
 pkgname = aeskulap
