@@ -1,0 +1,19 @@
+pkgbase = autoricer-bin
+	pkgdesc = Autoricer for Hyprland on Arch Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/3rfaan/autoricer
+	arch = x86_64
+	license = GPL-3.0-or-later
+	optdepends = hyprland
+	optdepends = kitty
+	optdepends = neovim
+	optdepends = waybar
+	optdepends = wofi
+	optdepends = zsh
+	provides = autoricer
+	conflicts = autoricer
+	source = https://github.com/3rfaan/autoricer/releases/download/v0.1.0/autoricer-0.1.0-x86_64.tar.gz
+	sha256sums = 607b6531f14dee3d45726a0fa92d2305a6f65abe1fc44848a6b9410e60bb3f85
+
+pkgname = autoricer-bin
