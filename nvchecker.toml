@@ -1,0 +1,4 @@
+[python-ipwhois]
+source = "github"
+github = "secynic/ipwhois"
+use_latest_release = true
