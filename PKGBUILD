@@ -10,7 +10,7 @@ _commit="e710562d45303cd3b5f8c3260f9c1ed6b9648bdc" # r8
 pkgrel=1
 pkgdesc="Medical image viewer and DICOM client"
 arch=('x86_64' 'i686')
-url="http://www.nongnu.org/aeskulap"
+url="https://www.nongnu.org/aeskulap"
 _url="https://gitlab.com/stefanhusmann/${pkgname}"
 license=('GPL-2.0-or-later AND LGPL-2.0-or-later AND custom:Public Domain')
 depends=('atkmm' 'dcmtk' 'dconf' 'gcc-libs' 'glib2>=2.2' 'glibc' 'glibmm'
