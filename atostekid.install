@@ -22,9 +22,9 @@ post_install() {
     HOME=$(mktemp -d)
     note "Extracting certificate"
     atostekid -installSCSCA
-    install -D -m 644 "${HOME}/.local/share/Atostek Oy/Atostek ID/scsca.cer" ${certificate_path}
+    install -D -m 644 "${HOME}/.local/share/Atostek Oy/Atostek ID/scsca.cer" "${certificate_path}"
     note "Trusting ${certificate_label}"
-    trust anchor ${certificate_path}
+    trust anchor "${certificate_path}"
 
     if ! systemctl --quiet is-active pcscd.service 2>/dev/null; then
         warn "${pkgname} requires that the PC/SC Smart Card Daemon systemd service (pcscd.service) is running. Please ensure it is running before launching ${pkgname}."
@@ -32,18 +32,19 @@ post_install() {
 }
 
 post_upgrade() {
-    if [ -f ${certificate_path} ]; then
+    if [ -f "${certificate_path}" ]; then
         note "Removing trust for current ${certificate_label}"
-        trust anchor --remove ${certificate_path}
+        trust anchor --remove "${certificate_path}"
     fi
 
     post_install
 }
 
 post_remove() {
-    if [ -f ${certificate_path} ]; then
+    if [ -f "${certificate_path}" ]; then
         note "Removing trust for ${certificate_label}"
-        trust anchor --remove ${certificate_path}
-        rm -rf /etc/{$pkgname:-atostekid}
+        trust anchor --remove "${certificate_path}"
+        rm "${certificate_path}"
+        rmdir "/etc/{$pkgname:-atostekid}"
     fi
 }
