@@ -1,6 +1,5 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
-
 _pkgauthor=dalance
 _pkgname=pipecolor
 pkgname=${_pkgname}-bin
