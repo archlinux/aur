@@ -4,7 +4,7 @@
 pkgname=python-drms
 _name=drms
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The drms module provides an easy-to-use interface for accessing HMI, AIA and MDI data with Python."
 arch=(any)
 url="https://github.com/sunpy/drms"
@@ -29,6 +29,10 @@ build() {
 package() {
     cd $_name-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
+    
+    #Quick fix; the below file is not copied over by the installer, and importing drms fails if it is absent.
+    site_location=$(python -c 'import site; print(site.getsitepackages()[0])')
+    install drms/CITATION.rst "$pkgdir/$site_location/drms/"
 }
 
 # vim:set ts=2 sw=2 et:
