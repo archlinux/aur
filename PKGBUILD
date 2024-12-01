@@ -5,7 +5,7 @@
 _realname=CPU-X
 _basename=cpu-x
 pkgname="${_basename}-opencl"
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc='Gathers information on CPU, motherboard, GPU and more (with OpenCL support)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -32,6 +32,7 @@ makedepends=(
   'ninja'
   'opencl-headers>=2:2023.02.06'
   'vulkan-headers'
+  'polkit'
 )
 optdepends=(
   'opencl-driver: packaged OpenCL driver'
@@ -42,7 +43,7 @@ provides=("${_basename}=${pkgver}")
 conflicts=("${_basename}")
 _tarname="${_basename}-${pkgver}"
 source=("${_tarname}.tar.gz::${_repourl}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('7f0ce6123cdd957663aa1012194cee12a09cdd3a44b0bcdfecad36315a3b1c1e5e6461ffa0d9613c0ff275332d4aae0499f8687d1acbcd921703971508819ed6')
+sha512sums=('8601946feaed567e144350c69761a46a7f5ff1aa47c1d550afca11d6b3eb7546b125c56ecd4f266a33d5ee8a6ef09eba01f7c6570dde25c4f1989971eb6dbb27')
 
 prepare() {
   cmake -S "${_realname}-${pkgver}" -B build \
