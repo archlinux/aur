@@ -1,6 +1,6 @@
 pkgbase = sums
 	pkgdesc = Sums is a simple GTK postfix calculator that adheres to GNOME's human-interface guidelines
-	pkgver = 0.12
+	pkgver = 0.13
 	pkgrel = 1
 	url = https://gitlab.com/leesonwai/sums
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sums
 	makedepends = gobject-introspection
 	depends = libadwaita
 	depends = mpfr
-	source = https://gitlab.com/leesonwai/sums/-/archive/0.12/sums-0.12.tar.gz
-	b2sums = 94fd4069746ebff7e332aac463e2bf19bf9cab148c1bab2a1a730e10f8a02229e01dea0ce32e8523759870ca2350f34b17c1202714bbcb9fe8f39206f6ec1a4b
+	source = https://gitlab.com/leesonwai/sums/-/archive/0.13/sums-0.13.tar.gz
+	b2sums = 0163ef94d62670ed27591398e3509dd4f690eb1453f7d632c0b8e79b02d6fa5eb84efbfe3d03cccbf3205231e8e5f92d106ab4517862c4dfbcc9b647ba4a1785
 
 pkgname = sums

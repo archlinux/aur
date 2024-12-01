@@ -1,7 +1,8 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=sums
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="Sums is a simple GTK postfix calculator that adheres to GNOME's human-interface guidelines"
 arch=('x86_64')
@@ -11,7 +12,7 @@ depends=('libadwaita' 'mpfr')
 makedepends=('meson' 'gobject-introspection')
 checkdepends=('appstream-glib')
 source=("${url}/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('94fd4069746ebff7e332aac463e2bf19bf9cab148c1bab2a1a730e10f8a02229e01dea0ce32e8523759870ca2350f34b17c1202714bbcb9fe8f39206f6ec1a4b')
+b2sums=('0163ef94d62670ed27591398e3509dd4f690eb1453f7d632c0b8e79b02d6fa5eb84efbfe3d03cccbf3205231e8e5f92d106ab4517862c4dfbcc9b647ba4a1785')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
