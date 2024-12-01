@@ -7,8 +7,8 @@
 # See https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
 # for more details # on package signing.
 pkgname=librepcb
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
 url="https://librepcb.org/"
@@ -36,7 +36,7 @@ source=(
   "https://download.librepcb.org/releases/$pkgver/librepcb-$pkgver-source.zip.asc"
 )
 sha256sums=(
-  '102dcd713cf899af22e26b5e147592cc59d9330846f5bbdd98e5c1a77e958e83'
+  'f6e9a375ab9f8fda2486481ee49e9359a0ab9a4ae2d5778e2e27f414ad98e829'
   'SKIP'
 )
 validpgpkeys=('D6F9AF572228C5BCD6B538407EF3061F5C8D5E25')
@@ -57,6 +57,10 @@ prepare() {
 }
 
 build() {
+  # Remove build cache
+  rm -rf "$srcdir/build"
+
+  # Build
   cmake -B build -S "$pkgname-$pkgver" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
