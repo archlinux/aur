@@ -2,7 +2,7 @@
 # Contributor: Alexey Stukalov <astukalov@gmail.com>
 
 pkgname=smartgit
-pkgver=23.1.4.2
+pkgver=24.1.0
 _pkgver=$(echo "${pkgver//./_}" | cut -d_ -f -4)
 pkgrel=1
 pkgdesc='Git client with Hg and SVN support.'
@@ -14,14 +14,14 @@ optdepends=('mercurial: hg repositories support')
 replaces=('smartgithg')
 source=("https://www.syntevo.com/downloads/${pkgname}/${pkgname}-linux-${_pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('732e088d164f7073ede7c44a7148caf4d02980c9fe826c8f8a501511bb8a38ce'
+sha256sums=('d1b93aab3500c1c6394344bc68a125f957c092bc4ace58225c504275cc56a043'
             'bb5665e9c93640b311dbe8b633da65e3c72a712a3dc9655c3274a3542a688a32')
 
 package() {
     # Install licenses
     install -d -m 755 "${pkgdir}/usr/share/licenses/${pkgname}"
     mv "${pkgname}/licenses"/* "${pkgdir}/usr/share/licenses/${pkgname}"
-    mv "${pkgname}/license.html" "${pkgdir}/usr/share/licenses/${pkgname}"
+    ln -s /opt/${pkgname}/license.html "${pkgdir}/usr/share/licenses/${pkgname}"
     rmdir "${pkgname}/licenses"
     # Install application files
     install -d -m 755 "${pkgdir}/opt"
