@@ -1,7 +1,7 @@
 # Maintainer: w0rty <mawo97 at gmail.com>
 
 pkgname=bananas-appimage
-pkgver=0.0.12
+pkgver=0.0.12 # renovate: datasource=github-releases depName=mistweaverco/bananas
 pkgrel=1
 pkgdesc="cross-platform, p2p screen sharing made simple"
 arch=('x86_64')
