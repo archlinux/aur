@@ -1,0 +1,11 @@
+pkgbase = rustup-stub
+	pkgdesc = A stub package for people who prefer to use rustup entirely separately from pacman
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = 0BSD
+	provides = rustup
+	provides = cargo
+	provides = rust
+
+pkgname = rustup-stub
