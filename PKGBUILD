@@ -3,7 +3,7 @@
 #
 
 pkgname=pdh
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=2
 pkgdesc="Pagerduty CLI for humans"
 arch=('any')
@@ -12,7 +12,7 @@ license=('APACHE')
 depends=('python-click' 'python-colorama' 'python-rich' 'python-pyaml' 'python-pdpyras' 'python-deprecation' 'python-humanize')
 makedepends=(python-build python-installer python-poetry-core)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('44703f51c7239df69052db34d5f531d701d6e3a12983257059eb7ea874ff5127')
+sha256sums=('35abb2a708a6cfe70ea1a4d142b9dbb27e9f85e595751207eca91e3b6585403e')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
