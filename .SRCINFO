@@ -4,9 +4,10 @@ pkgbase = ros2-humble-vision-msgs
 	pkgrel = 1
 	url = https://index.ros.org/p/vision_msgs/
 	arch = any
+	license = Apache-2.0
 	makedepends = cmake
 	depends = ros2-humble
-	source = https://github.com/ros-perception/vision_msgs/archive/refs/tags/4.1.1.tar.gz
+	source = ros2-humble-vision-msgs-4.1.1.tar.gz::https://github.com/ros-perception/vision_msgs/archive/refs/tags/4.1.1.tar.gz
 	sha256sums = 1f54c590e5195dc3112e682eaf0abab47d244bc739e61102bdf183a8fe79f124
 
 pkgname = ros2-humble-vision-msgs

@@ -6,12 +6,14 @@ _pkgname=vision_msgs
 pkgname=ros2-humble-vision-msgs
 pkgver=4.1.1
 pkgrel=1
+license=('Apache-2.0')
 pkgdesc="Messages for interfacing with various computer vision pipelines, such as object detectors."
 url="https://index.ros.org/p/vision_msgs/"
 arch=('any')
 depends=('ros2-humble')
 makedepends=('cmake')
-source=("https://github.com/ros-perception/vision_msgs/archive/refs/tags/${pkgver}.tar.gz")
+# Syntax for renaming the source tarball, to ensure it has a unique filename.
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ros-perception/vision_msgs/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('1f54c590e5195dc3112e682eaf0abab47d244bc739e61102bdf183a8fe79f124')
 
 
