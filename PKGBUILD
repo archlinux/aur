@@ -1,3 +1,4 @@
+# Maintainer: Kishore G <kishore96 at gmail dot com>
 # Contributor: Stuart Mumford <stuart@cadair.com>
 
 pkgname=python-drms
