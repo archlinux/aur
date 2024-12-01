@@ -1,0 +1,4 @@
+[das-keyboard-q]
+source = "regex"
+url = "https://www.daskeyboard.io/get-started/software/"
+regex = '/linux/x64/\S+q_([\.0-9]+)_amd64\.deb'

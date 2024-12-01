@@ -1,22 +1,47 @@
-# Maintainer: uint2048_t
-pkgname=das-keyboard-q
-pkgver=3.3.3
+# Maintainer:
+
+_pkgname="das-keyboard-q"
+pkgname="$_pkgname"
+pkgver=4.2.1
 pkgrel=1
-pkgdesc="Software for Das Keyboard 5Q, 5Qs, 4Q."
+pkgdesc="Software for Das Keyboard 5Q, 5Qs, 4Q"
+url="https://www.daskeyboard.io/get-started/software/"
+license=('Unknown')
 arch=('x86_64')
-url=https://www.daskeyboard.io/get-started/software/
-license=('CCPL')
-options=('emptydirs')
-source=("https://download.daskeyboard.com/q-software-releases/3.3.3/Das-Keyboard-Q_3.3.3.deb")
-md5sums=('5214b5ef6dc4fe0faa4012154512cc9c')
+
+options=('!debug')
+
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="deb"
+source=("$_pkgsrc.$_pkgext"::"https://das-keyboard-q-releases.s3.us-east-2.amazonaws.com/das-keyboard-q/linux/x64/das-keyboard-q_${pkgver}_amd64.$_pkgext")
+sha256sums=('628793ebdb839d08d0b5eec867dceac25da4f4e20a2d35c1b06eb3ef8760ded0')
 
 package() {
-	tar xf data.tar.xz -C "${pkgdir}"
-	cd "${pkgdir}"
-	cp usr/lib/das-keyboard-q/resources/app.asar.unpacked/assets/images/gray-q-icon.png usr/lib/das-keyboard-q/resources/app.asar.unpacked/assets/images/16x16.png
-	mv usr/local/bin/* usr/bin; rm -rf usr/local/bin
-	sed -i s/\\/local// etc/systemd/system/das_keyboard_q-service.service
-	rm -rf usr/local
-	cd ..
-}
+  depends+=(
+    alsa-lib
+    at-spi2-core
+    bash
+    cairo
+    dbus
+    expat
+    glib2
+    gtk3
+    libcups
+    libdrm
+    libx11
+    libxcb
+    libxcomposite
+    libxdamage
+    libxext
+    libxfixes
+    libxkbcommon
+    libxrandr
+    mesa
+    nspr
+    nss
+    pango
+  )
 
+  tar xf data.tar.xz -C "$pkgdir"
+  rm -rf "$pkgdir"/usr/share/{doc,lintian}
+}
