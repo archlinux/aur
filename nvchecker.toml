@@ -1,0 +1,4 @@
+[python-pygexf]
+source = "github"
+github = "paulgirard/pygexf"
+use_latest_tag = true
