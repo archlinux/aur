@@ -1,7 +1,7 @@
 # Maintainer: zmr233 <zmr_233@outlook.com>
 pkgname=yesplaymusic-plus
 pkgver=0.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A third-party music player for Netease Music"
 arch=('x86_64')
 url="https://github.com/qier222/YesPlayMusic"
