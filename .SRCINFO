@@ -1,7 +1,7 @@
 pkgbase = cloudflare-warp-bin
 	pkgdesc = Cloudflare Warp Client
 	pkgver = 2024.11.309
-	pkgrel = 1
+	pkgrel = 2
 	url = https://1.1.1.1
 	arch = x86_64
 	license = unknown
@@ -13,6 +13,7 @@ pkgbase = cloudflare-warp-bin
 	depends = glibc
 	depends = gtk3
 	depends = hicolor-icon-theme
+	depends = nftables
 	depends = nspr
 	depends = nss
 	depends = pango
