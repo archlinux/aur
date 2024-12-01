@@ -1,0 +1,24 @@
+From 799edd8a937adb2cfc8086e2ab62a38efe602870 Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Sun, 1 Dec 2024 15:18:18 +0100
+Subject: [PATCH] cmake-fix
+
+---
+ toonz/sources/CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/toonz/sources/CMakeLists.txt b/toonz/sources/CMakeLists.txt
+index de762d8b6..99e033e64 100644
+--- a/toonz/sources/CMakeLists.txt
++++ b/toonz/sources/CMakeLists.txt
+@@ -237,7 +237,6 @@ add_definitions(
+     -DQT_NETWORK_LIB
+     -DQT_CORE_LIB
+     -DQT_SHARED
+-    -DQT_DISABLE_DEPRECATED_BEFORE=0x050F02
+ )
+ 
+ # Find includes in corresponding build directories
+-- 
+2.47.1
+

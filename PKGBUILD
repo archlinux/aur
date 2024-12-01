@@ -6,7 +6,7 @@ export GIT_LFS_SKIP_SMUDGE=1
 export GIT_CLONE_PROTECTION_ACTIVE=false
 
 pkgname=tahoma2d-git
-pkgver=1.4.4.r0.ge3d0640e9
+pkgver=1.5.r0.gce378cbd6
 pkgrel=1
 pkgdesc="Software for producing a 2D animation"
 arch=(x86_64)
@@ -17,8 +17,10 @@ makedepends=(git git-lfs boost cmake qt5-tools)
 provides=(tahoma2d)
 conflicts=(tahoma2d)
 options=(!lto)
-source=("git+https://github.com/tahoma2d/tahoma2d.git#branch=v1.4.4")
-sha256sums=('SKIP')
+source=("git+https://github.com/tahoma2d/tahoma2d.git#branch=v1.5"
+         0001-cmake-fix.patch)
+sha256sums=('SKIP'
+            '238d8e73554cc6751bbcb50ba054f3a335b767277cfbf36adae4c8bb73c6a10b')
 
 pkgver() {
   cd tahoma2d
@@ -31,6 +33,9 @@ prepare() {
   cd tahoma2d
   # Specify path for ffmpeg
   #sed -i 's|"ffmpegPath", QMetaType::QString, ""|"ffmpegPath", QMetaType::QString, "/usr/bin"|' toonz/sources/toonzlib/preferences.cpp
+
+  # https://github.com/tahoma2d/tahoma2d/issues/1600#issuecomment-2408657568
+  patch -Np1 -i ../0001-cmake-fix.patch
 }
 
 build() {
