@@ -7,7 +7,7 @@
 pkgname='python-jira'
 _pkgname='jira'
 pkgdesc='Python library to work with Jira APIs'
-pkgver=3.9.3
+pkgver=3.9.4
 pkgrel=1
 url='https://github.com/pycontribs/jira'
 license=('BSD-2-Clause')
@@ -33,7 +33,7 @@ makedepends=(
 	'python-setuptools-scm'
 	'python-installer')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pycontribs/jira/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3cebeec02b7bad9269da53a5e8fa116863e4a5c7156275b22fc7e99db33b7e6e')
+sha256sums=('dc3395ca870dd4da38b792bce6ebd73875fe687c0fce862831dccd6f8cb698dd')
 
 build() {
 	cd "${srcdir}/jira-${pkgver}"
