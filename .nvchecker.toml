@@ -1,0 +1,4 @@
+[bookstack]
+source = "git"
+git = "https://github.com/BookStackApp/BookStack.git"
+prefix = "v"
