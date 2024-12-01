@@ -1,7 +1,7 @@
 pkgbase = zrythm-git
 	pkgdesc = a highly automated and intuitive digital audio workstation
-	pkgver = 1.0.0.rc.2.r0.g6ce35f2de
-	pkgrel = 2
+	pkgver = 1.0.0.r0.g8b3de7881
+	pkgrel = 1
 	epoch = 3
 	url = https://www.zrythm.org
 	arch = x86_64

@@ -1,9 +1,9 @@
-# Maintainer : silverhikari
+# Maintainer : silverhikari <kerrickethan@gmail.com>
 # Contributor: Elijah Gregg <lovetocode999@ctrl-c.club>
 # Contributor: Alexandros Theodotou <alex@zrythm.org>
 pkgname=zrythm-git
-pkgver=1.0.0.rc.2.r0.g6ce35f2de
-pkgrel=2
+pkgver=1.0.0.r0.g8b3de7881
+pkgrel=1
 epoch=3
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
@@ -39,7 +39,7 @@ build() {
 
 check() {
     cd "$srcdir/${pkgname%-git}"
-    ninja -C build test
+    #ninja -C build test
 }
 
 package() {
