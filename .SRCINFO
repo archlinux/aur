@@ -1,0 +1,17 @@
+pkgbase = notedeck-git
+	pkgdesc = A multiplatform nostr client
+	pkgver = 0.2.0.r0.g575d469
+	pkgrel = 1
+	url = https://github.com/damus-io/notedeck
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3
+	makedepends = rust
+	makedepends = git
+	provides = notedeck
+	conflicts = notedeck
+	options = !lto
+	source = git+https://github.com/damus-io/notedeck.git
+	sha256sums = SKIP
+
+pkgname = notedeck-git
