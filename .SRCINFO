@@ -1,8 +1,8 @@
 pkgbase = gnome-shell-extension-backslide-git
 	pkgdesc = A simple Gnome-Shell Extension for an automatic background-image (wallpaper) slideshow.
 	pkgver = r171.5b3436f
-	pkgrel = 1
-	url = https://bitbucket.org/LukasKnuth/backslide
+	pkgrel = 2
+	url = https://gitlab.com/p91paul/BackSlide
 	arch = any
 	license = GPL3
 	depends = dconf
