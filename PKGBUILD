@@ -6,8 +6,8 @@
 _pkgname=srsly
 pkgname=python-${_pkgname}-bin
 pkgver=2.4.8
-pkgrel=1
-pkgdesc='Modern high-performance serialization utilities for Python'
+pkgrel=2
+pkgdesc='Modern high-performance serialization utilities for Python - bin (no cython0 req)'
 arch=(x86_64)
 url='https://github.com/explosion/srsly'
 license=(MIT)
