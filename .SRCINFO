@@ -10,6 +10,6 @@ pkgbase = rawbit
 	makedepends = gcc-libs
 	depends = libraw
 	source = rawbit-0.1.4.tar.gz::https://github.com/cartercanedy/rawbit/archive/v0.1.4.tar.gz
-	sha256sums = 0
+	sha256sums = 9f27ab2fc7baf90720a8ae83109c52776b016bacc626340ccc17b0ac642f3586
 
 pkgname = rawbit
