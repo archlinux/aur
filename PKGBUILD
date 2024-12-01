@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=geogram-git
 _pkgname='geogram'
-pkgver=1.9.1+r1151+g5f0188b5c
+pkgver=1.9.1+r1156+gb34f1c99b
 pkgrel=1
 pkgdesc="Library of geometric algorithms"
 arch=('x86_64')
