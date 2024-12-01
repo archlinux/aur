@@ -1,7 +1,7 @@
 pkgbase = journalio
 	pkgdesc = JournalIO is a WYSIWYG markdown editor designed for writing daily and weekly journals.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Forest0923/journalio
 	install = journalio.install
 	arch = x86_64
