@@ -10,9 +10,15 @@ url="https://github.com/sunpy/drms"
 license=('BSD-2-Clause')
 depends=('python-oldest-supported-numpy' 'python-six' 'python-pandas')
 makedepends=(python-build python-installer python-wheel python-setuptools-scm)
-source=(${_name}-${pkgver}.tar.gz::https://github.com/sunpy/drms/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('a622369a176a9f76be53fdfb7116529700d8cae493576f70b1d082bb466334e0')
+source=(${_name}-${pkgver}.tar.gz::https://github.com/sunpy/drms/archive/refs/tags/v${pkgver}.tar.gz
+    'setuptools_version_string.patch')
+sha256sums=('a622369a176a9f76be53fdfb7116529700d8cae493576f70b1d082bb466334e0'
+    'SKIP')
 
+prepare() {
+    cd $_name-$pkgver
+    patch -p1 < ../setuptools_version_string.patch
+    }
 
 build() {
     cd $_name-$pkgver
