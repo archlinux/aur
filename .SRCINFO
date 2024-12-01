@@ -1,13 +1,11 @@
 pkgbase = xray-geoip
-	pkgdesc = GeoIP List for Xray
-	pkgver = 202410310053
+	pkgdesc = GeoIP list for Xray
+	pkgver = 202411280056
 	pkgrel = 1
 	url = https://github.com/v2fly/geoip
 	arch = any
-	license = CCPL:by-sa
-	source = geoip-202410310053.dat::https://github.com/v2fly/geoip/releases/download/202410310053/geoip.dat
-	source = https://github.com/v2fly/geoip/raw/master/LICENSE
-	sha256sums = 2762fa0a7d1728089b7723b7796cb5ca955330a3fa2e4407fa40e480fbf9cea7
-	sha256sums = 5e436ff8ffbb77d8607220e9bce20c8915d860010feeb6c1ebef5a85688e9b39
+	license = CC-BY-SA-4.0
+	source = xray-geoip-202411280056.dat::https://github.com/v2fly/geoip/releases/download/202411280056/geoip.dat
+	sha256sums = 0b92efbe8e6a8255d3142751964931d2ca4801b51f0cd12c05963e23e0062a52
 
 pkgname = xray-geoip

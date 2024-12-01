@@ -1,0 +1,4 @@
+[xray-geoip]
+source = "github"
+github = "v2fly/geoip"
+use_max_tag = true
