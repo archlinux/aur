@@ -5,7 +5,7 @@
 
 pkgname=msmtp-ntlm
 _pkgname=msmtp
-pkgver=1.8.25
+pkgver=1.8.27
 pkgrel=1
 pkgdesc="A mini smtp client - NTLM support"
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=('msmtp')
 conflicts=('msmtp')
 source=("https://marlam.de/msmtp/releases/msmtp-$pkgver.tar.xz")
 install=msmtp.install
-sha256sums=('2dfe1dbbb397d26fe0b0b6b2e9cd2efdf9d72dd42d18e70d7f363ada2652d738')
+sha256sums=('94030580a63a747faa0a3b9b1b264ae355aad33a4d94b832bfeb5b21633c965e')
 
 build() {
   cd $_pkgname-$pkgver
