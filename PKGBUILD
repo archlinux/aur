@@ -1,7 +1,7 @@
 # Maintainer: Dominic Hamon <dma at hey dot com>
 # Contributor: Erik Zenker <erikzenker at posteo dot de>
 pkgname=benchmark-git
-pkgver=v1.8.3.r0.g34411763
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="A microbenchmark support library, by Google"
 arch=('i686' 'x86_64')
@@ -10,12 +10,11 @@ license=('Apache')
 depends=(gcc-libs gtest gmock)
 makedepends=('cmake')
 
-source=("${pkgname}::git+https://github.com/google/benchmark.git")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/google/benchmark/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
-  sed -i "s|v0.0.0|v${pkgver}|g" "cmake/GetGitVersion.cmake"
+  cd "${srcdir}/benchmark-${pkgver}"
 
   mkdir -p build && cd build
 
@@ -28,22 +27,17 @@ prepare() {
            -DBENCHMARK_ENABLE_ASSEMBLY_TESTS=OFF
 }
 
-pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
-  cd "${srcdir}/${pkgname}/build"
-  make
+  cd "${srcdir}/benchmark-${pkgver}/build"
+  make -j
 }
 
 check() {
-  cd "${srcdir}/${pkgname}/build"
-  make test
+  cd "${srcdir}/benchmark-${pkgver}/build"
+  make -j test
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/build"
+  cd "${srcdir}/benchmark-${pkgver}/build"
   make DESTDIR="$pkgdir/" install
 }

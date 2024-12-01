@@ -1,4 +1,5 @@
 *.pkg.tar.zst
+benchmark-*.tar.gz
 benchmark-git/
 pkg/
 src/
