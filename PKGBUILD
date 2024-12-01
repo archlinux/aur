@@ -1,7 +1,7 @@
-# Maintainer: tippfehlr <tippfehlr at tippfehlr dot eu>
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
 
 pkgname=openbuilds-control
-pkgver=1.0.378
+pkgver=1.0.382
 pkgrel=1
 pkgdesc="Grbl Host / Interface for all CNC style machines running Grbl"
 url="https://github.com/OpenBuilds/OpenBuilds-CONTROL"
@@ -20,9 +20,9 @@ source=(
     'openbuildscontrol.desktop'
     'openbuildscontrol'
 )
-sha512sums=('f966d5ddde4b32ea78ba7a51e5fa81367deadcb9c22b3dd20a9c2c51ad0db432c410b3d50a63733f165aec42c2d2c6fe547fb63163f3a8a9235992134b25ba89'
-    '896cc097f594268618ddaa9cec137e8bbd4314ad7796e077f73f88aa034f32903d9056ea0c5299b5a91f26f53ae3cc4917482e3280854144e388568d86232879'
-    '7d9833000c547ef14a0e7a272903991db3b3a2297527e2fd40d1e2a20c34f6771edce68b736a1859d6c3dd769f263ff90a073622f7bdcdd33a6274b40299f925')
+sha512sums=('af72d7b9b9165cc208ee7c29156d9a1affc1eccc3258abad81655e4a74236730612c84d571a867581e7e9b8497e59f1fe9609935351f404a01c4b9f7d0c9c59b'
+            '896cc097f594268618ddaa9cec137e8bbd4314ad7796e077f73f88aa034f32903d9056ea0c5299b5a91f26f53ae3cc4917482e3280854144e388568d86232879'
+            '7d9833000c547ef14a0e7a272903991db3b3a2297527e2fd40d1e2a20c34f6771edce68b736a1859d6c3dd769f263ff90a073622f7bdcdd33a6274b40299f925')
 
 build() {
     cd "$srcdir/OpenBuilds-CONTROL"
