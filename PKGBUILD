@@ -5,7 +5,7 @@
 # Maintainer: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 
 pkgname=kmix-kf6-git
-pkgver=r2761.5b617eb
+pkgver=r2796.8c385cb
 pkgrel=1
 pkgdesc='KDE volume control program'
 url='https://apps.kde.org/kmix/'

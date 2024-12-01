@@ -1,6 +1,6 @@
 pkgbase = kmix-kf6-git
 	pkgdesc = KDE volume control program
-	pkgver = r2761.5b617eb
+	pkgver = r2796.8c385cb
 	pkgrel = 1
 	url = https://apps.kde.org/kmix/
 	arch = x86_64
