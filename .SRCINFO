@@ -1,6 +1,6 @@
 pkgbase = yass-proxy-cli
 	pkgdesc = lightweight http/socks proxy commandline
-	pkgver = 1.16.1
+	pkgver = 1.16.2
 	pkgrel = 1
 	url = https://github.com/Chilledheart/yass
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = yass-proxy-cli
 	depends = jsoncpp
 	provides = yass-proxy-cli
 	conflicts = yass-proxy-cli-git
-	source = https://github.com/Chilledheart/yass/releases/download/1.16.1/yass-1.16.1.tar.zst
-	sha256sums = 4529c7310bcf4c882993be1fa853d81854c6650b9d7f426fe8795607fae69396
+	source = https://github.com/Chilledheart/yass/releases/download/1.16.2/yass-1.16.2.tar.zst
+	sha256sums = 2dac9758ad25f85931d53a8c0957ee11a91a148840569eef3a521adfdc229415
 
 pkgname = yass-proxy-cli
