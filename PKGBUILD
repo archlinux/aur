@@ -2,7 +2,7 @@
 
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=0.1.r7851.gead9e56
+pkgver=0.1.r8033.g2f70d1b
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -87,15 +87,16 @@ pkgver() {
 
 prepare() {
     # checkout correct versions of deps
-    yq -cr '.modules[] | select(type == "string")' "$srcdir/duckstation/scripts/flatpak/org.duckstation.DuckStation.yaml" \
+    flatpakdir=$srcdir/duckstation/scripts/packaging/flatpak
+    yq -cr '.modules[] | select(type == "string")' "$flatpakdir/org.duckstation.DuckStation.yaml" \
       | while read -r dep ; do
-            local dep_name=$(yq -cr ".name" "$srcdir/duckstation/scripts/flatpak/$dep")
-            local dep_url=$(yq -cr '.sources[0].type + "+" + .sources[0].url' "$srcdir/duckstation/scripts/flatpak/$dep")
+            local dep_name=$(yq -cr ".name" "$flatpakdir/$dep")
+            local dep_url=$(yq -cr '.sources[0].type + "+" + .sources[0].url' "$flatpakdir/$dep")
             for src in "${source[@]}"; do
                 local src_name=${src%%::*}
                 local src_url=${src##*::}
                 if [ "$src_name" = "$dep_name" ] || [ "$src_url" = "$dep_url" ]; then
-                    local dep_ver=$(yq -cr ".sources[0].tag // .sources[0].commit" "$srcdir/duckstation/scripts/flatpak/$dep")
+                    local dep_ver=$(yq -cr ".sources[0].tag // .sources[0].commit" "$flatpakdir/$dep")
                     echo "Checking out $dep_ver for $src_name..."
                     git -C "$srcdir/$src_name" checkout -q "$dep_ver"
                 fi
@@ -105,11 +106,12 @@ prepare() {
 
 build() {
     # Build deps with cmake
-    yq -cr '.modules[] | select(type == "string")' "$srcdir/duckstation/scripts/flatpak/org.duckstation.DuckStation.yaml" \
+    flatpakdir=$srcdir/duckstation/scripts/packaging/flatpak
+    yq -cr '.modules[] | select(type == "string")' "$flatpakdir/org.duckstation.DuckStation.yaml" \
       | while read -r dep ; do
-            local dep_name=$(yq -cr 'select(.buildsystem == "cmake-ninja").name' "$srcdir/duckstation/scripts/flatpak/$dep")
+            local dep_name=$(yq -cr 'select(.buildsystem == "cmake-ninja").name' "$flatpakdir/$dep")
             if [ -n "$dep_name" ]; then
-                local dep_url=$(yq -cr '.sources[0].type + "+" + .sources[0].url' "$srcdir/duckstation/scripts/flatpak/$dep")
+                local dep_url=$(yq -cr '.sources[0].type + "+" + .sources[0].url' "$flatpakdir/$dep")
                 for src in "${source[@]}"; do
                     local src_name=${src%%::*}
                     local src_url=${src##*::}
@@ -123,7 +125,7 @@ build() {
                             -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
                             -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
                             -DCMAKE_INSTALL_PREFIX=/usr \
-                            $(yq -cr '[."config-opts"[] | select(. | test("_COMPILER") | not)] | join(" ")' "$srcdir/duckstation/scripts/flatpak/$dep")
+                            $(yq -cr '[."config-opts"[] | select(. | test("_COMPILER") | not)] | join(" ")' "$flatpakdir/$dep")
                         ninja -C "build-$dep_name"
                         DESTDIR="$srcdir/deps" ninja -C "build-$dep_name" install
                     fi
