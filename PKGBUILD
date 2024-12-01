@@ -1,7 +1,7 @@
 # Maintainer: Tobias Brox <t-arch@tobixen.no>
 pkgname=plann
 _name=${pkgname#python-}
-pkgver=0.15.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="plann is a caldav client for calendar and task management"
 url="https://github.com/tobixen/plann"
