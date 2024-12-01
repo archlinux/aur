@@ -1,6 +1,9 @@
 # Maintainer: Pedro Simões <pedrofchsimoes at protonmail dot com>
 
 # Use the following variable to change package architecture.
+# Maintainer: Pedro Simões <pedrofchsimoes at protonmail dot com>
+
+# Use the following variable to change package architecture.
 # To use OS architecture please uncomment it
 _arch="x64"
 # possible values: "x86", "x64"
@@ -15,7 +18,7 @@ esac
 pkgbase=notepadpp
 pkgname=notepad++
 _pkgname=notepad-plus-plus
-pkgver=8.7
+pkgver=8.7.2
 pkgrel=1
 pkgdesc="A free source code editor for Windows"
 url="https://${_pkgname}.org/"
@@ -33,9 +36,9 @@ source=(notepad++
 sha256sums=('643713113d26d32b2e6d861e9cd6db8153a3359f3784dbd1710f12e89468654a'
             '98693e0f57a9fab55dd31dfaf9b3a13234f14e1b193b56ac52eff33c987d4354'
             '04c8ad254a41350078bba4d56ad54f7b4c0df125029aee021ea0ac632971ebad'
-	    '958e1d5711c7f54346bfef169991bdac69f4217a07cbf16df04a3b01eb72699e'
+	    'a9d9a2e7b62478e9de6098f2dd9cea3580888488f4fdef0cddb6e7e18e5ccbef'
 	    'SKIP'
-	    '1955191d7fe07d2a1cb10ceb6f6c2c55b6c2fef07623dcef72efbd5417c334fa'
+	    'f747a90abb20de657fabf263f47ede2ce158a6f707b68f231a89834d01a56ac3'
             'SKIP')
 
 noextract=("npp.${pkgver}.portable.zip"
