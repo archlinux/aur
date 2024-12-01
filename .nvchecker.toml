@@ -1,0 +1,5 @@
+[caprine]
+source = "github"
+github = "sindresorhus/caprine"
+use_max_tag = true
+prefix = "v"

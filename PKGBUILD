@@ -3,7 +3,7 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=caprine
-pkgver=2.60.1
+pkgver=2.60.2
 pkgrel=1
 pkgdesc='Elegant Facebook Messenger desktop app'
 arch=('any')
@@ -13,12 +13,9 @@ _electron=electron29
 depends=('bash' "${_electron}" 'hicolor-icon-theme')
 makedepends=('npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('655dcb523cb8e7426490c97ed34e4942a643c4f98110a366dd45af4d08c9fa7b'
-            'da58c9872ddcecf52a269c19aaf70cbc7fb8cd8475046e514477c79ff87eea25'
+sha256sums=('0bf8b1a316956491d17b5f92b87a027013e67eec3eb42a0a959d2289582c9b9f'
             '70679c9959bae776d667ae1dbd4ffca9298d8784ad4a5959f3b35d2493f2c131')
-
 
 prepare() {
     sed -i "s/@ELECTRON@/${_electron}/" "${pkgname}.sh"
@@ -43,6 +40,6 @@ package() {
         install -Dm644 "build/icons/${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
     done
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "packages/rpm/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 license -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
