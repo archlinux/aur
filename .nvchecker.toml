@@ -1,0 +1,7 @@
+[geogram-git]
+source="github-graphql"
+github="BrunoLevy/geogram"
+use_latest_release=true
+use_commit_number=true
+use_commit_hash=true
+prefix="v"

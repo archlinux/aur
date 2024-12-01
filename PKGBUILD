@@ -1,43 +1,76 @@
-# Maintainer: subhuman22 <ktmz2@protonmail.com>
+# Maintainer: envolution
+# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
+# Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
+# shellcheck shell=bash disable=SC2034,SC2154
 pkgname=geogram-git
-pkgver=r117.eb6a4483
+_pkgname='geogram'
+pkgver=1.9.1+r1151+g5f0188b5c
 pkgrel=1
-pkgdesc="a programming library with geometric algorithms"
-arch=(x86_64)
+pkgdesc="Library of geometric algorithms"
+arch=('x86_64')
 url="https://github.com/BrunoLevy/geogram"
 license=('BSD')
-groups=()
-depends=('glfw-x11')
-makedepends=('git')
-provides=("$pkgname" "${pkgname%-git}")
-conflicts=("$pkgname" "${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
-source=('git+https://github.com/BrunoLevy/geogram.git' 'CMakeOptions.txt')
-noextract=()
-md5sums=('SKIP' 'b6d8637ef7b6fdcdf490b4def8b350f9')
+depends=('glu' 'glfw-x11')
+provides=('geogram')
+conflicts=('geogram')
+makedepends=('cmake' 'ninja' 'git')
+source=(
+  "git+https://github.com/BrunoLevy/geogram.git"
+)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd $_pkgname
+  _version=$(git tag --sort=-v:refname --list | head -n1 | cut -c2-)
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version}+r${_commits}+g${_short_commit_hash}"
 }
 
+prepare_submodule() {
+  cd "$srcdir/$_pkgname"
+  git submodule init
+  git config submodule.src/lib/geogram/third_party/amgcl.url "$srcdir/amgcl"
+  git config submodule.src/lib/third_party/glfw.url "$srcdir/glfw"
+  git config submodule.src/lib/geogram_gfx/third_party/imgui.url "$srcdir/imgui"
+  git config submodule.src/lib/geogram/third_party/libMeshb.url "$srcdir/libMeshb"
+  git config submodule.src/lib/geogram/third_party/rply.url "$srcdir/rply"
+  git -c protocol.file.allow=always submodule update
+}
+source+=(
+  "amgcl::git+https://github.com/ddemidov/amgcl"
+  "glfw::git+https://github.com/glfw/glfw"
+  "imgui::git+https://github.com/ocornut/imgui"
+  "libMeshb::git+https://github.com/LoicMarechal/libMeshb"
+  "rply::git+https://github.com/diegonehab/rply"
+)
 prepare() {
-    cp CMakeOptions.txt "$srcdir/${pkgname%-git}"
+  cd $_pkgname
+  prepare_submodule
 }
-
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	./configure.sh
-    cd "build/Linux64-gcc-dynamic-Release"
-	make
+  cd ${_pkgname}
+
+  #CFLAGS+=" -Wno-incompatible-pointer-types" \
+  cmake \
+    -Bbuild \
+    -GNinja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None \
+    -DGEOGRAM_USE_SYSTEM_GLFW3=ON
+
+  ninja -C build
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-    cd "build/Linux64-gcc-dynamic-Release"
-	make DESTDIR="$pkgdir/" install
-    rm $pkgdir/usr/bin/geogram_demo*
+  cd ${_pkgname}
+
+  DESTDIR=${pkgdir} ninja -C build install
+  install -Dm755 LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE
 }
+# vim:set ts=2 sw=2 et:
