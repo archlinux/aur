@@ -5,7 +5,7 @@
  
 pkgname=thunderbird-bin
 _pkgname=thunderbird
-pkgver=132.0.1
+pkgver=133.0
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -40,11 +40,11 @@ source_i686=(
 
 sha512sums=('6813e1dfd43c67ad7517714988ac27e7fdfe4857c8e6612c165a8aa89fa013c5ab4f270c13945010422d3bda82a7b7cd5496eaa5cb5524f6b2fa1732e59fd737'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('a04ee01b272070ae0fd557bbe90616a8e3cc7bd6e93a52dbb57f0f22954990afc624d0198a148c05f0b68dd62592525fd90695e77b90dcdf3c9ddc03e4321bbb'
+sha512sums_x86_64=('ef324daaa37031d75cae8d6e53ef90693bace851f612eb379c61d69869fd06aa300a8b61d692ce41fab22661ee9cd9803809d1e60f04155d40ef537b29c43027'
                    'SKIP')
-sha512sums_pentium4=('e946fb6bb29770a2fe47853701bc7ec2c836553193154ea2362af4b5d47a9203833dbedeec86b5d06bbcbab55ab4d8d9ec8eac87163678c57a079617dbf7901d'
+sha512sums_pentium4=('cae472c6cbbd7749806ffd7d3e51d52a034f70f0368b9d69f3137067aebbf6324fcc4a6f119bd1fa48b3c830fef58eaf1d962c81fddc1eb74d4560eff44c497e'
                      'SKIP')
-sha512sums_i686=('e946fb6bb29770a2fe47853701bc7ec2c836553193154ea2362af4b5d47a9203833dbedeec86b5d06bbcbab55ab4d8d9ec8eac87163678c57a079617dbf7901d'
+sha512sums_i686=('cae472c6cbbd7749806ffd7d3e51d52a034f70f0368b9d69f3137067aebbf6324fcc4a6f119bd1fa48b3c830fef58eaf1d962c81fddc1eb74d4560eff44c497e'
                  'SKIP')
 
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
