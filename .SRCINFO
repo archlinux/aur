@@ -1,7 +1,7 @@
 pkgbase = hyprlauncher-bin
 	pkgdesc = GUI for launching applications, written in blazingly fast Rust!
-	pkgver = 0.2.2
-	pkgrel = 2
+	pkgver = 0.2.3
+	pkgrel = 1
 	url = https://github.com/hyprutils/hyprlauncher
 	arch = x86_64
 	license = GPL-2.0
@@ -9,10 +9,10 @@ pkgbase = hyprlauncher-bin
 	depends = gtk4-layer-shell
 	provides = hyprlauncher
 	conflicts = hyprlauncher
-	source = hyprlauncher-0.2.2::https://github.com/hyprutils/hyprlauncher/releases/download/v0.2.2/hyprlauncher
-	source = LICENSE-0.2.2::https://raw.githubusercontent.com/hyprutils/hyprlauncher/refs/tags/v0.2.2/LICENSE
-	source = README-0.2.2.md::https://raw.githubusercontent.com/hyprutils/hyprlauncher/refs/tags/v0.2.2/readme.md
-	sha256sums = da70ccf91f32c8aa0b87211d1d70e5a2a74b1deab3b80011e38ff23754513d52
+	source = hyprlauncher-0.2.3::https://github.com/hyprutils/hyprlauncher/releases/download/v0.2.3/hyprlauncher
+	source = LICENSE-0.2.3::https://raw.githubusercontent.com/hyprutils/hyprlauncher/refs/tags/v0.2.3/LICENSE
+	source = README-0.2.3.md::https://raw.githubusercontent.com/hyprutils/hyprlauncher/refs/tags/v0.2.3/readme.md
+	sha256sums = df4dd468d86f5b6db7a7de234c693bf036bdb17e4e985b9ecc86bca8f18f1b19
 	sha256sums = SKIP
 	sha256sums = SKIP
 

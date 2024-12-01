@@ -1,8 +1,8 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 _pkgname='hyprlauncher'
 pkgname='hyprlauncher-bin'
-pkgver=0.2.2
-pkgrel=3
+pkgver=0.2.3
+pkgrel=1
 pkgdesc='GUI for launching applications, written in blazingly fast Rust!'
 arch=('x86_64')
 url="https://github.com/hyprutils/$_pkgname"
@@ -11,7 +11,7 @@ license=('GPL-2.0')
 source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname"
     "LICENSE-$pkgver::$url_raw/refs/tags/v$pkgver/LICENSE"
     "README-$pkgver.md::$url_raw/refs/tags/v$pkgver/readme.md")
-sha256sums=('da70ccf91f32c8aa0b87211d1d70e5a2a74b1deab3b80011e38ff23754513d52' 'SKIP' 'SKIP')
+sha256sums=('df4dd468d86f5b6db7a7de234c693bf036bdb17e4e985b9ecc86bca8f18f1b19' 'SKIP' 'SKIP')
 depends=('gtk4' 'gtk4-layer-shell')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
