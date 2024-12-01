@@ -1,4 +1,5 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: CristianCYAC <cristianyasprillac at gmail dot com>
+# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=csbooks
 pkgver=8.2.2
