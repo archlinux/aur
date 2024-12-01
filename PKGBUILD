@@ -3,7 +3,7 @@ pkgname=pwdsafety-bin
 pkgver=0.4.0
 pkgrel=1
 pkgdesc='Command line tool that checks how much a password is safe'
-arch=('x86_64' 'aarch64' 'i686') # I can't figure out whether the armv7h can use.
+arch=('x86_64' 'aarch64' 'i686') # I'm not sure if the 'arm' in the repository refers to 'armv7h.'
 url='https://github.com/edoardottt/pwdsafety'
 license=('GPL-3.0-or-later')
 provides=("pwdsafety=$pkgver")
