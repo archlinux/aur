@@ -2,8 +2,8 @@
 
 pkgname=textadept-gtk3
 _basename=textadept
-pkgver=12.4
-pkgrel=2
+pkgver=12.5
+pkgrel=1
 pkgdesc="Fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=(i686 x86_64 aarch64)
 url="https://github.com/orbitalquark/textadept"
@@ -12,18 +12,9 @@ depends=(gtk3 ncurses)
 makedepends=(wget unzip cmake)
 provides=($pkgname)
 conflicts=(${_basename} ${_basename}-gtk2)
-source=("$url/archive/${_basename}_$pkgver.tar.gz"
-        0001_fix-build.diff)
-sha256sums=('74e480e07fd559103ec3171a754df5d1879322baf395107ad705f97a1583bbf0'
-            'a6e19e16eddfe0c2c88734b2d2daa321b7c1dfde18aaae30376ea7b4219acb18')
+source=("$url/archive/${_basename}_$pkgver.tar.gz")
+sha256sums=('ff59d2240c8169563c9a39eb19b65788dcde0a4f327c7d028b23dafc9d85a8d4')
 
-
-prepare() {
-        cd "${_basename}-${_basename}_$pkgver"
-        # fix https://github.com/orbitalquark/textadept/issues/571
-        # not using the commit, as the CMakeLists structure changed vastly since 12.4
-        patch -Np1 -i "${srcdir}"/0001_fix-build.diff
-}
 
 build() {
 	cd "${_basename}-${_basename}_$pkgver"
