@@ -10,6 +10,6 @@ pkgbase = akash-provider-bin
 	source = https://raw.githubusercontent.com/akash-network/provider/v0.6.4/LICENSE
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 	source_x86_64 = https://github.com/akash-network/provider/releases/download/v0.6.4/provider-services_0.6.4_linux_amd64.zip
-	sha256sums_x86_64 = ce325d7b3c5aa89fb55ae5b313f76781449362f09df97712e0e23f2bfd2b22cf
+	sha256sums_x86_64 = d53de0e9b85bcca85ce57eb42002bd24f6a5e8cf03f25af48fb0f769f0966727
 
 pkgname = akash-provider-bin
