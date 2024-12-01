@@ -2,19 +2,19 @@
 # Contributor: Oleg Antonyan <oleg.b.antonyan@gmail.com>
 
 pkgname=mpz
-pkgver=1.0.25
-pkgrel=2
+pkgver=1.0.26
+pkgrel=0
 pkgdesc='Music player for the large local collections'
 arch=('x86_64')
 url="https://github.com/olegantonyan/mpz"
 license=('GPL3')
 depends=('qt6-multimedia' 'hicolor-icon-theme' 'yaml-cpp' 'taglib')
 provides=('mpz')
-source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/olegantonyan/mpz/archive/7ab927da89604075e331c457dcdd180df070d42c.zip")
-sha256sums=('36cd0363ee58679b33acc88bca54215674da4d9bffa0d1f1327d3774949fd656')
+source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/olegantonyan/mpz/archive/7d16bbff42b6b0ee504e2b9e3129483d33b614d6.zip")
+sha256sums=('aad14c7bdd3ea61d6846d598fb14101e54079512f0285573a50bf16fea62ddfa')
 
 build() {
-    cd mpz-7ab927da89604075e331c457dcdd180df070d42c
+    cd mpz-7d16bbff42b6b0ee504e2b9e3129483d33b614d6
 
     rm -rf build
     mkdir build
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-    cd mpz-7ab927da89604075e331c457dcdd180df070d42c
+    cd mpz-7d16bbff42b6b0ee504e2b9e3129483d33b614d6
 
     cd build
     make install INSTALL_ROOT=$pkgdir
