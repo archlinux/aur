@@ -1,18 +1,21 @@
 pkgbase = appnotex
 	pkgdesc = Quick terminal based note keeper for Linux Apps
-	pkgver = 1.1.1
-	pkgrel = 1.2
+	pkgver = 1.1.0
+	pkgrel = 2
 	url = https://github.com/Abir-Tx/AppNotEx.git
 	arch = x86_64
-	license = GPL
+	license = AGPL-3.0-or-later
 	makedepends = git
-	makedepends = make
 	makedepends = cmake
-	makedepends = gzip
-	depends = sqlite3
-	provides = appnotex
-	conflicts = appnotex
-	source = git+https://github.com/Abir-Tx/AppNotEx.git
-	md5sums = SKIP
+	depends = sqlite
+	depends = python
+	source = git+https://github.com/Abir-Tx/AppNotEx.git#tag=v1.1.0
+	source = git+https://github.com/gabime/spdlog
+	source = git+https://github.com/Abir-Tx/ALib.git
+	source = git+https://github.com/open-source-parsers/jsoncpp.git
+	sha256sums = eee633264286188b4a34d0f5d1b3c7709d01a4b0ec8786d0fd77f2363848aa5a
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = appnotex
