@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=YesPlayMusic
+Comment=A third-party music player for Netease Music
+Exec=yesplaymusic
+Icon=yesplaymusic
+Terminal=false
+Type=Application
+Categories=AudioVideo;Player;Music;
