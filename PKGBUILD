@@ -2,14 +2,25 @@
 
 pkgname=gpu-viewer
 _pkgname=GPU-Viewer
-pkgver=3.06
+pkgver=3.08
 pkgrel=1
 pkgdesc="A frontend to glxinfo and vulkaninfo."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/arunsivaramanneo/GPU-Viewer/"
 license=('GPL3')
-depends=('gtk4' 'libadwaita>=1.4' 'python' 'python-gobject' 'python-click' 'vulkan-tools' 'clinfo' 'mesa-utils' 'vdpauinfo' 'xorg-xdpyinfo' 'lsb-release')
-makedepends=('meson' 'ninja')
+depends=('gtk4'
+        'libadwaita>=1.4'
+        'python'
+        'python-gobject'
+        'python-click'
+        'vulkan-tools'
+        'clinfo'
+        'mesa-utils'
+        'vdpauinfo'
+        'xorg-xdpyinfo'
+        'lsb-release')
+makedepends=('meson'
+            'ninja')
 checkdepends=('appstream-glib')
 optdepends=('nvidia: Vulkan nvidia driver'
             'mesa'
@@ -34,4 +45,4 @@ package() {
     DESTDIR="$pkgdir" ninja install
 }
 
-sha256sums=('6d108fe4c206caea717c29d03742aef4c73c582e1f4cb9a9a88bcc3ee3b706f8')
+sha256sums=('f0067022789556bee468243223bd087c44d38628c7bbe3b0fd6c42ba1c3f2c87')
