@@ -6,7 +6,7 @@ _minor=4
 _patch=0
 pkgver=$_major.$_minor
 cemu_tag="v$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc='Software to emulate Wii U games and applications on PC'
 arch=(x86_64)
 url=https://cemu.info
@@ -43,13 +43,16 @@ source=(
 	# cubeb submodules
 	git+https://github.com/arsenm/sanitizers-cmake.git#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
 	git+https://github.com/google/googletest.git#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
+	# Fix glslang 15 linking issue in Cafe
+	fix-glslang-link.patch
 )
 sha512sums=('ecf9de9425c45b870273955dc311f30aab2eeb60a3e2c29a8f5f525fd3540f51eceb29bbe688726082d02d83eb6340b97356301a987f6f198aa97bcd0133dba4'
             '01a7e5c89668300beb9c6a75b955b01696a2ad3e3e9137333610743000f202bd7dc2a017aeace8f44936a517041f1652e0fa8fc2ac7a5f138585fb3575570d7a'
             'c7afdacbbb714e2e770955d5b7f9306a1b952a278c9e48f13d2bd1fb21d45e0c7d08a7e6af66a562bd585b21c10c7f486cbf8d302aaa32c91722b50246c2e125'
             '6ac14841ef983fe5202b23ea5c647959a04b9815bb187c0a0141fb14fb3e2edf8ce14b0c43474774d5ff779284f365981e6d45cc011612e5cd8fb429b3accf5e'
             '587d4d3dea948ce2aac33d3250cab0fe322ae892dc4f7261a56ad467c42a3d782d67113dc09ca7e5aff6d92dc9f0879c16dacb6531a4f3c5e5c62a3d6bfe6ab6'
-            '8b65394aaf76a693a95cc493c57df3db61a7ac3474ec36596de5c36dd15b11a051ea46e74058bad184e521712dac570aa3b623c1028305f89ebbdde45457ded8')
+            '8b65394aaf76a693a95cc493c57df3db61a7ac3474ec36596de5c36dd15b11a051ea46e74058bad184e521712dac570aa3b623c1028305f89ebbdde45457ded8'
+            'baadc8424db5dfbc240c2116bd95424f93043c19ecd7e4b3d25af50024767776d112ea87728f9c0b11bc53d92993439fd2c131b6df9ef7627a5a671b82a8dc78')
 
 prepare() {
 	cd Cemu
@@ -74,6 +77,8 @@ prepare() {
 
 	# glm fix
 	sed -i 's/glm::glm/glm/' src/Common/CMakeLists.txt src/input/CMakeLists.txt
+
+	git apply "${srcdir}/fix-glslang-link.patch"
 }
 
 build() {
