@@ -1,0 +1,5 @@
+socanui/
+*.asc
+*.tar.*
+src/
+pkg/
