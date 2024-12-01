@@ -1,0 +1,14 @@
+pkgbase = themecord
+	pkgdesc = Discord theme will always match your wallpaper!
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://github.com/danihek/themecord
+	arch = any
+	license = MIT
+	depends = hellwal
+	optdepends = pywal: An alternative color palette generator
+	optdepends = wallust: An alternative color palette generator
+	source = themecord::https://github.com/danihek/Themecord/archive/refs/tags/1.0.9.tar.gz
+	sha256sums = SKIP
+
+pkgname = themecord
