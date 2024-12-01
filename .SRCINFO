@@ -1,6 +1,6 @@
 pkgbase = floorp
 	pkgdesc = Firefox-based web browser focused on performance and customizability
-	pkgver = 11.20.0
+	pkgver = 11.21.0
 	pkgrel = 1
 	url = https://github.com/Floorp-Projects/Floorp
 	arch = x86_64
@@ -53,14 +53,14 @@ pkgbase = floorp
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = floorp=11.20.0
+	provides = floorp=11.21.0
 	conflicts = floorp
 	options = !debug
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
 	options = !strip
-	source = Floorp::git+https://github.com/Floorp-Projects/Floorp.git#tag=ac9a0a720cccdf2e823b31f6fb30ae0d52441e62
+	source = Floorp::git+https://github.com/Floorp-Projects/Floorp.git#tag=d770713c9b6678229bb6231ee2562edfa5e83f31
 	source = floorp-projects.floorp-core::git+https://github.com/Floorp-Projects/Floorp-core.git
 	source = floorp-projects.unified-l10n-central::git+https://github.com/Floorp-Projects/Unified-l10n-central.git
 	source = floorp.desktop
