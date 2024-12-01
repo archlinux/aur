@@ -2,7 +2,7 @@
 # Contributor: antermin <github dot com slash antermin>
 
 pkgname=python-proton-vpn-local-agent
-pkgver=1.1.4
+pkgver=1.2.0
 pkgrel=1
 _commit=9cc170b5aa3c8d8c9d26d155e1655bf546ea6146
 pkgdesc="Proton VPN local agent written in Rust"
@@ -22,5 +22,5 @@ build() {
 
 package() {
     mkdir -p "${pkgdir}"/usr/lib/python3.12/site-packages/proton/vpn
-    install -Dm755 "${srcdir}"/local-agent-rs/python-proton-vpn-local-agent/target/release/libpython_proton_vpn_local_agent.so "${pkgdir}"/usr/lib/python3.12/site-packages/proton/vpn/local_agent.abi3.so
+    install -Dm644 "${srcdir}"/local-agent-rs/python-proton-vpn-local-agent/target/release/libpython_proton_vpn_local_agent.so "${pkgdir}"/usr/lib/python3.12/site-packages/proton/vpn/local_agent.abi3.so
 }
