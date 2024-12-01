@@ -6,7 +6,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-globalmenu
-pkgver=132.0.1
+pkgver=133.0
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.mozilla.org/firefox/"
@@ -77,7 +77,7 @@ options=(
   !lto
   !makeflags
 )
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/2e1d2f3a9b21c8ae05ea898544d4a6196fadfd60
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/3cd4d539bf840887f63cd855260daaacb9894514
 source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
   $commit/firefox-symbolic.svg
@@ -89,12 +89,12 @@ validpgpkeys=(
   # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('5c031b572c1da726677e2ff97b6ad5a7e3b23387a6fc3963391cb562f80a5e48'
+sha256sums=('492b2c9a3b6d215e38ce490624e8b2b9473419accdeaddb24ba00bc6adc3cc60'
             'SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '71fe797430198ac8c00b538dce537284cf526e48be0496698cf5a980d70c16da'
             '58d78ce57b3ee936bc966458d6b20ab142d02a897bbe924b3f26717af0c5bee1')
-b2sums=('2773f6f74088954ab067df978e7069cbd92d96933190b32a24c7762ae7f300a8b4b9c95d6fee36ccceceebda86b51fd3842074d49869f8fa0cda5cb98402ed54'
+b2sums=('6c356a4d34044825e86f712b959cbfa6ee27c989c74e42b0b276ee6b169ca84b467ed5ea82f850a517694b75be104362273075c2aa6019f9d30e1be4035b3dd6'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         '2c7936949ef922307fb593bd0480a13bde2eab8ae24fc89071d809d6659384705f9b7838b1ae8bc46b98a152ba01fcffad606d4c84796ad9bfaaf20166f0a0fd'
