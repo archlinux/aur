@@ -1,0 +1,19 @@
+pkgbase = pwdsafety-bin
+	pkgdesc = Command line tool that checks how much a password is safe
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/edoardottt/pwdsafety
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = GPL-3.0-or-later
+	provides = pwdsafety=0.4.0
+	conflicts = pwdsafety-git
+	source_x86_64 = pwdsafety_0.4.0_linux_amd64.zip::https://github.com/edoardottt/pwdsafety/releases/download/v0.4.0/pwdsafety_0.4.0_linux_amd64.zip
+	sha256sums_x86_64 = a92da690952122d5b453fd87aaeffe9f9e82331f2c2a712b4a34c2976c37e336
+	source_aarch64 = pwdsafety_0.4.0_linux_arm64.zip::https://github.com/edoardottt/pwdsafety/releases/download/v0.4.0/pwdsafety_0.4.0_linux_arm64.zip
+	sha256sums_aarch64 = 3358a0ceb7794baac6629042086897f839ebeca910b5642e7f28db077480bbb8
+	source_i686 = pwdsafety_0.4.0_linux_386.zip::https://github.com/edoardottt/pwdsafety/releases/download/v0.4.0/pwdsafety_0.4.0_linux_386.zip
+	sha256sums_i686 = c6a6b14ba33a87eeaccd7dcc914870225eddebe919400ec094bbbc7ff6785af7
+
+pkgname = pwdsafety-bin
