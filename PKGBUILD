@@ -1,17 +1,14 @@
 # Maintainer: Manuel Stoeckl <com dоt mstoeckl аt wppkgb>
 pkgname=waypipe-git
-pkgver=0.9.1.r8.g8d35d76
+pkgver=0.9.2.r14.g2fdae7a
 pkgrel=1
 pkgdesc='A proxy for Wayland protocol applications; like ssh -X'
 license=('MIT')
-# minimal build: only 'meson' 'ninja' + C compiler/libc
-makedepends=('git' 'meson' 'ninja' 'scdoc' 'libdrm' 'pkgconf' 'cmake')
-depends=('lz4' 'zstd' 'mesa' 'ffmpeg' 'libva' 'wayland')
+makedepends=('git' 'meson' 'ninja' 'scdoc' 'shaderc' 'pkgconf' 'cargo')
+depends=('lz4' 'zstd' 'vulkan-icd-loader' 'vulkan-headers' 'ffmpeg')
 optdepends=(
 	'openssh: recommended transport'
-	'systemtap: a makedepend, for tracing hooks'
 )
-checkdepends=('weston' 'python-psutil')
 url='https://gitlab.freedesktop.org/mstoeckl/waypipe'
 source=('git+https://gitlab.freedesktop.org/mstoeckl/waypipe.git')
 sha512sums=('SKIP')
@@ -27,6 +24,7 @@ pkgver() {
 
 prepare() {
 	cd waypipe
+	cargo fetch --locked
 	meson --buildtype debugoptimized -Dwerror=false --prefix /usr "$srcdir/build"
 }
 
