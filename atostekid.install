@@ -33,8 +33,8 @@ post_install() {
 
 post_upgrade() {
     if [ -f ${certificate_path} ]; then
-    note "Removing trust for current ${certificate_label}"
-    trust anchor --remove ${certificate_path}
+        note "Removing trust for current ${certificate_label}"
+        trust anchor --remove ${certificate_path}
     fi
 
     post_install
@@ -42,8 +42,8 @@ post_upgrade() {
 
 post_remove() {
     if [ -f ${certificate_path} ]; then
-    note "Removing trust for ${certificate_label}"
-    trust anchor --remove ${certificate_path}
+        note "Removing trust for ${certificate_label}"
+        trust anchor --remove ${certificate_path}
         rm -rf /etc/{$pkgname:-atostekid}
     fi
 }
