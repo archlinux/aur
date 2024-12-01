@@ -8,6 +8,7 @@ pkgbase = python-cucumber-tag-expressions
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
 	source = https://github.com/cucumber/tag-expressions/archive/v6.1.1/python-cucumber-tag-expressions-6.1.1.tar.gz
