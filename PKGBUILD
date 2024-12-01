@@ -25,10 +25,10 @@ prepare() {
   autoreconf -ifv
 
   # Tell the configure script where the tirpc library is located (with LDFLAGS and CFLAGS) so rsl can compile and link correctly.
-  # Set --exec_prefix and --prefix to 'hard-code' directory / file locations in the source code, including the wsr88d_locations.dat file.
-  # We override these below in the 'make install' call to be in $pkgdir so that the object files, header files,
+  # Set --prefix to 'hard-code' directory / file locations in the source code, including the wsr88d_locations.dat file.
+  # We override this below in the 'make install' call to be in $pkgdir so that the object files, header files,
   # and data files are copied to the temp direcotry for packaging instead of the system /usr folder.
-  ./configure LDFLAGS="-ltirpc" CFLAGS="-I/usr/include/tirpc/" --exec_prefix=/usr --prefix=/usr
+  ./configure LDFLAGS="-ltirpc" CFLAGS="-I/usr/include/tirpc/" --prefix=/usr
 }
 
 build() {
@@ -38,5 +38,9 @@ build() {
 
 package() {
   cd rsl
-  make prefix="${pkgdir}/usr" exec_prefix="${pkgdir}/usr" install
+  # Note that if we only change prefix, it will trigger a complete rebuild of rsl because the Makefile has logic to
+  # update a handful of header files based on the pefix variable. To avoid this, we set add_paths_to_hardcoded_files_in_headers
+  # to "false" to disable the header update logic so the make install call below will only copy files to our
+  # Temp install directory. Ideally, we would just set DESTDIR and be done, but that doesn't seem to work for rsl.
+  make prefix="${pkgdir}/usr" add_paths_to_hardcoded_files_in_headers="false" install
 }
