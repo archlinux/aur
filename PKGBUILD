@@ -1,7 +1,7 @@
 # Maintainer: Snd <snd.scrape (at) gmail dot com>
 pkgname=komelia
-pkgver=0.12.0
-pkgrel=2
+pkgver=0.12.1
+pkgrel=1
 pkgdesc="Komga media client"
 arch=('x86_64')
 url="https://github.com/Snd-R/Komelia"
@@ -12,7 +12,7 @@ optdepends=(
 	'webkit2gtk-4.1: epub reader support'
 )
 source=(
-	'git+https://github.com/Snd-R/Komelia.git#commit=1e74fdca3a362bd763804f14b2fb1f8b7b0cf2c4'
+	'git+https://github.com/Snd-R/Komelia.git#commit=39afd91de502d360e87a1d4b10b6ee26e8f91ea0'
 	'git+https://github.com/Snd-R/ChipTextField.git#commit=2d6293d4e2089a045261494d098d76160a491d64'
 	'git+https://github.com/Snd-R/compose-sonner.git#commit=8a3d2fe586d2e20bf8691bb93357d44ceb9209d2'
 	'git+https://github.com/Snd-R/secret-service.git#commit=efca0226a444fc7ca4be06858a457c50f63cd7b8'
