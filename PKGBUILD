@@ -2,7 +2,7 @@
 # Co-Maintainer: Ash <xash at riseup d0t net>
 
 pkgname=flightcore-bin
-pkgver=2.26.0
+pkgver=2.26.2
 pkgrel=1
 pkgdesc="Installer/Updater/Launcher for Northstar (binary release)"
 url="https://github.com/R2NorthstarTools/FlightCore"
@@ -14,9 +14,9 @@ provides=("flightcore")
 conflicts=("flightcore")
 _appimage=flight-core_${pkgver}_amd64.AppImage
 source=("$url/releases/download/v$pkgver/$_appimage"
-        "$url/archive/refs/tags/v2.26.0.zip")
-sha256sums=('e974c32b566913aca7486a8447b054a82081ed5f57984ff4b3cefdfc500ae444'
-            '33a452265be6ae24db30c843bdb7ef102a848423a6159bceae6d5e37a33e1cda')
+        "$url/archive/refs/tags/v2.26.2.zip")
+sha256sums=('a2490d84f1311c7381d18ecd2d643105b6d0dc47eb7153b5245229be487fc8b0'
+            '3bcfe1816c3d9daf82fec98ed4b32d8ebda7545870e80892507da132b630bb14')
 
 prepare() {
 # Extract the AppImage
@@ -30,7 +30,7 @@ prepare() {
 package() {
   install -Dm644 flightcore.desktop -t "$pkgdir/usr/share/applications"
   install -Dm755 squashfs-root/usr/bin/flight-core "$pkgdir/usr/bin/flightcore"
-  cd FlightCore-2.26.0
+  cd FlightCore-$pkgver
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/flightcore"
   cd docs
   install -Dm644 ../README.md DEV-TOOLS.md DEVELOPMENT.md FAQ.md TROUBLESHOOTING.md\
