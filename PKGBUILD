@@ -2,7 +2,7 @@
 _base=SeleniumBase
 pkgname=python-${_base,,}
 pkgdesc="A complete web automation framework for end-to-end testing"
-pkgver=4.33.1
+pkgver=4.33.2
 pkgrel=1
 arch=(any)
 url="https://${_base,,}.io"
@@ -33,7 +33,7 @@ depends=(python-filelock
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-rerunfailures selenium-manager chromium)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base,,}/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('2c22364897f10740f41a0dfe962cbb01903a9d31d7dc23c276169305a1c14251e01b54fbf2ee85f594b793eb4ba69f7e49323268a6a324e8faf5290bc14daddb')
+sha512sums=('2ee1271a1cf5e745a07d76ac8995b538b5297171c4d7cdfc5318d0257f309d25df509fd304ecf51b0fee520bdd7e99f9d2436dbde5c2755f003afc7a3ac2b2ec')
 
 build() {
   cd ${_base}-${pkgver}
