@@ -19,15 +19,8 @@ depends=(
 )
 replaces=('python-radicale-storage-etesync')
 makedepends=('python-build' 'python-installer' 'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "add-missing-comma-in-setup.py.patch")
-sha256sums=('dcc85d168fe74c0350991dca45788b93100460bc23339432ca836165adc47c5e'
-            '98d3d69d368eedd073245ac0943882455405e519304044e2b571f97bc8487954')
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  patch -p1 < "$srcdir/add-missing-comma-in-setup.py.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('dcc85d168fe74c0350991dca45788b93100460bc23339432ca836165adc47c5e')
 
 build() {
   cd "${pkgname}-${pkgver}"
