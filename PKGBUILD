@@ -2,14 +2,15 @@
 
 pkgname=gql-bin
 _pkgname=${pkgname%-bin}
+_pkgbinary=gitql
 pkgver=0.32.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Git Query language (GQL) is an SQL like language to perform queries on .git files"
 url="https://github.com/AmrDeveloper/GQL"
 _urlraw="https://raw.githubusercontent.com/AmrDeveloper/GQL/$pkgver"
 arch=('x86_64' 'aarch64')
 license=('MIT')
-conflicts=('gql' 'gitql')
+conflicts=("${_pkgbinary}" "${_pkgname}")
 source=("LICENSE_${pkgver}::$_urlraw/LICENSE"
         "README_${pkgver}::$_urlraw/README.md"
         "RELEASING_${pkgver}::$_urlraw/RELEASING.md"
@@ -28,9 +29,8 @@ sha256sums_x86_64=('c5fe917ea110a4d2233a4643b5b3fa5d4e616dc6597d2264bc0fe5f16306
 sha256sums_aarch64=('d6b0b3d3db7deb4b5d9e7b12a7f0d02fd3e6a8edc59c0ab3606dc91cf14b6444')
 
 package() {
-  install -vDm755 "$srcdir/${_pkgname}_${pkgver}_${arch}" "$pkgdir/usr/bin/${_pkgname}"
-  ln -sf "$pkgdir/usr/bin/${_pkgname}" "$pkgdir/usr/bin/gitql"
-  ln -sf "$pkgdir/usr/bin/gitql" "$pkgdir/usr/bin/git-ql"
+  install -vDm755 "$srcdir/${_pkgname}_${pkgver}_${arch}" "$pkgdir/usr/bin/${_pkgbinary}"
+  ln -rsf "$pkgdir/usr/bin/${_pkgbinary}" "$pkgdir/usr/bin/${_pkgname}"
 
   install -vDm644 "LICENSE_${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -vDm644 "README_${pkgver}" "$pkgdir/usr/share/doc/$pkgname/README.md"
