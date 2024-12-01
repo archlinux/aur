@@ -1,6 +1,6 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=aurto
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="An AUR tool for managing an auto-updating local 'aurto' package repository using aurutils."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -21,7 +21,7 @@ install="aurto.install"
 # ring doesn't build with lto enabled: https://github.com/briansmith/ring/issues/1444
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alexheretic/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('452130640dafbb2753ba6642cfaed90e9e03ad4eeb4e12c4e7a8fa49f1b6b824')
+sha256sums=('44bddfa48a3779ac6f04a453928c3f5e2b20e67f5d8663e72fe1e2b3ce8ed4ae')
 backup=('usr/lib/systemd/system/check-aurto-git-trigger.timer'
         'usr/lib/systemd/system/update-aurto.timer'
         'usr/lib/systemd/system/update-aurto-startup.timer'
