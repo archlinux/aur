@@ -1,0 +1,4 @@
+[xray-domain-list-community]
+source = "github"
+github = "v2fly/domain-list-community"
+use_max_tag = true
