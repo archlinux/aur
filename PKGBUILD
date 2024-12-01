@@ -3,7 +3,7 @@
 pkgname="coqui-tts"
 _pkgname="${pkgname/-/_}"
 pkgver=0.24.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Deep learning for Text to Speech"
 url="https://github.com/idiap/coqui-ai-TTS"
 license=("MPL2")
@@ -11,7 +11,7 @@ arch=("any")
 provides=("tts" "python-tts")
 conflicts=("python-tts" "tts")
 replaces=("python-tts" "tts")
-depends=("cython0"
+depends=("cython"
          "python"
          "python-numpy"
          "python-scipy"
