@@ -1,0 +1,3 @@
+[python-xformers-bin]
+source="pypi"
+pypi="xformers"
