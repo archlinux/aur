@@ -1,6 +1,6 @@
 pkgbase = cpu-x-git
 	pkgdesc = A Free software that gathers information on CPU, motherboard and more
-	pkgver = 5.1.0.r0.g7382c82
+	pkgver = 5.1.1.r0.g6b88d78
 	pkgrel = 1
 	url = https://thetumultuousunicornofdarkness.github.io/CPU-X
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = cpu-x-git
 	makedepends = ninja
 	makedepends = nasm
 	makedepends = vulkan-headers
+	makedepends = polkit
 	depends = gtkmm3
 	depends = ncurses
 	depends = libcpuid>=0.7.0
