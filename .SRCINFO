@@ -1,5 +1,5 @@
 pkgbase = asf
-	pkgver = 6.0.8.7
+	pkgver = 6.1.0.1
 	pkgrel = 1
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
 	install = install
@@ -9,9 +9,10 @@ pkgbase = asf
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = git
-	makedepends = dotnet-sdk>=8.0
-	makedepends = aspnet-runtime>=8.0
-	source = asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=6.0.8.7?signed
+	makedepends = dotnet-sdk>=9.0
+	makedepends = aspnet-runtime>=9.0
+	depends = aspnet-runtime>=9.0
+	source = asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=6.1.0.1?signed
 	source = service.patch
 	source = asf.env
 	source = ASF.json

@@ -9,12 +9,13 @@ pkgname=('asf-plugin-steamtokendumper'
          'asf-plugin-periodicgc'
          'asf-plugin-signinwithsteam'
          'asf')
-pkgver="6.0.8.7"
+pkgver="6.1.0.1"
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
 license=('Apache-2.0')
-makedepends=('git' 'dotnet-sdk>=8.0' 'aspnet-runtime>=8.0')
+depends=('aspnet-runtime>=9.0')
+makedepends=('git' 'dotnet-sdk>=9.0' 'aspnet-runtime>=9.0')
 changelog=changelog
 install=install
 source=("asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=${pkgver}?signed"

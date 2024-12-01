@@ -1,3 +1,10 @@
+2024-12-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.1.0.1-1:
+    [!] ASF is now based on .NET 9, which opens new V6.1 release family. As usual, generic users will require .NET 9 upgrade, OS-specific users are covered by us in the included runtime. .NET 9 brings a lot of under-the-hood features, bugfixes and other improvements (@JustArchi #3244).
+    Redeeming points (rp) now checks points price of target items and refuses to redeem if their cost is non-zero. It's possible to append ! character at the end of definitionID in order to force redeeming even with non-zero cost (@JustArchi #3327).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2024-10-29 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.0.8.7-1:
     Added new redeempoints command with its rp alias (@JustArchi #3299).
