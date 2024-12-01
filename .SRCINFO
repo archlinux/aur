@@ -1,0 +1,21 @@
+pkgbase = pipecolor-bin
+	pkgdesc = A terminal filter to colorize output
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/dalance/pipecolor
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = help2man
+	depends = glibc
+	provides = pipecolor
+	conflicts = pipecolor
+	source = LICENSE-0.4.4::https://raw.githubusercontent.com/dalance/pipecolor/v0.4.4/LICENSE
+	source = README-0.4.4.md::https://raw.githubusercontent.com/dalance/pipecolor/v0.4.4/README.md
+	sha256sums = 83e4dd21429a91fb7cea67a476032a9641425e5355df2e0f589a738b6ec9fd2c
+	sha256sums = c5f1bff3048c0dd0fb7a5216d2af73e09624f6594c9169deccd9e1b3f63086cd
+	source_x86_64 = https://github.com/dalance/pipecolor/releases/download/v0.4.4/pipecolor-v0.4.4-x86_64-lnx.zip
+	sha256sums_x86_64 = 5d078e207faef359a255d9580942c32ca1b225a22353fa0bb7cbb7bcb55acd95
+
+pkgname = pipecolor-bin
