@@ -2,7 +2,7 @@
 pkgname=plann
 _name=${pkgname#python-}
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="plann is a caldav client for calendar and task management"
 url="https://github.com/tobixen/plann"
 arch=('any')
@@ -31,5 +31,5 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
+sha256sums=('8b275e15ec3e775de4efb766056ee8292e0f55dd43cbae4592d8de496a7bd8ff')
 
-sha256sums=('a8feb0a5254da21d2882581de264b2f41739eaaf655329a272d0ac5d18933a98')
