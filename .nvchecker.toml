@@ -1,4 +1,4 @@
 [libreoffice-dev-bin]
 source = "regex"
 url = "https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/"
-regex = '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'
+regex = '_([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+[\.a-z0-9]*)_Linux'
