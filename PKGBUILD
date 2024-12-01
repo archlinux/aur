@@ -5,13 +5,13 @@
 _pkgname=mew
 pkgname=$_pkgname-git
 pkgver=0.0.r24.e96bf18
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland port of dmenu"
 url="https://codeberg.org/sewn/mew"
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('wayland' 'libxkbcommon' 'fcft')
-makedepends=('git' 'pkg-config' 'wayland-protocols')
+makedepends=('git' 'pkg-config' 'wayland-protocols' 'tllist')
 source=(git+https://codeberg.org/sewn/mew.git)
 sha256sums=(SKIP)
 
