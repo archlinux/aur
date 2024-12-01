@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=licensee
-pkgver=9.17.1
+pkgver=9.18.0
 pkgrel=1
 pkgdesc="Detect under what license a project is distributed"
 arch=(any)
@@ -27,7 +27,7 @@ checkdepends=(
 )
 options=(!emptydirs)
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('84b69ff9511ee3e487dcf8d2c6d6143f035692684d0da6539e2b74b763b3f500')
+sha256sums=('601d7efd1cd2f208e2ae091539516a2e55bbd5ac802b2c818a227ed7b8c29ae8')
 
 _archive="$pkgname"
 
