@@ -1,0 +1,4 @@
+[kalc-bin]
+source = "git"
+git = "https://github.com/bgkillas/kalc.git"
+prefix = "v"
