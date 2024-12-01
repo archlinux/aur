@@ -1,0 +1,5 @@
+[tartube]
+source = "github"
+github = "axcore/tartube"
+use_max_tag = true
+prefix = "v"
