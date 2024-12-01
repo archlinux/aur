@@ -1,0 +1,4 @@
+[hipfort]
+source = "git"
+git = "https://github.com/ROCmSoftwarePlatform/hipfort.git"
+prefix = 'rocm-'
