@@ -1,7 +1,7 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=python-proton-keyring-linux
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="The proton-keyring-linux component."
 arch=("any")
