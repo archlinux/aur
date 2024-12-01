@@ -3,7 +3,7 @@
 # Contributor: Eli Schwartz
 pkgname=smile
 pkgver=2.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An emoji picker with custom tags support"
 arch=('any')
 url="https://smile.mijorus.it"
@@ -14,7 +14,7 @@ checkdepends=('appstream-glib')
 optdepends=('wl-clipboard: Automatically paste emojis (Wayland)'
             'xdotool: Automatically paste emojis (X11)')
 conflicts=("$pkgname-emoji-picker")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/$pkgver.tar.gz")
+#source=("$pkgname-$pkgver.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/$pkgver.tar.gz")
 _commit=fa7e57bdfd074032782ebf068a6be22c5f46b433  # 2.10.0
 source=("git+https://github.com/mijorus/smile.git#commit=${_commit}")
 sha256sums=('fbf78f14d8d584abf7467f1a6d80d410084edd049100c3932fed1ec9ffea5df4')

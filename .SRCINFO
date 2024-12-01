@@ -1,7 +1,7 @@
 pkgbase = smile
 	pkgdesc = An emoji picker with custom tags support
 	pkgver = 2.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://smile.mijorus.it
 	arch = any
 	license = GPL-3.0-or-later
