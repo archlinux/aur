@@ -1,0 +1,6 @@
+niri/
+prk/
+src/
+*.zst
+*.log
+*.tar.gz
