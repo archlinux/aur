@@ -15,6 +15,7 @@ pkgbase = wemeet-wayland-screenshare-git
 	depends = qt5-wayland
 	depends = xwaylandvideobridge
 	depends = opencv
+	depends = libxrandr
 	provides = wemeet-wayland-screenshare
 	source = git+https://github.com/xuwd1/wemeet-wayland-screenshare.git
 	source = wemeet-wayland-screenshare.sh

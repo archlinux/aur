@@ -8,7 +8,7 @@ _pkgname=wemeet-wayland-screenshare
 pkgname=wemeet-wayland-screenshare-git
 provides=('wemeet-wayland-screenshare')
 pkgver=3.19.2.400_hooked
-pkgrel=6
+pkgrel=7
 pkgdesc='Hooked wemeet that enables screenshare on KDE/GNOME Wayland. 实现KDE/GNOME Wayland下腾讯会议屏幕共享.'
 arch=('x86_64')
 license=('MIT')
@@ -32,6 +32,7 @@ depends=(
     'qt5-wayland'
     'xwaylandvideobridge'
     'opencv'
+    'libxrandr'
 )
 makedepends=(
     'cmake'
