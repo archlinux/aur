@@ -10,7 +10,7 @@ pkgname=(
   gnome-shell-git
   gnome-shell-docs-git
 )
-pkgver=47.2+r19239+g5d8905c5c
+pkgver=47.2+r19240+g3bc2ab6ba
 pkgrel=1
 pkgdesc="Next generation desktop shell - git latest"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
