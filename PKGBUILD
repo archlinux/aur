@@ -1,19 +1,20 @@
 # Maintainer: Laura Demkowicz-Duffy <laura@demkowiczduffy.co.uk>
 pkgname=openrocket-git
 _pkgname=openrocket
-pkgver=r5928.7a9bb436c
+pkgver=r6339.e84145ef9
+_pkgver=23.09
 pkgrel=1
 pkgdesc="A free and fully featured rocket flight simulator - 6 degrees of freedom"
 arch=('x86_64')
 url=https://github.com/openrocket/openrocket
 license=('GPL-3.0-or-later')
-depends=('java-environment=11' 'desktop-file-utils')
+depends=('java-environment=17' 'bash')
 makedepends=('git' 'ant')
 provides=('openrocket')
 conflicts=('openrocket')
 source=("git+https://github.com/$_pkgname/$_pkgname.git#branch=unstable"
         "git+https://github.com/dbcook/openrocket-database.git"
-	"$_pkgname.sh"
+    	"$_pkgname.sh"
         "de_debian.tar.gz")
 noextract=("$_pkgname.sh")
 sha256sums=('SKIP'
@@ -35,20 +36,25 @@ prepare() {
 
 build() {
   cd $_pkgname
-  ant -noinput -buildfile ./build.xml jar
+  # gradle can't fetch dependencies as a task, so unfortunately it has to be rolled into this step
+  # hence no --offline flag
+  ./gradlew --no-daemon dist
 }
 
 check() {
   cd $_pkgname
-  ant -noinput -buildfile ./build.xml check unittest
+  # no --offline flag, see above
+  ./gradlew --no-daemon check
+  ./gradlew --no-daemon test
+  ./gradlew --no-daemon :core:test
+  ./gradlew --no-daemon :swing:test
 }
 
 package() {
-  install -Dm644 $_pkgname/swing/build/jar/OpenRocket.jar $pkgdir/usr/share/java/$_pkgname/$_pkgname.jar
+  install -Dm644 \
+    $_pkgname/build/libs/OpenRocket-${_pkgver}.SNAPSHOT.jar \
+    $pkgdir/usr/share/java/$_pkgname/$_pkgname.jar
   install -Dm755 $srcdir/$_pkgname.sh $pkgdir/usr/bin/$_pkgname
-
-  install -Dm644 de_debian/$_pkgname.1 $pkgdir/usr/share/man/man1/$_pkgname.1
-  find "$pkgdir/usr/share/man/man1" -name *.1 -exec gzip -9 {} +
 
   install -Dm644 de_debian/$_pkgname.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
   install -Dm644 de_debian/$_pkgname.xpm $pkgdir/usr/share/pixmaps/$_pkgname.xpm
