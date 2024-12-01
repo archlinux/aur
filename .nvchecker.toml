@@ -1,0 +1,3 @@
+[paperlib-appimage]
+source = "git"
+git = "https://github.com/Future-Scholars/paperlib.git"
