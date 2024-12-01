@@ -57,15 +57,15 @@ package() {
   chmod 4755 "$pkgdir/usr/lib/$pkgname/chrome-sandbox"
 
   # 创建启动脚本
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" << EOF
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/yesplaymusic" << EOF
 #!/bin/sh
-exec /usr/lib/$pkgname/$pkgname "\$@"
+exec /usr/lib/$pkgname/yesplaymusic "\$@"
 EOF
 
   # 安装桌面条目和图标
-  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$srcdir/yesplaymusic-plus.desktop" "$pkgdir/usr/share/applications/yesplaymusic.desktop"
   for size in 16 32 48 64 128 256 512; do
-    install -Dm644 "build/icons/${size}x${size}.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
+    install -Dm644 "build/icons/${size}x${size}.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/yesplaymusic.png"
   done
 
   # 安装许可证
