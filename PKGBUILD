@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.4.0.r93.g5f4d0317
+pkgver=0.4.0.r94.g4ebb90c7
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -11,7 +11,7 @@ depends=(
 	'crypto++>=8.9'
 	'gcc-libs'
 	'glibc'
-	'glslang>=14.2'
+	'glslang>=15'
 	'hicolor-icon-theme'
 	'pugixml>=1.14'
 	'sdl3>=1:3.1.3'
@@ -79,7 +79,6 @@ prepare() {
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
-	sed -i '/glslang/s/14.2.0/15/' CMakeLists.txt
 }
 
 build() {
