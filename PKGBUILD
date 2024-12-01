@@ -2,8 +2,8 @@
 # Maintainer: Dominic git at msrd0 dot de
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
-pkgname=superslicer-prerelease
-pkgver=2.5.60.0
+pkgname=superslicer
+pkgver=2.5.59.13
 _pkgtag=$pkgver
 pkgrel=2
 epoch=1
@@ -16,7 +16,7 @@ depends=('boost-libs>=1.73.0' 'cgal' 'glew' 'imath' 'libspnav' 'nlopt' 'openvdb'
 makedepends=('boost>=1.73.0' 'cereal>=1.3.0' 'cmake' 'eigen' 'libigl' 'openvdb' 'samurai')
 optdepends=('superslicer-profiles: Predefined printer profiles')
 provides=("superslicer=$epoch:$pkgver")
-conflicts=('superslicer' 'superslicer-git')
+conflicts=('superslicer-git')
 source=("https://github.com/supermerill/SuperSlicer/archive/$_pkgtag.tar.gz"
         "0001-boost1.79.patch"
         "0002-fix-cereal.patch"
@@ -28,7 +28,7 @@ source=("https://github.com/supermerill/SuperSlicer/archive/$_pkgtag.tar.gz"
         "0008-boost1.85.patch"
         "0009-fix-multiple-choice.patch"
         "0010-occtwrapper-install-dir.patch")
-sha512sums=('a53f4cc9b5a20f3f60d38553d47bfd19ce8bd739a8a16493bbcf64f75825fa760b8c107d7f927d49d967f7d067fac8c428c8f6e67219e74b0970d9ab7aa5b9e6'
+sha512sums=('0c5102b85347e0cf15f2e7651c577ea2724a6bc0871d1760f6cebb0c103e5e070b574fe2f292a2c426e8f217ef748980bfeb1dc8a207ed237b9bf4dab2ec5f29'
             'fc18e8edf516f9479c3b0e201d1c74b42289f15ef8a64ff3a88c2bb14613978a9dcf7be50ff8b79faf054c7721a095a70715b0fb0747be48757f9502ba0eb859'
             '58467732161eb0abe58cfb1e64e080f64f9f2221032b0d6176739fc81a61fe7838fa6479e9aac7fa0ee9805898f9293081c5e35a146df103830199b46354b97e'
             '840e51b8feb3568ff46d309ece063f7188018fcaa43d19ec50ede408fdf2c237a3b7eaa11ba24409d8c3f7d6f5fb270181508cc56e0b2b0fef68b766130ef1eb'
@@ -78,7 +78,7 @@ build()
 		-DSLIC3R_WX_STABLE=ON \
 		-DSLIC3R_GTK=3 \
 		-DSLIC3R_BUILD_TESTS=OFF \
-		-DSLIC3R_ALPHA=ON \
+		-DSLIC3R_ALPHA=OFF \
 		-Wno-dev
 
 	samu

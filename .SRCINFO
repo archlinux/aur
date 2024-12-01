@@ -1,6 +1,6 @@
-pkgbase = superslicer-prerelease
+pkgbase = superslicer
 	pkgdesc = G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
-	pkgver = 2.5.60.0
+	pkgver = 2.5.59.13
 	pkgrel = 2
 	epoch = 1
 	url = https://github.com/supermerill/SuperSlicer
@@ -24,11 +24,10 @@ pkgbase = superslicer-prerelease
 	depends = slicer-udev
 	depends = wxwidgets-gtk3
 	optdepends = superslicer-profiles: Predefined printer profiles
-	provides = superslicer=1:2.5.60.0
-	conflicts = superslicer
+	provides = superslicer=1:2.5.59.13
 	conflicts = superslicer-git
 	options = !emptydirs
-	source = https://github.com/supermerill/SuperSlicer/archive/2.5.60.0.tar.gz
+	source = https://github.com/supermerill/SuperSlicer/archive/2.5.59.13.tar.gz
 	source = 0001-boost1.79.patch
 	source = 0002-fix-cereal.patch
 	source = 0003-openexr3.patch
@@ -39,7 +38,7 @@ pkgbase = superslicer-prerelease
 	source = 0008-boost1.85.patch
 	source = 0009-fix-multiple-choice.patch
 	source = 0010-occtwrapper-install-dir.patch
-	sha512sums = a53f4cc9b5a20f3f60d38553d47bfd19ce8bd739a8a16493bbcf64f75825fa760b8c107d7f927d49d967f7d067fac8c428c8f6e67219e74b0970d9ab7aa5b9e6
+	sha512sums = 0c5102b85347e0cf15f2e7651c577ea2724a6bc0871d1760f6cebb0c103e5e070b574fe2f292a2c426e8f217ef748980bfeb1dc8a207ed237b9bf4dab2ec5f29
 	sha512sums = fc18e8edf516f9479c3b0e201d1c74b42289f15ef8a64ff3a88c2bb14613978a9dcf7be50ff8b79faf054c7721a095a70715b0fb0747be48757f9502ba0eb859
 	sha512sums = 58467732161eb0abe58cfb1e64e080f64f9f2221032b0d6176739fc81a61fe7838fa6479e9aac7fa0ee9805898f9293081c5e35a146df103830199b46354b97e
 	sha512sums = 840e51b8feb3568ff46d309ece063f7188018fcaa43d19ec50ede408fdf2c237a3b7eaa11ba24409d8c3f7d6f5fb270181508cc56e0b2b0fef68b766130ef1eb
@@ -51,4 +50,4 @@ pkgbase = superslicer-prerelease
 	sha512sums = 6d7ab93042a75f04e1c3c8f294d19dd39abaf22aa75caf996c6a0cf753f6472134a3d4fa443b73924800b2d3a710416a931745c168911c0df3709fb71ec00570
 	sha512sums = 92929ba1cb6ee104a10f34a649eba3789ca02f1725104a57412279ff68c46614b1812b13e7dcdf0d235618b9f2a868b4798b1404d9e712d9f1efd46e6c71fcb5
 
-pkgname = superslicer-prerelease
+pkgname = superslicer
