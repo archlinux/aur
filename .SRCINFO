@@ -1,0 +1,22 @@
+pkgbase = colorizer-bin
+	pkgdesc = Tool for highlighting words in your terminal.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/kulinsky/colorizer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = help2man
+	depends = glibc
+	provides = colorizer
+	conflicts = colorizer
+	source = LICENSE-2.1.0::https://raw.githubusercontent.com/kulinsky/colorizer/v2.1.0/LICENSE
+	source = README-2.1.0.md::https://raw.githubusercontent.com/kulinsky/colorizer/v2.1.0/README.md
+	sha256sums = 65473bbe1f46f01acd01b91411b1d1098494ad5434fbdc2c568f95ded47b5ca6
+	sha256sums = 899735df4f3a0abe2802772f3f46a0bfbf37cf5fb7ab70f99ad5b7678f104f68
+	source_x86_64 = colorizer-x86_64-2.1.0::https://github.com/kulinsky/colorizer/releases/download/v2.1.0/colorizer-amd64-linux
+	sha256sums_x86_64 = 4ccaf952ff0d2bb0a846e4ec4c568d826fa5b294fd32aed9f353789e36dc45c2
+	source_aarch64 = colorizer-aarch64-2.1.0::https://github.com/kulinsky/colorizer/releases/download/v2.1.0/colorizer-aarch64-linux
+	sha256sums_aarch64 = 20f027c94a935e061356d1cd4d6bdd5d31a7ae540448e2695844b05d98fef2f6
+
+pkgname = colorizer-bin
