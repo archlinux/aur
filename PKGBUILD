@@ -8,7 +8,7 @@ url="https://github.com/ikz87/yawns/tree/main"
 license=('GPL-3.0')
 depends=('python' 'python-cssutils' 'python-pyqt5' 'python-dbus-next' 'python-xlib')
 source=("https://github.com/ikz87/yawns/archive/refs/tags/v$pkgver.zip")
-sha256sums=('SKIP') # Replace with actual checksum for the source
+sha256sums=('9aabc4418bcab343eb9fdc956a50aacf305ceeef9b8c8959ff78ab80e44c3e42')
 
 # Custom variable for configuration files
 _configdir="$pkgdir/etc/xdg/$pkgname"
