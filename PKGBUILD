@@ -1,13 +1,13 @@
 # Maintainer: Entailz <entail-wraps0r at icloud dot com>
 
 pkgname=quickshell
-pkgver=0.1.2e18340
+pkgver=0.1.af14a41
 pkgrel=1
 pkgdesc='Simple and flexbile QtQuick based desktop shell toolkit.'
 arch=(x86_64 aarch64)
 url='https://github.com/outfoxxed/quickshell'
 conflicts=("quickshell")
-provides=("quickshell=${pkgver%%.r*}")
+provides=("quickshell")
 options=(!strip)
 license=('GPL')
 depends=(
