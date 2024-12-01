@@ -1,15 +1,14 @@
 pkgbase = pymodoro
 	pkgdesc = A very smol pomodoro timer written in python 3
 	pkgver = 1
-	pkgrel = 1
-	url = https://github.com/coodos/pymodoro/
+	pkgrel = 2
+	url = https://github.com/coodos/pymodoro
 	arch = any
-	license = GPL V2
-	depends = alsa-utils
-	depends = dunst
-	depends = python3
-	source = pymodoro.py
-	md5sums = 56e5be3fe6df013686297c4794649ff7
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = libnotify
+	depends = python
+	source = git+https://github.com/coodos/pymodoro#commit=e2b7483744609b497c54535fa01c9264713058c0
+	sha256sums = 11241442635d52c6083b79ea1cb9b4a57ca056004d101d3b40e2d4c068b2512a
 
 pkgname = pymodoro
-
