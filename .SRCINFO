@@ -12,8 +12,6 @@ pkgbase = mew-git
 	depends = wayland
 	depends = libxkbcommon
 	depends = fcft
-	provides = dmenu-wayland
-	conflicts = dmenu-wayland
 	source = git+https://codeberg.org/sewn/mew.git
 	sha256sums = SKIP
 

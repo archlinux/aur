@@ -12,9 +12,6 @@ arch=('i686' 'x86_64')
 license=('MIT')
 depends=('wayland' 'libxkbcommon' 'fcft')
 makedepends=('git' 'pkg-config' 'wayland-protocols')
-# Not providing "dmenu" is intended: it does not provide a "dmenu" command, it's "dmenu-wl"
-provides=(dmenu-wayland)
-conflicts=(dmenu-wayland)
 source=(git+https://codeberg.org/sewn/mew.git)
 sha256sums=(SKIP)
 
