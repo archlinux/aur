@@ -1,0 +1,18 @@
+pkgbase = python-vllm
+	pkgdesc = faster implementation for TTS models, to be used in highly async environment - cpu version
+	pkgver = 0.6.4.post1
+	pkgrel = 3
+	url = https://github.com/vllm-project/vllm
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = gcc13
+	makedepends = cuda
+	makedepends = cuda-tools
+	depends = python-installer
+	depends = python
+	provides = python-vllm
+	conflicts = python-vllm
+	source = git+https://github.com/vllm-project/vllm.git#tag=v0.6.4.post1
+	sha256sums = a266e1d03773de22fc27dd595116ef848d066076b91a1800c63f8fca1d4bbbf7
+
+pkgname = python-vllm
