@@ -25,7 +25,7 @@ depends=('cdrkit'
   'python-pyqt5'
   'syslinux'
   'udisks2')
-makedepends=('python-distutils-extra'
+makedepends=(
   'python-installer'
   'python-build'
 )

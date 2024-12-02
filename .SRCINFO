@@ -5,7 +5,6 @@ pkgbase = usb-creator
 	url = https://git.launchpad.net/~usb-creator-hackers/usb-creator/+git/main
 	arch = any
 	license = GPL3
-	makedepends = python-distutils-extra
 	makedepends = python-installer
 	makedepends = python-build
 	depends = cdrkit
