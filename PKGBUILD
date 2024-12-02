@@ -1,7 +1,7 @@
 pkgbase=imap
 pkgname=imap
 pkgver=2007f
-pkgrel=21
+pkgrel=22
 arch=('x86_64')
 license=('APACHE')
 url="https://github.com/uw-imap/imap"
@@ -30,9 +30,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgbase-src"
-  CFLAGS+=" -ffat-lto-objects"
-  # NOTE: if you wish to enforce SSL, use SSLTYPE=unix.nopwd
-
+  CFLAGS+=" -ffat-lto-objects -Wno-implicit-function-declaration  -Wno-incompatible-pointer-types"
   yes "y" | make -j1 lnp EXTRAAUTHENTICATORS=gss PASSWDTYPE=pam SPECIALAUTHENTICATORS=ssl SSLTYPE=unix EXTRACFLAGS="${CFLAGS} -fPIC -lgssapi_krb5 -lkrb5 -lk5crypto -lcom_err -lpam" EXTRALDFLAGS="${LDFLAGS}"
 
 }

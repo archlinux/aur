@@ -1,6 +1,6 @@
 pkgbase = imap
 	pkgver = 2007f
-	pkgrel = 21
+	pkgrel = 22
 	url = https://github.com/uw-imap/imap
 	arch = x86_64
 	license = APACHE
