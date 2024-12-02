@@ -1,6 +1,6 @@
 pkgbase = python-daemon
 	pkgdesc = Library to implement a well-behaved Unix daemon process
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://pagure.io/python-daemon/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-daemon
 	depends = python
 	depends = python-lockfile
 	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/p/python_daemon/python_daemon-3.1.0.tar.gz
-	sha256sums = fdb621d7e5f46e74b4de1ad6b0fff6e69cd91b4f219de1476190ebdd0f4781df
+	source = https://files.pythonhosted.org/packages/source/p/python_daemon/python_daemon-3.1.1.tar.gz
+	sha256sums = a389d342aab7ac4c0e8397510af54ecb0d6919e2fced9bab7dd24f8c22265306
 
 pkgname = python-daemon

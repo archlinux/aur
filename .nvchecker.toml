@@ -1,0 +1,3 @@
+[python-daemon]
+source = "pypi"
+pypi = "python_daemon"
