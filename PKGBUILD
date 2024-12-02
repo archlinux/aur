@@ -2,11 +2,11 @@
 # Maintainer: Bennett Petzold <dansecob.aur gmail com>
 
 pkgname=qsv
-pkgver=0.138.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='CSV data-wrangling toolkit (fork of xsv)'
 arch=(x86_64)
-url="https://github.com/jqnatividad/$pkgname"
+url="https://github.com/dathere/$pkgname"
 license=(MIT Unlicense)
 depends=(bzip2 libbz2.so
          gcc-libs # libgcc_s.so libstdc++.so
@@ -16,11 +16,12 @@ depends=(bzip2 libbz2.so
          wayland libwayland-client.so)
 makedepends=(cargo
              clang
+             cmake
              luau)
 _archive="$pkgname-$pkgver"
 options=(!lto)
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('c53299dc56dbf7776a86d3802e928a8dc44a922b1bdaa1f1903d0ab8bb457201')
+sha256sums=('92ca4fef2c0f58aa5d322a01a70a7e9dd689f8055cdf64aaf1422cb28fe5357b')
 
 prepare() {
 	cd "$_archive"

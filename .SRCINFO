@@ -1,13 +1,14 @@
 pkgbase = qsv
 	pkgdesc = CSV data-wrangling toolkit (fork of xsv)
-	pkgver = 0.138.0
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/jqnatividad/qsv
+	url = https://github.com/dathere/qsv
 	arch = x86_64
 	license = MIT
 	license = Unlicense
 	makedepends = cargo
 	makedepends = clang
+	makedepends = cmake
 	makedepends = luau
 	depends = bzip2
 	depends = libbz2.so
@@ -18,7 +19,7 @@ pkgbase = qsv
 	depends = wayland
 	depends = libwayland-client.so
 	options = !lto
-	source = https://github.com/jqnatividad/qsv/archive/0.138.0/qsv-0.138.0.tar.gz
-	sha256sums = c53299dc56dbf7776a86d3802e928a8dc44a922b1bdaa1f1903d0ab8bb457201
+	source = https://github.com/dathere/qsv/archive/1.0.0/qsv-1.0.0.tar.gz
+	sha256sums = 92ca4fef2c0f58aa5d322a01a70a7e9dd689f8055cdf64aaf1422cb28fe5357b
 
 pkgname = qsv
