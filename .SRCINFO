@@ -1,6 +1,6 @@
 pkgbase = kora-icon-theme
 	pkgdesc = SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/bikass/kora
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = kora-icon-theme
 	conflicts = korla-icon-theme
 	replaces = korla-icon-theme
 	options = !strip
-	source = https://github.com/bikass/kora/archive/v1.6.1.tar.gz
-	sha256sums = da44c55de9ba128f5e4a7d0983c388d398d7e065292f087413b5fb14a25f02c4
+	source = https://github.com/bikass/kora/archive/v1.6.2.tar.gz
+	sha256sums = 1d87ebc71d4e341b1189b04e1ac70e1b43fa0937aa1e7b303d49e4caef12d1de
 
 pkgname = kora-icon-theme

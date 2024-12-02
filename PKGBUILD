@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 
 pkgname=kora-icon-theme
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)"
 arch=("any")
@@ -17,7 +17,7 @@ optdepends=(
     "breeze-icons: fallback Breeze icon theme for Plasma Desktop"
     "adwaita-icon-theme: fallback Adwaita icon theme for Gnome Desktop")
 source=("https://github.com/bikass/kora/archive/v$pkgver.tar.gz")
-sha256sums=('da44c55de9ba128f5e4a7d0983c388d398d7e065292f087413b5fb14a25f02c4')
+sha256sums=('1d87ebc71d4e341b1189b04e1ac70e1b43fa0937aa1e7b303d49e4caef12d1de')
 
 _iconpath=usr/share/icons
 _iconcache=icon-theme.cache
