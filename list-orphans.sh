@@ -5,7 +5,7 @@ orphan_count=$(echo "$orphans" | wc -l)
 total_size=0
 
 if [[ -n "$orphans" ]]; then
-    echo -e "\033[1;33m==> Found $orphan_count orphaned packages.\033[0m"
+    echo -e "\033[1m==>\033[1;33m Found $orphan_count orphaned packages\033[0m"
 
     while read -r orphan; do
         size=$(pacman -Qi "$orphan" | grep "Installed Size" | awk '{print $4, $5}')
@@ -24,5 +24,5 @@ if [[ -n "$orphans" ]]; then
     echo -e "\033[1;37m--------------------------------\033[0m"
     echo -e "\033[1;37mTotal                \033[1;32m$(printf "%.2f" $total_size) MiB\033[0m"
 else
-    echo -e "\033[1;32m==> No orphans found.\033[0m"
+    echo -e "\033[1m==>\033[1;32m No orphans found\033[0m"
 fi
