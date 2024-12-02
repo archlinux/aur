@@ -1,14 +1,18 @@
 pkgbase = ente-desktop-bin
-	pkgdesc = Desktop app for ente Photos.(Prebuilt version.Use system-wide electron)
+	pkgdesc = Desktop app for ente Photos.(Prebuilt version)
 	pkgver = 1.7.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ente-io/photos-desktop
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = asar
-	depends = electron33
+	depends = at-spi2-core
+	depends = gtk3
 	depends = nodejs
+	depends = http-parser
+	depends = nspr
+	depends = alsa-lib
+	depends = nss
 	provides = ente-desktop=1.7.7
 	conflicts = ente-desktop
 	options = !strip
