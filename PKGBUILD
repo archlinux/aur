@@ -2,7 +2,7 @@
 
 pkgname=clapgrep
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="One app to search through all your files"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/luleyleo/${pkgname}"
@@ -13,16 +13,16 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 sha256sums=('1a0ca6e3c939956fa634c95b442d690137c1ad1e1b76fdcfdbf45f4b6a3a2603')
 
 build() {
- 	cd "${pkgname}-${pkgver}/"
+	cd "${pkgname}-${pkgver}/"
 	just release=true build
 }
 
 check() {
- 	cd "${pkgname}-${pkgver}/"
+	cd "${pkgname}-${pkgver}/"
 	just release=true check
 }
 
 package() {
- 	cd "${pkgname}-${pkgver}/"
+	cd "${pkgname}-${pkgver}/"
 	just release=true rootdir="${pkgdir}" install
 }
