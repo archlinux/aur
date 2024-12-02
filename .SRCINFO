@@ -1,6 +1,6 @@
 pkgbase = limine-dracut-support-git
 	pkgdesc = Install kernel for Limine bootloader.
-	pkgver = r31.193a1dc
+	pkgver = r41.bdbb12c
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-entry-tool
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = limine-dracut-support-git
 	depends = limine
 	depends = dracut
 	depends = systemd
+	depends = efibootmgr
 	optdepends = journalctl-desktop-notification: It notifies you on Desktop when an error occurs.
 	conflicts = limine-dracut-support
 	backup = etc/limine-entry-tool.conf
