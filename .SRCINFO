@@ -1,6 +1,6 @@
 pkgbase = geogram-git
 	pkgdesc = Library of geometric algorithms
-	pkgver = 1.9.1+r1156+gb34f1c99b
+	pkgver = 1.9.1+r1161+g1b92f86a3
 	pkgrel = 1
 	url = https://github.com/BrunoLevy/geogram
 	arch = x86_64
