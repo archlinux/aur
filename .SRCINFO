@@ -1,37 +1,36 @@
 pkgbase = fake-background-webcam-git
-	pkgdesc = Virtual background-replacing camera
-	pkgver = r248.ba10079
+	pkgdesc = Faking your webcam background
+	pkgver = r269.eccc742
 	pkgrel = 1
 	url = https://github.com/fangfufu/Linux-Fake-Background-Webcam
-	install = fake-background-webcam.install
-	arch = x86_64
-	license = GPL
+	install = lfbw.install
+	arch = any
+	groups = modified
+	license = GPL-3.0-or-later
 	makedepends = git
-	depends = v4l2loopback-dkms
-	depends = python
-	depends = python-opencv>=4.4.0.46
-	depends = opencv
-	depends = python-numpy>=1.19.3
-	depends = python-requests>=2.23.0
-	depends = python-requests-unixsocket
-	depends = python-aiohttp>=3.6.2
-	depends = python-inotify-simple>=1.2
-	depends = python-pyfakewebcam
-	depends = python-mediapipe
-	depends = python-configargparse
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
 	depends = python-cmapy
+	depends = python-configargparse
+	depends = python-inotify-simple
+	depends = python-mediapipe-bin
+	depends = python-numpy
+	depends = python-opencv
+	depends = python-protobuf
+	depends = python-pyfakewebcam-git
+	depends = v4l2loopback-dkms
 	provides = fake-background-webcam
 	conflicts = fake-background-webcam
-	backup = etc/fake-background-webcam/config.ini
-	source = fake-background-webcam-git::git+https://github.com/fangfufu/Linux-Fake-Background-Webcam.git
-	source = fake-background-webcam@.service
+	backup = etc/lfbw/config.ini
+	source = git+https://github.com/fangfufu/Linux-Fake-Background-Webcam.git
+	source = lfbw@.service
 	source = readme.md
-	source = fake-background-webcam.install
 	source = config.ini
 	sha256sums = SKIP
-	sha256sums = b5aaa8e9c45687b5e61b9691d7de1c41b54392d9ed66a9177be1dbe0ed4edf6a
-	sha256sums = f4ddf1a2ee79663696d645a82f2ba1f2c07c91d1d9e1e6286ad93e7ab2ee3461
-	sha256sums = b57c70f3b498d646d8834d770d806219b306251c908cc8591b0d711e3638916f
-	sha256sums = 82a6ea84a0f1246ca11f058a88b83854d6ecb268fb2331a4a186b9b01920bfc9
+	sha256sums = ea95498dc51501c4e14008695e9890bd8aa2044a4c45b6fe72a0b9ad17b247a9
+	sha256sums = 65bc57d62f4ac554835c4c7eb0f9bbfc922222337c196861c60d751ab68a54dd
+	sha256sums = 5b8a5cd8d556bd44ee2d42c58e851fea5dbffb12855816c395be7a388c391b98
 
 pkgname = fake-background-webcam-git
