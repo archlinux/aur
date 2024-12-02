@@ -1,0 +1,15 @@
+pkgbase = tumble-git
+	pkgdesc = A utility to construct PDF files from one or more image files.
+	pkgver = 0.38.r1.gd4a9738
+	pkgrel = 1
+	url = https://github.com/brouhaha/tumble
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libtiff
+	conflicts = tumble
+	source = tumble-git::git+https://github.com/brouhaha/tumble
+	md5sums = SKIP
+
+pkgname = tumble-git
