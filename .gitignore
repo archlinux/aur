@@ -1,6 +1,11 @@
-*.pkg.tar.xz
-fake-background-webcam-git
-Linux-Fake-Background-Webcam
-autobuild.sh
-r.sh
-prepare.sh
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!lfbw@.service
+!lfbw.install
+!config.ini
+!readme.md
