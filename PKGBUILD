@@ -1,7 +1,7 @@
 # Contributor: Asuka Minato <asukaminato at nyan dot eu dot org>
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=ecode-bin
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance."
 url="https://github.com/SpartanJ/ecode"
@@ -13,7 +13,7 @@ source=(LICENSE::https://raw.githubusercontent.com/SpartanJ/ecode/main/LICENSE e
 source_x86_64=("$url/releases/download/ecode-$pkgver/ecode-linux-$pkgver-x86_64.tar.gz")
 sha256sums=('5fcb9a831d8efabb08cd20b7ca6000ca333115d60de477fa27909a14306188b0'
             '40460ea0c5d9c523274b53cf41e642bf6ed36406c14f6ce95a33e42e68c71923')
-sha256sums_x86_64=('9285e424c2d1bddd9ba9fc940b51dde1369297266a540302e38bd7055025faaa')
+sha256sums_x86_64=('819742f3b96f6dc2233ecae78313b96424bfba508a8f2493e518b64c75763bbb')
 
 package() {
 	install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
