@@ -3,20 +3,20 @@
 
 pkgname=dcvviewer-bin
 _pkgname=dcvviewer
-_majver=2023.0
-_minver=5629
+_majver=2024.0
+_minver=7209
 pkgver=${_majver}.${_minver}
 pkgrel=1
 pkgdesc="NICE DCV client for Linux. DCV is a desktop remotization server, with support for native as well as web-based clients."
 arch=('x86_64')
 url="https://www.nice-software.com/products/dcv"
 license=('custom: commercial')
-depends=('cairo' 'ffmpeg' 'gdk-pixbuf2' 'glib2' 'gst-plugins-base' 'gst-plugins-base-libs' 'gst-plugins-good' 'gstreamer' 'gtk3' 'harfbuzz-icu' 'json-glib' 'krb5' 'libjpeg6-turbo' 'libjpeg-turbo' 'libsasl' 'libsoup3' 'libx11' 'lmdb' 'lz4' 'nss' 'pcsclite' 'protobuf-c' 'sqlite' 'wayland'
+depends=('cairo' 'ffmpeg' 'gdk-pixbuf2' 'glib2' 'gst-plugins-base' 'gst-plugins-base-libs' 'gst-plugins-good' 'gstreamer' 'gtk4' 'harfbuzz-icu' 'json-glib' 'krb5' 'libfido2' 'libjpeg6-turbo' 'libjpeg-turbo' 'libsasl' 'libsoup3' 'libx11' 'lmdb' 'lz4' 'nss' 'pcsclite' 'protobuf-c' 'sqlite' 'wayland'
 )
 source=(
   "https://d1uj6qtbmh3dt5.cloudfront.net/${_majver}/Clients/nice-dcv-viewer_${pkgver}-1_amd64.ubuntu2204.deb"
 )
-sha256sums=('cfb3b660b6c5a21c996cbc181f2b0a1599cbfa8314b27b61925e6be3e88ee655')
+sha256sums=('294ae3e24a79383071b1275f17de19669ced9aff20fc2ea3432502b0119bfc79')
 install="${_pkgname}.install"
 package(){
 
@@ -51,8 +51,8 @@ package(){
   mkdir keep
   mv libavcodec.so.* libavutil.so.* keep
   rm *.so*
-  rm gtk-query-immodules-3.0 gtk-update-icon-cache glib-compile-schemas glib-compile-resources gdk-pixbuf-query-loaders
-  rm -rf gtk-3.0 gstreamer-1.0
+  rm gtk4-update-icon-cache glib-compile-schemas glib-compile-resources gdk-pixbuf-query-loaders
+  rm -rf gtk-4.0 gstreamer-1.0
   mv keep/* .
   rmdir keep
   sed -i '/export GST_PLUGIN_SCANNER/d' "${pkgdir}/usr/bin/dcvviewer"
