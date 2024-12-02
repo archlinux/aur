@@ -1,11 +1,10 @@
 pkgbase = ahriman
 	pkgdesc = ArcH linux ReposItory MANager
-	pkgver = 2.15.3
+	pkgver = 2.16.0
 	pkgrel = 1
-	url = https://github.com/arcan1s/ahriman
-	install = ahriman.install
+	url = https://ahriman.readthedocs.io/
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-flit
 	makedepends = python-installer
@@ -13,20 +12,29 @@ pkgbase = ahriman
 	depends = devtools>=1:1.0.0
 	depends = git
 	depends = pyalpm
+	depends = python-bcrypt
 	depends = python-inflection
-	depends = python-passlib
 	depends = python-pyelftools
 	depends = python-requests
-	optdepends = python-aioauth-client: web server with OAuth2 authorization
-	optdepends = python-aiohttp: web server
-	optdepends = python-aiohttp-apispec>=3.0.0: web server
-	optdepends = python-aiohttp-cors: web server
-	optdepends = python-aiohttp-jinja2: web server
-	optdepends = python-aiohttp-security: web server with authorization
-	optdepends = python-aiohttp-session: web server with authorization
+	source = https://github.com/arcan1s/ahriman/releases/download/2.16.0/ahriman-2.16.0.tar.gz
+	source = ahriman.sysusers
+	source = ahriman.tmpfiles
+	sha256sums = 2f2eaef7a1fad1fff0d2d441fadf6384dd6d78f5274111bb05c8bc950d3f1bb7
+	sha256sums = 0c1cb37a57c47b5159c626f69c08d094c58241319e2a5a3b29c76170b92f09c8
+	sha256sums = 720a02af47ac718b31acd9feb73b1b81a5eed4f0bc4ca7a18dfc299dc0da5013
+
+pkgname = ahriman
+	pkgdesc = ArcH linux ReposItory MANager (meta package)
+	depends = ahriman-core=2.16.0
+	depends = ahriman-triggers=2.16.0
+	depends = ahriman-web=2.16.0
+
+pkgname = ahriman-core
+	install = ahriman.install
+	optdepends = ahriman-triggers: additional extensions for the application
+	optdepends = ahriman-web: web server
 	optdepends = python-boto3: sync to s3
 	optdepends = python-cerberus: configuration validator
-	optdepends = python-cryptography: web server with authorization
 	optdepends = python-matplotlib: usage statistics chart
 	optdepends = python-requests-unixsocket2: client report to web server by unix socket
 	optdepends = python-jinja: html report generation
@@ -34,11 +42,20 @@ pkgbase = ahriman
 	optdepends = rsync: sync by using rsync
 	backup = etc/ahriman.ini
 	backup = etc/ahriman.ini.d/logging.ini
-	source = https://github.com/arcan1s/ahriman/releases/download/2.15.3/ahriman-2.15.3.tar.gz
-	source = ahriman.sysusers
-	source = ahriman.tmpfiles
-	sha512sums = 234280aa26eacf3f40098eef84d39c4a5f5a4ec46f894ad1e30c860b7ec71453a3d2697405786ef0348b62f0e1d622b833307f7f73d926a5a0e2b4692a840b2a
-	sha512sums = b1dd772f8802be99ccba3add5f1e6f78e5e79d0967342668dd12e472651a6b91c342f11fba330caaca421cc3d6c7e2011e09a6bd131f8ba14bbc4a6206cce539
-	sha512sums = 331e286cc82a7aca07b0332fab886e7404884a83f942afcee590b4a7a06abc1e3daa2dcf50d45041007ad7f3b93f760bfea5c7d38aa57937b0e103fd65b36564
 
-pkgname = ahriman
+pkgname = ahriman-triggers
+	pkgdesc = ArcH linux ReposItory MANager, additional extensions
+	depends = ahriman-core=2.16.0
+	backup = etc/ahriman.ini.d/00-triggers.ini
+
+pkgname = ahriman-web
+	pkgdesc = ArcH linux ReposItory MANager, web server
+	depends = ahriman-core=2.16.0
+	depends = python-aiohttp-apispec>=3.0.0
+	depends = python-aiohttp-cors
+	depends = python-aiohttp-jinja2
+	optdepends = python-aioauth-client: OAuth2 authorization support
+	optdepends = python-aiohttp-security: authorization support
+	optdepends = python-aiohttp-session: authorization support
+	optdepends = python-cryptography: authorization support
+	backup = etc/ahriman.ini.d/00-web.ini

@@ -1,58 +1,90 @@
 # Maintainer: Evgeniy Alekseev
 
-pkgname='ahriman'
-pkgver=2.15.3
+pkgbase='ahriman'
+pkgname=('ahriman' 'ahriman-core' 'ahriman-triggers' 'ahriman-web')
+pkgver=2.16.0
 pkgrel=1
 pkgdesc="ArcH linux ReposItory MANager"
 arch=('any')
-url="https://github.com/arcan1s/ahriman"
-license=('GPL3')
-depends=('devtools>=1:1.0.0' 'git' 'pyalpm' 'python-inflection' 'python-passlib' 'python-pyelftools' 'python-requests')
+url="https://ahriman.readthedocs.io/"
+license=('GPL-3.0-or-later')
+depends=('devtools>=1:1.0.0' 'git' 'pyalpm' 'python-bcrypt' 'python-inflection' 'python-pyelftools' 'python-requests')
 makedepends=('python-build' 'python-flit' 'python-installer' 'python-wheel')
-optdepends=('python-aioauth-client: web server with OAuth2 authorization'
-            'python-aiohttp: web server'
-            'python-aiohttp-apispec>=3.0.0: web server'
-            'python-aiohttp-cors: web server'
-            'python-aiohttp-jinja2: web server'
-            'python-aiohttp-security: web server with authorization'
-            'python-aiohttp-session: web server with authorization'
-            'python-boto3: sync to s3'
-            'python-cerberus: configuration validator'
-            'python-cryptography: web server with authorization'
-            'python-matplotlib: usage statistics chart'
-            'python-requests-unixsocket2: client report to web server by unix socket'
-            'python-jinja: html report generation'
-            'python-systemd: journal support'
-            'rsync: sync by using rsync')
-source=("https://github.com/arcan1s/ahriman/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
-        'ahriman.sysusers'
-        'ahriman.tmpfiles')
-install="$pkgname.install"
-backup=('etc/ahriman.ini'
-        'etc/ahriman.ini.d/logging.ini')
+source=("https://github.com/arcan1s/ahriman/releases/download/$pkgver/$pkgbase-$pkgver.tar.gz"
+        "$pkgbase.sysusers"
+        "$pkgbase.tmpfiles")
 
 build() {
-  cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
 
-  python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation
 }
 
-package() {
-  cd "$pkgname-$pkgver"
-
-  python -m installer --destdir="$pkgdir" "dist/$pkgname-$pkgver-py3-none-any.whl"
-
-  # thanks too PEP517, which we all wanted, you need to install data files manually nowadays
-  pushd package && find . \( -type f -or -type l \) -exec install -Dm644 "{}" "$pkgdir/usr/{}" \; && popd
-
-  # keep usr/share configs as reference and copy them to /etc
-  install -Dm644 "$pkgdir/usr/share/$pkgname/settings/ahriman.ini" "$pkgdir/etc/ahriman.ini"
-  install -Dm644 "$pkgdir/usr/share/$pkgname/settings/ahriman.ini.d/logging.ini" "$pkgdir/etc/ahriman.ini.d/logging.ini"
-
-  install -Dm644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-  install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+package_ahriman() {
+    pkgname='ahriman'
+    pkgdesc="ArcH linux ReposItory MANager (meta package)"
+    depends=("$pkgbase-core=$pkgver" "$pkgbase-triggers=$pkgver" "$pkgbase-web=$pkgver")
 }
 
-sha512sums=('234280aa26eacf3f40098eef84d39c4a5f5a4ec46f894ad1e30c860b7ec71453a3d2697405786ef0348b62f0e1d622b833307f7f73d926a5a0e2b4692a840b2a'
-            'b1dd772f8802be99ccba3add5f1e6f78e5e79d0967342668dd12e472651a6b91c342f11fba330caaca421cc3d6c7e2011e09a6bd131f8ba14bbc4a6206cce539'
-            '331e286cc82a7aca07b0332fab886e7404884a83f942afcee590b4a7a06abc1e3daa2dcf50d45041007ad7f3b93f760bfea5c7d38aa57937b0e103fd65b36564')
+package_ahriman-core() {
+    pkgname='ahriman-core'
+    optdepends=('ahriman-triggers: additional extensions for the application'
+                'ahriman-web: web server'
+                'python-boto3: sync to s3'
+                'python-cerberus: configuration validator'
+                'python-matplotlib: usage statistics chart'
+                'python-requests-unixsocket2: client report to web server by unix socket'
+                'python-jinja: html report generation'
+                'python-systemd: journal support'
+                'rsync: sync by using rsync')
+    install="$pkgbase.install"
+    backup=('etc/ahriman.ini'
+            'etc/ahriman.ini.d/logging.ini')
+
+    cd "$pkgbase-$pkgver"
+
+    python -m installer --destdir="$pkgdir" "dist/$pkgbase-$pkgver-py3-none-any.whl"
+    python subpackages.py "$pkgdir" "$pkgname"
+
+    # keep usr/share configs as reference and copy them to /etc
+    install -Dm644 "$pkgdir/usr/share/$pkgbase/settings/ahriman.ini" "$pkgdir/etc/ahriman.ini"
+    install -Dm644 "$pkgdir/usr/share/$pkgbase/settings/ahriman.ini.d/logging.ini" "$pkgdir/etc/ahriman.ini.d/logging.ini"
+
+    install -Dm644 "$srcdir/$pkgbase.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgbase.conf"
+    install -Dm644 "$srcdir/$pkgbase.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgbase.conf"
+}
+
+package_ahriman-triggers() {
+    pkgname='ahriman-triggers'
+    pkgdesc="ArcH linux ReposItory MANager, additional extensions"
+    depends=("$pkgbase-core=$pkgver")
+    backup=('etc/ahriman.ini.d/00-triggers.ini')
+
+    cd "$pkgbase-$pkgver"
+
+    python -m installer --destdir="$pkgdir" "dist/$pkgbase-$pkgver-py3-none-any.whl"
+    python subpackages.py "$pkgdir" "$pkgname"
+
+    install -Dm644 "$pkgdir/usr/share/$pkgbase/settings/ahriman.ini.d/00-triggers.ini" "$pkgdir/etc/ahriman.ini.d/00-triggers.ini"
+}
+
+package_ahriman-web() {
+    pkgname='ahriman-web'
+    pkgdesc="ArcH linux ReposItory MANager, web server"
+    depends=("$pkgbase-core=$pkgver" 'python-aiohttp-apispec>=3.0.0' 'python-aiohttp-cors' 'python-aiohttp-jinja2')
+    optdepends=('python-aioauth-client: OAuth2 authorization support'
+                'python-aiohttp-security: authorization support'
+                'python-aiohttp-session: authorization support'
+                'python-cryptography: authorization support')
+    backup=('etc/ahriman.ini.d/00-web.ini')
+
+    cd "$pkgbase-$pkgver"
+
+    python -m installer --destdir="$pkgdir" "dist/$pkgbase-$pkgver-py3-none-any.whl"
+    python subpackages.py "$pkgdir" "$pkgname"
+
+    install -Dm644 "$pkgdir/usr/share/$pkgbase/settings/ahriman.ini.d/00-web.ini" "$pkgdir/etc/ahriman.ini.d/00-web.ini"
+}
+sha256sums=('2f2eaef7a1fad1fff0d2d441fadf6384dd6d78f5274111bb05c8bc950d3f1bb7'
+            '0c1cb37a57c47b5159c626f69c08d094c58241319e2a5a3b29c76170b92f09c8'
+            '720a02af47ac718b31acd9feb73b1b81a5eed4f0bc4ca7a18dfc299dc0da5013')

@@ -2,6 +2,7 @@ post_upgrade() {
     local breakpoints=(
         2.9.0-1
         2.12.0-1
+        2.16.0-1
     )
 
     for v in "${breakpoints[@]}"; do
@@ -21,7 +22,7 @@ It was found that there was an upgrade from old devtools package to the new one,
 * remove build chroot, e.g.: ahriman service-clean --chroot;
 * update local databases: ahriman update --no-aur --no-local --no-manual -yy.
 
-For more information kindly refer to migration notes https://ahriman.readthedocs.io/en/stable/migration.html.
+For more information kindly refer to migration notes https://ahriman.readthedocs.io/en/stable/migrations/2.9.0.html.
 EOF
 }
 
@@ -37,6 +38,16 @@ Whereas old local tree is still supported it is highly recommended to migrate to
 * enable web and timer services again by using x86_64-aur suffix,
   where x86_64 is the repository architecture and aur is the repository name.
 
-For more information kindly refer to migration notes https://ahriman.readthedocs.io/en/stable/migration.html.
+For more information kindly refer to migration notes https://ahriman.readthedocs.io/en/stable/migrations/2.12.0.html.
+EOF
+}
+
+_2_16_0_1_changes() {
+    cat << EOF
+In order to prepare to python 3.13 the project now uses bcrypt instead of passlib for generating and validating
+passwords, because the passlib seems to be unmaintained and will be broken since then. If you are using password
+authentication, you'd need to generate passwords again.
+
+For more information kindly refer to migration notes https://ahriman.readthedocs.io/en/stable/migrations/2.16.0.html.
 EOF
 }
