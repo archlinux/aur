@@ -4,12 +4,11 @@
 pkgbase=pyqt5-networkauth
 pkgname=(python-pyqt5-networkauth)
 pkgver=5.15.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for QtNetworkAuth"
 arch=(x86_64)
 url="https://www.riverbankcomputing.com/software/pyqtnetworkauth/intro"
 license=(GPL3)
-groups=(pyqt5)
 depends=(qt5-networkauth python-pyqt5)
 makedepends=(sip pyqt-builder)
 source=("https://pypi.python.org/packages/source/P/PyQtNetworkAuth/PyQtNetworkAuth-$pkgver.tar.gz")
