@@ -13,7 +13,6 @@ depends=('gmp')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/vincentloechner/polylib.git")
 md5sums=('SKIP')
-conflicts=('polylib' 'polylib-gmp')
 
 build() {
     cd "$srcdir/$_pkgbase"
@@ -23,7 +22,7 @@ build() {
     ./autogen.sh
     [ -d "polylib" ] || mkdir "polylib"
     cd polylib
-    ../configure --prefix=/usr
+    ../configure --prefix=/usr --without-libgmp
     make
 
     cd ..
@@ -50,12 +49,15 @@ check() {
 
 package_polylib-git() {
     provides=("polylib=$pkgver")
+    conflicts=('polylib')
     cd "$srcdir/$_pkgbase/polylib"
     make DESTDIR="$pkgdir" install
 }
 
 package_polylib-gmp-git() {
     provides=("polylib-gmp=$pkgver")
+    conflicts=('polylib-gmp')
+    depends=("polylib=$pkgver")
     cd "$srcdir/$_pkgbase/polylibgmp"
     make DESTDIR="$pkgdir" install-exec
 
