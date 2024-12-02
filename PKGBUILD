@@ -4,7 +4,7 @@
 _pkgname=stremio
 pkgname=${_pkgname}-git
 pkgver=4.4.168.qt6+r851+gf16a7b177
-pkgrel=1
+pkgrel=2
 pkgdesc="The next generation media center"
 arch=('x86_64')
 url="https://www.stremio.com"
@@ -52,5 +52,9 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   ln -s /opt/stremio/stremio "$pkgdir/usr/bin/stremio"
   install -Dm644 "${pkgdir}/opt/stremio/smartcode-stremio.desktop" "${pkgdir}/usr/share/applications/smartcode-stremio.desktop"
+  install -Dm644 "images/stremio.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/stremio.svg"
+  install -Dm644 "images/stremio.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/smartcode-stremio.svg"
+  install -Dm644 "images/stremio_tray_black.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/status/stremio_tray_black.svg"
+  install -Dm644 "images/stremio_tray_white.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/status/stremio_tray_white.svg"
 }
 # vim:set ts=2 sw=2 et:

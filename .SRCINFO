@@ -1,7 +1,7 @@
 pkgbase = stremio-git
 	pkgdesc = The next generation media center
 	pkgver = 4.4.168.qt6+r851+gf16a7b177
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.stremio.com
 	arch = x86_64
 	license = MIT
