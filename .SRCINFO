@@ -1,7 +1,6 @@
 pkgbase = mdxmini-git
-	pkgdesc = Library and command line player for Sharp X68000 MDX music files
 	pkgver = r19.eda5bca
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/weimingtom/mdxplayer/tree/master/jni/mdxmini
 	arch = i686
 	arch = x86_64
@@ -20,10 +19,11 @@ pkgbase = mdxmini-git
 	sha256sums = bcc4f85ace781ad6298b81f90dc691f5aca627611d387dfc6c350a3145c1807a
 
 pkgname = mdxmini-git
+	pkgdesc = C library for Sharp X68000 MDX music files
 	depends = glibc
 
 pkgname = mdxplay-git
+	pkgdesc = Command line player for Sharp X68000 MDX music files
 	depends = sdl
 	provides = mdxplay
 	conflicts = mdxplay
-

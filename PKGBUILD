@@ -1,8 +1,7 @@
 pkgbase=mdxmini-git
 pkgname=(mdxmini-git mdxplay-git)
 pkgver=r19.eda5bca
-pkgrel=5
-pkgdesc='Library and command line player for Sharp X68000 MDX music files'
+pkgrel=6
 arch=(i686 x86_64)
 # BouKiCHi's original repo seems to be gone so use this random, most up to
 # date, fork instead.
@@ -42,6 +41,7 @@ build() {
 }
 
 package_mdxmini-git() {
+  pkgdesc='C library for Sharp X68000 MDX music files'
   depends=(glibc)
   cd "$srcdir/$pkgbase/jni/mdxmini"
   install -dm755 "$pkgdir/usr/"{include/mdxmini,lib}
@@ -51,6 +51,7 @@ package_mdxmini-git() {
 }
 
 package_mdxplay-git() {
+  pkgdesc='Command line player for Sharp X68000 MDX music files'
   depends=(sdl)
   provides=(mdxplay)
   conflicts=(mdxplay)
