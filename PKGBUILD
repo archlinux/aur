@@ -2,7 +2,7 @@
 # Contributor: Tiago Santos <ircalf at gmail dot com>
 
 pkgname=libjwt
-pkgver=1.17.2
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="JWT C Library"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/benmcollins/libjwt"
 license=('LGPL3')
 depends=('check' 'jansson' 'openssl')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/benmcollins/libjwt/archive/v${pkgver}.tar.gz")
-sha256sums=('3dc1d0d69c3aa95cf6932304728d71dccfb1fec5196c6b274da96572619aaf26')
+sha256sums=('f43bc4e84d35380ae1e2f2c1bf48874452bec92a9d02289a785b0fdd2f4d0424')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
