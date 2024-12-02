@@ -7,7 +7,7 @@ pkgrel=1
 arch=('x86_64')
 _id=4352528597269942272
 url=https://www.xrvm.cn/community/download?id=${_id}
-license=('Apache')
+license=('Apache-2.0')
 provides=()
 #conflicts=()
 depends=('filesystem')
