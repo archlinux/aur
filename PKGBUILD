@@ -3,7 +3,7 @@
 
 _pkgname=fluffychat
 pkgname=fluffychat-web
-pkgver=1.19.0
+pkgver=1.23.0
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
@@ -16,7 +16,8 @@ makedepends=(
     'cmake'
     'unzip'
     'yq'
-    'flutter'
+    'flutter-engine-linux-google-bin'
+    'flutter-target-web'
 )
 optdepends=('pantalaimon: used for E2E encryption')
 provides=("$pkgname")
@@ -24,7 +25,7 @@ conflicts=("$pkgname")
 source=(
     "fluffychat-v${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('0fb007f2ed56ee46115606dae5eb2bb9eac238c344caae8d478eb80d71e6295f')
+sha256sums=('7165285e7eefe8a5906f06bdad6e7ca2c7cda1da4381c6f0d09e0f927e99cda8')
 backup=(
     "etc/webapps/${_pkgname}/config.json"
 )
@@ -44,7 +45,7 @@ prepare() {
 
 build() {
   cd "fluffychat-${pkgver}"
-  flutter build web --release
+  flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --release --source-maps
 }
 
 package() {  
