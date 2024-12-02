@@ -1,7 +1,7 @@
 # Maintainer: A. Benz <hello@benz.dev>
 pkgname=walker-bin
 license=('MIT')
-pkgver=0.10.5
+pkgver=0.10.7
 pkgrel=1
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
@@ -11,7 +11,7 @@ source_x86_64=("https://github.com/abenz1267/walker/releases/download/v$pkgver/w
 arch=('x86_64')
 conflicts=('walker')
 provides=('walker')
-sha256sums_x86_64=('683be52960dd7214305843ae6b7b0d965108261f6b74515739a934137bd3af09')
+sha256sums_x86_64=('3336203d903952a603c181e0b372cd3108fd1086723a6982bec674f1b140ad87')
 
 package() {
   cd "$srcdir/"
