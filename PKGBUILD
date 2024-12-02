@@ -31,11 +31,11 @@ package() {
     # Install Python files
     install -Dm644 "src/yawns_manager.py" "$pkgdir/usr/share/$pkgname/yawns_manager.py"
     install -Dm644 "src/yawns_notifications.py" "$pkgdir/usr/share/$pkgname/yawns_notifications.py"
-    install -Dm644 "$program_dir/src/gtk_helpers.py" "$pkgdir/usr/share/$pkgname/gtk_helpers.py"
+    install -Dm644 "src/gtk_helpers.py" "$pkgdir/usr/share/$pkgname/gtk_helpers.py"
 
     # Install assets
     install -Dm644 "assets/yawns-logo.png" "$pkgdir/usr/share/$pkgname/assets/yawns-logo.png"
-    install -Dm644 "$program_dir/assets/vinyl.png" "$pkgdir/usr/share/$pkgname/assets/vinyl.png"
+    install -Dm644 "assets/vinyl.png" "$pkgdir/usr/share/$pkgname/assets/vinyl.png"
 
     # Install configuration and style files to system-wide config directory
     install -Dm644 "src/style.qss" "$pkgdir/usr/share/$pkgname/style.qss"
@@ -51,4 +51,3 @@ fi
 exec python3 /usr/share/yawns/app.py "$@"' > "$pkgdir/usr/bin/$pkgname"
     chmod +x "$pkgdir/usr/bin/$pkgname"
 }
-
