@@ -1,1 +1,19 @@
+## File browser
+
+- There's now the option to open files with your text editor when double-clicking them
+- You can now input custom values for chmod and chgrp in the context menu
+
+## Services
+
+- There is now the option to specify a URL path for services that will be appended when opened in the browser
+- Services now show better when they are active or inactive
+
+## Other
+
+- Future updates on Windows will no longer remove any pinned taskbar shortcuts
+- Future updates on Windows will be faster
+- There is now the option to censor all displayed contents, allowing for a more simple screensharing workflow for XPipe
 - Startup speed improvements
+- Improve error message for libvirt when user was missing group permissions
+- Fix various VNC implementation bugs
+- Fix built-in services like the Proxmox dashboard also counting for the service license limit
