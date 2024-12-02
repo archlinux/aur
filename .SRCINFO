@@ -1,6 +1,6 @@
 pkgbase = python-signify
 	pkgdesc = Module to generate and verify PE signatures
-	pkgver = 0.5.2
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/signify/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-signify
 	depends = python-oscrypto
 	depends = python-certvalidator
 	depends = python-pyasn1-modules
-	source = https://files.pythonhosted.org/packages/source/s/signify/signify-0.5.2.tar.gz
-	sha256sums = 3480623a51ff544f59d703adb6e88558b227ecbddec8ac5204306ee86bebef4a
+	source = https://files.pythonhosted.org/packages/source/s/signify/signify-0.7.1.tar.gz
+	sha256sums = 501073db65aadce6c651f2a8c626d7e47d6eb50b37b874e062fca9c52427e2b2
 
 pkgname = python-signify
