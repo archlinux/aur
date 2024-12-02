@@ -1,0 +1,19 @@
+pkgbase = easyedit-git
+	pkgdesc = An easy markdown editor that allows you to write MarkDown (MD) and preview it in real-time. You can save, load .md files and export to PDF.(Use system-wide electron)
+	pkgver = 1.3.1.r0.gaaae66f
+	pkgrel = 1
+	url = https://github.com/gcclinux/EasyEdit
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron33
+	source = easyedit.git::git+https://github.com/gcclinux/EasyEdit.git
+	source = easyedit.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = easyedit-git
