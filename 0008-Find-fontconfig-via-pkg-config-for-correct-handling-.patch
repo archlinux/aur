@@ -1,4 +1,4 @@
-From f6862d514883a48050b0c15ae6b0679780dd8a49 Mon Sep 17 00:00:00 2001
+From 2cd8aaf00645f24afaf5d258428ef4b0ef88530d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 24 Apr 2022 23:00:27 +0200
 Subject: [PATCH 08/18] Find fontconfig via pkg-config for correct handling of
@@ -33,7 +33,7 @@ index 00000000000..1a52327ae6f
 +    set(Fontconfig_FOUND 1)
 +endif()
 diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
-index 3b3dbd13218..2a8d4828eb6 100644
+index 96387c542ad..211b7d8e6ef 100644
 --- a/src/gui/CMakeLists.txt
 +++ b/src/gui/CMakeLists.txt
 @@ -769,7 +769,7 @@ qt_internal_extend_target(Gui CONDITION QT_FEATURE_fontconfig AND QT_FEATURE_fre
@@ -46,10 +46,10 @@ index 3b3dbd13218..2a8d4828eb6 100644
  
  qt_internal_extend_target(Gui CONDITION APPLE AND NOT MACOS
 diff --git a/src/gui/configure.cmake b/src/gui/configure.cmake
-index db627d7453a..170627fb678 100644
+index 0e53f5127a5..44545ea9679 100644
 --- a/src/gui/configure.cmake
 +++ b/src/gui/configure.cmake
-@@ -43,7 +43,7 @@ qt_find_package(WrapSystemFreetype 2.2.0 PROVIDED_TARGETS WrapSystemFreetype::Wr
+@@ -42,7 +42,7 @@ qt_find_package(WrapSystemFreetype 2.2.0 PROVIDED_TARGETS WrapSystemFreetype::Wr
  if(QT_FEATURE_system_zlib)
      qt_add_qmake_lib_dependency(freetype zlib)
  endif()
@@ -59,5 +59,5 @@ index db627d7453a..170627fb678 100644
  qt_find_package(gbm PROVIDED_TARGETS gbm::gbm MODULE_NAME gui QMAKE_LIB gbm)
  qt_find_package(WrapSystemHarfbuzz 2.6.0 PROVIDED_TARGETS WrapSystemHarfbuzz::WrapSystemHarfbuzz MODULE_NAME gui QMAKE_LIB harfbuzz)
 -- 
-2.47.0
+2.47.1
 
