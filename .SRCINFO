@@ -1,14 +1,13 @@
 pkgbase = ruby-osc-ruby
 	pkgdesc = a ruby client for the OSC protocol
-	pkgver = 1.1.4
-	pkgrel = 2
+	pkgver = 1.1.5
+	pkgrel = 1
 	url = http://github.com/aberant/osc-ruby
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = osc-ruby-1.1.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/osc-ruby-1.1.4.gem
-	sha256sums = 23205ef03327f1d34a386d066fe1db45305ab9c0880c20fa1cf616167b7ccad3
+	source = osc-ruby-1.1.5::git+https://github.com/aberant/osc-ruby.git#tag=v1.1.5
+	sha256sums = 0a86412ac26e8d7317891ca205d7231274f6492246ea250b311b3ec25dc59ca1
 
 pkgname = ruby-osc-ruby
