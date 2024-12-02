@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=baize-toolbox-git
 _pkgname="白泽工具箱"
-pkgver=0.0.1.beta4.r7.g257fddb
+pkgver=1.0.0.beta1.r4.g51b3cca
 _electronversion=31
 _nodeversion=18
 pkgrel=1
-pkgdesc="A powerful multimedia tool that provides users with a variety of multimedia processing capabilities.Use system-wide electron.一款功能强大的多媒体工具，为用户提供了多种多样的多媒体处理功能。"
+pkgdesc="A powerful multimedia tool that provides users with a variety of multimedia processing capabilities.(Use system-wide electron)一款功能强大的多媒体工具，为用户提供了多种多样的多媒体处理功能。"
 arch=('any')
 url="https://baize.plume.vip/"
 _ghurl="https://github.com/baizeteam/baize-toolbox"
@@ -65,19 +65,20 @@ build() {
         echo 'fetch-retry-maxtimeout=10000'
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
+        echo "shamefully-hoist=true"
+        echo "virtual-store-dir-max-length=80"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
+        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
     fi
-    sed "s|\"electron\": \"\([^\"]*\)\"|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"|g" -i package.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install -D @ant-design/icons classnames conf
     NODE_ENV=development    pnpm install
-    NODE_ENV=production     npx electron-vite build
+    NODE_ENV=production     pnpm run build
     NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {

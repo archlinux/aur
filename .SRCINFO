@@ -1,6 +1,6 @@
 pkgbase = baize-toolbox-git
-	pkgdesc = A powerful multimedia tool that provides users with a variety of multimedia processing capabilities.Use system-wide electron.一款功能强大的多媒体工具，为用户提供了多种多样的多媒体处理功能。
-	pkgver = 0.0.1.beta4.r7.g257fddb
+	pkgdesc = A powerful multimedia tool that provides users with a variety of multimedia processing capabilities.(Use system-wide electron)一款功能强大的多媒体工具，为用户提供了多种多样的多媒体处理功能。
+	pkgver = 1.0.0.beta1.r4.g51b3cca
 	pkgrel = 1
 	url = https://baize.plume.vip/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = baize-toolbox-git
 	depends = electron31
 	depends = ffmpeg
 	depends = nodejs
-	provides = baize-toolbox=0.0.1.beta4
+	provides = baize-toolbox=1.0.0.beta1
 	conflicts = baize-toolbox
 	source = baize-toolbox.git::git+https://github.com/baizeteam/baize-toolbox.git
 	source = baize-toolbox.sh
