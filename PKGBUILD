@@ -2,10 +2,10 @@
 
 pkgname=stalld
 pkgver=1.19.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A daemon to prevent the starvation of operating system threads"
 arch=('i686' 'x86_64')
-url="https://git.kernel.org/pub/scm/utils/stalld/stalld.git/"
+url="https://gitlab.com/rt-linux-tools/stalld"
 license=('GPL-2.0-or-later')
 depends=('glibc' 'libbpf')
 makedepends=('bpf' 'clang' 'llvm')
