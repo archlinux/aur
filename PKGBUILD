@@ -1,7 +1,7 @@
 # Maintainer: Richard Garber <rg.1029384756@gmail.com>
 pkgname=sbsign-refind-initcpio-post-hook
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="a mkinitcpio post hook to sign kernels for refind and secureboot."
 arch=('any')
 url="https://aur.archlinux.org/packages/sbsign-refind-initcpio-post-hook"
