@@ -4,7 +4,7 @@
 # Inspiration for service and config files: https://github.com/Bisa/factorio-init
 
 pkgname=factorio-headless
-pkgver=2.0.21
+pkgver=2.0.23
 pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories - Server version (stable branch)"
 arch=('x86_64')
@@ -30,7 +30,7 @@ sha256sums=('e15ac4bbd0ccf3956a0a281535045e0ffb163bf10f0e3fde6b71642921bf6310'
             '72bbef31fced163e5993eff0e73a836a557165775eb77e0d69b24fe5ec4690a7'
             '40931abfd15db6027c02471c20f86923e74471a9eb91453638c42e0f968027f5'
             '87dae15d1bcfb4683faea9c66498bd916bd27f8aa0dc724c4e21076dcf17da64'
-            '1d6d2785006d6a8d9d5fdcdaa7097a189ec35ba95f3521025dc4e046f7a1398e')
+            'e819fc9ad6df061bf9d4bffc91988dd18d0e3982c8b1c22c0525d78bda3ef216')
 
 # no modifications needed, the executable looks for:
 # - data in /usr/share/factorio
