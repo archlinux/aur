@@ -5,7 +5,7 @@ pkgname=act-${_pkgname}-git
 _basever=0
 _patchlvl=1
 _gitversion=r40.500495e
-pkgver=${_basever}.${_patchlvl}.${_gitversion}
+pkgver=r40.500495e
 pkgrel=1
 pkgdesc="This package contains SPEF and SDF readers used to back-annotate an ACT design."
 arch=('x86_64')
@@ -31,15 +31,20 @@ package() {
     install -Dm644 ${srcdir}/${_pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     export ACT_HOME="/opt/act-async"
-    #mkdir -p ${pkgdir}/opt/act-async/conf/generic
-    #mkdir -p ${pkgdir}/opt/act-async/include
-    #mkdir -p ${pkgdir}/opt/act-async/lib
+    mkdir -p ${pkgdir}/opt/act-async/bin
+    mkdir -p ${pkgdir}/opt/act-async/conf/generic
+    mkdir -p ${pkgdir}/opt/act-async/include/act
+    mkdir -p ${pkgdir}/opt/act-async/lib
+
+    export LIBRARY_PATH=${pkgdir}/opt/act-async/lib
 
     cd ${_pkgname}
+    make install_inc INSTALL_OVERRIDE="${pkgdir}/opt/act-async/"
     make depend INSTALL_OVERRIDE="${pkgdir}/opt/act-async/"
     make INSTALL_OVERRIDE="${pkgdir}/opt/act-async/"
     make install INSTALL_OVERRIDE="${pkgdir}/opt/act-async/"
 
     rm -rf ${pkgdir}/opt/act-async/act
+    rm -rf ${pkgdir}/opt/act-async/conf
 
 }
