@@ -3,7 +3,7 @@
 
 pkgname=python-cohere
 _pkgname=cohere-python
-pkgver=5.12.0
+pkgver=5.13.0
 pkgrel=2
 pkgdesc="Python Library for Accessing the Cohere API"
 arch=(any)
@@ -33,7 +33,7 @@ checkdepends=(
   python-pytest-asyncio
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('d62b3f58a73e9d7ce17613b22b9a46049694f17a8b8e38473efc6ca6d30e4dbc')
+sha256sums=('bfc96f70cda9af56af648976b94b082e238c304471ef29278ed397182fe0005d')
 
 build() {
   cd $_pkgname-$pkgver
