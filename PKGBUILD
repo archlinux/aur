@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: nizne <nizne@tutamail.com>
 pkgname=pwdsafety-bin
 pkgver=0.4.0
 pkgrel=1
