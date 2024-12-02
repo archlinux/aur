@@ -2,7 +2,7 @@
 
 pkgname=python-cmsis-pack-manager
 _name="${pkgname#python-}"
-pkgver=rust.0.7.0.r1.ga312ce0
+pkgver=0.5.3.r21.ga312ce0
 pkgrel=1
 pkgdesc="A Rust and Python module for handling CMSIS Pack files"
 arch=(x86_64)
@@ -36,6 +36,15 @@ source=(
 )
 sha512sums=('SKIP')
 
+prepare() {
+  # https://github.com/pyocd/cmsis-pack-manager/pull/219
+  #   patch -Np1 -d $_name -i ../$pkgname-0.5.3-update_maturin.patch
+  git -C "${srcdir}/${_name}" clean -dfx
+  cd $_name
+  git tag -l 'rust*' | xargs git tag -d
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 pkgver() {
   cd "${srcdir}/${_name}"
   (
@@ -43,14 +52,6 @@ pkgver() {
     git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
-}
-
-prepare() {
-  # https://github.com/pyocd/cmsis-pack-manager/pull/219
-  #   patch -Np1 -d $_name -i ../$pkgname-0.5.3-update_maturin.patch
-  git -C "${srcdir}/${_name}" clean -dfx
-  cd $_name
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
