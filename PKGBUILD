@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-activeqt-static
-_qtver=6.8.0
+_qtver=6.8.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -21,10 +21,10 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0001-Handle-win64-in-dumpcpp-and-MetaObjectGenerator-read.patch'
         '0002-Build-tools-for-the-target-platform.patch'
         '0003-Fix-compile-error-about-missing-QStringView-overload.patch')
-sha256sums=('2319df34c52e98bf20e69e09c3bba194d28c7ae5922a67e36601d4e881d5cc5b'
-            'f3acb4ec27e59824b1ad45d59dffa628c9dd6290f4790d6533205ad3539899b9'
-            '083e7ee89a011bffbe49d3b2635e57863f29bcc9062ad89ee5e83da3f4c639e7'
-            'a2f38234e05226a9fee916fcb313402f4bab32a687380fb6ed0f107f319462fd')
+sha256sums=('926944eab9a5d35b1f4bb863e4e7dbd2f048fda07d6a09da181e9ec56c2c8cd7'
+            '7a4d3a36c0055b43302161f1a587cc0df4668c572f1952ad6063f3e4bf8d2638'
+            '318bd827f0f97319a5086d00f732d471280d33219b5ac48620c6050ddb04237c'
+            'b89a62770ac66d83b0619856af3b1b03d3f15dcf809622388b6b59bbc7389130')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
