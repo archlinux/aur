@@ -1,7 +1,7 @@
 _dotnet_version=8.0
 pkgname="csharp-ls"
 pkgver=0.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Roslyn-based LSP language server for C#"
 arch=("x86_64")
 url="https://github.com/razzmatazz/csharp-language-server"
@@ -23,7 +23,7 @@ prepare() {
 build(){
     cd "$srcdir/csharp-language-server-$pkgver"
     dotnet publish -c Release \
-        --no-self-contained \
+        --self-contained false \
         --no-restore \
         --framework "net$_dotnet_version" \
         -p:PackAsTool=false
