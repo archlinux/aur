@@ -4,8 +4,8 @@
 
 _pkgname=fluffychat
 pkgname=fluffychat-web-bin
-pkgver=1.19.0
-pkgrel=2
+pkgver=1.23.0
+pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
 url="https://fluffychat.im/"
@@ -15,14 +15,13 @@ optdepends=()
 provides=("fluffychat-web")
 conflicts=("fluffychat-web")
 source=(
-
   "fluffychat-web-${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/releases/download/v${pkgver}/fluffychat-web.tar.gz"
   "config-${pkgver}.sample.json::https://raw.githubusercontent.com/krille-chan/fluffychat/v${pkgver}/config.sample.json"
 )
 noextract=(
     "fluffychat-web-${pkgver}.tar.gz"
 )
-sha256sums=('b5083f9932f711f85d9dd778cec359cb603af375abdc20168fd4504e23b54ae9'
+sha256sums=('ffe21770e9972664ee36568cf9e25a80f5bf7f1d9bb73d94123a94f2f1ba0dce'
             'c17a181d58527d4cc23bcf5534d61add1abc0da542ee22080d5bd6242c4c12d7')
 backup=(
     "etc/webapps/${_pkgname}/config.json"
