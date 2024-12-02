@@ -1,17 +1,18 @@
-# Maintainer: Olivier Le Moal
+# Maintainer: Michael Lass <bevan@bi-co.net>
+# Contributor: Olivier Le Moal
+
+# This PKGBUILD is maintained on github:
+# https://github.com/michaellass/AUR
 
 pkgname=sdrangel-bin
-pkgver=7.22.2
-_subver=2861
+pkgver=7.22.4
 pkgrel=1
 conflicts=(sdrangel-git)
 pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend.'
 url="https://github.com/f4exb/sdrangel"
 arch=('x86_64')
-license=('GPL3')
-
-depends=('fftw' 'ffmpeg4.4' 'lz4'
-         'qt5-base' 'qt5-multimedia' 'qt5-websockets' 'qt5-location' 'qt5-speech' 'qt5-graphicaleffects' 'qt5-charts')
+license=('GPL-3.0-only')
+depends=('fftw' 'ffmpeg4.4' 'lz4' 'qt5-base' 'qt5-multimedia' 'qt5-websockets' 'qt5-location' 'qt5-speech' 'qt5-graphicaleffects' 'qt5-charts')
 optdepends=('mbelib: Required for Digital Speech Decoder (DSD) demodulator'
             'dsdcc: Required for Digital Speech Decoder (DSD) demodulator'
 	    'codec2: Required for M17 and FreeDV mod/demod'
@@ -27,17 +28,17 @@ optdepends=('mbelib: Required for Digital Speech Decoder (DSD) demodulator'
             'rtl-sdr: Realtek RTL2832U support'
 	    'libsdrplay: SDRplay support')
 provides=('sdrangel')
-source=("https://github.com/f4exb/sdrangel/releases/download/v${pkgver}/sdrangel-${_subver}-master.tar.gz")
-sha256sums=('e50be254035f114d32d74a19c481e92815027b143d354da828ebdbc3c6471d36')
+source=(https://github.com/f4exb/sdrangel/releases/download/v${pkgver}/sdrangel_${pkgver}_ubuntu-24.04_amd64.deb)
+sha256sums=('03c0a6491ff860b3959e779309c474f710182e6a752255f8576700811f6f4404')
 
 prepare() {
-    cd "sdrangel-${_subver}-master"
-    # extract .deb data
-    ar p sdrangel_${pkgver}-1_amd64.deb data.tar.zst | tar x --zstd
+  mkdir -p "${srcdir}"/sdrangel-${pkgver}
+  cd "${srcdir}"/sdrangel-${pkgver}
+  ar p "${srcdir}"/sdrangel_${pkgver}_ubuntu-24.04_amd64.deb data.tar.zst | tar x --zstd
 }
 
 package() {
-    cd "sdrangel-${_subver}-master"
-    mv "usr/" ${pkgdir}
+  cd "${srcdir}"/sdrangel-${pkgver}
+  mv usr "${pkgdir}"
 }
 
