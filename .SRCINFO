@@ -1,9 +1,9 @@
 pkgbase = cmake-pkg
 	pkgdesc = pkg-config clone for CMake packages.
 	pkgver = 0.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/yataro/cmake-pkg/
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = zig
 	depends = cmake

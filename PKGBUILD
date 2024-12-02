@@ -2,9 +2,9 @@
 
 pkgname=cmake-pkg
 pkgver=0.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="pkg-config clone for CMake packages."
-arch=('any')
+arch=('x86_64')
 url='https://gitlab.com/yataro/cmake-pkg/'
 license=('MIT')
 depends=('cmake')
