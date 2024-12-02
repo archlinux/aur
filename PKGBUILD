@@ -1,6 +1,6 @@
 # Maintainer: Laura Demkowicz-Duffy <dev@demkowiczduffy.co.uk>
 pkgname=protolint
-pkgver=0.50.5
+pkgver=0.51.0
 pkgrel=1
 pkgdesc="A pluggable linter and fixer to enforce Protocol Buffer style and conventions"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1be01df54565c4831db8f1dcef38347e25a7a945d9f3ff77ca7a488e0307b3ac')
+sha256sums=('fce29acc2c5bb274b71392986144287ec72f297dbbd3f15cb28ab4fa1a59c844')
 
 build() {
 	cd "$pkgname-$pkgver"
