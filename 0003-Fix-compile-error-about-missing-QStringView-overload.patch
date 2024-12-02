@@ -1,4 +1,4 @@
-From f5ca95078b51848de78e4138bba464a87cf4666b Mon Sep 17 00:00:00 2001
+From dea8903d2ca6c4e37878955fbcb40423d851d4e6 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 12 Sep 2022 17:38:47 +0200
 Subject: [PATCH 3/3] Fix compile error about missing QStringView overload
@@ -33,5 +33,5 @@ index e6d4518..47f1a74 100644
          nextTypeAndForceComplete = startType + lengthType;
      } while (true);
 -- 
-2.47.0
+2.47.1
 
