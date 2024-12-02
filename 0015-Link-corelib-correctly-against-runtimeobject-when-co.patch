@@ -1,4 +1,4 @@
-From f8df8b0faf953d98d4ed39d0393c10add887dc20 Mon Sep 17 00:00:00 2001
+From 34f6b3a613c58fdb346ec3eba35ca585b7b8023f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 21:39:39 +0100
 Subject: [PATCH 15/18] Link corelib correctly against runtimeobject when
@@ -13,10 +13,10 @@ Change-Id: I9f06f3845165afaf305a0fc7771a1093cba08811
  1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/src/corelib/CMakeLists.txt b/src/corelib/CMakeLists.txt
-index 076eabcbe78..80d939dbfff 100644
+index e8d7320c0bf..fe461414361 100644
 --- a/src/corelib/CMakeLists.txt
 +++ b/src/corelib/CMakeLists.txt
-@@ -850,8 +850,7 @@ qt_internal_extend_target(Core CONDITION WASM
+@@ -855,8 +855,7 @@ qt_internal_extend_target(Core CONDITION WASM
          text/qlocale_wasm.cpp
  )
  
@@ -27,5 +27,5 @@ index 076eabcbe78..80d939dbfff 100644
          runtimeobject
  )
 -- 
-2.47.0
+2.47.1
 

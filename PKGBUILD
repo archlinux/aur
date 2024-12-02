@@ -11,7 +11,7 @@
 
 _android_arch=armv7a-eabi
 pkgname=android-armv7a-eabi-qt6-base
-_qtver=6.8.0
+_qtver=6.8.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -50,25 +50,25 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0016-Workaround-linker-error-about-missing-symbol-__sync_.patch'
         '0017-Workaround-Unknown-CMake-command-_qt_test_emscripten.patch'
         '0018-Fix-configuration-when-EMSCRIPTEN_ROOT-is-an-absolut.patch')
-sha256sums=('1bad481710aa27f872de6c9f72651f89a6107f0077003d0ebfcc9fd15cba3c75'
-            '9bc12080f5c8f40c6d24f60be637722985fdd0d686fc3c2bfed28ee1b85ff3b4'
-            '42e964f7d69becacc601501b9961a17d927b33515346175c6c9f16f6b138cf77'
-            '7229f0d41c114cd7fc7342d405191ae3d82ea5cc7565322ccf8e2baaf5f595ec'
-            'a8e9b5f4f5ea2e5556a7eedebff68dc37e791a0d7e039a96e9502c7a88f2953e'
-            'a8f8e1e8653b9c98ce45c9c13132776f976059def752af963210ed043edb03db'
-            '0e58f2614865672f6a70e890b6fd999042e8b662671a71c98b56fc4707390f89'
-            'fac54f225c6d422668391643fc03c81bcd767adc1fb64b2aae09eef2c5664c31'
-            'af5aca6fa42b859fda0a18faafd41bf85f9dcfc762eccce44bc6aa1b5fade6a6'
-            'a265e39cb31daa77cd820e7d306fb354f03270ef654d0ecbeda517f668412bae'
-            '3b73bae202c2605d209beda0c9dded5d38dd1e4605dc22f37d67c42dd3cd0e8e'
-            '1e1da05e36ad94975910b5ec4d50f79230c69f0cb7efa4891fda7cba7cbb81a1'
-            'b1a9262babb4f024fdcb2924610355d4e0007873a3200c1541aae40bf6531b7d'
-            '205a0b2b71cc7312722bb8ecef066f387aac3d6041156165aab6756856360e7b'
-            'df65f04206e0f8f8a44a7850d5aaa943b8d1c4481c4e4b1f5c5bbc15fea7ea1d'
-            '1ab9336bbd5afd5e88df0632a9115343a0d47585bc97697a001d2b0d151a2246'
-            '1cd7690761839ed2309082a796cda64a0a32a27d27c4e03d3982a6ca49415be2'
-            'e9cfe00633ae130df0a70fdf1a58517cc28347674b15ae939389a18c2f014c10'
-            'e0dfd948b8b07ef7608cf9738db094da596fd7d78ad8c9e9ac936851876f87a8')
+sha256sums=('40b14562ef3bd779bc0e0418ea2ae08fa28235f8ea6e8c0cb3bce1d6ad58dcaf'
+            'd9e52174bc67de800d8c7d6849d57070b9c252822aa155965885ecbaf6a599e6'
+            '5ad195693ee54833f16dc8dd2645e8eb929818591e8dfde1bdd90933d5769552'
+            '7c3d0814ab948a2974f26a74d33d16be18f7c3dee9e656920e0310c97ed26c70'
+            '83dfad20eefddfb0959a99fcbb99cddcf49469bbf2fe2aef138e77e57594ecf6'
+            'd65c79d9ab12e9e7b15918ba5567c3d792761bb922473a06ab7762aa7e46e4e7'
+            '9e9fb4f4f2ed25310e3b9d8983777deb1d7bc70b254bccfbe0a00740c42dbc42'
+            '6ff6ef06978ecf35eb58d3c9adc635469d860704d47bb04c1e0a002afb32fcb9'
+            '15959b2a4aa423355632a01729f2f9d28328b66222c09728437caccabdd89eff'
+            '697651aefb33425e7cddefc73c93149f8f99adcfbc5723a459c665d9ee125a70'
+            '353b5cd748e0d5f6f8c6297436e716ed85d8dc3e6ea1d4df4150407c4f2e26d0'
+            'b764833f2ad995387edcc1c69d0dc77a601b44d36817765b94d7b7b1b4f8fa9c'
+            '612d637d1a1ecf3f6e69383bd24f17fc3870dddf73294f355f1272c732df01c4'
+            'd62957971a884702f6bb211ff49f2806ce0d61fb09ecb372832a5a787cb97ecc'
+            'b6be14723fb82d0b0bb4faa8d530d0ec05e65d514862961002e99501d88a9eae'
+            'f3635b1ad1b4630b214fbac3140710d10fb55c1199a48c40d22c336ae1836bb2'
+            '6a319f037b4643cb4c2d71574713719a2941e094a080d01b55befb624f00d638'
+            '1f38dbf9f3ee5dd47c54e5365f5ee0cfcdceb897e53af4d26a476cab15161b5d'
+            '7b5f30fbf757647a58230c709d97f980e6019562da549aa714a6855287ddd4d2')
 
 prepare () {
   cd $_pkgfqn

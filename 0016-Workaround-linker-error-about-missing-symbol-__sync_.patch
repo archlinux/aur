@@ -1,4 +1,4 @@
-From 7816d48f125a244ad9d0646a45df4689358127b1 Mon Sep 17 00:00:00 2001
+From caf193b7d731fd32724369662ff4139238001a6d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 23:11:18 +0100
 Subject: [PATCH 16/18] Workaround linker error about missing symbol
@@ -19,10 +19,10 @@ Change-Id: I1b96a6dc44c5f7d527dbed9db58b4f030f175721
  4 files changed, 20 insertions(+)
 
 diff --git a/src/corelib/CMakeLists.txt b/src/corelib/CMakeLists.txt
-index 80d939dbfff..245419bc45d 100644
+index fe461414361..11a9c67b57d 100644
 --- a/src/corelib/CMakeLists.txt
 +++ b/src/corelib/CMakeLists.txt
-@@ -850,6 +850,11 @@ qt_internal_extend_target(Core CONDITION WASM
+@@ -855,6 +855,11 @@ qt_internal_extend_target(Core CONDITION WASM
          text/qlocale_wasm.cpp
  )
  
@@ -83,5 +83,5 @@ index 8ad72dad080..9064100e912 100644
  set_source_files_properties("openglblacklists/default.json"
      PROPERTIES QT_RESOURCE_ALIAS "default.json"
 -- 
-2.47.0
+2.47.1
 
