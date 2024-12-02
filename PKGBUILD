@@ -2,13 +2,13 @@
 pkgname=panelcleaner
 _module='PanelCleaner'
 _pkgname_pypi='pcleaner'
-pkgver='2.10.0'
+pkgver='2.11.0'
 # Sometimes I need to issue a hotfix to the pypi package without updating other releases, so pkgver is the official version.
-_pypiver='2.10.0'
+_pypiver='2.11.0'
 pkgrel=1
 pkgdesc="An AI-powered tool to clean manga panels. Provides both a CLI (pcleaner) and GUI (Qt-based)"
 url="https://github.com/VoxelCubes/PanelCleaner"
-depends=('python>=3.10.0' 'python-pipx' 'python-pillow' 'python-opencv' 'pyside6' 'python-pytorch' 'python-torchvision' 'python-numpy' 'python-scipy' 'python-pyxdg' 'python-attrs' 'python-tqdm' 'python-pyclipper' 'python-shapely' 'python-natsort' 'python-magic' 'python-docopt' 'python-configupdater' 'python-loguru' 'python-prettytable' 'python-colorama' 'python-requests' 'python-dictdiffer' 'python-humanfriendly' 'python-psutil' 'python-dbus')
+depends=('python>=3.10.0' 'python-pipx' 'python-pillow' 'python-opencv' 'pyside6' 'python-pytorch' 'python-torchvision' 'python-numpy' 'python-scipy' 'python-pyxdg' 'python-attrs' 'python-tqdm' 'python-pyclipper' 'python-shapely' 'python-natsort' 'python-docopt' 'python-configupdater' 'python-loguru' 'python-prettytable' 'python-colorama' 'python-requests' 'python-dictdiffer' 'python-humanfriendly' 'python-psutil' 'python-dbus')
 makedepends=('python-setuptools' 'python-pip' 'desktop-file-utils')
 optdepends=('python-pytorch-opt: Faster, but requires a newer CPU with AVX2 support'
             'python-pytorch-cuda: Even faster, but requires a CUDA-compatible GPU'
