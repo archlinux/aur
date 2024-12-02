@@ -26,12 +26,8 @@ depends=(
 #makedepends=(
 #    'asar'
 #)
-options=(
-    '!strip'
-    '!emptydirs'
-)
 options=('!strip')
-source=("${pkgname%-bin}.sh")
+#source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.pacman")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
