@@ -1,6 +1,6 @@
 pkgbase = python-adafruit-circuitpython-typing
 	pkgdesc = Definitions not in the standard typing module that are needed for type annotation of CircuitPython code
-	pkgver = 1.11.0
+	pkgver = 1.11.2
 	pkgrel = 0
 	url = https://github.com/adafruit/Adafruit_CircuitPython_Typing
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-adafruit-circuitpython-typing
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
 	depends = python
-	source = https://pypi.io/packages/source/a/adafruit-circuitpython-typing/adafruit-circuitpython-typing-1.11.0.tar.gz
-	sha256sums = 840b679aa966899496ff34ece5d7bee0c4bdec3102f41a086569c9788852324e
+	source = https://pypi.io/packages/source/a/adafruit-circuitpython-typing/adafruit-circuitpython-typing-1.11.2.tar.gz
+	sha256sums = c7ac8532a9ad7e4a65d5588764b7483c0b6967d305c37faebcc0c5356d677e33
 
 pkgname = python-adafruit-circuitpython-typing
