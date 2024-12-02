@@ -1,6 +1,6 @@
 pkgbase = disneyplus
 	pkgdesc = Unnofficial Disney+ desktop application
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://gitlab.com/disneyplusdesktop/application
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = disneyplus
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/disneyplusdesktop/application/-/archive/1.0.5/application-1.0.5.tar.bz2
-	sha256sums = b069641ee86b8c1fff1a0a29974342c7b64cfe76e7f19b26880a6532dd01648d
+	source = https://gitlab.com/disneyplusdesktop/application/-/archive/1.0.6/application-1.0.6.tar.bz2
+	sha256sums = ef89e5f219a803937282de485f1e0c4b6a330ff76b03dc44eb5799a7fb1d085f
 
 pkgname = disneyplus
