@@ -1,3 +1,8 @@
+2024-12-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.1.0.2-1:
+    Fixed ASF crashing upon start in some environments (@JustArchi #3348).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
 2024-12-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.1.0.1-1:
     [!] ASF is now based on .NET 9, which opens new V6.1 release family. As usual, generic users will require .NET 9 upgrade, OS-specific users are covered by us in the included runtime. .NET 9 brings a lot of under-the-hood features, bugfixes and other improvements (@JustArchi #3244).
