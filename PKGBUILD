@@ -1,8 +1,8 @@
 # Maintainer: tblFlip <root@tblflip.de>
 
 pkgname=tagstudio
-pkgver=alpha9.4.1
-pkgrel=2
+pkgver=alpha9.4.2
+pkgrel=1
 pkgdesc="A User-Focused Photo & File Management System "
 _pkgver=${pkgver#alpha}
 
@@ -21,7 +21,7 @@ depends=(
 	"python-numpy>=1.26"
 	"python-chardet>=5.2"
 	"python-rawpy>=0.21"
-	"python-pillow_heif>=0.16"
+	"python-pillow-heif>=0.16"
 	"python-send2trash>=1.8.0"
 	"python-ffmpeg-python>=0.2.0"
 	"python-mutagen>=1.47.0"
@@ -46,10 +46,10 @@ source=(
 )
 
 sha256sums=(
-	"93031332caec9c9e6664341fc169a4411cc2d4b90a913856f6f9ad9028fce9da"
+	"000220955118e679eceb0abb3c59a7c5a57b5410a0d05a04de0f9e6c0a966ac2"
 	"75ef43dcb45445544daf48c002e5de8878c4e4a84408e607c817f582f7fa19d3"
 	"6e4292bff864f059f5835d258c013bbee2d6397932c31efb127757fd1c4ea128"
-	"9ad875e98ca7d719e77dcca68110fac3fc318121bae7ce12ea83de9912d4b109"
+	"3d39b447f47ed9d7dcf7974b587e6a99541bb15dbd82dcfcf4831ee4a0d28330"
 	"ef8f9aa04aadb340d662197e74ba03c1bd0e1f14182c85653d537ee94babedeb"
 )
 
