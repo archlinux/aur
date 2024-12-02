@@ -1,0 +1,17 @@
+pkgbase = act-annotate-git
+	pkgdesc = This package contains SPEF and SDF readers used to back-annotate an ACT design.
+	pkgver = r40.500495e
+	pkgrel = 1
+	url = https://github.com/asyncvlsi/annotate
+	arch = x86_64
+	license = LGPL-2.1
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = act-core
+	provides = act-annotate
+	conflicts = act-annotate
+	source = git+https://github.com/asyncvlsi/annotate
+	sha512sums = SKIP
+
+pkgname = act-annotate-git
