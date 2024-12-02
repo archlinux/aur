@@ -1,9 +1,9 @@
 # Maintainer: xaque <xaque at duck dot com>
 
-_stablever=2409.0
-_engver=24.09.0
-_builddate="20241009"
-_debname="o3de_2409_0.deb"
+_stablever=2409.1
+_engver=24.09.1
+_builddate="20241103"
+_debname="o3de_2409_1.deb"
 _binname="o3de"
 
 pkgname=o3de-bin
