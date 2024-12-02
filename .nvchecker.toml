@@ -1,5 +1,10 @@
 [openbabel-git]
-source="cmd"
-cmd="~/nvchecker/github_version.py openbabel/openbabel --releases -strip openbabel-"
+
+source="github-graphql"
+use_latest_release=true
+prefix="openbabel-"
 from_pattern="-"
 to_pattern="."
+use_commit_number=true
+use_commit_hash=true
+github="openbabel/openbabel"

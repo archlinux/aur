@@ -7,7 +7,7 @@
 pkgbase=openbabel-git
 pkgname=(openbabel-git python-openbabel-git)
 _pkgname=openbabel
-pkgver=3.1.1+r6091+g7acf50c9d
+pkgver=3.1.1+r6093+g00d3595fd
 pkgrel=1
 pkgdesc='A library designed to interconvert between many file formats used in molecular modeling and computational chemistry'
 arch=(x86_64)
