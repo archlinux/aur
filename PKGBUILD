@@ -1,9 +1,10 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=seamonkey
 pkgver=2.53.19
-pkgrel=1
+pkgrel=2
 pkgdesc="SeaMonkey internet suite"
 arch=(x86_64)
 url="https://www.seamonkey-project.org"
@@ -126,6 +127,7 @@ build() {
   LDFLAGS=$(printf '%s' "$LDFLAGS" | sed 's/-fuse-ld=[^[:space:]]*//')
   export LDFLAGS
   export MACH_USE_SYSTEM_PYTHON=1
+  export LC_ALL=C.UTF-8
   ./mach build
 }
 
