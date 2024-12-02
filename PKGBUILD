@@ -1,13 +1,13 @@
 # Maintainer: Cobra <najahannah [at] gmail [dot] com>
 pkgname=portfolio
-pkgver=0.71.2
+pkgver=0.72.2
 pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
 url="https://github.com/portfolio-performance/portfolio"
 license=('EPL')
-depends=('java-runtime=17' 'webkit2gtk')
-makedepends=('maven' 'java-environment=17' 'archlinux-java-run' 'gendesk')
+depends=('java-environment=21' 'webkit2gtk')
+makedepends=('maven' 'archlinux-java-run' 'gendesk')
 
 _DEST="/usr/share/portfolio"
 
@@ -18,7 +18,7 @@ _mvnver=3.9.9
 
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz"
         "https://dlcdn.apache.org/maven/maven-3/$_mvnver/binaries/apache-maven-$_mvnver-bin.tar.gz")
-sha1sums=('944279aa9a7d4b254422240bc2e64bacc6c838dc'
+sha1sums=('7c64ba8fa9ac9d63ddda22d7950565a035e67abf'
           'ab87467cfef9d9cb422c56ecdc4b20e368a71793')
 
 prepare() {
@@ -36,7 +36,7 @@ prepare() {
 
 build() {
     export MAVEN_OPTS="-Xmx4g"
-    export JAVA_HOME=$(archlinux-java-run --min 17 --max 17 --java-home)
+    export JAVA_HOME=$(archlinux-java-run --min 21 --max 21 --java-home)
     export PATH="$srcdir/apache-maven-$_mvnver/bin:$PATH"
     cd $pkgname-$pkgver
 
