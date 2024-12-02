@@ -2,7 +2,7 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-software-and-documentation
-pkgver=8.10i
+pkgver=8.10j
 pkgrel=0
 epoch=62
 pkgdesc="Segger JLink software & documentation pack for Linux"
@@ -37,10 +37,10 @@ desktops=(
         "JTAGLoadExe.desktop"
 )
 source+=(${desktops[@]})
-md5sums_x86_64=('912f2aa1684bda6de24b965f6169d468')
-md5sums_i686=('e83fc230f8458103a83c5df0168eb554')
-md5sums_aarch64=('7a9a806b34a9264729e452588164ef12')
-md5sums_armv7h=('1bfa517c87d63862b0a9bb3508b81db5')
+md5sums_x86_64=('e47ab968faf1b4c6e901c65192c0dd82')
+md5sums_i686=('e275b8082c30016be71468ca98876719')
+md5sums_aarch64=('e47ab968faf1b4c6e901c65192c0dd82')
+md5sums_armv7h=('acdd4cb3f2f1d63107dbdb9a1733d7c8')
 
 md5sums=("a57d93b791581c1f36e4c672303bb85d"
          "02c4941650a2bd345b03dd958313d4c5"
@@ -134,6 +134,8 @@ package(){
     for f in J*; do
         ln -s /opt/SEGGER/JLink/"$f" "${pkgdir}/usr/bin"
     done
+
+    ln -s /opt/SEGGER/JLink/DevProExe "${pkgdir}/usr/bin"
 
     for f in Doc/*; do
         ln -s /opt/SEGGER/JLink/"$f" "${pkgdir}/usr/share/doc/${pkgname}"
