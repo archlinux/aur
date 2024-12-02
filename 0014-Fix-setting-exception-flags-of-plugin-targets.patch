@@ -1,4 +1,4 @@
-From 6c8a7d0c0e4b69a383f120dc87aaeb495a1c3a24 Mon Sep 17 00:00:00 2001
+From f0d397e9e1e58dae1a6b4f939031076f1795bc41 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 20:48:21 +0100
 Subject: [PATCH 14/18] Fix setting exception flags of plugin targets
@@ -27,5 +27,5 @@ index fc036cf6a54..108b545e3db 100644
      set(qt_libs_private "")
      qt_internal_get_qt_all_known_modules(known_modules)
 -- 
-2.47.0
+2.47.1
 
