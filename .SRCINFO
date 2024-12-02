@@ -1,0 +1,14 @@
+pkgbase = console-fonts-zap
+	pkgdesc = Linux console fonts from The ZAP Group Australia
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://www.zap.org.au/projects/console-fonts-zap/
+	arch = any
+	license = GPL-3.0-or-later
+	source = https://ftp.zap.org.au/pub/fonts/console-fonts-zap/console-fonts-zap-2.4.tar.xz
+	source = https://ftp.zap.org.au/pub/fonts/console-fonts-zap/console-fonts-zap-2.4.tar.xz.sig
+	validpgpkeys = B0F6BC7F46D30F1432FC46190D254111C4EE569B
+	sha256sums = 976609ffcb222a03cf0aad588cc2cbd198f7e072144e8061cdcbc9853d3e643e
+	sha256sums = SKIP
+
+pkgname = console-fonts-zap
