@@ -13,7 +13,6 @@ depends=('gmp')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/vincentloechner/polylib.git")
 md5sums=('SKIP')
-provides=("polylib=$pkgver" "polylib-gmp=$pkgver")
 conflicts=('polylib' 'polylib-gmp')
 
 build() {
@@ -50,11 +49,13 @@ check() {
 }
 
 package_polylib-git() {
+    provides=("polylib=$pkgver")
     cd "$srcdir/$_pkgbase/polylib"
     make DESTDIR="$pkgdir" install
 }
 
 package_polylib-gmp-git() {
+    provides=("polylib-gmp=$pkgver")
     cd "$srcdir/$_pkgbase/polylibgmp"
     make DESTDIR="$pkgdir" install-exec
 

@@ -8,13 +8,13 @@ pkgbase = polylib-git
 	license = GPL
 	makedepends = git
 	depends = gmp
-	provides = polylib=5.22.09a1d8f
-	provides = polylib-gmp=5.22.09a1d8f
 	conflicts = polylib
 	conflicts = polylib-gmp
 	source = polylib-git::git+https://github.com/vincentloechner/polylib.git
 	md5sums = SKIP
 
 pkgname = polylib-git
+	provides = polylib=5.22.09a1d8f
 
 pkgname = polylib-gmp-git
+	provides = polylib-gmp=5.22.09a1d8f
