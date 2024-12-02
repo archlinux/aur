@@ -46,9 +46,9 @@ package() {
   rm -rf "$pkgdir"/usr/share/{doc,lintian}
 
   install -Dm644 /dev/stdin /usr/lib/udev/rules.d/70-daskeyboard.rules << END
-KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0664", TAG+="uaccess"
-SUBSYSTEM=="usb", ATTRS{idVendor}=="24f0", MODE="0664", TAG+="uaccess"
-SUBSYSTEM=="usb_device", ATTRS{idVendor}=="24f0", MODE="0664", TAG+="uaccess"
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="24f0", MODE="0660", TAG+="uaccess"
+SUBSYSTEM=="usb_device", ATTRS{idVendor}=="24f0", MODE="0660", TAG+="uaccess"
 END
 
   chmod -R u+rwX,go+rX,go-ws,u-s "$pkgdir/"
