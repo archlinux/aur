@@ -1,7 +1,7 @@
 pkgbase = python-defusedxml-git
 	pkgdesc = XML bomb protection for Python stdlib modules
 	pkgver = v0.8.0rc2.r1.gc744588
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tiran/defusedxml
 	arch = any
 	license = PSF-2.0
