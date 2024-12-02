@@ -1,6 +1,6 @@
 # Maintainer: Antheas Kapenekakis <aur at antheas dot dev>
 pkgname=adjustor
-pkgver=3.5.4
+pkgver=3.6.0
 pkgrel=1
 pkgdesc='Adjustor, a userspace program for managing the TDP of handheld devices.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('adjustor')
 optdepends=('hhd: adds adjustor to the hhd ui.' 'acpi_call: required for setting TDP (may be provided as a kernel patch).')
 makedepends=('python-'{'build','installer','setuptools','wheel','fuse'})
 source=("https://pypi.python.org/packages/source/a/adjustor/adjustor-${pkgver}.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('77a76e4cb7f004acfd4306b2d9750390d405717c83ee8e5a9a22ec28bfab6bcf46e8f75b6b2d7e3557b87c8e50b7e411b2b6597961baa70ccf873075be817133')
 
 build() {
   cd "adjustor-$pkgver"
