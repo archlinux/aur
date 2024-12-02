@@ -12,6 +12,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("git+${url}#tag=${pkgver}")
+md5sums=('SKIP')
 
 build() {
   cd "${srcdir}"
