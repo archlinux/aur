@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-imageformats
-_qtver=6.8.0
+_qtver=6.8.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -14,13 +14,16 @@ license=(GPL3 LGPL3 FDL custom)
 #depends=('mingw-w64-qt6-base' 'mingw-w64-jasper' 'mingw-w64-libmng' 'mingw-w64-libwebp')
 # FIXME: It doesn't actually build with MNG support at this point.
 pkgdesc='Plugins for additional image formats: TIFF, TGA, WBMP (mingw-w64)'
-depends=('mingw-w64-qt6-base' 'mingw-w64-jasper' 'mingw-w64-libwebp')
+depends=('mingw-w64-qt6-base')
 makedepends=('mingw-w64-cmake' 'qt6-base' 'ninja' 'git')
+if ! [[ $pkgname =~ .*-clang-.* ]]; then
+  depends+=('mingw-w64-jasper' 'mingw-w64-libwebp')
+fi
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtimageformats-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('595bf8557b91e1f8ebc726f1e09868a3c7e610ff5045068f2d4ea2428c49a5d4')
+sha256sums=('138cc2909aa98f5ff7283e36eb3936eb5e625d3ca3b4febae2ca21d8903dd237')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
