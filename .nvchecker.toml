@@ -1,0 +1,4 @@
+[protolint-bin]
+source = "git"
+git = "https://github.com/yoheimuta/protolint.git"
+prefix = "v"
