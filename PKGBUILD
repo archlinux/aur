@@ -42,5 +42,15 @@ package() {
   cd "${_pkgname}"
   export PREFIX="$pkgdir"
   make -f release.makefile install
+  install -d "${pkgdir}/usr/share/icons/hicolor"
+  for icon in "${pkgdir}/opt/stremio/icons/"*.png; do
+    size=$(basename "$icon" | grep -oP '(?<=_)\d+(?=\.png)')
+    if [[ -n "$size" ]]; then
+      install -Dm644 "$icon" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/$(basename "$icon")"
+    fi
+  done
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s /opt/stremio/stremio "$pkgdir/usr/bin/stremio"
+  install -Dm644 "${pkgdir}/opt/stremio/smartcode-stremio.desktop" "${pkgdir}/usr/share/applications/smartcode-stremio.desktop"
 }
 # vim:set ts=2 sw=2 et:
