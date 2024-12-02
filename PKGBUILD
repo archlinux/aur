@@ -1,7 +1,7 @@
 # Maintainer: Alan Beale <the.mrabz@gmail.com>
 
 pkgname=('handbrake-nvenc' 'handbrake-nvenc-cli')
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
@@ -15,7 +15,7 @@ makedepends=('intltool' 'python' 'nasm' 'wget' 'cmake' 'meson'
 options=('!lto') # https://bugs.archlinux.org/task/72600
 source=(https://github.com/HandBrake/HandBrake/releases/download/$pkgver/HandBrake-$pkgver-source.tar.bz2{,.sig}
         fix-build-with-Werror-format-security.patch)
-sha256sums=('aba13abb550cc57847010b1a6bdf2c2cf76f5fcdf97616fa184b7f4639f5541b'
+sha256sums=('c15b451502f5c938798595df897a41290e8881b3efb8edd69ff7db2d985733b0'
             'SKIP'
             '9e46ab5c9539bd0910780f38131097c4e3871acde70c89a92abfc8edc9ec2c21')
 validpgpkeys+=('1629C061B3DDE7EB4AE34B81021DB8B44E4A8645') # HandBrake Team <developers@handbrake.fr>
