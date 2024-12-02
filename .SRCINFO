@@ -1,6 +1,6 @@
 pkgbase = r-get
 	pkgdesc = Global Envelopes
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=GET
 	arch = any
@@ -24,8 +24,8 @@ pkgbase = r-get
 	optdepends = r-spatstat.linnet
 	optdepends = r-spatstat.model
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/GET_1.0-3.tar.gz
-	md5sums = e944626c1aa1eaf1204670ef7a4e4591
-	b2sums = 03b058a5706c37dbd47938f52d787c80b552a6d4ec9c572dd7a1b5c9ec0c5f2d9570acc0fee6b82339ec100d7e09b3f4637c86666b564d04b3575d874c914a1e
+	source = https://cran.r-project.org/src/contrib/GET_1.0-4.tar.gz
+	md5sums = 642d694d0fc0688ae987d66abdaa554e
+	b2sums = 10c6d58c12bc018f9a9b6db5ff631d545369a786f981f72aa11e6faffed6db6e23d7119bc0746e05d7eecacfd5b2a44863d0144d21a145341104bde9cfebcb16
 
 pkgname = r-get
