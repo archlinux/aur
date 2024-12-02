@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-qt6-tools
 	pkgdesc = A cross-platform application and UI framework (tools, android)
-	pkgver = 6.8.0
+	pkgver = 6.8.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -19,9 +19,9 @@ pkgbase = android-armv7a-eabi-qt6-tools
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.8/6.8.0/submodules/qttools-everywhere-src-6.8.0.tar.xz
+	source = https://download.qt.io/official_releases/qt/6.8/6.8.1/submodules/qttools-everywhere-src-6.8.1.tar.xz
 	source = 0001-Enable-only-SQL-plugins-which-are-known-to-work.patch
-	sha256sums = 403115d8268503c6cc6e43310c8ae28eb9e605072a5d04e4a2de8b6af39981f7
-	sha256sums = dcc695dd98d53daa715f3a7a9bfded88ff33f7656ed3f52bdfe0d794c58f8b7d
+	sha256sums = 9d43d409be08b8681a0155a9c65114b69c9a3fc11aef6487bb7fdc5b283c432d
+	sha256sums = 1832c6aa05d193cbb7dbe6be70fb547bdb1869b2bac70370a81081933c5c0020
 
 pkgname = android-armv7a-eabi-qt6-tools
