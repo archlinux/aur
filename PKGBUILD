@@ -5,7 +5,7 @@
 pkgname=python-kombu
 _pkgname=${pkgname#python-}
 pkgver=5.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A messaging library for Python"
 arch=(any)
 url="https://github.com/celery/kombu"
