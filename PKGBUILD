@@ -5,7 +5,7 @@
 
 _android_arch=x86
 pkgname=android-$_android_arch-qt6-sensors
-_qtver=6.8.0
+_qtver=6.8.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,20 +18,8 @@ makedepends=('android-cmake' 'android-x86-qt6-declarative' 'qt6-declarative' 'ni
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtsensors-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Fix-build-for-Android.patch')
-sha256sums=('723544c5fa05fab75d53d66186a7ce83fb2f6f9a770ce796306992e983dde679'
-            'f45924027fc035d20db631012e787dbb3ee2c80f641a0a0b75231519800ef1b3')
-
-prepare () {
-  cd $_pkgfqn
-
-  # apply patches; further descriptions can be found in patch files itself
-  for patch in "$srcdir/"*.patch; do
-    msg2 "Applying patch $patch"
-    patch -p1 -i "$patch"
-  done
-}
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('41f49b614850d40c647b80e70ef6be759e8fc90ac6cce3ab6f82a357201d9750')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
