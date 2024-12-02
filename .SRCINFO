@@ -1,14 +1,13 @@
 pkgbase = osrs-launcher
-	pkgdesc = Official OldSchool RuneScape launcher
+	pkgdesc = OldSchool RuneScape launcher
 	pkgver = 1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://oldschool.runescape.com/
 	arch = any
 	license = unknown
 	makedepends = p7zip
 	makedepends = libicns
-	depends = java-runtime
-	depends = bash
+	depends = jre8-openjdk
 	source = https://www.runescape.com/l=1/downloads/OldSchool.dmg
 	source = osrs-launcher
 	source = osrs-launcher.desktop
@@ -17,4 +16,3 @@ pkgbase = osrs-launcher
 	md5sums = SKIP
 
 pkgname = osrs-launcher
-
