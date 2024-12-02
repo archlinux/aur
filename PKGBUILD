@@ -51,7 +51,6 @@ build() {
 }
 
 package_rakarrack() {
-  arch=('x86_64')
   depends=('alsa-lib' 'fftw' 'fltk' 'gcc-libs' 'glibc' 'hicolor-icon-theme'
            'jack' 'libsamplerate' 'libsndfile' 'libx11' 'libxpm')
 

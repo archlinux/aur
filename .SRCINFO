@@ -29,7 +29,6 @@ pkgbase = rakarrack
 	b2sums = a4908058dee3564c18619309cf5aca39f232c8dbcb2ef046ad5b0c22cc446d8ccdbf677127a498b2be57e23b7328d5e1e21c219c9f68d3c8f0620a2c671096c9
 
 pkgname = rakarrack
-	arch = x86_64
 	depends = alsa-lib
 	depends = fftw
 	depends = fltk
