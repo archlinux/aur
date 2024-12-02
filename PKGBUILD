@@ -2,7 +2,7 @@
 # Co-Maintainer: Slimbook <dev at slimbook dot es>
 pkgname=slimbookamdcontroller
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for the performance management of AMD processors"
 arch=('any')
 url="https://github.com/Slimbook-Team/slimbookamdcontroller"
@@ -11,6 +11,7 @@ depends=(
   'gtk3'
   'libayatana-appindicator'
   'libnotify'
+  'python-cairo'
   'python-gobject'
   'python-matplotlib'
   'python-pyamdgpuinfo'
