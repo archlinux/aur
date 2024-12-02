@@ -1,6 +1,6 @@
 pkgbase = stalld
 	pkgdesc = A daemon to prevent the starvation of operating system threads
-	pkgver = 1.19.2
+	pkgver = 1.19.3
 	pkgrel = 1
 	url = https://git.kernel.org/pub/scm/utils/stalld/stalld.git/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = stalld
 	makedepends = llvm
 	depends = glibc
 	depends = libbpf
-	source = https://git.kernel.org/pub/scm/utils/stalld/stalld.git/snapshot/stalld-1.19.2.tar.gz
-	sha256sums = d7e6bb948a51bda69128ec30554cd45c59097348c5099dc0df2c0e275dbbc39e
+	source = https://git.kernel.org/pub/scm/utils/stalld/stalld.git/snapshot/stalld-1.19.3.tar.gz
+	sha256sums = 89ad3659240b3063a9369c96ef9d410c649d539cdb5b2f3300a2baeb87de735c
 
 pkgname = stalld
