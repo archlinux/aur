@@ -1,7 +1,7 @@
 pkgbase = mullvad-browser-bin
 	pkgdesc = Privacy-focused web browser developed by Mullvad VPN and the Tor Project
 	pkgver = 14.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mullvad.net/en/browser
 	changelog = mullvad-browser.changelog
 	arch = x86_64
@@ -40,6 +40,7 @@ pkgbase = mullvad-browser-bin
 	depends = nss
 	depends = pango
 	depends = ttf-font
+	optdepends = pipewire-pulse: Sound support when using PipeWire
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = libnotify: Notification integration
 	optdepends = networkmanager: Location detection via available WiFi networks
