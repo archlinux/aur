@@ -1,8 +1,8 @@
 # Maintainer: silver hikari <kerrickethan@gmail.com>
 pkgname=gridmonger-git
-pkgver=1.1.0.r147.e677627
+pkgver=1.1.0.r596.b359bbd
 epoch=1
-pkgrel=3
+pkgrel=1
 pkgdesc="Your trusty old-school cRPG mapping companion"
 arch=('x86_64')
 url="https://gridmonger.johnnovak.net/"
@@ -11,8 +11,8 @@ depends=('zenity' 'libxxf86vm' 'libglvnd' 'libxi' 'libxrandr' 'libx11' 'libxiner
 makedepends=('git' 'nim' 'dart-sass' 'python-sphinx' 'gendesk')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/johnnovak/gridmonger#commit=e6776279a1952232cffb59f893a5d06e30e55630' 'git+https://github.com/johnnovak/koi#commit=aee85e888bb953e6ab2ba0a260cb91c2bf18511a' 'git+https://github.com/johnnovak/nim-glfw#branch=gridmonger')
-md5sums=('SKIP' 'SKIP' 'SKIP')
+source=('git+https://github.com/johnnovak/gridmonger' 'git+https://github.com/nim-lang/atlas')
+md5sums=('SKIP' 'SKIP')
 install=gridmonger.install
 
 pkgver() {
@@ -22,15 +22,23 @@ pkgver() {
 
 prepare() {
 	gendesk -n -f --pkgname="${pkgname%-git}" --pkgdesc="$pkgdesc" --exec="/opt/gridmonger/gridmonger" --icon="/usr/share/pixmaps/gridmonger.png"
-	atlas init --deps=deps
+
+	#stop gap until atlas new release
+	cd "atlas"
+	atlas init
+	atlas use sat
+	nim c -d:release src/atlas.nim
+	mv src/atlas atlas
+	cd ..
+	./atlas/atlas init --deps=deps
 	cd "${pkgname%-git}"
-	echo -e "requires \"nanovg\"\nrequires \"osdialog\"\nrequires \"riff\"\nrequires \"winim\"\nrequires \"file://$srcdir/nim-glfw\"\nrequires \"file://$srcdir/koi\"" > 'gridmonger.nimble'
-	atlas install gridmonger.nimble
+	echo -e "requires \"https://github.com/zevv/with\"\n\nrequires \"https://github.com/johnnovak/nim-osdialog\"\n\nrequires \"https://github.com/johnnovak/nim-riff\"\n\nrequires \"https://github.com/euantorano/semver.nim\"\n\nrequires \"https://github.com/johnnovak/koi\"" > 'gridmonger.nimble'
+	../atlas/atlas install gridmonger.nimble
 }
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	nim release -d:osdialogZenity --rangeChecks:off
+	nim release -d:osdialogZenity -t:-std=gnu18
 }
 
 package() {

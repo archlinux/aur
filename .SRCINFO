@@ -1,7 +1,7 @@
 pkgbase = gridmonger-git
 	pkgdesc = Your trusty old-school cRPG mapping companion
-	pkgver = 1.1.0.r147.e677627
-	pkgrel = 3
+	pkgver = 1.1.0.r596.b359bbd
+	pkgrel = 1
 	epoch = 1
 	url = https://gridmonger.johnnovak.net/
 	install = gridmonger.install
@@ -22,10 +22,8 @@ pkgbase = gridmonger-git
 	depends = libxcursor
 	provides = gridmonger
 	conflicts = gridmonger
-	source = git+https://github.com/johnnovak/gridmonger#commit=e6776279a1952232cffb59f893a5d06e30e55630
-	source = git+https://github.com/johnnovak/koi#commit=aee85e888bb953e6ab2ba0a260cb91c2bf18511a
-	source = git+https://github.com/johnnovak/nim-glfw#branch=gridmonger
-	md5sums = SKIP
+	source = git+https://github.com/johnnovak/gridmonger
+	source = git+https://github.com/nim-lang/atlas
 	md5sums = SKIP
 	md5sums = SKIP
 
