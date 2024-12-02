@@ -1,6 +1,6 @@
 pkgbase = python-dataclass-wizard-git
 	pkgdesc = This library provides a set of simple, yet elegant wizarding tools for interacting with the Python dataclasses module.
-	pkgver = 0.32.0
+	pkgver = v0.32.0
 	pkgrel = 3
 	url = https://github.com/rnag/dataclass-wizard
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-dataclass-wizard-git
 	depends = python
 	provides = python-dataclass-wizard-git
 	conflicts = python-dataclass-wizard-git
-	source = git+https://github.com/rnag/dataclass-wizard#tag=0.32.0
+	source = git+https://github.com/rnag/dataclass-wizard#tag=v0.32.0
 	md5sums = SKIP
 
 pkgname = python-dataclass-wizard-git

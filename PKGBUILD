@@ -1,7 +1,7 @@
 # Maintainer: Ondrej Dohnal <dohnal@douball.eu>
 
 pkgname=python-dataclass-wizard-git
-pkgver=0.32.0
+pkgver=v0.32.0
 pkgrel=3
 pkgdesc="This library provides a set of simple, yet elegant wizarding tools for interacting with the Python dataclasses module."
 arch=('any')
