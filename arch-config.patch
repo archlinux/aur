@@ -1,3 +1,13 @@
+From 0de020184f52f79e757645e3ae1bfd0af4a5013b Mon Sep 17 00:00:00 2001
+From: Giovanni Harting <539@idlegandalf.com>
+Date: Tue, 3 Dec 2024 00:12:30 +0100
+Subject: [PATCH] archlinux config changes
+
+---
+ configuration.go |  6 +++---
+ hide.me@.service | 10 +++++-----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
 diff --git a/configuration.go b/configuration.go
 index 06f170a..bd80daa 100644
 --- a/configuration.go
@@ -21,7 +31,7 @@ index 06f170a..bd80daa 100644
 \ No newline at end of file
 +}
 diff --git a/hide.me@.service b/hide.me@.service
-index 58cea7c..db02f09 100644
+index 299b9d8..1a445a8 100644
 --- a/hide.me@.service
 +++ b/hide.me@.service
 @@ -6,10 +6,10 @@ DefaultDependencies=yes
@@ -30,11 +40,11 @@ index 58cea7c..db02f09 100644
  Type=notify
 -ExecStart=/opt/hide.me/hide.me $OPTIONS connect %i
 -WorkingDirectory=/opt/hide.me
--ReadWritePaths=/opt/hide.me /etc /run/systemd/resolve
+-ReadWritePaths=/opt/hide.me /etc -/run/systemd/resolve
 -EnvironmentFile=/opt/hide.me/config
 +ExecStart=/usr/bin/hide.me $OPTIONS connect %i
 +WorkingDirectory=/etc/hide.me
-+ReadWritePaths=/etc/hide.me -/run/systemd/resolve
++ReadWritePaths=/etc/hide.me /etc/resolv.conf -/run/systemd/resolve
 +EnvironmentFile=/etc/hide.me/config
  TimeoutStopSec=30
  Restart=always
@@ -46,3 +56,6 @@ index 58cea7c..db02f09 100644
 -WantedBy=multi-user.target
 \ No newline at end of file
 +WantedBy=multi-user.target
+-- 
+2.47.1
+
