@@ -4,7 +4,7 @@
 
 _pkgname=ts_query_ls
 pkgname=ts-query-ls-bin
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Language server for tree-sitter's query files"
 url="https://github.com/ribru17/$_pkgname"
@@ -14,8 +14,8 @@ depends=('gcc-libs' 'glibc')
 arch=('x86_64' 'aarch64')
 source_x86_64=("https://github.com/ribru17/$_pkgname/releases/download/v$pkgver/$_pkgname-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/ribru17/$_pkgname/releases/download/v$pkgver/$_pkgname-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('41aa56bd0406f09e4798fa3d0fab467545d8eeedc4b34e1aaeb62eca91534840')
-sha256sums_aarch64=('84a57be701c6165031317e0972751354b1170d4f6bd312e563b36f9461f64d5c')
+sha256sums_x86_64=('589567a9f3a3b6e955f98cef4bed9e6a1cc13dd8b5a02a4a4f6fa684679636ab')
+sha256sums_aarch64=('ba5ed59840f702f048348d4cbfa1a624f1fd81ac77208d3c133cdc8704e4d0a2')
 
 package() {
     cd "$srcdir"

@@ -1,6 +1,6 @@
 pkgbase = ts-query-ls-bin
 	pkgdesc = Language server for tree-sitter's query files
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/ribru17/ts_query_ls
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = ts-query-ls-bin
 	depends = gcc-libs
 	depends = glibc
 	provides = ts_query_ls
-	source_x86_64 = https://github.com/ribru17/ts_query_ls/releases/download/v1.3.1/ts_query_ls-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 41aa56bd0406f09e4798fa3d0fab467545d8eeedc4b34e1aaeb62eca91534840
-	source_aarch64 = https://github.com/ribru17/ts_query_ls/releases/download/v1.3.1/ts_query_ls-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 84a57be701c6165031317e0972751354b1170d4f6bd312e563b36f9461f64d5c
+	source_x86_64 = https://github.com/ribru17/ts_query_ls/releases/download/v1.4.0/ts_query_ls-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 589567a9f3a3b6e955f98cef4bed9e6a1cc13dd8b5a02a4a4f6fa684679636ab
+	source_aarch64 = https://github.com/ribru17/ts_query_ls/releases/download/v1.4.0/ts_query_ls-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ba5ed59840f702f048348d4cbfa1a624f1fd81ac77208d3c133cdc8704e4d0a2
 
 pkgname = ts-query-ls-bin
