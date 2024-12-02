@@ -1,7 +1,7 @@
 # Maintainer: Isaac Arcia <iikz87ii@gmail.com>
 pkgname=yawns
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Your Adaptable Widget Notification System"
 arch=('any')
 url="https://github.com/ikz87/yawns/tree/main"
