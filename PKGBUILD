@@ -1,4 +1,4 @@
-# Adam Maroti <jmarotiadam@gmail.com>
+# Maintainer: Adam Maroti <jmarotiadam@gmail.com>
 # Ex-Maintainer: Amanoel Dawod <amoka at amanoel dot com>
 # Contributor: Jacob Humphrey (kaknife) <jacob.ryan.humphrey@gmail.com>
 
