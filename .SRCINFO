@@ -13,5 +13,6 @@ pkgbase = python-dataclass-wizard-git
 	provides = python-dataclass-wizard-git
 	conflicts = python-dataclass-wizard-git
 	source = git+https://github.com/rnag/dataclass-wizard#tag=0.32.0
+	md5sums = SKIP
 
 pkgname = python-dataclass-wizard-git
