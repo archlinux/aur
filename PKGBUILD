@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=stalld
-pkgver=1.19.5
+pkgver=1.19.6
 pkgrel=1
 pkgdesc="A daemon to prevent the starvation of operating system threads"
 arch=('i686' 'x86_64')
@@ -10,24 +10,24 @@ license=('GPL-2.0-or-later')
 depends=('glibc' 'libbpf')
 makedepends=('bpf' 'clang' 'llvm')
 backup=('etc/sysconfig/stalld')
-source=("https://git.kernel.org/pub/scm/utils/stalld/stalld.git/snapshot/stalld-$pkgver.tar.gz")
-sha256sums=('0b25d8b70540d7e2b1fd0083640d3239574d0b1ae3ed7f76ed720b5e3c0c6386')
+source=("https://gitlab.com/rt-linux-tools/stalld/-/archive/v$pkgver/stalld-v$pkgver.tar.gz")
+sha256sums=('a185756f5d4ea239120322aa8b4f2a37c76653e41295f69e7eb37dcd26313bd0')
 
 
 prepare() {
-  cd "stalld-$pkgver"
+  cd "stalld-v$pkgver"
 
   sed -i 's|$(SOPTS)||;s|LDFLAGS	:=|LDFLAGS	:= $(LDFLAGS)|' "Makefile"
 }
 
 build() {
-  cd "stalld-$pkgver"
+  cd "stalld-v$pkgver"
 
   make
 }
 
 package() {
-  cd "stalld-$pkgver"
+  cd "stalld-v$pkgver"
 
   make DESTDIR="$pkgdir" install
 }
