@@ -1,0 +1,26 @@
+pkgbase = vlc-protocol
+	pkgdesc = VLC Protocol Handler - - Support vlc:// protocol links
+	pkgver = 1.3.5
+	pkgrel = 1
+	url = https://github.com/northsea4/vlc-protocol
+	install = vlc-protocol.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = libarchive
+	depends = sh
+	depends = xdg-utils
+	depends = vlc
+	optdepends = firefox: Fast, Private & Safe Web Browser
+	optdepends = chromium: A web browser built for speed, simplicity, and security
+	optdepends = google-chrome: The popular web browser by Google (Stable Channel)
+	provides = vlc-protocol
+	conflicts = vlc-protocol
+	noextract = vlc-protocol-linux-1.3.5.zip
+	options = !strip
+	options = !debug
+	source = vlc-protocol.install
+	source = vlc-protocol-linux-1.3.5.zip::https://github.com/northsea4/vlc-protocol/releases/download/v1.3.5/vlc-protocol-linux.zip
+	sha256sums = 879e060df1bcb21837ba452f90f75c49f2952a64a4ea66b1d8444b4029ad10f2
+	sha256sums = 5f0d8377eb7b318eadaa322ac31d49102b9ee6911433ef1b9e21531c3c2cca26
+
+pkgname = vlc-protocol
