@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=far2l-git
-pkgver=r5025.7b5fb8e3
+pkgver=r5328.2c03f3a1
 pkgrel=1
 pkgdesc='Linux port of FAR v2'
 url='https://github.com/elfmz/far2l'
@@ -18,7 +18,6 @@ optdepends=(
   'smbclient: SMB support in NetRocks'
   'libnfs: NFS support in NetRocks'
   'neon: WebDAV support in NetRocks'
-  'pcre: custom archives support in multiarc'
   'libarchive: more archive type support in multiarc'
 )
 
