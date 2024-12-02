@@ -3,7 +3,7 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=caprine
-pkgver=2.60.2
+pkgver=2.60.3
 pkgrel=1
 pkgdesc='Elegant Facebook Messenger desktop app'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('bash' "${_electron}" 'hicolor-icon-theme')
 makedepends=('npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('0bf8b1a316956491d17b5f92b87a027013e67eec3eb42a0a959d2289582c9b9f'
+sha256sums=('ae836f009aeb587270c33eb05777939c5bbccee7e792ebbe03a6e709491bb8a1'
             '70679c9959bae776d667ae1dbd4ffca9298d8784ad4a5959f3b35d2493f2c131')
 
 prepare() {
