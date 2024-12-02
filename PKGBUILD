@@ -1,73 +1,70 @@
+# https://aur.archlinux.org/packages/fake-background-webcam-git
+groups=('modified')
 
-# Maintainer: Premysl Srubar <premysl.srubar[äT]gmail(.)com>
-pkgbase=fake-background-webcam-git
-_pkgname="${pkgbase%-git}"
-        
-pkgname=('fake-background-webcam-git')
-pkgver=r248.ba10079
+## WIP
+
+pkgname=fake-background-webcam-git
+pkgver=r269.eccc742
 pkgrel=1
-pkgdesc="Virtual background-replacing camera"
-#'python-cmapy>=0.6.6'
-depends=('v4l2loopback-dkms' 
-         'python'
-         'python-opencv>=4.4.0.46'
-         'opencv'
-         'python-numpy>=1.19.3'
-         'python-requests>=2.23.0'
-         'python-requests-unixsocket'
-         'python-aiohttp>=3.6.2'
-         'python-inotify-simple>=1.2'
-         'python-pyfakewebcam'
-         'python-mediapipe'
-         'python-configargparse'
-         'python-cmapy')
-backup=("etc/$_pkgname/config.ini")
-
-provides=('fake-background-webcam')
-conflicts=('fake-background-webcam') 
-arch=('x86_64')
+pkgdesc="Faking your webcam background"
+arch=('any')
 url="https://github.com/fangfufu/Linux-Fake-Background-Webcam"
-license=("GPL")
-makedepends=('git')
-
-source=("${pkgname}::git+${url}.git" 
-        'fake-background-webcam@.service'
+license=('GPL-3.0-or-later')
+depends=(
+  'python-cmapy'
+  'python-configargparse'
+  'python-inotify-simple'
+  'python-mediapipe-bin'
+  'python-numpy'
+  'python-opencv'
+  'python-protobuf'
+  'python-pyfakewebcam-git'
+  'v4l2loopback-dkms'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-poetry-core'
+  'python-wheel'
+)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+backup=('etc/lfbw/config.ini')
+install='lfbw.install'
+source=('git+https://github.com/fangfufu/Linux-Fake-Background-Webcam.git'
+        'lfbw@.service'
         'readme.md'
-        "$_pkgname.install"
         'config.ini')
-        
 sha256sums=('SKIP'
-            'b5aaa8e9c45687b5e61b9691d7de1c41b54392d9ed66a9177be1dbe0ed4edf6a'
-            'f4ddf1a2ee79663696d645a82f2ba1f2c07c91d1d9e1e6286ad93e7ab2ee3461'
-            'b57c70f3b498d646d8834d770d806219b306251c908cc8591b0d711e3638916f'
-            '82a6ea84a0f1246ca11f058a88b83854d6ecb268fb2331a4a186b9b01920bfc9')
+            'ea95498dc51501c4e14008695e9890bd8aa2044a4c45b6fe72a0b9ad17b247a9'
+            '65bc57d62f4ac554835c4c7eb0f9bbfc922222337c196861c60d751ab68a54dd'
+            '5b8a5cd8d556bd44ee2d42c58e851fea5dbffb12855816c395be7a388c391b98')
 
-install=$_pkgname.install            
-            
 pkgver() {
-  cd "$srcdir/${pkgname}"
+  cd Linux-Fake-Background-Webcam
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  #git show -s --format="%ci" HEAD | sed -e 's/-//g' -e 's/ .*//'
 }
 
-package_fake-background-webcam-git() {
-  
+build() {
+  cd Linux-Fake-Background-Webcam
+  GIT_DIR='.' python -m build --wheel --no-isolation
+}
+
+package() {
+  cd Linux-Fake-Background-Webcam
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
   # Config
-  install -d "$pkgdir/etc/$_pkgname"
-  install -Dm644 config.ini "$pkgdir/etc/$_pkgname"
-  
-  cd "$srcdir/${pkgbase}"
-  # App
-  install -d "$pkgdir/usr/lib/$_pkgname"
-  install -Dm644 *.py "$pkgdir/usr/lib/$_pkgname"
+  install -Dm644 "$srcdir/config.ini" -t "$pkgdir/etc/lfbw/"
 
   # Default background files
-  install -d "$pkgdir/var/lib/$_pkgname/default"  
-  install -Dm644 *.jpg *.png "$pkgdir/var/lib/$_pkgname/default"
+  install -Dm644 *.jpg *.png -t "$pkgdir/var/lib/lfbw/default/"
 
   # Systemd
-  install -Dm644 "${srcdir}/fake-background-webcam@.service" "$pkgdir/usr/lib/systemd/system/$_pkgname@.service"
+  install -Dm644 "$srcdir/lfbw@.service" -t "$pkgdir/usr/lib/systemd/system/"
 
   # Misc
-  install -v -m 644 -D "${srcdir}/readme.md" "${pkgdir}/usr/share/doc/${_pkgname}/readme.md"  
+  install -Dm644 config-example.ini "$srcdir/readme.md" -t \
+    "$pkgdir/usr/share/doc/${pkgname%-git}/"
 }

@@ -3,13 +3,13 @@
 The systemd service instance name is mapped to the video device number. So for example:
 
 ```sh
-systemctl start fake-background-webcam@0.service
+systemctl start lfbw@0.service
 ```
 
 would use `/dev/video0` as the source and create `/dev/video20` as the virtual camera with fake background.
 
 ## Customization
-Edit the `/etc/fake-background-webcam/config.ini` and restart the systemd service.
+Edit the `/etc/lfbw/config.ini` and restart the systemd service.
 
 The `background-image` can be changed there instead of customizing the systemd unit file.
 
@@ -17,10 +17,10 @@ The `background-image` can be changed there instead of customizing the systemd u
 Override the systemd unit file:
 
 ```sh
-systemctl edit fake-background-webcam@0.service
+systemctl edit lfbw@0.service
 #edit
 systemctl daemon-reload
-systemctl restart fake-background-webcam@0.service
+systemctl restart lfbw@0.service
 ```
 
 
@@ -40,6 +40,6 @@ modprobe v4l2loopback video_nr=20,21 card_label="Fake Background cam1","Fake Bac
 ```
 
 ```sh
-systemctl start fake-background-webcam@{0,1}.service
+systemctl start lfbw@{0,1}.service
 ```
 
