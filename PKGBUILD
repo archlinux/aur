@@ -5,29 +5,29 @@ pkgname=open-numismat
 pkgver=1.9.12
 # since yearcalculator is tightly ingrained into open-numismat, use thr closest version of it to the one released (as submodules aren't bundled in github releases)
 _yearcalc_pkgname=YearCalculator
-_yearcalc_pkgver=0.2
+_yearcalc_pkgver=0.3
 _imageeditor_pkgname=ImageEditor
-_imageeditor_pkgver=0.5
-pkgrel=1
+_imageeditor_pkgver=0.6
+pkgrel=2
 pkgdesc='Coin collecting software to organize and manage your own coin catalogue.'
 arch=('any')
 url="http://opennumismat.github.io"
 license=('GPL3')
 conflicts=('open-numismat-bin' 'open-numismat-git')
 makedepends=('python-setuptools')
-depends=('qt6-webchannel' 'qt6-charts' 'qt6-webengine' 'pyside6' 'python-dateutil' 'python-jinja' 'python-lxml' 'python-openpyxl' 'python-pillow' 'python-imagehash')
+depends=('qt6-webchannel' 'qt6-charts' 'qt6-webengine' 'pyside6' 'python-dateutil' 'python-jinja' 'python-lxml' 'python-openpyxl' 'python-pillow' 'python-imagehash' 'python-zxing-cpp' 'python-opencv')
 optdepends=(
   'python-pyodbc: import from CoinManage and Numizmatik_Ru')
 options=('!strip' '!emptydirs')
 source=("https://github.com/OpenNumismat/open-numismat/archive/refs/tags/${pkgver}.tar.gz" 
         "https://github.com/OpenNumismat/open-numismat/releases/download/${pkgver}/open-numismat_${pkgver}_all.deb"
-        "https://github.com/OpenNumismat/YearCalculator/archive/refs/tags/${_yearcalc_pkgver}.tar.gz"
+        "https://github.com/OpenNumismat/${_yearcalc_pkgname}/archive/refs/tags/${_yearcalc_pkgver}.tar.gz"
         "https://github.com/OpenNumismat/${_imageeditor_pkgname}/archive/refs/tags/${_imageeditor_pkgver}.tar.gz")
 noextract=("open-numismat_${pkgver}_all.deb")
 sha512sums=('e5e85610a2489a26182f1197fe2f1a4c956d0f7ec474cadc1d8fc7201834dc01c2b8b03a2a37c3c965b88239467f8d68b6a4ef6b15883ef66eb4013452cc0334'
             '2de1920fd9a151d0058efd237ec4f8a9bbc1bca43345d522d8bdd6d740da8235e24d1d1c32a69e2e4d46ece15a873619931e5bba6f219893b02023995a137110'
-            'c0cc3c0f7425ada12f5f3a9cd4815c394fb0007863717ee47f8606e581a3449de74621b88c6e703ae7fc484364a914e536978eff23c649f93a128b044e342d33'
-            '272d5bfa4c33596738b1d64251728984a446f5f2f2979e2d8392b41a8d334553d4dc1ddcf1fe5a525b51e9e122e3853f723ef7ed24572950cd140705f79ef6c2')
+            '93800c7bd9baba4912c97e88403c59e36df96b2f1e48069ac9492041a244a8321f7bb82ca62d7a9e19b81a9e3936f57ee517437fff274cd5baa0d37a26fc7df9'
+            '305305beaf8432c73988d645713d96a86e9f7258e51c54514ec2258259bad90c3867dc6f618ac3169f68c00afdbe3a6c9a5a90fa6174da246127b5e3be8beb48')
 
 build() {
   #extract private_keys.py from .deb package to $${srcdir}
