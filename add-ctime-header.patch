@@ -1,0 +1,11 @@
+diff --color -ura butt-1.44.0.orig/src/butt.cpp butt-1.44.0.new/src/butt.cpp
+--- butt-1.44.0.orig/src/butt.cpp	2024-12-02 10:16:36.007919951 -0500
++++ butt-1.44.0.new/src/butt.cpp	2024-12-02 10:16:51.167869667 -0500
+@@ -47,6 +47,7 @@
+ #include "butt.h"
+ #include "command.h"
+ #include "sockfuncs.h"
++#include <ctime>
+ #ifndef BUILD_CLIENT
+ #include "cfg.h"
+ #include "port_audio.h"

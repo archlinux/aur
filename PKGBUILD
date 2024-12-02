@@ -5,15 +5,22 @@
 # Contributor: Kosava <kosava@gmail.com>
 
 pkgname=butt
-pkgver=1.43.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc="Easy to use, multi OS streaming tool"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL2')
 url="https://danielnoethen.de/butt/"
 depends=('fltk' 'dbus' 'portaudio' 'portmidi' 'libfdk-aac' 'libvorbis' 'libogg' 'lame' 'flac' 'opus' 'libsamplerate')
-source=("${pkgname}-${pkgver}.tar.gz::https://danielnoethen.de/${pkgname}/release/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c4572e489f25cfe2c6460854452ff3df83c0907c7034af09b3896a15cf63e780')
+source=("${pkgname}-${pkgver}.tar.gz::https://danielnoethen.de/${pkgname}/release/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        'add-ctime-header.patch')
+sha256sums=('d910b40a10dbca1ce377ee239c146e4746e8b48550ba0a40d6b5199b5c87e0a7'
+            '3c467e58afff269da76dad3aa1a16cdd51edcb77463fc6e0609a738b80c30dba')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  patch -Np1 -i ../add-ctime-header.patch
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
