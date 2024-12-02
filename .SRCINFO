@@ -1,6 +1,6 @@
 pkgbase = penpot-desktop-bin
 	pkgdesc = An unofficial desktop application for the open-source design tool, Penpot(Prebuilt version.Use system-wide electron)
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/author-more/penpot-desktop
 	arch = aarch64
@@ -11,9 +11,9 @@ pkgbase = penpot-desktop-bin
 	options = !emptydirs
 	source = penpot-desktop.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = penpot-desktop-0.4.2-aarch64.rpm::https://github.com/author-more/penpot-desktop/releases/download/v0.4.2/penpot-desktop-0.4.2.aarch64.rpm
-	sha256sums_aarch64 = 5d470b6b6990a0d0f4c82e25df67d162736082d92d4dde917a3c4f3793c44b21
-	source_x86_64 = penpot-desktop-0.4.2-x86_64.rpm::https://github.com/author-more/penpot-desktop/releases/download/v0.4.2/penpot-desktop-0.4.2.x86_64.rpm
-	sha256sums_x86_64 = 0bb0fd6576f8ff5198b674fbbc1a4be34fb9e1c5181f00f995213190d3db7b2e
+	source_aarch64 = penpot-desktop-0.5.0-aarch64.rpm::https://github.com/author-more/penpot-desktop/releases/download/v0.5.0/penpot-desktop-0.5.0.aarch64.rpm
+	sha256sums_aarch64 = 18f6e38f732d34766a37bf3d5ac6ea98e025b167307d4e461f77d15e0a07ff05
+	source_x86_64 = penpot-desktop-0.5.0-x86_64.rpm::https://github.com/author-more/penpot-desktop/releases/download/v0.5.0/penpot-desktop-0.5.0.x86_64.rpm
+	sha256sums_x86_64 = 911539469573f3eb3051447423600d196e408cf8a03bd6cde3fd483b50231c46
 
 pkgname = penpot-desktop-bin
