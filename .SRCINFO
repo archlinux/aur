@@ -1,7 +1,7 @@
 pkgbase = spie-bin
 	pkgdesc = A minimal serial monitor application using Electron, Node SerialPort and Ionic/Angular.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/robsonos/spie
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = spie-bin
 	source = spie-0.2.0.icns::https://raw.githubusercontent.com/robsonos/spie/v0.2.0/apps/spie/resources/icons/icon.icns
 	source = LICENSE-0.2.0::https://raw.githubusercontent.com/robsonos/spie/v0.2.0/LICENSE
 	source = spie.sh
-	sha256sums = 2fceb67a73689673565fbf6e0d67b248a1ab260be5cc54642f4e3bfe6a81dcc8
+	sha256sums = f5b968118746288a3cde072b15add5fc7c14c0a66f3b8b642fa7561bc57df5fa
 	sha256sums = 5dbb6967af509e69054c662c537915b0c4a025b3ed099c7684deed08eeb6985f
 	sha256sums = 2f5007c3cf090c9851c50bcfa349730ca9ed47f48b40b7fa5b48739599774ac3
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
