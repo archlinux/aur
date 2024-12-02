@@ -2,8 +2,8 @@
 pkgname=xplist-bin
 _pkgname=Xplist
 pkgver=1.2.47
-pkgrel=6
-pkgdesc="Cross-platform Plist Editor"
+pkgrel=7
+pkgdesc="Cross-platform Plist Editor.(Prebuilt version)"
 arch=("x86_64")
 url="https://github.com/ic005k/Xplist"
 license=("MIT")
@@ -29,19 +29,24 @@ source=(
 )
 sha256sums=('9319fd1f4ccda8abe34ab18390f3cd81d69c442c5030f7583e59c8bc4c1395eb'
             '3515a1c9e2ce8df51e80f0a03a0ffca92430c7dca6989ff20b16031d676a652b'
-            '605494c7d77491e493f1d9b8994124c24d4ed4543daf0a77276858d2578fb1ea')
+            '43dd8d6124875ee6f7690e2012a151e2df73a753ebb808d349bf454feb44ccb2')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${_pkgname}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${_pkgname}/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun|${pkgname%-bin}|g;s|icon|${pkgname%-bin}|g;s|Application;|Utility;|g" -i "${srcdir}/squashfs-root/default.desktop"
+    sed -e "
+        s/AppRun/${pkgname%-bin}/g
+        s/icon/${pkgname%-bin}/g
+        s/Application;/Utility;/g
+    " -i "${srcdir}/squashfs-root/default.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/default.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
