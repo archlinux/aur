@@ -1,19 +1,26 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=stalld-git
-pkgver=1.17.0.r0.g8710a48
+pkgver=1.19.7.r0.gebc16ed
 pkgrel=1
 pkgdesc="A daemon to prevent the starvation of operating system threads"
 arch=('i686' 'x86_64')
 url="https://git.kernel.org/pub/scm/utils/stalld/stalld.git/"
-license=('GPL2')
-depends=('glibc')
-makedepends=('git')
+license=('GPL-2.0-or-later')
+depends=('glibc' 'libbpf')
+makedepends=('git' 'bpf' 'clang' 'llvm')
 provides=("stalld=$pkgver")
 conflicts=('stalld')
-source=("git+https://git.kernel.org/pub/scm/utils/stalld/stalld.git")
+backup=('etc/sysconfig/stalld')
+source=("git+https://gitlab.com/rt-linux-tools/stalld.git")
 sha256sums=('SKIP')
 
+
+prepare() {
+  cd "stalld"
+
+  sed -i 's|$(SOPTS)||;s|LDFLAGS	:=|LDFLAGS	:= $(LDFLAGS)|' "Makefile"
+}
 
 pkgver() {
   cd "stalld"
@@ -34,5 +41,4 @@ package() {
   cd "stalld"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "redhat/stalld.service" -t "$pkgdir/usr/lib/systemd/system"
 }
