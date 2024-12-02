@@ -1,0 +1,20 @@
+pkgbase = polylib-git
+	pkgdesc = A library of polyhedral functions
+	pkgver = 5.22.09a1d8f
+	pkgrel = 1
+	url = http://icps.u-strasbg.fr/polylib/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gmp
+	provides = polylib=5.22.09a1d8f
+	provides = polylib-gmp=5.22.09a1d8f
+	conflicts = polylib
+	conflicts = polylib-gmp
+	source = polylib-git::git+https://github.com/vincentloechner/polylib.git
+	md5sums = SKIP
+
+pkgname = polylib-git
+
+pkgname = polylib-gmp-git
