@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=smurf
-_pkgver=1.1.5
+_pkgver=1.1.6
 pkgname=r-${_pkgname,,}
-pkgver=1.1.5
-pkgrel=3
+pkgver=1.1.6
+pkgrel=1
 pkgdesc='Sparse Multi-Type Regularized Feature Modeling'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('86ecdd0614cbcc567f1ec9ebb6ad27678909ab293b931ef80627827e8cfcffbe')
+sha256sums=('f976396619167ddb6fd898a944f9d1652aec87c1e1ed9114fc23678497d96068')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
