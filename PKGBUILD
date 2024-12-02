@@ -13,8 +13,7 @@ depends=(
     'python-pillow'
     'python-cssutils'
     'python-xlib'
-    'python-pygobject'
-    'gtk3'
+    'python-gobject'
 )
 source=("https://github.com/ikz87/yawns/archive/refs/tags/v$pkgver.zip")
 sha256sums=('446a34731350984f253a431a3e6702e0da144932b2e4373852742e9ec304e0d2')
