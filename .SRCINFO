@@ -1,0 +1,25 @@
+pkgbase = ladybird-deps
+	pkgdesc = Meta package: dependencies for Ladybird, an independent web browser
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	depends = autoconf-archive
+	depends = automake
+	depends = base-devel
+	depends = ccache
+	depends = clang
+	depends = cmake
+	depends = curl
+	depends = libgl
+	depends = nasm
+	depends = ninja
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = qt6-tools
+	depends = qt6-wayland
+	depends = ttf-liberation
+	depends = tar
+	depends = unzip
+	depends = zip
+
+pkgname = ladybird-deps
