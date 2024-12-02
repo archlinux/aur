@@ -18,7 +18,7 @@ pkgbase = linux-mainline-um5606
 	makedepends = xz
 	options = !debug
 	options = !strip
-	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#commit=
+	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=6.13-rc1
 	source = config
 	source = npu.patch
 	source = stereo.patch
