@@ -3,8 +3,8 @@
 pkgbase=hpmicro-manufacturing-tool-bin
 pkgname=${pkgbase}
 _pkgname=HPMicro_Manufacturing_Tool
-pkgver=0.4.1
-pkgrel=3
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="HPMicro Manufacturing Tool 是 HPMicro 公司推出的配置及批量烧写工具，旨在帮助企业用户快速批量的对 HPMicro 公司推出的芯片进行镜像配置及烧写。"
 arch=(x86_64)
 url="https://github.com/hpmicro/hpm_manufacturing_tool"
@@ -22,15 +22,16 @@ depends=(
     glibc
     libgpg-error
     perl
+    systemd-libs
     zlib)
 makedepends=()
 checkdepends=()
 optdepends=()
-source=("${_pkgname}_v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux.tar.gz"
+source=("${_pkgname}_v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}.tar.gz"
     "hpmicro.png")
-sha256sums=('1a14d31a1896488bf78b1f2ab36d4f9216e9f72ef1d232cd6e73c3e9a0b255e9'
+sha256sums=('8a4bea2589138e5b473db1ff3853afb49c9867583f4382cd21472b24f0018f81'
             '07d6adc954e732986889ddbc8e972a69404b0097be541f61f0e23e0521a79e7f')
-options=('!strip' '!debug')
+options=('!strip' '!debug' '!lto')
 
 package() {
     install -dm775 ${pkgdir}/opt/hpmicro/${pkgname%-bin}
@@ -40,7 +41,7 @@ package() {
 
     install -Dm644 "${srcdir}/hpmicro.png" -t "${pkgdir}/usr/share/pixmaps"
 
-    install -Dm755 /dev/stdin ${pkgdir}/usr/lib/udev/rules.d/71-hpmicro.usbhid.rules << EOF
+    install -Dm755 /dev/stdin ${pkgdir}/usr/lib/udev/rules.d/71-hpmicro.usbhid.rules <<EOF
 # Copy this file to /etc/udev/rules.d/ or /usr/lib/udev/rules.d/
 # If rules fail to reload automatically, you can refresh udev rules
 # with the command "sudo udevadm control --reload"
@@ -55,9 +56,11 @@ SUBSYSTEM!="usb|tty|hidraw", GOTO="hpmicro_rules_end"
 
 # Arch Linux hpmicro
 ATTRS{idVendor}=="c251", MODE="0666", GROUP="uucp", TAG+="uaccess"
+ATTRS{idVendor}=="34b7",MODE="0666",GROUP="uucp", TAG+="uaccess"
 
 # Debian/Ubuntu Linux hpmicro
 # ATTRS{idVendor}=="c251", MODE="0666", GROUP="dialout", TAG+="uaccess"
+# ATTRS{idVendor}=="34b7", MODE="0666", GROUP="dialout", TAG+="uaccess"
 
 LABEL="hpmicro_rules_end"
 EOF
