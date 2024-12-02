@@ -4,7 +4,7 @@
 
 pkgname=treedome-bin
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A local-first, encrypted, note taking application with tree-like structures, all written and saved in markdown"
 arch=('x86_64')
 url="https://codeberg.org/solver-orgz/treedome/"
