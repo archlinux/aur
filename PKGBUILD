@@ -12,6 +12,7 @@ license=(MIT)
 groups=()
 provides=(${pkgname})
 conflicts=(${pkgname})
+backup=(usr/share/${pkgname}/setting.ini)
 depends=(
     glibc
     sh
