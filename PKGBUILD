@@ -9,7 +9,7 @@ pkgdesc="The next generation media center"
 arch=('x86_64')
 url="https://www.stremio.com"
 license=("MIT")
-depends=("nodejs" "ffmpeg" "qt6-base" "mpv" "openssl")
+depends=("nodejs" "ffmpeg" "qt6-base" "mpv" "openssl" "hicolor-icon-theme")
 #depends=("qt5-webchannel" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-translations") - not clear yet if these are being replaced in qt6
 makedepends=("git" "wget" "librsvg" "cmake" "qt5-base" "qt5-declarative" "qt5-webengine")
 provides=("${_pkgname}")
@@ -51,7 +51,7 @@ package() {
   done
   install -dm755 "${pkgdir}/usr/bin"
   ln -s /opt/stremio/stremio "$pkgdir/usr/bin/stremio"
-  install -Dm644 "${pkgdir}/opt/stremio/smartcode-stremio.desktop" "${pkgdir}/usr/share/applications/smartcode-stremio.desktop"
+  install -Dm644 "${pkgdir}/opt/stremio/smartcode-stremio.desktop" "${pkgdir}/usr/share/applications/com.stremio.stremio.desktop"
   install -Dm644 "images/stremio.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/stremio.svg"
   install -Dm644 "images/stremio.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/smartcode-stremio.svg"
   install -Dm644 "images/stremio_tray_black.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/status/stremio_tray_black.svg"

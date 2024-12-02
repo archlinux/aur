@@ -17,6 +17,7 @@ pkgbase = stremio-git
 	depends = qt6-base
 	depends = mpv
 	depends = openssl
+	depends = hicolor-icon-theme
 	provides = stremio
 	conflicts = stremio
 	source = stremio::git+https://github.com/Stremio/stremio-shell.git#branch=master
