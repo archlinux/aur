@@ -1,3 +1,4 @@
+# Maintainer: gchamon
 # https://aur.archlinux.org/packages/fake-background-webcam-git
 groups=('modified')
 
