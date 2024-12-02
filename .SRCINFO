@@ -1,0 +1,21 @@
+pkgbase = greaseweazle-git
+	pkgdesc = Tools for accessing a floppy drive at the raw flux level
+	pkgver = 1.21.r3.gf0d43b7
+	pkgrel = 1
+	url = https://github.com/keirf/greaseweazle
+	arch = x86_64
+	license = Unlicense
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-requests
+	depends = python-pyserial
+	depends = python-bitarray
+	depends = python-crcmod
+	provides = greaseweazle
+	conflicts = greaseweazle
+	source = greaseweazle::git+https://github.com/keirf/greaseweazle.git
+	sha256sums = SKIP
+
+pkgname = greaseweazle-git
