@@ -7,19 +7,19 @@
 
 _name=Rack
 pkgname=vcvrack
-pkgver=2.5.2
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
-license=(custom GPL-3.0-or-later)
+license=(LicenseRef-custom GPL-3.0-or-later)
 arch=(aarch64 x86_64)
 install=.install
 _plugin_name=Fundamental
 _plugin_ver=2.6.0
 _plugin_pkg=$pkgname-${_plugin_name,,}
 depends=(glfw jansson)
-makedepends=(alsa-lib cmake curl gendesk git glew jack jq libarchive libpulse openssl rtmidi simde
-  speexdsp zstd)
+makedepends=(alsa-lib cmake curl gendesk git glew jack jq libarchive libpulse libxrandr openssl
+  rtmidi simde speexdsp zstd)
 provides=("$_plugin_pkg=$_plugin_ver")
 conflicts=($_plugin_pkg)
 groups=(pro-audio)
@@ -41,7 +41,7 @@ source=(
   'profile.sh'
   'trademark.eml'
 )
-sha256sums=('54e544541d35bced4a60e278a1bde3f821b332b97d48bdb8e26c21a6d48184ae'
+sha256sums=('8edf15caed42cc69037e0424bfb574bb9e12aa28c2887be9022fb6c91d571848'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -61,10 +61,12 @@ sha256sums=('54e544541d35bced4a60e278a1bde3f821b332b97d48bdb8e26c21a6d48184ae'
 prepare() {
   cd $_name
   # setup submodules
-  for _module in filesystem fuzzysearchdatabase nanosvg nanovg osdialog oui-blendish pffft rtaudio tinyexpr; do
+  for _module in filesystem fuzzysearchdatabase nanosvg nanovg osdialog oui-blendish pffft tinyexpr; do
     git submodule init dep/$_module
     git config submodule.dep/$_module.url "$srcdir/$_module.git"
   done
+  # original submodule commit was removed by rebase
+  git submodule update --init -f dep/rtaudio
   git -c protocol.file.allow=always submodule update
 
   # add target to only build included dependencies

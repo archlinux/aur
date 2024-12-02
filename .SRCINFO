@@ -1,13 +1,13 @@
 pkgbase = vcvrack
 	pkgdesc = Open-source Eurorack modular synthesizer simulator
-	pkgver = 2.5.2
-	pkgrel = 2
+	pkgver = 2.6.0
+	pkgrel = 1
 	url = https://vcvrack.com/
 	install = .install
 	arch = aarch64
 	arch = x86_64
 	groups = pro-audio
-	license = custom
+	license = LicenseRef-custom
 	license = GPL-3.0-or-later
 	makedepends = alsa-lib
 	makedepends = cmake
@@ -19,6 +19,7 @@ pkgbase = vcvrack
 	makedepends = jq
 	makedepends = libarchive
 	makedepends = libpulse
+	makedepends = libxrandr
 	makedepends = openssl
 	makedepends = rtmidi
 	makedepends = simde
@@ -28,7 +29,7 @@ pkgbase = vcvrack
 	depends = jansson
 	provides = vcvrack-fundamental=2.6.0
 	conflicts = vcvrack-fundamental
-	source = Rack::git+https://github.com/VCVRack/Rack#tag=v2.5.2
+	source = Rack::git+https://github.com/VCVRack/Rack#tag=v2.6.0
 	source = filesystem.git::git+https://github.com/gulrak/filesystem
 	source = fuzzysearchdatabase.git::git+https://bitbucket.org/j_norberg/fuzzysearchdatabase
 	source = nanosvg.git::git+https://github.com/memononen/nanosvg
@@ -44,7 +45,7 @@ pkgbase = vcvrack
 	source = vcvrack.sh
 	source = profile.sh
 	source = trademark.eml
-	sha256sums = 54e544541d35bced4a60e278a1bde3f821b332b97d48bdb8e26c21a6d48184ae
+	sha256sums = 8edf15caed42cc69037e0424bfb574bb9e12aa28c2887be9022fb6c91d571848
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
