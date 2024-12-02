@@ -13,7 +13,7 @@ license=("LicenseRef-FortiClientSSLVPN")
 
 _pkg_file_name="VPNClient_${pkgver}_Linux.tar.gz"
 
-_DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
+_DOWNLOADS_DIR=$(command -v xdg-user-dir 2>&1 > /dev/null && xdg-user-dir DOWNLOAD || echo "$HOME/Downloads")
 
 if [ ! -f ${PWD}/${_pkg_file_name} ]; then
 	if [ -f $_DOWNLOADS_DIR/${_pkg_file_name} ]; then
