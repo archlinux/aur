@@ -1,2 +1,2 @@
 #!/bin/sh
-python -m spatialmedia $@
+python -m spatialmedia "$@"

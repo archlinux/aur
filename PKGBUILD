@@ -1,26 +1,28 @@
-# Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
+# Maintainer: EvaristeGalois11 <turbo dot backslid four zero zero at passinbox dot com>
+# Contributor: Marius Lindvall <(firstname) {cat} varden {dog} info>
 
 pkgname=python-spatialmedia
-pkgver='2.1'
+pkgver='2.1.r23.g57c85bb'
 pkgrel=1
 pkgdesc="Specifications and tools for 360 video and spatial audio."
 arch=('any')
 url='https://github.com/google/spatial-media'
-license=('Apache')
+license=('Apache-2.0')
 depends=('python')
 makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/google/spatial-media/archive/v${pkgver}.tar.gz"
-	"spatialmedia.sh")
-sha256sums=('38c682060bc5e348a73af2a9a77eab6fcb76ce33f9e5122915c30336b4a59654'
-	    '8dd415f42d56533f360781391cd70368d7db74b938b30142187075af96aa29bc')
+_commit='57c85bb5691518406408b675e52f430e0c62798c'
+source=("git+https://github.com/google/spatial-media.git#commit=${_commit}"
+		"spatialmedia.sh")
+sha256sums=('6384616de33e60e2ac6f56c8c2d7739bca98d5415d3ce980826267f88bb4d505'
+            'df4fe09e68d533f64744af7ea6059f8d8ad68bff8471b91c682944bb2bb91978')
 
 build() {
-	cd "${srcdir}/spatial-media-${pkgver}"
+	cd spatial-media
 	python setup.py build
 }
 
 package() {
-	cd "${srcdir}/spatial-media-${pkgver}"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	cd spatial-media
+	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 	install -Dm755 "${srcdir}/spatialmedia.sh" "${pkgdir}/usr/bin/spatialmedia"
 }
