@@ -1,6 +1,6 @@
 pkgbase = tauon-music-box-git
 	pkgdesc = A modern music player
-	pkgver = 7.8.3.r80.33d4e5ad
+	pkgver = 7.8.3.r92.1e177f47
 	pkgrel = 1
 	url = https://tauonmusicbox.rocks
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = tauon-music-box-git
 	depends = libnotify
 	depends = ffmpeg
 	depends = flac
-	depends = gtk4
+	depends = gtk3
 	depends = noto-fonts-extra
 	depends = noto-fonts
 	depends = sdl2_image
