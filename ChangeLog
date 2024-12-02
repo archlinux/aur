@@ -1057,3 +1057,19 @@ Fixes:
 - The upload of custom branding logos for booking pages now functions as intended.
 - An issue that made it difficult to add reminders when the first reminder was set to the event's start time has been rectified.
 - Due date placeholders that unintentionally were displayed with a duration have been corrected.
+
+
+=== Morgen 3.6.2
+New Features:
+- Calendar subscriptions (read-only calendar feeds) can now be connected to Morgen Cloud. This means they can be viewed on mobile and used as busy calendars with scheduling links and open invites. To connect your subscription calendars to the Morgen Cloud, on desktop click on your profile picture/initials > select Preferences > External accounts.
+- We've updated our MS ToDo integration so it now imports tasks assigned to you coming from Microsoft Planner as well.
+- AI Planner provides more tools to create your perfect schedule. You can now right-click on a suggested task to mark it done or delete it entirely. This makes it easier to keep your task list clean, eg. if you forgot to close a task you can do it on the fly while planning your day. Additionally, you can make AI Planner ignore tasks without a due date. This way, you can decide whether adding a due date is a signal that a task is ready to be scheduled.
+
+Improvements:
+- You can now force Morgen to schedule tasks in the Default calendar for tasks, even if the task is dropped onto a Frame in a different calendar. Find this option in Preferences > General > Prioritize Frame calendar.
+- New keyboard shortcuts: use [ and ] to increase/decrease the time resolution in Day and Week view. You can now also use p to quickly access the general preferences.
+- We renamed the Priority field of Morgen tasks to Importance. Check out our blog to learn more about the difference between priority and importance and how we think about those at Morgen.
+- A new, more explicit, 12/24H format toggle has been added to the General preferences.
+
+Fixes:
+- An issue preventing the change of a tag color has been fixed.
