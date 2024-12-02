@@ -1,4 +1,4 @@
-From 40fb7e020c18c58943a979239d6ea036798111b1 Mon Sep 17 00:00:00 2001
+From bcb48a193109d94c8d288ec81443c597181c6cae Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 7 Nov 2023 23:58:54 +0100
 Subject: [PATCH 12/18] Allow overriding preference for shared libzstd library
@@ -36,5 +36,5 @@ index 310f6cf9603..534bfa99b3a 100644
  
      if(NOT TARGET WrapZSTD::WrapZSTD)
 -- 
-2.47.0
+2.47.1
 
