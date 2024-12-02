@@ -1,7 +1,7 @@
-# Maintainer: Artem Vorotnikov <artem@vorotnikov.me>
+# Maintainer: Navi Hex <navihx@foxmail.com>
 pkgname=sendme
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to send files and directories, based on iroh"
 arch=('any')
 url="https://github.com/n0-computer/sendme"
