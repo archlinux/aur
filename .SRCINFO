@@ -1,7 +1,7 @@
 pkgbase = ente-desktop-bin
 	pkgdesc = Desktop app for ente Photos.(Prebuilt version)
 	pkgver = 1.7.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ente-io/photos-desktop
 	arch = aarch64
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = ente-desktop-bin
 	provides = ente-desktop=1.7.7
 	conflicts = ente-desktop
 	options = !strip
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 	source_aarch64 = ente-desktop-1.7.7-aarch64.pacman::https://github.com/ente-io/photos-desktop/releases/download/v1.7.7/ente-1.7.7-aarch64.pacman
 	sha256sums_aarch64 = 04e9cb4da8ec0793e9f3e00830c2ba4aca0e57edeac19810660145b75073d96b
 	source_x86_64 = ente-desktop-1.7.7-x86_64.pacman::https://github.com/ente-io/photos-desktop/releases/download/v1.7.7/ente-1.7.7-x64.pacman
