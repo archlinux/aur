@@ -1,6 +1,6 @@
 pkgbase = ysfx-saike-mod-git
 	pkgdesc = Hosting library and plugin for JSFX (saike mod, git version)
-	pkgver = 0.0.27.r9.g4cb2924
+	pkgver = 0.0.27.r11.g11b5fec
 	pkgrel = 1
 	url = https://github.com/JoepVanlier/ysfx
 	arch = x86_64
@@ -23,13 +23,11 @@ pkgbase = ysfx-saike-mod-git
 	source = clap::git+https://github.com/free-audio/clap.git
 	source = clap-helpers::git+https://github.com/free-audio/clap-helpers.git
 	source = clap-juce-extensions::git+https://github.com/free-audio/clap-juce-extensions.git
-	source = ysfx-include-mutex.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = dcc9a506d3ed2c5a1f24da483559b5351cc3fb00a7821bb7c1a27bf0ce5be290
 
 pkgname = ysfx-saike-mod-git
 	depends = gcc-libs

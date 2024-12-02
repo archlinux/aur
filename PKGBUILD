@@ -5,7 +5,7 @@ _name=ysfx_saike_mod
 _plugin_name=ysfx-s
 _reponame=ysfx
 pkgname=${_name//_/-}-git
-pkgver=0.0.27.r9.g4cb2924
+pkgver=0.0.27.r11.g11b5fec
 pkgrel=1
 pkgdesc='Hosting library and plugin for JSFX (saike mod, git version)'
 arch=(x86_64)
@@ -26,14 +26,12 @@ source=(
   'clap::git+https://github.com/free-audio/clap.git'
   'clap-helpers::git+https://github.com/free-audio/clap-helpers.git'
   'clap-juce-extensions::git+https://github.com/free-audio/clap-juce-extensions.git'
-  'ysfx-include-mutex.patch'
 )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'dcc9a506d3ed2c5a1f24da483559b5351cc3fb00a7821bb7c1a27bf0ce5be290')
+            'SKIP')
 
 pkgver() {
   cd $_reponame
@@ -52,9 +50,6 @@ prepare() {
   git submodule set-url clap-libs/clap "$srcdir"/clap
   git submodule set-url clap-libs/clap-helpers "$srcdir"/clap-helpers
   git -c protocol.file.allow=always submodule update
-
-  cd "$srcdir"/$_reponame
-  patch -p1 -N -r - -i "$srcdir"/ysfx-include-mutex.patch
 }
 
 build() {
