@@ -2,7 +2,7 @@
 # Contributor: Jordan James Klassen (forivall) <forivall@gmail.com>
 pkgname=caprine-bin
 _pkgname=Caprine
-pkgver=2.60.1
+pkgver=2.60.3
 _electronversion=29
 pkgrel=1
 pkgdesc="Elegant Facebook Messenger desktop app.(Prebuilt version.Use system-wide electron)"
@@ -23,7 +23,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/sindresorhus/caprine/v${pkgver}/license"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('93c0c5cf457662c406186e5751bc6e11215e38f3cd355918051a20cbf13d4974'
+sha256sums=('9e307a7aa1667eeca7a8d38b49e34e5b11dfb49b5e60d3adc81472bd176922a3'
             '48da2f39e100d4085767e94966b43f4fa95ff6a0698fba57ed460914e35f94a0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
