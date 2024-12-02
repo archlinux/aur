@@ -1,0 +1,4 @@
+[ecapture]
+source = "git"
+git = "https://github.com/gojue/ecapture.git"
+prefix = "v"
