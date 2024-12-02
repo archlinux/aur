@@ -6,10 +6,10 @@
 
 pkgname=binaryninja-personal
 _pkgname=binaryninja
-pkgver=4.1.5902
+pkgver=4.2.6455
 pkgrel=1
-pkgdesc="An interactive decompiler, disassembler, debugger, and binary analysis platform. This package is for the Personal Edition and requires both an installer zip and a license."
-arch=('x86_64')
+pkgdesc="An interactive decompiler, disassembler, debugger, and binary analysis platform. This package is for the Personal Edition and requires both an installer zip (x86 or ARM) and a license."
+arch=('any')
 url="https://binary.ninja"
 license=('custom:Binary Ninja License Agreement')
 depends=(
@@ -19,12 +19,14 @@ depends=(
 	'libxau' 'libxdmcp' 'libcurl-compat' 'openssl' 'qt5-base'
 )
 optdepends=('gtk-update-icon-cache: icon support')
+provides=(binaryninja)
 source=(
 	"file://binaryninja_personal_linux.zip" # https://binary.ninja/recover/
 	"${_pkgname}.png"
 	"${_pkgname}.desktop"
 )
-sha256sums=('74f45286fd01eeafa0d844e28463c81c17b8f4b8e73cc69c0fd993b5e4ee7482'
+# Change first hash to 27141008c87d554dbfd00847f988290ae20d8c9b7fc9fc264159994bc0af2733 if ARM
+sha256sums=('073d5dc59e67dabb8aa8c419385b2a0dc17831f108d73def4934e4cade563c87' 
             '4f318001e7d39279ce063ef42077bae03e95c112aa203a4be3ea3d913c34327e'
             'a1e20e8176292c67fcc50d3444e95e31ee91ff6cf861f8529554152ed7bd8139')
 
