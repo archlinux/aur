@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sqlitestudio-bin
 _pkgname=SQLiteStudio
-pkgver=3.4.6
+pkgver=3.4.8
 pkgrel=1
 pkgdesc="A free, open source, multi-platform SQLite database manager.(Prebuilt version)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar.xz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}.tar.xz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8b7c5217e7868a3c3c177ef7a16e927a63cb2735801ae80e1b899cb47daeeee9'
+sha256sums=('c8261d9e0b0a41f0794332087a42685796053870e9523e9925adb65b5b7c19d7'
             '20628dc9251146409d2631a161d7e7e24d40e5c2555a5d170914c44420b40aea')
 build() {
     sed -e "
