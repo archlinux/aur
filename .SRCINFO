@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-datavis3d-static
 	pkgdesc = Qt6 Data Visualization module (mingw-w64)
-	pkgver = 6.8.0
+	pkgver = 6.8.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = mingw-w64-qt6-datavis3d-static
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.8/6.8.0/submodules/qtdatavis3d-everywhere-src-6.8.0.tar.xz
-	sha256sums = 35f2965d13b078d6ca42c76d70a491042f0b0b533b2ec4d12ecc35e282534cff
+	source = https://download.qt.io/official_releases/qt/6.8/6.8.1/submodules/qtdatavis3d-everywhere-src-6.8.1.tar.xz
+	sha256sums = dae68fe06db8aa3adedb3067c733352bcb29e42c8afcdc02cfda6755da504b0e
 
 pkgname = mingw-w64-qt6-datavis3d-static
