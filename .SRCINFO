@@ -1,0 +1,20 @@
+pkgbase = tenere-bin
+	pkgdesc = TUI interface for LLMs written in Rust
+	pkgver = 0.11.2
+	pkgrel = 1
+	url = https://github.com/pythops/tenere
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	provides = tenere
+	conflicts = tenere
+	source = README-0.11.2.md::https://github.com/pythops/tenere/raw/v0.11.2/README.md
+	source = LICENSE-0.11.2::https://github.com/pythops/tenere/raw/v0.11.2/LICENSE
+	b2sums = c7a433105d08b41b927927d161e96e871b34ddbd47bf53649dd157818119edd57017a4d569e5fe355d76602587b42c3288a67fcc43911e7638fde03ed982b08e
+	b2sums = 74915e048cf8b5207abf603136e7d5fcf5b8ad512cce78a2ebe3c88fc3150155893bf9824e6ed6a86414bbe4511a6bd4a42e8ec643c63353dc8eea4a44a021cd
+	source_x86_64 = tenere-0.11.2-x86_64::https://github.com/pythops/tenere/releases/download/v0.11.2/tenere-x86_64-unknown-linux-gnu
+	b2sums_x86_64 = 969f49748f124fd1e34a567f60887da03c8e8c153c735218f43e0e0fcfc2e943e9210ddcea34f07ab40454a39905729bb1332f535ebd67a5a0efbbe6e482ff1d
+
+pkgname = tenere-bin

@@ -1,0 +1,4 @@
+[tenere-bin]
+source = "git"
+git = "https://github.com/pythops/tenere.git"
+prefix = "v"
