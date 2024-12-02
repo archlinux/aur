@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zyfun-bin
-pkgver=3.3.8
+pkgver=3.3.9
 _electronversion=33
 pkgrel=1
 pkgdesc="Cross-platform desktop video resource player, free high value.(Prebuilt version.Use system-wide electron)跨平台桌面端视频资源播放器,免费高颜值"
@@ -19,16 +19,16 @@ conflicts=(
 depends=(
     "electron${_electronversion}"
 )
-source_aarch=("${pkgname%-bin}-${pkgver}-aarch.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-amd64.deb")
+source_aarch=("${pkgname%-bin}-${pkgver}-aarch.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-x86_64.rpm")
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Hiram-Wong/ZyPlayer/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('05a41f7b9dc819453e9c8c3ea4e144fe7e3d09d0f78bdf800e92810312f99094'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch=('0ee9cb4b883bb1cdbf082c5e7b4f96ff1760a288340b8b25e83feafe92b9eca9')
-sha256sums_x86_64=('a5b62de0b4b3d537e507240b584dbec83268e67310c58ef7366b355c196af834')
+sha256sums_aarch=('398646c571736b859337d3820bb4cbae6eebad0f28fa439b39a48dc71d5cc752')
+sha256sums_x86_64=('f4fbb5bc7c963c250c20594630be304d8d37550fab7acca3d2ed3e2b029ca25f')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -37,7 +37,6 @@ build() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
     sed -e "
         s/\/opt\/${pkgname%-bin}\/${pkgname%-bin}/${pkgname%-bin}/g
         s/Audio;Video/AudioVideo/g
