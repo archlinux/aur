@@ -1,7 +1,7 @@
 # Maintainer: Laura Demkowicz-Duffy <dev@demkowiczduffy.co.uk>
 pkgname=protolint
 pkgver=0.51.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A pluggable linter and fixer to enforce Protocol Buffer style and conventions"
 arch=('x86_64')
 url="https://github.com/yoheimuta/protolint"
@@ -20,6 +20,12 @@ build() {
 	export CGO_LDFLAGS="${LDFLAGS}"
 	go build ./cmd/protolint
 	go build ./cmd/protoc-gen-protolint
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+	# tests fail with arch goflags
+	GOFLAGS="" make test
 }
 
 package() {

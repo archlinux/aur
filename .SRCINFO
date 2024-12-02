@@ -1,7 +1,7 @@
 pkgbase = protolint
 	pkgdesc = A pluggable linter and fixer to enforce Protocol Buffer style and conventions
 	pkgver = 0.51.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yoheimuta/protolint
 	arch = x86_64
 	license = MIT
