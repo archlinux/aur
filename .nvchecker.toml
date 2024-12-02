@@ -1,3 +1,8 @@
 [shotcut-git]
-source='cmd'
-cmd="~/nvchecker/github_version.py mltframework/shotcut -strip v --releases"
+source="github-graphql"
+github="mltframework/shotcut"
+prefix="v"
+use_latest_release=true
+use_commit_number=true
+use_commit_hash=true
+
