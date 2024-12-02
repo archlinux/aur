@@ -4,7 +4,7 @@
 # Contributor: Luís Ferreira <net dot lsferreira at contact, backwards>
 
 pkgname=railwayapp-cli
-pkgver=3.18.0
+pkgver=3.19.1
 pkgrel=1
 pkgdesc="Command Line Interface for Railway.app"
 arch=('x86_64' 'aarch64' 'i686')
