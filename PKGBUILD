@@ -3,10 +3,10 @@
 pkgname=baidu-translate-client-bin
 _pkgname=BdTranslateClient
 _zhsname="百度翻译"
-pkgver=1.8.0
+pkgver=2.0.0
 _electronversion=11
-pkgrel=2
-pkgdesc="Baidu translate.Prebuilt version.Use system-wide electron.${_zhsname}"
+pkgrel=1
+pkgdesc="Baidu translate.(Prebuilt version.Use system-wide electron)${_zhsname}"
 arch=(
     'i686'
     'x86_64'
@@ -32,7 +32,7 @@ source=(
     "LICENSE-${pkgver}.html::https://fanyi.baidu.com/static/webpage/agreement.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8945fc7c6bac6d69d7208c21afed377ad46c4051f284b6b9fe10db8d268a6970'
+sha256sums=('af0bf0c83a93ea737c5a91f1a03bd29435ca012d8038f7fc5dec4dab5abd5169'
             '883caab57df8960f025758fa321da15cdac180dfc3688d7ec975c142ccd0d3ad'
             'ef6eb077ee83490ded38457163af72b73171b99d9e5540605cd6c4bc7d1ac661'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
@@ -48,7 +48,7 @@ build(){
     wrestool -x --output="${srcdir}" -t14 "${srcdir}/${pkgname%-bin}-${pkgver}.exe"
     icotool -i 5 -x "${srcdir}/"*.ico -o "${srcdir}/${pkgname%-bin}.png"
     case "${CARCH}" in
-      aarch64)
+      i686)
         bsdtar -xf "${srcdir}/app-32.7z"
         ;;
       x86_64)
