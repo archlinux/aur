@@ -1,6 +1,6 @@
 pkgbase = ghcup-hs-static-git
 	pkgdesc = GHC toolchain installer
-	pkgver = 0.1.22.0.r50.g9b76170
+	pkgver = 0.1.30.0.r127.g6477a30
 	pkgrel = 1
 	url = https://www.haskell.org/ghcup/
 	install = ghcup-hs.install
@@ -19,7 +19,7 @@ pkgbase = ghcup-hs-static-git
 	provides = ghcup-hs-bin
 	conflicts = ghcup-hs
 	conflicts = ghcup-hs-bin
-	source = ghcup-hs-static-git::git+https://github.com/haskell/ghcup-hs#branch=ghc-9.6
+	source = ghcup-hs-static-git::git+https://github.com/haskell/ghcup-hs
 	sha256sums = SKIP
 
 pkgname = ghcup-hs-static-git
