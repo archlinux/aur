@@ -1,13 +1,15 @@
 # Maintainer: aquova <austinbricker at protonmail dot com>
 
 pkgname=perfect-dark-git
-pkgver=r7154.479c0335f
+pkgver=r7572.67675d898
 pkgrel=1
 pkgdesc='PC port of Perfect Dark'
 url='https://github.com/fgsfdsfgs/perfect_dark'
 arch=("x86_64")
 license=("MIT")
-depends=('gcc' 'glu' 'lib32-sdl2' 'lib32-zlib')
+# depends=('cmake' 'gcc' 'glu' 'lib32-sdl2' 'lib32-zlib')
+depends=('glu' 'sdl2' 'zlib')
+makedepends=('cmake' 'gcc' 'git' 'python')
 source=(
     "git+${url}.git"
     "local://pd.ntsc-final.z64"
@@ -23,18 +25,24 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd $srcdir/perfect_dark
+    git submodule update --init --recursive
+    cmake -G"Unix Makefiles" -Bbuild .
+}
+
 build() {
     cd $srcdir/perfect_dark
-    make -j$(nproc) -f Makefile.port TARGET_PLATFORM=i686-linux
+    cmake --build build -j4
 }
 
 package() {
     mkdir -p $pkgdir/opt/$pkgname/data
-    install -Dm755 $srcdir/perfect_dark/build/ntsc-final-port/pd.exe $pkgdir/opt/$pkgname
+    install -Dm755 $srcdir/perfect_dark/build/pd.x86_64 $pkgdir/opt/$pkgname
     install -Dm644 $srcdir/pd.ntsc-final.z64 $pkgdir/opt/$pkgname/data
 
     echo "#!/usr/bin/env bash
     cd /opt/${pkgname}
-    ./pd.exe" > $pkgname.sh
+    ./pd.x86_64" > $pkgname.sh
     install -Dm755 $pkgname.sh $pkgdir/usr/bin/perfect-dark
 }
