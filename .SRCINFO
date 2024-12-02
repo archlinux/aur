@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-virtualkeyboard
 	pkgdesc = Virtual keyboard framework (mingw-w64)
-	pkgver = 6.8.0
+	pkgver = 6.8.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = mingw-w64-qt6-virtualkeyboard
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.8/6.8.0/submodules/qtvirtualkeyboard-everywhere-src-6.8.0.tar.xz
-	sha256sums = 8f6502d7f40765fb4960b804927f9d86da39bdf42acc5021353c49527b6d0ce0
+	source = https://download.qt.io/official_releases/qt/6.8/6.8.1/submodules/qtvirtualkeyboard-everywhere-src-6.8.1.tar.xz
+	sha256sums = 1022a3bc4093ec732e85b659158c8a70a31eecbd0dfef4e4f6c67f474f89a264
 
 pkgname = mingw-w64-qt6-virtualkeyboard
