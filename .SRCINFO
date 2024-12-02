@@ -1,0 +1,17 @@
+pkgbase = python-recipemd
+	pkgdesc = Markdown recipe format and cli tool
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://recipemd.org
+	arch = any
+	license = LGPL-3.0-or-later
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = recipemd-4.1.0.tar.gz::https://github.com/RecipeMD/RecipeMD/archive/refs/tags/v4.1.0.tar.gz
+	sha256sums = c1a4b9d22a3ef3c131f9a08e9ee2886e474c97af32ad811dc135ea41549a25f1
+
+pkgname = python-recipemd
