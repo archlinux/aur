@@ -1,26 +1,30 @@
 # Maintainer: Fabian Posch <aur@posch.tech>
 
-pkgname=act-actsim-git
-pkgver=0.0.1.r598.2f3fa34
+_pkgname=actsim
+pkgname=act-${_pkgname}-git
+_basever=0
+_patchlvl=2
+_gitversion=r651.f7e3c63
+pkgver=${_basever}.${_patchlvl}.${_gitversion}
 pkgrel=1
 pkgdesc="A mixed-signal simulator capable of simulating ACT files."
 arch=('x86_64')
 url="https://github.com/asyncvlsi/actsim"
 license=('GPL-2.0')
-depends=('act-core' 'act-stdlib' 'act-tracelib')
+depends=('act-core' 'act-stdlib' 'act-tracelib' 'act-annotate')
 makedepends=('git' 'make' 'gcc')
-conflicts=('act-actsim')
-provides=('act-actsim')
+conflicts=("act-${_pkgname}")
+provides=("act-${_pkgname}")
 source=("git+${url}")
 sha512sums=("SKIP")
 
 pkgver() {
-    cd actsim
+    cd ${_pkgname}
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
-    install -Dm644 ${srcdir}/actsim/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 ${srcdir}/${_pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     export ACT_HOME="/opt/act-async"
     mkdir -p ${pkgdir}/opt/act-async/act
@@ -29,7 +33,7 @@ package() {
     mkdir -p ${pkgdir}/opt/act-async/include
     mkdir -p ${pkgdir}/opt/act-async/lib
 
-    cd actsim
+    cd ${_pkgname}
     ./configure
     make depend INSTALL_OVERRIDE="${pkgdir}/opt/act-async/"
     make INSTALL_OVERRIDE="${pkgdir}/opt/act-async/"

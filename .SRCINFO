@@ -1,6 +1,6 @@
 pkgbase = act-actsim-git
 	pkgdesc = A mixed-signal simulator capable of simulating ACT files.
-	pkgver = 0.0.1.r598.2f3fa34
+	pkgver = 0.2.r651.f7e3c63
 	pkgrel = 1
 	url = https://github.com/asyncvlsi/actsim
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = act-actsim-git
 	depends = act-core
 	depends = act-stdlib
 	depends = act-tracelib
+	depends = act-annotate
 	provides = act-actsim
 	conflicts = act-actsim
 	source = git+https://github.com/asyncvlsi/actsim
