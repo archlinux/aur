@@ -1,7 +1,8 @@
-# Maintainer: Alex J. Malozemoff <amaloz@galois.com>
+# Maintainer: gilcu3
+# Previous Maintainer: Alex J. Malozemoff <amaloz@galois.com>
 _pkgname=dumb-init
 pkgname=$_pkgname-git
-pkgver=1.2.2
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="A minimal init system for Linux containers"
 arch=('x86_64')

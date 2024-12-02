@@ -1,6 +1,6 @@
 pkgbase = dumb-init-git
 	pkgdesc = A minimal init system for Linux containers
-	pkgver = 1.2.2
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/Yelp/dumb-init
 	arch = x86_64
@@ -11,4 +11,3 @@ pkgbase = dumb-init-git
 	sha1sums = SKIP
 
 pkgname = dumb-init-git
-
