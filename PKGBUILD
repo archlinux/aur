@@ -1,13 +1,13 @@
 # Maintainer: Nikoloz Shvelidze <captain@pirrate.me>
 pkgname=osrs-launcher
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 epoch=
-pkgdesc="Official OldSchool RuneScape launcher"
+pkgdesc="OldSchool RuneScape launcher"
 arch=(any)
 url="https://oldschool.runescape.com/"
 license=('unknown')
-depends=(java-runtime bash)
+depends=(jre8-openjdk)
 makedepends=(p7zip libicns)
 source=("https://www.runescape.com/l=1/downloads/OldSchool.dmg" "osrs-launcher" "osrs-launcher.desktop")
 md5sums=('af345cb11c7e392c15e4d2681d9de17f' SKIP SKIP)
