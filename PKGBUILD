@@ -2,7 +2,7 @@
 _pkgname=pysubs2
 pkgname=python-pysubs2-git
 pkgver=1.7.3.r2.g04837a4
-pkgrel=3
+pkgrel=4
 pkgdesc="A Python library for editing subtitle files"
 arch=('any')
 url="https://github.com/tkarabela/pysubs2"
