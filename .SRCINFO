@@ -1,17 +1,17 @@
 pkgbase = mudita-center-bin
-	pkgdesc = Allows you to expand and update the features of Mudita Pure and Mudita Harmony, while using your computer. One application for every platform, open-sourced for transparency.
-	pkgver = 2.4.0
+	pkgdesc = Allows you to expand and update the features of Mudita Pure and Mudita Harmony, while using your computer. One application for every platform, open-sourced for transparency.(Prebuilt version.Use system-wide electron)
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://mudita.com/products/pure/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = fuse2
 	depends = electron26
-	provides = mudita-center=2.4.0
+	provides = mudita-center=2.5.0
 	conflicts = mudita-center
-	source = mudita-center-2.4.0.AppImage::https://github.com/mudita/mudita-center/releases/download/2.4.0/Mudita-Center.AppImage
+	source = mudita-center-2.5.0.AppImage::https://github.com/mudita/mudita-center/releases/download/2.5.0/Mudita-Center.AppImage
 	source = mudita-center.sh
-	sha256sums = 0c9908f852aaa942622e3d4e8e6f4225ebf1c62125d553e9fecf29f29c4e3ca0
+	sha256sums = 0fbef5c2020a8f9574d438741c5907f00a828c48927b48f8b12817881a2176a5
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = mudita-center-bin
