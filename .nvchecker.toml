@@ -1,0 +1,9 @@
+[stremio-git]
+source="github-graphql"
+github="stremio/stremio-shell"
+use_max_tag=true
+use_commit_number=true
+use_commit_hash=true
+from_pattern="-"
+to_pattern="."
+prefix="v"
