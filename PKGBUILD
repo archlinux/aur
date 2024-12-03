@@ -7,7 +7,7 @@
 
 pkgname=usb-creator
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Create bootable USB from a LiveCD or disc image ISO"
 arch=('any')
 url="https://git.launchpad.net/~usb-creator-hackers/usb-creator/+git/main"
@@ -28,6 +28,7 @@ depends=('cdrkit'
 makedepends=(
   'python-installer'
   'python-build'
+  'python-distutils-extra'
 )
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_$pkgver.tar.xz")
 b2sums=('34ee153a8424e648aae151c44bdeb963e3d23eadb26990d0274a2e2ce85e330eba1ad77e86d021c71684dafc7e5033f6ef42b15cfed5cbbab71e6b3944b9179a')

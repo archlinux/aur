@@ -1,12 +1,13 @@
 pkgbase = usb-creator
 	pkgdesc = Create bootable USB from a LiveCD or disc image ISO
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.launchpad.net/~usb-creator-hackers/usb-creator/+git/main
 	arch = any
 	license = GPL3
 	makedepends = python-installer
 	makedepends = python-build
+	makedepends = python-distutils-extra
 	depends = cdrkit
 	depends = dosfstools
 	depends = gtk3
