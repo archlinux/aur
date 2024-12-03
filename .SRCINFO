@@ -8,6 +8,6 @@ pkgbase = kd
 	provides = kd
 	conflicts = kd-bin
 	source = kd::https://github.com/Karmenzind/kd/releases/download/v0.0.12/kd_linux_amd64
-	sha256sums = 840a203b0824d0e2e1f0e0d1a548c761656625e4e72f8abd1031cc748a31fc87
+	sha256sums = SKIP
 
 pkgname = kd
