@@ -6,7 +6,7 @@
 _reponame=cpp-utilities
 pkgname=mingw-w64-c++utilities
 _name=${pkgname#mingw-w64-}
-pkgver=5.26.1
+pkgver=5.27.0
 pkgrel=1
 arch=('any')
 pkgdesc='Common C++ classes and routines such as argument parser, IO and conversion utilities (mingw-w64)'
@@ -17,7 +17,7 @@ checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'ninja')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('25b02e1d2deb669d2f7f734f8b67653820732703ad00a9cce611dd63a5853f4d')
+sha256sums=('aa3bfdcd5cc16a27d2a80611d4c6a7fd96f37c4dad2622233a0e019885bffc82')
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
@@ -26,8 +26,6 @@ _configurations=()
 [[ $NO_STATIC_LIBS ]] || _configurations+=('static')
 
 build() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-
   declare -A _config_flags=(
     [shared]='
         -DBUILD_SHARED_LIBS:BOOL=ON
@@ -39,13 +37,17 @@ build() {
         -DSTATIC_LIBRARY_LINKAGE:BOOL=ON
     '
   )
-
   for _arch in "${_architectures[@]}"; do
     for _cfg in "${_configurations[@]}"; do
       msg2 "${_arch}-${_cfg}"
-      mkdir -p "build-${_arch}-${_cfg}" && pushd "build-${_arch}-${_cfg}"
+      local arch_flags=()
+      [[ $_arch =~ aarch64-.* ]] && arch_flags+=(
+        -DUSE_BOOST_PROCESS:BOOL=OFF
+      )
       ${_arch}-cmake \
         -G Ninja \
+        -S "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}" \
+        -B "build-${_arch}-${_cfg}" \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX="/usr/${_arch}" \
         -DCONFIGURATION_NAME:STRING="${_cfg}" \
@@ -53,36 +55,27 @@ build() {
         -DUSE_NATIVE_FILE_BUFFER:BOOL=ON \
         -DENABLE_TARGETS_FOR_MINGW64_CROSS_PACKAGING:BOOL=ON \
         ${_config_flags[$_cfg]} \
-        ../
-      ninja
-      popd
+        ${arch_flags[@]}
+      VERBOSE=1 cmake --build "build-${_arch}-${_cfg}"
     done
   done
 }
 
 check() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-
   for _arch in "${_architectures[@]}"; do
     for _cfg in "${_configurations[@]}"; do
       msg2 "${_arch}-${_cfg}"
-      pushd "build-${_arch}-${_cfg}"
       export WINEPATH="/usr/${_arch}/bin" WINEDEBUG=-all
-      [[ $_cfg == shared ]] && ninja check
-      popd
+      [[ $_cfg == shared ]] && cmake --build "build-${_arch}-${_cfg}" --target check || true
     done
   done
 }
 
 package() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-
   for _arch in "${_architectures[@]}"; do
     for _cfg in "${_configurations[@]}"; do
       msg2 "${_arch}-${_cfg}"
-      pushd "build-${_arch}-${_cfg}"
-      DESTDIR="${pkgdir}" ninja install-mingw-w64-strip
-      popd
+      DESTDIR="${pkgdir}" cmake --build "build-${_arch}-${_cfg}" --target install-mingw-w64-strip
     done
   done
 }
