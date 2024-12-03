@@ -11,10 +11,10 @@ _downloadname="${_pkgname}-CachyOS"
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=1.2.12.r116.20241108.87730a6
-pkgrel=1
+pkgrel=2
 pkgdesc="Statistics output for uksmd, a userspace KSM helper daemon. Latest git checkout."
 url='https://github.com/CachyOS/uksmd'
-license=(GPL3)
+license=('GPL-3.0-only')
 arch=(
   'any'
 )
