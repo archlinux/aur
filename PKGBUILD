@@ -6,8 +6,8 @@ _basename=python-$_pyname
 pkgname=$_basename-git
 pkgdesc="Python bindings for Valgrind's VEX IR"
 url="https://github.com/angr/pyvex"
-pkgver=9.2.129.dev0.r1140.10d953f
-pkgrel=4
+pkgver=9.2.131.dev0.r1145.ea47010
+pkgrel=1
 arch=('x86_64')
 depends=(
     'glibc'
