@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-mad
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="OCaml bindings to the MAD mp3 decoder"
 arch=('i686' 'x86_64')
@@ -28,4 +28,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('eb32be151453cfeeadc1d8ca0f767300161ef51222c02770733dd9508629f7b1')
+sha256sums=('f79b76d8d9bfde09353b331d3523d4e9ee3dcf80db96ec3ff9b3b3bbb3d2a2a2')
