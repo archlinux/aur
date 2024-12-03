@@ -2,7 +2,7 @@
 
 pkgname=python-spacy-de_core_news_md
 _pkg="${pkgname#python-spacy-}"
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="German pipeline optimized for CPU. Components: tok2vec, tagger, morphologizer, parser, lemmatizer (trainable_lemmatizer), senter, ner."
 url="https://spacy.io/models/de#de_core_news_md"
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=(any)
 source=("https://github.com/explosion/spacy-models/releases/download/$_pkg-$pkgver/$_pkg-$pkgver.tar.gz")
-sha256sums=("138617ce795d5a412304e9221228b38379815af75876edd1bb815b34bc3fd8e2")
+sha256sums=("b2209393ecb12445b5e3d4fb53f1ed5f46ba172a6eef97c1e323e39cc42370cd")
 
 build() {
 	cd $_pkg-$pkgver
