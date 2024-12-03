@@ -10,7 +10,7 @@ pkgname=(
 )
 epoch=0
 pkgver=r237.20241202.78a433e
-pkgrel=1
+pkgrel=2
 pkgdesc="Test scripts for open source AMD graphics driver."
 arch=(
   'any'
@@ -88,6 +88,12 @@ _package_amd-s2idle-analysis-script() {
     'python-distro'
     'python-packaging'
     'python-pyudev'
+  )
+  optdepends=(
+    "fwupd>=2:       For device firmware checks."
+    "python-gobject: For device firmware checks."
+    "python-systemd: To access the kernel log via the systemd journal (fallback is 'dmesg')."
+    "util-linux:     To access the kernel log via 'dmesg'."
   )
   provides=()
   conflicts=()
