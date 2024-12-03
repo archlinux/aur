@@ -6,7 +6,7 @@ _basename=python-$_pyname
 pkgname=$_basename-git
 pkgdesc="Architecture-information specific details for the angr project"
 url="https://github.com/angr/archinfo"
-pkgver=9.2.129.dev0.r709.7888df3
+pkgver=9.2.131.dev0.r714.74d9945
 pkgrel=1
 arch=('any')
 depends=('python>=3.10')

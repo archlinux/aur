@@ -1,6 +1,6 @@
 pkgbase = python-archinfo-git
 	pkgdesc = Architecture-information specific details for the angr project
-	pkgver = 9.2.129.dev0.r709.7888df3
+	pkgver = 9.2.131.dev0.r714.74d9945
 	pkgrel = 1
 	url = https://github.com/angr/archinfo
 	arch = any
@@ -26,4 +26,4 @@ pkgbase = python-archinfo-git
 
 pkgname = python-archinfo-git
 	provides = python-archinfo
-	provides = python-archinfo=9.2.129.dev0
+	provides = python-archinfo=9.2.131.dev0
