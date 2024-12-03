@@ -22,13 +22,15 @@ pkgver() {
 }
 
 prepare() {
+    cd "$pkgname"
     cabal update
+    cabal build --only-dependencies
 }
 
 build() {
     cd "$pkgname"
     cabal configure --prefix=/usr --docdir=/usr/share/doc/$pkgname
-    cabal build
+    cabal build --offline
 }
 
 check() {
