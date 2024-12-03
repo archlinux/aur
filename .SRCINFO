@@ -1,6 +1,6 @@
 pkgbase = ocaml-theora
 	pkgdesc = OCaml binding to libtheora
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-theora
 	arch = i686
@@ -12,8 +12,7 @@ pkgbase = ocaml-theora
 	depends = libtheora
 	depends = ocaml-ogg
 	options = !strip
-	source = https://github.com/savonet/ocaml-theora/archive/v0.4.0.tar.gz
-	sha256sums = 8793529d07d8959654f91c9b4c1e93d1cb1c7cef705220fbbd2956ccac7103cf
+	source = https://github.com/savonet/ocaml-theora/archive/v0.4.1.tar.gz
+	sha256sums = 1e0a24e98b14130f875dd27192a53ec6d3f7e20809ca2cc3ed4870c303ca194d
 
 pkgname = ocaml-theora
-
