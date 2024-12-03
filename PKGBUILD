@@ -10,8 +10,8 @@ pkgname=(
   "${_pkgbase}-license${_vcssuffix}"
   "${_pkgbase}-doc${_vcssuffix}"
 )
-pkgver=3.6.0+1.r1456.20241118.3d5dd52
-pkgrel=1
+pkgver=3.6.2.r1468.20241130.2a03911
+pkgrel=2
 pkgdesc='Handheld Daemon. A tool for managing the quirks of handheld devices. Latest git checkout.'
 arch=(
   'x86_64'
@@ -78,9 +78,13 @@ package_hhd-git() {
   )
   provides=(
     "${_pkgbase}=${pkgver}"
+    "hhdctl=${pkgver}"
+    "hhdctl-git=${pkgver}"
   )
   conflicts=(
     "${_pkgbase}"
+    "hhdctl"
+    "hhdctl-git"
   )
 
   cd "${srcdir}/${_pkgbase}"
