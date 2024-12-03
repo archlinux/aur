@@ -6,12 +6,12 @@
 
 pkgname=butt
 pkgver=1.44.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy to use, multi OS streaming tool"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL2')
 url="https://danielnoethen.de/butt/"
-depends=('fltk' 'dbus' 'portaudio' 'portmidi' 'libfdk-aac' 'libvorbis' 'libogg' 'lame' 'flac' 'opus' 'libsamplerate')
+depends=('fltk' 'dbus' 'portaudio' 'portmidi' 'libfdk-aac' 'libvorbis' 'libogg' 'lame' 'flac' 'opus' 'libsamplerate' 'libdatachannel')
 source=("${pkgname}-${pkgver}.tar.gz::https://danielnoethen.de/${pkgname}/release/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'add-ctime-header.patch')
 sha256sums=('d910b40a10dbca1ce377ee239c146e4746e8b48550ba0a40d6b5199b5c87e0a7'
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  ./configure --with-client --prefix=/usr LDFLAGS="-L$(dirname $(fltk-config --libs))"
+  ./configure --with-client --enable-webrtc --prefix=/usr LDFLAGS="-L$(dirname $(fltk-config --libs))"
   make
 }
 
