@@ -16,7 +16,7 @@ arch=('any')
 url="https://www.gnu.org/software/libc/"
 license=(GPL LGPL)
 depends=("${_target}-linux-api-headers>=6.1")
-makedepends=("${_target}-gcc-stage1>=13.2.0" python)
+makedepends=("${_target}-gcc-stage1>=14.2.0" python)
 conflicts=("${_target}-glibc" "${_target}-eglibc")
 options=(!buildflags !strip !lto staticlibs)
 source=(https://ftp.gnu.org/gnu/glibc/glibc-${pkgver}.tar.xz{,.sig}
