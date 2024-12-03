@@ -1,12 +1,12 @@
 pkgbase = rusmux
 	pkgdesc = tmux automation tool
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/MeirKriheli/rusmux
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = rusmux-0.6.1.tar.gz::https://github.com/MeirKriheli/rusmux/archive/refs/tags/v0.6.1.tar.gz
-	sha256sums = 5eacc2629e25705115f469e5fd6aa623ee4fd9a1402d25bd54692eaa867e79bd
+	source = rusmux-0.7.0.tar.gz::https://github.com/MeirKriheli/rusmux/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 3619d9c152436a8f4511b6313fdbf69ea4c34523d45e19c0056d3da7c56f3382
 
 pkgname = rusmux
