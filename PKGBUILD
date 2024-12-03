@@ -1,7 +1,7 @@
 # Maintainer: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=mmdbinspect
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='look up records for one or more IPs/networks in one or more .mmdb databases'
 arch=(x86_64 aarch64 armv7h)
@@ -10,7 +10,7 @@ license=(Apache-2.0)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('3e3e8c5a9d7bf256e1700323f968589f066a187d0ca29fad5fb811431de4874e1918841862ef3ea497b9c7c0b32da16c4e5c737a5399330cf655bec2e0de1998')
+b2sums=('b293a03aa0d2b4407d06925ac5d6dcca22aa7170ce98cf757c5ddd7dadced42a2d9c662dbb32154a4f112d1ed1a43386a4c8512f0eb078936969dd412fa783d6')
 
 build() {
   cd $pkgname-$pkgver

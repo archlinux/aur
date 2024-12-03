@@ -1,0 +1,4 @@
+[mmdbinspect]
+source = "git"
+git = "https://github.com/maxmind/mmdbinspect.git"
+prefix = "v"
