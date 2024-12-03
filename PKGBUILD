@@ -23,19 +23,19 @@ url="https://www.minecraft.net/en-us/download/server/bedrock"
 # This package version number can be found on the official Minecraft Bedrock server download page.
 # https://www.minecraft.net/en-us/download/server/bedrock
 # Mouseover the "DOWNLOAD" button under the section for the stable/non-preview "Ubuntu (Linux)" version.
-pkgver=1.21.44.01
+pkgver=1.21.50.10
 
 # This sha256 hashsum can be determined by manually downloading the file from the official download page.
 # https://www.minecraft.net/en-us/download/server/bedrock
 # Click the "DOWNLOAD" button under the section for the stable/non-preview "Ubuntu (Linux)" version.
 # To get the sha256 hashsum, run the following on the downloaded file:
 # sha256sum <bedrock-server-vX.YY.Z>.zip
-_pkghash='2dc1fe943939557cde2919d2b180ec938671c10fce9efaa68bfd03cd29e97af0'
+_pkghash='1b52e1342bb62b9c0cb46a53e4bea625720691cb2dfd3deaa979bcbcf565af7a'
 
 # Version of the AUR package, (not the underlying vendor's release version).
 # This is only higher than "1" if another AUR package release is cut
 # for the same "pkgver" of the upstream vendor's package.
-pkgrel=2
+pkgrel=1
 
 # The license type of the upstream vendor's package, as displayed on the AUR.
 license=(
