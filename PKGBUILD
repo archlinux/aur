@@ -8,8 +8,9 @@
 
 _target=arm-linux-gnueabihf
 pkgname=${_target}-gcc-stage2
-pkgver=14.2.0
-_majorver=${pkgver%%.*}
+pkgver=14.2.1.git+ab884fffe3f
+_majorver="14.2.1"
+_commit=ab884fffe3fc82a710bea66ad651720d71c938b8
 pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 2 for toolchain building"
 arch=(x86_64)
@@ -21,16 +22,21 @@ options=(!emptydirs !distcc !strip)
 conflicts=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1=${pkgver}")
-source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig})
+source=(git+https://sourceware.org/git/gcc.git#commit=${_commit})
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
-sha256sums=('a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9'
-            'SKIP')
+sha256sums=('82b674a17bbac14acbf16b10e9d61e928e5630cd56635eb97acfeda849d4ebbf')
+
+pkgver() {
+  cd gcc
+  local _hash="$(git rev-parse --short ${_commit})"
+  echo "${_majorver}.git+${_hash}"
+}
 
 prepare() {
-  cd gcc-${pkgver/+/-}
+  cd gcc
 
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
@@ -46,7 +52,7 @@ build() {
   CFLAGS="${CFLAGS/ -Werror=format-security/}"
   CXXFLAGS="${CXXFLAGS/ -Werror=format-security/}"
 
-  ../gcc-${pkgver/+/-}/configure \
+  ../gcc/configure \
     --target=${_target} \
     --host=${CHOST} \
     --build=${CHOST} \
@@ -97,6 +103,9 @@ package() {
   rm -rf "${pkgdir}"/usr/share
 
   # strip it manually
-  strip "${pkgdir}"/usr/bin/* 2>/dev/null || true
-  find "${pkgdir}"/usr/lib -type f -exec /usr/bin/"${_target}"-strip --strip-unneeded {} \; 2>/dev/null || true
+  find "${pkgdir}"/ -type f -and \( -name \*.a -or -name \*.o \) \
+    -exec ${_target}-objcopy -R .comment -R .note -R .debug_info -R .debug_aranges \
+    -R .debug_pubnames -R .debug_pubtypes -R .debug_abbrev -R .debug_line \
+    -R .debug_str -R .debug_ranges -R .debug_loc '{}' \;
+  find "${pkgdir}"/ -type f -and \( -executable \) -exec strip '{}' \;
 }
