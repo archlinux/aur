@@ -1,24 +1,22 @@
-# Maintainer: wilke
+# Contributor: wilke
+# Maintainer: tee < teeaur at duck dot com >
 pkgname=harsh-bin
-pkgver=0.10.2
-pkgrel=0
+pkgver=0.10.5
+pkgrel=1
 pkgdesc="CLI habit tracking for geeks"
 arch=('any')
 url="https://github.com/wakatara/harsh"
 license=('MIT')
-
 provides=('harsh')
 conflicts=('harsh')
 
 case "$CARCH" in
     x86_64) _pkgarch="x86_64"
-	sha256sums=('f649a07fe576416f6a3e28435e99518a257ee4458aef5fcf82c8d7ea05fee18f')
+sha256sums=('d584bc846eeb3843ab3e11073b1149871106c534b9f149292a9051a0e492071d')
            ;;
     armv64h) _pkgarch="arm64"
-	sha256sums=('8cb040c7df7eace78d32e0cabf22d6af83bc1f93599c37da6828762c5d199f9e')
            ;;
     i686) _pkgarch="i386"
-	sha256sums=('0a3245f2f350de6353e920e2928686fa8a6e7037e76e98e9140726fd7d7b388e')
            ;;
 esac
 
