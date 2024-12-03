@@ -1,4 +1,4 @@
-# Maintainer: Liu DongMiao <liudongmiao@gmail.com>
+# Maintainer: hj_18 <952587314@qq.com>
 
 pkgname=zhcon
 pkgver=0.2.6
