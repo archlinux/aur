@@ -1,0 +1,4 @@
+[nak]
+source = "git"
+git = "https://github.com/fiatjaf/nak.git"
+prefix = "v"
