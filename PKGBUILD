@@ -6,8 +6,8 @@ _basename=python-$_pyname
 pkgname=$_basename-git
 pkgdesc="An abstraction layer for constraint solvers."
 url="https://github.com/angr/claripy"
-pkgver=9.2.129.dev0.r2411.c7d8d827
-pkgrel=3
+pkgver=9.2.131.dev0.r2418.027dda79
+pkgrel=1
 arch=('any')
 depends=(
     'python-cachetools'
