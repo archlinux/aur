@@ -3,7 +3,7 @@
 # Contributor: Guillaume ALAUX <guillaume at archlinux dot org>
 
 pkgname=log4j
-pkgver=2.24.1
+pkgver=2.24.2
 pkgrel=1
 pkgdesc='Logging library for Java'
 arch=('any')
@@ -12,7 +12,7 @@ license=('APACHE')
 # As of 2.13.0 Log4j-2 requires Java 8 or greater at runtime
 depends=('java-runtime>=8')
 source=(https://archive.apache.org/dist/logging/log4j/${pkgver}/apache-${pkgname}-${pkgver}-bin.zip)
-sha256sums=('15b38c5ca8bac5fcf6f400c96ea531997be6218ae76e093cffb3f3866f9a88e9')
+sha256sums=('d171af48b4bb39a28300a3e4c439c7743133b6141fdeb780b846576309f49fb2')
 
 package() {
   cd "${srcdir}"

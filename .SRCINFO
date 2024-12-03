@@ -1,12 +1,12 @@
 pkgbase = log4j
 	pkgdesc = Logging library for Java
-	pkgver = 2.24.1
+	pkgver = 2.24.2
 	pkgrel = 1
 	url = https://logging.apache.org/log4j/2.x/
 	arch = any
 	license = APACHE
 	depends = java-runtime>=8
-	source = https://archive.apache.org/dist/logging/log4j/2.24.1/apache-log4j-2.24.1-bin.zip
-	sha256sums = 15b38c5ca8bac5fcf6f400c96ea531997be6218ae76e093cffb3f3866f9a88e9
+	source = https://archive.apache.org/dist/logging/log4j/2.24.2/apache-log4j-2.24.2-bin.zip
+	sha256sums = d171af48b4bb39a28300a3e4c439c7743133b6141fdeb780b846576309f49fb2
 
 pkgname = log4j
