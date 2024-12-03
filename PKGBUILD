@@ -1,13 +1,13 @@
-# Maintainer: mattski <redmattski at gmail dot com>
+# Maintainer: Pawel Mozdzonek <rockplayer.pl@gmail.com>
 
 pkgname=withings-sync
-pkgver=v3.4.2
-pkgrel=2
+pkgver=v4.2.7.r0.g67c0ed2
+pkgrel=1
 pkgdesc="A tool for synchronisation of Withings (ex. Nokia Health Body) to Garmin Connect and Trainer Road."
 arch=(any)
 url="https://github.com/jaroslawhartman/withings-sync"
 license=(MIT)
-depends=("python-cloudscraper" "python-h2" "python-httpx" "python-lxml" "python-requests" "python-rfc3986>=1.3" "python-rfc3986<2")
+depends=(python-garth python-lxml python-requests python-dotenv python-setuptools)
 makedepends=("python")
 source=("$pkgname::git+https://github.com/jaroslawhartman/withings-sync.git"
         "${pkgname}.service"
@@ -43,4 +43,3 @@ md5sums=('SKIP'
          'cabc6d7ff62a22ed8b6722210c873bb6'
          'fdcbfb1d8c6081077048da6d92b0721f'
          '8c065062c737baae192fadb97a88abc1')
-
