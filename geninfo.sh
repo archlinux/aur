@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-## run './geninfo.sh' after run 'updpkgsums', need install python-packaging
+## run './geninfo.sh' after run 'updpkgsums', need install: jq yq python-packaging
 
 _pkgname=$(awk -F= '/_pkgname=/{print $2}' PKGBUILD)
 _pipname="${_pkgname//-/_}"

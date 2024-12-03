@@ -9,9 +9,9 @@
 
 _pkgname=Flexget
 pkgname=${_pkgname,,}
-pkgver=3.11.58
-pkgrel=2
-pkgdesc="A multipurpose automation tool for all of your media"
+pkgver=3.12.0
+pkgrel=1
+pkgdesc="FlexGet is a program aimed to automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 arch=(any)
 url="https://github.com/${_pkgname}/${_pkgname}"
 license=(MIT)
@@ -26,7 +26,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.user.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('a67ee2e1f26a9fe4aea739c13cdd25f68821aaa7ec6f0c5db9482ab0c1f64dde'
+sha256sums=('1420637ddcc4f3d81b7aa5dcad1708a868a9f2be4a9f8849286a39f5e3ddbe42'
             'b7578417ab5f671def7021133ae68900d82aaa81b5e80a2fec4d85e46eb1f8e9'
             'b9d354f6095aafe7a29cb8e90239b662a2584903a85fe3770f2b99bb8bdfff4a'
             '799921777b3714f074deaafbdd241ea7b99a0eccd65931708fd81457286f4f49'
@@ -51,6 +51,6 @@ package() {
     cd "${_pkgname}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 LICENSE                    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    ln -sf "/usr/share/flexget-webui/v1/app"  "${pkgdir}/${site_packages}/${pkgname}/ui/v1/app"
-    ln -sf "/usr/share/flexget-webui/v2/dist" "${pkgdir}/${site_packages}/${pkgname}/ui/v2/dist"
+    ln -sf "/usr/share/flexget-webui/v1/app"  "${pkgdir}${site_packages}/${pkgname}/ui/v1/app"
+    ln -sf "/usr/share/flexget-webui/v2/dist" "${pkgdir}${site_packages}/${pkgname}/ui/v2/dist"
 }
