@@ -7,12 +7,12 @@
 pkgname=uswsusp-git
 _pkgname=uswsusp
 pkgver=1.0.libgcrypt.1.6.3+r522+g84d75e60b
-pkgrel=1
+pkgrel=2
 pkgdesc='Userspace software suspend - git checkout'
 arch=('i686' 'x86_64')
 url='http://suspend.sourceforge.net/'
 license=('GPL-3.0-or-later')
-depends=('libx86' 'lzo' 'pciutils' 'perl-switch')
+depends=('libx86' 'lzo' 'pciutils' 'perl-switch' 'libgcrypt')
 makedepends=('git')
 provides=('uswsusp')
 conflicts=('uswsusp')
@@ -60,6 +60,6 @@ package() {
   cd suspend
   make DESTDIR="${pkgdir}/" install
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-  install -Dm644 COPYING.GPL "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING.GPL"
+  install -Dm644 COPYING.GPL "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.GPL"
 }
 # vim:set ts=2 sw=2 et:
