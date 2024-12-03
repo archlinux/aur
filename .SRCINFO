@@ -1,17 +1,16 @@
 pkgbase = pidgin-indicator
-	pkgdesc = Pidgin plugin that adds tray icon using libappindicator
-	pkgver = 1.0.1
+	pkgdesc = AppIndicator/KStatusNotifierItem Plugin for Pidgin
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/philipl/pidgin-indicator
 	install = pidgin-indicator.install
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2.0
 	makedepends = intltool
 	depends = pidgin
-	depends = libappindicator-gtk2
-	source = https://github.com/philipl/pidgin-indicator/releases/download/1.0.1/pidgin-indicator-1.0.1.tar.bz2
-	sha256sums = 753026b626a0ed896d1102acc4dc4565b022b99fa24f19d959d45318d5f83901
+	depends = libayatana-appindicator
+	source = https://github.com/philipl/pidgin-indicator/releases/download/1.0.2/pidgin-indicator-1.0.2.tar.bz2
+	sha256sums = d855be9c98927cdce65c320ebadd4cc08d3efc6881d22f32c2f654472fc1c021
 
 pkgname = pidgin-indicator
-

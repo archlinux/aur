@@ -1,24 +1,23 @@
 pkgname=pidgin-indicator
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
-pkgdesc="Pidgin plugin that adds tray icon using libappindicator"
+pkgdesc='AppIndicator/KStatusNotifierItem Plugin for Pidgin'
 arch=('i686' 'x86_64')
-url="https://github.com/philipl/pidgin-indicator"
-license=('GPL')
-depends=('pidgin' 'libappindicator-gtk2')
+url='https://github.com/philipl/pidgin-indicator'
+license=('GPL2.0')
+depends=('pidgin' 'libayatana-appindicator')
 makedepends=('intltool')
 install=pidgin-indicator.install
-source=(https://github.com/philipl/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2 )
-sha256sums=('753026b626a0ed896d1102acc4dc4565b022b99fa24f19d959d45318d5f83901')
+source=(${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2)
+sha256sums=('d855be9c98927cdce65c320ebadd4cc08d3efc6881d22f32c2f654472fc1c021')
 
 build() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-
-    ./configure --prefix=/usr
-    make
+  cd "${pkgname}-${pkgver}"
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}" install
+  cd "${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
