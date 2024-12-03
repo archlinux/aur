@@ -3,7 +3,7 @@
 _pkgauthor=natecraddock
 _pkgname=zf
 pkgname=${_pkgname}-bin
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc='a commandline fuzzy finder designed for filtering filepaths'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -28,12 +28,12 @@ sha256sums=('28cc086b5786113ea2b710c1976ba14b0fcf82eaa25e504f4b77be4e1e386fea'
             'e203862ec4ff38c56e60533ee2d9cc40d69f793d4b2a978c76591a50c762b472'
             '9f542f560c195d795fa5737109dcf30a5b61be7e052d2813dc1b3debac5640bb'
             'dc08af8dc9c117b19d6fb448903a4a8f2fc1e16fe2c66b0caa7a93f98ef607b9'
-            '8a1dac436771737a51cde500ef45e6dc2e80fe83847766d918f2ff8a0a31aa37'
+            '98c640c3286fbb2436be98472879c765c1903e34c969d58866fbe569fac99c7b'
             '0b6ae96deaa67af93232c67b907744a8017c5dab75f415f9b122614f2e2d3504'
             'ed8f12c466300fc199740e07811afd0665c7977070b7cd9d0860033672bf4112'
             'b1275ea83fbc62507dfc96695d9455633a8b33fa879599975b52c2848b835a47')
-sha256sums_x86_64=('1fdf501c8d946f4b766aa736be98277efa60824de5e98204694606f62904cea9')
-sha256sums_aarch64=('446239d53bc29421b6012c529b63af64cbe232d8f06afcd5b0a9f8f116ca11ef')
+sha256sums_x86_64=('7287c1255d5617069c0463cbcab910a1c39d1047a1a0baea9016e7d9d29c63be')
+sha256sums_aarch64=('69ad2aec6b003d53b5ed60b8e7e0727491ba96716d770a06a9fd2d7ca6b3654c')
 
 package() {
   cd "$srcdir/"
