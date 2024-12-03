@@ -1,0 +1,4 @@
+[wljoywake]
+source = "git"
+git = "https://github.com/nowrep/wljoywake.git"
+prefix = "v"
