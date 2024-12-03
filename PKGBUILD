@@ -2,7 +2,7 @@
 _pkgname='mongodb-compass-readonly-beta'
 _edition=' Readonly Beta'
 pkgname="$_pkgname-bin"
-_pkgver='1.44.7-beta.3'
+_pkgver='1.45.0-beta.0'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - beta version - binary version'
@@ -26,7 +26,7 @@ source=(
 	"$pkgname-$pkgver.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm"
 	'mongodb-compass.conf'
 )
-b2sums=('b17d8a4b0e6dbe201aef73615aae7c8ed6acf274f4b36e3e7a71999a02f27f3a8304fb09d5e4256783273844863bea672223b2c49240831cf42c2268e3158ec2'
+b2sums=('868a3b4ae4d6e0b0b081e0af32d4ee5a79a9a60e1ed6e96adb32fb638cf45e8fc6442c83e966d0f175edc6f824267387617a9686301e7f3496c661cfdc1531c4'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
 check() {
