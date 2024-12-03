@@ -1,4 +1,5 @@
 /rbtools*.pkg.tar.*
 /RBTools-*.tar.gz
+/rbtools-*.tar.gz
 /src
 /pkg
