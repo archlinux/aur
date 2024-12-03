@@ -1,5 +1,5 @@
 pkgbase = luckey-games-meta
-	pkgdesc = Meta package for Luckey games
+	pkgdesc = Meta package for LucKey games
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://luckey.games/
