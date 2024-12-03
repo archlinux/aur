@@ -1,0 +1,4 @@
+[rvpk]
+source = "git"
+git = "https://github.com/panzi/rust-vpk.git"
+prefix = "v"
