@@ -103,7 +103,6 @@ build() {
       --no-default-features \
       --features binaries,asm,threading,signal_support \
       --target $CARGO_BUILD_TARGET \
-      --dlltool ${_arch}-dlltool \
       --prefix=/usr/${_arch} \
       --manifest-path ./Cargo.toml
   done
@@ -173,10 +172,12 @@ package() {
       --no-default-features \
       --features binaries,asm,threading,signal_support \
       --target $CARGO_BUILD_TARGET \
-      --dlltool ${_arch}-dlltool \
       --prefix /usr/${_arch} \
       --destdir "${pkgdir}"
    install -Dm 644 LICENSE PATENTS -t "${pkgdir}"/usr/${_arch}/share/licenses/rav1e/
+
+   rm "${pkgdir}"/usr/${_arch}/lib/rav1e.dll.a
+   ${_arch}-dlltool -d "${pkgdir}"/usr/${_arch}/lib/rav1e.def -D rav1e.dll -l "${pkgdir}"/usr/${_arch}/lib/rav1e.dll.a
 
    ${_arch}-strip -s "${pkgdir}"/usr/${_arch}/bin/*.exe
    ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
