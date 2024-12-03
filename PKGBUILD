@@ -7,11 +7,11 @@ pkgbase=wordnet
 pkgname=(wordnet-common)
 pkgver=3.1
 _srcver=3.0
-pkgrel=5
+pkgrel=6
 arch=('i686' 'x86_64')
 url="https://wordnet.princeton.edu/"
-license=("custom")
-makedepends=('tk')
+license=("LicenseRef-custom")
+depends=('python' 'tk')
 source=(
   #"https://wordnetcode.princeton.edu/${_srcver}/WordNet-${_srcver}.tar.bz2"
   "http://deb.debian.org/debian/pool/main/w/wordnet/wordnet_${_srcver}-38.debian.tar.xz"

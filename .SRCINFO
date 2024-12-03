@@ -1,11 +1,12 @@
 pkgbase = wordnet
 	pkgver = 3.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://wordnet.princeton.edu/
 	arch = i686
 	arch = x86_64
-	license = custom
-	makedepends = tk
+	license = LicenseRef-custom
+	depends = python
+	depends = tk
 	source = http://deb.debian.org/debian/pool/main/w/wordnet/wordnet_3.0-38.debian.tar.xz
 	source = http://deb.debian.org/debian/pool/main/w/wordnet/wordnet_3.0.orig.tar.gz
 	source = https://wordnetcode.princeton.edu/wn3.1.dict.tar.gz
