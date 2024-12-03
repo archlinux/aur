@@ -1,8 +1,8 @@
 # Maintainer: username227 <gfrank227 [at] gmail [dot] com>
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 pkgname=shadps4
-pkgver=0.4.0.r0.g67dfc791
-pkgrel=1
+pkgver=0.4.0
+pkgrel=2
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
 url="https://shadps4.net/"
@@ -66,11 +66,6 @@ b2sums=('1fc08bc3a73c306e0bb87bd8f255ceb54e28b30fd20e29a276acf43fc4d7a351227b43f
         'SKIP'
         'SKIP'
         'SKIP')
-
-pkgver() {
-	cd $pkgname
-	git describe --long | sed 's/^v\.\?//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 prepare() {
 	cd $pkgname

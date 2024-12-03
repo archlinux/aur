@@ -1,7 +1,7 @@
 pkgbase = shadps4
 	pkgdesc = Sony PlayStation 4 emulator
-	pkgver = 0.4.0.r0.g67dfc791
-	pkgrel = 1
+	pkgver = 0.4.0
+	pkgrel = 2
 	url = https://shadps4.net/
 	arch = aarch64
 	arch = x86_64
@@ -37,9 +37,9 @@ pkgbase = shadps4
 	depends = sdl3>=1:3.1.3
 	optdepends = renderdoc: for graphics debugging
 	optdepends = vulkan-validation-layers: for vulkan debugging
-	provides = shadps4=0.4.0.r0.g67dfc791
+	provides = shadps4=0.4.0
 	conflicts = shadps4-git
-	source = shadps4::git+https://github.com/shadps4-emu/shadPS4.git#tag=v.0.4.0.r0.g67dfc791
+	source = shadps4::git+https://github.com/shadps4-emu/shadPS4.git#tag=v.0.4.0
 	source = shadps4-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git
 	source = shadps4-imgui::git+https://github.com/shadps4-emu/ext-imgui.git
 	source = shadps4-libatrac9::git+https://github.com/shadps4-emu/ext-LibAtrac9.git
