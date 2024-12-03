@@ -8,17 +8,17 @@ pkgname=(
   'handbrake-llvm-optimized-cli'
 )
 
-# Follow handbrakes most current stable branch 1.8.x
-# https://github.com/HandBrake/HandBrake/commits/1.8.x
-readonly _commit=1b09b55fa971682658f9ad22e9d4acbc21dc4a33
+# Follow handbrakes most current stable branch 1.9.x
+# https://github.com/HandBrake/HandBrake/commits/1.9.x
+readonly _commit=fa9154a20f3f64fdc183a097e6b63f7fd4bc6cab
 
 pkgver() {
   git -C HandBrake/ gc --auto --prune=now
   git -C HandBrake/ describe ${_commit} | sed -e 's/^v//g' -e 's/-/.r/' -e 's/-/./'
 }
 
-pkgver=1.8.2.r2.g1b09b55fa
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
@@ -80,6 +80,7 @@ source=("HandBrake::git+https://github.com/HandBrake/HandBrake.git#tag=${_commit
 sha256sums=('SKIP')
 
 prepare() {
+    return # Skip patching
     patch --directory=HandBrake --strip 1 <<-'EOF'
 --- a/contrib/svt-av1/module.defs
 +++ b/contrib/svt-av1/module.defs
