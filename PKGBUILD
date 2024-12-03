@@ -1,6 +1,6 @@
 # Maintainer: Jo De Boeck <deboeck.jo@gmail.com>
 
-pkgname=big-launcher
+pkgname=big-launcher-git
 pkgver=ab7f562
 pkgrel=1
 makedepends=('cmake')
