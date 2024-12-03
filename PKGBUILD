@@ -2,8 +2,8 @@
 # Contributor: Vbextreme <@>
 prj='ghostmirror'
 pkgname=($prj)
-pkgdesc='alternative to reflector to manage mirrors'
-pkgver='0.5.3.2'
+pkgdesc='alternative to reflector, writed in C with true check mirror status and mirror speed.'
+pkgver='0.5.4'
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/vbextreme/${prj}.git"
