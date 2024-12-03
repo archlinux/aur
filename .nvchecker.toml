@@ -1,0 +1,3 @@
+[perl-net-ftpssl]
+source = "cpan"
+cpan = "Net-FTPSSL"
