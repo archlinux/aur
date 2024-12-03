@@ -3,7 +3,7 @@
 pkgname=opentabletdriver
 _pkgname=OpenTabletDriver
 pkgver=0.6.4.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://opentabletdriver.net"
@@ -47,6 +47,7 @@ build() {
         EXTRA_OPTIONS="/p:DebugType=None /p:DebugSymbols=false"
     fi
 
+    export OTD_CONFIGURATIONS="${PWD}/OpenTabletDriver.Configurations/Configurations"
     ./eng/linux/package.sh --package Generic -c Release -- $EXTRA_OPTIONS
 }
 
@@ -57,5 +58,6 @@ package() {
 
     # moving LICENSE to the suggested Arch folder is also tracked upstream:
     # https://github.com/OpenTabletDriver/OpenTabletDriver/issues/3572
-    mv "$pkgdir"/usr/share/doc/opentabletdriver/LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
+    mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
+    mv "$pkgdir"/usr/share/doc/opentabletdriver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
