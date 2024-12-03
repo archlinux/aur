@@ -1,15 +1,16 @@
 # Maintainer: Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 # Contributor: Daniel Bermond < gmail-com: danielbermond >
+# Contributor: Robin Candau <antiz@archlinux.org>
 
 pkgname=mingw-w64-dav1d
-pkgver=1.4.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='AV1 cross-platform decoder focused on speed and correctness (mingw-w64)'
 arch=('any')
 url='https://code.videolan.org/videolan/dav1d/'
 license=('BSD-2-Clause')
 depends=('mingw-w64-crt' 'mingw-w64-vulkan-icd-loader')
-options=('!strip' '!buildflags' '!libtool' 'staticlibs')
+options=('!strip' '!buildflags' '!libtool' 'staticlibs' '!debug')
 makedepends=(
   'mingw-w64-gcc'
   'mingw-w64-meson'
@@ -24,12 +25,12 @@ source=(
   https://downloads.videolan.org/pub/videolan/dav1d/${pkgver}/dav1d-${pkgver}.tar.xz{,.asc}
   https://code.videolan.org/videolan/dav1d-test-data/-/archive/${pkgver}/dav1d-test-data-${pkgver}.tar.gz
 )
-sha512sums=('6f3233acfb7d248155ac4beb237fe48186fdfb378820f0b15a5ca54a5642a63ebae48446075f10c6be77a8b9a95ddf41c6709af21936af793f1bbc28a2ef4bd8'
+sha512sums=('774881d27d045f468a8617317fa751e1ce452a15c6d6c2c93c3dd3c3544d6b2b91b0c3eb5ff379f113c26b27a02dc4b54d0751b083dcbcb18bb96c66a6504acb'
             'SKIP'
-            '25ad2f6253b931cab7f718d9f7a8e09b58dcce0b685bb98032dfd35b26240cf124341edbc2b2e2c3c0d4c9db06e82db5c6887691d2e2f02172f684ed5af754da')
-b2sums=('e24cf033f94b49f917fa70e17438b0811c85042d5774a605343ca13c979b81b11a98b8453999e4796f4674b15db150c80606ddeae6a648f20f2f4fde32dfad9c'
+            '0102abdf3310c53a09c9ae9a8bf7e662402f31ecb41624f70a6557a618e384b38dedb088241b6887a5b93573631b32c778fec90e82236c2192ae18d5914bcae4')
+b2sums=('7cf75b9de834c77a8012fb560fadca339d0faa0ab92073fd0119f0c5ccbb19017aa271a1aa0939aa698a52e2285b79a956021776a702afe2a7de131ce92d7241'
         'SKIP'
-        'b6a8e2589806ab97538ecf9abe3acce62db176659e4a443124af3ee6f30216790506ced45402bcf323b6ea50e5e9777a867a61b2a129bd2ed6387a6dde3dbaa7')
+        '4d44ffab66de96da059ceacaa1e7c5df63f362492cb9f29af44b7a9b0f1c75da1c96fa64263c23b891a7b17fe78eefcf263fb6917b499de3814bbff3b482ea3c')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 validpgpkeys=(
   '65F7C6B4206BD057A7EB73787180713BE58D1ADC' # VideoLAN Release Signing Key
