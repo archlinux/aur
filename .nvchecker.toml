@@ -1,0 +1,4 @@
+[starkli]
+source = "git"
+git = "https://github.com/xJonathanLEI/starkli.git"
+prefix = "v"
