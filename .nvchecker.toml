@@ -1,0 +1,4 @@
+[python-derpconf]
+source = "git"
+git = "https://github.com/globocom/derpconf.git"
+prefix = "v"
