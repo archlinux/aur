@@ -2,7 +2,7 @@
 _projectname=cogentcore
 pkgname=cogentcore
 _pkgname=${pkgname//cogent}
-pkgdesc="Command line tools for compiling apps using the Cogent Core framework ; a cross-platform framework for building powerful, fast, elegant 2D and 3D apps that run on macOS, Windows, Linux, iOS, Android, and the web with a single Go codebase, allowing you to Code Once, Run Everywhere."
+pkgdesc="Command line tools for compiling apps using the Cogent Core framework. Code Once, Run Everywhere."
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 pkgver='0.3.0'
 pkgrel='1'
