@@ -21,6 +21,8 @@ pkgbase = big-launcher-git
 	provides = big-launcher
 	conflicts = big-launcher
 	source = git+https://github.com/complexlogic/big-launcher
+	source = https://github.com/complexlogic/big-launcher/files/10326572/assets.zip
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = big-launcher-git
