@@ -1,0 +1,4 @@
+[python-simple-pid]
+source = "git"
+git = "https://github.com/m-lundberg/simple-pid.git"
+prefix = "v"
