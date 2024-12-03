@@ -11,13 +11,14 @@
 _target="arm-linux-gnueabihf"
 pkgname="${_target}-binutils"
 pkgver=2.43.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of programs to assemble and manipulate binary and object files"
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(glibc libelf zlib zstd)
 makedepends=(gcc glibc libelf zlib zstd)
+options=(!emptydirs !distcc !strip)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz{,.sig})
 sha256sums=('13f74202a3c4c51118b797a39ea4200d3f6cfbe224da6d1d95bb938480132dfd'
             'SKIP')
@@ -77,6 +78,8 @@ package() {
   # elfedit does not support ARM and gprof makes no sense as a cross tool
   rm -rf "${pkgdir}"/usr/bin/*-{elfedit,gprof}
   # collides with system installation of binutils
-  rm -rf "${pkgdir}"/usr/lib
-  rm -rf "${pkgdir}"/usr/share
+  rm -rf "${pkgdir}"/usr/{lib,share}
+
+  # strip it manually
+  find "${pkgdir}"/ -type f -and \( -executable \) -exec strip '{}' \;
 }
