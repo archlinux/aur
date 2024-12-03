@@ -1,6 +1,6 @@
 # Maintainer: Patrick Hechler <patrjprof.aur@ph.anderemails.de>
 pkgname=patrjprof
-pkgver=1.2.3r149
+pkgver=1.3.0r196
 _pkgver="$(echo "${pkgver}" | sed -E 's/r[0-9]+$//')"
 pkgrel=1
 pkgdesc="A Free Java profiler written in Java"
@@ -13,6 +13,7 @@ makedepends=()
 optdepends=('java-runtime-headless>=16: support for socket files for server/client communication'
            'java-runtime>=8: graphical user interface'
            'java-runtime>=16: socket files + graphical user interface'
+           'java-runtime=23: the new class-file API'
            )
 provides=()
 conflicts=()
@@ -31,11 +32,11 @@ source=("patr-java-profiler-start-${_pkgver}.sh::https://nexuspat.hechler.de/rep
         )
 noextract=("${source[@]%%::*}")
 sha512sums=('cdef6de2254f01d4398b2fcd8f9c43ca5aa1cac5d44d66595f0c0d7cdcab5082dea7fd323548df46dde468b5f307cc44a267927ed103324b2e0f41df99ab0bc4'
-            'fa8e8d274d4d1dd15e9dba377783e49191de5e55ccc5b5e4a2c765c525ece8e3ddccee583cb266ef247b5af12569e77a9c3325b3e659442dc62d782ba913a805'
-            '5d29b69636e06c830d006af148c79812cf7339ced88ddee59cf5add839cef934ebf1842554ec95bf89281ad34e12e9eac46fdbc861920f93f167d7543f7ff4d8'
-            'cc85720462434d8692c2d8856004de444396906c616aa6b896d3cac150027d594f52b3f5e1001ba3038bda84b3fc3f8398c2a18c2e09250a36ed026f6400204e'
-            '7cb871422c5c766b09c2a6dfe211191162bd8f0324470163e603e24c93981f027bb52d9c5d492f7200d400e9219660a04b6b2301c2e71e1d9f2792f27bb37bdc'
-            '11ac044870838e2a8d6fe8c593bde02786d62aaae68ff5b77a6e4a2bf355366f1137f940b52b8541613a68a24c0cc6a4839a7e2d3f066dc058e81c04f8f2e792'
+            '2bb59a1cb743f9488876535df86d76ba6fe4ea8f054e437fae2599ff4f5421aa893f6adeb0d57c5eabc0e89a7609bd5738dc3b8faf5297f0738147a05b3e8571'
+            '3b743c0b4dba7f130a43c6f5c476cb4f6e0d564e34fd36d7efa286c7eef054f62283788e8b8983ed69ad8c67229c14db162cc26122c760b4b10ca578b5e0de59'
+            '482cfbb6c0d7a23e2a674417df04317084c43f9904635c9db7d83001eddc258288648a7f8f4b86ec5aaaf9dd9e6da1514c68bdb65a277907aa28434bc432aae0'
+            'c2d9588c9fab56ed46e3cf620596c24d2a601e3be96e17a143dfe9d3d5834b6256361d4db5236bcd18291f42b1cb72ecaa7327f28e9dd43970670ac4c0c65a6d'
+            '695885abfdc879aad9c0c91e6b69a9d87b82a024042739695d901c6e93cc9acd9cf1df7c743626358b1ece5b01ab3f47aa49dead7232d4711648e38925c9c64e'
             )
 
 build() {
@@ -56,7 +57,7 @@ check() {
 
   echo 'start test'
   "./patr-java-profiler-start-${_pkgver}.sh" --no-server --no-client --no-defaults -cp \
-    "patr-java-profiler-test-${_pkgver}.jar" de.hechler.patrick.profiler.test.PHPTestMain > /dev/null
+    "patr-java-profiler-test-${_pkgver}.jar" de.hechler.patrick.profiler.test.PHPTestMain 11
   echo 'validate test'
   "./patr-java-profiler-start-${_pkgver}.sh" --only-client --validate patr-java-profiler-output.data
   echo 'finished test'
