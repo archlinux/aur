@@ -1,8 +1,8 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=chiaki-ng
-pkgver=1.9.1
-_commit="4159e47df0d7d6143e3608e88935b1a19eb3c371"
+pkgver=1.9.2
+_commit="d1f7d78621dd9b6297f6e2ad6dc9e0000a2b7012"
 pkgrel=1
 pkgdesc="Free and Open Source PlayStation Remote Play Client"
 arch=(i686 x86_64)
@@ -47,7 +47,7 @@ provides=('chiaki')
 conflicts=('chiaki')
 # Commits are signed but the pulic GPG key doesn't appear to be available anywhere, disable sig checking for now
 #source=(git+"https://github.com/streetpea/${pkgname}.git?signed#commit=${_commit}")
-#validpgpkeys=('BC3815EF2D94AB06')
+#validpgpkeys=('B0050C45E5804C8D')
 source=(git+"https://github.com/streetpea/${pkgname}.git?commit=${_commit}")
 sha256sums=('SKIP')
 
