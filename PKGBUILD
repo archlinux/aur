@@ -22,7 +22,7 @@ provides=(libqtforkawesome.so libqtquickforkawesome.so)
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz"
         "${_reponame_forkawesome}::https://github.com/ForkAwesome/Fork-Awesome/archive/refs/tags/${_pkgver_forkawesome}.tar.gz")
-sha256sums=('7025664ab187cfb43ffb20e321534b6b5d9e16d2cd0dc8b5c62aecca1a81fa65'
+sha256sums=('aec0f5e52223d5d1d5fc0a860b626bdecb67df32471f2304b0d9ddf4c5af01ac'
             '23fba5f191f204e0414c547bf4c9b10fd7ca42c151260e8f64698449a75fbdb3')
 
 build() {
