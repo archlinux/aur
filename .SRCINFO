@@ -1,7 +1,7 @@
 pkgbase = samba-support
 	pkgdesc = Metapkg and configuration for Samba support
 	pkgver = 1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://wiki.archlinux.org/index.php/samba
 	install = samba-support.install
 	arch = any
@@ -10,7 +10,6 @@ pkgbase = samba-support
 	depends = nss-mdns
 	depends = samba
 	depends = python-pysmbc
-	optdepends = system-config-samba: The Samba configuration tool by Red Hat
 	backup = etc/samba/smb.conf
 	source = smb.conf
 	sha256sums = b63df445136b07a48fec4b363e1c3dca5894cf60162af8c0c1305656cd69dcfd
