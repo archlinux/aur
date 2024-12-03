@@ -1,7 +1,7 @@
 # Maintainer: atomicfs
 
 pkgname=firmware-action
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Build system for firmware images for several open source firmware solutions"
 url="https://github.com/9elements/firmware-action"
@@ -15,7 +15,7 @@ depends=(
 	'dagger'
 )
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f12839343e2f23686c26ebb85b2107c3a5f4384825e855ea8e8a23ae74b2fc7f')
+sha256sums=('9328d80dccee1f1c394cb1441bc239bb99c6210f924d36385b5311fcf916838f')
 
 build() {
 	cd "${pkgname}-${pkgver}/action"
