@@ -1,15 +1,15 @@
-# Maintainer: Rin Cat <dev@rincat.ch>
+# Maintainer: Rin Cat <rincat@rincat.dev>
 
 pkgname=rtl88x2bu-dkms-git
 _pkgbase=rtl88x2bu
-pkgver=5.13.1.r199.bf52727
+pkgver=5.13.1.r201.2092b8d
 _pkgver=5.13.1
 pkgrel=1
 pkgdesc="Kernel module for Realtek rtl88x2bu WiFi chipset"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/RinCat/RTL88x2BU-Linux-Driver"
 license=('GPL2')
-depends=('linux-headers' 'dkms' 'bc')
+depends=('dkms' 'bc')
 makedepends=('git')
 source=("git+https://github.com/RinCat/RTL88x2BU-Linux-Driver.git")
 sha256sums=('SKIP')
