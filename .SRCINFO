@@ -1,16 +1,19 @@
 pkgbase = r-anytime
 	pkgdesc = Anything to ‘POSIXct’ or ‘Date’ Converter
-	pkgver = 0.3.9
+	pkgver = 0.3.10
 	pkgrel = 2
 	url = https://cran.r-project.org/package=anytime
 	arch = i686
 	arch = x86_64
 	license = MIT
+	checkdepends = r-gettz
+	checkdepends = texlive-latex
+	checkdepends = r-tinytest
 	depends = r>=3.2.0
 	depends = r-bh
 	depends = r-rcpp>=0.12.9
 	optdepends = r-gettz
-	source = https://cran.r-project.org/src/contrib/anytime_0.3.9.tar.gz
-	b2sums = 867cca7faadc29cb99e4ae8428eabd0e3fa00e1c1f0553d3a0d8275c5526743a11dff340b1cacac3ae03bc294f2c9968110234d55e99a6ebc43c7bf413c0b58f
+	source = https://cran.r-project.org/src/contrib/anytime_0.3.10.tar.gz
+	b2sums = 755165811f3b0308ace168203562a1cabda43718f224d67a3f253671c2cc59e8aa419fe09e71784abf2e47e3c3e4526976e62fe3d2bae7ed20891b35e0d034e8
 
 pkgname = r-anytime
