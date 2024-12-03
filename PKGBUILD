@@ -4,7 +4,7 @@
 pkgname=digitalclock5
 _pkgname=DigitalClock5
 pkgver=5.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern digital clock application"
 arch=('x86_64')
 url="https://github.com/Kolcha/DigitalClock5"
@@ -13,28 +13,27 @@ depends=('qt6-base' 'ninja' 'cmake')
 makedepends=('git')
 install=$pkgname.install
 source=("git+https://github.com/Kolcha/DigitalClock5.git#tag=${pkgver}"
+  'git+https://github.com/Kolcha/GradientDialog.git'
+  'git+https://github.com/Kolcha/paletteicon.git'
+  'git+https://github.com/Skycoder42/QHotkey.git'
   https://digitalclock4.sourceforge.io/media/skins.zip
   digitalclock5.desktop
   digitalclock5.install
 )
 sha256sums=('ab17b51ffdef57de7927a0f103aef012e9b1171a4efd3024512a846de9d190e8'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'deedaf6da31a24eea3e2e146bdbcde316453cde52cfaaef3c03f86307d63177a'
             '353cab3b079779c5ad3255fe3ffae21c28f4140e1e1c92f5b1c860c6f06e24e8'
             'b3953c72141ea3a80ad353a2f66eee22614722571d8306fc1989a60df4858c81')
 
 prepare() {
-  # Initialize submodules
   git -C "${_pkgname}" submodule init
-
-  # Update the submodules and ensure they are pulled from the correct branches
   git -C "${_pkgname}" -c protocol.file.allow='always' submodule update
-
-  # (Optional) Configure submodules explicitly if needed
-  git -C "${_pkgname}" config --local "submodule.third_party/GradientDialog.url" "https://github.com/Kolcha/GradientDialog.git"
-  git -C "${_pkgname}" config --local "submodule.third_party/paletteicon.url" "https://github.com/Kolcha/paletteicon.git"
-  git -C "${_pkgname}" config --local "submodule.third_party/QHotkey.url" "https://github.com/Skycoder42/QHotkey.git"
-
-  # Pull the latest changes for the submodules (in case you need the latest updates)
+  git -C "${_pkgname}" config --local "submodule.third_party/GradientDialog.url" "GradientDialog"
+  git -C "${_pkgname}" config --local "submodule.third_party/paletteicon.url" "paletteicon"
+  git -C "${_pkgname}" config --local "submodule.third_party/QHotkey.url" "QHotkey"
   git -C "${_pkgname}" submodule update --remote
 }
 
