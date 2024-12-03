@@ -4,11 +4,11 @@ _name="dt-apriltags"
 pkgname="python-$_name-git"
 pkgdesc="Duckietown python bindings to the apriltag library"
 pkgver=3.4.2.r26.gbcf530b
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=(MIT)
 url="https://github.com/duckietown/lib-$_name"
-makedepends=('python-build' 'python-installer')
+makedepends=('python-build' 'python-installer' 'python-setuptools')
 depends=(
 	"apriltag" 
 	'python-numpy'
