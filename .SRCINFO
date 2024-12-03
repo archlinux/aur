@@ -22,7 +22,7 @@ pkgbase = qtforkawesome-qt6
 	provides = libqtquickforkawesome-qt6.so
 	source = qtforkawesome-0.2.3.tar.gz::https://github.com/Martchus/qtforkawesome/archive/v0.2.3.tar.gz
 	source = Fork-Awesome-1.2.0::https://github.com/ForkAwesome/Fork-Awesome/archive/refs/tags/1.2.0.tar.gz
-	sha256sums = 7025664ab187cfb43ffb20e321534b6b5d9e16d2cd0dc8b5c62aecca1a81fa65
+	sha256sums = aec0f5e52223d5d1d5fc0a860b626bdecb67df32471f2304b0d9ddf4c5af01ac
 	sha256sums = 23fba5f191f204e0414c547bf4c9b10fd7ca42c151260e8f64698449a75fbdb3
 
 pkgname = qtforkawesome-qt6
