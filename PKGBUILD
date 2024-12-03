@@ -4,7 +4,7 @@
 _pkgname=stremio
 pkgname=${_pkgname}-git
 pkgver=4.4.168.qt6+r851+gf16a7b177
-pkgrel=2
+pkgrel=3
 pkgdesc="The next generation media center"
 arch=('x86_64')
 url="https://www.stremio.com"
@@ -14,8 +14,16 @@ depends=("nodejs" "ffmpeg" "qt6-base" "mpv" "openssl" "hicolor-icon-theme")
 makedepends=("git" "wget" "librsvg" "cmake" "qt5-base" "qt5-declarative" "qt5-webengine")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/Stremio/stremio-shell.git#branch=master")
-md5sums=('SKIP')
+source=(
+  "${_pkgname}::git+https://github.com/Stremio/stremio-shell.git#branch=master"
+  'git+https://github.com/Ivshti/libmpv.git'
+  'git+https://github.com/itay-grudev/SingleApplication.git'
+  'git+https://github.com/Ivshti/razerchroma.git'
+)
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -26,10 +34,9 @@ pkgver() {
 }
 prepare() {
   git -C "${_pkgname}" submodule init
-  module_paths=($(grep -Po '(?<=path = ).*' "${_pkgname}/.gitmodules"))
-  for _submodule in module_paths; do
-    git -C "${_pkgname}" config --local "submodule.third_party/${_submodule}.url" "${_submodule}"
-  done
+  git -C "${_pkgname}" config --local submodule.deps/libmpv.url "${srcdir}/libmpv"
+  git -C "${_pkgname}" config --local submodule.deps/singleapplication.url "${srcdir}/SingleApplication"
+  git -C "${_pkgname}" config --local submodule.deps/chroma.url "${srcdir}/razerchroma"
   git -C "${_pkgname}" -c protocol.file.allow='always' submodule update
 }
 
@@ -40,21 +47,24 @@ build() {
 
 package() {
   cd "${_pkgname}"
-  export PREFIX="$pkgdir"
-  make -f release.makefile install
-  install -d "${pkgdir}/usr/share/icons/hicolor"
-  for icon in "${pkgdir}/opt/stremio/icons/"*.png; do
-    size=$(basename "$icon" | grep -oP '(?<=_)\d+(?=\.png)')
-    if [[ -n "$size" ]]; then
-      install -Dm644 "$icon" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/$(basename "$icon")"
-    fi
-  done
+  make -f release.makefile install PREFIX="$pkgdir"
   install -dm755 "${pkgdir}/usr/bin"
   ln -s /opt/stremio/stremio "$pkgdir/usr/bin/stremio"
   install -Dm644 "${pkgdir}/opt/stremio/smartcode-stremio.desktop" "${pkgdir}/usr/share/applications/com.stremio.stremio.desktop"
-  install -Dm644 "images/stremio.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/stremio.svg"
+
   install -Dm644 "images/stremio.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/smartcode-stremio.svg"
-  install -Dm644 "images/stremio_tray_black.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/status/stremio_tray_black.svg"
-  install -Dm644 "images/stremio_tray_white.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/status/stremio_tray_white.svg"
+  # icons
+  local _file
+  local _res
+  while read -r -d '' _file; do
+    _res="$(printf '%s' "$_file" | sed 's/\.png$//;s/^.*_//')"
+    mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps"
+    ln -s ../../../../../../opt/stremio/icons/smartcode-stremio_${_res}.png \
+      "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/smartcode-stremio.png"
+    ln -s ../../../../../../opt/stremio/icons/smartcode-stremio-tray_${_res}.png \
+      "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/smartcode-stremio-tray.png"
+  done < <(find "${pkgdir}/opt/stremio/icons" -maxdepth 1 -type f -name 'smartcode-stremio_*.png' -print0)
+  install -Dm644 "images/stremio_tray_black.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/smartcode-stremio_tray_black.svg"
+  install -Dm644 "images/stremio_tray_white.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/smartcode-stremio_tray_white.svg"
 }
 # vim:set ts=2 sw=2 et:

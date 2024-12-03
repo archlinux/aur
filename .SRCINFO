@@ -1,7 +1,7 @@
 pkgbase = stremio-git
 	pkgdesc = The next generation media center
 	pkgver = 4.4.168.qt6+r851+gf16a7b177
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.stremio.com
 	arch = x86_64
 	license = MIT
@@ -21,6 +21,12 @@ pkgbase = stremio-git
 	provides = stremio
 	conflicts = stremio
 	source = stremio::git+https://github.com/Stremio/stremio-shell.git#branch=master
+	source = git+https://github.com/Ivshti/libmpv.git
+	source = git+https://github.com/itay-grudev/SingleApplication.git
+	source = git+https://github.com/Ivshti/razerchroma.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = stremio-git
