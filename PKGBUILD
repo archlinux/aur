@@ -12,9 +12,9 @@ options=('!emptydirs')
 depends=('perl')
 checkdepends=('perl-test-nowarnings' 'perl-test-exception' 'perl-http-message' 'perl-test-version')
 url='https://metacpan.org/dist/CGI-Simple'
-source=(https://cpan.metacpan.org/authors/id/M/MA/MANWAR/CGI-Simple-$pkgver.tar.gz)
-sha256sums=('4d58103fdfa5c8e1ed076b15d5cafb7001b2886cb3396f00564a881eb324e5a7')
 _distdir="CGI-Simple-$pkgver"
+source=(https://cpan.metacpan.org/authors/id/M/MA/MANWAR/$_distdir.tar.gz)
+sha256sums=('4d58103fdfa5c8e1ed076b15d5cafb7001b2886cb3396f00564a881eb324e5a7')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
