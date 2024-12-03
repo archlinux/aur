@@ -1,5 +1,5 @@
 diff --git a/fbx/src/CMakeLists.txt b/fbx/src/CMakeLists.txt
-index 8a6b278..594ffa5 100644
+index 8a6b278..ed38e6e 100644
 --- a/fbx/src/CMakeLists.txt
 +++ b/fbx/src/CMakeLists.txt
 @@ -27,14 +27,7 @@ PRIVATE
@@ -14,12 +14,12 @@ index 8a6b278..594ffa5 100644
 -    usdShade
 -    usdUtils
 -    arch
-+    usd_ms
++    ${PXR_LIBRARIES}
      fileformatUtils
      fbxsdk::fbxsdk
  )
 diff --git a/fbx/tests/CMakeLists.txt b/fbx/tests/CMakeLists.txt
-index fe745ca..b1010a3 100644
+index fe745ca..82c9ab4 100644
 --- a/fbx/tests/CMakeLists.txt
 +++ b/fbx/tests/CMakeLists.txt
 @@ -7,7 +7,7 @@ usd_plugin_compile_config(fbxSanityTests)
@@ -27,15 +27,27 @@ index fe745ca..b1010a3 100644
  target_link_libraries(fbxSanityTests
  PRIVATE
 -    usd
-+    usd_ms
++    ${PXR_LIBRARIES}
      GTest::gtest
      GTest::gtest_main
  )
+diff --git a/gltf/CMakeLists.txt b/gltf/CMakeLists.txt
+index d112749..617ddec 100644
+--- a/gltf/CMakeLists.txt
++++ b/gltf/CMakeLists.txt
+@@ -16,6 +16,7 @@ find_package(TinyGLTF REQUIRED)
+ if(USD_FILEFORMATS_ENABLE_DRACO)
+     find_package(draco REQUIRED)
+ endif()
++find_package(OpenGL REQUIRED)
+ 
+ 
+ add_subdirectory(src)
 diff --git a/gltf/src/CMakeLists.txt b/gltf/src/CMakeLists.txt
-index 267d488..4a6e071 100644
+index 7ba1ab9..0756b28 100644
 --- a/gltf/src/CMakeLists.txt
 +++ b/gltf/src/CMakeLists.txt
-@@ -31,10 +31,7 @@ PRIVATE
+@@ -33,10 +33,7 @@ PRIVATE
  
  target_link_libraries(usdGltf
  PRIVATE
@@ -43,19 +55,12 @@ index 267d488..4a6e071 100644
 -    usdGeom
 -    usdSkel
 -    usdShade
-+    usd_ms
++    ${PXR_LIBRARIES}
      tinygltf::tinygltf
      Threads::Threads
      fileformatUtils
-@@ -141,4 +138,4 @@ if(USDGLTF_ENABLE_INSTALL)
-         RENAME plugInfo.json
-         COMPONENT Runtime
-     )
--endif()
-\ No newline at end of file
-+endif()
 diff --git a/gltf/tests/CMakeLists.txt b/gltf/tests/CMakeLists.txt
-index d63856f..afbd1ea 100644
+index d63856f..fd09872 100644
 --- a/gltf/tests/CMakeLists.txt
 +++ b/gltf/tests/CMakeLists.txt
 @@ -6,7 +6,7 @@ usd_plugin_compile_config(gltfSanityTests)
@@ -63,12 +68,12 @@ index d63856f..afbd1ea 100644
  target_link_libraries(gltfSanityTests
  PRIVATE
 -    usd
-+    usd_ms
++    ${PXR_LIBRARIES}
      GTest::gtest
      GTest::gtest_main
  )
 diff --git a/obj/src/CMakeLists.txt b/obj/src/CMakeLists.txt
-index 37a9d13..9d7ea9e 100644
+index 37a9d13..45885e9 100644
 --- a/obj/src/CMakeLists.txt
 +++ b/obj/src/CMakeLists.txt
 @@ -27,12 +27,7 @@ PRIVATE
@@ -81,12 +86,12 @@ index 37a9d13..9d7ea9e 100644
 -    usdGeom
 -    usdSkel
 -    usdShade
-+    usd_ms
++    ${PXR_LIBRARIES}
      fileformatUtils
      fmt::fmt
      FastFloat::fast_float
 diff --git a/obj/tests/CMakeLists.txt b/obj/tests/CMakeLists.txt
-index 56f1bef..64a5688 100644
+index 56f1bef..7288016 100644
 --- a/obj/tests/CMakeLists.txt
 +++ b/obj/tests/CMakeLists.txt
 @@ -6,7 +6,7 @@ usd_plugin_compile_config(objSanityTests)
@@ -94,12 +99,24 @@ index 56f1bef..64a5688 100644
  target_link_libraries(objSanityTests
  PRIVATE
 -    usd
-+    usd_ms
++    ${PXR_LIBRARIES}
      GTest::gtest
      GTest::gtest_main
  )
+diff --git a/ply/CMakeLists.txt b/ply/CMakeLists.txt
+index 921b8cb..5229d8b 100644
+--- a/ply/CMakeLists.txt
++++ b/ply/CMakeLists.txt
+@@ -9,6 +9,7 @@ if(USD_FILEFORMATS_BUILD_TESTS)
+     find_package(GTest REQUIRED)
+ endif()
+ find_package(Happly REQUIRED)
++find_package(OpenGL REQUIRED)
+ 
+ 
+ add_subdirectory(src)
 diff --git a/ply/src/CMakeLists.txt b/ply/src/CMakeLists.txt
-index 788207b..9c696c0 100644
+index 788207b..7ed23f8 100644
 --- a/ply/src/CMakeLists.txt
 +++ b/ply/src/CMakeLists.txt
 @@ -25,12 +25,7 @@ PRIVATE
@@ -112,12 +129,12 @@ index 788207b..9c696c0 100644
 -    usdGeom
 -    usdSkel
 -    usdShade
-+    usd_ms
++    ${PXR_LIBRARIES}
      happly::happly
      fileformatUtils
  )
 diff --git a/ply/tests/CMakeLists.txt b/ply/tests/CMakeLists.txt
-index 640d37f..ee49807 100644
+index 640d37f..5de4169 100644
 --- a/ply/tests/CMakeLists.txt
 +++ b/ply/tests/CMakeLists.txt
 @@ -6,7 +6,7 @@ usd_plugin_compile_config(plySanityTests)
@@ -125,12 +142,61 @@ index 640d37f..ee49807 100644
  target_link_libraries(plySanityTests
  PRIVATE
 -    usd
-+    usd_ms
++    ${PXR_LIBRARIES}
      GTest::gtest
      GTest::gtest_main
  )
+diff --git a/sbsar/src/CMakeLists.txt b/sbsar/src/CMakeLists.txt
+index 6f01e8c..f590a92 100644
+--- a/sbsar/src/CMakeLists.txt
++++ b/sbsar/src/CMakeLists.txt
+@@ -57,16 +57,8 @@ target_include_directories(
+ 
+ target_link_libraries(
+         ${PLUGIN_NAME}
+-        PUBLIC tf
+-        sdf
+-        usd
+-        usdGeom
+-        usdShade
+-        usdLux
+-        usdMedia
+-        usdRender
+-        vt
+-        hio
++        PUBLIC
++        ${PXR_LIBRARIES}
+         ${SUBSTANCE_TARGETS}
+         fileformatUtils
+ )
+diff --git a/sbsar/test/CMakeLists.txt b/sbsar/test/CMakeLists.txt
+index f748bb6..72b4ae0 100644
+--- a/sbsar/test/CMakeLists.txt
++++ b/sbsar/test/CMakeLists.txt
+@@ -6,8 +6,7 @@ usd_plugin_compile_config(sbsarSanityTests)
+ 
+ target_link_libraries(sbsarSanityTests
+ PRIVATE
+-    ar
+-    usd
++    ${PXR_LIBRARIES}
+     usdSbsar
+     GTest::gtest
+     GTest::gtest_main
+diff --git a/stl/CMakeLists.txt b/stl/CMakeLists.txt
+index bc5e97a..c8f422e 100644
+--- a/stl/CMakeLists.txt
++++ b/stl/CMakeLists.txt
+@@ -9,6 +9,7 @@ endif()
+ if(USD_FILEFORMATS_BUILD_TESTS)
+     find_package(GTest REQUIRED)
+ endif()
++find_package(OpenGL REQUIRED)
+ 
+ 
+ add_subdirectory(src)
 diff --git a/stl/src/CMakeLists.txt b/stl/src/CMakeLists.txt
-index bcda4d0..4b31548 100644
+index bcda4d0..98b05d8 100644
 --- a/stl/src/CMakeLists.txt
 +++ b/stl/src/CMakeLists.txt
 @@ -25,15 +25,7 @@ PRIVATE
@@ -146,12 +212,12 @@ index bcda4d0..4b31548 100644
 -    usdShade
 -    usdLux
 -    usdUtils
-+    usd_ms
++    ${PXR_LIBRARIES}
      fileformatUtils
  )
  
 diff --git a/stl/tests/CMakeLists.txt b/stl/tests/CMakeLists.txt
-index 3d02e75..37fa914 100644
+index 3d02e75..5ef9a19 100644
 --- a/stl/tests/CMakeLists.txt
 +++ b/stl/tests/CMakeLists.txt
 @@ -6,7 +6,7 @@ usd_plugin_compile_config(stlSanityTests)
@@ -159,15 +225,23 @@ index 3d02e75..37fa914 100644
  target_link_libraries(stlSanityTests
  PRIVATE
 -    usd
-+    usd_ms
++    ${PXR_LIBRARIES}
      GTest::gtest
      GTest::gtest_main
  )
 diff --git a/utils/CMakeLists.txt b/utils/CMakeLists.txt
-index f8f45d4..2fff618 100644
+index f8f45d4..d7251f8 100644
 --- a/utils/CMakeLists.txt
 +++ b/utils/CMakeLists.txt
-@@ -60,17 +60,7 @@ target_include_directories(fileformatUtils
+@@ -4,6 +4,7 @@ if (NOT TARGET usd)
+ endif()
+ find_package(OpenImageIO REQUIRED)
+ find_package(ZLIB REQUIRED)
++find_package(OpenGL REQUIRED)
+ if(USD_FILEFORMATS_BUILD_TESTS)
+     find_package(GTest REQUIRED)
+ endif()
+@@ -60,17 +61,7 @@ target_include_directories(fileformatUtils
  target_link_libraries(fileformatUtils
  PUBLIC
      OpenImageIO::OpenImageIO
@@ -182,7 +256,7 @@ index f8f45d4..2fff618 100644
 -    usdUtils
 -    usdVol
 -    arch
-+    usd_ms
++    ${PXR_LIBRARIES}
      ZLIB::ZLIB
  )
  
