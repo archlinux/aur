@@ -13,8 +13,8 @@ pkgbase = zhcon
 	depends = ncurses
 	depends = libcap
 	backup = etc/zhcon.conf
-	source = http://iweb.dl.sourceforge.net/project/zhcon/zhcon/0.2.6/zhcon-0.2.5.tar.gz
-	source = http://iweb.dl.sourceforge.net/project/zhcon/zhcon/0.2.6/zhcon-0.2.5-to-0.2.6.diff.gz
+	source = http://download.sourceforge.net/project/zhcon/zhcon/0.2.6/zhcon-0.2.5.tar.gz
+	source = http://download.sourceforge.net/project/zhcon/zhcon/0.2.6/zhcon-0.2.5-to-0.2.6.diff.gz
 	source = ascii.kbmode.patch
 	source = gcc4.3.patch
 	source = inputserver.fullcomma.patch
@@ -24,6 +24,7 @@ pkgbase = zhcon
 	source = winime.amd64.patch
 	source = winime.autoselect.patch
 	source = winime.support.gbk.patch
+	source = gcc-convert.patch
 	md5sums = 79e1c68aab8341e32129f61c1670baeb
 	md5sums = 971f68507f9c48a6b5cbee4ba0c1e2a6
 	md5sums = e051479e26c98f860852ad11aa826be4
@@ -35,6 +36,6 @@ pkgbase = zhcon
 	md5sums = 86e25942c9c4b2468342a0e3f8401553
 	md5sums = c00f39666861b7d18a60212d2fcebf6c
 	md5sums = 411b157c49a5c50cde24839ed32db4d9
+	md5sums = d480a8eeec1f8726fb2052072e56a3b5
 
 pkgname = zhcon
-
