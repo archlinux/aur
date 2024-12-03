@@ -6,12 +6,12 @@
 
 pkgname=uswsusp-git
 _pkgname=uswsusp
-pkgver=1.0.libgcrypt.1.6.3+r522+g84d75e60b
-pkgrel=9
+pkgver=upstream.2012.09.15+r522+g84d75e60b
+pkgrel=2
 pkgdesc='Userspace software suspend - git checkout'
 arch=('i686' 'x86_64')
 url='http://suspend.sourceforge.net/'
-license=('GPL-3.0')
+license=('GPL-3.0-or-later')
 depends=('libx86' 'lzo' 'pciutils' 'perl-switch')
 makedepends=('git')
 provides=('uswsusp')
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
             '9fe3e38301014b4c8597aec2041ad3c6d85e6935004cbd3ac93659d391db3157')
 
 pkgver() {
-  cd $_pkgname
+  cd suspend
 
   _version=$(git tag --sort=-v:refname --list | grep '^[0-9.]*.*$' | tr - . | head -n1)
   _commits=$(git rev-list --count HEAD)
@@ -36,10 +36,6 @@ pkgver() {
   echo "${_version}+r${_commits}+g${_short_commit_hash}"
 }
 
-prepare() {
-  cd $_pkgname
-  mkdir -p m4
-}
 build() {
   cd suspend
 
@@ -57,13 +53,12 @@ build() {
 }
 
 package() {
-  cd $_pkgname
-
-  mkdir "${pkgdir}/etc"
-  make DESTDIR="${pkgdir}/" install
-
   install -Dm644 uresume-hook "${pkgdir}/usr/lib/initcpio/hooks/uresume"
   install -Dm644 uresume-install "${pkgdir}/usr/lib/initcpio/install/uresume"
+  install -dm755 "${pkgdir}/etc"
+
+  cd suspend
+  make DESTDIR="${pkgdir}/" install
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
   install -Dm644 COPYING.GPL "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING.GPL"
 }
