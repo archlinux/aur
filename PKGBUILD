@@ -9,10 +9,10 @@ _downloadname="${_pkgname}-natalenko"
 pkgname="${_pkgname}-nosystemd-git"
 epoch=0
 pkgver=6.11.1.r74.20241107.6dbb897
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace KSM helper daemon. Without systemd dependency, latest git checkout."
 url=https://codeberg.org/pf-kernel/uksmd
-license=(GPL3)
+license=('GPL-3.0-only')
 arch=(
   'aarch64'
   'armv7h'
