@@ -9,12 +9,8 @@ pkgbase=linux-mainline-um5606
 epoch=1
 _tag='v6.13-rc1'
 # _id='7eef7e306d3c40a0c5b9ff6adc9b273cc894dbd5'
-revert=(
-	'7875afafba84817b791be6d2282b836695146060'
-	# '38077562e0594a294eaf4d8e6bbd8c1c26c2540f'
-)
 pkgver=6.13rc1
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux Mainline with patches for the Asus UM5606(WA) laptop"
 arch=(x86_64)
 url="https://kernel.org/"
@@ -66,10 +62,10 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
-  local rev
-  for rev in "${revert[@]}"; do
-	git revert --no-edit $rev
-  done
+ #  local rev
+ #  for rev in "${revert[@]}"; do
+	# git revert --no-edit $rev
+ #  done
 
   local src
   for src in "${source[@]}"; do
