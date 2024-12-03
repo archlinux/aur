@@ -1,6 +1,6 @@
 pkg
 src
-hyprlauncher*
+hyprlauncher-*
 LICENSE*
 README*
 *.tar*

@@ -1,0 +1,7 @@
+post_upgrade() {
+    if [ "$2" == "0.2.6-1" ]; then
+        printf "\n\n\033[31mWARNING!\033[0m The configuration format has been updated to TOML.
+         From the release notes:
+         \"migrate appropriately\"\n\n\n"
+    fi
+}
