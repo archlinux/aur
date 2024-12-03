@@ -1,15 +1,15 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=pg_partman
-pkgver=5.1.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc='Partition management extention for PostgreSQL'
 arch=('x86_64')
 url="https://github.com/pgpartman/$pkgname"
 license=('custom:PostgreSQL')
 depends=('python' 'postgresql')
-makedepends=('clang15' 'llvm15')
+makedepends=('clang' 'llvm')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('3e3a27d7ff827295d5c55ef72f07a49062d6204b3cb0b9a048645d6db9f3cb9f')
+sha256sums=('0c4e047b2298a527fe023a6aa8f82c5c9d3d5f964363a339438ca6a5ce50835f')
 
 build()
 {
