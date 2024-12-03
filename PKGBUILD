@@ -8,24 +8,25 @@
 
 _target=arm-linux-gnueabihf
 pkgname="${_target}-gcc"
-pkgver=14.2.0
-_majorver=${pkgver%%.*}
+pkgver=14.2.1.git+ab884fffe3f
+_majorver="14.2.1"
+_commit=ab884fffe3fc82a710bea66ad651720d71c938b8
 _gmpver=6.3.0
 _islver=0.26
 _mpcver=1.3.1
 _mpfrver=4.2.1
-pkgrel=3
+pkgrel=1
 pkgdesc="The GNU Compiler Collection"
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
-depends=("${_target}-binutils>=2.40" "${_target}-glibc>=2.38" elfutils zlib zstd)
+depends=("${_target}-binutils>=2.42" "${_target}-glibc>=2.40" elfutils zlib zstd)
 makedepends=(base-devel glibc libelf python zlib zstd)
 options=(!emptydirs !distcc !strip lto)
 conflicts=("${_target}-gcc-stage1" "${_target}-gcc-stage2")
 replaces=("${_target}-gcc-stage1" "${_target}-gcc-stage2")
 provides=("${_target}-gcc-stage1=${pkgver}" "${_target}-gcc-stage2=${pkgver}")
-source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig}
+source=(git+https://sourceware.org/git/gcc.git#commit=${_commit}
         https://gmplib.org/download/gmp/gmp-${_gmpver}.tar.xz{,.sig}
         https://libisl.sourceforge.io/isl-${_islver}.tar.xz
         https://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz
@@ -39,8 +40,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # jakub@redhat.com
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # nisse@lysator.liu.se
               A534BE3F83E241D918280AEB5831D11A0D4DB02A) # vincent@vinc17.net
-sha256sums=('a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9'
-            'SKIP'
+sha256sums=('82b674a17bbac14acbf16b10e9d61e928e5630cd56635eb97acfeda849d4ebbf'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
             'a0b5cb06d24f9fa9e77b55fabbe9a3c94a336190345c2555f9915bb38e976504'
@@ -51,15 +51,20 @@ sha256sums=('a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9'
             '9252eca98be0183732f83c383e4680a40f756bab11df9269b53484fccf106874'
             '6fad5923d838486e72b41766b8bfd8a6785ff1fbd2005e1196107c9dc8d36a1d')
 
+pkgver() {
+  cd gcc
+  local _hash="$(git rev-parse --short ${_commit})"
+  echo "${_majorver}.git+${_hash}"
+}
+
 prepare() {
-  cd gcc-${pkgver/+/-}
+  cd gcc
 
   mv ../gmp-${_gmpver} gmp
   mv ../isl-${_islver} isl
   mv ../mpc-${_mpcver} mpc
   mv ../mpfr-${_mpfrver} mpfr
 
-  #echo "${pkgver}" > gcc/BASE-VER
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
 
   patch -Np1 -i ${srcdir}/0001-gm2-add-missing-debug-output-guard.patch
@@ -77,7 +82,7 @@ build() {
   CFLAGS=${CFLAGS/-Werror=format-security/}
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
-  ../gcc-${pkgver/+/-}/configure \
+  ../gcc/configure \
     --target=${_target} \
     --host=${CHOST} \
     --build=${CHOST} \
