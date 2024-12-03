@@ -1,0 +1,3 @@
+[perl-mail-mbox-messageparser]
+source = "cpan"
+cpan = "Mail-Mbox-MessageParser"
