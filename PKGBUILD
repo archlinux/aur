@@ -1,7 +1,7 @@
 pkgname=netflix
 _pkgname=Netflix
-pkgver=1.0.8
-pkgrel=2
+pkgver=1.0.9
+pkgrel=1
 pkgdesc="Unnofficial Netflix desktop application"
 arch=('x86_64')
 url="https://gitlab.com/linuxbombay/netflix-desktop"
@@ -10,7 +10,7 @@ conflicts=("Netflix-bin")
 replace=("Netflix-bin")
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('3b45e738baa24dfc126d7a840201205f9e46a25bcbbb02531929dea9edf2fab5')
+sha256sums=('f14f0c1265966039bcfc95932001af588c2dde105df0f2e8c72eeb93376d451d')
 
 
 package() {
@@ -22,7 +22,6 @@ package() {
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/$_pkgname"
     cp -r "$pkgdir/opt/$_pkgname/$pkgname.svg" "$pkgdir/usr/share/pixmaps"  
-
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
