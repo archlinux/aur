@@ -2,7 +2,7 @@
 
 pkgname=electerm-bin
 pkgver=1.50.40
-pkgrel=1
+pkgrel=2
 pkgdesc="An electron-based SSH/SFTP Connection manager and terminal"
 arch=('x86_64')
 url="https://electerm.html5beta.com"
@@ -19,10 +19,6 @@ prepare() {
         ar -x ${_pkgname}-${pkgver}-linux-amd64.deb
         cd ${srcdir}
         tar -xf ./data.tar.xz  
-        # Cleanup non-X64 items
-        cd opt/electerm/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/
-        rm -rf *arm* 
-        rm -rf *win*
 }
 
 package() {
