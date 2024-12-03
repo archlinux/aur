@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gdm
-_pkgver=1.6.0-3
+_pkgver=1.6.0-4
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0.3
+pkgver=1.6.0.4
 pkgrel=1
 pkgdesc='Generalized Dissimilarity Modeling'
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
   r-pbapply
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('73dad8ac36529de39a70b00063100cdb0149cc7e5daeaca924ae234f63644cfe')
+sha256sums=('93794ec4211c7d970ae245bd4b4e7a7426449f5a0610a2441f5961b8647e87bb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
