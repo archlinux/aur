@@ -1,4 +1,4 @@
-pkgbase = big-launcher
+pkgbase = big-launcher-git
 	pkgdesc = Launcher for the big screen
 	pkgver = ab7f562
 	pkgrel = 1
@@ -23,4 +23,4 @@ pkgbase = big-launcher
 	source = git+https://github.com/complexlogic/big-launcher
 	md5sums = SKIP
 
-pkgname = big-launcher
+pkgname = big-launcher-git
