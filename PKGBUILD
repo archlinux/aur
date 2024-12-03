@@ -1,7 +1,7 @@
 # Maintainer: Andrew Krasichkov <dev@buglloc.cc>
 
 pkgname=mr.duppl
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="The DupplCAP application to integrate Mr.Duppl with Wireshark or something"
 arch=("x86_64")
@@ -13,7 +13,7 @@ makedepends=(
 )
 options=("!lto")
 source=("https://github.com/buglloc/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5c16491593d70576b62b6efc4679867a7952c0ea5e23cb2251a247821d3a0b39')
+sha256sums=('735ec421cb7e9a86f99cc11dd74c8655f1c9ce3d45f813ec13cd6f6b9f038eea')
 
 prepare() {
   cd "$pkgname-$pkgver/software"
@@ -29,9 +29,11 @@ build() {
   export GOFLAGS="-buildmode=pie -mod=vendor -modcacherw"
   export GOPATH="$srcdir"
   go build -v ./cmd/dupplcap
+  go build -v ./cmd/mr.duppl
 }
 
 package() {
   cd "$pkgname-$pkgver/software"
   install -vDm755 -t "$pkgdir/usr/lib/wireshark/extcap" dupplcap
+  install -vDm755 -t "$pkgdir/usr/bin/mr.duppl" mr.duppl
 }
