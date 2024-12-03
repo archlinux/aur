@@ -3,12 +3,12 @@
 # Contributor: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=xubuntu-artwork
-pkgver=24.10
+pkgver=25.04
 pkgrel=1
 pkgdesc="Xubuntu themes and artwork"
 arch=("any")
 url="https://launchpad.net/xubuntu-artwork"
-license=("GPL-2.0")
+license=("GPL-2.0" "GPL-3.0" "CC-BY-SA-3.0" )
 makedepends=("tar")
 optdepends=("plymouth: For the plymouth theme to work"
             "lightdm-gtk-greeter: For LightDM GTK Greeter theme to work"
@@ -17,7 +17,7 @@ optdepends=("plymouth: For the plymouth theme to work"
             "xfce-theme-greybird: Official theming, git or stable version"
             "elementary-xfce-icons: For matching icon theme, or the git version")
 source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/xubuntu-artwork/${pkgver}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('a8af0a1354a5e14fe5229e298c207466d1fa87862a5170ad123b3da02f0f3106')
+sha256sums=('f2d36cc1e6c288f7ea995e312f5be10292de79f723d87268e3210455fb5a6eb0')
 
 package() {
   cd "${srcdir}/${pkgname}"
