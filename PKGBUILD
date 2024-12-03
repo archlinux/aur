@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=gpgfrontend
-pkgver=2.1.4
-pkgrel=2
+pkgver=2.1.6
+pkgrel=1
 pkgdesc="An exceptional GUI frontend for the modern GnuPG (gpg)"
 arch=('x86_64')
 url="https://gpgfrontend.bktus.com"
@@ -12,7 +12,6 @@ depends=(
   'gtest'
   'hicolor-icon-theme'
   'libarchive'
-  'mimalloc'
   'openssl'
   'qt6-base'
 )
@@ -25,15 +24,9 @@ makedepends=(
 )
 source=("git+https://github.com/saturneric/GpgFrontend#tag=v$pkgver"
         'git+https://github.com/bricke/Qt-AES.git'
-        'git+https://github.com/microsoft/mimalloc.git'
-        'git+https://github.com/google/googletest.git'
-        'git+https://github.com/libarchive/libarchive.git'
         'git+https://github.com/qt/qttranslations.git'
         'git+https://github.com/saturneric/GpgFrontend-Modules.git')
-sha256sums=('1f76aeaa6b7796241100ba6d8dc2e273a78d7e2cdd02da3dee777d763f284ef3'
-            'SKIP'
-            'SKIP'
-            'SKIP'
+sha256sums=('3811c557f9a1f3c386e5e5505745a40064e82f69cf989cd8d2fa722797bdd1e6'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -42,9 +35,6 @@ prepare() {
   cd GpgFrontend
   git submodule init
   git config submodule.third_party/qt-aes.url "$srcdir/Qt-AES"
-  git config submodule.third_party/mimalloc.url "$srcdir/mimalloc"
-  git config submodule.third_party/googletest.url "$srcdir/googletest"
-  git config submodule.third_party/libarchive.url "$srcdir/libarchive"
   git config submodule.third_party/qttranslations.url "$srcdir/qttranslations"
   git config submodule.modules.url "$srcdir/GpgFrontend-Modules"
   git -c protocol.file.allow=always submodule update
