@@ -22,7 +22,8 @@ depends=('cdrkit'
   'python'
   'python-dbus'
   'python-gobject'
-  'python-pyqt5'
+  'gobject-introspection'
+  'python-pyqt6'
   'syslinux'
   'udisks2')
 makedepends=(
