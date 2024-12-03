@@ -1,8 +1,8 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=bitcoin-cash-node
-pkgver=27.1.0
-pkgrel=2
+pkgver=28.0.0
+pkgrel=1
 pkgdesc="Bitcoin Cash Node with bitcoind, bitcoin-tx, bitcoin-seeder and bitcoin-cli"
 arch=('i686' 'x86_64')
 url="https://bitcoincashnode.org"
@@ -14,15 +14,13 @@ source=(https://github.com/bitcoin-cash-node/bitcoin-cash-node/archive/v$pkgver.
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service
-        bitcoin.install
-        1870.patch)
-sha256sums=('abb920abfb17dcfcd056ac1eb56f4f4a945cbfd059f3ebef5b692ac842eb1de4'
+        bitcoin.install)
+sha256sums=('ca6371d84c25ae05cfeb5837bfbaa4c612b023dfc17df2565a042a5f2601bf41'
             'c30e5c7e0e97b001fdeac5f4510d5ebc0e0499ec086325e845db609a24f2e22f'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             'f2fd9d8331238727333cf2412ba3759cb194a65b2060eff36808b24c06382104'
             '497dbeefb9cd9792757a9b6e1fbfd92710d19990ee2959add6c30533ae40b6f6'
-            '1579ff8d965eb3700276586e27e9e2e49e8e2721ece1c8a14924b4ce236b6eb8'
-            '35358816a463ac2c112feda33d52f180ff6eed6e2268cd3cf9d2d92702a72695')
+            '1579ff8d965eb3700276586e27e9e2e49e8e2721ece1c8a14924b4ce236b6eb8')
 backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-seeder')
@@ -31,8 +29,6 @@ install=bitcoin.install
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
-
-  patch -p1 < $srcdir/../1870.patch
 
   msg2 'Building...'
   mkdir -p build
