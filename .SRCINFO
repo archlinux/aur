@@ -10,7 +10,7 @@ pkgbase = ghcid-static-git
 	makedepends = cabal-install
 	depends = gmp
 	provides = ghcid
-	source = git+https://github.com/ndmitchell/ghcid.git
+	source = ghcid-static-git::git+https://github.com/ndmitchell/ghcid.git
 	sha256sums = SKIP
 
 pkgname = ghcid-static-git
