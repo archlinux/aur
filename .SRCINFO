@@ -1,7 +1,7 @@
 pkgbase = python-cle-git
 	pkgdesc = A binary loader in Python
-	pkgver = 9.2.129.dev0.r1646.d73ce74
-	pkgrel = 2
+	pkgver = 9.2.131.dev0.r1652.9fbf309
+	pkgrel = 1
 	url = https://github.com/angr/cle
 	arch = any
 	license = BSD-2-Clause
@@ -24,6 +24,7 @@ pkgbase = python-cle-git
 	depends = python-pyelftools
 	depends = python-sortedcontainers
 	depends = python>=3.10
+	optdepends = binaryninja: Binary Ninja
 	optdepends = python-arpy: ar file format
 	optdepends = python-cart: CaRT file format
 	optdepends = python-claripy-git: Symbolic constraints
@@ -49,7 +50,7 @@ pkgname = python-cle-git
 	depends = python-pyelftools
 	depends = python-sortedcontainers
 	depends = python>=3.10
-	depends = python-claripy=9.2.129.dev0
-	depends = python-pyvex=9.2.129.dev0
+	depends = python-claripy=9.2.131.dev0
+	depends = python-pyvex=9.2.131.dev0
 	provides = python-cle
-	provides = python-cle=9.2.129.dev0
+	provides = python-cle=9.2.131.dev0

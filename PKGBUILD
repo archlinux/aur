@@ -6,8 +6,8 @@ _basename=python-$_pyname
 pkgname=$_basename-git
 pkgdesc="A binary loader in Python"
 url="https://github.com/angr/cle"
-pkgver=9.2.129.dev0.r1646.d73ce74
-pkgrel=2
+pkgver=9.2.131.dev0.r1652.9fbf309
+pkgrel=1
 arch=('any')
 depends=(
     'python-pefile'
@@ -35,6 +35,7 @@ checkdepends=(
     'python-cart'
 )
 optdepends=(
+    'binaryninja: Binary Ninja'
     'python-arpy: ar file format'
     'python-cart:  CaRT file format'
     'python-claripy-git: Symbolic constraints'
@@ -45,10 +46,7 @@ optdepends=(
     'soot: Java Bytecode'
     'uefi-firmware-parser: BIOS/Intel ME/UEFI firmware'
 
-    #  https://aur.archlinux.org/packages/binaryninja-personal#comment-994632
-    # 'binaryninja: Binary Ninja'
-
-    #  There are no packages for
+    #  There is no packages for:
     # 'python-pyxdia: Microsoft Program database (PDB)'
 )
 provides=($_basename)
