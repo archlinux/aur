@@ -3,7 +3,7 @@
 pkgname=deepin-control-center-git
 _pkgname=deepin-control-center
 sourcename=dde-control-center
-pkgver=6.0.73.r5.g00bc9d945
+pkgver=6.0.76.2.r43.gfe51971ef
 pkgrel=1
 pkgdesc='New control center for linux deepin'
 arch=('x86_64' 'aarch64')
@@ -60,7 +60,7 @@ build() {
                 -DDISABLE_RECOVERY=YES \
                 -DDISABLE_ACTIVATOR=YES \
                 -DCMAKE_INSTALL_PREFIX=/usr \
-                -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+                -DCMAKE_INSTALL_LIBDIR=lib \
                 -DDISABLE_AUTHENTICATION=ON \
                 -DBUILD_DCC_OLD=OFF
   cmake --build build
