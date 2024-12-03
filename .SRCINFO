@@ -1,6 +1,6 @@
 pkgbase = arm-linux-gnueabihf-gdb
 	pkgdesc = The GNU Debugger
-	pkgver = 15.1
+	pkgver = 15.2
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = x86_64
@@ -34,10 +34,11 @@ pkgbase = arm-linux-gnueabihf-gdb
 	depends = xz
 	depends = zstd
 	options = !emptydirs
-	source = http://ftp.gnu.org/gnu/gdb/gdb-15.1.tar.xz
-	source = http://ftp.gnu.org/gnu/gdb/gdb-15.1.tar.xz.sig
+	options = !strip
+	source = http://ftp.gnu.org/gnu/gdb/gdb-15.2.tar.xz
+	source = http://ftp.gnu.org/gnu/gdb/gdb-15.2.tar.xz.sig
 	validpgpkeys = F40ADB902B24264AA42E50BF92EDB04BFF325CF3
-	sha256sums = 38254eacd4572134bca9c5a5aa4d4ca564cbbd30c369d881f733fb6b903354f2
+	sha256sums = 83350ccd35b5b5a0cba6b334c41294ea968158c573940904f00b92f76345314d
 	sha256sums = SKIP
 
 pkgname = arm-linux-gnueabihf-gdb
