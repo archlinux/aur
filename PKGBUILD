@@ -15,7 +15,7 @@ sha256sums_aarch64=('bb2fb8fa9372cf5d31ac6334405f6ad32e94a502b507d3c636aadc2ba9c
 
 build() {
   mkdir -p "${srcdir}/dpkgdir"
-  tar -xvf data.tar.zst -C "${srcdir}/dpkgdir"
+  tar -xvf data.tar.xz -C "${srcdir}/dpkgdir"
 }
 
 package() {
