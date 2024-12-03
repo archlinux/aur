@@ -1,0 +1,29 @@
+From: Chow Loong Jin <hyperair@debian.org>
+Date: Mon, 1 Nov 2021 15:47:09 +0800
+Subject: Fix printf format ftbfs
+
+Bug-Debian: https://bugs.debian.org/984184
+Bug-Debian: https://bugs.debian.org/1068027
+---
+ src/TextUI.cc | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/TextUI.cc b/src/TextUI.cc
+index 6b36649..1212b7e 100644
+--- a/src/TextUI.cc
++++ b/src/TextUI.cc
+@@ -309,11 +309,11 @@ void TextUI::drawui()
+ 
+ 		move(row,58);
+ 		if( ic->getIdleSeconds() < 60 )
+-			printw("%ds",ic->getIdleSeconds());
++			printw("%llds",(long long int)ic->getIdleSeconds());
+ 		else if( ic->getIdleSeconds() > 59 ) 
+-			printw("%dm",ic->getIdleSeconds()/60);
++			printw("%lldm",(long long int)ic->getIdleSeconds()/60);
+ 		else if( ic->getIdleSeconds() > 3559 )
+-			printw("%dh",ic->getIdleSeconds()/3600);
++			printw("%lldh",(long long int)ic->getIdleSeconds()/3600);
+ 
+ 		move(row,63);
+ 		if( ic->activityToggle() )

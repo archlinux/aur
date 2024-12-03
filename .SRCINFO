@@ -5,9 +5,11 @@ pkgbase = tcptrack
 	url = https://github.com/bchretien/tcptrack
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.1
 	depends = libpcap
-	source = https://github.com/bchretien/tcptrack/archive/v1.4.3.tar.gz
+	source = tcptrack-1.4.3.tar.gz::https://github.com/bchretien/tcptrack/archive/v1.4.3.tar.gz
+	source = Fix-printf-format-ftbfs.patch
 	sha256sums = 8725205ecbeddc3f891e3345e70f150d87705b099eafd8780f4739ab14f8c862
+	sha256sums = c278676f1751f7e5c397f59d460662ca03f45c48b0dc2126efdba386eb05b44c
 
 pkgname = tcptrack

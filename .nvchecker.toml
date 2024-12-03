@@ -1,0 +1,5 @@
+[tcptrack]
+source="github-graphql"
+github="bchretien/tcptrack"
+use_latest_release=true
+prefix="v"
