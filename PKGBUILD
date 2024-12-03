@@ -35,6 +35,13 @@
 # Set to anything but null to activate.
 : "${_use_current:=""}"
 
+# Apply optimizations from Linux-clear to the defconfig.
+# This is useful for cases when _use_current is used but
+# Linux-clear modifications are necessary for some reason.
+#
+# Set to anything but null to activate.
+: "${_optimize_defconfig:=""}"
+
 # Determines whether the kernel configuration should be
 # copied into the source tree before compilation starts.
 # 
@@ -181,6 +188,9 @@ modify_defconfig() {
     [[ -n "$_makemenuconfig" ]] && make ${BUILD_FLAGS[*]} menuconfig
     [[ -n "$_makexconfig" ]] && make ${BUILD_FLAGS[*]} xconfig
     [[ -n "$_makenconfig" ]] && make ${BUILD_FLAGS[*]} nconfig
+
+    # Don't crash if all three are false
+    true
 }
 
 # Copies the kernel config
@@ -193,9 +203,6 @@ copy_defconfig() {
         # modprobe configs
         zcat /proc/config.gz > ./.config
         make ${BUILD_FLAGS[*]} olddefconfig
-
-        # If a user wants to modify the config based on the current one
-        modify_defconfig
     else
         warning "Your kernel was not compiled with IKCONFIG_PROC."
         warning "Unable to read kernel configuration, aborting."
@@ -301,13 +308,6 @@ update_defconfig() {
     [[ -n "${_subarch}" ]] && yes "${_subarch}" | make ${BUILD_FLAGS[*]} oldconfig
     # Ask for subarch
     [[ -z "${_subarch}" ]] && make ${BUILD_FLAGS[*]} oldconfig
-
-    # Open configuration editors
-    modify_defconfig
-
-    # Save configuration
-    # shellcheck disable=SC2015
-    [[ -n "${_copyfinalconfig}" ]] && cp -Tf ./.config "${startdir}/kconfig-new" || true
 }
 
 # Prepares the installation
@@ -315,10 +315,10 @@ prepare() {
     cd "${_src_linux}" || exit 1
 
     apply_patches
-    
+
     [[ -n "${_use_current}" ]] && copy_defconfig
-    [[ -z "${_use_current}" ]] && update_defconfig
-    
+    [[ -n "${_optimize_defconfig}" ]] || [[ -z "${_use_current}" ]] && update_defconfig
+
     # Read and apply modprobed database
     # See https://aur.archlinux.org/packages/modprobed-db
     [[ -n "${_localmodcfg}" ]] &&
@@ -327,7 +327,14 @@ prepare() {
         else
             echo ":: No modprobed.db file was found at ${HOME}/.config, skipping"
         fi
-    
+
+    # Open configuration editors
+    modify_defconfig
+
+    # Save configuration
+    # shellcheck disable=SC2015
+    [[ -n "${_copyfinalconfig}" ]] && cp -Tf ./.config "${startdir}/kconfig-new" || true
+
     # Write kernel version
     make -s kernelrelease > version
 }
