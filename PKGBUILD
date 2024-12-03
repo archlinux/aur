@@ -5,7 +5,7 @@
 # Contributor: Quentin Stievenart <quentin.stievenart@gmail.com>
 
 pkgname=subliminal-git
-pkgver=2.2.1.r13.g204e543
+pkgver=2.2.1.r44.gda2817d
 pkgrel=1
 pkgdesc="Python library and CLI tool for searching and downloading subtitles."
 arch=('any')
@@ -27,9 +27,10 @@ depends=('python-guessit>=3.0.0'
          'python-tomli>=2'
          'python-rarfile>=2.7'
 )
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools'
+makedepends=('git' 'python-build' 'python-installer'
              'python-sphinxcontrib-programoutput' 'python-sphinx_rtd_theme' 'python-wheel'
-             'python-sphinx-autodoc-typehints' 'towncrier' 'python-sphinx')
+             'python-sphinx-autodoc-typehints' 'towncrier' 'python-sphinx'
+             'python-hatchling' 'python-hatch-vcs')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/Diaoul/subliminal.git#branch=main')
@@ -40,17 +41,9 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    cd "$srcdir/${pkgname%-git}"
-    sed -i 's/SPHINXOPTS    = -n -W/SPHINXOPTS    = -n/g' docs/Makefile
-}
-
 build() {
     cd "$srcdir/${pkgname%-git}"
     python -m build --wheel --no-isolation
-
-    cd "$srcdir/${pkgname%-git}/docs"
-    make man
 }
 
 package() {
@@ -58,6 +51,5 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
-    install -Dm644 "docs/_build/man/${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
 }
 

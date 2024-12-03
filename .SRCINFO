@@ -1,6 +1,6 @@
 pkgbase = subliminal-git
 	pkgdesc = Python library and CLI tool for searching and downloading subtitles.
-	pkgver = 2.2.1.r13.g204e543
+	pkgver = 2.2.1.r44.gda2817d
 	pkgrel = 1
 	url = https://github.com/Diaoul/subliminal
 	arch = any
@@ -8,13 +8,14 @@ pkgbase = subliminal-git
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
 	makedepends = python-sphinxcontrib-programoutput
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-wheel
 	makedepends = python-sphinx-autodoc-typehints
 	makedepends = towncrier
 	makedepends = python-sphinx
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
 	depends = python-guessit>=3.0.0
 	depends = python-babelfish>=0.6.1
 	depends = python-enzyme>=0.5.0
