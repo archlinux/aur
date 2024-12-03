@@ -28,7 +28,7 @@ _clangbuild=
 
 pkgbase=kodi-ext-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=21.0.1r65629.7508b879370
+pkgver=21.1.0r65761.29f57cdbbe0
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://kodi.tv"
@@ -49,17 +49,27 @@ makedepends=(
   'libinput'
   # external
   'ffmpeg' 'flatbuffers'
-  'libdvdcss' 'libdvdnav' 'libdvdread' 'libudfread-git' 'fstrcmp'
+  'libudfread-git' 'fstrcmp'
   'fmt' 'spdlog' 'libcrossguid-git'
 )
+# At this moment not possible to use as external: 'libdvdcss' 'libdvdnav' 'libdvdread'
+# See: https://github.com/xbmc/xbmc/issues/15899
+
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
 _gitname='xbmc'
 _codename=master
 
 options=(!lto)
-source=("git+https://github.com/xbmc/xbmc.git#branch=$_codename")
-b2sums=('SKIP')
+_libdvdcss_version="1.4.3-Next-Nexus-Alpha2-2"
+_libdvdnav_version="6.1.1-Next-Nexus-Alpha2-2"
+_libdvdread_version="6.1.3-Next-Nexus-Alpha2-2"
+source=("git+https://github.com/xbmc/xbmc.git#branch=$_codename"
+  "$pkgbase-libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
+  "$pkgbase-libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/$_libdvdnav_version.tar.gz"
+  "$pkgbase-libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/$_libdvdread_version.tar.gz"
+)
+b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 for p in $(shopt -s nullglob; echo *.patch) ; do
   source+=($p)
   b2sums+=(SKIP)
@@ -112,6 +122,7 @@ build() {
   export CXXFLAGS+=" -Wno-error"
   export LDFLAGS="${LDFLAGS/-Wl,-z,pack-relative-relocs/}"
 
+export LDFLAGS+=" -ldvdnav -ldvdread -ldvdcss"
   _args=(
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
@@ -134,6 +145,10 @@ build() {
     -DENABLE_VDPAU=ON
     -DAPP_RENDER_SYSTEM=gles
     -DCORE_PLATFORM_NAME="x11 wayland gbm"
+    -Dlibdvdcss_URL="$srcdir/$pkgbase-libdvdcss-$_libdvdcss_version.tar.gz"
+    -Dlibdvdnav_URL="$srcdir/$pkgbase-libdvdnav-$_libdvdnav_version.tar.gz"
+    -Dlibdvdread_URL="$srcdir/$pkgbase-libdvdread-$_libdvdread_version.tar.gz"
+    -DENABLE_DVDCSS=ON
   )
 
   echo "building kodi"
