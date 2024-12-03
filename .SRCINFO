@@ -6,9 +6,9 @@ pkgbase = arm-linux-gnueabihf-glibc
 	arch = any
 	license = GPL
 	license = LGPL
-	makedepends = arm-linux-gnueabihf-gcc-stage2>=13.2.0
+	makedepends = arm-linux-gnueabihf-gcc-stage2>=14.2.0
 	makedepends = python
-	depends = arm-linux-gnueabihf-linux-api-headers>=6.1
+	depends = arm-linux-gnueabihf-linux-api-headers>=6.10
 	provides = arm-linux-gnueabihf-glibc-headers=2.40
 	provides = arm-linux-gnueabihf-eglibc
 	conflicts = arm-linux-gnueabihf-glibc-headers

@@ -15,8 +15,8 @@ pkgdesc="GNU C Library"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
 license=(GPL LGPL)
-depends=("${_target}-linux-api-headers>=6.1")
-makedepends=("${_target}-gcc-stage2>=13.2.0" python)
+depends=("${_target}-linux-api-headers>=6.10")
+makedepends=("${_target}-gcc-stage2>=14.2.0" python)
 provides=("${_target}-glibc-headers=${pkgver}" "${_target}-eglibc")
 conflicts=("${_target}-glibc-headers" "${_target}-eglibc")
 replaces=("${_target}-glibc-headers")
@@ -102,5 +102,5 @@ package() {
   install -Dm644 "${srcdir}"/sdt-config.h "${pkgdir}"/usr/"${_target}"/include/sys/sdt-config.h
 
   # strip it manually to prevent makepkg complaining about srcdir references
-  find "${pkgdir}"/usr/"${_target}"/lib -type f -exec /usr/bin/"${_target}"-strip --strip-unneeded {} \; 2>/dev/null || true
+  find "${pkgdir}"/ -type f -exec /usr/bin/"${_target}"-strip --strip-unneeded {} \; 2>/dev/null || true
 }
