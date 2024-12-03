@@ -1,0 +1,4 @@
+[python-pyssim]
+source = "git"
+git = "https://github.com/jterrace/pyssim.git"
+prefix = "v"
