@@ -5,12 +5,12 @@
 
 pkgname=project-cleaner
 pkgver=2
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(MIT)
 url="https://github.com/Da4ndo/project-cleaner"
 source=("https://github.com/Da4ndo/project-cleaner/releases/download/v2/project-cleaner-v2-x86_64-linux.tar.gz")
-sha256sums=('b869062f3f74bff465514ddcc272ab5dc4f196812de124324f46b3416a9f9665')
+sha256sums=('1c1a2d949743b8c2f2f984916cefe7022d4ff90d98f75ea764a2c0c7f86665a6')
 
 package() {
   cd "project-cleaner-v${pkgver}-x86_64-linux"
