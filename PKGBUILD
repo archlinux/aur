@@ -2,7 +2,7 @@
 
 pkgname=python-spacy-de_dep_news_trf
 _pkg="${pkgname#python-spacy-}"
-pkgver=3.7.2
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="German transformer pipeline. Components: transformer, tagger, morphologizer, parser, lemmatizer (trainable_lemmatizer)."
 url="https://spacy.io/models/de#de_dep_news_trf"
@@ -18,7 +18,7 @@ makedepends=(
 license=(MIT)
 arch=(any)
 source=("https://github.com/explosion/spacy-models/releases/download/$_pkg-$pkgver/$_pkg-$pkgver.tar.gz")
-sha256sums=("d8ae1e4085671e19da225e137de0250c826fe0e45e9afedfdc09769b783fdefd")
+sha256sums=("bf855cf68a8f18ff5ddafe6a20459d9e913a623d85b9bf94278f7e729685aa61")
 
 build() {
 	cd $_pkg-$pkgver
