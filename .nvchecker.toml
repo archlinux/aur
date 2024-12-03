@@ -1,0 +1,3 @@
+[perl-filehandle-unget]
+source = "cpan"
+cpan = "FileHandle-Unget"
