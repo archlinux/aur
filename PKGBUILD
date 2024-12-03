@@ -2,8 +2,8 @@
 # Contributor: Jni <jni.viens at protonmail dot com>
 
 pkgname="envman"
-pkgver=2.4.3
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="Manage Environment Variable collections"
 arch=('x86_64')
 url="https://github.com/bitrise-io/${pkgname}"
@@ -12,7 +12,7 @@ makedepends=('go')
 depends=('glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('842e54bebfcfc64b01888915365f67d8a3202653048d25d1b52fdb71d168c3cf')
+sha256sums=('92a9160bf54f4d91ba9cc859a76f2292b1889f81803770052259ac71bb5d6601')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
