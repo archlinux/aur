@@ -1,0 +1,3 @@
+[thumbor]
+source = "git"
+git = "https://github.com/thumbor/thumbor.git"
