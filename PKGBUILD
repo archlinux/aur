@@ -13,7 +13,7 @@ license=(custom:BSD)
 depends=(
   mingw-w64-crt
 )
-options=(!strip !buildflags staticlibs)
+options=(!strip !buildflags staticlibs !debug)
 makedepends=(
   cargo-c
   git
@@ -174,7 +174,6 @@ package() {
       --target $CARGO_BUILD_TARGET \
       --prefix /usr/${_arch} \
       --destdir "${pkgdir}"
-   install -Dm 644 LICENSE PATENTS -t "${pkgdir}"/usr/${_arch}/share/licenses/rav1e/
 
    rm "${pkgdir}"/usr/${_arch}/lib/rav1e.dll.a
    ${_arch}-dlltool -d "${pkgdir}"/usr/${_arch}/lib/rav1e.def -D rav1e.dll -l "${pkgdir}"/usr/${_arch}/lib/rav1e.dll.a
@@ -183,6 +182,8 @@ package() {
    ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
    ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
   done
+
+  install -Dm 644 LICENSE PATENTS -t "${pkgdir}"/usr/share/licenses/mingw-w64-rav1e/
 }
 
 # vim: ts=2 sw=2 et:

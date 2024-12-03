@@ -15,6 +15,7 @@ pkgbase = mingw-w64-rav1e
 	options = !strip
 	options = !buildflags
 	options = staticlibs
+	options = !debug
 	source = git+https://github.com/xiph/rav1e.git#tag=a8d05d0c43826a465b60dbadd0ab7f1327d75371
 	source = Cargo-rav1e-0.7.1.lock::https://github.com/xiph/rav1e/releases/download/v0.7.1/Cargo.lock
 	b2sums = SKIP
