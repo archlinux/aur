@@ -3,7 +3,7 @@
 _reponame=frankfurte-rs
 _repo=https://github.com/Rolv-Apneseth/$_reponame
 pkgname=frs
-pkgver=v0.0.1.r1.ga595219
+pkgver=v0.0.2.r0.g3364fc1
 pkgrel=1
 pkgdesc='CLI wrapper around the Frankfurter API, used for getting the latest and historical currency exchange rates'
 arch=('i686' 'x86_64')

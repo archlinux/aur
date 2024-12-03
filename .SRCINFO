@@ -1,6 +1,6 @@
 pkgbase = frs
 	pkgdesc = CLI wrapper around the Frankfurter API, used for getting the latest and historical currency exchange rates
-	pkgver = v0.0.1.r1.ga595219
+	pkgver = v0.0.2.r0.g3364fc1
 	pkgrel = 1
 	url = https://github.com/Rolv-Apneseth/frankfurte-rs
 	arch = i686
