@@ -1,7 +1,7 @@
 pkgbase = chez-scheme-git
 	pkgdesc = Chez Scheme is an implementation of the Revised6 Report on Scheme (R6RS) with numerous language and programming environment extensions. (threaded build)
 	pkgver = 10.1.0+r2429+gf13cb1867
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cisco/ChezScheme
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,16 @@ pkgbase = chez-scheme-git
 	conflicts = petite-chez-scheme
 	conflicts = chez-scheme
 	source = git+https://github.com/cisco/ChezScheme.git
+	source = git+https://github.com/madler/zlib.git
+	source = git+https://github.com/nanopass/nanopass-framework-scheme.git
+	source = git+https://github.com/dybvig/stex.git
+	source = git+https://github.com/lz4/lz4.git
+	source = git+https://github.com/racket/zuo
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = chez-scheme-git

@@ -6,7 +6,7 @@
 pkgname=chez-scheme-git
 _pkgname=ChezScheme
 pkgver=10.1.0+r2429+gf13cb1867
-pkgrel=1
+pkgrel=2
 pkgdesc="Chez Scheme is an implementation of the Revised6 Report on Scheme (R6RS) with numerous language and programming environment extensions. (threaded build)"
 arch=(i686 x86_64)
 url="https://github.com/cisco/ChezScheme"
@@ -14,8 +14,21 @@ license=('Apache-2.0')
 makedepends=('git' 'libx11' 'libutil-linux' 'ncurses')
 provides=(chez-scheme)
 conflicts=(petite-chez-scheme chez-scheme)
-source=('git+https://github.com/cisco/ChezScheme.git')
-md5sums=('SKIP')
+source=(
+  'git+https://github.com/cisco/ChezScheme.git'
+  'git+https://github.com/madler/zlib.git'
+  'git+https://github.com/nanopass/nanopass-framework-scheme.git'
+  'git+https://github.com/dybvig/stex.git'
+  'git+https://github.com/lz4/lz4.git'
+  'git+https://github.com/racket/zuo'
+
+)
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 pkgver() {
   cd "$_pkgname"
