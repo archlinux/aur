@@ -1,6 +1,6 @@
 # Maintainer: kmz <valesail7@gmail.com>
 pkgname=kd
-pkgver=v0.0.11
+pkgver=v0.0.12
 pkgrel=1
 pkgdesc='A command-line dictionary'
 arch=('x86_64')
@@ -10,10 +10,10 @@ provides=('kd')
 conflicts=('kd-bin')
 
 source=(
-    'kd::https://github.com/Karmenzind/kd/releases/latest/download/kd_linux_amd64'
+    "kd::https://github.com/Karmenzind/kd/releases/download/${pkgver}/kd_linux_amd64"
     # 'kd.go::https://raw.githubusercontent.com/Karmenzind/kd/main/cmd/kd.go'
 )
-sha256sums=('24b046b8e9448dfb9fa5ab45b759293ded8ec8a338ce2a718956f37c129feec1')
+sha256sums=('a1a225e9a161899b3815c23afa90482ea88dba1786fb6738153859f98a6f0e86')
 
 # pkgver() {
 #     cat ${srcdir}/kd.go | grep 'var VERSION' | grep -o 'v[0-9]\+.[0-9]\+.[0-9]\+'
