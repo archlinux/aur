@@ -6,8 +6,8 @@
 
 pkgname=uswsusp-git
 _pkgname=uswsusp
-pkgver=upstream.2012.09.15+r522+g84d75e60b
-pkgrel=2
+pkgver=1.0.libgcrypt.1.6.3+r522+g84d75e60b
+pkgrel=1
 pkgdesc='Userspace software suspend - git checkout'
 arch=('i686' 'x86_64')
 url='http://suspend.sourceforge.net/'
@@ -30,7 +30,7 @@ sha256sums=('SKIP'
 pkgver() {
   cd suspend
 
-  _version=$(git tag --sort=-v:refname --list | grep '^[0-9.]*.*$' | tr - . | head -n1)
+  _version=$(git tag --sort=-v:refname --list | grep '^[0-9.]' | tr - . | head -n1)
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
   echo "${_version}+r${_commits}+g${_short_commit_hash}"

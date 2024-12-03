@@ -1,7 +1,7 @@
 pkgbase = uswsusp-git
 	pkgdesc = Userspace software suspend - git checkout
-	pkgver = upstream.2012.09.15+r522+g84d75e60b
-	pkgrel = 2
+	pkgver = 1.0.libgcrypt.1.6.3+r522+g84d75e60b
+	pkgrel = 1
 	url = http://suspend.sourceforge.net/
 	install = uswsusp.install
 	arch = i686
