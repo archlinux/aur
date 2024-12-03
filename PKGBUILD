@@ -2,13 +2,13 @@
 
 _pkgname="starkli"
 pkgname="${_pkgname}-bin"
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="A blazing fast CLI tool for Starknet powered by starknet-rs"
 arch=('x86_64' 'aarch64')
 url="https://book.starkli.rs"
 _url="https://github.com/xJonathanLEI/${_pkgname}"
-license=('Apache-2.0' 'MIT')
+license=('Apache-2.0 OR MIT')
 depends=('gcc-libs' 'glibc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -21,12 +21,13 @@ source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}
 b2sums=('dc2a6d314688b9836c021ffcab1d449c62d0e346ca964900a991914b5c29fdee6aa323e41a90e75d4cc71471e21b36518daaa533c0154edabe38845bd058703b'
         'bb6c98c86c05f7f782bed93821edbd8d51501780fd5279904a7f69392841fe91ffcc7632834ecac81701b85db0779efa40ff6053f7336a1074130099ca2d310f'
         'a6150ce3c1f2e9823f944cb92016eb6c0fa35d9c80a3c1d04092b25e05a970929ed49154dcbe1707bf7d4946ee0f25fb501f9b192a23775c8e186a9619dd4b7b')
-b2sums_x86_64=('ebbd2894b7d755971942593d9837e152b5461824dde39444a222f0e0a2182079f636ab41c7a85ea57715c4d340b617735ea78d0ca5035585f4a6a602724e95ff')
-b2sums_aarch64=('83a302915fff2f107ddfc845b65f035a26f98af02eee48c96d936bcd40ecc081a955b9d95ce8259426454d34a9326593054efb45073789041931a6a4564e0930')
+b2sums_x86_64=('a28bc49afbc03180094575d27b2a89d33bdd1590357c7fb3418e5f42ebfc1bf873a94f9801d4600e850e0e8428dab32205da4247d84f2ded743507132e84cc24')
+b2sums_aarch64=('242e8a2b99ab8a326fba5821c1eda58f87afd219239e2c15cdf9432a087ed53e58550db02d9a71e82b941ba5a39b1e5b07cdf0f471a051f7c34aa6ec5a653a96')
 
 prepare() {
   cd "${srcdir}"
   mkdir -p "completions"
+  chmod +x "${_pkgname}"
 }
 
 build() {
@@ -38,15 +39,15 @@ build() {
 
 package() {
   cd "${srcdir}"
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE-APACHE-2.0-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-APACHE-2.0"
-  install -Dm644 "LICENSE-MIT-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-MIT"
+  install -vDm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -vDm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "LICENSE-APACHE-2.0-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-APACHE-2.0"
+  install -vDm644 "LICENSE-MIT-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-MIT"
 
   cd "completions"
-  install -Dm644 "${_pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
-  install -Dm644 "${_pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
-  install -Dm644 "${_pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
-  install -Dm644 "${_pkgname}.elvish"     "${pkgdir}/usr/share/elvish/completions/${_pkgname}.elv"
-  install -Dm644 "${_pkgname}.powershell" "${pkgdir}/usr/share/powershell/Modules/${_pkgname}/${_pkgname}.ps1"
+  install -vDm644 "${_pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+  install -vDm644 "${_pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+  install -vDm644 "${_pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+  install -vDm644 "${_pkgname}.elvish"     "${pkgdir}/usr/share/elvish/completions/${_pkgname}.elv"
+  install -vDm644 "${_pkgname}.powershell" "${pkgdir}/usr/share/powershell/Modules/${_pkgname}/${_pkgname}.ps1"
 }
