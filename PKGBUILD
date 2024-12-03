@@ -5,7 +5,7 @@
 pkgname=otf-ibm-plex
 epoch=1
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="IBM Plex typefaces in otf format"
 url="https://github.com/IBM/plex"
 arch=('any')
@@ -21,6 +21,7 @@ source=(
     "https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-jp%40${pkgver}/ibm-plex-sans-jp.zip"
     "https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-kr%40${pkgver}/ibm-plex-sans-kr.zip"
     "https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-tc%40${pkgver}/ibm-plex-sans-tc.zip"
+    "https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-sc%40${pkgver}/ibm-plex-sans-sc.zip"
     "https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-thai%40${pkgver}/ibm-plex-sans-thai.zip"
     "https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-sans-thai-looped%40${pkgver}/ibm-plex-sans-thai-looped.zip"
     "https://github.com/IBM/plex/releases/download/%40ibm%2Fplex-serif%40${pkgver}/ibm-plex-serif.zip"
@@ -35,6 +36,7 @@ sha256sums=('d85ed404394ced3a79a519af24611acdee9cc0483363c07cd5ac0656c06db42a'
             '96e7b8af07b5b38fad9c531c11854559c47332b45de7e65c45672b5415f3cd55'
             '9837800c8e5aedf4123775e1d767afa482c983321bd2fc606c985f405d24562e'
             'b79600d3c9155fa05c9024eb81cfe2fbdd8cd068503dfafd79405ea577aa9fec'
+            '0aabd737c8ef0206892b912c759101c10b86c6244be99f2e6b57c6905c716837'
             'd7203f43c20f9abd40487f845c48db4077d2056ea18632c8959591c6815d7fb9'
             '26c453e3a4341026e2f5525cd498c5aa214e57bdb9db99bc3816826a36be157f'
             '76f1a272b084d2beedcd22aaaa653bc6f92b71b5689081aef9c5b05d0a470e1b')
@@ -52,6 +54,7 @@ package() {
   find ibm-plex-sans-jp/fonts/complete/otf -name "*.otf" -exec install -Dm644 {} "$pkgdir"/usr/share/fonts/OTF \;
   find ibm-plex-sans-kr/fonts/complete/otf -name "*.otf" -exec install -Dm644 {} "$pkgdir"/usr/share/fonts/OTF \;
   find ibm-plex-sans-tc/fonts/complete/otf/hinted -name "*.otf" -exec install -Dm644 {} "$pkgdir"/usr/share/fonts/OTF \;
+  find ibm-plex-sans-sc/fonts/complete/otf/hinted -name "*.otf" -exec install -Dm644 {} "$pkgdir"/usr/share/fonts/OTF \;
   find ibm-plex-sans-thai/fonts/complete/otf -name "*.otf" -exec install -Dm644 {} "$pkgdir"/usr/share/fonts/OTF \;
   find ibm-plex-sans-thai-looped/fonts/complete/otf -name "*.otf" -exec install -Dm644 {} "$pkgdir"/usr/share/fonts/OTF \;
   find ibm-plex-serif/fonts/complete/otf -name "*.otf" -exec install -Dm644 {} "$pkgdir"/usr/share/fonts/OTF \;
