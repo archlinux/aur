@@ -1,7 +1,7 @@
 # Maintainer: database64128 <free122448@hotmail.com>
 
 pkgname=shadowsocks-go
-pkgver=1.11.3
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="A versatile and efficient proxy platform for secure communications"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ backup=(
     "etc/$pkgname/upsks.json"
 )
 source=("$pkgname::git+$url.git#tag=v$pkgver?signed")
-b2sums=('4f1777d04289afee43bf699d4c65087fe52fb49c0da82821fdea4c878687d26330d4bc03c3228168964c543cc3a51f7aecb0bc8882162cba8fc4db73345ad7af')
+b2sums=('efc9dea3c26a7cfb2407e901046ffc244b263295ccf3766c237978573d22b90e642449ff59f73cb359f9dc804f22647bfbbd5884fab741e6f6c0c189697e6c99')
 validpgpkeys=(
     '4DCED15E346E2923B931D6F71CA27546BEDB8B01' # Ian Chen (database64128) <free122448@hotmail.com>
 )
