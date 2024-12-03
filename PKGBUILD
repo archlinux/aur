@@ -11,8 +11,8 @@ depends=(gpm glibc gcc-libs ncurses libcap)
 backup=('etc/zhcon.conf')
 install=zhcon.install
 source=(
-        http://iweb.dl.sourceforge.net/project/zhcon/zhcon/0.2.6/zhcon-0.2.5.tar.gz
-        http://iweb.dl.sourceforge.net/project/zhcon/zhcon/0.2.6/zhcon-0.2.5-to-0.2.6.diff.gz
+        http://download.sourceforge.net/project/zhcon/zhcon/0.2.6/zhcon-0.2.5.tar.gz
+        http://download.sourceforge.net/project/zhcon/zhcon/0.2.6/zhcon-0.2.5-to-0.2.6.diff.gz
         # https://web.archive.org/web/20150802172906if_/http://colocrossing.dl.sourceforge.net/project/zhcon/zhcon/0.2.6/zhcon-0.2.5.tar.gz
         # https://web.archive.org/web/20150802172909if_/http://iweb.dl.sourceforge.net/project/zhcon/zhcon/0.2.6/zhcon-0.2.5-to-0.2.6.diff.gz
         ascii.kbmode.patch
