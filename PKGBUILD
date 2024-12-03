@@ -13,7 +13,7 @@ source=(
     "kd::https://github.com/Karmenzind/kd/releases/download/${pkgver}/kd_linux_amd64"
     # 'kd.go::https://raw.githubusercontent.com/Karmenzind/kd/main/cmd/kd.go'
 )
-sha256sums=('a1a225e9a161899b3815c23afa90482ea88dba1786fb6738153859f98a6f0e86')
+sha256sums=('840a203b0824d0e2e1f0e0d1a548c761656625e4e72f8abd1031cc748a31fc87')
 
 # pkgver() {
 #     cat ${srcdir}/kd.go | grep 'var VERSION' | grep -o 'v[0-9]\+.[0-9]\+.[0-9]\+'
