@@ -1,24 +1,25 @@
 pkgbase = python-czml3
 	pkgdesc = Python 3 library to write CZML
-	pkgver = 1.0.2
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/poliastro/czml3
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-astropy
-	checkdepends = python-attrs
+	checkdepends = python-pydantic
 	checkdepends = python-dateutil
 	checkdepends = python-w3lib
 	makedepends = python-setuptools-scm
-	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/c/czml3/czml3-1.0.2.tar.gz
-	md5sums = 9819ff7c755c72543c7b099fdf8ecb0a
+	source = https://files.pythonhosted.org/packages/source/c/czml3/czml3-2.0.1.tar.gz
+	md5sums = 38260ba5a63e8f8d137b3933452572ef
 
 pkgname = python-czml3
-	depends = python>=3.7
-	depends = python-attrs>=19.2
+	depends = python>=3.10
+	depends = python-pydantic
 	depends = python-dateutil<3
 	depends = python-w3lib
+	depends = python-typing_extensions>=4.12.0
+	depends = python-strenum>=0.4.0
