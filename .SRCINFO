@@ -1,11 +1,11 @@
-pkgbase = systemd-preset-pacman-hook
-	pkgdesc = Apply pacman resets after any systemd service upgrade
+pkgbase = pacman-hook-systemd-preset
+	pkgdesc = Apply systemd presets after package installations and upgrades
 	pkgver = 1
 	pkgrel = 1
 	arch = any
-	license = GPL
+	license = 0BSD
 	depends = systemd
-	source = systemd-presets.hook
-	md5sums = ad33e5dff5c12321c18fc20c3ec15b66
+	source = 70-systemd-preset.hook
+	b2sums = 61312c3fc2b639a4bb304bc5018b8ee11e3e373cc86b724695e18a48e145eaddfd1d1fab18cd460d36ba745352b0d1d37a2141b2c8f350d6515c8ef512af8fdb
 
-pkgname = systemd-preset-pacman-hook
+pkgname = pacman-hook-systemd-preset
