@@ -1,0 +1,4 @@
+[asus-numpad]
+source = "git"
+git = "https://github.com/iamkroot/asus-numpad.git"
+prefix = "v"
