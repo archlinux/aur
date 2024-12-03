@@ -6,8 +6,8 @@
 _reponame=reflective-rapidjson
 _llvmver=18
 pkgname=reflective-rapidjson
-pkgver=0.0.15
-pkgrel=12
+pkgver=0.0.16
+pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON'
 license=(GPL-2-or-later)
