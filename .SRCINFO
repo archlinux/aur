@@ -1,6 +1,6 @@
 pkgbase = ansible-core-2.16
 	pkgdesc = Radically simple IT automation platform (legacy version with python 3.6 remote support)
-	pkgver = 2.16.13
+	pkgver = 2.16.14
 	pkgrel = 1
 	url = https://www.ansible.com
 	arch = any
@@ -45,11 +45,11 @@ pkgbase = ansible-core-2.16
 	provides = ansible-core
 	conflicts = ansible-core
 	replaces = ansible-base
-	source = ansible-core-2.16-2.16.13.tar.gz::https://github.com/ansible/ansible/archive/refs/tags/v2.16.13.tar.gz
+	source = ansible-core-2.16-2.16.14.tar.gz::https://github.com/ansible/ansible/archive/refs/tags/v2.16.14.tar.gz
 	source = 0001-do-not-pin-resolvelib.patch
-	sha512sums = bbb8f6705296d44e9cd3c7cd1122495419f74fae910e4a172d6c513eed2dae7137390e63c09f1d680e64344685f168c599b3b57dbefbb1d949109578a6135362
+	sha512sums = 6a375db9481be199b0bd1fd41ffc7631bd69cab1ebdacdb0a41f42cdba60ee4916a3eb4238fd865b5b75f4f32ba42a9ee073d56d6986ce3aecf27bb75f02898c
 	sha512sums = fa3eef53633247e3e41fd636ea29309114e9a80eea868da30b8e0384165270e5c5ea979f9d30e6d6da0bb78a7ddea130a235e543794d774cd7181506a5a51299
-	b2sums = d2bdecdc478e1db210b4e673abf5e19c687678dadad50c2c052e7ae3edcef6861a58d5ccebbb21c8378212424c95f171150f3d4792f65f23c7f15c7d22ac447c
+	b2sums = f1d6da6785d4ec19a9903042cb6f7bbedf6fc838f8e25a3dc82ac96f89d302130790a8e3f38bbaeb248e96319fb592192bb626275ef77b8917136894103129d0
 	b2sums = e4061b50f8c9bc68de5c79e85ae9380a213d311eca4d6b6e4a593dc24b2149a5c5c9590223561c4f6e2ee4f59121d1d19c5cda8f8cbf3998046809fc118fd02f
 
 pkgname = ansible-core-2.16
