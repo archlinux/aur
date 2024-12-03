@@ -1,0 +1,24 @@
+pkgbase = cogentcore
+	pkgdesc = Command line tools for compiling apps using the Cogent Core framework ; a cross-platform framework for building powerful, fast, elegant 2D and 3D apps that run on macOS, Windows, Linux, iOS, Android, and the web with a single Go codebase, allowing you to Code Once, Run Everywhere.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://www.cogentcore.org/core
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv8
+	arch = armv7
+	arch = armv7l
+	arch = armv7h
+	arch = armv6h
+	arch = armhf
+	arch = armel
+	arch = arm
+	arch = riscv64
+	license = BSD 3-Clause License
+	makedepends = go
+	optdepends = vulkan-intel: intel graphics support
+	optdepends = vulkan-swrast: graphics support
+	optdepends = vulkan-tools: graphics support
+
+pkgname = cogentcore
