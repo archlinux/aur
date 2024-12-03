@@ -13,7 +13,7 @@ pkgbase = dooit
 	depends = python-pyperclip>=1.9.0
 	depends = python-yaml>=6.0.2
 	depends = python-tzlocal>=5.2
-	depends = python-textual>=0.87.0
+	depends = python-textual>=0.86.0
 	depends = python-dateutil>=2.9.0
 	depends = python-sqlalchemy>=2.0.36
 	depends = python-platformdirs>=4.3.6
