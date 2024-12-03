@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Removing uninstalled packages from cache...
+When = PostTransaction
+Exec = /usr/bin/paccache --uninstalled --remove --quiet
