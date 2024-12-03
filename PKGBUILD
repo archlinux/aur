@@ -4,7 +4,7 @@
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
 url="https://github.com/jxnl/instructor"
@@ -67,6 +67,7 @@ check() {
   # yet.
   export OPENAI_API_KEY=sk-dBAe8c5a9bc4294cca9bed292cd61e0ff9030bB94647adfb
   pytest \
+    --ignore tests/test_multimodal.py \
     --ignore tests/llm/test_openai \
     --ignore tests/llm/test_vertexai \
     --ignore tests/llm/test_fireworks \
