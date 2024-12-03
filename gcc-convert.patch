@@ -1,0 +1,32 @@
+diff -uNr zhcon-0.2.5/src/encfilter.c /home/hj_18/temp/zhcon-0.2.5/src/encfilter.c
+--- zhcon-0.2.5/src/encfilter.c	2006-04-29 03:09:33.000000000 +0800
++++ /home/hj_18/temp/zhcon-0.2.5/src/encfilter.c	2024-12-03 09:08:21.887592282 +0800
+@@ -37,6 +37,7 @@
+ #include <stdlib.h>
+ #include <errno.h>
+ #include <assert.h>
++#include <string.h>
+ 
+ #include "encfilter.h"
+ 
+diff -uNr zhcon-0.2.5/src/iconv_string.c /home/hj_18/temp/zhcon-0.2.5/src/iconv_string.c
+--- zhcon-0.2.5/src/iconv_string.c	2006-04-25 00:38:27.000000000 +0800
++++ /home/hj_18/temp/zhcon-0.2.5/src/iconv_string.c	2024-12-03 09:12:49.767558444 +0800
+@@ -74,7 +74,7 @@
+     while (insize > 0) {
+       char* outptr = tmpbuf;
+       size_t outsize = tmpbufsize;
+-      size_t res = iconv(cd,&inptr,&insize,&outptr,&outsize);
++      size_t res = iconv(cd,(char ** restrict)&inptr,&insize,&outptr,&outsize);
+       if (res == (size_t)(-1) && errno != E2BIG) {
+         if (errno == EINVAL)
+           break;
+@@ -126,7 +126,7 @@
+     char* outptr = result;
+     size_t outsize = length;
+     while (insize > 0) {
+-      size_t res = iconv(cd,&inptr,&insize,&outptr,&outsize);
++      size_t res = iconv(cd,(char ** restrict)&inptr,&insize,&outptr,&outsize);
+       if (res == (size_t)(-1)) {
+         if (errno == EINVAL)
+           break;

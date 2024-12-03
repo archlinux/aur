@@ -23,7 +23,8 @@ source=(
         sysconfigdir.patch
         winime.amd64.patch
         winime.autoselect.patch
-        winime.support.gbk.patch)
+        winime.support.gbk.patch
+        gcc-convert.patch)
 md5sums=('79e1c68aab8341e32129f61c1670baeb'
          '971f68507f9c48a6b5cbee4ba0c1e2a6'
          'e051479e26c98f860852ad11aa826be4'
@@ -34,7 +35,8 @@ md5sums=('79e1c68aab8341e32129f61c1670baeb'
          '771173bd1bc3ac1aba103846431777e2'
          '86e25942c9c4b2468342a0e3f8401553'
          'c00f39666861b7d18a60212d2fcebf6c'
-         '411b157c49a5c50cde24839ed32db4d9')
+         '411b157c49a5c50cde24839ed32db4d9'
+         'd480a8eeec1f8726fb2052072e56a3b5')
 
 build() {
   cd $srcdir/zhcon-0.2.5
@@ -46,6 +48,7 @@ build() {
   patch -p1 < $srcdir/kernel-headers.2.6.26.patch
   patch -p1 < $srcdir/sysconfigdir.patch
   patch -p1 < $srcdir/winime.amd64.patch
+  patch -p1 < $srcdir/gcc-convert.patch
 
   # set keyboard mode to ascii, and restore it
   patch -p1 < $srcdir/ascii.kbmode.patch
