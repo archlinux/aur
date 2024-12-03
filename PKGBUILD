@@ -5,8 +5,8 @@ _basename=python-$_pyname
 pkgname=$_basename-git
 pkgdesc="angr intermediate language"
 url="https://github.com/angr/ailment"
-pkgver=9.2.129.dev0.r526.63c9a1c
-pkgrel=3
+pkgver=9.2.131.dev0.r533.51551f6
+pkgrel=1
 arch=('any')
 depends=(
     'python-pypcode'
