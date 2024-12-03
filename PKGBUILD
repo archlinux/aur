@@ -9,7 +9,7 @@
 
 pkgname=gnupg-largekeys
 _base_name=${pkgname%%-largekeys}
-pkgver=2.4.6
+pkgver=2.4.7
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='https://www.gnupg.org'
@@ -32,7 +32,7 @@ source=("${url}/ftp/gcrypt/${_base_name}/${_base_name}-${pkgver}.tar.bz2"{,.sig}
         'avoid-beta-warning.patch'
         'max-mpi-bits.patch'
         'gnupg.install')
-sha256sums=('95acfafda7004924a6f5c901677f15ac1bda2754511d973bb4523e8dd840e17a'
+sha256sums=('7b24706e4da7e0e3b06ca068231027401f238102c41c909631349dcc3b85eb46'
             'SKIP'
             '6ac90c4e8ad7cb2e3ae37b328449efac7b0c3a8b30dbbf9d3650ab679244f768'
             '2e0d0ae24027b8f21cac442b9a67ee6cf153caf304cde5e0447b6071d1ac543c'

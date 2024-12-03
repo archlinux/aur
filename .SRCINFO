@@ -1,6 +1,6 @@
 pkgbase = gnupg-largekeys
 	pkgdesc = Complete and free implementation of the OpenPGP standard
-	pkgver = 2.4.6
+	pkgver = 2.4.7
 	pkgrel = 1
 	url = https://www.gnupg.org
 	install = gnupg.install
@@ -24,16 +24,16 @@ pkgbase = gnupg-largekeys
 	optdepends = libldap: gpg2keys_ldap
 	optdepends = libusb-compat: scdaemon
 	optdepends = pcsclite: scdaemon
-	provides = gnupg2=2.4.6
-	provides = gnupg=2.4.6
+	provides = gnupg2=2.4.7
+	provides = gnupg=2.4.7
 	conflicts = gnupg2
 	conflicts = gnupg
 	replaces = gnupg2
 	replaces = gnupg
 	options = !strip
 	options = !debug
-	source = https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.6.tar.bz2
-	source = https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.6.tar.bz2.sig
+	source = https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.7.tar.bz2
+	source = https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.7.tar.bz2.sig
 	source = gnupg2-large-keys.patch
 	source = avoid-beta-warning.patch
 	source = max-mpi-bits.patch
@@ -42,7 +42,7 @@ pkgbase = gnupg-largekeys
 	validpgpkeys = 5B80C5754298F0CB55D8ED6ABCEF7E294B092E28
 	validpgpkeys = 6DAA6E64A76D2840571B4902528897B826403ADA
 	validpgpkeys = 02F38DFF731FF97CB039A1DA549E695E905BA208
-	sha256sums = 95acfafda7004924a6f5c901677f15ac1bda2754511d973bb4523e8dd840e17a
+	sha256sums = 7b24706e4da7e0e3b06ca068231027401f238102c41c909631349dcc3b85eb46
 	sha256sums = SKIP
 	sha256sums = 6ac90c4e8ad7cb2e3ae37b328449efac7b0c3a8b30dbbf9d3650ab679244f768
 	sha256sums = 2e0d0ae24027b8f21cac442b9a67ee6cf153caf304cde5e0447b6071d1ac543c
