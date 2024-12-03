@@ -2,7 +2,7 @@
 
 _pkgname=chromadb
 pkgname="python-${_pkgname}"
-pkgver=0.5.20
+pkgver=0.5.21
 pkgrel=1
 pkgdesc="the AI-native open-source embedding database"
 arch=("any")
@@ -12,7 +12,7 @@ license=('Apache-2.0')
 depends=(python-bcrypt python-build python-chroma-hnswlib python-fastapi python-grpcio python-httpx python-importlib_resources python-kubernetes python-mmh3 python-numpy python-onnxruntime python-opentelemetry-api python-opentelemetry-exporter-otlp-proto-grpc python-opentelemetry-instrumentation-fastapi python-opentelemetry-sdk python-orjson python-overrides python-posthog python-pydantic python-pypika python-pyyaml python-rich python-tenacity python-tokenizers python-tqdm python-typer python-typing_extensions uvicorn)
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('19513a23b2d20059866216bfd80195d1d4a160ffba234b8899f5e80978160ca7')
+sha256sums=('5db69119c3e9c7b642bb819da2d38b85ba428c367a292edd7002b53b6cad553b')
 
 build() {
     cd "${_pkgname}-${pkgver}"
