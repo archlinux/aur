@@ -20,14 +20,16 @@ pkgver() {
 }
 
 prepare() {
+  cd "$pkgname"
   cabal update
+  cabal build --only-dependencies
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
   cabal configure \
     -O --jobs --prefix=/usr --docdir=/usr/share/doc/$pkgname --enable-tests
-  cabal build
+  cabal build --offline
 }
 
 check() {
