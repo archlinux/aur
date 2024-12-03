@@ -24,7 +24,7 @@ _enable_plasmoid=${SYNCTHING_TRAY_ENABLE_PLASMOID:-0}
 
 _reponame=syncthingtray
 pkgname=syncthingtray
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing'
