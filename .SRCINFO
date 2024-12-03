@@ -22,6 +22,6 @@ pkgbase = mingw-w64-reflective-rapidjson
 	options = !strip
 	options = !emptydirs
 	source = reflective-rapidjson-0.0.16.tar.gz::https://github.com/Martchus/reflective-rapidjson/archive/v0.0.16.tar.gz
-	sha256sums = 1e253ca0c63c6432ede1b1d7ad6c828b93eeb47eb1843d7bdc09445be7c1bba6
+	sha256sums = 12496b8d334e8e1245f05de17c81e269365e9b02e7a14da4274ccf643a19609f
 
 pkgname = mingw-w64-reflective-rapidjson
