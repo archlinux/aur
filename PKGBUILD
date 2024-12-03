@@ -57,7 +57,6 @@ pkgver() {
 
 prepare() {
     cd "$pkgname"
-    stack config set resolver lts-22.22 # ghc-9.6.5
 
     # if pandoc updates break the golden tests, cf
     # https://github.com/lierdakil/pandoc-crossref/pull/403#issuecomment-1732434519
