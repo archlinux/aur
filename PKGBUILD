@@ -3,7 +3,7 @@
 pkgname=kibot
 _name=${pkgname}
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="KiCad automation utility"
 arch=('any')
@@ -23,19 +23,26 @@ depends=(
     kicost
     pandoc
     python
-    python-kiauto
-    python-kibom
     python-colorama
+    python-configparser
     python-lark-parser
     python-lxml
+    python-kiauto
+    python-kibom
     python-kikit
     python-numpy
     python-markdown2
     python-mistune
     python-pyaml
+    python-pybars3
+    python-pypdf2
     python-qrcodegen
     python-requests
+    python-scipy
+    python-svgwrite
     python-svgpathtools
+    python-wheel
+    python-wxpython
     python-xlsxwriter
     python-xvfbwrapper
     python-yaml
