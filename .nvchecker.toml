@@ -1,0 +1,4 @@
+[python-tekore]
+source = "git"
+git = "https://github.com/felix-hilden/tekore.git"
+prefix = "v"
