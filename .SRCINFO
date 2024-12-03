@@ -1,13 +1,13 @@
 pkgbase = python-spacy-en_core_web_lg
 	pkgdesc = English pipeline optimized for CPU. Components: tok2vec, tagger, parser, senter, ner, attribute_ruler, lemmatizer.
-	pkgver = 3.7.1
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://spacy.io/models/en#en_core_web_lg
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-spacy
-	source = https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.7.1/en_core_web_lg-3.7.1.tar.gz
-	sha256sums = 4c8b2fd2572a5fb232c7b38345d301e7e092d1242b7184e14a86eff8ef6eb6d7
+	source = https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.8.0/en_core_web_lg-3.8.0.tar.gz
+	sha256sums = 7a3c89f3243950000a102c5f124277bbbde2dec467d548eee28b23bd1938ed62
 
 pkgname = python-spacy-en_core_web_lg
