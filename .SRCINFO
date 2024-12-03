@@ -1,7 +1,7 @@
 pkgbase = python-angr-git
 	pkgdesc = A powerful and user-friendly binary analysis platform
-	pkgver = 9.2.129.dev0.r12727.058d8f18a
-	pkgrel = 2
+	pkgver = 9.2.131.dev0.r12749.3d2252404
+	pkgrel = 1
 	url = https://github.com/angr/angr
 	arch = x86_64
 	license = BSD-2-Clause
@@ -71,10 +71,10 @@ pkgname = python-angr-git
 	depends = python-unicorn
 	depends = python-unique_log_filter
 	depends = python>=3.10
-	depends = python-ailment=9.2.129.dev0
-	depends = python-archinfo=9.2.129.dev0
-	depends = python-claripy=9.2.129.dev0
-	depends = python-cle=9.2.129.dev0
-	depends = python-pyvex=9.2.129.dev0
+	depends = python-ailment=9.2.131.dev0
+	depends = python-archinfo=9.2.131.dev0
+	depends = python-claripy=9.2.131.dev0
+	depends = python-cle=9.2.131.dev0
+	depends = python-pyvex=9.2.131.dev0
 	provides = python-angr
-	provides = python-angr=9.2.129.dev0
+	provides = python-angr=9.2.131.dev0

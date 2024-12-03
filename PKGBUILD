@@ -4,8 +4,8 @@
 _pyname=angr
 _basename=python-$_pyname
 pkgname=$_basename-git
-pkgver=9.2.129.dev0.r12727.058d8f18a
-pkgrel=2
+pkgver=9.2.131.dev0.r12749.3d2252404
+pkgrel=1
 pkgdesc='A powerful and user-friendly binary analysis platform'
 url='https://github.com/angr/angr'
 license=('BSD-2-Clause')
