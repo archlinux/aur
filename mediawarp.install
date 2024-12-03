@@ -1,0 +1,13 @@
+post_upgrade(){
+    echo "mediawarp user is used to run this service"
+    echo "if you are upgrading from a previous version"
+    echo "you have to run  the following commands in green only once"
+
+    echo -e "\e[32m sudo chown -R mediawarp:mediawarp /usr/share/mediawarp \e[0m"
+    echo -e "\e[32m sudo chown -R mediawarp:mediawarp /usr/share/mediawarp/config \e[0m"
+    echo -e "\e[32m sudo chown -R mediawarp:mediawarp /usr/share/mediawarp/logs \e[0m"
+    echo -e "\e[32m sudo chown -R mediawarp:mediawarp /usr/share/mediawarp/static \e[0m"
+    echo -e "\e[32m sudo chown -R mediawarp:mediawarp /etc/mediawarp \e[0m"
+
+    echo "and chown any other local files that are served by mediawarp"
+}

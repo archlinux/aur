@@ -1,0 +1,14 @@
+[Unit]
+Description=MediaWarp
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=mediawarp
+WorkingDirectory=/usr/share/mediawarp
+ExecStart=/usr/bin/mediawarp
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
