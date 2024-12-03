@@ -2,8 +2,8 @@
 
 pkgname=python-garth
 _name=${pkgname#python-}
-pkgver=0.4.45
-pkgrel=2
+pkgver=0.4.47
+pkgrel=1
 pkgdesc="Python module for Garmin SSO auth + Connect client"
 arch=(any)
 url="https://github.com/matin/garth"
@@ -23,7 +23,7 @@ makedepends=(
 checkdepends=(python-oauthlib)
 
 source=("${pkgname}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('00e5fbfcada78cabcb1a531a230996eae02f6994626e4171f1cbd2c4234f1a82')
+sha256sums=('a939da715dcd9f069e867f19f81ece91fd73330ac4ae797972d913c13b04effd')
 
 _archive="${_name}-${pkgver}"
 
