@@ -1,35 +1,21 @@
 pkgbase = wordnet
 	pkgver = 3.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://wordnet.princeton.edu/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = tk
-	source = https://wordnetcode.princeton.edu/3.0/WordNet-3.0.tar.bz2
+	source = http://deb.debian.org/debian/pool/main/w/wordnet/wordnet_3.0-38.debian.tar.xz
+	source = http://deb.debian.org/debian/pool/main/w/wordnet/wordnet_3.0.orig.tar.gz
 	source = https://wordnetcode.princeton.edu/wn3.1.dict.tar.gz
-	source = https://git.savannah.gnu.org/cgit/guix.git/plain/gnu/packages/patches/wordnet-CVE-2008-2149.patch
-	source = https://git.savannah.gnu.org/cgit/guix.git/plain/gnu/packages/patches/wordnet-CVE-2008-3908-pt1.patch
-	source = https://git.savannah.gnu.org/cgit/guix.git/plain/gnu/packages/patches/wordnet-CVE-2008-3908-pt2.patch
 	source = wordnet.desktop
 	source = wordnet.png
-	sha256sums = 6c492d0c7b4a40e7674d088191d3aa11f373bb1da60762e098b8ee2dda96ef22
+	sha256sums = 84a0d648d879bca4b8514a24176260af7cecc3581a39980c6e1304c8ab641a53
+	sha256sums = 73572005ef8eb15be48ea1010d18082b80bfbf8684b78ce64bc3abf11db1f95f
 	sha256sums = 3f7d8be8ef6ecc7167d39b10d66954ec734280b5bdcd57f7d9eafe429d11c22a
-	sha256sums = 668c60fcb8260bfe81cd9eea47c1ab6f62194d121c99ad18f985be8b31966020
-	sha256sums = 77dc51d27fb686443ce93f5adefb69d829f367776ad9fcb3413549883fad3048
-	sha256sums = 70874a9f77d12293990e988d44ab22fec77522cc11c2c6ebb420c7d0ac1a692f
 	sha256sums = 10a4011b3d9705b2b0a1f496b33d926d4be21439c63f039b871d93f2d143ed0c
 	sha256sums = 9ab9f761a3fabd278fd05d755fec8a403874f899d7e40347f1da48bf93a67e97
 
 pkgname = wordnet-common
 	pkgdesc = An Electronic Lexical Database from Princeton University
-	conflicts = wordnet
-
-pkgname = wordnet-tk
-	pkgdesc = A TK frontend for the WordNet Database
-	depends = tk
-	depends = wordnet-common
-
-pkgname = wordnet-cli
-	pkgdesc = A CLI fontend for the WordNet Database
-	depends = wordnet-common
