@@ -6,20 +6,20 @@
 
 pkgname=butt
 pkgver=1.44.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Easy to use, multi OS streaming tool"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL2')
 url="https://danielnoethen.de/butt/"
 depends=('fltk' 'dbus' 'portaudio' 'portmidi' 'libfdk-aac' 'libvorbis' 'libogg' 'lame' 'flac' 'opus' 'libsamplerate' 'libdatachannel')
 source=("${pkgname}-${pkgver}.tar.gz::https://danielnoethen.de/${pkgname}/release/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        'add-ctime-header.patch')
+        'add-required-time-header.patch')
 sha256sums=('d910b40a10dbca1ce377ee239c146e4746e8b48550ba0a40d6b5199b5c87e0a7'
-            '3c467e58afff269da76dad3aa1a16cdd51edcb77463fc6e0609a738b80c30dba')
+            '6864068cccfb18b1a709bb09d6eeb04f82fad6841970a8256efdb5242405d8fa')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  patch -Np1 -i ../add-ctime-header.patch
+  patch -Np1 -i ../add-required-time-header.patch
 }
 
 build() {
