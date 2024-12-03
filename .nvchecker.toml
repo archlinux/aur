@@ -1,0 +1,4 @@
+[cunicu]
+source = "git"
+git = "https://codeberg.org/cunicu/cunicu.git"
+prefix = "v"

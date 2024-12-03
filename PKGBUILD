@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="cunicu"
-pkgver=0.5.63
+pkgver=0.5.65
 pkgrel=1
 pkgdesc="A zeroconf peer-to-peer mesh VPN using Wireguard® and Interactive Connectivity Establishment (ICE)"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -9,17 +9,15 @@ url="https://cunicu.li"
 # _url="https://github.com/${pkgname}/${pkgname}"
 _url="https://codeberg.org/${pkgname}/${pkgname}"
 license=('Apache-2.0')
-depends=('glibc' 'gcc-libs')
-makedepends=('git' 'go' 'protoc-gen-go' 'protoc-gen-go-grpc') # 'golangci-lint'
-# checkdepends=('ginkgo')
+depends=('gcc-libs' 'glibc')
+makedepends=('git' 'go' 'protoc-gen-go' 'protoc-gen-go-grpc')
 optdepends=('wireguard-tools: for controlling WireGuard interfaces')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}")
-b2sums=('742e356a4e37b87514110626e43bbc3f320dca00dc7a5f6a5e389aec764b94d848752828258aeecbbd9e64ab34f4596b29a05ae81641b5116aa3398ae22e1554')
+b2sums=('1a9438219e357afdddb7a9c1496be555a2b2edd7f2c50b1aafcc92ff5fc3884706652cc43c9b172e79beb6bc4e2bbdb08efcced49eeed5da3becd1c9a745bc86')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  # make prepare
   mkdir -p "build" "completions" "manpages"
 }
 
@@ -30,8 +28,6 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  # make
-
   go build -o "build/${pkgname}" -ldflags "\
     -X ${url#https://}/${pkgname}/pkg/buildinfo.Version=${pkgver} \
     -X ${url#https://}/${pkgname}/pkg/buildinfo.Tag=$(git describe --tags) \
@@ -40,19 +36,15 @@ build() {
     -X ${url#https://}/${pkgname}/pkg/buildinfo.DateStr=$(date -Iseconds)" \
     ./"cmd/${pkgname}"
 
-  # make completions
   for _sh in bash fish zsh powershell; do
     ./"build/${pkgname}" completion "${_sh}" > "completions/${pkgname}.${_sh}"
   done
 
-  # make docs
   ./"build/${pkgname}" docs man > "manpages/${pkgname}.1"
 }
 
 # check() {
 #   cd "${srcdir}/${_pkgsrc}"
-#   # make tests
-# 
 #   go test ./...
 # }
 
