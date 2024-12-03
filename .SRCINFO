@@ -1,6 +1,6 @@
 pkgbase = ninja-jobserver
 	pkgdesc = Small build system with a focus on speed (with job server and client patch)
-	pkgver = r3155.3c347f5
+	pkgver = r3172.d18af81
 	pkgrel = 1
 	url = https://ninja-build.org/
 	arch = x86_64
@@ -9,15 +9,14 @@ pkgbase = ninja-jobserver
 	makedepends = cmake
 	makedepends = python
 	makedepends = re2c
-	makedepends = emacs-nox
 	makedepends = git
 	depends = gcc-libs
 	provides = ninja
 	conflicts = ninja
-	source = ninja-digit-google::git+https://github.com/digit-google/ninja.git#commit=3c347f57e036dbfe663b3dc7d320cdbdc172ca61
+	source = ninja-digit-google::git+https://github.com/digit-google/ninja.git#commit=d18af81202edfa993ba069fd5a971db8438f45c0
 	source = ninja-digit-google-jobserver-1.patch::https://github.com/digit-google/ninja/commit/99e2383ba33002f515f51aa5c7ee545fa843de6d.patch
 	source = ninja-digit-google-jobserver-2.patch::https://github.com/digit-google/ninja/commit/15d54e25ee3f9c89af0a54cad11644d7f38b296e.patch
-	sha256sums = 93dd2a6049844939a7af9be696d34edc430e8ef5888d2c6eec64f41f5892b079
+	sha256sums = 7b733d722e85ca05fb42993c94992f8586af10b2538dec173c9e24ed4d86a557
 	sha256sums = 49e61486bfd9a23079136723caceecabe7dc321e8d66805abbee6e8879eac233
 	sha256sums = ad5257bff7b48d747b10a848c01a65da3fd7638b1504bed6dd020fc37394fb11
 
