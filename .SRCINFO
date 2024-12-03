@@ -1,0 +1,15 @@
+pkgbase = ltex-ls-plus-bin
+	pkgdesc = LTeX Language Server: LSP language server for LanguageTool with support for LaTeX, Markdown, and others (fork of ltex-ls)
+	pkgver = 18.3.0
+	pkgrel = 1
+	url = https://github.com/ltex-plus/ltex-ls-plus
+	arch = any
+	license = MPL2
+	depends = java-runtime>=11
+	depends = bash
+	provides = ltex-ls-plus
+	conflicts = ltex-ls-plus
+	source = https://github.com/ltex-plus/ltex-ls-plus/releases/download/18.3.0/ltex-ls-plus-18.3.0.tar.gz
+	sha256sums = 4d5f33f27633da516c2fceb2c692160e1de10c4667ffb3f491ac78f7ca22725b
+
+pkgname = ltex-ls-plus-bin
