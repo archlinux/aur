@@ -1,7 +1,7 @@
 pkgbase = pjproject
 	pkgdesc = Open source SIP stack and media stack
-	pkgver = 2.14.1
-	pkgrel = 2
+	pkgver = 2.15
+	pkgrel = 1
 	url = https://www.pjsip.org/
 	arch = x86_64
 	arch = aarch64
@@ -25,10 +25,10 @@ pkgbase = pjproject
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = swig
-	source = pjproject-2.14.1.tar.gz::https://github.com/pjsip/pjproject/archive/2.14.1.tar.gz
+	source = pjproject-2.15.tar.gz::https://github.com/pjsip/pjproject/archive/2.15.tar.gz
 	source = 0001-Don-t-build-Java-bindings.patch
 	source = config_site.h
-	sha256sums = 6140f7a97e318caa89c17e8d5468599671c6eed12d64a7c160dac879ba004c68
+	sha256sums = b744544e5028d09d8c2f774d135e0f543930028c04580faa00590b78ee335973
 	sha256sums = c6673d97185c2383140b6d915aeaa7e525c9cfb5f51c097472cf4773b4f87ab4
 	sha256sums = 61fa2a76d069aa5c95b6e2c539f7b20e2ccf0b126fc60c18117762541d0a7472
 
