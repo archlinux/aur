@@ -1,0 +1,15 @@
+pkgbase = protondb-cli
+	pkgdesc = A command-line tool to fetch and display game summaries from the ProtonDB API
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/hypeedev/protondb-cli
+	arch = x86_64
+	license = MIT
+	makedepends = rustup
+	makedepends = glibc
+	makedepends = gcc-libs
+	depends = openssl
+	source = protondb-cli-1.1.0.tar.gz::https://github.com/hypeedev/protondb-cli/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 95a60ca4141b6d5bfbee10186f9322e5cc2962c47097b198a0cac87fc9532b86
+
+pkgname = protondb-cli
