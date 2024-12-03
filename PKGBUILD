@@ -4,7 +4,7 @@
 
 pkgname=networkmanager-support
 pkgver=1
-pkgrel=8
+pkgrel=9
 arch=('any')
 url="https://wiki.archlinux.org/index.php/NetworkManager"
 license=('GPL')
@@ -22,16 +22,17 @@ depends=("dnsmasq"
         "networkmanager-vpnc"
         "nm-cloud-setup"
         "openldap"
-        "openresolv"
+        "systemd-resolvconf"
         "openssh"
         "rp-pppoe"
         "usb_modeswitch"
         "wireguard-tools"
         "wpa_supplicant")
-optdepends=('network-manager-applet: Applet for managing network connections'
-            'nm-tray: A pure QT NetworkManager front-end residing in panels'
-            'modem-manager-gui: A GTK+ Gui for modem manager'
-            'gpsd:  Supports querying GPS coordinates from GPS-enabled WWAN cards in ModemManager')
+optdepends=("network-manager-applet: Applet for managing network connections"
+            "nm-tray: A pure QT NetworkManager front-end residing in panels"
+            "modem-manager-gui: A GTK+ Gui for modem manager"
+            "gpsd:  Supports querying GPS coordinates from GPS-enabled WWAN cards in ModemManager"
+            "openresolv: more agile systemd-independent implementation of resolvconf")
 conflicts=("connman-support" "networkmanager-fortisslvpn")
 install=$pkgname.install
 
