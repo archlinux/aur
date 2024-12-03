@@ -1,6 +1,6 @@
 pkgname=paramountplus
 _pkgname=ParamountPlus
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Unnofficial ParamountPlus desktop application"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('unzip')
 conflicts=("ParamountPlus-bin")
 replace=("ParamountPlus-bin")
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('41baea19199a34288e20dca6f7e6c5aa62795a9a9f4bd5ff77e735263901e544')
+sha256sums=('0329500be2aad57dc5fe8c34c2cad863db50246b27452ad620dc6ad5ff95a46d')
 
 package() {
     for dir in application-$pkgver ; do mv "${dir}" "$_pkgname" ;done
