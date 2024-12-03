@@ -8,9 +8,9 @@ pkgname=(
     libtorch-cxx11abi-cpu
 )
 
-pkgver="2.4.0"
+pkgver="2.5.1"
 _cuda_version="cu124"
-_rocm_version="rocm6.1"
+_rocm_version="rocm6.2"
 pkgrel=1
 _pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CXX11 ABI)"
 pkgdesc="${_pkgdesc}"
