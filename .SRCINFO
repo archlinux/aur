@@ -1,0 +1,22 @@
+pkgbase = checks-parser-git
+	pkgdesc = Utility for parsing checks(receipts) to csv
+	pkgver = alpha_0.0.1
+	pkgrel = 1
+	url = https://git.foxarmy.org/leca/checks-parser
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = opencv
+	depends = zbar
+	depends = nlohmann-json
+	depends = tesseract
+	optdepends = tesseract-data-rus: scan russian checks with OCR
+	source = git+https://git.foxarmy.org/leca/checks-parser
+	sha256sums = SKIP
+
+pkgname = checks-parser-git
