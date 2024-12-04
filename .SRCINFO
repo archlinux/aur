@@ -1,6 +1,6 @@
 pkgbase = nero-umu
 	pkgdesc = A fast and efficient umu manager, just as the Romans designed.
-	pkgver = 0.9
+	pkgver = 0.91
 	pkgrel = 1
 	url = https://github.com/SeongGino/Nero-umu
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = nero-umu
 	optdepends = icoextract: Extract Windows ico files
 	optdepends = icoutils: Convert contents of ico files
 	optdepends = winetricks: Fallback for Proton runners without embedded protonfixes
-	source = https://github.com/SeongGino/Nero-umu/archive/refs/tags/v0.9.tar.gz
-	md5sums = ce5022dcea891472210091abbf1b0a30
+	source = https://github.com/SeongGino/Nero-umu/archive/refs/tags/v0.91.tar.gz
+	md5sums = 0e9f36c87c95664a0515ae9b146dfaf9
 
 pkgname = nero-umu
