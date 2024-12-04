@@ -6,7 +6,7 @@
 
 pkgname=butt
 pkgver=1.44.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Easy to use, multi OS streaming tool"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL2')
@@ -48,7 +48,7 @@ package() {
     install -Dm644 "${doc}" "${pkgdir}/usr/share/doc/${pkgname}/${doc}"
   done
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "/usr/share/doc/${pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  ln -s "/usr/share/doc/${pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Pixmaps
   for file in usr/share/pixmaps/"${pkgname}"*; do
