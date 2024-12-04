@@ -1,11 +1,14 @@
 pkgbase = pulseaudio-dlna
 	pkgdesc = Meta package for packages enabling forwarding Pulseaudio/Pipewire-Pulse streams to DLNA devices
 	pkgver = 1
-	pkgrel = 1
-	url = https://gitlab.com/xdegaye/pa-dlnao-dlna
+	pkgrel = 2
+	url = https://gitlab.com/xdegaye/pa-dlna
+	install = pulseaudio-dlna.install
 	arch = any
 	license = MIT
 	depends = pa-dlna-git
 	depends = python-libpulse
+	source = pulseaudio-dlna.service
+	sha256sums = 7dc9b30725ad9285605d21dbf9ddafc4ce85d222622c4b049bc8b407b44ed890
 
 pkgname = pulseaudio-dlna

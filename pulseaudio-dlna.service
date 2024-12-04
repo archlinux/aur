@@ -1,0 +1,19 @@
+[Unit]
+Description=PulseAudio/PipeWire DLNA Service
+After=network.target
+Requires=pipewire-pulse.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/pa-dlna --loglevel warning
+Restart=on-failure
+RestartSec=5
+Slice=session.slice
+SyslogIdentifier=pa-dlna
+LimitNOFILE=65536
+RuntimeDirectory=pa-dlna
+RuntimeDirectoryMode=0755
+StateDirectory=pa-dlna
+
+[Install]
+WantedBy=default.target
