@@ -1,16 +1,19 @@
 pkgbase = python-aiohttp-jinja2
 	pkgdesc = jinja2 template renderer for aiohttp.web
 	pkgver = 1.6
-	pkgrel = 1
-	url = https://github.com/aio-libs/aiohttp_jinja2/
+	pkgrel = 2
+	url = http://aiohttp-jinja2.aio-libs.org/
 	arch = any
-	license = APACHE 2
-	makedepends = python
+	license = Apache-2.0
+	checkdepends = python-pytest-aiohttp
+	checkdepends = python-pytest-asyncio
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python
+	makedepends = python-wheel
 	depends = python-aiohttp
 	depends = python-jinja
-	source = https://github.com/aio-libs/aiohttp-jinja2/archive/v1.6.zip
-	md5sums = 0a35229169ee1972cca149e2d25da7bf
+	source = https://github.com/aio-libs/aiohttp-jinja2/releases/download/v1.6/aiohttp-jinja2-1.6.tar.gz
+	sha256sums = a3a7ff5264e5bca52e8ae547bbfd0761b72495230d438d05b6c0915be619b0e2
 
 pkgname = python-aiohttp-jinja2
