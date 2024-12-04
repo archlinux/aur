@@ -1,7 +1,7 @@
 pkgbase = cdpcurl-git
 	pkgdesc = CLI for the Coinbase Developer Platform (CDP)
 	pkgver = r12.g8dc4b89
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coinbase/cdpcurl
 	arch = aarch64
 	arch = i686

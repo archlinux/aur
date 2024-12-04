@@ -1,9 +1,10 @@
+# Maintainer: Di Mei <di.mei@coinbase.com>
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 _pkgname=cdpcurl
 pkgname="$_pkgname-git"
 pkgver=r12.g8dc4b89
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for the Coinbase Developer Platform (CDP)'
 url='https://github.com/coinbase/cdpcurl'
 arch=('aarch64' 'i686' 'x86_64')
