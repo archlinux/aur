@@ -1,16 +1,16 @@
 pkgbase = jan-bin
 	pkgdesc = An open source alternative to ChatGPT that runs 100% offline on your computer. Multiple engine support (llama.cpp, TensorRT-LLM).(Prebuilt version.Use system-wide electron)
-	pkgver = 0.5.9
+	pkgver = 0.5.10
 	pkgrel = 1
 	url = https://jan.ai/
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = electron30
-	provides = jan=0.5.9
+	provides = jan=0.5.10
 	conflicts = jan
-	source = jan-0.5.9.deb::https://github.com/janhq/jan/releases/download/v0.5.9/jan-linux-amd64-0.5.9.deb
+	source = jan-0.5.10.deb::https://github.com/janhq/jan/releases/download/v0.5.10/jan-linux-amd64-0.5.10.deb
 	source = jan.sh
-	sha256sums = 24b2ae0fc5c9110a6fae331ef86952ad70dcba1692bc4591ac84d12e3d5ddd82
+	sha256sums = 80dd99da59c67479b3f5b845f013c0727f6af63d30d6ce5a6eaa3816688416c3
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = jan-bin
