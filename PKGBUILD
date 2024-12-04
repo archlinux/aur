@@ -1,36 +1,62 @@
-# Maintainer: Benjamin Schäfer <b-schaefer at posteo dot de>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Benjamin Schäfer <b-schaefer at posteo dot de>
 # Contributor: Lorenzo Giuliani <lorenzo at giuliani dot me>
-
 pkgname=pgmanage-bin
-pkgver=11.0.1
-pkgrel=2
-pkgdesc="pgManage - A fast alternative to PGAdmin"
-arch=('i686' 'x86_64')
-url="https://www.workflowproducts.com/services.html#software"
-name=pgManage
-license=("custom:${name}", 'custom:electron', 'custom:chromium')
-depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
-source=("LICENSE.${name}.txt::https://raw.githubusercontent.com/${name}/${name}/master/LICENSE"
-        "${name}.sh")
-source_i686=("${pkgname}-${pkgver}-i686.rpm::https://github.com/${name}/${name}/releases/download/v${pkgver}/${name}-${pkgver}.i686.rpm")
-source_x86_64=("${pkgname}-${pkgver}-x86_64.rpm::https://github.com/${name}/${name}/releases/download/v${pkgver}/${name}-${pkgver}.x86_64.rpm")
-sha256sums=('SKIP' 'SKIP')
-md5sums_i686=('60cdaa61d5f0c6562eb646be198dc6a5')
-md5sums_x86_64=('1ade5523b45041d0f08dfc50571fd096')
-
+pkgver=1.2
+pkgrel=1
+pkgdesc="A modern multi-platform Postgres-centric database client/administration tool.(Prebuilt version)"
+arch=('x86_64')
+url="https://commandprompt.com/"
+_ghurl="https://github.com/commandprompt/pgmanage"
+license=('MIT')
+depends=(
+	'alsa-lib'
+	'nspr'
+	'libxext'
+	'libxfixes'
+	'libxkbcommon'
+	'nss'
+	'libxrandr'
+	'cairo'
+	'at-spi2-core'
+	'pango'
+	'libxcomposite'
+	'libxdamage'
+	'mesa'
+	'libdrm'
+	'libcups'
+)
+makedepends=(
+    'fuse2'
+)
+source=(
+	"${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
+	"LICENSE-${pkgver}::https://raw.githubusercontent.com/commandprompt/pgmanage/${pkgver}/LICENSE"
+	"${pkgname%-bin}.sh"
+)
+sha256sums=('9e08568e658bb681e3b2a7fc94b1ab7c99dbd71241226a77dc61867497d12768'
+            '1b4aea4a53aef96699473c225e6355234f814d8d09441b4835dda61a92710be6'
+            '7fc2b726adb41bfc30899035594c00ac4694e5cd37dd49e355d897b85f9fe355')
+build() {
+    sed -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}-app/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
+    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed -e "
+		s/AppRun/${pkgname%-bin}/g
+		s/${pkgname%-bin}_icon/${pkgname%-bin}/g
+	" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    find "${srcdir}/squashfs-root" -type f -perm 600 -exec chmod 644 {} +
+	find "${srcdir}/squashfs-root" -perm 700 -exec chmod 755 {} +
+}
 package() {
-	install -d "${pkgdir}"/opt/${name}
-	install -d "${pkgdir}"/usr/bin
-	install -d "${pkgdir}"/usr/share/applications
-	install -d "${pkgdir}"/usr/share/icons
-
-	cp --preserve=mode -r "${srcdir}"/opt/${name}/* "${pkgdir}"/opt/${name}
-	cp --preserve=mode -r "${srcdir}"/usr/share/applications/* "${pkgdir}"/usr/share/applications
-	cp --preserve=mode -r "${srcdir}"/usr/share/icons/* "${pkgdir}"/usr/share/icons
-
-	install -Dm644 "${srcdir}"/opt/${name}/LICENSES.chromium.html "${pkgdir}"/usr/share/licenses/${name}/LICENSES.chromium.html
-	install -Dm644 "${srcdir}"/opt/${name}/LICENSE.electron.txt "${pkgdir}"/usr/share/licenses/${name}/LICENSE.electron.txt
-	install -Dm644 "${srcdir}"/LICENSE.${name}.txt "${pkgdir}"/usr/share/licenses/${name}/LICENSE.${name}.txt
-	install -m755 ${name}.sh "${pkgdir}"/usr/bin/${name}
+	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+	install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+	install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+	install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}_icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+	install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
