@@ -80,7 +80,7 @@ build() {
 		# Discard irrelevant profiling data from mamake
 		rm -r "${tmpdir}" && mkdir "${tmpdir}"
 		# Run the regression tests to profile ksh
-		cp ./saved-pty arch/*/bin/pty
+		mv ./saved-pty arch/*/bin/pty
 		rm arch/*/dyn/bin/pty
 		local -i status=0
 		./arch/*/bin/ksh bin/shtests --posix || status=$?
@@ -101,7 +101,7 @@ build() {
 		rm -rf ./arch
 		./bin/package make -j${cores}
 		# Cleanup PGO artefacts
-		rm -r "${tmpdir}" saved-pty
+		rm -r "${tmpdir}"
 	fi
 }
 
