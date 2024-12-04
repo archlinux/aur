@@ -2,7 +2,7 @@
 # Maintainer: Stefan Sielaff <aur AT stefan-sielaff DOT de>
 
 pkgname=logitechmediaserver-bin
-pkgver=8.5.2
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="Slimserver for Logitech Squeezebox players. This server is also called Logitech Media Server)"
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
@@ -10,13 +10,14 @@ url="https://github.com/Logitech/slimserver"
 license=(GPL custom)
 depends=(perl)
 install=logitechmediaserver.install
-source=("https://downloads.lms-community.org/LogitechMediaServer_v${pkgver}/logitechmediaserver-${pkgver}.tgz"
+options=(!strip)
+source=("https://downloads.lms-community.org/LyrionMusicServer_v${pkgver}/lyrionmusicserver-${pkgver}.tgz"
         'logitechmediaserver-bin.service')
-sha256sums=('159c259a7345b105871e7a31eb971e05ef1e3d37e01b40f9f787d50ddde583ac'
+sha256sums=('aea9bb5f00bce5b95753c08d4540d87aa396e500375144e81a0c909cb8a8bafa'
             '47e79654df21e4f16274966d4fbc41978ebfac69e987da7d9f30bb0f98ec9d01')
 
 prepare() {
-  cd "${srcdir}/logitechmediaserver-${pkgver}/Bin"
+  cd "lyrionmusicserver-${pkgver}/Bin"
   rm -rf MSWin32-x86-multi-thread darwin darwin-x86_64 i386-freebsd-64int i86pc-solaris-thread-multi-64int powerpc-linux sparc-linux
 
   case $CARCH in
@@ -30,14 +31,16 @@ prepare() {
 package() {
   install -Dm644 logitechmediaserver-bin.service -t "${pkgdir}/usr/lib/systemd/system/"
 
-  cd "${srcdir}/logitechmediaserver-${pkgver}"
+  cd "lyrionmusicserver-${pkgver}"
   install -d "${pkgdir}"/{opt,usr/share/licenses}/"${pkgname}"
   ln -s "/opt/${pkgname}/License.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # remove old perl modules
-  cd "${srcdir}/logitechmediaserver-${pkgver}/CPAN/arch"
-  rm -rf {5.10,5.12,5.14,5.16,5.16,5.18,5.20,5.22,5.24,5.26,5.28,5.30,5.32,5.34,5.36}
+  cd "${srcdir}/lyrionmusicserver-${pkgver}/CPAN/arch"
+  rm -rf {5.10,5.12,5.14,5.16,5.16,5.18,5.20,5.22,5.24,5.26,5.28,5.30,5.32,5.34,5.36,5.38}
 
-  cd "${srcdir}/logitechmediaserver-${pkgver}"
+  cd "${srcdir}/lyrionmusicserver-${pkgver}"
   cp -a * "${pkgdir}/opt/${pkgname}"
+
+  mkdir -p "${pkgdir}"/opt/logitechmediaserver-bin/{cache,Logs,prefs{,/plugin},Plugins}
 }
