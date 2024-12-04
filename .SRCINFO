@@ -1,7 +1,7 @@
 pkgbase = anki-qt5
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) - Qt5 Build
 	pkgver = 24.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.ankiweb.net/
 	changelog = anki-qt5.changelog
 	arch = x86_64
