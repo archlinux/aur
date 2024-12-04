@@ -5,7 +5,7 @@
 # Contributor: DerFlob <derflob at derflob dot de>
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 
-pkgname=tilda-wayland-git
+pkgname=tilda-wayland
 pkgver=1.5.4.r0.gbc2d321
 pkgrel=1
 pkgdesc="A Gtk based drop down terminal for Linux and Unix, Workaround for wayland."

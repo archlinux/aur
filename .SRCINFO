@@ -1,4 +1,4 @@
-pkgbase = tilda-wayland-git
+pkgbase = tilda-wayland
 	pkgdesc = A Gtk based drop down terminal for Linux and Unix, Workaround for wayland.
 	pkgver = 1.5.4.r0.gbc2d321
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = tilda-wayland-git
 	source = git+https://github.com/shih-liang/tilda-wayland.git
 	sha1sums = SKIP
 
-pkgname = tilda-wayland-git
+pkgname = tilda-wayland
