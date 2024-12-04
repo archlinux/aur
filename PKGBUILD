@@ -2,7 +2,7 @@
 
 pkgname=ros2-jazzy-base
 pkgver=2024.09.19
-pkgrel=3
+pkgrel=4
 _rosdist="Jazzy Jalisco"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -33,6 +33,7 @@ makedepends=(
   'python-rosinstall_generator'
   'python-vcstool'
 )
+conflicts=("ros2-${_rosdist_short}")
 source=(
     "https://github.com/ros2/ros2/archive/release-${_rosdist_short}-${pkgver//.}.tar.gz"
     "ros2-variants-0.11.0.tar.gz::https://github.com/ros2/variants/archive/0.11.0.tar.gz"
@@ -75,6 +76,6 @@ build() {
 
 package() {
     mkdir -p "${pkgdir}/opt/ros"
-    cp -r "${srcdir}/install" "${pkgdir}/opt/ros/${_rosdist_short}-base"
+    cp -r "${srcdir}/install" "${pkgdir}/opt/ros/${_rosdist_short}"
 
 }
