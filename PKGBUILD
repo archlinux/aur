@@ -1,19 +1,15 @@
 # Maintainer: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 
 pkgname=butler
-pkgver=15.21.0
-pkgrel=3
+pkgver=15.23.0
+pkgrel=1
 pkgdesc='Command-line itch.io helper'
 arch=('x86_64')
 url='https://github.com/itchio/butler'
 license=('MIT')
 source=("$pkgname-$pkgver.zip::https://broth.itch.ovh/butler/linux-amd64/$pkgver/archive/default")
-sha256sums=('b640fceade5cafc7601b0ee57ba13c85913917eb5440375f7a605126f9ca2e1c')
+sha256sums=('8209afa4f2d23c78ef4f0d4a2b0e995347b1e9de2b43912842bbdf31543e1542')
 
 package() {
-  install -Dm755 butler -t "$pkgdir/usr/lib/butler"
-  install -Dm755 ./*.so -t "$pkgdir/usr/lib/butler"
-
-  mkdir -p "$pkgdir/usr/bin"
-  ln -s "../lib/butler/butler" "$pkgdir/usr/bin/butler"
+  install -Dm755 butler "$pkgdir/usr/bin/butler"
 }
