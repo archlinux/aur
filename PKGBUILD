@@ -7,7 +7,7 @@ pkgbase=wordnet
 pkgname=(wordnet-common)
 pkgver=3.1
 _srcver=3.0
-pkgrel=6
+pkgrel=7
 arch=('i686' 'x86_64')
 url="https://wordnet.princeton.edu/"
 license=("LicenseRef-custom")
@@ -31,6 +31,10 @@ prepare() {
   for _patch in "${_patch_series[@]}"; do
     patch -Np1 -i "../debian/patches/$_patch"
   done
+  #remove invalid dict flag caused by debian patches
+  sed -i '/dictzip -n wn.dict/s/ -n//' contrib/wordnet_structures/Makefile
+  sed -i '/dictzip -n wn.dict/s/ -n//' contrib/wordnet_structures/Makefile.in
+  sed -i '/dictzip -n wn.dict/s/ -n//' contrib/wordnet_structures/Makefile.am
 }
 
 build() {
