@@ -1,6 +1,6 @@
 pkgbase = telegram-bot-api
 	pkgdesc = Telegram Bot API server
-	pkgver = 7.11
+	pkgver = 8.0
 	pkgrel = 1
 	url = https://core.telegram.org/bots
 	arch = aarch64
@@ -17,8 +17,8 @@ pkgbase = telegram-bot-api
 	depends = zlib
 	provides = telegram-bot-api
 	conflicts = telegram-bot-api-git
-	source = git+https://github.com/tdlib/telegram-bot-api.git#commit=6d1b62b51bdc543c10f854aae751e160e5b7b9c5
-	source = git+https://github.com/tdlib/td.git#commit=056963e48fa8d3f89556239c22d6ac843d3c8a5b
+	source = git+https://github.com/tdlib/telegram-bot-api.git#commit=53e15345b04fcea73b415897f10d7543005044ce
+	source = git+https://github.com/tdlib/td.git#commit=66c4751742d2ca810033b289fc57ab4f83cfc833
 	sha256sums = SKIP
 	sha256sums = SKIP
 
