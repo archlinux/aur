@@ -1,12 +1,13 @@
 pkgbase = pepv-git
 	pkgdesc = Pacman local packages viewer
-	pkgver = r2.aca9e5bc6
+	pkgver = r5.b10b323a2
 	pkgrel = 1
 	url = https://github.com/EXtremeExploit/pepv
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = git
 	makedepends = cmake
+	makedepends = imagemagick
 	depends = gtk3
 	provides = pepv
 	conflicts = pepv
@@ -14,7 +15,7 @@ pkgbase = pepv-git
 	source = pepv.desktop
 	source = tracy::git+https://github.com/wolfpld/tracy.git
 	sha256sums = SKIP
-	sha256sums = 8620f86572608572f0bf5a02f68e5c94bedd9b45f399e8ac6904f9d522d698de
+	sha256sums = f5895eed358b1d884e770a5e4d6ef18b40db8c746b93a9957f10fd22e4583946
 	sha256sums = SKIP
 
 pkgname = pepv-git

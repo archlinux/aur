@@ -2,7 +2,7 @@
 
 _pkgname="pepv"
 pkgname="$_pkgname-git"
-pkgver=r2.aca9e5bc6
+pkgver=r5.b10b323a2
 pkgrel=1
 pkgdesc="Pacman local packages viewer"
 arch=('x86_64')
@@ -11,6 +11,7 @@ license=('GPL-2.0-only')
 makedepends=(
     git
     cmake
+    imagemagick
     )
 depends=(gtk3)
 provides=('pepv')
@@ -22,7 +23,7 @@ source=(
 )
 sha256sums=(
 	'SKIP'
-	'8620f86572608572f0bf5a02f68e5c94bedd9b45f399e8ac6904f9d522d698de'
+	'f5895eed358b1d884e770a5e4d6ef18b40db8c746b93a9957f10fd22e4583946'
 	'SKIP'
 )
 
@@ -48,7 +49,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$_pkgname"
-	mkdir build
+	mkdir -p build
     cd build
     cmake ..
     cmake --build . --config Release
@@ -60,6 +61,14 @@ package() {
 
     install -Dm755 "build/pepv" "$pkgdir/usr/bin/"
     install -Dm644 "pepv.ui" "$pkgdir/usr/share/pepv/"
+    install -Dm644 "pepv.png" "$pkgdir/usr/share/pepv/"
+
+    for size in 16 22 24 32 36 48 64 72 96 128 256 512 1024; do \
+		mkdir -p $pkgdir/usr/share/icons/hicolor/"$size"x"$size"/apps ; \
+		echo pepv.png -resize "$size"x$size $pkgdir/usr/share/icons/hicolor/"$size"x$size/apps/pepv.png ; \
+		magick pepv.png -resize "$size"x$size $pkgdir/usr/share/icons/hicolor/"$size"x"$size"/apps/pepv.png ; \
+	done
+
 	install -Dm644 "$srcdir/pepv.desktop" "$pkgdir/usr/share/applications/pepv.desktop"
 
 	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
