@@ -1,0 +1,13 @@
+post_install() {
+    echo ""
+    echo "==> Installed in : /usr/share/webapps/ojs"
+    echo ""
+}
+post_upgrade(){
+    echo ""
+    echo "==> Before upgrade please check"
+    echo ""
+    echo "==> https://docs.pkp.sfu.ca/dev/upgrade-guide/en/"
+    echo ""
+}
+
