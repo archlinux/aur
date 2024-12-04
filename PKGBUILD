@@ -8,7 +8,7 @@ pkgname=(
   "${pkgbase}-firefox"
   "${pkgbase}-google-chrome"
 )
-pkgver=12.7.2
+pkgver=12.8.0
 pkgrel=1
 pkgdesc='Browser extension that enables browsing Ethereum blockchain enabled websites'
 url="https://github.com/MetaMask/metamask-extension"
@@ -39,9 +39,10 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgbase}"
-  export PATH="${srcdir}/corepack:$PATH"
-  yarn # setup
-  yarn dist:mv2
+  corepackdir="${srcdir}/corepack"
+  export PATH="${corepackdir}:$PATH"
+  corepack yarn # setup
+  corepack yarn dist:mv2
   chromium \
     --disable-gpu \
     --disable-namespace-sandbox \
