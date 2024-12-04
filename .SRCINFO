@@ -1,6 +1,6 @@
 pkgbase = kops-bin
 	pkgdesc = Kubernetes Operations (kOps) - Production Grade K8s Installation, Upgrades, and Management
-	pkgver = v1.30.2
+	pkgver = v1.30.3
 	pkgrel = 1
 	url = https://github.com/kubernetes/kops
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = kops-bin
 	conflicts = kops-beta-bin
 	conflicts = kops-git
 	conflicts = kops21-bin
-	source_x86_64 = kops-bin-v1.30.2::https://github.com/kubernetes/kops/releases/download/v1.30.2/kops-linux-amd64
-	sha256sums_x86_64 = 14050f7d6cb659a5bbba418d10deeb3866efce27b94940a361dff65f59925f2e
-	source_aarch64 = kops-bin-v1.30.2::https://github.com/kubernetes/kops/releases/download/v1.30.2/kops-linux-arm64
-	sha256sums_aarch64 = cb9c0b35cc91cf35cf2fe04237ebffa82f6e7c952e66b9de33d5a2c78e3319bc
+	source_x86_64 = kops-bin-v1.30.3::https://github.com/kubernetes/kops/releases/download/v1.30.3/kops-linux-amd64
+	sha256sums_x86_64 = ff7d55a762ea71b32df4d920c04ffbdb73908195fd5454e2f32e1b78243f074c
+	source_aarch64 = kops-bin-v1.30.3::https://github.com/kubernetes/kops/releases/download/v1.30.3/kops-linux-arm64
+	sha256sums_aarch64 = 84d27a97e1e5547405ef972701475137d35c41625855c5e41b3499821545c099
 
 pkgname = kops-bin
