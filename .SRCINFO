@@ -1,7 +1,7 @@
 pkgbase = bookget-git
 	pkgdesc = bookget 数字图书馆下载工具，目前支持约50+个数字图书馆。
-	pkgver = 24.0923.1.g4876c7d
-	pkgrel = 0
+	pkgver = 24.1118.5.g19aecfb
+	pkgrel = 2
 	url = https://github.com/deweizhu/bookget
 	arch = x86_64
 	arch = aarch64
