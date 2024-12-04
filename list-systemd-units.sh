@@ -9,7 +9,7 @@ LANG= xargs pacman -Qo 2> /dev/null | awk '
 	files[$5][i++] = $1;
 }; END {
 	for (pkg in files) {
-		printf "%s" pkg;
+		printf "%s", pkg;
 		for (i in files[pkg])
 			printf " %s", files[pkg][i];
 		print "";
