@@ -1,0 +1,22 @@
+pkgbase = ojs
+	pkgdesc = Open Journal System
+	pkgver = 3.4.0_8
+	pkgrel = 0
+	url = https://pkp.sfu.ca/software/ojs/
+	install = ojs.install
+	arch = any
+	license = MIT
+	depends = php
+	depends = php-fpm
+	depends = php-cgi
+	optdepends = apache: Web server
+	optdepends = nginx: Web server
+	optdepends = mariadb: Database server
+	optdepends = sqlite: Database server
+	optdepends = php-sqlite: PHP extension for sqlite
+	optdepends = postgresql: Database server
+	optdepends = php-pgsql: PHP extension for postgresql
+	source = https://pkp.sfu.ca/ojs/download/ojs-3.4.0-8.tar.gz
+	b2sums = 63fad7919d28b31cc4a82031826ea514a326cc86925121832c8c32e1d35614ec2cf728b68fc932a716fc6ff1de6508d8db77ada2806c6f4516cd3e76f2ca32e7
+
+pkgname = ojs
