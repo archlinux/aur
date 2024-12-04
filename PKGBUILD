@@ -3,7 +3,7 @@
 pkgname=csdr-cwskimmer
 pkgver=1.0
 pkgrel=1
-pkgdesc="A simple DSP library and command-line tool for Software Defined Radio."
+pkgdesc="CSDR-based CW skimmer."
 arch=('x86_64' 'aarch64')
 url="https://github.com/luarvique/csdr-cwskimmer"
 license=('GPL3')
