@@ -1,7 +1,7 @@
 pkgbase = python-argparse-addons
 	pkgdesc = Additional Python argparse types and actions
 	pkgver = 0.12.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/eerimoq/argparse_addons
 	arch = any
 	license = MIT
