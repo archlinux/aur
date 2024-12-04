@@ -3,7 +3,7 @@
 pkgname=butt-appimage
 _pkgname=butt
 pkgver=1.44.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy to use, multi OS streaming tool (AppImage release)."
 arch=('x86_64')
 url='https://danielnoethen.de/butt/'
@@ -36,7 +36,7 @@ package() {
   done
 
   install -dm755 "${pkgdir}/usr/share/licenses/${_pkgname}"
-  ln -s "/usr/share/doc/${_pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
+  ln -s "/usr/share/doc/${_pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
   cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
   install -Dm755 "${srcdir}/squashfs-root/usr/share/applications/${_pkgname}.desktop" \
