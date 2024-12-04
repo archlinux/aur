@@ -1,5 +1,5 @@
 pkgbase = lsi-sas2ircu
-	pkgdesc = LSI cfggen utility for 2004/2008 chipset based LSI Fusion MPT SAS devices
+	pkgdesc = LSI cfggen utility for 2004/2008 chipset based Avago / LSI Fusion MPT2 SAS devices.
 	pkgver = 20.00.00.00
 	pkgrel = 11
 	url = http://www.lsi.com
@@ -7,7 +7,6 @@ pkgbase = lsi-sas2ircu
 	arch = i686
 	license = none
 	source = https://docs.broadcom.com/docs-and-downloads/host-bus-adapters/host-bus-adapters-common-files/sas_sata_6g_p20/SAS2IRCU_P20.zip
-	md5sums = 57e7ffd2b3221c5d7b471b23ec429b8b
+	sha256sums = cfcd37dcdb0ccd86d5546e1945e40cfcd11ba8fdaaeee94521a03855f448f35d
 
 pkgname = lsi-sas2ircu
-
