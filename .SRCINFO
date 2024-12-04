@@ -1,7 +1,7 @@
 pkgbase = libedgetpu-git
 	pkgdesc = Google Coral Edge TPU library and headers
 	pkgver = 20240314
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google-coral/libedgetpu
 	arch = x86_64
 	arch = armv7h
@@ -18,12 +18,12 @@ pkgbase = libedgetpu-git
 	conflicts = libedgetpu-std
 	conflicts = libedgetpu-max
 	source = git+https://github.com/google-coral/libedgetpu.git#commit=e35aed18fea2e2d25d98352e5a5bd357c170bd4d
-	source = https://github.com/tensorflow/tensorflow/archive/refs/tags/v2.17.0.tar.gz
+	source = https://github.com/tensorflow/tensorflow/archive/refs/tags/v2.18.0.tar.gz
 	source = makefile.patch
 	source = 60-libedgetpu1.rules
 	sha256sums = SKIP
-	sha256sums = 9cc4d5773b8ee910079baaecb4086d0c28939f024dd74b33fc5e64779b6533dc
-	sha256sums = 0ce680b418aa4ca61f5df7b0fa067df12158b646bfd46be221f0573a9944d716
+	sha256sums = d7876f4bb0235cac60eb6316392a7c48676729860da1ab659fb440379ad5186d
+	sha256sums = ea555199fd029cb8498d45b38a4ad5042d80c1c82938acd9f0f313502535db2d
 	sha256sums = a1482c69523be15629f571f76916875e39fa64b6e5098058588bffa87a2a62d8
 
 pkgname = libedgetpu-git

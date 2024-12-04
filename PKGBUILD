@@ -4,7 +4,7 @@
 
 pkgname=libedgetpu-git
 pkgver=20240314  # google-coral/libedgetpu has no numeric versioning; using yyyymmdd instead
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Coral Edge TPU library and headers"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/google-coral/libedgetpu"
@@ -14,15 +14,15 @@ makedepends=('binutils' 'git' 'tar')
 provides=('libedgetpu')
 conflicts=('libedgetpu' 'libedgetpu-std' 'libedgetpu-max')
 
-tensorflow_version=2.17.0
+tensorflow_version=2.18.0
 
 source=("git+https://github.com/google-coral/libedgetpu.git#commit=e35aed18fea2e2d25d98352e5a5bd357c170bd4d"
         "https://github.com/tensorflow/tensorflow/archive/refs/tags/v${tensorflow_version}.tar.gz"
         "makefile.patch"
         "60-libedgetpu1.rules")
 sha256sums=('SKIP'  # google-coral/libedgetpu
-            '9cc4d5773b8ee910079baaecb4086d0c28939f024dd74b33fc5e64779b6533dc'  # tensorflow/tensorflow
-            '0ce680b418aa4ca61f5df7b0fa067df12158b646bfd46be221f0573a9944d716'  # makefile.patch
+            'd7876f4bb0235cac60eb6316392a7c48676729860da1ab659fb440379ad5186d'  # tensorflow/tensorflow
+            'ea555199fd029cb8498d45b38a4ad5042d80c1c82938acd9f0f313502535db2d'  # makefile.patch
             'a1482c69523be15629f571f76916875e39fa64b6e5098058588bffa87a2a62d8')  # 60-libedgetpu1.rules
 
 prepare() {
