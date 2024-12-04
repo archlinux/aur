@@ -2,7 +2,7 @@
 
 _pyname=xgboost
 pkgname=python-$_pyname
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Gradient Boosting Library for Python"
 arch=(x86_64 aarch64)
@@ -16,6 +16,7 @@ depends=(
   python-graphviz
   python-dask
   python-hypothesis
+  python-distributed
 )
 makedepends=(
   python-build
@@ -27,16 +28,17 @@ makedepends=(
   ninja
   git
 )
-optdepends=('apache-spark: Distributed XGBoost with PySpark' 'python-pytest')
+checkdepends=(python-pytest)
+optdepends=('apache-spark: Distributed XGBoost with PySpark')
 source=($_pyname-$pkgver.tar.gz::https://github.com/dmlc/xgboost/archive/refs/tags/v$pkgver.tar.gz
         git+https://github.com/dmlc/dmlc-core.git)
-sha256sums=('edd0f8d7e14b38b0b4856b7a0d8956c836fa1bded96f2c8d0af72c77f1139847'
+sha256sums=('ead4d588729a1dca39b29a07cc5b151a5af9d04bbe26eaa13bdbb05910ea2829'
             'SKIP')
 
 prepare() {
   cd "$srcdir/$_pyname-$pkgver"
 
-  # Replacing the internal DMLC core with a stable one
+  # Replacing the internal DMLC core with fresh one
   rm -rf dmlc-core
   ln -sf "$srcdir/dmlc-core" \
     "$srcdir/$_pyname-$pkgver/dmlc-core"
@@ -46,10 +48,11 @@ build() {
   cd "$srcdir"
   cmake -B build -S $_pyname-$pkgver \
     -D CMAKE_INSTALL_PREFIX=/usr \
+    -D Protobuf_PROTOC_EXECUTABLE=/usr/bin/protoc \
+    -D BUILD_DEPRECATED_CLI=ON \
+    -D PLUGIN_FEDERATED=ON \
     -D USE_CXX14_IF_AVAILABLE=ON \
     -D USE_OPENMP=ON \
-    -D PLUGIN_FEDERATED=ON \
-    -D Protobuf_PROTOC_EXECUTABLE=/usr/bin/protoc \
     -D USE_PARQUET=ON \
     -G Ninja \
     -W no-dev
@@ -61,6 +64,18 @@ build() {
     --wheel \
     --no-isolation \
     --skip-dependency-check
+}
+
+check() {
+  cd $_pyname-$pkgver
+
+  python -m venv --system-site-packages test-env
+  source test-env/bin/activate
+  python -m installer python-package/dist/*.whl
+
+  python -m pytest -v tests/python -k 'not test_rabit_ops_ipv6'
+
+  deactivate
 }
 
 package() {
