@@ -1,18 +1,57 @@
 # Maintainer: Ben Leynen <leynenben@gmail.com>
-OPTIONS=(!debug)
+# Contributor: Vianney Bouchaud <aur dot vianney at bouchaud dot org>
+
 pkgname=grafana-alloy-bin
+_pkgname=grafana-alloy
 _binaryname=alloy
-pkgver=v1.4.2
+pkgdesc="OpenTelemetry Collector distribution with programmable pipelines."
+pkgver=1.5.1
 pkgrel=1
-pkgdesc="A vendor-neutral distribution of the OpenTelemetry (OTel) Collector."
-arch=('x86_64')
-_binaryarch=('linux-amd64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/grafana/alloy"
-license=('Apache-2.0')
-makedepends=('unzip' 'bc')
-source=("$pkgname-$pkgver.zip::${url}/releases/download/${pkgver}/${_binaryname}-${_binaryarch}.zip")
-sha256sums=('2e61542d8ff4240f12109249a408cce9a5690f776716062ecc4999df3befc3b7')
+license=('apache')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+
+backup=(
+    "etc/alloy/config.alloy"
+    "etc/default/alloy"
+)
+
+source_x86_64=(
+    "$pkgname-$pkgver.deb::${url}/releases/download/v${pkgver}/alloy-${pkgver}-1.amd64.deb"
+    'alloy-sysusers.conf'
+    'alloy-tmpfiles.conf'
+)
+
+source_aarch64=(
+    "$pkgname-$pkgver.deb::${url}/releases/download/v${pkgver}/alloy-${pkgver}-1.arm64.deb"
+    'alloy-sysusers.conf'
+    'alloy-tmpfiles.conf'
+)
+
+sha256sums_x86_64=('b4de0bd7bbfa895828630eee57cc47a1a09663a68f7fffd2ff7858aa3212005e'
+                   'bd1b372bd6ef5f362858a3b6f193f697b85f5da05c46802166d1bb888a54e426'
+                   '2da847dc592dabb19b3f77f3bf714348327667090040a741244cab1f6e08306c')
+sha256sums_aarch64=('b4de0bd7bbfa895828630eee57cc47a1a09663a68f7fffd2ff7858aa3212005e'
+                    'bd1b372bd6ef5f362858a3b6f193f697b85f5da05c46802166d1bb888a54e426'
+                    '2da847dc592dabb19b3f77f3bf714348327667090040a741244cab1f6e08306c')
+
 
 package() {
-	install -D -g root -m 0755 -o root "${srcdir}/${_binaryname}-${_binaryarch}" "${pkgdir}/usr/bin/${_binaryname}"
+     tar -vxf data.tar.gz
+
+     install -D -m0755 "${srcdir}/usr/bin/alloy" "${pkgdir}/usr/bin/alloy"
+     install -D -m0644 "${srcdir}/usr/share/doc/alloy/changelog.gz" "${pkgdir}/usr/share/doc/alloy/changelog.gz"
+     
+     # config file
+     install -D -m0644 "${srcdir}/etc/alloy/config.alloy" "${pkgdir}/etc/alloy/config.alloy"
+     install -D -m0644 "${srcdir}/etc/default/alloy" "${pkgdir}/etc/default/alloy"
+     
+     # user and files to create, ownership and permission to set
+     install -D -m0644 "${srcdir}/alloy-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/alloy.conf"
+     install -D -m0644 "${srcdir}/alloy-tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/alloy.conf"
+
+      # service files
+     install -D -m0644 "${srcdir}/usr/lib/systemd/system/alloy.service" "${pkgdir}/usr/lib/systemd/system/alloy.service"
 }
