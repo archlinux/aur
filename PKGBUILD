@@ -4,11 +4,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-headless
-pkgver=6.8.0
+pkgver=6.8.1
 pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
-license=(GPL3 LGPL3 FDL custom)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 pkgdesc='A cross-platform application and UI framework - headless build, no QtGui or QtWidgets'
 depends=(brotli
          double-conversion
@@ -33,7 +36,7 @@ _pkgfn=qtbase
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver
         qt6-base-cflags.patch
         qt6-base-nostrip.patch)
-sha256sums=('3ec5b25b078190b46cb4ce83f7d8967649c0a786c4d2fddd65715e60c751cdc6'
+sha256sums=('1582d2a5953a0ba8499bf63ef873847dbbb7717b8e2e55207ad4206f877023c6'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 

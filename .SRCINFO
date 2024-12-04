@@ -1,14 +1,14 @@
 pkgbase = qt6-base-headless
 	pkgdesc = A cross-platform application and UI framework - headless build, no QtGui or QtWidgets
-	pkgver = 6.8.0
+	pkgver = 6.8.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
 	groups = qt6
-	license = GPL3
-	license = LGPL3
-	license = FDL
-	license = custom
+	license = GPL-3.0-only
+	license = LGPL-3.0-only
+	license = LicenseRef-Qt-Commercial
+	license = Qt-GPL-exception-1.0
 	makedepends = cmake
 	makedepends = git
 	makedepends = mariadb-libs
@@ -27,10 +27,10 @@ pkgbase = qt6-base-headless
 	optdepends = mariadb-libs: MariaDB driver
 	provides = qt6-base
 	conflicts = qt6-base
-	source = git+https://code.qt.io/qt/qtbase#tag=v6.8.0
+	source = git+https://code.qt.io/qt/qtbase#tag=v6.8.1
 	source = qt6-base-cflags.patch
 	source = qt6-base-nostrip.patch
-	sha256sums = 3ec5b25b078190b46cb4ce83f7d8967649c0a786c4d2fddd65715e60c751cdc6
+	sha256sums = 1582d2a5953a0ba8499bf63ef873847dbbb7717b8e2e55207ad4206f877023c6
 	sha256sums = 5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78
 	sha256sums = 4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094
 
