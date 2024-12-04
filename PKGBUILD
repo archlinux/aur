@@ -3,7 +3,7 @@
 pkgname=python-pingouin
 _name=${pkgname#python-}
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Statistical package for Python'
 arch=(any)
 url=https://pingouin-stats.org/build/html/index.html
@@ -19,8 +19,8 @@ depends=(
     python-scikit-learn
     python-pandas-flavor
     python-tabulate
+    python-mpmath
 )
-optdepends=('python-mpmath: for computing one-sided Bayes factor of Pearson correlation')
 makedepends=(python-build python-installer python-wheel python-setuptools)
 checkdepends=(python-pytest)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
