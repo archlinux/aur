@@ -1,0 +1,13 @@
+pkgbase = systemrescue-usbwriter
+	pkgdesc = Tool to write SystemRescue to a USB memory stick
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://gitlab.com/systemrescue/systemrescue-usbwriter
+	arch = any
+	license = GPL-3.0-or-later
+	depends = bash
+	depends = fuse2
+	source = systemrescue-usbwriter-1.0.2.tar.gz::https://gitlab.com/systemrescue/systemrescue-usbwriter/-/archive/1.0.2/systemrescue-usbwriter-1.0.2.tar.gz
+	sha256sums = b2decf6ae54d4cefd3234fe015a1fb668bcbd958079a43eeab178c5fa8d4a562
+
+pkgname = systemrescue-usbwriter
