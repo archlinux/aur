@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=brisk-bin
 _pkgname=Brisk
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
-pkgdesc="Fast, multithreaded, cross-platform download manager.Prebuilt version."
+pkgdesc="Fast, multithreaded, cross-platform download manager.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/AminBhst/brisk"
 license=('GPL-3.0-only')
@@ -19,24 +19,25 @@ depends=(
 makedepends=(
     'gendesk'
 )
+noextract=("${pkgname%-bin}-${pkgver}.tar.xz")
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x86_64.deb"
+    "${pkgname%-bin}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x86_64.tar.xz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b1bff0b30c361405cd587f9ace5721a50d8303863d76a2569243c0b76cc45f1d'
+sha256sums=('f925ddba493f308bab86bb51c2320969ade5aab4b2c0e406d4d36ef59754a92b'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 build() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
+    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.tar.xz" -C "${srcdir}/usr/lib/${pkgname%-bin}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/usr/lib"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/128x128/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr" "${pkgdir}"
+    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/data/flutter_assets/assets/icons/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
