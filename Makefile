@@ -1,3 +1,9 @@
+# Update commands
+# * `pkgrel=y pkgver=x.x.x make test-install-and-remove`
+# * `pkgrel=y pkgver=x.x.x make update-srcinfo`
+# * `pkgrel=y pkgver=x.x.x make push`
+# * `pkgrel=y pkgver=x.x.x make clean`
+
 MAKEFLAGS += --warn-undefined-variables
 SHELL := bash
 .SHELLFLAGS := -eu -o pipefail -c
@@ -39,7 +45,7 @@ help: ## Show this help message
 .PHONY: clean
 clean: ## Clean the current workspace
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Cleaning up old package files${CC_END}"
-	rm -rf *.pkg.tar.{xz,zst} *.zip ${use_pkgname}-*
+	rm -rf *.pkg.tar.{xz,zst} *.zip *.deb ${use_pkgname}-*
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Cleaning up old working directories${CC_END}"
 	rm -rf ./pkg ./src
 
@@ -83,7 +89,7 @@ update-srcinfo: build ## Update the .SRCINFO file
 .PHONY: commit
 commit: update-pkgbuild update-srcinfo ## Commit the changes to the repository
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Commit the PKGBUILD and .SRCINFO files${CC_END}"
-	git add PKGBUILD .SRCINFO
+	git add PKGBUILD .SRCINFO Makefile alloy-sysusers.conf alloy-tmpfiles.conf
 	git commit -m "Bump package to $$(
 		cat .SRCINFO \
 			| awk -F ' = ' \
