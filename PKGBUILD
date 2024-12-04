@@ -2,7 +2,7 @@
 
 _name=aodhclient
 pkgname=python-aodhclient
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc='Client library for the Aodh API'
 arch=(any)
@@ -14,7 +14,7 @@ depends=(python-pbr python-cliff python-osc-lib python-oslo-i18n
          python-keystoneauth1 python-six python-pyparsing)
 checkdepends=(python-oslotest python-stestr python-testtools)
 source=("https://tarballs.opendev.org/openstack/$pkgname/$_name-$pkgver.tar.gz")
-sha512sums=('4f168a1d54d376c397b233328f3949bdb7ad388d6caa4ed500600a6b95c330514bd017a1e4780e814b2977fce6a48534c1e7cc8722b889ceec054e4fd623bbbf')
+sha512sums=('325e301fa53affa23e61e08809f691bef9a61e23218ede98296f01686ce12e20a74cd83bc979c7f513afeb84afda430bcf238f295d780093ae05f66669a6adf0')
 
 export PBR_VERSION=$pkgver
 

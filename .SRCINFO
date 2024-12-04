@@ -1,6 +1,6 @@
 pkgbase = python-aodhclient
 	pkgdesc = Client library for the Aodh API
-	pkgver = 3.6.0
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://docs.openstack.org/python-aodhclient/
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-aodhclient
 	depends = python-keystoneauth1
 	depends = python-six
 	depends = python-pyparsing
-	source = https://tarballs.opendev.org/openstack/python-aodhclient/aodhclient-3.6.0.tar.gz
-	sha512sums = 4f168a1d54d376c397b233328f3949bdb7ad388d6caa4ed500600a6b95c330514bd017a1e4780e814b2977fce6a48534c1e7cc8722b889ceec054e4fd623bbbf
+	source = https://tarballs.opendev.org/openstack/python-aodhclient/aodhclient-3.7.0.tar.gz
+	sha512sums = 325e301fa53affa23e61e08809f691bef9a61e23218ede98296f01686ce12e20a74cd83bc979c7f513afeb84afda430bcf238f295d780093ae05f66669a6adf0
 
 pkgname = python-aodhclient
