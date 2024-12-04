@@ -2,7 +2,7 @@
 
 pkgname=karp-git
 _pkgname=karp
-pkgver=r246.3307d9e
+pkgver=r282.454cae3
 pkgrel=1
 pkgdesc='Simple UI for PDF files modification.'
 arch=(x86_64)
@@ -12,6 +12,7 @@ depends=(
          ghostscript
          kirigami
          kirigami-addons
+         kcrash
          qt6-base
          qt6-webengine
          qpdf

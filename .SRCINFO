@@ -10,6 +10,7 @@ pkgbase = karp-git
 	depends = ghostscript
 	depends = kirigami
 	depends = kirigami-addons
+	depends = kcrash
 	depends = qt6-base
 	depends = qt6-webengine
 	depends = qpdf
