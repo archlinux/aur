@@ -1,37 +1,31 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=python-wtforms-components
-_pkgname=wtforms-components
-pkgver=0.10.5
-pkgrel=2
+_name=wtforms_components
+pkgver=0.11.0
+pkgrel=1
 pkgdesc='Additional fields, validators and widgets for WTForms'
 arch=('any')
 url="https://wtforms-components.readthedocs.io"
-license=('BSD')
-depends=('python-colour' 'python-dateutil' 'python-infinity' 'python-intervals' 'python-validators>=0.21')
-checkdepends=('python-pytest' 'python-wtforms-test' 'python-email-validator')
+license=('BSD-3-Clause')
+makedepends=(python-build python-wheel python-installer)
+depends=(python-anyjson python-colour python-intervals 'python-validators>=0.21' python-wtforms)
+checkdepends=(python-pytest python-wtforms-test python-email-validator)
 
-source=("git+https://github.com/kvesteri/wtforms-components.git#tag=da7c3d46cff95"
-    "fix_tests.patch")
-sha256sums=('f71568414b65c99bdaea1f447e8befafad64bd13d2503bfce7d9b2d019df4dff'
-            'e44e04969b4eb4c648b8c24bf01da3189b7e1b9730cfb0f2cd2ab9dea71f7302')
-
-prepare() {
-    cd "${_pkgname}"
-    patch -p1 < ../fix_tests.patch
-}
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('ca94d60a6362c0e4b49d3d09d1eb1ddf5b26c99105a57397af313655f4447f7a')
 
 build() {
-    cd "${_pkgname}"
-    python setup.py build
+    cd "${_name}-${pkgver}"
+    python -m build -wn
 }
 
 package() {
-    cd "${_pkgname}"
-    python setup.py install --root="${pkgdir}" --skip-build --optimize=1
+    cd "${_name}-${pkgver}"
+    python -m installer dist/*.whl --dest="${pkgdir}"
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 check() {
-    cd "${_pkgname}"
+    cd "${_name}-${pkgver}"
     pytest
 }
