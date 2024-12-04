@@ -1,7 +1,7 @@
 # Maintainer: zmr233 <zmr_233@outlook.com>
 pkgname=yesplaymusic-plus
 pkgver=0.4.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A third-party music player for Netease Music"
 arch=('x86_64')
 url="https://github.com/qier222/YesPlayMusic"
@@ -41,7 +41,7 @@ prepare() {
 
 build() {
   cd "$srcdir/YesPlayMusic-$pkgver"
-  yarn install --frozen-lockfile
+  yarn install --frozen-lockfile --ignore-engines
   yarn add utf-8-validate # 安装缺少的模块
   yarn electron:build --linux pacman:x64
 }
