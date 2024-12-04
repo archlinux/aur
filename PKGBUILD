@@ -44,8 +44,6 @@ build() {
 	cd "${srcdir}/${_pkgname}"
 	# Get rid of any leftover build files (in case makepkg.conf changed).
 	rm -rf ./arch
-	# Obtain the number of CPU cores.
-	local -i cores=$(bin/package host cpu)
 	if ! [[ ${_ksh_pgo} == 1 || ${_ksh_pgo} == yes || ${_ksh_pgo} == true ]]; then
 		export CCFLAGS=${CFLAGS}  # bin/package uses CCFLAGS rather than CFLAGS.
 		./bin/package make        # Build ksh (no -j flag because that's still experimental).
@@ -54,6 +52,8 @@ build() {
 		# use of the regression tests) if ${_ksh_pgo} is enabled.
 		local save_ccflags=${CFLAGS}
 		local save_ldflags=${LDFLAGS}
+		# Obtain the number of CPU cores.
+		local -i cores=$(bin/package host cpu)
 		# The first build is only done to obtain a PGO-less copy of the pty executable,
 		# such that an interactive ksh can be profiled without contaminating the
 		# profiling data with useless pty heuristics.
