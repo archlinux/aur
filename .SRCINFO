@@ -1,7 +1,7 @@
 pkgbase = yarpgen
 	pkgdesc = (Yet Another Random Program Generator) for stress testing compilers
-	pkgver = v1.1.270.g0bfbe4f
-	pkgrel = 2
+	pkgver = v1.1.272.g700f5a2
+	pkgrel = 1
 	url = https://github.com/intel/yarpgen
 	arch = x86_64
 	license = Apache-2.0
