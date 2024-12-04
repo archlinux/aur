@@ -18,11 +18,11 @@
 ###############################################################################
 _phpbase="83"
 _suffix=""
-pkgver="8.3.12"
+pkgver="8.3.14"
 pkgbase_rc=""
 pkgrel="1"
 pkgbase="php83"
-pkgdesc="PHP 8.3.12 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.3.14 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
@@ -128,7 +128,7 @@ source=(
     "php-apache.conf"
     "pear-config-patcher.php"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
-    "php-phpinfo.patch"
+    "php-phpinfo-8.4.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.3.patch"
 )
@@ -194,7 +194,7 @@ makedepends=(
 arch=(
 )
 _patches=(
-    "php-phpinfo.patch"
+    "php-phpinfo-8.4.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.3.patch"
 )
@@ -205,20 +205,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php83=8.3.12"
+    "php83=8.3.14"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php83=8.3.12"
+    "php83=8.3.14"
     "openssl"
 )
 _ext_depends_intl=(
-    "php83=8.3.12"
+    "php83=8.3.14"
     "icu"
 )
 _ext_depends_imap=(
-    "php83=8.3.12"
+    "php83=8.3.14"
     "pam"
     "krb5"
     "c-client"
@@ -226,45 +226,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php83=8.3.12"
+    "php83=8.3.14"
     "gd"
 )
 _ext_depends_mysql=(
-    "php83=8.3.12"
-    "php83-pdo=8.3.12"
-    "php83-openssl=8.3.12"
+    "php83=8.3.14"
+    "php83-pdo=8.3.14"
+    "php83-openssl=8.3.14"
 )
 _ext_depends_dba=(
-    "php83=8.3.12"
+    "php83=8.3.14"
     "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php83=8.3.12"
+    "php83=8.3.14"
     "unixodbc"
-    "php83-pdo=8.3.12"
+    "php83-pdo=8.3.14"
 )
 _ext_depends_pgsql=(
-    "php83=8.3.12"
+    "php83=8.3.14"
     "postgresql-libs"
-    "php83-pdo=8.3.12"
+    "php83-pdo=8.3.14"
 )
 _ext_depends_firebird=(
-    "php83=8.3.12"
+    "php83=8.3.14"
     "libfbclient"
-    "php83-pdo=8.3.12"
+    "php83-pdo=8.3.14"
 )
 _ext_depends_sqlite=(
-    "php83=8.3.12"
+    "php83=8.3.14"
     "sqlite"
-    "php83-pdo=8.3.12"
+    "php83-pdo=8.3.14"
 )
 _ext_depends_mbstring=(
-    "php83=8.3.12"
+    "php83=8.3.14"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php83=8.3.12"
+    "php83=8.3.14"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -406,7 +406,7 @@ prepare() {
     sed -E "s|(include_dir[\t ]*=.*php)|\1${_phpbase}${_suffix}|g" \
         -i scripts/php-config.in
 
-    if (( __phpbase < 84 )); then
+    if ((_phpbase < 84)); then
         echo "[SED] sapi/apache2handler/config.m4"
         sed -e '/APACHE_THREADED_MPM=/d' \
             -i sapi/apache2handler/config.m4
@@ -1472,7 +1472,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
-            'f774e28633e26fc8c5197f4dae58ec9e3ff87d1b4311cbc61ab05a7ad24bd131'
-            '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
+            '58b4cb9019bf70c0cbcdb814c7df79b9065059d14cf7dbf48d971f8e56ae9be7'
+            'c537b06cc5d2645b566021d038f28bc32c4037efc3605023b3d37196b3b744cc'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
             '267c8ea589c2aec13e481ebfa2ae2e78176ce070000ed25fbc613ab52abd4e21')
