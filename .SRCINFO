@@ -1,7 +1,7 @@
 pkgbase = bananas-appimage
 	pkgdesc = cross-platform, p2p screen sharing made simple
 	pkgver = 0.0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mistweaverco/bananas
 	arch = x86_64
 	license = MIT

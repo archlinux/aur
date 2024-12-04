@@ -2,7 +2,7 @@
 
 pkgname=bananas-appimage
 pkgver=0.0.16 # renovate: datasource=github-releases depName=mistweaverco/bananas
-pkgrel=1
+pkgrel=2
 pkgdesc="cross-platform, p2p screen sharing made simple"
 arch=('x86_64')
 url="https://github.com/mistweaverco/bananas"
@@ -25,8 +25,7 @@ _install_path="/opt/appimages/${_appimage_name}"
 
 package() {
     chmod +x "${_filename}"
-    mkdir -p squashfs-root/usr/share/icons/hicolor/{64x64,32x32}/apps
-    ./${_filename} --appimage-extract "usr/share/icons/hicolor/*/apps/.png" > /dev/null 2>&1
+    ./${_filename} --appimage-extract "usr/share/icons/hicolor/*/apps/bananas.png" > /dev/null 2>&1
     ./${_filename} --appimage-extract bananas.desktop > /dev/null 2>&1
     sed -i -E "s|Exec=AppRun|Exec=${_install_path}|" "squashfs-root/${_squashfs_desktop_file}"
     sed -i -E "s|Icon=bananas|Icon=bananas|" "squashfs-root/${_squashfs_desktop_file}"
