@@ -1,6 +1,6 @@
 pkgbase = superproductivity
 	pkgdesc = An advanced todo list app with timeboxing and time tracking capabilities
-	pkgver = 10.1.1
+	pkgver = 10.2.3
 	pkgrel = 1
 	url = https://super-productivity.com
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = superproductivity
 	makedepends = git
 	makedepends = npm
 	depends = bash
-	depends = electron32
+	depends = electron33
 	depends = hicolor-icon-theme
-	source = superproductivity-10.1.1.tar.gz::https://github.com/johannesjo/super-productivity/archive/v10.1.1.tar.gz
+	source = superproductivity-10.2.3.tar.gz::https://github.com/johannesjo/super-productivity/archive/v10.2.3.tar.gz
 	source = superproductivity.desktop
 	source = superproductivity.sh
-	sha256sums = 142d7e63cf8dc112fec8dc7c1ad3ba9342dd841984cc1d2a22ad50663eaf853e
+	sha256sums = c2469cb875b06f8bf3f994476b1a3219991833ee0faf15cab4f13c6589c46484
 	sha256sums = e3c71e1ba653ebb1662c8a10d55ed72dbec37eea911c1f18568d0c3e2d13f452
 	sha256sums = f9ca69e16223b3dcfa0d8ae9dbbff231255482d85f0d72ddcc5033dac890741e
 
