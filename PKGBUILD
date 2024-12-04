@@ -1,44 +1,65 @@
-_pkgname=sysrescueusbwriter
-_pkgver=1.0.2 
-_pkgrelease=release_${_pkgver}
-_appimage="${_pkgname}-x86_64.AppImage"
-_desktopfile="${_pkgname}.desktop"
+# Maintainer: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-pkgname=systemrescue-usbwriter-appimage
+_name="sysrescueusbwriter"
+_pkgname="systemrescue-usbwriter"
+pkgname="${_pkgname}-appimage"
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to write SystemRescue to a USB memory stick"
 arch=('x86_64')
-url="https://gitlab.com/systemrescue/systemrescue-usbwriter"
-license=('GPL3')
-depends=('fuse2')
-conflicts=()
-options=(!strip)
-source=("${_appimage}::https://fastly-cdn.system-rescue.org/download/usbwriter/${pkgver}/${_appimage}")
-sha256sums=('aa3a408942670419802678ef355166d677bb4067e18e836fcca2fa9169721281')
+url="https://gitlab.com/systemrescue/${_pkgname}"
+license=('GPL-3.0-or-later')
+depends=('fuse2' 'glibc' 'zlib')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+_pkgsrc="${_name}-${pkgver}"
+source=("README-${pkgver}.md::${url}/-/raw/${pkgver}/README.md?ref_type=tags&inline=false")
+source_x86_64=("${_pkgsrc}-x86_64.AppImage::https://fastly-cdn.system-rescue.org/download/usbwriter/${pkgver}/${_name}-x86_64.AppImage"
+               "${_pkgsrc}-x86_64.AppImage.asc::https://fastly-cdn.system-rescue.org/download/usbwriter/${pkgver}/${_name}-x86_64.AppImage.asc")
+sha512sums=('8cb01264048d83973be047fd36dea3519f63c7d91c9ca600b100a82746adae046afcfd61acd9986915d0111697e11cb5c5c95dbbf06d38206e8c6f800b0aaff2')
+sha512sums_x86_64=('833e08858feaf6b874f2642421843b3996878f34141f4606d911e6f9fec9e6a5ab7afc943a45799d907efdb50a114d1e8dffdcf4a38f1e7c2b9da58fd7268f1f'
+                   'SKIP')
+validpgpkeys=('0FF11AF081E98345594812037091115F8320B897') # Francois Dupoux 20210704 (Generated on 20210704)
+options=('!strip')
 
 prepare() {
-    chmod +x ${_appimage}
-    ./${_appimage} --appimage-extract > /dev/null
+  cd "${srcdir}"
+  rm -rf "${_pkgsrc}-${CARCH}"
+  mkdir -p "${_pkgsrc}-${CARCH}"
+
+  chmod +x "${_pkgsrc}-${CARCH}.AppImage"
+  ./"${_pkgsrc}-${CARCH}.AppImage" --appimage-extract > /dev/null
+
+  mv -f "squashfs-root"/* "${_pkgsrc}-${CARCH}"
+  rm -rf "squashfs-root"
+}
+
+pkgver() {
+  cd "${srcdir}/${_pkgsrc}-${CARCH}/usr/share/versions"
+  cat "${_name}"
 }
 
 build() {
-    # Fix permissions; .AppImage permissions are 700 for all directories
-    chmod -R a-x+rX squashfs-root/
+  cd "${srcdir}"
+  # Fix permissions; .AppImage permissions are 700 for all directories
+  chmod -R a-x+rX "${_pkgsrc}-${CARCH}"/
 }
 
 package() {
-    # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${_pkgname}/${_pkgname}.AppImage"
+  cd "${srcdir}"
+  install -vDm755 "${_pkgsrc}-${CARCH}.AppImage" "${pkgdir}/opt/${_name}/${_name}.AppImage"
 
-    # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${_desktopfile}" "${pkgdir}/usr/share/applications/${_desktopfile}"
+  cd "${srcdir}/${_pkgsrc}-${CARCH}"
+  install -vDm644 "${_name}.desktop" "${pkgdir}/usr/share/applications/${_name}.desktop"
+  install -vDm644 "${_name}.png"     "${pkgdir}/usr/share/pixmaps/${_name}.png"
 
-    # Icon images
-    install -dm755 "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/squashfs-root/sysrescueusbwriter.png" "${pkgdir}/usr/share/pixmaps/sysrescueusbwriter.png"
+  cd "${srcdir}/${_pkgsrc}-${CARCH}/usr/share/licenses/${_name}"
+  install -vDm644 "GPL-3.0-or-later" "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
+  
+  cd "${srcdir}/${_pkgsrc}-${CARCH}/usr/share/metainfo"
+  install -vDm644 "org.system_rescue.systemrescue_usb_writer.metainfo.xml" \
+    "${pkgdir}/usr/share/metainfo/org.system_rescue.systemrescue_usb_writer.metainfo.xml"
 
-    # Symlink executable
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${_pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+  install -vdm755 "${pkgdir}/usr/bin"
+  ln -vs "/opt/${_name}/${_name}.AppImage" "${pkgdir}/usr/bin/${_name}"
 }
