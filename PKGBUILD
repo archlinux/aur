@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-3d-effect
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Plugin for OBS Studio adding 3D effect filter"
 arch=("x86_64" "aarch64")
@@ -10,7 +10,7 @@ license=("GPL-2.0-or-later")
 depends=("obs-studio>=28" "glibc")
 makedepends=("cmake" "git")
 options=('debug')
-source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=063da575a5a0fb9bc0d5ef3bcfb41c3bf9f43075")
+source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=3871e7adda87b109a2a4eedcfc269d9037e181bc")
 sha256sums=("SKIP")
 
 build() {
