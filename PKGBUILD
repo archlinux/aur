@@ -3,13 +3,13 @@
 pkgname=colordf
 pkgdesc="Colored and configurable version of df"
 url="https://github.com/Calendulish/$pkgname"
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 license=('GPLv2')
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 makedepends=('util-linux-libs' 'cmake')
 source=("https://github.com/Calendulish/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('50626f0ed82303f6968f6806cad6e943f24616a36ad945c243a1b2866ab141cd')
+sha256sums=('181decf4a0d492f0dc0182e834b1255a28e1c07a68d9ad3b71a9fdc4dfce699e')
 
 build() {
     cd $pkgname-$pkgver
