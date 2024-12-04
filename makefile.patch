@@ -1,18 +1,40 @@
-19a20
-> #	-std=c++17
-25c26,27
-< 	-std=c++14 \
----
-> #	-std=c++14 \
-> 	-std=c++17 \
-35c37
-< 	-labsl_flags \
----
-> 	-labsl_flags_usage \
-62c64
-< LIBEDGETPU_CSRCS := $(TFROOT)/tensorflow/lite/c/common.c
----
-> #LIBEDGETPU_CSRCS := $(TFROOT)/tensorflow/lite/c/common.c
-142a145
->         $(TFROOT)/tensorflow/lite/c/common_internal.cc \
-
+--- Makefile	2024-12-04 15:13:30.008494334 +0100
++++ Makefile.new	2024-12-04 15:15:43.217709908 +0100
+@@ -22,7 +22,7 @@
+ LIBEDGETPU_CXXFLAGS := \
+ 	-fPIC \
+ 	-Wall \
+-	-std=c++14 \
++	-std=c++17 \
+ 	-DDARWINN_PORT_DEFAULT
+ 
+ LIBEDGETPU_LDFLAGS := \
+@@ -32,7 +32,7 @@
+ 	-Wl,--version-script=$(BUILDROOT)/tflite/public/libedgetpu.lds \
+ 	-fuse-ld=gold \
+ 	-lflatbuffers \
+-	-labsl_flags \
++	-labsl_flags_usage \
+ 	-labsl_flags_internal \
+ 	-labsl_flags_reflection \
+ 	-labsl_flags_marshalling \
+@@ -59,7 +59,7 @@
+ 	$(BUILDDIR)/$(BUILDROOT)
+ LIBEDGETPU_INCLUDES := $(addprefix -I,$(LIBEDGETPU_INCLUDES))
+ 
+-LIBEDGETPU_CSRCS := $(TFROOT)/tensorflow/lite/c/common.c
++# LIBEDGETPU_CSRCS := $(TFROOT)/tensorflow/lite/c/common.c
+ LIBEDGETPU_COBJS := $(call TOBUILDDIR,$(patsubst %.c,%.o,$(LIBEDGETPU_CSRCS)))
+ 
+ LIBEDGETPU_CCSRCS := \
+@@ -140,7 +140,9 @@
+ 	$(BUILDROOT)/tflite/edgetpu_c.cc \
+ 	$(BUILDROOT)/tflite/edgetpu_delegate_for_custom_op.cc \
+ 	$(BUILDROOT)/tflite/edgetpu_delegate_for_custom_op_tflite_plugin.cc \
+-	$(TFROOT)/tensorflow/lite/util.cc
++	$(TFROOT)/tensorflow/lite/util.cc \
++	$(TFROOT)/tensorflow/lite/core/c/common.cc \
++	$(TFROOT)/tensorflow/lite/array.cc
+ LIBEDGETPU_CCOBJS := $(call TOBUILDDIR,$(patsubst %.cc,%.o,$(LIBEDGETPU_CCSRCS)))
+ 
+ # In order to support direct and throttled mode - we need to compile two files
