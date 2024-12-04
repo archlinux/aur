@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=trep-tracker-bin
-pkgver=2.4.1_beta
+pkgver=2.5.0_beta
 _electronversion=31
 pkgrel=1
-pkgdesc="Minimal, fast and powerful task tracker/todo list app with task tagging and quick views.Prebuilt version.Use system-wide electron."
+pkgdesc="Minimal, fast and powerful task tracker/todo list app with task tagging and quick views.(Prebuilt version.Use system-wide electron)"
 arch=("x86_64")
 url="https://ltres.github.io/trep-tracker/browser/"
 _ghurl="https://github.com/ltres/trep-tracker"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-${pkgver//_/.}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1474cc75c1cfa6227cc160ae766af74b22c4cb3bf7b01e2777e17fc53666f680'
+sha256sums=('fe9ee8baf05258a24c839897adc9e15aa5e89fb6ca93f58cb6ca6b8f0c7a92e0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
