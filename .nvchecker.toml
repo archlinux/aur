@@ -1,4 +1,4 @@
 [firectl]
 source = "git"
 git = "https://github.com/firecracker-microvm/firectl.git"
-prefix = "v'
+prefix = "v"
