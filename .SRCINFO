@@ -1,0 +1,16 @@
+pkgbase = csdr-cwskimmer
+	pkgdesc = A simple DSP library and command-line tool for Software Defined Radio.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/luarvique/csdr-cwskimmer
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	depends = fftw
+	depends = csdr
+	source = csdr-cwskimmer::git+https://github.com/luarvique/csdr-cwskimmer.git#tag=1.0
+	md5sums = SKIP
+
+pkgname = csdr-cwskimmer

@@ -1,0 +1,23 @@
+# Maintainer: SteamedFish <steamedfish@hotmail.com>
+
+pkgname=csdr-cwskimmer
+pkgver=1.0
+pkgrel=1
+pkgdesc="A simple DSP library and command-line tool for Software Defined Radio."
+arch=('x86_64' 'aarch64')
+url="https://github.com/luarvique/csdr-cwskimmer"
+license=('GPL3')
+depends=('fftw' 'csdr')
+makedepends=('git' 'make')
+source=("$pkgname"::"git+https://github.com/luarvique/csdr-cwskimmer.git#tag=${pkgver}")
+md5sums=('SKIP')
+
+
+build() {
+    cd "$srcdir/$pkgname"
+	make all
+}
+
+package() {
+	install -Dm 0755 "$srcdir/$pkgname/csdr-cwskimmer" "$pkgdir/usr/bin/csdr-cwskimmer"
+}
