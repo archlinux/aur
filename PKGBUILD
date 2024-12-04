@@ -8,7 +8,7 @@ pkgver=1
 pkgrel=1
 pkgdesc='Meta package for packages enabling forwarding Pulseaudio/Pipewire-Pulse streams to DLNA devices'
 arch=('any')
-url='https://gitlab.com/xdegaye/pa-dlnao-dlna'
+url='https://gitlab.com/xdegaye/pa-dlna'
 license=('MIT')
 depends=('pa-dlna-git' 'python-libpulse')
 
