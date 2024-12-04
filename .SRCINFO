@@ -1,5 +1,5 @@
 pkgbase = p4v
-	pkgdesc = Perforce Visual Client
+	pkgdesc = Perforce Helix Visual Client
 	pkgver = 2024.3.2672664
 	pkgrel = 1
 	url = https://www.perforce.com
