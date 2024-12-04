@@ -11,7 +11,6 @@ depends=('bitbox-udev')
 makedepends=('libarchive' 'curl')
 source=("https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v${pkgver}/bitbox-${_pkgver}.x86_64.rpm")
 sha256sums=('4f2417af95808d947498955ad88e1939c329bc340b428457fa5c5da5d1472a46')
-options=(!strip docs !libtool !staticlibs emptydirs zipman purge !debug lto)
 
 package() {
   cd "$srcdir"

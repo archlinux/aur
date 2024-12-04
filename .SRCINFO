@@ -8,15 +8,6 @@ pkgbase = bitbox-wallet-app-rpm
 	makedepends = libarchive
 	makedepends = curl
 	depends = bitbox-udev
-	options = !strip
-	options = docs
-	options = !libtool
-	options = !staticlibs
-	options = emptydirs
-	options = zipman
-	options = purge
-	options = !debug
-	options = lto
 	source = https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v4.46.3/bitbox-4.46.3-1.x86_64.rpm
 	sha256sums = 4f2417af95808d947498955ad88e1939c329bc340b428457fa5c5da5d1472a46
 
