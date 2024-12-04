@@ -1,0 +1,20 @@
+pkgbase = miassistanttool-git
+	pkgdesc = MiAssistantTool
+	pkgver = 1.1.r17.g79ecedc
+	pkgrel = 1
+	url = https://github.com/offici5l/MiAssistantTool
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = Apache-2.0
+	makedepends = git
+	depends = curl
+	depends = glibc
+	depends = libusb
+	optdepends = miunlocktool: MiUnlockTool developed to retrieve encryptData(token) for Xiaomi devices for unlocking bootloader, It is compatible with all platforms.
+	provides = miassistanttool
+	conflicts = miassistanttool
+	source = miassistanttool-git::git+https://github.com/offici5l/MiAssistantTool.git
+	sha256sums = SKIP
+
+pkgname = miassistanttool-git
