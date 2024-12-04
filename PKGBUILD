@@ -18,11 +18,11 @@
 ###############################################################################
 _phpbase="82"
 _suffix=""
-pkgver="8.2.24"
+pkgver="8.2.26"
 pkgbase_rc=""
 pkgrel="1"
 pkgbase="php82"
-pkgdesc="PHP 8.2.24 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.2.26 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
@@ -129,7 +129,7 @@ source=(
     "pear-config-patcher.php"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
     "debian-php-8.2.patch"
-    "php-phpinfo.patch"
+    "php-phpinfo-8.4.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.2.patch"
 )
@@ -196,7 +196,7 @@ arch=(
 )
 _patches=(
     "debian-php-8.2.patch"
-    "php-phpinfo.patch"
+    "php-phpinfo-8.4.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.2.patch"
 )
@@ -207,20 +207,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php82=8.2.24"
+    "php82=8.2.26"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php82=8.2.24"
+    "php82=8.2.26"
     "openssl"
 )
 _ext_depends_intl=(
-    "php82=8.2.24"
+    "php82=8.2.26"
     "icu"
 )
 _ext_depends_imap=(
-    "php82=8.2.24"
+    "php82=8.2.26"
     "pam"
     "krb5"
     "c-client"
@@ -228,45 +228,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php82=8.2.24"
+    "php82=8.2.26"
     "gd"
 )
 _ext_depends_mysql=(
-    "php82=8.2.24"
-    "php82-pdo=8.2.24"
-    "php82-openssl=8.2.24"
+    "php82=8.2.26"
+    "php82-pdo=8.2.26"
+    "php82-openssl=8.2.26"
 )
 _ext_depends_dba=(
-    "php82=8.2.24"
+    "php82=8.2.26"
     "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php82=8.2.24"
+    "php82=8.2.26"
     "unixodbc"
-    "php82-pdo=8.2.24"
+    "php82-pdo=8.2.26"
 )
 _ext_depends_pgsql=(
-    "php82=8.2.24"
+    "php82=8.2.26"
     "postgresql-libs"
-    "php82-pdo=8.2.24"
+    "php82-pdo=8.2.26"
 )
 _ext_depends_firebird=(
-    "php82=8.2.24"
+    "php82=8.2.26"
     "libfbclient"
-    "php82-pdo=8.2.24"
+    "php82-pdo=8.2.26"
 )
 _ext_depends_sqlite=(
-    "php82=8.2.24"
+    "php82=8.2.26"
     "sqlite"
-    "php82-pdo=8.2.24"
+    "php82-pdo=8.2.26"
 )
 _ext_depends_mbstring=(
-    "php82=8.2.24"
+    "php82=8.2.26"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php82=8.2.24"
+    "php82=8.2.26"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -408,7 +408,7 @@ prepare() {
     sed -E "s|(include_dir[\t ]*=.*php)|\1${_phpbase}${_suffix}|g" \
         -i scripts/php-config.in
 
-    if (( __phpbase < 84 )); then
+    if ((_phpbase < 84)); then
         echo "[SED] sapi/apache2handler/config.m4"
         sed -e '/APACHE_THREADED_MPM=/d' \
             -i sapi/apache2handler/config.m4
@@ -1474,8 +1474,8 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
-            '80a5225746a9eb484475b312d4c626c63a88a037d8e56d214f30205e1ba1411a'
+            '54747400cb4874288ad41a785e6147e2ff546cceeeb55c23c00c771ac125c6ef'
             '169d52d6fc78e24e88a5923715d965bc247a62697c59d06d468c1908eba1c189'
-            '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
+            'c537b06cc5d2645b566021d038f28bc32c4037efc3605023b3d37196b3b744cc'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
             '267c8ea589c2aec13e481ebfa2ae2e78176ce070000ed25fbc613ab52abd4e21')
