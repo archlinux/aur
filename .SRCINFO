@@ -1,6 +1,6 @@
 pkgbase = python-hostlist
 	pkgdesc = Python module for handling LLNL hostlists
-	pkgver = 2.0.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://www.nsc.liu.se/~kent/python-hostlist/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python-hostlist
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://www.nsc.liu.se/~kent/python-hostlist/python-hostlist-2.0.0.tar.gz
-	b2sums = 998ead232fa12795eef051b6dae51e653cb05a53f27ac05406975a76cc077844169c9f815b6c972edd6ea8f801fe1f2a9494da303c4b0b79f8ef7c6d3ca629f8
+	source = https://www.nsc.liu.se/~kent/python-hostlist/python-hostlist-2.2.1.tar.gz
+	b2sums = 7c734c00d2dfa8d5ef83c2fbdfa5d6c21c8e00f87a3d12799c6a2da8a2027ba237375f0f5484e7d5ee989bd4aace044c886f4213a70805e98327e6fa46bc6f75
 
 pkgname = python-hostlist

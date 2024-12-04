@@ -2,7 +2,7 @@
 
 pkgname=python-hostlist
 pkgdesc="Python module for handling LLNL hostlists"
-pkgver=2.0.0
+pkgver=2.2.1
 pkgrel=1
 arch=(x86_64)
 url="https://www.nsc.liu.se/~kent/python-hostlist/"
@@ -10,7 +10,7 @@ license=(GPL-2.0-or-later)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=("https://www.nsc.liu.se/~kent/$pkgname/$pkgname-$pkgver.tar.gz")
-b2sums=('998ead232fa12795eef051b6dae51e653cb05a53f27ac05406975a76cc077844169c9f815b6c972edd6ea8f801fe1f2a9494da303c4b0b79f8ef7c6d3ca629f8')
+b2sums=('7c734c00d2dfa8d5ef83c2fbdfa5d6c21c8e00f87a3d12799c6a2da8a2027ba237375f0f5484e7d5ee989bd4aace044c886f4213a70805e98327e6fa46bc6f75')
 
 build() {
   cd "$pkgname-$pkgver"
