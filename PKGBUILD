@@ -6,7 +6,7 @@
 pkgname=ldid
 pkgver=2.1.5procursus7
 _pkgver=2.1.5-procursus7
-pkgrel=2
+pkgrel=3
 pkgdesc="Put real or fake signatures in Darwin binaries - Procursus fork"
 provides=('ldid' 'ldid2')
 conflicts=('ldid2')
@@ -15,14 +15,21 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/ProcursusTeam/ldid"
 license=('AGPL')
 depends=('openssl' 'libplist')
-source=("https://github.com/ProcursusTeam/ldid/archive/v$_pkgver.tar.gz")
-b2sums=('e30db705bb5cc8d4177725f98184b25407df1f338984ccfe9a6874e85077443b5b78e0c2a90c48f0b50af914630be8b759ad6efcd067208b69906883b821c54b')
+source=("https://github.com/ProcursusTeam/ldid/archive/v$_pkgver.tar.gz"
+        "https://github.com/ProcursusTeam/ldid/commit/f38a095aa0cc721c40050cb074116c153608a11b.patch")
+sha256sums=('04e461c6f02765e48fc9cc0b68d4dc353a9c46bc1c4d8bac0695509d1af1ff5e'
+            'b740c0b91542ab171c3b685bc544a0fb741c1e37d5e001b5b285679f485e40dc')
+
+prepare() {
+	cd $pkgname-$_pkgver
+	patch -Np1 -i ../f38a095aa0cc721c40050cb074116c153608a11b.patch
+}
 
 build() {
-	make -C ldid-$_pkgver
+	make -C $pkgname-$_pkgver
 }
 
 package() {
-	make -C ldid-$_pkgver install PREFIX="$pkgdir/usr"
-	install -Dm644 ldid-$_pkgver/_ldid "$pkgdir/usr/share/zsh/site-functions/_ldid"
+	make -C $pkgname-$_pkgver install PREFIX="$pkgdir/usr"
+	install -Dm644 $pkgname-$_pkgver/_$pkgname "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
