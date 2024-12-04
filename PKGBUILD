@@ -1,15 +1,16 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=un-lock-git
-pkgname=un-lock-git
-pkgver=r57.5661338
-pkgrel=1
-pkgdesc="un-lock developed to retrieve encryptData(token) for Xiaomi devices for unlocking bootloader"
+pkgname=miunlocktool-git
+_name=MiUnlockTool
+pkgver=1.5.7.r13.g7f56659
+pkgrel=2
+pkgdesc="MiUnlockTool developed to retrieve encryptData(token) for Xiaomi devices for unlocking bootloader, It is compatible with all platforms."
 arch=(any)
-url="https://github.com/offici5l/un-lock"
+url="https://github.com/offici5l/MiUnlockTool"
 license=('Apache-2.0')
-provides=(${pkgname%-git})
-conflicts=(${pkgname%-git})
+provides=(${pkgname%-git} ${basename%-git})
+conflicts=(${pkgname%-git} ${basename%-git})
 replaces=()
 _pydeps=(requests
     urllib3
@@ -20,8 +21,8 @@ depends=(
     python
     "${_pydeps[@]/#/python-}")
 makedepends=(git
-#     python-{setuptools,build,installer,wheel}
-    )
+    #     python-{setuptools,build,installer,wheel}
+)
 backup=()
 options=()
 install=${pkgname}.install
@@ -32,19 +33,18 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 package() {
-    cd "$pkgname"
-    install -Dm0755 offici5l-un-lock.py "$pkgdir/usr/bin/offici5l-un-lock"
+    cd "${srcdir}/$pkgname"
+    install -Dm0755 ${_name}.py "$pkgdir/usr/bin/${pkgname%-git}"
 }
-
