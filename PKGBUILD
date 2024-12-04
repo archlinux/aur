@@ -37,6 +37,7 @@ depends=(
 )
 
 makedepends=(
+    'jq'
     'npm'
     'nvm'
     'git'
@@ -49,9 +50,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/qier222/YesPlayMusic/archiv
         "$pkgname.desktop"
         "$pkgname.sh")
 
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('9b240d6b605d547c9dbc7d6222a0d2f28bfb0586201e01181e1d0e25bb83885a'
+            '8139caec51a8b831d7e41fccb4e89daecbe1119cc6a4be9fd9f4ed2848690a69'
+            '6947c3866ce502e80f4e4cda811a8c22e4b902f69fca4c02495fe1eccda4a63b'
+)
 
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
