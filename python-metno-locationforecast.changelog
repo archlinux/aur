@@ -1,18 +1,15 @@
 
-## [2.0.0] - 2024-11-25
+## [2.1.0] - 2024-12-03
 
-Major release. This release deprecates support for old versions of Python and
-improves the handling of timezones.
+A minor release adding the ability to convert from millimetres to inches and fixing
+a minor bug.
 
-### Deprecated
+### Added
 
-- Support for Python versions 3.6, 3.7, and 3.8. The new minimum version
-  supported is 3.9. This was done to take advantage of the
-  [zoneinfo](https://docs.python.org/3/library/zoneinfo.html) module added in
-  Python 3.9.
+- The ability to convert precipitation from millimetres to inches
 
-### Updated
+### Fixed
 
-- Minimum supported requests version updated to v2.25.1
-- Adds better support for timezones to the `intervals_for` and `intervals
-  between` methods on the `Data` class.
+- A minor bug in the `Variable.convert_to` method that would cause the incorrect
+  error to be raised when trying to convert a unit that has no valid
+  conversions.

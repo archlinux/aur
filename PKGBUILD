@@ -4,8 +4,8 @@
 pkgname='python-metno-locationforecast'
 _pkgname="${pkgname#python-}"
 epoch=1
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Python interface for MET Norway's Locationforecast/2.0 weather service"
 arch=('any')
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -51,12 +51,12 @@ package() {
 }
 
 sha256sums=(
-  '4ec5b8284bf1dca04c040a79823abff84101dcff68fb6fe418c18757329314a9'
-  'a4945a9dc6883e3ec08ef06f62768b2c75f6d1b16d31cd4c15a9bf44a8a42922'
+  '6046af64526af65a5f92ff1ac251d498762346091d323c4c84a1508a165533ab'
+  'ea05bdee67fa8f8eb2bb2e361c6b461eea5cfabbe5855dc6de533b095878ee07'
 )
 b2sums=(
-  '04429571d96dc4ecd6f11c5f8c0d47ee6ff035701415f203043505788937accd8c6e07b5937f7a95c6b53d6fdb1cca54e0647b3dd01bc5863f59a9b2780ec989'
-  '6a78ac2d939952a72e374c7bdc8bce05ba6229892710aa25699c1dc57d2df1000857ef6b361088249bd634d93ef126b82f77e305ac91d9cc930944a5c4fcc708'
+  '65374be3a52a31d9eb91230864f070ce6b59da661d9c21258bb1a999ff536dc054ba4b2201836cfc28483728d321cc268f983978bcf62e5d158260d13e58d888'
+  '75cbc5655b7d19c87bddf2b42d8fec593273d84cbfa67e7b34ed7f7547e445dba85bb7eaff015d75c3aaace00c3bfa83822fda7683b93c54739950bfc76e3405'
 )
 
 # eof
