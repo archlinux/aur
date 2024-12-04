@@ -1,8 +1,9 @@
 [Desktop Entry]
+Version=0.3.9
+Type=Application
 Name=YesPlayMusic
 Comment=A third-party music player for Netease Music
 Exec=yesplaymusic
 Icon=yesplaymusic
 Terminal=false
-Type=Application
 Categories=AudioVideo;Player;Music;
