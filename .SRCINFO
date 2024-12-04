@@ -1,6 +1,6 @@
 pkgbase = python-rnapolis
 	pkgdesc = A Python library containing RNA-related bioinformatics functions and classes
-	pkgver = 0.4.12
+	pkgver = 0.4.13
 	pkgrel = 1
 	url = https://github.com/tzok/rnapolis-py
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-rnapolis
 	depends = python-scipy
 	depends = python-rna
 	optdepends = highs: Linear optimization software [when present, pseudoknot order assignment is solved much faster in RNApolis]
-	source = https://files.pythonhosted.org/packages/source/r/rnapolis/rnapolis-0.4.12.tar.gz
-	sha256sums = 27b513e038463f2800e210bfb848e4c499bb55899294f0657665658ffbf10233
+	source = https://files.pythonhosted.org/packages/source/r/rnapolis/rnapolis-0.4.13.tar.gz
+	sha256sums = 66c0fb4fbb382d95fc375152e12e2c5e6073afc0505ccae4a7c082a54b30cbb9
 
 pkgname = python-rnapolis
