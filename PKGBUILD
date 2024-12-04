@@ -1,5 +1,5 @@
 # Maintainer: Hikari <xec[at]domain:tuta.io>
-pkgname=bitbox-wallet-app
+pkgname=bitbox-wallet-app-rpm
 pkgver=4.46.3
 _pkgver=4.46.3-1
 pkgrel=1
