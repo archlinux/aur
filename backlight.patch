@@ -1,0 +1,42 @@
+From git@z Thu Jan  1 00:00:00 1970
+Subject: [PATCH] drm/amd/display: Fix programming backlight on OLED panels
+From: Mario Limonciello <mario.limonciello@amd.com>
+Date: Wed, 27 Nov 2024 21:22:00 -0600
+Message-Id: <20241128032200.2085398-1-superm1@kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+commit 38077562e0594 ("drm/amd/display: Implement new
+backlight_level_params structure") adjusted DC core to require
+the backlight type to be programmed in the dc link when changing
+brightness.  This isn't initialized in amdgpu_dm for OLED panels
+though which broke brightness.
+
+Explicitly initialize when aux support is enabled.
+
+Reported-and-tested-by: Luke Jones <luke@ljones.dev>
+Closes: https://gitlab.freedesktop.org/drm/amd/-/issues/3792
+Fixes: 38077562e059 ("drm/amd/display: Implement new backlight_level_params structure")
+Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+Reviewed-by: Harry Wentland <harry.wentland@amd.com>
+---
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+index 19a58630e7740..243cee2841312 100644
+--- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
++++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+@@ -3483,6 +3483,8 @@ static void update_connector_ext_caps(struct amdgpu_dm_connector *aconnector)
+ 		caps->aux_support = false;
+ 	else if (amdgpu_backlight == 1)
+ 		caps->aux_support = true;
++	if (caps->aux_support)
++		aconnector->dc_link->backlight_control_type = BACKLIGHT_CONTROL_AMD_AUX;
+ 
+ 	luminance_range = &conn_base->display_info.luminance_range;
+ 
+-- 
+2.43.0
+
