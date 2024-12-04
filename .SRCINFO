@@ -1,6 +1,6 @@
 pkgbase = systemd-fml
 	pkgdesc = systemd with machine id from hw patch: https://github.com/systemd/systemd/pull/32086
-	pkgver = 256.8
+	pkgver = 256.9
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -53,7 +53,7 @@ pkgbase = systemd-fml
 	makedepends = lib32-gcc-libs
 	makedepends = python-pefile
 	conflicts = mkinitcpio<38-1
-	source = systemd-fml::git+https://github.com/systemd/systemd#tag=v256.8
+	source = systemd-fml::git+https://github.com/systemd/systemd#tag=v256.9
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = 0002_added_machine_id_firmware_option.patch
 	source = arch.conf
@@ -71,7 +71,7 @@ pkgbase = systemd-fml
 	source = 30-systemd-tmpfiles.hook
 	source = 30-systemd-udev-reload.hook
 	source = 30-systemd-update.hook
-	sha512sums = 4ffda9aee045ac793e87a86cdee1d089960542e21b44993381095399baacdf79c1867d36cdc242767acee725603ea70f942f8fd61e0a69fe0c888b0e4dd17a37
+	sha512sums = 2f85fc1889e402ab185a6aef5a301a70370da8b0d5e505c6190e215e9d78e56119241a24df351cdac751c59239f691c8997dfda7661d2e7d6c98b868d0eaaef4
 	sha512sums = 3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e
 	sha512sums = b7d42b3fdfeb688d2b8bd3419fe2c5f3ba5fc71b89348ea716574b676b8c42167c6cf499ff733eb221438485f5ae084e2486fa3b4d07171086b7461731b5721f
 	sha512sums = 61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648
@@ -97,7 +97,7 @@ pkgname = systemd-fml
 	license = CC0-1.0
 	license = GPL-2.0-or-later
 	license = MIT-0
-	depends = systemd-libs-fml=256.8
+	depends = systemd-libs-fml=256.9
 	depends = acl
 	depends = libacl.so
 	depends = bash
@@ -144,9 +144,9 @@ pkgname = systemd-fml
 	optdepends = libp11-kit: support PKCS#11
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=256.8
-	provides = udev=256.8
-	provides = systemd=256.8
+	provides = systemd-tools=256.9
+	provides = udev=256.9
+	provides = systemd=256.9
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -187,35 +187,35 @@ pkgname = systemd-libs-fml
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = systemd-libs=256.8
+	provides = systemd-libs=256.9
 	conflicts = libsystemd
 	conflicts = systemd-libs
 	replaces = libsystemd
 
 pkgname = systemd-resolvconf-fml
 	pkgdesc = systemd resolvconf replacement (for use with systemd-resolved)
-	depends = systemd-fml=256.8
+	depends = systemd-fml=256.9
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=256.8
+	provides = systemd-resolvconf=256.9
 	conflicts = resolvconf
 	conflicts = systemd-resolvconf
 
 pkgname = systemd-sysvcompat-fml
 	pkgdesc = sysvinit compat for systemd
-	depends = systemd-fml=256.8
-	provides = systemd-sysvcompat=256.8
+	depends = systemd-fml=256.9
+	provides = systemd-sysvcompat=256.9
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 
 pkgname = systemd-ukify-fml
 	pkgdesc = Combine kernel and initrd into a signed Unified Kernel Image
-	depends = systemd-fml=256.8
+	depends = systemd-fml=256.9
 	depends = binutils
 	depends = python-cryptography
 	depends = python-pefile
 	optdepends = python-pillow: Show the size of splash image
 	optdepends = sbsigntools: Sign the embedded kernel
 	provides = ukify
-	provides = systemd-ukify=256.8
+	provides = systemd-ukify=256.9
 	conflicts = systemd-ukify
