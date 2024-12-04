@@ -1,7 +1,7 @@
 pkgbase = pandora-box
 	pkgdesc = A Simple Mihomo GUI.(Written in Go)
 	pkgver = 0.2.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/snakem982/Pandora-Box
 	arch = any
 	license = GPL-3.0-only

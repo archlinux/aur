@@ -3,7 +3,7 @@ pkgname=pandora-box
 _pkgname=Pandora-Box
 pkgver=0.2.22
 _nodeversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="A Simple Mihomo GUI.(Written in Go)"
 arch=('any')
 url="https://github.com/snakem982/Pandora-Box"
@@ -61,7 +61,7 @@ build() {
     wails build -tags with_gvisor -skipbindings -m -s -trimpath -nosyncgomod -platform linux
 }
 package() {
-    install -Dm755 "${srcdir}/${_pkgname}-${pkgver}/build/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/build/appicon.png" "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm755 "${srcdir}/${_pkgname}-${pkgver}/build/bin/${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/build/appicon.png" "${srcdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
