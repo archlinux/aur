@@ -6,7 +6,7 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=131.0.6778.69
+pkgver=131.0.6778.108
 pkgrel=1
 _launcher_ver=8
 _manual_clone=1
