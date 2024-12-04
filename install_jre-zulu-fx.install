@@ -1,0 +1,50 @@
+THIS_JRE='java-23-fx-zulujdk'
+
+fix_default() {
+  if [ ! -x /usr/bin/java ]; then
+    /usr/bin/archlinux-java unset
+    echo ""
+  else
+    /usr/bin/archlinux-java get
+  fi
+}
+
+post_install() {
+  default=$(fix_default)
+  case ${default} in
+    "")
+      /usr/bin/archlinux-java set ${THIS_JRE}
+      ;;
+    ${THIS_JRE})
+      # Nothing
+      ;;
+    *)
+      echo "Default Java environment is already set to '${default}'"
+      echo "See 'archlinux-java help' to change it"
+      ;;
+  esac
+
+  if [ ! -f /etc/ssl/certs/java/cacerts ]; then
+    /usr/bin/update-ca-trust
+  fi
+}
+
+post_upgrade() {
+  default=$(fix_default)
+  if [ -z "${default}" ]; then
+    /usr/bin/archlinux-java set ${THIS_JRE}
+  fi
+
+  if [ ! -f /etc/ssl/certs/java/cacerts ]; then
+    /usr/bin/update-ca-trust
+  fi
+}
+
+pre_remove() {
+  if [ "x$(fix_default)" = "x${THIS_JRE}" ]; then
+    # Check binary is still available
+    if [ -x /usr/lib/jvm/${THIS_JRE}/bin/java ]; then
+      /usr/bin/archlinux-java unset
+    fi
+  fi
+}
