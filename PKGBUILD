@@ -35,9 +35,13 @@
 # Set to anything but null to activate.
 : "${_use_current:=""}"
 
-# Apply optimizations from Linux-clear to the defconfig.
-# This is useful for cases when _use_current is used but
-# Linux-clear modifications are necessary for some reason.
+# Apply selected optimizations chosen by
+# the package maintainers to the config.
+#
+# Only takes effect if '_use_current'
+# is enabled. Keep disabled if you want
+# to reuse your existing kernel configuration
+# without any changes being applied to it.
 #
 # Set to anything but null to activate.
 : "${_optimize_defconfig:=""}"
