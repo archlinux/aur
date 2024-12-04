@@ -1,4 +1,5 @@
 grafana-alloy-bin-*.zip
 grafana-alloy-bin-*.pkg.tar.zst
+grafana-alloy-bin-*.deb
 pkg/
 src/
