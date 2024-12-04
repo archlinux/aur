@@ -1,6 +1,6 @@
 pkgbase = bananas-appimage
 	pkgdesc = cross-platform, p2p screen sharing made simple
-	pkgver = 0.0.14
+	pkgver = 0.0.16
 	pkgrel = 1
 	url = https://github.com/mistweaverco/bananas
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = bananas-appimage
 	depends = hicolor-icon-theme
 	depends = glibc
 	options = !strip
-	source = https://github.com/mistweaverco/bananas/releases/download/v0.0.14/bananas_x86_64.AppImage
-	source = https://github.com/mistweaverco/bananas/raw/v0.0.14/LICENSE
-	sha256sums = f01c77e5b10342804ad4290dac013c46eaed46a08e907e39b15020ebc98a3486
+	source = https://github.com/mistweaverco/bananas/releases/download/v0.0.16/bananas_x86_64.AppImage
+	source = https://github.com/mistweaverco/bananas/raw/v0.0.16/LICENSE
+	sha256sums = 4530903fb728449894b32fa4e45959ce203039a3ea8ddcd1f131995dc13f51e0
 	sha256sums = 5ba8d10757c4ce9b880422e3746897d89b27647febd1f70ab5021f9ac10ade95
 
 pkgname = bananas-appimage
