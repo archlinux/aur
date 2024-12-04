@@ -1,7 +1,7 @@
 pkgbase = openbugs
 	pkgdesc = OpenBUGS, a software package for performing Bayesian inference Using Gibbs Sampling
 	pkgver = 3.2.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.mrc-bsu.cam.ac.uk/software
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = openbugs
 	makedepends = automake
 	makedepends = perl
 	depends = lib32-gcc-libs
-	source = file://OpenBUGS-3.2.3.tar.gz
+	source = https://github.com/chjackson/openbugsdoc/raw/refs/heads/main/OpenBUGS-3.2.3.tar.gz
 	b2sums = 3ee14aae726a80c7105b4b069f0e598144d9680a0c3e6f0884d0630b0923419e03b23d14c287bc63f960cb17449f2f15817303901932815249a798d11edeae77
 
 pkgname = openbugs
