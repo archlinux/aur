@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=frpc-desktop-bin
 _pkgname=Frpc-Desktop
-pkgver=1.1.4
+pkgver=1.1.5
 _electronversion=26
 pkgrel=1
 pkgdesc="frp cross-platform desktop client, visual configuration, easily achieve internal network penetration! Supports all frp versions.frp跨平台桌面客户端，可视化配置，轻松实现内网穿透！ 支持所有frp版本.(Prebuilt version.Use system-wide electron)"
@@ -28,8 +28,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 sha256sums=('11e11a6ea4db42a2465df8f3a30f90fcf0835facb26823c4d2ce0c12a00acf8c'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('5e8160d20d0ee49ecbf40e8e7544340168c312f223c1cf49cd3501ff765de1a6')
-sha256sums_x86_64=('73078687d530df7475e5d1506410be56931f455add38b1ad96417e8c85ef6e9a')
+sha256sums_aarch64=('7a66ace5a70fb38386894467389dc4cda4c27176cb223c775c3aa3068b45b204')
+sha256sums_x86_64=('27417935e4faca296dfc2cf689a4b2cedade410dba44724c76fd096416577460')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
