@@ -22,7 +22,7 @@
 pkgname=salt-onedir
 provides=('salt')
 pkgver=3007.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Central system and configuration manager (onedir installation +[${SALT_ADDITIONAL_PIP_PACKAGES}])"
 arch=('x86_64' 'aarch64')
 url='http://saltstack.org/'
@@ -42,7 +42,7 @@ source=("https://github.com/saltstack/salt/releases/download/v${pkgver}/salt-${p
 sha256sums=('b933ac4cb3e4b1118b46dada55c9cc6bdc6f0f94b4c92877aec44b25c6a28c9a'
             'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
             '7619465e571469e5a08cd507d3d49e0e003256d79a1ada61971edecad0149ea8'
-            '76be22ab2cb8cace81db74dfdbb7320c2125dcdd90e7c0518a58f40dc4f9f054')
+            '39bbbdf2100ccb8d498e8a584465bbefda23040bfe0b1526b4ce223c5810612b')
 
 prepare() {
   cd "${srcdir}/salt-${pkgver}"
