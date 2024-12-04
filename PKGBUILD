@@ -1,9 +1,9 @@
-# Maintainer: Andrew Sun <adsun701@ at mail dot com>
+# Contributor: Andrew Sun <adsun701@ at mail dot com>
 # Contributor: Aetf <aetf at unlimitedcodeworks dot xyz>
 
 _name=globus_sdk
 pkgname=python-globus-sdk
-pkgver=3.48.0
+pkgver=3.49.0
 pkgrel=1
 pkgdesc="This SDK provides a convenient Pythonic interface to Globus REST APIs, including the Transfer API and the Globus Auth API."
 arch=('any')
@@ -12,7 +12,7 @@ license=('Apache')
 depends=('python' 'python-cryptography' 'python-six' 'python-requests' 'python-pyjwt' 'python-typing_extensions')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('54eab5bbed54924d7d1ad15f7059b6efdb7ef1a1d7c49e06a662b4f3f85428de')
+sha256sums=('6268a1a9ea04cce0eb06cd1a02eeaa8a04dad8682e16a6c65520b743446d0479')
 
 prepare() {
   cd "${srcdir}/${_name}-${pkgver}"
