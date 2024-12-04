@@ -2,12 +2,12 @@
 
 pkgname=walker
 pkgver=0.10.11
-pkgrel=2
+pkgrel=3
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
 arch=('x86_64')
 license=('MIT')
-makedepends=('go')
+makedepends=('go' 'gobject-introspection')
 depends=('gtk4-layer-shell' 'libvips')
 optdepends=('wl-clipboard: for clipboard module' 'libqalculate: for calculator module')
 conflicts=('walker')

@@ -8,6 +8,7 @@ arch = x86_64
 provides = walker
 conflicts = walker
 makedepends = go
+makedepends = gobject-introspection
 depends = gtk4-layer-shell
 depends = libvips
 optdepends = wl-clipboard: for clipboard module
