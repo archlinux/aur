@@ -5,7 +5,7 @@
 pkgbase=gpgme
 pkgname=(gpgme qgpgme-qt6 python-gpgme)
 pkgver=1.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A C wrapper library for GnuPG'
 arch=('x86_64')
 url='https://www.gnupg.org/related_software/gpgme/'
@@ -56,6 +56,10 @@ build() {
     # use a PEP517 workflow to get a reproducible Python package
     # NOTE: top_builddir is required so that the build takes place against local gpgme, not system gpgme
     cd lang/python/
+    # add symlinks for the "gpg" module and header files so that the wheel build process can find it
+    ln -sv ./src gpg
+    ln -sv ../../conf/config.h config.h
+    ln -sv ../../src/data.h data.h
     top_builddir="$srcdir/$pkgbase-$pkgver" python -m build --wheel --no-isolation
   )
 }
@@ -89,7 +93,6 @@ package_gpgme() {
 
   # split qgpgme
   rm -r "${pkgdir}"/usr/lib/{cmake/QGpgmeQt6/,libqgpgmeqt6.*}
-  rm -r "${pkgdir}"/usr/lib/python*
   rm -r "${pkgdir}"/usr/include/qgpgme-qt6/
   install -vDm 644 LICENSES "$pkgdir/usr/share/licenses/$pkgname/MIT.txt"
 }
