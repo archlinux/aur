@@ -3,7 +3,7 @@
 # Contributor: Chewing_Bever
 pkgname=fish-lsp-git
 _pkgname=${pkgname%-git}
-pkgver=r318.ed156da
+pkgver=r321.9e1ffad
 pkgrel=1
 pkgdesc="LSP implementation for the fish shell language"
 # tree-sitter contains compiled files
@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://github.com/ndonfris/fish-lsp/"
 license=('MIT')
 depends=('fish' 'nodejs' 'python')
-makedepends=('git' 'yarn' 'typescript')
+makedepends=('git' 'yarn') # 'typescript' tsc doesn’t work
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$pkgname::git+https://github.com/ndonfris/fish-lsp.git")
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
     cd "$pkgname"
-    tsc
+    ./node_modules/.bin/tsc
     ./bin/fish-lsp complete >./fish-lsp.fish
 }
 
