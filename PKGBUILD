@@ -4,7 +4,7 @@
 pkgname=fish-lsp-git
 _pkgname=${pkgname%-git}
 pkgver=r321.9e1ffad
-pkgrel=1
+pkgrel=2
 pkgdesc="LSP implementation for the fish shell language"
 # tree-sitter contains compiled files
 arch=('x86_64')
