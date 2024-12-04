@@ -2,7 +2,7 @@
 # Contributor: FirstAirBender <noblechuk5 [at] web [dot] de>
 
 pkgname=pacman-hook-list-systemd-units
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Prints new systemd units on package installation or upgrade."
 arch=('any')
@@ -10,7 +10,7 @@ license=('Unlicense')
 depends=('systemd')
 makedepends=('pacutils')
 source=('list-systemd-units.sh')
-sha512sums=('e3b6c1bd3b50c3f61ad8f35501c4e9b9f64b81ef5e1de9ae200d22c251b624fbfb721fbe55ebc2ebfe02606b3cbab1706bc1d5fa1687a2424d4fdc77499e8645')
+sha512sums=('7d4454c57d3735c0d77a4af4f675c9416301d264368ab9801f8d211c5cf7c38866d350e4d80f8853db7909023c8d38af41b5d3dfa2c77ae672203a83b9ba880e')
 
 build() {
 	{
