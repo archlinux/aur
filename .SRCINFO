@@ -1,0 +1,19 @@
+pkgbase = karpor-bin
+	pkgdesc = Intelligence for Kubernetes. World's most promising Kubernetes Visualization Tool for Developer and Platform Engineering teams.(Written in Go,prebuilt version)
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://karpor-demo.kusionstack.io/
+	arch = aarch64
+	arch = x86_64
+	license = Apache-2.0
+	depends = kubectl
+	depends = helm
+	depends = kind
+	provides = karpor
+	conflicts = karpor
+	source_aarch64 = karpor-0.5.5-aarch64.tar.gz::https://github.com/KusionStack/karpor/releases/download/v0.5.5/karpor_0.5.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0b8d029a90385cbe27401cac31acb87bbc55884412149869c282d89dd66f4232
+	source_x86_64 = karpor-0.5.5-x86_64.tar.gz::https://github.com/KusionStack/karpor/releases/download/v0.5.5/karpor_0.5.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = d6f639316e91443188a1d2aee2cb1d2b2e9763fc66562b8b3958027a64d23465
+
+pkgname = karpor-bin
