@@ -3,7 +3,7 @@
 # Contributor: robertfoster
 
 pkgname=rtpengine
-pkgver=13.0.1.4
+pkgver=13.0.1.5
 pkgrel=1
 pkgdesc='The Sipwise media proxy for Kamailio'
 url="https://github.com/sipwise/rtpengine"
@@ -56,29 +56,29 @@ backup=(
   'etc/rtpengine/rtpengine.conf'
   'etc/rtpengine/rtpengine-recording.conf'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/mr${pkgver}.tar.gz"
         'rtpengine.sysusers')
-sha256sums=('80f3c97b9d556333a30bfa6bbfca4fb042d8a077fd577f3cd42b79cf7faf79e1'
+sha256sums=('087c3c4279d3a6390138ff6a727ec65b216735522e71e2da1dcdd9f47fb55f1c'
             'ea1580fbf7372309533e56d2a33714dc4d58311429ba60bf25b1bddee5ff7231')
 
 package() {
-  cd "${pkgname}-mr${pkgver}"
+  cd ${pkgname}-mr${pkgver}
 
   # Install utils
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR=${pkgdir} install
   # Install daemon
-  install -Dvm644 -t "${pkgdir}/etc/${pkgname}" etc/{rtpengine,rtpengine-recording}.conf
-  install -Dvm644 -t "${pkgdir}/usr/lib/systemd/system" el/{rtpengine,rtpengine-recording}.service
+  install -Dvm644 -t ${pkgdir}/etc/${pkgname} etc/{rtpengine,rtpengine-recording}.conf
+  install -Dvm644 -t ${pkgdir}/usr/lib/systemd/system el/{rtpengine,rtpengine-recording}.service
   # Uses /etc/sysconfig path
-  install -Dvm644 el/rtpengine.sysconfig "${pkgdir}/etc/sysconfig/rtpengine"
-  install -Dvm644 el/rtpengine-recording.sysconfig "${pkgdir}/etc/sysconfig/rtpengine-recording"
-  install -Dvm644 "${srcdir}/rtpengine.sysusers" "${pkgdir}/usr/lib/sysusers.d/rtpengine.conf"
+  install -Dvm644 el/rtpengine.sysconfig ${pkgdir}/etc/sysconfig/rtpengine
+  install -Dvm644 el/rtpengine-recording.sysconfig ${pkgdir}/etc/sysconfig/rtpengine-recording
+  install -Dvm644 ${srcdir}/rtpengine.sysusers ${pkgdir}/usr/lib/sysusers.d/rtpengine.conf
   # Create spool directory
-  install -dv "${pkgdir}/var/spool/rtpengine"
+  install -dv ${pkgdir}/var/spool/rtpengine
   # Install perl modules
-  install -Dvm644 -t "${pkgdir}/usr/share/perl5/vendor_perl/NGCP" perl/NGCP/Rtpengine.pm
-  install -Dvm644 -t "${pkgdir}/usr/share/perl5/vendor_perl/NGCP/Rtpclient" perl/NGCP/Rtpclient/*.pm
-  install -Dvm644 -t "${pkgdir}/usr/share/perl5/vendor_perl/NGCP/Rtpengine" perl/NGCP/Rtpengine/*.pm
+  install -Dvm644 -t ${pkgdir}/usr/share/perl5/vendor_perl/NGCP perl/NGCP/Rtpengine.pm
+  install -Dvm644 -t ${pkgdir}/usr/share/perl5/vendor_perl/NGCP/Rtpclient perl/NGCP/Rtpclient/*.pm
+  install -Dvm644 -t ${pkgdir}/usr/share/perl5/vendor_perl/NGCP/Rtpengine perl/NGCP/Rtpengine/*.pm
 }
 
 # vim:set ts=2 sw=2 et:
