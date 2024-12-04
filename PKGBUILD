@@ -3,7 +3,7 @@
 # Ex-Contributor: Malacology <guoyizhang at malacology dot com>
 
 pkgname=zotero-beta-bin
-_pkgver=7.0.11-beta.5+8317f7783
+_pkgver=7.0.11-beta.7+6740115cf
 pkgver="${_pkgver//[-+]/_}"
 pkgrel=1
 pkgdesc="Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share research."
@@ -23,8 +23,8 @@ source=('zotero-absolute-path-fix.patch')
 source_x86_64=("Zotero-${_pkgver}_linux-${CARCH}.tar.bz2::https://download.zotero.org/client/beta/${_pkgver//+/%2B}/Zotero-${_pkgver//+/%2B}_linux-x86_64.tar.bz2")
 source_i686=("Zotero-${_pkgver}_linux-${CARCH}.tar.bz2::https://download.zotero.org/client/beta/${_pkgver//+/%2B}/Zotero-${_pkgver//+/%2B}_linux-x86_64.tar.bz2")
 sha256sums=('2ef0a68483c4beaa18922cc88f13ad1a7239f7d4c460d8a5d4838a02ca419c28')
-sha256sums_x86_64=('79906ae4a4c09af5e8048b5b093f52a3acf68c63c4b76e0155d8c57363078974')
-sha256sums_i686=('79906ae4a4c09af5e8048b5b093f52a3acf68c63c4b76e0155d8c57363078974')
+sha256sums_x86_64=('db573972515519d41c4ac42a101825a3d2fe7fc9109b93de4fb15144aab339e4')
+sha256sums_i686=('db573972515519d41c4ac42a101825a3d2fe7fc9109b93de4fb15144aab339e4')
 
 prepare() {
 	patch --directory="Zotero_linux-${CARCH}" --forward --strip=1 --input="${srcdir}/zotero-absolute-path-fix.patch"
