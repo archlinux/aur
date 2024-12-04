@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+$url")
+source=("checks-parser-git::git+$url")
 noextract=()
 sha256sums=('SKIP')
 
