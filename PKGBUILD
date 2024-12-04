@@ -2,7 +2,7 @@
 
 pkgname=pact-git
 _pkgname=${pkgname%-git}
-pkgver=1
+pkgver=r10.ecef660
 pkgrel=1
 pkgdesc="A simple wrapper for the pacman package manager similar to apt."
 arch=('any')
