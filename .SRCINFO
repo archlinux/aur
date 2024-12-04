@@ -1,0 +1,19 @@
+pkgbase = eml_to_pdf-git
+	pkgdesc = Convert .eml (email) files to PDF using Python.
+	pkgver = r7.13260f7
+	pkgrel = 1
+	url = https://github.com/klokie/eml-to-pdf
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	makedepends = git
+	depends = python-pdfkit
+	provides = eml_to_pdf
+	conflicts = eml_to_pdf
+	source = eml_to_pdf::git+https://github.com/klokie/eml-to-pdf
+	sha256sums = SKIP
+
+pkgname = eml_to_pdf-git
