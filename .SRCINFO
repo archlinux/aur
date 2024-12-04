@@ -1,7 +1,7 @@
 pkgbase = ahriman
 	pkgdesc = ArcH linux ReposItory MANager
 	pkgver = 2.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ahriman.readthedocs.io/
 	arch = any
 	license = GPL-3.0-or-later
@@ -51,7 +51,7 @@ pkgname = ahriman-triggers
 pkgname = ahriman-web
 	pkgdesc = ArcH linux ReposItory MANager, web server
 	depends = ahriman-core=2.16.0
-	depends = python-aiohttp-apispec>=3.0.0
+	depends = python-aiohttp-apispec-git
 	depends = python-aiohttp-cors
 	depends = python-aiohttp-jinja2
 	optdepends = python-aioauth-client: OAuth2 authorization support

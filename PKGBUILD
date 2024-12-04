@@ -3,7 +3,7 @@
 pkgbase='ahriman'
 pkgname=('ahriman' 'ahriman-core' 'ahriman-triggers' 'ahriman-web')
 pkgver=2.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ArcH linux ReposItory MANager"
 arch=('any')
 url="https://ahriman.readthedocs.io/"
@@ -71,7 +71,7 @@ package_ahriman-triggers() {
 package_ahriman-web() {
     pkgname='ahriman-web'
     pkgdesc="ArcH linux ReposItory MANager, web server"
-    depends=("$pkgbase-core=$pkgver" 'python-aiohttp-apispec>=3.0.0' 'python-aiohttp-cors' 'python-aiohttp-jinja2')
+    depends=("$pkgbase-core=$pkgver" 'python-aiohttp-apispec-git' 'python-aiohttp-cors' 'python-aiohttp-jinja2')
     optdepends=('python-aioauth-client: OAuth2 authorization support'
                 'python-aiohttp-security: authorization support'
                 'python-aiohttp-session: authorization support'
