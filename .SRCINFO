@@ -1,6 +1,6 @@
 pkgbase = gpu-screen-recorder-notification
 	pkgdesc = Notification in the style of ShadowPlay
-	pkgver = r39.31a9c2a
+	pkgver = r40.34ca6fd
 	pkgrel = 1
 	url = https://git.dec05eba.com/gpu-screen-recorder-notification
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = gpu-screen-recorder-notification
 	depends = libxrandr
 	depends = libxrender
 	depends = libxext
-	source = gpu-screen-recorder-notification-r39.31a9c2a.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder-notification.git.r39.31a9c2a.tar.gz
-	sha512sums = 6e88205605c18e22da9ed58fbc5fed8e06f6aabe5483f79e7888e92ca998c80719db1dc6453881900c2db56db1c971f81454ae16795a9a16a982a3d13b6722d7
+	source = gpu-screen-recorder-notification-r40.34ca6fd.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder-notification.git.r40.34ca6fd.tar.gz
+	sha512sums = 3718f0ef2f1a4100f89cdff0c09fe9eeb39a6aa56f4ff3a85e0f48ce78cdc1028bba96d213c339eee0e634075972338c7126ebfab786d77c6a91f27f9509f05f
 
 pkgname = gpu-screen-recorder-notification

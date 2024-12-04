@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=gpu-screen-recorder-notification
-pkgver=r39.31a9c2a
+pkgver=r40.34ca6fd
 pkgrel=1
 pkgdesc='Notification in the style of ShadowPlay'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 makedepends=('meson')
 depends=('libglvnd' 'libx11' 'libxrandr' 'libxrender' 'libxext')
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder-notification.git.${pkgver}.tar.gz")
-sha512sums=('6e88205605c18e22da9ed58fbc5fed8e06f6aabe5483f79e7888e92ca998c80719db1dc6453881900c2db56db1c971f81454ae16795a9a16a982a3d13b6722d7')
+sha512sums=('3718f0ef2f1a4100f89cdff0c09fe9eeb39a6aa56f4ff3a85e0f48ce78cdc1028bba96d213c339eee0e634075972338c7126ebfab786d77c6a91f27f9509f05f')
 
 build() {
   cd "$srcdir"
