@@ -1,6 +1,6 @@
 # Maintainer: A. Klitzing <aklitzing@gmail.com>
 pkgname=rbtools
-pkgver=5.1
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="Client tools for Review Board"
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=(python-build python-installer python-wheel)
 depends=(python python-tqdm python-texttable python-colorama pydiffx python-certifi python-typing_extensions
          python-packaging python-housekeeping python-importlib-metadata python-importlib_resources python-puremagic)
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('e4ee0c1468a5ec476bc00df63e86d174ad889e590bf7250588e174373c35b434')
+sha256sums=('b6017ff512547d5c04f9449d8ea42e151dbf255728c12efa24bd93c57df5b3e4')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
