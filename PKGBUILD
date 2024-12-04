@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gui-butler
-pkgver=2.3.1
+pkgver=2.3.2
 _electronversion=25
 _nodeversion=18
-pkgrel=10
-pkgdesc="A wrapper for itch.io's butler which lets you take advantage of the basic features without having to go through a CLI or set up build scripts for each new project.Use system-wide electron."
+pkgrel=1
+pkgdesc="A wrapper for itch.io's butler which lets you take advantage of the basic features without having to go through a CLI or set up build scripts for each new project.(Use system-wide electron)"
 arch=('x86_64')
 url="https://seansleblanc.itch.io/gui-butler"
 _ghurl="https://github.com/seleb/gui-butler"
@@ -27,11 +27,11 @@ options=(
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
-    "butler-${pkgver}.zip::https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default"
+    "butler-${pkgver}.zip::https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default"
     "${pkgname}.sh"
 )
-sha256sums=('22364d6b0ee54059e28cd7b12d863b3b6e3b1f71a1d672d9d9dce7442bd2bb3d'
-            'b640fceade5cafc7601b0ee57ba13c85913917eb5440375f7a605126f9ca2e1c'
+sha256sums=('74fb977b84218eaafdeee67095c032b0564c4bf00b05a97611bfd56954f58b07'
+            '8209afa4f2d23c78ef4f0d4a2b0e995347b1e9de2b43912842bbdf31543e1542'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
