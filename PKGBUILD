@@ -1,16 +1,20 @@
-# Maintainer: Giovanni De Paola <avvdpaola at proton dot me>
-
+# Maintainer: Giovanni De Paola <avvdepaola at proton dot me>
 pkgname=slpct
-
-pkgver=1.32.1
-
+pkgver=1.33.0
 pkgrel=2
-
-pkgdesc="free tool for pct  - redattore atti gratuito per il Processo Civile Telematico"
-
+pkgdesc="redattore atti gratuito per il Processo Civile Telematico"
 arch=('any')
+url="https://www.slpct.it/"
+license=('GPL-3.0-or-later')
 
-url="https://github.com/Marx79/Slpct"
+
+depends=('java-runtime' 'jdk8-openjdk' 'bash' 'xdg-utils' )
+
+
+
+source=('https://github.com/Marx79/Slpct/blob/master/slpct.tar.gz')
+
+sha256sums=('SKIP')
 
 license=('GPL-3.0-or-later')
 

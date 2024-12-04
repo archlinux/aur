@@ -1,8 +1,8 @@
 pkgbase = slpct
-	pkgdesc = free tool for pct - redattore atti gratuito per il Processo Civile Telematico
-	pkgver = 1.32.1
+	pkgdesc = redattore atti gratuito per il Processo Civile Telematico
+	pkgver = 1.33.0
 	pkgrel = 2
-	url = https://github.com/Marx79/Slpct
+	url = https://www.slpct.it/
 	arch = any
 	license = GPL-3.0-or-later
 	depends = java-runtime
