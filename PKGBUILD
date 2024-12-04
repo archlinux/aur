@@ -5,14 +5,14 @@
 
 pkgname=remmina-git
 _pkgbase=remmina
-pkgver=1.4.36+r10003+gb07e28ee4
+pkgver=1.4.36+r10005+gae1140650
 pkgrel=1
 pkgdesc='A remote desktop client written in GTK+ - git checkout'
 arch=(i686 x86_64)
 url='http://www.remmina.org/'
 license=('GPL-2.0-or-later')
 depends=('zlib' 'libjpeg' 'libssh' 'avahi' 'vte3'
-  'libgcrypt' 'libxdmcp' 'libvncserver'
+  'libgcrypt' 'libxdmcp' 'libvncserver' 'glib2-docs'
   'libsecret' 'webkit2gtk-4.1' 'libsodium')
 makedepends=('git' 'intltool' 'pkgconfig' 'cmake' 'avahi'
   'libxkbfile' 'freerdp' 'gobject-introspection'

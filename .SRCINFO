@@ -1,6 +1,6 @@
 pkgbase = remmina-git
 	pkgdesc = A remote desktop client written in GTK+ - git checkout
-	pkgver = 1.4.36+r10003+gb07e28ee4
+	pkgver = 1.4.36+r10005+gae1140650
 	pkgrel = 1
 	url = http://www.remmina.org/
 	install = remmina.install
@@ -31,6 +31,7 @@ pkgbase = remmina-git
 	depends = libgcrypt
 	depends = libxdmcp
 	depends = libvncserver
+	depends = glib2-docs
 	depends = libsecret
 	depends = webkit2gtk-4.1
 	depends = libsodium
@@ -43,7 +44,7 @@ pkgbase = remmina-git
 	optdepends = pyhoca-cli
 	provides = remmina
 	provides = grdc
-	provides = grdc=1.4.36+r10003+gb07e28ee4
+	provides = grdc=1.4.36+r10005+gae1140650
 	provides = remmina-plugins
 	conflicts = remmina
 	conflicts = grdc
