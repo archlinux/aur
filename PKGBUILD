@@ -2,7 +2,7 @@
 
 pkgname=ipcalc-redhat
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Redhat's modernized ipcalc fork with IPv6 support"
 arch=('x86_64')
 url="https://gitlab.com/ipcalc/ipcalc"
@@ -12,6 +12,7 @@ depends=('glibc')
 makedepends=(
 	'geoip'
 	'meson'
+	'pkgconf'
 	'ruby-erb'
 	'ruby-kramdown-parser-gfm'
 	'ruby-ronn'
