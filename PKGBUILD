@@ -3,7 +3,7 @@
 _name=rune
 _pkgname=rune-player
 pkgname=rune-player-git
-pkgver=0.0.0.dev.12.r9.g4524559
+pkgver=1.0.0.beta.2.r1.g89b6830
 pkgrel=1
 pkgdesc="The player that blends classic design with modern technology"
 arch=('x86_64')
@@ -12,6 +12,7 @@ license=('MPL-2.0')
 depends=(
     'alsa-lib'
     'at-spi2-core'
+    'ayatana-ido'
     'cairo'
     'dbus'
     'fontconfig'
@@ -22,7 +23,11 @@ depends=(
     'gtk3'
     'harfbuzz'
     'hicolor-icon-theme'
+    'libayatana-appindicator'
+    'libayatana-indicator'
+    'libdbusmenu-glib'
     'libepoxy'
+    'libnotify'
     'pango'
     'zlib'
 )
