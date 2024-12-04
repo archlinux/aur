@@ -1,6 +1,6 @@
 pkgbase = replicate-cog-bin
 	pkgdesc = Containers for machine learning
-	pkgver = 0.13.3
+	pkgver = 0.13.6
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/replicate/cog
@@ -9,7 +9,7 @@ pkgbase = replicate-cog-bin
 	depends = docker
 	conflicts = cocogitto
 	conflicts = python-cogapp
-	source_x86_64 = replicate-cog-bin-0.13.3.bin::https://github.com/replicate/cog/releases/download/v0.13.3/cog_Linux_x86_64
-	sha256sums_x86_64 = 14369dbcb4a6d6b7720efc275f6765834e438ca5b9cbea94fc909149482d7a40
+	source_x86_64 = replicate-cog-bin-0.13.6.bin::https://github.com/replicate/cog/releases/download/v0.13.6/cog_Linux_x86_64
+	sha256sums_x86_64 = 71707a60008c73dc50e12184a18d0d4d987d158d002bd8105c5cda287b71c1f6
 
 pkgname = replicate-cog-bin
