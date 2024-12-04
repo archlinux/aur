@@ -1,7 +1,7 @@
 # Maintainer: Isaac Arcia <iikz87ii@gmail.com>
 pkgname=yawns
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Your Adaptable Widget Notification System"
 arch=('any')
 url="https://github.com/ikz87/yawns/tree/main"
@@ -16,7 +16,7 @@ depends=(
     'python-gobject'
 )
 source=("https://github.com/ikz87/yawns/archive/refs/tags/v$pkgver.zip")
-sha256sums=('446a34731350984f253a431a3e6702e0da144932b2e4373852742e9ec304e0d2')
+sha256sums=('f6ae0dc8cb1bb64b8ccc0c27f17bd376814b2dfdfed0d40dac069d81ae13b17a')
 
 # Custom variable for configuration files
 _configdir="$pkgdir/etc/xdg/$pkgname"
