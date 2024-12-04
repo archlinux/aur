@@ -3,7 +3,7 @@
 _pkgbasename=ghostty
 pkgname=${_pkgbasename}-git-zen3
 pkgrel=1
-pkgver=r7854.9bc9ea27
+pkgver=r8155.50dc4b75
 pkgdesc="Fast, native, feature-rich terminal emulator pushing modern features (Zen 3 optimized)"
 arch=('x86_64')
 url="https://github.com/ghostty-org/${_pkgbasename}"
@@ -23,7 +23,7 @@ depends=(
     'zlib'
 )
 makedepends=('git' 'zig>=0.13.0' 'zig<0.14.0' 'pandoc-cli')
-source=("git+https://github.com/ghostty-org/${_pkgbasename}.git")
+source=("git+ssh://git@github.com/ghostty-org/${_pkgbasename}")
 sha256sums=('SKIP')
 
 pkgver() {
