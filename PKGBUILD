@@ -1,17 +1,17 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-pyclipper-git
-pkgver=1.3.0.post5.r3.g410553d
-pkgrel=1
+pkgver=1.3.0.post6.r0.g3133c9c
+pkgrel=3
 pkgdesc='Cython wrapper for the C++ translation of the Angus Johnsons Clipper library'
 url='https://github.com/fonttools/pyclipper'
 license=('MIT')
 arch=(any)
 depends=(python)
 makedepends=(cython
-             python-{build,installer,wheel,pip}
-             python-setuptools-scm
-             git)
+    python-{build,installer,wheel,pip}
+    python-setuptools-scm
+    git)
 checkdepends=(python-pytest)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -23,24 +23,16 @@ pkgver() {
     git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
     cd "$pkgname"
-    python setup.py build_ext --inplace
-    python setup.py build
-}
-
-check() {
-    cd "$pkgname"
-    python setup.py test
+    python -m build -wn
 }
 
 package() {
     cd "$pkgname"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer -d "$pkgdir" dist/*.whl
 }
-

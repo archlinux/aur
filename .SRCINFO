@@ -1,7 +1,7 @@
 pkgbase = python-pyclipper-git
 	pkgdesc = Cython wrapper for the C++ translation of the Angus Johnsons Clipper library
-	pkgver = 1.3.0.post5.r3.g410553d
-	pkgrel = 1
+	pkgver = 1.3.0.post6.r0.g3133c9c
+	pkgrel = 3
 	url = https://github.com/fonttools/pyclipper
 	arch = any
 	license = MIT
