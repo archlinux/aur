@@ -1,12 +1,12 @@
 pkgbase = ecs
 	pkgdesc = A command-line tool for create SylixOS container written in go.
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
-	url = https://github.com/wyf9661/ecs.git
+	url = https://github.com/wyf9661/ecs
 	arch = any
 	license = MIT
 	provides = ecs
-	source = git+https://github.com/wyf9661/ecs.git#tag=v0.0.1
-	sha256sums = SKIP
+	source = https://github.com/wyf9661/ecs/archive/refs/tags/v0.0.2.tar.gz
+	sha1sums = 2b31da9e88a846b74fb1e74aa685ddad2df62df3
 
 pkgname = ecs
