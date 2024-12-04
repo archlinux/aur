@@ -1,6 +1,6 @@
 pkgbase = kaze-icon-theme-git
 	pkgdesc = Kaze icon theme for KDE
-	pkgver = r36.64077cf
+	pkgver = r37.0860f33
 	pkgrel = 1
 	url = https://github.com/2O48/Kaze.git
 	arch = any

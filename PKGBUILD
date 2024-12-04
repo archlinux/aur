@@ -1,7 +1,7 @@
 # Maintainer: Rohan Ferris <zjrohan at gmail dot com>
 
 pkgname="kaze-icon-theme-git"
-pkgver=r36.64077cf
+pkgver=r37.0860f33
 pkgrel=1
 arch=("any")
 pkgdesc="Kaze icon theme for KDE"
