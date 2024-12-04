@@ -1,15 +1,16 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 # https://github.com/adamperkowski/PKGBUILDs
 pkgname=tukai
-pkgver=0.0.4
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='interactive typing experience with switchable templates, designed to help users improve their typing speed and accuracy'
 arch=('x86_64')
 url="https://github.com/hlsxx/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0ea5cab57b3b4338cee3acea37812d5ff1742babf9e2e3cd19d57e437b0edc16')
+sha256sums=('288a7878786ffb1bf23d5cd0c30ac1218f871d62f8da992161865207497c987f')
 makedepends=('rustup' 'glibc' 'gcc-libs')
+depends=('libx11')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
