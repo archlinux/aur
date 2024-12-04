@@ -7,7 +7,7 @@ pkgbase=wordnet
 pkgname=(wordnet-common)
 pkgver=3.1
 _srcver=3.0
-pkgrel=7
+pkgrel=8
 arch=('i686' 'x86_64')
 url="https://wordnet.princeton.edu/"
 license=("LicenseRef-custom")
@@ -32,9 +32,10 @@ prepare() {
     patch -Np1 -i "../debian/patches/$_patch"
   done
   #remove invalid dict flag caused by debian patches
-  sed -i '/dictzip -n wn.dict/s/ -n//' contrib/wordnet_structures/Makefile
-  sed -i '/dictzip -n wn.dict/s/ -n//' contrib/wordnet_structures/Makefile.in
-  sed -i '/dictzip -n wn.dict/s/ -n//' contrib/wordnet_structures/Makefile.am
+  pwd
+  #sed -i '/dictzip -n wn.dict/s/ -n//' contrib/wordnet_structures/Makefile
+  sed -i '/dictzip -n wn.dict/s/ -n//' contrib/wordnet_structures/Makefile*
+  find dict -type d -exec chmod 755 {} + && find dict -type f -exec chmod 644 {} +
 }
 
 build() {
@@ -55,7 +56,6 @@ package_wordnet-common() {
   mv "${pkgdir}/usr/lib/wnres" "${pkgdir}/usr/share/wordnet/wnres"
 
   # Replace dictionary files
-  chmod -R u=rwX,go=rX "${srcdir}/dict"
   cp -ar "${srcdir}/dict/"* "${pkgdir}/usr/share/wordnet/"
   rm -fr "${pkgdir}/usr/dict" #clean this default directory
 
