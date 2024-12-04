@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-extension-resource-monitor
 	pkgdesc = Monitor the use of system resources like cpu, ram, disk, network and display them in gnome shell top bar
-	pkgver = 19
+	pkgver = 25
 	pkgrel = 1
 	url = https://github.com/0ry0n/Resource_Monitor/
 	arch = any
 	license = GPL
 	depends = gnome-shell
-	source = gnome-shell-extension-resource-monitor-19.tar.gz::https://github.com/0ry0n/Resource_Monitor//archive/19.tar.gz
-	sha512sums = 9c0f23068b792a4d6239195db37bcc757ecf5c7e62ae5bfc8b19008957817b1c04b1ea4fadbb594a033586333c6f03491d6a786f0831f811aad46c220654ac04
+	source = gnome-shell-extension-resource-monitor-25.tar.gz::https://github.com/0ry0n/Resource_Monitor//archive/25.tar.gz
+	sha512sums = b5e699d11282177b17e2353d826bb58dba218477f2d26bfa2f124e6051baa917e5b6ee964cbd8ce24f917efa53b9943077abfd5d0cddd019dd1b71cc3ba95fe7
 
 pkgname = gnome-shell-extension-resource-monitor
