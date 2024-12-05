@@ -64,9 +64,6 @@ _use_current=${_use_current-}
 ### Enable KBUILD_CFLAGS -O3
 _cc_harder=${_cc_harder-y}
 
-### Set this to your number of threads you have in your machine otherwise it will default to 320
-_nr_cpus=${_nr_cpus-}
-
 ### Set performance governor as default
 _per_gov=${_per_gov-}
 
@@ -166,7 +163,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE scheduler and hardened Kernel by CachyOS with other patches and improvements'
-pkgrel=1
+pkgrel=2
 _kernver="$pkgver-$pkgrel"
 _kernuname="${pkgver}-${_pkgsuffix}"
 arch=('x86_64')
@@ -187,7 +184,7 @@ makedepends=(
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=565.57.01
+_nv_ver=565.77
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="open-gpu-kernel-modules-${_nv_ver}"
 source=(
@@ -216,7 +213,7 @@ fi
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=baa50314567afd986a00838f0fa65fdacbd12daf")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=6206603bf663aaa91f36f69a81c739314685d577")
 fi
 
 # NVIDIA pre-build module support
@@ -377,17 +374,6 @@ prepare() {
             -d NUMA_BALANCING_DEFAULT_ENABLED
     fi
 
-    ### Setting NR_CPUS
-    if [[ "$_nr_cpus" -ge 2 && "$_nr_cpus" -le 512 ]]; then
-        echo "Setting custom NR_CPUS..."
-        scripts/config --set-val NR_CPUS "$_nr_cpus"
-    elif [ -z "$_nr_cpus" ]; then
-        echo "Setting default NR_CPUS..."
-        scripts/config --set-val NR_CPUS 320
-    else
-        _die "The value '$_nr_cpus' is invalid. Please select a numerical value from 2 to 512..."
-    fi
-
     ### Select performance governor
     if [ -n "$_per_gov" ]; then
         echo "Setting performance governor..."
@@ -453,7 +439,11 @@ prepare() {
             -d DEFAULT_CUBIC \
             -e TCP_CONG_BBR \
             -e DEFAULT_BBR \
-            --set-str DEFAULT_TCP_CONG bbr
+            --set-str DEFAULT_TCP_CONG bbr \
+            -m NET_SCH_FQ_CODEL \
+            -e NET_SCH_FQ \
+            -d CONFIG_DEFAULT_FQ_CODEL \
+            -e CONFIG_DEFAULT_FQ
     fi
 
     ### Select THP
@@ -773,7 +763,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 b2sums=('97787b71bcf6a57872078e46917b3b6e339f25a0320dabe226fe5fe91e3eb829e3749b096eec4525fd1d6f25805f54f8a2d2b71a41bc94fd35c2b9c9140f25d7'
-        '695787544efcc1866b0f1fb5ddc12bc2a873032708c2dfde9eb16a6d38c4864f0e1b2c1c53519079a956b67a987c3ce7eeecde6bd4d43125bb22f619b2d4ef39'
+        'd42c94debcb16fa332e40b6d57c6e8c61756bf130e9cf5f5381cb59455ceaec23606bc01627df4031fa6cdc43a6d3fc02238de631e66f1a6cc6188a9bd17892b'
         'b1e964389424d43c398a76e7cee16a643ac027722b91fe59022afacb19956db5856b2808ca0dd484f6d0dfc170482982678d7a9a00779d98cd62d5105200a667'
         'b147966760f2f8e5dbba84e1ee73a1d81baf938848eb22bf58f5644de264baf4c857abd32e754d57c181b633ea8bfbb6568fe1c3229ce1feb1c4b3295ba3f884'
         'fcaa167830bb9558668ad7be808511be8c877e74c2c29326f0b1eaa0f50bf56bae47cab61cb11087d9863d0ad790fdfee76d3fbce4e570f673f6c22322ca749d'
