@@ -1,0 +1,9 @@
+[Unit]
+Description=netstate
+
+[Service]
+Type=exec
+ExecStart=netstate -W
+
+[Install]
+WantedBy=default.target

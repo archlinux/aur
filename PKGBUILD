@@ -2,7 +2,7 @@
 
 pkgname=netstate
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Run hooks on network state change'
 arch=(x86_64)
 url=https://github.com/mtth/netstate
@@ -12,10 +12,10 @@ makedepends=(asciidoctor cargo)
 
 source=(
 	"$pkgname-v$pkgver.tar.gz::https://github.com/mtth/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
+	netstate.service
 )
-sha256sums=(
-	'd926acc438361820a4ec437084a5dee938d534dabfeb699540d5783d4fcc76d3'
-)
+sha256sums=('d926acc438361820a4ec437084a5dee938d534dabfeb699540d5783d4fcc76d3'
+            'a7f4866c4fea6485805c6e0b8758fb827de4b94200a9b1c7b12da4ffc1d6ac1c')
 
 prepare() {
 	mv "$pkgname-$pkgver"/* . # GitHub archives are nested
@@ -35,6 +35,7 @@ build() {
 
 package() {
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-	install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+	install -Dm0644 -t "$pkgdir/usr/lib/systemd/user/" netstate.service
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 	install -Dm0644 -t "$pkgdir/usr/share/man/man1" $pkgname.1.gz
 }
