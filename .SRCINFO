@@ -1,0 +1,18 @@
+pkgbase = python-pyqt5-chart
+	pkgdesc = Python bindings for QtCharts
+	pkgver = 5.15.7
+	pkgrel = 4
+	url = https://www.riverbankcomputing.com/software/pyqtchart/intro
+	arch = x86_64
+	license = GPL3
+	makedepends = sip
+	makedepends = pyqt-builder
+	depends = qt5-charts
+	depends = python-pyqt5
+	provides = python-pyqtchart
+	conflicts = python-pyqtchart
+	replaces = python-pyqtchart
+	source = https://pypi.python.org/packages/source/P/PyQtChart/PyQtChart-5.15.7.tar.gz
+	sha256sums = bc9f1d26c725e820b0fff8db6e906e8b286128a14b3a98c59a0cd0c3d9924095
+
+pkgname = python-pyqt5-chart
