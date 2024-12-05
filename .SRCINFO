@@ -1,11 +1,9 @@
 pkgbase = myip-git
 	pkgdesc = Returns your public IP and the public IP to access the extranet.
-	pkgver = 0.4.6.r0.g0a123b9
-	pkgrel = 1
+	pkgver = 0.5.1.r1.ge74c157
+	pkgrel = 4
 	url = https://github.com/crystal-china/myip
 	arch = x86_64
-	arch = aarch64
-	arch = riscv64
 	license = MIT
 	makedepends = cmake
 	makedepends = git

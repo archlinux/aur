@@ -1,12 +1,10 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=myip-git
-pkgver=0.4.6.r0.g0a123b9
-pkgrel=1
+pkgver=0.5.1.r1.ge74c157
+pkgrel=4
 pkgdesc="Returns your public IP and the public IP to access the extranet."
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/crystal-china/myip"
 license=('MIT')
 provides=(${pkgname%-git})
@@ -38,9 +36,10 @@ prepare() {
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
