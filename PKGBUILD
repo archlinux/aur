@@ -37,12 +37,10 @@ backup=('etc/logrotate.d/salt'
         'etc/salt/minion')
 source=("https://github.com/saltstack/salt/releases/download/v${pkgver}/salt-${pkgver}.tar.gz"
         salt.logrotate
-        0000-services.patch
-        0001-binexec.patch)
+        0000-services.patch)
 sha256sums=('b933ac4cb3e4b1118b46dada55c9cc6bdc6f0f94b4c92877aec44b25c6a28c9a'
             'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
-            '7619465e571469e5a08cd507d3d49e0e003256d79a1ada61971edecad0149ea8'
-            '39bbbdf2100ccb8d498e8a584465bbefda23040bfe0b1526b4ce223c5810612b')
+            '7619465e571469e5a08cd507d3d49e0e003256d79a1ada61971edecad0149ea8')
 
 prepare() {
   cd "${srcdir}/salt-${pkgver}"
@@ -82,8 +80,14 @@ build() {
 
   # Patch the relenv binaries because they use a relative path
   # The original works but looks terrible in the process tree
-  cd "${onedir}"
-  patch -Np1 -i "${srcdir}"/0001-binexec.patch
+  cd "${onedir}/bin"
+  while IFS= read -r -d '' executable; do
+    if [[ $(file -b --mime-type "${executable}") == 'text/x-shellscript' ]]; then
+      echo "Patching '${executable}'"
+      sed  -i 's#^"exec" "$(dirname "$(readlink -f "$0")")/../bin/python3.10" "$0" "$@"#"exec" "$(realpath "$(dirname "$(readlink -f "$0")")/../bin/python3.10")" "$0" "$@"#' \
+              "${executable}"
+    fi
+  done < <(find . -type f -executable -print0)
 }
 
 package() {

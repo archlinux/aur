@@ -23,10 +23,8 @@ pkgbase = salt-onedir
 	source = https://github.com/saltstack/salt/releases/download/v3007.1/salt-3007.1.tar.gz
 	source = salt.logrotate
 	source = 0000-services.patch
-	source = 0001-binexec.patch
 	sha256sums = b933ac4cb3e4b1118b46dada55c9cc6bdc6f0f94b4c92877aec44b25c6a28c9a
 	sha256sums = abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215
 	sha256sums = 7619465e571469e5a08cd507d3d49e0e003256d79a1ada61971edecad0149ea8
-	sha256sums = 39bbbdf2100ccb8d498e8a584465bbefda23040bfe0b1526b4ce223c5810612b
 
 pkgname = salt-onedir
