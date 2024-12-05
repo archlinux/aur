@@ -1,6 +1,6 @@
 # Maintainer: Isaac Arcia <iikz87ii@gmail.com>
 pkgname=yawns
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Your Adaptable Widget Notification System"
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
     'python-gobject'
 )
 source=("https://github.com/ikz87/yawns/archive/refs/tags/v$pkgver.zip")
-sha256sums=('f6ae0dc8cb1bb64b8ccc0c27f17bd376814b2dfdfed0d40dac069d81ae13b17a')
+sha256sums=('9cac57b9072db319f5799afb2b06133a2116502da4f8c6a1204fef1afd79eaae')
 
 # Custom variable for configuration files
 _configdir="$pkgdir/etc/xdg/$pkgname"
@@ -32,6 +32,7 @@ package() {
     install -Dm644 "src/yawns_manager.py" "$pkgdir/usr/share/$pkgname/yawns_manager.py"
     install -Dm644 "src/yawns_notifications.py" "$pkgdir/usr/share/$pkgname/yawns_notifications.py"
     install -Dm644 "src/gtk_helpers.py" "$pkgdir/usr/share/$pkgname/gtk_helpers.py"
+    install -Dm644 "src/backends/X11.py" "$pkgdir/usr/share/$pkgname/backends/X11.py"
 
     # Install assets
     install -Dm644 "assets/yawns-logo.png" "$pkgdir/usr/share/$pkgname/assets/yawns-logo.png"
