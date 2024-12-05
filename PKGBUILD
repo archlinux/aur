@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=ducker
-pkgver=0.1.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A terminal app for managing docker containers"
 url="https://github.com/robertpsoane/ducker"
@@ -11,7 +11,7 @@ makedepends=('cargo')
 arch=('x86_64')
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('6d61f6efc282184605c06140b981ff2de29d02f6ddc6f2365f603735c08f2361d24f3e7a3c81bd4cc94cfc070df1fbf32297e4dce2979087ea7d3650f5138313')
+sha512sums=('8bc0b4da251ef18d3656f9b28c4727cf472fbb847eb1e9f66847d0e69957789b89c29d1b2e0db9a0e43766ec4ed147514ca6190d928bea10c68142fb378bbefb')
 options=('!lto')
 
 prepare() {
