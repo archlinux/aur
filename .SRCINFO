@@ -3,9 +3,11 @@ pkgbase = ollama-rocm-git
 	pkgver = 0.4.5.git+52bbad12
 	pkgrel = 1
 	url = https://github.com/ollama/ollama
+	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = gcc-libs
 	makedepends = go>=1.23
 	makedepends = hip-runtime-amd>=6.2.4
 	makedepends = hipblas
@@ -19,6 +21,7 @@ pkgbase = ollama-rocm-git
 	makedepends = rocsolver
 	makedepends = rocsparse
 	depends = comgr
+	depends = gcc-libs
 	depends = hip-runtime-amd>=6.2.4
 	depends = hipblas
 	depends = hsa-rocr

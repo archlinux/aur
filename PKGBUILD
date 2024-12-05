@@ -1,17 +1,17 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=ollama-rocm-git
-pkgver=0.4.5.git+52bbad12
+pkgver=0.4.8.git+aed1419c
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
-arch=(x86_64)
+arch=(aarch64 x86_64)
 url='https://github.com/ollama/ollama'
 license=(MIT)
 provides=(ollama)
 conflicts=(ollama)
-depends=(comgr "hip-runtime-amd>=6.2.4" hipblas hsa-rocr libdrm libelf numactl rocblas rocsolver rocsparse)
+depends=(comgr gcc-libs "hip-runtime-amd>=6.2.4" hipblas hsa-rocr libdrm libelf numactl rocblas rocsolver rocsparse)
 optdepends=('rocm-smi-lib: monitor GPU usage with rocm-smi')
-makedepends=(git "go>=1.23" "hip-runtime-amd>=6.2.4" hipblas hsa-rocr libdrm libelf numactl rocblas rocm-hip-sdk rocm-opencl-sdk rocsolver rocsparse)
+makedepends=(git gcc-libs "go>=1.23" "hip-runtime-amd>=6.2.4" hipblas hsa-rocr libdrm libelf numactl rocblas rocm-hip-sdk rocm-opencl-sdk rocsolver rocsparse)
 source=(git+$url#branch=main
         ollama.service
         sysusers.conf
@@ -25,6 +25,7 @@ pkgver() {
   cd ollama
   local _tag="$(git describe --tags --abbrev=0)"
   local _hash="$(git rev-parse --short HEAD)"
+  _tag="${_tag%-*}"
   echo "${_tag##v}.git+$_hash"
 }
 
@@ -44,17 +45,17 @@ build() {
 }
 
 package() {
-  install -dm755 $pkgdir/var/lib/ollama
-  install -dm755 $pkgdir/usr/lib/ollama/runners
+  install -dm755 ${pkgdir}/var/lib/ollama
+  install -dm755 ${pkgdir}/usr/lib/ollama/runners
 
-  install -Dm755 ollama/ollama $pkgdir/usr/bin/ollama
-  install -Dm644 ollama/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  install -Dm755 ollama/dist/linux-amd64/lib/ollama/libggml_rocm.so $pkgdir/usr/lib/ollama/
-  cp -r ollama/dist/linux-amd64/lib/ollama/runners $pkgdir/usr/lib/ollama/
+  install -Dm755 ollama/ollama ${pkgdir}/usr/bin/ollama
+  install -Dm644 ollama/LICENSE ${pkgdir}/usr/share/licenses/ollama/LICENSE
+  install -Dm755 ollama/dist/linux-amd64/lib/ollama/libggml_rocm.so ${pkgdir}/usr/lib/ollama/
+  cp -r ollama/dist/linux-amd64/lib/ollama/runners ${pkgdir}/usr/lib/ollama/
 
-  install -Dm644 ollama.service $pkgdir/usr/lib/systemd/system/ollama.service
-  install -Dm644 sysusers.conf $pkgdir/usr/lib/sysusers.d/ollama.conf
-  install -Dm644 tmpfiles.d $pkgdir/usr/lib/tmpfiles.d/ollama.conf
+  install -Dm644 ollama.service ${pkgdir}/usr/lib/systemd/system/ollama.service
+  install -Dm644 sysusers.conf ${pkgdir}/usr/lib/sysusers.d/ollama.conf
+  install -Dm644 tmpfiles.d ${pkgdir}/usr/lib/tmpfiles.d/ollama.conf
 
-  ln -s /var/lib/ollama $pkgdir/usr/share/ollama
+  ln -s /var/lib/ollama ${pkgdir}/usr/share/ollama
 }
