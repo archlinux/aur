@@ -1,6 +1,6 @@
 pkgbase = nodejs-lts-iron
 	pkgdesc = Evented I/O for V8 javascript (LTS release: Iron)
-	pkgver = 20.18.0
+	pkgver = 20.18.1
 	pkgrel = 1
 	url = https://nodejs.org/
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = nodejs-lts-iron
 	depends = brotli
 	depends = libnghttp2
 	optdepends = npm: nodejs package manager
-	provides = nodejs=20.18.0
+	provides = nodejs=20.18.1
 	conflicts = nodejs
 	options = !lto
-	source = https://nodejs.org/dist/v20.18.0/node-v20.18.0.tar.xz
-	sha256sums = 7d9433e91fd88d82ba8de86e711ec41907638e227993d22e95126b02f6cd714a
+	source = https://nodejs.org/dist/v20.18.1/node-v20.18.1.tar.xz
+	sha256sums = 91df43f8ab6c3f7be81522d73313dbdd5634bbca228ef0e6d9369fe0ab8cccd0
 
 pkgname = nodejs-lts-iron
