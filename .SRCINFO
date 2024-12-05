@@ -1,0 +1,21 @@
+pkgbase = electron-notes-git
+	pkgdesc = A notes taking application that simple sleek and a fun way to handle your notes and comes with a brother mobile application where you can manage and synchronize your notes cross platform.(Use system-wide electron)
+	pkgver = 1.4.1.r6.g837d961
+	pkgrel = 1
+	url = https://snapcraft.io/web-notes
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron25
+	provides = electron-notes=1.4.1
+	conflicts = electron-notes
+	source = electron-notes.git::git+https://github.com/RyanLarge13/Electron-Notes
+	source = electron-notes.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = electron-notes-git
