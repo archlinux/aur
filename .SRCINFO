@@ -1,13 +1,13 @@
 pkgbase = git-donkey
-	pkgdesc = A Donkey Don to help you manage your local git branches/repositories.
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgdesc = A CLI tool to help you manage your local git branches/repositories.
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/bupd/git-donkey
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = git
-	source = git-donkey::git+https://github.com/bupd/git-donkey.git
+	source = git-donkey::git+https://github.com/goharbor/harbor-cli.git#tag=v1.0.1
 	sha256sums = SKIP
 
 pkgname = git-donkey
