@@ -19,25 +19,25 @@ provides=('libaegis')
 conflicts=('libaegis')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname"
         git describe --tags | sed -e 's/^v//g' -e 's/-g.*$//g' -e 's/-.*//g'
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname"
 
         mkdir build
         cd build
         cmake -DCMAKE_INSTALL_PREFIX=/usr/ \
-              -DCMAKE_C_FLAGS="$CFLAGS -DFAVOR_PERFORMANCE" \
-              ..
-        make
+        -DCMAKE_C_FLAGS="$CFLAGS -DFAVOR_PERFORMANCE" \
+        ..
+        cmake --build . -j
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname"
 
-	install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
         cd build
-	make DESTDIR="$pkgdir" install
+        DESTDIR="$pkgdir" cmake --install .
 }
