@@ -5,6 +5,7 @@ pkgbase = bulky
 	url = https://github.com/linuxmint/bulky
 	arch = i686
 	arch = x86_64
+	license = GPL3
 	depends = python-magic
 	depends = xapp
 	depends = python-xapp
