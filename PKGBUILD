@@ -2,7 +2,7 @@
 # Contributior: Francisco Giordano <fg@frang.io>
 
 pkgname=volta
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="The Hassle-Free JavaScript Tool Manager"
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
 )
 options=('!lto')
 source=("${pkgname}-${pkgver}::https://github.com/${pkgname}-cli/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4ccffc86b7841cb8bc9a55436529209dbbb9621992e43cbad48ccc7ffadba493')
+sha256sums=('0e93d17c36fb79222b10881d6c67d667483f85b19a0498eacfc535ef31894dbe')
 
 build() {
         cd "${srcdir}/${pkgname}-${pkgver}"
