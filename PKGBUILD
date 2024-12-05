@@ -3,7 +3,7 @@
 
 pkgname=python-pyqt5-chart
 pkgver=5.15.7
-pkgrel=4
+pkgrel=5
 pkgdesc='Python bindings for QtCharts'
 arch=(x86_64)
 url='https://www.riverbankcomputing.com/software/pyqtchart/intro'
