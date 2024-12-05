@@ -15,7 +15,7 @@ sha256sums=('7fa25352dfdace68c16fa90493c5483b5bb487fec93f9ca7e97cb24ec6da86fb')
 package() {
     for dir in application-$pkgver ; do mv "${dir}" "$_pkgname" ;done
     cd "$srcdir/$_pkgname"
-    chmod +x $pkgname.sh
+    chmod +x $pkgname
     ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
