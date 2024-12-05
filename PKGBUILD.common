@@ -24,7 +24,7 @@ build() (
     --self-contained true
     -p:DebugType=none
     -p:ExtraDefineConstants=DISABLE_UPDATER
-    -p:Version="$pkgver"
+    -p:Version="${pkgver%%.[A-Za-z]*}"
   )
 
   echo "Building AVA Interface..."
