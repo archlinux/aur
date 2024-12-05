@@ -11,6 +11,6 @@ pkgbase = firefox-nightly-i18n-vi
 	depends = firefox-nightly
 	noextract = firefox-nightly-i18n-vi-135.0a1.20241204.092616.xpi
 	source = firefox-nightly-i18n-vi-135.0a1.20241204.092616.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-135.0a1.vi.langpack.xpi
-	sha256sums = d1da38e896ce56bb4be5907b80d6caf8e173409b70ca9b96c4151644f9ca7445
+	sha256sums = 5e8962d29947a31c7d1399e8391982385975962f4002796beb2c815e48dee2e9
 
 pkgname = firefox-nightly-i18n-vi
