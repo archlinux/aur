@@ -2,19 +2,19 @@
 
 pkgname=clouddrive-decrypt-git
 pkgver=r1.b7472e4
-pkgrel=1
+pkgrel=6
 pkgdesc="clouddrive-decrypt is a standalone tool designed to demo how to decrypt files encrypted by CloudDrive2."
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/cloud-fs/clouddrive-decrypt"
 license=('Commercial')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=(gcc-libs
+depends=(
+    gcc-libs
     glibc)
-makedepends=(git
+makedepends=(
+    git
     cargo)
 optdepends=('clouddrive: CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage')
 backup=()
