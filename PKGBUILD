@@ -2,7 +2,7 @@
 pkgbase=wps-office-bin
 pkgname=('wps-office-bin')
 pkgver=12.1.0.17900
-pkgrel=2
+pkgrel=3
 pkgdesc="WPS Office, is an office productivity suite."
 arch=('x86_64')
 url="https://linux.wps.cn"
@@ -26,7 +26,7 @@ provides=('wps-office')
 options=(!strip !zipman !debug)
 
 source_x86_64=("wps-office_${pkgver}_amd64.deb::${_srcurl}/wpsoffice_${pkgver}_amd64.deb")
-sha1sums_x86_64=('a245fe88c25d0992fb6d2b1e37ba99dc15fe2a5f')
+sha1sums_x86_64=('c7ea086728f7c2a140d1d51c507fc0e6d4f30b18')
 
 package(){
   xz -df data.tar.xz
