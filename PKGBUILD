@@ -1,230 +1,164 @@
 # Release notes https://rocm.docs.amd.com/en/latest/about/release-notes.html
-amdgpu_repo='https://repo.radeon.com/amdgpu/6.2.4/ubuntu'
-rocm_repo='https://repo.radeon.com/rocm/apt/6.2.4'
-opencl_lib='opt/rocm-6.2.4/opencl/lib'
-rocm_lib='opt/rocm-6.2.4/lib'
-hip_lib='opt/rocm-6.2.4/hip/lib/'
+amdgpu_repo='https://repo.radeon.com/amdgpu/6.3/ubuntu'
+rocm_repo='https://repo.radeon.com/rocm/apt/6.3'
+opencl_lib='opt/rocm-6.3.0/opencl/lib'
+rocm_lib='opt/rocm-6.3.0/lib'
+hip_lib='opt/rocm-6.3.0/hip/lib/'
 amdgpu="opt/amdgpu/lib/x86_64-linux-gnu"
 amdgpu_pro="opt/amdgpu-pro/lib/x86_64-linux-gnu/"
 
 pkgname=opencl-amd-dev
 pkgdesc="OpenCL SDK / HIP SDK / ROCM Compiler. This package needs at least 20GB of disk space."
-pkgver=6.2.4
-pkgrel=2
+pkgver=6.3.0
+pkgrel=1
 epoch=1
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
 makedepends=('wget')
 depends=('opencl-amd' 'suitesparse' 'blas' 'lapack')
-provides=('composablekernel-dev' 'rocm-llvm' 'rocblas' 'rocblas-dev' 'rocsolver' 'rocsolver-dev' 'half' 'hipblas' 'hipblas-dev' 'hipblaslt' 'hipblaslt-dev' 'hiprand' 'hiprand-dev' 'rocprim' 'rocprim-dev' 'hipcub' 'hipcub-dev' 'rocfft' 'rocfft-dev' 'hipfft' 'hipfft-dev'
-	'hipfort' 'hipfort-dev' 'hipify-clang' 'hipsolver' 'hipsolver-dev' 'rocsparse' 'rocsparse-dev' 'hipsparse' 'hipsparse-dev' 'hipsparselt' 'hipsparselt-dev' 'hiptensor' 'hiptensor-dev' 'openmp-extras-dev' 'omniperf' 'omnitrace' 'rccl' 'rccl-dev' 'rocrand' 'rocrand-dev' 'rocalution' 'rocalution-dev'
-	'rocm-hip-libraries' 'rocm-hip-runtime-dev' 'rocthrust' 'rocthrust-dev' 'rocm-hip-sdk' 'rocm-opencl-sdk' 'rocwmma-dev' 'rocprofiler-sdk' 'rocprofiler-sdk-roctx' 'rocm-developer-tools' 'migraphx' 'migraphx-dev' 'miopen' 'miopen-hip' 'miopen-hip-dev' 'mivisionx' 'mivisionx-dev' 'rocm-ml-libraries' 'rocm-ml-sdk' 'rpp' 'rpp-dev')
-conflicts=('composablekernel-dev' 'rocm-llvm' 'rocblas' 'rocblas-dev' 'rocsolver' 'rocsolver-dev' 'hipblas' 'hipblas-dev' 'hipblaslt' 'hipblaslt-dev' 'hiprand' 'hiprand-dev' 'rocprim' 'rocprim-dev' 'hipcub' 'hipcub-dev' 'rocfft' 'rocfft-dev' 'hipfft' 'hipfft-dev'
-	'hipfort' 'hipfort-dev' 'hipify-clang' 'hipsolver' 'hipsolver-dev' 'rocsparse' 'rocsparse-dev' 'hipsparse' 'hipsparse-dev' 'hipsparselt' 'hipsparselt-dev' 'hiptensor' 'hiptensor-dev' 'openmp-extras-dev' 'omniperf' 'omnitrace' 'rccl' 'rccl-dev' 'rocrand' 'rocrand-dev' 'rocalution' 'rocalution-dev'
-	'rocm-hip-libraries' 'rocm-hip-runtime-dev' 'rocthrust' 'rocthrust-dev' 'rocm-hip-sdk' 'rocm-opencl-sdk' 'rocwmma-dev' 'rocprofiler-sdk' 'rocprofiler-sdk-roctx' 'rocm-developer-tools' 'migraphx' 'migraphx-dev' 'miopen' 'miopen-hip' 'miopen-hip-dev' 'mivisionx' 'mivisionx-dev' 'rocm-ml-libraries' 'rocm-ml-sdk' 'rpp' 'rpp-dev')
+provides=('composablekernel-dev' 'rocm-llvm' 'rocblas' 'rocblas-dev' 'rocsolver' 'rocsolver-dev' 'half' 'hipblas' 'hipblas-dev' 'hipblas-common-dev' 'hipblaslt' 'hipblaslt-dev' 'hiprand' 'hiprand-dev' 'rocprim' 'rocprim-dev' 'hipcub' 'hipcub-dev' 'rocfft' 'rocfft-dev' 'hipfft' 'hipfft-dev'
+	'hipfort' 'hipfort-dev' 'hipify-clang' 'hipsolver' 'hipsolver-dev' 'rocsparse' 'rocsparse-dev' 'hipsparse' 'hipsparse-dev' 'hipsparselt' 'hipsparselt-dev' 'hiptensor' 'hiptensor-dev' 'openmp-extras-dev' 'rccl' 'rccl-dev' 'rocrand' 'rocrand-dev' 'rocalution' 'rocalution-dev'
+	'rocm-hip-libraries' 'rocm-hip-runtime-dev' 'rocthrust' 'rocthrust-dev' 'rocprofiler-compute' 'rocprofiler-systems' 'rocm-hip-sdk' 'rocm-opencl-sdk' 'rocwmma-dev' 'rocprofiler-sdk' 'rocprofiler-sdk-roctx' 'rocm-developer-tools' 'migraphx' 'migraphx-dev' 'miopen' 'miopen-hip' 'miopen-hip-dev' 'mivisionx' 'mivisionx-dev' 'rocm-ml-libraries' 'rocm-ml-sdk' 'rpp' 'rpp-dev')
+conflicts=('composablekernel-dev' 'rocm-llvm' 'rocblas' 'rocblas-dev' 'rocsolver' 'rocsolver-dev' 'hipblas' 'hipblas-dev' 'hipblas-common-dev' 'hipblaslt' 'hipblaslt-dev' 'hiprand' 'hiprand-dev' 'rocprim' 'rocprim-dev' 'hipcub' 'hipcub-dev' 'rocfft' 'rocfft-dev' 'hipfft' 'hipfft-dev'
+	'hipfort' 'hipfort-dev' 'hipify-clang' 'hipsolver' 'hipsolver-dev' 'rocsparse' 'rocsparse-dev' 'hipsparse' 'hipsparse-dev' 'hipsparselt' 'hipsparselt-dev' 'hiptensor' 'hiptensor-dev' 'openmp-extras-dev' 'rccl' 'rccl-dev' 'rocrand' 'rocrand-dev' 'rocalution' 'rocalution-dev'
+	'rocm-hip-libraries' 'rocm-hip-runtime-dev' 'rocthrust' 'rocthrust-dev' 'rocprofiler-compute' 'rocprofiler-systems' 'rocm-hip-sdk' 'rocm-opencl-sdk' 'rocwmma-dev' 'rocprofiler-sdk' 'rocprofiler-sdk-roctx' 'rocm-developer-tools' 'migraphx' 'migraphx-dev' 'miopen' 'miopen-hip' 'miopen-hip-dev' 'mivisionx' 'mivisionx-dev' 'rocm-ml-libraries' 'rocm-ml-sdk' 'rpp' 'rpp-dev')
 
 source=(
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/c/composablekernel-dev/composablekernel-dev_1.1.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/half/half_1.12.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hiprand/hiprand_2.11.1.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hiprand-dev/hiprand-dev_2.11.1.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hipcub-dev/hipcub-dev_3.2.1.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hipblas/hipblas_2.2.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hipblas-dev/hipblas-dev_2.2.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hipblaslt/hipblaslt_0.8.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hipblaslt-dev/hipblaslt-dev_0.8.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hipfft/hipfft_1.0.16.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hipfft-dev/hipfft-dev_1.0.16.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hipfort-dev/hipfort-dev_0.4.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hipsolver/hipsolver_2.2.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hipsolver-dev/hipsolver-dev_2.2.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hipify-clang/hipify-clang_18.0.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hipsparse/hipsparse_3.1.1.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hipsparse-dev/hipsparse-dev_3.1.1.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hipsparselt/hipsparselt_0.2.1.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hipsparselt-dev/hipsparselt-dev_0.2.1.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hiptensor/hiptensor_1.3.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/h/hiptensor-dev/hiptensor-dev_1.3.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/o/openmp-extras-dev/openmp-extras-dev_18.62.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/o/omniperf/omniperf_2.0.1.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/o/omnitrace/omnitrace_1.11.2.60204-139~22.04_amd64.deb" # TODO FIX
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocm-llvm/rocm-llvm_18.0.0.24392.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocblas/rocblas_4.2.4.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocblas-dev/rocblas-dev_4.2.4.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocsolver/rocsolver_3.26.2.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocsolver-dev/rocsolver-dev_3.26.2.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocprim-dev/rocprim-dev_3.2.2.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocfft/rocfft_1.0.30.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocfft-dev/rocfft-dev_1.0.30.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocsparse/rocsparse_3.2.1.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocsparse-dev/rocsparse-dev_3.2.1.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rccl/rccl_2.20.5.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rccl-dev/rccl-dev_2.20.5.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocrand/rocrand_3.1.1.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocrand-dev/rocrand-dev_3.1.1.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocalution/rocalution_3.2.1.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocalution-dev/rocalution-dev_3.2.1.60204-139~24.04_amd64.deb"
-#"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocm-hip-libraries/rocm-hip-libraries_6.2.4.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocm-hip-runtime-dev/rocm-hip-runtime-dev_6.2.4.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocthrust-dev/rocthrust-dev_3.1.1.60204-139~24.04_amd64.deb"
-#"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocm-hip-sdk/rocm-hip-sdk_6.2.4.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocm-opencl-sdk/rocm-opencl-sdk_6.2.4.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocwmma-dev/rocwmma-dev_1.5.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocprofiler-sdk/rocprofiler-sdk_0.4.0-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocprofiler-sdk-roctx/rocprofiler-sdk-roctx_0.4.0-139~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/c/composablekernel-dev/composablekernel-dev_1.1.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/half/half_1.12.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hiprand/hiprand_2.11.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hiprand-dev/hiprand-dev_2.11.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hipcub-dev/hipcub-dev_3.3.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hipblas/hipblas_2.3.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hipblas-dev/hipblas-dev_2.3.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hipblas-common-dev/hipblas-common-dev_1.0.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hipblaslt/hipblaslt_0.10.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hipblaslt-dev/hipblaslt-dev_0.10.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hipfft/hipfft_1.0.17.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hipfft-dev/hipfft-dev_1.0.17.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hipfort-dev/hipfort-dev_0.5.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hipsolver/hipsolver_2.3.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hipsolver-dev/hipsolver-dev_2.3.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hipify-clang/hipify-clang_18.0.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hipsparse/hipsparse_3.1.2.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hipsparse-dev/hipsparse-dev_3.1.2.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hipsparselt/hipsparselt_0.2.2.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hipsparselt-dev/hipsparselt-dev_0.2.2.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hiptensor/hiptensor_1.4.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/h/hiptensor-dev/hiptensor-dev_1.4.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/o/openmp-extras-dev/openmp-extras-dev_18.63.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocm-llvm/rocm-llvm_18.0.0.24455.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocblas/rocblas_4.3.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocblas-dev/rocblas-dev_4.3.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocsolver/rocsolver_3.27.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocsolver-dev/rocsolver-dev_3.27.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocprim-dev/rocprim-dev_3.3.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocfft/rocfft_1.0.31.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocfft-dev/rocfft-dev_1.0.31.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocsparse/rocsparse_3.3.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocsparse-dev/rocsparse-dev_3.3.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rccl/rccl_2.21.5.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rccl-dev/rccl-dev_2.21.5.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocrand/rocrand_3.2.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocrand-dev/rocrand-dev_3.2.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocalution/rocalution_3.2.1.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocalution-dev/rocalution-dev_3.2.1.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocm-hip-runtime-dev/rocm-hip-runtime-dev_6.3.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocthrust-dev/rocthrust-dev_3.3.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocm-opencl-sdk/rocm-opencl-sdk_6.3.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocwmma-dev/rocwmma-dev_1.6.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocprofiler-sdk/rocprofiler-sdk_0.5.0-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocprofiler-sdk-roctx/rocprofiler-sdk-roctx_0.5.0-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocprofiler-compute/rocprofiler-compute_3.0.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rocprofiler-systems/rocprofiler-systems_0.1.0.60300-39~24.04_amd64.deb"
 # Machine learning and computer vision
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/m/migraphx/migraphx_2.10.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/m/migraphx-dev/migraphx-dev_2.10.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/m/miopen-hip/miopen-hip_3.2.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/m/miopen-hip-dev/miopen-hip-dev_3.2.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/m/mivisionx/mivisionx_3.0.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/m/mivisionx-dev/mivisionx-dev_3.0.0.60204-139~24.04_amd64.deb"
-#"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocm-ml-libraries/rocm-ml-libraries_6.2.4.60204-139~24.04_amd64.deb"
-#"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rocm-ml-sdk/rocm-ml-sdk_6.2.4.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rpp/rpp_1.8.0.60204-139~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/6.2.4/pool/main/r/rpp-dev/rpp-dev_1.8.0.60204-139~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/m/migraphx/migraphx_2.11.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/m/migraphx-dev/migraphx-dev_2.11.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/m/miopen-hip/miopen-hip_3.3.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/m/miopen-hip-dev/miopen-hip-dev_3.3.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/m/mivisionx/mivisionx_3.1.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/m/mivisionx-dev/mivisionx-dev_3.1.0.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rpp/rpp_1.9.1.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/r/rpp-dev/rpp-dev_1.9.1.60300-39~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.3/pool/main/t/transferbench-dev/transferbench-dev_1.51.0.60300-39~24.04_amd64.deb"
 )
 
 sha256sums=(
-"196ec68435bcd750c3fe6ab852606a2da336e6b37b286a93791c537df2d2e314"
-"dce99f2936cf0ad4d2fc2266f3c2e4c99941c9dca75d7bfe59c6111b7e2a72ef"
-"a52b63f9ad230a5751ee152c06b5edfd93103d1fe215a143b29a81b729028193"
-"db2462e0dfc34b628392a4cd651f4e11b286b38e34459493efebb2d837f322c7"
-"cbc808fee8067ee3d1596ad4aa127a7df3951f52ff3a78981b90ccd29dbda215"
-"7ee9a7cf90b206afef575758550376e2a5ea5016a2c006264310323048ca5bf2"
-"802ddbb5f33b36af30b7f032c94cf77d64b121deef0a7746c475abd63cb7da29"
-"b096d4f0fa6c1cfcd9ff44891f876e33ac51bf84d4821d40bc55858e25f013e6"
-"05f49875be7753d43c7bff62ce0b9dd978a55a09604f942bea1e94ec0497d01a"
-"f24b0c9536fdbbf4f8742659c387ef303302c069270b57081e946d4c83372e2b"
-"e6d531f4e0b69940b7420938a8bd0b9b3ed7c812d9d2fff5fe61f21f9c139e08"
-"e121dd6de6f35e6248420cb6963ddf0e71a7042c87727137aed0c5b61aeac4fd"
-"6117dc4b92561f7e95f90bd248532307c09a5e7187d58786fb1c7118b60db8cb"
-"090960216d60c4e9dca998f6de794c0ff1d3a1353cdab4c8af10fe2d0c0e69af"
-"bee67c6141de5b7f964eaf952c175a368eceb20deb9d2a937e0cfb0b81a7dd73"
-"09cca81b1ff9a71999e8f9e91f010d15c062266304da33ea0560a6dedda31a9d"
-"3d387927bab475e20f6a06895089f9920abd3b254eee804b2088290333978fbf"
-"018d5ba48dea3368d9ff346eabc658c64e1296ed789cb9bbdfb3fe34844d1ab5"
-"cc6fef4212384170fa4b8adae49b0a158a2a734d47fa3d9b734d725e17bf725e"
-"d51effcddabe732a347cd942549acf4eb5833be31c40ce8ee4aea7c3cabef9fb"
-"a4b68f92938eaf12c88efddf928fd2345af1d0687a0e4a549d1169f508d8a613"
-"5e3a2d839b3ddf4827a1c68b6aaa20936e9d86b3cb1b821f2122658d4915b4fe"
-"3d9810d603316c154fb27e86e8b93fb68869bf95fbe29c11b75d9678e5e47d9f"
-"a83a22f60eaf1c99ae5cae2296b1e6e534d892ed4f02a014f3fadb955ce8466a"
-"d275890c3f231e372332f5a1bd3f3d2e6d4812cb37839385d00af000080afff0"
-"233d0fcbcca1080f1763b83d8450434513f6aa49d96ce121320f42f6ab6345fd"
-"e661575f259d959184cd275428325ac1af46e55e445171b971fbfc093b80efe4"
-"7297c7b8df3618027c4dc46ffc9dde7dee5c95b1c81dc80783b8dbd79495f308"
-"313a0b24899b5b703838ec873914ce6e4a64eb03de7c31cec2be8988e1de890f"
-"d76f294c390b50ae4384fe04e7839c26d060ef203c9d45c551d4d10fa2a822db"
-"3888f2a58d2ed25ca1385c7568e84219648756d0a81df192ddb177c0ee396baa"
-"ff33bc1719cc6ad0af76071d90771541754601b7ce94c5ce444920443114e490"
-"5f266bee97d03e9a7512b4d70564469c04ef64dfba40f9474a081dadac9ae935"
-"e3d2ade7864ac120112a0dcc76bbc234b9bbc9486c3562badeb136305ec1af15"
-"6d5319f9c68a4c88231be5b4645d1716f528606425d60dd8412b8f1ddb4dce39"
-"b29f9776bc1c0bccd20a415938c811931c29c9445ebe932ddaffa29ad2b91bdb"
-"7fe48cd6f1acff783af84a92b13fcfdd35aadb16e204d6c86773dbfaa6181eca"
-"a85550e1c21c1d67b965bed313b87ba1b2654d2ef9fe98bd63bf08ad9a3fb103"
-"8b21b7a30ad70ff73c9fa110325a68b105c9aabf82e0a10840f128f3cf8fe867"
-"1f6a2592a0ca17476c425b886e943e7730f410eed6ff8a710a04fee5fcf16900"
-#"a1b225ed2dce106790f4aa92d61e0fe119ccb426f1aabd07741e8c3937299380"
-"c648a65b70a24778bebcfbaffbaa0f8528b9dbebcbf775b968169b006ddbc6fb"
-"319e65c958d6c591f9df3215f324d89a61ef2fa15e58a22f8f8a04650de52965"
-#"fabbfda05b9597f82762c46de33b802cca9abcb6ba8e22ab25b0f69bdfae9f27"
-"7147f485c29ba2b9acbb26ddb407fbedeb476ff25ffccc0a4bd9d2f5d20096ef"
-"cf2a71f8f33c23fa8dfeda19c9ea08e750df0da3886c27878d400f96e0ec3a22"
-"a0e729c8c413ec54bee6eb995e153036f38e75aeb8d65644473ae47fc4c0fee1"
-"70df147204d51e6e3da2284bf9846c6cbeb2a4925a370828093e7c843a51aa01"
+"eed1981c11e3f1afc4523a4ccb08eb2e686ae976d7ad48fdd38fcd05b0d9a880"
+"6da4a2d419eeb341cc013d91da76e1b8032590793e3aef5ab0a64634cba82df2"
+"17897d2deabba455297033c68a90897d33f92745ac9e72cf81f073c8b5df0ad7"
+"e3302ca3a1cfc6033624cb713f4181d0bb508e7526494df12b80be3908a7c4e5"
+"a3967ee2c9c882b723f4d7571b0fce966e7b3c07370e74ebfbaf232833286036"
+"f7dbb1b87128bba58ff58ffc36db53b92169c009a6dcc99489074cd8ee6b77b9"
+"f06488bfac573febc8c52a3630bfff0cc035ee4d56232c368e1c6ce5f4207f4b"
+"27736af99a4a4cef0c90894ec78d1379fb713b615c965b4bc1945a4e248763b2"
+"63786f058dd227e44877d81bbcf8d9fb8ad7cfce5f463433959193db09ee76f2"
+"e53f74bdd222b019e4f19ed82f1c04518d5f87a00286886df77583cdd7b1a424"
+"a0ac65e9fabdae10aeaf004508a20e38087f42a2486cd052faaf61dd7f50d4be"
+"8d977839af46ba30718e48ec1846b1967c4ab5f1ff1b9ab8dd0d71db42fa84cf"
+"4eba01698294bc1ddb416f890794a7fda905e10200c85ab2eff33bbf035e1712"
+"318aec4e79bc98ab17dae977fe6024a089d4f93ffa968f3967d4e0f8fece22b0"
+"bfb04707d68a7d97a9744254c1a01e054b08ce9fee826755a3121bbade46acbf"
+"3cc30082e520e941d22f1f9f64e04076f465ae40a72cbc170029ae4b020a596d"
+"91c1d2d8ed59204d0c08b9b1c3d9e2f7b49c099afdece505932390728f9c4503"
+"066bbe10924249b9bf9df6cfeb265a928b961dde79f523d0b919de5f6765bbcf"
+"a9778e4dda5bcbf44b17a6072c4df4e6816cc56f9f62fa41b3d3ea0c7e339732"
+"77e25147cf410524d55d9a4614a2d52bdef10988f304f97178d44f74d616ce44"
+"780a3b366a5be22ebc4488eb26cc1c569fa2b397b1de77726f31c25a4421f7bf"
+"af3ffbad37950c8994cbb849fc1e2764761025e6c96886a485d68140ad88a36f"
+"860e23a5ff7ad7aed63bdc30594459db5786d6552e16cf0edc36bcab60bb1a3c"
+"71e1409a58797bdf31f5394ad77995978bda310fc9e98664cfede7dd8871a363"
+"4859f43ce53e3adaed9a7c6c4bfc453fbf1264a65afb1778207e98f84d6bf41a"
+"693dd5ecd59df5866fa9125415a5322e19c1ff2119ab2a97427645c54d02cb66"
+"69424f1f4f0a38cceba5000da964abb8bf107736b4896853874090bc7ac55465"
+"550304f715a952c75e51feccdf4201e73741ce910578320528e50162dc026666"
+"4138f58de0734118c9193085d9c5c7b26fe85e864906df06b485608e48654c4b"
+"97ffa892bc0ce6d1de22c75acbed40e63f022d7f9f663588ff47b5dc98ebb0e1"
+"f8b00c0d1c67700da7574a87db5385a12afe90cfc7078c23f7cd8c90e5e21e40"
+"96df25516ed8c0048860d900f36ac53766cf59f46fd0ab406f8213e4ffbb5fe4"
+"9421e7d892a5ec79dd12fa5abfdd9ab84f1278ace6dc1ae745b4deaf36d99179"
+"024063c7811b78d6f33b8b07d03222243a58f2acaf7a1bc0b329644bb2d1eca1"
+"b65fdd30524ce57574e0cbafb1e78f6de175bf5808fd089df0ce46e5e9a76aa8"
+"dc352b46ef722006a5e776762cfc4a2ae6570d8eb5aa9843df99ca9da9799651"
+"a74fde49c0dacd51b183633c950b322b1757d543ca6f65e5a32406d1ef3bf093"
+"4b08f185f02335957a58f124f60713292001de75e3ed0f7b6c17cdd71fc604f3"
+"90c1289d3e3d9cf387403f80f673eeccc6eab96581d166ea5e4b58b825f38250"
+"f348e35a3a15604267cf63fbaf79b67201f188d95da4796304b86125b58c8e5f"
+"76ea26cf4fe6cdfaeaa4b1bd2a36db78e52b5f7f5ccd8b05a77613d6c8793031"
+"0be18a6ae160d4da1b8a6629271af4ed5934e0bf3655e1aa6c82a044412ce380"
+"c6b7f7bc18441ccbfa697eb1f384e7c4a02cbe9c6a74da98388aafd8dd2d463b"
+"cda86606df19ad2fd04aadcf6dde2a13f70112c85ebc39fc382510f2c3e8c225"
+"32cee7c118ec606ef45344bc2ee77313b53991195a4eddabd32da3211b3f792a"
+"5575415ec5853eafcb244bafdba5c86b1ecd2897d2adeeaf0b63517f22adfc4c"
+"fd226b2afbd1fbfaa91fa42761eadb84c8b3d36ddf11cc80fc1ebff489d86381"
 # Machine learning and computer vision
-"3c823c4b8b251688fc0aacb61bb6d05a0edf19e0621d8cb5f083fe113251b3cc"
-"c59d67635d135dd98aab78bdac1b2d4c5ae8692abdafa609ad9dae5fa540add1"
-"ba6243c96f98dbe03e78ecd978e9fce1d92b04f889163ac4f917d5c603a2b54f"
-"170f523ba88cf2827f90e827375d73ffbfbcb0d32679b091f7c895274b7532fa"
-"37670bdc359c556b4e9addd417e707a5ea0f5c9b2219cff5963f8ad392cb4b65"
-"871dba88fb95bdfe57c54fe560c4f5bdebba63eec933de221044c74d29ede621"
-#"0bb4ccae4c792b8e9092a05a1bcd35a0934305b4f99ac6eceb3e7198460d3e04"
-#"4dec530b18a7c437515707691b247dad72cf64c9c4b4476e96f0fe61f71122d7"
-"28cbd9b3838eb0080914246ae3713733bf9f207306b17b2b510f7bf95f6098bd"
-"88516d444671360fbc7f40bd41dea573247904275dd1b4e08406dd21896f6aa1"
+"3097dad1eeb697c9494cef8fb23f5176157c0249dc36639b1730cbeb9cb09fc5"
+"967c2685c38d11f9764221597a1788c8481760092c46753866f6f23ce9df762a"
+"75706b14ef6fd2eebc4e7779fa074d0e1537007b4f60c8f93afac886d3976ce0"
+"49d2bc1d957730c4e1bd60bc8493418f7a3b7147b26ed8d39e2fe10497a18e82"
+"259b69cf2346e9a7140e12a38bd8db60bf78f0fb822d7fb112139cc02f017a14"
+"2dfd0877e7859e4421ed11934ac8aebc4a1787f9831f798df31f6aae9a243a57"
+"78edc8564a99acc52727c876d83e74f26a6a4c74496f4f26de537a6be7047a8c"
+"2d831ac6d8ac79036a04f84cd8338207b25544a426247ab5d1648db77cf6345f"
+"e010b4d0a4ab67b91e24a417c7156aabb41f1d285ff0fce251e98aec51714c4c"
 )
 
-#Extract .xz files
-exz() {
-	#echo $1
-	ar x $1 data.tar.xz
-	tar xJf data.tar.xz
-	rm data.tar.xz
-}
-#Extract .gz files
-egz() {
-	#echo $1
-	ar x $1 data.tar.gz
-	tar xfx data.tar.gz
-	rm data.tar.gz
-}
-
 package() {	
-	exz "${srcdir}/composablekernel-dev_1.1.0.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/half_1.12.0.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/hiprand_2.11.1.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/hiprand-dev_2.11.1.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/hipblas_2.2.0.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/hipblas-dev_2.2.0.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/hipblaslt_0.8.0.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/hipblaslt-dev_0.8.0.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/hipcub-dev_3.2.1.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/hipfft_1.0.16.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/hipfft-dev_1.0.16.60204-139~24.04_amd64.deb"	
-	exz "${srcdir}/hipfort-dev_0.4.0.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/hipsolver_2.2.0.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/hipsolver-dev_2.2.0.60204-139~24.04_amd64.deb"
-	egz "${srcdir}/hipify-clang_18.0.0.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/hipsparse_3.1.1.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/hipsparse-dev_3.1.1.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/hipsparselt_0.2.1.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/hipsparselt-dev_0.2.1.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/hiptensor_1.3.0.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/hiptensor-dev_1.3.0.60204-139~24.04_amd64.deb"		
-	egz "${srcdir}/openmp-extras-dev_18.62.0.60204-139~24.04_amd64.deb"
-	egz "${srcdir}/omniperf_2.0.1.60204-139~24.04_amd64.deb"
-	egz "${srcdir}/omnitrace_1.11.2.60204-139~22.04_amd64.deb"
-	egz "${srcdir}/rocm-llvm_18.0.0.24392.60204-139~24.04_amd64.deb"	
-	exz "${srcdir}/rocblas_4.2.4.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/rocblas-dev_4.2.4.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/rocprim-dev_3.2.2.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/rocfft_1.0.30.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/rocfft-dev_1.0.30.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/rocsparse_3.2.1.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/rocsparse-dev_3.2.1.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/rccl_2.20.5.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/rccl-dev_2.20.5.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/rocrand_3.1.1.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/rocrand-dev_3.1.1.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/rocalution_3.2.1.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/rocalution-dev_3.2.1.60204-139~24.04_amd64.deb"	
-	#egz "${srcdir}/rocm-hip-libraries_6.2.4.60204-139~24.04_amd64.deb"
-	egz "${srcdir}/rocm-hip-runtime-dev_6.2.4.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/rocsolver_3.26.2.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/rocsolver-dev_3.26.2.60204-139~24.04_amd64.deb"	
-	exz "${srcdir}/rocthrust-dev_3.1.1.60204-139~24.04_amd64.deb"
-	#egz "${srcdir}/rocm-hip-sdk_6.2.4.60204-139~24.04_amd64.deb"
-	egz "${srcdir}/rocm-opencl-sdk_6.2.4.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/rocwmma-dev_1.5.0.60204-139~24.04_amd64.deb"
-	egz "${srcdir}/rocprofiler-sdk_0.4.0-139~24.04_amd64.deb"
-	egz "${srcdir}/rocprofiler-sdk-roctx_0.4.0-139~24.04_amd64.deb"
-	# Machine learning and computer vision
-	exz "${srcdir}/migraphx_2.10.0.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/migraphx-dev_2.10.0.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/miopen-hip_3.2.0.60204-139~24.04_amd64.deb"
-	exz "${srcdir}/miopen-hip-dev_3.2.0.60204-139~24.04_amd64.deb"
-	egz "${srcdir}/mivisionx_3.0.0.60204-139~24.04_amd64.deb"
-	egz "${srcdir}/mivisionx-dev_3.0.0.60204-139~24.04_amd64.deb"
-	#egz "${srcdir}/rocm-ml-libraries_6.2.4.60204-139~24.04_amd64.deb"	
-	#egz "${srcdir}/rocm-ml-sdk_6.2.4.60204-139~24.04_amd64.deb"
-	egz "${srcdir}/rpp_1.8.0.60204-139~24.04_amd64.deb"
-	egz "${srcdir}/rpp-dev_1.8.0.60204-139~24.04_amd64.deb"
+	for p in *.deb; do
+		ar x "${p}"
+		if [[ -f data.tar.gz ]]; then
+			# echo gz: "${srcdir}/${p}"
+			tar xfx data.tar.gz
+			rm data.tar.gz
+		elif [[ -f data.tar.xz ]]; then
+			# echo xz: "${srcdir}/${p}"
+			tar xJf data.tar.xz
+			rm data.tar.xz
+		fi
+	done
 
 	mv "${srcdir}/opt/" "${pkgdir}/"
-	# mkdir -p "${pkgdir}/opt/rocm-6.2.4/hsa"
-	# ln -s "/opt/rocm-6.2.4/include/hsa" "$pkgdir/opt/rocm-6.2.4/hsa/include"
+	# mkdir -p "${pkgdir}/opt/rocm-6.3.0/hsa"
+	# ln -s "/opt/rocm-6.3.0/include/hsa" "$pkgdir/opt/rocm-6.3.0/hsa/include"
 }
