@@ -2,9 +2,9 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgbase=pyqt5-chart
-pkgname=(python-pyqt5-chart)
+pkgname=(python-pyqt5-chart-deprecated)
 pkgver=5.15.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Python bindings for QtCharts'
 arch=(x86_64)
 url='https://www.riverbankcomputing.com/software/pyqtchart/intro'
@@ -26,7 +26,7 @@ build() {
   make
 }
 
-package_python-pyqt5-chart(){
+package_python-pyqt5-chart-deprecated(){
   cd PyQtChart-$pkgver/build
   make INSTALL_ROOT="$pkgdir" install
 }
