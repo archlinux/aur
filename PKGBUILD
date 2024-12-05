@@ -22,7 +22,7 @@
 pkgname=salt-onedir
 provides=('salt')
 pkgver=3007.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Central system and configuration manager (onedir installation +[${SALT_ADDITIONAL_PIP_PACKAGES}])"
 arch=('x86_64' 'aarch64')
 url='http://saltstack.org/'
@@ -69,6 +69,11 @@ build() {
   # create the relenv environment into which we will install Salt
   relenv create "${onedir}"
   deactivate
+
+  # Upgrade the pip version in the relenv environment
+  # For some reason, the default relenv pip version (23.0.1) fails
+  # to install Salt's dependencies into the package.
+  "${onedir}"/bin/pip3 install --upgrade pip==24.3.1
 
   # Install salt into the relenv environment
   # Note: This must be an absolute path, otherwise pip interprets it as pkg name
