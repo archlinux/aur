@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r1830.c1dfa1f0
+pkgver=r1831.d232386a
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64' 'i686' 'pentium4' 'powerpc64le' 'powerpc64' 'powerpc' 'riscv64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,6 @@ url='https://github.com/ksh93/ksh/'
 license=('EPL')
 depends=('glibc')
 makedepends=('git')
-optdepends=('tcc: for faster PGO compilation (PGO is disabled by default)')
 conflicts=('ksh' 'ksh93')
 provides=('ksh' 'ksh93')
 install='ksh93.install'
@@ -55,33 +54,17 @@ build() {
 		local save_ldflags=${LDFLAGS}
 		# Obtain the number of CPU cores.
 		local -i cores=$(bin/package host cpu)
-		# The first build is only done to obtain a PGO-less copy of the pty executable,
-		# such that an interactive ksh can be profiled without contaminating the
-		# profiling data with useless pty heuristics.
-		# (Additionally, tcc is used when available to increase compilation speed).
-		if type tcc >/dev/null 2>&1; then
-			unset LDFLAGS  # CCFLAGS isn't set yet, so don't bother to unset it
-			./bin/package make -j${cores} CC=tcc
-		else
-			./bin/package make -j${cores}
-		fi
-		mv arch/*/bin/pty ./saved-pty
-		rm -rf ./arch
 		# Create a temporary directory to use for PGO
 		local tmpdir="${PWD}/pgotmp-$SRANDOM"
 		mkdir "$tmpdir"
-		# Second build with profiling flags set (-fno-unroll-loops increases overall
+		# Build with profiling flags set (-fno-unroll-loops increases overall
 		# performance slightly according to my results from shbench).
 		local generation_flags="-fprofile-dir=\"${tmpdir}\" -fprofile-generate=\"${tmpdir}\" -fno-unroll-loops"
 		local use_flags="-fprofile-dir=\"${tmpdir}\" -fprofile-use=\"${tmpdir}\" -fprofile-correction -fno-unroll-loops -Wno-error=coverage-mismatch"
 		export CCFLAGS="${save_ccflags} ${generation_flags}"
 		export LDFLAGS="${save_ldflags} ${generation_flags}"
 		bin/package make -j${cores}
-		# Discard irrelevant profiling data from mamake
-		rm -r "${tmpdir}" && mkdir "${tmpdir}"
 		# Run the regression tests to profile ksh
-		mv ./saved-pty arch/*/bin/pty
-		rm arch/*/dyn/bin/pty
 		local -i status=0
 		./arch/*/bin/ksh bin/shtests -u || status=$?
 		# For any curious script readers, the only reason
@@ -95,7 +78,7 @@ build() {
 			echo "Too many test failures; aborting build..."
 			false
 		fi
-		# Final stage of PGO
+		# Second build after obtaining profiling data
 		export CCFLAGS="${save_ccflags} ${use_flags}"
 		export LDFLAGS="${save_ldflags} ${use_flags}"
 		rm -rf ./arch

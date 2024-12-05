@@ -1,6 +1,6 @@
 pkgbase = ksh93-git
 	pkgdesc = KornShell 93u+m, fork based on ksh 93u+
-	pkgver = r1830.c1dfa1f0
+	pkgver = r1831.d232386a
 	pkgrel = 1
 	url = https://github.com/ksh93/ksh/
 	install = ksh93.install
@@ -18,7 +18,6 @@ pkgbase = ksh93-git
 	license = EPL
 	makedepends = git
 	depends = glibc
-	optdepends = tcc: for faster PGO compilation (PGO is disabled by default)
 	provides = ksh
 	provides = ksh93
 	conflicts = ksh
