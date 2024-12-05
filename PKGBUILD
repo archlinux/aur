@@ -4,13 +4,13 @@
 # Maintainer: Miguel Revilla Rodríguez <yo at miguelrevilla.com>
 
 pkgname=scribus-svn
-pkgver=26402
+pkgver=26453
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 url="http://www.scribus.net"
-depends=(	boost
+depends=(	boost-libs
 			cairo
 			fontconfig
 			freetype2
@@ -46,7 +46,7 @@ depends=(	boost
 			qt6-svg
 			zlib
 		)
-makedepends=(cmake subversion qt6-tools)
+makedepends=(cmake subversion qt6-tools boost)
 optdepends=()
 conflicts=('scribus')
 provides=('scribus')
