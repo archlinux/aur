@@ -1,5 +1,5 @@
 pkgname=ffplayout-git
-pkgver=r2080.69c0830
+pkgver=r3160.63ec9e13
 pkgrel=1
 pkgdesc="24/7 playout based on rust and ffmpeg"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=(
 makedepends=(
     'rustup'
     'musl'
-    'nodejs-lts-iron'
+    'nodejs-lts-hydrogen'
     'npm'
     'pandoc'
     'git'
@@ -28,7 +28,7 @@ source=(
     'ffplayout.install'
 )
 sha256sums=('SKIP'
-            'c12bc4dae912182b2216f38d9c05b2ecf929f8ff6fcc77c55874523eca7d19b5')
+            'eaaf8977a2b657abdc3273f024ffdd8ccfc2e462f5fdaa1535144c8ff84a813d')
 
 pkgver() {
     cd ${pkgname}
@@ -38,15 +38,12 @@ pkgver() {
 prepare() {
     cd "$srcdir/${pkgname}"
     
-    sed -i 's/default = \["embed_frontend"\]/default = []/' ffplayout/Cargo.toml
+    sed -i 's/default = \["embed_frontend"\]/default = []/' engine/Cargo.toml
     
     export CARGO_HOME="$srcdir/rust-home"
     export RUSTUP_HOME="$srcdir/rust-home"
     export RUSTUP_TOOLCHAIN=stable
     rustup target add x86_64-unknown-linux-musl
-    
-    git submodule update --init
-    git submodule update --remote --merge
     
     cd frontend
     npm install
@@ -79,7 +76,6 @@ package() {
     install -Dm644 assets/ffplayout.service "${pkgdir}/usr/lib/systemd/system/ffplayout.service"
     install -Dm644 assets/ffplayout.1.gz "${pkgdir}/usr/share/man/man1/ffplayout.1.gz"
     install -Dm644 assets/logo.png "${pkgdir}/usr/share/ffplayout/logo.png"
-    install -Dm644 assets/ffplayout.conf "${pkgdir}/usr/share/ffplayout/ffplayout.conf.example"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/ffplayout/README"
     install -Dm644 LICENSE "${pkgdir}/usr/share/doc/ffplayout/copyright"
     cp -a public "${pkgdir}/usr/share/ffplayout/"
