@@ -76,7 +76,7 @@ prepare() {
 }
 
 build() {
-  make -C "$_patchdir" X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+  make -C "$_patchdir" PREFIX=/usr X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 
   local msg=''
   msg+='See the st-community README for info on updating your system'\''s st '
@@ -91,7 +91,6 @@ package() {
 
   make -C "$_patchdir" PREFIX=/usr DESTDIR="$pkgdir" install
 
-  install -m 0644 -D -t "$shrdir/applications/" "$_patchdir/st.desktop"
   install -m 0644 -D -t "$shrdir/licenses/$_gitname" "$_sourcedir/LICENSE"
   install -m 0644 -D -t "$shrdir/doc/$_gitname" "$_sourcedir/README.md"
 }
