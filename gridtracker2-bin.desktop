@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=GridTracker2
+Comment=An Amateur Radio Companion
+Exec=gridtracker2 --disable-auto-updates %U
+Path=/opt/GridTracker2
+Icon=GridTracker2
+StartupWMClass=GridTracker2
+Terminal=false
+Categories=Utility;
