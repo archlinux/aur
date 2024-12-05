@@ -1,5 +1,5 @@
 pkgname=ffplayout
-pkgver=0.23.2
+pkgver=0.24.2
 pkgrel=1
 pkgdesc="24/7 playout based on rust and ffmpeg"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=(
 makedepends=(
   'rustup'
   'musl'
-  'nodejs-lts-iron'
+  'nodejs-lts-hydrogen'
   'npm'
   'pandoc'
   'git'
@@ -27,8 +27,8 @@ source=(
     "ffplayout-${pkgver}::git+https://github.com/ffplayout/ffplayout.git#tag=v${pkgver}"
     'ffplayout.install'
 )
-sha256sums=('4524fd7cb66c9160baccc65f452bf4c7a8ec0df6853b3a846848cc9495e035c9'
-            '853fae0033e43ea3a188508fe4cfe21a4bcb42dc9193b61ca5b9962fe60762d2')
+sha256sums=('88e395862c355a8dc619cbce5f582a690b81debe2780e8d1e7ecc5226def2a0d'
+            'eaaf8977a2b657abdc3273f024ffdd8ccfc2e462f5fdaa1535144c8ff84a813d')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -40,10 +40,7 @@ prepare() {
   export RUSTUP_TOOLCHAIN=stable
   rustup target add x86_64-unknown-linux-musl
 
-  git submodule update --init
-  git submodule update --remote --merge
-
-  cd ffplayout-frontend
+  cd frontend
   npm install
 }
 
@@ -55,7 +52,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   # Frontend build steps
-  cd ffplayout-frontend
+  cd frontend
   npm run generate
   cp -vr .output/public "${srcdir}/${pkgname}-${pkgver}/public"
 
@@ -71,18 +68,9 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     install -Dm755 target/x86_64-unknown-linux-musl/release/ffplayout "${pkgdir}/usr/bin/ffplayout"
-    install -Dm755 target/x86_64-unknown-linux-musl/release/ffpapi "${pkgdir}/usr/bin/ffpapi"
-    install -Dm644 assets/ffplayout.toml "${pkgdir}/etc/ffplayout/ffplayout.toml"
-    install -Dm644 assets/advanced.toml "${pkgdir}/etc/ffplayout/advanced.toml"
-    install -Dm644 assets/ffpapi.service "${pkgdir}/usr/lib/systemd/system/ffpapi.service"
     install -Dm644 assets/ffplayout.service "${pkgdir}/usr/lib/systemd/system/ffplayout.service"
-    install -Dm644 assets/ffplayout@.service "${pkgdir}/usr/lib/systemd/system/ffplayout@.service"
-    install -Dm644 assets/11-ffplayout "${pkgdir}/etc/sudoers.d/11-ffplayout"
-    install -Dm644 assets/ffpapi.1.gz "${pkgdir}/usr/share/man/man1/ffpapi.1.gz"
     install -Dm644 assets/ffplayout.1.gz "${pkgdir}/usr/share/man/man1/ffplayout.1.gz"
     install -Dm644 assets/logo.png "${pkgdir}/usr/share/ffplayout/logo.png"
-    install -Dm644 assets/ffplayout.toml "${pkgdir}/usr/share/ffplayout/ffplayout.toml.orig"
-    install -Dm644 assets/ffplayout.conf "${pkgdir}/usr/share/ffplayout/ffplayout.conf.example"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/ffplayout/README"
     install -Dm644 LICENSE "${pkgdir}/usr/share/doc/ffplayout/copyright"
     cp -a public "${pkgdir}/usr/share/ffplayout/"

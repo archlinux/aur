@@ -1,6 +1,5 @@
 post_install() {
     
-    systemctl unmask ffpapi.service >/dev/null || true
     systemctl unmask ffplayout.service >/dev/null || true
     systemctl --system daemon-reload >/dev/null || true
     
@@ -12,7 +11,7 @@ post_install() {
     fi
     
     if [ ! $(id -u $sysUser 2>/dev/null || echo -1) -ge 0 ]; then
-        useradd -m --system $sysUser || adduser --system --create-home $sysUser > /dev/null || adduser --system --home "/home/$sysUser" $sysUser
+        useradd -m --system $sysUser || adduser --system --create-home $sysUser >/dev/null || adduser --system --home "/home/$sysUser" $sysUser
     fi
     
     if [ ! -d "/usr/share/ffplayout/db" ]; then
@@ -20,15 +19,25 @@ post_install() {
         mkdir -p "/var/lib/ffplayout/playlists"
         mkdir -p "/var/lib/ffplayout/tv-media"
         
-        /usr/bin/ffpapi -i -d "${IP}:8787"
+        /usr/bin/ffplayout -i \
+                           -u admin \
+                           -p admin \
+                           -m contact@example.com \
+                           --db "/usr/share/ffplayout/db" \
+                           --storage "/var/lib/ffplayout/tv-media" \
+                           --playlists "/var/lib/ffplayout/playlists" \
+                           --public "/usr/share/ffplayout/public" \
+                           --logs "/var/log/ffplayout" \
+                           --mail-smtp "mail.example.org" \
+                           --mail-user "admin@example.org" \
+                           --mail-password "" \
+                           --mail-starttls
         
         chown -R ${sysUser}: "/usr/share/ffplayout"
         chown -R ${sysUser}: "/var/lib/ffplayout"
-        chown -R ${sysUser}: "/etc/ffplayout"
     else
         chown -R ${sysUser}: "/usr/share/ffplayout"
         chown -R ${sysUser}: "/var/lib/ffplayout"
-        chown -R ${sysUser}: "/etc/ffplayout"
     fi
     
     if [ ! -d "/var/log/ffplayout" ]; then
@@ -39,14 +48,15 @@ post_install() {
         chown ${sysUser}: "/var/log/ffplayout"
     fi
     
-    echo "1. activate systemd services:"
-    echo "    - 'systemctl enable ffplayout'"
-    echo "    - 'systemctl enable --now ffpapi'"
-    echo "2. add admin user to ffpapi:"
-    echo "    - 'ffpapi -a'"
-    echo "3. use a reverse proxy for SSL, Port is **8787**."
-    echo "4. login with your browser, address without proxy would be: **http://${IP}:8787**"
-    echo "5. Default location for playlists and media files are: **/var/lib/ffplayout/**."
+    tab="   "
+    echo -e "1. Activate systemd service:"
+    echo -e "   $ systemctl enable --now ffplayout"
+    echo -e "2. Use a reverse proxy for SSL, Port is 8787."
+    echo -e "3. Login with your browser, address without proxy would be: http://${IP}:8787, \n${tab}the default account is \"admin\" and the password is \"admin\"."
+    echo -e "4. Default location for playlists and media files are: /var/lib/ffplayout/."
+    echo -e "5. If you want to change the default global settings:"
+    echo -e "   $ sudo rm -v /usr/share/ffplayout/db/*"
+    echo -e "   $ sudo ffplayout -i"
     
 }
 
@@ -57,20 +67,15 @@ post_upgrade() {
 pre_remove() {
     
     if [ -d /run/systemd/system ]; then
-        for service in $(systemctl list-units --type service --all --no-legend --plain | grep 'ffplayout' | awk '{print $1}'); do
-            systemctl stop "$service" >/dev/null || true
-        done
+            systemctl stop "ffplayout.service" >/dev/null || true
     fi
     
 }
 
 post_remove() {
     
-    rm -f /usr/lib/systemd/system/ffpapi.service || true
-    rm -f /usr/lib/systemd/system/ffplayout* || true
-    
     systemctl --system daemon-reload >/dev/null || true
-    systemctl unmask ffpapi.service ffplayout.service >/dev/null || true
+    systemctl unmask ffplayout.service >/dev/null || true
     
     sysUser="ffpu"
     
