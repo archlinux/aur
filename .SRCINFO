@@ -1,19 +1,22 @@
 pkgbase = pipr-bin
 	pkgdesc = A commandline-utility to interactively build complex shell pipelines
-	pkgver = 0.0.14
+	pkgver = 0.0.16
 	pkgrel = 1
-	url = https://github.com/Elkowar/pipr
+	url = https://github.com/elkowar/pipr
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	license = MIT
 	depends = bubblewrap
+	provides = pipr
+	conflicts = pipr
 	conflicts = pipr-git
-	source = pipr::https://github.com/elkowar/pipr/releases/download/v0.0.14/pipr
-	source = pipr-git::git+https://github.com/Elkowar/pipr.git
-	md5sums = SKIP
-	md5sums = SKIP
+	source = pipr-0.0.16::https://github.com/elkowar/pipr/releases/download/v0.0.16/pipr
+	source = README-0.0.16.md::https://raw.githubusercontent.com/elkowar/pipr/v0.0.16/Readme.md
+	source = LICENSE-0.0.16::https://raw.githubusercontent.com/elkowar/pipr/v0.0.16/LICENSE
+	md5sums = ad7c9ce642573d04b60a72ee2ce73bb5
+	md5sums = 0ced6bcc8030c4d7510de9b79fdcb850
+	md5sums = 96ca1df61bf4e088c167e6987c79fea3
 
 pkgname = pipr-bin
-
