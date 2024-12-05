@@ -2,7 +2,7 @@
 pkgname=gridtracker2-bin
 _pkgname=GridTracker2
 pkgver=2.241203.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An Amateur Radio Companion (unofficial)'
 url='https://gridtracker.org'
 license=('BSD-3-Clause')
