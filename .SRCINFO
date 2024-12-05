@@ -1,7 +1,7 @@
 pkgbase = aliae-bin
 	pkgdesc = Cross shell and platform alias management
 	pkgver = 0.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aliae.dev
 	install = aliae-bin.install
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = aliae-bin
 	conflicts = aliae
 	source = LICENSE::https://raw.githubusercontent.com/JanDeDobbeleer/aliae/v0.23.0/LICENSE
 	sha256sums = df419cb226a6174d115f4306653312cb924e47c8e87209243ecb76a4031355cf
-	source_x86_64 = aliae-0.23.0-1::https://github.com/JanDeDobbeleer/aliae/releases/download/v0.23.0/aliae-linux-amd64
-	sha256sums_x86_64 = 002c0cfa83440ab0e58ed039718350fce5333dfd454014240807235eb8d3a17f
-	source_armv7h = aliae-0.23.0-1::https://github.com/JanDeDobbeleer/aliae/releases/download/v0.23.0/aliae-linux-arm
-	sha256sums_armv7h = 002c0cfa83440ab0e58ed039718350fce5333dfd454014240807235eb8d3a17f
-	source_aarch64 = aliae-0.23.0-1::https://github.com/JanDeDobbeleer/aliae/releases/download/v0.23.0/aliae-linux-arm64
-	sha256sums_aarch64 = 002c0cfa83440ab0e58ed039718350fce5333dfd454014240807235eb8d3a17f
+	source_x86_64 = aliae-0.23.0-2::https://github.com/JanDeDobbeleer/aliae/releases/download/v0.23.0/aliae-linux-amd64
+	sha256sums_x86_64 = 98e7df8d40bf201c8c0e6b89285e60005a322bef79ffe4de99721c3d3dd9fc66
+	source_armv7h = aliae-0.23.0-2::https://github.com/JanDeDobbeleer/aliae/releases/download/v0.23.0/aliae-linux-arm
+	sha256sums_armv7h = 98e7df8d40bf201c8c0e6b89285e60005a322bef79ffe4de99721c3d3dd9fc66
+	source_aarch64 = aliae-0.23.0-2::https://github.com/JanDeDobbeleer/aliae/releases/download/v0.23.0/aliae-linux-arm64
+	sha256sums_aarch64 = 98e7df8d40bf201c8c0e6b89285e60005a322bef79ffe4de99721c3d3dd9fc66
 
 pkgname = aliae-bin
