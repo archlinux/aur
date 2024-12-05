@@ -1,0 +1,4 @@
+[gltfpack-bin]
+source = "git"
+git = "https://github.com/zeux/meshoptimizer.git"
+prefix = "v"
