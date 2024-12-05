@@ -1,6 +1,6 @@
 # Maintainer: Leca <leca@foxarmy.org>
 pkgname=checks-parser-git
-pkgver=alpha_0.0.1
+pkgver=alpha_0.0.2
 pkgrel=1
 epoch=
 pkgdesc="Utility for parsing checks(receipts) to csv"
