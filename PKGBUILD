@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy-bin
 _pkgname=Escrcpy
-pkgver=1.27.5
+pkgver=1.27.6
 _electronversion=33
 pkgrel=1
 pkgdesc="📱 Graphical Scrcpy to display and control Android, devices powered by Electron(Prebuilt version.Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
@@ -26,8 +26,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('aeac730ff268fc35667432df198bca773245173bed4841b3d1cf004f6f1ab0d4')
-sha256sums_x86_64=('56aa148573c5494085052280c8d69133a9f9f16032c2c985bdc70f15479ff1f9')
+sha256sums_aarch64=('316a2872745db6c36b01d237313f74a0b4e2178cdf1fa026fac37d0f5ad5b5a8')
+sha256sums_x86_64=('7364910a7c219cd13a28d335fc8dcd34d7c91df5995a66f9dfbd7615ba7a4e8d')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/
@@ -45,9 +45,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/extra/common/tray/icon.png" \
-        -t "${pkgdir}/usr/lib/${pkgname%-bin}/extra/common/tray"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/extra/linux" "${pkgdir}/usr/lib/${pkgname%-bin}/extra"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/extra" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
