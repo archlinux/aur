@@ -1,6 +1,6 @@
 pkgbase = easyfeh
 	pkgdesc = An easy, and user-friendly wrapper originally meant for feh, but works with anything!
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/ShibamRoy9826/easyfeh
 	arch = any
@@ -13,8 +13,10 @@ pkgbase = easyfeh
 	depends = python-beautifulsoup4
 	depends = python-rich
 	optdepends = swww: Enables wayland support
+	optdepends = python-colorthief: Enables the feature to extract colors from current wallpaper
+	optdepends = python-pillow: Enables wallpaper effects feature
 	conflicts = easyfeh-git
-	source = https://github.com/ShibamRoy9826/easyfeh/releases/download/beta3/easyfeh-v0.1.3.tar.gz
+	source = https://github.com/ShibamRoy9826/easyfeh/releases/download/stable/easyfeh-0.1.4.tar.gz
 	sha256sums = SKIP
 
 pkgname = easyfeh
