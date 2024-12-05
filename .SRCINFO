@@ -1,15 +1,17 @@
 pkgbase = fuchsia-cursor
-	pkgdesc = Open source port of FuchsiaOS's cursors for Linux
-	pkgver = 2.0.0
+	pkgdesc = First OpenSource port of FuchsiaOS's cursors for Linux and Windows.
+	pkgver = 2.0.1
 	pkgrel = 2
 	url = https://github.com/ful1e5/fuchsia-cursor
 	arch = any
-	license = AGPL
-	source = Fuchsia-2.0.0.tar.gz::https://github.com/ful1e5/fuchsia-cursor/releases/download/v2.0.0/Fuchsia.tar.gz
-	source = Fuchsia-Pop-2.0.0.tar.gz::https://github.com/ful1e5/fuchsia-cursor/releases/download/v2.0.0/Fuchsia-Pop.tar.gz
-	source = Fuchsia-Red-2.0.0.tar.gz::https://github.com/ful1e5/fuchsia-cursor/releases/download/v2.0.0/Fuchsia-Red.tar.gz
-	sha256sums = 22bf639e681736c55b8d2266fbcc70ad10d6d55d4456136c921f57c3a2132a4b
-	sha256sums = b4dac495290146b0d9ed8cc782de1915c11b1887645358f12c196b03870f6265
-	sha256sums = f365dacf16f6bd34d4313853789d0358cd574a1489041ab793cd4eff333551a0
+	license = GPL-3.0-or-later
+	source = Fuchsia-2.0.1.tar.gz::https://github.com/ful1e5/fuchsia-cursor/releases/download/v2.0.1/Fuchsia.tar.xz
+	source = Fuchsia-Amber-2.0.1.tar.xz::https://github.com/ful1e5/fuchsia-cursor/releases/download/v2.0.1/Fuchsia-Amber.tar.xz
+	source = Fuchsia-Pop-2.0.1.tar.xz::https://github.com/ful1e5/fuchsia-cursor/releases/download/v2.0.1/Fuchsia-Pop.tar.xz
+	source = Fuchsia-Red-2.0.1.tar.xz::https://github.com/ful1e5/fuchsia-cursor/releases/download/v2.0.1/Fuchsia-Red.tar.xz
+	sha256sums = 6e815a4d2234938373c13bdb2ffbb80f57488b5b1a3b4d26af6607beebed406a
+	sha256sums = 3c5471783334e7300dfc7882a11e64de247ef5f82cd200898ead1dba3e38c878
+	sha256sums = 09014aa3daffc43c505f08feec17ccc9a0e88dcd9d0732e2dbd233b70990f63f
+	sha256sums = 2a81ee41f839398b31209ed5cb03e6b8c5fa1cf6d9ecd77af8aab403d98e24d0
 
 pkgname = fuchsia-cursor
