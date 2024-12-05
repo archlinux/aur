@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-cmsis-svd-git
-pkgver=0.4.r221.g1bea425
+pkgver=0.5.r14.g4a23b3b
 pkgrel=1
 pkgdesc='Aggegration of ARM Cortex-M (and other) CMSIS SVDs and related tools'
 url='https://github.com/cmsis-svd/cmsis-svd'
@@ -29,6 +29,10 @@ pkgver() {
     git describe --long --tags | sed 's/^python-//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    git -C "${srcdir}/${pkgname}" clean -dfx
+}
+
 build() {
     cd "${srcdir}/$pkgname/python"
     python -m build --wheel --no-isolation
@@ -43,4 +47,3 @@ package() {
     cd "${srcdir}/$pkgname/python"
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
-

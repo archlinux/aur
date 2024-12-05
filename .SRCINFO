@@ -1,6 +1,6 @@
 pkgbase = python-cmsis-svd-git
 	pkgdesc = Aggegration of ARM Cortex-M (and other) CMSIS SVDs and related tools
-	pkgver = 0.4.r221.g1bea425
+	pkgver = 0.5.r14.g4a23b3b
 	pkgrel = 1
 	url = https://github.com/cmsis-svd/cmsis-svd
 	arch = any
