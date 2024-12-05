@@ -1,0 +1,14 @@
+pkgbase = zsh-fzf-git
+	pkgdesc = Zsh plugin to enable fzf history search
+	pkgver = r32.a8a747e18
+	pkgrel = 1
+	url = https://bgithub.xyz/ohmyzsh/ohmyzsh.git
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	depends = fzf
+	source = git+https://bgithub.xyz/ohmyzsh/ohmyzsh.git
+	sha1sums = SKIP
+
+pkgname = zsh-fzf-git
