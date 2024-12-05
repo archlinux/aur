@@ -1,12 +1,13 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: taotieren <admin@taotieren.com>
 
-_name=pyftdi
 pkgname=python-pyftdi
-pkgver=0.55.4
-pkgrel=3
+_name=${pkgname#python-}
+pkgver=0.56.0
+pkgrel=2
 pkgdesc="FTDI device driver written in pure Python"
 arch=(any)
-url="https://pypi.org/project/pyftdi"
+url="https://github.com/eblot/pyftdi"
 license=(BSD-3-Clause)
 depends=(
   python
@@ -22,14 +23,14 @@ makedepends=(
 checkdepends=(
   python-ruamel-yaml
 )
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('516fa48fe8a12c901d16492be5090d48d4a31c0f249a37735b2cd6df311dbb73ceada711100852573a5c370f2d3094eebb59719f19e52752cb9604ac19ebb2d9')
-b2sums=('355211cfd8a1b75804b363e5d265cbd67fb1a04fd28b4a8c1cbbd3b645c0f4faa4c0ccebbf2870ee9859111206eb6e986d588ee6b8fa010785c42003ec086eac')
+# source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz")
+source=(https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl)
+sha512sums=('e26fe9e9371cb195df92c8c86d47386dc7e489cf4797419fdb2cf64cd7ecdab7d0ba1d2bb55cd81c6842370f9b16b62f4913523635bec1dd2c8196406dc47514')
 
-build() {
-  cd $_name-$pkgver
-  python -m build --wheel --no-isolation
-}
+# build() {
+#   cd $_name-$pkgver
+#   python -m build --wheel --no-isolation
+# }
 
 # check() {
 #   cd $_name-$pkgver
@@ -46,8 +47,9 @@ build() {
 # }
 
 package() {
-  cd $_name-$pkgver
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  #   cd $_name-$pkgver
+  #   python -m installer --destdir="$pkgdir" dist/*.whl
   #   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   #   install -vDm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  python -m installer --destdir="$pkgdir" ${srcdir}/${_name//-/_}-$pkgver-py3-none-any.whl
 }
