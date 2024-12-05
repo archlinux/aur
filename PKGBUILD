@@ -1,16 +1,16 @@
-# Maintainer: 
+# Maintainer: S e r g i o S c h  n e i d e r <s p s f 6 4 at msn dot com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=thingy
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
-pkgdesc="Utility application used to make collections and quickly access recent and favorite documents."
+pkgdesc="Quickly access recent and favorite documents.XApp, works with many DE's"
 arch=('any')
 url="https://github.com/linuxmint/thingy"
-license=('GPL3')
+license=('GPL-3.0 or later')
 depends=('libgsf' 'python-gobject' 'python-setproctitle' 'xapp')
 optdepends=('libreoffice' 'xreader')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('46d55155149df5db179b1014781862e49f26c56265417a526d7659c59d2ef331')
+sha256sums=('faba76e42d63af518f1b2c7b5b033ba06d209e5f5d7f08f4887a5411f72dd7c6')
 
 prepare() {
   cd "$pkgname-$pkgver"
