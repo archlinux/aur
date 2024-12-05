@@ -15,29 +15,21 @@
 # Contributor: John Luebs <jkluebs@gmail.com>
 
 pkgname=go-sylixos
-pkgver=1.23.2.r60492.gb9ec27f7
-pkgrel=2
+pkgver=1.23.4
+pkgrel=1
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(x86_64)
-url='https://github.com/go-sylixos'
+url='https://github.com/golang/go'
 license=(BSD-3-Clause)
 makedepends=(git go)
 provides=("${pkgname%-sylixos}")
 conflicts=("${pkgname%-sylixos}")
 options=(!strip staticlibs)
-source=(git+${url}/${pkgname%-sylixos}.git#branch=sylixos-release-branch.go1.23)
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${pkgname%-sylixos}"
-  printf "%s.r%s.g%s" \
-    "$(awk -F'go' '{if(NR==1)print $2}' VERSION)" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short=8 HEAD)"
-}
+source=(${url}/archive/refs/tags/${pkgname%-sylixos}${pkgver}.tar.gz)
+sha1sums=('624687f9c24f3d1ad6b8e20c39c35f792d0f83e6')
 
 prepare() {
-  cd "${pkgname%-sylixos}"
+  cd "${pkgname%-sylixos}-${pkgname%-sylixos}${pkgver}"
   # this is only for local builds so there is no need to integrity check. (if needed)
   for p in ../../*.patch; do
     echo "Custom Patching with ${p}"
@@ -51,19 +43,19 @@ build() {
   export GOROOT_FINAL=/usr/lib/go
   export GOROOT_BOOTSTRAP=/usr/lib/go
 
-  cd "${pkgname%-sylixos}/src"
+  cd ""${pkgname%-sylixos}-${pkgname%-sylixos}${pkgver}"/src"
   ./make.bash -v
 }
 
 check() {
   export GO_TEST_TIMEOUT_SCALE=3
 
-  cd ${pkgname%-sylixos}/src
+  cd "${pkgname%-sylixos}-${pkgname%-sylixos}${pkgver}"/src
   ./run.bash --no-rebuild -v -v -v -k
 }
 
 package() {
-  cd "${pkgname%-sylixos}"
+  cd ""${pkgname%-sylixos}-${pkgname%-sylixos}${pkgver}""
 
   install -d "$pkgdir/usr/bin" "$pkgdir/usr/lib/go" "$pkgdir/usr/share/doc/go" \
     "$pkgdir/usr/lib/go/pkg/linux_amd64_"{dynlink,race}
