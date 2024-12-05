@@ -1,6 +1,6 @@
 pkgbase = kawaii-gcc-git
 	pkgdesc = GCCコンパイラーを可愛くしましょう！Make your GCC compiler kawaii.
-	pkgver = r28.3824e8f
+	pkgver = r29.9504dad
 	pkgrel = 1
 	url = https://github.com/Bill-Haku/kawaii-gcc
 	install = kawaii-gcc-git.install
