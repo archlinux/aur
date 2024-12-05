@@ -6,7 +6,7 @@
 _pkgname=pa-dlna
 pkgname="${_pkgname}-git"
 pkgver=0.14.r389.20241103.6c16282
-pkgrel=6
+pkgrel=7
 pkgdesc="Forwards audio streams to DLNA devices. For PulseAudio or PipeWira (via 'python-libpulse'). Latest git checkout."
 arch=(
   'any'
@@ -43,6 +43,9 @@ makedepends=(
   'python-sphinx'
   'python-sphinx_rtd_theme'
   'python-wheel'
+  'texlive-basic'
+  'texlive-bin'
+  'texlive-binextra'
   'texinfo'
 )
 optdepends=(
