@@ -5,12 +5,12 @@ pkgrel=1
 pkgdesc='Zsh plugin to enable fzf history search'
 arch=('any')
 _gitname=ohmyzsh
-url="https://bgithub.xyz/${_gitname}/${_gitname}.git"
+url="https://github.com/${_gitname}/${_gitname}.git"
 license=('MIT')
 depends=('zsh' 'fzf')
 makedepends=('git')
 
-source=(git+https://bgithub.xyz/ohmyzsh/$_gitname.git)
+source=(git+https://github.com/ohmyzsh/$_gitname.git)
 
 sha1sums=('SKIP')
 
