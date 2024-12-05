@@ -1,0 +1,4 @@
+[oxker-bin]
+source = "git"
+git = "https://github.com/mrjackwills/oxker.git"
+prefix = "v"
