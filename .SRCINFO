@@ -1,7 +1,7 @@
 pkgbase = python-pyqt5-3d
 	pkgdesc = Python bindings for Qt3D
 	pkgver = 5.15.7
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.riverbankcomputing.com/software/pyqt3d/intro
 	arch = x86_64
 	license = GPL3
