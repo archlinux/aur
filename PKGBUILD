@@ -4,8 +4,8 @@
 
 _pkgname=lammps
 pkgname=${_pkgname}-git
-pkgver=patch_29Aug2024.r251.g2995cb7
-pkgrel=3
+pkgver=patch_19Nov2024.r12.gcd16308
+pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
