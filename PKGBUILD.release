@@ -1,0 +1,30 @@
+pkgname="$_pkgname"
+
+_source_ryujinx() {
+  _pkgsrc="${_pkgname^}-$_pkgver"
+  _pkgext="tar.gz"
+  source=("${_pkgsrc,,}.$_pkgext"::"$url/archive/refs/tags/${_tag:-$_pkgver}.$_pkgext")
+  sha256sums=('SKIP')
+}
+
+_update_version() {
+  : ${_pkgver:=$pkgver}
+
+  if [[ "${_autoupdate::1}" != "t" ]]; then
+    return
+  fi
+
+  local _response _pkgver_new
+  _response=$(curl -Ssf "$url/releases")
+  _tag=$(
+    printf '%s' "$_response" \
+      | grep -E '/tree/([0-9\.]+)"' \
+      | sed -E 's&^.*/tree/([0-9\.]+)".*$&\1&' \
+      | sort -rV | head -1
+  )
+  _pkgver_new="${_tag:?}"
+
+  if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
+    _pkgver="${_pkgver_new:?}"
+  fi
+}
