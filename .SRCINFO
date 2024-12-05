@@ -1,0 +1,16 @@
+pkgbase = cuuri-bin
+	pkgdesc = A GUI client for ChatGPT built with Tauri, Vue, and TypeScript.(Prebuilt version)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/takanotume24/Cuuri
+	arch = x86_64
+	license = Apache-2.0
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = cuuri=0.2.1
+	conflicts = cuuri
+	source = cuuri-0.2.1.rpm::https://github.com/takanotume24/Cuuri/releases/download/app-v0.2.1/Cuuri-0.2.1-1.x86_64.rpm
+	sha256sums = bf0ca1f59677766d8756bd5275e7f3317a77b0da40c6593586b3afb2bcf49e41
+
+pkgname = cuuri-bin
