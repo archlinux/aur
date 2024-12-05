@@ -1,0 +1,6 @@
+OpenLinkHub/
+src/
+pkg/
+backupPKGB
+*.tar.zst
+*.patch
