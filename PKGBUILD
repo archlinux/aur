@@ -24,9 +24,9 @@ sha256sums_armv7h=('8671911e3a0819f5b6695b8268b4c0cf6087a4b0144aacc23b864c345320
 package() {
   # Determine architecture
   case "$CARCH" in
-	x86_64) _arch="x64";;
+    x86_64) _arch="x64";;
     arm64) _arch="arm64";;
-	armv7h) _arch="arm7l";;
+    armv7h) _arch="arm7l";;
   esac
   
   # Install app to /opt/GridTracker2 and link to executable
