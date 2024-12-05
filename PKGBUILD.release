@@ -1,5 +1,3 @@
-pkgname="$_pkgname"
-
 _source_ryujinx() {
   _pkgsrc="${_pkgname^}-$_pkgver"
   _pkgext="tar.gz"
