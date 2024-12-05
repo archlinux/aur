@@ -1,4 +1,6 @@
 [libpurple-lurch]
-source = "git"
-git = "https://github.com/gkdr/lurch.git"
-prefix = "v"
+source = 'github'
+github = 'gkdr/lurch'
+use_max_tag = true
+prefix = 'v'
+
