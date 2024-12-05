@@ -1,0 +1,23 @@
+pkgbase = cosmic-player-git
+	pkgdesc = WIP COSMIC media player
+	pkgver = r84.2dd397f
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-player
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	makedepends = just
+	makedepends = mold
+	depends = gstreamer
+	depends = gst-plugins-good
+	depends = gst-plugins-base
+	depends = libxkbcommon
+	provides = cosmic-player
+	conflicts = cosmic-player
+	source = git+https://github.com/pop-os/cosmic-player.git
+	sha256sums = SKIP
+
+pkgname = cosmic-player-git
