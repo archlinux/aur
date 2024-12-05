@@ -1,0 +1,16 @@
+pkgbase = msgpack-cxx-git
+	pkgdesc = MessagePack implementation for C++
+	pkgver = 7.0.0.r1.gf9f2917c
+	pkgrel = 1
+	url = https://msgpack.org/
+	arch = any
+	license = BSL-1.0
+	makedepends = git
+	makedepends = cmake
+	depends = boost
+	provides = msgpack-cxx=7.0.0.r1.gf9f2917c
+	conflicts = msgpack-cxx
+	source = git+https://github.com/msgpack/msgpack-c.git#branch=cpp_master
+	sha256sums = SKIP
+
+pkgname = msgpack-cxx-git
