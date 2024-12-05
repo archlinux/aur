@@ -11,11 +11,15 @@ pkgbase = st-community-git
 	makedepends = libxext
 	makedepends = git
 	depends = libxft
+	depends = gd
+	depends = harfbuzz
+	depends = freetype2
+	depends = fontconfig
 	provides = st
 	conflicts = st
 	source = st-community::git+https://github.com/dc138/st-community.git
 	source = terminfo.patch
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 1d4dbc5ed36d97fa1d7852b84a12bf59906b245f60c47c0134fb3fdbc834f23e
 
 pkgname = st-community-git
