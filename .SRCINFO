@@ -1,6 +1,6 @@
 pkgbase = jan
 	pkgdesc = An open source alternative to ChatGPT that runs 100% offline on your computer
-	pkgver = 0.5.9
+	pkgver = 0.5.10
 	pkgrel = 1
 	url = https://jan.ai/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = jan
 	depends = alsa-lib
 	provides = jan
 	conflicts = jan
-	source = jan::git+https://github.com/janhq/jan.git#tag=v0.5.9
+	source = jan::git+https://github.com/janhq/jan.git#tag=v0.5.10
 	source = jan.desktop
 	sha256sums = 4f0b01b21144c9fe91c36613578c7dc3323cbe009ffe3a628e987ead77e4178c
 	sha256sums = 689c50321d61f2c40a275c004865e9956501038782867bbe73e9d42128f40048
