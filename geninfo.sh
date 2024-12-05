@@ -3,8 +3,9 @@
 ## run './geninfo.sh' after run 'updpkgsums', require install yq and jq.
 
 _pkgname=$(awk -F= '/_pkgname=/{print $2}' PKGBUILD)
+_pipname="${_pkgname//-/_}"
 pkgver=$(awk -F= '/pkgver=/{print $2}' PKGBUILD)
-pytoml="src/${_pkgname}-${pkgver}/pyproject.toml"
+pytoml="src/${_pipname}-${pkgver}/pyproject.toml"
 
 makepkg -do
 pkgdesc=$(yq eval -o=json "$pytoml" | jq -r '.tool.poetry.description')
