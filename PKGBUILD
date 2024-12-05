@@ -2,7 +2,7 @@
 
 pkgname=home-assistant-clock-weather-card
 pkgver=2.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A home-assistant card to show date, time and weather."
 arch=(any)
 url="https://github.com/pkissling/clock-weather-card"

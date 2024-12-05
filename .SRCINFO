@@ -1,7 +1,7 @@
 pkgbase = home-assistant-clock-weather-card
 	pkgdesc = A home-assistant card to show date, time and weather.
 	pkgver = 2.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pkissling/clock-weather-card
 	arch = any
 	license = MIT
