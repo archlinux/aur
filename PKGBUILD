@@ -10,11 +10,11 @@ url="https://github.com/aegis-aead/libaegis.git"
 license=('MIT')
 options=('!lto')
 
-_commit=23fda6880bc1197ca1609b3855f0fdcf1e6cf03f
+_commit=c24628fc2052cc9716f28a85c34b70e054517a67
 source=("git+https://github.com/aegis-aead/libaegis.git#commit=${_commit}?signed/")
 # mruby-Rakefile.patch
 # h2o-libressl-3.6.2.patch
-sha256sums=('e64e4790483eb5b1490edfe3d1754cbee19ab1dd1ea8d8c347821a99d667e09b')
+sha256sums=('70f952dcc438d9afa0d1328a67e2ae15cf6621edfc465cbb1710583fd781f0a2')
 provides=('libaegis')
 conflicts=('libaegis')
 
