@@ -2,11 +2,9 @@
 _pkgname=QSerial
 pkgname=qserial
 pkgver=1.2
-pkgrel=2
+pkgrel=6
 pkgdesc="An advanced cross-platform serial port utility"
-arch=('aarch64'
-    'riscv64'
-    'x86_64')
+arch=($CARCH)
 url="https://github.com/tuna/QSerial"
 license=('MIT')
 provides=(${pkgname})
