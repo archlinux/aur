@@ -1,0 +1,19 @@
+pkgbase = dam-river-git
+	pkgdesc = Itsy-bitsy dwm-esque bar for river
+	pkgver = r50.be43694
+	pkgrel = 1
+	url = https://codeberg.org/sewn/dam
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = wayland
+	makedepends = wayland-protocols
+	makedepends = fcft
+	makedepends = pixman
+	makedepends = pkg-config
+	provides = dam
+	conflicts = dam
+	source = dam-river-git::git+https://codeberg.org/sewn/dam.git
+	sha1sums = SKIP
+
+pkgname = dam-river-git
