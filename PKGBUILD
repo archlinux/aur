@@ -2,8 +2,8 @@
 
 pkgname=msgpack-c-git
 pkgver=6.1.0.r0.g44588010
-pkgrel=1
-pkgdesc="MessagePack implementation for C and C++"
+pkgrel=2
+pkgdesc="MessagePack implementation for C"
 arch=('i686' 'x86_64')
 url="https://msgpack.org/"
 license=('BSL-1.0')

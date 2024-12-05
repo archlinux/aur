@@ -1,7 +1,7 @@
 pkgbase = msgpack-c-git
-	pkgdesc = MessagePack implementation for C and C++
+	pkgdesc = MessagePack implementation for C
 	pkgver = 6.1.0.r0.g44588010
-	pkgrel = 1
+	pkgrel = 2
 	url = https://msgpack.org/
 	arch = i686
 	arch = x86_64
