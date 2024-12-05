@@ -2,11 +2,9 @@
 
 pkgname=bookget-git
 pkgver=24.1118.5.g19aecfb
-pkgrel=2
+pkgrel=3
 pkgdesc="bookget 数字图书馆下载工具，目前支持约50+个数字图书馆。"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/deweizhu/bookget"
 license=('GPL-3.0-only')
 provides=(${pkgname%-git})
