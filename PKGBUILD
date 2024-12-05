@@ -2,11 +2,9 @@
 
 pkgname=qt6-qtcsv
 pkgver=1.7
-pkgrel=0
+pkgrel=5
 pkgdesc="Library for reading and writing csv-files in Qt."
-arch=(aarch64
-    riscv64
-    x86_64)
+arch=($CARCH)
 url="https://github.com/iamantony/qtcsv"
 license=('MIT')
 groups=()
@@ -28,7 +26,7 @@ sha256sums=('7f8acb68fc1888573e263d020f4153494cdf2bd3610ada3605baa88bb8b6ccf5')
 
 build() {
     cd "$srcdir/${pkgname#qt6-}-${pkgver}"
-# see：https://wiki.archlinux.org/title/
+    # see：https://wiki.archlinux.org/title/
     cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
@@ -49,4 +47,3 @@ test() {
 package() {
     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname#qt6-}-${pkgver}/build install
 }
-
