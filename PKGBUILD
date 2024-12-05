@@ -2,8 +2,8 @@
 # https://github.com/adamperkowski/PKGBUILDs
 _pkgname='hyprgui'
 pkgname="$_pkgname-bin"
-pkgver=0.1.9
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='GUI for configuring Hyprland, written in blazingly fast Rust!'
 arch=('x86_64')
 url="https://github.com/hyprutils/$_pkgname"
@@ -14,7 +14,11 @@ source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname"
     "$_pkgname-$pkgver.desktop::$url_raw/refs/tags/v$pkgver/$_pkgname.desktop"
     "LICENSE-$pkgver::$url_raw/refs/tags/v$pkgver/LICENSE"
     "README-$pkgver.md::$url_raw/refs/tags/v$pkgver/readme.md")
-sha256sums=('7bf8ad6db74750417febd30d6ce97ccfe67ad8af918fc0654633a1c33b85ecaf' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('329227ff3f16de6d68d427b3837068582d0648fc8882603a5da6588f4e2058ad'
+            'ccc2881eba57c0729032fb2d4f54bc7b819ea741fb44961314d5ddff5bdfb263'
+            '1e215a26e4c976e53057b6972811ca16fa74631a0a67452dabb23f639c6194fc'
+            '8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643'
+            '477556adfd263655fb9b6c1d462adde73352157d1a92dde804cd58e3190dead3')
 depends=('glibc' 'gcc-libs' 'gtk4')
 optdepends=('hyprland')
 conflicts=($_pkgname)
