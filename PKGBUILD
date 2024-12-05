@@ -10,7 +10,7 @@ _pkgname=Signal-Desktop
 _sticker_creator="sticker-creator"
 _desktop_file='signalbeta.desktop'
 pkgver=7.36.0beta1
-pkgrel=1
+pkgrel=2
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
 conflicts=('signal-desktop-beta-bin')
@@ -84,6 +84,7 @@ build() {
   USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) bash -c 'npm --prefix ./sticker-creator/ run build'
 
   # Build Signal Desktop Beta
+  npm run generate
   npm run prepare-beta-build
   USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) bash -c 'npm run build'
 }
