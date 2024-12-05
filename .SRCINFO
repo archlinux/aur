@@ -1,6 +1,6 @@
 pkgbase = mods-manager-for-3dmigoto-bin
 	pkgdesc = A mods manager for 3dmigoto design for ZZZ(which can also use on other mod base on 3dmigoto).(Prebuild version.Use system-wide electron)
-	pkgver = 1.10.3
+	pkgver = 1.10.4
 	pkgrel = 1
 	url = https://gamebanana.com/tools/17889
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = mods-manager-for-3dmigoto-bin
 	makedepends = icoutils
 	depends = electron32
 	conflicts = mods-manager-for-3dmigoto
-	source = mods-manager-for-3dmigoto-1.10.3.rpm::https://github.com/XiaoLinXiaoZhu/Mods-Manager-for-3Dmigoto/releases/download/v1.10.3/mods-manager-for-3dmigoto-1.10.3-1.x86_64.rpm
-	source = mods-manager-for-3dmigoto-1.10.3.ico::https://raw.githubusercontent.com/XiaoLinXiaoZhu/Mods-Manager-for-3Dmigoto/v1.10.3/icon.ico
+	source = mods-manager-for-3dmigoto-1.10.4.rpm::https://github.com/XiaoLinXiaoZhu/Mods-Manager-for-3Dmigoto/releases/download/v1.10.4/mods-manager-for-3dmigoto-1.10.4-1.x86_64.rpm
+	source = mods-manager-for-3dmigoto-1.10.4.ico::https://raw.githubusercontent.com/XiaoLinXiaoZhu/Mods-Manager-for-3Dmigoto/v1.10.4/icon.ico
 	source = mods-manager-for-3dmigoto.sh
-	sha256sums = 251982c999466c54dd0e968279353344c2c97691373fc463cc6a9531e5d1981b
+	sha256sums = 8f6447e9e03a1e51f1c6483320094ada3f70678d81f2bb831152dc0569a8523b
 	sha256sums = 9fd025b00043aa5273080675e096e49cc03d106b741c301021e111acc2b63d22
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 

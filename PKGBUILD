@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mods-manager-for-3dmigoto-bin
 _pkgname='Mods Manager for 3dmigoto'
-pkgver=1.10.3
+pkgver=1.10.4
 _electronversion=32
 pkgrel=1
 pkgdesc="A mods manager for 3dmigoto design for ZZZ(which can also use on other mod base on 3dmigoto).(Prebuild version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.ico::https://raw.githubusercontent.com/XiaoLinXiaoZhu/Mods-Manager-for-3Dmigoto/v${pkgver}/icon.ico"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('251982c999466c54dd0e968279353344c2c97691373fc463cc6a9531e5d1981b'
+sha256sums=('8f6447e9e03a1e51f1c6483320094ada3f70678d81f2bb831152dc0569a8523b'
             '9fd025b00043aa5273080675e096e49cc03d106b741c301021e111acc2b63d22'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
@@ -34,7 +34,6 @@ build() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     icotool -x "${srcdir}/${pkgname%-bin}-${pkgver}.ico" -o "${srcdir}"
-
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
