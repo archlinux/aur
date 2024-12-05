@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Winger <bmw@disroot.org>
 
 pkgname=portmod
-pkgver=2.7.3
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="A cli tool to manage mods for OpenMW"
 replaces=('openmmm')
@@ -15,11 +15,19 @@ makedepends=("python" "python-setuptools" "python-setuptools-scm" "rust" "python
 checkdepends=("python-pytest")
 optdepends=("tr-patcher" "python-argcomplete" "python-deprecated")
 source=("https://gitlab.com/portmod/portmod/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('48fcd7b0d3ee690651b34f479c56457d5da70cbeec08fd23e493a214ef702846c0a716c6f55b929f66c6e05f292d8d20f0696977ac427afc9e3c71eb08f9007f')
+sha512sums=('987203646c38cc060cef48733d45d84dfb60cea5aa9011ff35d84a468fe5d825eaaf17cad2557c5aa99fddc4d24a33b02685e77a5d056156c19993e49cf53b6c')
 
 build() {
   cd "$srcdir/$pkgname-v$pkgver"
-  SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python setup.py build_rust --inplace --release
+
+  # zstd-rs fails to compile with gcc if lto is enabled (makepkg sets -flto=auto by default)
+  # Alternatively, gcc works if lto is disabled
+  # export CFLAGS+=" -fno-lto"
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+  export CC=clang
+  export RUSTFLAGS+=" -Clinker=clang -Clink-arg=-fuse-ld=lld"
+
+  python setup.py build_rust --inplace --release
   make -C doc man
 }
 
@@ -31,5 +39,5 @@ check() {
 
 package() {
   cd "$srcdir/$pkgname-v$pkgver"
-  SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python setup.py install --root $pkgdir --optimize=1
+  python setup.py install --root $pkgdir --optimize=1 --skip-build
 }
