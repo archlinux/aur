@@ -2,7 +2,7 @@
 
 _name=pyskani
 pkgname=python-${_name}
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="PyO3 bindings and Python interface to skani, a method for fast fast genomic identity calculation using sparse chaining"
 url="https://github.com/althonos/pyskani"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'cargo')
 depends=('python')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=(f40880a32583699d80657182807fdae74d6a6b2881912148c1e6da0f41ccc38b)
+sha256sums=(cb8b05f18f12d49a989d21d8bfe9180c9ddb00c595eb8481a3532716b94c4db3)
 
 prepare() {
     cargo fetch --manifest-path "${srcdir}/${_name}-${pkgver}/Cargo.toml" --target "$CARCH-unknown-linux-gnu"
@@ -26,16 +26,22 @@ build() {
 }
 
 check() {
-    local pyver=$(python -c 'import sys; print("{}{}".format(*sys.version_info[:2]))')
-    local impl=$(python -c 'import platform; print(platform.python_implementation().lower())')
+local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    cd "${srcdir}/${_name}-${pkgver}/build/lib.linux-${machine}-${impl}-${pyver}"
+    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+
+    python -m venv --symlinks --system-site-packages "${srcdir}/env"
+    source "${srcdir}/env/bin/activate"
+    python -m installer "$whl"
+
     python -m unittest ${_name}.tests
 }
 
 package() {
     local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    python -m installer --destdir="$pkgdir" "${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+
+    python -m installer --prefix="${pkgdir}/usr" "$whl"
     install -Dm644  ${srcdir}/${_name}-${pkgver}/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
