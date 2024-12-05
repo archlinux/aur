@@ -2,11 +2,9 @@
 
 pkgname=airisp-next-git
 pkgver=0.2.0.r0.g23010ec
-pkgrel=4
+pkgrel=6
 pkgdesc="An ISP tool for Air MCU (Rust)"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/Air-duino/AirISP-next"
 license=('custom')
 provides=(${pkgname%-git})
@@ -46,14 +44,14 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
@@ -62,7 +60,7 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-#     mold -run cargo build --release --all-features
+    #     mold -run cargo build --release --all-features
     pnpm install
     pnpm tauri build
 }
@@ -79,20 +77,20 @@ package() {
 
     export RUSTUP_TOOLCHAIN=stable
     # Install your project files into the package directory
-#     install -Dm644 package.json "$pkgdir/usr/share/$pkgname/package.json"
-#     install -Dm644 dist/* -t "$pkgdir/usr/share/$pkgname/dist/"
+    #     install -Dm644 package.json "$pkgdir/usr/share/$pkgname/package.json"
+    #     install -Dm644 dist/* -t "$pkgdir/usr/share/$pkgname/dist/"
 
     # Create a symlink to your executable
-#     ln -s "/usr/share/$pkgname/dist/AirISP-next" "$pkgdir/usr/bin/${pkgname%-git}"
+    #     ln -s "/usr/share/$pkgname/dist/AirISP-next" "$pkgdir/usr/bin/${pkgname%-git}"
     install -Dm0755 src-tauri/target/release/air-isp-next "$pkgdir/usr/bin/${pkgname%-git}"
-# icon
+    # icon
     local _icon
-    for _icon in 32 128; do
-        install -Dm0644 src-tauri/icons/${_icon}x${_icon}.png \
-            ${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps/${pkgname%-git}.png
-    done
+    #     for _icon in 32 128; do
+    #         install -Dm0644 src-tauri/icons/${_icon}x${_icon}.png \
+    #             ${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps/${pkgname%-git}.png
+    #     done
 
-# desktop file
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --name="${pkgname%-git}" --comment="${pkgdesc}" --categories="Development;Utility"  --exec="${pkgname%-git}" --icon="${pkgname%-git}.png"
-	install -Dm0644 "${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    # desktop file
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --name="${pkgname%-git}" --comment="${pkgdesc}" --categories="Development;Utility" --exec="${pkgname%-git}" --icon="${pkgname%-git}.png"
+    install -Dm0644 "${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }
