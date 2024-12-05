@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('89b1ff01324d5a6892bda06c822e299c5bd0f28bdfdb40ec23eeb5482de0b39a')
+sha256sums=('7fa25352dfdace68c16fa90493c5483b5bb487fec93f9ca7e97cb24ec6da86fb')
 
 
 package() {
