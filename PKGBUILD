@@ -3,7 +3,7 @@ pkgname=piclist-bin
 _pkgname=PicList
 pkgver=2.9.6
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="A cloud storage platform management and file upload tool based on PicGo, which has been deeply redeveloped.(Prebuilt version.Use system-wide electron)一款云储存/图床管理和文件上传客户端工具,基于PicGo深度二次开发."
 arch=('x86_64')
 url="https://piclist.cn/"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Kuingsmile/PicList/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('115863e2bb65c17a8dfec24a6fdc92db8a701659b0875c37eeac2c5f3d10a9c0'
+sha256sums=('0bfee83bf1510f6786f428e490452066a404424a4bc9a586691769b26f9ffdf5'
             'cddebc59798c76d191fc65eb4176d960e4e157177c9d81db80eaff8d84d86a1c'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
