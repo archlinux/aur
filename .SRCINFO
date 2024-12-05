@@ -1,0 +1,41 @@
+pkgbase = openldap-gnutls
+	pkgver = 2.6.9
+	pkgrel = 1
+	url = https://www.openldap.org/
+	arch = x86_64
+	license = custom
+	makedepends = libtool
+	makedepends = libsasl
+	makedepends = util-linux
+	makedepends = chrpath
+	makedepends = unixodbc
+	makedepends = libsodium
+	makedepends = systemd
+	options = !lto
+	source = https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.9.tgz
+	source = openldap.tmpfiles
+	source = openldap.sysusers
+	sha256sums = 2cb7dc73e9c8340dff0d99357fbaa578abf30cc6619f0521972c555681e6b2ff
+	sha256sums = 0be46138e53ff2fa6d4b4c06bfbdd2100426e0bd2ed29bf3419ade6b5974e9a0
+	sha256sums = c6e3fa72138edfebb4ecb17f677e217c885ff9eef805b5c8ad1c09169bb0ff8e
+
+pkgname = openldap-gnutls
+	pkgdesc = Lightweight Directory Access Protocol (LDAP) client and server compiled with gnutls
+	depends = libldap-gnutls>=2.6.9
+	depends = libtool
+	depends = unixodbc
+	depends = perl
+	depends = systemd-libs
+	depends = libsodium
+	provides = openldap
+	conflicts = openldap
+	backup = etc/openldap/slapd.conf
+	backup = etc/openldap/slapd.ldif
+
+pkgname = libldap-gnutls
+	pkgdesc = Lightweight Directory Access Protocol (LDAP) client libraries compiled with gnutls
+	depends = libsasl
+	depends = gnutls
+	provides = libldap
+	conflicts = libldap
+	backup = etc/openldap/ldap.conf
