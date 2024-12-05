@@ -1,41 +1,31 @@
-# Maintainer: Eren Hatirnaz <erenhatirnaz@gmail.com>
-
 pkgname=php80-xdebug
-_name=xdebug
-_upstream=xdebug
-pkgver=3.3.1
+_phpbase=80
+_extname=xdebug
+pkgver=3.4.0
 pkgrel=1
-pkgdesc="xdebug module for php 8.0"
-arch=('x86_64')
-url="https://github.com/xdebug/xdebug"
+pkgdesc="Xdebug is an extension for PHP to assist with debugging and development for php${_phpbase}"
+arch=("x86_64")
+url="https://xdebug.org/"
 license=('Xdebug')
-depends=('glibc' 'php80')
-backup=("etc/php80/conf.d/40-${_name}.ini")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/${_upstream}/${_upstream}/archive/${pkgver}.tar.gz"
-        "40-xdebug.ini")
-sha512sums=('cf19b07a6c1c83b4aeb7fe324d85a288d2ba07564413d27e19fbc7b7688e86e305e20aea62cb394d324346a75f7290d1b080f9ebc7ca3f70f5cd772d855fc3c9'
-            '738e6939a129a557d307a1659dfdfb0a0ded783b31c6c9a85f18cfa380a13afef4386cccce5a9ad3e1afcc66a2dedbebf29fa96d91f618a76af4a4d9e504f74e')
-b2sums=('8fa8fefb9f93826aea69aee18294649b83c2ec34b228319a0cfd8c39e72abe8c9c94f252a599ad98d23a770c528ca6de355e2018106b28971baeec4ca1430169'
-        '0fc863dae2014b5601ba77ffb236772573fbb9fdbd1e772fa8894ac5dfde0eb5179efa591e7191e6b4eeb25a423f332a5be3c0121e4d019a5ab81b3796b145ad')
-
-prepare() {
-  mv -v "${_upstream}-${pkgver}" "$pkgname-$pkgver"
-  cd "$pkgname-$pkgver"
-  phpize80
-}
+depends=("php${_phpbase}")
+makedepends=()
+source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
+backup=("etc/php${_phpbase}/conf.d/$_extname.ini")
 
 build() {
-  cd "$pkgname-$pkgver"
-
-  ./configure --prefix=/usr \
-              --with-php-config=/usr/bin/php-config80 \
-              --enable-xdebug
-  make
+    cd "$srcdir/$_extname-$pkgver"
+    phpize${_phpbase}
+    ./configure --with-php-config=php-config${_phpbase}
+    make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  make INSTALL_ROOT="$pkgdir" install
-  install -D -m 644 "$srcdir"/40-xdebug.ini "$pkgdir"/etc/php80/conf.d/40-xdebug.ini
+    cd "$srcdir/$_extname-$pkgver"
+    install -m0755 -d "$pkgdir/etc/php${_phpbase}/conf.d/"
+    install -m0644 -D "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+    echo ";zend_extension=$_extname.so" > "$pkgdir/etc/php${_phpbase}/conf.d/$_extname.ini"
+    chmod 0644 "$pkgdir/etc/php${_phpbase}/conf.d/$_extname.ini"
+    install -m0755 -D ".libs/$_extname.so" "$pkgdir$(php-config${_phpbase} --extension-dir)/$_extname.so"
 }
+
+sha256sums=('89667b8d04aaf04c023eb109900e1cce97ca39f97f2f3f24199630cc0e1cc77d')
