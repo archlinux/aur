@@ -2,9 +2,9 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgbase=pyqt5-networkauth
-pkgname=(python-pyqt5-networkauth)
+pkgname=(python-pyqt5-networkauth-deprecated)
 pkgver=5.15.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Python bindings for QtNetworkAuth"
 arch=(x86_64)
 url="https://www.riverbankcomputing.com/software/pyqtnetworkauth/intro"
@@ -23,7 +23,7 @@ build() {
   make
 }
 
-package_python-pyqt5-networkauth(){
+package_python-pyqt5-networkauth-deprecated(){
   cd PyQtNetworkAuth-$pkgver/build
   make INSTALL_ROOT="$pkgdir" install
 }
