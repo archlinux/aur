@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r1825.e506353f
+pkgver=r1830.c1dfa1f0
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64' 'i686' 'pentium4' 'powerpc64le' 'powerpc64' 'powerpc' 'riscv64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -83,7 +83,7 @@ build() {
 		mv ./saved-pty arch/*/bin/pty
 		rm arch/*/dyn/bin/pty
 		local -i status=0
-		./arch/*/bin/ksh bin/shtests --posix || status=$?
+		./arch/*/bin/ksh bin/shtests -u || status=$?
 		# For any curious script readers, the only reason
 		# some test failures are tolerated is because ksh's
 		# test suite suffers from intermittent test failures
