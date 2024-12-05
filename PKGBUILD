@@ -2,7 +2,7 @@
 
 pkgname=harbor-cli
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Harbor CLI'
 arch=('x86_64')
 url='https://goharbor.io'
@@ -14,30 +14,41 @@ sha512sums=('SKIP')
 b2sums=('SKIP')
 
 prepare() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
 
-  # create directory for build output
-  mkdir build
+  # directory for the build output
+  mkdir -p build
 
-  # download dependencies
-  go mod download
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+
+  go mod download  # Download Go modules/dependencies
 }
 
 build() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
 
   # build harbor
-  go build -o build/harbor \
-    -ldflags "-X github.com/goharbor/harbor-cli/cmd/harbor/internal/version.Version=$(git describe --tags --abbrev=0) \
-              -X github.com/goharbor/harbor-cli/cmd/harbor/internal/version.GitCommit=$(git rev-parse HEAD) \
-              -X github.com/goharbor/harbor-cli/cmd/harbor/internal/version.BuildTime=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
-              -X github.com/goharbor/harbor-cli/cmd/harbor/internal/version.ReleaseChannel=stable \
-              -X github.com/goharbor/harbor-cli/cmd/harbor/internal/version.GoVersion=$(go version | awk '{print $3}')" \
-    ./cmd/harbor/main.go
-}
+  # Ensure Go flags are set and build the binary
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external \
+    -X github.com/goharbor/harbor-cli/cmd/harbor/internal/version.Version=$(git describe --tags --abbrev=0) \
+    -X github.com/goharbor/harbor-cli/cmd/harbor/internal/version.GitCommit=$(git rev-parse HEAD) \
+    -X github.com/goharbor/harbor-cli/cmd/harbor/internal/version.BuildTime=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
+    -X github.com/goharbor/harbor-cli/cmd/harbor/internal/version.ReleaseChannel=stable \
+    -X github.com/goharbor/harbor-cli/cmd/harbor/internal/version.GoVersion=$(go version | awk '{print $3}')" \
+    -o "$srcdir/$pkgname/build/harbor" ./cmd/harbor/main.go
+  }
 
-package() {
-  cd "$pkgname"
+  package() {
+    cd "$srcdir/$pkgname"
 
-  install -vDm755 -t "$pkgdir/usr/bin" build/harbor
-}
+    install -vDm755 -t "$pkgdir/usr/bin" build/harbor
+  }

@@ -1,7 +1,7 @@
 pkgbase = harbor-cli
 	pkgdesc = Official Harbor CLI
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://goharbor.io
 	arch = x86_64
 	license = Apache-2.0
