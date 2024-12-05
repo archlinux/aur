@@ -1,6 +1,6 @@
 pkgbase = rune-player-git
 	pkgdesc = The player that blends classic design with modern technology
-	pkgver = 1.0.0.beta.2.r1.g89b6830
+	pkgver = 1.0.0.beta.2.r17.g56be8a2
 	pkgrel = 1
 	url = https://github.com/Losses/rune
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = rune-player-git
 	depends = libnotify
 	depends = pango
 	depends = zlib
-	provides = rune-player=1.0.0.beta.2.r1.g89b6830
+	provides = rune-player=1.0.0.beta.2.r17.g56be8a2
 	conflicts = rune-player
 	options = !lto
 	source = rune-player::git+https://github.com/Losses/rune.git

@@ -3,7 +3,7 @@
 _name=rune
 _pkgname=rune-player
 pkgname=rune-player-git
-pkgver=1.0.0.beta.2.r1.g89b6830
+pkgver=1.0.0.beta.2.r17.g56be8a2
 pkgrel=1
 pkgdesc="The player that blends classic design with modern technology"
 arch=('x86_64')
@@ -77,12 +77,11 @@ package() {
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
     pushd assets/icons
-    find . \( -path "./fluent" -o -path "./macos" \) -prune -o -type f -exec install -v -Dm644 {} ${pkgdir}/usr/share/icons/{} \;
+    #find . \( -path "./android" -o -path "./fluent" -o -path "./macos" \) -prune -o -type f -exec install -v -Dm644 {} ${pkgdir}/usr/share/icons/{} \;
+    find ./breeze ./gnome -type f -exec install -v -Dm644 {} ${pkgdir}/usr/share/icons/{} \;
     cd Papirus
     find . -type f -exec install -v -Dm644 {} ${pkgdir}/usr/share/icons/hicolor/{} \;
     popd
-    ln -sfrv ${pkgdir}/usr/share/icons/Papirus ${pkgdir}/usr/share/icons/Papirus-Dark
-    ln -sfrv ${pkgdir}/usr/share/icons/Papirus ${pkgdir}/usr/share/icons/Papirus-Light
     ln -sfrv ${pkgdir}/usr/share/icons/breeze/apps/1024/${_name}.png ${pkgdir}/usr/share/icons/${_name}.png
 
     cd build/linux/x64/release/bundle
