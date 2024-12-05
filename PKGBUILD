@@ -1,4 +1,4 @@
-# Maintainer: S e r g i o S c h  n e i d e r <s p s f 6 4 at msn dot com>
+# Maintainer: S e r g i o  S c h  n e i d e r <s p s f 6 4 at msn dot com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=thingy
 pkgver=1.1.9
