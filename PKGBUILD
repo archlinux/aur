@@ -2,10 +2,11 @@
 pkgbase=wps-office-bin
 pkgname=('wps-office-bin')
 pkgver=12.1.0.17900
-pkgrel=1
+pkgrel=2
 pkgdesc="WPS Office, is an office productivity suite."
 arch=('x86_64')
 url="https://linux.wps.cn"
+_srcurl="https://archive2.kylinos.cn/DEB/KYLIN_DEB/pool/main/deb/wpsoffice"
 license=('LicenseRef-WPS-EULA')
 makedepends=(
   'tar')
@@ -24,19 +25,7 @@ conflicts=('wps-office')
 provides=('wps-office')
 options=(!strip !zipman !debug)
 
-# https://gitlab.com/cwittlut/wps-tsk/-/blob/main/tsk.sh?ref_type=heads by Ryan Tsien
-# https://pastebin.com/29TeRUMj by Asuka Minato
-_get_source_url() {
-    url="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/${pkgver##*.}/wps-office_${pkgver}_$1.deb"
-    uri="${url#https://wps-linux-personal.wpscdn.cn}"
-    secrityKey='7f8faaaa468174dc1c9cd62e5f218a5b'
-    timestamp10=$(date '+%s')
-    md5hash=$(echo -n "${secrityKey}${uri}${timestamp10}" | md5sum)
-    url+="?t=${timestamp10}&k=${md5hash%% *}"
-    echo "$url"
-}
-
-source_x86_64=("wps-office_${pkgver}_amd64.deb::$(_get_source_url amd64)")
+source_x86_64=("wps-office_${pkgver}_amd64.deb::${_srcurl}/wpsoffice_${pkgver}_amd64.deb")
 sha1sums_x86_64=('a245fe88c25d0992fb6d2b1e37ba99dc15fe2a5f')
 
 package(){
