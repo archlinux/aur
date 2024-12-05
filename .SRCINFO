@@ -1,6 +1,6 @@
 pkgbase = nixpacks
 	pkgdesc = App source + Nix packages + Docker = Image
-	pkgver = 1.29.1
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://nixpacks.com
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = nixpacks
 	optdepends = go: support go projects
 	optdepends = zig: support zig projects
 	options = !lto
-	source = https://github.com/railwayapp/nixpacks/archive/v1.29.1/nixpacks-1.29.1.tar.gz
-	sha256sums = 0694b453b12155e3f0822b185141e769d47efe0f09ce913bbeb57bacdf625748
+	source = https://github.com/railwayapp/nixpacks/archive/v1.30.0/nixpacks-1.30.0.tar.gz
+	sha256sums = 7ad4ff899f8b138d4a41568d1e2559e563a02d746a5c40050567671aa5252bae
 
 pkgname = nixpacks
