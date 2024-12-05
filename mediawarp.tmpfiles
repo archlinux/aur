@@ -3,4 +3,4 @@ d       /usr/share/mediawarp                0755    mediawarp   mediawarp   -   
 d       /usr/share/mediawarp/logs           0755    mediawarp   mediawarp   -       -
 d       /usr/share/mediawarp/static         0755    mediawarp   mediawarp   -       -
 d       /usr/share/mediawarp/config         0755    mediawarp   mediawarp   -       -
-L       /etc/mediawarp/config.json          0644    mediawarp   mediawarp   -       /usr/share/mediawarp/config/config.json
+L       /etc/mediawarp/config.yaml          0644    mediawarp   mediawarp   -       /usr/share/mediawarp/config/config.yaml
