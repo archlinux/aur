@@ -1,14 +1,15 @@
-# Maintainer: Brian Bidlock <bidulock@openss7.org>
+# Maintainer: Tianhao Wang <i AT shrik3 DOT com>
+# Maintained by (2018 - 2024): Brian Bidlock <bidulock@openss7.org>
 
 pkgname=libpcl
 pkgver=1.12
-pkgrel=4
+pkgrel=5
 pkgdesc='The Portable Coroutine Library (PCL) implements the low level functionality for coroutines'
-license=(GPL2)
-url='http://xmailserver.org/libpcl.html'
+license=(GPL-2.0-or-later)
+url='http://www.xmailserver.org/libpcl.html'
 arch=('x86_64' 'i686')
 depends=(glibc)
-source=(http://xmailserver.org/pcl-$pkgver.tar.gz)
+source=(http://www.xmailserver.org/pcl-$pkgver.tar.gz)
 sha1sums=('a206c8fb5a96e65005f414ac46aeccd4b3603c8d')
 
 build() {

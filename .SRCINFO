@@ -1,14 +1,13 @@
 pkgbase = libpcl
 	pkgdesc = The Portable Coroutine Library (PCL) implements the low level functionality for coroutines
 	pkgver = 1.12
-	pkgrel = 4
-	url = http://xmailserver.org/libpcl.html
+	pkgrel = 5
+	url = http://www.xmailserver.org/libpcl.html
 	arch = x86_64
 	arch = i686
-	license = GPL2
+	license = GPL-2.0-or-later
 	depends = glibc
-	source = http://xmailserver.org/pcl-1.12.tar.gz
+	source = http://www.xmailserver.org/pcl-1.12.tar.gz
 	sha1sums = a206c8fb5a96e65005f414ac46aeccd4b3603c8d
 
 pkgname = libpcl
-
