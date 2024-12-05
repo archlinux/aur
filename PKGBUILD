@@ -4,7 +4,7 @@
 # Contributor: Miguel de Val-Borro <miguel dot deval at gmail dot com>
 # Contributor: Astro Benzene <universebenzene at sina dot com>
 pkgname=astrometry.net
-pkgver=0.96
+pkgver=0.97
 pkgrel=1
 pkgdesc="Automatic recognition of astronomical images"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ makedepends=('python-setuptools')
 backup=(etc/astrometry.cfg)
 install=astrometry.net.install
 source=("https://github.com/dstndstn/astrometry.net/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('fb3f2ec09cbe155d9ff461b9a60336f8493f5cb7804199e1782664e9034c9aac')
+sha256sums=('e4eef1b658ba5ad462282b661c0ca3a5c538ba1716e853f7970b7b9fa4a33459')
 
 _pyver() {
 	python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -59,7 +59,4 @@ package() {
 		DATA_FINAL_DIR="/usr/share/astrometry/data" \
 		PY_BASE_INSTALL_DIR="${pkgdir}/usr/lib/python$(_pyver .)/site-packages/astrometry" \
 		PY_BASE_LINK_DIR="../lib/python$(_pyver .)/site-packages/astrometry"
-	rm ${pkgdir}/usr/bin/fitscopy
-	rm ${pkgdir}/usr/bin/imcopy
-	rm ${pkgdir}/usr/bin/fitsverify
 }

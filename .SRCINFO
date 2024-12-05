@@ -1,6 +1,6 @@
 pkgbase = astrometry.net
 	pkgdesc = Automatic recognition of astronomical images
-	pkgver = 0.96
+	pkgver = 0.97
 	pkgrel = 1
 	url = http://astrometry.net
 	install = astrometry.net.install
@@ -18,13 +18,13 @@ pkgbase = astrometry.net
 	depends = netpbm
 	depends = python
 	depends = python-astropy
+	depends = python-matplotlib
 	depends = python-numpy
 	depends = swig
 	depends = wcslib
 	depends = zlib
 	backup = etc/astrometry.cfg
-	source = https://github.com/dstndstn/astrometry.net/releases/download/0.96/astrometry.net-0.96.tar.gz
-	sha256sums = b8239e39b44d6877b0427edeffd95efc258520044ff5afdd0fb1a89ff8f1afc0
-	sha256sums = b2920634594a7e231898ec4e759f6c868f05991dc77d8f63130d9456013bea1f
+	source = https://github.com/dstndstn/astrometry.net/releases/download/0.97/astrometry.net-0.97.tar.gz
+	sha256sums = e4eef1b658ba5ad462282b661c0ca3a5c538ba1716e853f7970b7b9fa4a33459
 
 pkgname = astrometry.net
