@@ -1,18 +1,29 @@
 pkgbase = python-moteus
 	pkgdesc = moteus brushless controller library and tools
-	pkgver = 0.3.74
+	pkgver = 0.3.75
 	pkgrel = 1
 	url = https://pypi.org/project/moteus/
 	arch = any
 	license = Apache-2.0
 	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/py3/m/moteus/moteus-0.3.75-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/m/moteus-gui/moteus_gui-0.3.75-py3-none-any.whl
+	source = https://raw.githubusercontent.com/mjbots/fdcanusb/master/70-fdcanusb.rules
+	sha256sums = f918e551cb4718f7b34c58b25dca890bb848b852c270fb77ec7fd8c4f562d820
+	sha256sums = 03251b394577ae13f0a602cc56c54def7069b8795d742ca39c66efab38ae770d
+	sha256sums = 6008f3b20baca0e4a077bc45c8e541717d6e3fc63ba7621dc3b1bcb14d86cb23
+
+pkgname = python-moteus
 	depends = python-importlib-metadata
 	depends = python-pyelftools
 	depends = python-pyserial
 	depends = python-can
-	source = https://files.pythonhosted.org/packages/py3/m/moteus/moteus-0.3.74-py3-none-any.whl
-	source = https://raw.githubusercontent.com/mjbots/fdcanusb/master/70-fdcanusb.rules
-	sha256sums = 18542d598081b70ba39b97bb82e0de6c19bdad9c6f828796b5575f32b747e13a
-	sha256sums = 6008f3b20baca0e4a077bc45c8e541717d6e3fc63ba7621dc3b1bcb14d86cb23
 
-pkgname = python-moteus
+pkgname = python-moteus-gui
+	depends = pyside6
+	depends = python-asyncqt
+	depends = python-matplotlib
+	depends = python-moteus
+	depends = python-numpy
+	depends = python-qtconsole
+	depends = python-qtpy
