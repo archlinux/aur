@@ -1,0 +1,19 @@
+pkgbase = msgpack-c-git
+	pkgdesc = MessagePack implementation for C and C++
+	pkgver = 6.1.0.r0.g44588010
+	pkgrel = 1
+	url = https://msgpack.org/
+	arch = i686
+	arch = x86_64
+	license = BSL-1.0
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = msgpack-c=6.1.0.r0.g44588010
+	provides = libmsgpack-c.so
+	conflicts = msgpack-c
+	options = staticlibs
+	source = git+https://github.com/msgpack/msgpack-c.git#branch=c_master
+	sha256sums = SKIP
+
+pkgname = msgpack-c-git
