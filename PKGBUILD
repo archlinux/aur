@@ -1,15 +1,15 @@
 # Maintainer: Prasanth Baskar <bupdprasanth@gmail.com>, Lakshmanan <lakshmanoni1234@gmail.com>
 
 pkgname=git-donkey
-pkgver=1.0.1
-pkgrel=1
+pkgver=v1.0.1
+pkgrel=2
 pkgdesc="A CLI tool to help you manage your local git branches/repositories."
 arch=('x86_64')
 url="https://github.com/bupd/git-donkey"
 license=('MIT')
 depends=('git')
 makedepends=('go')
-source=("$pkgname::git+https://github.com/goharbor/harbor-cli.git#tag=v$pkgver")
+source=("$pkgname::git+https://github.com/bupd/git-donkey.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
