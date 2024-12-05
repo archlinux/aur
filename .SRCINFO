@@ -1,6 +1,6 @@
 pkgbase = checks-parser-git
 	pkgdesc = Utility for parsing checks(receipts) to csv
-	pkgver = alpha_0.0.1
+	pkgver = alpha_0.0.2
 	pkgrel = 1
 	url = https://git.foxarmy.org/leca/checks-parser
 	arch = x86_64
