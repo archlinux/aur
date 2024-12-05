@@ -3,17 +3,17 @@
 _org='loco-3d'
 _pkgname='ndcurves'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=1.4.1
+pkgver=2.0.0
 pkgrel=2
 pkgdesc="Library for creating smooth cubic splines"
 arch=('i686' 'x86_64')
 url="https://github.com/$_org/$_pkgname"
 license=('BSD-2-Clause')
-depends=('hpp-fcl' 'eigenpy' 'pinocchio' 'python' 'boost-libs' 'glibc' 'gcc-libs')
+depends=('coal' 'eigenpy' 'pinocchio' 'python' 'boost-libs' 'glibc' 'gcc-libs')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('13f7806a4bfe70d2fe6a1ab3360bbb11309350bd6de0ac363a98cc167f87af36'
+sha256sums=('814f7f4551c042794fe5bccbe6eb737825574d8c6b90b2274aa9dcd6430b7ebd'
             'SKIP')
 validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28')
 
