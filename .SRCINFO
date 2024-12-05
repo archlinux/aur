@@ -1,7 +1,7 @@
 pkgbase = gridtracker2-bin
 	pkgdesc = An Amateur Radio Companion (unofficial)
 	pkgver = 2.241203.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gridtracker.org
 	install = gridtracker2-bin.install
 	arch = x86_64
