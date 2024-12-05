@@ -2,7 +2,7 @@
 pkgname=filen-desktop-bin
 _pkgname=Filen
 _appname="@filendesktop"
-pkgver=3.0.34
+pkgver=3.0.39
 _electronversion=33
 pkgrel=1
 pkgdesc="Desktop client including Syncing, Virtual Drive mounting, S3, WebDAV, File Browsing, Chats, Notes, Contacts and more.(Prebuilt version.Use system-wide electron)"
@@ -18,9 +18,6 @@ provides=("${pkgname%-git}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
-makedepends=(
-    'asar'
-)
 options=(
     '!strip'
     '!emptydirs'
@@ -31,8 +28,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_linux_aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_linux_x86_64.rpm")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('940a3ed9d93d5461cdc3f9aeec44daf59900005458fb5b11664196b342ab3d0d')
-sha256sums_x86_64=('7bd3be12edc2dc4e8bc3decaf48144e7e17727980d18ba7d6ecc7f019120e6bb')
+sha256sums_aarch64=('a77019f88f43a6c7e3bfb181b05af335baedb1be75a68478ab1d57a4f4c1ad52')
+sha256sums_x86_64=('64b99d8c9abfe10ec72c80afaca2c052cdabcde16a3d512e484502090c42f269')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -50,7 +47,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}//opt/${_pkgname}/resources/"{app.asar.unpacked,public} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/"{app.asar.unpacked,public} "${pkgdir}/usr/lib/${pkgname%-bin}"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}"; do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_appname}.png" \
