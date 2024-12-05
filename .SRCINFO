@@ -1,11 +1,9 @@
 pkgbase = openixcard-git
 	pkgdesc = Open Source Version of Allwinner PhoenixCard to Dump, Unpack, Flash Allwinner IMG Files on Linux
-	pkgver = 1.1.8.r4.g1efa41d
-	pkgrel = 1
+	pkgver = 1.1.8.r6.gdc7efda
+	pkgrel = 5
 	url = https://github.com/YuzukiTsuru/OpenixCard
 	arch = x86_64
-	arch = aarch64
-	arch = riscv64
 	license = GPL-2.0-or-later
 	makedepends = clang
 	makedepends = llvm
