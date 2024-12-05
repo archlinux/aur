@@ -18,6 +18,7 @@ pkgbase = portmod
 	makedepends = python-autodocsumm
 	makedepends = python-sphinx-autodoc-typehints
 	makedepends = python-sphinxcontrib-apidoc
+	makedepends = clang
 	depends = python
 	depends = patool
 	depends = python-setuptools

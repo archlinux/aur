@@ -11,7 +11,7 @@ license=(GPL3)
 depends=("python" "patool" "python-setuptools" "python-colorama" "python-gitpython"
          "python-progressbar" "python-restrictedpython" "bubblewrap" "python-redbaron"
          "python-python-sat" "python-requests" "python-chardet" "python-fasteners")
-makedepends=("python" "python-setuptools" "python-setuptools-scm" "rust" "python-setuptools-rust" "python-packaging" "python-sphinx" "python-sphinx-argparse" "make" "python-autodocsumm" "python-sphinx-autodoc-typehints" "python-sphinxcontrib-apidoc")
+makedepends=("python" "python-setuptools" "python-setuptools-scm" "rust" "python-setuptools-rust" "python-packaging" "python-sphinx" "python-sphinx-argparse" "make" "python-autodocsumm" "python-sphinx-autodoc-typehints" "python-sphinxcontrib-apidoc" "clang")
 checkdepends=("python-pytest")
 optdepends=("tr-patcher" "python-argcomplete" "python-deprecated")
 source=("https://gitlab.com/portmod/portmod/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
