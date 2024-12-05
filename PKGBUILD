@@ -2,8 +2,8 @@
 # Contributor: Mattias Giese <mattias.giese@posteo.net>
 
 pkgname=pdk
-_ubuntu_release=jammy
-pkgver=3.3.0.0
+_ubuntu_release=noble
+pkgver=3.4.0.1
 _pkgver="${pkgver}-1${_ubuntu_release}"
 pkgrel=1
 pkgdesc='Puppet Development Kit bundles tools and helpers to create high quality puppet modules'
@@ -11,7 +11,7 @@ arch=('x86_64')
 url='https://github.com/puppetlabs/pdk'
 options=(staticlibs !strip)
 source=("https://apt.puppetlabs.com/pool/${_ubuntu_release}/puppet8/p/pdk/pdk_${_pkgver}_amd64.deb")
-sha512sums=('a6384bc15c5d9b0a86e4e61dce21b1dc7c189120cc71d5dfbdea149275fb8984cf0721dd3fc20939e3a87dd71208593d00d332fda55ae46f8b2ca011dc552c4d')
+sha512sums=('19e8e7d679e3352dcafbd3dd49117ebb749d2fe329d41fa8c323107fd45a053edf27b8735526ffaffc43a719c6376771a67783db87e81ac5669cca4aaf335266')
 depends=(libxcrypt-compat)
 
 package() {

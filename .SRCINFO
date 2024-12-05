@@ -1,13 +1,13 @@
 pkgbase = pdk
 	pkgdesc = Puppet Development Kit bundles tools and helpers to create high quality puppet modules
-	pkgver = 3.3.0.0
+	pkgver = 3.4.0.1
 	pkgrel = 1
 	url = https://github.com/puppetlabs/pdk
 	arch = x86_64
 	depends = libxcrypt-compat
 	options = staticlibs
 	options = !strip
-	source = https://apt.puppetlabs.com/pool/jammy/puppet8/p/pdk/pdk_3.3.0.0-1jammy_amd64.deb
-	sha512sums = a6384bc15c5d9b0a86e4e61dce21b1dc7c189120cc71d5dfbdea149275fb8984cf0721dd3fc20939e3a87dd71208593d00d332fda55ae46f8b2ca011dc552c4d
+	source = https://apt.puppetlabs.com/pool/noble/puppet8/p/pdk/pdk_3.4.0.1-1noble_amd64.deb
+	sha512sums = 19e8e7d679e3352dcafbd3dd49117ebb749d2fe329d41fa8c323107fd45a053edf27b8735526ffaffc43a719c6376771a67783db87e81ac5669cca4aaf335266
 
 pkgname = pdk
