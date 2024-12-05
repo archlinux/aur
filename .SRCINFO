@@ -1,7 +1,7 @@
 pkgbase = boxbuddy
 	pkgdesc = A Graphical Interface for Distrobox
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dvlv.co.uk/BoxBuddyRS
 	arch = x86_64
 	license = MIT
