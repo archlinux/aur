@@ -6,7 +6,7 @@ pkgver=0.46
 pkgrel=2
 pkgdesc='GNU C library compatible strftime for loggers and servers'
 arch=('any')
-url='https://metacpan.org/release/POSIX-strftime-Compiler'
+url='https://metacpan.org/dist/POSIX-strftime-Compiler'
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 depends=('perl')
 makedepends=('perl-module-build-tiny>=0.035')
