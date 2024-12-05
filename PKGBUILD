@@ -2,9 +2,9 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgbase=pyqt5-purchasing
-pkgname=(python-pyqt5-purchasing)
+pkgname=(python-pyqt5-purchasing-deprecated)
 pkgver=5.15.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Python bindings for QtPurchasing'
 arch=(x86_64)
 url='https://www.riverbankcomputing.com/software/pyqtpurchasing/intro'
@@ -26,7 +26,7 @@ build() {
   make
 }
 
-package_python-pyqt5-purchasing() {
+package_python-pyqt5-purchasing-deprecated() {
   cd PyQtPurchasing-$pkgver/build
   make INSTALL_ROOT="$pkgdir" install
 }
