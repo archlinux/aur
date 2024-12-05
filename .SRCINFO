@@ -1,7 +1,7 @@
 pkgbase = fava
 	pkgdesc = Web interface for beancount
-	pkgver = 1.28
-	pkgrel = 3
+	pkgver = 1.29
+	pkgrel = 1
 	url = https://github.com/beancount/fava
 	arch = any
 	license = MIT
@@ -15,8 +15,8 @@ pkgbase = fava
 	depends = python-cheroot
 	depends = python-simplejson
 	depends = python-watchfiles
-	noextract = fava-1.28-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/f/fava/fava-1.28-py3-none-any.whl
-	sha256sums = 44f7f8b3d11e70592a3412ced564ca4b6750c910e43f769b6582febb51eee7db
+	noextract = fava-1.29-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/f/fava/fava-1.29-py3-none-any.whl
+	sha256sums = 4e2eff76580c2b6a5bed2a781afb19b31c25e7b52ca65679d2cab3a80bee795c
 
 pkgname = fava
