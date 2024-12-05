@@ -1,6 +1,7 @@
-# Maintainer: yuhldr@qq.com
-# Contributor: Wes Barnett <wes AT w barnett DOT us>
+# Maintainer: fromtheeast710 <theeast710@proton.me>
 # Contributor: physkets <physkets // at // tutanota dot com>
+# Contributor: xpt <user.xpt@gmail.com>
+# Contributor: yuhldr <yuhldr@qq.com>
 
 pkgname=lammps
 pkgver=20240829
@@ -15,7 +16,7 @@ makedepends=('cmake>=3.1' 'git' 'python-pip' 'python-build')
 conflicts=('lammps')
 provides=('lammps')
 source=("https://github.com/${pkgname}/${pkgname}/archive/refs/tags/${_pkgver}.tar.gz")
-sha512sums=('SKIP')
+sha256sums=('3aea41869aa2fb8120fc4814cab645686f969e2eb7c66aa5587e500597d482dc')
 optdepends=('clang' 'python' 'python-mpi4py')
 
 prepare() {
@@ -66,7 +67,7 @@ package() {
 
     install -Dm644 "../tools/vim/lammps.vim" "${pkgdir}/usr/share/vim/vimfiles/syntax/lammps.vim"
     install -Dm644 "../tools/vim/filetype.vim" "${pkgdir}/usr/share/vim/vimfiles/ftdetect/lammps.vim"
-    install -Dm644 "../tools/kate/lammps.xml" "${pkgdir}/usr/share/katepart5/syntax/lammps.xml"
+    # install -Dm644 "../tools/kate/lammps.xml" "${pkgdir}/usr/share/katepart5/syntax/lammps.xml"
     install -Dm755 "../tools/phonon/build/phana" "${pkgdir}/usr/bin/phana"
 
     # python lib

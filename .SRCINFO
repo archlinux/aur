@@ -1,14 +1,26 @@
 pkgbase = lammps
-	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator
-	pkgver = 20230802
+	pkgdesc = Public development project of the LAMMPS MD software package
+	pkgver = 20240829
 	pkgrel = 1
-	url = https://lammps.sandia.gov/
+	url = https://lammps.org
 	arch = x86_64
 	license = GPL
-	makedepends = cmake
+	makedepends = cmake>=3.1
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-build
 	depends = fftw
 	depends = openmpi
-	source = lammps-2Aug2023.tar.gz::https://github.com/lammps/lammps/archive/stable_2Aug2023.tar.gz
-	sha512sums = dab76fdfbeb7dd0069de6c4474e2e97fc423afdd8b407915c9ad9f8e6016a24cfbf981b315f7908e5a7768c50b030b5498c161ba26d507b2cfeff5333b81455a
+	depends = ffmpeg
+	depends = libpng
+	depends = python
+	depends = qt6-charts
+	optdepends = clang
+	optdepends = python
+	optdepends = python-mpi4py
+	provides = lammps
+	conflicts = lammps
+	source = https://github.com/lammps/lammps/archive/refs/tags/stable_29Aug2024_update1.tar.gz
+	sha256sums = 3aea41869aa2fb8120fc4814cab645686f969e2eb7c66aa5587e500597d482dc
 
 pkgname = lammps
