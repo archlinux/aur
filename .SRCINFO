@@ -1,7 +1,7 @@
 pkgbase = mr.duppl
 	pkgdesc = The DupplCAP application to integrate Mr.Duppl with Wireshark or something
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/buglloc/mr.duppl
 	arch = x86_64
 	license = MIT

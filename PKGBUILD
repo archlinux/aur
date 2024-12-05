@@ -2,7 +2,7 @@
 
 pkgname=mr.duppl
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The DupplCAP application to integrate Mr.Duppl with Wireshark or something"
 arch=("x86_64")
 url="https://github.com/buglloc/$pkgname"
@@ -35,5 +35,5 @@ build() {
 package() {
   cd "$pkgname-$pkgver/software"
   install -vDm755 -t "$pkgdir/usr/lib/wireshark/extcap" dupplcap
-  install -vDm755 -t "$pkgdir/usr/bin/mr.duppl" mr.duppl
+  install -vDm755 -t "$pkgdir/usr/bin" mr.duppl
 }
