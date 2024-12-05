@@ -1,6 +1,6 @@
 pkgbase = foxglove-bin
 	pkgdesc = An integrated visualization and diagnosis tool for robotics
-	pkgver = 2.16.2
+	pkgver = 2.17.0
 	pkgrel = 1
 	url = https://foxglove.dev/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = foxglove-bin
 	provides = foxglove-studio
 	conflicts = foxglove-studio
 	replaces = foxglove-studio-bin
-	source_x86_64 = foxglove-bin-2.16.2-x86_64.deb::https://get.foxglove.dev/desktop/v2.16.2/foxglove-studio-2.16.2-linux-amd64.deb
-	sha256sums_x86_64 = df9489216161dc5f57b37b226b99145eb5c89fbb0ddd2bed55c222eacc8ca93c
-	source_aarch64 = foxglove-bin-2.16.2-aarch64.deb::https://get.foxglove.dev/desktop/v2.16.2/foxglove-studio-2.16.2-linux-arm64.deb
-	sha256sums_aarch64 = 6d9b27c19b44a8e43c3f2a785d19078e01e7b6eb6e3720fdbcb0591c0a282776
+	source_x86_64 = foxglove-bin-2.17.0-x86_64.deb::https://get.foxglove.dev/desktop/v2.17.0/foxglove-studio-2.17.0-linux-amd64.deb
+	sha256sums_x86_64 = 26c80dce0303ac3910fa1adb96c1be05efdbf09b9b19e9f6f555e946e079c326
+	source_aarch64 = foxglove-bin-2.17.0-aarch64.deb::https://get.foxglove.dev/desktop/v2.17.0/foxglove-studio-2.17.0-linux-arm64.deb
+	sha256sums_aarch64 = aaefa406a394dcce1bfb60d99037b657e5e8af206e0390f4188b47ad57441aed
 
 pkgname = foxglove-bin
