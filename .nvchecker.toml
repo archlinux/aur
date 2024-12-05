@@ -1,0 +1,4 @@
+[go-size-analyzer-bin]
+source = "git"
+git = "https://github.com/Zxilly/go-size-analyzer.git"
+prefix = "v"
