@@ -13,7 +13,7 @@ fi
 _pkgname="ryujinx-git"
 pkgname="$_pkgname"
 pkgver=r3636.1d0152b96
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://github.com/GreemDev/Ryujinx"
 license=('MIT')
@@ -22,7 +22,7 @@ arch=('x86_64')
 depends=(
   'gcc-libs'
   'zlib'
-  'dotnet-core-8.0-bin'
+  'dotnet-runtime-8.0-bin'
 )
 makedepends=(
   'desktop-file-utils'
