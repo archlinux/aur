@@ -1,9 +1,9 @@
-# Maintainer: tippfehlr <tippfehlr at tippfehlr dot eu>
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
 
 pkgbase=radicle-bin
 pkgname=(radicle-bin radicle-{cli,node}-bin)
 epoch=1
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="open source, peer-to-peer code collaboration stack built on Git"
 arch=('x86_64' 'aarch64')
@@ -16,9 +16,9 @@ source=(
 source_x86_64=("https://files.radicle.xyz/releases/$pkgver/radicle-$pkgver-x86_64-unknown-linux-musl.tar.xz")
 source_aarch64=("https://files.radicle.xyz/releases/$pkgver/radicle-$pkgver-aarch64-unknown-linux-musl.tar.xz")
 sha512sums=('76235a3247342b8531cb259a1a51c9789be81e5332f210949063e4444edc2659eebe0afb0c2aae9e9c6989599d29beca0ca57a7839156c92b195bdb54c7ca448'
-    '66bd43b60b73fd832a23ad7a280f77d06398c55b4e8572200ad95acc42da84e6a44c7deeb1fec91d11e29678d1abd2f74c45099ae31141ee1b6945568501bceb')
-sha512sums_x86_64=('8314947640be703e19a964845352e91af3068fc69edb42938e81bbd3e3e79aa8f361853778b76a3e9f68119faefbe64613b8eb7faf8c60e886f37c4a89b58b30')
-sha512sums_aarch64=('3115474dd72a006f137e3721e9727de64199e3d59a32ebef2dd367a0d4f9b3b2e339bf32c39e4e3a070457ca26e6127b2c802e2814ee1d23c0562c6a9c57b3f5')
+            '66bd43b60b73fd832a23ad7a280f77d06398c55b4e8572200ad95acc42da84e6a44c7deeb1fec91d11e29678d1abd2f74c45099ae31141ee1b6945568501bceb')
+sha512sums_x86_64=('4c9d4211a0a0ad1b1eb6e31c9e292a821a9f369de34c6565b0dc7983200e70758510aaaf3de232c5f2655cbc9175b7de4693ffbac1c363d9774e274ef59d204e')
+sha512sums_aarch64=('9e4899d857e2ecc0e2a4e6cd111ebe86de2ccb957bbf78aa93573000fce3085019efc5b2d0d2e72a6d0c874fe77411b70fe4698eeda72637328eef211da34f76')
 
 package_radicle-bin() {
     provides=('radicle')
