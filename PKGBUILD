@@ -2,7 +2,7 @@
 
 _binname="gsa"
 pkgname="go-size-analyzer"
-pkgver=1.7.5
+pkgver=1.7.6
 pkgrel=1
 pkgdesc="A tool for analyzing the dependencies in compiled Golang binaries"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('6e424a4cd4d0a265a221476847006de7769582141da5b140836d97960ff8736c0af3b5df9577d40092821f9e3bc4f68a3e1a0238efe90cc1fd1bacf237dc4d18')
+b2sums=('c321ca381eb0a0eb0a1f9da11b3a75eb669808684b67cd0e5c5cd943e8f190a0e98b389c2fe0eafa484667145d93310b4275b25d1a15463a09056bab1ce6bde1')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -42,8 +42,8 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${_binname}" "${pkgdir}/usr/bin/${_binname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  # install -Dm644 "README_zh_CN.md" "${pkgdir}/usr/share/doc/${_pkgname}/README_zh_CN.md"
-  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm755 "build/${_binname}" "${pkgdir}/usr/bin/${_binname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  # install -vDm644 "README_zh_CN.md" "${pkgdir}/usr/share/doc/${_pkgname}/README_zh_CN.md"
+  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
