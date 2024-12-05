@@ -1,6 +1,6 @@
 pkgbase = shellcheck_makefile-git
 	pkgdesc = Small utility for applying Shellcheck on Makefiles. Depends only on shellcheck, make and python.
-	pkgver = 1.27.r4.gda75cb6
+	pkgver = 1.27.1
 	pkgrel = 1
 	url = https://github.com/actionless/shellcheck_makefile
 	arch = any
