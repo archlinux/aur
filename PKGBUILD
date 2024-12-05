@@ -2,7 +2,7 @@
 
 _pkgname=fastanime
 pkgname="${_pkgname}-git"
-pkgver=2.8.4.r2.8cbbcf4
+pkgver=2.8.4.r3.a79b59f
 pkgrel=2
 pkgdesc="FastAnime, anime site experience from the terminal."
 arch=('x86_64')
