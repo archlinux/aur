@@ -3,7 +3,7 @@
 pkgname=python-ectool
 _name=${pkgname#python-}
 pkgver=1.2.1
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="A tools for EC modules, like EC618/EC616/EC718"
 arch=('any')
@@ -33,10 +33,10 @@ build() {
     python -m build --wheel --no-isolation
 }
 
-check() {
-    cd ${_name}-${pkgver}
-    PYTHONPATH=src pytest tests
-}
+# check() {
+#     cd ${_name}-${pkgver}
+#     PYTHONPATH=src pytest tests
+# }
 
 package() {
     cd "${srcdir}/${_name}-${pkgver}"

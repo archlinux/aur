@@ -1,7 +1,7 @@
 pkgbase = python-ectool
 	pkgdesc = A tools for EC modules, like EC618/EC616/EC718
 	pkgver = 1.2.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://pypi.org/project/ectool
 	arch = any
 	license = MIT
