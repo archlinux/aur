@@ -31,7 +31,7 @@ sha256sums=('SKIP'
             '1222f0ea7dc963f3e09db814bacc71d2179232ad582fab8ad0e36cb8a9e69141'
             '18f1759e8642b2be24a11337eca16f148f80bee88b3270a3bb62c7376b428090'
             'cc4c09d90f3c26db239ed159b4b65ddf3ec7b68c044e61ee42c77a1a5fb659de')
-
+			
 pkgver() {
 	cd $_pkgnamesrc
 	printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
