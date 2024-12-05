@@ -5,10 +5,10 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-ffplayout
-pkgver=7.0.1
-pkgrel=2
+pkgver=7.1
+pkgrel=3
 epoch=2
-pkgdesc='Complete solution to record, convert and stream audio and video'
+pkgdesc='Complete solution to record, convert and stream audio and video (for ffplayout)'
 arch=(x86_64)
 url=https://ffmpeg.org
 license=(GPL-3.0-only)
@@ -23,7 +23,9 @@ depends=(
   fribidi
   glib2
   glibc
+  glslang
   gmp
+  gnutls
   gsm
   harfbuzz
   jack
@@ -57,7 +59,6 @@ depends=(
   libxext
   libxml2
   libxv
-  mbedtls2
   ocl-icd
   onevpl
   opencore-amr
@@ -79,6 +80,7 @@ depends=(
   x265
   xvidcore
   xz
+  zeromq
   zimg
   zlib
   zeromq
@@ -115,19 +117,17 @@ provides=(
   libswscale.so
   ffmpeg
 )
-
 conflicts=('ffmpeg')
-replaces=('ffmpeg' 'ffmpeg-tree')
-
+replaces=('ffmpeg')
 options=(
   debug
 )
-_tag=47f70eda3e2ff003a787e512afd07b0c266f7a70
+_tag=507a51fbe9732f0f6f12f43ce12431e8faa834b7
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
   add-av_stream_get_first_dts-for-chromium.patch
 )
-b2sums=('d2d6a645509e697932dc8f7a57719e069299e53eb37cda7bf01fd94c9e9956e5532dc5c923fa86d72d0e3a051a7f405e768c73c66ca8aea29271923a17222e03'
+b2sums=('c7ec6b1db61608195117b79f3f0c8f6323c3abeb39721359da0f10e7d739da8301e04ff5fa83c022f86fc760f66e00066f9a50d97b771f797ccc679f9d912c40'
         '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
@@ -156,6 +156,7 @@ build() {
     --enable-fontconfig \
     --enable-frei0r \
     --enable-gmp \
+    --enable-gnutls \
     --enable-gpl \
     --enable-ladspa \
     --enable-libaom \
@@ -168,6 +169,7 @@ build() {
     --enable-libdvdread \
     --enable-libfreetype \
     --enable-libfribidi \
+    --enable-libglslang \
     --enable-libgsm \
     --enable-libharfbuzz \
     --enable-libiec61883 \
@@ -205,7 +207,7 @@ build() {
     --enable-libxml2 \
     --enable-libxvid \
     --enable-libzimg \
-    --enable-mbedtls \
+    --enable-libzmq \
     --enable-nvdec \
     --enable-nvenc \
     --enable-opencl \
@@ -213,7 +215,6 @@ build() {
     --enable-shared \
     --enable-vapoursynth \
     --enable-version3 \
-    --enable-libzmq \
     --enable-parser=h264 \
     --enable-parser=aac \
     --enable-vulkan
@@ -247,6 +248,7 @@ package() {
     libx265.so
     libxvidcore.so
     libzimg.so
+    libzmq.so
   )
 
   make DESTDIR="${pkgdir}" -C ffmpeg install install-man
