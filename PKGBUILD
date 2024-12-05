@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-arm-gdb
-_name=${pkgname#python-}
-pkgver=0.9.9
+_name=arm_gdb
+pkgver=0.9.10
 pkgrel=1
 epoch=
 pkgdesc="Python module for an easier access to analyze ARM Cortex-M peripherals"
@@ -10,26 +10,28 @@ arch=('any')
 url="https://pypi.org/project/arm-gdb"
 license=(MIT)
 groups=()
-provides=(${_name})
-conflicts=(${_name})
+provides=(${_name} ${pkgname})
+conflicts=(${_name} ${pkgname})
 depends=(python
 )
 makedepends=(python-build
     python-installer
     python-wheel
-    python-setuptools-git-versioning-git)
+    python-setuptools-git-versioning)
 checkdepends=()
-options=('!strip')
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+options=()
+# source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=(https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl)
 noextract=()
-sha256sums=('e2a16bbe60e9af770117495c5cf4a7f2bdb3e658b61744d76089b5b4afb12d8d')
+sha256sums=('b9f6492f1ac412255f5b4fd0088e3c91ab8fa299789f586ecd50bd7578d26bc6')
 
-build() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    python -m build --wheel --no-isolation
-}
+# build() {
+#     cd "${srcdir}/${_name}-${pkgver}"
+#     python -m build --wheel --no-isolation
+# }
 
 package() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+    #     cd "${srcdir}/${_name}-${pkgver}"
+    #     python -m installer --destdir="${pkgdir}" dist/*.whl
+    python -m installer --destdir="$pkgdir" ${srcdir}/${_name//-/_}-$pkgver-py3-none-any.whl
 }
