@@ -2,9 +2,9 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgbase=pyqt5-3d
-pkgname=(python-pyqt5-3d)
+pkgname=(python-pyqt5-3d-deprecated)
 pkgver=5.15.7
-pkgrel=3
+pkgrel=4
 pkgdesc='Python bindings for Qt3D'
 arch=(x86_64)
 url='https://www.riverbankcomputing.com/software/pyqt3d/intro'
@@ -26,7 +26,7 @@ build() {
   make
 }
 
-package_python-pyqt5-3d(){
+package_python-pyqt5-3d-deprecated(){
   cd PyQt3D-$pkgver/build
   make INSTALL_ROOT="$pkgdir" install
 }
