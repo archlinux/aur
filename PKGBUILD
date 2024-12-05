@@ -1,8 +1,8 @@
 # Maintainer: Prasanth Baskar <bupdprasanth@gmail.com>
 
 pkgname=harbor-cli
-pkgver=0.0.1
-pkgrel=5
+pkgver=0.0.2
+pkgrel=1
 pkgdesc='Official Harbor CLI'
 arch=('x86_64')
 url='https://goharbor.io'
