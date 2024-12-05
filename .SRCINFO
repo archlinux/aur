@@ -1,7 +1,7 @@
 pkgbase = cosmic-session-git
 	pkgdesc = Session manager for the COSMIC desktop environment
 	pkgver = 1.0.0.alpha.4.r0.g87a0644
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pop-os/cosmic-session
 	arch = x86_64
 	arch = aarch64
@@ -27,6 +27,7 @@ pkgbase = cosmic-session-git
 	depends = cosmic-settings-daemon-git
 	depends = cosmic-settings-git
 	depends = cosmic-workspaces-git
+	depends = dconf
 	depends = otf-fira-mono
 	depends = otf-fira-sans
 	depends = switcheroo-control
