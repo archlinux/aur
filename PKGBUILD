@@ -5,13 +5,13 @@ enginename=catgirl-engine
 pkgdesc="A game engine for cool moddability and procedurally generated data"
 arch=('any')
 license=(Zlib)
-url="https://github.com/Foxgirl-Labs/catgirl-engine"
-pkgver=v0.14.37.alpha.r20.g83921a2
+url="https://github.com/foxgirl-labs/catgirl-engine"
+pkgver=v0.14.40.r0.ge34977d
 pkgrel=1
 provides=("catgirl-engine=${pkgver%%.r*}")
 conflicts=(catgirl-engine)
-repo=("https://github.com/Foxgirl-Labs/$enginename.git")
-# source=("git+https://github.com/Foxgirl-Labs/catgirl-engine.git")
+repo=("https://github.com/foxgirl-labs/$enginename.git")
+# source=("git+https://github.com/foxgirl-labs/catgirl-engine.git")
 # b2sums=("SKIP")
 options=(!strip !debug)
 depends=()
