@@ -21,8 +21,8 @@ conflicts=(st)
 url=https://github.com/dc138/st-community/
 source=(st-community::git+https://github.com/dc138/st-community.git
         terminfo.patch)
-sha256sums=(SKIP
-            SKIP)
+sha256sums=('SKIP'
+            '1d4dbc5ed36d97fa1d7852b84a12bf59906b245f60c47c0134fb3fdbc834f23e')
 
 _gitname="st-community"
 _sourcedir="$_gitname"
