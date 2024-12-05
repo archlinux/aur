@@ -1,10 +1,10 @@
 pkgbase = cortexcommand
 	pkgdesc = Cortex Command Community Project
 	pkgver = 6.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cortex-command-community.github.io/
 	arch = x86_64
-	license = AGPL-3.0-only
+	license = AGPL-3.0-only WITH GPL-3.0-linking-exception
 	license = LicenseRef-FMOD-EULA
 	makedepends = meson
 	makedepends = ninja
@@ -23,9 +23,11 @@ pkgbase = cortexcommand
 	conflicts = cortexcommand-git
 	source = cortexcommand::git+https://github.com/cortex-command-community/Cortex-Command-Community-Project.git#tag=v6.2.2
 	source = runner.patch::https://github.com/cortex-command-community/Cortex-Command-Community-Project/pull/128.patch
+	source = luabind-error-check.patch
 	source = FMOD EULA::https://www.fmod.com/legal
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 77ee053b20b089911c1328156eb3443312b8e080847fb806c40012d9cf4131f4
+	sha256sums = 9945be7b1f4b977bb5d11acd6b876b156e6212bfbd4b78c1889e9847d6cdf66e
+	sha256sums = 934ea12c3e221507e6cc15ad72f4c35145efda407033392c6a31c64b35828589
 	sha256sums = SKIP
 
 pkgname = cortexcommand
