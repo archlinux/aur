@@ -2,16 +2,18 @@
 
 pkgname=python-booleanoperations-git
 pkgver=0.9.0.r3.g25f7091
-pkgrel=2
+pkgrel=17
 pkgdesc='Boolean operations on paths'
 url='https://github.com/typemytype/booleanOperations'
 license=('MIT')
 arch=(any)
-_pydeps=(pyclipper
-         fonttools)
+_pydeps=(
+    pyclipper
+    fonttools)
 depends=(python
     "${_pydeps[@]/#/python-}")
-checkdepends=(python-defcon
+checkdepends=(
+    python-defcon
     python-fontpens
     python-pytest)
 makedepends=(python-{build,installer,wheel}
@@ -27,8 +29,7 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
@@ -46,4 +47,3 @@ package() {
     cd "$pkgname"
     python -m installer -d "$pkgdir" dist/*.whl
 }
-
