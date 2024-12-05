@@ -1,6 +1,6 @@
 pkgname=primevideo
 _pkgname=PrimeVideo
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 _pkgrel_x86_64=1
 pkgdesc="Unnofficial Prime Videos desktop application"
@@ -10,13 +10,13 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 conflicts=("primevideo-git" "primevideo-bin")
-source=("https://gitlab.com/primevideo/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('4b0cac84ab9d6a66af49590a6a0596e5a8ed9554b9aca4a7d81d1d018789029b')
+source=("https://gitlab.com/primevideo/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
+sha256sums=('f90bfcd4a17da021aa85506eac0610c7ee59a1063f2be5d62f04fe3691884db7')
 
 package() {
-    for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
+    for dir in application-$pkgver ; do mv "${dir}" "$_pkgname" ;done
     cd "$srcdir/$_pkgname"
-    chmod +x $pkgname.sh
+    chmod +x $pkgname
     ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
@@ -25,7 +25,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgname/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
     install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" \
