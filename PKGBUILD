@@ -9,54 +9,83 @@ pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
 _sticker_creator="sticker-creator"
 _desktop_file='signalbeta.desktop'
-pkgver=7.35.0beta1
+pkgver=7.36.0beta1
 pkgrel=1
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
 conflicts=('signal-desktop-beta-bin')
 arch=('x86_64' 'aarch64')
 url="https://signal.org"
-depends=('gtk3' 'hicolor-icon-theme' 'libasound.so' 'libatk-bridge-2.0.so' 'libcairo.so' 'libdbus-1.so'
-        'libexpat.so' 'libgio-2.0.so' 'libpango-1.0.so' 'libxkbcommon.so' 'libxss')
+depends=(
+  'gcc-libs'
+  'glibc'
+  'gtk3'
+  'hicolor-icon-theme'
+  'libasound.so'
+  'libatk-bridge-2.0.so'
+  'libcairo.so'
+  'libcups'
+  'libdbus-1.so'
+  'libdrm'
+  'libexpat.so'
+  'libgio-2.0.so'
+  'libpango-1.0.so'
+  'libx11'
+  'libxcb'
+  'libxcomposite'
+  'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxkbcommon.so'
+  'libxrandr'
+  'mesa'
+  'nspr'
+  'nss'
+)
 # We need libxcrypt-compat for it to build: https://github.com/electron-userland/electron-builder-binaries/issues/47
-makedepends=('git' 'nodejs' 'npm' 'python' 'git-lfs' 'libxcrypt-compat' 'node-gyp')
+makedepends=(
+  'git'
+  'git-lfs'
+  'libxcrypt-compat'
+  'node-gyp'
+  'nodejs'
+  'npm'
+  'python'
+)
 optdepends=('xdg-desktop-portal: Screensharing with Wayland')
 makedepends_aarch64=('fpm')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver//beta*}-beta.${pkgver##*beta}.tar.gz"
   "${_desktop_file}"
   )
-sha512sums=('f126594a1c7030a79d420a91e2a707811c846a7489e29e1f78c8b241c4de23b979d0920a9349fce3ff9bc904e5dccc029a30809028ed6d81b9b0a9f811ddbffb'
+sha512sums=('e48a319c4adb6db3bcb1627ddf8622d10878d4fb36c7f344c334c310505d7e677db7ce6998d2c2fcd92c31ecdaf5ed293e550f94a14550a4bb53e1c9e03c5053'
             '5ae001faedff440776f4a62235c294454a951f4cc412665a21cd958bdf4a0223c89f741f2786d93727c7acf49a8a98d75156c6e14ba1f01da261fba373ef675a')
 
 prepare() {
   cd "${_pkgname}-${pkgver//beta*}-beta.${pkgver##*beta}"
 
+  # git-lfs hook needs to be installed for one of the dependencies
   git lfs install
 
   # Allow higher Node versions
   sed 's#"node": "#&>=#' -i package.json
 
-  cd ${_sticker_creator}
-  npm install
+  # Install dependencies for sticker-creator
+  npm --prefix ./sticker-creator/ install
 
-  cd ..
+  # Install dependencies for signal-desktop
   npm install --ignore-engines
 }
 
 build() {
   cd "${_pkgname}-${pkgver//beta*}-beta.${pkgver##*beta}"
 
-  # temporary fix for openssl3
-  export NODE_OPTIONS=--openssl-legacy-provider
+  # Build the sticker creator
+  USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) bash -c 'npm --prefix ./sticker-creator/ run build'
 
-  cd ${_sticker_creator}
-  USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) bash -c 'npm run build'
-
-  cd ..
-  npm run generate
+  # Build Signal Desktop Beta
   npm run prepare-beta-build
-  USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) bash -c 'npm run build:esbuild:prod && npm run build:release -- --linux dir'
+  USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) bash -c 'npm run build'
 }
 
 package() {
