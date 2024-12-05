@@ -2,7 +2,7 @@
 
 pkgbase=logicanalyzer-git
 pkgname=({logicanalyzer,clcapture}-git)
-pkgver=v5.1.0.0.r34.g3cc8378
+pkgver=5.1.0.0.r34.g3cc8378
 pkgrel=1
 epoch=
 pkgdesc="24 channel, 100Msps logic analyzer hardware and software "
@@ -23,7 +23,7 @@ noextract=()
 
 pkgver() {
     cd "${srcdir}/${pkgbase}"
-    git describe --long --tags | sed 's/^V//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^[vV]//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
