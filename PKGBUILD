@@ -6,7 +6,7 @@
 _pkgname=pa-dlna
 pkgname="${_pkgname}-git"
 pkgver=0.14.r389.20241103.6c16282
-pkgrel=5
+pkgrel=6
 pkgdesc="Forwards audio streams to DLNA devices. For PulseAudio or PipeWira (via 'python-libpulse'). Latest git checkout."
 arch=(
   'any'
@@ -35,6 +35,7 @@ depends=(
 )
 makedepends=(
   'git'
+  'imagemagick'  # For 'make latexpdf'
   'python-build'
   'python-flit-core'
   'python-installer'
@@ -51,11 +52,23 @@ optdepends=(
   'pulse-native-provider: To be used by a local pulseaudio implementation'
   'pipewire-pulse: To be used by a local pipewire implementation'
 )
-source=("${_pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+source=(
+  "${_pkgname}::git+${url}.git"
+  "fix_latexbuild_sphinx-imagemagick.patch"  # Fixes https://gitlab.com/xdegaye/pa-dlna/-/issues/31
+)
+sha256sums=(
+  'SKIP'
+  '4dec52f94fa7d6f5fc9ac8b83b9247484263adea6b62673388eee79a14528aa8'
+)
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
+
+  for _patch in "${srcdir}"/fix_latexbuild_sphinx-imagemagick.patch; do
+    plain "Applying patch '$(basename "${_patch}" ...)'"
+    patch -Np1 --follow-symlinks -i "${_patch}"
+  done
+
   git log > git.log
 }
 
@@ -81,7 +94,7 @@ build() {
   python -m build --wheel --no-isolation
 
   cd docs
-  for _target in man info text html; do
+  for _target in man info text html latexpdf; do # qthelp
     make -j1 "${_target}"
   done
   gzip -9 build/man/*
@@ -93,6 +106,11 @@ package() {
 
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
+  _docfiles=(
+    README.rst
+    git.log
+    docs/build/latex/pa-dlna.pdf
+  )
   _docdirs=(
     docs/build/html
     # docs/build/qthelp
@@ -104,7 +122,13 @@ package() {
   _infofiles=(
     docs/build/texinfo/*.info.gz
   )
+  _licensefiles=(
+    LICENSE
+  )
   install -dvm755 "${pkgdir}/usr/share/doc/${_pkgname}"
+  for _docfile in "${_docfiles[@]}"; do
+    install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${_docfile}"
+  done
   for _docdir in "${_docdirs[@]}"; do
     cp -rv "${_docdir}" "${pkgdir}/usr/share/doc/${_pkgname}"/
   done
@@ -115,9 +139,9 @@ package() {
   for _infofile in "${_infofiles[@]}"; do
     install -Dvm644 -t "${pkgdir}/usr/share/info" "${_infofile}"
   done
-
-  install -D -m644 -v -t "${pkgdir}/usr/share/doc/${_pkgname}" README.rst git.log
-  install -D -m644 -v -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-  ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE"
+  for _licensefile in "${_licensefiles[@]}"; do
+    install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_licensefile}"
+    ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/$(basename "${_licensefile}")" "${pkgdir}/usr/share/doc/${_pkgname}"/
+  done
 }
 
