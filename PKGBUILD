@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=mwtool-git
-pkgver=0.0.1.1.r1.ga8dc5f6
+pkgver=0.0.1.3.r9.g429fba8
 pkgrel=1
 pkgdesc="云固件配置工具箱"
 arch=('any')
@@ -32,7 +32,7 @@ prepare() {
 }
 
 package() {
-    dos2unix "${srcdir}"/${pkgname}/mw.sh
-    install -Dm755 "${srcdir}"/${pkgname}/mw.sh ${pkgdir}/usr/bin/mw
+    dos2unix "${srcdir}"/${pkgname}/bash/mw.sh
+    install -Dm755 "${srcdir}"/${pkgname}/bash/mw.sh ${pkgdir}/usr/bin/mw
     install -dm777 ${pkgdir}/media/me/
 }
