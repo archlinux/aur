@@ -2,7 +2,7 @@
 _pkgname=aliae
 _repo="JanDeDobbeleer/$_pkgname"
 pkgname="$_pkgname-bin"
-pkgver=0.22.2
+pkgver=0.23.0
 pkgrel=1
 _filename="$_pkgname-$pkgver-$pkgrel"
 pkgdesc="Cross shell and platform alias management"
