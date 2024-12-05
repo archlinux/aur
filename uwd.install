@@ -1,0 +1,22 @@
+post_install() {
+	echo -e "\n\e[1m Oleksandr’s Ukrainian Web Dictionaries $1\e[0m\n"
+	cat <<-END
+		 Programs installed
+		 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+		 • uwd: main utility for interfacing with dictionaries
+		 • trl: transliterator for making urls to query sum.in.ua
+		 • cadictua: scraper for https://lcorp.ulif.org.ua/dictua/
+
+		 Help the project
+		 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+		 • Add new dictionaries, say, for synonyms
+		 • Create a unified way of displaying results (maybe using sed)
+		   that will eliminate the need for w3m, html2text and mdr
+		 • If nothing else, donate: https://miliukhin.xyz/donate !
+
+		 See Oleksandr’s website: https://miliukhin.xyz/ - email him at: oleksandr<at>danwin1210.de
+
+		      -->  uwd is free/libre software, licensed under the GPLv3  <--
+
+	END
+}

@@ -1,0 +1,22 @@
+pkgbase = uwd-git
+	pkgdesc = Command-line interface for Ukrainian web dictionaries
+	pkgver = r3.a44b096
+	pkgrel = 1
+	url = https://github.com/miliukhin/uwd
+	install = uwd.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	depends = mdr
+	depends = w3m
+	depends = html2text
+	depends = sed
+	provides = uwd
+	conflicts = uwd
+	options = zipman
+	source = git+https://github.com/miliukhin/uwd
+	sha256sums = SKIP
+
+pkgname = uwd-git
