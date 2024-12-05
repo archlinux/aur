@@ -1,7 +1,7 @@
 pkgbase = st-community-git
 	pkgdesc = A simple virtual terminal emulator for X, with community patches included.
 	pkgver = 0.9+9846a56
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dc138/st-community/
 	arch = i686
 	arch = x86_64

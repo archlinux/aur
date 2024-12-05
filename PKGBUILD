@@ -10,7 +10,7 @@
 
 pkgname=st-community-git
 pkgver=0.9+9846a56
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple virtual terminal emulator for X, with community patches included.'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
