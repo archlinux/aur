@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=umu-launcher-git
-pkgver=1.1.1.r3.4dc0ef6
+pkgver=1.1.4.r28.e559e2e
 pkgrel=1
 pkgdesc="This is the Unified Launcher for Windows Games on Linux, to run Proton with fixes outside of Steam"
 arch=('x86_64')
@@ -56,6 +56,7 @@ makedepends=(
   python-build
   python-installer
   python-hatchling
+  python-pip
 )
 provides=('umu-launcher')
 conflicts=('umu-launcher')
