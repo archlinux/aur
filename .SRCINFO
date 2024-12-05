@@ -6,7 +6,6 @@ pkgbase = lammps
 	arch = x86_64
 	license = GPL
 	makedepends = cmake>=3.1
-	makedepends = git
 	makedepends = python-pip
 	makedepends = python-build
 	depends = fftw
@@ -19,7 +18,7 @@ pkgbase = lammps
 	optdepends = python
 	optdepends = python-mpi4py
 	provides = lammps
-	conflicts = lammps
+	conflicts = lammps-git
 	source = https://github.com/lammps/lammps/archive/refs/tags/stable_29Aug2024_update1.tar.gz
 	sha256sums = 3aea41869aa2fb8120fc4814cab645686f969e2eb7c66aa5587e500597d482dc
 
