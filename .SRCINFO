@@ -1,10 +1,8 @@
 pkgbase = turbo-scanner-git
 	pkgdesc = A port scanner and service detection tool that uses 1000 goroutines at once to scan any hosts's ip or fqdn with the sole purpose of testing your own network to ensure there are no malicious services running.
-	pkgver = 0.1.0
+	pkgver = 0.1.0.1.g4cdf796
 	pkgrel = 3
 	url = https://github.com/mytechnotalent/turbo-scanner
-	arch = aarch64
-	arch = riscv64
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git

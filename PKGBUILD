@@ -1,12 +1,10 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=turbo-scanner-git
-pkgver=0.1.0
+pkgver=0.1.0.1.g4cdf796
 pkgrel=3
 pkgdesc="A port scanner and service detection tool that uses 1000 goroutines at once to scan any hosts's ip or fqdn with the sole purpose of testing your own network to ensure there are no malicious services running."
-arch=(aarch64
-    riscv64
-    x86_64)
+arch=($CARCH)
 url="https://github.com/mytechnotalent/turbo-scanner"
 license=('Apache-2.0')
 provides=(${pkgname%-git})
@@ -29,8 +27,7 @@ pkgver() {
     git describe --tags --always | sed 's/^v//;s/-/./g'
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
