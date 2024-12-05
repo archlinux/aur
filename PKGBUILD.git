@@ -1,3 +1,4 @@
+pkgname="$_pkgname-git"
 makedepends+=('git')
 
 _source_ryujinx() {
