@@ -1,12 +1,14 @@
 pkgbase = gridtracker2-bin
 	pkgdesc = An amateur radio companion
 	pkgver = 2.241203.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gridtracker.org
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = BSD-3-Clause
+	depends = c-ares
+	depends = http-parser
 	optdepends = libappindicator-gtk3: tray notifications
 	provides = gridtracker2
 	source_x86_64 = https://download2.gridtracker.org/GridTracker2-2.241203.0-x64.pacman
