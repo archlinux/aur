@@ -1,7 +1,7 @@
 pkgbase = python-mplhep
 	pkgdesc = A set of helpers for matplotlib to more easily produce plots typically needed in HEP.
 	pkgver = 0.3.46
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/scikit-hep/mplhep
 	arch = any
 	license = MIT

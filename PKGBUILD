@@ -3,7 +3,7 @@
 _pkgname='mplhep'
 pkgname="python-${_pkgname}"
 pkgver='0.3.46'
-pkgrel=3
+pkgrel=4
 pkgdesc="A set of helpers for matplotlib to more easily produce plots typically needed in HEP."
 arch=('any')
 url='https://github.com/scikit-hep/mplhep'
