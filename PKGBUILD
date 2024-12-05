@@ -1,13 +1,13 @@
 _phpbase=81
 pkgname=php81-redis
-pkgver=6.0.2
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="PHP extension for interfacing with Redis"
 url="http://pecl.php.net/package/redis"
 arch=('x86_64')
 license=('PHP')
-makedepends=("php${_phpbase}")
-depends=("php${_phpbase}")
+makedepends=("php${_phpbase}" "liblzf")
+depends=("php${_phpbase}" "liblzf")
 backup=("etc/php${_phpbase}/conf.d/redis.ini")
 source=(
     http://pecl.php.net/get/redis-${pkgver}.tgz
@@ -15,7 +15,10 @@ source=(
 build() {
   cd "$srcdir/redis-$pkgver"
   phpize${_phpbase}
-  ./configure --prefix=/usr --enable-redis-lzf --with-php-config=php-config${_phpbase}
+  ./configure --prefix=/usr \
+    --enable-redis-lzf \
+    --with-liblzf=/usr/lib/ \
+    --with-php-config=php-config${_phpbase}
   make
 }
 
@@ -27,5 +30,5 @@ package() {
   rm redis.ini
 }
 
-sha256sums=('01aeccb0e14f897fe56f0509be6e6991ff0ad459f9d34e95e4556d02699b9a03')
+sha256sums=('f10405f639fe415e9ed4ec99538e72c90694d8dbd62868edcfcd6a453466b48c')
 
