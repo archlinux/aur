@@ -3,7 +3,7 @@
 
 _pkgname=kawaii-gcc
 pkgname="$_pkgname-zh-cn-git"
-pkgver=r24.fbfb66a
+pkgver=r29.9504dad
 pkgrel=1
 provides=("$_pkgname")
 pkgdesc='GCCコンパイラーを可愛くしましょう！Make your GCC compiler kawaii. '
@@ -22,11 +22,10 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-    make merge-zh
-    msgfmt gcc-zh.po -o gcc.mo
+    make
 }
 
 package() {
     cd "$_pkgname"
-    install -Dm644 gcc.mo -t "$pkgdir/usr/share/locale/zh_CN_kawaii/LC_MESSAGES"
+    install -Dm644 "build/zh-kawaii.mo" -t "$pkgdir/usr/share/locale/zh_CN_kawaii/LC_MESSAGES"
 }
