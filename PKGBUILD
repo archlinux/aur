@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.4.0.r94.g4ebb90c7
+pkgver=0.4.0.r117.g22a2741e
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -32,6 +32,7 @@ makedepends=(
 	'renderdoc'
 	'robin-map>=1.3'
 	'spirv-headers'
+	'stb'
 	'toml11>=4.2'
 	'vulkan-headers>=1:1.3.289'
 	'vulkan-memory-allocator>=3.1'
