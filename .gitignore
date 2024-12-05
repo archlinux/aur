@@ -1,6 +1,5 @@
 OpenLinkHub/
 src/
 pkg/
-backupPKGB
+PKGBUILD.bak
 *.tar.zst
-*.patch

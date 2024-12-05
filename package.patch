@@ -1,0 +1,18 @@
+diff -ura OpenLinkHub/OpenLinkHub.service OpenLinkHub.new/OpenLinkHub.service
+--- OpenLinkHub/OpenLinkHub.service	2024-12-05 05:40:33.674619021 -0600
++++ OpenLinkHub.new/OpenLinkHub.service	2024-12-05 05:43:20.304128623 -0600
+@@ -2,11 +2,11 @@
+ Description=Open source interface for iCUE LINK System Hub, Corsair AIOs and Hubs
+ 
+ [Service]
+-User=nikola
++User=openlinkhub
+ WorkingDirectory=/opt/OpenLinkHub
+ ExecStart=/opt/OpenLinkHub/OpenLinkHub
+ ExecReload=/bin/kill -s HUP $MAINPID
+ RestartSec=5
+ 
+ [Install]
+-WantedBy=multi-user.target
+\ No newline at end of file
++WantedBy=multi-user.target
