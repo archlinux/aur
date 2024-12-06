@@ -1,6 +1,6 @@
 pkgbase = mullvad-vpn-beta
 	pkgdesc = The Mullvad VPN client app for desktop (beta channel)
-	pkgver = 2024.8.stable
+	pkgver = 2024.9.beta1
 	pkgrel = 1
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
@@ -20,20 +20,20 @@ pkgbase = mullvad-vpn-beta
 	depends = nss
 	provides = mullvad-vpn
 	conflicts = mullvad-vpn
-	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2024.8?signed
+	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2024.9-beta1?signed
 	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=049d5d3bc0c86c29c20f2073460186a83c1d7094?signed
-	source = git+https://github.com/mullvad/wireguard-go.git#commit=b1cf09a982bba6f6c63fadc956d88e8c2326d05e?signed
-	source = git+https://github.com/mullvad/maybenot.git#commit=b06094e81701782d28cd2312f58e0654109d04ce
+	source = git+https://github.com/mullvad/wireguard-go.git#commit=3957ef94034a9cbb47f323b3290620bb849d58e3?signed
+	source = git+https://github.com/mullvad/maybenot.git#commit=d40056adfa854d86e1d515d56e9a703090e2473c
 	source = no-rpm.diff
 	source = no-publish.diff
 	source = mullvad-vpn.sh
 	validpgpkeys = 225E40C8F1C8DEB7977ABF59F293063FECE2E8ED
 	validpgpkeys = 8339C7D2942EB854E3F27CE5AEE9DECFD582E984
 	validpgpkeys = 1D0026CBD1F1858DF8DB54DFCB87E2B919A6454C
-	sha256sums = 986834188991afa94a2ca95863c482eeed653d56f725af3628d05840e39c671c
+	sha256sums = 0e5d91382f02363b8490c8049898028659ca01849c8c4a7e947630994dfad6d2
 	sha256sums = 2f7ff0d5c2c5bab63b9babc6c91d921ef9965413b0b92996be8c9fd5a9c0d862
-	sha256sums = a65a9a650066e653f50871c17758ddc8a4ecfa6fbb9684035855d6f0d8a655a4
-	sha256sums = 905d2c0b697cb594babdf4e84066f3bdf666ab5d889642b002a1390f52fc7cf8
+	sha256sums = 6e0f55d43fbf016d989ff5571de9c3b8c2f3611e957e807f5ffcbda2c4d274c6
+	sha256sums = 6547c6d7c1d3ffd0b65a025ac5e6f76cd3046059cb10da7f1e99f5e436378bd2
 	sha256sums = ea35edffea2cbbb05586abce19581fdd9f133801ed47e6af30fa64a29c5cf116
 	sha256sums = 968967efff8e9588f15c382825b609cf89d54c47e0632e92e9ef2354aa46f31b
 	sha256sums = 2262346cb57deb187fe32a88ccd873dab669598889269088e749197c6e88954f
