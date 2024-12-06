@@ -4,12 +4,12 @@
 _pkgname=wlclock
 pkgname=$_pkgname-git
 pkgver=v1.0.1.r0.g52c56a4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple GTKmm/Cairo based clock that works on Wayland "
 arch=('i686' 'x86_64')
 depends=('glibc' 'wayland' 'cairo')
 makedepends=('ninja' 'meson' 'git')
-url="https://github.com/Depau/wlclock"
+url="https://sr.ht/~leon_plickat/wlclock/"
 license=('GPL-3.0-only')
 source=(${_pkgname}::git+https://git.sr.ht/~leon_plickat/wlclock)
 sha256sums=('SKIP')
