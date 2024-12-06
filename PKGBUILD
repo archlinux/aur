@@ -29,7 +29,7 @@ source=(
   "build-swt.xml"
 )
 noextract=("$_archive")
-sha256sums=('64726420e01acfcef3e83cffe97eb613b724408143b73aa013938365e6ff46cb'
+sha256sums=('2fd34dbe0d15f96bb23060c62c6a70696518e6d2cd77b45ccc0dfcabc56c18c6'
             'e382ae40d3a437b10a960bab81800a5e372769011ab591de2ce11426d52e6b37')
 
 prepare() {
