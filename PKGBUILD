@@ -61,17 +61,15 @@ optdepends=(
 )
 source=(
   "${_pkgname}::git+${url}.git"
-  # "fix_latexbuild_sphinx-imagemagick.patch"  # Fixes https://gitlab.com/xdegaye/pa-dlna/-/issues/31
 )
 sha256sums=(
   'SKIP'
-  # '4dec52f94fa7d6f5fc9ac8b83b9247484263adea6b62673388eee79a14528aa8'
 )
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  # for _patch in "${srcdir}"/fix_latexbuild_sphinx-imagemagick.patch; do
+  # for _patch in "${srcdir}"/[...].patch; do
   #   plain "Applying patch '$(basename "${_patch}" ...)'"
   #   patch -Np1 --follow-symlinks -i "${_patch}"
   # done
