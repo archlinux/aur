@@ -1,7 +1,7 @@
 pkgbase = rttview
 	pkgdesc = SEGGER-RTT Client for J-LINK and DAPLink
 	pkgver = 20241201
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/XIVN1987/RTTView
 	arch = any
 	license = MIT
@@ -13,7 +13,6 @@ pkgbase = rttview
 	makedepends = python-six
 	makedepends = python-pyelftools
 	makedepends = python-pyqt5
-	makedepends = python-pyqt5-chart
 	makedepends = python-pyqt5-webengine
 	makedepends = python-pyusb
 	depends = glibc
