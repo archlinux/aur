@@ -1,6 +1,6 @@
 pkgbase = liquid-dsp-quiet-devel-git
 	pkgdesc = libliquid compatible with libquiet
-	pkgver = 1.2.0.r1586.g4951bbbf
+	pkgver = 1.2.0+r6217+g4951bbbf6
 	pkgrel = 1
 	url = https://github.com/quiet/quiet-dsp
 	arch = x86_64

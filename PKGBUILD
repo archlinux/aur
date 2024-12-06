@@ -2,7 +2,7 @@
 # Contributor: jasch <jasch dot io at protonmail dot com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=liquid-dsp-quiet-devel-git
-pkgver=1.2.0.r1586.g4951bbbf
+pkgver=1.2.0+r6217+g4951bbbf6
 pkgrel=1
 pkgdesc="libliquid compatible with libquiet"
 arch=('x86_64')
@@ -22,10 +22,12 @@ prepare() {
   cd quiet-dsp
   git checkout devel
 }
-
 pkgver() {
   cd quiet-dsp
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  _version=$(git tag --sort=-v:refname --list | head -n1 | cut -c2-)
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version}+r${_commits}+g${_short_commit_hash}"
 }
 
 build() {
