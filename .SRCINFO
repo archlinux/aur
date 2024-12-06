@@ -1,7 +1,7 @@
 pkgbase = python-llvmlite-bin
-	pkgdesc = A lightweight LLVM python binding for writing JIT compilers
+	pkgdesc = A lightweight LLVM python binding for writing JIT compilers (with SVML support!)
 	pkgver = 0.43.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://llvmlite.pydata.org
 	arch = x86_64
 	license = GPL
