@@ -4,8 +4,8 @@
 
 pkgbase=mcpelauncher-linux
 pkgname=('mcpelauncher-linux' 'lib32-mcpelauncher-linux')
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
@@ -52,7 +52,7 @@ source=(
   'git+https://github.com/minecraft-linux/android_core'
 )
 
-sha256sums=('7b6790a70856eb1d32e7d20722898639f8ae90fc8a9242b8f37b972b7499076b'
+sha256sums=('5eaa1fb3630c037423fc3ff2a81e0d7aeff062dcc2bbbd150f123bb7702341c8'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -117,14 +117,10 @@ prepare() {
   git -C mcpelauncher-manifest config submodule.sdl3.url "$srcdir/SDL"
   git -C mcpelauncher-manifest config submodule.imgui.url "$srcdir/imgui"
   git -C mcpelauncher-manifest -c protocol.file.allow=always submodule update
+  # Submodules of submodules
   git -C mcpelauncher-manifest/mcpelauncher-linker config submodule.bionic.url "$srcdir/android_bionic"
-  # Workaround of git clone --mirror timeout commit sha of core doesn't match git repo
-  #git -C mcpelauncher-manifest/mcpelauncher-linker config submodule.core.url "$srcdir/core"
-  #git -C mcpelauncher-manifest/mcpelauncher-linker -c protocol.file.allow=always submodule update
   git -C mcpelauncher-manifest/mcpelauncher-linker config submodule.core.url "$srcdir/android_core"
-  git -C mcpelauncher-manifest/mcpelauncher-linker -c protocol.file.allow=always submodule init
-  git -C mcpelauncher-manifest/mcpelauncher-linker -c protocol.file.allow=always submodule update bionic
-  GIT_DIR="$PWD/mcpelauncher-manifest/mcpelauncher-linker/core/.git" git -C mcpelauncher-manifest/mcpelauncher-linker/core -c protocol.file.allow=always fetch "$srcdir/android_core" HEAD && git -C mcpelauncher-manifest/mcpelauncher-linker/core checkout FETCH_HEAD || git -c protocol.file.allow=always clone "$srcdir/android_core" mcpelauncher-manifest/mcpelauncher-linker/core
+  git -C mcpelauncher-manifest/mcpelauncher-linker -c protocol.file.allow=always submodule update
 }
 
 build() {
