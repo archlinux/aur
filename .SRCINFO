@@ -1,7 +1,7 @@
 pkgbase = scotch
 	pkgdesc = Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering
-	pkgver = 7.0.5
-	pkgrel = 2
+	pkgver = 7.0.6
+	pkgrel = 1
 	url = https://gitlab.inria.fr/scotch/scotch
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = scotch
 	conflicts = scotch_esmumps
 	conflicts = scotch_esmumps5
 	options = !emptydirs
-	source = https://gitlab.inria.fr/scotch/scotch/-/archive/v7.0.5/scotch-v7.0.5.tar.gz
-	sha512sums = 9566ca800fd47df63844df6ff8b0fbbe8efbdea549914dfe9bf00d3d104a8c5631cfbef69e2677de68dcdb93addaeed158e6f6a373b5afe8cec82ac358946b65
+	source = https://gitlab.inria.fr/scotch/scotch/-/archive/v7.0.6/scotch-v7.0.6.tar.gz
+	sha512sums = 781d906f8084c9e27a4179c888e8c24d4e4807e18608cdc20cfeef7990c687b5957a6866382f23a9ad995351ba2f30c182f3198c3cbe7c2eed8ff701719eebca
 
 pkgname = scotch
