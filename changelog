@@ -1,3 +1,8 @@
+2024-12-06 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.1.0.3-1:
+    Fixed our systemd service definition not working in some environments starting with V6.1 release (@JustArchi #3352).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
 2024-12-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.1.0.2-1:
     Fixed ASF crashing upon start in some environments (@JustArchi #3348).
