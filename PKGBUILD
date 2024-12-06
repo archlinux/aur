@@ -2,12 +2,12 @@
 pkgname=costa
 _pkgname=COSTA
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Communication-optimal shuffle and transpose algorithms."
 arch=(x86_64 aarch64)
 url="https://github.com/eth-cscs/COSTA"
 license=(BSD)
-depends=(openmpi gcc-libs glibc)
+depends=(openmpi gcc-libs glibc scalapack)
 makedepends=(cmake)
 provides=(costa)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
@@ -21,6 +21,7 @@ build() {
   cd "$srcdir/build"
   cmake ../$_pkgname-$pkgver \
     -DBUILD_SHARED_LIBS=On \
+    -DCOSTA_SCALAPACK=CUSTOM \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
