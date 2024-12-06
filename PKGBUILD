@@ -1,9 +1,9 @@
 # Maintainer: Matthieu Monsch <mtth at apache dot org>
 
 pkgname=netstate
-pkgver=0.1.0
-pkgrel=3
-pkgdesc='Run hooks on network state change'
+pkgver=0.2.0
+pkgrel=1
+pkgdesc='Run hooks on network state changes'
 arch=(x86_64)
 url=https://github.com/mtth/netstate
 license=(MIT)
@@ -14,8 +14,8 @@ source=(
 	"$pkgname-v$pkgver.tar.gz::https://github.com/mtth/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 	netstate.service
 )
-sha256sums=('d926acc438361820a4ec437084a5dee938d534dabfeb699540d5783d4fcc76d3'
-            'a7f4866c4fea6485805c6e0b8758fb827de4b94200a9b1c7b12da4ffc1d6ac1c')
+sha256sums=('6ee800ea6a4ca5370b5b0a43f32817603e0fbb3c1349e0443a5627765f22d8d7'
+            'd12a14460e23c5f29a2d6e599770b559f760956e5d23b61702e8a1e5710e1fd8')
 
 prepare() {
 	mv "$pkgname-$pkgver"/* . # GitHub archives are nested

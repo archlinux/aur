@@ -4,6 +4,7 @@ Description=netstate
 [Service]
 Type=exec
 ExecStart=netstate -W
+RuntimeDirectory=%t/netstate
 
 [Install]
 WantedBy=default.target
