@@ -2,7 +2,7 @@
 
 pkgname=python-fabric-git
 reponame=fabric
-pkgver=0.0.1
+pkgver=r161.ff02325
 pkgrel=1
 pkgdesc="next-gen framework for building desktop widgets using python"
 arch=(any)
@@ -28,6 +28,8 @@ depends=(
 )
 makedepends=(
     python-setuptools
+    python-installer
+    python-build
     git
 )
 optdepends=(
@@ -42,6 +44,14 @@ conflicts=(
 
 source=(git+https://github.com/Fabric-Development/$reponame.git)
 sha256sums=("SKIP")
+
+pkgver() {
+    cd "$srcdir/$reponame"
+    ( set -o pipefail
+      git describe --long --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
+}
 
 build() {
   cd "$srcdir/$reponame"
