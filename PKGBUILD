@@ -2,7 +2,7 @@
 # Contributor: Xuanwo
 pkgname=follow-bin
 _pkgname=Follow
-pkgver=0.2.5_beta.0
+pkgver=0.2.6_beta.0
 _electronversion=33
 pkgrel=1
 pkgdesc="🧡 Next generation information browser.This software is all about allowing you to follow your favorite websites, blogs, social media accounts, podcasts and notifications in one place. (Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}-linux-x64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f689c08faede22a0399f3f7f9118afa8f13173d3451fb8aec48ffc2b8186cc97'
+sha256sums=('a59345e1fe109230f059377d2ae549a69998cfa70b15930a9c5608e126539b5f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
