@@ -25,10 +25,12 @@ makedepends=(git go)
 provides=("${pkgname%-sylixos}")
 conflicts=("${pkgname%-sylixos}")
 options=(!strip staticlibs)
+_patch_url=("https://github.com/wyf9661/go")
+_commitid="7032dc39cc68056645cd260c79eec504dc0c240c"
 source=("${url}/archive/refs/tags/${pkgname%-sylixos}${pkgver}.tar.gz"
-        "go-sylixos.patch")
+        "go-sylixos.patch::${_patch_url}/commit/${_commitid}.patch")
 sha1sums=('624687f9c24f3d1ad6b8e20c39c35f792d0f83e6'
-          'd0c0f86116df8edd5fc6b89f849b2b9b63a26e8e')
+          'SKIP')
 
 prepare() {
   cd "${pkgname%-sylixos}-${pkgname%-sylixos}${pkgver}"
