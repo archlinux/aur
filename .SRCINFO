@@ -1,0 +1,17 @@
+pkgbase = pidgin-meshtastic-git
+	pkgdesc = A Meshtastic plugin for Pidgin.
+	pkgver = 16.686cec6
+	pkgrel = 1
+	url = https://github.com/dadecoza/pidgin-meshtastic
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = pidgin
+	options = !strip
+	source = git+https://github.com/dadecoza/pidgin-meshtastic.git
+	source = git+https://github.com/nanopb/nanopb.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = pidgin-meshtastic-git
