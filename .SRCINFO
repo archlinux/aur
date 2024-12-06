@@ -1,6 +1,6 @@
 pkgbase = basilisk-bin
 	pkgdesc = A XUL-based web-browser demonstrating the Unified XUL Platform (UXP).
-	pkgver = 52.9.2024.10.24
+	pkgver = 52.9.2024.11.23
 	pkgrel = 1
 	epoch = 1
 	url = https://www.basilisk-browser.org
@@ -19,21 +19,21 @@ pkgbase = basilisk-bin
 	optdepends = hunspell: spell checker and morphological analyzer
 	optdepends = hyphen: library for hyphenation and justification
 	optdepends = ffmpeg: record, convert, and stream audio and video
-	provides = basilisk=52.9.2024.10.24
+	provides = basilisk=52.9.2024.11.23
 	conflicts = basilisk
 	source = basilisk.desktop
 	sha256sums = c4223e966bc404467fece4a524cc2db3e99c12455087da2ade9a47b8d99d3a45
-	source_x86_64 = https://archive.basilisk-browser.org/2024.10.24/linux/x86_64/gtk3/basilisk-20241023020251.linux-x86_64-gtk3.tar.xz
-	source_x86_64 = https://archive.basilisk-browser.org/2024.10.24/linux/x86_64/gtk3/basilisk-20241023020251.linux-x86_64-gtk3.json
-	sha256sums_x86_64 = 429d9a71aab0db3cb1d923a2a302ca3e72574960ade815ca2fa9a58f6de7de99
-	sha256sums_x86_64 = eef976b2893a7b0342692e617a6391f3dd8f30d690c3075aeaf1b9fcf1cd76b4
-	source_aarch64 = https://archive.basilisk-browser.org/2024.10.24/linux/aarch64/gtk3/basilisk-20241023135454.linux-aarch64-gtk3.tar.xz
-	source_aarch64 = https://archive.basilisk-browser.org/2024.10.24/linux/aarch64/gtk3/basilisk-20241023135454.linux-aarch64-gtk3.json
-	sha256sums_aarch64 = 82313299cf2fa2ac385132f11ef9d34966da541a984758fcaaf36ef83f5c3957
-	sha256sums_aarch64 = 3d00e632c3af28f4cbf295cbd5710f6b0bce62bd017017bede5ee976845effa3
-	source_i686 = https://archive.basilisk-browser.org/2024.10.24/linux/i686/gtk3/basilisk-20241023020234.linux-i686-gtk3.tar.xz
-	source_i686 = https://archive.basilisk-browser.org/2024.10.24/linux/i686/gtk3/basilisk-20241023020234.linux-i686-gtk3.json
-	sha256sums_i686 = 668c17b8dc33930d2e09f793add8204be9642a1e0a39b38c90c39ad58266ccf7
-	sha256sums_i686 = 5e6834bcdbf8a317baead07f2b0b59e3ccc9ed1339c9dfd2d2c40cf60e912c49
+	source_x86_64 = https://archive.basilisk-browser.org/2024.11.23/linux/x86_64/gtk3/basilisk-20241122173308.linux-x86_64-gtk3.tar.xz
+	source_x86_64 = https://archive.basilisk-browser.org/2024.11.23/linux/x86_64/gtk3/basilisk-20241122173308.linux-x86_64-gtk3.json
+	sha256sums_x86_64 = 9d644a1a35f3fd2b5e6951727cdbdff1561ede137f3c47418f967323509901c4
+	sha256sums_x86_64 = 1ee4e3bf531f3c6428cc5c5582484b61a35118273770081c15534762d90cf24b
+	source_aarch64 = https://archive.basilisk-browser.org/2024.11.23/linux/aarch64/gtk3/basilisk-20241122173417.linux-aarch64-gtk3.tar.xz
+	source_aarch64 = https://archive.basilisk-browser.org/2024.11.23/linux/aarch64/gtk3/basilisk-20241122173417.linux-aarch64-gtk3.json
+	sha256sums_aarch64 = 22985829c65d33f65b1f4979564e0cce3e9617acaebf8b89c35f8da32bb3500c
+	sha256sums_aarch64 = b5a24d1ae38799c90db32a85341af6ac2c0ea03f0c4386259c2e6a4a746e2f7f
+	source_i686 = https://archive.basilisk-browser.org/2024.11.23/linux/i686/gtk3/basilisk-20241122173312.linux-i686-gtk3.tar.xz
+	source_i686 = https://archive.basilisk-browser.org/2024.11.23/linux/i686/gtk3/basilisk-20241122173312.linux-i686-gtk3.json
+	sha256sums_i686 = fc95864dfaf443d79462cf7a12fcf464a0ae80a96cf29da73740671110864e0d
+	sha256sums_i686 = 1ec473e78624f2780aef74ea783d61441e6a459faf3d4a59781c100f25ad6262
 
 pkgname = basilisk-bin
