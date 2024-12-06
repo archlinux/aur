@@ -1,7 +1,7 @@
 # Maintainer: Nick Dowsett <nickd42 AT gmail DOT com>
 
 pkgname=cosmic-applet-arch
-pkgver=1.0.0.beta.3
+pkgver=1.0.0.beta.5
 pkgrel=1
 pkgdesc='COSMIC applet to display Arch Linux package status'
 arch=(x86_64)
@@ -22,7 +22,7 @@ makedepends=(
   lld
 )
 source=(git+https://github.com/nick42d/cosmic-applet-arch.git#tag=${pkgname}-v${pkgver})
-b2sums=('c74b49671182692b25db3dcf9a51c5efe8275500adcd3c64f18670f8acb4f6e6666031ab8e4b4fdb5e19100b64d64ca26ab5f2bfc9ad909362130a1652bd2182')
+b2sums=('4256d3b9cd28ddd2ffa8d11c70ba98551b9c76197f5413d27079b79a1020e0f52b901cf5a84f086fe2b69be497af3e6c89e7767d0c65d2f5d2c6ee8256d0a155')
 
 prepare() {
   cd cosmic-applet-arch
