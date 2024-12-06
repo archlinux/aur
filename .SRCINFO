@@ -1,7 +1,7 @@
 pkgbase = source2viewer-bin
 	pkgdesc = Valve's Source 2 resource file format parser, decompiler, and exporter.
-	pkgver = 10.2
-	pkgrel = 4
+	pkgver = 11.0
+	pkgrel = 1
 	url = https://github.com/ValveResourceFormat/ValveResourceFormat
 	install = source2viewer-bin.install
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = source2viewer-bin
 	replaces = valveresourceformat
 	options = !strip
 	options = !debug
-	source = Decompiler-linux-x64-10.2.zip::https://github.com/ValveResourceFormat/ValveResourceFormat/releases/download/10.2/Decompiler-linux-x64.zip
-	source = Source2Viewer-10.2.exe::https://github.com/ValveResourceFormat/ValveResourceFormat/releases/download/10.2/Source2Viewer.exe
-	source = https://github.com/ValveResourceFormat/ValveResourceFormat/archive/refs/tags/10.2.tar.gz
-	sha256sums = f6782347c994783f7f8608cdf5db7d18f75c46adae0cf102bfdace58b1831186
-	sha256sums = 2df456c6e370bcc92d88e9e95c5ff31a1c49048c7abcff81e6638997107d99ff
-	sha256sums = 61fa22f19141f15ac3fb533b75db10bb93b55622af038d82cd7e8949b28e2ee0
+	source = cli-linux-x64-11.0.zip::https://github.com/ValveResourceFormat/ValveResourceFormat/releases/download/11.0/cli-linux-x64.zip
+	source = Source2Viewer-11.0.exe::https://github.com/ValveResourceFormat/ValveResourceFormat/releases/download/11.0/Source2Viewer.exe
+	source = https://github.com/ValveResourceFormat/ValveResourceFormat/archive/refs/tags/11.0.tar.gz
+	sha256sums = 231fc224ef59822deabc1d48899c385b9adff919d56b6b1bf42669dde2f77847
+	sha256sums = 44c3b791398b7f1fe9c488965dc665e410b08397fe415bccdaa592bd4df2d9cd
+	sha256sums = 47f37d12f178d73d568d2e3a58fb129f025e5237842a28e9d03989847c2d89f5
 
 pkgname = source2viewer-bin
