@@ -2,7 +2,7 @@
 
 pkgname=python-crowdin-api-client
 pkgdesc='Lightweight interface to the Crowdin API'
-pkgver=1.18.1
+pkgver=1.19.0
 pkgrel=1
 url='https://support.crowdin.com/api/v2/'
 license=('MIT')
@@ -30,7 +30,7 @@ source=(
   "$_pkgname-$pkgver.tar.gz::https://github.com/crowdin/crowdin-api-client-python/archive/refs/tags/$pkgver.tar.gz"
 )
 sha256sums=(
-  '8051bd3e435e5cd645635bf33c3f8cdad95726bef2726b985789dd5c2c9f80e8'
+  '0488046a14d6ae899e9b07c52492de2cc28938f96f9889e20976363c03741f22'
 )
 
 build() {
