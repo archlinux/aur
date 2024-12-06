@@ -2,7 +2,7 @@
 
 _pkgname=xfce4-appfinder
 pkgname=${_pkgname}-devel
-pkgver=4.19.3
+pkgver=4.19.4
 pkgrel=1
 pkgdesc="Application finder for Xfce (development release)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ rovides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 replaces=('xfce-utils')
 source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('9ea2c1c2e5630d0670c9cd47793144ee63c04a63b8b68f0397432e043cd62d27')
+sha256sums=('86e4cb953206ca2659fef9d26f0ee7992b8f4b7478d530fc93d1a78c749cbf37')
 
 build() {
   cd "${_pkgname}-${pkgver}"
