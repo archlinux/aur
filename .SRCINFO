@@ -16,6 +16,7 @@ pkgbase = bitcoin-cash-node
 	depends = openssl
 	depends = zeromq
 	depends = miniupnpc
+	depends = libnatpmp
 	provides = bitcoin-cli
 	provides = bitcoin-daemon
 	provides = bitcoin-tx
