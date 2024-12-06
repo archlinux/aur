@@ -1,0 +1,18 @@
+pkgbase = redis-pipe-bin
+	pkgdesc = Treat Redis Lists like Unix Pipes
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/lukasmartinelli/redis-pipe
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = help2man
+	depends = redis
+	provides = redis-pipe
+	conflicts = redis-pipe
+	source_x86_64 = redis-pipe-1.4.1-x86_64.tar.gz::https://github.com/lukasmartinelli/redis-pipe/releases/download/v1.4.1/redis-pipe_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4ab7c4dc2e0f5e090422127c669e4a556deb3dc55f71350695c75af81472f9d8
+	source_i686 = redis-pipe-1.4.1-i686.tar.gz::https://github.com/lukasmartinelli/redis-pipe/releases/download/v1.4.1/redis-pipe_linux_386.tar.gz
+	sha256sums_i686 = b27506d6c9946e1482d78206f2df673b3edb4b21415e1bb37a4f35a98fa57863
+
+pkgname = redis-pipe-bin
