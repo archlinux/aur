@@ -1,6 +1,6 @@
 pkgbase = ente-auth
 	pkgdesc = Open source 2FA authenticator, with end-to-end encrypted backups
-	pkgver = 4.1.1
+	pkgver = 4.1.5
 	pkgrel = 1
 	url = https://ente.io/auth
 	arch = x86_64
@@ -17,15 +17,13 @@ pkgbase = ente-auth
 	depends = libsodium
 	depends = sqlite
 	depends = webkit2gtk
-	source = git+https://github.com/ente-io/ente.git#tag=auth-v4.1.1
+	source = git+https://github.com/ente-io/ente.git#tag=auth-v4.1.5
 	source = git+https://github.com/ente-io/sentry-dart.git
 	source = git+https://github.com/flutter/flutter.git
 	source = git+https://github.com/simple-icons/simple-icons.git
-	source = git+https://github.com/abhinavkgrd/ffmpeg.wasm.git
 	source = git+https://github.com/ente-io/PhotoSwipe.git
 	source = enteauth.desktop
-	sha256sums = 1e9ee6bc3fd7d5e348bb9f592bcfab1b77a98488c5dec08f3fb7f12d95897e80
-	sha256sums = SKIP
+	sha256sums = 34c8a479221332a5cb0ead8097b36307c6647278f41791b05fcf6d5fa902c220
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
