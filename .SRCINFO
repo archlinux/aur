@@ -1,0 +1,13 @@
+pkgbase = polybar-easyeffects-presets
+	pkgdesc = Control EasyEffects from the polybar status bar
+	pkgver = 0.3.0
+	pkgrel = 2
+	url = https://github.com/marioortizmanero/polybar-polybar-easyeffects-presets
+	arch = any
+	license = custom:MIT
+	depends = bash
+	depends = easyeffects
+	source = https://github.com/marioortizmanero/polybar-polybar-easyeffects-presets/archive/v0.3.0.tar.gz
+	md5sums = b1cb7cfe51f4f723c293273df2a9e3ee
+
+pkgname = polybar-easyeffects-presets
