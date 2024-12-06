@@ -1,7 +1,7 @@
 # Maintainer: Danny Grove <aur@dannygrove.com>
 pkgname=kustomize-sops
 pkgver=4.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="KSOPS - A Flexible Kustomize Plugin for SOPS Encrypted Resources"
 url="https://github.com/viaduct-ai/$pkgname"
 license=("Apache")
@@ -26,6 +26,6 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  install -D -m 0644 -t $pkgdir/usr/share/licenses/$pkgname/LICENSE LICENSE
-  install -D -m 0755 -t $pkgdir/opt/kustomize/viaduct.ai/v1/ksops/ksops ksops
+  install -D -m 0644 -t $pkgdir/usr/share/licenses/$pkgname/ LICENSE
+  install -D -m 0755 -t $pkgdir/opt/kustomize/viaduct.ai/v1/ksops/ ksops
 }
