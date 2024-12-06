@@ -17,10 +17,16 @@ sha256sums=('1b890082edfd94ed37b1469cc1c703512643a827406b58954639030ef4f854f5')
 build() {
   cd $_pkgname-$pkgver
   python -m build --wheel --no-isolation
+  # create a temporary virtualenv for docs and tests
+  rm -rf test-env
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
 }
 check() {
   cd $_pkgname-$pkgver
-  python -m pytest tests
+  PATH="$PWD/test-env/bin:$PATH" \
+    PYTHONPATH="$(python -c "import site; print(site.getsitepackages()[0])")" \
+    python -m pytest tests
 }
 
 package() {
