@@ -2,7 +2,7 @@
 _base=py-pde
 pkgname=python-${_base}
 pkgdesc="Python package for solving partial differential equations"
-pkgver=0.42.0
+pkgver=0.42.1
 pkgrel=1
 arch=(any)
 url="https://github.com/zwicker-group/${_base}"
@@ -21,7 +21,7 @@ optdepends=('python-h5py: storing data in the hierarchical file format'
   'python-rocket-fft: Numba-compiled fast Fourier transforms'
   'python-ffmpeg-python: creating movies from matplotlib figures')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('c1d918ec151a9062f9f1f27d535c3bf97a2e3c698cfa7a152b6cdce5a9fb77bec9ddc10f5db8abb37f2953d8c3c7bb0478ad2c4eeeca2564603ed0165de11480')
+sha512sums=('2bb8248c8917bbb2aaf8fa1773fa9ac90eacd4a5cdf24733cdd82a5f7934a2e961a04ce70ca48a87eeeed356bd704b76f2096ba27d102f622037eeac5977bfe2')
 
 build() {
   cd ${_base}-${pkgver}

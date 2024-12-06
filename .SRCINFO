@@ -1,6 +1,6 @@
 pkgbase = python-py-pde
 	pkgdesc = Python package for solving partial differential equations
-	pkgver = 0.42.0
+	pkgver = 0.42.1
 	pkgrel = 1
 	url = https://github.com/zwicker-group/py-pde
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = python-py-pde
 	optdepends = python-pyfftw: Faster Fourier transforms
 	optdepends = python-rocket-fft: Numba-compiled fast Fourier transforms
 	optdepends = python-ffmpeg-python: creating movies from matplotlib figures
-	source = py-pde-0.42.0.tar.gz::https://github.com/zwicker-group/py-pde/archive/0.42.0.tar.gz
-	sha512sums = c1d918ec151a9062f9f1f27d535c3bf97a2e3c698cfa7a152b6cdce5a9fb77bec9ddc10f5db8abb37f2953d8c3c7bb0478ad2c4eeeca2564603ed0165de11480
+	source = py-pde-0.42.1.tar.gz::https://github.com/zwicker-group/py-pde/archive/0.42.1.tar.gz
+	sha512sums = 2bb8248c8917bbb2aaf8fa1773fa9ac90eacd4a5cdf24733cdd82a5f7934a2e961a04ce70ca48a87eeeed356bd704b76f2096ba27d102f622037eeac5977bfe2
 
 pkgname = python-py-pde
