@@ -1,6 +1,6 @@
 pkgbase = touchegg-nosystemd-git
 	pkgdesc = Linux multi-touch gesture recognizer (without systemd dependency; latest git checkout).
-	pkgver = 2.0.17+4.r652.20240918.5b19185
+	pkgver = 2.0.17+13.r661.20241201.8d41d09
 	pkgrel = 1
 	url = https://github.com/JoseExposito/touchegg
 	arch = i686
@@ -26,9 +26,9 @@ pkgbase = touchegg-nosystemd-git
 	depends = pugixml
 	depends = zlib
 	optdepends = touche: For a GUI to touchegg.
-	provides = touchegg=2.0.17+4.r652.20240918.5b19185
-	provides = touchegg-nosystemd=2.0.17+4.r652.20240918.5b19185
-	provides = touchegg-git=2.0.17+4.r652.20240918.5b19185
+	provides = touchegg=2.0.17+13.r661.20241201.8d41d09
+	provides = touchegg-nosystemd=2.0.17+13.r661.20241201.8d41d09
+	provides = touchegg-git=2.0.17+13.r661.20241201.8d41d09
 	conflicts = touchegg
 	source = touchegg::git+https://github.com/JoseExposito/touchegg.git
 	sha256sums = SKIP
