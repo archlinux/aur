@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=wechat
-pkgver=4.0.0.23
-pkgrel=13
+pkgver=4.0.0.30
+pkgrel=1
 epoch=
 pkgdesc="微信是一种生活方式. 可选沙盒支持."
 arch=('x86_64' 'aarch64' 'loong64')
@@ -79,33 +79,32 @@ source=(
 )
 
 source_x86_64=(
-	wechat-x86-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_amd64.deb"
+	wechat-x86-${pkgver}.deb::"https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.deb"
 )
 
 source_aarch64=(
-	wechat-arm-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb"
+	wechat-arm-${pkgver}.deb::"https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_arm64.deb"
 )
 
 source_loong64=(
-	wechat-loong64-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb"
+	wechat-loong64-${pkgver}.deb::"https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_LoongArch.deb"
 )
 
 
 md5sums=('c49cd9a8142a736a45276cac413f43f7'
          'ff710cd32cb665a70b06f6f0f83937c5'
          '468e0367346707c026e577e7bf3e3a82'
-         'f9a2272d69f90b3b5ab770f71fa4d7e6')
-md5sums_x86_64=('6a809a53a6b4033ea035bb08075d9bbc')
-md5sums_aarch64=('b008d0ff49176dc0156502627f8d7442')
-md5sums_loong64=('b008d0ff49176dc0156502627f8d7442')
+         'SKIP')
+md5sums_x86_64=('SKIP')
+md5sums_aarch64=('SKIP')
+md5sums_loong64=('SKIP')
 
 function package_wechat() {
 	conflicts=()
 	replaces+=(wechat-universal-bwrap wechat-beta-bwrap wechat-uos-bwrap)
-	tar -xf data.tar.xz ./opt/apps/com.tencent.wechat
-	mkdir -p "${pkgdir}/opt"
-	cp -r opt/apps/com.tencent.wechat \
-		"${pkgdir}/opt/wechat"
+	tar -xf data.tar.xz ./opt
+	cp -r opt \
+		"${pkgdir}/"
 	install -Dm644 portable-config \
 		"${pkgdir}/usr/lib/wechat/portable-config"
 	install -Dm644 wechat.desktop \
