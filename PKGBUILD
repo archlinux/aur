@@ -1,19 +1,24 @@
-# Maintainer: dreieck
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Kevin Brubeck Unhammer <unhammer@gmail.com>
 
 pkgname=elyxer
 pkgver=1.2.5
-pkgrel=6
+pkgrel=7
 pkgdesc="A LyX to HTML converter"
 # url="http://alexfernandez.github.io/elyxer/"
 url="https://pinchito.es/elyxer/"
 arch=('any')
 license=('GPL-3.0-or-later')
 depends=('python2')
-# source=("http://alexfernandez.github.io/elyxer/dist/${pkgname}-${pkgver}.tar.gz")
-source=("https://pinchito.es/elyxer/dist/elyxer-${pkgver}.tar.gz")
-sha512sums=('3dc8f5aac635f881c117b8bfb90627314a5c4733648f359d404c6690416538e64c575153db6a8748ca9799729249c126f4628c7fd3590085a974a2d0615ba377')
+makedepends=('python2-setuptools')
+source=(
+  "https://pinchito.es/elyxer/dist/elyxer-${pkgver}.tar.gz"
+  #"http://alexfernandez.github.io/elyxer/dist/${pkgname}-${pkgver}.tar.gz"
+)
+sha512sums=(
+  '3dc8f5aac635f881c117b8bfb90627314a5c4733648f359d404c6690416538e64c575153db6a8748ca9799729249c126f4628c7fd3590085a974a2d0615ba377'
+)
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
