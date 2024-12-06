@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=map-download-git
 _pkgname=MapDownload
-pkgver=24.9.5.418.r0.gabe25e2
+pkgver=24.12.5.587.r0.gf27cc9c
 _electronversion=16
 _nodeversion=16
 pkgrel=1
@@ -23,7 +23,6 @@ makedepends=(
     'curl'
     'git'
     'gcc'
-    'cmake'
 )
 source=(
     "${pkgname%-git}.git::git+${url}.git"
@@ -45,11 +44,11 @@ _ensure_local_nvm() {
 }
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-git}/
-        s/@runname@/app/
-        s/@cfgdirname@/${pkgname%-git}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-git}/g
+        s/@runname@/app/g
+        s/@cfgdirname@/${pkgname%-git}/g
+        s/@options@//g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
@@ -66,7 +65,6 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
@@ -75,7 +73,7 @@ build() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run precompile
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config .electron-builder.config.js --dir --config.asar=false"
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config .electron-builder.config.js --config.asar=false"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
