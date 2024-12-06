@@ -9,12 +9,12 @@ _pkgname=flashrom
 pkgname=${_pkgname}-starlabs
 pkgver=1.3.0
 _commit=fb14ceb302ac06bb07b75de354fc4bc82731f6be
-pkgrel=1
+pkgrel=2
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 pkgdesc="Utility for reading, writing, erasing and verifying flash ROM chips (StarLabs version)"
 arch=(x86_64)
-url="https://www.flashrom.org/"
+url='https://github.com/StarLabsLtd/flashrom'
 license=(GPL-2.0-or-later)
 depends=(
   libftdi
@@ -28,7 +28,7 @@ makedepends=(
   python-sphinx
 )
 optdepends=('dmidecode: for SMBIOS/DMI table decoder support')
-source=("${pkgname}::git+https://github.com/StarLabsLtd/flashrom.git#commit=${_commit}")
+source=("${pkgname}::git+${url}.git#commit=${_commit}")
 sha256sums=('3143d604c86e683e9a04222b3d2eb428c397210297e386c279be32896be55b5e')
 
 build() {
