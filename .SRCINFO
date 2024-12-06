@@ -1,13 +1,13 @@
 pkgbase = cinnamon-6.2-theme
 	pkgdesc = This theme preserves the default theme from Cinnamon 6.2 for the Cinnamon desktop
 	pkgver = 1.0
-	pkgrel = 1
-	url = https://github.com/username227/Cinnamon-6.2-theme
+	pkgrel = 2
+	url = https://github.com/username227/Cinnamon-6.2-theme#tag=1.0
 	arch = x86_64
 	license = GPL2.0
 	makedepends = git
 	depends = cinnamon
-	source = Cinnamon-6.2::git+https://github.com/username227/Cinnamon-6.2-theme
-	sha256sums = SKIP
+	source = Cinnamon-6.2::git+https://github.com/username227/Cinnamon-6.2-theme#tag=1.0
+	sha256sums = 6ed17b1d36d837b8121eda63f5d7e48b3fc0e63ce9c7e5e065dc4205ef47f5a6
 
 pkgname = cinnamon-6.2-theme
