@@ -1,0 +1,25 @@
+pkgbase = 115-browser-bin
+	pkgdesc = 115 Browser / 115 浏览器
+	pkgver = 27.0.7.5
+	pkgrel = 1
+	url = https://115.com/product_browser
+	arch = x86_64
+	license = Commercial
+	makedepends = libarchive
+	depends = dbus
+	depends = expat
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = libidn2
+	depends = sh
+	depends = zlib
+	provides = 115-browser
+	conflicts = 115-browser
+	noextract = 115-browser-bin-27.0.7.5.deb
+	options = !strip
+	options = !debug
+	source_x86_64 = 115-browser-bin-27.0.7.5.deb::https://down.115.com/client/115pc/lin/115br_v27.0.7.5.deb
+	sha256sums_x86_64 = 5839cde63c90fd1b598d17992cadc481aa5f53bff86ea322a47c3987426b3c2d
+
+pkgname = 115-browser-bin
