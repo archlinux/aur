@@ -2,11 +2,11 @@
 
 pkgname=bitcoin-cash-node-qt
 pkgver=28.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Cash Node with bitcoind, bitcoin-cli, bitcoin-tx, bitcoin-seeder and bitcoin-qt"
 arch=('i686' 'x86_64')
 url="https://bitcoincashnode.org"
-depends=('boost-libs' 'libevent' 'desktop-file-utils' 'qt5-base' 'protobuf' 'openssl' 'miniupnpc' 'zeromq' 'qrencode' )
+depends=('boost-libs' 'libevent' 'desktop-file-utils' 'qt5-base' 'protobuf' 'openssl' 'miniupnpc' 'zeromq' 'qrencode' 'libnatpmp' )
 makedepends=('cmake' 'ninja' 'boost' 'qt5-tools' 'help2man' )
 license=('MIT')
 source=(https://github.com/bitcoin-cash-node/bitcoin-cash-node/archive/v$pkgver.tar.gz

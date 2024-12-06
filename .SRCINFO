@@ -1,7 +1,7 @@
 pkgbase = bitcoin-cash-node-qt
 	pkgdesc = Bitcoin Cash Node with bitcoind, bitcoin-cli, bitcoin-tx, bitcoin-seeder and bitcoin-qt
 	pkgver = 28.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitcoincashnode.org
 	install = bitcoin.install
 	arch = i686
@@ -21,6 +21,7 @@ pkgbase = bitcoin-cash-node-qt
 	depends = miniupnpc
 	depends = zeromq
 	depends = qrencode
+	depends = libnatpmp
 	provides = bitcoin-cli
 	provides = bitcoin-daemon
 	provides = bitcoin-tx
