@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=shenfun
 pkgname=python-${_base}
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="High performance computational platform in Python for the spectral Galerkin method"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(python-mpi4py-fft python-scipy)
 makedepends=(python-build python-installer python-setuptools python-wheel cython)
 # checkdepends=(python-pytest python-yaml python-sympy python-numba)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('156a01561ea68d89fffce000fb75ba40192a1f4f75087adf0ff34402865abd66d7c1d0b76908c69d29a2bde1ff725f7f71cd3fea23c1183a11d46058f09ba01b')
+sha512sums=('e06287794dec34feb9306b74edd31c9a9f59f5bcf3376b9d30476afb74e92a5d31fc9602f72fbb93ae094eaf953319ba856fcccd6d1b14d98af3b1ff8f02d7f1')
 
 build() {
   cd ${_base}-${pkgver}
