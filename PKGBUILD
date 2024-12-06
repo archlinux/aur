@@ -1,35 +1,41 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=wchisp-git
-pkgver=0.2.2.r27.g87ebd0b
+pkgver=0.3.0.r11.gc47962d
 pkgrel=1
 pkgdesc="WCH ISP Tool in Rust"
 arch=(x86_64
     aarch64
     riscv64)
 url="https://github.com/ch32-rs/wchisp"
-license=('GPL-2.0')
+license=('GPL-2.0-only')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=(cargo)
-makedepends=(git
+depends=(
+    gcc-libs
+    glibc
     libusb
+    systemd-libs)
+makedepends=(
+    cargo
+    git
     rust)
 backup=()
-options=('!strip' '!lto')
+options=('!lto')
 install=
 source=("${pkgname}::git+$url.git")
 sha256sums=('SKIP')
 
 prepare() {
+    git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}/"
     git tag --delete nightly
 }
 
 pkgver() {
     cd "${srcdir}/${pkgname}/"
-    git describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^[vV]//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -38,9 +44,9 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${pkgname}/"
-  # Tests need nightly features
-  RUSTC_BOOTSTRAP=1 cargo test --release
+    cd "${srcdir}/${pkgname}/"
+    # Tests need nightly features
+    RUSTC_BOOTSTRAP=1 cargo test --release
 }
 
 package() {
