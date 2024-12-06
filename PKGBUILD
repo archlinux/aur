@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034
 
 pkgname=vinegar
-pkgver=1.7.7
+pkgver=1.7.8
 pkgrel=1
 pkgdesc="Fast and robust bootstrapper for Roblox that has many ease-of-use features."
 arch=("x86_64")
@@ -16,7 +16,7 @@ optdepends=("gamemode: Gamemode integration"
             "wine: A required dependency (made optional for flexbility)")
 conflicts=("vinegar-git")
 source=("https://github.com/vinegarhq/vinegar/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.xz")
-sha256sums=("6bdfd0649916975368094f8fd657d3ebfc9a328e4e5c5299d233e2fab72ba5d5")
+sha256sums=("cf00e191bd7b4713f062a30f2587be81cd87e0ceb52ad1b4cf144474c30ba23f")
 
 prepare() {
   cd "${pkgname}-v${pkgver}"
