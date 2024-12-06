@@ -1,6 +1,6 @@
 pkgbase = principia-git
 	pkgdesc = Physics-based sandbox building game.
-	pkgver = r276.40bb72e7
+	pkgver = r399.7085fbab
 	pkgrel = 1
 	url = https://github.com/Bithack/principia/
 	arch = x86_64
@@ -16,6 +16,9 @@ pkgbase = principia-git
 	depends = libjpeg
 	depends = freetype2
 	depends = sdl2
+	provides = principia
+	conflicts = principia
+	options = !lto
 	source = git+https://github.com/Bithack/principia
 	sha256sums = SKIP
 
