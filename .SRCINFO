@@ -1,0 +1,15 @@
+pkgbase = catppuccin-obs-theme-git
+	pkgdesc = Soothing pastel theme for OBS Studio
+	pkgver = r21.d90002a
+	pkgrel = 1
+	url = https://github.com/catppuccin/obs
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = obs-studio
+	provides = catppuccin-obs-theme
+	conflicts = catppuccin-obs-theme
+	source = catppuccin-obs-theme-git::git+https://github.com/catppuccin/obs
+	sha256sums = SKIP
+
+pkgname = catppuccin-obs-theme-git
