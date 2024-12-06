@@ -1,0 +1,14 @@
+pkgbase = stack-wallet-appimage
+	pkgdesc = Stack Wallet is a fully open source cryptocurrency wallet.
+	pkgver = 2.1.9
+	pkgrel = 1
+	url = https://stackwallet.com/
+	arch = x86_64
+	depends = fuse2
+	provides = stack-wallet
+	conflicts = stack-wallet
+	options = !strip
+	source = https://github.com/cypherstack/stack_wallet/releases/download/build_256/sw-v2.1.9.AppImage
+	sha512sums = 7f38f6c07b3d08948504fec508e060f576ec321f90b5c47ccdf4b47230f5cd647cc6a39bcb433f8472b9bac3f494312311277aac37286036d7e2cc692c9460d0
+
+pkgname = stack-wallet-appimage
