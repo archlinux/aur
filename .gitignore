@@ -1,0 +1,6 @@
+Python-3.14*.tar.xz
+Python-3.14*.tar.xz.sigstore
+src/
+pkg/
+python314-freethreaded-*.pkg*
+*.log
