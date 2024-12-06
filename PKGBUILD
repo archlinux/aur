@@ -2,7 +2,7 @@
 
 pkgname=slack-desktop-wayland
 _original_pkgname=slack-desktop
-pkgver=4.40.128
+pkgver=4.41.98
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux with Wayland Support"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
     "${_original_pkgname}.patch"
 )
 noextract=("${_original_pkgname}-${pkgver}-amd64.deb")
-b2sums=('5fb6a8889ff5246e11a837849e87c4cbf711642650864d340ebc3dc70abc622489913a5e5a2258475c13d10c5bdcf49d6dcfbde8868bd88e7880b4e44591e109'
+b2sums=('2373a5301d45902ee08c26238715671fa5ca60e1c9b3de2e45ad5e2978369948d5cd3931182086da40d457d380ced48c0423dc2f0e12d2782d8ede493f8eba61'
         'e257ce4fce28ea970b1dedef1c5cacac53c630ca1ace16de4efa1edf024b022f20532fce7b0a95565420a33c85b40e4636e3b2d78251a8a67a1bae29bd7011df')
 provides=('slack-desktop')
 conflicts=('slack-desktop' 'slack-electron')
