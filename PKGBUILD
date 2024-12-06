@@ -2,7 +2,7 @@
 _pkgname=ValveResourceFormat
 pkgname=source2viewer
 pkgver=11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
@@ -82,6 +82,7 @@ EOF
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
 	<mime-type type="application/x-source2viewer-vpk">
 		<comment>Valve Pack File</comment>
+		<icon name="source2viewer"/>
 		<acronym>VPK</acronym>
 		<expanded-acronym>Valve Pack File</expanded-acronym>
 		<global-deleteall/>
