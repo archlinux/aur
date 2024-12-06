@@ -5,7 +5,7 @@ pkgname=(
   antora-cli
   antora-site-generator
 )
-pkgver=3.1.9
+pkgver=3.1.10
 pkgrel=1
 pkgdesc="A modular documentation site generator"
 arch=(any)
@@ -22,17 +22,17 @@ noextract=(
   "site-generator-$pkgver.tgz"
 )
 sha256sums=(
-  '733372f9dde053ce9e177bb0c04bd39accc575d923f0d8934a11606f17757c80'
-  'dbfc20be3a8eb5ffbfa5de55b5d51c90b7d7952c8394f21d5856180b6a3b9069'
+  'ff712666713743b7a0ef53aa4fa605ed093963840d7a7cd214b37c585ba68a15'
+  '3f7d4adf33448a1e5b26c9c81796ce3f70f25e5ea5c12f044c22e6876b6a9c3b'
 )
 
 _package() {
-  _file="$1"
+  local file="$1"
 
   npm install --global \
     --cache "$srcdir/npm-cache" \
     --prefix "$pkgdir/usr" \
-    "$srcdir/$_file"
+    "$srcdir/$file"
 
   # npm gives ownership of ALL FILES to build user
   # https://bugs.archlinux.org/task/63396
