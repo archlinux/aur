@@ -1,10 +1,11 @@
-# Maintainer: drakkan <nicola.murino at gmail dot com>
+# Maintainer: CloverGit <clovergit@hotmail.com>
+# Contributor: drakkan <nicola.murino at gmail dot com>
 # Contributor: Filip Brcic <brcha@gna.org>
 # Contributor: ant32 <antreimer@gmail.com>
 
 pkgname=mingw-w64-termcap
 pkgver=1.3.1
-pkgrel=9
+pkgrel=10
 arch=(any)
 pkgdesc="Terminal feature database (mingw-w64)"
 depends=(mingw-w64-crt)
@@ -33,7 +34,7 @@ build() {
 	for _arch in ${_architectures}; do
 		mkdir -p build-${_arch} && pushd build-${_arch}
 		${_arch}-configure
-		make
+		make CFLAGS+=-std=c17
 		# Build a shared library.  No need for -fPIC on Windows.
 		${_arch}-gcc -shared \
 			-Wl,--out-implib,libtermcap.dll.a \
