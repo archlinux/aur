@@ -1,58 +1,122 @@
-# Maintainter: Lu Xu <oliver_lew at outlook dot com>
+# Maintainer: Freddy Potargent <fpotargent at gmail dot com>
+# Contributor: Lu Xu <oliver_lew at outlook dot com>
 
 pkgbase=reduce
 pkgname=(reduce-common reduce-csl reduce-psl reduce-addons)
-pkgver=6339
+pkgdesc="A Portable General-Purpose Computer Algebra System"
+pkgver=6860
 pkgrel=1
 arch=('x86_64')
 url="https://reduce-algebra.sourceforge.io/"
 license=('BSD')
-depends=('ncurses' 'libxrandr' 'libxft' 'freetype2' 'expat' 'libxcursor')
-source_urlbase="https://master.dl.sourceforge.net/project/reduce-algebra/snapshot_2022-06-17/linux64"
-source=("$source_urlbase/reduce-common_${pkgver}_all.tgz"
-        "$source_urlbase/reduce-csl_${pkgver}_amd64.tgz"
-        "$source_urlbase/reduce-psl_${pkgver}_amd64.tgz"
-        "$source_urlbase/reduce-addons_${pkgver}_amd64.tgz")
-md5sums=('62a149738bf686fe95dfea01a85db473'
-         'd120ef3439345b81451fac9aaf313914'
-         '5b91954a19c91c4327c3ceaac1581cba'
-         'e9241bc1c0fd49396e914a637a951b6b')
-sha1sums=('494ab79032558069ad1360ab83d796b95019e9b3'
-          '22a0afcc43e5c95f550cbc2da0021214b22ec918'
-          'd412b38e12984dd9580e4e9183a48f7ec7ed7e29'
-          'ab4326cca91964d0db6e3e2da928a16907785d38')
-noextract=("${source[@]##*/}")
+depends=('bash'
+         'fontconfig'
+         'gcc-libs'
+         'glibc'
+         'libx11'
+         'libxcursor'
+         'libxext'
+         'libxft'
+         'libxrandr'
+         'ncurses'
+         'zlib')
+makedepends=('ccache'
+             'rsync'
+             'texlive-latex'
+             'texlive-latexextra'
+             'texlive-fontsrecommended'
+             'texlive-plaingeneric')
+
+_source_urlbase="https://master.dl.sourceforge.net/project/reduce-algebra/snapshot_2024-08-12"
+source=("${_source_urlbase}/Reduce-svn6860-src.tar.gz"
+        "fixes.patch"
+        "build.patch")
+sha256sums=('bf084f096839c1ed06207d56ae8e84d1097dce9f3a95d84adb26c9465a92718d'
+            '6ccd5933b5f45312b05f41fb62d23d6f650b61a86f037425bda5e658dd1b1e16'
+            'ff030116fd991213c951f9171e226d4b5ef3b0958077592ad77d61f02ee48ffd')
+
+MAKEFLAGS+=" -j1 --no-keep-going"
+CFLAGS+=" -Wno-error=format-security"
+CXXFLAGS+=" -Wno-error=format-security"
+
+prepare() {
+    patch -p0 <fixes.patch
+    patch -p0 <build.patch
+}
+
+build() {
+    local BUILDTOPDIR="$(readlink -m $srcdir)/Reduce-svn${pkgver}-src"
+    local INSTALLDIR="$(readlink -m $srcdir)/tmp"
+    local DEBIANDIR="${BUILDTOPDIR}/debianbuild/reduce"
+
+    rm -rf "$INSTALLDIR"
+    mkdir -p "$INSTALLDIR"
+
+    # cd "$DEBIANDIR"
+    # make -f debian/rules BUILDTOPDIR="${BUILDTOPDIR}" configure
+    # make -f debian/rules BUILDTOPDIR="${BUILDTOPDIR}" build
+    ################
+    cd "$BUILDTOPDIR"
+    configure --prefix=/usr --with-csl --with-psl
+    touch "${DEBIANDIR}/configure-stamp"
+    make -j
+    touch "${DEBIANDIR}/build-stamp"
+
+    (cd doc/misc; make)
+    (cd doc/manual; make)
+    ################
+    cd "$DEBIANDIR"
+    make -f debian/rules BUILDTOPDIR="${BUILDTOPDIR}" INSTALLDIR="${INSTALLDIR}" install
+
+    gzip "${BUILDTOPDIR}/debianbuild/reduce/debian/changelog"
+    for d in reduce-common reduce-csl reduce-psl reduce-addons; do
+        local _srcdir="${BUILDTOPDIR}/debianbuild/reduce/debian"
+        local _tgtdir="${INSTALLDIR}/usr/share/doc/$d"
+        mkdir -p "$_tgtdir"
+        cp "${_srcdir}/changelog.gz" "${_srcdir}/copyright" "$_tgtdir"
+    done
+
+    gzip ${INSTALLDIR}/usr/share/doc/reduce/*.{tex,txt,pdf}
+    gzip ${INSTALLDIR}/usr/share/doc/reduce-addons/breduce.{tex,pdf}
+}
+
+_package_filelist() {
+    local file="$srcdir/Reduce-svn${pkgver}-src/debianbuild/reduce/debian/$1"
+
+    tar -c -C "$srcdir/tmp" --files-from="$file" | tar -x -C "$pkgdir"
+}
 
 package_reduce-common() {
-    provides=('reduce-common')
-    conflicts=('reduce-common')
     pkgdesc="A Portable General-Purpose Computer Algebra System -- common files"
+    arch=('any')
+    depends=('bash')
 
-    tar zxf reduce-common_${pkgver}_all.tgz -C $pkgdir
+    _package_filelist reduce-common.install
 }
 
 package_reduce-csl() {
-    depends=('reduce-common')
-    provides=('reduce-csl')
-    conflicts=('reduce-csl')
     pkgdesc="A Portable General-Purpose Computer Algebra System -- CSL based"
+    provides=('reduce')
+    depends+=('reduce-common')
+    optdepends=('gnuplot: for plotting graphs')
 
-    tar zxf reduce-csl_${pkgver}_amd64.tgz -C $pkgdir
+    _package_filelist reduce-csl.install
 }
 
 package_reduce-psl() {
-    depends=('reduce-common')
-    provides=('reduce-psl')
-    conflicts=('reduce-psl')
     pkgdesc="A Portable General-Purpose Computer Algebra System -- PSL based"
+    provides=('reduce')
+    depends=('bash' 'glibc')
+    depends+=('reduce-common')
+    optdepends=('gnuplot: for plotting graphs')
 
-    tar zxf reduce-psl_${pkgver}_amd64.tgz -C $pkgdir
+    _package_filelist reduce-psl.install
 }
 
 package_reduce-addons() {
-    provides=('reduce-addons')
-    conflicts=('reduce-addons')
     pkgdesc="A Portable General-Purpose Computer Algebra System -- addons"
+    depends=('bash' 'glibc' 'ncurses')
+    depends+=('reduce')
 
-    tar zxf reduce-addons_${pkgver}_amd64.tgz -C $pkgdir
+    _package_filelist reduce-addons.install
 }
