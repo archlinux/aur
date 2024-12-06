@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=source2viewer-git
-pkgver=10.2.r51.g2ba33e3
+pkgver=11.0.r3.gfacd407
 pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
@@ -40,7 +40,8 @@ build() {
 	--icon="${pkgname::-4}" \
 	--terminal=false \
 	--categories="Development;Utility;Wine" \
-	--custom="PrefersNonDefaultGPU=true"
+	--custom="PrefersNonDefaultGPU=true" \
+	--mimetypes="application/x-source2viewer-vpk"
 }
 
 package() {
@@ -78,4 +79,20 @@ EOF
 
 	install -Dm644 "$srcdir/$pkgname/Misc/Icons/source2viewer.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${pkgname::-4}.png"
 	install -Dm644 "$srcdir/${pkgname::-4}.desktop" "$pkgdir/usr/share/applications/${pkgname::-4}.desktop"
+
+	install -dm755 "$pkgdir/usr/share/mime/packages"
+	cat >> "$pkgdir/usr/share/mime/packages/${pkgname}.xml" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+	<mime-type type="application/x-source2viewer-vpk">
+		<comment>Valve Pack File</comment>
+		<icon name="source2viewer"/>
+		<acronym>VPK</acronym>
+		<expanded-acronym>Valve Pack File</expanded-acronym>
+		<global-deleteall/>
+		<glob pattern="*.vpk"/>
+		<glob pattern="*.VPK"/>
+	</mime-type>
+</mime-info>
+EOF
 }
