@@ -7,9 +7,10 @@
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.4.1
+pkgver=4.4.2
 secp256k1ver=0.20.9
-pkgrel=4
+electrum_locale_commit=89ce57ff1fa0fbd0135888014c854c142753a166
+pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -62,22 +63,17 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz"
         "secp256k1-${secp256k1ver}.tar.gz::https://github.com/Electron-Cash/secp256k1/archive/v${secp256k1ver}.tar.gz"
-        "fix-compilation.patch"
-        "make_locale.patch"
-        "fix-fusion.patch")
-sha256sums=('2b4c0576c3bde1e863c4b0647e78987102f45c9fe36cc65387fcececb955e4b5'
+        "electrum-locale-${electrum_locale_commit}.tar.gz::https://github.com/Electron-Cash/electrum-locale/archive/${electrum_locale_commit}.tar.gz")
+sha256sums=('7b89b99dca0c374eb5e6e210c71bb645d5e951ddebaf495bbb4537f18b5edc20'
             '68e84775e57da77e19ccb6b0dde6ca0882377bdd48ecc6da0047a70201ec64c8'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+            'd232f958cc3c048f8dd3d17333be0cf7ee6f0d5776300bff1da55f2397544c09')
 
 prepare() {
   rmdir "Electron-Cash-${pkgver}/contrib/secp256k1"
+  rmdir "Electron-Cash-${pkgver}/contrib/electrum-locale"
   ln -s "${PWD}/secp256k1-${secp256k1ver}" "Electron-Cash-${pkgver}/contrib/secp256k1"
+  ln -s "${PWD}/electrum-locale-${electrum_locale_commit}" "Electron-Cash-${pkgver}/contrib/electrum-locale"
 
-  patch -Np1 -d "Electron-Cash-${pkgver}" < fix-compilation.patch
-  patch -Np1 -d "Electron-Cash-${pkgver}" < make_locale.patch
-  patch -Np1 -d "Electron-Cash-${pkgver}" < fix-fusion.patch
   sed -i 's/py\.test/pytest/'  "Electron-Cash-${pkgver}/tox.ini"
 }
 
