@@ -21,6 +21,7 @@ makedepends=(
     'git'
     'curl'
     'pnpm'
+    'gendesk'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"

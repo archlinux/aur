@@ -10,6 +10,7 @@ pkgbase = houdoku-git
 	makedepends = git
 	makedepends = curl
 	makedepends = pnpm
+	makedepends = gendesk
 	depends = electron32
 	provides = houdoku=2.15.0
 	conflicts = houdoku
