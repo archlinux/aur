@@ -1,0 +1,14 @@
+post_install() {
+  msg
+}
+
+post_upgrade() {
+  msg
+}
+
+msg() {
+  echo ""
+  echo "This package has installed the plugin to /opt/kustomize. Please add this to you shrellrc and any addional plugins there"
+  echo ""
+  echo "export KUSTOMIZE_PLUGIN_PATH=/opt/kustomize/"
+}
