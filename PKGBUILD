@@ -4,7 +4,7 @@ _disname=yakit
 major_version=1
 minor_version=3
 patch_version=7
-sp_version='1122'
+sp_version='1206'
 flag="ce"
 
 pkgname="${_pkgname}"-appimage
@@ -19,7 +19,7 @@ depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('yakit')
 
 source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}-${sp_version}-linux-amd64.AppImage::https://github.com/yaklang/yakit/releases/download/v${major_version}.${minor_version}.${patch_version}-${sp_version}-${flag}/${_Pkgname}-${major_version}.${minor_version}.${patch_version}-${sp_version}-linux-amd64.AppImage")
-sha256sums_x86_64=("fd7badb52007e56bef5020de9fe1d053c0933ddfcb18978ba78f4d3d6635fedd")
+sha256sums_x86_64=("607f90b44bce4e0bf2cd93264c341ce8f9e49ec71c51250fa462569ceda60ab2")
 
 _appimage="${_Pkgname}-${major_version}.${minor_version}.${patch_version}-${sp_version}-linux-amd64.AppImage"
 noextract=("${_appimage}")
