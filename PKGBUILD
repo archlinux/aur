@@ -2,9 +2,10 @@
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Kevin Brubeck Unhammer <unhammer@gmail.com>
 
-pkgname=elyxer
+_pkgname=elyxer
+pkgname="${_pkgname}"
 pkgver=1.2.5
-pkgrel=7
+pkgrel=8
 pkgdesc="A LyX to HTML converter"
 # url="http://alexfernandez.github.io/elyxer/"
 url="https://pinchito.es/elyxer/"
@@ -33,6 +34,9 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"      README.md
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  LICENSE gpl-3.0-standalone.html
 }
 
 # vim:set ts=2 sw=2 et:
