@@ -1,6 +1,6 @@
 pkgbase = python-phiflow
 	pkgdesc = Differentiable PDE solving framework for machine learning
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/tum-pbs/PhiFlow
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-phiflow
 	makedepends = python-wheel
 	depends = python-phiml
 	depends = python-matplotlib
-	source = PhiFlow-3.1.0.tar.gz::https://github.com/tum-pbs/PhiFlow/archive/3.1.0.tar.gz
-	sha512sums = 93599b81d45794d3294f2a432a6659ece257662009132bb9e9aee3d3cfb97e34ed3b78959f8c991177d4f72db82afa80df23352c852c9b87fe874e2fdbd390ff
+	source = PhiFlow-3.2.0.tar.gz::https://github.com/tum-pbs/PhiFlow/archive/3.2.0.tar.gz
+	sha512sums = 094e6bd2c72271437d2a14ebab4019f375322039446387da6fb0a81dac82760642d56ed86bf4e35c5061fa810841423b986b67045af9c1afa5c298f4cb51c16b
 
 pkgname = python-phiflow
