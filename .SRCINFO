@@ -1,0 +1,31 @@
+pkgbase = pimpmyrice-git
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/daddodev/pimpmyrice
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = git
+	depends = python>=3.10
+	depends = python-setuptools
+	depends = python-requests
+	depends = python-psutil
+	depends = python-docopt
+	depends = python-rich
+	depends = python-jinja
+	depends = python-pyyaml
+	depends = python-scikit-learn
+	depends = python-opencv
+	depends = python-typing_extensions
+	depends = python-pydantic
+	depends = python-pydantic-extra-types
+	provides = pimpmyrice-git
+	conflicts = pimpmyrice-git
+	conflicts = pimpmyrice
+	source = pimpmyrice-git-0.2.1.tar.gz::https://pypi.python.org/packages/source/p//-0.2.1.tar.gz
+	md5sums = SKIP
+
+pkgname = pimpmyrice-git
