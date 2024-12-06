@@ -2,9 +2,9 @@
 pkgname=serialportassistant-bin
 _pkgname=SerialPortAssistant
 _appname="org.Rabbit.${_pkgname}"
-pkgver=0.5.26
-pkgrel=2
-pkgdesc="A cross-platform serial port assistant.Prebuilt version.一个跨平台的串口助手"
+pkgver=0.5.27
+pkgrel=1
+pkgdesc="A cross-platform serial port assistant.(Prebuilt version)一个跨平台的串口助手"
 arch=("x86_64")
 url="https://github.com/KangLin/SerialPortAssistant"
 license=('GPL-3.0-only')
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('488b1af7d59271abad394d1a9859ed3205b4eebe0baa0b3d03f999df41d0cd40'
+sha256sums=('050f492b078eab5cfe1f9e933a251c5dde1da8503dd6d0f492ee7bb518f44260'
             'dd8425fd4598a06eb0a40d68f80af03f2e96d9cfaad8b8cc4a8171588ec1a01d')
 build() {
     sed -e "
