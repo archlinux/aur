@@ -3,9 +3,8 @@
 # Based on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 
 _pkgname=mudita-center
-
 pkgname="${_pkgname}"-appimage
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Mudita Center Electron App. Expand and update the features of Mudita Pure, while using your computer."
 arch=('x86_64')
@@ -14,9 +13,9 @@ license=('GPL-3.0-or-later')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://github.com/mudita/mudita-center/releases/download/${pkgver}/Mudita-Center.AppImage")
+source=("${_appimage}::https://github.com/mudita/mudita-center/releases/download/${pkgver}/Mudita-Center.AppImage")
 noextract=("${_appimage}")
-sha512sums_x86_64=('094d3a0a5b191011e08decdc2633a23fdfbb1ee5b5e7d05a3221dde6a2c69757158bd335725ca5817fdab0c894565daa4a791311e9765ba9e7911a1edc342e40')
+sha512sums=('0f7a349d827b5057ef4a4f46e8e2a63d50754b47871d7ad13dde6e7c4e4c6c5109d85c056d3e61d46ee103525a8e8da23f2a5fd301837f7bdef6a0f13aa52f57')
 prepare() {
     chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract
