@@ -5,25 +5,25 @@
 # Contributor: Benjamin Dirks <asaru[at]wtnet[dot]de>
 
 pkgname=worldofpadman
-pkgver=1.6.2
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Cartoon-style multiplayer first-person shooter"
 arch=('x86_64')
 url="https://worldofpadman.net/en/"
 license=('GPL' 'custom')
 depends=('curl' 'libogg' 'libvorbis' 'mesa' 'openal' 'sdl')
 makedepends=('unzip')
-source=('wop-162-full-unified.zip::https://www.moddb.com/downloads/mirror/224119/130/60cb38913665ad2c5d2f79ee3fdb2fd5'
+source=("wop-${pkgver}-full-unified.zip::https://fmt4.dl.dbolical.com/dl/2024/12/02/wop-1.7.0-unified.zip?st=Sw7pv9_J5_DlVXh3TapD2w==&e=1733521760"
         'worldofpadman.desktop')
 
 _gamedir="/usr/share/$pkgname"
 
 package() {
-	cd "$srcdir/worldofpadman-1-6-2"
+# 	cd "$srcdir/worldofpadman-1-7-0"
 
 	## Binaries
-	install -D -m755 wop-linux.x86_64 "$pkgdir/$_gamedir/wop.bin"
-	install -D -m755 wopded-linux.x86_64 "$pkgdir/$_gamedir/wopded.bin"
+	install -D -m755 wop.x86_64 "$pkgdir/$_gamedir/wop.bin"
+	install -D -m755 wopded.x86_64 "$pkgdir/$_gamedir/wopded.bin"
 	install -D -m755 renderer_opengl2_x86_64.so "$pkgdir/$_gamedir/renderer_opengl2_x86_64.so"
 	install -D -m755 renderer_opengl1_x86_64.so "$pkgdir/$_gamedir/renderer_opengl1_x86_64.so"
 
@@ -45,5 +45,5 @@ EOF
 	install -D -m755 "$srcdir/worldofpadman.desktop" "$pkgdir/usr/share/applications/worldofpadman.desktop"
 }
 
-sha256sums=('526d5936225b37fa8a5b94a7c02dc600126d1f2fb1155fd0e372c36075344335'
+sha256sums=('2eb94c0d98dadc70ce0f2e87780280cdbffd4a838b267f523835dc91bed30714'
             '8d99702ee5255f5ea253aaf12d78f5056e0814bcc727ba2350021fb81fbad60b')
