@@ -1,8 +1,8 @@
 # Maintainer: w0rty <mawo97 at gmail.com>
 
 pkgname=bananas-appimage
-pkgver=0.0.16 # renovate: datasource=github-releases depName=mistweaverco/bananas
-pkgrel=2
+pkgver=0.0.17 # renovate: datasource=github-releases depName=mistweaverco/bananas
+pkgrel=1
 pkgdesc="cross-platform, p2p screen sharing made simple"
 arch=('x86_64')
 url="https://github.com/mistweaverco/bananas"
@@ -14,7 +14,7 @@ source=(
   "${url}/raw/v${pkgver}/LICENSE"
   )
 
-sha256sums=('4530903fb728449894b32fa4e45959ce203039a3ea8ddcd1f131995dc13f51e0'
+sha256sums=('3019f345825eccc89b75d718e96c4c93bd1c64898203acf93b55c75ee64d99e1'
             '5ba8d10757c4ce9b880422e3746897d89b27647febd1f70ab5021f9ac10ade95')
 
 _filename="bananas_x86_64.AppImage"
@@ -25,7 +25,8 @@ _install_path="/opt/appimages/${_appimage_name}"
 
 package() {
     chmod +x "${_filename}"
-    ./${_filename} --appimage-extract "usr/share/icons/hicolor/*/apps/bananas.png" > /dev/null 2>&1
+    mkdir -p squashfs-root/usr/share/icons/hicolor/{64x64,32x32}/apps
+    ./${_filename} --appimage-extract "usr/share/icons/hicolor/*/apps/.png" > /dev/null 2>&1
     ./${_filename} --appimage-extract bananas.desktop > /dev/null 2>&1
     sed -i -E "s|Exec=AppRun|Exec=${_install_path}|" "squashfs-root/${_squashfs_desktop_file}"
     sed -i -E "s|Icon=bananas|Icon=bananas|" "squashfs-root/${_squashfs_desktop_file}"
