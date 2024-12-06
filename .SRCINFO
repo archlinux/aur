@@ -1,6 +1,6 @@
 pkgbase = python-ray
 	pkgdesc = A fast and simple framework for building and running distributed applications
-	pkgver = 2.39.0
+	pkgver = 2.40.0
 	pkgrel = 1
 	url = https://github.com/ray-project/ray
 	arch = x86_64
@@ -47,7 +47,7 @@ pkgbase = python-ray
 	optdepends = python-typer: for ray[rllib]
 	optdepends = python-rich: for ray[rllib]
 	conflicts = mesa-demos
-	source = ray-ray-2.39.0.tar.gz::https://github.com/ray-project/ray/archive/ray-2.39.0.tar.gz
-	sha512sums = e8b2c8a0333414569e2d2bc64c52b4f1f21dccf90c896c75206b93337601267391728bed87e903b99884370852a84e94a98b50eb7bcf412286ebf31373d71004
+	source = ray-ray-2.40.0.tar.gz::https://github.com/ray-project/ray/archive/ray-2.40.0.tar.gz
+	sha512sums = 27cf687bffb0a1599928be1e0eeddb92789dbcf743e865d43b402a077d2958d03ecb0c7a12a6346c65798189bb8fa36a072b4df2fef51b6e768309a939fe75b2
 
 pkgname = python-ray
