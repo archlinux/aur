@@ -2,7 +2,7 @@
 
 _pkgname=xfce4-session
 pkgname=${_pkgname}-devel
-pkgver=4.19.3
+pkgver=4.19.4
 pkgrel=1
 pkgdesc="A session manager for Xfce"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -23,7 +23,7 @@ conflicts=("${_pkgname}")
 replaces=('xfce-utils')
 source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2"
         'xfce-polkit-gnome-authentication-agent-1.desktop')
-sha256sums=('06d267e6b633aacd7ef0e1b5865ac5b42a7713267317c0d1cadf66f0bfdce3a9'
+sha256sums=('170211a87e091628607147112f8a66802cea0a43f90ec9de866475c1ffa7085d'
             '74c94c5f7893d714e04ec7d8b8520c978a5748757a0cdcf5128492f09f31b643')
 
 build() {
