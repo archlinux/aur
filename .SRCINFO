@@ -1,6 +1,6 @@
 pkgbase = python-libpulse-git
 	pkgdesc = Asyncio interface to the Pulseaudio and Pipewire pulse library.
-	pkgver = 0.5.r47.20241103.9aa1f54
+	pkgver = 0.6.r49.20241201.87cd972
 	pkgrel = 1
 	url = https://gitlab.com/xdegaye/libpulse
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-libpulse-git
 	makedepends = python-wheel
 	depends = python>=3.8
 	depends = python<4
-	provides = python-libpulse=0.5.r47.20241103.9aa1f54
+	provides = python-libpulse=0.6.r49.20241201.87cd972
 	conflicts = python-libpulse
 	source = python-libpulse::git+https://gitlab.com/xdegaye/libpulse.git
 	sha256sums = SKIP
