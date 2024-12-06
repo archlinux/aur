@@ -1,6 +1,6 @@
 pkgbase = twitch
 	pkgdesc = Unofficial Twitch desktop application.
-	pkgver = 1.0.6
+	pkgver = 1.0.6.1
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/twitch-application
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = twitch
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/twitch-application/application/-/archive/1.0.6-1/application-1.0.6-1.tar.bz2
-	sha256sums = 1769c00baf2a627f48521cdc2df3d4d8efd3ce106d2f0ad1891756846ea18171
+	source = https://gitlab.com/linuxbombay/twitch-application/application/-/archive/1.0.6.1/application-1.0.6.1.tar.bz2
+	sha256sums = 5fc5294954fd2f177a5fa8f27900ebd2e2b9682384dad51edd928ebe95605167
 
 pkgname = twitch

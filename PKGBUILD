@@ -1,6 +1,6 @@
 pkgname=twitch
 _pkgname=Twitch
-pkgver=1.0.6
+pkgver=1.0.6.1
 pkgrel=1
 pkgdesc="Unofficial Twitch desktop application."
 arch=('x86_64' 'aarch64')
@@ -8,14 +8,14 @@ url="https://gitlab.com/linuxbombay/twitch-application"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
-source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('1769c00baf2a627f48521cdc2df3d4d8efd3ce106d2f0ad1891756846ea18171')
+source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
+sha256sums=('5fc5294954fd2f177a5fa8f27900ebd2e2b9682384dad51edd928ebe95605167')
 
 
 package() {
-    for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
+    for dir in application-$pkgver ; do mv "${dir}" "$_pkgname" ;done
     cd "$srcdir/$_pkgname"
-    chmod +x $_pkgname.sh
+    chmod +x $pkgname
     ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
@@ -24,10 +24,10 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgname/$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
+    ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" \
-        "$pkgdir/usr/share/applications/$_pkgname.desktop"
-    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    install -Dm644 "$srcdir/$_pkgname/$pkgname.desktop" \
+        "$pkgdir/usr/share/applications/$pkgname.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
