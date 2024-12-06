@@ -1,5 +1,5 @@
 # Maintainer: daddodev
-pkgname=pimpmyrice-git
+pkgname=pimpmyrice
 provides=("pimpmyrice")
 conflicts=("pimpmyrice-git" "pimpmyrice")
 pkgdesc=""
