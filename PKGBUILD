@@ -2,21 +2,21 @@
 
 _pkgname=Scarab
 pkgname=scarab
-pkgver=2.5.0.0
+pkgver=2.6.0.0
 pkgrel=1
 pkgdesc="Hollow Knight mod manager"
 arch=(x86_64 i686)
 url="https://github.com/fifty-six/Scarab"
 license=('GPL')
 
-depends=(dotnet-runtime-6.0)
-makedepends=(dotnet-sdk-6.0)
+depends=(dotnet-runtime-8.0)
+makedepends=(dotnet-sdk-8.0)
 conflicts=(scarab-bin)
 options=(!strip)
 
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/fifty-six/Scarab/archive/v$pkgver.tar.gz"
         "scarab.desktop")
-sha1sums=('f1fa1f751e243108d369980349e64b1d18c45c1a'
+sha1sums=('501f82c3561e3ab849ed08352c08ce4a31fbadf0'
           '8ff187bcb309790529ef723de39ba1b9fc0a449d')
 
 build() {
