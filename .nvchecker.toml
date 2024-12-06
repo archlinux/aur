@@ -1,0 +1,7 @@
+[cccc-bin]
+source = "apt"
+pkg = "cccc"
+mirror = "http://deb.debian.org/debian"
+suite = "sid"
+from_pattern = '^(1:)?(.*)-(.*)$'
+to_pattern = '\2_\3'

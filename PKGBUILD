@@ -2,36 +2,32 @@
 
 _pkgname="cccc"
 pkgname="${_pkgname}-bin"
-pkgver=3.2.0
+pkgver=3.2.0+dfsg1_2
 pkgrel=1
 pkgdesc="A code counter providing code metrics for C, C++, Ada, and Java projects"
-arch=('x86_64' 'aarch64' 'armel' 'armhf' 'i686' 'mips64le' 'ppc64' 'ppc64le'
-      's390x')
+arch=('x86_64' 'aarch64' 'i686' 'armv5h' 'powerpc64' 'powerpc64le' 's390x')
 url="https://${_pkgname}.sourceforge.net"
 license=('GPL-2.0-only')
 depends=('gcc-libs' 'glibc')
+makedepends=('gzip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-noextract=("${_pkgsrc}-"{x86_64,aarch64,armel,armhf,i686,mips64le,ppc64,ppc64le,s390x}".deb")
-source_x86_64=("${_pkgsrc}-x86_64.deb::http://ftp.debian.org/debian/pool/main/${_pkgname::1}/${_pkgname}/${_pkgsrc//-/_}+dfsg1-1_amd64.deb")
-source_aarch64=("${_pkgsrc}-aarch64.deb::http://ftp.debian.org/debian/pool/main/${_pkgname::1}/${_pkgname}/${_pkgsrc//-/_}+dfsg1-1_arm64.deb")
-source_armel=("${_pkgsrc}-armel.deb::http://ftp.debian.org/debian/pool/main/${_pkgname::1}/${_pkgname}/${_pkgsrc//-/_}+dfsg1-1_armel.deb")
-source_armhf=("${_pkgsrc}-armhf.deb::http://ftp.debian.org/debian/pool/main/${_pkgname::1}/${_pkgname}/${_pkgsrc//-/_}+dfsg1-1_armhf.deb")
-source_i686=("${_pkgsrc}-i686.deb::http://ftp.debian.org/debian/pool/main/${_pkgname::1}/${_pkgname}/${_pkgsrc//-/_}+dfsg1-1_i386.deb")
-source_mips64le=("${_pkgsrc}-mips64le.deb::http://ftp.debian.org/debian/pool/main/${_pkgname::1}/${_pkgname}/${_pkgsrc//-/_}+dfsg1-1_mips64el.deb")
-source_ppc64=("${_pkgsrc}-ppc64.deb::http://ftp.ports.debian.org/debian-ports/pool-ppc64/main/${_pkgname::1}/${_pkgname}/${_pkgsrc//-/_}+dfsg1-1_ppc64.deb")
-source_ppc64le=("${_pkgsrc}-ppc64le.deb::http://ftp.debian.org/debian/pool/main/${_pkgname::1}/${_pkgname}/${_pkgsrc//-/_}+dfsg1-1_ppc64el.deb")
-source_s390x=("${_pkgsrc}-s390x.deb::http://ftp.debian.org/debian/pool/main/${_pkgname::1}/${_pkgname}/${_pkgsrc//-/_}+dfsg1-1_s390x.deb")
-sha256sums_x86_64=('e3dee864f833aa18090d1fac61b0bc6023597fe65b121b5751e8f25b255de595')
-sha256sums_aarch64=('3442fced9f7857a3eb3eab79e11081bc510bda600195868dae588cbc771c33d0')
-sha256sums_armel=('92b0b8b1aa46d4e090edbecc7a6f987d7175435b0b9415b4a032d286fd400732')
-sha256sums_armhf=('2d43de772f1da606dc817702ea17883b8c75de5573277c7f2870903b035fa749')
-sha256sums_i686=('20bdb74edec854a50a5224daa45121d065b3aa93350edde8432800c16f53c825')
-sha256sums_mips64le=('afe5c46eff044b6c255dce76e8fa6ac941177e052f85a04bb0adee8a9baec0ce')
-sha256sums_ppc64=('8ecdccebf49a0a9225623c3cdd463864bfba03c4c6279604746e92a0b7ad554a')
-sha256sums_ppc64le=('6876ac3a7c05d2b4a722a1536caa59bb32b64dc000510ab79b61ed8224b0cdcf')
-sha256sums_s390x=('9c5f6631be05c0c8e0a157c757a97f7309459eda66730fad65c6c5e966734bed')
+noextract=("${_pkgsrc}-"{x86_64,aarch64,i686,armv5h,powerpc64,powerpc64le,s390x}".deb")
+source_x86_64=("${_pkgsrc}-x86_64.deb::http://ftp.debian.org/debian/pool/main/${_pkgname::1}/${_pkgname}/${_pkgname}_${pkgver//_/-}_amd64.deb")
+source_aarch64=("${_pkgsrc}-aarch64.deb::http://ftp.debian.org/debian/pool/main/${_pkgname::1}/${_pkgname}/${_pkgname}_${pkgver//_/-}_arm64.deb")
+source_i686=("${_pkgsrc}-i686.deb::http://ftp.debian.org/debian/pool/main/${_pkgname::1}/${_pkgname}/${_pkgname}_${pkgver//_/-}_i386.deb")
+source_armv5h=("${_pkgsrc}-armv5h.deb::http://ftp.debian.org/debian/pool/main/${_pkgname::1}/${_pkgname}/${_pkgname}_${pkgver//_/-}_armhf.deb")
+source_powerpc64=("${_pkgsrc}-powerpc64.deb::http://ftp.ports.debian.org/debian-ports/pool-ppc64/main/${_pkgname::1}/${_pkgname}/${_pkgname}_${pkgver//_/-}_ppc64.deb")
+source_powerpc64le=("${_pkgsrc}-powerpc64le.deb::http://ftp.debian.org/debian/pool/main/${_pkgname::1}/${_pkgname}/${_pkgname}_${pkgver//_/-}_ppc64el.deb")
+source_s390x=("${_pkgsrc}-s390x.deb::http://ftp.debian.org/debian/pool/main/${_pkgname::1}/${_pkgname}/${_pkgname}_${pkgver//_/-}_s390x.deb")
+sha256sums_x86_64=('934601fe9d84479f03bcb8b723e930a4ee638d82d354941a45878575b70bfdd0')
+sha256sums_aarch64=('6d90dc9da9756b6a117d5a651097b0a1457380d8cb5f6036b89b786d8d32f518')
+sha256sums_i686=('f909c82dacc0503968f5906aa3d583e2bbd289ba2020d4074ab13bd487bde4ec')
+sha256sums_armv5h=('f36c0e8052e4b8f543c81967437a9cd575f5ae07247a49d1bb02ba6afd5c9a8f')
+sha256sums_powerpc64=('8b8a6a82ccfc66d315f5a8c01dad31be50efbd40de615439e711123e2a0d2284')
+sha256sums_powerpc64le=('38995861dae79ead7df7297523443cc3e14cb14d0f75ec2135c5e2ac4e4593be')
+sha256sums_s390x=('c2bebc73b08f811ab52a05ee3f8c3979eb1ca1d3c5fa96fbae332055bbb24473')
 
 prepare() {
   cd "${srcdir}"
@@ -41,11 +37,14 @@ prepare() {
   rm -f data.tar.*
 }
 
+build() {
+  cd "${srcdir}/${_pkgsrc}-${CARCH}/usr/share/doc/${_pkgname}"
+  rm -f *Debian* copyright INSTALL
+  find . -type f -name '*.gz' -exec \
+    gzip -fd {} \;
+}
+
 package() {
   cd "${srcdir}/${_pkgsrc}-${CARCH}"
-  find "usr/bin"   -type f -exec install -Dm755 "{}" "${pkgdir}/{}" \;
-  find "usr/share" -type f -exec install -Dm644 "{}" "${pkgdir}/{}" \;
-
-  cd "${pkgdir}/usr/share/doc/${_pkgname}"
-  rm -f changelog.* ChangeLog.* copyright INSTALL NEWS.*
+  cp -vr --no-preserve=ownership * "${pkgdir}"
 }
