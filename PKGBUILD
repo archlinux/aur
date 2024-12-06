@@ -4,12 +4,12 @@
 
 pkgname=elyxer
 pkgver=1.2.5
-pkgrel=5
+pkgrel=6
 pkgdesc="A LyX to HTML converter"
 # url="http://alexfernandez.github.io/elyxer/"
 url="https://pinchito.es/elyxer/"
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('python2')
 # source=("http://alexfernandez.github.io/elyxer/dist/${pkgname}-${pkgver}.tar.gz")
 source=("https://pinchito.es/elyxer/dist/elyxer-${pkgver}.tar.gz")
