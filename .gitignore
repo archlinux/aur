@@ -1,0 +1,6 @@
+janet-lang-*.tar.gz
+janet-lang-*.zst
+
+/jpm/
+/pkg/
+/src/
