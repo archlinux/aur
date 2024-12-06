@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mockoon
-pkgver=9.0.0
+pkgver=9.1.0
 _electronversion=33
 _nodeversion=18
 pkgrel=1
-pkgdesc="The easiest and quickest way to run mock APIs locally. No remote deployment, no account required, open source.Use system-wide electron."
+pkgdesc="The easiest and quickest way to run mock APIs locally. No remote deployment, no account required, open source.(Use system-wide electron)"
 arch=('any')
 url="https://mockoon.com/"
 _ghurl="https://github.com/mockoon/mockoon"
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('6b126dd248f0449960869aabbbc137b08c8779c920edd5c3e1d9a93dad701d19'
+sha256sums=('ca4c60404cfb8561a7ddcbd539a4b7500fd7f8518838b6c22fd5d544edcd6cad'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
