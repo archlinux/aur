@@ -1,6 +1,6 @@
 pkgbase = python-cohere
 	pkgdesc = Python Library for Accessing the Cohere API
-	pkgver = 5.13.2
+	pkgver = 5.13.3
 	pkgrel = 2
 	url = https://github.com/cohere-ai/cohere-python
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-cohere
 	depends = python-requests
 	depends = python-tokenizers
 	depends = python-typing_extensions
-	source = python-cohere-5.13.2.tar.gz::https://github.com/cohere-ai/cohere-python/archive/5.13.2.tar.gz
-	sha256sums = 3bde7679b5d8366c352d7fb6d10ec39fde08c6a818710c5e3df09290677e086a
+	source = python-cohere-5.13.3.tar.gz::https://github.com/cohere-ai/cohere-python/archive/5.13.3.tar.gz
+	sha256sums = ea71dc296fce01d019e730dc1692107e3d7dff056346d0726c455328a247d618
 
 pkgname = python-cohere
