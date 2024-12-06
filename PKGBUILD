@@ -1,9 +1,10 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: taotieren <admin@taotieren.com>
 
-_name=bincopy
 pkgname=python-bincopy
+_name=bincopy
 pkgver=20.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Mangling of various file formats that conveys binary information"
 arch=(any)
 url="https://github.com/eerimoq/bincopy"
@@ -21,9 +22,8 @@ makedepends=(
   python-wheel
 )
 checkdepends=(python-pytest)
-source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
-sha512sums=('b236852299fb54b8c1bfcb61c2229d8e76aa0a7c4b7eebe60d242e8e8d93c007ea160ab4e7f219d4dbf9447d3647355c54b81022e31ab892c81def459adb4ec8')
-b2sums=('0f10709492f5b9af7a072e74f5a45d1a734cad2b9dcb1591914bfb4353bd9ca21e94c61d4937349d00b61c86fa4fd9b34a4d7dc6b10e2c70eb1061bfe7ec3922')
+source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha512sums=('05cc54684c951ac209fa25ebdc2f60566ef93248cfa298439a2a4f6a4174e02f47476573aa580ae2d1e4b8e16e91ee8c4fee2097c375ca2c079dbbb0602b6153')
 
 build() {
   cd $_name-$pkgver
@@ -39,5 +39,4 @@ package() {
   cd $_name-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
-  install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
