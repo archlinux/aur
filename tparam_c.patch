@@ -1,0 +1,10 @@
+--- tparam.c	2002-02-26 01:37:24.000000000 +0800
++++ tparam.c	2024-12-06 09:38:00.296646519 +0800
+@@ -28,6 +28,7 @@
+ #ifdef STDC_HEADERS
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ #else
+ char *malloc ();
+ char *realloc ();

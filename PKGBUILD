@@ -13,38 +13,46 @@ options=(!strip !buildflags staticlibs)
 license=(GPL LGPL)
 groups=('mingw-w64')
 url="https://ftp.gnu.org/gnu/termcap/"
-source=("https://ftp.gnu.org/gnu/termcap/termcap-${pkgver}.tar.gz")
-sha256sums=('91a0e22e5387ca4467b5bcb18edf1c51b930262fd466d5fda396dd9d26719100')
+source=(
+	"https://ftp.gnu.org/gnu/termcap/termcap-${pkgver}.tar.gz"
+	"tparam_c.patch"
+)
+sha256sums=('91a0e22e5387ca4467b5bcb18edf1c51b930262fd466d5fda396dd9d26719100'
+            'e531131a7715736ca6daabe9c53c60305b9568e4580b510a065f965ad23760fe')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-build()
-{
-  cd "$srcdir/termcap-$pkgver"
-  autoconf
-  for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure
-    make
-    # Build a shared library.  No need for -fPIC on Windows.
-    ${_arch}-gcc -shared \
-      -Wl,--out-implib,libtermcap.dll.a \
-      -o libtermcap-0.dll \
-      termcap.o tparam.o version.o
-    popd
-  done
+prepare() {
+	cd "$srcdir/termcap-$pkgver"
+	patch -Np0 -i "$srcdir/tparam_c.patch"
+}
+
+build() {
+	cd "$srcdir/termcap-$pkgver"
+	autoconf
+	for _arch in ${_architectures}; do
+		mkdir -p build-${_arch} && pushd build-${_arch}
+		${_arch}-configure
+		make
+		# Build a shared library.  No need for -fPIC on Windows.
+		${_arch}-gcc -shared \
+			-Wl,--out-implib,libtermcap.dll.a \
+			-o libtermcap-0.dll \
+			termcap.o tparam.o version.o
+		popd
+	done
 }
 
 package() {
-  for _arch in ${_architectures}; do
-    cd "$srcdir/termcap-$pkgver/build-${_arch}"
-    # make install has no support for destdir
-    make install prefix="${pkgdir}/usr/${_arch}" exec_prefix="${pkgdir}/usr/${_arch}" oldincludedir=
-    #rm -r "$pkgdir"/usr/${_arch}/info/
-    mkdir -p "${pkgdir}"/usr/${_arch}/{bin,lib}
-    install -m 0755 libtermcap-0.dll "${pkgdir}/usr/${_arch}/bin"
-    install -m 0644 libtermcap.dll.a "${pkgdir}/usr/${_arch}/lib"
-    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-  done
+	for _arch in ${_architectures}; do
+		cd "$srcdir/termcap-$pkgver/build-${_arch}"
+		# make install has no support for destdir
+		make install prefix="${pkgdir}/usr/${_arch}" exec_prefix="${pkgdir}/usr/${_arch}" oldincludedir=
+		#rm -r "$pkgdir"/usr/${_arch}/info/
+		mkdir -p "${pkgdir}"/usr/${_arch}/{bin,lib}
+		install -m 0755 libtermcap-0.dll "${pkgdir}/usr/${_arch}/bin"
+		install -m 0644 libtermcap.dll.a "${pkgdir}/usr/${_arch}/lib"
+		find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
+		find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
+	done
 }

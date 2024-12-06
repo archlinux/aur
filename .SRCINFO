@@ -13,6 +13,8 @@ pkgbase = mingw-w64-termcap
 	options = !buildflags
 	options = staticlibs
 	source = https://ftp.gnu.org/gnu/termcap/termcap-1.3.1.tar.gz
+	source = tparam_c.patch
 	sha256sums = 91a0e22e5387ca4467b5bcb18edf1c51b930262fd466d5fda396dd9d26719100
+	sha256sums = e531131a7715736ca6daabe9c53c60305b9568e4580b510a065f965ad23760fe
 
 pkgname = mingw-w64-termcap
