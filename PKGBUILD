@@ -4,7 +4,7 @@
 pkgname=lib32-zvbi
 _basename=zvbi
 pkgver=0.2.42
-pkgrel=1
+pkgrel=2
 pkgdesc="VBI capture and decoding library  (32-bit)"
 url="http://zapping.sourceforge.net/cgi-bin/view/ZVBI/WebHome"
 arch=('x86_64')
@@ -30,8 +30,8 @@ pkgver() {
 build() {
     cd zvbi
 
-    export CC='gcc -m32'
-    export CXX='g++ -m32'
+    export CC='gcc -m32 -fpermissive'
+    export CXX='g++ -m32 -fpermissive'
     export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
     ./configure \
