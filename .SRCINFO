@@ -1,7 +1,7 @@
 pkgbase = astrofox
 	pkgdesc = A motion graphics program that lets turn audio into amazing videos
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://astrofox.io
 	arch = any
 	license = MIT
@@ -10,13 +10,17 @@ pkgbase = astrofox
 	makedepends = sed
 	makedepends = jq
 	makedepends = moreutils
-	depends = electron19
+	depends = electron33
 	depends = ffmpeg
 	source = astrofox-1.4.0.tar.gz::https://github.com/astrofox-io/astrofox/archive/refs/tags/v1.4.0.tar.gz
 	source = astrofox.sh
 	source = astrofox.desktop
+	source = update-master.patch::https://github.com/astrofox-io/astrofox/compare/v1.4.0...master.patch
+	source = electron30.patch::https://patch-diff.githubusercontent.com/raw/astrofox-io/astrofox/pull/116.patch
 	sha512sums = bf0adc3ea6f8a388c3e08b93ba70fdb950ec36cf847a9382e516e735506a8f0c0ebf1ae03315d13a29382aa70f684b4742443891d5c661ac839b9a8300b7a195
 	sha512sums = 74cc07387771a9c1a8255f0ec0bb28c9527a8a15ff344977b803e8dbaba14af29de4e04747da04ca7204f2e22fe0882030d5c6db9a1bd50e482e6de4b025713b
 	sha512sums = b4b3828b1216adf3cf1105074b64bfbd6fd440fb61da7a389a3e6b172e6607c90de3218e6762997344d861dc10fbc2b3ecbccf02d01a292918b89eed3903bcf2
+	sha512sums = fbc51fb7a52560d8ed9c883f15ccf20432361cce6b59af2a737bbe4d67111361e3fbdd0080120dcd9482cfced2880a93712261d20b60862af3e2d23cbac7a717
+	sha512sums = 0555e946d11f3bae064f9256da51fe1306df8eaad9771aa46a52823dd3655e6d735c1af45688e1e48c4e22bca51ffad0e0deb6cf821554409a694b336848368b
 
 pkgname = astrofox
