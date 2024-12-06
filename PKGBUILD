@@ -2,18 +2,18 @@
 _pkgname=antares
 pkgname="${_pkgname}-sql-bin"
 _appname=Antares
-pkgver=0.7.29
+pkgver=0.7.30
 _electronversion=30
 pkgrel=1
-pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX.Prebuilt version.Use system-wide electron."
+pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX.(Prebuilt version.Use system-wide electron)"
 arch=(
-    "aarch64"
-    "armv7h"
-    "x86_64"
+    'aarch64'
+    'armv7h'
+    'x86_64'
 )
 url="https://antares-sql.app/"
 _ghurl="https://github.com/antares-sql/antares"
-license=("MIT")
+license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -28,9 +28,9 @@ source=(
 )
 sha256sums=('7b960bb0bed7d2228b6a8a879558c97906cc041ab14ab1d1089959902f386613'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('b5aa7e1b4f621e57da8420c5182588e7b985fd13d546fdc507fb58e6bf504924')
-sha256sums_armv7h=('d508addb89871824c2ca9ddf9e7c5a0466eca66734cd68b8988c38f2b16ef244')
-sha256sums_x86_64=('e0611a9710a2c65bb9112d13f014ecc909ec36d79df46457272d3f77aed8b203')
+sha256sums_aarch64=('0db1f1e2b192bb7d3bcacf1243d95550c9d737d4941657b40bb8c8574d34b773')
+sha256sums_armv7h=('6f537106642d37b475a15509f2e336f3e89f5dd5d2c2038e03df657a0ffa8fa7')
+sha256sums_x86_64=('301d6b6cd4ebe7e202c075039be5e8fb29112d7ca9fb660c670f4f4314b93709')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
