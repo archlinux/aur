@@ -1,16 +1,17 @@
-# Maintainer: Davide Depau <davide@depau.eu>
+# Maintainer: Tianhao Wang <i dot shrik3 dot com>
+# 2020, maintainer by: Davide Depau <davide@depau.eu>
 
 _pkgname=wlclock
 pkgname=$_pkgname-git
-pkgver=r5.bec08da
+pkgver=v1.0.1.r0.g52c56a4
 pkgrel=1
 pkgdesc="Simple GTKmm/Cairo based clock that works on Wayland "
 arch=('i686' 'x86_64')
-depends=('gtkmm3')
-makedepends=('cmake' 'pkgconf')
+depends=('glibc' 'wayland' 'cairo')
+makedepends=('ninja' 'meson' 'git')
 url="https://github.com/Depau/wlclock"
-license=('GPL3' 'FDL')
-source=(${_pkgname}::git+https://github.com/Depau/wlclock.git)
+license=('GPL-3.0-only')
+source=(${_pkgname}::git+https://git.sr.ht/~leon_plickat/wlclock)
 sha256sums=('SKIP')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -25,17 +26,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/${_pkgname}"
-
-  mkdir -p build && cd build
-  
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-    -DCMAKE_BUILD_TYPE=Release
-  make
+  meson -Dprefix=/usr build
+  ninja -C build
 }
 
 package() {
   cd "$srcdir/${_pkgname}"
-  make DESTDIR="$pkgdir" install -C build/
+  meson install -C build --destdir "$pkgdir"
 }

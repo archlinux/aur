@@ -1,19 +1,20 @@
 pkgbase = wlclock-git
 	pkgdesc = Simple GTKmm/Cairo based clock that works on Wayland
-	pkgver = r5.bec08da
+	pkgver = v1.0.1.r0.g52c56a4
 	pkgrel = 1
 	url = https://github.com/Depau/wlclock
 	arch = i686
 	arch = x86_64
-	license = GPL3
-	license = FDL
-	makedepends = cmake
-	makedepends = pkgconf
-	depends = gtkmm3
+	license = GPL-3.0-only
+	makedepends = ninja
+	makedepends = meson
+	makedepends = git
+	depends = glibc
+	depends = wayland
+	depends = cairo
 	provides = wlclock
 	conflicts = wlclock
-	source = wlclock::git+https://github.com/Depau/wlclock.git
+	source = wlclock::git+https://git.sr.ht/~leon_plickat/wlclock
 	sha256sums = SKIP
 
 pkgname = wlclock-git
-
