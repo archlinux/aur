@@ -5,8 +5,8 @@
 
 _pkgname=pa-dlna
 pkgname="${_pkgname}-git"
-pkgver=0.14+2.r391.20241206.0f8938b
-pkgrel=1
+pkgver=0.14+3.r392.20241206.e2c874b
+pkgrel=2
 pkgdesc="Forwards audio streams to DLNA devices. For PulseAudio or PipeWira (via 'python-libpulse'). Latest git checkout."
 arch=(
   'any'
@@ -43,13 +43,6 @@ makedepends=(
   'python-sphinx'
   'python-sphinx_rtd_theme'
   'python-wheel'
-  'texlive-fontsrecommended'
-  'texlive-latex'
-  'texlive-latexextra'
-  'texlive-latexrecommended'
-  'texlive-basic'
-  'texlive-bin'
-  'texlive-binextra'
   'texinfo'
 )
 optdepends=(
@@ -61,8 +54,10 @@ optdepends=(
 )
 source=(
   "${_pkgname}::git+${url}.git"
+  "pa-dlna.pdf::https://pa-dlna.readthedocs.io/_/downloads/en/latest/pdf/"
 )
 sha256sums=(
+  'SKIP'
   'SKIP'
 )
 
@@ -99,7 +94,7 @@ build() {
   python -m build --wheel --no-isolation
 
   cd docs
-  for _target in man info text html latexpdf; do # qthelp
+  for _target in man info text html; do # qthelp
     make -j1 "${_target}"
   done
   gzip -9 build/man/*
@@ -114,7 +109,8 @@ package() {
   _docfiles=(
     README.rst
     git.log
-    docs/build/latex/pa-dlna.pdf
+    "${srcdir}/pa-dlna.pdf"
+    # docs/build/latex/pa-dlna.pdf
   )
   _docdirs=(
     docs/build/html
