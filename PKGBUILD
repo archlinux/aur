@@ -1,26 +1,33 @@
-# Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
-pkgname=matio
-pkgver=1.5.2
+# Maintainer: Guilhem Saurel <guilhem.saurel@laas.fr>
+
+pkgname="matio"
+pkgver=1.5.28
 pkgrel=1
-pkgdesc='A C library for reading and writing Matlab MAT files.'
+pkgdesc="C library for reading and writing Matlab MAT files"
 arch=('i686' 'x86_64')
-url='http://sourceforge.net/projects/matio/'
-license=('BSD')
-depends=('zlib' 'hdf5')
-source=("$pkgname-$pkgver.tar.gz::http://sourceforge.net/projects/matio/files/matio/1.5.2/matio-${pkgver}.tar.gz/download")
-sha256sums=('db02d0fb3373c3d766a606309b17e64a5d8da55610e921a9f1a0ec171e911d45')
+url="https://sourceforge.net/projects/${pkgname}/"
+license=('BSD-2-Clause')
+depends=()
+optdepends=()
+makedepends=()
+source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('9da698934a21569af058e6348564666f45029e6c2b0878ca0d8f9609bf77b8d8')
+
 
 build() {
-  cd "$pkgname-$pkgver"
-  ./configure --prefix=/usr \
-              --enable-mat73=yes \
-              --with-default-api-version=v18
-  make
-  #make check
+    cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -Wno-dev
+    cmake --build "build-$pkgver"
 }
 
-package() {
-  cd "$pkgname-$pkgver"
+# TODO: 92% tests passed, 615 tests failed out of 7845
+#check() {
+    #cmake --build "build-$pkgver" -t test
+#}
 
-  make DESTDIR="$pkgdir/" install
+package() {
+    DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
+    install -Dm644 "$pkgbase-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
