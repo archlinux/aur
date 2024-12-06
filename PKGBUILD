@@ -3,11 +3,9 @@
 pkgname=serial-studio
 _pkgname=Serial-Studio
 pkgver=3.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-purpose serial data visualization & processing program"
-arch=('x86_64'
-    'aarch64'
-    'riscv64')
+arch=($CARCH)
 url="https://github.com/Serial-Studio/Serial-Studio"
 license=('MIT')
 groups=()

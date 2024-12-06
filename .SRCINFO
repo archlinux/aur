@@ -1,11 +1,9 @@
 pkgbase = serial-studio
 	pkgdesc = Multi-purpose serial data visualization & processing program
 	pkgver = 3.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Serial-Studio/Serial-Studio
 	arch = x86_64
-	arch = aarch64
-	arch = riscv64
 	license = MIT
 	makedepends = cmake
 	makedepends = ninja
