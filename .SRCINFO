@@ -1,16 +1,23 @@
 pkgbase = glueviz
 	pkgdesc = Meta-package for glue and plugin packages
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = http://glueviz.org
 	arch = any
 	license = BSD
 	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-glue-core>=1.13.0
+	depends = python-scikit-image
+	depends = python-pyavm
+	depends = python-astrodendro
+	depends = python-spectral-cube
+	depends = python-pillow>7.1.0
 	depends = python-glue-qt>=0.1.0
 	depends = python-glue-vispy-viewers>=1.0.3
 	optdepends = glueviz-doc: Documentation for Glueviz
-	source = https://files.pythonhosted.org/packages/source/g/glueviz/glueviz-1.3.0.tar.gz
-	sha256sums = 0b8ccbc4d6c331ea64b80eca66573517ad4fcfb37535fdf2ddd1ef1692f47cee
+	source = https://files.pythonhosted.org/packages/source/g/glueviz/glueviz-1.4.0.tar.gz
+	sha256sums = d3a6d2c845028ba8230bbc6130e09058206f4d6ad647b774a8f38f88ab6e53fc
 
 pkgname = glueviz
