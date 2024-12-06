@@ -54,11 +54,11 @@ post_upgrade() {
   echo "-------------------"
   if [ ! `grep -E '^wwwoffle\:' /etc/group` ]; then
     echo ">>> Adding group wwwoffle."
-    groupadd wwwoffle &> /dev/null
+    groupadd --system wwwoffle > /dev/null
   fi
   if [ ! `grep -E '^wwwoffle\:' /etc/passwd` ]; then
     echo ">>> Adding user wwwoffle."
-    useradd -g wwwoffle wwwoffle
+    useradd --system --home-dir /var/spool/wwwoffle --no-create-home -s /usr/bin/nologin -g wwwoffle wwwoffle
   fi
   echo ">>> Changing ownership of /var/spool/wwwoffle to wwwoffle:wwwoffle (recursively)."
   chown -R wwwoffle:wwwoffle /var/spool/wwwoffle
