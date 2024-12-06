@@ -5,7 +5,7 @@
 _pkgname=elyxer
 pkgname="${_pkgname}"
 pkgver=1.2.5
-pkgrel=8
+pkgrel=9
 pkgdesc="A LyX to HTML converter"
 # url="http://alexfernandez.github.io/elyxer/"
 url="https://pinchito.es/elyxer/"
@@ -34,6 +34,8 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+
+  ln -svr "${pkgdir}/usr/bin/elyxer.py" "${pkgdir}/usr/bin/elyxer"
 
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"      README.md
   install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  LICENSE gpl-3.0-standalone.html
