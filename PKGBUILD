@@ -1,4 +1,4 @@
-# Maintainer: Aloxaf <aloxafx@gmail.com>
+# Maintainer: username227 <gfrank227 [at] gmail [dot] com>
 
 pkgname=cinnamon-6.2-theme
 pkgver=1.0
