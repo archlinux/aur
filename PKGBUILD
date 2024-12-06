@@ -9,15 +9,18 @@ arch=(x86_64)
 license=('custom:BSD-2-clause')
 conflicts=("python-fmpy")
 provides=("python-fmpy")
-depends=(python-attrs python-jinja python-lark-parser python-lxml python-msgpack python-numpy python-pytz sundials) # rpclib
+depends=(python-attrs python-jinja python-lark python-lxml python-msgpack python-numpy sundials)
 makedepends=(python-build python-installer python-setuptools python-wheel python-requests cmake git)
 # checkdepends=(python-pytest python-dask python-scipy python-plotly jupyter-nbformat)
 optdepends=('python-matplotlib: for plot results'
-  'python-kaleido: for SVG export'
-  'jupyter-notebook: for simulate the FMU in jupyter'
+  'python-kaleido: for notebook support'
+  'jupyter-notebook: for notebook support'
   'python-plotly: for plot results'
+  'python-scipy: for plot results'
+  'python-requests: for examples'
   'python-dash-bootstrap-components: for webapp support'
-  'python-pyqtgraph: for graphical user interface') # python-pyqt5 python-pyqt5-webengine
+  'pyside6: for graphical user interface'
+  'python-pyqtgraph: for graphical user interface')
 source=(git+${url}.git#commit=${_gitcommit}
   git+https://github.com/ludocode/mpack.git
   git+https://github.com/modelica/Reference-FMUs.git sundials6.patch)
