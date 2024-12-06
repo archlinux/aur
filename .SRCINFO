@@ -1,4 +1,4 @@
-pkgbase = pimpmyrice-git
+pkgbase = pimpmyrice
 	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/daddodev/pimpmyrice
@@ -25,7 +25,7 @@ pkgbase = pimpmyrice-git
 	provides = pimpmyrice
 	conflicts = pimpmyrice-git
 	conflicts = pimpmyrice
-	source = pimpmyrice-git-0.2.1.tar.gz::https://pypi.python.org/packages/source/p//-0.2.1.tar.gz
+	source = pimpmyrice-0.2.1.tar.gz::https://pypi.python.org/packages/source/p//-0.2.1.tar.gz
 	md5sums = SKIP
 
-pkgname = pimpmyrice-git
+pkgname = pimpmyrice
