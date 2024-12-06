@@ -1,0 +1,24 @@
+pkgbase = libsx
+	pkgdesc = the simple X library
+	pkgver = 2.08
+	pkgrel = 1
+	url = https://web.physics.wustl.edu/marty/libsx/libsx.html
+	arch = x86_64
+	arch = i686
+	license = LGPL-2.1-only
+	depends = glibc
+	depends = libxext
+	depends = libxmu
+	depends = libice
+	depends = libsm
+	depends = libxpm
+	depends = libxt
+	depends = libx11
+	depends = libxext
+	depends = libxaw3dxft
+	provides = libsx
+	provides = libsx.so
+	source = libsx-mirror-2.08.tar.gz::https://github.com/shrik3/libsx-mirror/archive/refs/tags/2.08.tar.gz
+	sha1sums = 15f99770db0fa18ffdb350507e6722f16e8c9d7e
+
+pkgname = libsx
