@@ -47,19 +47,19 @@ build() {
   export GOROOT_FINAL=/usr/lib/go
   export GOROOT_BOOTSTRAP=/usr/lib/go
 
-  cd ""${pkgname%-sylixos}-${pkgname%-sylixos}${pkgver}"/src"
+  cd "${pkgname%-sylixos}-${pkgname%-sylixos}${pkgver}/src"
   ./make.bash -v
 }
 
 check() {
   export GO_TEST_TIMEOUT_SCALE=3
 
-  cd "${pkgname%-sylixos}-${pkgname%-sylixos}${pkgver}"/src
+  cd "${pkgname%-sylixos}-${pkgname%-sylixos}${pkgver}/src"
   ./run.bash --no-rebuild -v -v -v -k
 }
 
 package() {
-  cd ""${pkgname%-sylixos}-${pkgname%-sylixos}${pkgver}""
+  cd "${pkgname%-sylixos}-${pkgname%-sylixos}${pkgver}"
 
   install -d "$pkgdir/usr/bin" "$pkgdir/usr/lib/go" "$pkgdir/usr/share/doc/go" \
     "$pkgdir/usr/lib/go/pkg/linux_amd64_"{dynlink,race}
