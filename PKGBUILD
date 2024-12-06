@@ -42,6 +42,8 @@ backup=(
     'etc/accesser/rules.toml'
 )
 
+install="${pkgname}.install"
+
 build() {
     cd ${srcdir}/$_name-$pkgver
     python -m build --wheel --no-isolation

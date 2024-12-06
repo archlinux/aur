@@ -3,6 +3,7 @@ pkgbase = python-accesser
 	pkgver = 0.10.0
 	pkgrel = 4
 	url = https://github.com/URenko/Accesser
+	install = python-accesser.install
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = python-build
