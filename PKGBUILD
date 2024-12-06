@@ -8,7 +8,7 @@ pkgname=(
   "${pkgbase}-firefox"
   "${pkgbase}-google-chrome"
 )
-pkgver=12.8.0
+pkgver=12.8.1
 pkgrel=1
 pkgdesc='Browser extension that enables browsing Ethereum blockchain enabled websites'
 url="https://github.com/MetaMask/metamask-extension"
