@@ -3,22 +3,25 @@
 pkgname=elpa
 pkgver=2024.05.001
 _pkgver=${pkgver}
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64)
 pkgdesc="Eigenvalue SoLvers for Petaflop-Applications"
 url="https://elpa.mpcdf.mpg.de"
 license=(LGPL-3.0-only)
+depends=(blas-openblas scalapack python-numpy python-mpi4py)
 makedepends=(gcc-fortran cython vim)
-depends=(scalapack python-numpy python-mpi4py)
-checkdepends=(blas-openblas)
 source=($url/software/tarball-archive/Releases/$pkgver/$pkgname-$_pkgver.tar.gz)
 sha256sums=('9caf41a3e600e2f6f4ce1931bd54185179dade9c171556d0c9b41bbc6940f2f6')
 options=(!makeflags !buildflags)
 
 prepare() {
   # Detecting vectorization compatibility
-  _AVXCOMP=$( $CC -march=native -dM -E - < /dev/null \
-    | grep -E "AVX" | sort -d | tail -n 1 | awk -F'_' '{print $3}' )
+  _AVXCOMP=$( gfortran -march=native -dM -E - < /dev/null \
+    | grep -E "AVX" \
+    | sort -d \
+    | tail -n 1 \
+    | awk -F'_' '{print $3}' )
+
   case $_AVXCOMP in
     AVX512*)
       _AVX=yes
@@ -45,6 +48,7 @@ prepare() {
       echo "No advanced vectorization is enabled"
       ;;
   esac
+
   # SSE is always enabled on x86_64 architecture
   _SSE=yes
 
