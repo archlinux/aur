@@ -1,6 +1,6 @@
 # Maintainer: Fabius
 pkgname=pixterm
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Draw images in your ANSI terminal with true color"
 arch=(x86_64 i686)
