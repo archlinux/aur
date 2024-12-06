@@ -1,0 +1,6 @@
+d /opt/OpenLinkHub 0755 openlinkhub root -
+d /opt/OpenLinkHub/database 0755 openlinkhub root -
+d /opt/OpenLinkHub/static 0755 openlinkhub root -
+d /opt/OpenLinkHub/web 0755 openlinkhub root -
+d /run/OpenLinkHub 755 root openlinkhub -
+d /var/lib/OpenLinkHub 0700 openlinkhub openlinkhub -
