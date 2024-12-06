@@ -1,10 +1,10 @@
 # Maintainer: Danny Grove <aur@dannygrove.com>
 pkgname=kustomize-sops
 pkgver=4.3.1
-pkgrel=0
+pkgrel=1
 pkgdesc="KSOPS - A Flexible Kustomize Plugin for SOPS Encrypted Resources"
 url="https://github.com/viaduct-ai/$pkgname"
-license=("MIT")
+license=("Apache")
 arch=("x86_64" "aarch64")
 conflicts=("ksops-bin")
 provides=("ksops")
