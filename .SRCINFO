@@ -1,7 +1,7 @@
 pkgbase = go-sylixos
 	pkgdesc = Core compiler tools for the Go programming language
 	pkgver = 1.23.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/golang/go
 	arch = x86_64
 	license = BSD-3-Clause
@@ -14,6 +14,6 @@ pkgbase = go-sylixos
 	source = https://github.com/golang/go/archive/refs/tags/go1.23.4.tar.gz
 	source = go-sylixos.patch
 	sha1sums = 624687f9c24f3d1ad6b8e20c39c35f792d0f83e6
-	sha1sums = 510808a87057bfc61737b7e796de8069874eb0a9
+	sha1sums = d0c0f86116df8edd5fc6b89f849b2b9b63a26e8e
 
 pkgname = go-sylixos

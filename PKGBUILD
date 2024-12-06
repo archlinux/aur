@@ -16,7 +16,7 @@
 
 pkgname=go-sylixos
 pkgver=1.23.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(x86_64)
 url='https://github.com/golang/go'
@@ -28,7 +28,7 @@ options=(!strip staticlibs)
 source=("${url}/archive/refs/tags/${pkgname%-sylixos}${pkgver}.tar.gz"
         "go-sylixos.patch")
 sha1sums=('624687f9c24f3d1ad6b8e20c39c35f792d0f83e6'
-          '510808a87057bfc61737b7e796de8069874eb0a9')
+          'd0c0f86116df8edd5fc6b89f849b2b9b63a26e8e')
 
 prepare() {
   cd "${pkgname%-sylixos}-${pkgname%-sylixos}${pkgver}"
