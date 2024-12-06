@@ -3,7 +3,7 @@
 pkgname=cinnamon-6.2-theme
 pkgver=1.0
 pkgrel=1
-pkgdesc="This theme preserves the default theme for Cinnamon 6.2 for the Cinnamon desktop"
+pkgdesc="This theme preserves the default theme from Cinnamon 6.2 for the Cinnamon desktop"
 arch=(x86_64)
 url=https://github.com/username227/Cinnamon-6.2-theme
 license=(GPL2.0)
