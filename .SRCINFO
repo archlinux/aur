@@ -1,0 +1,18 @@
+pkgbase = lua-dottify
+	pkgdesc = generate a graphviz graph from a lua table structure
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://git.ignore.pl/lua-dottify
+	arch = any
+	license = GPL3
+	makedepends = luarocks
+	source = dottify-scm-1.rockspec
+	sha256sums = SKIP
+
+pkgname = lua-dottify
+
+pkgname = lua51-dottify
+
+pkgname = lua52-dottify
+
+pkgname = lua53-dottify
