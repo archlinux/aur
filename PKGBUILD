@@ -2,13 +2,13 @@
 _pkgname=backend.ai-desktop
 pkgname="${_pkgname//./-}-bin"
 _appname="Backend.AI Desktop"
-pkgver=24.09.2
+pkgver=24.09.3
 _electronversion=30
 pkgrel=1
 pkgdesc="Provides a convenient environment for users, while allowing various commands to be executed without CLI. It also provides some visual features that are not provided by the CLI, such as dashboards and statistics."
 arch=(
-    "aarch64"
-    "x86_64"
+    'aarch64'
+    'x86_64'
 )
 url="https://www.backend.ai/"
 _ghurl="https://github.com/lablup/backend.ai-webui"
@@ -33,8 +33,8 @@ source=(
 )
 sha256sums=('c54209c33c387908bfaae40a9c5f6c96bacaa52684f2546068e2b4441f4a53b3'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('78c5d39a977c481f70945dcb0ed8b42960ecc640f8f4c7e027d36e7cb3374096')
-sha256sums_x86_64=('1aae4e7627e4fdb6429ca7240b1885d5ef23da45d75c253d87c9c661de3ca9ed')
+sha256sums_aarch64=('188c9f76ef3556cebdde6caea856144c5a377ce329a4a0fce75010458237f415')
+sha256sums_x86_64=('86ee00dd0f626e8d9fc1f4247cc24a694aa92e1dc2db620551db80c9fd3d93a8')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
