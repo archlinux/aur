@@ -1,7 +1,7 @@
 # Maintainer: https://codeberg.org/libre-menu-editor/libre-menu-editor/issues
 
 pkgname=libre-menu-editor
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Customize the menu"
 arch=("any")
