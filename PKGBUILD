@@ -1,33 +1,23 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=ValveResourceFormat
 pkgname=source2viewer
-pkgver=10.2
-pkgrel=5
+pkgver=11.0
+pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
 license=('MIT' 'CC-BY-2.5')
 depends=('glibc' 'gcc-libs' 'zlib' 'wine' 'bash' 'hicolor-icon-theme')
-makedepends=('dotnet-sdk-8.0-bin'
-		'gendesk')
+makedepends=('dotnet-sdk-bin' 'gendesk')
 options=(!strip !debug)
 conflicts=('valveresourceformat')
 replaces=('valveresourcefromat')
 install=$pkgname.install
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('61fa22f19141f15ac3fb533b75db10bb93b55622af038d82cd7e8949b28e2ee0')
+sha256sums=('47f37d12f178d73d568d2e3a58fb129f025e5237842a28e9d03989847c2d89f5')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
-	# Ensure dotnet 8.0 is being used
-	cat > global.json <<EOF
-{
-  "sdk": {
-    "version": "8.0.400",
-    "rollForward": "latestFeature"
-  }
-}
-EOF
 }
 
 
@@ -50,12 +40,13 @@ build() {
 	--icon="${pkgname}" \
 	--terminal=false \
 	--categories="Development;Utility;Wine" \
-	--custom="PrefersNonDefaultGPU=true"
+	--custom="PrefersNonDefaultGPU=true" \
+	--mimetypes="application/x-source2viewer-vpk"
 }
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver/Decompiler/bin/Release/linux-x64/publish"
-	install -Dm755 Decompiler "$pkgdir/usr/bin/${pkgname}-cli"
+	install -Dm755 Source2Viewer-CLI "$pkgdir/usr/bin/${pkgname}-cli"
 
 
 	install -Dm644 "$srcdir/$_pkgname-$pkgver/GUI/bin/Release/win-x64/publish/Source2Viewer.exe" "$pkgdir/usr/lib/$pkgname/$pkgname.exe"
@@ -84,4 +75,19 @@ EOF
 
 	install -Dm644 "$srcdir/$_pkgname-$pkgver/Misc/Icons/source2viewer.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
 	install -Dm644 "$srcdir/source2viewer.desktop" "$pkgdir/usr/share/applications/source2viewer.desktop"
+
+	install -dm755 "$pkgdir/usr/share/mime/packages"
+	cat >> "$pkgdir/usr/share/mime/packages/${pkgname}.xml" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+	<mime-type type="application/x-source2viewer-vpk">
+		<comment>Valve Pack File</comment>
+		<acronym>VPK</acronym>
+		<expanded-acronym>Valve Pack File</expanded-acronym>
+		<global-deleteall/>
+		<glob pattern="*.vpk"/>
+		<glob pattern="*.VPK"/>
+	</mime-type>
+</mime-info>
+EOF
 }

@@ -1,13 +1,13 @@
 pkgbase = source2viewer
 	pkgdesc = Valve's Source 2 resource file format parser, decompiler, and exporter.
-	pkgver = 10.2
-	pkgrel = 5
+	pkgver = 11.0
+	pkgrel = 1
 	url = https://github.com/ValveResourceFormat/ValveResourceFormat
 	install = source2viewer.install
 	arch = x86_64
 	license = MIT
 	license = CC-BY-2.5
-	makedepends = dotnet-sdk-8.0-bin
+	makedepends = dotnet-sdk-bin
 	makedepends = gendesk
 	depends = glibc
 	depends = gcc-libs
@@ -19,7 +19,7 @@ pkgbase = source2viewer
 	replaces = valveresourcefromat
 	options = !strip
 	options = !debug
-	source = https://github.com/ValveResourceFormat/ValveResourceFormat/archive/refs/tags/10.2.tar.gz
-	sha256sums = 61fa22f19141f15ac3fb533b75db10bb93b55622af038d82cd7e8949b28e2ee0
+	source = https://github.com/ValveResourceFormat/ValveResourceFormat/archive/refs/tags/11.0.tar.gz
+	sha256sums = 47f37d12f178d73d568d2e3a58fb129f025e5237842a28e9d03989847c2d89f5
 
 pkgname = source2viewer
