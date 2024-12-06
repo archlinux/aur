@@ -2,8 +2,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-auralis
 _pkgname=auralis
-pkgver=0.2.5
-pkgrel=2
+pkgver=0.2.7.post1
+pkgrel=1
 pkgdesc="faster implementation for TTS models, to be used in highly async environment"
 arch=('i686' 'x86_64')
 url='https://github.com/astramind-ai/Auralis'
@@ -34,8 +34,9 @@ depends+=(
   python-mojimoji
 )
 makedepends=(python-build python-installer python-wheel)
-source=(https://files.pythonhosted.org/packages/39/bf/cb7b149d02a9dea88cff79b92d873ead02dff1a932226ac76eeb73b3de3b/auralis-${pkgver}.tar.gz)
-sha256sums=('dd7c08cf2cac4f4b4dee408a454d6f01018f694640e83102f8fdad13e03f3d2e')
+source=("https://files.pythonhosted.org/packages/79/65/c179d587cdb16d7a598179527d4e637202085d10697d879fd7951ad5c95a/auralis-${pkgver}.tar.gz")
+
+sha256sums=('d9dd5ba25b4fcc81378c83c6e57a8cd1e0609d78b71ee9a121996d55c4200cd2')
 
 build() {
   cd $_pkgname-$pkgver
