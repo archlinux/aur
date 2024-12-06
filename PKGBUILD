@@ -1,21 +1,32 @@
-# Maintainer: Yuri Iozzelli <y.iozzelli@gmail.com>
-pkgname=python-llvmlite-bin
-pkgver=0.38.0
+# Contributor: Yuri Iozzelli <y.iozzelli@gmail.com>
+# Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
+
+_name=llvmlite
+_pkgname="python-${_name}"
+pkgname="${_pkgname}-bin"
+pkgver=0.43.0
 pkgrel=1
 epoch=
 pkgdesc="A lightweight LLVM python binding for writing JIT compilers"
 arch=("x86_64")
 url="http://llvmlite.pydata.org"
 license=('GPL')
-groups=()
 depends=("python")
-provides=("python-llvmlite=$pkgver")
-conflicts=("python-llvmlite")
-source=("https://anaconda.org/numba/llvmlite/0.38.0/download/linux-64/llvmlite-0.38.0-py310he1b5a44_0.tar.bz2")
+makedepends=(
+	'python-wheel'
+	'python-hatchling'
+	'python-build'
+	'python-installer'
+	'python-setuptools'  # i think it normally should be required by python-pep517 which required by python-build/installer
+)
+_wheel="${_name}-${pkgver}-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+source=(
+	"https://files.pythonhosted.org/packages/00/5f/323c4d56e8401c50185fd0e875fcf06b71bf825a863699be1eb10aa2a9cb/${_wheel}"
+)
+sha256sums=('df6509e1507ca0760787a199d19439cc887bfd82226f5af746d6977bd9f66844')
+conflicts=("$_pkgname")
+provides=("$_pkgname")
 
 package() {
-	  cd "$srcdir/lib/python3.10/site-packages"
-	  mkdir -p "$pkgdir/usr/lib/python3.10/site-packages/"
-	  cp -r * "$pkgdir/usr/lib/python3.10/site-packages/"
+	python -m installer --destdir="$pkgdir" "${srcdir}/${_wheel}"
 }
-md5sums=('cbf89d4a4a31216b3619e0a5c024e2ac')

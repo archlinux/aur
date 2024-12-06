@@ -1,14 +1,19 @@
 pkgbase = python-llvmlite-bin
 	pkgdesc = A lightweight LLVM python binding for writing JIT compilers
-	pkgver = 0.38.0
+	pkgver = 0.43.0
 	pkgrel = 1
 	url = http://llvmlite.pydata.org
 	arch = x86_64
 	license = GPL
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
 	depends = python
-	provides = python-llvmlite=0.38.0
+	provides = python-llvmlite
 	conflicts = python-llvmlite
-	source = https://anaconda.org/numba/llvmlite/0.38.0/download/linux-64/llvmlite-0.38.0-py310he1b5a44_0.tar.bz2
-	md5sums = cbf89d4a4a31216b3619e0a5c024e2ac
+	source = https://files.pythonhosted.org/packages/00/5f/323c4d56e8401c50185fd0e875fcf06b71bf825a863699be1eb10aa2a9cb/llvmlite-0.43.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums = df6509e1507ca0760787a199d19439cc887bfd82226f5af746d6977bd9f66844
 
 pkgname = python-llvmlite-bin
