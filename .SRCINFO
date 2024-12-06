@@ -1,6 +1,6 @@
 pkgbase = tumbler-devel
 	pkgdesc = D-Bus service for applications to request thumbnails
-	pkgver = 4.19.2
+	pkgver = 4.19.3
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/tumbler/start
 	arch = i686
@@ -25,10 +25,10 @@ pkgbase = tumbler-devel
 	optdepends = libopenraw: for RAW thumbnails
 	optdepends = freetype2: for font thumbnails
 	optdepends = libgepub: for epub thumbnails
-	provides = tumbler=4.19.2
+	provides = tumbler=4.19.3
 	conflicts = tumbler
 	backup = etc/xdg/tumbler/tumbler.rc
-	source = https://archive.xfce.org/src/xfce/tumbler/4.19/tumbler-4.19.2.tar.bz2
-	sha256sums = e8ca7dafbcdc526b8ec7abcd1523311392dc743f26930c30863117d2866d2d4c
+	source = https://archive.xfce.org/src/xfce/tumbler/4.19/tumbler-4.19.3.tar.bz2
+	sha256sums = 536733405893c121c16a37a998671f886b98f8e878c8294d8c7d881ad5c90275
 
 pkgname = tumbler-devel
