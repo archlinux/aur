@@ -21,7 +21,7 @@ pkgbase = swt
 	noextract = swt-4.34-gtk-linux-x86_64.zip
 	source = https://download.eclipse.org/eclipse/downloads/drops4/R-4.34-202411201800/eclipse-platform-4.34-linux-gtk-x86_64.tar.gz
 	source = build-swt.xml
-	sha256sums = 67f6b171bf27bf62d36ce19b81758ec7886be185ca3e141b391a96506a91f010
+	sha256sums = 64726420e01acfcef3e83cffe97eb613b724408143b73aa013938365e6ff46cb
 	sha256sums = e382ae40d3a437b10a960bab81800a5e372769011ab591de2ce11426d52e6b37
 
 pkgname = swt
