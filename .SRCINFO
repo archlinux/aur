@@ -1,7 +1,7 @@
 pkgbase = python-runnotebook-git
 	pkgdesc = IPython notebook sphinx extensions
 	pkgver = 0.3.1.r7.g20ce2a7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ngoldbaum/RunNotebook
 	arch = any
 	license = BSD

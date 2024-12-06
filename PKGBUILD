@@ -5,7 +5,7 @@ _gitname=RunNotebook
 _pname=runnotebook
 pkgname=("python-${_pname}-git" "python-${_pname}-example-git")
 pkgver=0.3.1.r7.g20ce2a7
-pkgrel=1
+pkgrel=2
 pkgdesc="IPython notebook sphinx extensions"
 arch=('any')
 url="https://github.com/ngoldbaum/RunNotebook"
@@ -35,9 +35,10 @@ pkgver() {
 }
 
 prepare() {
-    cd ${srcdir}/${_gitname}/example/source
+    cd ${srcdir}/${_gitname}
 
-    sed -i "/sym.numbers.Number/s/sym.numbers/sym.core.numbers/" SymPy.ipynb
+    sed -i "s/from nbconvert/from nbconvert.exporters/" ${_gitname}/notebook_sphinxext.py
+    sed -i "/sym.numbers.Number/s/sym.numbers/sym.core.numbers/" example/source/SymPy.ipynb
 }
 
 build() {
