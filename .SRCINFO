@@ -1,6 +1,6 @@
 pkgbase = boosteroid
 	pkgdesc = Boosteroid client desktop
-	pkgver = 1.9.8
+	pkgver = 1.9.10
 	pkgrel = 4
 	url = https://boosteroid.com/downloads
 	arch = x86_64
@@ -24,13 +24,13 @@ pkgbase = boosteroid
 	depends = fontconfig
 	depends = alsa-lib
 	depends = pulseaudio-alsa
-	noextract = Boosteroid-1.9.8-x86_64.deb
+	noextract = Boosteroid-1.9.10-x86_64.deb
 	options = !debug
-	source = Boosteroid-1.9.8-x86_64.deb::https://boosteroid.com/linux/installer/boosteroid-install-x64.deb
-	source = Boosteroid-1.9.8-x86_64.md5::https://boosteroid.com/linux/installer/boosteroid-install-x64.md5
+	source = Boosteroid-1.9.10-x86_64.deb::https://boosteroid.com/linux/installer/boosteroid-install-x64.deb
+	source = Boosteroid-1.9.10-x86_64.md5::https://boosteroid.com/linux/installer/boosteroid-install-x64.md5
 	source = boosteroid.sh
-	md5sums = a5ad12536bc95e70ae8baf3e80cb34fa
-	md5sums = e4ea97766923154f094e26e762c07d77
+	md5sums = 2187075bc01bd8543ef534ab2728e69f
+	md5sums = e36043a2e4751794e8903e0cc3a71325
 	md5sums = 033cc5b68298d0fe7d36887b5db6f200
 
 pkgname = boosteroid

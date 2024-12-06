@@ -4,7 +4,7 @@
 # Contributor: Ernesto Castellotti <mail@ernestocastellotti.it>
 
 pkgname=boosteroid
-pkgver=1.9.8
+pkgver=1.9.10
 pkgrel=4
 pkgdesc="Boosteroid client desktop"
 arch=('x86_64')
@@ -24,8 +24,8 @@ source=(
     "${_custom_name}.md5::https://boosteroid.com/linux/installer/boosteroid-install-x64.md5"
     boosteroid.sh
 )
-md5sums=('a5ad12536bc95e70ae8baf3e80cb34fa'
-         'e4ea97766923154f094e26e762c07d77'
+md5sums=('2187075bc01bd8543ef534ab2728e69f'
+         'e36043a2e4751794e8903e0cc3a71325'
          '033cc5b68298d0fe7d36887b5db6f200')
 noextract=("${_custom_name}.deb")
 
