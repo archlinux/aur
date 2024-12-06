@@ -1,14 +1,14 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 # https://github.com/adamperkowski/PKGBUILDs
 pkgname=rawbit
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='A camera RAW photo preprocessor and importer'
 arch=('x86_64')
 url="https://github.com/cartercanedy/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9f27ab2fc7baf90720a8ae83109c52776b016bacc626340ccc17b0ac642f3586')
+sha256sums=('42f63cd8745e769a2b07b3c960e920973222809d566d54a519bf99951581dcbf')
 makedepends=('rustup' 'glibc' 'gcc-libs')
 depends=('libraw')
 
