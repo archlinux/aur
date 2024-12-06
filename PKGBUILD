@@ -6,7 +6,7 @@
 _pkgname=pa-dlna
 pkgname="${_pkgname}-git"
 pkgver=0.14+3.r392.20241206.e2c874b
-pkgrel=3
+pkgrel=4
 pkgdesc="Forwards audio streams to DLNA devices. For PulseAudio or PipeWira (via 'python-libpulse'). Latest git checkout."
 arch=(
   'any'
@@ -37,11 +37,10 @@ depends=(
 )
 makedepends=(
   'git'
-  'imagemagick'  # For 'make latexpdf'
   'python-build'
   'python-flit-core'
   'python-installer'
-  'python-setuptools'
+  # 'python-setuptools'
   'python-sphinx'
   'python-sphinx_rtd_theme'
   'python-wheel'
