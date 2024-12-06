@@ -16,9 +16,9 @@ depends=(
 makedepends=(
     'npm'
     'nvm'
-    'git'
     'curl'
     'pnpm'
+    'gendesk'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
