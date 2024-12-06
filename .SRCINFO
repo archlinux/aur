@@ -1,6 +1,6 @@
 pkgbase = derper-ipcert
 	pkgdesc = A tool that runs a custom Tailscale DERP server (IP certs version)
-	pkgver = 1.76.6
+	pkgver = 1.78.1
 	pkgrel = 1
 	url = https://github.com/tailscale/tailscale
 	install = derper-ipcert.install
@@ -11,22 +11,20 @@ pkgbase = derper-ipcert
 	depends = bash
 	depends = glibc
 	depends = openssl
-	provides = derper=1.76.6
+	provides = derper=1.78.1
 	conflicts = derper
 	options = !lto
 	backup = etc/conf.d/derper
 	backup = etc/derper/openssl.cnf
-	source = derper-ipcert-v1.76.6.tar.gz::https://github.com/tailscale/tailscale/archive/v1.76.6.tar.gz
+	source = derper-ipcert-v1.78.1.tar.gz::https://github.com/tailscale/tailscale/archive/v1.78.1.tar.gz
 	source = derper.conf
 	source = derper.service
 	source = openssl-cert-gen.sh
 	source = openssl.cnf
-	source = 0001-allow-usage-of-ip-certificates-by-bypassing-hostname.patch
-	sha256sums = 1603c78a6a5e9f83b278d305e1196fbfdeeb841be10ac2ddb7ea433c2701234b
+	sha256sums = dbc25cc241bb233f183475f003d5508af7b45add1ca548b35a6a6fea91fb91af
 	sha256sums = 8593d6c048f4174206cbac5d82810903eab8f0afef36c50be66a2c6018c9f988
 	sha256sums = cda0c4e9b6e3be7ca4950ae43bd29588447eba7233e52ea067eb0215ee8eed18
 	sha256sums = 8473e7dde4617d2899f97e0f1716e2bfa780837486b3c8fe1f5a9f57c9c440d9
 	sha256sums = fd981cea16dae0b6f3008a7009a2faabe1911706d06856d504a2e046fae63cc9
-	sha256sums = 66407bec41131197d2b0133dafe0e04b814b6c458052509515a1284a42046719
 
 pkgname = derper-ipcert
