@@ -4,7 +4,7 @@
 
 pkgname=mingw-w64-termcap
 pkgver=1.3.1
-pkgrel=8
+pkgrel=9
 arch=(any)
 pkgdesc="Terminal feature database (mingw-w64)"
 depends=(mingw-w64-crt)
@@ -18,7 +18,7 @@ source=(
 	"tparam_c.patch"
 )
 sha256sums=('91a0e22e5387ca4467b5bcb18edf1c51b930262fd466d5fda396dd9d26719100'
-            'e531131a7715736ca6daabe9c53c60305b9568e4580b510a065f965ad23760fe')
+	'e531131a7715736ca6daabe9c53c60305b9568e4580b510a065f965ad23760fe')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
