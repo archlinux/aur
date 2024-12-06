@@ -4,7 +4,7 @@
 
 pkgname=swt
 pkgver=4.34
-pkgrel=1
+pkgrel=2
 _date=202411201800
 pkgdesc='An open source widget toolkit for Java'
 arch=('x86_64')
