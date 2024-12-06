@@ -2,15 +2,10 @@
 
 pkgbase=deepin-unioncode-git
 pkgname=deepin-unioncode-git
-pkgver=1.2.9.r90.g24d1ace
+pkgver=1.3.17.r20.g7d53433
 pkgrel=1
 pkgdesc="IDE authored by deepin"
-arch=(x86_64
-    aarch64
-    loongarch64
-    mips64
-    sw_64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/linuxdeepin/deepin-unioncode"
 license=('GPL-3.0-only')
 groups=()
@@ -43,10 +38,12 @@ depends=(
     qt5-webengine
     syntax-highlighting5
     python
+    yaml-cpp
     zstd)
 makedepends=(
     argtable
     cmake
+    cmark
     git
     ninja
     catch2
@@ -54,16 +51,19 @@ makedepends=(
     hiredis
     llvm
     ncurses
+    libchardet
     libdwarf
     libmicrohttpd
     libutf8proc
     libxi
-    lxqt-build-tools
+    lxqt-build-tools-qt5
     qt5-tools
+    qtermwidget
     openssl
+    uchardet
     systemd
     pkgconf
-    )
+)
 checkdepends=()
 optdepends=()
 source=("${pkgname}::git+${url}.git")
@@ -72,14 +72,14 @@ options=()
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^[vV]//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
@@ -87,7 +87,7 @@ build() {
     export LDFLAGS="-Wl,-z,relro,-z,now -Wl,-z,shstk -Wl,--no-as-needed"
     cd "${srcdir}/${pkgname}"
 
-# See：https://wiki.archlinux.org/title/CMake_package_guidelines
+    # See：https://wiki.archlinux.org/title/CMake_package_guidelines
     # cmake -DCMAKE_BUILD_TYPE=None \
     cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -102,6 +102,4 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
-    install -Dm0644 "${srcdir}/${pkgname}"/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -m0644 "${srcdir}/${pkgname}"/LICENSES/* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
