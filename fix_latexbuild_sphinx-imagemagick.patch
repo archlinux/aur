@@ -1,8 +1,0 @@
-diff -rU1 pa-dlna.orig/docs/source/conf.py pa-dlna/docs/source/conf.py
---- pa-dlna.orig/docs/source/conf.py	2024-12-05 11:13:33.939998445 +0100
-+++ pa-dlna/docs/source/conf.py	2024-12-05 11:13:51.589998438 +0100
-@@ -26,3 +26,3 @@
- 
--extensions = []
-+extensions = ['sphinx.ext.imgconverter']
- templates_path = ['_templates']
