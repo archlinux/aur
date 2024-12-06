@@ -2,7 +2,7 @@
 
 _name=Nero-umu
 pkgname=nero-umu
-pkgver=0.91111
+pkgver=0.92
 pkgrel=1
 pkgdesc='A fast and efficient umu manager, just as the Romans designed.'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
             'winetricks: Fallback for Proton runners without embedded protonfixes'
 )
 source=("https://github.com/SeongGino/Nero-umu/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('32e572c1ccb539b9173b81200d4350c7')
+md5sums=('9d36ba66b0caae0b1b94ddec901b1a0d')
 
 build() {
   mkdir "$srcdir/$_name-$pkgver/build"
