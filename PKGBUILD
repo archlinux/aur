@@ -7,7 +7,7 @@
 _pkgname=yesplaymusic
 pkgname=yesplaymusic-plus
 pkgver=0.4.9
-pkgrel=5
+pkgrel=6
 pkgdesc="A third-party music player for Netease Music"
 arch=('x86_64')
 url="https://github.com/qier222/YesPlayMusic"
@@ -44,6 +44,7 @@ makedepends=(
     'curl'
     'yarn'
     'gcc'
+    'python-setuptools'
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/qier222/YesPlayMusic/archive/refs/tags/v$pkgver.tar.gz"

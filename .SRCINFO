@@ -1,7 +1,7 @@
 pkgbase = yesplaymusic-plus
 	pkgdesc = A third-party music player for Netease Music
 	pkgver = 0.4.9
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/qier222/YesPlayMusic
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = yesplaymusic-plus
 	makedepends = curl
 	makedepends = yarn
 	makedepends = gcc
+	makedepends = python-setuptools
 	depends = electron
 	provides = yesplaymusic=0.4.9
 	conflicts = my-yesplaymusic-bin
