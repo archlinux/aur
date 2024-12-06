@@ -1,6 +1,6 @@
 pkgbase = python-huggingface-hub
 	pkgdesc = All the open source things related to the Hugging Face Hub
-	pkgver = 0.26.3
+	pkgver = 0.26.5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/huggingface/huggingface_hub
@@ -28,7 +28,7 @@ pkgbase = python-huggingface-hub
 	optdepends = python-pytorch
 	optdepends = python-safetensors
 	optdepends = python-tensorflow
-	source = huggingface_hub-0.26.3.tar.gz::https://github.com/huggingface/huggingface_hub/archive/refs/tags/v0.26.3.tar.gz
-	sha512sums = 7bc37c76878cc65a4cfeda16164b3daa118206ffee2acec9bc7be7b020d6f7f44811295f357f05d40d9c4fa37567f1c31ac9643ffc98d8365047db1d32aa44e9
+	source = huggingface_hub-0.26.5.tar.gz::https://github.com/huggingface/huggingface_hub/archive/refs/tags/v0.26.5.tar.gz
+	sha512sums = e151e216b681b72ecb28e82d05bb5c6edf25bbbd34d6ce10d2896b54d9fdaf5ec062b2f777a2e5c61fbc92c901351adfb1f9fcfac2efb360e2a3076d5dd08c34
 
 pkgname = python-huggingface-hub
