@@ -1,0 +1,13 @@
+pkgbase = file-time-machine-bin
+	pkgdesc = An unstable snapshotting backup cli tool written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.timothyhay.org/public/File-time-machine
+	arch = x86_64
+	license = GPL-3.0
+	provides = file-time-machine
+	conflicts = file-time-machine
+	source = https://github.com/timothyhay256/File-Time-Machine/releases/download/v0.1.0/file-time-machine-0.1.0-x86_64.tar.gz
+	sha256sums = 48f2d5344929b0b9c6e29eca805a481f02916e1b9a512360daa0b8862e1cb798
+
+pkgname = file-time-machine-bin
