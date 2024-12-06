@@ -1,5 +1,5 @@
 pkgbase = wechat
-	pkgdesc = 微信是一种生活方式. 可选沙盒支持.
+	pkgdesc = 微信是一种生活方式. This is a repackage of the official WeChat which includes an optional sandbox support
 	pkgver = 4.0.0.30
 	pkgrel = 1
 	url = https://weixin.qq.com/
