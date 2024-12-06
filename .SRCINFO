@@ -1,0 +1,15 @@
+pkgbase = clitris
+	pkgdesc = A command line interface block stacker
+	pkgver = 1
+	pkgrel = 1
+	url = http://codeberg.org/lapingvino/clitris/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+	source = http://codeberg.org/lapingvino/clitris/archive/1.tar.gz
+	sha256sums = a925372671e9c5fb4bf57c0640f156901aa60831f283759fa0a2e42e6cd99d06
+
+pkgname = clitris
