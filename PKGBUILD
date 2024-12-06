@@ -15,7 +15,7 @@ pkgver=1.8.2.r2661.gea83e19
 pkgrel=1
 pkgdesc="Simple daemon to allow session software to update firmware (StarLabs version)"
 arch=(x86_64)
-url='https://github.com/fwupd/fwupd'
+url='https://github.com/StarLabsLtd/fwupd'
 license=(LGPL-2.1-or-later)
 depends=(
   bash
@@ -70,7 +70,7 @@ makedepends=(
   git
 )
 source=(
-  "${_srcdir}::git+https://github.com/StarLabsLtd/fwupd.git#branch=starlabs"
+  "${_srcdir}::git+${url}.git#branch=starlabs"
   fwupd.sysusers
 )
 sha512sums=('SKIP'
