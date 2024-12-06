@@ -1,6 +1,6 @@
 pkgbase = eclipse-java-bin
 	pkgdesc = Highly extensible IDE (Java version)
-	pkgver = 4.33
+	pkgver = 4.34
 	pkgrel = 1
 	epoch = 2
 	url = https://www.eclipse.org/
@@ -10,14 +10,14 @@ pkgbase = eclipse-java-bin
 	depends = java-environment>=21
 	depends = unzip
 	depends = webkit2gtk
-	provides = eclipse=4.33-1
+	provides = eclipse=4.34-1
 	conflicts = eclipse
 	options = !strip
 	source = eclipse.desktop
 	sha512sums = 676d79e18ef847fc27efc68d85e5f3c3af3eaaa9946acc98161998a3a0771d2a72c7197bdb6d8c180e1b59c2a0bb591150d15114b416c1a0a0f5dbdb06bdb13e
-	source_x86_64 = eclipse-java-2024-09-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2024-09/R/eclipse-java-2024-09-R-linux-gtk-x86_64.tar.gz&r=1
-	sha512sums_x86_64 = 24ff70aafc4a1f3d91c2f391f35cde3dcc0b0356851747b5d7678a746425ede2f395a7f10a212ec8a04633bb1fccf1fec89de9c0c07c066adb7621ccc8d13050
-	source_aarch64 = eclipse-java-2024-09-R-linux-gtk-aarch64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2024-09/R/eclipse-java-2024-09-R-linux-gtk-aarch64.tar.gz&r=1
-	sha512sums_aarch64 = c58c4959f6b66ea8b8c1135f01bf507e6c039fddf1e5530f0ff591042a71ea1f12feb195ea18bdd5c9b6b7138339b127b7d253bbef266d70dbd2170a5b1c2b41
+	source_x86_64 = eclipse-java-2024-12-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2024-12/R/eclipse-java-2024-12-R-linux-gtk-x86_64.tar.gz&r=1
+	sha512sums_x86_64 = dae3fdace259f237afaadad98ac3c16bf571eb7e2704200e5159de9a6bde594c4112e983dd0eac3c35c0fd5325f1cf9d798e2fd511a5059fc02ceca71391927c
+	source_aarch64 = eclipse-java-2024-12-R-linux-gtk-aarch64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2024-12/R/eclipse-java-2024-12-R-linux-gtk-aarch64.tar.gz&r=1
+	sha512sums_aarch64 = 03f0cd430c106995396acd4cb9a59037174bab75eee0089521b4872281b837c1ed5e6975d8e942ff96419ef4c87158fd4f0936f7dac2d6229197c4c79ef337f1
 
 pkgname = eclipse-java-bin
