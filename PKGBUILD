@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GoFKernel
-_pkgver=2.1-1
+_pkgver=2.1-3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=11
+pkgrel=1
 pkgdesc="Testing Goodness-of-Fit with the Kernel Density Estimator"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2874ad08b0f92ea2f286e1f812881755')
-b2sums=('e952063c4d9afb72fe43190d2463a7a02758af29f227e08bbb9c4d9e14fa37c5f16abf78b1e0095c15ec539898dfecddf354bda626a5d11708d9dae09f182b42')
+md5sums=('534187e40860b1f0ef40298fa58d932d')
+b2sums=('4c674805ab0c5646b3ad8a94420c61187f583893ff9335185d89e91481b2fa3ffefdc20584890f22b42d39975851853bb8334aec093d18a8754738dc9edbd690')
 
 build() {
   mkdir build
