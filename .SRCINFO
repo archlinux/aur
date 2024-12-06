@@ -1,18 +1,18 @@
 pkgbase = ember-zli
 	pkgdesc = Interact with EmberZNet-based adapters using zigbee-herdsman 'ember' driver
-	pkgver = 2.9.1
-	pkgrel = 2
+	pkgver = 2.9.2
+	pkgrel = 1
 	url = https://github.com/Nerivec/ember-zli
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = GPL-3.0
 	depends = nodejs
-	source_x86_64 = https://github.com/Nerivec/ember-zli/releases/download/v2.9.1/ember-zli-v2.9.1-6f85ecb-linux-x64.tar.gz
-	sha256sums_x86_64 = a40407ee8c994e27588f4108923d8f08a9a09aaae9dbdd2a5a0abbfeff2b44cb
-	source_armv7h = https://github.com/Nerivec/ember-zli/releases/download/v2.9.1/ember-zli-v2.9.1-6f85ecb-linux-arm.tar.gz
-	sha256sums_armv7h = 2194264641b22090d9b702f643cfba55e9aaec5300ff22b184345561975e06d2
-	source_aarch64 = https://github.com/Nerivec/ember-zli/releases/download/v2.9.1/ember-zli-v2.9.1-6f85ecb-linux-arm64.tar.gz
-	sha256sums_aarch64 = 065fea75d63e42a340f28eb1e733cd071f1eb589dbca9e8ab9f40345d3235e24
+	source_x86_64 = https://github.com/Nerivec/ember-zli/releases/download/v2.9.2/ember-zli-v2.9.2-df1e655-linux-x64.tar.gz
+	sha256sums_x86_64 = add87b4bf55767c130800f00ec4af90ac97703a1a915f239958c9e45b84705ca
+	source_armv7h = https://github.com/Nerivec/ember-zli/releases/download/v2.9.2/ember-zli-v2.9.2-df1e655-linux-arm.tar.gz
+	sha256sums_armv7h = f6550b1cc277d04200dcbe7eeb182a05a3c421bae820024b5528c9858f9994cb
+	source_aarch64 = https://github.com/Nerivec/ember-zli/releases/download/v2.9.2/ember-zli-v2.9.2-df1e655-linux-arm64.tar.gz
+	sha256sums_aarch64 = 01fd69bdfe41ad57fb60ac01c3289d3827b9d8f082ee126dac76c0abd000119f
 
 pkgname = ember-zli
