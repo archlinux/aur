@@ -127,7 +127,8 @@ build() {
   LDFLAGS=$(printf '%s' "$LDFLAGS" | sed 's/-fuse-ld=[^[:space:]]*//')
   export LDFLAGS
   export MACH_USE_SYSTEM_PYTHON=1
-  export LC_ALL=C.UTF-8
+  # Fix build on non utf-8 charsets
+  LC_ALL=C.UTF-8 \
   ./mach build
 }
 
@@ -135,7 +136,7 @@ package() {
   cd "$_archive"
 
   # shellcheck disable=SC1007
-  DESTDIR="$pkgdir" INSTALL_SDK= ./mach install
+  LC_ALL=C.UTF-8 DESTDIR="$pkgdir" INSTALL_SDK= ./mach install
 
   rm -rf "$pkgdir"/usr/lib/seamonkey/{dictionaries,hyphenation}
   ln -s /usr/share/hunspell "$pkgdir/usr/lib/seamonkey/dictionaries"
