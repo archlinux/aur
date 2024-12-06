@@ -1,19 +1,20 @@
 # Maintainer: Andrew Koidan <deathangel908@gmail.com>
+# Contributor: Alex Hirzel <alex at hirzel period us>
 pkgname=cf-terraforming
 pkgbase=cf-terraforming
-pkgver=0.20.0
-pkgrel=2
+pkgver=0.21.0
+pkgrel=1
 pkgdesc="Cloudflare Terraforming"
 url="https://github.com/cloudflare/cf-terraforming"
-license=("unknown")
+license=("MPL-2.0")
 arch=('x86_64')
 
 source=(
     "${pkgname}-${pkgver}-amd64.tar.gz::https://github.com/cloudflare/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_amd64.tar.gz"
 )
 
-md5sums=('b58f4d473c9e94cfb1eee1d647463613')
-sha256sums=('5916f2c1bccfa26e324c704ed7c31946062cc0dd37bd2ae89576fc9fc2167136')
+md5sums=('0ffcc2ab2e250e9cfcf536a9e1b4bdfe')
+sha256sums=('bbedbe65b5cd5c9f341312078fc99181e569771157e9253c252fd0c484d4c1b2')
 
 prepare() {
   tar -xvzf "${pkgname}-${pkgver}-amd64.tar.gz"
