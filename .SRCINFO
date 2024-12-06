@@ -1,6 +1,6 @@
 pkgbase = switchhosts-git
-	pkgdesc = An app for managing hosts file,and switch hosts quickly ! Use system-wide electron.
-	pkgver = 4.2.0.r10.g5c20ce1
+	pkgdesc = An app for managing hosts file,and switch hosts quickly ! (Use system-wide electron)
+	pkgver = 4.2.0.r13.ge59d97e
 	pkgrel = 1
 	url = https://github.com/oldj/SwitchHosts
 	arch = any

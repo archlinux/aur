@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=switchhosts-git
 _pkgname=SwitchHosts
-pkgver=4.2.0.r10.g5c20ce1
+pkgver=4.2.0.r13.ge59d97e
 _electronversion=30
 _nodeversion=22
 pkgrel=1
-pkgdesc="An app for managing hosts file,and switch hosts quickly ! Use system-wide electron."
+pkgdesc="An app for managing hosts file,and switch hosts quickly ! (Use system-wide electron)"
 arch=('any')
 url="https://github.com/oldj/SwitchHosts"
 license=('Apache-2.0')
@@ -62,13 +62,13 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/app\.icns/app\.png/g;s/'AppImage:x64', 'AppImage:arm64', 'deb:x64', 'deb:arm64'/'dir'/g" scripts/make.js
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install --force
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm run make:linux
