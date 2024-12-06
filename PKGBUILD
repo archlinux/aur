@@ -2,14 +2,13 @@
 # Contributor: Ciro Scognamiglio <ciro.scognamiglio88 at gmail dot com>
 
 pkgname='bzr-player'
-pkgver='2.0.75'
-pkgrel='4'
+pkgver='2.0.76'
+pkgrel='1'
 pkgdesc='Audio player supporting a wide array of multi-platform exotic file formats'
-arch=('i686' 'x86_64')
-url="http://bzrplayer.blazer.nu"
+arch=('x86_64')
+url="https://bzrplayer.blazer.nu"
 license=('GPL3')
 depends=('wine' 'hicolor-icon-theme')
-optdepends=('lib32-pipewire: PipeWire audio driver')
 makedepends=('gendesk' 'libarchive')
 options=(!strip)
 _zip="BZR-Player-$pkgver.zip"
@@ -20,7 +19,7 @@ source=("$_zip::https://github.com/aargirakis/BZRPlayer/releases/download/${pkgv
   "https://raw.githubusercontent.com/aargirakis/BZRPlayer/refs/heads/main/src/inst/$_setup"
   "https://raw.githubusercontent.com/aargirakis/BZRPlayer/refs/heads/main/src/inst/$_mimes")
 noextract=("$_zip")
-sha256sums=('40656020c67041390682bc397a71fb37784da3deef4e5201b73fea9c93b76e06'
+sha256sums=('6c54444a06d5b9fa202ee5dbf854bb1c697bd19174dadec3f5b51970e8e28ddb'
   'SKIP'
   'SKIP'
   'SKIP')

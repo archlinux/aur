@@ -25,12 +25,6 @@ bzr2_path_home="$HOME/.$bzr2"
 export WINEPREFIX="$bzr2_path_home/wine"
 export WINEDLLOVERRIDES="mscoree=" # disable mono
 
-if [ "$(uname -m)" == "x86_64" ]; then
-  export WINEARCH="win64"
-else
-  export WINEARCH="win32"
-fi
-
 if [ ! -d "$WINEPREFIX" ]; then
   mkdir -p "$WINEPREFIX"
 
@@ -38,11 +32,7 @@ if [ ! -d "$WINEPREFIX" ]; then
   WINEDEBUG=-all wine reg add "HKEY_CURRENT_USER\Software\Wine\WineDbg" /v ShowCrashDialog /t REG_DWORD /d 0 /f
 
   # disable wine debugger (winetricks autostart_winedbg=disabled)
-
-  # win32
   WINEDEBUG=-all wine reg add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\AeDebug" /v Debugger /t REG_SZ /d "false" /f
-  # win64
-  WINEDEBUG=-all wine reg add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\AeDebug" /v Debugger /t REG_SZ /d "false" /f
 
   # --- app data setup ---
   ln -s "$bzr2_path_sys/BZRPlayer.exe" "$bzr2_path_home/$bzr2"
