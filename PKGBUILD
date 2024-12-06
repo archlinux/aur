@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.11.9.arch1
+pkgver=6.12.2.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -38,10 +38,11 @@ source=(
   more-uarches-for-kernel-6.1+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/more-ISA-levels-and-uarches-for-kernel-6.1.79%2B.patch"
   
   # actual kernel patch series
-  0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.11/asus-patch-series.patch"
+  # 0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.11/asus-patch-series.patch"
+  asus-patch-series.patch
   0001-acpi-proc-idle-skip-dummy-wait.patch
   0002-mt76_-mt7921_-Disable-powersave-features-by-default.patch  
-  0003-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
+#  0003-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
   0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0005-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0006-mediatek-pci-reset.patch
@@ -56,18 +57,17 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('75658a7aa3bd9598c96ee1e5862c5e1d34fced75c28d825c727a1510a6f384b4'
+sha256sums=('bb1e0710c73e877b1f3005be7301734903636be8ef1700d3b12106e8f3403d8b'
             'SKIP'
-            '8538475bdb3b4684082217a9282d8d149538b6b6e5a6b3b5efa12217ae1f69a6'
+            'c2f13d6540d636b9ba7990e20bc8c9b718650776ff0c75320934f10095f0ee78'
             'SKIP'
-            'c23f762f615dd4f68161270e19d182a1ade4cdd11ebae6f46f7ca1974d840a20'
+            '04f20ec52391bbd185d66ccb9bba7f50745ab2640e822124a385c58d01a2eaad'
             'a8afb5f75dde2eb038bdd2ec4cd2f8c600d6357ae64960c0df5f2c6c168514ce'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             '48e12a587e3a93e73ca2bba9f3b418d70c0a56592581d2705384a07243c70d61'
-            '8e5592a4fd78a3a8422f6d55f7ca38bc20980faa0622512bfe9fa24ca0b85729'
+            '8f7e5ca2fe1c0d4b4c6227a9e281a14fb635f5dbeae4ab98cf9304042f0cc1c4'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             'ed242f4be3f8eaade2a1d42157c5c6c86281917a08ae43221b088fafdc775ee7'
-            '40b7c727a41a84ceadab15a50067f213d8959b02157821cfdede7bb138637d6b'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
@@ -231,8 +231,9 @@ _package() {
     kmod
   )
   optdepends=(
-    'wireless-regdb: to set the correct wireless channels of your country'
     'linux-firmware: firmware images needed for some devices'
+    'scx-scheds: to use sched-ext schedulers'
+    'wireless-regdb: to set the correct wireless channels of your country'
   )
   provides=(
     KSMBD-MODULE
