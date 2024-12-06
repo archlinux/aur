@@ -7,7 +7,7 @@
 _pkgname=yesplaymusic
 pkgname=yesplaymusic-plus
 pkgver=0.4.9
-pkgrel=4
+pkgrel=5
 pkgdesc="A third-party music player for Netease Music"
 arch=('x86_64')
 url="https://github.com/qier222/YesPlayMusic"
@@ -62,6 +62,42 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 
+# 获取国家代码
+_get_country_code() {
+    local response
+    # 尝试不使用代理
+    response=$(curl -s --noproxy ip-api.com --max-time 2 http://ip-api.com/json)
+    if [[ $? -eq 0 && -n "$response" ]]; then
+        echo "$response" | jq -r .countryCode
+        return 0
+    fi
+
+    # 尝试使用代理
+    response=$(curl -s --max-time 2 http://ip-api.com/json)
+    if [[ $? -eq 0 && -n "$response" ]]; then
+        echo "$response" | jq -r .countryCode
+        return 0
+    fi
+
+    # 尝试备用服务不使用代理
+    response=$(curl -s --noproxy ipinfo.io --max-time 2 http://ipinfo.io/json)
+    if [[ $? -eq 0 && -n "$response" ]]; then
+        echo "$response" | jq -r .country
+        return 0
+    fi
+
+    # 尝试备用服务使用代理
+    response=$(curl -s --max-time 2 http://ipinfo.io/json)
+    if [[ $? -eq 0 && -n "$response" ]]; then
+        echo "$response" | jq -r .country
+        return 0
+    fi
+
+    # 如果所有方法都失败，返回空并发出警告
+    echo "Failed to retrieve country code from all services." >&2
+    return 1
+}
+
 prepare() {
     export SYSTEM_ELECTRON_VERSION="$(electron -v | sed 's/v//g')"
     # 检查最低electron版本
@@ -91,16 +127,19 @@ build() {
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
 
-    # 不使用代理而且更换一个ip查询接口 --noproxy
-    if [[ "$(curl -s --noproxy '*' --max-time 2 http://ip-api.com/json | jq -r .countryCode)" == "CN" ]]; then
+    # 获取国家代码
+    countryCode=$(_get_country_code)
+
+    if [[ "$countryCode" == "CN" ]]; then
+        echo "Using mirror in China"
         {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
             echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
             echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
-            echo "cacheFolder "${srcdir}"/.yarn/cache"
-            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
-            echo "globalFolder "${srcdir}"/.yarn/global"
+            echo "cacheFolder \"${srcdir}/.yarn/cache\""
+            echo "pluginsFolder \"${srcdir}/.yarn/plugins\""
+            echo "globalFolder \"${srcdir}/.yarn/global\""
             echo 'useHardlinks true'
             #echo 'buildFromSource true'
             echo 'linkWorkspacePackages true'
@@ -108,6 +147,12 @@ build() {
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g;s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+    elif [[ -z "$countryCode" ]]; then
+        echo "Empty countryCode from ip-api.com and ipinfo.io"
+    elif [[ $? -ne 0 ]]; then
+        echo "Failed to retrieve country code from all services. Proceeding without proxy settings."
+    else 
+        echo "No proxy"
     fi
 
     # 设置较高并发数
