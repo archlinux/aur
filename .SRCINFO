@@ -1,8 +1,8 @@
 pkgbase = python-langchain
 	pkgdesc = Building applications with LLMs through composability
-	pkgver = 0.3.9
+	pkgver = 0.3.10
 	pkgrel = 1
-	url = https://github.com/langchain-ai/langchain
+	url = https://github.com/langchain-ai/langchain/tree/master/libs/langchain
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -20,7 +20,7 @@ pkgbase = python-langchain
 	depends = python-requests
 	depends = python-sqlalchemy
 	depends = python-tenacity
-	source = langchain-0.3.9.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain/langchain-0.3.9.tar.gz
-	sha256sums = 4950c4ad627d0aa95ce6bda7de453e22059b7e7836b562a8f781fb0b05d7294c
+	source = langchain-0.3.10.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain/langchain-0.3.10.tar.gz
+	sha256sums = aef0f9bdaf4a4d3d50aec348438135987bda1d83070b49f77032f561d3a761d8
 
 pkgname = python-langchain
