@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mission-center
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Monitor your CPU, Memory, Disk, Network and GPU usage"
 arch=('x86_64' 'aarch64')
 url="https://missioncenter.io"
@@ -30,7 +30,7 @@ prepare() {
 build() {
   CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
-  arch-meson "$pkgname-v$pkgver" build
+  arch-meson "$pkgname-v$pkgver" build --buildtype=release
   meson compile -C build
 }
 
