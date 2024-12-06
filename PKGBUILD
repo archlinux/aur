@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=commas-git
 _pkgname=Commas
-pkgver=0.35.0.r2.g2af4fd3
-_electronversion=32
+pkgver=0.36.0.r3.gdf6cf10
+_electronversion=33
 _nodeversion=20
 pkgrel=1
-pkgdesc="A hackable, pluggable terminal, and also a command runner.Use system-wide electron."
+pkgdesc="A hackable, pluggable terminal, and also a command runner.(Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/CyanSalt/commas"
 license=('ISC')
@@ -13,6 +13,7 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 depends=(
     "electron${_electronversion}"
+    'python'
 )
 makedepends=(
     'gendesk'
@@ -20,6 +21,7 @@ makedepends=(
     'nvm'
     'npm'
     'curl'
+    'pnpm'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
@@ -50,29 +52,32 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
+    electronDist="/usr/lib/electron${_electronversion}"
     #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
-        echo "cache=${srcdir}/.npm_cache"
+        echo 'link-workspace-packages=true'
+        echo 'fetch-retry-maxtimeout=10000'
+        echo "cache-dir="${srcdir}"/.pnpm_cache"
+        echo "store-dir="${srcdir}"/.pnpm_store"
+        echo "shamefully-hoist=true"
+        echo "virtual-store-dir-max-length=80"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        sed -i "/registry.npmjs.org/d" .npmrc
-        sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" package-lock.json
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
+        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
+        sed -i "/registry.npmjs.org/d" .npmrc
     fi
-    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/" {} \;
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
-    NODE_ENV=development    npm install -D ansi-styles supports-color
-    NODE_ENV=development    npm install
-    NODE_ENV=production     npm run build
+    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    NODE_ENV=development    pnpm install
+    NODE_ENV=production     pnpm run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
