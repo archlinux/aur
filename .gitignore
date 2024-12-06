@@ -1,7 +1,0 @@
-pkg
-src
-*.xz
-*.zip
-.*
-!.SRCINFO
-!.gitignore

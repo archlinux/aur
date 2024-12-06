@@ -1,13 +1,15 @@
 pkgbase = jameica-nightly
 	pkgdesc = Free Java application platform
 	pkgver = 2.11.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.willuhn.de/products/jameica/
 	arch = x86_64
 	license = GPL2
 	makedepends = unzip
 	depends = java-runtime>=11
 	depends = gtk3
+	optdepends = webkit2gtk-4.1: Required for mashup plugin used as new scripting platform for non-HBCI accounts (credit cards etc)
+	optdepends = java-jce_ustrength: Required for mashup plugin used as new scripting platform for non-HBCI accounts (credit cards etc)
 	conflicts = jameica
 	source = http://www.willuhn.de/products/jameica/releases/nightly/jameica-linux64-2.11.0-nightly.zip
 	source = jameica.desktop
@@ -15,4 +17,3 @@ pkgbase = jameica-nightly
 	sha256sums = b0221e7463407243d2922107d0de4c437e2037ab0639e2961c443db4f15725fc
 
 pkgname = jameica-nightly
-
