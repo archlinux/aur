@@ -1,0 +1,4 @@
+post_install() {
+    printf "==== Python-accesser-git Notes ====\n"
+    printf "You must manually trust the SSL certificate manually after the program first runs. \n"
+}

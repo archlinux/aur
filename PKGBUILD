@@ -1,8 +1,8 @@
 # Maintainer: Sving1024 <sving1024@outlook.com>
 _name=accesser
 pkgname=python-${_name}-git
-pkgver=0.9.5.r0.g6b9a557
-pkgrel=4
+pkgver=0.10.0.r3.gc73e35a
+pkgrel=1
 arch=('any')
 pkgdesc="A tool for solving SNI RST"
 url="https://github.com/URenko/Accesser"
@@ -44,6 +44,8 @@ backup=(
     'etc/accesser/rules.toml'
 )
 
+install="${pkgname}.install"
+
 pkgver() {
     cd ${srcdir}/${_name}
   # cutting off 'foo-' prefix that presents in the git tag
@@ -56,10 +58,11 @@ build() {
 }
 
 package() {
-    cd $_name
+    pushd ${srcdir}/$_name
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 "accesser/pac" "${pkgdir}/etc/accesser/pac"
     install -Dm644 "accesser/config.toml" "${pkgdir}/etc/accesser/config.toml"
-    cd ..
+    install -Dm644 "accesser/rules.toml" "${pkgdir}/etc/accesser/rules.toml"
+    popd
     install -Dm644 "accesser.service" "${pkgdir}/usr/lib/systemd/system/accesser.service"
 }
