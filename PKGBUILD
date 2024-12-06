@@ -4,12 +4,13 @@
 
 pkgname=wiki-js
 _pkgname=wiki-js
-pkgver=2.5.303
+pkgver=2.5.305
 pkgrel=1
 pkgdesc="Wiki.js | A modern, lightweight and powerful wiki app built on Node.js"
 license=('AGPL3')
 arch=('any')
 depends=('nodejs>=12.0.0')
+makedepends=('npm')
 optdepends=('mariadb' 'postgresql' 'sqlite')
 backup=('etc/wiki-js/config.yml')
 url='https://github.com/Requarks/wiki'
@@ -20,7 +21,7 @@ source=(
 	"wiki-js.tmpfiles.d"
 	"config.sample.yml.patch"
 )
-sha256sums=('269bf80fe95d18fbc9cfef1cc0d86b982f888b9746d143930b924858fc14cef9'
+sha256sums=('6de3fd9359ac26383d2106d4fc29b34e876332f5275ab2d8730d0495e4753899'
             '39bfd1390d3f2eba2522d750b89176aeefcdfdd1e3b2ba4d10276f1b7d3c55e8'
             '4e7fc467c43f5de2d1a355036abccb2ba23a6b10e1a93ae2d645e4352646bd55'
             '501ee03026279e6d01736767a590dd97ada35240896fc90a7a7c67c0a890b4d2'
@@ -29,6 +30,11 @@ sha256sums=('269bf80fe95d18fbc9cfef1cc0d86b982f888b9746d143930b924858fc14cef9'
 prepare() {
 	cd "$srcdir"
 	patch config.sample.yml config.sample.yml.patch
+}
+
+build() {
+       cd "$srcdir"
+       npm rebuild sqlite3
 }
 
 package() {

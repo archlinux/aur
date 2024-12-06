@@ -1,21 +1,22 @@
 pkgbase = wiki-js
 	pkgdesc = Wiki.js | A modern, lightweight and powerful wiki app built on Node.js
-	pkgver = 2.5.303
+	pkgver = 2.5.305
 	pkgrel = 1
 	url = https://github.com/Requarks/wiki
 	arch = any
 	license = AGPL3
+	makedepends = npm
 	depends = nodejs>=12.0.0
 	optdepends = mariadb
 	optdepends = postgresql
 	optdepends = sqlite
 	backup = etc/wiki-js/config.yml
-	source = wiki-js-2.5.303.tar.gz::https://github.com/requarks/wiki/releases/download/v2.5.303/wiki-js.tar.gz
+	source = wiki-js-2.5.305.tar.gz::https://github.com/requarks/wiki/releases/download/v2.5.305/wiki-js.tar.gz
 	source = wiki-js.service
 	source = wiki-js.sysusers.d
 	source = wiki-js.tmpfiles.d
 	source = config.sample.yml.patch
-	sha256sums = 269bf80fe95d18fbc9cfef1cc0d86b982f888b9746d143930b924858fc14cef9
+	sha256sums = 6de3fd9359ac26383d2106d4fc29b34e876332f5275ab2d8730d0495e4753899
 	sha256sums = 39bfd1390d3f2eba2522d750b89176aeefcdfdd1e3b2ba4d10276f1b7d3c55e8
 	sha256sums = 4e7fc467c43f5de2d1a355036abccb2ba23a6b10e1a93ae2d645e4352646bd55
 	sha256sums = 501ee03026279e6d01736767a590dd97ada35240896fc90a7a7c67c0a890b4d2
