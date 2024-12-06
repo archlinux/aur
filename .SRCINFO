@@ -25,7 +25,7 @@ pkgbase = pimpmyrice
 	provides = pimpmyrice
 	conflicts = pimpmyrice-git
 	conflicts = pimpmyrice
-	source = pimpmyrice-0.2.1.tar.gz::https://pypi.python.org/packages/source/p//-0.2.1.tar.gz
+	source = pimpmyrice-0.2.1.tar.gz::https://pypi.python.org/packages/source/p/pimpmyrice/pimpmyrice-0.2.1.tar.gz
 	md5sums = SKIP
 
 pkgname = pimpmyrice

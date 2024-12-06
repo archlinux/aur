@@ -30,20 +30,17 @@ makedepends=(
    "python-wheel"
    "python-setuptools"
 )
-source=("$pkgname-$pkgver.tar.gz::https://pypi.python.org/packages/source/p/$_name/$_name-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://pypi.python.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=("SKIP")
 
-prepare() {
-    git -C "${srcdir}/pimpmyrice" clean -dfx
-}
 
 build() {
-    cd pimpmyrice
+    cd "$srcdir/$pkgname-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd pimpmyrice
+    cd "$srcdir/$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 
     # license
