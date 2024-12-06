@@ -98,7 +98,7 @@ build() {
   python -m build --wheel --no-isolation
 
   cd docs
-  for _target in man info text html; do # qthelp
+  for _target in man info text html; do # qthelp # latexpdf (do not build here since it needs a lot of dependencies; we download prebuilt PDF from upstream instead.)
     make -j1 "${_target}"
   done
   gzip -9 build/man/*
