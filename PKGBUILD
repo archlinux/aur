@@ -2,7 +2,7 @@
 
 _pkgname=django-soft-delete
 pkgname="python-${_pkgname}"
-pkgver=1.0.15
+pkgver=1.0.16
 pkgrel=1
 pkgdesc="Soft delete models, managers, queryset for Django"
 arch=("any")
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-django')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('36cf26a9eaa5f4c0fdb5cb6367ea183e91b7f73783cad173e4071a4747dd1277')
+sha256sums=('cc40398ccd869c75a6d6ba7f526e16c4afe2b0c0811c213a318d96bb4c58a787')
 
 build() {
     cd "${_pkgname}-${pkgver}"
