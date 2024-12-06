@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: Kyuunex <kyuunex at protonmail dot ch>
 # Contributor: noonov <noonov@gmail.com>
 
 pkgname=ttf-monapo
 pkgver=20170722
 pkgrel=3
-pkgdesc="A Japanese font for viewing Japanese ascii arts properly"
+pkgdesc="A Japanese font for viewing Japanese ascii arts properly. Combined font that uses ipagp.ttf and mona.ttf."
 arch=('any')
 url="https://github.com/utuhiro78/modified-fonts"
 license=('IPA')
