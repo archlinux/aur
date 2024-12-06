@@ -1,6 +1,6 @@
 # Maintainer: daddodev
 pkgname=pimpmyrice-git
-provides=("pimpmyrice-git")
+provides=("pimpmyrice")
 conflicts=("pimpmyrice-git" "pimpmyrice")
 pkgdesc=""
 url="https://github.com/daddodev/pimpmyrice"
