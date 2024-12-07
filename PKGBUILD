@@ -3,7 +3,7 @@ _gh_api="https://api.github.com"
 _repo="francescmm/GitQlient"
 
 pkgname=gitqlient
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="GitQlient: Multi-platform Git client written with Qt"
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=('LGPL')
 depends=(git qt5-base)
 makedepends=(curl)
 source=("$url/releases/download/v${pkgver}/${pkgname}_${pkgver}.tar.gz")
-sha256sums=(4d412813a2addba7befc6099c49798ece4e98e16159de98db3994f5fe2330770)
+sha256sums=(93b68ff1d717db1b745469238d88fdca9a29e87d4b25e97a0410fa8fc7f558d4)
 
 _release_hash() {
     curl --silent "${_gh_api}/repos/$_repo/git/ref/tags/v${pkgver}" | jq -r '.object.sha'
