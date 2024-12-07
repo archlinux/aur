@@ -4,7 +4,7 @@
 
 pkgname=lx-music
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 _electron=electron30
 pkgdesc='An Electron-based music player'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ url='https://github.com/lyswhut/lx-music-desktop'
 license=('Apache')
 depends=("${_electron}")
 makedepends=('asar' 'npm' 'git' 'node-gyp'
-	'jq' 'moreutils'
+	'jq' 'moreutils' python-setuptools
 )
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"$pkgname.sh"
@@ -20,9 +20,9 @@ source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	'dev-app-update.yml'
 )
 sha256sums=('f0dfb41c2379516349ee952d4330dd9b1dac52e3f8e9112f3fb396839c7b51ed'
-            '1171a3688a136b75aa0493d5737cfb1e8c386a48030c8ca313d4cac48c0630e3'
-            '732e98dfe569768c3cc90abbe8b1f6d24726dd2cb61317f57f8d5fe77fdefe2f'
-            'ffdd88036d10eb9780c0a26987894708720c2f486247bb3854f05fb5dd607423')
+	'1171a3688a136b75aa0493d5737cfb1e8c386a48030c8ca313d4cac48c0630e3'
+	'732e98dfe569768c3cc90abbe8b1f6d24726dd2cb61317f57f8d5fe77fdefe2f'
+	'ffdd88036d10eb9780c0a26987894708720c2f486247bb3854f05fb5dd607423')
 
 prepare() {
 	cd "$srcdir/$pkgname-desktop-$pkgver"
