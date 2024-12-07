@@ -1,5 +1,5 @@
 pkgbase = kodi-git
-	pkgver = r67077.44376d5e9c74
+	pkgver = r67147.5bdf1d420cf7
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -91,7 +91,7 @@ pkgbase = kodi-git
 	b2sums = a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e
 	b2sums = be5e3c8ea81ce4b6f2e2c1b2f22e1172434c435f096fa7dade060578c506cff0310e3e2ef0627e26ce2be44f740652eb9a8e1b63578c18f430f7925820f04e66
 	b2sums = 1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61
-	b2sums = 75d7d20065c725f9a82f53524a0f23ea654458f1978158905187c4652e58805a3c11873e13e3c238dc7bfcdefa3230ba7f4b377871bc25a8adaa85fe53f133c2
+	b2sums = 51f7a27ca033590830f146b1f6a068311f1045594465e30564a7087d9d5a1cc46547670e7e1bb1396fb5097cd0414f493ca03c0fa745dee266f2c92d9c200cfd
 
 pkgname = kodi-git
 	pkgdesc = A software media player and entertainment hub for digital media (master branch, gles renderer)
@@ -141,7 +141,7 @@ pkgname = kodi-git
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = pipewire: PipeWire support
 	optdepends = upower: Display battery level
-	provides = kodi-common=r67077.44376d5e9c74
+	provides = kodi-common=r67147.5bdf1d420cf7
 	provides = kodi-x11
 	provides = kodi-wayland
 	provides = kodi-gbm
@@ -155,7 +155,7 @@ pkgname = kodi-git-eventclients
 	pkgdesc = Kodi Event Clients (master branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r67077.44376d5e9c74
+	provides = kodi-eventclients=r67147.5bdf1d420cf7
 	conflicts = kodi-eventclients
 
 pkgname = kodi-git-tools-texturepacker
@@ -164,10 +164,10 @@ pkgname = kodi-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r67077.44376d5e9c74
+	provides = kodi-tools-texturepacker=r67147.5bdf1d420cf7
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-git-dev
 	pkgdesc = Kodi dev files (master branch)
-	provides = kodi-dev=r67077.44376d5e9c74
+	provides = kodi-dev=r67147.5bdf1d420cf7
 	conflicts = kodi-dev
