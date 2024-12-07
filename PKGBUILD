@@ -1,8 +1,8 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-tytan652
-pkgver=30.2.3
-pkgrel=3
+pkgver=31.0.0
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -48,8 +48,9 @@ depends=(
   "zlib" # Deps of libobs
 
   # Deps of CEF
-  "at-spi2-core" "dbus" "expat" "libcups" "libdrm" "libxdamage"
-  "libxext" "libxfixes" "libxrandr" "mesa" "nspr" "nss"
+  "at-spi2-core" "cairo" "dbus" "expat" "libcups" "libdrm"
+  "libxdamage" "libxext" "libxfixes" "libxrandr" "mesa" "nspr"
+  "nss" "pango"
 )
 ## About vlc-luajit
 # The official VLC package will make OBS crash when a VLC source is used.
@@ -62,6 +63,7 @@ depends=(
 makedepends=(
   "asio" # Deps of Websocket plugin (headers-only lib)
   "cmake"
+  "ffnvcodec-headers" # Deps of NVENC plugin (headers-only lib)
   "jack" # Deps of JACK plugin
   "git"
   "uthash" # Deps of libobs
@@ -77,9 +79,6 @@ makedepends=(
   "systemd-libs" # Deps of V4L2 plugin
   "v4l-utils" # Deps of V4L2 plugin
   "websocketpp" # Deps of Websocket plugin (headers-only lib)
-
-  # Deps of obs-browser
-  "cef-minimal-obs=103.0.0_5060_shared_textures_2594+g17f8588+chromium_103.0.5060.134_1"
 )
 optdepends=(
   "jack: JACK support"
@@ -111,20 +110,20 @@ source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
-  "ftl-sdk::git+https://github.com/microsoft/ftl-sdk.git"
-  "supported-nv-codec-headers::git+https://github.com/FFmpeg/nv-codec-headers.git#tag=n12.1.14.0"
-  "bind_iface_eyeballed.patch" # Based on https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed
+  "bind_iface_eyeballed.patch" # Based on https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed2
   "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
 )
+source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64.tar.xz")
+source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64.tar.xz")
 sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
-  "SKIP"
-  "SKIP"
-  "91ec5b6bec66c6d85c1f88f7f5fbdbe4bdbb820be5c2e7828f328f570bfdc845"
+  "115d126c2a80b25beab359ee5cd753bde418836ff239a20c5d8a376a85373912"
   "ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5"
 )
+sha256sums_x86_64=("fab66dfc9cfd2e26fb87798f855aef30c2004edc8e19570d37af555644ae1655")
+sha256sums_aarch64=("ab09f04e534306d3f301ea997c03a6a9f7bd245042d50a434f17c1c98ac64b89")
 
 if [[ ${CARCH/%_v?/} == 'x86_64' ]]; then
   optdepends+=("decklink: Blackmagic Design DeckLink support")
@@ -134,36 +133,25 @@ prepare() {
   cd "$srcdir/obs-studio"
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
-  git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
   git -c protocol.file.allow=always submodule update
 
   ## Add network interface binding for RTMP on Linux (https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed)
   patch -Np1 < "$srcdir/bind_iface_eyeballed.patch"
-
-  # obs-ffmpeg: Avoid setting negative bitrate for lossless audio codec
-  sed -i 's/enc->context->bit_rate = -1;/enc->context->bit_rate = 0;/g' plugins/obs-ffmpeg/obs-ffmpeg-audio-encoders.c
-
-  cd "$srcdir"
-  make PREFIX="$srcdir/nv-prefix" -C supported-nv-codec-headers install
 }
 
 build() {
-  export PKG_CONFIG_PATH="${srcdir}/nv-prefix/lib/pkgconfig"
-
   cmake -B build -S obs-studio \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DOBS_CMAKE_VERSION=3 \
     -DENABLE_LIBFDK=ON \
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=ON \
-    -DCEF_ROOT_DIR=/opt/cef-obs \
+    -DCEF_ROOT_DIR="$srcdir/cef_binary_6533_linux_${CARCH/%_v?/}" \
     -DOBS_VERSION_OVERRIDE="$pkgver" \
     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
-    -Wno-dev \
-    -DCMAKE_INCLUDE_PATH="${srcdir}/nv-prefix/include:/usr/include"
+    -Wno-dev
 
   sed -i "s|OBS_VERSION =|OBS_VERSION = \"$pkgver-tytan652-$pkgrel\"; //|" build/libobs/obsversion.c
 
