@@ -7,7 +7,7 @@
 _pkgname=yesplaymusic
 pkgname=yesplaymusic-plus
 pkgver=0.4.9
-pkgrel=6
+pkgrel=7
 pkgdesc="A third-party music player for Netease Music"
 arch=('x86_64')
 url="https://github.com/qier222/YesPlayMusic"
@@ -135,7 +135,7 @@ build() {
         echo "Using mirror in China"
         {
             echo -e '\n'
-            echo 'registry "https://registry.npmmirror.com"'
+            echo 'registry "https://repo.nju.edu.cn/repository/npm/"'
             echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
             echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
             echo "cacheFolder \"${srcdir}/.yarn/cache\""
