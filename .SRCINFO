@@ -9,6 +9,7 @@ pkgbase = mergiraf-bin
 	depends = gcc-libs
 	provides = mergiraf
 	conflicts = mergiraf
+	conflicts = mergiraf-git
 	source = mergiraf-bin-0.3.1.tar.gz::https://codeberg.org/mergiraf/mergiraf/releases/download/v0.3.1/mergiraf_x86_64-unknown-linux-gnu.tar.gz
 	source = LICENSE::https://codeberg.org/mergiraf/mergiraf/raw/tag/v0.3.1/LICENSE.txt
 	source = https://codeberg.org/mergiraf/mergiraf/raw/tag/v0.3.1/GOVERNANCE.md

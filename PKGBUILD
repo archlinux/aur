@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://mergiraf.org/"
 license=('GPL-3.0-or-later')
 provides=('mergiraf')
-conflicts=('mergiraf')
+conflicts=('mergiraf' 'mergiraf-git')
 depends=(
   'glibc'
   'gcc-libs'
