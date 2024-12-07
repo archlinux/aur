@@ -1,7 +1,7 @@
 pkgbase = dwarfs-bin
 	pkgdesc = A fast high compression read-only file system (pre-compiled binaries)
-	pkgver = 0.10.1
-	pkgrel = 2
+	pkgver = 0.10.2
+	pkgrel = 1
 	url = https://github.com/mhx/dwarfs
 	arch = x86_64
 	arch = aarch64
@@ -22,9 +22,9 @@ pkgbase = dwarfs-bin
 	depends = double-conversion
 	provides = dwarfs
 	conflicts = dwarfs
-	source_x86_64 = dwarfs-0.10.1-Linux-x86_64.tar.xz::https://github.com/mhx/dwarfs/releases/download/v0.10.1/dwarfs-0.10.1-Linux-x86_64-clang.tar.xz
-	sha256sums_x86_64 = 84894bf6a26cac2eb2c8d43d6fccf1ece7665c4c15050cec494d09199bd8310e
-	source_aarch64 = dwarfs-0.10.1-Linux-aarch64.tar.xz::https://github.com/mhx/dwarfs/releases/download/v0.10.1/dwarfs-0.10.1-Linux-aarch64-clang.tar.xz
-	sha256sums_aarch64 = f272f667649d71ec7d29d6822ad4198e13a33e997d722f74f2bca23b239de72f
+	source_x86_64 = dwarfs-0.10.2-Linux-x86_64.tar.xz::https://github.com/mhx/dwarfs/releases/download/v0.10.2/dwarfs-0.10.2-Linux-x86_64-clang.tar.xz
+	sha256sums_x86_64 = a018bfe2531763a273a2d78bc507b1c89fe58a44f7955c980c854a55f9adbaea
+	source_aarch64 = dwarfs-0.10.2-Linux-aarch64.tar.xz::https://github.com/mhx/dwarfs/releases/download/v0.10.2/dwarfs-0.10.2-Linux-aarch64-clang.tar.xz
+	sha256sums_aarch64 = 75878252ef0bfc490e5bd6ad5870bc5a02531650ceacf1258807e09606069561
 
 pkgname = dwarfs-bin
