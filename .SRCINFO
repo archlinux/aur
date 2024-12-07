@@ -1,6 +1,6 @@
 pkgbase = aescrypt-bin
 	pkgdesc = A file encryption software that uses the Advanced Encryption (AES) standard
-	pkgver = 4.0.7
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://www.aescrypt.com
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = aescrypt-bin
 	depends = glibc
 	provides = aescrypt
 	conflicts = aescrypt
-	source = README-4.0.7.md::https://github.com/terrapane/aescrypt_cli/raw/refs/tags/v4.0.7/README.md
-	source = CHANGELOG-4.0.7.md::https://github.com/terrapane/aescrypt_cli/raw/refs/tags/v4.0.7/CHANGELOG.md
-	source = LICENSE-4.0.7.md::https://github.com/terrapane/aescrypt_cli/raw/refs/tags/v4.0.7/LICENSE.md
+	source = README-4.1.0.md::https://github.com/terrapane/aescrypt_cli/raw/refs/tags/v4.1.0/README.md
+	source = CHANGELOG-4.1.0.md::https://github.com/terrapane/aescrypt_cli/raw/refs/tags/v4.1.0/CHANGELOG.md
+	source = LICENSE-4.1.0.md::https://github.com/terrapane/aescrypt_cli/raw/refs/tags/v4.1.0/LICENSE.md
 	b2sums = 5c2bf1efad8b8ab5b20ebec0eb0169a26bf18f87d2904db17dba3b72b8c7e1838cf29965bec8cc63ea4c77faeb0a1f65b27661703a43af4b8799bf7443359a81
-	b2sums = d257274532efd1256c501a865d002a6c9cdcc3062983f7473e70b178c6536244c47ff7004d536609f0627ec11af496279a9e7cebabcc6130428ad3f270622598
+	b2sums = 8e5265223d1b4b3a1f2aa76d012bdaea3c3eafa5a44da40cf2711ec3a5dfe1f3e963bdfc087ef848127e0d3ad05b9f6acbaccdc9a483aa9d34358efdd0e33e4f
 	b2sums = 6cd45abeece31c6a176fed9972b7d25fc1920c4a6d71f27710409ecf52250180771949317a04f9642dc7efb7faa201ecd2298dcd49b0a2e9ff2fe1aa811e4060
-	source_x86_64 = aescrypt-4.0.7-x86_64.tar.gz::https://www.aescrypt.com/download/v4/linux/aescrypt_cli-4.0.7-Linux-x86_64.tar.gz
-	b2sums_x86_64 = 0c014b59aaf1db5b35bb30d2a1683ce60a70c779d3e15c7800db2ecdf10ecb111a038bc7fc9f86f497e36845dd7a8714117c015c8c52a7bb7fba7bbd5a86d5c3
+	source_x86_64 = aescrypt-4.1.0-x86_64.tar.gz::https://www.aescrypt.com/download/v4/linux/aescrypt_cli-4.1.0-Linux-x86_64.tar.gz
+	b2sums_x86_64 = 45ef9758f0f96269b840734e7204159668f9fc2802bb3445c6e8f8be3501e9aa783fd38ec8417eb442185806794def84ffeb08c69de6610fde30d02f29cfc8bc
 
 pkgname = aescrypt-bin
