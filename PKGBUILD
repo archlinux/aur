@@ -3,11 +3,11 @@
 
 _pkgname=hydrogen
 pkgname="$_pkgname-git"
-pkgver=1.2.0.r301.g05b49c75c
+pkgver=1.2.4.r0.g98b3d540b
 pkgrel=1
 pkgdesc='An advanced drum machine (git version)'
 arch=(x86_64)
-license=(GPL)
+license=(GPL-2.0-or-later)
 groups=(pro-audio)
 url='https://github.com/hydrogen-music/hydrogen'
 depends=(gcc-libs glibc hicolor-icon-theme qt5-base qt5-xmlpatterns)
@@ -15,8 +15,9 @@ makedepends=(git alsa-lib cmake itstool jack ladspa libarchive liblo
              liblrdf libpulse libsndfile libxml2 portaudio portmidi
              python qt5-tools docbook-xml docbook-sgml docbook-utils
              docbook-xsl poxml xmlto)
+checkdepends=(cppunit)
 optdepends=('new-session-manager: for session management')
-source=($_pkgname::'git+https://github.com/hydrogen-music/hydrogen.git'
+source=($_pkgname::'git+https://github.com/hydrogen-music/hydrogen.git#branch=releases/1.2'
         'hydrogen-docs::git+https://github.com/hydrogen-music/documentation.git'
         'fix_dtd_version.patch')
 provides=($_pkgname "$_pkgname=${pkgver//.r*/}")
@@ -68,6 +69,10 @@ build() {
   make -j1
 }
 
+check() {
+  ctest --test-dir $_pkgname-build --output-on-failure
+}
+
 package() {
   depends+=(libarchive.so libasound.so liblo.so libjack.so liblrdf.so
             liblo.so libportaudio.so libportmidi.so libpulse.so
@@ -76,12 +81,11 @@ package() {
 
   # install docs
   cd $_pkgname
-  install -vDm644 ChangeLog DEVELOPERS.md INSTALL.md README.md \
+  install -vDm644 AUTHORS ChangeLog DEVELOPERS INSTALL.md README.md \
       -t "$pkgdir"/usr/share/doc/$pkgname
   # install html manual & tutorial
   cd data/doc
   install -Dm644 *.html -t "$pkgdir"/usr/share/$_pkgname/data/doc
-  install -Dm644 *.ods -t "$pkgdir"/usr/share/$_pkgname/data/doc
   install -Dm644 img/*.png -t "$pkgdir"/usr/share/$_pkgname/data/doc/img
   install -Dm644 img/admonitions/*.svg -t "$pkgdir"/usr/share/$_pkgname/data/doc/img/admonitions
   install -Dm644 img_tutorial/*.png -t "$pkgdir"/usr/share/$_pkgname/data/doc/img_tutorial
