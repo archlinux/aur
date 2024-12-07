@@ -1,7 +1,7 @@
 pkgbase = yawns
 	pkgdesc = Your Adaptable Widget Notification System
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ikz87/yawns/tree/main
 	arch = any
 	license = GPL-3.0
