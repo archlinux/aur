@@ -1,7 +1,7 @@
 # Maintainer: Aditya Sirish <aditya@saky.in>
 
 pkgname=witness
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Witness is a pluggable framework for software supply chain risk management. It automates, normalizes, and verifies software artifact provenance."
 arch=('any')
@@ -9,7 +9,7 @@ license=('Apache')
 url="https://github.com/in-toto/witness"
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b339520c1665de3d5d1efa4a4c4f97cd8f0c3a152ff9ab9abca94e41e4c1924a')
+sha256sums=('dec154b72b2df16cc90df998a508952a6c7c25956a3096213cd6e20576d05e47')
 
 build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
