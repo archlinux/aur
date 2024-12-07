@@ -1,0 +1,20 @@
+pkgbase = mergiraf-git
+	pkgdesc = A syntax-aware git merge driver for a growing collection of programming languages and file formats
+	pkgver = 0.3.1.r77.gbe16edc
+	pkgrel = 1
+	url = https://mergiraf.org/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	checkdepends = git
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	provides = mergiraf
+	conflicts = mergiraf-bin
+	conflicts = mergiraf
+	options = !lto
+	source = git+https://codeberg.org/mergiraf/mergiraf.git
+	sha512sums = SKIP
+
+pkgname = mergiraf-git
