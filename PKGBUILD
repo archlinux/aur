@@ -1,10 +1,11 @@
-# Maintainer: so1ar <so1ar114514@gmail.com>
-# Maintainer: Baron Hou <houbaron@gmail.com>
+# Maintainer: Menghuan1918 <menghuan2003 at outlook dot com>
+# Contributor: so1ar <so1ar114514@gmail.com>
+# Contributor: Baron Hou <houbaron@gmail.com>
 
 
 pkgname=picgo-appimage
 _ver=2.4.0
-_beta=beta.3
+_beta=beta.9
 pkgver=${_ver}${_beta}
 _release=${_ver}-${_beta}
 #_release=${_ver}
@@ -24,13 +25,14 @@ source=(
     "picgo.desktop"
 )
 sha256sums=(
-    '5a81b0ae607127893732be79233b456298514c6c41dd7a01efa502b11bff50ba'
+    '4c9ac90a3bc51f58295d0a675dc6dc3f73b3432cd44c18eb72d9e53a4c5b80f7'
     '9cf46faad2b6b431e2fb8cc9ece7c4f2638fc04bff1089679686b7c53c8fc31e'
-    'SKIP'
-    'SKIP'
+    '6083d735de571ecfa05448a97718676aeac8be2825d72c55a56e866c6cbba402'
+    '35ef50ce57f55b4f839f7ea2666288a8208b4279b0ceb28b511463269bd25fb7'
 )
 
 package() {
+    chmod +x "PicGo-${_release}.AppImage"
     install -Dm755 "PicGo-${_release}.AppImage" "${pkgdir}/opt/appimages/picgo.AppImage"
     install -Dm644 "LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
     install -Dm644 "picgo.desktop"                    "${pkgdir}/usr/share/applications/picgo.desktop"
