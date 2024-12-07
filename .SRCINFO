@@ -1,9 +1,11 @@
 pkgbase = lldap
 	pkgdesc = Light LDAP implementation for authentication
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/lldap/lldap
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = GPL3
 	makedepends = git
 	makedepends = rust
@@ -14,7 +16,7 @@ pkgbase = lldap
 	depends = gcc-libs
 	options = !lto
 	backup = etc/lldap.toml
-	source = lldap::git+https://github.com/lldap/lldap#commit=098745ebc900788adb3ffdafc3dd196b7f5201aa
+	source = lldap::git+https://github.com/lldap/lldap#commit=acd39d20b11ee2e47d25afa9960bb919d19ec642
 	source = config-template.patch
 	source = systemd.service
 	source = sysusers.conf
