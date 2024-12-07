@@ -1,7 +1,7 @@
 # Maintainer: w0rty <mawo97 at gmail.com>
 
 pkgname=bananas-appimage
-pkgver=0.0.17 # renovate: datasource=github-releases depName=mistweaverco/bananas
+pkgver=0.0.18 # renovate: datasource=github-releases depName=mistweaverco/bananas
 pkgrel=1
 pkgdesc="cross-platform, p2p screen sharing made simple"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   "${url}/raw/v${pkgver}/LICENSE"
   )
 
-sha256sums=('3019f345825eccc89b75d718e96c4c93bd1c64898203acf93b55c75ee64d99e1'
+sha256sums=('e4c4ada14c92dfe650f0665be26f8a6af2d36475167941e8b1c41b26d0bc86e8'
             '5ba8d10757c4ce9b880422e3746897d89b27647febd1f70ab5021f9ac10ade95')
 
 _filename="bananas_x86_64.AppImage"
