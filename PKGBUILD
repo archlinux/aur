@@ -5,7 +5,7 @@
 # Contributor: Martchus <martchus@gmx.net>
 
 pkgname=mingw-w64-glib2
-pkgver=2.82.0
+pkgver=2.82.2
 pkgrel=1
 arch=(any)
 pkgdesc="Low level core library"
@@ -19,7 +19,7 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/gvdb.git"
   0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch
 )
-b2sums=('9dee8619918d1bf85d853ddc661c4702046b5361bd3fde105d0b3c550f5dbdbaa6578557107588053bb4e980a21e83b95c2c9e9c7868fb89ca852bc950ac3dba'
+b2sums=('3ff7ea88d69b945524b28211cd11373856e78813ea2795c6aff040fb264d6323edcd2fd2782d827936bdee34238a6995b2c7a6b51eeac49de583a21a0072a2d2'
         'SKIP'
         '8d6cc5d4d321bb861b6acb86d796a4646f2c5b0a4b4fa54ddda750cbf523de8521edaa7da2595addbe8a3c8ba66020cf4c7c9cbf8ad263515b36808e5b354f57')
 validpgpkeys=(
