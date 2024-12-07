@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledExec"
 
 pkgname=untitled-exec
-pkgver=4.0.0.0
+pkgver=5.0.0.0
 pkgrel=1
 pkgdesc="C/C++ cross-platform wrapper for launching applications as separate processes"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
@@ -13,7 +13,7 @@ depends=("gcc-libs" "glibc" "pkgconf")
 provides=("libuexec.so")
 makedepends=("cmake" "make")
 source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}.tar.xz")
-sha256sums=('39a29693bda66bf7b95076a682e7b3a76683b1b2b0a03214b8f082a3ac02c3df')
+sha256sums=('7eb813dff929c32dc34e7dfe4426effe8e8ed23b684b32044e8949445ceb8ebb')
 
 build() {
 	cd $srcdir || exit
