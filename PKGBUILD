@@ -2,7 +2,7 @@
 
 pkgname="v2rayn-bin"
 pkgver=7.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI client for Windows and Linux, support Xray core and others"
 arch=("x86_64")
 license=('GPL3')
@@ -14,11 +14,11 @@ package() {
 
     _app_name=$pkgname
 
-    install -Dm644 "../v2rayN.png" -t "$pkgdir/usr/share/pixmaps"
-    install -Dm644 "../v2rayN-bin.desktop" -t "$pkgdir/usr/share/applications"
-    mkdir -p "$pkgdir/opt/$_app_name"
-    mv v2rayN-linux-64/* $pkgdir/opt/$_app_name/
-    chmod -R 0777 $pkgdir/opt/$_app_name
+    install -Dm644 "${srcdir}/v2rayN.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/v2rayN-bin.desktop" -t "${pkgdir}/usr/share/applications"
+    mkdir -p "${pkgdir}/opt/$_app_name"
+    mv "${srcdir}/v2rayN-linux-64/*" "${pkgdir}/opt/$_app_name/"
+    chmod -R 0777 ${pkgdir}/opt/$_app_name
 
 }
 sha256sums=('83ac5b96c17ca927d7f8e3d1daf98d55376dc6b9e327862983b0a11be645023f'
