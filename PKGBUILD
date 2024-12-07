@@ -5,13 +5,17 @@ pkgbase=python-sunpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=6.0.3
+pkgver=6.0.4
 pkgrel=1
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
 url="https://sunpy.org"
 license=('BSD-2-Clause')
-makedepends=('python-setuptools-scm>=6.2' 'python-wheel' 'python-build' 'python-installer' 'python-extension-helpers' 'python-numpy')
+makedepends=('python-setuptools-scm>=6.2'
+             'python-build'
+             'python-installer'
+             'python-extension-helpers'
+             'python-numpy')  # wheel required by new setuptools
 #'python-sunpy-sphinx-theme'
 #'python-parfive' 'python-astroquery' 'python-reproject' 'python-ruamel-yaml' 'python-jplephem' 'python-sphinx-automodapi' 'python-sphinx-changelog' 'python-sphinx-gallery>=0.9.0' 'python-sphinxext-opengraph'
 #'python-scikit-image' 'python-h5netcdf' 'python-sqlalchemy' 'python-lxml' 'python-zeep' 'python-drms' 'python-aioftp' 'python-asdf' 'python-cdflib' 'python-mpl-animators' 'graphviz')
