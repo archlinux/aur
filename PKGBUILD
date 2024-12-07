@@ -2,12 +2,10 @@
 
 pkgname=xfel
 pkgver=1.3.2
-pkgrel=18
+pkgrel=19
 epoch=
 pkgdesc="Tiny FEL tools for allwinner SOC, support RISC-V D1 chip."
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/xboot/xfel"
 license=('MIT')
 groups=()
