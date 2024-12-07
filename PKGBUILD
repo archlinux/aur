@@ -1,10 +1,10 @@
-# Maintainer: j-james <jj@j-james.me>
+# Maintainer: apropos <jj@toki.la>
 pkgname=tumbler-stl-thumbnailer
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Custom STL thumbnails for Tumbler"
 arch=('any')
-url="https://github.com/j-james/thunar-stl-thumbnails"
+url="https://github.com/omentic/thunar-stl-thumbnails"
 license=('BSD')
 depends=('tumbler' 'openscad')
 source=('stl.thumbnailer'

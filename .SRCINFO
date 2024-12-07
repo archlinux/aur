@@ -1,8 +1,8 @@
 pkgbase = tumbler-stl-thumbnailer
 	pkgdesc = Custom STL thumbnails for Tumbler
 	pkgver = 1
-	pkgrel = 1
-	url = https://github.com/j-james/thunar-stl-thumbnails
+	pkgrel = 2
+	url = https://github.com/omentic/thunar-stl-thumbnails
 	arch = any
 	license = BSD
 	depends = tumbler
