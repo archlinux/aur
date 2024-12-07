@@ -1,0 +1,34 @@
+pkgbase = r-tidyjson
+	pkgdesc = Turn complex 'JSON' data into tidy data frames.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=tidyjson
+	arch = any
+	license = MIT
+	makedepends = gcc
+	depends = r
+	depends = r-assertthat
+	depends = r-dplyr
+	depends = r-jsonlite
+	depends = r-magrittr
+	depends = r-purrr
+	depends = r-tibble
+	depends = r-tidyr
+	optdepends = r-covr
+	optdepends = r-forcats
+	optdepends = r-ggplot2
+	optdepends = r-igraph
+	optdepends = r-knitr
+	optdepends = r-listviewer
+	optdepends = r-lubridate
+	optdepends = r-rcolorbrewer
+	optdepends = r-rmarkdown
+	optdepends = r-rprojroot
+	optdepends = r-testthat
+	optdepends = r-vctrs
+	optdepends = r-viridis
+	optdepends = r-wordcloud
+	source = https://cran.r-project.org/src/contrib/tidyjson_0.3.2.tar.gz
+	sha256sums = e636cabc95babe12f0051b57404c2aa49f13b5d54a6904e84770ee3b412ad57e
+
+pkgname = r-tidyjson
