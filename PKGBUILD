@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=wechat
 pkgver=4.0.0.30
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="微信是一种生活方式. This is a repackage of the official WeChat which includes an optional sandbox support"
 arch=('x86_64' 'aarch64' 'loong64')
@@ -13,7 +13,7 @@ options=(!debug !strip)
 makedepends+=()
 
 provides+=(wechat-uos wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-universal-bwrap wechat-bin)
-replaces+=(wechat-uos wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-universal-bwrap wechat-bin)
+conflicts+=(wechat-uos wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-universal-bwrap wechat-bin)
 
 depends=(
 	"portable"
