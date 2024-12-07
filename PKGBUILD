@@ -9,27 +9,31 @@
 
 pkgbase=handbrake-full
 pkgname=(handbrake-full handbrake-full-cli)
-pkgver=1.8.2
-pkgrel=1
+pkgver=1.9.0
+pkgrel=3
 pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened"
 arch=(x86_64 i686)
 url="https://handbrake.fr/"
-license=(GPL-2.0-only)
+license=(LicenseRef-Unredistributable)
 source=("handbrake::git+https://github.com/HandBrake/HandBrake.git#tag=${pkgver}")
-_commondeps=(libxml2 libass libvorbis opus speex libtheora lame libjpeg-turbo
+_commondeps=(libass libvorbis opus speex libtheora lame libjpeg-turbo
              x264 libx264.so jansson libvpx libva numactl)
-_guideps=(gst-plugins-base gtk4 librsvg libgudev)
-makedepends=(git intltool python nasm wget cmake meson llvm clang cargo-c
+_guideps=(gst-plugins-base gtk4 gdk-pixbuf2 pango libxml2 glib2)
+_implicitdeps=(xz zlib glibc gcc-libs bzip2 libdrm)
+makedepends=(git python nasm wget cmake meson llvm clang cargo-c
              "${_commondeps[@]}" "${_guideps[@]}")
-optdepends=('libdvdcss: for decoding encrypted DVDs'
-            'intel-media-sdk: for enabling Intel QSV'
+optdepends=('intel-media-sdk: for enabling Intel QSV'
             'nvidia-utils: for enabling Nvidia nvenc and nvdec'
             'cuda: for enabling Nvidia nvenc and nvdec'
             'amf-amdgpu-pro: for enabling AMD AMF')
-sha256sums=('e2f31934d4fffc130a42998fd7d7a206e30f9884ee957fe20370ae07a13683c8')
-options=(!lto)
+sha256sums=('6eb309e481dd98d32e868868100fd244367d2927f07d7ef9e2d7ae347b087d64')
+#options=(!lto)
 
  build() {
+  # warning when build with -D_FORTIFY_SOURCE=3 (Arch Linux default)
+  export CFLAGS="${CFLAGS/D_FORTIFY_SOURCE=3/D_FORTIFY_SOURCE=2}"
+  export CXXFLAGS="${CXXFLAGS/D_FORTIFY_SOURCE=3/D_FORTIFY_SOURCE=2}"
+
   cd "handbrake"
 
   ./configure \
@@ -49,24 +53,25 @@ options=(!lto)
 
 package_handbrake-full() {
   pkgdesc="Multithreaded video transcoder"
-  depends=("${_commondeps[@]}" "${_guideps[@]}")
+  depends=("${_commondeps[@]}" "${_guideps[@]}" "${_implicitdeps[@]}")
   optdepends+=('gst-plugins-good: for video previews'
-              'gst-libav: for video previews')
+               'gst-libav: for video previews')
   provides=(handbrake)
   conflicts=(handbrake)
 
-  cd "$srcdir/handbrake/build"
-
-  make DESTDIR="$pkgdir" install
-  rm "$pkgdir/usr/bin/HandBrakeCLI"
+  cd "handbrake/build"
+  make DESTDIR="${pkgdir}" install
+  install ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  rm "${pkgdir}/usr/bin/HandBrakeCLI"
 }
 
 package_handbrake-full-cli() {
   pkgdesc="Multithreaded video transcoder (CLI)"
-  depends=("${_commondeps[@]}")
+  depends=("${_commondeps[@]}" "${_implicitdeps[@]}")
   provides=(handbrake-cli)
   conflicts=(handbrake-cli)
 
-  cd "$srcdir/handbrake/build"
-  install -D HandBrakeCLI "$pkgdir/usr/bin/HandBrakeCLI"
+  cd "handbrake/build"
+  install -D HandBrakeCLI "${pkgdir}/usr/bin/HandBrakeCLI"
+  install ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
