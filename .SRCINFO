@@ -1,6 +1,6 @@
 pkgbase = openbabel-git
 	pkgdesc = A library designed to interconvert between many file formats used in molecular modeling and computational chemistry
-	pkgver = 3.1.1+r6093+g00d3595fd
+	pkgver = 3.1.1+r6132+g10da8d7b8
 	pkgrel = 1
 	url = https://openbabel.org/wiki/Main_Page
 	arch = x86_64
