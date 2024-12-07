@@ -1,6 +1,6 @@
 pkgbase = npdfr
     pkgdesc = A command-line PDF reader prioritizing fast searches
-    pkgver = 0.3.1
+    pkgver = 0.3.2
     pkgrel = 1
     url = https://github.com/amini-allight/npdfr/
     arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = npdfr
     makedepends = make
     depends = libmupdf
     depends = ncurses
-    source = git+https://github.com/amini-allight/npdfr.git#tag=0.3.1
+    source = git+https://github.com/amini-allight/npdfr.git#tag=0.3.2
     sha256sums = SKIP
 
 pkgname = npdfr
