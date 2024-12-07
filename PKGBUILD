@@ -1,9 +1,9 @@
 # Contributor: kitsunyan <`echo a2l0c3VueWFuQGFpcm1haWwuY2MK | base64 -d`>
-# Maintainer: j-james <jj@j-james.me>
+# Maintainer: apropos <jj@toki.la>
 
 pkgname=pakku
 pkgver=0.17
-pkgrel=2
+pkgrel=3
 pkgdesc='Pacman wrapper and AUR helper with a pacman-like user interface'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/zqqw/$pkgname"

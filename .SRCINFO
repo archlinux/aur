@@ -1,7 +1,7 @@
 pkgbase = pakku
 	pkgdesc = Pacman wrapper and AUR helper with a pacman-like user interface
 	pkgver = 0.17
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zqqw/pakku
 	arch = i686
 	arch = x86_64
