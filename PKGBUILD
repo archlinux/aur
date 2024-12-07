@@ -1,5 +1,5 @@
 # Maintainer: Martin Fritz <Fritz.Martin99@web.de>
-pkgbase=PlastikStyle
+pkgbase=plastikstyle
 pkgname=(plastikstyle-qt5 plastikstyle-qt6)
 pkgver=1.0.4
 pkgrel=2
