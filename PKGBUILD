@@ -9,13 +9,13 @@
 
 pkgbase=handbrake-git
 pkgname=(handbrake-git handbrake-cli-git)
-pkgver=1.8.1.r13.g2d3448f98
+pkgver=1.9.0.r0.gfa9154a20
 pkgrel=2
 pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened. Last stable branch"
 arch=(i686 x86_64)
-url="https://handbrake.fr/"
+url="https://github.com/HandBrake/HandBrake"
 license=(GPL-2.0-only)
-source=("handbrake::git+https://github.com/HandBrake/HandBrake.git#branch=1.8.x")
+source=("handbrake::git+https://github.com/HandBrake/HandBrake.git#branch=1.9.x")
 _commondeps=(libxml2 libass libvorbis opus speex libtheora lame libjpeg-turbo
              x264 libx264.so jansson libvpx libva numactl)
 _guideps=(gst-plugins-base gtk4 libgudev)
@@ -43,7 +43,6 @@ pkgver() {
     --enable-x265 \
     --enable-libdovi \
     --enable-numa \
-    --enable-fdk-aac \
     --enable-nvdec \
     --enable-nvenc \
     --enable-qsv \
