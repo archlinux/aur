@@ -10,9 +10,9 @@ url="https://github.com/2dust/v2rayN"
 options=('!strip') # TODO: after striping, it cannot run
 
 source_x86_64=("https://github.com/2dust/v2rayN/releases/download/${pkgver}/v2rayN-linux-64.zip")
-sha256sums_x86_64=(e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+sha256sums_x86_64=(83ac5b96c17ca927d7f8e3d1daf98d55376dc6b9e327862983b0a11be645023f)
 source_arm64=("https://github.com/2dust/v2rayN/releases/download/${pkgver}/v2rayN-linux-arm64.zip")
-sha256sums_arm64=(e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+sha256sums_arm64=(73db0d92626d8e95b2a72f15c76a67fb8be99d2efb8c37743a50e498c83f0d14)
 
 source+=("v2rayN.png" "v2rayN-bin.desktop")
 sha256sums+=('f762fd95d93c2287f55ebb742716a54aa6b507ff8c8d75aec7256fabc93192ee'
