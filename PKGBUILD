@@ -5,12 +5,12 @@
 
 pkgname=phoronix-test-suite
 pkgver=10.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux"
 arch=(any)
-license=(GPL3)
-url="https://www.phoronix-test-suite.com/"
-depends=(php)
+url="https://github.com/phoronix-test-suite/phoronix-test-suite"
+license=(GPL-3.0-or-later)
+depends=(php sh)
 makedepends=(git)
 optdepends=('php-gd'
             'sqlite3: required when running a Phoromatic server.'
@@ -21,34 +21,34 @@ optdepends=('php-gd'
             'unzip: required for universe-cli test suite'
             'mesa-demos: required for universe-cli test suite'
             'openmpi: required for universe-cli test suite')
+options=(!strip !debug)
 source=("git+https://github.com/phoronix-test-suite/phoronix-test-suite.git#tag=v${pkgver}"
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/phoronix-test-suite-launcher.patch")
 sha256sums=('SKIP'
             '577326343d0303a59fd469c3f9c9740e756dd59c0660c54363b62d6fd1cee26d')
-options=(!strip)
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "phoronix-test-suite"
   patch -i "${srcdir}/phoronix-test-suite-launcher.patch" phoronix-test-suite
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "phoronix-test-suite"
   ./install-sh $pkgdir/usr
 
   rm -r "${pkgdir}"/usr/share/phoronix-test-suite/deploy
   rm -rf "${pkgdir}"/usr/share/phoronix-test-suite/pts-core/external-test-dependencies/{dependency-handlers,scripts,xml}/{*.php,*.sh,*.xml}
 
-  install -D "${srcdir}/${pkgname}"/pts-core/external-test-dependencies/dependency-handlers/arch_dependency_handler.php \
+  install -D pts-core/external-test-dependencies/dependency-handlers/arch_dependency_handler.php \
              "${pkgdir}"/usr/share/phoronix-test-suite/pts-core/external-test-dependencies/dependency-handlers/arch_dependency_handler.php
 
-  install -D "${srcdir}/${pkgname}"/pts-core/external-test-dependencies/scripts/install-arch-packages.sh \
+  install -D pts-core/external-test-dependencies/scripts/install-arch-packages.sh \
              "${pkgdir}"/usr/share/phoronix-test-suite/pts-core/external-test-dependencies/scripts/install-arch-packages.sh
 
-  install -D "${srcdir}/${pkgname}"/pts-core/external-test-dependencies/xml/arch-packages.xml \
+  install -D pts-core/external-test-dependencies/xml/arch-packages.xml \
              "${pkgdir}"/usr/share/phoronix-test-suite/pts-core/external-test-dependencies/xml/arch-packages.xml
 
-  install -D "${srcdir}/${pkgname}"/pts-core/external-test-dependencies/xml/generic-packages.xml \
+  install -D pts-core/external-test-dependencies/xml/generic-packages.xml \
              "${pkgdir}"/usr/share/phoronix-test-suite/pts-core/external-test-dependencies/xml/generic-packages.xml
 
   ln -s /usr/bin/phoronix-test-suite "${pkgdir}/usr/bin/pts"
