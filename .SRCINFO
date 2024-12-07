@@ -1,6 +1,6 @@
 pkgbase = postgresql-git
 	pkgdesc = Sophisticated object-relational DBMS (Git version)
-	pkgver = 17.beta2.r1114.gda94e871e8
+	pkgver = 17.beta2.r1227.g263a3f5f7f
 	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64

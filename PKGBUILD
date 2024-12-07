@@ -5,7 +5,7 @@
 
 pkgbase=postgresql-git
 pkgname=('postgresql-libs-git' 'postgresql-docs-git' 'postgresql-git')
-pkgver=17.beta2.r1114.gda94e871e8
+pkgver=17.beta2.r1227.g263a3f5f7f
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS (Git version)'
 url='https://www.postgresql.org/'
@@ -162,7 +162,6 @@ package_postgresql-libs-git() {
   # these headers are needed by the public headers of the interfaces
   install -m 644 pg_config.h "${pkgdir}/usr/include"
   install -m 644 pg_config_os.h "${pkgdir}/usr/include"
-  install -m 644 pg_config_ext.h "${pkgdir}/usr/include"
   install -m 644 postgres_ext.h "${pkgdir}/usr/include"
   install -m 644 libpq/libpq-fs.h "${pkgdir}/usr/include/libpq"
   install -m 644 pg_config_manual.h "${pkgdir}/usr/include"
