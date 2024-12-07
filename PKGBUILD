@@ -2,15 +2,15 @@
 # Contributor: Thibaut Pérami <thibaut.perami@ens.fr>
 
 pkgname=magic_enum
-pkgver=0.9.6
-pkgrel=2
+pkgver=0.9.7
+pkgrel=1
 pkgdesc="Header-only C++17 library, provides static reflection for enums, works with any enum type without any macro or boilerplate code."
 arch=(any)
 url="https://github.com/Neargye/magic_enum"
 license=(MIT)
 makedepends=(cmake)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Neargye/magic_enum/archive/v${pkgver}.tar.gz")
-sha256sums=('fcda8295256a2084f1f98a63b3d2c66b3d7140eea008e1ef94ea015b2f6d3034')
+sha256sums=('b403d3dad4ef542fdc3024fa37d3a6cedb4ad33c72e31b6d9bab89dcaf69edf7')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
