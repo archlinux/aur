@@ -2,7 +2,7 @@
 
 pkgbase=tensorrt
 pkgname=('tensorrt' 'python-tensorrt')
-pkgver=10.6.0.26
+pkgver=10.7.0.23
 _cudaver=12.6
 _protobuf_ver=3.20.1
 _pybind11_ver=2.9.2
@@ -30,8 +30,8 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         '030-tensorrt-onnx-tensorrt-disable-missing-source-file.patch'
         'TensorRT-SLA.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('33d3c2f3f4c84dc7991a4337a6fde9ed33f5c8e5c4f03ac2eb6b994a382b03a0'
-            'ff3ee2316456216c000c0e214c9b4053bfdb811316b2e9dace13fd83897fa54d'
+sha256sums=('d7f16520457caaf97ad8a7e94d802f89d77aedf9f361a255f2c216e2a3a40a11'
+            'e7f13d68391716137fc71132525622c5d4529960f77a61713f9be3973487e4a4'
             'SKIP'
             'SKIP'
             'SKIP'
