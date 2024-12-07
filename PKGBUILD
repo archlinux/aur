@@ -2,7 +2,7 @@
 # Maintainer: Julian Tölle <julian.toelle97@gmail.com>
 
 pkgname='hcloud-upload-image-bin'
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Manage custom OS images on Hetzner Cloud.'
 url='https://github.com/apricote/hcloud-upload-image'
@@ -12,14 +12,14 @@ provides=('hcloud-upload-image')
 conflicts=('hcloud-upload-image')
 depends=('openssh')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/apricote/hcloud-upload-image/releases/download/v0.3.0/hcloud-upload-image_Linux_arm64.tar.gz")
-sha256sums_aarch64=('a6b28433f9f3ee43122c7c288760e2c107ac8d92183f96086cf5a59affed3bbd')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/apricote/hcloud-upload-image/releases/download/v0.3.1/hcloud-upload-image_Linux_arm64.tar.gz")
+sha256sums_aarch64=('5790d22e7efc8c0809feabbf0de66eeb91e7462370c719834f31ededb9dc0cbc')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/apricote/hcloud-upload-image/releases/download/v0.3.0/hcloud-upload-image_Linux_i386.tar.gz")
-sha256sums_i686=('68f92aea8226f1f40bd8b4b240dd1c2b7d69d981250d154aeb46cc9029b8d5d0')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/apricote/hcloud-upload-image/releases/download/v0.3.1/hcloud-upload-image_Linux_i386.tar.gz")
+sha256sums_i686=('08bf4f6814be7de5cc03774187e981de3ada92a6ae1bd1fbd6857d1daf9e3aee')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/apricote/hcloud-upload-image/releases/download/v0.3.0/hcloud-upload-image_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('9ba2dcfd95399770270b4f367166da6e7e7766306d8c81754a1fc1c81779ca2e')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/apricote/hcloud-upload-image/releases/download/v0.3.1/hcloud-upload-image_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('1f4cfc6bdf2f66053ab02e58b883cf88de2c94eafa5a35fb8d1b829ac093adde')
 
 package() {
   # bin
