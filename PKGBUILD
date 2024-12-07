@@ -12,9 +12,9 @@ depends=('perl-uri' 'perl')
 makedepends=('perl-module-build-tiny')
 checkdepends=('perl-test-time')
 url='https://metacpan.org/dist/Cookie-Baker'
-source=("https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/Cookie-Baker-${pkgver}.tar.gz")
-md5sums=('7ab63698d2f24a8cfe31a7ea270e9d2d')
 _distdir="Cookie-Baker-${pkgver}"
+source=("https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/${_distdir}.tar.gz")
+md5sums=('7ab63698d2f24a8cfe31a7ea270e9d2d')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
