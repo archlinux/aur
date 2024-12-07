@@ -1,18 +1,19 @@
-# Maintainer: Julian <juliannfairfax@protonmail.com>
+# Maintainer: fossdd <fossdd@pwned.life
+# Contributor: Julian <juliannfairfax@protonmail.com>
 
 pkgname=pipeline-gtk
-pkgver=2.0.3
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Watch YouTube and PeerTube videos in one place"
-arch=("x86_64" "aarch64")
+arch=("x86_64" "aarch64" "riscv64")
 url="https://gitlab.com/schmiddi-on-mobile/pipeline"
-license=("GPL")
+license=("GPL-3.0-or-later")
 depends=("libadwaita" "libclapper" "libclapper-gtk")
 makedepends=("blueprint-compiler" "rust" "meson")
 conflicts=("tubefeeder")
 replaces=("tubefeeder")
 source=("https://gitlab.com/schmiddi-on-mobile/pipeline/-/archive/v$pkgver/pipeline-v$pkgver.tar.gz")
-sha256sums=("0a68a1c106cf6fa049a1cd528e13420152573f4f6939e864b97d95825ee696e1")
+sha256sums=('26b06609e89b3d88c96b57a6a3a4559f83135cab26a7975136c6cd249d43ee3e')
 options=(!lto)
 
 build() {
@@ -22,4 +23,6 @@ build() {
 
 package() {
 	meson install -C build --no-rebuild --destdir "$pkgdir"
+
+	ln -s tubefeeder "$pkgdir"/usr/bin/pipeline
 }
