@@ -3,11 +3,9 @@
 pkgbase=miassistanttool-git
 pkgname=miassistanttool-git
 pkgver=1.1.r17.g79ecedc
-pkgrel=1
+pkgrel=3
 pkgdesc="MiAssistantTool"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/offici5l/MiAssistantTool"
 license=('Apache-2.0')
 groups=()
