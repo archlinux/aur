@@ -1,7 +1,7 @@
 # Maintainer: Santiago Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=sticky
-pkgver=1.22
+pkgver=1.23
 pkgrel=1
 pkgdesc="A sticky notes app for the Linux desktop"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=(
     'meson'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('27dbed60d31fa409c5c7fb82293e424fdd9692c8c6c98ae60c7e1ec9bbac2f23')
+sha256sums=('7d702454998439f2d3037dc748507b1a80a2b70284b10868bf8a74d7f4a3cf2d')
 
 prepare() {
     cd "$pkgname-$pkgver"
