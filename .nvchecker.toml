@@ -1,0 +1,4 @@
+[ictree-bin]
+source = "git"
+git = "https://github.com/NikitaIvanovV/ictree.git"
+prefix = "v"
