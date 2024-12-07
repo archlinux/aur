@@ -1,0 +1,22 @@
+pkgbase = r2k
+	pkgdesc = A suckless romaji to kana converter
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/gitRaiku/r2k
+	install = r2k.install
+	arch = any
+	license = GPL-3.0
+	makedepends = make
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = wlroots
+	depends = libx11
+	depends = libxft
+	depends = libxkbcommon
+	depends = freetype2
+	source = https://github.com/gitRaiku/r2k/archive/refs/tags/v1.1.tar.gz
+	source = https://github.com/gitRaiku/r2k/releases/download/v1.1/config.h
+	sha256sums = 9a3fbf9c9d72d4c31be8a4c8db0bec4dc0f5091684709b534a216fb31a159ee1
+	sha256sums = SKIP
+
+pkgname = r2k
