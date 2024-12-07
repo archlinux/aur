@@ -2,11 +2,9 @@
 
 pkgbase=ok-rtc-git
 pkgname=ok-rtc-git
-pkgver=r400.1e34330
+pkgver=r480.14b54d8
 pkgrel=1
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 pkgdesc="OkStar - WebRTC 对 OkStar
 的拓展，上游主页：https://github.com/desktop-app/tg_owt"
 _url="https://github.com/okstar-org"
@@ -55,22 +53,22 @@ source=("${pkgname}::git+${url}.git"
 
 )
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP')
 options=('!emptydirs')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}"
     git submodule init
@@ -84,7 +82,7 @@ prepare()
 build() {
     cd "${srcdir}/${pkgname}"
 
-# see：https://wiki.archlinux.org/title/CMake_package_guidelines
+    # see：https://wiki.archlinux.org/title/CMake_package_guidelines
     cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=ON \

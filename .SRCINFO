@@ -1,11 +1,9 @@
 pkgbase = ok-rtc-git
 	pkgdesc = OkStar - WebRTC 对 OkStar 的拓展，上游主页：https://github.com/desktop-app/tg_owt
-	pkgver = r400.1e34330
+	pkgver = r480.14b54d8
 	pkgrel = 1
 	url = https://github.com/okstar-org/ok-rtc
 	arch = x86_64
-	arch = aarch64
-	arch = riscv64
 	license = BSD-3-Clause
 	makedepends = cmake
 	makedepends = gcc
