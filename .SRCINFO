@@ -1,0 +1,15 @@
+pkgbase = capyfetch
+	pkgdesc = A script to display system information with a capybara
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Senya44ka/capyfetch
+	arch = any
+	license = GPL2
+	depends = python
+	depends = python-colorama
+	depends = python-psutil
+	depends = python-distro
+	source = capyfetch.py
+	md5sums = SKIP
+
+pkgname = capyfetch
