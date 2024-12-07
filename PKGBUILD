@@ -1,7 +1,7 @@
 # Maintainer: VCalV
 pkgname=mergiraf
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A syntax-aware git merge driver for a growing collection of programming languages and file formats"
 arch=('x86_64')
 url="https://mergiraf.org/"
@@ -9,6 +9,7 @@ license=('GPL-3.0-or-later')
 makedepends=('cargo')
 checkdepends=('git')
 depends=(glibc gcc-libs)
+options=('!lto')
 conflicts=("$pkgname-bin")
 provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/mergiraf/mergiraf/archive/v$pkgver.tar.gz")
