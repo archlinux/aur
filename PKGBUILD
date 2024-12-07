@@ -9,6 +9,7 @@ pkgdesc="SpotX Bash Script | Block all audio, banner & video ads | Block logging
 arch=('any')
 url="https://github.com/SpotX-Official/SpotX-Bash"
 license=('MIT')
+depends=(perl zip unzip spotify)
 makedepends=('git')
 provides=(spotx)
 conflicts=(spotx)
