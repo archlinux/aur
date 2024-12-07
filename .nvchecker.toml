@@ -1,0 +1,6 @@
+[spotx-git]
+source="github-graphql"
+github="SpotX-Official/SpotX-Bash"
+use_commit_clean=true
+use_commit_number=true
+use_commit_hash=true
