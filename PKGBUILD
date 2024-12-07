@@ -2,7 +2,7 @@
 
 pkgbase=nvidia-open-beta
 pkgname=('nvidia-open-beta' 'nvidia-open-beta-dkms')
-pkgver=565.57.01
+pkgver=565.77
 pkgrel=1
 epoch=1
 pkgdesc='NVIDIA open kernel modules (beta version)'
@@ -19,8 +19,8 @@ source=("https://github.com/NVIDIA/open-gpu-kernel-modules/archive/${pkgver}/nvi
         '150-nvidia-open-make-modeset-fbdev-default.patch'
         '160-nvidia-open-fix-hdmi-names.patch'
         '170-nvidia-open-silence-event-assert-until-570.patch')
-sha256sums=('e77b90834c151af3e517071baa908494fae0531ee8667ab170ca608eaaade16e'
-            '20198683cf52f60bb9dfe4ad202bf5a1f5a0b47fab5f5cf78e5f48861adda9fa'
+sha256sums=('d3342afbf327335a51096ce5de7b35b22ba84ee2127e84c2cc49624d88a3444f'
+            'f2ec0eb7aa87f19acdd3c87b3ea01786e0da5a75fdb1d9b7fcce84909cbf4428'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
             '73b9cd6b048b0c75cbb6e03b76562f93107d5466fff3127938523a1412cf3d41'
             'ab8f2fbf0b31b7fd07cb6fc6c5c8a72ff72e52c345ca49411c3bb93181b18449'
