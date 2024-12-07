@@ -1,10 +1,10 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-rc
-_pkgver=31.0.0-rc1
+_pkgver=31.0.0
 pkgver="${_pkgver//-/_}"
-pkgrel=3
-epoch=9
+pkgrel=1
+epoch=10
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -123,7 +123,7 @@ sha256sums=(
 sha256sums_x86_64=("fab66dfc9cfd2e26fb87798f855aef30c2004edc8e19570d37af555644ae1655")
 sha256sums_aarch64=("ab09f04e534306d3f301ea997c03a6a9f7bd245042d50a434f17c1c98ac64b89")
 
-if [[ $CARCH == 'x86_64' ]]; then
+if [[ ${CARCH/%_v?/} == 'x86_64' ]]; then
   optdepends+=("decklink: Blackmagic Design DeckLink support")
 fi
 
