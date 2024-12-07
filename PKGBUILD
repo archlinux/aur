@@ -1,29 +1,33 @@
 # Maintainer: jrdn <r7Iq7R1c@protonmail.com>
 
 pkgname=openlinkhub-git
-_pkgnamesrc=OpenLinkHub
-_location=/opt/$_pkgnamesrc
+_upstreamname=OpenLinkHub
+_binlocation=/usr/bin/"${pkgname%-*}"
+_applocation=/opt/"${pkgname%-*}"
 pkgver=0.3.8.r0.gd6cedff
 pkgrel=1
-pkgdesc="Open source Linux interface for iCUE LINK Hub and other Corsair AIOs, Hubs."
+pkgdesc="Open source Linux interface for iCUE LINK Hub and other Corsair AIOs, Hubs. [Latest Commit - source]"
 arch=('x86_64')
 url="https://github.com/jurkovic-nikola/OpenLinkHub"
 license=('GPL3')
 groups=()
 depends=('systemd')
 makedepends=('go' 'git' 'base-devel') 
-provides=("openlinkhub")
-conflicts=("openlinkhub" )
-replaces=("openlinkhub")
-backup=()
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
+replaces=()
+backup=(
+	'opt/openlinkhub/database.json'
+	'opt/openlinkhub/config.json'
+)
 options=()
 install=$_pkgnamesrc.install
 source=(
-	git+https://github.com/jurkovic-nikola/${_pkgnamesrc}.git#branch=main
-	$_pkgnamesrc.install
-	$_pkgnamesrc.sysusers
-	$_pkgnamesrc.tmpfiles
-	$_pkgnamesrc.service
+	"${pkgname%-*}::git+https://github.com/jurkovic-nikola/${_upstreamname}.git#branch=main"
+	"${pkgname%-*}".install
+	"${pkgname%-*}".sysusers
+	"${pkgname%-*}".tmpfiles
+	"${pkgname%-*}".service
 )
 noextract=()
 sha256sums=('SKIP'
@@ -33,12 +37,12 @@ sha256sums=('SKIP'
             'cc4c09d90f3c26db239ed159b4b65ddf3ec7b68c044e61ee42c77a1a5fb659de')
 			
 pkgver() {
-	cd $_pkgnamesrc
+	cd "${pkgname%-*}"
 	printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
 }	
 
 prepare() {
-	cd $_pkgnamesrc
+	cd "$srcdir"
 
 	## Look for CORSAIR Controller Device and create UDEV rule file
 	## Copied nearly verbatim from upstream ./install.sh
@@ -47,40 +51,41 @@ prepare() {
 		ids=$(echo "$line" | awk '{print $6}')
 		vendor_id=$(echo "$ids" | cut -d':' -f1)
 		device_id=$(echo "$ids" | cut -d':' -f2)
-		cat > $_pkgnamesrc-udev.rules <<- EOM
+		cat > "${pkgname%-*}"-udev.rules <<- EOM
 		KERNEL=="hidraw*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="$vendor_id", ATTRS{idProduct}=="$device_id", MODE="0666"
 		EOM
 	done
 }
 
 build() {
-	cd $_pkgnamesrc
+	cd "${pkgname%-*}"
 	go build .
 }
 
 package() {
+	## Install users
+	install -Dm 644 "${pkgname%-*}".sysusers "${pkgdir}"/usr/lib/sysusers.d/"${pkgname%-*}".conf
 
-	## Install package README and LICENSE files
-	install -Dm 644 $_pkgnamesrc.sysusers "${pkgdir}"/usr/lib/sysusers.d/$_pkgnamesrc.conf
-
-	## Install parent folders
-	install -Dm 644 $_pkgnamesrc.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/$_pkgnamesrc.conf
-
-	## Install systemd service unit
-	install -Dm 644 "${_pkgnamesrc}.service" "${pkgdir}"/usr/lib/systemd/system/$_pkgnamesrc.service
+	## Install folders
+	install -Dm 644 "${pkgname%-*}".tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/"${pkgname%-*}".conf
+	install -dm 755 "${pkgdir}"/opt/"${pkgname%-*}"
 
 	## Install systemd service unit
-	install -Dm 644 "${_pkgnamesrc}/${_pkgnamesrc}-udev.rules" "${pkgdir}"/etc/udev/rules.d/99-$_pkgnamesrc.rules
+	install -Dm 644 "${pkgname%-*}.service" "${pkgdir}"/usr/lib/systemd/system/"${pkgname%-*}".service
+
+	## Install udev rules
+	install -Dm 644 "$srcdir/${pkgname%-*}-udev.rules" "${pkgdir}"/etc/udev/rules.d/99-"${pkgname%-*}".rules
 
 	## Install package executable
-	install -Dm 755 "${_pkgnamesrc}/${_pkgnamesrc}" "${pkgdir}"/opt/OpenLinkHub/$_pkgnamesrc
+	install -Dm 755 "${pkgname%-*}/$_upstreamname" "${pkgdir}"$_binlocation
 
-	## Install program data
-	cp -r "${_pkgnamesrc}"/database/ "${pkgdir}"/opt/OpenLinkHub/database/
-	cp -r "${_pkgnamesrc}"/static/ "${pkgdir}"/opt/OpenLinkHub/static/
-	cp -r "${_pkgnamesrc}"/web/ "${pkgdir}"/opt/OpenLinkHub/web/
+	## Install package data
+	cp -r "${pkgname%-*}"/database/ "${pkgdir}"$_applocation/database/
+	cp -r "${pkgname%-*}"/static/ "${pkgdir}"$_applocation/static/
+	cp -r "${pkgname%-*}"/web/ "${pkgdir}"$_applocation/web/
 
-	chmod -R 755 "${pkgdir}"/opt/OpenLinkHub
-	chown -R openlinkhub:root "${pkgdir}"/opt/OpenLinkHub
-
+	## Update permissions
+	chown root:root "${pkgdir}"$_binlocation
+	chmod -R 755 "${pkgdir}"$_applocation
+	chown -R openlinkhub:openlinkhub "${pkgdir}"$_applocation
 }

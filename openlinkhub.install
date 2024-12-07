@@ -3,39 +3,40 @@
 # you don't need (and this header).
 
 ## arg 1:  the new package version
-#pre_install() {
-	# do something here
-#}
+pre_install() {
+	systemctl stop openlinkhub
+	systemctl disable openlinkhub
+}
 
 ## arg 1:  the new package version
 post_install() {
 	systemctl daemon-reload
-	systemctl enable --now OpenLinkHub
+	systemctl enable --now openlinkhub
 	echo -e "You can now access the OpenLinkHub WebUI at http://127.0.0.1:27003"
 }
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 pre_upgrade() {
-	systemctl stop OpenLinkHub
-	systemctl disable OpenLinkHub
+	systemctl stop openlinkhub
+	systemctl disable openlinkhub
 }
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
 	systemctl daemon-reload
-	systemctl enable --now OpenLinkHub
+	systemctl enable --now openlinkhub
 	echo -e "You can now access the OpenLinkHub WebUI at http://127.0.0.1:27003"
 }
 
 ## arg 1:  the old package version
 pre_remove() {
-	systemctl stop OpenLinkHub
-	systemctl disable OpenLinkHub
+	systemctl stop openlinkhub
+	systemctl disable openlinkhub
 }
 
 ## arg 1:  the old package version
 #post_remove() {
-	# do something here
+	#rm -rf /opt/openlinkhub
 #}

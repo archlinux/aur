@@ -1,6 +1,6 @@
 OpenLinkHub/
+openlinkhub/
 src/
 pkg/
-PKGBUILD.bak
 *.tar.zst
 .gitignore
