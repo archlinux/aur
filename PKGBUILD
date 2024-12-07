@@ -41,7 +41,7 @@ build() {
   GO_TAGS="stablediffusion tts p2p"
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  BUILD_TYPE=openblas VERBOSE=1 make build -j4 -Otarget
+  BUILD_TYPE=sycl_f16 make build -j"$(nproc)"
 }
 
 package() {
