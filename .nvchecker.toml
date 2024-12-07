@@ -1,0 +1,4 @@
+[cxcli]
+source = "git"
+git = "https://github.com/xavidop/dialogflow-cx-cli.git"
+prefix = "v"
