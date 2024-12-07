@@ -1,16 +1,17 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=php-http
-pkgver=4.2.4
+pkgver=4.2.6
 pkgrel=1
 pkgdesc="Aims to provide a convenient and powerful set of functionality for one of PHPs major applications"
-arch=('i686' 'x86_64')
-license=('BSD')
+arch=('x86_64')
+license=('BSD-2-Clause')
 url="https://mdref.m6w6.name/http"
-depends=('php' 'php-raphf' 'brotli' 'libevent')
+depends=('glibc' 'curl' 'brotli' 'libevent' 'icu' 'libidn2' 'openssl' 'zlib'
+         'php' 'php-raphf')
 backup=('etc/php/conf.d/http.ini')
 source=("https://pecl.php.net/get/pecl_http-${pkgver}.tgz")
-sha512sums=('b1eb43a458f89b3fd384244bddc8f9d470f82d3162411df3070bf0adf0c3e0457bc1ce928c05e8fffe836fb52cbe4c88f733466a867c3f6320288c5051007b20')
+sha512sums=('50c921d11e035281bd55152e449ee47d203c839d654b097fcbc5d6d93faf91a6111817b8a7157715de0af9f15c713974a53a2ab318eddd840bc3a7e6b2b50e11')
 
 build() {
   cd "${srcdir}/pecl_http-${pkgver}"
