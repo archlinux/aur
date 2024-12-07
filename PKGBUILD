@@ -1,10 +1,11 @@
-# Maintainer: TwoFinger
+# Maintainer: apropos <jj@toki.la>
+# Contributor: TwoFinger
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=koka-bin
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
-pkgdesc="Koka: a function-oriented language with effect inference"
+pkgdesc="A strongly typed functional-style language with effect types and handlers"
 arch=(x86_64)
 url="https://github.com/koka-lang/koka"
 license=(Apache)
@@ -24,9 +25,7 @@ source=(
   "https://github.com/koka-lang/koka/releases/download/v${pkgver}/${_dlfilename}"
 )
 noextract=("${_dlfilename}")
-sha256sums=(
-  3c00088edcf085b9d26eba668f170b2411bea7f9d31aea6090a06533fcfc1373
-)
+sha256sums=('a62f81b5147c1cd1c41b17ef9a986282839f78d1a4e22baedfbcffc211b3b3a6')
 
 package() {
   install -d "${pkgdir}/usr"
