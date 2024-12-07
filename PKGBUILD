@@ -3,7 +3,7 @@
 
 _pkgname="variant"
 pkgname="${_pkgname}-bin"
-pkgdesc="Wrap up your bash scripts into a modern CLI today. Graduate to a golang app tomorrow."
+pkgdesc="Turn your bash scripts into a modern, single-executable CLI app today"
 pkgver=0.38.0
 pkgrel=1
 arch=('x86_64' 'aarch64' 'i686')
