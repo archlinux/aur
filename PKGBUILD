@@ -1,7 +1,7 @@
 # Maintainer: Frédéric Lachapelle <frederic.lachapelle7@gmail.com>
 
 pkgname=open-tv-bin
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Fast and powerful IPTV app'
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=(
 source=(
   "https://github.com/Fredolx/open-tv/releases/download/v${pkgver}/Open.TV_${pkgver}_amd64.deb"
 )
-sha512sums=('7f5ea30878736d0477931dbe8377371d8bb922a005bddde04f7a110945024ada38c017fa3c5fb7a2848fceff0c4b42e407ce6d7ff5eef388be4c251ce4785bb6')
+sha512sums=('f052f7c1d819d3b7efda7d4a69c23fc89fec29fc1fac00f4224fe5cc33d33bbcb99825ebf5c91b3435f03adee366d8d0e8e59acc2b19f689f4411575e8ddae49')
 
 prepare() {
     bsdtar -xf "${srcdir}/data.tar.xz" -C "${srcdir}/"

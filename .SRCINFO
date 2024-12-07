@@ -1,6 +1,6 @@
 pkgbase = open-tv-bin
 	pkgdesc = Fast and powerful IPTV app
-	pkgver = 1.0.3
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/fredolx/open-tv
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = open-tv-bin
 	depends = yt-dlp
 	depends = webkit2gtk-4.1
 	options = !emptydirs
-	source = https://github.com/Fredolx/open-tv/releases/download/v1.0.3/Open.TV_1.0.3_amd64.deb
-	sha512sums = 7f5ea30878736d0477931dbe8377371d8bb922a005bddde04f7a110945024ada38c017fa3c5fb7a2848fceff0c4b42e407ce6d7ff5eef388be4c251ce4785bb6
+	source = https://github.com/Fredolx/open-tv/releases/download/v1.1.0/Open.TV_1.1.0_amd64.deb
+	sha512sums = f052f7c1d819d3b7efda7d4a69c23fc89fec29fc1fac00f4224fe5cc33d33bbcb99825ebf5c91b3435f03adee366d8d0e8e59acc2b19f689f4411575e8ddae49
 
 pkgname = open-tv-bin
