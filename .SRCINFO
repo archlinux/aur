@@ -1,0 +1,26 @@
+pkgbase = dunst-wayland-git
+	pkgdesc = A highly configurable and lightweight notification daemon (built without X11 suport)
+	pkgver = 1.12.0.r5.ge1e772c
+	pkgrel = 1
+	url = https://dunst-project.org/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	makedepends = git
+	makedepends = wayland-protocols
+	makedepends = libnotify
+	depends = systemd
+	depends = gdk-pixbuf2
+	depends = pango
+	depends = wayland
+	optdepends = libnotify: dunstify
+	optdepends = xdg-utils: xdg-open
+	provides = dunst
+	provides = notification-daemon
+	conflicts = dunst
+	backup = etc/xdg/dunst/dunstrc
+	source = git+https://github.com/dunst-project/dunst.git
+	sha256sums = SKIP
+
+pkgname = dunst-wayland-git
