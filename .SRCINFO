@@ -1,4 +1,4 @@
-pkgbase = fcitx5-pinyin-moegirl-rime
+pkgbase = rime-pinyin-moegirl
 	pkgdesc = Fcitx 5 Pinyin Dictionary from moegirl.org wiki for rime
 	pkgver = 20241109
 	pkgrel = 2
@@ -9,4 +9,4 @@ pkgbase = fcitx5-pinyin-moegirl-rime
 	source = https://github.com/outloudvi/mw2fcitx/releases/download/20241109/moegirl.dict.yaml
 	sha256sums = 067a6fee2a933d13674a267a669cdc4172d991b15b6749d0830d9df88c9364e4
 
-pkgname = fcitx5-pinyin-moegirl-rime
+pkgname = rime-pinyin-moegirl

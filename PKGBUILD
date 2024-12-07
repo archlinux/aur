@@ -5,7 +5,7 @@
 # Contributor: AlprC <alprcyan@gmail.com>
 # Contributor: DeepChirp <DeepChirp@outlook.com>
 
-pkgname=fcitx5-pinyin-moegirl-rime
+pkgname=rime-pinyin-moegirl
 pkgver=20241109
 _reponame=mw2fcitx
 pkgrel=2
