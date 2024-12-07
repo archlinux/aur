@@ -1,19 +1,19 @@
 pkgbase = variant-bin
-	pkgdesc = Turn your bash scripts into a modern, single-executable CLI app today
+	pkgdesc = Wrap up your bash scripts into a modern CLI today. Graduate to a golang app tomorrow.
 	pkgver = 0.38.0
 	pkgrel = 1
 	url = https://github.com/mumoshu/variant
 	arch = x86_64
-	arch = i686
 	arch = aarch64
-	license = MIT
+	arch = i686
+	license = Apache-2.0
 	provides = variant
 	conflicts = variant
-	source_x86_64 = https://github.com/mumoshu/variant/releases/download/v0.38.0/variant_0.38.0_linux_amd64.tar.gz
+	source_x86_64 = variant-0.38.0-x86_64.tar.gz::https://github.com/mumoshu/variant/releases/download/v0.38.0/variant_0.38.0_linux_amd64.tar.gz
 	sha256sums_x86_64 = d95d7f63d06fa33f43d334b55da4ca1b3e434a50444f540acb43cdf1cecf4bb2
-	source_i686 = https://github.com/mumoshu/variant/releases/download/v0.38.0/variant_0.38.0_linux_386.tar.gz
-	sha256sums_i686 = 60defe9c7723f54a29c57780fbf3de18c2bf592de82f8fc2b13cd5404ed7bc90
-	source_aarch64 = https://github.com/mumoshu/variant/releases/download/v0.38.0/variant_0.38.0_linux_arm64.tar.gz
+	source_aarch64 = variant-0.38.0-aarch64.tar.gz::https://github.com/mumoshu/variant/releases/download/v0.38.0/variant_0.38.0_linux_arm64.tar.gz
 	sha256sums_aarch64 = 5811a4318a152f39eea9a2e2c8851acfe971c6e7618924de0b0c34b00cbcefd2
+	source_i686 = variant-0.38.0-i686.tar.gz::https://github.com/mumoshu/variant/releases/download/v0.38.0/variant_0.38.0_linux_386.tar.gz
+	sha256sums_i686 = 60defe9c7723f54a29c57780fbf3de18c2bf592de82f8fc2b13cd5404ed7bc90
 
 pkgname = variant-bin

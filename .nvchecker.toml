@@ -1,0 +1,4 @@
+[variant-bin]
+source = "git"
+git = "https://github.com/mumoshu/variant.git"
+prefix = "v"
