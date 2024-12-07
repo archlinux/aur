@@ -1,5 +1,4 @@
-# Maintainer:
-# Contributor:
+# Maintainer: imna <imna@imna.digital>
 pkgname=imna_file_manager
 pkgver=0.0.1
 pkgrel=1
