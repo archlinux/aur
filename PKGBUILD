@@ -4,7 +4,7 @@
 pkgname=stlink-server
 _pkgname=st-link-server
 pkgver=2.1.1
-pkgrel=6
+pkgrel=7
 pkgdesc="An application to share the debug interface of a single ST-LINK board among several host applications, typically a debugging tool and a monitoring tool"
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/st-link-server.html"
@@ -15,7 +15,7 @@ depends=("stlink"
 
 _pkg_license_name="SLA0048_${_pkgname^^}.pdf"
 # Non-uniform name conventions
-_pkg_zip_name="en.${_pkgname}-v${pkgver}.zip"
+_pkg_zip_name="en.${_pkgname}-v${pkgver//./-}.zip"
 _pkg_uncompress_dir="en.${_pkgname}_v${pkgver}-2"
 _stlink_server_bin="${pkgname}.${pkgver}-1"
 

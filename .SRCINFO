@@ -1,13 +1,13 @@
 pkgbase = stlink-server
 	pkgdesc = An application to share the debug interface of a single ST-LINK board among several host applications, typically a debugging tool and a monitoring tool
 	pkgver = 2.1.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.st.com/en/development-tools/st-link-server.html
 	arch = x86_64
 	license = custom:SLA0048
 	depends = stlink
 	depends = libusb
-	source = en.st-link-server-v2.1.1.zip::https://www.st.com/content/ccc/resource/technical/software/sw_development_suite/group0/98/41/e8/53/44/80/41/92/st-link-server-v2-1-1/files/st-link-server-v2-1-1.zip/jcr:content/translations/en.st-link-server-v2-1-1.zip
+	source = en.st-link-server-v2-1-1.zip::https://www.st.com/content/ccc/resource/technical/software/sw_development_suite/group0/98/41/e8/53/44/80/41/92/st-link-server-v2-1-1/files/st-link-server-v2-1-1.zip/jcr:content/translations/en.st-link-server-v2-1-1.zip
 	source = http_headers
 	source = https://www.st.com/resource/en/license/SLA0048_ST-LINK-SERVER.pdf
 	sha256sums = a84a0ada7c9b6343e559dacd37e42a815c500d0f4a517db3d1e511d056903bf6
