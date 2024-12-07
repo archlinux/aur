@@ -1,7 +1,7 @@
 # Maintainer: Isaac Arcia <iikz87ii@gmail.com>
 pkgname=yawns
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Your Adaptable Widget Notification System"
 arch=('any')
 url="https://github.com/ikz87/yawns/tree/main"
@@ -49,6 +49,6 @@ if [ ! -d "$HOME/.config/yawns" ]; then
     mkdir -p "$HOME/.config/yawns"
     cp -r /usr/share/yawns/* "$HOME/.config/yawns"
 fi
-exec python3 /usr/share/yawns/app.py "$@"' > "$pkgdir/usr/bin/$pkgname"
+python3 /usr/share/yawns/app.py "$@"' > "$pkgdir/usr/bin/$pkgname"
     chmod +x "$pkgdir/usr/bin/$pkgname"
 }
