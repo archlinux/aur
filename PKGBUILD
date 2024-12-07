@@ -1,6 +1,6 @@
 # Maintainer: Bastian Löher <b.loeher@gsi.de>
 pkgname=opengate
-pkgver=9.3
+pkgver=9.4
 pkgrel=1
 pkgdesc="Open GATE - numerical simulations in medical imaging and radiotherapy"
 arch=('x86_64')
@@ -18,7 +18,7 @@ install=
 changelog=
 source=("https://github.com/OpenGATE/Gate/archive/v${pkgver}.tar.gz")
 noextract=()
-md5sums=('e3e507776d9347e0903e8721ec03cd03')
+md5sums=('4c662b0cdc4b368518ee03ff68729308')
 
 # Do not compress the package for installation
 # PKGEXT='.pkg.tar'
