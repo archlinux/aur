@@ -1,92 +1,89 @@
-# Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
+# Maintainer: Harriet O'Brien <harrietobrien at protonmail dot com>
+# Contributor: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli
-pkgver=1.5.57
+pkgver=1.6.39
 pkgrel=1
-_pkgbasename=quarto-cli
-_denodomver="0.1.35-alpha-artifacts"
-_denover="1.41.3-1"
-_deno_commit=0d7662e1556a60bcc4b7075752fb2c2842b1afea
+#_pkgbasename=quarto-cli
+_denodomver="0.1.41-alpha-artifacts"
+_denover="2.0.4-1"
+_deno_commit=b7c282d
 _deno_arch="deno-x86_64-unknown-linux-gnu"
-pkgdesc="Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org)."
+pkgdesc="Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org)"
 arch=('x86_64')
-depends=('nodejs' 'deno' 'dart-sass' 'esbuild' 'pandoc' 'lua-lpeg' 'typst')
-makedepends=('git' 'npm' 'rust')
+depends=("nodejs"
+         "deno" 
+         "dart-sass" 
+         "esbuild" 
+         "pandoc" 
+         "lua-lpeg" 
+         "typst")
+makedepends=("git" 
+             "npm" 
+             "rust")
 url="https://quarto.org/"
-license=('MIT')
+license=("MIT")
 provides=("quarto")
-conflicts=('quarto-cli-bin' 'quarto-cli-pre-release' 'quarto-cli-bin-pre-release' 'quarto-cli-git')
+conflicts=("quarto-cli-bin"
+           "quarto-cli-pre-release"
+           "quarto-cli-bin-pre-release"
+           "quarto-cli-git")
 options=(!strip)
-
-source=("${_pkgbasename}-${pkgver}.tar.gz::https://github.com/quarto-dev/quarto-cli/archive/refs/tags/v${pkgver}.tar.gz"
-        "https://archive.archlinux.org/packages/d/deno/deno-${_denover}-x86_64.pkg.tar.zst"
-        "https://github.com/b-fuze/deno-dom/archive/refs/tags/v${_denodomver}.tar.gz"
-        "000_pandoc_lua.diff"
-       )
-
-sha256sums=('1b16649a46f63d2341e06ebe99fca0a6c580130e673e7317038db933481636f6'
-            '2d148c7ae8dbe2f8703654a8d3cb59e16613005a29180c3377c103799728474a'
-            '14fb042a6912041b9fda91fd643cf278764d075bc9539aa1e107475915cd896c'
-            '0f27dff1e1b16e4f2f21c43b838aaae18bf9f82339eb65878b24de128f89450f')
-
-prepare() {
-  cd "${srcdir}/${_pkgbasename}-${pkgver}"
-  ## Roll back "fix" of https://github.com/quarto-dev/quarto-cli/issues/8274
-  patch -p1 < ../000_pandoc_lua.diff
-}
+source=("https://github.com/quarto-dev/$pkgname/releases/download/v$pkgver/$provides-$pkgver-linux-amd64.tar.gz"
+        "https://archive.archlinux.org/packages/d/deno/deno-$_denover-x86_64.pkg.tar.zst"
+        "https://github.com/b-fuze/deno-dom/archive/refs/tags/v$_denodomver.tar.gz"
+        "000_pandoc_lua.diff")
+sha256sums=("d797c796713a57c14d8115f49a45d626a16478697096a0421f2d2d980e5f9d4a"
+            "897c81da3ca3cb1c236f111d237abfcc973cc0e7a4089ca3f21997e17cb0a9a2"
+            "5ab1a73e73b9edf9d2c81e655658d970e6212497a5368d8f0bc8613bbdf8d91d"
+            "0f27dff1e1b16e4f2f21c43b838aaae18bf9f82339eb65878b24de128f89450f")
 
 build() {
-  cd "${srcdir}/${_pkgbasename}-${pkgver}"
-  source configuration
-  source "${srcdir}/${_pkgbasename}-${pkgver}/package/src/set_package_paths.sh"
-  export QUARTO_VERSION=${pkgver}
-  export QUARTO_VENDOR_BINARIES='false'
-  export QUARTO_NO_SYMLINK='true'
-  export DENO_DOM_PLUGIN="${srcdir}/deno-dom-${_denodomver}/target/release/libplugin.so"
+  cd "$srcdir/$provides-$pkgver/"
+  # source configuration
+  # source "$srcdir/$provides-$pkgver/pkg/src/set_package_paths.sh"
+  export QUARTO_VERSION=$pkgver
+  export QUARTO_VENDOR_BINARIES="false"
+  export QUARTO_NO_SYMLINK="true"
+  export DENO_DOM_PLUGIN="$srcdir/deno-dom-$_denodomver/target/release/libplugin.so"
   if [ -z "$QUARTO_DENO" ]; then
     export QUARTO_DENO=$SCRIPT_PATH/../dist/bin/tools/deno
   fi
-  # keep deno cache directory out of default $home/.cache/deno
-  export DENO_DIR="${srcdir}/${_pkgbasename}-${pkgver}/package/cache"
+  # Keep deno cache directory out of default $home/.cache/deno
+  export DENO_DIR="$srcdir/$provides-$pkgver/package/cache"
   # Rust optimizations
-  export CARGO_HOME="${srcdir}/${_pkgbasename}-${pkgver}/.cargo"
+  export CARGO_HOME="$srcdir/$provides-$pkgver/.cargo"
   export RUSTFLAGS="-C strip=symbols"
 
-  mkdir -p package/dist/bin/tools/${arch}/dart-sass
-  mkdir -p package/dist/bin/tools/${arch}/deno_dom
-  cp ${srcdir}/usr/bin/deno package/dist/bin/tools
-  ln -sfT /usr/bin/pandoc package/dist/bin/tools/${arch}/pandoc
-  ln -sfT /usr/bin/sass package/dist/bin/tools/${arch}/dart-sass/sass
-  ln -sfT /usr/bin/esbuild package/dist/bin/tools/${arch}/esbuild
+  mkdir -p package/dist/bin/tools/$arch/dart-sass
+  mkdir -p package/dist/bin/tools/$arch/deno_dom
+  cp $srcdir/usr/bin/deno package/dist/bin/tools
+  ln -sfT /usr/bin/pandoc package/dist/bin/tools/$arch/pandoc
+  ln -sfT /usr/bin/sass package/dist/bin/tools/$arch/dart-sass/sass
+  ln -sfT /usr/bin/esbuild package/dist/bin/tools/$arch/esbuild
 
   msg "Building Deno Stdlib..."
-  cd "${srcdir}/deno-dom-${_denodomver}"
+  cd "$srcdir/deno-dom-$_denodomver"
   cargo build --release
 
-  cd "${srcdir}/${_pkgbasename}-${pkgver}"
-  # unsure if it's needed at all
-  # package/dist/bin/tools/deno run --allow-all package/src/common/create-deno-config.ts > deno.jsonc
-  cd package/src
-  #../dist/bin/tools/deno run --unstable --allow-env --allow-read --allow-write --allow-run --allow-net --allow-ffi --importmap=../../src/dev_import_map.json bld.ts configure --log-level info
-  ../dist/bin/tools/deno run --unstable --allow-env --allow-read --allow-write --allow-run --allow-net --allow-ffi --importmap=../../src/import_map.json bld.ts prepare-dist --log-level info
-
+  cd "$srcdir/$provides-$pkgver/package/dist/bin/tools"
+  deno run --unstable --allow-env --allow-read --allow-write --allow-run --allow-net --allow-ffi --importmap=../../../../share/conf/jsx-import-map.json ../../../../share/conf/jsx-runtime.ts prepare-dist --log-level info
 }
 
-
 package() {
-  cd "${srcdir}/${_pkgbasename}-${pkgver}"
-  mkdir -p package/pkg-working/bin/tools/${arch}/dart-sass
-  mkdir -p package/pkg-working/bin/tools/${arch}/deno_dom
-  cp "${srcdir}/deno-dom-${_denodomver}/target/release/libplugin.so" "${srcdir}/${_pkgbasename}-${pkgver}/package/pkg-working/bin/tools/${arch}/deno_dom"
+  cd "$srcdir/$provides-$pkgver"
+  mkdir -p package/pkg-working/bin/tools/$arch/dart-sass
+  mkdir -p package/pkg-working/bin/tools/$arch/deno_dom
+  cp "$srcdir/deno-dom-$_denodomver/target/release/libplugin.so" "$srcdir/$provides-$pkgver/package/pkg-working/bin/tools/$arch/deno_dom"
   # keep legacy pandoc location, see https://github.com/quarto-dev/quarto/issues/237
   ln -sfT /usr/bin/pandoc package/pkg-working/bin/tools/pandoc
-  ln -sfT /usr/bin/pandoc package/pkg-working/bin/tools/${arch}/pandoc
-  ln -sfT /usr/bin/deno package/pkg-working/bin/tools/${arch}/deno
-  ln -sfT /usr/bin/sass package/pkg-working/bin/tools/${arch}/dart-sass/sass
-  ln -sfT /usr/bin/esbuild package/pkg-working/bin/tools/${arch}/esbuild
-  ln -sfT /usr/bin/typst package/pkg-working/bin/tools/${arch}/typst
+  ln -sfT /usr/bin/pandoc package/pkg-working/bin/tools/$arch/pandoc
+  ln -sfT /usr/bin/deno package/pkg-working/bin/tools/$arch/deno
+  ln -sfT /usr/bin/sass package/pkg-working/bin/tools/$arch/dart-sass/sass
+  ln -sfT /usr/bin/esbuild package/pkg-working/bin/tools/$arch/esbuild
+  ln -sfT /usr/bin/typst package/pkg-working/bin/tools/$arch/typst
 
-  install -d ${pkgdir}/usr/{bin,lib/${_pkgbasename}/{bin,share}}
-  cp -R package/pkg-working/* "${pkgdir}/usr/lib/${_pkgbasename}"
-  ln -sf "/usr/lib/${_pkgbasename}/bin/quarto" "$pkgdir/usr/bin/quarto"
+  install -d $pkgdir/usr/{bin,lib/$pkgname/{bin,share}}
+  cp -R package/pkg-working/* "$pkgdir/usr/lib/$pkgname"
+  ln -sf "/usr/lib/$pkgname/bin/quarto" "$pkgdir/usr/bin/quarto"
 }
