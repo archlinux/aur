@@ -1,8 +1,8 @@
 # Maintainer: Konstantin Liberty <jon9097 at gmail dot com>
 
 pkgname=obs-studio-liberty
-pkgver=30.2.3
-pkgrel=2
+pkgver=31.0.0
+pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc."
 arch=('x86_64')
 url="https://github.com/obsproject/obs-studio"
@@ -10,12 +10,12 @@ license=('GPL-2.0-or-later')
 _qtver=6.6.2
 _libajantv2ver=17.0.1
 _libdatachannelver=0.21
-_mbedtlsver=3.6
+_mbedtlsver=3.6.1
 _pythonver=3.12
 depends=(
   "alsa-lib" # Deps of ALSA plugin and CEF
   "curl" # Deps of OBS Studio and rtmp-services plugin
-  "ffmpeg>=7" # Deps of OBS Studio and FFmpeg plugin
+  "ffmpeg>=7.1" # Deps of OBS Studio and FFmpeg plugin
   "fontconfig" # Deps of Freetype2 plugin
   "freetype2" # Deps of Freetype2 plugin
   "gcc-libs" # Deps of any C++ related binary
@@ -47,12 +47,14 @@ depends=(
   "zlib" # Deps of libobs
 
   # Deps of CEF
-  "at-spi2-core" "dbus" "expat" "libcups" "libdrm" "libxdamage"
-  "libxext" "libxfixes" "libxrandr" "mesa" "nspr" "nss"
+  "at-spi2-core" "cairo" "dbus" "expat" "libcups" "libdrm"
+  "libxdamage" "libxext" "libxfixes" "libxrandr" "mesa" "nspr"
+  "nss" "pango"
 )
 makedepends=(
   "asio" # Deps of Websocket plugin (headers-only lib)
   "cmake"
+  "ffnvcodec-headers" # Deps of NVENC plugin (headers-only lib)
   "jack" # Deps of JACK plugin
   "git"
   "uthash" # Deps of libobs
@@ -70,7 +72,7 @@ makedepends=(
   "websocketpp" # Deps of Websocket plugin (headers-only lib)
 
   # Deps of obs-browser
-  "cef-minimal-obs=103.0.0_5060_shared_textures_2594+g17f8588+chromium_103.0.5060.134_1"
+  #"cef-minimal-obs=1:127.3.4+ge9e2e14+chromium_127.0.6533.100_1"
 )
 optdepends=(
   "jack: JACK support"
@@ -92,21 +94,19 @@ optdepends=(
   "libajantv2>=$_libajantv2ver: AJA support"
 )
 provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket" "obs-browser")
-conflicts=("obs-studio" "obs-websocket" "obs-browser" "obs-linuxbrowser" "obs-studio-tytan652" "obs-studio-git" "obs-studio-amf" "obs-studio-browser")
+conflicts=("obs-studio" "obs-websocket" "obs-browser" "obs-linuxbrowser" "obs-studio-tytan652" "obs-studio-git" "obs-studio-amf" "obs-studio-browser" "obs-vst" "obs-linuxbrowser")
 source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
-  "ftl-sdk::git+https://github.com/microsoft/ftl-sdk.git"
-  "supported-nv-codec-headers::git+https://github.com/FFmpeg/nv-codec-headers.git#tag=n12.1.14.0"
+  "https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64.tar.xz"
   #"0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch"
 )
 sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
-  "SKIP"
-  "SKIP"
+  "fab66dfc9cfd2e26fb87798f855aef30c2004edc8e19570d37af555644ae1655"
   #"c397a8da291547c757a42f7727a5e6650aa70e6e531f2ef150356eb9eb1fb49c"
 )
 
@@ -120,8 +120,8 @@ prepare() {
   # MbedTLS 3.6.0 broke stuff with TLS v1.3 (Thanks tytan652)
   # patch -Np1 -i "$srcdir/0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch"
 
-  cd "$srcdir"
-  make PREFIX="$srcdir/nv-prefix" -C supported-nv-codec-headers install
+  #cd "$srcdir"
+  #make PREFIX="$srcdir/nv-prefix" -C supported-nv-codec-headers install
 }
 
 build() {
@@ -131,16 +131,15 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DOBS_CMAKE_VERSION=3 \
     -DENABLE_LIBFDK=ON \
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=ON \
-    -DCEF_ROOT_DIR=/opt/cef-obs \
+    -DCEF_ROOT_DIR="$srcdir/cef_binary_6533_linux_x86_64/" \
     -DOBS_VERSION_OVERRIDE="$pkgver" \
     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
     -Wno-dev \
-    -DCMAKE_INCLUDE_PATH="${srcdir}/nv-prefix/include:/usr/include"
+    #-DCMAKE_INCLUDE_PATH="${srcdir}/nv-prefix/include:/usr/include"
   cmake --build build
 }
 
