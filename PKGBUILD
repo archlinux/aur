@@ -3,7 +3,7 @@ _pkgbase=local-ai
 _pkgname=LocalAI
 pkgname="${_pkgbase}-cublas"
 pkgver=2.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with NVIDIA CUDA optimizations)"
 arch=('x86_64')
 url="https://github.com/mudler/LocalAI"
@@ -22,8 +22,9 @@ makedepends=(
   'go'
   'grpc'
   'make'
-  'openmpi'
   'openssl'
+  'protoc-gen-go'
+  'protoc-gen-go-grpc'
   're2'
   'upx'
 )
