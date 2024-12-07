@@ -4,7 +4,7 @@ _pkgname=neocities-deploy
 pkgname=$_pkgname-git
 pkgdesc='Command-line tool for deploying your Neocities site'
 url="https://github.com/kugland/$_pkgname"
-pkgver=0.1.12.r0.g3cb7850
+pkgver=v0.1.13.fb7486bc
 pkgrel=1
 arch=('any')
 source=("$_pkgname::git+${url}#branch=master")
@@ -40,5 +40,5 @@ package() {
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    echo $(git tag | sort -V | tail -n1).$(git rev-parse HEAD | sed -E 's/^(.{8}).*$/\1/g')
 }
