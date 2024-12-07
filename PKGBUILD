@@ -1,8 +1,8 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='mdx'
 pkgname="ocaml-$_projectname"
-pkgver='2.4.1'
-pkgrel='4'
+pkgver='2.5.0'
+pkgrel='1'
 pkgdesc='Executable code blocks inside markdown files for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/realworldocaml/$_projectname"
@@ -15,8 +15,8 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	'remove-result-dep.diff'
 )
-b2sums=('3c80e6b5223eacea90727d23ecd454e1b31f7fbbdb6a0d588e66162f3fa8bbbae32221b8d8819b46c75ae12facaaf9ab213384f0cc36b80f18cf58c5314821bc'
-        '92ed0828fb3dd6e166dd14f3c109eaf62c06b59ad3819c44c411f192930d070e5a62ceae3219fcf8abd5f65ce4e84cb6ed51eba3c1ebe776d3ad8a260f95f7b3')
+b2sums=('eba921dce1d50d5f1f6d649e57627002aeffb1715d80dd8825e5e63f974d9d15958a164d49baacfde651823b8e9046d360091d0bed0b084a4dcfb696e8df8e33'
+        'ecf106081b4217a21724a645c2bd98beb27f2e9998bf32a64e8e770930701c65ec45903148e40ebe88dca639597f8e66dc232bd7281142466201a5138a764777')
 
 _sourcedirectory="$_projectname-$pkgver"
 

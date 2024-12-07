@@ -1,22 +1,23 @@
 diff --git a/dune-project b/dune-project
-index c641a2db..10bd1295 100644
+index c641a2db..7eec36e0 100644
 --- a/dune-project
 +++ b/dune-project
-@@ -38,7 +38,6 @@
+@@ -38,7 +38,4 @@
     (>= 2.3.0))
    (lwt :with-test)
    camlp-streams
 -  result
-   (alcotest :with-test))
-  (conflicts
-    (result (< 1.5))))
+-  (alcotest :with-test))
+- (conflicts
+-   (result (< 1.5))))
++  (alcotest :with-test)))
 diff --git a/lib/block.mli b/lib/block.mli
-index b023265d..47e69a3f 100644
+index 68a02795..cd29d2c6 100644
 --- a/lib/block.mli
 +++ b/lib/block.mli
-@@ -129,7 +129,7 @@ val mk_include :
- (** [mk_include] builds an include block from a comment [<!-- $MDX ... -->]
-     that is not followed by a code block [``` ... ```]. *)
+@@ -130,7 +130,7 @@ val mk_include :
+ (** [mk_include] builds an include block from a comment [<!-- $MDX ... -->] that
+     is not followed by a code block [``` ... ```]. *)
  
 -val from_raw : Raw.t -> (t, [ `Msg of string ] list) Result.result
 +val from_raw : Raw.t -> (t, [ `Msg of string ] list) Result.t
@@ -24,10 +25,10 @@ index b023265d..47e69a3f 100644
  (** {2 Printers} *)
  
 diff --git a/mdx.opam b/mdx.opam
-index 833e964d..ac54c944 100644
+index 833e964d..d4ddd912 100644
 --- a/mdx.opam
 +++ b/mdx.opam
-@@ -31,7 +31,6 @@ depends: [
+@@ -31,13 +31,9 @@ depends: [
    "ocaml-version" {>= "2.3.0"}
    "lwt" {with-test}
    "camlp-streams"
@@ -35,6 +36,12 @@ index 833e964d..ac54c944 100644
    "alcotest" {with-test}
    "odoc" {with-doc}
  ]
+-conflicts: [
+-  "result" {< "1.5"}
+-]
+ build: [
+   ["dune" "subst"] {dev}
+   [
 diff --git a/vendor/odoc-parser/src/dune b/vendor/odoc-parser/src/dune
 index 52caaaf2..12396b3e 100644
 --- a/vendor/odoc-parser/src/dune
