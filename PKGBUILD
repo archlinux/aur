@@ -1,20 +1,20 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=crm-git
-pkgver=0.2.1.r4.g1d14d69
-pkgrel=1
+pkgver=0.2.2.r0.gd392e9a
+pkgrel=4
 pkgdesc="crm (Cargo registry manager)"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/wtklbm/crm"
-license=('MIT' 'Apache-2.0')
+license=('MIT AND Apache-2.0')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=(gcc-libs
+depends=(
+    gcc-libs
     glibc)
-makedepends=(git
+makedepends=(
+    git
     cargo)
 backup=()
 options=('!lto')
@@ -27,8 +27,7 @@ pkgver() {
     git describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname%-git}" clean -dfx
 }
 
