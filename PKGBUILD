@@ -3,7 +3,7 @@ _pkgbase=local-ai
 _pkgname=LocalAI
 pkgname="${_pkgbase}-sycl-f16"
 pkgver=2.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with Intel SYCL GPU optimizations and F16)"
 arch=('x86_64')
 url="https://github.com/mudler/LocalAI"
@@ -22,8 +22,9 @@ makedepends=(
   'grpc'
   'intel-oneapi-basekit'
   'make'
-  'openmpi'
   'openssl'
+  'protoc-gen-go'
+  'protoc-gen-go-grpc'
   're2'
   'upx'
 )
