@@ -1,6 +1,6 @@
 pkgbase = electron-nightly-bin
 	pkgdesc = Electron Nightly build for Linux - Binary version
-	pkgver = 35.0.0.nightly.20241204
+	pkgver = 35.0.0.nightly.20241206
 	pkgrel = 1
 	url = https://github.com/electron/nightlies
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = electron-nightly-bin
 	depends = nss
 	depends = libxss
 	depends = libnotify
-	source = https://github.com/electron/nightlies/releases/download/v35.0.0-nightly.20241204/electron-v35.0.0-nightly.20241204-linux-x64.zip
-	sha256sums = d59bd2ad4412f2576e88d704609d1ad599ca98021d73a3e5259c088b28160578
+	source = https://github.com/electron/nightlies/releases/download/v35.0.0-nightly.20241206/electron-v35.0.0-nightly.20241206-linux-x64.zip
+	sha256sums = 66823e231c3166f61f7196a19f4ec03ef82dcdb98620b6f6ca8be25a71f79411
 
 pkgname = electron-nightly-bin
