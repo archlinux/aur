@@ -1,45 +1,16 @@
 # Maintainer: xihale <xihale.top@qq.com>
 
-## options
-: ${_autoupdate:=true}
-: ${_pkgtype:=-bin}
-
-pkgname="v2rayn$_pkgtype"
-pkgver=7.2.0
+pkgname="v2rayn-bin"
+pkgver=7.2.3
 pkgrel=1
 pkgdesc="A GUI client for Windows and Linux, support Xray core and others"
 arch=("x86_64")
 license=('GPL3')
 url="https://github.com/2dust/v2rayN"
-options=('!strip') # TODO: after striping, the file couldn't run
-
-_main(){
-
-    _json=$(curl -s "https://api.github.com/repos/2dust/v2rayN/releases?per_page=1")
-    
-    _pkgver=$(jq -r '.[0].tag_name' <<< $_json)
-
-    _bin_url=`echo "$_json" | sed -n '/browser_download_url.*v2rayN-linux-64\.zip/p' | awk -F'"' '{print $4}'`
-
-}
-
-pkgver(){
-
-    if [ -z "$_pkgver" ]; then
-        echo "Can't get the package info from https://api.github.com/repos/2dust/v2rayN/releases?per_page=1"
-        exit
-    else
-        echo "$_pkgver"
-    fi
-
-}
+source=("https://github.com/2dust/v2rayN/releases/download/${pkgver}/v2rayN-linux-64.zip" "v2rayN.png" "v2rayN-bin.desktop")
+options=('!strip') # TODO: after striping, it cannot run
 
 package() {
-
-    # get the package
-    filename=`basename $_bin_url`
-    echo $_bin_url $filename
-    curl -L -o $filename -C - $_bin_url && bsdtar -xf $filename # continuous transmission on the breakpoint if file exist.
 
     _app_name=$pkgname
 
@@ -48,6 +19,8 @@ package() {
     mkdir -p "$pkgdir/opt/$_app_name"
     mv v2rayN-linux-64/* $pkgdir/opt/$_app_name/
     chmod -R 0777 $pkgdir/opt/$_app_name
-}
 
-_main
+}
+sha256sums=('83ac5b96c17ca927d7f8e3d1daf98d55376dc6b9e327862983b0a11be645023f'
+            'f762fd95d93c2287f55ebb742716a54aa6b507ff8c8d75aec7256fabc93192ee'
+            'c3193fc83a87c6a0c7bd10fbfc2cbbd568d33bc33be0b8e6b3773e6207a8b07d')
