@@ -52,10 +52,6 @@ if [ ! -d "$WINEPREFIX" ]; then
   ln -s "$bzr2_path_sys/data" "$bzr2_path_home"
   ln -s "$bzr2_path_sys/platforms" "$bzr2_path_home"
   # END --- app data setup ---
-
-  # --- user data setup ---
-  cp -a "$bzr2_path_sys/user" "$bzr2_path_home"
-  # END --- user data setup ---
 fi
 
 wine "$bzr2_path_home/$bzr2" "$@" &
