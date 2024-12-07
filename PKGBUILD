@@ -3,17 +3,17 @@
 pkgname=minetest-voxelibre
 conflicts=('minetest-mineclone2')
 replaces=('minetest-mineclone2')
-pkgver=0.87.1
-pkgrel=2
+pkgver=0.87.2
+pkgrel=1
 pkgdesc='VoxeLibre (formerly known as MineClone2), a voxel-based sandbox game for Minetest'
 arch=('any')
 url='https://git.minetest.land/VoxeLibre/VoxeLibre'
 license=('GPL3')
 depends=('luanti-common')
 source=("voxelibre-$pkgver.tar.gz::https://git.minetest.land/VoxeLibre/VoxeLibre/archive/${pkgver}.tar.gz")
-sha256sums=('8cb2ec2df43e66fe397449c3fbed5be3ad7b94c37e128f573d4b3dd74c970e27')
-sha512sums=('3e313d9c007ff676d31dc34ab1da227b6c1fb30491dc92ad0eef8b862c694aba56a09799854ea325ac464f7f68cdd44b9576e873b0966845d2f40641510789ba')
-b2sums=('dca5127ed9f9b77bc0646d54b7560efc4d67118ca9602aa08dfb94b81f3e97d2d51eb207ba248b507308748b54487e0b8efd66b1cebf84087c492d44998cbf4b')
+sha256sums=('b5dd88266660ceaf4f37e8ea3925dc276e15a7edc8bcf0b3442869a76dd2de3b')
+sha512sums=('a453d22723db31bcad1fd28fb528564fe6322914a608a0fc2646eb654c3e6f8ba3a4212d3b1d5a930a22a779eb646f925c43a55714b3e631b8205e2ebcae6ad6')
+b2sums=('c3c0f9a8aa3062b96322a7023d2cb319ae470f4303b049266642350ada2518e784efd1e508c313546ad49be8d5bff922e6ab7743ae5c2e6488ccdccf984c0031')
 
 package() {
   cd voxelibre
