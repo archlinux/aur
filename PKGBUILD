@@ -1,34 +1,34 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=cef-minimal-obs-bin
-_cefver="103.0.0-5060-shared-textures_2594"
+_cefver="127.3.4"
 _version=${_cefver//-/_}
-_commit="17f8588"
-_cefbranch="5060"
-_chromiumver="103.0.${_cefbranch}.134"
+_commit="e9e2e14"
+_cefbranch="6533"
+_chromiumver="127.0.${_cefbranch}.100"
 _rebuild="1" # The tarball sometime can get rebuild by OBS Project
 pkgver="${_version}+g${_commit}+chromium_${_chromiumver}_${_rebuild}"
 pkgrel=1
 epoch=1
 pkgdesc="Chromium Embedded Framework minimal release needed by OBS Studio release in /opt/cef-obs"
 arch=("x86_64" "aarch64")
-url="https://github.com/obsproject/cef/tree/5060-shared-textures"
+url="https://github.com/chromiumembedded/cef/tree/6533"
 license=(BSD-3-Clause)
 depends=(
-  "alsa-lib" "at-spi2-core" "dbus" "expat" "gcc-libs" "glib2"
+  "alsa-lib" "at-spi2-core" "cairo" "dbus" "expat" "gcc-libs" "glib2"
   "glibc" "libcups" "libdrm" "libx11" "libxcb" "libxcomposite"
   "libxdamage" "libxext" "libxfixes" "libxkbcommon" "libxrandr" "mesa"
-  "nspr" "nss" "wayland"
+  "nspr" "nss" "pango" "wayland"
 )
 makedepends=("cmake")
 provides=("cef-minimal-obs=$pkgver")
 conflicts=("cef-minimal-obs")
 # Prevent people from using link time optimisation for this package because it make OBS unable to be built against it
 options=('!lto' '!strip' 'debug')
-source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_${_cefbranch}_linux_x86_64_v3.tar.xz")
-source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_${_cefbranch}_linux_aarch64_v3.tar.xz")
-sha256sums_x86_64=("1253a6a36c3b8ac5b5ece9bfdb6eae6ab75e49516375fc475e2e871795ad9bea")
-sha256sums_aarch64=("66ebcfce94a4527c8dd085a685691d0c43291adab9f2be4f8a0762f4a614083a")
+source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64.tar.xz")
+source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64.tar.xz")
+sha256sums_x86_64=("fab66dfc9cfd2e26fb87798f855aef30c2004edc8e19570d37af555644ae1655")
+sha256sums_aarch64=("ab09f04e534306d3f301ea997c03a6a9f7bd245042d50a434f17c1c98ac64b89")
 
 prepare() {
   cd "${srcdir}/cef_binary_${_cefbranch}_linux_${CARCH}"
@@ -56,31 +56,6 @@ prepare() {
   chmod 755 libcef_dll/ctocpp/test
   chmod 755 libcef_dll/ctocpp/views
   chmod 755 libcef_dll/wrapper
-
-  # Remove pre-built wrapper
-  rm -rf build
-}
-
-build() {
-  cd "${srcdir}/cef_binary_${_cefbranch}_linux_${CARCH}"
-
-  # this uses malloc_usable_size, which is incompatible with fortification level 3
-  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-
-  cmake \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DPROJECT_ARCH=$CARCH .
-
-  make libcef_dll_wrapper
-
-  # Remove unneeded files
-  rm -f CMakeLists.txt CMakeCache.txt Makefile cmake_install.cmake README.txt libcef_dll/CMakeLists.txt
-  rm -rf CMakeFiles
-    
-  cd libcef_dll_wrapper
-  rm -f Makefile cmake_install.cmake
-  rm -rf CMakeFiles
 }
 
 package() {
