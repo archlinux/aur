@@ -1,5 +1,5 @@
 # Maintainer: Giuseppe Sellaroli <g.sellaroli  at  yahoo  dot  it>
-pkgname=input-wacom-dkms
+pkgname=input-wacom-dkms-patched
 _pkgname=input-wacom
 pkgver=1.3.0
 pkgrel=2
