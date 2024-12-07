@@ -1,17 +1,18 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=libusbsio
+_name=${pkgbase}
 pkgname=(
   libusbsio
   python-libusbsio
 )
-pkgver=2.1.11
-pkgrel=4
+pkgver=2.1.13
+pkgrel=1
 pkgdesc="Library for USB-HID communication over SPI, I2C or GPIO"
-arch=(x86_64)
+arch=($CARCH)
 url="https://www.nxp.com/design/software/development-software/library-for-windows-macos-and-ubuntu-linux:LIBUSBSIO"
 license=(
-  BSD-3-Clause
   BSD-3-Clause
 )
 makedepends=(
@@ -23,38 +24,23 @@ makedepends=(
   python-wheel
   systemd
 )
-source=(https://www.nxp.com/downloads/en/libraries/$pkgbase-$pkgver-src.zip)
-sha512sums=('200717be44cdb2bb7cc7eeba29afb6aed8a88a72e7664377c1abf8c1d1f88f7de1ed05c9a7d6c960ae53e4b9420889c252d51fd807b1534396430004138518a0')
-b2sums=('711b7b59cec79ebc37f42eab7a7c377d6cf15ccc50982dfcacd4e8f6b0c4107ebf14f758a41ee9edad9d2d6d789c99376f1b181e37b5dfea8e543cf06f7b566a')
-
-prepare() {
-  cd $pkgbase-$pkgver-src
-  # remove prebuilt shared libs
-  rm -frv bin/*
-
-  # extract sources for python package for PEP517 build
-  cd python/dist
-  tar xvzf $pkgbase-$pkgver.tar.gz
-  # remove prebuilt shared libs from sdist tarball
-  rm -frv $pkgbase-$pkgver/$pkgbase/bin/*
-}
+source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha512sums=('ddc7428ddbf5b14bb9d91121d0cde0e1fd975a27a1cac50c662b3590785e1279b0e3d9cb93518b8ea976685c1e6287dbee67ed0bdd71635178440a0d355a1195')
 
 build() {
-  cd $pkgbase-$pkgver-src
-  make
-  cd python/dist/$pkgbase-$pkgver
+  cd "${srcdir}/${_name}-${pkgver}"
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package_libusbsio() {
   depends=(
     glibc
-    systemd-libs libudev.so
+    systemd-libs
+    libudev.so
   )
 
-  cd $pkgbase-$pkgver-src
-  install -vDm 755 bin/linux_$CARCH/$pkgbase.so -t "$pkgdir/usr/lib/"
-  install -vDm 644 license/*.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  cd "${srcdir}/${_name}-${pkgver}"
+  install -vDm 755 ${_name}/bin/linux_$CARCH/$pkgbase.so -t "$pkgdir/usr/lib/"
 }
 
 package_python-libusbsio() {
@@ -62,18 +48,17 @@ package_python-libusbsio() {
 
   pkgdesc+=" - Python bindings"
   depends=(
+    glibc
+    systemd-libs
     libusbsio=$pkgver
     python
   )
 
-  cd $pkgbase-$pkgver-src
-  (
-    cd python/dist/$pkgbase-$pkgver
-    python -m installer --destdir="$pkgdir" dist/*.whl
-    install -vdm 755 "$pkgdir/$_site_packages/$pkgbase/bin/linux_$CARCH"
-    ln -fsv /usr/lib/$pkgbase.so "$pkgdir/$_site_packages/$pkgbase/bin/linux_$CARCH/$pkgbase.so"
-  )
+  cd "${srcdir}/${_name}-${pkgver}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vdm 755 "$pkgdir/$_site_packages/$pkgbase/bin/linux_$CARCH"
+  ln -fsv /usr/lib/$pkgbase.so "$pkgdir/$_site_packages/$pkgbase/bin/linux_$CARCH/$pkgbase.so"
   install -vDm 644 license/*.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -vDm 644 python/README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-  install -vDm 644 python/examples/*.py -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -vDm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -vDm 644 examples/*.py -t "$pkgdir/usr/share/doc/$pkgname/"
 }
