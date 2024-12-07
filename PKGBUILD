@@ -3,7 +3,7 @@ _pkgbase=local-ai
 _pkgname=LocalAI
 pkgname="${_pkgbase}-clblas"
 pkgver=2.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with OpenCL optimizations)"
 arch=('x86_64')
 url="https://github.com/mudler/LocalAI"
@@ -23,8 +23,9 @@ makedepends=(
   'go'
   'grpc'
   'make'
-  'openmpi'
   'openssl'
+  'protoc-gen-go'
+  'protoc-gen-go-grpc'
   're2'
   'upx'
 )
@@ -43,12 +44,12 @@ prepare() {
 build() {
   GO_TAGS="stablediffusion tts p2p"
 
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   BUILD_TYPE=clblas make build -j"$(nproc)"
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   install -Dm775 "${_pkgbase}" -t "${pkgdir}/usr/bin/"
 
   install -D -m644 "${srcdir}/${_pkgbase}.conf" \
