@@ -9,7 +9,7 @@
 # Contributor: sl1pkn07 <sl1pkn07 at gmail dot com>
 
 pkgname=nvidia-beta-dkms
-pkgver=565.57.01
+pkgver=565.77
 pkgrel=1
 pkgdesc='NVIDIA kernel modules - module sources (beta version)'
 arch=('x86_64')
@@ -24,8 +24,8 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         '110-nvidia-change-dkms-conf.patch'
         '120-nvidia-linux-rt-gift.patch'
         '130-nvidia-make-modeset-fbdev-default.patch')
-sha256sums=('9ec280cf6544b59d170064e00c365f329c6f28416eba1497c286f4e0295c27ce'
-            'ceab1d11891af27fc63474cf9520c6e6cec413e35d80b9032f3d7c7501a3c935'
+sha256sums=('bdf6373649a3abea3355b95b9df2eedb52c97e2e2b2b14e60bf759551a1b5d7c'
+            'bd0c36df5896d0c86385a2e776baccfff0fa3335a69864aa81e09ad32e42fa98'
             '291bc6568e18496a4c2e732fd8616f6d536d8e9f3ab51f1959e3fc08f0de126b'
             '10e09ed974a50c4a418a7e107f1497cdb3c54e749254ee21408cc01fa0c414b4')
 
