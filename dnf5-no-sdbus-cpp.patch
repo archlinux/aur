@@ -1,0 +1,123 @@
+diff -ru dnf5-5.2.8.1/CMakeLists.txt dnf5-5.2.8.1-no-sdbus-cpp/CMakeLists.txt
+--- dnf5-5.2.8.1/CMakeLists.txt	2025-01-01 11:45:04.268404629 +0100
++++ dnf5-5.2.8.1-no-sdbus-cpp/CMakeLists.txt	2025-01-01 11:45:15.458479192 +0100
+@@ -20,8 +20,8 @@
+ 
+ 
+ # build options - components (sub-packages)
+-option(WITH_DNF5DAEMON_CLIENT "Build command-line interface for Dnf5daemon" ON)
+-option(WITH_DNF5DAEMON_SERVER "Build package management service with a DBus interface" ON)
++option(WITH_DNF5DAEMON_CLIENT "Build command-line interface for Dnf5daemon" OFF)
++option(WITH_DNF5DAEMON_SERVER "Build package management service with a DBus interface" OFF)
+ option(WITH_LIBDNF5_CLI "Build library for working with a terminal in a command-line package manager" ON)
+ option(WITH_DNF5 "Build dnf5 command-line package manager" ON)
+ option(WITH_DNF5_PLUGINS "Build plugins for dnf5 command-line package manager" ON)
+@@ -33,7 +33,7 @@
+ option(WITH_COMPS "Build with comps groups and environments support" ON)
+ option(WITH_MODULEMD "Build with modulemd modules support" ON)
+ option(WITH_ZCHUNK "Build with zchunk delta compression support" ON)
+-option(WITH_SYSTEMD "Build with systemd and D-Bus features" ON)
++option(WITH_SYSTEMD "Build with systemd and D-Bus features" OFF)
+ option(ENABLE_SOLV_URPMREORDER "Build with support for URPM-like solution reordering?" OFF)
+ option(ENABLE_SOLV_FOCUSNEW "Build with SOLVER_FLAG_FOCUS_NEW libsolv flag enabled to ensure new dependencies are installed in latests versions?" ON)
+ 
+diff -ru dnf5-5.2.8.1/dnf5-plugins/CMakeLists.txt dnf5-5.2.8.1-no-sdbus-cpp/dnf5-plugins/CMakeLists.txt
+--- dnf5-5.2.8.1/dnf5-plugins/CMakeLists.txt	2024-12-05 21:31:02.000000000 +0100
++++ dnf5-5.2.8.1-no-sdbus-cpp/dnf5-plugins/CMakeLists.txt	2025-01-01 12:08:09.503326534 +0100
+@@ -15,6 +15,6 @@
+ add_subdirectory("changelog_plugin")
+ add_subdirectory("config-manager_plugin")
+ add_subdirectory("copr_plugin")
+-add_subdirectory("needs_restarting_plugin")
++#add_subdirectory("needs_restarting_plugin")
+ add_subdirectory("repoclosure_plugin")
+ add_subdirectory("reposync_plugin")
+diff -ru dnf5-5.2.8.1/doc/CMakeLists.txt dnf5-5.2.8.1-no-sdbus-cpp/doc/CMakeLists.txt
+--- dnf5-5.2.8.1/doc/CMakeLists.txt	2024-12-05 21:31:02.000000000 +0100
++++ dnf5-5.2.8.1-no-sdbus-cpp/doc/CMakeLists.txt	2025-01-01 14:44:42.648314438 +0100
+@@ -102,7 +102,7 @@
+         install(FILES ${CMAKE_CURRENT_BINARY_DIR}/man/dnf5-changelog.8 DESTINATION share/man/man8)
+         install(FILES ${CMAKE_CURRENT_BINARY_DIR}/man/dnf5-config-manager.8 DESTINATION share/man/man8)
+         install(FILES ${CMAKE_CURRENT_BINARY_DIR}/man/dnf5-copr.8 DESTINATION share/man/man8)
+-        install(FILES ${CMAKE_CURRENT_BINARY_DIR}/man/dnf5-needs-restarting.8 DESTINATION share/man/man8)
++        #install(FILES ${CMAKE_CURRENT_BINARY_DIR}/man/dnf5-needs-restarting.8 DESTINATION share/man/man8)
+         install(FILES ${CMAKE_CURRENT_BINARY_DIR}/man/dnf5-repoclosure.8 DESTINATION share/man/man8)
+         install(FILES ${CMAKE_CURRENT_BINARY_DIR}/man/dnf5-reposync.8 DESTINATION share/man/man8)
+     endif()
+diff -ru dnf5-5.2.8.1/doc/conf.py.in dnf5-5.2.8.1-no-sdbus-cpp/doc/conf.py.in
+--- dnf5-5.2.8.1/doc/conf.py.in	2024-12-05 21:31:02.000000000 +0100
++++ dnf5-5.2.8.1-no-sdbus-cpp/doc/conf.py.in	2025-01-01 16:02:42.299378232 +0100
+@@ -74,7 +74,7 @@
+ 
+ if sphinx.version_info[:3] > (4, 0, 0):
+     tags.add('sphinx4')
+-    extensions += ['dbusdoc']
++    extensions += ['fakedbusdoc']
+ else:
+     extensions += ['fakedbusdoc']
+ 
+@@ -147,7 +147,7 @@
+     ('dnf5_plugins/changelog.8', 'dnf5-changelog', 'Changelog Command', AUTHORS, 8),
+     ('dnf5_plugins/config-manager.8', 'dnf5-config-manager', 'Config-manager Command', AUTHORS, 8),
+     ('dnf5_plugins/copr.8', 'dnf5-copr', 'Copr Command', AUTHORS, 8),
+-    ('dnf5_plugins/needs_restarting.8', 'dnf5-needs-restarting', 'Needs-restarting Command', AUTHORS, 8),
++    #('dnf5_plugins/needs_restarting.8', 'dnf5-needs-restarting', 'Needs-restarting Command', AUTHORS, 8),
+     ('dnf5_plugins/repoclosure.8', 'dnf5-repoclosure', 'Repoclosure Command', AUTHORS, 8),
+     ('dnf5_plugins/reposync.8', 'dnf5-reposync', 'Reposync Command', AUTHORS, 8),
+     ('libdnf5_plugins/actions.8', 'libdnf5-actions', 'Actions Plugin', AUTHORS, 8),
+@@ -161,9 +161,9 @@
+     ('misc/specs.7', 'dnf5-specs', 'Patterns Specification', AUTHORS, 7),
+     ('misc/system-state.7', 'dnf5-system-state', 'System state', AUTHORS, 7),
+     ('changes_from_dnf4.7', 'dnf5-changes-from-dnf4', 'Changes from the DNF4', AUTHORS, 7),
+-    ('dnf_daemon/dnf5daemon_client.8', 'dnf5daemon-client', 'Command-line interface for Dnf5daemon', AUTHORS, 8),
+-    ('dnf_daemon/dnf5daemon_server.8', 'dnf5daemon-server', 'Package management service with a DBus interface', AUTHORS, 8),
+-    ('dnf_daemon/dnf5daemon_dbus_api.8', 'dnf5daemon-dbus-api', 'DBus API Reference for Dnf5daemon', AUTHORS, 8),
++    #('dnf_daemon/dnf5daemon_client.8', 'dnf5daemon-client', 'Command-line interface for Dnf5daemon', AUTHORS, 8),
++    #('dnf_daemon/dnf5daemon_server.8', 'dnf5daemon-server', 'Package management service with a DBus interface', AUTHORS, 8),
++    #('dnf_daemon/dnf5daemon_dbus_api.8', 'dnf5daemon-dbus-api', 'DBus API Reference for Dnf5daemon', AUTHORS, 8),
+     ('dnf5.conf.5', 'dnf5.conf', 'DNF5 Configuration Reference', AUTHORS, 5),
+     ('dnf5.conf-todo.5', 'dnf5.conf-todo', 'Options that are documented/implemented in DNF but not in DNF5', AUTHORS, 5),
+     ('dnf5.conf-deprecated.5', 'dnf5.conf-deprecated', 'Config Options that are deprecated in DNF5', AUTHORS, 5),
+diff -ru dnf5-5.2.8.1/doc/dnf5.8.rst dnf5-5.2.8.1-no-sdbus-cpp/doc/dnf5.8.rst
+--- dnf5-5.2.8.1/doc/dnf5.8.rst	2024-12-05 21:31:02.000000000 +0100
++++ dnf5-5.2.8.1-no-sdbus-cpp/doc/dnf5.8.rst	2025-01-01 15:15:36.572404831 +0100
+@@ -161,9 +161,6 @@
+ :ref:`copr <copr_plugin_ref-label>`
+     | Manage Copr repositories (add-ons provided by users/community/third-party).
+ 
+-:ref:`needs-restarting <needs_restarting_plugin_ref-label>`
+-    | Determine whether the system should be rebooted.
+-
+ :ref:`repoclosure <repoclosure_plugin_ref-label>`
+     | Display a list of unresolved dependencies for repositories.
+ 
+@@ -445,7 +442,6 @@
+     | :manpage:`dnf5-changelog(8)`, :ref:`Changelog command <changelog_plugin_ref-label>`
+     | :manpage:`dnf5-config-manager(8)`, :ref:`Config-manager command <config_manager_plugin_ref-label>`
+     | :manpage:`dnf5-copr(8)`, :ref:`Copr command <copr_plugin_ref-label>`
+-    | :manpage:`dnf5-needs-restarting(8)`, :ref:`Needs-Restarting command <needs_restarting_plugin_ref-label>`
+     | :manpage:`dnf5-repoclosure(8)`, :ref:`Repoclosure command <repoclosure_plugin_ref-label>`
+     | :manpage:`dnf5-reposync(8)`, :ref:`Reposync command <reposync_plugin_ref-label>`
+ 
+diff -ru dnf5-5.2.8.1/doc/dnf5_plugins/index.rst dnf5-5.2.8.1-no-sdbus-cpp/doc/dnf5_plugins/index.rst
+--- dnf5-5.2.8.1/doc/dnf5_plugins/index.rst	2024-12-05 21:31:02.000000000 +0100
++++ dnf5-5.2.8.1-no-sdbus-cpp/doc/dnf5_plugins/index.rst	2025-01-01 14:46:12.008925242 +0100
+@@ -13,7 +13,6 @@
+     changelog.8
+     config-manager.8
+     copr.8
+-    needs_restarting.8
+     repoclosure.8
+     reposync.8
+ 
+diff -ru dnf5-5.2.8.1/doc/index.rst dnf5-5.2.8.1-no-sdbus-cpp/doc/index.rst
+--- dnf5-5.2.8.1/doc/index.rst	2024-12-05 21:31:02.000000000 +0100
++++ dnf5-5.2.8.1-no-sdbus-cpp/doc/index.rst	2025-01-01 14:46:05.325546226 +0100
+@@ -16,7 +16,6 @@
+     dnf5_plugins/index
+     dnf5.8
+     dnf5.conf.5
+-    dnf_daemon/index
+     misc/index
+     best_practices/index
+     templates/index

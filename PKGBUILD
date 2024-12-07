@@ -1,7 +1,7 @@
 # Contributor: Sam Day <me@samcday.com>
 
 pkgname=dnf5
-pkgver=5.2.8.0
+pkgver=5.2.8.1
 pkgrel=1
 pkgdesc="Next-generation RPM package management system"
 arch=('x86_64')
@@ -10,10 +10,10 @@ license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
 conflicts=('dnf')
 depends=('curl>=7.62.0' 'fmt' 'glib2>=2.46.0' 'json-c' 'libmodulemd>=2.11.2'
          'librepo>=1.18.0' 'libsolv>=0.7.30' 'libxml2' 'rpm-tools>=4.17.0'
-         'sdbus-cpp>=0.9.0' 'sqlite>=3.35.0' 'systemd-libs' 'util-linux-libs')
+         'sqlite>=3.35.0' 'util-linux-libs')
 makedepends=('bash-completion' 'cmake>=3.13' 'doxygen' 'gettext' 'perl'
              'python' 'python-breathe' 'python-sphinx' 'python-sphinx_rtd_theme'
-             'toml11' 'swig' 'systemd')
+             'toml11' 'swig')
 checkdepends=('cppunit' 'createrepo_c' 'perl-test-exception')
 optdepends=('perl: for perl bindings'
             'polkit: for dnf5daemon-server'
@@ -21,8 +21,17 @@ optdepends=('perl: for perl bindings'
 backup=('etc/dnf/dnf.conf'
         'etc/dnf/libdnf5-plugins/actions.conf')
 options=('!emptydirs')
-source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('42d172a4bec1a99a2a74b5a8117f1cb47345c86aa1e56e902dc53371e42e22b6')
+source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz"
+        "$pkgname-no-sdbus-cpp.patch")
+sha256sums=('82280087c78f8f05a032adf7714ede8b762d02447ee47f6e3b27c1cbec2d41f1'
+            'db37d26afdd4bc00e6a9133bf17214e6c5ed48aa4380fd5e39c1f87d18744a02')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+
+	# https://github.com/rpm-software-management/dnf5/issues/1866
+	patch -p1 -i "$srcdir/$pkgname-no-sdbus-cpp.patch"
+}
 
 build() {
 	cd "$pkgname-$pkgver"
