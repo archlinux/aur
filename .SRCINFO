@@ -1,7 +1,7 @@
 pkgbase = tumbler-folder-thumbnailer
 	pkgdesc = Custom folder thumbnails for Tumbler
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://docs.xfce.org/xfce/tumbler/available_plugins
 	arch = any
 	license = BSD

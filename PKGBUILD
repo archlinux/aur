@@ -1,7 +1,7 @@
-# Maintainer: j-james <jj@j-james.me>
+# Maintainer: apropos <jj@toki.la>
 pkgname=tumbler-folder-thumbnailer
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Custom folder thumbnails for Tumbler"
 arch=('any')
 url="https://docs.xfce.org/xfce/tumbler/available_plugins"
