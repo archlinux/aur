@@ -1,12 +1,12 @@
 [Desktop Entry]
-Name=WemeetApp(KDE/GNOME Wayland Screenshare)
-Name[zh_CN]=腾讯会议(KDE/GNOME Wayland屏幕共享)
+Name=WemeetApp(Wayland Screenshare)
+Name[zh_CN]=腾讯会议(Wayland屏幕共享)
 Exec=wemeet-wayland-screenshare %u
 Icon=wemeet
 Type=Application
 Terminal=false
 Categories=AudioVideo;
 Comment=Tencent Meeting Linux Client with Wayland screenshare lib hooked
-Comment[zh_CN]=腾讯会议Linux客户端，可在KDE/GNOME Wayland下使用屏幕共享
+Comment[zh_CN]=腾讯会议Linux客户端，可在Wayland下使用屏幕共享
 Keywords=wemeet;tencent;meeting;
 MimeType=x-scheme-handler/wemeet;

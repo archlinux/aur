@@ -8,8 +8,8 @@ _pkgname=wemeet-wayland-screenshare
 pkgname=wemeet-wayland-screenshare-git
 provides=('wemeet-wayland-screenshare')
 pkgver=3.19.2.400_hooked
-pkgrel=7
-pkgdesc='Hooked wemeet that enables screenshare on KDE/GNOME Wayland. 实现KDE/GNOME Wayland下腾讯会议屏幕共享.'
+pkgrel=8
+pkgdesc='Hooked wemeet that enables screenshare on Wayland. 实现Wayland下腾讯会议屏幕共享.'
 arch=('x86_64')
 license=('MIT')
 url="https://github.com/xuwd1/wemeet-wayland-screenshare"
@@ -21,7 +21,7 @@ source=(
 sha1sums=(
     'SKIP'
     '2932140a95db996285d3415f353200e199fbe7ee'
-    'fc9b015dd8b21e802cd9dea5ab3c9177ca22109a'
+    '59ebf686c5b80ac96fce8a58bee2b8ae28d9aa78'
 )
 depends=(
     'wemeet-bin'
