@@ -1,7 +1,7 @@
 # Contributor: Matthias Fulz < mfulz [at] olznet [dot] de >
 
 pkgname=gvmd
-pkgver=24.0.0
+pkgver=24.1.0
 pkgrel=1
 pkgdesc='Vulnerability manager Daemon'
 arch=('x86_64')
@@ -15,12 +15,10 @@ groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         ${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc
         "archlinux_postgres_headers.patch"
-        "0001-fix-unit-path.patch"
         "gvmd.tmpfiles")
-sha512sums=('87f648a3e4a5f879f4686e0544562fdabf8f65a31d467f0c696d5c276d5bde6e77fa1f640cd321da6e00ad9bfedad15f179d098b500f5e1043cd7c4c5ad2c824'
+sha512sums=('3a40ea13b85cc1a856fb521e112806db6ff55c81190c54aa19e035cd002466fc1e2bf4c360d1c515f729196f680854421a89d3e2ffcd75475678b45a4882ba68'
             'SKIP'
             'ec2cbedf87bfd8cc1abfc6be9c566b6d2e6f7b1f902f5596d496b01faf208c9921b502d77ec9281ef3c0d03462f2d49bb973f4f9216a106116cd824e938951c2'
-            '3d86dfd288dcf1ab91454c0fefcb33e2bf9cdc20638804fd524ebee5ff5783a21c67e9d6b5b575a2d009c2f97828d3866513b00d02d18665ecf3f1ca91c99c41'
             'f34f37df26faa8ea80574d9311c12fe37747ceda1b98cdf7dfc97451b840a01d5352af1412667f40e51f80bc314a799cad1d13dae7224580f2c4d97b8d5b78e3')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integrity
 
@@ -28,7 +26,6 @@ validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integri
 prepare() {
 	cd "${pkgname}-${pkgver}"
 	patch --forward --strip=1 --input="${srcdir}/archlinux_postgres_headers.patch"
-	patch -Np2 -i "${srcdir}"/0001-fix-unit-path.patch
 }
 
 build() {
