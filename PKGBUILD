@@ -9,7 +9,7 @@ license=('MIT')
 arch=('x86_64')
 depends=("libdrm" "gtk4" "hwdata")
 provides=("lact")
-conflicts=("lact" "lact-headless" "lact-libadwaita")
+conflicts=("lact")
 source=("$url/releases/download/v$pkgver/lact-$pkgver-0.amd64.ubuntu-2404.deb")
 sha256sums=('891417f110fe0ad61846af06d15c7054d2a5e32d7fef76bb0c5b94426911f1a3')
 
