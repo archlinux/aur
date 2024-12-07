@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledXDGBasedir"
 
 pkgname=untitled-xdg-basedir
-pkgver=4.0.0.0
+pkgver=5.0.0.0
 pkgrel=1
 pkgdesc="C/C++ implementation of the XDG basedir specification"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
@@ -13,7 +13,7 @@ depends=("gcc-libs" "glibc" "pkgconf")
 provides=("lib${PKG_REAL_NAME}.so")
 makedepends=("cmake" "make")
 source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}.tar.xz")
-sha256sums=('dc6862e4713a2d85c30144e0b7caa2850dc1ab487691b4c9f356c35741387e28')
+sha256sums=('11b6cae2e533e4f65d66c783791ae6b9f2cadb0fd682e1a6fec063075388f540')
 
 build() {
 	cd $srcdir || exit
