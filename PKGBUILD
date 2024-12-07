@@ -1,8 +1,8 @@
 # Maintainer: Martin Fritz <Fritz.Martin99@web.de>
-
-pkgname=plastikstyle
+pkgbase=PlastikStyle
+pkgname=(plastikstyle-qt5 plastikstyle-qt6)
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 license=(LGPL-2.1-or-later)
 pkgdesc="QStyle for qt5 and qt6 providing the look of KDE3's plastik"
 arch=(x86_64)
@@ -10,18 +10,25 @@ url=https://github.com/MartinF99/PlastikStyle
 source=('https://github.com/MartinF99/PlastikStyle/archive/refs/tags/1.0.4.tar.gz')
 sha256sums=('dc5a37645f1242d07275ae513ef4d134c5f2e3c15a8b549e8038789f6396f28f')
 makedepends=(qt5-tools
-			qt6-tools
-			cmake)
-depends=(qt5-base qt6-base)
-conflicts=(PlastikStyle PlastikStyle-debug)
+	     qt6-tools
+             cmake)
+conflicts=(PlastikStyle PlastikStyle-debug plastikstyle plastikstyle-debug)
 build(){
-	cd "PlastikStyle-$pkgver"
-	mkdir build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-	make
+	mkdir build-qt6
+	cmake -B build-qt6 -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_ALL=OFF -DENABLE_QT6=ON $srcdir/$pkgbase-$pkgver
+	cmake --build build-qt6
+
+	mkdir build-qt5
+	cmake -B build-qt5 -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_ALL=OFF -DENABLE_QT5=ON $srcdir/$pkgbase-$pkgver
+	cmake --build build-qt5
 }
-package(){
-	cd "PlastikStyle-$pkgver/build"
-	DESTDIR="$pkgdir" make install
+package_plastikstyle-qt5(){
+	depends=( qt5-base )
+	DESTDIR="$pkgdir" cmake --install $srcdir/build-qt5
+}
+
+package_plastikstyle-qt6(){
+
+	depends=( qt6-base )
+	DESTDIR="$pkgdir" cmake --install $srcdir/build-qt6
 }
