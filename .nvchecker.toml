@@ -1,0 +1,4 @@
+[resto-bin]
+source = "git"
+git = "https://github.com/abdfnx/resto.git"
+prefix = "v"
