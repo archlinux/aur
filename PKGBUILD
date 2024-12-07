@@ -1,31 +1,23 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="frp-panel"
-pkgver=0.0.38
+pkgver=0.0.46
 pkgrel=1
 pkgdesc="A multi node frp webui and for frp server and client management"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/VaalaCat/${pkgname}"
-backup=(
-    "etc/${pkgname}/client.env"
-    "etc/${pkgname}/master.env"
-    "etc/${pkgname}/server.env"
-)
+backup=("etc/${pkgname}/"{client,master,server}.env)
 license=("GPL-3.0-or-later")
-makedepends=("go" "npm")
+makedepends=("go" "pnpm" "unzip")
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
         "${pkgname}.tmpfiles"
         "${pkgname}@.service")
-sha256sums=('dd9ad7cda998a821e1c15043cfa8873bd8abcfbfc3710970b557c3d0a1693cca'
+sha256sums=('b00243737cd5d877f52ec546264770992f4d9a7045079853dce9c8514b5e2d9c'
             'd909eac5b51218404824363ce35886fcd2a8065773ffecde8f64855a107369a0'
-            '430b38fb5de8ea2bdd03ef65d376b5aae7acad88cfffd5031d05b45e8ae1040b')
+            '0103dda13a58be3cc363843fa55491ecd5d94bcbc8c6103e1c16163fc712a2ed')
 
 prepare() {
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    
     cd "${pkgname}-${pkgver}"
 
     local file_setting="conf/settings.go"
@@ -44,14 +36,27 @@ prepare() {
 }
 
 build() {
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    
     cd "${pkgname}-${pkgver}"
 
-    npm --prefix www install
-    npm --prefix www run build
+    pnpm --prefix www install --no-frozen-lockfile
+    pnpm --prefix www build
 
     go mod download
 
-    local ldflags="-s -w -extldflags '${LDFLAGS}'"
+    local build_date="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+    local git_commit="$(unzip -zq ../"${pkgname}-${pkgver}.zip" | cut -c1-7)"
+    local conf_prefix="${url//https:\/\//}/conf"
+    local ldflags=" \
+        -s -w \
+        -X '${conf_prefix}.buildDate=${build_date}' \
+        -X '${conf_prefix}.gitCommit=${git_commit}'
+        -X '${conf_prefix}.gitVersion=${pkgver}' \
+        -extldflags '${LDFLAGS}'
+    "
 
     go build \
         -trimpath \
@@ -59,7 +64,7 @@ build() {
         -o "${pkgname}" \
         ./cmd/frpp/*.go
     
-    ./"${pkgname}" completion zsh > ../completion.zsh
+    ./"${pkgname}" completion zsh  > ../completion.zsh
     ./"${pkgname}" completion bash > ../completion.bash
     ./"${pkgname}" completion fish > ../completion.fish
 }
