@@ -1,6 +1,6 @@
 pkgbase = screenpipe
 	pkgdesc = 24/7 Screen and Audio Capture with AI-powered tools
-	pkgver = 0.2.7
+	pkgver = 0.2.13
 	pkgrel = 1
 	url = https://github.com/mediar-ai/screenpipe
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = screenpipe
 	depends = xdotool
 	options = !lto
 	options = !debug
-	source = screenpipe-0.2.7.tar.gz::https://github.com/mediar-ai/screenpipe/archive/refs/tags/v0.2.7.tar.gz
-	sha256sums = 05db0c5dc260d939e14109e2df1e6ee32b562135d6e3e36ec7619471ca8cb7b2
+	source = screenpipe-0.2.13.tar.gz::https://github.com/mediar-ai/screenpipe/archive/refs/tags/v0.2.13.tar.gz
+	sha256sums = eb3599daabc1312b5c1a7799c1ec8ab715aa02d9216a6aa42d930039c84a70c9
 
 pkgname = screenpipe
