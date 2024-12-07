@@ -3,11 +3,9 @@
 pkgname=autofilm
 _name=AutoFilm
 pkgver=1.2.5
-pkgrel=0
+pkgrel=2
 pkgdesc="A small project to provide Strm direct-link playback for Emby and Jellyfin servers, recommended for use with MediaWarp."
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=(any)
 url="https://github.com/Akimio521/AutoFilm"
 license=('AGPL-3.0-only')
 provides=(${pkgname})
