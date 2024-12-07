@@ -1,7 +1,7 @@
 # Maintainer: Megumi_fox <i@megumifox.com>
 
 pkgname=revda-git
-pkgver=5.3.0.r0.gb0d4443
+pkgver=5.5.5.r0.g5d893c9
 pkgrel=1
 pkgdesc='Cute and useful Live Stream Player with danmaku support.'
 arch=('x86_64')
@@ -21,6 +21,7 @@ makedepends=('cmake'
              'yarn'
              'extra-cmake-modules')
 optdepends=('nodejs: for douyu support')
+options=(!lto)
 source=(
     "Revda::git+https://github.com/THMonster/Revda.git"
     "dmlive::git+https://github.com/THMonster/dmlive.git"

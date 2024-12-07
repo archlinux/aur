@@ -1,6 +1,6 @@
 pkgbase = revda-git
 	pkgdesc = Cute and useful Live Stream Player with danmaku support.
-	pkgver = 5.3.0.r0.gb0d4443
+	pkgver = 5.5.5.r0.g5d893c9
 	pkgrel = 1
 	url = https://github.com/THMonster/Revda
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = revda-git
 	conflicts = revda
 	conflicts = qliveplayer-git
 	replaces = qliveplayer-git
+	options = !lto
 	source = Revda::git+https://github.com/THMonster/Revda.git
 	source = dmlive::git+https://github.com/THMonster/dmlive.git
 	sha256sums = SKIP
