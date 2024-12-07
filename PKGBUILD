@@ -7,6 +7,7 @@ pkgdesc="Debian's fork of the dc desktop calculator" # mostly for ~/.dcrc lol
 arch=('any')
 url='https://packages.debian.org/sid/dc'
 license=('GPL')
+makedepends=(patch)
 conflicts=(bc)
 source=(
   http://deb.debian.org/debian/pool/main/b/"$_pkgname/${_pkgname}_$pkgver".orig.tar.gz

@@ -5,6 +5,7 @@ pkgbase = dc-debian
 	url = https://packages.debian.org/sid/dc
 	arch = any
 	license = GPL
+	makedepends = patch
 	conflicts = bc
 	source = http://deb.debian.org/debian/pool/main/b/bc/bc_1.07.1.orig.tar.gz
 	source = http://deb.debian.org/debian/pool/main/b/bc/bc_1.07.1-4.debian.tar.xz
