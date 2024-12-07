@@ -1,7 +1,7 @@
 pkgbase = worldofpadman
 	pkgdesc = Cartoon-style multiplayer first-person shooter
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://worldofpadman.net/en/
 	arch = x86_64
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = worldofpadman
 	depends = mesa
 	depends = openal
 	depends = sdl
-	source = wop-1.7.0-full-unified.zip::https://fmt4.dl.dbolical.com/dl/2024/12/02/wop-1.7.0-unified.zip?st=Sw7pv9_J5_DlVXh3TapD2w==&e=1733521760
+	source = https://github.com/PadWorld-Entertainment/worldofpadman/releases/download/v1.7.0/wop-1.7.0-unified.zip
 	source = worldofpadman.desktop
 	sha256sums = 2eb94c0d98dadc70ce0f2e87780280cdbffd4a838b267f523835dc91bed30714
 	sha256sums = 8d99702ee5255f5ea253aaf12d78f5056e0814bcc727ba2350021fb81fbad60b

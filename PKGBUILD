@@ -6,14 +6,14 @@
 
 pkgname=worldofpadman
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cartoon-style multiplayer first-person shooter"
 arch=('x86_64')
 url="https://worldofpadman.net/en/"
 license=('GPL' 'custom')
 depends=('curl' 'libogg' 'libvorbis' 'mesa' 'openal' 'sdl')
 makedepends=('unzip')
-source=("wop-${pkgver}-full-unified.zip::https://fmt4.dl.dbolical.com/dl/2024/12/02/wop-1.7.0-unified.zip?st=Sw7pv9_J5_DlVXh3TapD2w==&e=1733521760"
+source=("https://github.com/PadWorld-Entertainment/worldofpadman/releases/download/v$pkgver/wop-$pkgver-unified.zip"
         'worldofpadman.desktop')
 
 _gamedir="/usr/share/$pkgname"
