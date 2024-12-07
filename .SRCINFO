@@ -1,4 +1,4 @@
-pkgbase = chromium
+pkgbase = cloud-chromium
 	pkgdesc = Chromium 115 Browser
 	pkgver = 27.0.7.5
 	pkgrel = 1
@@ -14,12 +14,12 @@ pkgbase = chromium
 	depends = libidn2
 	depends = sh
 	depends = zlib
-	provides = chromium
-	conflicts = chromium
-	noextract = chromium-27.0.7.5.deb
+	provides = cloud-chromium
+	conflicts = cloud-chromium
+	noextract = cloud-chromium-27.0.7.5.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = chromium-27.0.7.5.deb::https://down.115.com/client/115pc/lin/115br_v27.0.7.5.deb
+	source_x86_64 = cloud-chromium-27.0.7.5.deb::https://down.115.com/client/115pc/lin/115br_v27.0.7.5.deb
 	sha256sums_x86_64 = 5839cde63c90fd1b598d17992cadc481aa5f53bff86ea322a47c3987426b3c2d
 
-pkgname = chromium
+pkgname = cloud-chromium

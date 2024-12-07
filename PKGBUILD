@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
-pkgbase=chromium
-pkgname=chromium
+pkgbase=cloud-chromium
+pkgname=cloud-chromium
 _pkgname=115br
 pkgver=27.0.7.5
 pkgrel=1
