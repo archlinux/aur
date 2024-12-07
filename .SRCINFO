@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = A lightweight approach to removing Google web service dependency
-	pkgver = 131.0.6778.85
+	pkgver = 131.0.6778.108
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -59,13 +59,13 @@ pkgbase = ungoogled-chromium
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
-	provides = chromium=131.0.6778.85
-	provides = chromedriver=131.0.6778.85
+	provides = chromium=131.0.6778.108
+	provides = chromedriver=131.0.6778.108
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
 	source = fetch-chromium-release
-	source = ungoogled-chromium-131.0.6778.85-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/131.0.6778.85-1.tar.gz
+	source = ungoogled-chromium-131.0.6778.108-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/131.0.6778.108-1.tar.gz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = compiler-rt-adjust-paths.patch
 	source = increase-fortify-level.patch
@@ -79,7 +79,7 @@ pkgbase = ungoogled-chromium
 	source = unbundle-icu-target.patch
 	source = const-atomicstring-conversion.patch
 	sha256sums = 720a1196410080056cd97a1f5ec34d68ba216a281d9b5157b7ea81ea018ec661
-	sha256sums = 4c0d1fbefb6c804e976698f64504d7082fb87e335edc960875424e9e827585b3
+	sha256sums = 60f61137d07541c406e6581ec6fde8ecdcf944d4ef5201238f949357fa231db6
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961
 	sha256sums = d634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342
