@@ -100,8 +100,7 @@ md5sums_aarch64=('SKIP')
 md5sums_loong64=('SKIP')
 
 function package_wechat() {
-	conflicts=()
-	replaces+=(wechat-universal-bwrap wechat-beta-bwrap wechat-uos-bwrap)
+	conflicts+=(wechat-universal-bwrap wechat-beta-bwrap wechat-uos-bwrap)
 	tar -xf data.tar.xz ./opt
 	cp -r opt \
 		"${pkgdir}/"
