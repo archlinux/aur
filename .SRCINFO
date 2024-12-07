@@ -1,6 +1,6 @@
 pkgbase = icon-theme-browser-git
 	pkgdesc = Browse system installed icon themes
-	pkgver = r4.7e08384
+	pkgver = r7.a16fd8e
 	pkgrel = 1
 	url = https://github.com/Aylur/icon-theme-browser
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = icon-theme-browser-git
 	makedepends = meson
 	makedepends = blueprint-compiler
 	makedepends = ninja
+	makedepends = npm
 	makedepends = esbuild
 	makedepends = desktop-file-utils
 	makedepends = libadwaita

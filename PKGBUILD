@@ -1,11 +1,11 @@
 # Maintainer: ARKye03 <rafa03-dev@proton.me>
 
 pkgname=icon-theme-browser-git
-pkgver=r4.7e08384
+pkgver=r7.a16fd8e # Can't be empty, will be set dynamically
 pkgrel=1
-pkgdesc='Browse system installed icon themes'
+pkgdesc="Browse system installed icon themes"
 arch=(x86_64)
-license=(MIT)
+license=('MIT')
 url="https://github.com/Aylur/icon-theme-browser"
 depends=(
 	gtk4
@@ -18,6 +18,7 @@ makedepends=(
 	meson
 	blueprint-compiler
 	ninja
+	npm
 	esbuild
 	desktop-file-utils
 	libadwaita
@@ -32,6 +33,7 @@ pkgver() {
 
 build() {
 	cd "$pkgname" || exit
+	npm install
 	arch-meson --prefix /usr build
 	meson compile -C build
 }
