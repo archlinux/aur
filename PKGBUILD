@@ -1,6 +1,6 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
 pkgname=python-optuna
-pkgver=3.2.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="A hyperparameter optimization framework"
 arch=('any')
@@ -8,7 +8,6 @@ url="https://optuna.org"
 license=('MIT')
 depends=("python"
     "python-alembic"
-    "python-cmaes"
     "python-colorlog"
     "python-numpy"
     "python-packaging"
@@ -18,7 +17,7 @@ depends=("python"
 optdepends=() # Too many to list here
 _name=${pkgname#python-}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/optuna/$_name/archive/v$pkgver.tar.gz")
-sha256sums=('eaf63ef73cf7b92fb25320cb9546b3a4b0bab83d911a353b7e00aa940581ddcb')
+sha256sums=('a98b2f25f01ff2426176db2aedf30cf4aaed817f3ff0d2310b681e60453c946a')
 
 build() {
     python -m pip wheel ./$_name-$pkgver --no-build-isolation
