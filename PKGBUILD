@@ -1,10 +1,10 @@
-# Maintainer: j-james <jj@j-james.me>
+# Maintainer: apropos <jj@toki.la>
 # Contributor: Marc Baudoin <babafou@babafou.eu.org>
 # Contributor: Tobias Thrien <tobias-thrien@web.de>
 pkgname=xminesweeper
 _pkgname=xdemineur
 pkgver=2.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A minesweeper game for the X Window System"
 arch=('i686' 'x86_64')
 url="http://www.babafou.eu.org/xdemineur/"
