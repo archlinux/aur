@@ -1,15 +1,15 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Rory Healy <roryhealy@proton.me>
 # Contributor: Pinghigh Dai <pinghigh24678@outlook.com>
 
 pkgname=jdk17-openj9-bin
 _jdkver=17
 _jdkminor=0
-_jdkpatch=12
-_jdksubpatch=1
+_jdkpatch=13
+_jdksubpatch=0
 #_jdkfixpack=1
 _jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch} #.${_jdkfixpack}
-_openj9ver=0.46.1
-_patchver=7
+_openj9ver=0.48.0
+_patchver=11
 _buildver=${_patchver}_openj9-${_openj9ver}
 pkgrel=1
 pkgdesc="IBM Semeru OpenJ9 with openjdk${_jdkver}"
@@ -30,7 +30,7 @@ conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
 options=(!strip)
 source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}_${_buildver}.tar.gz")
 
-b2sums=('4005df6cc327a26aaa57d943a805132e2a03b58c445affaf4d0745412e5703aeb797d50e31e31ca9144ccff72c8486fcc245665d800798b9c96950d97b18b5a9')
+b2sums=('a17877742f078806a072bea375928970e5cb56db5ba71d7f14a5a0040c47f0d7cedfdf2488559d75dea1588fdf9a240665a7cc4f51a14f9b6ada534f21a4f00d')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
