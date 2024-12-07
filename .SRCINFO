@@ -1,22 +1,28 @@
 pkgbase = d-feet
 	pkgdesc = D-Bus debugger for GNOME
-	pkgver = 0.3.16
-	pkgrel = 3
-	url = https://wiki.gnome.org/Apps/DFeet
+	pkgver = 0.3.17+r16+gf9bd211
+	pkgrel = 1
+	url = https://gitlab.gnome.org/Archive/d-feet
 	arch = any
-	license = GPL2
+	license = GPL-2.0-or-later
 	checkdepends = xorg-server-xvfb
-	makedepends = gobject-introspection
-	makedepends = meson
+	makedepends = gobject-introspection>=0.9.6
+	makedepends = meson>=0.50
 	makedepends = python-pycodestyle
 	makedepends = yelp-tools
-	depends = gtk3
+	depends = dconf
+	depends = glib2
+	depends = gtk3>=3.9.4
+	depends = hicolor-icon-theme
+	depends = libwnck3
+	depends = python
+	depends = python-configparser
 	depends = python-gobject
-	source = https://download.gnome.org/sources/d-feet/0.3/d-feet-0.3.16.tar.xz
-	source = meson-drop-unused-argument.patch
-	source = python-del-fix.patch
-	sha512sums = ff4db968cbd679e2065c614d538187fe3c56118b44638771ec9f7472bdba4a798dc682565f520a8680a8001ea39ce88555b07cda172e60f88eb6bdf1e00b5a6d
-	sha512sums = 019dbeff67c22eccab4e34ed3c3aa292a86c6113f0f9575ecbec948aa5e2fc06f0f862d8e07d8ce566045e6aeb985cebddbc3c70ce6cffc8a074c1e08c80e27c
+	source = d-feet-f9bd21197c0dcdea6a25fb4fcfd303e56ead714b.tar.gz::https://gitlab.gnome.org/Archive/d-feet/-/archive/f9bd21197c0dcdea6a25fb4fcfd303e56ead714b/d-feet-f9bd21197c0dcdea6a25fb4fcfd303e56ead714b.tar.gz
+	source = d-feet_meson_drop_unused_argument.patch::https://sources.debian.org/data/main/d/d-feet/0.3.16-4/debian/patches/meson-drop-unused-argument-for-i18n.merge_file.patch
+	source = d-feet_python3_syntax.patch
+	sha512sums = 2517966922d9392401273dff6ed4465b050c458fa66b9b727b2663c44ed40fce9444d8126595208a755839f0350fdbdd32a418a5ee702aace9c7679a89c8ddb8
+	sha512sums = e7b90929a984e8d1b1340c27861cd5a50dad3d88cda4828e7ef2f7990e80447d7a793a060bec426cc9255db4d1a50a392ad310096e467ed9d0857cebf2dcbdc2
 	sha512sums = 082938045dda067c1fca4d3954fffbaf6d3fe39e5a69ce4e6d629aa62c148009e7f228f01b76863d2b78d6fac663a93eb06988b1239901bfb41b2f65d62f249e
 
 pkgname = d-feet
