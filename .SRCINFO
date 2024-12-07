@@ -1,4 +1,4 @@
-pkgbase = PlastikStyle
+pkgbase = plastikstyle
 	pkgdesc = QStyle for qt5 and qt6 providing the look of KDE3's plastik
 	pkgver = 1.0.4
 	pkgrel = 2
