@@ -1,7 +1,7 @@
 # Maintainer: Sintan Santorum <c1scu0hh at anonaddy dot me>
 pkgname="topgrade-bin"
 _pkgname="topgrade"
-pkgver=16.0.1
+pkgver=16.0.2
 pkgrel=1
 pkgdesc="Invoke the upgrade procedure of multiple package managers"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -12,9 +12,9 @@ conflicts=('topgrade')
 source_x86_64=("topgrade_x86_64-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("topgrade_aarch64-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-aarch64-unknown-linux-musl.tar.gz")
 source_armv7h=("topgrade_armv7h-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-armv7-unknown-linux-gnueabihf.tar.gz")
-b2sums_x86_64=('5d9f1dfbd17d8f13a78d74b8283d5dca079be4a9a083176758eb3cb5b601be8501c9260fea653394ab80c704572aaf0c0e965078609e68c945a22933ef81346f')
-b2sums_aarch64=('6830fb21206b2507fb16f58bcf995f2f14a19b9805c744e08fe10cb70567ac5dc85816f9d891d09b7f5c531f63e0b859e503a55d68eec4e44eec066c9100f9d1')
-b2sums_armv7h=('261a599503dfd66a411dfa7c2e3c62e8b59a732b13b4029e3a1eb453ca101ee83c7310e2f1c46e849668c0829a79dbcb665d5f60f33e9b462350e94f56843f73')
+b2sums_x86_64=('75857bdbc5ba4ba75183784ddf24b4f0f2033ca644b3edb12d111d562d938837ae13f027310cb1e6e5025c74eb044c49539cb6a7fe21fdcc20fc7e8a016d2353')
+b2sums_aarch64=('46003a5cbe7224ce9b4f126c36aaef48c0b30d14c5ddfff0bddf3ee8e9d6abf09690f4a8e6a0e9047c406f0f5c8f24008890ce649742d8062a8381d02859319e')
+b2sums_armv7h=('5aa00831411a0c4266968ab19efad7260d69dc42be15beb50aee4701455c5e0e016cc923699915fcf5386d89a5b5d287540f076cd9a151e2890feaee2486b1e0')
 package() {
 	# install binary
 	install -Dm755 ./topgrade "$pkgdir/usr/bin/topgrade"
