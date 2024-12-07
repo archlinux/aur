@@ -1,17 +1,17 @@
 pkgbase = wio-wl
 	pkgdesc = Wayland compositor similar to Plan 9's rio
-	pkgver = 0.17.4
-	pkgrel = 2
+	pkgver = 0.18.1
+	pkgrel = 1
 	url = https://gitlab.com/Rubo/wio
 	arch = x86_64
-	license = custom
+	license = BSD-3-Clause
 	makedepends = meson
 	makedepends = wayland-protocols
 	depends = alacritty
 	depends = cage
 	depends = cairo
-	depends = wlroots0.17
-	source = https://gitlab.com/Rubo/wio/-/archive/0.17.4/wio-0.17.4.tar.gz
-	b2sums = 038f337704ab4c65a9c6d4478ea5937b038bf845683112dd018f434d736b6d3e39318a8f1afb459b375111109fe8d0bba9bf8fb500fae39215cb7ab217ddd342
+	depends = wlroots=0.18.1
+	source = https://gitlab.com/Rubo/wio/-/archive/0.18.1/wio-0.18.1.tar.gz
+	b2sums = 64e6ba16521e05f279206aecda186b944a4ee9623b0d42625756a57ac38dcf3332a2dc4505a247218d19a4fe9f519502ad3c8808ac29665104754745bb259cf3
 
 pkgname = wio-wl
