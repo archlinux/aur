@@ -1,18 +1,22 @@
-pkgbase = plastikstyle
+pkgbase = PlastikStyle
 	pkgdesc = QStyle for qt5 and qt6 providing the look of KDE3's plastik
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MartinF99/PlastikStyle
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	makedepends = qt5-tools
 	makedepends = qt6-tools
 	makedepends = cmake
-	depends = qt5-base
-	depends = qt6-base
 	conflicts = PlastikStyle
 	conflicts = PlastikStyle-debug
+	conflicts = plastikstyle
+	conflicts = plastikstyle-debug
 	source = https://github.com/MartinF99/PlastikStyle/archive/refs/tags/1.0.4.tar.gz
 	sha256sums = dc5a37645f1242d07275ae513ef4d134c5f2e3c15a8b549e8038789f6396f28f
 
-pkgname = plastikstyle
+pkgname = plastikstyle-qt5
+	depends = qt5-base
+
+pkgname = plastikstyle-qt6
+	depends = qt6-base
