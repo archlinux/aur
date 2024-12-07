@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.2.r4.g6dc73f5d
+pkgver=2.5.r0.gdd0af0a5
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -18,6 +18,7 @@ depends=(
 	'wxwidgets-gtk3>=3.2'
 )
 makedepends=(
+	'bluez-libs'
 	'boost'
 	'cmake>=3.21.1'
 	'cubeb'
@@ -79,6 +80,7 @@ build() {
 
 package() {
 	depends+=(
+		'libbluetooth.so'
 		'libboost_program_options.so'
 		'libcrypto.so'
 		'libcubeb.so'
