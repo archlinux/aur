@@ -1,7 +1,7 @@
 # Maintainer: mekb https://github.com/mekb-turtle
 # shellcheck disable=SC2034
 pkgname=foto-git
-pkgver=3.0.1.r0.g1a5bd4b
+pkgver=4.0.0.r1.g38a86f3
 pkgrel=1
 pkgdesc='Simple image viewer written in C - Git release'
 arch=('any')
