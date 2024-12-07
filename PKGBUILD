@@ -5,7 +5,7 @@
 pkgname='invoiceninja-desktop'
 _repo='admin-portal'
 pkgdesc="Desktop client for Invoice Ninja"
-pkgver=5.0.171
+pkgver=5.0.172
 pkgrel=1
 url='https://invoiceninja.com/'
 source=("git+https://github.com/invoiceninja/${_repo}#tag=v${pkgver}" "invoiceninja-desktop.desktop" "invoiceninja")
