@@ -12,7 +12,6 @@ options=(!strip staticlibs)
 url="https://wasabiwallet.io/"
 license=('MIT')
 depends=('curl' 'fontconfig' 'hicolor-icon-theme')
-makedepends=('zstd')
 provides=('wasabi-wallet')
 conflicts=('wasabi-wallet')
 source=(
