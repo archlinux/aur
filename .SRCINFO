@@ -1,0 +1,50 @@
+pkgbase = peazip-additional-formats-plugin
+	pkgver = 6
+	pkgrel = 1
+	url = https://peazip.github.io
+	arch = x86_64
+	groups = peazip-additional-formats-plugin
+	depends = peazip
+	source = https://cyfuture.dl.sourceforge.net/project/peazip/Resources/PeaZip%20Additional%20Formats%20Plugin/peazip-additional-formats-plugin.6.LINUX.tar
+	sha256sums = d2ce07156ce170625008caf384b53bff9b087331d7e12ee711aa94a200316c84
+
+pkgname = peazip-additional-formats-plugin-arc
+	pkgdesc = Additional Formats Plugin for PeaZip (ARC)
+	license = GPL-2.0-only
+	depends = peazip
+	depends = lib32-glibc
+	depends = lib32-gcc-libs
+	depends = lib32-curl
+	depends = lib32-ncurses5-compat-libs
+	depends = lib32-gmp
+
+pkgname = peazip-additional-formats-plugin-lpaq
+	pkgdesc = Additional Formats Plugin for PeaZip (LPAQ)
+	license = GPL-2.0-only
+	depends = peazip
+	depends = lib32-glibc
+	depends = lib32-gcc-libs
+
+pkgname = peazip-additional-formats-plugin-paq
+	pkgdesc = Additional Formats Plugin for PeaZip (PAQ)
+	license = GPL-2.0-only
+	depends = peazip
+	depends = lib32-glibc
+	depends = lib32-gcc-libs
+
+pkgname = peazip-additional-formats-plugin-quad
+	pkgdesc = Additional Formats Plugin for PeaZip (QUAD)
+	license = LGPL-2.0-only
+	depends = peazip
+	depends = lib32-glibc
+	depends = lib32-gcc-libs
+
+pkgname = peazip-additional-formats-plugin-upx
+	pkgdesc = Additional Formats Plugin for PeaZip (UPX)
+	license = GPL-2.0-only
+	depends = peazip
+
+pkgname = peazip-additional-formats-plugin-zpaq
+	pkgdesc = Additional Formats Plugin for PeaZip (ZPAQ)
+	license = GPL-3.0-only
+	depends = peazip
