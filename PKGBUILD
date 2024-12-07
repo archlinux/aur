@@ -19,6 +19,7 @@ sha256sums=('a16503ce37b999c2967d84234596e7bf67ac98221851a288bb1399c7e1dc2004')
 
 prepare() {
   cd ParaView-v${pkgver}
+  # https://gitlab.kitware.com/paraview/paraview/-/issues/22806
   patch -p1 -i ../../wl.patch
 }
 
