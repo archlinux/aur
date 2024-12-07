@@ -1,11 +1,12 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mint-l-theme
-pkgver=1.9.8
+pkgver=1.9.9
 pkgrel=1
 pkgdesc='A collection of legacy mint themes.'
 arch=('any')
-url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
+url="https://github.com/linuxmint/mint-l-theme"
+_url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
 license=('GPL-3.0-or-later')
 depends=(
     'ttf-ubuntu-font-family'
@@ -16,18 +17,10 @@ makedepends=(
 )
 optdepends=(
     'mint-l-icons'
-    'mint-y-icons'
-    'mint-x-icons'
 )
-provides=(mint-themes-legacy)
-conflicts=(
-    'mint-x-theme'
-    'mint-y-theme'
-    'mint-cinnamon-themes'
-    'mint-themes-legacy'
-)
-source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('1c1d2e0716d42936dc8a38802099de027a07eda173b66d52c40d4ff9c274e674')
+options=('!strip')
+source=("${pkgname}_${pkgver}.tar.xz::${_url}/${pkgname}_${pkgver}.tar.xz")
+sha256sums=('eb89e82a19199b06e01953f27b3118d75daef65336278d0be353aaf298a13220')
 
 build() {
 	cd "${pkgname}"
