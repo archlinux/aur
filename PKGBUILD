@@ -2,7 +2,7 @@
 
 pkgname=arrayfire
 pkgver=3.9.0
-pkgrel=9
+pkgrel=10
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 arch=('x86_64')
 url='https://arrayfire.com'
@@ -19,12 +19,14 @@ source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/$
         'arrayfire-boost-1.76.0.patch'
         '3451-update-toolkit-driver-cuda-12-4.patch'
         '3521-fix-build-failure-with-cudnn.patch'
-        'fmt-v11.patch')
+        'fmt-v11.patch'
+        "${pkgname}-3588.patch::https://github.com/arrayfire/arrayfire/pull/3588.patch")
 sha512sums=('731995b8a8783e2fbdf04f9c89b31efc888deaa4046f623b932c2fabd83ea3e8d1d779d17148e01a4b30f2be64ba2d850f556129acff2004e3ecd780227fe025'
             '92e34c28e4b6222febef5a3047f4faf64756a50b46a68507931b989984bbc6729aa4d1560dc267650f1890cb1ad7aa0866dd3debc0073f9103f764af7618d795'
             '5a4f252278a9a29f3fe61c54512e1246f602fbf61be1c835cbcaf41c2092b3fa8bfe255d77f181fa636da7045e7e69b529d6d81871d149ddcced17a84e868542'
             'e415c85d41af19a4c896ac196fff84943196d5e5e35362f6b555b08a7446acd0a7c52c723f28a6269ad81bf503cf1abbc72dd8dc128938ba5c89d679cca1f48f'
-            'a4e231b38e428fdec28129062d83a7af89bde19b3fefa05ae744744b456c7c4198f42801490531a8394f44a8088c861ef84a8a708d3f08dd1f0815bc172ad9e0')
+            'a4e231b38e428fdec28129062d83a7af89bde19b3fefa05ae744744b456c7c4198f42801490531a8394f44a8088c861ef84a8a708d3f08dd1f0815bc172ad9e0'
+            'c985b20ebfedc660c732fb7e03e25736cc89849ec825249bce42a6a2b009199dcc769fa3fd0d022479fec8d82f02a4dc4fd0dd2a34022ee4513e907f3fbee563')
 
 prepare() {
   cd "${srcdir}/arrayfire-full-v${pkgver}"
@@ -32,6 +34,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/3451-update-toolkit-driver-cuda-12-4.patch"
   patch -Np1 -i "${srcdir}/3521-fix-build-failure-with-cudnn.patch"
   patch -Np1 -i "${srcdir}/fmt-v11.patch"
+  patch -Np1 -i "${srcdir}/${pkgname}-3588.patch"
 }
 
 build() {
