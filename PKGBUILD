@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
-pkgbase=115-browser-bin
-pkgname=115-browser-bin
+pkgbase=chromium
+pkgname=chromium
 _pkgname=115br
 pkgver=27.0.7.5
 pkgrel=1
@@ -21,7 +21,7 @@ makedepends=(libarchive)
 provides=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
 replaces=()
-pkgdesc="115 Browser / 115 浏览器"
+pkgdesc="Chromium 115 Browser"
 license=('Commercial')
 url="https://115.com/product_browser"
 source_x86_64=("${pkgname}-${pkgver}.deb::https://down.115.com/client/115pc/lin/115br_v${pkgver}.deb")
@@ -40,11 +40,12 @@ package() {
     cd ${pkgdir}/
 
     install -dvm755 usr/bin \
-        opt/115
+        opt/chromium
 
-    mv usr/local/115Browser opt/115 && rm -rf usr/local
+    mv usr/local/115Browser opt/chromium && rm -rf usr/local
 
-    sed -i 's|/usr/local|/opt/115|g' usr/share/applications/115Browser.desktop
-    sed -i 's|/usr/local|/opt/115|g' opt/115/115Browser/115.sh
-    ln -sf "/opt/115/115Browser/115.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    sed -i 's|/usr/local|/opt/chromium|g' usr/share/applications/115Browser.desktop
+    rm usr/share/applications/115Browser.desktop
+    sed -i 's|/usr/local|/opt/chromium|g' opt/chromium/115Browser/115.sh
+    ln -sf "/opt/chromium/115Browser/115.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
 }
