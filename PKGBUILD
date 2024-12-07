@@ -21,7 +21,7 @@ backup=(
 	'opt/openlinkhub/config.json'
 )
 options=()
-install=$_pkgnamesrc.install
+install="${pkgname%-*}".install
 source=(
 	"${pkgname%-*}::git+https://github.com/jurkovic-nikola/${_upstreamname}.git#branch=main"
 	"${pkgname%-*}".install
@@ -31,10 +31,10 @@ source=(
 )
 noextract=()
 sha256sums=('SKIP'
-            'a541e655f649d43250481394549ef8dc0192fdd1c6b155866f57adce9f172d7c'
+            'd7463e227f6aa1bbb1dc48374c49e78f4cf06895babecbae20e418a610da1294'
             '1222f0ea7dc963f3e09db814bacc71d2179232ad582fab8ad0e36cb8a9e69141'
-            '18f1759e8642b2be24a11337eca16f148f80bee88b3270a3bb62c7376b428090'
-            'cc4c09d90f3c26db239ed159b4b65ddf3ec7b68c044e61ee42c77a1a5fb659de')
+            '6d6aef4a416f4e7c7f069a9a2f10438796a92eb79f0846f4c26daed8f4718590'
+            '730776358215d06623612cf9687240bee1d9a0dcb8058514965daa0441b8a531')
 			
 pkgver() {
 	cd "${pkgname%-*}"
@@ -42,7 +42,7 @@ pkgver() {
 }	
 
 prepare() {
-	cd "$srcdir"
+	cd "${pkgname%-*}"
 
 	## Look for CORSAIR Controller Device and create UDEV rule file
 	## Copied nearly verbatim from upstream ./install.sh
@@ -51,7 +51,7 @@ prepare() {
 		ids=$(echo "$line" | awk '{print $6}')
 		vendor_id=$(echo "$ids" | cut -d':' -f1)
 		device_id=$(echo "$ids" | cut -d':' -f2)
-		cat > "${pkgname%-*}"-udev.rules <<- EOM
+		cat > ../"${pkgname%-*}"-udev.rules <<- EOM
 		KERNEL=="hidraw*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="$vendor_id", ATTRS{idProduct}=="$device_id", MODE="0666"
 		EOM
 	done
