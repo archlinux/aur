@@ -2,7 +2,7 @@ mkdir -p "$HOME/.cache/pacman/pkg"
 PKGDEST="$HOME/.cache/pacman/pkg/$pkgname"
 
 pkgname=vnrez
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="All-in-one Linux tool for recording, screenshots to share your files online."
 arch=('any')
