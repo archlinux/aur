@@ -1,34 +1,40 @@
-# Maintainer:  benutzer193 <registerbn+arch a_t gmail d_ot com>
+# Maintainer: Vaporeon <vaporeon@vaporeon.io>
+# Contributor:  benutzer193 <registerbn+arch a_t gmail d_ot com>
+
 pkgname=flips-git
-_pkgname='Flips'
-pkgver=r56.d95c34c
-pkgrel=2
-pkgdesc="Patcher for IPS and BPS files"
-arch=('any')
-url="https://github.com/Alcaro/Flips"
-license=('GPL3')
-optdepends=('gtk3: GUI support')
+pkgver=r183.07162ca
+pkgrel=1
+pkgdesc="A patcher for IPS and BPS files (Git version)"
+depends=(
+  at-spi2-core
+  cairo
+  gcc-libs
+  gdk-pixbuf2
+  glibc
+  glib2
+  gtk3
+  harfbuzz
+  hicolor-icon-theme
+  pango
+  zlib
+)
 makedepends=('git')
-provides=('flips')
-conflicts=('flips')
-source=("git://github.com/Alcaro/Flips.git")
-install=flips.install
-md5sums=('SKIP')
+arch=('x86_64')
+url="https://github.com/Alcaro/Flips"
+license=('GPL-3.0-or-later')
+source=("git+https://github.com/Alcaro/Flips.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd Flips
   printf "r%s.%s" "$(git rev-list --count HEAD)"\
     "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-
-  # profile=yes --> use profile-guided optimization (requires 100MB training corpus)
-  CFLAGS=-Wno-error ./make.sh --profile=no --harden=no
+  make CFLAGS="$CFLAGS $LDFLAGS" -C Flips
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  install -Dm755 "flips" "$pkgdir/usr/bin/flips"
+  make DESTDIR="${pkgdir}" -C Flips install
 }
