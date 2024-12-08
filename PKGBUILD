@@ -10,16 +10,16 @@ _langs=(afr amh ara asm aze aze_cyrl bel ben bod bos bre bul cat ceb ces
   tel tgk tgl tha tir ton tur uig ukr urd uzb uzb_cyrl vie yid yor)
 
 pkgname=screen-ocr
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Extract text from screen selection using tesseract."
 arch=('x86_64')
 license=('MIT')
-depends=('tesseract>=4' 'imagemagick>=7' 'spectacle' 'kdialog')
+depends=('tesseract>=4' 'imagemagick>=7' 'spectacle' 'kdialog' 'libnotify')
 optdepends=($(for l in "${_langs[@]}"; do echo tesseract-data-"$l"; done))
 provides=("$pkgname")
 source=("$pkgname.sh")
-sha256sums=('256959ecb1f7b79dace8beb3ee96a6934778bc200a42f8a14c6c9568789eef2a')
+sha256sums=('2e1de7f96a337012b4a78ead99fba721212c7b7b395ac700c833c00f12004375')
 
 package() {
   mkdir -p "$pkgdir/usr/bin"

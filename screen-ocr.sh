@@ -35,4 +35,5 @@ fi
 mogrify -modulate 100,0 -resize 400% "$SCR_IMG".png # postprocess to prepare for OCR
 tesseract -l "$LANG" "$SCR_IMG".png "$SCR_IMG"      # OCR in given language
 xsel -bi <"$SCR_IMG".txt                            # pass to clipboard
+notify-send -u normal -e -i "spectacle" -a "Screen OCR" "Text copied to clipboard" "$(<"$SCR_IMG".txt)"
 exit

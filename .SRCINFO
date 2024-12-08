@@ -1,6 +1,6 @@
 pkgbase = screen-ocr
 	pkgdesc = Extract text from screen selection using tesseract.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	arch = x86_64
 	license = MIT
@@ -8,6 +8,7 @@ pkgbase = screen-ocr
 	depends = imagemagick>=7
 	depends = spectacle
 	depends = kdialog
+	depends = libnotify
 	optdepends = tesseract-data-afr
 	optdepends = tesseract-data-amh
 	optdepends = tesseract-data-ara
@@ -135,6 +136,6 @@ pkgbase = screen-ocr
 	optdepends = tesseract-data-yor
 	provides = screen-ocr
 	source = screen-ocr.sh
-	sha256sums = 256959ecb1f7b79dace8beb3ee96a6934778bc200a42f8a14c6c9568789eef2a
+	sha256sums = 2e1de7f96a337012b4a78ead99fba721212c7b7b395ac700c833c00f12004375
 
 pkgname = screen-ocr
