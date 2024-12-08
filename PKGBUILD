@@ -19,8 +19,8 @@ conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source=("CHANGELOG-${pkgver}.md::${_url}/raw/${_commit}/CHANGELOG.md"
         "${_pkgsrc}.tar.gz::${url}/download/v${pkgver%%.*}/linux/${_pkgname//-/_}-${pkgver}-Linux-x86_64.tar.gz")
-b2sums=('1d860efeec4911bd98bbdee0d8ea76027bea32b426b075b8dbd86b6d37cc5b95fb9c4fb36a9d2afd0d6c933897eb0ea74a7357bc7be9c020988e376aa7f5b47a'
-        '8d0b627548c6c85a9990a33a1a3d13672a7fed6ddfe6c2a2b9da2043aec7a67e372471b63c4e048c2587d01e11aef6c03dcac698a2649afa98b22d9fce283160')
+sha256sums=('3274c7d63edb41e5f3bad987591339775c0821acee19a70a3500149a326d625a'
+            '74cb4d5644e68d8d59c2a96864ba0cad4bc46701b3f726af987c85de3a682e2d')
 # validpgpkeys=('C264DC0F1C13A4BB18CAAF1BE7BE982BCD50DDF4') # Terrapane Support <support@terrapane.com> (https://github.com/terrapane/aescrypt_linux/blob/master/README.md#signed-release-packages)
 
 prepare() {
