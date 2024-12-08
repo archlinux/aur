@@ -12,7 +12,7 @@ pkgrel=1
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD (mingw-w64)"
 arch=('any')
 url="https://www.openblas.net/"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('mingw-w64-crt')
 makedepends=('perl'
              'mingw-w64-gcc')
