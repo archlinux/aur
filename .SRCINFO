@@ -1,7 +1,7 @@
 pkgbase = dogelog
 	pkgdesc = The avant-garde of logic programming
 	pkgver = 1.2.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.dogelog.ch/
 	arch = any
 	license = custom
@@ -9,12 +9,13 @@ pkgbase = dogelog
 	source = https://www.dogelog.ch/typtab/rscsrv/docs/50_archive/archive_1_2/dogelog_1_2_5.zip
 	sha256sums = ac929e3662f3bb539d47d12c81004b1d48b6e7cf800f93353d04905854a25a61
 
-pkgname = dogelog-node
-	pkgdesc = The avant-garde of logic programming (NodeJS backend)
+pkgname = dogelog-js
+	pkgdesc = The avant-garde of logic programming (JavaScript backend)
 	depends = dogelog-license
 	optdepends = nodejs>=22.11.0
 	optdepends = bun
 	provides = dogelog-package
+	replaces = dogelog-node
 
 pkgname = dogelog-py
 	pkgdesc = The avant-garde of logic programming (Python backend)
@@ -30,8 +31,10 @@ pkgname = dogelog-java
 	provides = dogelog-package
 
 pkgname = dogelog-license
+	pkgdesc = The avant-garde of logic programming (License agreement)
 	license = 
 
 pkgname = dogelog
+	pkgdesc = The avant-garde of logic programming (Shell wrapper)
 	license = GPL-2.0-or-later
 	depends = dogelog-package
