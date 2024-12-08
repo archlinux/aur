@@ -6,8 +6,8 @@ pkgdesc="Neofetch, but written in C; both faster and worse than the original"
 arch=(x86_64 aarch64)
 url="https://github.com/alba4k/albafetch"
 license=('MIT')
-makedepends=(git make gcc)
-depends=(pciutils)
+depends=(pciutils sqlite)
+makedepends=(git make gcc pkgconf)
 provides=($pkgname=$pkgver)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 
