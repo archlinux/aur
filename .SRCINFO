@@ -1,0 +1,23 @@
+pkgbase = cops-mikespub-org
+	pkgdesc = Lightweight Calibre OPDS (and HTML) PHP Server
+	pkgver = 3.4.5
+	pkgrel = 1
+	url = https://github.com/mikespub-org/seblucas-cops
+	install = cops.install
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = composer
+	depends = php
+	depends = php-gd
+	depends = php-intl
+	depends = php-sqlite
+	optdepends = apache: Web server to run COPS
+	optdepends = nginx: Web server to run COPS
+	optdepends = cherokee: Web server to run COPS
+	provides = cops
+	conflicts = cops
+	backup = etc/webapps/cops/local.php
+	source = https://github.com/mikespub-org/seblucas-cops/archive/3.4.5.tar.gz
+	sha256sums = e25bd19500ac9b675397fc84947074eee489f75e2f4104a26e3cebb53af8678c
+
+pkgname = cops-mikespub-org
