@@ -1,6 +1,6 @@
 pkgbase = typstyle
 	pkgdesc = Beautiful and reliable typst code formatter
-	pkgver = 0.12.6
+	pkgver = 0.12.8
 	pkgrel = 1
 	url = https://github.com/Enter-tainer/typstyle
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = typstyle
 	depends = gcc-libs
 	depends = glibc
 	optdepends = typst: For typst compilation
-	source = typstyle-0.12.6.tar.gz::https://github.com/Enter-tainer/typstyle/archive/refs/tags/v0.12.6.tar.gz
-	sha256sums = b04a77a9f75dda3a9513088ee3cd28f0a093ff6a977f38186427bbb0e03ce66b
+	source = typstyle-0.12.8.tar.gz::https://github.com/Enter-tainer/typstyle/archive/refs/tags/v0.12.8.tar.gz
+	sha256sums = a0ec405addfd4b0837838a963d3e57c1063c34a3cf12bfe71aa2e1394190e663
 
 pkgname = typstyle
