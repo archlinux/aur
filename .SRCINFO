@@ -1,7 +1,7 @@
 pkgbase = torchvision
 	pkgdesc = Datasets, transforms, and models specific to computer vision
 	pkgver = 0.20.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pytorch/vision
 	arch = x86_64
 	license = BSD-3-Clause
@@ -42,7 +42,7 @@ pkgname = torchvision
 	depends = python-requests
 	depends = python-scipy
 	depends = python-sympy
-	depends = python-pytorch-cuda
+	depends = python-pytorch
 
 pkgname = torchvision-cuda
 	pkgdesc = Datasets, transforms, and models specific to computer vision (C++ library only with GPU support)
