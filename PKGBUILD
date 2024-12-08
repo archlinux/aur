@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname="linux-xanmod-bin"
-pkgver='6.11.9'        # example for rt branch: pkgver='6.1.73.rt22'
+pkgver='6.11.11'        # example for rt branch: pkgver='6.1.73.rt22'
 branch='main'
 pkgrel="1"
 
@@ -16,6 +16,28 @@ check_psabi() {
       if (level == 3 && /avx512f/&&/avx512bw/&&/avx512cd/&&/avx512dq/&&/avx512vl/) level = 4
       if (level > 0) { print "x64v" level }
   }' 2>/dev/null||echo "x64v1"
+}
+
+is_exe_exist() { command -v "$@" &>/dev/null ; }
+
+check_url_stat_code() {
+    set -o pipefail
+    if is_exe_exist curl
+        then curl -sL -o /dev/null -I -w "%{http_code}" "$@" 2>/dev/null
+    elif is_exe_exist wget
+        then wget --no-check-certificate --server-response \
+                --spider "$@"|& awk '/^  HTTP/{print$2}'|tail -1
+    else return 1
+    fi
+}
+
+is_url() {
+    [ ! -n "$1" ] && \
+        return 1
+    if [ -n "$2" ]
+        then [ "$(check_url_stat_code "$1")" == "$2" ]
+        else [ "$(check_url_stat_code "$1")" == "200" ]
+    fi
 }
 
 psabi="$(check_psabi)"
@@ -38,7 +60,12 @@ provides=('VIRTUALBOX-GUEST-MODULES'
           'WIREGUARD-MODULE'
           'KSMBD-MODULE'
           'NTFS3-MODULE')
-_url="https://sourceforge.net/projects/xanmod/files/releases/$branch/${pkgverdl}-xanmod1/${pkgverdl}-${psabi}-xanmod1"
+for v in ${psabi/x64v/} 3 2 1
+    do
+        psabi="x64v$v"
+        _url="https://sourceforge.net/projects/xanmod/files/releases/$branch/${pkgverdl}-xanmod1/${pkgverdl}-${psabi}-xanmod1"
+        is_url "$_url" && break
+done
 _url_info="$(curl -sL "$_url"|grep "net.sf.files"|sed 's|net.sf.files = ||g;s|;$||'|jq -r '.[].download_url'|grep -v '\-dbg_')"
 _url_image="$(echo "$_url_info"|grep -o "https:.*/linux-image.*deb"|head -1)"
 _url_headers="$(echo "$_url_info"|grep -o "https:.*/linux-headers.*deb"|head -1)"
