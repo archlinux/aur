@@ -15,8 +15,8 @@ source=("https://vulkan.gpuinfo.org/downloads/vulkancapsviewer_${pkgver}_linux64
 sha256sums=('e41b72afcf2b6b0fad91e9318799f8ecf59b6ab58291bc2047aa73c320a8f200')
 
 prepare() {
-  chmod +x *.AppImage
-  ./*.AppImage --appimage-extract
+  chmod +x "vulkancapsviewer_${pkgver}_linux64.AppImage"
+  ./"vulkancapsviewer_${pkgver}_linux64.AppImage" --appimage-extract
 }
 
 package() {
