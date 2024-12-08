@@ -1,4 +1,4 @@
-
+source=("swaf.py" ...)
 pkgname=swaf
 pkgver=1.0
 pkgrel=1
