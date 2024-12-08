@@ -1,15 +1,15 @@
 pkgbase = geant4-radioactivedata
 	pkgdesc = Data files for radioactive decay hadronic processes
-	pkgver = 6.0.1
+	pkgver = 6.1.2
 	pkgrel = 1
 	url = http://geant4.cern.ch/
 	install = geant4-radioactivedata.install
 	arch = any
 	license = GPL
 	optdepends = geant4>=11.3
-	source = https://cern.ch/geant4-data/datasets/G4RadioactiveDecay.6.0.1.tar.gz
+	source = https://cern.ch/geant4-data/datasets/G4RadioactiveDecay.6.1.2.tar.gz
 	source = geant4-radioactivedata.install
-	sha256sums = 27aaf2db17ca9ab2779ee3c88df623336803f364638c7d7f97d371f83c31fd92
+	sha256sums = a40d7e3ebc64d35555c4a49d0ff1e0945cd605d84354d053121293914caea13a
 	sha256sums = 1d3efc465b14ca90a5770ad2e35525ae244503a91a7f57d3dbecd0839dc25cf3
 
 pkgname = geant4-radioactivedata
