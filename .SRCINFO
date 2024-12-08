@@ -1,14 +1,14 @@
 pkgbase = r-admisc
 	pkgdesc = Adrian Dusa's Miscellaneous
-	pkgver = 0.36
+	pkgver = 0.37
 	pkgrel = 1
 	url = https://cran.r-project.org/package=admisc
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = r
 	optdepends = r-qca
-	source = https://cran.r-project.org/src/contrib/admisc_0.36.tar.gz
-	md5sums = 1bd6539d9d5ce429884d5ef949d39a06
-	b2sums = 749bce40ffeb91ab64daa686985fdf807d156deacb086b59136be7b62aecc5ac98246ff76d5be673e74b1188bc290567920d350d39763dac679ed8fe7ccd3fb4
+	source = https://cran.r-project.org/src/contrib/admisc_0.37.tar.gz
+	md5sums = b0d44627580960ffa0586e45bc9079d8
+	b2sums = d2950b2c9cadcd2fc5503598a638d7a6be20057c0a69cbb0fe11b4de180a9c3376443721ba791185c34c232141b2e36128cb27dbe9a71535932f981a24cff043
 
 pkgname = r-admisc
