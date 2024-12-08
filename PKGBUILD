@@ -3,8 +3,8 @@
 
 _name=outline-client
 pkgname=${_name}-appimage
-pkgver=1.13.1
-pkgrel=6
+pkgver=1.14.0
+pkgrel=1
 pkgdesc="The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks."
 arch=(x86_64)
 conflicts=('outline-client-appimage-wayland' 'outline-client-appimage-git')
@@ -18,7 +18,7 @@ options=('!strip' '!debug')
 depends=('fuse2' 'nss')
 install=${pkgname}.install
 
-sha512sums=('5a3aa5c08f1f89dab6839f462ea90e65cd8278bed7ac34deea3d2e0a5330dd54c6ae9cb2e4d418b18f8effdfb3c1a48c0db4d61c07cc48dbaecf3c4da68ad181'
+sha512sums=('8faba3d2f8595f9ea4ac55ecef6a811f0e5ea24c4450661b86cb1a5357a9dc635b781262d15c293009fbdfcace30749c9538c76a54490bbca90e54c1b2f19fdb'
             'a1704e707b0b0a927fae068647eccb426bb51ad2081d27ee18e8991949e9135d28fe502d1a1dba27d333025edd235614b195758d14be2d0eeb97172bea851ddd')
 
 prepare() {
