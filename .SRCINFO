@@ -1,6 +1,6 @@
 pkgbase = hyprlauncher-bin
 	pkgdesc = GUI for launching applications, written in blazingly fast Rust!
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/hyprutils/hyprlauncher
 	install = hyprlauncher.install
@@ -10,11 +10,11 @@ pkgbase = hyprlauncher-bin
 	depends = gtk4-layer-shell
 	provides = hyprlauncher
 	conflicts = hyprlauncher
-	source = hyprlauncher-0.2.7::https://github.com/hyprutils/hyprlauncher/releases/download/v0.2.7/hyprlauncher
-	source = LICENSE-0.2.7::https://raw.githubusercontent.com/hyprutils/hyprlauncher/refs/tags/v0.2.7/LICENSE
-	source = README-0.2.7.md::https://raw.githubusercontent.com/hyprutils/hyprlauncher/refs/tags/v0.2.7/readme.md
-	sha256sums = 4bcb73cdfb00dcbbeede1f725a175395a12ff39428ad9ffc79b521ad698d873b
+	source = hyprlauncher-0.2.8::https://github.com/hyprutils/hyprlauncher/releases/download/v0.2.8/hyprlauncher
+	source = LICENSE-0.2.8::https://raw.githubusercontent.com/hyprutils/hyprlauncher/refs/tags/v0.2.8/LICENSE
+	source = README-0.2.8.md::https://raw.githubusercontent.com/hyprutils/hyprlauncher/refs/tags/v0.2.8/readme.md
+	sha256sums = 07598aeccc6a7acb49d6cb0ce1a14e17494cc764c073bcd5d9c4bb2bf0572ba2
 	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
-	sha256sums = fd29a74f88cf2fa2a67394f0487584dbd0770ec597519e03016e3524f0a8e6f0
+	sha256sums = dec16e9dc01a5572c2891b81fb14b1d2c574cdf31e8b957a268dc422decd2567
 
 pkgname = hyprlauncher-bin
