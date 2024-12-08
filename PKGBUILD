@@ -14,6 +14,7 @@ depends=('mesa' 'glew' 'glu' 'udev' 'libx11' 'libxext' 'libxtst' 'libxinerama' '
          'gtk3' 'jsoncpp' 'pcre')
 makedepends=('git' 'cmake' 'nasm' 'llvm-libs')
 source=("git+https://github.com/$_pkgname/$_pkgname.git")
+options=("!lto")
 b2sums=('SKIP')
 
 pkgver() {

@@ -30,6 +30,7 @@ pkgbase = itgmania-git
 	depends = pcre
 	provides = itgmania
 	conflicts = itgmania
+	options = !lto
 	source = git+https://github.com/itgmania/itgmania.git
 	b2sums = SKIP
 
