@@ -1,0 +1,23 @@
+--- a/Makefile.in	2024-12-08 21:36:54.383735918 +0100
++++ b/Makefile.in	2024-12-08 21:41:07.468162154 +0100
+@@ -7,6 +7,7 @@
+ CC=@CC@
+ CFLAGS=@CFLAGS@
+ CPPFLAGS=@CPPFLAGS@
++LDFLAGS=@LDFLAGS@
+ INSTALL=@INSTALL@
+
+ .PHONY: all install test dist lint clean
+@@ -51,10 +52,10 @@
+ 	pandoc --standalone --from markdown-smart --to man $< -o $@
+
+ utils/try-summary: utils/ignores.o utils/try-summary.o
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ -g $^
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ -g $^
+
+ utils/try-commit: utils/ignores.o utils/try-commit.o
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ -g $^
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ -g $^
+
+ test: try utils/try-summary utils/try-commit
+ 	scripts/run_tests.sh
