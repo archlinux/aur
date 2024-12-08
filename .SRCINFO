@@ -1,6 +1,6 @@
 pkgbase = yuki-iptv
 	pkgdesc = IPTV player with EPG support
-	pkgver = 0.0.15
+	pkgver = 0.0.16
 	pkgrel = 1
 	url = https://codeberg.org/liya/yuki-iptv
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = yuki-iptv
 	depends = python-setproctitle
 	depends = python-wand
 	optdepends = yt-dlp: YouTube channel support
-	source = yuki-iptv-0.0.15.tar.gz::https://codeberg.org/liya/yuki-iptv/archive/0.0.15.tar.gz
-	sha256sums = f2ef0aa1a6c4c55ab28fca21194976f12a8825819f34b365fedc8733d8305fcf
+	source = yuki-iptv-0.0.16.tar.gz::https://codeberg.org/liya/yuki-iptv/archive/0.0.16.tar.gz
+	sha256sums = fd6ea879991bff13b6b6cfaf0cb61947cd64d227b0cd31b545cd0adc92be29bb
 
 pkgname = yuki-iptv
