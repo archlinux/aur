@@ -1,6 +1,6 @@
 pkgbase = zen-adblocker-bin
 	pkgdesc = An open-source system-wide ad-blocker and privacy guard
-	pkgver = 0.5.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/anfragment/zen
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = zen-adblocker-bin
 	depends = webkit2gtk
 	provides = zen-adblocker
 	conflicts = zen-adblocker
-	source = Zen_linux_amd64_0.5.0.tar.gz::https://github.com/anfragment/zen/releases/download/v0.5.0/Zen_linux_amd64_noselfupdate.tar.gz
+	source = Zen_linux_amd64_0.6.1.tar.gz::https://github.com/anfragment/zen/releases/download/v0.6.1/Zen_linux_amd64_noselfupdate.tar.gz
 	source = zen-adblocker.desktop
-	source = appicon.png::https://github.com/anfragment/zen/blob/v0.5.0/assets/appicon.png?raw=true
-	source = LICENSE::https://github.com/anfragment/zen/blob/v0.5.0/LICENSE?raw=true
-	sha256sums = d77e0919c95576b196cb274ccbd33c9256ad77bd90a547bdf9c84ffd1afadc7b
+	source = appicon.png::https://github.com/anfragment/zen/blob/v0.6.1/assets/appicon.png?raw=true
+	source = LICENSE::https://github.com/anfragment/zen/blob/v0.6.1/LICENSE?raw=true
+	sha256sums = c38ed912e00272518019783d52822f2e1c60430c8d4d786d8c5f4c28f4d71ca2
 	sha256sums = b8fd4a272875b236b953bbeca99459cfcd6d6e10a1d00cf50eaadf742db27fc2
 	sha256sums = 86c811ab545ee63d398ddc2da04a75d968d349102a4b73a087e01cebc346f1e2
 	sha256sums = d39888b5658d9207779b855f1626eca78ab97525dc2dbcdb1df4ebc199d414a6
