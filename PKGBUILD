@@ -60,7 +60,7 @@ provides=('VIRTUALBOX-GUEST-MODULES'
           'WIREGUARD-MODULE'
           'KSMBD-MODULE'
           'NTFS3-MODULE')
-for v in ${psabi/x64v/} 3 2 1
+for v in ${psabi/x64v/} 1
     do
         psabi="x64v$v"
         _url="https://sourceforge.net/projects/xanmod/files/releases/$branch/${pkgverdl}-xanmod1/${pkgverdl}-${psabi}-xanmod1"
