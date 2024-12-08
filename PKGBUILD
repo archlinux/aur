@@ -5,8 +5,8 @@
 
 _pkgname=pa-dlna
 pkgname="${_pkgname}-git"
-pkgver=0.14+3.r392.20241206.e2c874b
-pkgrel=4
+pkgver=0.14+5.r394.20241208.9fd5312
+pkgrel=1
 pkgdesc="Forwards audio streams to DLNA devices. For PulseAudio or PipeWira (via 'python-libpulse'). Latest git checkout."
 arch=(
   'any'
@@ -69,9 +69,6 @@ prepare() {
   #   plain "Applying patch '$(basename "${_patch}" ...)'"
   #   patch -Np1 --follow-symlinks -i "${_patch}"
   # done
-
-  ## Work around "flit_core.common.InvalidVersion: Version number '0.14-1-g762fc30' does not match PEP 440 rules" (https://gitlab.com/xdegaye/pa-dlna/-/issues/31#note_2245753151)
-  sed -i -E -e "/^[[:space:]]*__version__[[:space:]]*=/s|-(g[0-9a-fA-F]*['\"[:space:]]*)\$|.\1|" -e '/^[[:space:]]*__version__[[:space:]]*=/s|-|+|g' "pa_dlna/__init__.py"
 
   git log > git.log
 }
