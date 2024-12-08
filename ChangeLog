@@ -1,0 +1,36 @@
+2024-12-05  Jan Burse  <janburse@fastmail.fm>
+
+	Release 1.2.5
+
+	* New library(util/tree): This is the second library we have created that
+	is based on the change_arg/3 predicate and provides a non-backtracking
+	capable data structure.  This time we created red-black trees.
+
+	* Improved library(aggregate): First, a new implementation using
+	library(util/tree) was planned.  But we finally decided to use the faster
+	library(util/hash) together with keysort/2.  A new predicate unnumbervars/3
+	ensures the creation of variables.
+
+	* bun.js Support: To use bun.js, we fixed a programming error by replacing
+	our OS success test with falsy tests (!err).  We found 4 non-critical
+	discrepancies with node.js.  The performance lags slightly behind node.js
+	because the JavaScript version is older.
+
+
+2024-11-02  Jan Burse  <janburse@fastmail.fm> 
+
+	Release 1.2.4
+
+	* New library(misc/dict): We have moved some predicates from the
+	library(misc/json) into our own library(misc/dict).  We made sure that the
+	data structure of the Prolog dicts now follows the input order semantics.
+
+	* New library(util/hash): To enable the implementation of hash tables,
+	Novacore now has a term_hash/2 predicate.  The implementation differs from
+	the Prolog dict in that change_arg/3 is used for destructive updates.  We
+	have also dispensed with the input order.
+
+	* Improved library(sequence): Hash tables can easily be used to model sets
+	of keys, for example by using the value "true" as an indicator.  This
+	allowed us to re-implement the distinct/1 predicate. The use of numbervars/3
+	ensures that key variants are identified.
