@@ -1,24 +1,28 @@
-# Maintainer epsilonKNOT <epsilon.aur@epsilonKNOT.xyz>
+# Maintainer  shtrophic   <aur at shtrophic dot net>
+# Contributor epsilonKNOT <epsilon.aur@epsilonKNOT.xyz>
 
 pkgbase=imsg-compat
 pkgname=imsg-compat
-pkgver=6.8.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="linux port of OpenBSD imsg utilities"
 url="https://github.com/bsd-ac/imsg-compat"
 license=('ISC')
 arch=('any')
-source=( "${pkgname}-${pkgver}.tar.gz::https://github.com/bsd-ac/imsg-compat/archive/${pkgver}.tar.gz" )
-md5sums=('34d66d1118f99eca32bc2ce006af4f83')
+makedepends=(meson)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bsd-ac/imsg-compat/archive/${pkgver}.tar.gz" )
+sha256sums=('5e87b828af6c42a1234044ff94b2948bd5802c161c837adb1dece5cfe875aefd')
 
-compile() {
-	cd "${pkgname}-${pkgver}"
-	make all
+build() {
+    arch-meson $pkgname-$pkgver build
+    meson compile -C build
+}
+
+check() {
+    meson test -C build --print-errorlogs
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}" install
+    meson install -C build --destdir "$pkgdir"
 }
 
-#vim: syntax=sh
