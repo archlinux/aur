@@ -1,7 +1,7 @@
 pkgbase = diablo-project-manager-git
 	pkgdesc = A Basic Project Manager
 	pkgver = git
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/diablodev/dpm
 	arch = x86
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = diablo-project-manager-git
 	depends = bash
 	depends = git
 	depends = glibc
-	optdepends = yad: allows you to run the diablo-project-manager gui.
+	optdepends = zenity: allows you to run the diablo-project-manager gui.
 	provides = diablo-project-manager
 	conflicts = diablo-project-manager
 	source = diablo-project-manager-git::git+https://gitlab.com/diablodev/dpm.git

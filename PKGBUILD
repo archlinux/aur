@@ -2,13 +2,13 @@
 _pkgname=diablo-project-manager
 pkgname=$_pkgname-git
 pkgver=git
-pkgrel=1
+pkgrel=2
 pkgdesc="A Basic Project Manager"
 arch=("x86" "x86_64")
 url="https://gitlab.com/diablodev/dpm"
 license=('MIT')
 depends=('bash' 'git' 'glibc')
-optdepends=('yad: allows you to run the diablo-project-manager gui.')
+optdepends=('zenity: allows you to run the diablo-project-manager gui.')
 makedepends=('shc')
 provides=("diablo-project-manager")
 conflicts=("diablo-project-manager")
