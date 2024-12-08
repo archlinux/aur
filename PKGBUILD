@@ -2,8 +2,8 @@
 # Contributor: Talebian <talebian@sovietunion.xyz>
 
 pkgname=bottles-git
-pkgver=51.15.r0.ge93cd189
-pkgrel=2
+pkgver=51.15.r17.g723c9d27
+pkgrel=1
 epoch=2
 pkgdesc="Easily manage wineprefix using environments"
 arch=(any)
@@ -58,6 +58,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+
+  # https://github.com/bottlesdevs/Bottles/commit/6206301992c3218060761e5b574b83da485b759a
+  # this commit add a check for flatpak
+  git revert 6206301992c3218060761e5b574b83da485b759a --no-commit
 }
 
 prepare () {
