@@ -1,7 +1,7 @@
 pkgbase = diablo-project-manager
 	pkgdesc = A Basic Project Manager
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/diablodev/dpm
 	arch = x86_64
 	license = MIT
