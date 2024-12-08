@@ -17,7 +17,7 @@
 	because the JavaScript version is older.
 
 
-2024-11-02  Jan Burse  <janburse@fastmail.fm> 
+2024-11-02  Jan Burse  <janburse@fastmail.fm>
 
 	Release 1.2.4
 
@@ -34,3 +34,24 @@
 	of keys, for example by using the value "true" as an indicator.  This
 	allowed us to re-implement the distinct/1 predicate. The use of numbervars/3
 	ensures that key variants are identified.
+
+
+2024-10-03  Jan Burse  <janburse@fastmail.fm>
+
+	Release 1.2.3
+
+	* New atom_time/4: The predicate sys_time_atom/3 is now officially called
+	atom_time/3.  The underlying strftime() and strptime() routines can
+	represent more than just local time.  We therefore introduced atom_time/4
+	with an options list.
+
+	* Improved open/4: The open/4 predicate and its HTTP client functionality
+	was removed from library(util/spin) and moved to the core. In addition,
+	open/4 can now return options such as the final URL via uri/1 and the
+	received headers via fields/1.
+
+	* New http_server_close/1: The HTTP server in library(util/spin) has
+	undergone some extensions.  The asynchronous processing has been improved,
+	so that HTTP server set-up, HTTP client round trip and HTTP server
+	tear-down can be implemented in the same application despite being single
+	threaded.
