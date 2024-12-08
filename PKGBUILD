@@ -5,6 +5,9 @@ pkgname=flips-git
 pkgver=r183.07162ca
 pkgrel=1
 pkgdesc="A patcher for IPS and BPS files (Git version)"
+arch=(x86_64)
+url="https://github.com/Alcaro/Flips"
+license=(GPL-3.0-or-later)
 depends=(
   at-spi2-core
   cairo
@@ -18,12 +21,9 @@ depends=(
   pango
   zlib
 )
-makedepends=('git')
-arch=('x86_64')
-url="https://github.com/Alcaro/Flips"
-license=('GPL-3.0-or-later')
+makedepends=(git)
 source=("git+https://github.com/Alcaro/Flips.git")
-sha256sums=('SKIP')
+sha256sums=(SKIP)
 
 pkgver() {
   cd Flips
