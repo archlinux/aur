@@ -1,6 +1,6 @@
 pkgbase = vulkan-caps-viewer-x11-bin
 	pkgdesc = Vulkan Hardware Capability Viewer
-	pkgver = 3.43
+	pkgver = 4.00
 	pkgrel = 1
 	epoch = 1
 	url = https://vulkan.gpuinfo.org/
@@ -10,7 +10,7 @@ pkgbase = vulkan-caps-viewer-x11-bin
 	depends = vulkan-icd-loader
 	provides = vulkan-caps-viewer
 	conflicts = vulkan-caps-viewer
-	source = https://vulkan.gpuinfo.org/downloads/vulkancapsviewer_3.43_linux64.AppImage
-	sha256sums = e41b72afcf2b6b0fad91e9318799f8ecf59b6ab58291bc2047aa73c320a8f200
+	source = https://vulkan.gpuinfo.org/downloads/vulkancapsviewer_4.00_linux64.AppImage
+	sha256sums = bfeb4349115eca2d1314e2abbe81969ab61e2f49e1458057c7e3e6a87fba32d6
 
 pkgname = vulkan-caps-viewer-x11-bin
