@@ -34,7 +34,7 @@ pkgbase = python-uproot
 	makedepends = python-lz4
 	makedepends = python-numpy
 	makedepends = python-zstandard
-	source = uproot-5.5.1::https://github.com/scikit-hep/uproot5/archive/v5.5.1.tar.gz
+	source = uproot-5.5.1.tar.gz::https://github.com/scikit-hep/uproot5/archive/v5.5.1.tar.gz
 	sha256sums = c6a6e034ed642ee95b391ab8f1b60a0318fbfb7aabcb48c3a3440ee10cca7b51
 
 pkgname = python-uproot

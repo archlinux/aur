@@ -44,8 +44,7 @@ checkdepends=(
     root
     xrootd
 )
-
-source=("${_pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz")
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
 sha256sums=('c6a6e034ed642ee95b391ab8f1b60a0318fbfb7aabcb48c3a3440ee10cca7b51')
 
 build() {
