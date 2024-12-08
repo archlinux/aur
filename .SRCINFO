@@ -1,12 +1,14 @@
 pkgbase = python-aider-chat-git
 	pkgver = 0.67.1.dev.r93.g42ae279
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aider-AI/aider
 	arch = any
 	license = Apache-2.0
 	makedepends = git
 	depends = python
 	depends = python-pip
+	provides = aider-chat
+	conflicts = aider-chat
 	source = python-aider-chat-git::git+https://github.com/Aider-AI/aider.git
 	sha512sums = SKIP
 

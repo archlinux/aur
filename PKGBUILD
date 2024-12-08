@@ -2,12 +2,14 @@
 
 pkgname=python-aider-chat-git
 pkgver=0.67.1.dev.r93.g42ae279
-pkgrel=1
+pkgrel=2
 arch=("any")
 url="https://github.com/Aider-AI/aider"
 license=("Apache-2.0")
 depends=("python" "python-pip")
 makedepends=("git")
+provides=("aider-chat")
+conflicts=("aider-chat")
 source=("${pkgname}::git+${url}.git")
 sha512sums=("SKIP")
 
@@ -18,5 +20,6 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${pkgname}"
-    python -m pip install --no-deps --prefix="${pkgdir}/usr" .
+    mkdir -p "${pkgdir}/usr"
+    python -m pip install --no-deps --target="${pkgdir}/usr" .
 }
