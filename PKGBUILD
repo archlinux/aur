@@ -6,7 +6,7 @@
 _pkgname=pa-dlna
 pkgname="${_pkgname}-git"
 pkgver=0.14+5.r394.20241208.9fd5312
-pkgrel=1
+pkgrel=2
 pkgdesc="Forwards audio streams to DLNA devices. For PulseAudio or PipeWira (via 'python-libpulse'). Latest git checkout."
 arch=(
   'any'
@@ -55,7 +55,7 @@ optdepends=(
 )
 source=(
   "${_pkgname}::git+${url}.git"
-  "pa-dlna.pdf::https://pa-dlna.readthedocs.io/_/downloads/en/latest/pdf/"
+  "pa-dlna-${pkgver}.pdf::https://pa-dlna.readthedocs.io/_/downloads/en/latest/pdf/"
 )
 sha256sums=(
   'SKIP'
@@ -63,6 +63,13 @@ sha256sums=(
 )
 
 prepare() {
+  cd "${srcdir}"
+
+  if [ -e "pa-dlna.pdf" ]; then
+    rm "pa-dlna.pdf"
+  fi
+  ln -s "pa-dlna-${pkgver}.pdf" "pa-dlna.pdf"
+
   cd "${srcdir}/${_pkgname}"
 
   # for _patch in "${srcdir}"/[...].patch; do

@@ -1,7 +1,7 @@
 pkgbase = pa-dlna-git
 	pkgdesc = Forwards audio streams to DLNA devices. For PulseAudio or PipeWira (via 'python-libpulse'). Latest git checkout.
 	pkgver = 0.14+5.r394.20241208.9fd5312
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/xdegaye/pa-dlna
 	arch = any
 	license = MIT
@@ -35,7 +35,7 @@ pkgbase = pa-dlna-git
 	conflicts = python-pa_dlna
 	conflicts = pa-dlna-doc
 	source = pa-dlna::git+https://gitlab.com/xdegaye/pa-dlna.git
-	source = pa-dlna.pdf::https://pa-dlna.readthedocs.io/_/downloads/en/latest/pdf/
+	source = pa-dlna-0.14+5.r394.20241208.9fd5312.pdf::https://pa-dlna.readthedocs.io/_/downloads/en/latest/pdf/
 	sha256sums = SKIP
 	sha256sums = SKIP
 
