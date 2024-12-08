@@ -1,0 +1,16 @@
+pkgbase = swaf
+	pkgdesc = Instagram information gathering tool. I am not responsible for misuse!!
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ailppsspp/swaf.git
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-instaloader
+	depends = python-colorama
+	depends = python-requests
+	depends = python-translate
+	source = swaf.py
+	sha256sums = SKIP
+
+pkgname = swaf
