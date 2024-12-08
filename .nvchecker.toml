@@ -1,0 +1,5 @@
+[taierspeed-cli-bin]
+source = "github"
+github = "ztelliot/taierspeed-cli"
+use_latest_release = true
+prefix = "v"
