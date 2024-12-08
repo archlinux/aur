@@ -13,7 +13,7 @@ provides=(albafetch)
 source=("git+$url")
 md5sums=('SKIP')
 
-backup=("etc/xdg/albafetch-conf")
+backup=("etc/xdg/albafetch.conf")
 
 pkgver() {
     cd albafetch

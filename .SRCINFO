@@ -17,7 +17,7 @@ pkgbase = albafetch-git
 	provides = albafetch
 	conflicts = albafetch
 	conflicts = albafetch-bin
-	backup = etc/xdg/albafetch-conf
+	backup = etc/xdg/albafetch.conf
 	source = git+https://github.com/alba4k/albafetch
 	md5sums = SKIP
 
