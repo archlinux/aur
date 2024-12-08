@@ -1,9 +1,10 @@
-# Maintainer: Librewish <librewish@gmail.com>
-# Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
+# Maintainer: Mikhail Velichko <efklid at gmail dot com>
+# Contributor: Librewish <librewish@gmail.com>
+# Contributor: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=printer-support
 pkgver=1
-pkgrel=6.1
+pkgrel=7
 arch=('any')
 url="https://wiki.archlinux.org/index.php/Category:Printers"
 license=('GPL')
@@ -23,7 +24,8 @@ depends=("a2ps"
         "ghostscript"
         "gsfonts"
         "gutenprint"
-        "noto-color-emoji-fontconfig"
+        "noto-fonts"
+        "noto-fonts-emoji"
         "python-pyqt5"
         "python-pysmbc"
         "python-reportlab"
