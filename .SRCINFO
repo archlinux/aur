@@ -29,6 +29,15 @@ pkgbase = python-uproot
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-wheel
+	makedepends = python-awkward
+	makedepends = python-cachetools
+	makedepends = python-lz4
+	makedepends = python-numpy
+	makedepends = python-zstandard
+	source = uproot-5.5.1::https://github.com/scikit-hep/uproot5/archive/v5.5.1.tar.gz
+	sha256sums = c6a6e034ed642ee95b391ab8f1b60a0318fbfb7aabcb48c3a3440ee10cca7b51
+
+pkgname = python-uproot
 	depends = python
 	depends = python-awkward
 	depends = python-cachetools
@@ -39,14 +48,7 @@ pkgbase = python-uproot
 	optdepends = python-pandas: fill Pandas DataFrames instead of Numpy arrays
 	optdepends = python-requests: access remote files through HTTP
 	optdepends = python-xxhash: handle lz4-compressed ROOT files
-	source = uproot-5.5.1::https://github.com/scikit-hep/uproot5/archive/v5.5.1.tar.gz
-	sha256sums = c6a6e034ed642ee95b391ab8f1b60a0318fbfb7aabcb48c3a3440ee10cca7b51
-
-pkgname = python-uproot
-	optdepends = xrootd: access remote files over XRootD
-	optdepends = python-pandas: fill Pandas DataFrames instead of Numpy arrays
-	optdepends = python-requests: access remote files through HTTP
-	optdepends = python-xxhash: handle lz4-compressed ROOT files
 	optdepends = python-uproot-docs: docs
 
 pkgname = python-uproot-docs
+	pkgdesc = Minimalist CERN ROOT I/O in pure Python and Numpy - documentation

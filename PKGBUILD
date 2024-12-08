@@ -19,6 +19,12 @@ makedepends=(
     python-sphinx
     python-sphinx_rtd_theme
     python-wheel
+    # dependencies of python-uproot
+    python-awkward
+    python-cachetools
+    python-lz4
+    python-numpy
+    python-zstandard
 )
 checkdepends=(
     python-aiohttp
@@ -37,20 +43,6 @@ checkdepends=(
     python-xxhash
     root
     xrootd
-)
-depends=(
-    python
-    python-awkward
-    python-cachetools
-    python-lz4
-    python-numpy
-    python-zstandard
-)
-optdepends=(
-    'xrootd: access remote files over XRootD'
-    'python-pandas: fill Pandas DataFrames instead of Numpy arrays'
-    'python-requests: access remote files through HTTP'
-    'python-xxhash: handle lz4-compressed ROOT files'
 )
 
 source=("${_pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz")
@@ -113,7 +105,21 @@ check() {
 }
 
 package_python-uproot() {
-    optdepends+=('python-uproot-docs: docs')
+    depends=(
+        python
+        python-awkward
+        python-cachetools
+        python-lz4
+        python-numpy
+        python-zstandard
+    )
+    optdepends=(
+        'xrootd: access remote files over XRootD'
+        'python-pandas: fill Pandas DataFrames instead of Numpy arrays'
+        'python-requests: access remote files through HTTP'
+        'python-xxhash: handle lz4-compressed ROOT files'
+        'python-uproot-docs: docs'
+    )
     cd "${_pkgname}5-${pkgver}"
 
     python -m installer --destdir="$pkgdir" dist/*.whl
@@ -122,6 +128,8 @@ package_python-uproot() {
 }
 
 package_python-uproot-docs() {
+    pkgdesc+=" - documentation"
+
     cd "${_pkgname}5-${pkgver}"
 
     install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
