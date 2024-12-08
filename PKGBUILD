@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=radsecproxy
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc='a generic RADIUS proxy that in addition to to usual RADIUS UDP transport, also supports TLS (RadSec), as well as RADIUS over TCP and DTLS'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ backup=('etc/radsecproxy/radsecproxy.conf')
 validpgpkeys=('210FA7FB28E45779777BAA1C5963D59C3D68633B') # Fabian Mauchle <fabian.mauchle@switch.ch>
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
         'radsecproxy.service')
-sha256sums=('e65a05bc00b3d8a6d1e2d32c288689478a170a6f9ddcb531bbd52b866e7a8673'
+sha256sums=('0635e4fc54898581db106a9196c0a1c4321e8b6d9907760e510ecfb33e0f3ac5'
             'SKIP'
             '3cc1e1a5746e4bd543d2646c6a3b444de05f38d29ca7408a1f5382ab34366cf8')
 
