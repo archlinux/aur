@@ -64,7 +64,5 @@ pkgbase = portable
 	provides = portable
 	options = !debug
 	options = !strip
-	source = portable.tar.gz
-	sha256sums = 06bf43731cafc64391eb66a5c2c99899e4a7b67d2681bcddef022cf4b35aa543
 
 pkgname = portable
