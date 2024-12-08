@@ -1,11 +1,10 @@
 pkgbase = d-feet
 	pkgdesc = D-Bus debugger for GNOME
 	pkgver = 0.3.17+r16+gf9bd211
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/Archive/d-feet
 	arch = any
 	license = GPL-2.0-or-later
-	checkdepends = xorg-server-xvfb
 	makedepends = gobject-introspection>=0.9.6
 	makedepends = meson>=0.50
 	makedepends = python-pycodestyle

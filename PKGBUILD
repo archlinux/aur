@@ -5,7 +5,7 @@ pkgname="d-feet"
 _commit_rel="53b495c93e2bd00811ba0b7f6583b8f256994e9d" # 0.3.16
 _commit="f9bd21197c0dcdea6a25fb4fcfd303e56ead714b" # r16
 pkgver="0.3.17+r16+g${_commit::7}"
-pkgrel=2
+pkgrel=3
 pkgdesc="D-Bus debugger for GNOME"
 arch=('any')
 url="https://gitlab.gnome.org/Archive/d-feet"
@@ -14,7 +14,7 @@ depends=('dconf' 'glib2' 'gtk3>=3.9.4' 'hicolor-icon-theme' 'libwnck3' 'python'
          'python-configparser' 'python-gobject')
 makedepends=('gobject-introspection>=0.9.6' 'meson>=0.50' 'python-pycodestyle'
              'yelp-tools')
-checkdepends=('xorg-server-xvfb')
+# checkdepends=('xorg-server-xvfb')
 _pkgsrc="${pkgname}-${_commit}"
 source=("${_pkgsrc}.tar.gz::${url}/-/archive/${_commit}/${_pkgsrc}.tar.gz"
         "${pkgname}_meson_drop_unused_argument.patch::https://sources.debian.org/data/main/${pkgname::1}/${pkgname}/0.3.16-4/debian/patches/meson-drop-unused-argument-for-i18n.merge_file.patch"
