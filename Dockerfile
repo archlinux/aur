@@ -22,7 +22,7 @@ RUN useradd --base-dir="$PREFIX" --create-home --shell=/bin/sh --gid="$GROUP" --
 RUN echo "$BOT ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/$BOT"
 
 WORKDIR $PREFIX/$BOT
-COPY --chown=$BOT:$GROUP 00-handle-odd-numbered-hex-strings.patch PKGBUILD .SRCINFO .
+COPY --chown=$BOT:$GROUP PKGBUILD .SRCINFO .
 COPY --chown=$BOT:$GROUP .git .git
 
 USER $BOT
