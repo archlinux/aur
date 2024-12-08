@@ -4,8 +4,8 @@
 
 _pkgname=pandoc
 pkgname=$_pkgname-sile-git
-_pkgver=3.3
-pkgver=3.3.r11.g3ecc87c72
+_pkgver=3.6
+pkgver=3.3.r302.g965d47655
 pkgrel=1
 pkgdesc='Conversion between markup formats (sile fork, static build)'
 url='https://pandoc.org'
@@ -35,7 +35,7 @@ sha256sums=('SKIP')
 
 prepare() {
 	cd "$pkgname"
-	stack config set resolver lts-22.22 # ghc-9.6.5
+	# stack config set resolver lts-22.22 # ghc-9.6.5
 }
 
 pkgver() {
