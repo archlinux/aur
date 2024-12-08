@@ -1,6 +1,6 @@
 pkgbase = julia-bin
 	pkgdesc = High-level, high-performance, dynamic programming language - official binaries
-	pkgver = 1.11.1
+	pkgver = 1.11.2
 	pkgrel = 1
 	url = https://julialang.org/
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = julia-bin
 	provides = julia
 	conflicts = julia
 	options = !strip
-	source_x86_64 = https://julialang-s3.julialang.org/bin/linux/x64/1.11/julia-1.11.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = cca8d13dc4507e4f62a129322293313ee574f300d4df9e7db30b7b41c5f8a8f3
-	source_aarch64 = https://julialang-s3.julialang.org/bin/linux/aarch64/1.11/julia-1.11.1-linux-x86_64.tar.gz
-	sha256sums_aarch64 = bd623ef3801c5a56103464d349c7901d5cc034405ad289332c67f1e8ecc05840
+	source_x86_64 = https://julialang-s3.julialang.org/bin/linux/x64/1.11/julia-1.11.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 8a372ad262d4d4d55a1044f4fe3bce7c9a4a3ce8c513d2470e58e8071eecd476
+	source_aarch64 = https://julialang-s3.julialang.org/bin/linux/aarch64/1.11/julia-1.11.2-linux-x86_64.tar.gz
+	sha256sums_aarch64 = 8a372ad262d4d4d55a1044f4fe3bce7c9a4a3ce8c513d2470e58e8071eecd476
 
 pkgname = julia-bin
