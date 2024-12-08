@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ente-auth
 pkgdesc="Open source 2FA authenticator, with end-to-end encrypted backups"
-pkgver=4.1.5
+pkgver=4.1.6
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://ente.io/auth"
@@ -12,7 +12,6 @@ depends=(
   'libsecret'
   'libsodium'
   'sqlite'
-  'webkit2gtk'
 )
 makedepends=(
 #  'chrpath'
@@ -28,7 +27,7 @@ source=("git+https://github.com/ente-io/ente.git#tag=auth-v$pkgver"
         'git+https://github.com/simple-icons/simple-icons.git'
         'git+https://github.com/ente-io/PhotoSwipe.git'
         'enteauth.desktop')
-sha256sums=('34c8a479221332a5cb0ead8097b36307c6647278f41791b05fcf6d5fa902c220'
+sha256sums=('a29ddbe2394cf76fbb3bdc75c0de7e3a3307fdaff1f515e9a8a1bd159c849e5d'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -50,6 +49,9 @@ prepare() {
   # Disable analytics
   flutter --disable-analytics
 
+  # Ensure no build artifacts are cached
+  flutter clean
+
   # Download dependencies
   flutter pub get
 }
@@ -57,8 +59,15 @@ prepare() {
 build() {
   cd ente/auth
   export FLUTTER_HOME="$srcdir/ente/auth/flutter"
+  export HOME="${FLUTTER_HOME}"
   export PATH="${FLUTTER_HOME}/bin:${PATH}"
-  flutter build linux
+  export PATH="$PATH":"$HOME/.pub-cache/bin"
+  export LIBSODIUM_USE_PKGCONFIG=1
+#  flutter build linux --dart-define FLUTTER_BUILD_NAME="$pkgver" \
+#    --dart-define FLUTTER_BUILD_NUMBER="${pkgver//./}"
+  dart --disable-analytics
+  dart pub global activate flutter_distributor
+  flutter_distributor package --platform=linux --targets=zip --skip-clean
 }
 
 check() {
