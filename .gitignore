@@ -3,3 +3,4 @@
 !.SRCINFO
 !.gitignore
 !d-feet_python3_syntax.patch
+!d-feet_meson_specify_project_language.patch
