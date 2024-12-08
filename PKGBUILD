@@ -2,7 +2,7 @@
 pkgbase=dogelog
 pkgname=(dogelog-node dogelog-py dogelog-java)
 pkgver=1.2.5
-pkgrel=2
+pkgrel=3
 arch=(any)
 url='https://www.dogelog.ch/'
 pkgdesc='The avant-garde of logic programming'
@@ -18,13 +18,13 @@ package_any() {
 
 package_dogelog-py() {
     pkgdesc='The avant-garde of logic programming (Python backend)'
-    optdepends=(python3 pypy3)
+    optdepends=('python3>=3.10.14' pypy3)
     package_any py playerpy/canned/dogelog.py
 }
 
 package_dogelog-node() {
     pkgdesc='The avant-garde of logic programming (NodeJS backend)'
-    optdepends=(nodejs bun)
+    optdepends=('nodejs>=22.11.0' bun)
     package_any node player/canned/dogelog.mjs
 }
 
