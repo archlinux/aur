@@ -4,7 +4,7 @@ pkgname=('rom-properties' 'rom-properties-gtk' 'rom-properties-kde')
 pkgbase=rom-properties
 pkgdesc="Shell extension for displaying ROM and disc image metadata in file managers"
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/GerbilSoft/rom-properties'
 license=('GPL-2.0-or-later')
@@ -44,6 +44,11 @@ build() {
     -DCMAKE_INSTALL_LIBEXECDIR=lib/$pkgname \
     -DCMAKE_BUILD_TYPE=Release \
     -DSPLIT_DEBUG=OFF \
+    -DBUILD_KDE4=OFF \
+    -DBUILD_KF5=OFF \
+    -DBUILD_KF6=ON \
+    -DBUILD_GTK3=ON \
+    -DBUILD_GTK4=ON \
     -Wno-dev
 
     make

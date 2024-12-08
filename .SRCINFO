@@ -1,7 +1,7 @@
 pkgbase = rom-properties
 	pkgdesc = Shell extension for displaying ROM and disc image metadata in file managers
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GerbilSoft/rom-properties
 	arch = x86_64
 	license = GPL-2.0-or-later
