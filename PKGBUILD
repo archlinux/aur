@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: wcyat <wcyat at wcyat dot me>
 pkgname=electronmail
-pkgver=5.2.3
+pkgver=5.3.0
 pkgrel=1
 _nodeversion=20
-_electronversion=32
+_electronversion=33
 pkgdesc="Unofficial ProtonMail Desktop App"
 arch=('x86_64')
 url="https://github.com/vladimiry/ElectronMail"
@@ -27,7 +27,7 @@ optdepends=(
 source=("git+https://github.com/vladimiry/ElectronMail.git#tag=v$pkgver"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('9aff4aeb9b0b23b7d15b611754210c01deeec48165d822c6cd89fc3a66e7ba51'
+sha256sums=('466ebcd1e8797c5b4d7687a7d7924803e14ddbef1469833074bab6ae5c4402fc'
             'c95c69f1d0db27180236ff063d9563da8750ecce81883adfb217b73ac3bb974e'
             'e7e9dd6e065118ae5d9624c7c81328086719fab198d30a92b08979c29757a3b2')
 
