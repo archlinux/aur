@@ -5,7 +5,7 @@ DOC_DIRS=(opt/hydrus/help)
 
 pkgname=hydrus-git
 _pkgname=hydrus
-pkgver=550.r0.g1f9b4ba8
+pkgver=601.r0.gdfae7f1a
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -21,7 +21,7 @@ depends=(python python-opencv python-beautifulsoup4 python-yaml
          python-service-identity  # required by twisted for https hostname verification
          qt6-multimedia  # https://aur.archlinux.org/packages/hydrus#comment-914337
          qt6-svg  # https://aur.archlinux.org/packages/hydrus#comment-923550
-         python-pyqt6)
+         pyside6)
 makedepends=(git mkdocs mkdocs-material)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
@@ -30,9 +30,11 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'python-chardet: detect text encoding more accurately'
             'python-cloudscraper: bypass cloudflare "checking your browser" challenges'
             'python-dateutil: improved fuzzy date search'
+            'python-dateparser: date string to timestamp parser for predicate system'
+            # 'python-pyqt6-charts: display bandwidth usage charts'
             'python-pympler: debug menus to profile memory usage'
-            'python-pyqt6-charts: display bandwidth usage charts'
             'python-cryptography: to generate certificates for accessing client API and server via HTTPS'
+            'python-olefile: support legacy microsoft office file formats'
             'python-pyopenssl: to generate certificates for accessing client API and server via HTTPS'
             # 'python-pyparsing: currently unused'
             # 'speedcopy: may speed up file transfers'
@@ -43,9 +45,9 @@ source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git"
         hydrus-server
         hydrus.desktop)
 sha256sums=('SKIP'
-            'c332728ca119b1ed4e9a4f40de79087fa90f8754535718b506954d375541f9f0'
-            'd2cb826ce0dd1892ab95fc3b14dbe6bd312210f653d0aea31938eeb7e361fdc5'
-            '463841cc16059b516cc327cfbc30d3383e2236b085ba2d503e82f5be39444806'
+            'f9f5a5927c7f2c016dbab3e4135a921918617ba393babd9b6a903ff5d0154cdd'
+            '39d3404b75320be6a9e33dc256f4fc313c65fe11458e96bd5af6268c2f78eaf0'
+            '5956d418d29fe19f54263acf47adce7c6d134d19ec65e2810d4517ce83529480'
             '9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923')
 
 pkgver() {
@@ -90,7 +92,7 @@ package() {
 
   # Install .desktop shortcut
   install -d -m755 "${pkgdir}/usr/share/applications"
-  install -m644 ../hydrus.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -m644 ../hydrus.desktop "${pkgdir}/usr/share/applications/io.github.hydrusnetwork.hydrus.desktop"
 
   # Install license files
   install -d -m755 "${pkgdir}/usr/share/licenses/${_pkgname}"

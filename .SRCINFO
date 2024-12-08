@@ -1,6 +1,6 @@
 pkgbase = hydrus-git
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
-	pkgver = 550.r0.g1f9b4ba8
+	pkgver = 601.r0.gdfae7f1a
 	pkgrel = 1
 	url = http://hydrusnetwork.github.io/hydrus/
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = hydrus-git
 	depends = python-service-identity
 	depends = qt6-multimedia
 	depends = qt6-svg
-	depends = python-pyqt6
+	depends = pyside6
 	optdepends = ffmpeg: show duration and other information on video thumbnails
 	optdepends = miniupnpc: automatic port forwarding
 	optdepends = desktop-file-utils: to add Hydrus to your desktop environment menus
@@ -38,13 +38,14 @@ pkgbase = hydrus-git
 	optdepends = python-chardet: detect text encoding more accurately
 	optdepends = python-cloudscraper: bypass cloudflare "checking your browser" challenges
 	optdepends = python-dateutil: improved fuzzy date search
+	optdepends = python-dateparser: date string to timestamp parser for predicate system
 	optdepends = python-pympler: debug menus to profile memory usage
-	optdepends = python-pyqt6-charts: display bandwidth usage charts
 	optdepends = python-cryptography: to generate certificates for accessing client API and server via HTTPS
+	optdepends = python-olefile: support legacy microsoft office file formats
 	optdepends = python-pyopenssl: to generate certificates for accessing client API and server via HTTPS
 	optdepends = swftools: to display SWF thumbnails
-	provides = hydrus=550.r0.g1f9b4ba8
-	provides = hydrus-docs=550.r0.g1f9b4ba8
+	provides = hydrus=601.r0.gdfae7f1a
+	provides = hydrus-docs=601.r0.gdfae7f1a
 	conflicts = hydrus
 	conflicts = hydrus-docs
 	options = !strip
@@ -54,9 +55,9 @@ pkgbase = hydrus-git
 	source = hydrus-server
 	source = hydrus.desktop
 	sha256sums = SKIP
-	sha256sums = c332728ca119b1ed4e9a4f40de79087fa90f8754535718b506954d375541f9f0
-	sha256sums = d2cb826ce0dd1892ab95fc3b14dbe6bd312210f653d0aea31938eeb7e361fdc5
-	sha256sums = 463841cc16059b516cc327cfbc30d3383e2236b085ba2d503e82f5be39444806
+	sha256sums = f9f5a5927c7f2c016dbab3e4135a921918617ba393babd9b6a903ff5d0154cdd
+	sha256sums = 39d3404b75320be6a9e33dc256f4fc313c65fe11458e96bd5af6268c2f78eaf0
+	sha256sums = 5956d418d29fe19f54263acf47adce7c6d134d19ec65e2810d4517ce83529480
 	sha256sums = 9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923
 
 pkgname = hydrus-git
