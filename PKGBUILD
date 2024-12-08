@@ -1,4 +1,4 @@
-
+# Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
 # Maintainer: Konstantin Gizdov <arch at kge dot pw>
 
 _pkgname=uproot
@@ -7,18 +7,51 @@ pkgname=("${pkgbase}" "${pkgbase}-docs")
 pkgver=5.5.1
 pkgrel=1
 pkgdesc="Minimalist CERN ROOT I/O in pure Python and Numpy"
-arch=('any')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-sphinx' 'python-sphinx_rtd_theme' 'python-hatchling' 'python-hatch-vcs')
-checkdepends=('python-pkgconfig' 'python-pandas' 'python-pytest' 'python-requests' 'python-dask' 'python-distributed' 'python-pytest-timeout'
-              'python-matplotlib' 'python-hist' 'python-scikit-hep-testdata' 'python-xxhash' 'root' 'xrootd' 'python-rangehttpserver'
-              'python-requests' 'python-aiohttp' 'python-cramjam')
-depends=('python' 'python-awkward>=1.7.0' 'python-cachetools' 'python-lz4' 'python-numpy' 'python-zstandard')
-optdepends=('xrootd: access remote files over XRootD'
-            'python-pandas: fill Pandas DataFrames instead of Numpy arrays'
-            'python-requests: access remote files through HTTP'
-            'python-xxhash: handle lz4-compressed ROOT files')
+arch=(any)
 url="https://github.com/scikit-hep/${_pkgname}5"
-license=('BSD-3-Clause')
+license=(BSD-3-Clause)
+makedepends=(
+    git
+    python-build
+    python-hatch-vcs
+    python-hatchling
+    python-installer
+    python-sphinx
+    python-sphinx_rtd_theme
+    python-wheel
+)
+checkdepends=(
+    python-aiohttp
+    python-cramjam
+    python-dask
+    python-distributed
+    python-hist
+    python-matplotlib
+    python-pandas
+    python-pkgconfig
+    python-pytest
+    python-pytest-timeout
+    python-rangehttpserver
+    python-requests
+    python-scikit-hep-testdata
+    python-xxhash
+    root
+    xrootd
+)
+depends=(
+    python
+    python-awkward
+    python-cachetools
+    python-lz4
+    python-numpy
+    python-zstandard
+)
+optdepends=(
+    'xrootd: access remote files over XRootD'
+    'python-pandas: fill Pandas DataFrames instead of Numpy arrays'
+    'python-requests: access remote files through HTTP'
+    'python-xxhash: handle lz4-compressed ROOT files'
+)
 
 source=("${_pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('c6a6e034ed642ee95b391ab8f1b60a0318fbfb7aabcb48c3a3440ee10cca7b51')
