@@ -1,4 +1,5 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
+# Maintainer: duffydack <duffydack73 at gmail dot com>
 
 pkgname="mkdocs-rss-plugin"
 pkgver=1.17.0
