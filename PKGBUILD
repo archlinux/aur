@@ -3,8 +3,8 @@
 
 pkgname=autenticacao-gov-pt
 _pkgname=autenticacao.gov
-pkgver=3.12.0
-pkgrel=4
+pkgver=3.13.0
+pkgrel=1
 pkgdesc="Portuguese Citizen Card Application (Portugal eID)"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
