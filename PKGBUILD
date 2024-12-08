@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=spotx-git
-pkgver=r149.g21481cea9
+pkgver=r149+g21481cea9
 pkgrel=1
 pkgdesc="SpotX Bash Script | Block all audio, banner & video ads | Block logging"
 arch=('any')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=9 HEAD)"
+  printf "r%s+g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=9 HEAD)"
 }
 
 package() {
