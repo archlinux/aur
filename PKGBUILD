@@ -48,9 +48,15 @@ source=("$_pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
 sha256sums=('c6a6e034ed642ee95b391ab8f1b60a0318fbfb7aabcb48c3a3440ee10cca7b51')
 
 build() {
-    cd "${_pkgname}5-${pkgver}"
+    cd ${_pkgname}5-$pkgver
     SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver \
     python -m build --wheel --no-isolation
+
+    # build the docs
+    install -dm 755 "$srcdir"/$pkgbase-docs/usr/share/doc/$pkgbase
+    python -m installer --destdir=tmp_install dist/*.whl
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    PYTHONPATH="$PWD/tmp_install/$site_packages" sphinx-build "$PWD/docs-sphinx" "$srcdir"/$pkgbase-docs/usr/share/doc/$pkgbase
 }
 
 check() {
@@ -97,7 +103,7 @@ check() {
         --deselect tests/test_0840_support_tleafG.py::test_support_leafG
     )
 
-    cd "${_pkgname}5-${pkgver}"
+    cd ${_pkgname}5-$pkgver
     python -m venv --system-site-packages test-env
     test-env/bin/python -m installer dist/*.whl
     test-env/bin/python -m pytest "${pytest_options[@]}"
@@ -119,22 +125,17 @@ package_python-uproot() {
         'python-xxhash: handle lz4-compressed ROOT files'
         'python-uproot-docs: docs'
     )
-    cd "${_pkgname}5-${pkgver}"
+    cd ${_pkgname}5-$pkgver
 
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 package_python-uproot-docs() {
     pkgdesc+=" - documentation"
 
-    cd "${_pkgname}5-${pkgver}"
-
-    install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D README.md "${pkgdir}/usr/share/${pkgbase}/README.md"
-
-    install -d "${pkgdir}/usr/share/doc/${pkgbase}"
-    python -m installer --destdir=tmp_install dist/*.whl
-    PYTHONPATH="${PWD}"/tmp_install/`python -c "import site; print(site.getsitepackages()[0])"` sphinx-build "${PWD}/docs-sphinx" "${pkgdir}/usr/share/doc/${pkgbase}"
+    mv -v $pkgname/* "$pkgdir"
+    install -vDm 644 ${_pkgname}5-$pkgver/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -vDm 644 ${_pkgname}5-$pkgver/README.md -t "$pkgdir/usr/share/$pkgbase/"
 }
