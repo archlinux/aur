@@ -7,7 +7,7 @@ pkgver=6.032
 pkgrel=1
 pkgdesc="distribution builder; installer not included!"
 arch=('any')
-url="https://metacpan.org/release/$_distname"
+url="https://metacpan.org/dist/$_distname"
 license=('PerlArtistic' 'GPL')
 depends=('perl'
          'perl-app-cmd'
