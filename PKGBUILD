@@ -9,7 +9,7 @@ pkgrel=2
 pkgdesc="Reimplementation of the SIL Graphite text processing engine (mingw-w64)"
 arch=('any')
 url="https://github.com/silnrsi/graphite"
-license=('LGPL' 'GPL' 'custom')
+license=('LGPL-2.1-or-later OR MPL-2.0 OR GPL-2.0-or-later')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake'
              'python')
