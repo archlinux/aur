@@ -1,6 +1,6 @@
 _pkgname="aiolimiter"
 pkgname="python-$_pkgname"
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="An efficient implementation of a rate limiter for asyncio"
 arch=('any')
@@ -18,7 +18,7 @@ url="https://github.com/mjpieters/aiolimiter"
 license=('MIT')
 
 source=("https://files.pythonhosted.org/packages/source/a/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('761455d26df0d7a393f78bd39b022579e02ca5a65beb303a67bed2ded2f740ac')
+sha256sums=('e02a37ea1a855d9e832252a105420ad4d15011505512a1a1d814647451b5cca9')
 
 build(){
     cd $_pkgname-$pkgver
