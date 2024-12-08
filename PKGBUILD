@@ -1,7 +1,8 @@
 # Maintainer: Eduardo Jose Gomez Hernandez <eduardo@edujgh.net>
+# Contributor: Jonatan R. Fischer <jonafischer at gmail dot com>
 pkgname=c3c-bin
 _pkgname=c3c
-pkgver=0.6.2
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="C3 is an evolution of C enabling the same paradigms and retaining the same syntax as far as possible. Stable Release (with LLVM 16)"
 arch=(x86_64)
@@ -9,11 +10,11 @@ url="https://github.com/c3lang/c3c.git"
 license=('LGPL3' 'MIT')
 depends=()
 makedepends=('binutils')
-provides=(c3c)
-conflicts=(c3c)
+provides=('c3c')
+conflicts=('c3c' 'c3c-git')
+source=("https://github.com/c3lang/c3c/releases/download/v$pkgver/c3-linux.tar.gz")
 
-source=('https://github.com/c3lang/c3c/releases/download/latest/c3-linux.tar.gz')
-md5sums=('SKIP')
+md5sums=('0635fa110a6c304b306d4db0885b41c9')
 
 pkgver() {
     cd "${srcdir}/c3"
