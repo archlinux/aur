@@ -1,6 +1,8 @@
 post_install() {
 	cat <<- EOF
     =======================+========================
+    Start r2kd by running ``systemctl start r2kd``
+
     To configure r2k you need to edit config.h 
     And rerun the pkgbuild using ``makepkg -scif``
 
