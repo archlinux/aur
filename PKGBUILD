@@ -60,7 +60,7 @@ $_OPTIONAL_GRPC"
 _pkgbase="localai"
 pkgbase="${_pkgbase}-git"
 pkgname=()
-pkgver=2.20.1.91.ga7ac2f7b
+pkgver=2.23.0.136.g9c9359fc
 pkgrel=1
 pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
@@ -117,6 +117,7 @@ _python_backends=(
   "diffusers diffusers compel optimum-quanto"
   "parler-tts llvmlite"
   "rerankers rerankers[transformers]"
+  "sentencetransformers sentence-transformers"
   "transformers"
   "transformers-musicgen"
   "vall-e-x"
@@ -232,9 +233,10 @@ EOF
 
   if [[ $_ENABLE_PIPER = 1 ]]; then
     # fix piper build
-    mkdir -p "sources/go-piper/piper-phonemize/pi/lib"
-    touch "sources/go-piper/piper-phonemize/pi/lib/keep"
-    sed -ri 's#(\$\(MAKE\) -C sources/go-piper libpiper_binding.a) example/main#\1#g' Makefile
+    true
+    # mkdir -p "sources/go-piper/piper-phonemize/pi/lib"
+    # touch "sources/go-piper/piper-phonemize/pi/lib/keep"
+    # sed -ri 's#(\$\(MAKE\) -C sources/go-piper libpiper_binding.a) example/main#\1#g' Makefile
   fi
 
   # copy for different build types
@@ -247,12 +249,12 @@ EOF
   # ROCM fixes
   cd "${srcdir}/${_pkgbase}-rocm"
   # fix llama and whisper build: --offload-arch, is deprecated, replace it with -DGPU_TARGETS
-  for i in \
-    backend/cpp/llama/llama.cpp/Makefile \
-    sources/whisper.cpp/Makefile; do
-      mkdir -p $(dirname $i); touch $i; 
-      sed -ri 's/^(.+HIPFLAGS.+\+=).+offload-arch=.+$/\1 -DGPU_TARGETS="$(GPU_TARGETS)"/g' "$i"
-  done
+  # for i in \
+  #   backend/cpp/llama/llama.cpp/Makefile \
+  #   sources/whisper.cpp/Makefile; do
+  #     mkdir -p $(dirname $i); touch $i; 
+  #     sed -ri 's/^(.+HIPFLAGS.+\+=).+offload-arch=.+$/\1 -DGPU_TARGETS="$(GPU_TARGETS)"/g' "$i"
+  # done
 }
 
 _build() {

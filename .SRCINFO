@@ -1,6 +1,6 @@
 pkgbase = localai-git
 	pkgdesc = Self-hosted OpenAI API alternative - Open Source, community-driven and local-first.
-	pkgver = 2.20.1.91.ga7ac2f7b
+	pkgver = 2.23.0.136.g9c9359fc
 	pkgrel = 1
 	url = https://github.com/mudler/LocalAI
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = localai-git
 	depends = grpc
 	depends = espeak-ng
 	provides = localai
-	provides = local-ai=2.20.1.91.ga7ac2f7b
+	provides = local-ai=2.23.0.136.g9c9359fc
 	conflicts = localai
 	conflicts = local-ai
 	backup = etc/localai/localai.conf

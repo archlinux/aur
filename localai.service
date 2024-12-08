@@ -67,7 +67,10 @@ ExecStartPost=bash -c 'sleep 3;\
           uv venv --system-site-packages $bedir/venv; \
           if test -n "$deps"; then \
             echo "venv $backend: installing deps: $deps"; \
-            VIRTUAL_ENV=$bedir/venv uv pip install $deps; \
+            uv pip list --system --format freeze | \
+              grep -E "(torch|torchaudio|torchtext|torchvision|onnxruntime|numpy|accelerate|protobuf|grpcio|pillow|opencv|peft|sentencepiece)=" \
+              > $bedir/venv/constraints.txt; \
+            VIRTUAL_ENV=$bedir/venv uv pip install --constraint $bedir/venv/constraints.txt $deps; \
           fi \
         fi; \
       fi; \
