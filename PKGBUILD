@@ -1,7 +1,7 @@
 # Maintainer: Aleksy Grabowski <hurufu@gmail.com>
 
 pkgname=libsocket-git
-pkgver=2.5.0.r25.g706649c
+pkgver=2.5.0.r39.g6214af7
 pkgrel=1
 pkgdesc='Library with a C part and a C++ part making sockets usage easy and clean'
 arch=('i686' 'x86_64')
