@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Library for the arithmetic of complex numbers with arbitrarily high precision (mingw-w64)"
 arch=('any')
 url="http://www.multiprecision.org/mpc/"
-license=('LGPL')
+license=('LGPL-3.0-only')
 depends=('mingw-w64-gmp>=5.0.0' 'mingw-w64-mpfr>=4.1.0')
 makedepends=('mingw-w64-configure')
 options=('!strip' 'staticlibs' '!buildflags')

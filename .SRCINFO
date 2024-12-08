@@ -4,7 +4,7 @@ pkgbase = mingw-w64-libmpc
 	pkgrel = 1
 	url = http://www.multiprecision.org/mpc/
 	arch = any
-	license = LGPL
+	license = LGPL-3.0-only
 	makedepends = mingw-w64-configure
 	depends = mingw-w64-gmp>=5.0.0
 	depends = mingw-w64-mpfr>=4.1.0
