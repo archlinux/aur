@@ -5,7 +5,8 @@ pkgver=1.7.2
 pkgrel=1
 pkgdesc='A mint/metal theme based on mintified versions of Clearlooks Revamp, Elementary and Faenza'
 arch=('any')
-url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
+url="https://github.com/linuxmint/mint-x-icons"
+_url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
 license=('GPL-3.0-or-later')
 depends=(
     'gdk-pixbuf2'
@@ -13,7 +14,7 @@ depends=(
     'hicolor-icon-theme'
 )
 options=(!strip)
-source=("${url}/${pkgname}_${pkgver}.tar.xz")
+source=("${_url}/${pkgname}_${pkgver}.tar.xz")
 sha256sums=('30f2685ea97f3d2e1033d5423cc3ee36a02933e2aea6f09fccc845665c78c037')
 
 package() {
