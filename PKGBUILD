@@ -3,7 +3,8 @@
 _pkgname=rust
 
 pkgname=mingw-w64-rust-bin
-pkgver=1.82.0
+_prefix=opt/rust
+pkgver=1.83.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (official build, mingw-w64)"
 arch=('x86_64')
@@ -24,15 +25,15 @@ source=("https://static.rust-lang.org/dist/cargo-${pkgver}-x86_64-unknown-linux-
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.xz"{,.asc})
-b2sums=('03777df9ed044bfbd125138685c9cc025ffbb91d5383d9936b0fbe95223fd2fd954bfb5b934665bfc934f5fa9712532cbfb2a83c170dcd18d6da9a214f693ba8'
+b2sums=('5082988264624cf713fe368ec1278a698adbf724fa170c000e6310ee0befe6d4d36292e9954896a3a1fa33fb3272d1a2804f6915a8860c5f2e2e1589ec76c69d'
         'SKIP'
-        '9e2c93f111daab165ca07c7a20ecc8eae11b94d4740ae9b942d7aac0a874e4f80d621501bf75252f289c6cf8e96f4e5d4d36f6e3061e4b5c21bd9ffd159663fa'
+        '64d6fabf2da117a65ef3fa032806c59d010a79865c52f2cb7237398d8568974698981e989a867964892adad9d943fb91950f324700050d01f9a89885578ce8be'
         'SKIP'
-        '1716e7faa7c9c30595be0b07c1b22b0f11f2bb925bb41336f7bc2b2a71a9f57474062eb5cf5561b2be1d815b21f51ebe47e83d8b8b06974de59c0c45652dac1b'
+        '18c9c680688103236d9623d00996fca141f1b312f136c7920c57900a03156dbfc28f4f2791a74a1b688c6e984532bb127303be5dd3d384ae0aca0bbc22353c21'
         'SKIP'
-        'f9428b1bbb72e4ca01180c4522344305bc61a27b7b3b988abd66cf03fc424d11d2465a9c19ae9c9d33d38ba6726ab3a52b3b951946b518a5878edf638ff90d55'
+        '6218f2b29cd57683b2e2256b0b272859275772bdb4334f9250e4cd5e4f324d3422a92df054a41db7ea22810bdfd133a144b3d11a9bbe048c65641a2b7c9b822c'
         'SKIP'
-        'ad0182659fbe96634b371ff9a251a93f022c6d0949adc1e75cb9acede1c1f98cdb4b16423f600ae426d8c5661b5ce7a7b089c5db0677721f89565e1d96d728d3'
+        '3f64c292eb25fcd9f5290af8fb7bf23d5f41653a05d7824fdd5a7a66fa512a673e65598e73bcc517bcd78d0d664c419686ab5e66a1cfacfb16d5537d3537064d'
         'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
@@ -69,62 +70,59 @@ package() {
     --prefix=/opt/${_pkgname}
 
   # license
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"{rust,cargo}
-  mv "${pkgdir}/opt/${_pkgname}/share/doc/cargo/"LICENSE-* "${pkgdir}/usr/share/licenses/${pkgname}/cargo/"
-  mv "${pkgdir}/opt/${_pkgname}/share/doc/rust/"{LICENSE-*,COPYRIGHT} "${pkgdir}/usr/share/licenses/${pkgname}/rust/"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"{rustc,cargo}
+  mv "${pkgdir}"/${_prefix}/share/doc/cargo/LICENSE-* "${pkgdir}/usr/share/licenses/${pkgname}/cargo/"
+  mv "${pkgdir}"/${_prefix}/share/doc/rust/{LICENSE-*,COPYRIGHT} "${pkgdir}/usr/share/licenses/${pkgname}/rustc/"
 
   # remove unused files
-  rm -r "${pkgdir}/opt/${_pkgname}/"share
-  rm "${pkgdir}/opt/${_pkgname}/lib/rustlib/"{manifest-*,install.log,uninstall.sh,components,rust-installer-version}
+  rm -r "${pkgdir}/${_prefix}/share"
+  rm "${pkgdir}/${_prefix}/lib/rustlib/"{manifest-*,install.log,uninstall.sh,components,rust-installer-version}
 
   # link shared libraries
-  pushd "${pkgdir}/opt/${_pkgname}/lib"
-  ln -sf "rustlib/x86_64-unknown-linux-gnu/lib/"*.so .
-  popd
   install -dm755 "${pkgdir}/usr/i686-w64-mingw32/bin" && pushd "${pkgdir}/usr/i686-w64-mingw32/bin"
-  ln -sf "../../../opt/${_pkgname}/lib/rustlib/i686-pc-windows-gnu/lib/"*.dll .
+  ln -sf "../../../${_prefix}/lib/rustlib/i686-pc-windows-gnu/lib/"*.dll .
   popd
   install -dm755 "${pkgdir}/usr/x86_64-w64-mingw32/bin" && pushd "${pkgdir}/usr/x86_64-w64-mingw32/bin"
-  ln -sf "../../../opt/${_pkgname}/lib/rustlib/x86_64-pc-windows-gnu/lib/"*.dll .
+  ln -sf "../../../${_prefix}/lib/rustlib/x86_64-pc-windows-gnu/lib/"*.dll .
   popd
 
   # strip
-  strip --strip-all "${pkgdir}/opt/${_pkgname}/bin/"{cargo,rustc,rustdoc}
-  strip --strip-all "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/bin/"rust-*
-  strip --strip-all "${pkgdir}/opt/${_pkgname}/libexec/"*
-  strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/librustc"*.so
-  strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/libLLVM.so"*
-  strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-unknown-linux-gnu/lib/"*.so
-  i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/i686-pc-windows-gnu/lib/"*.dll
-  x86_64-w64-mingw32-strip --strip-unneeded "${pkgdir}/opt/${_pkgname}/lib/rustlib/x86_64-pc-windows-gnu/lib/"*.dll
+  strip --strip-all "${pkgdir}/${_prefix}/bin/"{cargo,rustc,rustdoc}
+  strip --strip-all "${pkgdir}/${_prefix}/lib/rustlib/x86_64-unknown-linux-gnu/bin/"{rust-lld,wasm-component-ld}
+  strip --strip-all "${pkgdir}/${_prefix}/libexec/"*
+  strip --strip-unneeded "${pkgdir}/${_prefix}/lib/librustc_driver"*.so
+  strip --strip-unneeded "${pkgdir}/${_prefix}/lib/libLLVM.so"*
+  strip --strip-unneeded "${pkgdir}/${_prefix}/lib/rustlib/x86_64-unknown-linux-gnu/lib/"*.so
+  i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/${_prefix}/lib/rustlib/i686-pc-windows-gnu/lib/"*.dll
+  x86_64-w64-mingw32-strip --strip-unneeded "${pkgdir}/${_prefix}/lib/rustlib/x86_64-pc-windows-gnu/lib/"*.dll
 
   # config
-  install -dm777 "${pkgdir}/opt/${_pkgname}/cargo"
-  cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
+  install -dm777 "${pkgdir}/${_prefix}/cargo"
+  cat << EOF >> "${pkgdir}/${_prefix}/cargo/config"
 [target.i686-pc-windows-gnu]
 linker = "/usr/bin/i686-w64-mingw32-gcc"
 EOF
   if pacman -T "mingw-w64-wine" ; then
-    cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
+    cat << EOF >> "${pkgdir}/${_prefix}/cargo/config"
 runner = "/usr/bin/i686-w64-mingw32-wine"
 EOF
   fi
-  cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
+  cat << EOF >> "${pkgdir}/${_prefix}/cargo/config"
 rustflags = [
             ]
 
 EOF
 
-  cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
+  cat << EOF >> "${pkgdir}/${_prefix}/cargo/config"
 [target.x86_64-pc-windows-gnu]
 linker = "/usr/bin/x86_64-w64-mingw32-gcc"
 EOF
   if pacman -T "mingw-w64-wine" ; then
-    cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
+    cat << EOF >> "${pkgdir}/${_prefix}/cargo/config"
 runner = "/usr/bin/x86_64-w64-mingw32-wine"
 EOF
   fi
-  cat << EOF >> "${pkgdir}/opt/${_pkgname}/cargo/config"
+  cat << EOF >> "${pkgdir}/${_prefix}/cargo/config"
 rustflags = [
             ]
 
