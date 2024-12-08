@@ -1,11 +1,9 @@
 pkgbase = qdap-git
 	pkgdesc = cmsis-dap upper by a Qt
-	pkgver = r39.4f3d58b
-	pkgrel = 3
+	pkgver = r40.fb98da5
+	pkgrel = 4
 	url = https://github.com/ma6254/QDAP
 	arch = x86_64
-	arch = aarch64
-	arch = riscv64
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = cmake

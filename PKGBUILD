@@ -2,13 +2,11 @@
 
 pkgbase=qdap-git
 pkgname=qdap-git
-pkgver=r39.4f3d58b
-pkgrel=3
+pkgver=r40.fb98da5
+pkgrel=4
 groups=()
 pkgdesc="cmsis-dap upper by a Qt"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/ma6254/QDAP"
 license=('GPL-3.0-only')
 provides=(${pkgname%-git})
@@ -32,7 +30,7 @@ optdepends=()
 source=("${pkgname}::git+${url}.git"
     "git+https://github.com/ma6254/qdap_chips.git")
 sha256sums=('SKIP'
-            'SKIP')
+    'SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
