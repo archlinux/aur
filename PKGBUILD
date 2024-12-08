@@ -80,9 +80,32 @@ makedepends+=(
 
 checkdepends=()
 
-source=(
-	"portable.tar.gz"
-)
+source=()
+
+function prepare() {
+	if [ -d portable ]; then
+		cd portable
+		git checkout master
+		git reset --hard
+		git pull
+		if [ $? -gt 0 ]; then
+			cd ..
+			rm -f portable -r
+			git \
+				clone --depth=1 \
+				https://invent.kde.org/kimiblock/portable.git
+		fi
+	else
+		git \
+			clone --depth=1 \
+			https://invent.kde.org/kimiblock/portable.git
+	fi
+	git checkout "${pkgver}"
+	rm -fr "${srcdir}/portable-${pkgver}"
+	cp -r \
+		"${srcdir}/portable" \
+		"${srcdir}/portable-${pkgver}"
+}
 
 function package() {
 	cd "${srcdir}/portable-${pkgver}"
@@ -92,4 +115,3 @@ function package() {
 	install -Dm755 mimeapps.list ${pkgdir}/usr/lib/portable/mimeapps.list
 	install -Dm755 flatpak-info ${pkgdir}/usr/lib/portable/flatpak-info
 }
-sha256sums=('06bf43731cafc64391eb66a5c2c99899e4a7b67d2681bcddef022cf4b35aa543')
