@@ -1,35 +1,47 @@
+# Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
 # Maintainer: Konstantin Gizdov <arch at kge dot pw>
 
 _pkgname=scikit-hep-testdata
-pkgbase="python-${_pkgname}"
-pkgname=("${pkgbase}")
-pkgver=0.4.43
-pkgrel=2
+pkgname="python-${_pkgname}"
+pkgver=0.5.0
+pkgrel=1
 pkgdesc='A common package to provide example files (e.g. ROOT) for testing and developing packages against'
-arch=('any')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm' 'python-toml')
-checkdepends=('python-pytest')
-depends=('python-pyaml' 'python-requests' 'python-importlib_resources')
+arch=(any)
+license=(BSD-3-Clause)
 url="https://github.com/scikit-hep/${_pkgname}"
-license=('BSD')
-
-source=("${_pkgname}-${pkgver}::git+${url}#tag=v${pkgver}")
-sha256sums=('13f208d241d59723f001d9721b75b07bcd103478849cd6e7eee139a12074279d')
+makedepends=(
+  git
+  python-build
+  python-installer
+  python-wheel
+  python-setuptools-scm
+  python-toml
+)
+checkdepends=(
+  python-pytest
+)
+depends=(
+  python
+  python-yaml
+  python-requests
+)
+source=("$_pkgname::git+$url#tag=v$pkgver")
+b2sums=('fd70d8431b2642ed796644ffa1009a834b76e3f8053b779b2dcf04ce7bad51b7518e1ed9336d97184e7c1ce2315d0c76e24b3cf93cea036693d0c6ec4dcc8199')
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    python -m build --wheel --no-isolation
+  cd $_pkgname
+  python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    PYTHONPATH=build/lib pytest tests
+  cd $_pkgname
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest tests
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-
-    python -m installer --destdir="$pkgdir" dist/*.whl
-
-    install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd $_pkgname
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
