@@ -1,7 +1,7 @@
 pkgbase = kamailio
 	pkgdesc = SIP Server for large VoIP and real-time communication platforms
 	pkgver = 5.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kamailio.org
 	arch = x86_64
 	license = GPL-2.0-or-later
