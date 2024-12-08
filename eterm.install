@@ -1,5 +1,12 @@
 post_install() {
   Etbg_update_list usr/share/Eterm/pix
+
+  # update font path to make sure that
+  # 75dpi and misc can be found by Eterm
+  xset fp default
+  if [ $? -ne 0 ]; then
+	  echo "ERROR: Unable to update font path via xset!"
+  fi
 }
 post_upgrade() {
   Etbg_update_list usr/share/Eterm/pix
