@@ -1,6 +1,6 @@
 # Maintainer: Adiee5 <adiee5@adiee5.ct8.pl>
 pkgname=prog8
-pkgver=10.5
+pkgver=10.5.1
 pkgrel=1
 pkgdesc="A high-level programming language designed for 6502 based devices"
 arch=("any")
@@ -22,7 +22,7 @@ source=("prog8c-$pkgver.jar::https://github.com/irmen/prog8/releases/download/v$
 	"https://raw.githubusercontent.com/irmen/prog8/master/syntax-files/Vim/prog8_builtins.vim"
 	"prog8c_var_init")
 noextract=("prog8c-$pkgver.jar")
-sha256sums=("4af437045ac065a8ab1d128ffa7027a6ef72929ff38bb4a9daad0e32c9b3581b"
+sha256sums=("a9d39def82d4dcf239855cd02450a96cc25e365e62f4777bb36d7d9f21382073"
 	    "c5b390a611ce778d8e22b6a2f626d273d424889c1ee7ce5454c66bce35aa888c"
 	    "SKIP"
 	    "SKIP"
