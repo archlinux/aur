@@ -60,11 +60,14 @@ provides=('VIRTUALBOX-GUEST-MODULES'
           'WIREGUARD-MODULE'
           'KSMBD-MODULE'
           'NTFS3-MODULE')
-for v in ${psabi/x64v/} 1
+for v in ${psabi/x64v/} 3 2 1
     do
-        psabi="x64v$v"
-        _url="https://sourceforge.net/projects/xanmod/files/releases/$branch/${pkgverdl}-xanmod1/${pkgverdl}-${psabi}-xanmod1"
-        is_url "$_url" && break
+        [[ "$v" -le "${psabi/x64v/}" && "$_psabi" != "x64v$v" ]]||continue
+        _psabi="x64v$v"
+        _url="https://sourceforge.net/projects/xanmod/files/releases/$branch/${pkgverdl}-xanmod1/${pkgverdl}-${_psabi}-xanmod1"
+        if is_url "$_url"
+            then psabi="$_psabi" && break
+        fi
 done
 _url_info="$(curl -sL "$_url"|grep "net.sf.files"|sed 's|net.sf.files = ||g;s|;$||'|jq -r '.[].download_url'|grep -v '\-dbg_')"
 _url_image="$(echo "$_url_info"|grep -o "https:.*/linux-image.*deb"|head -1)"
