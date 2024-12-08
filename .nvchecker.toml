@@ -1,4 +1,4 @@
 [aescrypt-bin]
-source = "git"
-git = "https://github.com/terrapane/aescrypt_cli.git"
-prefix = "v"
+source = "regex"
+url = "https://www.aescrypt.com/download/"
+regex = "aescrypt_cli-([\\d.]+)-Linux-x86_64\\.tar\\.gz"
