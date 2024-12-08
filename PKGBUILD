@@ -2,17 +2,38 @@
 
 _pkgname=MangoHud
 pkgname=lib32-mangohud-git
-pkgver=0.7.2.r13.g41b8761
+pkgver=0.7.2.r110.g24d3cd9
 pkgrel=1
 pkgdesc="32-bit libraries for MangoHud and MangoApp"
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
 arch=('x86_64')
-makedepends=('git' 'glfw' 'glslang' 'lib32-cmocka' 'lib32-libglvnd' 'lib32-libxrandr' 'libxnvctrl' 'meson' 'nlohmann-json' 'python-mako' 'vulkan-headers')
-depends=('lib32-dbus' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libx11' 'lib32-libxkbcommon' 'lib32-vulkan-icd-loader')
+makedepends=(
+    'appstream'
+    'git'
+    'glfw'
+    'glslang'
+    'lib32-cmocka'
+    'lib32-libglvnd'
+    'lib32-libxrandr'
+    'libxnvctrl'
+    'meson'
+    'nlohmann-json'
+    'python-mako'
+    'vulkan-headers'
+)
+depends=(
+    'lib32-gcc-libs'
+    'lib32-glibc'
+    'lib32-libxkbcommon'
+    'lib32-wayland'
+)
+optdepends=(
+    'lib32-vulkan-icd-loader: Vulkan support'
+)
 provides=('lib32-mangohud' 'lib32-mangoapp')
 conflicts=('lib32-mangohud' 'lib32-mangoapp')
-source=("git+$url")
+source=("$_pkgname::git+$url")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -21,16 +42,17 @@ pkgver() {
 }
 
 build() {
-    export CC="gcc -m32"
-    export CXX="g++ -m32"
-    export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+    export CC="${CC:-gcc} -m32"
+    export CXX="${CXX:-g++} -m32"
+    export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig:/usr/lib/pkgconfig:${PKG_CONFIG_PATH_32}"
     export LLVM_CONFIG="/usr/bin/llvm-config32"
 
-     arch-meson "$_pkgname" build \
-        -Dmangoapp_layer=true \
-        -Dinclude_doc=false \
-        --wrap-mode=default \
-        --libdir lib32
+    arch-meson "$_pkgname" build \
+        -Dinclude_doc=true \
+        -Dmangoapp=false \
+        -Dmangohudctl=false \
+        --libdir lib32 \
+        --wrap-mode=default
 
     meson compile -C build
 }
