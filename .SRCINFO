@@ -1,7 +1,7 @@
 pkgbase = r2k
 	pkgdesc = A suckless romaji to kana converter
-	pkgver = 1.1
-	pkgrel = 1
+	pkgver = 1.2
+	pkgrel = 2
 	url = https://github.com/gitRaiku/r2k
 	install = r2k.install
 	arch = any
@@ -14,9 +14,10 @@ pkgbase = r2k
 	depends = libxft
 	depends = libxkbcommon
 	depends = freetype2
-	source = https://github.com/gitRaiku/r2k/archive/refs/tags/v1.1.tar.gz
-	source = https://github.com/gitRaiku/r2k/releases/download/v1.1/config.h
-	sha256sums = 9a3fbf9c9d72d4c31be8a4c8db0bec4dc0f5091684709b534a216fb31a159ee1
+	depends = xorg-xwayland
+	source = https://github.com/gitRaiku/r2k/archive/refs/tags/v1.2.tar.gz
+	source = https://github.com/gitRaiku/r2k/releases/download/v1.2/config.h
+	sha256sums = 054a52dbbf406bfcc6fed4d2c2618feee376e1c1d5b9f870b0016d8097894013
 	sha256sums = SKIP
 
 pkgname = r2k

@@ -3,6 +3,9 @@ post_install() {
     =======================+========================
     To configure r2k you need to edit config.h 
     And rerun the pkgbuild using ``makepkg -scif``
+
+    Wayland support can be disabled and wayland libs
+    uninstalled by disabling them in config.h
     =======================+========================
 	EOF
 }
