@@ -1,15 +1,15 @@
 pkgbase = geant4-urrptdata
 	pkgdesc = Particle Tables for the treatment of low-energy neutrons in the Unresolved Resonance Region (URR)
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = http://geant4.cern.ch/
 	install = geant4-urrptdata.install
 	arch = any
 	license = GPL
 	optdepends = geant4>=11.3
-	source = https://cern.ch/geant4-data/datasets/G4URRPT.1.0.tar.gz
+	source = https://cern.ch/geant4-data/datasets/G4URRPT.1.1.tar.gz
 	source = geant4-urrptdata.install
-	sha256sums = 278eb6c4086e919d2c2a718eb44d4897b7e06d2a32909f6ed48eb8590b3f9977
+	sha256sums = 6a3432db80bc088aee19c504b9c0124913005d6357ea14870451400ab20d9c11
 	sha256sums = 7bb6347b26572ad074b89273f791335a757d9e93d0a2247309d4179eddeccb1a
 
 pkgname = geant4-urrptdata

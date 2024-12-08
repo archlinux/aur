@@ -3,7 +3,7 @@ pkgname=geant4-urrptdata
 _varname='G4URRPTDATA'
 _dataname='G4URRPT'
 _foldername='G4URRPT'
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Particle Tables for the treatment of low-energy neutrons in the Unresolved Resonance Region (URR)"
 url="http://geant4.cern.ch/"
@@ -13,7 +13,7 @@ optdepends=('geant4>=11.3')
 install="${pkgname}.install"
 source=("https://cern.ch/geant4-data/datasets/${_dataname}.${pkgver}.tar.gz"
         "${pkgname}.install")
-sha256sums=('278eb6c4086e919d2c2a718eb44d4897b7e06d2a32909f6ed48eb8590b3f9977'
+sha256sums=('6a3432db80bc088aee19c504b9c0124913005d6357ea14870451400ab20d9c11'
             '7bb6347b26572ad074b89273f791335a757d9e93d0a2247309d4179eddeccb1a')
 
 ## Remove this if you want to keep an even smaller package
