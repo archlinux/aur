@@ -1,20 +1,18 @@
 pkgbase = space-cli-bin
 	pkgdesc = Deta Space CLI
-	pkgver = 0.4.2
-	pkgrel = 3
+	pkgver = 0.5.0rc0
+	pkgrel = 1
 	url = https://deta.space
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	optdepends = bash-completion: for shell auto-completion
-	optdepends = zsh-completions: for shell auto-completion
 	provides = space-cli
 	provides = space
 	conflicts = space-cli
 	conflicts = space
-	source_x86_64 = space-cli-0.4.2-x86_64.zip::https://github.com/deta/space-cli/releases/download/v0.4.2/space-linux-x86_64.zip
-	sha256sums_x86_64 = e0b458a8a967bdfa14dbc81a82f35db420ce6adb5562311ac474165f94084624
-	source_aarch64 = space-cli-0.4.2-aarch64.zip::https://github.com/deta/space-cli/releases/download/v0.4.2/space-linux-arm64.zip
-	sha256sums_aarch64 = ff10ebb0111b84b2fc9a4ccb75e515bccac8ddff94cf6deeae6bb4bef64d8f12
+	source_x86_64 = space-cli-0.5.0rc0-x86_64.zip::https://github.com/deta/space-cli/releases/download/v0.5.0-rc.0/space-linux-x86_64.zip
+	sha256sums_x86_64 = 87e4ba4e28fe84ce9c2d5d86767da1e507ff5509bfc63877951fe0e004677274
+	source_aarch64 = space-cli-0.5.0rc0-aarch64.zip::https://github.com/deta/space-cli/releases/download/v0.5.0-rc.0/space-linux-arm64.zip
+	sha256sums_aarch64 = 6beca64b1baa61806709e1b0d61427804fdb236e6042e4a2fabad542c8beb0bf
 
 pkgname = space-cli-bin
