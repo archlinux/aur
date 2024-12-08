@@ -1,0 +1,19 @@
+pkgbase = readcat-electron
+	pkgdesc = 一款免费,开源,简洁,纯净,无广告的小说阅读器
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://read-cat.top/
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0
+	depends = electron33
+	conflicts = readcat-electron
+	conflicts = readcat-electron
+	source = LICENSE.txt
+	source = read-cat-insiders.sh
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	source_x86_64 = https://github.com/read-cat/read-cat/releases/download/v1.0.0-dev.241109/ReadCat-linux-amd64-1.0.0-dev.f63eabac.deb
+	sha256sums_x86_64 = 744e790668daff6e010fa4ada0d15612c1c6a7c31354736d1db8390c858aa6ae
+
+pkgname = readcat-electron
