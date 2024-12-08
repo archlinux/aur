@@ -2,21 +2,49 @@
 
 _pkgname=MangoHud
 pkgname=mangohud-git
-pkgver=0.7.2.r13.g41b8761
+pkgver=0.7.2.r110.g24d3cd9
 pkgrel=1
-pkgdesc="A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more."
+pkgdesc="A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more"
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
 arch=('x86_64')
-makedepends=('appstream' 'cmocka' 'git' 'glfw' 'glslang' 'libxnvctrl' 'libxrandr' 'meson' 'nlohmann-json' 'python-mako' 'vulkan-headers')
-depends=('dbus' 'fmt' 'gcc-libs' 'glew' 'hicolor-icon-theme' 'libglvnd' 'libx11' 'python-matplotlib' 'python-numpy' 'vulkan-icd-loader')
-optdepends=('libxnvctrl: NVIDIA GPU stats by XNVCtrl'
-            'glfw: Required for MangoApp'
-            'gamescope: Use MangoApp as an overlay within gamescope')
+makedepends=(
+    'appstream'
+    'cmocka'
+    'dbus'
+    'git'
+    'glslang'
+    'libxnvctrl'
+    'libxrandr'
+    'meson'
+    'nlohmann-json'
+    'python-mako'
+    'vulkan-headers'
+)
+depends=(
+    'gcc-libs'
+    'glew'
+    'glfw'
+    'glibc'
+    'hicolor-icon-theme'
+    'libglvnd'
+    'libx11'
+    'libxkbcommon'
+    'python'
+    'python-matplotlib'
+    'python-numpy'
+    'sh'
+    'wayland'
+)
+optdepends=(
+    'dbus: mangohudctl'
+    'libxnvctrl: NVIDIA GPU metrics on older GPUs'
+    'vulkan-icd-loader: Vulkan support'
+)
 provides=('mangohud' 'mangoapp')
 replaces=('mangoapp')
 conflicts=('mangohud' 'mangohud-common-git' 'mangoapp')
-source=("git+$url")
+source=("$_pkgname::git+$url")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -28,11 +56,9 @@ build() {
     arch-meson "$_pkgname" build \
         -Dmangoapp=true \
         -Dmangohudctl=true \
-        -Dmangoapp_layer=true \
         --wrap-mode=default
 
     meson compile -C build
-
 }
 
 package() {
