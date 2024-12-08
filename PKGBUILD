@@ -11,7 +11,7 @@ pkgrel=1
 pkgdesc="Freedesktop.org message bus system (mingw-w64)"
 arch=('any')
 url="https://wiki.freedesktop.org/www/Software/dbus/"
-license=('custom' 'GPL')
+license=('AFL-2.1 OR GPL-2.0-or-later')
 depends=('mingw-w64-expat')
 makedepends=('mingw-w64-configure'
              'docbook-xsl'
