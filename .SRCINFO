@@ -9,7 +9,9 @@ pkgbase = albafetch
 	makedepends = git
 	makedepends = make
 	makedepends = gcc
+	makedepends = pkgconf
 	depends = pciutils
+	depends = sqlite
 	provides = albafetch=4.2.1
 	backup = etc/xdg/albafetch.conf
 	source = https://github.com/alba4k/albafetch/archive/refs/tags/v4.2.1.tar.gz
