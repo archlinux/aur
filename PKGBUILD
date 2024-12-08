@@ -2,8 +2,8 @@
 # Co-Maintainer: Ricardo Gonçalves <ricardompgoncalves@gmail.com>
 
 pkgname=autenticacao-gov-pt-bin
-pkgver=3.12.0
-pkgrel=5
+pkgver=3.13.0
+pkgrel=1
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries by AMA"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -35,7 +35,7 @@ replaces=('cartaodecidadao-bin')
 source_x86_64=("https://github.com/amagovpt/autenticacao.gov/releases/download/v${pkgver}/pteid-mw-${pkgver}.flatpak"
  "autenticacao-gov-pt-bin.install")
 
-sha512sums_x86_64=('01fec7530b9c918e4d357a03152faa78754230e281eb3826355c4cc80163ad2653b71fd0846fdfd4078295f2f241d1c775376d95e94387feba8e097e9077f7fc'
+sha512sums_x86_64=('59466215d72b777a6aad5839926bef79c2a1a0c01b4f4c32982e44dd54c10d0e4ed539286d679d1e51d70c04718a47f5023457ef5790d052422316d03c6030d4'
                    '99913f9f62110e45e951f55321dbd44cedbf9c4877148cc07c66b9cb27f1993d4496cd80e251c8094958c30f0c9b6891ec59071a194b02bc92df4f14335e686e')
 
 install='autenticacao-gov-pt-bin.install'
@@ -45,7 +45,7 @@ prepare() {
   rm -rf ${srcdir}/pteid_out
   mkdir -p pteid
   ostree init --repo=pteid --mode=bare-user
-  ostree static-delta apply-offline --repo=pteid pteid-mw-3.12.0.flatpak
+  ostree static-delta apply-offline --repo=pteid "pteid-mw-${pkgver}.flatpak"
   ostree checkout --repo=pteid -U $(basename $(echo pteid/objects/*/*.commit | cut -d/ -f3- --output-delimiter='' | tr -d '\0') .commit) pteid_out
 }
 
