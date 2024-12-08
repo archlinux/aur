@@ -1,0 +1,23 @@
+pkgbase = vl1-emulator-git
+	pkgdesc = An emulator of Casio VL-Tone VL1, based on source code by PolyValens
+	pkgver = r81.892545c
+	pkgrel = 1
+	url = https://github.com/linuxmao-org/VL1-emulator
+	arch = i686
+	arch = x86_64
+	arch = riscv32
+	arch = riscv64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	license = CC0
+	depends = pkgconf
+	depends = libx11
+	depends = cairo
+	depends = jack
+	depends = mesa
+	conflicts = vl1-emulator
+	source = git+https://github.com/linuxmao-org/VL1-emulator
+	sha256sums = SKIP
+
+pkgname = vl1-emulator-git
