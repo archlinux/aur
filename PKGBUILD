@@ -15,11 +15,11 @@ source=("$url/-/archive/${pkgver}/dpm-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-	cd "$srcdir/dpm-1.6"
+	cd "$srcdir/dpm-$pkgver"
 	make PACKAGE="$pkgname" PREFIX="/usr" build
 }
 
 package() {
-	cd "$srcdir/dpm-1.6"
+	cd "$srcdir/dpm-$pkgver"
 	make PACKAGE="$pkgname" DESTDIR="$pkgdir" PREFIX="/usr" install
 }
