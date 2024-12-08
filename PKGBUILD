@@ -17,10 +17,10 @@ source=("README-${pkgver}.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
         "CHANGELOG-${pkgver}.md::${_url}/raw/refs/tags/v${pkgver}/CHANGELOG.md"
         "LICENSE-${pkgver}.md::${_url}/raw/refs/tags/v${pkgver}/LICENSE.md")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/download/v${pkgver%%.*}/linux/${_pkgname}_cli-${pkgver}-Linux-x86_64.tar.gz")
-b2sums=('5c2bf1efad8b8ab5b20ebec0eb0169a26bf18f87d2904db17dba3b72b8c7e1838cf29965bec8cc63ea4c77faeb0a1f65b27661703a43af4b8799bf7443359a81'
-        '8e5265223d1b4b3a1f2aa76d012bdaea3c3eafa5a44da40cf2711ec3a5dfe1f3e963bdfc087ef848127e0d3ad05b9f6acbaccdc9a483aa9d34358efdd0e33e4f'
-        '6cd45abeece31c6a176fed9972b7d25fc1920c4a6d71f27710409ecf52250180771949317a04f9642dc7efb7faa201ecd2298dcd49b0a2e9ff2fe1aa811e4060')
-b2sums_x86_64=('45ef9758f0f96269b840734e7204159668f9fc2802bb3445c6e8f8be3501e9aa783fd38ec8417eb442185806794def84ffeb08c69de6610fde30d02f29cfc8bc')
+sha256sums=('d1b0779c0949591282794d6d26c62ed45b38b51020e9226ef73717ae9a9e2357'
+            'f3a7c3315c95bd0a16b5f619a24b552e91c910507abd4621301afa9a187c9f87'
+            'a9102d646bc5718dfba8a77179973ee2308aef66a788c0411c930d5bcbe711ce')
+sha256sums_x86_64=('68a97d714395713ca679ce34bf5b0fb2b993e7cf6a54954c7231c923c292cf9f')
 # validpgpkeys=('C264DC0F1C13A4BB18CAAF1BE7BE982BCD50DDF4') # Terrapane Support <support@terrapane.com> (https://github.com/terrapane/aescrypt_linux/blob/master/README.md#signed-release-packages)
 
 package() {
