@@ -10,7 +10,7 @@ _realver=${pkgver//.s*}
 _gmpver=6.3.0
 _mpcver=1.3.1
 _mpfrver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection (snapshot)'
 arch=(x86_64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
@@ -24,6 +24,8 @@ source=(https://ftp.fu-berlin.de/unix/languages/gcc/snapshots/${_pkgver}/gcc-${_
         https://gmplib.org/download/gmp/gmp-${_gmpver}.tar.xz{,.sig}
         https://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz
         https://www.mpfr.org/mpfr-${_mpfrver}/mpfr-${_mpfrver}.tar.xz{,.asc}
+        0001-gm2-fix-bad-programming-practice-warning.patch
+        0002-libgccjit-Remove-obsolete-texinfo-statements.patch
         c89
         c99
         gcc-ada-repro.patch)
@@ -40,6 +42,8 @@ sha256sums=('4b9e0aa54a15ff3f31dd4b379e754abc37f48c73586aaf643bb3c937fd9277c4'
             'ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8'
             '277807353a6726978996945af13e52829e3abd7a9a5b7fb2793894e18f1fcbb2'
             'SKIP'
+            '20c0af49ad44b7193f24560002e81cd8b8ac248a98649324ad6ca1da4c4db6ff'
+            '08ee6d267261aeaeadc117b7fc1cdfcbb60ffb9ae76728f33d6fcc60b0e8f240'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
             '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f')
@@ -60,6 +64,8 @@ prepare() {
   sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 
   patch -Np0 -i ${srcdir}/gcc-ada-repro.patch
+  patch -Np1 -i ${srcdir}/0001-gm2-fix-bad-programming-practice-warning.patch
+  patch -Np1 -i ${srcdir}/0002-libgccjit-Remove-obsolete-texinfo-statements.patch
 
   mkdir -p ${srcdir}/gcc-build ${srcdir}/libgccjit-build
 }
