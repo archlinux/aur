@@ -6,7 +6,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=freefilesync
-pkgver=13.8
+pkgver=13.9
 pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=(
 )
 noextract=("FreeFileSync_${pkgver}_Source.zip.1")
 sha256sums=('SKIP'
-            '9dc8ae9cce6a0d8f1bc51d3d9aff7c08ee5353505699e167072287a3baaa45ce'
+            'e7750f1a0d36259af5e6bf7d9ed92964aa81fc380f8e4193432b8cb7bd37b7ab'
             '590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51'
             '82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830')
 
@@ -38,8 +38,8 @@ build() {
     CXXFLAGS="$CXXFLAGS -DMAX_SFTP_READ_SIZE=30000 -DMAX_SFTP_OUTGOING_SIZE=30000"
     LDFLAGS="$LDFLAGS `pkg-config --libs gtk+-3.0`"
 
-    make -C"$srcdir/FreeFileSync/Source" exeName=FreeFileSync
-    make -C"$srcdir/FreeFileSync/Source/RealTimeSync" exeName=RealTimeSync
+    make -s -C"$srcdir/FreeFileSync/Source" exeName=FreeFileSync
+    make -s -C"$srcdir/FreeFileSync/Source/RealTimeSync" exeName=RealTimeSync
 }
 
 package() {
