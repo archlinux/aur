@@ -2,7 +2,7 @@
 
 pkgname=prologs
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Test your Prolog program against different engines'
 arch=(x86_64 i686)
 url='https://github.com/hurufu/prolog-all'
@@ -20,9 +20,7 @@ optdepends=(
     poplog-git
     tuprolog-repl
     tau-prolog
-    dogelog-py
-    dogelog-node
-    dogelog-java
+    dogelog
     xsb-prolog
     yap
 )
