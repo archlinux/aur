@@ -2,8 +2,8 @@
 
 pkgname=tsduck-bin
 _pkgver=3.39-3956
-pkgver=${_pkgver/-/_}
-pkgrel=1
+pkgver="${_pkgver%-*}"
+pkgrel=2
 pkgdesc="MPEG Transport Stream Toolkit"
 arch=('x86_64' 'aarch64')
 url="https://tsduck.io/"
@@ -38,16 +38,15 @@ sha256sums_aarch64=('8565fa5216a013caaee8350a3e54296ac9fe4ef9f806881a823b95156ce
 
 prepare() {
   # Move all libs to /usr/lib
-  mv ${srcdir}/usr/lib64 ${srcdir}/usr/lib
-  cp -Pr ${srcdir}/lib/udev ${srcdir}/usr/lib
-  rm -rf ${srcdir}/usr/lib64 
+  mv "${srcdir}/usr/lib64" "${srcdir}/usr/lib"
+  cp -Pr "${srcdir}/lib/udev" "${srcdir}/usr/lib"
 }
 
 package() {
-  install -dm755 ${pkgdir}/usr
-  install -dm755 ${pkgdir}/etc
-  cp -Pr --no-preserve=ownership ${srcdir}/{etc,usr} ${pkgdir}
-  install -Dm644 ${srcdir}/usr/share/doc/tsduck/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -dm755 "${pkgdir}/usr"
+  install -dm755 "${pkgdir}/etc"
+  cp -Pr --no-preserve=ownership "${srcdir}"/{etc,usr} "${pkgdir}"
+  install -Dm644 "${srcdir}/usr/share/doc/tsduck/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:

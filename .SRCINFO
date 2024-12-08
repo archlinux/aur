@@ -1,7 +1,7 @@
 pkgbase = tsduck-bin
 	pkgdesc = MPEG Transport Stream Toolkit
-	pkgver = 3.39_3956
-	pkgrel = 1
+	pkgver = 3.39
+	pkgrel = 2
 	url = https://tsduck.io/
 	arch = x86_64
 	arch = aarch64
