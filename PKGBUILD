@@ -37,7 +37,7 @@ check() {
 
 package() {
   cd "$pkgname"
-  install -Dm644 sogogi "$pkgdir/usr/bin"
+  install -Dm644 sogogi -t "$pkgdir/usr/bin"
   install -Dm644 "$srcdir/sogogi.service" -t "$pkgdir/usr/lib/systemd/system"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
