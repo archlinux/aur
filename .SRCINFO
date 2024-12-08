@@ -1,0 +1,17 @@
+pkgbase = dainonotes
+	pkgdesc = Qt-based note-taking application
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://get-notes.com/
+	arch = x86_64
+	license = custom
+	makedepends = tar
+	depends = qt6-base
+	depends = qt6-declarative
+	provides = dainonotes
+	conflicts = dainonotes-bin
+	options = !strip
+	source = dainonotes-3.1.2-x86_64.deb::https://github.com/nuttyartist/daino-notes-public/releases/download/v3.1.2/dainonotes_3.1.2_amd64.deb
+	sha256sums = 0a2aa20c90005f8c02e4f69e15f5e67e63d4585856cce9e5f3dc851bd48dc304
+
+pkgname = dainonotes
