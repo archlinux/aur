@@ -1,0 +1,124 @@
+diff -Naur EASTL-3.21.23/include/EASTL/allocator.h EASTL-3.21.23_/include/EASTL/allocator.h
+--- EASTL-3.21.23/include/EASTL/allocator.h	2024-08-18 14:10:53.000000000 +0800
++++ EASTL-3.21.23_/include/EASTL/allocator.h	2024-12-08 15:22:30.829527965 +0800
+@@ -11,6 +11,12 @@
+ #include <EABase/nullptr.h>
+ #include <stddef.h>
+ 
++#ifdef EASTL_MIMALLOC_ENABLED
++#include <mimalloc.h>
++#endif
++#if !(defined(EASTL_MIMALLOC_ENABLED) && defined(EASTL_CUSTOM_MALLOC_ENABLED))
++#include <cstdlib>
++#endif
+ 
+ #if defined(EA_PRAGMA_ONCE_SUPPORTED)
+ 	#pragma once // Some compilers (e.g. VC++) benefit significantly from using this. We've measured 3-4% build speed improvements in apps as a result.
+@@ -164,18 +170,6 @@
+ 
+ #ifndef EASTL_USER_DEFINED_ALLOCATOR // If the user hasn't declared that he has defined a different allocator implementation elsewhere...
+ 
+-	EA_DISABLE_ALL_VC_WARNINGS()
+-	#include <new>
+-	EA_RESTORE_ALL_VC_WARNINGS()
+-
+-	#if !EASTL_DLL // If building a regular library and not building EASTL as a DLL...
+-		// It is expected that the application define the following
+-		// versions of operator new for the application. Either that or the
+-		// user needs to override the implementation of the allocator class.
+-		void* operator new[](size_t size, const char* pName, int flags, unsigned debugFlags, const char* file, int line);
+-		void* operator new[](size_t size, size_t alignment, size_t alignmentOffset, const char* pName, int flags, unsigned debugFlags, const char* file, int line);
+-	#endif
+-
+ 	namespace eastl
+ 	{
+ 		inline allocator::allocator(const char* EASTL_NAME(pName))
+@@ -231,68 +225,36 @@
+ 
+ 		inline void* allocator::allocate(size_t n, int flags)
+ 		{
+-			#if EASTL_NAME_ENABLED
+-				#define pName mpName
+-			#else
+-				#define pName EASTL_ALLOCATOR_DEFAULT_NAME
+-			#endif
+-
+-			#if EASTL_DLL
+-				return allocate(n, EASTL_SYSTEM_ALLOCATOR_MIN_ALIGNMENT, 0, flags);
+-			#elif (EASTL_DEBUGPARAMS_LEVEL <= 0)
+-				return ::new((char*)0, flags, 0, (char*)0,        0) char[n];
+-			#elif (EASTL_DEBUGPARAMS_LEVEL == 1)
+-				return ::new(   pName, flags, 0, (char*)0,        0) char[n];
+-			#else
+-				return ::new(   pName, flags, 0, __FILE__, __LINE__) char[n];
+-			#endif
++      #ifdef EASTL_MIMALLOC_ENABLED
++        return mi_malloc(n);
++      #else
++        return std::malloc(n);
++      #endif
+ 		}
+ 
+ 
+ 		inline void* allocator::allocate(size_t n, size_t alignment, size_t offset, int flags)
+ 		{
+-			#if EASTL_DLL
+-				// We currently have no support for implementing flags when 
+-				// using the C runtime library operator new function. The user 
+-				// can use SetDefaultAllocator to override the default allocator.
+-				EA_UNUSED(offset); EA_UNUSED(flags);
+-
+-				size_t adjustedAlignment = (alignment > EA_PLATFORM_PTR_SIZE) ? alignment : EA_PLATFORM_PTR_SIZE;
+-
+-				void* p = new char[n + adjustedAlignment + EA_PLATFORM_PTR_SIZE];
+-				void* pPlusPointerSize = (void*)((uintptr_t)p + EA_PLATFORM_PTR_SIZE);
+-				void* pAligned = (void*)(((uintptr_t)pPlusPointerSize + adjustedAlignment - 1) & ~(adjustedAlignment - 1));
+-
+-				void** pStoredPtr = (void**)pAligned - 1;
+-				EASTL_ASSERT(pStoredPtr >= p);
+-				*(pStoredPtr) = p;
+-
+-				EASTL_ASSERT(((size_t)pAligned & ~(alignment - 1)) == (size_t)pAligned);
+-
+-				return pAligned;
+-			#elif (EASTL_DEBUGPARAMS_LEVEL <= 0)
+-				return ::new(alignment, offset, (char*)0, flags, 0, (char*)0,        0) char[n];
+-			#elif (EASTL_DEBUGPARAMS_LEVEL == 1)
+-				return ::new(alignment, offset,    pName, flags, 0, (char*)0,        0) char[n];
+-			#else
+-				return ::new(alignment, offset,    pName, flags, 0, __FILE__, __LINE__) char[n];
+-			#endif
+-
+-			#undef pName  // See above for the definition of this.
++      EASTL_ASSERT(offset == 0u);
++      if (alignment <= EASTL_SYSTEM_ALLOCATOR_MIN_ALIGNMENT)
++      {
++        return allocate(n, flags);
++      }
++      #ifdef EASTL_MIMALLOC_ENABLED
++        return mi_aligned_alloc(alignment, n);
++      #else
++        return std::aligned_alloc(alignment, n);
++      #endif
+ 		}
+ 
+ 
+ 		inline void allocator::deallocate(void* p, size_t)
+ 		{
+-			#if EASTL_DLL
+-				if (p != nullptr)
+-				{
+-					void* pOriginalAllocation = *((void**)p - 1);
+-					delete[](char*)pOriginalAllocation;
+-				}
+-			#else
+-				delete[](char*)p;
+-			#endif
++      #ifdef EASTL_MIMALLOC_ENABLED
++        mi_free(p);
++      #else
++        std::free(p);
++      #endif
+ 		}
+ 
+ 

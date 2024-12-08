@@ -1,13 +1,16 @@
 pkgbase = eastl
 	pkgdesc = Electronic Arts Standard Template Library. It is an extensive and robust implementation that has an emphasis on high performance.
 	pkgver = 3.21.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/electronicarts/EASTL
 	arch = any
 	license = BSD-3-Clause
 	makedepends = cmake
 	makedepends = git
+	optdepends = mimalloc: for better performance
 	source = EASTL-3.21.23.tar.gz::https://github.com/electronicarts/EASTL/archive/3.21.23.tar.gz
+	source = eastl_allocator_impl.patch
 	sha256sums = 2bcb48f88f7daf9f91c165aae751c10d11d6959b6e10f2dda8f1db893e684022
+	sha256sums = 4bbed4a520ed36d3e2b5f2a6c1b42bd4df3721de4c7fefaa6f9946aa48a8f4fe
 
 pkgname = eastl
