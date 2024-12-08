@@ -1,5 +1,5 @@
 # Maintainer: Eduardo Jose Gomez Hernandez <eduardo@edujgh.net>
-pkgname=c3c-bin
+pkgname=c3c-bin-latest
 _pkgname=c3c
 pkgver=0.6.2
 pkgrel=1
