@@ -3,7 +3,7 @@
 _pkgname_prefix=globalprotect-openconnect
 pkgname="${_pkgname_prefix}-git"
 pkgver="2.3.9"
-pkgrel=2
+pkgrel=3
 pkgdesc="A GUI for GlobalProtect VPN, based on OpenConnect, supports the SSO authentication method."
 arch=(x86_64 aarch64)
 url="https://github.com/yuezk/GlobalProtect-openconnect"
@@ -48,6 +48,13 @@ package() {
   install -Dm755 target/release/gpservice "${pkgdir}/usr/bin/gpservice"
   install -Dm755 target/release/gpauth "${pkgdir}/usr/bin/gpauth"
   install -Dm755 target/release/gpgui-helper "${pkgdir}/usr/bin/gpgui-helper"
+
+  install -Dm644 packaging/files/usr/share/applications/gpgui.desktop "${pkgdir}/usr/share/applications/gpgui.desktop"
+  install -Dm644 packaging/files/usr/share/icons/hicolor/scalable/apps/gpgui.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gpgui.svg"
+  install -Dm644 packaging/files/usr/share/icons/hicolor/32x32/apps/gpgui.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/gpgui.png"
+  install -Dm644 packaging/files/usr/share/icons/hicolor/128x128/apps/gpgui.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/gpgui.png"
+  install -Dm644 packaging/files/usr/share/icons/hicolor/256x256@2/apps/gpgui.png "${pkgdir}/usr/share/icons/hicolor/256x256@2/apps/gpgui.png"
+  install -Dm644 packaging/files/usr/share/polkit-1/actions/com.yuezk.gpgui.policy "${pkgdir}/usr/share/polkit-1/actions/com.yuezk.gpgui.policy"
 }
 
 sha256sums=('74a44378d60f0d5300e211f10aea1cfbcee7b378894969ba9de05f767e7cff3c')
