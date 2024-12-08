@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Library for manipulating Unicode strings and C strings (mingw-w64)"
 arch=('any')
 url="https://www.gnu.org/software/libunistring/"
-license=('GPL')
+license=('LGPL-3.0-or-later OR GPL-2.0-or-later')
 depends=('mingw-w64-crt'
          'mingw-w64-libiconv')
 makedepends=('mingw-w64-configure')
