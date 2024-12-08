@@ -1,5 +1,5 @@
-/pkg
-/src
-/*.zst
-/*.proto
-/*.deb
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml

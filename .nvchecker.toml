@@ -1,0 +1,5 @@
+[flying-carpet-bin]
+source = "github"
+github = "spieglt/FlyingCarpet"
+use_latest_release = true
+prefix = "v"
