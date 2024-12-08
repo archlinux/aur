@@ -3,34 +3,41 @@
 _basename="man2html"
 
 pkgname="vh-man2html"
-pkgver=1.6g
+pkgver="1.6g_16"
 pkgrel=1
 pkgdesc="convert man pages into HTML format"
 arch=('x86_64')
-url="http://users.actrix.co.nz/michael/vhman2html.html"
+url="https://salsa.debian.org/debian/man2html"
 license=('GPL2')
 depends=()
 makedepends=()
 optdepends=()
 provides=('man2html')
 conflicts=('man2html')
-source=("https://salsa.debian.org/debian/man2html/-/archive/upstream/$pkgver/man2html-upstream-$pkgver.tar.gz"
-		"doctype.patch")
-sha256sums=('67f51a29806abc97c279e3a35af0c1df613daec011e98d2c63281af55632efd5'
-            'd0465a1b82e22b7d72da3c9af7ef465ff7d262f0d0729f631e20a44cec716682')
+_packager="debian"
+_srcname="${_basename}-${_packager}-${pkgver//_/-}"
+source=("https://salsa.debian.org/debian/${_basename}/-/archive/debian/${pkgver//_/-}/${_srcname}.tar.gz"
+        "makemsg.patch")
+sha256sums=('0d96e743a9bfccd484aa519a9de1b5e5d551b8a39f41eb8088ac21b1bf8f64cf'
+            '7f492e8d672588f6781652fccd09191fda5ffd9b28c597c978608acff0e514dd')
 
 prepare() {
-	cd "$_basename-upstream-$pkgver"
-	patch -p1 -i $srcdir/doctype.patch
+	cd "$_srcname"
+	patch -Np1 < "../makemsg.patch"
+	patchdir=$srcdir/$_srcname/debian/patches
+	while read p; do
+		echo "Applying patch $p..."
+		patch -Np1 < "$patchdir/$p"
+	done < "$patchdir/series"
 }
 
 build() {
-	cd "$_basename-upstream-$pkgver"
+	cd "$_srcname"
 	./configure -d +fhs
-	make
+	make manhtml
 }
 
 package() {
-	cd "$_basename-upstream-$pkgver"
+	cd "$_srcname"
 	make DESTDIR="$pkgdir/" install -C man2html # don't need CGI service
 }

@@ -1,15 +1,15 @@
 pkgbase = vh-man2html
 	pkgdesc = convert man pages into HTML format
-	pkgver = 1.6g
+	pkgver = 1.6g_16
 	pkgrel = 1
-	url = http://users.actrix.co.nz/michael/vhman2html.html
+	url = https://salsa.debian.org/debian/man2html
 	arch = x86_64
 	license = GPL2
 	provides = man2html
 	conflicts = man2html
-	source = https://salsa.debian.org/debian/man2html/-/archive/upstream/1.6g/man2html-upstream-1.6g.tar.gz
-	source = doctype.patch
-	sha256sums = 67f51a29806abc97c279e3a35af0c1df613daec011e98d2c63281af55632efd5
-	sha256sums = d0465a1b82e22b7d72da3c9af7ef465ff7d262f0d0729f631e20a44cec716682
+	source = https://salsa.debian.org/debian/man2html/-/archive/debian/1.6g-16/man2html-debian-1.6g-16.tar.gz
+	source = makemsg.patch
+	sha256sums = 0d96e743a9bfccd484aa519a9de1b5e5d551b8a39f41eb8088ac21b1bf8f64cf
+	sha256sums = 7f492e8d672588f6781652fccd09191fda5ffd9b28c597c978608acff0e514dd
 
 pkgname = vh-man2html

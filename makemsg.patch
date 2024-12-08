@@ -1,0 +1,10 @@
+--- a/src/makemsg.c
++++ b/src/makemsg.c
+@@ -20,6 +20,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
++#include <string.h>
+ #ifdef __QNX__
+ #include <unix.h>
+ #endif
