@@ -1,7 +1,7 @@
 pkgbase = python-iminuit
 	pkgdesc = Python interface for MINUIT, a physics analysis tool for function minimization.
 	pkgver = 2.29.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://iminuit.readthedocs.io
 	arch = x86_64
 	license = GPL
