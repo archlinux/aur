@@ -1,11 +1,11 @@
 pkgbase = quixel-bridge-blender
 	pkgdesc = A plugin for Blender 4.3 which allows exporting assets from Quixel Bridge.
 	pkgver = 3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://quixel.com/bridge
 	arch = x86_64
 	license = custom:Commercial
-	depends = zlib blender
+	depends = zlib
 	options = !strip
 	source_x86_64 = https://quixel-megascans-static.s3.us-west-2.amazonaws.com/bridge/plugins_12/blender/linux/${pkgver}.zip
 	sha256sums_x86_64 = a5e33c03092d47bb3a9cb74783039af71bdc1265ddd38d309c6de7ab76e3e63f
