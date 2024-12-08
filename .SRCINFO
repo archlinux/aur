@@ -1,6 +1,6 @@
 pkgbase = pico-sdk
 	pkgdesc = Libraries and tools for C/C++ development on RP2040 microcontrollers.
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/raspberrypi/pico-sdk
 	install = reload-environment-variables.install
@@ -15,14 +15,14 @@ pkgbase = pico-sdk
 	provides = raspberry-pico-sdk-git
 	conflicts = raspberry-pico-sdk-git
 	options = !strip
-	source = git+https://github.com/raspberrypi/pico-sdk.git#tag=2.0.0
+	source = git+https://github.com/raspberrypi/pico-sdk.git#tag=2.1.0
 	source = git+https://github.com/bluekitchen/btstack.git
 	source = git+https://github.com/georgerobotics/cyw43-driver.git
 	source = git+https://github.com/lwip-tcpip/lwip.git
 	source = git+https://github.com/Mbed-TLS/mbedtls.git
 	source = git+https://github.com/hathach/tinyusb.git
 	source = setup-environment-variables.sh
-	sha256sums = SKIP
+	sha256sums = 23acedc0e067cca748aab1041e02d74c8ea29b8ab8689d1ae3a20384e82f105d
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

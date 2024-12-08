@@ -4,11 +4,3 @@ post_install() {
 	echo "restart your computer or relogin."
 	tput sgr0
 }
-
-post_upgrade() {
-	tput bold
-	tput setaf 3 # Set text color to yellow
-	echo "You should delete/recreate all build directories"
-	echo "when upgrading from previous versions of the Raspberry Pi Pico SDK!"
-	tput sgr0
-}
