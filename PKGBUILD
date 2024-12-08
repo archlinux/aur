@@ -1,13 +1,13 @@
 # Maintainer: Talon <diablodev@googlegroups.com>
 pkgname=diablo-project-manager
-pkgver=1.6
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A Basic Project Manager"
 arch=("x86_64")
 url="https://gitlab.com/diablodev/dpm"
 license=('MIT')
 depends=('bash' 'git' 'glibc')
-optdepends=('yad: allows you to run diablo-project-manager with passing -h and provides a gui interface')
+optdepends=('zenity: allows you to run dpm.gui')
 makedepends=('shc')
 provides=("diablo-project-manager")
 conflicts=("diablo-project-manager-git")
