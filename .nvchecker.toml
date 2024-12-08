@@ -1,0 +1,4 @@
+[typstyle-bin]
+source = "git"
+git = "https://github.com/Enter-tainer/typstyle.git"
+prefix = "v"
