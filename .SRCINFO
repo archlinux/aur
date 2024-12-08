@@ -1,7 +1,7 @@
 pkgbase = dogelog
 	pkgdesc = The avant-garde of logic programming
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dogelog.ch/
 	arch = any
 	license = custom
@@ -11,12 +11,14 @@ pkgbase = dogelog
 
 pkgname = dogelog-node
 	pkgdesc = The avant-garde of logic programming (NodeJS backend)
-	depends = nodejs
+	optdepends = nodejs
+	optdepends = bun
 
 pkgname = dogelog-py
 	pkgdesc = The avant-garde of logic programming (Python backend)
-	depends = python3
+	optdepends = python3
+	optdepends = pypy3
 
 pkgname = dogelog-java
 	pkgdesc = The avant-garde of logic programming (Java backend)
-	depends = java-runtime
+	depends = java-runtime>=21
