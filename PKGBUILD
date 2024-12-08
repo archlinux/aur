@@ -2,7 +2,7 @@
 
 pkgname=ethoscope-node
 pkgver=r1969.g0521648
-pkgrel=2
+pkgrel=3
 pkgdesc="A platform for monitoring animal behaviour in real time from a raspberry pi"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"

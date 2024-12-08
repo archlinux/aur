@@ -5,16 +5,18 @@
 
 # arg 1:  the new package version
 post_install() {
+
+    #setting the bare installation folder as safe.directory
+    git config --system --add safe.directory /srv/git/ethoscope.git
+
     #echo "changing the remote GIT source to local BARE created during installation"
     cd /opt/ethoscope-node
     git remote set-url origin /srv/git/ethoscope.git
-
-    #setting branch
     git checkout dev
     
-    #installing python module
-    cd /opt/ethoscope-node/node_src/
-    python setup.py develop
+    #installing python modules
+    cd /opt/ethoscope-node/node_src/ && python setup.py develop
+    cd /opt/ethoscope-node/src/ &&  python setup.py develop
     
     echo "enabling NODE specific systemd service files"
     systemctl enable ethoscope_node.service ethoscope_update_node.service ethoscope_backup.service ethoscope_video_backup.service 
@@ -26,9 +28,6 @@ post_install() {
     
     #setting host settings on node
     echo "127.0.0.1    node" > /etc/hosts
-
-    #Link scripts that need to run automatically
-    ln -s /opt/ethoscope-node/node_src/scripts/make_index.py /etc/cron.daily/make_index.py
 
     echo "PLEASE REBOOT NOW."
 }
@@ -48,6 +47,9 @@ post_upgrade() {
 
     #setting branch
     git checkout dev
+
+    cd /opt/ethoscope-node/node_src/ && python setup.py develop
+    cd /opt/ethoscope-node/src/ &&  python setup.py develop
 }
 
 # arg 1:  the old package version
