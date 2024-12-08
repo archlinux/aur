@@ -16,8 +16,7 @@ optdepends=(
     'mint-x-icons: enable additional icons to inheritage'
 )
 options=(!strip)
-source=("${_url}/${pkgname}_${pkgver}.tar.xz")
-noextract=("${pkgname}_${pkgver}.tar.xz")
+source=("${pkgname}_${pkgver}.tar.xz::${_url}/${pkgname}_${pkgver}.tar.xz")
 sha256sums=('ae6e83433c43118aa26f0d839332279408602dc73809a71705f7f05ad34143db')
 
 package() {
