@@ -1,6 +1,7 @@
-change-id = 129295
+change-id = 131075
 
 [llvm]
+download-ci-llvm = false
 targets = "X86"
 experimental-targets = ""
 link-jobs = 1
