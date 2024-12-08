@@ -2,17 +2,17 @@
 
 _plug=adaptivegrain
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.2.1.24.gcde9f66
+pkgver=0.3.0.38.g1c062e6
 pkgrel=1
 pkgdesc='Reimplementation of the adaptive grain mask as a Vapoursynth plugin'
 arch=('x86_64')
-url='https://git.kageru.moe/kageru/adaptivegrain'
+url='https://github.com/kageru/adaptivegrain'
 license=('MIT')
 depends=('vapoursynth')
 makedepends=('git' 'cargo')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("$_plug::git+https://git.kageru.moe/kageru/adaptivegrain.git")
+source=("$_plug::git+https://github.com/kageru/adaptivegrain.git")
 sha256sums=('SKIP')
 
 pkgver() {
