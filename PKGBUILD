@@ -1,6 +1,6 @@
 # Maintainer: tyrolyean <tyrolyean@tyrolyean.net>
 pkgname=hellwal
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="fast, extensible color palette generator"
 arch=('i686' 'x86_64' 'arm' 'aarch64' 'riscv')
@@ -12,15 +12,15 @@ source=(
 	)
 
 sha256sums=(
-	'f6c974274c092d1e6962f2724e8572923d67a259c097c3f1d7207617633d6e78'
+	'e0557de29ead44461a2781895e5f25a68f554a376fedc5ff96fba490ed6c1ee6'
 	)
 
 sha512sums=(
-	'5bad21b387ec17bd81e9f3ef682ca988d552a0201fdeac181d2544b88ed6c9033bf311fdc71b2089c710689efe56009689e5be8254f06235697848ccae7fb4b1'
+	'351eeef7f1e01583a80cac7ff482e6a874c252a055819e6bdd8c40830fe3fef3e00390509bf2a7b947ac6303e159ec8fb1d55d9201b754f705a1dbc432efe4da'
 	)
 
 md5sums=(
-	'e8e5c8efce4453b31b6987ad03f1ac31'
+	'a7da0eba823a8e9a1d2d668dc5fe3160'
 	)
 
 build() {
