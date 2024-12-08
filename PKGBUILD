@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="An open source JPEG 2000 codec, version ${pkgver} (mingw-w64)"
 arch=('any')
 url="https://www.openjpeg.org"
-license=('BSD')
+license=('BSD-2-Clause' 'MIT')
 depends=('mingw-w64-libpng'
          'mingw-w64-lcms2')
 makedepends=('mingw-w64-cmake')
