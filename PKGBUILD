@@ -2,14 +2,14 @@
 
 _pkgname_prefix=globalprotect-openconnect
 pkgname="${_pkgname_prefix}-git"
-pkgver="2.3.9"
-pkgrel=3
+pkgver=v2.3.9.r2.gf71e29d
+pkgrel=1
 pkgdesc="A GUI for GlobalProtect VPN, based on OpenConnect, supports the SSO authentication method."
 arch=(x86_64 aarch64)
 url="https://github.com/yuezk/GlobalProtect-openconnect"
 license=('GPL3')
 
-makedepends=(rustup 'openconnect>=8.20' webkit2gtk base-devel curl wget file appmenu-gtk-module gtk3 libappindicator-gtk3 librsvg libvips)
+makedepends=(git rustup 'openconnect>=8.20' webkit2gtk base-devel curl wget file appmenu-gtk-module gtk3 libappindicator-gtk3 librsvg libvips)
 depends=('openconnect>=8.20' openssl webkit2gtk libappindicator-gtk3 libayatana-appindicator libsecret libxml2)
 optdepends=('wmctrl: for window management')
 
@@ -18,14 +18,22 @@ provides=('globalprotect-openconnect' 'gpclient' 'gpservice' 'gpauth' 'gpgui')
 
 install=gp.install
 
-source=("${_pkgname_prefix}-$pkgver.tar.gz::https://github.com/yuezk/GlobalProtect-openconnect/releases/download/v$pkgver/globalprotect-openconnect-$pkgver.tar.gz")
+source=("${_pkgname_prefix}::git+https://github.com/yuezk/GlobalProtect-openconnect.git#branch=main")
+
+sha256sums=("SKIP")
 
 options=('!strip')
+
+pkgver() {
+  cd "${_pkgname_prefix}"
+
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
 
-  cd "${srcdir}/${_pkgname_prefix}-$pkgver"
+  cd "${_pkgname_prefix}"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -36,13 +44,13 @@ build() {
   # Must unset the CFLAGS, otherwise the build fails on linking openssl, don't know why
   unset CFLAGS
 
-  cd "${srcdir}/${_pkgname_prefix}-$pkgver"
+  cd "${_pkgname_prefix}"
   cargo build --frozen --release -p gpclient -p gpservice -p gpauth
   cargo build --frozen --release -p gpgui-helper --features "tauri/custom-protocol"
 }
 
 package() {
-  cd "${srcdir}/${_pkgname_prefix}-$pkgver"
+  cd "${_pkgname_prefix}"
 
   install -Dm755 target/release/gpclient "${pkgdir}/usr/bin/gpclient"
   install -Dm755 target/release/gpservice "${pkgdir}/usr/bin/gpservice"
@@ -56,5 +64,3 @@ package() {
   install -Dm644 packaging/files/usr/share/icons/hicolor/256x256@2/apps/gpgui.png "${pkgdir}/usr/share/icons/hicolor/256x256@2/apps/gpgui.png"
   install -Dm644 packaging/files/usr/share/polkit-1/actions/com.yuezk.gpgui.policy "${pkgdir}/usr/share/polkit-1/actions/com.yuezk.gpgui.policy"
 }
-
-sha256sums=('74a44378d60f0d5300e211f10aea1cfbcee7b378894969ba9de05f767e7cff3c')

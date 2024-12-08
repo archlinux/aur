@@ -1,12 +1,13 @@
 pkgbase = globalprotect-openconnect-git
 	pkgdesc = A GUI for GlobalProtect VPN, based on OpenConnect, supports the SSO authentication method.
-	pkgver = 2.3.9
-	pkgrel = 3
+	pkgver = v2.3.9.r2.gf71e29d
+	pkgrel = 1
 	url = https://github.com/yuezk/GlobalProtect-openconnect
 	install = gp.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
+	makedepends = git
 	makedepends = rustup
 	makedepends = openconnect>=8.20
 	makedepends = webkit2gtk
@@ -34,7 +35,7 @@ pkgbase = globalprotect-openconnect-git
 	provides = gpgui
 	conflicts = globalprotect-openconnect
 	options = !strip
-	source = globalprotect-openconnect-2.3.9.tar.gz::https://github.com/yuezk/GlobalProtect-openconnect/releases/download/v2.3.9/globalprotect-openconnect-2.3.9.tar.gz
-	sha256sums = 74a44378d60f0d5300e211f10aea1cfbcee7b378894969ba9de05f767e7cff3c
+	source = globalprotect-openconnect::git+https://github.com/yuezk/GlobalProtect-openconnect.git#branch=main
+	sha256sums = SKIP
 
 pkgname = globalprotect-openconnect-git

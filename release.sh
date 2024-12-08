@@ -2,30 +2,33 @@
 
 set -e
 
-# Usage: release.sh <version>
-# Example: release.sh 2.3.9
-
-version=$1
-
-if [ -z "$version" ]; then
-  echo "Usage: release.sh <version>"
-  exit 1
-fi
-
 # Update the version
-sed -i "s/pkgver=.*/pkgver=\"$version\"/" PKGBUILD
+makepkg -o
 
-# Remove the old checksum
-sed -i '/sha256sums/d' PKGBUILD
-
-# Generate the new checksum
-makepkg -g >> PKGBUILD
+version=$(grep 'pkgver=' PKGBUILD | sed 's/pkgver=//')
 
 # Generate the .SRCINFO
 makepkg --printsrcinfo > .SRCINFO
 
 # Commit the changes
-echo "Committing the changes..."
+echo "Updating to version $version, commit the changes? [y/N]"
+
+read -r response
+
+if [[ ! "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  echo "Aborted"
+  exit 0
+fi
 
 git add PKGBUILD .SRCINFO
 git commit -m "Release $version"
+
+echo "Changes committed, push to the repository? [y/N]"
+read -r response
+
+if [[ ! "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  echo "Aborted"
+  exit 0
+fi
+
+git push origin master
