@@ -12,8 +12,10 @@ pkgbase = albafetch-bin
 	backup = etc/xdg/albafetch.conf
 	source_x86_64 = https://github.com/alba4k/albafetch/releases/download/v4.2.1/albafetch-linux-x64.zip
 	depends_x86_64 = pciutils
+	depends_x86_64 = sqlite
 	md5sums_x86_64 = 7d962411a379e27eaebb2bea6f6844bf
 	source_aarch64 = https://github.com/alba4k/albafetch/releases/download/v4.2.1/albafetch-linux-aarch64-static.zip
+	depends_aarch64 = sqlite
 	md5sums_aarch64 = 386ba1ce43fe99d0f355cb05987fac18
 
 pkgname = albafetch-bin
