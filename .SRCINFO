@@ -1,0 +1,15 @@
+pkgbase = sogogi-git
+	pkgdesc = WebDAV server
+	pkgver = r9.fa03f6548944
+	pkgrel = 1
+	url = https://codeberg.org/emersion/sogogi
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = sogogi-git::git+https://codeberg.org/emersion/sogogi.git
+	source = sogogi.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sogogi-git
