@@ -1,0 +1,14 @@
+pkgbase = vim-floaterm-git
+	pkgdesc = 💻 Terminal manager for (neo)vim
+	pkgver = r4e28c8d
+	pkgrel = 1
+	url = https://github.com/voldikss/vim-floaterm
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	source = vim-floaterm-git::git+https://github.com/voldikss/vim-floaterm
+	sha256sums = SKIP
+
+pkgname = vim-floaterm-git
