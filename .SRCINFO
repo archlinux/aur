@@ -1,0 +1,11 @@
+pkgbase = openlwr-bin
+	pkgdesc = An open-source multiplayer simulation of a boiling water reactor in development
+	pkgver = alpha20241018
+	pkgrel = 1
+	url = https://github.com/OpenLWR/OpenLWR
+	arch = x86_64
+	license = AGPL-3.0
+	source = https://github.com/OpenLWR/OpenLWR/releases/download/alpha20241018/Linux-x64
+	sha256sums = 46248c278880126357d2cd78d1bbf3c513f4bb2e15e6c7a36946f67eac1829dd
+
+pkgname = openlwr-bin
