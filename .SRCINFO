@@ -2,14 +2,15 @@
 
 pkgbase = geant4
 	pkgdesc = A simulation toolkit for particle physics interactions.
-	pkgver = 11.2.2
+	pkgver = 11.3.0
 	pkgrel = 1
 	url = http://geant4.cern.ch/
 	install = geant4.install
 	arch = x86_64
 	license = custom: http://geant4.cern.ch/license/
-	depends = clhep
 	depends = cmake>=3.16
+	depends = clhep>=2.4.6.0
+	depends = expat>=2.0.1
 	depends = xerces-c>=3
 	depends = qt6-base
 	depends = glu
@@ -21,23 +22,26 @@ pkgbase = geant4
 	optdepends = java-environment: for histogram visualizations and analysis
 	optdepends = tcsh: for C Shell support
 	optdepends = python: for G4Python support
-	optdepends = geant4-abladata: Data files for nuclear shell effects in INCL/ABLA hadronic mode
-	optdepends = geant4-ensdfstatedata: Nuclei properties from the Evaluated Nuclear Structure Data Files
-	optdepends = geant4-incldata: Data files for proton and neutron density profiles
+	optdepends = geant4-neutronhpdata: Experimental neutron data files with thermal cross sections
 	optdepends = geant4-ledata: Data files for low energy electromagnetic processes
 	optdepends = geant4-levelgammadata: Data files for photon evaporation
-	optdepends = geant4-neutronhpdata: Experimental neutron data files with thermal cross sections
-	optdepends = geant4-particlehpdata: Data files from the TALYS nuclear model code
+	optdepends = geant4-radioactivedata: Data files for radioactive decay hadronic processes
 	optdepends = geant4-particlexsdata: Data files for evaluated p, d, t, He3, He4 and gamma cross sections, replaces geant4-neutronxsdata
 	optdepends = geant4-piidata: Data files for shell ionisation cross sections
-	optdepends = geant4-radioactivedata: Data files for radioactive decay hadronic processes
 	optdepends = geant4-realsurfacedata: Data files for measured optical surface reflectance
 	optdepends = geant4-saiddata: Data files from evaluated cross-sections in SAID data-base
+	optdepends = geant4-abladata: Data files for nuclear shell effects in INCL/ABLA hadronic mode
+	optdepends = geant4-incldata: Data files for proton and neutron density profiles
+	optdepends = geant4-ensdfstatedata: Nuclei properties from the Evaluated Nuclear Structure Data Files
+	optdepends = geant4-channelingdata: Data files for the simulations of channeling trajectories
+	optdepends = geant4-particlehpdata: Data files from the TALYS nuclear model code
+	optdepends = geant4-nudexlibdata: Nuclear De-excitation data library for (n,gamma) reactions
+	optdepends = geant4-urrptdata: Particle Tables for the treatment of low-energy neutrons in the Unresolved Resonance Region (URR)
 	conflicts = geant4_devel
 	options = !emptydirs
-	source = http://geant4-data.web.cern.ch/releases/geant4-v11.2.2.tar.gz
+	source = http://geant4-data.web.cern.ch/releases/geant4-v11.3.0.tar.gz
 	source = geant4.install
-	sha256sums = d24f65735b8a0a039c00f9434991e99ef119b86c510d0f2ab21155db82a3491d
+	sha256sums = 1da4318b3f96f87f4d47558a32dab269b8f3fc956708038c28e72a180b0efba6
 	sha256sums = 0eae153900d995603b0b465c9f17225ba76dd8118377507916fc709360482058
 
 pkgname = geant4
