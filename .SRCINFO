@@ -64,5 +64,7 @@ pkgbase = portable
 	provides = portable
 	options = !debug
 	options = !strip
+	source = git+https://invent.kde.org/kimiblock/portable.git#tag=1.3.3
+	md5sums = SKIP
 
 pkgname = portable

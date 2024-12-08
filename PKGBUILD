@@ -80,35 +80,13 @@ makedepends+=(
 
 checkdepends=()
 
-source=()
+source=(git+https://invent.kde.org/kimiblock/portable.git#tag=${pkgver})
 
-function prepare() {
-	if [ -d portable ]; then
-		cd portable
-		git checkout master
-		git reset --hard
-		git pull
-		if [ $? -gt 0 ]; then
-			cd ..
-			rm -f portable -r
-			git \
-				clone --depth=1 \
-				https://invent.kde.org/kimiblock/portable.git
-		fi
-	else
-		git \
-			clone --depth=1 \
-			https://invent.kde.org/kimiblock/portable.git
-	fi
-	git checkout "${pkgver}"
-	rm -fr "${srcdir}/portable-${pkgver}"
-	cp -r \
-		"${srcdir}/portable" \
-		"${srcdir}/portable-${pkgver}"
-}
+md5sums=(SKIP)
+
 
 function package() {
-	cd "${srcdir}/portable-${pkgver}"
+	cd "${srcdir}/portable"
 	install -Dm755 portable.sh ${pkgdir}/usr/bin/portable
 	install -Dm755 open.sh ${pkgdir}/usr/lib/portable/open
 	install -Dm755 user-dirs.dirs ${pkgdir}/usr/lib/portable/user-dirs.dirs
