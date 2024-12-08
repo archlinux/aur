@@ -1,0 +1,14 @@
+pkgbase = krita-blender-layer
+	pkgdesc = A plugin that allows you to stream 3D View from Blender into Krita
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Yuntokon/BlenderLayer
+	install = krita-blender-layer.install
+	arch = any
+	license = GPL-3.0-or-later
+	depends = krita
+	depends = python-pyqt5
+	source = krita-blender-layer-1.0.1.tar.gz::https://github.com/Yuntokon/BlenderLayer/archive/v1.0.1.tar.gz
+	sha256sums = 01c033f69cbf7aa295ea1802e12f3dbdf7960ac4cdabda65230143992f9b41a3
+
+pkgname = krita-blender-layer
