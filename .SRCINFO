@@ -1,14 +1,14 @@
 pkgbase = amiberry
 	pkgdesc = Amiga Emulator for ARM Boards (amd64 build)
-	pkgver = 8c65d69057c12d6826ac8df300902f3cfb7df233
-	pkgrel = 3
-	epoch = 20241010
+	pkgver = 7.0.0.rc1
+	pkgrel = 0
 	url = https://github.com/BlitterStudio/amiberry
 	arch = x86_64
 	license = GPL3
 	makedepends = glibc
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	depends = flac
 	depends = sdl2
 	depends = sdl2_image
@@ -17,9 +17,10 @@ pkgbase = amiberry
 	depends = libmpeg2
 	depends = libserialport
 	depends = portmidi
-	provides = amiberry=8c65d69057c12d6826ac8df300902f3cfb7df233
+	depends = enet
+	provides = amiberry=7.0.0.rc1
 	conflicts = amiberry
-	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#branch=preview
+	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#commit=95e54b5af72fec8dd8218acb0b41ac9312be233b
 	md5sums = SKIP
 	sha256sums = SKIP
 
