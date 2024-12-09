@@ -1,6 +1,6 @@
 diff -Naur a/bazel/foreign_cc/tcmalloc.patch b/bazel/foreign_cc/tcmalloc.patch
 --- a/bazel/foreign_cc/tcmalloc.patch	1969-12-31 19:00:00.000000000 -0500
-+++ b/bazel/foreign_cc/tcmalloc.patch	2024-10-16 10:22:57.451371658 -0400
++++ b/bazel/foreign_cc/tcmalloc.patch	2024-12-09 09:23:11.264026121 -0500
 @@ -0,0 +1,27 @@
 +From 4ef8fe128ec8af0e5c5c351852c071eb00cccd39 Mon Sep 17 00:00:00 2001
 +From: Clement Courbet <courbet@google.com>
@@ -30,9 +30,9 @@ diff -Naur a/bazel/foreign_cc/tcmalloc.patch b/bazel/foreign_cc/tcmalloc.patch
 +  protected:
 +   PageAllocInfo info_ ABSL_GUARDED_BY(pageheap_lock);
 diff -Naur a/bazel/repositories.bzl b/bazel/repositories.bzl
---- a/bazel/repositories.bzl	2024-10-15 12:15:52.000000000 -0400
-+++ b/bazel/repositories.bzl	2024-10-16 10:22:57.451371658 -0400
-@@ -863,6 +863,8 @@
+--- a/bazel/repositories.bzl	2024-12-09 09:23:05.763926646 -0500
++++ b/bazel/repositories.bzl	2024-12-09 09:23:11.264026121 -0500
+@@ -865,6 +865,8 @@
  def _com_github_google_tcmalloc():
      external_http_archive(
          name = "com_github_google_tcmalloc",
