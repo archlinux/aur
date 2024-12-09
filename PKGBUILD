@@ -2,11 +2,11 @@
 
 _pkgbase=pw-capture
 pkgname=${_pkgbase}-git
-pkgver=r27.e8fc56b
+pkgver=r35.a2842f1
 pkgrel=1
 pkgdesc="Vulkan/OpenGL (game) capture for PipeWire"
 url="https://github.com/EHfive/${_pkgbase}"
-license=(MIT Apache)
+license=('Apache-2.0 OR MIT')
 arch=(x86_64)
 makedepends=(git meson rust clang libpipewire libffi)
 depends=(libpipewire-0.3.so pipewire libffi.so)
@@ -24,23 +24,36 @@ options=(!debug)
 
 pkgver() {
   cd $_pkgbase
-  ( set -o pipefail
+  (
+    set -o pipefail
     git describe --long --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
 
-build() {
+prepare() {
   # make AUR helper happy
   rm -rf builddir || true
-  arch-meson $_pkgbase builddir \
-    -D profile=release
 
-  meson compile -C builddir
+  cd $_pkgbase
+
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_HOME=../builddir/cargo-home
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  export RUSTUP_TOOLCHAIN=stable
+  arch-meson $_pkgbase builddir \
+    -D profile=release \
+    -D frozen=true \
+    -D "target=$(rustc -vV | sed -n 's/host: //p')"
+
+  meson install -C builddir --destdir "$srcdir/destdir"
 }
 
 package() {
-  meson install -C builddir --destdir "$pkgdir"
+  cp -r destdir/. "$pkgdir"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 "${_pkgbase}/LICENSE-MIT"
 }
