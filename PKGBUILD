@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dopamine
 _pkgname=Dopamine
-pkgver=3.0.0_preview.35
+pkgver=3.0.0_preview.36
 _electronversion=26
 _nodeversion=20
 pkgrel=1
@@ -17,14 +17,13 @@ makedepends=(
     'git'
     'nvm'
     'gcc'
-    'cmake'
     'curl'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('4e984e7f0196470aec71c53913653bd9629e8ff190ebcd1a35f939eb4cc169ac'
+sha256sums=('3e7d25108d137fe19769db791b261d497ae633d666dfbc979a0ea458b9728b61'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
