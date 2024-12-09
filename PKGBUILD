@@ -5,9 +5,11 @@
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
 
-pkgname=obs-studio-browser
-pkgver=31.0.0
-pkgrel=1
+_suffix=browser
+pkgname="obs-studio-${_suffix}"
+_pkgver=31.0.0
+pkgver="${_pkgver//-/_}"
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -112,7 +114,7 @@ conflicts=(
 )
 options=('debug')
 source=(
-  "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
+  "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$_pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
 )
@@ -135,6 +137,9 @@ prepare() {
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git -c protocol.file.allow=always submodule update
+
+  ## Mark log and titlebar version
+  sed -i "s|obs_get_version_string()|\"$_pkgver-$_suffix-$pkgrel\"|" UI/obs-app.cpp
 }
 
 build() {
@@ -147,11 +152,9 @@ build() {
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=ON \
     -DCEF_ROOT_DIR="$srcdir/cef_binary_6533_linux_${CARCH/%_v?/}" \
-    -DOBS_VERSION_OVERRIDE="$pkgver" \
+    -DOBS_VERSION_OVERRIDE="$_pkgver" \
     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
     -Wno-dev
-
-  sed -i "s|OBS_VERSION =|OBS_VERSION = \"$pkgver-browser-$pkgrel\"; //|" build/libobs/obsversion.c
 
   cmake --build build
 }
