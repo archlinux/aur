@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=openvaf-reloaded
 pkgver=r730.802bce2
-pkgrel=1
+pkgrel=2
 pkgdesc="Continuation of OpenVAF - A Next-generation VerilogA Compiler - OSDI >= 4 support"
 arch=(
 	"x86_64"
@@ -25,7 +25,7 @@ optdepends=(
 	"python: For running verilogae to obtain equations of compact models"
 )
 options=(!lto)
-conflicts=("openvaf")
+provides=("openvaf-r")
 
 _commit="802bce21ac44833b52c010cb90d37e0d6fddd4ac" # FIXME: No releases yet - use a specific commit for now
 source=("${pkgname}::git+${url}#commit=${_commit}")
@@ -66,7 +66,7 @@ package() {
 	install -Dm755 -t "${pkgdir}/usr/bin/" "target/release/openvaf-r"
 	install -Dm755 -t "${pkgdir}/usr/bin/" "target/release/verilogae"
 	# FIXME: What's xtask?
-	# install -Dm755 -t "${pkgdir}/usr/bin/" "target/release/xstask"
+	# install -Dm755 -t "${pkgdir}/usr/bin/" "target/release/xtask"
 	# Libs
 	install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}/" "target/release/libverilogae.so"
 	install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}/" "target/release/libverilogae_py.so"
