@@ -5,7 +5,7 @@
 
 pkgname=enter-tex
 pkgver=3.47.0
-pkgrel=1
+pkgrel=2
 pkgdesc='TeX/LaTeX text editor'
 arch=('x86_64')
 url='https://gitlab.gnome.org/swilmet/enter-tex'

@@ -1,7 +1,7 @@
 pkgbase = enter-tex
 	pkgdesc = TeX/LaTeX text editor
 	pkgver = 3.47.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/swilmet/enter-tex
 	arch = x86_64
 	license = GPL-3.0-or-later
