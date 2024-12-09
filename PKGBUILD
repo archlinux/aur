@@ -4,12 +4,12 @@
 
 pkgname=spotx-git
 pkgver=r149+g21481cea9
-pkgrel=1
+pkgrel=2
 pkgdesc="SpotX Bash Script | Block all audio, banner & video ads | Block logging"
 arch=('any')
 url="https://github.com/SpotX-Official/SpotX-Bash"
 license=('MIT')
-depends=(perl zip unzip spotify)
+depends=(perl zip unzip)
 makedepends=('git')
 provides=(spotx)
 conflicts=(spotx)
