@@ -2,14 +2,22 @@
 pkgbase=dogelog
 pkgname=(dogelog-js dogelog-py dogelog-java dogelog-license dogelog)
 pkgver=1.2.5
-pkgrel=6
+pkgrel=7
 arch=(any)
 url='https://www.dogelog.ch/'
 pkgdesc='The avant-garde of logic programming'
 license=(custom)
 options=(!strip)
-source=(https://www.dogelog.ch/typtab/rscsrv/docs/50_archive/archive_1_2/dogelog_1_2_5.zip)
-sha256sums=('ac929e3662f3bb539d47d12c81004b1d48b6e7cf800f93353d04905854a25a61')
+source=(
+    https://www.dogelog.ch/typtab/rscsrv/docs/50_archive/archive_1_2/dogelog_1_2_5.zip
+    https://www.xlog.ch/izytab/rscsrv/en/docs/25_recital/17_runtime.pdf
+    https://www.xlog.ch/izytab/rscsrv/en/docs/25_recital/81_conditions.pdf
+)
+sha256sums=(
+    ac929e3662f3bb539d47d12c81004b1d48b6e7cf800f93353d04905854a25a61
+    ab0388caeda85ad41a4e19a096fb92cf319aaf7ead3041c27f4a4a264e9361b3
+    e00f26995e012646b0dffba4c4cdc604d87458b422b4f72aae6f382dff7ec5af
+)
 changelog=ChangeLog
 
 package_any() {
@@ -50,5 +58,5 @@ package_dogelog() {
 package_dogelog-license() {
     pkgdesc='The avant-garde of logic programming (License agreement)'
     license=()
-    install -m644 -Dt "$pkgdir/usr/share/licenses/$pkgbase" ../LICENSE
+    install -m644 -Dt "$pkgdir/usr/share/licenses/$pkgbase" ../17_runtime.pdf ../81_conditions.pdf
 }
