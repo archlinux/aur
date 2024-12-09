@@ -2,7 +2,7 @@ pkgbase = r-pbdzmq
 	pkgdesc = Programming with Big Data - Interface to 'ZeroMQ'
 	pkgver = 0.3.13
 	pkgrel = 1
-	url = https://cran.r-project.org/package=pbdZMQ
+	url = https://CRAN.R-project.org/package=pbdZMQ
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = r

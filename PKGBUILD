@@ -9,7 +9,7 @@ pkgver=${_pkgver//[:-]/.}
 pkgrel=1
 pkgdesc="Programming with Big Data - Interface to 'ZeroMQ'"
 arch=("x86_64")
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://CRAN.R-project.org/package=${_pkgname}"
 license=('GPL-3.0-only')
 depends=('r' 'zeromq')
 source=("${_pkgname}_${_pkgver}.tar.gz::https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
