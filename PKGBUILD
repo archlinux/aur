@@ -1,9 +1,9 @@
 # Maintainer: Ashley Bone <ashley DOT bone AT pm DOT me>
 
 pkgname=healthchecks
-_pkgver=3.7
-pkgver=3.7.0
-pkgrel=3
+_pkgver=3.8
+pkgver=3.8.0
+pkgrel=1
 pkgdesc="A cron monitoring service with a web-based dashboard, API, and notification integrations."
 arch=('any')
 url="https://github.com/healthchecks/healthchecks"
@@ -28,14 +28,14 @@ source=("$url/archive/refs/tags/v$_pkgver.tar.gz"
         "$pkgname.tmpfiles"
         "local_settings.py"
         "settings.patch")
-sha256sums=('2d46db4a58488de6918aa95fb9f6ff77a94a76e76ea58817bbd89423e3b1f7ce'
+sha256sums=('ed82c4d749f488d2a292e232920f8dbc351887f63e1d057c3f9ccd45f57a7586'
             'b3873cb0d45807e15b5bca7e11d1b1d72e6618409ca62b008eea2f84e78fd1b0'
             '355ac237284642e24a3cbe7ddb285bf7dbb802e72ea7fe7c68f0476178ab94fc'
             '9d32c4d1404079cac9b7a4ccbc97e01d867735c2536f915220d2ac5dffc333e7'
             '39d54c71890449a8f114c756cb96c87bf40538f7dbb056eb5c19882cc40e59da'
             'd6eba99257afc8f75092af7d018d56618d0930ad2258fa6963d86089b7b3c35a'
             '55af4162848e448233fea8eefa42f4bc8c09f99be9d9fb0c8841a9dd38e95dd5'
-            'efa32e5bb8ef6dae017e2e196e8a37e42e73c2aade36743905f544c0c8b936b8'
+            '3d6cfec48c4d60498080dd3309079a53ba7775c24ca9367b4e6776f6dce4f344'
             '2407d81ae0224d5c394b35e20a3b29d138fbde3fdde951de9dfea44d97e73eca'
             'c04de046d176958b3705d751ac09cf018d395b6c37f38977ec4048a561d5041f'
             '4cb8857de8ef834e0e41eddc56a3e7bbab63adb210196642ca2544b48220f31d'

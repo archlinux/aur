@@ -3,6 +3,7 @@ Description=Healthchecks cron job monitor.
 After=syslog.target
 
 [Service]
+SyslogIdentifier=healthchecks
 ExecStart=/usr/bin/uwsgi --ini /etc/uwsgi/healthchecks.ini
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStop=/bin/kill -INT $MAINPID
