@@ -1,0 +1,12 @@
+pkgbase = bencodetools
+	pkgdesc = A collection of tools for manipulating bencoded data.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://gitlab.com/heikkiorsila/bencodetools
+	arch = x86_64
+	license = custom
+	makedepends = git
+	source = git+https://gitlab.com/heikkiorsila/bencodetools.git#tag=v1.0.1
+	md5sums = 68125158237362f86ca56d2042046ff7
+
+pkgname = bencodetools

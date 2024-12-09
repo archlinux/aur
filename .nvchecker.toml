@@ -1,0 +1,5 @@
+[bencodetools]
+source="gitlab"
+gitlab="heikkiorsila/bencodetools"
+use_max_tag=true
+prefix='v'
