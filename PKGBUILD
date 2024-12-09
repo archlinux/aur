@@ -9,10 +9,10 @@
 # for workarounds to `Insecure RPATH '<build path>' in usr/lib/spotube/lib/lib*_plugin.so`
 
 _system_flutter=false # build_system part seems missing in aur/flutter
-_flutter_version=3.24.3
+_flutter_version=3.24.5
 
 pkgname=spotube
-pkgver=3.8.3
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
 arch=("x86_64" "aarch64")
@@ -31,10 +31,10 @@ options=("!lto") # undefined symbol: Dart_NewPersistentHandle_DL
 source=(
     "spotube-$pkgver.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('e4436f11e31bfbd79e76e0bae524e06ece095da548d3a5b8ccd1f7a28ce2b79a'
-            'f4e2369afaf38a8e381c9243fad2ca04b8514194c40ec946825d1f4c5539a095')
+sha256sums=('f06f52e98266bd644478b2cef6fa6a4189f07f36818581b0d40c38fddc85abbe'
+            'a7c82f551a9eae018e078f6bb186171e5a77920d35a3d75a61d9a593d0a9e4ae')
 
-_release_date=2024-10-09
+_release_date=2024-12-09
 
 
 if $_system_flutter
@@ -109,7 +109,7 @@ package() {
     local appid="com.github.KRTirtho.Spotube"
     cd "$srcdir/spotube-$pkgver"
     mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/lib"
-    cp -rdp --no-preserve=ownership "build/linux/$_arch/release/bundle" "$pkgdir/usr/lib/spotube"
+    cp -a --no-preserve=ownership "build/linux/$_arch/release/bundle" "$pkgdir/usr/lib/spotube"
     ln -srfv "$pkgdir/usr/lib/spotube/spotube" "$pkgdir/usr/bin/spotube"
     sed "s@Icon=/usr/share/icons/spotube/spotube-logo.png@Icon=$appid@;s@/usr/bin/spotube@/usr/bin/spotube %u@" \
         linux/spotube.desktop | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$appid.desktop"
