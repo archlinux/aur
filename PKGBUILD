@@ -26,10 +26,17 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     make GO_LDFLAGS="-linkmode=external" PROJECT_GIT_DESCRIBE="v$pkgver-0-g${_commit:0:7}"
+
+    ./cgtproxy completion bash > cgtproxy.sh
+    ./cgtproxy completion zsh > cgtproxy.zsh
+    ./cgtproxy completion fish > cgtproxy.fish
 }
 
 package() {
     cd "$pkgname-$_commit"
     make DESTDIR="$pkgdir" PREFIX=/usr install
     install -Dm644 misc/config/example.yaml "$pkgdir/usr/share/doc/$pkgname/config.yaml"
+    install -Dm644 cgtproxy.sh "$pkgdir/usr/share/bash-completion/completions/cgtproxy"
+    install -Dm644 cgtproxy.zsh "$pkgdir/usr/share/zsh/site-functions/_cgtproxy"
+    install -Dm644 cgtproxy.fish "$pkgdir/usr/share/fish/vendor_completions.d/cgtproxy.fish"
 }
