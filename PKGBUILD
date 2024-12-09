@@ -2,7 +2,7 @@
 pkgname="pay-respects-bin"
 pkgver=0.6.2
 pkgrel=1
-pkgdesc="Command suggestions, command-not-found and thefuck replacement written in Rust  (All modules)"
+pkgdesc="Command suggestions, command-not-found and thefuck replacement written in Rust (All modules)"
 arch=("x86_64")
 url="https://github.com/iffse/pay-respects"
 license=('AGPL')
