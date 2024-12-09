@@ -1,19 +1,21 @@
-# Maintainer: Morten Linderud <foxboron@archlinux.org>
+# Maintainer: envolution
+# Contributor: Morten Linderud <foxboron@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: dorphell <dorphell@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Denis Tikhomirov <dvtikhomirov@gmail.com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=minicom-git
 _pkgname=minicom
-pkgver=2.8.r6.g4efbb0a
-pkgrel=2
+pkgver=v2.9.rc1+r376+g40609fae2
+pkgrel=1
 pkgdesc='A serial communication program'
 arch=('x86_64')
 url='https://salsa.debian.org/minicom-team/minicom'
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('bash')
-makedepends=('git')
+makedepends=('git' automake perl)
 optdepends=('lrzsz: for xmodem, ymodem and zmodem file transfer protocols')
 provides=("minicom=$pkgver")
 conflicts=('minicom')
@@ -23,28 +25,28 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  ( set -o pipefail
-    git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
-  )
+  _version=$(git tag --sort=-v:refname --list | head -n1 | tr - .)
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version}+r${_commits}+g${_short_commit_hash}"
 }
 
 prepare() {
   cd "${_pkgname}"
-
+  sed -i 's/aclocal-[^ ]*/aclocal/g; s/automake-[^ ]*/automake/g' autogen.sh #strip version suffixes since we don't need them
   ./autogen.sh
 }
 
 build() {
   cd "${_pkgname}"
-
   ./configure --prefix=/usr \
-              --sysconfdir=/etc
+    --sysconfdir=/etc
   make
 }
 
 package() {
   cd "${_pkgname}"
-
   make DESTDIR="${pkgdir}/" install
   install -Dm644 doc/minirc.dfl ${pkgdir}/etc/minirc.dfl
 }
+# vim:set ts=2 sw=2 et:

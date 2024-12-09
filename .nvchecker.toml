@@ -1,0 +1,5 @@
+[minicom-git]
+source="cmd"
+cmd="git ls-remote --tags --refs https://salsa.debian.org/minicom-team/minicom.git | awk -F'/' '{print $3}' | sort -V | tail -n 1"
+from_pattern='-'
+to_pattern='.'
