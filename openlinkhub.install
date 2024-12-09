@@ -1,42 +1,25 @@
-# This is a default template for a post-install scriptlet.
-# Uncomment only required functions and remove any functions
-# you don't need (and this header).
-
-## arg 1:  the new package version
-pre_install() {
-	systemctl stop openlinkhub
-	systemctl disable openlinkhub
-}
-
-## arg 1:  the new package version
 post_install() {
-	systemctl daemon-reload
-	systemctl enable --now openlinkhub
-	echo -e "You can now access the OpenLinkHub WebUI at http://127.0.0.1:27003"
+	echo -e "\e[1;7m[OpenLinkHub]\e[0m: \e[92mInstall Complete\e[0m -- Enable and start the openlinkhub service:"
+	echo -e "\e[1;7m[OpenLinkHub]\e[0m: \e[3msudo systemctl enable --now openlinkhub\e[0m"
+	echo -e "\e[1;7m[OpenLinkHub]\e[0m: The OpenLinkHub WebUI will be located at \e[1;7m http://127.0.0.1:27003 \e[0m after starting the service."
 }
 
-## arg 1:  the new package version
-## arg 2:  the old package version
 pre_upgrade() {
 	systemctl stop openlinkhub
 	systemctl disable openlinkhub
 }
 
-## arg 1:  the new package version
-## arg 2:  the old package version
 post_upgrade() {
-	systemctl daemon-reload
-	systemctl enable --now openlinkhub
-	echo -e "You can now access the OpenLinkHub WebUI at http://127.0.0.1:27003"
+	echo -e "\e[1;7m[OpenLinkHub]\e[0m: \e[92mUpgrade Complete\e[0m -- Restart the openlinkhub service:"
+	echo -e "\e[1;7m[OpenLinkHub]\e[0m: \e[3msudo systemctl restart openlinkhub\e[0m"
+	echo -e "\e[1;7m[OpenLinkHub]\e[0m: The OpenLinkHub WebUI will be located at \e[1;7m http://127.0.0.1:27003 \e[0m after restarting the service."
 }
 
-## arg 1:  the old package version
 pre_remove() {
 	systemctl stop openlinkhub
 	systemctl disable openlinkhub
 }
 
-## arg 1:  the old package version
-#post_remove() {
-	#rm -rf /opt/openlinkhub
-#}
+post_remove() {
+	systemctl daemon-reload
+}
