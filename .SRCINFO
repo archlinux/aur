@@ -1,11 +1,10 @@
 pkgbase = spark
 	pkgdesc = Cross-platform real-time collaboration client optimized for business and organizations.
 	pkgver = 3.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.igniterealtime.org/projects/spark/
 	arch = any
 	license = Apache-2.0
-	makedepends = xmlstarlet
 	makedepends = maven
 	depends = java-runtime
 	depends = unixodbc

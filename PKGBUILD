@@ -8,13 +8,13 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=spark
 pkgver=3.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform real-time collaboration client optimized for business and organizations."
 arch=('any')
 url="http://www.igniterealtime.org/projects/spark/"
 license=('Apache-2.0')
 depends=('java-runtime' 'unixodbc' 'libxtst')
-makedepends=(xmlstarlet maven)
+makedepends=(maven)
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/igniterealtime/Spark/archive/refs/tags/v${pkgver}.tar.gz" spark.desktop)
 sha512sums=('8c0356276652c69d8922a9c05ceb432007b22741c57f32f5aba1d27389775bd7de99cd05f5def54d179bc6b40d1d1e1e3b2f3f2ae6903c556471b976c0b3a9b5'
