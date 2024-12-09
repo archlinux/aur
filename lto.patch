@@ -1,11 +1,10 @@
-diff '--color=auto' -rupN cosmic-launcher.orig/Cargo.toml cosmic-launcher/Cargo.toml
---- cosmic-launcher.orig/Cargo.toml	2024-09-26 18:45:13.383010635 +0200
-+++ cosmic-launcher/Cargo.toml	2024-09-26 18:46:21.323773516 +0200
-@@ -44,3 +44,7 @@ switcheroo-control = { git = "https://gi
- zbus = { version = "4.2.1", default-features = false, features = ["tokio"] }
- unicode-truncate = "1.0.0"
- unicode-width = "0.1.11"
+diff --unified --recursive --text a/Cargo.toml b/Cargo.toml
+--- a/Cargo.toml	2024-12-09 15:47:36.952203029 -0700
++++ b/Cargo.toml	2024-12-09 15:55:12.345871472 -0700
+@@ -57,3 +57,6 @@
+ # [patch."https://github.com/pop-os/launcher/"]
+ # pop-launcher = { git = "https://github.com/wiiznokes/launcher/", rev = "86a54d54a68b832d404ef83a03af84cf9ef3e694" }
+ # pop-launcher-service = { git = "https://github.com/wiiznokes/launcher/", rev = "86a54d54a68b832d404ef83a03af84cf9ef3e694" }
 +
 +[profile.release]
 +lto = "thin"
-+
