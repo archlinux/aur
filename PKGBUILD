@@ -3,27 +3,21 @@
 _org='gepetto'
 _pkgname='example-robot-data'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="Set of robot URDFs for benchmarking and developed examples."
 arch=('any')
 url="https://github.com/$_org/$_pkgname"
 license=('BSD-2-Clause')
 depends=('pinocchio')
 makedepends=('cmake')
-source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"{,.sig}
-        "example-robot-data-pin3.patch::$url/pull/217.patch")
-sha256sums=('943e59fe5ab071f83729197584b452e8890562b36b391b0b4042867de034c2b5'
-            'SKIP'
-            '2abdb211fdd512f80a0d9b07c0d29534e1861fffeba92e07f40f92a4d4d8518b')
+source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"{,.sig})
+sha256sums=('43936c78938bae82c4524cd47a0b8947bae237ca6b6ff00d28b60b2cfe818567'
+            'SKIP')
 validpgpkeys=(
         '9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'  # https://github.com/nim65s.gpg
         'A031AD35058955293D54DECEC45D22EF408328AD'  # https://github.com/jcarpent.gpg
         )
-
-prepare() {
-    patch -d "$pkgbase-$pkgver" -p1 -i "$srcdir/example-robot-data-pin3.patch"
-}
 
 build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
