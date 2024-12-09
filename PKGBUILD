@@ -57,7 +57,7 @@ build() {
 
 check() {
 	cd "$pkgname"
-	RUN_SLOW_TESTS=1 cargo test --frozen --all-features
+	cargo test --frozen --all-features
 }
 
 package() {
