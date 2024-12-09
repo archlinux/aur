@@ -2,7 +2,7 @@
 # Contributor: Perseo <perseo.gi98@gmail.com>
 pkgname=xsct
 pkgver=2.3
-pkgrel=3
+pkgrel=4
 _gitname=sct
 
 pkgdesc="Improved sct (set screen color temperature)"
@@ -10,7 +10,6 @@ arch=('i686' 'x86_64')
 url="https://github.com/faf0/$_gitname"
 license=('Unlicense')
 depends=('glibc' 'libx11' 'libxrandr')
-makedepends=('git')
 provides=('xsct')
 conflicts=('xsct')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/faf0/$_gitname/archive/$pkgver.tar.gz")
