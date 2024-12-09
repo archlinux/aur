@@ -23,7 +23,8 @@ build() {
 }
 
 package() {
-    depends=("linux-hardened=$(pacman -Q linux-hardened | awk '{print $2}')")
+#    depends=("linux-hardened=$(pacman -Q linux-hardened | awk '{print $2}')")
+    depends+=("linux-hardened")
     cd ${srcdir}/amneziawg-linux-kernel-module-${pkgver}/src
     install -Dm644 "${srcdir}/amneziawg-linux-kernel-module-${pkgver}/src/amneziawg.ko" "$pkgdir/usr/lib/modules/$(ls /usr/lib/modules/ | grep hardened | sort -u | tail -1)/kernel/drivers/net/wireguard/amneziawg.ko"
 }

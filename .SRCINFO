@@ -6,12 +6,13 @@ pkgbase = amneziawg-linux-hardened
 	install = amneziawg-linux-hardened.install
 	arch = x86_64
 	license = GPLv2
-	depends = linux-hardened=6.11.7.hardened1-1
-	depends = linux-hardened-headers=6.11.7.hardened1-1
+	makedepends = linux-hardened
+	makedepends = linux-hardened-headers
 	provides = AMNEZIAWG-MODULE=1.0.20241112
 	source = amneziawg-linux-hardened-1.0.20241112.tar.gz::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/archive/refs/tags/v1.0.20241112.tar.gz
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.11.7.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.11.11.tar.xz
 	sha512sums = 0d0dde7324088f2f3eff2cff9679e7f25b20d9796462da9949e6fc97af320a43ace27f9dfbd32cc2995449a68b313d6877ced6aa0ad3fbd02f15b1338e62fdff
 	sha512sums = SKIP
 
 pkgname = amneziawg-linux-hardened
+	depends = linux-hardened
