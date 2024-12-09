@@ -2,7 +2,7 @@
 pkgbase=dogelog
 pkgname=(dogelog-js dogelog-py dogelog-java dogelog-license dogelog)
 pkgver=1.2.5
-pkgrel=7
+pkgrel=8
 arch=(any)
 url='https://www.dogelog.ch/'
 pkgdesc='The avant-garde of logic programming'
@@ -21,7 +21,7 @@ sha256sums=(
 changelog=ChangeLog
 
 package_any() {
-    install --mode=655 -Dt "$pkgdir/usr/share/$pkgbase" "$1"
+    install --mode=644 -Dt "$pkgdir/usr/share/$pkgbase" "$1"
 }
 
 package_dogelog-py() {

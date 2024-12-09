@@ -1,7 +1,7 @@
 pkgbase = dogelog
 	pkgdesc = The avant-garde of logic programming
 	pkgver = 1.2.5
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.dogelog.ch/
 	changelog = ChangeLog
 	arch = any
