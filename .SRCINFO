@@ -1,7 +1,7 @@
 pkgbase = python-mmsegmentation
 	pkgdesc = OpenMMLab Semantic Segmentation Toolbox and Benchmark
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/open-mmlab/mmsegmentation
 	arch = any

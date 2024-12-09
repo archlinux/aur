@@ -3,7 +3,7 @@
 _pkgname=mmsegmentation
 pkgname=python-mmsegmentation
 pkgver=1.2.2
-pkgrel=2
+pkgrel=4
 epoch=1
 pkgdesc='OpenMMLab Semantic Segmentation Toolbox and Benchmark'
 arch=('any')
@@ -39,8 +39,7 @@ package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   cd "${_pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
-  # remove unused .mim and tests dir
-  rm -rfv "${pkgdir}${site_packages}/mmseg/.mim"
+  # remove unused tests dir
   rm -rfv "${pkgdir}${site_packages}/tests"
 }
 # vim:set ts=2 sw=2 et:
