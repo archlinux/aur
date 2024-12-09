@@ -4,11 +4,11 @@
 
 pkgname=firefox-auto-tab-discard
 pkgver=0.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Use native tab discard method to automatically reduce memory usage of inactive tab'
 url=https://webextension.org/listing/tab-discard.html
 arch=('any')
-license=('MPL2')
+license=('MPL-2.0')
 depends=('firefox')
 groups=('firefox-addons')
 source=(
