@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qtscrcpy-bin
 _pkgname=QtScrcpy
-pkgver=2.2.1
+pkgver=3.0.1
 pkgrel=1
-pkgdesc="Android real-time display control software.Prebuilt version."
+pkgdesc="Android real-time display control software.(Prebuilt version)"
 arch=('x86_64')
 url="https://blog.csdn.net/rankun1/article/details/87970523"
 _ghurl="https://github.com/barry-ran/QtScrcpy"
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/barry-ran/QtScrcpy/v${pkgver}/backup/logo.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('db51426803fbc0f85603080fc3bdb4018d160f0309d3e3c4b57924f7ac9802c7'
+sha256sums=('080cab9a3b2220d65799cd4debb4fa7a1cc6dcbc674da01cfd0bd9611dc07a48'
             'a96a81cee07375eaed07d927e67dbeb1f2d3c9e0c3791d5d14156bd03bf73371'
             'db1db4c15024a45337e7e7190046e6414184603321be058797422a54ed5fc85d')
 build() {
