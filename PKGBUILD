@@ -1,5 +1,5 @@
 pkgname=lala-bar
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1.0
 pkgdesc='A bar with layershell'
 arch=('x86_64' 'aarch64')
@@ -7,7 +7,7 @@ url='https://github.com/Decodetalkers/lala-bar'
 license=('MIT')
 makedepends=('git' 'ninja' 'meson' 'rust')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/Decodetalkers/lala-bar/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('95958bf985f8b2a7994b17e737ef765a96f304b543549e9f0c7acff615bb2896')
+sha256sums=('8c447142c2f3f1b741b082a6546e6ef86051e0141dde3ffdc20e084f1e105ebe')
 options+=(!lto)
 
 build() {
