@@ -11,6 +11,7 @@ pkgbase = alpaca-git
 	depends = python-pypdf
 	depends = python-pytube
 	depends = python-html2text
+	depends = python-pydbus
 	depends = python-youtube-transcript-api
 	depends = vte4
 	optdepends = ollama

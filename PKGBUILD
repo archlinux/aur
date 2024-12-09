@@ -14,6 +14,7 @@ depends=(
   'python-pypdf'
   'python-pytube'
   'python-html2text'
+  'python-pydbus'
   'python-youtube-transcript-api'
   'vte4'
 )
