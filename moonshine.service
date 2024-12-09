@@ -6,6 +6,7 @@ After=graphical-session.target
 
 [Service]
 ExecStart=/usr/bin/moonshine %E/moonshine/config.toml
+Restart=always
 
 [Install]
 WantedBy=graphical-session.target
