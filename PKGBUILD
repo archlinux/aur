@@ -3,7 +3,7 @@
 _pkgname=mmaction2
 pkgname=python-mmaction2
 pkgver=1.2.0
-pkgrel=2
+pkgrel=4
 pkgdesc="OpenMMLab's Next Generation Action Understanding Toolbox and Benchmark"
 arch=('any')
 url='https://github.com/open-mmlab/mmaction2'
@@ -44,8 +44,5 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
-  # delete unused .mim dir
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm -rfv "${pkgdir}${site_packages}/mmaction/.mim"
 }
 # vim:set ts=2 sw=2 et:

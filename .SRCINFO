@@ -1,7 +1,7 @@
 pkgbase = python-mmaction2
 	pkgdesc = OpenMMLab's Next Generation Action Understanding Toolbox and Benchmark
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/open-mmlab/mmaction2
 	arch = any
 	license = Apache-2.0
