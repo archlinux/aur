@@ -1,6 +1,6 @@
 pkgname=tailscaledesktop
 _pkgname=TailscaleDesktop
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Unnofficial Tailscale desktop application"
 arch=('x86_64' 'aarch64')
@@ -8,13 +8,13 @@ url="https://gitlab.com/linuxbombay/tailscaledesktop"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
-source=("$url/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('62c5a3d01ae3e443a975292fc0f0f9fbed238a57694022eaf9ff1b2d32b6944d')
+source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
+sha256sums=('5bc87192f5e2826b03f6f8f52e8a4bfcd130f7726713f2dd66d69f1d62e79278')
 
 package() {
-    for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
+    for dir in application-$pkgver ; do mv "${dir}" "$_pkgname" ;done
     cd "$srcdir/$_pkgname"
-    chmod +x $pkgname.sh
+    chmod +x $pkgname
     ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
     install -dm755 "$pkgdir/opt/$pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
@@ -23,10 +23,10 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgname/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" \
-        "$pkgdir/usr/share/applications/$_pkgname.desktop"
-    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    install -Dm644 "$srcdir/$_pkgname/$pkgname.desktop" \
+        "$pkgdir/usr/share/applications/$pkgname.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$pkgname.desktop"
 }

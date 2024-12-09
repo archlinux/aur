@@ -1,6 +1,6 @@
 pkgbase = tailscaledesktop
 	pkgdesc = Unnofficial Tailscale desktop application
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/tailscaledesktop
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tailscaledesktop
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/tailscaledesktop/application/-/archive/1.0.3-1/application-1.0.3-1.tar.bz2
-	sha256sums = 62c5a3d01ae3e443a975292fc0f0f9fbed238a57694022eaf9ff1b2d32b6944d
+	source = https://gitlab.com/linuxbombay/tailscaledesktop/application/-/archive/1.0.4/application-1.0.4.tar.bz2
+	sha256sums = 5bc87192f5e2826b03f6f8f52e8a4bfcd130f7726713f2dd66d69f1d62e79278
 
 pkgname = tailscaledesktop
