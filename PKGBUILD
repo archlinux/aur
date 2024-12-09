@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mpc-qt-bin
-pkgver=24.06
+pkgver=24.12
 pkgrel=1
-pkgdesc="A clone of Media Player Classic reimplemented in Qt."
+pkgdesc="A clone of Media Player Classic reimplemented in Qt.(Prebuilt version)"
 arch=('x86_64')
 url="https://mpc-qt.github.io/"
 _ghurl="https://github.com/mpc-qt/mpc-qt"
@@ -20,22 +20,23 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-${pkgver//./}.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0e7d65cb77a58a5a70ca04c14e641cfa55a04a71ffb0349fd5da3df403eeb5c6'
-            'ec193c200ad1c5a5aef051cc96cbb141729d4464754ab0c67112be4b31236dca')
+sha256sums=('34d8d6965bec355c9d8da2a4685ed5403cef4aafae7d959592f2f501d238068e'
+            '726bd004a183f9f413c0e00e51ecce455a8644447dc1a2eebfec0656597eaec8')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${pkgname%-bin}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/usr/"{bin,lib,plugins,translations} "${pkgdir}/opt/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/usr/"{bin,lib,plugins,translations} "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
