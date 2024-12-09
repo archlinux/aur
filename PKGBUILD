@@ -2,7 +2,7 @@
 pkgname=udeler
 _pkgname=Udeler
 _appname=udemy-downloader-gui
-pkgver=1.13.3
+pkgver=1.13.4
 _electronversion=11
 _nodeversion=18
 pkgrel=3
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('ed382975f3933f2fba7591333387ef387bb1ec4f137c5742be2edaf9cd4663a3'
+sha256sums=('7808cebec5fd816fe281f6bf4e8bde73cb7e12746b0b0e11c7516ebdd53d71ad'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -58,7 +58,6 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
