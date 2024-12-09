@@ -2,14 +2,14 @@
 
 pkgname=quickfix
 pkgver=1.15.1
-pkgrel=5
+pkgrel=6
 pkgdesc="C++ Fix Engine Library"
 arch=(x86_64)
 url="http://www.quickfixengine.org"
 license=('custom:The QuickFIX Software License, Version 1.0')
 depends=(python tbb)
 optdepends=(mysql postgresql-libs ruby)
-makedepends=(boost)
+makedepends=(boost python-setuptools)
 checkdepends=(ruby)
 source=($pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz
         unit_test.patch)
@@ -18,9 +18,6 @@ sha256sums=('1c4322a68704526ca3d1f213e7b0dcd30e067a8815be2a79b2ab1197ef70dcf7'
 options=(!lto)
 
 prepare() {
-  CFLAGS+=" -std=c99"
-  CXXFLAGS+=" -std=c++14"
-
   cd "$srcdir/$pkgname-$pkgver"
   patch -p1 < ../unit_test.patch
   ./bootstrap
@@ -33,6 +30,7 @@ build() {
     --with-boost=/usr \
     --with-openssl=/usr \
     --with-tbb=/usr \
+    --with-allocator=tbb \
     --with-python3
   make
 }
