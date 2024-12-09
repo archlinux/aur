@@ -1,9 +1,10 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
-pkgname=obs-studio-rc
+_suffix=rc
+pkgname="obs-studio-${_suffix}"
 _pkgver=31.0.0
 pkgver="${_pkgver//-/_}"
-pkgrel=1
+pkgrel=2
 epoch=10
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -132,6 +133,9 @@ prepare() {
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git -c protocol.file.allow=always submodule update
+
+  ## Mark log and titlebar version
+  sed -i "s|obs_get_version_string()|\"$_pkgver-$_suffix-$pkgrel\"|" UI/obs-app.cpp
 }
 
 build() {
@@ -147,8 +151,6 @@ build() {
     -DOBS_VERSION_OVERRIDE="$_pkgver" \
     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
     -Wno-dev
-
-  sed -i "s|OBS_VERSION =|OBS_VERSION = \"$_pkgver-rc-$pkgrel\"; //|" build/libobs/obsversion.c
 
   cmake --build build
 }
