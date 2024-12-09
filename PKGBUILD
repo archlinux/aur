@@ -1,8 +1,8 @@
 # Maintainer: Răzvan Cojocaru <rzvncj@gmail.com>
 
 pkgname=gdbuspp-git
-pkgver=1
-pkgrel=2
+pkgver=3
+pkgrel=1
 pkgdesc="glib2 D-Bus C++ interface"
 arch=('x86_64')
 url="https://codeberg.org/OpenVPN/gdbuspp"
