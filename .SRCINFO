@@ -1,6 +1,6 @@
 pkgbase = python-rns
 	pkgdesc = Self-configuring, encrypted and resilient mesh networking stack
-	pkgver = 0.8.6
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://reticulum.network/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-rns
 	depends = python-pyserial
 	provides = rnodeconf
 	conflicts = rnodeconf
-	source = python-rns-0.8.6::https://github.com/markqvist/Reticulum/archive/refs/tags/0.8.6.tar.gz
-	sha256sums = c1dabe63ecfa11694b437a7530cc8e86ad6772a952c27ff01c579e8cf1906279
+	source = python-rns-0.8.7::https://github.com/markqvist/Reticulum/archive/refs/tags/0.8.7.tar.gz
+	sha256sums = fb081c1f74f8a41c63502766a88b14c0078cc1016b6ac470893c7c56cf1b3095
 
 pkgname = python-rns
