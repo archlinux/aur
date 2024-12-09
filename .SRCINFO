@@ -1,6 +1,6 @@
 pkgbase = gdbuspp-git
 	pkgdesc = glib2 D-Bus C++ interface
-	pkgver = master_93d0c528c51ce13d
+	pkgver = 3
 	pkgrel = 1
 	url = https://codeberg.org/OpenVPN/gdbuspp
 	arch = x86_64
