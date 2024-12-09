@@ -11,8 +11,8 @@ pkgdesc="A free-to-win rhythm game. Rhythm is just a *click* away!"
 arch=('x86_64')
 url="https://osu.ppy.sh/"
 license=('MIT AND CC-BY-NC-4.0')
-depends=('ffmpeg' 'libgl' 'sdl2' 'dotnet-runtime')
-makedepends=('dotnet-sdk')
+depends=('ffmpeg' 'libgl' 'sdl2' 'dotnet-runtime-8.0')
+makedepends=('dotnet-sdk-8.0')
 source=("https://github.com/ppy/osu/archive/$pkgver.tar.gz"
         "osu-lazer.sh"
         "osu-lazer.desktop"
