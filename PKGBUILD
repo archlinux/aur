@@ -1,0 +1,35 @@
+pkgname=cgtproxy
+pkgver=0.2.0
+_commit=98d77823838dc30f2e57cc57f9bb859c15998a71
+pkgrel=1
+pkgdesc="A transparent proxy RULE manager written in go inspired by cgproxy."
+arch=(x86_64)
+url="https://github.com/black-desk/cgtproxy"
+license=(GPL-3.0-only)
+depends=(gcc-libs glibc)
+makedepends=(go)
+source=("$pkgname-$_commit.tar.gz::https://github.com/black-desk/cgtproxy/archive/$_commit.tar.gz")
+sha256sums=('ca1c0d44d15706f508509fcfa3d1382f742816d01cd37a1688ab1b064bd36ea2')
+
+prepare() {
+    cd "$pkgname-$_commit"
+    # Allow this value being overriden
+    sed -i 's/PROJECT_GIT_DESCRIBE =/PROJECT_GIT_DESCRIBE ?=/' \
+        Makefile
+}
+
+build() {
+    cd "$pkgname-$_commit"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    make GO_LDFLAGS="-linkmode=external" PROJECT_GIT_DESCRIBE="v$pkgver-0-g${_commit:0:7}"
+}
+
+package() {
+    cd "$pkgname-$_commit"
+    make DESTDIR="$pkgdir" PREFIX=/usr install
+    install -Dm644 misc/config/example.yaml "$pkgdir/usr/share/doc/$pkgname/config.yaml"
+}
