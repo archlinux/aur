@@ -1,11 +1,10 @@
 pkgbase = vimv
 	pkgdesc = A command line utility for batch-renaming files.
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dmulholl/vimv
 	arch = x86_64
-	license = BSD
-	license = custom
+	license = 0BSD
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc

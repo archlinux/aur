@@ -2,11 +2,11 @@
 
 pkgname=vimv
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line utility for batch-renaming files."
 arch=('x86_64')
 url="https://github.com/dmulholl/vimv"
-license=('BSD' 'custom')
+license=('0BSD')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 provides=("$pkgname")
@@ -17,7 +17,7 @@ sha512sums=('2e0e064de59b03f8b57a3ea4279577b30b0816104953f74c9bf12942aeb46bd37b7
 prepare() {
 	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -35,6 +35,7 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-	install -Dm0644 license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+	install -Dm644 'license.txt' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 'readme.md' "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
