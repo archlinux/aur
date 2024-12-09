@@ -2,7 +2,7 @@
 pkgname=pimpmyrice-git
 provides=("pimpmyrice")
 conflicts=("pimpmyrice-git" "pimpmyrice")
-pkgdesc=""
+pkgdesc="The overkill rice manager (from git)"
 url="https://github.com/daddodev/pimpmyrice"
 pkgver=0.1.0
 pkgrel=1
