@@ -1,12 +1,10 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=vnt-git
-pkgver=1.2.10.2.r8.ge36e450
-pkgrel=1
+pkgver=1.2.15.r0.g501a9e8
+pkgrel=2
 pkgdesc="A virtual network tool (or VPN),简便高效的异地组网、内网穿透工具"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/lbl8603/vnt"
 license=(Apache-2.0)
 provides=(${pkgname%-git})
@@ -87,4 +85,3 @@ EOF
 COMMIT
 EOF
 }
-
