@@ -2,33 +2,30 @@
 
 pkgname=fantascene-dynamic-wallpaper-git
 srcname=fantascene-dynamic-wallpaper-git
-pkgver=1.8.6.r4.g0f9b244
+pkgver=1.9.7.r5.g12012fa
 pkgrel=1
 pkgdesc=" dynamic wallpaper. A very nice animated wallpaper on X11 systems.Support Movie and Web animated wallpaper."
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/dependon/fantascene-dynamic-wallpaper"
 license=('GPL-3.0-only')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname%-git})
 depends=(mpv
-         qt5-tools
-         qt5-x11extras
-         qt5-webengine)
+    qt5-tools
+    qt5-x11extras
+    qt5-webengine)
 makedepends=(git
-            pkgconfig
-            make)
+    pkgconfig
+    make)
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-   cd "${srcdir}/${pkgname%-git}"
-   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${pkgname%-git}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname%-git}" clean -dfx
 }
 
