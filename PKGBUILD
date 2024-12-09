@@ -1,9 +1,9 @@
 # Maintainer: hanker <91734413+hankertrix@users.noreply.github.com>
 
-pkgname=vimv
-pkgver=3.1.0
+pkgname='vimv'
+pkgver='3.1.0'
 pkgrel=2
-pkgdesc="A command line utility for batch-renaming files."
+pkgdesc='A command line utility for batch-renaming files.'
 arch=('x86_64')
 url="https://github.com/dmulholl/vimv"
 license=('0BSD')
