@@ -1,0 +1,24 @@
+--- runners/maven-plugin/build.gradle.kts.bak	2024-11-25 18:17:09.331346014 +0100
++++ runners/maven-plugin/build.gradle.kts	2024-11-25 18:18:00.384807178 +0100
+@@ -2,7 +2,6 @@
+  * Copyright 2014-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license.
+  */
+ 
+-import org.gradle.kotlin.dsl.support.appendReproducibleNewLine
+ import org.jetbrains.registerDokkaArtifactPublication
+ 
+ plugins {
+@@ -78,11 +77,11 @@
+             buildString {
+                 val lines = pluginHelpProperties.readText().lines().iterator()
+                 // the first line is a descriptive comment
+-                appendReproducibleNewLine(lines.next())
++                append(lines.next()).append("\n")
+                 // the second line is the timestamp, which should be ignored
+                 lines.next()
+                 // the remaining lines are properties
+-                lines.forEach { appendReproducibleNewLine(it) }
++                lines.forEach { append(it).append("\n") }
+             }
+         )
+     }

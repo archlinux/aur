@@ -1,0 +1,31 @@
+--- settings.gradle.kts.bak	2023-11-22 18:20:42.369002363 +0100
++++ settings.gradle.kts	2023-11-22 18:21:00.853981373 +0100
+@@ -54,10 +54,6 @@
+     }
+ }
+ 
+-plugins {
+-    `gradle-enterprise`
+-}
+-
+ include(
+     ":core",
+     ":core:test-api",
+@@ -101,17 +97,4 @@
+     ":docs-developer",
+ )
+ 
+-val isCiBuild = System.getenv("GITHUB_ACTIONS") != null || System.getenv("TEAMCITY_VERSION") != null
+-
+-
+-
+-gradleEnterprise {
+-    buildScan {
+-        termsOfServiceUrl = "https://gradle.com/terms-of-service"
+-        termsOfServiceAgree = "yes"
+-        publishAlwaysIf(isCiBuild)
+-    }
+-}
+-
+-
+ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

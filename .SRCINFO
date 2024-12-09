@@ -1,22 +1,26 @@
 pkgbase = dokka
 	pkgdesc = Documentation Engine for Kotlin
-	pkgver = 1.7.20
+	pkgver = 1.9.10
 	pkgrel = 1
-	url = https://kotlin.github.io/dokka/1.7.20/
+	url = https://kotlin.github.io/dokka/1.9.10/
 	arch = any
 	license = Apache
-	makedepends = gradle>=7.3
-	makedepends = gradle<8
+	makedepends = gradle
+	makedepends = jdk8-openjdk
 	makedepends = npm
 	depends = freemarker
 	depends = java-environment
-	source = https://github.com/Kotlin/dokka/archive/refs/tags/v1.7.20.tar.gz
+	source = https://github.com/Kotlin/dokka/archive/refs/tags/v1.9.10.tar.gz
 	source = 0001-enable-application-plugin.patch
 	source = 0002-embed-plugin-dependencies.patch
+	source = 0003-disable-gradle-enterprise.patch
+	source = 0004-fix-unresolved-reference-appendReproducibleNewLine.patch
 	source = dokka
-	sha256sums = dadbc66843936f11bc520cb4546ab61b89895815a7b66201e00d0d773efad705
+	sha256sums = 6ff50037806e140cff4a12b98c8e6631c2aedbd867b04dcc40ade9880c75d0fc
 	sha256sums = 78d2f4fd30508c9b634e22655da275b0db4c5317d71bb3cd746f851702a31d93
-	sha256sums = b5f139af1e11ba823865f01383eb5eae873af86fcd86107e6e179076ce1145f4
+	sha256sums = bef57356bd152795195100874c918fa27c35407507aa13f08267dce0b0dcc1de
+	sha256sums = 2bac7e5f944f4f2342eaabff4b60666f3681dd945ff96e8bb56491c6dda4deb8
+	sha256sums = 53723fe300fad66e174f582e08040406978c064beb1e3925be04deea7bbff206
 	sha256sums = 9c7aa9721fe0b2c3cf3831a4d0b1720f13b070734d7be2702f820267ca11e277
 
 pkgname = dokka
