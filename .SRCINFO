@@ -5,8 +5,8 @@ pkgbase = pay-respects-bin
 	url = https://github.com/iffse/pay-respects
 	arch = x86_64
 	license = AGPL
+	optdepends = curl: for AI suggestions
 	provides = pay-respects
-	conflicts = pay-respects
 	source = pay-respects-bin-0.6.2-1::https://github.com/iffse/pay-respects/releases/download/v0.6.2/pay-respects-0.6.2-x86_64-unknown-linux-gnu.tar.gz
 	sha1sums = 1818b0e8315839290618636b88ba6b43fc2bff8a
 
