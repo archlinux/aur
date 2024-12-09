@@ -1,19 +1,20 @@
 pkgbase = mingw-w64-glslang
 	pkgdesc = OpenGL and OpenGL ES shader front end and validator (mingw-w64)
-	pkgver = 14.0.0
+	pkgver = 15.0.0
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/glslang
 	arch = any
 	license = BSD
 	makedepends = mingw-w64-cmake
 	makedepends = python
-	makedepends = git
+	makedepends = ninja
 	depends = mingw-w64-crt
+	depends = mingw-w64-spirv-tools
 	optdepends = mingw-w64-wine: runtime support
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = mingw-w64-glslang-14.0.0.tar.gz::https://github.com/KhronosGroup/glslang/archive/14.0.0.tar.gz
-	sha256sums = 80bbb916a23e94ea9cbfb1acb5d1a44a7e0c9613bcf5b5947c03f2273bdc92b0
+	source = glslang-15.0.0.tar.gz::https://github.com/KhronosGroup/glslang/archive/15.0.0.tar.gz
+	sha256sums = c31c8c2e89af907507c0631273989526ee7d5cdf7df95ececd628fd7b811e064
 
 pkgname = mingw-w64-glslang

@@ -1,53 +1,56 @@
-pkgname=mingw-w64-glslang
-pkgver=14.0.0
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+
+_pkgname=glslang
+pkgname=mingw-w64-${_pkgname}
+pkgver=15.0.0
 pkgrel=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (mingw-w64)'
 arch=('any')
 url='https://github.com/KhronosGroup/glslang'
 license=('BSD')
-depends=('mingw-w64-crt')
-makedepends=('mingw-w64-cmake' 'python' 'git')
+depends=('mingw-w64-crt' 'mingw-w64-spirv-tools')
+makedepends=('mingw-w64-cmake' 'python' 'ninja')
 optdepends=('mingw-w64-wine: runtime support')
 options=('!strip' '!buildflags' 'staticlibs')
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz)
-sha256sums=('80bbb916a23e94ea9cbfb1acb5d1a44a7e0c9613bcf5b5947c03f2273bdc92b0')
+source=(${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha256sums=('c31c8c2e89af907507c0631273989526ee7d5cdf7df95ececd628fd7b811e064')
 
+_srcdir="${_pkgname}-${pkgver}"
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-prepare() {
-  cd glslang-$pkgver
-  curl -L https://github.com/KhronosGroup/glslang/pull/3487.patch | patch -p1
-}
+_flags=(
+	-Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
+	-DALLOW_EXTERNAL_SPIRV_TOOLS=ON )
 
 build() {
-  cd glslang-$pkgver
-  for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake \
-      -DCMAKE_BUILD_TYPE=Release -DENABLE_OPT=1 -DALLOW_EXTERNAL_SPIRV_TOOLS=ON \
-      ..
-    make
-    echo -e "#!/bin/sh\n${_arch}-wine /usr/${_arch}/bin/glslang.exe \"\$@\"" > ${_arch}-glslang
-    popd
-    mkdir -p build-${_arch}-static && pushd build-${_arch}-static
-    ${_arch}-cmake \
-      -DCMAKE_BUILD_TYPE=Release -DENABLE_OPT=1 -DALLOW_EXTERNAL_SPIRV_TOOLS=ON \
-      -DBUILD_SHARED_LIBS=OFF \
-      ..
-    make
-    popd
-  done
+	for _arch in ${_architectures}; do
+		${_arch}-cmake -G Ninja -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
+			-DBUILD_SHARED_LIBS=OFF \
+			-DGLSLANG_TESTS=OFF \
+			-DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
+		cmake --build "build-${_arch}-static"
+
+		${_arch}-cmake -G Ninja -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
+			-DGLSLANG_TESTS=OFF
+		cmake --build "build-${_arch}"
+	done
 }
 
 package() {
-  for _arch in ${_architectures}; do
-    cd "${srcdir}/glslang-${pkgver}/build-${_arch}-static"
-    make DESTDIR="${pkgdir}" install
-    cd "${srcdir}/glslang-${pkgver}/build-${_arch}"
-    make DESTDIR="${pkgdir}" install
-    ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
-    ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
-    install -d "$pkgdir"/usr/bin
-    install -m755 ${_arch}-glslang "$pkgdir"/usr/bin
-  done
+	for _arch in ${_architectures}; do
+		DESTDIR="${pkgdir}" cmake --install "build-${_arch}-static"
+		rm -rf "$pkgdir"/usr/${_arch}/static/share
+		${_arch}-strip -g "$pkgdir"/usr/${_arch}/static/lib/*.a
+
+		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
+		${_arch}-strip "$pkgdir"/usr/${_arch}/bin/*.exe
+		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+		${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+
+		install -dm755 "$pkgdir/usr/bin"
+		install -Dm755 <(cat << EOF
+#!/usr/bin/env sh
+${_arch}-wine /usr/${_arch}/bin/${_pkgname}.exe "\$@"
+EOF
+    ) "$pkgdir/usr/bin/${_arch}-${_pkgname}"
+	done
 }
