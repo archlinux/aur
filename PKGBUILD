@@ -3,7 +3,7 @@
 # based on PKGBUILD for MeCab https://aur.archlinux.org/packages/mecab/
 
 pkgname=mecab-git
-pkgrel=2
+pkgrel=3
 pkgver=r155.05481e7
 pkgdesc="Yet another part-of-speech and morphological analyzer."
 arch=($CARCH)
@@ -34,6 +34,27 @@ prepare() {
 }
 build() {
 	cd "${pkgname}/mecab"
+	if [ "$CARCH" == "aarch64" ]; then
+		echo "Detected aarch64 architecture. Updating config.guess and config.sub..."
+
+		rm -f config.guess
+		wget 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD' -O config.guess
+		if [ $? -ne 0 ]; then
+			echo "Failed to download config.guess" >&2
+			exit 1
+		fi
+
+		rm -f config.sub
+		wget 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD' -O config.sub
+		if [ $? -ne 0 ]; then
+			echo "Failed to download config.sub" >&2
+			exit 1
+		fi
+
+		echo "Updated config.guess and config.sub successfully."
+	else
+		echo "Not aarch64 architecture. Skipping update of config.guess and config.sub."
+	fi
 	./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --with-charset=utf-8
 	make
 }

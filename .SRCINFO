@@ -1,7 +1,7 @@
 pkgbase = mecab-git
 	pkgdesc = Yet another part-of-speech and morphological analyzer.
 	pkgver = r155.05481e7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://taku910.github.io/mecab
 	arch = x86_64
 	license = BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
