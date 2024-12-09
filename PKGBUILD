@@ -41,15 +41,20 @@ pkgver() {
 package() {
 
     # bin
-    install -Dm 755 ${srcdir}/${pkgname}/build/core.sh ${pkgdir}/usr/bin/carch
+    install -Dm 755 ${srcdir}/${pkgname}/build/core.sh -t ${pkgdir}/usr/bin/carch
+
     install -d "$pkgdir/usr/bin/scripts"
+    
     install -Dm 755 ${srcdir}/${pkgname}/scripts/*.sh -t ${pkgdir}/usr/bin/scripts/
 
+    # desktop entry
+    install -Dm 644 ${srcdir}/${pkgname}/carch.desktop -t ${pkgdir}/usr/share/applications/carch.desktop
+
     # license
-    install -Dm 755 ${srcdir}/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm 644 ${srcdir}/${pkgname}/LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
     # doc
-    install -Dm 755 ${srcdir}/${pkgname}/README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
+    install -Dm 644 ${srcdir}/${pkgname}/README.md -t ${pkgdir}/usr/share/doc/${pkgname}/README.md
 
 
 
