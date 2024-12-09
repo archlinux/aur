@@ -1,7 +1,7 @@
 pkgbase = labgrid-git
 	pkgdesc = embedded board control python library with a focus on testing, development and general automation
 	pkgver = v24.0.r140.gd98677c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/labgrid-project/labgrid
 	arch = any
 	license = LGPL-2.1
@@ -25,7 +25,7 @@ pkgbase = labgrid-git
 	depends = python-yaml
 	depends = python-requests
 	depends = python-xmodem
-	optdepends = openssh-client: recommended ssh client
+	optdepends = openssh: recommended ssh client
 	optdepends = microcom: serial console support
 	optdepends = socat: network forwarding support
 	optdepends = sshfs: sshfs subcommand

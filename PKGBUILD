@@ -3,7 +3,7 @@
 pkgname='labgrid-git'
 _pkgname="${pkgname/-git/}"
 pkgver=v24.0.r140.gd98677c
-pkgrel=1
+pkgrel=2
 pkgdesc='embedded board control python library with a focus on testing, development and general automation'
 arch=('any')
 url="https://github.com/labgrid-project/labgrid"
@@ -34,7 +34,7 @@ depends=(
   'python-xmodem'
 )
 optdepends=(
-  'openssh-client: recommended ssh client'
+  'openssh: recommended ssh client'
   'microcom: serial console support'
   'socat: network forwarding support'
   'sshfs: sshfs subcommand'
