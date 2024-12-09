@@ -11,7 +11,7 @@ pkgname=(gmic-pre
 pkgver=3.5.0
 _pkgver=prerelease
 __pkgver=3.5.0_pre
-pkgrel=1
+pkgrel=2
 pkgdesc="Prerelease G-MIC for GIMP3"
 arch=(x86_64)
 url='https://gmic.eu/'
@@ -58,7 +58,7 @@ build() {
 }
 
 package_gmic-pre() {
-  pkgdesc="GREYC's Magic Image Converter: image processing framework"
+  pkgdesc="GREYC's Magic Image Converter: image processing framework - Prerelease G-MIC for GIMP3"
   depends=(curl
            fftw
            gcc-libs
@@ -86,7 +86,7 @@ package_gmic-pre() {
 }
 
 package_gimp-plugin-gmic-pre() {
-  pkgdesc="Gimp plugin for the G'MIC image processing framework"
+  pkgdesc="Gimp plugin for the G'MIC image processing framework - Prerelease G-MIC for GIMP3"
   depends=(babl
            fftw
            gcc-libs
@@ -94,7 +94,7 @@ package_gimp-plugin-gmic-pre() {
            gimp
            glib2
            glibc
-           gmic
+           gmic-pre
            libx11
            qt6-base
            zlib)
