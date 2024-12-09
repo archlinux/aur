@@ -1,16 +1,16 @@
 pkgbase = updatecli-bin
 	pkgdesc = A declarative dependency management command line tool.
-	pkgver = 0.88.1
+	pkgver = 0.89.0
 	pkgrel = 1
 	url = https://www.updatecli.io
 	license = Apache
 	conflicts = updatecli
 	provides = updatecli
 	arch = aarch64
-	source_aarch64 = https://github.com/updatecli/updatecli/releases/download/v0.88.1/updatecli_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 9d6f44c12c9dda8601c62b2f7a1e6fba1c2e63ba05b4f0a3167153e9ea254923
+	source_aarch64 = https://github.com/updatecli/updatecli/releases/download/v0.89.0/updatecli_Linux_arm64.tar.gz
+	sha256sums_aarch64 = f982e59a18288f716cde07edf85e881a16233ee3654667328685bec01bd906ca
 	arch = x86_64
-	source_x86_64 = https://github.com/updatecli/updatecli/releases/download/v0.88.1/updatecli_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = ba7fa5f4d01ff1f3782673c6c967c270c12973ec66171b4923924cb0841e9dea
+	source_x86_64 = https://github.com/updatecli/updatecli/releases/download/v0.89.0/updatecli_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = b5eaf9009ff49c9174ffc0b58fc675cc340f77425e7426d8659437305209b905
 	
 pkgname = updatecli-bin
