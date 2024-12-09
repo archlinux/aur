@@ -2,7 +2,7 @@
 
 _pkgbase=pw-capture
 pkgname=lib32-${_pkgbase}-git
-pkgver=r27.e8fc56b
+pkgver=r35.a2842f1
 pkgrel=1
 pkgdesc="Vulkan/OpenGL (game) capture for PipeWire"
 url="https://github.com/EHfive/${_pkgbase}"
@@ -23,28 +23,39 @@ options=(!debug)
 
 pkgver() {
   cd $_pkgbase
-  ( set -o pipefail
+  (
+    set -o pipefail
     git describe --long --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
 
-build() {
+prepare() {
   # make AUR helper happy
   rm -rf builddir || true
 
+  cd $_pkgbase
+
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_HOME=../builddir/cargo-home
+  cargo fetch --locked --target i686-unknown-linux-gnu
+}
+
+build() {
   export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
+  export RUSTUP_TOOLCHAIN=stable
   arch-meson $_pkgbase builddir \
     --libdir=lib32 \
     -D profile=release \
+    -D frozen=true \
     -D target=i686-unknown-linux-gnu
 
-  meson compile -C builddir
+  meson install -C builddir --destdir "$srcdir/destdir"
 }
 
 package() {
-  meson install -C builddir --destdir "$pkgdir"
+  cp -r destdir/. "$pkgdir"
 
   (
     cd "$pkgdir"
