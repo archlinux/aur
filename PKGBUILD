@@ -1,4 +1,4 @@
-# Maintainer: hanker <91734413+hankertrix@users.noreply.github.com>
+# Contributor: hanker <91734413+hankertrix@users.noreply.github.com>
 
 pkgname=ctpv
 pkgver=1.1
@@ -47,7 +47,7 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    make PREFIX="/usr" DESTDIR="$pkgdir" install
-    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm0755 "./$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm0644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm0644 ./README.md "$pkgdir/usr/share/doc/$pkgname"
 }
