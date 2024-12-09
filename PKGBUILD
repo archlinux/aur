@@ -1,6 +1,6 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=galene-git
-pkgver=0.9.r1.g90a0a2e
+pkgver=0.95.r0.g170d43f
 pkgrel=1
 pkgdesc="A videoconferencing server"
 arch=('x86_64' 'i686')
@@ -64,7 +64,6 @@ package() {
   cd "${pkgname%-git}"
 
   install -dm755 "${pkgdir}/usr/bin"
-  install -m755 "_build/galene" "_build/galene-password-generator" "${pkgdir}/usr/bin"
 
   install -dm755 "$pkgdir/usr/share/galene"
   cp -r static "$pkgdir/usr/share/galene"
