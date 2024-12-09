@@ -1,12 +1,12 @@
 pkgbase = swc-js-bin
 	pkgdesc = Super-fast TypeScript / JavaScript compiler written in Rust
-	pkgver = 1.9.2
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://swc.rs
 	arch = x86_64
 	license = Apache-2.0
 	provides = swc-js
-	source = https://github.com/swc-project/swc/releases/download/v1.9.2/swc-linux-x64-gnu
-	sha256sums = e120da4fa7a6be4d9c9e75a3b9d37822ff4880c5a48f2a88f9099ce527f56215
+	source = https://github.com/swc-project/swc/releases/download/v1.10.1/swc-linux-x64-gnu
+	sha256sums = 05fcfd9f3ebd2a15bcf7b024c122f762841bd72cce38543ae5cc4d1578813642
 
 pkgname = swc-js-bin
