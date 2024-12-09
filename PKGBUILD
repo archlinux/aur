@@ -2,7 +2,7 @@
 pkgname=serialportassistant-bin
 _pkgname=SerialPortAssistant
 _appname="org.Rabbit.${_pkgname}"
-pkgver=0.5.27
+pkgver=0.5.28
 pkgrel=1
 pkgdesc="A cross-platform serial port assistant.(Prebuilt version)一个跨平台的串口助手"
 arch=("x86_64")
@@ -14,14 +14,13 @@ depends=(
     'openssl'
     'qt6-scxml'
     'qt6-serialport'
-    'qt6-webengine'
     'qt6-base'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('050f492b078eab5cfe1f9e933a251c5dde1da8503dd6d0f492ee7bb518f44260'
+sha256sums=('1dc386313e51bbd95d4a25256e8d95d4ee41fcab320770fa4c4f29104e0bdf58'
             'dd8425fd4598a06eb0a40d68f80af03f2e96d9cfaad8b8cc4a8171588ec1a01d')
 build() {
     sed -e "
