@@ -1,7 +1,7 @@
 # Maintainer: zeroz <zeroz@none.cx>
 
 pkgname=checkpac
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Simple and fast package check and lookup utility for Arch Linux with AUR support"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('bash' 'expac' 'util-linux' 'jq' 'pacman')
 #no optdepends yet
 #optdepends=('')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zeroz41/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('763d1e7e2366b7cb902d020c6a89e5ba8f3c08109089a86de9bdd53c806d2197')
+sha256sums=('89e8201e44038dea563b276b81addb861b5832a10a11f40604ee74cb1ea3d358')
 
 package() {
     cd "$pkgname-$pkgver"
