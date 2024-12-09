@@ -3,20 +3,19 @@
 _binname="mrg"
 _pkgname="mergetb-cli"
 pkgname="${_pkgname}-git"
-pkgver=1.2.4.r0.gab3c35e
+pkgver=1.3.6.r0.g441f374
 pkgrel=1
 pkgdesc="Command-line tool used to interact and manage a Merge testbed and experiments"
-arch=('any')
-url="https://gitlab.com/mergetb/portal/cli"
+arch=('x86_64' 'aarch64' 'i686')
+url="https://next.mergetb.org/docs/experimentation/cli-reference"
+_url="https://gitlab.com/mergetb/portal/cli"
 license=('custom:Unknown')
 depends=('glibc')
 makedepends=('git' 'go')
-optdepends=('bash-completion: for shell auto-completion'
-            'zsh-completions: for shell auto-completion')
-provides=("${_pkgname}=${pkgver%%.r*}" "${_binname}=${pkgver%%.r*}")
-conflicts=("${_pkgname}" "${_binname}")
+provides=("${_pkgname}=${pkgver%%.r*}")
+conflicts=("${_pkgname}")
 _pkgsrc="cli"
-source=("${_pkgsrc}::git+${url}.git")
+source=("${_pkgsrc}::git+${_url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -50,13 +49,13 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${_binname}" "${pkgdir}/usr/bin/${_binname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  # install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm755 "build/${_binname}" "${pkgdir}/usr/bin/${_binname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  # install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
   cd "completions"
-  install -Dm644 "${_binname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${_binname}"
-  install -Dm644 "${_binname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${_binname}.fish"
-  install -Dm644 "${_binname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${_binname}"
-  install -Dm644 "${_binname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${_binname}.ps1"
+  install -vDm644 "${_binname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${_binname}"
+  install -vDm644 "${_binname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${_binname}.fish"
+  install -vDm644 "${_binname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${_binname}"
+  install -vDm644 "${_binname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${_binname}.ps1"
 }
