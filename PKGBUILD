@@ -8,8 +8,8 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="yazi"
 pkgname="$_pkgname-git"
-pkgver=0.3.3.r79.g81ce040
-pkgrel=3
+pkgver=0.4.0.r3.g7498b97
+pkgrel=1
 pkgdesc="Blazing fast terminal file manager written in Rust, based on async I/O"
 url="https://github.com/sxyazi/yazi"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ makedepends=(
 optdepends=(
   'chafa: for previewing images'
   'fd: for file searching'
-  'ffmpegthumbnailer: for video thumbnails'
+  'ffmpeg: for video thumbnails'
   'fzf: for directory jumping'
   'imagemagick: for previewing fonts'
   'jq: for JSON preview'
@@ -39,7 +39,7 @@ optdepends=(
 
 options=('!lto')
 
-provides=("$_pkgname=$pkgver")
+provides=("$_pkgname=${pkgver%%.g*}")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
