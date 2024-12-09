@@ -12,7 +12,7 @@ arch=("x86_64")
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL-3.0-only')
 depends=('r' 'zeromq')
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("${_pkgname}_${_pkgver}.tar.gz::https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha512sums=('4f8e23499d86b4ccf724d2a15da613871d5ef9dbf7ff332bf500daf6c254abeca1b4fbee221c71218e840c1d1d23154bfee2ab846f8d30e0989177e6ff89d76b')
 
 build() {
