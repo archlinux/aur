@@ -2,7 +2,7 @@
 
 pkgname=ctpv
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Image previews for lf file manager"
 arch=('x86_64')
 url="https://github.com/NikitaIvanovV/ctpv"
@@ -47,7 +47,7 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm0755 "./$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dm0644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm0644 ./README.md "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 'README.md' "$pkgdir/usr/share/doc/$pkgname"
 }
