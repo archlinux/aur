@@ -3,7 +3,7 @@
 # Co-Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=aeron-git
-pkgver=1.41.3.r9.g58e8582e4
+pkgver=1.46.1.r246.gf7acd9a268
 pkgrel=1
 pkgdesc="Efficient reliable UDP unicast, UDP multicast, and IPC message transport"
 arch=('i686' 'x86_64')
@@ -15,6 +15,8 @@ source=("git+https://github.com/real-logic/aeron.git"
         "aeronmd.service")
 sha256sums=('SKIP'
             '3e6f3d61880ef39743c77103a169f53074337adbe382c78a768bd001d8a646be')
+provides=('aeron')
+conflicts=('aeron')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
@@ -25,6 +27,7 @@ build() {
   mkdir -p "${srcdir}/build" && cd "${srcdir}/build"
   cmake \
     -DBUILD_SHARED_LIBS=on \
+    -DBUILD_AERON_ARCHIVE_API=off \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DAERON_BUILD_DOCUMENTATION=off \
