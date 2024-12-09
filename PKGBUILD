@@ -1,72 +1,77 @@
+# Contributor: TrialnError <autumn-wind@web.de>
 # Contributor: Qingxu <me@linioi.com>
-
 pkgname=switchhosts
-pkgver=4.1.2
-_subpkgver=6086
+_pkgname=SwitchHosts
+pkgver=4.2.0
+_electronversion=30
+_nodeversion=22
 pkgrel=1
-pkgdesc="app for hosts management & switching"
+pkgdesc="An app for managing hosts file,and switch hosts quickly ! (Use system-wide electron)"
 arch=('any')
 url="https://github.com/oldj/SwitchHosts"
-license=('Apache')
-provides=('switchhosts')
-conflicts=(
-    'switchhosts-bin'
-    'switchhosts-appimage'
-)
+license=('Apache-2.0')
+conflicts=("${pkgname}")
 depends=(
-    "gtk3"
-    "nss"
-)
-optdepends=(
-    'c-ares'
-    'ffmpeg'
-    'http-parser'
-    'libevent'
-    'libvpx'
-    'libxslt'
-    'minizip'
-    're2'
-    'snappy'
-    'libnotify'
-    'libappindicator-gtk3'
+    "electron${_electronversion}"
 )
 makedepends=(
-    'nodejs'
-    'electron19'
+    'gendesk'
+    'git'
+    'nvm'
     'npm'
+    'curl'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}/SwitchHosts-v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}.sh"
 )
-sha256sums=('7e966120286ea9a77288e3df7393c5b0230b4dcfa427a7012237ae6ff399afe9')
-
-prepare() {
-    cd SwitchHosts-${pkgver}
-    # use system electron version
-    # see: https://wiki.archlinux.org/index.php/Electron_package_guidelines
-    electronVer=$(electron19 --version | tail -c +2)
-    sed -i "/electronDownload/,/}/d" scripts/make.js
-    sed -i "/directories/i\  electronVersion: \`$electronVer\`," scripts/make.js
-    sed -i "/directories/i\  electronDist: \`/usr/lib/electron\`," scripts/make.js
-    sed -i "s/.*\"electron\":.*$/    \"electron\": \"^$electronVer\",/"  package.json
-    # Set arch and target
-    local i686=ia32 x86_64=x64 armv7h=armv7l aarch64=arm64
-    sed -i "s/.*AppImage:x64.*$/    linux: ['pacman:build_arch'],/" scripts/make.js
-    sed -i "s#build_arch#${!CARCH}#g" scripts/make.js
-    sed -i "/await makeMacArm/d" scripts/make.js
-    sed -i "/await sign/d" scripts/make.js
-    sed -i "s/TARGET_PLATFORMS_configs.all/TARGET_PLATFORMS_configs.all.linux/g" scripts/make.js 
+sha256sums=('b497623f7a6559610740165d7f8928ace969e527c082a05a31a000fc70cbc3e2'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+_ensure_local_nvm() {
+    local NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
-
 build() {
-    cd SwitchHosts-${pkgver}
-    npm install
-    npm run build
-    npm run make
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname}.sh"
+    _ensure_local_nvm
+    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility"  --name="${_pkgname}" --exec="${pkgname} %U"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    electronDist="/usr/lib/electron${_electronversion}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    HOME="${srcdir}/.electron-gyp"
+    {
+        echo -e '\n'   
+        #echo 'build_from_source=true'
+        echo "cache=${srcdir}/.npm_cache"
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        } >> .npmrc
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+    fi
+    sed -i "s/app\.icns/app\.png/g;s/'AppImage:x64', 'AppImage:arm64', 'deb:x64', 'deb:arm64'/'dir'/g" scripts/make.js
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    NODE_ENV=development    npm install --legacy-peer-deps
+    NODE_ENV=development    npm add -D framer-motion@11.13.1 --legacy-peer-deps
+    NODE_ENV=production     npm run build
+    NODE_ENV=production     npm run make:linux
 }
-
 package() {
-    tar -xvf SwitchHosts-${pkgver}/dist/SwitchHosts_linux_${pkgver}\(${_subpkgver}\).pacman -C ${pkgdir}
-    rm -f ${pkgdir}/.PKGINFO ${pkgdir}/.MTREE ${pkgdir}/.INSTALL
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}/"
+    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
