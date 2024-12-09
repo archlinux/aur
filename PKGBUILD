@@ -1,9 +1,11 @@
-# Maintainer: Ankit Bhatia <ankbhatia19@gmail.com>
+# Maintainer: envolution
+# Contributor: Ankit Bhatia <ankbhatia19@gmail.com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgbase='python-ultralytics'
 pkgname=('python-ultralytics')
 _module='ultralytics'
-pkgver='8.2.16'
+pkgver=8.3.48
 _src_folder=${_module}-${pkgver}
 pkgrel=1
 pkgdesc="Ultralytics YOLOv8 for SOTA object detection, multi-object tracking, instance segmentation, pose estimation and image classification."
@@ -12,16 +14,17 @@ depends=('python-matplotlib' 'python-opencv' 'python-pillow' 'python-requests' '
 makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('AGPL-3.0-or-later')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/69/44/f06f47ed8a5e6a79dfb5ee2acafd9a98b306269654f41466e50b4905dfe9/${_src_folder}.tar.gz")
-sha256sums=('0484461dbd614309dd8ef6d0e13bc22a2e706e34e3ff275e8f631111158d082f')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ultralytics/ultralytics/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('24af338c6b6c15ed74fd19d07b50f66a831c84b4f609eb082aa7c14ef172b826')
 
 build() {
-    cd "${srcdir}/${_src_folder}"
-    python -m build --wheel --no-isolation
+  cd "${srcdir}/${_src_folder}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    depends+=()
-    cd "${srcdir}/${_src_folder}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+  depends+=()
+  cd "${srcdir}/${_src_folder}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
+# vim:set ts=2 sw=2 et:
