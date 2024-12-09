@@ -1,4 +1,5 @@
-# Maintainer: Anthony Wang <a at exozy dot me>
+# Maintainer: detiam <dehe_tian@outlook.com>
+# Contributor: Anthony Wang <a at exozy dot me>
 # Contributor: Yiyao Yu <yuydevel at protonmail dot com>
 # Contributor: Benjamin Maisonnas <ben at wainei dot net>
 # Author: Ondrej Čerman
@@ -9,15 +10,15 @@ pkgver=0.2.0
 pkgrel=3
 pkgdesc='Linux kernel driver for reading sensors for AMD Zen family CPUs'
 arch=('x86_64' 'i686')
-url='https://git.exozy.me/a/zenpower3'
+url='https://github.com/detiam/zenpower3'
 license=('GPL2')
 depends=('dkms')
 provides=('zenpower3')
 conflicts=('zenpower3')
 install=$_pkgname.install
-source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+source=("$_pkgname::git+$url.git#commit=ccc7d9e2d128055387ea1ca241f562a37e5ea7e0"
         "$_pkgname.conf")
-sha256sums=('28e085d97bde19f273bb85aecdcb7c96a75d47b5a1cf226128eb99b0a9c7c6b3'
+sha256sums=('dc6051fab9732add6a1fceb7904fdaf64e7f655a40a736bd4d465ed42aad8240'
             '7bff3a5ea2c8b8abf56ce1d79b9724b1aea89e2564d244e09691070113d60f6a')
 
 prepare() {
