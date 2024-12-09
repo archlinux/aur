@@ -3,16 +3,13 @@
 
 _pkgname=SerialTest
 pkgname=serialtest-git
-pkgver=0.3.5.r0.g37bc8da
-pkgrel=1
+pkgver=0.3.5.r1.gc632519
+pkgrel=6
 pkgdesc="A cross-platform test tool for serial port, Bluetooth, TCP and UDP."
-arch=(
-    'aarch64'
-    'riscv64'
-    'x86_64')
+arch=($CARCH)
 url="https://github.com/wh201906/SerialTest"
 license=('GPL-3.0-only')
-provides=(${_pkgname})
+provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
 depends=('qcustomplot' 'qt5-serialport' 'qt5-connectivity')
@@ -21,9 +18,9 @@ backup=()
 options=()
 install=${pkgname}.install
 source=("${_pkgname}::git+${url}.git#branch=dev"
-        "${pkgname}.install")
+    "${pkgname}.install")
 sha256sums=('SKIP'
-            '303f34246c0d341e1093d6e486e2cbfdbbb0d122d751de649f562ebac37777b4')
+    '303f34246c0d341e1093d6e486e2cbfdbbb0d122d751de649f562ebac37777b4')
 
 # prepare() {
 #     cd "${srcdir}/${_pkgname}/"
@@ -35,16 +32,14 @@ pkgver() {
     git describe --long --tags | sed 's/V//g;s/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${_pkgname}" clean -dfx
 }
-
 
 build() {
     cd "${srcdir}/${_pkgname}/src/"
     qmake
-    make -j$((`nproc` + 1))
+    make -j$(($(nproc) + 1))
 }
 
 package() {
@@ -53,5 +48,5 @@ package() {
     install -Dm0644 "${srcdir}/${_pkgname}/pack/aur/io.github.wh201906.serialtest.desktop" "${pkgdir}/usr/share/applications/io.github.wh201906.serialtest.desktop"
     install -Dm0644 ${srcdir}/${_pkgname}/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 "$srcdir/${_pkgname}/src/icon/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
-#    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}/pkg/20-usb-serial.rules" "${pkgdir}/etc/udev/rules.d/20-usb-serial.rules"
+    #    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}/pkg/20-usb-serial.rules" "${pkgdir}/etc/udev/rules.d/20-usb-serial.rules"
 }
