@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Spark
+GenericName=XMPP Client
+Comment=Spark Instant Messenger
+Exec=/usr/bin/spark
+Icon=/usr/share/spark/resources/images/spark-64x64.png
+Terminal=false
+Categories=Network;InstantMessaging;
+StartupNotify=true

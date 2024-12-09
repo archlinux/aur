@@ -1,16 +1,19 @@
 pkgbase = spark
 	pkgdesc = Cross-platform real-time collaboration client optimized for business and organizations.
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.igniterealtime.org/projects/spark/
 	arch = any
-	license = LGPL
+	license = Apache-2.0
+	makedepends = xmlstarlet
+	makedepends = maven
 	depends = java-runtime
 	depends = unixodbc
 	depends = libxtst
-	conflicts = spark-svn
 	options = !strip
-	source = http://download.igniterealtime.org/spark/spark_3_0_2.deb
-	sha512sums = 773a5e2b7d9f4cf5c4c35ae8e387b7edffa681253dbf2a6787bd1ec6c9bdef1fd6832aa85199ac33f54a4e42afa68fd649995f1f1a86e3b872f24c9ddcb925b4
+	source = spark-3.0.2.tar.gz::https://github.com/igniterealtime/Spark/archive/refs/tags/v3.0.2.tar.gz
+	source = spark.desktop
+	sha512sums = 8c0356276652c69d8922a9c05ceb432007b22741c57f32f5aba1d27389775bd7de99cd05f5def54d179bc6b40d1d1e1e3b2f3f2ae6903c556471b976c0b3a9b5
+	sha512sums = 46b22743f95336daf3b61b857b7f93687d47499949afb21371797a4d9c22fef18f13b7df6ea74d68e6179c09293b696bab58a3e50a97d37e513bfd6d9cad6614
 
 pkgname = spark
