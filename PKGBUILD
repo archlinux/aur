@@ -2,8 +2,8 @@
 # Maintainer: Tyr Heimdal <tyr.heimdal@warning.no>
 
 pkgname=jeveassets
-pkgver=7.8.1
-pkgrel=2
+pkgver=7.9.2
+pkgrel=0
 pkgdesc="Out-of-game asset manager for Eve-Online, written in Java"
 arch=('any')
 url="http://eve.nikr.net/jeveasset"
@@ -12,23 +12,26 @@ depends=('java-environment')
 install=$pkgname.install
 
 source=(
-	"https://github.com/GoldenGnu/jeveassets/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip"
-  "https://eve.nikr.net/jeveassets/data.zip"
-  "packagemanager.properties"
-  "$pkgname.desktop" 
-  "${pkgname}_16x16.png"
-  "${pkgname}_32x32.png"
-  "${pkgname}_64x64.png"
-  "$pkgname.sh")
+        "https://github.com/GoldenGnu/jeveassets/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip"
+        "https://eve.nikr.net/jeveassets/data.zip"
+        "packagemanager.properties"
+        "$pkgname.desktop" 
+        "${pkgname}_16x16.png"
+        "${pkgname}_32x32.png"
+        "${pkgname}_64x64.png"
+        "$pkgname.sh"
+       )
 
-sha256sums=('c8902f9df2ba578e3a583da19514786e6f51fe8f532ae5e82ddc365d0cf5621c'
+sha256sums=(
+            '5c25927d1768c3e565a34ab9c5240436289e56f250f3a2e03e0d42a85a6b7f13'
             'SKIP'
             '0203673802ba5102e8acae19c463ab1cd79663653cce38431362367d220f951e'
             '99dd564f33ea7e7a71980b829125207a53a18c2c31f5907d1e8842b64217d69b'
             '23ff2740653dddaafc0a40dcdadfa667a55d28389088dda8bc6eca1c66298150'
             '392c10b8b5c9f467eaf915542d5c0737d25ee44d0f14e14ca1099839fdc09daa'
             'c488589609bff3e2d60f191fb3bc149b19f31c6b3c25400a87639faf35126878'
-            'eb94c90e9da414f351e027f4ddaae12ab563f5babbf0dfdbf9c13c7aa583c354')
+            'eb94c90e9da414f351e027f4ddaae12ab563f5babbf0dfdbf9c13c7aa583c354'
+           )
 
 package() {
 
