@@ -1,13 +1,13 @@
 pkgbase = nextcloud-app-social
 	pkgdesc = federated social network
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://apps.nextcloud.com/apps/social
 	arch = any
 	license = GPL
 	depends = nextcloud
 	options = !strip
-	source = nextcloud-app-social-0.6.1.tgz::https://github.com/nextcloud-releases/social/releases/download/v0.6.1/social-v0.6.1.tar.gz
-	sha256sums = e66c30df589bc209d2893b9368aa3932781b84f230f25c0bb75b644324a67ab6
+	source = nextcloud-app-social-0.7.0.tgz::https://github.com/nextcloud-releases/social/releases/download/v0.7.0/social-v0.7.0.tar.gz
+	sha256sums = 50d52efd5e64d4885002682e6b9b89316b4a483b80dbcb77797a76b1a2affc2c
 
 pkgname = nextcloud-app-social
