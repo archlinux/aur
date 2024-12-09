@@ -1,7 +1,7 @@
 # Maintainer: Francisco Carpio <carpiofj at gmail dot com>
 pkgname=alpaca-git
 _pkgname=Alpaca
-pkgver=2.6.0.r8.g4c10456
+pkgver=2.9.0.r11.g9df5836
 pkgrel=1
 pkgdesc="An Ollama client made with GTK4 and Adwaita"
 arch=('any')
