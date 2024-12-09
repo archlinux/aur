@@ -1,13 +1,14 @@
 pkgbase = python-cmsis-pack-manager
 	pkgdesc = A Rust and Python module for handling CMSIS Pack files
 	pkgver = 0.5.3.r21.ga312ce0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyocd/cmsis-pack-manager
-	arch = x86_64
+	arch = any
 	license = Apache-2.0
 	checkdepends = python-hypothesis
 	checkdepends = python-jinja
 	checkdepends = python-pytest
+	makedepends = cbindgen
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
@@ -21,7 +22,7 @@ pkgbase = python-cmsis-pack-manager
 	depends = python-cffi
 	depends = python-pyyaml
 	options = !lto
-	source = cmsis-pack-manager::git+https://github.com/pyocd/cmsis-pack-manager.git
+	source = cmsis_pack_manager::git+https://github.com/pyocd/cmsis-pack-manager.git
 	sha512sums = SKIP
 
 pkgname = python-cmsis-pack-manager
