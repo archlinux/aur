@@ -5,7 +5,6 @@ sums: PKGBUILD .SRCINFO
 	makepkg --geninteg
 
 build: PKGBUILD .SRCINFO
-	make srcinfo
 	makepkg --cleanbuild --force
 
 test: PKGBUILD .SRCINFO
@@ -18,7 +17,7 @@ install: PKGBUILD .SRCINFO
 	makepkg --install
 
 changelog:
-	git cliff -o
+	git cliff -o --tag ${tag}
 
 clean:
-	rm -rf pkg src *.tar.*
+	rm -rf GOVERNANCE LICENSE README *.tar.* pkg src
