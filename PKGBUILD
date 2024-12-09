@@ -3,13 +3,11 @@
 
 pkgbase=can-utils-git
 pkgname=can-utils-git
-pkgver=2023.03.r111.g186bd96
-pkgrel=2
+pkgver=2023.03.r233.g6526683
+pkgrel=5
 groups=()
 pkgdesc="Linux-CAN / SocketCAN user space applications"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/linux-can/can-utils"
 license=('GPL-2.0-only' 'BSD-3-Clause')
 provides=(${pkgname%-git})
@@ -29,8 +27,7 @@ pkgver() {
     git describe --long --tags | sed 's/^v//g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 

@@ -1,11 +1,9 @@
 pkgbase = can-utils-git
 	pkgdesc = Linux-CAN / SocketCAN user space applications
-	pkgver = 2023.03.r111.g186bd96
-	pkgrel = 2
+	pkgver = 2023.03.r233.g6526683
+	pkgrel = 5
 	url = https://github.com/linux-can/can-utils
 	arch = x86_64
-	arch = aarch64
-	arch = riscv64
 	license = GPL-2.0-only
 	license = BSD-3-Clause
 	makedepends = git
