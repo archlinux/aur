@@ -3,7 +3,7 @@
 pkgname=canonical-multipass
 _realname=multipass
 _builddir=_build
-pkgver=1.13.1
+pkgver=1.14.1
 pkgrel=1
 pkgdesc="Multipass is a lightweight VM manager for Linux, Windows and macOS."
 arch=('x86_64')
@@ -18,14 +18,12 @@ optdepends=(
 source=("git+https://github.com/canonical/${_realname}.git#tag=v${pkgver}"
         multipassd.service
         libssh-static.patch
-        ovmf.patch
 )
 
 prepare() {
   cd "${_realname}"
   git submodule update --init --recursive
   patch 3rd-party/libssh/CMakeLists.txt < ${srcdir}/libssh-static.patch
-  patch src/platform/backends/qemu/qemu_vm_process_spec.cpp < ${srcdir}/ovmf.patch
 }
 
 build() {
@@ -45,7 +43,6 @@ package() {
   install -Dm644 "$srcdir"/multipassd.service "$pkgdir"/usr/lib/systemd/system/multipassd.service
 }
 
-sha256sums=('78cbf31593a256ad1096e85693cf5552b3ef08229a0a2c48c1e23a004223a42f'
+sha256sums=('5111f95e4c1a23dea6478bf2197410acd4b318ae72a0c41ac39bd9a81e9c3e13'
             'f7aebd4ab185048ee10e8185ac230c8ac549ff29b2e52722fbf366ad6f3c6b59'
-            '0d131fcba1b73775efc052bb7e7644aa893edddf5ae2f701b045fdbaa02ebd01'
-            '5a51cd894b9934118a205b055f97f1412a41dc788df6a3efdc4da91db621ae10')
+            '0d131fcba1b73775efc052bb7e7644aa893edddf5ae2f701b045fdbaa02ebd01')
