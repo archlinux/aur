@@ -1,3 +1,4 @@
 [wcurl]
 source = "git"
 git = "https://github.com/Debian/wcurl.git"
+prefix = "v"
