@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang-bin
 _pkgname=Mustang
-pkgver=0.6.18
+pkgver=0.6.19
 _electronversion=32
 pkgrel=1
 pkgdesc="New full-featured desktop email, chat and video conference client.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/mustang-im/mustang/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('71d8c5e595f6ef70a350832130353ca85bcfa431cde19dcaa9343d9f0af2e153'
+sha256sums=('66c8a4cba6704b575e319087f63e4052e6382a95aca2d5a2c9956847975fc2c6'
             '2fd5ca53adf527bacbae9e973b329aa522de8c1d51aac853ce07276922ed7c4d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
