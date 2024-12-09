@@ -1,0 +1,26 @@
+pkgbase = lightly-qt6-bin
+	pkgdesc = Bali10050's fork of Lightly (A modern style for qt applications)
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = https://github.com/Bali10050/lightly
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	depends = kdecoration
+	depends = qt6-declarative
+	depends = kcoreaddons
+	depends = kcmutils
+	depends = kcolorscheme
+	depends = kconfig
+	depends = kguiaddons
+	depends = kiconthemes
+	depends = kwindowsystem
+	conflicts = lightly-kf6
+	conflicts = lightly-qt
+	conflicts = lightly-qt6
+	options = !emptydirs
+	options = !debug
+	source = https://github.com/Bali10050/lightly/releases/download/v0.5.8/lightly-0.5.8-x86_64.pkg.zst
+	sha256sums = 02376fd27305ce0f0d895fed8b400542900ad24bfcedb8eae420d019279107f9
+
+pkgname = lightly-qt6-bin
