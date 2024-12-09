@@ -48,37 +48,37 @@ VERSION ?= \$(shell cat VERSION)
 SRC_DIR=\$(shell pwd)
 
 default:
-    \$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) modules
+	\$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) modules
 
 clean:
-    \$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) clean
+	\$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) clean
 
 install:
-    \$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) modules_install
+	\$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) modules_install
 
 load: -/sbin/rmmod ch9344
-    /sbin/insmod ch9344.ko
+	/sbin/insmod ch9344.ko
 
 dkms.conf: dkms.conf.in
-    sed "s/@@VERSION@@/\$(VERSION)/" $^ > \$@
+	sed "s/@@VERSION@@/\$(VERSION)/" $^ > \$@
 
 dkms-add: dkms.conf
-    /usr/sbin/dkms add \$(SRC_DIR)
+	/usr/sbin/dkms add \$(SRC_DIR)
 
 dkms-build: dkms.conf
-    /usr/sbin/dkms build ch9344/\$(VERSION)
+	/usr/sbin/dkms build ch9344/\$(VERSION)
 
 dkms-install: dkms.conf
-    /usr/sbin/dkms install ch9344/\$(VERSION)
+	/usr/sbin/dkms install ch9344/\$(VERSION)
 
 dkms-remove: dkms.conf
-    /usr/sbin/dkms remove ch9344/\$(VERSION) --all
+	/usr/sbin/dkms remove ch9344/\$(VERSION) --all
 
 modprobe-install:
-    modprobe ch9344
+	modprobe ch9344
 
 modprobe-remove:
-    modprobe -r ch9344
+	modprobe -r ch9344
 
 dev: modprobe-remove dkms-remove dkms-add dkms-builddkms-install modprobe-install
 EOF
