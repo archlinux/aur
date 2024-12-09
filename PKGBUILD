@@ -1,50 +1,60 @@
-# Maintainer: mdaniels5757 <arch at mdaniels dot me>
+# Maintainer: envolution
+# Contributor: mdaniels5757 <arch at mdaniels dot me>
 # Contributor: ejiek <ejiek@mail.ru>
 # Contributor: jskier <jay @jskier.com>
+# shellcheck shell=bash disable=SC2034,SC2154
 pkgname=keeper-commander
-pkgver=16.11.4
+pkgver=16.11.20
 pkgrel=1
 pkgdesc="CLI, SDK and interactive shell for Keeper® Password Manager."
 arch=('any')
 url="https://github.com/Keeper-Security/Commander"
 license=('MIT')
 depends=('python'
-		 'python-asciitree'
-		 'python-bcrypt'
-		 'python-colorama'
-		 'python-prompt_toolkit'
-		 'python-pycryptodomex'
-		 'python-pyperclip'
-		 'python-pysocks'
-		 'python-tabulate'
-		 'python-websockets'
-		 'python-fido2'
-		 'python-setuptools'
-		 'python-requests>=2.30.0'
- 	 	 'keeper-secrets-manager-core>=16.6.0'
- 	 	 'python-aiortc'
- 	 	 'python-protobuf>=3.19.0'
- 	 	 'python-cryptography>=39.0.1'
-         # 'python-pytest'
-		 # 'python-qrcode'
-	 	  'python-google-api-core'
-  	 	  'python-paramiko'
-  	 	  'python-pykeepass'
-  	 	  'python-ldap3'
-  	 	  'python-botocore'
-  	 	  'python-msal'
-  	 	  'python-pymssql'
-  	 	  'python-pymysql'
-  	 	  'python-oracledb'
-  	 	  'python-psycopg2'
-  	 	  # Undocumented
-  	 	  'python-ifaddr'
-         )
+  'python-asciitree'
+  'python-bcrypt'
+  'python-colorama'
+  'python-prompt_toolkit'
+  'python-pycryptodomex'
+  'python-pyperclip'
+  'python-pysocks'
+  'python-tabulate'
+  'python-websockets'
+  'python-fido2'
+  'python-setuptools'
+  'python-requests>=2.30.0'
+  'keeper-secrets-manager-core>=16.6.0'
+  'python-aiortc'
+  'python-protobuf>=3.19.0'
+  'python-cryptography>=39.0.1'
+  'python-pykeepass'
+  'python-installer'
+  'python-build'
+)
+checkdepends=('python-ifaddr')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('a23d665ab0c16ace8f64006fb6541abf0437c67c4ebbbfdcddf2cab5ad6d031b1e5aa429d12ae39ffa2397f18c902f881597aef932583ccfc7e373539c063dd9')
+sha512sums=('c73dea520d0d3a1c9772b78509d8f57086233accf8ba7bb7e58a91d35301cfca27b7b45404567486d56ed5d7c7c6199512494f28c16f85dc24d06be65c06cb4a')
+
+build() {
+  cd "Commander-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "Commander-$pkgver"
+  python -m pytest -s -v \
+    --deselect=tests/test_enterprise_commands.py::TestEnterpriseCommands::test_add_enterprise_user \
+    --deselect=tests/test_enterprise_commands.py::TestEnterpriseCommands::test_commands \
+    --deselect=tests/test_enterprise_commands.py::TestEnterpriseCommands::test_report_commands \
+    --deselect=tests/test_vault_commands.py::TestConnectedCommands::test_commands \
+    --deselect=tests/test_vault_commands.py::TestConnectedCommands::test_quoting \
+    --deselect=tests/test_vault_commands.py::TestConnectedCommands::test_vault_reports \
+    --deselect=unit-tests/pam-tunnel/test_private_tunnel.py::TestPrivateTunnelEntrance::test_forward_data_to_tunnel_generic_exception
+}
 
 package() {
   cd "Commander-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+# vim:set ts=2 sw=2 et:
