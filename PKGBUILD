@@ -2,17 +2,20 @@
 
 pkgbase=ch9344ser-git
 pkgname=(ch9344ser-dkms-git libch9344ser-git)
-pkgver=r38.d4fc95f
-pkgrel=8
+pkgver=r49.4ea8973
+pkgrel=1
 pkgdesc="This driver supports USB to quad serial ports chip ch9344 and USB to octal serial ports chip ch348."
 arch=('any')
 url="https://github.com/WCHSoftGroup/ch9344ser_linux"
 license=('GPL-2.0-or-later')
 depends=(dkms
-    glibc)
-makedepends=('git')
-source=("${pkgbase}::git+${url}.git")
-sha256sums=('SKIP')
+         glibc)
+makedepends=(git
+             patch)
+source=("${pkgbase}::git+${url}.git"
+        fix-linux-6-12-build.patch)
+sha512sums=('SKIP'
+            "219b2f7aecef04baad802e6561f3f1194679904b506c17d973c4dcd1b02b7f2041b90416a5a00a129ac873db9b9646ed1af2a865d5270d9aa9dc6d039cc11a3f")
 options=(!strip !debug)
 
 pkgver() {
@@ -26,6 +29,7 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgbase}" clean -dfx
+    patch "${srcdir}/${pkgbase}/driver/ch9344.c" "${srcdir}/fix-linux-6-12-build.patch"
 }
 
 package_ch9344ser-dkms-git() {
