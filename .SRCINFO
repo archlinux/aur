@@ -1,0 +1,32 @@
+pkgbase = vacask
+	pkgdesc = Verilog-A Circuit Analysis Kernel is an analog circuit simulator
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://codeberg.org/arpadbuermen/VACASK
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	checkdepends = python
+	checkdepends = python-numpy
+	checkdepends = python-scipy
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = boost
+	makedepends = bison
+	makedepends = flex
+	depends = openvaf-r
+	depends = suitesparse
+	depends = boost-libs
+	depends = glibc
+	depends = gcc-libs
+	optdepends = python-matplotlib: For plotting the individual tests
+	source = vacask-0.2.1::git+https://codeberg.org/arpadbuermen/VACASK#tag=_0.2.1
+	source = 0000-numpy_2v0_types.patch
+	source = 0001-no_install_openvaf-r.patch
+	b2sums = 20ecca5941bc456cf0564b8d2c404ecb90f0fb38ea0b5edcf4d47865c3d0ca7e81af3217f602d13cab8643813eb0382ab276061a936a636fca9fb6031c7a842f
+	b2sums = a2be740d9956a518665ed01a711ad85ff25020bbbcc139a31af37f95d47f17399c301f445847d0ac63141f3680e6f17628fe3b940703059eda9a7dceafa74b41
+	b2sums = c8458db954ab4cd3132244b3da49538f3c33f2f7779f3b858b9bbe7e31ccd7b35552c79a087d68e5eb6895d95fb15035fbc8d34355e69c5db73b3bdf3aad449a
+
+pkgname = vacask

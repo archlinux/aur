@@ -1,0 +1,13 @@
+diff --git a/python/rawfile.py b/python/rawfile.py
+index 7b132df..fdb1a70 100644
+--- a/python/rawfile.py
++++ b/python/rawfile.py
+@@ -137,7 +137,7 @@ def rawread(fname):
+ 					raise NotImplementedError("Unpadded raw files are not supported.")
+ 				arr = np.fromfile(
+ 					fp, 
+-					dtype=np.complex_ if b'complex' in plot['flags'] else np.float_, 
++					dtype=np.complex128 if b'complex' in plot['flags'] else np.float64, 
+ 					count=npoints*nvars
+ 				).reshape((npoints, nvars))
+ 				arrs.append((plot, arr))
