@@ -3,11 +3,11 @@
 _pkgname=mmpretrain
 pkgname=python-mmpretrain
 pkgver=1.2.0
-pkgrel=1
+pkgrel=3
 pkgdesc='OpenMMLab Pre-training Toolbox and Benchmark'
 arch=('any')
 url='https://github.com/open-mmlab/mmpretrain'
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   python-einops
   python-matplotlib
@@ -46,8 +46,5 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
-  # delete unused .mim dir
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm -rfv "${pkgdir}${site_packages}/mmcls/.mim"
 }
 # vim:set ts=2 sw=2 et:
