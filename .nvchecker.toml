@@ -1,0 +1,4 @@
+[uade]
+source="regex"
+regex="uade-([0-9.]+).tar.bz2"
+url="https://zakalwe.fi/uade/uade3/"
