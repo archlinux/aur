@@ -1,11 +1,11 @@
 # Maintainer: hanker <91734413+hankertrix@users.noreply.github.com>
 # Contributor: Perseo <perseo.gi98@gmail.com>
-pkgname=xsct
-pkgver=2.3
+pkgname='xsct'
+pkgver='2.3'
 pkgrel=4
-_gitname=sct
+_gitname='sct'
 
-pkgdesc="Improved sct (set screen color temperature)"
+pkgdesc='Improved sct (set screen color temperature)'
 arch=('i686' 'x86_64')
 url="https://github.com/faf0/$_gitname"
 license=('Unlicense')
