@@ -1,6 +1,6 @@
 pkgbase = rsrcon
 	pkgdesc = A simple RCON client written in rust
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/meclondrej/rsrcon
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rsrcon
 	makedepends = git
 	makedepends = rust
 	depends = glibc
-	source = https://github.com/meclondrej/rsrcon/archive/refs/tags/v1.1.0.tar.gz
+	source = https://github.com/meclondrej/rsrcon/archive/refs/tags/v1.2.0.tar.gz
 	sha256sums = 90d8d065809cfd1c28741185cd980edc9a43e96a7480c691106df80a4b774f32
 
 pkgname = rsrcon

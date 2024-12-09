@@ -1,7 +1,7 @@
 # Maintainer: meclondrej <ondrej.mecl@volny.cz>
 
 pkgname=rsrcon
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A simple RCON client written in rust"
 arch=("x86_64")
