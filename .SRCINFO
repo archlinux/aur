@@ -1,7 +1,7 @@
 pkgbase = savedesktop
 	pkgdesc = Save and load KDE Plasma, Xfce and GNOME-based DE configuration
 	pkgver = 3.5
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/vikdevelop/SaveDesktop
 	arch = any
 	license = GPL-3.0-or-later

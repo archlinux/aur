@@ -2,7 +2,7 @@
 pkgname=savedesktop
 _app_id=io.github.vikdevelop.SaveDesktop
 pkgver=3.5
-pkgrel=3
+pkgrel=5
 pkgdesc="Save and load KDE Plasma, Xfce and GNOME-based DE configuration"
 arch=('any')
 url="https://github.com/vikdevelop/SaveDesktop"
@@ -42,6 +42,6 @@ package() {
   install -Dm644 "flatpak/icons/${_app_id}-symbolic.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/"
   install -Dm644 flatpak/symbolic-icons/*.{svg,png} -t \
-     "$pkgdir/usr/share/icons/hicolor/symbolic/actions/"
+     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/"
   install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 }
