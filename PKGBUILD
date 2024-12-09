@@ -13,7 +13,7 @@
 
 pkgname=docker-git
 _pkgname=docker
-pkgver=27.4.0+r50713+gd313bb58c
+pkgver=27.4.0+r50721+gb249c5ebd
 pkgrel=1
 pkgdesc='Pack, ship and run any application as a lightweight container -git latest'
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,6 @@ depends=('glibc' 'bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd-lib
 makedepends=('git' 'go' 'btrfs-progs' 'cmake' 'systemd' 'go-md2man' 'sed')
 optdepends=('btrfs-progs: btrfs backend support'
   'pigz: parallel gzip compressor support'
-  'docker-scan: vulnerability scanner'
   'docker-buildx: extended build capabilities')
 options=(!lto)
 _TINI_COMMIT=de40ad007797e0dcd8b7126f27bb87401d224240

@@ -1,6 +1,6 @@
 pkgbase = docker-git
 	pkgdesc = Pack, ship and run any application as a lightweight container -git latest
-	pkgver = 27.4.0+r50713+gd313bb58c
+	pkgver = 27.4.0+r50721+gb249c5ebd
 	pkgrel = 1
 	url = https://www.docker.com/
 	arch = x86_64
@@ -25,7 +25,6 @@ pkgbase = docker-git
 	depends = containerd
 	optdepends = btrfs-progs: btrfs backend support
 	optdepends = pigz: parallel gzip compressor support
-	optdepends = docker-scan: vulnerability scanner
 	optdepends = docker-buildx: extended build capabilities
 	provides = docker
 	conflicts = docker
