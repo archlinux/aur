@@ -11,8 +11,10 @@ pkgbase = bs-manager-git
 	conflicts = bs-manager
 	options = !strip
 	source = git+https://github.com/Zagrios/bs-manager.git
+	source = 01-disable-update-checker.patch
 	source = bs-manager.desktop
 	sha256sums = SKIP
+	sha256sums = e680f7ef587e8ca09b51d322fc0e1a613a08cc044c92e1b2a404b18384815a1e
 	sha256sums = cb35ac15f308e0dca35aa2a948f3102eb96ec0c9faa1771b91d5a49309398874
 
 pkgname = bs-manager-git
