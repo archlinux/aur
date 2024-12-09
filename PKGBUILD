@@ -58,19 +58,19 @@ build() {
 
 package() {
 	## Install users
-	install -vDm 644 "${pkgname%-*}.sysusers" "$pkgdir/usr/lib/sysusers.d/${pkgname%-*}.conf"
+	install -Dm 644 "${pkgname%-*}.sysusers" "$pkgdir/usr/lib/sysusers.d/${pkgname%-*}.conf"
 
 	## Install folders
-	install -v -d -m 755 "${pkgdir}$_applocation/"{database,static,web}
+	install -d -m 755 "${pkgdir}$_applocation/"{database,static,web}
 
 	## Install systemd service unit
-	install -vDm 644 "${pkgname%-*}.service" "$pkgdir/usr/lib/systemd/system/${pkgname%-*}.service"
+	install -Dm 644 "${pkgname%-*}.service" "$pkgdir/usr/lib/systemd/system/${pkgname%-*}.service"
 
 	## Install udev rules
-	install -vDm 644 "${pkgname%-*}/${pkgname%-*}.rules" "$pkgdir/etc/udev/rules.d/${pkgname%-*}.rules"
+	install -Dm 644 "${pkgname%-*}/${pkgname%-*}.rules" "$pkgdir/etc/udev/rules.d/${pkgname%-*}.rules"
 
 	## Install package executable
-	install -vDm 755 "${pkgname%-*}/$_upstreamname" "$pkgdir$_binlocation"
+	install -Dm 755 "${pkgname%-*}/$_upstreamname" "$pkgdir$_binlocation"
 
 	## Install package data
 	cp -r "${pkgname%-*}"/database/* "${pkgdir}"$_applocation/database/
