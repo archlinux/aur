@@ -1,0 +1,19 @@
+pkgbase = gray-git
+	pkgdesc = a status notifier GObject library which can be used to create system trays
+	pkgver = 0.0.1+git
+	pkgrel = 1
+	url = https://github.com/Fabric-Development/gray
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	depends = meson
+	depends = ninja
+	depends = glibc
+	depends = gcc
+	depends = vala
+	source = git+https://github.com/Fabric-Development/gray.git
+	sha256sums = SKIP
+
+pkgname = gray-git
