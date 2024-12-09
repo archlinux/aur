@@ -1,12 +1,12 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=libixp-git
-pkgver=r153.ca2acb2
+pkgver=r158.7b212a2
 pkgrel=1
 pkgdesc="Portable, simple C-language 9P client and server libary."
 arch=('i686' 'x86_64')
 url="https://github.com/0intro/libixp"
 license=('MIT')
-makedepends=('git')
+makedepends=('git' 'txt2tags')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" "${pkgname%-*}-hg")
 source=("$pkgname::git+$url")
@@ -31,6 +31,6 @@ build() {
 package() {
 	cd "$srcdir/$pkgname"
 	make DESTDIR="$pkgdir/" PREFIX=/usr install
-	install -Dm644 README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
-	install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
+	install -D -m644 README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
+	install -D -m644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
