@@ -1,8 +1,8 @@
-pkgbase = zenmonitor3-git
+pkgbase = zenmonitor3
 	pkgdesc = Zenmonitor3 is monitoring software for AMD Zen-based CPUs, now with Zen 3 support!
-	pkgver = 89.2e68a31
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = https://git.exozy.me/a/zenmonitor3
+	url = https://github.com/detiam/zenmonitor3
 	arch = x86_64
 	arch = i686
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = zenmonitor3-git
 	depends = gtk3
 	optdepends = polkit: support application shortcut to launch Zen monitor as root
 	provides = zenmonitor
-	source = zenmonitor::git+https://git.exozy.me/a/zenmonitor3.git
-	sha256sums = SKIP
+	source = zenmonitor::git+https://github.com/detiam/zenmonitor3.git#commit=07572e66d432877955139d1e9e81fd9e9abc5d0f
+	sha256sums = 521cee8c3d4163d1e6ec365b76a4095015d1b1cdcbacdb44a915fc8366ce8d6a
 
-pkgname = zenmonitor3-git
+pkgname = zenmonitor3
