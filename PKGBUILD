@@ -1,12 +1,10 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=deeplx-git
-pkgver=0.9.5.r2.g0d73552
+pkgver=1.0.1.r1.gf2fa902
 pkgrel=1
 pkgdesc="DeepL Free API (No TOKEN required)"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/OwO-Network/DeepLX"
 license=('MIT')
 provides=(${pkgname%-git})
@@ -35,9 +33,10 @@ prepare() {
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
@@ -51,6 +50,6 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}"
 
-    install -Dm755 build/DeepLX  ${pkgdir}/usr/bin/${pkgname%-git}
+    install -Dm755 build/DeepLX ${pkgdir}/usr/bin/${pkgname%-git}
     install -Dm0644 deeplx.service -t "${pkgdir}/usr/lib/systemd/system/"
 }
