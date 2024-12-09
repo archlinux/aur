@@ -1,0 +1,15 @@
+pkgbase = erlfmt-git
+	pkgdesc = An automated code formatter for Erlang
+	pkgver = 525.32b2f06
+	pkgrel = 1
+	url = https://github.com/WhatsApp/erlfmt
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = rebar3
+	depends = erlang-nox
+	provides = erlfmt
+	source = erlfmt::git+https://github.com/WhatsApp/erlfmt.git
+	sha256sums = SKIP
+
+pkgname = erlfmt-git
