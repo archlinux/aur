@@ -1,10 +1,8 @@
 pkgbase = kicad-allegro
 	pkgdesc = Converter from Allegro to KiCad, and Allegro extract viewer
 	pkgver = r9.4968f13
-	pkgrel = 1
+	pkgrel = 6
 	url = https://github.com/system76/kicad-allegro
-	arch = aarch64
-	arch = riscv64
 	arch = x86_64
 	license = unkown
 	makedepends = cargo
