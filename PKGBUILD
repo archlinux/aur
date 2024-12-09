@@ -8,7 +8,22 @@ arch=(any)
 url="https://github.com/harilvfs/$_pkgname"
 license=('GPL')
 options=(!strip)
-depends=('bash' 'gum' 'figlet' 'pacman' 'unzip' 'python' 'gtk3')
+depends=(
+    "bash"
+    "man-pages"
+    "zip"
+    "gum"
+    "git"
+    "sed"
+    "xdg-user-dirs"
+    "wget"
+    "figlet"
+    "pacman" 
+    "unzip"
+    "python"
+    "gtk3"
+)
+
 source=("${pkgname}::git+https://github.com/harilvfs/$_pkgname.git")
 md5sums=('SKIP')
 
