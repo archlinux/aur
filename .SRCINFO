@@ -1,0 +1,20 @@
+pkgbase = dumpmyscreen
+	pkgdesc = A lightweight, simple and effective screenshot tool, that enables custom commands to be copied to the clipboard.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Hibbins/dumpmyscreen
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyqt5
+	depends = scrot
+	depends = slop
+	depends = xclip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	source = dumpmyscreen-1.1.0.tar.gz::https://github.com/Hibbins/dumpmyscreen/archive/v1.1.0.tar.gz
+	sha256sums = ef70e268a7900025ae43ae16ca2dac1a77edaa9aa535efc7165d1e84fe97809a
+
+pkgname = dumpmyscreen
