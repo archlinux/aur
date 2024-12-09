@@ -1,16 +1,14 @@
 pkgbase = ctpv
 	pkgdesc = Image previews for lf file manager
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/NikitaIvanovV/ctpv
 	arch = x86_64
 	license = MIT
-	license = custom
 	makedepends = make
 	depends = file
 	depends = openssl
 	depends = glibc
-	depends = sh
 	optdepends = atool: for archive files
 	optdepends = bat: for text files
 	optdepends = chafa: for image files on Wayland

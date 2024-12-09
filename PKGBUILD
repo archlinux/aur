@@ -2,12 +2,12 @@
 
 pkgname=ctpv
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Image previews for lf file manager"
 arch=('x86_64')
 url="https://github.com/NikitaIvanovV/ctpv"
-license=('MIT' 'custom')
-depends=('file' 'openssl' 'glibc' 'sh')
+license=('MIT')
+depends=('file' 'openssl' 'glibc')
 makedepends=('make')
 optdepends=(
     'atool: for archive files'
