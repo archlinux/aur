@@ -1,6 +1,6 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=galene
-pkgver=0.9.1
+pkgver=0.95
 pkgrel=1
 pkgdesc="A videoconferencing server"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ source=("https://github.com/jech/$pkgname/archive/$pkgname-$pkgver.tar.gz"
         'galene.service'
         'galene.sysusers'
         'galene.tmpfiles')
-sha256sums=('3f0ab64a1c2364ddb55cf41d82d5df4337dff07c2934ed24775daad849c34a53'
+sha256sums=('a67cb12d3244e4e2c5c3a8c491b23e03bda7781c83d074bd30dfad5810bbaa76'
             'a4f1d12c230d305124da4045f85c8c496f12f5202d9d82a6b560b1cfe0355ca0'
             'a1b933ff4034cce2da2607e81df547acd7efa6f4236c18fec144047f50361f84'
             '85680da8ab202280b92b6dd32e920906570fb8070db06b2ef0275462d0f5a16d')
@@ -50,7 +50,6 @@ package() {
   cd "$pkgname-$pkgname-$pkgver"
 
   install -dm755 "${pkgdir}/usr/bin"
-  install -m755 "_build/galene" "_build/galene-password-generator" "${pkgdir}/usr/bin"
 
   install -dm755 "$pkgdir/usr/share/galene"
   cp -r static "$pkgdir/usr/share/galene"
