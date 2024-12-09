@@ -1,18 +1,20 @@
 pkgbase = perl-cpan-outdated
 	pkgdesc = detect outdated CPAN modules in your environment.
 	pkgver = 0.32
-	pkgrel = 1
-	url = http://search.mcpan.org/dist/cpan-outdated
+	pkgrel = 2
+	url = https://metacpan.org/release/cpan-outdated
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	makedepends = perl-module-build-tiny
-	depends = perl-cpan-distnameinfo
-	depends = perl-uri
-	depends = perl-libwww
-	depends = perl-local-lib
+	depends = perl-cpan-distnameinfo>=0.1
+	depends = perl-uri>=0
+	depends = perl-local-lib>=1.006008
+	depends = perl>=5.8.1
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/D/DO/DOLMEN/cpan-outdated-0.32.tar.gz
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/D/DO/DOLMEN/cpan-outdated-0.32.tar.gz
 	md5sums = 5aef4148c9d5d592414105bef8249271
+	sha512sums = 8cc0bd1911f2e0141d285fee4b8d6726d2736637b285b91aae8dad103233f0b445ae5c04a9a66f08f05ba911e77f103133b92c0bf15840723a16339156083481
 
 pkgname = perl-cpan-outdated
