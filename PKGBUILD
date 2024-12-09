@@ -1,17 +1,34 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qucs-s-git
-pkgver=2.1.0.r148.gb135929d
-pkgrel=1
+pkgver=r5688.1a3ce17
+pkgrel=2
 epoch=
 pkgdesc="Qucs-S provides GUI for different circuit simulation kernels. "
-arch=('x86_64')
+arch=($CARCH)
 url="https://github.com/ra3xdh/qucs_s"
 license=('GPL-2.0-only')
 _qt=qt6
 groups=()
-depends=($_qt-tools)
-makedepends=(cmake
+depends=(
+    sh
+    gcc-libs
+    glibc
+    graphicsmagick
+    hicolor-icon-theme
+    imagemagick
+    ngspice
+    python
+    python-numpy
+    python-matplotlib
+    #     python-parse
+    $_qt-base
+    $_qt-charts
+    $_qt-svg
+    octave)
+makedepends=(
+    cmake
+    dos2unix
     ninja
     git
     autoconf
@@ -19,14 +36,21 @@ makedepends=(cmake
     perl-gd
     perl-xml-libxml
     gperf
+    libcups
     libtool
+    mesa
     flex
     bison
-    $_qt-svg)
-optdepends=('ngspice: recommended simulation backend'
+    $_qt-tools
+)
+optdepends=(
+    'ngspice: Mixed-level/Mixed-signal circuit simulator based on Spice3f5, Ciber1b1, and Xspice'
+    'spiceopus: Spice Opus is a free general purpose circuit simulator specially suited for optimization loops'
+    'qucsator: An integrated circuit simulator'
     'qucs: for Qucsator simulation backend'
     'freehdl: to permit digital circuit simulation'
-    'asco: to enable circuit optimization')
+    'asco: to enable circuit optimization'
+    'openvaf: A Next-Generation Verilog-A compiler https://openvaf.semimod.de/')
 checkdepends=()
 optdepends=()
 provides=(${pkgname%-git})
@@ -36,32 +60,44 @@ backup=()
 options=('!makeflags')
 install=
 changelog=
-source=("${pkgname%-git}::git+${url}.git")
+source=("${pkgname}::git+${url}.git"
+    "qucsator_rf::git+https://github.com/ra3xdh/qucsator_rf.git")
 noextract=()
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+    'SKIP')
 validpgpkeys=()
 
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}"
-    git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${pkgname}"
+    (
+        set -o pipefail
+        git describe --long --tag --abbrev=7 -match='[0-9]*.[0-9]*.[0-9]*' 2>/dev/null |
+            grep -v 'continuous_build' |
+            sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
-prepare()
-{
-    git -C "${srcdir}/${pkgname%-git}" clean -dfx
+prepare() {
+    git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}"
+    git submodule init
+    git config submodule.qucsator_rf.url "$srcdir/qucsator_rf"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${pkgname}"
 
     cmake -D CMAKE_INSTALL_PREFIX=/usr \
-          -B build \
-          -G Ninja
+        -DWITH_QT6=ON \
+        -B build \
+        -G Ninja
 
     ninja -C build
 }
 
 package() {
-    cd "${srcdir}/${pkgname%-git}"
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname%-git}/build install
+    cd "${srcdir}/${pkgname}"
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
 }
