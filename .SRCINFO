@@ -1,6 +1,6 @@
 pkgbase = docker-rootless-extras
 	pkgdesc = Extras to run docker as non-root.
-	pkgver = 27.3.1
+	pkgver = 27.4.0
 	pkgrel = 1
 	url = https://docs.docker.com/engine/security/rootless/
 	install = docker-rootless-extras.install
@@ -17,12 +17,12 @@ pkgbase = docker-rootless-extras
 	conflicts = docker-rootless
 	conflicts = docker-rootless-extras
 	conflicts = docker-rootless-extras-bin
-	source = dockerd-rootless-27.3.1.sh::https://raw.githubusercontent.com/moby/moby/v27.3.1/contrib/dockerd-rootless.sh
-	source = dockerd-rootless-setuptool-27.3.1.sh::https://raw.githubusercontent.com/moby/moby/v27.3.1/contrib/dockerd-rootless-setuptool.sh
+	source = dockerd-rootless-27.4.0.sh::https://raw.githubusercontent.com/moby/moby/v27.4.0/contrib/dockerd-rootless.sh
+	source = dockerd-rootless-setuptool-27.4.0.sh::https://raw.githubusercontent.com/moby/moby/v27.4.0/contrib/dockerd-rootless-setuptool.sh
 	source = docker.socket
 	source = 99-docker-rootless.conf
-	sha256sums = f2e515d1e635a110c95d939a9ef115725317ea2c3e752469ea4ca0e3dcc12ea1
-	sha256sums = ef57a31a999b3e6845355c78c160a70de1a4b1985ae82c2e15f394e57bb2e1e1
+	sha256sums = 5a4fcf228be8e5d2fd6c0676c858372a2afb95144675d02f215301272c344f65
+	sha256sums = d6ddae456cc5ecdd5285035d24ad3546898872e5c4d407718ced0d4fa19031ff
 	sha256sums = d8695293e5d4a814763f13e1d36ed37273040666b4b91363d6c33171df8934c7
 	sha256sums = d0d790d4c3d887b10b2b155b83a58a44980b9fa638f8c0f1faec0739dc0ef473
 
