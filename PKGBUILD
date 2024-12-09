@@ -1,8 +1,8 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects-bin"
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
-pkgdesc="Terminal command suggestion, alternative to thefuck written in Rust with AI support (All modules)"
+pkgdesc="Command suggestions, command-not-found and thefuck replacement written in Rust  (All modules)"
 arch=("x86_64")
 url="https://github.com/iffse/pay-respects"
 license=('AGPL')
@@ -11,7 +11,7 @@ optdepends=()
 provides=('pay-respects')
 conflicts=('pay-respects')
 source=("$pkgname-$pkgver-$pkgrel::https://github.com/iffse/pay-respects/releases/download/v$pkgver/pay-respects-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha1sums=('b8ec068db8336d1818f1637dd8a3cfc4b3593bda')
+sha1sums=('1818b0e8315839290618636b88ba6b43fc2bff8a')
 
 package() {
 	install -Dm755 "pay-respects" "$pkgdir/usr/bin/pay-respects"
