@@ -1,7 +1,7 @@
 # Maintainer: Rolv Apneseth <rolv.apneseth@gmail.com>
 
 pkgname=rofi-nerdy
-pkgver=v0.0.5.r0.g1d51784
+pkgver=v0.0.6.r0.g7cd38a9
 pkgrel=1
 pkgdesc='Nerd font icon selector plugin for rofi'
 arch=('x86_64')
@@ -17,6 +17,7 @@ optdepends=(
 )
 source=("$pkgname::git+https://github.com/rolv-apneseth/$pkgname.git")
 md5sums=('SKIP')
+options=(!debug)
 
 pkgver()
 {
