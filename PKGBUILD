@@ -6,10 +6,10 @@
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 # Contributor: The_Decryptor
 
-_commit=d750b56aa929d55d9d18b9d2a7adea53ec898114
+_commit=93f4294757bb4c06e0a738b877b0a4c931a8922f
 pkgname=h2o-git
-pkgver=2.2.0.8128
-pkgrel=5
+pkgver=2.2.0.8130
+pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
 # if you want websocket support, you'll also need aur/wslay
@@ -23,7 +23,7 @@ options=('lto')
 source=("git+https://github.com/h2o/h2o.git#commit=${_commit}?signed/"
 #        "neverbleed-fix-when-lacking-engines.patch"
         'h2o.service')
-sha256sums=('38e7daf2a54d5a7906771dcdccd48ebd575499fc1494658f33836c2efb14834b'
+sha256sums=('42e76fe923dfd9c70a83f0012f61f960a4eb3f3d9cf2c8c3ae0a79e5d24a7878'
             '7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62')
 backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
@@ -37,45 +37,45 @@ pkgver() {
 prepare() {
     cd "$srcdir/h2o"
 
-        git config core.autocrlf false
-        git submodule update --init --recursive
-        
-        # libressl-3.8(OPENSSL_NO_ENGINE)
-        #git apply ${srcdir}/neverbleed-fix-when-lacking-engines.patch
+    git config core.autocrlf false
+    git submodule update --init --recursive
+
+    # libressl-3.8(OPENSSL_NO_ENGINE)
+    #git apply ${srcdir}/neverbleed-fix-when-lacking-engines.patch
 
     # set CMake minimal version to 3.9 to set CMP0039 to new
     sed -i 's/VERSION 2.8.12/VERSION 3.9/g' CMakeLists.txt
 
     sed -i 's|example|/usr/share/doc/h2o/example|' examples/h2o/h2o.conf
 
-        #if [[ "$CC" == "clang" ]] ;then
-        #    export LD="clang"
-        #fi
-        export CFLAGS="$CFLAGS $LTOFLAGS"
-        export CXXFLAGS="$CXXFLAGS $LTOFLAGS"
-        #export LDFLAGS="$LDFLAGS $LTOFLAGS -Wl,-rpath,/usr/lib/libressl"
-        export LDFLAGS="$LDFLAGS $LTOFLAGS"
+    #if [[ "$CC" == "clang" ]] ;then
+    #    export LD="clang"
+    #fi
+    export CFLAGS="$CFLAGS $LTOFLAGS"
+    export CXXFLAGS="$CXXFLAGS $LTOFLAGS"
+    #export LDFLAGS="$LDFLAGS $LTOFLAGS -Wl,-rpath,/usr/lib/libressl"
+    export LDFLAGS="$LDFLAGS $LTOFLAGS"
 
-        cmake \
-                -DCMAKE_BUILD_TYPE=Release \
-                -DCMAKE_INSTALL_PREFIX=/usr \
-                -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-                -DCMAKE_INSTALL_SYSCONFDIR=/etc \
-                -DCMAKE_C_FLAGS="$CPPFLAGS $CFLAGS" \
-                -DCMAKE_CXX_FLAGS="$CPPFLAGS $CXXFLAGS" \
-                -DCMAKE_LINKER="$LD" \
-                -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
-                -DCMAKE_MODULE_LINKER_FLAGS="$LDFLAGS" \
-                -DCMAKE_REQUIRED_FLAGS="-c" \
-                -DWITH_MRUBY=on \
-                -DWITHOUT_LIBS=off \
-                -DWITH_H2OLOG=on \
-                -DBUILD_SHARED_LIBS=on \
-                .
+    cmake \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+        -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+        -DCMAKE_C_FLAGS="$CPPFLAGS $CFLAGS" \
+        -DCMAKE_CXX_FLAGS="$CPPFLAGS $CXXFLAGS" \
+        -DCMAKE_LINKER="$LD" \
+        -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
+        -DCMAKE_MODULE_LINKER_FLAGS="$LDFLAGS" \
+        -DCMAKE_REQUIRED_FLAGS="-c" \
+        -DWITH_MRUBY=on \
+        -DWITHOUT_LIBS=off \
+        -DWITH_H2OLOG=on \
+        -DBUILD_SHARED_LIBS=on \
+        .
 
-#                -DOPENSSL_ROOT_DIR=/usr/lib/libressl \
-#                -DOPENSSL_INCLUDE_DIR=/usr/include/libressl \
-#                -DOPENSSL_LIBRARIES=/usr/lib/libressl \
+#       -DOPENSSL_ROOT_DIR=/usr/lib/libressl \
+#       -DOPENSSL_INCLUDE_DIR=/usr/include/libressl \
+#       -DOPENSSL_LIBRARIES=/usr/lib/libressl \
 }
 
 build() {

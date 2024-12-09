@@ -1,7 +1,7 @@
 pkgbase = h2o-git
 	pkgdesc = Optimized HTTP server with support for HTTP/1.x and HTTP/2
-	pkgver = 2.2.0.8128
-	pkgrel = 5
+	pkgver = 2.2.0.8130
+	pkgrel = 1
 	url = https://github.com/h2o/h2o
 	arch = i686
 	arch = x86_64
@@ -30,9 +30,9 @@ pkgbase = h2o-git
 	conflicts = libh2o
 	options = lto
 	backup = etc/h2o.conf
-	source = git+https://github.com/h2o/h2o.git#commit=d750b56aa929d55d9d18b9d2a7adea53ec898114?signed/
+	source = git+https://github.com/h2o/h2o.git#commit=93f4294757bb4c06e0a738b877b0a4c931a8922f?signed/
 	source = h2o.service
-	sha256sums = 38e7daf2a54d5a7906771dcdccd48ebd575499fc1494658f33836c2efb14834b
+	sha256sums = 42e76fe923dfd9c70a83f0012f61f960a4eb3f3d9cf2c8c3ae0a79e5d24a7878
 	sha256sums = 7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62
 
 pkgname = h2o-git
