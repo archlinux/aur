@@ -3,7 +3,7 @@
 # Based off: https://aur.archlinux.org/packages/chatterino2-7tv-git
 
 pkgname="chatterino2-7tv-native-git"
-pkgver=7.5.1.r273.g0542cba
+pkgver=7.5.1.r303.gb9a8305
 pkgrel=1
 pkgdesc='A fork of Chatterino2 with built-in support for 7tv emotes. Additionally patched to use your native QT Style: https://github.com/hekel/chatterino-stuffs'
 url="https://github.com/SevenTV/chatterino7"
@@ -60,7 +60,7 @@ sha256sums=(
   'SKIP'
   'SKIP'
   'SKIP'
-  'a9f19b83cec3f2ccf83249f708422b217ed1d4fa504179d92dc271aca1583aa6'
+  'c9337eeaf8e2fda3360ce4e7a070d5d5814f5be608f4c1359fff0f4c5bad061c'
   'f7694cfd67cdfdb7ef825052af4d0a09ea8043a747bbfe60692d0102b7cc42bb'
 )
 
