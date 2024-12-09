@@ -3,13 +3,15 @@
 # Contributor: Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
 
 pkgname=kpatch-git
-pkgver=0.9.9.r18.gb363972
+pkgver=0.9.9.r64.gcbf2bc9
 pkgrel=1
 pkgdesc='Live kernel patching (git)'
-arch=(i686 x86_64)
+arch=($CARCH)
 url=https://github.com/dynup/kpatch
 license=(GPL-2.0-only)
-depends=(bash libelf)
+depends=(
+  sh
+  libelf)
 makedepends=(git)
 checkdepends=(
   shellcheck)
@@ -18,7 +20,7 @@ conflicts=(kpatch)
 source=("${pkgname}::git+$url.git"
   "objs::git+https://github.com/dynup/kpatch-unit-test-objs.git")
 sha512sums=('SKIP'
-            'SKIP')
+  'SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}/"
@@ -58,8 +60,8 @@ build() {
 check() {
   cd "${srcdir}/${pkgname}/"
   make unit
-#   see: https://github.com/dynup/kpatch/issues/1371
-#   make check
+  #   see: https://github.com/dynup/kpatch/issues/1371
+  #   make check
 }
 
 package() {
