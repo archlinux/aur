@@ -1,7 +1,7 @@
 # Maintainer: KUHTOXO https://aur.archlinux.org/account/kuhtoxo
 
 pkgname=pascalabcnet-gui
-pkgver=3.9.0.3440
+pkgver=3.10.1.3579
 pkgrel=1
 pkgdesc="PascalABC.NET with GUI interface."
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
     pascalabcnet.png
 )
 sha256sums=(
-    '9b170a8d41e7147e6096fe122ec5ec54bd2f81f96c2638635c8bac59fec70dc7'
+    '8739a73de8a0dc8eff42e0917b7a8a981e920b82fa4922347a7d40fe1e817206'
     'bb92749af748f600344ed3e77978ca09b356f5ac7c0a7773944e2f608a7f65c8'
     'd41bf68034c2e4cd4c7d8a81624b176a9716f5507154c24a95aeeedd6eaa2942'
 )
