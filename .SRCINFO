@@ -1,7 +1,7 @@
 pkgbase = linux-mainline-um5606
 	pkgdesc = Linux Mainline with patches for the Asus UM5606(WA) laptop
-	pkgver = 6.13rc1
-	pkgrel = 5
+	pkgver = 6.13rc2
+	pkgrel = 1
 	epoch = 1
 	url = https://kernel.org/
 	arch = x86_64
@@ -18,17 +18,15 @@ pkgbase = linux-mainline-um5606
 	makedepends = xz
 	options = !debug
 	options = !strip
-	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v6.13-rc1
+	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v6.13-rc2
 	source = config
 	source = npu.patch
-	source = backlight.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 83BC8889351B5DEBBB68416EB8AC08600F108CDF
 	sha256sums = SKIP
 	sha256sums = 5e9788160ed19f177ebb556e0620634ba5cebb2d9c9f0e6c5997d4f5ddf4eaf3
 	sha256sums = 336cababc5df7d557b65b6bc7b7e92cc99513941e275657697e6e26f43873fc4
-	sha256sums = 1b9548b2b8a3fd7946c0ae09803a1d7b98fe8f0b7a0cc0e8143772083a939a1a
 
 pkgname = linux-mainline-um5606
 	pkgdesc = The Linux Mainline with patches for the Asus UM5606(WA) laptop kernel and modules
@@ -36,8 +34,9 @@ pkgname = linux-mainline-um5606
 	depends = initramfs
 	depends = kmod
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
-	optdepends = linux-firmware-git: linux firmware
-	optdepends = linux-firmware-amd-staging-um5606-git: firmware cherry-picked for the UM5606
+	optdepends = linux-firmware-git: linux firmware (git, has fixes for UM5606)
+	optdepends = amd-ucode-git: AMD CPU microcode (git)
+	optdepends = mesa-git: MESA graphics drivers (git, has fixes for UM5606)
 	provides = KSMBD-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
