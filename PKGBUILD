@@ -3,7 +3,7 @@
 
 pkgname=lib32-vulkan-tools
 pkgver=1.4.303
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://www.khronos.org/vulkan/"
 pkgdesc="Vulkan Utilities and Tools (32-bit)"
@@ -25,6 +25,7 @@ build() {
   cmake -S volk -B build-volk \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib32 \
     -DVOLK_INSTALL=ON
   cmake --build build-volk
 
