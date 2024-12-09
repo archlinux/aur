@@ -1,6 +1,6 @@
 pkgbase = rabbitremotecontrol-bin
 	pkgdesc = Remote control. Support VNC, RDP, Terminal, SSH, TELNET etc.(Prebuilt version)
-	pkgver = 0.0.28
+	pkgver = 0.0.29
 	pkgrel = 1
 	url = https://github.com/KangLin/RabbitRemoteControl
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = rabbitremotecontrol-bin
 	depends = qt6-webengine
 	depends = qt6-scxml
 	depends = qt6-multimedia
-	provides = rabbitremotecontrol=0.0.28
+	provides = rabbitremotecontrol=0.0.29
 	conflicts = rabbitremotecontrol
 	options = !strip
 	options = staticlibs
-	source = rabbitremotecontrol-0.0.28.deb::https://github.com/KangLin/RabbitRemoteControl/releases/download/v0.0.28/RabbitRemoteControl_0.0.28_amd64.deb
+	source = rabbitremotecontrol-0.0.29.deb::https://github.com/KangLin/RabbitRemoteControl/releases/download/v0.0.29/RabbitRemoteControl_0.0.29_amd64.deb
 	source = rabbitremotecontrol.sh
-	sha256sums = cea7b3485564fe1b8caaa29d2a1d7bfb6d5074baebb2e4a98f0a3548c47f54fe
+	sha256sums = 5e6914121814f47007b306317aefd3565fb32f834845c60b05a3079dae96f8ee
 	sha256sums = b6255be5cbf5685c1195a41cdad5a2490c403d6641c56c065040d5dbd3589aad
 
 pkgname = rabbitremotecontrol-bin
