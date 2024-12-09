@@ -3,7 +3,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qmplay2-appimage
 _pkgname=QMPlay2
-pkgver=24.06.16
+pkgver=24.12.06
 pkgrel=1
 pkgdesc="A video and audio player which can play most formats and codecs"
 arch=('x86_64')
@@ -21,22 +21,30 @@ options=(
     '!strip'
 )
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-2-${CARCH}.AppImage")
-sha256sums=('69210bc6310104453088138638536f6213bc8b6a74f16c3b6aa7aac6f11d4f05')
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-1-${CARCH}.AppImage")
+sha256sums=('8895b682059100b4864012a49ab8502723ce406b3b621b66ca3e9559c329474e')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "s|Exec=${_pkgname}|Exec=${pkgname%-appimage}|g" \
-        -e "s/Icon=${_pkgname}/Icon=${pkgname%-appimage}/g" \
-        -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    sed -e "
+        s/Exec=${_pkgname}/Exec=${pkgname%-appimage}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-appimage}/g
+    " -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    sed -e "
+        s/io.github.zaps166.${_pkgname}.desktop/${pkgname%-appimage}.desktop/g
+        s/${_pkgname}.desktop/${pkgname%-appimage}.desktop/g
+    " -i "${srcdir}/squashfs-root/usr/share/metainfo/${_pkgname}.appdata.xml"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
     install -Dm755 -d "${pkgdir}/usr/bin"
     ln -sf "${_install_path}/${pkgname%-appimage}.AppImage" "${pkgdir}/usr/bin/${pkgname%-appimage}"
-    for _icons in 16x16 22x22 32x32 48x48 64x64 128x128 256x256;do
+    _icon_sizes=(16x16 22x22 32x32 48x48 64x64 128x128 256x256)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-appimage}.png"
     done
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-appimage}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/metainfo/${_pkgname}.appdata.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-appimage}.appdata.xml"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/mime/packages/"*.xml -t "${pkgdir}/usr/share/mime/packages"
 }
