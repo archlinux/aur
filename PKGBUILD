@@ -2,7 +2,7 @@
 pkgname=gridtracker2-bin
 _pkgname=GridTracker2
 pkgver=2.241206.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An Amateur Radio Companion (unofficial)'
 url='https://gridtracker.org'
 license=('BSD-3-Clause')
@@ -25,7 +25,7 @@ package() {
   # Determine architecture
   case "$CARCH" in
     x86_64) _arch="x64";;
-    arm64) _arch="arm64";;
+    aarch64) _arch="arm64";;
     armv7h) _arch="arm7l";;
   esac
   
