@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=upscayl-git
 _pkgname=Upscayl
-pkgver=2.11.5.r31.g39e879f
+pkgver=2.11.5.r64.gf3af1d0
 pkgrel=1
 _electronversion=27
 _nodeversion=18
@@ -67,12 +67,11 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
-    sed -i "s/footer/Footer/g;s/tabs/Tabs/g;s/header/Header/g" renderer/components/sidebar/index.tsx
     sed -i "s/org.${pkgname%-git}.${_pkgname}/${pkgname%-git}/g" flatpak/"org.${pkgname%-git}.${_pkgname}".metainfo.xml
     NODE_ENV=development    npm install
     rm -rf node_modules/sharp
