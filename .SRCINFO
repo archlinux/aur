@@ -1,13 +1,13 @@
 pkgbase = python-libclang
 	pkgdesc = Clang Python Bindings
 	pkgver = 18.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/libclang
 	arch = x86_64
-	arch = aarch64
 	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/l/libclang/libclang-18.1.1.tar.gz
