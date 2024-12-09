@@ -1,0 +1,15 @@
+pkgbase = python-pyserial-labgrid-git
+	pkgdesc = Multiplatform Serial Port Module for Python (labgrid-fork)
+	pkgver = 3.5.0.2
+	pkgrel = 2
+	url = https://github.com/labgrid-project/pyserial
+	arch = any
+	license = custom:PYTHON
+	makedepends = python-setuptools
+	depends = python
+	provides = python-pyserial
+	conflicts = python-pyserial
+	source = git+https://github.com/labgrid-project/pyserial.git
+	sha256sums = SKIP
+
+pkgname = python-pyserial-labgrid-git
