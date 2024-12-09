@@ -1,28 +1,56 @@
-# Maintainer Hari Chalise <ingoprivate@gmail.com>
+# Maintainer Hari Chalise <harilvfs@chalisehari.com.np>
 pkgname="carch"
-pkgver="v3.0.3"
+pkgver="v3.0.9"
 pkgrel=1
 pkgdesc="An automated script for quick & easy Arch Linux system setup"
-arch=('x86_64')
-url="https://harilvfs.github.io/carch/"
-license=('Apache-2.0')
-depends=('bash')
-source=(
-    "https://github.com/harilvfs/carch/releases/download/v3.0.3/carch"
-    "https://raw.githubusercontent.com/harilvfs/carch/refs/heads/main/carch.desktop"
+arch=(any)
+url="https://github.com/harilvfs/carch"
+license=('GPL')
+options=(!strip)
+depends=(
+    "bash"
+    "man-pages"
+    "zip"
+    "gum"
+    "git"
+    "sed"
+    "xdg-user-dirs"
+    "wget"
+    "figlet"
+    "pacman" 
+    "unzip"
+    "python"
+    "gtk3"
 )
-sha256sums=('edc67233e754359a69ee502712f46ff7e150d296ab52c54822b931ac81f39bc1' '2171e7dc0300fced083f4b74548253fe0ff8b40b34ad0446d2c3557245735acc')  
 
-build() {
-    
-    :
-}
+conflicts=('carch-git')
+makedepends=()
+source=("${pkgname}-${pkgver}::https://github.com/harilvfs/carch/archive/refs/tags/${pkgver}.tar.gz")
+md5sums=('SKIP') 
 
 package() {
+
+    install -Dm 755 ${srcdir}/carch-${pkgver}/build/core.sh -t ${pkgdir}/usr/bin/carch
     
-    install -Dm755 "$srcdir/carch" "$pkgdir/usr/bin/carch"
-  
-    install -Dm644 "$srcdir/carch.desktop" "$pkgdir/usr/share/applications/carch.desktop"
+    install -d "$pkgdir/usr/bin/scripts"
+    
+    install -Dm 755 ${srcdir}/carch-${pkgver}/scripts/*.sh -t ${pkgdir}/usr/bin/scripts/
+
+    # desktop entry
+    install -Dm 644 ${srcdir}/carch-${pkgver}/carch.desktop -t ${pkgdir}/usr/share/applications/carch.desktop
+
+    # license
+    install -Dm 644 ${srcdir}/carch-${pkgver}/LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+
+    # doc
+    install -Dm 644 ${srcdir}/carch-${pkgver}/README.md -t ${pkgdir}/usr/share/doc/${pkgname}/README.md
+
+    # message
+    echo
+    echo ":: Carch ${pkgver} - Main Release"
+    echo ":: ---------------------------------------------------"
+    echo ":: Please execute the command carch once the installation is complete."
+    echo
 }
 
 
