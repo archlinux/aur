@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fishpi-bin
-pkgver=1.3.8
+pkgver=1.3.9
 _electronversion=16
 pkgrel=1
-pkgdesc="The new client of Fishpi.Prebuilt version.Use system-wide electron.摸鱼派新版客户端"
+pkgdesc="The new client of Fishpi.(Prebuilt version.Use system-wide electron).摸鱼派新版客户端"
 arch=('x86_64')
 url="https://fishpi.cn"
 _ghurl="https://github.com/imlinhanchao/fishpi-desktop"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/imlinhanchao/fishpi-desktop/master/build/icons/256x256.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('35957941e650759b91b8a7ad6f991589c1440d1774b87dd1d4e72521d7b5c637'
+sha256sums=('d3c750f73de76ef89044e098d114226c459e2ff2211ae619590f7c228dc38ff0'
             'c8d477f31fadf5c61c54afbc28ddf06af73dfa062b53ce70c47e1092eb05bc94'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
