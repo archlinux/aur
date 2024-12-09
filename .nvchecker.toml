@@ -1,0 +1,4 @@
+[mergetb-cli]
+source = "git"
+git = "https://gitlab.com/mergetb/portal/cli.git"
+prefix = "v"

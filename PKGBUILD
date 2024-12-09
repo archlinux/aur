@@ -2,19 +2,18 @@
 
 _binname="mrg"
 pkgname="mergetb-cli"
-pkgver=1.2.4
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="Command-line tool used to interact and manage a Merge testbed and experiments"
-arch=('any')
-url="https://gitlab.com/mergetb/portal/cli/"
+arch=('x86_64' 'aarch64' 'i686')
+url="https://next.mergetb.org/docs/experimentation/cli-reference"
+_url="https://gitlab.com/mergetb/portal/cli"
 license=('custom:Unknown')
 depends=('glibc')
 makedepends=('go')
-optdepends=('bash-completion: for shell auto-completion'
-            'zsh-completions: for shell auto-completion')
 _pkgsrc="cli-v${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/-/archive/v${pkgver}/cli-v${pkgver}.tar.gz")
-sha256sums=('1817cc18c7c0cf6ceb55c88ed793d8d31d99ed0164696c391ac795936e7d8c1c')
+source=("${_pkgsrc}.tar.gz::${_url}/-/archive/v${pkgver}/cli-v${pkgver}.tar.gz")
+sha256sums=('6614ac138499d67c2922eceaa8037907057c495ffa4c7fe6ed205dad997c66e5')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
