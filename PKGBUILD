@@ -2,16 +2,14 @@
 
 pkgname=gnome-shell-extension-tophat
 _pkgbase=tophat
-pkgver=14
-pkgrel=2
+pkgver=16
+pkgrel=1
 pkgdesc="View CPU, memory, disk, and network activity in the GNOME top bar (v45 fork)."
 arch=(any)
 url="https://github.com/fflewddur/tophat"
 license=(GPL3)
-depends=('dconf' 'gnome-shell>=45' 'libgtop')
-makedepends=('git' 'unzip' 'gettext')
-provides=(gnome-shell-extension-tophat)
-conflicts=(gnome-shell-extension-tophat)
+depends=('gnome-shell>=45')
+#makedepends=('git' 'unzip' 'gettext')
 source=($_pkgbase::${url}/releases/download/v${pkgver}/tophat@fflewddur.github.io.v${pkgver}.shell-extension.zip)
 sha256sums=('42b8d44bde45452f8aabb31bf20a849e11be5f69a187fc6574c0695d6a07ef97')
 
