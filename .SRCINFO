@@ -1,13 +1,9 @@
 pkgbase = magiskboot-git
 	pkgdesc = Magiskboot_ndk
-	pkgver = 27006.69.r1.gd9901db
+	pkgver = 28001.73.r13.g6115b52
 	pkgrel = 1
 	url = https://github.com/xiaoxindada/magiskboot_ndk_on_linux
 	arch = x86_64
-	arch = i686
-	arch = aarch64
-	arch = armv7h
-	arch = riscv64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git

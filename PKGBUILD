@@ -2,14 +2,10 @@
 
 pkgbase=magiskboot-git
 pkgname=magiskboot-git
-pkgver=27006.69.r1.gd9901db
+pkgver=28001.73.r13.g6115b52
 pkgrel=1
 pkgdesc="Magiskboot_ndk"
-arch=(x86_64
-      i686
-      aarch64
-      armv7h
-      riscv64)
+arch=($CARCH)
 url="https://github.com/xiaoxindada/magiskboot_ndk_on_linux"
 license=('GPL-3.0-or-later')
 provides=(${pkgbase%-git})
@@ -28,9 +24,10 @@ options=(!debug)
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^Magiskboot-//g;s/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
