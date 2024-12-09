@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.12.3.arch1
+pkgver=6.12.4.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -41,8 +41,7 @@ source=(
   # 0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.11/asus-patch-series.patch"
   asus-patch-series.patch
   0001-acpi-proc-idle-skip-dummy-wait.patch
-  0002-mt76_-mt7921_-Disable-powersave-features-by-default.patch  
-#  0003-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
+  0002-mt76_-mt7921_-Disable-powersave-features-by-default.patch
   0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0005-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0006-mediatek-pci-reset.patch
@@ -57,11 +56,11 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('c89809cc777d50f1ea484a118630281a26383707a0e752c96fd834f6e765deae'
+sha256sums=('6f35f821433d8421be7167990747c7c4a0c451958fb96883446301af13d71152'
             'SKIP'
-            'bfee79a682a98241842ddea4f86a57fedc8b23fd2a87366aa99add0d75b6bf16'
+            '8d84f0e5f013c6c80cd2a2fe26da8e0c1170edc058f6f378e1261541781c12b9'
             'SKIP'
-            '04f20ec52391bbd185d66ccb9bba7f50745ab2640e822124a385c58d01a2eaad'
+            'a6a234cd982d21f0d7daa3ba921293e450abd87ff5d7474d4a153b3f34cfabc5'
             'a8afb5f75dde2eb038bdd2ec4cd2f8c600d6357ae64960c0df5f2c6c168514ce'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             '48e12a587e3a93e73ca2bba9f3b418d70c0a56592581d2705384a07243c70d61'
