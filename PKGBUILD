@@ -26,8 +26,8 @@ conflicts=('fenrir')
 backup=('etc/fenrirscreenreader/settings/settings.conf')
 source=("git+https://git.stormux.org/storm/${_gitname}.git"
   'fenrirscreenreader.service')
-sha512sums=('SKIP'                                                                                                                                                        
-            'dc73ab35120902222d7aab02ebd396790d0b9a7c2531746011dcd4169b5376cdd942909734dd77aae60275f537395684327759bed6fce675adac6699bbe0b262')
+sha512sums=('SKIP'
+            'e5e690bd9084d20a3c96ed391989e1db5211ef65b36a18ca6a49f8e16b40771a8a35151388df69d3cc64459d075ecb5fd0c415e11dfb43bc6ed2927612262168')
 
 pkgver()
 {
