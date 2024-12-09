@@ -4,7 +4,7 @@
 # Contributor: Krut Patel <kroot.patel@gmail.com>
 
 pkgname=sioyek-git
-pkgver=2.0.0.r945.gb5e6f50
+pkgver=2.0.0.r959.g7637caa
 pkgrel=1
 pkgdesc="PDF viewer for research papers and technical books."
 arch=(x86_64)
@@ -16,8 +16,10 @@ makedepends=(git qt6-3d)
 provides=(sioyek)
 conflicts=(sioyek)
 source=("git+https://github.com/ahrm/sioyek.git#branch=development"
+        "toc_crash.patch"
         "standard-path-mupdf-build.patch")
 sha256sums=('SKIP'
+            'b5a0be4f7c55cdde09ee8eb45ccaae1d1569c2a2369d68d50d70cc749687d46e'
             '3f781450b34cf06bb3d9f5499c197f8be1fb6b9d25a77f98b03a226149a096c1')
 
 pkgver() {
@@ -28,6 +30,7 @@ pkgver() {
 prepare() {
   cd "sioyek"
 
+  patch --forward --strip=1 --input="${srcdir}/toc_crash.patch"
   patch --forward --strip=1 --input="${srcdir}/standard-path-mupdf-build.patch"
   sed -i 's/<C-S-o>$/<C-S-O>/' pdf_viewer/keys.config
 }
