@@ -1,7 +1,7 @@
 pkgbase = sttt-git
 	pkgdesc = bezier-eased terminal animations
 	pkgver = r29.ef96d8c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flick0/sttt
 	arch = any
 	license = MIT

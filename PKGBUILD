@@ -5,7 +5,7 @@ pkgver() {
     cd "$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
-pkgrel=1
+pkgrel=2
 pkgdesc='bezier-eased terminal animations'
 arch=(any)
 url="https://github.com/flick0/sttt"
@@ -13,7 +13,7 @@ license=('MIT')
 provides=("sttt")
 depends=('python3' 'ncurses')
 makedepends=('git')
-source=("sttt-git::git+https://github.com/flick0/sttt.git")
+source=("sttt-git::git+${url}.git")
 sha256sums=('SKIP')
 package() {
     install -Dm 755 "$pkgname/sttt" "$pkgdir/usr/bin/sttt"
