@@ -3,11 +3,9 @@
 pkgbase=pcanflash-git
 pkgname=pcanflash-git
 pkgver=r94.ff6be26
-pkgrel=7
+pkgrel=13
 pkgdesc="Linux Tool to flash PCAN Routers"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/peak-system/pcanflash"
 license=('GPL-2.0-only')
 provides=(${pkgname%-git})
@@ -21,14 +19,14 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
