@@ -3,7 +3,7 @@
 _pkgname=mmdetection
 pkgname=python-mmdetection
 pkgver=3.3.0
-pkgrel=2
+pkgrel=4
 pkgdesc='OpenMMLab Detection Toolbox and Benchmark'
 arch=('any')
 url='https://github.com/open-mmlab/mmdetection'
@@ -47,8 +47,5 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
-  # delete unused .mim dir
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm -rfv "${pkgdir}${site_packages}/mmdet/.mim"
 }
 # vim:set ts=2 sw=2 et:
