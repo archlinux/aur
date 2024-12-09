@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-music-git
-pkgver=0.5.19.r0.g5c03391
-_electronversion=30
+pkgver=0.5.21.r0.gd9d737b
+_electronversion=33
 _nodeversion=20
 pkgrel=1
-pkgdesc="Light music.轻音乐.Use system-wide electron."
+pkgdesc="Light music.轻音乐.(Use system-wide electron)"
 arch=('any')
 url="https://simple-music.netlify.app/"
 _ghurl="https://github.com/joey2217/simple-music"
@@ -49,7 +49,7 @@ build() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${pkgdesc}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -62,13 +62,14 @@ build() {
         echo 'fetch-retry-maxtimeout=10000'
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
+        echo "shamefully-hoist=true"
+        echo "virtual-store-dir-max-length=80"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
+        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
