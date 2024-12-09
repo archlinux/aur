@@ -2,11 +2,9 @@
 
 pkgbase=ok-gloox-git
 pkgname=ok-gloox-git
-pkgver=r199.606f914
-pkgrel=2
-arch=(x86_64
-    aarch64
-    riscv64)
+pkgver=r253.2c09c3c
+pkgrel=1
+arch=($CARCH)
 pkgdesc="OkStar - OkGloox 对Gloox的拓展，上游主页：https://camaya.net/gloox"
 _url="https://github.com/okstar-org"
 url="${_url}/ok-gloox"
@@ -31,21 +29,21 @@ options=()
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
     cd "${srcdir}/${pkgname}"
 
-# see：https://wiki.archlinux.org/title/CMake_package_guidelines
+    # see：https://wiki.archlinux.org/title/CMake_package_guidelines
     cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=OFF \
