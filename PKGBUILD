@@ -1,12 +1,10 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=zteonu-git
-pkgver=0.0.7.r0.g826050b
-pkgrel=1
+pkgver=0.0.7.r1.g1e9b8e5
+pkgrel=2
 pkgdesc="中兴 F677V9/F7607P/F4607P/G7615 光猫工厂模式工具"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/thank243/zteOnu"
 license=('AGPL-3.0-only')
 provides=(${pkgname%-git})
@@ -24,14 +22,14 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}/"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
@@ -49,6 +47,6 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}"
-	
+
     install -Dm755 build/zteOnu ${pkgdir}/usr/bin/${pkgname%-git}
 }
