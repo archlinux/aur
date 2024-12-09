@@ -1,0 +1,5 @@
+[corsix-th]
+source="github-graphql"
+github="CorsixTH/CorsixTH"
+use_max_tag=true
+prefix='v'
