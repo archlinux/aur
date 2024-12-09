@@ -2,16 +2,20 @@
 
 pkgname=asciidoctor-web-pdf-git
 pkgver=1.0.0.alpha.16.r8.g3fe542a
-pkgrel=1
+pkgrel=8
 pkgdesc="A PDF converter for AsciiDoc based on web technologies. It allows complex layouts to be defined with CSS and JavaScript, while writing the content in AsciiDoc."
-arch=('any')
+arch=($CARCH)
 url="https://github.com/Mogztter/asciidoctor-web-pdf"
 license=('MIT')
-provides=(${pkgname})
-conflicts=(${pkgname}  ${pkgname%-git} asciidoctor-pdf)
+provides=(${pkgname%-git} asciidoctor-pdf)
+conflicts=(${pkgname%-git} asciidoctor-pdf)
 #replaces=(${pkgname})
 depends=()
-makedepends=(git npm poppler ghostscript)
+makedepends=(
+    git
+    npm
+    poppler
+    ghostscript)
 backup=()
 options=()
 install=
@@ -21,9 +25,10 @@ noextract=()
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^[vV]//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
