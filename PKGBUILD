@@ -13,7 +13,7 @@ _devenv=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=9.22.w1.s7ba8823
+pkgver=10.0.rc1.w1.s4f96088
 pkgrel=1
 eval pkgrel=1
 
@@ -32,10 +32,10 @@ _enabled_staging=()
 
 ## if all staging patches are to be applied, what (array of) patches to omit?
 ## e.g. "Compiler_Warnings user32-. . ."
-_disabled_staging=(eventfd_synchronization) # added manually from proton
+_disabled_staging=(eventfd_synchronization wined3d-unset-flip-gdi) # added manually from proton
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="11-22-2024-51ccd95c-7ba8823e"
+_patchbase_tag="12-09-2024-4161e62e-4f96088b"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -45,8 +45,8 @@ _custompatches=false
 
 ## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
 ## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=51ccd95c49c2c61ad41960b25a01f834601d70c0
-_desired_staging_commit=7ba8823e57e0a32c1373e5c304542c7ce578699c
+_desired_wine_commit=4161e62e478f61fdcd0365d9bd7b21e3b1a5197b
+_desired_staging_commit=4f96088b1e12db6134dff4090797c3d61b05833d
 
 ## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -161,7 +161,6 @@ depends=(
   libpulse
   bash
   ffmpeg
-  gst-plugins-base-libs
   gst-plugins-good
   gst-libav
 )
@@ -219,37 +218,48 @@ optdepends=(
 )
 
 if [ "${_wow64build}" != "true" ]; then
-  depends+=(lib32-ffmpeg lib32-libxkbcommon libvulkan.so=1-32 lib32-gst-plugins-base-libs lib32-gst-plugins-good lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
-  makedepends+=(lib32-zlib lib32-xz lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2)
+  depends+=(lib32-libxkbcommon libvulkan.so=1-32 lib32-gst-plugins-good lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
+  makedepends+=(lib32-ffmpeg lib32-zlib lib32-xz lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2)
   optdepends+=(lib32-gst-libav lib32-libusb lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
   if [ "${_use_clang}" = "true" ]; then makedepends+=(lib32-llvm-libs); fi
 fi
 
+pkgver() {
+  _pkgver=$(git -C "${srcdir}"/"${pkgname}" describe --tags --abbrev=0 | cut -f2- -d'-')
+  _whash=$(git -C "${srcdir}"/"${pkgname}" rev-list --count --cherry-pick wine-"${_pkgver}"...HEAD)
+  _shash=${_desired_staging_commit:0:7}
+
+  printf '%s%s%s' "${_pkgver//-/.}" ".w${_whash:?}" "$(if [ "${_apply_staging}" != "false" ]; then echo -n ".s${_shash:?}"; fi)"
+}
+
 _fake_gnuc_flag="-fgnuc-version=5.99.99"
+_polly_flags="-Xclang -load -Xclang /usr/lib/LLVMPolly.so -mllvm -polly -mllvm -polly-parallel -mllvm -polly-omp-backend=LLVM -mllvm -polly-vectorizer=stripmine"
 ## native compiler setup
 if [ "${_use_clang}" = "true" ]; then
-  makedepends+=(clang llvm-libs)
+  makedepends+=(clang llvm-libs polly)
 
   _cc="/usr/bin/clang" # TODO: remove /usr/bin hardcode
   _cxx="/usr/bin/clang++"
 
-  # _lto_flags="-fuse-linker-plugin -flto -Wl,--flto,--flto-partition=one" # for non-lld lto
-  _extra_native_flags="${_fake_gnuc_flag} -flto=full -D__LLD_LTO__ --rtlib=compiler-rt --unwindlib=libgcc"
-  _extra_ld_flags="-flto=full -fuse-ld=lld"
+  _extra_native_flags="${_fake_gnuc_flag} -flto=full -fvirtual-function-elimination -D__LLD_LTO__ --rtlib=compiler-rt --unwindlib=libgcc"
+  _extra_ld_flags="-flto=full -fvirtual-function-elimination -fuse-ld=lld"
   _lld_lto="true" # will apply _makefile_add_lto_flags() after _configure64(), and the "5000-clang-fixup-lto.patch" from the wine-osu-patches repo
+  _use_polly="${_use_polly:-} native"
 elif [ "${_use_clang}" = "bundled" ] && [ "${_use_mingw}" = "llvm" ]; then
+  makedepends+=(polly)
   _cc="clang"
   _cxx="clang++"
 
-  _extra_native_flags="${_fake_gnuc_flag} -D__LLD_LTO__ --rtlib=compiler-rt --unwindlib=libgcc"
-  _extra_ld_flags="-flto=full -fuse-ld=lld"
+  _extra_native_flags="${_fake_gnuc_flag} -flto=full -fvirtual-function-elimination -D__LLD_LTO__"
+  _extra_ld_flags="-flto=full -fvirtual-function-elimination -fuse-ld=lld"
   _lld_lto="true"
+  _use_polly="${_use_polly:-} native"
 else
   _cc="gcc"
   _cxx="g++"
 
   _lto_flags="-fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto -Wl,-flto" # requires lto-fixup.patch, should apply automatically
-  _extra_native_flags="-floop-nest-optimize -fgraphite-identity -floop-strip-mine" # graphite opts
+  _extra_native_flags="-floop-nest-optimize -floop-parallelize-all -fgraphite-identity" # graphite opts
 fi
 
 ## cross-compiler setup
@@ -276,10 +286,11 @@ if [ "${_use_mingw}" = "llvm" ]; then
     # set so that we don't use fallback code for __GNUC__ <= 4.2.1
     # which may be unnecessarily pessimistic
     # doesn't work with ucrt due to some specific modules failing
-    _extra_common_flags="${_fake_gnuc_flag}"
+    _extra_common_flags="${_extra_common_flags:-} ${_fake_gnuc_flag}"
   fi
 
   _cross_path="${_mingw_path}":"${PATH}"
+  _extra_cross_flags="${_extra_cross_flags:-} -ffunction-sections -fdata-sections -Wl,--gc-sections"
 else
   # remove llvm-mingw paths from externally set PATH
   if [[ "${PATH}" =~ "llvm-mingw" ]]; then
@@ -290,14 +301,15 @@ else
   fi
 
   if [ "${_use_mingw}" = "msvc" ]; then
-    makedepends+=(clang llvm-libs llvm lld)
+    makedepends+=(clang llvm-libs llvm lld polly)
 
     _cross64="clang"
     _crossxx64="clang++"
     _cross32="clang"
     _crossxx32="clang++"
 
-    _extra_cross_flags="--rtlib=compiler-rt"
+    _extra_cross_flags="${_extra_cross_flags:-} --rtlib=compiler-rt -ffunction-sections -fdata-sections"
+    _use_polly="${_use_polly:-} cross"
   else
     makedepends+=(mingw-w64-binutils mingw-w64-gcc mingw-w64-crt mingw-w64-headers mingw-w64-winpthreads)
 
@@ -305,19 +317,13 @@ else
     _crossxx64="x86_64-w64-mingw32-g++"
     _cross32="i686-w64-mingw32-gcc"
     _crossxx32="i686-w64-mingw32-g++"
+
+    _extra_cross_flags="${_extra_cross_flags:-} -floop-nest-optimize -floop-parallelize-all -fgraphite-identity" # graphite opts
   fi
 fi
 
 makedepends=("${makedepends[@]}" "${depends[@]}")
 #depends+=(NTSYNC-MODULE)
-
-pkgver() {
-  _pkgver=$(git -C "${srcdir}"/"${pkgname}" describe --tags --abbrev=0 | cut -f2 -d'-')
-  _whash=$(git -C "${srcdir}"/"${pkgname}" rev-list --count --cherry-pick wine-"${_pkgver}"...HEAD)
-  _shash=${_desired_staging_commit:0:7}
-
-  printf '%s%s%s' "${_pkgver:?}" ".w${_whash:?}" "$(if [ "${_apply_staging}" != "false" ]; then echo -n ".s${_shash:?}"; fi)"
-}
 
 ## exported at the start of every function
 _set_vars() {
@@ -326,23 +332,30 @@ _set_vars() {
 
   export PATH="${_cross_path}"
 
-  _common_cflags="${_cpu_target} ${_extra_common_flags:-} -pipe -O3 -fomit-frame-pointer -fwrapv -fno-strict-aliasing \
-                 -ffunction-sections -fdata-sections -mfpmath=sse \
+  _common_cflags="${_cpu_target} ${_extra_common_flags:-} -pipe -O3 -fomit-frame-pointer -fwrapv -fno-strict-aliasing -mfpmath=sse \
                  -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -w"
                  # -Wall -Wno-unknown-attributes -Wno-unused-but-set-variable -Wno-unused-variable -Wunaligned-access"
-  _native_common_cflags="${_lto_flags:-} ${_extra_native_flags:-}" # only for the non-mingw side
+  _native_common_cflags="${_lto_flags:-} ${_extra_native_flags:-} -ffunction-sections -fdata-sections" # only for the non-mingw side
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
   _GCC_FLAGS="${_common_cflags} ${_native_common_cflags} ${CPPFLAGS}"
   _CROSS_FLAGS="${_common_cflags} ${CPPFLAGS} ${_extra_cross_flags}"
 
-  _LD_FLAGS="${_GCC_FLAGS} ${_extra_ld_flags:-} -Wl,-O2,--sort-common,--as-needed,--gc-sections -static-libgcc"
-  _CROSS_LD_FLAGS="${_CROSS_FLAGS}"
+  if [[ "${_use_polly}" =~ native ]]; then
+    _GCC_FLAGS+=" ${_polly_flags}"
+  fi
+
+  if [[ "${_use_polly}" =~ cross ]]; then
+    _CROSS_FLAGS+=" ${_polly_flags}"
+  fi
+
+  _LD_FLAGS="${_GCC_FLAGS} ${_extra_ld_flags:-} -Wl,-O2,--sort-common,--as-needed,--gc-sections"
+  _CROSS_LD_FLAGS="${_common_cflags} ${CPPFLAGS}"
 
   if [ "${_use_mingw}" = "msvc" ]; then
     _CROSS_LD_FLAGS+=" -Wl,/FILEALIGN:4096,/OPT:REF,/OPT:ICF"
   else
-    _CROSS_LD_FLAGS+=" -Wl,-O2,--sort-common,--as-needed,--file-alignment=4096,--gc-sections"
+    _CROSS_LD_FLAGS+=" -Wl,-O2,--sort-common,--as-needed,--file-alignment=4096"
   fi
 
   export CC="ccache ${_cc}"
@@ -551,6 +564,13 @@ prepare() { _set_vars;
   ## clean up .orig files if patches succeeded
   find "${srcdir}"/"${pkgname}" -iregex ".*orig" -execdir rm {} \;
 
+  # ./dlls/winevulkan/make_vulkan # don't really need dx12 support for this package...
+
+  tools/make_requests
+  if [ -e tools/make_specfiles ]; then
+    tools/make_specfiles
+  fi
+
   ## make tools/make_makefiles happy
   git config commit.gpgsign false &>/dev/null || true
   git config user.email "wine@build.dev" &>/dev/null || true
@@ -558,11 +578,6 @@ prepare() { _set_vars;
   git add --all &>/dev/null || true
   git commit --allow-empty -m "makepkg" &>/dev/null || true
 
-  # ./dlls/winevulkan/make_vulkan # don't really need dx12 support for this package...
-  tools/make_requests
-  if [ -e tools/make_specfiles ]; then
-    tools/make_specfiles
-  fi
   tools/make_makefiles
 
   _prep_ccache
@@ -598,10 +613,15 @@ _tools64() { _set_vars64;
 
   msg2 "Building Wine-64 tools"
 
+  if [ -n "${_lld_lto}" ]; then
+    _noltoflags="-fno-lto -fno-virtual-function-elimination -O1"
+  else
+    _noltoflags="-fno-lto -O1"
+  fi
   shopt -s globstar
   # don't use lto to speed up tools compilation
   for mkfile in tools/Makefile tools/**/Makefile; do
-    "$@" -C "${mkfile%/Makefile}" CFLAGS="${CFLAGS} -fno-lto -O1" LDFLAGS="${LDFLAGS} -fno-lto -O1" CROSSCFLAGS="${CROSSCFLAGS} -fno-lto -O1" CROSSLDFLAGS="${CROSSLDFLAGS} -fno-lto -O1"
+    "$@" -C "${mkfile%/Makefile}" CFLAGS="${CFLAGS} ${_noltoflags}" LDFLAGS="${LDFLAGS} ${_noltoflags}" CROSSCFLAGS="${CROSSCFLAGS} ${_noltoflags}" CROSSLDFLAGS="${CROSSLDFLAGS} ${_noltoflags}"
   done
   chmod -R +x "${build64dir}"/tools
   shopt -u globstar
@@ -633,6 +653,7 @@ build() { _set_vars;
       mkdir "${_confcachedir}" || \
           _failure "Couldn't create an autoconf cache directory in ${_confcachedir#"${_where}/"}. This shouldn't have happened."
     fi
+    ln -s "${HOME}/.config/edwkspc/wine/".* "${srcdir}"/"${pkgname}"/ || true
   fi
 
   _sharedopts=(
@@ -651,8 +672,6 @@ build() { _set_vars;
     --without-cups
     --without-sane
     --without-gphoto
-    --without-gssapi
-    --without-krb5
     --without-pcsclite
     --without-pcap
     --without-capi
@@ -788,7 +807,7 @@ _makefile_add_lto_flags() {
                     has_backslash = (lines[i] ~ /\\[[:space:]]*$/)
                     
                     if (is_last_line && !has_backslash) {
-                        print lines[i] " -fno-lto -Wl,--no-relax"
+                        print lines[i] " -fno-lto -fno-virtual-function-elimination -Wl,--no-relax"
                         modifications++
                         in_target = 0
                     } else {

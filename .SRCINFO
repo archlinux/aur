@@ -1,6 +1,6 @@
 pkgbase = wine-osu-spectator-wow64
 	pkgdesc = A compatibility layer for running Windows programs, but with osu! specific patches (doesn't conflict with other Wine installations) (WoW64 version)
-	pkgver = 9.22.w1.s7ba8823
+	pkgver = 10.0.rc1.w1.s4f96088
 	pkgrel = 1
 	url = http://www.winehq.com
 	install = wine-wow64.install
@@ -40,10 +40,12 @@ pkgbase = wine-osu-spectator-wow64
 	makedepends = xz
 	makedepends = clang
 	makedepends = llvm-libs
+	makedepends = polly
 	makedepends = clang
 	makedepends = llvm-libs
 	makedepends = llvm
 	makedepends = lld
+	makedepends = polly
 	makedepends = fontconfig
 	makedepends = lcms2
 	makedepends = libxml2
@@ -65,7 +67,6 @@ pkgbase = wine-osu-spectator-wow64
 	makedepends = libpulse
 	makedepends = bash
 	makedepends = ffmpeg
-	makedepends = gst-plugins-base-libs
 	makedepends = gst-plugins-good
 	makedepends = gst-libav
 	depends = fontconfig
@@ -89,7 +90,6 @@ pkgbase = wine-osu-spectator-wow64
 	depends = libpulse
 	depends = bash
 	depends = ffmpeg
-	depends = gst-plugins-base-libs
 	depends = gst-plugins-good
 	depends = gst-libav
 	optdepends = libxinerama
@@ -124,9 +124,9 @@ pkgbase = wine-osu-spectator-wow64
 	source = Makefile.single
 	source = lto-fixup.patch
 	source = buildiswow64
-	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=51ccd95c49c2c61ad41960b25a01f834601d70c0
-	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=7ba8823e57e0a32c1373e5c304542c7ce578699c
-	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=11-22-2024-51ccd95c-7ba8823e
+	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=4161e62e478f61fdcd0365d9bd7b21e3b1a5197b
+	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=4f96088b1e12db6134dff4090797c3d61b05833d
+	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=12-09-2024-4161e62e-4f96088b
 	sha512sums = 2d431b8830f783b9973ef3df50606b3dae705dffe3cd6106a7daa3b5ad89eaecd6b0e7da835ebf18985a6f3c9c1c952866f39126e34fb6503935baa91a9e8189
 	sha512sums = 59920a54e9bd8d1f73c15675f7df29829680b59f4d1c4fc74fe710e4b596fd6a96f3b43994eb5da0fd1e50299b0ada933c6f3796e1d0698febb7870995f7f266
 	sha512sums = c949136c1dca345ab4e86cb7ac6d0f02595e09a9f0c344dc9ca454cfa3aab8845a2e1f36f27e9357f3a6a3ead0d6b7f1ffb1444246cd3b76aedbe30942d20859
