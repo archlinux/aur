@@ -4,4 +4,4 @@ Description=Moodle; run cron.php
 [Service]
 KillMode=mixed
 User=http
-ExecStart=/usr/bin/php usr/share/webapps/moodle/admin/cli/cron.php >/dev/null
+ExecStart=/usr/bin/php /usr/share/webapps/moodle/admin/cli/cron.php >/dev/null

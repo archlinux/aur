@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=moodle-stable
-pkgver=4.5.0
+pkgver=4.5.1
 pkgrel=1
 pkgdesc="An open-source software learning management system"
 arch=("any")
@@ -12,8 +12,8 @@ source=("https://github.com/moodle/moodle/archive/refs/tags/v${pkgver}.tar.gz"
         "moodle-cron.service"
         "moodle-cron.timer"
         "moodle.tmpfiles")
-sha512sums=('df40a8f5f36668d5602201785741e3d826f3b6fc1685274f68e5545783cbf6e7a222413ff9c2181944cbf107b30488a50c03ec03c01fcefbb9de62edae538713'
-            'f9d929bd5ba4cdeeb9b8c9371f14aa1fe9b9218f27ce95c4ef1e1057f56d2b7f71f47cb11a77d6af9f5fab31b3ba2b9cac4230bc251c81cc99818a3b1e7b5177'
+sha512sums=('82997c9932ff746d5d76eadf2a74147432a636d283833a166747eaa60151f556b3471387ead26737b1c18b8714a2de65e6a96c1270dde8a5083c5238f1316c6c'
+            'c23ef22cea5a8a8626d81cd754769c801b969c742b0cc034ead6e9e8048b3c17d8b8636c3527ca3bc5afd98c9aff507ec8ea03c7213cf855f6473c88cb26f160'
             'eb4fec1a61e4d3d0aca550434ec40f64ed2b294ac25cbeaadb7fc583d84ce171ebb5280f093bc5983162b8739d46eb08976ddd28535e7d4a506b0c1f3d48efa7'
             '2691d64ed81a876ff6cad3de859520f30a5bb93468b493631b6d8ed9677ea43f29e0af7d0ed89c3794b5c57d4669458d5e126f825a71c4068de6847f45651fcc')
 install=moodle.install
