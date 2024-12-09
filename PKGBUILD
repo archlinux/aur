@@ -28,7 +28,7 @@ source=(
 	"moonshine.service"
 )
 sha256sums=('SKIP'
-            'dc1d8e62f3a3d6b6af11f0c6418a29ba6889301e48d23b50d15cdde4f8e81099')
+            '90ebbbf2ce620910a9d594f8f5174d20401ae16e6abdc04210a926674a3da43d')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
