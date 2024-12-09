@@ -2,9 +2,9 @@
 _pkgname=nexus_wallet
 pkgname="${_pkgname//_/-}-bin"
 _appname="Nexus Wallet"
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
-pkgdesc="The official Logical and Interface layers of the Nexus Software Stack.Prebuilt version."
+pkgdesc="The official Logical and Interface layers of the Nexus Software Stack.(Prebuilt version)"
 arch=('x86_64')
 url="https://crypto.nexus.io/wallet"
 _ghurl="https://github.com/Nexusoft/NexusInterface"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-Linux-${pkgver}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Nexusoft/NexusInterface/v${pkgver}/LICENSE"
 )
-sha256sums=('435e28b07eb9c9c5ee34245a54ac2b090a150213d6bdda85e2b139b68c9ff782'
+sha256sums=('1748de2ba5b6739cd98245d74dcb86f6171bf790a4d0ce4de04f44a1e0eb2181'
             'e7ee68282295100c6be4565152cb535d43086d2354760a8f006f1e980e0a3bb5')
 build() {
     bsdtar -xf "${srcdir}/data."*
