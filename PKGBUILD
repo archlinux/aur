@@ -2,7 +2,7 @@
 pkgbase=dogelog
 pkgname=(dogelog-js dogelog-py dogelog-java dogelog-license dogelog)
 pkgver=1.2.5
-pkgrel=8
+pkgrel=9
 arch=(any)
 url='https://www.dogelog.ch/'
 pkgdesc='The avant-garde of logic programming'
@@ -51,6 +51,7 @@ package_dogelog-java() {
 package_dogelog() {
     pkgdesc='The avant-garde of logic programming (Shell wrapper)'
     depends=(dogelog-package)
+    optdepends=(rlwrap)
     license=(GPL-2.0-or-later)
     install -m755 -D ../dogelog.sh "$pkgdir/usr/bin/$pkgbase"
 }

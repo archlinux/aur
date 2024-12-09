@@ -1,7 +1,7 @@
 pkgbase = dogelog
 	pkgdesc = The avant-garde of logic programming
 	pkgver = 1.2.5
-	pkgrel = 8
+	pkgrel = 9
 	url = https://www.dogelog.ch/
 	changelog = ChangeLog
 	arch = any
@@ -43,3 +43,4 @@ pkgname = dogelog
 	pkgdesc = The avant-garde of logic programming (Shell wrapper)
 	license = GPL-2.0-or-later
 	depends = dogelog-package
+	optdepends = rlwrap

@@ -54,4 +54,8 @@ case "${DOGELOG_BACKEND}" in
         exit 1 ;;
 esac
 
+if command -v rlwrap >/dev/null 2>&1; then
+    CMDLINE="rlwrap $CMDLINE"
+fi
+
 exec $CMDLINE "$@"
