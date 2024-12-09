@@ -1,6 +1,6 @@
 pkgbase = cellframe-node
 	pkgdesc = Cellframe blockchain node with a powerful SDK
-	pkgver = 5.3.r3147.25bf523
+	pkgver = 5.3.r3149.a43ee4d
 	pkgrel = 1
 	url = https://cellframe.net
 	install = cellframe-node.install
@@ -20,7 +20,7 @@ pkgbase = cellframe-node
 	replaces = cellframe-node-debug
 	options = !debug
 	options = !strip
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-node.git#commit=25bf523e212836893b5face0554b06c4f57a3141
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-node.git#commit=a43ee4d35162c55e912fa2f3b2efa33c1bcf0a98
 	source = cellframe-node.logrotate
 	source = cellframe-node.service
 	source = cellframe-node-asan.service
