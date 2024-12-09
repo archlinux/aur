@@ -2,9 +2,9 @@
 pkgname=pimpmyrice
 provides=("pimpmyrice")
 conflicts=("pimpmyrice-git" "pimpmyrice")
-pkgdesc=""
+pkgdesc="The overkill rice manager"
 url="https://github.com/daddodev/pimpmyrice"
-pkgver=0.2.2
+pkgver=0.3.1
 pkgrel=1
 arch=("any")
 license=("MIT")
