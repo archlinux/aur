@@ -1,12 +1,11 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=buchable-git
 _pkgname=buchable
-pkgver=r353.2e4cd2a
+pkgver=r355.0d5f0a1
 pkgrel=1
 pkgdesc="The unofficial cross-platform app for Audiobookshelf"
 arch=('x86_64')
-#Using Branch on my Fork until PR is Merged
-url="https://github.com/0xGingi/abs_flutter"
+url="https://github.com/Vito0912/abs_flutter"
 license=('BSD-3-Clause')
 depends=(
     'gtk3'
@@ -25,7 +24,7 @@ makedepends=(
     'gtk3'
     'git'
 )
-source=("git+$url#branch=linux-build")
+source=("git+$url")
 sha256sums=('SKIP')
 provides=('buchable')
 conflict=('buchable')
