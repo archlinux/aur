@@ -1,5 +1,5 @@
 pkgbase = hfsutils
-	pkgdesc = HFS Access utils
+	pkgdesc = Tools for reading and writing Macintosh volumes
 	pkgver = 3.2.6_p16
 	pkgrel = 4
 	url = https://www.mars.org/home/rob/proj/hfs/

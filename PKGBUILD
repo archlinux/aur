@@ -5,7 +5,7 @@
 pkgname=hfsutils
 pkgver=3.2.6_p16
 pkgrel=4
-pkgdesc="HFS Access utils"
+pkgdesc="Tools for reading and writing Macintosh volumes"
 arch=('x86_64')
 license=('GPL-2.0-or-later')
 url="https://www.mars.org/home/rob/proj/hfs/"
