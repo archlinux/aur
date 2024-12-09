@@ -3,7 +3,7 @@
 _pkgname=mmpose
 pkgname=python-mmpose
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenMMLab Pose Estimation Toolbox and Benchmark'
 arch=('any')
 url='https://github.com/open-mmlab/mmpose'
@@ -50,7 +50,6 @@ package() {
   python -m installer --destdir="${pkgdir}" dist/*.whl
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   # delete unused .mim and tests dir
-  rm -rfv "${pkgdir}${site_packages}/mmpose/.mim"
   rm -rfv ${pkgdir}${site_packages}/tests
 }
 # vim:set ts=2 sw=2 et:
