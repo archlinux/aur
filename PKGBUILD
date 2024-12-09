@@ -2,7 +2,7 @@
 pkgname=savedesktop
 _app_id=io.github.vikdevelop.SaveDesktop
 pkgver=3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Save and load KDE Plasma, Xfce and GNOME-based DE configuration"
 arch=('any')
 url="https://github.com/vikdevelop/SaveDesktop"
@@ -19,9 +19,9 @@ prepare() {
   cd SaveDesktop
 
   # Use system directories
-  sed -i 's|{home}/.local/share/savedesktop/translations|/usr/share/savedesktop/translations|g' \
-    src/localization.py
-  sed -i 's|{Path.home()}/.local/share/savedesktop|/usr/share/savedesktop|g' "$pkgname"
+  sed -i -e 's|{home}/.local/share/savedesktop|/usr/share/savedesktop|g; s|{Path.home()}/.local/share/savedesktop|/usr/share/savedesktop|g' \
+    src/localization.py \
+    savedesktop
 }
 
 check() {
