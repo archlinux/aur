@@ -2,10 +2,10 @@
 
 pkgname=unshc
 pkgver=0.8
-pkgrel=19
+pkgrel=25
 epoch=
 pkgdesc="UnSHc is a tool to reverse the encryption of any SHc encrypted *.sh.x script. (shc < 4.0.3)"
-arch=('x86_64')
+arch=($CARCH)
 url="https://github.com/yanncam/UnSHc"
 license=('GPL-3.0-only')
 groups=()
