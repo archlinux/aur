@@ -1,6 +1,6 @@
 pkgbase = flexibee-client
 	pkgdesc = Accounting economic system for person and business usage. Client-only package.
-	pkgver = 2024.2.10
+	pkgver = 2024.7.1
 	pkgrel = 1
 	url = http://www.flexibee.eu
 	install = flexibee.install
@@ -9,7 +9,7 @@ pkgbase = flexibee-client
 	license = custom
 	depends = glibc
 	depends = jre8-openjdk
-	source = https://download.flexibee.eu/download/2024.2/2024.2.10/flexibee-client_2024.2.10_all.deb
-	sha256sums = 3cb1b3e19165e108e82b297480768a60c661c291e0ee286a04b4d2f8c8a0d8cb
+	source = https://download.flexibee.eu/download/2024.7/2024.7.1/flexibee-client_2024.7.1_all.deb
+	sha256sums = 46b37cd1eb5b1c5c15d8c80de2dc39ec941e806d18b0d48a5e8517d55d11585f
 
 pkgname = flexibee-client

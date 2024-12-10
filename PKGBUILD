@@ -1,8 +1,8 @@
-# Maintainer: Richard Cesar <richard.cesar@netkeepers.cz>
+# Maintainer: Jiri Antonu <jirka@nullable.group>
 
 pkgname=flexibee-client
-pkgver=2024.2.10
-pkgbasever=2024.2
+pkgver=2024.7.1
+pkgbasever=2024.7
 pkgrel=1
 pkgdesc="Accounting economic system for person and business usage. Client-only package."
 arch=('i686' 'x86_64')
