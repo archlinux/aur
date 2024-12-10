@@ -1,0 +1,18 @@
+pkgbase = etherlab
+	pkgdesc = An Open Source Toolkit for rapid real time code generation under Linux using Simulink/RTW and EtherCAT technology.
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://gitlab.com/etherlab.org/etherlab
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = sh
+	depends = python
+	provides = etherlab
+	conflicts = etherlab
+	source = etherlab-2.4.0.tar.gz::https://gitlab.com/etherlab.org/etherlab/-/archive/2.4.0/etherlab-2.4.0.tar.gz
+	sha256sums = 14f3e15dd3e84b604d6b7fef4586a85e1a70504fec73b2917bed27c5582b3455
+
+pkgname = etherlab
