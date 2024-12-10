@@ -1,47 +1,48 @@
-# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer: Anton Kudelin <kudelin at proton dot me>
 
 pkgname=cosma
 _PkgName=COSMA
-pkgver=2.6.1
-_costaver=2.1
-pkgrel=2
+pkgver=2.6.6
+pkgrel=1
 pkgdesc="Distributed Communication-Optimal Matrix-Matrix Multiplication Algorithm"
-arch=("x86_64")
+arch=(x86_64)
 url="https://github.com/eth-cscs/COSMA"
-license=('BSD')
-depends=('scalapack' 'cblas')
-makedepends=('cmake')
-source=($pkgname-$pkgver.tar.gz::"$url/archive/refs/tags/v$pkgver.tar.gz"
-        costa-$_costaver.tar.gz::"https://github.com/eth-cscs/COSTA/archive/refs/tags/v$_costaver.tar.gz")
-sha256sums=('e356bae7082895a90657026bd80a50b589cf7f4f1b257625ee6634c73ce25e05'
-            'c1e86452415083f7470b292d93ec60708b7c8dbafc2bac383636bb4b28135866')
-
-prepare() {
-  cd "$srcdir/$_PkgName-$pkgver"
-  mkdir -p ../build
-  sed -i "/adjust_mpiexec_flags/d" CMakeLists.txt
-  cp -r ../COSTA-$_costaver/* libs/COSTA
-}
+license=(BSD-3-Clause)
+depends=(cblas costa)
+makedepends=(cmake ninja cxxopts gcc-fortran)
+source=($pkgname-$pkgver.tar.gz::"$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('1604be101e77192fbcc5551236bc87888d336e402f5409bbdd9dea900401cc37')
+options=(!buildflags)
 
 build() {
+  cd "$srcdir"
+  cmake \
+    -B build \
+    -S $_PkgName-$pkgver \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D BUILD_SHARED_LIBS=ON \
+    -D COSMA_BLAS=CUSTOM \
+    -D COSMA_OPENBLAS_LINK_LIBRARIES="/usr/lib/libcblas.so" \
+    -D COSMA_SCALAPACK=CUSTOM \
+    -D COSMA_WITH_TESTS=ON \
+    -D COSMA_WITH_APPS=OFF \
+    -D COSMA_WITH_BENCHMARKS=OFF \
+    -G Ninja \
+    -W no-dev
+  cmake --build build
+}
+
+check() {
   cd "$srcdir/build"
-  cmake ../"$_PkgName-$pkgver" \
-          -DCMAKE_INSTALL_PREFIX=/usr \
-          -DCMAKE_EXE_LINKER_FLAGS="-lcblas" \
-          -DBUILD_SHARED_LIBS=ON \
-          -DCOSMA_WITH_TESTS=OFF \
-          -DCOSMA_BLAS=CUSTOM \
-          -DCOSMA_SCALAPACK=CUSTOM \
-          -DSCALAPACK_BLAS=CUSTOM \
-          -DMPIEXEC_PREFLAGS='--oversubscribe'
-  make
+  ctest
 }
 
 package() {
-  cd "$srcdir/build"
-  make DESTDIR="$pkgdir" install
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  install -m755 "$srcdir/$_PkgName-$pkgver/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname"
+  cd "$srcdir"
+  DESTDIR="$pkgdir" cmake --install build
+
+  install -Dm755 $_PkgName-$pkgver/LICENSE \
+    -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
   rm -rf "$pkgdir/usr/bin"
 }
