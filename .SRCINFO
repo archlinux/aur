@@ -1,6 +1,6 @@
 pkgbase = telegraf
 	pkgdesc = Plugin-driven server agent for reporting metrics into InfluxDB
-	pkgver = 1.32.3
+	pkgver = 1.33.0
 	pkgrel = 1
 	url = http://influxdb.org/
 	install = telegraf.install
@@ -15,10 +15,10 @@ pkgbase = telegraf
 	depends = glibc
 	options = !lto
 	backup = etc/telegraf/telegraf.conf
-	source = https://github.com/influxdata/telegraf/archive/v1.32.3/telegraf-v1.32.3.tar.gz
+	source = https://github.com/influxdata/telegraf/archive/v1.33.0/telegraf-v1.33.0.tar.gz
 	source = telegraf.install
 	source = telegraf.service
-	b2sums = 96e981bc729db9e5a787d2e4f6771c0d0caceaa08549bb0a9962503c35c53e0720107bdc3a8f0b4de8f9512f7c87191e9d7e2765970922d46a9f16b5b853d1ea
+	b2sums = 2f12f97dfeb20e7fc6a12fc3ef200874dd0c684bb7203f6a50aa9686a373fdbd9a7a5fc1d7a54030ab45be517296b26b98f36420dc26669d6d7af81fbf1e6fa4
 	b2sums = a6b2fd7a688ef5a23539c1256380a6389e6fa474312ad9dee5cc77bcfabe92910a8913ffcf599c940a93bb3a5c89e01f3bedad4176f4d57dd33a68e0499c30bd
 	b2sums = d5a6845cb1ddb07f0cac20215c15d059f0c18aa43a7b549e7e738e58b8686b4db26b71426aafc8e682d6fd6f676fc0f468f53ea61968c4184feaaa22a23f5bc5
 
