@@ -36,8 +36,6 @@ pkgname = gmic-pre-gimp3
 	conflicts = cimg
 	conflicts = gmic
 	conflicts = gimp-plugin-gmic
-	conflicts = gmic-pre
-	conflicts = gimp-plugin-gmic-pre
 	replaces = gmic-pre
 	replaces = gimp-plugin-gmic-pre
 

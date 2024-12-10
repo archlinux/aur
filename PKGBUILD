@@ -73,7 +73,7 @@ package_gmic-pre-gimp3() {
            openexr
            zlib)
   optdepends=('qt6-base: for the Qt UI')
-  conflicts=('cimg' 'gmic' 'gimp-plugin-gmic' 'gmic-pre' 'gimp-plugin-gmic-pre' )
+  conflicts=('cimg' 'gmic' 'gimp-plugin-gmic')
   replaces=('gmic-pre' 'gimp-plugin-gmic-pre')
 
   DESTDIR="$pkgdir" cmake --install build
