@@ -1,0 +1,85 @@
+post_install() {
+
+	# SPDX-License-Identifier: Apache-2.0
+	# Copyright (C) 2023-2024 AMD, Inc. All rights reserved.
+
+	RED="\e[31m"
+	ENDCOLOR="\e[0m"
+
+	build_type=Release
+	if [ "$build_type" = "Debug" ]; then
+		set -x
+	fi
+
+	installdir=/opt/xilinx/xrt
+	udev_rules_d=/etc/udev/rules.d
+	amdxdna_rules_file=99-amdxdna.rules
+	export XILINX_XRT=$installdir
+
+	echo "Installing new amdxdna Linux kernel module in dkms"
+	if [ "$build_type" = "Debug" ]; then
+		DKMS_DRIVER_VERBOSE=true $installdir/amdxdna/dkms_driver.sh --install
+	else
+		$installdir/amdxdna/dkms_driver.sh --install
+	fi
+
+	echo "Loading new amdxdna Linux kernel module"
+	if [ ! -f ${udev_rules_d}/${amdxdna_rules_file} ]; then
+		touch ${udev_rules_d}/${amdxdna_rules_file}
+	fi
+	echo "KERNEL==\"accel*\",DRIVERS==\"amdxdna\",MODE=\"0666\"" > ${udev_rules_d}/${amdxdna_rules_file}
+	rmmod amdxdna > /dev/null 2>&1
+	if [ "$build_type" = "Debug" ]; then
+	modprobe amdxdna dyndbg=+pf
+	else
+	modprobe amdxdna
+	fi
+
+	unset XILINX_XRT
+	if [ "$build_type" = "Debug" ]; then
+		set +x
+	fi
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+
+	# SPDX-License-Identifier: Apache-2.0
+	# Copyright (C) 2023-2024 AMD, Inc. All rights reserved.
+
+	RED="\e[31m"
+	ENDCOLOR="\e[0m"
+
+	build_type=Release
+	if [ "$build_type" = "Debug" ]; then
+		echo "========= Pretrm Debug ========="
+		set -x
+	fi
+
+	installdir=/opt/xilinx/xrt
+	udev_rules_d=/etc/udev/rules.d
+	amdxdna_rules_file=99-amdxdna.rules
+
+	if lsmod | grep -q "amdxdna "; then
+		rmmod amdxdna
+	fi
+
+	if [ -f ${udev_rules_d}/${amdxdna_rules_file} ]; then
+		rm -rf ${udev_rules_d}/${amdxdna_rules_file}
+	fi
+
+	export XILINX_XRT=$installdir
+	if [ "$build_type" = "Debug" ]; then
+		DKMS_DRIVER_VERBOSE=true $installdir/amdxdna/dkms_driver.sh --remove
+	else
+		$installdir/amdxdna/dkms_driver.sh --remove
+	fi
+	unset XILINX_XRT
+
+	if [ "$build_type" = "Debug" ]; then
+		set +x
+	fi
+}
