@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Flowkeeper
+Comment=Flowkeeper Pomodoro Tecnique Desktop App
+Exec=flowkeeper
+Icon=flowkeeper
+Type=Application
+Categories=Utility;Office;
+Keywords=Pomodoro Tecnique; Flowkeeper;
+MimeType=application/vnd.Flowkeeper;
