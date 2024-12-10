@@ -2,7 +2,7 @@
 
 pkgname=servicer-git
 _pkgname=${pkgname%-git}
-pkgver=v0.1.13.r4.ged8f31c
+pkgver=0.1.13.r4.ged8f31c
 pkgrel=1
 pkgdesc="Simplify service management on systemd"
 url="https://github.com/servicer-labs/servicer"
@@ -12,7 +12,7 @@ provides=("servicer")
 conflicts=("servicer")
 source=("git+$url")
 makedepends=("git" "rust")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
