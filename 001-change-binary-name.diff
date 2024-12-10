@@ -1,15 +1,16 @@
---- a/gpt4all-chat/CMakeLists.txt	2024-07-28 02:17:29.000000000 +0800
-+++ b/gpt4all-chat/CMakeLists.txt	2024-08-08 10:36:24.999923967 +0800
-@@ -306,7 +306,11 @@
- target_link_libraries(chat
-     PRIVATE llmodel)
+diff -u -r a/gpt4all-chat/CMakeLists.txt b/gpt4all-chat/CMakeLists.txt
+--- a/gpt4all-chat/CMakeLists.txt	2024-12-10 03:41:23.000000000 +0800
++++ b/gpt4all-chat/CMakeLists.txt	2024-12-10 09:27:34.403106231 +0800
+@@ -402,6 +402,12 @@
+     target_link_libraries(chat PRIVATE ${COCOA_LIBRARY})
+ endif()
  
--
-+if(LINUX)
-+  set_target_properties(chat PROPERTIES
-+    OUTPUT_NAME gpt4all-chat
-+  )
++if (LINUX)
++    set_target_properties(chat PROPERTIES
++        OUTPUT_NAME gpt4all-chat
++    )
 +endif()
++
  # -- install --
  
  set(COMPONENT_NAME_MAIN ${PROJECT_NAME})
