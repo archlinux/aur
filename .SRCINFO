@@ -1,0 +1,12 @@
+pkgbase = nsis-nsprocess-bin
+	pkgdesc = nsProcess NSIS plugin
+	pkgver = 1.6.7
+	pkgrel = 1
+	url = https://nsis.sourceforge.io/NsProcess_plugin
+	arch = any
+	license = custom
+	depends = nsis
+	source = NsProcess-1.6.7.zip.7z::https://nsis.sourceforge.io/mediawiki/images/1/18/NsProcess.zip
+	sha256sums = fc19fc66a5219a233570fafd5daeb0c9b85387b379f6df5ac8898159a57c5944
+
+pkgname = nsis-nsprocess-bin
