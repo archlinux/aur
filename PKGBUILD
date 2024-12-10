@@ -8,7 +8,7 @@ pkgdesc="Tcl extension module for Perl"
 arch=('i686' 'x86_64')
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
-depends=('glibc' 'perl>=5.006' 'tcl')
+depends=('glibc' 'perl' 'tcl')
 makedepends=()
 url='http://search.cpan.org/dist/Tcl'
 source=('http://search.cpan.org/CPAN/authors/id/V/VK/VKON/Tcl-1.32.tar.gz')
