@@ -1,0 +1,5 @@
+[leo]
+source="github-graphql"
+github="leo-editor/leo-editor"
+use_max_tag=true
+prefix='v'
