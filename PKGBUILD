@@ -2,7 +2,7 @@
 
 _module=narwhals
 pkgname=python-${_module}
-pkgver=1.16.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Extremely lightweight compatibility layer between dataframe libraries"
 arch=(any)
@@ -14,7 +14,7 @@ optdepends=('python-pandas: for Pandas support'
             'python-polars: for Polars support'
             'python-pyarrow: for PyArrows support')
 source=(https://github.com/narwhals-dev/narwhals/releases/download/v${pkgver}/${_module}-${pkgver}.tar.gz)
-sha256sums=('1ea3ac269df8126f1f79c1ba7b8f78c73b032a86861b2cc2f08c48010ef9f6f8')
+sha256sums=('a2607fa66f0b6ccf6f54df57ee6bc4967b68095d2968c828894a5f77ed9d3c50')
 
 
 build() {
