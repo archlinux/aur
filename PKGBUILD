@@ -12,7 +12,7 @@ depends=('dkms')
 source=("https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/linux-${pkgver}.tar.xz"
         "dkms.conf"
 	"c545b26dd567a638d62ca29490e9e2e6d04a8b6b.patch")
-md5sums=('28d4c44c62414ef7f0c8aa1fd5667937'
+md5sums=('65af21bb8e024c2ef26c067d51d7f8f9'
          '730652a6fd46eaa97c001c01ea14dc91'
          '29336370f1863ad94c15dc3fbef9b63c')
 
