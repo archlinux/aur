@@ -5,7 +5,7 @@
 
 _pkgname=srsly
 pkgname=python-${_pkgname}-bin
-pkgver=2.4.8
+pkgver=2.5.0
 pkgrel=2
 pkgdesc='Modern high-performance serialization utilities for Python - bin (no cython0 req)'
 arch=(x86_64)
@@ -21,8 +21,8 @@ depends=(
   python-mock
   python-numpy
 )
-source=("https://files.pythonhosted.org/packages/a1/1d/c4b28e95d9ec4c2e7dad201fa415a483e173fcce444d52dd53be0b0469f3/srsly-${pkgver}-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl")
-b2sums=('3d4c3dd69756c02f0ea575941e3f16f580a6cf2b37bde7e2c8375dc8a69e174b1ebe08582894210d875f0a6bc9a5a3d02045062bde23e8d89fe1dbdcd7087b6d')
+source=("https://github.com/explosion/srsly/releases/download/release-v${pkgver}/srsly-${pkgver}-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl")
+b2sums=('c893192da004c17c6c17a1fc0c85d4099014e0fc4d4fe711ca18a740eba87bf822d39dab902cc3748082e7a80e4a12f82828075e125f8ee5cbc991617c42e000')
 noextract=("srsly-${pkgver}-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl")
 
 package() {
