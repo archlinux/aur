@@ -5,7 +5,7 @@
 pkgname='python-fastfeedparser-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=r32.1fefc30
+pkgver=r47.3196672
 pkgrel=2
 pkgdesc='High performance RSS, Atom and RDF parser in Python (latest commit)'
 arch=('any')
@@ -15,14 +15,14 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
-  'python-setuptools'
+  'python-setuptools>=42'
   'python-wheel'
 )
 depends=(
-  'python'
+  'python>=3.7'
+  'python-dateparser'
   'python-dateutil'
   'python-lxml'
-  'python-parsedatetime'
 )
 source=("git+$url.git")
 provides=("$_pkgname")
