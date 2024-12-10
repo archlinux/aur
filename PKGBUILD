@@ -1,7 +1,7 @@
 # Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
 
 pkgname=openbuilds-control-bin
-pkgver=1.0.382
+pkgver=1.0.385
 pkgrel=1
 pkgdesc="Grbl Host / Interface for all CNC style machines running Grbl"
 url="https://github.com/OpenBuilds/OpenBuilds-CONTROL"
@@ -14,7 +14,7 @@ source=(
     "$url/releases/download/v${pkgver}/OpenBuildsCONTROL_${pkgver}_amd64.deb"
     "openbuildscontrol"
 )
-sha512sums=('88818134b9cf3b9a0ca7e0d299a6a4d5d9e3ce7c116c8a90792e3c9fdba7cacdabbb7b7d582905ebd426683ec129578c6cfaa6f9391dbd3ae9c74d6a3b137240'
+sha512sums=('0643770aef854d604e584cbb1a1821af3f5cb6077fdf86bafd95fee2369411d2599bf96bb8850a3330113ba1fe21d932439e477b2f3305ab2a1feae8a0389fcd'
             '7d9833000c547ef14a0e7a272903991db3b3a2297527e2fd40d1e2a20c34f6771edce68b736a1859d6c3dd769f263ff90a073622f7bdcdd33a6274b40299f925')
 prepare() {
     cd $srcdir
