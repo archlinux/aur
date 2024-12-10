@@ -1,6 +1,6 @@
 pkgbase = materialious-bin
 	pkgdesc = Modern material design for Invidious
-	pkgver = 1.6.23
+	pkgver = 1.6.24
 	pkgrel = 1
 	url = https://github.com/Materialious/Materialious
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = materialious-bin
 	provides = materialious
 	conflicts = materialious-git
 	options = !debug
-	source = https://github.com/Materialious/Materialious/releases/download/1.6.23/Materialious-1.6.23-linux-amd64.deb
-	sha512sums = 916a3a57a51ba7750b0ecc0d232f72524dfa34e78adc7867c96082625ab1c3677a90ebaa15951120a7d5c0ab677d06a3fb151ba5c32409ec6d15f169f08dc6c4
+	source = https://github.com/Materialious/Materialious/releases/download/1.6.24/Materialious-1.6.24-linux-amd64.deb
+	sha256sums = 4c7207777484ef7548051949c0e2ab6865d8328375d9dcac3ed7f74e0e1ed7bf
 
 pkgname = materialious-bin
