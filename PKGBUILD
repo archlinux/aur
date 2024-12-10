@@ -3,7 +3,7 @@
 
 pkgname=wg++
 pkgver=5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A Freeware, closed-source multi-site incremental XMLTV EPG grabber"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="http://webgrabplus.com"
@@ -13,7 +13,7 @@ optdepends=('dotnet-runtime-8.0-bin: binary dotnet core runtime alternative')
 source=("${url}/sites/default/files/download/SW/V${pkgver}.0/WebGrabPlus_V${pkgver}_install.tar.gz"
         "wgpp.sh")
 sha256sums=('d619430b8099070eabe1f871f72aa946afb876e80fd8f2d58f5bd647cbb0dad7'
-            '2c968010115a492874aaaae396757e7e6a9ce628d2d1a9ae148cabb4aced5831')
+            'fd2a4be968085d797b72aff51dac5fbf7e245ea87b43578d27d4791f6002dfaa')
 
 prepare() {
   # Rename folder

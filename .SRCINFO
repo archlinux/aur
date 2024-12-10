@@ -1,7 +1,7 @@
 pkgbase = wg++
 	pkgdesc = A Freeware, closed-source multi-site incremental XMLTV EPG grabber
 	pkgver = 5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://webgrabplus.com
 	arch = x86_64
 	arch = armv7h
@@ -16,6 +16,6 @@ pkgbase = wg++
 	source = http://webgrabplus.com/sites/default/files/download/SW/V5.3.0/WebGrabPlus_V5.3_install.tar.gz
 	source = wgpp.sh
 	sha256sums = d619430b8099070eabe1f871f72aa946afb876e80fd8f2d58f5bd647cbb0dad7
-	sha256sums = 2c968010115a492874aaaae396757e7e6a9ce628d2d1a9ae148cabb4aced5831
+	sha256sums = fd2a4be968085d797b72aff51dac5fbf7e245ea87b43578d27d4791f6002dfaa
 
 pkgname = wg++
