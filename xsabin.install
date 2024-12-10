@@ -1,0 +1,3 @@
+post_install() {
+    /opt/xilinx/firmware/u280/gen3x16-xdma/base/scripts/create_xsabin.sh xilinx-u280-gen3x16-xdma-base 1 3585717
+}
