@@ -1,0 +1,19 @@
+pkgbase = webos-dev-mode-bin
+	pkgdesc = A command-line tool to extend the webOS dev mode session timer
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/gabe565/webos-dev-mode
+	license = MIT
+	conflicts = webos-dev-mode
+	provides = webos-dev-mode
+	arch = aarch64
+	source_aarch64 = https://github.com/gabe565/webos-dev-mode/releases/download/v0.0.1/webos-dev-mode_0.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = bb512eb986063966eae5452d6a650c97df71d6e27ee2e9e9832c3741483f53bb
+	arch = armv7h
+	source_armv7h = https://github.com/gabe565/webos-dev-mode/releases/download/v0.0.1/webos-dev-mode_0.0.1_linux_armv7.tar.gz
+	sha256sums_armv7h = 9a625d5ca0bef63e78982674fe6791ea9fb25a37febc5d5ec047f3016605d512
+	arch = x86_64
+	source_x86_64 = https://github.com/gabe565/webos-dev-mode/releases/download/v0.0.1/webos-dev-mode_0.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4128ee7ad6543c6d0ef036627cd1769d08cdda805e45ff08184eec0eae4683e4
+	
+pkgname = webos-dev-mode-bin
