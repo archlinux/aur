@@ -8,7 +8,7 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install() {
-	note "Custom modules should be placed in: ~/.local/libexec/pay-respects/"
+	note "Custom modules should be placed in: ~/.local/lib/pay-respects/"
 }
 
 post_upgrade() {
