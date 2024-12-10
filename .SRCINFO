@@ -1,15 +1,15 @@
 pkgbase = vscode-bookmark-bin
 	pkgdesc = A utility to save your favorite projects and open them easily in vscode.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/ailtonloures/vscode-bookmark
 	arch = x86_64
 	license = MIT
 	depends = electron32
 	conflicts = vscode-bookmark
-	source = vscode-bookmark-1.3.0.rpm::https://github.com/ailtonloures/vscode-bookmark/releases/download/v1.3.0/vscode-bookmark-1.3.0-1.x86_64.rpm
+	source = vscode-bookmark-1.4.0.rpm::https://github.com/ailtonloures/vscode-bookmark/releases/download/v1.4.0/vscode-bookmark-1.4.0-1.x86_64.rpm
 	source = vscode-bookmark.sh
-	sha256sums = fc344aecf7d6655c9345a1cbbffdca6974e91d38d0fe377a4031162474669431
+	sha256sums = 1376a30db6dc8fcd083c5c962637a3f86b40a85ef77d826446b10df1399b4f5d
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = vscode-bookmark-bin
