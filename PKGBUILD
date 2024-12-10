@@ -5,7 +5,7 @@ pkgver=5.20.0
 pkgrel=1
 pkgdesc="Dion messenger"
 arch=('x86_64')
-url="https://dion.vc/"
+url="https://diongo.ru/"
 license=('custom')
 depends=(
   'gtk3'
