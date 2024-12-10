@@ -8,7 +8,7 @@ User = hoarder
 Restart = on-failure
 Environment = DATA_DIR=/var/lib/hoarder
 EnvironmentFile = -/etc/hoarder/hoarder.env
-WorkingDirectory = /usr/share/hoarder/apps/workers
+WorkingDirectory = /usr/lib/hoarder/apps/workers
 ExecStart = /usr/bin/pnpm run start:prod
 TimeoutStopSec = 5
 SyslogIdentifier = hoarder-workers

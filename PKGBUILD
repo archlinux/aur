@@ -2,18 +2,18 @@
 
 pkgname=hoarder
 pkgver=0.19.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
 url="https://github.com/${pkgname}-app/${pkgname}"
 license=('AGPL-3.0-or-later')
 backup=("etc/${pkgname}/${pkgname}.env")
-depends=("chromium" "nodejs>=20" "nodejs<23" "nodejs<>22.8.0" "nodejs<>22.7.0" "pnpm" "redis")
+depends=("chromium" "nodejs>=22" "pnpm" "redis")
+makedepends=("git" "jq" "pnpm")
 optdepends=("${pkgname}-cli: ${pkgname} cli tool"
             "meilisearch: for full text search"
             "ollama: for automatic tagging"
             "yt-dlp: for download video")
-makedepends=("git" "jq" "pnpm")
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}.env"
         "${pkgname}.sysusers"
@@ -28,14 +28,8 @@ sha256sums=('1942d4f0f3ee8e7eac254b94aa0863b2c2a9c772c8fc62574c15b53eba4948d2'
             '713e248fc61f429a3da627016343d89147dde147f739e51584f7398d11262896'
             'cd2b58e13dd928925db21819a74052b98c4dd82cf6353f6b9181b41cc93e8848'
             'eabf61d0cc9cf94bc535230160f870bc77437a58657e58cde261f667e35d7496'
-            '669f00792831f6d10bc883fdde43d344f60da1d650c344ce5c675e1a24c34488'
-            '39aca79bad2f567a39c24eaac8dd1412bcefbc7387ed49ac63a8f218b8be882f')
-
-prepare() {
-    cd "${pkgname}"
-    jq '.packageManager = "pnpm" | del(.pnpm)' package.json > package.json.new
-    mv package.json.new package.json
-}
+            'b8de940803dc527416edae149c4182126c74b4dec7387c198c7217e4c4e16ef5'
+            '361c24c7d54fe8ff613e52b042d245d321ce0385e53f879230288d2de43bfc01')
 
 build() {
     export COREPACK_ENABLE_STRICT=0
@@ -46,7 +40,7 @@ build() {
 
     # build web
     cd "${pkgname}"
-    pnpm install
+    corepack use $(jq -r '.packageManager' package.json)
     cd packages/db
     pnpm dlx @vercel/ncc build migrate.ts -o ../../db_migrations
     cp -R drizzle ../../db_migrations
@@ -56,6 +50,7 @@ build() {
     # build workers
     cd ../..
     rm -rf workers &>/dev/null
+    pnpm install
     pnpm deploy --node-linker=isolated --filter @hoarder/workers --prod workers
 
     # delete musl files, macos/win/android files, map file
@@ -81,12 +76,12 @@ package() {
     install -Dm644 "${pkgname}.tmpfiles"  "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
     install -Dm644 "${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-    cp -r --preserve=mode "${pkgname}/apps/web/.next/standalone" "${pkgdir}/usr/share/${pkgname}"
-    cp -r --preserve=mode "${pkgname}/db_migrations"             "${pkgdir}/usr/share/${pkgname}/db_migrations"
-    cp -r --preserve=mode "${pkgname}/workers"                   "${pkgdir}/usr/share/${pkgname}/apps/workers"
-    cp -r --preserve=mode "${pkgname}/apps/web/.next/static"     "${pkgdir}/usr/share/${pkgname}/apps/web/.next/static"
-    cp -r --preserve=mode "${pkgname}/apps/web/public"           "${pkgdir}/usr/share/${pkgname}/apps/web/public"
-
-    ln -s                 "/var/lib/${pkgname}/cache"            "${pkgdir}/usr/share/${pkgname}/apps/web/.next/cache"
-    echo "SERVER_VERSION=$pkgver" >                              "${pkgdir}/usr/share/${pkgname}/version"
+    cd "${pkgname}"
+    cp -r "apps/web/.next/standalone"     "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "db_migrations"                 "${pkgdir}/usr/lib/${pkgname}/db_migrations"
+    cp -r "workers"                       "${pkgdir}/usr/lib/${pkgname}/apps/workers"
+    cp -r "apps/web/.next/static"         "${pkgdir}/usr/lib/${pkgname}/apps/web/.next/static"
+    cp -r "apps/web/public"               "${pkgdir}/usr/lib/${pkgname}/apps/web/public"
+    ln -s "/var/lib/${pkgname}/cache"     "${pkgdir}/usr/lib/${pkgname}/apps/web/.next/cache"
+    echo "SERVER_VERSION=$pkgver" >       "${pkgdir}/usr/lib/${pkgname}/version"
 }

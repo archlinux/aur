@@ -8,10 +8,10 @@ User = hoarder
 Restart = on-failure
 Environment = DATA_DIR=/var/lib/hoarder
 EnvironmentFile = -/etc/hoarder/hoarder.env
-EnvironmentFile = -/usr/share/hoarder/version
-WorkingDirectory = /usr/share/hoarder/db_migrations
+EnvironmentFile = -/usr/lib/hoarder/version
+WorkingDirectory = /usr/lib/hoarder/db_migrations
 ExecStartPre = /usr/bin/node index.js
-ExecStart = /usr/bin/node /usr/share/hoarder/apps/web/server.js
+ExecStart = /usr/bin/node /usr/lib/hoarder/apps/web/server.js
 TimeoutStopSec = 5
 SyslogIdentifier = hoarder-web
 
