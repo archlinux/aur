@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=stringdist
-_pkgver=0.9.12
+_pkgver=0.9.14
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Approximate String Matching, Fuzzy Text Search, and String Distance Functions"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -16,8 +16,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0ea7bc8dc57a4e5f713397da310ad1d0')
-b2sums=('8a0e67f486004cff4a8e077e2bdab53e560f071b3bb0fe5a4c48a47edc2ea172a2f125dbf55fef0498cff3979a0a635a30ecb529684bf55ec05834f523c5fa59')
+md5sums=('e268cfdb93892e242172add3d387ef6a')
+b2sums=('284e5487d9973635aa88e3d78994a42d916e7a50932bc264d2921f77018c9610a2f47b42e58674438465cca524057dc8a2c779dc4355142855c33b070ba69a31')
 
 build() {
   mkdir build
