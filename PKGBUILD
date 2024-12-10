@@ -4,7 +4,7 @@
 _pkgname=amdxdna-driver
 pkgname="${_pkgname}-bin"
 pkgver=2.19.0
-pkgrel=2
+pkgrel=3
 pkgdesc="AMD XDNA(tm) Driver (amdxdna.ko) for Linux and XRT SHIM library development."
 arch=('x86_64')
 url="https://github.com/amd/xdna-driver/"
@@ -14,8 +14,10 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
 	"https://github.com/ThatOneCalculator/xdna-driver/releases/download/${pkgver}/xrt_plugin.${pkgver}_endeavouros-x86_64-amdxdna.deb"
+	"xrt_plugin-amdxdna.install"
 )
-sha512sums=('b7e8df5a3c09f56fe0a285747dfd16b26711bcc098bcc830380a7a42f92df1712bf979b22b29d7930cdc94dac91b65732959442d064c3b9d85048e0e355783ed')
+sha512sums=('b7e8df5a3c09f56fe0a285747dfd16b26711bcc098bcc830380a7a42f92df1712bf979b22b29d7930cdc94dac91b65732959442d064c3b9d85048e0e355783ed'
+            'eb676fc07aea2462a556d5a19fcc12edd5d050b762db60edaa6a0e38f718c85ad550b08ef85ddd0e4edaf39c2957a17db1ecd801240264e96272501df04f1ddc')
 
 package(){
 
