@@ -1,4 +1,5 @@
 # Maintainer: Doclic <doclic@tutanota.com>
+# Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=vtex2-bin
 pkgver=0.1.2
