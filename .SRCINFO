@@ -16,7 +16,7 @@ pkgbase = pay-respects
 	provides = pay-respects
 	source = pay-respects::git+https://github.com/iffse/pay-respects#tag=v0.6.3
 	source = pay-respects.sh
-	sha1sums = 22fbf46fcc7815d97d39bbf304200b8a5f30667f
-	sha1sums = 5c8fd4903ba5f047f18d79389b6178e4ce0a4a76
+	sha1sums = 64322eb18f366dac1db8918110d5ce4e848690ee
+	sha1sums = ced453825c1636590b5362cd487da87a04a91f1b
 
 pkgname = pay-respects
