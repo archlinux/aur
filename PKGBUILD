@@ -31,7 +31,11 @@ checkdepends=(
 )
 optdepends=(
     'kicad: Electronic schematic and printed circuit board (PCB) design tools'
+    'qucs: An integrated circuit simulator with a graphicaluser interface'
     'qucs-s: Qucs-S provides GUI for different circuit simulation kernels.'
+    'openems: free and open electromagnetic field solver using the FDTD method'
+    'pcb-rnd: free/open source, flexible, modular Printed Circuit Board editor'
+    'inkscape: Professional vector graphics editor'
 )
 provides=(${pkgname})
 conflicts=(${pkgname})
