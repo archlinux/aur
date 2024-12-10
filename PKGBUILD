@@ -1,14 +1,14 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw-dev
 pkgver=development
-pkgrel=8
+pkgrel=9
 epoch=
 pkgdesc="Shadow Of The Wyrm by Julian Day - Development branch."
 arch=('x86_64')
 url="http://www.shadowofthewyrm.org/"
 license=('MIT')
 groups=()
-depends=('sdl2' 'sdl2_image' 'xerces-c' 'zlib' 'ncurses' 'lua51' 'boost' 'gtest')
+depends=('sdl2' 'sdl2_mixer' 'sdl2_image' 'xerces-c' 'zlib' 'ncurses' 'lua51' 'boost' 'gtest')
 makedepends=('premake' 'git')
 checkdepends=()
 provides=(sotw)
