@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/ProjectPhysX/FluidX3D"
 license=('custom' 'CCPL:by-nc')
 depends=('ocl-icd' 'libxrandr')
-makedepends=('opencl-headers' 'ninja')
+makedepends=('opencl-clhpp' 'ninja')
 source=("https://github.com/ProjectPhysX/FluidX3D/archive/refs/tags/v$pkgver.tar.gz"
 	"graphics-includes-output.patch"
 	"https://cdn.thingiverse.com/assets/92/f0/54/ba/e0/concord_cut_large.stl"
@@ -125,7 +125,7 @@ prepare() {
 build() {
 	cat >build.ninja <<EOF
 rule cxx
-  command = g++ \$defs -DINTERACTIVE_GRAPHICS -DCL_HPP_TARGET_OPENCL_VERSION=200 -DCL_HPP_MINIMUM_OPENCL_VERSION=120 $CXXFLAGS -c \$in -o \$out
+  command = g++ \$defs -DINTERACTIVE_GRAPHICS -DCL_HPP_TARGET_OPENCL_VERSION=300 -DCL_HPP_MINIMUM_OPENCL_VERSION=120 $CXXFLAGS -c \$in -o \$out
 rule link
   command = g++ -lOpenCL -lX11 -lXrandr $LDFLAGS \$in -o \$out
 include samples.ninja
