@@ -74,6 +74,7 @@ package_gmic-pre-gimp3() {
            zlib)
   optdepends=('qt6-base: for the Qt UI')
   conflicts=('cimg' 'gmic' 'gimp-plugin-gmic' 'gmic-pre' 'gimp-plugin-gmic-pre' )
+  replaces=('gmic-pre' 'gimp-plugin-gmic-pre')
 
   DESTDIR="$pkgdir" cmake --install build
   install -Dm644 gmic-$__pkgver/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
@@ -99,6 +100,7 @@ package_gimp-plugin-gmic-pre-gimp3() {
            qt6-base
            zlib)
   conflicts=('cimg' 'gmic' 'gimp-plugin-gmic')
+  replaces=('gmic-pre' 'gimp-plugin-gmic-pre')
   DESTDIR="$pkgdir" cmake --install build-gimp
   install -Dm644 gmic-$__pkgver/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

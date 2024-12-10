@@ -38,6 +38,8 @@ pkgname = gmic-pre-gimp3
 	conflicts = gimp-plugin-gmic
 	conflicts = gmic-pre
 	conflicts = gimp-plugin-gmic-pre
+	replaces = gmic-pre
+	replaces = gimp-plugin-gmic-pre
 
 pkgname = gimp-plugin-gmic-pre-gimp3
 	pkgdesc = Gimp plugin for the G'MIC image processing framework - Prerelease G-MIC for GIMP3
@@ -55,3 +57,5 @@ pkgname = gimp-plugin-gmic-pre-gimp3
 	conflicts = cimg
 	conflicts = gmic
 	conflicts = gimp-plugin-gmic
+	replaces = gmic-pre
+	replaces = gimp-plugin-gmic-pre
