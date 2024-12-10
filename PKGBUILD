@@ -14,7 +14,7 @@ depends=('librewolf')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 groups=('librewolf-addons')
-noextract=("istilldontcareaboutcookies-$pkgver.xpi")
+noextract=("$_id.xpi")
 _number=4213061
 source=("idcac-pub@guus.ninja.xpi::https://addons.mozilla.org/firefox/downloads/file/$_number/istilldontcareaboutcookies-$pkgver.xpi"
         "https://raw.githubusercontent.com/OhMyGuus/I-Still-Dont-Care-About-Cookies/refs/tags/v$pkgver/LICENSE")
