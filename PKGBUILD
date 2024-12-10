@@ -5,7 +5,7 @@
 
 pkgname=write_stylus
 pkgver=dec.2024
-pkgrel=1
+pkgrel=2
 pkgdesc="Write(orignal name) - A word processor for handwriting"
 arch=(i686 x86_64)
 url="http://www.styluslabs.com/"
@@ -62,6 +62,11 @@ package() {
 
   install -Dm644 "$pkgname/scribbleres/linux/Write.desktop" "$pkgdir/usr/share/applications/Write.desktop"
   install -Dm644 "$pkgname/scribbleres/linux/Write144x144.png" "$pkgdir/usr/share/pixmaps/write_stylus.png"
+
+  #sadly there is no user preferences, so we have to make this writable https://github.com/styluslabs/Write/issues/4
+  touch write.xml
+  install -Dm666 write.xml "$pkgdir/var/lib/$pkgname/write.xml"
+  ln -sf /var/lib/$pkgname/write.xml "$pkgdir/usr/share/$pkgname/write.xml"
 }
 
 # vim:set ts=2 sw=2 et:
