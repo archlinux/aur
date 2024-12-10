@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-icu
 	pkgdesc = International Components for Unicode library (mingw-w64)
 	pkgver = 76.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://icu.unicode.org/
 	arch = any
 	license = LicenseRef-Unicode-3.0

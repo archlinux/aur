@@ -8,7 +8,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-icu
 pkgver=76.1
-pkgrel=1
+pkgrel=2
 pkgdesc="International Components for Unicode library (mingw-w64)"
 arch=('any')
 url="https://icu.unicode.org/"
@@ -52,7 +52,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir build-${_arch} && pushd build-${_arch}
     # add flag to prevent `error: unable to find numeric literal operator ‘operator""Q’`
-    export CFLAGS=-fext-numeric-literals CXXFLAGS=-fext-numeric-literals
+    [[ $pkgname =~ .*-clang-.* ]] || export CFLAGS=-fext-numeric-literals CXXFLAGS=-fext-numeric-literals
     ${_arch}-configure \
       --with-cross-build=${PWD}/../nativebuild \
       --with-data-packaging=library \
