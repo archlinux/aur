@@ -1,0 +1,20 @@
+pkgbase = python-libconf
+	pkgdesc = A pure-Python libconfig reader/writer with permissive license
+	pkgver = 2.0.1
+	pkgrel = 0
+	url = https://pypi.org/project/libconf
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-libconf
+	conflicts = python-libconf
+	options = !strip
+	options = !debug
+	source = libconf-2.0.1.tar.gz::https://files.pythonhosted.org/packages/source/l/libconf/libconf-2.0.1.tar.gz
+	sha256sums = 2f907258953ba60a95a82d5633726b47c81f2d5cf8d8801b092579016d757f4a
+
+pkgname = python-libconf
