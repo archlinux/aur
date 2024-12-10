@@ -1,17 +1,23 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects"
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Command suggestions, command-not-found and thefuck replacement written in Rust (All modules)"
-arch=("x86_64")
+arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url="https://github.com/iffse/pay-respects"
-license=('AGPL')
-makedepends=('cargo' 'git')
+license=('AGPL-3.0-or-later ')
+provides=('pay-respects')
+install="$pkgname.install"
+makedepends=('cargo' 'git' 'openssl')
 optdepends=(
-	'curl: for AI suggestions'
+	'curl: AI requests'
 )
-source=("$pkgname::git+https://github.com/iffse/pay-respects#tag=v$pkgver")
-sha1sums=('3078dce1e41fb4455c62523fdb0e60b90214ded7')
+source=($pkgname::git+https://github.com/iffse/pay-respects#tag=v$pkgver
+	${pkgname}.sh
+)
+
+sha1sums=('22fbf46fcc7815d97d39bbf304200b8a5f30667f'
+          '4c8399cfcd8e943800430f7c249f971e464fdaae')
 
 prepare() {
 	cd "$pkgname"
@@ -23,12 +29,16 @@ build() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	export _PR_LIB=/usr/libexec/pay-respects
 	cargo build --frozen --release --all-features
 }
 
 package() {
+	install -Dm755 "${pkgname}.sh" "$pkgdir/usr/bin/${pkgname}"
 	cd "$pkgname"
-	install -Dm755 "target/release/pay-respects" "$pkgdir/usr/bin/pay-respects"
-	install -Dm755 "target/release/_pay-respects-module-100-runtime-rules" "$pkgdir/usr/bin/_pay-respects-module-100-runtime-rules"
-	install -Dm755 "target/release/_pay-respects-fallback-100-request-ai" "$pkgdir/usr/bin/_pay-respects-fallback-100-request-ai"
+	install -Dm755 "target/release/pay-respects" "$pkgdir/opt/pay-respects/bin/pay-respects"
+	install -Dm755 "target/release/_pay-respects-module-100-runtime-rules" "$pkgdir/usr/libexec/pay-respects/_pay-respects-module-100-runtime-rules"
+	install -Dm755 "target/release/_pay-respects-fallback-100-request-ai" "$pkgdir/usr/libexec/pay-respects/_pay-respects-fallback-100-request-ai"
+
+	install -Dm644  LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
