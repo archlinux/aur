@@ -13,7 +13,7 @@ pkgbase = dietlibc
 	options = staticlibs
 	source = https://www.fefe.de/dietlibc/dietlibc-0.35.tar.xz
 	source = https://www.fefe.de/dietlibc/dietlibc-0.35.tar.xz.sig
-	validpgpkeys = 950097E47CAF6CF5EB228BADABE0AAAD4637EE30
+	validpgpkeys = 2DEC330151BB9F7DAD8B0BDCFC32CEECA534A9C6
 	sha256sums = 5aa5599039ae58bba7b4a1566fc453485cd1a155a20b313e15cd1bd0e19c0beb
 	sha256sums = SKIP
 
