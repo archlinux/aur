@@ -16,7 +16,7 @@ md5sums=('c468c732cac0b4641af93b3ac95c6412')
 
 prepare() {
     cd "$pkgname-$pkgver"
-    sed -i 's/getargspec/getfullargspec/' ntfy/__init__.py
+    sed -i 's/getargspec/getfullargspec/' "$pkgname/__init__.py"
 }
 
 build() {
