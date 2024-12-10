@@ -1,6 +1,6 @@
 pkgbase = rudesktop
 	pkgdesc = Ru-Desktop client for home use
-	pkgver = 2.7.823
+	pkgver = 2.7.862
 	pkgrel = 1
 	url = https://rudesktop.ru/downloads/
 	arch = x86_64
@@ -26,6 +26,6 @@ pkgbase = rudesktop
 	depends = gtk3
 	depends = python-pynput
 	source = https://rudesktop.ru/download/rudesktop-amd64.deb
-	sha256sums = 825ee0ca645fd53ecd1c655d80639e9ded9a0e08b0ff2843e1c6c8bbcef22202
+	sha256sums = 9cf43f1e805f4a96b6d32e46c48ad0041e185817352889f239f72c765040f90a
 
 pkgname = rudesktop
