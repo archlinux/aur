@@ -1,0 +1,15 @@
+From: Rogério Brito <rbrito@ime.usp.br>
+Subject: Fix manpage quoting
+Last-Update: 2009-12-07
+
+--- a/fondu.1
++++ b/fondu.1
+@@ -23,7 +23,7 @@
+ or data fork resource files (.dfont, as used by MacOS X).
+ A bare resource fork may be generated easily be copying a file with a resource 
+ fork onto a diskette (or zip drive) using DOS format. 
+-\." how to do this, explicitly?
++.\" how to do this, explicitly?
+ The Macintosh will create a folder called resource.frk
+ (invisible on the Macintosh itself),
+ in which the resource fork will reside as a bare file.

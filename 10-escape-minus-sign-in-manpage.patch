@@ -1,0 +1,15 @@
+From: Rogério Brito <rbrito@ime.usp.br>
+Subject: escape-minus-sign-in-manpage
+Last-Update: 2009-12-07
+
+--- a/fondu.1
++++ b/fondu.1
+@@ -38,7 +38,7 @@
+ Force overwriting of the original file.
+ .TP
+ .B \-inquire 
+-Prompt for input before overwriting files. This overrides -force.
++Prompt for input before overwriting files. This overrides \-force.
+ .TP
+ .B \-show 
+ Print out each file as it is created.

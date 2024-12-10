@@ -1,0 +1,17 @@
+Description:
+	- Fixed misspelling in binary
+Author: Carlos Donizete Froes <coringao@riseup.net>
+Last-Update: 2019-07-19
+Index: fondu-0.0.20060102/ufond.c
+===================================================================
+--- fondu-0.0.20060102.orig/ufond.c
++++ fondu-0.0.20060102/ufond.c
+@@ -107,7 +107,7 @@ static void Usage(char *prog) {
+     fprintf( stderr, " -res\tPuts the output into a data file containing a resource fork\n\t\t(you have to figure out how to get it into a real resource fork)" );
+     fprintf( stderr, " -script [name|code]\tThe name should be the name of a mac script\n\t\tlike Roman or Cyrillic (not all names are recognized)\n\t\tthe code can be a number representing a script\n" );
+     fprintf( stderr, "A list of bdf/ttf files all with the same family name will be merged into\n" );
+-    fprintf( stderr, "one FOND and all stored in one output files. Any pfb files will be refered\n" );
++    fprintf( stderr, "one FOND and all stored in one output files. Any pfb files will be referred\n" );
+     fprintf( stderr, "to in the FOND but will live in a separate file.\n" );
+     exit( 1 );
+ }

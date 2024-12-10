@@ -1,0 +1,30 @@
+From: Simon Ruderich <simon@ruderich.org>
+Subject: Add missing arguments to fprintf()
+Last-Update: 2012-03-22
+
+Index: fondu-0.0.20060102/frommacbinary.c
+===================================================================
+--- fondu-0.0.20060102.orig/frommacbinary.c	2012-03-22 18:12:48.341669829 +0100
++++ fondu-0.0.20060102/frommacbinary.c	2012-03-22 18:13:01.577670334 +0100
+@@ -55,7 +55,7 @@
+ /* frombin filenames */
+ 
+ static void Usage(char *prog) {
+-    fprintf( stderr, "Usage: %s [-usage] [-help] [-version] filenames\n" );
++    fprintf( stderr, "Usage: %s [-usage] [-help] [-version] filenames\n", prog );
+     fprintf( stderr, " -usage\t\tPrints this message\n" );
+     fprintf( stderr, " -help\t\tPrints this message\n" );
+     fprintf( stderr, " -version\t\tPrints the version of the program\n" );
+Index: fondu-0.0.20060102/tomacbinary.c
+===================================================================
+--- fondu-0.0.20060102.orig/tomacbinary.c	2012-03-22 18:12:48.341669829 +0100
++++ fondu-0.0.20060102/tomacbinary.c	2012-03-22 18:13:01.577670334 +0100
+@@ -58,7 +58,7 @@
+ /* tobin -res rfilename */
+ 
+ static void Usage(char *prog) {
+-    fprintf( stderr, "Usage: %s {[-res filename] [-create creat] [-type type] [filename]}\n" );
++    fprintf( stderr, "Usage: %s {[-res filename] [-create creat] [-type type] [filename]}\n", prog );
+     fprintf( stderr, " -res filename\tProvides the name of a file whose data fork is to\n" );
+     fprintf( stderr, "\t\t\tplaced in a resource fork\n" );
+     fprintf( stderr, " -create creat\tProvides a four character creator (if omitted on the\n" );

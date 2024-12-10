@@ -1,0 +1,19 @@
+Description:
+	- Added to the value of a variable with '+ ='.
+Author:
+	Carlos Donizete Froes <coringao@riseup.net>
+Last-Update:
+	2019-07-19
+Index: fondu-0.0.20060102/Makefile.in
+===================================================================
+--- fondu-0.0.20060102.orig/Makefile.in
++++ fondu-0.0.20060102/Makefile.in
+@@ -13,7 +13,7 @@ HOST= @HOST@
+ DARWIN_CORE = $(if $(findstring apple-darwin,$(HOST)),/System/Library/Frameworks/CoreServices.framework/CoreServices,)
+ 
+ WFLAGS = -Wmissing-prototypes -Wunused -Wimplicit -Wreturn-type -Wparentheses -pedantic
+-CFLAGS = -g $(WFLAGS)
++CFLAGS += -g $(WFLAGS)
+ FONDUOBJS = fondu.o readnfnt.o fondups.o
+ UFONDOBJS = ufond.o ufondbdf.o ufondpfb.o ufondttf.o crctab.o
+ DFONT2RESOBJS = dfont2res.o crctab.o

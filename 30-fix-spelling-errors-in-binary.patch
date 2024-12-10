@@ -1,0 +1,26 @@
+From: Rogério Brito <rbrito@ime.usp.br>
+Subject: Fix spelling errors in binary and comments
+Last-Update: 2009-12-07
+
+--- a/ufond.c
++++ b/ufond.c
+@@ -43,8 +43,8 @@
+ /*  We strip off things like Italic, Bold, Oblique, Condensed, "-" to get a family name */
+ /*  We collect all files into families */
+ /*  We generate one FOND for each family and put the bdf and ttf into it */
+-/*  We generate one seperate resource file for each ps font in the family */
+-/*  If we do not have a plain style then make a seperate FOND for each style */
++/*  We generate one separate resource file for each ps font in the family */
++/*  If we do not have a plain style then make a separate FOND for each style */
+ /*   and pretend each is plain */
+ /*  If we have a PS font style with no matching bdf (ie. no metrics) then */
+ /*   complain (but make an entry for it in the fond anyway?) */
+@@ -108,7 +108,7 @@
+     fprintf( stderr, " -script [name|code]\tThe name should be the name of a mac script\n\t\tlike Roman or Cyrillic (not all names are recognized)\n\t\tthe code can be a number representing a script\n" );
+     fprintf( stderr, "A list of bdf/ttf files all with the same family name will be merged into\n" );
+     fprintf( stderr, "one FOND and all stored in one output files. Any pfb files will be refered\n" );
+-    fprintf( stderr, "to in the FOND but will live in a seperate file.\n" );
++    fprintf( stderr, "to in the FOND but will live in a separate file.\n" );
+     exit( 1 );
+ }
+ 
