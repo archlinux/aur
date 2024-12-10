@@ -4,10 +4,10 @@
 _pkgname=amdxdna-driver
 pkgname="${_pkgname}-bin"
 pkgver=2.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD XDNA(tm) Driver (amdxdna.ko) for Linux and XRT SHIM library development."
 arch=('x86_64')
-url="https://github.com/ThatOneCalculator/xdna-driver/tree/arch-linux"
+url="https://github.com/amd/xdna-driver/"
 license=('custom')
 optdepends=('xrt-npu-git: to make it work, maybe?')
 provides=("${_pkgname}")
