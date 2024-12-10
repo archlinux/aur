@@ -1,6 +1,6 @@
 pkgbase = journalctl-desktop-notification
 	pkgdesc = Notifies you on the desktop when any error message appears in the Journalctl log.
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/journalctl-desktop-notification
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = journalctl-desktop-notification
 	provides = journalctl-desktop-notification
 	conflicts = journalctl-desktop-notification-git
 	backup = etc/journalctl-desktop-notification.conf
-	source = journalctl-desktop-notification-1.1.0.tar.gz::https://gitlab.com/Zesko/journalctl-desktop-notification/-/archive/1.1.0/journalctl-desktop-notification-1.1.0.tar.gz
-	sha256sums = f49fef893d9436869eb9a819a17e7c967dcb39ba624e86e8cd35a2c03b12249f
+	source = journalctl-desktop-notification-1.2.0.tar.gz::https://gitlab.com/Zesko/journalctl-desktop-notification/-/archive/1.2.0/journalctl-desktop-notification-1.2.0.tar.gz
+	sha256sums = 8f86ae594fd8be3004e9e0a1feff128ece736900cc37a15442b0681453c5eef1
 
 pkgname = journalctl-desktop-notification
