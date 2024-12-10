@@ -5,13 +5,13 @@
 # Contributor: Archie <Mymaud@gmail.com>
 # Contributor: Calogero Scarnà <info@codelinsoft.it>
 
-pkgbase=gmic-pre
-pkgname=(gmic-pre
-         gimp-plugin-gmic-pre)
+pkgbase=gmic-pre-gimp3
+pkgname=(gmic-pre-gimp3
+         gimp-plugin-gmic-pre-gimp3)
 pkgver=3.5.0
 _pkgver=prerelease
 __pkgver=3.5.0_pre
-pkgrel=3
+pkgrel=4
 pkgdesc="Prerelease G-MIC for GIMP3"
 arch=(x86_64)
 url='https://gmic.eu/'
@@ -57,7 +57,7 @@ build() {
   cmake --build build-gimp
 }
 
-package_gmic-pre() {
+package_gmic-pre-gimp3() {
   pkgdesc="GREYC's Magic Image Converter: image processing framework - Prerelease G-MIC for GIMP3"
   depends=(curl
            fftw
@@ -73,7 +73,7 @@ package_gmic-pre() {
            openexr
            zlib)
   optdepends=('qt6-base: for the Qt UI')
-  conflicts=('cimg' 'gmic' 'gimp-plugin-gmic')
+  conflicts=('cimg' 'gmic' 'gimp-plugin-gmic' 'gmic-pre' 'gimp-plugin-gmic-pre' )
 
   DESTDIR="$pkgdir" cmake --install build
   install -Dm644 gmic-$__pkgver/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
@@ -85,7 +85,7 @@ package_gmic-pre() {
   install -Dm644 gmic-$__pkgver/resources/gmic_cluts.gmz -t "$pkgdir"/usr/share/gmic
 }
 
-package_gimp-plugin-gmic-pre() {
+package_gimp-plugin-gmic-pre-gimp3() {
   pkgdesc="Gimp plugin for the G'MIC image processing framework - Prerelease G-MIC for GIMP3"
   depends=(babl
            fftw
