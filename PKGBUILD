@@ -2,24 +2,23 @@
 pkgbase=python-ci_watson
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="CI helper for STScI Jenkins"
 arch=('any')
 url="https://ci_watson.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
-             'python-wheel'
              'python-build'
              'python-installer'
              'python-sphinx_rtd_theme'
              'python-numpydoc'
              'python-sphinx-automodapi'
              'python-crds'
-             'python-pytest')
+             'python-pytest')  # wheel required by new setuptools
 checkdepends=('python-pytest-astropy-header') # crds already in makedepends
 source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz")
-md5sums=('5a6b50aa4cda2b4df7209bef0b8a735d')
+md5sums=('5f65fd71899010b871ec5ec1be816b40')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -41,12 +40,12 @@ build() {
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
-
-    PYTHONPATH="build/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    # Variable needs for inputs_root
+    PYTHONPATH="build/lib" pytest  || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
 
 package_python-ci_watson() {
-    depends=('python>=3.9' 'python-pytest>=6' 'python-crds') # requests <- crds
+    depends=('python>=3.9' 'python-pytest>=6' 'python-crds' 'python-readchar>=3.0') # requests <- crds
     optdepends=('python-ci_watson-doc: Documentation for CI Watson')
     cd ${srcdir}/${_pyname}-${pkgver}
 
