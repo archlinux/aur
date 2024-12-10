@@ -1,10 +1,10 @@
 pkgbase = ntfy
-	pkgdesc = A utility for sending push notifications to different backends (Pushover, Pushbullet, XMPP and various desktop notification systems)
+	pkgdesc = A utility for sending push notifications to various notification systems (Pushover, Pushbullet, XMPP, etc.)
 	pkgver = 2.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dschep/ntfy
 	arch = any
-	license = GPLv3
+	license = GPL-3.0
 	makedepends = python3
 	makedepends = python-setuptools
 	depends = python
@@ -13,9 +13,9 @@ pkgbase = ntfy
 	depends = python-appdirs
 	depends = xorg-xprop
 	depends = python-ruamel-yaml
-	optdepends = python-dbus
-	optdepends = python-emoji
-	source = https://github.com/dschep/ntfy/archive/v2.7.0.tar.gz
+	optdepends = python-dbus: Desktop notifications
+	optdepends = python-emoji: Emoji support
+	source = ntfy-2.7.0.tar.gz::https://github.com/dschep/ntfy/archive/v2.7.0.tar.gz
 	md5sums = c468c732cac0b4641af93b3ac95c6412
 
 pkgname = ntfy
