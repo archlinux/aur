@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=flipt-bin
-pkgver=1.53.0
+pkgver=1.53.1
 pkgrel=1
 pkgdesc='An open source, self-hosted feature flag solution.(Prebuilt version)'
 arch=(
@@ -15,8 +15,8 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_Linux_arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_Linux_x86_64.tar.gz")
-sha256sums_aarch64=('25363d278300ad8e6336eeb6ef7ce7e399d64757fe4291592bfc6e068f1d19e4')
-sha256sums_x86_64=('d5bc2e90c0c3712858d95ba6e10434f24ddb54eabfad753cc556451942900627')
+sha256sums_aarch64=('acf0c6089b256b4ffda1879993e9c5da848536170b594c40e4586de835e70916')
+sha256sums_x86_64=('0ffd4f5beeeb3fc209a2be4224ae9b32f221acbd0036ab8af9899f491bbf3517')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
