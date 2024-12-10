@@ -1,0 +1,7 @@
+[write_stylus]
+source="github-graphql"
+github="styluslabs/Write"
+use_max_tag=true
+from_pattern="-"
+to_pattern="."
+

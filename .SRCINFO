@@ -1,17 +1,27 @@
 pkgbase = write_stylus
 	pkgdesc = Write(orignal name) - A word processor for handwriting
-	pkgver = 300.r469
+	pkgver = dec.2024
 	pkgrel = 1
 	url = http://www.styluslabs.com/
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = desktop-file-utils
+	makedepends = git
 	depends = sdl2
+	depends = pugixml
 	noextract = eula.docx
-	source = write_stylus-300.r469.tar.gz::http://www.styluslabs.com/write/write-latest.tar.gz
+	options = !lto
+	source = write_stylus::git+https://github.com/styluslabs/Write.git#tag=dec-2024
+	source = https://github.com/styluslabs/nanovgXC.git
+	source = https://github.com/styluslabs/ulib.git
+	source = https://github.com/styluslabs/usvg.git
+	source = https://github.com/styluslabs/ugui.git
 	source = http://www.styluslabs.com/write/eula.docx
-	sha256sums = d5dcb7af86a4bde843c9b6779dc0b993406666c2ff2bd11062c75532d3d6a1c0
+	sha256sums = 0991c0817d797b457c2d9d7474080536797155b16f50ef9b3379224e8d44ba99
+	sha256sums = 67bd26854dbc12a6ea97f44ee618b1bb08ba5a67f68ef309e7a1280ced8d5e9d
+	sha256sums = 50dbc3ef8beed0fd0194a57da1dff0a227e90e6a40edf513745488f8d7bc4d12
+	sha256sums = 56374d4c079c5851f33dbc4026b4af4d53aee47e39df69a444abdedbe9a698b6
+	sha256sums = 13c8c6d1751e61bf455b1a22cbefb3d3c6a3e44911cac37d8c550d455a315eb8
 	sha256sums = 637c47c1843860a16f1ca87e2df5d72b4396ff23cefacf6244de95cdac23de6e
 
 pkgname = write_stylus
