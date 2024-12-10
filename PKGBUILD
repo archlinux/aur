@@ -3,11 +3,11 @@
 pkgname=data-logging-service
 _name=dls
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Data Logging Service (DLS) is a data logging system for EtherLab, that is capable of collecting, compressing and storing high-frequency realtime data. The goal is, to allow the user unlimited and performant access to the stored data."
 arch=($CARCH)
 url="https://gitlab.com/etherlab.org/dls"
-license=('GPL-2.0-or-later OR LGPL-2.1-or-later')
+license=('GPL-3.0-or-later')
 provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
