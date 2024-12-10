@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
@@ -56,8 +56,7 @@ depends=('glibc' 'bash' 'hicolor-icon-theme'
 optdepends=('cuda: Cycles renderer CUDA support'
             'intel-compute-runtime: Cycles renderer Intel OneAPI support'
             'libdecor: wayland support'
-	    'rocm-hip-runtime: HIP renderer AMD support'
-	    'libdecor: Wayland Support')
+	    'rocm-hip-runtime: HIP renderer AMD support')
 provides=('blender')
 conflicts=('blender')
 install=$pkgname.install
