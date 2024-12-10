@@ -3,16 +3,19 @@
 pkgbase=ch9344ser-git
 pkgname=(ch9344ser-dkms-git libch9344ser-git)
 pkgver=r49.4ea8973
-pkgrel=2
+pkgrel=4
 pkgdesc="This driver supports USB to quad serial ports chip ch9344 and USB to octal serial ports chip ch348."
 arch=('any')
 url="https://github.com/WCHSoftGroup/ch9344ser_linux"
 license=('GPL-2.0-or-later')
 depends=(dkms
-    glibc)
-makedepends=('git')
-source=("${pkgbase}::git+${url}.git")
-sha256sums=('SKIP')
+         glibc)
+makedepends=(git
+             patch)
+source=("${pkgbase}::git+${url}.git"
+        fix-linux-6-12-build.patch)
+sha512sums=('SKIP'
+            "219b2f7aecef04baad802e6561f3f1194679904b506c17d973c4dcd1b02b7f2041b90416a5a00a129ac873db9b9646ed1af2a865d5270d9aa9dc6d039cc11a3f")
 options=(!strip !debug)
 
 pkgver() {
@@ -26,6 +29,7 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgbase}" clean -dfx
+    patch "${srcdir}/${pkgbase}/driver/ch9344.c" "${srcdir}/fix-linux-6-12-build.patch"
 }
 
 package_ch9344ser-dkms-git() {
@@ -48,37 +52,37 @@ VERSION ?= \$(shell cat VERSION)
 SRC_DIR=\$(shell pwd)
 
 default:
-    \$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) modules
+	\$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) modules
 
 clean:
-    \$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) clean
+	\$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) clean
 
 install:
-    \$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) modules_install
+	\$(MAKE) -C \$(KDIR) M=\$(SRC_DIR) modules_install
 
 load: -/sbin/rmmod ch9344
-    /sbin/insmod ch9344.ko
+	/sbin/insmod ch9344.ko
 
 dkms.conf: dkms.conf.in
-    sed "s/@@VERSION@@/\$(VERSION)/" $^ > \$@
+	sed "s/@@VERSION@@/\$(VERSION)/" $^ > \$@
 
 dkms-add: dkms.conf
-    /usr/sbin/dkms add \$(SRC_DIR)
+	/usr/sbin/dkms add \$(SRC_DIR)
 
 dkms-build: dkms.conf
-    /usr/sbin/dkms build ch9344/\$(VERSION)
+	/usr/sbin/dkms build ch9344/\$(VERSION)
 
 dkms-install: dkms.conf
-    /usr/sbin/dkms install ch9344/\$(VERSION)
+	/usr/sbin/dkms install ch9344/\$(VERSION)
 
 dkms-remove: dkms.conf
-    /usr/sbin/dkms remove ch9344/\$(VERSION) --all
+	/usr/sbin/dkms remove ch9344/\$(VERSION) --all
 
 modprobe-install:
-    modprobe ch9344
+	modprobe ch9344
 
 modprobe-remove:
-    modprobe -r ch9344
+	modprobe -r ch9344
 
 dev: modprobe-remove dkms-remove dkms-add dkms-builddkms-install modprobe-install
 EOF
