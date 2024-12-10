@@ -11,7 +11,7 @@ pkgname=(gmic-pre-gimp3
 pkgver=3.5.0
 _pkgver=prerelease
 __pkgver=3.5.0_pre
-pkgrel=5
+pkgrel=6
 pkgdesc="Prerelease G-MIC for GIMP3"
 arch=(x86_64)
 url='https://gmic.eu/'
@@ -24,7 +24,8 @@ makedepends=(cmake
              opencv
              openexr
              qt6-base
-             qt6-tools)
+             qt6-tools
+             gimp-devel)
 source=(https://gmic.eu/files/prerelease/gmic_$_pkgver.tar.gz)
 sha256sums=('07192137c1438134e568c002097e7404e05c807e04b59489231bb6d3605bdede')
 
@@ -71,7 +72,8 @@ package_gmic-pre-gimp3() {
            libx11
            opencv
            openexr
-           zlib)
+           zlib
+           gimp-devel)
   optdepends=('qt6-base: for the Qt UI')
   conflicts=('cimg' 'gmic' 'gimp-plugin-gmic')
   replaces=('gmic-pre' 'gimp-plugin-gmic-pre')
@@ -98,7 +100,8 @@ package_gimp-plugin-gmic-pre-gimp3() {
            gmic-pre-gimp3
            libx11
            qt6-base
-           zlib)
+           zlib
+           gimp-devel )
   conflicts=('cimg' 'gmic' 'gimp-plugin-gmic')
   replaces=('gmic-pre' 'gimp-plugin-gmic-pre')
   DESTDIR="$pkgdir" cmake --install build-gimp
