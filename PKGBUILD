@@ -1,16 +1,17 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=mesaflash-git
-pkgver=3.4.9.r9.gaef5246
-pkgrel=7
+pkgver=3.4.9.r22.g063ac69
+pkgrel=1
 pkgdesc="Configuration and diagnostic tool for Mesa Electronics PCI(E)/ETH/EPP/USB/SPI boards"
-arch=('i686' 'x86_64')
+arch=($CARCH)
 url="https://github.com/LinuxCNC/mesaflash"
 license=('GPL-2.0-only')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-depends=(libmd
-        pciutils)
+depends=(
+    libmd
+    pciutils)
 makedepends=(git)
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
@@ -20,8 +21,7 @@ pkgver() {
     git describe --long --tags | sed 's|^release/||g;s/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
