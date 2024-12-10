@@ -13,7 +13,7 @@ depends=('librewolf')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 groups=('librewolf-addons')
-noextract=("tridactyl-$pkgver.xpi")
+noextract=("$_id.xpi")
 _number=4261352
 source=("$_id.xpi::https://addons.mozilla.org/firefox/downloads/file/$_number/tridactyl_vim-$pkgver.xpi"
         "https://raw.githubusercontent.com/tridactyl/tridactyl/refs/tags/$pkgver/LICENSE")
