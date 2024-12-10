@@ -1,7 +1,7 @@
 pkgbase = fluidx3d
 	pkgdesc = The fastest and most memory efficient lattice Boltzmann CFD software, using OpenCL
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProjectPhysX/FluidX3D
 	arch = x86_64
 	arch = aarch64
