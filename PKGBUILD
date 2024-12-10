@@ -19,7 +19,6 @@ license=(CECILL-C)
 makedepends=(cmake
              eigen
              fftw
-             gimp
              graphicsmagick
              opencv
              openexr
@@ -94,7 +93,6 @@ package_gimp-plugin-gmic-pre-gimp3() {
            fftw
            gcc-libs
            gegl
-           gimp
            glib2
            glibc
            gmic-pre-gimp3
