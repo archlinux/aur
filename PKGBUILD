@@ -11,8 +11,10 @@ arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url="https://www.haskell.org/ghcup/"
 license=('LGPL-3.0-only')
 makedepends=(git stack yq)
+depends=(gmp bzip2 zlib)
 optdepends=('curl'
             'wget'
+            'ncurses: for the TUI'
             "ncurses5-compat-libs: using older ghc's linking against libtinfo.so.5")
 provides=("$_pkgname" "$_pkgname"-bin)
 conflicts=("$_pkgname" "$_pkgname"-bin)
