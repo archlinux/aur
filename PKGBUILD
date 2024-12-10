@@ -2,7 +2,7 @@
 
 pkgname=pdserv
 pkgver=3.3.1
-pkgrel=0
+pkgrel=1
 pkgdesc="The PdServ library provides process data communication mechanisms for Linux real-time applications in user space (i. e. using RT-PREEMPT). The main focus is placed on providing a process-data interface without interfering real-time operation."
 arch=($CARCH)
 url="https://gitlab.com/etherlab.org/pdserv"
@@ -28,7 +28,8 @@ makedepends=(
 )
 checkdepends=()
 optdepends=(
-    'pam: PAM (Pluggable Authentication Modules) library')
+    'pam: PAM (Pluggable Authentication Modules) library'
+    'pdcom: The Data Logging Service (DLS) is a data logging system for EtherLab, that is capable of collecting, compressing and storing high-frequency realtime data. The goal is, to allow the user unlimited and performant access to the stored data.')
 backup=()
 options=()
 #install=${pkgname}.install
