@@ -2,7 +2,7 @@
 
 pkgname='python-tmdbapis'
 _name=${pkgname#python-}
-pkgver=1.2.21
+pkgver=1.2.26
 pkgrel=1
 pkgdesc="A set of tools based around the requests library for safely making HTTP requests on behalf of a third party."
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=(
   'python-setuptools'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('b13089d0caedc31d8dffdf525d48ab2064d28f1907cbd13b13c6ee275c96326161794f79eacb0891798a818fb3f6482241da07c067e2b5ff744ede39b25754d9')
+sha512sums=('fb85e871b4d770ef4a987e43affc200c121dec02213b64a8b4638108966998d53a4efeeab97a16d34fbd1fa30b34a54b2511df3d70223aa86ff0dd99f274d354')
 
 package() {
   cd tmdbapis-${pkgver}
