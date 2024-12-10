@@ -1,13 +1,13 @@
 pkgbase = sqlite_fdw
 	pkgdesc = SQLite Foreign Data Wrapper for PostgreSQL
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/pgspider/sqlite_fdw
 	arch = x86_64
 	license = postgresql
 	makedepends = llvm15
 	depends = sqlite
-	source = https://github.com/pgspider/sqlite_fdw/archive/v2.4.0.tar.gz
-	sha256sums = 1fd4d5fba0ed218f336492c098478b4ce525dca8ff7072bfac519a96cc24a034
+	source = https://github.com/pgspider/sqlite_fdw/archive/v2.5.0.tar.gz
+	sha256sums = 4130ed670cc2b61372e81344b824e51d1530859970a4286f6a2c627421912527
 
 pkgname = sqlite_fdw
