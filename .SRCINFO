@@ -1,5 +1,5 @@
 pkgbase = librewolf-extension-ublock-origin-bin
-	pkgdesc = uBlock Origin - An efficient blocker for Librewolf. Fast and lean.
+	pkgdesc = uBlock Origin - An efficient blocker for LibreWolf. Fast and lean.
 	pkgver = 1.61.2
 	pkgrel = 1
 	url = https://github.com/gorhill/uBlock
