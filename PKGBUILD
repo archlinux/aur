@@ -3,7 +3,7 @@
 pkgname=alpaca-ai
 _pkgname=alpaca
 pkgver=2.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Alpaca is an Ollama client where you can manage and chat with multiple models, Alpaca provides an easy and begginer friendly way of interacting with local AI, everything is open source and powered by Ollama."
 arch=(x86_64)
 url="https://github.com/Jeffser/${_pkgname%-git}"
@@ -17,6 +17,7 @@ depends=(
  desktop-file-utils
  appstream
  glib2
+ pydbus
  vte4
  pkgconf
  python3
