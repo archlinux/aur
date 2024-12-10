@@ -15,15 +15,15 @@ optdepends=(
 	'curl: AI requests'
 )
 source=(${_pkgname}.sh)
-source_x86_64=("$pkgname-$pkgver-$pkgrel::https://github.com/iffse/pay-respects/releases/download/v$pkgver/pay-respects-$pkgver-x86_64-unknown-linux-gnu.tar.zst")
-source_aarch64=("$pkgname-$pkgver-$pkgrel::https://github.com/iffse/pay-respects/releases/download/v$pkgver/pay-respects-$pkgver-aarch64-unknown-linux-gnu.tar.zst")
-source_armv7h=("$pkgname-$pkgver-$pkgrel::https://github.com/iffse/pay-respects/releases/download/v$pkgver/pay-respects-$pkgver-armv7-unknown-linux-gnueabihf.tar.zst")
-source_i686=("$pkgname-$pkgver-$pkgrel::https://github.com/iffse/pay-respects/releases/download/v$pkgver/pay-respects-$pkgver-i686-unknown-linux-gnu.tar.zst")
+source_x86_64=("$pkgname-$pkgver-$pkgrel-x86-64::https://github.com/iffse/pay-respects/releases/download/v$pkgver/pay-respects-$pkgver-x86_64-unknown-linux-gnu.tar.zst")
+source_aarch64=("$pkgname-$pkgver-$pkgrel-aarch64::https://github.com/iffse/pay-respects/releases/download/v$pkgver/pay-respects-$pkgver-aarch64-unknown-linux-gnu.tar.zst")
+source_armv7h=("$pkgname-$pkgver-$pkgrel-armv7h::https://github.com/iffse/pay-respects/releases/download/v$pkgver/pay-respects-$pkgver-armv7-unknown-linux-gnueabihf.tar.zst")
+source_i686=("$pkgname-$pkgver-$pkgrel-i686::https://github.com/iffse/pay-respects/releases/download/v$pkgver/pay-respects-$pkgver-i686-unknown-linux-gnu.tar.zst")
 sha1sums=('ec0ed24f6086f66cd13672e7130fe607148afe70')
 sha1sums_x86_64=('c3ca1460f16c0065d638b74d34acca45914c8ef3')
-sha1sums_aarch64=('c3ca1460f16c0065d638b74d34acca45914c8ef3')
-sha1sums_armv7h=('c3ca1460f16c0065d638b74d34acca45914c8ef3')
-sha1sums_i686=('c3ca1460f16c0065d638b74d34acca45914c8ef3')
+sha1sums_aarch64=('80bda86b9f4329343bcf3334e2ffd0a68bf2fa00')
+sha1sums_armv7h=('cf28c1ef6947983ba526301b6fda34cb783ecef3')
+sha1sums_i686=('dd45fe15bbbb07533b52e50cdd4d79422a3b2acd')
 
 package() {
 	install -Dm755 "${_pkgname}.sh" "$pkgdir/usr/bin/${_pkgname}"
