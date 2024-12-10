@@ -5,7 +5,7 @@
 
 pkgname=write_stylus
 pkgver=dec.2024
-pkgrel=2
+pkgrel=3
 pkgdesc="Write(orignal name) - A word processor for handwriting"
 arch=(i686 x86_64)
 url="http://www.styluslabs.com/"
