@@ -4,7 +4,7 @@
 #
 # shellcheck disable=SC2034,SC2154
 pkgname=kbld-bin
-pkgver=0.44.1
+pkgver=0.45.0
 pkgrel=1
 pkgdesc='kbld seamlessly incorporates image building and image pushing into your development and deployment workflows'
 url='https://carvel.dev/kbld'
@@ -13,10 +13,10 @@ license=(apache-2.0)
 install=''
 conflicts=(kbld)
 provides=(kbld)
-source_x86_64=(kbld-v0.44.1::https://github.com/carvel-dev/kbld/releases/download/v0.44.1/kbld-linux-amd64)
-source_aarch64=(kbld-v0.44.1::https://github.com/carvel-dev/kbld/releases/download/v0.44.1/kbld-linux-arm64)
-sha256sums_x86_64=(ffd557f0057c22b8f49ff77ee1ea40d93f3da2b9cb18a82e9dda9399970c2282)
-sha256sums_aarch64=(afcb44d37dbac1e2f23c056865798efe0f8b7ff982eee4644ceb146e30584e4a)
+source_x86_64=(kbld-v0.45.0::https://github.com/carvel-dev/kbld/releases/download/v0.45.0/kbld-linux-amd64)
+source_aarch64=(kbld-v0.45.0::https://github.com/carvel-dev/kbld/releases/download/v0.45.0/kbld-linux-arm64)
+sha256sums_x86_64=(e076af83ef05765e6bf825f2bf5ac31c365cc0d513b7317bd634f3b9c6b5ee5d)
+sha256sums_aarch64=(9e52c553322fa21a8af10d47d76c66eb7a2f406fad92bb589458554cb4143121)
 package () 
 { 
     set -eo pipefail;
