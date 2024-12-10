@@ -1,7 +1,7 @@
 pkgbase = imibrowser
-	pkgdesc = iReasoning Freeware MIB browser tool for SNMP API
+	pkgdesc = Freeware MIB browser tool for SNMP API (requires SLA acceptance)
 	pkgver = 15.0.5012
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ireasoning.com/mibbrowser.shtml
 	arch = x86_64
 	license = LicenseRef-custom

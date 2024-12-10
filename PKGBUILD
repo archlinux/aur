@@ -2,60 +2,41 @@
 
 pkgname=imibrowser
 pkgver=15.0.5012
-pkgrel=1
-pkgdesc="iReasoning Freeware MIB browser tool for SNMP API"
+pkgrel=2
+pkgdesc="Freeware MIB browser tool for SNMP API (requires SLA acceptance)"
+
 url="https://www.ireasoning.com/mibbrowser.shtml"
 arch=('x86_64')
 license=('LicenseRef-custom' 'GPL-2.0-or-later')
 depends=('bash' 'java-runtime' 'hicolor-icon-theme')
 makedepends=('imagemagick')
 source=("${pkgname}-${pkgver}.zip::https://www.ireasoning.com/download/mibfree/mibbrowser.zip"
-        'iMIBrowser.desktop'
-        'SLA')
+        "iMIBrowser.desktop"
+        "SLA")
 sha256sums=('84cf060bd970c9859653a30c9947696d9820af052e62ba3cae71cb7a2e7578f0'
             'ecfc557a66cb3e11f50c0034019fff55960d4b9551ba0639754ed14647cb6446'
             'f15a61ab9c02cdab41460763608bfd5b5f0624826724e0f80120ecef3285acfa')
 
 prepare() {
-  # Information about license agreement for free Personal Edition version
-  msg2 "Please read carefully through MIB Browser License Agreement (Personal Edition) at"
-  msg2 "https://www.ireasoning.com/downloadmibbrowserlicense.shtml"
+  echo "Preparing the build for iReasoning MIB Browser."
+  echo "Please review the SLA (https://www.ireasoning.com/downloadmibbrowserlicense.shtml) and LICENSE file."
 
-  # Acceptance of the software license agreement
-  while true; do
-    read -p "Do you accept the software license agreement? (y/n) " yn
-
-    case $yn in
-    [yY])
-      msg2 "Accepted agreement."
-      break
-      ;;
-    [nN])
-      msg2 "Declined agreement, exiting."
-      exit
-      ;;
-    *) echo "Invalid response" ;;
-    esac
-
-  done
-
-  # Create executable /usr/bin file
-  cat >imibrowser.sh <<EOF
-#!/bin/sh
-/opt/imibrowser/browser.sh &
+  # Create the launch script
+  cat >"${srcdir}/imibrowser.sh" <<EOF
+#!/usr/bin/env sh
+/opt/${pkgname}/browser.sh &
 EOF
 }
 
 package() {
-  # Install /usr/bin executable file
-  install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+  # Install the launch script to /usr/bin
+  install -Dm755 "${srcdir}/imibrowser.sh" "${pkgdir}/usr/bin/${pkgname}"
 
-  # Install application files
-  install -d "${pkgdir}/opt/${pkgname}"/{config,docs,images,lib,mibs}
+  # Install the application files
+  install -Dm644 "${srcdir}/ireasoning/mibbrowser/audio/alarm.wav" -t "${pkgdir}/opt/${pkgname}/audio"
+  install -Dm644 "${srcdir}/ireasoning/mibbrowser/scripts/sample.txt" -t "${pkgdir}/opt/${pkgname}/scripts"
+  cp -Pr "${srcdir}/ireasoning/mibbrowser"/{config,docs,images,lib,mibs} "${pkgdir}/opt/${pkgname}"
   install -Dm755 "${srcdir}/ireasoning/mibbrowser"/*.sh "${pkgdir}/opt/${pkgname}"
-  install -Dm644 "${srcdir}/ireasoning/mibbrowser/audio/alarm.wav" "${pkgdir}/opt/${pkgname}/audio/alarm.wav"
-  install -Dm644 "${srcdir}/ireasoning/mibbrowser/scripts/sample.txt" "${pkgdir}/opt/${pkgname}/scripts/sample.txt"
-  cp -a --no-preserve='ownership' "${srcdir}/ireasoning/mibbrowser"/{config,docs,images,lib,mibs} "${pkgdir}/opt/${pkgname}"
 
   # Install license files
   install -Dm644 "${srcdir}/ireasoning/mibbrowser/license.txt" \
@@ -66,32 +47,27 @@ package() {
   # Sign the accepted software license agreement
   echo ">> I Accept <<" >>"${pkgdir}/usr/share/licenses/${pkgname}/SLA"
 
+  # Icon sizes and their corresponding layers in the ICO file
+  declare -A icon_layers=(
+    [16]=5
+    [24]=4
+    [32]=3
+    [48]=2
+    [128]=1
+    [256]=0
+  )
+
   # Install icons
-  for d in 16 24 32 48 128 256; do
-    install -d "${pkgdir}/usr/share/icons/hicolor/${d}x${d}/apps"
+  for size in "${!icon_layers[@]}"; do
+    install -d "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
+    magick "${srcdir}/ireasoning/mibbrowser/images/browser.ico[${icon_layers[$size]}]" \
+      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
   done
 
-  for i in 16 24 32 48 128 256; do
-    if [ ${i} = '16' ]; then
-      layer=5
-    elif [ ${i} = '24' ]; then
-      layer=4
-    elif [ ${i} = '32' ]; then
-      layer=3
-    elif [ ${i} = '48' ]; then
-      layer=2
-    elif [ ${i} = '128' ]; then
-      layer=1
-    elif [ ${i} = '256' ]; then layer=0; fi
-
-    magick "${srcdir}/ireasoning/mibbrowser/images/browser.ico[${layer}]" -define icon:auto-resize=${icons} \
-      "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
-  done
-
-  # Install /usr/share/pixmaps png file
+  # Install /usr/share/pixmaps PNG file
   install -Dm644 "${srcdir}/ireasoning/mibbrowser/images/browser.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
-  # Install desktop file
+  # Install the desktop entry file
   install -Dm644 "${srcdir}/iMIBrowser.desktop" "${pkgdir}/usr/share/applications/iMIBrowser.desktop"
 }
 
