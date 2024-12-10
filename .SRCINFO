@@ -1,5 +1,5 @@
 pkgbase = librewolf-extension-tridactyl-bin
-	pkgdesc = Replace Librewolf's control mechanism with one modelled on Vim.
+	pkgdesc = Replace LibreWolf's control mechanism with one modelled on Vim.
 	pkgver = 1.24.1
 	pkgrel = 1
 	url = https://tridactyl.xyz/
