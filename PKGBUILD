@@ -4,7 +4,7 @@
 # Co-maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=igv
-pkgver=2.18.4
+pkgver=2.19.1
 _github_pkgver=$pkgver
 minor_pkgver=$(<<<$pkgver sed -E 's/^([0-9]+\.[0-9]+)\..*/\1/')
 _pkgver=${pkgver//_/-}   # currently not needed
@@ -13,7 +13,7 @@ pkgdesc="High-performance visualization tool for interactive exploration of larg
 arch=('any')
 url="http://www.broadinstitute.org/software/igv/home"
 license=('MIT')
-depends=('jre17-openjdk' 'archlinux-java-run' 'sh')
+depends=('jre21-openjdk' 'archlinux-java-run' 'sh')
 #"igv-$pkgver.tar.gz::https://github.com/igvteam/igv/archive/v$pkgver.tar.gz"
 source=("https://data.broadinstitute.org/igv/projects/downloads/${minor_pkgver}/IGV_Linux_${pkgver}_WithJava.zip"
         "$pkgname.sh"
@@ -22,9 +22,9 @@ source=("https://data.broadinstitute.org/igv/projects/downloads/${minor_pkgver}/
         "igv_hidpi.desktop"
         "${pkgname}-license-2023.txt::https://raw.githubusercontent.com/igvteam/igv/v${_github_pkgver}/license.txt"
         "https://raw.githubusercontent.com/igvteam/igv/v${_github_pkgver}/docs/web/IGV_64.png")
-sha512sums=('22a1ef39e4b872c96ec21cd23030c1821b2a5b148f5f3d42b6df6ed30f1c896cece676aad67eca3076e66a69f6971b81a0dba688cb06adbf64f37b57f25a36ce'
-            '9c81d153e90766131c8ad209c8d84369dc6a80cf8e993e3ae49cc19ab4a6be8a9d9570773f92ad3ba971eb21fee09b2d63b9eb78e773af4e57feff3a985fa501'
-            '283bd4fa4fc2e69c9083299f6d015003e0687fc252d05aad54b66e1f1111225ac7f97ed00e57b93510d65156dcd04b86c2574521ae3141192908b78f0a864608'
+sha512sums=('0e138d27a38e97ca926251f30ad696e3dd17fea2b13a90dcdc3064ee8c092fd1fb109470c2c5cc2fe6f5d577a1a83b4cca20df7350d163fda527eaf52ff37cce'
+            'b382236f58035cee2ab24eaddcc4ace9d230a6378114b9ef23f84f347586547d5e759709aa9e1a4ed0421c76778af7d88b7637f47cc8cfc7c7bb5dcf9d244986'
+            '47fad83e195055bebedfedf13d5d9e3a621dc162e41bc4e4c6cfdbfce204abc87f25577ec70c02fc9b4fb0ce785017d826071b32de1a0dcc43d6ef5cb459f4d5'
             '668b6dc6621415298af2b1b57c7bc4cca5be5fd45c189d14bc90cb0e5d992b53eda806a058d1920b96451c0f441b8670931fad0382c4568498b9ba6e81f5d263'
             'ff9ec7e172ed69ff6a7cb6ebca7baf702fde4f702e59bc8cab6acbeb5e6cdf1884ec1fc53ec3ba0ca4960807f79edc5f0370c2780e3a6325b6faa61326a05533'
             'ae986e63acc2d62af17315c3b3abcd54897bf418dd42b7c90a06d0e89550f4eebc887ed63be04f8880fe193f01bb12909306046b34e74905c125b8f0594937d4'
