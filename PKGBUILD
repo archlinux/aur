@@ -1,26 +1,19 @@
-## NOTE: Taken this over just to update; 
-## NOTE: However, it should be noted upstream is a mess, 
-## NOTE: Versioning does not match, as tags are "0.4.0" for the most recent "release".
-## NOTE: However, "https://pypi.org/project/sox/#history" shows "0.4.0" is actually 1.4.1;
-## NOTE: As such, i picked a newer commit. as its newer then PyPi and should be more compatible with Archlinux Libs.
+## Maintainer: Pieter Lenaerts <pieter.aj.lenaerts@gmail.com>
 ##
-## Maintainer: EndlessEden
-##
-## Previous Maintainer: xantares 
-##
+## Contributor: EndlessEden
+## Contributor: xantares 
+
 pkgname=python-sox
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Python wrapper around SoX"
 url="https://github.com/rabitt/pysox"
 arch=(any)
 license=('MIT')
-makedepends=('python-setuptools' 'git')
+makedepends=('python-setuptools')
 depends=('python' 'sox')
-#source=("https://pypi.io/packages/source/s/sox/sox-${pkgver}.tar.gz")
-#md5sums=('36353e16e54b463e76877a408ef89318')
-source=("sox-$pkgver::git+https://github.com/rabitt/pysox#commit=0a428b88f76c41e93eecbf49bb27b97c7b3f9de7")
-md5sums=('SKIP')
+source=("https://github.com/marl/pysox/releases/download/v${pkgver}/sox-${pkgver}.tar.gz")
+sha512sums=('32e25b411c62a2c7d1b2e9351052707938c7f8ae39c7df80fc01a6509ee4fb908f4abeba8a4e6040b36cd04a9099b1f5d160b7f2b1854a9362cf13b2f0c1a284')
 
 prepare() {
   cd "${srcdir}"/sox-$pkgver
@@ -35,5 +28,3 @@ package_python-sox() {
   cd "${srcdir}/sox-$pkgver"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
-
-
