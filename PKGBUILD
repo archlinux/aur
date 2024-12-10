@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
-pkgver=4.9.0
+pkgver=4.10.0
 pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
@@ -39,11 +39,12 @@ optdepends=(
   'python-send2trash: Enables "Send to Trash" functionality'
   'tk: To use the built-in ssh-askpass handler'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/git-cola/git-cola/archive/v$pkgver.tar.gz")
-sha256sums=('0424af1a549aef78026ee9e3cce30abeb68081dc9382c8182d31bf42450362c8')
+source=("git+https://github.com/git-cola/git-cola.git#tag=v$pkgver?signed")
+sha256sums=('3e87262cae8f850f641c4f02292567d398973209e493ff2fdfb3146bd3750a9e')
+validpgpkeys=('FA41BF59C1B48E8C5F3DA61C8CE26BF4A9F606B0') # David Aguilar <davvid@gmail.com>
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   make clean
 
   # Remove vendorized polib.py
@@ -51,14 +52,14 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   python -m build --wheel --no-isolation
 
 #  make doc
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   desktop-file-validate share/applications/*.desktop
   appstreamcli validate --no-net share/metainfo/*.appdata.xml || :
 
@@ -67,7 +68,7 @@ check() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   make prefix=/usr DESTDIR="$pkgdir" install-desktop-files
