@@ -15,17 +15,17 @@ options=(!lto)
 makedepends=(git)
 source=(
   "${pkgname}::git+https://github.com/styluslabs/Write.git#tag=${pkgver//./-}"
-  https://github.com/styluslabs/nanovgXC.git
-  https://github.com/styluslabs/ulib.git
-  https://github.com/styluslabs/usvg.git
-  https://github.com/styluslabs/ugui.git
-  "http://www.styluslabs.com/write/eula.docx")
+  "http://www.styluslabs.com/write/eula.docx"
+  git+https://github.com/styluslabs/nanovgXC.git
+  git+https://github.com/styluslabs/ulib.git
+  git+https://github.com/styluslabs/usvg.git
+  git+https://github.com/styluslabs/ugui.git)
 sha256sums=('0991c0817d797b457c2d9d7474080536797155b16f50ef9b3379224e8d44ba99'
-            '67bd26854dbc12a6ea97f44ee618b1bb08ba5a67f68ef309e7a1280ced8d5e9d'
-            '50dbc3ef8beed0fd0194a57da1dff0a227e90e6a40edf513745488f8d7bc4d12'
-            '56374d4c079c5851f33dbc4026b4af4d53aee47e39df69a444abdedbe9a698b6'
-            '13c8c6d1751e61bf455b1a22cbefb3d3c6a3e44911cac37d8c550d455a315eb8'
-            '637c47c1843860a16f1ca87e2df5d72b4396ff23cefacf6244de95cdac23de6e')
+            '637c47c1843860a16f1ca87e2df5d72b4396ff23cefacf6244de95cdac23de6e'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 noextract=("eula.docx")
 
 prepare() {
@@ -38,16 +38,16 @@ prepare() {
 
   sed -i 's#^Exec=.*#Exec=/usr/bin/write_stylus#' write_stylus/scribbleres/linux/Write.desktop
   sed -i 's#^Icon=.*#Icon=write_stylus#' write_stylus/scribbleres/linux/Write.desktop
+  sed -i '/#ifndef NDEBUG/,/#endif/s/#define SCRIBBLE_TEST 1/#undef SCRIBBLE_TEST/' write_stylus/syncscribble/basics.h
 
 }
 build() {
   cd $pkgname/syncscribble
-  make \
-    CFLAGS+="$(pkg-config --cflags sdl2) -DPUGIXML_NO_XPATH -DPUGIXML_NO_EXCEPTIONS -I/usr/include -Wno-error -Wno-format-security" \
-    CXXFLAGS+="$(pkg-config --cflags sdl2) -DPUGIXML_NO_XPATH -DPUGIXML_NO_EXCEPTIONS -I/usr/include -Wno-error -Wno-format-security" \
+  DEBUB=0 make \
+    CFLAGS+="$(pkg-config --cflags sdl2) -DPUGIXML_NO_XPATH -DPUGIXML_NO_EXCEPTIONS -I/usr/include -Wno-error -Wno-format-security -DNDEBUG" \
+    CXXFLAGS+="$(pkg-config --cflags sdl2) -DPUGIXML_NO_XPATH -DPUGIXML_NO_EXCEPTIONS -I/usr/include -Wno-error -Wno-format-security -DNDEBUG" \
     LDFLAGS+="$(pkg-config --libs sdl2)" \
-    USE_SYSTEM_SDL=1 \
-    DEBUG=0
+    USE_SYSTEM_SDL=1
 }
 package() {
   install -dm755 "$pkgdir/usr/share/$pkgname"
@@ -62,11 +62,6 @@ package() {
 
   install -Dm644 "$pkgname/scribbleres/linux/Write.desktop" "$pkgdir/usr/share/applications/Write.desktop"
   install -Dm644 "$pkgname/scribbleres/linux/Write144x144.png" "$pkgdir/usr/share/pixmaps/write_stylus.png"
-
-  #sadly there is no user preferences, so we have to make this writable https://github.com/styluslabs/Write/issues/4
-  touch write.xml
-  install -Dm666 write.xml "$pkgdir/var/lib/$pkgname/write.xml"
-  ln -sf /var/lib/$pkgname/write.xml "$pkgdir/usr/share/$pkgname/write.xml"
 }
 
 # vim:set ts=2 sw=2 et:
