@@ -5,7 +5,7 @@ After=systemd-udev-settle.service getty.target
 [Service]
 Type=forking
 PIDFile=/var/run/fenrir.pid
-ExecStart=/usr/bin/fenrir-daemon
+ExecStart=/usr/bin/fenrir
 ExecReload=/usr/bin/kill -HUP $MAINPID
 Restart=always
 #Group=fenrirscreenreader

@@ -2,7 +2,7 @@
 # Contributor: Chrys <chrys@linux-a11y.org>
 
 pkgname="fenrir"
-pkgver=1.9.9
+pkgver=2024.12.10
 pkgrel=1
 epoch=1
 pkgdesc='A user space console screen reader written in python3'
@@ -14,7 +14,7 @@ optdepends=('brltty: For Braille support'
 'gstreamer: for soundicons via gstreamer'
 'socat: Control running Fenrir screenreader'
   'sox: The default sound driver'
-  'python-espeak: TTS support'
+  'python-pythondialog: For the configure_fenrir.py tool'
   'python-pyttsx: TTS support'
   'python-pyenchant: for spell check functionality'
   'xclip: for copy to X session clipboard'
@@ -25,8 +25,8 @@ conflicts=('fenrir-git')
 backup=('etc/fenrirscreenreader/settings/settings.conf')
 source=("git+https://git.stormux.org/storm/${pkgname}.git#tag=${pkgver}"
   'fenrirscreenreader.service')
-sha512sums=('9e7168215461e2380794d6aa0da8952e05c2dba8937599f4d1a91494532b86b33376cb0169327b3143521524b6e5718f5db73c1f22b97d64eba857d1fc8fa457'
-            'dc73ab35120902222d7aab02ebd396790d0b9a7c2531746011dcd4169b5376cdd942909734dd77aae60275f537395684327759bed6fce675adac6699bbe0b262')
+sha512sums=('d613f04ebfaf4032990f3a5187e871490c81ea339c2d2a332821ddedac00bb83c1e42ac21a980d702ed0d048af17526d997d4fce1362e41825fb13b160bb63e5'
+            'e5e690bd9084d20a3c96ed391989e1db5211ef65b36a18ca6a49f8e16b40771a8a35151388df69d3cc64459d075ecb5fd0c415e11dfb43bc6ed2927612262168')
 
 package() {
   install -d "$pkgdir/usr/lib/systemd/system/"
