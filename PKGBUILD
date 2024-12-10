@@ -17,7 +17,7 @@ source=($pkgname::git+https://github.com/iffse/pay-respects#tag=v$pkgver
 )
 
 sha1sums=('64322eb18f366dac1db8918110d5ce4e848690ee'
-          'ced453825c1636590b5362cd487da87a04a91f1b')
+          'ec0ed24f6086f66cd13672e7130fe607148afe70')
 
 prepare() {
 	cd "$pkgname"

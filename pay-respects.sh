@@ -1,6 +1,6 @@
 #!/bin/sh
-SHELL=$(basename $SHELL)
 if [ "$#" -gt 1 ]; then
+	SHELL=$(basename $SHELL)
 	if [ "$SHELL" = "fish" ]; then
 		echo "set -x _PR_LIB /usr/lib/pay-respects:$HOME/.local/lib/pay-respects"
 	elif [ "$SHELL" = "nu" ]; then
