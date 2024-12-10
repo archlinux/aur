@@ -1,0 +1,13 @@
+list_conf_files(){
+  ls \
+  /usr/share/dbeaver/dbeaver.ini \
+  2>/dev/null
+}
+
+post_install() {
+  list_conf_files | /usr/share/libalpm/scripts/dbeaver-jvm-setting.sh ;
+}
+
+post_upgrade() {
+  post_install
+}
