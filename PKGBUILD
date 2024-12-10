@@ -4,7 +4,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-js2-mode
-pkgver=20230408
+pkgver=20231224
 pkgrel=1
 pkgdesc="An improved JavaScript mode for GNU Emacs"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/mooz/js2-mode/"
 license=('GPL2')
 depends=('emacs')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mooz/js2-mode/archive/$pkgver.tar.gz)
-sha256sums=('eb53e8cdb16ea47a526cb7ab5fc371af57bd4c9221eef78edcdfa9df30524840')
+sha256sums=('b208a3734e65f40ec807b64276fe6e2d7d71d1627bb8dca3fb416c22adc63763')
 
 build() {
   cd ${pkgname#emacs-}-$pkgver
