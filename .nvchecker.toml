@@ -1,0 +1,4 @@
+[drand-bin]
+source = "git"
+git = "https://github.com/drand/drand.git"
+prefix = "v"
