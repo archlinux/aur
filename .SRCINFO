@@ -1,6 +1,6 @@
 pkgbase = dmon
 	pkgdesc = Toolset for daemonizing and supervising processes
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/aperezdc/dmon
 	arch = i686
@@ -10,8 +10,7 @@ pkgbase = dmon
 	makedepends = make
 	depends = glibc
 	conflicts = dmon-git
-	source = https://github.com/aperezdc/dmon/releases/download/v0.5.1/dmon-0.5.1.tar.xz
-	sha512sums = c833c64d6733ece6dceb241ef81d601d849fe5e6e6fe154b397187ff5a2f39f1db5cf4456188ab8c53b0a4f32acddc83c760fd50e746889474add1f9ecd624d7
+	source = https://github.com/aperezdc/dmon/releases/download/v0.6.0/dmon-0.6.0.tar.xz
+	sha512sums = b2eead6960294a56726f1ca04276748e5b77aff179c40ca3f9839b29c9ddf02301479fb3b837cc88cabf0913724512e2cecfd55878f82cb9d96a2812d7d047e1
 
 pkgname = dmon
-

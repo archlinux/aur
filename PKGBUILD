@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname=dmon
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Toolset for daemonizing and supervising processes'
 arch=(i686 x86_64 arm)
@@ -10,7 +10,7 @@ depends=(glibc)
 makedepends=(make)
 conflicts=(dmon-git)
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha512sums=(c833c64d6733ece6dceb241ef81d601d849fe5e6e6fe154b397187ff5a2f39f1db5cf4456188ab8c53b0a4f32acddc83c760fd50e746889474add1f9ecd624d7)
+sha512sums=(b2eead6960294a56726f1ca04276748e5b77aff179c40ca3f9839b29c9ddf02301479fb3b837cc88cabf0913724512e2cecfd55878f82cb9d96a2812d7d047e1)
 
 build() {
   cd "${pkgname}-${pkgver}"
