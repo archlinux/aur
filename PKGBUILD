@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=android-knot-bin
 _pkgname=Knot
-pkgver=1.2.05
+pkgver=1.2.06
 pkgrel=1
 pkgdesc="An Android gadget that integrates common modules such as Todo, Notes and Reader and supports various clients (Win, Mac, Linux) for editing Todo and Notes.(Prebuilt version)"
-arch=("x86_64")
+arch=('x86_64')
 url="https://github.com/ic005k/Knot"
 license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
@@ -29,7 +29,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ic005k/Knot/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e0d3a48b29b4e7efef54dee80bebcd31e949f64bd1b75445caca05c774493d60'
+sha256sums=('503e4faf2919f66947a70082a0bd836601a0fc9f44985ff5477bc71457ec7d94'
             '5076e0113e6e491d04559dd9ec0a80a35392bec88928393d47b8dd620aa96d66'
             '6f38e0cb252008b84532d5914cb851aa45518771db172e7f5a091fe16123e05e')
 build() {
