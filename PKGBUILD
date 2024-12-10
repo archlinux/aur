@@ -14,9 +14,6 @@ depends=(
 	lsb-release  # Used in tests
 	boost
 	libtiff
-	#cppcheck #TODO report upstream: not-needed since https://github.com/Xilinx/XRT/commit/0bd3e8c83840f341f028588a26cb9151fdd04542
-	#curl #TODO report upstream: not required
-	dkms
 	linux-headers  #TODO only makedepends for dkms?
 	elfutils
 	gcc
@@ -52,6 +49,7 @@ makedepends=(
 )
 optdepends=(
 	'linux-mainline-um5606: Linux kernel that can use the XDNA drivers'
+	'amdxdna-driver: Driver that coencides with these libaries'
 )
 provides=($_name)
 conflicts=($_name)
@@ -80,11 +78,6 @@ pkgver() {
 }
 
 prepare() {
-    # For U280 support uncomment:
-	#echo Patch xocl
-	#git -C xrt \
-	#	apply $srcdir/xocl-driver-fixes-for-current-kernels.patch
-
 	# Submodule integration based on
 	# https://wiki.archlinux.org/title/VCS_package_guidelines#Git_submodules
 	git -C $_name config \
@@ -95,7 +88,7 @@ prepare() {
 		../ELFIO
 	git -C $_name \
 		-c protocol.file.allow=always \
-		submodule update --recursive
+		submodule update --recursive --init # Kainoa: added this here!
 	mkdir -p microblaze-fw
 	tar xf data.tar.gz -C microblaze-fw ./lib/firmware/xilinx
 }
