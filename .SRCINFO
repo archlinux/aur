@@ -1,0 +1,19 @@
+pkgbase = python-ddddocr
+	pkgdesc = Universal verification code recognition OCR
+	pkgver = 1.5.6
+	pkgrel = 1
+	url = https://github.com/sml2h3/ddddocr
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-numpy
+	depends = python-onnxruntime
+	depends = python-opencv
+	depends = python-pillow
+	source = ddddocr-1.5.6.tar.gz::https://files.pythonhosted.org/packages/source/d/ddddocr/ddddocr-1.5.6.tar.gz
+	sha256sums = 2839a940bfabe02e3284ef3f9d2a037292aa9f641f355b43a9b70bece9e1b73d
+
+pkgname = python-ddddocr
