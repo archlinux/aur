@@ -10,7 +10,7 @@
 pkgbase=handbrake-full
 pkgname=(handbrake-full handbrake-full-cli)
 pkgver=1.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened"
 arch=(x86_64 i686)
 url="https://handbrake.fr/"
@@ -27,7 +27,7 @@ optdepends=('intel-media-sdk: for enabling Intel QSV'
             'cuda: for enabling Nvidia nvenc and nvdec'
             'amf-amdgpu-pro: for enabling AMD AMF')
 sha256sums=('6eb309e481dd98d32e868868100fd244367d2927f07d7ef9e2d7ae347b087d64')
-#options=(!lto)
+options=(!lto)
 
  build() {
   # warning when build with -D_FORTIFY_SOURCE=3 (Arch Linux default)
@@ -59,9 +59,9 @@ package_handbrake-full() {
   provides=(handbrake)
   conflicts=(handbrake)
 
-  cd "handbrake/build"
-  make DESTDIR="${pkgdir}" install
-  install ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "handbrake"
+  make DESTDIR="${pkgdir}" -C build install
+  install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   rm "${pkgdir}/usr/bin/HandBrakeCLI"
 }
 
@@ -71,7 +71,7 @@ package_handbrake-full-cli() {
   provides=(handbrake-cli)
   conflicts=(handbrake-cli)
 
-  cd "handbrake/build"
-  install -D HandBrakeCLI "${pkgdir}/usr/bin/HandBrakeCLI"
-  install ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "handbrake"
+  install -D build/HandBrakeCLI "${pkgdir}/usr/bin/HandBrakeCLI"
+  install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
