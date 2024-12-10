@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}-5.patch::https://github.com/sml2h3/ddddocr-fastapi/commit/dc22b9e823bc15a427790f38cf4b5bee5e3a8427.patch"
         "${pkgname}-6.patch::https://github.com/sml2h3/ddddocr-fastapi/commit/a40a6b96d7259c2f5cd544963d147cbd40be344d.patch")
 sha256sums=('735e48c3c589491836617ff5cfcedacce68c832a8de7b734c51b358353cf05bc'
-            '66eec691ba7942119c4b4f78f4080be64bee050ebbb60c2117244384f20f0b35'
+            '0984d003ed44f4b76b9bd89c66ed2657a8de645972011100f05051eec62a79b5'
             'b9f4dc5f19abf44b1549d838fc520a52b7696ca9e10b4e77b0aa101982d2e174'
             '7630094b840e70bcd336e401e166912f62aed72a6091de619f806b40835f417d'
             '46644ad6578dd470a9f57143f9da7354136235c685f3753df073b8271e07af56'

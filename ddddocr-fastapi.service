@@ -1,5 +1,5 @@
 [Unit]
-Description=A web UI and orchestrator for restic backup.
+Description=ddddocr FastAPI
 Wants=network-online.target
 After=network-online.target
 
