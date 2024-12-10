@@ -2,7 +2,7 @@
 
 _binname="flow"
 pkgname="${_binname}-cli"
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A command-line interface that provides useful utilities for building Flow applications"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('4efd947787ebcf60da9e65262a183ce847760794e6594c07d7445122d3acce3efed59d370b5a42830f478cb13cd6f964f2f40c3a222af71c53289d97451fb5f2')
+b2sums=('49ef5b80385188b6b9d383e73679d5093c06722ba6f3cd3104e74361c2a4476a198651c710ba406355cb60d48e26e3a37f0ad4dc6e08e30e7753a439a3d75048')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
