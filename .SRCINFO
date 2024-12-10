@@ -1,0 +1,19 @@
+pkgbase = scopy-appimage
+	pkgdesc = A software oscilloscope and signal analysis toolset.
+	pkgver = 2.0.0.beta.rc1
+	pkgrel = 1
+	url = https://github.com/analogdevicesinc/scopy
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	conflicts = scopy-git
+	noextract = Scopy-v2.0.0-beta-rc1-Linux-x86_64-AppImage.zip
+	options = !strip
+	source = Scopy-v2.0.0-beta-rc1-Linux-x86_64-AppImage.zip::https://github.com/analogdevicesinc/scopy/releases/download/v2.0.0-beta-rc1/Scopy-v2.0.0-beta-rc1-Linux-x86_64-AppImage.zip
+	source = LICENSE::https://raw.githubusercontent.com/analogdevicesinc/scopy/main/LICENSE
+	sha256sums = e0cdad07d778885fbceb86e9ebce700e30bdc8d8240fd931cc18ccf750435d12
+	sha256sums = 589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2
+
+pkgname = scopy-appimage
