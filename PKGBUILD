@@ -2,13 +2,13 @@
 
 pkgname='rtpmidid-git'
 pkgver=r797.78749d5
-pkgrel=1
+pkgrel=2
 pkgdesc="RTP MIDI User Space Driver Daemon"
 arch=('i686' 'x86_64')
 url='https://github.com/davidmoreno/rtpmidid'
 license=('GPL3')
 depends=('alsa-lib' 'fmt' 'avahi')
-makedepends=('git' 'cmake' 'pandoc')
+makedepends=('git' 'cmake' 'pandoc' 'ninja')
 provides=('rtpmidid')
 conflicts=('rtpmidid')
 source=('rtpmidid-git::git+https://github.com/davidmoreno/rtpmidid.git')

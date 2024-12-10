@@ -1,7 +1,7 @@
 pkgbase = rtpmidid-git
 	pkgdesc = RTP MIDI User Space Driver Daemon
 	pkgver = r797.78749d5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/davidmoreno/rtpmidid
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = rtpmidid-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = pandoc
+	makedepends = ninja
 	depends = alsa-lib
 	depends = fmt
 	depends = avahi
