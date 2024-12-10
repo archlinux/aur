@@ -1,0 +1,18 @@
+pkgbase = xtplayer-bin
+	pkgdesc = Cross platform Tcode player
+	pkgver = v0.47b
+	pkgrel = 1
+	url = https://github.com/jcfain/XTPlayer
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = zlib
+	noextract = xtplayer-bin-v0.47b-x86_64.AppImage
+	options = !strip
+	source_x86_64 = xtplayer-bin-v0.47b-x86_64.AppImage::https://github.com/jcfain/XTPlayer/releases/download/v0.47b/XTPlayer-v0.47b-Linux-x86_64.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/jcfain/XTPlayer/refs/tags/v0.47b/src/images/icons/XTP-icon.png
+	source_x86_64 = https://raw.githubusercontent.com/jcfain/XTPlayer/refs/tags/v0.47b/XTPlayer.desktop
+	sha256sums_x86_64 = 46da5b6bb1dbc7a20bbdf94216582f580e74776d8cc29dbd4345dcc31e9682c4
+	sha256sums_x86_64 = 337b37c44c6b72b0779f01654e5cddebbd13ffe6af621da427516744e4fc7493
+	sha256sums_x86_64 = a37bf71f9641750830f0684dee3ff570c0bb07c0aa8ee3888fdcb88706b46e73
+
+pkgname = xtplayer-bin
