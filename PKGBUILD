@@ -1,7 +1,7 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=buchable-git
 _pkgname=buchable
-pkgver=r355.0d5f0a1
+pkgver=r358.9c93386
 pkgrel=1
 pkgdesc="The unofficial cross-platform app for Audiobookshelf"
 arch=('x86_64')
@@ -23,11 +23,12 @@ makedepends=(
     'xz'
     'gtk3'
     'git'
+    'imagemagick'
 )
 source=("git+$url")
 sha256sums=('SKIP')
 provides=('buchable')
-conflict=('buchable')
+conflicts=('buchable')
 
 pkgver() {
     cd "${srcdir}/abs_flutter"
@@ -46,26 +47,27 @@ build() {
 
 package() {
     cd "${srcdir}/abs_flutter"
-    
+
     install -dm755 "$pkgdir/usr/bin"
     install -dm755 "$pkgdir/usr/lib/$_pkgname"
     install -dm755 "$pkgdir/usr/share/applications"
     install -dm755 "$pkgdir/usr/share/icons/hicolor/256x256/apps"
-    
+    install -dm755 "$pkgdir/usr/share/pixmaps"
+
     cp -r build/linux/x64/release/bundle/* "$pkgdir/usr/lib/$_pkgname/"
-    
+
     cat > "$pkgdir/usr/bin/$_pkgname" << EOF
 #!/bin/sh
 exec /usr/lib/$_pkgname/abs_flutter "\$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/$_pkgname"
-    
-    cat > "$pkgdir/usr/share/applications/$_pkgname.desktop" << EOF
+
+    cat > "$pkgdir/usr/share/applications/buchable.desktop" << EOF
 [Desktop Entry]
 Name=Buchable
 Comment=The unofficial cross-platform app for Audiobookshelf
-Exec=$_pkgname
-Icon=$_pkgname
+Exec=buchable
+Icon=buchable
 Terminal=false
 Type=Application
 Categories=Audio;AudioVideo;Player;
@@ -73,9 +75,19 @@ StartupWMClass=buchable
 X-GNOME-UsesNotifications=true
 MimeType=audio/*;video/*;
 EOF
-    
+
+    for size in 16 32 48 64 128 256; do
+        install -dm755 "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps"
+        magick "assets/images/logo/logo_blue_big_abs.png" -resize ${size}x${size} \
+            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$_pkgname.png"
+    done
+
     install -Dm644 "assets/images/logo/logo_blue_big_abs.png" \
-        "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
-    
+        "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+
+    install -dm755 "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+    cp "assets/images/logo/logo_blue_big_abs.png" \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.png"
+
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
