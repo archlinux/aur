@@ -1,0 +1,27 @@
+pkgbase = qucs-rflayout
+	pkgdesc = Export Qucs RF schematics to KiCad layouts & OpenEMS scripts
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/thomaslepoix/Qucs-RFlayout
+	arch = x86_64
+	license = GPL-3.0-only
+	checkdepends = catch2
+	checkdepends = lcov
+	makedepends = cmake
+	makedepends = man-db
+	makedepends = mesa
+	makedepends = qt6-tools
+	makedepends = texlive-meta
+	makedepends = ttf-lato
+	makedepends = gzip
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	optdepends = kicad: Electronic schematic and printed circuit board (PCB) design tools
+	optdepends = qucs-s: Qucs-S provides GUI for different circuit simulation kernels.
+	provides = qucs-rflayout
+	conflicts = qucs-rflayout
+	source = Qucs-RFlayout-2.1.2.tar.gz::https://github.com/thomaslepoix/Qucs-RFlayout/archive/refs/tags/2.1.2.tar.gz
+	sha256sums = 752ee3e4e2d822174a0dbc49d6b5db55023f663e2d6e824905b1f64c44decc4b
+
+pkgname = qucs-rflayout
