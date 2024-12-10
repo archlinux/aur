@@ -1,0 +1,16 @@
+pkgbase = cigale
+	pkgdesc = A timesheet generator based on system activity traces
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/emmanueltouzery/cigale
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = gtk3
+	makedepends = adwaita-icon-theme
+	depends = glibc
+	depends = gcc-libs
+	source = cigale-0.5.4.tar.gz::https://github.com/emmanueltouzery/cigale/archive/refs/tags/v0.5.4.tar.gz
+	b2sums = 1c22a1e2ed9d6b113727099be9510f0f842a203e82457361cbf247e7c69c20270d1c6fc09e7c3c4c28fcdf7e3529d2bb27dd2b96e9e8960e8e2de2a305736bb5
+
+pkgname = cigale

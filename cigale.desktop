@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Cigale
+Comment=A timesheet generator based on system activity traces
+Exec=/usr/bin/cigale
+Icon=com.github.emmanueltouzery.cigale
+Categories=Utility;

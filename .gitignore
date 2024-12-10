@@ -1,0 +1,16 @@
+# Ignore built package files
+*.pkg.tar.zst
+
+# Ignore source tarballs
+*.tar.gz
+
+# Ignore build and source directories
+src/
+pkg/
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.swp
+*~
