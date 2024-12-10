@@ -1,0 +1,16 @@
+pkgbase = clipboard-sync-git
+	pkgdesc = Synchronizes the clipboard across multiple X11 and wayland instances running on the same machine
+	pkgver = 0.2.0.r18.943e49e
+	pkgrel = 1
+	url = https://github.com/dnut/clipboard-sync
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	depends = libxcb
+	provides = clipboard-sync
+	conflicts = clipboard-sync
+	source = clipboard-sync::git+https://github.com/dnut/clipboard-sync
+	sha256sums = SKIP
+
+pkgname = clipboard-sync-git
