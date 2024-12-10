@@ -1,9 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=easyedit-bin
 _pkgname=EasyEdit
-pkgver=1.3.4
+pkgver=1.3.5
 _electronversion=33
-_nodeversion=20
 pkgrel=1
 pkgdesc="An easy markdown editor that allows you to write MarkDown (MD) and preview it in real-time. You can save, load .md files and export to PDF.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -27,9 +26,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${url}/releases/download/$
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-amd64.deb")
 sha256sums=('71385eb5d7dd9bd556196b805ff27e72710a85f9c31c230eb503b6d68de91596'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('0f81970cba2a4c8ea8b166bb37b723a4ec36670de6769e025966d166b75b339b')
-sha256sums_armv7h=('b2060edc0b6fcdaa99f356d1a8328695aebd9ab9f47677787b8d2184cc1f4b2e')
-sha256sums_x86_64=('f8db3ed5b11829a0f0b79408dc8aa5c1c97448c2fcc094d91835d6d9d4c388f4')
+sha256sums_aarch64=('f8dca09d656b2756f87d93b7ad893da8ffc7ed0d8ee41162e73c5d26f1d9db5c')
+sha256sums_armv7h=('64f59aea87db20b5ec7aaec31b41a275ceca657a0431cfe0232dc022fbcf270d')
+sha256sums_x86_64=('eabab2cb12929b17195a6626be83220107e2319643cda789b593d648110ab331')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
