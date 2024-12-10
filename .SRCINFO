@@ -1,7 +1,7 @@
 pkgbase = xrt-npu-git
 	pkgdesc = Xilinx runtime configured for AMD NPUs
 	pkgver = r8007.42e5fb6f57
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xilinx.github.io/XRT/master/html
 	arch = x86_64
 	license = Apache
@@ -39,7 +39,7 @@ pkgbase = xrt-npu-git
 	depends = pybind11
 	depends = xilinx-u280-gen3x16-xdma-base
 	optdepends = linux-mainline-um5606: Linux kernel that can use the XDNA drivers
-	optdepends = amdxdna-driver: Driver that coencides with these libaries
+	optdepends = amdxdna-driver: Driver that coencides with these libraries
 	provides = xrt
 	conflicts = xrt
 	options = !debug

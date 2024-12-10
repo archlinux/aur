@@ -4,7 +4,7 @@
 _name=xrt
 pkgbase=$_name-npu-git
 pkgver=r8007.42e5fb6f57
-pkgrel=1
+pkgrel=2
 pkgdesc="Xilinx runtime configured for AMD NPUs"
 arch=(x86_64)
 url='https://xilinx.github.io/XRT/master/html'
@@ -49,7 +49,7 @@ makedepends=(
 )
 optdepends=(
 	'linux-mainline-um5606: Linux kernel that can use the XDNA drivers'
-	'amdxdna-driver: Driver that coencides with these libaries'
+	'amdxdna-driver: Driver that coencides with these libraries'
 )
 provides=($_name)
 conflicts=($_name)
