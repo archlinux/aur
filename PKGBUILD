@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com
 pkgname=vtex2
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="A VTF converter and editor"
 arch=('x86_64')
 url="https://github.com/StrataSource/vtex2"
@@ -11,7 +11,7 @@ makedepends=('cmake' 'git' 'qt6-svg' 'ninja')
 source=("git+$url.git#tag=v${pkgver}"
 	"vtflib::git+https://github.com/StrataSource/VTFLib.git"
 	"fmtlib::git+https://github.com/fmtlib/fmt.git")
-sha256sums=('ce8d40d1175ba4aeabd60d4efd7c675d3621031fccd698c27cdee913c78718dc'
+sha256sums=('c5e131e3d710b7d7d1b7d28e69d88f9266f92ae182f2ef67836f3fee1e1b5dd8'
             'SKIP'
             'SKIP')
 
