@@ -1,37 +1,27 @@
 # Maintainer: aarto <aarto@aur.archlinux.org>
 # Contributor: Kimiblock
 
-pkgname=librewolf-extension-ublock-origin-bin
+_pkgname=librewolf-extension-ublock-origin
+pkgname=$_pkgname-bin
+_id=uBlock0@raymondhill.net
 url="https://github.com/gorhill/uBlock"
-pkgver=uBOLite_1.0.23.8155
+pkgver=1.61.2
 pkgrel=1
-makedepends=("jq" "curl")
 pkgdesc="uBlock Origin - An efficient blocker for Librewolf. Fast and lean."
 arch=('any')
 license=('GPL-3.0-only')
-_fileName='uBlock0@raymondhill.net.xpi'
-depends=("firefox-ublock-origin")
-provides=('librewolf-ublock-origin' 'librewolf-extension-ublock-origin')
-conflicts=('librewolf-ublock-origin')
+depends=('librewolf')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+groups=('librewolf-addons')
+noextract=("$_id.xpi")
+_number=4391011
+source=("$_id.xpi::https://addons.mozilla.org/firefox/downloads/file/$_number/ublock_origin-$pkgver.xpi"
+        "https://raw.githubusercontent.com/gorhill/uBlock/refs/tags/$pkgver/LICENSE.txt")
+b2sums=('7024514a55ac051634fecbb2cb67362e1fcf55895cd3ab25db38eedd41e8f4e8ab7786298fb663d525302af3293486384b77e357d06f162b6fd5f988bb65994d'
+        '70878e15940b01e24866195829871711509ab49d8aca2ff7bac1d0fade060e409b10c348cc45f290f4d9c32105439fff847d571102ba6688d5b6aa02bd91bc42')
 
-function pkgver(){
-	_rawVersion=$(curl -s https://api.github.com/repos/gorhill/uBlock/releases/latest | jq .tag_name)
-	echo ${_rawVersion} | cut -c 2-$(expr ${#_rawVersion} - 1)
-}
-
-function package(){
-	mkdir -p "${pkgdir}"/usr/lib/librewolf/browser/extensions
-	ln -s /usr/lib/firefox/browser/extensions/uBlock0@raymondhill.net.xpi "${pkgdir}/usr/lib/librewolf/browser/extensions"
-}
-
-function _info() {
-	if [ -f /usr/bin/pamac ]; then
-		echo "  ==> [Info]: $@"
-	else
-		all_off="$(tput sgr0)"
-		bold="${all_off}$(tput bold)"
-		blue="${bold}$(tput setaf 4)"
-		yellow="${bold}$(tput setaf 3)"
-		printf "${blue}==>${yellow} [Info]:${bold} $1${all_off}\n"
-	fi
+package() {
+  install -Dm644 $_id.xpi "$pkgdir/usr/lib/librewolf/browser/extensions/$_id.xpi"
+  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$_pkgname-bin"
 }

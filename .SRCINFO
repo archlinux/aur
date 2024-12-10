@@ -1,15 +1,18 @@
 pkgbase = librewolf-extension-ublock-origin-bin
-	pkgdesc = uBlock Origin - An efficient blocker. Fast and lean.
-	pkgver = uBOLite_1.0.23.8155
+	pkgdesc = uBlock Origin - An efficient blocker for Librewolf. Fast and lean.
+	pkgver = 1.61.2
 	pkgrel = 1
 	url = https://github.com/gorhill/uBlock
 	arch = any
-	license = LGPL3
-	makedepends = jq
-	makedepends = curl
-	depends = firefox-ublock-origin
-	provides = librewolf-ublock-origin
+	groups = librewolf-addons
+	license = GPL-3.0-only
+	depends = librewolf
 	provides = librewolf-extension-ublock-origin
-	conflicts = librewolf-ublock-origin
+	conflicts = librewolf-extension-ublock-origin
+	noextract = uBlock0@raymondhill.net.xpi
+	source = uBlock0@raymondhill.net.xpi::https://addons.mozilla.org/firefox/downloads/file/4391011/ublock_origin-1.61.2.xpi
+	source = https://raw.githubusercontent.com/gorhill/uBlock/refs/tags/1.61.2/LICENSE.txt
+	b2sums = 7024514a55ac051634fecbb2cb67362e1fcf55895cd3ab25db38eedd41e8f4e8ab7786298fb663d525302af3293486384b77e357d06f162b6fd5f988bb65994d
+	b2sums = 70878e15940b01e24866195829871711509ab49d8aca2ff7bac1d0fade060e409b10c348cc45f290f4d9c32105439fff847d571102ba6688d5b6aa02bd91bc42
 
 pkgname = librewolf-extension-ublock-origin-bin
