@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# script: iptvorg-epg (https://github.com/iptv-org/epg)
-# author: Nikos Toutountzoglou, nikos.toutou@protonmail.com
-# rev.date: 20/11/2024
+# Script: iptvorg-epg (https://github.com/iptv-org/epg)
+# Author: Nikos Toutountzoglou, nikos.toutou@protonmail.com
+# Revision Date: 10/12/2024
 
 # Variables
 EPG_USR=$(whoami)
-EPG_EXE=$(basename $0)
+EPG_EXE=$(basename "$0")
 EPG_USR_HOME=$(getent passwd "$EPG_USR" | cut -d: -f6)
 EPG_SOURCE='/usr/share/iptvorg-epg'
 EPG_SITESTAT='https://raw.githubusercontent.com/iptv-org/epg/master/SITES.md'
@@ -14,139 +14,123 @@ EPG_CMD="npm run grab -- "
 EPG_VER="2023.12.1"
 
 # Functions
+
+# Check for required packages
 checkReq() {
-	# Check all requirements
-	local packages=(libxml2 nodejs npm)
-	for p in ${packages[@]}; do
-		if ! pacman -Qs ${p} >/dev/null; then
-			printf "'${p}' package is not installed. Exiting.\n"
+	local packages=(libxml2 nodejs npm sudo)
+	for p in "${packages[@]}"; do
+		if ! pacman -Qs "$p" >/dev/null; then
+			printf "Error: '%s' package is not installed. Please install it and try again.\n" "$p"
 			exit 1
 		fi
 	done
 }
 
+# Ensure configuration directory exists
 checkDir() {
-	# Check if home directory variable is defined
-	EPG_CFGDIR=$(realpath ${custom_dir} 2>/dev/null)
-	if [ -z "$EPG_CFGDIR" ]; then
-		printf "\nHome directory of epg application not defined, use [-d, --dir] <path> option.\nExample usage: $EPG_EXE -d <path> -s <site> --days <days> -o <output.xml>\nUse [-h|--help] to display usage, [-ps] to display available epg sites.\n"
+	EPG_CFGDIR=$(realpath "${custom_dir}" 2>/dev/null)
+	if [[ -z "$EPG_CFGDIR" ]]; then
+		printf "Error: Home directory of epg application not defined.\n"
+		printf "Usage: %s -d <path> -s <site> --days <days> -o <output.xml>\n" "$EPG_EXE"
+		printf "Run '%s --help' for more information.\n" "$EPG_EXE"
 		exit 1
 	fi
 
-	# Create HOMEDIR directory if it doesn't exist
-	if [ ! -d "$EPG_CFGDIR" ]; then
-		printf ":: '$EPG_CFGDIR' is missing, creating new directory.\n"
-
-		# Normal copy from /usr/share/iptvorg-epg
+	if [[ ! -d "$EPG_CFGDIR" ]]; then
+		printf "Notice: Directory '%s' not found. Creating...\n" "$EPG_CFGDIR"
 		mkdir -p "$EPG_CFGDIR"
 		cp "$EPG_SOURCE/my.channels.xml" "$EPG_CFGDIR"
 		bsdtar --strip-components=1 -xzf "$EPG_SOURCE/epg-$EPG_VER.tgz" -C "$EPG_CFGDIR"
 	fi
 }
 
+# Update the EPG data
 updateEpg() {
-	# Input variables
-	# Both -c and -s defined
-	if [ $channels_on = 1 -a $site_on = 1 ]; then
-		printf "Cannot use expression [-c|--channels] and [-s|--site] at the same time, use one of them.\n"
+	# Input validation
+	if [[ "$channels_on" -eq 1 && "$site_on" -eq 1 ]]; then
+		printf "Error: Cannot use both [-c|--channels] and [-s|--site] options simultaneously.\n"
+		exit 1
+	fi
+	if [[ "$channels_on" -eq 0 && "$site_on" -eq 0 ]]; then
+		printf "Error: Either [-c|--channels] or [-s|--site] must be specified.\n"
 		exit 1
 	fi
 
-	# No -c and -s defined
-	if [ $channels_on = 0 -a $site_on = 0 ]; then
-		printf "Missing expression [-c|--channels] or [-s|--site], use one of them.\n"
+	# Prepare parameters
+	local mychannel="" mysite="" mydays=""
+	[[ "$channels_on" -eq 1 ]] && mychannel="--channels=$EPG_CCH"
+	[[ "$site_on" -eq 1 ]] && mysite="--site=$EPG_SITE"
+	[[ "$days_on" -eq 1 ]] && mydays="--days=$EPG_DAYS"
+
+	# Validate output file extension
+	if [[ "${EPG_OUTPUT##*.}" != "xml" ]]; then
+		printf "Error: Output file must have '.xml' extension.\n"
 		exit 1
 	fi
 
-	# -c defined
-	if [ $channels_on = 1 ]; then
-		mychannel="--channels=$EPG_CCH "
-	else
-		mychannel=""
-	fi
+	# Run the command
+	cd "$EPG_CFGDIR" || exit
+	sudo -u "$EPG_USR" $EPG_CMD $mysite $mychannel $mydays -o tmp_all.xml 2>/dev/null
 
-	# -s defined
-	if [ $site_on = 1 ]; then
-		mysite="--site=$EPG_SITE "
-	else
-		mysite=""
-	fi
-
-	# --days defined
-	if [ $days_on = 1 ]; then
-		mydays="--days=$EPG_DAYS "
-	else
-		mydays=""
-	fi
-
-	# Check -o file ending is '.xml'
-	if [[ ! ".$(echo "$EPG_OUTPUT" | awk -F. '{print $NF}')" == ".xml" ]]; then
-		printf "Wrong output file format detected, please use file ending '.xml'.\n"
+	if [[ ! -f "tmp_all.xml" ]]; then
+		printf "Error: Failed to create 'tmp_all.xml'.\n"
 		exit 1
 	fi
 
-	# Collect epg data in xml-format
-	cd "$EPG_CFGDIR"
-	sudo -u $EPG_USR $EPG_CMD $mysite $mychannel $mydays -o tmp_all.xml 2>/dev/null
+	# Format the XML and set ownership
+	xmllint --format tmp_all.xml >"$EPG_OUTPUT"
+	chown "$EPG_USR:$EPG_USR" "$EPG_OUTPUT"
 
-	# Exit if no output file is created
-	if [ ! -f "$EPG_CFGDIR/tmp_all.xml" ]; then
-		printf ":: Failed to create '$EPG_CFGDIR/$EPG_OUTPUT'.\n"
-		exit 1
+	# Optionally compress the output
+	if [[ "$gzip_on" -eq 1 ]]; then
+		bsdtar -a -cf "${EPG_OUTPUT}.gz" tmp_all.xml 2>/dev/null
+		printf "Notice: Created compressed file '%s.gz'.\n" "$EPG_OUTPUT"
 	fi
 
-	# Pretty format xml file
-	xmllint --format tmp_all.xml >$EPG_OUTPUT
-	chown $EPG_USR:$EPG_USR $EPG_OUTPUT
-
-	# --gzip defined
-	if [ $gzip_on = 1 ]; then
-		bsdtar -a -cf "$EPG_OUTPUT.gz" "$EPG_CFGDIR/tmp_all.xml" 2>/dev/null
-		printf ":: Created gzip file '$EPG_CFGDIR/$EPG_OUTPUT.gz'.\n"
-	fi
-
-	# Cleanup directory
-	rm -f "$EPG_CFGDIR/tmp_all.xml" 2>/dev/null
-
-	printf ":: Created epg-xml file '$EPG_CFGDIR/$EPG_OUTPUT'.\n"
+	# Cleanup temporary files
+	rm -f tmp_all.xml
+	printf "Notice: Created EPG file '%s'.\n" "$EPG_OUTPUT"
 }
 
+# Display help message
 helpMsg() {
-	printf 'Usage: iptvorg-epg [options], outputs default: "guide.xml"
+	cat <<-EOF
+		Usage: iptvorg-epg [options], outputs default: "guide.xml"
 
-Options:
-  -d, --dir <path>              Home directory of iptvorg-epg (suggestion: "epg")
-  -s, --site <name>             Name of the site to parse
-  -c, --channels <file>         File name of custom *.channels.xml file (example: "my.channels.xml")
-                                (location inside iptvorg-epg home directory)
-  -o, --output <file>           File name of output file (default: "guide.xml")
-                                (output location inside iptvorg-epg home directory)
-  --days <days>                 Override the number of days for which the program will be loaded
-                                (defaults to the value from the site config)
-  --gzip                        Create a compressed version of the guide as well (default: false)
-  -ps, --printsites             Show site name and status of all available sites
-  -h, --help                    Show help\n'
-
+		Options:
+		  -d, --dir <path>      Set home directory for iptvorg-epg (e.g., "epg")
+		  -s, --site <name>     Specify the site to parse
+		  -c, --channels <file> Specify custom *.channels.xml file (e.g., "my.channels.xml")
+		                        (file should be in the epg home directory)
+		  -o, --output <file>   Specify output file name (default: "guide.xml")
+		  --days <days>         Override the number of days for program data
+		  --gzip                Create a compressed version of the guide (default: false)
+		  -ps, --printsites     Display available EPG sites
+		  -h, --help            Display this help message
+	EOF
 	exit
 }
 
+# Print available sites
 printSite() {
-	curl -s $EPG_SITESTAT
+	curl -s "$EPG_SITESTAT"
 	exit
 }
 
-# While loop
-channels_on=0
-site_on=0
-output_on=0
-days_on=0
-gzip_on=0
+# Initialize counter for -d
+dir_count=0
 
 args=("$@")
 while [ $# -ne 0 ]; do
 	name="$1"
 	case "$name" in
 	-d | --dir)
+		# Increment the -d counter
+		((dir_count++))
+		if [[ $dir_count -gt 1 ]]; then
+			printf "Error: The -d or --dir option can only be used once.\n"
+			exit 1
+		fi
 		shift
 		custom_dir="$1"
 		;;
@@ -190,7 +174,7 @@ while [ $# -ne 0 ]; do
 	shift
 done
 
-# Run script
+# Main script
 checkReq
 checkDir
 updateEpg
