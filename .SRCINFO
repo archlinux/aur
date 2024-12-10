@@ -1,14 +1,14 @@
 pkgbase = prjtrellis-db-git
 	pkgdesc = Project Trellis (Lattice ECP5 bit-stream format) database
-	pkgver = r267.fdf4bf2
-	pkgrel = 1
+	pkgver = r329.4dda149
+	pkgrel = 2
 	url = https://github.com/YosysHQ/prjtrellis-db
 	arch = any
-	license = custom:CC0
+	license = CC0-1.0
 	makedepends = git
-	provides = prjtrellis-db
+	provides = prjtrellis-db=r329
 	conflicts = prjtrellis-db
 	source = git+https://github.com/YosysHQ/prjtrellis-db.git
-	sha512sums = SKIP
+	sha256sums = SKIP
 
 pkgname = prjtrellis-db-git

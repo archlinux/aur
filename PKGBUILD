@@ -1,34 +1,36 @@
-# Maintainer: Jan Samek <samekh@email.cz>
-# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer:
+# Contributor: Jan Samek <samekh@email.cz>
 
-_prj=trellis
-_targets="ECP5 MachXO2"
-_pkgname=prj$_prj-db
-pkgname=$_pkgname-git
-pkgver=r267.fdf4bf2
-pkgrel=1
+: ${_targets=ECP5 MachXO2}
+
+_pkgname="prjtrellis-db"
+pkgname="$_pkgname-git"
+pkgver=r329.4dda149
+pkgrel=2
 pkgdesc='Project Trellis (Lattice ECP5 bit-stream format) database'
+url="https://github.com/YosysHQ/prjtrellis-db"
+license=('CC0-1.0')
 arch=('any')
-url="https://github.com/YosysHQ/$_pkgname"
-license=('custom:CC0')
+
 makedepends=('git')
+
+_pkgsrc="$_pkgname"
 source=("git+$url.git")
-sha512sums=('SKIP')
-provides=('prjtrellis-db')
-conflicts=('prjtrellis-db')
+sha256sums=('SKIP')
+
+provides=("$_pkgname=${pkgver%%\.*}")
+conflicts=("$_pkgname")
 
 pkgver() {
-  cd $_pkgname
-
+  cd "$_pkgsrc"
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd $_pkgname
+  cd "$_pkgsrc"
 
-  install -dm 755 "$pkgdir"/usr/share/$_prj/database
-  cp -r --no-preserve=ownership devices.json $_targets "$pkgdir"/usr/share/$_prj/database/
+  install -dm 755 "$pkgdir"/usr/share/trellis/database
+  cp -r --no-preserve=ownership devices.json $_targets "$pkgdir"/usr/share/trellis/database/
 
-  install -Dm 644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
