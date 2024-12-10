@@ -2,8 +2,8 @@
 
 pkgname=python-pycose
 _name="${pkgname#python-}"
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A Python implementation of the COSE specification described in RFC 8152"
 arch=(any)
 url="https://github.com/TimothyClaeys/pycose"
@@ -12,7 +12,7 @@ depends=(python python-cbor2 python-cryptography python-ecdsa python-attrs pytho
 makedepends=(python-setuptools)
 checkdepends=(python-pytest)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('af324408e99abec1101060d0ace775695ea805840eb523b98d0ea25611613010')  # Official
+sha256sums=('702f73c7d9b865052862407e768515aca1d7c6fb3df3c90d169fecf913ae071f')  # Official
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
