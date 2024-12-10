@@ -11,7 +11,7 @@ pkgname=(gmic-pre-gimp3
 pkgver=3.5.0
 _pkgver=prerelease
 __pkgver=3.5.0_pre
-pkgrel=4
+pkgrel=5
 pkgdesc="Prerelease G-MIC for GIMP3"
 arch=(x86_64)
 url='https://gmic.eu/'
@@ -94,7 +94,7 @@ package_gimp-plugin-gmic-pre-gimp3() {
            gimp
            glib2
            glibc
-           gmic-pre
+           gmic-pre-gimp3
            libx11
            qt6-base
            zlib)

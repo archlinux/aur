@@ -1,7 +1,7 @@
 pkgbase = gmic-pre
 	pkgdesc = Prerelease G-MIC for GIMP3
 	pkgver = 3.5.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gmic.eu/
 	arch = x86_64
 	license = CECILL-C
@@ -48,7 +48,7 @@ pkgname = gimp-plugin-gmic-pre-gimp3
 	depends = gimp
 	depends = glib2
 	depends = glibc
-	depends = gmic-pre
+	depends = gmic-pre-gimp3
 	depends = libx11
 	depends = qt6-base
 	depends = zlib
