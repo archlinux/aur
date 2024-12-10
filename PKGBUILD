@@ -2,7 +2,7 @@
 pkgname=thorium-reader-git
 _pkgname="Thorium Reader"
 _appname="EDRLab.${_pkgname// /}"
-pkgver=3.0.0.r115.gb643725
+pkgver=3.0.0.r170.ge1828d1
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -41,7 +41,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -72,6 +72,9 @@ build() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install --no-audit --no-fund --prefer-offline
     NODE_ENV=development    npm run clean
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
     NODE_ENV=development    npm run package:build
     NODE_ENV=production     npm exec -c "cross-env DEBUG=* CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --linux dir -c.electronDist=${electronDist}"
 }
