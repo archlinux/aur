@@ -3,15 +3,15 @@
 prj='ghostmirror'
 pkgname=($prj)
 pkgdesc='alternative to reflector, writed in C with true check mirror status and mirror speed.'
-pkgver='0.8.4'
+pkgver='0.9.0'
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/vbextreme/${prj}.git"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/vbextreme/${prj}/archive/v${pkgver}.tar.gz")
 license=('GPL3')
 sha256sums=('SKIP')
-makedepends=('meson')
-depends=('curl' 'zlib')
+makedepends=('meson' 'ninja')
+depends=('curl' 'zlib' 'systemd-libs')
 
 prepare() {
     cd "${prj}-${pkgver}"
