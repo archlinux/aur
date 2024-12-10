@@ -1,7 +1,7 @@
 # Maintainer: root.nix.dk
 pkgname='udev-usb-sync'
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Fine tune write cache and impose buffer limits when USB storage device is plugged'
 arch=('any')
 url='https://codeberg.org/wonky/udev-usb-sync'
@@ -9,16 +9,13 @@ license=('MIT')
 depends=('hdparm' 'bc')
 backup=("etc/${pkgname}/${pkgname}.conf")
 install="${pkgname}.install"
-source=('99-usb-sync.rules' 'udev-usb-sync' 'udev-usb-sync.conf')
-sha256sums=('b1463dc2f102b31d16b8e9b3ba39356bdf6ec791b6b2034f3ded5553f4c31f8a'
-            '741fbc305c151c88dad3bdb2203289855c7dc2a2a7d581c8e325dd8ed286c6dc'
-            'ec26baede73e94f9cfab77cd5aa6e0ffebcc413ff657a4e98eae6c9e2145655e')
+source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/wonky/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('65af1d93dba9bab958643ec40c64835166ca27f4659d532dc7f3295b31ad51b5')
 
 package() {
-    install -d -m755 "$pkgdir/etc/udev/rules.d"
-    install -d -m755 "$pkgdir/etc/$pkgname"
-    install -d -m755 "$pkgdir/usr/bin"
-    cp "${srcdir}/99-usb-sync.rules" "${pkgdir}/etc/udev/rules.d"
-    cp "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    cp "${srcdir}/${pkgname}.conf" "${pkgdir}/etc/${pkgname}"
+    cd "${pkgname}"
+    install -Dm755 99-usb-sync.rules  -t "$pkgdir/etc/udev/rules.d"
+    install -Dm755 udev-usb-sync.conf -t "$pkgdir/etc/udev-usb-sync"
+    install -Dm755 udev-usb-sync      -t "$pkgdir/usr/bin"
+    install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
