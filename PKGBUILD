@@ -1,10 +1,10 @@
 # Maintainer:  Jason Kercher <jkercher 43 at gmail dot com>
 
 pkgname=linuxcnc-git
-pkgver=2.9.3.r2206.g93e0b80715
-pkgrel=2
+pkgver=2.9.3.r2407.gb3ef606aa3
+pkgrel=1
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
-arch=('i686' 'x86_64')
+arch=($CARCH)
 license=('GPL-2.0-only')
 url="http://linuxcnc.org"
 depends=(
