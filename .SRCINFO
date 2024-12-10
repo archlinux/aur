@@ -1,6 +1,6 @@
 pkgbase = qianxin-browser-stable
 	pkgdesc = 奇安信可信浏览器国密开发者专版
-	pkgver = 1.0.45554.7
+	pkgver = 1.0.45746.7
 	pkgrel = 1
 	url = https://www.qianxin.com/product/detail/pid/333
 	arch = aarch64
@@ -19,10 +19,10 @@ pkgbase = qianxin-browser-stable
 	source = LICENSE.html
 	source = qianxin-browser-stable.sh
 	sha256sums = 368c8e1aff7ff8d7b5843e12222e58c6e43fee8aa8d65581b33d65ec48586a43
-	sha256sums = 6ffb95b6435970c0b1bfab1efd8979e5613a5ce2d10c4f2570dffd594e5b6ba6
-	source_aarch64 = qianxin-browser-stable-1.0.45554.7-aarch64.deb::https://dl.qianxin.com/c8a52014-99d3-57ff/45554/qaxbrowser-safe-stable_1.0.45554.7-1_arm64.deb
-	sha256sums_aarch64 = 11e817105094b4c589a0995e5cce33a6598f6b593bff6e3ceb7c0f27667d1c59
-	source_x86_64 = qianxin-browser-stable-1.0.45554.7-x86_64.deb::https://dl.qianxin.com/c8a52014-99d3-57ff/45554/qaxbrowser-safe-stable_1.0.45554.7-1_amd64.deb
-	sha256sums_x86_64 = 4724f522b0d7b99b4ce75aa0e0ffb5066410501f15d0a7e0093ea9f1d41dfb1a
+	sha256sums = 356a40c5edf98b24ab14c456f09ffe0e5e43f3110f344db52951dae52dbce592
+	source_aarch64 = qianxin-browser-stable-1.0.45746.7-aarch64.deb::http://dl.qianxin.com/c8a52014-99d3-57ff/%E5%9B%BD%E5%AF%86%E5%BC%80%E5%8F%91%E8%80%85%E4%B8%93%E7%89%88241118/[qsigned]qaxbrowser-safe-stable_1.0.45746.7-1_arm64.deb
+	sha256sums_aarch64 = e88d2828cdfab1f3c0ea08e7564c52877442f5fbbe8f70e6b0d71a2d9da2932b
+	source_x86_64 = qianxin-browser-stable-1.0.45746.7-x86_64.deb::http://dl.qianxin.com/c8a52014-99d3-57ff/%E5%9B%BD%E5%AF%86%E5%BC%80%E5%8F%91%E8%80%85%E4%B8%93%E7%89%88241118/[qsigned]qaxbrowser-safe-stable_1.0.45746.7-1_amd64.deb
+	sha256sums_x86_64 = ae0e74fc76d45efd62d28323cf18c4b2164d2e4c1ba334bdb39a706940d78a71
 
 pkgname = qianxin-browser-stable
