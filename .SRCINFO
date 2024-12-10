@@ -1,4 +1,4 @@
-pkgbase = gmic-pre-gimp3
+pkgbase = gmic-pre
 	pkgdesc = Prerelease G-MIC for GIMP3
 	pkgver = 3.5.0
 	pkgrel = 4

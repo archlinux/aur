@@ -5,7 +5,7 @@
 # Contributor: Archie <Mymaud@gmail.com>
 # Contributor: Calogero Scarnà <info@codelinsoft.it>
 
-pkgbase=gmic-pre-gimp3
+pkgbase=gmic-pre
 pkgname=(gmic-pre-gimp3
          gimp-plugin-gmic-pre-gimp3)
 pkgver=3.5.0
