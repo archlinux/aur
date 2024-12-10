@@ -1,20 +1,20 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="wstunnel-bin"
-pkgver=10.1.1
+pkgver=10.1.6
 pkgrel=1
 pkgdesc="Tunnel all your traffic over websocket protocol - Bypass firewalls/DPI"
 url="https://github.com/erebe/wstunnel"
-license=("custom")
+license=("BSD 3-Clause")
 arch=("x86_64" "aarch64" "armv7h")
 provides=("wstunnel")
 conflicts=("wstunnel" "haskell-wstunnel-bin" "nodejs-wstunnel")
 source_x86_64=("https://github.com/erebe/wstunnel/releases/download/v$pkgver/wstunnel_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/erebe/wstunnel/releases/download/v$pkgver/wstunnel_${pkgver}_linux_arm64.tar.gz")
 source_armv7h=("https://github.com/erebe/wstunnel/releases/download/v$pkgver/wstunnel_${pkgver}_linux_armv7.tar.gz")
-b2sums_x86_64=('81addbcd9ed7fafc0c1897a80ba51b38f867867b69a77509358d42c158c9b13b24f0f01a4534598dc3055a7d28250d44236da905f791e0e06c4a9678aa760cd7')
-b2sums_aarch64=('23a47e468e6a17f8f6fc87cb16aad811ea6f1b06815849a34b3e4e777771b28f27c05d10a27f863d95887c2e51fa2b999e203384c9cdd7a036e1582cd98f2461')
-b2sums_armv7h=('56ba7d78f7d5448582a170d39209933deeef3d6f048ce7752a7cf03f75102813ee750285dd319f48e6ca9203b788ea288f23180aded16d7ff187e9c07b12a7c1')
+b2sums_x86_64=('3e34dcf5219cd9704ab67b7e845e42a95a256de6d99d0fb6cca4ac23dea74195507982c8a236dcb0b65f006d4cc9ea224b1f87de3721952abc461a448b079db4')
+b2sums_aarch64=('e1512e40697a1eb50f334844bc16049b0a4c20a52f5511acc4b62d439710736e80ad9c8adc0f1069d9dfcb93f1e354a3581ccc684d21633be2ab405d6e61a130')
+b2sums_armv7h=('3af1225e1cdd8e1bbc3a88502679374f3d97261f70c0f8c6529cf5afbd3da4fc519168c8cd4b241137fd656fb8d51691376e0655458f1d1e9b2b4a733bf31f1c')
 options=("!strip")
 
 package(){
