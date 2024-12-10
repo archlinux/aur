@@ -1,0 +1,184 @@
+diff --git a/src/ui/download_list.cc b/src/ui/download_list.cc
+index f1d6af5..d98f2c9 100644
+--- a/src/ui/download_list.cc
++++ b/src/ui/download_list.cc
+@@ -400,11 +400,15 @@ DownloadList::setup_keys() {
+ 
+   m_uiArray[DISPLAY_LOG]->bindings()[KEY_LEFT] =
+     m_uiArray[DISPLAY_LOG]->bindings()['B' - '@'] =
+-    m_uiArray[DISPLAY_LOG]->bindings()[' '] = std::bind(&DownloadList::activate_display, this, DISPLAY_DOWNLOAD_LIST);
++    m_uiArray[DISPLAY_LOG]->bindings()[' '] =
++    m_uiArray[DISPLAY_LOG]->bindings()['h'] = std::bind(&DownloadList::activate_display, this, DISPLAY_DOWNLOAD_LIST);
++
++
+ 
+   m_uiArray[DISPLAY_DOWNLOAD_LIST]->bindings()[KEY_RIGHT] =
+-    m_uiArray[DISPLAY_DOWNLOAD_LIST]->bindings()['F' - '@'] = std::bind(&DownloadList::activate_display, this, DISPLAY_DOWNLOAD);
+-  m_uiArray[DISPLAY_DOWNLOAD_LIST]->bindings()['l'] = std::bind(&DownloadList::activate_display, this, DISPLAY_LOG);
++    m_uiArray[DISPLAY_DOWNLOAD_LIST]->bindings()['F' - '@'] =
++  m_uiArray[DISPLAY_DOWNLOAD_LIST]->bindings()['l'] = std::bind(&DownloadList::activate_display, this, DISPLAY_DOWNLOAD);
++  m_uiArray[DISPLAY_DOWNLOAD_LIST]->bindings()['L'] = std::bind(&DownloadList::activate_display, this, DISPLAY_LOG);
+ }
+ 
+ }
+diff --git a/src/ui/element_chunks_seen.cc b/src/ui/element_chunks_seen.cc
+index 687250e..0a59eb0 100644
+--- a/src/ui/element_chunks_seen.cc
++++ b/src/ui/element_chunks_seen.cc
+@@ -52,10 +52,14 @@ ElementChunksSeen::ElementChunksSeen(core::Download* d) :
+   m_window(NULL),
+   m_focus(0) {
+ 
+-  m_bindings[KEY_LEFT] = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
++  m_bindings[KEY_LEFT] = m_bindings['B' - '@'] =
++    m_bindings['h'] = std::bind(&slot_type::operator(), &m_slot_exit);
++
++  m_bindings[KEY_DOWN]  = m_bindings['N' - '@'] =
++    m_bindings['j']  = std::bind(&ElementChunksSeen::receive_next, this);
++  m_bindings[KEY_UP]    = m_bindings['P' - '@'] =
++    m_bindings['k']    = std::bind(&ElementChunksSeen::receive_prev, this);
+ 
+-  m_bindings[KEY_DOWN]  = m_bindings['N' - '@'] = std::bind(&ElementChunksSeen::receive_next, this);
+-  m_bindings[KEY_UP]    = m_bindings['P' - '@'] = std::bind(&ElementChunksSeen::receive_prev, this);
+   m_bindings[KEY_NPAGE] = std::bind(&ElementChunksSeen::receive_pagenext, this);
+   m_bindings[KEY_PPAGE] = std::bind(&ElementChunksSeen::receive_pageprev, this);
+ }
+diff --git a/src/ui/element_download_list.cc b/src/ui/element_download_list.cc
+index 90a769a..bd5f28a 100644
+--- a/src/ui/element_download_list.cc
++++ b/src/ui/element_download_list.cc
+@@ -97,8 +97,8 @@ ElementDownloadList::ElementDownloadList() :
+   m_bindings['9']           = std::bind(&ElementDownloadList::receive_change_view, this, "leeching");
+   m_bindings['0']           = std::bind(&ElementDownloadList::receive_change_view, this, "active");
+ 
+-  m_bindings[KEY_UP]   = m_bindings['P' - '@'] = std::bind(&ElementDownloadList::receive_prev, this);
+-  m_bindings[KEY_DOWN] = m_bindings['N' - '@'] = std::bind(&ElementDownloadList::receive_next, this);
++  m_bindings[KEY_UP]   = m_bindings['k'] = m_bindings['P' - '@'] = std::bind(&ElementDownloadList::receive_prev, this);
++  m_bindings[KEY_DOWN] = m_bindings['j'] = m_bindings['N' - '@'] = std::bind(&ElementDownloadList::receive_next, this);
+ 
+   m_bindings['L']           = std::bind(&ElementDownloadList::toggle_layout, this);
+ }
+diff --git a/src/ui/element_file_list.cc b/src/ui/element_file_list.cc
+index 270c215..a6e6a8f 100644
+--- a/src/ui/element_file_list.cc
++++ b/src/ui/element_file_list.cc
+@@ -63,8 +63,8 @@ ElementFileList::ElementFileList(core::Download* d) :
+   m_selected(iterator(d->download()->file_list()->begin())),
+   m_collapsed(false) {
+ 
+-  m_bindings[KEY_LEFT]  = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
+-  m_bindings[KEY_RIGHT] = m_bindings['F' - '@'] = std::bind(&ElementFileList::receive_select, this);
++  m_bindings[KEY_LEFT]  = m_bindings['h'] = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
++  m_bindings[KEY_RIGHT] = m_bindings['l'] = m_bindings['F' - '@'] = std::bind(&ElementFileList::receive_select, this);
+ 
+   m_bindings[' '] = std::bind(&ElementFileList::receive_priority, this);
+   m_bindings['*'] = std::bind(&ElementFileList::receive_change_all, this);
+@@ -72,8 +72,8 @@ ElementFileList::ElementFileList(core::Download* d) :
+   m_bindings[KEY_NPAGE] = std::bind(&ElementFileList::receive_pagenext, this);
+   m_bindings[KEY_PPAGE] = std::bind(&ElementFileList::receive_pageprev, this);
+ 
+-  m_bindings[KEY_DOWN] = m_bindings['N' - '@'] = std::bind(&ElementFileList::receive_next, this);
+-  m_bindings[KEY_UP]   = m_bindings['P' - '@'] = std::bind(&ElementFileList::receive_prev, this);
++  m_bindings[KEY_DOWN] = m_bindings['j'] = m_bindings['N' - '@'] = std::bind(&ElementFileList::receive_next, this);
++  m_bindings[KEY_UP]   = m_bindings['k'] = m_bindings['P' - '@'] = std::bind(&ElementFileList::receive_prev, this);
+ }
+ 
+ inline ElementText*
+diff --git a/src/ui/element_menu.cc b/src/ui/element_menu.cc
+index 079f469..b9a967d 100644
+--- a/src/ui/element_menu.cc
++++ b/src/ui/element_menu.cc
+@@ -72,11 +72,11 @@ ElementMenu::ElementMenu() :
+   m_entry(entry_invalid) {
+ 
+   // Move bindings into a function that defines default bindings.
+-  m_bindings[KEY_LEFT]  = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
+-  m_bindings[KEY_RIGHT] = m_bindings['F' - '@'] = std::bind(&ElementMenu::entry_select, this);
+-
+-  m_bindings[KEY_UP]   = m_bindings['P' - '@'] = std::bind(&ElementMenu::entry_prev, this);
+-  m_bindings[KEY_DOWN] = m_bindings['N' - '@'] = std::bind(&ElementMenu::entry_next, this);
++  m_bindings[KEY_LEFT]  = m_bindings['h'] = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
++  m_bindings[KEY_RIGHT] = m_bindings['l'] = m_bindings['F' - '@'] = std::bind(&ElementMenu::entry_select, this);
++ 
++  m_bindings[KEY_UP]   = m_bindings['k'] = m_bindings['P' - '@'] = std::bind(&ElementMenu::entry_prev, this);
++  m_bindings[KEY_DOWN] = m_bindings['j'] = m_bindings['N' - '@'] = std::bind(&ElementMenu::entry_next, this);
+ }
+ 
+ ElementMenu::~ElementMenu() {
+diff --git a/src/ui/element_peer_list.cc b/src/ui/element_peer_list.cc
+index 8e3ff09..3326508 100644
+--- a/src/ui/element_peer_list.cc
++++ b/src/ui/element_peer_list.cc
+@@ -76,14 +76,14 @@ ElementPeerList::ElementPeerList(core::Download* d) :
+ 
+   m_elementInfo->slot_exit(std::bind(&ElementPeerList::activate_display, this, DISPLAY_LIST));
+ 
+-  m_bindings['k']       = std::bind(&ElementPeerList::receive_disconnect_peer, this);
++  m_bindings['K']       = std::bind(&ElementPeerList::receive_disconnect_peer, this);
+   m_bindings['*']       = std::bind(&ElementPeerList::receive_snub_peer, this);
+   m_bindings['B']       = std::bind(&ElementPeerList::receive_ban_peer, this);
+-  m_bindings[KEY_LEFT]  = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
+-  m_bindings[KEY_RIGHT] = m_bindings['F' - '@'] = std::bind(&ElementPeerList::activate_display, this, DISPLAY_INFO);
++  m_bindings[KEY_LEFT]  = m_bindings['h'] = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
++  m_bindings[KEY_RIGHT] = m_bindings['l'] = m_bindings['F' - '@'] = std::bind(&ElementPeerList::activate_display, this, DISPLAY_INFO);
+ 
+-  m_bindings[KEY_UP]   = m_bindings['P' - '@'] = std::bind(&ElementPeerList::receive_prev, this);
+-  m_bindings[KEY_DOWN] = m_bindings['N' - '@'] = std::bind(&ElementPeerList::receive_next, this);
++  m_bindings[KEY_UP]   = m_bindings['k'] = m_bindings['P' - '@'] = std::bind(&ElementPeerList::receive_prev, this);
++  m_bindings[KEY_DOWN] = m_bindings['j'] = m_bindings['N' - '@'] = std::bind(&ElementPeerList::receive_next, this);
+ }
+ 
+ ElementPeerList::~ElementPeerList() {
+diff --git a/src/ui/element_text.cc b/src/ui/element_text.cc
+index f1f3dea..ba8529d 100644
+--- a/src/ui/element_text.cc
++++ b/src/ui/element_text.cc
+@@ -54,7 +54,8 @@ ElementText::ElementText(rpc::target_type target) :
+   m_columnWidth(0) {
+ 
+   // Move bindings into a function that defines default bindings.
+-  m_bindings[KEY_LEFT] = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
++  m_bindings[KEY_LEFT] = m_bindings['h'] = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
++
+ 
+ //   m_bindings[KEY_UP]    = std::bind(this, &ElementText::entry_prev);
+ //   m_bindings[KEY_DOWN]  = std::bind(this, &ElementText::entry_next);
+diff --git a/src/ui/element_tracker_list.cc b/src/ui/element_tracker_list.cc
+index c048165..16590da 100644
+--- a/src/ui/element_tracker_list.cc
++++ b/src/ui/element_tracker_list.cc
+@@ -54,13 +54,13 @@ ElementTrackerList::ElementTrackerList(core::Download* d) :
+   m_window(NULL),
+   m_focus(0) {
+ 
+-  m_bindings[KEY_LEFT] = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
++  m_bindings[KEY_LEFT] = m_bindings['h'] = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
+ 
+   m_bindings[' ']      = std::bind(&ElementTrackerList::receive_cycle_group, this);
+   m_bindings['*']      = std::bind(&ElementTrackerList::receive_disable, this);
+ 
+-  m_bindings[KEY_DOWN] = m_bindings['N' - '@'] = std::bind(&ElementTrackerList::receive_next, this);
+-  m_bindings[KEY_UP]   = m_bindings['P' - '@'] = std::bind(&ElementTrackerList::receive_prev, this);
++  m_bindings[KEY_DOWN] = m_bindings['j'] = m_bindings['N' - '@'] = std::bind(&ElementTrackerList::receive_next, this);
++  m_bindings[KEY_UP]   = m_bindings['k'] = m_bindings['P' - '@'] = std::bind(&ElementTrackerList::receive_prev, this);
+ }
+ 
+ void
+diff --git a/src/ui/element_transfer_list.cc b/src/ui/element_transfer_list.cc
+index cd0ae55..6618f1b 100644
+--- a/src/ui/element_transfer_list.cc
++++ b/src/ui/element_transfer_list.cc
+@@ -52,10 +52,10 @@ ElementTransferList::ElementTransferList(core::Download* d) :
+   m_window(NULL),
+   m_focus(0) {
+ 
+-  m_bindings[KEY_LEFT] = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
++  m_bindings[KEY_LEFT] = m_bindings['h'] = m_bindings['B' - '@'] = std::bind(&slot_type::operator(), &m_slot_exit);
+ 
+-  m_bindings[KEY_DOWN]  = std::bind(&ElementTransferList::receive_next, this);
+-  m_bindings[KEY_UP]    = std::bind(&ElementTransferList::receive_prev, this);
++  m_bindings[KEY_DOWN]  = m_bindings['j'] = std::bind(&ElementTransferList::receive_next, this);
++  m_bindings[KEY_UP]    = m_bindings['k'] = std::bind(&ElementTransferList::receive_prev, this);
+   m_bindings[KEY_NPAGE] = std::bind(&ElementTransferList::receive_pagenext, this);
+   m_bindings[KEY_PPAGE] = std::bind(&ElementTransferList::receive_pageprev, this);
+ }
