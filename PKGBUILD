@@ -11,7 +11,7 @@
 _basename=coccinelle
 pkgname=$_basename-git
 pkgver=1.3.0.r28.gff57802
-pkgrel=1
+pkgrel=2
 pkgdesc="C source code matching and transformation engine"
 arch=('x86_64')
 url="https://coccinelle.lip6.fr"
@@ -43,6 +43,8 @@ source=(
 b2sums=('SKIP'
         'be6b5bf866c14a5f0e95bd11472563292a37331d2a81b2e52f65bac6a635c5a48293de6bbabe63e9b63e7fb3fefc4083229bcf961b07c53f13796d8dc061f290')
 options=('!strip')
+provides=($_basename)
+conflicts=($_basename)
 
 pkgver() {
     cd $_basename
