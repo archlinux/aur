@@ -14,7 +14,7 @@ _pkgname=libmilter
 pkgname=libmilter-sharedlib
 pkgbase="${pkgname}"
 pkgver=8.18.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Implementation of the sendmail Mail Filter API'
 url='https://www.proofpoint.com/us/sendmail-open-source'
 arch=('x86_64')
@@ -51,7 +51,7 @@ prepare() {
   sed -i "s/@@LDOPTS@@/${LDFLAGS}/g" devtools/Site/site.config.m4
 
   # Files for libmilter shared object (.so)
-  patch -p1 -i ../Patch06-Build-shared-object.patch
+  patch -p1 -i ../Patch01-Build-shared-object.patch
   chmod +x libsharedmilter/Build
 }
 

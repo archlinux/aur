@@ -1,7 +1,7 @@
 pkgbase = libmilter-sharedlib
 	pkgdesc = Implementation of the sendmail Mail Filter API
 	pkgver = 8.18.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.proofpoint.com/us/sendmail-open-source
 	arch = x86_64
 	license = Sendmail
