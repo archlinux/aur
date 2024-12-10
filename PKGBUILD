@@ -1,13 +1,13 @@
-# Maintainer: Stella <jens300304 at gmail dot com>
 # Maintainer: bemxio <bemxiov at protonmail dot com>
+# Contributor: Stella <jens300304 at gmail dot com>
 
 pkgname=python-osrparse
 _name=${pkgname#python-}
 
 pkgdesc="Parser for .osr (osu! replays) file format"
 
-pkgver=7.0.0
-pkgrel=3
+pkgver=7.0.1
+pkgrel=1
 
 arch=(any)
 
@@ -18,7 +18,7 @@ depends=(python)
 makedepends=(python-build python-installer python-wheel)
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=("51353e97c7e3e45a7bcee6cc4be61860")
+md5sums=("e4fb884710ceb253028708fea9fc5761")
 
 build() {
 	# move to the source directory
@@ -27,14 +27,6 @@ build() {
 	# build the package
 	python -m build --wheel --no-isolation
 }
-
-#check() {
-#    # move to the source directory
-#    cd "${_name}-${pkgver}"
-#
-#    # run all tests
-#    python -m pytest
-#}
 
 package() {
 	# move to the source directory

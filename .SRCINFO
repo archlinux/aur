@@ -1,7 +1,7 @@
 pkgbase = python-osrparse
 	pkgdesc = Parser for .osr (osu! replays) file format
-	pkgver = 7.0.0
-	pkgrel = 3
+	pkgver = 7.0.1
+	pkgrel = 1
 	url = https://pypi.org/project/osrparse/
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = python-osrparse
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/o/osrparse/osrparse-7.0.0.tar.gz
-	md5sums = 51353e97c7e3e45a7bcee6cc4be61860
+	source = https://files.pythonhosted.org/packages/source/o/osrparse/osrparse-7.0.1.tar.gz
+	md5sums = e4fb884710ceb253028708fea9fc5761
 
 pkgname = python-osrparse
