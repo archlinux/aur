@@ -1,7 +1,7 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
 pkgver=1.7.2
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Shadow Of The Wyrm is a single player, traditional roguelike by Julian Day."
 arch=('x86_64')
@@ -25,9 +25,14 @@ validpgpkeys=('SKIP')
 build() {
     cd shadow-of-the-wyrm
     sed -i "1i #include <boost/filesystem/directory.hpp>" engine/source/LogFiles.cpp
+    # fix premake file to work with premake5
+    sed -i '127s/.*/filter "configurations:Debug"/' premake4.lua
+    sed -i '133s/.*/filter "configurations:CursesDebug"/' premake4.lua
+    sed -i '139s/.*/filter "configurations:Release"/' premake4.lua
+    sed -i '159s/.*/filter "configurations:CursesRelease"/' premake4.lua
     # git checkout develop
     premake5 --lua_include=/usr/include/lua5.1 --lua_link=lua5.1 gmake
-    make config=release
+    make -j config=release
 }
 
 package() {
