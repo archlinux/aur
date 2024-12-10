@@ -1,0 +1,23 @@
+pkgbase = nunicode
+	pkgver = 1.11
+	pkgrel = 1
+	url = https://bitbucket.org/alekseyt/nunicode
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = cmake
+	makedepends = sqlite3
+	source = nunicode::git+https://bitbucket.org/alekseyt/nunicode.git#tag=1.11
+	sha256sums = bfc9fccea72b52bf98d3f5cae52c0763360a70c589333f441c97a9e722ae6abd
+
+pkgname = libnu
+	pkgdesc = fast, small and portable Unicode library
+
+pkgname = libnusqlite3
+	pkgdesc = nunicode sqlite extension
