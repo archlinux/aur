@@ -1,7 +1,7 @@
 pkgbase = soh-bin
 	pkgdesc = Ship of Harkinian Reimplimentation engine
 	pkgver = 8.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/linuxbombay/soh
 	arch = i686
 	arch = x86_64
@@ -13,11 +13,13 @@ pkgbase = soh-bin
 	depends = sdl2_net
 	depends = libpng
 	depends = libzip
+	source = https://gitlab.com/linuxbombay/shipwright/shipwright/-/archive/1.0.0/shipwright-1.0.0.tar.bz2
+	sha256sums = 59dabfcc0744b2b727d704d4ec5fb63f68f874d2db3a5600495f7d6f3b75c6d4
 	source_i686 = soh-8.0.6-2-linux-i686.tar.xz::https://gitlab.com/linuxbombay/soh/binaries/8.0.6-2/-/raw/main/soh-linux-i686.tar.xz
-	sha256sums_i686 = c4588d0939d72cdb385896a568c57dc0dd16a4de01fe8d875a5241674c3eb6c2
+	sha256sums_i686 = a805c482ed59289fc8e7fc32da47bf356fe1e13412dc10af126c2fd783ca90d7
 	source_x86_64 = soh-8.0.6-2-linux-x64.tar.xz::https://gitlab.com/linuxbombay/soh/binaries/8.0.6-2/-/raw/main/soh-linux-x64.tar.xz
-	sha256sums_x86_64 = 20b1d1c844e0127c0562b3bec2a97e7f88b41c86784dcd60cb5f6720449d3adf
+	sha256sums_x86_64 = 569e9b76c523b08f3bc9b305fd0fb1709aa631ba2879779499244371b7326caa
 	source_aarch64 = soh-8.0.6-2-linux-arm64.tar.xz::https://gitlab.com/linuxbombay/soh/binaries/8.0.6-2/-/raw/main/soh-linux-arm64.tar.xz
-	sha256sums_aarch64 = 57bbab879625370ee0fe4f393fc6d31656e4571cb020b2f058882840a234c6f8
+	sha256sums_aarch64 = dfcc0d58cd282325efdc614ca78189daea178b27653cd1006641a60ccdbda54f
 
 pkgname = soh-bin
