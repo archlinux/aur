@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
-pkgver=3.1.14
+pkgver=3.1.15
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -33,7 +33,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('2446c01fe597d7c5782f3afbc6f5c0eba8e021f6acc14c47b36b953c6cbc6e8d'
+sha256sums=('25a31675c1a761fe05c3a449332f68497a2e72fc05d75739984c60626b4dcbe1'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -41,7 +41,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -80,6 +80,9 @@ build() {
     fi
     sed -i "/build:mobile/d;s/\"electron\": \"\([^\"]*\)\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install --no-frozen-lockfile
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}/app"
     NODE_ENV=production     pnpm run build
     cd "${srcdir}/${pkgname}-${pkgver}/kernel"
     go build --tags fts5 -o "../app/kernel-linux/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
