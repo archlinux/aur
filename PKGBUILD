@@ -1,4 +1,5 @@
-# Maintainer: Orestis Floros <orestisflo@gmail.com>
+# Maintainer: Evert Vorster <evorster@gmail.com> 
+# Contributor: Orestis Floros <orestisflo@gmail.com>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Pagnite <tymoteuszdolega at gmail dot com>
 # Contributor: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
@@ -6,9 +7,9 @@
 # Contributor: Deon Spengler <deon@spengler.co.za>
 _name=ddcutil
 pkgname="$_name-dev-git"
-pkgver=2.1.3.r0.g3e265eea
+pkgver=2.1.4.r856.g0bec868a
 pkgrel=1
-_branch='2.1.4-dev'
+_branch='2.2.0-dev'
 pkgdesc="Query and change Linux monitor settings using DDC/CI and USB."
 url="https://www.ddcutil.com"
 arch=('x86_64')
