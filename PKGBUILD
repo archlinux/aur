@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qucs-s-git
-pkgver=r5688.1a3ce17
-pkgrel=2
+pkgver=r5691.0fe4bc4
+pkgrel=1
 epoch=
 pkgdesc="Qucs-S provides GUI for different circuit simulation kernels. "
 arch=($CARCH)
@@ -50,7 +50,8 @@ optdepends=(
     'qucs: for Qucsator simulation backend'
     'freehdl: to permit digital circuit simulation'
     'asco: to enable circuit optimization'
-    'openvaf: A Next-Generation Verilog-A compiler https://openvaf.semimod.de/')
+    'openvaf: A Next-Generation Verilog-A compiler https://openvaf.semimod.de/'
+    'qucs-rflayout: Export Qucs RF schematics to KiCad layouts & OpenEMS scripts')
 checkdepends=()
 optdepends=()
 provides=(${pkgname%-git})
