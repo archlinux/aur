@@ -14,23 +14,16 @@ conflicts=("${pkgname%-git}")
 options=('!strip') # DepotDownloader gets broken without this
 source=(
   'git+https://github.com/Zagrios/bs-manager.git'
-  '01-disable-update-checker.patch'
   "${pkgname%-git}.desktop"
 )
 sha256sums=(
   'SKIP'
-  'e680f7ef587e8ca09b51d322fc0e1a613a08cc044c92e1b2a404b18384815a1e'
   'cb35ac15f308e0dca35aa2a948f3102eb96ec0c9faa1771b91d5a49309398874'
 )
 
 pkgver() {
     cd "${pkgname%-git}"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd "${pkgname%-git}"
-    patch -Np1 -i "../01-disable-update-checker.patch"
 }
 
 build() {
