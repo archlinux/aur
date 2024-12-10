@@ -11,7 +11,7 @@ pkgname=(gmic-pre
 pkgver=3.5.0
 _pkgver=prerelease
 __pkgver=3.5.0_pre
-pkgrel=2
+pkgrel=3
 pkgdesc="Prerelease G-MIC for GIMP3"
 arch=(x86_64)
 url='https://gmic.eu/'
@@ -26,7 +26,7 @@ makedepends=(cmake
              qt6-base
              qt6-tools)
 source=(https://gmic.eu/files/prerelease/gmic_$_pkgver.tar.gz)
-sha256sums=('SKIP')
+sha256sums=('07192137c1438134e568c002097e7404e05c807e04b59489231bb6d3605bdede')
 
 
 build() {
