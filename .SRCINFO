@@ -1,6 +1,6 @@
 pkgbase = rtpengine
 	pkgdesc = The Sipwise media proxy for Kamailio
-	pkgver = 13.0.1.5
+	pkgver = 13.0.1.6
 	pkgrel = 1
 	url = https://github.com/sipwise/rtpengine
 	arch = x86_64
@@ -42,11 +42,12 @@ pkgbase = rtpengine
 	depends = zlib
 	optdepends = libiptcdata: iptables management support
 	optdepends = mariadb-clients: media playback and call recording daemon support
+	options = emptydirs
 	backup = etc/rtpengine/rtpengine.conf
 	backup = etc/rtpengine/rtpengine-recording.conf
-	source = rtpengine-13.0.1.5.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr13.0.1.5.tar.gz
+	source = rtpengine-13.0.1.6.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr13.0.1.6.tar.gz
 	source = rtpengine.sysusers
-	sha256sums = 087c3c4279d3a6390138ff6a727ec65b216735522e71e2da1dcdd9f47fb55f1c
+	sha256sums = 5c5a233e755ab5673e5ed55d88b2b4434e0f665051597f20dc89740ddf2837ec
 	sha256sums = ea1580fbf7372309533e56d2a33714dc4d58311429ba60bf25b1bddee5ff7231
 
 pkgname = rtpengine

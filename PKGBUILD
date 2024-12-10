@@ -3,7 +3,7 @@
 # Contributor: robertfoster
 
 pkgname=rtpengine
-pkgver=13.0.1.5
+pkgver=13.0.1.6
 pkgrel=1
 pkgdesc='The Sipwise media proxy for Kamailio'
 url="https://github.com/sipwise/rtpengine"
@@ -43,42 +43,47 @@ depends=(
   'systemd-libs'
   'zlib'
 )
-optdepends=(
-  'libiptcdata: iptables management support'
-  'mariadb-clients: media playback and call recording daemon support'
-)
 makedepends=(
   'gperf'
   'pkgconf'
   'pandoc-cli'
 )
-backup=(
-  'etc/rtpengine/rtpengine.conf'
-  'etc/rtpengine/rtpengine-recording.conf'
-)
+optdepends=('libiptcdata: iptables management support'
+            'mariadb-clients: media playback and call recording daemon support')
+backup=('etc/rtpengine/rtpengine.conf'
+        'etc/rtpengine/rtpengine-recording.conf')
+options=('emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/mr${pkgver}.tar.gz"
         'rtpengine.sysusers')
-sha256sums=('087c3c4279d3a6390138ff6a727ec65b216735522e71e2da1dcdd9f47fb55f1c'
+sha256sums=('5c5a233e755ab5673e5ed55d88b2b4434e0f665051597f20dc89740ddf2837ec'
             'ea1580fbf7372309533e56d2a33714dc4d58311429ba60bf25b1bddee5ff7231')
 
 package() {
-  cd ${pkgname}-mr${pkgver}
+  cd "${pkgname}-mr${pkgver}"
 
-  # Install utils
-  make DESTDIR=${pkgdir} install
-  # Install daemon
-  install -Dvm644 -t ${pkgdir}/etc/${pkgname} etc/{rtpengine,rtpengine-recording}.conf
-  install -Dvm644 -t ${pkgdir}/usr/lib/systemd/system el/{rtpengine,rtpengine-recording}.service
-  # Uses /etc/sysconfig path
-  install -Dvm644 el/rtpengine.sysconfig ${pkgdir}/etc/sysconfig/rtpengine
-  install -Dvm644 el/rtpengine-recording.sysconfig ${pkgdir}/etc/sysconfig/rtpengine-recording
-  install -Dvm644 ${srcdir}/rtpengine.sysusers ${pkgdir}/usr/lib/sysusers.d/rtpengine.conf
-  # Create spool directory
-  install -dv ${pkgdir}/var/spool/rtpengine
-  # Install perl modules
-  install -Dvm644 -t ${pkgdir}/usr/share/perl5/vendor_perl/NGCP perl/NGCP/Rtpengine.pm
-  install -Dvm644 -t ${pkgdir}/usr/share/perl5/vendor_perl/NGCP/Rtpclient perl/NGCP/Rtpclient/*.pm
-  install -Dvm644 -t ${pkgdir}/usr/share/perl5/vendor_perl/NGCP/Rtpengine perl/NGCP/Rtpengine/*.pm
+  # Install core binaries and utilities
+  make DESTDIR="${pkgdir}" install
+
+  # Install configuration files
+  install -Dvm644 -t "${pkgdir}/etc/${pkgname}" etc/{rtpengine,rtpengine-recording}.conf
+
+  # Install systemd service files
+  install -Dvm644 -t "${pkgdir}/usr/lib/systemd/system" el/{rtpengine,rtpengine-recording}.service
+
+  # Install sysconfig files (for runtime environment variables)
+  install -Dvm644 el/rtpengine.sysconfig "${pkgdir}/etc/sysconfig/rtpengine"
+  install -Dvm644 el/rtpengine-recording.sysconfig "${pkgdir}/etc/sysconfig/rtpengine-recording"
+
+  # Install sysusers configuration
+  install -Dvm644 "${srcdir}/rtpengine.sysusers" "${pkgdir}/usr/lib/sysusers.d/rtpengine.conf"
+
+  # Create spool directory with appropriate permissions
+  install -dv -m750 "${pkgdir}/var/spool/rtpengine"
+
+  # Install Perl modules
+  install -Dvm644 -t "${pkgdir}/usr/share/perl5/vendor_perl/NGCP" perl/NGCP/Rtpengine.pm
+  install -Dvm644 -t "${pkgdir}/usr/share/perl5/vendor_perl/NGCP/Rtpclient" perl/NGCP/Rtpclient/*.pm
+  install -Dvm644 -t "${pkgdir}/usr/share/perl5/vendor_perl/NGCP/Rtpengine" perl/NGCP/Rtpengine/*.pm
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: set ts=2 sw=2 et:
