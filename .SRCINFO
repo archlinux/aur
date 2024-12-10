@@ -1,6 +1,6 @@
 pkgbase = docker-git
 	pkgdesc = Pack, ship and run any application as a lightweight container -git latest
-	pkgver = 27.4.0+r50723+g969d27df9
+	pkgver = 27.4.0+r50731+g9633556be
 	pkgrel = 1
 	url = https://www.docker.com/
 	arch = x86_64
