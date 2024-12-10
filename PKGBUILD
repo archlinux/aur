@@ -144,6 +144,7 @@ build() {
 
   cd ${srcdir}/mozc/src || exit
 
+  export USE_BAZEL_VERSION=7.4.1
   BAZEL_COPTS=$(echo ${CPPFLAGS} ${CFLAGS} | xargs -n1 |grep -v _FORTIFY_SOURCE | xargs -n1 echo "--copt")
   BAZEL_CXXOPTS=$(echo ${CPPFLAGS} ${CXXFLAGS} | xargs -n1 |grep -v _FORTIFY_SOURCE | xargs -n1 echo "--cxxopt")
   LDFLAGS="${LDFLAGS} -fuse-ld=mold"
