@@ -43,7 +43,7 @@ prepare() {
 }
 build() {
   cd $pkgname/syncscribble
-  DEBUB=0 make \
+  DEBUG=0 make \
     CFLAGS+="$(pkg-config --cflags sdl2) -DPUGIXML_NO_XPATH -DPUGIXML_NO_EXCEPTIONS -I/usr/include -Wno-error -Wno-format-security -DNDEBUG" \
     CXXFLAGS+="$(pkg-config --cflags sdl2) -DPUGIXML_NO_XPATH -DPUGIXML_NO_EXCEPTIONS -I/usr/include -Wno-error -Wno-format-security -DNDEBUG" \
     LDFLAGS+="$(pkg-config --libs sdl2)" \
