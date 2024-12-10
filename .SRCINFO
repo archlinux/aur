@@ -1,0 +1,21 @@
+pkgbase = dion
+	pkgdesc = Dion messenger
+	pkgver = 5.20.0
+	pkgrel = 1
+	url = https://dion.vc/
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = libnotify
+	depends = libnss_nis
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	optdepends = libappindicator-gtk3: for showing desktop notifications
+	source = https://static.dion.vc/desktop_app/dion_5.20.0_amd64.deb
+	sha512sums = 7fcb8d993ca0745d41df774bf8f3b97b5240e1c0da1166aeccaed8d5293328e9233be926b1ea245565fa75372e43dd403b9bf4870f9b3a20ad8cd29717f37c54
+
+pkgname = dion
