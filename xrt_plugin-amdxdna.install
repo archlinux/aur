@@ -30,7 +30,9 @@ post_install() {
 		touch ${udev_rules_d}/${amdxdna_rules_file}
 	fi
 	echo "KERNEL==\"accel*\",DRIVERS==\"amdxdna\",MODE=\"0666\"" > ${udev_rules_d}/${amdxdna_rules_file}
-	rmmod amdxdna > /dev/null 2>&1
+    if lsmod | grep -q "amdxdna "; then
+        rmmod amdxdna
+    fi
 	if [ "$build_type" = "Debug" ]; then
 	modprobe amdxdna dyndbg=+pf
 	else

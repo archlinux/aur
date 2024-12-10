@@ -4,11 +4,13 @@
 _pkgname=amdxdna-driver
 pkgname="${_pkgname}-bin"
 pkgver=2.19.0
-pkgrel=4
+pkgrel=5
 pkgdesc="AMD XDNA(tm) Driver (amdxdna.ko) for Linux and XRT SHIM library development."
 arch=('x86_64')
 url="https://github.com/amd/xdna-driver/"
 license=('custom')
+depends=('dkms')
+makedepends=('bash')
 optdepends=('xrt-npu-git: to make it work, maybe?')
 install="xrt_plugin-amdxdna.install"
 provides=("${_pkgname}")
@@ -18,7 +20,7 @@ source=(
 	"xrt_plugin-amdxdna.install"
 )
 sha512sums=('b7e8df5a3c09f56fe0a285747dfd16b26711bcc098bcc830380a7a42f92df1712bf979b22b29d7930cdc94dac91b65732959442d064c3b9d85048e0e355783ed'
-            '5c95a89dccb3300003caf43ce20befeed41549d709bd5879d2feb0b121587f6a419b84dbc82c671be67c3e444a660097f988ab32ae6dec597e41bba84964bb8f')
+            'c447475834dca92234c90ebb3f5e07b5cd28af3d81811c32d976378d63dbd07add00e5a231d33230929abd361b0c5036e8b2137a62b4f177ed4af2a662d608c3')
 
 package(){
 
@@ -29,6 +31,8 @@ package(){
 	cd "${pkgdir}"
 
 	mkdir -p usr/lib 2> /dev/null; mv lib/* usr/lib; rm -rf lib
+
+	install -Dm644 "opt/xilinx/xrt/amdxdna/dkms.conf" "${pkgdir}/usr/src/${_pkgname}-${pkgver}/dkms.conf"
 
 	cd ..
 
