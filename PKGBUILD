@@ -7,15 +7,15 @@ _pkgname=${_pkgname_nover}-10
 pkgver=10.5.4
 pkgrel=1
 arch=('x86_64')
-options=(!strip)
+options=(!strip !debug)
 conflicts=("edrawmind" "mindmaster" "mindmaster_cn" "mindmaster_en")
 replaces=("mindmaster_en")
 pkgdesc="Multi-functional, good-looking, easy-to-use professional mind mapping software"
 license=('Commercial')
 url="https://www.edrawsoft.com/download-mindmaster.html"
 source_x86_64=("https://download.edrawsoft.com/${pkgname%-bin}-${arch}.deb")
-sha256sums_x86_64=('bffe4f9368c20d4204e74651aeeb847de0d09032a872ac0444c53fd7a5e8a70a')
-            
+sha256sums_x86_64=('SKIP')
+
 prepare() {
     ar -x *.deb
     mkdir -p ${pkgname%-bin}
@@ -24,15 +24,15 @@ prepare() {
 
 package() {
     export LC_CTYPE="zh_CN.UTF-8"
-    mv  ${srcdir}/${pkgname%-bin}/* ${pkgdir}
-    
-    install -dm755  "${pkgdir}/usr/share/pixmaps/" \
-                    "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/" \
-                    "${pkgdir}/usr/share/mime/packages/" \
-                    "${pkgdir}/usr/share/applications/" \
-                    "${pkgdir}/usr/bin/"
-   
-       install -Dm0644 /dev/stdin "${pkgdir}/opt/${_pkgname}/${pkgname%-bin}.desktop" << EOF
+    mv ${srcdir}/${pkgname%-bin}/* ${pkgdir}
+
+    install -dm755 "${pkgdir}/usr/share/pixmaps/" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/" \
+        "${pkgdir}/usr/share/mime/packages/" \
+        "${pkgdir}/usr/share/applications/" \
+        "${pkgdir}/usr/bin/"
+
+    install -Dm0644 /dev/stdin "${pkgdir}/opt/${_pkgname}/${pkgname%-bin}.desktop" <<EOF
 [Desktop Entry]
 Name=${_pkgname_nover}
 Name[en_US]=${pkgname%-bin}

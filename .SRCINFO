@@ -11,7 +11,8 @@ pkgbase = edrawmind-bin
 	conflicts = mindmaster_en
 	replaces = mindmaster_en
 	options = !strip
+	options = !debug
 	source_x86_64 = https://download.edrawsoft.com/edrawmind-x86_64.deb
-	sha256sums_x86_64 = bffe4f9368c20d4204e74651aeeb847de0d09032a872ac0444c53fd7a5e8a70a
+	sha256sums_x86_64 = SKIP
 
 pkgname = edrawmind-bin
