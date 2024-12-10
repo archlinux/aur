@@ -2,8 +2,8 @@
 
 _py_name=exif
 pkgname=python-$_py_name
-pkgver=1.6.0
-pkgrel=3
+pkgver=1.6.1
+pkgrel=1
 pkgdesc='Read and modify image EXIF metadata'
 arch=(any)
 url="https://gitlab.com/TNThieding/$_py_name"
@@ -15,7 +15,7 @@ _archive="$_py_name-$pkgver"
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_py_name::1}/$_py_name/$_archive.tar.gz")
-sha256sums=('36288d1ffc60030084a04c26f50cc32e19383a36cd234fcfa1fb1c6f698e1d36')
+sha256sums=('763599b89b9b67495713060a703f32d1874abf8f0628c9d77711c2c06a5f44c8')
 
 build() {
 	cd "$_archive"
