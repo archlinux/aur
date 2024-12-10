@@ -1,7 +1,7 @@
-# Maintainer: tippfehlr <tippfehlr at tippfehlr dot eu>
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
 
 pkgname=servicer-git
-_pkgname=servicer
+_pkgname=${pkgname%-git}
 pkgver=v0.1.13.r4.ged8f31c
 pkgrel=1
 pkgdesc="Simplify service management on systemd"
@@ -11,27 +11,26 @@ arch=("x86_64" "aarch64")
 provides=("servicer")
 conflicts=("servicer")
 source=("git+$url")
-depends=("glibc" "gcc-libs")
 makedepends=("git" "rust")
 sha256sums=("SKIP")
 
+pkgver() {
+    cd "$_pkgname"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c 2-
+}
+
 prepare() {
-	cd "$srcdir/$_pkgname"
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cd "$_pkgname"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
-	cargo build --frozen --release
+    cd "$_pkgname"
+    cargo build --frozen --release
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	install -Dm755 target/release/servicer "${pkgdir}/usr/bin/servicer"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-}
-
-pkgver() {
-	cd "$srcdir/$_pkgname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$_pkgname"
+    install -Dm755 target/release/servicer -t "$pkgdir/usr/bin/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
