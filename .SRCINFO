@@ -1,0 +1,14 @@
+pkgbase = kwin-gestures
+	pkgdesc = Custom touchpad gestures for KDE Plasma 6
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/taj-ny/kwin-gestures
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = extra-cmake-modules
+	makedepends = qt6-tools
+	depends = kwin
+	source = kwin-gestures-0.2.0.src.tar.gz::https://github.com/taj-ny/kwin-gestures/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = b41c5d4e929d48840d45e134e7f1c0dd50a87be48748bb19bc0fb3cec97c5710
+
+pkgname = kwin-gestures
