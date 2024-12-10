@@ -24,7 +24,7 @@ makedepends=(cmake
              openexr
              qt6-base
              qt6-tools
-             gimp-devel)
+             gimp)
 source=(https://gmic.eu/files/prerelease/gmic_$_pkgver.tar.gz)
 sha256sums=('07192137c1438134e568c002097e7404e05c807e04b59489231bb6d3605bdede')
 
@@ -72,7 +72,7 @@ package_gmic-pre-gimp3() {
            opencv
            openexr
            zlib
-           gimp-devel)
+           gimp)
   optdepends=('qt6-base: for the Qt UI')
   conflicts=('cimg' 'gmic' 'gimp-plugin-gmic')
   replaces=('gmic-pre' 'gimp-plugin-gmic-pre')
@@ -99,7 +99,7 @@ package_gimp-plugin-gmic-pre-gimp3() {
            libx11
            qt6-base
            zlib
-           gimp-devel )
+           gimp)
   conflicts=('cimg' 'gmic' 'gimp-plugin-gmic')
   replaces=('gmic-pre' 'gimp-plugin-gmic-pre')
   DESTDIR="$pkgdir" cmake --install build-gimp
