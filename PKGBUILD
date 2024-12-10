@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ISAnalytics
-_pkgver=1.14.0
+_pkgver=1.16.1
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc='Analyze gene therapy vector insertion sites data identified from genomics next generation sequencing reads for clonal tracking studies'
 arch=('any')
@@ -66,7 +66,7 @@ optdepends=(
   r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('84baa3569b998d9c8d2a671130e3939ab33ce82e92bc198969410d44348d7016')
+sha256sums=('a7ac3f969ccbf6f3d1d383838da5eb7bf272d93ab083a7022229f3da43712ffa')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
