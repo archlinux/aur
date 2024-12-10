@@ -1,8 +1,8 @@
-# Maintainer:  <zhaose@Erekir>
+# Maintainer: daneallenjohnson AT protonmail DOT com
 pkgname=guile-g-golf
 _pkgname=g-golf
-pkgver=0.8.0.rc.4
-_pkgver=0.8.0-rc-4
+pkgver=0.8.0.rc.9
+_pkgver=0.8.0-rc9
 pkgrel=1
 pkgdesc="A library for developing modern applications (GTK) in Guile Scheme."
 arch=('x86_64')
@@ -11,12 +11,9 @@ license=('LGPL')
 depends=('guile' 'glib2' 'gobject-introspection' 'guile-lib')
 makedepends=('autoconf' 'automake' 'texinfo')
 optdepends=('gtk4: For using GTK-4 bindings'
-	    'gtk3: For using GTK-3 bindings'
-	   )
-source=("http://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${_pkgver}.tar.gz"{,.sig})
-sha256sums=('7a3995cc4b89bbccfcea8d983c809c45a50f7c21ce9c77e72fe2f98612293560'
-            'SKIP')
-sha256sum=()
+	    'gtk3: For using GTK-3 bindings')
+source=("http://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${_pkgver}.tar.gz")
+sha256sums=('e2b170f8d876870c0e7cb9158db9bde0cf4c3b2bbbe6e5d96f2bca51a5e12127')
 validpgpkeys=('842265459B413377EEAC91DEF374FD93A3057AD7')
 
 build() {
@@ -31,5 +28,3 @@ package() {
 
   make DESTDIR="$pkgdir/" install
 }
-
-# vim:set ts=2 sw=2 et:
