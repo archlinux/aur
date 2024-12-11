@@ -1,7 +1,7 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw-dev
 pkgver=development
-pkgrel=9
+pkgrel=10
 epoch=
 pkgdesc="Shadow Of The Wyrm by Julian Day - Development branch."
 arch=('x86_64')
@@ -25,20 +25,44 @@ validpgpkeys=()
 build() {
  	cd shadow-of-the-wyrm
  	git checkout develop
-	# fix premake file to work with premake5
-	sed -i '127s/.*/filter "configurations:Debug"/' premake4.lua
-	sed -i '133s/.*/filter "configurations:CursesDebug"/' premake4.lua
-	sed -i '139s/.*/filter "configurations:Release"/' premake4.lua
-	sed -i '159s/.*/filter "configurations:CursesRelease"/' premake4.lua
 	premake5 --lua_include=/usr/include/lua5.1 --lua_link=lua5.1 gmake
 	make config=release
 	#make config=debug 
 }
 
 package() {
-  echo "cd /usr/share/sotw" > ${srcdir}/shadow-of-the-wyrm/sotw.sh
-  echo "./sotw" >> ${srcdir}/shadow-of-the-wyrm/sotw.sh
-  chmod +x ${srcdir}/shadow-of-the-wyrm/sotw.sh
+# Create launch script
+    echo "!#/bin/sh" > ${srcdir}/shadow-of-the-wyrm/sotw.sh
+    echo "cd /usr/share/sotw" >> ${srcdir}/shadow-of-the-wyrm/sotw.sh
+    echo "./sotw" >> ${srcdir}/shadow-of-the-wyrm/sotw.sh
+    chmod +x ${srcdir}/shadow-of-the-wyrm/sotw.sh
+
+# Create the .desktop entry.
+    echo "[Desktop Entry]
+    Version=$pkgver
+    Name=Shadow Of The Wyrm
+    GenericName=SOTW
+    Type=Application
+    Comment=A single player, traditional roguelike by Julian Day.
+    Icon=sotw_icon
+    Exec=sotw
+    Terminal=false
+    SartupNotify=false
+    Keywords=game;roguelike;
+    Categories=Game;" > ${srcdir}/sotw.desktop
+
+# Tweak game settings.
+    # Setup log directory.
+    sed -i -e 's|'"log_dir="'|'"log_dir=/var/sotw"'|g' ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini
+    mkdir ${pkgdir}/var
+    mkdir ${pkgdir}/var/sotw
+    chmod 777 ${pkgdir}/var/sotw
+    # Set system dump directory.
+    sed -i -e 's|'"syschardump_dir="'|'"syschardump_dir=/var/sotw"'|g' ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini
+    # Set disallow score for narrative mode and console commands.
+    sed -i -e 's|'"_disallow_score_on_exploration=0"'|'"_disallow_score_on_exploration=1"'|g' ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini
+
+# Do the actual packaging
   install -D -m644 ${srcdir}/shadow-of-the-wyrm/LICENSE "${pkgdir}/usr/share/licenses/sotw/LICENSE"
   install -d -m777 ${srcdir}/shadow-of-the-wyrm/sotw "${pkgdir}/usr/share/sotw"
   install -D ${srcdir}/shadow-of-the-wyrm/sotw/sotw "${pkgdir}/usr/share/sotw/sotw"
@@ -55,5 +79,9 @@ package() {
   cp -R ${srcdir}/shadow-of-the-wyrm/sotw/logs ${pkgdir}/usr/share/sotw/logs
   cp -R ${srcdir}/shadow-of-the-wyrm/sotw/scripts ${pkgdir}/usr/share/sotw/scripts
   cp -R ${srcdir}/shadow-of-the-wyrm/sotw/texts ${pkgdir}/usr/share/sotw/texts
+  mkdir ${pkgdir}/usr/share/icons/
+  mkdir ${pkgdir}/usr/share/applications/
+  cp -R ${srcdir}/shadow-of-the-wyrm/sotw_icon.ico ${pkgdir}/usr/share/icons/sotw_icon.png
+  cp -R ${srcdir}/sotw.desktop ${pkgdir}/usr/share/applications/sotw.desktop
   install -D ${srcdir}/shadow-of-the-wyrm/sotw.sh ${pkgdir}/usr/bin/sotw
 }
