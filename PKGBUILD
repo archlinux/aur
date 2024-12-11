@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio-git
 _pkgname="Cherry Studio"
-pkgver=0.8.19.r0.g76ea170
+pkgver=0.8.24.r0.gb85b456
 _electronversion=28
 _nodeversion=20
 pkgrel=1
@@ -42,7 +42,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -51,7 +51,7 @@ build() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -73,6 +73,9 @@ build() {
     corepack enable yarn
     echo y | yarn version "${_yarnver}"
     NODE_ENV=development    yarn install
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
     NODE_ENV=production     yarn dotenv electron-vite build
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder.yml
 }
