@@ -1,6 +1,6 @@
 pkgbase = karpor-bin
 	pkgdesc = Intelligence for Kubernetes. World's most promising Kubernetes Visualization Tool for Developer and Platform Engineering teams.(Written in Go,prebuilt version)
-	pkgver = 0.5.6
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://karpor-demo.kusionstack.io/
 	arch = aarch64
@@ -11,9 +11,9 @@ pkgbase = karpor-bin
 	depends = kind
 	provides = karpor
 	conflicts = karpor
-	source_aarch64 = karpor-0.5.6-aarch64.tar.gz::https://github.com/KusionStack/karpor/releases/download/v0.5.6/karpor_0.5.6_linux_arm64.tar.gz
-	sha256sums_aarch64 = 75f00298e36a9c232a6a3ce9245a53bc7449ec8a0f0d7a14997636ed5567bc5f
-	source_x86_64 = karpor-0.5.6-x86_64.tar.gz::https://github.com/KusionStack/karpor/releases/download/v0.5.6/karpor_0.5.6_linux_amd64.tar.gz
-	sha256sums_x86_64 = 9677ce9c62c46a9d861141c8a51d8556b4005c2e8bf9d4772e742b7f48ace745
+	source_aarch64 = karpor-0.5.7-aarch64.tar.gz::https://github.com/KusionStack/karpor/releases/download/v0.5.7/karpor_0.5.7_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3573c9824f8b3076381a91f55a49c3845801b1559e0fd17b3e0c4e545a11e61d
+	source_x86_64 = karpor-0.5.7-x86_64.tar.gz::https://github.com/KusionStack/karpor/releases/download/v0.5.7/karpor_0.5.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = f8ea412133c08389d44ebadd66ed7870992ad803d36245e91692257dc53acc72
 
 pkgname = karpor-bin
