@@ -2,7 +2,7 @@
 
 pkgname=dracut-ukify
 pkgver=9
-pkgrel=5
+pkgrel=6
 pkgdesc="Integration layer for dracut and systemd's ukify tool for Arch Linux"
 url="https://aur.archlinux.org/packages/dracut-ukify"
 arch=(any)

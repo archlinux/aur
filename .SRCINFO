@@ -1,7 +1,7 @@
 pkgbase = dracut-ukify
 	pkgdesc = Integration layer for dracut and systemd's ukify tool for Arch Linux
 	pkgver = 9
-	pkgrel = 5
+	pkgrel = 6
 	url = https://aur.archlinux.org/packages/dracut-ukify
 	arch = any
 	license = MIT
