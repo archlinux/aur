@@ -7,7 +7,7 @@ pkgbase = rofi-mixer-git
 	license = GPL-3.0
 	makedepends = git
 	depends = rofi
-	depends = pulseaudio
+	depends = pipewire-pulse
 	source = git+https://github.com/joshpetit/rofi-mixer.git
 	md5sums = SKIP
 
