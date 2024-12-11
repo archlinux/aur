@@ -1,6 +1,6 @@
 pkgbase = notepad---bin
 	pkgdesc = Notepad-- 是一个简单的国产跨平台文本编辑器，是替换 Notepad++ 的一种选择。其内置强大的代码对比功能，让你丢掉付费的 Beyond Compare。
-	pkgver = 2.20.1
+	pkgver = 3.0.0.0
 	pkgrel = 2
 	url = https://gitee.com/cxasm/notepad--
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = notepad---bin
 	provides = notepad--
 	conflicts = notepad--
 	options = !strip
-	source = https://gitee.com/mao-yaotang/mmszahuo/raw/master/ndd-v2.20.1-kinly-x64.deb
+	source = https://gitee.com/cxasm/notepad--/releases/download/v3.0/com.hmja.notepad_3.0.0.0_amd64.deb
 	source = https://gitee.com/cxasm/notepad--/raw/master/LICENSE
-	sha256sums = 9a6dd2c138a22c15785b14ba238da10b35567d630e71a4563b3803c1ee7ac270
+	sha256sums = 0133f059cc165802398a064dc3aac697c7ce2c32a9bbd2da97e9c36329e1d7ad
 	sha256sums = 0b383d5a63da644f628d99c33976ea6487ed89aaa59f0b3257992deac1171e6b
 
 pkgname = notepad---bin
