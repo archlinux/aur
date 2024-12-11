@@ -1,7 +1,7 @@
 
 pkgname=trgui-ng-bin
 _pkgname=trgui-ng
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Remote GUI for Transmission torrent daemon'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=(dbus libsoup gcc-libs glib2 hicolor-icon-theme glibc openssl gtk3 alsa-
 source=(
 	"${pkgname%-bin}-${pkgver}.deb::https://github.com/openscopeproject/TrguiNG/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
 )
-sha256sums=('321cebb99e85dac2d587322f4cede6e7e0483d7399885ac7f582f9c56ba073a8')
+sha256sums=('ec48343e15dde3bc0088f5c99eb49210d2d3eae5c117b8b612bcc97972342bf7')
 
 package() {
     msg "Converting debian package..."
