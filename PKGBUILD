@@ -1,18 +1,18 @@
-# Maintainer: Anthony Wang <a aat exozy dotme>
+# Maintainer: Anthony Wang <a aat unnamed dotwebsite>
 
 _pkgname=sdc
 pkgname="$_pkgname-git"
-pkgver=r30.a5bfafa
-pkgrel=2
+pkgver=r35.85337a5
+pkgrel=1
 pkgdesc="C port of SD, a very efficient flash cards app"
 arch=(any)
-url="https://git.exozy.me/a/$_pkgname"
+url="https://git.unnamed.website/$_pkgname"
 license=('GPL')
 depends=('sqlite3')
 optdepends=('python-pyqt6: PyQT6 GUI'
             'tk: Tkinter GUI')
 makedepends=('git' 'gcc')
-source=("$_pkgname::git+$url.git")
+source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
