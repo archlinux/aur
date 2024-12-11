@@ -2,7 +2,7 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=20.04.101
+pkgver=20.04.102
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -57,7 +57,7 @@ source=(
   "git+https://github.com/pop-os/system76-driver.git#tag=$pkgver"
   'cli.patch'
   'actions.patch')
-sha256sums=('c90593d3a1213aca5626a306e78b5291dae81f8f4776f3b542a8b7d82e2cdb1c'
+sha256sums=('287f6698ae374bd3486dc659e5b82ce672cb8adaeafc63a0fdbacd71697a3d8a'
             'ef027346c439561dc01f906ae7bd961100aedf9125fd86bb0eb89a87b683fdc3'
             '3ade740c1681f8f33ef78e1e6c087e4002d14c888d7a5bf6bfbeb2aa70111119')
 
