@@ -41,5 +41,5 @@ package() {
   install -Dm 644 target/limine-entry-tool.jar $src_path/usr/share/java/
   install -dm 755 $src_path/usr/share/doc/${pkgname%-git}/
   cp -r README.md CHANGELOG.md $src_path/usr/share/doc/${pkgname%-git}/
-  cp -vr $src_path/usr $src_path/etc "$pkgdir"
+  cp -r $src_path/usr $src_path/etc "$pkgdir"
 }
