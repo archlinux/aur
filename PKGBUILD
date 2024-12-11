@@ -2,16 +2,16 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-settings-git
-pkgver=1.0.0.alpha.2.r8.gc38e870
-pkgrel=3
+pkgver=1.0.0.alpha.4.r6.g0072b79
+pkgrel=1
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings"
 license=('GPL-3.0-only')
 depends=(
   'accountsservice'
-  'cosmic-icons-git'
-  'cosmic-randr-git'
+#  'cosmic-icons-git'
+#  'cosmic-randr-git'
   'fontconfig'
   'iso-codes'
   'libinput'
@@ -50,7 +50,8 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+#  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -61,7 +62,8 @@ build() {
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  nice just build-release --frozen
+#  nice just build-release --frozen
+  nice just build-release
 }
 
 package() {
