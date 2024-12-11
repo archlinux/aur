@@ -1,20 +1,22 @@
 pkgbase = whisper.cpp-cuda
-	pkgdesc = Port of OpenAI's Whisper model in C/C++ (with CUDA)
-	pkgver = 1.5.4
+	pkgdesc = Port of OpenAI's Whisper model in C/C++ (with NVIDIA CUDA optimizations)
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/ggerganov/whisper.cpp
 	arch = armv7h
 	arch = aarch64
 	arch = x86_64
 	license = MIT
+	makedepends = ccache
 	makedepends = cmake
 	makedepends = git
+	depends = cuda
 	depends = glibc
 	depends = gcc-libs
-	depends = cuda
+	depends = openmp
 	provides = whisper.cpp
 	conflicts = whisper.cpp
-	source = whisper.cpp-1.5.4.tar.gz::https://github.com/ggerganov/whisper.cpp/archive/v1.5.4.tar.gz
-	sha256sums = 06eed84de310fdf5408527e41e863ac3b80b8603576ba0521177464b1b341a3a
+	source = whisper.cpp-1.7.2.tar.gz::https://github.com/ggerganov/whisper.cpp/archive/v1.7.2.tar.gz
+	sha256sums = d48e1b5b6ee18b931e98ac791eba838f83eb3b81bb8917db37fe9a79fa5e3ccb
 
 pkgname = whisper.cpp-cuda
