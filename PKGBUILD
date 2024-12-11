@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=phoenix-policies
 pkgver=20241211
-pkgrel=1
+pkgrel=2
 pkgdesc="Standard Phoenix policies for Mozilla Firefox"
 arch=(any)
 license=('GPL3')
 url="https://phoenix.celenity.dev"
 source=("git+https://codeberg.org/celenity/Phoenix.git#commit=c946044ea477ec93d728fa2c5e9bd6a0021135f3")
-sha512sums=('SKIP')
+sha512sums=('92afe8df907e6c72c04dcc6910270186d6001dc5b3994fdc2ce998841a4488c90dc7c7b26efd2c5558f07e4c2e3f2019989da9baf9a79d637418af8a4def6fa1')
 
 pkgver() {
     echo "$pkgver"
