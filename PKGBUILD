@@ -1,6 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-music
-pkgver=0.5.21
+_pkgname=SimpleMusic
+pkgver=0.5.23
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -24,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('6d7f1b39f2441e76d3beb346fd92904c9e4acb55ef25dd6046652dfc098a901a'
+sha256sums=('b0d1508a2d5dedc3f23ca08cf198c730d5819df902f94627343983264782e7a8'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -32,7 +33,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -41,7 +42,7 @@ build() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${pkgname}" --exec="${pkgname} %U"
+    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
     electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -66,6 +67,9 @@ build() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     pnpm run build
     NODE_ENV=production     pnpm -c exec "electron-builder build --linux dir -c.electronDist=${electronDist} -c electron-builder.config.cjs"
 }
