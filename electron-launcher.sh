@@ -2,18 +2,22 @@
 
 set -euo pipefail
 
-flags_file="${XDG_CONFIG_HOME:-$HOME/.config}/%%PKGNAME%%-flags.conf"
+name=@ELECTRON@
+flags_file="${XDG_CONFIG_HOME:-$HOME/.config}/${name}-flags.conf"
+fallback_file="${XDG_CONFIG_HOME:-$HOME/.config}/electron-flags.conf"
 
-declare -a flags
-
+lines=()
 if [[ -f "${flags_file}" ]]; then
-	mapfile -t < "${flags_file}"
+	mapfile -t lines < "${flags_file}"
+elif [[ -f "${fallback_file}" ]]; then
+	mapfile -t lines < "${fallback_file}"
 fi
 
-for line in "${MAPFILE[@]}"; do
+flags=()
+for line in "${lines[@]}"; do
 	if [[ ! "${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "${line}" ]]; then
 		flags+=("${line}")
 	fi
 done
 
-exec /usr/lib/%%PKGNAME%%/%%PROJECTNAME%% "${flags[@]}" "$@"
+exec /usr/lib/${name}/electron "${flags[@]}" "$@"
