@@ -19,7 +19,7 @@ checkdepends=('python-pytest-asyncio'
               'python-pytest-cov'
               'python-async-timeout'
               'python-trustme'
-              'python-siosocks')   # typing_extensions already in makedepends
+              'python-siosocks')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 sha256sums=('afe7ff2e84ec2dfb593315a2a74667a7c71ff0d881895d5afa68cde2bd4cab6d')
 
