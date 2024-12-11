@@ -1,0 +1,19 @@
+pkgbase = dupe-clear-git
+	pkgdesc = A duplicate file cleaner.
+	pkgver = 3.0.r65.gb9c3d0d
+	pkgrel = 1
+	url = https://mozib.io/dupeclear
+	arch = any
+	license = GPL-3.0-only
+	makedepends = gendesk
+	makedepends = git
+	depends = dotnet-runtime>=8
+	provides = dupe-clear=3.0
+	conflicts = dupe-clear
+	options = !strip
+	source = dupe-clear.git::git+https://github.com/antikmozib/Dupe-Clear
+	source = dupe-clear.sh
+	sha256sums = SKIP
+	sha256sums = 9887c2b5cc4171f8768feae7da23aa6765eaa859434757d416fb8988a36936c8
+
+pkgname = dupe-clear-git
