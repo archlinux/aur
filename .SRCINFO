@@ -1,6 +1,6 @@
 pkgbase = or-tools
 	pkgdesc = Google's Operations Research tools.
-	pkgver = 9.10
+	pkgver = 9.11
 	pkgrel = 1
 	url = https://github.com/google/or-tools
 	arch = x86_64
@@ -14,8 +14,7 @@ pkgbase = or-tools
 	depends = protobuf
 	depends = re2
 	depends = abseil-cpp>=20240116.2
-	depends = highs
-	source = or-tools-9.10.tar.gz::https://github.com/google/or-tools/archive/v9.10.tar.gz
-	sha256sums = e7c27a832f3595d4ae1d7e53edae595d0347db55c82c309c8f24227e675fd378
+	source = or-tools-9.11.tar.gz::https://github.com/google/or-tools/archive/v9.11.tar.gz
+	sha256sums = f6a0bd5b9f3058aa1a814b798db5d393c31ec9cbb6103486728997b49ab127bc
 
 pkgname = or-tools
