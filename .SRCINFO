@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-kab
 	pkgdesc = Kabyle language pack for Firefox Nightly
-	pkgver = 135.0a1.20241210.093052
+	pkgver = 135.0a1.20241210.205259
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-kab
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-kab-135.0a1.20241210.093052.xpi
-	source = firefox-nightly-i18n-kab-135.0a1.20241210.093052.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-135.0a1.kab.langpack.xpi
-	sha256sums = a81680afeb61ec2aa91f75cb689384f371f095c52c9d4b6d28c7c20e037f97f1
+	noextract = firefox-nightly-i18n-kab-135.0a1.20241210.205259.xpi
+	source = firefox-nightly-i18n-kab-135.0a1.20241210.205259.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-135.0a1.kab.langpack.xpi
+	sha256sums = e9c1c07ec6c43b4078d957d84f4bb2f1ef54973120f894e365827b4e9c2fce8f
 
 pkgname = firefox-nightly-i18n-kab
