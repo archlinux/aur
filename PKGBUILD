@@ -4,7 +4,7 @@ pkgbase=115-browser-bin
 pkgname=115-browser-bin
 _pkgname=115br
 pkgver=27.0.7.5
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 options=(!strip !debug)
 depends=(
@@ -36,7 +36,6 @@ prepare() {
 package() {
     bsdtar -xf "${srcdir}/${pkgname}-${pkgver}/data.tar.xz" --numeric-owner -C "${pkgdir}"
 
-    find "${pkgdir}/usr" -type d -exec chmod 755 {} +
     chown -R root:root "${pkgdir}"
 
     cd ${pkgdir}/
@@ -49,4 +48,6 @@ package() {
     sed -i 's|/usr/local|/opt/115|g' usr/share/applications/115Browser.desktop
     sed -i 's|/usr/local|/opt/115|g' opt/115/115Browser/115.sh
     ln -sf "/opt/115/115Browser/115.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+
+    chmod 755 usr/share/applications/115Browser.desktop
 }
