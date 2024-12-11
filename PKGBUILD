@@ -1,18 +1,16 @@
-# Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
-
-# Warning: If you are downgrading from the development branch (Wine ≥ 9.1,
+# Warning: If you are downgrading from the development branch (Wine ≥ 10.1,
 # for example), your WINEPREFIX may break and experience unusual bugs.
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
-pkgname=wine-stable
-_pkgver=9.0
+pkgname=wine-stable-next
+_pkgver=10.0-rc1
 pkgver=${_pkgver/-/}  # Useful for wine-stable-next
-pkgrel=3
+pkgrel=1
 
-source=(https://dl.winehq.org/wine/source/9.0/wine-$_pkgver.tar.xz{,.sign}
+source=(https://dl.winehq.org/wine/source/10.0/wine-$_pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
         wine-binfmt.conf)
-b2sums=('cf53177201a2f7eeb35d0d8ce220f80808d979099a928ad60652d1dee92620c433cc105dffab4e9309f41766087ad1544ef49d2922538bb420d62f6dd64117a1'
+b2sums=('6eb311990dfd9d23f37f3347e56c7e5c9fe3d5054fec5c9fd43ef0c19505311797f0d8103c15dfbef9f74a517b3f0603fe4750c708973639982ebca3b1bda5d5'
         'SKIP'
         '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
         'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
@@ -22,7 +20,7 @@ pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org/"
 arch=(x86_64)
 options=(staticlibs !lto)
-license=(LGPL)
+license=(LGPL-2.1-or-later)
 install=wine.install
 
 depends=(
@@ -35,6 +33,7 @@ depends=(
   libunwind              lib32-libunwind
   libxcursor             lib32-libxcursor
   libxi                  lib32-libxi
+  libxkbcommon           lib32-libxkbcommon
   libxrandr              lib32-libxrandr
   wayland                lib32-wayland
 )
@@ -118,10 +117,17 @@ build() {
   export CFLAGS="${CFLAGS/-fno-plt/}"
   export LDFLAGS="${LDFLAGS/-Wl,-z,now/}"
 
+  # Apply flags for cross-compilation
+  export CROSSCFLAGS="-O2 -pipe -g"
+  export CROSSCXXFLAGS="-O2 -pipe -g"
+  export CROSSLDFLAGS="-Wl,-O1"
+
   ../wine/configure \
       --prefix=/usr \
       --libdir=/usr/lib \
+      --without-ffmpeg \
       --with-x \
+      --with-wayland \
       --with-gstreamer \
       --enable-win64
 
@@ -137,7 +143,9 @@ build() {
   cd "$srcdir/wine-32-build"
   ../wine/configure \
       --prefix=/usr \
+      --without-ffmpeg \
       --with-x \
+      --with-wayland \
       --with-gstreamer \
       "${_wine32opts[@]}"
 
