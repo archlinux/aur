@@ -1,6 +1,6 @@
 pkgbase = simple-music-git
 	pkgdesc = Light music.轻音乐.(Use system-wide electron)
-	pkgver = 0.5.21.r0.gd9d737b
+	pkgver = 0.5.23.r0.gaf90960
 	pkgrel = 1
 	url = https://simple-music.netlify.app/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = simple-music-git
 	makedepends = curl
 	makedepends = git
 	depends = electron33
-	provides = simple-music=0.5.21
+	provides = simple-music=0.5.23
 	conflicts = simple-music
 	source = simple-music.git::git+https://github.com/joey2217/simple-music.git
 	source = simple-music.sh
