@@ -1,19 +1,18 @@
 pkgbase = python-cli-ui
 	pkgdesc = Build nice user interfaces in the terminal
-	pkgver = 0.9.1
-	pkgrel = 2
-	url = http://github.com/TankerHQ/python-cli-ui
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = https://github.com/your-tools/python-cli-ui
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	makedepends = python-setuptools
+	makedepends = python-poetry
+	makedepends = python-installer
 	depends = python
 	depends = python-colorama
 	depends = python-unidecode
 	depends = python-tabulate
-	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/30/80/84a7184cbdb5473abb102d6bd4395af9f1260e5f6c558d45e68e2c92752d/cli-ui-0.9.1.tar.gz
-	md5sums = fcb8a6243bb7bb72e3a186bfeb0b35f9
+	source = python-cli-ui-0.18.0.tar.gz::https://github.com/your-tools/python-cli-ui/archive/v0.18.0.tar.gz
+	md5sums = 27b1f57c66bd631f9c32ca4e2045ff5f
 
 pkgname = python-cli-ui
-
