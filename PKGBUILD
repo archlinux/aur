@@ -2,8 +2,8 @@
 # Maintainer: vcup
 # Contributor: vcup
 pkgname=peerbanhelper
-pkgver=7.1.5
-pkgrel=2
+pkgver=7.2.0
+pkgrel=1
 pkgdesc="PeerBanHelper is a tool to auto ban peers on the bitorrent network."
 arch=('any')
 url="https://github.com/PBH-BTN/PeerBanHelper"
@@ -12,14 +12,11 @@ depends=('java-runtime>=21')
 backup=('etc/peerbanhelper/config.yml' 'etc/peerbanhelper/profile.yml')
 install=${pkgname}.install
 source=("https://github.com/PBH-BTN/PeerBanHelper/releases/download/v${pkgver}/peerbanhelper_${pkgver}_all.deb")
-sha512sums=('9b16dec42904344bc49d48981223e5e769329a5f0bb4eabb4c5d9cac730ad47ac77377b434d834a22e1732d9f8f15ffffaa51d8bf4c8daac792eb39bb946514f')
+sha512sums=('e1b8b45a69e069a0eda4cf2c4d268f005eb0be248931e106013f77e26b73c74619ba3c944bb842b35cd342316afa2299f87f3586ba344b27d429953dfdf1b466')
 
 package() {
   # Extract package data
   tar -xI unzstd -f data.tar.zst -C "${pkgdir}"
-
-  mv "${pkgdir}/etc/peerbanhelper/data/"{config.yml,profile.yml} "${pkgdir}/etc/peerbanhelper"
-  rm -d "${pkgdir}/etc/peerbanhelper/data"
 
   sed 's|/etc/'${pkgname}'|/var/lib/'${pkgname}'|g' -i "${pkgdir}/usr/lib/systemd/system/${pkgname}.service" 
 
