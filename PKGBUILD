@@ -1,6 +1,8 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: envolution
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Ronuk Raval <ronuk.raval at gmail dot com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=python-webruntime
 pkgver=0.5.8
@@ -31,4 +33,4 @@ package() {
     "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-# vim: ts=2 sw=2 et:
+# vim:set ts=2 sw=2 et:
