@@ -12,7 +12,6 @@ depends=('cuda' 'glibc' 'gcc-libs' 'openmp')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}")
 makedepends=(
-  'ccache'
   'cmake'
   'git'
 )
