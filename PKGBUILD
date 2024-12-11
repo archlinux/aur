@@ -2,7 +2,7 @@
 
 pkgname=plasma6-applets-awesome-widgets
 _pkgname=awesome-widgets
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Collection of minimalistic Plasmoids which look like Awesome WM widgets (ex-PyTextMonitor)"
 arch=('x86_64')
@@ -28,4 +28,4 @@ package() {
     DESTDIR="$pkgdir" cmake --install build
 }
 
-sha256sums=('4eeac011369729f15cb7abae91468319f6456dc97219f25fac794e3ef070bec5')
+sha256sums=('763d53e3bdbdf8bc0f17e2c35695629fedb8650b15dba08091ed06bc31f34237')
