@@ -1,7 +1,8 @@
+# Maintainer: MYT1 <myt1 @ QQ DOC com>
 # Maintainer: lilydjwg <lilydjwg@gmail.com>
 pkgname=you-get-git
 pkgdesc="A YouTube/Youku/Sohu/Tudou/QQ/Sina/PPTV/Xiami/Vimeo/ifeng/AcFun/bilibili/CNTV/... video downloader written in Python 3."
-pkgver=0.4.909.20170913.1763
+pkgver=0.4.1730.20241211.2592
 pkgrel=1
 arch=('any')
 url="http://www.soimort.org/you-get/"
@@ -10,7 +11,7 @@ depends=('python' 'python-setuptools')
 makedepends=('git')
 conflicts=(you-get)
 provides=(you-get)
-source=("git://github.com/soimort/you-get.git#branch=develop")
+source=("git+https://github.com/soimort/you-get.git")
 md5sums=(SKIP)
 
 _repo_name=you-get
