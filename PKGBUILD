@@ -1,30 +1,32 @@
 # Maintainer: Dimitri Merejkowsky <d.merej@gmail.com>
 pkgname=python-cli-ui
-pkgver="0.9.1"
-pkgrel=2
+pkgver="0.18.0"
+pkgrel=1
 pkgdesc="Build nice user interfaces in the terminal"
 url="https://github.com/your-tools/python-cli-ui"
 arch=('any')
 license=('MIT')
-depends=('python' 'python-colorama' 'python-unidecode' 'python-tabulate' 'python-setuptools')
-makedepends=('python-setuptools')
-source=('https://files.pythonhosted.org/packages/30/80/84a7184cbdb5473abb102d6bd4395af9f1260e5f6c558d45e68e2c92752d/cli-ui-0.9.1.tar.gz')
+depends=('python' 'python-colorama' 'python-unidecode' 'python-tabulate')
+makedepends=('python-poetry' 'python-installer')
+source=("python-cli-ui-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+
 checkdepends=('python-pytest')
-md5sums=('fcb8a6243bb7bb72e3a186bfeb0b35f9')
+md5sums=('27b1f57c66bd631f9c32ca4e2045ff5f')
 
 build() {
-  cd ${srcdir}/cli-ui-${pkgver}
-  python setup.py build
+  cd ${srcdir}/python-cli-ui-${pkgver}
+  python -m poetry build
 }
 
 check() {
-  cd ${srcdir}/cli-ui-${pkgver}
-  pytest
+  cd ${srcdir}/python-cli-ui-${pkgver}
+  python -m poetry install
+  python -m poetry run pytest
 }
 
 package() {
-  cd ${srcdir}/cli-ui-${pkgver}
-  python setup.py install --root=$pkgdir/ --optimize=1
+  cd ${srcdir}/python-cli-ui-${pkgver}
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   # license
   mkdir -p $pkgdir/usr/share/licenses/python-cli-ui
