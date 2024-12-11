@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>org.mozilla.firefox_nightly</id>
-  <launchable type="desktop-id">org.mozilla.firefox_nightly.desktop</launchable>
+  <id>org.mozilla.firefox-nightly</id>
+  <launchable type="desktop-id">firefox-nightly.desktop</launchable>
   <provides>
     <binary>firefox-nightly</binary>
-    <id>org.mozilla.firefox-nightly</id>
     <mediatype>application/json</mediatype>
     <mediatype>application/pdf</mediatype>
     <mediatype>application/rdf+xml</mediatype>

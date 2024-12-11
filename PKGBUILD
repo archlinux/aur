@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=135.0a1+20241207.1+h3254d5c12d08
+pkgver=135.0a1+20241211.2+h2b2422cd05b9
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
 url="https://www.mozilla.org/firefox/channel/desktop/#nightly"
@@ -78,12 +78,11 @@ options=(
   !makeflags
 )
 _repo=https://hg.mozilla.org/mozilla-central
-_dbusname=org.mozilla.${pkgname//-/_}
 source=(
   hg+$_repo
-  $_dbusname-symbolic.svg
-  $_dbusname.desktop
-  $_dbusname.metainfo.xml
+  $pkgname-symbolic.svg
+  $pkgname.desktop
+  org.mozilla.$pkgname.metainfo.xml
   0001-Install-under-remoting-name.patch
 )
 validpgpkeys=(
@@ -93,13 +92,13 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            'd209c7d908446fe072aba31c7e3fda7f7a2b6cae99364901d66ea0769bb29fd4'
-            '8dc5cce24f9cc95a6a7214693b90101131f588d5b6b09f943cb8f39617958110'
+            '4304902899987928ea51b7020fb1298b01fa77e327ef66ab00b061f767042b9f'
+            '9649563e8703b4f4b43469029fe20e3bd0c1209dbaa4c2d664c00e089abd7fa0'
             '883ca2fa723a7572269d18559d5b82412782ad63e5dd3820eeb0540e3fe34314')
 b2sums=('SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
-        '69aef06ddf2d449b0bd9740f2accde98691a2a97818a49490da861e18ef9faf60a23cdbb4b39ab6a2cc77b0f595217c1d93f71fda4327eafc72dd27ae601101e'
-        'b2cb3ac7b10884a77ce5ccd598b96167256f7ce55ad3dd46792f8a84f830b9d9bb9303a097b6f590c9ca1e977b85df0f7d11009603b1a280c601c88172a365c1'
+        '9c748d4c330d37d10862c73b3092c0d4308030fb62ca80da56ba9b3c3350ba4d779570308d1dd8e2c7d873f269654b72030702c5abc772aabfdfe7f39320a8b9'
+        '561d6fd3b394eee3242c1db12c0520e865488b3e5c1943a398994857b1fcad520ed4387ea93bc9402356649a0b3db6911bcd3a9f8d388bbe88a58a2efec0aa14'
         '8a894b01e405b628877483e40e9b018647977cb053b6af02afc901ed24d6e1f767f3db8c321070e33aea4a05ba16f1eb47ae600e5299b5f9caad03d20ba38cf5')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -272,18 +271,18 @@ END
   local i theme=nightly
   for i in 16 22 24 32 48 64 128 256; do
     install -Dvm644 browser/branding/$theme/default$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_dbusname.png"
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
   install -Dvm644 browser/branding/$theme/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$_dbusname.png"
+    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
   install -Dvm644 browser/branding/$theme/content/about-logo@2x.png \
-    "$pkgdir/usr/share/icons/hicolor/384x384/apps/$_dbusname.png"
+    "$pkgdir/usr/share/icons/hicolor/384x384/apps/$pkgname.png"
   install -Dvm644 browser/branding/$theme/content/about-logo.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_dbusname.svg"
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
 
-  install -Dvm644 ../$_dbusname-symbolic.svg -t "$pkgdir/usr/share/icons/hicolor/symbolic/apps"
-  install -Dvm644 ../$_dbusname.desktop -t "$pkgdir/usr/share/applications"
-  install -Dvm644 ../$_dbusname.metainfo.xml -t "$pkgdir/usr/share/metainfo"
+  install -Dvm644 ../$pkgname-symbolic.svg -t "$pkgdir/usr/share/icons/hicolor/symbolic/apps"
+  install -Dvm644 ../$pkgname.desktop -t "$pkgdir/usr/share/applications"
+  install -Dvm644 ../org.mozilla.$pkgname.metainfo.xml -t "$pkgdir/usr/share/metainfo"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
@@ -301,20 +300,13 @@ END
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
 
-  local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/$_dbusname.search-provider.ini"
+  local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/$pkgname.search-provider.ini"
   install -Dvm644 /dev/stdin "$sprovider" <<END
 [Shell Search Provider]
-DesktopId=$_dbusname.desktop
-BusName=$_dbusname.SearchProvider
+DesktopId=$pkgname.desktop
+BusName=org.mozilla.${pkgname//-/_}.SearchProvider
 ObjectPath=/org/mozilla/${pkgname//-/_}/SearchProvider
 Version=2
-END
-
-  local dservice="$pkgdir/usr/share/dbus-1/services/$_dbusname.service"
-  install -Dvm644 /dev/stdin "$dservice" <<END
-[D-BUS Service]
-Name=$_dbusname
-Exec=/usr/lib/$pkgname/firefox --dbus-service /usr/lib/$pkgname/firefox
 END
 
   export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
