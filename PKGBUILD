@@ -1,5 +1,5 @@
 # Maintainer: Martin Fritz <Fritz.Martin99@web.de>
-pkgbase=plastikstyleo
+pkgbase=plastikstyle
 _pkgbase_camel=PlastikStyle
 pkgname=(plastikstyle-qt5 plastikstyle-qt6)
 pkgver=1.0.4
