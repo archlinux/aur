@@ -1,0 +1,26 @@
+pkgbase = python-xad
+	pkgdesc = Python bindings for the XAD automatic differentiation library
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/auto-differentiation/xad-py
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-poetry-core
+	makedepends = python-pybind11-stubgen
+	makedepends = python-ninja
+	makedepends = python-wheel
+	makedepends = cmake
+	makedepends = git
+	depends = python
+	source = xad-py-1.5.1::git+https://github.com/auto-differentiation/xad-py.git#tag=v1.5.1
+	source = github.com-src-xad::git+https://github.com/auto-differentiation/xad.git
+	source = github.com-src-pybind11::git+https://github.com/pybind/pybind11.git
+	sha512sums = 98785185df96429b962675a56507d3984e98b4bb67e6fc2b8c100229560658562967b7de742526c82cf093ae2a80f2a811fa9b6fe5b33c5d5dd0ba823f2196ea
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = python-xad

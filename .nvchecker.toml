@@ -1,0 +1,5 @@
+[python-xad]
+source = "github"
+github = "auto-differentiation/xad-py"
+use_latest_release = "true"
+prefix = "v"
