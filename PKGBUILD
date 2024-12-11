@@ -6,7 +6,7 @@ _pkgname=Dopamine
 __pkgname=dopamine
 pkgname=dopamine-appimage-preview
 __pkgver=3.0.0-preview
-prevver=36
+prevver=37
 _pkgver=${__pkgver}.${prevver}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,7 +21,7 @@ options=(!strip)
 source_x86_64=(https://github.com/digimezzo/dopamine/releases/download/v${__pkgver}.${prevver}/Dopamine-${__pkgver}.${prevver}.AppImage)
 source=("dopamine.desktop")
 sha512sums=('c27e980de4fb9e9a4a7b714c65c35aef9fe37e13f4589e5c1160e927df4dd9e0370999995d092b7009829bc1e410cd7fbfbd4f3fb11ffa05d5c5cfb1657ba793')
-sha512sums_x86_64=('b5417a48608bc59b66b02a3ff5d6bd7d354811e772d98d79609c5701f961f991c5bc4fb0aa09acd3ffdedfae5a2a16e35408cb366049d7c10ebbadca8f303546')
+sha512sums_x86_64=('25cfa9366aa11870f7a5ee8ed48d73a546d749ed2f42377fb41f5f228f6bb5398677dcd072aad04131eb994b7174ab75474c22f1849345342f104f46b8629059')
 
 prepare() {
     chmod u+x      ${srcdir}/${_pkgname}-${_pkgver}.AppImage
