@@ -1,14 +1,21 @@
 pkgbase = python-aioftp
 	pkgdesc = ftp client/server for asyncio
-	pkgver = 0.21.4
+	pkgver = 0.24.0
 	pkgrel = 1
-	url = https://github.com/aio-libs/aioftp
+	url = https://aioftp.readthedocs.io
 	arch = any
-	license = Apache License Version 2.0
-	makedepends = python
+	license = Apache-2.0
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-cov
+	checkdepends = python-async-timeout
+	checkdepends = python-trustme
+	checkdepends = python-siosocks
 	makedepends = python-setuptools
-	depends = python
-	source = https://pypi.io/packages/source/a/aioftp/aioftp-0.21.4.tar.gz
-	sha256sums = 28bb26d4616c7c381a1543281f987051b8d2d1d5bfaf023d9e7e2c2105c51bb9
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/a/aioftp/aioftp-0.24.0.tar.gz
+	sha256sums = afe7ff2e84ec2dfb593315a2a74667a7c71ff0d881895d5afa68cde2bd4cab6d
 
 pkgname = python-aioftp
+	depends = python>=3.9
+	optdepends = python-siosocks>=0.2.0: Client socks proxy
