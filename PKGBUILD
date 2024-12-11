@@ -1,7 +1,7 @@
 # Maintainer: VCalV
 _pkgname=mergiraf
 pkgname="${_pkgname}-git"
-pkgver=0.3.1.r77.gbe16edc
+pkgver=0.4.0.r3.gea3c631
 pkgrel=1
 pkgdesc="A syntax-aware git merge driver for a growing collection of programming languages and file formats"
 arch=('x86_64')
