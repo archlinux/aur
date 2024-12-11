@@ -4,18 +4,15 @@ pkgbase = youtube-to-mp3
 	pkgrel = 2
 	url = https://www.mediahuman.com/download.html
 	arch = x86_64
-	arch = i686
 	license = LicenseRef-custom
-	depends = hicolor-icon-theme>=0.17-1
-	depends = qt5-multimedia>=5.14.1-1
+	depends = hicolor-icon-theme
+	depends = qt5-multimedia
 	depends = qt5-webengine
 	depends = qt5-declarative
-	depends = taglib1>=1.13.1-2
+	depends = taglib1
 	depends = ffmpeg
 	conflicts = youtube-to-mp3
-	source_x86_64 = youtube-to-mp3-2024-12-11-15.amd64.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.amd64.deb
-	md5sums_x86_64 = SKIP
-	source_i686 = youtube-to-mp3-2024-12-11-15.i386.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.i386.deb
-	md5sums_i686 = SKIP
+	source_x86_64 = youtube-to-mp3-2024-12-11-17.amd64.deb::https://schinfo.de/MediaHuman/YouTubeToMP3.amd64.deb
+	sha256sums_x86_64 = a71e7cf390e79edda3b6ebf466894fe8c4fc98a0b3ceef251055dd98d8832f04
 
 pkgname = youtube-to-mp3
