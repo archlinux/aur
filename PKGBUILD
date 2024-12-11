@@ -3,7 +3,7 @@
 pkgname=plex-desktop
 pkgver=1.105.1.257
 _pkghash=3bc35ab9
-pkgrel=1
+pkgrel=2
 pkgdesc="Plex desktop client for linux"
 arch=('x86_64')
 url='http://plex.tv'
@@ -78,12 +78,6 @@ package() {
 
   rm -rf $pkgdir/opt/${pkgname}/lib/dri
   rm -rf $pkgdir/opt/${pkgname}/lib/libEGL.so*
-  rm -rf $pkgdir/opt/${pkgname}/lib/libdrm.so*
-  rm -rf $pkgdir/opt/${pkgname}/lib/libdrm_*.so*
-  rm -rf $pkgdir/opt/${pkgname}/lib/libpciaccess.so*
-  rm -rf $pkgdir/opt/${pkgname}/lib/libswresample.so*
-  rm -rf $pkgdir/opt/${pkgname}/lib/libva.so*
-  rm -rf $pkgdir/opt/${pkgname}/lib/libva-*.so*
 
   install -d ${pkgdir}/usr/bin
   ln -s /opt/${pkgname}/Plex.sh ${pkgdir}/usr/bin/Plex
