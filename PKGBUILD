@@ -5,7 +5,7 @@
 # Contributor: defkeh <defkeh@gmail.com>
 
 pkgname=rivalcfg
-pkgver=4.13.0
+pkgver=4.14.0
 pkgrel=1
 pkgdesc='CLI tool and Python library to configure SteelSeries gaming mice'
 arch=('any')
@@ -13,7 +13,7 @@ url='https://github.com/flozz/rivalcfg'
 license=('custom:WTFPL')
 depends=('python' 'hidapi' 'python-hidapi' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('08cdb2ff74f0cb8308f6c4831eb289eb1df8b1013f9d2f10a5665b4a07eaf73374e16bcc67cf801c0aa3c4c65146da20bf8f080dc327fdbf1520c7ba99e7cdcb')
+sha512sums=('948c5a13cd587e17cce3739b4268528b7ca0933106fa0707e460b5606d458a3486afb580e07fa92614cec08337656445096f606ceb45ecc409cb731c3ad8271a')
 install=install
 build() {
   cd $pkgname-$pkgver
