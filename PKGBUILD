@@ -2,33 +2,33 @@
 # Contributor: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=libation
-pkgver=11.5.5
+pkgver=11.6.3
 pkgrel=1
 pkgdesc="Audible audiobook manager: liberate your Library"
 arch=('x86_64')
 url="https://github.com/rmcrackan/Libation"
 license=('GPL-3.0-only')
-depends=('fontconfig' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'lttng-ust2.12' 'zlib')
-makedepends=('dotnet-sdk')
+depends=('fontconfig' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'lttng-ust2.12')
+makedepends=('dotnet-sdk>=9')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0d0a111c8154236060999a92114b1e3cfa40c321d9c8980fe6c8ae8ced6add4f')
+sha256sums=('c92d8014d86150fe78b439d8c64a3734a1367e27f0bb49a0ae57277a49598af0')
 
 build() {
-  cd "${pkgname^}-${pkgver}"
-  dotnet publish -c Release -o build Source/LibationCli/LibationCli.csproj -p:PublishProfile=Source/LibationCli/Properties/PublishProfiles/LinuxProfile.pubxml
-  dotnet publish -c Release -o build Source/LibationAvalonia/LibationAvalonia.csproj -p:PublishProfile=Source/LibationAvalonia/Properties/PublishProfiles/LinuxProfile.pubxml
-  dotnet publish -c Release -o build Source/HangoverAvalonia/HangoverAvalonia.csproj -p:PublishProfile=Source/HangoverAvalonia/Properties/PublishProfiles/LinuxProfile.pubxml
-  dotnet publish -c Release -o build Source/LoadByOS/LinuxConfigApp/LinuxConfigApp.csproj -p:PublishProfile=LoadByOS/Properties/LinuxConfigApp/PublishProfiles/LinuxProfile.pubxml
+    cd "${pkgname^}-${pkgver}"
+    dotnet publish Source/LibationCli/LibationCli.csproj -c Release -o build -p:PublishProfile=Source/LibationCli/Properties/PublishProfiles/LinuxProfile.pubxml
+    dotnet publish Source/LibationAvalonia/LibationAvalonia.csproj -c Release -o build -p:PublishProfile=Source/LibationAvalonia/Properties/PublishProfiles/LinuxProfile.pubxml
+    dotnet publish Source/HangoverAvalonia/HangoverAvalonia.csproj -c Release -o build -p:PublishProfile=Source/HangoverAvalonia/Properties/PublishProfiles/LinuxProfile.pubxml
+    dotnet publish Source/LoadByOS/LinuxConfigApp/LinuxConfigApp.csproj -c Release -o build -p:PublishProfile=Source/LoadByOS/LinuxConfigApp/Properties/PublishProfiles/LinuxProfile.pubxml
 }
 
 package() {
-  cd "${pkgname^}-${pkgver}"
-  install -Dm755 build/* -t "${pkgdir}/usr/lib/${pkgname}"
-  install -Dm644 Source/LoadByOS/LinuxConfigApp/Libation.desktop -t "${pkgdir}/usr/share/applications"
-  install -Dm644 Images/libation_glass.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    cd "${pkgname^}-${pkgver}"
+    install -Dm755 build/* -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 Source/LoadByOS/LinuxConfigApp/Libation.desktop -t "${pkgdir}/usr/share/applications"
+    install -Dm644 Images/libation_glass.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 
-  install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/${pkgname}/Libation" "${pkgdir}/usr/bin/libation"
-  ln -s "/usr/lib/${pkgname}/Hangover" "${pkgdir}/usr/bin/hangover"
-  ln -s "/usr/lib/${pkgname}/LibationCli" "${pkgdir}/usr/bin/libationcli"
+    install -d "${pkgdir}/usr/bin"
+    ln -s "/usr/lib/${pkgname}/Libation" "${pkgdir}/usr/bin/libation"
+    ln -s "/usr/lib/${pkgname}/Hangover" "${pkgdir}/usr/bin/hangover"
+    ln -s "/usr/lib/${pkgname}/LibationCli" "${pkgdir}/usr/bin/libationcli"
 }
