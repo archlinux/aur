@@ -1,0 +1,18 @@
+pkgbase = mosquitto-auth-plug
+	pkgdesc = Mosquitto plugin for custom authentication methods
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/fuhry/mosquitto-auth-plug
+	arch = x86_64
+	license = MIT
+	depends = mosquitto
+	depends = postgresql-libs
+	depends = hiredis
+	depends = mariadb-libs
+	depends = sqlite
+	depends = libmemcached-awesome
+	source = git+https://github.com/fuhry/mosquitto-auth-plug.git#tag=v0.1.4
+	validpgpkeys = 0x2DE80047268BFA285D3108676E715AF940FD6D2E
+	sha256sums = SKIP
+
+pkgname = mosquitto-auth-plug
