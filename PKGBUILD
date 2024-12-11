@@ -25,11 +25,13 @@ _package() {
 }
 
 _complete() {
+	lua="lua$1"
+	shift
 	pushd "$pkgdir/usr" || exit 1
 	for program; do
-		"bin/$program" --completion bash | tee "$pkgdir/usr/share/bash-completion/completions/$program"
-		"bin/$program" --completion zsh | tee "$pkgdir/usr/share/zsh/site-functions/_$program"
-		"bin/$program" --completion fish | tee "$pkgdir/usr/share/fish/vendor_completions.d/$program.fish"
+		"$lua" "bin/$program" --completion bash | tee "$pkgdir/usr/share/bash-completion/completions/$program"
+		"$lua" "bin/$program" --completion zsh | tee "$pkgdir/usr/share/zsh/site-functions/_$program"
+		"$lua" "bin/$program" --completion fish | tee "$pkgdir/usr/share/fish/vendor_completions.d/$program.fish"
 	done
 	popd || exit 1
 }
@@ -43,7 +45,7 @@ package_lua51-prompt-style() {
 	rm -r "${pkgdir:?}/usr/bin"
 	install -D "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-$_revision/bin/"{nvimp,texluajitp} -t "$pkgdir/usr/bin"
 	# texluajit doesn't use $LUA_PATH_5_1
-	_complete nvimp # texluajitp
+	_complete "$version" nvimp texluajitp
 }
 
 package_lua52-prompt-style() {
@@ -61,7 +63,7 @@ package_lua53-prompt-style() {
 	_package $version
 	rm -r "${pkgdir:?}/usr/bin"
 	install -D "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-$_revision/bin/"{texluap,neomuttp} -t "$pkgdir/usr/bin"
-	_complete texluap # neomuttp
+	_complete "$version" texluap neomuttp
 }
 
 package_lua-prompt-style() {
@@ -73,5 +75,5 @@ package_lua-prompt-style() {
 	rm -r "${pkgdir:?}/usr/bin"
 	install -D "$pkgdir/usr/lib/luarocks/rocks-$version/prompt-style/$pkgver-$_revision/bin/pandocp" -t "$pkgdir/usr/bin"
 	# pandoc lua CLI doesn't accpet arguments
-	# _complete pandocp
+	_complete "$version" pandocp
 }
