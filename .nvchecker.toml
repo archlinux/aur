@@ -1,0 +1,3 @@
+[glslang]
+source = "git"
+git = "https://github.com/KhronosGroup/glslang.git"
