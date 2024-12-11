@@ -1,8 +1,8 @@
 # Maintainer: David Čuček <observ33r@gmail.com>
 
 pkgname="code-translucent"
-pkgver=1.95.3
-pkgrel=2
+pkgver=1.96.0
+pkgrel=1
 pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!"
 
 arch=(
@@ -48,7 +48,6 @@ makedepends=(
 source=(
 	"${pkgname}::git+${url}.git#tag=${pkgver}"
 	"build-with-chroot.sh"
-	"update-electron.patch"
 	"translucent.patch"
 	"product.json"
 	"code-oss.sh"
@@ -57,9 +56,8 @@ source=(
 sha512sums=(
 	"SKIP"
 	"9de3f195e711814e1e457e8ccb6383c6000bc83ee707f2bc138fe66c3cf6c35a6e9c755594afb5fbf8c4f05c3c87f7f3b8714e7947b62094ead6f5f1b81f5b24"
-	"79c64a34ee602b7c1391afb0c6886b3e54fe4792b21580b0f8dc6cc189e6f8259cffa181f23048ca733a488f2b03601ba8cd9f9c759ce04a7634f1cb5fe8b5d5"
 	"94045c480b6596e2f4bbf63833807262beff7396f97f17736dd4cbf91a69b140c81b4819487c0c58bf23594ee9636bff26213322f0ea4aa6f8ad18cb54caefcc"
-	"de652fe1284fba113fe2c4183aa8ad20e8a43ebcf82db4801b4f4a030aea5bdec1b89d06f97a61411c1ac7af60478523e7714a97e82c2fee0eff260e45706ff1"
+	"438a9b33d2f7fd552919a30177590fa19252320b312fd811a5be89d2c354e4684105889392585fafdbd3401132b696a8b9332d8148d9010b968d761efb7dfb05"
 	"6234842d41d9cb6cdd27766e35804644c59a39b43a92f2243b18525dc69d954d1e9dcd4297538de3dfd26051c7035d1ebb04f849a69208afa8214e42160c18dd"
 )
 
@@ -91,9 +89,6 @@ prepare() {
 
 	# Apply patch to source
 	patch -p1 < "../translucent.patch"
-
-	# Apply patch for electron menu bug
-	patch -p1 < "../update-electron.patch"
 
 	# Replace product json
 	cp --update=all "../product.json" "."
