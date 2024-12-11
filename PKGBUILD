@@ -2,34 +2,35 @@
 
 _pkgbasename=dav1d
 pkgname=("lib32-$_pkgbasename" "lib32-lib$_pkgbasename")
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='AV1 cross-platform decoder focused on speed and correctness (32 bit)'
 url='https://code.videolan.org/videolan/dav1d/'
 arch=('x86_64')
-license=('BSD')
+license=('BSD-2-Clause')
 makedepends=(
+      'doxygen'
+      'lib32-glibc'
+      'graphviz'
       'meson'
 #      'meson-cross-x86-linux-gnu'
-      'ninja'
       'nasm'
-      'doxygen'
-      'graphviz'
+      'ninja'
       'xxhash'
       )
 source=(
       https://downloads.videolan.org/pub/videolan/${_pkgbasename}/${pkgver}/${_pkgbasename}-${pkgver}.tar.xz{,.asc}
-      "https://code.videolan.org/videolan/dav1d-test-data/-/archive/${pkgver}/dav1d-test-data-${pkgver}.tar.gz"
+      https://code.videolan.org/videolan/dav1d-test-data/-/archive/${pkgver}/dav1d-test-data-${pkgver}.tar.gz
       )
 sha512sums=(
-      '32fcb1d19f35bec62c05637987e0204cf76880af192685e0acb08ea30cb9dac889ee89be0f847c79c6c51210c375031b26cf6e4aabc91480e44777e9fb3cbe02'
+      '774881d27d045f468a8617317fa751e1ce452a15c6d6c2c93c3dd3c3544d6b2b91b0c3eb5ff379f113c26b27a02dc4b54d0751b083dcbcb18bb96c66a6504acb'
       'SKIP'
-      'aa96f80abd4acff5dc312b2e6807ac31f6c1eb4362d2837078c096d4dcae65f375494eab8ddec27fceb4cfe0d33428302bd1c19d5e700b96a22c2e7b720accc2'
+      '0102abdf3310c53a09c9ae9a8bf7e662402f31ecb41624f70a6557a618e384b38dedb088241b6887a5b93573631b32c778fec90e82236c2192ae18d5914bcae4'
       )
 b2sums=(
-      'e37f7abc222b9a0f774a76ef6dcc2f28c411220c0f92c2239e51c3313bf1109fb6e4feb1451049248e033f2dd79550536a773f3b7b07e5a7890e8bb760c0f596'
+      '7cf75b9de834c77a8012fb560fadca339d0faa0ab92073fd0119f0c5ccbb19017aa271a1aa0939aa698a52e2285b79a956021776a702afe2a7de131ce92d7241'
       'SKIP'
-      '487e28d14694fd37905d685e822a7c9a2859b212634ce9f1e7dff3aa50452a70b3fbd7a25edc80120d31f0e02488d3a1e606b4917fa6cd26fe74c45ce2ef133b'
+      '4d44ffab66de96da059ceacaa1e7c5df63f362492cb9f29af44b7a9b0f1c75da1c96fa64263c23b891a7b17fe78eefcf263fb6917b499de3814bbff3b482ea3c'
       )
 validpgpkeys=('65F7C6B4206BD057A7EB73787180713BE58D1ADC') # VideoLAN Release Signing Key
 
