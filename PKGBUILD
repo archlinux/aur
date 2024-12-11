@@ -8,8 +8,8 @@ pkgbase=glib2-patched-thumbnailer
 pkgname=(
   glib2-patched-thumbnailer
 )
-pkgver=2.82.2
-pkgrel=1
+pkgver=2.82.3
+pkgrel=3
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
 license=(LGPL-2.1-or-later)
@@ -49,13 +49,15 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/gvdb.git"
   0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
   0002-glocalfileinfo-add-dbus-thumbnail-generation-request.patch
+  0002-Revert-gdbus-Fix-leak-of-method-invocation-when-regi.patch
   gio-querymodules.hook
   glib-compile-schemas.hook
 )
-b2sums=('3ff7ea88d69b945524b28211cd11373856e78813ea2795c6aff040fb264d6323edcd2fd2782d827936bdee34238a6995b2c7a6b51eeac49de583a21a0072a2d2'
+b2sums=('9abb7878311f0df50affd3e308aa157ff711e8789e9f12b6b95f9cab198e3d662528fa1f8a48d5e489bfb1925886e9c5b1bcc5161d65e6323d04c5f3351df831'
         'SKIP'
         '47cd08ba7e4b3ca0cd19f6dc20e4d73e30cf90f2b78c3d620ee0c7a4d8a4b325a5e88ec2dcc3a63402c16cc1ce8061130afc313e3cbfcd220dff3e642b113a69'
         '84be383030a30f3c681e3b444e7475b7ea7653bf873f3548a77cb00860fc4e1e4731e83be888068dbb36f8ba63d5322449f9d11dbe619de8bea8f9c96e46d2f0'
+        'bf1bc7b461724ab110249c677a8da6a2f71bcb3544a1256e462674af3a760b342df65ec4be37416997d3604cd424b5a9f3a2f653b53b12272d708d370264dfc5'
         '14c9211c0557f6d8d9a914f1b18b7e0e23f79f4abde117cb03ab119b95bf9fa9d7a712aa0a29beb266468aeb352caa3a9e4540503cfc9fe0bbaf764371832a96'
         'd30d349b4cb4407839d9074ce08f5259b8a5f3ca46769aabc621f17d15effdb89c4bf19bd23603f6df3d59f8d1adaded0f4bacd0333afcab782f2d048c882858')
 validpgpkeys=(
@@ -72,6 +74,9 @@ prepare() {
 
   # Suppress noise from glib-compile-schemas.hook
   git apply -3 ../0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
+
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/glib2/-/issues/9
+  git apply -3 ../0002-Revert-gdbus-Fix-leak-of-method-invocation-when-regi.patch
 
   # Apply patch to generate thumbnails
   git apply -3 ../0002-glocalfileinfo-add-dbus-thumbnail-generation-request.patch
@@ -120,7 +125,7 @@ package_glib2-patched-thumbnailer() {
     'glib2-devel: development tools'
     'gvfs: most gio functionality'
   )
-  options=(!docs staticlibs)
+  options+=(!docs staticlibs)
 
   meson install -C build --destdir "$pkgdir"
 
