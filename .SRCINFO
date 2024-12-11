@@ -1,0 +1,15 @@
+pkgbase = limbo-git
+	pkgdesc = cli movie tracker - keep track of watched movies and series
+	pkgver = 0.0.8.r78.geda1f53
+	pkgrel = 1
+	url = https://github.com/tursodatabase/limbo
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = mimalloc
+	provides = limbo
+	conflicts = limbo
+	source = git+https://github.com/tursodatabase/limbo
+	b2sums = SKIP
+
+pkgname = limbo-git
