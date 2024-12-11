@@ -10,11 +10,8 @@ pkgdesc="LIMBO is a modern classic, putting players in control of a boy's journe
 url="https://playdead.com/games/limbo/"
 license=('custom: "commercial"')
 arch=('i686' 'x86_64')
-if [ "$CARCH" = "x86_64" ]; then
-  depends=('lib32-sdl2')
-else
-  depends=('sdl2')
-fi
+depends_i686=('sdl2')
+depends_x86_64=('lib32-sdl2')
 makedepends=('unzip')
 _archivename="${_pkgname^}-Linux-2014-06-18.sh"
 conflicts=('limbo_wine')
