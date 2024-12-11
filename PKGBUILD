@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RODBC
-_pkgver=1.3-23
+_pkgver=1.3-25.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="ODBC Database Access"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -14,8 +14,8 @@ depends=(
   unixodbc
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('338d3950ff4d032f32b821d86fb1f882')
-b2sums=('9ba71aacad85f2eae40b3e6f1f991fdf22d749ba14c6615182eb9c9d587831a898c0dc71ca939426d2e027f6c08fbe1370eaf73d1ca46d8785e1d7d738cc1584')
+md5sums=('c56f6645bdf773c44cd91bea3efc8a30')
+b2sums=('3f2af9ac06569da3ee4f28ee1786bf7d2bf9d5941b7babcdbff77e6c80004dd44c9cd9408b6f5a3194299ca2ac0fe322a62438d64c6a198e35d0f1c469db74de')
 
 build() {
   mkdir build
