@@ -1,9 +1,10 @@
 # Maintainer: Lorenzo Gaifas <brisvag at gmail dot com>
 
 _name='napari-svg'
+_name_slug="${_name//-/_}"
 _author='napari'
 pkgname="${_name}"
-pkgver=0.1.10
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A plugin for writing svg files from napari.'
 arch=('any')
@@ -15,22 +16,21 @@ makedepends=(
   'python-setuptools-scm'
 )
 depends=(
-  'napari-plugin-engine'
   'python'
   'python-imageio'
   'python-numpy'
   'python-vispy'
 )
-source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('18e642c888a71e09c9d1097f25bced1e7ef5dde1771469647bcd77975800f77d')
+source=("https://files.pythonhosted.org/packages/source/${_name_slug::1}/${_name_slug//-/_}/${_name_slug//-/_}-$pkgver.tar.gz")
+sha256sums=('9e2f295bae33e45c0195032bbb2cb3f372e8016f0f3d69715dac3cb3505d10f6')
 
 build() {
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd "${srcdir}/${_name_slug}-${pkgver}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd "${srcdir}/${_name_slug}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
