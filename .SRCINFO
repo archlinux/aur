@@ -1,6 +1,6 @@
 pkgbase = inkdown
 	pkgdesc = A WYSIWYG Markdown editor, improve reading and editing experience. and generate your Markdown files into online documents in the easiest and fastest way.Use system-wide electron.
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://www.inkdown.me/
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = inkdown
 	makedepends = curl
 	depends = electron29
 	conflicts = inkdown
-	source = inkdown-1.2.1::https://github.com/1943time/inkdown/archive/refs/tags/v1.2.1.tar.gz
+	source = inkdown-1.2.2::https://github.com/1943time/inkdown/archive/refs/tags/v1.2.2.tar.gz
 	source = inkdown.sh
-	sha256sums = a8ed8c92dd47dad116570db44b6853147639803dc7910a832bb1e98da5618fa8
+	sha256sums = e112314b97791bef2af0030bd6d7491dc9e2fc07ef9181b55e4f55c91b190cd1
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = inkdown
