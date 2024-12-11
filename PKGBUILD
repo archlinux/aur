@@ -1,6 +1,7 @@
 #Maintainer: stefonarch standreas@riseup.net
 
-pkgname=lxqt-panel-profiles
+_pkgname=lxqt-panel-profiles
+pkgname=$_pkgname
 pkgver=e7d656b
 pkgrel=1
 pkgdesc="Backup, restore and switch configurations of lxqt-panel"

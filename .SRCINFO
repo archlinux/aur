@@ -11,7 +11,7 @@ pkgbase = lxqt-panel-profiles
 	depends = python-pyqt6
 	depends = qt6-tools
 	provides = lxqt-panel-profiles=e7d656b
-	source = git+https://codeberg.org/MrReplikant/.git
+	source = git+https://codeberg.org/MrReplikant/lxqt-panel-profiles.git
 	md5sums = SKIP
 
 pkgname = lxqt-panel-profiles
