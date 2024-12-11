@@ -8,7 +8,7 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.5.1
-pkgrel=4
+pkgrel=5
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -260,7 +260,7 @@ _prepare() {
   # 3. Use --offload-comress to reduce the size of the generated binaries.
   #    Otherwise we run into the 32 bit offset limit, see
   #    https://github.com/ROCm/rocBLAS/issues/1448#issuecomment-2372524901
-  export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=$(nproc) --gcc-install-dir=/usr/lib/gcc/x86_64-pc-linux-gnu/13.3.0/ --offload-compress"
+  export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=$(nproc) --gcc-install-dir=$(dirname $(gcc-13 -print-libgcc-file-name)) --offload-compress"
   export HIPCC_LINK_FLAGS_APPEND="-parallel-jobs=$(nproc)"
   # Force aotriton to use system deps
   # export PIP_NO_INDEX=1
