@@ -2,7 +2,7 @@
 # Maintainer: Matthias Eberlein
 pkgname=youtube-to-mp3
 pkgver=3.9.9.97
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Downloads audio from YouTube or Vimeo and saves it to mp3 or m4a format to listen to locally"
 arch=(x86_64 i686)
@@ -14,6 +14,7 @@ depends=(
 	'qt5-webengine'
 	'qt5-declarative'
 	'taglib1>=1.13.1-2'
+	'ffmpeg'
 )
 provide=('youtube-to-mp3')
 conflicts=('youtube-to-mp3')
