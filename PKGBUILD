@@ -5,9 +5,9 @@
 pkgbase='python-ultralytics'
 pkgname=('python-ultralytics')
 _module='ultralytics'
-pkgver=8.3.48
+pkgver=8.3.49
 _src_folder=${_module}-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Ultralytics YOLOv8 for SOTA object detection, multi-object tracking, instance segmentation, pose estimation and image classification."
 url="https://github.com/ultralytics/ultralytics"
 depends=('python-matplotlib' 'python-opencv' 'python-pillow' 'python-requests' 'python-scipy' 'python-pytorch' 'python-torchvision' 'python-tqdm' 'python-psutil' 'python-py-cpuinfo' 'python-thop' 'python-pandas' 'python-seaborn' 'python-lapx')
@@ -15,7 +15,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('AGPL-3.0-or-later')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ultralytics/ultralytics/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('24af338c6b6c15ed74fd19d07b50f66a831c84b4f609eb082aa7c14ef172b826')
+sha256sums=('6cf5d109f8010f9366d2f3de9861396492c56066e1385b045f17a4f7c0e13908')
 
 build() {
   cd "${srcdir}/${_src_folder}"
@@ -26,6 +26,6 @@ package() {
   depends+=()
   cd "${srcdir}/${_src_folder}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
-  find . -type d -name "tests" -exec rm -rf {} + #this was leaving a new drectory under site_packages called 'tests'
+  find $pkgdir -type d -name "tests" -exec rm -rf {} + #this was leaving a new drectory under site_packages called 'tests'
 }
 # vim:set ts=2 sw=2 et:
