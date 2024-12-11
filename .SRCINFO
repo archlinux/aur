@@ -1,11 +1,12 @@
 pkgbase = qeda
 	pkgdesc = The tool for easy creating electronic component libraries
 	pkgver = 0.4.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/qeda/qeda
 	arch = any
 	license = MIT
 	makedepends = npm
+	makedepends = coffeescript
 	makedepends = poppler
 	makedepends = ghostscript
 	depends = sh

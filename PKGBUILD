@@ -2,7 +2,7 @@
 
 pkgname=qeda
 pkgver=0.4.1
-pkgrel=0
+pkgrel=1
 pkgdesc="The tool for easy creating electronic component libraries"
 arch=('any')
 url="https://github.com/qeda/qeda"
@@ -16,6 +16,7 @@ depends=(
 )
 makedepends=(
     npm
+    coffeescript
     poppler
     ghostscript
 )
