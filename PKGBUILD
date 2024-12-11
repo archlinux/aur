@@ -1,7 +1,7 @@
 # Maintainer: Zesko
 _pkgname="limine-entry-tool"
 pkgname="limine-dracut-support"
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Install kernel for Limine bootloader."
 arch=("any")
@@ -9,23 +9,23 @@ url="https://gitlab.com/Zesko/limine-entry-tool"
 source=("$_pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz")
 license=("GPL3")
 depends=(
-       'bash'
-       'java-environment-openjdk>=17'
-       'limine'
-       'dracut'
-       'systemd'
-       'efibootmgr')
+        'bash'
+        'java-environment-openjdk>=17'
+        'limine'
+        'dracut'
+        'systemd'
+        'efibootmgr')
 optdepends=(
         'journalctl-desktop-notification: It notifies you on Desktop when an error occurs.'
 )
 makedepends=('git' 'maven')
 backup=(etc/limine-entry-tool.conf)
 conflicts=('limine-dracut-support-git')
-
+sha256sums=('3d0db272797d4a4c23c4a9e9d10d63c5af2ec299c3cbf2a202b77c9b6857d1b9')
 
 build() {
-    cd "$srcdir/${_pkgname}-${pkgver}"
-    mvn clean package
+  cd "$srcdir/${_pkgname}-${pkgver}"
+  mvn clean package
 }
 
 package() {
@@ -33,6 +33,8 @@ package() {
   src_path="install/arch-linux/${pkgname}"
   install -dm 755 $src_path/usr/share/java/
   install -Dm 644 target/limine-entry-tool*.jar $src_path/usr/share/java/
-  cp -vr $src_path/usr $src_path/etc "$pkgdir"
+  install -dm 755 $src_path/usr/share/doc/${pkgname}/
+  cp -r README.md CHANGELOG.md $src_path/usr/share/doc/${pkgname}/
+  cp -r $src_path/usr $src_path/etc "$pkgdir"
 }
-sha256sums=('f2890e9ac45ee5618e47542a595d0f8c4af2dd08e7bfa79a5229d1bfb9e53869')
+
