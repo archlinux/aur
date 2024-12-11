@@ -1,11 +1,11 @@
 pkgbase = tokyonight-extra
 	pkgdesc = A dark and light theme extras for Kitty, Alacritty, iTerm, Fish, etc
-	pkgver = 4.10.0
+	pkgver = 4.11.0
 	pkgrel = 1
 	url = https://github.com/folke/tokyonight.nvim
 	arch = any
 	license = Apache-2.0
-	source = tokyonight-extra-4.10.0-1.tar.gz::https://github.com/folke/tokyonight.nvim/archive/refs/tags/v4.10.0.tar.gz
-	b2sums = 594b4c0b6ef20b553d6a7609c41ee06a5f530c1fdd91345d5a578304bbd90bded0328c17f2847809dd1ac7932b635847a9864b973714e0fdc7602c3b806db70b
+	source = tokyonight-extra-4.11.0-1.tar.gz::https://github.com/folke/tokyonight.nvim/archive/refs/tags/v4.11.0.tar.gz
+	b2sums = 9d65f28816c6c02df11d1ed6bc7c01c7b1b014181678eb2bf2bd67f4e6275599d51a47d067e22855e7aea55bae53589b97769bec733a5baa7ccd7150cb147a31
 
 pkgname = tokyonight-extra
