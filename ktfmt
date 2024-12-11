@@ -7,4 +7,4 @@ exec java \
   --add-exports jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED \
   --add-exports jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED \
   --add-exports jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED \
-  -jar '/usr/share/java/google-java-format/google-java-format.jar' "$@"
+  -jar '/usr/share/java/ktfmt/ktfmt.jar' "$@"

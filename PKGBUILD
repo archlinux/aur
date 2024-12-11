@@ -1,28 +1,26 @@
 #!/bin/bash
 
-# Maintainer: EvaristeGalois11 <turbo dot backslid four zero zero at passinbox dot com>
-# Contributor: PumpkinCheshire <me at pumpkincheshire dot com>
-# Contributor:  <tigersoldi at gmail dot com>
+# Maintainer: someone5678 <someone5678 dot dev at google dot com>
 
-pkgname=google-java-format
-pkgver=1.25.0
+pkgname=ktfmt
+pkgver=0.53
 pkgrel=1
-pkgdesc='Reformats Java source code to comply with Google Java Style'
-url='https://github.com/google/google-java-format'
+pkgdesc='A program that reformats Kotlin source code to comply with the common community standard for Kotlin code conventions'
+url='https://github.com/facebook/ktfmt'
 arch=('any')
-license=('Apache-2.0 AND NCSA')
+license=('Apache-2.0')
 depends=('java-runtime' 'bash')
 source=(
-  "https://github.com/google/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-all-deps.jar"
+  "https://github.com/facebook/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-jar-with-dependencies.jar"
   "$pkgname"
-  "https://raw.githubusercontent.com/google/$pkgname/master/LICENSE"
+  "https://raw.githubusercontent.com/facebook/$pkgname/master/LICENSE"
 )
-sha256sums=('8bd949e84a6435046cf18ddfa769661eaac9da21b2d3ca46c4ba12f96637bcbb'
-            '5869a6ec4dd3c681b06e9a0fa1cdef30d0ee722d48115ff4a5e1efb01947e100'
-            '2c7e23c8000fe553b6f380b5e365dd72198439174f1b6821d5e3b190b54af0dc')
+sha256sums=('76d05c614fe1864788557170fe89410f75134866a9f84011f9bd570ca12526b1'
+            '62228af9300c9ee416aeef97fb589a91ddcd321e6b262e5e5c0924d26cb4ef52'
+            '5f1521fb886be393d8afc4655ab7c6ffe84e1d4f15dfd321ceec3ce62968d058')
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$pkgver-all-deps.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+  install -Dm755 "$srcdir/$pkgname-$pkgver-jar-with-dependencies.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
   install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname"
 }

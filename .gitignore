@@ -3,4 +3,4 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
-!google-java-format
+!ktfmt
