@@ -7,7 +7,6 @@ pkgbase = whisper.cpp-openvino
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	makedepends = ccache
 	makedepends = cmake
 	makedepends = git
 	depends = glibc

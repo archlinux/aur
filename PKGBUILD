@@ -12,7 +12,6 @@ depends=('glibc' 'gcc-libs' 'openmp' 'openvino' 'pugixml')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}")
 makedepends=(
-  'ccache'
   'cmake'
   'git'
 )
