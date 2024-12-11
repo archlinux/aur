@@ -2,36 +2,34 @@
 
 pkgname=canonical-multipass
 _realname=multipass
-_builddir=_build
-pkgver=1.14.1
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Multipass is a lightweight VM manager for Linux, Windows and macOS."
 arch=('x86_64')
 url="https://multipass.run"
-license=('GPL3')
-depends=('apparmor' 'qt5-base' 'qemu-base')
-makedepends=('git' 'cmake' 'qt5-x11extras' 'libvirt')
+license=('GPL-3.0-only')
+source=("git+https://github.com/canonical/${_realname}.git#tag=v${pkgver}"
+        multipassd.service)
+depends=('glibc' 'gcc-libs' 'systemd-libs' 'apparmor' 'openssl' 'qt6-base' 'qemu-base')
+makedepends=('git' 'cmake' 'libvirt')
 optdepends=(
-    'qt5-x11extras: for multipass.gui'
     'libvirt: to use the libvirt driver'
 )
-source=("git+https://github.com/canonical/${_realname}.git#tag=v${pkgver}"
-        multipassd.service
-        libssh-static.patch
-)
+
+
+_builddir=_build
 
 prepare() {
   cd "${_realname}"
   git submodule update --init --recursive
-  patch 3rd-party/libssh/CMakeLists.txt < ${srcdir}/libssh-static.patch
 }
 
 build() {
-  export CXXFLAGS=-Wno-error=deprecated-declarations
   cmake -B ${_builddir} \
       -S "${_realname}" \
       -Wno-dev \
-      -DCMAKE_BUILD_TYPE='None' \
+      -DMULTIPASS_ENABLE_FLUTTER_GUI=OFF \
+      -DMULTIPASS_ENABLE_TESTS=OFF \
       -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build ${_builddir}
 }
@@ -43,6 +41,5 @@ package() {
   install -Dm644 "$srcdir"/multipassd.service "$pkgdir"/usr/lib/systemd/system/multipassd.service
 }
 
-sha256sums=('5111f95e4c1a23dea6478bf2197410acd4b318ae72a0c41ac39bd9a81e9c3e13'
-            'f7aebd4ab185048ee10e8185ac230c8ac549ff29b2e52722fbf366ad6f3c6b59'
-            '0d131fcba1b73775efc052bb7e7644aa893edddf5ae2f701b045fdbaa02ebd01')
+sha256sums=('f03ea0b7a61a0c049a82dd531b2c073c8f4d0dd7e3cca759b9705d8ef94d05e5'
+            'f7aebd4ab185048ee10e8185ac230c8ac549ff29b2e52722fbf366ad6f3c6b59')
