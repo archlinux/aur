@@ -3,15 +3,15 @@
 
 pkgname=cosmic-settings-git
 pkgver=1.0.0.alpha.4.r6.g0072b79
-pkgrel=1
+pkgrel=2
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings"
 license=('GPL-3.0-only')
 depends=(
   'accountsservice'
-#  'cosmic-icons-git'
-#  'cosmic-randr-git'
+  'cosmic-icons-git'
+  'cosmic-randr-git'
   'fontconfig'
   'iso-codes'
   'libinput'
