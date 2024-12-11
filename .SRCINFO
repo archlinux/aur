@@ -1,0 +1,14 @@
+pkgbase = flawless
+	pkgdesc = Durable execution engine for Rust.
+	pkgver = 1.0.0.beta.3
+	pkgrel = 1
+	url = https://flawless.dev
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	source_x86_64 = flawless-1.0.0.beta.3-x86_64::https://downloads.flawless.dev/1.0.0-beta.3/x64-linux/flawless
+	sha256sums_x86_64 = b511598babcde8a8bc7898f6e0c7b06b3f51a2d26227fba1cc480b06af5a215c
+	source_aarch64 = flawless-1.0.0.beta.3-aarch64::https://downloads.flawless.dev/1.0.0-beta.3/aarch64-linux/flawless
+	sha256sums_aarch64 = 555a367208beba65493e18fe83270f121105a63e830960e1f649543e7a8b4936
+
+pkgname = flawless
