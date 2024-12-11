@@ -1,0 +1,3 @@
+[dav1d]
+source = "git"
+git = "https://code.videolan.org/videolan/dav1d.git"
