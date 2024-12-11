@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync-git"
-pkgver=r92.f9b0db9
+pkgver=r112.a1618d5
 pkgrel=1
 pkgdesc="The tool syncs Snapper snapshots with Limine bootloader"
 arch=("any")
@@ -43,5 +43,7 @@ package() {
   src_path="install/arch-linux/"
   install -dm 755 $src_path/usr/share/java/
   install -Dm 644 target/limine-snapper-sync.jar $src_path/usr/share/java/
+  install -dm 755 $src_path/usr/share/doc/limine-snapper-sync/
+  install -Dm 644 README.md CHANGELOG.md $src_path/usr/share/doc/limine-snapper-sync/
   cp -vr $src_path/usr $src_path/etc "$pkgdir"
 }
