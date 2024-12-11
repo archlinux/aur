@@ -1,0 +1,5 @@
+[xad]
+source = "github"
+github = "auto-differentiation/xad"
+use_latest_release = "true"
+prefix = "v"
