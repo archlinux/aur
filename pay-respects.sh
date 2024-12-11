@@ -1,12 +1,15 @@
 #!/bin/sh
 if [ "$#" -gt 1 ]; then
-	SHELL=$(basename $SHELL)
-	if [ "$SHELL" = "fish" ]; then
-		echo "set -x _PR_LIB /usr/lib/pay-respects:$HOME/.local/lib/pay-respects"
-	elif [ "$SHELL" = "nu" ]; then
-		echo "env:_PR_LIB=/usr/lib/pay-respects:$HOME/.local/lib/pay-respects"
-	else
-		echo "_PR_LIB=/usr/lib/pay-respects:$HOME/.local/lib/pay-respects"
+	if [ -z "$_PR_LIB" ]; then
+		SHELL=$(basename $SHELL)
+		LIB="/usr/lib/pay-respects"
+		if [ "$SHELL" = "nu" ]; then
+			echo "env:_PR_LIB=$LIB"
+		elif [[ "$SHELL" = "pwsh" ]]; then
+			echo "\$env:_PR_LIB=\"$LIB\""
+		else
+			echo "export _PR_LIB=$LIB"
+		fi
 	fi
 fi
 /opt/pay-respects/bin/pay-respects "$@"
