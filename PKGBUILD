@@ -3,7 +3,7 @@
 
 # basic info
 pkgname="lightly-qt6-bin"
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="Bali10050's fork of Lightly (A modern style for qt applications)"
 url="https://github.com/Bali10050/lightly"
@@ -18,7 +18,7 @@ source=(
 )
 
 sha256sums=(
-  '02376fd27305ce0f0d895fed8b400542900ad24bfcedb8eae420d019279107f9'
+  '1bb208e48b4018f73dbe19436a04c5045b391f6cde916e99383a645d9e22f5cf'
 )
 
 # KF6/Qt6
@@ -34,7 +34,17 @@ depends_kf6=(
   'kwindowsystem'
 )
 
-depends=("${depends_kf6[@]}")
+# KF5/QT5 for backward compatibility
+depends_kf5=(
+    'kcmutils5'
+    'frameworkintegration5'
+    'kconfigwidgets5'
+    'kiconthemes5'
+    'kirigami2'
+    'kwindowsystem5'
+)
+
+depends=("${depends_kf6[@]}" "${depends_kf5[@]}")
 
 conflicts=(
   lightly-kf6
