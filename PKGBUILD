@@ -1,15 +1,15 @@
 # Maintainer: rivo nurges <rivo@surfar.ee>
 
 pkgname=dterm-git
-pkgver=r6.dea09ce
+pkgver=r4.b12f6b4
 pkgrel=1
 pkgdesc='Simple serial terminal emulator'
-url='https://github.com/hefloryd/dterm'
+url='https://github.com/donatnz/dterm'
 license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('readline')
-optdepends=('lrzsz: for X/Y/ZMODEM file transfer functionality')
-source=("${pkgname}::git+https://github.com/hefloryd/dterm.git")
+optdepends=('lrzsz: for X/ZMODEM file transfer functionality')
+source=("${pkgname}::git+https://github.com/donatnz/dterm.git")
 md5sums=('SKIP')
 conflicts=('dterm')
 
