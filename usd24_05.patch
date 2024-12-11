@@ -1,17 +1,17 @@
-commit b7ef061ce3e25becc26f5a72bfb7cc2313459799
+commit ef50769f4fd0dab1403a33dc4b56570f62df3121
 Author: howetuft <howetuft@gmail.com>
 Date:   Thu Jul 11 13:13:07 2024 +0200
 
     usd24.05
 
 diff --git a/src/hydra/instancer.cpp b/src/hydra/instancer.cpp
-index 2b9590373..904123f7b 100644
+index ae7ced42e..859b5c46d 100644
 --- a/src/hydra/instancer.cpp
 +++ b/src/hydra/instancer.cpp
-@@ -60,16 +60,16 @@ void HdCyclesInstancer::SyncPrimvars()
-       continue;
+@@ -61,16 +61,16 @@ void HdCyclesInstancer::SyncPrimvars()
      }
- 
+
+ #if PXR_VERSION < 2311
 -    if (desc.name == HdInstancerTokens->translate) {
 +    if (desc.name == HdInstancerTokens->instanceTranslations) {
        _translate = value.Get<VtVec3fArray>();
@@ -28,4 +28,4 @@ index 2b9590373..904123f7b 100644
 +    else if (desc.name == HdInstancerTokens->instanceTransforms) {
        _instanceTransform = value.Get<VtMatrix4dArray>();
      }
-   }
+ #else

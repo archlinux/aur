@@ -10,7 +10,7 @@
 [[ -v CUDA_HOST_COMPILER ]] && _cuda_host_compiler=(${CUDA_HOST_COMPILER})
 
 pkgname=cycles-standalone
-pkgver=4.1.1
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Blender Cycles rendering engine, standalone version"
 arch=(x86_64)
@@ -20,12 +20,11 @@ depends=(pugixml opencolorio boost-libs python gflags openimageio intel-oneapi-t
 makedepends=(cmake git boost llvm python)
 optdepends=(google-glog cuda optix)
 provides=(cycles)
-_commit=b364692812269d7a67e7ebccc5dd02f53e79ef48
-source=("git+https://github.com/blender/cycles.git#commit=${_commit}"
+source=("git+https://github.com/blender/cycles.git#tag=v${pkgver}"
         usd24_05.patch
         cycles_wrap.sh)
-sha256sums=('75436b6474b97850717b8eb0903c21f01b6e14ec0c8381012070c658d5167da7'
-            '3e2958d5cd9de9c5ca77024c4682179ecdc5aae4fcc2007d50ef225a2be03cd4'
+sha256sums=('165dbd7d8a1904aa556d97b57bd485b5ead3f7a4495a6fedfd3f43b0bfe2eb29'
+            '92fef506493aa90f20378ad0ecd0bb6637f3e738116e49b050057d5f7bd216de'
             '00afc4aab5541d147b013c31ab91d78e272654a75cae60b39cf70c23a2612c96')
 
 prepare() {
