@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname=btrfs-desktop-notification-git
-pkgver=r21.e47efa8
+pkgver=r31.e218802
 pkgrel=1
 pkgdesc="Notifies you on the desktop when booting into a read-only system or when BTRFS warning/error messages appear in the dmesg log."
 arch=('any')
@@ -21,5 +21,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
+  install -dm 755 "usr/share/doc/${pkgname%-git}/"
+  cp -r screenshots README.md CHANGELOG.md "usr/share/doc/${pkgname%-git}/"
   cp -vr usr etc "$pkgdir"
 }
