@@ -4,7 +4,7 @@ pkgbase=115-browser-bin
 pkgname=115-browser-bin
 _pkgname=115br
 pkgver=27.0.7.5
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 options=(!strip !debug)
 depends=(
@@ -35,6 +35,8 @@ prepare() {
 
 package() {
     bsdtar -xf "${srcdir}/${pkgname}-${pkgver}/data.tar.xz" --numeric-owner -C "${pkgdir}"
+
+    find "${pkgdir}/usr" -type d -exec chmod 755 {} +
     chown -R root:root "${pkgdir}"
 
     cd ${pkgdir}/
