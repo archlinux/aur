@@ -1,0 +1,26 @@
+pkgbase = buchable
+	pkgdesc = The unofficial cross-platform app for Audiobookshelf
+	pkgver = 1.7.4
+	pkgrel = 1
+	url = https://github.com/Vito0912/abs_flutter
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = flutter
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = xz
+	makedepends = gtk3
+	makedepends = imagemagick
+	depends = gtk3
+	depends = libsecret
+	depends = mpv
+	depends = libayatana-appindicator
+	depends = xdg-user-dirs
+	provides = buchable
+	conflicts = buchable
+	source = buchable-1.7.4.tar.gz::https://github.com/Vito0912/abs_flutter/archive/refs/tags/v1.7.4.tar.gz
+	sha256sums = SKIP
+
+pkgname = buchable
