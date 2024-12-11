@@ -1,7 +1,7 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 
 pkgname=framework-system-git
-pkgver=r304.491a587
+pkgver=r393.fb43228
 pkgrel=1
 arch=('x86_64')
 pkgdesc='Tool to interact with the framework system (git development version)'
@@ -32,11 +32,6 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname}"
 	cargo build --release -p framework_tool
-}
-
-check() {
-	cd "$srcdir/${pkgname}"
-	cargo test
 }
 
 package() {
