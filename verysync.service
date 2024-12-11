@@ -1,0 +1,17 @@
+[Unit]
+Description=Verysync - Verysync File Synchronization for %I
+After=network.target
+
+[Service]
+# User=verysync
+# Group=verysync
+User=root
+Group=root
+Type=simple
+ExecStart=/usr/bin/verysync -gui-address :8886 -no-browser -no-restart -logflags=0 
+Restart=on-failure
+SuccessExitStatus=3 4
+RestartForceExitStatus=3 4
+
+[Install]
+WantedBy=multi-user.target
