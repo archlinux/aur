@@ -1,0 +1,55 @@
+From 95d71b823f029e0cbfbadfae3b2f15c02ce14185 Mon Sep 17 00:00:00 2001
+From: lectrode <electrodexsnet@gmail.com>
+Date: Tue, 10 Dec 2024 23:27:21 -0700
+Subject: [PATCH] fix negating windows by default
+
+[bugfix]
+* This allows neg_match (Neg Windows) to function as originally
+  intended: negating specified windows by default
+* With this change, the default value of neg_match is now "none"
+  to ensure that no windows are negated by default
+---
+ plugins/neg/neg.xml.in  | 2 +-
+ plugins/neg/src/neg.cpp | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/plugins/neg/neg.xml.in b/plugins/neg/neg.xml.in
+index 3d2d664..39b7872 100644
+--- a/plugins/neg/neg.xml.in
++++ b/plugins/neg/neg.xml.in
+@@ -34,7 +34,7 @@
+ 	    <option name="neg_match" type="match">
+ 		<_short>Neg Windows</_short>
+ 		<_long>Windows to be negative by default</_long>
+-		<default>any</default>
++		<default>none</default>
+ 	    </option>
+ 	    <option name="exclude_match" type="match">
+ 		<_short>Exclude Windows</_short>
+diff --git a/plugins/neg/src/neg.cpp b/plugins/neg/src/neg.cpp
+index 8dbc136..68aae34 100644
+--- a/plugins/neg/src/neg.cpp
++++ b/plugins/neg/src/neg.cpp
+@@ -416,7 +416,7 @@ NegScreen::optionChanged (CompOption          *opt,
+ 		isNowNeg = optionGetNegMatch ().evaluate (w);
+ 		isNowNeg = isNowNeg && !optionGetExcludeMatch ().evaluate (w);
+ 
+-		if (isNowNeg && isNeg && !nw->isNeg)
++		if (isNowNeg && !isNeg && !nw->isNeg)
+ 		    nw->toggle ();
+ 		else if (!isNowNeg && nw->isNeg)
+ 		    nw->toggle ();
+@@ -485,8 +485,8 @@ NegWindow::NegWindow (CompWindow *window) :
+     /* Taken from ObjectAdd, since there is no equavilent
+      * we check for screenNeg == true in ctor */
+ 
+-    if (ns->isNeg && ns->optionGetNegMatch ().evaluate (window))
+-	toggle ();
++    if (!ns->isNeg && ns->optionGetNegMatch ().evaluate (window) && !ns->optionGetExcludeMatch ().evaluate (window))
++        toggle ();
+ }
+ 
+ bool
+--
+libgit2 1.8.4
+

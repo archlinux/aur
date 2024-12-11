@@ -12,7 +12,7 @@ _name='compiz'
 _pkgname='compiz-easy-patch'
 pkgname="${_pkgname}"
 pkgver=0.9.14.2
-pkgrel=7
+pkgrel=8
 pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE."
 url="https://launchpad.net/compiz"
 arch=('i686' 'x86_64')
@@ -99,6 +99,9 @@ source=(
   "0006-Drop-toggle-shaded-since-it-s-no-longer-included-in-.patch"
   "0007-64-bit-time-t-compat.patch"
 
+  # Fix negating windows by default (custom patch by lectrode)
+  "0008-fix-negating-windows-by-default.patch"
+
   # https://bugs.launchpad.net/compiz/+bug/2060620
   "1001-fix-crash-in-vertexbuffer.patch"
 
@@ -122,7 +125,7 @@ sha256sums=(
   '4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a'
   '9b9e92a7174f2255f408d340dcb7b765211777cd92fe9ed17b5888ff13578291'
   '90969b7beba107a7146b11c3a60969b62c2be7a3e891d7dee913504ec6de759c'
-
+  '4fb18253eb1b438cfd5e8e9acb740b368cf18eace07459cb094ce7a9198e6d89'
   '859dca15821fac3b8d1e231d48932c0fad3f5d3f16cb53a8a761df2bd51b9d3a'
 
   '4d28bc2cefbfae77b9157f39876f5296b5edb7fb00de2a391a262688d2f7590c'
