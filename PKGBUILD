@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cppzmq-git
-pkgver=4.10.0.r20.g6164cf7
+pkgver=4.10.0.r29.g6541dd1
 pkgrel=1
 pkgdesc="Header-only C++ binding for libzmq"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/zeromq/cppzmq"
 license=('MIT')
 depends=('zeromq')
 makedepends=('git' 'cmake')
-checkdepends=('catch2-v2')
+checkdepends=('catch2')
 provides=("cppzmq=$pkgver")
 conflicts=('cppzmq')
 source=("git+https://github.com/zeromq/cppzmq.git")
