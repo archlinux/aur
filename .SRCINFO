@@ -21,7 +21,7 @@ pkgbase = 2s2h-bin
 	source_x86_64 = https://gitlab.com/linuxbombay/2s2h/binaries/1.1.1.2/-/raw/main/2s2h-linux-x64.tar.xz
 	sha256sums_x86_64 = c4fbe761b355138526df526f3d2f5edb1236baaff5958f73a906f9d127051f3a
 	source_aarch64 = https://gitlab.com/linuxbombay/2s2h/binaries/1.1.1.2/-/raw/main/2s2h-linux-arm64.tar.xz
-	sha256sums_aarch64 = 57bbab879625370ee0fe4f393fc6d31656e4571cb020b2f058882840a234c6f8
+	sha256sums_aarch64 = cb5d3bf99c53eb86cb9c5578af9a46cf7d4ff8e160daf8d2ba84a7cf01fbbcd2
 	source_i686 = https://gitlab.com/linuxbombay/2s2h/binaries/1.1.1.2/-/raw/main/2s2h-linux-i686.tar.xz
 	sha256sums_i686 = ff3930264b5d32fa5c4770df1fa2f28ac9196c29cb4013c0853e0c419d7ff774
 
