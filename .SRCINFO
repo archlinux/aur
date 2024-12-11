@@ -1,6 +1,6 @@
 pkgbase = napari
 	pkgdesc = Multi-dimensional image viewer for Python.
-	pkgver = 0.4.19
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://napari.org
 	arch = any
@@ -47,9 +47,9 @@ pkgbase = napari
 	depends = qt5-python-bindings
 	optdepends = python-numba: Image and Label performance
 	optdepends = python-triangle: Shapes performance
-	source = https://files.pythonhosted.org/packages/source/n/napari/napari-0.4.19.tar.gz
+	source = https://files.pythonhosted.org/packages/source/n/napari/napari-0.5.4.tar.gz
 	source = napari.desktop
-	sha256sums = 083468ebbdb3e91c6bba6ed60bc75747adcba622376caf8a1a6490378cea0f6d
+	sha256sums = 3311140a873c903b7975d1607dadab04c3f94dbb3f9c3c599bb31c5c981591e4
 	sha256sums = 909cfd907ee6d78ad7f80a6d0aaf23b83d246e31f7e2331860072f6bf7e5edd6
 
 pkgname = napari

@@ -2,7 +2,7 @@
 
 _name='napari'
 pkgname="${_name}"
-pkgver=0.4.19
+pkgver=0.5.4
 pkgrel=1
 pkgdesc='Multi-dimensional image viewer for Python.'
 arch=('any')
@@ -60,7 +60,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
   "${_name}.desktop"
 )
-sha256sums=('083468ebbdb3e91c6bba6ed60bc75747adcba622376caf8a1a6490378cea0f6d'
+sha256sums=('3311140a873c903b7975d1607dadab04c3f94dbb3f9c3c599bb31c5c981591e4'
             '909cfd907ee6d78ad7f80a6d0aaf23b83d246e31f7e2331860072f6bf7e5edd6')
 
 build() {
