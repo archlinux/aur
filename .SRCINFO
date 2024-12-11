@@ -1,6 +1,6 @@
 pkgbase = dmtool
 	pkgdesc = A library to manipulate D&D monsters
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://vance.fish/git/dmtool
 	arch = x86_64
@@ -9,10 +9,13 @@ pkgbase = dmtool
 	depends = confuse
 	depends = gcc-libs
 	depends = glibc
-	source = https://vance.fish/git/dmtool/snapshot/dmtool-1.0.0.tar.gz
-	source = https://vance.fish/git/dmtool/snapshot/dmtool-1.0.0.tar.gz.asc
+	backup = etc/dmtool.conf
+	source = https://vance.fish/git/dmtool/snapshot/dmtool-1.0.1.tar.gz
+	source = https://vance.fish/git/dmtool/snapshot/dmtool-1.0.1.tar.gz.asc
+	source = parser/5thSRD::git+https://github.com/vitusventure/5thSRD.git
 	validpgpkeys = 2FCF3A100A5B5C0E78E41BDB215A56B23729BC81
-	sha256sums = 6a94eb5211996b82dbf6b81f984901fff7885bcba3279ccc037c2fa2efe47830
+	sha256sums = 902518e53291b4aee3ba8bdb3b5b3f5ffe44c4a474c37429530e0f0c65c04aed
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = dmtool
