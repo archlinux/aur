@@ -3,7 +3,7 @@
 prj='ghostmirror'
 pkgname=($prj)
 pkgdesc='alternative to reflector, writed in C with true check mirror status and mirror speed.'
-pkgver='0.9.5'
+pkgver='0.9.7'
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/vbextreme/${prj}.git"
