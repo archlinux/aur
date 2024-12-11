@@ -1,7 +1,7 @@
 # Maintainer: amadejk <amadejkastelic7@gmail.com>
 pkgname=hyprlux
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyprland utility that automates vibrance and night light control"
 arch=('x86_64')
 url="https://github.com/amadejkastelic/Hyprlux"
@@ -23,12 +23,12 @@ sha256sums=(
 
 build() {
     cd "$srcdir/Hyprlux-${pkgver}"
-    RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target cargo build --frozen --release
+    RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target cargo build --release
 }
 
 check() {
     cd "$srcdir/Hyprlux-${pkgver}"
-    RUSTUP_TOOLCHAIN=stable cargo test --frozen
+    RUSTUP_TOOLCHAIN=stable cargo test
 }
 
 package() {
