@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-dracut-support-git"
-pkgver=r41.bdbb12c
+pkgver=r62.b53f63f
 pkgrel=1
 pkgdesc="Install kernel for Limine bootloader."
 arch=('x86_64')
@@ -39,5 +39,7 @@ package() {
   src_path="install/arch-linux/${pkgname%-git}"
   install -dm 755 $src_path/usr/share/java/
   install -Dm 644 target/limine-entry-tool.jar $src_path/usr/share/java/
+  install -dm 755 $src_path/usr/share/doc/limine-dracut-support/
+  install -Dm 644 README.md CHANGELOG.md $src_path/usr/share/doc/limine-dracut-support/
   cp -vr $src_path/usr $src_path/etc "$pkgdir"
 }
