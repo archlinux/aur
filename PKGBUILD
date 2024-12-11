@@ -1,4 +1,5 @@
 # Maintainer: tyrolyean <tyrolyean@tyrolyean.net>
+# Co-Maintainer: danihek <danihek07@gmail.com>
 pkgname=hellwal
 pkgver=1.0.2
 pkgrel=1
