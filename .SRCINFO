@@ -1,11 +1,11 @@
 pkgbase = limbo-hib
-	pkgdesc = LIMBO is a modern classic, putting players in control of a boy's journey through a tense and hostile world.
+	pkgdesc = LIMBO is a modern classic, putting players in control of a boy's journey through a tense and hostile world. Package for owners of the Humble Indie Bundle.
 	pkgver = 20140618
 	pkgrel = 1
 	url = https://playdead.com/games/limbo/
 	arch = i686
 	arch = x86_64
-	license = custom: "commercial"
+	license = custom:commercial
 	makedepends = unzip
 	conflicts = limbo_wine
 	noextract = Limbo-Linux-2014-06-18.sh
