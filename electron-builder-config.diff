@@ -1,75 +1,76 @@
-diff --git a/apps/studio/vue.config.js b/apps/studio/vue.config.js
-index fbfaa508..5254f7d4 100644
---- a/apps/studio/vue.config.js
-+++ b/apps/studio/vue.config.js
-@@ -56,6 +56,8 @@ module.exports = {
-         files: ['**/*', 'public/icons/**/*', '!**/node_gyp_bins/*'],
-         afterSign: "electron-builder-notarize",
-         afterPack: "./build/afterPack.js",
-+        electronDist: "%%ELECTRON_DIST%%",
-+        electronVersion: "%%ELECTRON_VERSION%%",
-         extraResources: [
-           {
-             from: './extra_resources/demo.db',
-@@ -133,55 +135,21 @@ module.exports = {
-             role: "Editor"
-           }
-         ],
--        mac: {
--          entitlements: "./build/entitlements.mac.plist",
--          entitlementsInherit: "./build/entitlements.mac.plist",
--          icon: './public/icons/mac/bk-icon.icns',
--          category: "public.app-category.developer-tools",
--          "hardenedRuntime": true,
--          publish: ['github']
--        },
-         linux: {
-           icon: './public/icons/png/',
-           category: "Development",
-           target: [
--            'snap',
--            'deb',
--            'appImage'
-+            'dir',
-+            'pacman'
-           ],
-           desktop: {
-             'StartupWMClass': 'beekeeper-studio'
-           },
-         },
--        deb: {
--          publish: [
--            'github'
--          ],
--          fpm: fpmOptions,
--          // when we upgrade Electron we need to check these
--          depends: ["libgtk-3-0", "libnotify4", "libnss3", "libxss1", "libxtst6", "xdg-utils", "libatspi2.0-0", "libuuid1", "libsecret-1-0", "gnupg"]
--        },
--        appImage: {
--          publish: ['github'],
--        },
--        snap: {
--          publish: [
--            'github',
--            'snapStore'
--          ],
--          environment: {
--            "ELECTRON_SNAP": "true"
--          },
--          plugs: ["default", "ssh-keys", "removable-media", "mount-observe"]
--        },
--        win: {
--          icon: './public/icons/png/512x512.png',
--          target: ['nsis', 'portable'],
--          publish: ['github'],
--          sign: "./build/win/sign.js",
--        },
--        portable: {
--          "artifactName": "${productName}-${version}-portable.exe",
-+        pacman: {
-+          fpm: [
-+            '--pacman-compression=none'
-+          ]
-         }
-       }
+diff --git a/apps/studio/electron-builder-config.js b/apps/studio/electron-builder-config.js
+index 81fc127d..53582983 100644
+--- a/apps/studio/electron-builder-config.js
++++ b/apps/studio/electron-builder-config.js
+@@ -23,6 +23,8 @@ module.exports = {
+   asarUnpack: [
+     'package.json'
+   ],
++  electronDist: "%%ELECTRON_DIST%%",
++  electronVersion: "%%ELECTRON_VERSION%%",
+   extraResources: [
+     {
+       from: './extra_resources/demo.db',
+@@ -100,56 +102,20 @@ module.exports = {
+       role: "Editor"
      }
+   ],
+-  mac: {
+-    entitlements: "./build/entitlements.mac.plist",
+-    entitlementsInherit: "./build/entitlements.mac.plist",
+-    icon: './public/icons/mac/bk-icon.icns',
+-    category: "public.app-category.developer-tools",
+-    "hardenedRuntime": true,
+-    notarize: true,
+-    publish: ['github']
+-  },
+   linux: {
+     icon: './public/icons/png/',
+     category: "Development",
+     target: [
+-      'snap',
+-      'deb',
+-      'appImage'
++      'dir',
++      'pacman'
+     ],
+     desktop: {
+       'StartupWMClass': 'beekeeper-studio'
+     },
+   },
+-  deb: {
+-    publish: [
+-      'github'
+-    ],
+-    fpm: fpmOptions,
+-    // when we upgrade Electron we need to check these
+-    depends: ["libgtk-3-0", "libnotify4", "libnss3", "libxss1", "libxtst6", "xdg-utils", "libatspi2.0-0", "libuuid1", "libsecret-1-0", "gnupg"]
+-  },
+-  appImage: {
+-    publish: ['github'],
+-  },
+-  snap: {
+-    base: 'core22',
+-    publish: [
+-      'github',
+-      'snapStore'
+-    ],
+-    environment: {
+-      "ELECTRON_SNAP": "true"
+-    },
+-    plugs: ["default", "ssh-keys", "removable-media", "mount-observe"]
+-  },
+-  win: {
+-    icon: './public/icons/png/512x512.png',
+-    target: ['nsis', 'portable'],
+-    publish: ['github'],
+-    sign: "./build/win/sign.js",
+-  },
+-  portable: {
+-    "artifactName": "${productName}-${version}-portable.exe",
++  pacman: {
++    fpm: [
++      '--pacman-compression=none'
++    ]
+   }
+ }

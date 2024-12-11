@@ -1,21 +1,21 @@
-diff --git a/apps/studio/src/common/platform_info.ts b/apps/studio/src/common/platform_info.ts
-index 9665932f..e37dd4e4 100644
---- a/apps/studio/src/common/platform_info.ts
-+++ b/apps/studio/src/common/platform_info.ts
-@@ -51,7 +51,15 @@ if (p.env.PORTABLE_EXECUTABLE_DIR) {
+diff --git a/apps/studio/src/common/platform_info/mainPlatformInfo.ts b/apps/studio/src/common/platform_info/mainPlatformInfo.ts
+index beaed500..81b2cf72 100644
+--- a/apps/studio/src/common/platform_info/mainPlatformInfo.ts
++++ b/apps/studio/src/common/platform_info/mainPlatformInfo.ts
+@@ -59,7 +59,15 @@ export function mainPlatformInfo(): IPlatformInfo {
  
- const sessionType = p.env.XDG_SESSION_TYPE
+   const sessionType = p.env.XDG_SESSION_TYPE
  
--const slice = isDevEnv ? 2 : 1
-+let slice = 0;
+-  const slice = isDevEnv ? 2 : 1
++  let slice = 0
 +
-+for (const arg of process.argv) {
-+  slice++;
-+  if (arg.includes('app.asar') === true) {
-+    break;
++  for (const arg of p.argv) {
++    slice++
++    if (arg.includes('app.asar') === true) {
++      break
++    }
 +  }
-+}
 +
- const parsedArgs = yargs(p.argv.slice(slice))
- // TODO: Automatically enable wayland without flags once
- // we're confident it will 'just work' for all Wayland users.
+   const parsedArgs = yargs(p.argv.slice(slice))
+   const appVersion = testMode ? '0.0.0' : e.app.getVersion()
+ 
