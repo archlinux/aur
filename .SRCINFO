@@ -1,0 +1,19 @@
+pkgbase = pamix
+	pkgdesc = ncurses pulseaudio mixer
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/patroclos/PAmix
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	makedepends = pkgconf
+	depends = ncurses
+	depends = libpulse
+	source = pamix-2.0.tar.gz::https://github.com/patroclos/PAmix/archive/refs/tags/2.0.tar.gz
+	md5sums = 37180db3dc9c1c9bdf070de8e9dfc6af
+
+pkgname = pamix
