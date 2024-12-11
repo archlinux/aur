@@ -8,8 +8,7 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install() {
-	note "Custom modules should be placed in: ~/.local/lib/pay-respects/"
-	note "If you use different nested shell, set SHELL to the working shell before initialization"
+	note "Default _PR_LIB set to /usr/lib/pay-respects"
 }
 
 post_upgrade() {
