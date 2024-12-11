@@ -1,7 +1,7 @@
-pkgbase = plastikstyle
+pkgbase = plastikstyleo
 	pkgdesc = QStyle for qt5 and qt6 providing the look of KDE3's plastik
 	pkgver = 1.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MartinF99/PlastikStyle
 	arch = x86_64
 	license = LGPL-2.1-or-later
