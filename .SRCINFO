@@ -1,7 +1,7 @@
 pkgbase = hyprlux
 	pkgdesc = Hyprland utility that automates vibrance and night light control
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amadejkastelic/Hyprlux
 	install = install.sh
 	arch = x86_64
