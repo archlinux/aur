@@ -1,0 +1,25 @@
+pkgbase = web-value-tracker-bin
+	pkgdesc = Track any value on the web and get notified when it changes. Example: product prices on eBay, Amazon etc.(Prebuilt version)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/Ashu999/web-value-tracker
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = gendesk
+	provides = web-value-tracker=1.0.2
+	conflicts = web-value-tracker
+	source = LICENSE-MIT-1.0.2::https://raw.githubusercontent.com/Ashu999/web-value-tracker/v1.0.2/LICENSE-MIT
+	source = web-value-tracker-1.0.2.png::https://raw.githubusercontent.com/Ashu999/web-value-tracker/v1.0.2/assets/icon-1024.png
+	sha256sums = 23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3
+	sha256sums = 87c993335fd0b0bf16a276627d205ebd703c2a9a762035973cef8032cd4df6e3
+	source_aarch64 = web-value-tracker-1.0.2-aarch64::https://github.com/Ashu999/web-value-tracker/releases/download/v1.0.2/web_value_tracker-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = b24615cc388f66e63ca60a48d74ddcd74893d6ec4bc31b95f9267ea2fc9de239
+	source_armv7h = web-value-tracker-1.0.2-armv7h::https://github.com/Ashu999/web-value-tracker/releases/download/v1.0.2/web_value_tracker-armv7-unknown-linux-gnueabihf
+	sha256sums_armv7h = 27c5182a774e9af5d75be46df465cfdf04f32fe5b47435d0fe64a82ff7defa87
+	source_x86_64 = web-value-tracker-1.0.2-x86_64::https://github.com/Ashu999/web-value-tracker/releases/download/v1.0.2/web_value_tracker-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = aa6f2d21004924f5b789a2c357f03e14d5860cdfbaf7f6e0b6dd0d1cc9f92935
+
+pkgname = web-value-tracker-bin
