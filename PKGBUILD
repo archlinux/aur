@@ -2,7 +2,7 @@
 
 pkgname='rsl-git'
 provides=('rsl')
-pkgver=1.50.r10
+pkgver=1.50.r16
 pkgrel=1
 pkgdesc="Radar Software Library"
 arch=('aarch64' 'x86_64')
@@ -24,16 +24,19 @@ prepare() {
   # This prevents version mismatch errors when running 'make' below if automake versions change.
   autoreconf -ifv
 
-  # Tell the configure script where the tirpc library is located (with LDFLAGS and CFLAGS) so rsl can compile and link correctly.
   # Set --prefix to 'hard-code' directory / file locations in the source code, including the wsr88d_locations.dat file.
   # We override this below in the 'make install' call to be in $pkgdir so that the object files, header files,
   # and data files are copied to the temp direcotry for packaging instead of the system /usr folder.
-  ./configure LDFLAGS="-ltirpc" CFLAGS="-I/usr/include/tirpc/" --prefix=/usr
+  ./configure --prefix=/usr
 }
 
 build() {
   cd rsl
-  make
+
+  # Tell make where the tirpc library is located (with CFLAGS) so rsl can compile and link correctly.
+  # We pass along the values of CFLAGS and LDFLAGS as set in /etc/makepkg.conf so that the debug package
+  # generates successfully (if enabled there).
+  make LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS -I/usr/include/tirpc/"
 }
 
 package() {
