@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname=journalctl-desktop-notification-git
-pkgver=r28.6dc74ad
+pkgver=r35.c46b703
 pkgrel=1
 pkgdesc="Notifies you on the desktop when any error message appears in the Journalctl log."
 arch=('any')
@@ -21,5 +21,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
+  install -dm 755 "usr/share/doc/${pkgname%-git}/"
+  cp -r screenshots README.md CHANGELOG.md "usr/share/doc/${pkgname%-git}/"
   cp -vr usr etc "$pkgdir"
 }
