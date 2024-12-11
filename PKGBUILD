@@ -2,19 +2,14 @@
 
 pkgname=qemu-3dfx
 pkgver=8.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="MESA GL/3Dfx Glide pass-through for QEMU"
 arch=("x86_64")
 url="https://github.com/kjliew/qemu-3dfx"
 license=('GPL-2.0')
 depends=("qemu-base" "seabios")
 makedepends=(
-                                "base"
-                                "base-devel"
-                                "rsync"
-                                "patch"
-                                "ninja"
-                                "git"
+
                                 "alsa-lib"
                                 "brltty"
                                 "bzip2"
@@ -22,10 +17,12 @@ makedepends=(
                                 "capstone"
                                 "cdrtools"
                                 "curl"
+                                "dos2unix"
                                 "dtc"
                                 "fuse3"
                                 "gcc-libs"
                                 "gdk-pixbuf2"
+                                "git"
                                 "glib2"
                                 "glibc"
                                 "glib2-devel"
@@ -55,22 +52,27 @@ makedepends=(
                                 "libxkbcommon"
                                 "libxml2"
                                 "lzo"
+                                "mesa"
                                 "meson"
                                 "multipath-tools"
                                 "mingw-w64-binutils"
                                 "mingw-w64-gcc"
                                 "mingw-w64-tools"
                                 "ncurses"
+                                "ninja"
                                 "ndctl"
                                 "numactl"
+                                "patch"
                                 "pam"
                                 "pcre2"
                                 "python"
                                 "python-setuptools"
                                 "python-distlib"
+                                "python-pip"
                                 "python-sphinx"
                                 "python-sphinx_rtd_theme"
                                 "pixman"
+                                "rsync"
                                 "sdl2"
                                 "sdl2_image"
                                 "snappy"
@@ -85,20 +87,21 @@ makedepends=(
                                 "zlib"
                                 "zstd"
 )
+optdepends=("qemu-docs: for documentation and learning invocation")
 provides=("qemu-3dfx")
 conflicts=("qemu-3dfx")
 source=(
                 "git+https://github.com/kjliew/qemu-3dfx.git"
                 "https://download.qemu.org/qemu-${pkgver}.tar.xz"
                 "https://github.com/andrewwutw/build-djgpp/releases/download/v3.4/djgpp-linux64-gcc1220.tar.bz2"
-                "https://github.com/open-watcom/open-watcom-v2/releases/download/Current-build/ow-snapshot.tar.xz"
+                "https://github.com/open-watcom/open-watcom-v2/releases/download/2024-12-02-Build/ow-snapshot.tar.xz"
 )
 noextract=("qemu-${pkgver}.tar.xz" "djgpp-linux64-gcc1220.tar.bz2" "ow-snapshot.tar.xz")
 sha256sums=(
                             'SKIP'
                             '8562751158175f9d187c5f22b57555abe3c870f0325c8ced12c34c6d987729be'
                             '8464f17017d6ab1b2bb2df4ed82357b5bf692e6e2b7fee37e315638f3d505f00'
-                            '24d3e5a0760c691b5dcdd089e2aade1aad584ee1ec6bc7f37dc60c236b7323f5'
+                            '9548cb62bd84caaeaacaf6a2a282c9322e77f4d0610869f87c557815a327a38d'
 )
 prepare() {
     rm -rf "$pkgname"/watcom
@@ -116,12 +119,9 @@ prepare() {
 }
 build() {
     cd "$srcdir"/"$pkgname"/build
-    ../qemu-${pkgver}/configure --target-list="i386-softmmu" --prefix=/usr --enable-opengl --enable-gtk --enable-gtk-clipboard  --enable-sdl --enable-sdl-image --enable-libusb --disable-xen
+    ../qemu-${pkgver}/configure --target-list="i386-softmmu" --prefix=/usr --disable-xen
     make clean
-    make qemu-system-i386 man
-    cd "$srcdir"/"$pkgname"/build/docs
-	cp qemu.1 qemu-3dfx-system-i386.1
-    gzip qemu-3dfx-system-i386.1
+    make qemu-system-i386
     export WATCOM="$srcdir"/"$pkgname"/watcom
     export PATH=$WATCOM/binl64:$WATCOM/binl:$PATH
     export EDPATH=$WATCOM/eddat
@@ -142,15 +142,17 @@ build() {
     cp -r ../3dfx/build/* ./wrapfx/
     rm -r ./wrapfx/lib* ./wrapfx/Makefile
     cp -r ../mesa/build/* ./wrapgl/
+    cp -r ../../LICENSE license.txt
     rm -r ./wrapgl/Makefile
-    echo $(git rev-parse HEAD) | sed 's/$'"/`echo \\\r`/" > commit\ id.txt
-    cat ../texts/readme_nodx.txt | sed 's/$'"/`echo \\\r`/" > license.txt
+    echo $(git rev-parse HEAD) > commit\ id.txt
+    unix2dos commit\ id.txt license.txt
     mkisofs -o ../wrappers.iso ../iso
 }
 package() {
 	install -Dm644 "$srcdir"/"$pkgname"/LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
-    install -Dm644 "$srcdir"/"$pkgname"/build/docs/qemu-3dfx-system-i386.1.gz "$pkgdir"/usr/share/man/man1/qemu-3dfx-system-i386.1.gz
     install -Dm644 "$srcdir"/"$pkgname"/wrappers/wrappers.iso "$pkgdir"/usr/share/"$pkgname"/wrappers.iso
 	install -Dm755 "$srcdir"/"$pkgname"/build/qemu-system-i386 "$pkgdir"/usr/bin/qemu-3dfx-system-i386
+    mkdir -p "$pkgdir"/usr/share/man/man1/
+	ln -sf /usr/share/man/man1/qemu.1.gz "$pkgdir"/usr/share/man/man1/qemu-3dfx-system-i386.1.gz
 	msg Copy\ the\ wrapper\ disk\ at\ /usr/share/qemu-3dfx\ to\ your\ home\ dir\ and\ run\ qemu-3dfx-system-i386!
 }

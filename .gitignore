@@ -1,0 +1,7 @@
+# Ignore dependencies and stuff idk
+pkg/
+src/
+qemu-3dfx/
+qemu-3dfx-arch/
+*tar.bz2
+*tar.xz
