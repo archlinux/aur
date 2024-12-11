@@ -1,6 +1,6 @@
 pkgbase = tukai
 	pkgdesc = interactive typing experience with switchable templates, designed to help users improve their typing speed and accuracy
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/hlsxx/tukai
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = tukai
 	makedepends = glibc
 	makedepends = gcc-libs
 	depends = libx11
-	source = tukai-0.1.1.tar.gz::https://github.com/hlsxx/tukai/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = ebe7ce3222799965e3f69eae1ef2e71669006d76f32c4d8d1b5512c7deae2fff
+	source = tukai-0.1.2.tar.gz::https://github.com/hlsxx/tukai/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 89c44e135f1090837116d54983193fd218e947ba377c85752b4da86bbf99b12b
 
 pkgname = tukai
