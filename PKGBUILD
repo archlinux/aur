@@ -2,7 +2,7 @@
 # Contributor: Nils Grunwald <nils [@] grunwald [dot] fr>
 
 pkgname=neil
-pkgver=0.3.65
+pkgver=0.3.68
 pkgrel=1
 pkgdesc='A CLI to add common aliases and features to deps.edn-based projects for the Clojure language.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('babashka')
 
 source=("https://github.com/babashka/neil/archive/refs/tags/v${pkgver}.zip")
 
-sha256sums=('f996a1a7949b74e145572313ea22548aa58398e47f7ea6e24ccec4baaf805864')
+sha256sums=('cd6e0c2662d4d2f70e1d3c94d92c11d62110a4f73da6db4e42ce3664abf412e5')
 
 package() {
   install -Dm755 "${srcdir}/neil-${pkgver}/neil" "${pkgdir}/usr/bin/neil"
