@@ -1,6 +1,6 @@
 # Maintainer: Raiku <rikunn.rikunn@proton.me>
 pkgname=wl-neco
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 url="https://github.com/gitRaiku/neco"
 pkgdesc="A wayland bouncing neco"
@@ -9,7 +9,7 @@ license=('GPL-3.0')
 depends=('wayland' 'wlroots')
 makedepends=('make' 'wayland-protocols')
 source=("https://github.com/gitRaiku/neco/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dbe6f0d52e717848bc259b86aa4a4854a9459c02c6f549ef5fc2cac10dd8da37')
+sha256sums=('b6d30abe5896c8bdaf0278c5bcb3e8d82f21ecf3c3ce574c803ef29db0f74764')
 
 build() {
   cd $srcdir/Neco-$pkgver

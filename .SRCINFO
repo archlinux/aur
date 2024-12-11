@@ -1,6 +1,6 @@
 pkgbase = wl-neco
 	pkgdesc = A wayland bouncing neco
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/gitRaiku/neco
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = wl-neco
 	makedepends = wayland-protocols
 	depends = wayland
 	depends = wlroots
-	source = https://github.com/gitRaiku/neco/archive/refs/tags/v1.1.3.tar.gz
-	sha256sums = dbe6f0d52e717848bc259b86aa4a4854a9459c02c6f549ef5fc2cac10dd8da37
+	source = https://github.com/gitRaiku/neco/archive/refs/tags/v1.1.4.tar.gz
+	sha256sums = b6d30abe5896c8bdaf0278c5bcb3e8d82f21ecf3c3ce574c803ef29db0f74764
 
 pkgname = wl-neco
