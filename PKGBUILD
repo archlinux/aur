@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang
 _pkgname=Mustang
-pkgver=0.7.0
+pkgver=0.7.1
 _electronversion=32
 _nodever=20
 pkgrel=1
@@ -22,7 +22,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('f422fd8402569855ea2cb078b05d36e5e10a4945c11f03a6ca3bb8d2c0d8b9a9'
+sha256sums=('4f95e465b5de73a5757149d32571553eee31bbac99e79c5e5dc42f0c21d1985c'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -30,7 +30,7 @@ _ensure_local_nvm() {
     nvm install "${_nodever}"
     nvm use "${_nodever}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -71,6 +71,9 @@ build() {
     cp build/icon.png resources/
     NODE_ENV=development    npm install --legacy-peer-deps
     NODE_ENV=development    npm install -D semver
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}/e2"
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.yml"
 }
