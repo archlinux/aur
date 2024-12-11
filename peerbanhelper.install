@@ -6,6 +6,11 @@ link_config() {
   chown $USER: "/var/lib/$USER/"{config,profile}'.yml'
 }
 
+create_logs_dir() {
+  mkdir "/var/log/$USER"
+  chown $USER: "/var/log/$USER"
+}
+
 ## arg 1:  the new package version
 post_install() {
   if ! id -u $USER > /dev/null 2>&1; then
@@ -13,11 +18,13 @@ post_install() {
   fi
   chown --recursive $USER: '/etc/peerbanhelper'
   link_config
+  create_logs_dir
 }
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
   link_config
+  create_logs_dir
 }
 

@@ -3,7 +3,7 @@
 # Contributor: vcup
 pkgname=peerbanhelper
 pkgver=7.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PeerBanHelper is a tool to auto ban peers on the bitorrent network."
 arch=('any')
 url="https://github.com/PBH-BTN/PeerBanHelper"

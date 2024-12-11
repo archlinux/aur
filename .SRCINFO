@@ -1,7 +1,7 @@
 pkgbase = peerbanhelper
 	pkgdesc = PeerBanHelper is a tool to auto ban peers on the bitorrent network.
 	pkgver = 7.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PBH-BTN/PeerBanHelper
 	install = peerbanhelper.install
 	arch = any
