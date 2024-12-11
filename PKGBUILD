@@ -3,7 +3,7 @@
 pkgbase=python-jwst
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="Library for calibration of science observations from the James Webb Space Telescope"
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ makedepends=('python-setuptools-scm>=3.4'
 #              'rsync'
 #              ) # psutil, bayesicfitting, drizzle, jsonschema, photutil, poppy, skimage, stcal, stdatamodel, stpipe, synphot, tweakwcs, wiimatch already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('0e76a1a3a354a054dc43800f62bd1205')
+md5sums=('9a9145626b6feeefa9e31dd34d4fa37b')
 
 get_pyinfo() {
     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
@@ -134,7 +134,7 @@ package_python-jwst() {
              'python-scipy>=1.9.3'
              'python-spherical_geometry>=1.2.22'
              'python-stcal>=1.9.0'
-             'python-stdatamodels>=2.1.0'
+             'python-stdatamodels>=2.1.2'
              'python-stpipe>=0.7.0'
              'python-stsci.image>=2.3.5'
              'python-stsci.imagestats>=1.6.3'
