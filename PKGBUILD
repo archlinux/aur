@@ -1,9 +1,10 @@
 # Maintainer: Lorenzo Gaifas <brisvag at gmail dot com>
 
 _name='magicgui'
+_name_slug="${_name//-/_}"
 _author='pyapp-kit'
 pkgname="python-${_name}"
-pkgver=0.8.3
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Build GUIs from functions, using magic.'
 arch=('any')
@@ -25,16 +26,16 @@ depends=(
   'python-typing_extensions'
   'qt5-python-bindings'
 )
-source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('862b02e472f4cc2081ccfb9e8e1d91ab30ce91b88f9d9ff8a44e0d27f317f4ab')
+source=("https://files.pythonhosted.org/packages/source/${_name_slug::1}/${_name_slug}/${_name_slug}-${pkgver}.tar.gz")
+sha256sums=('e8c1c7ed281e62ec858771a76515abd705dbe3d46da2ee834ce6983a4403b94d')
 
 build() {
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd "${srcdir}/${_name_slug}-${pkgver}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd "${srcdir}/${_name_slug}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
