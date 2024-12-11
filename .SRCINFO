@@ -1,6 +1,6 @@
 pkgbase = limine-snapper-sync-git
 	pkgdesc = The tool syncs Snapper snapshots with Limine bootloader
-	pkgver = r114.1b8a9e9
+	pkgver = r116.6b665a6
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-snapper-sync
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = limine-snapper-sync-git
 	depends = snapper
 	depends = btrfs-progs
 	depends = inotify-tools
+	depends = libnotify
 	optdepends = dunst: Displays a desktop notification for one-click restoration.
 	optdepends = limine-dracut-support: Automates kernel installation/removal and Limine boot entry management.
 	optdepends = rsync: Provides an alternative method for restoring snapshots.
