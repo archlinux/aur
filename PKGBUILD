@@ -13,6 +13,6 @@ source=("https://github.com/penberg/limbo/releases/download/v$pkgver/$_pkgname-$
 sha256sums=('14696865da1a95cedcef91c11d62d5fd24dd3628564e16532f3f9aa8855c1ad1')
 
 package() {
-    install -Dm755 -t "$pkgdir/usr/bin/" $_pkgname
-    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 -t "$pkgdir/usr/bin/" ./**/$_pkgname
+    install -Dm644 ./**/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
