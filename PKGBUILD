@@ -12,7 +12,7 @@ url="https://github.com/chenxiaolong/avbroot"
 license=('GPL')
 
 source=("https://github.com/chenxiaolong/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-x86_64-unknown-linux-gnu.zip")
-md5sums=('ccaaee37e2318b326f1f20febe124239')
+md5sums=('0b5be9c2e3ef712a420163f5f5f5edf4')
 
 package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
