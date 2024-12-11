@@ -21,7 +21,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  install -dm 755 "usr/share/doc/systemd-timer-notify/"
-  cp -r screenshots README.md CHANGELOG.md "usr/share/doc/systemd-timer-notify/"
+  install -dm 755 "usr/share/doc/${pkgname%-git}/"
+  cp -r screenshots README.md CHANGELOG.md "usr/share/doc/${pkgname%-git}/"
   cp -vr usr etc "$pkgdir"
 }
