@@ -1,4 +1,6 @@
-# Maintainer: Łaurent ʘ❢Ŧ Ŧough <laurent dot fough at gmail dot com>
+# Maintainer: envolution
+# Contributor: Łaurent ʘ❢Ŧ Ŧough <laurent dot fough at gmail dot com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=blueproximity-py3-git
 _pkgname=blueproximity
@@ -9,26 +11,33 @@ arch=('i686' 'x86_64')
 url="https://github.com/tiktaalik-dev/blueproximity"
 license=('GPL')
 conflicts=('blueproximity')
-depends=('python' 'bluez-utils-compat' 'python-gobject' 'python-configobj' 'python-pybluez' 'python-xapp' 'xapps' 'librsvg')
+depends=('python' 'bluez-utils' 'bluez-deprecated-tools' 'python-gobject' 'python-configobj' 'python-pybluez' 'python-xapp' 'xapps' 'librsvg')
 optdepends=('gnome-screensaver' 'xscreensaver')
-source=(https://github.com/tiktaalik-dev/blueproximity/archive/v$pkgver.tar.gz)
-options=(emptydirs)
-md5sums=('223bccc87ea03298b3310d211c842574')
+source=("git+https://github.com/tiktaalik-dev/blueproximity.git" maintainer.patch)
+md5sums=('SKIP'
+         '62a7cd0539367a9f48a9d78ce0af8d72')
 
-package() {
-  mkdir -p $pkgdir/usr/bin
-  mkdir -p $pkgdir/usr/share/applications
-  mkdir -p $pkgdir/usr/share/$_pkgname
-  mkdir -p $pkgdir/usr/share/pixmaps
-
-  install -D -m755 $srcdir/$_pkgname-$pkgver/proximity.py $pkgdir/usr/bin/
-  install -D -m755 $srcdir/$_pkgname-$pkgver/start_proximity.sh $pkgdir/usr/bin/
-  install -D -m755 $srcdir/$_pkgname-$pkgver/addons/blueproximity $pkgdir/usr/bin/
-  install -D -m644 $srcdir/$_pkgname-$pkgver/addons/blueproximity.desktop $pkgdir/usr/share/applications/
-  install -D -m644 $srcdir/$_pkgname-$pkgver/addons/blueproximity.xpm $pkgdir/usr/share/pixmaps/
-  cp -r $srcdir/$_pkgname-$pkgver/* $pkgdir/usr/share/$_pkgname/
-  chmod -R 644 $pkgdir/usr/share/$_pkgname/*
-
-  sed -i -e "s|dist_path = './'|dist_path = '/usr/share/blueproximity/'|g" $pkgdir/usr/bin/proximity.py
-  sed -i -e "s|dist_path = './'|dist_path = '/usr/share/blueproximity/'|g" $pkgdir/usr/share/$_pkgname/proximity.py
+prepare() {
+  cd $_pkgname
+  cp proximity.py proximity.orig
+  patch -Np2 -i ../maintainer.patch
 }
+package() {
+  install -dm755 $pkgdir/usr/share/applications
+  install -dm755 $pkgdir/usr/share/pixmaps
+  install -dm755 $pkgdir/usr/share/$_pkgname
+  install -dm755 $pkgdir/usr/bin
+  install -Dm644 $_pkgname/addons/blueproximity.desktop $pkgdir/usr/share/applications/
+  install -Dm644 $_pkgname/addons/blueproximity.xpm $pkgdir/usr/share/pixmaps/
+  cp -r $_pkgname/* $pkgdir/usr/share/$_pkgname/
+
+  ln -s /usr/share/blueproximity/proximity.py $pkgdir/usr/bin/proximity.py
+  ln -s /usr/share/blueproximity/start_proximity.sh $pkgdir/usr/bin/start_proximity.sh
+  ln -s /usr/share/blueproximity/addons/blueproximity $pkgdir/usr/bin/blueproximity
+
+  #  sed -i 's|get_widget|get_object|g' $pkgdir/usr/share/blueproximity/proximity.py
+  #  sed -i -e "s|dist_path = './'|dist_path = '/usr/share/blueproximity/'|g" $pkgdir/usr/share/$_pkgname/proximity.py
+  #
+}
+
+# vim:set ts=2 sw=2 et:

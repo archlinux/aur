@@ -1,0 +1,315 @@
+--- src/blueproximity/proximity.orig	2024-12-11 10:36:00.441917050 -0500
++++ src/blueproximity/proximity.py	2024-12-11 10:48:32.057692637 -0500
+@@ -26,7 +26,7 @@
+ # This value gives us the base directory for language files and icons.
+ # Set this value to './' for local folder version
+ # or, for instance, to '/usr/share/blueproximity/' for packaged version
+-dist_path = './'
++dist_path = '/usr/share/blueproximity/'
+ 
+ # Translation stuff
+ import gettext
+@@ -40,36 +40,39 @@
+ import threading
+ import time
+ 
++import locale
+ # blueproximity
+ import struct
+ 
+-# Get the local directory since we are not installing anything
+-if dist_path == './':
+-    dist_path = os.getcwd() + '/'
++local_path = os.path.join(dist_path, 'LANG/')
++try:
++    locale.setlocale(locale.LC_ALL, '')  # '' uses the user's default locale
++except locale.Error:
++    print("Warning: Could not set the desired locale. Using default.")
++
++# Get the current locale
++lc, encoding = locale.getlocale()
++langs = [lc] if lc else ["en"]  # Default to English if no locale is detected
+ 
+-# Init the list of languages to support
+-local_path = dist_path + 'LANG/'
+-langs = []
++# 2. Initialize gettext translation
+ 
+-# Check the default locale
+-lc, encoding = locale.getdefaultlocale()
++# 'local_path' should point to the directory where your .mo files are located
++lang = gettext.translation(APP_NAME, localedir=local_path, languages=langs, fallback=True)
++lang.install() # Install _() into builtins to use translations
+ 
+-if lc:
+-    # If we have a default, it's the first in the list
+-    langs = [lc]
++# 3. Get System's Supported Languages
+ 
+-# Now lets get all of the supported languages on the system
+-language = os.environ.get('LANGUAGE', None)
++language_env = os.environ.get('LANGUAGE')
+ 
+-if language:
++if language_env:
+     # Language comes back something like en_CA:en_US:en_GB:en
+-    # on linux systems, on Win32 it's nothing, so we need to
+-    # split it up into a list
+-    langs += language.split(":")
+-
+-# Now add on to the back of the list the translations that we
+-# know that we have, our defaults
+-langs += ["en"]
++    # Split it up into a list
++    langs.extend(language_env.split(":"))
++
++# 4. Add Default Fallback Language
++# Ensure "en" is at the end as a fallback
++if "en" not in langs:
++    langs.append("en")
+ 
+ # Now langs is a list of all of the languages that we are going
+ # to try to use.  First we check the default, then what the system
+@@ -88,14 +91,13 @@
+ # now the imports from external packages
+ try:
+     import gi
+-
+     gi.require_version('Gtk', '3.0')
+-    from gi.repository import GObject as gobject
++    from gi.repository import GObject, GLib
+ except:
+-    print(_("The program cannot import the module gobject."))
++    print(_("The program cannot import the module GObject."))
+     print(_("Please make sure the GObject bindings for python are installed."))
+     print(_("e.g. with Ubuntu Linux, type"))
+-    print(_(" sudo apt-get install python3-gobject"))
++    print(_(" sudo apt-get install python3-GObject"))
+     sys.exit(1)
+ 
+ try:
+@@ -113,7 +115,7 @@
+     from validate import Validator
+ except:
+     print(_("The program cannot import the module ConfigObj or Validator."))
+-    print(_("Please make sure the ConfigObject package for python is installed."))
++    print(_("Please make sure the ConfiGObject package for python is installed."))
+     print(_("e.g. with Ubuntu Linux, type"))
+     print(_(" sudo apt-get install python3-configobj"))
+     sys.exit(1)
+@@ -281,7 +283,7 @@
+             self.windowRename.connect("delete_event", self.dlgRenameCancel_clicked)
+ 
+         # Prepare the mac/name table
+-        self.model = gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING)
++        self.model = gtk.ListStore(GObject.TYPE_STRING, GObject.TYPE_STRING)
+         self.tree = self.wTree.get_object("treeScanResult")
+         self.tree.set_model(self.model)
+         self.selection_mode = gtk.SelectionMode.SINGLE
+@@ -296,7 +298,7 @@
+         self.tree.append_column(colLabel)
+ 
+         # Prepare the channel/state table
+-        self.modelScan = gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING)
++        self.modelScan = gtk.ListStore(GObject.TYPE_STRING, GObject.TYPE_STRING)
+         self.treeChan = self.wTree.get_object("treeScanChannelResult")
+         self.treeChan.set_model(self.modelScan)
+         colLabel = gtk.TreeViewColumn(_('Channel'), gtk.CellRendererText(), text=0)
+@@ -316,10 +318,10 @@
+         self.readSettings()
+ 
+         # this is the gui timer
+-        from gi.repository import GLib as glib
+-        self.timer = glib.timeout_add(1000, self.updateState)
++        from gi.repository import GLib
++        self.timer = GLib.timeout_add(1000, self.updateState)
+         # fixme: this will execute the proximity command at the given interval - is now not working
+-        self.timer2 = glib.timeout_add(1000 * int(self.config['proximity_interval']), self.proximityCommand)
++        self.timer2 = GLib.timeout_add(1000 * int(self.config['proximity_interval']), self.proximityCommand)
+ 
+         # Only show if we started unconfigured
+         if show_window_on_start:
+@@ -377,7 +379,7 @@
+ 
+     # Callback to rename a config file.
+     def dlgRenameDo_clicked(self, widget, data=None):
+-        newconfig = self.wTree.get_widget("entryRenameName").get_text()
++        newconfig = self.wTree.get_object("entryRenameName").get_text()
+         # check if something has been entered
+         if newconfig == '':
+             dlg = gtk.MessageDialog(None, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
+@@ -431,7 +433,7 @@
+ 
+     # Callback to create a config file.
+     def dlgNewDo_clicked(self, widget, data=None):
+-        newconfig = self.wTree.get_widget("entryNewName").get_text()
++        newconfig = self.wTree.get_object("entryNewName").get_text()
+ 
+         # check if something has been entered
+         if (newconfig == ''):
+@@ -456,7 +458,9 @@
+ 
+         # then let's get it on...
+         # create the new config
+-        newconf = ConfigObj(self.config.dict())
++        newconf = ConfigObj(indent_type='  ')  # Add other options if needed
++        newconf.merge(self.config.dict())
++        
+         newconf.filename = newname
+ 
+         # and save it to the new name
+@@ -827,7 +831,7 @@
+         model, selection_iter = selection.get_selected()
+         if (selection_iter):
+             mac = self.model.get_value(selection_iter, 0)
+-            self.wTree.get_widget("entryMAC").set_text(mac)
++            self.wTree.get_object("entryMAC").set_text(mac)
+             self.writeSettings()
+ 
+     # Callback that is executed when the scan for devices button is clicked
+@@ -841,8 +845,8 @@
+         self.model.clear()
+         self.model.append(['...', _('Now scanning...')])
+         self.setSensitiveConfigManagement(False)
+-        from gi.repository import GLib as glib
+-        glib.idle_add(self.cb_btnScan_clicked)
++        from gi.repository import GLib
++        GLib.idle_add(self.cb_btnScan_clicked)
+ 
+     # Asynchronous callback function to do the actual device discovery scan
+     def cb_btnScan_clicked(self):
+@@ -932,7 +936,7 @@
+             gtk.main_quit()
+ 
+     # Updates the GUI (values, icon, tooltip) with the latest values
+-    # is always called via gobject.timeout_add call to run asynchronously without a seperate thread.
++    # is always called via GObject.timeout_add call to run asynchronously without a seperate thread.
+     def updateState(self):
+ 
+         # update the display with newest measurement values (once per second)
+@@ -980,15 +984,15 @@
+             self.icon.set_icon_name(dist_path + con_icons[connection_state])
+             self.icon.set_tooltip_text(con_info + '\n' + simu)
+         # print("self.proxi.Simulate is: {}".format(self.proxi.Simulate))
+-        from gi.repository import GLib as glib
+-        self.timer = glib.timeout_add(1000, self.updateState)
++        from gi.repository import GLib
++        self.timer = GLib.timeout_add(1000, self.updateState)
+ 
+     def proximityCommand(self):
+         # This is the proximity command callback called asynchronously as the updateState above
+         if self.proxi.State == _('active') and not self.proxi.Simulate:
+             ret_val = os.popen(self.config['proximity_command']).readlines()
+-            from gi.repository import GLib as glib
+-            self.timer2 = glib.timeout_add(1000 * int(self.config['proximity_interval']), self.proximityCommand)
++            from gi.repository import GLib
++            self.timer2 = GLib.timeout_add(1000 * int(self.config['proximity_interval']), self.proximityCommand)
+ 
+ 
+ # This class creates all logging information in the desired form.
+@@ -1087,7 +1091,7 @@
+ 
+ 
+ # ScanDevice is a helper class used for scanning for open rfcomm channels
+-# on a given device. It uses asynchronous calls via gobject.timeout_add to
++# on a given device. It uses asynchronous calls via GObject.timeout_add to
+ # not block the main process. It updates a given model after every scanned port
+ # and calls a callback function after finishing the scanning process.
+ class ScanDevice(object):
+@@ -1103,8 +1107,8 @@
+         self.model = model
+         self.stopIt = False
+         self.port = 1
+-        from gi.repository import GLib as glib
+-        self.timer = glib.timeout_add(500, self.runStep)
++        from gi.repository import GLib
++        self.timer = GLib.timeout_add(500, self.runStep)
+         self.model.clear()
+         self.was_paused = was_paused
+         self.callback = callback
+@@ -1130,8 +1134,8 @@
+         self.model.append([str(self.port), self.scanPortResult(self.port)])
+         self.port = self.port + 1
+         if not self.port > 30 and not self.stopIt:
+-            from gi.repository import GLib as glib
+-            self.timer = glib.timeout_add(500, self.runStep)
++            from gi.repository import GLib
++            self.timer = GLib.timeout_add(500, self.runStep)
+         else:
+             self.callback(self.was_paused)
+ 
+@@ -1347,9 +1351,9 @@
+                             state = _("active")
+                             duration_count = 0
+                             if not self.Simulate:
+-                                from gi.repository import GLib as glib
++                                from gi.repository import GLib
+                                 # start the process asynchronously so we are not hanging here...
+-                                timerAct = glib.timeout_add(5, self.go_active)
++                                timerAct = GLib.timeout_add(5, self.go_active)
+                                 # self.go_active()
+                     else:
+                         duration_count = 0
+@@ -1362,8 +1366,8 @@
+                             duration_count = 0
+                             if not self.Simulate:
+                                 # start the process asynchronously so we are not hanging here...
+-                                from gi.repository import GLib as glib
+-                                timerGone = glib.timeout_add(5, self.go_gone)
++                                from gi.repository import GLib
++                                timerGone = GLib.timeout_add(5, self.go_gone)
+                                 # self.go_gone()
+                     else:
+                         duration_count = 0
+@@ -1378,8 +1382,8 @@
+                         self.config['proximity_command'] != ''):
+                     proxiCmdCounter = 0
+                     # start the process asynchronously so we are not hanging here...
+-                    from gi.repository import GLib as glib
+-                    timerProx = glib.timeout_add(5, self.go_proximity)
++                    from gi.repository import GLib
++                    timerProx = GLib.timeout_add(5, self.go_proximity)
+                 time.sleep(1)
+             except KeyboardInterrupt:
+                 break
+@@ -1420,8 +1424,13 @@
+             try:
+ 
+                 # add every valid .conf file to the array of configs
+-                config = ConfigObj(os.path.join(conf_dir, filename),
+-                                   {'create_empty': False, 'file_error': True, 'configspec': conf_specs})
++                config = ConfigObj(
++                    os.path.join(conf_dir, filename),
++                    create_empty=False,
++                    file_error=True,
++                    configspec=conf_specs
++                )
++                
+ 
+                 # first validate it
+                 config.validate(vdt, copy=True)
+@@ -1438,8 +1447,13 @@
+ 
+     # no previous configuration could be found so let's create a new one
+     if new_config:
+-        config = ConfigObj(os.path.join(conf_dir, _('standard') + '.conf'),
+-                           {'create_empty': True, 'file_error': False, 'configspec': conf_specs})
++        config = ConfigObj(
++            os.path.join(conf_dir, _('standard') + '.conf'),
++            create_empty=True,
++            file_error=False,
++            configspec=conf_specs
++        )
++        
+ 
+         # next line fixes a problem with creating empty strings in default values for configobj
+         config['device_mac'] = ''
+@@ -1463,7 +1477,7 @@
+ 
+     # the idea behind 'configs' is an array containing the name, the configobj and the proximity object
+     pGui = ProximityGUI(configs, new_config)
+-
++    pGui.window.show()
+     # make GTK threadable
+     ## from gi.repository import Gdk as gdk
+     ## gdk.threads_init()

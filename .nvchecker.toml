@@ -1,0 +1,5 @@
+[blueproximity-py3-git]
+source="github-graphql"
+github="tiktaalik-dev/blueproximity"
+use_max_tag=true
+prefix='v'
