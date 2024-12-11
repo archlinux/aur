@@ -1,8 +1,8 @@
 # Maintainer: William Edwards <shadowapex@gmail.com>
 pkgname=powerstation-git
 _pkgbase=powerstation
-pkgver=v0.2.2.r0.g2b2c007
-pkgrel=2
+pkgver=v0.4.0.r0.g483cb66
+pkgrel=1
 pkgdesc="Open source performance daemon with DBus interface"
 arch=('x86_64')
 url="https://github.com/ShadowBlip/PowerStation"
@@ -17,20 +17,20 @@ options=(!lto)
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${_pkgbase}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${_pkgbase}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$srcdir/${_pkgbase}"
+  cd "$srcdir/${_pkgbase}"
 }
 
 build() {
-	cd "$srcdir/${_pkgbase}"
-	make build
+  cd "$srcdir/${_pkgbase}"
+  make build
 }
 
 package() {
-	cd "$srcdir/${_pkgbase}"
-	make install PREFIX=${pkgdir}/usr NO_RELOAD=true
+  cd "$srcdir/${_pkgbase}"
+  make install PREFIX=${pkgdir}/usr NO_RELOAD=true
 }

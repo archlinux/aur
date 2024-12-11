@@ -1,7 +1,7 @@
 pkgbase = powerstation-git
 	pkgdesc = Open source performance daemon with DBus interface
-	pkgver = v0.2.2.r0.g2b2c007
-	pkgrel = 2
+	pkgver = v0.4.0.r0.g483cb66
+	pkgrel = 1
 	url = https://github.com/ShadowBlip/PowerStation
 	arch = x86_64
 	license = GPL
