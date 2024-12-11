@@ -1,0 +1,21 @@
+pkgbase = shutdown-scheduler-git
+	pkgdesc = An Electron-powered desktop app for scheduling automated shutdown and reboot tasks.(Use system-wide electron)
+	pkgver = 0.0.7.r0.g711cbd8
+	pkgrel = 1
+	url = https://github.com/hichemfantar/ShutdownScheduler
+	arch = any
+	license = GPL-3.0-only
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron33
+	provides = shutdown-scheduler=0.0.7
+	conflicts = shutdown-scheduler
+	source = shutdown-scheduler.git::git+https://github.com/hichemfantar/ShutdownScheduler
+	source = shutdown-scheduler.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = shutdown-scheduler-git
