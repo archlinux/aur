@@ -1,6 +1,8 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: envolution
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Ronuk Raval <ronuk.raval at gmail dot com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=python-flexx
 pkgver=0.8.4
@@ -8,7 +10,7 @@ pkgrel=1
 pkgdesc='Write desktop and web apps in pure Python'
 arch=('any')
 url='https://github.com/flexxui/flexx'
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('python-dialite' 'python-pscript' 'python-tornado' 'python-webruntime')
 makedepends=(
   'python-build'
@@ -45,4 +47,4 @@ package() {
     "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-# vim: ts=2 sw=2 et:
+# vim:set ts=2 sw=2 et:
