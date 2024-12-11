@@ -1,7 +1,7 @@
 pkgbase = prometheus-bin
 	pkgdesc = An open-source service monitoring system and time series database (binary, not built from source)
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://prometheus.io
 	install = prometheus.install
 	arch = x86_64
