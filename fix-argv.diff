@@ -1,5 +1,5 @@
 diff --git a/apps/studio/src/common/platform_info/mainPlatformInfo.ts b/apps/studio/src/common/platform_info/mainPlatformInfo.ts
-index beaed500..6af25ce2 100644
+index beaed500..ece118be 100644
 --- a/apps/studio/src/common/platform_info/mainPlatformInfo.ts
 +++ b/apps/studio/src/common/platform_info/mainPlatformInfo.ts
 @@ -49,7 +49,7 @@ export function mainPlatformInfo(): IPlatformInfo {
@@ -7,21 +7,25 @@ index beaed500..6af25ce2 100644
    const oracleSupported = isMac && isArm ? false : true
  
 -  const resourcesPath = isDevEnv ? resolve('./extra_resources') : resolve(p.resourcesPath)
-+  const resourcesPath = join('/usr/lib', e.app.getName())
++  const resourcesPath = testMode ? resolve(p.resourcesPath) : (isDevEnv ? resolve('./extra_resources') : join('/usr/lib', e.app.getName()))
    let userDirectory = testMode ? './tmp' : e.app.getPath("userData")
    const downloadsDirectory = testMode ? './tmp' : e.app.getPath('downloads')
    const homeDirectory = testMode ? './tmp' : e.app.getPath('home')
-@@ -59,7 +59,15 @@ export function mainPlatformInfo(): IPlatformInfo {
+@@ -59,7 +59,19 @@ export function mainPlatformInfo(): IPlatformInfo {
  
    const sessionType = p.env.XDG_SESSION_TYPE
  
 -  const slice = isDevEnv ? 2 : 1
 +  let slice = 0
 +
-+  for (const arg of p.argv) {
-+    slice++
-+    if (arg.includes('app.asar') === true) {
-+      break
++  if (isDevEnv) {
++    slice = 2
++  } else {
++    for (const arg of p.argv) {
++      slice++
++      if (arg.includes('app.asar') === true) {
++        break
++      }
 +    }
 +  }
 +
