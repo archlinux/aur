@@ -3,7 +3,7 @@
 
 _pkgname=gnucap
 pkgname=$_pkgname-git
-pkgver=20240702.dev.r0.g86ceba7
+pkgver=20241210.dev.r0.git
 pkgrel=1
 pkgdesc="GNU Circuit Analysis Package (develop branch)"
 arch=('x86_64')
@@ -19,11 +19,6 @@ md5sums=('SKIP')
 pkgver() {
     cd $_pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare(){
-    cd $_pkgname
-    sed -i 's#INSTALL_SYSCONF_DIR = $(PREFIX)/etc#INSTALL_SYSCONF_DIR = /etc#' main/Make1
 }
 
 build() {
