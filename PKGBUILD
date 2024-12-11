@@ -4,7 +4,7 @@ _name='app-model'
 _name_slug="${_name//-/_}"
 _author='pyapp-kit'
 pkgname="python-${_name}"
-pkgver=0.2.7
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Generic application schema implemented in python.'
 arch=('any')
@@ -25,7 +25,7 @@ depends=(
   'python-typing_extensions'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name_slug::1}/${_name_slug}/${_name_slug}-${pkgver}.tar.gz")
-sha256sums=('1cea9479c9c76f4cfc1c2251c3cdaab6670220ab6b3dc48413b5a6b1406f2a17')
+sha256sums=('2c883fc2a229a23f7f6697fa4ca6fa981fdafca05f76812bfe71a1de9c229c7b')
 
 build() {
   cd "${srcdir}/${_name_slug}-${pkgver}"

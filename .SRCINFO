@@ -1,6 +1,6 @@
 pkgbase = python-app-model
 	pkgdesc = Generic application schema implemented in python.
-	pkgver = 0.2.7
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/pyapp-kit/app-model
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-app-model
 	depends = python-pydantic
 	depends = python-pydantic-compat
 	depends = python-typing_extensions
-	source = https://files.pythonhosted.org/packages/source/a/app_model/app_model-0.2.7.tar.gz
-	sha256sums = 1cea9479c9c76f4cfc1c2251c3cdaab6670220ab6b3dc48413b5a6b1406f2a17
+	source = https://files.pythonhosted.org/packages/source/a/app_model/app_model-0.3.1.tar.gz
+	sha256sums = 2c883fc2a229a23f7f6697fa4ca6fa981fdafca05f76812bfe71a1de9c229c7b
 
 pkgname = python-app-model
