@@ -49,9 +49,10 @@ setup_flutter_env()
 
 _patch_flutter()
 {
-	sed -i 's|--no-enable-mirrors "$SCRIPT_PATH"|--no-enable-mirrors "$SCRIPT_PATH" $ARCH_FLUTTER_OPTS|' \
-		"$1/bin/internal/shared.sh"
-	sed -i 's|exec "$DART" --disable-dart-dev --packages="$FLUTTER_TOOLS_DIR/.dart_tool/package_config.json" $FLUTTER_TOOL_ARGS "$SNAPSHOT_PATH" "$@"|exec "$DART" --disable-dart-dev --packages="$FLUTTER_TOOLS_DIR/.dart_tool/package_config.json" $FLUTTER_TOOL_ARGS "$SNAPSHOT_PATH" $ARCH_FLUTTER_OPTS "$@"|' \
+	sed -i \
+		-e 's|--no-enable-mirrors "$SCRIPT_PATH"|--no-enable-mirrors "$SCRIPT_PATH" $ARCH_FLUTTER_OPTS|' \
+		-e 's|exec "$DART" --disable-dart-dev --packages="$FLUTTER_TOOLS_DIR/.dart_tool/package_config.json" $FLUTTER_TOOL_ARGS "$SNAPSHOT_PATH" "$@"|exec "$DART" --disable-dart-dev --packages="$FLUTTER_TOOLS_DIR/.dart_tool/package_config.json" $FLUTTER_TOOL_ARGS "$SNAPSHOT_PATH" $ARCH_FLUTTER_OPTS "$@"|' \
+		-e 's|exec "$DART" --packages="$FLUTTER_TOOLS_DIR/.dart_tool/package_config.json" $FLUTTER_TOOL_ARGS "$SNAPSHOT_PATH" "$@"|exec "$DART" --packages="$FLUTTER_TOOLS_DIR/.dart_tool/package_config.json" $FLUTTER_TOOL_ARGS "$SNAPSHOT_PATH" $ARCH_FLUTTER_OPTS "$@"|' \
 		"$1/bin/internal/shared.sh"
 }
 
@@ -221,6 +222,9 @@ _get_engine_version()
 {
 	local -r fvm_cache_dir="$1"
 
+	#>&2 fvm.real api project
+	#>&2 fvm.real flutter --version
+
 	local engine_version="$(fvm.real api project | yq -er '.project.pinnedVersion.name')"
 
 	if [[ -z "$engine_version" || "$engine_version" == 'null' ]]; then
@@ -250,7 +254,7 @@ build_engine()
 	mkdir -p "$cached_flutter_engine_dir"
 	_ln "$cached_flutter_engine_dir/out" '.engine-src/engine/out'
 
-	#fvm.real api project
+	#>&2 fvm.real api project
 
 	{
 		flock -s 3
