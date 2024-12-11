@@ -4,21 +4,14 @@
 
 pkgname=python-srsly-git
 _origpkgname=srsly
-pkgver=2.4.8.r1.g4aba49f
-pkgrel=3
+pkgver=2.5.0.r0.gcaf313b
+pkgrel=1
 pkgdesc="Modern high-performance serialization utilities for Python"
 arch=("x86_64")
 url="https://github.com/explosion/srsly"
 license=("MIT")
-depends=('python'
-         'python-numpy'
-         'cython0'
-         'python-pytest'
-         'python-mock'
-         'python-pytz'
-         'python-catalogue'
-         'python-pytest-timeout'
-)
+depends=('cython' 'python-numpy' 'python-pytz' 'python-catalogue' 'python-psutil')
+checkdepends=('python-pytest' 'python-mock' 'python-pytest-timeout')
 makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 provides=('python-srsly')
 conflicts=('python-srsly')
@@ -27,15 +20,11 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_origpkgname"
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^release-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$_origpkgname"
-#  sed -i 's/ctypedef unsigned long long uint64_t/from libc.stdint cimport uint64_t/' srsly/msgpack/_unpacker.pyx
-#  sed -i 's/,<0.30.0//' setup.cfg
-#  sed -i 's/,<0.30.0//' pyproject.toml
-#  sed -i 's/,<0.30.0//' requirements.txt
   git -C "${srcdir}/${_origpkgname}" clean -dfx
 }
 
@@ -43,6 +32,13 @@ build() {
   cd "${_origpkgname}"
   python -m build --wheel --no-isolation
 }
+
+#check() {
+#  cd "$_origpkgname"
+#  python -m installer -d tmp_install dist/*.whl
+#  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+#  PYTHONPATH="$PWD/tmp_install/$site_packages" pytest -v --pyargs srsly -Werror
+#}
 
 package() {
   cd "$_origpkgname"
