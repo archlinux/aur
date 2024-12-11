@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tishare-desktop-bin
 _pkgname=tiShare
-pkgver=0.5.0
-_electronversion=26
+pkgver=0.5.1
+_electronversion=33
 pkgrel=1
-pkgdesc="tiShare aims to send files or folders between devices easily, with cross-platform support."
+pkgdesc="tiShare aims to send files or folders between devices easily, with cross-platform support.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/dlguswo333/tishare-desktop"
 license=('MIT')
@@ -23,20 +23,21 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/dlguswo333/tishare-desktop/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1716876809ac032bbf470edfb1e9c8ec5f36eb2599ac36ac44e977f894d136eb'
+sha256sums=('ceee6de95439d194113f9185c248941bc1a0b047a5d547fa0b3cac6e19b87733'
             'a9db662637dcb2f531e9d9078fa90a70ea9e3d8f48bdd499e30993ad6c0ce228'
             '5461c88ddb4ff9c0e56d75fdb18fe2719a5afe1c676513496a2e07b45ccebb99'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
     install -Dm644 "${srcdir}/index-${pkgver}.html" "${srcdir}/app.asar.unpacked/build/index.html"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
