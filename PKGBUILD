@@ -197,6 +197,11 @@ apply_patches() {
         
         patch -Np1 -i "${srcdir}/cl-linux/${i}" || true
     done
+
+    # Patch with kernel_compiler_patch patches.
+    # Do this before any defconfig invocations so we
+    # have all of the extra selectable uarches ready and selectable
+    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_kernelcompilerpatch/more-ISA-levels-and-uarches-for-kernel-6.1.79+.patch"
 }
 
 # Allows user to modify the kernel config
@@ -314,11 +319,6 @@ update_defconfig() {
     # Run olddefconfig
     make ${BUILD_FLAGS[*]} olddefconfig
     diff -u $srcdir/cl-linux/config .config || :
-
-    # Patch with kernel_compiler_patch patches
-    # This must be executed after olddefconfig
-    # to allow for the next section to run.
-    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_kernelcompilerpatch/more-ISA-levels-and-uarches-for-kernel-6.1.79+.patch"
     
     # Set subarch automatically
     if [ -n "${_subarch}" ]; then
