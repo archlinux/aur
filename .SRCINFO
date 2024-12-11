@@ -1,6 +1,6 @@
 pkgbase = zen-browser
 	pkgdesc = Experience tranquillity while browsing the web without people tracking you
-	pkgver = 1.0.1_a.22
+	pkgver = 1.0.2_b.0
 	pkgrel = 1
 	url = https://zen-browser.app/
 	arch = x86_64
@@ -62,48 +62,48 @@ pkgbase = zen-browser
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	noextract = firefox-132.0.1.source.tar.xz
+	noextract = firefox-133.0.source.tar.xz
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
 	options = !debug
-	source = git+https://github.com/zen-browser/desktop.git#tag=1.0.1-a.22
+	source = git+https://github.com/zen-browser/desktop.git#tag=1.0.2-b.0
 	source = git+https://github.com/mozilla-l10n/firefox-l10n
-	source = https://archive.mozilla.org/pub/firefox/releases/132.0.1/source/firefox-132.0.1.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/133.0/source/firefox-133.0.source.tar.xz
 	source = desktop.patch
 	source = download-language-packs.patch
 	source = do-not-auto-disable-extensions-in-system-directories.patch
-	sha256sums = ea7a51c7f50e47d733ff3e16681f4283f22d1ac96453ce2b92ec8caa499b2699
+	sha256sums = 2e267a56adab038a2afb730a433b90fdcd2f877b0c53cc58971b67771ab98ded
 	sha256sums = SKIP
-	sha256sums = 5c031b572c1da726677e2ff97b6ad5a7e3b23387a6fc3963391cb562f80a5e48
+	sha256sums = 492b2c9a3b6d215e38ce490624e8b2b9473419accdeaddb24ba00bc6adc3cc60
 	sha256sums = fb8a1373a1e9f1b8b1443f75368b647f370735e5b95da82bab106000ef71fa76
 	sha256sums = f2a917dea2c5cbd702da69c0c8648047f2f28ae77c5807350f4cb4d2dd5fe4fb
 	sha256sums = 8c1dec4e17516ecc737cb4fd37a215a59a4a3dea49770290125973038d987e01
 
 pkgname = zen-browser-generic
 	pkgdesc = Experience tranquillity while browsing the web without people tracking you
-	provides = zen-browser=1.0.1_a.22
+	provides = zen-browser=1.0.2_b.0
 	conflicts = zen-browser
 
 pkgname = zen-browser-specific
 	pkgdesc = Experience tranquillity while browsing the web without people tracking you (optimized for modern devices)
-	provides = zen-browser=1.0.1_a.22
+	provides = zen-browser=1.0.2_b.0
 	conflicts = zen-browser
 
 pkgname = zen-browser-i18n-zh-cn
 	pkgdesc = Language pack for Zen Browser (zh-CN)
 	arch = any
-	depends = zen-browser>=1.0.1_a.22
+	depends = zen-browser>=1.0.2_b.0
 	optdepends = 
 
 pkgname = zen-browser-i18n-zh-tw
 	pkgdesc = Language pack for Zen Browser (zh-TW)
 	arch = any
-	depends = zen-browser>=1.0.1_a.22
+	depends = zen-browser>=1.0.2_b.0
 	optdepends = 
 
 pkgname = zen-browser-i18n-ja
 	pkgdesc = Language pack for Zen Browser (ja)
 	arch = any
-	depends = zen-browser>=1.0.1_a.22
+	depends = zen-browser>=1.0.2_b.0
 	optdepends = 
