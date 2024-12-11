@@ -1,0 +1,18 @@
+pkgbase = rename-photos-bin
+	pkgdesc = Bulk rename photos using EXIF data 🐶 (Prebuilt version)使用 EXIF 数据批量重命名照片.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://rename-photos.vercel.app/
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = rename-photos=0.1.0
+	conflicts = rename-photos
+	source = rename-photos-0.1.0.rpm::https://github.com/Arman19941113/rename-photos/releases/download/v0.1.0/Rename.Photos-0.1.0-1.x86_64.rpm
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/Arman19941113/rename-photos/v0.1.0/LICENSE
+	sha256sums = d8daa0d5a38664ee7a32fa0d3d7f8313c98c2e4076299cdb7f84e2d838bfb1f5
+	sha256sums = 5ad2df4d8f7256a87d9d21c5a8568a8d1d6ff63e8506f87c683612bee4877c07
+
+pkgname = rename-photos-bin
