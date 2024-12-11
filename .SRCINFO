@@ -1,13 +1,13 @@
 pkgbase = ppd-editor
 	pkgdesc = Editor for 2D paperdoll file
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://github.com/fralonra/ppd-editor
 	arch = any
 	license = MIT
 	makedepends = rust
 	makedepends = git
-	source = https://github.com/fralonra/ppd-editor/archive/v0.1.1.tar.gz
-	md5sums = 39e94a26d96a11160080290848bc487e
+	source = https://github.com/fralonra/ppd-editor/archive/v0.1.2.tar.gz
+	md5sums = 229024a70900a9018385aa6936ac1756
 
 pkgname = ppd-editor

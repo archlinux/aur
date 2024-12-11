@@ -1,15 +1,15 @@
 # Maintainer: Zoron <zoronlivingston@gmail.com>
 
 pkgname=ppd-editor
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="Editor for 2D paperdoll file"
 arch=('any')
 url="https://github.com/fralonra/ppd-editor"
 license=('MIT')
 makedepends=('rust' 'git')
 source=("https://github.com/fralonra/$pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('39e94a26d96a11160080290848bc487e')
+md5sums=('229024a70900a9018385aa6936ac1756')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
