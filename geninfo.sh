@@ -64,6 +64,9 @@ _gen_depends() {
             sed 's|python-python|python|' | \
             sort -u
         ))
+        if [[ -z ${depends[@]} ]]; then
+            depends=( "python" )
+        fi
         echo "    \""${depends[@]}"\""
     done
     echo ")"

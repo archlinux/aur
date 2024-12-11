@@ -1,5 +1,5 @@
 pkgbase = opentelemetry-python-contrib
-	pkgver = 0.49b2
+	pkgver = 0.50b0
 	pkgrel = 1
 	arch = any
 	license = Apache-2.0
@@ -8,8 +8,8 @@ pkgbase = opentelemetry-python-contrib
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = opentelemetry-python-contrib-0.49b2.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.49b2.tar.gz
-	sha256sums = ebc6eadc8a3b1b79a38ba821e5911349b98494d4767007fcf0177d918e351b3e
+	source = opentelemetry-python-contrib-0.50b0.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.50b0.tar.gz
+	sha256sums = 47499a3a0e3542fe0dc000b1d9c0aba4d185273296d0fb4585fd46d1e95c0275
 
 pkgname = python-opentelemetry-contrib-instrumentations
 	pkgdesc = OpenTelemetry Contrib Instrumentation Packages
@@ -28,6 +28,7 @@ pkgname = python-opentelemetry-contrib-instrumentations
 	depends = python-opentelemetry-instrumentation-botocore
 	depends = python-opentelemetry-instrumentation-cassandra
 	depends = python-opentelemetry-instrumentation-celery
+	depends = python-opentelemetry-instrumentation-click
 	depends = python-opentelemetry-instrumentation-confluent-kafka
 	depends = python-opentelemetry-instrumentation-dbapi
 	depends = python-opentelemetry-instrumentation-django
@@ -223,6 +224,14 @@ pkgname = python-opentelemetry-instrumentation-celery
 	depends = python-opentelemetry-instrumentation
 	depends = python-opentelemetry-semantic-conventions
 	optdepends = python-celery
+
+pkgname = python-opentelemetry-instrumentation-click
+	pkgdesc = Click instrumentation for OpenTelemetry
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-click
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-wrapt
+	optdepends = python-click
 
 pkgname = python-opentelemetry-instrumentation-confluent-kafka
 	pkgdesc = OpenTelemetry Confluent Kafka instrumentation
@@ -580,5 +589,5 @@ pkgname = python-opentelemetry-sdk-extension-aws
 pkgname = python-opentelemetry-util-http
 	pkgdesc = Web util for OpenTelemetry
 	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/util/opentelemetry-util-http
-	depends = 
+	depends = python
 	optdepends = 

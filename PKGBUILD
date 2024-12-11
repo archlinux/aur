@@ -1,14 +1,14 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgbase=opentelemetry-python-contrib
-pkgver=0.49b2
+pkgver=0.50b0
 pkgrel=1
 arch=("any")
 _url="https://github.com/open-telemetry/${pkgbase}"
 license=("Apache-2.0")
 makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${pkgbase}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ebc6eadc8a3b1b79a38ba821e5911349b98494d4767007fcf0177d918e351b3e')
+sha256sums=('47499a3a0e3542fe0dc000b1d9c0aba4d185273296d0fb4585fd46d1e95c0275')
 
 # run './geninfo.sh' to generate following variables
 pkgname=(
@@ -31,6 +31,7 @@ pkgname=(
     "python-opentelemetry-instrumentation-botocore"
     "python-opentelemetry-instrumentation-cassandra"
     "python-opentelemetry-instrumentation-celery"
+    "python-opentelemetry-instrumentation-click"
     "python-opentelemetry-instrumentation-confluent-kafka"
     "python-opentelemetry-instrumentation-dbapi"
     "python-opentelemetry-instrumentation-django"
@@ -94,6 +95,7 @@ _pkgdescs=(
     "OpenTelemetry Botocore instrumentation"
     "OpenTelemetry Cassandra instrumentation"
     "OpenTelemetry Celery Instrumentation"
+    "Click instrumentation for OpenTelemetry"
     "OpenTelemetry Confluent Kafka instrumentation"
     "OpenTelemetry Database API instrumentation"
     "OpenTelemetry Instrumentation for Django"
@@ -157,6 +159,7 @@ _urls=(
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-botocore"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-cassandra"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-celery"
+    "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-click"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-confluent-kafka"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-dbapi"
     "${_url}/tree/main/instrumentation/opentelemetry-instrumentation-django"
@@ -201,7 +204,7 @@ _urls=(
     "${_url}/tree/main/util/opentelemetry-util-http"
 )
 _depends=(
-    "python-opentelemetry-instrumentation-aio-pika python-opentelemetry-instrumentation-aiohttp-client python-opentelemetry-instrumentation-aiohttp-server python-opentelemetry-instrumentation-aiokafka python-opentelemetry-instrumentation-aiopg python-opentelemetry-instrumentation-asgi python-opentelemetry-instrumentation-asyncio python-opentelemetry-instrumentation-asyncpg python-opentelemetry-instrumentation-aws-lambda python-opentelemetry-instrumentation-boto python-opentelemetry-instrumentation-boto3sqs python-opentelemetry-instrumentation-botocore python-opentelemetry-instrumentation-cassandra python-opentelemetry-instrumentation-celery python-opentelemetry-instrumentation-confluent-kafka python-opentelemetry-instrumentation-dbapi python-opentelemetry-instrumentation-django python-opentelemetry-instrumentation-elasticsearch python-opentelemetry-instrumentation-falcon python-opentelemetry-instrumentation-fastapi python-opentelemetry-instrumentation-flask python-opentelemetry-instrumentation-grpc python-opentelemetry-instrumentation-httpx python-opentelemetry-instrumentation-jinja2 python-opentelemetry-instrumentation-kafka-python python-opentelemetry-instrumentation-logging python-opentelemetry-instrumentation-mysql python-opentelemetry-instrumentation-mysqlclient python-opentelemetry-instrumentation-pika python-opentelemetry-instrumentation-psycopg python-opentelemetry-instrumentation-psycopg2 python-opentelemetry-instrumentation-pymemcache python-opentelemetry-instrumentation-pymongo python-opentelemetry-instrumentation-pymysql python-opentelemetry-instrumentation-pyramid python-opentelemetry-instrumentation-redis python-opentelemetry-instrumentation-remoulade python-opentelemetry-instrumentation-requests python-opentelemetry-instrumentation-sqlalchemy python-opentelemetry-instrumentation-sqlite3 python-opentelemetry-instrumentation-starlette python-opentelemetry-instrumentation-system-metrics python-opentelemetry-instrumentation-threading python-opentelemetry-instrumentation-tornado python-opentelemetry-instrumentation-tortoiseorm python-opentelemetry-instrumentation-urllib python-opentelemetry-instrumentation-urllib3 python-opentelemetry-instrumentation-wsgi"
+    "python-opentelemetry-instrumentation-aio-pika python-opentelemetry-instrumentation-aiohttp-client python-opentelemetry-instrumentation-aiohttp-server python-opentelemetry-instrumentation-aiokafka python-opentelemetry-instrumentation-aiopg python-opentelemetry-instrumentation-asgi python-opentelemetry-instrumentation-asyncio python-opentelemetry-instrumentation-asyncpg python-opentelemetry-instrumentation-aws-lambda python-opentelemetry-instrumentation-boto python-opentelemetry-instrumentation-boto3sqs python-opentelemetry-instrumentation-botocore python-opentelemetry-instrumentation-cassandra python-opentelemetry-instrumentation-celery python-opentelemetry-instrumentation-click python-opentelemetry-instrumentation-confluent-kafka python-opentelemetry-instrumentation-dbapi python-opentelemetry-instrumentation-django python-opentelemetry-instrumentation-elasticsearch python-opentelemetry-instrumentation-falcon python-opentelemetry-instrumentation-fastapi python-opentelemetry-instrumentation-flask python-opentelemetry-instrumentation-grpc python-opentelemetry-instrumentation-httpx python-opentelemetry-instrumentation-jinja2 python-opentelemetry-instrumentation-kafka-python python-opentelemetry-instrumentation-logging python-opentelemetry-instrumentation-mysql python-opentelemetry-instrumentation-mysqlclient python-opentelemetry-instrumentation-pika python-opentelemetry-instrumentation-psycopg python-opentelemetry-instrumentation-psycopg2 python-opentelemetry-instrumentation-pymemcache python-opentelemetry-instrumentation-pymongo python-opentelemetry-instrumentation-pymysql python-opentelemetry-instrumentation-pyramid python-opentelemetry-instrumentation-redis python-opentelemetry-instrumentation-remoulade python-opentelemetry-instrumentation-requests python-opentelemetry-instrumentation-sqlalchemy python-opentelemetry-instrumentation-sqlite3 python-opentelemetry-instrumentation-starlette python-opentelemetry-instrumentation-system-metrics python-opentelemetry-instrumentation-threading python-opentelemetry-instrumentation-tornado python-opentelemetry-instrumentation-tortoiseorm python-opentelemetry-instrumentation-urllib python-opentelemetry-instrumentation-urllib3 python-opentelemetry-instrumentation-wsgi"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-sdk"
     "python-opentelemetry-api python-opentelemetry-sdk python-protobuf python-requests python-snappy"
     "python-opentelemetry-api python-opentelemetry-sdk python-opentelemetry-semantic-conventions python-rich"
@@ -220,6 +223,7 @@ _depends=(
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-propagator-aws-xray python-opentelemetry-semantic-conventions"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
+    "python-opentelemetry-api python-opentelemetry-semantic-conventions python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-wrapt"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-instrumentation-wsgi python-opentelemetry-semantic-conventions python-opentelemetry-util-http"
@@ -261,7 +265,7 @@ _depends=(
     "python-opentelemetry-instrumentation python-opentelemetry-sdk"
     "python-opentelemetry-sdk"
     "python-opentelemetry-sdk"
-    ""
+    "python"
 )
 _optdepends=(
     ""
@@ -283,6 +287,7 @@ _optdepends=(
     "python-botocore"
     "python-cassandra-driver python-scylla-driver"
     "python-celery"
+    "python-click"
     "python-confluent-kafka"
     ""
     "python-django python-opentelemetry-instrumentation-asgi"
