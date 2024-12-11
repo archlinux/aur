@@ -1,7 +1,7 @@
 pkgbase = cosmic-launcher-git
 	pkgdesc = Layer Shell frontend for Pop Launcher.
 	pkgver = 1.0.0.alpha.4.r12.g3255df8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/cosmic-launcher
 	arch = x86_64
 	arch = aarch64
@@ -14,6 +14,7 @@ pkgbase = cosmic-launcher-git
 	makedepends = mold
 	depends = hicolor-icon-theme
 	depends = libxkbcommon
+	depends = pop-launcher-git
 	depends = wayland
 	provides = cosmic-launcher
 	conflicts = cosmic-launcher

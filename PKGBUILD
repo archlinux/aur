@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-launcher-git
 pkgver=1.0.0.alpha.4.r12.g3255df8
-pkgrel=1
+pkgrel=2
 pkgdesc="Layer Shell frontend for Pop Launcher."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-launcher"
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=(
   'hicolor-icon-theme'
   'libxkbcommon'
-#  'pop-launcher-git'
+  'pop-launcher-git'
   'wayland'
 )
 makedepends=(
