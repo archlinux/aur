@@ -9,7 +9,6 @@ url="https://github.com/ggerganov/whisper.cpp"
 license=("MIT")
 depends=('blas-openblas' 'glibc' 'gcc-libs' 'openmp')
 makedepends=(
-  'ccache'
   'cmake'
   'git'
 )
