@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
 pkgver='5.0.6'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -10,6 +10,8 @@ license=('GPL-3.0-only' 'LicenseRef-BeekeeperStudioApplicationEULA')
 _electronpkg='electron31'
 depends=("$_electronpkg")
 makedepends=('git' 'libxcrypt-compat' 'nodejs' 'python' 'yarn')
+provides=("$pkgname-ultimate")
+conflicts=("$pkgname-ultimate")
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	'electron-launcher.sh'
@@ -20,7 +22,7 @@ source=(
 b2sums=('8491026a610572dd066d35d4ac542ba337b7217f7949d9b9439a9d9f0580eeee3242f71de362fa5d5026d29b018fd5432b56b4069865d5fa43675bea20234e03'
         '54b46275a83a6099b22bc511a6293178abccccad6d1cc36bf812166f93f75b1379a3201dac9ee85e05cf7c3b0de7e94829fd3fb619ccca513924ebf3101850f0'
         'af66e7a1052a4b8d6bbe2a87462094804ad3ee51bbd38ebc5a1e06c6e5580ec4f3adb138b82d2db96bf265d9f4d12bbd2a46954fe7e5bded706915e77bb5b8ee'
-        '4be3b51d6e091519b8dd540a8eb71c73fbda1bd46e01a98049aae3e8685b73d55111acdaecce041e7a9645799645fdd490feab9dd9c5e4897f734b78094eec46'
+        '5b064b0531e7f1f19e2dd9b194b3304b43174c047c1b12bdae6aad5eae5ca079c13fe71481b4044fa4d4bd76e62f8fbdd4950fd3cf142b81181f9df82eb91f25'
         'b5f0a224b71c8ec5966333cc24bdd59a58728175448e88a4779e100823b76f25088a934775ba5eb2c13d110e4f5889d11d2a0c3ee3b965489f644561659dd176')
 
 _sourcedirectory="$pkgname-$pkgver"
@@ -69,7 +71,9 @@ package() {
 	# Electron resources
 	cd "$srcdir/$_sourcedirectory/apps/studio/dist_electron/"
 	install -Dm644 'linux-unpacked/resources/app.asar' "$pkgdir/usr/lib/$pkgname/app.asar"
+	install -Dm644 'linux-unpacked/resources/demo.db' "$pkgdir/usr/lib/$pkgname/demo.db"
 	cp -r --no-preserve=ownership --preserve=mode 'linux-unpacked/resources/app.asar.unpacked/' "$pkgdir/usr/lib/$pkgname/app.asar.unpacked/"
+	cp -r --no-preserve=ownership --preserve=mode 'linux-unpacked/resources/public/' "$pkgdir/usr/lib/$pkgname/public/"
 
 	# Binary
 	install -Dm755 "$srcdir/electron-launcher.sh" "$pkgdir/usr/bin/$pkgname"
