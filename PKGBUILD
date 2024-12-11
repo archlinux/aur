@@ -12,7 +12,6 @@ depends=('glibc' 'gcc-libs' 'openmp' 'vulkan-driver' 'vulkan-icd-loader')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}")
 makedepends=(
-  'ccache'
   'cmake'
   'git'
 )
