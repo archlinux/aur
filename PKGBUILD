@@ -1,7 +1,7 @@
 # Maintainer: Magi3r <magier dot mit dot f3erball at gmail dot com>
 pkgname=nyarchassistant
 _pkgname=NyarchAssistant
-pkgver=0.4.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Nyarch Linux Assistant (Newelle Fork)"
 arch=("any")
@@ -12,22 +12,21 @@ depends=(
 	"gnome-shell"
 	"python"
 	"python-requests"
+	"python-pillow"
 	"python-requests-toolbelt"
+	"python-curl-cffi"
+	"python-gpt4all"
 	"python-gtts"
 	"python-expandvars"
 	"python-pyaudio"
-	"python-openai"
-	"python-scikit-learn"
-	"python-pygame"
-	"python-g4f"
-	"python-curl-cffi"
-	"python-gpt4all"
 	"python-speechrecognition"
-	"python-edge-tts"
+	"python-openai"
 	"python-voicevox-client"
 	"python-livepng"
 	"python-wordllama"
-	"python-pillow"
+	"python-edge-tts"
+	"python-scikit-learn"
+	"python-pygame"
 )
 optdepends=(
 	"python-ollama: Ollama support"
@@ -35,18 +34,26 @@ optdepends=(
 )
 
 makedepends=("meson")
+
+smart_prompts_ver="0.3"
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/NyarchLinux/NyarchAssistant/archive/$pkgver.tar.gz"
-	"$pkgname-$pkgver-dataset.csv::https://github.com/NyarchLinux/Smart-Prompts/releases/download/0.3/dataset.csv"
-	"$pkgname-$pkgver-NyaMedium_0.3_256.pkl::https://github.com/NyarchLinux/Smart-Prompts/releases/download/0.3/NyaMedium_0.3_256.pkl"
+	"$pkgname-$pkgver-dataset.csv::https://github.com/NyarchLinux/Smart-Prompts/releases/download/$smart_prompts_ver/dataset.csv"
+	"$pkgname-$pkgver-NyaMedium_0.3_256.pkl::https://github.com/NyarchLinux/Smart-Prompts/releases/download/$smart_prompts_ver/NyaMedium_0.3_256.pkl"
 	"$pkgname-$pkgver-l2_supercat_tokenizer_config.json::https://huggingface.co/dleemiller/word-llama-l2-supercat/resolve/main/l2_supercat_tokenizer_config.json"
+	# This patch is nessecary for v0.5.0 only, as the fixes are not released yet
+	"$pkgname-$pkgver.patch::https://github.com/NyarchLinux/NyarchAssistant/compare/0.5.0..fffe37d8c612d4f780ababf41b808b1640893f4a.diff"
 )
-sha256sums=(
-	'8fd563c0ece3debfad29f2c6f958df4f3c32bad84edb5a18d750c2cb78d8662e'
-	'7c40ecee34ea02e4dcad2c479e5036cf417366752f85902cb76360f3303341f0'
-	'79c9d3526f84143ddc9d6f7033a5f3e403c4c92937a3aa4bcaca1db5393b75ee'
-	'bf467c9e0f536bda271283c6ef85eb1a943e3196b621c8a912d64953b205df83'
-)
+sha256sums=('7f195df36c39681d3b9e69f39bdafa8af13aa8bd3b552e37c1cf840ccd86569d'
+            '7c40ecee34ea02e4dcad2c479e5036cf417366752f85902cb76360f3303341f0'
+            '79c9d3526f84143ddc9d6f7033a5f3e403c4c92937a3aa4bcaca1db5393b75ee'
+            'bf467c9e0f536bda271283c6ef85eb1a943e3196b621c8a912d64953b205df83'
+            '86281470b5996f99c66e3133d7d08fb18b73a34bc1c241c878f7bbf72297b73e')
+
+prepare() {
+  	cd "$_pkgname-$pkgver"
+	patch -p1 <"$srcdir/$pkgname-$pkgver.patch"
+}
 
 
 build() {
