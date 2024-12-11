@@ -1,7 +1,7 @@
 pkgbase = swaywsr-git
 	pkgdesc = sway workspace renamer
 	pkgver = 1.4.0.r42.g193c4cb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pedroscaff/swaywsr
 	arch = x86_64
 	license = MIT

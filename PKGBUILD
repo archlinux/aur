@@ -1,6 +1,6 @@
 pkgname=swaywsr-git
 pkgver=1.4.0.r42.g193c4cb
-pkgrel=1
+pkgrel=2
 pkgdesc='sway workspace renamer'
 arch=('x86_64')
 url='https://github.com/pedroscaff/swaywsr'
@@ -24,5 +24,5 @@ build() {
 package() {
   cd "${pkgname%-*}"
   install -Dm755 "target/release/${pkgname%-*}" "$pkgdir/usr/bin/${pkgname%-*}"
-  install -Dm644 assets/example_config.toml -t "$pkgdir/usr/share/doc/${pkgname%-*}/examples/example_config.toml"
+  install -Dm644 assets/example_config.toml "$pkgdir/usr/share/doc/${pkgname%-*}/examples/example_config.toml"
 }
