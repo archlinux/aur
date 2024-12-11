@@ -17,7 +17,7 @@ sha256sums=('947a08f394df96f3bac77e97a2a3d2dc4c3ea93c83b381ff2d5d4f350750537d')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  install -dm 755 "usr/share/doc/${pkgname%-git}/"
-  cp -r screenshots README.md CHANGELOG.md "usr/share/doc/${pkgname%-git}/"
+  install -dm 755 "usr/share/doc/${pkgname}/"
+  cp -r screenshots README.md CHANGELOG.md "usr/share/doc/${pkgname}/"
   cp -vr usr etc "$pkgdir"
 }
