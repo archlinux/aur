@@ -1,7 +1,7 @@
 # Maintainer: Mark Karlinsky <mark.devnull@gmail.com>
 pkgname=niri-dinit
 pkgver=0.1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A scrollable-tiling Wayland compositor (with dinit dependency instead of systemd)"
 arch=('x86_64')
 url="https://github.com/YaLTeR/niri"
@@ -19,6 +19,7 @@ depends=(
     'pixman'
     'libxkbcommon'
     'gcc-libs'
+    'glibc'
 )
 makedepends=(
     'git'
@@ -57,7 +58,6 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_HOME="$(pwd)/.cargo"
     export CARGO_TARGET_DIR=target
-    export LDFLAGS="$LDFLAGS -Wl,-z,cet-report=error"
     cargo build --frozen --release --no-default-features --features dinit,dbus,xdp-gnome-screencast
 }
 
