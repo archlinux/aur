@@ -1,0 +1,234 @@
+From 9040636d0dad2b0804cb572e372be79f42d8695d Mon Sep 17 00:00:00 2001
+From: Michael Rasmussen <mir@datanom.net>
+Date: Tue, 24 Oct 2023 22:46:47 +0200
+Subject: [PATCH 08/11] move x-y-z postion to align expert tab
+
+Signed-off-by: Michael Rasmussen <mir@datanom.net>
+---
+ ui/ui.xml | 161 +++++++++++++++++++++++++++---------------------------
+ 1 file changed, 82 insertions(+), 79 deletions(-)
+
+diff --git a/ui/ui.xml b/ui/ui.xml
+index 5493737..3f3cc32 100644
+--- a/ui/ui.xml
++++ b/ui/ui.xml
+@@ -898,6 +898,81 @@ Optimize radial distortion for all images, except for first.
+                                     <property name="visible">True</property>
+                                     <property name="can-focus">False</property>
+                                     <property name="orientation">vertical</property>
++                                    <child>
++                                      <object class="GtkBox">
++                                        <property name="visible">True</property>
++                                        <property name="can-focus">False</property>
++                                        <property name="border-width">4</property>
++                                        <property name="homogeneous">True</property>
++                                        <child>
++                                          <object class="GtkCheckButton" id="check_x_coord">
++                                            <property name="label" translatable="yes">Optimize X coordinate</property>
++                                            <property name="visible">True</property>
++                                            <property name="can-focus">True</property>
++                                            <property name="receives-default">False</property>
++                                            <property name="tooltip-text" translatable="yes">-x
++
++Optimize X coordinate of the camera position.</property>
++                                            <property name="draw-indicator">True</property>
++                                          </object>
++                                          <packing>
++                                            <property name="expand">False</property>
++                                            <property name="fill">True</property>
++                                            <property name="position">1</property>
++                                          </packing>
++                                        </child>
++                                        <child>
++                                          <object class="GtkCheckButton" id="check_y_coord">
++                                            <property name="label" translatable="yes">Optimize Y coordinate</property>
++                                            <property name="visible">True</property>
++                                            <property name="can-focus">True</property>
++                                            <property name="receives-default">False</property>
++                                            <property name="tooltip-text" translatable="yes">-y
++
++Optimize Y coordinate of the camera position.</property>
++                                            <property name="draw-indicator">True</property>
++                                          </object>
++                                          <packing>
++                                            <property name="expand">False</property>
++                                            <property name="fill">True</property>
++                                            <property name="position">2</property>
++                                          </packing>
++                                        </child>
++                                        <child>
++                                          <object class="GtkCheckButton" id="check_z_coord">
++                                            <property name="label" translatable="yes">Optimize Z coordinate</property>
++                                            <property name="visible">True</property>
++                                            <property name="can-focus">True</property>
++                                            <property name="receives-default">False</property>
++                                            <property name="tooltip-text" translatable="yes">-z
++
++Optimize Z coordinate of the camera position.</property>
++                                            <property name="draw-indicator">True</property>
++                                          </object>
++                                          <packing>
++                                            <property name="expand">False</property>
++                                            <property name="fill">True</property>
++                                            <property name="position">3</property>
++                                          </packing>
++                                        </child>
++                                      </object>
++                                      <packing>
++                                        <property name="expand">False</property>
++                                        <property name="fill">True</property>
++                                        <property name="position">0</property>
++                                      </packing>
++                                    </child>
++                                    <child>
++                                      <object class="GtkSeparator">
++                                        <property name="visible">True</property>
++                                        <property name="can-focus">False</property>
++                                      </object>
++                                      <packing>
++                                        <property name="expand">False</property>
++                                        <property name="fill">True</property>
++                                        <property name="position">1</property>
++                                      </packing>
++                                    </child>
+                                     <child>
+                                       <object class="GtkBox">
+                                         <property name="visible">True</property>
+@@ -938,7 +1013,7 @@ Correlation threshold for identifying control points (default: 0.9).</property>
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">True</property>
+-                                        <property name="position">0</property>
++                                        <property name="position">2</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+@@ -949,7 +1024,7 @@ Correlation threshold for identifying control points (default: 0.9).</property>
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">True</property>
+-                                        <property name="position">1</property>
++                                        <property name="position">3</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+@@ -990,18 +1065,7 @@ Number of control points to create between adjacent images (default: 8).</proper
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">True</property>
+-                                        <property name="position">2</property>
+-                                      </packing>
+-                                    </child>
+-                                    <child>
+-                                      <object class="GtkSeparator">
+-                                        <property name="visible">True</property>
+-                                        <property name="can-focus">False</property>
+-                                      </object>
+-                                      <packing>
+-                                        <property name="expand">False</property>
+-                                        <property name="fill">True</property>
+-                                        <property name="position">3</property>
++                                        <property name="position">4</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+@@ -1012,7 +1076,7 @@ Number of control points to create between adjacent images (default: 8).</proper
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">True</property>
+-                                        <property name="position">4</property>
++                                        <property name="position">5</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+@@ -1053,7 +1117,7 @@ Remove all control points with an error higher than num pixels (default: 3).</pr
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">True</property>
+-                                        <property name="position">5</property>
++                                        <property name="position">6</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+@@ -1064,7 +1128,7 @@ Remove all control points with an error higher than num pixels (default: 3).</pr
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">True</property>
+-                                        <property name="position">6</property>
++                                        <property name="position">7</property>
+                                       </packing>
+                                     </child>
+                                   </object>
+@@ -1112,68 +1176,7 @@ Remove all control points with an error higher than num pixels (default: 3).</pr
+                                     <property name="can-focus">False</property>
+                                     <property name="orientation">vertical</property>
+                                     <child>
+-                                      <object class="GtkBox">
+-                                        <property name="visible">True</property>
+-                                        <property name="can-focus">False</property>
+-                                        <property name="border-width">4</property>
+-                                        <property name="homogeneous">True</property>
+-                                        <child>
+-                                          <object class="GtkCheckButton" id="check_x_coord">
+-                                            <property name="label" translatable="yes">Optimize X coordinate</property>
+-                                            <property name="visible">True</property>
+-                                            <property name="can-focus">True</property>
+-                                            <property name="receives-default">False</property>
+-                                            <property name="tooltip-text" translatable="yes">-x
+-
+-Optimize X coordinate of the camera position.</property>
+-                                            <property name="draw-indicator">True</property>
+-                                          </object>
+-                                          <packing>
+-                                            <property name="expand">False</property>
+-                                            <property name="fill">True</property>
+-                                            <property name="position">1</property>
+-                                          </packing>
+-                                        </child>
+-                                        <child>
+-                                          <object class="GtkCheckButton" id="check_y_coord">
+-                                            <property name="label" translatable="yes">Optimize Y coordinate</property>
+-                                            <property name="visible">True</property>
+-                                            <property name="can-focus">True</property>
+-                                            <property name="receives-default">False</property>
+-                                            <property name="tooltip-text" translatable="yes">-y
+-
+-Optimize Y coordinate of the camera position.</property>
+-                                            <property name="draw-indicator">True</property>
+-                                          </object>
+-                                          <packing>
+-                                            <property name="expand">False</property>
+-                                            <property name="fill">True</property>
+-                                            <property name="position">2</property>
+-                                          </packing>
+-                                        </child>
+-                                        <child>
+-                                          <object class="GtkCheckButton" id="check_z_coord">
+-                                            <property name="label" translatable="yes">Optimize Z coordinate</property>
+-                                            <property name="visible">True</property>
+-                                            <property name="can-focus">True</property>
+-                                            <property name="receives-default">False</property>
+-                                            <property name="tooltip-text" translatable="yes">-z
+-
+-Optimize Z coordinate of the camera position.</property>
+-                                            <property name="draw-indicator">True</property>
+-                                          </object>
+-                                          <packing>
+-                                            <property name="expand">False</property>
+-                                            <property name="fill">True</property>
+-                                            <property name="position">3</property>
+-                                          </packing>
+-                                        </child>
+-                                      </object>
+-                                      <packing>
+-                                        <property name="expand">False</property>
+-                                        <property name="fill">True</property>
+-                                        <property name="position">0</property>
+-                                      </packing>
++                                      <placeholder/>
+                                     </child>
+                                     <child>
+                                       <object class="GtkSeparator">
+-- 
+2.47.1
+

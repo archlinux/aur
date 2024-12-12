@@ -1,0 +1,47 @@
+From 0f97183d40ccfb220d624494097f3e50b2a9d584 Mon Sep 17 00:00:00 2001
+From: Michael Rasmussen <mir@datanom.net>
+Date: Mon, 23 Oct 2023 23:07:56 +0200
+Subject: [PATCH 06/11] Forgot to provide some of the tooltips
+
+Signed-off-by: Michael Rasmussen <mir@datanom.net>
+---
+ ui/ui.xml | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/ui/ui.xml b/ui/ui.xml
+index 908e123..5493737 100644
+--- a/ui/ui.xml
++++ b/ui/ui.xml
+@@ -840,6 +840,9 @@ Useful for aligning focus stacks with slightly different magnification.
+                                             <property name="visible">True</property>
+                                             <property name="can-focus">True</property>
+                                             <property name="receives-default">False</property>
++                                            <property name="tooltip-text" translatable="yes">
++Optimize radial distortion for all images, except for first.
++</property>
+                                             <property name="draw-indicator">True</property>
+                                           </object>
+                                           <packing>
+@@ -960,6 +963,9 @@ Correlation threshold for identifying control points (default: 0.9).</property>
+                                             <property name="visible">True</property>
+                                             <property name="can-focus">True</property>
+                                             <property name="receives-default">False</property>
++                                            <property name="tooltip-text" translatable="yes">-c
++
++Number of control points to create between adjacent images (default: 8).</property>
+                                             <property name="draw-indicator">True</property>
+                                           </object>
+                                           <packing>
+@@ -1020,6 +1026,9 @@ Correlation threshold for identifying control points (default: 0.9).</property>
+                                             <property name="visible">True</property>
+                                             <property name="can-focus">True</property>
+                                             <property name="receives-default">False</property>
++                                            <property name="tooltip-text" translatable="yes">-t
++
++Remove all control points with an error higher than num pixels (default: 3).</property>
+                                             <property name="draw-indicator">True</property>
+                                           </object>
+                                           <packing>
+-- 
+2.47.1
+

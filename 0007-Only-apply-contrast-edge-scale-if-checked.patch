@@ -1,0 +1,30 @@
+From 616a0e8ac37ec51599d091f71621cbf4be3b9ea2 Mon Sep 17 00:00:00 2001
+From: Michael Rasmussen <mir@datanom.net>
+Date: Mon, 23 Oct 2023 23:26:33 +0200
+Subject: [PATCH 07/11] Only apply contrast edge scale if checked
+
+Signed-off-by: Michael Rasmussen <mir@datanom.net>
+---
+ macrofusion.py | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/macrofusion.py b/macrofusion.py
+index d7c967c..d34e0b5 100755
+--- a/macrofusion.py
++++ b/macrofusion.py
+@@ -706,7 +706,11 @@ class Interface:
+                 settings["fuse_settings"]["contrast-edge-scale"][3] = str(self.spinbuttonLceF.get_value()) + '%'
+             else:
+                 settings["fuse_settings"]["contrast-edge-scale"][3] = str(self.spinbuttonLceF.get_value())
+-        
++        else:
++            settings["fuse_settings"]["contrast-edge-scale"][1] = 0
++            settings["fuse_settings"]["contrast-edge-scale"][2] = 0
++            settings["fuse_settings"]["contrast-edge-scale"][3] = 0
++
+         if self.check_ciecam.get_active():
+             settings["fuse_settings"]["use_ciecam"][1] = True
+ 
+-- 
+2.47.1
+

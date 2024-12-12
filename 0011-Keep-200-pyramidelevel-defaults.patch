@@ -1,0 +1,26 @@
+From 3df891952a72667b344d79568a648dc826adf383 Mon Sep 17 00:00:00 2001
+From: Michael Rasmussen <mir@datanom.net>
+Date: Fri, 27 Oct 2023 18:05:19 +0200
+Subject: [PATCH 11/11] Keep 200~pyramidelevel defaults
+
+Signed-off-by: Michael Rasmussen <mir@datanom.net>
+---
+ macrofusion.py | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/macrofusion.py b/macrofusion.py
+index b39e445..e392327 100755
+--- a/macrofusion.py
++++ b/macrofusion.py
+@@ -659,8 +659,6 @@ class Interface:
+         settings["fuse_settings"]["saturation-weight"][1]   = self.spinbuttonsat.get_value()
+         if self.check_pyramidelevel.get_active():
+             settings["fuse_settings"]["levels"][1]          = self.spinbuttonlevel.get_value_as_int()
+-        else:
+-            settings["fuse_settings"]["levels"][1]          = 0
+         if self.check_hardmask.get_active():
+             settings["fuse_settings"]["hard-mask"][1] = True
+             settings["fuse_settings"]["soft-mask"][1] = False
+-- 
+2.47.1
+

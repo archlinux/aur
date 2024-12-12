@@ -1,0 +1,111 @@
+From 0ffcbde7702af46f759d0c908458d6f34374b8db Mon Sep 17 00:00:00 2001
+From: Michael Rasmussen <mir@datanom.net>
+Date: Thu, 26 Oct 2023 23:19:27 +0200
+Subject: [PATCH 10/11] Remove commented code
+
+Signed-off-by: Michael Rasmussen <mir@datanom.net>
+---
+ macrofusion.py | 23 -----------------------
+ 1 file changed, 23 deletions(-)
+
+diff --git a/macrofusion.py b/macrofusion.py
+index d34e0b5..b39e445 100755
+--- a/macrofusion.py
++++ b/macrofusion.py
+@@ -47,13 +47,11 @@ if os.path.exists('/usr/share/mfusion/ui/ui.xml') \
+     and os.path.exists('/usr/share/mfusion/ui/progress.xml') \
+     and os.path.exists('/usr/share/pixmaps/macrofusion.png') \
+     and os.path.exists('/usr/share/mfusion/images/logoSplash.png'):
+-    # print ("System wide install!")
+     DIR = '/usr/share/locale/'
+     IMG = '/usr/share/pixmaps/'
+     IMG2 = '/usr/share/mfusion/images/'
+     UI = '/usr/share/mfusion/ui/'
+ elif os.path.exists(sys.path[0] + "/ui/ui.xml"):
+-    # print ("Local run!")
+     DIR = sys.path[0] + '/locale/'
+     IMG = sys.path[0] + '/images/'
+     IMG2 = sys.path[0] + '/images/'
+@@ -407,16 +405,10 @@ class Interface:
+ 
+         self.check_pnt = self.gui.get_object("check_pnt")
+         self.spinbuttonpnt = self.gui.get_object("spinbuttonpnt")
+-        #self.ajus_corrthres = Gtk.Adjustment(value=0, lower=0, upper=1, step_increment=0.1, page_increment=0.1, page_size=0)
+-        #self.spinbuttoncorrthres.set_adjustment(self.ajus_corrthres)
+-        #self.spinbuttoncorrthres.set_digits(1)
+         self.spinbuttonpnt.set_value(int(settings["align_settings"]["num_ctrl_pnt"][1]))
+ 
+         self.check_pntthr = self.gui.get_object("check_pntthr")
+         self.spinbuttonpntthr = self.gui.get_object("spinbuttonpntthr")
+-        #self.ajus_corrthres = Gtk.Adjustment(value=0, lower=0, upper=1, step_increment=0.1, page_increment=0.1, page_size=0)
+-        #self.spinbuttoncorrthres.set_adjustment(self.ajus_corrthres)
+-        #self.spinbuttoncorrthres.set_digits(1)
+         self.spinbuttonpntthr.set_value(int(settings["align_settings"]["ctrl_pnt_thr"][1]))
+ 
+         self.spinbuttonlargeurprev = self.gui.get_object("spinbuttonlargeurprev")
+@@ -546,9 +538,6 @@ class Interface:
+             self.checkbuttonalignfiles.set_sensitive(False)
+ 
+     def exit_app(self, action):
+-        # cancel = self.autosave_image()
+-        # if cancel:
+-        #    return True
+         self.stop_now = True
+         self.closing_app = True
+         self.save_settings()
+@@ -579,12 +568,6 @@ class Interface:
+         self.colonneselect.pack_start(self.select, True)                        #on met le cellrender dans la colonne
+         self.colonneselect.add_attribute(self.select, 'active', 0)              #on met les boutons actifs par défaut
+         
+-        # self.colonneimages = Gtk.TreeViewColumn(_('Image'))                        #deuxieme colonne, titre 'Image'
+-        # self.listimages.append_column(self.colonneimages)                      #on rajoute la colonne dans le treeview
+-        # self.cell = Gtk.CellRendererText()                                      #Ce sera des cellules de texte
+-        # self.colonneimages.pack_start(self.cell, True)                          #que l'on met dans la colonne
+-        # self.colonneimages.add_attribute(self.cell, 'text', 1)                  #et on specifie que c'est du texte simple
+-       
+         self.colonneimages2 = Gtk.TreeViewColumn(_("Thumbnail"))                        #deuxieme colonne, titre 'Image'
+         self.listimages.append_column(self.colonneimages2)                      #on rajoute la colonne dans le treeview
+         self.cell2 = Gtk.CellRendererPixbuf()                                      #Ce sera des cellules de texte
+@@ -824,7 +807,6 @@ class Interface:
+     def save_settings(self):
+         conf = configparser.ConfigParser()
+         conf.add_section('prefs')
+-        # conf.set('prefs', 'w', self.spinbuttonEdge.get_value_as_int())
+         conf.set('prefs', 'pwidth', str(self.spinbuttonlargeurprev.get_value_as_int()))
+         conf.set('prefs', 'pheight', str(self.spinbuttonhauteurprev.get_value_as_int()))
+         conf.set('prefs', 'outsize', str(self.checkbuttonfinalsize.get_active()))
+@@ -861,7 +843,6 @@ class Interface:
+                     pb = GdkPixbuf.Pixbuf.new_from_file(file)
+                     im = self.pixbuf2Image(pb)
+                     self.size = im.size
+-                    # self.tags2 = Gui.get_exif(file)
+                     if not self.tags2:
+                         self.tags2 = ''
+                     self.tooltip = ("\n" + _("<b>Filename:</b> ") + os.path.basename(file) + "\n"+_("<b>Resolution:</b> ") + str(str(self.size[0]) + "x" + str(self.size[1])) + "\n" + self.tags2)
+@@ -1059,7 +1040,6 @@ class Thread_Fusion(threading.Thread):
+         self.img_list_aligned = img_list_aligned
+         self.command_fuse  = [data.get_all_settings["enfuser"], "-o", self.name] + data.get_enfuse_options + self.img_list_aligned
+         self.command_align = ["align_image_stack", '-a', os.path.join(settings["preview_folder"], settings["align_prefix"])] + data.get_align_options() + self.img_list
+-        #sprint(' '.join(self.command_align ) + "\n" + ' '.join(self.command_fuse) + "\n")
+         
+     def run(self):
+         if Gui.checkbutton_a5_align.get_active():       
+@@ -1113,7 +1093,6 @@ class Apropos_Dialog:
+         self.aboutdialog.set_position(Gtk.WindowPosition.CENTER)
+         self.aboutdialog.set_version(__VERSION__)
+         self.aboutdialog.set_comments('A GTK Gui for the excellent Enfuse.\n\n2014 (c) Dariusz Duma\n<dhor@toxic.net.pl>')
+-        # self.aboutdialog.set_copyright(__COPYRIGHT__)
+         self.aboutdialog.set_website(__WEBSITE__)
+         self.pixbuf = GdkPixbuf.Pixbuf.new_from_file(IMG + "macrofusion.png")
+         self.aboutdialog.set_logo(self.pixbuf)
+@@ -1136,7 +1115,5 @@ if __name__ == "__main__":
+     if (len(sys.argv)>1):     
+         files = sys.argv[1:]
+         Gui.put_files_to_the_list(files)
+-#        if len(Gui.liststoreimport) == 0:
+-#            Gui.messageinthebottle(_("\nCan work only with JPEG or TIFF files."))
+ 
+     Gtk.main()
+-- 
+2.47.1
+

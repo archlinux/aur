@@ -1,0 +1,37 @@
+From 8f1ef08042e62c33fa3be6bfcb9f5898c5423da2 Mon Sep 17 00:00:00 2001
+From: Philipp Lutz <philipp.lutz@gmx.de>
+Date: Thu, 26 Oct 2023 22:51:51 +0200
+Subject: [PATCH 09/11] Remove usage of enfuse-mp binary
+
+Since version enfuse version 2016-04-02 the -mp binaries were dropped.
+---
+ macrofusion.py | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/macrofusion.py b/macrofusion.py
+index fb4f8b6..99bb3d6 100755
+--- a/macrofusion.py
++++ b/macrofusion.py
+@@ -170,11 +170,6 @@ class DataProvider:
+         self.settings = settings
+         self.update_folders()
+         settings["cpus"] = multiprocessing.cpu_count()
+-        if settings["cpus"] > 1 and self.check_install("enfuse-mp"):
+-            print("Will use all the powers of your CPU!")
+-            settings["enfuser"] = "enfuse-mp"
+-        else:  
+-            settings["enfuser"] = "enfuse"
+ 
+     def update_folders(self):        
+         # save tmp files in current working folder
+@@ -287,7 +282,6 @@ class Interface:
+         self.buttonaddfile = self.gui.get_object("buttonaddfile")
+         self.buttondelfile = self.gui.get_object("buttondelfile")
+         self.statusbar = self.gui.get_object("status1")
+-        self.statusbar.push(1,(_("CPU Cores: %s") % settings["cpus"]))
+ 
+         self.hscaleexp = self.gui.get_object("hscaleexp")
+         self.ajus_exp = Gtk.Adjustment(value=1, lower=0, upper=1, step_increment=0.1, page_increment=0.1, page_size=0)
+-- 
+2.47.1
+

@@ -1,0 +1,1400 @@
+From a090eec13757f2481f7a45a71f8cb28b6f432c37 Mon Sep 17 00:00:00 2001
+From: Michael Rasmussen <mir@datanom.net>
+Date: Sun, 22 Oct 2023 23:18:29 +0200
+Subject: [PATCH 05/11] Split Expert tab into 2 to save display space
+
+Signed-off-by: Michael Rasmussen <mir@datanom.net>
+---
+ ui/ui.xml | 1051 ++++++++++++++++++++++++++++-------------------------
+ 1 file changed, 547 insertions(+), 504 deletions(-)
+
+diff --git a/ui/ui.xml b/ui/ui.xml
+index 16e4cbc..908e123 100644
+--- a/ui/ui.xml
++++ b/ui/ui.xml
+@@ -896,23 +896,19 @@ Useful for aligning focus stacks with slightly different magnification.
+                                     <property name="can-focus">False</property>
+                                     <property name="orientation">vertical</property>
+                                     <child>
+-                                      <object class="GtkBox" id="hbox8">
++                                      <object class="GtkBox">
+                                         <property name="visible">True</property>
+                                         <property name="can-focus">False</property>
+                                         <property name="border-width">4</property>
+                                         <child>
+-                                          <object class="GtkCheckButton" id="check_pyramidelevel">
+-                                            <property name="label" translatable="yes">Pyramid levels: </property>
+-                                            <property name="use-action-appearance">False</property>
++                                          <object class="GtkCheckButton" id="check_corrthres">
++                                            <property name="label" translatable="yes">correlation threshold</property>
+                                             <property name="visible">True</property>
+-                                            <property name="can-focus">False</property>
++                                            <property name="can-focus">True</property>
+                                             <property name="receives-default">False</property>
+-                                            <property name="tooltip-text">
+---levels=LEVELS
++                                            <property name="tooltip-text" translatable="yes">--corr
+ 
+-number of blending LEVELS to use
+-					    </property>
+-                                            <property name="xalign">0.5</property>
++Correlation threshold for identifying control points (default: 0.9).</property>
+                                             <property name="draw-indicator">True</property>
+                                           </object>
+                                           <packing>
+@@ -922,35 +918,28 @@ number of blending LEVELS to use
+                                           </packing>
+                                         </child>
+                                         <child>
+-                                          <object class="GtkSpinButton" id="spinbuttonlevel">
++                                          <object class="GtkSpinButton" id="spinbuttoncorrthres">
+                                             <property name="visible">True</property>
+                                             <property name="can-focus">True</property>
+-                                            <property name="tooltip-text">
+---levels=LEVELS
+-
+-number of blending LEVELS to use
+-					    </property>
+-                                            <property name="invisible-char">•</property>
+-                                            <property name="primary-icon-activatable">False</property>
++                                            <property name="invisible-char">.</property>
+                                             <property name="secondary-icon-activatable">False</property>
+-                                            <property name="adjustment">adjustment11</property>
++                                            <property name="adjustment">adjustment27</property>
+                                           </object>
+                                           <packing>
+                                             <property name="expand">False</property>
+-                                            <property name="fill">False</property>
+-                                            <property name="pack-type">end</property>
++                                            <property name="fill">True</property>
+                                             <property name="position">1</property>
+                                           </packing>
+                                         </child>
+                                       </object>
+                                       <packing>
+                                         <property name="expand">False</property>
+-                                        <property name="fill">False</property>
++                                        <property name="fill">True</property>
+                                         <property name="position">0</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+-                                      <object class="GtkHSeparator" id="hseparator5">
++                                      <object class="GtkSeparator">
+                                         <property name="visible">True</property>
+                                         <property name="can-focus">False</property>
+                                       </object>
+@@ -961,35 +950,45 @@ number of blending LEVELS to use
+                                       </packing>
+                                     </child>
+                                     <child>
+-                                      <object class="GtkCheckButton" id="check_hardmask">
+-                                        <property name="label" translatable="yes">Force HardMask </property>
+-                                        <property name="use-action-appearance">False</property>
++                                      <object class="GtkBox">
+                                         <property name="visible">True</property>
+                                         <property name="can-focus">False</property>
+-                                        <property name="receives-default">False</property>
+-                                        <property name="tooltip-text">
+---hard-mask
+-
+-force hard blend masks and no averaging on finest
+-scale; this is especially useful for focus
+-stacks with thin and high contrast features,
+-but leads to increased noise.
+-                                    </property>
+-                                        <property name="margin-left">4</property>
+-                                        <property name="margin-right">4</property>
+-                                        <property name="margin-top">4</property>
+-                                        <property name="margin-bottom">4</property>
+-                                        <property name="xalign">0.5</property>
+-                                        <property name="draw-indicator">True</property>
++                                        <property name="border-width">4</property>
++                                        <child>
++                                          <object class="GtkCheckButton" id="check_pnt">
++                                            <property name="label" translatable="yes">control points</property>
++                                            <property name="visible">True</property>
++                                            <property name="can-focus">True</property>
++                                            <property name="receives-default">False</property>
++                                            <property name="draw-indicator">True</property>
++                                          </object>
++                                          <packing>
++                                            <property name="expand">True</property>
++                                            <property name="fill">True</property>
++                                            <property name="position">0</property>
++                                          </packing>
++                                        </child>
++                                        <child>
++                                          <object class="GtkSpinButton" id="spinbuttonpnt">
++                                            <property name="visible">True</property>
++                                            <property name="can-focus">True</property>
++                                            <property name="adjustment">adjustment28</property>
++                                          </object>
++                                          <packing>
++                                            <property name="expand">False</property>
++                                            <property name="fill">True</property>
++                                            <property name="position">1</property>
++                                          </packing>
++                                        </child>
+                                       </object>
+                                       <packing>
+                                         <property name="expand">False</property>
+-                                        <property name="fill">False</property>
++                                        <property name="fill">True</property>
+                                         <property name="position">2</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+-                                      <object class="GtkHSeparator" id="hseparator2">
++                                      <object class="GtkSeparator">
+                                         <property name="visible">True</property>
+                                         <property name="can-focus">False</property>
+                                       </object>
+@@ -1000,23 +999,27 @@ but leads to increased noise.
+                                       </packing>
+                                     </child>
+                                     <child>
+-                                      <object class="GtkBox" id="hbox2">
++                                      <object class="GtkSeparator">
++                                        <property name="visible">True</property>
++                                        <property name="can-focus">False</property>
++                                      </object>
++                                      <packing>
++                                        <property name="expand">False</property>
++                                        <property name="fill">True</property>
++                                        <property name="position">4</property>
++                                      </packing>
++                                    </child>
++                                    <child>
++                                      <object class="GtkBox">
+                                         <property name="visible">True</property>
+                                         <property name="can-focus">False</property>
+                                         <property name="border-width">4</property>
+                                         <child>
+-                                          <object class="GtkCheckButton" id="check_contwin">
+-                                            <property name="label" translatable="yes">Contrast window:</property>
+-                                            <property name="use-action-appearance">False</property>
++                                          <object class="GtkCheckButton" id="check_pntthr">
++                                            <property name="label" translatable="yes">control points threshold</property>
+                                             <property name="visible">True</property>
+-                                            <property name="can-focus">False</property>
++                                            <property name="can-focus">True</property>
+                                             <property name="receives-default">False</property>
+-                                            <property name="tooltip-text">
+---contrast-window-size=SIZE
+-
+-set window SIZE for local-contrast analysis
+-					    </property>
+-                                            <property name="xalign">0.5</property>
+                                             <property name="draw-indicator">True</property>
+                                           </object>
+                                           <packing>
+@@ -1026,44 +1029,79 @@ set window SIZE for local-contrast analysis
+                                           </packing>
+                                         </child>
+                                         <child>
+-                                          <object class="GtkSpinButton" id="spinbuttoncontwin">
++                                          <object class="GtkSpinButton" id="spinbuttonpntthr">
+                                             <property name="visible">True</property>
+                                             <property name="can-focus">True</property>
+-                                            <property name="tooltip-text">
+---contrast-window-size=SIZE
+-
+-set window SIZE for local-contrast analysis.
+-                                        </property>
+-                                            <property name="invisible-char">•</property>
+-                                            <property name="primary-icon-activatable">False</property>
+-                                            <property name="secondary-icon-activatable">False</property>
+-                                            <property name="adjustment">adjustment12</property>
++                                            <property name="adjustment">adjustment29</property>
+                                           </object>
+                                           <packing>
+                                             <property name="expand">False</property>
+-                                            <property name="fill">False</property>
+-                                            <property name="pack-type">end</property>
++                                            <property name="fill">True</property>
+                                             <property name="position">1</property>
+                                           </packing>
+                                         </child>
+                                       </object>
+                                       <packing>
+                                         <property name="expand">False</property>
+-                                        <property name="fill">False</property>
+-                                        <property name="position">4</property>
++                                        <property name="fill">True</property>
++                                        <property name="position">5</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+-                                      <object class="GtkHSeparator" id="hseparator9">
++                                      <object class="GtkSeparator">
+                                         <property name="visible">True</property>
+                                         <property name="can-focus">False</property>
+                                       </object>
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">True</property>
+-                                        <property name="position">5</property>
++                                        <property name="position">6</property>
+                                       </packing>
+                                     </child>
++                                  </object>
++                                </child>
++                              </object>
++                            </child>
++                            <child type="label">
++                              <object class="GtkLabel" id="label15">
++                                <property name="visible">True</property>
++                                <property name="can-focus">False</property>
++                                <property name="label" translatable="yes">&lt;b&gt;Expert Align Options&lt;/b&gt;</property>
++                                <property name="use-markup">True</property>
++                              </object>
++                            </child>
++                          </object>
++                          <packing>
++                            <property name="position">1</property>
++                          </packing>
++                        </child>
++                        <child type="tab">
++                          <object class="GtkLabel" id="label3">
++                            <property name="visible">True</property>
++                            <property name="can-focus">False</property>
++                            <property name="label" translatable="yes">Expert Align</property>
++                          </object>
++                          <packing>
++                            <property name="position">1</property>
++                            <property name="tab-fill">False</property>
++                          </packing>
++                        </child>
++                        <child>
++                          <object class="GtkFrame">
++                            <property name="visible">True</property>
++                            <property name="can-focus">False</property>
++                            <property name="border-width">4</property>
++                            <property name="label-xalign">1</property>
++                            <child>
++                              <object class="GtkAlignment">
++                                <property name="visible">True</property>
++                                <property name="can-focus">False</property>
++                                <property name="left-padding">12</property>
++                                <child>
++                                  <object class="GtkBox">
++                                    <property name="visible">True</property>
++                                    <property name="can-focus">False</property>
++                                    <property name="orientation">vertical</property>
+                                     <child>
+                                       <object class="GtkBox">
+                                         <property name="visible">True</property>
+@@ -1125,7 +1163,7 @@ Optimize Z coordinate of the camera position.</property>
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">True</property>
+-                                        <property name="position">6</property>
++                                        <property name="position">0</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+@@ -1136,337 +1174,232 @@ Optimize Z coordinate of the camera position.</property>
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">True</property>
+-                                        <property name="position">7</property>
++                                        <property name="position">1</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+-                                      <object class="GtkHSeparator" id="hseparator4">
++                                      <object class="GtkBox" id="hbox14">
+                                         <property name="visible">True</property>
+                                         <property name="can-focus">False</property>
++                                        <property name="border-width">4</property>
++                                        <child>
++                                          <object class="GtkLabel" id="label8">
++                                            <property name="visible">True</property>
++                                            <property name="can-focus">False</property>
++                                          </object>
++                                          <packing>
++                                            <property name="expand">False</property>
++                                            <property name="fill">False</property>
++                                            <property name="position">0</property>
++                                          </packing>
++                                        </child>
++                                        <child>
++                                          <object class="GtkComboBox" id="combobox_desatmet">
++                                            <property name="visible">True</property>
++                                            <property name="can-focus">False</property>
++                                            <property name="model">model1</property>
++                                            <child>
++                                              <object class="GtkCellRendererText" id="renderer1"/>
++                                              <attributes>
++                                                <attribute name="text">0</attribute>
++                                              </attributes>
++                                            </child>
++                                          </object>
++                                          <packing>
++                                            <property name="expand">False</property>
++                                            <property name="fill">False</property>
++                                            <property name="pack-type">end</property>
++                                            <property name="position">1</property>
++                                          </packing>
++                                        </child>
++                                        <child>
++                                          <object class="GtkCheckButton" id="check_desatmeth">
++                                            <property name="label" translatable="yes">Gray projector:</property>
++                                            <property name="use-action-appearance">False</property>
++                                            <property name="visible">True</property>
++                                            <property name="can-focus">True</property>
++                                            <property name="receives-default">False</property>
++                                            <property name="tooltip-text">
++--gray-projector=OPERATOR
++
++apply gray-scale projection OPERATOR in exposure
++or contrast weighing, where OPERATOR is one of
++"average", "l-star", "lightness", "value",
++"luminance", or
++"channel-mixer:RED-WEIGHT:GREEN-WEIGHT:BLUE-WEIGHT".
++                                        </property>
++                                            <property name="xalign">0</property>
++                                            <property name="draw-indicator">True</property>
++                                          </object>
++                                          <packing>
++                                            <property name="expand">True</property>
++                                            <property name="fill">True</property>
++                                            <property name="position">2</property>
++                                          </packing>
++                                        </child>
+                                       </object>
+                                       <packing>
+                                         <property name="expand">False</property>
+-                                        <property name="fill">True</property>
+-                                        <property name="position">8</property>
++                                        <property name="fill">False</property>
++                                        <property name="position">2</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+-                                      <object class="GtkCheckButton" id="check_detecbord">
+-                                        <property name="label" translatable="yes">EdgeScale:</property>
+-                                        <property name="use-action-appearance">False</property>
++                                      <object class="GtkSeparator">
+                                         <property name="visible">True</property>
+                                         <property name="can-focus">False</property>
+-                                        <property name="receives-default">False</property>
+-                                        <property name="tooltip-text">
+---contrast-edge-scale=EDGESCALE[:LCESCALE[:LCEFACTOR]]
+-
+-set scale on which to look for edges; positive
+-LCESCALE switches on local contrast enhancement
+-by LCEFACTOR (EDGESCALE, LCESCALE, LCEFACTOR &gt;= 0);
+-append "%" to LCESCALE for values relative to
+-EDGESCALE; append "%" to LCEFACTOR for relative
+-value.
+-                                    </property>
+-                                        <property name="margin-left">4</property>
+-                                        <property name="margin-right">4</property>
+-                                        <property name="margin-top">4</property>
+-                                        <property name="border-width">0</property>
+-                                        <property name="xalign">0.5</property>
+-                                        <property name="draw-indicator">True</property>
+                                       </object>
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">True</property>
+-                                        <property name="position">9</property>
++                                        <property name="position">3</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+-                                      <object class="GtkBox" id="hbox15">
++                                      <object class="GtkBox" id="hbox8">
+                                         <property name="visible">True</property>
+                                         <property name="can-focus">False</property>
+                                         <property name="border-width">4</property>
+                                         <child>
+-                                          <object class="GtkBox" id="vbox4">
+-                                            <property name="visible">True</property>
+-                                            <property name="can-focus">False</property>
+-                                            <property name="orientation">vertical</property>
+-                                            <child>
+-                                              <object class="GtkSpinButton" id="spinbuttonEdge">
+-                                                <property name="visible">True</property>
+-                                                <property name="can-focus">True</property>
+-                                                <property name="tooltip-text">
+-A non-zero value for EDGE-SCALE switches on the Laplacian-of-
+-Gaussian (LoG) edge detection algorithm. EDGE-SCALE is the
+-radius of the Gaussian used in the search for edges.
+-                                            </property>
+-                                                <property name="invisible-char">•</property>
+-                                                <property name="primary-icon-activatable">False</property>
+-                                                <property name="secondary-icon-activatable">False</property>
+-                                                <property name="adjustment">adjustment14</property>
+-                                                <property name="digits">1</property>
+-                                              </object>
+-                                              <packing>
+-                                                <property name="expand">False</property>
+-                                                <property name="fill">False</property>
+-                                                <property name="position">0</property>
+-                                              </packing>
+-                                            </child>
+-                                            <child>
+-                                              <object class="GtkLabel" id="label24">
+-                                                <property name="visible">True</property>
+-                                                <property name="can-focus">False</property>
+-                                                <property name="halign">start</property>
+-                                                <property name="margin-left">5</property>
+-                                                <property name="margin-top">4</property>
+-                                                <property name="label" translatable="yes">EdgeScale</property>
+-                                              </object>
+-                                              <packing>
+-                                                <property name="expand">False</property>
+-                                                <property name="fill">False</property>
+-                                                <property name="position">2</property>
+-                                              </packing>
+-                                            </child>
+-                                          </object>
+-                                          <packing>
+-                                            <property name="expand">True</property>
+-                                            <property name="fill">False</property>
+-                                            <property name="position">0</property>
+-                                          </packing>
+-                                        </child>
+-                                        <child>
+-                                          <object class="GtkBox" id="vbox14">
++                                          <object class="GtkCheckButton" id="check_pyramidelevel">
++                                            <property name="label" translatable="yes">Pyramid levels: </property>
++                                            <property name="use-action-appearance">False</property>
+                                             <property name="visible">True</property>
+-                                            <property name="can-focus">False</property>
+-                                            <property name="orientation">vertical</property>
+-                                            <child>
+-                                              <object class="GtkBox" id="vbox14_">
+-                                                <property name="visible">True</property>
+-                                                <property name="can-focus">False</property>
+-                                                <child>
+-                                                  <object class="GtkSpinButton" id="spinbuttonLceF">
+-                                                    <property name="visible">True</property>
+-                                                    <property name="can-focus">True</property>
+-                                                    <property name="tooltip-text">
+-LCE-FACTOR is the weight factor (“strength”)
+-                                            </property>
+-                                                    <property name="invisible-char">•</property>
+-                                                    <property name="primary-icon-activatable">False</property>
+-                                                    <property name="secondary-icon-activatable">False</property>
+-                                                    <property name="adjustment">adjustment16</property>
+-                                                    <property name="digits">1</property>
+-                                                  </object>
+-                                                  <packing>
+-                                                    <property name="expand">False</property>
+-                                                    <property name="fill">False</property>
+-                                                    <property name="position">0</property>
+-                                                  </packing>
+-                                                </child>
+-                                                <child>
+-                                                  <object class="GtkCheckButton" id="check_lcef">
+-                                                    <property name="label">%</property>
+-                                                    <property name="use-action-appearance">False</property>
+-                                                    <property name="visible">True</property>
+-                                                    <property name="can-focus">False</property>
+-                                                    <property name="receives-default">False</property>
+-                                                    <property name="tooltip-text">value as %</property>
+-                                                    <property name="xalign">0.5</property>
+-                                                    <property name="draw-indicator">True</property>
+-                                                  </object>
+-                                                  <packing>
+-                                                    <property name="expand">True</property>
+-                                                    <property name="fill">True</property>
+-                                                    <property name="position">1</property>
+-                                                  </packing>
+-                                                </child>
+-                                              </object>
+-                                              <packing>
+-                                                <property name="expand">True</property>
+-                                                <property name="fill">True</property>
+-                                                <property name="position">0</property>
+-                                              </packing>
+-                                            </child>
+-                                            <child>
+-                                              <object class="GtkLabel" id="label26">
+-                                                <property name="visible">True</property>
+-                                                <property name="can-focus">False</property>
+-                                                <property name="halign">start</property>
+-                                                <property name="margin-left">5</property>
+-                                                <property name="margin-top">4</property>
+-                                                <property name="label" translatable="yes">LceFactor</property>
+-                                              </object>
+-                                              <packing>
+-                                                <property name="expand">False</property>
+-                                                <property name="fill">False</property>
+-                                                <property name="position">1</property>
+-                                              </packing>
+-                                            </child>
++                                            <property name="can-focus">True</property>
++                                            <property name="receives-default">False</property>
++                                            <property name="tooltip-text">
++--levels=LEVELS
++
++number of blending LEVELS to use
++					    </property>
++                                            <property name="xalign">0</property>
++                                            <property name="draw-indicator">True</property>
+                                           </object>
+                                           <packing>
+                                             <property name="expand">True</property>
+-                                            <property name="fill">False</property>
+-                                            <property name="padding">6</property>
+-                                            <property name="position">2</property>
++                                            <property name="fill">True</property>
++                                            <property name="position">0</property>
+                                           </packing>
+                                         </child>
+                                         <child>
+-                                          <object class="GtkBox" id="vbox5">
++                                          <object class="GtkSpinButton" id="spinbuttonlevel">
+                                             <property name="visible">True</property>
+-                                            <property name="can-focus">False</property>
+-                                            <property name="orientation">vertical</property>
+-                                            <child>
+-                                              <object class="GtkBox" id="vbox5_">
+-                                                <property name="visible">True</property>
+-                                                <property name="can-focus">False</property>
+-                                                <child>
+-                                                  <object class="GtkSpinButton" id="spinbuttonLceS">
+-                                                    <property name="visible">True</property>
+-                                                    <property name="can-focus">True</property>
+-                                                    <property name="tooltip-text">
+-A positive LCE-SCALE turns on local contrast
+-enhancement (LCE) before the LoG edge detection.
+-LCE-SCALE is the radius of the Gaussian used in 
+-the enhancement step, LCE-FACTOR is the weight
+-factor (“strength”).
+-                                            </property>
+-                                                    <property name="invisible-char">•</property>
+-                                                    <property name="primary-icon-activatable">False</property>
+-                                                    <property name="secondary-icon-activatable">False</property>
+-                                                    <property name="adjustment">adjustment15</property>
+-                                                    <property name="digits">1</property>
+-                                                  </object>
+-                                                  <packing>
+-                                                    <property name="expand">False</property>
+-                                                    <property name="fill">False</property>
+-                                                    <property name="position">0</property>
+-                                                  </packing>
+-                                                </child>
+-                                                <child>
+-                                                  <object class="GtkCheckButton" id="check_lces">
+-                                                    <property name="label">%</property>
+-                                                    <property name="use-action-appearance">False</property>
+-                                                    <property name="visible">True</property>
+-                                                    <property name="can-focus">False</property>
+-                                                    <property name="receives-default">False</property>
+-                                                    <property name="tooltip-text">value as %</property>
+-                                                    <property name="xalign">0.5</property>
+-                                                    <property name="draw-indicator">True</property>
+-                                                  </object>
+-                                                  <packing>
+-                                                    <property name="expand">True</property>
+-                                                    <property name="fill">True</property>
+-                                                    <property name="position">1</property>
+-                                                  </packing>
+-                                                </child>
+-                                              </object>
+-                                              <packing>
+-                                                <property name="expand">True</property>
+-                                                <property name="fill">True</property>
+-                                                <property name="position">0</property>
+-                                              </packing>
+-                                            </child>
+-                                            <child>
+-                                              <object class="GtkLabel" id="label25">
+-                                                <property name="visible">True</property>
+-                                                <property name="can-focus">False</property>
+-                                                <property name="halign">start</property>
+-                                                <property name="margin-left">5</property>
+-                                                <property name="margin-top">4</property>
+-                                                <property name="label" translatable="yes">LceScale</property>
+-                                              </object>
+-                                              <packing>
+-                                                <property name="expand">False</property>
+-                                                <property name="fill">False</property>
+-                                                <property name="position">1</property>
+-                                              </packing>
+-                                            </child>
++                                            <property name="can-focus">True</property>
++                                            <property name="tooltip-text">
++--levels=LEVELS
++
++number of blending LEVELS to use
++					    </property>
++                                            <property name="invisible-char">•</property>
++                                            <property name="text" translatable="yes">29</property>
++                                            <property name="primary-icon-activatable">False</property>
++                                            <property name="secondary-icon-activatable">False</property>
++                                            <property name="adjustment">adjustment11</property>
++                                            <property name="value">29</property>
+                                           </object>
+                                           <packing>
+-                                            <property name="expand">True</property>
++                                            <property name="expand">False</property>
+                                             <property name="fill">False</property>
+-                                            <property name="position">2</property>
++                                            <property name="pack-type">end</property>
++                                            <property name="position">1</property>
+                                           </packing>
+                                         </child>
+                                       </object>
+                                       <packing>
+                                         <property name="expand">False</property>
+-                                        <property name="fill">True</property>
+-                                        <property name="position">10</property>
++                                        <property name="fill">False</property>
++                                        <property name="position">4</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+-                                      <object class="GtkHSeparator" id="hseparator7">
++                                      <object class="GtkSeparator">
+                                         <property name="visible">True</property>
+                                         <property name="can-focus">False</property>
+                                       </object>
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">True</property>
+-                                        <property name="position">11</property>
++                                        <property name="position">5</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+-                                      <object class="GtkCheckButton" id="check_ciecam">
+-                                        <property name="label" translatable="yes">Use CIECAM02 color profile</property>
++                                      <object class="GtkCheckButton" id="check_hardmask">
++                                        <property name="label" translatable="yes">Force HardMask </property>
+                                         <property name="use-action-appearance">False</property>
+                                         <property name="visible">True</property>
+-                                        <property name="can-focus">False</property>
++                                        <property name="can-focus">True</property>
+                                         <property name="receives-default">False</property>
+                                         <property name="tooltip-text">
+--c
++--hard-mask
+ 
+-use CIECAM02 to blend colors.
++force hard blend masks and no averaging on finest
++scale; this is especially useful for focus
++stacks with thin and high contrast features,
++but leads to increased noise.
+                                     </property>
+-                                        <property name="margin-left">4</property>
+-                                        <property name="margin-right">4</property>
+                                         <property name="margin-top">4</property>
+                                         <property name="margin-bottom">4</property>
+-                                        <property name="xalign">0.43000000715255737</property>
++                                        <property name="xalign">0</property>
+                                         <property name="draw-indicator">True</property>
+                                       </object>
+                                       <packing>
+                                         <property name="expand">False</property>
+-                                        <property name="fill">True</property>
+-                                        <property name="position">12</property>
++                                        <property name="fill">False</property>
++                                        <property name="position">6</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+-                                      <object class="GtkHSeparator" id="hseparator1">
++                                      <object class="GtkSeparator">
+                                         <property name="visible">True</property>
+                                         <property name="can-focus">False</property>
+                                       </object>
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">True</property>
+-                                        <property name="position">13</property>
++                                        <property name="position">7</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+-                                      <object class="GtkBox" id="hbox14">
++                                      <object class="GtkBox" id="hbox2">
+                                         <property name="visible">True</property>
+                                         <property name="can-focus">False</property>
+                                         <property name="border-width">4</property>
+                                         <child>
+-                                          <object class="GtkLabel" id="label8">
++                                          <object class="GtkCheckButton" id="check_contwin">
++                                            <property name="label" translatable="yes">Contrast window:</property>
++                                            <property name="use-action-appearance">False</property>
+                                             <property name="visible">True</property>
+-                                            <property name="can-focus">False</property>
++                                            <property name="can-focus">True</property>
++                                            <property name="receives-default">False</property>
++                                            <property name="tooltip-text">
++--contrast-window-size=SIZE
++
++set window SIZE for local-contrast analysis
++					    </property>
++                                            <property name="xalign">0</property>
++                                            <property name="draw-indicator">True</property>
+                                           </object>
+                                           <packing>
+-                                            <property name="expand">False</property>
+-                                            <property name="fill">False</property>
++                                            <property name="expand">True</property>
++                                            <property name="fill">True</property>
+                                             <property name="position">0</property>
+                                           </packing>
+                                         </child>
+                                         <child>
+-                                          <object class="GtkComboBox" id="combobox_desatmet">
++                                          <object class="GtkSpinButton" id="spinbuttoncontwin">
+                                             <property name="visible">True</property>
+-                                            <property name="can-focus">False</property>
+-                                            <property name="model">model1</property>
+-                                            <child>
+-                                              <object class="GtkCellRendererText" id="renderer1"/>
+-                                              <attributes>
+-                                                <attribute name="text">0</attribute>
+-                                              </attributes>
+-                                            </child>
++                                            <property name="can-focus">True</property>
++                                            <property name="tooltip-text">
++--contrast-window-size=SIZE
++
++set window SIZE for local-contrast analysis.
++                                        </property>
++                                            <property name="invisible-char">•</property>
++                                            <property name="text" translatable="yes">3</property>
++                                            <property name="primary-icon-activatable">False</property>
++                                            <property name="secondary-icon-activatable">False</property>
++                                            <property name="adjustment">adjustment12</property>
++                                            <property name="value">3</property>
+                                           </object>
+                                           <packing>
+                                             <property name="expand">False</property>
+@@ -1475,36 +1408,11 @@ use CIECAM02 to blend colors.
+                                             <property name="position">1</property>
+                                           </packing>
+                                         </child>
+-                                        <child>
+-                                          <object class="GtkCheckButton" id="check_desatmeth">
+-                                            <property name="label" translatable="yes">Gray projector:</property>
+-                                            <property name="use-action-appearance">False</property>
+-                                            <property name="visible">True</property>
+-                                            <property name="can-focus">False</property>
+-                                            <property name="receives-default">False</property>
+-                                            <property name="tooltip-text">
+---gray-projector=OPERATOR
+-
+-apply gray-scale projection OPERATOR in exposure
+-or contrast weighing, where OPERATOR is one of
+-"average", "l-star", "lightness", "value",
+-"luminance", or
+-"channel-mixer:RED-WEIGHT:GREEN-WEIGHT:BLUE-WEIGHT".
+-                                        </property>
+-                                            <property name="xalign">0.5</property>
+-                                            <property name="draw-indicator">True</property>
+-                                          </object>
+-                                          <packing>
+-                                            <property name="expand">True</property>
+-                                            <property name="fill">True</property>
+-                                            <property name="position">2</property>
+-                                          </packing>
+-                                        </child>
+                                       </object>
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">False</property>
+-                                        <property name="position">14</property>
++                                        <property name="position">8</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+@@ -1515,50 +1423,91 @@ or contrast weighing, where OPERATOR is one of
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">True</property>
+-                                        <property name="position">15</property>
++                                        <property name="position">9</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+-                                      <object class="GtkBox">
++                                      <object class="GtkSeparator">
++                                        <property name="visible">True</property>
++                                        <property name="can-focus">False</property>
++                                      </object>
++                                      <packing>
++                                        <property name="expand">False</property>
++                                        <property name="fill">True</property>
++                                        <property name="position">10</property>
++                                      </packing>
++                                    </child>
++                                    <child>
++                                      <object class="GtkBox" id="hbox16">
+                                         <property name="visible">True</property>
+                                         <property name="can-focus">False</property>
+                                         <property name="border-width">4</property>
+                                         <child>
+-                                          <object class="GtkCheckButton" id="check_corrthres">
+-                                            <property name="label" translatable="yes">correlation threshold</property>
++                                          <object class="GtkCheckButton" id="check_courb">
++                                            <property name="label" translatable="yes">Min Curvature:</property>
++                                            <property name="use-action-appearance">False</property>
+                                             <property name="visible">True</property>
+                                             <property name="can-focus">True</property>
+                                             <property name="receives-default">False</property>
+-                                            <property name="tooltip-text" translatable="yes">--corr
++                                            <property name="tooltip-text">
+ 
+-Correlation threshold for identifying control points (default: 0.9).</property>
++--contrast-min-curvature=CURVATURE
++
++minimum CURVATURE for an edge to qualify
++					    </property>
++                                            <property name="xalign">0</property>
+                                             <property name="draw-indicator">True</property>
+                                           </object>
+                                           <packing>
+-                                            <property name="expand">True</property>
++                                            <property name="expand">False</property>
+                                             <property name="fill">True</property>
+                                             <property name="position">0</property>
+                                           </packing>
+                                         </child>
+                                         <child>
+-                                          <object class="GtkSpinButton" id="spinbuttoncorrthres">
++                                          <object class="GtkCheckButton" id="check_prctcourb">
++                                            <property name="label" translatable="yes">%</property>
++                                            <property name="use-action-appearance">False</property>
+                                             <property name="visible">True</property>
+                                             <property name="can-focus">True</property>
+-                                            <property name="invisible-char">.</property>
+-                                            <property name="secondary-icon-activatable">False</property>
+-                                            <property name="adjustment">adjustment27</property>
++                                            <property name="receives-default">False</property>
++                                            <property name="xalign">0</property>
++                                            <property name="draw-indicator">True</property>
+                                           </object>
+                                           <packing>
+-                                            <property name="expand">False</property>
++                                            <property name="expand">True</property>
+                                             <property name="fill">True</property>
++                                            <property name="padding">5</property>
+                                             <property name="position">1</property>
+                                           </packing>
+                                         </child>
++                                        <child>
++                                          <object class="GtkSpinButton" id="spinbuttoncourb">
++                                            <property name="visible">True</property>
++                                            <property name="can-focus">True</property>
++                                            <property name="tooltip-text">
++--contrast-min-curvature=CURVATURE
++
++minimum CURVATURE for an edge to qualify.
++                                        </property>
++                                            <property name="invisible-char">•</property>
++                                            <property name="text" translatable="yes">0</property>
++                                            <property name="primary-icon-activatable">False</property>
++                                            <property name="secondary-icon-activatable">False</property>
++                                            <property name="adjustment">adjustment13</property>
++                                          </object>
++                                          <packing>
++                                            <property name="expand">False</property>
++                                            <property name="fill">False</property>
++                                            <property name="pack-type">end</property>
++                                            <property name="position">3</property>
++                                          </packing>
++                                        </child>
+                                       </object>
+                                       <packing>
+                                         <property name="expand">False</property>
+-                                        <property name="fill">True</property>
+-                                        <property name="position">16</property>
++                                        <property name="fill">False</property>
++                                        <property name="position">11</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+@@ -1569,67 +1518,248 @@ Correlation threshold for identifying control points (default: 0.9).</property>
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">True</property>
+-                                        <property name="position">17</property>
++                                        <property name="position">12</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+-                                      <object class="GtkBox">
++                                      <object class="GtkCheckButton" id="check_detecbord">
++                                        <property name="label" translatable="yes">EdgeScale:</property>
++                                        <property name="use-action-appearance">False</property>
++                                        <property name="visible">True</property>
++                                        <property name="can-focus">True</property>
++                                        <property name="receives-default">False</property>
++                                        <property name="tooltip-text">
++--contrast-edge-scale=EDGESCALE[:LCESCALE[:LCEFACTOR]]
++
++set scale on which to look for edges; positive
++LCESCALE switches on local contrast enhancement
++by LCEFACTOR (EDGESCALE, LCESCALE, LCEFACTOR &gt;= 0);
++append "%" to LCESCALE for values relative to
++EDGESCALE; append "%" to LCEFACTOR for relative
++value.
++                                    </property>
++                                        <property name="margin-top">4</property>
++                                        <property name="border-width">0</property>
++                                        <property name="xalign">0</property>
++                                        <property name="draw-indicator">True</property>
++                                      </object>
++                                      <packing>
++                                        <property name="expand">False</property>
++                                        <property name="fill">True</property>
++                                        <property name="position">13</property>
++                                      </packing>
++                                    </child>
++                                    <child>
++                                      <object class="GtkBox" id="hbox15">
+                                         <property name="visible">True</property>
+                                         <property name="can-focus">False</property>
+                                         <property name="border-width">4</property>
+                                         <child>
+-                                          <object class="GtkCheckButton" id="check_pnt">
+-                                            <property name="label" translatable="yes">control points</property>
++                                          <object class="GtkBox" id="vbox4">
+                                             <property name="visible">True</property>
+-                                            <property name="can-focus">True</property>
+-                                            <property name="receives-default">False</property>
+-                                            <property name="draw-indicator">True</property>
++                                            <property name="can-focus">False</property>
++                                            <property name="orientation">vertical</property>
++                                            <child>
++                                              <object class="GtkSpinButton" id="spinbuttonEdge">
++                                                <property name="visible">True</property>
++                                                <property name="can-focus">True</property>
++                                                <property name="tooltip-text">
++A non-zero value for EDGE-SCALE switches on the Laplacian-of-
++Gaussian (LoG) edge detection algorithm. EDGE-SCALE is the
++radius of the Gaussian used in the search for edges.
++                                            </property>
++                                                <property name="invisible-char">•</property>
++                                                <property name="text" translatable="yes">0,0</property>
++                                                <property name="primary-icon-activatable">False</property>
++                                                <property name="secondary-icon-activatable">False</property>
++                                                <property name="adjustment">adjustment14</property>
++                                                <property name="digits">1</property>
++                                              </object>
++                                              <packing>
++                                                <property name="expand">False</property>
++                                                <property name="fill">False</property>
++                                                <property name="position">0</property>
++                                              </packing>
++                                            </child>
++                                            <child>
++                                              <object class="GtkLabel" id="label24">
++                                                <property name="visible">True</property>
++                                                <property name="can-focus">False</property>
++                                                <property name="halign">start</property>
++                                                <property name="margin-top">4</property>
++                                                <property name="label" translatable="yes">EdgeScale</property>
++                                              </object>
++                                              <packing>
++                                                <property name="expand">False</property>
++                                                <property name="fill">False</property>
++                                                <property name="position">2</property>
++                                              </packing>
++                                            </child>
++                                          </object>
++                                          <packing>
++                                            <property name="expand">True</property>
++                                            <property name="fill">False</property>
++                                            <property name="position">0</property>
++                                          </packing>
++                                        </child>
++                                        <child>
++                                          <object class="GtkBox" id="vbox14">
++                                            <property name="visible">True</property>
++                                            <property name="can-focus">False</property>
++                                            <property name="orientation">vertical</property>
++                                            <child>
++                                              <object class="GtkBox" id="vbox14_">
++                                                <property name="visible">True</property>
++                                                <property name="can-focus">False</property>
++                                                <child>
++                                                  <object class="GtkSpinButton" id="spinbuttonLceF">
++                                                    <property name="visible">True</property>
++                                                    <property name="can-focus">True</property>
++                                                    <property name="tooltip-text">
++LCE-FACTOR is the weight factor (“strength”)
++                                            </property>
++                                                    <property name="invisible-char">•</property>
++                                                    <property name="text" translatable="yes">0,0</property>
++                                                    <property name="primary-icon-activatable">False</property>
++                                                    <property name="secondary-icon-activatable">False</property>
++                                                    <property name="adjustment">adjustment16</property>
++                                                    <property name="digits">1</property>
++                                                  </object>
++                                                  <packing>
++                                                    <property name="expand">False</property>
++                                                    <property name="fill">False</property>
++                                                    <property name="position">0</property>
++                                                  </packing>
++                                                </child>
++                                                <child>
++                                                  <object class="GtkCheckButton" id="check_lcef">
++                                                    <property name="label">%</property>
++                                                    <property name="use-action-appearance">False</property>
++                                                    <property name="visible">True</property>
++                                                    <property name="can-focus">True</property>
++                                                    <property name="receives-default">False</property>
++                                                    <property name="tooltip-text">value as %</property>
++                                                    <property name="xalign">0</property>
++                                                    <property name="draw-indicator">True</property>
++                                                  </object>
++                                                  <packing>
++                                                    <property name="expand">True</property>
++                                                    <property name="fill">True</property>
++                                                    <property name="position">1</property>
++                                                  </packing>
++                                                </child>
++                                              </object>
++                                              <packing>
++                                                <property name="expand">True</property>
++                                                <property name="fill">True</property>
++                                                <property name="position">0</property>
++                                              </packing>
++                                            </child>
++                                            <child>
++                                              <object class="GtkLabel" id="label26">
++                                                <property name="visible">True</property>
++                                                <property name="can-focus">False</property>
++                                                <property name="halign">start</property>
++                                                <property name="margin-top">4</property>
++                                                <property name="label" translatable="yes">LceFactor</property>
++                                              </object>
++                                              <packing>
++                                                <property name="expand">False</property>
++                                                <property name="fill">False</property>
++                                                <property name="position">1</property>
++                                              </packing>
++                                            </child>
+                                           </object>
+                                           <packing>
+                                             <property name="expand">True</property>
+-                                            <property name="fill">True</property>
+-                                            <property name="position">0</property>
++                                            <property name="fill">False</property>
++                                            <property name="padding">6</property>
++                                            <property name="position">2</property>
+                                           </packing>
+                                         </child>
+                                         <child>
+-                                          <object class="GtkSpinButton" id="spinbuttonpnt">
++                                          <object class="GtkBox" id="vbox5">
+                                             <property name="visible">True</property>
+-                                            <property name="can-focus">True</property>
+-                                            <property name="adjustment">adjustment28</property>
++                                            <property name="can-focus">False</property>
++                                            <property name="orientation">vertical</property>
++                                            <child>
++                                              <object class="GtkBox" id="vbox5_">
++                                                <property name="visible">True</property>
++                                                <property name="can-focus">False</property>
++                                                <child>
++                                                  <object class="GtkSpinButton" id="spinbuttonLceS">
++                                                    <property name="visible">True</property>
++                                                    <property name="can-focus">True</property>
++                                                    <property name="tooltip-text">
++A positive LCE-SCALE turns on local contrast
++enhancement (LCE) before the LoG edge detection.
++LCE-SCALE is the radius of the Gaussian used in 
++the enhancement step, LCE-FACTOR is the weight
++factor (“strength”).
++                                            </property>
++                                                    <property name="invisible-char">•</property>
++                                                    <property name="text" translatable="yes">0,0</property>
++                                                    <property name="primary-icon-activatable">False</property>
++                                                    <property name="secondary-icon-activatable">False</property>
++                                                    <property name="adjustment">adjustment15</property>
++                                                    <property name="digits">1</property>
++                                                  </object>
++                                                  <packing>
++                                                    <property name="expand">False</property>
++                                                    <property name="fill">False</property>
++                                                    <property name="position">0</property>
++                                                  </packing>
++                                                </child>
++                                                <child>
++                                                  <object class="GtkCheckButton" id="check_lces">
++                                                    <property name="label">%</property>
++                                                    <property name="use-action-appearance">False</property>
++                                                    <property name="visible">True</property>
++                                                    <property name="can-focus">True</property>
++                                                    <property name="receives-default">False</property>
++                                                    <property name="tooltip-text">value as %</property>
++                                                    <property name="xalign">0</property>
++                                                    <property name="draw-indicator">True</property>
++                                                  </object>
++                                                  <packing>
++                                                    <property name="expand">True</property>
++                                                    <property name="fill">True</property>
++                                                    <property name="position">1</property>
++                                                  </packing>
++                                                </child>
++                                              </object>
++                                              <packing>
++                                                <property name="expand">True</property>
++                                                <property name="fill">True</property>
++                                                <property name="position">0</property>
++                                              </packing>
++                                            </child>
++                                            <child>
++                                              <object class="GtkLabel" id="label25">
++                                                <property name="visible">True</property>
++                                                <property name="can-focus">False</property>
++                                                <property name="halign">start</property>
++                                                <property name="margin-top">4</property>
++                                                <property name="label" translatable="yes">LceScale</property>
++                                              </object>
++                                              <packing>
++                                                <property name="expand">False</property>
++                                                <property name="fill">False</property>
++                                                <property name="position">1</property>
++                                              </packing>
++                                            </child>
+                                           </object>
+                                           <packing>
+-                                            <property name="expand">False</property>
+-                                            <property name="fill">True</property>
+-                                            <property name="position">1</property>
++                                            <property name="expand">True</property>
++                                            <property name="fill">False</property>
++                                            <property name="position">2</property>
+                                           </packing>
+                                         </child>
+                                       </object>
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">True</property>
+-                                        <property name="position">18</property>
+-                                      </packing>
+-                                    </child>
+-                                    <child>
+-                                      <object class="GtkSeparator">
+-                                        <property name="visible">True</property>
+-                                        <property name="can-focus">False</property>
+-                                      </object>
+-                                      <packing>
+-                                        <property name="expand">False</property>
+-                                        <property name="fill">True</property>
+-                                        <property name="position">19</property>
+-                                      </packing>
+-                                    </child>
+-                                    <child>
+-                                      <object class="GtkSeparator">
+-                                        <property name="visible">True</property>
+-                                        <property name="can-focus">False</property>
+-                                      </object>
+-                                      <packing>
+-                                        <property name="expand">False</property>
+-                                        <property name="fill">True</property>
+-                                        <property name="position">20</property>
++                                        <property name="position">14</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+@@ -1640,45 +1770,30 @@ Correlation threshold for identifying control points (default: 0.9).</property>
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">True</property>
+-                                        <property name="position">21</property>
++                                        <property name="position">15</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+-                                      <object class="GtkBox">
++                                      <object class="GtkCheckButton" id="check_ciecam">
++                                        <property name="label" translatable="yes">Use CIECAM02 color profile</property>
++                                        <property name="use-action-appearance">False</property>
+                                         <property name="visible">True</property>
+-                                        <property name="can-focus">False</property>
+-                                        <property name="border-width">4</property>
+-                                        <child>
+-                                          <object class="GtkCheckButton" id="check_pntthr">
+-                                            <property name="label" translatable="yes">control points threshold</property>
+-                                            <property name="visible">True</property>
+-                                            <property name="can-focus">True</property>
+-                                            <property name="receives-default">False</property>
+-                                            <property name="draw-indicator">True</property>
+-                                          </object>
+-                                          <packing>
+-                                            <property name="expand">True</property>
+-                                            <property name="fill">True</property>
+-                                            <property name="position">0</property>
+-                                          </packing>
+-                                        </child>
+-                                        <child>
+-                                          <object class="GtkSpinButton" id="spinbuttonpntthr">
+-                                            <property name="visible">True</property>
+-                                            <property name="can-focus">True</property>
+-                                            <property name="adjustment">adjustment29</property>
+-                                          </object>
+-                                          <packing>
+-                                            <property name="expand">False</property>
+-                                            <property name="fill">True</property>
+-                                            <property name="position">1</property>
+-                                          </packing>
+-                                        </child>
++                                        <property name="can-focus">True</property>
++                                        <property name="receives-default">False</property>
++                                        <property name="tooltip-text">
++-c
++
++use CIECAM02 to blend colors.
++                                    </property>
++                                        <property name="margin-top">4</property>
++                                        <property name="margin-bottom">4</property>
++                                        <property name="xalign">0</property>
++                                        <property name="draw-indicator">True</property>
+                                       </object>
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">True</property>
+-                                        <property name="position">22</property>
++                                        <property name="position">16</property>
+                                       </packing>
+                                     </child>
+                                     <child>
+@@ -1689,79 +1804,7 @@ Correlation threshold for identifying control points (default: 0.9).</property>
+                                       <packing>
+                                         <property name="expand">False</property>
+                                         <property name="fill">True</property>
+-                                        <property name="position">23</property>
+-                                      </packing>
+-                                    </child>
+-                                    <child>
+-                                      <object class="GtkBox" id="hbox16">
+-                                        <property name="visible">True</property>
+-                                        <property name="can-focus">False</property>
+-                                        <property name="border-width">4</property>
+-                                        <child>
+-                                          <object class="GtkCheckButton" id="check_courb">
+-                                            <property name="label" translatable="yes">Min Curvature:</property>
+-                                            <property name="use-action-appearance">False</property>
+-                                            <property name="visible">True</property>
+-                                            <property name="can-focus">False</property>
+-                                            <property name="receives-default">False</property>
+-                                            <property name="tooltip-text">
+-
+---contrast-min-curvature=CURVATURE
+-
+-minimum CURVATURE for an edge to qualify
+-					    </property>
+-                                            <property name="xalign">0.5</property>
+-                                            <property name="draw-indicator">True</property>
+-                                          </object>
+-                                          <packing>
+-                                            <property name="expand">False</property>
+-                                            <property name="fill">True</property>
+-                                            <property name="position">0</property>
+-                                          </packing>
+-                                        </child>
+-                                        <child>
+-                                          <object class="GtkCheckButton" id="check_prctcourb">
+-                                            <property name="label" translatable="yes">%</property>
+-                                            <property name="use-action-appearance">False</property>
+-                                            <property name="visible">True</property>
+-                                            <property name="can-focus">False</property>
+-                                            <property name="receives-default">False</property>
+-                                            <property name="xalign">0.5</property>
+-                                            <property name="draw-indicator">True</property>
+-                                          </object>
+-                                          <packing>
+-                                            <property name="expand">True</property>
+-                                            <property name="fill">True</property>
+-                                            <property name="padding">5</property>
+-                                            <property name="position">1</property>
+-                                          </packing>
+-                                        </child>
+-                                        <child>
+-                                          <object class="GtkSpinButton" id="spinbuttoncourb">
+-                                            <property name="visible">True</property>
+-                                            <property name="can-focus">True</property>
+-                                            <property name="tooltip-text">
+---contrast-min-curvature=CURVATURE
+-
+-minimum CURVATURE for an edge to qualify.
+-                                        </property>
+-                                            <property name="invisible-char">•</property>
+-                                            <property name="primary-icon-activatable">False</property>
+-                                            <property name="secondary-icon-activatable">False</property>
+-                                            <property name="adjustment">adjustment13</property>
+-                                          </object>
+-                                          <packing>
+-                                            <property name="expand">False</property>
+-                                            <property name="fill">False</property>
+-                                            <property name="pack-type">end</property>
+-                                            <property name="position">3</property>
+-                                          </packing>
+-                                        </child>
+-                                      </object>
+-                                      <packing>
+-                                        <property name="expand">False</property>
+-                                        <property name="fill">False</property>
+-                                        <property name="position">24</property>
++                                        <property name="position">17</property>
+                                       </packing>
+                                     </child>
+                                   </object>
+@@ -1769,26 +1812,26 @@ minimum CURVATURE for an edge to qualify.
+                               </object>
+                             </child>
+                             <child type="label">
+-                              <object class="GtkLabel" id="label15">
++                              <object class="GtkLabel">
+                                 <property name="visible">True</property>
+                                 <property name="can-focus">False</property>
+-                                <property name="label" translatable="yes">&lt;b&gt;Expert Options&lt;/b&gt;</property>
++                                <property name="label" translatable="yes">&lt;b&gt;Expert Enfuse Options&lt;/b&gt;</property>
+                                 <property name="use-markup">True</property>
+                               </object>
+                             </child>
+                           </object>
+                           <packing>
+-                            <property name="position">1</property>
++                            <property name="position">2</property>
+                           </packing>
+                         </child>
+                         <child type="tab">
+-                          <object class="GtkLabel" id="label3">
++                          <object class="GtkLabel">
+                             <property name="visible">True</property>
+                             <property name="can-focus">False</property>
+-                            <property name="label" translatable="yes">Expert</property>
++                            <property name="label" translatable="yes">Expert Enfuse</property>
+                           </object>
+                           <packing>
+-                            <property name="position">1</property>
++                            <property name="position">2</property>
+                             <property name="tab-fill">False</property>
+                           </packing>
+                         </child>
+@@ -2468,7 +2511,7 @@ Enter name of graphics editor to edit images
+                             </child>
+                           </object>
+                           <packing>
+-                            <property name="position">2</property>
++                            <property name="position">3</property>
+                           </packing>
+                         </child>
+                         <child type="tab">
+@@ -2478,7 +2521,7 @@ Enter name of graphics editor to edit images
+                             <property name="label" translatable="yes">Save Options</property>
+                           </object>
+                           <packing>
+-                            <property name="position">2</property>
++                            <property name="position">3</property>
+                             <property name="tab-fill">False</property>
+                           </packing>
+                         </child>
+-- 
+2.47.1
+

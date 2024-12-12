@@ -1,0 +1,26 @@
+From 8c9ba7e64dc6ab26ee26802b90dd3315c35d0d09 Mon Sep 17 00:00:00 2001
+From: Michael Rasmussen <mir@datanom.net>
+Date: Sun, 22 Oct 2023 12:45:15 +0200
+Subject: [PATCH 03/11] Adjust helper info
+
+Signed-off-by: Michael Rasmussen <mir@datanom.net>
+---
+ macrofusion.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/macrofusion.py b/macrofusion.py
+index 5a5091a..7e073bb 100755
+--- a/macrofusion.py
++++ b/macrofusion.py
+@@ -140,7 +140,7 @@ settings = {
+         # force hard blend masks and no averaging on finest scale
+         "hard-mask"             : ["--hard-mask",               False],
+         # apply gray-scale PROJECTOR in exposure or contrast weighing, where PROJECTOR is one of
+-        # 0: "anti-value", 1: "average", 2: "l-star", 3: "lightness", 4: "luminance", 5: "pl-star", 6: "value"
++        # 0: "average", 1: "l-star", 2: "lightness", 3: "value", 4: "luminance", 5: "pl-star"
+         "gray-projector"        : ["--gray-projector",          1],
+         # set window SIZE for local-contrast analysis     
+         "contrast-window-size"  : ["--contrast-window-size",    3],
+-- 
+2.47.1
+

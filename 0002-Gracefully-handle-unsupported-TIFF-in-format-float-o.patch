@@ -1,0 +1,61 @@
+From 9f60981d26834b892235501442548b0df9b0a6a1 Mon Sep 17 00:00:00 2001
+From: Michael Rasmussen <mir@datanom.net>
+Date: Sat, 21 Oct 2023 19:52:52 +0200
+Subject: [PATCH 02/11] Gracefully handle unsupported TIFF in format float or
+ int32
+
+Signed-off-by: Michael Rasmussen <mir@datanom.net>
+---
+ macrofusion.py | 33 ++++++++++++++++++++++++---------
+ 1 file changed, 24 insertions(+), 9 deletions(-)
+
+diff --git a/macrofusion.py b/macrofusion.py
+index f15862b..5a5091a 100755
+--- a/macrofusion.py
++++ b/macrofusion.py
+@@ -798,18 +798,33 @@ class Interface:
+         settings["default_folder"] = path
+         for file in self.files:
+             if re.search('\\.jpg$|\\.jpeg$|\\.tiff$|\\.tif$', file, flags=re.IGNORECASE):
+-                pb = GdkPixbuf.Pixbuf.new_from_file(file)
+-                im = self.pixbuf2Image(pb)
+-                self.size = im.size
+-                # self.tags2 = Gui.get_exif(file)
+-                if not self.tags2:
+-                    self.tags2 = ''
+-                self.tooltip = ("\n" + _("<b>Filename:</b> ") + os.path.basename(file) + "\n"+_("<b>Resolution:</b> ") + str(str(self.size[0]) + "x" + str(self.size[1])) + "\n" + self.tags2)
+-                self.liststoreimport.append([1, file, GdkPixbuf.Pixbuf.new_from_file_at_size(file, 128, 128), self.tooltip])
++                try:
++                    pb = GdkPixbuf.Pixbuf.new_from_file(file)
++                    im = self.pixbuf2Image(pb)
++                    self.size = im.size
++                    # self.tags2 = Gui.get_exif(file)
++                    if not self.tags2:
++                        self.tags2 = ''
++                    self.tooltip = ("\n" + _("<b>Filename:</b> ") + os.path.basename(file) + "\n"+_("<b>Resolution:</b> ") + str(str(self.size[0]) + "x" + str(self.size[1])) + "\n" + self.tags2)
++                    self.liststoreimport.append([1, file, GdkPixbuf.Pixbuf.new_from_file_at_size(file, 128, 128), self.tooltip])
++                except GLib.GError:
++                    message = file
++                    meta = GExiv2.Metadata(file)
++                    bps = int(meta.try_get_tag_string('Exif.Image.BitsPerSample')[0:2])
++                    sf = int(meta.try_get_tag_string('Exif.Image.SampleFormat')[0:2])
++                    if bps == None or sf == None:
++                        message += " [format:Unknown] not supported"
++                    elif sf > 1:
++                        message += " [format:float" + str(bps) + "] not supported"
++                    elif bps > 16:
++                        message += " [format:int" + str(bps) + "] not supported"
++                    else:
++                        message += " [format:Unknown] not supported"
++                    self.badfiles.append(message)
+             else:
+                 self.badfiles.append(file)
+         if len(self.badfiles)>0:
+-            message = _("Only JPEG and TIFF files are allowed.\n\nCannot open:\n")
++            message = _("Only JPEG and TIFF (int8, int16) files are allowed.\n\nCannot open:\n")
+             for itz in self.badfiles:
+                 message += itz + "\n"
+             Gui.messageinthebottle(message)
+-- 
+2.47.1
+
