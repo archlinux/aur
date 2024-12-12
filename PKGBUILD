@@ -1,7 +1,6 @@
 # Maintainer: Jonghyo Lee <na1307@outlook.kr>
-# Contributor: Giorgio Tani <giorgio.tani.software at gmail dot com>
 pkgbase=peazip-additional-formats-plugin
-pkgname=(peazip-additional-formats-plugin-{arc,lpaq,paq,quad,upx,zpaq})
+pkgname=($pkgbase-{arc,lpaq,paq,quad,upx,zpaq})
 pkgver=6
 pkgrel=1
 arch=(x86_64)
