@@ -1,0 +1,22 @@
+pkgbase = npainter-git
+	pkgdesc = fast and simple digital painting software
+	pkgver = r528.250974f
+	pkgrel = 1
+	url = https://mrgaturus.itch.io/npainter
+	arch = x86_64
+	license = GPL2
+	makedepends = nim
+	depends = gdk-pixbuf2
+	depends = freetype2
+	depends = libpng
+	depends = libglvnd
+	depends = libxcursor
+	depends = libxi
+	depends = zstd
+	provides = npainter
+	conflicts = npainter
+	conflicts = npainter-bin
+	source = git+https://github.com/mrgaturus/npainter.git
+	sha256sums = SKIP
+
+pkgname = npainter-git
