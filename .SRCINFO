@@ -1,6 +1,6 @@
 pkgbase = splayer-git
-	pkgdesc = 一个简约的音乐播放器，支持逐字歌词，下载歌曲，展示评论区，音乐云盘及歌单管理，音乐频谱，移动端基础适配 | 网易云音乐 | A minimalist music player.
-	pkgver = 3.0.0.alpha.4.r0.g3a6f8e7
+	pkgdesc = A minimalist music player.(Use system-wide electron) 一个简约的音乐播放器，支持逐字歌词，下载歌曲，展示评论区，音乐云盘及歌单管理，音乐频谱，移动端基础适配 | 网易云音乐.
+	pkgver = 3.0.0.beta.1.r0.g15b5008
 	pkgrel = 1
 	url = https://github.com/imsyy/SPlayer
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = splayer-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = gcc
-	makedepends = cmake
 	makedepends = curl
 	makedepends = pnpm
-	depends = electron28
+	depends = electron30
 	depends = java-runtime
-	provides = splayer=3.0.0.alpha.4
+	depends = libvips
+	provides = splayer=3.0.0.beta.1
 	conflicts = splayer
 	source = splayer.git::git+https://github.com/imsyy/SPlayer.git
 	source = splayer.sh
