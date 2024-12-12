@@ -4,7 +4,7 @@ pkgbase=python-bayesicfitting
 _pyname=BayesicFitting
 pkgname=("python-bayesicfitting")
 #"python-${_pyname}"-doc)
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="A Python Toolbox for Bayesian fitting"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=('python-setuptools')
 #              'python-scipy'
 #              )
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('f0ea915abaca6259c6fc445ad1b642ae9258dd0ae47d3a6a12afb3211d786420')
+sha256sums=('e968cfa4288b1c75571fc845d62657236569de5110d3b6d898e2d8d5deb77c5d')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
