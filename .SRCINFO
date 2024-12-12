@@ -1,0 +1,22 @@
+pkgbase = python-pyamlboot-git
+	pkgdesc = Amlogic USB Boot Protocol Library
+	pkgver = r91.d7806ac
+	pkgrel = 1
+	url = https://github.com/superna9999/pyamlboot
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=42
+	makedepends = python-wheel
+	depends = python>=3.7
+	depends = python-dateparser
+	depends = python-dateutil
+	depends = python-lxml
+	provides = python-pyamlboot
+	conflicts = python-pyamlboot
+	source = git+https://github.com/superna9999/pyamlboot.git
+	sha256sums = SKIP
+
+pkgname = python-pyamlboot-git
