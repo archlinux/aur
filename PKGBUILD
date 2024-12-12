@@ -18,7 +18,7 @@ pkgver() {
 }
 
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
@@ -80,23 +80,7 @@ source=("HandBrake::git+https://github.com/HandBrake/HandBrake.git#tag=${_commit
 sha256sums=('SKIP')
 
 prepare() {
-    return # Skip patching
-    patch --directory=HandBrake --strip 1 <<-'EOF'
---- a/contrib/svt-av1/module.defs
-+++ b/contrib/svt-av1/module.defs
-@@ -1,9 +1,9 @@
- $(eval $(call import.MODULE.defs,SVT-AV1,svt-av1))
- $(eval $(call import.CONTRIB.defs,SVT-AV1))
- 
--SVT-AV1.FETCH.url     = https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/SVT-AV1-v2.1.0.tar.gz
--SVT-AV1.FETCH.url    += https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v2.1.0/SVT-AV1-v2.1.0.tar.gz
--SVT-AV1.FETCH.sha256  = 72a076807544f3b269518ab11656f77358284da7782cece497781ab64ed4cb8a
-+SVT-AV1.FETCH.url     = https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/SVT-AV1-v2.3.0.tar.gz
-+SVT-AV1.FETCH.url    += https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v2.3.0/SVT-AV1-v2.3.0.tar.gz
-+SVT-AV1.FETCH.sha256  = ebb0b484ef4a0dc281e94342a9f73ad458496f5d3457eca7465bec943910c6c3
- 
- SVT-AV1.GCC.args.c_std =
-EOF
+  :
 }
 
 setup_compiler() {
