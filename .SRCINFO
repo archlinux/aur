@@ -1,0 +1,14 @@
+pkgbase = wlhax
+	pkgdesc = Wayland proxy that monitors and displays various application state in a TUI
+	pkgver = 0.0.1.20240318
+	pkgrel = 1
+	url = https://git.sr.ht/~kennylevinsen/wlhax
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = wayland
+	source = git+https://git.sr.ht/~kennylevinsen/wlhax#commit=10b42941847f11a43dceaf8bf449301056c71f3b
+	sha256sums = SKIP
+
+pkgname = wlhax
