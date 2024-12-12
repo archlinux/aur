@@ -16,7 +16,7 @@ depends=('python'
   'python-importlib-metadata>=6.0.0'
 )
 makedepends=('python-setuptools')
-source=("$_pypifilestem-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/$_pypifilestem/$_pypifilestem-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/k/keeper_secrets_manager_core/keeper_secrets_manager_core-${pkgver}.tar.gz")
 sha256sums=('bda9e733908b34edbac956825fc062e6934894f210d49b0bba1679d167d7be80')
 
 build() {
