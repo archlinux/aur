@@ -11,3 +11,18 @@ source_x86_64=("https://github.com/madeofpendletonwool/PinePods/releases/downloa
 source_aarch64=("https://github.com/madeofpendletonwool/PinePods/releases/download/${pkgver}/Pinepods_${pkgver}_arm64.deb")
 sha256sums_x86_64=('0638853425d8831ec67aef59ed84ae55b55e409110fda269f9fdb90dd817e83c')
 sha256sums_aarch64=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+
+package() {
+  # Extract the .deb package
+  cd "$srcdir"
+  tar xf data.tar.gz -C "$pkgdir/"
+
+  # Create symlink from /usr/bin/app to /usr/bin/pinepods
+  ln -s /usr/bin/app "$pkgdir/usr/bin/pinepods"
+
+  # Ensure correct permissions
+  chmod 755 "$pkgdir/usr/bin/app"
+  chmod 644 "$pkgdir/usr/share/applications/Pinepods.desktop"
+  find "$pkgdir/usr/share/icons" -type f -exec chmod 644 {} +
+  find "$pkgdir" -type d -exec chmod 755 {} +
+}
