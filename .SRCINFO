@@ -1,7 +1,7 @@
 pkgbase = proxypin-bin
 	pkgdesc = Open source free packet capture tool.(Prebuilt version)
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wanghongenpin/network_proxy_flutter
 	arch = x86_64
 	license = Apache-2.0
@@ -11,7 +11,7 @@ pkgbase = proxypin-bin
 	conflicts = proxypin
 	source = proxypin-1.1.6.deb::https://github.com/wanghongenpin/network_proxy_flutter/releases/download/v1.1.6/ProxyPin-Linux.deb
 	source = proxypin.sh
-	sha256sums = eca3b648546628c5684a241796c008289ee9b73f6b83b0496386abe330771e6b
+	sha256sums = 750c4a3d66ad3cdf4831f9c4459c2735f58a66c3a03f2d012a677f14019e9eb3
 	sha256sums = 4b46d4c46f133f057b7859149b9e45689638ad849c4f0a8efabf2aacd6bf9142
 
 pkgname = proxypin-bin
