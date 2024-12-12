@@ -1,0 +1,19 @@
+pkgbase = varchiver
+	pkgdesc = Advanced Archive Management Tool with modern UI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/instancer-kirik/varchiver
+	arch = any
+	license = custom:proprietary
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyqt6
+	depends = python-poetry
+	depends = p7zip
+	depends = unrar
+	source = varchiver-0.1.0.tar.gz::https://github.com/instancer-kirik/varchiver/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = varchiver

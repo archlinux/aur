@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Varchiver
+Comment=Advanced Archive Management Tool
+Exec=varchiver %f
+Icon=varchiver
+Terminal=false
+Categories=Utility;Archiving;Compression;
+MimeType=application/zip;application/x-tar;application/x-compressed-tar;application/x-bzip2-compressed-tar;application/x-rar;
+Keywords=archive;compress;extract;zip;tar;rar;

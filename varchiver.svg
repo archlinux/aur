@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <!-- Background -->
+  <rect x="6" y="6" width="36" height="36" rx="4" fill="#424242"/>
+  
+  <!-- Archive body -->
+  <rect x="12" y="10" width="24" height="28" rx="2" fill="#FFA726"/>
+  
+  <!-- Archive stripes -->
+  <rect x="14" y="14" width="20" height="4" fill="#FFE0B2"/>
+  <rect x="14" y="22" width="20" height="4" fill="#FFE0B2"/>
+  <rect x="14" y="30" width="20" height="4" fill="#FFE0B2"/>
+  
+  <!-- Archive handle -->
+  <circle cx="24" cy="8" r="2" fill="#FFE0B2"/>
+</svg>
