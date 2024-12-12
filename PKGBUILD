@@ -2,7 +2,7 @@
 
 _npmname=cloudcmd
 pkgname=$_npmname
-pkgver=18.2.1
+pkgver=18.4.0
 pkgrel=1
 
 pkgdesc="Cloud Commander file manager for the web with console and editor."
@@ -20,7 +20,7 @@ changelog="changelog.md"
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 		"https://raw.githubusercontent.com/coderaiser/cloudcmd/v${pkgver}/LICENSE")
 noextract=("${_npmname}-${pkgver}.tgz")
-b2sums=('faf0cdfbf5eab2fcabfca38215919c8563d301ee66e153d218cf81c422822471e86f765434b82e4269cdd6a393146ede32cd823298ed26f19a3c8e79f860c833'
+b2sums=('e377ec046e2ad9d389d014e67b6557d7bef6a86dded0c0070fe0c3ecae286cf82c31a0e7432bdd17afae8494909c7ec27fc68fb0419b74efb2266516da6b8473'
         '12e52ded462956c08546683fafcdb19741f1a306e2f3d1e321c1c35867e02b8fad8456226c179d1d408010b6142fffb8da83138a43ee8c21d821877a1c152900')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
