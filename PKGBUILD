@@ -1,8 +1,8 @@
 # Maintainer: K4YT3X <aur@k4yt3x.com>
 pkgname=video2x-git
-pkgver=r890.bcbe33d
+pkgver=r941.7ee9d60
 pkgrel=1
-pkgdesc="A machine learning-based lossless video super resolution framework"
+pkgdesc="A machine learning-based video super resolution and frame interpolation framework"
 arch=('x86_64')
 url="https://github.com/k4yt3x/video2x"
 license=('AGPL3')
