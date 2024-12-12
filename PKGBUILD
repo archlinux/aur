@@ -2,7 +2,7 @@
 # Maintainer: pusi77 <pusineriandrea+gmail+com>
 
 pkgname=hypnotix-wayland
-pkgver=4.6
+pkgver=4.8
 pkgrel=1
 pkgdesc="An IPTV streaming application. (With Wayland support)."
 arch=(any)
@@ -22,7 +22,7 @@ depends=(
         )
 conflicts=(hypnotix hypnotix-git)
 source=("hypnotix-$pkgver.tar.gz::https://github.com/linuxmint/hypnotix/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('1e40d786655182cd14a5be59abf3d626b635dbe48e2ca426e2fbdf31d10319e4')
+sha256sums=('0c20c0c77f1af1c75faf1659dd01a48ecb00cfd58531f78abc8a2b6b6ff8a942')
 prepare() {
         cd hypnotix-$pkgver
         sed -i "s/__DEB_VERSION__/$pkgver/g" usr/lib/hypnotix/hypnotix.py
@@ -38,7 +38,7 @@ GDK_BACKEND=x11 /usr/lib/hypnotix/hypnotix.py &
 else
 /usr/lib/hypnotix/hypnotix.py &
 fi'" >> usr/bin/hypnotix
-        sed -i '1672a \        options["vo"] = "x11"' usr/lib/hypnotix/hypnotix.py
+        sed -i '1677a \        options["vo"] = "x11"' usr/lib/hypnotix/hypnotix.py
 }
 
 package() {
