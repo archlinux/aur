@@ -3,7 +3,7 @@
 _pkgbasename=libplacebo
 pkgname=lib32-$_pkgbasename
 pkgver=7.349.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives (32bit)'
 url='https://github.com/haasn/libplacebo'
 arch=('x86_64')
@@ -38,18 +38,23 @@ makedepends=(
 provides=('libplacebo.so')
 source=(
     "https://code.videolan.org/videolan/libplacebo/-/archive/v${pkgver}/${_pkgbasename}-v${pkgver}.tar.gz"
+    fix_glslang_linking.patch
   )
 sha512sums=(
     '94fb0ad4f6cdafc81a43f06a73e49ef8ed7f81e751ad2a028f6f91295a06d8c12f2959e2595bd654db946fc5aa89758ab9d37f985ebb82badbd517ed02f3ddca'
+    'f25f4532fd93b39efc2b481e88eadb8013d5ea32b0b785de336b3d03b52cd22577a933c5df6ed29f9c188a7ac7c8fa465114b230d3e43cb319a70072d8cbaefd'
   )
 b2sums=(
     '4a1a667e608e559f2ac163d25183ce9cd2a3ddfa05d88219e5597db08478c883f12efb2e66fe54d9aab65f2863efbe60f0448e241a69109ea423af8222008493'
+    '227a59c05d66e5226c297e39acad3244a50ab3fdc1c2742fd94979ffa09679e60c89fe916ff72321b0f91cb3516e35e52e0913067cde4c1325a28ff9db22fb3c'
   )
 
 prepare() {
   cd ${_pkgbasename}-v${pkgver}
 
   # Patching if needed
+  # Fix linking for glslang 15.0.0
+  patch -Np1 < "${srcdir}/fix_glslang_linking.patch"
 }
 
 build() {
