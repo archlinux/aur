@@ -1,0 +1,13 @@
+pkgbase = guile-minikanren-git
+	pkgdesc = A relational programming extension to Scheme
+	pkgver = 0.1r13.e844d85
+	pkgrel = 1
+	url = http://minikanren.org/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = guile
+	source = git+https://github.com/ijp/minikanren
+	sha256sums = SKIP
+
+pkgname = guile-minikanren-git
