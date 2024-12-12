@@ -1,6 +1,6 @@
 pkgbase = shedskin
 	pkgdesc = Python to C++ compiler
-	pkgver = 0.9.9
+	pkgver = 0.9.10
 	pkgrel = 1
 	url = https://shedskin.github.io/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = shedskin
 	depends = pcre
 	depends = gc
 	depends = python
-	source = git+https://github.com/shedskin/shedskin.git#tag=v0.9.9
+	source = git+https://github.com/shedskin/shedskin.git#tag=v0.9.10
 	sha256sums = SKIP
 
 pkgname = shedskin

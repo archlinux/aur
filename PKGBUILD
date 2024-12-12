@@ -2,7 +2,7 @@
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=shedskin
-pkgver=0.9.9
+pkgver=0.9.10
 pkgrel=1
 pkgdesc='Python to C++ compiler'
 arch=('any')
