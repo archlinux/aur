@@ -9,15 +9,87 @@
 
 _pkgname=Flexget
 pkgname=${_pkgname,,}
-pkgver=3.12.3
+pkgver=3.12.4
 pkgrel=1
 pkgdesc="FlexGet is a program aimed to automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 arch=(any)
 url="https://github.com/${_pkgname}/${_pkgname}"
 license=(MIT)
 # run './geninfo.sh' to auto generate 'depends' variable after run 'updpkgsums'
-depends=(python-aniso8601 python-apscheduler python-attrs python-autocommand python-babelfish python-beautifulsoup4 python-blinker python-brotli python-certifi python-charset-normalizer python-cheroot python-cherrypy python-click python-colorama python-dateutil python-feedparser python-flask python-flask-compress python-flask-cors python-flask-login python-flask-restx python-greenlet python-guessit python-html5lib python-idna python-importlib_resources python-itsdangerous python-jaraco.collections python-jaraco.context python-jaraco.functools python-jaraco.text python-jinja python-jsonschema python-jsonschema-specifications python-loguru python-markdown-it-py python-markupsafe python-mdurl python-more-itertools python-packaging python-pendulum python-plumbum python-portend python-psutil python-pygments python-pynzb python-pyparsing python-pyrss2gen python-pytz python-pyyaml python-rebulk python-referencing python-requests python-rich python-rpds-py python-rpyc python-setuptools python-sgmllib3k python-six python-soupsieve python-sqlalchemy python-tempora python-typing_extensions python-tzdata python-tzlocal python-urllib3 python-webencodings python-werkzeug python-zc.lockfile python-zstandard python-zxcvbn)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+depends=(
+    "python-aniso8601"
+    "python-apscheduler"
+    "python-attrs"
+    "python-autocommand"
+    "python-babelfish"
+    "python-beautifulsoup4"
+    "python-blinker"
+    "python-brotli"
+    "python-certifi"
+    "python-charset-normalizer"
+    "python-cheroot"
+    "python-cherrypy"
+    "python-click"
+    "python-colorama"
+    "python-dateutil"
+    "python-feedparser"
+    "python-flask"
+    "python-flask-compress"
+    "python-flask-cors"
+    "python-flask-login"
+    "python-flask-restx"
+    "python-greenlet"
+    "python-guessit"
+    "python-html5lib"
+    "python-idna"
+    "python-importlib_resources"
+    "python-itsdangerous"
+    "python-jaraco.collections"
+    "python-jaraco.context"
+    "python-jaraco.functools"
+    "python-jaraco.text"
+    "python-jinja"
+    "python-jsonschema"
+    "python-jsonschema-specifications"
+    "python-loguru"
+    "python-markdown-it-py"
+    "python-markupsafe"
+    "python-mdurl"
+    "python-more-itertools"
+    "python-packaging"
+    "python-pendulum"
+    "python-plumbum"
+    "python-portend"
+    "python-psutil"
+    "python-pygments"
+    "python-pynzb"
+    "python-pyparsing"
+    "python-pyrss2gen"
+    "python-pytz"
+    "python-pyyaml"
+    "python-rebulk"
+    "python-referencing"
+    "python-requests"
+    "python-rich"
+    "python-rpds-py"
+    "python-rpyc"
+    "python-setuptools"
+    "python-sgmllib3k"
+    "python-six"
+    "python-soupsieve"
+    "python-sqlalchemy"
+    "python-tempora"
+    "python-typing_extensions"
+    "python-tzdata"
+    "python-tzlocal"
+    "python-urllib3"
+    "python-webencodings"
+    "python-werkzeug"
+    "python-zc.lockfile"
+    "python-zstandard"
+    "python-zxcvbn"
+)
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('flexget-webui: webui v2'
             'flexget-webui-v1: webui v1')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
@@ -26,7 +98,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.user.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('d8ec6f0bc5af722d938e89046374a6ca1839dd92b123dc16387939c74110f3aa'
+sha256sums=('13aeb4bbe024f9c859ca451d5bb65d46a5397f48015a5c4d50e4b6f9bbc422a8'
             'b7578417ab5f671def7021133ae68900d82aaa81b5e80a2fec4d85e46eb1f8e9'
             'b9d354f6095aafe7a29cb8e90239b662a2584903a85fe3770f2b99bb8bdfff4a'
             '799921777b3714f074deaafbdd241ea7b99a0eccd65931708fd81457286f4f49'

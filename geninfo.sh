@@ -8,6 +8,7 @@ pkgver=$(awk -F= '/pkgver=/{print $2}' PKGBUILD)
 pytoml="src/${_pipname}-${pkgver}/pyproject.toml"
 pyreq="src/${_pipname}-${pkgver}/requirements.txt"
 
+trap "rm depends.txt" EXIT
 makepkg -do
 pkgdesc=$(yq eval -o=json "$pytoml" | jq -r '.project.description')
 depends=$(./geninfo.py "$pyreq" |
@@ -22,10 +23,14 @@ depends=$(./geninfo.py "$pyreq" |
     sed 's|python-typing-|python-typing_|' |
     sed 's|python-zc-lockfile|python-zc.lockfile|' |
     sort -u |
-    tr '\n' ' ' |
-    sed 's| $||'
+    sed 's|^|    \"|' |
+    sed 's|$|\"|'
 )
+echo -e "${depends}\n)" > depends.txt
 
 sed -e "s|^pkgdesc=.*|pkgdesc=\"$pkgdesc\"|" \
-    -e "s|^depends=.*|depends=(${depends})|" \
+    -e "/^depends=(/,/)/c\depends=(" \
+    -i PKGBUILD
+
+sed -e "/^depends=/r depends.txt" \
     -i PKGBUILD
