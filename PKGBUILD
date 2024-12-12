@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcppCCTZ
-_pkgver=0.2.12
+_pkgver=0.2.13
 pkgname=r-${_pkgname,,}
-pkgver=0.2.12
+pkgver=0.2.13
 pkgrel=1
 pkgdesc="'Rcpp' Bindings for the 'CCTZ' Library"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2a2087bdb7ab4b617487b87677a81ccd0c5529f776cfe90d2e23d5f5478424cb')
+sha256sums=('f4101435ed32b61110fb8e2429da80ea72bce774156075c823743904a4f2abf2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
