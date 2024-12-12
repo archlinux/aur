@@ -1,0 +1,5 @@
+[python-mpsplots]
+source = "github"
+github = "MartinPdeS/MPSPlots"
+use_max_tag = "true"
+prefix = "v"

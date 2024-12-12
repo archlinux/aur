@@ -1,0 +1,21 @@
+pkgbase = python-mpsplots
+	pkgdesc = A matplotlib wrapper for defered plots and plotting styles
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/MartinPdeS/MPSPlots
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-matplotlib
+	depends = python-pydantic
+	depends = python-pathvalidate
+	depends = python-pyvista
+	depends = python-shapely
+	source = MPSPlots-1.5.2.tar.gz::https://github.com/MartinPdeS/MPSPlots/archive/v1.5.2.tar.gz
+	sha512sums = 384a72d76139e2f6b44b2b18b54710bff02fb6f6129c84179b56cd33bfa9c0fedd2771ecbca23e27fbd2693610f2112247b4de04ec0ec7f43376c94c869aa80b
+
+pkgname = python-mpsplots
