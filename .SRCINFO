@@ -1,6 +1,6 @@
 pkgbase = webtorrent-cli
 	pkgdesc = The streaming torrent client. For the command line.
-	pkgver = 5.1.2
+	pkgver = 5.1.3
 	pkgrel = 1
 	url = https://webtorrent.io
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = webtorrent-cli
 	makedepends = npm
 	depends = nodejs
 	provides = webtorrent
-	source = webtorrent-cli-5.1.2.tar.gz::https://github.com/webtorrent/webtorrent-cli/archive/v5.1.2.tar.gz
-	sha256sums = 1041f723de7d349c92f8d8ce8a2f2f66110dcbe398ededdc70919a70f4c51c47
+	source = webtorrent-cli-5.1.3.tar.gz::https://github.com/webtorrent/webtorrent-cli/archive/v5.1.3.tar.gz
+	sha256sums = be0c9461085c847b077ae9559dc55ed484e962af5c5cfc2fbbe3f0072fad1289
 
 pkgname = webtorrent-cli
