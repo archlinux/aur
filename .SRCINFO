@@ -1,7 +1,7 @@
 pkgbase = hevi
 	pkgdesc = A modern hex viewer
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://arnau478.github.io/hevi
 	arch = x86_64
 	arch = aarch64
