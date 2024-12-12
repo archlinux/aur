@@ -2,8 +2,8 @@
 
 _pkgname="hevi"
 pkgname="${_pkgname}-git"
-pkgver=1.1.0.r7.g07847bf
-pkgrel=2
+pkgver=1.1.0.r10.gcbfa59d
+pkgrel=1
 pkgdesc="A modern hex viewer"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://arnau478.github.io/hevi"
