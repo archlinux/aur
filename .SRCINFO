@@ -9,7 +9,9 @@ pkgbase = slpct
 	depends = jdk8-openjdk
 	depends = bash
 	depends = xdg-utils
-	source = https://github.com/Marx79/Slpct/blob/master/slpct.tar.gz
+	depends = git
+	depends = base-devel
+	source = git+https://github.com/Marx79/Slpct.git
 	sha256sums = SKIP
 
 pkgname = slpct
