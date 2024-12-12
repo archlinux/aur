@@ -1,0 +1,16 @@
+pkgbase = osmon-git
+	pkgdesc = A command-line tool written in Go that provides quick access to basic system information. With osmon, you can easily access details such as your host's IP address, system load, memory usage, logged-in users, and much more.
+	pkgver = 1.1.0.r0.g752bcfa
+	pkgrel = 1
+	url = https://github.com/debek/osmon
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go>=1.21.5
+	makedepends = curl
+	provides = osmon=1.1.0
+	conflicts = osmon
+	source = osmon.git::git+https://github.com/debek/osmon.git
+	sha256sums = SKIP
+
+pkgname = osmon-git
