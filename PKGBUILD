@@ -4,7 +4,7 @@
 # -*- sh -*-
 
 pkgname='littlefs-fuse'
-pkgver=2.7.8
+pkgver=2.7.9
 pkgrel=1
 pkgdesc='A FUSE wrapper that puts the littlefs in user-space'
 url='https://github.com/littlefs-project/littlefs-fuse'
@@ -18,6 +18,7 @@ prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # Make sure the binary has “FULL RELRO”:
+  # shellcheck disable=SC2016
   sed -i '/^ifdef DEBUG/i override CFLAGS += $(LDFLAGS)' Makefile
 }
 
@@ -47,10 +48,10 @@ package() {
 }
 
 sha256sums=(
-  '46db1a467c67e2696da9070087c96e5bc9b7236ee0c0f0417add3a0a8f82db41'
+  '3294873cf40dfc2354c2a6aaff3af525bac2995db2708127cf5855814b22e54f'
 )
 b2sums=(
-  '7e4d675a7d62a495bc3bc43ba72ffdfc5ba757a65ea94d765277acff02619e2728901385911e8c266ac2f170f4625c993ecbfee53e1032113628e3d11b790688'
+  '519cbf141ce9129dde4048bf6a801b5692793e0e87e39bb40b198d2ba23061f96fba60de0a6ee685c751b75e86846ccf6e9efcbd038a15772f2537b0d2a5ce4c'
 )
 
 # eof
