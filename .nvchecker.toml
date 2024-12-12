@@ -1,0 +1,4 @@
+[phylum]
+source = "git"
+git = "https://github.com/phylum-dev/cli.git"
+prefix = "v"

@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="phylum"
-pkgver=7.1.5
+pkgver=7.2.0
 pkgrel=1
 pkgdesc="Command line interface for the Phylum API"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'glibc' 'zlib')
 makedepends=('cargo')
 _pkgsrc="cli-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('82e0705509593e7a113cbdf8c7dbfdefb47bc97ed62edf855f0894226a617393795161993b5dbdf979a0ddd624b380d6cb734d7a6fa3ed40eb2af54f35477621')
+b2sums=('6992271da179019f830051fb795091936d40870b917dcb3a5a95ea70c8693ed390cbee73677f734df0edde3dc6f78a200289fb0dfb7d2f8a3522096f6ed3fcb5')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
