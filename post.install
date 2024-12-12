@@ -1,0 +1,13 @@
+post_install() {
+    echo -e "\033[1;97mYou can check the game guide at \033[1;94m/usr/share/sotw/docs/Guide.pdf\033[0m"
+    echo -e "\033[1;97mThe list of commands is available in game by pressing \033[1;91m? \033[1;97mthen \033[1;91me \033[1;97m \nor at \033[1;94m/usr/share/sotw/Commands.pdf\033[0m"
+}
+
+post_upgrade() {
+    echo "Cleaning up"
+    mv /usr/share/shadow-of-the-wyrm/scores.dat /usr/share/sotw/scores.dat
+    rm -r /usr/share/shadow-of-the-wyrm/
+    echo "Cleaning done."
+    echo -e "\033[1;97mYou can check the game guide at \033[1;94m/usr/share/sotw/docs/Guide.pdf\033[0m"
+    echo -e "\033[1;97mThe list of commands is available in game by pressing \033[1;91m? \033[1;97mthen \033[1;91me \033[1;97m \nor at \033[1;94m/usr/share/sotw/Commands.pdf\033[0m"
+}

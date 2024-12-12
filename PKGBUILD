@@ -16,6 +16,7 @@ conflicts=(sotw-dev)
 replaces=()
 backup=()
 options=()
+install=post.install
 changelog=
 source=('git+https://github.com/prolog/shadow-of-the-wyrm.git' 'https://i.imgur.com/z9QmK0X.png')
 noextract=()
