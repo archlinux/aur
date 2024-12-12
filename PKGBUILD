@@ -1,4 +1,5 @@
-# Maintainer: Rene Hollander <mail@renehollander.at>
+# Maintainer: Amin Vakil <info AT aminvakil DOT com>
+# Contributor: Rene Hollander <mail@renehollander.at>
 
 pkgname=cadvisor-bin
 pkgver=0.47.0
