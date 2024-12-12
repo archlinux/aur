@@ -1,0 +1,15 @@
+pkgbase = laser-git
+	pkgdesc = The better ls command, configurable with lua
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/jmattaa/laser
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = lua
+	depends = glibc
+	source = laser::git+https://github.com/jmattaa/laser.git
+	md5sums = SKIP
+
+pkgname = laser-git
