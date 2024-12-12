@@ -1,0 +1,8 @@
+# makepkg and related tools tend to create a bunch of junk around the PKGBUILD, so...
+*
+
+# Common PKGBUILD files
+!/PKGBUILD
+!/.SRCINFO
+!/.gitignore
+

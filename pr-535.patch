@@ -1,0 +1,244 @@
+From a4cdec88247bbb55a6dbf0756a4a4ac00886ae2b Mon Sep 17 00:00:00 2001
+From: George Tsiamasiotis <gtsiam@windowslive.com>
+Date: Thu, 12 Dec 2024 14:33:16 +0200
+Subject: [PATCH 1/4] make config and static directories configurable
+
+---
+ README.md                       | 11 +++++++++++
+ crates/kellnr/src/main.rs       | 16 +++++-----------
+ crates/settings/src/settings.rs |  4 +++-
+ 3 files changed, 19 insertions(+), 12 deletions(-)
+
+diff --git a/README.md b/README.md
+index aa2108f4..0b36703b 100644
+--- a/README.md
++++ b/README.md
+@@ -74,6 +74,9 @@ just build
+ # Build the project (release)
+ just build-release
+ 
++# Build the frontend (result is placed in ./static)
++just npm-build
++
+ # Test the project (without Docker integration tests, requires cargo-nextest)
+ just test
+ 
+@@ -94,6 +97,14 @@ nix develop
+ nix build
+ ```
+ 
++#### Build options
++
++The following environment variables can be set at compile time to tell kellnr where it can find some
++relevant files.
++
++- `KELLNR_CONFIG_DIR`: The configuration directory (default: `./config`, `../config`, or `../../config`).
++- `KELLNR_STATIC_DIR`: The static html directory (default: `./static`).
++
+ ### Sea ORM & PostgreSQL
+ 
+ **kellnr** uses Sqlite or PostreSQL as the storage backend for all crate related information. If you need a local PostgreSQL to test against, this Docker command sets one up on your local machine.
+diff --git a/crates/kellnr/src/main.rs b/crates/kellnr/src/main.rs
+index e148bdf0..ca98cb8c 100644
+--- a/crates/kellnr/src/main.rs
++++ b/crates/kellnr/src/main.rs
+@@ -14,12 +14,7 @@ use index::{
+ };
+ use registry::{cratesio_api, kellnr_api};
+ use settings::{LogFormat, Settings};
+-use std::{
+-    convert::TryFrom,
+-    net::SocketAddr,
+-    path::{Path, PathBuf},
+-    sync::Arc,
+-};
++use std::{net::SocketAddr, path::Path, sync::Arc};
+ use storage::{
+     cratesio_crate_storage::CratesIoCrateStorage, kellnr_crate_storage::KellnrCrateStorage,
+ };
+@@ -31,9 +26,7 @@ use web_ui::{session, ui, user};
+ 
+ #[tokio::main]
+ async fn main() {
+-    let settings: Arc<Settings> = Settings::try_from(Path::new("config"))
+-        .expect("Cannot read config")
+-        .into();
++    let settings: Arc<Settings> = settings::get_settings().expect("Cannot read config").into();
+     let addr = SocketAddr::from((settings.local.ip, settings.local.port));
+ 
+     // Configure tracing subscriber
+@@ -110,10 +103,11 @@ async fn main() {
+         middleware::from_fn_with_state(state.clone(), session::session_auth_when_required),
+     );
+ 
++    let static_path = Path::new(option_env!("KELLNR_STATIC_DIR").unwrap_or("./static"));
+     let static_files_service = get_service(
+-        ServeDir::new(PathBuf::from("static"))
++        ServeDir::new(&static_path)
+             .append_index_html_on_directories(true)
+-            .fallback(ServeFile::new(PathBuf::from("static/index.html"))),
++            .fallback(ServeFile::new(static_path.join("index.html"))),
+     );
+ 
+     let kellnr_api = Router::new()
+diff --git a/crates/settings/src/settings.rs b/crates/settings/src/settings.rs
+index beda0131..739cb155 100644
+--- a/crates/settings/src/settings.rs
++++ b/crates/settings/src/settings.rs
+@@ -96,7 +96,9 @@ impl Settings {
+ }
+ 
+ pub fn get_settings() -> Result<Settings, ConfigError> {
+-    let path = if Path::new("./config").exists() {
++    let path = if let Some(path) = option_env!("KELLNR_CONFIG_DIR") {
++        Path::new(path)
++    } else if Path::new("./config").exists() {
+         Path::new("./config")
+     } else if Path::new("../config").exists() {
+         Path::new("../config")
+
+From ffa74868841ae71efeaf73248e89755b60fe0a15 Mon Sep 17 00:00:00 2001
+From: George Tsiamasiotis <gtsiam@windowslive.com>
+Date: Thu, 12 Dec 2024 14:34:09 +0200
+Subject: [PATCH 2/4] fix typo
+
+---
+ crates/db/migration/src/m20220101_000009_create_table.rs | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/crates/db/migration/src/m20220101_000009_create_table.rs b/crates/db/migration/src/m20220101_000009_create_table.rs
+index deefc7b7..77e9aad6 100644
+--- a/crates/db/migration/src/m20220101_000009_create_table.rs
++++ b/crates/db/migration/src/m20220101_000009_create_table.rs
+@@ -32,14 +32,14 @@ async fn move_cached_crates(db: &SchemaManagerConnection<'_>) -> Result<(), DbEr
+     }
+ 
+     // Get all cached crate versions
+-    let cached_indicies = cratesio_index::Entity::find()
++    let cached_indices = cratesio_index::Entity::find()
+         .all(db)
+         .await?
+         .into_iter()
+         .collect::<Vec<_>>();
+ 
+     // Move each crate to the new location
+-    for cached_index in cached_indicies {
++    for cached_index in cached_indices {
+         let cached_crate = cached_index
+             .find_related(cratesio_crate::Entity)
+             .one(db)
+
+From 6408770bb502cfa15d5c3cd3d79c48547d8df65b Mon Sep 17 00:00:00 2001
+From: George Tsiamasiotis <gtsiam@windowslive.com>
+Date: Thu, 12 Dec 2024 16:11:47 +0200
+Subject: [PATCH 3/4] fix crates.io migration
+
+---
+ .../src/m20220101_000009_create_table.rs       | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/crates/db/migration/src/m20220101_000009_create_table.rs b/crates/db/migration/src/m20220101_000009_create_table.rs
+index 77e9aad6..2ac16eb3 100644
+--- a/crates/db/migration/src/m20220101_000009_create_table.rs
++++ b/crates/db/migration/src/m20220101_000009_create_table.rs
+@@ -25,12 +25,6 @@ async fn move_cached_crates(db: &SchemaManagerConnection<'_>) -> Result<(), DbEr
+     debug!("Moving cached crates...");
+     let settings = get_settings().map_err(|e| DbErr::Custom(e.to_string()))?;
+ 
+-    // Make sure the cratesio bin path exists
+-    if !settings.crates_io_bin_path().exists() {
+-        std::fs::create_dir_all(settings.crates_io_bin_path())
+-            .map_err(|e| DbErr::Custom(e.to_string()))?;
+-    }
+-
+     // Get all cached crate versions
+     let cached_indices = cratesio_index::Entity::find()
+         .all(db)
+@@ -38,6 +32,18 @@ async fn move_cached_crates(db: &SchemaManagerConnection<'_>) -> Result<(), DbEr
+         .into_iter()
+         .collect::<Vec<_>>();
+ 
++    if cached_indices.is_empty() {
++        // There is nothing to do
++        debug!("No cached crates to move...");
++        return Ok(());
++    }
++
++    // Make sure the cratesio bin path exists
++    if !settings.crates_io_bin_path().exists() {
++        std::fs::create_dir_all(settings.crates_io_bin_path())
++            .map_err(|e| DbErr::Custom(e.to_string()))?;
++    }
++
+     // Move each crate to the new location
+     for cached_index in cached_indices {
+         let cached_crate = cached_index
+
+From 3a60b0fd5d4cb26086d858ce51d83ec731e43476 Mon Sep 17 00:00:00 2001
+From: George Tsiamasiotis <gtsiam@windowslive.com>
+Date: Thu, 12 Dec 2024 17:56:16 +0200
+Subject: [PATCH 4/4] read version information from KELLNR_VERSION
+
+Let's just say that it's a slightly more sane than source sed on ci.
+---
+ .github/workflows/ci.yaml | 3 ---
+ README.md                 | 4 ++--
+ crates/web_ui/src/ui.rs   | 8 ++++----
+ 3 files changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/.github/workflows/ci.yaml b/.github/workflows/ci.yaml
+index 9c5913d2..491e570c 100644
+--- a/.github/workflows/ci.yaml
++++ b/.github/workflows/ci.yaml
+@@ -80,9 +80,6 @@ jobs:
+           echo "KELLNR_VERSION=${GITHUB_REF#refs/*/v}" >> $GITHUB_ENV
+           echo $KELLNR_VERSION
+ 
+-      - name: Replace Version in web_ui/ui
+-        run: sed -i 's/0.0.0-debug/'"$KELLNR_VERSION"'/' crates/web_ui/src/ui.rs
+-
+       - name: Build Release {{ matrix.target }}
+         run: just target=${{ matrix.target }} ci-release
+ 
+diff --git a/README.md b/README.md
+index 0b36703b..a46b8e0b 100644
+--- a/README.md
++++ b/README.md
+@@ -99,9 +99,9 @@ nix build
+ 
+ #### Build options
+ 
+-The following environment variables can be set at compile time to tell kellnr where it can find some
+-relevant files.
++The following environment variables can be set at compile time:
+ 
++- `KELLNR_VERSION`: The version of kellnr currently being compiled (default: `0.0.0-unknown`).
+ - `KELLNR_CONFIG_DIR`: The configuration directory (default: `./config`, `../config`, or `../../config`).
+ - `KELLNR_STATIC_DIR`: The static html directory (default: `./static`).
+ 
+diff --git a/crates/web_ui/src/ui.rs b/crates/web_ui/src/ui.rs
+index 02340f22..11ed206c 100644
+--- a/crates/web_ui/src/ui.rs
++++ b/crates/web_ui/src/ui.rs
+@@ -31,9 +31,9 @@ pub struct KellnrVersion {
+ 
+ pub async fn kellnr_version() -> Json<KellnrVersion> {
+     Json(KellnrVersion {
+-        // Replaced automatically by the version from the build job,
+-        // if a new release is built.
+-        version: "0.0.0-debug".to_string(),
++        version: option_env!("KELLNR_VERSION")
++            .unwrap_or("0.0.0-unknown")
++            .to_string(),
+     })
+ }
+ 
+@@ -909,7 +909,7 @@ mod tests {
+         let result_msg = r.into_body().collect().await.unwrap().to_bytes();
+         let result_version = serde_json::from_slice::<KellnrVersion>(&result_msg).unwrap();
+ 
+-        assert_eq!("0.0.0-debug", result_version.version);
++        assert_eq!("0.0.0-unknown", result_version.version);
+     }
+ 
+     #[tokio::test]

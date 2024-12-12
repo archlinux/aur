@@ -1,0 +1,15 @@
+# vim: set ts=4 sw=4 et:
+
+function genPwd {
+    < /dev/urandom tr -dc A-Z-a-z-0-9 | head -c"${1:-$1}";
+}
+
+post_install() {
+    echo "Generating random initial admin tokens..."
+
+    ADMIN_PWD=$(genPwd 12)
+    sed -i "s/admin_pwd =.*/admin_pwd = \"$ADMIN_PWD\"/" /etc/kellnr/default.toml
+
+    ACCESS_TOKEN=$(genPwd 32)
+    sed -i "s/admin_token =.*/admin_token = \"$ACCESS_TOKEN\"/" /etc/kellnr/default.toml
+}

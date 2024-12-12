@@ -1,0 +1,15 @@
+[Unit]
+Description=Kellnr Crate Registry
+After=network.target syslog.target
+
+[Service]
+Type=exec
+User=kellnr
+Group=kellnr
+WorkingDirectory=~
+
+ExecStart=kellnr
+
+[Install]
+WantedBy=multi-user.target
+
