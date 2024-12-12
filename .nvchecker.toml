@@ -1,3 +1,8 @@
 [openfortivpn-git]
-source="cmd"
-cmd="~/nvchecker/github_version.sh adrienverge openfortivpn v"
+source="github-graphql"
+github="adrienverge/openfortivpn"
+use_max_tag=true
+prefix="v"
+use_commit_number=true
+use_commit_hash=true
+
