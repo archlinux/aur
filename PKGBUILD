@@ -2,7 +2,7 @@
 pkgname=onlook-bin
 _appname="@${pkgname%-bin}studio"
 _pkgname=Onlook
-pkgver=0.0.57
+pkgver=0.1.4
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -23,12 +23,12 @@ options=(
     '!emptydirs'
 )
 source=("${pkgname%-bin}.sh")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}-linux/${_pkgname}-arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}-linux/${_pkgname}-amd64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('fc77950bf88b07101f62fd005784957e77414f8300b1e5d63b598aeb827f833a')
-sha256sums_x86_64=('9ee060fd33ec4edda1b83975ace26d917476b82d5231a6cb5b864e68f045d948')
-build() {
+sha256sums_aarch64=('6c2ac2dc9d73d0bb1b7aeab1a2992496fd9d747510343c92e13f7480ee26d6b6')
+sha256sums_x86_64=('06114274323ef1d8acb36a8e255f41bedbad85ea92c60f98e9324a84b027edf2')
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
