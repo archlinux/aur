@@ -1,6 +1,6 @@
 pkgbase = python-sport-activities-features
 	pkgdesc = Minimalistic toolbox for extracting features from sports activity files written in Python
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/firefly-cpp/sport-activities-features
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-sport-activities-features
 	depends = python-niaaml
 	depends = python-tcx2gpx
 	depends = python-gpxpy
-	source = sport-activities-features-0.4.4.tar.gz::https://github.com/firefly-cpp/sport-activities-features/archive/0.4.4.tar.gz
-	sha512sums = 2739eeb453fd1691310c9ee603b50730e91790f61c37c51bf004779781ce9cd532a79c7eca54b978a6488d5ccf8acc3428ebb43287a355b8a02a4e28b7e31991
+	source = sport-activities-features-0.4.5.tar.gz::https://github.com/firefly-cpp/sport-activities-features/archive/0.4.5.tar.gz
+	sha512sums = c13ebe523aae0c6993674f7e0320a8a6690713176bd60f47568419bcbd96f7b8224435ad8bcc81bbf20839ff4956ea8c5e0d2299889ff44161254460555e3cb4
 
 pkgname = python-sport-activities-features
