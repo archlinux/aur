@@ -6,9 +6,9 @@
 # Contributor: grimi <grimi@poczta.fm>
 # Contributor: jht <stefano@inventati.org>
 
-pkgname=wxglade
-pkgver=1.0.5
-pkgrel=2
+pkgname=wxGlade
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets/wxPython'
 arch=('any')
 license=('MIT')
@@ -23,32 +23,17 @@ optdepends=(
     'shared-mime-info: pacman hooks for updating mime database'
 )
 makedepends=(
-    'icoutils'
-    'gendesk'
+    'python-setuptools'
+    'xdg-utils'
 )
 source=(
     "https://github.com/wxGlade/wxGlade/archive/v$pkgver.tar.gz"
-    application-x-wxg.xml
 )
-sha256sums=('0ac846980072efabda06f63470b6185c18858adbf38763211edc293b9230499b'
-    'f651ff097678077eac865c64a655107c9a4aa4fd0bf65e233713a5ed916608c0')
-
-prepare() {
-    gendesk -f -n --pkgname "$pkgname" \
-        --pkgdesc "$pkgdesc" \
-        --exec "$pkgname %f" \
-        --name 'WxGlade' \
-        --mimetypes 'application/x-wxg' \
-        --categories "Development;GUIDesigner"
-
-    rm -rf "$pkgname-$pkgver" && mv -Tf {wxGlade,$pkgname}-$pkgver
-}
+sha256sums=('b71939d8be3ef1929a7533b7daa55f9396a28ea93a07b01d3cdb403d399d943b')
 
 build() {
     cd "$pkgname-$pkgver"
     command -p python setup.py build
-
-    icotool --extract --output=$srcdir icons/wxglade*.ico
 }
 
 package() {
@@ -58,16 +43,19 @@ package() {
 
     datadir="$pkgdir/usr/share/"
 
-    # TODO: Replace with default wxglade-mime.xml in v1.1.0+
-    install -Dm644 "$srcdir/application-x-wxg.xml" "$datadir/mime/packages/$pkgname.xml"
+    export XDG_DATA_DIRS=":$datadir"
+    export XDG_UTILS_INSTALL_MODE=system
+    export XDG_UTILS_DEBUG_LEVEL=1
 
-    find "$srcdir" -maxdepth 1 -name "$pkgname*128*.png" \
-        -execdir install -Dm644 {} "$datadir/icons/hicolor/128x128/apps/$pkgname.png" \; \
-        -execdir install -Dm644 {} "$datadir/icons/hicolor/128x128/mimetypes/application-x-wxg.png" \;
+    install -Dm644 "wxglade-mime.xml" "$datadir/mime/packages/$pkgname.xml"
+    install -dm755 $datadir/{icons/hicolor/,}
 
-    find "$srcdir" -maxdepth 1 -name "$pkgname*32*.png" \
-        -execdir install -Dm644 {} "$datadir/icons/hicolor/32x32/apps/$pkgname.png" \; \
-        -execdir install -Dm644 {} "$datadir/icons/hicolor/32x32/mimetypes/application-x-wxg.png" \;
+    xdg-icon-resource install --noupdate --novendor --size 128 icons/wxglade.png "$pkgname"
+    xdg-icon-resource install --noupdate --size 128 --context mimetypes icons/wxglade.png application-x-wxg
 
-    install -Dm644 "$srcdir/$pkgname.desktop" "$datadir/applications/$pkgname.desktop"
+    xdg-icon-resource install --noupdate --novendor --size 32 icons/wxglade.png "$pkgname"
+    xdg-icon-resource install --noupdate --size 32 --context mimetypes icons/wxglade.png application-x-wxg
+
+    install -Dm644 "$pkgname.desktop" "$datadir/applications/$pkgname.desktop"
+    sed -i "s:wxglade.xpm:$pkgname.png:" "$datadir/applications/$pkgname.desktop"
 }
