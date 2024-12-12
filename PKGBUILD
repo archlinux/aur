@@ -1,7 +1,7 @@
 # Maintainer: alufers <alufers[at]wp[dot]pl>
 
 pkgname=ltchiptool
-pkgver=4.11.2
+pkgver=4.11.4
 pkgrel=1
 pkgdesc='Universal, easy-to-use GUI flashing/dumping tool for BK7231, RTL8710B and RTL8720C.'
 url='https://github.com/libretiny-eu/ltchiptool'
@@ -32,8 +32,8 @@ optdepends=(
   python-zeroconf
 )
 source=(https://github.com/libretiny-eu/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('70a0555ab05be709644c98aa989da51a1dc99016d9cd60db1e35aa15000a6126')
-b2sums=('b31f43640d3896f44eef1850ff194eb61c51d6c3eac7c5844c2cd701b07a9e58cb9c3a608a9b0a04d0f14c6085d85fdae8b3ca79474e3b11502941b48f57aecf')
+sha256sums=('4689bbf91f0033c4c16fbfa19d69de544224639297a002de6f9f14636a0226db')
+b2sums=('e43be0f095f5cea436eac1e74ef10afbb1486ce550f8f65f31fd0832c791e19915a23542557a2253af2ff0d6a07fc67c1bc7fc98aa8b3ddad70e25df3be172ab')
 
 build() {
   cd ${pkgname}-${pkgver}
