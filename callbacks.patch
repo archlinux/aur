@@ -1,0 +1,25 @@
+From 96978da4aba9280217a5b36731c303c35819220b Mon Sep 17 00:00:00 2001
+From: Alexander Grund <Flamefire@users.noreply.github.com>
+Date: Thu, 23 May 2024 19:35:14 +0200
+Subject: [PATCH] Fix Boost.Filesystem include
+
+The directory iterator seems to have move to a different include.
+Just include all of it.
+---
+ callbacks.cpp | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/callbacks.cpp b/callbacks.cpp
+index 52ec86d..095c1d6 100644
+--- a/callbacks.cpp
++++ b/callbacks.cpp
+@@ -18,8 +18,7 @@
+ #include "CSurface.h"
+ #include "globals.h"
+ #include "helpers/format.hpp"
+-#include <boost/filesystem/operations.hpp>
+-#include <boost/filesystem/path.hpp>
++#include <boost/filesystem.hpp>
+ #include <algorithm>
+ 
+ namespace bfs = boost::filesystem;
