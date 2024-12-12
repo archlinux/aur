@@ -5,7 +5,7 @@
 pkgname='headsetcontrol'
 _pkgname='HeadsetControl'
 pkgver=3.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Sidetone and Battery status for Logitech G930, G533, G633, G933 SteelSeries Arctis 7/PRO 2019 and Corsair VOID (Pro) in Linux and MacOSX '
 arch=('x86_64')
 url='https://github.com/Sapd/HeadsetControl'
@@ -29,10 +29,14 @@ build() {
   # Stop the compiler from treating warnings as error
   sed -i 's/set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror")//g' "${_pkgname}-${pkgver}/CMakeLists.txt"
 
-  # TODO: Follow CMake packaging guildeline
   cmake -B 'build' -S "${_pkgname}-${pkgver}" \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Wno-dev
+
+  # Upstream extract version string from git.
+  sed "s/@GIT_VERSION@/${pkgver}/g" "${_pkgname}-${pkgver}/src/version.h.in" > "${_pkgname}-${pkgver}/src/version.h"
+
   cmake --build 'build'
 }
 
