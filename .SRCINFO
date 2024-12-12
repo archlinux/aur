@@ -1,6 +1,6 @@
 pkgbase = losslesscut-git
 	pkgdesc = The swiss army knife of lossless video/audio editing.Using system-wide ffmpeg.(Use system-wide electron)
-	pkgver = 3.64.0.r30.g7390d39
+	pkgver = 3.64.0.r37.g2412118
 	pkgrel = 1
 	url = https://github.com/mifi/lossless-cut
 	arch = x86_64

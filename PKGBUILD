@@ -2,7 +2,7 @@
 pkgname=losslesscut-git
 _pkgname=LosslessCut
 _appname="no.mifi.${pkgname%-git}"
-pkgver=3.64.0.r30.g7390d39
+pkgver=3.64.0.r37.g2412118
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -72,18 +72,19 @@ prepare() {
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     fi
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
+    sed -e "
+        s/\/app\/bin\/run.sh/${pkgname%-git}/g;
+        s/${_appname}/${pkgname%-git}/g
+    " -i "${_appname}.desktop"
+    sed -i "s/${_appname}/${pkgname%-git}/g" "${_appname}.appdata.xml"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    yarn config set --home enableTelemetry 0
     NODE_ENV=development    yarn install
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     yarn run build
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
-    sed -e "
-        s/\/app\/bin\/run.sh/${pkgname%-git}/g;
-        s/${_appname}/${pkgname%-git}/g
-    " -i "${_appname}.desktop"
-    sed -i "s/${_appname}/${pkgname%-git}/g" "${_appname}.appdata.xml"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
