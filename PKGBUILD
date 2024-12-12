@@ -3,7 +3,7 @@
 _pkgname="hevi"
 pkgname="${_pkgname}-git"
 pkgver=1.1.0.r7.g07847bf
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern hex viewer"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://arnau478.github.io/hevi"
@@ -48,6 +48,7 @@ build() {
     --system ../zig-global-cache/p \
     --verbose \
     -Dtarget=native-linux.6.1-gnu.2.38 \
+    -Dcpu=baseline \
     -Dpie \
     -Doptimize=ReleaseSafe
 }
