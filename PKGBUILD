@@ -4,8 +4,8 @@
 # Contributor: jskier <jay @jskier.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=keeper-commander
-pkgver=16.11.20
-pkgrel=1
+pkgver=16.11.21
+pkgrel=2
 pkgdesc="CLI, SDK and interactive shell for Keeper® Password Manager."
 arch=('any')
 url="https://github.com/Keeper-Security/Commander"
@@ -21,19 +21,21 @@ depends=('python'
   'python-tabulate'
   'python-websockets'
   'python-fido2'
-  'python-setuptools'
   'python-requests>=2.30.0'
   'keeper-secrets-manager-core>=16.6.0'
   'python-aiortc'
   'python-protobuf>=3.19.0'
   'python-cryptography>=39.0.1'
   'python-pykeepass'
+)
+makedepends=(
   'python-installer'
   'python-build'
+  'python-setuptools'
 )
 checkdepends=('python-ifaddr')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('c73dea520d0d3a1c9772b78509d8f57086233accf8ba7bb7e58a91d35301cfca27b7b45404567486d56ed5d7c7c6199512494f28c16f85dc24d06be65c06cb4a')
+sha512sums=('7b8c17243572f1a2dfb73029fdd678384a0abb15c72f8fa352c9e7fd3481ec90eeaf3fd99a8234530e649ea2fb44ae941a57c2281f32b49d84cc7f2fd22e257e')
 
 build() {
   cd "Commander-$pkgver"
