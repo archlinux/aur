@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=mcy-nightly
-pkgver=20241211_yosys_0.47
+pkgver=20241212_v0.48
 pkgrel=1
 epoch=1
 pkgdesc="Mutation Cover with Yosys"
@@ -17,7 +17,7 @@ provides=("mcy")
 conflicts=()
 replaces=()
 source=(
-	"mcy::git+https://github.com/YosysHQ/mcy.git#commit=b01592a"
+	"mcy::git+https://github.com/YosysHQ/mcy.git#commit=d9ba4fd"
 )
 sha256sums=(
 	"SKIP"
