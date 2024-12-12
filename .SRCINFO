@@ -1,7 +1,7 @@
 pkgbase = jre-zulu
 	pkgdesc = A open source, TCK-tested and certified builds of OpenJDK (full-runtime environment).
 	pkgver = 23.0.1+11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.azul.com/
 	install = install_jre-zulu.install
 	arch = aarch64

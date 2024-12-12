@@ -2,7 +2,7 @@
 
 pkgname='jre-zulu'
 pkgver='23.0.1+11'
-pkgrel=2
+pkgrel=3
 pkgdesc='A open source, TCK-tested and certified builds of OpenJDK (full-runtime environment).'
 arch=('aarch64' 'x86_64')
 url='https://www.azul.com/'
@@ -31,9 +31,9 @@ _jvmdir='/usr/lib/jvm/java-23-zulujdk'
 
 package() {
   if [ "${CARCH}" = "aarch64" ]; then
-    cd "$srcdir/zulu23.30.13-ca-jre${pkgver}-linux_aarch64"
+    cd "$srcdir/zulu23.30.13-ca-jre23.0.1-linux_aarch64"
   else
-    cd "$srcdir/zulu23.30.13-ca-jre${pkgver}-linux_x64"
+    cd "$srcdir/zulu23.30.13-ca-jre23.0.1-linux_x64"
   fi
 
   install -dm 755 "${pkgdir}/${_jvmdir}"
