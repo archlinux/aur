@@ -1,20 +1,26 @@
-pkgbase = warp-gui
-	pkgdesc = A GUI application based on warp-cli for linux written in Rust
-	pkgver = 0.2.1
-	pkgrel = 4
-	url = https://github.com/progzone122/warp-cloudflare-gui-rust
-	arch = x86_64
-	license = GPL-3.0-or-later
-	depends = pacman>6.1
-	depends = cloudflare-warp-bin
-	depends = qt6-base
-	optdepends = sudo: privilege elevation
-	optdepends = doas: privilege elevation
-	options = !lto
-	options = !strip
-	source = https://github.com/progzone122/warp-cloudflare-gui-rust/releases/download/0.2.1/warp-gui
-	source = https://raw.githubusercontent.com/progzone122/warp-cloudflare-gui-rust/main/warp-gui.desktop
-	sha256sums = 1dd390c261e927207aa76464f00adceb70319d33fb55326bbf08ad42823fbcbe
-	sha256sums = dbf7470f5ecb686e6ab83f95ffa4ae24736572a7982bf09a61ffabd3580aacec
-
-pkgname = warp-gui
+[1m[32m==>(B[m[1m Сборка пакета warp-gui 0.3.0-1 (Чт 12 дек 2024 12:38:06)(B[m
+[1m[32m==>(B[m[1m Проверка зависимостей для запуска...(B[m
+[1m[32m==>(B[m[1m Проверка зависимостей для сборки...(B[m
+[1m[32m==>(B[m[1m Получение исходных файлов...(B[m
+[1m[34m  ->(B[m[1m Найден warp-gui.deb(B[m
+[1m[32m==>(B[m[1m Проверка файлов source с использованием sha256sums...(B[m
+[1m[32m==>(B[m[1m Распаковка исходных файлов...(B[m
+[1m[34m  ->(B[m[1m Распаковка 'warp-gui.deb' с помощью bsdtar(B[m
+[1m[32m==>(B[m[1m Удаление директории '$pkgdir/'...(B[m
+[1m[32m==>(B[m[1m Запускается build()...(B[m
+[1m[32m==>(B[m[1m Вход в окружение fakeroot...(B[m
+[1m[32m==>(B[m[1m Запускается package()...(B[m
+[1m[32m==>(B[m[1m Очистка...(B[m
+[1m[34m  ->(B[m[1m Удаление файлов libtool...(B[m
+[1m[34m  ->(B[m[1m Удаление ненужных файлов...(B[m
+[1m[34m  ->(B[m[1m Удаление статических библиотек...(B[m
+[1m[34m  ->(B[m[1m Copying source files needed for debug symbols...(B[m
+[1m[34m  ->(B[m[1m Сжатие документации (man и info)...(B[m
+[1m[32m==>(B[m[1m Проверка сборки на ошибки...(B[m
+[1m[32m==>(B[m[1m Создание пакета "warp-gui"...(B[m
+[1m[34m  ->(B[m[1m Создание файла '.PKGINFO'...(B[m
+[1m[34m  ->(B[m[1m Создание файла '.BUILDINFO'...(B[m
+[1m[34m  ->(B[m[1m Создание файла '.MTREE'...(B[m
+[1m[34m  ->(B[m[1m Сжатие пакета...(B[m
+[1m[32m==>(B[m[1m Выход из окружения fakeroot.(B[m
+[1m[32m==>(B[m[1m Подпись пакета(ов)...(B[m

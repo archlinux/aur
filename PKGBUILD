@@ -1,7 +1,7 @@
 # Maintainer: Diablo (https://github.com/progzone122) (https://t.me/DiabloSat)
 pkgname=warp-gui
-pkgver=0.2.1
-pkgrel=4
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="A GUI application based on warp-cli for linux written in Rust"
 arch=('x86_64')
 url="https://github.com/progzone122/warp-cloudflare-gui-rust"
@@ -18,22 +18,28 @@ optdepends=(
 )
 makedepends=()
 source=(
-  "https://github.com/progzone122/warp-cloudflare-gui-rust/releases/download/$pkgver/warp-gui"
-  "https://raw.githubusercontent.com/progzone122/warp-cloudflare-gui-rust/main/warp-gui.desktop"
+  "https://github.com/progzone122/warp-cloudflare-gui-rust/releases/download/$pkgver/warp-gui.deb"
 )
-sha256sums=('1dd390c261e927207aa76464f00adceb70319d33fb55326bbf08ad42823fbcbe'
-            'dbf7470f5ecb686e6ab83f95ffa4ae24736572a7982bf09a61ffabd3580aacec')
+sha256sums=('5beca64e4dacb0b3937d443625c7ca993ceb4f6dacd0155e7e8e947e437ae87a')
 build() {
   :
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  install -Dm755 "$srcdir/warp-gui" "$pkgdir/usr/bin/warp-gui"
-  chmod +x "$pkgdir/usr/bin/warp-gui"
+  mkdir -p "$srcdir/data"
 
-  mkdir -p "$pkgdir/usr/share/applications"
-  install -Dm644 "$srcdir/warp-gui.desktop" "$pkgdir/usr/share/applications/warp-gui.desktop"
+  bsdtar -xf "$srcdir/data.tar.gz" -C "$srcdir/data"
+
+  if [ -d "$srcdir/data/usr" ]; then
+    cp -r "$srcdir/data/usr" "$pkgdir/"
+  elif [ -d "$srcdir/data/opt" ]; then
+    cp -r "$srcdir/data/opt" "$pkgdir/"
+  else
+    echo "ERROR: Invalid structure data.tar.gz" >&2
+    return 1
+  fi
+
+  chmod -R 755 "$pkgdir/"
 }
 
 post_install() {
