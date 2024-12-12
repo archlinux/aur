@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Portable Sandboxing framework"
 arch=('any')
@@ -80,7 +80,7 @@ makedepends+=(
 
 checkdepends=()
 
-source=(git+https://invent.kde.org/kimiblock/portable.git)
+source=(git+https://codeberg.org/Kimiblock/portable.git)
 
 md5sums=(SKIP)
 
