@@ -1,0 +1,5 @@
+[python-pyfinitdiff]
+source = "github"
+github = "MartinPdeS/PyFinitDiff"
+use_max_tag = "true"
+prefix = "v"
