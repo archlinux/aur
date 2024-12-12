@@ -2,7 +2,7 @@
 
 pkgbase=kwalletcli-git
 pkgname=kwalletcli-git
-pkgver=r109.e63d053
+pkgver=kwalletcli.3_03.r6.ge63d053
 pkgrel=1
 pkgdesc="Command-Line Interface for the KDE Wallet"
 url="https://www.mirbsd.org/kwalletcli.htm"
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
  
 pkgver() {
   cd "$pkgname"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --abbrev=7 | sed 's/^kwalletcli.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
