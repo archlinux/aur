@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RODBC
-_pkgver=1.3-25.1
+_pkgver=1.3-26
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   unixodbc
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c56f6645bdf773c44cd91bea3efc8a30')
-b2sums=('3f2af9ac06569da3ee4f28ee1786bf7d2bf9d5941b7babcdbff77e6c80004dd44c9cd9408b6f5a3194299ca2ac0fe322a62438d64c6a198e35d0f1c469db74de')
+md5sums=('251426922720470a332ce8d612b4d789')
+b2sums=('634daed920a5e9b61c665bb81d775b662d79fde42177fc0d5027bf53917d0a1c420fa3ac0e795beec1c8593ee8cc97b669e4ba1c1512e98cace7d5dab237de91')
 
 build() {
   mkdir build
