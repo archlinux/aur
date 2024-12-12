@@ -6,17 +6,20 @@ _pkgname=awkward
 pkgbase="python-${_pkgname}"
 # pkgname=("${pkgbase}" "${pkgbase}-docs") - docs require many new dependencies
 pkgname=$pkgbase
-pkgver=2.6.5
-pkgrel=4
+pkgver=2.7.2
+pkgrel=1
 pkgdesc="Manipulate jagged, chunky, and/or bitmasked arrays as easily as Numpy"
 url="https://github.com/scikit-hep/awkward"
 license=(BSD-3-Clause)
 arch=(x86_64)
 depends=(
+  gcc-libs
+  glibc
   python
-  python-importlib_resources
+  python-fsspec
   python-numpy
   python-packaging
+  python-typing_extensions
 )
 makedepends=(
   cmake
@@ -34,8 +37,8 @@ makedepends=(
 )
 checkdepends=(
   pybind11
-  python-fsspec
   python-hist
+  python-numba
   python-numexpr
   python-pandas
   python-pyaml
@@ -43,7 +46,6 @@ checkdepends=(
   python-pytest
   python-scikit-hep-testdata
   python-vector
-  rapidjson
   root
 )
 optdepends=(
@@ -51,30 +53,24 @@ optdepends=(
   'python-pyarrow: pyArrow connector'
   'python-numexpr: numexpr connector'
   'python-pandas: pandas connector'
+  'python-numba: for using in Numba JIT functions'
+  'root: rdataframe connector'
 )
 source=(
   "${pkgname}::git+https://github.com/scikit-hep/${_pkgname}#tag=v${pkgver}"
-  "${pkgname}-dlpack::git+https://github.com/dmlc/dlpack.git"
   "${pkgname}-rapidjson::git+https://github.com/Tencent/rapidjson.git"
-  "${pkgname}-pybind11::git+https://github.com/pybind/pybind11.git"
 )
 
-sha512sums=('64b3e6e7295e1fcd11d096419d3dbdb2627b70f9b4d2fea0f2c38d9f5ab0a9de9f45c003a0835ddcaeaf2c3b6f08b88a3f84e882efc9052d32b48e76e419acc2'
-            'SKIP'
-            'SKIP'
+sha512sums=('9afb41331dc2bf4d6da297bb738a1c3ccb530a58d0299e0019bf5ff78fab6940d93c7c2270411a2f6e56e9c05f87164cac66fdba85eb84eec35faa6328f494c0'
             'SKIP')
 
 prepare() {
   cd $pkgbase
   git submodule init
 
-  git config submodule."pybind11".url "${srcdir}/${pkgname}"-pybind11
   git config submodule."rapidjson".url "${srcdir}/${pkgname}"-rapidjson
-  git config submodule."dlpack".url "${srcdir}/${pkgname}"-dlpack
 
   git -c protocol.file.allow=always submodule update --init --recursive
-
-  sed '/cmake/d' -i pyproject.toml
 }
 
 build() {
@@ -88,12 +84,17 @@ build() {
 }
 
 check() {
+  local pytest_options=(
+      -vv
+      #  AttributeError: 'FrameLocalsProxy' object has no attribute 'clear'
+      --deselect tests/test_0119_numexpr_and_broadcast_arrays.py::test_numexpr
+  )
+
   cd $pkgbase
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m installer awkward-cpp/dist/*.whl
-  cd tests
-  ../test-env/bin/python -m pytest || echo 'some tests fail'
+  test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
 package_python-awkward() {
