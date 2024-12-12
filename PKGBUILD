@@ -1,4 +1,5 @@
 # Maintainer: Bin Jin <bjin@ctrl-d.org>
+# Maintainer: Niccolò Belli <niccolo.belli@linuxsystems.it>
 # Contributor: Kevin Stolp <kevinstolp@gmail.com>
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
@@ -17,7 +18,7 @@ else
 fi
 
 pkgname=${_pkgname}-utils-staging-git
-pkgver=2.2.6.r0.gbaa5031456
+pkgver=2.2.7.r0.ge269af1b3c
 pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System (release staging branch)."
 arch=("i686" "x86_64" "aarch64")
