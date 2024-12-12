@@ -10,8 +10,10 @@ depends=(
     'python'
     'python-pyqt6'
     'python-poetry'
+    'python-psutil'
+    'python-rarfile'
     'p7zip'
-    'unrar'
+  
 )
 makedepends=(
     'python-build'
