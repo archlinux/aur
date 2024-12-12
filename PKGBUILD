@@ -3,14 +3,16 @@
 
 pkgname=rudesktop
 pkgver=2.7.876
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Ru-Desktop client for home use"
 url="https://rudesktop.ru/downloads/"
 license=('custom')
+install=${pkgname}.install
 source=("https://rudesktop.ru/download/rudesktop-amd64.deb")
 depends=(python-six glib2 python-xlib libxinerama python gdk-pixbuf2 libxcb gcc-libs hicolor-icon-theme glibc cairo libpulse python-evdev pango libxkbcommon libxtst util-linux-libs libxfixes gtk3 python-pynput)
 sha256sums=('167044f6797fbd92c3aed448b519d2d06d4d24c6d21e07634cbff91b70815b85')
+options=(!debug)
 
 prepare() {
   cd "${srcdir}"
@@ -25,4 +27,6 @@ package() {
   cp -r usr/share/icons "${pkgdir}"/usr/share/
   install -Dm765 usr/bin/rudesktop "${pkgdir}/usr/bin/rudesktop"
   install -Dm664 usr/lib/libsciter-gtk.so "${pkgdir}/usr/lib/libsciter-gtk.so"
+  install -Dm644 usr/share/${pkgname}-client/files/systemd/${pkgname}.service      "${pkgdir}"/usr/lib/systemd/system/${pkgname}.service
+  install -Dm644 usr/share/${pkgname}-client/files/systemd/${pkgname}.service.user "${pkgdir}"/usr/lib/systemd/user/${pkgname}.service
 }

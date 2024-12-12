@@ -1,0 +1,34 @@
+pre_install(){
+  if [ "$(systemctl is-active --quiet rudesktop.service)" == "active" ]; then
+    systemctl --quiet stop rudesktop.service
+  fi
+}
+
+post_install(){
+  if [ -d "/etc/sudoers.d" ]; then
+    echo "root ALL=(ALL) NOPASSWD:SETENV: ALL" > /etc/sudoers.d/rudesktop
+    chmod 440 /etc/sudoers.d/rudesktop
+  fi
+
+  /usr/bin/python3 /usr/share/rudesktop-client/files/patch-X11.py
+
+  systemctl --quiet daemon-reload
+
+  echo "   Please enable and start rudesktop service manually:"
+  echo "       sudo systemctl enable --now rudesktop.service"
+  echo "   And for convinience:"
+  echo "       xdg-mime default rudesktop.desktop x-scheme-handler/rudesktop"
+}
+
+post_upgrade() {
+  systemctl --quiet daemon-reload
+
+  if [ -n "$RUDESKTOP_DOMAIN" ]; then
+    /usr/bin/rudesktop --rendezvous $RUDESKTOP_DOMAIN || true
+  fi
+}
+
+pre_remove() {
+  systemctl --quiet disable --now rudesktop.service
+  find /etc/sudoers.d/rudesktop -delete 2>/dev/null
+}
