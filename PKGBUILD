@@ -6,7 +6,8 @@
 # Contributor: grimi <grimi@poczta.fm>
 # Contributor: jht <stefano@inventati.org>
 
-pkgname=wxGlade
+pkgname=wxglade
+_pkgname=wxGlade
 pkgver=1.1.0
 pkgrel=1
 pkgdesc='wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets/wxPython'
@@ -32,12 +33,12 @@ source=(
 sha256sums=('b71939d8be3ef1929a7533b7daa55f9396a28ea93a07b01d3cdb403d399d943b')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$_pkgname-$pkgver"
     command -p python setup.py build
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$_pkgname-$pkgver"
 
     command -p python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
@@ -47,15 +48,15 @@ package() {
     export XDG_UTILS_INSTALL_MODE=system
     export XDG_UTILS_DEBUG_LEVEL=1
 
-    install -Dm644 "wxglade-mime.xml" "$datadir/mime/packages/$pkgname.xml"
+    install -Dm644 "wxglade-mime.xml" "$datadir/mime/packages/$_pkgname.xml"
     install -dm755 $datadir/{icons/hicolor/,}
 
-    xdg-icon-resource install --noupdate --novendor --size 128 icons/wxglade.png "$pkgname"
+    xdg-icon-resource install --noupdate --novendor --size 128 icons/wxglade.png "$_pkgname"
     xdg-icon-resource install --noupdate --size 128 --context mimetypes icons/wxglade.png application-x-wxg
 
-    xdg-icon-resource install --noupdate --novendor --size 32 icons/wxglade.png "$pkgname"
+    xdg-icon-resource install --noupdate --novendor --size 32 icons/wxglade.png "$_pkgname"
     xdg-icon-resource install --noupdate --size 32 --context mimetypes icons/wxglade.png application-x-wxg
 
-    install -Dm644 "$pkgname.desktop" "$datadir/applications/$pkgname.desktop"
-    sed -i "s:wxglade.xpm:$pkgname.png:" "$datadir/applications/$pkgname.desktop"
+    install -Dm644 "$_pkgname.desktop" "$datadir/applications/$_pkgname.desktop"
+    sed -i "s:wxglade.xpm:$_pkgname.png:" "$datadir/applications/$_pkgname.desktop"
 }

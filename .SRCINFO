@@ -1,4 +1,4 @@
-pkgbase = wxGlade
+pkgbase = wxglade
 	pkgdesc = wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets/wxPython
 	pkgver = 1.1.0
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = wxGlade
 	source = https://github.com/wxGlade/wxGlade/archive/v1.1.0.tar.gz
 	sha256sums = b71939d8be3ef1929a7533b7daa55f9396a28ea93a07b01d3cdb403d399d943b
 
-pkgname = wxGlade
+pkgname = wxglade
