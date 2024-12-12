@@ -2,7 +2,7 @@
 
 pkgname=kreport
 pkgver=3.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A framework for creation and generation of reports in multiple formats'
 arch=(x86_64)
 url='https://apps.kde.org/es/kexi-3.3/'
@@ -17,11 +17,9 @@ depends=(gcc-libs
          qt5-declarative)
 makedepends=(doxygen
              extra-cmake-modules
-             marble-common
              python
              qt5-doc
              qt5-tools)
-optdepends=('marble-common: support for maps in reports')
 source=(https://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz{,.sig}
         https://invent.kde.org/libraries/kreport/-/commit/5d3053ea.patch)
 sha256sums=('22716d719654e8f887fe4d33654e252ddf3d3d818c44e15a8af0e6f2e7d6ccd7'
