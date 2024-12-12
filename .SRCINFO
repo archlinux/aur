@@ -1,0 +1,22 @@
+pkgbase = masiro-bin
+	pkgdesc = A third-party Masiro client based on Flutter.(Prebuilt version)一个基于 Flutter 的第三方真白萌客户端
+	pkgver = e0d194b
+	pkgrel = 1
+	url = https://github.com/qixiaoo/masiro
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = gendesk
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libayatana-indicator
+	depends = libdbusmenu-glib
+	depends = ayatana-ido
+	provides = masiro=e0d194b
+	conflicts = masiro
+	noextract = masiro-e0d194b.zip
+	source = masiro-e0d194b.zip::https://github.com/qixiaoo/masiro/releases/download/e0d194b/masiro-e0d194b-linux.zip
+	source = masiro.sh
+	sha256sums = 8d91e7e702e00d41ed0078abc8d1b883f4f3cf11318571dad02e67bac9306794
+	sha256sums = f003b130010311751a619cae8188af15f003369d71c59f7b34bbc26c98e615d5
+
+pkgname = masiro-bin
