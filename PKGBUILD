@@ -1,7 +1,7 @@
 # Maintainer: Aethar <elliott.ashby88@gmail.com>
 
 pkgname=fastanime
-pkgver=2.8.4
+pkgver=2.8.5
 pkgrel=1
 epoch=1
 pkgdesc="FastAnime, anime site experience from the terminal."
@@ -20,7 +20,8 @@ depends=('python'
          'python-rich'
          'python-thefuzz'
          'yt-dlp'
-         'python-dbus')
+         'python-dbus'
+         'python-pypresence')
 optdepends=('mpv: video player'
             'webtorrent-cli: nyaa torrents'
             'ffmpeg: download hls streams' 
