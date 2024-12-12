@@ -1,6 +1,6 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=liboqs
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 epoch=1
 pkgdesc="C library for prototyping and experimenting with quantum-resistant cryptography"
@@ -24,15 +24,15 @@ checkdepends=(
 )
 source=(
     $pkgname-$pkgver.tar.gz::https://github.com/open-quantum-safe/$pkgname/archive/refs/tags/$pkgver.tar.gz
-    fix-test.patch::https://patch-diff.githubusercontent.com/raw/open-quantum-safe/liboqs/pull/1938.patch
+    fix-tests.patch::https://patch-diff.githubusercontent.com/raw/open-quantum-safe/liboqs/pull/2019.patch
 )
-b2sums=('3a6202a9973de9322cbe0a6d3973f70a29943db006309e167a6a1504856bd680df5f8d0386ec39645bfdf291b4b9c3aa08c1d0048739920f2d2a4bd80326fb44'
-        'a49116e9ec03da542aef7424d3a2961431be55e2e621a5898d50b799467b8037fd4c30b52ed7eec03793da11d0047072c2e364346908c8100692e9042ff9f769')
+b2sums=('e3dfc1056f4d8a0356a80eec5fd7d946b9cf72f3a59a1c75b7d22bff8c500376cbaace53ce2e60506ccc918811dbf506863f386d9a34ea93be0cd79622064c3d'
+        '288c60c1ef79a3fa04f0f89e3c3ab1b1704925f7b6ecec86935ca3224085552256afe2929fddf32d6a28b5c17c3b5b60ddc44a310657e56d022b62fc7aa5e6cd')
 
 prepare() {
     cd $pkgname-$pkgver
-    # https://github.com/open-quantum-safe/liboqs/issues/1937
-    patch -Np1 -i ../fix-test.patch
+    # https://github.com/open-quantum-safe/liboqs/issues/2018
+    patch -Np1 -i ../fix-tests.patch
 }
 
 build() {
