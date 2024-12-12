@@ -2,8 +2,8 @@
 # Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
 
 pkgname=espeak-ng
-pkgver=1.51.1
-pkgrel=4
+pkgver=1.52.0
+pkgrel=1
 pkgdesc='Multi-lingual software speech synthesizer'
 url=https://github.com/espeak-ng/espeak-ng
 arch=(x86_64)
@@ -12,8 +12,9 @@ depends=(
   pcaudiolib
   libsonic
 )
-#checkdepends=(python)
+checkdepends=(python)
 makedepends=(
+  cmake
   git
   ruby-ronn-ng
 )
@@ -24,31 +25,26 @@ conflicts=(
   espeak
 )
 source=("git+$url.git#tag=$pkgver")
-b2sums=('4095798ad873282403226f8c28208f3b0ab3d5d0883678d88f63b9a4c5312c9c31fcf5c4355d5f0083b4635d5326aeceaa631d5fb4eb1b7c8ba388e410f57307')
-
-prepare() {
-  cd $pkgname
-  ./autogen.sh
-}
-
+b2sums=('f934eb948035222de2c6b5c7d8c9e104e0326ceb1052859598ed6f0010fd975bc3e1ef26ac60f77c3b6d1a4aa567b4b7d3c75639dca89eef2508be2a680f7c2b')
 
 build() {
-  cd $pkgname
-  ./configure --prefix=/usr
-  make src/espeak-ng src/speak-ng
-  make
+  cmake -B build -S "${pkgname%-git}" -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
+        -DBUILD_SHARED_LIBS=ON \
+        -DESPEAK_COMPAT=ON \
+        -DESPEAK_BUILD_MANPAGES=ON \
+        -Wno-dev
+  cmake --build build
 }
 
-#check() {
-#  cd $pkgname
-#  make -j1 check
-#}
+check() {
+  ctest --test-dir build --output-on-failure
+}
 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
-  mv "$pkgdir"/usr/share/vim/{addons,vimfiles}
-  rm -r "$pkgdir"/usr/{include/espeak,share/vim/registry}
+  DESTDIR="$pkgdir" cmake --install build
+  rm -rv "$pkgdir"/usr/include/espeak
 }
 
 # vim:set ts=2 sw=2 et:
