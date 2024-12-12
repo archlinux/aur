@@ -1,7 +1,7 @@
 # Maintainer: Kain Huang <iblader@gmail.com>
 pkgname=netbeans-bin
-pkgver=23
-pkgrel=3
+pkgver=24
+pkgrel=1
 pkgdesc='IDE for Java, HTML5, PHP, Groovy, C and C++'
 arch=('any')
 url='https://netbeans.apache.org/'
@@ -11,10 +11,9 @@ source=("https://downloads.apache.org/netbeans/netbeans/${pkgver}/netbeans-${pkg
 makedepends=('gendesk')
 depends=('ttf-font' 'which' 'java-environment>=11')
 optdepends=('php: for developing programs in php'
-            'groovy: for developing programs in groovy'
-            'lib32-glibc')
+            'groovy: for developing programs in groovy')
 #sha512sums from ("https://downloads.apache.org/netbeans/netbeans/${pkgver}/netbeans-${pkgver}-bin.zip.sha512")
-sha512sums=('9c8d7ccea9ccd07c7b0da60594c2515dedaad189a3ed8646d154797997ba0954d1f5415e305cda873ba12f64a9006dd8d9615ed259d4f2913ef2c32549a37e8e'
+sha512sums=('2298702c94a7abaf49dbafdd1eb9f16c141eaefe1a36b1c20820e4c2017b1337ec7468cb471ce4d8b714d05696b1dda52eb489ed35f14e594bb4eca757645757'
 'e963494757f34512523bababdf72e7b7eb32d5f1034d5c1589d7a3aedb707de96a6e2e38dadd05c002cac76860957df1a98d3bda80913eaf26bb52502a0e5e13')
 
 build(){
