@@ -13,6 +13,7 @@ source=(
     https://www.xlog.ch/izytab/rscsrv/en/docs/25_recital/17_runtime.pdf
     https://www.xlog.ch/izytab/rscsrv/en/docs/25_recital/81_conditions.pdf
 )
+# Checksum is from https://www.dogelog.ch/typtab/moblet/docs/50_archive/archive_1_2/dogelog_1_2_5.html
 sha256sums=(
     ac929e3662f3bb539d47d12c81004b1d48b6e7cf800f93353d04905854a25a61
     ab0388caeda85ad41a4e19a096fb92cf319aaf7ead3041c27f4a4a264e9361b3
