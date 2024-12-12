@@ -1,19 +1,20 @@
 pkgbase = xapp-thumbnailers
 	pkgdesc = Thumbnailers for GTK Desktop Environments
-	pkgver = 1.2.5
-	pkgrel = 2
+	pkgver = 1.2.6
+	pkgrel = 1
 	url = https://github.com/linuxmint/xapp-thumbnailers
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = meson
-	source = xapp-thumbnailers-1.2.5.tar.gz::https://github.com/linuxmint/xapp-thumbnailers/archive/refs/tags/1.2.5.tar.gz
-	sha256sums = 7b7f9829497cc519dd6fa0b0687b3b1718ff2aeecad2ae5c3ef5585dd0db71a6
+	source = xapp-thumbnailers-1.2.6.tar.gz::https://github.com/linuxmint/xapp-thumbnailers/archive/refs/tags/1.2.6.tar.gz
+	sha256sums = 7e4c6cc0c140fe3813cc6b877e952cca9e300cd00a204c2b8ed7c73a3369d14b
 
 pkgname = xapp-thumbnailers-common
 	pkgdesc = Common files for XApp thumbnailers
 	depends = gdk-pixbuf2
 	depends = python-gobject
 	depends = python-pillow
+	depends = python-xapp
 
 pkgname = xapp-mp3-thumbnailer
 	pkgdesc = MP3 thumbnailer
@@ -42,11 +43,13 @@ pkgname = xapp-appimage-thumbnailer
 
 pkgname = xapp-gimp-thumbnailer
 	pkgdesc = GIMP thumbnailer
-	depends = gimp
 	depends = xapp-thumbnailers-common
 
 pkgname = xapp-jxl-thumbnailer
 	pkgdesc = JPEG XL thumbnailer
-	depends = python-xapp
 	depends = libjxl
+	depends = xapp-thumbnailers-common
+
+pkgname = xapp-ora-thumbnailer
+	pkgdesc = OpenRaster thumbnailer
 	depends = xapp-thumbnailers-common
