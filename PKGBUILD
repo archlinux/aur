@@ -4,7 +4,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-daemon
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc='Library to implement a well-behaved Unix daemon process'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python' 'python-lockfile' 'python-setuptools')
 makedepends=('python-build' 'python-docutils' 'python-installer' 'python-wheel' 'python-changelog-chug')
 checkdepends=('python-testscenarios' 'python-testtools' 'python-coverage')
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver.tar.gz)
-sha256sums=('a389d342aab7ac4c0e8397510af54ecb0d6919e2fced9bab7dd24f8c22265306')
+sha256sums=('f7b04335adc473de877f5117e26d5f1142f4c9f7cd765408f0877757be5afbf4')
 
 # prepare() {
 #   cd ${pkgname//-/_}-$pkgver
