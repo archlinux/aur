@@ -1,6 +1,6 @@
 pkgbase = art-rawconverter
 	pkgdesc = raw image converter ART (forked from RawTherapee with ease of use in mind)
-	pkgver = 1.24
+	pkgver = 1.24.2
 	pkgrel = 1
 	url = https://bitbucket.org/agriggio/art/wiki/Home
 	arch = i686
@@ -37,7 +37,7 @@ pkgbase = art-rawconverter
 	conflicts = art-rawconverter-git
 	options = !debug
 	options = !lto
-	source = art-rawconverter_1.24::git+https://bitbucket.org/agriggio/art.git#tag=1.24
+	source = art-rawconverter::git+https://bitbucket.org/agriggio/art.git#tag=1.24.2
 	sha256sums = SKIP
 
 pkgname = art-rawconverter
