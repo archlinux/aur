@@ -3,14 +3,14 @@
 
 pkgname=openspace-git
 _pkgname=OpenSpace
-pkgver=v0.20.0.145.gfef526652d
+pkgver=v0.20.0.162.gaad10ec154
 pkgrel=1
 pkgdesc="OpenSpace is an open source, non-commercial, and freely available interactive data visualization software designed to visualize the entire known universe and portray our ongoing efforts to investigate the cosmos"
 arch=('x86_64')
 url="https://github.com/OpenSpace/OpenSpace"
 license=('MIT')
 makedepends=('cmake' 'git' 'sed' 'glm' 'websocketpp')
-depends=('gdal' 'mpv' 'vulkan-headers' 'libxinerama' 'libxi' 'qt5-base' 'nss' 'at-spi2-core' 'libxcomposite')
+depends=('gdal' 'mpv' 'vulkan-headers' 'libxinerama' 'libxi' 'qt6-base' 'nss' 'at-spi2-core' 'libxcomposite' 'libxdamage' 'python-pandas')
 conflicts=('openspace')
 source=("git+https://github.com/OpenSpace/OpenSpace.git#branch=master"
 	"open-space"
@@ -30,7 +30,7 @@ prepare() {
 	cd "${srcdir}/OpenSpace"
 		git submodule update --init --recursive
 		# patch main configuration file to enable local user execution.
-		patch openspace.cfg ../../update-cfg.patch
+		patch < "${srcdir}/update-cfg.patch"
 }
 
 
@@ -123,7 +123,7 @@ package() {
 	rm "$pkgdir/opt/OpenSpace/modules/webbrowser/ext/Release/libvulkan.so.1"
 	mkdir -p "$pkgdir/opt/OpenSpace/bin"
 	cp -R "${srcdir}/${_pkgname}/bin"  "$pkgdir/opt/OpenSpace"
-	install ../open-space "$pkgdir/opt/OpenSpace/bin/open-space"
+	install ${srcdir}/open-space "$pkgdir/opt/OpenSpace/bin/open-space"
 	mkdir -p "$pkgdir/opt/OpenSpace/lib"
 	cp "${srcdir}/${_pkgname}/build/ext/ghoul/ext/lua/libLua.a" "$pkgdir/opt/OpenSpace/lib/."
 	cp "${srcdir}/${_pkgname}/openspace.cfg"  "$pkgdir/opt/OpenSpace/."
