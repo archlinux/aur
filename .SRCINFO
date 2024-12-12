@@ -1,10 +1,12 @@
 pkgbase = keeper-secrets-manager-core
 	pkgdesc = Python SDK for Keeper Secrets Manager
 	pkgver = 16.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/keeper-secrets-manager-core/
 	arch = any
 	license = MIT
+	makedepends = python-installer
+	makedepends = python-build
 	makedepends = python-setuptools
 	depends = python
 	depends = python-requests>=2.28.2
