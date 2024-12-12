@@ -8,7 +8,7 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install() {
-	note "Default _PR_LIB set to /usr/lib/pay-respects"
+	note "Default _DEF_PR_LIB set to /usr/lib/pay-respects"
 }
 
 post_upgrade() {
