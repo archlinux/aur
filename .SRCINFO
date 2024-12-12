@@ -1,6 +1,6 @@
 pkgbase = python-pyfinitdiff
 	pkgdesc = A package for generating finite-difference matrices, particularly suited for physics and engineering applications
-	pkgver = 0.11.1
+	pkgver = 2.1.6
 	pkgrel = 1
 	url = https://github.com/MartinPdeS/PyFinitDiff
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-pyfinitdiff
 	depends = python-scipy
 	depends = python-mpsplots
 	depends = python-tabulate
-	source = PyFinitDiff-0.11.1.tar.gz::https://github.com/MartinPdeS/PyFinitDiff/archive/v0.11.1.tar.gz
-	sha512sums = 3406c19701afcf9ca1fc047e5397a86133540a470a68e43c6c848b1f43b042025cf31848f29e80cccbae45bed3e86ddd0294980e17386e1a2b66b19ad1a0ed5c
+	source = PyFinitDiff-2.1.6.tar.gz::https://github.com/MartinPdeS/PyFinitDiff/archive/v2.1.6.tar.gz
+	sha512sums = 4143b7de46e254baa28d536e84555b02ef9688b36dec5679ed7ee5bc040bcfe0ac67d039ecec74ac4d53780206a0008539c41e2105c3a850efeb94cd02bb595e
 
 pkgname = python-pyfinitdiff
