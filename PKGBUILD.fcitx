@@ -9,8 +9,8 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=2dce9f4b684ad120589510ad7a4342146b0bec07
-_bcr_commit=f3b711a5862d357e0920c9455dfc894de366da36
+_mozc_commit=f53990354c2efc868a40b00a5d2baa13cadcd01e
+_bcr_commit=bb89ed2e5fad43ce7aa7e366fe6c357b59b9e2dd
 _dict_to_mozc_commit=d53a6011fbc97303c1723b6d0bd45e24eba32961
 _branch=fcitx
 # Sudachi Dictionary
@@ -28,7 +28,7 @@ _wil_commit=fc5dbf5
 pkgbase=mozc-with-jp-dict
 pkgname=("fcitx-$pkgbase")
 pkgver=2.30.5618.102
-pkgrel=24
+pkgrel=25
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
@@ -57,8 +57,8 @@ source=("git+$url.git#commit=${_mozc_commit}"
         LICENSE-MeCab-ipadic-Neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
         )
 
-sha512sums=('1804ce5aaa33c0fa1d81b5231320f3b85aaafafd92453c6cab8add67a21ba9016559b553dec8b0e75a39ed5d623a542d4b2c93387eccb8896960a4653d5bbed0'
-            'e44155bf01df97e2733ff9d71eb78d3f2631a3f7de1261f47d30e3d5923c7add258029d567d3a51b2fc4a09605e63de1348b97846c35bc87ee5658ee82ad7786'
+sha512sums=('f99941f0dda8080a4c3fbf2ce9f7009b5043e4b80bef33fb873bd9ff174de2f9f587632cbb32d5cee680e043b35fca60ed70c6eb544f2b0fb518d2d37906e798'
+            'f8d46e14d6780fdfccb365b0d1d7fe1437800f60d20869166c30102c2c4249e7f09a8c91d4b0d85376131c076822b8d1e4ecc30f082f93020c4dc52ae364fc64'
             '83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68'
             'f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d'
             '44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b'
@@ -153,8 +153,7 @@ build() {
 
   # fcitx4
   # unix/fcitx:fcitx-mozc.so server:mozc_server gui/tool:mozc_tool
-  env _BUILD_TARGETS="unix/fcitx:fcitx-mozc.so server:mozc_server gui/tool:mozc_tool" \
-  ../scripts/build_fcitx5_bazel --registry=file://${srcdir}/bcr --config release_build --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized $BAZEL_LDOPTS $BAZEL_COPTS $BAZEL_CXXOPTS
+  ../scripts/build_fcitx_bazel --registry=file://${srcdir}/bcr --config release_build --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized $BAZEL_LDOPTS $BAZEL_COPTS $BAZEL_CXXOPTS
   bazel shutdown
 }
 
