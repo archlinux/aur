@@ -1,7 +1,7 @@
 pkgbase = jre-zulu-fx
 	pkgdesc = A open source, TCK-tested and certified builds of OpenJDK (full-runtime environment with OpenJFX).
 	pkgver = 23.0.1+11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.azul.com/
 	install = install_jre-zulu-fx.install
 	arch = aarch64
