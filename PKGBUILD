@@ -1,7 +1,7 @@
 # Maintainer: Dominik Adrian Grzywak <starterx4 at gmail dot com>
 
 pkgname=spadfs-dkms
-pkgver=1.0.18
+pkgver=1.0.20
 pkgrel=1
 pkgdesc="SPAD filesystem kernel module (DKMS package)"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=('dkms')
 optdepends=('spadfs-utils: mkfs and fsck')
 source=("http://www.jikos.cz/~mikulas/spadfs//download/spadfs-${pkgver}.tar.gz"
         'dkms.conf')
-sha256sums=('0dd506310113676ee5ca69e67b38ba583467df9030d51157d22954ba2d94b522'
+sha256sums=('579a2b478dfd87c6dbc25faad25caf8e1d54c261f50b55ad7269e756f448627a'
             'c19fff6f84ad626459cb08f4accba1320635f9cd7d5a63505b3db527650ecd8d')
 
 package() {
