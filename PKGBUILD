@@ -11,7 +11,6 @@ depends=(
     'python-pyqt6'
     'python-poetry'
     'python-psutil'
-    'python-rarfile'
     'p7zip'
     'rar'
 )
