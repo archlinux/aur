@@ -1,6 +1,6 @@
 pkgbase = libretro-flycast-git
 	pkgdesc = Sega Dreamcast, NAOMI, NAOMI 2, Atomiswave and System SP core (fork of reicast)
-	pkgver = 2.3.2.r168.g45bf218df
+	pkgver = 2.4.r37.g15617c181
 	pkgrel = 1
 	url = https://github.com/flyinghead/flycast
 	arch = aarch64
@@ -33,7 +33,7 @@ pkgbase = libretro-flycast-git
 	source = use-system-libs.patch
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 6786e164d9fc724a47bf5a39d6694e06e143a0b0967d4e5e86755c71a9b4cb9807bf2d53183e6b4f3e22b82bd80ed6e1a83449e4cabd5318a744a62afbfbcd0c
+	b2sums = 4b57de8da10081212aa597c459d8e63a427d6b8b9001f0d9f34fa69e097f4179acf6ee437e605557985df682b076ef73b489c65cd8f5f9ea63dfda66df2d59f4
 
 pkgname = libretro-flycast-git
 	depends = gcc-libs
@@ -43,5 +43,5 @@ pkgname = libretro-flycast-git
 	depends = libchdr.so
 	depends = libminiupnpc.so
 	depends = libxxhash.so
-	depends = libzip.so
 	depends = libz.so
+	depends = libzip.so

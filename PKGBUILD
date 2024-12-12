@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-flycast
 pkgname=$_pkgname-git
-pkgver=2.3.2.r168.g45bf218df
+pkgver=2.4.r37.g15617c181
 pkgrel=1
 pkgdesc="Sega Dreamcast, NAOMI, NAOMI 2, Atomiswave and System SP core (fork of reicast)"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -33,7 +33,7 @@ source=(
 b2sums=(
 	'SKIP'
 	'SKIP'
-	'6786e164d9fc724a47bf5a39d6694e06e143a0b0967d4e5e86755c71a9b4cb9807bf2d53183e6b4f3e22b82bd80ed6e1a83449e4cabd5318a744a62afbfbcd0c'
+	'4b57de8da10081212aa597c459d8e63a427d6b8b9001f0d9f34fa69e097f4179acf6ee437e605557985df682b076ef73b489c65cd8f5f9ea63dfda66df2d59f4'
 )
 
 pkgver() {
@@ -47,15 +47,17 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	patch -Np1 < ../use-system-libs.patch
 	rm -r core/deps/libretro-common/include/libchdr
+	sed -i '/ccache/d' CMakeLists.txt
 }
 
 build() {
-	cmake -S flycast -B build \
+	cmake -B build -S flycast \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DLIBRETRO=ON \
 		-DUSE_HOST_GLSLANG=ON \
+		-DUSE_HOST_LIBCHDR=ON \
 		-Wno-dev
 	cmake --build build
 }
@@ -65,8 +67,8 @@ package() {
 		'libchdr.so'
 		'libminiupnpc.so'
 		'libxxhash.so'
-		'libzip.so'
 		'libz.so'
+		'libzip.so'
 	)
 	# shellcheck disable=SC2154
 	install -D -t "$pkgdir"/usr/lib/libretro build/flycast_libretro.so
