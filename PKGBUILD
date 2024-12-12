@@ -7,15 +7,17 @@
 
 pkgname=rime-pinyin-moegirl
 pkgver=20241211
-_reponame=mw2fcitx
 pkgrel=2
-pkgdesc="Fcitx 5 Pinyin Dictionary from moegirl.org wiki for rime"
+pkgdesc="Rime Pinyin Dictionary from moegirl.org wiki"
 arch=('any')
 url="https://github.com/outloudvi/mw2fcitx"
 license=('Unlicense' 'cc-by-nc-sa-3.0')
-source=("https://github.com/outloudvi/${_reponame}/releases/download/${pkgver}/moegirl.dict.yaml")
-sha256sums=('9806b6b1e22a07312023032891f53797203f1b0c03541be35dac778b697eaa6f')
+source=("moegirl-${pkgver}.dict.yaml::${url}/releases/download/${pkgver}/moegirl.dict.yaml"
+        "${url}/raw/master/LICENSE")
+sha256sums=('9806b6b1e22a07312023032891f53797203f1b0c03541be35dac778b697eaa6f'
+            '7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c')
 
 package() {
-    install -Dm644 moegirl.dict.yaml -t ${pkgdir}/usr/share/rime-data/
+    install -Dm644 moegirl-${pkgver}.dict.yaml "${pkgdir}/usr/share/rime-data/moegirl.dict.yaml"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
