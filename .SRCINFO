@@ -14,7 +14,7 @@ pkgbase = varchiver
 	depends = python-psutil
 	depends = python-rarfile
 	depends = p7zip
-	depends = unrar
+	depends = rar
 	source = varchiver-0.1.0.tar.gz::https://github.com/instancer-kirik/varchiver/archive/v0.1.0.tar.gz
 	sha256sums = c6cb4f7f6aa434de4ffb52df763e9bb5ee4aeef2e851a4b2533fe3bc87c937af
 

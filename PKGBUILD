@@ -1,7 +1,7 @@
 # Maintainer: kirik
 pkgname=varchiver
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced Archive Management Tool with modern UI"
 arch=('any')
 url="https://github.com/instancer-kirik/varchiver"
@@ -13,7 +13,7 @@ depends=(
     'python-psutil'
     'python-rarfile'
     'p7zip'
-  
+    'rar'
 )
 makedepends=(
     'python-build'
@@ -21,7 +21,7 @@ makedepends=(
     'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('c6cb4f7f6aa434de4ffb52df763e9bb5ee4aeef2e851a4b2533fe3bc87c937af')
 
 build() {
     cd "$pkgname-$pkgver"
