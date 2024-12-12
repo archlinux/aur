@@ -1,14 +1,14 @@
 pkgbase = tktable
 	pkgdesc = A full-featured 2D table widget for Tk.
-	pkgver = 2.10
-	pkgrel = 4
+	pkgver = 2.12
+	pkgrel = 1
 	url = http://tktable.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = tcl
 	depends = tk
-	source = https://downloads.sourceforge.net/project/tktable/tktable/2.10/Tktable2.10.tar.gz
-	md5sums = ecdd96b39ad49b820bf084eb1c786f66
+	source = https://github.com/bohagan1/TkTable/archive/refs/tags/tktable-2-12-0.tar.gz
+	md5sums = c52eb639854f09ba28005e13c5a8ff57
 
 pkgname = tktable
