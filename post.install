@@ -4,22 +4,17 @@ post_install() {
 }
 
 post_upgrade() {
-    echo -e "\n"
-    echo -e "\033[1;92mCleaning up:\033[0m"
-    if [ -f /usr/share/shadow-of-the-wyrm/scores.dat ]; then
-        mv /usr/share/shadow-of-the-wyrm/scores.dat /usr/share/sotw/scores.dat
-	echo -e "\033[0;94mscores.dat\033[0m moved to \033[0;94m/usr/share/sotw/scores.dat\033[0m"
-    else
-        echo -e "no \033[0;94mscores.dat\033[0m file found on old directory."
-    fi
-
     if [ -d /usr/share/shadow-of-the-wyrm ]; then
+        echo -e "\n"
+        echo -e "\033[1;92mCleaning up:\033[0m"
+        if [ -f /usr/share/shadow-of-the-wyrm/scores.dat ]; then
+            mv /usr/share/shadow-of-the-wyrm/scores.dat /usr/share/sotw/scores.dat
+	    echo -e "\033[0;94mscores.dat\033[0m moved to \033[0;94m/usr/share/sotw/scores.dat\033[0m"
+        fi
         rm -r /usr/share/shadow-of-the-wyrm/
 	echo -e "unused directory \033[0;94m/usr/share/shadow-of-the-wyrm\033[0m removed"
-    else
-        echo -e "No unused directory found."
+        echo -e "\033[1;92mCleaning done.\033[0m"
     fi
-    echo -e "\033[1;92mCleaning done.\033[0m"
     echo -e "\n"
     echo -e "\033[1;92mYou can check the game guide at \033[1;94m/usr/share/sotw/docs/Guide.pdf\033[0m"
     echo -e "\033[1;92mThe list of commands is available in game by pressing \033[1;91m? \033[1;92mthen \033[1;91me \033[1;92m \nor at \033[1;94m/usr/share/sotw/Commands.pdf\033[0m\n"
