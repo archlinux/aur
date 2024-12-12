@@ -1,6 +1,6 @@
 pkgbase = pacsaviour
 	pkgdesc = An automation tool for optimising mirrors, cleaning and updating the system
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 2
 	url = https://github.com/Luxxgit2k4/pacsaviour
 	arch = x86_64
