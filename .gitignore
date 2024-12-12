@@ -1,0 +1,7 @@
+*.log
+*.pkg.*
+*.tar.*
+pkg/
+src/
+
+wl-tray-bridge/

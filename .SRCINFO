@@ -1,0 +1,17 @@
+pkgbase = wl-tray-bridge-git
+	pkgdesc = wl-tray-bridge bridges the gap between the StatusNotifierItem protocols and wayland compositors implementing jay-tray-v1
+	pkgver = r18.5ea5bbd
+	pkgrel = 1
+	url = https://github.com/mahkoh/wl-tray-bridge
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = rust>=1.84.0
+	depends = libpango-1.0.so
+	depends = libpangocairo-1.0.so
+	depends = libwayland-client.so
+	options = !lto
+	source = wl-tray-bridge::git+https://github.com/mahkoh/wl-tray-bridge.git#branch=master
+	sha512sums = SKIP
+
+pkgname = wl-tray-bridge-git
