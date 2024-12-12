@@ -3,7 +3,7 @@ pkgname=betterbird-de-bin
 _pkgname=betterbird
 pkgver=128.5.0esr
 _build=bb18
-pkgrel=2
+pkgrel=1
 pkgdesc="GERMAN // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
 url="https://www.betterbird.eu/index.html"
@@ -44,6 +44,6 @@ package() {
     done
 }
 sha256sums=('bce4a37924ff3d1c343abcc20cb42e3cec6b2884b28b9bddc27dd26969a2ee9f'
-            'f55bc116434e4590a8e7ce755441878b4f08fd31b2f3462807a7dc096d8b7612'
+            'dde5f71088162b89c7ea56508c06441e6e1e717206f781c00657cb71d96d44cd'
             'b11745416d2b2f8bac1ccd3dcb99411c7239b067adf9eb973903c448f8747d09')
 
