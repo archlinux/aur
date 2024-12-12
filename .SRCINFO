@@ -1,5 +1,5 @@
 pkgbase = httm
-	pkgdesc = Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS or BTRFS snapshots.
+	pkgdesc = Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS, BTRFS, or NILFS snapshots.
 	pkgver = 0.44.0
 	pkgrel = 1
 	url = https://github.com/kimono-koans/httm
