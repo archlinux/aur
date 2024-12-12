@@ -12,7 +12,7 @@ depends=('java-runtime' 'jdk8-openjdk' 'bash' 'xdg-utils' )
 
 
 
-source=('https://github.com/Marx79/Slpct/blob/master/slpct.tar.gz')
+source=('git+https://github.com/Marx79/Slpct.git')
 
 sha256sums=('SKIP')
 
@@ -22,8 +22,6 @@ license=('GPL-3.0-or-later')
 depends=('java-runtime' 'jdk8-openjdk' 'bash' 'xdg-utils' 'git' 'base-devel')
 
 
-
-source=('git+https://github.com/Marx79/Slpct.git')
 
 sha256sums=('SKIP')
 
@@ -67,4 +65,3 @@ cd $pkgdir/usr/es/
 		rm $pkgdir/usr/share/applications/slpctrun1.desktop
  	
  }
- 
