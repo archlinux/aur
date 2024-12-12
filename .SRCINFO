@@ -1,6 +1,6 @@
 pkgbase = openspace-git
 	pkgdesc = OpenSpace is an open source, non-commercial, and freely available interactive data visualization software designed to visualize the entire known universe and portray our ongoing efforts to investigate the cosmos
-	pkgver = v0.20.0.145.gfef526652d
+	pkgver = v0.20.0.162.gaad10ec154
 	pkgrel = 1
 	url = https://github.com/OpenSpace/OpenSpace
 	arch = x86_64
@@ -15,10 +15,12 @@ pkgbase = openspace-git
 	depends = vulkan-headers
 	depends = libxinerama
 	depends = libxi
-	depends = qt5-base
+	depends = qt6-base
 	depends = nss
 	depends = at-spi2-core
 	depends = libxcomposite
+	depends = libxdamage
+	depends = python-pandas
 	conflicts = openspace
 	options = !debug
 	source = git+https://github.com/OpenSpace/OpenSpace.git#branch=master
