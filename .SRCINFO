@@ -1,0 +1,36 @@
+pkgbase = marimo
+	pkgdesc = A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps
+	pkgver = 0.9.34
+	pkgrel = 1
+	url = https://marimo.io/
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatch
+	depends = python-click
+	depends = python-jedi
+	depends = python-markdown
+	depends = python-pymdown-extensions
+	depends = python-pygments
+	depends = python-tomlkit
+	depends = python-yaml
+	depends = uvicorn
+	depends = python-starlette
+	depends = python-websockets
+	depends = python-docutils
+	depends = python-psutil
+	depends = python-itsdangerous
+	depends = python-narwhals
+	depends = ruff
+	depends = python-packaging
+	optdepends = python-typing_extensions: python <=3.10 support
+	optdepends = python-duckdb: SQL cells support
+	optdepends = python-altair: Plotting in datasource viewer
+	optdepends = python-polars: SQL output back in Python
+	optdepends = python-openai: AI features
+	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.9.34.tar.gz
+	sha256sums = 50968e0906335be54e17873f4ad5893fdf73c970df112e147768ee8fd956084c
+
+pkgname = marimo
