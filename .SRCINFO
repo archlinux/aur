@@ -1,0 +1,15 @@
+pkgbase = pacsaviour
+	pkgdesc = An automation tool for optimising mirrors, cleaning and updating the system
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = https://github.com/Luxxgit2k4/pacsaviour
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = git
+	depends = reflector
+	source = git+https://github.com/Luxxgit2k4/pacsaviour.git
+	sha256sums = SKIP
+
+pkgname = pacsaviour
