@@ -1,4 +1,6 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Konstantin Gizdov <arch at kge dot pw>
 
 _pkgname=awkward
 pkgbase="python-${_pkgname}"
@@ -8,16 +10,48 @@ pkgver=2.6.5
 pkgrel=4
 pkgdesc="Manipulate jagged, chunky, and/or bitmasked arrays as easily as Numpy"
 url="https://github.com/scikit-hep/awkward"
-license=('BSD')
-arch=('x86_64')
-depends=('python-numpy' 'python-packaging' 'python-importlib_resources')
-optdepends=('cuda: CUDA support'
-            'python-pyarrow: pyArrow connector'
-            'python-numexpr: numexpr connector'
-            'python-pandas: pandas connector')
-makedepends=('cmake' 'git' 'python-build' 'python-installer' 'python-hatchling' 'cuda' 'doxygen' 'python-sphinx' 'python-sphinx_rtd_theme' 'python-hatch-fancy-pypi-readme' 'python-scikit-build-core' 'python-nox')
-checkdepends=('python-pyaml' 'python-pytest' 'python-hist' 'python-pandas' 'python-numexpr' 'python-pyarrow' 'python-scikit-hep-testdata' 'python-vector'
-              'root' 'pybind11' 'rapidjson' 'python-fsspec')
+license=(BSD-3-Clause)
+arch=(x86_64)
+depends=(
+  python
+  python-importlib_resources
+  python-numpy
+  python-packaging
+)
+makedepends=(
+  cmake
+  cuda
+  doxygen
+  git
+  python-build
+  python-hatch-fancy-pypi-readme
+  python-hatchling
+  python-installer
+  python-nox
+  python-scikit-build-core
+  python-sphinx
+  python-sphinx_rtd_theme
+)
+checkdepends=(
+  pybind11
+  python-fsspec
+  python-hist
+  python-numexpr
+  python-pandas
+  python-pyaml
+  python-pyarrow
+  python-pytest
+  python-scikit-hep-testdata
+  python-vector
+  rapidjson
+  root
+)
+optdepends=(
+  'cuda: CUDA support'
+  'python-pyarrow: pyArrow connector'
+  'python-numexpr: numexpr connector'
+  'python-pandas: pandas connector'
+)
 source=(
   "${pkgname}::git+https://github.com/scikit-hep/${_pkgname}#tag=v${pkgver}"
   "${pkgname}-dlpack::git+https://github.com/dmlc/dlpack.git"
@@ -30,12 +64,8 @@ sha512sums=('64b3e6e7295e1fcd11d096419d3dbdb2627b70f9b4d2fea0f2c38d9f5ab0a9de9f4
             'SKIP'
             'SKIP')
 
-get_pyver () {
-    python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
-}
-
 prepare() {
-  cd "${srcdir}/${pkgbase}"
+  cd $pkgbase
   git submodule init
 
   git config submodule."pybind11".url "${srcdir}/${pkgname}"-pybind11
@@ -48,7 +78,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgbase}"
+  cd $pkgbase
 
   nox -s prepare
   python -m build --wheel --no-isolation
@@ -58,7 +88,7 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${pkgbase}"
+  cd $pkgbase
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m installer awkward-cpp/dist/*.whl
@@ -67,16 +97,19 @@ check() {
 }
 
 package_python-awkward() {
-  optdepends+=("${pkgbase}-docs: docs")
-  cd "${srcdir}/${pkgbase}"
+  optdepends+=("${pkgbase}-docs: documentation")
+
+  cd $pkgbase
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
   cd awkward-cpp
-  python -m installer --destdir="${pkgdir}" dist/*.whl  
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
 package_python-awkward-docs() {
-  cd "${srcdir}/${pkgbase}"
+  pkgdesc+=" - documentation"
+
+  cd $pkgbase
 
   install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D README.md "${pkgdir}/usr/share/${pkgbase}/README.md"
