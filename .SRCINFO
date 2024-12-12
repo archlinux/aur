@@ -1,0 +1,12 @@
+pkgbase = tinytaptunnel
+	pkgdesc = creates a point-to-point layer 2 tunnel over UDP/IP
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/vsergeev/tinytaptunnel
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = tinytaptunnel-1.4.tar.gz::https://github.com/vsergeev/tinytaptunnel/archive/refs/tags/v1.4.tar.gz
+	sha256sums = 2cdf26f28e64db5cd0e669881963189d45dd45fbc8fba0c241f69959d62986c0
+
+pkgname = tinytaptunnel
