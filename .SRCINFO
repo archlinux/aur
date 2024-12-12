@@ -19,6 +19,7 @@ pkgbase = portmod
 	makedepends = python-sphinx-autodoc-typehints
 	makedepends = python-sphinxcontrib-apidoc
 	makedepends = clang
+	makedepends = lld
 	depends = python
 	depends = patool
 	depends = python-setuptools
