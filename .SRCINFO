@@ -1,6 +1,6 @@
 pkgbase = portable
 	pkgdesc = Portable Sandboxing framework
-	pkgver = 1.3.3
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://github.com/Kraftland/portable
 	arch = any
@@ -64,7 +64,7 @@ pkgbase = portable
 	provides = portable
 	options = !debug
 	options = !strip
-	source = git+https://invent.kde.org/kimiblock/portable.git#tag=1.3.3
+	source = git+https://invent.kde.org/kimiblock/portable.git
 	md5sums = SKIP
 
 pkgname = portable
