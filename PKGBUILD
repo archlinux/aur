@@ -1,46 +1,49 @@
-# Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
+# Maintainer: Mark Karlinsky <mark.devnull@gmail.com>
+# Contributor: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
-pkgname=xwayland-satellite
+pkgname=xwayland-satellite-nosystemd
 pkgver=0.5
-pkgrel=2
-pkgdesc="Xwayland outside your Wayland"
+pkgrel=1
+pkgdesc="Xwayland outside your Wayland (without systemd feature)"
 arch=(x86_64)
-url="https://github.com/Supreeeme/$pkgname"
-license=(MPL-2.0)
+url="https://github.com/Supreeeme/xwayland-satellite"
+license=('MPL-2.0')
 depends=(
-  gcc-libs
-  glibc
-  libxcb
-  xcb-util-cursor
-  xorg-xwayland
+  'libxcb'
+  'xcb-util-cursor'
+  'xorg-xwayland'
+  'gcc-libs'
+  'glibc'
 )
 makedepends=(
-  clang
-  rust
+  'git'
+  'cargo'
+  'clang'
 )
-options=(!debug)
-source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('b2ab19629c2b9d099af2c2dfa81a215acb1bc0ddc6a98574a05791cdcfeb980301c33657e4f5bbc4b64c30bc08e49e8f5fcb5fd82f8103d7dc1d25f10a20b5dc')
+provides=("xwayland-satellite=$pkgver")
+conflicts=("xwayland-satellite")
+options=()
+_tag=5c7fe006d2e3617c9649f71f571e06c0e2158ba6
+source=("git+${url}.git#tag=${_tag}")
+sha256sums=("da5d99a013a835527f02a6bab07684273b71145076f41ecc5f118fbaddbb72d9")
 
 prepare() {
-  cd $pkgname-$pkgver
-  sed -i 's|ExecStart=/usr/local|ExecStart=/usr|' resources/$pkgname.service
+  cd "$srcdir/xwayland-satellite"
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_HOME="$srcdir"/.cargo
+  export CARGO_HOME="$(pwd)/.cargo"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd $pkgname-$pkgver
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_HOME="$srcdir"/.cargo
+  cd "$srcdir/xwayland-satellite"
   export RUSTFLAGS="--remap-path-prefix=$srcdir=/"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_HOME="$(pwd)/.cargo"
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release -F systemd
+  cargo build --frozen --release
 }
 
 package() {
-  cd $pkgname-$pkgver
-  install -vDm755 target/release/$pkgname    -t "$pkgdir"/usr/bin/
-  install -vDm644 resources/$pkgname.service -t "$pkgdir"/usr/lib/systemd/user/
+  cd "$srcdir/xwayland-satellite"
+  install -Dm755 "target/release/xwayland-satellite" -t "$pkgdir/usr/bin/"
 }
