@@ -9,5 +9,5 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 source_x86_64=("https://github.com/madeofpendletonwool/PinePods/releases/download/${pkgver}/Pinepods_${pkgver}_amd64.deb")
 source_aarch64=("https://github.com/madeofpendletonwool/PinePods/releases/download/${pkgver}/Pinepods_${pkgver}_arm64.deb")
-sha256sums_x86_64=('$x86_64_sum')
-sha256sums_aarch64=('$aarch64_sum')
+sha256sums_x86_64=('0638853425d8831ec67aef59ed84ae55b55e409110fda269f9fdb90dd817e83c')
+sha256sums_aarch64=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
