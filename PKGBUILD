@@ -41,7 +41,7 @@ pkgver() {
 package() {
 
     # bin
-    install -Dm 755 ${srcdir}/${pkgname}/build/core.sh -t ${pkgdir}/usr/bin/carch
+    install -Dm 755 ${srcdir}/${pkgname}/build/carch -t ${pkgdir}/usr/bin/carch
 
     install -d "$pkgdir/usr/bin/scripts"
     
