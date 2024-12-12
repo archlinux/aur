@@ -1,0 +1,20 @@
+pkgbase = powershell-fxdependent-bin
+	pkgdesc = A cross-platform automation and configuration tool/framework (binary package, framework dependent)
+	pkgver = 7.4.6
+	pkgrel = 1
+	url = https://github.com/Powershell/Powershell
+	install = powershell.install
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	depends = dotnet-runtime-8.0
+	provides = powershell
+	conflicts = powershell
+	conflicts = powershell-bin
+	noextract = powershell-fxdependent-bin-7.4.6-1.tar.gz
+	source_x86_64 = powershell-fxdependent-bin-7.4.6-1.tar.gz::https://github.com/Powershell/Powershell/releases/download/v7.4.6/powershell-7.4.6-linux-x64-fxdependent.tar.gz
+	sha256sums_x86_64 = 8040e3586205bbf64538f89300857e5a0aaced9a15a4d587e4bbdee213e2762d
+
+pkgname = powershell-fxdependent-bin
