@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=soundcloud
 pkgname="${_appname}-rpc-git"
-pkgver=0.0.7.r1.g11e11c7
+pkgver=0.0.7.r7.ga5a5cee
 _electronversion=24
 _nodeversion=20
 pkgrel=1
@@ -41,7 +41,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -75,6 +75,9 @@ build() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     icns2png -x "assets/icons/${_appname}-mac.icns" -o assets/icons
     NODE_ENV=development    bun install
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
     NODE_ENV=production     bun tsc
     NODE_ENV=production     bun exec "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
