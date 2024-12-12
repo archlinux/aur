@@ -11,6 +11,7 @@ depends=(
     'python-pyqt6'
     'python-poetry'
     'python-psutil'
+    'python-rarfile'
     'p7zip'
     'rar'
 )
@@ -24,13 +25,18 @@ sha256sums=('c6cb4f7f6aa434de4ffb52df763e9bb5ee4aeef2e851a4b2533fe3bc87c937af')
 
 build() {
     cd "$pkgname-$pkgver"
-    poetry build
+    poetry install --no-dev
 }
 
 package() {
     cd "$pkgname-$pkgver"
     
-    # Install Python package
+    # Create virtual environment in the package directory
+    poetry config virtualenvs.create false
+    poetry install --no-dev --no-root
+    
+    # Install the package itself
+    poetry build
     python -m installer --destdir="$pkgdir" dist/*.whl
     
     # Install desktop file
