@@ -1,6 +1,6 @@
 pkgbase = lunas
 	pkgdesc = A syncing cli tool that can handle more than two directories locally and remotely
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/nodeluna/lunas
 	arch = any
