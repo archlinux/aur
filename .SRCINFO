@@ -1,0 +1,16 @@
+pkgbase = yozefu
+	pkgdesc = A TUI for exploring data in Kafka clusters
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/MAIF/yozefu
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = cmake
+	depends = gcc-libs
+	depends = openssl
+	options = !lto
+	source = yozefu-0.0.1.tar.gz::https://github.com/MAIF/yozefu/archive/v0.0.1.tar.gz
+	sha512sums = f0643f73f874fb952bc0f05a0c30db194a8d341b247c7f13febbfefa53c6b378a10964c2b9a678b2f9f24e855e6ffb2b6b134b1208d54d3d16b4fc1727c498f4
+
+pkgname = yozefu
