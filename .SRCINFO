@@ -1,0 +1,16 @@
+pkgbase = corewatch-bin
+	pkgdesc = System monitoring tool for Linux completely in Terminal mode.(Prebuilt version)
+	pkgver = Stable
+	pkgrel = 1
+	url = https://github.com/powercomp750/CoreWatch-sysmonitor
+	arch = x86_64
+	license = MIT
+	depends = python
+	provides = corewatch=Stable
+	conflicts = corewatch
+	source = corewatch-Stable::https://github.com/powercomp750/CoreWatch-sysmonitor/releases/download/Stable/coreWatch-alpha
+	source = LICENSE-Stable::https://raw.githubusercontent.com/powercomp750/CoreWatch-sysmonitor/Stable/LICENSE
+	sha256sums = cb3c98b9580fc7714dfa474f944ce83759ddf6683f7eee9a476a4d1075dd596e
+	sha256sums = 79c391a890760d8f3eeb6b19b14f6b662a86b32b05c2f90f8b98ee1a87428ebd
+
+pkgname = corewatch-bin
