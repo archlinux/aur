@@ -1,35 +1,37 @@
-# Maintainer: antechnologic <antechnologic@pm.me>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: antechnologic <antechnologic@pm.me>
 # Contributor: Sheng Yu <magicfish1990@gmail.com>
 # Contributor: Alex Talker <alextalker@yandex.ru>
-pkgname=udptunnel
+
+pkgname="udptunnel"
 pkgver=r19
-pkgrel=2
-pkgdesc="Tunnels TCP over UDP packets."
-arch=('i686' 'x86_64')
-url="http://code.google.com/p/udptunnel/"
-license=('GPL3')
-groups=()
-depends=()
-makedepends=('gcc')
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/$pkgname/$pkgname-$pkgver.tar.gz)
-noextract=()
-md5sums=('277088842a092ac34977b371f9b24fc3')
+pkgrel=3
+pkgdesc="Tunnels TCP over UDP packets"
+arch=('x86_64' 'i686')
+url="https://code.google.com/archive/p/udptunnel"
+license=('GPL-3.0-or-later')
+depends=('glibc')
+_pkgsrc="${pkgname}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${_pkgsrc}.tar.gz")
+b2sums=('63e87d8f510b496ff37b610206d488e58e8c6fddb2ec30d89472bd4da18d83dc0296eb7bf31f66b51b2e51e5d40b3d51eaf3ac5ea6f9374d9917e57081eb670f')
+
+prepare() {
+  cd "${srcdir}"
+  rm -rf "${_pkgsrc}"
+  mv -f "${pkgname}" "${_pkgsrc}"
+
+  cd "${_pkgsrc}"
+  sed -i 's/^CFLAGS=/CFLAGS+=/' Makefile
+}
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${_pkgsrc}"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  install -d -m 755 "$pkgdir/usr/bin/"
-  install -D -m 755 udptunnel "$pkgdir/usr/bin/"
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README"     "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -vDm644 "COPYING"    "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
