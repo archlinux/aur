@@ -1,5 +1,5 @@
 pkgname=epson-inkjet-printer-escpr2
-pkgver=1.2.22
+pkgver=1.2.23
 pkgrel=1
 pkgdesc="Epson Inkjet Printer Driver 2 (ESC/P-R) for Linux"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,9 +9,9 @@ license=('LGPL2' 'custom:COPYING.EPSON')
 depends=('cups' 'ghostscript')
 optdepends=('imagescan: scanner support')
 options=('!libtool')
-source=('https://download3.ebz.epson.net/dsc/f/03/00/16/55/15/0aa0a184d4295a0c7f5a0a1f913f0aeab41503c5/epson-inkjet-printer-escpr2-1.2.22-1.tar.gz'
+source=('https://download3.ebz.epson.net/dsc/f/03/00/16/56/03/dc8fdc245b3244542fa5eb74730e84abc00176e0/epson-inkjet-printer-escpr2-1.2.23-1.tar.gz'
         'bug_x86_64.patch')
-sha256sums=('f771389105b0c2043fea1feb29411cf8c45fb554968b4dba74628294db7e269e'
+sha256sums=('bc795a4fa8ce9c7122e258840c5751c2aff3158e67f3bdfc5da6a72fc7aed82b'
             '1baff7a23db91544fec6ff5a27ba8fe4f05958b7f2f95f0c087518b9c0e1b733')
 
 prepare() {
