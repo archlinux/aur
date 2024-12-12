@@ -1,9 +1,9 @@
-# Maintainer: Yauheni Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
+# Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
 # shellcheck disable=SC2001,SC2016,SC2034,SC2154 shell=bash
 
 _pkgname=pikaur-static
 pkgname="${_pkgname}-git"
-pkgver=1.30.2
+pkgver=1.30.3
 pkgrel=1
 pkgdesc='AUR helper without dependencies which asks all questions before installing/building. Static build for recovery situations, similar to `pacman-static`'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
