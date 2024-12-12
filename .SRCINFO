@@ -1,6 +1,6 @@
 pkgbase = matomo-git
 	pkgdesc = A powerful web analytics platform.
-	pkgver = 5.1.2
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://github.com/matomo-org/matomo
 	install = matomo.install
@@ -38,7 +38,7 @@ pkgbase = matomo-git
 	optdepends = nginx: HTTP server
 	provides = matomo
 	conflicts = matomo
-	source = matomo::git+https://github.com/matomo-org/matomo.git#tag=d124e1c8f10d4d1d754b3facc8f4718fe9337f8f
+	source = matomo::git+https://github.com/matomo-org/matomo.git#tag=e3aece1db0c97e59a6421467e0bd6d7fddee26c9
 	source = git+https://github.com/matomo-org/matomo-icons.git
 	source = git+https://github.com/matomo-org/matomo-log-analytics.git
 	source = git+https://github.com/matomo-org/plugin-AnonymousPiwikUsageMeasurement.git
@@ -59,7 +59,7 @@ pkgbase = matomo-git
 	source = git+https://github.com/matomo-org/tag-manager.git
 	source = git+https://github.com/matomo-org/travis-scripts.git
 	source = override-matomo.conf
-	sha512sums = c4c53d7d57a50d18e0e66ac34facffb724179e2c0a9b3017c00a7506999e8c797442a623d4636048c66421cc2588b9dc8e1e3b4b39c886805af5ee50f4308fed
+	sha512sums = d95b436f584833dc5af59e635ac8579688eb6475fce603c6791a86179eaa3776243bac3fb597216126cde8649581419a0643b62260414939ca4eedcdb2e6635d
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
