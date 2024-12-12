@@ -3,7 +3,7 @@
 pkgname=httm
 pkgver=0.44.0
 pkgrel=1
-pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS or BTRFS snapshots."
+pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS, BTRFS, or NILFS snapshots."
 arch=('x86_64')
 url="https://github.com/kimono-koans/httm"
 license=('MPL-2.0')
