@@ -1,7 +1,7 @@
 pkgbase = rime-pinyin-moegirl
 	pkgdesc = Rime Pinyin Dictionary from moegirl.org wiki
 	pkgver = 20241211
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/outloudvi/mw2fcitx
 	arch = any
 	license = Unlicense

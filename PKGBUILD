@@ -7,7 +7,7 @@
 
 pkgname=rime-pinyin-moegirl
 pkgver=20241211
-pkgrel=2
+pkgrel=3
 pkgdesc="Rime Pinyin Dictionary from moegirl.org wiki"
 arch=('any')
 url="https://github.com/outloudvi/mw2fcitx"
