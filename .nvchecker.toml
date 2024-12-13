@@ -1,0 +1,4 @@
+[bitwarden-bin]
+source = "git"
+git = "https://github.com/bitwarden/clients.git"
+prefix = "v"
