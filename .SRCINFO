@@ -1,0 +1,25 @@
+pkgbase = lla-bin
+	pkgdesc = Blazing fast 'ls' replacement with superpowers
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/triyanox/lla
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = help2man
+	depends = glibc
+	provides = lla
+	conflicts = lla
+	source = LICENSE-0.3.1::https://raw.githubusercontent.com/triyanox/lla/v0.3.1/LICENSE
+	source = README-0.3.1.md::https://raw.githubusercontent.com/triyanox/lla/v0.3.1/README.md
+	sha256sums = 23d576c778cda4c3059f8dccbb8b4b79965868099472d089ec589ed0066999c5
+	sha256sums = 35d246eda7608d7be0afb513288953839b1a3987e825fda717d65e17c53f9df0
+	source_x86_64 = lla-x86_64-0.3.1::https://github.com/triyanox/lla/releases/download/v0.3.1/lla-linux-amd64
+	sha256sums_x86_64 = 80fe99479e4cabfa118f38a5b3e23af6bb047656bf06e6593488ab6c9ff6308d
+	source_i686 = lla-i686-0.3.1::https://github.com/triyanox/lla/releases/download/v0.3.1/lla-linux-i686
+	sha256sums_i686 = 1a18323c109a3151c9fcd9bc155403be0cd86cd16a9aea93d319899ab9bd4c13
+	source_aarch64 = lla-aarch64-0.3.1::https://github.com/triyanox/lla/releases/download/v0.3.1/lla-linux-arm64
+	sha256sums_aarch64 = 699a09fb79af5c38a8212f37d367bdf6559d9d51ce6689e4169c554adfc35f19
+
+pkgname = lla-bin
