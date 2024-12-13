@@ -1,7 +1,7 @@
 # Maintainer: Richard Hillmann <richie at project0 dot de>
 pkgname=awsvpnclient
-pkgver=4.0.0
-pkgrel=1
+pkgver=4.1.0
+pkgrel=2
 pkgdesc="AWS VPN Client"
 arch=('x86_64')
 license=('custom')
@@ -9,27 +9,20 @@ url='https://aws.amazon.com/vpn/'
 source=(
   "$pkgname-$pkgver.deb::https://d20adtppz83p9s.cloudfront.net/GTK/${pkgver}/awsvpnclient_amd64.deb"
   'awsvpnclient.desktop.patch'
-  'awsvpnclient.runtimeconfig.json.patch'
 )
-sha512sums=('b762fc64accb35b5ca8a9d37df61d6cf8560f05133041347def2147f7b2987c0464e43ee447cb78784b6c236da536fb7b4efc16dbd1d918a7302da85b683281a'
-            '615154162a69b99f5e3f7ab450ea7fbd58e944075bd762e3ceacfb1a71e8faa894de2595d8b72cde143702a0f8d2844c2b847d403ae528b4d3c48ab195a1df2b'
-            '1d45e50de14b9e10b6463692df63bfb4cbedfed952022c95f05bde46ece37ac1a433b76e49f255f38b1bd67c0f0f13d2d8c963051a144553c63149e6041d6603')
-# some people reported issue with missing/incompatible openssl libraries,
-# so we add 1.1 as dependency until AWS updates their client
-depends=('xdg-utils' 'lsof' 'openssl-1.1')
-makedepends=('xz')
+sha512sums=('415a5ebe52f1093e0a51bedb7f422431458db484249a52707645a0f7bdf34b12e829bddf4d62255da402c2a070cbe3e374a5db7d2bb006bcef440fa1c60740d0'
+            'dbf6f6fab74e6bf167055a7c4b9aa7413d677ea0d2d06b8194610a12fb181cfb649bafc2779b21c25514724a6da53c4c86fb486d95e344c2f940929bf6d02b33')
+depends=('xdg-utils' 'lsof')
+makedepends=('zstd')
 options=('!strip' 'staticlibs')
 install='awsvpnclient.install'
 
 package(){
-  tar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+  tar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
 
-  # Apply patch to fix desktop file for KDE
+  # Apply patch to fix desktop file
   patch -s "${pkgdir}/usr/share/applications/awsvpnclient.desktop" "${srcdir}/awsvpnclient.desktop.patch"
 
-  # Apply patch for broken ICU detection, no localisation
-  patch -s "${pkgdir}/opt/awsvpnclient/AWS VPN Client.runtimeconfig.json" "${srcdir}/awsvpnclient.runtimeconfig.json.patch"
-  patch -s "${pkgdir}/opt/awsvpnclient/Service/ACVC.GTK.Service.runtimeconfig.json" "${srcdir}/awsvpnclient.runtimeconfig.json.patch"
   # Workaround for missing compatibility of the SQL library with arch linux:
   # Intentionally break the metrics agent,
   # it will be unable to laod the dynamic lib and wont start but continue with error message

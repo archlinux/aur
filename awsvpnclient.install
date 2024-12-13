@@ -11,9 +11,21 @@ note() {
   printf "${tput_blue}==>${tput_yellow} NOTE:${tput_bold} %s${tput_reset}\n" "$1"
 }
 
+update_openssl_fips() {
+  # this has been adopted from the original debian install script
+  local OPENVPN_PATH=/opt/awsvpnclient/Service/Resources/openvpn
+  echo "Installing openssl FIPS module..."
+  pushd $OPENVPN_PATH
+  LD_LIBRARY_PATH="$OPENVPN_PATH" $OPENVPN_PATH/openssl \
+      fipsinstall \
+      -out "${OPENVPN_PATH}/fipsmodule.cnf" \
+      -module $OPENVPN_PATH/fips.so
+  popd
+}
 # pre_install() {}
 
 post_install() {
+  update_openssl_fips
   systemctl daemon-reload
   note "The AWS VPN Client requires the ${service}.service and systemd-resolved.service to be running!"
   note "Please enable ${service} with 'sudo systemctl enable ${service} && sudo systemctl start ${service}'"
@@ -22,6 +34,7 @@ post_install() {
 # pre_upgrade() {}
 
 post_upgrade() {
+  update_openssl_fips
   systemctl daemon-reload
   note "You may need to restart the ${service} service with 'sudo systemctl restart ${service}'"
   note "Restarting the service ${service} will interrupt your current connections!"
@@ -30,6 +43,7 @@ post_upgrade() {
 pre_remove() {
 	systemctl stop awsvpnclient
 	systemctl disable awsvpnclient
+  rm -f /opt/awsvpnclient/Service/Resources/openvpn/fipsmodule.cnf
 }
 
 # post_remove() {}
