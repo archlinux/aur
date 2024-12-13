@@ -1,0 +1,4 @@
+[ecode]
+source = "git"
+git = "https://github.com/SpartanJ/ecode.git"
+prefix = "ecode-"
