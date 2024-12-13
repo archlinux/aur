@@ -5,8 +5,9 @@
 # Contributor: tryst
 # Contributor: gangelop
 pkgname=pureref
+_pkgname=PureRef
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Reference Image Viewer"
 arch=('x86_64')
 url="http://www.pureref.com"
@@ -25,5 +26,11 @@ prepare(){
 package(){
   tar xf data.tar.xz -C "${pkgdir}"
   chmod -R 755 "${pkgdir}"
-  install -Dm644 "${pkgdir}/usr/share/doc/PureRef/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  bin="${pkgdir}/usr/bin/${_pkgname}"
+  install -D "${bin}" "${pkgdir}/opt/${pkgname}/${_pkgname}.AppImage"
+  rm "${bin}"
+  ln -s "/opt/${pkgname}/${_pkgname}.AppImage" "${bin}"
+
+  install -Dm644 "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
