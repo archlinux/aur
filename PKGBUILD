@@ -14,7 +14,7 @@ depends=('java-runtime' 'jdk8-openjdk' 'bash' 'xdg-utils' )
 
 source=("git+https://github.com/Marx79/Slpct.git")
 
-sha256sums=('SKIP')
+
 
 license=('GPL-3.0-or-later')
 
@@ -23,8 +23,7 @@ depends=('java-runtime' 'jdk8-openjdk' 'bash' 'xdg-utils' 'git' 'base-devel')
 
 
 
-sha256sums=('SKIP')
-
+sha256sums=("SKIP")
 
 
 package() {
