@@ -2,7 +2,7 @@
 
 pkgname=akonadi-notes
 pkgver=24.08.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Libraries and daemons to implement management of notes in Akonadi'
 arch=(x86_64)
 url='https://kontact.kde.org'

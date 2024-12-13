@@ -1,7 +1,7 @@
 pkgbase = akonadi-notes
 	pkgdesc = Libraries and daemons to implement management of notes in Akonadi
 	pkgver = 24.08.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kontact.kde.org
 	arch = x86_64
 	license = LGPL-2.0-or-later
