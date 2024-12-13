@@ -2,7 +2,7 @@
 
 pkgname=citebib
 _pkgname=CiteBib
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Generate a nice Bibtex or Latex bibliography according to the document content"
 arch=('any')
@@ -12,20 +12,20 @@ depends=('python' 'python-bibtexparser')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
 source=(https://github.com/salsergey/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.xz)
-sha256sums=('d831b874da3de4a6cbf02a68bd04b0b42f5e120f2740c8f9b0f8d8c397d0fc36')
+sha256sums=('e7a3e1dff586595457361c608847f163955e5d64e59d375d9ada9d41278d885a')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   python setup.py build
 }
 
 check() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   nosetests3
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
