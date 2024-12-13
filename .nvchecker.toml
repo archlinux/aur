@@ -1,0 +1,3 @@
+[jamesdsp-pulse]
+source = "git"
+git = "https://github.com/Audio4Linux/JDSP4Linux.git"
