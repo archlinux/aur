@@ -1,0 +1,4 @@
+[devtoolbox]
+source = "git"
+git = "https://github.com/aleiepure/devtoolbox.git"
+prefix = "v"
