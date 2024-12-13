@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !tuxclocker.patch
+!.nvchecker.toml
