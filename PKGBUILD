@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atv-remote-bin
-_macname=atv-mac-remote
+_macname=atv-desktop-remote
 _pkgname=ATV-Remote
-pkgver=1.1.13
+pkgver=1.1.14
 _electronversion=13
 pkgrel=1
 pkgdesc="A simple app to allow you to control an Apple TV from your desktop.(Prebuilt version.Use system-wide electron)"
@@ -25,10 +25,10 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/jklewa/atv-desktop-remote/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a18e1fb9d5406e5777afa5ac19168bf30ff1b3c93d308803c1a3bf1950a9831d'
+sha256sums=('06f21b10d44884e29fdb86f0547218f237666424b1d87fdb2993825cf2ac1460'
             'cc59293cf57cbc07ad2dd7fa94553da43bc493503b6387742274b999afdb9369'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
