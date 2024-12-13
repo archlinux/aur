@@ -1,0 +1,4 @@
+[youtube-music-bin]
+source = "git"
+git = "https://github.com/th-ch/youtube-music.git"
+prefix = "v"
