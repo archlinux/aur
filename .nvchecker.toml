@@ -1,0 +1,4 @@
+[emojimart]
+source = "git"
+git = "https://github.com/vemonet/EmojiMart.git"
+prefix = "v"
