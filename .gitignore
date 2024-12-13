@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !slimbookintelcontroller.install
+!.nvchecker.toml

@@ -1,0 +1,4 @@
+[slimbookintelcontroller]
+source = "git"
+git = "https://github.com/slimbook/slimbookintelcontroller.git"
+prefix = "v"
