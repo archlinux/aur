@@ -1,0 +1,3 @@
+[system76-io-dkms]
+source = "git"
+git = "https://github.com/pop-os/system76-io-dkms.git"
