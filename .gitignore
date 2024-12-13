@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !gcc14.patch
+!.nvchecker.toml
