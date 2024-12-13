@@ -1,0 +1,3 @@
+[monitorets]
+source = "git"
+git = "https://github.com/jorchube/monitorets.git"
