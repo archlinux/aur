@@ -1,0 +1,4 @@
+[mullvad-ping]
+source = "git"
+git = "https://github.com/grant0417/mullvad-ping.git"
+prefix = "v"
