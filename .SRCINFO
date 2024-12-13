@@ -1,6 +1,6 @@
 pkgbase = kew-git
 	pkgdesc = A command-line music player
-	pkgver = v3.0.1.4df7698
+	pkgver = v3.0.2.c950bcb
 	pkgrel = 1
 	url = https://github.com/ravachol/kew
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = kew-git
 	depends = opus
 	depends = opusfile
 	depends = libvorbis
-	optdepends = libnotify
 	optdepends = faad2
 	conflicts = kew
 	replaces = cue-git
