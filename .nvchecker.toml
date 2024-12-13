@@ -1,0 +1,4 @@
+[ente-auth]
+source = "git"
+git = "https://github.com/ente-io/ente.git"
+prefix = "v"
