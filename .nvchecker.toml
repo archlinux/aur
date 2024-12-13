@@ -1,0 +1,4 @@
+[kristall]
+source = "git"
+git = "https://github.com/MasterQ32/kristall.git"
+prefix = "V"
