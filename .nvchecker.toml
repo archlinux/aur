@@ -1,0 +1,4 @@
+[sys76-kb]
+source = "git"
+git = "https://github.com/bambash/sys76-kb.git"
+prefix = "v"
