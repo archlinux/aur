@@ -1,0 +1,28 @@
+From b85c6bf26701256f7afcfaa42e508b472b4cb6c7 Mon Sep 17 00:00:00 2001
+From: BrLi <brli@chakralinux.org>
+Date: Thu, 12 Dec 2024 22:43:44 +0800
+Subject: [PATCH] remove download
+
+---
+ merge_dictionaries.py | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/merge_dictionaries.py b/merge_dictionaries.py
+index 31f2990..6e533e2 100644
+--- a/merge_dictionaries.py
++++ b/merge_dictionaries.py
+@@ -62,11 +62,6 @@ def remove_duplicates(file_name):
+ 
+ 
+ def count_word_hits():
+-    subprocess.run(
+-        ['wget', '-N', 'https://dumps.wikimedia.org/jawiki/latest/' +
+-            'jawiki-latest-pages-articles-multistream-index.txt.bz2'],
+-        check=True)
+-
+     with bz2.open(
+             'jawiki-latest-pages-articles-multistream-index.txt.bz2',
+             'rt', encoding='utf-8') as file:
+-- 
+2.47.1
+

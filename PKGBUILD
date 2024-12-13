@@ -11,7 +11,7 @@ _bldtype='Release'
 _zipcode_rel=202110
 
 # Ut Dictionary
-_utdicdate=20241022
+_utdicdate=20241212
 _dict=(alt-cannadic
        edict2
        jawiki
@@ -23,13 +23,13 @@ _dict=(alt-cannadic
 
 pkgbase=mozc-ut-full
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.30.5618.102.20241022
-pkgrel=2
+pkgver=2.30.5618.102.20241212
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
 makedepends=('bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'subversion' 'qt6-base' 'clang' 'fcitx5' 'emacs' 'ibus')
-source=(git+https://github.com/fcitx/mozc.git#commit=815cc6669489fd87c4235fc25245c8d230dad3b2
+source=(git+https://github.com/fcitx/mozc.git#commit=f53990354c2efc868a40b00a5d2baa13cadcd01e
         # 2023-07-13: osdn.net is unstable due to Amazon
         # "https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-${_zipcode_rel}.zip"
         # "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_zipcode_rel}.zip"
@@ -43,13 +43,13 @@ source=(git+https://github.com/fcitx/mozc.git#commit=815cc6669489fd87c4235fc2524
         git+https://github.com/open-source-parsers/jsoncpp.git
         git+https://github.com/google/protobuf.git
         git+https://github.com/utuhiro78/merge-ut-dictionaries.git
-        jawiki-latest-all-titles-in-ns0-${_utdicdate}.gz::https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
-noextract=(jawiki-latest-all-titles-in-ns0-${_utdicdate}.gz)
-
+        jawiki-latest-pages-articles-multistream-index-${_utdicdate}.txt.bz2::https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-pages-articles-multistream-index.txt.bz2
+        0001-remove-download.patch)
+noextract=(jawiki-latest-pages-articles-multistream-index-${_utdicdate}.txt.bz2)
 for dict in "${_dict[@]}"; do
-  source+=("mozcdic-ut-${dict}-${_utdicdate}.txt.tar.bz2"::"https://github.com/utuhiro78/mozcdic-ut-${dict}/raw/main/mozcdic-ut-${dict}.txt.tar.bz2")
+    source+=("mozcdic-ut-${dict}-${_utdicdate}.txt.bz2"::"https://github.com/utuhiro78/mozcdic-ut-${dict}/raw/main/mozcdic-ut-${dict}.txt.bz2")
 done
-sha512sums=('2cc3f89a98ab646627cc01743e62af435f2346f9ebda0b38d401f8821415de8992d34e4c4c8f66ad343359713382ddba051d2ab54ee3cb41dd3f5cae658187e2'
+sha512sums=('f99941f0dda8080a4c3fbf2ce9f7009b5043e4b80bef33fb873bd9ff174de2f9f587632cbb32d5cee680e043b35fca60ed70c6eb544f2b0fb518d2d37906e798'
             'dec6479b42ddc1355cd882d17824cd874d8f103ad7767bac3f490f04551059d65b2806fa9e3f39a50ced2ecfdd37b75c9ed4536d9ad3bcef9e8c5ae1ec10e302'
             '606f45d48a9dad0e80a566cab0001910de3c6b2f634ec52c6ef6f44745b55ae8e181b3e3cdf90525a08be1f180eb35900672c90c6ab4f43679a178e863378bbc'
             'SKIP'
@@ -60,15 +60,16 @@ sha512sums=('2cc3f89a98ab646627cc01743e62af435f2346f9ebda0b38d401f8821415de8992d
             'SKIP'
             'SKIP'
             'SKIP'
-            '192b46b6437eff5f1a77f946798acc9780d51db2b0693a5dc4650a5b5dee2166512ad8ca79511cd091894149be4d646472f5a4340d4a63fab7ed52c99a9bae37'
-            '3df5b09bed5a14cb1ea2de55dde5e129896355e564235710f9be0f276ac2b58802ef6d04fbc65a25223d17c9a4133a5ed78bbfe5d50b76018982f507e29bc906'
-            '12e76f3a859ca010805a643842e91e699bc0ba61e908250d2c759326166704d62a249fe711c907026f1695001656af52ae81bdda637bcdbb3933c363d844d38b'
-            'f2855f4bc7bff66800bc484db8ea422abae9571b8500967260b2ba2127dc6c4248b4078f2ed6c6be35c1eae76d2c2c394b3b2eeb57a9bc06b2ad83360dcebc84'
-            'a1b3b646ad9d935628ad0c5ae98b7e851cb0d96e2fa581e4625ec6750a778ee3811e1be1522cc9978c4bf3ecff6a2fdc8f12fa52699adc1d15aa12c5a9711873'
-            'f6229d8c530d5d50390b4478e97a1b9f7c515dbc0a98e01307411c3c77acd5c47c5565e0347f964a80b336905da39aa7079b7fb42bea6b87d311e05dec54281b'
-            'b8c5fbd9b98bc88e197bfee8aaba17743ce0e605564a2d26c1498cdfe1941001e837f9bb0ec094c603e612a9001e5042172774f571b1fd7fafb2a4d38fdcb2ec'
-            '6bfffc71e39cf71621ecfaf5e497f2f1edb5d62d39b20f23572c3918f757d222dd4a44760433c45723687f30bf7a3cc7d0a10477e2f078872f0c8175096c9496'
-            'f8ccc231e0f247d14c5e523db4b90ca2c5fc216a96a767c1ad0c99b66636cbd020884ff1884af59f19665021f95df9da44ced2a9ea3de9865f1fad79c7194c12')
+            '0a2395a7162737e41d640f800a8c39f5947149382718b4a6b3cc14e544a93f474ef0f5afe489c98c416c07e546817b8c925a9c042dde39b6c05d9d0eef13a57e'
+            '19ccbab5f66c1473627f12770b9afddc09d4d3f29b66e23b5d9d11d5ae2180e8b92633f5245be2e43f05fcc742df2544e63cd9fcccd61bb0df0e4495ab84beec'
+            '09b86b7527d45423090645a6763bb5d2d2bfe105a1db3736a2b7d48edf73dd2a6a4da4ae8ceb62bf26da210d07a6e6f7260dea7e01539e7746731d898793a07b'
+            '769216fec2b6a6af706e5bea1deace01b77c62e4dc6e8e5f8aa4165e1b4e7323ecaf1084dacf9302a6b5cdb1ce44720143ae7f40186519dca02846e8bd6016f2'
+            '1063f632d242f67c3181618c55e77f6f6aaf3fb160de8f750d79e0da5e8400fa45a3923c71748b4da5a1f4f45a1089b42c6aa617c4832edf607172649838ca03'
+            '2c3317d00faa52980c0069f0655e83681606b6e259044129149bff2ba1b7f17dbfdeeaad832b6d0b2f4935c7fd40bfefec54bbfe04bf189c5868847cc63065f6'
+            'f2d9b8e12981ca0a2eced2aed025c8a41a9bdd042155e6de7a3c417302750401b1906bd89f4767559447090fc175e2ec2f0e93fb70beb765798136078a1764c9'
+            'b1f8336570735fdd03517d72f57c78252e6de3fd7e5fcf1162339598ef58cb0c5206311285c7bb9f51b8e4c3a04aca223f555f239ff8225b949eb574509d08a4'
+            '4841eeee6c073f9d40cb0ca16798918b8a535491b166f3e024228261e7c2d597910c40f5c611205fd17e88034cedbe0298363778007a4c2c254762b40398ec3d'
+            'd4ce06fd1317e56b13cfbcf5ea667162ce93badea7519da1dd55ca3c8d2f892729501cd5df762eba16de83ce853b1b377dd5a8be812ea42ce3a13dfaf020575b')
 
 pkgver() {
     cd "${srcdir}/mozc" || exit
@@ -95,12 +96,6 @@ prepare() {
     # disable fcitx4 target
     rm unix/fcitx/fcitx.gyp
 
-    # disable android-ndk requirement, even if we don't need it bazel will complain
-    sed "/android_ndk_repository/d" -i WORKSPACE.bazel
-
-    # adjust QT_BASE_PATH
-    sed 's|path = QT_BASE_PATH|path = "/usr/include/qt"|' -i WORKSPACE.bazel
-
     # fix mozc icon for kimpanel
     sed -i 's|PREFIX|/usr|' unix/fcitx5/mozc.conf
 
@@ -109,20 +104,16 @@ prepare() {
 
     # UT Dictionary steps, rewrite of `sh make.sh`
     msg 'UT Dictionary steps, rewrite of `sh make.sh`'
-    cd "${srcdir}/merge-ut-dictionaries/src" || exit
+    cd "${srcdir}/merge-ut-dictionaries/src/merge" || exit
     msg '1. Append dictionaries'
     for dict in "${_dict[@]}"; do
-      cat "$srcdir/mozcdic-ut-${dict}.txt" >>mozcdic-ut.txt
+        cat "$srcdir/mozcdic-ut-${dict}-${_utdicdate}.txt" >>mozcdic-ut.txt
     done
-
     msg '2. Patch python scripts to avoid downloading'
-    sed '/^subprocess*/d' -i count_word_hits.py
-    sed "s,https://raw.githubusercontent.com/google/mozc/master,file://$srcdir/mozc," -i remove_duplicate_ut_entries.py
-    mv -v "$srcdir/jawiki-latest-all-titles-in-ns0-${_utdicdate}.gz" ./jawiki-latest-all-titles-in-ns0.gz
+    patch -Np1 -i "${srcdir}/0001-remove-download.patch"
+    mv -v "$srcdir/jawiki-latest-pages-articles-multistream-index-${_utdicdate}.txt.bz2" jawiki-latest-pages-articles-multistream-index.txt.bz2
     msg '3. Run the python scripts as in original make.sh, it may take some time...'
-    python remove_duplicate_ut_entries.py mozcdic-ut.txt
-    python count_word_hits.py
-    python apply_word_hits.py mozcdic-ut.txt
+    python merge_dictionaries.py mozcdic-ut.txt
     msg '4. Finally add UT dictionary to mozc source'
     cat mozcdic-ut.txt >>"$srcdir/mozc/src/data/dictionary_oss/dictionary00.txt"
 }
@@ -136,16 +127,16 @@ build() {
 
     _targets="unix/fcitx5:fcitx5-mozc.so server:mozc_server gui/tool:mozc_tool renderer/qt:mozc_renderer unix/ibus:ibus_mozc unix/emacs:mozc_emacs_helper"
 
-    export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
+    unset ANDROID_NDK_HOME
+    unset ANDROID_HOME
+    export JAVA_HOME='/usr/lib/jvm/java-21-openjdk/'
     export QT_BASE_PATH=/usr/include/qt
 
     # Temp fix for GCC 14
     sed -i -e '/Werror/d' third_party/protobuf/build_defs/cpp_opts.bzl
 
-    bazel build --copt=-fPIC --compilation_mode opt --config oss_linux $_targets
+    bazel build --copt=-fPIC --compilation_mode opt --config oss_linux $_targets --copt='-Wno-maybe-uninitialized' --host_copt='-Wno-maybe-uninitialized'
 
-    # Extract license part of mozc
-    head -n 29 server/mozc_server.cc >LICENSE
 }
 
 package_mozc-ut-full-common() {
@@ -156,8 +147,35 @@ package_mozc-ut-full-common() {
     export _bldtype
     cd mozc/src || exit
 
-    install -d "$pkgdir/usr/share/licenses/$pkgname/"
-    install -m 644 LICENSE data/installer/*.html "$pkgdir/usr/share/licenses/$pkgname/"
+    # BSD-3-Clause
+    sed -n 1,29p unix/fcitx5/fcitx_key_translator.h >Fcitx5
+    sed -i -e 's|^\/\/[ ]\?||g' Fcitx5
+    install -Dm644 Fcitx5 "${pkgdir}"/usr/share/licenses/${pkgname}/Fcitx5
+    # BSD-3-Clause
+    sed -n 67,94p data/installer/credits_en.html >Mozc
+    install -Dm644 Mozc "${pkgdir}"/usr/share/licenses/${pkgname}/Mozc
+    # BSD-3-Clause
+    sed -n 317,344p data/installer/credits_en.html >Breakpad
+    install -Dm644 Breakpad "${pkgdir}"/usr/share/licenses/${pkgname}/Breakpad
+    # NAIST-2003
+    sed -n 355,424p data/installer/credits_en.html >IPAdic
+    install -Dm644 IPAdic "${pkgdir}"/usr/share/licenses/${pkgname}/IPAdic
+    # BSD-2-Clause
+    sed -n 435,457p data/installer/credits_en.html >Japanese-Usage-Dictionary
+    install -Dm644 Japanese-Usage-Dictionary "${pkgdir}"/usr/share/licenses/${pkgname}/Japanese-Usage-Dictionary
+    # Public Domain Data
+    sed -n 468,470p data/installer/credits_en.html >Okinawa-Dictionary
+    install -Dm644 Okinawa-Dictionary "${pkgdir}"/usr/share/licenses/${pkgname}/Okinawa-Dictionary
+    # BSD-3-Clause
+    sed -n 481,513p data/installer/credits_en.html >Protocol-Buffers
+    install -Dm644 Protocol-Buffers "${pkgdir}"/usr/share/licenses/${pkgname}/Protocol-Buffers
+    # MIT
+    sed -n 698,704p data/installer/credits_en.html >Tamachi-Phonetic-Kanji-Alphabet
+    install -Dm644 Tamachi-Phonetic-Kanji-Alphabet "${pkgdir}"/usr/share/licenses/${pkgname}/Tamachi-Phonetic-Kanji-Alphabet
+    # MIT
+    sed -n 762,782p data/installer/credits_en.html >Windows-Implementation-Library
+    sed -i -e 's|^[ \t]*||g' Windows-Implementation-Library
+    install -Dm644 Windows-Implementation-Library "${pkgdir}"/usr/share/licenses/${pkgname}/Windows-Implementation-Library
 
     ../scripts/install_server_bazel
 }
