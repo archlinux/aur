@@ -6,6 +6,10 @@
 #  - Set env var SALT_ADDITIONAL_PIP_PACKAGES for additional onedir pip packages.
 #    Example: SALT_ADDITIONAL_PIP_PACKAGES='gitpython pynacl' makepkg
 #    The additional packages are listed in the package description.
+#  - To build the onedir environment with dynamic requirements (effectively meaning latest
+#    compatible version of dependencies), set the env var SALT_DYNAMIC_REQUIREMENTS=1.
+#    By default, the package is built using the static requirements file shipped by upstream.
+#    Static requirements have been the default since PKGBUILD 3007.1-5.
 #  - makepkg will complain about packaging issues because the .pyc files (python bytecode)
 #    contain the absolute path of the resource during the build, meaning $srcdir references
 #    are found in the final build. This does not appear to cause any real issues.
@@ -22,7 +26,7 @@
 pkgname=salt-onedir
 provides=('salt')
 pkgver=3007.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Central system and configuration manager (onedir installation +[${SALT_ADDITIONAL_PIP_PACKAGES}])"
 arch=('x86_64' 'aarch64')
 url='http://saltstack.org/'
@@ -77,7 +81,12 @@ build() {
 
   # Install salt into the relenv environment
   # Note: This must be an absolute path, otherwise pip interprets it as pkg name
-  "${onedir}"/bin/pip3 install "${srcdir}/salt-${pkgver}"
+  if [[ -z $SALT_DYNAMIC_REQUIREMENTS ]]; then
+    USE_STATIC_REQUIREMENTS=1
+  fi
+  USE_STATIC_REQUIREMENTS=${USE_STATIC_REQUIREMENTS} \
+    "${onedir}"/bin/pip3 install "${srcdir}/salt-${pkgver}"
+
   # Add additional python deps for Salt
   if [[ -n ${SALT_ADDITIONAL_PIP_PACKAGES} ]]; then
     "${onedir}"/bin/pip3 install ${SALT_ADDITIONAL_PIP_PACKAGES}
