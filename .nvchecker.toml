@@ -1,0 +1,4 @@
+[ooniprobe-desktop]
+source = "git"
+git = "https://github.com/ooni/probe-desktop.git"
+prefix = "v"
