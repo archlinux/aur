@@ -1,0 +1,4 @@
+[cod]
+source = "git"
+git = "https://github.com/dim-an/cod.git"
+prefix = "v"
