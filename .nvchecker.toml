@@ -1,0 +1,4 @@
+[flowtime]
+source = "git"
+git = "https://github.com/Diego-Ivan/Flowtime.git"
+prefix = "v"
