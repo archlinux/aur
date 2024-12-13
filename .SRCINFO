@@ -1,6 +1,6 @@
 pkgbase = python-iniparse
 	pkgdesc = Better INI parser library for Python
-	pkgver = 0.5
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/candlepin/python-iniparse
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-iniparse
 	makedepends = python-setuptools
 	depends = python
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/source/i/iniparse/iniparse-0.5.tar.gz
-	md5sums = 2054bab923df21107652d009f2373789
+	source = https://github.com/candlepin/python-iniparse/archive/refs/tags/0.5.1.tar.gz
+	md5sums = 0646a83586cde2a8289915287ba28f94
+	md5sums = 89935a71e05dc16444c1fb8398b74a5c
 
 pkgname = python-iniparse
-
