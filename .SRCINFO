@@ -96,9 +96,11 @@ pkgbase = libvirt
 	backup = etc/sasl2/libvirt.conf
 	source = https://libvirt.org/sources/libvirt-10.10.0.tar.xz
 	source = https://libvirt.org/sources/libvirt-10.10.0.tar.xz.asc
+	source = libvirt-fix-tpm.patch::https://gitlab.com/libvirt/libvirt/-/commit/81da7a2c.patch
 	validpgpkeys = 453B65310595562855471199CA68BE8010084C9C
 	sha256sums = e1bd7bd31b7c0d0ae073dec050bb5b0232b3e4adebdc58ea82fe8b366c765796
 	sha256sums = SKIP
+	sha256sums = 8a33a1b321f3f8eb27788c6efc7326c96780d046a1d0057c79cc4ed969785cfd
 
 pkgname = libvirt
 	provides = libvirt=10.10.0

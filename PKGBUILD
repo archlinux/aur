@@ -111,9 +111,11 @@ backup=(
 )
 source=(
   "https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc}
+  libvirt-fix-tpm.patch::https://gitlab.com/libvirt/libvirt/-/commit/81da7a2c.patch
 )
 sha256sums=('e1bd7bd31b7c0d0ae073dec050bb5b0232b3e4adebdc58ea82fe8b366c765796'
-            'SKIP')
+            'SKIP'
+            '8a33a1b321f3f8eb27788c6efc7326c96780d046a1d0057c79cc4ed969785cfd')
 validpgpkeys=('453B65310595562855471199CA68BE8010084C9C') # Jiří Denemark <jdenemar@redhat.com>
 
 prepare() {
@@ -127,6 +129,9 @@ prepare() {
   sed -i 's|/usr/libexec/qemu-bridge-helper|/usr/lib/qemu/qemu-bridge-helper|g' \
     src/qemu/qemu.conf.in \
     src/qemu/test_libvirtd_qemu.aug.in
+
+  # Backport fix for https://gitlab.archlinux.org/archlinux/packaging/packages/libvirt/-/issues/5
+  patch -Np1 -i ../libvirt-fix-tpm.patch
 }
 
 build() {
