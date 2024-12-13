@@ -1,0 +1,20 @@
+pkgbase = clipio-git
+	pkgdesc = Clipio scans and organizes your clips from Medal.tv, Shadowplay, OBS, and AMD Relive. Quickly sort, search, and view your favorite moments by date, source, or game.(Use system-wide electron)
+	pkgver = r19.c5565f2
+	pkgrel = 1
+	url = https://clipio.whoswhip.top/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron33
+	depends = nodejs
+	source = clipio.git::git+https://github.com/whoswhip/clipio.git
+	source = clipio.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = clipio-git
