@@ -1,5 +1,5 @@
 pkgbase = coinstac-desktop-app-bin
-	pkgdesc = Collaborative Informatics and Neuroimaging Suite Toolkit for Anonymous Computation
+	pkgdesc = Collaborative Informatics and Neuroimaging Suite Toolkit for Anonymous Computation.(Prebuilt version.Use system-wide electron)
 	pkgver = 6.8.17
 	pkgrel = 1
 	url = https://github.com/trendscenter/coinstac

@@ -4,7 +4,7 @@ _pkgname=COINSTAC
 pkgver=6.8.17
 _electronversion=18
 pkgrel=1
-pkgdesc="Collaborative Informatics and Neuroimaging Suite Toolkit for Anonymous Computation"
+pkgdesc="Collaborative Informatics and Neuroimaging Suite Toolkit for Anonymous Computation.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
