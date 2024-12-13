@@ -1,0 +1,4 @@
+[gnome-shell-extension-alphabetical-grid-extension]
+source = "git"
+git = "https://github.com/stuarthayhurst/alphabetical-grid-extension.git"
+prefix = "v"
