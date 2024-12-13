@@ -1,0 +1,4 @@
+[girens]
+source = "git"
+git = "https://gitlab.gnome.org/tijder/girens.git"
+prefix = "v"
