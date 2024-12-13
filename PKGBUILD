@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=k3s
-pkgver=1.31.1+k3s1
+pkgver=1.31.3+k3s1
 pkgrel=1
 pkgdesc='Lightweight Kubernetes'
 arch=(x86_64)
@@ -30,7 +30,7 @@ source=(
   '0005-.service-update-systemd-service-files.patch'
   '0006-scripts-moar-compression-drop-pigz-and-raw-tar.patch'
 )
-sha256sums=('3f4bca69b9ccbf18ad0d668d08f35263279bd963d04bd8bc035d1586028de9c3'
+sha256sums=('8fe579edd10208785bc4df2da6779df2539b171a4f00c6018907de93926ac14f'
             '94b0dd21fa4f075d4db7f6efe7a775de476b278de72f99773ee3de0bb54e7f68'
             '2f6964aed46deb38095801e124a6603f3a29e6886815d52c59c02883f7a37925'
             '6f0500a656ed78c0bb689c12264dbcd79f579edc3b9e17d512be742c1b2c43a4'
