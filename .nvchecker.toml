@@ -1,0 +1,4 @@
+[ctranslate2]
+source = "git"
+git = "https://github.com/OpenNMT/CTranslate2.git"
+prefix = "v"
