@@ -4,7 +4,7 @@
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
-pkgver=0.10.0
+pkgver=0.10.1
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -41,7 +41,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('6e8e8b00797e555a677682cfb62e1738de2c835172a27717d3a79de91abd2811'
+sha256sums=('facc6a2f97cc0b037b1dc234bd19726ce59f21e83d790be4b8e68bf75bb018c2'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
