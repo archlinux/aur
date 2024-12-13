@@ -1,0 +1,3 @@
+[xapp-thumbnailers]
+source = "git"
+git = "https://github.com/linuxmint/xapp-thumbnailers.git"
