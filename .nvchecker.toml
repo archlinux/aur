@@ -1,0 +1,4 @@
+[portfolio-file-manager]
+source = "git"
+git = "https://github.com/tchx84/Portfolio.git"
+prefix = "v"
