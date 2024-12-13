@@ -1,0 +1,3 @@
+[meteo]
+source = "git"
+git = "https://gitlab.com/bitseater/meteo.git"
