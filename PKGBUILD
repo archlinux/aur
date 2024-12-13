@@ -3,13 +3,13 @@
 
 pkgname=ncmpvc-git
 pkgver=0.0.1.r26.35bab73
-pkgrel=2
-pkgdesc="Ncurses IPC client for mpv, written in Rust"
-arch=('x86_64')
-url="https://gitlab.com/mpv-ipc/ncmpvc"
-license=('MIT')
-depends=('mpv')
-makedepends=('cargo' 'git')
+pkgrel=3
+pkgdesc='Ncurses IPC client for mpv, written in Rust'
+arch=(x86_64)
+url=https://gitlab.com/mpv-ipc/ncmpvc
+license=(MIT)
+depends=(mpv)
+makedepends=(cargo git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=$pkgname.install
@@ -22,16 +22,25 @@ pkgver() {
 }
 
 prepare() {
-  sed -i 's/fn error(&self, &str);/fn error(\&self, msg: \&str);/' $pkgname/src/main.rs
-  sed -i 's/macro_rules! println_stderr(/#[allow(unused_macros)]\n&/' $pkgname/src/macros.rs
+  export RUSTUP_TOOLCHAIN=stable
+  cd $pkgname
+  cargo update
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
+  sed -i 's/fn error(&self, &str);/fn error(\&self, msg: \&str);/' src/main.rs
+  sed -i 's/macro_rules! println_stderr(/#[allow(unused_macros)]\n&/' src/macros.rs
 }
 
 build() {
-  RUSTUP_TOOLCHAIN=stable cargo build --release --all-features --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target
+  export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
+  cd $pkgname
+  cargo build --frozen --release --all-features
 }
 
 check() {
-  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target
+  export RUSTUP_TOOLCHAIN=stable
+  cd $pkgname
+  cargo test --frozen --all-features
 }
 
 package() {
