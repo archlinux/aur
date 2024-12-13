@@ -1,0 +1,4 @@
+[vdu_controls]
+source = "git"
+git = "https://github.com/digitaltrails/vdu_controls.git"
+prefix = "v"
