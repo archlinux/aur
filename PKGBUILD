@@ -5,8 +5,8 @@ pkgname='python-niquests-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname/-/.}"
-pkgver=3.11.0.r0.gdd70717e
-pkgrel=1
+pkgver=3.11.3.r0.g6bf77915
+pkgrel=2
 pkgdesc='Simple, yet elegant, Python HTTP library: a drop-in replacement for python-requests (latest git commit)'
 arch=('any')
 url='https://github.com/jawah/niquests'
@@ -32,6 +32,7 @@ depends=(
   'python-urllib3'
   'python-urllib3-future'
   'python-wassima'
+  'python-wsproto'
 )
 source=("git+$url.git")
 provides=("$_pkgname")
