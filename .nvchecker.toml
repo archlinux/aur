@@ -1,0 +1,3 @@
+[python-textstat]
+source = "git"
+git = "https://github.com/textstat/textstat.git"
