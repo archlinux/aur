@@ -8,7 +8,7 @@ pkgname=(
   'scala3'
 )
 pkgver=3.6.2
-pkgrel=2
+pkgrel=4
 pkgdesc='The Scala 3 compiler, also known as Dotty.'
 arch=('any')
 url='http://dotty.epfl.ch'
