@@ -1,0 +1,4 @@
+[git-cola]
+source = "git"
+git = "https://github.com/git-cola/git-cola.git"
+prefix = "v"
