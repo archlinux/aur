@@ -1,0 +1,3 @@
+[finetune]
+source = "cmd"
+cmd = "curl -s https://flavio.tordini.org/finetune-ws/release.xml | tr -dc 0-9."
