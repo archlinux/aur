@@ -1,7 +1,7 @@
 pkgbase = rdt-client
 	pkgdesc = Real-Debrid Torrent Client
 	pkgver = 2.0.91
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rogerfar/rdt-client
 	arch = any
 	license = MIT
