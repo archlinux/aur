@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !update-check.patch
+!.nvchecker.toml
