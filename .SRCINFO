@@ -1,6 +1,6 @@
 pkgbase = typora-theme-phycat
 	pkgdesc = 物理猫Typora主题
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://sumruler.github.io/typora-theme-phycat
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = typora-theme-phycat
 	provides = typora-theme-phycat
 	conflicts = typora-theme-phycat-git
 	conflicts = typora-theme-phycat-bin
-	source = typora-theme-phycat-1.2.0.zip::https://github.com/sumruler/typora-theme-phycat/releases/download/v1.2.0/typora-theme-phycat.zip
-	sha256sums = 25af68fbf3e1df05db289cfac825d8c3ebd537fd173ee8f335619ad52f425a56
+	source = typora-theme-phycat-1.2.1.zip::https://github.com/sumruler/typora-theme-phycat/releases/download/v1.2.1/typora-theme-phycat.zip
+	sha256sums = 13e5640be04372618dd4cf3a8ff36e89d570fce09f94f4ccb42040602cc9e689
 
 pkgname = typora-theme-phycat

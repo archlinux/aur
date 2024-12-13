@@ -1,6 +1,6 @@
 # Maintainer: witt <1989161762 at qq dot com>
 pkgname=typora-theme-phycat
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="物理猫Typora主题"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
 source=(
     "${pkgname}-${pkgver}.zip::https://github.com/sumruler/typora-theme-phycat/releases/download/v${pkgver}/typora-theme-phycat.zip"
 )
-sha256sums=('25af68fbf3e1df05db289cfac825d8c3ebd537fd173ee8f335619ad52f425a56')
+sha256sums=('13e5640be04372618dd4cf3a8ff36e89d570fce09f94f4ccb42040602cc9e689')
 
 package() {
     # 以下两行主要为了解决权限不一致问题，实际可以不要
