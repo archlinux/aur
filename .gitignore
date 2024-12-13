@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !hardinfo2.install
+!.nvchecker.toml
