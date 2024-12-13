@@ -1,0 +1,3 @@
+[python-zxing-cpp-bin]
+source = "pypi"
+pypi = "zxing_cpp"
