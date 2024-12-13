@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mqttx-git
 _pkgname=MQTTX
-pkgver=1.11.0.r0.g2df620f
+pkgver=1.11.1.r0.g9e84519
 _electronversion=13
 _nodeversion=16
 pkgrel=1
-pkgdesc="A cross-platform MQTT 5.0 client tool open sourced by EMQ.Use system-wide electron."
+pkgdesc="A cross-platform MQTT 5.0 client tool open sourced by EMQ.(Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
@@ -22,9 +22,8 @@ makedepends=(
     'nvm'
     'gendesk'
     'yarn'
-    'python>3'
+    'python'
     'curl'
-    'cmake'
     'gcc'
 )
 source=(
@@ -45,7 +44,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -65,7 +64,6 @@ build() {
         {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
-            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
             echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
             echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
             echo "cacheFolder "${srcdir}"/.yarn/cache"
@@ -77,10 +75,14 @@ build() {
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
-        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
+        echo cli web | xargs -n 1 cp .yarnrc
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g;s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g;s/--linux\"/--linux --dir\"/g" package.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     yarn run electron:build-linux
 }
 package() {
