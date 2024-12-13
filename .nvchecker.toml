@@ -1,0 +1,3 @@
+[python-userspacefs]
+source = "pypi"
+pypi = "userspacefs"
