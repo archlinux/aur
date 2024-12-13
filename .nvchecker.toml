@@ -1,0 +1,4 @@
+[adwsteamgtk]
+source = "git"
+git = "https://github.com/Foldex/AdwSteamGtk.git"
+prefix = "v"
