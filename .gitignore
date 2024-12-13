@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !conf.yml
+!.nvchecker.toml
