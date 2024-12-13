@@ -1,0 +1,4 @@
+[apps-menu-applet-for-cosmic-git]
+source = "git"
+git = "https://github.com/leb-kuchen/apps-menu-applet-for-cosmic.git"
+prefix = "v"
