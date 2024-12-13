@@ -1,0 +1,4 @@
+[bibata-extra-cursor-theme]
+source = "git"
+git = "https://github.com/ful1e5/Bibata_Extra_Cursor.git"
+prefix = "v"
