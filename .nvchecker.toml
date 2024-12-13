@@ -1,0 +1,4 @@
+[pigar]
+source = "git"
+git = "https://github.com/Damnever/pigar.git"
+prefix = "v"
