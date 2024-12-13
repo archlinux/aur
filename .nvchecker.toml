@@ -1,0 +1,4 @@
+[plex-remote]
+source = "git"
+git = "https://github.com/tijder/plex-remote.git"
+prefix = "v"
