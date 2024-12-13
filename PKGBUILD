@@ -1,7 +1,7 @@
 # Maintainer: Lex Black <autumn-wind@web.de>
 
 pkgname=labwc
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='stacking wayland compositor with look and feel from openbox'
 url="https://github.com/labwc/labwc"
@@ -11,7 +11,7 @@ depends=('libpng' 'librsvg' 'libsfdo' 'pango' 'seatd' 'ttf-font' 'libwlroots-0.1
 makedepends=('meson' 'scdoc' 'wayland-protocols')
 optdepends=("bemenu: default launcher via Alt+F3")
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/labwc/labwc/archive/${pkgver}.tar.gz")
-b2sums=('4a54f20ef07df7da8612ea911562a86fe619bf94a42eeb222ba72f667acc83c5847521d01500ac8ad33e34863d406d30fc403fce511c96bce6e98d595b3a26f4')
+b2sums=('addcf8c12dc6c34a6f9e958db40bbfd8f85aec582e0507be1d3d7d2904175d5d1cea480c4ba3365167767e64c02c269ce6b34ad5cf81eec4ae3a34af1123eba8')
 
 
 build() {
