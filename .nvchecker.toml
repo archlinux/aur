@@ -1,0 +1,4 @@
+[gtk-theme-framework]
+source = "git"
+git = "https://github.com/jaxwilko/gtk-theme-framework.git"
+prefix = "v"
