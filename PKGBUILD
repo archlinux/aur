@@ -2,7 +2,7 @@
 # Contributor: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=gpgfrontend
 pkgver=2.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="An exceptional GUI frontend for the modern GnuPG (gpg)"
 arch=('x86_64')
 url="https://gpgfrontend.bktus.com"
@@ -16,7 +16,6 @@ depends=(
   'qt6-base'
 )
 makedepends=(
-  'boost'
   'cmake'
   'desktop-file-utils'
   'git'

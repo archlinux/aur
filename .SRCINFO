@@ -1,11 +1,10 @@
 pkgbase = gpgfrontend
 	pkgdesc = An exceptional GUI frontend for the modern GnuPG (gpg)
 	pkgver = 2.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gpgfrontend.bktus.com
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = boost
 	makedepends = cmake
 	makedepends = desktop-file-utils
 	makedepends = git
