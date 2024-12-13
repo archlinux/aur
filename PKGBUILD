@@ -4,7 +4,7 @@ _name="sysrescueusbwriter"
 _pkgname="systemrescue-usbwriter"
 pkgname="${_pkgname}-appimage"
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to write SystemRescue to a USB memory stick"
 arch=('x86_64')
 url="https://gitlab.com/systemrescue/${_pkgname}"
@@ -48,13 +48,14 @@ build() {
 package() {
   cd "${srcdir}"
   install -vDm755 "${_pkgsrc}-${CARCH}.AppImage" "${pkgdir}/opt/${_name}/${_name}.AppImage"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 
   cd "${srcdir}/${_pkgsrc}-${CARCH}"
   install -vDm644 "${_name}.desktop" "${pkgdir}/usr/share/applications/${_name}.desktop"
   install -vDm644 "${_name}.png"     "${pkgdir}/usr/share/pixmaps/${_name}.png"
 
   cd "${srcdir}/${_pkgsrc}-${CARCH}/usr/share/licenses/${_name}"
-  install -vDm644 "GPL-3.0-or-later" "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
+  install -vDm644 "GPL-3.0-or-later" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   
   cd "${srcdir}/${_pkgsrc}-${CARCH}/usr/share/metainfo"
   install -vDm644 "org.system_rescue.systemrescue_usb_writer.metainfo.xml" \
