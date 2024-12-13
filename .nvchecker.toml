@@ -1,0 +1,4 @@
+[materialious]
+source = "git"
+git = "https://github.com/Materialious/Materialious.git"
+prefix = "v"
