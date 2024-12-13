@@ -8,3 +8,4 @@
 !com.system76.FirmwareManager.policy
 !firmware-manager.install
 !firmware-manager.sh
+!.nvchecker.toml
