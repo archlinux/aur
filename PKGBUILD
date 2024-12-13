@@ -69,6 +69,8 @@ conflicts=(
 : "${conflicts[@]}"
 
 prepare() {
+    rm -rf squashfs-root
+
     chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract
 }
