@@ -5,13 +5,14 @@
 
 pkgname=mercury
 pkgver=22.01.8
-pkgrel=1
+pkgrel=2
 pkgdesc="The mercury language compiler."
 arch=('i686' 'x86_64')
 url="http://www.mercurylang.org/"
 license=('GPL')
 depends=('gcc' 'make')
 makedepends=('flex' 'bison')
+options=(staticlibs)
 source=(http://dl.mercurylang.org/release/mercury-srcdist-${pkgver}.tar.xz)
 b2sums=('18ded08484e9144edbc64ce7e31ce18b93b76889842cd968ae98eaba0c818655e04ac1a5b86c3147b0a8f09a6fbbcc39a244a48e27b88a1a5b9b5c3d56c8f251')
 
