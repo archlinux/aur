@@ -1,0 +1,4 @@
+[python-asyncstdlib]
+source = "git"
+git = "https://github.com/maxfischer2781/asyncstdlib.git"
+prefix = "v"
