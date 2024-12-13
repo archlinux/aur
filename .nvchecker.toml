@@ -1,0 +1,3 @@
+[python-uuid6]
+source = "git"
+git = "https://github.com/oittaa/uuid6-python.git"
