@@ -1,0 +1,3 @@
+[papirus-linux-universe]
+source = "git"
+git = "https://github.com/Adapta-Projects/Papirus-Linux-Universe.git"
