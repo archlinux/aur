@@ -1,7 +1,7 @@
 # Maintainer: Timur Bagautdinov <mr.bagautdinov14 at gmail dot com>
 
 pkgname="gog-stardew-valley-smapi"
-pkgver=4.1.7
+pkgver=4.1.9
 pkgrel=1
 pkgdesc="The modding API for Stardew Valley."
 url="https://github.com/Pathoschild/SMAPI"
@@ -19,7 +19,7 @@ source=(
 )
 
 sha256sums=(
-    "ecc62a7092c838ca4f1e857ab2d6654f1f288cccbaa5c8a7c1f20f99e91d7086"
+    "1ef4440a39e6af9ae6a6418db440119ae8455ee3eeb69072ebf8ae2d8277f1eb"
     "dd4e8a2c62d5be1d2aa14d95ffeb7154646eb92916cdc9a9bea41f72b16e887d"
     "9f496b90f30549170189a990d1c13b7a6d66c5b21189617c9f3b666a32b7c7b5"
 )
@@ -93,7 +93,7 @@ package() {
     sed -i 's|"CheckForUpdates": true,|"CheckForUpdates": false,|' "$pkgdir/opt/gog-stardew-valley/game/smapi-internal/config.json"
 
     ## other important stuff
-    for file in "0Harmony.dll" "0Harmony.xml" "Mono.Cecil.dll" "Mono.Cecil.Mdb.dll" "Mono.Cecil.Pdb.dll" "MonoMod.Common.dll" "Newtonsoft.Json.dll" "Pathoschild.Http.Client.dll" "Pintail.dll" "TMXTile.dll" "SMAPI.Toolkit.dll" "SMAPI.Toolkit.xml" "SMAPI.Toolkit.CoreInterfaces.dll" "SMAPI.Toolkit.CoreInterfaces.xml" "System.Net.Http.Formatting.dll"; do
+    for file in "0Harmony.dll" "0Harmony.xml" "Markdig.dll" "Mono.Cecil.dll" "Mono.Cecil.Mdb.dll" "Mono.Cecil.Pdb.dll" "MonoMod.Common.dll" "Newtonsoft.Json.dll" "Pathoschild.Http.Client.dll" "Pintail.dll" "TMXTile.dll" "SMAPI.Toolkit.dll" "SMAPI.Toolkit.xml" "SMAPI.Toolkit.CoreInterfaces.dll" "SMAPI.Toolkit.CoreInterfaces.xml" "System.Net.Http.Formatting.dll"; do
         install -m 644 "$srcdir/SMAPI-$pkgver/src/SMAPI/bin/Release/linux-x64/$file" "$pkgdir/opt/gog-stardew-valley/game/smapi-internal/$file"
     done
 
