@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !mullvad-vpn.install
+!.nvchecker.toml
