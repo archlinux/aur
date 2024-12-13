@@ -12,6 +12,7 @@ pkgbase = pay-respects
 	makedepends = cargo
 	makedepends = git
 	makedepends = openssl
+	makedepends = pkg-config
 	optdepends = curl: AI requests
 	provides = pay-respects
 	source = pay-respects::git+https://github.com/iffse/pay-respects#tag=v0.6.5
