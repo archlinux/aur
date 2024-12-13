@@ -2,10 +2,10 @@
 
 pkgname=libvdwxc
 pkgver=0.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A library for vdW-DF exchange-correlation functionals"
 arch=(x86_64 aarch64)
-url="https://libvdwxc.org"
+url="https://libvdwxc.materialsmodeling.org"
 license=(GPL-3.0-or-later)
 depends=(fftw-openmpi)
 makedepends=(gcc-fortran)

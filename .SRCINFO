@@ -1,8 +1,8 @@
 pkgbase = libvdwxc
 	pkgdesc = A library for vdW-DF exchange-correlation functionals
 	pkgver = 0.4.0
-	pkgrel = 4
-	url = https://libvdwxc.org
+	pkgrel = 5
+	url = https://libvdwxc.materialsmodeling.org
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
