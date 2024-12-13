@@ -1,0 +1,4 @@
+[gnome-shell-extension-gtile]
+source = "git"
+git = "https://github.com/gTile/gTile.git"
+prefix = "V"
