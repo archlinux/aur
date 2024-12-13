@@ -2,7 +2,7 @@
 # Co-maintainer: Edu4rdSHL <edu4rdshl@protonmail.com>
 pkgname=waveterm-git
 _pkgname=Wave
-pkgver=0.9.3.r2.g2e91ee8
+pkgver=0.10.1.beta.0.r0.g7bca363
 _electronversion=33
 _nodeversion=22
 pkgrel=1
@@ -51,7 +51,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -94,12 +94,15 @@ build() {
         /- task: build:server:windows/d
         s/ && yarn electron-builder -c electron-builder.config.cjs -p never//g
     " -i Taskfile.yml
-    sed -i "191,198d;175,182d" Taskfile.yml
+    sed -i "192,199d;176,183d" Taskfile.yml
     gem install fpm
     _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
     corepack enable yarn
     echo y | yarn version "${_yarnver}"
     NODE_ENV=development    yarn install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     go-task package
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" -c electron-builder.config.cjs
 }
