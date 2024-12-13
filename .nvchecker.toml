@@ -1,0 +1,3 @@
+[savedesktop]
+source = "git"
+git = "https://github.com/vikdevelop/SaveDesktop.git"
