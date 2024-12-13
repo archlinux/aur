@@ -1,0 +1,4 @@
+[huekeys]
+source = "git"
+git = "https://github.com/BitPonyLLC/huekeys.git"
+prefix = "v"
