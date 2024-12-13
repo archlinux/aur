@@ -1,0 +1,3 @@
+[python-caio]
+source = "git"
+git = "https://github.com/mosquito/caio.git"
