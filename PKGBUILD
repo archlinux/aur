@@ -5,12 +5,12 @@
 
 pkgname=libmodbus-git
 _gitname=libmodbus
-pkgver=3.1.10.r2.b25629b
+pkgver=3.1.11.r1.b25629b
 pkgrel=1
 pkgdesc="A Modbus library for Linux, Mac OS X, FreeBSD, QNX and Win32 (github version)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://libmodbus.org"
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 depends=('glibc')
 makedepends=(git asciidoc xmlto)
 provides=(libmodbus)
