@@ -1,0 +1,4 @@
+[octopi]
+source = "git"
+git = "https://github.com/aarnt/octopi.git"
+prefix = "v"
