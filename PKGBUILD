@@ -12,7 +12,7 @@ depends=('java-runtime' 'jdk8-openjdk' 'bash' 'xdg-utils' )
 
 
 
-source=("git+https://github.com/Marx79/Slpct.git")
+source=(git+https://github.com/Marx79/Slpct.git)
 
 
 
@@ -23,7 +23,7 @@ depends=('java-runtime' 'jdk8-openjdk' 'bash' 'xdg-utils' 'git' 'base-devel')
 
 
 
-sha256sums=("SKIP")
+sha256sums=(SKIP)
 
 
 package() {
