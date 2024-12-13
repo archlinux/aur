@@ -1,0 +1,5 @@
+[python-pydna]
+source = "github"
+github = "bjornfjohansson/pydna"
+use_latest_release = "true"
+prefix = "v"
