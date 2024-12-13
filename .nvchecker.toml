@@ -1,0 +1,4 @@
+[android-messages-desktop]
+source = "git"
+git = "https://github.com/OrangeDrangon/android-messages-desktop.git"
+prefix = "v"
