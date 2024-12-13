@@ -1,0 +1,3 @@
+[gnome-shell-extension-background-logo]
+source = "git"
+git = "https://pagure.io/background-logo-extension.git"
