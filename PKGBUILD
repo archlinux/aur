@@ -1,26 +1,22 @@
 pkgname=fake-hwclock
-pkgver=0.3
+pkgver=0.14
 pkgrel=1
 pkgdesc="Saves time on shutdown and restores it on boot from a file"
 arch=('any')
 license=('GPL')
 install=fake-hwclock.install
-source=('fake-hwclock.sh'
-        'fake-hwclock.service'
-        'fake-hwclock-save.service'
-        'fake-hwclock-save.timer')
-md5sums=('ebba7a7f7e4018dc756aab29877bec39'
-         'fa52aac3db246575c3cc8c1bf608766c'
-         '9f93ed2b74260d204a9c285d35ee2daa'
-         'b2b494cb4ba99eb12df3cb4188902ca4')
+source=('git+https://git.einval.com/git/fake-hwclock.git')
+sha512sums=('SKIP')
 
 package() {
-  install -D -m755 "${srcdir}/fake-hwclock.sh" "${pkgdir}/usr/lib/systemd/scripts/fake-hwclock.sh"
+  install -D -m0755 "${srcdir}/fake-hwclock/fake-hwclock" "${pkgdir}/usr/sbin/fake-hwclock"
+  install -D -m0644 "${srcdir}/fake-hwclock/etc/default/fake-hwclock" "${pkgdir}/etc/default/fake-hwclock"
+
   for unit in \
-    fake-hwclock.service \
+    fake-hwclock-load.service \
     fake-hwclock-save.service \
     fake-hwclock-save.timer
   do
-    install -D -m644 "${srcdir}/$unit" "${pkgdir}/usr/lib/systemd/system/$unit"
+    install -D -m644 "${srcdir}/fake-hwclock/debian/${unit}" "${pkgdir}/usr/lib/systemd/system/${unit}"
   done
 }
