@@ -1,0 +1,3 @@
+[python-kiss-headers]
+source = "git"
+git = "https://github.com/Ousret/kiss-headers.git"
