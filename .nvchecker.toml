@@ -1,0 +1,4 @@
+[speedtest-librespeed]
+source = "git"
+git = "https://github.com/Ketok4321/speedtest.git"
+prefix = "v"
