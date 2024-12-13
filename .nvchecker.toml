@@ -1,0 +1,4 @@
+[python-python-crontab]
+source = "git"
+git = "https://gitlab.com/doctormo/python-crontab.git"
+prefix = "v"
