@@ -1,0 +1,3 @@
+[python-type-enforced]
+source = "git"
+git = "https://github.com/connor-makowski/type_enforced.git"
