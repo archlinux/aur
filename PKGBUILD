@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=follow-git
 _pkgname=Follow
-pkgver=0.0.1.alpha.4.r1244.g6edbf10
+pkgver=0.0.1.alpha.4.r1893.g84698e1
 _electronversion=33
 _nodeversion=22
 pkgrel=1
@@ -42,7 +42,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -74,6 +74,8 @@ build() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install
+}
+build() {
     NODE_ENV=production     pnpm run lint:fix
     NODE_ENV=production     pnpm electron-vite build
     NODE_ENV=production     pnpm electron-forge package
