@@ -16,6 +16,6 @@ makepkg --printsrcinfo > .SRCINFO && makepkg -f
 PKG_FILE=$(ls -t1 *.tar.zst | head -n 1)
 printf "Done, install $PKG_FILE? [Y/n]"
 read -n1 install
-if [ "${install,,}" = "y" ]; then   # ${VAR,,} is for convert to lower case
+if [ "${install,,}" = "y" ] || [ -z "${install}" ]; then   # ${VAR,,} is for convert to lower case
     sudo pacman -U "$PKG_FILE"
 fi
