@@ -1,0 +1,19 @@
+pkgbase = kick-vod-downloader-bin
+	pkgdesc = A tool to download VODs from Kick.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/juddydev/kick-vod-downloader
+	arch = x86_64
+	license = MIT
+	makedepends = fuse2
+	depends = electron31
+	provides = kick-vod-downloader=1.0.6
+	conflicts = kick-vod-downloader
+	source = kick-vod-downloader-1.0.6.AppImage::https://github.com/juddydev/kick-vod-downloader/releases/download/12135550805/Kick.VOD.Downloader-1.0.6.AppImage
+	source = LICENSE-1.0.6::https://raw.githubusercontent.com/juddydev/kick-vod-downloader/12135550805/LICENSE
+	source = kick-vod-downloader.sh
+	sha256sums = 2c0338e9a1e715d54b8d7240de654f5ffbf2ea28ca014cb84d265e4e5fc666df
+	sha256sums = bed96c574359c2b7c4feaffdc0d2666ae39da5fccaba21e035b5b33fe27ff30b
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = kick-vod-downloader-bin
