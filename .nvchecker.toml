@@ -1,0 +1,4 @@
+[python-markdown-del-ins]
+source = "git"
+git = "https://github.com/honzajavorek/markdown-del-ins.git"
+prefix = "v"
