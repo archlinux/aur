@@ -1,6 +1,6 @@
 pkgbase = at32-work-bench-bin
 	pkgdesc = AT32 MCU 图形化配置软件，生成初始化 C 代码(目前仅支持 AT32F421 系列)
-	pkgver = 1.1.01
+	pkgver = 1.1.03
 	pkgrel = 1
 	url = https://www.arterytek.com/cn/support/index.jsp
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = at32-work-bench-bin
 	makedepends = libarchive
 	makedepends = sed
 	depends = bash
+	depends = dbus
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
@@ -23,7 +24,7 @@ pkgbase = at32-work-bench-bin
 	options = !strip
 	options = !debug
 	options = !lto
-	source = AT32_Work_Bench_Linux-x86_64_V1.1.01.zip::https://www.arterytek.com/download/TOOL/AT32_Work_Bench_Linux-x86_64_V1.1.01.zip
-	sha256sums = 8fe3d39454d32fdf649dedf8196191a46c309204c64c9b64c2a3faad826c456a
+	source = AT32_Work_Bench_Linux-x86_64_V1.1.03.zip::https://www.arterytek.com/download/TOOL/AT32_Work_Bench_Linux-x86_64_V1.1.03.zip
+	sha256sums = 2beb043c1dd9f64b669971113bf13ab3936a7ee6fe8719216e9559182664330c
 
 pkgname = at32-work-bench
