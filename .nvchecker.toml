@@ -1,0 +1,4 @@
+[proton-mail]
+source = "git"
+git = "https://github.com/ProtonMail/inbox-desktop.git"
+prefix = "v"
