@@ -1,0 +1,4 @@
+[heynote]
+source = "git"
+git = "https://github.com/heyman/heynote.git"
+prefix = "v"
