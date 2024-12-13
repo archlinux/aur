@@ -1,0 +1,4 @@
+[papirus-folders]
+source = "git"
+git = "https://github.com/PapirusDevelopmentTeam/papirus-folders.git"
+prefix = "v"

@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !papirus-folders.hook
+!.nvchecker.toml
