@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !oryx-kb-leds.install
+!.nvchecker.toml
