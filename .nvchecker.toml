@@ -1,0 +1,4 @@
+[garden-tools]
+source = "git"
+git = "https://gitlab.com/garden-rs/garden.git"
+prefix = "v"
