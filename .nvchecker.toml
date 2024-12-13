@@ -1,0 +1,4 @@
+[addwater]
+source = "git"
+git = "https://github.com/largestgithubuseronearth/addwater.git"
+prefix = "v"
