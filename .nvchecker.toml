@@ -1,0 +1,4 @@
+[blackbox-terminal]
+source = "git"
+git = "https://gitlab.gnome.org/raggesilver/blackbox.git"
+prefix = "v"
