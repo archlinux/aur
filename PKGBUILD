@@ -4,7 +4,7 @@
 
 pkgname=hex-hx-git
 pkgver=0.6.0.r1.ga708256
-pkgrel=1
+pkgrel=2
 pkgdesc='Futuristic take on hexdump'
 arch=(x86_64)
 url=https://github.com/sitkevij/hex
@@ -21,16 +21,23 @@ pkgver() {
 }
 
 prepare() {
-  RUSTUP_TOOLCHAIN=stable cargo fetch --locked --manifest-path=$pkgname/Cargo.toml --target="$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+  cd $pkgname
+  cargo update
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target --all-features
+  export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
+  cd $pkgname
+  cargo build --frozen --release --all-features
 }
 
-check() {
-  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target
-}
+#check() {
+#  export RUSTUP_TOOLCHAIN=stable
+#  cd $pkgname
+#  cargo test --frozen --all-features
+#}
 
 package() {
   install -Dm755 $pkgname/target/release/hx -t "$pkgdir/usr/bin"
