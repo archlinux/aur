@@ -1,0 +1,4 @@
+[freac]
+source = "git"
+git = "https://github.com/enzo1982/freac.git"
+prefix = "v"
