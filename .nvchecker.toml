@@ -1,0 +1,3 @@
+[snoop]
+source = "git"
+git = "https://gitlab.gnome.org/philippun1/snoop.git"
