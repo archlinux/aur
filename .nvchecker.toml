@@ -1,0 +1,4 @@
+[arrowdl]
+source = "git"
+git = "https://github.com/setvisible/ArrowDL.git"
+prefix = "v"
