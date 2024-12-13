@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !system76-acpi-dkms.conf
+!.nvchecker.toml
