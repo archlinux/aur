@@ -1,0 +1,4 @@
+[mission-center]
+source = "git"
+git = "https://gitlab.com/mission-center-devs/mission-center.git"
+prefix = "v"
