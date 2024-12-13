@@ -2,12 +2,12 @@
 # Contributor: Slithery <aur [at] slithery [dot] uk>
 
 pkgname=linode-cli
-pkgver=5.54.0
+pkgver=5.55.0
 _pkgver=4.191.1
 pkgrel=1
 pkgdesc="Linode API wrapper"
 arch=('any')
-url="https://github.com/${pkgname%%-*}/${pkgname}"
+url="https://techdocs.akamai.com/cloud-computing/docs/cli"
 license=('BSD-3-Clause')
 depends=('python-openapi3'
          'python-requests' 
@@ -20,10 +20,10 @@ makedepends=('python-build'
 optdepends=('python-boto: Object Storage plugin')
 replaces=("${pkgname}-dev")
 install="${pkgname}".install
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-        "${pkgname}-${_pkgver}-openapi.yaml::https://www.${pkgname%%-*}.com/docs/api/openapi.yaml")
-sha512sums=('125886d609f5e1c980d32cc87e00119c572c052c9da9e489ec28d77454acfdbad1bb359ea80bfb7d8076c57d47041490e878c5de8976bfba23c6a955b2cbd98a'
-            '00808e5df21a45cfe3344e20457f7fc75d69ce460d396e549d06ec6695782a249dfcd8c3be6d750e5758997678d7187c6b71886e5e382c3f6d73cbbd7381d95a')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname%%-*}/${pkgname}/archive/v${pkgver}.tar.gz"
+        "${pkgname}-${_pkgver}-openapi.yaml::https://raw.githubusercontent.com/${pkgname%%-*}/${pkgname%%-*}-api-docs/refs/heads/development/openapi.yaml")
+sha512sums=('e2a993003bcd2f4732f0c4636cbc7977b3218e7bcd0533e7d39fcd6f19958f968d05c2bdfd4ce10620d1cc384a914355455356cb23c3dc2fa35268be040bf2b3'
+            'be4130a3645d966d32c2fa36253d4d6d7cf40a2ac39454433ade665e1218032e21f2c15bb81fcccd02122147f54148968ee79d070c17307afdb99d1db3ceddd8')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -32,9 +32,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  python \
-    -m linodecli bake ../${pkgname}-${_pkgver}-openapi.yaml \
-    --skip-config
+  python -m linodecli bake ../${pkgname}-${_pkgver}-openapi.yaml --skip-config
   cp data-3 linodecli/
   python -m linodecli completion bash > "${pkgname}.sh"
   python -m build --wheel --skip-dependency-check --no-isolation
