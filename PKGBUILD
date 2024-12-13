@@ -7,12 +7,13 @@ pkgbase=linux-firmware
 pkgname=(linux-firmware-whence linux-firmware amd-ucode
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}
 )
-_tag=20240909
-pkgver=20240909.552ed9b8
+_tag=20241210
+#_commit=c979a06518069901e4c43e0019d3a15b435b7e16
+pkgver=20241210.b00a7f7e
 pkgrel=1
 pkgdesc="Firmware files for Linux"
 pkgdesc+=' (without module compression)'
-url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
+url="https://gitlab.com/kernel-firmware/linux-firmware"
 license=(
   GPL-2.0-only
   GPL-2.0-or-later
@@ -23,13 +24,14 @@ arch=('any')
 makedepends=(
   git
   rdfind
+  python
 )
 options=(
   !strip
   !debug
 )
-source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#tag=${_tag}?signed")
-b2sums=('SKIP')
+source=("git+$url.git?signed#tag=${_tag}")
+b2sums=('6830ae2d2784dbdc8c57b997c30e2694363022a808f6b842c9476f3bb3bd119531b19a656b2843f9509001f4915e8696b70aee7d7996d1f27c578c7e2b67a20e')
 validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
 
 _pkgbase="${pkgbase}"
@@ -209,5 +211,3 @@ package_linux-firmware-bnx2x-uncompressed() {
 
   mv -v linux-firmware-bnx2x/* "${pkgdir}"
 }
-
-# vim:set sw=2 et:
