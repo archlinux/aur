@@ -1,0 +1,4 @@
+[python-pynput]
+source = "git"
+git = "https://github.com/moses-palmer/pynput.git"
+prefix = "v"
