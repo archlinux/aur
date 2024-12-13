@@ -1,0 +1,4 @@
+[cast_control]
+source = "git"
+git = "https://github.com/alexdelorenzo/cast_control.git"
+prefix = "v"
