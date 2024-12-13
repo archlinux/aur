@@ -4,7 +4,7 @@ pkgver=1.33.0
 pkgrel=3
 pkgdesc="redattore atti gratuito per il Processo Civile Telematico"
 arch=('any')
-url="https://www.slpct.it/"
+url='https://github.com/Marx79/Slpct.git'
 license=('GPL-3.0-or-later')
 
 
@@ -12,7 +12,7 @@ depends=('java-runtime' 'jdk8-openjdk' 'bash' 'xdg-utils' )
 
 
 
-source=('git+https://github.com/Marx79/Slpct.git')
+source=("git+https://github.com/Marx79/Slpct.git")
 
 sha256sums=('SKIP')
 
