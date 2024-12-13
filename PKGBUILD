@@ -2,7 +2,7 @@
 
 pkgname="gog-stardew-valley-smapi"
 pkgver=4.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="The modding API for Stardew Valley."
 url="https://github.com/Pathoschild/SMAPI"
 license=("LGPL-3.0-only")
@@ -20,7 +20,7 @@ source=(
 
 sha256sums=(
     "1ef4440a39e6af9ae6a6418db440119ae8455ee3eeb69072ebf8ae2d8277f1eb"
-    "dd4e8a2c62d5be1d2aa14d95ffeb7154646eb92916cdc9a9bea41f72b16e887d"
+    "08977679316c7d655be183413b0358748aacd99ca67665c6ae576e29a3e1ed35"
     "9f496b90f30549170189a990d1c13b7a6d66c5b21189617c9f3b666a32b7c7b5"
 )
 
