@@ -1,0 +1,4 @@
+[mingle]
+source = "git"
+git = "https://github.com/halfmexican/mingle.git"
+prefix = "v"
