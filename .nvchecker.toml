@@ -1,0 +1,4 @@
+[libpqmarble]
+source = "git"
+git = "https://gitlab.gnome.org/raggesilver/marble.git"
+prefix = "v"
