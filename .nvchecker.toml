@@ -1,0 +1,3 @@
+[vulkan-caps-viewer]
+source = "git"
+git = "https://github.com/SaschaWillems/VulkanCapsViewer.git"
