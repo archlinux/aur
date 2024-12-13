@@ -1,4 +1,4 @@
-# Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
+# Maintainer: Daniil Gentili <daniil at daniil dot it>
 
 pkgname=php-maxminddb
 pkgver=1.12.0
