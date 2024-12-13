@@ -1,0 +1,3 @@
+[whatip]
+source = "git"
+git = "https://gitlab.gnome.org/GabMus/whatip.git"
