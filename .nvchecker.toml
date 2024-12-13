@@ -1,0 +1,4 @@
+[smooth]
+source = "git"
+git = "https://github.com/enzo1982/smooth.git"
+prefix = "v"
