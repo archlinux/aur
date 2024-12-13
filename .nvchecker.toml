@@ -1,0 +1,4 @@
+[protonup-rs]
+source = "git"
+git = "https://github.com/auyer/Protonup-rs.git"
+prefix = "v"
