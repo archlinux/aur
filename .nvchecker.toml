@@ -1,0 +1,4 @@
+[pixelflasher]
+source = "git"
+git = "https://github.com/badabing2005/PixelFlasher.git"
+prefix = "v"
