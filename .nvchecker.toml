@@ -1,0 +1,4 @@
+["python-jaraco.packaging"]
+source = "git"
+git = "https://github.com/jaraco/jaraco.packaging.git"
+prefix = "v"
