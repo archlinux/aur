@@ -1,0 +1,4 @@
+[python-posthog]
+source = "git"
+git = "https://github.com/PostHog/posthog-python.git"
+prefix = "v"
