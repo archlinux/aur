@@ -1,0 +1,4 @@
+[ddcutil-service]
+source = "git"
+git = "https://github.com/digitaltrails/ddcutil-service.git"
+prefix = "v"
