@@ -1,7 +1,7 @@
 # Maintainer: Simon Brüggen <aur@m3t0r.de>
 pkgname=kiri-moto-appimage
 pkgver=4.0.32
-pkgrel=1
+pkgrel=2
 pkgdesc="CAM suite generating G-code for CNC mills, routers, FDM printers, laser and water cutters, and more."
 arch=(x86_64)
 url="https://grid.space/"
@@ -29,7 +29,7 @@ package() {
     install -Dm644 "license.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 \
         "$srcdir/squashfs-root/usr/share/icons/hicolor/0x0/apps/grid-apps.png" \
-        "$pkgdir/usr/share/icons/hicolor/0x0/apps/kiri-moto.png"
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/kiri-moto.png"
     install -Dm644 \
         "$srcdir/squashfs-root/grid-apps.desktop" \
         "$pkgdir/usr/share/applications/kiri-moto.desktop"
