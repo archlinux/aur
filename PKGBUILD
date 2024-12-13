@@ -8,14 +8,14 @@ _pkgver=1.16.2
 _pkgrel=1
 pkgdesc="lightweight http/socks proxy commandline"
 arch=(x86_64)
-url="https://github.com/Chilledheart/yass"
+url="https://gitee.com/keeyou/yass"
 license=(GPL-2.0-only)
 depends=(gcc-libs glibc zlib libnghttp2 c-ares gperftools jsoncpp)
 makedepends=(gcc binutils git ninja perl pkg-config cmake curl go)
 checkdepends=(curl)
 provides=(yass-proxy-cli)
 conflicts=(yass-proxy-cli-git)
-source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.zst"
+source=("https://gitee.com/keeyou/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.zst"
         )
 sha256sums=('2dac9758ad25f85931d53a8c0957ee11a91a148840569eef3a521adfdc229415')
 
