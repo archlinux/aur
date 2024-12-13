@@ -1,0 +1,4 @@
+[paleta]
+source = "git"
+git = "https://github.com/nate-xyz/paleta.git"
+prefix = "v"
