@@ -23,14 +23,14 @@ optdepends=(
 )
 
 source=(
-    "https://github.com/rogerfar/rdt-client/releases/download/v${pkgver}/RealDebridClient.zip"
+    "${pkgname}-${pkgver}.zip::https://github.com/rogerfar/rdt-client/releases/download/v${pkgver}/RealDebridClient.zip"
     'appsettings.json'
     'rdtc.service'
     'rdtc.sysusers'
     'rdtc.tmpfiles'
 )
 
-noextract=('RealDebridClient.zip')
+noextract=('${pkgname}-${pkgver}.zip')
 sha512sums=('e961268236d5bd20a1d990ebd41aec8bd15f1796711c3d853ba5cc692c4158200b12856ffa69e378b1f0261c4c18edf1985d44ae5ca1a91ff0fbc0fcf36017b8'
             '526154379ef5972bac6db1d170d6f4c68f06c720ff70f355d7ba7fdb8208c549880fa1378eb3db3e358f02383b44240060ceb2ceb312bd24afffb88864960261'
             '67330f3202bf1696d706c297b7121a267a1b17064b167fea134ed76162bd1e42355970068f950b8ede7eb4a822f49825ece8b95b132087a3397645480545d312'
@@ -40,7 +40,7 @@ sha512sums=('e961268236d5bd20a1d990ebd41aec8bd15f1796711c3d853ba5cc692c4158200b1
 package() {
     # binaries
     install -d -m 755 "${pkgdir}/usr/lib/rdtc"
-    unzip "${srcdir}/RealDebridClient.zip" -d "${pkgdir}/usr/lib/rdtc"
+    unzip "${srcdir}/${pkgname}-${pkgver}.zip" -d "${pkgdir}/usr/lib/rdtc"
     install -D -m 644 "${srcdir}/appsettings.json" "${pkgdir}/usr/lib/rdtc"
 
     # app data
