@@ -1,0 +1,3 @@
+[python-app_paths]
+source = "pypi"
+pypi = "app_paths"
