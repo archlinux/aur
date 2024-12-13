@@ -1,7 +1,7 @@
 # Maintainer: Spencer Harmon
 
 pkgname="vendor-reset-git"
-pkgver=0.0.17.r94
+pkgver=0.1.1.r117
 pkgrel=1
 epoch=
 pkgdesc="reset routines for navi et al."
@@ -21,7 +21,7 @@ backup=()
 options=('!buildflags' '!makeflags' '!emptydirs')
 install=
 changelog=
-source=("git://github.com/gnif/vendor-reset")
+source=("git+https://github.com/gnif/vendor-reset")
 noextract=()
 md5sums=('SKIP')
 pkgver(){
