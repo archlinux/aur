@@ -1,0 +1,4 @@
+[gnome-shell-extension-panel-corners]
+source = "git"
+git = "https://github.com/aunetx/panel-corners.git"
+prefix = "v"
