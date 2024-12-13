@@ -8,3 +8,4 @@
 !actions.patch
 !cli.patch
 !system76-driver.install
+!.nvchecker.toml
