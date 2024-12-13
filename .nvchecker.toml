@@ -1,0 +1,4 @@
+[damask-wallpaper]
+source = "git"
+git = "https://gitlab.gnome.org/subpop/damask.git"
+prefix = "v"
