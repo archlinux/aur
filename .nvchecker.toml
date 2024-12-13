@@ -1,0 +1,4 @@
+[python-tesserocr]
+source = "git"
+git = "https://github.com/sirfz/tesserocr.git"
+prefix = "v"
