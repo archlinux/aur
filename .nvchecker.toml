@@ -1,0 +1,3 @@
+[python-restructuredtext_lint]
+source = "git"
+git = "https://github.com/twolfson/restructuredtext-lint.git"
