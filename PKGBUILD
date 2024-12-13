@@ -2,7 +2,7 @@
 # Conributor: Daniel Menelkir <dmenelkir@gmail.com>
 
 pkgname=wttrbar-git
-pkgver=0.7.1.r0.g40a68d0
+pkgver=0.12.0.r1.g583afc8
 pkgrel=1
 pkgdesc='Show the weather in Waybar, using the great wttr.io'
 arch=(x86_64)
@@ -20,15 +20,22 @@ pkgver() {
 }
 
 prepare() {
-  RUSTUP_TOOLCHAIN=stable cargo fetch --locked --manifest-path=$pkgname/Cargo.toml --target="$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+  cd $pkgname
+  cargo update
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target --all-features
+  export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
+  cd $pkgname
+  cargo build --frozen --release --all-features
 }
 
 check() {
-  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target
+  export RUSTUP_TOOLCHAIN=stable
+  cd $pkgname
+  cargo test --frozen --all-features
 }
 
 package() {
