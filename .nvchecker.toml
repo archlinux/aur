@@ -1,0 +1,4 @@
+[gabtag]
+source = "git"
+git = "https://github.com/lachhebo/GabTag.git"
+prefix = "v"
