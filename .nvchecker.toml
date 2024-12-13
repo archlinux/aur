@@ -1,0 +1,4 @@
+[python-landlock]
+source = "git"
+git = "https://github.com/Edward-Knight/landlock.git"
+prefix = "v"

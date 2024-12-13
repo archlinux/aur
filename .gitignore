@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !drop-coverage.patch
+!.nvchecker.toml
