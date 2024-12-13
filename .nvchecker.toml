@@ -1,0 +1,4 @@
+["tldr++"]
+source = "git"
+git = "https://github.com/isacikgoz/tldr.git"
+prefix = "v"
