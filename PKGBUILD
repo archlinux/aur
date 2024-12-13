@@ -21,4 +21,5 @@ package() {
     cd "$srcdir/$pkgname"
     install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "man/$pkgname.6" "$pkgdir/usr/share/man/man6/$pkgname.6"
 }
