@@ -3,7 +3,7 @@
 
 pkgname='rdt-client'
 pkgver=2.0.91
-pkgrel=1
+pkgrel=2
 pkgdesc='Real-Debrid Torrent Client'
 arch=(any)
 url='https://github.com/rogerfar/rdt-client'
