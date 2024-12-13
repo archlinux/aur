@@ -1,0 +1,3 @@
+[tagger]
+source = "git"
+git = "https://github.com/NickvisionApps/Tagger.git"
