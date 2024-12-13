@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !pkgconfig.patch
+!.nvchecker.toml
