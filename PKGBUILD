@@ -6,11 +6,12 @@
 # Contributor: gangelop
 pkgname=pureref
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Reference Image Viewer"
 arch=('x86_64')
 url="http://www.pureref.com"
 license=('LicenseRef-PureRef')
+depends=('fuse2')
 options=(!debug !strip)
 
 key=$(curl -A 'AUR PKGBUILD/Please contact maintainer if there is an issue' -s https://www.pureref.com/download.php | awk '/setupPaymentSystem/,/);/' | grep -zoP '\s+"\K[A-z0-9%]+?",' | sed 's/...$//')
