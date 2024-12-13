@@ -1,6 +1,6 @@
 pkgbase = bililiverecorder-git
 	pkgdesc = BiliBili Stream Recorder. Git version.
-	pkgver = r914.9859c32
+	pkgver = r916.2dd898e
 	pkgrel = 1
 	url = https://github.com/BililiveRecorder/BililiveRecorder
 	arch = x86_64
