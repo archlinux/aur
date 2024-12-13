@@ -1,0 +1,3 @@
+[quick-webapps]
+source = "git"
+git = "https://github.com/cosmic-utils/web-apps.git"
