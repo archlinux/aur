@@ -1,0 +1,4 @@
+[sticky-notes]
+source = "git"
+git = "https://github.com/vixalien/sticky.git"
+prefix = "v"
