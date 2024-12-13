@@ -1,0 +1,4 @@
+[python-python-lorem]
+source = "git"
+git = "https://github.com/JarryShaw/lorem.git"
+prefix = "v"
