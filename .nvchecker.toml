@@ -1,0 +1,4 @@
+[textsnatcher]
+source = "git"
+git = "https://github.com/RajSolai/TextSnatcher.git"
+prefix = "v"
