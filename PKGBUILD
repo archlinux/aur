@@ -4,7 +4,7 @@
 
 pkgname=openlp
 pkgver=3.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Church presentation software."
 arch=('any')
 url='http://openlp.org/'
@@ -15,7 +15,7 @@ depends=('python>=3.10' 'python<3.13' 'python-pyqt5' 'phonon-qt5'
         'python-mako' 'python-appdirs' 'python-pyodbc' 
         'python-pyqt5-webengine' 'qt5-multimedia' 'python-pyqt5-webengine' 'python-alembic' 
         'python-qtawesome' 'python-websockets' 'python-flask' 'python-flask-cors' 
-        'python-webob' 'python-waitress' 'python-qrcode' 'python-pymediainfo')
+        'python-waitress' 'python-qrcode' 'python-pymediainfo')
 
 optdepends=('libreoffice-fresh: Display impress presentations'
             'python-vlc: Multimedia playback'
