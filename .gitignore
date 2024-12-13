@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !disable-clippy-test.patch
+!.nvchecker.toml

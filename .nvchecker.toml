@@ -1,0 +1,4 @@
+[pods]
+source = "git"
+git = "https://github.com/marhkb/pods.git"
+prefix = "v"
