@@ -1,7 +1,7 @@
 pkgbase = bitwuzla
 	pkgdesc = SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations
-	pkgver = 0.6.1
-	pkgrel = 4
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://bitwuzla.github.io
 	arch = x86_64
 	license = MIT
@@ -21,22 +21,22 @@ pkgbase = bitwuzla
 	makedepends = python-sphinxcontrib-bibtex
 	makedepends = python>=3.7
 	makedepends = symfpu-cvc5
+	depends = cryptominisat
 	depends = gcc-libs
 	depends = glibc
 	depends = gmp>=6.1
 	depends = kissat
-	optdepends = cryptominisat5: Support for the CryptoMiniSat SAT solver
 	optdepends = python>=3.7: Python bindings
 	provides = libbitwuzlabv.so
 	provides = libbitwuzlabb.so
 	provides = libbitwuzlals.so
 	provides = libbitwuzla.so
 	options = !lto
-	source = bitwuzla-0.6.1.tar.gz::https://github.com/bitwuzla/bitwuzla/archive/refs/tags/0.6.1.tar.gz
+	source = bitwuzla-0.7.0.tar.gz::https://github.com/bitwuzla/bitwuzla/archive/refs/tags/0.7.0.tar.gz
 	source = 0001-Use-installed-libraries.patch
 	source = 0002-Skip-Test-based-on-timeout.patch
-	b2sums = 03bf6b28d2aacd870ed2f5deb4d1d08edfccecbbfb885f60fe49ce097c42b49c7c41b37c9e14d335e70e012e60bb278f74318e9afe790bddd174002b1e052771
-	b2sums = 0ebea6754d4fc270c268d4088af9bcb93596fe5ec7b1065f83d39e5c56eef93d567592443ec0a460a34bf5829b5b54f2c9971644f6fbbebbf9c43a1b440ac54d
+	b2sums = fea8fb59d0dc3e45705e3aef7aa1cac1ebf0c0558e0994ada2806ac9589b3460783ff7b85e0b922d150f594e3d26ebf6cd9858f9b9df24f3850b19908252c188
+	b2sums = 58a27c2a748b60651ac3ccc93ef09a1093571615c16987f1fe578e34a9325d24a41ffac8f76ef044f8afc89b12924848de0b79d7d403ccf9e298b7ab349f7bb7
 	b2sums = 7728ab77cb234b4427e7cf493817a24bf97440304efb4fc4300125ec470a0bf15430b4416d3c5fdea51dc91441640d05995ed4a08d4c628f97f4d4dc08538d7e
 
 pkgname = bitwuzla
