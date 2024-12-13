@@ -1,0 +1,3 @@
+[gnome-shell-extension-tilingshell]
+source = "git"
+git = "https://github.com/domferr/tilingshell.git"
