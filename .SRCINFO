@@ -1,5 +1,5 @@
 pkgbase = zenmonitor3-git
-	pkgdesc = Zenmonitor3 is monitoring software for AMD Zen-based CPUs, now with Zen 3 support!
+	pkgdesc = A monitoring software for AMD Zen-based CPUs, now with Zen 3 support!
 	pkgver = r90.a09f0b2
 	pkgrel = 1
 	epoch = 2
