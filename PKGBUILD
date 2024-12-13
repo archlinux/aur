@@ -1,12 +1,12 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=btrfs-backup-git
-pkgver=0.2.1.r0.g02aea34
-pkgrel=2
+pkgver=0.2.1.r13.gea71710
+pkgrel=1
 pkgdesc='Backup and restore Btrfs subvolumes'
 arch=(x86_64)
 url=https://github.com/d-e-s-o/btrfs-backup
-license=(GPL3)
+license=(GPL-3.0-or-later)
 makedepends=(cargo git)
 depends=(btrfs-progs)
 provides=("${pkgname%-git}")
@@ -15,20 +15,26 @@ source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  git -C $pkgname describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C $pkgname describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  #RUSTUP_TOOLCHAIN=stable cargo fetch --locked --manifest-path=$pkgname/Cargo.toml --target="$CARCH-unknown-linux-gnu"
-  RUSTUP_TOOLCHAIN=stable cargo fetch --manifest-path=$pkgname/Cargo.toml --target="$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+  cd $pkgname
+  cargo update
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target --all-features
+  export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
+  cd $pkgname
+  cargo build --frozen --release --all-features
 }
 
 #check() {
-#  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target
+#  export RUSTUP_TOOLCHAIN=stable
+#  cd $pkgname
+#  cargo test --frozen --all-features
 #}
 
 package() {
