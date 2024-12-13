@@ -1,0 +1,4 @@
+[python-aiopath]
+source = "git"
+git = "https://github.com/alexdelorenzo/aiopath.git"
+prefix = "v"
