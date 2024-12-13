@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=termusic-git
-pkgver=0.9.0.r421.g59c118d
+pkgver=0.9.1.r180.gd82806c
 pkgrel=1
 pkgdesc='Music Player TUI written in Rust'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url=https://github.com/tramhao/termusic
 license=(GPL-3.0-or-later MIT)
 depends=(dbus gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly gstreamer mpv protobuf soundtouch ueberzug) # alsa-lib libmpv.so
 makedepends=(cargo clang git)
-optdepends=('emoji-font: for displaying emojis' 'ffmpeg: extract audio by downloader' 'yt-dlp: download files')
+optdepends=('emoji-font: display emojis' 'ffmpeg: extract audio by downloader' 'yt-dlp: download files')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!lto)
@@ -24,15 +24,22 @@ pkgver() {
 }
 
 prepare() {
-  RUSTUP_TOOLCHAIN=stable cargo fetch --locked --manifest-path=$pkgname/Cargo.toml --target="$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+  cd $pkgname
+  cargo update
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target --all-features
+  export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
+  cd $pkgname
+  cargo build --frozen --release --all-features
 }
 
 check() {
-  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target
+  export RUSTUP_TOOLCHAIN=stable
+  cd $pkgname
+  cargo test --frozen --all-features
 }
 
 package() {
