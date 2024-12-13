@@ -44,7 +44,7 @@ package() {
   src_path="install/arch-linux/"
   install -dm 755 $src_path/usr/share/java/
   install -Dm 644 target/limine-snapper-sync.jar $src_path/usr/share/java/
-  install -dm 755 $src_path/usr/share/doc/limine-snapper-sync/
-  cp -r README.md CHANGELOG.md screenshots $src_path/usr/share/doc/limine-snapper-sync/
-  cp -vr $src_path/usr $src_path/etc "$pkgdir"
+  install -dm 755 $src_path/usr/share/doc/${pkgname%-git}/
+  cp -r README.md CHANGELOG.md screenshots $src_path/usr/share/doc/${pkgname%-git}/
+  cp -r $src_path/usr $src_path/etc "$pkgdir"
 }
