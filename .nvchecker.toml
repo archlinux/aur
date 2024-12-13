@@ -1,0 +1,4 @@
+["python-jaraco.vcs"]
+source = "git"
+git = "https://github.com/jaraco/jaraco.vcs.git"
+prefix = "v"
