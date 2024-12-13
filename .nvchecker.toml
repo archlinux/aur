@@ -1,0 +1,4 @@
+[xcursor-pro-cursor-theme]
+source = "git"
+git = "https://github.com/ful1e5/XCursor-pro.git"
+prefix = "v"
