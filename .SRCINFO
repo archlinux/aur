@@ -1,0 +1,22 @@
+pkgbase = text-vision-git
+	pkgdesc = A project that uses OCR to extract text from images.
+	pkgver = 1.0.1.r0.g69c14b0
+	pkgrel = 1
+	url = https://github.com/Ap73MKa/TextVision
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = bun
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gcc
+	makedepends = rust
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	provides = text-vision=1.0.1
+	conflicts = text-vision
+	source = text-vision.git::git+https://github.com/Ap73MKa/TextVision
+	sha256sums = SKIP
+
+pkgname = text-vision-git
