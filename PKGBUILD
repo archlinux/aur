@@ -2,7 +2,7 @@
 # Contributor: Xuanwo
 pkgname=follow-bin
 _pkgname=Follow
-pkgver=0.2.6_beta.0
+pkgver=0.2.7_beta.0
 _electronversion=33
 pkgrel=1
 pkgdesc="🧡 Next generation information browser.This software is all about allowing you to follow your favorite websites, blogs, social media accounts, podcasts and notifications in one place. (Prebuilt version.Use system-wide electron)"
@@ -22,9 +22,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}-linux-x64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a59345e1fe109230f059377d2ae549a69998cfa70b15930a9c5608e126539b5f'
+sha256sums=('c4315ff937c079c399601e2887a9a3a992e5d885e33c70d9cfba3198e43dcd7a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
@@ -43,10 +43,6 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
-    _icon_sizes=(16x16 32x32 48x48 128x128 256x256)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
-    done
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
