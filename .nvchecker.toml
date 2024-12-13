@@ -1,0 +1,4 @@
+[xfce-theme-greybird]
+source = "git"
+git = "https://github.com/shimmerproject/Greybird.git"
+prefix = "v"
