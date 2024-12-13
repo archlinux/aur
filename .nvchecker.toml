@@ -1,0 +1,4 @@
+[gnome-shell-extension-blur-my-shell]
+source = "git"
+git = "https://github.com/aunetx/blur-my-shell.git"
+prefix = "v"
