@@ -1,0 +1,3 @@
+[rebound]
+source = "pypi"
+pypi = "rebound-cli"
