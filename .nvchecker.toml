@@ -1,0 +1,4 @@
+[grub-reboot-picker]
+source = "git"
+git = "https://github.com/mendhak/grub-reboot-picker.git"
+prefix = "v"
