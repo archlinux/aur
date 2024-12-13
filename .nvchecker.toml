@@ -1,0 +1,4 @@
+[ognibuild]
+source = "git"
+git = "https://github.com/jelmer/ognibuild.git"
+prefix = "v"
