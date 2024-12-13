@@ -1,0 +1,4 @@
+[gnome-shell-extension-bluetooth-quick-connect]
+source = "git"
+git = "https://github.com/Extensions-Valhalla/gnome-bluetooth-quick-connect.git"
+prefix = "v"
