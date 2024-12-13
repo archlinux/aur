@@ -1,0 +1,4 @@
+[googledot-cursor-theme]
+source = "git"
+git = "https://github.com/ful1e5/Google_Cursor.git"
+prefix = "v"
