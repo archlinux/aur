@@ -3,7 +3,7 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 _base=elasticsearch-dsl
 pkgname=python-${_base}
-pkgver=8.16.0
+pkgver=8.17.0
 pkgrel=1
 pkgdesc="Python client for Elasticsearch"
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel) # pyt
 # checkdepends=(python-pytest-mock python-mock python-pytest-asyncio python-nltk
 #   python-sentence-transformers)
 source=(${_base}-py-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('db1d6c8d0756b63dabc55fbf716fa5656e07206f22df86e6278a4271c001f74e5970d5b78873911b8194df3809b24fab47a8ed0595d518e4c7673204e7812c3e')
+sha512sums=('f97014dfff9d12b2b95c04fce68b278405f7cac60c2d9a8f688f401487fefdb63d9f8a5bedfd795f5a92a74a59e88b3fa6d65e0a123fa15cb8caef50ce52488b')
 
 build() {
   cd ${_base}-py-${pkgver}
