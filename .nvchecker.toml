@@ -1,0 +1,4 @@
+[thiefmd]
+source = "git"
+git = "https://github.com/kmwallio/ThiefMD.git"
+prefix = "v"
