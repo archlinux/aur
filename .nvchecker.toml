@@ -1,0 +1,4 @@
+[autokey]
+source = "git"
+git = "https://github.com/autokey/autokey.git"
+prefix = "v"
