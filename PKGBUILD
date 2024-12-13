@@ -1,7 +1,7 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
 pkgver=1.7.2
-pkgrel=5
+pkgrel=6
 epoch=
 pkgdesc="Shadow Of The Wyrm is a single player, traditional roguelike by Julian Day."
 arch=('x86_64')
@@ -59,14 +59,14 @@ package() {
 
 # Tweak game settings.
     # Setup log directory.
-    sed -i -e 's|'"log_dir="'|'"log_dir=/var/sotw"'|g' ${srcdir}/shadow-of-the-wyrm/swyrm.ini
+    sed -i -e 's|'"log_dir="'|'"log_dir=/var/sotw"'|g' ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini
     mkdir ${pkgdir}/var
     mkdir ${pkgdir}/var/sotw
     chmod 777 ${pkgdir}/var/sotw
     # Set system dump directory.
-    sed -i -e 's|'"syschardump_dir="'|'"syschardump_dir=/var/sotw"'|g' ${srcdir}/shadow-of-the-wyrm/swyrm.ini
+    sed -i -e 's|'"syschardump_dir="'|'"syschardump_dir=/var/sotw"'|g' ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini
     # Set disallow score for narrative mode and console commands.
-    sed -i -e 's|'"_disallow_score_on_exploration=0"'|'"_disallow_score_on_exploration=1"'|g' ${srcdir}/shadow-of-the-wyrm/swyrm.ini
+    sed -i -e 's|'"_disallow_score_on_exploration=0"'|'"_disallow_score_on_exploration=1"'|g' ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini
 
 # Do the actual packaging.
     install -D -m644 ${srcdir}/shadow-of-the-wyrm/LICENSE "${pkgdir}/usr/share/licenses/sotw/LICENSE"
