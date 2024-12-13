@@ -1,0 +1,4 @@
+[electronmail]
+source = "git"
+git = "https://github.com/vladimiry/ElectronMail.git"
+prefix = "v"
