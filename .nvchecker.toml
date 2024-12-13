@@ -1,0 +1,3 @@
+[mullvad-vpn-beta]
+source = "git"
+git = "https://github.com/mullvad/mullvadvpn-app.git"

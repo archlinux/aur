@@ -9,3 +9,4 @@
 !mullvad-vpn.sh
 !no-rpm.diff
 !no-publish.diff
+!.nvchecker.toml
