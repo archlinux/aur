@@ -1,0 +1,3 @@
+[parrot]
+source = "git"
+git = "https://github.com/dan-online/parrot.git"
