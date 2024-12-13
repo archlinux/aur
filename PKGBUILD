@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="A monitoring software for AMD Zen-based CPUs, now with Zen 3 support!"
 arch=('i686' 'x86_64')
 url="https://git.unnamed.website/zenmonitor3"
-license=('GPL')
+license=('MIT')
 depends=('zenpower3' 'gtk3')
 optdepends=('polkit: support application shortcut to launch Zen monitor as root')
 makedepends=('git')
@@ -30,5 +30,6 @@ build() {
 package() {
 	cd "$srcdir/$_pkgbase"
 	install -dvm755 "$pkgdir/usr/share/applications" "$pkgdir/usr/share/polkit-1/actions"
+	install -Dvm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	make DESTDIR="$pkgdir" PREFIX="/usr" install install-cli install-polkit
 }
