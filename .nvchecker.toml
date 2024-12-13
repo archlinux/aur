@@ -1,0 +1,3 @@
+[gnome-extensions-cli]
+source = "git"
+git = "https://github.com/essembeh/gnome-extensions-cli.git"
