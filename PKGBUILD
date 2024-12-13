@@ -3,8 +3,8 @@
 # Contributor: Macxcool <macx coool at coolnet dot xyz>
 
 pkgname=openlp
-pkgver=3.1.1
-pkgrel=3
+pkgver=3.1.5
+pkgrel=1
 pkgdesc="Church presentation software."
 arch=('any')
 url='http://openlp.org/'
@@ -24,7 +24,7 @@ optdepends=('libreoffice-fresh: Display impress presentations'
 install=openlp.install
 source=("https://gitlab.com/openlp/openlp/-/archive/${pkgver}/openlp-${pkgver}.tar.gz" "openlp.sh")
 
-sha256sums=('c464669a3661b3b23e917cb1508c1bfc8e8c8308ee24c86e7dde94789ea1797c'
+sha256sums=('e85423198cd724083bcb9253f0b22639bc47900ef697002e75d8a18226b1542b'
             '19c2f3c622585bf308efc259013fb5518feaf8cf14b51613e1e71778fcc2e8cf')
 
 package() {
