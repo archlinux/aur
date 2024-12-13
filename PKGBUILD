@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=eagle-animation-bin
 _pkgname="Eagle Animation"
-pkgver=2.9.0
+pkgver=2.10.0
 _electronversion=33
 pkgrel=1
-pkgdesc="An awesome, free and open-source animation software.Prebuilt version.Use system-wide electron."
+pkgdesc="An awesome, free and open-source animation software.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://brickfilms.com/"
 _ghurl="https://github.com/brick-a-brack/eagle-animation"
@@ -19,9 +19,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8c70eb54d1eb1529810d6e078d4b331e8a05e7f5033ee1707ba0787f1a66eca5'
+sha256sums=('876e4db7c7798cd86e2f6a679a5cc448fbb7baff65b8642ad52894960f038508'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
