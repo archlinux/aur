@@ -1,7 +1,7 @@
 # Maintainer: Lakshmanan <lakshmanoni1234@gmail.com>
 pkgname=pacsaviour
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An automation tool for optimising mirrors, cleaning and updating the system"
 arch=('x86_64')
 url="https://github.com/Luxxgit2k4/pacsaviour"
@@ -18,5 +18,6 @@ package() {
   install -Dm755 "$srcdir/$pkgname/scripts/mirror_optimize.sh" "$pkgdir/usr/lib/pacsaviour/mirror_optimize.sh"
   install -Dm755 "$srcdir/$pkgname/scripts/cleanup.sh" "$pkgdir/usr/lib/pacsaviour/cleanup.sh"
   install -Dm755 "$srcdir/$pkgname/scripts/update.sh" "$pkgdir/usr/lib/pacsaviour/update.sh"
-install -Dm755 "$srcdir/$pkgname/scripts/ascii.sh" "$pkgdir/usr/lib/pacsaviour/ascii.sh"
+  install -Dm755 "$srcdir/$pkgname/scripts/ascii.sh" "$pkgdir/usr/lib/pacsaviour/ascii.sh"
 }
+
