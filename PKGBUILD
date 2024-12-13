@@ -1,7 +1,7 @@
 # Maintainer: haxibami <contact at haxibami dot net>
 
 pkgname=qdrant
-pkgver=1.12.4
+pkgver=1.12.5
 pkgrel=1
 pkgdesc="Vector Database for the next generation of AI applications"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'cmake' 'mold' 'clang' 'protobuf')
 source=(
   "${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('703bd3dc4677243bc1d216c08560cff4332e979ddcc21b5cf3abf349111d47c2')
+sha256sums=('ca6d192a6d72b0f126c35fda271358fde7bd405342e5f97c23beaba3811be33a')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
