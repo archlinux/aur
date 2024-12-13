@@ -1,0 +1,4 @@
+[vizex]
+source = "git"
+git = "https://github.com/bexxmodd/vizex.git"
+prefix = "v"
