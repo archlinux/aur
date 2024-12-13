@@ -1,0 +1,4 @@
+[conjure]
+source = "git"
+git = "https://github.com/nate-xyz/conjure.git"
+prefix = "v"
