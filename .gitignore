@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !clight.install
+!.nvchecker.toml
