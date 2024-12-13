@@ -1,0 +1,4 @@
+["python-jaraco.versioning"]
+source = "git"
+git = "https://github.com/jaraco/jaraco.versioning.git"
+prefix = "v"
