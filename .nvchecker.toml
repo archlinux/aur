@@ -1,4 +1,0 @@
-[adw-gtk-theme-git]
-source = "git"
-git = "https://github.com/lassekongo83/adw-gtk3.git"
-prefix = "v"
