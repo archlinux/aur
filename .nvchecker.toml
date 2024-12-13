@@ -1,0 +1,4 @@
+["python-rst.linker"]
+source = "git"
+git = "https://github.com/jaraco/rst.linker.git"
+prefix = "v"
