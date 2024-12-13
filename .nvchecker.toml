@@ -1,0 +1,4 @@
+[ludusavi-bin]
+source = "git"
+git = "https://github.com/mtkennerly/ludusavi.git"
+prefix = "v"
