@@ -1,8 +1,8 @@
 _pkgbase=etlegacy
 pkgname=etlegacy32-bin
 pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine, 32 bit), binary release"
-pkgver=2.81.1
-pkgrel=3
+pkgver=2.83.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
 provides=('etlegacy')
@@ -27,13 +27,13 @@ license=('GPL3')
 source=(
     "etl_start.sh"
     "etlded_start.sh"
-    "https://www.etlegacy.com/download/file/554"
+    "https://www.etlegacy.com/download/file/687"
     "https://github.com/etlegacy/etlegacy/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=(
     '101f6755a6792825b5cd1982fd2ed890'
     '76d91573489900d41823a30b0920c784'
-    '0770c036845a6aae69e984d5403785c6'
-    '8cf2d7963038627d3da3845f99a9f5dd'
+    '34ca02be290e3eafa5e3e3b35e8df177'
+    '5e5e02c2ad8d70eb5c79eddecc335930'
 )
 
 package() {
@@ -49,7 +49,7 @@ package() {
     ln -s /usr/share/enemy-territory/etmain/{pak0,pak1,pak2}.pk3 $pkgdir/usr/lib/$_pkgbase/etmain/
 
     for i in 16 22 24 32 48 64 128 256 512 1024; do
-        convert -background none  ./icons/hicolor/scalable/apps/etl.svg -resize ${i}x${i} -colors 256 ./icons/etl.png
+        magick -background none  ./icons/hicolor/scalable/apps/etl.svg -resize ${i}x${i} -colors 256 ./icons/etl.png
         install -Dvm644 ./icons/etl.png \
           "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/etl.png"
     done
