@@ -1,0 +1,4 @@
+[kiri-moto-appimage]
+source = "github"
+github = "GridSpace/grid-apps"
+use_latest_release = true
