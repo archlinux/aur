@@ -1,0 +1,4 @@
+[minimon-applet-for-cosmic]
+source = "git"
+git = "https://github.com/Hyperchaotic/minimon-applet.git"
+prefix = "v"
