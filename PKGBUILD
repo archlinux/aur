@@ -2,7 +2,7 @@
 
 pkgname="python-pkb-client"
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial client for the Porkbun API"
 arch=("any")
 license=("MIT")
@@ -20,4 +20,5 @@ build(){
 package(){
  cd "pkb_client-$pkgver"
  python -m installer --destdir="$pkgdir" dist/*.whl
+ find "$pkgdir/usr/lib" -type d -path "*/site-packages/tests" -exec rm -rf {} +
 }

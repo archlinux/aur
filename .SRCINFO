@@ -1,7 +1,7 @@
 pkgbase = python-pkb-client
 	pkgdesc = Unofficial client for the Porkbun API
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/infinityofspace/pkb_client
 	arch = any
 	license = MIT
