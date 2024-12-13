@@ -1,7 +1,7 @@
 # Maintainer: surrogatesoul <surrogatesoul@proton.me>
 
 pkgname=bookbrowse
-pkgver=0.0.1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Search books within your terminal"
 arch=('x86_64')
@@ -38,5 +38,3 @@ package() {
   install -Dm755 "build/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-
