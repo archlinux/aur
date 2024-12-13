@@ -2,8 +2,8 @@
 # Contributor: Frikilinux <frikilinux@gmail.com>
 
 pkgname=transg-tui-git
-pkgver=r28.3d06006
-pkgrel=3
+pkgver=r36.ec5c53d
+pkgrel=1
 pkgdesc='Transmission remote TUI client'
 arch=(x86_64)
 url=https://github.com/PanAeon/transg-tui
@@ -19,12 +19,23 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
+prepare() {
+  export RUSTUP_TOOLCHAIN=stable
+  cd $pkgname
+  cargo update
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
-  RUSTUP_TOOLCHAIN=stable cargo build --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target --all-features
+  export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
+  cd $pkgname
+  cargo build --frozen --release --all-features
 }
 
 check() {
-  RUSTUP_TOOLCHAIN=stable cargo test --release --manifest-path=$pkgname/Cargo.toml --target-dir=$pkgname/target
+  export RUSTUP_TOOLCHAIN=stable
+  cd $pkgname
+  cargo test --frozen --all-features
 }
 
 package() {
