@@ -1,0 +1,4 @@
+[geopard]
+source = "git"
+git = "https://github.com/ranfdev/Geopard.git"
+prefix = "v"
