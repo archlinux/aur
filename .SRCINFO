@@ -1,15 +1,15 @@
 pkgbase = nekoray-bin
 	pkgdesc = Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MatsuriDayo/nekoray
 	arch = x86_64
 	license = GPL 3.0
 	depends = qt5-base>=5.15
 	depends = qt5-svg
 	depends = qt5-x11extras
-	depends = sing-geosite
-	depends = sing-geoip
+	depends = sing-geosite-db
+	depends = sing-geoip-db
 	optdepends = sing-geosite: geosite data for SignBox Core
 	optdepends = sing-geoip: geoip data for SignBox Core
 	provides = nekobox

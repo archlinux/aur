@@ -5,13 +5,13 @@
 pkgname=nekoray-bin
 pkgver=4.0.1
 _releasedate=2024-12-12
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt based cross-platform GUI proxy configuration manager (backend: sing-box)"
 arch=('x86_64')
 url="https://github.com/MatsuriDayo/nekoray"
 license=('GPL 3.0')
 groups=()
-depends=('qt5-base>=5.15' 'qt5-svg' 'qt5-x11extras' 'sing-geosite' 'sing-geoip')
+depends=('qt5-base>=5.15' 'qt5-svg' 'qt5-x11extras' 'sing-geosite-db' 'sing-geoip-db')
 provides=('nekobox')
 conflicts=('nekoray-git' 'nekoray')
 optdepends=(
