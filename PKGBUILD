@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Enable vscode marketplace in windsurf'
 arch=('any')
 url='https://marketplace.visualstudio.com/vscode'
-license=('MIT')
+license=('0BSD')
 install="${pkgname}.install"
 source=('windsurf-marketplace.hook'
         'patch.py')
