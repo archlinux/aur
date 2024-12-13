@@ -1,0 +1,4 @@
+[cobang]
+source = "git"
+git = "https://github.com/hongquan/CoBang.git"
+prefix = "v"
