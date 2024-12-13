@@ -1,0 +1,3 @@
+[clightd]
+source = "git"
+git = "https://github.com/FedeDP/Clightd.git"
