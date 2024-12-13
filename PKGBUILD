@@ -1,5 +1,5 @@
 pkgname=nsnotifyd
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="DNS NOTIFY message handler"
 arch=(i686 x86_64)
@@ -8,7 +8,7 @@ license=(custom:CC0)
 optdepends=("nsdiff: for the 'nsnotify2update' handler")
 provides=(metazone=$pkgver)
 source=("https://dotat.at/prog/nsnotifyd/nsnotifyd-${pkgver}.tar.gz")
-sha256sums=('c92399179d9f19c79b8c1d738a552d2ca5530e22a6781bffcc9cd46d11ab8da4')
+sha256sums=('8f9a61f5e5564cbed3a30ad4755539f2e0d4e22421efad1b7acf98259c52ae7e')
 
 build() {
   cd $pkgname-$pkgver
