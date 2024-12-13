@@ -1,0 +1,4 @@
+[python-stanza]
+source = "git"
+git = "https://github.com/stanfordnlp/stanza.git"
+prefix = "v"
