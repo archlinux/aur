@@ -1,0 +1,4 @@
+[gnome-network-displays]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/gnome-network-displays.git"
+prefix = "v"
