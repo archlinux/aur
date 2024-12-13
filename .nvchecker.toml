@@ -1,0 +1,4 @@
+[bibata-rainbow-cursor-theme]
+source = "git"
+git = "https://github.com/ful1e5/Bibata_Cursor_Rainbow.git"
+prefix = "v"
