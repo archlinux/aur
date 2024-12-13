@@ -1,0 +1,3 @@
+[python-timeago]
+source = "git"
+git = "https://github.com/hustcc/timeago.git"
