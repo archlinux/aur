@@ -1,0 +1,4 @@
+["macintosh.js-bin"]
+source = "git"
+git = "https://github.com/felixrieseberg/macintosh.js.git"
+prefix = "v"
