@@ -1,0 +1,4 @@
+[gnome-shell-extension-wintile]
+source = "git"
+git = "https://github.com/fmstrat/wintile.git"
+prefix = "v"
