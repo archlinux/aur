@@ -1,10 +1,10 @@
 
 pkgname=gwyddion-no-python2
 _pkgname=gwyddion
-pkgver=2.66
+pkgver=2.67
 pkgrel=1
 pkgdesc="A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis"
-url="http://gwyddion.net/"
+url="https://gwyddion.net/"
 license=("GPL")
 arch=('i686' 'x86_64')
 depends=(gtkglext fftw minizip)
@@ -24,7 +24,7 @@ optdepends=('libxml2: import of SPML and APE DAX data files'
 provides=('gwyddion')
 conflicts=('gwyddion')
 source=(https://downloads.sourceforge.net/sourceforge/gwyddion/$_pkgname-$pkgver.tar.xz)
-sha256sums=('377bedcd2b0d8d133a329686da9f5f91807ff1d47937f9991195f1e863792d52')
+sha256sums=('90aeaf4de00373696b0bef4a82ac45b6287ad9c7b7aca6249068d4d2a4fc8d61')
 
 build() {
   cd $_pkgname-$pkgver
