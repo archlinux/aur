@@ -1,0 +1,4 @@
+[gitin]
+source = "git"
+git = "https://github.com/isacikgoz/gitin.git"
+prefix = "v"
