@@ -1,13 +1,13 @@
 pkgbase = remux
 	pkgdesc = A friendly command shortener for tmux
-	pkgver = 0.2.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://git.vwolfe.io/valerie/remux
 	arch = x86_64
 	license = MIT
 	provides = remux
 	conflicts = remux
-	source = https://git.vwolfe.io/valerie/remux/archive/v0.2.0.tar.gz
-	sha256sums = d34997e4855ee221a3bc14274368a034c4f4e3213e1ea95e8a4cc65c82e590fc
+	source = https://git.vwolfe.io/valerie/remux/archive/v0.4.0.tar.gz
+	sha256sums = bdecf59ff39158faeca5012986f04896ad97d44fd6fc8ee56e571dd20b264f18
 
 pkgname = remux
