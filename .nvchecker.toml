@@ -1,0 +1,3 @@
+[gnome-online-accounts-gtk]
+source = "git"
+git = "https://github.com/xapp-project/gnome-online-accounts-gtk.git"
