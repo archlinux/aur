@@ -2,7 +2,7 @@
 # Co-maintainer: Edu4rdSHL <edu4rdshl@protonmail.com>
 pkgname=waveterm-git
 _pkgname=Wave
-pkgver=0.10.1.beta.0.r0.g7bca363
+pkgver=0.10.1.r0.gd2bc4c2
 _electronversion=33
 _nodeversion=22
 pkgrel=1
