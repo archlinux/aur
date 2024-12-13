@@ -1,0 +1,3 @@
+[freegemas]
+source = "git"
+git = "https://github.com/JoseTomasTocino/freegemas.git"
