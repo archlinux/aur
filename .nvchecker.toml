@@ -1,0 +1,4 @@
+[concessio]
+source = "git"
+git = "https://github.com/ronniedroid/concessio.git"
+prefix = "v"
