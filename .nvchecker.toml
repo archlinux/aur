@@ -1,0 +1,4 @@
+[gpgfrontend]
+source = "git"
+git = "https://github.com/saturneric/GpgFrontend.git"
+prefix = "v"
