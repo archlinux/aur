@@ -3,7 +3,7 @@
 
 _name=manim
 pkgname=python-manimgl
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Animation engine for explanatory math videos"
 arch=(any)
@@ -40,7 +40,7 @@ depends=('ffmpeg'
          'python-svgelements>=1.8.1')
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=("$url/archive/v$pkgver.tar.gz")
-b2sums=('7021b20445ef9fdd2ffc718cd0bcc27cd5f0c9d8be7d03fc4fdbd854ff6a53fe4c6a1bb3e04b14a3eae8f169b2a2f18f3a091c32ff175ffd045b7033c0a96aa6')
+b2sums=('680a4f8d09e1d97519a8c072f201468508a32c7f43a5f80bc33b0659dfd50a19c30984fc6bc781b139930df6673e2719d603af7e87665447efd522464611238c')
 
 build() {
     cd $_name-$pkgver
