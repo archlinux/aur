@@ -1,6 +1,6 @@
 pkgbase = waveterm
 	pkgdesc = An open-source, cross-platform terminal for seamless workflows.(Use system-wide electron)
-	pkgver = 0.9.3
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://www.waveterm.dev/
 	arch = aarch64
@@ -23,9 +23,9 @@ pkgbase = waveterm
 	makedepends = openjpeg2
 	depends = electron33
 	conflicts = waveterm
-	source = waveterm-0.9.3.tar.gz::https://github.com/wavetermdev/waveterm/archive/refs/tags/v0.9.3.tar.gz
+	source = waveterm-0.10.0.tar.gz::https://github.com/wavetermdev/waveterm/archive/refs/tags/v0.10.0.tar.gz
 	source = waveterm.sh
-	sha256sums = 6b0891235cd2e13d44123af34b2a6a6d29a6171f7e4622f7b2afb38918982b61
+	sha256sums = 6e8e8b00797e555a677682cfb62e1738de2c835172a27717d3a79de91abd2811
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = waveterm
