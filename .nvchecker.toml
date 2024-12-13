@@ -1,0 +1,4 @@
+[limo]
+source = "git"
+git = "https://github.com/limo-app/limo.git"
+prefix = "v"
