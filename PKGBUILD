@@ -1,16 +1,16 @@
 # Maintainer: Valerie Wolfe <sleeplessval@gmail.com>
 
 pkgname=pride
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Pride flags in the terminal."
-url="https://git.vwolfe.io/valerie/pride"
+url="https://git.sleeplessval.io/valerie/pride"
 license=("MIT")
 arch=("x86_64")
 provides=("pride")
 conflicts=("pride")
-source=("https://git.vwolfe.io/valerie/pride/archive/v$pkgver.tar.gz")
-sha256sums=("aa05132de118b50c0a12702c0558814e8012a5de317a987541806f39cdbfc662")
+source=("https://git.sleeplessval.io/valerie/pride/archive/v$pkgver.tar.gz")
+sha256sums=("62333ec4ad0d4e0e85edb349231c02ce0167f65a6972e32b5fc918ccc8c485bc")
 
 build() {
     cd "$srcdir/$pkgname"
