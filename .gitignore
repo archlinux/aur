@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !slimbookbattery.install
+!.nvchecker.toml

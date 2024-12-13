@@ -1,0 +1,4 @@
+[slimbookbattery]
+source = "git"
+git = "https://github.com/slimbook/slimbookbattery.git"
+prefix = "v"
