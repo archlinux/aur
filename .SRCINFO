@@ -1,7 +1,7 @@
 pkgbase = grass-desktop-node
 	pkgdesc = The Grass Desktop Node is a lightweight standalone application that is designed to run on any desktop. Users of the desktop node are awarded priority network traffic and are able to earn additional rewards for occasional access to the user's bandwidth.
-	pkgver = 4.29.0
-	pkgrel = 2
+	pkgver = 4.30.0
+	pkgrel = 1
 	url = https://app.getgrass.io/dashboard/store/item/desktop
 	arch = x86_64
 	license = unknown
@@ -18,8 +18,7 @@ pkgbase = grass-desktop-node
 	depends = webkit2gtk-4.1
 	depends = libappindicator-gtk3
 	conflicts = grass-desktop-node
-	noextract = grass_4.29.0_amd64.deb
-	source = https://files.getgrass.io/file/grass-extension-upgrades/ubuntu-22.04/grass_4.29.0_amd64.deb
-	sha256sums = 19209c32242bba6a203ad2b75e58904ece7ebedab47ac5050826140e4d9f205c
+	source = https://files.getgrass.io/file/grass-extension-upgrades/ubuntu-22.04/grass_4.30.0_amd64.deb
+	sha256sums = 11f9dd4dacaf56d44b3c8b7d27e5aebd318406a2a2293f947084dd9c5b7818dd
 
 pkgname = grass-desktop-node
