@@ -1,0 +1,4 @@
+[protonup-qt]
+source = "git"
+git = "https://github.com/DavidoTek/ProtonUp-Qt.git"
+prefix = "v"
