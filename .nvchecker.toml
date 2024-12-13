@@ -1,0 +1,3 @@
+[python-aiofile]
+source = "pypi"
+pypi = "aiofile"
