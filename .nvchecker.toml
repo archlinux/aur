@@ -1,0 +1,4 @@
+[gl-gsync-demo]
+source = "git"
+git = "https://github.com/dahenry/gl-gsync-demo.git"
+prefix = "v"
