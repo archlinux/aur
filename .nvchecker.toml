@@ -1,0 +1,4 @@
+[linux-wifi-hotspot]
+source = "git"
+git = "https://github.com/lakinduakash/linux-wifi-hotspot.git"
+prefix = "v"

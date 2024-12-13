@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !linux-wifi-hotspot.install
+!.nvchecker.toml
