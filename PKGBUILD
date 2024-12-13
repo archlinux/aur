@@ -5,19 +5,19 @@ pkgdesc="C SDK for message protocols and data parsing to communicate with Anki D
 pkgver=0.3.0.r41.20191106
 pkgrel=1
 arch=('i686' 'x86_64')
-url="https://github.com/anki/drive-sdk"
+#url='https://github.com/anki/drive-sdk.git'
+url='https://github.com/OpenHelios/drive-sdk.git'
 license=('Apache')
 depends=('glib2')
 optdepends=(
 	'bluez-utils: for command line tool btmgmt (hciconfig is deprecated)'
 	'readline: for command line tool vehicle-tool to communicate with Anki cars'
 )
-makedepends=('cmake' 'gcc')
+makedepends=('cmake')
 conflicts=('libankidrive')
 replaces=('libankidrive')
 source=(
-#	"$pkgname::git+https://github.com/anki/drive-sdk.git"
-	"$pkgname::git+https://github.com/OpenHelios/drive-sdk.git"
+	"$pkgname::git+$url"
 )
 md5sums=('SKIP')
 pkgver() {
@@ -39,12 +39,14 @@ build() {
 }
 package() {
 	pushd "$pkgbase/build/src"
-	make DESTDIR="$pkgdir/usr" install
+	cmake --install . --prefix="$pkgdir/usr"
 	popd
-	cd "$pkgbase/build/examples"
-	make DESTDIR="$pkgdir/usr" install
-	install -Dm644 '../../include/ankidrive.h' "${pkgdir}/usr/include/ankidrive.h"
+	pushd "$pkgbase/build/examples"
+	cmake --install . --prefix="$pkgdir/usr"
+	popd
+	cd "$pkgbase"
+	install -Dm644 'include/ankidrive.h' "${pkgdir}/usr/include/ankidrive.h"
 	install -dm755 "$pkgdir/usr/include/ankidrive"
-	cp -a ../../include/ankidrive/*.h "$pkgdir/usr/include/ankidrive/."
-	install -Dm644 "../../LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cp -a include/ankidrive/*.h "$pkgdir/usr/include/ankidrive/."
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
