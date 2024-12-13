@@ -1,0 +1,4 @@
+[python-inputs]
+source = "git"
+git = "https://github.com/zeth/inputs.git"
+prefix = "v"
