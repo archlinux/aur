@@ -1,11 +1,11 @@
 pkgbase = windsurf-features
 	pkgdesc = Unblock some features in windsurf
-	pkgver = 1.94.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/microsoft/vscode
 	install = windsurf-features.install
 	arch = any
-	license = unknown
+	license = 0BSD
 	depends = windsurf
 	depends = python
 	depends = python-requests
