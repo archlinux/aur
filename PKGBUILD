@@ -3,12 +3,12 @@ pkgname=fedistar-bin
 _name="${pkgname%-bin}"
 
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-column Fediverse client for desktop"
 arch=('x86_64')
 url="https://github.com/h3poteto/fedistar"
 license=('GPL-3.0')
-depends=('webkit2gtk' 'openssl' 'appmenu-gtk-module' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips')
+depends=('webkit2gtk-4.1' 'openssl' 'appmenu-gtk-module' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips')
 makedepends=('curl' 'wget' 'tar')
 provides=("$_name")
 conflicts=("$_name")

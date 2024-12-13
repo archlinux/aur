@@ -1,14 +1,14 @@
 pkgbase = fedistar-bin
 	pkgdesc = Multi-column Fediverse client for desktop
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/h3poteto/fedistar
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = curl
 	makedepends = wget
 	makedepends = tar
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = openssl
 	depends = appmenu-gtk-module
 	depends = gtk3
