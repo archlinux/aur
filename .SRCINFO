@@ -1,0 +1,12 @@
+pkgbase = xt_tls
+	pkgdesc = an extension for netfilter/IPtables that allows you to filter traffic based on TLS hostnames
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/Lochnair/xt_tls
+	arch = x86_64
+	license = GPL
+	makedepends = iptables
+	source = xt_tls-0.3.4.tar.gz::https://github.com/Lochnair/xt_tls/archive/refs/tags/v0.3.4.tar.gz
+	sha256sums = 1069cfdf53e0d8c2f518149d70595eaa7bf3f835b7cc2a24b4ce7cd7c1157a3f
+
+pkgname = xt_tls
