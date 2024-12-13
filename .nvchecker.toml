@@ -1,0 +1,4 @@
+[i8kgui]
+source = "git"
+git = "https://github.com/razman786/i8kgui.git"
+prefix = "v"

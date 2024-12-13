@@ -7,3 +7,4 @@
 !.SRCINFO
 !i8kgui.install
 !i8kgui.patch
+!.nvchecker.toml
