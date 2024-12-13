@@ -1,0 +1,3 @@
+[matomo]
+source = "git"
+git = "https://github.com/matomo-org/matomo.git"
