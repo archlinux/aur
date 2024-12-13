@@ -2,7 +2,7 @@
 # Contributor: Cameron Otsuka <cameron@otsuka.haus>
 pkgname="python-pyln-bolt7"
 _name=${pkgname#python-}
-pkgver="24.08.2"
+pkgver="24.11"
 pkgrel=1
 pkgdesc="BOLT7"
 arch=("any")
@@ -11,7 +11,7 @@ license=("custom:BSD-MIT")
 depends=("python" "python-pyln-proto")
 makedepends=("python-build" "python-installer" "python-poetry" "python-wheel")
 source=("https://github.com/ElementsProject/lightning/releases/download/v${pkgver}/clightning-v${pkgver}.zip")
-sha256sums=("539e0734eadeba586f0987942f205b97f58743b17d5909d209230683959401d8")
+sha256sums=("3164f3527e6408132beaee64dea0fb6d566377b77e0be67a2359e80dcbd7ba9e")
 
 build() {
         cd "clightning-v$pkgver"/"contrib"/"pyln-spec"/"bolt7"
