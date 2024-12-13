@@ -1,0 +1,3 @@
+[timetrack]
+source = "git"
+git = "https://gitlab.gnome.org/danigm/timetrack.git"
