@@ -30,6 +30,8 @@ provides=(
   "java-runtime-headless-openjdk=$_java_ver"
   "java-runtime=$_java_ver"
   "java-runtime-openjdk=$_java_ver"
+  "jre${_java_ver}-openjdk=${pkgver}-${pkgrel}"
+  "jre${_java_ver}-openjdk-headless=${pkgver}-${pkgrel}"
 )
 install="$pkgname.install"
 source_aarch64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jre${pkgver}-linux_aarch64.tar.gz")
