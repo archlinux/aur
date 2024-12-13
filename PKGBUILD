@@ -3,7 +3,7 @@
 pkgname=python-ezdxf
 _commit=66d2988c880b2793ee95083108d3628b18d08623
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to DXF"
 arch=('x86_64')
 url=https://ezdxf.mozman.at/
@@ -53,9 +53,9 @@ package() {
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
   # install examples
-  #mkdir -p "${pkgdir}/usr/share/${pkgname}"
-  #cp -a examples "${pkgdir}/usr/share/${pkgname}"
-  #cp -a examples_dxf "${pkgdir}/usr/share/${pkgname}"
+  mkdir -p "${pkgdir}/usr/share/${pkgname}"
+  cp -a examples "${pkgdir}/usr/share/${pkgname}"
+  cp -a examples_dxf "${pkgdir}/usr/share/${pkgname}"
 }
 
 # vim:ts=2:sw=2:et:
