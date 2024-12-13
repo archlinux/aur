@@ -1,6 +1,6 @@
 pkgbase = python-narwhals
 	pkgdesc = Extremely lightweight compatibility layer between dataframe libraries
-	pkgver = 1.18.2
+	pkgver = 1.18.3
 	pkgrel = 1
 	url = https://github.com/narwhals-dev/narwhals
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-narwhals
 	optdepends = python-pandas: for Pandas support
 	optdepends = python-polars: for Polars support
 	optdepends = python-pyarrow: for PyArrows support
-	source = https://github.com/narwhals-dev/narwhals/releases/download/v1.18.2/narwhals-1.18.2.tar.gz
-	sha256sums = 7f9c72e6811635c0344193d4ce06c9d9d9fb4af37db4b7d60a76b4c929654f35
+	source = https://github.com/narwhals-dev/narwhals/releases/download/v1.18.3/narwhals-1.18.3.tar.gz
+	sha256sums = 30de15a97b7aeb8f9115e0bf1bba2ece99caaa8f8e570573a11c919e7dab29e9
 
 pkgname = python-narwhals
