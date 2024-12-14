@@ -1,18 +1,18 @@
 # Maintainer: Varakh <varakh@varakh.de>
 
 pkgname=altair-ai-studio
-pkgver=2024.1.0
+pkgver=2025.0.0
 pkgrel=1
-_enginever=10.5.0
+_enginever=11.0.0
 pkgdesc="Data science tool anyone can use to design and prototype highly explainable AI and machine learning models that help build trust throughout your organization"
 DLAGENTS=('https::/usr/bin/wget -O %o %u')
 arch=('any')
 url="https://altair.com/altair-ai-studio"
-depends=('java-runtime=11' 'java-environment=11')
+depends=('java-runtime=17' 'java-environment=17')
 makedepends=('unzip' 'gendesk')
 source=(https://releases.rapidminer.com/latest/rapidminer-studio/rapidminer-studio.zip \
         altair-ai-studio.sh)
-sha256sums=('551180e55dd58b8829ca360cf19f11e6cb8bcbcf2af0361e8ee6c6b0341dcb6d'
+sha256sums=('9dbd1b4729adb99289cea9e8b0a96af58d3554353108265da1e6f26f1af0a15a'
             '34c4e6c99b5c0ed76511edfc98eb3b8aa3c0c40fbe1ff724d3092d484b7ee82a')
 
 prepare() {
