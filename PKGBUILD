@@ -1,11 +1,12 @@
-# Maintainer: mrdotx <klassiker@gmx.de>
+# Maintainer: Konzertheld <aur /at/ konzertheld.de>
+# Contributor: mrdotx <klassiker@gmx.de>
 # Contributor: nutcase84 <nutcase84 at protronmail dot com>
 # Contributor: kfgz <kfgz at interia pl>
 # Contributor: Hubert CzobodziЕ„ski <hcz at onet dot eu>
 # Contributor: Nathan Owe <ndowens dot aur at gmail dot com>
 _pkgname=ddccontrol
 pkgname=ddccontrol-git
-pkgver=20220914.r26957e0
+pkgver=20240131.ra43b4c3
 pkgrel=1
 pkgdesc='Control your monitor by software using the DDC/CI protocol.'
 arch=('i686' 'x86_64')
@@ -19,6 +20,7 @@ depends=(
 makedepends=(
     'git'
     'intltool'
+    'glib2-devel'
 )
 provides=('ddccontrol')
 conflicts=('ddccontrol')
