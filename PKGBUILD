@@ -22,8 +22,7 @@ depends=('efl-git' 'udisks2' 'wayland' 'bluez-libs' 'libexif'
          'xorg-server-xwayland' 'bluez' 'pulse-native-provider' 'connman' 'bc'
          'xcb-util-keysyms' 'hicolor-icon-theme' 'ttf-font' 'pam')
 makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot' 'ccache' 'wayland-protocols')
-optdepends=('acpid: power events on laptop lid close - almost essential for any ACPI based system like intel'
-            'gdb: create backtraces on crash - needed for getting backtraces at crash time in ~/.e-crashdump.txt'
+optdepends=('gdb: create backtraces on crash - needed for getting backtraces at crash time in ~/.e-crashdump.txt'
             'geoclue2: needed for geolocation module'
             'packagekit: needed for packagekit module'
             'ddcutil: from AUR needed for desktop monitor backlight etc. controls')
