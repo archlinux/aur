@@ -10,7 +10,7 @@
 _pkgname=Flexget
 pkgname=${_pkgname,,}
 pkgver=3.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="FlexGet is a program aimed to automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 arch=(any)
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -76,8 +76,10 @@ depends=(
     "python-setuptools"
     "python-sgmllib3k"
     "python-six"
+    "python-socksio"
     "python-soupsieve"
     "python-sqlalchemy"
+    "python-telegram-bot"
     "python-tempora"
     "python-typing_extensions"
     "python-tzdata"
@@ -90,8 +92,14 @@ depends=(
     "python-zxcvbn"
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-optdepends=('flexget-webui: webui v2'
-            'flexget-webui-v1: webui v1')
+optdepends=(
+    "flexget-webui-v1: webui v1"
+    "flexget-webui: webui v2"
+    "python-cloudscraper"
+    "python-deluge-client"
+    "python-qbittorrent-api"
+    "python-transmission-rpc"
+)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}@.service"
