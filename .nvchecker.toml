@@ -1,3 +1,4 @@
 [okteto-bin]
 source = "git"
 git = "https://github.com/okteto/okteto.git"
+exclude_regex = ".*beta.*"
