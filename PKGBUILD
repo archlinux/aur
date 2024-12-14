@@ -1,4 +1,5 @@
-# Maintainer: 3ED_0 <krzysztof1987 /at/ gmail.com>
+# Maintainer: Konzertheld <aur /at/ konzertheld.de>
+# Contributor: 3ED_0 <krzysztof1987 /at/ gmail.com>
 # Contributor: kfgz <kfgz at interia pl>
 # Contributor: Hubert Czobodziński <hcz at onet dot eu>
 # Contributor: Nathan Owe <ndowens dot aur at gmail dot com>
@@ -6,12 +7,12 @@
 pkgbase=ddccontrol
 pkgname=(ddccontrol gddccontrol)
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="DDCcontrol is a software used to control monitor parameters, like brightness, contrast, RGB color levels and others"
 arch=('i686' 'x86_64')
 url="https://github.com/ddccontrol/ddccontrol"
 license=('GPL')
-depends=('pciutils' 'ddccontrol-db-git' 'perl-xml-parser' 'libxml2' 'icu' 'glib2')
+depends=('pciutils' 'ddccontrol-db-git' 'perl-xml-parser' 'libxml2' 'icu' 'glib2' 'glib2-devel')
 makedepends=('gtk2' 'autoconf' 'automake' 'intltool' 'python')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/ddccontrol/ddccontrol/archive/${pkgver}.tar.gz")
 options=('!libtool')
