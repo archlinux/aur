@@ -1,0 +1,3 @@
+[python-bumpfontversion]
+source = "pypi"
+pypi = "bumpfontversion"
