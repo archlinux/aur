@@ -9,6 +9,7 @@ pkgbase = prologs
 	optdepends = remake: For time profiling
 	optdepends = swi-prolog
 	optdepends = ciao-lang
+	optdepends = cs-prolog
 	optdepends = gprolog
 	optdepends = scryer-prolog
 	optdepends = trealla
