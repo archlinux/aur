@@ -1,6 +1,6 @@
 pkgbase = lib32-tcl-ar
 	pkgdesc = The Tcl scripting language (with *.a files)
-	pkgver = 8.6.15
+	pkgver = 8.6.16
 	pkgrel = 1
 	url = http://tcl.sourceforge.net/
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = lib32-tcl-ar
 	depends = lib32-glibc
 	depends = lib32-zlib
 	depends = tcl
-	provides = lib32-tcl=8.6.15
+	provides = lib32-tcl=8.6.16
 	conflicts = lib32-tcl
 	options = staticlibs
 	options = !lto
-	source = https://cfhcable.dl.sourceforge.net/project/tcl/Tcl/8.6.15/tcl8.6.15-src.tar.gz
-	sha256sums = 861e159753f2e2fbd6ec1484103715b0be56be3357522b858d3cbb5f893ffef1
+	source = https://cfhcable.dl.sourceforge.net/project/tcl/Tcl/8.6.16/tcl8.6.16-src.tar.gz
+	sha256sums = 91cb8fa61771c63c262efb553059b7c7ad6757afa5857af6265e4b0bdc2a14a5
 
 pkgname = lib32-tcl-ar
