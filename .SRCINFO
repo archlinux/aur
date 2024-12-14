@@ -1,0 +1,13 @@
+pkgbase = cs-prolog
+	pkgdesc = C# Prolog
+	pkgver = 4.1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/cs-prolog/
+	arch = any
+	license = LGPL-3.0-or-later
+	depends = mono
+	options = !strip
+	source = https://downloads.sourceforge.net/project/cs-prolog/C%23Prolog4.1.zip
+	sha256sums = a3c102cfb51a032c7e218c8607aeace5211421971a466547a104ccc13851b2bd
+
+pkgname = cs-prolog
