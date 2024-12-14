@@ -2,7 +2,7 @@
 # Contributor: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=lib32-egl-wayland
-pkgver=1.1.16
+pkgver=1.1.17
 pkgrel=1
 pkgdesc='EGLStream-based Wayland external platform (32-bits)'
 arch=('x86_64')
