@@ -1,13 +1,12 @@
 pkgbase = tgcli
 	pkgdesc = A terminal client for Telegram.
-	pkgver = 0.3.1
+	pkgver = 0.6.0.alpha.1
 	pkgrel = 1
 	url = https://github.com/erayerdin/tgcli
-	arch = any
-	license = Apache
-	makedepends = python-setuptools
-	source = https://github.com/erayerdin/tgcli/archive/v0.3.1.tar.gz
-	md5sums = 96b695e07734c145e9a87308e78ee8e2
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = cargo
+	source = tgcli-0.6.0.alpha.1.tar.gz::https://github.com/erayerdin/tgcli/archive/v0.6.0-alpha.1.tar.gz
+	sha512sums = a78b8c954cb12fe7e7cc4134def7062d5b8f8530033958e1dc0068f87ddcebe06086f4650aaa37533e1d2bc2f7e184c20719ddcce0949a5e10bc7a4761dfc69c
 
 pkgname = tgcli
-
