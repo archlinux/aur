@@ -43,6 +43,12 @@ package() {
     # bin
     install -Dm 755 ${srcdir}/${pkgname}/build/carch -t ${pkgdir}/usr/bin/carch
 
+    install -Dm 755 ${srcdir}/${pkgname}/cli/carchcli -t ${pkgdir}/usr/bin/carchcli
+
+    install -Dm 755 ${srcdir}/${pkgname}/gtk/carch-gtk -t ${pkgdir}/usr/bin/carch-gtk
+
+    install -Dm 755 ${srcdir}/${pkgname}/gtk/carch-gtk.py -t ${pkgdir}/usr/bin/carch-gtk.py
+
     install -d "$pkgdir/usr/bin/scripts"
     
     install -Dm 755 ${srcdir}/${pkgname}/scripts/*.sh -t ${pkgdir}/usr/bin/scripts/
