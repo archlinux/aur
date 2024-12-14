@@ -1,0 +1,3 @@
+[lua-cmark]
+source = "git"
+git = "https://github.com/jgm/cmark-lua.git"
