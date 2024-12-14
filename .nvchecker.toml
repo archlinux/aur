@@ -1,0 +1,3 @@
+[perl-net-bonjour]
+source = "cpan"
+cpan = "Net-Bonjour"
