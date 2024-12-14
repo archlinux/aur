@@ -1,3 +1,5 @@
+# Maintainer: Rhys Perry <rhysperry111 AT gmail.com>
+
 pkgname=python-rpi-ws281x
 _name=rpi_ws281x
 pkgver=4.3.4
