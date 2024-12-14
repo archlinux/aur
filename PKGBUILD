@@ -21,6 +21,6 @@ md5sums=('98b466c2b8132d01b1698a3dfa4b7fe8')
 
 package() {
     tar -x --xz -f data.tar.xz -C "${pkgdir}"
-    install -D -m 644 "$startdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -D -m 644 "$startdir/TRACKTION_LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     mv "$pkgdir/usr/share/doc/waveform9" "$pkgdir/usr/share/doc/$pkgname"
 }
