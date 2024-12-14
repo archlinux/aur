@@ -4,7 +4,7 @@
 pkgname=autenticacao-gov-pt
 _pkgname=autenticacao.gov
 pkgver=3.13.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) source code based version"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -36,7 +36,7 @@ source=("git+https://github.com/amagovpt/autenticacao.gov/#tag=v${pkgver}"
         "autenticacao-gov-pt.install")
 
 sha512sums=('SKIP'
-            '4f2928f358a7ce4733965c6bc84d32ea4df6d70861bf94c6bc4b57253dbadcc6b9f36e390c9eee0e6a3655a1a8e66728f7d82768a3e2541b198209389f070003')
+            '344a0722a4554150f17f25d49d85c8a42d5e75b2444d59b1648f7c3d0817eb93eb011680f3cccf092a5eceef7c13e8048f0d09de4f07199a33c7bd1033c3de9f')
 
 install='autenticacao-gov-pt.install'
 
