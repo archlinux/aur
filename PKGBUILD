@@ -13,6 +13,8 @@ license=('MIT' 'CC BY-SA 4.0')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-x86_64.tar.gz")
 sha256sums=('a8d69e2be4f350530457cd87a9e9ab4c51e6d7991db99d0823309b9376e1e9f5')
 depends=('glibc' 'vulkan-driver' 'vulkan-icd-loader')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 package() {
     cd "$srcdir"
