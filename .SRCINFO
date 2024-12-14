@@ -1,0 +1,19 @@
+pkgbase = nedko-cu-git
+	pkgdesc = Port of openbsd cu(1) to Linux
+	pkgver = r17.1405d36
+	pkgrel = 1
+	url = https://github.com/nedko/cu
+	arch = x86_64
+	license = custom:None
+	makedepends = git
+	depends = glibc
+	depends = libbsd
+	depends = libevent
+	provides = nedko-cu
+	provides = cu
+	conflicts = nedko-cu
+	conflicts = cu
+	source = cu::git+https://github.com/nedko/cu.git
+	sha256sums = SKIP
+
+pkgname = nedko-cu-git
