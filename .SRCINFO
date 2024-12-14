@@ -11,6 +11,7 @@ pkgbase = python-qtile-ebenezer
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-ruamel-yaml
 	depends = python
 	provides = python-qtile-ebenezer
 	conflicts = python-qtile-ebenezer

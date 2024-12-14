@@ -16,6 +16,7 @@ makedepends=(
   "python-wheel"
   "python-build"
   "python-installer"
+  "python-ruamel-yaml"
 )
 source=(git+https://github.com/williampsena/qtile-ebenezer#tag=v$pkgver)
 sha256sums=('SKIP')
