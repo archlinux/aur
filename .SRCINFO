@@ -18,5 +18,6 @@ pkgbase = diggie
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = https://github.com/oxydien/diggie/releases/download/v0.0.2/diggie_0.0.2_amd64.deb
+	sha256sums_x86_64 = 2403051ccfd98ddb439f33c796a78a854126f81fabf152872b52ae9d3f196c17
 
 pkgname = diggie

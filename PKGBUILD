@@ -11,7 +11,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/oxydien/diggie/releases/download/v$pkgver/diggie_"$pkgver"_amd64.deb")
-sha256sums_x86_64="2403051ccfd98ddb439f33c796a78a854126f81fabf152872b52ae9d3f196c17"
+sha256sums_x86_64=('2403051ccfd98ddb439f33c796a78a854126f81fabf152872b52ae9d3f196c17')
 
 package() {
 
