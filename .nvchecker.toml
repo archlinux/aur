@@ -1,0 +1,3 @@
+[perl-class-accessor-lvalue]
+source = "cpan"
+cpan = "Class-Accessor-Lvalue"
