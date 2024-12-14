@@ -1,0 +1,6 @@
+[okteto-beta]
+source = "git"
+git = "https://github.com/okteto/okteto.git"
+include_regex = ".*beta.*"
+from_pattern = '(.*)-beta\.(.*)'
+to_pattern = '\1beta\2'
