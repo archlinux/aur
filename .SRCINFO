@@ -1,6 +1,6 @@
 pkgbase = imna-file-manager-bin
 	pkgdesc = File manager created by Imna Digital
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/Imna29/imna_file_manager
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = imna-file-manager-bin
 	depends = webkit2gtk
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/Imna29/imna_file_manager/releases/download/app-v0.0.1/Imna.File.Manager_0.0.1_amd64.deb
+	source_x86_64 = https://github.com/Imna29/imna_file_manager/releases/download/app-v0.0.2/Imna.File.Manager_0.0.2_amd64.deb
 	sha256sums_x86_64 = 3c2f0d8f945cbf1ab42570d91be3b1cd29a7db989db488c304adeabf100b7b32
 
 pkgname = imna-file-manager-bin
