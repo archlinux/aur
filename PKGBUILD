@@ -7,9 +7,6 @@ pkgdesc='RISC-V userspace emulator library'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'riscv32' 'riscv64')
 url='https://github.com/libriscv/libriscv'
 license=('BSD-3-Clause')
-depends=(
-  'tcc'
-)
 makedepends=(
   'cmake'
 )
