@@ -3,7 +3,7 @@
 
 # basic info
 pkgname="lightly-qt6"
-pkgver=0.5.9
+pkgver=0.5.11
 pkgrel=1
 pkgdesc="Bali10050's fork of Lightly (A modern style for qt applications)"
 url="https://github.com/Bali10050/lightly"
@@ -25,7 +25,7 @@ source=(
 )
 
 sha256sums=(
-  '5572f41c99d1c54063f6db7e9558720ac0ab742adaf0928e7243481ec66f686e'
+  '2dfe303947f28e2c2b50d78d4adc2f3e5f4a36960981e5666f0fed8842a9e7ef'
 )
 
 # KF6/Qt6
