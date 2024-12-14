@@ -1,0 +1,3 @@
+[perl-net-rendezvous-publish]
+source = "cpan"
+cpan = "Net-Rendezvous-Publish"
