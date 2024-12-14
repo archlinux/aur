@@ -1,6 +1,6 @@
 # Maintainer: Jochem Broekhoff <(lastname) dot (firstname) @ gmail.com>
 pkgname=marble-marcher-ce
-_pkgtag=1.4.5
+_pkgtag=1.4.6
 pkgver=$(echo "${_pkgtag}" | sed "s/-//;s/v//")
 pkgrel=1
 pkgdesc="A video game demo that uses a fractal physics engine and fully procedural rendering to produce beautiful and unique gameplay unlike anything you've seen before."
@@ -48,7 +48,7 @@ package() {
     cat >"${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/bin/sh
 cd "/usr/share/${pkgname}"
-./MarbleMarcher                      
+./MarbleMarcher
 EOF
     chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 
