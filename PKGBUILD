@@ -1,4 +1,6 @@
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer:
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
 _pkgname=mir-core
 pkgname=d-$_pkgname
