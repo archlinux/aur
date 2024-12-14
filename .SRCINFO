@@ -1,0 +1,32 @@
+pkgbase = libethercat
+	pkgdesc = EtherCAT master library. This library is used to build a deterministic fieldbus network with EtherCAT components.
+	pkgver = 0.6.3
+	pkgrel = 0
+	url = https://github.com/robert-burger/libethercat
+	arch = x86_64
+	license = LGPL-3.0-only
+	makedepends = cmake
+	makedepends = pkgconf
+	depends = glibc
+	depends = libosal
+	source = libethercat-0.6.3.tar.gz::https://github.com/robert-burger/libethercat/archive/refs/tags/0.6.3.tar.gz
+	sha256sums = e67c219e4f8c8a8974331f421b79b080a8ca8c306b967c368c01dcf9c0205d6c
+
+pkgname = libethercat
+	provides = libethercat
+	provides = libethercat.so
+	conflicts = libethercat
+	conflicts = libethercat.so
+
+pkgname = libethercat-tools
+	depends = glibc
+	depends = libosal
+	depends = libethercat.so
+	provides = libethercat-tools
+	provides = eepromtool
+	provides = ethercatdiag
+	provides = example-with-dc
+	conflicts = libethercat-tools
+	conflicts = eepromtool
+	conflicts = ethercatdiag
+	conflicts = example-with-dc
