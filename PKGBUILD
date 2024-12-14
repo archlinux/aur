@@ -9,8 +9,8 @@ arch=(any)
 url=https://git.ignore.pl/lua-dottify
 license=(GPL3)
 makedepends=(luarocks)
-source=("dottify-scm-1.rockspec")
-sha256sums=('SKIP')
+source=(https://luarocks.org/manifests/Freed-Wu/dottify-scm-1.rockspec)
+sha256sums=('48ffe5686f81d7083026f30b9ed94cfe63b2dec1b92d6c6a1c8f4615f7d7aa4c')
 _lua_version=5.4
 
 _package() {
