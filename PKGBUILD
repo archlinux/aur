@@ -1,7 +1,7 @@
 # Maintainer: Cyberczy <czysheep@gmail.com>
 
 pkgname=ttf-maple-beta
-pkgver="7.0_beta31"
+pkgver="7.0_beta32"
 pkgrel=1
 pkgdesc="Open source monospace font with round corner, ligatures and Nerd-Font for IDE and command line"
 arch=("any")
@@ -12,9 +12,9 @@ source=("$pkgname-${pkgver//_/-}-MapleMono-TTF.zip::$url/releases/download/v${pk
         "$pkgname-${pkgver//_/-}-MapleMono-NF.zip::$url/releases/download/v${pkgver//_/-}/MapleMono-NF.zip"
         "$pkgname-${pkgver//_/-}-MapleMono-NF-CN.zip::$url/releases/download/v${pkgver//_/-}/MapleMono-NF-CN.zip"
         "$pkgname-LICENSE::https://raw.githubusercontent.com/subframe7536/maple-font/main/OFL.txt")
-sha256sums=('a1aaa886036ef7b8445fc312ed496f877c6429b5cdf5f3f5bbbfbc3a2c67f426'
-            '9f73c33908ad3505728534f074ad6358fa1c532da35f2a285c6b8c95ad3ac9c8'
-            '6d5a19762f27f38347e28e55e357d9f9b380621992ce15da4f9787dfde0aeba1'
+sha256sums=('b37ca84c71b08d91ff7b9a2fdc42a61d5507efaec6ead2e864230c15ac20a335'
+            'afbf26ceedee6c5dd1f6de7af7885451e133ebb14a8f2ac7ae8fa2c459b03d37'
+            '8db50b4756932ae1012f15bdc5898fe8cb889b111fffa667c720f66abf09f56a'
             'cdb01cb2c0ac2d618ad3fc082275cf3cbe6145a58d558709ec083ce69c702cf0')
 
 package() {
