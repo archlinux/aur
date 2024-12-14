@@ -2,8 +2,9 @@
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
 _crate="hickory-util"
+_cratever="0.24.2"
 pkgname="hickory-util"
-pkgver=0.24.1
+pkgver=0.24.2
 pkgrel=1
 pkgdesc='Utilities that complement Hickory DNS. '
 url='https://hickory-dns.org/'
@@ -14,14 +15,14 @@ makedepends=('cargo')
 conflicts=('trust-dns-util')
 replaces=('trust-dns-util')
 
-source=("$_crate-0.24.1.tar.gz::https://crates.io/api/v1/crates/hickory-util/0.24.1/download")
-sha512sums=('c825eca03e8f7a275405d0d3641faee98cb3c683a04a51965625e443c34fa72a75222ecbbbbc86398f488e5989fb62d0ab18d4892c17d41fd21ab59d432d99f7')
+source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/hickory-util/0.24.2/download")
+sha512sums=('2690e381591ac7899aa9838b6f20cf28ad2ed8212eb41340ed9a49b388c61c910c04021b73a1683142e07d1bbff8ff1a9a81dd0bad2a88b08481242b5544b9b2')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
 
 prepare() {
-	cd "$srcdir/$_crate-0.24.1"
+	cd "$srcdir/$_crate-$_cratever"
 
 	export RUSTUP_TOOLCHAIN=stable
 
@@ -29,13 +30,12 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$_crate-0.24.1"
+	cd "$srcdir/$_crate-$_cratever"
 	
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	CFLAGS+=" -ffat-lto-objects"
 
-	
 	cargo build \
 		--offline \
 		--locked \
@@ -44,11 +44,11 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_crate-0.24.1"
+	cd "$srcdir/$_crate-$_cratever"
+	install -Dm755 "target/release/dns" -t "$pkgdir/usr/bin"
 	install -Dm755 "target/release/dnskey-to-pem" -t "$pkgdir/usr/bin"
 	install -Dm755 "target/release/get-root-ksks" -t "$pkgdir/usr/bin"
 	install -Dm755 "target/release/pem-to-public-dnskey" -t "$pkgdir/usr/bin"
-	install -Dm755 "target/release/resolve" -t "$pkgdir/usr/bin"
 	install -Dm755 "target/release/recurse" -t "$pkgdir/usr/bin"
-	install -Dm755 "target/release/dns" -t "$pkgdir/usr/bin"
+	install -Dm755 "target/release/resolve" -t "$pkgdir/usr/bin"
 }
