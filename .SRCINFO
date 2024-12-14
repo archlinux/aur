@@ -1,5 +1,5 @@
 pkgbase = cs-prolog
-	pkgdesc = C# Prolog
+	pkgdesc = A Prolog interpreter written in C#
 	pkgver = 4.1
 	pkgrel = 1
 	url = https://sourceforge.net/projects/cs-prolog/

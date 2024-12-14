@@ -2,7 +2,7 @@
 pkgname=cs-prolog
 pkgver=4.1
 pkgrel=1
-pkgdesc="C# Prolog"
+pkgdesc='A Prolog interpreter written in C#'
 arch=(any)
 url='https://sourceforge.net/projects/cs-prolog/'
 license=(LGPL-3.0-or-later)
