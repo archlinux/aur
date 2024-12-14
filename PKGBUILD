@@ -1,6 +1,6 @@
 # Maintainer: Yakov P potapovj(at)gmail(dot)com
 pkgname=sreda
-pkgver=24.5.4.47626
+pkgver=24.5.4.48124
 pkgrel=1
 pkgdesc="SREDA"
 arch=('x86_64')

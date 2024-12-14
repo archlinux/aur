@@ -1,6 +1,6 @@
 pkgbase = sreda
 	pkgdesc = SREDA
-	pkgver = 24.5.4.47626
+	pkgver = 24.5.4.48124
 	pkgrel = 1
 	url = https://sreda.digital.gov.ru/
 	arch = x86_64
