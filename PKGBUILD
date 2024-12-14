@@ -1,6 +1,6 @@
 # Maintainer: Lukas Wölfer (domain is thasky) <aur at [domain] dot one>
 pkgname=diaria-git
-pkgver=0.2.0.r0.gefe59b9
+pkgver=0.2.3.r0.gd904bf9
 pkgrel=1
 pkgdesc='Diary entry manager'
 url='https://github.com/corrodedHash/diaria'
@@ -33,17 +33,18 @@ build () {
   cd "${srcdir}/${pkgname}"
 
   cmake --build build/ --parallel `nproc --all`
+  cmake --install build/ --prefix dist/
 }
 
 check() {
   cd "${srcdir}/${pkgname}"
   cd test/end_to_end
-  DIARIA="../../build/diaria" pytest
+  DIARIA="../../dist/bin/diaria" pytest
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-  install -Dm0755 build/diaria "${pkgdir}/usr/bin/diaria"
+  install -Dm0755 dist/bin/diaria "${pkgdir}/usr/bin/diaria"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "extra/zsh_completions" "${pkgdir}/usr/share/zsh/site-functions/_diaria"
 }
