@@ -1,18 +1,17 @@
 pkgbase = lib32-ffmpeg-minimal-dev
 	pkgdesc = A minimal set of lib32 headers and development libraries for ffmpeg
 	pkgver = 7.1
-	pkgrel = 1
-	url = http://ffmpeg.org
+	pkgrel = 2
+	url = https://ffmpeg.org
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = gcc
 	makedepends = git
 	makedepends = lib32-gcc-libs
 	options = !lto
 	options = !debug
 	options = !staticlibs
 	options = strip
-	source = ffmpeg-minimal-dev::git+https://github.com/FFmpeg/FFmpeg#tag=n7.1
+	source = git+https://github.com/FFmpeg/FFmpeg.git#tag=n7.1
 	b2sums = c7ec6b1db61608195117b79f3f0c8f6323c3abeb39721359da0f10e7d739da8301e04ff5fa83c022f86fc760f66e00066f9a50d97b771f797ccc679f9d912c40
 
 pkgname = lib32-ffmpeg-minimal-dev
