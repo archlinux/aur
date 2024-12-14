@@ -1,7 +1,7 @@
 pkgbase = python-proton-vpn-local-agent
 	pkgdesc = Proton VPN local agent written in Rust
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProtonVPN/local-agent-rs
 	arch = x86_64
 	groups = ProtonVPN
@@ -9,7 +9,9 @@ pkgbase = python-proton-vpn-local-agent
 	makedepends = git
 	makedepends = cargo
 	depends = python
-	source = git+https://github.com/ProtonVPN/local-agent-rs.git#commit=9cc170b5aa3c8d8c9d26d155e1655bf546ea6146
+	options = !debug
+	options = !lto
+	source = git+https://github.com/ProtonVPN/local-agent-rs.git#commit=9bdad2fa5fcb39bcdc521e1e5640c8706019f97c
 	sha256sums = SKIP
 
 pkgname = python-proton-vpn-local-agent
