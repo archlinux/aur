@@ -12,7 +12,6 @@ pkgbase = carch-git
 	depends = gum
 	depends = git
 	depends = sed
-	depends = xdg-user-dirs
 	depends = wget
 	depends = figlet
 	depends = pacman
