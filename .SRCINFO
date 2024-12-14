@@ -1,0 +1,22 @@
+pkgbase = diggie
+	pkgdesc = A Discord bot utility tool designed to streamline your developer experience by providing a simple, client-like application
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/oxydien/diggie
+	install = diggie.install
+	arch = x86_64
+	license = mit
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/oxydien/diggie/releases/download/v0.0.2/diggie_0.0.2_amd64.deb
+
+pkgname = diggie
