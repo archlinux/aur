@@ -76,10 +76,8 @@ depends=(
     "python-setuptools"
     "python-sgmllib3k"
     "python-six"
-    "python-socksio"
     "python-soupsieve"
     "python-sqlalchemy"
-    "python-telegram-bot"
     "python-tempora"
     "python-typing_extensions"
     "python-tzdata"
@@ -98,6 +96,7 @@ optdepends=(
     "python-cloudscraper"
     "python-deluge-client"
     "python-qbittorrent-api"
+    "python-telegram-bot"
     "python-transmission-rpc"
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"

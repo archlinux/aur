@@ -22,8 +22,6 @@ depends=$(./geninfo.py "$pyreq" |
     sed 's|python-jinja2|python-jinja|' |
     sed 's|python-typing-|python-typing_|' |
     sed 's|python-zc-lockfile|python-zc.lockfile|' |
-    sed '$a python-telegram-bot' |
-    sed '$a python-socksio' |
     sort -u |
     sed 's|^|    \"|' |
     sed 's|$|\"|'
@@ -36,7 +34,6 @@ optdepends=$(yq eval -o=json "$pytoml" |
     sed 's|^|python-|' | 
     sed 's|python-python-|python-|' | 
     sed '/^python-python$/d' | 
-    sed '/python-telegram-bot/d' |
     sed 's|^|\"|g' |
     sed 's|$|\"|g' |
     sed '$a "flexget-webui: webui v2"' |
