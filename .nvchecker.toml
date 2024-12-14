@@ -1,0 +1,3 @@
+[lua-cluacov]
+source = "git"
+git = "https://github.com/luarocks/cluacov.git"
