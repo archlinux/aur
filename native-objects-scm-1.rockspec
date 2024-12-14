@@ -2,7 +2,7 @@ local git_ref = '8ac84a37cbb00dd2defbcdade70cb07036323fb8'
 local modrev = 'scm'
 local specrev = '1'
 
-local repo_url = 'https://github.com/Neopallium/LuaNativeObjects'
+local repo_url = 'https://github.com/Freed-Wu/LuaNativeObjects'
 
 rockspec_format = '3.0'
 package = 'native-objects'
@@ -16,7 +16,7 @@ description = {
     license = 'GPL-3.0'
 }
 
-dependencies = { 'lua >= 5.1' }
+dependencies = { 'lua >= 5.1', 'dottify' }
 
 test_dependencies = {}
 
@@ -26,12 +26,14 @@ source = {
 
 if modrev == 'scm' or modrev == 'dev' then
     source = {
-        url = repo_url:gsub('^', 'git+')
+        url = repo_url:gsub('^', 'git+'),
+        branch = "luarocks"
     }
 end
 
 build = {
     type = 'builtin',
+    copy_directories = {'examples', 'project_template'},
     install = {
         bin = {
             ["native_objects.lua"] = 'native_objects.lua'

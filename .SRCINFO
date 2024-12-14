@@ -6,8 +6,8 @@ pkgbase = lua-native-objects
 	arch = any
 	license = GPL3
 	makedepends = luarocks
-	source = native-objects-scm-1.rockspec
-	sha256sums = SKIP
+	source = https://luarocks.org/manifests/Freed-Wu/native-objects-scm-1.rockspec
+	sha256sums = 6d5926b3c6950f4be1cb7f276db373a89f2a8c4e93424578548b2be0ea031e3d
 
 pkgname = lua-native-objects
 
