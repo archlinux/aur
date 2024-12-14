@@ -1,6 +1,6 @@
 # Maintainer: Amarnath P. || jeebuscrossaint || apatel6ty@protonmail.com
 pkgname=aocli
-pkgver=87962d2
+pkgver=1.0
 pkgrel=1
 pkgdesc="A blazingly fast Advent of Code CLI written in C++ in just about 650 LoC. Can be used to submit answers, view problems, and fetch inputs."
 arch=('x86_64')
