@@ -1,0 +1,4 @@
+[gaper]
+source = "git"
+git = https://github.com/maxcnunes/gaper.git"
+prefix = "v"
