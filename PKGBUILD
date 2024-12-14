@@ -15,6 +15,7 @@ depends=(
     "gum"
     "git"
     "sed"
+    "xdg-user-dirs"
     "wget"
     "figlet"
     "pacman" 
