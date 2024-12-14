@@ -1,14 +1,14 @@
 # Maintainer: Danrus110 <danrus228zk@gmial.com>
 pkgname=walcord
-pkgver=2.7
-pkgrel=2
+pkgver=2.8
+pkgrel=3
 pkgdesc="Pywal themes for Vesktop/Vencord/BetterDiscord"
 arch=('any')
 url="https://github.com/Danrus1100/walcord"
 license=('MIT')
 depends=('python' 'python-pip')
 source=(https://github.com/Danrus1100/walcord/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('b71bd8be11b503315c29632cc89c5b11f662c38c9a1a1b5a0cb2cf4bcf0fa4cd')
+sha256sums=('42a10b9b1d14810a49e281f26083d64fad791cf1a88894038a953f3a1829d400')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

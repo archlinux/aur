@@ -1,13 +1,13 @@
 pkgbase = walcord
 	pkgdesc = Pywal themes for Vesktop/Vencord/BetterDiscord
-	pkgver = 2.7
-	pkgrel = 2
+	pkgver = 2.8
+	pkgrel = 3
 	url = https://github.com/Danrus1100/walcord
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-pip
-	source = https://github.com/Danrus1100/walcord/archive/refs/tags/2.7.tar.gz
-	sha256sums = b71bd8be11b503315c29632cc89c5b11f662c38c9a1a1b5a0cb2cf4bcf0fa4cd
+	source = https://github.com/Danrus1100/walcord/archive/refs/tags/2.8.tar.gz
+	sha256sums = 42a10b9b1d14810a49e281f26083d64fad791cf1a88894038a953f3a1829d400
 
 pkgname = walcord
