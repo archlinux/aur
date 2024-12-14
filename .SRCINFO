@@ -1,0 +1,15 @@
+pkgbase = rustcraft-bin
+	pkgdesc = Minecraft game clone written in Rust
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/c2i-junia/rustcraft
+	arch = x86_64
+	license = MIT
+	license = CC BY-SA 4.0
+	depends = glibc
+	depends = vulkan-driver
+	depends = vulkan-icd-loader
+	source = rustcraft-bin-0.8.tar.gz::https://github.com/c2i-junia/rustcraft/releases/download/v0.8/rustcraft-v0.8-linux-x86_64.tar.gz
+	sha256sums = a8d69e2be4f350530457cd87a9e9ab4c51e6d7991db99d0823309b9376e1e9f5
+
+pkgname = rustcraft-bin
