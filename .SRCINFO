@@ -1,6 +1,6 @@
 pkgbase = linux-vfio-lts
 	pkgdesc = LTS Linux
-	pkgver = 6.6.62
+	pkgver = 6.6.65
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = x86_64
@@ -20,18 +20,18 @@ pkgbase = linux-vfio-lts
 	makedepends = texlive-latexextra
 	options = !debug
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.62.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.62.tar.sign
-	source = config-6.6.62::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/config
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.65.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.65.tar.sign
+	source = config-6.6.65::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/config
 	source = 1001-6.6.7-add-acs-overrides.patch
 	source = 1002-6.6.7-i915-vga-arbiter.patch
-	source = 0001-6.6.62-disallow-unprivileged-CLONE_NEWUSER.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-	source = 0002-6.6.62-nvidia-skip-simpledrm.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0002-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch
-	source = 0003-6.6.62-set-default-aslr-bits.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0003-Default-to-maximum-amount-of-ASLR-bits.patch
+	source = 0001-6.6.65-disallow-unprivileged-CLONE_NEWUSER.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+	source = 0002-6.6.65-nvidia-skip-simpledrm.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0002-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch
+	source = 0003-6.6.65-set-default-aslr-bits.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0003-Default-to-maximum-amount-of-ASLR-bits.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 83BC8889351B5DEBBB68416EB8AC08600F108CDF
-	sha256sums = e2c35611775534941b9d4dd871f3ae5b988b6594dc9033b5ca784366e07d9336
+	sha256sums = 7ae1476e8b4c86e7754e581d45d6fbce5932bfefce934758a2907d6d79eca3e0
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = f342986bd27980c96c952b0dd8103d3e21a942d87f18df1308fab370e20010fb

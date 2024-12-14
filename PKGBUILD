@@ -12,6 +12,8 @@
 : ${_build_lts:=true}
 : ${_build_v3:=false}
 
+: ${_cksum:=7ae1476e8b4c86e7754e581d45d6fbce5932bfefce934758a2907d6d79eca3e0}
+
 unset _pkgtype
 [[ "${_build_vfio::1}" == "t" ]] && _pkgtype+="-vfio"
 [[ "${_build_lts::1}" == "t" ]] && _pkgtype+="-lts"
@@ -21,7 +23,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.6.62
+pkgver=6.6.65
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -54,7 +56,7 @@ source=(
   "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/config
 )
 sha256sums=(
-  'e2c35611775534941b9d4dd871f3ae5b988b6594dc9033b5ca784366e07d9336' ###
+  "${_cksum:?}"
   'SKIP'
   'SKIP'
 )
