@@ -1,6 +1,6 @@
 pkgbase = goku
 	pkgdesc = HTTP load testing application
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://github.com/jcaromiq/goku
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = goku
 	depends = gcc-libs
 	depends = openssl
 	options = !lto
-	source = goku-1.1.6.tar.gz::https://github.com/jcaromiq/goku/archive/refs/tags/1.1.6.tar.gz
-	sha256sums = c98e99975942d52932bb1b141aa19390183594793ac38c9db7b1871b06bd24c7
-	b2sums = 28dd35bd5b0e63c33014b9b10229daf7d10be0088d611f1dfd43b7bebeffa6d8f8a4f5e778f34d48827c8c1762813f942f0245e81947139323741793fa0da931
+	source = goku-1.1.7.tar.gz::https://github.com/jcaromiq/goku/archive/refs/tags/v1.1.7.tar.gz
+	sha256sums = 799e155c93937ccba830670fa25890d5fe53ceb01737926914d480ce0c39c752
+	b2sums = bc818336981e6609edba1a45c8e54cb11ba96c7bba9fcad3eab08174010c10d6df6b893bd758e5c84092212403926a2008b6e3350e5d17bab465c803c7c05920
 
 pkgname = goku
