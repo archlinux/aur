@@ -5,7 +5,7 @@
 # shellcheck disable=SC2154 # Ignore "unassigned" references to $srcdir and $pkgdir
 
 pkgname=chef-client
-pkgver=18.5.0
+pkgver=18.6.2
 pkgrel=1
 pkgdesc="The Chef Client installation package includes everything you need to start converging your machines."
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('custom:Chef EULA')
 depends=()
 conflicts=(chef chef-solo chef-dk cinc)
 source=("https://packages.chef.io/files/stable/chef/${pkgver}/debian/11/chef_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums=('1918e72eebeea0dd2f7680b08f1362d699b37570431ebca3c1b4fbe40cfc2abb')
+sha256sums=('c48f7551c44f5242d07fb5ff065df9f177b13a73914530fcfd20324e230ef74b')
 
 package() {
   depends=('libxcrypt-compat')
