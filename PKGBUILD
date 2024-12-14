@@ -2,7 +2,7 @@
 
 pkgname=qccrypt
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-plateform frontend for ccrypt software'
 arch=('i686' 'x86_64')
 url="http://qccrypt.free.fr/"
@@ -43,7 +43,7 @@ package() {
 	install -Dm644 icons/hicolor/256x256/mimetypes/application-x-cpt.png "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes/application-x-cpt.png"
 }
 
-md5sums=('bff18228e22ce013baf78b52eb153072'
+md5sums=('6b25e1dac742aa94d28c0540b4d6414d'
          '1e208212a325a4ed551f5955f4e8c6be'
          'bf60d5c11809910d2a9c98aaa8217911'
          '14af5e3ee3813b1812145cf20defdb70'
