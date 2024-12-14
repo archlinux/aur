@@ -5,7 +5,7 @@
 pkgname=simple_backup
 pkgdesc='Simple backup script that uses rsync to copy files'
 pkgver=4.1.5
-pkgrel=1
+pkgrel=2
 url="https://github.com/Fuxino/${pkgname}"
 arch=('any')
 license=('GPL-3.0-or-later')
