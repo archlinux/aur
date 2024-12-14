@@ -1,6 +1,6 @@
 pkgbase = arv
 	pkgdesc = arrive - A simple CLI tool for interacting with Advent of Code
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/tranzystorekk/arrive
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = arv
 	depends = gcc-libs
 	depends = openssl
 	options = !lto
-	source = arrive-0.3.2.tar.gz::https://github.com/tranzystorekk/arrive/archive/v0.3.2.tar.gz
-	sha256sums = 2ce8b04d48a620c6bfa3e8cf12774a17d4d88eacb25be3121378e028dedd6daa
+	source = arrive-0.4.0.tar.gz::https://github.com/tranzystorekk/arrive/archive/v0.4.0.tar.gz
+	sha256sums = 85ef5586c402c60803c4b38da044e9a25044d0ce1d1ff4e4d5979b4ce609ca6b
 
 pkgname = arv

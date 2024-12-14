@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 _pkgname=arrive
 pkgname=arv
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="arrive - A simple CLI tool for interacting with Advent of Code"
 arch=('x86_64')
 url="https://github.com/tranzystorekk/$_pkgname"
 license=('MIT')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2ce8b04d48a620c6bfa3e8cf12774a17d4d88eacb25be3121378e028dedd6daa')
+sha256sums=('85ef5586c402c60803c4b38da044e9a25044d0ce1d1ff4e4d5979b4ce609ca6b')
 makedepends=('cargo')
 depends=('gcc-libs' 'openssl')
 options=('!lto')
