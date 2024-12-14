@@ -37,7 +37,7 @@ conflicts=('klassy')
 replaces=(classik)
 
 _source=("https://download.opensuse.org/repositories/home:/paul4us/Arch")
-source=("${_source}/${arch}/${_pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst")
+source=("${_source}/${arch}/${_pkgname}-${pkgver}-1-${arch}.pkg.tar.zst")
 md5sums=('SKIP')
 
 options=(!debug)
