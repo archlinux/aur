@@ -1,5 +1,5 @@
 pkgname=eigen-git
-pkgver=3.4.r1081.gff174f7
+pkgver=3.4.r1234.gc01ff45
 pkgrel=1
 pkgdesc="Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra."
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=('eigen')
 
 pkgver() {
   cd "${srcdir}/eigen"
-  printf "$(git describe --long --tags --abbrev=7 | sed 's/^before-//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+  printf "$(git describe --long --tags --abbrev=7 --exclude=nightly | sed 's/^before-//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
