@@ -1,6 +1,6 @@
 pkgbase = lightly-qt6-bin
 	pkgdesc = Bali10050's fork of Lightly (A modern style for qt applications)
-	pkgver = 0.5.9
+	pkgver = 0.5.11
 	pkgrel = 1
 	url = https://github.com/Bali10050/lightly
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = lightly-qt6-bin
 	conflicts = lightly-qt6
 	options = !emptydirs
 	options = !debug
-	source = https://github.com/Bali10050/lightly/releases/download/v0.5.9/lightly-0.5.9-x86_64.pkg.zst
-	sha256sums = 1bb208e48b4018f73dbe19436a04c5045b391f6cde916e99383a645d9e22f5cf
+	source = https://github.com/Bali10050/lightly/releases/download/v0.5.11/lightly-0.5.11-x86_64.pkg.zst
+	sha256sums = 05f527266d298d549f1270fec8efd495e647eee8edf573fc0472df53f88d329b
 
 pkgname = lightly-qt6-bin
