@@ -2,7 +2,7 @@
 
 _rockname=markdown.sile
 pkgname=("sile-${_rockname%.sile}")
-pkgver=2.2.0
+pkgver=2.3.0
 _rockrel=1
 pkgrel=1
 pkgdesc='Native Markdown and Djot support for the SILE typesetting system'
@@ -22,7 +22,7 @@ makedepends=(lua51
              luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('4be82e6e8971297afbd8ea2f42dee9792c493fac6dc816be52f77e7138508c16')
+sha256sums=('2638b19a6c1cdd9307726d43cc7115bb819bf416dd46e0589ab1fdf3dbecf1ee')
 
 package() {
 	cd "$_archive"
