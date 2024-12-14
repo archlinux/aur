@@ -1,29 +1,29 @@
-# Maintainer: 0b100100 <0b100100 at protonmail dot ch>
+# Contributor: 0b100100 <0b100100 at protonmail dot ch>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Jelle van der Waa <jelle@vdwaa.nl>
 # Contributer: Allan McRae <allan@archlinux.org>
 
 pkgname=python2-six
-pkgver=1.16.0
-pkgrel=6
+pkgver=1.17.0
+pkgrel=1
 pkgdesc="Python 2 and 3 compatibility utilities"
 arch=('any')
-url="https://pypi.python.org/pypi/six/"
+url="https://pypi.org/project/six/"
 license=('MIT')
-makedepends=('python2-setuptools')
-#checkdepends=('python2-pytest' 'tk')
+makedepends=('python2' 'python2-setuptools')
+checkdepends=('python2-pytest' 'tk')
 source=("https://pypi.io/packages/source/s/six/six-$pkgver.tar.gz")
-sha512sums=('076fe31c8f03b0b52ff44346759c7dc8317da0972403b84dfe5898179f55acdba6c78827e0f8a53ff20afe8b76432c6fe0d655a75c24259d9acbaa4d9e8015c0')
+sha512sums=('fcfa58b03877ac3ac00a4f85b5fea4fecb2a010244451aa95013637a0aa21529f3dcfe25c0a07c72da46da1fa12bc0c16b6c641c40c6ab2133e5b5cbb5a71e4b')
 
 build() {
   cd "six-$pkgver"
   python2 setup.py build
 }
 
-#check() {
-#  cd "six-$pkgver"
-#  python2 -m pytest
-#}
+check() {
+  cd "six-$pkgver"
+  python2 -m pytest
+}
 
 package() {
   cd "six-$pkgver"
