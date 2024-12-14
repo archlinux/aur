@@ -1,3 +1,4 @@
+# Maintainer: Rhys Perry <rhysperry111 AT gmail.com>
 pkgname=python-unicornhat
 _name=unicornhat
 pkgver=2.2.3
