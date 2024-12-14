@@ -1,0 +1,6 @@
+[lua-coxpcall]
+source = "git"
+git = "https://github.com/keplerproject/coxpcall.git"
+prefix = "v"
+from_pattern = "_"
+to_pattern = "."
