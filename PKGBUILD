@@ -7,7 +7,7 @@
 pkgname=svg2tikz-git
 _gitname="svg2tikz"
 pkgver=3.2.1.r555.20240924.89d1721
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of tools for converting SVG graphics to TikZ/PGF code."
 arch=('any')
 url="http://xyz2tex.github.io/svg2tikz/"
@@ -35,6 +35,10 @@ makedepends=(
   'python-sphinx-furo>=2023.9.10'     # For building the documentation.
   'python-sphinxext-opengraph>=0.7.5' # For building the documentation.
   'texlive-bin'                       # For building the documentation.
+  'texlive-binextra'                  # For building the documentation (`latexmk`).
+  'texlive-latexrecommended'          # For building the documentation (`cmap.sty`).
+  'texlive-fontsrecommended'          # For building the documentation (`tgtermes.sty`).
+  'texlive-latexextra'                # For building the documentation (`fncychap.sty`).
 )
 checkdepends=(
   'python-inkex>=1.2.2'
