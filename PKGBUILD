@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=gpu-screen-recorder-ui
-pkgver=r145.fed42ee
+pkgver=r146.970d879
 pkgrel=1
 pkgdesc='A fullscreen overlay UI for GPU Screen Recorder in the style of ShadowPlay'
 arch=('x86_64')
@@ -24,7 +24,7 @@ depends=(
     'libxkbcommon'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder-ui.git.${pkgver}.tar.gz")
-sha512sums=('923fd0e926fc4d7c38e6115ec74fb49a6b6167f9a2bb63ec9fce97f2379a8a33120152321b33f5407ec18263a51b3035c9f6ec9ccd7cb5da45a354db8bf7ff06')
+sha512sums=('2b695a9ebc47d82e69b6139dff27bae9e3cf0c002ae6414fd4e65db944ca8b84552f6d2f3ef719b5147181016ff7f0a18ddee251889afcce5da6af2146b86f94')
 install="${pkgname}.install"
 
 build() {
