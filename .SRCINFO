@@ -8,9 +8,9 @@ pkgbase = bws-bin
 	license = custom:BITWARDEN SOFTWARE DEVELOPMENT KIT LICENSE AGREEMENT
 	provides = bws
 	conflicts = bws
-	source_aarch64 = https://github.com/bitwarden/sdk/releases/download/bws-v1.0.0/bws-aarch64-unknown-linux-gnu-1.0.0.zip
+	source_aarch64 = https://github.com/bitwarden/sdk-sm/releases/download/bws-v1.0.0/bws-aarch64-unknown-linux-gnu-1.0.0.zip
 	sha256sums_aarch64 = 20a3dcb9e3ce7716a1dc3c0e1c76cea9d5e2bf75094cbb5aad54ced4304929cb
-	source_x86_64 = https://github.com/bitwarden/sdk/releases/download/bws-v1.0.0/bws-x86_64-unknown-linux-gnu-1.0.0.zip
+	source_x86_64 = https://github.com/bitwarden/sdk-sm/releases/download/bws-v1.0.0/bws-x86_64-unknown-linux-gnu-1.0.0.zip
 	sha256sums_x86_64 = 9077fb7b336a62abc8194728fea8753afad8b0baa3a18723fc05fc02fdb53568
 
 pkgname = bws-bin
