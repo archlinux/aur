@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Capps (cappsy@gmail.com)
 pkgname="tzyfetch"
-pkgver="0.3"
-pkgrel=3
+pkgver="0.4"
+pkgrel=4
 pkgdesc="An extremely simple fetch utility, built for a single line output with a three character distro logo."
 arch=("any")
 license=("MIT")

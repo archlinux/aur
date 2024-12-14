@@ -1,7 +1,7 @@
 pkgbase = tzyfetch
 	pkgdesc = An extremely simple fetch utility, built for a single line output with a three character distro logo.
-	pkgver = 0.3
-	pkgrel = 3
+	pkgver = 0.4
+	pkgrel = 4
 	arch = any
 	license = MIT
 	makedepends = git
