@@ -1,0 +1,15 @@
+pkgbase = gobatmon
+	pkgdesc = Simple battery level monitor for Linux written in Go.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ulinja/gobatmon
+	arch = x86_64
+	license = WTFPL
+	makedepends = go
+	provides = gobatmon
+	conflicts = gobatmon
+	options = !debug
+	source = gobatmon-0.4.0.tar.gz::https://github.com/ulinja/gobatmon/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 39313bcc249c5e70f104f6e660dd8e089cf86bec80890e3ad60fe1154797175a
+
+pkgname = gobatmon
