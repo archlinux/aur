@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://sreda.digital.gov.ru/"
 license=('proprietary')
 options=(!strip)
+replaces=('armgs')
 
 _install_path="/opt/${pkgname}"
 _archive_name="${pkgname}.tar.xz"
