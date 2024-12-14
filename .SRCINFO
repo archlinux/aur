@@ -1,0 +1,10 @@
+pkgbase = wooting-udev
+	pkgdesc = udev rule for wooting keyboards
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	source = 70-wooting.rules
+	sha256sums = SKIP
+
+pkgname = wooting-udev
