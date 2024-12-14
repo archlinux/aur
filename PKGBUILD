@@ -3,7 +3,7 @@
 _pkgname=ginkgo
 pkgbase=ginkgo-hpc-git
 pkgname=(ginkgo-hpc{,-docs,-cuda,-hip}-git)
-pkgver=r7470.b22b8592e2
+pkgver=r8256.abe9ecf7f9
 pkgrel=1
 pkgdesc="Numerical linear algebra software package"
 arch=(x86_64)
@@ -40,12 +40,22 @@ makedepends=(
   rocthrust
   roctracer
 )
-source=("git+https://github.com/ginkgo-project/$_pkgname.git")
-sha256sums=('SKIP')
+source=(
+  "git+https://github.com/ginkgo-project/$_pkgname.git"
+  split_cuda_library.patch
+)
+b2sums=('SKIP'
+        '3dd2558f399a4e9e7176021415b53e8f06e41c328df920ed254890ffc4c2a430344162c5054bb8d8f4ef2c53ae4029084fd85f89f46a047ebf5707a70fb6d7fe')
 
 pkgver() {
   cd $_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  # Ginkgo is too big to build all CUDA archs into a single library, we need to split it
+  # https://github.com/ginkgo-project/ginkgo/issues/1734#issuecomment-2517784197
+  patch --directory=$_pkgname -Np1 < split_cuda_library.patch
 }
 
 build() {
@@ -62,7 +72,9 @@ build() {
     -DGINKGO_BUILD_DOC=ON
     -DGINKGO_BUILD_TESTS=ON
   )
-  local _cuda_archs="All"
+  # In general, we want to list all real archs (sm_XX) and the latest virtual arch (compute_XX) for future PTX compatibility.
+  # Valid values can be discovered from nvcc --help
+  local _cuda_archs="50;52;53;60;61;62;70;72;75;80;86;87;89;90;90a;90a-virtual"
   # archs gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102 are not supported: https://github.com/ginkgo-project/ginkgo/issues/1429
   local _amdgpu_archs="gfx906;gfx908;gfx90a;gfx940;gfx941;gfx942"
 
@@ -75,16 +87,13 @@ build() {
 
   # -cuda package
   cmake -B build-cuda "${common_cmake_flags[@]}" \
-    -DGINKGO_CUDA_ARCHITECTURES="$_cuda_archs" \
+    -DCMAKE_CUDA_ARCHITECTURES="$_cuda_archs" \
     -DGINKGO_BUILD_CUDA=ON \
     -DGINKGO_BUILD_HIP=OFF \
     -DGINKGO_BUILD_SYCL=OFF
   cmake --build build-cuda
 
   # -hip package
-  # ginkgo has insufficient auto-detection for HIP_PATH https://github.com/ginkgo-project/ginkgo/issues/1529#issuecomment-2053598746
-  export ROCM_PATH=/opt/rocm
-  export HIP_PATH="$ROCM_PATH"
   # LTO does not work with HIP
   local _hip_flags="${CXXFLAGS/-flto=auto/}"
   local _cxx_flags="${CXXFLAGS/-flto=auto/}"
@@ -93,6 +102,7 @@ build() {
   # Ginkgo does not support _GLIBCXX_ASSERTIONS for device builds https://github.com/ginkgo-project/ginkgo/issues/1143#issuecomment-2036957897
   _hip_flags="${_hip_flags/-Wp,-D_GLIBCXX_ASSERTIONS/}"
   cmake -B build-hip "${common_cmake_flags[@]}" \
+    -DCMAKE_CXX_COMPILER=/opt/rocm/lib/llvm/bin/amdclang++ \
     -DCMAKE_CXX_FLAGS="$_cxx_flags" \
     -DCMAKE_HIP_FLAGS="$_hip_flags" \
     -DCMAKE_HIP_ARCHITECTURES="$_amdgpu_archs" \
@@ -100,8 +110,6 @@ build() {
     -DGINKGO_BUILD_HIP=ON \
     -DGINKGO_BUILD_SYCL=OFF
   cmake --build build-hip
-  unset ROCM_PATH
-  unset HIP_PATH
 }
 
 check() {

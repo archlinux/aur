@@ -1,6 +1,6 @@
 pkgbase = ginkgo-hpc-git
 	pkgdesc = Numerical linear algebra software package
-	pkgver = r7470.b22b8592e2
+	pkgver = r8256.abe9ecf7f9
 	pkgrel = 1
 	url = https://ginkgo-project.github.io/
 	arch = x86_64
@@ -29,7 +29,9 @@ pkgbase = ginkgo-hpc-git
 	depends = hwloc
 	depends = openmpi
 	source = git+https://github.com/ginkgo-project/ginkgo.git
-	sha256sums = SKIP
+	source = split_cuda_library.patch
+	b2sums = SKIP
+	b2sums = 3dd2558f399a4e9e7176021415b53e8f06e41c328df920ed254890ffc4c2a430344162c5054bb8d8f4ef2c53ae4029084fd85f89f46a047ebf5707a70fb6d7fe
 
 pkgname = ginkgo-hpc-git
 	optdepends = ginkgo-hpc-docs: for documentation
