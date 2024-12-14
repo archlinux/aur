@@ -1,0 +1,4 @@
+[hevi-bin]
+source = "git"
+git = "https://github.com/Arnau478/hevi.git"
+prefix = "v"
