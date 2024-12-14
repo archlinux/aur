@@ -1,8 +1,8 @@
 # Maintainer: Matthieu Monsch <mtth at apache dot org>
 
 pkgname=netstate
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc='Run hooks on network state changes'
 arch=(x86_64)
 url=https://github.com/mtth/netstate
@@ -14,7 +14,7 @@ source=(
 	"$pkgname-v$pkgver.tar.gz::https://github.com/mtth/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 	netstate.service
 )
-sha256sums=('6ee800ea6a4ca5370b5b0a43f32817603e0fbb3c1349e0443a5627765f22d8d7'
+sha256sums=('47dace714a0d3c5c3dc0eafd39fbfaaed9fd89ae5f0f29c116309d1e134730b0'
             '9e38cef1b0feced1aafbb233eaa6c46409609c63752226f9322349ba2f4bbbc1')
 
 prepare() {
