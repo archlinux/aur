@@ -1,25 +1,23 @@
 pkgbase = python-scikit-image
 	pkgdesc = Image processing routines for SciPy
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = http://scikit-image.org
 	arch = i686
 	arch = x86_64
 	license = BSD-3-Clause
-	makedepends = cython>=3.0.4
-	makedepends = python-setuptools>=67
-	makedepends = python-numpy
-	makedepends = meson-python>=0.15
-	makedepends = python-wheel
+	makedepends = cython>=3.0.8
+	makedepends = python-setuptools>=68
+	makedepends = python-numpy>=2.0
+	makedepends = meson-python>=0.16
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-pythran
-	makedepends = python-packaging>=21
-	depends = python-numpy>=1.23
-	depends = python-scipy>=1.9
-	depends = python-networkx>=2.8
-	depends = python-pillow>=9.1
-	depends = python-imageio>=2.33
+	makedepends = python-pythran>=0.16
+	depends = python-numpy>=1.24
+	depends = python-scipy>=1.11.2
+	depends = python-networkx>=3.0
+	depends = python-pillow>=10.1
+	depends = python-imageio>2.35.0
 	depends = python-tifffile>=2022.8.12
 	depends = python-packaging>=21
 	depends = python-lazy-loader>=0.4
@@ -34,7 +32,7 @@ pkgbase = python-scikit-image
 	optdepends = python-scikit-learn>=1.1
 	optdepends = python-pywavelets>=1.1.1
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/s/scikit_image/scikit_image-0.24.0.tar.gz
-	sha256sums = 5d16efe95da8edbeb363e0c4157b99becbd650a60b77f6e3af5768b66cf007ab
+	source = https://files.pythonhosted.org/packages/source/s/scikit_image/scikit_image-0.25.0.tar.gz
+	sha256sums = 58d94fea11b6b3306b3770417dc1cbca7fa9bcbd6a13945d7910399c88c2018c
 
 pkgname = python-scikit-image
