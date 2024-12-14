@@ -5,6 +5,7 @@ pkgbase = parabolic
 	url = https://github.com/NickvisionApps/Parabolic
 	arch = x86_64
 	license = MIT
+	makedepends = blueprint-compiler
 	makedepends = boost
 	makedepends = cmake
 	makedepends = gtk4
