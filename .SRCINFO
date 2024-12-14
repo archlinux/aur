@@ -1,0 +1,21 @@
+pkgbase = okteto-bin
+	pkgdesc = Build better applications by developing and testing your code directly in Kubernetes
+	pkgver = 3.2.1beta2
+	pkgrel = 1
+	url = https://www.okteto.com
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	optdepends = kubectl
+	provides = okteto
+	conflicts = okteto
+	source = README-3.2.1beta2.md::https://github.com/okteto/okteto/raw/refs/tags/3.2.1-beta.2/README.md
+	source = LICENSE-3.2.1beta2::https://github.com/okteto/okteto/raw/refs/tags/3.2.1-beta.2/LICENSE
+	sha256sums = a2c56e36240495668f725dd64ef4fc951ef31a1b6934a578eef1bd545c1de353
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = okteto-3.2.1beta2-x86_64::https://github.com/okteto/okteto/releases/download/3.2.1-beta.2/okteto-Linux-x86_64
+	sha256sums_x86_64 = 094a8be78517a5b2547ad6532b252c5f96a9bf1c5e76f471e6fd6213430f1ac3
+	source_aarch64 = okteto-3.2.1beta2-aarch64::https://github.com/okteto/okteto/releases/download/3.2.1-beta.2/okteto-Linux-arm64
+	sha256sums_aarch64 = 766fde8100ce79450dbd99e67b77ad9dff03b7ad62ac985a56e3432c3570cb3b
+
+pkgname = okteto-bin
