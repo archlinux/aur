@@ -36,10 +36,10 @@ pkgbase = python-awkward
 	depends = python-packaging
 	depends = python-typing_extensions
 	optdepends = cuda: CUDA support
-	optdepends = python-pyarrow: pyArrow connector
+	optdepends = python-numba: for using in Numba JIT functions
 	optdepends = python-numexpr: numexpr connector
 	optdepends = python-pandas: pandas connector
-	optdepends = python-numba: for using in Numba JIT functions
+	optdepends = python-pyarrow: pyArrow connector
 	optdepends = root: rdataframe connector
 	source = python-awkward::git+https://github.com/scikit-hep/awkward#tag=v2.7.2
 	source = python-awkward-rapidjson::git+https://github.com/Tencent/rapidjson.git
@@ -48,9 +48,9 @@ pkgbase = python-awkward
 
 pkgname = python-awkward
 	optdepends = cuda: CUDA support
-	optdepends = python-pyarrow: pyArrow connector
+	optdepends = python-numba: for using in Numba JIT functions
 	optdepends = python-numexpr: numexpr connector
 	optdepends = python-pandas: pandas connector
-	optdepends = python-numba: for using in Numba JIT functions
+	optdepends = python-pyarrow: pyArrow connector
 	optdepends = root: rdataframe connector
 	optdepends = python-awkward-docs: documentation

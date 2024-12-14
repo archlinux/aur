@@ -50,10 +50,10 @@ checkdepends=(
 )
 optdepends=(
   'cuda: CUDA support'
-  'python-pyarrow: pyArrow connector'
+  'python-numba: for using in Numba JIT functions'
   'python-numexpr: numexpr connector'
   'python-pandas: pandas connector'
-  'python-numba: for using in Numba JIT functions'
+  'python-pyarrow: pyArrow connector'
   'root: rdataframe connector'
 )
 source=(
