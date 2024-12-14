@@ -1,4 +1,5 @@
 # Maintainer: Yakov P potapovj(at)gmail(dot)com
+# Maintainer: KUHTOXO oxomhuk@gmail.com
 pkgname=sreda
 pkgver=24.5.4.48124
 pkgrel=1
