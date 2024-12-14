@@ -1,8 +1,8 @@
 # Maintainer: Carlo Abelli <carlo@abelli.me>
 
 pkgname=sirula
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="An app launcher for wayland"
 arch=(x86_64)
 url=https://github.com/DorianRudolph/sirula
@@ -10,18 +10,16 @@ license=(GPL-3.0-or-later)
 depends=(gtk-layer-shell)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DorianRudolph/sirula/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=(311c2b3c1502a2e7c1c1ccd4c6a98f7fa387508cd2f3af23ea29b81f581292df)
+sha256sums=(f6ccebf26a01bcc1b8472f9695186a599274c1d10026a1d8638b6966733434e5)
 
 prepare() {
   cd "$pkgname-$pkgver"
-
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$pkgname-$pkgver"
-
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
@@ -29,6 +27,5 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-
-  install -Dm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
+  install -Dm755 -t "$pkgdir/usr/bin" "target/release/sirula"
 }
