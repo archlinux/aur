@@ -1,6 +1,6 @@
 pkgbase = adbenq-git
 	pkgdesc = Control your BenQ TV like a boss 🖥️✨
-	pkgver = v0.1.8.r12.gcbb16d3
+	pkgver = v0.2.0.r7.g2b5a07e
 	pkgrel = 1
 	url = https://github.com/Zarox28/ADBenQ
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = adbenq-git
 	depends = pyside6
 	depends = scrcpy
 	depends = android-tools
+	depends = python-platformdirs
 	source = adbenq::git+https://github.com/Zarox28/ADBenQ.git
 	sha256sums = SKIP
 
