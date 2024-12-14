@@ -1,4 +1,4 @@
-pkgbase = okteto-bin
+pkgbase = okteto-beta-bin
 	pkgdesc = Build better applications by developing and testing your code directly in Kubernetes
 	pkgver = 3.2.1beta2
 	pkgrel = 1
@@ -18,4 +18,4 @@ pkgbase = okteto-bin
 	source_aarch64 = okteto-3.2.1beta2-aarch64::https://github.com/okteto/okteto/releases/download/3.2.1-beta.2/okteto-Linux-arm64
 	sha256sums_aarch64 = 766fde8100ce79450dbd99e67b77ad9dff03b7ad62ac985a56e3432c3570cb3b
 
-pkgname = okteto-bin
+pkgname = okteto-beta-bin

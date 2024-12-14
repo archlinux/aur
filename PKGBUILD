@@ -2,7 +2,7 @@
 
 _name="okteto"
 _pkgname="${_name}-beta"
-pkgname="${_name}-bin"
+pkgname="${_pkgname}-bin"
 pkgver=3.2.1beta2
 _pkgver="${pkgver//beta/-beta\.}"
 pkgrel=1
