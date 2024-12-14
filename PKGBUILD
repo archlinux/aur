@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=liboqs
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="C library for prototyping and experimenting with quantum-resistant cryptography"
 arch=(x86_64)
@@ -27,7 +27,7 @@ source=(
     fix-tests.patch::https://patch-diff.githubusercontent.com/raw/open-quantum-safe/liboqs/pull/2019.patch
 )
 b2sums=('e3dfc1056f4d8a0356a80eec5fd7d946b9cf72f3a59a1c75b7d22bff8c500376cbaace53ce2e60506ccc918811dbf506863f386d9a34ea93be0cd79622064c3d'
-        '288c60c1ef79a3fa04f0f89e3c3ab1b1704925f7b6ecec86935ca3224085552256afe2929fddf32d6a28b5c17c3b5b60ddc44a310657e56d022b62fc7aa5e6cd')
+        '7d601cbc9a219a6b44e1af6d3904675b9d368b9c91444a9386258733003fcedef53a2c55b063f5b13cefe3e6a13f9e67fae42bf4bcb83909aa632445fa01d039')
 
 prepare() {
     cd $pkgname-$pkgver
