@@ -1,0 +1,18 @@
+pkgbase = okteto-git
+	pkgdesc = Build better applications by developing and testing your code directly in Kubernetes
+	pkgver = 3.2.0beta1.r21.g2b787c1
+	pkgrel = 1
+	url = https://www.okteto.com
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = kubectl
+	provides = okteto=3.2.0beta1
+	conflicts = okteto
+	source = okteto::git+https://github.com/okteto/okteto.git
+	sha256sums = SKIP
+
+pkgname = okteto-git
