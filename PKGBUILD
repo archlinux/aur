@@ -1,11 +1,11 @@
 # Maintainer: Popolon <popolon at popolon dot org>
 # Maintainer: Fwsgonzo 
 pkgname=libriscv
-pkgver=1.9
+pkgver=1.11
 pkgrel=1
 pkgdesc='RISC-V userspace emulator library'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'riscv32' 'riscv64')
-url='https://github.com/fwsGonzo/libriscv'
+url='https://github.com/libriscv/libriscv'
 license=('BSD-3-Clause')
 depends=(
   'tcc'
@@ -19,8 +19,8 @@ optdepends=(
   'riscv64-linux-gnu-gdb: gnu debugger risc-v version'
 )
 
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/fwsGonzo/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('19404608d890b2d83002ae7bc68dc83f98749067b3a13c85ff83339700fb19b7')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/libriscv/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz)
+sha256sums=('a75787cc4a7f093e38495e1982af3f5fbcd9c66b429d65b8116ad745e7a8f27b')
 
 # Workaround for linking against the installed library
 CXXFLAGS+=" -ffat-lto-objects "
@@ -28,16 +28,16 @@ CXXFLAGS+=" -ffat-lto-objects "
 build(){
  # lib
   cmake -B build -S ${pkgname}-${pkgver} \
-     -DCMAKE_INSTALL_PREFIX=/usr
+     -DCMAKE_INSTALL_PREFIX=/usr \
+	 -DRISCV_BINARY_TRANSLATION=ON
   make -C build
  # cli
   cmake -B build-cli -S ${pkgname}-${pkgver}/emulator \
      -DCMAKE_INSTALL_PREFIX=/usr \
-	 -DRISCV_BINARY_TRANSLATION=ON -DRISCV_LIBTCC=ON -DRISCV_LIBTCC_DISTRO_PACKAGE=ON
+	 -DRISCV_BINARY_TRANSLATION=ON
   make -C build-cli
-
-
 }
+
 package(){
   make -C build DESTDIR="${pkgdir}/" install
   install -Dm755 build-cli/rvlinux ${pkgdir}/usr/bin/rvlinux
