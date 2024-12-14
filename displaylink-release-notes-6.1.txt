@@ -3,12 +3,12 @@
 
         DisplayLink Ubuntu Software Release Note
 
-Version: v6.0.0
-Build: posix/64-4618-g9095f62fa15 (24)
+Version: v6.1.0
+Build: posix/65-13-gfb0806c33a3 (17)
 
-Date: 12th April 2024
+Date: 23rd September 2024
 
-Extensible Virtual Display Interface version included: v1.14.4 (aa6b5a1)
+Extensible Virtual Display Interface version included: v1.14.7-3 (59a3a86)
 =============================================================================
 =============================================================================
 
@@ -16,7 +16,7 @@ Extensible Virtual Display Interface version included: v1.14.4 (aa6b5a1)
 A. Introduction
 ===============
 
-This is DisplayLink Driver Software v6.0.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
+This is DisplayLink Driver Software v6.1.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
 
 The driver enables video support for products using DisplayLink USB 3.0 technology. Standard native Ubuntu drivers provide support for DisplayLink audio and ethernet interfaces.
 
@@ -44,6 +44,18 @@ I.  Future development
 
 C.  Bugs fixed in this release
 ==============================
+
+C.10 Changes in 6.1 release
+
+- DL−7xxx series: LG 34WK95UP monitor was not working properly on DisplayPort. (VIFR-5046)
+- DL−7xxx series: Improved interoperability with DisplayPort monitors at 4K 144 Hz. (VIFR-4803)
+- DL−7xxx series: Failed to get EDID from some HDMI monitors. (VIFR-4762)
+- DL−7xxx series: 4K HDMI monitors appear at 30 Hz by default. (VIFR-4712)
+- DL-7xxx series: incorrectly offer 4Kp120 mode on HDMI. (VIFR-4619)
+- DL-7xxx series: 4Kp120 modes are not available on DP. (VIFR-4602)
+- Incorrect color profile in some reduced range modes on HDMI display. (VIFR-4094)
+- Incorrect scaling and blinking windows on Wayland. (PS-3915)
+- New support tool
 
 C.9  Changes in 6.0 release
 -----------------------------
