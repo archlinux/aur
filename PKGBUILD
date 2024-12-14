@@ -1,16 +1,16 @@
 # Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=plus42
-pkgver=1.1.14
+pkgver=1.1.15
 pkgrel=1
 pkgdesc="Advanced scientific programmable calculator, based on Free42"
 arch=('x86_64')
 url="https://thomasokken.com/plus42/"
-license=('GPL')
+license=('GPL-2.0-only')
 depends=('gtk3')
 source=("http://thomasokken.com/plus42/upstream/$pkgname-upstream-$pkgver.tgz"
         "plus42.desktop")
-md5sums=('328bd5cb122ab402a119e7041fd34f13'
+md5sums=('2d1f15a218a44ed755f9f2b02fcc0593'
          'ba6d9ff8d83e9a244b5da63acbfc018e')
 
 build() {
