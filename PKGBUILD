@@ -13,9 +13,9 @@ _devenv=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.0.rc1.w1.s4f96088
+pkgver=10.0.rc2.w1.sc8d46d4
 pkgrel=1
-eval pkgrel=1
+eval pkgrel=2
 
 ################################################################################################################################
 ################################################################################################################################
@@ -35,7 +35,7 @@ _enabled_staging=()
 _disabled_staging=(eventfd_synchronization wined3d-unset-flip-gdi) # added manually from proton
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="12-09-2024-4161e62e-4f96088b"
+_patchbase_tag="12-13-2024-5bfbeb67-c8d46d4c"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -45,8 +45,8 @@ _custompatches=false
 
 ## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
 ## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=4161e62e478f61fdcd0365d9bd7b21e3b1a5197b
-_desired_staging_commit=4f96088b1e12db6134dff4090797c3d61b05833d
+_desired_wine_commit=5bfbeb677f472d30c5dc5d855b0a045a7157cc43
+_desired_staging_commit=c8d46d4ca3c505014f55cc92296592119abf84f1
 
 ## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -219,8 +219,8 @@ optdepends=(
 
 if [ "${_wow64build}" != "true" ]; then
   depends+=(lib32-libxkbcommon libvulkan.so=1-32 lib32-gst-plugins-good lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
-  makedepends+=(lib32-ffmpeg lib32-zlib lib32-xz lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2)
-  optdepends+=(lib32-gst-libav lib32-libusb lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
+  makedepends+=(lib32-ffmpeg-minimal-dev lib32-zlib lib32-xz lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2)
+  optdepends+=(lib32-ffmpeg lib32-gst-libav lib32-libusb lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
   if [ "${_use_clang}" = "true" ]; then makedepends+=(lib32-llvm-libs); fi
 fi
 
@@ -241,8 +241,8 @@ if [ "${_use_clang}" = "true" ]; then
   _cc="/usr/bin/clang" # TODO: remove /usr/bin hardcode
   _cxx="/usr/bin/clang++"
 
-  _extra_native_flags="${_fake_gnuc_flag} -flto=full -fvirtual-function-elimination -D__LLD_LTO__ --rtlib=compiler-rt --unwindlib=libgcc"
-  _extra_ld_flags="-flto=full -fvirtual-function-elimination -fuse-ld=lld"
+  _extra_native_flags="${_fake_gnuc_flag} -flto=thin -D__LLD_LTO__ --rtlib=compiler-rt --unwindlib=libgcc"
+  _extra_ld_flags="-flto=thin -fuse-ld=lld"
   _lld_lto="true" # will apply _makefile_add_lto_flags() after _configure64(), and the "5000-clang-fixup-lto.patch" from the wine-osu-patches repo
   _use_polly="${_use_polly:-} native"
 elif [ "${_use_clang}" = "bundled" ] && [ "${_use_mingw}" = "llvm" ]; then
@@ -250,8 +250,8 @@ elif [ "${_use_clang}" = "bundled" ] && [ "${_use_mingw}" = "llvm" ]; then
   _cc="clang"
   _cxx="clang++"
 
-  _extra_native_flags="${_fake_gnuc_flag} -flto=full -fvirtual-function-elimination -D__LLD_LTO__"
-  _extra_ld_flags="-flto=full -fvirtual-function-elimination -fuse-ld=lld"
+  _extra_native_flags="${_fake_gnuc_flag} -flto=thin -D__LLD_LTO__"
+  _extra_ld_flags="-flto=thin -fuse-ld=lld"
   _lld_lto="true"
   _use_polly="${_use_polly:-} native"
 else
@@ -364,10 +364,12 @@ _set_vars() {
   export x86_64_CC="ccache ${_cross64}"
   export x86_64_CXX="ccache ${_crossxx64}"
   export x86_64_CFLAGS="${_CROSS_FLAGS} ${_common_64_cflags:-}"
+  export x86_64_CXXFLAGS="${_CROSS_FLAGS} ${_common_64_cflags:-}"
 
   export i386_CC="ccache ${_cross32}"
   export i386_CXX="ccache ${_crossxx32}"
   export i386_CFLAGS="${_CROSS_FLAGS} ${_common_32_cflags:-}"
+  export i386_CXXFLAGS="${_CROSS_FLAGS} ${_common_32_cflags:-}"
 
   export CFLAGS="${_GCC_FLAGS} -std=gnu17"
   export CXXFLAGS="${_GCC_FLAGS//${_fake_gnuc_flag}/} -std=gnu++17" # Beautiful
@@ -396,6 +398,8 @@ _set_vars32() {
   # if [ "${_use_clang}" = "true" ] || [ "${_use_clang}" = "bundled" ]; then
   #   export I386_LIBS="-latomic"
   # fi
+
+  export PKG_CONFIG_PATH="/usr/lib32/ffmpeg-minimal-dev/pkgconfig:${PKG_CONFIG_PATH}"
 
   _common_64_cflags=""
   _common_32_cflags=""
@@ -613,13 +617,9 @@ _tools64() { _set_vars64;
 
   msg2 "Building Wine-64 tools"
 
-  if [ -n "${_lld_lto}" ]; then
-    _noltoflags="-fno-lto -fno-virtual-function-elimination -O1"
-  else
-    _noltoflags="-fno-lto -O1"
-  fi
   shopt -s globstar
   # don't use lto to speed up tools compilation
+  _noltoflags="-fno-lto -O1"
   for mkfile in tools/Makefile tools/**/Makefile; do
     "$@" -C "${mkfile%/Makefile}" CFLAGS="${CFLAGS} ${_noltoflags}" LDFLAGS="${LDFLAGS} ${_noltoflags}" CROSSCFLAGS="${CROSSCFLAGS} ${_noltoflags}" CROSSLDFLAGS="${CROSSLDFLAGS} ${_noltoflags}"
   done
@@ -807,7 +807,7 @@ _makefile_add_lto_flags() {
                     has_backslash = (lines[i] ~ /\\[[:space:]]*$/)
                     
                     if (is_last_line && !has_backslash) {
-                        print lines[i] " -fno-lto -fno-virtual-function-elimination -Wl,--no-relax"
+                        print lines[i] " -fno-lto -Wl,--no-relax"
                         modifications++
                         in_target = 0
                     } else {
