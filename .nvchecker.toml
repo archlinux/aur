@@ -1,0 +1,3 @@
+[okteto]
+source = "git"
+git = "https://github.com/okteto/okteto.git"
