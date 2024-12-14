@@ -1,6 +1,6 @@
 # Maintainer: Imna <imna@imna.digital>
 pkgname=imna-file-manager-bin
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="File manager created by Imna Digital"
 arch=('x86_64' 'aarch64')
