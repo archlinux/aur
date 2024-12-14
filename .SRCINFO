@@ -29,7 +29,6 @@ pkgbase = enlightenment-git-asan
 	depends = pulse-native-provider
 	depends = connman
 	depends = bc
-	optdepends = acpid: power events on laptop lid close - almost essential for any ACPI based system like intel
 	optdepends = gdb: create backtraces on crash - needed for getting backtraces at crash time in ~/.e-crashdump.txt
 	optdepends = geoclue2: needed for geolocation module
 	optdepends = packagekit: needed for packagekit module
