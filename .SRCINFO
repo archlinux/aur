@@ -14,6 +14,7 @@ pkgbase = albafetch-git
 	makedepends = pkgconf
 	depends = pciutils
 	depends = sqlite
+	depends = glib2
 	provides = albafetch
 	conflicts = albafetch
 	conflicts = albafetch-bin
