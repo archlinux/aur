@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk')
 options=('!strip' '!emptydirs')
 source_x86_64=("https://github.com/Imna29/imna_file_manager/releases/download/app-v$pkgver/Imna.File.Manager_"$pkgver"_amd64.deb")
-sha256sums_x86_64=('3c2f0d8f945cbf1ab42570d91be3b1cd29a7db989db488c304adeabf100b7b32')
+sha256sums_x86_64=('abb802f28e4bce2c93ebae22270e756206f6f58839d9692c53598ee353ed9af3')
 package() {
 
   # Extract package data
