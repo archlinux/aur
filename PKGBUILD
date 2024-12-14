@@ -1,3 +1,4 @@
+# Maintainer: LightDot <lightdot -a-t- g m a i l>
 # Maintainer: Jan Houben <jan@nexttrex.de>
 # Contributor: Jesus Alvarez <jeezusjr at gmail dot com>
 #
@@ -17,9 +18,9 @@
 #
 pkgbase="zfs-linux"
 pkgname=("zfs-linux" "zfs-linux-headers")
-_zfsver="2.2.6"
-_kernelver="6.10.10.arch1-1"
-_kernelver_full="6.10.10.arch1-1"
+_zfsver="2.2.7"
+_kernelver="6.12.4.arch1-1"
+_kernelver_full="6.12.4.arch1-1"
 _extramodules="${_kernelver_full/.arch/-arch}"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
@@ -28,7 +29,7 @@ makedepends=("linux-headers=${_kernelver}")
 arch=("x86_64")
 url="https://openzfs.org/"
 source=("https://github.com/openzfs/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
-sha256sums=("c92e02103ac5dd77bf01d7209eabdca55c7b3356aa747bb2357ec4222652a2a7")
+sha256sums=("b2b8e3bfabf2a6407a0132243726cb6762547a5bd095b1b1f37eaf2a9d8f7672")
 license=("CDDL")
 depends=("kmod" "zfs-utils=${_zfsver}" "linux=${_kernelver}")
 
