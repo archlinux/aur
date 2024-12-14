@@ -1,3 +1,5 @@
+# Maintainer: Rhys Perry <rhysperry111 AT gmail.com>
+
 pkgname="fathom-git"
 pkgrel=1
 pkgver=v1.2.1.r55.g69baac5
