@@ -1,3 +1,5 @@
+# Maintainer Rhys Perry <rhysperry111 AT gmail.com>
+
 pkgname=foxify-cli-git
 conflicts=('foxify-cli')
 provides=('foxify-cli')
