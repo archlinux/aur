@@ -1,0 +1,4 @@
+[lua-commonmark]
+source = "git"
+git = "https://github.com/alerque/commonmark-lua.git"
+prefix = "v"
