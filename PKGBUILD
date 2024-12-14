@@ -1,4 +1,6 @@
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer:
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=d-containers
 _pkgname=containers
