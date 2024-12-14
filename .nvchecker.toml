@@ -1,4 +1,5 @@
 [limo]
-source = "git"
-git = "https://github.com/limo-app/limo.git"
+source = "github"
+github = "limo-app/limo"
+use_max_tag = true
 prefix = "v"
