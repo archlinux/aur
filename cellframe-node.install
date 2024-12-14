@@ -8,6 +8,10 @@ ${BOLD}NODE CONFIGURATION FILES${NORMAL}
     By default, no configuration files are provided. For enabling sane default configuration, run (as root):
 
     ${BOLD}cellframe-node-config -i /opt/cellframe-node/share/default.setup${NORMAL}
+
+    For enabling diagtool (which is used by Cellframe Dashboard), run (as root):
+
+    ${BOLD}systemctl enable --now cellframe-diagtool.service${NORMAL}
     
 ${BOLD}STARTING CELLFRAME NODE${NORMAL}
 
@@ -30,11 +34,11 @@ post_install() {
 post_upgrade() {
     echo ":: Executing systemctl daemon-reload..."
     systemctl daemon-reload
-
     systemctl is-active --quiet cellframe-node.service \
     && echo ":: Restarting cellframe-node.service..." \
     && systemctl restart cellframe-node.service \
     || echo ":: cellframe-node.service not enabled, skipping restart..."
+    _showmsg
 }
 
 pre_remove() {
@@ -43,4 +47,5 @@ pre_remove() {
     && systemctl disable cellframe-node.service \
     || true
     systemctl daemon-reload
+    _showmsg
 }

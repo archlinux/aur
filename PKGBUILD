@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
 pkgver=5.3.r3163.b76758c
-pkgrel=1
+pkgrel=2
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
 url='https://cellframe.net'
@@ -13,12 +13,14 @@ replaces=('cellframe-node-debug')
 source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=b76758c690bd14c88eb26f3088829ff7896c2b4d
 		cellframe-node.logrotate
 		cellframe-node.service
+		cellframe-diagtool.service
 		cellframe-node-asan.service
 		cellframe-node-tmpfiles.conf
 		cellframe-node-sysusers.conf)
 md5sums=('SKIP'
 		'a10650eb138f6fe0c4bbefa6557ffb4f'
         '4bf9cc7596903ffa5aba7fa7922d9016'
+        'ee2424d674f7806a0a6caaff7cc5fa26'
         '3962e50d7c9c1c2b42876fa376457a44'
         'e334310bf6cd6c4bbe612733eee928e0'
         'ecead745d3492224d2a5a2f7d9d561b0')
@@ -56,6 +58,7 @@ build() {
 		if [ -n "$CELLFRAME_ASAN" ]; then
 			echo ":: Building with Address Sanitizer (ASAN) enabled, without optimization..."
 			cmake -B build \
+				-DBUILD_DIAGTOOL=ON \
 				-DDAP_CRYPTO_XKCP_PLAINC=ON \
 				-DCMAKE_BUILD_TYPE=Debug \
 				-DCMAKE_C_FLAGS="-fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
@@ -64,6 +67,7 @@ build() {
 		else
 			echo ":: Building without optimization..."
 			cmake -B build \
+				-DBUILD_DIAGTOOL=ON \
 				-DDAP_CRYPTO_XKCP_PLAINC=ON \
 				-DCMAKE_BUILD_TYPE=$BUILD_TYPE \
 				-DCELLFRAME_NO_OPTIMIZATION=OFF \
@@ -72,6 +76,7 @@ build() {
 	elif [ -n "$CELLFRAME_ASAN" ]; then
 		echo ":: Building with Address Sanitizer (ASAN) enabled..."
 		cmake -B build \
+			-DBUILD_DIAGTOOL=ON \
 			-DCMAKE_BUILD_TYPE=Debug \
 			-DCMAKE_C_FLAGS="-fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -fno-common -O1" \
 			-DCMAKE_LINKER_FLAGS="-fsanitize=address" \
@@ -80,6 +85,7 @@ build() {
 	else
 		echo ":: Building with normal optimization..."
 		cmake -B build \
+			-DBUILD_DIAGTOOL=ON \
 			-DCMAKE_BUILD_TYPE=$BUILD_TYPE \
 			-DCELLFRAME_NO_OPTIMIZATION=OFF \
 			-Wno-dev
@@ -94,6 +100,7 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 
 	install -Dm644 "$srcdir/$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 "$srcdir/cellframe-diagtool.service" -t "$pkgdir/usr/lib/systemd/system/"
 	install -Dm644 "$srcdir/$pkgname.logrotate" "$pkgdir/etc/logrotate.d/$pkgname"
 	install -Dm644 "$srcdir/$pkgname-tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 	install -Dm644 "$srcdir/$pkgname-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"

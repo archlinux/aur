@@ -1,0 +1,20 @@
+[Unit]
+Description=Cellframe Diagtool
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/cellframe-node
+ExecStart=/opt/cellframe-node/bin/cellframe-diagtool
+ExecStop=/bin/kill -SIGTERM $MAINPID
+Restart=always
+User=cellframe
+Group=cellframe
+RestartSec=10
+LogNamespace=cellframe
+StandardOutput=null
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
