@@ -11,6 +11,7 @@ optdepends=(
     'remake: For time profiling'
     swi-prolog
     ciao-lang
+    cs-prolog
     gprolog
     scryer-prolog
     trealla
