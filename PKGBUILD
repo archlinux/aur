@@ -2,8 +2,8 @@
 
 _pkgname=klassy
 pkgname=klassy-bin
-pkgver=6.2.breeze6.2.1-4
-pkgrel=1
+pkgver=6.2.breeze6.2.1
+pkgrel=4
 pkgdesc="Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop."
 arch=(x86_64)
 url="https://github.com/paulmcauley/klassy"
