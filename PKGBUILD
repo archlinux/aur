@@ -4,16 +4,16 @@
 _pkgname=langchain-text-splitters
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="LangChain text splitting utilities"
 arch=('any')
-url="https://github.com/langchain-ai/langchain"
+url="https://github.com/langchain-ai/langchain/tree/master/libs/text-splitters"
 license=('MIT')
 depends=(python-langchain-core)
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pipname::1}/${_pipname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('81e6515d9901d6dd8e35fb31ccd4f30f76d44b771890c789dc835ef9f16204df')
+sha256sums=('c596958dcab15fdfe0627fd36ce9d588d0a7e35593af70cd10d0a4a06d69b3ee')
 
 build() {
     cd "${_pipname}-${pkgver}"
