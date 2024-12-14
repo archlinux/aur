@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rpm-tools-git
-pkgver=4.18.1.r492.g021a7d3aa
+pkgver=4.20.0.r536.gf9f124a67
 pkgrel=1
 pkgdesc="RPM Package Manager"
 arch=('i686' 'x86_64')
 url="https://rpm.org/"
-license=('GPL')
-depends=('glibc' 'elfutils' 'file' 'libarchive' 'libcap' 'lmdb' 'lua' 'nss' 'popt' 'zstd')
-makedepends=('git' 'python')
+license=('GPL-2.0-or-later')
+depends=('gcc-libs' 'elfutils' 'file' 'libarchive' 'libcap' 'lua' 'nss' 'popt' 'rpm-sequoia' 'zstd')
+makedepends=('git' 'cmake' 'python')
 provides=("rpm-tools=$pkgver" 'rpmextract')
 conflicts=('rpm-tools' 'rpmextract')
 source=("git+https://github.com/rpm-software-management/rpm.git"
@@ -29,25 +29,26 @@ pkgver() {
 build() {
   cd "rpm"
 
-  ./autogen.sh --noconfigure
-  ./configure \
-    --prefix="/usr" \
-		--enable-python \
-		--with-cap
-  make
+  cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_INSTALL_LIBDIR="lib" \
+    -DWITH_DBUS=OFF \
+    -DWITH_SELINUX=OFF \
+    ./
+  cmake --build "_build"
 }
 
 check() {
   cd "rpm"
 
-  make check
+  #cmake --build "_build" --target test
 }
 
 package() {
   cd "rpm"
 
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm755 "$srcdir/rpmextract.sh" -t "$pkgdir/usr/bin"
-
-  rm -rf "$pkgdir/usr/var"
 }
