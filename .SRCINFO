@@ -1,7 +1,7 @@
 pkgbase = coolercontrold-bin
 	pkgdesc = A program to monitor and control your cooling devices: daemon (binary release)
-	pkgver = 1.4.4
-	pkgrel = 4
+	pkgver = 1.4.5
+	pkgrel = 1
 	url = https://gitlab.com/coolercontrol/coolercontrol
 	arch = x86_64
 	groups = coolercontrol-bin
@@ -13,9 +13,9 @@ pkgbase = coolercontrold-bin
 	optdepends = nvidia-utils: NVIDIA GPU support
 	provides = coolercontrold
 	conflicts = coolercontrold
-	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/1.4.4/downloads/packages/coolercontrold_1.4.4
-	source = https://gitlab.com/coolercontrol/coolercontrol/-/archive/1.4.4/coolercontrol-1.4.4.tar.gz
-	sha256sums = 6bff00ba482133e50d5ba549dee389e94b9da8e8d26947b5c80b79a733bd284d
-	sha256sums = acf5a27111122230d243e66eae85212f9c01a402b12028a8918fc785414bb713
+	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/1.4.5/downloads/packages/coolercontrold_1.4.5
+	source = https://gitlab.com/coolercontrol/coolercontrol/-/archive/1.4.5/coolercontrol-1.4.5.tar.gz
+	sha256sums = da3065932f62e9ab4e343ba0c1aaa8cde3c6f5d46532f919ee82ff1cdeb683fb
+	sha256sums = 8e02963dfd6dbcb139ff2846742721f7a0e023a7ea353d93cb5cd66c40b08f3f
 
 pkgname = coolercontrold-bin
