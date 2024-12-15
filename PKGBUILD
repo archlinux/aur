@@ -64,12 +64,14 @@ package_khronos-ocl-icd-git() {
   )
   provides=(
     'khronos-ocl-icd'
+    'khronos-ocl-icd-loader'
     'opencl-icd-loader'
     'ocl-icd'
     'libOpenCL.so'
   )
   conflicts=(
     'khronos-ocl-icd'
+    'khronos-ocl-icd-loader'
     'opencl-icd-loader'
     'ocl-icd'
   )
@@ -85,13 +87,15 @@ package_lib32-khronos-ocl-icd-git() {
     'opencl-headers-git'
   )
   provides=(
-    'lib32-lib32-khronos-ocl-icd'
+    'lib32-khronos-ocl-icd'
+    'lib32-khronos-ocl-icd-loader'
     'lib32-opencl-icd-loader'
     'lib32-ocl-icd'
     'libOpenCL.so'
   )
   conflicts=(
     'lib32-khronos-ocl-icd'
+    'lib32-khronos-ocl-icd-loader'
     'lib32-opencl-icd-loader'
     'lib32-ocl-icd'
   )
