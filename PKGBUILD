@@ -1,7 +1,7 @@
 # Maintainer: crl <crl18039102576@126.com>
 pkgname=python-numpy-mkl-tbb
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python, compiled with Intel MKL and TBB"
 arch=(x86_64)
 license=(BSD-3-Clause)
@@ -18,6 +18,8 @@ sha512sums=('3a0776ac175beb82b2aea0d384b60896cd1ee1055b414765965edd621839c8292fa
 build() {
   source /opt/intel/oneapi/setvars.sh
   cd numpy-$pkgver
+  CFLAGS+=" -ffat-lto-objects" \
+  CXXFLAGS+=" -ffat-lto-objects" \
   python -m build --wheel --no-isolation \
     -Csetup-args="-Dblas=mkl-dynamic-lp64-tbb" \
     -Csetup-args="-Dlapack=mkl-dynamic-lp64-tbb"
