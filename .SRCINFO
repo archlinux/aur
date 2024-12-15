@@ -6,6 +6,7 @@ pkgbase = sreda
 	arch = x86_64
 	license = proprietary
 	options = !strip
+	replaces=('armgs')
 	source = https://dl.armgs.team/downloads/linux/x64/${pkgver}/sreda.tar.xz
 	source = sreda.desktop
 	sha256sums = eb10f019bfd7573d6e6e48f748ce5e68500d52f4f7ac3553008faeeb22312ed2
