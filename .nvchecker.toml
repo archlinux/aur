@@ -1,0 +1,6 @@
+[bottles-git]
+source="github-graphql"
+github="bottlesdevs/Bottles"
+use_max_tag=true
+use_commit_number=true
+use_commit_hash=true

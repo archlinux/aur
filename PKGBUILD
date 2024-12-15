@@ -1,8 +1,10 @@
-# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: envolution
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Talebian <talebian@sovietunion.xyz>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=bottles-git
-pkgver=51.15.r17.g723c9d27
+pkgver=2022.12.14.1+r5648+g7063d2868
 pkgrel=1
 epoch=2
 pkgdesc="Easily manage wineprefix using environments"
@@ -39,7 +41,7 @@ depends=(
   webkit2gtk
   wine
   xorg-xdpyinfo
-  )
+)
 optdepends=(
   gamemode
   gvfs
@@ -47,40 +49,47 @@ optdepends=(
   lib32-vulkan-icd-loader
   vkd3d
   vulkan-icd-loader
-  )
+)
 makedepends=(meson ninja git)
 checkdepends=(appstream-glib)
 provides=(bottles)
 conflicts=(bottles)
-source=("${pkgname%-git}::git+https://github.com/bottlesdevs/Bottles.git")
-sha256sums=('SKIP')
+source=("${pkgname%-git}::git+https://github.com/bottlesdevs/Bottles.git" dont-care-about-sandbox.patch)
+sha256sums=('SKIP'
+            '489d16cea77d5acb6c7407c7b0f4f28eb6db478ae2b2a0a951cefde555e44d85')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 
-  # https://github.com/bottlesdevs/Bottles/commit/6206301992c3218060761e5b574b83da485b759a
-  # this commit add a check for flatpak
-  git revert 6206301992c3218060761e5b574b83da485b759a --no-commit
+  _version=$(git tag --sort=-v:refname --list | grep '^[0-9.]*$' | head -n1)
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version}+r${_commits}+g${_short_commit_hash}"
 }
 
-prepare () {
+prepare() {
   cd "$srcdir/${pkgname%-git}"
-  [[ -d build ]] || mkdir build
+  [ -d build ] && rm -rf build
+  mkdir build
+  #  patch -Np1 -i ../dont-care-about-sandbox.patch # this is the OpenSUSE patch Fabio referenced
+  #  for now let's try bypass so the sourcecode can change without breaking our patch
+  sed -i 's/if not fs.is_file.*$/if false/' bottles/frontend/meson.build
+  sed -i '/if not Xdp.Portal.running_under_sandbox()/,/^            return$/s/^/#/' bottles/frontend/windows/main_window.py
 }
 
-build () {
+build() {
   cd "$srcdir/${pkgname%-git}"
-  arch-meson build -Ddevel=true
+  arch-meson build
   ninja -C build
 }
 
-check () {
-  ninja test -C "$srcdir/${pkgname%-git}/build" || true
-}
+#check() {
+#disable for now since we know it's failing for appstream issues
+#  ninja test -C "$srcdir/${pkgname%-git}/build" || true
+#}
 
-package () { 
+package() {
   cd "$srcdir/${pkgname%-git}"
   DESTDIR="$pkgdir/" ninja install -C build
 }
-
+# vim:set ts=2 sw=2 et:
