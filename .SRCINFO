@@ -1,0 +1,24 @@
+pkgbase = python-manifold3d
+	pkgdesc = Library for geometric robustness
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = None
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	arch = riscv32
+	arch = riscv64
+	arch = powerpc
+	arch = powerpc64le
+	arch = powerpc64
+	license = custom:Apache Software License
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-scikit-build-core
+	depends = nanobind<=2.2.0
+	source = https://files.pythonhosted.org/packages/78/bb/504c5c256093044d2d70f74bbe314d7016701f7eaea0e76bf9468154d452/manifold3d-3.0.0.tar.gz
+	sha256sums = 770402c4e83ddf78f30e48cad62f5b54432e645166f326a57d792cddbd18cd46
+
+pkgname = python-manifold3d
