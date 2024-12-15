@@ -1,11 +1,12 @@
 pkgbase = terminalwrap
 	pkgdesc = A terminal wrap tool inspired by Spotify Wrapped
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/xeyossr/terminalwrap
 	arch = x86_64
 	license = GPL-3
 	depends = gcc
+	depends = make
 	source = git+https://github.com/xeyossr/terminalwrap.git
 	sha256sums = SKIP
 

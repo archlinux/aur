@@ -3,13 +3,13 @@
 
 
 pkgname=terminalwrap
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A terminal wrap tool inspired by Spotify Wrapped"
 arch=('x86_64')
 url="https://github.com/xeyossr/terminalwrap"
 license=('GPL-3')
-depends=('gcc')
+depends=('gcc' 'make')
 source=("git+https://github.com/xeyossr/terminalwrap.git")
 sha256sums=('SKIP')
 
