@@ -1,6 +1,6 @@
 pkgbase = silentdragon
 	pkgdesc = HUSH desktop full node GUI wallet that supports z-addresses
-	pkgver = 1.4.4
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://git.hush.is/hush/SilentDragon
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = silentdragon
 	depends = qt5-base
 	depends = qt5-charts
 	depends = qt5-tools
-	source = silentdragon-1.4.4-1.tar.gz::https://git.hush.is/hush/SilentDragon/archive/v1.4.4.tar.gz
+	source = silentdragon-1.4.5-1.tar.gz::https://git.hush.is/hush/SilentDragon/archive/v1.4.5.tar.gz
 	source = silentdragon.png
 	source = silentdragon.desktop
-	sha512sums = 592f4245c55d11ab1ebd32c76cd7e4e8617eba426d6e34b00911c593f893b09c31b770f95489cb29a6b12e9d2b3b9c824a9bf6f0b9677c8f50824b376862f867
+	sha512sums = 23a4b07dd601a4cf2fc598bd5492d42ec4af9e0de8e81b6248d590862b65d3fca54514edc36fdadb52a6fe18aa5856df9d1f5050562d76db47703a124716db31
 	sha512sums = 0b887786a3be6e0643f8d047b0c934036bb71d203e09e692bc2af056d8b23d8469feaff0f952642b1a087f09db159c692fe89aaa4e49802602c4044f9f0620a5
 	sha512sums = 1bc66a8e732c878f92a508633faef7ca4d9cfd05ab68ba670a342795da0cc453889286ec9b2aa1a6f739db57d2d42fb6a4a5bca1a94390f78d812d2a356c2f87
 
