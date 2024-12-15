@@ -1,6 +1,6 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
 pkgname=python-stable-baselines3
-pkgver=2.1.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A set of reliable implementations of reinforcement learning algorithms in PyTorch"
 arch=('any')
@@ -21,18 +21,18 @@ optdepends=('python-opencv: For render'
     'python-psutil: Checking memory taken by replay buffer'
     'python-tqdm: For progress bar callback'
     'python-rich: For progress bar callback')
+makedepends+=("python-setuptools")
 _name=${pkgname#python-}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DLR-RM/$_name/archive/v$pkgver.tar.gz")
-sha256sums=('9d62ac964579194b89f0d876ee5dbd59589717c70531eb73a6ce62aa06caa6c5')
+sha256sums=('b14838f41375a8b5ccaff3f8f1155368943eb1a92cd07aee6253765f65d3426a')
 
 build() {
     cd $_name-$pkgver
-    export PYTHONSEED=1
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd $_name-$pkgver
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
