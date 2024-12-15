@@ -4,7 +4,7 @@ _pkgname=jule
 pkgname="${_pkgname}c"
 pkgver=0.1.1
 _pkgver="$_pkgname$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
 url="https://github.com/${_pkgname}lang/$_pkgname"
@@ -58,7 +58,7 @@ package() {
     cp -R bin "$pkgdir/usr/lib/$_pkgname/bin"
 
     install -d "$pkgdir/usr/bin"
-    ln -s "$pkgdir/usr/lib/$_pkgname/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    ln -s "/usr/lib/$_pkgname/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"

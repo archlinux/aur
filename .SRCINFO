@@ -1,7 +1,7 @@
 pkgbase = julec
 	pkgdesc = The Jule Programming Language Compiler
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/julelang/jule
 	arch = x86_64
 	arch = aarch64
