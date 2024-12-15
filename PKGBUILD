@@ -16,9 +16,9 @@ source_x86_64=("$_pkgname-ir-$pkgver-x86_64.cpp::$url_raw/main/src/linux-amd64.c
 source_aarch64=("$_pkgname-ir-$pkgver-aarch64.cpp::$url_raw/main/src/linux-arm64.cpp")
 source_i386=("$_pkgname-ir-$pkgver-i386.cpp::$url_raw/main/src/linux-i386.cpp")
 sha256sums=('4289447fc62a4466b67b4be87614cee9f424b630164bdc7f7bc810a25431d930')
-sha256sums_x86_64=('8e139df60165c9ec821546a1741bd4f20262c78db62b91ac2d159ad393fa83e1')
-sha256sums_aarch64=('543dcf6a6744b3bf6d21db14962e058ee186e882344a35e3068773134e68346f')
-sha256sums_i386=('bab9a798e6c518f987cc33ff3427043e25ce620d21af2c3c07c2b113b380e4f1')
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
+sha256sums_i386=('SKIP')
 depends=('glibc' 'gcc-libs' 'gcc' 'clang')
 
 prepare() {
