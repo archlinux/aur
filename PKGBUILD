@@ -6,7 +6,7 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=cinelerra-cv-git
-pkgver=2.3.r457.gc95830fc
+pkgver=2.3.r459.g6ff8065f
 pkgrel=1
 pkgdesc="Professional video editing and compositing environment - Community version"
 arch=(x86_64)
@@ -39,9 +39,6 @@ prepare() {
 }
 
 build() {
-  export CFLAGS+="  -Wno-incompatible-pointer-types"
-  export CXXFLAGS+="  -Wno-incompatible-pointer-types"
-
   cd cinelerra-cv
   # disable mmx due to improper use of registers in asm
   # - possibly a new problem since gcc 4.9
