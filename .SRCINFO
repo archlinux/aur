@@ -1,6 +1,6 @@
 pkgbase = r-countsimqc
 	pkgdesc = Compare Characteristic Features of Count Data Sets
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/countsimQC
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-countsimqc
 	depends = r-tidyr
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/countsimQC_1.22.0.tar.gz
-	sha256sums = ee3a3bfe14bc15d4f1c014f51e67e47ee327f95025f80847ef61c7b6ff893d7f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/countsimQC_1.24.0.tar.gz
+	sha256sums = a1f8220feaf9e451cf2cba1d44c7ee7ea2370c15d4aa02803caed7d5a0b96ba9
 
 pkgname = r-countsimqc
