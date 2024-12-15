@@ -189,9 +189,9 @@ _cross_compile_tools() {
   # conf
   aarch64-linux-gnu-gcc -o scripts/kconfig/conf scripts/kconfig/conf.c scripts/kconfig/confdata.c scripts/kconfig/expr.c scripts/kconfig/lexer.lex.c scripts/kconfig/menu.c scripts/kconfig/parser.tab.c scripts/kconfig/preprocess.c scripts/kconfig/symbol.c scripts/kconfig/util.c -I scripts/include -O2
 
-  # fdtoverlay, dtc
-  aarch64-linux-gnu-gcc -o scripts/dtc/fdtoverlay scripts/dtc/libfdt/fdt.c scripts/dtc/libfdt/fdt_ro.c scripts/dtc/libfdt/fdt_wip.c scripts/dtc/libfdt/fdt_sw.c scripts/dtc/libfdt/fdt_rw.c scripts/dtc/libfdt/fdt_strerror.c scripts/dtc/libfdt/fdt_empty_tree.c scripts/dtc/libfdt/fdt_addresses.c scripts/dtc/libfdt/fdt_overlay.c scripts/dtc/fdtoverlay.c scripts/dtc/util.c -O2
-  aarch64-linux-gnu-gcc -o scripts/dtc/dtc scripts/dtc/dtc.c scripts/dtc/flattree.c scripts/dtc/fstree.c scripts/dtc/data.c scripts/dtc/livetree.c scripts/dtc/treesource.c scripts/dtc/srcpos.c scripts/dtc/checks.c scripts/dtc/util.c scripts/dtc/dtc-lexer.lex.c scripts/dtc/dtc-parser.tab.c  -DNO_YAML -O2
+  # fdtoverlay, dtc aarch64-linux-gnu-gcc (TODO: fix include)
+  aarch64-linux-gnu-gcc -o scripts/dtc/fdtoverlay scripts/dtc/libfdt/fdt.c scripts/dtc/libfdt/fdt_ro.c scripts/dtc/libfdt/fdt_wip.c scripts/dtc/libfdt/fdt_sw.c scripts/dtc/libfdt/fdt_rw.c scripts/dtc/libfdt/fdt_strerror.c scripts/dtc/libfdt/fdt_empty_tree.c scripts/dtc/libfdt/fdt_addresses.c scripts/dtc/libfdt/fdt_overlay.c scripts/dtc/fdtoverlay.c scripts/dtc/util.c -I scripts/dtc/libfdt -DNO_YAML -O2
+  aarch64-linux-gnu-gcc -o scripts/dtc/dtc scripts/dtc/dtc.c scripts/dtc/flattree.c scripts/dtc/fstree.c scripts/dtc/data.c scripts/dtc/livetree.c scripts/dtc/treesource.c scripts/dtc/srcpos.c scripts/dtc/checks.c scripts/dtc/util.c scripts/dtc/dtc-lexer.lex.c scripts/dtc/dtc-parser.tab.c -I scripts/dtc/libfdt -DNO_YAML -O2
 
   # asn1_compiler, kallsyms, sorttable
   aarch64-linux-gnu-gcc -o scripts/kallsyms scripts/kallsyms.c  -I scripts/include -O2
