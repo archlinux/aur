@@ -4,7 +4,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=DescTools
-_pkgver=0.99.57
+_pkgver=0.99.58
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,6 +18,7 @@ depends=(
   r-exact
   r-expm
   r-gld
+  r-haven
   r-httr
   r-mvtnorm
   r-rcpp
@@ -35,8 +36,8 @@ optdepends=(
   r-vgam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1700933ad29498022e47320a8ed3f440')
-b2sums=('402915ca851ede9e09d3dba52b28395e8f6070a2e07f9f747f365d736bfc2fb2da88bc426188250139a805654984d697fd7a6232e91884c3d3fae90b53bf502a')
+md5sums=('43190006357da42f751d6c6522f4bea8')
+b2sums=('a76e0819bc5d0ec22874a5f16d4814441fb697f6b79c123cf8e76f15149d320b00cc33a0d13d08bcaba0ff108bc5e9c7807ca52559eb62778d90934a95760304')
 
 build() {
   mkdir build
