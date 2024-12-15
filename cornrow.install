@@ -1,0 +1,4 @@
+post_install() {
+    setcap CAP_NET_RAW+ep /usr/bin/cornrowd
+    systemctl enable --now cornrowd.service
+}

@@ -1,0 +1,25 @@
+From 39dbdab1c9b036f8db47a773c89147cac502163f Mon Sep 17 00:00:00 2001
+From: Korbinian Maier <korbinian.maier@posteo.de>
+Date: Mon, 9 Dec 2024 20:15:50 +0100
+Subject: [PATCH] Persistence: fix boost get_child
+
+---
+ cornrowd/src/config/Persistence.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cornrowd/src/config/Persistence.cpp b/cornrowd/src/config/Persistence.cpp
+index be826d4..89e727d 100644
+--- a/cornrowd/src/config/Persistence.cpp
++++ b/cornrowd/src/config/Persistence.cpp
+@@ -46,7 +46,7 @@ std::vector<common::Filter> Persistence::readConfig()
+         return {};
+     }
+ 
+-    for (const auto& filterNode : tree.get_child("filters", {})) {
++    for (const auto& filterNode : tree.get_child("filters")) {
+         common::Filter filter;
+         filter.type = static_cast<common::FilterType>(filterNode.second.get<uint>("t"));
+         filter.f = filterNode.second.get<float>("f");
+-- 
+2.47.1
+
