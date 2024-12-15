@@ -1,0 +1,3 @@
+[lua-discount]
+source = "git"
+git = "https://github.com/craigbarnes/lua-discount.git"
