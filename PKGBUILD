@@ -1,12 +1,14 @@
 # Maintainer: Jan-Niklas Tomski <jan-niklas at tomski dot me>
 
 _pkgname=wootility
-_pkgver=5.0.0-beta.2
+_versionmain=5.0.0
+_versionbeta=beta.2
+_pkgver="${_versionmain}-${_versionbeta}"
 _appimage="Wootility-${_pkgver}.AppImage"
 pkgname=${_pkgname}5-beta
-pkgver=5.0.0beta.2
+pkgver="${_versionmain}${_versionbeta}"
 pkgrel=1
-pkgdesc='Utility for configuring Wooting keyboards (v5.0.0-beta.2)'
+pkgdesc="Utility for configuring Wooting keyboards (v${_pkgver})"
 arch=(any)
 url='https://wooting.io/wootility'
 license=('unknown')
