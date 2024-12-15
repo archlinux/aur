@@ -1,0 +1,16 @@
+pkgbase = ai-cli-lib
+	pkgdesc = ai-cli-lib: AI help for CLI programs
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dspinellis/ai-cli-lib
+	arch = x86_64
+	license = Zlib
+	makedepends = base-devel
+	makedepends = git
+	depends = curl
+	depends = jansson
+	depends = readline
+	source = git+https://github.com/dspinellis/ai-cli-lib.git#branch=main
+	sha256sums = SKIP
+
+pkgname = ai-cli-lib
