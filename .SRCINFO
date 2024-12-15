@@ -9,7 +9,6 @@ pkgbase = python-slycot-mkl
 	license = BSD-3-Clause
 	makedepends = python-setuptools-scm
 	makedepends = python-scikit-build
-	makedepends = python-wheel
 	makedepends = gcc-fortran
 	makedepends = intel-oneapi-mkl
 	depends = python-numpy

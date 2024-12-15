@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 url="https://github.com/python-control/${_base}"
 license=(GPL-2.0-or-later BSD-3-Clause)
 depends=(python-numpy)
-makedepends=(python-setuptools-scm python-scikit-build python-wheel gcc-fortran intel-oneapi-mkl)
+makedepends=(python-setuptools-scm python-scikit-build gcc-fortran intel-oneapi-mkl)
 provides=("python-${_base}=${pkgver}")
 conflicts=("python-${_base}")
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
@@ -23,6 +23,6 @@ build() {
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build -G "Unix Makefiles"
   install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
