@@ -9,7 +9,7 @@ _suffix=browser
 pkgname="obs-studio-${_suffix}"
 _pkgver=31.0.0
 pkgver="${_pkgver//-/_}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -117,6 +117,7 @@ source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$_pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
+  "001-opengl-avoid-allocate-0-byte.patch"
 )
 source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64.tar.xz")
 source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64.tar.xz")
@@ -124,6 +125,7 @@ sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
+  "81680e20c3b517d051f738043079a58c8e8be516afaa7f4c5f9c5ec5f80bf026"
 )
 sha256sums_x86_64=("fab66dfc9cfd2e26fb87798f855aef30c2004edc8e19570d37af555644ae1655")
 sha256sums_aarch64=("ab09f04e534306d3f301ea997c03a6a9f7bd245042d50a434f17c1c98ac64b89")
@@ -140,6 +142,9 @@ prepare() {
 
   ## Mark log and titlebar version
   sed -i "s|obs_get_version_string()|\"$_pkgver-$_suffix-$pkgrel\"|" UI/obs-app.cpp
+
+  ## libobs-opengl: Avoid trying to allocate 0 byte on Linux
+  patch -Np1 -i "$srcdir/001-opengl-avoid-allocate-0-byte.patch"
 }
 
 build() {
