@@ -1,0 +1,15 @@
+pkgbase = linux-firmware-gaokun3
+	pkgdesc = Firmware files for HUAWEI MateBook E Go (sc8280xp)
+	pkgver = 1.10.0
+	pkgrel = 1
+	arch = any
+	license = custom
+	makedepends = cabextract
+	options = !debug
+	options = !strip
+	source = https://github.com/matebook-e-go/uup-drivers-sc8280xp/releases/download/200.0.10.0/200.0.10.0.zip
+	source = https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/qcom/sc8280xp/LENOVO/21BX/audioreach-tplg.bin
+	sha256sums = a1240497f44145c1445110522820c7ad8d4d4995403b399ee6323743f30e67b9
+	sha256sums = ee911c748deadc0191af50074b26ad177c8a2e78ff00e9578504b71d5d27b08a
+
+pkgname = linux-firmware-gaokun3
