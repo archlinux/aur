@@ -4,6 +4,7 @@ pkgbase = python-dukpy
 	pkgrel = 1
 	url = https://github.com/amol-/dukpy
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
