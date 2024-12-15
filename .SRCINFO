@@ -1,6 +1,6 @@
 pkgbase = librewolf-allow-dark
 	pkgdesc = Librewolf with the privacy.override_rfp_for_color_scheme about:config option added, which (if enabled) let's you change the color scheme even if rfp is turned on
-	pkgver = 132.0.1
+	pkgver = 133.0.3
 	pkgrel = 1
 	url = https://librewolf.net/
 	install = librewolf.install
@@ -74,14 +74,14 @@ pkgbase = librewolf-allow-dark
 	options = !makeflags
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/132.0.1-1/librewolf-132.0.1-1.source.tar.gz
+	source = https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/133.0.3-1/librewolf-133.0.3-1.source.tar.gz
 	source = librewolf.desktop
 	source = default192x192.png
 	source = allow_dark.patch
 	validpgpkeys = 034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3
-	sha256sums = f86f40574ad33e2cb1c9f52921481fdcbcce9b0bd581603a295bd97ec47fe1fc
+	sha256sums = f3ed5c73c6e07fcff42d5006746aa3cb285b86014004f138b11f891d38878142
 	sha256sums = 7d01d317b7db7416783febc18ee1237ade2ec86c1567e2c2dd628a94cbf2f25d
 	sha256sums = 959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1
-	sha256sums = 63de7bba34f7f6d7596dbbea84a4b2b09a3337976d5a2f47816f34765046612d
+	sha256sums = 07ce0c05f0df3c66d4a70e5d836d70ab6a708eca85e3b75256dca02120a3a928
 
 pkgname = librewolf-allow-dark
