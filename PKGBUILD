@@ -4,7 +4,7 @@
 
 _pkgbasename=mediainfo-gui
 pkgname=mediainfo-gui-qt
-pkgver=24.11
+pkgver=24.12
 pkgrel=1
 pkgdesc="Supplies technical and tag information about a video or audio file (Qt GUI interface)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=("$_pkgbasename")
 provides=("$_pkgbasename=$pkgver")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MediaArea/MediaInfo/archive/v$pkgver.tar.gz"
         "$_pkgbasename.desktop")
-sha256sums=('88ae36b693abd89891d788c4b0ac46b31e7a3daaabe0038263a77b3b3fc12a11'
+sha256sums=('500fc796fd4fc42b69e7c410ffa46c18e00f639e3b3c107eb3389ba71de06273'
             'dbac58889cd842729bbe0e9cfeb0d7492bea8b0a4801a10d2017c079251fc797')
 
 build() {
