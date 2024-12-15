@@ -3,7 +3,7 @@
 
 _name="okteto"
 pkgname="${_name}-beta"
-pkgver=3.2.1beta2
+pkgver=3.2.1
 _pkgver="${pkgver//beta/-beta\.}"
 pkgrel=1
 pkgdesc="Build better applications by developing and testing your code directly in Kubernetes"
@@ -16,7 +16,7 @@ makedepends=('go')
 optdepends=('kubectl')
 _pkgsrc="${_name}-${_pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/${_pkgver}.tar.gz")
-sha256sums=('6e24b6894382007672426330e23119d091fdd34d059433e30b52608fad7d77ed')
+sha256sums=('5e2d42debd18e5d0c772bc8196a915dd546136bff8d876345462aa494b275482')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
