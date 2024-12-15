@@ -1,13 +1,13 @@
 pkgbase = garden-tools
 	pkgdesc = Garden grows and cultivates collections of Git trees
-	pkgver = 1.9.1
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://gitlab.com/garden-rs/garden
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = https://gitlab.com/garden-rs/garden/-/archive/v1.9.1/garden-v1.9.1.tar.gz
-	sha256sums = efe47a5d4f1130608766bb9536164fcb065705bbe12f62003e3684bc19134ece
+	source = https://gitlab.com/garden-rs/garden/-/archive/v1.10.0/garden-v1.10.0.tar.gz
+	sha256sums = 38ab2e096a16fb66d05a86416a61329f0e42d4a31a12ef3dbc1f12fb2441ca6e
 
 pkgname = garden-tools
