@@ -1,8 +1,9 @@
 pkgbase = muteled
 	pkgdesc = A simple script aiming to fix the broken mute LED light on some HP laptop models
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/username227/MuteLED
+	install = acpidinfo.install
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
