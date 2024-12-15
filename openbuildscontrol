@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec electron23 /usr/lib/openbuilds-control/app.asar "$@"

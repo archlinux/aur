@@ -19,7 +19,7 @@ source=(
     'openbuildscontrol.desktop'
 )
 sha512sums=('157872b36462046ab93f9dc3becdc1500d67770dce6d54508397bb4a89b62041613a634a14bffddc8a6f325fffb20ff6fcbd5ed117b08fc9c2ce76c01171ebbf'
-            '896cc097f594268618ddaa9cec137e8bbd4314ad7796e077f73f88aa034f32903d9056ea0c5299b5a91f26f53ae3cc4917482e3280854144e388568d86232879')
+    '896cc097f594268618ddaa9cec137e8bbd4314ad7796e077f73f88aa034f32903d9056ea0c5299b5a91f26f53ae3cc4917482e3280854144e388568d86232879')
 
 build() {
     cd OpenBuilds-CONTROL
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-    cd OpenBuilds-CONTROL/
+    cd OpenBuilds-CONTROL
     install -Dm644 dist/linux-unpacked/resources/app.asar -t "$pkgdir/usr/lib/openbuilds-control/"
     cp -r --preserve=mode dist/linux-unpacked/resources/app.asar.unpacked/ "$pkgdir/usr/lib/openbuilds-control/"
     install -Dm644 app/icon.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/openbuildscontrol.png"
