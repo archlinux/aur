@@ -1,0 +1,15 @@
+pkgbase = python-rtmidi2
+	pkgdesc = Python wrapper for RtMidi written in Cython. Allows sending raw messages, multi-port input and sending multiple messages in one call.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/gesellkammer/rtmidi2
+	arch = any
+	license = custom:MIT License
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/c3/16/5b42db7509a3b6d300f34aef5988ed39b9e50b164a49c9d0d2f9e7e7303f/rtmidi2-1.4.0.tar.gz
+	sha256sums = eec5185beed7aa006bb7bcc058c58e10f245362e0db1636ae621917dc3d52ead
+
+pkgname = python-rtmidi2
