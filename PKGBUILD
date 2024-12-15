@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DEGreport
-_pkgver=1.40.1
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -50,8 +50,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fe36b68a923e87bd16ec26a9013c7167')
-b2sums=('4b717dbcde6d4c8485c8dd51b4d72ed839d2142af2e2e41b9ffe3e97610d46cf3cf36027ac8a1593e94b8b88ad874bdaa1c483f68b5dbde666c5c62e6e99fe80')
+md5sums=('6fb70abc2614171e46f5abab6d9aad2a')
+b2sums=('83a52d45e5c4c036fc6486e5b68b9c0abbb82933e68b2689acbbc40f3b50e946173d63d11eec09e805bd95996f4732bcb7bb1d22e46afb5777dc3840dc867395')
 
 build() {
   mkdir build
