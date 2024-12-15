@@ -1,14 +1,14 @@
 pkgbase = surfshark-wireguard
 	pkgdesc = SurfShark Wireguard Extractor
-	pkgver = 2.8
+	pkgver = 2.9
 	pkgrel = 1
 	url = https://github.com/Incognito-Coder/Wiregen.git
-	arch = x86_64
+	arch = any
 	license = unknown
-	depends = python3
+	makedepends = git
+	depends = python
 	depends = wireguard-tools
-	provides = wiregen
-	source = git+https://github.com/Incognito-Coder/Wiregen.git
-	md5sums = SKIP
+	source = git+https://github.com/Incognito-Coder/Wiregen.git#commit=8e93cc60c5eb7865eea27eb5f0d2fbe0f463db03
+	sha256sums = 63e77c78fcb3f76e4f89bc9eaaac5cd73dd3194c43778fed25140638b053814b
 
 pkgname = surfshark-wireguard
