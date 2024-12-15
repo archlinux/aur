@@ -1,24 +1,25 @@
 # Maintainer: Nathan Chere <aur at nathanchere dot com dot au>
 pkgname=forge-gui-desktop
-pkgver=1.6.64
+pkgver=2.0.00
 pkgrel=1
 pkgdesc="Implementation of Magic the Gathering that lets you play against a computer AI"
 arch=('any')
-url="https://www.slightlymagic.net/wiki/Forge"
+url="https://github.com/Card-Forge/forge"
 license=('GPL3')
 depends=('jre8-openjdk')
-source=("https://releases.cardforge.org/forge/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2"
+source=("https://github.com/Card-Forge/forge/releases/download/forge-$pkgver/forge-installer-$pkgver.tar.bz2"
 	"https://github.com/Card-Forge/forge/raw/e16a80e822dd040cc6c768152f3493eb4f2ce09a/AppIcon.png")
-sha1sums=('d7a70b2ee0fc0899d248528895d7fac3aeb50a43'
+sha1sums=('a90e708967f7681e6b88f11cb01b2428abf703ab'
 	  '9a957969da65cf281ceb31a3737bb3b8b799f14b')
 
 package() {
 	cd "$srcdir"
 	install -d -m0755 "$pkgdir"/usr/share/$pkgname/res
-	cp -r "$srcdir"/res/* "$pkgdir"/usr/share/$pkgname/res
-	install -Dm0664 "$srcdir"/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+	tar xf forge-installer-$pkgver.tar.bz2
+	cp -r res/* "$pkgdir"/usr/share/$pkgname/res
+	install -Dm0664 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 	install -Dm0644 "$srcdir"/AppIcon.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
-	install -Dm0644 "$srcdir"/$pkgname-$pkgver-jar-with-dependencies.jar "$pkgdir"/usr/share/java/$pkgname.jar
+	install -Dm0644 forge-gui-desktop-2.0.00-jar-with-dependencies.jar "$pkgdir"/usr/share/java/$pkgname.jar
   	_deskfile="$pkgdir/usr/share/applications/$pkgname.desktop"
 	_startfile="$pkgdir/usr/bin/$pkgname.sh"
   	install -Dm0644 /dev/stdin "$_deskfile"<<END
