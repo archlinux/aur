@@ -3,7 +3,6 @@ pkgbase = wootility5-beta
 	pkgver = 5.0.0beta.3
 	pkgrel = 1
 	url = https://wooting.io/wootility
-	install = wootility5-beta.install
 	arch = any
 	license = unknown
 	makedepends = util-linux

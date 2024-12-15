@@ -20,7 +20,6 @@ conflicts=("${_pkgname}")
 replaces=()
 backup=()
 options=(!strip)
-install=$pkgname.install
 source=("https://wootility-updates.ams3.cdn.digitaloceanspaces.com/wootility-linux/${_appimage}"
         '70-wooting.rules')
 noextract=()
