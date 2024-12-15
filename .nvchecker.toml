@@ -1,3 +1,0 @@
-[alpm_octopi_utils]
-source = "git"
-git = "https://github.com/aarnt/alpm_octopi_utils.git"
