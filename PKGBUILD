@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=wechat
-pkgver=4.0.0.30
+pkgver=4.0.1.7
 pkgrel=1
 epoch=
 pkgdesc="微信是一种生活方式. This is a repackage of the official WeChat which includes an optional sandbox support"

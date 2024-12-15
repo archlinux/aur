@@ -1,6 +1,6 @@
 pkgbase = wechat
 	pkgdesc = 微信是一种生活方式. This is a repackage of the official WeChat which includes an optional sandbox support
-	pkgver = 4.0.0.30
+	pkgver = 4.0.1.7
 	pkgrel = 1
 	url = https://weixin.qq.com/
 	arch = x86_64
@@ -76,11 +76,11 @@ pkgbase = wechat
 	md5sums = ff710cd32cb665a70b06f6f0f83937c5
 	md5sums = 468e0367346707c026e577e7bf3e3a82
 	md5sums = SKIP
-	source_x86_64 = wechat-x86-4.0.0.30.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.deb
+	source_x86_64 = wechat-x86-4.0.1.7.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.deb
 	md5sums_x86_64 = SKIP
-	source_aarch64 = wechat-arm-4.0.0.30.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_arm64.deb
+	source_aarch64 = wechat-arm-4.0.1.7.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_arm64.deb
 	md5sums_aarch64 = SKIP
-	source_loong64 = wechat-loong64-4.0.0.30.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_LoongArch.deb
+	source_loong64 = wechat-loong64-4.0.1.7.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_LoongArch.deb
 	md5sums_loong64 = SKIP
 
 pkgname = wechat
