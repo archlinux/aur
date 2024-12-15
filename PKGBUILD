@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=methylMnM
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='detect different methylation level (DMR)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
   r-statmod
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f9261c926e24341a9c2312029379668189cd8e3e777687698ea5e41ff6603538')
+sha256sums=('d8e491a726a3c95c8bb98be02721f2eec3f1c0ee56a967a150f582a6e63e0cff')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
