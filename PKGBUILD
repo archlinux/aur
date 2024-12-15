@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=HiCDOC
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -40,8 +40,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ea5a91a9be89ec89bfca0613aa52816a')
-b2sums=('96bb7c9c329686c425aed6fcce393e84622926c35113cb367ca122aa0967b629dbe9a5e452257fbf79098760d78c250a686e956a79255c143f3b165f0df820c7')
+md5sums=('d6f9e9565f7fd00b7cc8bc1689c2111d')
+b2sums=('5b8de4eb4c53d40574ea78e804ef4b613291c0d2fbc4195635df4d8fdd7073ece13a0702d68c1da614a40b2292bd49aed61ca410381ee409d9f5f1d69b63a675')
 
 build() {
   mkdir build
