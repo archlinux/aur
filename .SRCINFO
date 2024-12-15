@@ -1,6 +1,6 @@
 pkgbase = python-kotlin-jupyter-kernel
 	pkgdesc = Kotlin Kernel for Jupyter Notebooks
-	pkgver = 0.12.0.217
+	pkgver = 0.12.0.322
 	pkgrel = 1
 	url = https://github.com/Kotlin/kotlin-jupyter
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-kotlin-jupyter-kernel
 	depends = jupyter-notebook
 	depends = java-environment
 	depends = gradle
-	source = https://files.pythonhosted.org/packages/py3/k/kotlin-jupyter-kernel/kotlin_jupyter_kernel-0.12.0.217-py3-none-any.whl
-	sha256sums = 68a3cd5f1801fab5e46a683d0dd49d30ea7ee273849ab6205bc1738eca02fd75
+	source = https://files.pythonhosted.org/packages/py3/k/kotlin-jupyter-kernel/kotlin_jupyter_kernel-0.12.0.322-py3-none-any.whl
+	sha256sums = d22863403cfd4ee8764496a9c538c1a90465d90672d79feec8360fe6c9d989d1
 
 pkgname = python-kotlin-jupyter-kernel
