@@ -1,6 +1,6 @@
 pkgbase = r-roseq
 	pkgdesc = Modeling expression ranks for noise-tolerant differential expression analysis of scRNA-Seq data
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ROSeq
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-roseq
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ROSeq_1.16.0.tar.gz
-	sha256sums = cccd6ffab102bc9d80aae8e099d522a8b53fe29eb349e5e5b67f9daa9f6b43e7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ROSeq_1.18.0.tar.gz
+	sha256sums = 1dc79b845305b0a841b36bbaa31a49291700da3484236cc742495b3f22d25c5c
 
 pkgname = r-roseq
