@@ -1,0 +1,16 @@
+pkgbase = waytune-git
+	pkgdesc = A collection of custom waybar module
+	pkgver = r14.1cf6c02
+	pkgrel = 1
+	url = https://github.com/Nadim147c/WayTune
+	arch = x86_64
+	license = AGPL
+	makedepends = git
+	makedepends = go
+	optdepends = wpctl: control volume in pipewire module
+	provides = waytune
+	conflicts = waytune
+	source = waytune-git::git+https://github.com/Nadim147c/WayTune.git
+	sha256sums = SKIP
+
+pkgname = waytune-git
