@@ -2,7 +2,7 @@
 
 _pkgname=wootility
 _versionmain=5.0.0
-_versionbeta=beta.2
+_versionbeta=beta.3
 _pkgver="${_versionmain}-${_versionbeta}"
 _appimage="Wootility-${_pkgver}.AppImage"
 pkgname=${_pkgname}5-beta
@@ -24,7 +24,7 @@ install=$pkgname.install
 source=("https://wootility-updates.ams3.cdn.digitaloceanspaces.com/wootility-linux/${_appimage}"
         '70-wooting.rules')
 noextract=()
-b2sums=('291d2bf07b2f3db91632168cdb0dae3e8860718af74f82d0eb9b13bfdc2cb170af997542820f96d4fa8c9a0617a69760d5b9323261dc19152222fc3a00fff038'
+b2sums=('75e5ddf03424eeca2db7d9a2b92480202d2030b1980bf93c242cc1c26d1bd33d54a8ddf4ed267211751a6ce3b10a3e0c84ac5d282101963997fccd2b98ac6852'
         '80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1')
 
 prepare() {
