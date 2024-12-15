@@ -1,7 +1,7 @@
 # Maintainer: Jan-Niklas Tomski <jan-niklas at tomski dot me>
-_pkgname=wootility
-pkgname=${_pkgname}5-beta
 pkgrel=1
+_pkgname='wootility'
+pkgname="${_pkgname}5-beta"
 pkgver='5.0.0_beta.3'
 _appimage="${_pkgname^}-${pkgver//_/-}.AppImage"
 pkgdesc="Utility for configuring Wooting keyboards (v${pkgver//_/-})"
@@ -20,18 +20,18 @@ b2sums=('75e5ddf03424eeca2db7d9a2b92480202d2030b1980bf93c242cc1c26d1bd33d54a8ddf
 
 prepare() {
     # Copying AppImage in case $SRCDEST is mounted with noexec
-    cp ${_appimage} ${_appimage}.copy
-    chmod +x ${_appimage}.copy
-    ./${_appimage}.copy --appimage-extract ${_pkgname}.desktop
-    ./${_appimage}.copy --appimage-extract ${_pkgname}.png
-    ./${_appimage}.copy --appimage-extract usr/share/icons
-    rm ${_appimage}.copy
+    cp "${_appimage}" "${_appimage}.copy"
+    chmod +x "${_appimage}.copy"
+    "./${_appimage}.copy" --appimage-extract "${_pkgname}.desktop"
+    "./${_appimage}.copy" --appimage-extract "${_pkgname}.png"
+    "./${_appimage}.copy" --appimage-extract usr/share/icons
+    rm "${_appimage}.copy"
 }
 
 build() {
-    sed -i -E "s|Exec=AppRun|Exec=${_pkgname}|" squashfs-root/${_pkgname}.desktop
-    sed -i -E "s|Name=.*$|Name=Wootility|" squashfs-root/${_pkgname}.desktop
-    sed -i -E "s|^Icon=.*$|Icon=${_pkgname}|" squashfs-root/${_pkgname}.desktop
+    sed -i -E "s|Exec=AppRun|Exec=${_pkgname}|" "squashfs-root/${_pkgname}.desktop"
+    sed -i -E "s|Name=.*$|Name=${_pkgname^}|" "squashfs-root/${_pkgname}.desktop"
+    sed -i -E "s|^Icon=.*$|Icon=${_pkgname}|" "squashfs-root/${_pkgname}.desktop"
 }
 
 package() {
