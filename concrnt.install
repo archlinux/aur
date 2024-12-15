@@ -1,9 +1,14 @@
 post_install() {
 	echo
-	echo -e "\e[1;34m]****** Concurrent installed ******\e[0m"
-	echo -e "Please configure concrnt in \e[1;32m/etc/concrnt/config/config.yaml"
-	echo -e "and gateway config in \e[1;32m/etc/concrnt/config/gateway.yaml\e[0m before starting"
-	echo -e "You can start concrnt with \"sudo systemctl start concrnt-gateway\""
-	echo -e "\e[1;34m]**********************************\e[0m"
+	echo -e "\e[0;34;47m                                                       \e[0m"
+	echo -e "\e[1;34;47m  ************* README: Concrnt Gateway *************  \e[0m"
+	echo -e "\e[0;32;47m  Please configure \e[0;31;47m/etc/concrnt/config/config.yaml     \e[0m"
+	echo -e "\e[0;32;47m  and \e[0;31;47m/etc/concrnt/config/gateway.yaml \e[0;32;47mbefore start    \e[0m"
+	echo -e "\e[0;34;47m  ***************************************************  \e[0m"
+	echo -e "\e[0;32;47m  The default port for concrnt-gateway is \e[0;31;47m28280\e[0;32;47m        \e[0m"
+	echo -e "\e[0;32;47m  You can change the port and proxy settings using     \e[0m"
+	echo -e "\e[0;31;47m  systemctl edit --full concrnt-gateway                \e[0m"
+	echo -e "\e[0;34;47m  ***************************************************  \e[0m"
+	echo -e "\e[0;34;47m                                                       \e[0m"
 	echo
 }

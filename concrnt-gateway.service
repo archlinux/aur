@@ -14,8 +14,12 @@ Group=concrnt
 
 SyslogIdentifier=concurrent-gateway
 
-#Environment="http_proxy="
-#Environment="https_proxy="
+# Port config
+Environment="CC_GATEWAY_PORT=28280"
+
+# Proxy config (http, https or socks5)
+#Environment="http_proxy=http://proxy-server:3128"
+#Environment="https_proxy=http://proxy-server:3128"
 
 ExecStart=/usr/bin/ccgateway
 
