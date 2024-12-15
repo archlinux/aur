@@ -12,6 +12,8 @@ license=('BSD-3-Clause')
 source=("git+$url.git")
 sha256sums=('SKIP')
 depends=('julec-git')
+provides=("$__pkgname")
+conflicts=("$__pkgname")
 
 pkgver() {
     cd "$__pkgname"
