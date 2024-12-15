@@ -1,0 +1,5 @@
+[mysql-connector-java]
+source="regex"
+url='https://dev.mysql.com/downloads/connector/j/'
+regex='.h1.Connector.J.([0-9.]+) ..h1.'
+#<h1>Connector/J 9.1.0 </h1>
