@@ -1,0 +1,5 @@
+[netgen-nogui]
+source = "github"
+github = "NGSolve/netgen"
+use_latest_release = "true"
+prefix = "v"
