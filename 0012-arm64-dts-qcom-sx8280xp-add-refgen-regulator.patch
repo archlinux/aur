@@ -1,0 +1,61 @@
+From d3833ad09e33349822f7b9577add7ccddb4b77a7 Mon Sep 17 00:00:00 2001
+From: nuvole <mitltlatltl@gmail.com>
+Date: Mon, 14 Oct 2024 16:10:52 +0800
+Subject: [PATCH 12/16] arm64: dts: qcom: sx8280xp: add refgen regulator
+
+---
+ arch/arm64/boot/dts/qcom/sc8280xp.dtsi | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/sc8280xp.dtsi b/arch/arm64/boot/dts/qcom/sc8280xp.dtsi
+index 430766eeb..8873192b3 100644
+--- a/arch/arm64/boot/dts/qcom/sc8280xp.dtsi
++++ b/arch/arm64/boot/dts/qcom/sc8280xp.dtsi
+@@ -2645,6 +2645,12 @@ usb_0_hsphy: phy@88e5000 {
+ 			status = "disabled";
+ 		};
+ 
++		refgen: regulator@88e6000 {
++			compatible = "qcom,sc8280xp-refgen-regulator",
++				     "qcom,sm8250-refgen-regulator";
++			reg = <0x0 0x088e6000 0x0 0x84>;
++		};
++
+ 		usb_2_hsphy0: phy@88e7000 {
+ 			compatible = "qcom,sc8280xp-usb-hs-phy",
+ 				     "qcom,usb-snps-hs-5nm-phy";
+@@ -4425,6 +4431,7 @@ mdss0_dsi0: dsi@ae94000 {
+ 
+ 				operating-points-v2 = <&mdss0_dsi0_opp_table>;
+ 				power-domains = <&rpmhpd SC8280XP_MMCX>;
++				refgen-supply = <&refgen>;
+ 
+ 				phy-names = "dsi";
+ 
+@@ -4520,6 +4527,7 @@ mdss0_dsi1: dsi@ae96000 {
+ 
+ 				operating-points-v2 = <&mdss0_dsi1_opp_table>;
+ 				power-domains = <&rpmhpd SC8280XP_MMCX>;
++				refgen-supply = <&refgen>;
+ 
+ 				phys = <&mdss0_dsi1_phy>;
+ 				phy-names = "dsi";
+@@ -5932,6 +5940,7 @@ mdss1_dsi0: dsi@22094000 {
+ 
+ 				operating-points-v2 = <&mdss1_dsi0_opp_table>;
+ 				power-domains = <&rpmhpd SC8280XP_MMCX>;
++				refgen-supply = <&refgen>;
+ 
+ 				phy-names = "dsi";
+ 
+@@ -6027,6 +6036,7 @@ mdss1_dsi1: dsi@22096000 {
+ 
+ 				operating-points-v2 = <&mdss1_dsi1_opp_table>;
+ 				power-domains = <&rpmhpd SC8280XP_MMCX>;
++				refgen-supply = <&refgen>;
+ 
+ 				phys = <&mdss1_dsi1_phy>;
+ 				phy-names = "dsi";
+-- 
+2.47.1
+

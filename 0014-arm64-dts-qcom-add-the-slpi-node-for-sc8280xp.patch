@@ -1,0 +1,146 @@
+From e5bc0e65b35f26002598ed55fec48190f65295f5 Mon Sep 17 00:00:00 2001
+From: nuvole <mitltlatltl@gmail.com>
+Date: Mon, 7 Oct 2024 18:36:31 +0800
+Subject: [PATCH 14/16] arm64: dts: qcom: add the slpi node for sc8280xp
+
+---
+ arch/arm64/boot/dts/qcom/sc8280xp.dtsi | 96 ++++++++++++++++++++++++++
+ drivers/remoteproc/qcom_q6v5_pas.c     |  1 +
+ 2 files changed, 97 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/sc8280xp.dtsi b/arch/arm64/boot/dts/qcom/sc8280xp.dtsi
+index 8df92975a..9560c2f2f 100644
+--- a/arch/arm64/boot/dts/qcom/sc8280xp.dtsi
++++ b/arch/arm64/boot/dts/qcom/sc8280xp.dtsi
+@@ -707,6 +707,11 @@ pil_adsp_mem: adsp-region@86c00000 {
+ 			no-map;
+ 		};
+ 
++		pil_slpi_mem: slpi-region@88c00000 {
++			reg = <0 0x88c00000 0 0x1500000>;
++			no-map;
++		};
++
+ 		pil_nsp0_mem: cdsp0-region@8a100000 {
+ 			reg = <0 0x8a100000 0 0x1e00000>;
+ 			no-map;
+@@ -747,6 +752,30 @@ smp2p_adsp_in: slave-kernel {
+ 		};
+ 	};
+ 
++	smp2p-slpi {
++		compatible = "qcom,smp2p";
++		qcom,smem = <481>, <430>;
++		interrupts-extended = <&ipcc IPCC_CLIENT_SLPI
++					     IPCC_MPROC_SIGNAL_SMP2P
++					     IRQ_TYPE_EDGE_RISING>;
++		mboxes = <&ipcc IPCC_CLIENT_SLPI
++				IPCC_MPROC_SIGNAL_SMP2P>;
++
++		qcom,local-pid = <0>;
++		qcom,remote-pid = <3>;
++
++		smp2p_slpi_out: master-kernel {
++			qcom,entry-name = "master-kernel";
++			#qcom,smem-state-cells = <1>;
++		};
++
++		smp2p_slpi_in: slave-kernel {
++			qcom,entry-name = "slave-kernel";
++			interrupt-controller;
++			#interrupt-cells = <2>;
++		};
++	};
++
+ 	smp2p-nsp0 {
+ 		compatible = "qcom,smp2p";
+ 		qcom,smem = <94>, <432>;
+@@ -2751,6 +2780,73 @@ usb_2_qmpphy1: phy@88f1000 {
+ 			status = "disabled";
+ 		};
+ 
++		remoteproc_slpi: remoteproc@2400000 { /* FIXME */
++			compatible = "qcom,sc8280xp-slpi-pas";
++			reg = <0 0x02400000 0 0x4000>;
++
++			interrupts-extended = <&pdc 9 IRQ_TYPE_EDGE_RISING>,
++					      <&smp2p_slpi_in 0 IRQ_TYPE_EDGE_RISING>,
++					      <&smp2p_slpi_in 1 IRQ_TYPE_EDGE_RISING>,
++					      <&smp2p_slpi_in 2 IRQ_TYPE_EDGE_RISING>,
++					      <&smp2p_slpi_in 3 IRQ_TYPE_EDGE_RISING>;
++			interrupt-names = "wdog", "fatal", "ready",
++					  "handover", "stop-ack";
++
++			clocks = <&rpmhcc RPMH_CXO_CLK>;
++			clock-names = "xo";
++
++			power-domains = <&rpmhpd SC8280XP_LCX>,
++							<&rpmhpd SC8280XP_LMX>;
++			power-domain-names = "lcx", "lmx";
++
++			memory-region = <&pil_slpi_mem>;
++
++			qcom,qmp = <&aoss_qmp>;
++
++			qcom,smem-states = <&smp2p_slpi_out 0>;
++			qcom,smem-state-names = "stop";
++
++			status = "disabled";
++
++			glink-edge {
++				interrupts-extended = <&ipcc IPCC_CLIENT_SLPI
++							     IPCC_MPROC_SIGNAL_GLINK_QMP
++							     IRQ_TYPE_EDGE_RISING>;
++				mboxes = <&ipcc IPCC_CLIENT_SLPI
++						IPCC_MPROC_SIGNAL_GLINK_QMP>;
++
++				label = "slpi";
++				qcom,remote-pid = <3>;
++
++				fastrpc {
++					compatible = "qcom,fastrpc";
++					qcom,glink-channels = "fastrpcglink-apps-dsp";
++					label = "sdsp";
++					qcom,non-secure-domain;
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					compute-cb@1 {
++						compatible = "qcom,fastrpc-compute-cb";
++						reg = <1>;
++					//	iommus = <&apps_smmu 0x0541 0x0>;
++					};
++
++					compute-cb@2 {
++						compatible = "qcom,fastrpc-compute-cb";
++						reg = <2>;
++					//	iommus = <&apps_smmu 0x0542 0x0>;
++					};
++
++					compute-cb@3 {
++						compatible = "qcom,fastrpc-compute-cb";
++						reg = <3>;
++					//	iommus = <&apps_smmu 0x0543 0x0>;
++					};
++				};
++			};
++		};
++
+ 		remoteproc_adsp: remoteproc@3000000 {
+ 			compatible = "qcom,sc8280xp-adsp-pas";
+ 			reg = <0 0x03000000 0 0x100>;
+diff --git a/drivers/remoteproc/qcom_q6v5_pas.c b/drivers/remoteproc/qcom_q6v5_pas.c
+index 793b1d274..f862e4696 100644
+--- a/drivers/remoteproc/qcom_q6v5_pas.c
++++ b/drivers/remoteproc/qcom_q6v5_pas.c
+@@ -1445,6 +1445,7 @@ static const struct of_device_id adsp_of_match[] = {
+ 	{ .compatible = "qcom,sc8280xp-adsp-pas", .data = &sm8250_adsp_resource},
+ 	{ .compatible = "qcom,sc8280xp-nsp0-pas", .data = &sc8280xp_nsp0_resource},
+ 	{ .compatible = "qcom,sc8280xp-nsp1-pas", .data = &sc8280xp_nsp1_resource},
++	{ .compatible = "qcom,sc8280xp-slpi-pas", .data = &sdm845_slpi_resource_init},
+ 	{ .compatible = "qcom,sdm660-adsp-pas", .data = &adsp_resource_init},
+ 	{ .compatible = "qcom,sdm845-adsp-pas", .data = &sdm845_adsp_resource_init},
+ 	{ .compatible = "qcom,sdm845-cdsp-pas", .data = &sdm845_cdsp_resource_init},
+-- 
+2.47.1
+

@@ -1,0 +1,32 @@
+From f87251791257a3affefa06814fb843e6f9cfb2cf Mon Sep 17 00:00:00 2001
+From: nuvole <mitltlatltl@gmail.com>
+Date: Mon, 14 Oct 2024 16:17:28 +0800
+Subject: [PATCH 13/16] arm64: dts: qcom: sc8280xp: add MDSS registers
+ interconnect
+
+---
+ arch/arm64/boot/dts/qcom/sc8280xp.dtsi | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/sc8280xp.dtsi b/arch/arm64/boot/dts/qcom/sc8280xp.dtsi
+index 8873192b3..8df92975a 100644
+--- a/arch/arm64/boot/dts/qcom/sc8280xp.dtsi
++++ b/arch/arm64/boot/dts/qcom/sc8280xp.dtsi
+@@ -4208,8 +4208,12 @@ mdss0: display-subsystem@ae00000 {
+ 				      "core";
+ 			interrupts = <GIC_SPI 83 IRQ_TYPE_LEVEL_HIGH>;
+ 			interconnects = <&mmss_noc MASTER_MDP0 0 &mc_virt SLAVE_EBI1 0>,
+-					<&mmss_noc MASTER_MDP1 0 &mc_virt SLAVE_EBI1 0>;
+-			interconnect-names = "mdp0-mem", "mdp1-mem";
++					<&mmss_noc MASTER_MDP1 0 &mc_virt SLAVE_EBI1 0>,
++					<&gem_noc MASTER_APPSS_PROC QCOM_ICC_TAG_ACTIVE_ONLY
++					 &config_noc SLAVE_DISPLAY_CFG QCOM_ICC_TAG_ACTIVE_ONLY>;
++			interconnect-names = "mdp0-mem",
++					     "mdp1-mem",
++					     "cpu-cfg";
+ 			iommus = <&apps_smmu 0x1000 0x402>;
+ 			power-domains = <&dispcc0 MDSS_GDSC>;
+ 			resets = <&dispcc0 DISP_CC_MDSS_CORE_BCR>;
+-- 
+2.47.1
+

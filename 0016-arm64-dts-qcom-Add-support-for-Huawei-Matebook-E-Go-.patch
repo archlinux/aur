@@ -1,0 +1,25 @@
+From cf34771c671c939fdaca997ce901b7da40efae2c Mon Sep 17 00:00:00 2001
+From: nuvole <mitltlatltl@gmail.com>
+Date: Sun, 15 Dec 2024 18:53:33 +0800
+Subject: [PATCH 16/16] arm64: dts: qcom: Add support for Huawei Matebook E Go
+ (sc8280xp)
+
+---
+ arch/arm64/boot/dts/qcom/Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/Makefile b/arch/arm64/boot/dts/qcom/Makefile
+index ae002c7cf..1d686a9ad 100644
+--- a/arch/arm64/boot/dts/qcom/Makefile
++++ b/arch/arm64/boot/dts/qcom/Makefile
+@@ -190,6 +190,7 @@ dtb-$(CONFIG_ARCH_QCOM)	+= sc7280-crd-r3.dtb
+ dtb-$(CONFIG_ARCH_QCOM)	+= sc8180x-lenovo-flex-5g.dtb
+ dtb-$(CONFIG_ARCH_QCOM)	+= sc8180x-primus.dtb
+ dtb-$(CONFIG_ARCH_QCOM)	+= sc8280xp-crd.dtb
++dtb-$(CONFIG_ARCH_QCOM)	+= sc8280xp-huawei-gaokun3.dtb
+ dtb-$(CONFIG_ARCH_QCOM)	+= sc8280xp-lenovo-thinkpad-x13s.dtb
+ dtb-$(CONFIG_ARCH_QCOM)	+= sda660-inforce-ifc6560.dtb
+ dtb-$(CONFIG_ARCH_QCOM)	+= sdm450-lenovo-tbx605f.dtb
+-- 
+2.47.1
+
