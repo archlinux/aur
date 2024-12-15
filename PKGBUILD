@@ -3,7 +3,7 @@
 _pkgauthor=triyanox
 _pkgname=lla
 pkgname=${_pkgname}-bin
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Blazing fast 'ls' replacement with superpowers"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -19,10 +19,10 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/v${pk
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-i686")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64")
 sha256sums=('23d576c778cda4c3059f8dccbb8b4b79965868099472d089ec589ed0066999c5'
-            '58ad49edb51df96686cd8d53892ddf723f6814595271e5d84f93e1112154ff96')
-sha256sums_x86_64=('8f69e6453efdb4e1c486d9b9c57c31e366615f96ece6368989d4ebf3d6160058')
-sha256sums_i686=('63ddade1b1b975df735451e39a4c1a6f1436c877aa40930569bbb7f67ad53c09')
-sha256sums_aarch64=('954552737f069c36bd1b4639ff2bee98f17ca1c8f225f6c453e60e3f7727f206')
+            '929bed3cf7e4058be25d5272865b1b16b9fbd93ef02cee41bc820eade41a06b3')
+sha256sums_x86_64=('83fa0f0c2bf58090d460eb2e68ef8d61ccb91d981ceef942b6cd0689d4e84ea7')
+sha256sums_i686=('de5869c2acfc909220e8126f9dbb3de66c00922c00bf3572a1251e74838abe46')
+sha256sums_aarch64=('814858d9126da8c5d9002f9d1bf56c3fc42817d434f5c98b35b445ded0f92a30')
 
 package() {
   cd "${srcdir}/" || exit
