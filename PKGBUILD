@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CellBarcode
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,8 +39,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8fcdd97fad72cef77e5e64facb406279')
-b2sums=('b8cd11cee9e287de212062d3268acccf09646cc3fc2ec27b01f50f20e70591389317d3bc9fcb42cc324dc147d07e87c62a95a7b1ea19a1209e59817d7beb6d07')
+md5sums=('033800efd6a20b732a66ea8993054ca6')
+b2sums=('983928f68e209c274f468853f9eb23a7478e32c568a438098056ea9a60d3ecdaf5b22f4ee9080db6eda34333a28c88d2d7d6a71ca2044c959fbc83acb4d7f131')
 
 build() {
   mkdir build
