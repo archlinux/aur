@@ -1,6 +1,6 @@
 pkgbase = r-bayseq
 	pkgdesc = Empirical Bayesian analysis of patterns of differential expression in count data
-	pkgver = 2.38.0
+	pkgver = 2.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/baySeq
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-bayseq
 	depends = r-genomicranges
 	optdepends = r-biocgenerics
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/baySeq_2.38.0.tar.gz
-	sha256sums = 343d1ffece90f2ce5da7a37f41b471f2e6ad35abb7ed811272867619bff5935a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/baySeq_2.40.0.tar.gz
+	sha256sums = f54f35781e8fb82718166dd5c6cd486793fbf14b6dce03b43bd54ddc9f4a176e
 
 pkgname = r-bayseq
