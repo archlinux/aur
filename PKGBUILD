@@ -1,4 +1,5 @@
-# Maintainer: Maurizio Porrato <maurizio.porrato@gmail.com>
+# New Maintainer: Luna Jernberg <droidbittin@gmail.com>
+# Old Maintainer: Maurizio Porrato <maurizio.porrato@gmail.com>
 
 pkgname=cgterm
 pkgver=1.6
@@ -8,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.paradroid.net/cgterm/"
 license=('custom:cgterm')
 depends=('sdl')
-source=( http://paradroid.automac.se/$pkgname/$pkgname-$pkgver.tar.gz
+source=( https://download.salixos.org/x86_64/extra-15.0/source/network/cgterm/cgterm-1.6.tar.gz
   LICENSE)
 md5sums=('5b8f81ea8a2c0612d2998f05fd87ec40'
          'f616779bd95231a09e3eab03e2f0d3c4')
