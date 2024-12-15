@@ -1,6 +1,6 @@
 pkgbase = r-nucler
 	pkgdesc = Nucleosome positioning package for R
-	pkgver = 2.36.0
+	pkgver = 2.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/nucleR
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-nucler
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/nucleR_2.36.0.tar.gz
-	sha256sums = d37180c63371182f23dd1b7c3983440e40030fe3e8349e674fa7d0f86e2676bd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/nucleR_2.38.0.tar.gz
+	sha256sums = e855a5fc2f01487fa55bf13b318c5dcdaa478c53c4bcb8df9544d7d10294c378
 
 pkgname = r-nucler

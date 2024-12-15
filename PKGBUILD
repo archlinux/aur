@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=nucleR
-_pkgver=2.36.0
+_pkgver=2.38.0
 pkgname=r-${_pkgname,,}
-pkgver=2.36.0
+pkgver=2.38.0
 pkgrel=1
 pkgdesc='Nucleosome positioning package for R'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d37180c63371182f23dd1b7c3983440e40030fe3e8349e674fa7d0f86e2676bd')
+sha256sums=('e855a5fc2f01487fa55bf13b318c5dcdaa478c53c4bcb8df9544d7d10294c378')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
