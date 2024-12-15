@@ -1,7 +1,7 @@
 pkgbase = chirp-next
 	pkgdesc = GUI tool for programming ham radios, built from chirp-next
 	pkgver = 20241213
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chirpmyradio.com/projects/chirp/wiki/Home
 	install = chirp-next.install
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = chirp-next
 	depends = python-suds
 	depends = python-yattag
 	depends = python-wxpython
+	depends = python-lark-parser
 	optdepends = hamradio-menus: XDG menus for ham radio software
 	provides = chirp
 	conflicts = chirp
