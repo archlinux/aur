@@ -1,0 +1,18 @@
+pkgbase = docker-etchosts
+	pkgdesc = Automatically update your /etc/hosts file with the names of docker containers
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/costela/docker-etchosts
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = go
+	source = git+https://github.com/costela/docker-etchosts.git#tag=0.1.5
+	source = docker-etchosts.service
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = docker-etchosts

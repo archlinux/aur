@@ -1,0 +1,12 @@
+[Unit]
+Description=Sync /etc/hosts file with docker
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c "/usr/bin/docker-etchosts"
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
