@@ -1,7 +1,7 @@
 pkgbase = concrnt-api-bin
 	pkgdesc = Concrnt is a next-gen decentralized social network platform designed to make your world richer.
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/totegamma/concurrent
 	arch = x86_64
 	arch = aarch64
@@ -19,7 +19,7 @@ pkgbase = concrnt-api-bin
 	source = concrnt-api.service
 	source = https://raw.githubusercontent.com/totegamma/concurrent/refs/heads/develop/LICENSE
 	sha512sums = 0f83358662903db925f928190f0f7938ba1b95cd87595830e9d7963f539de56955b73866d74e896786c5e2311b23678fa3e6451c5890e754496882997ce1b376
-	sha512sums = 91ee32b775950ae62f850b8cc7ef6965de9cbec3a5286d173eaebc78e9c5a34789a6e1031f5723527a60a4ddc1660ba91cb8a1933b1115a17703b938a27b144c
+	sha512sums = 021f23907fa2ad20ba1ca5458c81c79fb92a75f4a8ec72b8a30cd4752ff1336436dcb5223594cf90e6700881f23947af8e69be9242bc21bc095fa6dababe707c
 	sha512sums = 6991f0cdffef328c29368d987a46e2d12d765b743cad04ae4c89469e1644f11f079fb495e5297b79d521f88b40d6fb3c5b972279c95f394bdb07cf4a2037f412
 	source_x86_64 = ccapi-x86_64-1.6.0::https://github.com/totegamma/concurrent/releases/download/v1.6.0/api-linux-amd64
 	sha512sums_x86_64 = d40dfb5b9181cc530204d6626f2f450a841fb3da686786021b0046b2487ed2c1313886e2015f9e54095cd0cc6d0d481fb7c3dae5386469888b7987c5ca80f20b
