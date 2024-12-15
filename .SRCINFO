@@ -6,7 +6,6 @@ pkgbase = terminalwrap
 	arch = x86_64
 	license = GPL-3
 	depends = gcc
-	depends = make
 	source = git+https://github.com/xeyossr/terminalwrap.git
 	sha256sums = SKIP
 
