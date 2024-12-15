@@ -1,6 +1,6 @@
 pkgbase = r-csaw
 	pkgdesc = ChIP-Seq Analysis with Windows
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/csaw
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = r-csaw
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-txdb.mmusculus.ucsc.mm10.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/csaw_1.38.0.tar.gz
-	sha256sums = e06b3b371e3361d28f8b62bee6f35e66ee4906f0987c7317e7c32a80c8070729
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/csaw_1.40.0.tar.gz
+	sha256sums = 8f1bd086d019984a30bf57507f6efd68db2a5be8915aaec5894797cfef7c5209
 
 pkgname = r-csaw
