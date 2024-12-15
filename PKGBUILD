@@ -6,7 +6,7 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-libtirpc
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc='Transport Independent RPC library (SunRPC replacement)'
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=(
   libtirpc
 )
 source=(https://downloads.sourceforge.net/sourceforge/libtirpc/libtirpc-${pkgver}.tar.bz2)
-b2sums=('1ae1cc0be1c52bca8fbe2300159d9298b069b3f81adde7f50da3fb7049f9b9f628393dfe94e9276facfeea2b1ccdc9a52632fee4af432c36e457fd3ff2b0963c')
+b2sums=('521e1e3d2ceefd668f1b0d52b7c0342b97952d322eeb7bf740bb1eb1fb88a14b0a2fce57f07a9fd3797d289f57f511085924bba3d8984f15c799468d30f47500')
 
 prepare() {
   cd libtirpc-${pkgver}
