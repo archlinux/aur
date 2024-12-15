@@ -1,7 +1,7 @@
 # Maintainer: karboncore
 
 pkgname=mealie
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='A self hosted recipe manager'
 arch=(any)
@@ -19,7 +19,7 @@ makedepends=(git python-build python-wheel python-installer yarn nodejs-lts-hydr
 optdepends=('postgresql: for postgresql support'
             'python-psycopg2: for postgresql support')
 source=(https://github.com/mealie-recipes/mealie/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('5ac3a62967ef4687bad7d02b750d03c9e6f0bb9f16109a4e22f54fd0d70a0a5a')
+sha256sums=('3dc9f25eb7771532b6fc70aa5a1dd144c7788ca3a57f971bd5a653590d6c992b')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -40,8 +40,7 @@ package() {
   rm -f "$pkgdir/usr/bin/start"
   install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
   mkdir -pm755 "$pkgdir/usr/lib/mealie"
-  cp -r {frontend/dist,alembic,alembic.ini} "$pkgdir/usr/lib/mealie/"
-  sed -i 's@^script_location.*@script_location = /usr/lib/mealie/alembic@g' "$pkgdir/usr/lib/mealie/alembic.ini"
+  cp -r frontend/dist "$pkgdir/usr/lib/mealie/"
 
   # Generate startup script
   pythondir=( "$pkgdir/usr/lib/python"* )
@@ -49,7 +48,6 @@ package() {
 #!/bin/sh
 
 STATIC_FILES="\${STATIC_FILES:-/usr/lib/mealie/dist}"                      \\
-ALEMBIC_CONFIG_FILE="\${ALEMBIC_CONFIG_FILE:-/usr/lib/mealie/alembic.ini}" \\
 PRODUCTION="\${PRODUCTION:-true}"                                          \\
 DATA_DIR="\${DATA_DIR:-\$HOME/.mealie}"                                     \\
                                                                           \\
