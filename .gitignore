@@ -1,0 +1,7 @@
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!concrnt-api.hook
+!concrnt-api.service

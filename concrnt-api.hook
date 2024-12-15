@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = concrnt-api-bin
+
+[Action]
+Description = Restarting concrnt-api...
+When = PostTransaction
+Exec = /bin/bash -c '/usr/bin/systemctl is-active concrnt-api.service -q && /usr/bin/systemctl restart concrnt-api.service || /usr/bin/true'

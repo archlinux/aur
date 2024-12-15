@@ -1,0 +1,24 @@
+[Unit]
+Description=Concrnt API daemon
+Wants=concrnt-gateway.service
+After=concrnt-gateway.service
+
+[Service]
+Type=simple
+Restart=on-failure
+
+User=concrnt
+Group=concrnt
+
+SyslogIdentifier=concurrent-api
+
+#Environment="http_proxy="
+#Environment="https_proxy="
+
+ExecStart=/usr/bin/ccapi
+
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+
+[Install]
+WantedBy=multi-user.target
