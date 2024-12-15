@@ -2,7 +2,7 @@
 
 pkgname=bpfmt-git
 _pkgname=bpfmt
-pkgver=20241211.r3402.261aa3b
+pkgver=20241213.r3403.cd60d79
 pkgrel=1
 pkgdesc='A tool for formatting AOSP soong blueprint build files'
 url='https://android.googlesource.com/platform/build/blueprint'
