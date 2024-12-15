@@ -4,8 +4,8 @@
 pkgbase=libreoffice-dev-i18n
 
 _pkgnamefmt=LibreOffice
-_pkgver=24.8.1.2
-pkgver=24.8.1.2
+_pkgver=24.8.4.1
+pkgver=24.8.4.1
 pkgrel=1
 #_basever=$( cut -f1-2 -d'.' <<< ${_LOver} )
 
