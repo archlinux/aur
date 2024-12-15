@@ -11,7 +11,7 @@ options=(!strip)
 replaces=('armgs')
 
 _install_path="/opt/${pkgname}"
-_archive_name="${pkgname}.tar.xz"
+_archive_name="${pkgname}-${pkgver}.tar.xz"
 _app_name="${pkgname}.tar.xz"
 
 source=(
