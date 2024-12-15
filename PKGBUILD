@@ -2,12 +2,12 @@
 
 pkgname=lib32-sdl12-compat-git
 _pkgbase=sdl12-compat
-pkgver=1.2.68.r16.g6f0f603
-pkgrel=2
+pkgver=1.2.68.r17.g75ac6c6
+pkgrel=1
 pkgdesc="An SDL-1.2 compatibility layer that uses SDL 2.0 behind the scenes."
 arch=("x86_64" "i686")
 url="https://github.com/libsdl-org/sdl12-compat"
-license=('Zlib AND MIT-0')
+license=('Zlib')
 depends=('lib32-sdl2' 'lib32-glibc' 'lib32-glu')
 makedepends=('cmake' 'git' 'ninja')
 conflicts=('lib32-sdl')
