@@ -1,13 +1,14 @@
 # Maintainer: Nanaka Hiira <hiira plus archlinux at hiira dot dev>
 
 pkgbase='concrnt'
+pkgdesc='Concrnt is a next-gen decentralized social network platform designed to make your world richer.'
 pkgname=(
 	'concrnt-gateway'
 	'concrnt-api'
 )
 pkgver=1.6.0
 _pkgver=v${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
@@ -15,7 +16,7 @@ makedepends=('go')
 
 
 source=(
-	"https://github.com/totegamma/concurrent/archive/refs/tags/${_pkgver}.tar.gz"
+	"${pkgbase}-${pkgver}::https://github.com/totegamma/concurrent/archive/refs/tags/${_pkgver}.tar.gz"
 	"concrnt-api.hook"
 	"concrnt-api.service"
 	"concrnt-gateway.hook"
@@ -50,7 +51,6 @@ build() {
 }
 
 package_concrnt-gateway() {
-	pkgdesc='Concrnt is a next-gen decentralized social network platform designed to make your world richer.'
 	depends=(
 		'concrnt-shared-config'
 		'redis'
@@ -81,7 +81,6 @@ package_concrnt-gateway() {
 }
 
 package_concrnt-api() {
-	pkgdesc='Concrnt is a next-gen decentralized social network platform designed to make your world richer.'
 	depends=(
 		'concrnt-shared-config'
 		'concrnt-gateway'
