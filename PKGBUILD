@@ -1,7 +1,7 @@
 # Maintainer: Dee.H.Y <dongfengweixiao AT hotmail DOT com>
 pkgname=androidtoolkit-bin
 _pkgname=androidtoolkit
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Desktop tools for Android developers, supports Windows, Mac and Linux."
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "LICENSE"
 )
 sha256sums=(
-  '5516c604fb98cebfcd13c3562a9918b83e35eb9ca23b1a34b212d039231959c4'
+  '47079303f07bd447fcd64c365c0c27b8e238436a8748d0bb1ddc338c4145999a'
   '5d8e7b77c07cdf97d60ed2ec16478fa46ff34b00a00ed87ba4870a25333b8850'
 )
 
