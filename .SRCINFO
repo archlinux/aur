@@ -1,13 +1,14 @@
 pkgbase = bpf-dtrace-utils
 	pkgdesc = bpf-dtrace-utils contains the Userspace portion of the DTrace port to Linux (with eBPF backend)
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oracle/dtrace-utils
 	arch = x86_64
 	license = UPL-1.0
 	makedepends = lib32-glibc
 	makedepends = bpf-unknown-none-binutils
 	makedepends = bpf-unknown-none-gcc
+	makedepends = libpfm
 	makedepends = libpcap
 	makedepends = wireshark-cli
 	makedepends = valgrind
