@@ -11,7 +11,6 @@ pkgbase = openlinkhub
 	makedepends = base-devel
 	makedepends = systemd
 	depends = systemd
-	depends = lm_sensors
 	depends = i2c-tools
 	provides = openlinkhub
 	conflicts = openlinkhub
