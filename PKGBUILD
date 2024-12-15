@@ -4,7 +4,7 @@ _suffix=tytan652
 pkgname="obs-studio-${_suffix}"
 _pkgver=31.0.0
 pkgver="${_pkgver//-/_}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -112,6 +112,7 @@ source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$_pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
+  "001-opengl-avoid-allocate-0-byte.patch"
   "bind_iface_eyeballed.patch" # Based on https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed2
   "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
 )
@@ -121,6 +122,7 @@ sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
+  "81680e20c3b517d051f738043079a58c8e8be516afaa7f4c5f9c5ec5f80bf026"
   "115d126c2a80b25beab359ee5cd753bde418836ff239a20c5d8a376a85373912"
   "ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5"
 )
@@ -139,6 +141,9 @@ prepare() {
 
   ## Mark log and titlebar version
   sed -i "s|obs_get_version_string()|\"$_pkgver-$_suffix-$pkgrel\"|" UI/obs-app.cpp
+
+  ## libobs-opengl: Avoid trying to allocate 0 byte on Linux
+  patch -Np1 -i "$srcdir/001-opengl-avoid-allocate-0-byte.patch"
 
   ## Add network interface binding for RTMP on Linux (https://github.com/tytan652/obs-studio/commits/bind_iface_eyeballed)
   patch -Np1 < "$srcdir/bind_iface_eyeballed.patch"
