@@ -1,0 +1,9 @@
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!concrnt-gateway.hook
+!concrnt-gateway.service
+!concrnt-gateway.tmpfiles
+!concrnt.install

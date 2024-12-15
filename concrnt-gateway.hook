@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = concrnt-gateway-bin
+
+[Action]
+Description = Restarting concrnt-gateway...
+When = PostTransaction
+Exec = /bin/bash -c '/usr/bin/systemctl is-active concrnt-gateway.service -q && /usr/bin/systemctl restart concrnt-gateway.service || /usr/bin/true'
