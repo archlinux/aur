@@ -10,7 +10,7 @@ license=('GPL-2.0-only')
 depends=('gtk3')
 source=("http://thomasokken.com/plus42/upstream/$pkgname-upstream-$pkgver.tgz"
         "plus42.desktop")
-md5sums=('2d1f15a218a44ed755f9f2b02fcc0593'
+md5sums=('5e879ffba976187305f3c2fc10925309'
          'ba6d9ff8d83e9a244b5da63acbfc018e')
 
 build() {
@@ -29,7 +29,7 @@ package() {
   install -Dm755 plus42bin "$pkgdir/usr/bin/plus42bin"
   install -Dm755 plus42dec "$pkgdir/usr/bin/plus42dec"
 
-  install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README_GTK"
+  install -Dm644 README.txt "$pkgdir/usr/share/doc/$pkgname/README_GTK"
   install -Dm644 ../README "$pkgdir/usr/share/doc/$pkgname/README"
 
   install -Dm644 icon-48x48.xpm "$pkgdir/usr/share/icons/hicolor/48x48/apps/plus42.xpm"

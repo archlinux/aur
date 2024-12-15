@@ -8,7 +8,7 @@ pkgbase = plus42
 	depends = gtk3
 	source = http://thomasokken.com/plus42/upstream/plus42-upstream-1.1.15.tgz
 	source = plus42.desktop
-	md5sums = 2d1f15a218a44ed755f9f2b02fcc0593
+	md5sums = 5e879ffba976187305f3c2fc10925309
 	md5sums = ba6d9ff8d83e9a244b5da63acbfc018e
 
 pkgname = plus42
