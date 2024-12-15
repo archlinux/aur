@@ -4,7 +4,7 @@
 
 pkgname=session-desktop-appimage
 _pkgname=session-desktop
-pkgver=1.14.2
+pkgver=1.14.3
 pkgrel=1
 pkgdesc="Private messaging from your desktop (AppImage version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("${_bin}::$url/releases/download/v${pkgver}/${_bin}"
         "https://raw.githubusercontent.com/oxen-io/session-desktop/refs/heads/unstable/LICENSE"
         'session-desktop.desktop'
         'session-desktop.png')
-sha512sums=('0f4fc2aa698a839d76f8681d3165ef1f124b43c01659a1567726beca2c31de4a9cf2925bad9a2f57fcb53bdf70b465f80e6accbbba1841198eb848d20a8ed66a'
+sha512sums=('e0857b83d09b5f6f186be23d10cec0928ed98cc8cedab254379ecf27dec3cea6bad6048c48969915df003765382d8c036f702c85b0f6989367a035947b944e2c'
             'ea093221d733c540ae68e959d1f99a7983f1467641c04ec829ae4d458577bd5f92b5b624e6114cd3dc25bd97705a9678aa909a004cbafc5847224917793a04ea'
             '96e2a021ebf7a5904cbd47aabf8d03f450a3ee2831d7ecfad5f1518b4214609acc9fd51ad8ca189875c19a99f28f7fd71e5028999c58e404210f2401f4e6babd'
             '209d1483601018e2191719117a59da3112570b2e1ae176337a918d4ab2c4032dfddf14d42e4a3b2153888167e694542bbc1f42297589d035ab29f2578877425d')
@@ -27,10 +27,10 @@ sha512sums=('0f4fc2aa698a839d76f8681d3165ef1f124b43c01659a1567726beca2c31de4a9cf
 options=('!strip' '!emptydirs')
 
 package() {
-  install -Dm644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE" 
-  install -Dm755 "${srcdir}/${_bin}" "${pkgdir}/opt/session-desktop/${_bin}"
-  install -Dm644 "${srcdir}/session-desktop.desktop" "${pkgdir}/usr/share/applications/session-desktop.desktop"
-  install -Dm644 "${srcdir}/session-desktop.png" "${pkgdir}/opt/session-desktop/session-desktop.png"
-  mkdir -p "${pkgdir}/usr/bin/"
-  ln -s "/opt/session-desktop/${_bin}" "${pkgdir}/usr/bin/session-desktop"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm755 "${_bin}" "$pkgdir/opt/session-desktop/${_bin}"
+  install -Dm644 "session-desktop.desktop" "$pkgdir/usr/share/applications/session-desktop.desktop"
+  install -Dm644 "session-desktop.png" "$pkgdir/opt/session-desktop/session-desktop.png"
+  mkdir -p "$pkgdir/usr/bin/"
+  ln -s "/opt/session-desktop/${_bin}" "$pkgdir/usr/bin/session-desktop"
 }
