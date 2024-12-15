@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=bar-gmail
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='Get notifications and unread messages count from Gmail (Waybar/Polybar module)'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-google-api-python-client' 'python-google-auth-httplib2' 'python-google-auth-oauthlib' 'python-gobject' 'python-dasbus')
 makedepends=('poetry' 'python-pip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/crabvk/bar-gmail/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('95af11760844d063c212c63d7d8f4d8a4f582a439e06d7ed2404bba20ed1f2e0ab999eae331886322b2bd9ccd71c2c3b4f3f8cbfbff83236a155c0ccac017407')
+sha512sums=('e27add0cb279a4ff3bc1ce92c6d10b53e25adc80a73eddbde7a95d1d32d06c0b06367f57ef79da20c99cf0f88750dcba261ba9e84900d2cb3efec02b3068f6c0')
 
 build() {
     cd $pkgname-$pkgver
