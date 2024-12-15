@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=SREDA
 Name[ru_RU]=СРЕДА
-Comment=SREDA
-Comment[ru_RU]=СРЕДА
+Comment=Service for interaction between employees in organizations
+Comment[ru_RU]=Сервис для взаимодействия между работниками в организациях
 Exec=/opt/sreda/sreda %U
 Icon=sreda
 Terminal=false

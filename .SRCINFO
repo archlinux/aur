@@ -1,7 +1,7 @@
 pkgbase = sreda
-	pkgdesc = SREDA
+	pkgdesc = Service for interaction between employees in organizations
 	pkgver = 24.5.4.48124
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sreda.digital.gov.ru/
 	arch = x86_64
 	license = proprietary
