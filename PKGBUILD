@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt-bin
 pkgver=3.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries by AMA"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -25,7 +25,7 @@ depends=('qt5-base'
          'xerces-c'
          'libcurl-compat'
          'xml-security-c')
-makedepends=('zstd' 'tar' 'flatpak' 'ostree')
+makedepends=('zstd' 'tar' 'flatpak' 'ostree' 'patchelf')
 optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online'
 'autenticacao-gov-pt-pki: PKI que confirma a validade dos certificados dos CC'
 'ecce-gov-pt-certificates: Certificados da ECCE - quem assina dos certificados contidos em cartaodecidadao-pki')
@@ -36,7 +36,7 @@ source_x86_64=("https://github.com/amagovpt/autenticacao.gov/releases/download/v
  "autenticacao-gov-pt-bin.install")
 
 sha512sums_x86_64=('59466215d72b777a6aad5839926bef79c2a1a0c01b4f4c32982e44dd54c10d0e4ed539286d679d1e51d70c04718a47f5023457ef5790d052422316d03c6030d4'
-                   '99913f9f62110e45e951f55321dbd44cedbf9c4877148cc07c66b9cb27f1993d4496cd80e251c8094958c30f0c9b6891ec59071a194b02bc92df4f14335e686e')
+                   'd38b9748f386fcf64f3f0cb717eccf7936c64f0e7b6370ae3b1b079902015ce56d3057afcf2877ca4eee38776269ac3642701803ba96b24a81cfccc9a4d3245f')
 
 install='autenticacao-gov-pt-bin.install'
 
@@ -80,4 +80,6 @@ package() {
   rm -rf "${pkgdir}"/usr/lib/libcurl*
   rm -rf "${pkgdir}"/usr/lib/pkgconfig/libcjson.pc
   rm -rf "${pkgdir}"/usr/lib/pkgconfig/libcurl.pc
+  #patch shared libraries, this needs to be revisited next release.
+  patchelf --replace-needed libxml-security-c.so.20 libxml-security-c.so.30 "$pkgdir"/usr/lib/libpteidapplayer.so.*
 }

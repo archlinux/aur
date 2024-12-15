@@ -28,21 +28,14 @@ setup_fonts() {
  fc-cache /usr/share/fonts/pteid/lato
 }
 
-fix-xml-security() {
-  ln -sfn /usr/lib/libxml-security-c.so.30.0.0 /usr/lib/libxml-security-c.so.20
-  ldconfig
-}
-
 post_upgrade() {
 	post_install
 	setup_fonts
-  fix-xml-security
 }
 
 post_install() {
 	setup_icons install
 	setup_fonts
-  fix-xml-security
 }
 
 pre_remove() {
