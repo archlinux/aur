@@ -1,0 +1,25 @@
+pkgbase = julec-git
+	pkgdesc = The Jule Programming Language Compiler
+	pkgver = jule0.1.1.r93.g5ebf615c
+	pkgrel = 1
+	url = https://github.com/julelang/jule
+	arch = x86_64
+	arch = aarch64
+	arch = i386
+	license = BSD-3-Clause
+	depends = glibc
+	depends = gcc-libs
+	depends = gcc
+	depends = clang
+	provides = julec
+	conflicts = julec
+	source = git+https://github.com/julelang/jule.git
+	sha256sums = SKIP
+	source_x86_64 = jule-ir-jule0.1.1.r93.g5ebf615c-x86_64.cpp::https://raw.githubusercontent.com/julelang/julec-ir/main/src/linux-amd64.cpp
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = jule-ir-jule0.1.1.r93.g5ebf615c-aarch64.cpp::https://raw.githubusercontent.com/julelang/julec-ir/main/src/linux-arm64.cpp
+	sha256sums_aarch64 = SKIP
+	source_i386 = jule-ir-jule0.1.1.r93.g5ebf615c-i386.cpp::https://raw.githubusercontent.com/julelang/julec-ir/main/src/linux-i386.cpp
+	sha256sums_i386 = SKIP
+
+pkgname = julec-git
