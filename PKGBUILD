@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PROPER
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='PROspective Power Evaluation for RNAseq'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3a047b7deafbb07940df6f56c4fb3a09849ec309d245c265b571b4c640f958c1')
+sha256sums=('793830e6d518f8380587bd928d5a590d77db991b42ade6fe53c49c86edd1b7b7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
