@@ -1,7 +1,7 @@
 pkgbase = r-rmpfr
-	pkgdesc = R MPFR - Multiple Precision Floating-Point Reliable
-	pkgver = 0.9.5
-	pkgrel = 2
+	pkgdesc = Interface R to MPFR - Multiple Precision Floating-Point Reliable
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=Rmpfr
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -9,10 +9,11 @@ pkgbase = r-rmpfr
 	depends = mpfr
 	depends = r-gmp
 	optdepends = r-bessel
+	optdepends = r-dpqmpfr
 	optdepends = r-polynom
 	optdepends = r-sfsmisc
-	source = https://cran.r-project.org/src/contrib/Rmpfr_0.9-5.tar.gz
-	md5sums = d20d82b6a05cac1bb46dbd53f82a2d1f
-	b2sums = 9431e61a931432b40696fe96b4919a43a166767cc00c0308a4f55e8ca8fa1bddf2212085bbb797a2dd75244d6e7d96185ed89db56004f48138c5c71088ecff6c
+	source = https://cran.r-project.org/src/contrib/Rmpfr_1.0-0.tar.gz
+	md5sums = e34f87aff51d2c7e390270fb01172d55
+	b2sums = 38b48ba79bcfdb6443caa9c6365216eb7f3a80154d7c90b983f946682aa8f938a7b88e709b2997c3e371e6b9997e3a0e814ee25d3af8646a22e539e8a2ea840d
 
 pkgname = r-rmpfr

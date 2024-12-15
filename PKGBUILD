@@ -1,11 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rmpfr
-_pkgver=0.9-5
+_pkgver=1.0-0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
-pkgdesc="R MPFR - Multiple Precision Floating-Point Reliable"
+pkgrel=1
+pkgdesc="Interface R to MPFR - Multiple Precision Floating-Point Reliable"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-or-later')
@@ -16,12 +16,13 @@ depends=(
 )
 optdepends=(
   r-bessel
+  r-dpqmpfr
   r-polynom
   r-sfsmisc
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d20d82b6a05cac1bb46dbd53f82a2d1f')
-b2sums=('9431e61a931432b40696fe96b4919a43a166767cc00c0308a4f55e8ca8fa1bddf2212085bbb797a2dd75244d6e7d96185ed89db56004f48138c5c71088ecff6c')
+md5sums=('e34f87aff51d2c7e390270fb01172d55')
+b2sums=('38b48ba79bcfdb6443caa9c6365216eb7f3a80154d7c90b983f946682aa8f938a7b88e709b2997c3e371e6b9997e3a0e814ee25d3af8646a22e539e8a2ea840d')
 
 build() {
   mkdir build
