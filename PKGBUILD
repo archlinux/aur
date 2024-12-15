@@ -1,12 +1,12 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=sdl12-compat-git
-pkgver=1.2.68.r16.g6f0f603
-pkgrel=2
+pkgver=1.2.68.r17.g75ac6c6
+pkgrel=1
 pkgdesc="An SDL-1.2 compatibility layer that uses SDL 2.0 behind the scenes."
 arch=("x86_64")
 url="https://github.com/libsdl-org/sdl12-compat"
-license=('Zlib AND MIT-0')
+license=('Zlib')
 depends=('sdl2' 'glibc' 'glu' 'bash')
 makedepends=('cmake' 'git' 'ninja')
 conflicts=('sdl' 'sdl12-compat')
