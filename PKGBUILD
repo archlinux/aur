@@ -1,16 +1,16 @@
 # Maintainer: Martin Jindra <mjindra[at]derchef[dot]email>
 
 pkgname=volatility3-git
-pkgver=v2.4.0.3707.1641a6e4
+pkgver=v2.8.0.4817.b6717d80
 pkgrel=1
 pkgdesc='Advanced memory forensics framework'
 url='https://github.com/volatilityfoundation/volatility3'
 arch=('any')
 license=('custom')
 depends=(
-  'python>3.6' 'python-yara' 'python-capstone' 'python-jsonschema'
-  'python-pycryptodome' 'python-pefile')
-makedepends=('python-setuptools' 'git')
+  'python>3.8' 'python-yara' 'python-capstone' 'python-jsonschema'
+  'python-pycryptodome' 'python-pefile' 'python-snappy')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
 provides=('volatility3')
 conflicts=('volatility3')
 source=(${pkgname}::git+${url})
@@ -23,12 +23,12 @@ pkgver() {
 
 build() {
   cd ${pkgname}
-  python setup.py build
+  python3 -m build --wheel --no-isolation
 }
 
 package() {
   cd ${pkgname}
-  python setup.py install -O1 --prefix=/usr --root="${pkgdir}" --skip-build
+  python3 -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
