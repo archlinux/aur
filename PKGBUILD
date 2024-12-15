@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=beer
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('98e3637a2b57f8b3f426b7609c24cd6a')
-b2sums=('a9e268e204d496a12bb06e6d54be2fa866de203191ae067ef1c5e16333d1931d37562d3a686d6fd15d0c378140a1b6673690c2d5d4a633fcb3fd9672f09ff224')
+md5sums=('e2b2b44d638bb6b8a99e37fcdfe0bc67')
+b2sums=('99b3c9968be7b91183b8a0f73d3cbb63d5d83b5b4a4af9c8ea9a23ecfa3fea8f0bc82d1175005fbb4246767fff9c3b5318761622c275e0643f4343661033ea1e')
 
 build() {
   mkdir build
