@@ -1,4 +1,6 @@
-# Maintainer: Jan Cholasta <grubber at grubber cz>
+# Maintainer: envolution
+# Contributor: Jan Cholasta <grubber at grubber cz>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=slade-git
 pkgver=3.2.6+r3068+g6054a2d59
@@ -8,27 +10,26 @@ arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
 license=('GPL')
 depends=('bzip2'
-         'fluidsynth>=2.3'
-         'freeimage'
-         'ftgl'
-         'glu'
-         'gtk3'
-         'libgl'
-         'lua'
-         'mpg123'
-         'sfml>=2.6'
-         'webkit2gtk-4.1'
-         'wxwidgets-gtk3>=3.2'
-         'zlib')
+  'fluidsynth>=2.3'
+  'freeimage'
+  'ftgl'
+  'glu'
+  'libgl'
+  'lua'
+  'mpg123'
+  'sfml>=2.6'
+  'webkit2gtk-4.1'
+  'wxwidgets-gtk3>=3.2'
+  'zlib')
 makedepends=('cmake'
-             'git'
-             'p7zip')
+  'git'
+  'p7zip')
 provides=('slade')
 conflicts=('slade')
 source=('slade::git+https://github.com/sirjuddington/SLADE.git')
 sha256sums=('SKIP')
 
-pkgver(){
+pkgver() {
   cd "${srcdir}/slade"
   _version=$(git tag --sort=-v:refname --list | head -n1)
   _commits=$(git rev-list --count HEAD)
@@ -36,22 +37,20 @@ pkgver(){
   echo "${_version}+r${_commits}+g${_short_commit_hash}"
 }
 
-
-
 build() {
-    cd slade
+  cd slade
 
-    export CCACHE_SLOPPINESS=pch_defines,time_macros
-    cmake -D CMAKE_BUILD_TYPE=None \
-          -D CMAKE_INSTALL_PREFIX=/usr \
-          .
-    make
+  export CCACHE_SLOPPINESS=pch_defines,time_macros
+  cmake -D CMAKE_BUILD_TYPE=None \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    .
+  make
 }
 
 package() {
-    cd slade
-
-    make install DESTDIR="$pkgdir"
+  cd slade
+  make install DESTDIR="$pkgdir"
 }
 
 # vim: ts=2 sw=2 et:
+# vim:set ts=2 sw=2 et:
