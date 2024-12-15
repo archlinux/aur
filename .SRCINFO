@@ -1,6 +1,6 @@
 pkgbase = mise-bin
 pkgdesc = The front-end to your dev env
-pkgver = 2024.12.10
+pkgver = 2024.12.11
 pkgrel = 1
 url = https://github.com/jdx/mise
 arch = x86_64
@@ -10,7 +10,7 @@ replaces = rtx-bin
 conflicts = mise
 conflicts = rtx-bin
 conflicts = rtx
-source = mise-2024.12.10.tar.gz::https://github.com/jdx/mise/releases/download/v2024.12.10/mise-v2024.12.10-linux-x64.tar.gz
-sha512sums = a45375217d0c4ced1570ba40633f2f3a7761d638b872f5fdc849f98be2cf3d9a2cceb74513aa602439ac8ae5485657fea3644cc836b6a0853f0016e15cf7a64b
+source = mise-2024.12.11.tar.gz::https://github.com/jdx/mise/releases/download/v2024.12.11/mise-v2024.12.11-linux-x64.tar.gz
+sha512sums = 4b6b93ea6f0eaec2e84291a00146f6860ba128343f32c9753cda5889e689a0223e25257b9ea0491a2dbf3b2184d4b10c6361ffdc4c9069769f4a21d3593be371
 
 pkgname = mise-bin
