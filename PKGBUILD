@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OTUbase
-_pkgver=1.54.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
-pkgver=1.54.0
+pkgver=1.56.0
 pkgrel=1
 pkgdesc='Provides structure and functions for the analysis of OTU data'
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
   r-vegan
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('38fe7b7b3b99b9d555b0b50401223db9a7c65d483a10f6e65eef55087bfa0b0a')
+sha256sums=('f49569f5108e0fec26ebddc5b03f56852acda959077a80ef9ab10525de0acad7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
