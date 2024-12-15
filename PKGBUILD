@@ -13,7 +13,7 @@ pkgname=(
   libnautilus-extension-typeahead
 )
 packager="Albert Vaca Cintora <albertvaka@gmail.com>"
-pkgver=47.0
+pkgver=47.1
 pkgrel=1
 pkgdesc="Default file manager for GNOME - Patched to bring back the 'typeahead find' feature"
 url="https://apps.gnome.org/Nautilus/"
@@ -55,9 +55,9 @@ makedepends=(
   glib2-devel
 )
 checkdepends=(python-gobject)
-_commit=05f8e6e9bee25c894d2f3582649750737081253b
+_commit=b55c654b8beb0c8bb7a210707319a2001ae180f2
 source=(
-  "git+https://gitlab.gnome.org/xclaesse/nautilus.git#commit=$_commit"
+  "git+https://gitlab.gnome.org/albertvaka/nautilus.git#commit=$_commit"
 )
 b2sums=('SKIP')
 
