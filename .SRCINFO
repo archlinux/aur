@@ -1,5 +1,5 @@
 pkgbase = gen-license
-	pkgdesc = Create licenses for your projects right from your terminal!
+	pkgdesc = Create licenses for your projects right from your terminal! license-generator on github by nexxeln
 	pkgver = 0.1.3
 	pkgrel = 4
 	url = https://github.com/nexxeln/license-generator
