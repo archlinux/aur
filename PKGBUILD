@@ -156,9 +156,6 @@ _package() {
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make $build_flag -s image_name)" "$modulesdir/vmlinuz"
 
-  # I feel gz is slow to load when booting up
-#   install -Dm644 "$(make $build_flag -s image_name | sed 's/.gz//')" "$modulesdir/vmlinuz"
-
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
@@ -173,35 +170,40 @@ _package() {
   install -Dm644 arch/arm64/boot/dts/qcom/sc8280xp-huawei-gaokun3.dtb -t "$pkgdir/boot/"
 }
 
-_fix() {
+_cross_compile_tools() {
   if [[ "$CARCH" != 'x86_64' ]]; then
-    echo 'we do not cross compile'
+    echo 'No need to cross compile tools'
     return
   fi
 
-  cd "$srcdir"
-  # get the latest stable release to extract modpost, hard to produce it on x86_64
-  _ver=$(curl https://archlinuxarm.org/packages/aarch64/linux-aarch64-headers | grep -i '<h1>' | awk '{print $2}' | sed 's#</h1>##')
-  curl -L http://mirror.archlinuxarm.org/aarch64/core/linux-aarch64-headers-${_ver}-aarch64.pkg.tar.xz -o headers.tar.xz
-  tar -xf headers.tar.xz
-  cp usr/src/linux-aarch64/scripts/mod/modpost "$srcdir/$_srcname/scripts/mod" # FIXME
+  # generate from make XXXXXX V=1
+  cd "$srcdir/$_srcname"
 
-  cd "$srcdir/$_srcname/scripts/basic"
-  aarch64-linux-gnu-gcc -o fixdep fixdep.c -I ../include -O2
-  # FIXME fdtoverlay dtc conf modpost
-  cd "$srcdir/$_srcname/scripts/mod"
-  aarch64-linux-gnu-gcc -o mk_elfconfig mk_elfconfig.c -O2
-  cd "$srcdir/$_srcname/scripts"
-  aarch64-linux-gnu-gcc -o kallsyms kallsyms.c  -I ./include -O2
-  aarch64-linux-gnu-gcc -o sorttable sorttable.c -I ../tools/include/ -O2
-  aarch64-linux-gnu-gcc -o asn1_compiler asn1_compiler.c -I ../include -O2
+  # fixdep
+  aarch64-linux-gnu-gcc -o scripts/basic/fixdep scripts/basic/fixdep.c -I scripts/include -O2
+
+  # mk_elfconfig, modpost
+  aarch64-linux-gnu-gcc -o scripts/mod/mk_elfconfig scripts/mod/mk_elfconfig.c -O2
+  aarch64-linux-gnu-gcc -o scripts/mod/modpost scripts/mod/modpost.c scripts/mod/file2alias.c scripts/mod/sumversion.c scripts/mod/symsearch.c -I scripts/include -O2
+
+  # conf
+  aarch64-linux-gnu-gcc -o scripts/kconfig/conf scripts/kconfig/conf.c scripts/kconfig/confdata.c scripts/kconfig/expr.c scripts/kconfig/lexer.lex.c scripts/kconfig/menu.c scripts/kconfig/parser.tab.c scripts/kconfig/preprocess.c scripts/kconfig/symbol.c scripts/kconfig/util.c -I scripts/include -O2
+
+  # fdtoverlay, dtc
+  aarch64-linux-gnu-gcc -o scripts/dtc/fdtoverlay scripts/dtc/libfdt/fdt.c scripts/dtc/libfdt/fdt_ro.c scripts/dtc/libfdt/fdt_wip.c scripts/dtc/libfdt/fdt_sw.c scripts/dtc/libfdt/fdt_rw.c scripts/dtc/libfdt/fdt_strerror.c scripts/dtc/libfdt/fdt_empty_tree.c scripts/dtc/libfdt/fdt_addresses.c scripts/dtc/libfdt/fdt_overlay.c scripts/dtc/fdtoverlay.c scripts/dtc/util.c -O2
+  aarch64-linux-gnu-gcc -o scripts/dtc/dtc scripts/dtc/dtc.c scripts/dtc/flattree.c scripts/dtc/fstree.c scripts/dtc/data.c scripts/dtc/livetree.c scripts/dtc/treesource.c scripts/dtc/srcpos.c scripts/dtc/checks.c scripts/dtc/util.c scripts/dtc/dtc-lexer.lex.c scripts/dtc/dtc-parser.tab.c  -DNO_YAML -O2
+
+  # asn1_compiler, kallsyms, sorttable
+  aarch64-linux-gnu-gcc -o scripts/kallsyms scripts/kallsyms.c  -I scripts/include -O2
+  aarch64-linux-gnu-gcc -o scripts/sorttable scripts/sorttable.c -I tools/include/ -O2
+  aarch64-linux-gnu-gcc -o scripts/asn1_compiler scripts/asn1_compiler.c -I include -O2
 }
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=(pahole)
 
-  _fix # fix headers when building with x86_64, it may be buggy
+  _cross_compile_tools # fix headers when building with x86_64, it may be buggy
 
   cd "$srcdir/$_srcname"
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -268,9 +270,9 @@ _package-headers() {
       application/x-archive\;*)        # Libraries (.a)
         $STRIP -v $STRIP_STATIC "$file" ;;
       application/x-executable\;*)     # Binaries
-        $STRIP -v $STRIP_BINARIES "$file" || : ;; # partial bianry cannot be produce on x86_64 for now, so ignore the strip error
+        $STRIP -v $STRIP_BINARIES "$file" ;;
       application/x-pie-executable\;*) # Relocatable binaries
-        $STRIP -v $STRIP_SHARED "$file" || : ;;
+        $STRIP -v $STRIP_SHARED "$file" ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
