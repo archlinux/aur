@@ -1,7 +1,7 @@
 pkgbase = gforth
 	pkgdesc = Fast and portable implementation of the ANS Forth language
 	pkgver = 0.7.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnu.org/software/gforth/
 	install = gforth.install
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = gforth
 	license = GPL-3.0-or-later
 	depends = libtool
 	depends = texinfo
-	source = gforth-0.7.3.tar.gz::https://github.com/forthy42/gforth/archive/refs/tags/0.7.3.tar.gz
+	source = https://ftp.gnu.org/gnu/gforth/gforth-0.7.3.tar.gz
 	source = script-hashbang.patch
 	source = skip-install.patch
 	source = hppa-build.patch
