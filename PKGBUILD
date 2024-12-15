@@ -4,7 +4,7 @@ pkgname='concrnt-shared-config'
 pkgdesc='Concrnt shared config file'
 pkgver=1.6.0
 _pkgver=v${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
@@ -33,9 +33,14 @@ package() {
   install -Dm644 "${srcdir}/concurrent-${pkgver}/_docs/etc/static/register-template.json" "${pkgdir}/etc/concrnt/static/register-template.json"
   install -Dm644 "${srcdir}/concurrent-${pkgver}/_docs/etc/static/tos.txt" "${pkgdir}/etc/concrnt/static/tos.txt"
 
-  # replace docker-compose hostnames to localhost
-  sed -i "s/host=db/host=localhost/" "${pkgdir}/etc/concrnt/config/config.yaml"
-  sed -i -E "s/(memcached|redis):([0-9]+)/localhost:\2/g" "${pkgdir}/etc/concrnt/config/config.yaml"
+  sed -i -E \
+    -e "s/(memcached|redis):([0-9]+)/localhost:\2/g" \
+    -e "s/([a-z]+):([0-9]+)/localhost:\2/g" \
+    -e "s/host=db/host=localhost/" \
+    -e "s/user=postgres/user=concrnt/" \
+    -e "s/password=postgres/password=concrnt/" \
+    -e "s/dbname=concurrent/dbname=concrnt/" \
+    "${pkgdir}/etc/concrnt/config/config.yaml"
 
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }

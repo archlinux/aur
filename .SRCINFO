@@ -1,7 +1,7 @@
 pkgbase = concrnt-shared-config
 	pkgdesc = Concrnt shared config file
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/totegamma/concurrent
 	arch = any
 	license = MIT
