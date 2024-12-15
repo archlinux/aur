@@ -1,0 +1,26 @@
+[Unit]
+Description=Concrnt gateway daemon
+
+Wants=concrnt-api.service postgresql.service redis.service memcached.service
+After=postgresql.service redis.service memcached.service
+Before=concrnt-api.service
+
+[Service]
+Type=simple
+Restart=on-failure
+
+User=concrnt
+Group=concrnt
+
+SyslogIdentifier=concurrent-gateway
+
+#Environment="http_proxy="
+#Environment="https_proxy="
+
+ExecStart=/usr/bin/ccgateway
+
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+
+[Install]
+WantedBy=multi-user.target

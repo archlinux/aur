@@ -1,0 +1,11 @@
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!concrnt-api.hook
+!concrnt-api.service
+!concrnt-gateway.hook
+!concrnt-gateway.service
+!concrnt-gateway.tmpfiles
+!concrnt.install
