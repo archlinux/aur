@@ -2,7 +2,7 @@
 # Maintainer: KUHTOXO oxomhuk@gmail.com
 pkgname=sreda
 pkgver=24.5.4.48124
-pkgrel=2
+pkgrel=3
 pkgdesc="Service for interaction between employees in organizations."
 arch=('x86_64')
 url="https://sreda.digital.gov.ru/"
