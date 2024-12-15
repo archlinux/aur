@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=insight
-_pkgver=0.20.5
+_pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,6 +16,7 @@ optdepends=(
   r-aer
   r-afex
   r-aod
+  r-ape
   r-bayesfactor
   r-bayestestr
   r-bbmle
@@ -62,7 +63,6 @@ optdepends=(
   r-gmnl
   r-gt
   r-httptest2
-  r-httr
   r-httr2
   r-interp
   r-ivreg
@@ -99,6 +99,7 @@ optdepends=(
   r-parsnip
   r-pbkrtest
   r-performance
+  r-phylolm
   r-plm
   r-poorman
   r-proreg
@@ -130,8 +131,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fc9c406129e0cdba773a9bda23f95b28')
-b2sums=('41875131ff011593ff192f15d12c1728922f6e8260e0a760b5198882f74fab73caa44b8def7bb84bee7afebadccc77934a3f9aa5da1f766c25d98da050daa5d6')
+md5sums=('484ed6204fc54e9f8557172b8376ef34')
+b2sums=('1096ce70bb06ef2f03676ea6441946ddb34958ae27658718932880e649893a05434157eb5fe6256812a18d3cf4bf03c5aac24ea1fec0dc286f99c176e5cccfc7')
 
 build() {
   mkdir build
