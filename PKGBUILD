@@ -27,9 +27,7 @@ build() {
   sed -i -e 's/IgnoreExampleErrors ?= false/IgnoreExampleErrors ?= true/' Macaulay2/packages/Makefile.in
   sed -i -e 's/ -q//' Macaulay2/packages/Makefile.in
 
-  # M2 recommends to run make first which runs autoconf and autoheader
-  make
-  #autoreconf
+  ./autogen.sh
   # Now run configure and then make again
   ./configure "LIBS=-lcblas" --prefix=/usr \
     --libexecdir='${prefix}'/lib/Macaulay2 \
