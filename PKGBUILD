@@ -1,7 +1,7 @@
 # Maintainer: aarto <aarto@aur.archlinux.org>
 _pkgname=limbo
 pkgname=limbo-db
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='Limbo is a work-in-progress, in-process OLTP database management system, compatible with SQLite.'
 url='https://github.com/tursodatabase/limbo'
@@ -11,7 +11,7 @@ makedepends=(cargo mimalloc)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("https://github.com/tursodatabase/limbo/releases/download/v$pkgver/source.tar.gz")
-sha256sums=('a3edef40fe0bd17bda4a1892f01de7469b99ed055797147dea6bfedd6d98151d')
+sha256sums=('25f459dff33b4bafc4bc2f6e9fd05193a78faf5b079745620b69c5ef9f44ec67')
 
 prepare() {
     cd "$_pkgname-$pkgver"
@@ -23,7 +23,7 @@ build() {
     cd "$_pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    export RUSTFLAGS="-l mimalloc"
+    export RUSTFLAGS='-l mimalloc'
     cargo build --frozen --release -p limbo
 }
 
