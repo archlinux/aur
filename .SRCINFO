@@ -1,0 +1,24 @@
+pkgbase = julec
+	pkgdesc = The Jule Programming Language Compiler
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/julelang/jule
+	arch = x86_64
+	arch = aarch64
+	arch = i386
+	groups = jule
+	license = BSD-3-Clause
+	depends = glibc
+	depends = gcc-libs
+	depends = gcc
+	depends = clang
+	source = jule-0.1.1.tar.gz::https://github.com/julelang/jule/archive/jule0.1.1.tar.gz
+	sha256sums = 4289447fc62a4466b67b4be87614cee9f424b630164bdc7f7bc810a25431d930
+	source_x86_64 = jule-ir-0.1.1-x86_64.cpp::https://raw.githubusercontent.com/julelang/julec-ir/main/src/linux-amd64.cpp
+	sha256sums_x86_64 = 8e139df60165c9ec821546a1741bd4f20262c78db62b91ac2d159ad393fa83e1
+	source_aarch64 = jule-ir-0.1.1-aarch64.cpp::https://raw.githubusercontent.com/julelang/julec-ir/main/src/linux-arm64.cpp
+	sha256sums_aarch64 = 543dcf6a6744b3bf6d21db14962e058ee186e882344a35e3068773134e68346f
+	source_i386 = jule-ir-0.1.1-i386.cpp::https://raw.githubusercontent.com/julelang/julec-ir/main/src/linux-i386.cpp
+	sha256sums_i386 = bab9a798e6c518f987cc33ff3427043e25ce620d21af2c3c07c2b113b380e4f1
+
+pkgname = julec
