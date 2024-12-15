@@ -10,7 +10,7 @@ Restart=on-failure
 User=concrnt
 Group=concrnt
 
-SyslogIdentifier=concurrent-api
+SyslogIdentifier=concrnt-api
 
 # Port config
 Environment="CC_API_PORT=28281"
