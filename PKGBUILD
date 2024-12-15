@@ -1,7 +1,7 @@
 # Maintainer: Kamack38 <kamack38.biznes@gmail.com>
 _pkgname='oh-my-posh'
 pkgname="${_pkgname}-bin"
-pkgver=24.12.0
+pkgver=24.13.0
 pkgrel=1
 pkgdesc="A prompt theme engine for any shell."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -10,11 +10,11 @@ license=('MIT')
 makedepends=('curl' 'grep' 'sed' 'unzip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-sha256sums=('b334b1965a7f69c6e6f2a7769f2572411a29944b43ea3215c58439d8835cca33'
+sha256sums=('4a2c4b05cefc23a2c9f1c334a910ceb97d983ac7b65a150dbcf2a5e8d82826c5'
             'a5308c4e51268229a039ec4ec9a251a4cdb89d9380383e6e13aeba64a74f19ad')
-sha256sums_x86_64=('52d2d2b4b28e49746e12f74a88d905ac72bc508dc4534787aaf50e51d0447de0')
-sha256sums_armv7h=('ddbc10f8bd9e0dce098a65855f9f6732a140455b96df7727171eda532e5754cb')
-sha256sums_aarch64=('7e1bf8d5c5c242c34a6ea6cbf24cb02bc7858b76994d43b50ffc6ef85910e562')
+sha256sums_x86_64=('867f2a952225f1668e375ce5607b8ee18926b6da0778401622b866d737f5a683')
+sha256sums_armv7h=('741ee159ffd218ca2cc5960e1c5871684c7f5921a07cbc0e87671ec25fc13d39')
+sha256sums_aarch64=('3233236723c222714a2874031c124cce984ec18ae1637fbb621f3a788f3da597')
 source=(
     "themes-${sha256sums[0]}.zip::https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v$pkgver/themes.zip"
     "LICENSE-${sha256sums[1]}::https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/v${pkgver}/COPYING"
