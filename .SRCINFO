@@ -1,6 +1,6 @@
 pkgbase = r-motif2site
 	pkgdesc = Detect binding sites from motifs and ChIP-seq experiments, and compare binding sites across conditions
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Motif2Site
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = r-motif2site
 	optdepends = r-bsgenome.scerevisiae.ucsc.saccer3
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Motif2Site_1.8.0.tar.gz
-	md5sums = da11799c0e277a85f8f5f04c5cb91ff4
-	b2sums = 55d79fe8a1f2601b37ab2e399e083eb59eab3d9a8926316e6058c031e0b779bbc999dc69e321484a7837fbcb2a56c8e4c10f467a5321b77b1e29bec613d9f3bd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Motif2Site_1.10.0.tar.gz
+	md5sums = 8b19397baf4e352f178fcd3812800112
+	b2sums = b414df7e8e1defeaa13cfc197c0f16aa561fe37cfa05abe26b1b436d2fe1e7ca12b3a413b03dd4b2e8c47eaeac6743e01c3f82befa20cd4f20b58f701dd8876b
 
 pkgname = r-motif2site
