@@ -1,7 +1,7 @@
 # Maintainer: shtrophic <aur at shtrophic dot net>
 
 pkgname=vv
-pkgver=2.1
+pkgver=3.0.1
 pkgrel=1
 license=(BSD-3-Clause)
 url="https://github.com/wolfpld/vv"
@@ -11,6 +11,7 @@ conflicts=(vv-bin) # same name, different program!
 makedepends=(git cmake)
 depends=(
 	cairo
+        lcms2
 	libheif
 	libjpeg
 	libjxl
@@ -34,7 +35,7 @@ source=(
 	"tracy::git+https://github.com/wolfpld/tracy.git" # master
 	"stb::git+https://github.com/nothings/stb.git#tag=2e2bef463a5b53ddf8bb788e25da6b8506314c08"
 )
-sha256sums=('8cb94c99d898fa627fc4e16b37cca50df2f3f3a4e6f5823f1c475298ea26f74e'
+sha256sums=('6bed3181f31588259184599bf8e275cf2c20dd1beddee24889cfa6a828bbcbbe'
             'c2139ed6cc36779410ebf291df9f231145ed1c8ee0f16b6046331daa686058b7'
             'SKIP'
             'e2e76a8585a9b52cd0d774a4637a55f0ab9edb3ba10f852f69e1243134c17b90')
