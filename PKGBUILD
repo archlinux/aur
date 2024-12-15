@@ -103,7 +103,7 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
   git clone --depth=1 $url -b lenovo-x13s-linux-$pkgver
   cd $_srcname
-  git am ../00*patch
+  git apply ../00*patch
   rm -rf .git # or our kernel name with the hash tag
   mv ../sc8280xp-huawei-gaokun3.dts arch/arm64/boot/dts/qcom/sc8280xp-huawei-gaokun3.dts
 
