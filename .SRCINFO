@@ -8,6 +8,7 @@ pkgbase = gen-license
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
+	options = !lto
 	source = gen-license-0.1.2.tar.gz::https://static.crates.io/crates/gen-license/gen-license-0.1.2.crate
 	source = LICENSE
 	md5sums = b227d2e73609cb388657dc9df9ac8d31
