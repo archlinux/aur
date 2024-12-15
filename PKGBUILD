@@ -4,7 +4,7 @@ _pkgfont=Rustcraft
 _pkgfont_regular=RustCraftRegular
 pkgname=rustcraft
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Minecraft game clone written in Rust'
 arch=('x86_64')
 url="https://github.com/c2i-junia/$pkgname"
@@ -35,15 +35,16 @@ package() {
 
     cp -R "data" "$pkgdir/opt/$pkgname"
 
-    mkdir -p "$pkgdir/usr/bin"
-    ln -s "$pkgdir/opt/$pkgname/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    ln -s "$pkgdir/opt/$pkgname/bin/$pkgname-server" "$pkgdir/usr/bin/$pkgname-server"
+    install -d "$pkgdir/usr/bin"
+    ln -s "/opt/$pkgname/bin/$pkgname-server" "$pkgdir/usr/bin/$pkgname-server"
 
     mkdir -p "$pkgdir/usr/share/fonts/opentype"
     ln -s "$pkgdir/opt/$pkgname/data/fonts/$_pkgfont_regular-Bmg3.otf" "$pkgdir/usr/share/fonts/opentype/$_pkgfont_regular.otf"
     ln -s "$pkgdir/opt/$pkgname/data/fonts/${_pkgfont}Bold-nMK1.otf" "$pkgdir/usr/share/fonts/opentype/${_pkgfont}Bold.otf"
     ln -s "$pkgdir/opt/$pkgname/data/fonts/${_pkgfont}BoldItalic-1y1e.otf" "$pkgdir/usr/share/fonts/opentype/${_pkgfont}BoldItalic.otf"
     ln -s "$pkgdir/opt/$pkgname/data/fonts/${_pkgfont}Italic-R8Mo.otf" "$pkgdir/usr/share/fonts/opentype/${_pkgfont}Italic.otf"
+
+    install -Dm0755 "$startdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
