@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bnbc
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3405e643b8aa9f603aaa2c8b8fceb215')
-b2sums=('bfeac0c0db491ab6293687cdb7e6fb2990d054f0f5dd185aff525bc1b2a8c2a7a674e47e27869d185ce524071d85d25a88d9b8701e247add49640f034244cc81')
+md5sums=('04ca83e01ed5fa40260e072e2edda12a')
+b2sums=('5dfa8c4243de77c370998af9e27a29f439edf9b3ed94a90891cedadc1c4df7ccd3da9986619b176c1fd88177c9fe7ff0306b03d8c514fdf167656e5ffee98ef5')
 
 build() {
   mkdir build
