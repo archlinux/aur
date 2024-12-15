@@ -1,9 +1,9 @@
 # Maintainer: Peter blackman <peter at pblackman dot plus dot com>
-# 10-Oct-2024
+# 15-Dec-2024
 #
 
 pkgname=cevomapgen
-pkgver=37
+pkgver=37.2
 pkgrel=1
 pkgdesc="External Random Map Generator for C-evo"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=('qt5pas' 'glibc' 'libx11' 'hicolor-icon-theme')
 makedepends=('git' 'fpc' 'lazarus-qt5')
 source=("$pkgname-$pkgver"::git+$url#tag=$pkgver)
-sha256sums=('40e85905982e5c60a4a44914fd4cc8f115ea3e90c94bf80c14f5a071fdeaa9a8')
+sha256sums=('7154f8634a8e37d42c3fd5bbede4c179c2aa87046c756dbce6f9333e3e042d8e')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
