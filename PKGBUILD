@@ -1,10 +1,10 @@
-# Maintainer: Anthony Wang <a at exozy dot me>
+# Maintainer: Anthony Wang <a aat unnamed dt website>
 pkgname=fotd
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Fortune of the day"
 arch=(any)
-url="https://git.exozy.me/exozyme/$pkgname"
+url="https://codeberg.org/exozyme/packages"
 license=('GPL')
 conflicts=('fortune-mod')
 backup=('etc/fortune' 'etc/motd.d/fortune')
