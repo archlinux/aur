@@ -2,11 +2,12 @@
 
 pkgname="perl-cache-memcached-fast"
 pkgver="0.28"
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl client for memcached, in C language"
 arch=('i686' 'x86_64' 'arm')
 url="https://metacpan.org/release/Cache-Memcached-Fast"
 license=('PerlArtistic')
+depends=('perl')
 makedepends=('perl-test2-suite>=0.000072')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/R/RA/RAZ/Cache-Memcached-Fast-${pkgver}.tar.gz")
