@@ -7,7 +7,7 @@
 # and install them as we would other apps, for convenience sake.
 pkgname=koreader-appimage
 pkgver=2024.11
-pkgrel=1
+pkgrel=2
 
 pkgdesc="An ebook reader supporting PDF, DjVu, EPUB, FB2 and many more formats."
 arch=('x86_64')
