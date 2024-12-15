@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DRIMSeq
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Differential transcript usage and tuQTL analyses with Dirichlet-multinomial model in RNA-seq'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bda8198b730f5c45eeba25de163c1bf8c4a51e63ada544c20d77a73cece85383')
+sha256sums=('fc0831f23d1b0a9e08ec35a6415b632f198a17a7a9d428a58b41c0174f84cc2d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
