@@ -1,3 +1,4 @@
 post_install() {
 	echo "Please start the acpid service by running the following command:"
 	echo "sudo systemctl enable --now acpid.service"
+	}
