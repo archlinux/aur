@@ -4,7 +4,7 @@
 pkgname=sameboy
 pkgdesc="An accuracy-focused Game Boy/Game Boy Color emulator"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/LIJI32/SameBoy"
 license=(MIT)
@@ -17,7 +17,7 @@ md5sums=('5f4cb2d592b0232519ef848081881633')
 
 build(){
 	cd "${srcdir}/SameBoy-${pkgver}"
-	make sdl CONF=release DATA_DIR=/usr/share/games/sameboy/ CC=gcc FREEDESKTOP=true
+	make sdl xdg-thumbnailer CONF=release DATA_DIR=/usr/share/games/sameboy/ CC=gcc FREEDESKTOP=true
 }
 
 package(){
