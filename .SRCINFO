@@ -1,6 +1,6 @@
 pkgbase = r-jasppower
 	pkgdesc = Power Module for JASP
-	pkgver = 0.19.0
+	pkgver = 0.19.2
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspPower
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-jasppower
 	depends = r-pwr
 	depends = r-jaspbase
 	depends = r-jaspgraphs
-	source = jaspPower_0.19.0.tar.gz::https://github.com/jasp-stats/jaspPower/archive/refs/tags/v0.19.0.tar.gz
-	sha256sums = 1d0e340d1674102dcd1f17cd1c3ca9536a11ea34536b3d50f45269997e07b7ad
+	source = jaspPower_0.19.2.tar.gz::https://github.com/jasp-stats/jaspPower/archive/refs/tags/v0.19.2.tar.gz
+	sha256sums = 1072ed063f31fe1f8aabaad59e691b4695d2b8e59ad1cf6d04cb8f15824ea124
 
 pkgname = r-jasppower
