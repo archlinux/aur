@@ -1,7 +1,7 @@
 pkgbase = xperia-flashtool-bin
 	pkgdesc = Flashtool is a S1 protocol flashing software that can be used to flash firmwares for Sony Xperia smartphones
 	pkgver = 0.9.36.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.flashtool.net/
 	arch = any
 	license = GPL3
@@ -25,11 +25,6 @@ pkgbase = xperia-flashtool-bin
 	depends = libxi
 	depends = zlib
 	provides = xperia-flashtool=0.9.36.0
-	provides = adb
-	provides = bin2elf
-	provides = bin2sin
-	provides = fastboot
-	provides = unyaffs
 	provides = libusbx-1.0.so.0.2.0
 	conflicts = xperia-flashtool
 	options = !strip
