@@ -4,7 +4,7 @@ pkgname='concrnt-activitypub-bin'
 pkgdesc='Concrnt ActivityPub bridge module'
 pkgver=0.3.1
 _pkgver=v${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
@@ -51,7 +51,7 @@ package() {
     -e "s/([a-z]+):([0-9]+)/localhost:\2/g" \
     -e "s/host=db/host=localhost/" \
     -e "s/user=postgres/user=concrnt/" \
-    -e "s/password=postgres/user=concrnt/" \
+    -e "s/password=postgres/password=concrnt/" \
     -e "s/dbname=concurrent/dbname=concrnt/" \
     "${pkgdir}/etc/concrnt/config/apconfig.yaml"
 
