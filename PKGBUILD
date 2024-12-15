@@ -14,7 +14,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-react-wsgi-dashboards)
 # https://github.com/buildbot/buildbot/releases
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://buildbot.net'
 # https://github.com/buildbot/buildbot/blob/v3.10.1/master/setup.py says GPLv2, and does not mention "any later version"
