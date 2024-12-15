@@ -15,7 +15,7 @@ depends=('gcc-libs' 'plasma-desktop' 'plasma-integration' 'plasma-workspace' 'qt
 makedepends=('base-devel' 'git' 'gcc' 'qt6-base' 'qt6-tools'
              'cmake' 'cmake-extras' 'desktop-file-utils' 'extra-cmake-modules' 'fdupes')
 optdepends=('xsettingsd: Apply settings to GTK applications on the fly'
-                        'kvantum: Powerful extra customisable themes')
+            'kvantum: Powerful extra customisable themes')
 provides=("${_pkgname}")
 conflicts=('koi')
 source=("${pkgname}::git+https://github.com/baduhai/Koi.git")
