@@ -1,0 +1,7 @@
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!concrnt.sysusers
+!concrnt-shared-config.tmpfiles

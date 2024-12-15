@@ -1,0 +1,7 @@
+z /etc/concrnt/config/config.yaml            740 root concrnt -
+z /etc/concrnt/config                        755 root concrnt -
+z /etc/concrnt/config/code-of-conduct.txt    740 root concrnt -
+z /etc/concrnt/static/register-template.json 740 root concrnt -
+z /etc/concrnt/static/tos.txt                740 root concrnt -
+z /etc/concrnt/static                        755 root concrnt -
+z /etc/concrnt/
