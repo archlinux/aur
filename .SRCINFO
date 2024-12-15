@@ -1,6 +1,6 @@
 pkgbase = r-girafe
 	pkgdesc = Genome Intervals and Read Alignments for Functional Exploration
-	pkgver = 1.56.0
+	pkgver = 1.58.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/girafe
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = r-girafe
 	optdepends = r-mass
 	optdepends = r-org.mm.eg.db
 	optdepends = r-rcolorbrewer
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/girafe_1.56.0.tar.gz
-	sha256sums = 11278b1715129048cee298f4e244947858ca379e78811a5f6429f88f5d2faa9e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/girafe_1.58.0.tar.gz
+	sha256sums = 18346f82431b1df545f61950c25cdd607c52917ed07c0dd0863684da7e08ed57
 
 pkgname = r-girafe
