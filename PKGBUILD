@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
-pkgver=4.10.0
+pkgver=4.10.1
 pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   'tk: To use the built-in ssh-askpass handler'
 )
 source=("git+https://github.com/git-cola/git-cola.git#tag=v$pkgver?signed")
-sha256sums=('3e87262cae8f850f641c4f02292567d398973209e493ff2fdfb3146bd3750a9e')
+sha256sums=('92d466480a767fdc91c9a0945603cd73882756ddba9e253de9de362c822fb83c')
 validpgpkeys=('FA41BF59C1B48E8C5F3DA61C8CE26BF4A9F606B0') # David Aguilar <davvid@gmail.com>
 
 prepare() {
@@ -48,11 +48,12 @@ prepare() {
   make clean
 
   # Remove vendorized polib.py
-  rm cola/polib.py
+  rm -v cola/polib.py
 }
 
 build() {
   cd "$pkgname"
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   python -m build --wheel --no-isolation
 
 #  make doc
