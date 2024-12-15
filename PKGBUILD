@@ -1,7 +1,7 @@
 # Maintainer: wowario <wowario[at]protonmail[dot]com>
 
 pkgname=wownero-git
-pkgver=0.11.2.0.36a6641000
+pkgver=0.11.3.0.3e302be710
 pkgrel=1
 pkgdesc="Wownero: a fairly launched privacy-centric meme coin with no premine and a finite supply"
 license=('BSD-3-Clause')
@@ -21,6 +21,7 @@ depends=(
   'libzmq.so'
   'pcsclite'
   'protobuf'
+  'gcc13'
 )
 makedepends=(
   'boost'
@@ -68,6 +69,7 @@ prepare() {
 
 build() {
   cd "${pkgname}"
+  export CC=gcc-13 CXX=g++-13
   CFLAGS+=" -Wno-implicit-function-declaration -Wno-int-conversion" \
   cmake -B build -D ARCH="default" -D CMAKE_BUILD_TYPE=Release
   make -C build
