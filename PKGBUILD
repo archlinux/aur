@@ -1,9 +1,9 @@
 # Maintainer: Jan-Niklas Tomski <jan-niklas at tomski dot me>
-pkgrel=1
 _pkgname='wootility'
 pkgname="${_pkgname}5-beta"
 pkgver='5.0.0_beta.3'
 _appimage="${_pkgname^}-${pkgver//_/-}.AppImage"
+pkgrel=1
 pkgdesc="Utility for configuring Wooting keyboards (v${pkgver//_/-})"
 arch=(any)
 url='https://wooting.io/wootility'
