@@ -3,7 +3,7 @@
 _pkgname=jule
 pkgname="${_pkgname}c-git"
 pkgver=jule0.1.1.r93.g5ebf615c
-pkgrel=1
+pkgrel=2
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
 url="https://github.com/${_pkgname}lang/$_pkgname"
@@ -43,15 +43,15 @@ build() {
         -O0 \
         --std=c++17 \
         -Wno-everything \
-        -o "bin/$pkgname"
+        -o "bin/${pkgname}c"
 }
 
 check() {
     cd "$_pkgname"
     
-    "./bin/$pkgname" mod init
+    "./bin/${pkgname}c" mod init
     echo 'fn main() {}' > "main.$_pkgname"
-    "./bin/$pkgname" -t .
+    "./bin/${pkgname}c" -t .
 }
 
 package() {
@@ -63,7 +63,7 @@ package() {
     cp -R bin "$pkgdir/usr/lib/$_pkgname/bin"
 
     install -d "$pkgdir/usr/bin"
-    ln -s "/usr/lib/$_pkgname/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    ln -s "/usr/lib/$_pkgname/bin/${pkgname}c" "$pkgdir/usr/bin/${_pkgname}c"
 
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
