@@ -1,6 +1,7 @@
 # Maintainer: kamisaki
 # Description: A terminal wrap tool inspired by Spotify Wrapped
 
+
 pkgname=terminalwrap
 pkgver=1.0.0
 pkgrel=1
