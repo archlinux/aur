@@ -1,0 +1,24 @@
+pkgbase = bpf-unknown-none-binutils
+	pkgdesc = binutils for Linux eBPF
+	pkgver = 2.43
+	pkgrel = 1
+	url = http://www.gnu.org/software/binutils
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = GPL-3.0-or-later
+	license = LGPL-2.0-or-later
+	license = LGPL-3.0-or-later
+	license = GFDL-1.3-only
+	license = FSFAP
+	depends = glibc
+	depends = zlib
+	depends = zstd
+	options = !libtool
+	options = !emptydirs
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.43.tar.gz
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.43.tar.gz.sig
+	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
+	sha512sums = 27a19e23b2e8be9994f13687a6e0d6fd6db58f2013d4fd7b1c7f098069fbbee59e6500de4ea16b2218df5f23861f7925472081c3baec7a98533431c2d522c7b1
+	sha512sums = SKIP
+
+pkgname = bpf-unknown-none-binutils
