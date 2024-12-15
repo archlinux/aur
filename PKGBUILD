@@ -3,7 +3,7 @@
 _pkgname=librewolf-extension-tridactyl
 pkgname=$_pkgname-bin
 _id=tridactyl.vim@cmcaine.co.uk
-pkgver=1.24.1
+pkgver=1.24.2
 pkgrel=1
 pkgdesc="Replace LibreWolf's control mechanism with one modelled on Vim."
 url=https://tridactyl.xyz/
