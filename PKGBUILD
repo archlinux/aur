@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname=python-godaddypy
 _name=${pkgname#python-}
-pkgver=2.3.3
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="Library useful for updating DNS settings through the GoDaddy v1 API"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=("python-build" "python-installer" "python-wheel")
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eXamadeus/${_name}/archive/${pkgver}.tar.gz")
-sha256sums=('ef7b633ea02cf977c3e02bea37db883ea8b9884ef37ba3bf5e4a61259d232fbd')
+sha256sums=('7afa9716f31034d2a7bc96fa9b29959627b29b693a3ff28f6b2f74304e105d16')
 
 build() {
   cd "$_name-$pkgver"

@@ -1,15 +1,16 @@
 pkgbase = python-godaddypy
 	pkgdesc = Library useful for updating DNS settings through the GoDaddy v1 API
-	pkgver = 2.3.3
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://github.com/eXamadeus/godaddypy/
 	arch = any
 	license = GPL
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	options = !emptydirs
-	source = https://github.com/eXamadeus/godaddypy/archive/2.3.3.tar.gz
-	sha256sums = ef7b633ea02cf977c3e02bea37db883ea8b9884ef37ba3bf5e4a61259d232fbd
+	source = python-godaddypy-2.5.2.tar.gz::https://github.com/eXamadeus/godaddypy/archive/2.5.2.tar.gz
+	sha256sums = 7afa9716f31034d2a7bc96fa9b29959627b29b693a3ff28f6b2f74304e105d16
 
 pkgname = python-godaddypy
-
