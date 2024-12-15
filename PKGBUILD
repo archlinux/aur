@@ -9,7 +9,7 @@ arch=(any)
 license=(MIT)
 depends=(python-pyqt6 python-emoji)
 makedepends=(python-build python-installer python-poetry-core)
-checkdepends=(python-pytest)
+checkdepends=(python-pytest-qt)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
 sha512sums=('92815067a24de6499da07e781357444ba3cb796e927f0b03419c43e0035de0b9617f83214b13f6763c6b6a679b83c3659e709a0ec8f674eb3fb2887c7dfc4665')
 
