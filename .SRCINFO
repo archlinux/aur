@@ -1,6 +1,6 @@
 pkgbase = cobib
 	pkgdesc = Console Bibliography
-	pkgver = 5.2.2
+	pkgver = 5.2.3
 	pkgrel = 1
 	url = https://gitlab.com/cobib/cobib
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = cobib
 	optdepends = python-regex
 	provides = cobib
 	conflicts = cobib
-	source = https://gitlab.com/cobib/cobib/-/archive/v5.2.2/cobib-v5.2.2.tar.gz
-	sha512sums = 7fdfc8b6c8d7d64f535e403a7444782a08fe62788ab9a090248f5e0e8ce58e07e93ac201111e01e7b46570c60728259ded72c89b72d28cdc3d39eb2a70d4efa8
+	source = https://gitlab.com/cobib/cobib/-/archive/v5.2.3/cobib-v5.2.3.tar.gz
+	sha512sums = 3271a7dd77c89d440f9b1a94cb3618b342a71ac95d591692122590e89bc9c5f858d19a5e56b1245a658444397e8928a841a0855ef214227ca2c035cfca5e61b7
 
 pkgname = cobib
