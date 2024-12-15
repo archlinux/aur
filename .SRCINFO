@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-uk
 	pkgdesc = Ukrainian language pack for Firefox Nightly
-	pkgver = 135.0a1.20241214.094501
+	pkgver = 135.0a1.20241214.213919
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-uk
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-uk-135.0a1.20241214.094501.xpi
-	source = firefox-nightly-i18n-uk-135.0a1.20241214.094501.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-135.0a1.uk.langpack.xpi
-	sha256sums = 2c91621a61a1a34d3c29dbe6536b1c4a652f31fc8e5000750f0389e73e3bd7a6
+	noextract = firefox-nightly-i18n-uk-135.0a1.20241214.213919.xpi
+	source = firefox-nightly-i18n-uk-135.0a1.20241214.213919.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-135.0a1.uk.langpack.xpi
+	sha256sums = 58c6d0884fd0bac501e8ceb6cce60fac154421f459b00e95eb9ecd42fc405940
 
 pkgname = firefox-nightly-i18n-uk
