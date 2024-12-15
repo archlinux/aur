@@ -2,18 +2,22 @@
 # Contributor: Ross Whitfield <whitfieldre@ornl.gov>
 pkgname='python-periodictable'
 _pkgname='periodictable'
-pkgver=1.7.1
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Extensible periodic table of the elements"
 url="http://periodictable.readthedocs.org"
 arch=("any")
 license=('public domain')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pkienzle/periodictable/archive/v$pkgver.tar.gz")
-md5sums=('e1a246ef913d841d1deb106c9ba63894')
+md5sums=('ac96181d4c8f8f6c6024897aa8418cd1')
 
-package() {
-    depends=('python' 'python-matplotlib' 'python-numpy' 'python-pyparsing')
+build() {
     cd "$srcdir/${_pkgname}-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1
+    python -m build --wheel --no-isolation
+}
+package() {
+    depends=('python' 'python-matplotlib' 'python-numpy' 'python-pyparsing' 'python-uncertainties')
+    cd "$srcdir/${_pkgname}-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
