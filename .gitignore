@@ -1,0 +1,9 @@
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!concrnt-activitypub.hook
+!concrnt-activitypub.service
+!concrnt-activitypub.tmpfiles
+!concrnt-activitypub.install
