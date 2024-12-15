@@ -5,7 +5,7 @@ pkgname=(
   'khronos-ocl-icd-git'
   'lib32-khronos-ocl-icd-git'
 )
-pkgver=2023.04.17.5.g229410f
+pkgver=2024.10.24.1.g9228024
 pkgrel=1
 arch=('x86_64')
 url="http://www.khronos.org/registry/cl"
