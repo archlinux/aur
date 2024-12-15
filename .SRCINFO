@@ -11,8 +11,6 @@ pkgbase = nibtools-git
 	depends = opencbm
 	provides = nibtools
 	source = git+https://github.com/OpenCBM/nibtools.git
-	source = usleep.patch
 	md5sums = SKIP
-	md5sums = bd7d136a698bca9b161ab72622205c3b
 
 pkgname = nibtools-git

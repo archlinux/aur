@@ -11,15 +11,8 @@ license=('unknown')
 depends=('opencbm')
 makedepends=('git' 'cc65')
 provides=('nibtools')
-source=('git+https://github.com/OpenCBM/nibtools.git'
-	'usleep.patch')
-md5sums=('SKIP'
-         'bd7d136a698bca9b161ab72622205c3b')
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  patch -p1 -i ../usleep.patch
-}
+source=('git+https://github.com/OpenCBM/nibtools.git')
+md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
