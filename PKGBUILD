@@ -15,7 +15,7 @@ _archive_name="${pkgname}.tar.xz"
 _app_name="${pkgname}.tar.xz"
 
 source=(
-	"https://dl.armgs.team/downloads/linux/x64/${pkgver}/${_app_name}"
+	"${pkgname}-${pkgver}.tar.xz::https://dl.armgs.team/downloads/linux/x64/${pkgver}/${_app_name}"
 	"sreda.desktop"
 )
 sha256sums=(
@@ -26,7 +26,7 @@ sha256sums=(
 package() {
 	mkdir -p "${pkgdir}/opt/${pkgname}"
 	cp -a "${srcdir}/." "${pkgdir}${_install_path}/"
-	rm "${pkgdir}${_install_path}/${_app_name}"
+	rm "${pkgdir}${_install_path}/${pkgname}-${pkgver}.tar.xz"
 	mkdir -p "${pkgdir}/usr/share/applications/"
 	cp -L "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	rm "${pkgdir}/opt/${pkgname}/${pkgname}.desktop"
