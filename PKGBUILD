@@ -3,7 +3,7 @@
 
 
 pkgname=terminalwrap
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A terminal wrap tool inspired by Spotify Wrapped"
 arch=('x86_64')
