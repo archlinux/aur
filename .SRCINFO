@@ -1,6 +1,6 @@
 pkgbase = r-sharedobject
 	pkgdesc = Sharing R objects across multiple R processes without memory duplication
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SharedObject
 	arch = x86_64
@@ -12,11 +12,8 @@ pkgbase = r-sharedobject
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SharedObject_1.18.0.tar.gz
-	source = SharedObject-fix-build.patch::https://github.com/Jiefei-Wang/SharedObject/pull/17.patch
-	md5sums = 87df87d1ae41a153d960c0c7b9428d9b
-	md5sums = 2d31d0afa3d7a9d170184218df260995
-	b2sums = 3d0f326acbb787ae2399d9a4e3acc649a0b72fa03b3921dcb24a3a79c928b880a9c96a0030931be06c7ad11d4827d3ffc03c0a971eeaac0d4f142a464ea47aad
-	b2sums = caf4cf7035f69013402ff6cd3058bf504fb097e9c9c50e64b117e949f68ef62933dce4c560085e82337fec01eed00125fbdebf16debc4c72c6f2308044ebad6f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SharedObject_1.20.0.tar.gz
+	md5sums = 72c88a08e6e3bed0f4b4c1fdcae274ec
+	b2sums = dbc11660da1aadbdd0dcacbff9c75cc4a81d05e880c616ff4b4874376cc7ec1b8ce047bee0a44784c5f14ab9619a7a54261ca501efe92489aa6d2b929b29b2a3
 
 pkgname = r-sharedobject
