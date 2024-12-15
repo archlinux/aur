@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync"
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="The tool syncs Snapper snapshots with Limine bootloader"
 arch=("any")
@@ -8,12 +8,13 @@ url="https://gitlab.com/Zesko/limine-snapper-sync"
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 license=("GPL3")
 depends=(
-       'bash'
-       'java-environment-openjdk>=17'
-       'limine'
-       'snapper'
-       'btrfs-progs'
-       'inotify-tools')
+        'bash'
+        'java-environment-openjdk>=17'
+        'limine'
+        'snapper'
+        'btrfs-progs'
+        'inotify-tools'
+        'libnotify')
 optdepends=(
         'dunst: Displays a desktop notification for one-click restoration.'
         'limine-dracut-support: Automates kernel installation/removal and Limine boot entry management.'
@@ -24,11 +25,11 @@ optdepends=(
 makedepends=('git' 'maven')
 backup=(etc/limine-snapper-sync.conf)
 conflicts=('limine-snapper-sync-git')
-sha256sums=('92de914cf5ed87a5c30344914472e3538acf27b61bbdb753c36cc7af2612beb9')
+sha256sums=('af8e76249e3a761de61285fa1462ad29496df4f0d304bb83c60b12d558c39b43')
 
 build() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    mvn clean package
+  cd "$srcdir/${pkgname}-${pkgver}"
+  mvn clean package
 }
 
 package() {
@@ -36,5 +37,7 @@ package() {
   src_path="install/arch-linux/"
   install -dm 755 $src_path/usr/share/java/
   install -Dm 644 target/limine-snapper-sync.jar $src_path/usr/share/java/
-  cp -vr $src_path/usr $src_path/etc "$pkgdir"
+  install -dm 755 $src_path/usr/share/doc/limine-snapper-sync/
+  cp -r README.md CHANGELOG.md screenshots $src_path/usr/share/doc/limine-snapper-sync/
+  cp -r $src_path/usr $src_path/etc "$pkgdir"
 }
