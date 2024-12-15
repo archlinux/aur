@@ -7,48 +7,68 @@
 pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct)
 epoch=1
 pkgver=10.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
 license=('LGPL-2.1-or-later'
          'GPL-3.0-or-later') # libvirt_parthelper links to libparted
 depends=(
-  'fuse3'
-  'gnutls'
-  'libnbd'
-  'libnl'
-  'libpciaccess'
-  'libssh'
-  'libxml2'
-  'numactl'
-  'parted'
-  'polkit'
+  acl
+  audit
+  bash
+  curl
+  device-mapper
+  fuse3
+  gcc-libs
+  glib2
+  glibc
+  gnutls
+  json-c
+  libcap-ng
+  libnbd
+  libnl
+  libpcap
+  libpciaccess
+  libsasl
+  libssh
+  libssh2
+  libtirpc
+  libxml2
+  numactl
+  parted
+  polkit
+  readline
+  systemd-libs
+  util-linux-libs
 )
 makedepends=(
-  'bash-completion'
-  'dnsmasq'
-  'glusterfs'
-  'iproute2'
-  'libiscsi'
-  'libxslt'
-  'lvm2'
-  'meson'
-  'open-iscsi'
-  'python-docutils'
-  'qemu-base'
-  'systemd'
+  bash-completion
+  dnsmasq
+  glusterfs
+  iproute2
+  libiscsi
+  libxslt
+  lvm2
+  meson
+  open-iscsi
+  python-docutils
+  qemu-base
+  systemd
 )
 optdepends=(
   'dmidecode: DMI system info support'
   'dnsmasq: required for default NAT/DHCP for guests'
   'gettext: required for libvirt-guests.service'
   'iptables-nft: required for default NAT networking'
+  'libvirt-python: for virt-qemu-qmp-proxy and virt-qemu-sev-validate commands'
   'libvirt-storage-gluster: Gluster storage backend'
   'libvirt-storage-iscsi-direct: iSCSI-direct storage backend'
   'lvm2: Logical Volume Manager support'
   'openbsd-netcat: for remote management over ssh'
   'open-iscsi: iSCSI support via iscsiadm'
+  'python-cryptography: for virt-qemu-sev-validate command'
+  'python-lxml: for virt-qemu-sev-validate command'
   'qemu-base: QEMU/KVM support'
   'qemu-desktop: QEMU/KVM desktop support'
   'qemu-emulators-full: Support of additional QEMU architectures'
@@ -202,7 +222,13 @@ package_libvirt() {
 
 package_libvirt-storage-gluster() {
   pkgdesc="Libvirt Gluster storage backend"
-  depends=("libvirt=$pkgver" 'glusterfs')
+  depends=(
+    "libvirt=$pkgver"
+    gcc-libs
+    glib2
+    glibc
+    glusterfs
+  )
   optdepends=()
   backup=()
 
@@ -212,7 +238,13 @@ package_libvirt-storage-gluster() {
 
 package_libvirt-storage-iscsi-direct() {
   pkgdesc="Libvirt iSCSI-direct storage backend"
-  depends=("libvirt=$pkgver" 'libiscsi')
+  depends=(
+    "libvirt=$pkgver"
+    gcc-libs
+    glib2
+    glibc
+    libiscsi
+  )
   optdepends=()
   backup=()
 
