@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BioQC
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Detect tissue heterogeneity in expression profiles with gene sets'
 arch=('x86_64')
@@ -35,7 +35,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('730f12f773b744d0db1cf1b94e3f7fe04d6f11f1c45dbabf492527ca8bc3d993')
+sha256sums=('0ce1f8aaeb640dd73326806717449a3654b0e0c2d167860dce2e34700264a182')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
