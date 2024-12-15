@@ -1,18 +1,22 @@
-# Maintainer: Jonathan Liu <net147@gmail.com>
+# Maintainer: envolution
+# Contributor: Jonathan Liu <net147@gmail.com>
+# shellcheck shell=bash disable=SC2034,SC2154
 pkgname=evrouter
 pkgver=0.4
-pkgrel=4
+pkgrel=5
 pkgdesc="An Input Event Router for Linux"
 arch=('i686' 'x86_64')
 url="http://www.bedroomlan.org/projects/evrouter"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('libxtst')
-makedepends=('automake>=1.10.1')
+makedepends=('automake')
 source=(http://debian.bedroomlan.org/debian/pool/main/e/${pkgname}/${pkgname}_${pkgver}.tar.gz)
 md5sums=('eef1b9d8e3b545c330eb025670ffa3e8')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i '87d' ./src/evrouter.c
+  sed -i '46d' ./configure.ac
   aclocal
   automake --add-missing
   ./configure --prefix=/usr --without-xmms
