@@ -1,0 +1,26 @@
+[Unit]
+Description=Concrnt Hyperproxy daemon
+
+[Service]
+Type=simple
+Restart=on-failure
+
+User=concrnt
+Group=concrnt
+
+SyslogIdentifier=concrnt-hyperproxy
+
+# Port config
+Environment="PORT=28283"
+
+# Proxy config (http, https or socks5)
+#Environment="http_proxy=http://proxy-server:3128"
+#Environment="https_proxy=http://proxy-server:3128"
+
+ExecStart=/usr/bin/hyperproxy
+
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+
+[Install]
+WantedBy=multi-user.target

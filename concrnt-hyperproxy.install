@@ -1,0 +1,11 @@
+post_install() {
+	echo
+	echo -e "\e[0;34;47m                                                      \e[0m"
+	echo -e "\e[1;34;47m  *********** README: Concrnt HyperProxy ***********  \e[0m"
+	echo -e "\e[0;32;47m  The default port for concrnt-hyperproxy is \e[0;31;47m28283\e[0;32;47m    \e[0m"
+	echo -e "\e[0;32;47m  You can change the port and proxy settings using    \e[0m"
+	echo -e "\e[0;31;47m  systemctl edit --full concrnt-hyperproxy            \e[0m"
+	echo -e "\e[0;34;47m  **************************************************  \e[0m"
+	echo -e "\e[0;34;47m                                                      \e[0m"
+	echo
+}

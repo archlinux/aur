@@ -1,0 +1,8 @@
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!concrnt-hyperproxy.hook
+!concrnt-hyperproxy.service
+!concrnt-hyperproxy.install
