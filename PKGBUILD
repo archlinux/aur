@@ -1,6 +1,6 @@
 # Maintainer: Lakshmanan <lakshmanoni1234@gmail.com>
 pkgname=pacsaviour
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=3
 pkgdesc="An automation tool for optimising mirrors, cleaning and updating the system"
 arch=('x86_64')
