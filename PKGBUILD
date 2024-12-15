@@ -12,17 +12,13 @@ pkgdesc="Utility for configuring Wooting keyboards (v${_pkgver})"
 arch=(any)
 url='https://wooting.io/wootility'
 license=('unknown')
-groups=()
 depends=('fuse2')
 makedepends=('util-linux' 'findutils')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-replaces=()
-backup=()
 options=(!strip)
 source=("https://wootility-updates.ams3.cdn.digitaloceanspaces.com/wootility-linux/${_appimage}"
         '70-wooting.rules')
-noextract=()
 b2sums=('75e5ddf03424eeca2db7d9a2b92480202d2030b1980bf93c242cc1c26d1bd33d54a8ddf4ed267211751a6ce3b10a3e0c84ac5d282101963997fccd2b98ac6852'
         '80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1')
 
