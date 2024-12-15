@@ -1,6 +1,6 @@
 # Maintainer: Archie Meng <archiemeng@protonmail.com>
 pkgname=plasma-bigscreen-git
-pkgver=r411.7344fe3
+pkgver=r982.7f70dd7
 pkgrel=1
 pkgdesc="A big launcher giving you easy access to any installed apps and skills."
 arch=('any')
@@ -10,14 +10,11 @@ groups=()
 depends=('kdeconnect' 
 	'plasma-nm' 
 	'plasma-pa' 
-	'plasma-remotecontrollers'
-	'plasma-nano'
-    'plasma-settings'
-    'qt5-virtualkeyboard')
+	'plasma-nano')
 
-makedepends=('cmake' 'extra-cmake-modules-git' 'git') 
-optdepends=('libcec: add USB-CEC support in order to be controled by TV remotes'
-            'mycroft-core: add voice control support') # Todo: test optional dependecies 
+makedepends=('cmake' 'extra-cmake-modules' 'git') 
+optdepends=('libcec: add USB-CEC support in order to be controlled by TV remotes'
+            'plasma-remotecontrollers: add setting tab for remote controllers')
 provides=('plasma-bigscreen')
 conflicts=('plasma-bigscreen')
 replaces=()
