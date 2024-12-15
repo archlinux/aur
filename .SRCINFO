@@ -1,6 +1,6 @@
 pkgbase = wootility5-beta
 	pkgdesc = Utility for configuring Wooting keyboards (v5.0.0-beta.3)
-	pkgver = 5.0.0beta.3
+	pkgver = 5.0.0_beta.3
 	pkgrel = 1
 	url = https://wooting.io/wootility
 	arch = any
