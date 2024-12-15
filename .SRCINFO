@@ -1,0 +1,20 @@
+pkgbase = opera-extras
+	pkgdesc = Full-featured DRM playback support of FFmpeg for Opera web browser
+	pkgver = 0.93.0
+	pkgrel = 1
+	url = https=//chromium.googlesource.com/chromium/third_party/ffmpeg/
+	arch = x86_64
+	license = custom
+	makedepends = libarchive
+	makedepends = lsb-release
+	makedepends = nodejs
+	makedepends = nodejs-nopt
+	makedepends = npm
+	depends = opera
+	optdepends = chromium-widevine: Complementary codec enabling a premium web video content on Chromium based web browsers
+	source = opera-extras-0.93.0.tar.gz::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/archive/0.93.0.tar.gz
+	source = COPYING
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = opera-extras
