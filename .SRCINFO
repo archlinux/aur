@@ -1,7 +1,7 @@
 pkgbase = concrnt-activitypub
 	pkgdesc = Concrnt ActivityPub bridge module
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/totegamma/concurrent
 	install = concrnt-activitypub.install
 	arch = x86_64
