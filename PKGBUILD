@@ -4,7 +4,7 @@ pkgdesc='Concrnt is a next-gen decentralized social network platform designed to
 pkgname=('concrnt-gateway-bin')
 pkgver=1.6.0
 _pkgver=v${pkgver}
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
@@ -16,7 +16,7 @@ depends=('concrnt-shared-config'
          'concrnt-api')
 optdepends=('concrnt-conctl: Command-line tool for managing Concrnt services'
             'concrnt-webui: Provides registration page and admin panel'
-            'concrnt-url-summary: URL preview'
+            'concrnt-hyperproxy: URL Summary and image preview'
             'concrnt-activitypub: ActivityPub integration')
 
 provides=('concrnt-gateway')
