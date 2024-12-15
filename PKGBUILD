@@ -13,9 +13,8 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-react-console-view python-buildbot-react-grid-view
          python-buildbot-react-wsgi-dashboards)
 # https://github.com/buildbot/buildbot/releases
-pkgver=4.1.0
-_bb_contrib_commit=cc230791dcd4717830d4dcb62843c0a19bdf3262
-pkgrel=2
+pkgver=4.2.0
+pkgrel=1
 arch=(any)
 url='https://buildbot.net'
 # https://github.com/buildbot/buildbot/blob/v3.10.1/master/setup.py says GPLv2, and does not mention "any later version"
@@ -37,10 +36,8 @@ makedepends=(python-build python-installer python-wheel
              python-sphinx_rtd_theme
              git yarn)
 source=("git+https://github.com/buildbot/buildbot.git?signed#tag=v$pkgver"
-        "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "disable-flaky-tests.diff")
-sha256sums=('4650ec17e139a282d525040eaac5ac390813f4d186b27607d8f6a6bf805e5567'
-            '2f8747848b96d9e31a66d3becd62d36dcbdd349e5381a8bd2558da7c1f2faddb'
+sha256sums=('d90b27127bdfab136549c2e762aca21d28a762d2f2a9d31f85743cf57651a430'
             '175cb41a707a278b0a7c0864304a00459d6e2dee16cd5ddbc28a6dc90abfd3fc')
 validpgpkeys=(
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # https://github.com/p12tic.gpg
@@ -52,9 +49,6 @@ _buildbot_www_modules=(${_buildbot_www_modules_with_tests[@]} grid_view wsgi_das
 
 prepare() {
   cd buildbot
-
-  # Some master tests use scripts from contrib
-  ln -s ../../buildbot-contrib/master/contrib master/contrib
 
   # HACK: do not use virtualenv
   sed -i -e 's#frontend_deps:.*#frontend_deps:#' Makefile
@@ -181,7 +175,7 @@ package_buildbot() {
 
   cd buildbot/master
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 "$srcdir"/buildbot-contrib/master/contrib/systemd/buildbot@.service \
+  install -Dm644 contrib/systemd/buildbot@.service \
     -t "$pkgdir"/usr/lib/systemd/system/
 }
 
@@ -194,7 +188,7 @@ package_buildbot-worker() {
 
   cd buildbot/worker
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 "$srcdir"/buildbot-contrib/worker/contrib/systemd/buildbot-worker@.service \
+  install -Dm644 contrib/systemd/buildbot-worker@.service \
     -t "$pkgdir"/usr/lib/systemd/system/
 }
 
@@ -211,7 +205,7 @@ package_buildbot-docs() {
 package_buildbot-common() {
   pkgdesc='Contributed scripts for Buildbot'
 
-  cd buildbot-contrib
+  cd buildbot
   install -Dm644 common/contrib/systemd/sysusers.d/buildbot.conf -t "$pkgdir"/usr/lib/sysusers.d/
   install -Dm644 common/contrib/systemd/tmpfiles.d/buildbot.conf -t "$pkgdir"/usr/lib/tmpfiles.d/
 }
