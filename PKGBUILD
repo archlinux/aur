@@ -26,7 +26,7 @@ prepare() {
     
     cp "$srcdir/$_pkgname-ir-$pkgver-$CARCH.cpp" ir.cpp
     
-    find './*/*' -type f -name '*.md' -exec rm -f {} +
+    find ./*/* -type f -name '*.md' -exec rm -f {} +
 }
 
 build() {
