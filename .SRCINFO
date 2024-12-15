@@ -11,6 +11,7 @@ pkgbase = adbenq-git
 	depends = scrcpy
 	depends = android-tools
 	depends = python-platformdirs
+	provides = adbenq
 	source = adbenq::git+https://github.com/Zarox28/ADBenQ.git
 	sha256sums = SKIP
 

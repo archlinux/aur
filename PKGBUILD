@@ -6,6 +6,7 @@ pkgdesc="Control your BenQ TV like a boss 🖥️✨ "
 url="https://github.com/Zarox28/ADBenQ"
 license=("AGPLv3")
 arch=('any')
+provides=('adbenq')
 depends=('python' 'python-pip' 'pyside6' 'scrcpy' 'android-tools' 'python-platformdirs')
 source=("${_pkgname}::git+https://github.com/Zarox28/ADBenQ.git")
 sha256sums=('SKIP')
