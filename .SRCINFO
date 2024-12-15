@@ -1,23 +1,21 @@
 pkgbase = python-slycot-mkl
-	pkgdesc = Python wrapper for selected SLICOT routines, notably including solvers for Riccati, Lyapunov and Sylvester equations. Built against Intel MKL
-	pkgver = 0.4.0.0
-	pkgrel = 2
-	url = http://github.com/python-control/Slycot
+	pkgdesc = A wrapper for the SLICOT control and systems library. Built against Intel MKL
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/python-control/slycot
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	makedepends = cmake
+	license = GPL-2.0-or-later
+	license = BSD-3-Clause
+	makedepends = python-setuptools-scm
+	makedepends = python-scikit-build
+	makedepends = python-wheel
 	makedepends = gcc-fortran
-	makedepends = intel-mkl
-	makedepends = python-pytest
-	makedepends = python-setuptools
-	makedepends = python-scipy-mkl
-	makedepends = python-scikit-build>=0.8.1
-	depends = python-numpy-mkl
-	provides = python-slycot
+	makedepends = intel-oneapi-mkl
+	depends = python-numpy
+	provides = python-slycot=0.6.0
 	conflicts = python-slycot
-	source = https://files.pythonhosted.org/packages/source/s/slycot/slycot-0.4.0.0.tar.gz
-	sha256sums = 1d9921e9b04a5b9892870fd3481f7b08e6fa083a1a3848ad262819de19eb5e02
+	source = https://pypi.org/packages/source/s/slycot/slycot-0.6.0.tar.gz
+	sha512sums = 69b7189331fcf0cf762c7abf02f98e17a833698621aea26f799766879588341ba385df18e61937f9fdb7d82c582e9c348df880860b9b478c0d8b8310b908a317
 
 pkgname = python-slycot-mkl
-

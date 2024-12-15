@@ -1,0 +1,5 @@
+[python-slycot-mkl]
+source = "github"
+github = "python-control/Slycot"
+use_latest_release = "true"
+prefix = "v"

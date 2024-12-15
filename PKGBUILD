@@ -1,51 +1,28 @@
-# Maintainer: Ben Greiner <code@bnavigator.de>
-_name=slycot
-pkgname="python-${_name}-mkl"
-pkgver=0.4.0.0
-pkgrel=2
-pkgdesc="Python wrapper for selected SLICOT routines, notably including solvers for Riccati, Lyapunov and Sylvester equations. Built against Intel MKL"
-arch=('i686' 'x86_64')
-url="http://github.com/python-control/Slycot"
-license=('GPL2')
-depends=('python-numpy-mkl')
-makedepends=('cmake'
-             'gcc-fortran'
-             'intel-mkl'
-             'python-pytest'
-             'python-setuptools'
-             'python-scipy-mkl'
-             'python-scikit-build>=0.8.1')
-opts=(!strip)
-optdepends=()
-provides=('python-slycot')
-conflicts=('python-slycot')
-source=(https://files.pythonhosted.org/packages/source/s/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('1d9921e9b04a5b9892870fd3481f7b08e6fa083a1a3848ad262819de19eb5e02')
-
-prepare(){
-  export MKLROOT=/opt/intel/mkl
-  export BLA_VENDOR=Intel10_64lp
-}
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Ben Greiner <code@bnavigator.de>
+_base=slycot
+pkgname="python-${_base}-mkl"
+pkgver=0.6.0
+pkgrel=1
+pkgdesc="A wrapper for the SLICOT control and systems library. Built against Intel MKL"
+arch=(i686 x86_64)
+url="https://github.com/python-control/${_base}"
+license=(GPL-2.0-or-later BSD-3-Clause)
+depends=(python-numpy)
+makedepends=(python-setuptools-scm python-scikit-build python-wheel gcc-fortran intel-oneapi-mkl)
+provides=("python-${_base}=${pkgver}")
+conflicts=("python-${_base}")
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('69b7189331fcf0cf762c7abf02f98e17a833698621aea26f799766879588341ba385df18e61937f9fdb7d82c582e9c348df880860b9b478c0d8b8310b908a317')
 
 build() {
-  cd "$srcdir/${_name}-${pkgver}"
+  cd ${_base}-${pkgver}
+  export MKLROOT=/opt/intel/oneapi/mkl/latest
   python setup.py build -G "Unix Makefiles"
 }
 
-check() {
-  export PYTHONDONTWRITEBYTECODE=1 
-  local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-  export PYTHONPATH="${srcdir}/${_name}-${pkgver}/_skbuild/linux-$CARCH-$python_version/setuptools/lib"
-  pytest --pyargs slycot
-}
-
 package() {
-  export LDFLAGS="$LDFLAGS -shared"
-
-  cd "$srcdir/${_name}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build -G "Unix Makefiles"
-
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim:set ts=2 sw=2 et:
