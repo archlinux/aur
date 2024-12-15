@@ -9,7 +9,7 @@ pkgbase = free42
 	depends = gtk3
 	source = http://thomasokken.com/free42/upstream/free42-nologo-3.1.11.tgz
 	source = free42.desktop
-	md5sums = c646b113165bacb3060d45c1e97a7d4b
+	md5sums = c439d8ec7b1cfb4f8a05cdcbeca24c77
 	md5sums = 9e1af9bfd8ce5eb2ad107f63ea446a55
 
 pkgname = free42
