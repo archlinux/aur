@@ -2,7 +2,7 @@
 # Contributor: Lars Hupel <lars@hupel.info>
 pkgname=opentheory
 epoch=1
-pkgver=1.4.20180810
+pkgver=1.4.20230321
 pkgrel=1
 pkgdesc="a tool for processing higher-order logic theory packages"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ groups=()
 depends=(gmp)
 makedepends=(mlton)
 source=("https://github.com/gilith/$pkgname/releases/download/v$pkgver/$pkgname.tar.gz")
-sha256sums=('1b939736fd2acf543db454fe1fc29cb6759c0bc3b5ccf6c4fbff9d20a05f9088')
+sha256sums=('666651c7ce8447644c17090a26d3abce27c06d89e8c1e6d1f9bd03e47f1d4a75')
 
 build() {
   cd "$srcdir/$pkgname"
