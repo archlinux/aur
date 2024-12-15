@@ -1,0 +1,46 @@
+From 8a931d797484fe17336e45eae9cffe4a1ab4c428 Mon Sep 17 00:00:00 2001
+From: Sergei Litvin <litvindev@gmail.com>
+Date: Sun, 15 Dec 2024 22:13:18 +0100
+Subject: [PATCH] Fix parsing initializer-list for arrays
+
+---
+ src/semact.c | 16 +++++++---------
+ 1 file changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/src/semact.c b/src/semact.c
+index 676981c..6758bc5 100644
+--- a/src/semact.c
++++ b/src/semact.c
+@@ -608,22 +608,20 @@ void addInitializerRefs(
+ 	S_idIdentList *ll;
+ 	S_idIdent* id;
+ 	S_typeModifiers *tt;
+-	S_reference *ref;
+ 	S_symbol *rec;
+-	for(ll=idl; ll!=NULL; ll=ll->next) {
++	for(; idl!=NULL; idl=idl->next) {
+ 		tt = t;
+-		rec = NULL;
+-		for (id = &ll->idi; id!=NULL; id=id->next) {
+-		    if (id->name == NULL) continue;
++		for (id = &idl->idi; id!=NULL; id=id->next) {
+ 			if (tt->m == TypeArray) tt = tt->next;
++			if (id->name == NULL) continue;
+ 			if (tt->m != TypeStruct && tt->m != TypeUnion) break;
+-			ref = findStrRecordFromType(tt, id, &rec, SEARCH_IN_MEMBERS_YES, CLASS_TO_ANY);
+-			if (NULL == ref) break;
++			rec = NULL;
++			if (findStrRecordFromType(tt, id, &rec, SEARCH_IN_MEMBERS_YES, CLASS_TO_ANY) == NULL) break;
+ 			assert(rec);
+ 			tt = rec->u.type;
+ 		}
+-		if (ll->down!=NULL && rec!=NULL) {
+-			addInitializerRefs(rec->u.type, ll->down);
++		if (idl->down!=NULL) {
++			addInitializerRefs(tt, idl->down);
+ 		}
+ 	}
+ }
+-- 
+2.47.1
+
