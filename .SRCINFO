@@ -1,6 +1,6 @@
 pkgbase = r-eisar
 	pkgdesc = Exon-Intron Split Analysis (EISA) in R
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/eisaR
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-eisar
 	optdepends = r-rmarkdown
 	optdepends = r-rtracklayer
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/eisaR_1.16.0.tar.gz
-	sha256sums = 4de9daba1f59f2d436d481eb8603245902da342848f98fb2dbf8d23bd55cc646
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/eisaR_1.18.0.tar.gz
+	sha256sums = 8e6fc8187bee2fc3c3b7499724b08c37936993928e3a8a8eb8b5ce105ccae89c
 
 pkgname = r-eisar
