@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = concrnt-activitypub-bin
+
+[Action]
+Description = Restarting concrnt-activitypub...
+When = PostTransaction
+Exec = /bin/bash -c '/usr/bin/systemctl is-active concrnt-activitypub.service -q && /usr/bin/systemctl restart concrnt-activitypub.service || /usr/bin/true'

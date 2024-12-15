@@ -1,0 +1,29 @@
+[Unit]
+Description=Concrnt ActivityPub bridge daemon
+
+Wants=concrnt-gateway.service postgresql.service redis.service memcached.service
+After=concrnt-gateway.service postgresql.service redis.service memcached.service
+
+[Service]
+Type=simple
+Restart=on-failure
+
+User=concrnt
+Group=concrnt
+
+SyslogIdentifier=concrnt-activitypub
+
+# Port config
+Environment="CC_AP_PORT=28284"
+
+# Proxy config (http, https or socks5)
+#Environment="http_proxy=http://proxy-server:3128"
+#Environment="https_proxy=http://proxy-server:3128"
+
+ExecStart=/usr/bin/ccactivitypub
+
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+post_install() {
+	echo
+	echo -e "\e[0;34;47m                                                       \e[0m"
+	echo -e "\e[1;34;47m  *********** README: Concrnt ActivityPub ***********  \e[0m"
+	echo -e "\e[0;32;47m  Please configure \e[0;31;47m/etc/concrnt/config/apconfig.yaml   \e[0m"
+	echo -e "\e[0;34;47m  ***************************************************  \e[0m"
+	echo -e "\e[0;32;47m  The default port for concrnt-activitypub is \e[0;31;47m28284\e[0;32;47m    \e[0m"
+	echo -e "\e[0;32;47m  You can change the port and proxy settings using     \e[0m"
+	echo -e "\e[0;31;47m  systemctl edit --full concrnt-activitypub            \e[0m"
+	echo -e "\e[0;34;47m  ***************************************************  \e[0m"
+	echo -e "\e[0;34;47m                                                       \e[0m"
+	echo
+}
