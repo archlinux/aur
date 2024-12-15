@@ -7,7 +7,7 @@
 # Contributor: Jan Oliver Oelerich <janoliver[at]oelerich[dot]org>
 pkgname=ovito
 pkgver=3.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Visualization Tool"
 url="https://www.${pkgname}.org"
 arch=(x86_64 aarch64)
@@ -19,8 +19,14 @@ source=(https://gitlab.com/stuko/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${p
   ${url}/wp-content/uploads/logo_rgb-768x737.png
   ${pkgname}.desktop)
 sha512sums=('9d7ba0b436ff92d7217a77a54db9db18ff626e2b39977c0315661fe7deb5f200c316479ef886e575a975ce6fb72d3ba0f80e36a932b9f27d1ce734bd8f46083f'
-            '1afe91e9634a6574ba58535cb9b636b63daa02d9157f50d9c5c959c9da151e9635ca73d0616fd8ccac2e7742f2289a6eba05e62b206baee4f738c53526ec4bb8'
-            'fdf21d1821855b1ea93c598ef062669c29c15975a288f72240c183b8f10e8b6d38f96b15fdf02949d66bd94f76df0daed87e9c4d2201db61d4c2750be574e8cd')
+  '1afe91e9634a6574ba58535cb9b636b63daa02d9157f50d9c5c959c9da151e9635ca73d0616fd8ccac2e7742f2289a6eba05e62b206baee4f738c53526ec4bb8'
+  'fdf21d1821855b1ea93c598ef062669c29c15975a288f72240c183b8f10e8b6d38f96b15fdf02949d66bd94f76df0daed87e9c4d2201db61d4c2750be574e8cd')
+
+prepare() {
+  # Use zstd as share library
+  sed -i 's/libzstd_static/libzstd/' ${pkgname}-v${pkgver}/src/ovito/core/CMakeLists.txt
+  sed -i '/TARGET_INCLUDE_DIRECTORIES(Core PUBLIC/,+7 s/^/#/' ${pkgname}-v${pkgver}/src/ovito/core/CMakeLists.txt
+}
 
 build() {
   cmake -S ${pkgname}-v${pkgver} \
@@ -31,8 +37,7 @@ build() {
     -DCMAKE_CXX_STANDARD=20 \
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DOVITO_BUILD_DOCUMENTATION=ON \
-    -DOVITO_BUILD_SSH_CLIENT=ON \
-    -DOVITO_BUILD_PLUGIN_VULKAN=OFF
+    -DOVITO_BUILD_SSH_CLIENT=ON
 
   cmake --build build --target all
 }
