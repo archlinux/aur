@@ -1,0 +1,16 @@
+Description: Fix the build on hppa.
+Forwarded: no
+Author: Andreas Barth <aba@not.so.argh.org>
+Last-Update: 2009-08-22
+
+--- a/arch/hppa/cache.c
++++ b/arch/hppa/cache.c
+@@ -27,7 +27,7 @@
+   for(; p<address+size;)
+     asm volatile("fdc (%0)\n\t"
+ 		 "sync\n\t"
+-		 "fic,m %1(%0)\n\t"
++		 "fic,m %1(4,%0)\n\t"
+ 		 "sync" : "+r"(p) : "r"(linewidth) : "memory" );
+ }
+ 

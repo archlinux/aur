@@ -3,8 +3,11 @@ filelist=(gforth.info vmgen.info)
 
 post_install() {
   for file in ${filelist[@]}; do
-    install-info $infodir/$file $infodir/dir 2> /dev/null
+    install-info $infodir/$file $infodir/dir 2>/dev/null
   done
+  echo "### Documentation ####################################"
+  echo "# file:///usr/share/doc/gforth/gforth_html/index.html "
+  echo "######################################################"
 }
 
 post_upgrade() {
@@ -13,6 +16,6 @@ post_upgrade() {
 
 pre_remove() {
   for file in ${filelist[@]}; do
-    install-info --delete $infodir/$file $infodir/dir 2> /dev/null
+    install-info --delete $infodir/$file $infodir/dir 2>/dev/null
   done
 }

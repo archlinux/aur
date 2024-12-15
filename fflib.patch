@@ -1,0 +1,31 @@
+--- src/gforth-0.7.3/fflib.fs.orig	2024-12-14 19:48:35.511246272 -0500
++++ src/gforth-0.7.3/fflib.fs	2024-12-14 19:54:34.507503924 -0500
+@@ -37,13 +37,13 @@
+ \c typedef void *Label;
+ \c typedef Label *Xt;
+ \c 
+-\c void gforth_callback_ffcall(Xt* fcall, void * alist)
++\c void gforth_callback_ffcall(void *data, struct vacall_alist *alist)
+ \c {
+ \c #ifndef HAS_BACKLINK
+ \c   void **gforth_pointers = saved_gforth_pointers;
+ \c #endif
+ \c   {
+-\c     /* save global valiables */
++\c     /* save global variables */
+ \c     Cell *rp = gforth_RP;
+ \c     Cell *sp = gforth_SP;
+ \c     Float *fp = gforth_FP;
+@@ -52,7 +52,11 @@
+ \c 
+ \c     gforth_clist = (va_alist)alist;
+ \c 
+-\c     gforth_engine(fcall, sp, rp, fp, lp, gforth_UP);
++\c     /* retrieve the fcall function pointer from the data parameter */
++\c     Xt *fcall = *((Xt **)data);
++\c     if (fcall) {
++\c         gforth_engine(fcall, sp, rp, fp, lp, gforth_UP);
++\c     }
+ \c 
+ \c     /* restore global variables */
+ \c     gforth_RP = rp;

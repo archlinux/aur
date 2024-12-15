@@ -1,0 +1,24 @@
+Description: Auto-activate forth-mode on loading Forth source files.
+Bug-Debian: https://bugs.debian.org/587318
+Forwarded: no
+Author: Peter Pentchev <roam@ringlet.net>
+Last-Update: 2016-04-09
+
+--- a/gforth.el
++++ b/gforth.el
+@@ -142,6 +142,15 @@
+ ; 
+ ; Folding neuschreiben (neue Parser-Informationen benutzen)
+ 
++;;; Add Forth source file suffixes (Peter Pentchev <roam@ringlet.net>)
++;;; https://bugs.debian.org/587318
++;;;
++;;;###autoload
++(setq auto-mode-alist
++  (append '(("\\.fs$" . forth-mode)
++    ("\\.4th$" . forth-mode)
++    ("\\.fth$" . forth-mode)) auto-mode-alist))
++
+ ;;; Motion-hooking (dk)
+ ;;;
+ (defun forth-idle-function ()

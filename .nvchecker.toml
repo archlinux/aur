@@ -1,0 +1,4 @@
+[gforth]
+source="github-graphql"
+github="forthy42/gforth"
+use_max_tag=true

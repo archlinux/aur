@@ -1,0 +1,29 @@
+Description: Add a #!-line to the installed Forth scripts.
+Forwarded: no
+Author: Bdale Garbee <bdale@gag.com>
+Last-Update: 2009-08-22
+
+--- a/filedump.fs
++++ b/filedump.fs
+@@ -1,4 +1,4 @@
+-#! /usr/local/lib/gforth/0.2.0/kernel.fi
++#! /usr/share/gforth/0.7.3/kernl32l.fi
+ \ file hex dump
+ 
+ \ Copyright (C) 1997,2002,2003,2004,2007 Free Software Foundation, Inc.
+--- a/httpd.fs
++++ b/httpd.fs
+@@ -1,4 +1,4 @@
+-#! /usr/local/bin/gforth
++#! /usr/bin/gforth
+ 
+ \ Copyright (C) 2000,2002,2003,2004,2006,2007,2008 Free Software Foundation, Inc.
+ 
+--- a/sieve.fs
++++ b/sieve.fs
+@@ -1,4 +1,4 @@
+-#! /usr/stud/paysan/bin/forth
++#! /usr/bin/gforth
+ 
+ DECIMAL
+ : SECS TIME&DATE  2DROP DROP  60 * + 60 * + ;

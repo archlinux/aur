@@ -1,0 +1,91 @@
+Description: Fix the manual page syntax
+  The .TQ macro does not expect the actual text as an argument!
+Forwarded: no
+Author: Peter Pentchev <roam@ringlet.net>
+Last-Update: 2009-08-23
+
+--- a/doc/gforth.1
++++ b/doc/gforth.1
+@@ -57,18 +57,21 @@
+ .SH OPTIONS
+ 
+ .BI "\-\-help"
+-.TQ "\-h"
++.TQ
++.BI "\-h"
+ Lists the available options, including some not described here (see
+ also the manual).
+ .TP
+ .BI "\-\-image\-file " "file"
+-.TQ "\-i " "file"
++.TQ
++.BI "\-i " "file"
+ Loads the Forth image
+ .I file
+ instead of the default \fCgforth.fi\fR.
+ .TP
+ .BI "\-\-path " "path"
+-.TQ "\-p " "path"
++.TQ
++.BI "\-p " "path"
+ Uses
+ .I path
+ for searching the image file and Forth source code
+@@ -80,7 +83,8 @@
+ list.
+ .TP
+ .BI "\-\-dictionary\-size " "size"
+-.TQ "\-m " "size"
++.TQ
++.BI "\-m " "size"
+ Allocate
+ .I size
+ space for the Forth dictionary space instead of
+@@ -94,21 +98,24 @@
+ \fCe\fR is used.
+ .TP
+ .BI "\-\-data\-stack\-size " "size"
+-.TQ "\-d " "size"
++.TQ
++.BI "\-d " "size"
+ Allocate
+ .I size
+ space for the data stack instead of using the
+ default specified in the image (typically 16K).
+ .TP
+ .BI "\-\-return\-stack\-size " "size"
+-.TQ "\-r " "size"
++.TQ
++.BI "\-r " "size"
+ Allocate
+ .I size
+ space for the return stack instead of using the
+ default specified in the image (typically 16K).
+ .TP
+ .BI "\-\-fp\-stack\-size " "size"
+-.TQ "\-f " "size"
++.TQ
++.BI "\-f " "size"
+ Allocate
+ .I size
+ space for the floating point stack instead of
+@@ -118,7 +125,8 @@
+ refers to floating point numbers.
+ .TP
+ .BI "\-\-locals\-stack\-size " "size"
+-.TQ "\-l " "size"
++.TQ
++.BI "\-l " "size"
+ Allocate
+ .I size
+ space for the locals stack instead of using the
+@@ -126,7 +134,8 @@
+ 
+ .TP
+ .BI "\-\-evaluate " "forth"
+-.TQ "\-e " "forth"
++.TQ
++.BI "\-e " "forth"
+ Evaluates the
+ .I forth
+ code. This option takes only one argument; if you want to evaluate

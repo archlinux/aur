@@ -1,0 +1,18 @@
+Description: Fix the build on hppa/parisc.
+Forwarded: no
+Bug-Debian: https://bugs.debian.org/850835
+Author: Helge Deller <deller@gmx.de>
+Last-Update: 2017-01-12
+
+--- a/configure.in
++++ b/configure.in
+@@ -233,6 +233,9 @@
+ 		machine=hppa
+ 		AC_LIBOBJ(../arch/hppa/cache)
+ 		LIBS="$LIBS -L/lib/pa1.1/"
++		test "$skipcode" || skipcode="nop"
++		#".skip 16" passes the test below,
++		# but gives an assembler error in engine
+ 		;;
+ 	sparc*)
+ 		machine=sparc

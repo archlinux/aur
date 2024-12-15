@@ -1,0 +1,25 @@
+diff --git configure.in configure.in
+index f8c943d5..d112646a 100644
+--- configure.in
++++ configure.in
+@@ -200,7 +200,7 @@ OLDLDFLAGS=$LDFLAGS
+ LDFLAGS="$LDFLAGS -export-dynamic"
+ dnl AC_TRY_LINK gives false positive on rs6000-ibm-aix4.2.1.0
+ dnl AC_TRY_LINK(,,ac_export_dynamic=yes,ac_export_dynamic=no)
+-AC_TRY_RUN(main(){exit(0);},ac_export_dynamic=yes,ac_export_dynamic=no,ac_export_dynamic=no)
++AC_TRY_RUN(int main(){return 0;},ac_export_dynamic=yes,ac_export_dynamic=no,ac_export_dynamic=no)
+ test $ac_export_dynamic = yes|| LDFLAGS=$OLDLDFLAGS
+ AC_MSG_RESULT($ac_export_dynamic)
+ 
+@@ -737,9 +737,9 @@ if test -z "$skipcode"; then
+     do
+ 	AC_TRY_RUN(
+ [int foo(int,int,int);
+-main()
++int main()
+ {
+-  exit(foo(0,0,0)!=16);
++  return foo(0,0,0)!=16;
+ }
+ int foo(int x, int y, int z)
+ {

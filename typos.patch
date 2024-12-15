@@ -1,0 +1,928 @@
+Description: Correct some typographical and grammatical errors.
+Forwarded: not-yet
+Author: Peter Pentchev <roam@ringlet.net>
+Last-Update: 2017-01-09
+
+--- a/INSTALL.DOS
++++ b/INSTALL.DOS
+@@ -5,7 +5,7 @@
+ MS-DOS:
+ 
+ You need DJ Delorie's port of GCC to DOS (DJGPP 2.0) to compile
+-Gforth. DJGPP provides a DPMI client that allows to use the 32-bit
++Gforth. DJGPP provides a DPMI client that allows you to use the 32-bit
+ features of the 80386, but on the other hand it requires at least a
+ 386. A DPMI host is also part of the DJGPP 2.0 package, this is
+ required if you don't have a DPMI host yourself (Windows/OS/2/Linux
+@@ -54,11 +54,11 @@
+ 
+ Compiling under DOS or OS/2 has a number of quirks, and if it doesn't
+ compile out of the box, you should know what you do. I therefore
+-discourage unexperienced users to compile gforth themselves. There's a
++discourage inexperienced users from compiling gforth themselves. There's a
+ binary package for it anyway.
+ 
+ Compiling using CygWin32 works a bit better, but there are still
+-quirks. The package allows to "mount" Windows directories under
++quirks. The package allows you to "mount" Windows directories under
+ typical unix locations. E.g. I installed the package in E:\cygnus, and
+ then I mount /usr, /usr/local and /bin with
+ 
+@@ -107,7 +107,7 @@
+ make bench
+ 
+ and compare them with the results in Benchres and in the manual. DOS
+-and OS/2 don't allow to run the benchmarks, since the command TIME
++and OS/2 don't allow you to run the benchmarks, since the command TIME
+ means something different there.
+ 
+ Don't try to do "make install" there, it won't work, either. It is not
+@@ -120,7 +120,7 @@
+ 
+ Use / instead of \ in your gforth source directory. Gforth now uses
+ ';' as path separator for DOS and OS/2 (not for Cygwin32), so you
+-won't have problems with DOS pathes that may contain ':', which is the
++won't have problems with DOS paths that may contain ':', which is the
+ default path separator in Unix. Use ~+ for the current directory.
+ 
+ For paper documentation, print gforth.ps (a Postscript file (300dpi
+--- a/NEWS
++++ b/NEWS
+@@ -71,7 +71,7 @@
+   OPEN-LIB now understands ~ at the start, like OPEN-FILE.
+   TRY...ENDTRY changed significantly, compatibility files available (see docs).
+   The disassembler (DISCODE) can now use gdb to disassemble code
+-  Uninitialized defered words now give a warning when executed
++  Uninitialized deferred words now give a warning when executed
+   Division is floored (disable with "configure --enable-force-cdiv")
+   Gforth (not gforth-fast) reports division by zero and overflow on division
+     on all platforms.
+--- a/README
++++ b/README
+@@ -4,8 +4,8 @@
+ decompiler and a powerful locals facility, and it even has a
+ manual. Gforth combines traditional implementation techniques with
+ newer techniques for portability and performance: its inner
+-interpreter is direct threaded with several optimizations, but you can
+-also use a traditional-style indirect threaded interpreter.  Gforth is
++interpreter is direct-threaded with several optimizations, but you can
++also use a traditional-style indirect-threaded interpreter.  Gforth is
+ distributed under the GNU General Public license (see COPYING).
+ 
+ Gforth runs under GNU, BSD, and similar systems, MS Windows, MacOS X,
+@@ -90,7 +90,7 @@
+ *.fi	Forth image files (start with "gforth -i <image file>")
+ *.fb	Forth blocks file (load with "use <block file> 1 load")
+ *.i	C include files
+-*.ds	documenation source
++*.ds	documentation source
+ *TAGS	etags files
+ 
+ A number of Forth source files are included in this package that are
+--- a/ToDo
++++ b/ToDo
+@@ -54,7 +54,7 @@
+ **use the Foreign Language Interface to make X-Windows support
+ 
+ *Program Development Environment
+-Issues: Convenience, portability across plattforms, compatibility with
++Issues: Convenience, portability across platforms, compatibility with
+ existing tools (Emacs, F-PC)
+ ** Decompiler and Debugger
+ need debugging
+--- a/answords.fs
++++ b/answords.fs
+@@ -6,7 +6,7 @@
+ \ by Norman Smith.
+ 
+ \ The format is:
+-\ answord word-name wordset pronounciation \ dpans6-section dpans6-page
++\ answord word-name wordset pronunciation \ dpans6-section dpans6-page
+ 
+ \ I replaced the wordset name FLOATING (EXT) with FLOAT (EXT)
+ 
+@@ -380,4 +380,4 @@
+ answord [THEN] TOOLS-EXT bracket-then \ 15.6.2.2533 116
+ answord \ CORE-EXT backslash \ 6.2.2535 58
+ answord \ BLOCK-EXT backslash \ 7.6.2.2535 64
+-answord ] CORE right-bracket \ 6.1.2540 49
+\ No newline at end of file
++answord ] CORE right-bracket \ 6.1.2540 49
+--- a/arch/386/asm.fs
++++ b/arch/386/asm.fs
+@@ -29,7 +29,7 @@
+ \ in .86 mode  .w is the default size, in .386 mode  .d is default
+ \ .wa and .da change address size. .b, .w(a) and .d(a) are not
+ \ switches like in my assem68k, they are prefixes.
+-\ [A-D][L|H] implicitely set the .b size. So
++\ [A-D][L|H] implicitly set the .b size. So
+ \ AH AL mov
+ \ generates a byte move. Sure you need .b for memory operations
+ \ like .b ax ) inc    which is  inc  BYTE PTR [eAX]
+--- a/arch/4stack/asm.fs
++++ b/arch/4stack/asm.fs
+@@ -115,7 +115,7 @@
+   move? 0= IF  finish 4 instfield !  THEN
+   instfield @ lastmove !  !inst ;
+ 
+-: !br ( 10bit likelyhood -- addr )
++: !br ( 10bit likelihood -- addr )
+   br? 0= abort" No Data in Branch!"
+   alu? IF  4 instfield !  THEN  >r !inst
+   ibuf 2@  2 r> 3 and 2* 2* + 0 2or  ibuf 2!  4here ;
+@@ -171,7 +171,7 @@
+                   $FFFFFFFFFFFFC1FF ,
+                   $FFFFFFFFFFFFFE0F ,
+ 
+-: !cond  ( n -- )  condfield @ 3 > abort" too much conds!"
++: !cond  ( n -- )  condfield @ 3 > abort" too many conds!"
+   $1F and 3 condfield @ - 5 * 4 + lshift
+   ibuf cell+ @  condmasks condfield @ cells + @ and or
+   ibuf cell+ !  1 condfield +!
+@@ -389,7 +389,7 @@
+              3s0        3s1         3s2         3s3
+ :D
+ 
+-\ relativ to current stack                             21jan94py
++\ relative to current stack                             21jan94py
+ 
+ : curstack: ( 5bit -- )
+   Create ,  DOES>  @ >curstack !stack ;
+@@ -400,12 +400,12 @@
+ %10010 curstack: s2
+ %10011 curstack: s3
+ 
+-\ Abbrevations                                         21jan94py
++\ Abbreviations                                         21jan94py
+ 
+ ' #$7FFFFFFF Alias #max
+ ' #$80000000 Alias #min
+ 
+-\ FP abbrevations                                      21jan94py
++\ FP abbreviations                                      21jan94py
+ 
+ [A]
+ : fabs  and #max ;
+@@ -413,7 +413,7 @@
+ : f2*   add c3 ;
+ : f2/   sub c3 ;
+ 
+-\ ALU abbrevations                                     21jan94py
++\ ALU abbreviations                                     21jan94py
+ 
+ : nop   or   #0 ;
+ : not   xor #-1 ;
+@@ -421,7 +421,7 @@
+ : inc   sub #-1 ;
+ : dec   add #-1 ;
+ 
+-\ Stack abbrevations                                   21jan94py
++\ Stack abbreviations                                   21jan94py
+ 
+ : dup   pick s0 ;
+ : over  pick s1 ;
+--- a/arch/amd64/asm.fs
++++ b/arch/amd64/asm.fs
+@@ -31,7 +31,7 @@
+ \ in .amd64 mode .q is default size.
+ \ .wa, .da, and .qa change address size. .b, .w(a) and .d(a) are not
+ \ switches like in my assem68k, they are prefixes.
+-\ [A-D][L|H] implicitely set the .b size. So
++\ [A-D][L|H] implicitly set the .b size. So
+ \ AH AL mov
+ \ generates a byte move. Sure you need .b for memory operations
+ \ like .b ax ) inc    which is  inc  BYTE PTR [eAX]
+--- a/arch/misc/prim.fs
++++ b/arch/misc/prim.fs
+@@ -68,7 +68,7 @@
+ End-Label
+ 
+ \ The virtual machine registers an data (stacks) go
+-\ to a seperate memory region (hopefully ram)
++\ to a separate memory region (hopefully ram)
+ 
+ \ UNLOCK
+ \ current-region vm-memory activate ( saved-region )
+--- a/arch/power/asm.fs
++++ b/arch/power/asm.fs
+@@ -32,7 +32,7 @@
+ 1 cells 8 = 
+ [if]
+ : h, ( h -- )     \ 32 bit store + allot
+-\ dup hex. \ uncoment this for testing with the test_asm.py script
++\ dup hex. \ uncomment this for testing with the test_asm.py script
+ here here aligned = if
+   32 lshift
+   here !
+--- a/arch/power/disasm.fs
++++ b/arch/power/disasm.fs
+@@ -128,7 +128,7 @@
+ : disasm-unknown ( addr w -- addr w flag )
+   \ used to init tables for instructions with opcode 31, since there are forms 
+   \ the XO starts from 22,30 and also 21,30 , this word will put a flag on the
+-  \ stack which signiliasies wheter the word for disasm-22,30, disasm-21,30 or
++  \ stack which signifies whether the word for disasm-22,30, disasm-21,30 or
+   \ disasm-21,29 (i.e. opcode 31) should be invoked.
+   true ;
+ 
+--- a/arch/r8c/asm.fs
++++ b/arch/r8c/asm.fs
+@@ -17,7 +17,7 @@
+ \ You should have received a copy of the GNU General Public License
+ \ along with this program. If not, see http://www.gnu.org/licenses/.
+ \
+-\ Autor:          Heinz Schnitter (hfs)
++\ Author:          Heinz Schnitter (hfs)
+ \
+ \ Information:
+ \
+@@ -113,7 +113,7 @@
+  
+ \ %0000 2 M: [SP]
+ 
+-\ two cells are used for each adress mode in the table:
++\ two cells are used for each address mode in the table:
+ \
+ \ cell 1 contains the src and dst MODE# searched for.
+ \
+--- a/arch/r8c/prim.fs
++++ b/arch/r8c/prim.fs
+@@ -36,13 +36,13 @@
+  \ hfs wichtig, damit der erste Befehl richtig compiliert wird
+    reset  \ hfs
+ 
+- \ system depending macros
++ \ system-dependent macros
+   : next1,
+       [w] , r1 mov.w:g  r3r1 jmpi.a ;
+   : next,
+       [ip] , w mov.w:g
+       # 2 , ip add.w:q  next1, ;
+-\ note that this is really for 8086 and 286, and _not_ intented to run
++\ note that this is really for 8086 and 286, and _not_ intended to run
+ \ fast on a Pentium (Pro). These old chips load their code from real RAM
+ \ and do it slow, anyway.
+ \ If you really want to have a fast 16 bit Forth on modern processors,
+@@ -343,7 +343,7 @@
+       next,
+    End-Code
+ 
+- \ moving datas between stacks
++ \ moving data between stacks
+   Code r>       ( -- n ; R: n -- )
+       tos push.w:g
+       rp , w mov.w:g
+@@ -439,7 +439,7 @@
+ end-code
+ 
+ \ ==============================================================
+-\ usefull lowlevel words
++\ useful low-level words
+ \ ==============================================================
+  \ word definitions
+ 
+@@ -643,7 +643,7 @@
+       next,
+   End-Code
+ 
+- \ additon io routines
++ \ additional io routines
+   Code (key?)     ( -- f ) \ check for read sio character
+       tos push.w:g
+       3 , $AD  btst:g
+--- a/arch/shboom/compiler.fs
++++ b/arch/shboom/compiler.fs
+@@ -180,8 +180,8 @@
+   dup $9A = IF EXIT THEN    \ r>
+   dup _push.b = IF EXIT THEN \ push.b ?
+   dup _push.l = IF EXIT THEN \ push.l ?
+-  \ we count for fillers
+-  \ too much fillers means we have a forward reference!!
++  \ we count the fillers
++  \ too many fillers means we have a forward reference!!
+   dup _filler = IF 1 filler-cnt +! THEN
+   filler-cnt @ 2 u> IF drop true EXIT THEN 
+   020 u<    \ branch?
+@@ -317,10 +317,10 @@
+ 
+ Cond: M $num (compile,) ;Cond
+ 
+-Cond: _inline rest 4 <> ABORT" inline statement not at beginning!"
++Cond: _inline rest 4 <> ABORT" inline statement not at the beginning!"
+ 	 _skip (compile,) 1 prim,  4 needed ;Cond	 
+ 
+-Cond: _noinline rest 4 <> ABORT" noinline statement not at beginning!"
++Cond: _noinline rest 4 <> ABORT" noinline statement not at the beginning!"
+ 	 _skip (compile,) 0 prim, 4 needed ;Cond	 
+ 
+ : (bd) 4 needed ;                       ' (bd) is branchto,
+@@ -412,7 +412,7 @@
+   r> swap 07 and r> or swap 
+   0 ?DO J I + X c! LOOP rdrop ; IS branchtoresolve,
+ 
+-\ assembler extentions                                  09aug97jaw
++\ assembler extensions                                  09aug97jaw
+ 
+ : parsenum
+   postpone [
+--- a/arch/shboom/doers.fs
++++ b/arch/shboom/doers.fs
+@@ -70,7 +70,7 @@
+ : call-destination
+   \ isolate value
+   dup @ $07FFFFFF and
+-  \ do sign extention if we need to
++  \ do sign extension if we need to
+   dup $04000000 and
+   IF	$F8000000 or THEN
+   \ and resolve offset
+--- a/arch/shboom/prim.fs
++++ b/arch/shboom/prim.fs
+@@ -166,7 +166,7 @@
+ \ nochmal testen!
+ \ : pick  >r
+ \	-&14 .quad2
+-\ 	,scache	\ wirte all to memory
++\ 	,scache	\ write all to memory
+ \	,push_sa drop
+ \	r> cells + @ ;
+ 
+--- a/arch/shboom/sh.p
++++ b/arch/shboom/sh.p
+@@ -22,7 +22,7 @@
+ include cross.fs
+ include ec/shex.fs
+ 
+-\ load compiler extentions
++\ load compiler extensions
+ unlock >CROSS
+ include arch/shboom/compiler.fs
+ 
+--- a/asm/bitmask.fs
++++ b/asm/bitmask.fs
+@@ -18,8 +18,8 @@
+ \ along with this program. If not, see http://www.gnu.org/licenses/.
+ 
+ \ This is a tool for building up assemblers.
+-\ In modern CPU's instrutions there are often some bitfields that
+-\ sepcify a register, a addressing mode, an immediate value.
++\ In modern CPU's instructions there are often some bitfields that
++\ specify a register, an addressing mode, an immediate value.
+ \ A value in an instruction word might be represented in one bitfield
+ \ or several bitfields.
+ \ If you code it yourself, you have to think about the right shifting
+@@ -35,7 +35,7 @@
+ 
+ \ Code Compliance:
+ \
+-\ This is for 32 bit and 64 bit systems and for GForth only.
++\ This is for 32-bit and 64-bit systems and for GForth only.
+ \ 
+ 
+ \ Revision Log:
+@@ -53,7 +53,7 @@
+   0 swap 64 0 DO dup 1 and IF swap 1+ swap THEN 1 rshift LOOP drop ;
+ 
+ : max/bits ( u -- u2 )
+-\G returns the highes number that could be represented by u bits
++\G returns the highest number that could be represented by u bits
+   1 swap lshift 1- ;
+ 
+ Variable mli	\ masked last i
+--- a/compat/struct.fs
++++ b/compat/struct.fs
+@@ -44,7 +44,7 @@
+ 
+ : field ( align1 offset1 align size "name" --  align2 offset2 )
+     \ name execution: addr1 -- addr2
+-    2 pick >r \ this uglyness is just for optimizing with dozerofield
++    2 pick >r \ this ugliness is just for optimizing with dozerofield
+     create-field
+     r> if \ offset<>0
+ 	dofield
+--- a/configure.in
++++ b/configure.in
+@@ -54,7 +54,7 @@
+ AC_SUBST(PROFOBJS)
+ AC_ARG_ENABLE(prof,
+ 	AC_HELP_STRING([--enable-prof],
+-			[ Build gforth-prof, which outputs frequently occuring
++			[ Build gforth-prof, which outputs frequently occurring
+                           sequences of primitives.]),
+ 	,enable_prof=no)
+ if test "$enable_prof" != "no"; then
+@@ -64,8 +64,8 @@
+ AC_ARG_WITH(debug,
+ [  --with-debug		  specifies option -g to compile with debug info
+   --without-debug	  omits the -g switch and creates smaller images on
+-			  machines where "strip" has problems with gcc style
+-			  debugging informations.],
++			  machines where "strip" has problems with gcc-style
++			  debugging information.],
+ if test "$withval" = "yes"; then DEBUGFLAG=-g; fi)
+ 
+ NO_CHECK=""
+@@ -274,7 +274,7 @@
+ 		machine=mips
+ 		#dynamic native code has the following problems on MIPS:
+ 		#
+-		#1) J/JAL seems relocatable, but is are only
++		#1) J/JAL seems relocatable, but is only
+ 		#relocatable within a 256MB-segment.  While we try to
+ 		#get the linker to arrange this, there is no guarantee
+ 		#that this will succeed (and if the user uses a lot of
+@@ -547,7 +547,7 @@
+ ENGINE_FLAGS=
+ AC_SUBST(ENGINE_FLAGS)
+ 
+-# Try if GCC understands -fno-gcse
++# Check whether GCC understands -fno-gcse
+ 
+ AC_MSG_CHECKING([if $CC understands -fno-gcse])
+ CFLAGS_1="$CFLAGS"
+@@ -556,7 +556,7 @@
+ CFLAGS="$CFLAGS_1"
+ AC_MSG_RESULT($ac_nogcse)
+ 
+-# Try if GCC understands -fno-strict-aliasing
++# Check whether GCC understands -fno-strict-aliasing
+ AC_MSG_CHECKING([if $CC understands -fno-strict-aliasing])
+ CFLAGS_1="$CFLAGS"
+ CFLAGS="$CFLAGS -fno-strict-aliasing"
+@@ -564,7 +564,7 @@
+ CFLAGS="$CFLAGS_1"
+ AC_MSG_RESULT($ac_nostrictaliasing)
+ 
+-# Try if GCC understands -fno-crossjumping
++# Check whether GCC understands -fno-crossjumping
+ AC_MSG_CHECKING([if $CC understands -fno-crossjumping])
+ CFLAGS_1="$CFLAGS"
+ CFLAGS="$CFLAGS -fno-crossjumping"
+@@ -572,7 +572,7 @@
+ CFLAGS="$CFLAGS_1"
+ AC_MSG_RESULT($ac_nocrossjumping)
+ 
+-# Try if GCC understands -fno-reorder-blocks
++# Check whether GCC understands -fno-reorder-blocks
+ AC_MSG_CHECKING([if $CC understands -fno-reorder-blocks])
+ CFLAGS_1="$CFLAGS"
+ CFLAGS="$CFLAGS -fno-reorder-blocks"
+@@ -580,7 +580,7 @@
+ CFLAGS="$CFLAGS_1"
+ AC_MSG_RESULT($ac_noreorder_blocks)
+ 
+-# Try if GCC understands -falign-labels=1
++# Check whether GCC understands -falign-labels=1
+ AC_MSG_CHECKING([if $CC understands -falign-labels=1])
+ CFLAGS_1="$CFLAGS"
+ CFLAGS="$CFLAGS -falign-labels=1"
+@@ -588,7 +588,7 @@
+ CFLAGS="$CFLAGS_1"
+ AC_MSG_RESULT($ac_align_labels)
+ 
+-# Try if GCC understands -falign-loops=1
++# Check whether GCC understands -falign-loops=1
+ AC_MSG_CHECKING([if $CC understands -falign-loops=1])
+ CFLAGS_1="$CFLAGS"
+ CFLAGS="$CFLAGS -falign-loops=1"
+@@ -596,7 +596,7 @@
+ CFLAGS="$CFLAGS_1"
+ AC_MSG_RESULT($ac_align_loops)
+ 
+-# Try if GCC understands -falign-jumps=1
++# Check whether GCC understands -falign-jumps=1
+ AC_MSG_CHECKING([if $CC understands -falign-jumps=1])
+ CFLAGS_1="$CFLAGS"
+ CFLAGS="$CFLAGS -falign-jumps=1"
+@@ -604,13 +604,13 @@
+ CFLAGS="$CFLAGS_1"
+ AC_MSG_RESULT($ac_align_jumps)
+ 
+-# Try if GCC understands __attribute__((unused))
++# Check whether GCC understands __attribute__((unused))
+ AC_MSG_CHECKING([how to suppress 'unused variable' warnings])
+ AC_TRY_COMPILE(,[int __attribute__((unused)) foo;], MAYBE_UNUSED='__attribute__((unused))',)
+ AC_DEFINE_UNQUOTED(MAYBE_UNUSED,$MAYBE_UNUSED,[attribute for possibly unused variables])
+ AC_MSG_RESULT($MAYBE_UNUSED)
+ 
+-#try if m4 understands -s
++# Check whether m4 understands -s
+ AC_MSG_CHECKING([how to invoke m4])
+ if m4 -s /dev/null >/dev/null 2>&1; then
+  M4="m4 -s"
+@@ -623,7 +623,7 @@
+ # Find installed Gforth
+ AC_MSG_CHECKING([for gforth])
+ GFORTH="`cd / && which gforth 2>/dev/null`"
+-#the "$srcdir" = "." test defends agains the "../" bug in gforth-0.6.2
++#the "$srcdir" = "." test defends against the "../" bug in gforth-0.6.2
+ (cd / && $GFORTH -e bye >/dev/null 2>/dev/null  && test "$srcdir" = ".") || GFORTH=""
+ if test -z "$GFORTH"; then
+   PREFORTH='echo "You need to configure with a gforth in \$PATH to build this part" && false'
+--- a/cross.fs
++++ b/cross.fs
+@@ -23,7 +23,7 @@
+ 
+ ToDo:
+ - Crossdoc destination ./doc/crossdoc.fd makes no sense when
+-  cross.fs is used seperately. jaw
++  cross.fs is used separately. jaw
+ - Do we need this char translation with >address and in branchoffset? 
+   (>body also affected) jaw
+ 
+@@ -71,8 +71,8 @@
+ 
+ >CROSS
+ 
+-\ Test against this definitions to find out whether we are cross-compiling
+-\ may be usefull for assemblers
++\ Test against this definition to find out whether we are cross-compiling
++\ may be useful for assemblers
+ 0 Constant gforth-cross-indicator
+ 
+ \ find out whether we are compiling with gforth
+@@ -177,7 +177,7 @@
+     THEN ;
+ 
+ : s>number ( addr len -- d )
+-    \ don't use this, there is no way to tell success
++    \ don't use this, there is no way to determine success
+     s>number? drop ;
+ 
+ : snumber? ( c-addr u -- 0 / n -1 / d 0> )
+@@ -214,7 +214,7 @@
+ 
+ >CROSS
+ 
+-hex     \ the defualt base for the cross-compiler is hex !!
++hex     \ the default base for the cross-compiler is hex !!
+ \ Warnings off
+ 
+ \ words that are generaly useful
+@@ -239,7 +239,7 @@
+   save-input bl word >r restore-input throw r> count
+   get-current search-wordlist
+   IF	drop >r
+-	\ we have to set current to be topmost context wordlist
++	\ we have to set current to the topmost context wordlist
+ 	get-order get-order get-current swap 1+ set-order
+ 	r> ['] to execute
+ 	set-order
+@@ -283,7 +283,7 @@
+ 
+ This implements debugflags for the cross compiler and the compiled
+ images. It works identical to the has-flags in the environment.
+-The debugflags are defined in a vocabluary. If the word exists and
++The debugflags are defined in a vocabulary. If the word exists and
+ its value is true, the flag is switched on.
+ 
+ [THEN]
+@@ -369,7 +369,7 @@
+ \ -Changing the search-path:
+ \ fpath+ <path> 	adds a directory to the searchpath
+ \ fpath= <path>|<path>	makes complete now searchpath
+-\ 			seperator is |
++\ 			separator is |
+ \ .fpath		displays the search path
+ \ remark I: 
+ \ a ./ in the beginning of filename is expanded to the directory the
+@@ -771,7 +771,7 @@
+ Plugin leave,	( -- )
+ Plugin ?leave, 	( -- )
+ 
+-Plugin ca>native  \ Convert a code address to the processors
++Plugin ca>native  \ Convert a code address to the processor's
+                   \ native address. This is used in doprim, and
+                   \ code/code: primitive definitions word to
+                   \ convert the addresses.
+@@ -893,7 +893,7 @@
+ Variable last-header-ghost \ last ghost definitions with header
+ 
+ \ space for ghosts resolve structure
+-\ we create ghosts in a sepearte space
++\ we create ghosts in a separate space
+ \ and not to the current host dp, because this
+ \ gives trouble with instant while compiling and creating
+ \ a ghost for a forward reference
+@@ -1036,7 +1036,7 @@
+       drop >in ! 
+   ELSE >in ! 
+   THEN 
+-  \ we keep the execution semantics of the prviously
++  \ we keep the execution semantics of the previously
+   \ defined words, this is a workaround
+   \ for the redefined \ until vocs work
+   Make-Ghost ;
+@@ -1070,7 +1070,7 @@
+   \ if this address is an xt, this field points to the ghost
+   cell% field addr-xt-ghost
+   \ a bit mask that tells as what part of the cell
+-  \ is refenced from an address pointer, used for assembler generation
++  \ is referenced from an address pointer, used for assembler generation
+   cell% field addr-refs
+ End-Struct addr-struct
+ 
+@@ -1211,7 +1211,7 @@
+ \ \ Create additional parameters                         19jan95py
+ 
+ \ currently cross only works for host machines with address-unit-bits
+-\ eual to 8 because of s! and sc!
++\ equal to 8 because of s! and sc!
+ \ but I start to query the environment just to modularize a little bit
+ 
+ : check-address-unit-bits ( -- )	
+@@ -2060,7 +2060,7 @@
+ : restrict      restrict-mask flag! ;
+ 
+ : isdoer	
+-\G define a forth word as doer, this makes obviously only sence on
++\G define a forth word as doer, this makes obviously only sense on
+ \G forth processors such as the PSC1000
+ 		<do:> last-header-ghost @ >magic ! ;
+ >CROSS
+@@ -2428,9 +2428,9 @@
+ 
+ : (lit,) ( n -- )  s>d dlit, ;				' (lit,) plugin-of lit,
+ 
+-\ if we dont produce relocatable code alit, defaults to lit, jaw
++\ if we don't produce relocatable code alit, defaults to lit, jaw
+ \ this is just for convenience, so we don't have to define alit,
+-\ seperately for embedded systems....
++\ separately for embedded systems....
+ T has? relocate H
+ [IF]
+ : (alit,) ( n -- )  compile lit T  a, H ;		' (alit,) plugin-of alit,
+@@ -2703,7 +2703,7 @@
+    swap >do:ghost @ 2dup swap >do:ghost !
+    \ we use the >exec2 field for the semantic of a created word,
+    \ using exec or exec2 makes no difference for normal cross-compilation
+-   \ but is usefull for instant where the exec field is already
++   \ but is useful for instance when the exec field is already
+    \ defined (e.g. Vocabularies)
+    2dup >exec @ swap >exec2 ! 
+    >comp @ swap >comp ! ;
+@@ -2732,7 +2732,7 @@
+   dup >created on  dup to created
+   2dup takeover-x-semantics
+   there 0 T a, H alias-mask flag!
+-  \ store poiter to code-field
++  \ store pointer to code-field
+   switchram T cfalign H
+   there swap T ! H
+   there tlastcfa ! 
+@@ -2966,10 +2966,10 @@
+ \ this section defines different compilation
+ \ actions for created words
+ \ this will help the peephole optimizer
+-\ I (jaw) took this from bernds latest cross-compiler
+-\ changes but seperated it from the original
++\ I (jaw) took this from bernd's latest cross-compiler
++\ changes but separated it from the original
+ \ Builder words. The final plan is to put this
+-\ into a seperate file, together with the peephole
++\ into a separate file, together with the peephole
+ \ optimizer for cross
+ 
+ 
+@@ -3366,7 +3366,7 @@
+ : $nb, ( adr len -- ) bounds ?DO I c@ nb, LOOP ;
+ : @nb name-ptr @ name-buf tuck - ;
+ 
+-\ stores a usefull string representation of the character
++\ stores a useful string representation of the character
+ \ in the name buffer
+ : name-char, ( c -- )
+   dup 'a 'z 1+ within IF nb, EXIT THEN
+@@ -3400,9 +3400,9 @@
+ : label-from-ghostname ( ghost -- addr len )
+   dup >ghostname init-name-buf 'L nb, bounds 
+   ?DO I c@ name-char, LOOP 
+-  \ we add the address to a name to make in unique
++  \ we add the address to a name to make it unique
+   \ because one name may appear more then once
+-  \ there are names (e.g. boot) that may be reference from other
++  \ there are names (e.g. boot) that may be referenced from other
+   \ assembler source files, so we declare them as unique
+   \ and don't add the address suffix
+   dup >ghost-flags @ <unique> and 0= 
+@@ -3477,7 +3477,7 @@
+   IF   print-bytes THEN
+   save-asm-region-part-aligned
+   dup dup X aligned swap - ?dup
+-  IF   2 pick @relbit ABORT" relocated field splitted"
++  IF   2 pick @relbit ABORT" relocated field split"
+        print-bytes
+   THEN
+   2drop ;
+@@ -3489,11 +3489,11 @@
+   tuck over - ;
+ 
+ : skip-nolables ( taddr -- taddr2 taddr len )
+-\G skips memory region where no lables are defined
++\G skips memory region where no labels are defined
+ \G starting from taddr+1
+ \G Labels will be introduced for each reference mark
+ \G in addr-refs.
+-\G This word deals with lables at byte addresses as well.
++\G This word deals with labels at byte addresses as well.
+ \G The main idea is to have an intro part which
+ \G skips until the next cell boundary, the middle part
+ \G which skips whole cells very efficiently and the third
+@@ -3569,7 +3569,7 @@
+ 	   
+ >MINIMAL also minimal
+ 
+-\ Usefull words                                        13feb93py
++\ Useful words                                        13feb93py
+ 
+ : KB  400 * ;
+ 
+@@ -3668,7 +3668,7 @@
+ \G interprets the line if word is defined
+    tdefined? 0= IF postpone \ THEN ;
+ 
+-: \? ( -- "envorinstring" )
++: \? ( -- "environstring" )
+ \G Skip line if environmental variable evaluates to false
+    X has? 0= IF postpone \ THEN ;
+ 
+@@ -3796,7 +3796,7 @@
+ \ Sets the unique flag for a ghost. The assembler output
+ \ generates labels with the ghostname concatenated with the address
+ \ while cross-compiling. The address is concatenated
+-\ because we have double occurences of the same name.
++\ because we have double occurrences of the same name.
+ \ If we want to reference the labels from the assembler or C
+ \ code we declare them unique, so the address is skipped.
+   Ghost >ghost-flags dup @ <unique> or swap ! ;
+@@ -3821,7 +3821,7 @@
+ : G ghosts ; immediate
+ 
+ 
+-\ these ones are pefered:
++\ these ones are preferred:
+ 
+ : unlock previous forth also cross ;
+ 
+--- a/ec/shex.fs
++++ b/ec/shex.fs
+@@ -17,7 +17,7 @@
+ \ You should have received a copy of the GNU General Public License
+ \ along with this program. If not, see http://www.gnu.org/licenses/.
+ 
+-\ this is a extention to cross.fs to save motorola s-records
++\ this is a extension to cross.fs to save motorola s-records
+ \ the first part is generic to output s-records from and to any
+ \ destination
+ \ the second part is for the cross compiler
+--- a/kernel/comp.fs
++++ b/kernel/comp.fs
+@@ -19,7 +19,7 @@
+ 
+ \ \ Revisions-Log
+ 
+-\	put in seperate file				14sep97jaw	
++\	put in separate file				14sep97jaw	
+ 
+ \ \ here allot , c, A,						17dec92py
+ 
+@@ -288,7 +288,7 @@
+ : !does    ( addr -- ) \ gforth	store-does
+     latestxt does-code! ;
+ 
+-\ !! unused, but ifdefed/gosted in some places
++\ !! unused, but ifdefed/ghosted in some places
+ : (does>)  ( R: addr -- )
+     r> cfaligned /does-handler + !does ; \ !! no gforth-native
+ 
+--- a/kernel/int.fs
++++ b/kernel/int.fs
+@@ -19,7 +19,7 @@
+ 
+ \ \ Revision-Log
+ 
+-\       put in seperate file				14sep97jaw 
++\       put in separate file				14sep97jaw 
+ 
+ \ \ input stream primitives                       	23feb93py
+ 
+@@ -196,7 +196,7 @@
+     THEN ;
+ 
+ : s>number ( addr len -- d )
+-    \ don't use this, there is no way to tell success
++    \ don't use this, there is no way to determine success
+     s>number? drop ;
+ 
+ : snumber? ( c-addr u -- 0 / n -1 / d 0> )
+@@ -759,7 +759,7 @@
+ : query   ( -- ) \ core-ext
+     \G Make the user input device the input source. Receive input into
+     \G the Terminal Input Buffer. Set @code{>IN} to zero. OBSOLESCENT:
+-    \G superceeded by @code{accept}.
++    \G superceded by @code{accept}.
+     [ has? file [IF] ]
+ 	blk off loadfile off
+ 	[ [THEN] ]
+@@ -1134,7 +1134,7 @@
+     cold
+ [ [THEN] ]
+ [ has? os [IF] ]
+-    1 (bye) \ !! determin exit code from throw code?
++    1 (bye) \ !! determine exit code from throw code?
+ [ [THEN] ]
+ ;
+ 
+--- a/kernel/paths.fs
++++ b/kernel/paths.fs
+@@ -20,7 +20,7 @@
+ \ -Changing the search-path:
+ \ fpath+ <path> 	adds a directory to the searchpath
+ \ fpath= <path>|<path>	makes complete now searchpath
+-\ 			seperator is |
++\ 			separator is |
+ \ .fpath		displays the search path
+ \ remark I: 
+ \ a ./ in the beginning of filename is expanded to the directory the
+@@ -28,7 +28,7 @@
+ \ ~+/ loads from the current working directory
+ 
+ \ remark II:
+-\ if there is no sufficient space for the search path increase it!
++\ if there is not sufficient space for the search path increase it!
+ 
+ 
+ \ -Creating custom paths:
+--- a/kernel/tools.fs
++++ b/kernel/tools.fs
+@@ -1,4 +1,4 @@
+-\ TOOLS.FS     Toolkit extentions                      2may93jaw
++\ TOOLS.FS     Toolkit extensions                      2may93jaw
+ 
+ \ Copyright (C) 1995,1998,1999,2001,2003,2006,2007 Free Software Foundation, Inc.
+ 
+--- a/libcc.fs
++++ b/libcc.fs
+@@ -448,7 +448,7 @@
+     .\" }\n" ;
+ 
+ : scan-back { c-addr u1 c -- c-addr u2 }
+-    \ the last occurence of c in c-addr u1 is at u2-1; if it does not
++    \ the last occurrence of c in c-addr u1 is at u2-1; if it does not
+     \ occur, u2=0.
+     c-addr 1- c-addr u1 + 1- u-do
+ 	i c@ c = if
+--- a/other.fs
++++ b/other.fs
+@@ -1,4 +1,4 @@
+-\ OTHER.FS     Ansforth extentions for CROSS           9may93jaw
++\ OTHER.FS     Ansforth extensions for CROSS           9may93jaw
+ 
+ \ Copyright (C) 1995,1998,2000,2003,2007 Free Software Foundation, Inc.
+ 
+--- a/prims2x0.6.2.fs
++++ b/prims2x0.6.2.fs
+@@ -42,7 +42,7 @@
+ \ 	the alternative
+ \ store optimization for combined instructions.
+ 
+-\ Design Uglyness:
++\ Design Ugliness:
+ 
+ \ - global state (values, variables) in connection with combined instructions.
+ 
+@@ -178,7 +178,7 @@
+  cell%    field item-stack  \ descriptor for the stack used, 0 is default
+  cell%    field item-type   \ descriptor for the item type
+  cell%    field item-offset \ offset in stack items, 0 for the deepest element
+- cell%	  field item-first  \ true if this is the first occurence of the item
++ cell%	  field item-first  \ true if this is the first occurrence of the item
+ end-struct item%
+ 
+ struct%
+@@ -298,7 +298,7 @@
+ create min-depth     max-stacks cells allot
+ 
+ create sp-update-in max-stacks cells allot
+-\ where max-depth occured the first time
++\ where max-depth occurred the first time
+ create max-depths max-stacks max-combined 1+ * cells allot
+ \ maximum depth at start of each part: array[parts] of array[stack]
+ create max-back-depths max-stacks max-combined 1+ * cells allot
+@@ -959,7 +959,7 @@
+ : output-forth ( -- )  
+     prim prim-forth-code @ 0=
+     IF    	\ output-alias
+-	\ this is bad for ec: an alias is compiled if tho word does not exist!
++	\ this is bad for ec: an alias is compiled if the word does not exist!
+ 	\ JAW
+     ELSE  ." : " prim prim-name 2@ type ."   ( "
+ 	prim prim-stack-string 2@ type ." )" cr
+--- a/see-ext.fs
++++ b/see-ext.fs
+@@ -1,4 +1,4 @@
+-\ see-ext.fs extentions for see locals, floats
++\ see-ext.fs extensions for see locals, floats
+ 
+ \ Copyright (C) 1995,1996,1997,2003,2007 Free Software Foundation, Inc.
+ 

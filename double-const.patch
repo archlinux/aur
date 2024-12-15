@@ -1,0 +1,16 @@
+Description: Fix a harmless GCC 7 double const warning.
+Forwarded: no
+Author: Peter Pentchev <roam@ringlet.net>
+Last-Update: 2017-02-06
+
+--- a/engine/main.c
++++ b/engine/main.c
+@@ -249,7 +249,7 @@
+ PrimInfo *priminfos;
+ PrimInfo **decomp_prims;
+ 
+-const char const* const prim_names[]={
++const char * const prim_names[]={
+ #include PRIM_NAMES_I
+ };
+ 

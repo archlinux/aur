@@ -1,0 +1,37 @@
+Description: Correct some of the configure script's assumptions:
+  Disable the unsupported build optimization of passing -m486 to gcc
+  Do not pass -Xlinker -N on hppa, it breaks the build.
+Forwarded: no
+Author: Peter Pentchev <roam@ringlet.net>
+Last-Update: 2014-02-24
+
+--- a/configure.in
++++ b/configure.in
+@@ -232,27 +232,14 @@
+ 	hppa*)
+ 		machine=hppa
+ 		AC_LIBOBJ(../arch/hppa/cache)
+-		#-N needed for --dynamic <M4U3b.3790$9d.317@news.cpqcorp.net>
+-		LDFLAGS="$LDFLAGS -Xlinker -N"
+ 		LIBS="$LIBS -L/lib/pa1.1/"
+ 		;;
+ 	sparc*)
+ 		machine=sparc
+ 		;;
+-	i386)
+-		machine=386
+-		CFLAGS="$CFLAGS -fomit-frame-pointer -fforce-addr"
+-		;;
+-	i486)
+-		machine=386
+-		CFLAGS="$CFLAGS -fomit-frame-pointer -fforce-addr"
+-		;;
+ 	i*86)
+ 		machine=386
+ 		CFLAGS="$CFLAGS -fomit-frame-pointer -fforce-addr"
+-		CFLAGS_1="$CFLAGS"
+-		CFLAGS="$CFLAGS -march=pentium"
+-		AC_TRY_COMPILE(,,,CFLAGS="$CFLAGS_1 -m486")
+ 		;;
+ 	x86_64)
+ 		case $CC

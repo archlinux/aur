@@ -1,0 +1,37 @@
+Description: Do not build and install the .elc and .info files.
+Forwarded: not-needed
+Author: Eric Schwartz <emschwar@debian.org>
+Author: Peter Pentchev <roam@ringlet.net>
+Last-Update: 2014-02-25
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -430,7 +430,7 @@
+ 
+ ENGINES_FAST = gforth-fast$(OPT)$(EC)$(EXE) #gforth-native$(OPT)$(EC)$(EXE) 
+ 
+-GEN = $(ENGINES) $(ENGINES_FAST) gforth.elc
++GEN = $(ENGINES) $(ENGINES_FAST)
+ 
+ # things that need a working forth system to be generated
+ FORTH_GEN_ENGINE=engine/prim.i engine/prim_lab.i engine/prim_names.i \
+@@ -615,7 +615,7 @@
+ 		$(INSTALL_DATA) $(kernel_fi) $(DESTDIR)$(datadir)/gforth/$(VERSION)
+ 		@if test -d "$(DESTDIR)$(emacssitelispdir)"; then \
+ 			$(INSTALL_DATA) gforth.el $(DESTDIR)$(emacssitelispdir); \
+-			$(INSTALL_DATA) gforth.elc $(DESTDIR)$(emacssitelispdir); \
++			#$(INSTALL_DATA) gforth.elc $(DESTDIR)$(emacssitelispdir); \
+ 		else \
+ 			echo '>>>>>Please install gforth.{el,elc} in your .../emacs/site-lisp directory'; \
+ 		fi
+@@ -626,8 +626,8 @@
+ 		   $(LIBTOOL) --silent --mode=install $(INSTALL) lib/gforth/$(VERSION)/libcc-named/`basename $$i .fs`.la $(DESTDIR)$(libccdir)`basename $$i .fs`.la; \
+ 		done; fi
+ 		$(POST_INSTALL)
+-		$(INSTALL_INFO) --info-dir=$(DESTDIR)$(infodir) $(DESTDIR)$(infodir)/gforth.info
+-		$(INSTALL_INFO) --info-dir=$(DESTDIR)$(infodir) $(DESTDIR)$(infodir)/vmgen.info
++		#$(INSTALL_INFO) --info-dir=$(DESTDIR)$(infodir) $(DESTDIR)$(infodir)/gforth.info
++		#$(INSTALL_INFO) --info-dir=$(DESTDIR)$(infodir) $(DESTDIR)$(infodir)/vmgen.info
+ 
+ install-strip:	install
+ 

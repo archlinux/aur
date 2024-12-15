@@ -1,0 +1,16 @@
+Description: Pass the compiler/linker flags when building libcc stub objects.
+Forwarded: not-yet
+Author: Peter Pentchev <roam@ringlet.net>
+Last-Update: 2016-04-07
+
+--- a/envos.fs.in
++++ b/envos.fs.in
+@@ -32,7 +32,7 @@
+ 
+ : libtool-cc ( -- c-addr u ) \ gforth
+ \G invocation string of the C compiler used for libtool
+-    s" @CC@" ;
++    s" @CC@ @CPPFLAGS@ @CFLAGS@ @LDFLAGS@" ;
+ 
+ : libtool-flags ( -- c-addr u ) \ gforth
+ \G force no undefined for cygwin
