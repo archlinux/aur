@@ -1,0 +1,3 @@
+post_install() {
+	echo "To enable Alt+F5, execute \"kcmshell6 kcm_keys\" and add a new shortcut for the application Alt+F5 to it"
+}

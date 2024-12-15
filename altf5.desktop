@@ -1,0 +1,17 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=/bin/bash /usr/share/altf5/altf5.sh
+GenericName[en_US]=
+GenericName=
+Icon=org.kde.plasma.systempanel
+MimeType=
+Name[en_US]=Alt+F5
+Name=Alt+F5
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=

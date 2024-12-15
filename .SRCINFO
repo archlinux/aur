@@ -1,0 +1,17 @@
+pkgbase = altf5
+	pkgdesc = Force quit the active window (KDE6)
+	pkgver = 1.0
+	pkgrel = 1
+	install = altf5.install
+	arch = x86_64
+	license = Apache
+	depends = kwin
+	depends = bash
+	source = kwin_script.js
+	source = altf5.sh
+	source = altf5.desktop
+	sha256sums = cf27d8c34d27c8331bfa08a17aa7bf54a870b3cc114316a8f16569763ace0368
+	sha256sums = a6330f22c125385043e343e6247caf7b766095ecab9224cb985e731cba2b8cad
+	sha256sums = c021becdf9b83b631ca562002c0f1127b2b331189ef4b60e090ee1b7dd231e97
+
+pkgname = altf5
