@@ -1,12 +1,10 @@
 pkgbase = openbuilds-control-bin
 	pkgdesc = Grbl Host / Interface for all CNC style machines running Grbl
-	pkgver = 1.0.382
+	pkgver = 1.0.388
 	pkgrel = 1
 	url = https://github.com/OpenBuilds/OpenBuilds-CONTROL
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = glibc
-	depends = gcc-libs
 	depends = electron23
 	depends = dbus
 	depends = libxdamage
@@ -33,9 +31,7 @@ pkgbase = openbuilds-control-bin
 	depends = hicolor-icon-theme
 	provides = openbuilds-control
 	conflicts = openbuilds-control
-	source = https://github.com/OpenBuilds/OpenBuilds-CONTROL/releases/download/v1.0.382/OpenBuildsCONTROL_1.0.382_amd64.deb
-	source = openbuildscontrol
-	sha512sums = 88818134b9cf3b9a0ca7e0d299a6a4d5d9e3ce7c116c8a90792e3c9fdba7cacdabbb7b7d582905ebd426683ec129578c6cfaa6f9391dbd3ae9c74d6a3b137240
-	sha512sums = 7d9833000c547ef14a0e7a272903991db3b3a2297527e2fd40d1e2a20c34f6771edce68b736a1859d6c3dd769f263ff90a073622f7bdcdd33a6274b40299f925
+	source = https://github.com/OpenBuilds/OpenBuilds-CONTROL/releases/download/v1.0.388/OpenBuildsCONTROL_1.0.388_amd64.deb
+	sha512sums = c30b6855dee19f615fd05f6e0c68f8f006710549f2d3ed93d59d1871fadf00a5c2fdf8d72be7dca98f5369f45dbb25b2791f844d07bf93e05643f1a393ef3aa8
 
 pkgname = openbuilds-control-bin
