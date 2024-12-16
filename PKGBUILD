@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="An aesthetically pleasing TUI frontend to browsing YouTube written in Rust. (Binary)"
 arch=('x86_64')
 url="https://github.com/Siriusmart/$_pkgname"
-url_raw="https://raw.githubusercontent.com/$(echo "$url" | awk -F'/' '{print $4 "/" $5}')"
+_url_raw="https://raw.githubusercontent.com/$(echo "$url" | awk -F'/' '{print $4 "/" $5}')"
 license=('GPL-3.0')
 depends=('libxcb')
 optdepends=(
@@ -17,9 +17,9 @@ optdepends=(
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-nodefaults_arch-x86_64.youtube-tui-nodefaults_arch-x86_64"
-    "LICENSE-$pkgver::$url_raw/refs/tags/v$pkgver/LICENSE"
-    "README-$pkgver.md::$url_raw/refs/tags/v$pkgver/README.md")
+source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-nodefaults_arch-$CARCH.youtube-tui-nodefaults_arch-$CARCH"
+    "LICENSE-$pkgver::$_url_raw/refs/tags/v$pkgver/LICENSE"
+    "README-$pkgver.md::$_url_raw/refs/tags/v$pkgver/README.md")
 sha256sums=('6829d9d672455a1d531093e139ad23aa6d0b7b1814775bf2752e4278dc62654a' 'SKIP' 'SKIP')
 
 package() {
