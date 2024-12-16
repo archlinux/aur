@@ -44,7 +44,7 @@ package() {
     ln -s "$pkgdir/opt/$pkgname/data/fonts/${_pkgfont}BoldItalic-1y1e.otf" "$pkgdir/usr/share/fonts/opentype/${_pkgfont}BoldItalic.otf"
     ln -s "$pkgdir/opt/$pkgname/data/fonts/${_pkgfont}Italic-R8Mo.otf" "$pkgdir/usr/share/fonts/opentype/${_pkgfont}Italic.otf"
 
-    install -Dm0755 "$startdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    install -Dm0755 "../$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
