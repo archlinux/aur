@@ -57,7 +57,7 @@ makedepends=(
   meson
 )
 source=(
-  git+https://github.com/workbenchdev/Workbench.git
+  "git+https://github.com/workbenchdev/Workbench.git#tag=v$pkgver"
   git+https://github.com/sonnyp/troll.git
   workbench-demos::git+https://github.com/workbenchdev/demos.git
   git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git
@@ -70,7 +70,7 @@ source=(
   workbench-flatpak-id.patch
 )
 b2sums=(
-  SKIP
+  e51e82d84aa680cf233b445d22ff3efdab2463522b9f8fe250754dfd5883588d3303122cfc90ee63890d3c5c466cac4d2d53877e1639f047ab0bd8b045b19fca
   SKIP
   SKIP
   SKIP
@@ -91,9 +91,6 @@ prepare() {
   git submodule set-url demos "$srcdir/workbench-demos"
   git submodule set-url gi-types "$srcdir/gi-typescript-definitions"
   git -c protocol.file.allow=always submodule update
-
-  # Release 47
-  git cherry-pick -n 0109ae8bed18f74b952440972fd6b5542767d7f7
 
   # Don't check if running under Flatpak
   git apply -3 ../workbench-no-flatpak.patch

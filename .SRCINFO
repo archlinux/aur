@@ -50,7 +50,7 @@ pkgbase = workbench
 	depends = vala-language-server
 	depends = vte4
 	depends = webkitgtk-6.0
-	source = git+https://github.com/workbenchdev/Workbench.git
+	source = git+https://github.com/workbenchdev/Workbench.git#tag=v47.0
 	source = git+https://github.com/sonnyp/troll.git
 	source = workbench-demos::git+https://github.com/workbenchdev/demos.git
 	source = git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git
@@ -61,7 +61,7 @@ pkgbase = workbench
 	source = workbench-vapi-parameter.patch
 	source = workbench-about-dialog.patch
 	source = workbench-flatpak-id.patch
-	b2sums = SKIP
+	b2sums = e51e82d84aa680cf233b445d22ff3efdab2463522b9f8fe250754dfd5883588d3303122cfc90ee63890d3c5c466cac4d2d53877e1639f047ab0bd8b045b19fca
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
