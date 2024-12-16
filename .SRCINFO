@@ -1,11 +1,11 @@
 pkgbase = r-iranges
 	pkgdesc = Foundation of integer range manipulation in Bioconductor
-	pkgver = 2.38.0
+	pkgver = 2.40.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/IRanges.html
 	arch = i686
 	arch = x86_64
-	license = Artistic2.0
+	license = Artistic-2.0
 	depends = r>=4.0.0
 	depends = r-biocgenerics>=0.39.2
 	depends = r-s4vectors>=0.33.3
@@ -18,7 +18,7 @@ pkgbase = r-iranges
 	optdepends = r-rsamtools
 	optdepends = r-runit
 	optdepends = r-xvector
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/IRanges_2.38.0.tar.gz
-	b2sums = 3ae9be65ebbd105d5309288eb4a21525baf3f2add31973f4a433d685c499a8cb932ce43bc4e6aa23268520b3cb342efbc91243ff760de18c25a40f75df28d54b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IRanges_2.40.1.tar.gz
+	b2sums = 0eb6dc5315f2a17a47107d866cc8b215c8914ad87e82c03786def52aff219d3c41f74d7d554b39579ba8da5354783935c2b0e1d3927e3329c82bf8c4e0fbf2f8
 
 pkgname = r-iranges

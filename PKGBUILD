@@ -3,14 +3,14 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=IRanges
-_bcver=2.38.0
+_bcver=2.40.1
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
 pkgdesc="Foundation of integer range manipulation in Bioconductor"
 arch=(i686 x86_64)
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
-license=("Artistic2.0")
+license=("Artistic-2.0")
 depends=(
     "r>=4.0.0"
     "r-biocgenerics>=0.39.2"
@@ -28,7 +28,7 @@ optdepends=(
     "r-xvector"
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("3ae9be65ebbd105d5309288eb4a21525baf3f2add31973f4a433d685c499a8cb932ce43bc4e6aa23268520b3cb342efbc91243ff760de18c25a40f75df28d54b")
+b2sums=("0eb6dc5315f2a17a47107d866cc8b215c8914ad87e82c03786def52aff219d3c41f74d7d554b39579ba8da5354783935c2b0e1d3927e3329c82bf8c4e0fbf2f8")
 
 build() {
     R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
