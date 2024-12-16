@@ -1,9 +1,10 @@
 pkgbase = linutil-bin
 	pkgdesc = Chris Titus Tech's Linutil is a distro-agnostic toolbox designed to simplify everyday Linux tasks.
 	pkgver = 2024.10.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ChrisTitusTech/linutil
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = git
 	depends = pacman
@@ -20,5 +21,15 @@ pkgbase = linutil-bin
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
+	source_aarch64 = linutil-2024.10.31::https://github.com/ChrisTitusTech/linutil/releases/download/2024.10.31/linutil-aarch64
+	source_aarch64 = linutil-2024.10.31.1::https://raw.githubusercontent.com/ChrisTitusTech/linutil/refs/tags/2024.10.31/man/linutil.1
+	source_aarch64 = linutil-2024.10.31.desktop::https://raw.githubusercontent.com/ChrisTitusTech/linutil/refs/tags/2024.10.31/linutil.desktop
+	source_aarch64 = LICENSE-2024.10.31::https://raw.githubusercontent.com/ChrisTitusTech/linutil/refs/tags/2024.10.31/LICENSE
+	source_aarch64 = README-2024.10.31.md::https://raw.githubusercontent.com/ChrisTitusTech/linutil/refs/tags/2024.10.31/README.md
+	sha256sums_aarch64 = 0
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = SKIP
 
 pkgname = linutil-bin

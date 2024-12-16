@@ -3,23 +3,22 @@
 pkgname=linutil-bin
 _pkgname=linutil
 pkgver=2024.10.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Chris Titus Tech's Linutil is a distro-agnostic toolbox designed to simplify everyday Linux tasks."
-#arch=('x86_64' 'aarch64')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/ChrisTitusTech/$_pkgname"
-url_raw="https://raw.githubusercontent.com/$(echo "$url" | awk -F'/' '{print $4 "/" $5}')"
+_url_raw="https://raw.githubusercontent.com/$(echo "$url" | awk -F'/' '{print $4 "/" $5}')"
 license=('MIT')
 source_x86_64=("$_pkgname-$pkgver::$url/releases/download/$pkgver/$_pkgname"
-    "$_pkgname-$pkgver.1::$url_raw/refs/tags/$pkgver/man/$_pkgname.1"
-    "$_pkgname-$pkgver.desktop::$url_raw/refs/tags/$pkgver/$_pkgname.desktop"
-    "LICENSE-$pkgver::$url_raw/refs/tags/$pkgver/LICENSE"
-    "README-$pkgver.md::$url_raw/refs/tags/$pkgver/README.md")
+    "$_pkgname-$pkgver.1::$_url_raw/refs/tags/$pkgver/man/$_pkgname.1"
+    "$_pkgname-$pkgver.desktop::$_url_raw/refs/tags/$pkgver/$_pkgname.desktop"
+    "LICENSE-$pkgver::$_url_raw/refs/tags/$pkgver/LICENSE"
+    "README-$pkgver.md::$_url_raw/refs/tags/$pkgver/README.md")
 source_aarch64=("$_pkgname-$pkgver::$url/releases/download/$pkgver/$_pkgname-aarch64"
-    "$_pkgname-$pkgver.1::$url_raw/refs/tags/$pkgver/man/$_pkgname.1"
-    "$_pkgname-$pkgver.desktop::$url_raw/refs/tags/$pkgver/$_pkgname.desktop"
-    "LICENSE-$pkgver::$url_raw/refs/tags/$pkgver/LICENSE"
-    "README-$pkgver.md::$url_raw/refs/tags/$pkgver/README.md")
+    "$_pkgname-$pkgver.1::$_url_raw/refs/tags/$pkgver/man/$_pkgname.1"
+    "$_pkgname-$pkgver.desktop::$_url_raw/refs/tags/$pkgver/$_pkgname.desktop"
+    "LICENSE-$pkgver::$_url_raw/refs/tags/$pkgver/LICENSE"
+    "README-$pkgver.md::$_url_raw/refs/tags/$pkgver/README.md")
 depends=('git' 'pacman')
 optdepends=('ttf-nerd-fonts-symbols: symbols and icons')
 conflicts=("$_pkgname")
