@@ -1,7 +1,7 @@
 pkgbase = fake-hwclock
 	pkgdesc = Saves time on shutdown and restores it on boot from a file
 	pkgver = 0.14
-	pkgrel = 1
+	pkgrel = 2
 	install = fake-hwclock.install
 	arch = any
 	license = GPL
