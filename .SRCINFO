@@ -1,0 +1,16 @@
+pkgbase = python-markitdown
+	pkgdesc = Utility tool for converting various files to Markdown
+	pkgver = 0.0.1a2
+	pkgrel = 1
+	url = https://github.com/microsoft/markitdown
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/14/d8/e23bd08cd9749cb16ec5832a9e02d5f715efe2c7fc7e2637afaf41df2eee/markitdown-0.0.1a2.tar.gz
+	sha256sums = b4fb8234e01f743d9a31c5191ae446ccf8220b17ee90598323b185c145faa407
+
+pkgname = python-markitdown
