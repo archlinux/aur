@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nuiuita-bin
 _pkgname='Nu-i uita'
-pkgver=0.2.3
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Minimalist password manager desktop app made with Golang-Wails & Svelte.(Prebuilt version)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_${CARCH}.tar.xz"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/emarifer/Nu-i-uita/v${pkgver}/LICENSE"
 )
-sha256sums=('9fec5db498c10bf1701ea59dbc13e19f230b8c883e78b049011f9336e4aad23a'
+sha256sums=('53e73c2490a8eb5eab2930dea94b16738489f678058a2416f3b90e3cec57dfa9'
             'cdf91bbd5ea3ee229dced263d715da1bf03bb676c4348baed0ad775ee3391929')
 package() {
     install -Dm755 "${srcdir}/usr/local/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
