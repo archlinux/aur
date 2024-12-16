@@ -4,7 +4,7 @@ pkgname='concrnt-shared-config'
 pkgdesc='Concrnt shared config file'
 pkgver=1.6.0
 _pkgver=v${pkgver}
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
@@ -17,7 +17,7 @@ source=("concrnt-${_pkgver}::https://github.com/totegamma/concurrent/archive/ref
 
 sha512sums=('742982dc1344449bdaf560cf6f6ea724b3d2d52dbd5031876398961f79e02718c9d4b875557f204349e39b7dca83a8716a32415b812eb68dabef70926e743d95'
             '20f767da477adcebbf3d09af431c5c1d8bbfe0395e8c5c921f1fe2fa012a314f3a0033af0251371e2831b59bb774cfcfe31834d365d4a202019068b377580c5d'
-            '0b487a501747f94b3cc3bb8abba4dcd2e4c702a6d0cd5250249077855af05a52456fcdab57d1e973540dde7f330d0436475171b7d33f77b7e4e2981762707976'
+            '1a45f0d730d7f17c1d0bf254a7f59df1648cc69c7f3ab80b5fc74d255f45cdf946677aea0ca61394a0b086e416ee31b5509dc2e156e333c685c284ffc9ea985a'
             '6991f0cdffef328c29368d987a46e2d12d765b743cad04ae4c89469e1644f11f079fb495e5297b79d521f88b40d6fb3c5b972279c95f394bdb07cf4a2037f412')
 
 backup=('etc/concrnt/config/config.yaml'
