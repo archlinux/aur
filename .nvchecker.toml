@@ -1,0 +1,4 @@
+[python-pip-search]
+source = "regex"
+url = "https://pypi.org/project/pip-search/"
+regex = 'pip-search ([0-9\.]+)'

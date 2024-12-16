@@ -8,8 +8,8 @@
 _module="pip_search"
 _pkgname="python-${_module//_/-}"
 pkgname="$_pkgname"
-pkgrel=3
-pkgver=0.0.12
+pkgrel=1
+pkgver=0.0.13
 pkgdesc="Search for pip packages via PyPi"
 url="https://github.com/victorgarric/pip_search"
 arch=('any')
@@ -33,8 +33,8 @@ optdepends=(
 
 _pkgsrc="$_module-$pkgver"
 _pkgext="tar.gz"
-source=("$_pkgsrc.$_pkgext"::"$url/releases/download/$pkgver/$_pkgsrc.$_pkgext")
-sha256sums=('89c78c36b4907ceb8e6b6313dc8759bf9dce80fbf5ee5f1d57445ea5c5a820d7')
+source=("$_pkgsrc.$_pkgext"::"https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.$_pkgext")
+sha256sums=('7575286ce2437a71f5d7cdde7a84e1f082e83d77793541109d776c4f95903c97')
 
 build() {
   cd "$_pkgsrc"
