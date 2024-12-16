@@ -7,13 +7,13 @@ pkgrel=1
 pkgdesc='GUI for configuring Hyprland, written in blazingly fast Rust!'
 arch=('x86_64')
 url="https://github.com/hyprutils/$_pkgname"
-url_raw="https://raw.githubusercontent.com/$(echo "$url" | awk -F'/' '{print $4 "/" $5}')"
+_url_raw="https://raw.githubusercontent.com/$(echo "$url" | awk -F'/' '{print $4 "/" $5}')"
 license=('GPL-2.0')
 source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname"
-    "$_pkgname-$pkgver.png::$url_raw/refs/tags/v$pkgver/$_pkgname.png"
-    "$_pkgname-$pkgver.desktop::$url_raw/refs/tags/v$pkgver/$_pkgname.desktop"
-    "LICENSE-$pkgver::$url_raw/refs/tags/v$pkgver/LICENSE"
-    "README-$pkgver.md::$url_raw/refs/tags/v$pkgver/readme.md")
+    "$_pkgname-$pkgver.png::$_url_raw/refs/tags/v$pkgver/$_pkgname.png"
+    "$_pkgname-$pkgver.desktop::$_url_raw/refs/tags/v$pkgver/$_pkgname.desktop"
+    "LICENSE-$pkgver::$_url_raw/refs/tags/v$pkgver/LICENSE"
+    "README-$pkgver.md::$_url_raw/refs/tags/v$pkgver/readme.md")
 sha256sums=('329227ff3f16de6d68d427b3837068582d0648fc8882603a5da6588f4e2058ad'
             'ccc2881eba57c0729032fb2d4f54bc7b819ea741fb44961314d5ddff5bdfb263'
             '1e215a26e4c976e53057b6972811ca16fa74631a0a67452dabb23f639c6194fc'
