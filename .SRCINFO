@@ -1,0 +1,19 @@
+pkgbase = lumen-desktop-bin
+	pkgdesc = A simple and modulable personal assistant built on Electron.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/L-U-M-E-N/lumen-desktop
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	depends = electron25
+	provides = lumen-desktop=1.2.2
+	conflicts = lumen-desktop
+	noextract = lumen-desktop-1.2.2.zip
+	options = !emptydirs
+	source = lumen-desktop-1.2.2.zip::https://github.com/L-U-M-E-N/lumen-desktop/releases/download/1.2.2/Project.L.U.M.E.N.-linux-x64.zip
+	source = lumen-desktop.sh
+	sha256sums = 37e1d2848757207cf3bb29fe43fe63e1791e31211eb9f5f1a209828653818843
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = lumen-desktop-bin
