@@ -12,19 +12,26 @@ groups=()
 depends=(
     gtk3
     cairo
-    gtk-layer-shell
+    pkgconf
     libgirepository
     gobject-introspection
     gobject-introspection-runtime
-    webkit2gtk-4.1
+
+	# those are extra run-time pacakges
+	# but since they're used by most of the users
+	# we're adding them to dependencies
+    gtk-layer-shell
     libdbusmenu-gtk3
+	cinnamon-desktop
+    webkit2gtk-4.1
+
+	# python specific packages
     python
     python-pip
     python-gobject
     python-cairo
     python-loguru
     python-click
-    pkgconf
 )
 makedepends=(
     python-setuptools
