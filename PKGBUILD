@@ -7,7 +7,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=ollama-cuda-git
-pkgver=+r3737+g8c9fb8eb7
+pkgver=0.5.3.rc0+r3737+g8c9fb8eb7
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs)'
 arch=(x86_64)
@@ -28,7 +28,7 @@ b2sums=('SKIP'
 
 pkgver() {
   cd ollama
-  _version=$(git tag --sort=-v:refname --list | grep '^v[0-9.]+' | head -n1)
+  _version=$(git describe --tags --abbrev=0 | tr - .)
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
   echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
