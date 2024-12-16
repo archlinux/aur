@@ -1,3 +1,7 @@
 [hardened-malloc-git]
-source="cmd"
-cmd="~/nvchecker/github_version.sh grapheneos hardened_malloc"
+source="github-graphql"
+github="grapheneos/hardened_malloc"
+use_latest_release=true
+use_commit_number=true
+use_commit_hash=true
+
