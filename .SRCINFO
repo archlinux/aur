@@ -1,14 +1,13 @@
 pkgbase = concrnt-hyperproxy
 	pkgdesc = Concrnt URL summary and image proxy module
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/totegamma/concurrent
 	install = concrnt-hyperproxy.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	depends = concrnt-gateway
 	source = concrnt-hyperproxy-0.1.0::https://github.com/concrnt/hyperproxy/archive/refs/tags/v0.1.0.tar.gz
 	source = concrnt-hyperproxy.hook
 	source = concrnt-hyperproxy.install
@@ -21,3 +20,4 @@ pkgbase = concrnt-hyperproxy
 	sha512sums = 6991f0cdffef328c29368d987a46e2d12d765b743cad04ae4c89469e1644f11f079fb495e5297b79d521f88b40d6fb3c5b972279c95f394bdb07cf4a2037f412
 
 pkgname = concrnt-hyperproxy
+	depends = concrnt-gateway

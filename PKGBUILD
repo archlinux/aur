@@ -4,11 +4,10 @@ pkgname='concrnt-hyperproxy'
 pkgdesc='Concrnt URL summary and image proxy module'
 pkgver=0.1.0
 _pkgver=v${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
-depends=('concrnt-gateway')
 makedepends=('go')
 
 source=("${pkgname}-${pkgver}::https://github.com/concrnt/hyperproxy/archive/refs/tags/${_pkgver}.tar.gz"
@@ -33,6 +32,8 @@ build() {
 }
 
 package() {
+  depends=('concrnt-gateway')
+
   install -Dm755 "${srcdir}/hyperproxy-${pkgver}/hyperproxy" "${pkgdir}/usr/bin/hyperproxy"
   install -Dm644 "${srcdir}/concrnt-hyperproxy.service" "${pkgdir}/usr/lib/systemd/system/concrnt-hyperproxy.service"
   install -Dm644 "${srcdir}/concrnt-hyperproxy.hook" "${pkgdir}/usr/share/libalpm/hooks/concrnt-hyperproxy.hook"
