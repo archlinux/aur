@@ -1,7 +1,7 @@
 pkgbase = timblserver
 	pkgdesc = Tilburg Memory Based Learner Server.
-	pkgver = 1.18
-	pkgrel = 2
+	pkgver = 1.19
+	pkgrel = 1
 	url = http://languagemachines.github.io/timbl
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = timblserver
 	makedepends = autoconf-archive
 	depends = timbl
 	options = !libtool
-	source = https://github.com/LanguageMachines/timblserver/archive/v1.18.tar.gz
-	md5sums = 518acd8e09f1c6e9816b9b942d35b601
+	source = https://github.com/LanguageMachines/timblserver/archive/v1.19.tar.gz
+	md5sums = 53048487bd7e02b6642f1ab16c7d857f
 
 pkgname = timblserver
