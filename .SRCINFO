@@ -1,6 +1,6 @@
 pkgbase = s5cmd-bin
 	pkgdesc = Parallel S3 and local filesystem execution tool
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/peak/s5cmd
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = s5cmd-bin
 	arch = i686
 	arch = x86_64
 	license = MIT
-	provides = s5cmd=2.2.2
+	provides = s5cmd=2.3.0
 	conflicts = s5cmd
-	source_aarch64 = s5cmd-2.2.2-aarch64.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.2.2/s5cmd_2.2.2_Linux-arm64.tar.gz
-	sha256sums_aarch64 = eabf18082398c332d33c692d383a889be204b1e7716f820e014bf11474ad345b
-	source_armv7h = s5cmd-2.2.2-armv7h.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.2.2/s5cmd_2.2.2_Linux-arm64.tar.gz
-	sha256sums_armv7h = eabf18082398c332d33c692d383a889be204b1e7716f820e014bf11474ad345b
-	source_i686 = s5cmd-2.2.2-i686.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.2.2/s5cmd_2.2.2_Linux-32bit.tar.gz
-	sha256sums_i686 = dc9ebe570fb5abcf5781511901d93425879022d56e73ab44dd32c45b2bfbc04b
-	source_x86_64 = s5cmd-2.2.2-x86_64.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.2.2/s5cmd_2.2.2_Linux-64bit.tar.gz
-	sha256sums_x86_64 = a15f83d2a6dc091e43b2a120f29f8f6c86d146c381766c0197ec75d7985af2b6
+	source_aarch64 = s5cmd-2.3.0-aarch64.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.3.0/s5cmd_2.3.0_Linux-arm64.tar.gz
+	sha256sums_aarch64 = 1439f0d00ecedcd2a2f1f2c6749bbb0152b2257bf5086f29646ec8ae38798e24
+	source_armv7h = s5cmd-2.3.0-armv7h.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.3.0/s5cmd_2.3.0_Linux-arm64.tar.gz
+	sha256sums_armv7h = 1439f0d00ecedcd2a2f1f2c6749bbb0152b2257bf5086f29646ec8ae38798e24
+	source_i686 = s5cmd-2.3.0-i686.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.3.0/s5cmd_2.3.0_Linux-32bit.tar.gz
+	sha256sums_i686 = 33e73005f183e5758161b32440ec65b15c934eb60c3b42795fb335418ca110ac
+	source_x86_64 = s5cmd-2.3.0-x86_64.tar.gz::https://github.com/peak/s5cmd/releases/download/v2.3.0/s5cmd_2.3.0_Linux-64bit.tar.gz
+	sha256sums_x86_64 = de0fdbfa3aceae55e069ba81a0fc17b2026567637603734a387b2fca06c299b4
 
 pkgname = s5cmd-bin
