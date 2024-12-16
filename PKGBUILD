@@ -23,7 +23,7 @@ depends=(
   python-puremagic
   python-pydub
   python-youtube-transcript-api
-  python-SpeechRecognition
+  python-speechrecognition
   python-pathvalidate
 )
 makedepends=(
