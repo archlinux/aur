@@ -1,0 +1,21 @@
+[Unit]
+Description=Caddy service for concrnt webui
+Wants=concrnt-gateway.service
+After=concrnt-gateway.service
+Conflicts=concrnt-webui-nginx.service
+
+[Service]
+Type=notify
+Restart=on-abnormal
+
+User=concrnt
+Group=concrnt
+
+ExecStartPre=/usr/bin/caddy validate --config /etc/concrnt/config/webui/Caddyfile
+ExecStart=/usr/bin/caddy run --environ --config /etc/concrnt/config/webui/Caddyfile
+ExecReload=/usr/bin/caddy reload --config /etc/concrnt/config/webui/Caddyfile --force
+
+SyslogIdentifier=concrnt-webui-caddy
+
+[Install]
+WantedBy=multi-user.target

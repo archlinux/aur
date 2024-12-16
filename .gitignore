@@ -3,3 +3,9 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
+!Caddyfile
+!nginx.conf
+!concrnt-webui-caddy.service
+!concrnt-webui-nginx.service
+!concrnt-webui.hook
+!concrnt-webui.tmpfiles
