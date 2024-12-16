@@ -1,6 +1,6 @@
 pkgbase = plasma-nano
 	pkgdesc = A minimal plasma shell package intended for embedded devices.
-	pkgver = 6.2.2
+	pkgver = 6.2.4
 	pkgrel = 0
 	url = https://invent.kde.org/plasma/plasma-nano
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = plasma-nano
 	depends = kservice
 	depends = kitemmodels
 	depends = qt6-svg
-	source = https://download.kde.org/stable/plasma/6.2.2/plasma-nano-6.2.2.tar.xz
-	sha256sums = 5c6c46bd3cc901f6adbc0bf369853de9834ec2cb6f8565501815dd72ff6e87cc 
+	source = https://download.kde.org/stable/plasma/6.2.4/plasma-nano-6.2.4.tar.xz
+	sha256sums = 5f6f4729093b98b7256400c90f69beaa0399fd09eadd148de010454d8a385a21 
 
 pkgname = plasma-nano
