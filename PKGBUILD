@@ -2,14 +2,15 @@
 pkgname=saber-bin
 _appname="com.adilhanney.${pkgname%-bin}"
 _pkgname=Saber
-pkgver=0.25.2
+pkgver=0.25.3
 pkgrel=1
 pkgdesc="The cross-platform open-source app built for handwriting.(Prebuilt version)"
 arch=(
     'aarch64'
     'x86_64'
 )
-url="https://github.com/adil192/saber"
+url="https://saber.adil.hanney.org/"
+_ghurl="https://github.com/saber-notes/saber"
 license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -23,13 +24,13 @@ depends=(
 )
 options=('!strip')
 noextract=("${pkgname%-bin}-${pkgver}-${CARCH}.tar.gz")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_arm64.tar.gz")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_x86_64.tar.gz")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v0.25.2_Linux_arm64.tar.gz")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_x86_64.tar.gz")
 source=("${pkgname%-bin}.sh")
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('7e0159c8ce5d5c3f66a4b471db7f98837e6dbae77876b5140fc8096354af4061')
-sha256sums_x86_64=('2616fa16c0afe7d308a95655774c88746d43353d490e5e290d4c9b010cc3162b')
-build() {
+sha256sums_aarch64=('f5a63a7ea1d9ee1953757c04c9fbfb7c5eb74c022082d52fa018e2bedb2381ab')
+sha256sums_x86_64=('496b12892e2e6683e004cab33f5f2f0882d7d1840fb1e2d4342a2bba39adff9f')
+prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
