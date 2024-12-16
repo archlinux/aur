@@ -1,0 +1,20 @@
+pkgbase = rbw-client-header-fix
+	pkgdesc = Unofficial Bitwarden CLI (forked branch for client header fix)
+	pkgver = 1.12.1.dd6b6542
+	pkgrel = 1
+	url = https://git.tozt.net/rbw
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	depends = pinentry
+	provides = rbw
+	conflicts = rbw
+	options = !lto
+	source = git+https://github.com/davla/rbw.git#branch=fix/client-name-header
+	sha512sums = SKIP
+	b2sums = SKIP
+
+pkgname = rbw-client-header-fix
