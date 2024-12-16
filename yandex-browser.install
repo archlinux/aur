@@ -133,6 +133,8 @@ post_install() {
   done
 
   update-desktop-database -q
+  #Install external ffmpeg library for more compatability
+  /opt/yandex/browser/update_codecs /opt/yandex/browser || true
 
 }
 
@@ -161,4 +163,3 @@ pre_remove() {
 post_upgrade() {
   post_install
 }
-
