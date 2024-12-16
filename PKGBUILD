@@ -15,13 +15,12 @@ optdepends=('hyprpaper' 'swaybg' 'swww' 'wallutils' 'feh')
 install="$pkgname.install"
 
 prepare() {
-
-    local oldinstall=$(cat "$startdir/$install")
-    echo -n "optdepends=(" > "$startdir/$install"
+    local oldinstall=$(cat "$install")
+    echo -n "optdepends=(" > "$install"
     for dep in "${optdepends[@]}"; do
-        echo -n "'$dep' " >> "$startdir/$install"
+        echo -n "'$dep' " >> "$install"
     done
-    echo -e ")\n$oldinstall" >> "$startdir/$install"
+    echo -e ")\n$oldinstall" >> "$install"
 
     echo "Version=$pkgver" >> "$pkgname.desktop"
     export RUSTUP_TOOLCHAIN=stable
