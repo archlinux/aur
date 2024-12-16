@@ -1,14 +1,14 @@
 # Maintainer: waveplate <dissahc@pm.me>
 pkgname=img2irc
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="CLI utility to convert images to halfblock ANSI or IRC art with various optional post-processing filters"
 arch=('x86_64')
 url="https://github.com/waveplate/img2irc"
 license=('GPL3')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/waveplate/img2irc/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('133a3c80de418170975f7adba0c1c4aa8a0577e607e96ef9864c50d7740559e3')
+sha256sums=('ec62d13d04ea71a72d6310b198fa4e3c309cd522c4035282be0696375c04bbf7')
 options=('!strip' '!debug')
 
 prepare() {
