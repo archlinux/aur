@@ -1,0 +1,13 @@
+pkgbase = lexical-bin
+	pkgdesc = Lexical is a next-generation elixir language server
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/lexical-lsp/lexical
+	arch = x86_64
+	license = Apache-2.0
+	depends = elixir
+	options = !strip
+	source = https://github.com/lexical-lsp/lexical/releases/download/v0.7.1/lexical-v0.7.1.zip
+	sha512sums = 9cdedfa263856f1e4908c79ca1f6c98a0f4c988f0a8bacb254d1045490c9933351f2e57d56558e0500b6722d7dcb760cc777fd7c1a9788f59a990d6c3996609f
+
+pkgname = lexical-bin

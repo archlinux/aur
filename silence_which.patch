@@ -1,0 +1,20 @@
+--- activate_version_manager.sh.orig	2024-12-16 14:11:23.663862456 +0100
++++ activate_version_manager.sh	2024-12-16 14:13:24.718782428 +0100
+@@ -76,7 +76,7 @@
+ }
+ 
+ _try_activating_rtx() {
+-    if which rtx >/dev/null; then
++    if which rtx >/dev/null 2>&1; then
+         echo >&2 "Found rtx. Activating..."
+         eval "$(rtx activate bash)"
+         eval "$(rtx env)"
+@@ -87,7 +87,7 @@
+ }
+ 
+ _try_activating_mise() {
+-    if which mise >/dev/null; then
++    if which mise >/dev/null 2>&1; then
+         echo >&2 "Found mise. Activating..."
+         eval "$(mise activate bash)"
+         eval "$(mise env)"

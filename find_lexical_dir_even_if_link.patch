@@ -1,0 +1,20 @@
+--- start_lexical.sh.orig	2024-12-16 14:03:59.423125295 +0100
++++ start_lexical.sh	2024-12-16 14:08:41.364885350 +0100
+@@ -1,7 +1,16 @@
+ #!/usr/bin/env bash
+ set -o pipefail
+ 
+-script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
++# find script file, even if we're a link pointing to it
++script_file=${BASH_SOURCE[0]}
++while [ -L "$script_file" ]; do
++    script_dir=$(cd -P "$( dirname "$script_file" )" >/dev/null 2>&1 && pwd)
++    script_file=$(readlink "$script_file")
++    [[ $script_file != /* ]] && script_file=$script_dir/$script_file
++done
++
++# set script_dir to parent dir of script_file
++script_dir=$(cd -P "$( dirname "$script_file" )" >/dev/null 2>&1 && pwd)
+ 
+ # shellcheck disable=SC1091
+ if ! . "$script_dir"/activate_version_manager.sh; then
