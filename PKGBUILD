@@ -1,6 +1,6 @@
 # Maintainer: Zane Fernandes
 pkgname=lowkey-git
-pkgver=r10.c2552b7
+pkgver=r17.7212f79
 pkgrel=1
 pkgdesc="A customizable battery notification daemon"
 arch=('x86_64')
