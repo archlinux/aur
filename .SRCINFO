@@ -1,14 +1,12 @@
 pkgbase = concrnt-webui
 	pkgdesc = Concrnt registration page and admin panel
 	pkgver = 1.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/totegamma/concurrent
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = pnpm
-	depends = concrnt-gateway
-	depends = concrnt-shared-config
 	optdepends = caddy: Web server to serve files
 	optdepends = nginx: Web server to serve files
 	source = concrnt-1.6.0::https://github.com/totegamma/concurrent/archive/refs/tags/v1.6.0.tar.gz
@@ -29,3 +27,5 @@ pkgbase = concrnt-webui
 	sha512sums = a85f43dbb5cd1789dca8dde579bb741a71fd8ae35aa0aa9c82628d42e61d1ccfd59464af5f72b758593bf6164f6e7d63c4c40082fd9938452b2c23d5ea0ae045
 
 pkgname = concrnt-webui
+	depends = concrnt-gateway
+	depends = concrnt-shared-config
