@@ -7,8 +7,6 @@ pkgbase = limbo
 	license = MIT
 	makedepends = cargo
 	makedepends = mimalloc
-	provides = limbo
-	conflicts = limbo
 	source = https://github.com/tursodatabase/limbo/releases/download/v0.0.9/source.tar.gz
 	sha256sums = 25f459dff33b4bafc4bc2f6e9fd05193a78faf5b079745620b69c5ef9f44ec67
 
