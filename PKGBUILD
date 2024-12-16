@@ -6,7 +6,7 @@ _pkgname=another-redis-desktop-manager
 
 pkgname="${_pkgname}-appimage"
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A faster, better and more stable redis desktop manager"
 arch=('x86_64')
 url="https://github.com/qishibo/AnotherRedisDesktopManager"
@@ -18,7 +18,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 
 source=(
-    "https://raw.githubusercontent.com/qishibo/AnotherRedisDesktopManager/v${pkgver}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/qishibo/AnotherRedisDesktopManager/v${pkgver}/LICENSE"
 )
 
 source_x86_64=(
@@ -26,7 +26,7 @@ source_x86_64=(
 )
 
 noextract=("${_appimage}")
-sha512sums=('e29fec88dbf2d53b863c1660c30546921288e1abc4006d6d20b04cbc9fe66e83517bde2f595ae39510963fbd36f9f8e27bc3fa2895cac10b416dd6f6d0829072')
+sha512sums=('3e70ee6355d1e4451927a9ac288154573684b02f82443ef4ed8fd0fd37257fa8d32ff76a4b1fef5273a8bd69f84eb4e604157334d27e8269ef66ef5c78ac4fb2')
 sha512sums_x86_64=('37c4719c99ad59440823a19c09e2a1bbd3660880cb29113b8c4c9d212524ce339e19a2caeb425899e09cd9299afde54f71fed520478b009d38763520085efa64')
 
 prepare() {
@@ -60,5 +60,5 @@ package() {
     ln -s "/opt/${pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 
     # Symlink license
-    install -Dm644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
