@@ -1,70 +1,25 @@
 pkgbase = ollama-nogpu-git
-	pkgdesc = Create, run and share large language models (LLMs). Package(s) without dedicated GPU offloading (no CUDA, no ROCm, no SYCL).
-	pkgver = 0.3.9+5.r3417.20240902.ad3eb00b
-	pkgrel = 2
-	url = https://github.com/jmorganca/ollama
-	arch = armv7h
-	arch = aarch64
-	arch = i686
+	pkgdesc = Create, run and share large language models (LLMs)
+	pkgver = 0.5.3.rc0+r3737+g8c9fb8eb7
+	pkgrel = 1
+	url = https://github.com/ollama/ollama
 	arch = x86_64
 	license = MIT
-	makedepends = bash
 	makedepends = cmake
 	makedepends = git
 	makedepends = go
-	makedepends = openmpi
-	makedepends = openblas
-	depends = gcc-libs
-	depends = glibc
-	depends = openssl
-	options = emptydirs
-	source = ollama::git+https://github.com/jmorganca/ollama.git
-	source = llama.cpp::git+https://github.com/ggerganov/llama.cpp.git
+	provides = ollama=0.5.3.rc0+r3737+g8c9fb8eb7
+	conflicts = ollama
+	options = !lto
+	source = git+https://github.com/ollama/ollama.git
+	source = ollama-ld.conf
 	source = ollama.service
 	source = sysusers.conf
 	source = tmpfiles.d
 	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = a773bbf16cf5ccc2ee505ad77c3f9275346ddf412be283cfeaee7c2e4c41b8637a31aaff8766ed769524ebddc0c03cf924724452639b62208e578d98b9176124
+	b2sums = 121a7854b5a7ffb60226aaf22eed1f56311ab7d0a5630579525211d5c096040edbcfd2608169a4b6d83e8b4e4855dbb22f8ebf3d52de78a34ea3d4631b7eff36
+	b2sums = 031e0809a7f564de87017401c83956d43ac29bd0e988b250585af728b952a27d139b3cad0ab1e43750e2cd3b617287d3b81efc4a70ddd61709127f68bd15eabd
 	b2sums = 3aabf135c4f18e1ad745ae8800db782b25b15305dfeaaa031b4501408ab7e7d01f66e8ebb5be59fc813cfbff6788d08d2e48dcf24ecc480a40ec9db8dbce9fec
 	b2sums = e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed
 
-pkgname = ollama-generic-git
-	pkgdesc = Create, run and share large language models (LLMs). CPU optimisation only.
-	depends = gcc-libs
-	depends = glibc
-	depends = openssl
-	optdepends = 
-	provides = ollama=0.3.9+5.r3417.20240902.ad3eb00b
-	provides = ollama-git=0.3.9+5.r3417.20240902.ad3eb00b
-	conflicts = ollama
-
-pkgname = ollama-openmpi-git
-	pkgdesc = Create, run and share large language models (LLMs). CPU optimisation with openMPI.
-	depends = gcc-libs
-	depends = glibc
-	depends = openssl
-	optdepends = 
-	provides = ollama=0.3.9+5.r3417.20240902.ad3eb00b
-	provides = ollama-git=0.3.9+5.r3417.20240902.ad3eb00b
-	conflicts = ollama
-
-pkgname = ollama-openblas-git
-	pkgdesc = Create, run and share large language models (LLMs). CPU optimisation with openblas.
-	depends = gcc-libs
-	depends = glibc
-	depends = openssl
-	optdepends = 
-	provides = ollama=0.3.9+5.r3417.20240902.ad3eb00b
-	provides = ollama-git=0.3.9+5.r3417.20240902.ad3eb00b
-	conflicts = ollama
-
-pkgname = ollama-vulkan-git
-	pkgdesc = Create, run and share large language models (LLMs). With vulkan backend.
-	depends = gcc-libs
-	depends = glibc
-	depends = openssl
-	optdepends = 
-	provides = ollama=0.3.9+5.r3417.20240902.ad3eb00b
-	provides = ollama-git=0.3.9+5.r3417.20240902.ad3eb00b
-	conflicts = ollama
+pkgname = ollama-nogpu-git
