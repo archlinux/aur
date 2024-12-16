@@ -1,0 +1,11 @@
+pkgbase = phoenix-arch
+	pkgdesc = Welcome to the next generation of Phoenix.
+	pkgver = 20241216
+	pkgrel = 1
+	url = https://phoenix.celenity.dev
+	arch = any
+	license = GPL3
+	source = https://codeberg.org/celenity/Phoenix/raw/commit/57ab54066121013d4f431836c0a87f54f13f5296/archives/phoenix.zip
+	sha512sums = 24b66fb26615ea65a0bb3e89e382df6b50316c05d4520d236fd04a2ec6266fefd94840413b84630e19f080ff9c0d5ea189e463420b16ab0083455c5e52eb0e13
+
+pkgname = phoenix-arch
