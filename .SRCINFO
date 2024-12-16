@@ -1,6 +1,6 @@
 pkgbase = memos
 	pkgdesc = A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts.
-	pkgver = 0.22.5
+	pkgver = 0.23.0
 	pkgrel = 2
 	url = https://github.com/usememos/memos
 	arch = any
@@ -13,17 +13,15 @@ pkgbase = memos
 	options = !strip
 	options = !debug
 	backup = etc/memos.conf
-	source = memos-0.22.5.tar.gz::https://github.com/usememos/memos/archive/refs/tags/v0.22.5.tar.gz
+	source = memos-0.23.0.tar.gz::https://github.com/usememos/memos/archive/refs/tags/v0.23.0.tar.gz
 	source = systemd.service
 	source = sysusers.conf
 	source = memos.conf
 	source = tmpfiles.conf
-	source = add_protobuff_to_package_json.patch
-	sha512sums = 4f81c4cc0660d20050ab6305cd017a33cbe7a4cea114fdae5ccc8ccad7e257aaf84b502a85696375ac64590101ee4e48d7daf5cffc24fb867d4d5b759fe031ee
+	sha512sums = c618232aab6075cae7cfa6e5e61158346519a1e9010e5c8fe26fdd5811f4425ba0c506b25ae4a2ed2ddfddbfb5bfbceaebed46533ae58031a705e7802337f0c2
 	sha512sums = 9c37361974d8b3beecdd8b0bf8db929a4a882623ea7b23aa51bddf37790b66042cef593d6da89b34e7dde4a9a9a1e097ea31ec713b33fee6a699448fb300d4a2
 	sha512sums = 692dc4674b86b36c5464c78f493ace50091068f962d40130a32b4ed17517d77e33860333e870f5e80a5e17b6cbd5de45bf57e7de5ea7984bd4e36f95a8daf0fa
 	sha512sums = 251e01c4f5fc8aea209453d91da5dde91d58397668e34b78e52a31940e30a89be5601a6ea8cdebe791a96c9324733095de3567998b45ce1542578b1d9b7a5b76
 	sha512sums = cf88b91a88825dcfda35f45461513b8a2e03b07890189fd1cf7b60aa4085c9e88d8338596b69a3d9c3e513e668093ab7cb246febbb7f6ac7796d37e1189db565
-	sha512sums = 5aa45498965471fedf6af23c3bf64cd47464c74013c62f0f4299cf3767c9d0f6081cf738d88e7b36421f819a5dc8fab679f7b156350cbdb51deab71ddb40a8e6
 
 pkgname = memos
