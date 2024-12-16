@@ -6,13 +6,13 @@
 pkgbase=nvidia-340xx-utils
 pkgname=('nvidia-340xx-utils' 'opencl-nvidia-340xx')
 pkgver=340.108
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
 options=('!strip')
 source=(nvidia-drm-outputclass.conf
-        "http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+        "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
         nvidia-340xx-utils.sysusers)
 sha512sums=('c49d246a519731bfab9d22afa5c2dd2d366db06d80182738b84881e93cd697c783f16ee04819275c05597bb063451a5d6102fbc562cd078d2a374533a23cea48'
             '9f636aab5ffee36c951bd450bd56db397e6eb127ac6ef2b93eade3850892966195602c2d894548c7b19da38f40a144f4d98f835d8c695038ff6c65249129e739'
@@ -58,12 +58,12 @@ package_opencl-nvidia-340xx() {
 package_nvidia-340xx-utils() {
     pkgdesc="NVIDIA drivers utilities"
     depends=('xorg-server')
-    optdepends=('gtk2: nvidia-settings'
+    optdepends=('nvidia-340xx-settings: configuration tool'
+                'gtk2: nvidia-settings'
                 'xorg-server-devel: nvidia-xconfig'
                 'opencl-nvidia-340xx: OpenCL support')
-    conflicts=('nvidia-utils' 'nvidia-340xx-libgl' 'nvidia-libgl')
-    provides=('libgl' 'libgles' 'libegl' 'nvidia-utils' 'nvidia-340xx-libgl' 'nvidia-libgl')
-    replaces=('nvidia-340xx-libgl')
+    conflicts=('nvidia-340xx-libgl' 'nvidia-libgl' 'nvidia-utils')
+    provides=('libgl' 'libgles' 'libegl' 'nvidia-340xx-libgl' 'nvidia-libgl' 'nvidia-utils')
     install="${pkgname}.install"
 
     cd "${_pkg}"
@@ -110,13 +110,6 @@ package_nvidia-340xx-utils() {
     # nvidia-xconfig
     install -D -m755 nvidia-xconfig "${pkgdir}/usr/bin/nvidia-xconfig"
     install -D -m644 nvidia-xconfig.1.gz "${pkgdir}/usr/share/man/man1/nvidia-xconfig.1.gz"
-
-    # nvidia-settings
-    install -D -m755 nvidia-settings "${pkgdir}/usr/bin/nvidia-settings"
-    install -D -m644 nvidia-settings.1.gz "${pkgdir}/usr/share/man/man1/nvidia-settings.1.gz"
-    install -D -m644 nvidia-settings.desktop "${pkgdir}/usr/share/applications/nvidia-settings.desktop"
-    install -D -m644 nvidia-settings.png "${pkgdir}/usr/share/pixmaps/nvidia-settings.png"
-    sed -e 's:__UTILS_PATH__:/usr/bin:' -e 's:__PIXMAP_PATH__:/usr/share/pixmaps:' -i "${pkgdir}/usr/share/applications/nvidia-settings.desktop"
 
     # nvidia-bug-report
     install -D -m755 nvidia-bug-report.sh "${pkgdir}/usr/bin/nvidia-bug-report.sh"
