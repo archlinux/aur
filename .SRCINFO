@@ -1,0 +1,20 @@
+pkgbase = python-systemd-gui-service
+	pkgdesc = GUI application which helps to create a GNU/Linux systemd service file
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nnishant776/systemd_gui_service
+	arch = x86_64
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = git
+	depends = glibc
+	depends = python
+	depends = python-wxpython
+	depends = python-pip
+	source = python-systemd-gui-service::git+https://github.com/nnishant776/systemd_gui_service.git
+	sha256sums = SKIP
+
+pkgname = python-systemd-gui-service
