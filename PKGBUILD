@@ -1,7 +1,7 @@
 # Maintainer: Emily Ellis <emily@scgtrp.net>
 pkgname=tangara-companion
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Companion app for Cool Tech Zone Tangara"
 depends=('glib2' 'gtk4' 'libadwaita')
 makedepends=('cargo')
@@ -13,24 +13,15 @@ sha512sums=('9ae340186d0e7e49a77f0ab533be694c3e9069e78a924468e6130797d4f8149ff11
 
 prepare() {
 	cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	meson setup --buildtype=release --prefix="$pkgdir/usr" builddir
 }
 
 build() {
 	cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
-}
-
-check() {
-	cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+	meson compile -C builddir
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+	meson install -C builddir
 }
