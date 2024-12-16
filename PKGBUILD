@@ -32,7 +32,6 @@ makedepends=(
   python-setuptools
   python-wheel
 )
-depends=(python)
 source=("https://files.pythonhosted.org/packages/14/d8/e23bd08cd9749cb16ec5832a9e02d5f715efe2c7fc7e2637afaf41df2eee/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('b4fb8234e01f743d9a31c5191ae446ccf8220b17ee90598323b185c145faa407')
 
