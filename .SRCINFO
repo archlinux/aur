@@ -1,0 +1,13 @@
+pkgbase = envfetch
+	pkgdesc = Lightweight CLI tool for working with environment variables
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/ankddev/envfetch
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = envfetch-1.1.0.tar.gz::https://github.com/ankddev/envfetch/archive/v1.1.0.tar.gz
+	sha256sums = 3b646332b45a0b62dcee0bac0daa53a3c912fc1446c954dade515fc5a744136d
+
+pkgname = envfetch
