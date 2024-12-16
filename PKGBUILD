@@ -5,12 +5,12 @@
 
 pkgname=write_stylus
 pkgver=dec.2024
-pkgrel=3
+pkgrel=4
 pkgdesc="Write(orignal name) - A word processor for handwriting"
 arch=(i686 x86_64)
 url="http://www.styluslabs.com/"
-license=('custom')
-depends=(sdl2 pugixml)
+license=('AGPL-3.0-only')
+depends=(sdl2 pugixml libxi)
 options=(!lto)
 makedepends=(git)
 source=(

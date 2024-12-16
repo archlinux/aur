@@ -1,14 +1,15 @@
 pkgbase = write_stylus
 	pkgdesc = Write(orignal name) - A word processor for handwriting
 	pkgver = dec.2024
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.styluslabs.com/
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = AGPL-3.0-only
 	makedepends = git
 	depends = sdl2
 	depends = pugixml
+	depends = libxi
 	noextract = eula.docx
 	options = !lto
 	source = write_stylus::git+https://github.com/styluslabs/Write.git#tag=dec-2024
