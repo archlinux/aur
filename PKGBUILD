@@ -3,7 +3,7 @@
 _pkgname=jule
 __pkgname="${_pkgname}fmt"
 pkgname="$__pkgname-git"
-pkgver=1.r0.gb3acc0e
+pkgver=1.r0.ga2dc2be
 pkgrel=1
 pkgdesc='The Jule Programming Language Code Formatter'
 arch=('x86_64' 'aarch64' 'i386')
@@ -11,7 +11,8 @@ url="https://github.com/${_pkgname}lang/$__pkgname"
 license=('BSD-3-Clause')
 source=("git+$url.git")
 sha256sums=('SKIP')
-depends=('julec-git')
+depends=('gcc-libs')
+makedepends=('julec-git')
 provides=("$__pkgname")
 conflicts=("$__pkgname")
 
