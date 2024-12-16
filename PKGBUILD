@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=reticulum-meshchat-bin
 _pkgname="Reticulum MeshChat"
-pkgver=1.13.2
+pkgver=1.14.0
 _electronversion=30
 pkgrel=1
 pkgdesc="A simple mesh network communications app powered by the Reticulum Network Stack.(Prebuilt version.Use system-wide electron)"
@@ -27,10 +27,10 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/liamcottle/reticulum-meshchat/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('838d0cad5b0305d6ca0c33df65fd0525f57bd04317b3f587f36a31b021f0ae76'
+sha256sums=('945de733adb0933fdcdf8368b6b7d0add526d21a2dfb78639aa16690aa8cbfb9'
             '4e590a1cbb467d60c6c55ca547dc71517955098d13d5483e3d9191fc03af44df'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
