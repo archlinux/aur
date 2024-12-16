@@ -1,0 +1,13 @@
+pkgbase = relagit-bin
+	pkgdesc = The elegant solution to graphical version control.
+	pkgver = 0.16.8
+	pkgrel = 1
+	url = https://github.com/relagit/relagit
+	arch = x86_64
+	license = GNU Lesser General Public License v3.0
+	provides = RelaGit
+	conflicts = RelaGit
+	source_x86_64 = relagit-bin-0.16.8.deb::https://github.com/relagit/relagit/releases/download/v0.16.8/RelaGit-linux.deb
+	sha256sums_x86_64 = d6743e0de9d67ccb745802b33e75967f47bac88c43cf1cda62566a4248376391
+
+pkgname = relagit-bin
