@@ -2,7 +2,7 @@
 # Maintainer: duffydack <duffydack73 at gmail dot com>
 
 pkgname="mkdocs-rss-plugin"
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc="MkDocs plugin to generate a RSS feeds for created and updated pages, using git log"
 url="https://guts.github.io/mkdocs-rss-plugin/"
