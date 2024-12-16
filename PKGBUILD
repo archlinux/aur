@@ -1,5 +1,5 @@
 pkgname=electrs
-pkgver=0.10.5
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="An efficient re-implementation of Electrum Server in Rust"
 arch=(aarch64 x86_64)
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'clang' 'cmake' 'rust')
 source=("git+https://github.com/romanz/electrs.git#tag=v$pkgver")
-md5sums=('12f22f6bfe4e1fc27247f6e03783f4b3')
+sha256sums=('9116ce80af6c2ce22f7bfeca9ac9d21a2bb8f257b01e1117e7f8aa47cf94c154')
 
 prepare() {
   if check_option lto y; then
