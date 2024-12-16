@@ -1,0 +1,21 @@
+pkgbase = modenv-bin
+	pkgdesc = CLI to easily manage .env files and keep them consistent
+	pkgver = 0.10.3
+	pkgrel = 1
+	url = https://github.com/kurtbuilds/modenv
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = help2man
+	provides = modenv
+	conflicts = modenv
+	source = LICENSE-0.10.3::https://raw.githubusercontent.com/kurtbuilds/modenv/v0.10.3/LICENSE.md
+	source = README-0.10.3::https://raw.githubusercontent.com/kurtbuilds/modenv/v0.10.3/README.md
+	sha256sums = 0fba33e712b47fff4ac42c8ffe9862a045b62b496c3843b781cda79d1714aa51
+	sha256sums = 7b28ae776caeec6ebfcb8345603a79dd321d43813db2c3b8159b70d7f083ae62
+	source_x86_64 = modenv-0.10.3.tar.gz::https://github.com/kurtbuilds/modenv/releases/download/v0.10.3/modenv-v0.10.3-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 1ea73688ce14deae89492460956324df6a73abf25520b31a688cdd4aa131e618
+	source_aarch64 = modenv-0.10.3.tar.gz::https://github.com/kurtbuilds/modenv/releases/download/v0.10.3/modenv-v0.10.3-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 1ea73688ce14deae89492460956324df6a73abf25520b31a688cdd4aa131e618
+
+pkgname = modenv-bin
