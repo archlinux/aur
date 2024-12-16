@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.12.4.arch1
+pkgver=6.12.5.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -33,13 +33,13 @@ source=(
   
   # patches to config & for tuning purposes
 #  modprobed.db
-  partial-rog.config::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.11/partial-rog.config"
+  partial-rog.config::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.12/partial-rog.config"
   choose-gcc-optimization.sh
   more-uarches-for-kernel-6.1+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/more-ISA-levels-and-uarches-for-kernel-6.1.79%2B.patch"
   
   # actual kernel patch series
-  # 0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.11/asus-patch-series.patch"
-  asus-patch-series.patch
+  0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.12/asus-patch-series.patch"
+  # asus-patch-series.patch
   0001-acpi-proc-idle-skip-dummy-wait.patch
   0002-mt76_-mt7921_-Disable-powersave-features-by-default.patch
   0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
@@ -56,15 +56,15 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('6f35f821433d8421be7167990747c7c4a0c451958fb96883446301af13d71152'
+sha256sums=('39207fce1ce42838e085261bae0af5ce4a0843aa777cfc0f5c49bc7729602bcd'
             'SKIP'
-            '8d84f0e5f013c6c80cd2a2fe26da8e0c1170edc058f6f378e1261541781c12b9'
+            'c41844762ed22ce71f6b4988a691061fac9ea10cf26e069f2ebca467c3b814db'
             'SKIP'
-            'a6a234cd982d21f0d7daa3ba921293e450abd87ff5d7474d4a153b3f34cfabc5'
+            '02dbfa8936028f2d1a4bdca3387bf3a45bd572903d889b5795a1d722b63f27ab'
             'a8afb5f75dde2eb038bdd2ec4cd2f8c600d6357ae64960c0df5f2c6c168514ce'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             '48e12a587e3a93e73ca2bba9f3b418d70c0a56592581d2705384a07243c70d61'
-            '8f7e5ca2fe1c0d4b4c6227a9e281a14fb635f5dbeae4ab98cf9304042f0cc1c4'
+            '2fa4df60e10816e3d0b37ea4be704158b05cbbfe6b08f144b87e1aceae3f3f27'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             'ed242f4be3f8eaade2a1d42157c5c6c86281917a08ae43221b088fafdc775ee7'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
