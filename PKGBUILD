@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lynxhub-git
 _pkgname=LynxHub
-pkgver=1.3.1.r129.gba2f527
+pkgver=2.0.0.r0.g0d684a4
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -32,7 +32,7 @@ sha256sums=('SKIP'
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/V//g' ||
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
@@ -41,7 +41,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -72,6 +72,8 @@ build() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/'red'/'default'/g" src/renderer/src/App/Components/Modals/Warning/WarningModal.tsx
     NODE_ENV=development    npm install
+}
+build() {
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.config.cjs"
 }
