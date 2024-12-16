@@ -1,27 +1,24 @@
-# Maintainer: wiltsig <WTS012201@gmail.com>
+# Contributor: wiltsig <WTS012201@gmail.com>
+
 pkgname=tfi
 _pkgname=Text-From-Image
 pkgver=1.0.3
-pkgrel=2 # increment for bug fixes
+pkgrel=3
 pkgdesc="Text From Image allows user to extract and modify text from images"
-
-makedepends=("git")
 arch=('x86_64')
 url="https://github.com/WTS012201/Text-From-Image.git"
-license=('GPL-3.0')
-depends=('tesseract-data-eng' 'hdf5' 'highway' 'leptonica' 'libaec' 'libjxl' 'libmfx' 'pugixml' 'tesseract' 'vtk' 'acl' 'brotli' 'bzip2' 'curl' 'dbus' 'e2fsprogs' 'expat' 'gmp' 'gnutls' 'icu' 'keyutils' 'krb5' 'libarchive' 'libcap' 'libelf' 'libffi' 'libgcrypt' 'libgpg-error' 'libidn2' 'libnghttp2' 'libp11-kit' 'libpsl' 'libssh2' 'libtasn1' 'libunistring' 'libusb' 'libxml2' 'lz4' 'nettle' 'openssl' 'pcre2' 'systemd-libs' 'util-linux-libs' 'xz' 'zlib' 'zstd' 'aom' 'blas' 'cairo' 'cblas' 'dav1d' 'double-conversion' 'ffmpeg' 'fmt' 'fontconfig' 'freetype2' 'fribidi' 'gdk-pixbuf2' 'giflib' 'glew' 'graphite' 'gsm' 'gst-plugins-base-libs' 'gstreamer' 'harfbuzz' 'imath' 'jsoncpp' 'lame' 'lapack' 'libbluray' 'libdatrie' 'libdc1394' 'libdrm' 'libglvnd' 'libjpeg-turbo' 'libmodplug' 'libogg' 'libopenmpt' 'libpng' 'libraw1394' 'librsvg' 'libsoxr' 'libssh' 'libthai' 'libtheora' 'libtiff' 'libunwind' 'libva' 'libvdpau' 'libvorbis' 'libvpx' 'libwebp' 'libx11' 'libxau' 'libxcb' 'libxcursor' 'libxdmcp' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrender' 'md4c' 'mpg123' 'onetbb' 'opencore-amr' 'opencv' 'openexr' 'openjpeg2' 'opus' 'orc' 'pango' 'pixman' 'protobuf' 'qt5-base' 'rav1e' 'speex' 'srt' 'svt-av1' 'x264' 'x265' 'xvidcore')
-md5sums=('SKIP')
-source=("git+$url")
+license=('GPL-3.0-or-later')
+depends=('fmt' 'hdf5' 'jsoncpp' 'opencv' 'qt6-base' 'tesseract-data-eng' 'vtk')
+makedepends=('git')
+source=("git+$url#commit=da8c5fd648fcaa6dd6082d8da14ab91345609e33")
+sha256sums=('5ac442b904d4b4eaafde5dc1a0bfbc8d2eabe8e00258fc83a4c7843e3eaec072')
 
 build() {
     cd "${_pkgname}"
-    qmake . && make -j8
+    qmake6
+    make
 }
 package() {
     cd "${_pkgname}"
-    qmake . && sudo make install -j8
-    sudo ln -sf /opt/Text-From-Image/bin/Text-From-Image  /usr/bin/tfi
-    # install -Dm644 LICENSE "${}"
-    # install -Dm644 README.md "${}"
+    install -Dm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
 }
-# template end;
