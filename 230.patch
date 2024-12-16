@@ -1,7 +1,7 @@
 From eaefd3b8d6ef1e54e71f2028d68b533beb9bc5f8 Mon Sep 17 00:00:00 2001
 From: Vadim Fedorenko <vvfedorenko@github.com>
 Date: Sun, 16 Jun 2024 23:31:50 +0100
-Subject: [PATCH 1/2] ipt_NETFLOW: add compatibility with 6.8+
+Subject: [PATCH 1/3] ipt_NETFLOW: add compatibility with 6.8+
 
 * replace strlcpy with strscpy as strlcpy was removed in 6.8
 * replace strtoul with simple_strtoul which exists in all kernels and is
@@ -208,7 +208,7 @@ index eee8074..2f6e069 100644
 From 22b13ea090f6c5897d8331f41a6c491534fa4873 Mon Sep 17 00:00:00 2001
 From: Vadim Fedorenko <vvfedorenko@github.com>
 Date: Fri, 6 Dec 2024 23:17:39 +0000
-Subject: [PATCH 2/2] compat: Linux 6.11 support
+Subject: [PATCH 2/3] compat: Linux 6.11 support
 
 There are several changes in linux kernel 6.11+ which are
 incompatible with the module. Improve compatibility.
@@ -355,3 +355,65 @@ index 2f6e069..eb40956 100644
  };
  
  #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,25)
+
+From fb5c492ac38ad690c52546eb08e739fab3a84d8b Mon Sep 17 00:00:00 2001
+From: Vadim Fedorenko <vvfedorenko@github.com>
+Date: Mon, 16 Dec 2024 12:30:50 +0000
+Subject: [PATCH 3/3] support for linux 6.12 LTS
+
+put_unaligned_u32 was moved to linux/unaligned.h and now
+arch independent. Update include and gef_compat_def.
+
+Signed-off-by: Vadim Fedorenko <vvfedorenko@github.com>
+---
+ gen_compat_def | 13 ++++++++++++-
+ ipt_NETFLOW.c  |  4 ++++
+ 2 files changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/gen_compat_def b/gen_compat_def
+index bbdb4ce..b8339e8 100755
+--- a/gen_compat_def
++++ b/gen_compat_def
+@@ -80,6 +80,15 @@ kbuild_test_ref() {
+ 	void *test = &$1;
+ 	EOF
+ }
++
++# Test symbol if include exists
++kbuild_test_symbol_include() {
++  echo "Test file exists $KDIR/include/$2" >&2
++  if [ -f $KDIR/include/$2 ]; then
++    kbuild_test_symbol $*
++  fi
++}
++
+ # Test that struct is defined.
+ kbuild_test_struct() {
+   echo -n "Test struct $* " >&2
+@@ -121,7 +130,9 @@ kbuild_test_symbol nf_bridge_info_get linux/netfilter_bridge.h
+ # Stumbled on 5.9
+ kbuild_test_struct vlan_dev_priv linux/if_vlan.h
+ # Kernel version check broken by centos8
+-kbuild_test_symbol put_unaligned_be24 asm/unaligned.h
++kbuild_test_symbol_include put_unaligned_be24 asm-generic/unaligned.h
++kbuild_test_symbol_include put_unaligned_be24 linux/unaligned/generic.h
++kbuild_test_symbol_include put_unaligned_be24 linux/unaligned.h
+ # totalram_pages changed from atomic to inline function.
+ kbuild_test_symbol totalram_pages linux/mm.h
+ kbuild_test_ref    totalram_pages linux/mm.h
+diff --git a/ipt_NETFLOW.c b/ipt_NETFLOW.c
+index eb40956..ac8bea8 100644
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -71,7 +71,11 @@
+ # include <net/netfilter/nf_conntrack.h>
+ # include <net/netfilter/nf_conntrack_core.h>
+ #endif
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,12,0)
+ #include <asm/unaligned.h>
++#else
++#include <linux/unaligned.h>
++#endif
+ #ifdef HAVE_LLIST
+ 	/* llist.h is officially defined since linux 3.1,
+ 	 * but centos6 have it backported on its 2.6.32.el6 */
