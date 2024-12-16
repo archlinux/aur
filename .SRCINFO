@@ -1,12 +1,21 @@
 pkgbase = relagit-bin
-	pkgdesc = The elegant solution to graphical version control.
+	pkgdesc = Take back control over your git workflow.
 	pkgver = 0.16.8
 	pkgrel = 1
 	url = https://github.com/relagit/relagit
 	arch = x86_64
 	license = GNU Lesser General Public License v3.0
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	optdepends = libappindicator-gtk3
 	provides = RelaGit
-	conflicts = RelaGit
 	source_x86_64 = relagit-bin-0.16.8.deb::https://github.com/relagit/relagit/releases/download/v0.16.8/RelaGit-linux.deb
 	sha256sums_x86_64 = d6743e0de9d67ccb745802b33e75967f47bac88c43cf1cda62566a4248376391
 
