@@ -1,7 +1,7 @@
 pkgbase = mbt
 	pkgdesc = Memory-based tagger-generator and tagger in one.
-	pkgver = 3.10
-	pkgrel = 2
+	pkgver = 3.11
+	pkgrel = 1
 	url = https://languagemachines.github.io/mbt
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mbt
 	depends = timbl
 	depends = timblserver
 	options = !libtool
-	source = https://github.com/LanguageMachines/mbt/archive/v3.10.tar.gz
-	md5sums = 1baa7caf5f529187319f22a261c18e80
+	source = https://github.com/LanguageMachines/mbt/archive/v3.11.tar.gz
+	md5sums = a097e9090ce51521764dc0cb37469cb4
 
 pkgname = mbt
