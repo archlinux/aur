@@ -27,7 +27,7 @@ package() {
     install -Dm0755 *.py -t "$pkgdir/usr/lib/$pkgname"
     cp -r venv "$pkgdir/usr/lib/$pkgname/venv"
 
-    install -Dm0755 "$startdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    install -Dm0755 "../$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
     install -Dm0755 "${pkgname}_skip.lua" -t "$pkgdir/usr/share/mpv/scripts"
 
     install -Dm644 icon.ico "$pkgdir/usr/share/icons/$pkgname.ico"
