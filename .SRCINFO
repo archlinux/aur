@@ -1,9 +1,10 @@
 pkgbase = display3d
 	pkgdesc = CLI for rendering and animating 3D objects
 	pkgver = 0.1.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/renpenguin/display3d
 	arch = x86_64
+	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
 	source = display3d-0.1.17.tar.gz::https://github.com/renpenguin/display3d/archive/v0.1.17.tar.gz
