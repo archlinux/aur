@@ -6,5 +6,6 @@ from_pattern="-"
 to_pattern="."
 #use_max_tag=true
 use_latest_release=true
+#use_newest_release=true
 use_commit_number=true
 use_commit_hash=true
