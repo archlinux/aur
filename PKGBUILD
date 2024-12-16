@@ -5,33 +5,32 @@ pkgname=${_pkgname}
 pkgdesc="Vocal remover and instrumental AI splitter"
 pkgver=2.5.0
 _pkgrel=1
-pkgrel=1
+pkgrel=${_pkgrel}
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 url="https://www.lalal.ai/"
 arch=("x86_64")
 license=("freeware-proprietary")
+depends=('libmediainfo')
 _pkg="lalalai_${pkgver}-1_amd64.deb"
 source=($_pkg::"https://d.lalal.ai/app/${_pkg}?source=aur"
-        "https://s.lalal.ai/icons/favicon.svg"
-        "lalalai.desktop")
+        "${_pkgname}.desktop")
 sha1sums=('fae3d9b55a62be4ad039cf825d879acbfdbc16e2'
-          '6a82a050cac741189c600451a38726095f413959'
-          '0879c6471548fda937e5bc28ae867f98ce1c3b9e')
+          '8a9bb46e43e65ed1dd427de04fdb432904256b84')
 options=(!strip)
 
 prepare() {
-  mkdir -p control
-  tar -xf data.tar.xz
-  sed -i -E "s:/usr/lib/:/opt/:" "usr/lib/${_pkgname}/${_pkgname}.sh"
+  tar --zstd -xf data.tar.zst
 }
 
 package() {
-  install -dm755 "${pkgdir}/usr/bin" "${pkgdir}/opt" "${pkgdir}/usr/share/pixmaps" \
+  install -dm755 "${pkgdir}/usr/bin" "${pkgdir}/opt/${_pkgname}" "${pkgdir}/usr/share/icons/hicolor/"{128x128,256x256}"/apps" \
   "${pkgdir}/usr/share/applications/" "${pkgdir}/usr/share/licenses/${_pkgname}"
-  install -Dm644 "favicon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${provides}.svg"
+  install -Dm644 "usr/share/icons/hicolor/128x128/apps/lalalai.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
+  install -Dm644 "usr/share/icons/hicolor/256x256/apps/lalalai.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
   install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/"
-  mv "usr/lib/${_pkgname}" "${pkgdir}/opt/"
-  mv "usr/share/doc/${_pkgname}/"* "${pkgdir}/usr/share/licenses/${_pkgname}/"
-  ln -sf "/opt/${_pkgname}/lalalai.sh" "${pkgdir}/usr/bin/${provides}"
+  install -Dm755 "usr/share/${_pkgname}/${_pkgname}" "${pkgdir}/opt/${_pkgname}/"
+  mv "usr/share/${_pkgname}/"{data,lib} "${pkgdir}/opt/${_pkgname}/"
+  mv "usr/share/${_pkgname}/"*.txt "${pkgdir}/usr/share/licenses/${_pkgname}/"
+  ln -sf "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${provides}"
 }
