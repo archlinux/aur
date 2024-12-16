@@ -3,7 +3,7 @@
 pkgname=python-trl
 _pkgname=${pkgname#python-}
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Train transformer language models with reinforcement learning'
 arch=('any')
 url='https://github.com/huggingface/trl'
@@ -12,10 +12,8 @@ groups=('huggingface')
 depends=(
   'python-accelerate'
   'python-datasets'
-  'python-numpy'
-  'python-pytorch'
+  'python-rich'
   'python-transformers>=4.46.0'
-  'python-tyro'
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=(
