@@ -4,10 +4,10 @@
 # Contributor : Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
 pkgname=whalebird-bin
 _pkgname=Whalebird
-pkgver=6.1.7
+pkgver=6.1.8
 _electronversion=31
 pkgrel=1
-pkgdesc="Single-column Fediverse client for desktop.Prebuilt version.Use system-wide electron."
+pkgdesc="Single-column Fediverse client for desktop.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://whalebird.social/"
 _ghurl="https://github.com/h3poteto/whalebird-desktop"
@@ -18,12 +18,12 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d743244558db8f61e198b33b6e1f3a7cbd98a60ab4f1ed20dd44c09f30cf11b5'
+sha256sums=('3c23c4592ec12f4b9027554754757cc544b1d0ab3c787155dc3a036b15f5ccda'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
@@ -31,7 +31,6 @@ build() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
