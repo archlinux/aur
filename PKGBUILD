@@ -12,7 +12,7 @@ license=('BSD-3-Clause')
 source=("git+$url.git")
 sha256sums=('SKIP')
 depends=('gcc-libs')
-makedepends=('julec-git')
+makedepends=('julec-git' 'git')
 provides=("$__pkgname")
 conflicts=("$__pkgname")
 

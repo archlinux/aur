@@ -8,6 +8,7 @@ pkgbase = julefmt-git
 	arch = i386
 	license = BSD-3-Clause
 	makedepends = julec-git
+	makedepends = git
 	depends = gcc-libs
 	provides = julefmt
 	conflicts = julefmt
