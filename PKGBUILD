@@ -6,7 +6,7 @@ _pkgname=another-redis-desktop-manager
 
 pkgname="${_pkgname}-appimage"
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A faster, better and more stable redis desktop manager"
 arch=('x86_64')
 url="https://github.com/qishibo/AnotherRedisDesktopManager"
@@ -31,7 +31,7 @@ sha512sums_x86_64=('37c4719c99ad59440823a19c09e2a1bbd3660880cb29113b8c4c9d212524
 
 prepare() {
     chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
+    ./"${_appimage}" --appimage-extract > /dev/null
 }
 
 build() {
