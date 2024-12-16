@@ -3,7 +3,7 @@
 
 _pkgname="organize"
 pkgname="$_pkgname"
-pkgver=3.2.5
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='A command line utility to automate file organization tasks'
 url='https://github.com/tfeldmann/organize'
@@ -23,7 +23,7 @@ makedepends=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('51c8b42b12366fe41943e678df4e71f9f4cd2aa1d9ac2a3d3be8531adbee4dc2')
+sha256sums=('0b78928cc934cc60801ddf69f4910f8499e86070a1e256bb319c6863c71f73ea')
 
 build() {
   cd "$_pkgsrc"
@@ -34,7 +34,6 @@ package() {
   depends+=(
     'docx2txt'
     'python-arrow'
-    'python-docopt'
     'python-jinja'
     'python-natsort'
     'python-pdfminer'
@@ -45,6 +44,7 @@ package() {
     'python-yaml'
 
     ## AUR
+    'python-docopt-ng'
     'python-exifread'
     'python-simplematch'
   )
