@@ -1,13 +1,13 @@
 pkgbase = bash-bats-detik
 	pkgdesc = A library to ease e2e tests of applications in K8s environments with bats
-	pkgver = 1.3.2
+	pkgver = 1.3.3
 	pkgrel = 3
 	url = https://github.com/bats-core/bats-detik
 	install = bash-bats-detik.install
 	arch = any
 	license = MIT
 	depends = bats
-	source = https://github.com/bats-core/bats-detik/archive/v1.3.2/bash-bats-detik-1.3.2.tar.gz
-	sha512sums = b0f26f81541ff0e0032e7e74d4a524cd035ca976410bcbde94ceb39776aa73481a620649a30f157a0f33670e68b6bbc3449256bae9a087f4fa7d062a22e8e346
+	source = https://github.com/bats-core/bats-detik/archive/v1.3.3/bash-bats-detik-1.3.3.tar.gz
+	sha512sums = 4834d9724776b4bf7adab44285bbc335bab2de9114feac3e4dac478e5ddbcc43eab927d340be6b5f09b0bffaa7dfdae337eca0095353213fa28eac8669fcb8d8
 
 pkgname = bash-bats-detik
