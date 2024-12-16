@@ -1,0 +1,21 @@
+pkgbase = dye-bin
+	pkgdesc = CLI tool to easily color text in your shell
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/kurtbuilds/dye
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = help2man
+	provides = dye
+	conflicts = dye
+	source = LICENSE-0.4.2::https://raw.githubusercontent.com/kurtbuilds/dye/v0.4.2/LICENSE.md
+	source = README-0.4.2::https://raw.githubusercontent.com/kurtbuilds/dye/v0.4.2/README.md
+	sha256sums = 0fba33e712b47fff4ac42c8ffe9862a045b62b496c3843b781cda79d1714aa51
+	sha256sums = f3da2e0307b0742a8d3949bd282cd73c80cf6eace75d4b19efe221f92472ce9d
+	source_x86_64 = dye-0.4.2.tar.gz::https://github.com/kurtbuilds/dye/releases/download/v0.4.2/dye-v0.4.2-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = a10bd11271150b3621baf3deacf901669b9abe5ce0b579b0cf2f9f4c83f36c2c
+	source_aarch64 = dye-0.4.2.tar.gz::https://github.com/kurtbuilds/dye/releases/download/v0.4.2/dye-v0.4.2-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = a10bd11271150b3621baf3deacf901669b9abe5ce0b579b0cf2f9f4c83f36c2c
+
+pkgname = dye-bin
