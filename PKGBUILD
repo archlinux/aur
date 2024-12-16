@@ -3,11 +3,11 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=zlibbioc
-_bcver=1.48.0
+_bcver=1.52.0
 pkgname=r-${_bcname,,}
 pkgdesc="An R packaged zlib-1.2.5"
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
-license=(Artistic2.0)
+license=("Artistic-2.0")
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
 
@@ -16,7 +16,7 @@ depends=("r")
 optdepends=("r-biocstyle")
 
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("f89833655a32effd80a29914ef3e64c6b38461dffb3a1b6a4351975d28f2a3ca47e3934e6656f53220347005007e45e92121d7d3500279a293159d00efd3c465")
+b2sums=("8447845b3a9149afc4e21fb51ddc25f83534c930dafbafa831ff0ec83ad61f42f9ed6bef5b9b3b8e1938995893741d5a76b7f9839ab2880ba3efdec73e129998")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
