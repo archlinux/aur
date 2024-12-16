@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ape
-_pkgver=5.8
+_pkgver=5.8-1
 pkgname=r-${_pkgname,,}
-pkgver=5.8
+pkgver=5.8.1
 pkgrel=1
 pkgdesc='Analyses of Phylogenetics and Evolution'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   r-phangorn
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('24ce729979e1bcc60317e71e5100ce54156ceb7484917b0d64260f733ae84d24')
+sha256sums=('d6cde3dda751597ad741f634f143a3eb521b957fd1a23ceefba78a2716422d8e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
