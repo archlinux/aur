@@ -2,7 +2,7 @@
 _appname=hugin
 pkgname="${_appname}-messenger"
 _pkgname="Hugin Messenger"
-pkgver=0.7.1
+pkgver=0.7.2
 _electronversion=19
 _nodeversion=18.20.4
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('7b4e75e4e8d275fcd9b3076ef138fc6054d41441de03aa3037a6c43dff46de16'
+sha256sums=('7fdf25458aecf70c3e1511422b39e74587f01c984fd79bd842fddc3dde3d5160'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -36,7 +36,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -67,6 +67,9 @@ build() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm add -D node-gyp
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${_appname}-desktop-${pkgver}"
     NODE_ENV=production     npm run build:svelte
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config build.config.json"
 }
