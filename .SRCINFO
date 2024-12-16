@@ -1,0 +1,19 @@
+pkgbase = deepin-service-manager-git
+	pkgdesc = Deepin Service Manager
+	pkgver = 1.0.8.r0.g4a85b99
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/deepin-service-manager
+	arch = x86_64
+	arch = aarch64
+	groups = deepin-git
+	license = GPL3
+	makedepends = boost
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	provides = deepin-service-manager
+	conflicts = deepin-service-manager
+	source = deepin-service-manager-git::git+https://github.com/linuxdeepin/deepin-service-manager
+	sha512sums = SKIP
+
+pkgname = deepin-service-manager-git
