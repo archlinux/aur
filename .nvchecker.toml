@@ -3,4 +3,6 @@ source="github-graphql"
 github="Mauitron/StygianSift"
 use_commit_number=true
 use_commit_hash=true
+from_pattern="\\d{8}\\.\\d{6}\\+"
+to_pattern=""
 

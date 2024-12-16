@@ -1,6 +1,6 @@
 pkgbase = stygiansift-git
 	pkgdesc = A highly customizable TUI file explorer
-	pkgver = r167+g9bd22dbe6
+	pkgver = r170+g83aa82a0e
 	pkgrel = 1
 	url = https://github.com/Mauitron/StygianSift
 	arch = x86_64

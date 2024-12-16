@@ -1,10 +1,8 @@
 # Maintainer : envolution
-# Contributor: mnussbaum
-# Contributor: j.r <j.r@jugendhacker.de>
 
 pkgname=stygiansift-git
 _pkgname="StygianSift"
-pkgver=r167+g9bd22dbe6
+pkgver=r170+g83aa82a0e
 pkgrel=1
 pkgdesc="A highly customizable TUI file explorer"
 arch=("x86_64")
