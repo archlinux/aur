@@ -1,15 +1,16 @@
 pkgbase = python-helpscout-v2
 	pkgdesc = Client for interacting with Help Scout's API
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
-	url = https://pypi.org/project/python-helpscout-v2/
+	url = https://pypi.org/project/python-helpscout/
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = cython
-	makedepends = git
 	depends = python
-	source = https://pypi.org/packages/source/p/python-helpscout-v2/python-helpscout-v2-2.0.0.tar.gz
-	sha256sums = a41fbb4569ebfdf246c08012c53b3e0162d5d22955b93d455310b436de08cb4d
+	depends = python-requests
+	source = https://pypi.org/packages/source/p/python-helpscout/python_helpscout-2.0.1.tar.gz
+	sha256sums = 8f2f7a08f26d4d350168f1a1b7f2d44e2fd9ac6e926f97382db2a7f58e9dd2e1
 
 pkgname = python-helpscout-v2
