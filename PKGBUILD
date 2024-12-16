@@ -8,14 +8,14 @@ pkgdesc='Keep track of the commands your memory missed'
 arch=('x86_64')
 url="https://github.com/aspasht/$_pkgname"
 license=('MIT')
-source=("$_pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/cli-x86_64-unknown-linux-gnu.tar.xz")
+source=("$_pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/cli-$CARCH-unknown-linux-gnu.tar.xz")
 sha256sums=('SKIP')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 depends=('sqlite')
 
 prepare() {
-    mv "cli-x86_64-unknown-linux-gnu" "$_pkgname-$pkgver"
+    mv "cli-$CARCH-unknown-linux-gnu" "$_pkgname-$pkgver"
 }
 
 package() {
