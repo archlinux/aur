@@ -1,0 +1,4 @@
+[tex-fmt-bin]
+source = "git"
+git = "https://github.com/WGUNDERWOOD/tex-fmt.git"
+prefix = "v"

@@ -1,0 +1,23 @@
+pkgbase = tex-fmt-bin
+	pkgdesc = An extremely fast LaTeX formatter written in Rust
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/WGUNDERWOOD/tex-fmt
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	source = README-0.5.0.md::https://github.com/WGUNDERWOOD/tex-fmt/raw/refs/tags/v0.5.0/README.md
+	source = LICENSE-0.5.0::https://github.com/WGUNDERWOOD/tex-fmt/raw/refs/tags/v0.5.0/LICENSE
+	sha256sums = 9a538091093315125aa236a72daab99e584e0c03feb4b17b41e5d3527c0bef50
+	sha256sums = d909d9843225ff2ccec3a74f3b13c889fb0bfabb7b3801dcad68505a872c941d
+	source_x86_64 = tex-fmt-0.5.0-x86_64.tar.gz::https://github.com/WGUNDERWOOD/tex-fmt/releases/download/v0.5.0/tex-fmt-x86_64-linux.tar.gz
+	sha256sums_x86_64 = af4b59cd8bd8e7d37f5b73bbb454b34fa1421f693102088e60c5d79f4c4f04c2
+	source_aarch64 = tex-fmt-0.5.0-aarch64.tar.gz::https://github.com/WGUNDERWOOD/tex-fmt/releases/download/v0.5.0/tex-fmt-aarch64-linux.tar.gz
+	sha256sums_aarch64 = fd07269a4a082046beb3ef708ec687278cb549f8938e9cc93df0514da3501a56
+	source_armv7h = tex-fmt-0.5.0-armv7h.tar.gz::https://github.com/WGUNDERWOOD/tex-fmt/releases/download/v0.5.0/tex-fmt-armv7hf-linux.tar.gz
+	sha256sums_armv7h = 26af5c7f315f2af5db59abadffdf8510fba29ecd88dfe63da0d877fdcd0a9640
+
+pkgname = tex-fmt-bin
