@@ -1,5 +1,5 @@
 pkgbase = libodb-pgsql
-	pkgdesc = The ODB PostreSQL runtime library
+	pkgdesc = The ODB PostgreSQL runtime library
 	pkgver = 2.5.0b27
 	pkgrel = 1
 	url = https://www.codesynthesis.com/products/odb/
