@@ -168,6 +168,9 @@ _package() {
 
   # devicetree
   install -Dm644 arch/arm64/boot/dts/qcom/sc8280xp-huawei-gaokun3.dtb -t "$pkgdir/boot/"
+
+  install -Dm644 "${srcdir}/mkinitcpio-gaokun3.conf" -t "$pkgdir/etc/"
+  install -Dm644 "${srcdir}/linux-gaokun3.preset" -t "$pkgdir/etc/mkinitcpio.d/"
 }
 
 _cross_compile_tools() {
