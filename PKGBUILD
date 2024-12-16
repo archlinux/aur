@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=final2x-bin
 _pkgname=Final2x
-pkgver=2.0.0
-_date=2024-11-09
+pkgver=2.1.0
+_date=2024-12-14
 _electronversion=27
 pkgrel=1
 pkgdesc="2^x Image Super-Resolution.(Prebuilt version.Use system-wide electron)"
@@ -25,10 +25,10 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Tohrusky/Final2x/${_date}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ed8964f1affb1ab6c8b8604494e6322256bdcd7e38716c6245cee1d0e22de873'
-            '7b4e93ff707625a2632519b35d5891035356f551f18dd18539ad94c72f59286a'
+sha256sums=('a3c46e08a0754f223e35d578706eb6a071437a6dd554d10fc60efaf21f49acad'
+            '1c242d5b56eacdc11b1bb8460b78ba0212e6cdf1aa6f2809743e0b9d0e064b3d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
