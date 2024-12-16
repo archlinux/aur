@@ -1,0 +1,6 @@
+[gnome-session-git]
+source="github-graphql"
+github="GNOME/gnome-session"
+use_max_tag=true
+use_commit_number=true
+use_commit_hash=true
