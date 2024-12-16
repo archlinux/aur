@@ -1,6 +1,2 @@
 d /var/lib/concrnt/webui 0750 concrnt concrnt
 d /var/log/concrnt/webui 0750 concrnt concrnt
-z /etc/concrnt/config/code-of-conduct.txt    740 root concrnt -
-z /etc/concrnt/static/register-template.json 740 root concrnt -
-z /etc/concrnt/static/tos.txt                740 root concrnt -
-z /etc/concrnt/static                        755 root concrnt -
