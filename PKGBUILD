@@ -7,6 +7,7 @@ url="https://github.com/frap129/scxctl"
 arch=('any')
 license=('Apache 2.0 or MIT')
 makedepends=('cargo')
+depends=('scx-scheds')
 source=("https://github.com/frap129/scxctl/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('3768963e780a6c25b746a06b38c3dbbbba1cf50dcdd67966551b947809964376')
 
