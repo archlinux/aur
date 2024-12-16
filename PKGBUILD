@@ -13,9 +13,9 @@ _devenv=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.0.rc2.w1.sc8d46d4
+pkgver=10.0.rc2.w9.sc2de76b
 pkgrel=1
-eval pkgrel=2
+eval pkgrel=3
 
 ################################################################################################################################
 ################################################################################################################################
@@ -35,7 +35,7 @@ _enabled_staging=()
 _disabled_staging=(eventfd_synchronization wined3d-unset-flip-gdi) # added manually from proton
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="12-13-2024-5bfbeb67-c8d46d4c"
+_patchbase_tag="12-16-2024-538cae09-c2de76b8"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -45,8 +45,8 @@ _custompatches=false
 
 ## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
 ## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=5bfbeb677f472d30c5dc5d855b0a045a7157cc43
-_desired_staging_commit=c8d46d4ca3c505014f55cc92296592119abf84f1
+_desired_wine_commit=538cae099cde66706428ead4ae8951c1e389d3f2
+_desired_staging_commit=c2de76b8048c67aa33c57cff60f98ba1b1675e72
 
 ## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -531,6 +531,10 @@ prepare() { _set_vars;
       printf "\nOverrode all staging patches matching those in staging-overrides/*.spatch\n\n" >> "${_where}"/patchlog.txt
     fi
 
+    if [ "${_wow64build}" = "true" ]; then
+      _disabled_staging+=(ntdll-Syscall_Emulation) # known to causes issues on wow64
+    fi
+
     # shellcheck disable=SC2048,SC2086
     "${staging_patcher[@]}" DESTDIR="${srcdir}"/"${pkgname}" --no-autoconf "${_enabled_staging[@]}" ${_disabled_staging[*]/#/-W } &>> "${_where}"/patchlog.txt || \
         _failure "Error applying staging patches, check patchlog.txt for info."
@@ -545,7 +549,11 @@ prepare() { _set_vars;
 
   if [ "${_use_clang}" != "true" ] && [ "${_use_clang}" != "bundled" ]; then patchlist+=("${srcdir}"/lto-fixup.patch); fi
 
-  mapfile -t patchlist_tmp < <(find "${_patchdir}" -type f -regex ".*\.patch" | LC_ALL=C sort -f)
+  if [ "${_wow64build}" != "true" ]; then
+    mapfile -t patchlist_tmp < <(find "${_patchdir}" -type f -regex ".*\.patch" | LC_ALL=C sort -f)
+  else
+    mapfile -t patchlist_tmp < <(find "${_patchdir}" -type f '(' -regex ".*\.patch" ')' -a '(' -not -regex ".*\.3264\.patch" ')' | LC_ALL=C sort -f)
+  fi
 
   patchlist+=("${patchlist_tmp[@]}")
 
