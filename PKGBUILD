@@ -3,8 +3,8 @@
 
 _beta=''
 pkgname='s5cmd'
-pkgver='2.2.2'
-pkgrel='4'
+pkgver='2.3.0'
+pkgrel='1'
 pkgdesc='Parallel S3 and local filesystem execution tool'
 arch=('x86_64' 'aarch64')
 _uri="github.com/peak"
@@ -12,7 +12,7 @@ url="https://${_uri}/${pkgname}"
 license=('MIT')
 makedepends=('go' 'git')
 source=("${url}/archive/refs/tags/v${pkgver}${_beta}.tar.gz")
-sha256sums=('6f96a09a13198b84a23b7b7ff0b93f947434a185093284e13d05c0e864907f48')
+sha256sums=('6910763a7320010aa75fe9ef26f622e440c2bd6de41afdbfd64e78c158ca19d4')
 
 prepare() {
   export GOPATH="${srcdir}/gopath"
