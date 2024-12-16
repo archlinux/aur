@@ -1,0 +1,21 @@
+pkgbase = kickstart-rs
+	pkgdesc = A scaffolding tool to get new projects up and running quickly
+	pkgver = 0.5.0
+	pkgrel = 0
+	url = https://github.com/Keats/kickstart
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	provides = kickstart-rs
+	provides = kickstart
+	conflicts = kickstart-rs
+	conflicts = kickstart
+	options = !debug
+	options = !strip
+	options = !lto
+	source = kickstart-0.5.0.tar.gz::https://github.com/Keats/kickstart/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 2a1a335c70b81757abf4240a52ebce231501f731f3d73decbed4133d18ad1386
+
+pkgname = kickstart-rs
