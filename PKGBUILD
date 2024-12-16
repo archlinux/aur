@@ -4,11 +4,10 @@ pkgname='concrnt-activitypub-bin'
 pkgdesc='Concrnt ActivityPub bridge module'
 pkgver=0.3.1
 _pkgver=v${pkgver}
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
-depends=('concrnt-gateway')
 
 provides=('concrnt-activitypub')
 conflicts=('concrnt-activitypub')
@@ -40,6 +39,7 @@ backup=('etc/concrnt/config/apconfig.yaml')
 install="concrnt-activitypub.install"
 
 package() {
+  depends=('concrnt-gateway')
   backup=('etc/concrnt/config/apconfig.yaml')
 
   install -Dm755 "${srcdir}/ccactivitypub-${arch}-${pkgver}" "${pkgdir}/usr/bin/ccactivitypub"
