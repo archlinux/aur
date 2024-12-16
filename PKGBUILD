@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-auralis
 _pkgname=auralis
-pkgver=0.2.7.post1
+pkgver=0.2.8.post1
 pkgrel=1
 pkgdesc="faster implementation for TTS models, to be used in highly async environment"
 arch=('i686' 'x86_64')
@@ -34,17 +34,17 @@ depends+=(
   python-mojimoji
 )
 makedepends=(python-build python-installer python-wheel)
-source=("https://files.pythonhosted.org/packages/79/65/c179d587cdb16d7a598179527d4e637202085d10697d879fd7951ad5c95a/auralis-${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/astramind-ai/Auralis/archive/refs/tags/${pkgver}.tar.gz")
 
-sha256sums=('d9dd5ba25b4fcc81378c83c6e57a8cd1e0609d78b71ee9a121996d55c4200cd2')
+sha256sums=('32306cb76ffc9a8ffe65b65b865be9143280255d9f79e13a7a8abb2927aff536')
 
 build() {
-  cd $_pkgname-$pkgver
+  cd ${_pkgname^}-$pkgver
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd ${_pkgname^}-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
 }
