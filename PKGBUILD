@@ -1,13 +1,13 @@
 # Maintainer: Dennis Herbrich <dennis.herbrich@veloxis.de>
 pkgname=openapi-python-client
-pkgver=0.21.7
+pkgver=0.22.0
 pkgrel=1
 pkgdesc='Generate modern Python clients from OpenAPI 3.0 and 3.1 documents'
 arch=('any')
 url='https://github.com/openapi-generators/openapi-python-client'
 license=('MIT')
 depends=(
-  'python>=3.8'
+  'python>=3.9'
   'python-jinja>=3.0.0'
   'python-typer>0.6'
   # 'python-shellingham>=1.3.2'  # NOTE: declared, but seemingly unused
@@ -30,10 +30,10 @@ optdepends=(
   'python-pdm>=2.12.0: use generated PDM metadata'
   'python-poetry: use generated Poetry metadata'
   'python-setuptools: use generated setuptools metadata'
-  'ruff>=0.2,<0.8: linter check of generated code'
+  'ruff>=0.2,<0.9: linter check of generated code'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/openapi-generators/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('89c535cf23447a1e7bd5979c2174d10ce75ae2c08af13b94acb4a57161bfd768')
+sha256sums=('2159f9691673dde7fe2660840643f4ecc841b910f582e91e19378be4cbb83488')
 
 build() {
   cd "${pkgname}-${pkgver}"
