@@ -3,7 +3,7 @@
 _pyname=gfsubsets
 pkgname=python-$_pyname
 epoch=1
-pkgver=2024.5.9
+pkgver=2024.9.25
 pkgrel=1
 pkgdesc='Codepoint definitions for the Google Fonts subsetter'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('3a0a5d70e2565f4a341f2e8b8d1b31b1930055680ace233e6ea7bf15f2678996')
+sha256sums=('8c4b8804d43cf4b7b745b9345b83cb97d2c4eeb3f421c13a440cf27e165bee56')
 
 build() {
 	cd "$_archive"

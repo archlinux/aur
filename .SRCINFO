@@ -1,6 +1,6 @@
 pkgbase = python-gfsubsets
 	pkgdesc = Codepoint definitions for the Google Fonts subsetter
-	pkgver = 2024.5.9
+	pkgver = 2024.9.25
 	pkgrel = 1
 	epoch = 1
 	url = https://pypi.org/project//gfsubsets
@@ -11,7 +11,7 @@ pkgbase = python-gfsubsets
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/g/gfsubsets/gfsubsets-2024.5.9.tar.gz
-	sha256sums = 3a0a5d70e2565f4a341f2e8b8d1b31b1930055680ace233e6ea7bf15f2678996
+	source = https://files.pythonhosted.org/packages/source/g/gfsubsets/gfsubsets-2024.9.25.tar.gz
+	sha256sums = 8c4b8804d43cf4b7b745b9345b83cb97d2c4eeb3f421c13a440cf27e165bee56
 
 pkgname = python-gfsubsets
