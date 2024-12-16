@@ -1,7 +1,7 @@
 pkgbase = openvpn
 	pkgdesc = An easy-to-use, robust and highly configurable VPN (Virtual Private Network)
 	pkgver = 2.6.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openvpn.net/index.php/open-source.html
 	install = openvpn.install
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = openvpn
 	validpgpkeys = F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7
 	validpgpkeys = B62E6A2B4E56570B7BDC6BE01D829EFECA562812
 	sha256sums = 0d91a85307b2d7da104bc1fa45be47fb0a20f346b2b25050747423130ba9a8c8
-	sha256sums = 77874824d96c1fd6c14259a6ea16232ae574dda3d5adba1798ccd6c93694846c
+	sha256sums = a081d40a1785db94378aee6223240f2d01550507b69ca401838477bcf764088e
 	sha256sums = 3646b865ac67783fafc6652589cfe2a3105ecef06f3907f33de5135815f6a621
 	sha256sums = b1436f953a4f1be7083711d11928a9924993f940ff56ff92d288d6100df673fc
 
