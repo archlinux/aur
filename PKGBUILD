@@ -1,7 +1,7 @@
 # Maintainer: Maarten van Gompel <proycon at anaproy.nl>
 
 pkgname=foliautils
-pkgver=0.20
+pkgver=0.23
 pkgrel=1
 pkgdesc="Tools for working with the FoLiA format, based on libfolia. *NOT* the same as Python package FoLiA-tools!"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ makedepends=('libtool' 'autoconf')
 options=(!libtool)
 _gituser="LanguageMachines"
 _gitname="foliautils"
-source=(https://github.com/LanguageMachines/foliautils/archive/v0.20.tar.gz)
-md5sums=(263f7ac62e9d3b52d7e6943efbf665d3)
+source=(https://github.com/LanguageMachines/foliautils/archive/v0.23.tar.gz)
+md5sums=(815496e62739c8d565f69a40f2b4dcfb)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
