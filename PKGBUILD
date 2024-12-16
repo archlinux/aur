@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tiny-rdm
 _pkgname="Tiny RDM"
-pkgver=1.2.1
+pkgver=1.2.2
 _nodeversion=18
 pkgrel=1
 pkgdesc="A modern lightweight cross-platform Redis desktop manager"
@@ -30,7 +30,7 @@ options=(
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
 )
-sha256sums=('2e82c5276b59056e31b2dd4726aa90cdd8c1a47a99cee144ea66db63aca0f1de')
+sha256sums=('8378584b6535d3a7d05004fda8e6cd3c55c831ed1b6ffa50771b2ec1ad7283a2')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -47,7 +47,7 @@ build() {
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
     {
-        echo -e '\n'   
+        echo -e '\n'  
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
     } >> frontend/.npmrc
@@ -64,11 +64,11 @@ build() {
         s/{{.Info.ProductName}}/${_pkgname}/g
         s/\/usr\/local\/bin\/${pkgname%-git}/${pkgname%-git}/g
         s/{{.Info.Comments}}/${pkgdesc}/g
-    " -i "build/linux/${pkgname%-git}_0.0.0_amd64/usr/share/applications/${pkgname%-git}.desktop"
+    " -i "build/linux/${pkgname%-git}_"*/usr/share/applications/"${pkgname%-git}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.git/build/bin/${pkgname}" -t "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/${pkgname}.git/build/linux/${pkgname}_0.0.0_amd64/usr/share/applications/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}.git/build/linux/${pkgname}_"*/usr/share/applications/"${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}.git/build/appicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
