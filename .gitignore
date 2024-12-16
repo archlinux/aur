@@ -1,5 +1,6 @@
 *
 !PKGBUILD
-!bitrise.install
 !.SRCINFO
 !.gitignore
+!*.install
+!.nvchecker.toml

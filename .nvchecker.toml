@@ -1,0 +1,3 @@
+[bitrise-bin]
+source = "git"
+git = "https://github.com/bitrise-io/bitrise.git"
