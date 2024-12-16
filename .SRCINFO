@@ -1,0 +1,16 @@
+pkgbase = python-hyprpy
+	pkgdesc = Python bindings for Hyprland
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/ulinja/hyprpy
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-pydantic
+	options = !debug
+	source = python-hyprpy-0.1.9.tar.gz::https://github.com/ulinja/hyprpy/archive/refs/tags/v0.1.9.tar.gz
+	sha512sums = 2beb6d105b3a6c3aced0d0ab539a507e885cdd979689a12f6840e9cf69675210c8dca299cc8ba47dd1fcb1b91d83dba957ce9e4a0ec4aeaa03a098f34d87b98e
+
+pkgname = python-hyprpy
