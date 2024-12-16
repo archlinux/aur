@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mawejs-bin
 _pkgname=MaweJS
-pkgver=0.10.0
+pkgver=0.11.0
 _electronversion=33
 pkgrel=1
 pkgdesc="Story Editor for Plantsers.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/mkoskim/mawejs/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('743661a695209cc7a63d0e5e5e06589ff77d962771bb3b684e9e0172c6645ea9'
+sha256sums=('74fab1ea9d67738ab2f1e7f8d724f6e5bcfde85da18ccf5f095be936e37b9915'
             'c06aed1315c117a4f121a7b45831e3df87c51948e2aff6e105dbb94a2fcb619d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
