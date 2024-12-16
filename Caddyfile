@@ -1,0 +1,15 @@
+{
+	log {
+		output file /var/log/concrnt/webui/caddy.log
+	}
+}
+
+:28282 {
+	redir /web /web/
+	
+	handle_path /web/* {
+		root * /usr/share/concrnt/web
+		file_server
+		try_files {path} {path}/ index.html =404
+	}
+}

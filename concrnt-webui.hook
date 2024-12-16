@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = concrnt-webui
+
+[Action]
+Description = Restarting concrnt-gateway...
+When = PostTransaction
+Exec = /bin/bash -c '/usr/bin/systemctl is-active concrnt-webui-caddy.service -q && /usr/bin/systemctl restart concrnt-webui-caddy.service || /usr/bin/systemctl is-active concrnt-webui-nginx.service -q && /usr/bin/systemctl restart concrnt-webui-nginx.service || /usr/bin/true'

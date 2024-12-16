@@ -1,0 +1,24 @@
+[Unit]
+Description=Nginx service for concrnt webui
+Wants=concrnt-gateway.service
+After=concrnt-gateway.service
+Conflicts=concrnt-webui-caddy.service
+
+[Service]
+Type=forking
+Restart=on-failure
+
+User=concrnt
+Group=concrnt
+
+ExecStart=/usr/bin/nginx -c /etc/concrnt/config/webui/nginx.conf
+ExecReload=/usr/bin/nginx -c /etc/concrnt/config/webui/nginx.conf -s reload
+
+KillMode=mixed
+KillSignal=SIGQUIT
+TimeoutStopSec=5
+
+SyslogIdentifier=concrnt-webui-nginx
+
+[Install]
+WantedBy=multi-user.target
