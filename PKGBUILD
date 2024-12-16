@@ -2,8 +2,8 @@
 
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-ada,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
-pkgver=15.1.0.snapshot20241208
-_pkgver=15-20241208
+pkgver=15.1.0.snapshot20241215
+_pkgver=15-20241215
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -35,7 +35,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # nisse@lysator.liu.se
               A534BE3F83E241D918280AEB5831D11A0D4DB02A) # vincent@vinc17.net
-sha256sums=('3629eddb05a87a0c8d921e77059ec0284e4d0d00a6ee3b7bcf3e9b00f5cf3c9d'
+sha256sums=('259c369cf90d76c0ee7b2e74778c87c9cee2f122bcbf9f0ee7fdb863a767fc11'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
@@ -146,7 +146,7 @@ check() {
 package_gcc-libs-snapshot() {
   pkgdesc='Runtime libraries shipped by GCC (snapshot)'
   depends=("glibc>=2.36")
-  options=(!emptydirs !strip)
+  options=(!emptydirs lto strip)
   provides=(${pkgname}-multilib gcc-libs-multilib "gcc-libs=${pkgver}-${pkgrel}" libgo.so
             libgfortran.so libgphobos.so libubsan.so libasan.so libtsan.so liblsan.so)
   replaces=(${pkgname}-multilib gcc-libs-multilib gcc-libs libgphobos)
@@ -187,7 +187,7 @@ package_gcc-snapshot() {
   provides=(${pkgname}-multilib gcc-multilib gcc)
   replaces=(${pkgname}-multilib gcc-multilib gcc)
   conflicts=(gcc-multilib gcc)
-  options=(!emptydirs staticlibs)
+  options=(!emptydirs lto strip staticlibs)
 
   cd gcc-build
 
@@ -270,7 +270,7 @@ package_gcc-fortran-snapshot() {
   provides=(${pkgname}-multilib gcc-fortran-multilib gcc-fortran)
   replaces=(${pkgname}-multilib gcc-fortran-multilib gcc-fortran)
   conflicts=(gcc-fortran-multilib gcc-fortran)
-  options=(staticlibs)
+  options=(lto strip staticlibs)
 
   cd gcc-build
   make -C ${CHOST}/libgfortran DESTDIR=${pkgdir} install-cafexeclibLTLIBRARIES \
@@ -293,7 +293,7 @@ package_gcc-objc-snapshot() {
   provides=(${pkgname}-multilib gcc-objc-multilib gcc-objc)
   replaces=(${pkgname}-multilib gcc-objc-multilib gcc-objc)
   conflicts=(gcc-objc-multilib gcc-objc)
-  options=(staticlibs)
+  options=(lto strip staticlibs)
 
   cd gcc-build
   make DESTDIR=${pkgdir} -C ${CHOST}/libobjc install-headers
@@ -311,7 +311,7 @@ package_gcc-ada-snapshot() {
   provides=(${pkgname}-multilib gcc-ada-multilib gcc-ada)
   replaces=(${pkgname}-multilib gcc-ada-multilib gcc-ada)
   conflicts=(gcc-ada-multilib gcc-ada)
-  options=(!emptydirs staticlibs)
+  options=(!emptydirs lto strip staticlibs)
 
   cd gcc-build/gcc
   make DESTDIR=${pkgdir} ada.install-{common,info}
@@ -349,7 +349,7 @@ package_gcc-go-snapshot() {
   provides=("go=1.18" ${pkgname}-multilib gcc-go-multilib gcc-go)
   replaces=(${pkgname}-multilib gcc-go-multilib gcc-go)
   conflicts=(go)
-  options=(staticlibs)
+  options=(lto strip staticlibs)
 
   cd gcc-build
   make -C ${CHOST}/libgo DESTDIR=${pkgdir} install-exec-am
@@ -371,7 +371,7 @@ package_lib32-gcc-libs-snapshot() {
   provides=(lib32-gcc-libs libgo.so libgfortran.so libubsan.so libasan.so)
   replaces=(lib32-gcc-libs)
   conflicts=(lib32-gcc-libs)
-  options=(!emptydirs !strip)
+  options=(!emptydirs lto strip)
 
   cd gcc-build
   make -C ${CHOST}/32/libgcc DESTDIR=${pkgdir} install-shared
@@ -395,7 +395,7 @@ package_gcc-d-snapshot() {
   provides=(gcc-d gdc)
   replaces=(gcc-d gdc)
   conflicts=(gcc-d gdc)
-  options=(staticlibs)
+  options=(lto strip staticlibs)
 
   cd gcc-build
   make -C gcc DESTDIR=${pkgdir} d.install-{common,man,info}
@@ -418,7 +418,7 @@ package_gcc-m2-snapshot() {
   provides=(${pkgname}-multilib gcc-m2-multilib gcc-m2)
   replaces=(${pkgname}-multilib gcc-m2-multilib gcc-m2)
   conflicts=(gcc-m2-multilib gcc-m2)
-  options=(staticlibs)
+  options=(lto strip staticlibs)
 
   cd gcc-build
   make -C gcc DESTDIR=${pkgdir} m2.install-{common,man,info}
@@ -439,7 +439,7 @@ package_gcc-rust-snapshot() {
   provides=(${pkgname}-multilib gcc-rust-multilib gcc-rust)
   replaces=(${pkgname}-multilib gcc-rust-multilib gcc-rust)
   conflicts=(gcc-rust-multilib gcc-rust)
-  options=(staticlibs)
+  options=(lto strip staticlibs)
 
   cd gcc-build
   make -C gcc DESTDIR=${pkgdir} rust.install-{common,man,info}
@@ -456,7 +456,7 @@ package_lto-dump-snapshot() {
   provides=(lto-dump)
   replaces=(lto-dump)
   conflicts=(lto-dump)
-  options=(staticlibs)
+  options=(lto strip staticlibs)
 
   cd gcc-build
   make -C gcc DESTDIR=${pkgdir} lto.install-{common,man,info}
@@ -472,7 +472,7 @@ package_libgccjit-snapshot() {
   provides=(libgccjit)
   replaces=(libgccjit)
   conflicts=(libgccjit)
-  options=(staticlibs)
+  options=(lto strip staticlibs)
 
   cd gcc-build
   make -C gcc DESTDIR=${pkgdir} jit.install-common jit.install-info
