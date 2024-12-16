@@ -1,6 +1,6 @@
 pkgname=openmodelica
-pkgver=1.24.0
-pkgrel=4
+pkgver=1.24.3
+pkgrel=1
 pkgdesc="Open-source Modelica-based modeling and simulation environment"
 url="https://www.openmodelica.org"
 _giturl="https://github.com/OpenModelica/OpenModelica.git"
@@ -10,17 +10,12 @@ depends=('java-environment' 'lapack' 'openscenegraph' 'boost-libs' 'qt6-webengin
 makedepends=('gcc-fortran' 'cmake' 'git' 'boost')
 options=('!lto')
 source=("${pkgname}::git+${_giturl}#tag=v${pkgver}")
-sha256sums=('c18f2030032b417d1afd37d90090e8de8e2e4f0f9364c01b2db0caea5b4cd26e')
+sha256sums=('bba08ac365168d858f216daabc1bd3413aa72efca705932dd0a24c169a8caf60')
 
 prepare() {
   cd "${pkgname}"
   git remote set-url origin ${_giturl}
   git submodule update --force --init --recursive
-
-  # Library index file //.openmodelica/libraries/index.json doesn't exist
-  curl -L https://github.com/OpenModelica/OpenModelica/pull/13078.patch | patch -p1
-
-  sed -i "s|Qt5|Qt6|g" OMSens_Qt/CMakeLists.txt
 }
 
 build() {
