@@ -1073,3 +1073,17 @@ Improvements:
 
 Fixes:
 - An issue preventing the change of a tag color has been fixed.
+
+
+=== Morgen 3.6.3
+New Features:
+- Reschedule or delete multiple events or tasks in your calendar at once. You can bulk-edit your calendar with either: Shift + drag to select multiple events or tasks; OR CTRL + click (Command + click on macOS) to select individual events, tasks, or Frames. Note: Since Shift is now used by the bulk editor, the keyboard shortcut to display secondary time zones while hovering over an event is now z.
+
+Improvements:
+- We have improved the AI model to interpret more advanced recurring patterns expressed with natural language. As we are continuously improving this model, if you find cases where your desired recurring pattern is not accepted or not interpreted correctly, please let us know!
+- The third-party integration logos on the task sidebar now show the associated account email when you hover. This helps distinguish multiple accounts from the same provider.
+- Calendar synchronization is now more reliable when making multiple fast changes to the calendar.
+
+Fixes:
+- An issue that prevented details of a due date slot from being displayed with one click has been rectified.
+- A bug that caused some fields of an event to be erroneously considered editable for non-editable events has been fixed.
