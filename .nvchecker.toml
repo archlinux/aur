@@ -1,4 +1,4 @@
-[ollama-cuda-git]
+[ollama-nogpu-git]
 source="github-graphql"
 github="ollama/ollama"
 prefix="v"
