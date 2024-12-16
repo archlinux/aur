@@ -1,0 +1,15 @@
+diff --unified --recursive --text a/Makefile b/Makefile
+--- a/Makefile	2024-12-16 09:12:42.272365220 -0700
++++ b/Makefile	2024-12-16 09:18:11.951979497 -0700
+@@ -20,9 +20,9 @@
+ 
+ # Default Qmake Command For Ubuntu (and probably other Debian) distributions
+ 
+-QMAKE_COMMAND := qmake
++#QMAKE_COMMAND := qmake
+ # For Fedora 32 and similar distributions, use the next line instead of the above.
+-# QMAKE_COMMAND := /usr/bin/qmake-qt5
++QMAKE_COMMAND := /usr/bin/qmake-qt5
+ 
+ UNAME := $(shell uname)
+ UNAME_M := $(shell uname -m)
