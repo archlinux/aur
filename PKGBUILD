@@ -2,8 +2,8 @@
 # Contributor: lotation <xlapsiu@gmail.com>
 
 pkgname=bottles
-pkgver=51.15
-pkgrel=2
+pkgver=51.17
+pkgrel=1
 epoch=2
 pkgdesc='Easily manage wine and proton prefix'
 arch=(any)
@@ -39,6 +39,7 @@ depends=(
 optdepends=(
   'gamemode'
   'gvfs' 
+  'lib32-gamemode'
   'lib32-gnutls'
   'lib32-vkd3d' 
   'lib32-vulkan-icd-loader' 
@@ -48,7 +49,7 @@ optdepends=(
 )
 makedepends=('meson' 'ninja' 'blueprint-compiler')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bottlesdevs/Bottles/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f31cc20c10242a1e4df462de28a353429154e2f62e7ed0a36b62740fecb47360')
+sha256sums=('f0fdb62e2093206e46f9ceda94726927fc28436e253c89be3e0c248c975baf91')
 
 build() {
   if [[ -d Bottles ]]; then 
@@ -56,7 +57,7 @@ build() {
   fi;
   mv Bottles*/ Bottles/
   cd "Bottles"
-  meson --prefix='/usr' build
+  meson setup --prefix='/usr' build
   ninja -C build
 }
 
