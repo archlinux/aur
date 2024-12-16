@@ -2,6 +2,7 @@
 
 pkgname="dkimpy-milter"
 pkgver=1.2.3
+_rev=-2
 pkgrel=1
 pkgdesc="DomainKeys Identified Mail (DKIM) milter in Python, with support for ed25519 signatures"
 url="https://launchpad.net/dkimpy-milter"
@@ -9,12 +10,12 @@ license=("GPL2")
 arch=("any")
 depends=("python" "python-authres" "python-pynacl" "python-dkim" "python-dnspython" "python-pymilter" "libmilter")
 optdepends=("postfix: for sending mail")
-source=("https://launchpad.net/$pkgname/1.2/$pkgver/+download/$pkgname-$pkgver.tar.gz"
+source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/dkimpy-milter/$pkgver$_rev/dkimpy-milter_$pkgver$_rev.debian.tar.xz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('cea53d17a7e9e48940c2e8ae549ecfc270876538f1dc82b870dc420a6a0f66ec'
-            '548edb0351ac5f92d9e3b644d8c4b5bcd9a45cc102c971a202007d6fda590a83'
-            'c19902c420ed6a003bd3052f88414266cb1190547b3447d83e6f889b0212a32e')
+b2sums=('8e337a8540ab832cfffd9ce9ae87fa95786d7a71d2c9b7ac2f8ffd4f75f84c98938b95fe4be92393b28258132e19cdfa4e0e652b2824a95a013a5a50822a70a2'
+        '715d82d99ece58b07b94705efe9600800699ff027aab8b7f3c61385b91a722dd01b7b0b2c0e7fa54ae76a8d58d1c567b905c790a01929b268ea2d73c498e6281'
+        'e84611a948c679b8b2e10b1241fad9d5a0d5a6b268989cdbfb06e4b90c1f2ba94c21716a4d0d8ce65a1ae2b2c49d9fbc93737b80050ede1c0f14d2ad6ec3dc85')
 backup=("etc/dkimpy-milter/dkimpy-milter.conf")
 install="$pkgname.install"
 
