@@ -1,4 +1,4 @@
-pkgbase = scrin.io
+pkgbase = scrin_io
 	pkgdesc = Scrin.io - Ethical time tracking
 	pkgver = 1.0.7
 	pkgrel = 1
