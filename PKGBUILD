@@ -1,6 +1,6 @@
 pkgname=binge
 _pkgname=Binge
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Unnofficial Binge desktop application"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://gitlab.com/linuxbombay/binge-desktop"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('05588001032e05bacbc7f981b3e377c73c3ba48aff5aa6079c5ba21c51ef4874')
+sha256sums=('5cbaed85737ba20cfa529fe0e2b13379a60e814a2a1bbd58b8a70a24a7a28b9a')
 
 
 package() {
