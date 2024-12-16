@@ -1,17 +1,17 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="nak"
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A command line tool for doing all things nostr"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=('x86_64' 'aarch64' 'riscv64' 'armv7h')
 url="https://github.com/fiatjaf/${pkgname}"
 license=('Unlicense')
 depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('8be647489eab885d1109ca4734190eea5233f86abfc485faff2097353fdefc38f4458f92925d7c195376436f8b91f0c5f69f95cdb4c75472ba292411aeb02412')
+b2sums=('04392750c99a0a707ddd40b146b63daee31a6827f57a1d0acef023537dc6aa7656a2cc3aaea5361106c595a59c3e7d823656d1228ca517e3393a1999674de667')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
