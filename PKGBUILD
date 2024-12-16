@@ -1,7 +1,7 @@
 # Maintainer: Julian Raufelder <arch@raufelder.com>
 
 pkgname=cryptomator-cli
-pkgver=0.6.0_beta1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="CLI Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('any')
@@ -9,17 +9,16 @@ url="https://cryptomator.org/"
 license=('GPL3')
 depends=('fuse3')
 makedepends=('maven' 'unzip')
-_jdkver=22.0.2+9
+_jdkver=23.0.1+11
 source=("cryptomator-cli-${pkgver//_/-}.tar.gz::https://github.com/cryptomator/cli/archive/refs/tags/${pkgver//_/-}.tar.gz"
         "cryptomator-cli-${pkgver//_/-}.tar.gz.asc::https://github.com/cryptomator/cli/releases/download/${pkgver//_/-}/cryptomator-cli-${pkgver//_/-}.tar.gz.asc")
-source_x86_64=("jdk.tar.gz::https://github.com/adoptium/temurin22-binaries/releases/download/jdk-${_jdkver//\+/%2B}/OpenJDK22U-jdk_x64_linux_hotspot_${_jdkver//\+/_}.tar.gz")
-source_aarch64=("jdk.tar.gz::https://github.com/adoptium/temurin22-binaries/releases/download/jdk-${_jdkver//\+/%2B}/OpenJDK22U-jdk_aarch64_linux_hotspot_${_jdkver//\+/_}.tar.gz")
+source_x86_64=("jdk.tar.gz::https://github.com/adoptium/temurin23-binaries/releases/download/jdk-${_jdkver//\+/%2B}/OpenJDK23U-jdk_x64_linux_hotspot_${_jdkver//\+/_}.tar.gz")
+source_aarch64=("jdk.tar.gz::https://github.com/adoptium/temurin23-binaries/releases/download/jdk-${_jdkver//\+/%2B}/OpenJDK23U-jdk_aarch64_linux_hotspot_${_jdkver//\+/_}.tar.gz")
 noextract=('jdk.tar.gz')
-sha256sums=('c026fc247aa940c4a5fedd1c5d515bbd95b12ae0d75ccdf589abfde6ca95fa29')
-sha256sums=('c026fc247aa940c4a5fedd1c5d515bbd95b12ae0d75ccdf589abfde6ca95fa29'
+sha256sums=('e293557aa33d9cb8168207c009b8194d380a5280abd2c05902001f6247884649'
             'SKIP')
-sha256sums_x86_64=('05cd9359dacb1a1730f7c54f57e0fed47942a5292eb56a3a0ee6b13b87457a43')
-sha256sums_aarch64=('dac62747b5158c4bf4c4636432e3bdb9dea47f80f0c9d1d007f19bd5483b7d29')
+sha256sums_x86_64=('2400267e4e9c0f6ae880a4d763af6caf18c673714bdee5debf8388b0b5d52886')
+sha256sums_aarch64=('808e3843293e50515bf02ad2f956e543da65e32dac82ae7a266a147b3485c61a')
 options=('!strip')
 
 validpgpkeys=('58117AFA1F85B3EEC154677D615D449FE6E6A235')
