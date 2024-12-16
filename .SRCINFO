@@ -1,6 +1,6 @@
 pkgbase = weechat-matrix-protocol-script-git
 	pkgdesc = weechat script for matrix
-	pkgver = r348.ace3fef
+	pkgver = r360.5278fb6
 	pkgrel = 1
 	url = https://github.com/torhve/weechat-matrix-protocol-script
 	install = weechat-matrix-git.install
@@ -14,4 +14,3 @@ pkgbase = weechat-matrix-protocol-script-git
 	md5sums = SKIP
 
 pkgname = weechat-matrix-protocol-script-git
-

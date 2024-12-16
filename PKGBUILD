@@ -1,7 +1,7 @@
-# Maintainer: dalz <dalz @t disroot d0t org>
+# Contributor: dalz <dalz @t disroot d0t org>
 
 pkgname=weechat-matrix-protocol-script-git
-pkgver=r348.ace3fef
+pkgver=r360.5278fb6
 pkgrel=1
 pkgdesc="weechat script for matrix"
 arch=('any')
