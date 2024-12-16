@@ -1,8 +1,8 @@
 # Maintainer: envolution
 # shellcheck shell=bash disable=SC2034,SC2154
 
-pkgname=python-markitdown
-_pkgname=${pkgname#python-}
+pkgname=python-markitdown-git
+_pkgname=markitdown
 pkgver=r33+g81e3f24ac
 pkgrel=1
 pkgdesc="Utility tool for converting various files to Markdown (git)"
@@ -35,6 +35,8 @@ makedepends=(
 checkdepends=(python-pytest)
 source=("git+${url}.git")
 sha256sums=('SKIP')
+provides=("python-${_pkgname}")
+conflicts=("python-${_pkgname}")
 
 pkgver() {
   cd "$_pkgname"

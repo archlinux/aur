@@ -1,4 +1,4 @@
-pkgbase = python-markitdown
+pkgbase = python-markitdown-git
 	pkgdesc = Utility tool for converting various files to Markdown (git)
 	pkgver = r33+g81e3f24ac
 	pkgrel = 1
@@ -25,7 +25,9 @@ pkgbase = python-markitdown
 	depends = python-youtube-transcript-api
 	depends = python-speechrecognition
 	depends = python-pathvalidate
+	provides = python-markitdown
+	conflicts = python-markitdown
 	source = git+https://github.com/microsoft/markitdown.git
 	sha256sums = SKIP
 
-pkgname = python-markitdown
+pkgname = python-markitdown-git
