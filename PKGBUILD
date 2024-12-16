@@ -2,8 +2,8 @@
 
 _basename=jitsi-meet
 _pkgname=prosody
-_tag=8247
-_version=1.0.8247
+_tag=8308
+_version=1.0.8308
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
@@ -33,4 +33,4 @@ package() {
         install -d "${pkgdir}/usr/lib"
         cp -Rv "resources/prosody-plugins" "${pkgdir}/usr/lib/${pkgname}"
 }
-sha256sums=('0b0936f15efaee3f4b12e865a1127a2b4e2cc461b8b813925ce1ae202373da42')
+sha256sums=('2ea9f89243cb1a330feeaae0db90dd143ecd965154a30c2e86a5032a9d151a21')
