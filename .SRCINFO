@@ -1,0 +1,21 @@
+pkgbase = checkexec-bin
+	pkgdesc = CLI tool to conditionally execute commands only when files in a dependency list have been updated
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/kurtbuilds/checkexec
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = help2man
+	provides = checkexec
+	conflicts = checkexec
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/kurtbuilds/checkexec/v0.2.0/LICENSE.md
+	source = README-0.2.0::https://raw.githubusercontent.com/kurtbuilds/checkexec/v0.2.0/README.md
+	sha256sums = 0fba33e712b47fff4ac42c8ffe9862a045b62b496c3843b781cda79d1714aa51
+	sha256sums = cd422c5080e825bd0cb2e76228ef892b072247aa2669104d9ef34eef9f896999
+	source_x86_64 = checkexec-0.2.0.tar.gz::https://github.com/kurtbuilds/checkexec/releases/download/v0.2.0/checkexec-v0.2.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 91e46e088dc35a9ee9359f0ec5806979e7be9dfa3c4442bcda8209aecb24f37b
+	source_aarch64 = checkexec-0.2.0.tar.gz::https://github.com/kurtbuilds/checkexec/releases/download/v0.2.0/checkexec-v0.2.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 91e46e088dc35a9ee9359f0ec5806979e7be9dfa3c4442bcda8209aecb24f37b
+
+pkgname = checkexec-bin
