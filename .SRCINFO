@@ -1,5 +1,5 @@
 pkgbase = rpi-clone-git
-	pkgdesc = A respberry backup utility that uses rsync
+	pkgdesc = A raspberry Pi backup utility that uses rsync
 	pkgver = 47.82b833c
 	pkgrel = 1
 	url = https://github.com/billw2/rpi-clone

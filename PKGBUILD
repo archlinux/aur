@@ -1,9 +1,9 @@
-# Maintainer: Storm Dragon <stormdragon2976@gmail.com>
+# Maintainer: Storm Dragon <storm_dragon@stormux.org>
 _pkgname=rpi-clone
 pkgname=rpi-clone-git
 pkgver=47.82b833c
 pkgrel=1
-pkgdesc="A respberry backup utility that uses rsync"
+pkgdesc="A raspberry Pi backup utility that uses rsync"
 arch=('any')
 url="https://github.com/billw2/rpi-clone"
 license=('UNKNOWN')
