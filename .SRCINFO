@@ -1,14 +1,13 @@
 pkgbase = concrnt-activitypub
 	pkgdesc = Concrnt ActivityPub bridge module
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/totegamma/concurrent
 	install = concrnt-activitypub.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	depends = concrnt-gateway
 	source = concrnt-activitypub-0.3.1::https://github.com/concrnt/ccworld-ap-bridge/archive/refs/tags/v0.3.1.tar.gz
 	source = concrnt-activitypub.hook
 	source = concrnt-activitypub.install
@@ -25,4 +24,5 @@ pkgbase = concrnt-activitypub
 	sha512sums = 565b421ca79f47b58e0c5e9c6dbc3955e440ec6e35f708d3ad1b53701b3a6a817eb07b0bf1d2a960b8d01589133034b961fff7537d4ca9655506041ccb527f50
 
 pkgname = concrnt-activitypub
+	depends = concrnt-gateway
 	backup = etc/concrnt/config/apconfig.yaml

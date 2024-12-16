@@ -4,11 +4,10 @@ pkgname='concrnt-activitypub'
 pkgdesc='Concrnt ActivityPub bridge module'
 pkgver=0.3.1
 _pkgver=v${pkgver}
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
-depends=('concrnt-gateway')
 makedepends=('go')
 
 source=("${pkgname}-${pkgver}::https://github.com/concrnt/ccworld-ap-bridge/archive/refs/tags/${_pkgver}.tar.gz"
@@ -43,6 +42,7 @@ build() {
 }
 
 package() {
+  depends=('concrnt-gateway')
   backup=('etc/concrnt/config/apconfig.yaml')
 
   install -Dm755 "${srcdir}/ccworld-ap-bridge-${pkgver}/ccactivitypub" "${pkgdir}/usr/bin/ccactivitypub"
