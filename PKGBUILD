@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=GenomicRanges
-_bcver=1.56.0
+_bcver=1.58.0
 
 pkgname=r-${_bcname,,}
 pkgdesc="Representation and manipulation of genomic intervals"
@@ -59,7 +59,7 @@ optdepends=(
     "r-variantannotation"
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("8b1698b55da750dc1c4cd5d4b3b8228379ac25dff269f55921b2f2653966a9b26c87792c0b59038e395cb613c5cc8246fd6e8053346760213b74aa91227cbc00")
+b2sums=("4ef10a255bfdd6e00efff1be06b759599f8fd4ff80a2a71e26b2dfab9d77c0373c924e9ca994e5e77d902bed58d88d06356453991f57de04830aac72f107f26e")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
