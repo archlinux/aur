@@ -1,4 +1,4 @@
-Maintainer: YaNing Lu <dluyaning@gmail.com>
+# Maintainer: YaNing Lu <dluyaning@gmail.com>
 
 pkgname=wlhax
 pkgver=0.0.1.20240318
