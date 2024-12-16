@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=utools-bin
 _pkgname=uTools
-pkgver=5.2.1
+pkgver=6.0.0
 _electronversion=22
 pkgrel=1
 pkgdesc="uTools Utilities.新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集"
@@ -24,19 +24,20 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::https://open.u-tools.cn/download/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}.html::${url}/agreement.html"
 )
-sha256sums=('b15f0bdb72e01ccad1b0187bc0e5b6c7002d01314b3529884f9f182538e4503c'
+sha256sums=('e4cada2c3c49456d6cc5d49629b6a20459a2f03a8f2fc993cbdaa245e1afbc1a'
             '79ece83ed12ba8fe68f7ae40af48df0e3e8f23fcb0f1cae6908fa14221cbab64')
-build() {
+prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin} --no-sandbox/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     rm -rf "${srcdir}/opt/${_pkgname}/resources/app-update.yml"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/usr/bin"
-    cp -r "${srcdir}/opt" "${pkgdir}"
-    ln -sf "/opt/${_pkgname}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
+    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
