@@ -1,13 +1,13 @@
 pkgbase = transgender
 	pkgdesc = Minimalistic terminal file explorer
-	pkgver = 1.3.2
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://github.com/Sberm/Transgender.rs
 	arch = x86_64
 	makedepends = rustup
 	depends = glibc
 	depends = gcc-libs
-	source = transgender-1.3.2.tar.gz::https://github.com/Sberm/Transgender.rs/archive/1.3.2.tar.gz
-	sha256sums = 3e74c6e3dbbb667e4d8951fa8a8f1cf6b3bc6274de811a849b7c8fe116eaa855
+	source = transgender-1.3.3.tar.gz::https://github.com/Sberm/Transgender.rs/archive/1.3.3.tar.gz
+	sha256sums = 6062e3d8c978221353be86c0cbcad5e4a4b68197c0c4e4a00e658e0d65879166
 
 pkgname = transgender
