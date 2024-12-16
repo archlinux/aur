@@ -3,7 +3,7 @@
 _rockname=cmark
 _project=$_rockname-lua
 pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
-pkgver=0.30.2
+pkgver=0.31.1
 _rockrel=1
 pkgrel=1
 pkgdesc='Lua wrapper for libcmark, CommonMark Markdown parsing and rendering library'
@@ -12,7 +12,7 @@ url="https://github.com/jgm/$_project"
 license=(BSD)
 makedepends=(lua lua53 lua52 lua51 luarocks)
 source=("$_rockname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('b57849e9737a838d359cd552cb0563cf2134af70b60962b6073d197d2186109c')
+sha256sums=('2cac08b6ea39f0a824980df788990117cd6244cff74de53fa61fec07547d0686')
 
 prepare() {
   cp -a "$_project-$pkgver"{,-5.4}
