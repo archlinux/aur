@@ -4,11 +4,11 @@ pkgname='concrnt-conctl'
 pkgdesc='Commands for managing concrnt'
 pkgver=1.0.1
 _pkgver=v${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
-depends=('concrnt-gateway')
+depends=('concrnt-api')
 makedepends=('go')
 
 source=("${pkgname}-${pkgver}::https://github.com/concrnt/conctl/archive/refs/tags/${_pkgver}.tar.gz"
