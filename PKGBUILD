@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lynxhub-bin
 _pkgname=LynxHub
-pkgver=1.3.1
+pkgver=2.0.0
 _electronversion=33
 pkgrel=1
 pkgdesc="Manage and launch all your AI from a single dashboard.(Prebuild version.Use system-wide electron)"
@@ -19,12 +19,12 @@ depends=(
     'python'
 )
 source=("${pkgname%-bin}.sh")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/V${pkgver}/${_pkgname}-V${pkgver}-linux_aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/V${pkgver}/${_pkgname}-V${pkgver}-linux_x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-V${pkgver}-linux_aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-V${pkgver}-linux_x86_64.rpm")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('d6f04926288301171a7d563bf3be918c8c47a6f053dce784a832e4b3ec9df8cd')
-sha256sums_x86_64=('f12ff692bd453f00b9db9471c94ddaccfb1fcf49c02527304dc36039d54b0ab4')
-build() {
+sha256sums_aarch64=('b18f83bc7f928051bd8deb92dd2d6890f963071f601257b37079b63d66c0e98b')
+sha256sums_x86_64=('7b5c0365bd86b0cb97bf3edfe040c81ff45d5a898968890e501fb75157e05fc4')
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
