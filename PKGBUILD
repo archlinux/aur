@@ -1,4 +1,4 @@
-# Maintainer Adam Perkowski <adas1per@protonmail.com>
+# Maintainer: Adam Perkowski <adas1per@protonmail.com>
 # https://github.com/adamperkowski/PKGBUILDs
 _pkgname=amdguid-wayland
 pkgname="$_pkgname-bin"
@@ -11,7 +11,6 @@ license=('MIT' 'Apache-2.0')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$_pkgver/$_pkgname-archlinux-latest-$pkgver.zip")
 arch=('x86_64')
 md5sums=('ce25a6c319f0cf839e20a70547619622')
-keywords=('amdgpu' 'controller' 'fan' 'overclocking' 'voltage')
 depends=('amdfand')
 optdepends=('amdmond' 'amdvold')
 provides=("$_pkgname" 'amdguid')
