@@ -1,25 +1,21 @@
 # Maintainer: envolution
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
-# Contributor: Matt Harrison <matt@harrison.us.com>
+# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Steven Allen <steven@stebalien.com>
+# Contributor: Matt Harrison <matt@harrison.us.com>
 # Contributor: Kainoa Kanter <kainoa@t1c.dev>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=ollama-cuda-git
-_pkgbase=ollama
-pkgdesc='Create, run and share large language models (LLMs) with CUDA'
-pkgver=0.4.7+r3696+gff6c2d6dc
+pkgver=+r3737+g8c9fb8eb7
 pkgrel=1
+pkgdesc='Create, run and share large language models (LLMs)'
 arch=(x86_64)
 url='https://github.com/ollama/ollama'
 license=(MIT)
-provides=(ollama ollama-cuda)
-conflicts=(ollama)
-depends=(cuda)
-makedepends=(clblast cmake git go pigz)
-optdepends=('nvidia-utils: monitor GPU usage with nvidia-smi')
-source=("git+https://github.com/ollama/ollama.git#branch=main"
-  # ollama-7499.patch::https://github.com/ollama/ollama/pull/7499.patch - doesn't work on latest git
+options=('!lto')
+makedepends=(cmake git go cuda)
+source=(git+https://github.com/ollama/ollama.git
   ollama-ld.conf
   ollama.service
   sysusers.conf
@@ -32,49 +28,53 @@ b2sums=('SKIP'
 
 pkgver() {
   cd ollama
-  _version=$(git tag --sort=-v:refname --list | head -n1)
+  _version=$(git tag --sort=-v:refname --list | grep '^v[0-9.]+' | head -n1)
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
   echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
 }
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOPATH="${srcdir}"
+  export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw '-ldflags=-linkmode=external -compressdwarf=false -X=github.com/ollama/ollama/version.Version=$pkgver -X=github.com/ollama/ollama/server.mode=release'"
+
   cd ollama
-  export CFLAGS="-march=native -mtune=generic -O2 -pipe -fno-plt"
-  export CXXFLAGS="$CFLAGS"
-  export CGO_CFLAGS="$CFLAGS" CGO_CPPFLAGS="$CPPFLAGS" CGO_CXXFLAGS="$CXXFLAGS" CGO_LDFLAGS="$LDFLAGS"
-  export CFLAGS+=' -w'
-  export CXXFLAGS+=' -w'
 
-  local goflags="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  local ldflags="-linkmode=external -buildid= -X github.com/ollama/ollama/version.Version=$(git describe --tags --abbrev=0 | sed "s/^v//" | sed "s/-rc[0-9]*$//")"
-
-  export ROCM_PATH=/disabled
-  export ONEAPI_ROOT=/disabled
-  export OLLAMA_CUSTOM_CPU_DEFS="-DLLAMA_AVX=on -DLLAMA_AVX2=on -DLLAMA_F16C=on -DLLAMA_FMA=on"
-
-  go generate ./...
-  go build $goflags -ldflags="$ldflags"
+  # Unset these otherwise somehow nvcc will try to use them.
+  unset CFLAGS CXXFLAGS
+  make dist CUDA_12_PATH=/opt/cuda
+  go build .
 }
 
 check() {
-  ollama/ollama --version >/dev/null
-  cd ollama
+  $pkgbase/$pkgbase --version >/dev/null
+  cd $pkgbase
   go test .
 }
 
 package() {
   install -Dm755 ollama/ollama "$pkgdir/usr/bin/ollama"
-  mkdir -p "$pkgdir"/usr/lib/ollama
-  cp -r ollama/dist/linux-amd64/lib/ollama/runners "$pkgdir"/usr/lib/ollama
+  mkdir -p "$pkgdir"/usr/lib/ollama/runners
+  cp -r ollama/dist/linux-amd64/lib/ollama/runners/cpu* "$pkgdir"/usr/lib/ollama/runners/
 
+  install -Dm755 $pkgname/$pkgbase "$pkgdir/usr/bin/$pkgbase"
+  install -dm755 "$pkgdir/var/lib/ollama"
   install -Dm644 ollama.service "$pkgdir/usr/lib/systemd/system/ollama.service"
   install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/ollama.conf"
   install -Dm644 tmpfiles.d "$pkgdir/usr/lib/tmpfiles.d/ollama.conf"
-  install -Dm644 ollama-ld.conf "$pkgdir/etc/ld.so.conf.d/ollama.conf"
+  install -Dm644 $pkgbase/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  install -dm755 "$pkgdir/var/lib/ollama"
+  ln -s /var/lib/ollama "$pkgdir/usr/share/ollama"
 
-  install -Dm644 ollama/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  mkdir -p "$pkgdir"/usr/lib/ollama/runners
+  cp -r ollama/dist/linux-amd64/lib/ollama/runners/cuda* "$pkgdir"/usr/lib/ollama/runners
+
+  install -d "$pkgdir/usr/share/doc"
+  cp -r $pkgbase/docs "$pkgdir/usr/share/doc/$pkgbase"
+  install -Dm644 $pkgbase/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
