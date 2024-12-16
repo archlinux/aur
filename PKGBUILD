@@ -7,14 +7,17 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=ollama-cuda-git
+_pkgname=ollama
 pkgver=0.5.3.rc0+r3737+g8c9fb8eb7
-pkgrel=1
+pkgrel=2
 pkgdesc='Create, run and share large language models (LLMs)'
 arch=(x86_64)
 url='https://github.com/ollama/ollama'
 license=(MIT)
 options=('!lto')
 makedepends=(cmake git go cuda)
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 source=(git+https://github.com/ollama/ollama.git
   ollama-ld.conf
   ollama.service
@@ -51,8 +54,8 @@ build() {
 }
 
 check() {
-  $pkgbase/$pkgbase --version >/dev/null
-  cd $pkgbase
+  $_pkgname/$_pkgname --version >/dev/null
+  cd $_pkgname
   go test .
 }
 
@@ -61,12 +64,12 @@ package() {
   mkdir -p "$pkgdir"/usr/lib/ollama/runners
   cp -r ollama/dist/linux-amd64/lib/ollama/runners/cpu* "$pkgdir"/usr/lib/ollama/runners/
 
-  install -Dm755 $pkgname/$pkgbase "$pkgdir/usr/bin/$pkgbase"
+  install -Dm755 $_pkgname/$_pkgname "$pkgdir/usr/bin/$_pkgname"
   install -dm755 "$pkgdir/var/lib/ollama"
   install -Dm644 ollama.service "$pkgdir/usr/lib/systemd/system/ollama.service"
   install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/ollama.conf"
   install -Dm644 tmpfiles.d "$pkgdir/usr/lib/tmpfiles.d/ollama.conf"
-  install -Dm644 $pkgbase/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 $_pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   ln -s /var/lib/ollama "$pkgdir/usr/share/ollama"
 
@@ -74,7 +77,7 @@ package() {
   cp -r ollama/dist/linux-amd64/lib/ollama/runners/cuda* "$pkgdir"/usr/lib/ollama/runners
 
   install -d "$pkgdir/usr/share/doc"
-  cp -r $pkgbase/docs "$pkgdir/usr/share/doc/$pkgbase"
-  install -Dm644 $pkgbase/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cp -r $_pkgname/docs "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm644 $_pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
