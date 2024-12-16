@@ -1,0 +1,6 @@
+[python-markitdown-git]
+source="github-graphql"
+github="microsoft/markitdown"
+use_commit_clean=true
+use_commit_number=true
+use_commit_hash=true
