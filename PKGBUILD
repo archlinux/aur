@@ -4,7 +4,7 @@ pkgname='concrnt-hyperproxy'
 pkgdesc='Concrnt URL summary and image proxy module'
 pkgver=0.1.0
 _pkgver=v${pkgver}
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-  depends=('concrnt-gateway')
+  depends=('concrnt-gateway' 'concrnt-shared-config')
 
   install -Dm755 "${srcdir}/hyperproxy-${pkgver}/hyperproxy" "${pkgdir}/usr/bin/hyperproxy"
   install -Dm644 "${srcdir}/concrnt-hyperproxy.service" "${pkgdir}/usr/lib/systemd/system/concrnt-hyperproxy.service"

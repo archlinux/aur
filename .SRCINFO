@@ -1,7 +1,7 @@
 pkgbase = concrnt-hyperproxy
 	pkgdesc = Concrnt URL summary and image proxy module
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/totegamma/concurrent
 	install = concrnt-hyperproxy.install
 	arch = x86_64
@@ -21,3 +21,4 @@ pkgbase = concrnt-hyperproxy
 
 pkgname = concrnt-hyperproxy
 	depends = concrnt-gateway
+	depends = concrnt-shared-config
