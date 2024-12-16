@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=GenomeInfoDb
-_bcver=1.38.8
+_bcver=1.42.1
 pkgname="r-${_bcname,,}"
 pkgver="${_bcver//[:-]/.}"
 pkgrel=1
@@ -14,11 +14,12 @@ license=("Artistic-2.0")
 
 depends=(
     "r>=4.0.0"
-	"r-biocgenerics>=0.37.0"
-	"r-s4vectors>=0.25.12"
-	"r-iranges>=2.13.12"
-	"r-rcurl"
-	"r-genomeinfodbdata"
+    "r-biocgenerics>=0.37.0"
+    "r-s4vectors>=0.25.12"
+    "r-iranges>=2.13.12"
+    "r-rcurl"
+    "r-genomeinfodbdata"
+    "r-ucsc.utils"
 )
 optdepends=(
     "r-biocstyle"
@@ -57,7 +58,7 @@ optdepends=(
 # )
 
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("25fc978b257f74375504a1639fe2a1c15dcbf089134472fe33e1add1399c4f0b80e497ba898816db6fe2846f81186bbeb1e0ea62f8baa9b806f27db1de70d7c6")
+b2sums=("d631d8ab803128b81bbeca8b3c03603208c09b9f92ee87f6f4c3d28cac0a9ed5b56ca268409be4236df0b2f17585a54578f363f58de3b9ed555b5b9b00aa7ce1")
 
 build() {
     mkdir -p "${srcdir}/build/"
