@@ -4,10 +4,11 @@ pkgname='concrnt-webui-bin'
 pkgdesc='Concrnt registration page and admin panel'
 pkgver=1.6.0
 _pkgver=v${pkgver}
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
+optdepends=('caddy: Web server to serve files' 'nginx: Web server to serve files')
 
 provides=('concrnt-webui')
 conflicts=('concrnt-webui')
