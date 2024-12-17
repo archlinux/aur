@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-maps-chaps-all-latest
 	pkgdesc = Map data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport. Note that some timetables need the purchased version of IDOS to run.
 	pkgver = 2024_12_05
-	pkgrel = 3
+	pkgrel = 1
 	epoch = 0
 	url = https://chaps.cz/eng/download/idos/zip#kotvamap
 	arch = any
