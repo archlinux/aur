@@ -1,6 +1,6 @@
 # Maintainer: Your Name <youremail@example.com>
 
-pkgname=ncurseseditor
+pkgname=flippen-text
 pkgver=1.0
 pkgrel=1
 pkgdesc="Простой редактор в терминале"

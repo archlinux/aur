@@ -1,4 +1,4 @@
-pkgbase = ncurseseditor
+pkgbase = flippen-text
 	pkgdesc = Простой редактор в терминале
 	pkgver = 1.0
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = ncurseseditor
 	source = ncurseseditor.c
 	sha256sums = SKIP
 
-pkgname = ncurseseditor
+pkgname = flippen-text
