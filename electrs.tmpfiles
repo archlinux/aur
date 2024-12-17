@@ -1,0 +1,2 @@
+d  /var/lib/electrs  0700  bitcoin  bitcoin  -  -
+d  /etc/electrs      0700  bitcoin  bitcoin  -  -
