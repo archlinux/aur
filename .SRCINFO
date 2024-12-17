@@ -1,0 +1,55 @@
+pkgbase = aegisub-arch1t3cht-xdg-git
+	pkgdesc = A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork + XDG patch)
+	pkgver = 3.2.2.r1221.7db477c3e+xdg
+	pkgrel = 1
+	url = https://github.com/arch1t3cht/Aegisub
+	arch = x86_64
+	license = GPL
+	license = BSD
+	makedepends = boost
+	makedepends = cmake
+	makedepends = ffms2
+	makedepends = git
+	makedepends = meson
+	makedepends = openal
+	makedepends = portaudio
+	depends = alsa-lib
+	depends = boost-libs
+	depends = ffmpeg
+	depends = fftw
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	depends = hunspell
+	depends = icu
+	depends = libass
+	depends = libgl
+	depends = libiconv
+	depends = libpulse
+	depends = uchardet
+	depends = wxwidgets-gtk3
+	depends = xxhash
+	depends = zlib
+	depends = vapoursynth
+	optdepends = ffms2: FFMS2 video source support
+	optdepends = openal: OpenAL audio source support
+	optdepends = portaudio: PortAudio audio source support
+	provides = aegisub
+	provides = aegisub-arch1t3cht-git
+	conflicts = aegisub
+	conflicts = aegisub-arch1t3cht-git
+	noextract = aegisub-gtest-1.8.1.zip
+	noextract = aegisub-gtest-1.8.1-1-wrap.zip
+	source = aegisub::git+https://github.com/arch1t3cht/Aegisub.git#branch=feature
+	source = aegisub-luajit::git+https://github.com/LuaJIT/LuaJIT.git#branch=v2.1
+	source = aegisub-vapoursynth::git+https://github.com/vapoursynth/vapoursynth.git#tag=R70
+	source = aegisub-gtest-1.8.1.zip::https://github.com/google/googletest/archive/release-1.8.1.zip
+	source = aegisub-gtest-1.8.1-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/gtest/1.8.1/1/get_zip
+	source = support-xdg-base-directory.patch::https://github.com/arch1t3cht/Aegisub/pull/160.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = d18d94cb2c583c0f5e570056f9b2b3996709329a4773c4168c2cb05922f1a54e
+	sha256sums = 927827c183d01734cc5cfef85e0ff3f5a92ffe6188e0d18e909c5efebf28a0c7
+	sha256sums = f79f5fd46e09507b3f2e09a51ea6eb20020effe543335f5aee59f30cc8d15805
+	sha256sums = c1d4b8c2302b2433f357c2ed9f88d1c5f99d8a2e1cf8e0185f15330ecd4d5ff1
+
+pkgname = aegisub-arch1t3cht-xdg-git
