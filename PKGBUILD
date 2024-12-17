@@ -12,7 +12,7 @@ md5sums=('12f22f6bfe4e1fc27247f6e03783f4b3')
 
 build() {
   cd "$pkgname"
-  cargo build --release --locked
+  cargo build --bins --tests --release --locked
 }
 
 check() {
