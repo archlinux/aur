@@ -1,13 +1,13 @@
 pkgbase = verifast-bin
 	pkgdesc = Research prototype tool for modular formal verification of C and Java programs
-	pkgver = 24.08.30
+	pkgver = 24.12
 	pkgrel = 1
 	url = https://github.com/verifast/verifast
 	arch = any
 	license = MIT
-	source = http://github.com/verifast/verifast/releases/download/24.08.30/verifast-24.08.30-linux.tar.gz
+	source = http://github.com/verifast/verifast/releases/download/24.12/verifast-24.12-linux.tar.gz
 	source = https://raw.githubusercontent.com/verifast/verifast/master/LICENSE.md
-	sha256sums = 8484b97becd597148eaabd7f643cb43da9e0c968c1f6e2c2bcdf10afaf3c9ac8
+	sha256sums = 51bebf990f31666abcd3675000e7714ef79b417390e930953ef25383e8d59421
 	sha256sums = 309c4afede6331d0b813e5f0e850d6b638370a70dd31fa2fbf5e40bc5421b49f
 
 pkgname = verifast-bin
