@@ -8,8 +8,8 @@ _android_arch=arm64-v8a
 _android_platform=22
 
 pkgname=android-$_pkg_arch-$_pkgname
-pkgver=1.16
-pkgrel=2
+pkgver=1.18
+pkgrel=1
 pkgdesc="Provides libiconv.so and libcharset.so (Android $_pkg_arch)"
 arch=('any')
 url='http://www.gnu.org/software/libiconv/'
@@ -18,7 +18,7 @@ makedepends=('android-ndk' 'android-configure')
 conflicts=("android-$_pkgname-$_android_arch")
 replaces=("android-$_pkgname-$_android_arch")
 source=("http://ftp.gnu.org/pub/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('e6a1b1b589654277ee790cce3734f07876ac4ccfaecbee8afa0b649cf529cc04')
+sha256sums=('3b08f5f4f9b4eb82f151a7040bfd6fe6c6fb922efe4b1659c66ea933276965e8')
 options=(!libtool !buildflags staticlibs !strip !emptydirs)
 
 build() {
