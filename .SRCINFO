@@ -1,0 +1,18 @@
+pkgbase = legion-thinkbook16p-gen5-sound-fix-dkms
+	pkgdesc = DKMS package to fix internal speakers for Legion Thinkbook 16P 2024
+	pkgver = 1
+	pkgrel = 1
+	url = https://alampy.com/2024/04/19/use-dkms-to-patch-linux-kernel-mod/
+	arch = any
+	license = GPL2
+	depends = dkms
+	depends = curl
+	depends = libarchive
+	source = dkms-patchmodule.sh
+	source = dkms.conf
+	source = thinkbook16p-gen5-fix.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = legion-thinkbook16p-gen5-sound-fix-dkms
