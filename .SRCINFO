@@ -1,0 +1,18 @@
+pkgbase = django-template-lsp
+	pkgdesc = Django Template Language Server (LSP)
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://github.com/fourdigits/django-template-lsp
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-jedi
+	depends = python-pygls
+	source = git+https://github.com/fourdigits/django-template-lsp.git#tag=0.9.5
+	b2sums = 15f3bbee41106835af6d378c627d87e8324d68afef8c7cf17a000034114163da031a66d03d0bd5b6c417916dceef43f625b558eb1bdb9941aab127486e1efb0d
+
+pkgname = django-template-lsp
