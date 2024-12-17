@@ -4,3 +4,5 @@ src/
 *.zip
 *.pkg.tar.xz
 *.pkg.tar.zst
+
+http_cookies

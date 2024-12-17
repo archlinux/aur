@@ -3,7 +3,7 @@
 pkgname="stmcufinder"
 pkgver=6.1.0
 _pkg_file_name=en.st-mcu-finderlin-v6-1-0.zip
-pkgrel=1
+pkgrel=2
 pkgdesc="STM32 and STM8 product finder for desktops"
 arch=("x86_64")
 depends=()
@@ -15,7 +15,7 @@ options=(!strip)
 
 # Download file with list of URLs to files
 _curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/st-mcu-finder-pc/_jcr_content/get-software/getsw-table-nli.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
-_curl_req="$(curl -s --compressed -H "@${srcdir}http_headers" "$_curl_req_url" )"
+_curl_req="$(curl -s --compressed --cookie-jar "${srcdir}http_cookies" -H "@${srcdir}http_headers" "$_curl_req_url" )"
 
 # Extract actual download link to the desired file
 _pkg_url="$(grep -m 1 "${_pkg_file_name}" <<< "$_curl_req")"
@@ -25,6 +25,7 @@ _download_path="https://www.st.com""$_pkg_url"
 
 DLAGENTS=("https::/usr/bin/curl \
             -gqb '' --retry 3 --retry-delay 3 \
+            --cookie "${srcdir}http_cookies" \
             -H "@${srcdir}http_headers" \
             -o %o --compressed %u")
 
