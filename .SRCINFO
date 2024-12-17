@@ -1,21 +1,23 @@
 pkgbase = opencomposite-git
 	pkgdesc = Reimplementation of OpenVR, translating calls to OpenXR.
-	pkgver = r1074.356d039
-	pkgrel = 1
+	pkgver = r1185.d6b63a6
+	pkgrel = 2
 	url = https://gitlab.com/znixian/OpenOVR
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = cmake
 	makedepends = make
 	makedepends = vulkan-headers
+	makedepends = libglvnd
+	makedepends = python
 	depends = vulkan-icd-loader
-	depends = glm
 	provides = opencomposite
 	conflicts = opencomposite
-	source = opencomposite-git::git+https://gitlab.com/znixian/OpenOVR#branch=openxr
-	source = git+https://github.com/KhronosGroup/OpenXR-SDK
-	source = git+https://github.com/g-truc/glm
+	options = !lto
+	source = opencomposite-git::git+https://gitlab.com/znixian/OpenOVR.git#branch=openxr
+	source = git+https://github.com/KhronosGroup/OpenXR-SDK.git
+	source = git+https://github.com/g-truc/glm.git
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
