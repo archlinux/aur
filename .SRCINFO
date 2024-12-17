@@ -25,6 +25,7 @@ pkgbase = ignis-git
 	optdepends = networkmanager: required for Network Service
 	optdepends = dart-sass: SASS/SCSS compilation support
 	optdepends = upower: required for UPower Service
+	optdepends = gnome-bluetooth-3.0: required for Bluetooth Service
 	conflicts = ignis
 	source = git+https://github.com/linkfrg/ignis
 	sha256sums = SKIP

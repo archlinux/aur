@@ -14,7 +14,8 @@ optdepends=('gst-plugin-pipewire: required for Recorder Service'
             'gst-plugins-ugly: required for Recorder Service'
             'networkmanager: required for Network Service'
             'dart-sass: SASS/SCSS compilation support'
-            'upower: required for UPower Service')
+            'upower: required for UPower Service'
+            'gnome-bluetooth-3.0: required for Bluetooth Service')
             
 conflicts=('ignis')
 source=("git+${url}")
