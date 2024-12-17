@@ -5,8 +5,8 @@
 
 pkgname=eclipse-titan
 _pkgname=titan.core
-pkgver=10.1.2
-pkgrel=2
+pkgver=11.0.0
+pkgrel=1
 pkgdesc="A free and open source (FOSS) compiler both for TTCN-3 and for ASN.1"
 arch=('i686' 'x86_64')
 url="https://projects.eclipse.org/projects/tools.titan"
@@ -27,7 +27,7 @@ depends=(
 conflicts=('titan-git')
 source=("https://gitlab.eclipse.org/eclipse/titan/${_pkgname}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         eclipse-titan.profile)
-sha256sums=('577a474597cadc648d87987a456a13bc63a5b9665445d1b3365add68654b08b7'
+sha256sums=('ade18053e034c04e34b26d7d4e7e2145817717b907b0d7270d18dfea5526fa3f'
             'ac28aeffaa7931d2bf1945778b088d6764e566fc04aa307d1bc3d2fb95f558cd')
 
 # Currently we cannot build even old versions due to broken dependencies in
