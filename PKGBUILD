@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang
 _pkgname=Mustang
-pkgver=0.7.3
+pkgver=0.7.4
 _electronversion=32
 _nodever=20
 pkgrel=1
@@ -22,7 +22,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('b1f611ac7a8b8c0527409a4732e2353caac0fb042872d810457d43393040dab6'
+sha256sums=('cb27c705c9027bd51ab908c386179ac9ed37bc876d837bb535ab51b26ecff9ff'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -56,7 +56,7 @@ prepare() {
         } >> .npmrc
         echo '[url "https://github.moeyy.xyz/https://github.com/"]' >> "${srcdir}/${pkgname}-${pkgver}/app/.gitconfig"
         echo '    insteadof = https://github.com/' >> "${srcdir}/${pkgname}-${pkgver}/app/.gitconfig"
-        echo app  lib backend e2 | xargs -n 1 cp .npmrc
+        echo app lib backend e2 | xargs -n 1 cp .npmrc
     fi
     cd "${srcdir}/${pkgname}-${pkgver}/app/build"
     sh "${pkgname}-brand.sh"
