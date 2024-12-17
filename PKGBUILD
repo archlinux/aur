@@ -4,16 +4,10 @@ pkgdesc='Concrnt is a next-gen decentralized social network platform designed to
 pkgname=('concrnt-gateway-bin')
 pkgver=1.6.0
 _pkgver=v${pkgver}
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'aarch64')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
-
-depends=('concrnt-shared-config'
-         'redis'
-         'memcached'
-         'postgresql'
-         'concrnt-api')
 optdepends=('concrnt-conctl: Command-line tool for managing Concrnt services'
             'concrnt-webui: Provides registration page and admin panel'
             'concrnt-hyperproxy: URL Summary and image preview'
@@ -49,6 +43,12 @@ sha512sums_aarch64=('3cb74e4bd22db5b37d9e14a2287f9c0729512f39c042d1e0438d23cef32
 install="concrnt.install"
 
 package() {
+  depends=('concrnt-shared-config'
+           'redis'
+           'memcached'
+           'postgresql'
+           'concrnt-api')
+
   install -Dm755 "${srcdir}/ccgateway-${arch}-${pkgver}" "${pkgdir}/usr/bin/ccgateway"
   install -Dm644 "${srcdir}/concrnt-gateway.service" "${pkgdir}/usr/lib/systemd/system/concrnt-gateway.service"
   install -Dm644 "${srcdir}/concrnt-gateway.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/concrnt-gateway.conf"

@@ -1,17 +1,12 @@
 pkgbase = concrnt-gateway-bin
 	pkgdesc = Concrnt is a next-gen decentralized social network platform designed to make your world richer.
 	pkgver = 1.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/totegamma/concurrent
 	install = concrnt.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = concrnt-shared-config
-	depends = redis
-	depends = memcached
-	depends = postgresql
-	depends = concrnt-api
 	optdepends = concrnt-conctl: Command-line tool for managing Concrnt services
 	optdepends = concrnt-webui: Provides registration page and admin panel
 	optdepends = concrnt-hyperproxy: URL Summary and image preview
@@ -39,3 +34,8 @@ pkgbase = concrnt-gateway-bin
 	sha512sums_aarch64 = 3cb74e4bd22db5b37d9e14a2287f9c0729512f39c042d1e0438d23cef3284601508c357dfbb46a77235c6565bd7466fc4e51b85063d7dd1e14dac08350d12f2b
 
 pkgname = concrnt-gateway-bin
+	depends = concrnt-shared-config
+	depends = redis
+	depends = memcached
+	depends = postgresql
+	depends = concrnt-api
