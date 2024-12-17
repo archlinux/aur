@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="cunicu"
-pkgver=0.5.68
+pkgver=0.5.70
 pkgrel=1
 pkgdesc="A zeroconf peer-to-peer mesh VPN using Wireguard® and Interactive Connectivity Establishment (ICE)"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -14,7 +14,7 @@ makedepends=('git' 'go' 'protoc-gen-go' 'protoc-gen-go-grpc')
 optdepends=('wireguard-tools: for controlling WireGuard interfaces')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}")
-b2sums=('8ea70bedef6ae5553c264ea6f1e2139a4061aeacb204f56f950f6f7caf9660962b7e257a58c70c32e7312be15d80ecc663eee5b901434fc72cb1f4f359b43438')
+b2sums=('5200b8e414f9f973eb2591fd3d1e55c4dccb1821fe1d4249c5d5a03573e48508503f62d7b7aabb469738eb418c5a1e6386422f1b4be38db5c210e520bdf6c699')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -55,7 +55,7 @@ package() {
   install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -vDm644 "manpages/${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 
-  cd "completions"
+  cd "${srcdir}/${_pkgsrc}/completions"
   install -vDm644 "${pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
   install -vDm644 "${pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
   install -vDm644 "${pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
@@ -64,6 +64,6 @@ package() {
   cd "${srcdir}/${_pkgsrc}/etc"
   install -vDm644 "${pkgname}.yaml" "${pkgdir}/etc/${pkgname}.example.yaml"
 
-  cd "systemd"
+  cd "${srcdir}/${_pkgsrc}/etc/systemd"
   install -vDm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/${pkgname}.service"
 }
