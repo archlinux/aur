@@ -3,8 +3,8 @@
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdr-robotv
 pkgver=0.15.0
-_vdrapi=2.6.7
-pkgrel=3
+_vdrapi=5
+pkgrel=4
 pkgdesc="VDR server plugin for roboTV"
 url="https://github.com/pipelka/vdr-plugin-robotv"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
