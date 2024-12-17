@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-whey
-pkgver=0.0.24
-pkgrel=3
+pkgver=0.1.1
+pkgrel=1
 pkgdesc='A simple Python wheel builder for simple projects'
 arch=('any')
 url='https://whey.readthedocs.io/'
@@ -33,14 +33,17 @@ optdepends=(
   'python-cmarkgfm: readme functionality'
   'python-editables: editable installs'
 )
-_commit='fab291b973239e23c9bdc8a22d9714de43e6d0c9'
-source=("$pkgname::git+https://github.com/repo-helper/whey#commit=$_commit")
-b2sums=('SKIP')
+source=("$pkgname::git+https://github.com/repo-helper/whey#tag=v$pkgver")
+sha512sums=('2d2de412ec4b9d6441b6ecc603335f29bfaa7c4a32e7692a4d80be80a3fc1badcd3c0a43a54f25a924a3710bb0d055f63565fa789aaa0f85539c114d27743e19')
+b2sums=('e186e846967b31c98227fa1fb68d18a6ccb7a51132a8411bdb2dd3306a69b195534e46e9dc83b69fefa5bfa00c56d31ac825e1a98bd7de0849a27f441da3bc16')
 
-pkgver() {
+prepare() {
   cd "$pkgname"
 
-  git describe --tags | sed 's/^v//'
+  # remove version constraints
+  sed \
+    -e 's/^requires = \[.*/requires = \[ "setuptools", "wheel" \]/' \
+    -i pyproject.toml
 }
 
 build() {
