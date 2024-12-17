@@ -21,9 +21,9 @@ makedepends=(
 provides=("opencomposite")
 conflicts=("opencomposite")
 source=(
-  "${pkgname}::git+${url}#branch=openxr"
-  "git+https://github.com/KhronosGroup/OpenXR-SDK"
-  "git+https://github.com/g-truc/glm"
+  "${pkgname}::git+${url}.git#branch=openxr"
+  "git+https://github.com/KhronosGroup/OpenXR-SDK.git"
+  "git+https://github.com/g-truc/glm.git"
 )
 sha1sums=(
   "SKIP"
