@@ -1,0 +1,14 @@
+pkgbase = vscode-js-debug-bin
+	pkgdesc = A DAP-compatible JavaScript debugger
+	pkgver = 1.96.0
+	pkgrel = 1
+	url = https://github.com/microsoft/vscode-js-debug
+	arch = any
+	license = MIT
+	depends = nodejs
+	provides = vscode-js-debug=1.96.0
+	conflicts = vscode-js-debug
+	source = https://github.com/microsoft/vscode-js-debug/releases/download/v1.96.0/js-debug-dap-v1.96.0.tar.gz
+	sha256sums = db2b9d19d9163adb3e37d8b961c9f39797772d35f96710b881acf5aba2417e7c
+
+pkgname = vscode-js-debug-bin
