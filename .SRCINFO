@@ -1,15 +1,17 @@
 pkgbase = python-fastprocess
 	pkgdesc = A fast subprocess library
-	pkgver = 2.0.0
-	pkgrel = 5
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/dstathis/fastprocess
 	arch = any
 	license = LGPL-3.0-or-later
 	makedepends = python-build
+	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = python-fastprocess-2.0.0.tar.gz::https://github.com/dstathis/fastprocess/archive/2.0.0.tar.gz
-	sha512sums = 194bcf0b1ee094a836df624514b8125712431ef57f01063e6cf799dd3cae3e45b1573756cd8c8eec03837632159a5cd99e0d0cbab864d0dea0ab9527eb4d6a1f
+	depends = python
+	source = python-fastprocess-2.1.0.tar.gz::https://github.com/dstathis/fastprocess/archive/2.1.0.tar.gz
+	sha512sums = 63f62f3dbb3311ef6ee555fcd5686f6ec3b304c1719d680c83cc72045ba20c8bb72f31eac381a6a5f7b6f8c8bd18bed2979e914d0b09d9cb870300a31d513fc9
 
 pkgname = python-fastprocess
