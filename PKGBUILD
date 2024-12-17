@@ -22,7 +22,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/terminalwrap-$pkgver/build"
+  cd "$srcdir/terminalwrap-$pkgver/build/dist"
 
   if [[ -f terminalwrap ]]; then
     install -Dm755 terminalwrap "$pkgdir/usr/bin/terminalwrap"
