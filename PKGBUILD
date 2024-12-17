@@ -4,7 +4,7 @@ pkgname='concrnt-webui-bin'
 pkgdesc='Concrnt registration page and admin panel'
 pkgver=1.6.0
 _pkgver=v${pkgver}
-pkgrel=5
+pkgrel=6
 arch=('any')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
@@ -37,7 +37,7 @@ package() {
   depends=('concrnt-gateway' 'concrnt-shared-config')
 
   mkdir -p ${pkgdir}/var/lib/concrnt
-  cp -dpTr --no-preserve=ownership "${srcdir}/dist" "${pkgdir}/var/lib/concrnt/web"
+  cp -dpTr --no-preserve=ownership "${srcdir}/dist" "${pkgdir}/usr/share/concrnt/web"
   install -Dm644 "${srcdir}/Caddyfile" "${pkgdir}/etc/concrnt/config/webui/Caddyfile"
   install -Dm644 "${srcdir}/nginx.conf" "${pkgdir}/etc/concrnt/config/webui/nginx.conf"
   install -Dm644 "${srcdir}/concrnt-webui-caddy.service" "${pkgdir}/usr/lib/systemd/system/concrnt-webui-caddy.service"
