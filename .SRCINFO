@@ -1,0 +1,11 @@
+pkgbase = dove
+	pkgdesc = Welcome to the next generation of Dove.
+	pkgver = 20241216
+	pkgrel = 1
+	url = https://dove.celenity.dev
+	arch = any
+	license = GPL3
+	source = https://codeberg.org/celenity/Dove/raw/commit/9159668a25929e001b234508add58d210b1e307b/archives/dove.zip
+	sha512sums = 77fe1913e68fb4c69bc27e7628d207856b12f3aad243181999ec10715f2ecb209c6da7b1fdc9993b504eb80c2c986012302bba868ec65ee710117243bb699ff8
+
+pkgname = dove
