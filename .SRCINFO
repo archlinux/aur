@@ -1,11 +1,15 @@
 pkgbase = citch
-	pkgdesc = citch - fast system fetch written in c++
+	pkgdesc = citch - fast system fetch written in C++
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/xeyossr/citch
 	arch = x86_64
 	license = GPL3
+	makedepends = cmake
 	makedepends = gcc
+	makedepends = make
+	depends = gcc
+	depends = filesystem
 	source = git+https://github.com/xeyossr/citch.git
 	sha256sums = SKIP
 
