@@ -3,8 +3,8 @@
 
 pkgname='liteloader-qqnt-mspring-theme-bin'
 _pkgname='LiteLoaderQQNT-MSpring-Theme'
-pkgver='1.3.4'
-pkgrel=2
+pkgver='1.3.7'
+pkgrel=1
 pkgdesc="LiteLoaderQQNT主题，优雅、粉粉、细致"
 arch=('any')
 url="https://github.com/MUKAPP/${_pkgname}"
@@ -14,8 +14,8 @@ provides=("liteloader-qqnt-mspring-theme")
 conflicts=("liteloader-qqnt-mspring-theme")
 
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}.zip")
-sha256sums=('c640303a5198f074ddb6648001df9c39134b48643dbd6fb59c20333ca82e222c')
-b2sums=('bcfc3a2215e298c382fbdb5e5acff2b3cc73c6cf6e20eab19a9797129b7610a531951fab2f3fb25d230d30695cb6f03907b2e85730682159c25ac21a6cd8c66c')
+sha256sums=('bcfa2f517b133253c7caafd2de3d4850dba38a68847a5cbd36772341fd0e7419')
+b2sums=('9e78878ff7648d5148220faebc70ca5ff8537788a6ea0230b58ce2f0863a66889c36d35923ab64ee9c0280e147618fe248733d7b5d4c8f7f690f2a2c0bb70529')
 
 package() {
     mkdir -p "${pkgdir}/opt/LiteLoaderQQNT/plugins/${_pkgname}"
