@@ -1,5 +1,5 @@
 # Maintainer: Ciptik <stepan.ciptik@yandex.ru>
-# Contributor: cktan github.com/cktan
+# Contributor: cktan <github.com/cktan>
 
 pkgname=tomlc99-git
 pkgver=1.0
