@@ -4,7 +4,7 @@
 # Based on [extra]'s thunderbird
 
 pkgname=(thunderbird-nightly-bin thunderbird-nightly-bin-noupdate)
-pkgver=135.0a1.20241129
+pkgver=135.0a1.20241217
 _version=135.0a1
 pkgrel=1
 arch=('x86_64')
@@ -14,7 +14,7 @@ FX_SRC="thunderbird-${_version}.en-US.linux-${CARCH}"
 FX_SRC_URI="https://download-installer.cdn.mozilla.net/pub/thunderbird/nightly/latest-comm-central/${FX_SRC}"
 
 source=("${FX_SRC_URI}.txt"
-        "${FX_SRC_URI}.tar.bz2"
+        "${FX_SRC_URI}.tar.xz"
         "${pkgname%-bin}.desktop"
         vendor.js
         policies.json)
