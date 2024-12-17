@@ -2,24 +2,20 @@
 
 _pkgname=('bitwuzla')
 pkgname=("${_pkgname}-git")
-pkgver=0.6.1.r1.g67230d5
+pkgver=0.7.0.r3.gc23b57f
 pkgrel=1
 pkgdesc='SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations'
 arch=('x86_64')
 url='https://bitwuzla.github.io'
 license=('MIT')
-source=("git+https://github.com/bitwuzla/bitwuzla.git"
-       	"0001-Use-installed-libraries.patch"
-	"0002-Skip-Test-based-on-timeout.patch"
-       )
+source=("git+https://github.com/bitwuzla/bitwuzla.git")
 depends=(
+    'cryptominisat'
     'gcc-libs'
     'glibc'
     'gmp>=6.1'
-    'kissat'
 )
 makedepends=(
-    'cadical>=1.5.0'
     'cmake'
     'cython'
     'doxygen'
@@ -33,14 +29,12 @@ makedepends=(
     'python-sphinxcontrib-bibtex'
     'python>=3.7'
     'python-sphinx'
-    'symfpu-cvc5'
 )
 checkdepends=(
     'gtest'
     'python-pytest'
 )
 optdepends=(
-    'cryptominisat5: Support for the CryptoMiniSat SAT solver'
     'python>=3.7: Python bindings'
 )
 provides=(
@@ -52,24 +46,24 @@ provides=(
     'libbitwuzla.so'
 )
 conflicts=("${_pkgname}" "${_pkgname}-docs")
-b2sums=('SKIP'
-        '0ebea6754d4fc270c268d4088af9bcb93596fe5ec7b1065f83d39e5c56eef93d567592443ec0a460a34bf5829b5b54f2c9971644f6fbbebbf9c43a1b440ac54d'
-        '7728ab77cb234b4427e7cf493817a24bf97440304efb4fc4300125ec470a0bf15430b4416d3c5fdea51dc91441640d05995ed4a08d4c628f97f4d4dc08538d7e')
+b2sums=('SKIP')
 options=('!lto')
-
-prepare() {
-    cd "${srcdir}/${_pkgname}"
-    patch --forward --strip=1 --input=../0001-Use-installed-libraries.patch
-    patch --forward --strip=1 --input=../0002-Skip-Test-based-on-timeout.patch
-}
 
 build() {
     cd "${srcdir}/${_pkgname}"
 
-    ./configure.py --prefix /usr --shared --python --testing --docs --kissat
+    ./configure.py \
+	--prefix /usr \
+	--shared \
+	--python \
+	--testing \
+	--docs \
+	--kissat \
+	--cryptominisat \
+	--fpexp
 
     cd build
-    ninja
+    meson compile
 }
 
 check() {
