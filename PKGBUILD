@@ -1,10 +1,10 @@
-# Maintainer: tioguda <tioguda@gmail.com>
+# Maintainer: tioguda  <guda.flavio@gmail.com>
 # Contributor: Rafael Fontenlle <rafaelff@gnome.org>
 
 pkgname=warsaw-bin
-_pkgver=2.21.3-1
+_pkgver=2.21.5-1
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Banking security tool developed by GAS Tecnologia"
 arch=(x86_64)
 url="https://diagnostico.gasantifraud.com"
@@ -17,9 +17,9 @@ install=${pkgname}.install
 conflicts=('warsaw')
 provides=('warsaw')
 source=("https://www.gnu.org/licenses/gpl-3.0.txt")
-source_x86_64=("warsaw-${pkgver}-64.run::https://cloud.gastecnologia.com.br/gas/diagnostico/ubuntu_64bits.run")
+source_x86_64=("warsaw-${pkgver}-64.run::https://cloud.gastecnologia.com.br/bb/downloads/ws/debian/warsaw_setup64.run")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('b7ebf7f6ae8e5251ab0948a91aefdee7f23cc2142d2519ddff674d76ea18abe6')
+sha256sums_x86_64=('7548027038d5ee0a617d725a8bf955678c96fc594cdaf469613a320ef1d5d47d')
 
 prepare() {
     cd "${srcdir}"
