@@ -1,0 +1,14 @@
+pkgbase = r-statr
+	pkgdesc = statR package can be used to create visualizations, Excel tables and HTML reports in R that conform to the corporate design of the Canton of Zurich
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/statistikZH/statR
+	arch = x86_64
+	license = GPL-3.0
+	depends = r-openxlsx
+	depends = r-gridextra
+	source = https://github.com/statistikZH/statR/releases/download/2.4.1/statR_2.4.1.tar.gz
+	md5sums = SKIP
+	b2sums = SKIP
+
+pkgname = r-statr
