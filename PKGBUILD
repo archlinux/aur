@@ -6,9 +6,9 @@ _name="cops"
 _github_name="seblucas-cops"
 provides=('cops')
 conflicts=('cops')
-pkgver=3.4.5
+pkgver=3.4.6
 pkgrel=1
-pkgdesc='Lightweight Calibre OPDS (and HTML) PHP Server'
+pkgdesc='Lightweight Calibre OPDS (and HTML) PHP Server (mikespub.org fork)'
 arch=('any')
 url="https://github.com/mikespub-org/$_github_name"
 license=('GPL-2.0-or-later')
@@ -26,8 +26,8 @@ optdepends=(
 makedepends=('composer')
 backup=("etc/webapps/${_name}/local.php")
 install="${_name}.install"
-source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('e25bd19500ac9b675397fc84947074eee489f75e2f4104a26e3cebb53af8678c')
+source=("${url}/archive/refs/tags/${pkgver}.zip")
+sha256sums=('29537661960d6e96285169634aee12bca30e23ab4e579fea73466260133e2273')
 
 prepare () {
     cd "${_github_name}-$pkgver"
