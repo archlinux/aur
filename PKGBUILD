@@ -5,7 +5,7 @@
 pkgname=perl-crypt-urandom
 _cpanname=Crypt-URandom
 pkgver=0.40
-pkgrel=1
+pkgrel=2
 pkgdesc="Provide non blocking randomness"
 arch=('any')
 license=('PerlArtistic' 'GPL')

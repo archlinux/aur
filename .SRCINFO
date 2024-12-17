@@ -1,7 +1,7 @@
 pkgbase = perl-crypt-urandom
 	pkgdesc = Provide non blocking randomness
 	pkgver = 0.40
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Crypt-URandom
 	arch = any
 	license = PerlArtistic
