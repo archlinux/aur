@@ -7,7 +7,7 @@ pkgdesc="Простой редактор текста"
 arch=('any')
 url="https://github.com/SergeyDash/flippen-text"
 license=('GPL')
-depends=('python' 'tkinter')
+depends=('python' 'tk')
 source=("main.py")
 sha256sums=('SKIP')  # Если у нас нет архива, можем использовать 'SKIP'
 
