@@ -1,6 +1,6 @@
 pkgname=python-ocp
-pkgver=7.7.2.1
-pkgrel=2
+pkgver=7.7.2.1+r4.g544d7fd5
+pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
 url=https://github.com/CadQuery/OCP
@@ -8,7 +8,7 @@ license=('Apache')
 
 depends=(
 python
-'opencascade=1:7.7.2'
+'opencascade=1:7.8.1'
 'vtk=9.3.1'
 fmt
 glew
@@ -57,8 +57,8 @@ python-clang15
 
 conflicts=(python-ocp-git)
 
-_ocp_fragment="#commit=c692e6e2c61319ff4ec83065c5092ad43c364173"
-_pywrap_commit="79874f51d2ff963dc993fc77f6871fcd6140f5d9"  # comment this to use the latest
+_ocp_fragment="#commit=544d7fd55b997dff26eb5b1009d17d97b42063b1"
+_pywrap_commit="6cbeb64e9695703c56bb6309a8351886accdeeb0"  # comment this to use the latest
 source=(
 git+https://github.com/CadQuery/OCP.git${_ocp_fragment}
 git+https://github.com/CadQuery/pywrap.git
@@ -81,7 +81,9 @@ _n_parallel_build_jobs=1
 _opencascade_install_prefix="/usr"
 
 pkgver() {
-  git -C OCP describe --tags
+  local _git_describe="$(git -C OCP describe --tags)"
+  local _git_describe="${_git_describe/-/+r}"
+  echo -n "${_git_describe//-/.}"
 }
 
 prepare(){
