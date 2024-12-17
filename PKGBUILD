@@ -1,4 +1,6 @@
-# Maintainer: Ethan Johnston <ethan dot johnston at alcorlabs dot com>
+# vim:ts=2:sw=2:expandtab
+# Maintainer: peelz <peelz.dev+arch@gmail.com>
+
 pkgname=opencomposite-git
 pkgver=r1074.356d039
 pkgrel=1
