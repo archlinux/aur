@@ -31,6 +31,7 @@ sha1sums=(
   "SKIP"
   "SKIP"
 )
+options=("!lto")
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
