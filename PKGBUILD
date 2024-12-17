@@ -7,7 +7,7 @@
 # Contributor: Magnus Therning <magnus@therning.org>
 
 pkgname=ocaml-pcre
-pkgver=7.5.1
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Perl compatible regular expressions for OCaml"
 arch=('x86_64')
@@ -20,7 +20,8 @@ replaces=('pcre-ocaml')
 conflicts=('pcre-ocaml')
 options=('!strip' 'staticlibs' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mmottl/pcre-ocaml/releases/download/${pkgver}/pcre-${pkgver}.tbz")
-b2sums=('d277ba04b5f75364dc85521153ccb4b77368703720a84cc2780545615cefe700682d4250301254ec61d6598d870f8ed2572eb3d24f738cbbd92e0d7f00925012')
+b2sums=('ec532674a3755c8a63fafbb190e4587f37ba3838e853a9a82710234c9816611f572ffc62499d7e7db6afc2fd9e490a1260265dd92d73f71fb3a3450f153fa564')
+
 
 build() {
     cd "${srcdir}/pcre-${pkgver}"
@@ -29,17 +30,25 @@ build() {
     dune build @install
 }
 
+check() {
+    cd "${srcdir}/pcre-${pkgver}"
+    dune runtest --verbose
+}
+
 package() {
     cd "${srcdir}/pcre-${pkgver}"
 
     dune install \
-	 --prefix="/usr" \
 	 --destdir="${pkgdir}" \
+	 --prefix="/usr" \
+	 --docdir="/usr/share/doc" \
 	 --libdir="$(ocamlfind printconf destdir)"
 
-    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-    mv "${pkgdir}/usr/doc/pcre/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}"
+    # TODO
+    #  - doc needs an odoc package
 
-    mv "${pkgdir}/usr/doc/pcre" "${pkgdir}/usr/doc/${pkgname}"
-    mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share"
+    mv "${pkgdir}/usr/share/doc/pcre" "${pkgdir}/usr/share/doc/${pkgname}"
+
+    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+    mv "${pkgdir}/usr/share/doc/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
