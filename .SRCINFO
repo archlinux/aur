@@ -1,0 +1,20 @@
+pkgbase = cozy-overlay-desktop-bin
+	pkgdesc = An ambient cozy animation overlay on your desktop.(Prebuilt version.Use system-wide electron)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/puff-dayo/cozydeco-overlay
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gendesk
+	depends = electron33
+	provides = cozy-overlay-desktop=0.1
+	conflicts = cozy-overlay-desktop
+	options = !emptydirs
+	source = cozy-overlay-desktop-0.1.tar.gz::https://github.com/puff-dayo/cozydeco-overlay/releases/download/v0.1/cozy_overlay_desktop-linux-x64-v0.1.tar.gz
+	source = cozy-overlay-desktop-0.1.png::https://raw.githubusercontent.com/puff-dayo/cozydeco-overlay/v0.1/icon.png
+	source = cozy-overlay-desktop.sh
+	sha256sums = afa7eb9efbb1eb4410100034cbb51290cb80de7172e901a3f495e9c3141cc4fe
+	sha256sums = 315a5a8d0c0e4e0d7d43faa3a21175efa835c72f91f5afa30bcb0177e3f87890
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = cozy-overlay-desktop-bin
