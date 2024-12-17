@@ -30,7 +30,7 @@ package() {
     
     mkdir -p "${pkgdir}/usr/lib/pkgconfig"
     cat << EOF > "${pkgdir}/usr/lib/pkgconfig/libtoml.pc"
-prefix=${pkgdir}/usr
+prefix=/usr
 exec_prefix=\${prefix}
 libdir=\${exec_prefix}/lib
 includedir=\${prefix}/include
