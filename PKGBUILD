@@ -1,4 +1,5 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 
 pkgname=work
 pkgver=1.0.9
