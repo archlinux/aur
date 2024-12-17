@@ -16,6 +16,8 @@ makedepends=(
   "cmake"
   "make"
   "vulkan-headers"
+  "libglvnd"
+  "python"
 )
 provides=("opencomposite")
 conflicts=("opencomposite")
