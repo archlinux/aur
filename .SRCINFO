@@ -1,7 +1,7 @@
 pkgbase = python-dist-meta
 	pkgdesc = Parse and create Python distribution metadata
-	pkgver = 0.8.0
-	pkgrel = 3
+	pkgver = 0.8.1
+	pkgrel = 1
 	url = https://dist-meta.readthedocs.io/
 	arch = any
 	license = MIT
@@ -14,7 +14,8 @@ pkgbase = python-dist-meta
 	depends = python-domdf-python-tools
 	depends = python-handy-archives
 	depends = python-packaging
-	source = python-dist-meta::git+https://github.com/repo-helper/dist-meta#commit=6036a6fd75717632207677615f16c27da20258e9
-	b2sums = SKIP
+	source = python-dist-meta::git+https://github.com/repo-helper/dist-meta#tag=v0.8.1
+	sha512sums = 6bed8087136e8e265136d067d192868de9e2bd0e9e261eb5b4eb8b6c94df3781d1a1986b8641e6686eb1051db494ee7af1dc5163ca189735c91d9d0ab45d6fb0
+	b2sums = 8d7b9de86d86bed0c027c1b196d2f9dd0163d8d944cecfa70c00f2cc4e553a67c0b58e9bd70f147789a8d0ac3db52e672e7a4ed9b1696646c22fddc876794866
 
 pkgname = python-dist-meta
