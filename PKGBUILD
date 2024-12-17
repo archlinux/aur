@@ -9,6 +9,7 @@ arch=('x86_64' 'aarch64' 'i386')
 url="https://github.com/${_pkgname}lang/$_pkgname"
 _url_raw="https://raw.githubusercontent.com/$(echo "$url" | awk -F'/' '{print $4 "/" $5}')c-ir"
 license=('BSD-3-Clause')
+groups=('jule')
 source=("git+$url.git")
 source_x86_64=("$_pkgname-ir-$pkgver-$CARCH.cpp::$_url_raw/main/src/linux-amd64.cpp")
 source_aarch64=("$_pkgname-ir-$pkgver-aarch64.cpp::$_url_raw/main/src/linux-arm64.cpp")
