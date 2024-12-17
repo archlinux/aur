@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2023-09-04.
+# PKGBUILD last time manually edited: At least on 2024-12-17.
 _zipfile="KOMPLET.ZIP"
 url="https://chaps.cz/eng/download/idos/zip#kotvatt"
 _pkgver() {
@@ -14,7 +14,7 @@ epoch=0
 _pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
 pkgver="${_pkgver}"
 _year="$(cut -d_ -f1 <<< "${_pkgver}")"
-pkgrel=2
+pkgrel=1
 pkgdesc="Timetable data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport, some air transport. Note that some timetables need the purchased version of IDOS to run."
 arch=(any)
 license=('custom')
