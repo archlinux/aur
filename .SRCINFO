@@ -1,8 +1,8 @@
 pkgbase = vibe-bin
-	pkgdesc = A powerful audio player for Linux
+	pkgdesc = Transcribe audio / video offline using OpenAI Whisper
 	pkgver = 2.6.9
 	pkgrel = 1
-	url = https://github.com/thewh1teagle/vibe
+	url = https://thewh1teagle.github.io/vibe/
 	arch = x86_64
 	license = MIT
 	depends = ffmpeg
