@@ -24,7 +24,7 @@ build() {
       MODULEBUILDRC=/dev/null
 
     cd "$srcdir/$_cpanname-$pkgver"
-    /usr/bin/perl Makefile.PL
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
   )
 }
@@ -39,8 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_cpanname-$pkgver"
   make install
-
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
 # Local Variables:
