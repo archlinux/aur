@@ -1,6 +1,6 @@
 pkgbase = mozc-with-jp-dict
 	pkgver = 2.30.5618.102
-	pkgrel = 25
+	pkgrel = 26
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
 	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary
@@ -15,16 +15,16 @@ pkgbase = mozc-with-jp-dict
 	makedepends = libibus
 	makedepends = rustup
 	options = !lto
-	source = git+https://github.com/fcitx/mozc.git#commit=f53990354c2efc868a40b00a5d2baa13cadcd01e
-	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=bb89ed2e5fad43ce7aa7e366fe6c357b59b9e2dd
+	source = git+https://github.com/fcitx/mozc.git#commit=e09389dd8faf2ac22ad68e02e8e2091af0d8ab6e
+	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=3974dffab8295155eb0e2d517a266b33cfac6cc4
 	source = git+https://github.com/abseil/abseil-cpp.git#commit=4447c756
 	source = git+https://github.com/google/breakpad.git#commit=216cea7b
 	source = git+https://github.com/google/googletest.git#commit=b514bdc8
 	source = git+https://github.com/chromium/gyp.git#commit=9ecf45e3
 	source = git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=e5b3425
-	source = git+https://github.com/protocolbuffers/protobuf.git#commit=5fda5abda
+	source = git+https://github.com/protocolbuffers/protobuf.git#commit=796e49f6c
 	source = git+https://github.com/microsoft/wil.git#commit=fc5dbf5
-	source = git+https://github.com/phoepsilonix/dict-to-mozc.git#commit=d53a6011fbc97303c1723b6d0bd45e24eba32961
+	source = git+https://github.com/phoepsilonix/dict-to-mozc.git#commit=ba87365f72414e4da175222c9a0da32b1d66febf
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20241021/small_lex.zip
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20241021/core_lex.zip
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20241021/notcore_lex.zip
@@ -33,16 +33,17 @@ pkgbase = mozc-with-jp-dict
 	source = LICENSE-MeCab-unidic-Neologd::https://github.com/phoepsilonix/mecab-unidic-neologd/raw/refs/heads/master/COPYING
 	source = https://github.com/phoepsilonix/mecab-ipadic-neologd/raw/refs/heads/master/seed/mecab-user-dict-seed.20200910.csv.xz
 	source = LICENSE-MeCab-ipadic-Neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
-	sha512sums = f99941f0dda8080a4c3fbf2ce9f7009b5043e4b80bef33fb873bd9ff174de2f9f587632cbb32d5cee680e043b35fca60ed70c6eb544f2b0fb518d2d37906e798
-	sha512sums = f8d46e14d6780fdfccb365b0d1d7fe1437800f60d20869166c30102c2c4249e7f09a8c91d4b0d85376131c076822b8d1e4ecc30f082f93020c4dc52ae364fc64
+	source = fcitx5.tar.xz
+	sha512sums = 6e93fce29a2a85d2fd562decdfd5acc6265a7c9f0a1655860b5ef0844dbb903ed2640a43bec5afbee856c8a0277a75d530bca3755070676a6d27d2e597da2b4a
+	sha512sums = 686b0837f13cfb4ba858086f1651a0053f1151688e4f119774991e0744d1ee5dd493810423946397f729c9826dff190a6d83b48901a6278cd4daf33839a3d5bb
 	sha512sums = 83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68
 	sha512sums = f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d
 	sha512sums = 44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b
 	sha512sums = c8ce90c2493c05a78221befc4cbbcfcbe7a0bafb7bfa55403b085bf8c3fd069c4690d1ff59ef9e0e8a813bd3673588eb38e02ad81c42a6dd0be5246f27442169
 	sha512sums = 91b878735e767ddf6f1fe3de61486c1e78936a0f683855e7c34a21c711f405899d3de369d2ff0a1910d65b1afc8c225d8d8b9398cf98d760f3afcfe42644fca2
-	sha512sums = 4ec946b3e73869c47bb5f52ff91d57ce37b8bf94804174ad278be699a9a9d9f9ba11e20e6ad6017d41653cb99ac41a11d1d4ecadf87556b1c3a189f77c138757
+	sha512sums = e0b5744660f195daae952bb505965d811517aaed9d0838fdbe19dd9b3beddb0c2c003689e46773005d66c7a72f482063853353ba061c76f2bd5bf61cfa4a63e4
 	sha512sums = 504066a457f77b510f492626c919b6fd7b61f77948bdddef0f7e43ae09bb4bf03cea7000fba91ae0123a94d3b39cac6dfac2010126849afe0a183727fe7b0fc1
-	sha512sums = cb829c7cc658a316197336e40f82cd280e09c570ced9b925a4378049f33df45ee97d0ba376a52263687d2c4aa9c2c448a8fc6a277bbce14f128203b1ca37ade5
+	sha512sums = 23bb276fabebd9b7d8a65ccecd10bc1d3ac16ba5572dbb7ae907c06eb3be0c23c386bdfd473d852f8b9cdfb5c1a583cb316f667befc1d22434f23862f1635d89
 	sha512sums = 807b68f18e0f9093ccca368fcd4a209a0723167be7aa48e04217f053bc0911399f3bb86b95cb118e64bb9f53f5242c9c51bcff14f81d94ed68db2448c9386b32
 	sha512sums = f3ea37e785d604d614b8fa27bf03d1b669240b7c28c293d953a3ac40b6faff56893b42f8e082ccc7723edb5b27a4613a99343477a34fc76afd458912025555e9
 	sha512sums = 384a8c55e928323a4a6b3f83a6845199c67cd3766ca586ea936c41aeb6728020b2430daeb88de3cc19413b6111db5971552f8a538826d3718ab33b7281226ff8
@@ -51,6 +52,7 @@ pkgbase = mozc-with-jp-dict
 	sha512sums = 44b228264547c4628599b5888bd177dc3ddb845094a0acebcd3d7d7665e2cda8861f7210f80f0f40531f46581f565aab3489a6a2ff3aa75c058d552b23ea8d6e
 	sha512sums = 5f3aa91974d7ef5633a013effb7acf729cec7d096b4740ceb9915fe7df10e2e45d0d76ffc2d36f1e16d322e7b3974653601a79b6ada05371de8fc7e80af14644
 	sha512sums = 77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4
+	sha512sums = ea7155d638d0828c57382c9e0f9be4238af2029eeb0d48cfa99a9f2b4eb1441704846d06f1555a3dcb2ca9277a23031baabb103a386dada2bf41406d67121e45
 
 pkgname = ibus-mozc-with-jp-dict
 	pkgdesc = Ibus engine module for Mozc(the Open Source Edition of Google Japanese Input) with SudachiDict and MeCab UniDic Neologd and MeCab IpaDic Neologd
@@ -72,6 +74,7 @@ pkgname = ibus-mozc-with-jp-dict
 
 pkgname = fcitx5-mozc-with-jp-dict
 	pkgdesc = Fcitx5 Module for Mozc(the Open Source Edition of Google Japanese Input) with SudachiDict and MeCab UniDic Neologd and MeCab IpaDic Neologd
+	install = fcitx5-mozc.install
 	depends = fcitx5
 	depends = fcitx5-qt
 	depends = hicolor-icon-theme

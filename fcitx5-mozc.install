@@ -1,14 +1,40 @@
+install_if_not_exists() {
+    src_path=$1
+    dest_path=$2
+    if [ ! -e $dest_path ];then
+      install -D -m 644 $src_path $dest_path
+    fi
+}
+
+install_as_user_if_not_exists() {
+    src_path=$1
+    dest_path=$2
+    if [ ! -e $dest_path ];then
+      SUDO_GROUP=$(id -gn $SUDO_USER)
+      install -o $SUDO_USER -g $SUDO_GROUP -D -m 644 $src_path $dest_path
+    fi
+}
+
 post_install() {
-  if [ ! -e /etc/skel/.config/fcitx5/profile ]; then
-      install -D -m 644 /usr/share/fcitx5-mozc/fcitx5/profile /etc/skel/.config/fcitx5/profile
-  fi
-  if [ ! -e /etc/skel/.config/fcitx5/conf/notifications.conf ]; then
-      install -D -m 644 /usr/share/fcitx5-mozc/fcitx5/conf/notifications.conf /etc/skel/.config/fcitx5/conf/notifications.conf
-  fi
-  if [ ! -e /etc/skel/.config/fcitx5/conf/waylandim.conf ]; then
-      install -D -m 644 /usr/share/fcitx5-mozc/fcitx5/conf/waylandim.conf /etc/skel/.config/fcitx5/conf/waylandim.conf
-  fi
-  if [ ! -e /etc/skel/.config/fcitx5/conf/xim.conf ]; then
-      install -D -m 644 /usr/share/fcitx5-mozc/fcitx5/conf/xim.conf /etc/skel/.config/fcitx5/conf/xim.conf
-  fi
+    install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/profile /etc/skel/.config/fcitx5/profile 
+    sudo -u $SUDO_USER mkdir -p $SUDO_HOME/.config/fcitx5/conf
+    install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/profile $SUDO_HOME/.config/fcitx5/profile
+    install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/notifications.conf /etc/skel/.config/fcitx5/conf/notifications.conf
+    install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/notifications.conf $SUDO_HOME/.config/fcitx5/conf/notifications.conf
+    install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/waylandim.conf /etc/skel/.config/fcitx5/conf/waylandim.conf
+    install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/waylandim.conf $SUDO_HOME/.config/fcitx5/conf/waylandim.conf
+    install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/xim.conf /etc/skel/.config/fcitx5/conf/xim.conf
+    install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/xim.conf $SUDO_HOME/.config/fcitx5/conf/xim.conf
+}
+
+post_upgrade() {
+    install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/profile /etc/skel/.config/fcitx5/profile 
+    sudo -u $SUDO_USER mkdir -p $SUDO_HOME/.config/fcitx5/conf
+    install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/profile $SUDO_HOME/.config/fcitx5/profile
+    install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/notifications.conf /etc/skel/.config/fcitx5/conf/notifications.conf
+    install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/notifications.conf $SUDO_HOME/.config/fcitx5/conf/notifications.conf
+    install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/waylandim.conf /etc/skel/.config/fcitx5/conf/waylandim.conf
+    install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/waylandim.conf $SUDO_HOME/.config/fcitx5/conf/waylandim.conf
+    install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/xim.conf /etc/skel/.config/fcitx5/conf/xim.conf
+    install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/xim.conf $SUDO_HOME/.config/fcitx5/conf/xim.conf
 }

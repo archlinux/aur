@@ -9,8 +9,8 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=f53990354c2efc868a40b00a5d2baa13cadcd01e
-_bcr_commit=bb89ed2e5fad43ce7aa7e366fe6c357b59b9e2dd
+_mozc_commit=e09389dd8faf2ac22ad68e02e8e2091af0d8ab6e
+_bcr_commit=3974dffab8295155eb0e2d517a266b33cfac6cc4
 _branch=fcitx
 
 ## follow the submodule commits in https://github.com/fcitx/mozc/tree/fcitx/src/third_party
@@ -19,13 +19,13 @@ _breakpad_commit=216cea7b
 _gtest_commit=b514bdc8
 _gyp_commit=9ecf45e3
 _japanese_usage_dictionary_commit=e5b3425
-_protobuf_commit=5fda5abda
+_protobuf_commit=796e49f6c
 _wil_commit=fc5dbf5
 
 pkgbase=mozc
 pkgname=("fcitx-$pkgbase")
 pkgver=2.30.5618.102
-pkgrel=22
+pkgrel=23
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
@@ -42,14 +42,14 @@ source=("git+$url.git#commit=${_mozc_commit}"
         "git+https://github.com/microsoft/wil.git#commit=${_wil_commit}"
 )
 
-sha512sums=('f99941f0dda8080a4c3fbf2ce9f7009b5043e4b80bef33fb873bd9ff174de2f9f587632cbb32d5cee680e043b35fca60ed70c6eb544f2b0fb518d2d37906e798'
-            'f8d46e14d6780fdfccb365b0d1d7fe1437800f60d20869166c30102c2c4249e7f09a8c91d4b0d85376131c076822b8d1e4ecc30f082f93020c4dc52ae364fc64'
+sha512sums=('6e93fce29a2a85d2fd562decdfd5acc6265a7c9f0a1655860b5ef0844dbb903ed2640a43bec5afbee856c8a0277a75d530bca3755070676a6d27d2e597da2b4a'
+            '686b0837f13cfb4ba858086f1651a0053f1151688e4f119774991e0744d1ee5dd493810423946397f729c9826dff190a6d83b48901a6278cd4daf33839a3d5bb'
             '83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68'
             'f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d'
             '44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b'
             'c8ce90c2493c05a78221befc4cbbcfcbe7a0bafb7bfa55403b085bf8c3fd069c4690d1ff59ef9e0e8a813bd3673588eb38e02ad81c42a6dd0be5246f27442169'
             '91b878735e767ddf6f1fe3de61486c1e78936a0f683855e7c34a21c711f405899d3de369d2ff0a1910d65b1afc8c225d8d8b9398cf98d760f3afcfe42644fca2'
-            '4ec946b3e73869c47bb5f52ff91d57ce37b8bf94804174ad278be699a9a9d9f9ba11e20e6ad6017d41653cb99ac41a11d1d4ecadf87556b1c3a189f77c138757'
+            'e0b5744660f195daae952bb505965d811517aaed9d0838fdbe19dd9b3beddb0c2c003689e46773005d66c7a72f482063853353ba061c76f2bd5bf61cfa4a63e4'
             '504066a457f77b510f492626c919b6fd7b61f77948bdddef0f7e43ae09bb4bf03cea7000fba91ae0123a94d3b39cac6dfac2010126849afe0a183727fe7b0fc1')
 
 pkgver() {
