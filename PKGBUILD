@@ -3,7 +3,7 @@
 
 _name=hyprpy
 pkgname=python-hyprpy
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="Python bindings for Hyprland"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(python python-pydantic)
 makedepends=(python-build python-installer)
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('2beb6d105b3a6c3aced0d0ab539a507e885cdd979689a12f6840e9cf69675210c8dca299cc8ba47dd1fcb1b91d83dba957ce9e4a0ec4aeaa03a098f34d87b98e')
+sha512sums=('fede9b9637b75ad083af32c3636c27e5e954a88ee6074ac83c37c0e774440cb2beae131e3bac27313ce30e76daccbb4e1df9d2f7195bda35254d6a6f96d42ecf')
 
 build() {
     cd "${_name}-${pkgver}"
@@ -22,7 +22,7 @@ build() {
 
 check() {
     cd "${_name}-${pkgver}"
-    export HYPRLAND_INSTANCE_SIGNATURE=0 ; python -c "import hyprpy"
+    python -c "import hyprpy"
 }
 
 package() {
