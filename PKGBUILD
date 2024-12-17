@@ -5,7 +5,7 @@ __pkgname=jule
 _pkgname="tree-sitter-$__pkgname"
 pkgname="$_pkgname-git"
 pkgver=1.r0.gea815c0
-pkgrel=1
+pkgrel=2
 pkgdesc='Jule syntax tree for the Tree-sitter parsing library'
 groups=('jule' 'tree-sitter-grammars')
 arch=('any')
@@ -42,8 +42,10 @@ build() {
 package() {
   cd "$_pkgname"
   install -Dm664 "$__pkgname.so" "$pkgdir/usr/lib/lib$_pkgname.so"
-  install -d "$pkgdir/usr/share/nvim/runtime/parser"
+  mkdir -p "$pkgdir/usr/share/nvim/runtime/parser"
+  mkdir -p "$pkgdir/usr/lib/tree_sitter"
   ln -s "/usr/lib/lib$_pkgname.so" "$pkgdir/usr/share/nvim/runtime/parser/$__pkgname.so"
+  ln -s "/usr/lib/lib$_pkgname.so" "$pkgdir/usr/lib/tree_sitter/$__pkgname.so"
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
