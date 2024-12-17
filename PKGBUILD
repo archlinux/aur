@@ -1,17 +1,17 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter-git
-pkgver=r10489_bc7ed3776
+pkgver=r10584_4d39f7fe6
 pkgrel=1
 pkgdesc="rawconverter ART (RawTherapee fork with ease of use in mind) built from latest sources"
 arch=('i686' 'x86_64' 'aarch64')
-url="https://bitbucket.org/agriggio/art/wiki/Home"
+url="https://art.pixls.us"
 license=('GPL3')
 depends=('opencolorio' 'lensfun' 'libraw' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'desktop-file-utils' 'mimalloc' 'openmp' 'openexr' 'ctl')
 options=(!debug !lto)
 optdepends=('perl-image-exiftool: metadata support for CR3 images' 'art-rawconverter-imageio: add support for additional image formats' 'art-rawconverter-ctlscripts: CTL scripts for advanced color transformations' 'lcms2-ff: lcms2 with fast-float plugin for improved export speed' )
 makedepends=('pkgconf' 'make' 'cmake' 'git' 'gcc' 'hicolor-icon-theme' 'fakeroot')
 provides=('art-rawconverter')
-source=("${pkgname}_src::git+https://bitbucket.org/agriggio/art.git#branch=master")
+source=("${pkgname}_src::git+https://github.com/artpixls/ART.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
