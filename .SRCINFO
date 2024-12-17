@@ -1,13 +1,12 @@
 pkgbase = python-tlslite-ng
 	pkgdesc = Pure python implementation of SSL and TLS
-	pkgver = 0.7.6
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/tomato42/tlslite-ng
 	arch = any
 	license = custom:mixed free licenses
 	depends = python-ecdsa
-	source = python-tlslite-ng-0.7.6.tar.gz::https://github.com/tomato42/tlslite-ng/archive/v0.7.6.tar.gz
-	md5sums = 3a13fabce618b9d507c195a501ee7dc3
+	source = python-tlslite-ng-0.8.0.tar.gz::https://github.com/tomato42/tlslite-ng/archive/v0.8.0.tar.gz
+	md5sums = 3d54cee098c82ac1b9e4243ed07dcf75
 
 pkgname = python-tlslite-ng
-
