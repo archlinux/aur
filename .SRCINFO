@@ -1,16 +1,11 @@
 pkgbase = concrnt-api-bin
 	pkgdesc = Concrnt is a next-gen decentralized social network platform designed to make your world richer.
 	pkgver = 1.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/totegamma/concurrent
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = concrnt-shared-config
-	depends = concrnt-gateway
-	depends = redis
-	depends = memcached
-	depends = postgresql
 	provides = concrnt-api
 	conflicts = concrnt-api
 	options = !strip
@@ -27,3 +22,8 @@ pkgbase = concrnt-api-bin
 	sha512sums_aarch64 = be0dc010520fb459f4fc2460747d756d18abcb5629cba7684412545037627070d9277cb6f2893d2a8867d4a23f0959218257e8e8c62c60fd9e819dec22fd1c28
 
 pkgname = concrnt-api-bin
+	depends = concrnt-shared-config
+	depends = concrnt-gateway
+	depends = redis
+	depends = memcached
+	depends = postgresql

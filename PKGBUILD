@@ -4,16 +4,10 @@ pkgdesc='Concrnt is a next-gen decentralized social network platform designed to
 pkgname=('concrnt-api-bin')
 pkgver=1.6.0
 _pkgver=v${pkgver}
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'aarch64')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
-
-depends=('concrnt-shared-config'
-         'concrnt-gateway'
-         'redis'
-         'memcached'
-         'postgresql')
 
 provides=('concrnt-api')
 conflicts=('concrnt-api')
@@ -36,6 +30,11 @@ sha512sums_aarch64=('be0dc010520fb459f4fc2460747d756d18abcb5629cba76844125450376
 
 
 package() {
+  depends=('concrnt-shared-config'
+           'concrnt-gateway'
+           'redis'
+           'memcached'
+           'postgresql')
 
   install -Dm755 "${srcdir}/ccapi-${arch}-${pkgver}" "${pkgdir}/usr/bin/ccapi"
   install -Dm644 "${srcdir}/concrnt-api.service" "${pkgdir}/usr/lib/systemd/system/concrnt-api.service"
