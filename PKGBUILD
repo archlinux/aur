@@ -4,7 +4,7 @@
 
 _pkgname=dbeaver
 pkgname=${_pkgname}-git
-pkgver=23.2.4.867.g66babe562e
+pkgver=24.2.3.214.geb7896317b
 pkgrel=1
 pkgdesc='Free universal SQL Client for developers and database administrators. Community Edition. Git version.'
 arch=('x86_64')
@@ -24,6 +24,7 @@ conflicts=("${_pkgname}")
 source=(
 	"git+https://github.com/${_pkgname}/${_pkgname}.git"
 	"git+https://github.com/${_pkgname}/${_pkgname}-common.git"
+	"git+https://github.com/${_pkgname}/${_pkgname}-jdbc-libsql.git"
 	"io.${_pkgname}.DBeaver.desktop"
 	"${_pkgname}.sh"
 	"${_pkgname}.profile.gz"
@@ -31,6 +32,7 @@ source=(
 	"${_pkgname}.install"
 )
 sha512sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'fdf89ba4be526925f27bcf1e185c16461474ef333b3c2587dc535c4ffe68d7fe851465649c8ea2f4d3b05a3e714e5ac3a53a131350ceba449c8f3d5dcfcedb60'
@@ -53,13 +55,12 @@ prepare() {
 		sed "s/DBEAVER_VERSION/${pkgver}/g" |
 		gzip -9 >"${srcdir}/${pkgname}.profile.gz"
 
-	export JAVA_HOME="/usr/lib/jvm/$(archlinux-java status | tail -n +2 | sort | cut -d ' ' -f 3 | sort -nr -k 2 -t '-' | grep -E '17-|18-|19-|20-|21-|22-' -m 1)"
-	export MAVEN_OPTS="-Xmx2048m"
 	cd "${srcdir}/${_pkgname}"
 
 	# Skip broken test.platform
 	sed -i '/org.jkiss.dbeaver.test.platform/d' test/pom.xml
 
+	export MAVEN_OPTS="-Xmx2048m"
 	mvn --batch-mode validate
 }
 
