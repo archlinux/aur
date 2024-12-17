@@ -17,8 +17,8 @@ sha256sums=('SKIP')
 b2sums=('SKIP')
 
 package() {
-    mkdir -p "${pkgdir}/opt/LiteLoader/plugins"
-    chmod -R 0777 "${pkgdir}/opt/LiteLoader"
-    cp -rf "${srcdir}/${_pkgname}" "${pkgdir}/opt/LiteLoader/plugins/${_pkgname}"
+    mkdir -p "${pkgdir}/opt/LiteLoaderQQNT/plugins"
+    chmod -R 0777 "${pkgdir}/opt/LiteLoaderQQNT"
+    cp -rf "${srcdir}/${_pkgname}" "${pkgdir}/opt/LiteLoaderQQNT/plugins/${_pkgname}"
     echo "二进制版本在liteloader-qqnt-markdown-bin可用"
 }
