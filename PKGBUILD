@@ -1,9 +1,9 @@
 pkgname=vibe-bin
 pkgver=2.6.9
 pkgrel=1
-pkgdesc="A powerful audio player for Linux"
+pkgdesc="Transcribe audio / video offline using OpenAI Whisper"
 arch=('x86_64')
-url="https://github.com/thewh1teagle/vibe"
+url="https://thewh1teagle.github.io/vibe/"
 license=('MIT')
 depends=('ffmpeg' 'openblas' 'vulkan-icd-loader' 'libwebkit2gtk-4.1.so' 'gtk3')
 source=("https://github.com/thewh1teagle/vibe/releases/download/v${pkgver}/vibe_${pkgver}_amd64.deb")
