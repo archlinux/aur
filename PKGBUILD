@@ -2,7 +2,7 @@
 
 pkgbase=rt-thread-meta
 pkgname=(rt-thread-meta rt-thread-env-meta)
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 epoch=
 pkgdesc="RT-Thread 开发元包 / RT-Thread Development meta package"
@@ -44,6 +44,9 @@ package_rt-thread-env-meta() {
         git
 
         # build source
+        cmake
+        ninja
+        make
         gcc
         gcc-libs
         gdb
@@ -66,5 +69,10 @@ package_rt-thread-env-meta() {
     )
     optdepends=(
         'python-pyocd-pemicro: Python On Chip Debugger and programmer for ARM Cortex-M microcontrollers using CMSIS-DAP'
+        'code: The Open Source build of Visual Studio Code (vscode) editor'
+        'visual-studio-code: Visual Studio Code (vscode): Editor for buildingand debugging modern web and cloud applications (official binary version)'
+        'embedded-studio: Segger Embedded Studio'
+        'codelite: Cross platform IDE for C, C++, Rust, Python, PHPand Node.js written in C++'
+        'eclipse-platform: A minimal installation suitable for complete per-user customization with the built-in Eclipse package manager'
     )
 }
