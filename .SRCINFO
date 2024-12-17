@@ -1,0 +1,16 @@
+pkgbase = vibe-bin
+	pkgdesc = A powerful audio player for Linux
+	pkgver = 2.6.9
+	pkgrel = 1
+	url = https://github.com/thewh1teagle/vibe
+	arch = x86_64
+	license = MIT
+	depends = ffmpeg
+	depends = openblas
+	depends = vulkan-icd-loader
+	depends = libwebkit2gtk-4.1.so
+	depends = gtk3
+	source = https://github.com/thewh1teagle/vibe/releases/download/v2.6.9/vibe_2.6.9_amd64.deb
+	sha256sums = f69185043b21667ecc9ae7ffc60ba689575f7f724b8355ad45fa2518c3471478
+
+pkgname = vibe-bin
