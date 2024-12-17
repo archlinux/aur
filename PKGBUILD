@@ -1,7 +1,7 @@
 # Maintainer: Audiolinux  audiolinux@fastmail.fm
 
 pkgname=audirvana-origin
-pkgver=2.5.18
+pkgver=2.5.19
 pkgrel=1
 pkgdesc="Audirvana Origin audio player"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://audirvana.com/"
 license=('custom')
 depends=('glibc' 'gcc-libs' 'alsa-lib' 'avahi' 'curl' 'libxml2')
 source=("https://audirvana.com/delivery/linux/apt-repo/pool/non-free/audirvana-origin/audirvana-origin_"$pkgver"_amd64.deb" 'audirvanaOrigin.service')
-sha256sums=('4d73fd564707a8aeee5b4d002b7232ac1bd31d1875e05b39af2bbb39dd60ea68' 
+sha256sums=('cb29825fd0814e1dfff6e72d446428c9fe62dbcacac8c687d5ab07ae53357449' 
 'ad6c44ea90d96f13c8623f411b51138bc3deab7eeca476a0fbe51b2dbc0cb758')
 install=${pkgname}.install
 
