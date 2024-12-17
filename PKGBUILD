@@ -1,16 +1,20 @@
 # Maintainer: Your Name <youremail@example.com>
 
-pkgname=flippen-text
+pkgname=ncurseseditor
 pkgver=1.0
 pkgrel=1
-pkgdesc="Простой редактор текста"
-arch=('any')
-url="https://github.com/SergeyDash/flippen-text"
+pkgdesc="Простой редактор в терминале"
+arch=('x86_64')
+url="https://example.com/ncurseseditor"
 license=('GPL')
-depends=('python' 'tk')
-source=("main.py")
-sha256sums=('SKIP')  # Если у нас нет архива, можем использовать 'SKIP'
+depends=('ncurses')
+source=("ncurseseditor.c")
+sha256sums=('SKIP')  # Если исходный код не в архиве
+
+build() {
+    gcc -o $pkgname ncurseseditor.c -lncurses
+}
 
 package() {
-    install -Dm755 "$srcdir/main.py" "$pkgdir/usr/bin/flippen-text"
+    install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }

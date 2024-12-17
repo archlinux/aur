@@ -1,13 +1,12 @@
-pkgbase = flippen-text
-	pkgdesc = Простой редактор текста
+pkgbase = ncurseseditor
+	pkgdesc = Простой редактор в терминале
 	pkgver = 1.0
 	pkgrel = 1
-	url = https://github.com/SergeyDash/flippen-text
-	arch = any
+	url = https://example.com/ncurseseditor
+	arch = x86_64
 	license = GPL
-	depends = python
-	depends = tk
-	source = main.py
+	depends = ncurses
+	source = ncurseseditor.c
 	sha256sums = SKIP
 
-pkgname = flippen-text
+pkgname = ncurseseditor
