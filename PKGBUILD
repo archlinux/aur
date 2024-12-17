@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2024-01-14.
+# PKGBUILD last time manually edited: At least on 2024-12-17.
 
 _year='25'
 _fullyear="20${_year}"
@@ -9,7 +9,7 @@ _pkgname="idos-timetable-data-chaps-trains-europe"
 pkgname="${_pkgname}"
 epoch=0
 pkgver="${_fullyear}"
-pkgrel=3
+pkgrel=1
 pkgdesc="Metapackage designed to depend on the latest ${_pkgname} data package."
 arch=(any)
 url="https://chaps.cz/eng/download/idos/zip#kotvatt"
