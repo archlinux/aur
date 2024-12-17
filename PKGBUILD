@@ -3,7 +3,7 @@
 pkgname=mautrix-whatsapp-bin
 provides=('mautrix-whatsapp')
 conflicts=('mautrix-whatsapp')
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="A Matrix-Whatsapp puppeting bridge (binary release)"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -18,14 +18,14 @@ source=("${pkgname/-bin}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.zip"
         mautrix-whatsapp.tmpfiles
         mautrix-whatsapp.service
         log-path.diff)
-sha256sums=('07b465de3ebd535eef71fad60350fda91f42d5ff6e08236217555c16e898768e'
+sha256sums=('fd76b5f58a8917c2e823bc504a9984d39972ac5ff1c27bdb6d72b57fa7916cb1'
             '409e8fb3e35de1bd1ceebefa0ac275ad62ec66680117648058bcc177ddd2f9a1'
-            '1d7d01d5a09256382a3f8c246048078d7d4934c3f8ac418fcf2d94648e162ab6'
+            '82adf61bafaab22db6ddb32f6abd903e28c3f250043d4c6bc8a81a3fb70ae6b8'
             'f096badf6846f2ea46a4754917f4afb268b1129aaf897ae6f2dd59ed20fa680a'
             '6313f15046bc58887532c0cc019a912582b87501a188fefd80b82023e67754f3')
-sha256sums_x86_64=('a0fbb8e6f035ea1fa7c88a1cb30982e5645df4f1b481becc28fd5164fa1e66d0')
-sha256sums_armv7h=('a2f3a048865b63855a13ffab53300380897bb2900563867cb76969e970d8cc8b')
-sha256sums_aarch64=('3e85a4d0b959135b6121bc67b73032920f7b4c0359d62bdfc7bbcf92514db387')
+sha256sums_x86_64=('50bfe11852096778364a6947a1f886c827ad31b27bba29b3c23af9574add1726')
+sha256sums_armv7h=('152a0c9fb707842895ed1c5a489819620bf1ea60b1a27e195fa02a48ee5da608')
+sha256sums_aarch64=('e613f702ab1006a8454de30dde1625c482c54de5cc52008b92ab6a23865b3a73')
 backup=("etc/${pkgname/-bin}/mautrix-whatsapp.yaml")
 
 
