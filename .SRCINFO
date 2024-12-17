@@ -1,13 +1,12 @@
 pkgbase = emacs-queue
 	pkgdesc = Queue data structure
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://elpa.gnu.org/packages/queue.html
 	arch = any
 	license = GPL3
 	depends = emacs
-	source = https://elpa.gnu.org/packages/queue-0.2.el
-	sha256sums = 6be60aa5f429e0e3e2c000563356855e3edb7f5378ebf8499ed35aac1141a233
+	source = https://elpa.gnu.org/packages/queue-0.2.tar
+	sha256sums = 880dc17566232e7b1d4b2298906d153a971971ded7a250cdd5fac056a836ef84
 
 pkgname = emacs-queue
-
