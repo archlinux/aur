@@ -1,7 +1,7 @@
 pkgbase = vdr-duplicates
 	pkgdesc = Shows duplicate recordings
 	pkgver = 1.0.1
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/vdr-projects/vdr-plugin-duplicates
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = vdr-duplicates
 	arch = armv7h
 	license = GPL2
 	depends = gcc-libs
-	depends = vdr-api=2.6.7
+	depends = vdr-api=5
 	backup = etc/vdr/conf.avail/50-duplicates.conf
 	source = vdr-duplicates-1.0.1.tar.gz::https://github.com/vdr-projects/vdr-plugin-duplicates/archive/refs/tags/1.0.1.tar.gz
 	sha256sums = c1065d7acd582a596711eb86c44865a8b79808f7ee74101a80255a924856c038
