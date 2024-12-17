@@ -4,13 +4,13 @@
 # Thanks to Fabio Lolix for the patch.
 
 pkgname=applewin-git
-pkgver=1.30.14.1.r1538.g1254c3ce
+pkgver=1.30.14.1.r1622.ge1f71f4d
 pkgrel=1
 pkgdesc="AppleWin Linux port by Audetto - GIT version"
 arch=('x86_64')
 url="https://github.com/audetto/AppleWin.git"
 license=('GPL2')
-depends=('boost-libs' 'minizip'  'libslirp' 'sdl2_image' 'qt5-gamepad' 'qt5-multimedia' 'libyaml')
+depends=('boost-libs' 'minizip'  'libslirp' 'sdl2_image' 'qt6-multimedia' 'libyaml')
 makedepends=('git' 'cmake' 'boost')
 provide=(applewin)
 conflicts=(applewin)
