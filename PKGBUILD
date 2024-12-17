@@ -2,7 +2,7 @@
 
 pkgname=tailwindcss-extra-bin
 pkgver=1.7.21
-pkgrel=2
+pkgrel=3
 pkgdesc='Standalone Tailwind CLI without Node.js dependency. Bundled with DaisyUI.'
 arch=(x86_64)
 url='https://tailwindcss.com'
@@ -17,6 +17,6 @@ package() {
     install -d "${pkgdir}/usr/bin"
     mv "${srcdir}/tailwindcss-extra-linux-x64" "${srcdir}/tailwindcss"
     install -m 755 tailwindcss-extra "${pkgdir}/usr/bin/"
-    chmod +x "${pkgdir}/usr/bin/tailwindcss"
+    chmod +x "${pkgdir}/usr/bin/tailwindcss-extra"
 }
 
