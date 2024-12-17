@@ -1,6 +1,6 @@
 pkgbase = rt-thread-meta
 	pkgdesc = RT-Thread 开发元包 / RT-Thread Development meta package
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/RT-Thread
 	arch = any
@@ -32,7 +32,6 @@ pkgname = rt-thread-env-meta
 	depends = qemu-desktop
 	depends = qemu-system-arm-firmware
 	depends = python-pyocd
-	depends = python-pyocd-pemicro
-	optdepends = 
+	optdepends = python-pyocd-pemicro: Python On Chip Debugger and programmer for ARM Cortex-M microcontrollers using CMSIS-DAP
 	provides = rt-thread-env
 	conflicts = rt-thread-env

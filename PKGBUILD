@@ -2,7 +2,7 @@
 
 pkgbase=rt-thread-meta
 pkgname=(rt-thread-meta rt-thread-env-meta)
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 epoch=
 pkgdesc="RT-Thread 开发元包 / RT-Thread Development meta package"
@@ -63,9 +63,8 @@ package_rt-thread-env-meta() {
 
         # AUR or https://github.com/taotieren/aur-repo
         python-pyocd
-        python-pyocd-pemicro
     )
     optdepends=(
-
+        'python-pyocd-pemicro: Python On Chip Debugger and programmer for ARM Cortex-M microcontrollers using CMSIS-DAP'
     )
 }
