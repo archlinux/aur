@@ -1,8 +1,8 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2024-01-14.
+# PKGBUILD last time manually edited: At least on 2024-12-17.
 
-_year=24
+_year=25
 url="https://chaps.cz/eng/download/idos/zip#kotvatt"
 _zipfile="VLAK${_year}C.ZIP"
 _pkgver() {
@@ -15,7 +15,7 @@ pkgname="${_pkgname}-latest"
 epoch=0
 _pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
 pkgver="${_pkgver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Common files needed for train timetable data for the timetable search engines by CHAPS."
 arch=(any)
 license=('custom')
