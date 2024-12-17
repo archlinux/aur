@@ -4,7 +4,7 @@ _pkgname=woice
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=0.0.4.r10.20230912.6b7799f
-pkgrel=3
+pkgrel=4
 pkgdesc='Automatic login script for WIFIonICE public WiFi by Deutsche Bahn captive portals.'
 url='https://github.com/keans/woice'
 arch=(any)
@@ -19,6 +19,7 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
+  'python-poetry'
   'python-wheel'
 )
 optdepends=(
