@@ -4,7 +4,7 @@ pkgname=stm32cubemonucpd
 _pkgname=STM32CubeMonUCPD
 _pkg_file_name=en.stm32cubemonucpd-lin.zip
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Monitoring and configuration software tool for STM32 USB-C and Power Delivery 3.0 applications"
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubemonucpd.html"
@@ -30,9 +30,11 @@ DLAGENTS=("https::/usr/bin/curl \
               -o %o --compressed %u")
 
 source=("${_pkg_file_name}"::"https://www.st.com""$_pkg_url"
+	"http_headers"
 	"stm32cubemonucpd.desktop"
 	"stm32cubemonucpd")
 sha256sums=('493afa45e1acda8279681e3a3d200ad748fd63313d8a4661c04d70503cf914cb'
+	    '02464309a8fb333d3b9fe375e9b92ae4b1128fac3196d1187fe8daad8d184ad6'
 	    'SKIP'
 	    'SKIP')
 
