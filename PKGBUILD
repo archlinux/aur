@@ -1,7 +1,7 @@
 # Maintainer: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=openfhe-development-git
-pkgver=1.1.3.r0.g7b08ce1
+pkgver=1.2.3.r0.g7b8346f
 pkgrel=1
 pkgdesc='Open-Source Fully Homomorphic Encryption Library'
 arch=('i686' 'x86_64')
@@ -38,6 +38,7 @@ prepare() {
 }
 
 build() {
+  export CXXFLAGS="${CXXFLAGS} -Wno-error=odr"
   cmake -B build -S ${pkgname%-git} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \

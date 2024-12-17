@@ -1,6 +1,6 @@
 pkgbase = openfhe-development-git
 	pkgdesc = Open-Source Fully Homomorphic Encryption Library
-	pkgver = 1.1.3.r0.g7b08ce1
+	pkgver = 1.2.3.r0.g7b8346f
 	pkgrel = 1
 	url = https://www.openfhe.org/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = openfhe-development-git
 	depends = gperftools
 	depends = ntl
 	depends = openmp
-	provides = openfhe=1.1.3
-	provides = openfhe-development=1.1.3
+	provides = openfhe=1.2.3
+	provides = openfhe-development=1.2.3
 	conflicts = openfhe
 	conflicts = openfhe-development
 	source = git+https://github.com/openfheorg/openfhe-development.git
