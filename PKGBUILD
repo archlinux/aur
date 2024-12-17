@@ -3,7 +3,7 @@
 pkgname=perl-authen-webauthn
 _cpanname=Authen-WebAuthn
 _module=Authen::WebAuthn
-pkgver=0.004
+pkgver=0.005
 pkgrel=1
 pkgdesc="A library to add Web Authentication support to server applications"
 arch=('any')
@@ -16,7 +16,7 @@ options=('!emptydirs')
 source=(
     "https://cpan.metacpan.org/authors/id/M/MB/MBESSON/$_cpanname-$pkgver.tar.gz"
 )
-sha256sums=('b465056a4b751cd3c2d6c5076de8540d83fbe3dc15eb6f419b64b70f72c2cab8')
+sha256sums=('d583bf5dacb4fef19379ab24348bfea230cca97c4e078e1836ad0a421200014e')
 
 build() {
     cd "$srcdir/$_cpanname-$pkgver"
