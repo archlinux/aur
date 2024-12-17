@@ -1,3 +1,5 @@
+# Maintainer: Jamison Lahman <jamison@lahman.dev>
+
 pkgname=nature-sounds
 pkgver=0.1.1
 pkgrel=2
