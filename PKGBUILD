@@ -7,7 +7,7 @@ pkgrel="1"
 pkgdesc="Reimplementation of OpenVR, translating calls to OpenXR."
 arch=("x86_64")
 url="https://gitlab.com/znixian/OpenOVR"
-license=("GPL3")
+license=("GPL-3.0-or-later")
 depends=(
   "vulkan-icd-loader"
   "glm"
