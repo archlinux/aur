@@ -2,7 +2,7 @@
 # Maintainer: Steffen Vogel <post@steffenvogel.de>
 
 pkgname='cunicu-bin'
-pkgver=0.5.70
+pkgver=0.5.71
 pkgrel=1
 pkgdesc='A zeroconf peer-to-peer mesh VPN using Wireguard® and Interactive Connectivity Establishment (ICE)'
 url='https://cunicu.li'
@@ -12,17 +12,17 @@ provides=('cunicu')
 conflicts=('cunicu')
 optdepends=('bash-completion: for shell completions' 'wireguard-tools: for controlling WireGuard interfaces')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/cunicu/cunicu/releases/download/v0.5.70/cunicu_0.5.70_linux_arm64.tar.gz")
-sha256sums_aarch64=('1178e2f6c375f85d55754628b4a1943c45d904baff3020718592e4d68f9ddfaa')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/cunicu/cunicu/releases/download/v0.5.71/cunicu_0.5.71_linux_arm64.tar.gz")
+sha256sums_aarch64=('3a030ee5c7555b25cab66e949fb5c8518751e65eeebd4a678ea5d7a3fbd5bba3')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/cunicu/cunicu/releases/download/v0.5.70/cunicu_0.5.70_linux_armv7.tar.gz")
-sha256sums_armv7h=('e8ff56e4b856dce912b00f8c14f8e891227c534197aa32fb4a4d4d46247fdaa8')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/cunicu/cunicu/releases/download/v0.5.71/cunicu_0.5.71_linux_armv7.tar.gz")
+sha256sums_armv7h=('fb739a281da288a4d1ecc88f75714a500e0665d61beb69df37dd66ff88dae0c5')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/cunicu/cunicu/releases/download/v0.5.70/cunicu_0.5.70_linux_386.tar.gz")
-sha256sums_i686=('93ee6accb2e8f683fb9d4fecb93723dd4eaf5d4e983f1f6e0e22e5c444910c13')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/cunicu/cunicu/releases/download/v0.5.71/cunicu_0.5.71_linux_386.tar.gz")
+sha256sums_i686=('f6db545b27c069abf4c066ed6bc41d6c737cb576bc07c92ffda6f61ead031228')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cunicu/cunicu/releases/download/v0.5.70/cunicu_0.5.70_linux_amd64.tar.gz")
-sha256sums_x86_64=('5c6c307125d13f3bacf447a3c3f2e0e8fd94236c877f18199076cb68d508c364')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cunicu/cunicu/releases/download/v0.5.71/cunicu_0.5.71_linux_amd64.tar.gz")
+sha256sums_x86_64=('7279b4095eaceb38b8f5e38429ad6fa7cab70a039a1e31457fb91d8339b6eb40')
 
 package() {
   # bin
