@@ -9,6 +9,7 @@ pkgdesc='The Jule Programming Language Code Formatter'
 arch=('x86_64' 'aarch64' 'i386')
 url="https://github.com/${_pkgname}lang/$__pkgname"
 license=('BSD-3-Clause')
+groups=('jule')
 source=("git+$url.git")
 sha256sums=('SKIP')
 depends=('gcc-libs')

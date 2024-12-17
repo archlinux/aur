@@ -6,6 +6,7 @@ pkgbase = julefmt-git
 	arch = x86_64
 	arch = aarch64
 	arch = i386
+	groups = jule
 	license = BSD-3-Clause
 	makedepends = julec-git
 	makedepends = git
