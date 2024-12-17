@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2024-01-14.
+# PKGBUILD last time manually edited: At least on 2024-12-17.
 
 url="https://www.inprop.eu/Home/Downloads"
 _pkgver() {
