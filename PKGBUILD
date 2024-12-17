@@ -9,19 +9,13 @@ arch=("x86_64")
 url="https://gobies.org/"
 license=('unknown')
 options=("!strip" "!debug")
-depends=(
-	"atk"
-	"gtk3"
-	"libpcap"
-)
-makedepends=(
-	"libcap"
-	)
+depends=("atk" "gtk3" "libpcap")
+makedepends=("libcap")
 source=(
 	"https://$_pkgname-storage-public.oss-cn-beijing.aliyuncs.com/$pkgver/$_pkgname-linux-x64-$pkgver-Community.zip"
 	"$pkgname.desktop"
 	"$pkgname.png"
-	)
+)
 sha256sums=(
 	'9129eeaa23391750a1525d1201c4c64470503a08bf1afa003fbf04e965c72aa6'
 	'0624f9c1aa7377ccb5bd6b6a54a3dbea3cdd1a1e838a154c73bd01d22ff5fc3f'
@@ -33,7 +27,6 @@ prepare() {
 }
 
 package() {
-#	cd $srcdir/$pkgname
 
 	install -d $pkgdir/{opt/$pkgname,usr/bin}
 	mv ./$_pkgname-linux-x64-$pkgver/* $pkgdir/opt/$pkgname
