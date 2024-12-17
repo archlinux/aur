@@ -1,6 +1,6 @@
 pkgbase = python-markitdown-git
 	pkgdesc = Utility tool for converting various files to Markdown (git)
-	pkgver = r33+g81e3f24ac
+	pkgver = r92+g77f620b56
 	pkgrel = 1
 	url = https://github.com/microsoft/markitdown
 	arch = any
