@@ -1,5 +1,5 @@
 pkgname=ffplayout-git
-pkgver=r3160.63ec9e13
+pkgver=0.24.4
 pkgrel=1
 pkgdesc="24/7 playout based on rust and ffmpeg"
 arch=('x86_64')
