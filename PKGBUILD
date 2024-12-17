@@ -1,24 +1,21 @@
-# Maintainer: Christopher Snowhill <kode54@gmail.com>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: Christopher Snowhill <kode54@gmail.com>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=eos_portable_archive
 pkgver=5.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A portable binary archive to be used with boost::serialization"
 arch=('any')
 url="https://epa.codeplex.com/"
-license=('custom')
+license=('BSL-1.0')
 depends=('boost')
-source=("http://web.archive.org/web/20210630011224/https://codeplexarchive.blob.core.windows.net/archive/projects/epa/epa.zip")
-sha256sums=('8db1d984bb6be6571cea2caf52f8dfcd421b607f3d35384544376d5645dcd482')
-
-prepare() {
-  bsdtar xf sourceCode/sourceCode.zip
-}
+source=("https://github.com/daldegam/eos-portable-archive/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('c0aec98afc77affb3654c691ccf1128c938ebb46813cf753627f0e13c21fd734')
 
 package() {
-  install -d -m755 "$pkgdir/usr/include/eos"
-  install -m644 eos/* "$pkgdir/usr/include/eos/"
-
-  # copy boost license from filesystem
-  install -D -m644 /usr/share/licenses/boost/* "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/eos-portable-archive-${pkgver}/eos"
+  for file in *.hpp;
+  do
+	install -Dm644 $file "$pkgdir/usr/include/eos/$file"
+  done
 }
