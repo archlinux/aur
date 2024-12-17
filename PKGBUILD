@@ -1,9 +1,9 @@
-# Maintainer: Yauheni Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
+# Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
 # shellcheck disable=SC2001,SC2034,SC2154 shell=bash
 
 _pkgname=pikaur
 pkgname="${_pkgname}-git"
-pkgver=1.30.3
+pkgver=1.31
 pkgrel=1
 pkgdesc="AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay."
 arch=('any')
