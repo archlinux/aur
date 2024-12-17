@@ -15,7 +15,7 @@ provides=('microsoft-edge-beta' 'edge-beta')
 conflicts=('microsoft-edge-beta' 'edge-beta' 'edge-beta-bin' 'edge')
 depends=('gtk3' 'libcups' 'nss' 'alsa-lib' 'libxtst' 'libdrm' 'mesa')
 makedepends=('imagemagick')
-optdepends=('libpipewire02: WebRTC desktop sharing under Wayland'
+optdepends=('libpipewire: WebRTC desktop sharing under Wayland'
             'kdialog: for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet'
