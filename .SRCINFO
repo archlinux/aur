@@ -6,6 +6,7 @@ pkgbase = perl-crypt-urandom
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	makedepends = perl-test-pod
 	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/D/DD/DDICK/Crypt-URandom-0.40.tar.gz

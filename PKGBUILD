@@ -11,7 +11,7 @@ arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
-makedepends=()
+makedepends=('perl-test-pod')
 url="https://metacpan.org/release/$_cpanname"
 source=("http://search.cpan.org/CPAN/authors/id/D/DD/DDICK/$_cpanname-$pkgver.tar.gz")
 md5sums=('4ecfd3776faf0b3eb2bef2a886a88843')
@@ -32,7 +32,7 @@ build() {
 
 check() {
     cd "$srcdir/$_cpanname-$pkgver"
-    export PERL_MM_USE_DEFAULT=1 PERL5LIB="" make test
+    PERL_MM_USE_DEFAULT=1 PERL5LIB="" make test
 }
 
 package() {
