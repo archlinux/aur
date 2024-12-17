@@ -55,6 +55,7 @@ source=("git+$url.git#commit=${_mozc_commit}"
         # MeCab-ipadic-Neologd https://github.com/neologd/mecab-ipadic-neologd
         https://github.com/phoepsilonix/mecab-ipadic-neologd/raw/refs/heads/master/seed/mecab-user-dict-seed.20200910.csv.xz
         LICENSE-MeCab-ipadic-Neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
+        fcitx5.tar.xz
         )
 
 sha512sums=('f99941f0dda8080a4c3fbf2ce9f7009b5043e4b80bef33fb873bd9ff174de2f9f587632cbb32d5cee680e043b35fca60ed70c6eb544f2b0fb518d2d37906e798'
@@ -74,7 +75,8 @@ sha512sums=('f99941f0dda8080a4c3fbf2ce9f7009b5043e4b80bef33fb873bd9ff174de2f9f58
             '3bdbda066130043e2e6403a8196a13b78a35313fc8797769eb8f76033349f420c68ac50a3e0604836c2cb577179f3e123af64a4e45aa05d14575f46707383d28'
             '44b228264547c4628599b5888bd177dc3ddb845094a0acebcd3d7d7665e2cda8861f7210f80f0f40531f46581f565aab3489a6a2ff3aa75c058d552b23ea8d6e'
             '5f3aa91974d7ef5633a013effb7acf729cec7d096b4740ceb9915fe7df10e2e45d0d76ffc2d36f1e16d322e7b3974653601a79b6ada05371de8fc7e80af14644'
-            '77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4')
+            '77a8c1d76a53627f8680f761f9c996b04e6b609bdb813cb5aedc7f8214d9b5f13aea53788814029f6f1e263c50ecb58feb5999e95d51fe7e4707b6a913d4bbe4'
+            'ea7155d638d0828c57382c9e0f9be4238af2029eeb0d48cfa99a9f2b4eb1441704846d06f1555a3dcb2ca9277a23031baabb103a386dada2bf41406d67121e45')
 
 pkgver() {
   cd "${srcdir}/mozc" || exit
@@ -213,6 +215,7 @@ package_fcitx5-mozc-with-jp-dict() {
   replaces=('fcitx5-mozc')
   provides=("fcitx5-mozc=${pkgver}")
   conflicts=('fcitx-mozc' 'fcitx5-mozc' 'fcitx' 'fcitx-qt5' 'fcitx-qt6' 'ibus-mozc')
+  install=fcitx5-mozc.install
 
   export PREFIX="$pkgdir/usr"
   export _bldtype
@@ -220,6 +223,10 @@ package_fcitx5-mozc-with-jp-dict() {
   install_mozc-with-jp-dict-common
   ../scripts/install_server_bazel
   ../scripts/install_fcitx5_bazel
+  install -D -m 644 ${srcdir}/fcitx5/profile                  "$pkgdir/usr/share/fcitx5-mozc/fcitx5/profile"
+  install -D -m 644 ${srcdir}/fcitx5/conf/notifications.conf  "$pkgdir/usr/share/fcitx5-mozc/fcitx5/conf/notifications.conf"
+  install -D -m 644 ${srcdir}/fcitx5/conf/waylandim.conf      "$pkgdir/usr/share/fcitx5-mozc/fcitx5/conf/waylandim.conf"
+  install -D -m 644 ${srcdir}/fcitx5/conf/xim.conf            "$pkgdir/usr/share/fcitx5-mozc/fcitx5/conf/xim.conf"
 }
 
 package_ibus-mozc-with-jp-dict() {

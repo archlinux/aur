@@ -1,0 +1,14 @@
+post_install() {
+  if [ ! -e /etc/skel/.config/fcitx5/profile ]; then
+      install -D -m 644 /usr/share/fcitx5-mozc/fcitx5/profile /etc/skel/.config/fcitx5/profile
+  fi
+  if [ ! -e /etc/skel/.config/fcitx5/conf/notifications.conf ]; then
+      install -D -m 644 /usr/share/fcitx5-mozc/fcitx5/conf/notifications.conf /etc/skel/.config/fcitx5/conf/notifications.conf
+  fi
+  if [ ! -e /etc/skel/.config/fcitx5/conf/waylandim.conf ]; then
+      install -D -m 644 /usr/share/fcitx5-mozc/fcitx5/conf/waylandim.conf /etc/skel/.config/fcitx5/conf/waylandim.conf
+  fi
+  if [ ! -e /etc/skel/.config/fcitx5/conf/xim.conf ]; then
+      install -D -m 644 /usr/share/fcitx5-mozc/fcitx5/conf/xim.conf /etc/skel/.config/fcitx5/conf/xim.conf
+  fi
+}
