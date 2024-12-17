@@ -76,8 +76,8 @@ source=(
 )
 sha256sums=(
   '2d165a723cdc8d8cbfea185a346bd82b1a20371485ba166943de198f3968ee5e'
-  '4598e7782117dccda0620e0cfff1bd7feed9c4984c7254a969ae935ab5a771ef'
-  '20d863cc4bf1929b2b84520e5f19f3e6eee65da7ec865461bbc70d5ad7fc8ba2'
+  '3c64fe1372b2d5fb84b2bb9c5db767c554242bc35d241236150e36ad8e58668b'
+  '520a9651999d94b63101b174816518b9dbc60b444e09f4cb04a97cf6dac185ef'
   'b89e6201c76572de9783921865567a1c4b24b9fb2ab7b968ba6a22114f255592'
 )
 
@@ -110,6 +110,11 @@ prepare() {
   echo "Setting version..."
   echo "${pkgbase#linux}" > localversion.10-pkgname
   echo "-$pkgrel" > localversion.20-pkgrel
+
+  # when we repeat build something
+  rm scripts/kconfig/conf scripts/mod/modpost scripts/mod/mk_elfconfig \
+     scripts/dtc/dtc scripts/dtc/fdtoverlay scripts/basic/fixdep \
+     scripts/asn1_compiler scripts/kallsyms scripts/sorttable || :
 
   echo "Setting config..."
   cp ../config .config

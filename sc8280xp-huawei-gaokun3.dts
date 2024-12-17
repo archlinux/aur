@@ -42,7 +42,7 @@
 
 		framebuffer0: framebuffer@c6200000 {
 			compatible = "simple-framebuffer";
-			reg = <0x0 0xC6200000 0x0 0x02400000>;
+			reg = <0x0 0xc6200000 0x0 (2560*1600*4)>;
 			width = <1600>;
 			height = <2560>;
 			stride = <(1600 * 4)>;
@@ -720,7 +720,7 @@
 	data-lanes = <0 1>;
 	remote-endpoint = <&usb_1_qmpphy_dp_in>;
 };
-
+/*
 &mdss0_dsi0 {
 	vdda-supply = <&vreg_l3b>;
 
@@ -798,7 +798,7 @@
 
 	status = "okay";
 };
-
+*/
 &pcie2a {
 	perst-gpios = <&tlmm 143 GPIO_ACTIVE_LOW>;
 	wake-gpios = <&tlmm 145 GPIO_ACTIVE_LOW>;
