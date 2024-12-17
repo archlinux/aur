@@ -2,7 +2,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-crypt-urandom'
-pkgver='0.36'
+_cpanname=Crypt-URandom
+pkgver='0.40'
 pkgrel='1'
 pkgdesc="Provide non blocking randomness"
 arch=('any')
@@ -10,11 +11,10 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='https://metacpan.org/release/Crypt-URandom'
-source=('http://search.cpan.org/CPAN/authors/id/D/DD/DDICK/Crypt-URandom-0.36.tar.gz')
-md5sums=('d19cdb64e3db13fdf32542c51eaaa79c')
-sha512sums=('59e6773d808f34f242f2520ed236faeed804d623fbcf4f1b8e7b39ed215ff1cde9f76ce4a9f5f260dfac42b036229a56cdb49a7f6856d5e943ed4d50e3392adc')
-_distdir="Crypt-URandom-0.36"
+url="https://metacpan.org/release/$_cpanname"
+source=("http://search.cpan.org/CPAN/authors/id/D/DD/DDICK/$_cpanname-$pkgver.tar.gz")
+md5sums=('4ecfd3776faf0b3eb2bef2a886a88843')
+sha512sums=('2cf332148f46599388438b4aa8d47ec7da1f8cf5b8b59cc6ca41477b39fc0f0b957a643dc0c539b353c4296775ec0faf2a9bb2217ed71b76a476f68520d4cf0f')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -23,21 +23,21 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd "$srcdir/$_cpanname-$pkgver"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd "$srcdir/$_cpanname-$pkgver"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "$srcdir/$_cpanname-$pkgver"
   make install
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
