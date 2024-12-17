@@ -4,7 +4,7 @@ pkgname='concrnt-activitypub-bin'
 pkgdesc='Concrnt ActivityPub bridge module'
 pkgver=0.3.1
 _pkgver=v${pkgver}
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'aarch64')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
@@ -42,7 +42,7 @@ package() {
   depends=('concrnt-gateway')
   backup=('etc/concrnt/config/apconfig.yaml')
 
-  install -Dm755 "${srcdir}/ccactivitypub-${arch}-${pkgver}" "${pkgdir}/usr/bin/ccactivitypub"
+  install -Dm755 "${srcdir}/ccactivitypub-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/ccactivitypub"
   install -Dm644 "${srcdir}/concrnt-activitypub.service" "${pkgdir}/usr/lib/systemd/system/concrnt-activitypub.service"
   install -Dm644 "${srcdir}/concrnt-activitypub.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/concrnt-activitypub.conf"
   install -Dm644 "${srcdir}/concrnt-activitypub.hook" "${pkgdir}/usr/share/libalpm/hooks/concrnt-activitypub.hook"
