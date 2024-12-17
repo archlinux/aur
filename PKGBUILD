@@ -2,7 +2,7 @@
 # Contributor: Frédéric Tobias Christ <dev+mautrix-signal@ntr.li> <ftchrist:matrix.org>
 pkgname='mautrix-signal'
 _name='signal'
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="A Matrix-Signal puppeting bridge (go rewrite)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=(
   'go'
-  'libsignal-ffi=0.62.0' # AUR
+  'libsignal-ffi=0.64.1' # AUR
 )
 backup=(
   "etc/${pkgname}/config.yaml"
@@ -28,10 +28,10 @@ source=(
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
 )
-sha256sums=('34c39e3b4903330a818c1e267ef5174a24483af64e967690e9546881e2f7e6f0'
+sha256sums=('04080ec359982b8e6fb240102ad45c4a57f266bc4ffefe7429fa80a272e720bc'
             'e9a6a88f7b08fa00b354c3d50ded995f5578e6a6b75b96988cc2b27432575ded'
             'b47c0829a9f285e0a4bd7852e601f325e1fa8385ea96eaa92cad204c0e583adf'
-            '5badc8727dfbf4531f93e86ae475c64753952ee60090a043be22b9dd9a124ca5')
+            '6bd18a77b692c79ca62d40fb430d780fb5f01c16c9ec4a19e139a733b7cc7a1f')
 
 prepare() {
   cd "${srcdir}/${_name}-${pkgver}"
@@ -61,6 +61,7 @@ package() {
   install -Dvm 644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dvm 644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
+  install -dm 750 "${pkgdir}/etc/$pkgname"
   install -Dvm 640 "config.yaml" "${pkgdir}/etc/${pkgname}/config.yaml"
   touch 'registration.yaml'
   install -Dvm 640 'registration.yaml' "${pkgdir}/etc/${pkgname}/registration.yaml"

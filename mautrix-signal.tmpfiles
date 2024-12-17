@@ -1,3 +1,2 @@
 # Type Path               Mode User           Group          Age Argument
-z /etc/mautrix-signal/*   740  mautrix-signal mautrix-signal -   -
 d /var/lib/mautrix-signal 700  mautrix-signal mautrix-signal -   -
