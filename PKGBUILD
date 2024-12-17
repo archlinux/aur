@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/jmelahman/nature-sounds"
 license=('MIT')
 depends=('alsa-utils')
-makedepends=('go', 'git')
+makedepends=('go' 'git')
 _commit='a77f82f612ce5bc2b9306b0ad6d32bbfaae44f10'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
