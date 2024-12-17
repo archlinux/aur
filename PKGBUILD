@@ -16,7 +16,7 @@ sha256sums=('c550f519e53f77cbe34a221b9b893c4810a5072cd2f31d830f2e395769ad4cf6')
 package() {
     install -d "${pkgdir}/usr/bin"
     mv "${srcdir}/tailwindcss-extra-linux-x64" "${srcdir}/tailwindcss"
-    install -m 755 tailwindcss "${pkgdir}/usr/bin/"
+    install -m 755 tailwindcss-extra "${pkgdir}/usr/bin/"
     chmod +x "${pkgdir}/usr/bin/tailwindcss"
 }
 
