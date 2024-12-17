@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-shippinglabel
-pkgver=1.7.1
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='Utilities for handling Python packages'
 arch=('any')
 url='https://shippinglabel.readthedocs.io/'
@@ -26,14 +26,17 @@ makedepends=(
 )
 #checkdepends=('')
 #optdepends=('')
-_commit='bd8f77743ab3749631f947d61dd46dd4bb430ea1'
-source=("$pkgname::git+https://github.com/domdfcoding/shippinglabel#commit=$_commit")
-b2sums=('SKIP')
+source=("$pkgname::git+https://github.com/domdfcoding/shippinglabel#tag=v$pkgver")
+sha512sums=('4b2a14a98b6ff90e0381ca6e7a5589b889308f70142d731cb119ae6a524364dd1c946732c7f51ac896c3888b16b6edaa6bb0c8f3172e2ea301bd75cf6684c312')
+b2sums=('f309f4b3a2bb9f3a41bbbd91b6410fbf4a6993666396b54bac579e6179299c0e2b50920eb39cd85018846b9b2e1a5f9ac0612b3c1325ffc7a3d3a540d82fc151')
 
-pkgver() {
+prepare() {
   cd "$pkgname"
 
-  git describe --tags | sed 's/^v//'
+  # remove version constraints
+  sed \
+    -e 's/^requires = \[.*/requires = \[ "setuptools", "wheel" \]/' \
+    -i pyproject.toml
 }
 
 build() {
