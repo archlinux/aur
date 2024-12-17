@@ -1,18 +1,27 @@
 pkgbase = python-js2py
-	pkgdesc = JavaScript to Python translator & JavaScript interpreter written in 100% pure Python
-	pkgver = 0.58
+	pkgdesc = JavaScript to Python Translator & JavaScript interpreter written in 100% pure Python
+	pkgver = 0.74
 	pkgrel = 1
 	url = https://github.com/PiotrDabkowski/Js2Py
 	arch = any
 	license = MIT
+	checkdepends = npm
+	checkdepends = python-numpy
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-tzlocal
+	makedepends = python-wheel
+	depends = python
 	depends = python-pyjsparser
 	depends = python-six
-	depends = python-tzlocal
-	source = https://files.pythonhosted.org/packages/source/J/Js2Py/Js2Py-0.58.tar.gz
-	source = https://raw.githubusercontent.com/PiotrDabkowski/Js2Py/master/LICENSE.md
-	sha256sums = 12b1104cba668203151b76f295875888423f0111f8bb98f6d5330f7f67842fd1
-	sha256sums = e477271a50c40c9ac3ad56d02e70c7d7d97f66c7326cf524d13b12f8842cc4e9
+	optdepends = python-tzlocal: for local timezone support
+	source = js2py::git+https://github.com/PiotrDabkowski/Js2Py.git#commit=2e017b86e2f18a6c8a842293b1687f2ce7baa12e
+	source = js2py-pr293-opt-tzlocal.patch::https://github.com/PiotrDabkowski/Js2Py/pull/293.patch
+	source = js2py-pr327-python3.12.patch::https://github.com/PiotrDabkowski/Js2Py/pull/327.patch
+	sha256sums = b362565354ffbcf4f4cc40fde179aa2abde7804572e2e4621416b21b686ca6b6
+	sha256sums = ff357bb24e7ad1b278fb39e7605054df815d2f589e55bf745e4262de84aa0839
+	sha256sums = 710213cea46804a949db7d655a539939d014fa9e34ae3e4c0358678cd14e6893
 
 pkgname = python-js2py
-
