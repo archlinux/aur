@@ -8,10 +8,10 @@ arch=("x86_64")
 url="https://github.com/Zagrios/bs-manager"
 license=('GPL')
 depends=()
-makedepends=('git' 'nodejs>=22')
+makedepends=('git' 'npm' 'nodejs>=22')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-options=('!strip') # DepotDownloader gets broken without this
+options=('!strip') # DepotDownloader breaks without this
 source=(
   'git+https://github.com/Zagrios/bs-manager.git'
   "${pkgname%-git}.desktop"
