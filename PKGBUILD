@@ -40,8 +40,4 @@ package() {
     make install
 }
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+# vim:set ts=4 sw=4 expandtab:
