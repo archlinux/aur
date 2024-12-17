@@ -57,5 +57,5 @@ build() {
 package() {
   install -Dm755 \
     "${srcdir}/${pkgname}/build/bin/linux64/vrclient.so" \
-    "${pkgdir}/usr/share/opencomposite/bin/linux64/vrclient.so"
+    "${pkgdir}/opt/opencomposite/bin/linux64/vrclient.so"
 }
