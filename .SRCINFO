@@ -1,7 +1,7 @@
 pkgbase = vdr-sleeptimer
 	pkgdesc = Shutdown, mute or execute a custom command after a configurable timespan
 	pkgver = 0.8.3
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/vdr-projects/vdr-plugin-sleeptimer
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = vdr-sleeptimer
 	arch = armv7h
 	license = GPL2
 	depends = gcc-libs
-	depends = vdr-api=2.6.7
+	depends = vdr-api=5
 	backup = etc/vdr/conf.avail/50-sleeptimer.conf
 	source = vdr-sleeptimer-0.8.3.tar.gz::https://github.com/vdr-projects/vdr-plugin-sleeptimer/archive/refs/tags/0.8.3.tar.gz
 	source = 50-sleeptimer.conf
