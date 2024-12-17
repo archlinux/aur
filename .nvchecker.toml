@@ -1,0 +1,4 @@
+[protoc-gen-go-bin]
+source = "git"
+git = "https://github.com/protocolbuffers/protobuf-go.git"
+prefix = "v"
