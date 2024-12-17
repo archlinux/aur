@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2023-09-04.
+# PKGBUILD last time manually edited: At least on 2024-12-17.
 url="https://chaps.cz/eng/download/idos/zip#kotvamap"
 _zipfile="VLAK_M.ZIP"
 _pkgver() {
@@ -13,7 +13,7 @@ pkgname="${_pkgname}-latest"
 epoch=0
 _pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
 pkgver="${_pkgver}"
-pkgrel=3
+pkgrel=1
 pkgdesc="Map data for the timetable search engines by CHAPS: European railway."
 arch=(any)
 license=('custom')
