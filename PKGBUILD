@@ -1,8 +1,8 @@
-# Maintainer:
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 
 pkgname=ripsecrets
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line tool to prevent committing secret keys into your source code'
 arch=('x86_64')
 url='https://github.com/sirwart/ripsecrets'
@@ -10,31 +10,37 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
 options=('!lto')
-_commit='bffab8f67a008e845108f037eb9bf7e9c52da54f'
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4d7209605d3babde73092fed955628b0ecf280d8d68633b9056d2f859741109d')
+_commit='033ec5192b738b6712701be920cba545c2775050'
+source=("$pkgname::git+$url.git#commit=$_commit")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname" || exit
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver" || exit
+  cd "$pkgname" || exit
 
   # download dependencies
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver" || exit
+  cd "$pkgname" || exit
 
   cargo build --frozen --release
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver" || exit
+  cd "$pkgname" || exit
 
   cargo test --frozen
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver" || exit
+  cd "$pkgname" || exit
 
   # binary
   install -vDm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
