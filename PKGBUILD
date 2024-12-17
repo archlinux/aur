@@ -3,7 +3,7 @@
 
 pkgname=python-visca-over-ip
 gitname="VISCA-IP-Controller"
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Python code for controlling PTZ cameras using VISCA commands over a local network."
 arch=('any')
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/misterhay/${gitname}/ar
 # source=("${gitname}"::git+https://github.com/misterhay/VISCA-IP-Controller.git#commit=d2ef661)
 
 #Upstream tar.gz
-sha512sums=('0fa84bcd14d4a52daf4e2b70cc59776e58f54d737fa94eba915e2c38fb0f7ef7953e8d2380febe9f80812b0dd7a4ae6ca2c7bdfb6568c781fca9caa4d68073b9')
+sha512sums=('08870a85d6786d0f8984d41b488740d66544535dde528da97c38f776367a78bff6eecd8e8b6fde641bafdb8fb1966a24a525073ab8b7925e7dbf82ccfe82c14a')
 #sha512sums=('SKIP')
 
 build() {
