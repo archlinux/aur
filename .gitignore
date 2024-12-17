@@ -6,3 +6,4 @@ src/
 *.pkg.tar.zst
 *.jar
 *.part
+http_cookies
