@@ -3,7 +3,7 @@
 
 pkgname=mail-deduplicate
 _pkgname=mail_deduplicate
-pkgver=7.6.0
+pkgver=7.6.1
 pkgrel=1
 pkgdesc='Command-line tool to deduplicate mails from a set of boxes'
 arch=(any)
@@ -16,7 +16,7 @@ replaces=(maildir-deduplicate)
 conflicts=(maildir-deduplicate)
 provides=(maildir-deduplicate)
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=(d7eb0ea2f14db707c0f566f1f8222ebae51398387b9601ab0db99c4472a0f6f7)
+sha256sums=(48b9c955045838c342cb5c5f57ca1a8456e6d597a72464237a86d6aff8d3ad42)
 
 build() {
   cd $_pkgname-$pkgver
