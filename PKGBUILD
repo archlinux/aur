@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-consolekit
-pkgver=1.6.0
-pkgrel=3
+pkgver=1.7.2
+pkgrel=1
 pkgdesc='Additional utilities for click'
 arch=('any')
 url='https://consolekit.readthedocs.io/'
@@ -25,15 +25,9 @@ makedepends=(
 optdepends=(
   'python-psutil: better terminal support'
 )
-_commit='1c17c55214c9e24652e93ba1ab4e6bf5ff94fe30'
-source=("$pkgname::git+https://github.com/domdfcoding/consolekit#commit=$_commit")
-b2sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
+source=("$pkgname::git+https://github.com/domdfcoding/consolekit#tag=v$pkgver")
+sha512sums=('9f7973b41b2a59c95206661018ed7bb1e1b46643f4e1048d1ffb45f7f45963e35545c85ca0d11c5f649605b559f9e4d302deeea52a8bb4130a8cb32786713bc9')
+b2sums=('fecc6cf1f19545c79f0d35487403e6f2134df26e4b2080fcb4352dda7668ecb1c72b8d139d8e52d221f05d6a07bbd86ba19b9ac4bfb9492c1d03b318621732d6')
 
 build() {
   cd "$pkgname"
@@ -46,9 +40,6 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  # symlink license file
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -d "$pkgdir/usr/share/licenses/$pkgname"
-  ln -s "$site_packages/${pkgname#python-}-$pkgver.dist-info/licenses/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # license
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
