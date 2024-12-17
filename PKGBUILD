@@ -20,12 +20,8 @@ sha512sums=('2cf332148f46599388438b4aa8d47ec7da1f8cf5b8b59cc6ca41477b39fc0f0b957
 build() {
     cd "$srcdir/$_cpanname-$pkgver"
     (
-        export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                   \
-            PERL_AUTOINSTALL=--skipdeps                            \
-            PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-            MODULEBUILDRC=/dev/null
-
-        /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+        export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+        perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
         make
     )
 }
