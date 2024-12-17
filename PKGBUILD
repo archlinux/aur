@@ -2,7 +2,7 @@
 pkgname=flippen-browser
 pkgver=1.0
 pkgrel=1
-pkgdesc="A simple web browser built with PyQt5 and QtWebEngine"
+pkgdesc="A simple web browser"
 arch=('x86_64')
 url="https://github.com/SergeyDash/flippen-browser"
 license=('GPL3')

@@ -1,5 +1,5 @@
 pkgbase = flippen-browser
-	pkgdesc = A simple web browser built with PyQt5 and QtWebEngine
+	pkgdesc = A simple web browser
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/SergeyDash/flippen-browser
