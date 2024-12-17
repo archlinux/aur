@@ -1,7 +1,7 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=ollama-rocm-git
-pkgver=0.4.8.git+aed1419c
+pkgver=0.5.3.git+2cde4b88
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
 arch=(aarch64 x86_64)
@@ -26,7 +26,7 @@ pkgver() {
   local _tag="$(git describe --tags --abbrev=0)"
   local _hash="$(git rev-parse --short HEAD)"
   _tag="${_tag%-*}"
-  echo "${_tag##v}.git+$_hash"
+  echo "${_tag##v}.git+${_hash}"
 }
 
 build() {
@@ -37,10 +37,10 @@ build() {
   export OLLAMA_SKIP_CUDA_GENERATE=on
 
   cd ollama
-  sed -i 's/gfx900 gfx940 gfx941 gfx942 gfx1010 gfx1012 gfx1030 gfx1100 gfx1101 gfx1102/gfx1030 gfx1100 gfx1101/g' llama/make/Makefile.rocm
-  sed -i 's/gfx906:xnack- gfx908:xnack- gfx90a:xnack+ gfx90a:xnack-//g' llama/make/Makefile.rocm
+  sed -i 's/gfx900 gfx940 gfx941 gfx942 gfx1010 gfx1012 gfx1030 gfx1100 gfx1101 gfx1102/gfx1030 gfx1100 gfx1101/g' make/Makefile.rocm
+  sed -i 's/gfx906:xnack- gfx908:xnack- gfx90a:xnack+ gfx90a:xnack-//g' make/Makefile.rocm
 
-  go generate ./...
+  make dist
   go build .
 }
 
@@ -50,8 +50,7 @@ package() {
 
   install -Dm755 ollama/ollama ${pkgdir}/usr/bin/ollama
   install -Dm644 ollama/LICENSE ${pkgdir}/usr/share/licenses/ollama/LICENSE
-  install -Dm755 ollama/dist/linux-amd64/lib/ollama/libggml_rocm.so ${pkgdir}/usr/lib/ollama/
-  cp -r ollama/dist/linux-amd64/lib/ollama/runners ${pkgdir}/usr/lib/ollama/
+  cp -r ollama/dist/linux-amd64/lib/ollama/runners/rocm* ${pkgdir}/usr/lib/ollama/runners
 
   install -Dm644 ollama.service ${pkgdir}/usr/lib/systemd/system/ollama.service
   install -Dm644 sysusers.conf ${pkgdir}/usr/lib/sysusers.d/ollama.conf
