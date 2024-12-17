@@ -1,6 +1,6 @@
 # Maintainer: Fleuria <fleuria at posteo dot co>
 pkgname=uki-profilify
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Multi-profile UKI creation helper"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=('tar')
 optdepends=('mkinitcpio: automatically create UKIs')
 options=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c268d6ecd5fdb196bf5162da064bbf4bed63d7c78d102135f85c2be4a0b5732d')
+sha256sums=('38a237922c6f05fbb32e6ff71b517f2b9e1554ac4d308326adf362f0084cd338')
 
 package() {
 	cd "$pkgname-$pkgver"

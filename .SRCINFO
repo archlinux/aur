@@ -1,6 +1,6 @@
 pkgbase = uki-profilify
 	pkgdesc = Multi-profile UKI creation helper
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/fleuriafluoride/uki-profilify
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = uki-profilify
 	depends = python
 	depends = systemd-ukify>=257
 	optdepends = mkinitcpio: automatically create UKIs
-	source = uki-profilify-0.1.3.tar.gz::https://github.com/fleuriafluoride/uki-profilify/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = c268d6ecd5fdb196bf5162da064bbf4bed63d7c78d102135f85c2be4a0b5732d
+	source = uki-profilify-0.1.4.tar.gz::https://github.com/fleuriafluoride/uki-profilify/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 38a237922c6f05fbb32e6ff71b517f2b9e1554ac4d308326adf362f0084cd338
 
 pkgname = uki-profilify
