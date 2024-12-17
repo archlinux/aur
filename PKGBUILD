@@ -2,15 +2,15 @@
 # https://github.com/adamperkowski/PKGBUILDs
 pkgname=rawbit
 pkgver=0.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc='A camera RAW photo preprocessor and importer'
 arch=('x86_64')
 url="https://github.com/cartercanedy/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('3da1d199335149dcb73352aef3f6ab8b8e00e94e5671c644c9b5619ad4246a56')
-makedepends=('rustup' 'glibc' 'gcc-libs')
-depends=('libraw')
+makedepends=('rustup')
+depends=('libiconv' 'gcc-libs')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
