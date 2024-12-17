@@ -1,22 +1,21 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="vault-unseal"
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Auto-unseal utility for Hashicorp Vault"
-arch=('any')
+arch=('x86_64' 'aarch64' 'armv6h')
 url="https://github.com/lrstanley/${pkgname}"
 license=('MIT')
-makedepends=('go')
 depends=('glibc')
+makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a1834741774536de5a73425ba0f6e1ecd8f5c6beaf905def3b7067264c51507d')
+sha256sums=('786fc8037376c7f3e1ac8c44927d97713ab15c7148146ae9cbd890fb0dd1d261')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build"
-  go mod download
 }
 
 build() {
@@ -31,7 +30,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

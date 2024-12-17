@@ -1,0 +1,4 @@
+[vault-unseal]
+source = "git"
+git = "https://github.com/lrstanley/vault-unseal.git"
+prefix = "v"
