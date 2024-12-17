@@ -1,17 +1,17 @@
 pkgbase = canu
 	pkgdesc = A fork of the Celera Assembler designed for high-noise single-molecule sequencing
-	pkgver = 2.2
-	pkgrel = 2
+	pkgver = 2.3
+	pkgrel = 1
 	url = https://canu.readthedocs.io/
 	arch = i686
 	arch = x86_64
-	license = custom
-	depends = glibc
+	license = LicenseRef-canu
+	depends = gcc-libs
 	depends = java-runtime
 	depends = perl
 	optdepends = gnuplot
 	options = staticlibs
-	source = canu-2.2-src.tar.xz::https://github.com/marbl/canu/releases/download/v2.2/canu-2.2.tar.xz
-	sha256sums = e4d0c7b82149114f442ccd39e18f7fe2061c63b28d53700ad896e022b73b7404
+	source = canu-2.3-src.tar.xz::https://github.com/marbl/canu/releases/download/v2.3/canu-2.3.tar.xz
+	sha256sums = ecb071943cde722152deb861d4ab897090f00b227fd0b261592e1e3fdd3e3e1a
 
 pkgname = canu

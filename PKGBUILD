@@ -2,17 +2,17 @@
 # Previous maintainer: Roberto Rossini ("robymetallo") <roberto.rossini.9533@student.uu.se>
 
 pkgname=canu
-pkgver=2.2
-pkgrel=2
+pkgver=2.3
+pkgrel=1
 pkgdesc="A fork of the Celera Assembler designed for high-noise single-molecule sequencing"
 arch=('i686' 'x86_64')
 url="https://canu.readthedocs.io/"
-license=('custom')
-depends=('glibc' 'java-runtime' 'perl')
+license=('LicenseRef-canu')
+depends=('gcc-libs' 'java-runtime' 'perl')
 optdepends=('gnuplot')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.xz::https://github.com/marbl/canu/releases/download/v$pkgver/canu-$pkgver.tar.xz")
-sha256sums=('e4d0c7b82149114f442ccd39e18f7fe2061c63b28d53700ad896e022b73b7404')
+sha256sums=('ecb071943cde722152deb861d4ab897090f00b227fd0b261592e1e3fdd3e3e1a')
 
 
 build() {
