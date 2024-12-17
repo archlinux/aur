@@ -1,5 +1,5 @@
 # Maintainer: Your Name <stepan.ciptik@yandex.ru>
-# Contributor: cktan
+# Contributor: cktan github.com/cktan
 
 pkgname=tomlc99-git
 pkgver=1.0
