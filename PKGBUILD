@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=aplot
-_pkgver=0.2.3
+_pkgver=0.2.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-ggtree
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fc358216217e21658f1aa8a3833beb02')
-b2sums=('aa38c2723b668554fa92e3d5b73751e726d84d1474c27d1510e613a72ae6e181b82cef703b11a57fecf35644d74926f108c91681a712395bccafe43fe3d17f37')
+md5sums=('2f78a1f399fe91d213e9ece15a403a94')
+b2sums=('34a49640c70cbf462139ed423217daa3391a495199c45a6fc647b338000bba3faff40e9a2f0acbc3923ba448c4821ffb240f3e58c487adfa86302a5effecfc6b')
 
 build() {
   mkdir build
