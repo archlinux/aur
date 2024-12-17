@@ -1,5 +1,5 @@
 pkgbase = dove
-	pkgdesc = Welcome to the next generation of Dove.
+	pkgdesc = Dove is a suite of configurations & advanced modifications for Mozilla Thunderbird, designed to put the user first.
 	pkgver = 20241216
 	pkgrel = 1
 	url = https://dove.celenity.dev
