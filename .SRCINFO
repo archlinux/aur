@@ -1,6 +1,6 @@
 pkgbase = intentrace
 	pkgdesc = strace with intent, it goes all the way for you instead of half the way
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/sectordistrict/intentrace
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = intentrace
 	makedepends = rust
 	depends = glibc
 	depends = gcc-libs
-	source = https://github.com/sectordistrict/intentrace/archive/refs/tags/v0.4.0/intentrace-0.4.0.tar.gz
-	sha256sums = 8534c4d544ee2466b6e85d970d4ba8d96d67c491975aebb78bcbcd00651009e2
+	source = https://github.com/sectordistrict/intentrace/archive/refs/tags/v0.4.1/intentrace-0.4.1.tar.gz
+	sha256sums = 9b88362ceb41e795bb44483d64104be0829d509baa975a65ed33ab4b2b0b1bdd
 
 pkgname = intentrace
