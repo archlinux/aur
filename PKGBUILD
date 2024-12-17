@@ -16,11 +16,18 @@ build() {
   cd "$srcdir/terminalwrap-$pkgver"
   mkdir -p build
   cd build
+
   cmake .. -DCMAKE_BUILD_TYPE=Release
   make
 }
 
 package() {
   cd "$srcdir/terminalwrap-$pkgver/build"
-  install -Dm755 terminalwrap "$pkgdir/usr/bin/terminalwrap"
+
+  if [[ -f terminalwrap ]]; then
+    install -Dm755 terminalwrap "$pkgdir/usr/bin/terminalwrap"
+  else
+    echo "Error: terminalwrap executable not found. Build may have failed."
+    exit 1
+  fi
 }
