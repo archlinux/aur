@@ -26,3 +26,15 @@ index 6e8e7d94..b2814e4b 100644
  CapabilityBoundingSet=CAP_IPC_LOCK CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW CAP_SETGID CAP_SETUID CAP_SETPCAP CAP_SYS_CHROOT CAP_DAC_OVERRIDE CAP_AUDIT_WRITE
  LimitNPROC=10
  DeviceAllow=/dev/null rw
+diff --git a/src/openvpn/console_systemd.c b/src/openvpn/console_systemd.c
+index 6e8e7d94..b2814e4b 100644
+--- a/src/openvpn/console_systemd.c
++++ b/src/openvpn/console_systemd.c
+@@ -71,6 +71,7 @@ get_console_input_systemd(const char *pr
+     }
+ #endif
+     argv_printf_cat(&argv, "--icon network-vpn");
++    argv_printf_cat(&argv, "--system");
+     argv_printf_cat(&argv, "%s", prompt);
+
+     if ((std_out = openvpn_popen(&argv, NULL)) < 0)
