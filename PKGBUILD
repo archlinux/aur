@@ -1,4 +1,5 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor:
 
 pkgname=ripsecrets
 pkgver=0.1.8
