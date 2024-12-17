@@ -1,8 +1,9 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-speechrecognition
 _pkg=speechrecognition
-pkgver=3.11.0
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="Google-powered speech recognition for Python"
 arch=('any')
@@ -13,7 +14,7 @@ optdepends=('pocketsphinx' 'python-vosk' 'python-whisper')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 provides=('python-speech_recognition')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('a5ecc0bb61d7d9bf0ca70427cd4fea07c38e26c647b5577137596033677b5f34')
+sha256sums=('248b4c585d11b9168708439f026fb2c0fef0d2a5152d18ee8aaf06abffc82032')
 
 prepare() {
 	cd "$_pkg-$pkgver"
