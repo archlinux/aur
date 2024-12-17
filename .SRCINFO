@@ -14,11 +14,11 @@ pkgbase = julec
 	depends = clang
 	source = jule-0.1.1.tar.gz::https://github.com/julelang/jule/archive/jule0.1.1.tar.gz
 	sha256sums = 4289447fc62a4466b67b4be87614cee9f424b630164bdc7f7bc810a25431d930
-	source_x86_64 = jule-ir-0.1.1-x86_64.cpp::https://raw.githubusercontent.com/julelang/julec-ir/338f419155ce765ab6cf4cab36901d6be7b9ae8d/src/linux-amd64.cpp
-	sha256sums_x86_64 = 8e139df60165c9ec821546a1741bd4f20262c78db62b91ac2d159ad393fa83e1
-	source_aarch64 = jule-ir-0.1.1-aarch64.cpp::https://raw.githubusercontent.com/julelang/julec-ir/338f419155ce765ab6cf4cab36901d6be7b9ae8d/src/linux-arm64.cpp
-	sha256sums_aarch64 = 543dcf6a6744b3bf6d21db14962e058ee186e882344a35e3068773134e68346f
-	source_i386 = jule-ir-0.1.1-i386.cpp::https://raw.githubusercontent.com/julelang/julec-ir/338f419155ce765ab6cf4cab36901d6be7b9ae8d/src/linux-i386.cpp
-	sha256sums_i386 = bab9a798e6c518f987cc33ff3427043e25ce620d21af2c3c07c2b113b380e4f1
+	source_x86_64 = jule-ir-0.1.1-x86_64.cpp::https://raw.githubusercontent.com/julelang/julec-ir/9a58e198e2479d0840e3705dd4947e5006c0e44d/src/linux-amd64.cpp
+	sha256sums_x86_64 = b087205f273f3308534befd47ff8f2d01241c3389141f298db3e3a3c39c9b037
+	source_aarch64 = jule-ir-0.1.1-aarch64.cpp::https://raw.githubusercontent.com/julelang/julec-ir/9a58e198e2479d0840e3705dd4947e5006c0e44d/src/linux-arm64.cpp
+	sha256sums_aarch64 = 98b54385c76f1ec46f9c80429be2876f377d1128d1e90deb37f9db758c767e06
+	source_i386 = jule-ir-0.1.1-i386.cpp::https://raw.githubusercontent.com/julelang/julec-ir/9a58e198e2479d0840e3705dd4947e5006c0e44d/src/linux-i386.cpp
+	sha256sums_i386 = d00ef98608f404a51108f4af2e18cab066306478695fe0198e52f944a216f829
 
 pkgname = julec
