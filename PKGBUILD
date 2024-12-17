@@ -9,7 +9,7 @@ pkgdesc="Python bindings for Musicbrainz' NGS webservice"
 arch=('any')
 url=https://github.com/alastair/python-musicbrainzngs
 license=('BSD-2-Clause' 'ISC')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=('git+https://github.com/alastair/python-musicbrainzngs.git')
 md5sums=('SKIP')
 
@@ -20,12 +20,12 @@ pkgver() {
 
 build() {
   cd python-musicbrainzngs
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd python-musicbrainzngs
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 COPYING -t "${pkgdir}"/usr/share/licenses/python-musicbrainzngs/
 }
 

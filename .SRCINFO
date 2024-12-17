@@ -8,6 +8,9 @@ pkgbase = python-musicbrainzngs-git
 	license = ISC
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	source = git+https://github.com/alastair/python-musicbrainzngs.git
 	md5sums = SKIP
 
