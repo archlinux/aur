@@ -2,7 +2,7 @@
 
 pkgname=tailwindcss-extra-bin
 pkgver=1.7.21
-pkgrel=3
+pkgrel=4
 pkgdesc='Standalone Tailwind CLI without Node.js dependency. Bundled with DaisyUI.'
 arch=(x86_64)
 url='https://tailwindcss.com'
