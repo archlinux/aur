@@ -1,7 +1,7 @@
 pkgbase = vdr-satip
 	pkgdesc = Integrates SAT>IP network devices seamlessly into VDR
 	pkgver = 2.4.1.r3.g02a842f
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/rofafor/vdr-plugin-satip
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = vdr-satip
 	makedepends = git
 	depends = curl
 	depends = pugixml
-	depends = vdr-api=2.6.7
+	depends = vdr-api=5
 	options = !emptydirs
 	backup = etc/vdr/conf.avail/50-satip.conf
 	source = git+https://github.com/rofafor/vdr-plugin-satip.git#commit=02a842f95a09a74d7eba90648c97693638007141
