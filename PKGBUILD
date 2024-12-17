@@ -1,9 +1,9 @@
 # Maintainer: 	ngdngdc <2959471117 at qq dot com>
 
 _npmname=whistle.inspect
-_npmver=2.2.6
+_npmver=2.3.0
 pkgname=nodejs-whistle-plugins-inspect # All lowercase
-pkgver=2.2.6
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="集成 vConsole、eruda、mdebug 等调试H5页面工具的插件"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('nodejs-whistle')
 optdepends=()
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=(${_npmname}-${_npmver}.tgz)
-sha1sums=('3a1eaee89567f0db1ff35356d2b5c434bc097017')
+sha1sums=('59cb73959812d678723e1cfe3f971bae88f26585')
 
 package() {
   cd $srcdir
