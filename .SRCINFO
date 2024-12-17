@@ -1,7 +1,7 @@
 pkgbase = python-webargs
 	pkgdesc = A friendly library for parsing HTTP request arguments, with built-in support for popular web frameworks
 	pkgver = 8.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marshmallow-code/webargs
 	arch = any
 	license = MIT
@@ -21,9 +21,15 @@ pkgbase = python-webargs
 	makedepends = python-flit-core
 	makedepends = python-sphinx
 	makedepends = python-sphinx-issues
-	makedepends = python-sphinx-typlog-theme
 	makedepends = python-sphinx-furo
 	depends = python-marshmallow
+	optdepends = python-flask
+	optdepends = python-django
+	optdepends = python-bottle
+	optdepends = python-tornado
+	optdepends = python-pyramid
+	optdepends = python-falcon
+	optdepends = python-aiohttp
 	source = python-webargs-8.6.0.tar.gz::https://github.com/marshmallow-code/webargs/archive/8.6.0.tar.gz
 	sha512sums = adaa90803b7f6f3cfeedf7c02b217030b5cc9d52cf7385dcb698808a565c664abe28b1bd087c1c9337669770348ba72abbb45cbb12da92edc89abdc0788efb5b
 
