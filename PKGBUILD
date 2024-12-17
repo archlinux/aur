@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-pyproject-parser
-pkgver=0.9.1
-pkgrel=3
+pkgver=0.11.1
+pkgrel=1
 pkgdesc='Parser for pyproject.toml'
 arch=('any')
 url='https://github.com/repo-helper/pyproject-parser'
@@ -32,14 +32,17 @@ optdepends=(
   'python-readme-renderer: render markdown'
   'python-cmarkgfm: render markdown'
 )
-_commit='f24f2e8a762c715f113b11d1b97b65403a1576a2'
-source=("$pkgname::git+$url#commit=$_commit")
-b2sums=('SKIP')
+source=("$pkgname::git+$url#tag=v$pkgver")
+sha512sums=('8e3b20143a8495fbf8a7b033402b5d32788b5861fe76c92345ad475c1fec5931676a20a38c3bcded638d5eaa203854f9408383b47b3583e21bba3cbd0fdd43e3')
+b2sums=('f993c04b6107c652de7a01545ea29f18cdf72a9e1397e258abe832a5e5ce23cec5c170f92551fd7dd5505605bb5483913ca3047d4eac405954e6638d8d424e16')
 
-pkgver() {
+prepare() {
   cd "$pkgname"
 
-  git describe --tags | sed 's/^v//'
+  # remove version constraints
+  sed \
+    -e 's/^requires = \[.*/requires = \[ "setuptools", "wheel" \]/' \
+    -i pyproject.toml
 }
 
 build() {
