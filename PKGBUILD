@@ -30,8 +30,10 @@ DLAGENTS=("https::/usr/bin/curl \
             -H "@${srcdir}http_headers" \
             -o %o --compressed %u")
               
-source=("${_pkg_file_name}"::"$_download_path")
-sha256sums=('efd5f4ce5cc9b5b44f2be90fd469559f081c6c28f1fe4a095af698b9dccc4adf')
+source=("${_pkg_file_name}"::"$_download_path"
+      	"http_headers")
+sha256sums=('efd5f4ce5cc9b5b44f2be90fd469559f081c6c28f1fe4a095af698b9dccc4adf'
+            '4fc6f177425adbd491cbb7326969a4e77a78588c30e674a1e3455981ad523c40')
 
 prepare() {
   install -dm755 build

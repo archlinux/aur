@@ -16,6 +16,8 @@ pkgbase = stm32cubemonitor
 	depends = stlink
 	options = !strip
 	source = en.stm32cubemon-lin-v-1-9-0.zip::https://www.st.com/content/ccc/resource/technical/software/sw_development_suite/group1/95/37/7e/37/8d/49/40/e7/stm32cubemon-lin-v-1-9-0/files/stm32cubemon-lin-v-1-9-0.zip/jcr:content/translations/en.stm32cubemon-lin-v-1-9-0.zip
+	source = http_headers
 	sha256sums = efd5f4ce5cc9b5b44f2be90fd469559f081c6c28f1fe4a095af698b9dccc4adf
+	sha256sums = 4fc6f177425adbd491cbb7326969a4e77a78588c30e674a1e3455981ad523c40
 
 pkgname = stm32cubemonitor
