@@ -4,7 +4,7 @@ pkgdesc='Concrnt is a next-gen decentralized social network platform designed to
 pkgname=('concrnt-gateway-bin')
 pkgver=1.6.0
 _pkgver=v${pkgver}
-pkgrel=4
+pkgrel=5
 arch=('x86_64' 'aarch64')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
@@ -49,7 +49,7 @@ package() {
            'postgresql'
            'concrnt-api')
 
-  install -Dm755 "${srcdir}/ccgateway-${arch}-${pkgver}" "${pkgdir}/usr/bin/ccgateway"
+  install -Dm755 "${srcdir}/ccgateway-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/ccgateway"
   install -Dm644 "${srcdir}/concrnt-gateway.service" "${pkgdir}/usr/lib/systemd/system/concrnt-gateway.service"
   install -Dm644 "${srcdir}/concrnt-gateway.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/concrnt-gateway.conf"
   install -Dm644 "${srcdir}/concrnt-gateway.hook" "${pkgdir}/usr/share/libalpm/hooks/concrnt-gateway.hook"

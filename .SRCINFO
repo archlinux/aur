@@ -1,7 +1,7 @@
 pkgbase = concrnt-gateway-bin
 	pkgdesc = Concrnt is a next-gen decentralized social network platform designed to make your world richer.
 	pkgver = 1.6.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/totegamma/concurrent
 	install = concrnt.install
 	arch = x86_64
