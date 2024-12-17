@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=remindr-bin
 _pkgname=Remindr
-pkgver=2.1.18
-_electronversion=32
+pkgver=2.2.0
+_electronversion=33
 pkgrel=1
-pkgdesc="Desktop app to help you keep track of what you need to get done."
+pkgdesc="Desktop app to help you keep track of what you need to get done.(Prebuilt version.Use system-wide electron)"
 arch=("x86_64")
 url="https://mrdavidrios.github.io/remindr"
 _ghurl="https://github.com/MrDavidRios/remindr"
@@ -18,9 +18,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d31878cadd7ace0e856fac6e83dc28a8b05d52e81a697a4a194842d7e44b5c3d'
+sha256sums=('e719309e1bf2e2ff73b0f128130c6de97218af6af7e1aa967a68c9c040c37e88'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
@@ -29,7 +29,7 @@ build() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" 
+    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" 
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
