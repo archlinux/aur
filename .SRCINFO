@@ -1,5 +1,5 @@
 pkgbase = phoenix-arch
-	pkgdesc = Welcome to the next generation of Phoenix.
+	pkgdesc = Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first.
 	pkgver = 20241216
 	pkgrel = 1
 	url = https://phoenix.celenity.dev

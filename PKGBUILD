@@ -2,7 +2,7 @@
 pkgname=phoenix-arch
 pkgver=20241216
 pkgrel=1
-pkgdesc="Welcome to the next generation of Phoenix."
+pkgdesc="Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first."
 arch=(any)
 license=('GPL3')
 url="https://phoenix.celenity.dev"
