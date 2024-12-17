@@ -1,8 +1,8 @@
 # Maintainer: waveplate <dissahc@pm.me>
 pkgname=img2irc
 pkgver=1.1.0
-pkgrel=1
-pkgdesc="CLI utility to convert images to halfblock ANSI or IRC art with various optional post-processing filters"
+pkgrel=2
+pkgdesc="a highly versatile image to IRC/ANSI art converter"
 arch=('x86_64')
 url="https://github.com/waveplate/img2irc"
 license=('GPL3')
