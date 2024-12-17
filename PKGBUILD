@@ -19,5 +19,6 @@ sha256sums=('c34a285968c3def36c911c927f7c85f5ef9fd3b63c71f68973aa339baa7abb0e')
 
 package() {
 	cd "${srcdir}/tus-py-client-${pkgver}"
+	python3 -m build
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
