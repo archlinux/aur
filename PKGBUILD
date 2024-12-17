@@ -11,9 +11,18 @@ url="https://github.com/statistikZH/statR"
 license=('GPL-3.0')
 
 depends=(
+  r-dplyr
+  r-ggplot2
   r-openxlsx
+  r-rcolorbrewer
   r-gridextra
+  r-rlang
+  r-scales
+  r-stringr
+  r-purrr
+  r-yaml
 )
+
 checkdepends=()
 optdepends=()
 source=("https://github.com/statistikZH/statR/releases/download/${_pkgver}/${_pkgname}_${_pkgver}.tar.gz")
