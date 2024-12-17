@@ -11,7 +11,7 @@ _pkgname=microsoft-edge-dev
 pkgname=microsoft-edge-dev-bin
 _pkgshortname=msedge-dev
 pkgver=133.0.3000.0
-pkgrel=1
+pkgrel=2
 _uprel=1
 pkgdesc="A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier"
 arch=(x86_64)
@@ -25,7 +25,7 @@ optdepends=('gnome-keyring: for storing passwords in GNOME keyring'
             'gtk3: for printing'
             'kdialog: for file dialogs in KDE'
             'kwallet: for storing passwords in KWallet'
-            'libpipewire02: WebRTC desktop sharing under Wayland'
+            'libpipewire: WebRTC desktop sharing under Wayland'
             'libunity: for download progress on KDE'
             'ttf-liberation: fix fonts for some PDFs - CRBug #369991'
             'xdg-utils')
