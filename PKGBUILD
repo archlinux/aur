@@ -4,7 +4,7 @@
 pkgname=i3pystatus-git
 pkgdesc="i3status replacement written in python for the i3 window manager"
 pkgver=3.35.r407.gf3c539a
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://github.com/enkore/i3pystatus"
 license=('MIT')
@@ -46,7 +46,7 @@ build() {
 
 check() {
 	cd "$pkgname"
-	python setup.py pytest
+	python -m pytest
 }
 
 package() {
