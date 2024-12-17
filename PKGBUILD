@@ -2,22 +2,24 @@
 # Contributor: Fredy García <frealgagu at gmail dot com>
 
 pkgname=welle.io
-pkgver=2.5 # renovate: datasource=github-releases depName=AlbrechtL/welle.io
+pkgver=2.6 # renovate: datasource=github-releases depName=AlbrechtL/welle.io
 pkgrel=1
 pkgdesc="An open source DAB and DAB+ software defined radio (SDR) with support for rtl-sdr (RTL2832U) and airspy"
 arch=("x86_64")
 url="https://www.${pkgname}"
 license=("GPL-2.0-only")
-depends=("faad2" "fftw" "hicolor-icon-theme" "lame" "mpg123" "rtl-sdr" "qt6-quick3d" "qt6-multimedia" "qt6-charts")
+depends=("faad2" "fftw" "hicolor-icon-theme" "lame" "mpg123" "rtl-sdr" "soapysdr" "qt6-quick3d" "qt6-multimedia" "qt6-charts")
 optdepends=("airspy")
-makedepends=("cmake" "gcc")
+makedepends=("cmake" "gcc" "xxd")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AlbrechtL/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('3742a71f5d7997c8b87ff0850fa7340b34c7174a72b9703050941567fe3d45a4')
+sha256sums=('0e24ca06d3e1cec612faeaa6a76967dccb51579d2aa056842a0480c27caf1393')
 
 build() {
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
   cd "${srcdir}/${pkgname}-${pkgver}/build"
-  cmake "${srcdir}/${pkgname}-${pkgver}" -DRTLSDR=1
+  sed -i 's/welle-io.desktop/io.welle.welle_io.desktop/' ../CMakeLists.txt
+  sed -i 's/io.welle.welle_io.metainfo.xml/io.welle.welle_io.appdata.xml/' ../CMakeLists.txt
+  cmake "${srcdir}/${pkgname}-${pkgver}" -DRTLSDR=1 -DSOAPYSDR=1
   make
 }
 
