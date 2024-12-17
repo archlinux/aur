@@ -1,45 +1,43 @@
-# Maintainer:  Michael Connor Buchan <mikey@blindcomputing.org>
+# Maintainer: Your Name <stepan.ciptik@yandex.ru>
+
 pkgname=tomlc99-git
-pkgver=r136.208203a
+pkgver=1.0
 pkgrel=1
 pkgdesc="TOML C library"
-arch=("$CARCH")
+arch=('x86_64')
 url="https://github.com/cktan/tomlc99"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'make')
-    # Currently broken due to deprecation in go, see https://golang.org/doc/go-get-install-deprecation
-#checkdepends=('go' 'jq')
-checkdepends=('jq')
-provides=("${pkgname%-git}" 'libtoml.so')
-conflicts=("${pkgname%-git}")
-install=
-source=("git+https://github.com/cktan/${pkgname%-git}.git")
-cksums=('SKIP')
-
-pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+provides=('tomlc99')
+conflicts=('tomlc99')
+options=('!debug')
+source=("git+https://github.com/cktan/tomlc99.git")
+md5sums=('SKIP')
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-        make
-}
-
-check() {
-    # Currently broken due to deprecation in go, see https://golang.org/doc/go-get-install-deprecation
-	#cd "$srcdir/${pkgname%-git}/test1"
-        #bash build.sh
-        #bash run.sh
-	cd "$srcdir/${pkgname%-git}/test2"
-        bash build.sh
-        bash run.sh
+  cd "${srcdir}/tomlc99"
+  make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make prefix="$pkgdir/usr" install
-        chmod 644 "$pkgdir/usr/lib/libtoml.a"
-        install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "${srcdir}/tomlc99"
+    install -Dm644 toml.h "${pkgdir}/usr/include/toml.h"
+    install -Dm755 libtoml.so.1.0 "${pkgdir}/usr/lib/libtoml.so.1.0"
+    ln -s libtoml.so.1.0 "${pkgdir}/usr/lib/libtoml.so"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    
+    mkdir -p "${pkgdir}/usr/lib/pkgconfig"
+    cat << EOF > "${pkgdir}/usr/lib/pkgconfig/libtoml.pc"
+prefix=${pkgdir}/usr
+exec_prefix=\${prefix}
+libdir=\${exec_prefix}/lib
+includedir=\${prefix}/include
+
+Name: libtoml
+Description: TOML C library
+Version: ${pkgver}
+Libs: -L\${libdir} -ltoml
+Cflags: -I\${includedir}
+EOF
 }
