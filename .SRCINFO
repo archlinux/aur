@@ -1,0 +1,16 @@
+pkgbase = animefetch
+	pkgdesc = View your favorite anime details instantly in the terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/xeyossr/animefetch
+	arch = x86_64
+	license = GPL-3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	depends = libcurl
+	depends = curl
+	source = animefetch-0.1.0.tar.gz::https://github.com/xeyossr/animefetch/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = animefetch
