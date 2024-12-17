@@ -1,11 +1,11 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _pkgname="vault-unseal"
 pkgname="${_pkgname}-git"
-pkgver=0.5.1.r7.gb6f44d4
-pkgrel=2
+pkgver=0.7.0.r1.g99436b9
+pkgrel=1
 pkgdesc="Auto-unseal utility for Hashicorp Vault"
-arch=('any')
+arch=('x86_64' 'aarch64' 'armv6h')
 url="https://github.com/lrstanley/${_pkgname}"
 license=('MIT')
 depends=('glibc')
@@ -23,7 +23,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  [ -d "build" ] || mkdir "build"
+  mkdir -p "build"
 }
 
 build() {
@@ -38,7 +38,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
