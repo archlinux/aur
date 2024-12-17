@@ -1,0 +1,13 @@
+pkgbase = flippen-text
+	pkgdesc = Простой редактор текста
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/SergeyDash/flippen-text
+	arch = any
+	license = GPL
+	depends = python
+	depends = tkinter
+	source = main.py
+	sha256sums = SKIP
+
+pkgname = flippen-text
