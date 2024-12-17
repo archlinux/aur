@@ -1,7 +1,7 @@
 pkgbase = vdr-epgfixer
 	pkgdesc = VDR plugin for doing extra fixing of EPG data
 	pkgver = 0.3.1_21_g354f28b
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/vdr-projects/vdr-plugin-epgfixer
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = vdr-epgfixer
 	makedepends = git
 	depends = gcc-libs
 	depends = pcre
-	depends = vdr-api=2.6.7
+	depends = vdr-api=5
 	backup = etc/vdr/conf.avail/50-epgfixer.conf
 	backup = var/lib/vdr/plugins/epgfixer/blacklist.conf
 	backup = var/lib/vdr/plugins/epgfixer/charset.conf
