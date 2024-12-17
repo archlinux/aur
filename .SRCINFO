@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-additionalinfo-chaps-bus-latest
 	pkgdesc = Floor plans of some Czech bus stations/ stops, to be used with the timetable search engines by CHAPS.
 	pkgver = 2024_12_05
-	pkgrel = 3
+	pkgrel = 1
 	epoch = 0
 	url = https://chaps.cz/eng/download/idos/zip#kotvainf
 	arch = any
