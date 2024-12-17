@@ -3,7 +3,7 @@
 pkgname="stmcufinder"
 pkgver=6.1.0
 _pkg_file_name=en.st-mcu-finderlin-v6-1-0.zip
-pkgrel=2
+pkgrel=3
 pkgdesc="STM32 and STM8 product finder for desktops"
 arch=("x86_64")
 depends=()
@@ -30,9 +30,11 @@ DLAGENTS=("https::/usr/bin/curl \
             -o %o --compressed %u")
 
 source=("${_pkg_file_name}"::"$_download_path"
+	"http_headers"
 	"stmcufinder.desktop"
 	"stmcufinder")
 sha256sums=('0d0602f3a52526e395d5bc59c074cc35e9740bd83e3cccf2a25723a8c952f0ee'
+	    '953f713f671727c2ace080362533bee6c309575044e5542d10e332bc28908d5b'
 	    'SKIP'
 	    'SKIP')
 prepare(){
