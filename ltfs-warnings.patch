@@ -1,0 +1,43 @@
+--- a/src/tape_drivers/linux/ltotape/ltotape_platform.c
++++ b/src/tape_drivers/linux/ltotape/ltotape_platform.c
+@@ -356,7 +356,7 @@ int ltotape_map_st2sg (const char *devname, char *sgdevname)
+     }
+ 
+     strncat (nstdevname, "/dev/nst", strlen ("/dev/nst"));
+-    strncat (nstdevname, temp, strlen (temp));
++    strncat (nstdevname, temp, length - strlen(nstdevname) - 1);
+     allocated = TRUE;
+ 
+     ltfsmsg (LTFS_DEBUG, "20101D", devname, nstdevname);
+--- a/src/libltfs/xml_writer.c
++++ b/src/libltfs/xml_writer.c
+@@ -92,7 +92,7 @@ int xml_format_time(struct ltfs_timespec t, char** out)
+		ltfsmsg(LTFS_ERR, "10001E", __FUNCTION__);
+		return -1;
+	}
+-	sprintf(timebuf, "%04d-%02d-%02dT%02d:%02d:%02d.%09ldZ", tm.tm_year+1900, tm.tm_mon+1,
++	snprintf(timebuf, 31, "%04d-%02d-%02dT%02d:%02d:%02d.%09ldZ", tm.tm_year+1900, tm.tm_mon+1,
+ 			tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec, t.tv_nsec);
+ 	*out = timebuf;
+ 
+--- a/src/libltfs/ltfs.c
++++ b/src/libltfs/ltfs.c
+@@ -2644,15 +2644,15 @@ int ltfs_set_volume_lockstate(struct ltfs_volume *vol, mam_lockval vol_lockstate
+ 	if (vol_lockstate == UNLOCKED_MAM) {
+ 		vol->index->volumelockstate = (char *) calloc(1,
+ 				(strlen("unlocked") + 1));
+-		strncpy(vol->index->volumelockstate, "unlocked", strlen("unlocked"));
++		strncpy(vol->index->volumelockstate, "unlocked", strlen("unlocked") + 1);
+ 	} else if (vol_lockstate == LOCKED_MAM) {
+ 		vol->index->volumelockstate = (char *) calloc(1,
+ 				(strlen("locked") + 1));
+-		strncpy(vol->index->volumelockstate, "locked", strlen("locked"));
++		strncpy(vol->index->volumelockstate, "locked", strlen("locked") + 1);
+ 	} else if (vol_lockstate == PERMLOCKED_MAM) {
+ 		vol->index->volumelockstate = (char *) calloc(1,
+ 				(strlen("permlocked") + 1));
+-		strncpy(vol->index->volumelockstate, "permlocked", strlen("permlocked"));
++		strncpy(vol->index->volumelockstate, "permlocked", strlen("permlocked") + 1);
+ 	}
+ 
+ 	if (isdirty) {

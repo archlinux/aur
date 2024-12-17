@@ -1,0 +1,25 @@
+pkgbase = ltfs-hpe
+	pkgdesc = HPE StoreOpen and Linear Tape File System (LTFS) Software for hp drives uses LTFS Specification 2.40
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://www.hpe.com/storage/storeopen
+	arch = x86_64
+	arch = aarch64
+	license = LGPL2.1
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = pkg-config
+	depends = fuse2>=2.8.5
+	depends = libxml2>=2.7.6
+	depends = icu>=50.1.2
+	depends = e2fsprogs>=1.41
+	provides = ltfs
+	conflicts = ltfs-quantum
+	replaces = ltfs
+	source = https://downloads.hpe.com/pub/softlib2/software1/pubsw-generic/p854080462/v238180/HPE_StoreOpen_Software_3.5.0_Source_macOS_RHEL.tar.gz
+	source = ltfs-warnings.patch
+	sha256sums = c4aa518f4f8966930d92619f25a84f4825218d74368a89d225ce90d13ae1df1f
+	sha256sums = 1f4e079d9ee8b590c2894abf3992635045c2e7881d9f8b3edd3d7a37103b0465
+
+pkgname = ltfs-hpe
