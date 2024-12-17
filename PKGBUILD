@@ -5,7 +5,7 @@ pkgname="stm32cubeide"
 pkgver=1.17.0
 _pkgver_ext=1.17.0_23558_20241125_2245
 _pkg_file_name=en.st-stm32cubeide_1.17.0_23558_20241125_2245_amd64.sh.zip
-pkgrel=2
+pkgrel=3
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
@@ -43,7 +43,7 @@ source=("${_pkg_file_name}"::"$_download_path"
 sha256sums=('783c426695def184a50294149fa929b19a9caa979aea5e23461d8df55283c732'
 	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
 	'SKIP'
-	'e390db4335686f4a99f04002625a9dce0058b631cb3205b700c1910bf129d73c'
+	'4fc6f177425adbd491cbb7326969a4e77a78588c30e674a1e3455981ad523c40'
 	'6648786eb5f998134e686ee27e3c6016e9b4af5558cf1e5ad3faf8dd01a45193'
 	'41e8d15ce488bff2c3da261d3da41699080cc6ed39d7b9ccbd80f21b55db10bc'
 	'03b654889dbfd87730fee8b172246669663b1e6f6c65003dd18aa756d4bafea3'
