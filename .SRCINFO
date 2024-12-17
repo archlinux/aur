@@ -1,0 +1,21 @@
+pkgbase = windpix-git
+	pkgdesc = A multi-platform screenshot utility built with Electron and Node.js. Featuring instant capture, autofocus on Windsurf and an intuitive interface to Feed Screenshots to Windsurf.(Prebuilt version.Use system-wide electron)
+	pkgver = r2.fbe1532
+	pkgrel = 1
+	url = https://github.com/bartwisch/WindPix
+	arch = any
+	license = ISC
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron33
+	provides = windpix=r2.fbe1532
+	conflicts = windpix
+	source = windpix.git::git+https://github.com/bartwisch/WindPix.git
+	source = windpix.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = windpix-git
