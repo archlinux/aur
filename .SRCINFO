@@ -1,7 +1,7 @@
 pkgbase = vdr-epgsearch
 	pkgdesc = Searchtimer and replacement of the VDR program menu
-	pkgver = 2.4.2
-	pkgrel = 4
+	pkgver = 2.4.3
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/vdr-projects/vdr-plugin-epgsearch
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = vdr-epgsearch
 	arch = armv7h
 	license = GPL2
 	depends = gcc-libs
-	depends = vdr-api=2.6.7
+	depends = vdr-api=5
 	optdepends = msmtp: To send notification mails (Simpler replacement for sendmail)
 	optdepends = ssmtp: To send notification mails (Another simpler replacement for sendmail)
 	options = !emptydirs
@@ -26,9 +26,9 @@ pkgbase = vdr-epgsearch
 	backup = var/lib/vdr/plugins/epgsearch/epgsearchmenu.conf
 	backup = var/lib/vdr/plugins/epgsearch/epgsearchupdmail-html.templ
 	backup = var/lib/vdr/plugins/epgsearch/epgsearchupdmail.templ
-	source = vdr-epgsearch-2.4.2.tar.gz::https://github.com/vdr-projects/vdr-plugin-epgsearch/archive/refs/tags/v2.4.2.tar.gz
+	source = vdr-epgsearch-2.4.3.tar.gz::https://github.com/vdr-projects/vdr-plugin-epgsearch/archive/refs/tags/v2.4.3.tar.gz
 	source = 50-epgsearch.conf
-	sha256sums = 7c0a03c22fedbc73a34220da0edf3293a903185c412d5b20fb48d72f2e4fd118
+	sha256sums = 3824a72be529391ce26d00f0323b9d71572855c1c660bae9d30064f42366aadf
 	sha256sums = f3f8c750a0313c01a4295d2249f030ee510b2e35137b1f2cdcaa39aa440a3a88
 
 pkgname = vdr-epgsearch
