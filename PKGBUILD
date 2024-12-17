@@ -2,7 +2,7 @@
 
 pkgname=airisp-next-git
 pkgver=0.2.0.r0.g23010ec
-pkgrel=6
+pkgrel=8
 pkgdesc="An ISP tool for Air MCU (Rust)"
 arch=($CARCH)
 url="https://github.com/Air-duino/AirISP-next"
@@ -26,18 +26,18 @@ depends=(
 makedepends=(
     cargo
     cargo-tauri
-    gendesk
+    #     gendesk
     git
     hidapi
     libayatana-appindicator
     librsvg
     rust
-    npm
+    #     npm
     pnpm
     pkgconf
-    mold)
+)
 backup=()
-options=('!lto')
+options=('!lto' '!debug' '!strip')
 install=
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
@@ -53,6 +53,8 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}/src-tauri"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -60,9 +62,11 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    #     mold -run cargo build --release --all-features
+
     pnpm install
-    pnpm tauri build
+    cd src-tauri
+    cargo build --release
+    #     pnpm tauri build
 }
 
 # check() {
@@ -82,15 +86,27 @@ package() {
 
     # Create a symlink to your executable
     #     ln -s "/usr/share/$pkgname/dist/AirISP-next" "$pkgdir/usr/bin/${pkgname%-git}"
-    install -Dm0755 src-tauri/target/release/air-isp-next "$pkgdir/usr/bin/${pkgname%-git}"
+    install -Dm0755 src-tauri/target/release/AirISP-next "$pkgdir/usr/bin/${pkgname%-git}"
     # icon
-    local _icon
+    #     local _icon
     #     for _icon in 32 128; do
     #         install -Dm0644 src-tauri/icons/${_icon}x${_icon}.png \
     #             ${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps/${pkgname%-git}.png
     #     done
 
     # desktop file
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --name="${pkgname%-git}" --comment="${pkgdesc}" --categories="Development;Utility" --exec="${pkgname%-git}" --icon="${pkgname%-git}.png"
-    install -Dm0644 "${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dvm644 src-tauri/icons/icon.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-git}.png
+    install -Dvm644 /dev/stdin ${pkgdir}/usr/share/applications/${pkgname%-git}.desktop <<EOF
+[Desktop Entry]
+Categories=
+Comment=${pkgdesc}
+Exec=${pkgname%-git}
+Icon=${pkgname%-git}.png
+Name=${pkgname%-git}
+Terminal=false
+Type=Application
+
+EOF
+    #     gendesk -q -f -n --pkgname="${pkgname%-git}" --name="${pkgname%-git}" --comment="${pkgdesc}" --categories="Development;Utility" --exec="${pkgname%-git}" --icon="${pkgname%-git}.png"
+    #     install -Dm0644 "${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }
