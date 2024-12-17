@@ -6,5 +6,5 @@ Comment=A todo list and time tracking app
 Icon=superproductivity
 Exec=superproductivity %U
 Terminal=false
-Categories=Utility;
+Categories=Office;ProjectManagement;
 StartupWMClass=superProductivity
