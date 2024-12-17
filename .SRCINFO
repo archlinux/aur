@@ -1,15 +1,12 @@
 pkgbase = libretro-pocketcdg-git
 	pkgdesc = libretro port of pocketcdg, karaoke player
-	pkgver = 48.9705f33
+	pkgver = r109.c1fac9f
 	pkgrel = 1
 	url = https://github.com/libretro/libretro-pocketcdg
-	arch = i686
 	arch = x86_64
-	groups = libretro
-	license = GPLv2
+	license = MIT
 	makedepends = git
-	source = libretro-pocketcdg::git://github.com/libretro/libretro-pocketcdg.git
+	source = git+https://github.com/libretro/libretro-pocketcdg
 	md5sums = SKIP
 
 pkgname = libretro-pocketcdg-git
-
