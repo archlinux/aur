@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=groHMM
-_pkgver=1.38.0
+_pkgver=1.40.3
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.3
 pkgrel=1
 pkgdesc='GRO-seq Analysis Pipeline'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('259c1d472433cf516982da1aa774ceb1d8d341e768eb73881053ca16739aacee')
+sha256sums=('2c5c187f42b084f304eeeb9fae11678de0d526780cb2cc9c5d21608533eda97f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
