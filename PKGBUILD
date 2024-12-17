@@ -1,32 +1,44 @@
-#!/bin/bash
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+# Contributor: PumpkinCheshire <me at pumpkincheshire dot com>
 
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot com>
-
-_name=lizard
-pkgname=python-lizard
-pkgver=1.17.10
+_pyname=lizard
+pkgname=python-$_pyname
+pkgver=1.17.13
 pkgrel=1
-pkgdesc="A code analyzer without caring the C/C++ header files. It works with Java, C/C++, JavaScript, Python, Ruby, Swift, Objective C. Metrics includes cyclomatic complexity number etc."
+pkgdesc="Code analyzer for Java, C/C++, JavaScript, Python, Ruby, Swift and Objective C"
 arch=('any')
 url="https://github.com/terryyin/lizard"
-license=('custom')
-depends=()
-makedepends=('python-wheel'
+license=('MIT')
+depends=(
+    'python'
+    'python-jinja'
+    'python-pygments'
+)
+makedepends=(
     'python-build'
     'python-installer'
+    'python-setuptools'
+    'python-wheel'
 )
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('9b2e3e65430b57ab0a5a48ac36c3fd045cdcdbad5612b40091f73b1641c4eb724c604aa23a04cc16542c423fd6c811e36a910a31b247f011ae44b40477e9bd54')
+checkdepends=(
+    'python-mock'
+    'python-pytest'
+)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/terryyin/lizard/archive/refs/tags/${pkgver}.tar.gz")
+b2sums=('e41e7bb461f64459f9327fa5719e57cc713dcebb89dfb6b01e27f38a9c6014bbe77b1a50cab094a8b68b630385ca9ff3c35b1a9a65545e9c23942f038b560d33')
 
 build() {
-    cd "$srcdir/$_name-$pkgver" || exit
-
+    cd $_pyname-$pkgver
     python -m build --wheel --no-isolation
 }
 
-package() {
-    cd "$srcdir/$_name-$pkgver" || exit
-    python -m installer --destdir="$pkgdir" dist/*.whl
+check() {
+    cd $_pyname-$pkgver
+    PYTHONPATH=build/lib/ pytest
+}
 
-    # install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/python-$_name/LICENSE"
+package() {
+    cd $_pyname-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/${pkgname}"
 }

@@ -1,14 +1,20 @@
 pkgbase = python-lizard
-	pkgdesc = A code analyzer without caring the C/C++ header files. It works with Java, C/C++, JavaScript, Python, Ruby, Swift, Objective C. Metrics includes cyclomatic complexity number etc.
-	pkgver = 1.17.10
+	pkgdesc = Code analyzer for Java, C/C++, JavaScript, Python, Ruby, Swift and Objective C
+	pkgver = 1.17.13
 	pkgrel = 1
 	url = https://github.com/terryyin/lizard
 	arch = any
-	license = custom
-	makedepends = python-wheel
+	license = MIT
+	checkdepends = python-mock
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/l/lizard/lizard-1.17.10.tar.gz
-	b2sums = 9b2e3e65430b57ab0a5a48ac36c3fd045cdcdbad5612b40091f73b1641c4eb724c604aa23a04cc16542c423fd6c811e36a910a31b247f011ae44b40477e9bd54
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-jinja
+	depends = python-pygments
+	source = python-lizard-1.17.13.tar.gz::https://github.com/terryyin/lizard/archive/refs/tags/1.17.13.tar.gz
+	b2sums = e41e7bb461f64459f9327fa5719e57cc713dcebb89dfb6b01e27f38a9c6014bbe77b1a50cab094a8b68b630385ca9ff3c35b1a9a65545e9c23942f038b560d33
 
 pkgname = python-lizard
