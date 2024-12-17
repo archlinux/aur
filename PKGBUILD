@@ -4,7 +4,7 @@ pkgname='concrnt-webui-bin'
 pkgdesc='Concrnt registration page and admin panel'
 pkgver=1.6.0
 _pkgver=v${pkgver}
-pkgrel=6
+pkgrel=7
 arch=('any')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
@@ -26,7 +26,7 @@ source=("ccweb-${pkgver}::https://github.com/totegamma/concurrent/releases/downl
 sha512sums=('ea478f9011f44c8e92554bc50389cc7de9fcb0e464d5cbb4882215a2f43c438ce964a3c024a25490e2a375bfd0671d132c96c42a432dceb96d80d1a841af592e'
             '6991f0cdffef328c29368d987a46e2d12d765b743cad04ae4c89469e1644f11f079fb495e5297b79d521f88b40d6fb3c5b972279c95f394bdb07cf4a2037f412'
             '1f9ad0d2b2b012f8ee467aac1f638d75c83b02ef254822787c6ccbbd14ed5314085e182489c7ce2887c62ac80cd58c55331a0768aebb8ca4dbb13d391a4fcae9'
-            'a94c0f90ace2647bb4bc1242408dc73da581c8c9cf3f6aef8ccfbf24b85c5fc71fb778ea50b77f63efed2fcef96bef423fb7380e374cdf95a7f1e23344743796'
+            'b3e1e5af5659ef5ee712013a6607bb07c704241953aaa75c4e5e9b909d3207a72813169d394854e2f6209daa46f875c67d3b409dd44ebeef1e68c9a411152b52'
             '7abff3be9bd1ef4864b3ecec1a8c68d7f6d9b1f69a00b19e2d1f704b430ab5eefe9bedc267d1993c3c248f1303fcc7c1a17e52b71fbda71a492a6ae6a572e725'
             'a481f8c4a9f0dc25544aa8ea68b2ecd6405c48b000a07b3d5fd8989fa882ccc8c9859bd69be44f52cdcab509daf1f2fc25e18a29ea7db0b930de399a0032f8fe'
             '87c0f8c1ec8ce38fdd755153d0956a2fdb01789b31fcbd2109d11a6d70a239536e7a884c120f2d7e40046f6e0827e647e84e5650995f9ecb37786608bc4b1631'
@@ -36,7 +36,7 @@ package() {
   # runtime dependency
   depends=('concrnt-gateway' 'concrnt-shared-config')
 
-  mkdir -p ${pkgdir}/var/lib/concrnt
+  mkdir -p ${pkgdir}/usr/share/concrnt
   cp -dpTr --no-preserve=ownership "${srcdir}/dist" "${pkgdir}/usr/share/concrnt/web"
   install -Dm644 "${srcdir}/Caddyfile" "${pkgdir}/etc/concrnt/config/webui/Caddyfile"
   install -Dm644 "${srcdir}/nginx.conf" "${pkgdir}/etc/concrnt/config/webui/nginx.conf"
