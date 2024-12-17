@@ -46,10 +46,11 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  mkdir build
-  cd build
-  cmake ..
-  cmake --build .
+  cmake \
+    -B build \
+    -S . \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo
+  cmake --build build
 }
 
 package() {
