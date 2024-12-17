@@ -4,7 +4,7 @@ pkgname=ledfx-cc-bin
 _pkgname="${pkgname%-bin}"
 pkgver=2.0.105b15
 _pkgver="${pkgver//b/-b}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Network based LED effect controller with support for advanced real-time audio effects"
 arch=('x86_64')
 url="https://github.com/LedFx/LedFx"
@@ -25,7 +25,7 @@ sha256sums_x86_64=('a0f94c60a6f1443cba559c88fe711d749e0bbf4ef4450caade65441870f9
 prepare() {
     chmod +x "${srcdir}/${_appimage}"
     ${srcdir}/${_appimage} --appimage-extract ledfx.desktop
-    ${srcdir}/${_appimage} --appimage-extract 'usr/share/icons/hicolor/0x0/apps/ledfx.png'
+    ${srcdir}/${_appimage} --appimage-extract 'usr/share/icons/hicolor/512x512/apps/ledfx.png'
 }
 
 build() {
@@ -41,7 +41,7 @@ package() {
     install -Dm 0644 "${srcdir}/ledfx.desktop" \
         "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     # Copy icons
-    install -Dm 0644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/ledfx.png" \
+    install -Dm 0644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/ledfx.png" \
         "${pkgdir}/usr/share/icons/hicolor/512x512/apps/ledfx.png"
     # Symlink executable
     install -dm 0755 "${pkgdir}/usr/bin"
