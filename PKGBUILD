@@ -26,6 +26,7 @@ package() {
     install -Dm644 toml.h "${pkgdir}/usr/include/toml.h"
     install -Dm755 libtoml.so.1.0 "${pkgdir}/usr/lib/libtoml.so.1.0"
     ln -s libtoml.so.1.0 "${pkgdir}/usr/lib/libtoml.so"
+    install -Dm755 libtoml.a "${pkgdir}/usr/lib/libtoml.a"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     
     mkdir -p "${pkgdir}/usr/lib/pkgconfig"
