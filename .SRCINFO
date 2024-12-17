@@ -4,6 +4,7 @@ pkgbase = tree-sitter-jule-git
 	pkgrel = 1
 	url = https://github.com/TheLooped/tree-sitter-jule
 	arch = any
+	groups = jule
 	groups = tree-sitter-grammars
 	license = BSD-3-Clause
 	makedepends = tree-sitter
