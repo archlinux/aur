@@ -10,6 +10,13 @@ makedepends=('git' 'clang' 'cmake' 'rust')
 source=("git+https://github.com/romanz/electrs.git#tag=v$pkgver")
 md5sums=('12f22f6bfe4e1fc27247f6e03783f4b3')
 
+prepare() {
+  if check_option lto y; then
+    CFLAGS+=" -ffat-lto-objects"
+    CXXFLAGS+=" -ffat-lto-objects"
+  fi
+}
+
 build() {
   cd "$pkgname"
   cargo build --bins --tests --release --locked
