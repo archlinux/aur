@@ -1,4 +1,6 @@
 {
+	admin 127.0.0.1:28289
+
 	log {
 		output file /var/log/concrnt/webui/caddy.log
 	}

@@ -1,7 +1,5 @@
 [Unit]
 Description=Nginx service for concrnt webui
-Wants=concrnt-gateway.service
-After=concrnt-gateway.service
 Conflicts=concrnt-webui-caddy.service
 
 [Service]
