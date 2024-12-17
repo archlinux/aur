@@ -1,0 +1,3 @@
+[weechat-matrix]
+source = "git"
+git = "https://github.com/poljar/weechat-matrix.git"

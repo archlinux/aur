@@ -1,0 +1,26 @@
+From b8fddf9ca6d6220556403755bfc10a1ccf7ee416 Mon Sep 17 00:00:00 2001
+From: "Matteo Piccinini (loacker)" <matteo.piccinini@gmail.com>
+Date: Tue, 17 Dec 2024 12:41:41 +0100
+Subject: [PATCH] fix(tests): module webcolors has no attribute
+ HTML4_HEX_TO_NAMES
+
+---
+ tests/color_test.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/color_test.py b/tests/color_test.py
+index 79b5a28..fa26e30 100644
+--- a/tests/color_test.py
++++ b/tests/color_test.py
+@@ -20,7 +20,7 @@ weechat_prism = (
+     u"\x1b[038;5;1mT\x1b[039m\x1b[038;5;9me\x1b[039m\x1b[038;5;3ms\x1b[039m\x1b[038;5;11mt\x1b[039m"
+ )
+ 
+-first_16_html_colors = list(webcolors.HTML4_HEX_TO_NAMES.values())
++first_16_html_colors = list(webcolors.names("html4"))
+ 
+ 
+ def test_prism():
+-- 
+2.47.1
+
