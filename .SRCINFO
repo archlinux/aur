@@ -1,0 +1,19 @@
+pkgbase = permission-viewer-git
+	pkgdesc = A quick application to display the Flatpak permission store
+	pkgver = r11.ebb3704
+	pkgrel = 1
+	url = https://github.com/matthiasclasen/permission-viewer
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = meson
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = xdg-desktop-portal
+	source = git+https://github.com/matthiasclasen/permission-viewer.git
+	b2sums = SKIP
+
+pkgname = permission-viewer-git
