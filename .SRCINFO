@@ -1,7 +1,7 @@
 pkgbase = dkimpy-milter
 	pkgdesc = DomainKeys Identified Mail (DKIM) milter in Python, with support for ed25519 signatures
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/dkimpy-milter
 	install = dkimpy-milter.install
 	arch = any
@@ -15,10 +15,10 @@ pkgbase = dkimpy-milter
 	depends = libmilter
 	optdepends = postfix: for sending mail
 	backup = etc/dkimpy-milter/dkimpy-milter.conf
-	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/dkimpy-milter/1.2.3-2/dkimpy-milter_1.2.3-2.debian.tar.xz
+	source = https://salsa.debian.org/python-team/packages/dkimpy-milter/-/archive/debian/1.2.3-2/dkimpy-milter-debian-1.2.3-2.tar.gz
 	source = dkimpy-milter.sysusers
 	source = dkimpy-milter.tmpfiles
-	b2sums = 8e337a8540ab832cfffd9ce9ae87fa95786d7a71d2c9b7ac2f8ffd4f75f84c98938b95fe4be92393b28258132e19cdfa4e0e652b2824a95a013a5a50822a70a2
+	b2sums = a999d1dc1cc3cb83d414e75cfa7a97631027ee585a526ce87713b340499d9a17839a7ba5bad19a9048f668e703ce80c7815c1f8e5c04aa04eac0ef750083dd22
 	b2sums = 715d82d99ece58b07b94705efe9600800699ff027aab8b7f3c61385b91a722dd01b7b0b2c0e7fa54ae76a8d58d1c567b905c790a01929b268ea2d73c498e6281
 	b2sums = e84611a948c679b8b2e10b1241fad9d5a0d5a6b268989cdbfb06e4b90c1f2ba94c21716a4d0d8ce65a1ae2b2c49d9fbc93737b80050ede1c0f14d2ad6ec3dc85
 
