@@ -1,4 +1,4 @@
-# Maintainer: Your Name <stepan.ciptik@yandex.ru>
+# Maintainer: Ciptik <stepan.ciptik@yandex.ru>
 # Contributor: cktan github.com/cktan
 
 pkgname=tomlc99-git
