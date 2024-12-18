@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail ðot com>
 # Partially adapted from https://github.com/wasta-linux/lameta-snap
 pkgname=lameta
-pkgver=2.3.12_beta
+pkgver=2.3.13_beta
 _electron=electron23
 pkgrel=1
 pkgdesc="The Metadata Editor for Transparent Archiving of language document materials"
@@ -25,7 +25,7 @@ source=(
 	"${pkgname}.desktop"
   'no_node_pin.patch'
 )
-sha256sums=('37b91511418ba767d88f5937e254832bfd08eb51041b7ae19b3f0705e0417e06'
+sha256sums=('2ed15bf848887aafeb0a7884e4a8a0c481444d84078b904779125d50dbffbf34'
             '874e1acc986076e9c876c6ccd2efc7ee0dcda322733c018fb8e3d0bf010b8791'
             '7bc59aee62f8a77217d76ae42f6445ed51375f5c1c158c678aa56c208edbdc28')
 
