@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MutationalPatterns
-_pkgver=3.14.0
+_pkgver=3.16.0
 pkgname=r-${_pkgname,,}
-pkgver=3.14.0
+pkgver=3.16.0
 pkgrel=1
 pkgdesc='Comprehensive genome-wide analysis of mutational processes'
 arch=('any')
@@ -48,7 +48,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c1485d75b1695ab4cf52f05774c6e52a442fe7e118e7c94ad57cb2210025ae6a')
+sha256sums=('d747ec7f10093ca7f78a4500e1916cd4b2ecf1b4e8bc41733ff21601687a4599')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
