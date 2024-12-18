@@ -1,8 +1,8 @@
 pkgbase = gtkimageview
 	pkgdesc = Simple image viewer widget for GTK2
 	pkgver = 1.6.4
-	pkgrel = 8
-	url = https://github.com/GNOME/gtkimageview
+	pkgrel = 9
+	url = https://wiki.gnome.org/Projects(2f)GTK(2f)GtkImageView.html
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = pkg-config

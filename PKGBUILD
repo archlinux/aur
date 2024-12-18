@@ -4,10 +4,10 @@
 
 pkgname=gtkimageview
 pkgver=1.6.4
-pkgrel=8
-pkgdesc="Simple image viewer widget for GTK2"
+pkgrel=9
+pkgdesc='Simple image viewer widget for GTK2'
 arch=('x86_64')
-url="https://github.com/GNOME/gtkimageview"
+url='https://wiki.gnome.org/Projects(2f)GTK(2f)GtkImageView.html'
 license=('LGPL2.1')
 depends=('gtk2')
 makedepends=('pkg-config' 'python' 'gnome-common')
