@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MetaboAnnotation
-_pkgver=1.10.0
+_pkgver=1.10.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -41,8 +41,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5220af7284f5d8b782230028ba1406fe')
-b2sums=('16ad758a7daaeeaf2b90eb513087cc3773d254963f1e5fef1532b6c103d04d47cba8aa212e335ffc33c76bf6dd72968336a4e1924f560acd3259122be4a53b36')
+md5sums=('c32031c66fcf2912abd0087f566e6c1d')
+b2sums=('213c46860d4280569e4cc14747f9b85f564bf0363516371efe7cf2ca5aea4a336dcfb804013dd70965db6350108dc398248259e5abf725d7e5b0ac9b54a42c4b')
 
 build() {
   mkdir build
