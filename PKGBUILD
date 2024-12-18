@@ -1,6 +1,6 @@
 # Maintainer Hari Chalise <harilvfs@chalisehari.com.np>
 pkgname="carch"
-pkgver="v3.0.9"
+pkgver="v4.0.0"
 pkgrel=1
 pkgdesc="An automated script for quick & easy Arch Linux system setup"
 arch=(any)
@@ -30,7 +30,7 @@ md5sums=('SKIP')
 
 package() {
 
-    install -Dm 755 ${srcdir}/carch-${pkgver}/build/core.sh -t ${pkgdir}/usr/bin/carch
+    install -Dm 755 ${srcdir}/carch-${pkgver}/build/carch -t ${pkgdir}/usr/bin/carch
     
     install -d "$pkgdir/usr/bin/scripts"
     
