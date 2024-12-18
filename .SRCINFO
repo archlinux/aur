@@ -1,6 +1,6 @@
 pkgbase = dcmtk
 	pkgdesc = A collection of libraries and applications implementing large parts the DICOM standard
-	pkgver = 3.6.8
+	pkgver = 3.6.9
 	pkgrel = 1
 	url = http://dicom.offis.de/dcmtk
 	arch = i686
@@ -12,8 +12,9 @@ pkgbase = dcmtk
 	depends = libtiff
 	depends = libxml2
 	depends = openssl
+	depends = openjpeg2
 	depends = zlib
-	source = https://dicom.offis.de/download/dcmtk/dcmtk368/dcmtk-3.6.8.tar.gz
+	source = https://dicom.offis.de/download/dcmtk/dcmtk369/dcmtk-3.6.9.tar.gz
 	sha512sums = 1bb2aad1aa63e0a1b79d92d7c932a969deccde03fdb484dbd44198effb58d50de44a2b0cda150ce7df63e4e986af5bc1f694c8a7988b4c049c578d83ba81184a
 
 pkgname = dcmtk
