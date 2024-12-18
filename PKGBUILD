@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=compEpiTools
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Tools for computational epigenomics'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm9.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('58acce986f19383b714630ff242c5a3900343f636590924230baf0af6174d013')
+sha256sums=('4603ede57815980e4a028bcbce2cdcb726a888b63a86c490b56967738b177fcd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
