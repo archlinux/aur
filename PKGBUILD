@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=wakatime
 pkgname="desktop-${_appname}-bin"
-pkgver=2.0.0
+pkgver=2.0.2
 _electronversion=32
 pkgrel=1
 pkgdesc="A system tray app for automatic time tracking and metrics generated from your Figma, Postman, etc. usage.(Prebuilt version.Use system-wide electron)"
@@ -28,9 +28,9 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/wakatime-linux-x86_64.AppImage")
 sha256sums=('e24e2e299e12cd69f5703c98bc70bde26642b4be896f36bc1e4ca00bb497e399'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('fb3b5915b71604e00605e457a793f5fbe53ce0a51eb947f02c30cd4ca2858cac')
-sha256sums_x86_64=('5f77847a35fcedd49253353cf0643e32e8835c849e6aaf1535b2c89c1e4111fc')
-build() {
+sha256sums_aarch64=('9d6f7c88f1365df8b0d9cb92dbbb29a61360e7e3a7d2637ee90164840ef2ac3a')
+sha256sums_x86_64=('4272aaf33bee2abdb08087abfa9df0c874036eb8b29c8ddf0ede50ca615bcb25')
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
