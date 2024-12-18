@@ -1,12 +1,14 @@
-# Maintainer: garionion <garionion at entr0py.de>
+# Maintainer: q234 rty <q23456yuiop at gmail dot com>
+# Contributor: garionion <garionion at entr0py.de>
+# Contributor: The one with the braid <info@braid.business>
 # thanks to celogeek, sseneca, dr460nf1r3, dr460nf1r3 and AverytheFurry for pointing out multiple things
 
 pkgname=simple-live-app
 _pkgname=dart_simple_live
 _appname=simple_live_app
 pkgver=1.7.5
-pkgrel=1
-pkgdesc='简简单单的看直播'
+pkgrel=2
+pkgdesc='An app for watching live'
 arch=('x86_64' 'aarch64')
 url='https://github.com/xiaoyaocz/dart_simple_live'
 license=('GPL-3.0-only')
