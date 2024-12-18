@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ramwas
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Fast Methylome-Wide Association Study Pipeline for Enrichment Platforms'
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3ad94b9a6401144fc378b3423339efa23609f3a4e772107f744d78b93111ee2b')
+sha256sums=('11880833ff1f6f4078f26f6f77a2b25fd494d289dbda63a84af5ca9acdb5e877')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
