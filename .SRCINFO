@@ -1,6 +1,6 @@
 pkgbase = musoq
 	pkgdesc = SQL Swiss Army Knife - Engine for Diverse Data Sources
-	pkgver = 0.18.3
+	pkgver = 0.18.4
 	pkgrel = 1
 	url = https://github.com/Puchaczov/Musoq
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = musoq
 	source = musoq.service
 	source = README.md
 	sha256sums = 93cc95a3787ded1ff91625612a9d1af9f449e6eaddb804dee030ba21be3450ce
-	sha256sums = 7749797c7e8522c283d7abe0943b991ce3434511216c37ea5501a6270403dbfc
-	source_x86_64 = Musoq_0.18.3_x86_64.zip::https://github.com/Puchaczov/Musoq.CLI/releases/download/0.18.3/Musoq-linux-x64.zip
-	sha256sums_x86_64 = 17640959cd1a1793c1cc2914729bea4352e324f90fed77000e05737af50ffe59
-	source_aarch64 = Musoq_0.18.3_aarch64.zip::https://github.com/Puchaczov/Musoq.CLI/releases/download/0.18.3/Musoq-linux-arm64.zip
-	sha256sums_aarch64 = 8df0386cfc53d50bca5adad77e76faa638fdeebd7e9d24fbb4d1cf3c3e3c67f1
+	sha256sums = c569855e36e6f3dc3775f581e7623b8d79742f6a101898cafdaa8c5680cb4441
+	source_x86_64 = Musoq_0.18.4_x86_64.zip::https://github.com/Puchaczov/Musoq.CLI/releases/download/0.18.4/Musoq-linux-x64.zip
+	sha256sums_x86_64 = c4a7eddcbc2d2965dba81664e51211301a55e27723f77acd5bf48431bd22116d
+	source_aarch64 = Musoq_0.18.4_aarch64.zip::https://github.com/Puchaczov/Musoq.CLI/releases/download/0.18.4/Musoq-linux-arm64.zip
+	sha256sums_aarch64 = 27d2d1ddb9dbd1758904680d9e3c218de76b52364a73bb67e723250fd9ca4e0f
 
 pkgname = musoq

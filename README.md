@@ -5,7 +5,7 @@
 [![Nuget](https://img.shields.io/badge/Nuget%3F-yes-green.svg)](https://www.nuget.org/packages?q=musoq)
 ![Tests](https://raw.githubusercontent.com/puchaczov/musoq/master/badges/tests-badge.svg)
 
-Musoq lets you use SQL-like queries on files, directories, images and other data sources without a database. It's designed to simplify data analysis for developers and IT professionals.
+Musoq lets you use SQL-like queries on files, directories, images and other data sources without a database. It's designed to ease life for developers.
 
 ## 🚀 Quick Start
 
@@ -20,6 +20,37 @@ To try out Musoq, follow the instructions in [CLI repository](https://github.com
 - Create custom data source plugins to fit your needs
 
 Musoq aims to make data exploration easier, whether you're analyzing log files, searching through directories, or extracting information from CSVs. It's a tool built to save time and reduce complexity in everyday data tasks.
+
+## 🛠 Supported Data Sources
+
+### Operating System & Files
+- **OS**: Query your filesystem, processes, and system metadata - from file contents to EXIF data
+- **Archives**: Treat ZIP and other archive files as queryable tables
+- **FlatFile**: Work with any text-based files as database tables
+- **SeparatedValues**: Handle CSV, TSV and other delimited files with SQL capabilities
+
+### Development Tools
+- **Git**: Query Git repositories - analyze commits, diffs, branches and more
+- **Roslyn**: Analyze C# code structure, metrics and patterns using SQL
+- **Docker**: Query containers, images and Docker resources *(experimental)*
+- **Kubernetes**: Interact with K8s clusters, pods and services *(experimental)*
+
+### Database & Storage
+- **Postgres**: Query PostgreSQL databases directly *(experimental)*
+- **Sqlite**: Work with SQLite databases *(experimental)*
+- **Airtable**: Access Airtable bases through SQL interface
+- **Json**: Query JSON files with SQL syntax
+
+### AI & Analysis
+- **OpenAI**: Enhance queries with GPT models for text extraction and analysis
+- **Ollama**: Use open-source LLMs for data extraction and processing
+
+### Domain-Specific
+- **CANBus**: Analyze CAN bus data and DBC files for automotive applications
+- **Time**: Work with time-series data and schedules
+
+### Utility
+- **System**: Core utilities including ranges, dual tables and common functions
 
 ## 🎯 What Musoq Is (and Isn't)
 
@@ -231,7 +262,7 @@ FROM #separatedvalues.csv('/home/somebody/comments_sample.csv', true, 0) csv
 INNER JOIN #openai.gpt('gpt-4-1106-preview') gpt on 1 = 1
 ```
 
-🔍 SQL-Powered Data Extraction
+### 🔍 SQL-Powered Data Extraction
 
 ```sql
 -- Extract imports from proto file:
@@ -348,22 +379,6 @@ Musoq supports a rich set of SQL-like features:
 - INNER, LEFT OUTER, RIGHT OUTER JOIN operator
 - ORDER BY operator
 - CROSS / OUTER APPLY operator
-
-## 🛠 Supported Data Sources
-
-- Airtable (allows to query tables from Airtable)
-- Archives (allows to treat archives as tables)
-- CANBus (allows to treat CAN .dbc files and corresponding .csv files that contains records of a CAN bus as tables)
-- Docker (allows to treat docker containers, images, etc as tables)
-- FlatFile (allows to treat flat files as table)
-- Json (allows to treat json files as tables)
-- Kubernetes (allows to treat kubernetes pods, services, etc as tables) - experimental
-- OpenAI (exists mainly to be combined with other plugins to allow fuzzy search by GPT models)
-- Postgres (allows to treat postgres database as tables) - experimental
-- SeparatedValues (allows to treat separated values files as tables)
-- Sqlite (allows to treat sqlite database as tables) - experimental
-- System (mostly utils, ranges and dual table resides here) -
-- Time (allows to treat time as table)
 
 ## 🧭 Roadmap
 
