@@ -7,7 +7,7 @@ pkgname="${_pkgname}"
 epoch=0
 _pkgver=1.0.0
 pkgver="${_pkgver}"
-pkgrel=9
+pkgrel=10
 pkgdesc="Printer filter for Pentax PocketJet 200 and PocketJet II printers. Needed in addition to the PPDs/ files that come with foomatic-db/ CUPS. Includes printer documentation."
 arch=('i686' 'x86_64')
 url="http://web.archive.org/web/20191225160215/http://ww1.pragana.net/gdiprinters.html#pentaxpj"
@@ -32,6 +32,7 @@ makedepends=(
 )
 
 optdepends=(
+  "foomatic-db: To generate a PPD file for this printer when adding it via CUPS."
   "tk: For GUI to change config file for LPD usage."
 )
 
