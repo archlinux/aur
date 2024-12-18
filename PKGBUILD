@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SARC
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -44,8 +44,8 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm10.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c9049814349b5f868bd9415d032e70b1')
-b2sums=('4a53269c55e8015f353025591cfc1d096916898778376bdd1b6d125004c9bb40428d93bbd7ff14e5f9f45a3bd9f7e4499e4939a4f5ba38f0e3caad31b3a863e7')
+md5sums=('e9da6decb3dcdfca23fcb7cef3cfe455')
+b2sums=('5a55214038dab78628bddb8aa2679f897858343bcf864d9e181b439c7ac46e2545c6ddd8ee14a2b245e76bd0cbcba02dcc3313c3cfa1548c01e32a9ce3390e56')
 
 build() {
   mkdir build
