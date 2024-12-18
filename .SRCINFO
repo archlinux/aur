@@ -10,6 +10,7 @@ pkgbase = anitr-cli
 	makedepends = cmake
 	depends = curl
 	depends = rofi
+	depends = mpv
 	optdepends = rofi
 	optdepends = rofi-wayland: For Wayland support
 	source = https://github.com/xeyossr/anitr-cli/archive/refs/tags/v0.1.0.tar.gz
