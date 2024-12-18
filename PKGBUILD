@@ -1,9 +1,9 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
-_fullver="13.4.5-1"
+_fullver="14.0-5"
 pkgname="xpipe-ptb"
-pkgver="13.4.5"
-pkgrel="1"
+pkgver="14.0"
+pkgrel="5"
 epoch=1
 pkgdesc="XPipe (Public Test Build) releases"
 arch=('x86_64' 'aarch64')
