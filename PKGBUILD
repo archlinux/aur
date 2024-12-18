@@ -1,33 +1,24 @@
 # Maintainer: kamisaki
 # Description: A terminal wrap tool inspired by Spotify Wrapped
 
+
 pkgname=terminalwrap
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A terminal wrap tool inspired by Spotify Wrapped"
 arch=('x86_64')
 url="https://github.com/xeyossr/terminalwrap"
 license=('GPL-3')
-makedepends=('gcc' 'make' 'cmake') 
-source=("https://github.com/xeyossr/terminalwrap/archive/refs/tags/v$pkgver.tar.gz")
+depends=('gcc')
+source=("git+https://github.com/xeyossr/terminalwrap.git")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/terminalwrap-$pkgver"
-  mkdir -p build
-  cd build
-
-  cmake .. -DCMAKE_BUILD_TYPE=Release
-  make
+  cd "$srcdir/terminalwrap"
+  g++ -O3 -march=native -flto -funroll-loops -ftree-vectorize -std=c++17 -o terminalwrap terminalwrap.cpp
 }
 
 package() {
-  cd "$srcdir/terminalwrap-$pkgver/build/dist"
-
-  if [[ -f terminalwrap ]]; then
-    install -Dm755 terminalwrap "$pkgdir/usr/bin/terminalwrap"
-  else
-    echo "Error: terminalwrap executable not found. Build may have failed."
-    exit 1
-  fi
+  cd "$srcdir/terminalwrap"
+  install -Dm755 terminalwrap "$pkgdir/usr/bin/terminalwrap"
 }
