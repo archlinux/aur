@@ -1,5 +1,5 @@
 pkgbase = c-lcrypt
-	pkgdesc = C++ encryption program with RAM-based I/O, featuring byte shuffling, binary reversal, bit insertion, byte substitution with randomized table, and XOR key encryption for secure file handling.
+	pkgdesc = C++ encryption program with RAM-based I/O, featuring byte shuffling, binary reversal, bit insertion, byte substitution with randomized table, and XOR key encryption for secure file/folder handling.
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Locotir/C-LCRYPT
