@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MADSEQ
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Mosaic Aneuploidy Detection and Quantification using Massive Parallel Sequencing Data'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a79276c5404bb5cc30c73cccbe2e5ac56243b3383b53465212742b6dd1e3252c')
+sha256sums=('f57e9c91e19b94fea0be66a2513c80174a312564837e1b9333b060f0d99f3d93')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
