@@ -1,7 +1,7 @@
 pkgbase = grind-rs
 	pkgdesc = Have you ever wanted to grind and be a sigma?
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nnyyxxxx/grind-rs
 	arch = x86_64
 	license = GPL-2.0

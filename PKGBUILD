@@ -3,7 +3,7 @@
 
 pkgname=grind-rs
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Have you ever wanted to grind and be a sigma?'
 arch=('x86_64')
 url="https://github.com/nnyyxxxx/$pkgname"
@@ -26,6 +26,7 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
+  install -Dm0755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
   install -Dm644 readme.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
