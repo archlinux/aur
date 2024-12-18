@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=tadar
-_pkgver=1.2.1
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('63b8401414abc199507181f5eec9dae5')
-b2sums=('0cd6671c60e92feae41c55402eaebf89dc2be04a04c3991dfdb4f41eeb41f08ac2b4c593078248ce75bfa9cb0b28b63f34b4b1799b70f913a99cff80b674930e')
+md5sums=('2befd08cefb1a79c02ba456de5d8ef2a')
+b2sums=('a9e3202f943c683df1e51d30c4646f502cd324a71782f1e85c5037e972c6047c55737c9efd12651c3700d5cfce55fa05f70dbaa28eee74d41340ee7104c20341')
 
 build() {
   mkdir build
