@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onlook-git
 _pkgname=Onlook
-pkgver=r404.0efefa7
+pkgver=0.1.5.r12.g2d81b31
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -33,11 +33,9 @@ sha256sums=('SKIP'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    (
-        set -o pipefail
-        git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || 
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse -q --verify HEAD | cut -c1-7)"
-    )
+    set -o pipefail
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -45,7 +43,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -55,7 +53,7 @@ build() {
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname//-/.}/apps/studio"
+    cd "${srcdir}/${pkgname//-/.}"
     electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -74,12 +72,13 @@ build() {
             echo '[install]'
             echo 'registry = "https://registry.npmmirror.com"'
         } >> bunfig.toml
-        #echo apps/studio apps/backend apps/backend/supabase packages/cli packages/foundation plugins/babel plugins/next | xargs -n 1 cp bunfig.toml
+        echo apps/studio apps/backend apps/backend/supabase packages/cli packages/foundation plugins/babel plugins/next | xargs -n 1 cp bunfig.toml
     fi
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    sed -i "s/\/\${version}//g" electron-builder.json5
     NODE_ENV=development    bun install
-    NODE_ENV=production     bun vite build
+    NODE_ENV=production     bun build:foundation
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}/apps/studio"
     NODE_ENV=production     bun exec "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.json5"
 }
 package() {
