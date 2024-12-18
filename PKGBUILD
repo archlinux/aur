@@ -2,7 +2,7 @@
 _appname=codius
 pkgname="vs${_appname}-bin"
 _pkgname=VSCodius
-pkgver=1.95.3
+pkgver=1.96.0
 _electronversion=32
 pkgrel=1
 pkgdesc="Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements.(Prebuilt version)"
@@ -33,9 +33,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}-Linux-x64-${pkgver}.zip"
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/RubisetCie/vscodius/v${pkgver}/LICENSE.txt"
 )
-sha256sums=('46f046dd7145dc68fc61c2ee24f0a049bae6a73bc18b5ac39f9bb784888cae61'
+sha256sums=('5902c8e1542908a8bfd32ea96d0e9ac3fb41011437d5c504be1403e6d3620d6e'
             '9480271317925265e806a9a196aaa33410a962fa9d4d1e248a4a5187bc8c9df9')
-build() {
+prepare() {
     gendesk -f -n -q --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin}"
     install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
