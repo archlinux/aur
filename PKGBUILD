@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=epivizr
-_pkgver=2.34.0
+_pkgver=2.36.0
 pkgname=r-${_pkgname,,}
-pkgver=2.34.0
+pkgver=2.36.0
 pkgrel=1
 pkgdesc='R Interface to epiviz web app'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('67e00644308c82625d9809d6f63cf087d3aa050d2eaf1d03b4e557305b82c61f')
+sha256sums=('a6d58b2425da2dcd77db6dc786ffefca4aca129416982e1e2c5f8e8ab4a31f84')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
