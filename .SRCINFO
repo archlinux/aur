@@ -1,6 +1,6 @@
 pkgbase = r-transcriptr
 	pkgdesc = An Integrative Tool for ChIP- And RNA-Seq Based Primary Transcripts Detection and Quantification
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/transcriptR
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-transcriptr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/transcriptR_1.32.0.tar.gz
-	sha256sums = d190c6489a9094924c15b43aa86284552144103a40e6434f699e60947d0ba1d3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/transcriptR_1.34.0.tar.gz
+	sha256sums = 85ac1470223077362f14bedc47e67df6d2420bb0a6fb1d002de820bbdde36401
 
 pkgname = r-transcriptr
