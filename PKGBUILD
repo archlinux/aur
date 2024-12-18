@@ -1,4 +1,4 @@
-# Maintainer: cafreo <youremail@domain.com>
+# Maintainer: cafreo
 pkgname=wealthfolio-bin
 _pkgname=Wealthfolio
 pkgver=1.0.21
