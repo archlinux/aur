@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IsoformSwitchAnalyzeR
-_pkgver=2.4.0
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -54,8 +54,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('342efbd24db12e57c05e197f9a1572f8')
-b2sums=('b56340539344cb65f6c66438b6699c4e4520517458cbc9e691b5a12d79294bce1127f7ce457a8261f5983a516dea0a8efdc9a3807c60f580badb24abf52044ab')
+md5sums=('7818e5233168673220445e38a823ce51')
+b2sums=('2c74eec3ff54c4e4517a4098d10727495540d1e76f8b36034cdb29224a014d8be014c7d29ea6fa153a77a5d98c08b94e4405d26c9d79fccef70abf9be4de61f9')
 
 build() {
   mkdir build
