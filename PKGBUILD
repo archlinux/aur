@@ -2,7 +2,7 @@
 _projname="Polyversal"
 _pkgname="$(echo "$_projname" | tr "P" "p")-patcher"
 pkgname="$_pkgname-bin"
-pkgver=2.1.3
+pkgver=2.2.0
 _pkgver="$(echo "$pkgver" | tr "." "_")"
 _repo="CommitteeOfZero/polyversal-coz-linux-patcher"
 _archive="$_projname-v$_pkgver"
@@ -28,7 +28,7 @@ source=(
   "$_pkgname.svg::https://raw.githubusercontent.com/$_repo/$pkgver/assets/logo-square.svg"
 )
 sha256sums=(
-  "0577797679182b4b3a8f0e9632517723717d68c249458b0961f18be1d91c96de"
+  "f26006323e00de04d421d1ac94656208c18cf6868cede5d0654e7d410e2b8373"
   "62f3a79c1446932e1ce1d4a56991113739c7d7c6d8b4a8d9c994b62468229960"
 )
 
