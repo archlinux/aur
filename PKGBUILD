@@ -16,6 +16,13 @@ source_aarch64=("tarman::https://github.com/Alessandro-Salerno/tarman/raw/refs/h
 sha256sums_x86_64=('SKIP') 
 sha256sums_aarch64=('SKIP')
 
+pkgver() {
+	# Get latest release's tag as version
+    local tag=$(curl -s https://api.github.com/repos/Alessandro-Salerno/tarman/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
+    tag=${tag//[v]/}
+    pkgver=$tag
+    echo "$pkgver"
+}
 package() {
     install -Dm755 "$srcdir/tarman" "$pkgdir/usr/bin/tarman"
 }
