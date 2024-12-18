@@ -4,7 +4,7 @@
 
 pkgname=ruby-dotenv
 _pkgname=${pkgname#ruby-}
-pkgver=3.1.6
+pkgver=3.1.7
 pkgrel=1
 pkgdesc="Loads environment variables from .env"
 arch=(any)
@@ -19,7 +19,7 @@ checkdepends=(ruby-rspec)
 options=(!emptydirs)
 install=ruby-dotenv.install
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('32c60364f85291375a0bb2cc8373a38b391f4baacafc3347d4182c1747e6525d')
+sha256sums=('03a0f48c0b8fdf6ae922c2bf61befa44783c5f26eb4d62976fda8ed70c8a9537')
 
 _archive="$_pkgname"
 
