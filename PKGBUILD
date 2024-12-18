@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GOSemSim
-_pkgver=2.30.2
+_pkgver=2.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,7 +14,6 @@ depends=(
   r-dbi
   r-digest
   r-go.db
-  r-httr2
   r-r.utils
   r-rlang
   r-yulab.utils
@@ -39,8 +38,8 @@ optdepends=(
   r-tidyselect
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e69d41b74ff770e54f06d84bf33565da')
-b2sums=('2c6b17e8d2465835a55f95d4f1c3fffa6539edd98c03ae7abed83dd57b16e92e079c682c6df9c770f065ff9f3a28d3e0c70c4fab4508a8d1a0ed6311cc0d1a61')
+md5sums=('91ac358b6d115c6f33062c7e57ca4484')
+b2sums=('300323ace59755dd0c041f7e5cee35a6db185a5ad231b7f1dbca28b98ca71e5cd1f0cd7c571dcc564c8f4f58d4b95cb9dc13e1dacd9deda5e30f47f6c222de02')
 
 build() {
   mkdir build
