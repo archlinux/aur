@@ -1,21 +1,24 @@
 diff --git a/po/pl.po b/po/pl.po
-index ae06747f4..00049ca25 100644
+index 7ec44f17d..23b34e183 100644
 --- a/po/pl.po
 +++ b/po/pl.po
-@@ -390,10 +390,14 @@ msgid "Left"
- msgstr "Lewo"
+@@ -395,3 +395,3 @@ msgstr "Brak"
  
- #: ../settings-dialogs/xfwm4-settings.c:229
+-#: settings-dialogs/xfwm4-settings.c:228
++#: settings-dialogs/xfwm4-settings.c:229
+ msgid "Left"
+@@ -399,7 +399,11 @@ msgstr "Lewo"
+ 
+-#: settings-dialogs/xfwm4-settings.c:229
 -msgid "Center"
 -msgstr "Środek"
++#: settings-dialogs/xfwm4-settings.c:230
 +msgid "Center in Free Space"
 +msgstr "Środek (wolna przestrzeń)"
  
- #: ../settings-dialogs/xfwm4-settings.c:230
+ #: settings-dialogs/xfwm4-settings.c:230
 +msgid "Center in Window"
 +msgstr "Środek (okno)"
 +
-+#: ../settings-dialogs/xfwm4-settings.c:231
++#: settings-dialogs/xfwm4-settings.c:232
  msgid "Right"
- msgstr "Prawo"
- 
