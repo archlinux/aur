@@ -1,0 +1,26 @@
+pkgbase = maps
+	pkgdesc = Sandboxing tool for Mathematical Research Software
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/aaruni96/maps
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = base-devel
+	depends = openssl
+	depends = cairo
+	depends = git
+	depends = gobject-introspection-runtime
+	depends = python3
+	depends = ostree
+	depends = meson
+	depends = python-tomli
+	depends = python-gobject
+	depends = python-progress
+	depends = python-tuspy
+	provides = maps
+	conflicts = maps
+	source = maps-0.3.tar.gz::https://github.com/aaruni96/maps/archive/refs/tags/v0.3.tar.gz
+	sha256sums = c58043b099d5721018b02221afb0621d4deeb3e2bf7bfad0d36f2928ea43f120
+
+pkgname = maps
