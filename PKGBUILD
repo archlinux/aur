@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=timeOmics
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ba8315de54ba6b48d8f3a6bb1c3c1487')
-b2sums=('b8165d9cff2db57b77cf7c333c116cb5967484dac8e54e1aff133450fd18dbb3c37850d18f4334f5c48457fc76f1b503588a3f5d8fd2ef57cfc6db07c51ec0f7')
+md5sums=('051c5b8a48e338b1dfe161fe9ced080a')
+b2sums=('35b6955aa6183ef0247d5eb3c1183c723cc0f50e41434ebb088a040bb6ee6c2611bd737eaacda2b75f548cada415462b982157064b274a52bebc4063025b99bf')
 
 build() {
   mkdir build
