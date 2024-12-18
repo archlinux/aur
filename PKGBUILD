@@ -3,11 +3,12 @@
 # Mantainer: XenGi
 pkgname=unrealtournament
 pkgver=469e_rc4
-pkgrel=3
-pkgdesc="The classic Unreal Tournament from 1999 (OldUnreal pached)"
+pkgrel=4
+pkgdesc="The classic Unreal Tournament from 1999 (GOTY + OldUnreal patches)"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://www.unrealtournament.com/"
 license=('custom')
+conflicts=('unrealtournament-bonuspack1' 'unrealtournament-bonuspack2' 'unrealtournament-bonuspack3')
 depends=('libfmod' 'libxmp' 'mpg123' 'openal' 'sdl2' 'sdl2_ttf')
 source=("ut.desktop"
         "ut.svg.zstd"
