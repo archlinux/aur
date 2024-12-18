@@ -1,1 +1,4 @@
 NVIDIA-OptiX-SDK-*.sh
+*.pkg.tar*
+pkg
+src
