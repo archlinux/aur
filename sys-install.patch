@@ -37,15 +37,13 @@
  fi
  
  # Check of the heap size is already set
-@@ -41,9 +34,9 @@
+@@ -48,9 +41,9 @@
  # Check whether the CLI args contains the debug flag
  if [[ "$*" =~ '--debug' ]]
  then
 -    echo "# Tool home: $DIR"
 +    echo "# Tool home: system"
      echo "# Package:   $APALACHE_JAR"
--    echo "# JVM args: $JVM_ARGS"
-+    echo "# JVM args:  $JVM_ARGS"
-     echo "#"
- fi
+     echo "# JVM args: $JVM_ARGS"
+     echo "# -Djava.io.tmpdir: $JAVA_IO_TMPDIR"
  
