@@ -2,3 +2,4 @@
 source = "git"
 git = "https://github.com/scikit-hep/uproot5.git"
 prefix = "v"
+exclude_regex = ".*(pre|rc|alpha|beta).*"
