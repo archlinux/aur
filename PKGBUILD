@@ -3,8 +3,8 @@
 _org='stack-of-tasks'
 _pkgname='pinocchio'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.3.1
+pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
 url="https://github.com/$_org/$_pkgname"
@@ -13,7 +13,7 @@ depends=('coal' 'eigenpy' 'urdfdom' 'python' 'boost-libs' 'gcc-libs' 'glibc' 'ei
 optdepends=('lua52' 'cppad' 'cppadcodegen')
 makedepends=('cmake' 'boost' 'doxygen')
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('a86ea06a7b4447d00cc46ed541a105f686957400eebb51b25aa41a93c08d855c'
+sha256sums=('83f7af674d65ec1a03bf46f0230a227ba0cd696d46047a82fe87a93e710837e8'
             'SKIP')
 validpgpkeys=(
         'A031AD35058955293D54DECEC45D22EF408328AD'  # https://github.com/jcarpent.gpg
@@ -31,7 +31,6 @@ build() {
         -DBUILD_WITH_CODEGEN_SUPPORT=OFF \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DGENERATE_PYTHON_STUBS=ON \
         -Wno-dev
     cmake --build "build-$pkgver" -j 1
 }
