@@ -1,6 +1,6 @@
 pkgbase = r-gars
 	pkgdesc = GARS: Genetic Algorithm for the identification of Robust Subsets of variables in high-dimensional and challenging datasets
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GARS
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-gars
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GARS_1.24.0.tar.gz
-	sha256sums = 31ae414d6767bd45aa15191a180036a3abc7a3f16bdd0c49ce21ba00cd3225f2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GARS_1.26.0.tar.gz
+	sha256sums = 37c9c4537454aa22a84783e2d7ec1925824d5921de9904f052c162f64874619b
 
 pkgname = r-gars
