@@ -4,8 +4,8 @@ pkgname=kicad-hq
 _name=${pkgname%-hq}
 # pkgver=8.0.6
 # _pkgver=${pkgver}-hq
-_tagname='8.0.6-hq'
-pkgver=20241208
+# _tagname='8.0.6-hq'
+pkgver=8.0.7
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=($CARCH)
@@ -50,11 +50,11 @@ optdepends=('kicad-library: KiCad symbol, footprint and template libraries'
   'kicad-library: KiCad 3D model libraries')
 conflicts=(${pkgname} 'kicad' 'kicad-bzr')
 provides=(${pkgname} 'kicad' 'kicad-bzr')
-source=("${_name}-${_tagname}.tar.gz::https://gitlab.com/kicad-hq/kicad/-/archive/${_tagname}/${_name}-${_tagname}.tar.gz")
-sha256sums=('60dda38272ef78c6d996c0d91ad95b1ae0693ad90d17e4864f5aa1c6f8a13cf6')
+source=("${_name}-${pkgver}.tar.gz::https://gitlab.com/kicad-hq/kicad/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
+sha256sums=('a306703b7c5deb23341b71f72a34102175b3f741fe472e152d8fdd9f4c778ef7')
 
 build() {
-  cd "${srcdir}/${_name}-${_tagname}"
+  cd "${srcdir}/${_name}-${pkgver}"
 
   cmake -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -73,5 +73,5 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C ${srcdir}/${_name}-${_tagname}/build install
+  DESTDIR="$pkgdir" ninja -C ${srcdir}/${_name}-${pkgver}/build install
 }
