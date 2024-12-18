@@ -4,8 +4,8 @@
 
 _pkgname='mycorrhiza'
 pkgname="$_pkgname-git"
-pkgver=1.15.1.r1.g7272801
-pkgrel=1
+pkgver=1.15.1.r3.gd679eb4
+pkgrel=2
 pkgdesc='Filesystem and git-based wiki engine written in Go using mycomarkup (latest git commit)'
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/bouncepaw/$_pkgname"
@@ -68,7 +68,10 @@ build() {
 check() {
   cd "$_pkgname"
 
-  build/mycorrhiza -version
+  go test ./...
+
+  test -t 1 \
+  && build/mycorrhiza -version
 }
 
 package() {
