@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DominoEffect
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('75738ae6c59cfed0643a3bb2da6cd8cc')
-b2sums=('12a601b4463ddaf4ab6e95eda0a274a5cdd8af2f0749011dc7455c72476e4517c7b6b59c7b96e9c182451fa1f1bc6e85a6b7bbf0978e85fa633aa942ff2d17e1')
+md5sums=('fb13c8fd16dd9cd3426bc1c39b02447e')
+b2sums=('5ce4ca5484aedfb0b28c131d4cb47a4c931543cd3ca8c6bc6ab10f200415defadbbeeb528bb0b580274a56a553b6b68473e9e7ba33aee9849e987bae5b2ce53e')
 
 build() {
   mkdir build
