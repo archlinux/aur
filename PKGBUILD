@@ -2,7 +2,7 @@
 # Maintainer: Mark King <mark.king@markzz.com>
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
 pkgname=libtrace
-pkgver=4.0.21
+pkgver=4.0.26
 pkgrel=1
 pkgdesc="a library for trace processing supporting multiple input and output methods"
 arch=('x86_64')
@@ -25,4 +25,4 @@ package() {
   make DESTDIR="$pkgdir/" install
 }
 
-sha256sums=('9e53d4587d0f2ec12db9666ef7c090f24c0ee01d853b839da4584b8a400d80b5')
+sha256sums=('8174322a0ca44398addf7dfabea926876ef0b88ea453023c8bd6749ac0333cab')
