@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SigsPack
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,8 +29,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('913792d9cdd4b3ed5cf89a48c0f4e43a')
-b2sums=('f2904cb61e32a52d7e4a555aca9388e8837305e84a1054cc1e266370ff3b42235b290e59cf193e39491b84fd6155a0f7c5970962e986acf4ea5c226877acda67')
+md5sums=('f4107a1fa2e4d7dc1d6c9f875ea8604c')
+b2sums=('259186d9acd1a99155b28d49356226e3e8d0fe607d39e7fb52c4862e498ad97c8ae34ccb9dbf573ee0427b67b108d6783f676e07b22dd88051761d301548eeb3')
 
 build() {
   mkdir build
