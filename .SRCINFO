@@ -1,0 +1,16 @@
+pkgbase = python-defusedcsv
+	pkgdesc = Drop-in replacement for Python CSV library that tries to mitigate CSV injection attacks
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/raphaelm/defusedcsv
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/raphaelm/defusedcsv/archive/refs/tags/v2.0.0.tar.gz
+	sha512sums = 7ea60e23025b2392a34fbc0aa5ef6dd1b6ce0c653000e4121fceed4159b99b233c34f0f8f1e06931e721a8c923e90faa63b39d0032ab1881ff94eaea66345d4a
+
+pkgname = python-defusedcsv
