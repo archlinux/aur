@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scanMiRApp
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -51,8 +51,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ffd8892c002d452584bbf670cd293e25')
-b2sums=('07e30009918f36cc2d11680aa77f057f2baf2cbeaa6b31b4dcdcc7249764cd1cfd13e72aa0160a7ab24706e11c19237f5eb119392e82a6d1b20c936e7af6af9e')
+md5sums=('737b7abc0ac7def7215de0f2b99e7365')
+b2sums=('ff0df3fcf0ce90d4adc3104ae48bf563ab65a9e2e8a1690870820ec963991399a3945c5e9cc7ecc4fbc38b8ceb91ba852d0d16fc6a44dd44bdc5e730d3373450')
 
 build() {
   mkdir build
