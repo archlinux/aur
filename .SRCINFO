@@ -1,7 +1,7 @@
 pkgbase = mustache-d
 	pkgdesc = Moustache template engine for D
 	pkgver = 0.1.5
-	pkgrel = 17
+	pkgrel = 18
 	url = https://github.com/repeatedly/mustache-d
 	arch = x86_64
 	license = BSL-1.0
