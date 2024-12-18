@@ -3,7 +3,7 @@
 
 pkgname=nature-sounds
 pkgver=0.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A lightweight, nature sounds player for the command-line."
 arch=('x86_64' 'aarch64')
 url="https://github.com/jmelahman/nature-sounds"
@@ -23,11 +23,11 @@ pkgver() {
 build() {
   cd "$pkgname" || exit
 
-  go build -ldflags="-X main.version=v$pkgver -s -w" -o nature-sounds
+  go build -ldflags="-X main.version=v$pkgver -X main.commit=$_commit -s -w" -o "$pkgname"
 }
 
 package() {
   cd "$pkgname" || exit
 
-  install -Dm755 nature-sounds "$pkgdir/usr/bin/nature-sounds"
+  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }

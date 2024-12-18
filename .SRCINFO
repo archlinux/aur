@@ -1,7 +1,7 @@
 pkgbase = nature-sounds
 	pkgdesc = A lightweight, nature sounds player for the command-line.
 	pkgver = 0.1.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/jmelahman/nature-sounds
 	arch = x86_64
 	arch = aarch64
