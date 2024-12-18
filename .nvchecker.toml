@@ -1,0 +1,5 @@
+[python-geoviews]
+source = "github"
+github = "pyviz/geoviews"
+use_latest_release = "true"
+prefix = "v"

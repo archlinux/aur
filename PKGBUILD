@@ -2,7 +2,7 @@
 # Contributor: jerry73204 <jerry73204 at google gmail>
 _base=geoviews
 pkgname=python-${_base}
-pkgver=1.13.1
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="Simple, concise geographical visualization in Python"
 arch=(any)
@@ -18,7 +18,7 @@ checkdepends=(python-pytest python-geopandas python-spatialpandas) # python-xarr
 #   'python-matplotlib: for '
 # )
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('1dc49980bd044fc58f434209d4a0b4fced07c1de0a92e82d70bba347e8b4f659c28bf76ff56b64ee0c9936920df95e5f891ab3dbc123350a9970532d2e88291d')
+sha512sums=('a1456b4ba31b9dd8b0ff16d54693cd0dd3455146e5765a61c6ad61f16bdf756d2329fd28a50ef6fba775cf72073d0f3770bd3f6f125e7529de59700d6b46255a')
 
 build() {
   cd ${_base}-${pkgver}
