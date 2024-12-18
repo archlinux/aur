@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OUTRIDER
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -56,8 +56,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('39a17844ae7054189d35ce3f356eb777')
-b2sums=('1d673713354345fba605bb68cbe4fab15e5e5d0a6d74a333866bc49101cbb77bf12d0bc73b12831069f58a1201f248a0573c553042d933bfabfd020095ae2d73')
+md5sums=('ecb42761f893c9a73a6a0195fa4ff84f')
+b2sums=('06e3e86b5a0d70372f61f033e4075844ec3c038358c28b34f7799b09fe1f48e05743b0f86b4561eb0e79a139830d2c2f0c1f1e748a7cf1ecd3e7a790f8877a36')
 
 build() {
   mkdir build
