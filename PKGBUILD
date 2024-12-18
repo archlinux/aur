@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OrganismDbi
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -38,8 +38,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a81aa484401a0794b889eb66ba462cdc')
-b2sums=('6b5a48844b244700a81531091902eaac87ec5504eb90852b84e407ec213442ef97e6e3eff5786e27ab994cb245a87e30f51d402af15755158375896af95fdf10')
+md5sums=('b9af4a5f4ce821aa7b62511b9c28f08f')
+b2sums=('1bb1f2e6c2d3595a750251745c12f4feea63d29d10bbd265cf641786349019ab1180e24b61909f2224159845529c9809bd3f824c42c5d7a9cd99c1097159d0f5')
 
 build() {
   mkdir build
