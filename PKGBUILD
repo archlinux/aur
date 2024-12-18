@@ -2,18 +2,20 @@
 # Contributor: Sandy Carter <bwrsandman@gmail.com>
 
 pkgname=openmw-vr-git
-pkgver=r29817.770584c511
+pkgver=r29818.cac0667193
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind, fork with OpenXR VR support."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/madsbuvi/openmw"
 license=('GPL3' 'MIT' 'custom')
-depends=('openal' 'openscenegraph' 'mygui' 'qt5-base' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' "openxr")
+depends=('openal' 'openscenegraph' 'mygui' 'qt5-base' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'ffmpeg4.4' "openxr")
 optdepends=('openscenegraph-openmw-git: experimental performance enhancements for OpenMW that are too controversial to be included in the general purpose OSG project')
 makedepends=('git' 'cmake' 'boost' 'ninja')
 conflicts=("${pkgname%-git}" 'openmw-git')
 provides=("${pkgname%-git}" 'openmw-git')
-source=('git+https://gitlab.com/madsbuvi/openmw.git')
+source=(
+  'git+https://gitlab.com/madsbuvi/openmw.git'
+)
 sha1sums=('SKIP')
 
 pkgver() {
@@ -25,7 +27,14 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "${srcdir}/openmw"
+}
+
 build() {
+  # Use Workaround for ffmpeg4.4 from https://gitlab.com/OpenMW/openmw/-/issues/6631#note_848732223
+  export PKG_CONFIG_LIBDIR='/usr/lib/ffmpeg4.4/pkgconfig/'
+
   cd "${srcdir}/openmw"
 
   # -DOPENMW_USE_SYSTEM_BULLET=OFF: Doesn't build with bullet from repo
@@ -46,7 +55,7 @@ package() {
 
   # actual binary is not installed by default
   install -m755 "$srcdir"/openmw/build/openmw_vr "$pkgdir"/usr/bin/openmw_vr
-  install "$srcdir"/openmw/build/settings-overrides-vr.cfg "$pkgdir"/etc/openmw/settings-overrides-vr.cfg
+  install "$srcdir"/openmw/files/settings-overrides-vr.cfg "$pkgdir"/etc/openmw/settings-overrides-vr.cfg
 
   # install target shouldn't install openxr loader
   rm -rf "$pkgdir"/usr/include/openxr
