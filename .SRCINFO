@@ -1,0 +1,25 @@
+pkgbase = tractor-rc-git
+	pkgdesc = Setup an onion routing proxy (latest Git version)
+	pkgver = x.y.z
+	pkgrel = 1
+	url = https://framagit.org/tractor/tractor/
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = python-nose
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = python-fire
+	depends = python-pysocks
+	depends = python-stem
+	depends = tor
+	depends = dconf
+	optdepends = carburetor-git: Graphical settings app using GTK
+	source = git+https://framagit.org/tractor/tractor.git
+	sha256sums = SKIP
+
+pkgname = tractor-rc-git
