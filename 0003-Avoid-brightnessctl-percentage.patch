@@ -1,0 +1,34 @@
+From fb462bd7d0a7c133826172a55543e2ba30d15a0b Mon Sep 17 00:00:00 2001
+Message-ID: <fb462bd7d0a7c133826172a55543e2ba30d15a0b.1734565815.git.tommyhebb@gmail.com>
+In-Reply-To: <797c7af4dfd36a83092f81989b48c6570d1c4d9b.1734565815.git.tommyhebb@gmail.com>
+References: <797c7af4dfd36a83092f81989b48c6570d1c4d9b.1734565815.git.tommyhebb@gmail.com>
+From: Thomas Hebb <tommyhebb@gmail.com>
+Date: Wed, 18 Dec 2024 18:47:36 -0500
+Subject: [PATCH 3/3] Avoid `brightnessctl --percentage`
+
+This option is upstream[1], but it's not in the latest release as there
+hasn't been a release since 2020. Fedora backported it[2], but Arch
+hasn't, so use shell math instead.
+
+[1] https://github.com/Hummer12007/brightnessctl/commit/9a1af7e6931b61f215782174e6cdb74cde54b44f
+[2] https://src.fedoraproject.org/rpms/brightnessctl/c/720432f30574b1f3f54367ec78c3b2bdf3a4b08e
+---
+ sway/config.d/60-bindings-brightness.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sway/config.d/60-bindings-brightness.conf b/sway/config.d/60-bindings-brightness.conf
+index 5c1e808..8f8c5aa 100644
+--- a/sway/config.d/60-bindings-brightness.conf
++++ b/sway/config.d/60-bindings-brightness.conf
+@@ -8,7 +8,7 @@
+ # Recommends:   libnotify
+ 
+ set $brightness_notification_cmd  command -v notify-send >/dev/null && \
+-        VALUE=$(brightnessctl --percentage get) && \
++        VALUE=$(($(brightnessctl get) * 100 / $(brightnessctl max))) && \
+         notify-send -e -h string:x-canonical-private-synchronous:brightness \
+             -h "int:value:$VALUE" -t 800 "Brightness: ${VALUE}%"
+ 
+-- 
+2.47.1
+

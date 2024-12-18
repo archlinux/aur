@@ -1,7 +1,7 @@
 # Maintainer: Thomas Hebb <tommyhebb@gmail.com>
 pkgname=sway-config-fedora
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Sway configuration from Fedora Sway Spin, opinionated with QoL improvements"
 arch=('any')
 url='https://gitlab.com/fedora/sigs/sway/sway-config-fedora'
@@ -27,15 +27,18 @@ source=(
 	"https://gitlab.com/fedora/sigs/sway/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2"
 	'0001-ARCH-deconflict-with-stock-config.patch'
 	'0002-ARCH-remove-various-Fedora-isms.patch'
+	'0003-Avoid-brightnessctl-percentage.patch'
 )
 sha256sums=('fe7a142cf3db8a0a096a0b51aabc11fc4a57c3ea8ef8f67e2b18d678bcab57e1'
             '549b9522747f728c11e756a8ab9129dd3ac82ea368eb59660224b794d9e2a9ee'
-            'b22fb5b6235eb23f80f768cce1425440ed2027285d4c9c1b166f30814f81faf0')
+            'b22fb5b6235eb23f80f768cce1425440ed2027285d4c9c1b166f30814f81faf0'
+            'ca7bb05f806e15e26a88ccd277f52640c0e8470441841860e6e4f2a70b692509')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	patch -p1 -i "$srcdir/0001-ARCH-deconflict-with-stock-config.patch"
 	patch -p1 -i "$srcdir/0002-ARCH-remove-various-Fedora-isms.patch"
+	patch -p1 -i "$srcdir/0003-Avoid-brightnessctl-percentage.patch"
 }
 
 build() {
