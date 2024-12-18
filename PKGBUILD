@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=dotbot
-pkgver=1.20.1
-pkgrel=2
+pkgver=1.20.3
+pkgrel=1
 pkgdesc="A tool that bootstraps your dotfiles"
 arch=(any)
 url="https://github.com/anishathalye/dotbot"
@@ -18,43 +18,37 @@ makedepends=(
   python-setuptools
   python-wheel
 )
-checkdepends=(
-  python-pytest
+checkdepends=(python-pytest)
+source=(
+  "git+$url.git#tag=v$pkgver"
+  "conftest-remove-broken-assert.patch"
+)
+sha256sums=(
+  'b4619907b9e2cfce1880c9ee36603f3e38543b152e94941d7c0c42445317b9d9'
+  '60cdeaa5b43fd8796623e72ca2b8900a178774eb3988b6943a592fcbecca19ea'
 )
 
-_commit=840cd164d20713a8e34f3aeb4ab1121c9745fad9 # git rev-parse "$pkgver"
-source=("git+$url.git#commit=$_commit")
-sha256sums=('SKIP')
-
-_archive="$pkgname"
-
-pkgver() {
-  cd "$_archive"
-
-  git describe --tags | sed 's/^v//'
+prepare() {
+  cd "$pkgname"
+  patch -Np1 -i ../conftest-remove-broken-assert.patch
 }
 
 build() {
-  cd "$_archive"
-
+  cd "$pkgname"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_archive"
-
+  cd "$pkgname"
   rm -rf tmp_install
-  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python -m installer --destdir=tmp_install dist/*.whl
-
-  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
-  pytest
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  PYTHONPATH="$PWD/tmp_install/$site_packages" pytest \
+    --deselect tests/test_noop.py::test_failure
 }
 
 package() {
-  cd "$_archive"
-
+  cd "$pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
 }

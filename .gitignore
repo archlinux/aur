@@ -3,3 +3,4 @@
 !.nvchecker.toml
 !.SRCINFO
 !PKGBUILD
+!conftest-remove-broken-assert.patch
