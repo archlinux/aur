@@ -13,5 +13,6 @@ pkgbase = arch-mp
 	source = arch-mp.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = arch-mp
