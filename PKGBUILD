@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=iSEEde
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a0d88c17503afd3597c6ecb2e5aa1717')
-b2sums=('bfb39f15005e77d28e2c5c366b6309215b3cfba1fc38f0dae5b97861d0996b056fb1e988454d398d54522cde6a88f8d736b14a7f01cef35ebdab1586188153c0')
+md5sums=('ef63989cd800352207ea9004c2579544')
+b2sums=('35f6bca544887124b98f33df14c95b517ba5e98c2faafbe4a406e316d348806a303d69324f097f00618cb1bd39ec213b9bf5ed2adbe0b88fd6157338eacc7c7d')
 
 build() {
   mkdir build
