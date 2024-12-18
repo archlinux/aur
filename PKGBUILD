@@ -19,10 +19,10 @@ set -u
 pkgname='comcom32'
 #pkgname+='-git'
 _pkgver='alpha-3'
-_opt_commit='#commit=6cca478862e3d25f5fdad6aba7804934d4ab72ec' # only applies to non git
+_opt_commit='#commit=c10e1c9ed2d133fa1e50eaacc4b0a38d361e1762' # only applies to non git
 # pkgver="0.0.${_pkgver//-/_}" # copy this line and set _opt_commit
-pkgver="0.0.${_pkgver//-/_}" # copy this line and set _opt_commit
-pkgrel=2
+pkgver="0.0.${_pkgver//-/_}"
+pkgrel=3
 pkgdesc="${_opt_bits} bit command interpreter for fdpp and dosemu2"
 arch=('any')
 url='https://github.com/dosemu2/comcom64'
@@ -86,8 +86,9 @@ prepare() {
     cd 'src'
   fi
   local _seds=(
-    -e '/^PREFIX / s:/usr/local:/usr:g'
-      -e 's:i586-pc:i686-pc:g'
+    -e '/^PREFIX \?=/ s:/usr/local:/usr:g'
+    -e '/^prefix \?=/ s:/usr/local:/usr:g'
+    -e 's:i586-pc:i686-pc:g'
   )
   sed -E "${_seds[@]}" -i 'Makefile'
   if [ -d '../32' ]; then
