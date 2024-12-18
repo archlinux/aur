@@ -3,7 +3,7 @@
 
 pkgname=gir-to-d
 pkgver=0.23.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Create D bindings from GObject introspection files'
 arch=('x86_64')
 url='https://github.com/gtkd-developers/gir-to-d'
