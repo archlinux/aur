@@ -60,4 +60,5 @@ package() {
     # https://github.com/OpenTabletDriver/OpenTabletDriver/issues/3572
     mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
     mv "$pkgdir"/usr/share/doc/opentabletdriver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    rmdir -p --ignore-fail-on-non-empty "$pkgdir"/usr/share/doc/opentabletdriver
 }
