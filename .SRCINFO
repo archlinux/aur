@@ -1,6 +1,6 @@
 pkgbase = r-primirtss
 	pkgdesc = Prediction of pri-miRNA Transcription Start Site
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/primirTSS
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-primirtss
 	depends = r-tidyr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/primirTSS_1.22.0.tar.gz
-	sha256sums = c5ebe372e0fd19c9651fd803f38f920f8cca1d1a3bd5f3cdaf5ee772ad1723b1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/primirTSS_1.24.0.tar.gz
+	sha256sums = ab815131418ee5523a62b3d43c1d59d28dd5f856851ff843ca4e5601a908421f
 
 pkgname = r-primirtss
