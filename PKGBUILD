@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=INSPEcT
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,8 +37,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8434b90d26b3015b5ffc56f47d60dc75')
-b2sums=('497e39d14a12b97ec7a94b7d781d42c0840c42a09c1e9e06d6eab68bb1304d5382d5116f89bdbfcc01ac8af9b35d08130ae2177a80b2e71a4bafbdf4119ef3ad')
+md5sums=('e0f1db4ffc949c4b4ed6d6b141d77f5e')
+b2sums=('dce23be2cf4acdfe4ae6e2c0350e6241a9d85c1b6bdc85cf4ae2296a810855cbf1179396b4183b073ee091833ac11872312cbf36adb64fa05fc665a8ed2f5069')
 
 build() {
   mkdir build
