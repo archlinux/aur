@@ -1,6 +1,5 @@
-*.[oa]
+/pkg
+/src
+*.sh
 *.zip
-*.gz
-*.pkg.*
-pkg/
-src/
+*.pkg.tar.*
