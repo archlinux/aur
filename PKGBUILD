@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=GenomicInteractionNodes
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('db86e22bb6f88384d71ed1942d3269bb')
-b2sums=('f921da5336a25bd90d4ae8f18a34044d8cb20ca5e8229e51c4411f392be3e1a744944706d7cbb07931a31a63e0d3be4c383caf0232fbb064e3838d44c93a8cb7')
+md5sums=('5d250124934c9785b2c9b3c53727330f')
+b2sums=('9aa50f282921b16c3a250ee8588f67d0c867260c75afcbdf971d8377ffad50b184b28fd9f124ad0f4d56351e4eae909f016ac9abc23cd460a853e8e880ea10df')
 
 build() {
   mkdir build
