@@ -13,7 +13,7 @@ pkgbase = c-lcrypt
 	depends = zlib
 	depends = zstd
 	depends = libsodium
-	source = git+https://github.com/Locotir/C-LCRYPT.git#tag=v1.0.0
+	source = https://github.com/Locotir/C-LCRYPT/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = c-lcrypt
