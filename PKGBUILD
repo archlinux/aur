@@ -2,7 +2,7 @@
 
 set -u
 pkgname='djstub-git'
-pkgver=0.0.r130.40bd05f
+pkgver=0.0.r131.c96e090
 pkgrel=1
 pkgdesc='Stub for dj64'
 arch=('x86_64')
@@ -41,7 +41,11 @@ prepare() {
   #cd ..; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; cd "${_srcdir}"; false
   #diff -pNaru5 'a' 'b' > '0000-new.patch'
 
-  sed -e '/^PREFIX ?=/ s:/usr/local:/usr:g' -i 'Makefile'
+  local _seds=(
+    -e '/^PREFIX \?=/ s:/usr/local:/usr:g'
+    -e '/^prefix \?=/ s:/usr/local:/usr:g'
+  )
+  sed -E "${_seds[@]}" -i 'Makefile'
 
   set +u
 }
