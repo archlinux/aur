@@ -1,0 +1,21 @@
+pkgbase = drm-lease-manager-git
+	pkgdesc = DRM Lease Manager
+	pkgver = r1.0.1.0
+	pkgrel = 1
+	url = https://github.com/AGLExport/drm-lease-manager
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = doxygen
+	depends = libdlmclient-git
+	depends = tomlc99-git
+	depends = libdrm
+	provides = drm-lease-manager
+	conflicts = drm-lease-manager
+	options = !debug
+	source = drm-lease-manager-git::git+https://github.com/AGLExport/drm-lease-manager.git
+	sha256sums = SKIP
+
+pkgname = drm-lease-manager-git

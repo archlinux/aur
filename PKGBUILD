@@ -1,0 +1,32 @@
+# Maintainer: Ciptik <stepan.ciptik@yandex.ru>
+# Contributor: AGLExport <https://github.com/AGLExport>
+
+pkgname=drm-lease-manager-git
+pkgver=r1.0.1.0
+pkgrel=1
+pkgdesc="DRM Lease Manager"
+arch=('x86_64')
+url="https://github.com/AGLExport/drm-lease-manager"
+license=('Apache-2.0')
+depends=('libdlmclient-git' 'tomlc99-git' 'libdrm')
+makedepends=('git' 'meson' 'ninja' 'doxygen')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+options=('!debug')
+source=("${pkgname}::git+https://github.com/AGLExport/drm-lease-manager.git")
+sha256sums=('SKIP')
+
+build() {
+  cd "$srcdir/${pkgname}"
+  arch-meson build --prefix=/usr
+  ninja -C build
+}
+
+package() {
+  cd "$srcdir/${pkgname}/build"
+  install -Dm755 drm-lease-manager/drm-lease-manager -t "$pkgdir/usr/bin"
+  install -Dm644 "$srcdir/${pkgname}/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+  if [ ! -d "/var/run/drm-lease-manager" ]; then  
+    install -d "$pkgdir/var/run/drm-lease-manager"
+  fi
+}
