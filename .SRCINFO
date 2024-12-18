@@ -1,6 +1,6 @@
 pkgbase = hyprland-nox
 	pkgdesc = An independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks. (w/o XWayland support)
-	pkgver = 0.45.2
+	pkgver = 0.46.1
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = hyprland-nox
 	depends = glib2
 	depends = glibc
 	depends = hyprcursor
+	depends = hyprgraphics
 	depends = hyprlang
 	depends = hyprutils
 	depends = libdrm
@@ -27,17 +28,20 @@ pkgbase = hyprland-nox
 	depends = mesa
 	depends = pango
 	depends = pixman
+	depends = re2
+	depends = tomlplusplus
 	depends = util-linux-libs
 	depends = wayland
 	optdepends = cmake: to build and install plugins using hyprpm
 	optdepends = cpio: to build and install plugins using hyprpm
 	optdepends = meson: to build and install plugins using hyprpm
+	optdepends = uwsm: to launch a systemd based session via hyprland-uwsm.desktop
 	provides = hyprland
 	conflicts = hyprland
-	source = hyprland-nox::git+https://github.com/hyprwm/Hyprland#tag=v0.45.2
+	source = hyprland-nox::git+https://github.com/hyprwm/Hyprland#tag=v0.46.1
 	source = hyprland-nox_hyprland-protocols::git+https://github.com/hyprwm/hyprland-protocols.git
 	source = hyprland-nox_udis86::git+https://github.com/canihavesomecoffee/udis86.git
-	sha256sums = eababa4c2b6da7a4029d361f1201a2e2f41e6740b36f54e50f0cb225ebd67111
+	sha256sums = 07ab3bea6531101ecc3851cf29ea11150c1524e67556c59fa2fb0c217cdad702
 	sha256sums = SKIP
 	sha256sums = SKIP
 

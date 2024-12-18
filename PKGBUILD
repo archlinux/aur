@@ -1,7 +1,7 @@
 # Maintainer: Piroro-hs
 
 pkgname=hyprland-nox
-pkgver=0.45.2
+pkgver=0.46.1
 pkgrel=1
 pkgdesc="An independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks. (w/o XWayland support)"
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=('aquamarine'
          'glib2'
          'glibc'
          'hyprcursor'
+         'hyprgraphics'
          'hyprlang'
          'hyprutils'
          'libdrm'
@@ -24,6 +25,8 @@ depends=('aquamarine'
          'mesa'
          'pango'
          'pixman'
+         're2'
+         'tomlplusplus'
          'util-linux-libs'
          'wayland')
 makedepends=('cmake'
@@ -34,7 +37,8 @@ makedepends=('cmake'
              'wayland-protocols')
 optdepends=('cmake: to build and install plugins using hyprpm'
             'cpio: to build and install plugins using hyprpm'
-            'meson: to build and install plugins using hyprpm')
+            'meson: to build and install plugins using hyprpm'
+            'uwsm: to launch a systemd based session via hyprland-uwsm.desktop')
 provides=("${pkgname%-nox}")
 conflicts=("${pkgname%-nox}")
 replaces=()
@@ -42,7 +46,7 @@ backup=()
 source=("$pkgname::git+$url#tag=v$pkgver"
         "${pkgname}_hyprland-protocols::git+https://github.com/hyprwm/hyprland-protocols.git"
         "${pkgname}_udis86::git+https://github.com/canihavesomecoffee/udis86.git")
-sha256sums=('eababa4c2b6da7a4029d361f1201a2e2f41e6740b36f54e50f0cb225ebd67111'
+sha256sums=('07ab3bea6531101ecc3851cf29ea11150c1524e67556c59fa2fb0c217cdad702'
             'SKIP'
             'SKIP')
 
@@ -54,6 +58,9 @@ prepare() {
   git config submodule.subprojects/hyprland-protocols.url "$srcdir/${pkgname}_hyprland-protocols"
   git config submodule.subprojects/udis86.url "$srcdir/${pkgname}_udis86"
   git -c protocol.file.allow=always submodule update
+
+  # https://github.com/hyprwm/Hyprland/issues/8759
+  git revert db24964 -n
 }
 
 build() {
