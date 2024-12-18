@@ -1,6 +1,6 @@
 # Maintainer: Sosthène Guédon <dev@peertube-viewer.com>
 pkgname=peertube-viewer-rs
-pkgver=1.8.6
+pkgver=1.8.7
 pkgrel=1
 pkgdesc="Peertube command line viewer inspired by youtube-viewer"
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   'gcc-libs'
 )
 source=("https://gitlab.com/peertube-viewer/peertube-viewer-rs/-/archive/v$pkgver/peertube-viewer-rs-v$pkgver.tar.gz")
-sha256sums=('fec8a2af2ccb80bdafdd3d28c7777e8e79f6311dd1f0be29951a2f658ac27415')
+sha256sums=('66ecc04de35e41d4da8c6643bdfe594f9a6d4c7c443d9c898b009e8a9af1aa2e')
 
 options=(!lto)
 
