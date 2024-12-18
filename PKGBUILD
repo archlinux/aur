@@ -2,7 +2,7 @@
 # Contributor: Sandy Carter <bwrsandman@gmail.com>
 
 pkgname=openmw-vr-git
-pkgver=r25608.ca2356615
+pkgver=r29817.770584c511
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind, fork with OpenXR VR support."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://gitlab.com/madsbuvi/openmw"
 license=('GPL3' 'MIT' 'custom')
 depends=('openal' 'openscenegraph' 'mygui' 'qt5-base' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' "openxr")
 optdepends=('openscenegraph-openmw-git: experimental performance enhancements for OpenMW that are too controversial to be included in the general purpose OSG project')
-makedepends=('git' 'cmake' 'boost' 'clang' 'ninja')
+makedepends=('git' 'cmake' 'boost' 'ninja')
 conflicts=("${pkgname%-git}" 'openmw-git')
 provides=("${pkgname%-git}" 'openmw-git')
 source=('git+https://gitlab.com/madsbuvi/openmw.git')
@@ -28,15 +28,13 @@ pkgver() {
 build() {
   cd "${srcdir}/openmw"
 
-  # https://github.com/KhronosGroup/OpenXR-SDK-Source/issues/260
-  export CC=clang CXX=clang++
-
   # -DOPENMW_USE_SYSTEM_BULLET=OFF: Doesn't build with bullet from repo
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DDESIRED_QT_VERSION=5 \
         -DOPENMW_USE_SYSTEM_BULLET=OFF \
+        -DBUILD_OPENMW_VR=ON \
         -GNinja \
         -Bbuild
   ninja -C build
