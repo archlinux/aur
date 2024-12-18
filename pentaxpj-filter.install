@@ -57,6 +57,9 @@ To new:
     *ImageableArea A4/A4: "9 72 570 806"
     *ImageableArea Legal/Legal: "9 72 570 972"
 
+---
+
+Or just use the package 'pentaxpj-cups' instead of 'pentaxpj-filter' to have readymade PPDs!
 
 === /pentaxpj-filter ===
 
