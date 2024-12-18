@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=cardelino
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-vgam
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b78c296bb88b1ec63c5e8be26418e60a')
-b2sums=('7493e95a08a054a60f055d8553ae97a41513f9c6052c3f2b06170abcc1b3ddf084e24cccb1a940121335b32411c7d2157e65933542bf9e3050184a3aa7103265')
+md5sums=('cd0a4c4ec8ded3c833d1e32aeb2af021')
+b2sums=('bea59010f50630c72b1bb871af78c55044abb7704cac879956b25e73ca93fe3248a7c591c0b816ff475efe13aaed7c755176dda90bda93b33ac552e2db611f3a')
 
 build() {
   mkdir build
