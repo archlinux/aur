@@ -1,0 +1,24 @@
+pkgbase = carburetor-rc-git
+	pkgdesc = Graphical settings app for Tractor in GTK (latest Git version)
+	pkgver = x.y.z
+	pkgrel = 1
+	url = https://framagit.org/tractor/carburetor
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = tractor-rc-git
+	depends = python-pycountry
+	source = git+https://framagit.org/tractor/carburetor.git
+	sha256sums = SKIP
+
+pkgname = carburetor-rc-git
