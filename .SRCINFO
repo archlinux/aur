@@ -1,6 +1,6 @@
 pkgbase = nonicons-bin-git
 	pkgdesc = A next-generation icon set for developers that extends octicons.
-	pkgver = r67.20230530.8454b3b
+	pkgver = r68.20241213.5f56cf0
 	pkgrel = 1
 	url = https://github.com/yamatsum/nonicons
 	arch = any
@@ -25,7 +25,7 @@ pkgname = ttf-nonicons-bin-git
 	depends = nonicons-license
 	optdepends = nonicons-doc: For information files about nonicons.
 	provides = ttf-nonicons
-	provides = nonicons-git=r67.20230530.8454b3b
+	provides = nonicons-git=r68.20241213.5f56cf0
 	conflicts = ttf-nonicons
 	conflicts = nonicons-git
 	replaces = nonicons-git<=r67.8454b3b
