@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=factR
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -56,8 +56,8 @@ optdepends=(
   r-zeallot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('71444320c46af980fffd92815ed30e84')
-b2sums=('a3ac343c955a2b8b5a5fbc367c655baeb10af39083fce20ebba202136f7ed5467609aaf7d22f183004924346e98db517a5a6559f4e9af039897d3fb2b9646aa0')
+md5sums=('7398ad1642ccd6524192c11bf748a93b')
+b2sums=('6cc0b18c8d7fe1b3bfe8fea33828b81de7ede4582ffb30a7ba6b2746fcb566ec42335cf6a04997dfffd6276612a6d26be9bb2222e73bfd9349f250c10560f351')
 
 build() {
   mkdir build
