@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=methylPipe
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Base resolution DNA methylation data analysis'
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg18.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c04c3177e7930934f576188e3bdb9cd64f619618be44149502a8a57073b958ec')
+sha256sums=('137663917adf819960cb22351a53c6c935b3e682ced04c670d0e7913c472c236')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
