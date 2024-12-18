@@ -22,7 +22,6 @@ makedepends=(
     'nvm'
     'gendesk'
     'gcc'
-    'cmake'
     'curl'
 )
 source=(
