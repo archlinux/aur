@@ -10,8 +10,8 @@ arch=('i686' 'x86_64')
 url="https://gitlab.com/GrantMoyer/lssecret"
 license=('Unlicense')
 depends=('libsecret')
-conflicts=(${pkgname})
-provides=(${pkgname})
+conflicts=(${_pkgname})
+provides=(${_pkgname})
 source=("git+https://gitlab.com/GrantMoyer/lssecret.git")
 sha256sums=('SKIP')
 
