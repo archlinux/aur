@@ -1,51 +1,44 @@
-# Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
+# Maintainer: caier <base64: a29zbW96aWVtaWFAZ21haWwuY29tCg==>
+# Contributor: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
-pkgname=kactus2-git
-pkgver=3.2.298.0.svn2649
+_pkgname=kactus2
+pkgname="$_pkgname-git"
+pkgver=3.13.3.r4.g16813a2
 pkgrel=1
 
-pkgdesc="Open source IP-XACT-based tool for ASIC, FPGA and embedded systems design"
-arch=('any')
-url="http://funbase.cs.tut.fi/"
+pkgdesc='Open source IP-XACT-based tool for ASIC, FPGA and embedded systems design'
+arch=(any)
+url='https://research.tuni.fi/system-on-chip/tools/'
 license=('GPLv2')
 
-depends=('qt5-base' 'qt5-xmlpatterns')
-makedepends=('qt5-tools')
+depends=(qt6-base qt6-tools qt6-svg libgl 'swig>=3.0.12' 'python>=3.8')
+makedepends=(git)
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+
+backup=('etc/xdg/TUT/Kactus2.ini')
 
 source=(
-	'svn://svn.code.sf.net/p/kactus2/code/trunk'
-	'Makefile.patch'
+	'git+https://github.com/kactus2/kactus2dev.git'
 )
-md5sums=(
+b2sums=(
 	'SKIP'
-	'4f6cd25d0891c11dd4adca5610d3ef55'
 )
 
 pkgver() {
-	cd "trunk"
-
-	# Kactus2 version
-	_distver=`sed -n -e 's/.*VERSION_FULL\s*\(\S*\)\s*/\1/p' version.h`
-	# Revision number of the last commit
-	_svnver=`svn log -l 1 | head -n 2 | sed -n -e 's/^r\([0-9]*\).*/\1/p'`
-
-	echo $_distver.svn$_svnver;
+	cd "$srcdir/kactus2dev"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "trunk"
-
+	cd "$srcdir/kactus2dev"
 	./configure --prefix=/usr
-
-	# Patch the generated Makefile: fix some install recipes
-	patch -p0 -N -i "${startdir}"/Makefile.patch
-
-	make
+	make 
 }
 
 package() {
-	cd "trunk"
-
-	make INSTALL_ROOT="${pkgdir}" install
+	cd "$srcdir/kactus2dev"
+	make INSTALL_ROOT=${pkgdir} install
+	mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
+	install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
-
