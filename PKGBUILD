@@ -3,7 +3,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=firefox-extension-bitwarden
-pkgver=2024.11.2
+pkgver=2024.12.0
 pkgrel=1
 pkgdesc='Bitwarden browser extension for Firefox'
 arch=('any')
@@ -12,18 +12,22 @@ license=('GPL-3.0-or-later')
 optdepends=('firefox')
 groups=('firefox-addons')
 pkgdesc='Bitwarden browser extension for Firefox'
-makedepends=('nodejs' 'npm' 'unzip')
+makedepends=('nodejs' 'npm' 'unzip' 'zip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/clients/archive/refs/tags/browser-v${pkgver}.tar.gz")
-sha256sums=('406a9cc31414d64b90954d7a6217703c013a53261568e8a101891d69494d8ce5')
+sha256sums=('91da502e7d5e49b7960dcc265338bce85853b1d3c622379b3086e49e3cbf9157')
 
 prepare() {
   cd "${srcdir}/clients-browser-v${pkgver}" || exit
+  # Starting in 2024.12.0 it uses powershell to create the zip. Rather than requiring powershell to build this, we just create the zip in the build step.
+  sed -i 's| \&\& \.\/scripts\/compress\.ps1 dist-firefox\.zip||' apps/browser/package.json
   npm ci
 }
 
 build() {
   cd "${srcdir}/clients-browser-v${pkgver}/apps/browser" || exit
   npm run dist:firefox
+  cd build
+  zip -r ../dist/dist-firefox.zip .
 }
 
 check() {
