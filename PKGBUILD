@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=OGRE
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c3ca8993d930ab0808d53cd134bdc2a1')
-b2sums=('98cef4857b3f24f254d702d756f0d3c7ee16aa8ff5ce1177898a44fbaf6f9e738fecabb53082cebd810b8dc5a1f9e5bc9969bebab492c7381dc984f3ddd0b0ba')
+md5sums=('4bd09d598eb2be1c4fced58fc417b8fd')
+b2sums=('c9727bc42abea85ea00fb2b548ab9261223f15ab9ef5b208c952c0e7d7bd625f54316da27d9b0139a6e4770272ac154f9df3cc3522695016d890de0a2beb9711')
 
 build() {
   mkdir build
