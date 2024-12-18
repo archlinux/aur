@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ASpli
-_pkgver=2.14.0
+_pkgver=2.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ depends=(
   r-upsetr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0c318ecaa7d695b92852277fb46a2c05')
-b2sums=('fba656c6321a757e9575e53aa57b499f0b40e60ade6e9014b27cd12bb02e9b9260eff3f74395a0b1d56babf37d3a98277f5b2ca0cafc468fa394fefd222cbb50')
+md5sums=('4a8a46161468892eed33896cd0be8970')
+b2sums=('0f12b8e34edc146f2c97a77a7317515c3e299b577c3f7b8e43776266481130e00abd7a01d3c1cba1f3c7292216402d7fd8f99d8a09e4807aceb85b3b51ba0ba1')
 
 build() {
   mkdir build
