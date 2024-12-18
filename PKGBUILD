@@ -2,7 +2,7 @@
 
 set -u
 pkgname='dj64-git'
-pkgver=0.0.r4103.783e59c
+pkgver=0.0.r4137.9e835ac
 pkgrel=1
 pkgdesc='djgpp 64 bit compiler'
 arch=('x86_64')
@@ -42,7 +42,11 @@ prepare() {
   #cd ..; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; cd "${_srcdir}"; false
   #diff -pNaru5 'a' 'b' > '0000-new.patch'
 
-  sed -E -e '/^PREFIX \?=/ s:/usr/local:/usr:g' -i 'makefile'
+  local _seds=(
+    -e '/^PREFIX \?=/ s:/usr/local:/usr:g'
+    -e '/^prefix \?=/ s:/usr/local:/usr:g'
+  )
+  sed -E "${_seds[@]}" -i $(grep --include 'makefile' -rle '/usr/local')
 
   set +u
 }
@@ -50,6 +54,12 @@ prepare() {
 build() {
   set -u
   cd "${_srcdir}"
+  if [ ! -s 'configure' ]; then
+    autoreconf -v -i
+  fi
+  if [ ! -s 'Makefile.conf' ]; then
+    ./configure --prefix='/usr'
+  fi
   nice make -j1
   set +u
 }
