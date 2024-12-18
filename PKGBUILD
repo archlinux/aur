@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SPOTlight
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -52,8 +52,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('27478472e9aca4692dff302dcb4efe07')
-b2sums=('2776d700ebff3f3035d64a18797402ab5455c0b2c1e3640254c7ac3db6b337f454cbc38af093e831c1e7aa8e4e0fc7e2302348915a2c2263c5c919088e6fb07f')
+md5sums=('638290a97f214a906f347c6bb5a8c5dd')
+b2sums=('72c8447f9a92f3ce393642933c277d580b207875cf1c183e9e079062e985ece9921daa1af9e139119fa52fe61173e5aea698d8d60987fbb257f04bf07ac8e791')
 
 build() {
   mkdir build
