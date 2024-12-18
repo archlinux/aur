@@ -4,7 +4,7 @@ _reponame=osmosis
 _orgname=${_reponame}-labs
 _pkgname=${_reponame}d
 pkgname=${_pkgname}-bin
-pkgver=27.0.1
+pkgver=28.0.0
 pkgrel=1
 pkgdesc="The AMM Laboratory on Cosmos"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("https://raw.githubusercontent.com/${_orgname}/${_reponame}/v${pkgver}/L
 source_x86_64=("${_pkgname}-${pkgver}-linux-x86_64::https://github.com/${_orgname}/${_reponame}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64")
 source_aarch64=("${_pkgname}-${pkgver}-linux-aarch64::https://github.com/${_orgname}/${_reponame}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64")
 sha256sums=('5d3757d59c66aefaf44ecc8bbf1cd4ca23fcb43221e94c8d60eff95de5bcfa6b')
-sha256sums_x86_64=('84b989b90bae4036f4eb3f9a8b00d808d9bb709a75926630a20d32c26b367a14')
-sha256sums_aarch64=('f8144e7d9a67a08f460c86178df1198a0bdd111dd82889ccbf6d410b75b28430')
+sha256sums_x86_64=('8efbeca8f3e6a27c7b8ab02141bbfc457a6efbb089e338147942aa6fcb586545')
+sha256sums_aarch64=('7ac375a5c58a4407e15651fb15e83b5267cfdfd81c9656b348e0f9d38205c126')
 
 package() {
     install -D "${_pkgname}-${pkgver}-linux-${arch}" "$pkgdir/usr/bin/${_pkgname}"
