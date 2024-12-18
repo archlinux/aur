@@ -15,8 +15,10 @@ makedepends=(
   'python-installer'
   'python-build'
   'python-wheel'
+  'python-pytest'
   'python-setuptools-scm'
 )
+checkdepends=('python-pytest-cov' 'python-language-data')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/georgkrause/langcodes/archive/refs/tags/v${pkgver}.tar.gz"
 )
@@ -28,9 +30,15 @@ build() {
   python -m build --no-isolation --wheel
 }
 
+check() {
+  cd "$_pkgname-$pkgver"
+  # python -m pytest # disabling until python-language-data is updated
+}
+
 package() {
   cd "$_pkgname-$pkgver"
   python -m installer --destdir=${pkgdir} dist/*.whl
   install -Dm644 "LICENSE.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/$pkgname"
 }
 # vim:set ts=2 sw=2 et:
