@@ -26,7 +26,4 @@ package() {
   cd "$srcdir/${pkgname}/build"
   install -Dm755 drm-lease-manager/drm-lease-manager -t "$pkgdir/usr/bin"
   install -Dm644 "$srcdir/${pkgname}/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
-  if [ ! -d "/var/run/drm-lease-manager" ]; then  
-    install -d "$pkgdir/var/run/drm-lease-manager"
-  fi
 }
