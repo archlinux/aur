@@ -1,13 +1,13 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2018-04-20.
+# PKGBUILD last time manually edited: At least on 2024-12-18.
 
 _pkgname=pentaxpj-filter
 pkgname="${_pkgname}"
 epoch=0
 _pkgver=1.0.0
 pkgver="${_pkgver}"
-pkgrel=7
+pkgrel=8
 pkgdesc="Printer filter for Pentax PocketJet 200 and PocketJet II printers. Needed in addition to the PPDs/ files that come with foomatic-db/ CUPS. Includes printer documentation."
 arch=('i686' 'x86_64')
 url="http://web.archive.org/web/20191225160215/http://ww1.pragana.net/gdiprinters.html#pentaxpj"
@@ -38,6 +38,8 @@ optdepends=(
 provides=(
   # "${_pkgname}=${pkgver}"
   "pentax-pocketjet-2-manual=2004"
+  "pentax-pocketjet-200-manual=2004"
+  "pentax-pocketjet-ii-manual=2004"
 )
 
 # conflicts=(
