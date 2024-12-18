@@ -15,12 +15,12 @@ sha256sums=('SKIP') # Github repo
 validpgpkeys=()
 
 build() {
-  cd "$srcdir/C-LCRYPT"  # Cambiado de C-LCRYPT-$pkgver a C-LCRYPT
+  cd "$srcdir/C-LCRYPT"  
   g++ -O3 -march=native -mtune=native -pipe -flto -funroll-loops -fomit-frame-pointer -fno-plt -ffast-math \
       -o C-LCRYPT C-LCRYPT.cpp -lssl -lcrypto -lz -lboost_iostreams -lzstd -lsodium
 }
 
 package() {
-  cd "$srcdir/C-LCRYPT"  # Cambiado de C-LCRYPT-$pkgver a C-LCRYPT
+  cd "$srcdir/C-LCRYPT" 
   install -Dm755 C-LCRYPT "$pkgdir/usr/bin/c-lcrypt"
 }
