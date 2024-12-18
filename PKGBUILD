@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ProteoDisco
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Generation of customized protein variant databases from genomic variants, splice-junctions and manual sequences'
 arch=('any')
@@ -55,7 +55,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('14ef61d328d8862edc28c7b364711e2e8e273f6042fcc614b930366563b48d81')
+sha256sums=('d52185b4caa86bc8266e0ec9e793f8070d380412c921715d53c4b930a0700b1e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
