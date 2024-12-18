@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=speckle
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,9 +34,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-tests.patch")
-md5sums=('d96d04d5338171fa9e2a2213a39fe729'
+md5sums=('02df000664c70b6ee85aa74170cb6248'
          '8af9b352ae92d11644cae8af98be635a')
-b2sums=('64d7333a2d92594dddefd2527cd1b18144888abfae7da66f276b1f646010863eca1494aa788370e7a7b0bd62338ecd8b47063b15d3494452248a777b53f513fe'
+b2sums=('785c521bfe381a48a6e2910c41d419780b53b3ad5d582df0f6cf0ed3ba0eb559386e86579f7eac76ab6cff44afe4c8b5ed07902b0b7ba482631ad965b4bbecb2'
         '3675d038b8f1a3df4a57c6227608bec986efcc0b8a551f1a5aec33cdcd19573c37c9f5ea2a7bdd37585187d6c8fd25c6cc849b9d5abad51e3d73bebec7af16c5')
 
 prepare() {
