@@ -4,7 +4,7 @@ _pyname="aardwolf"
 _pkgname="python-${_pyname}"
 pkgname="${_pkgname}-git"
 pkgver=0.2.9+5.r129.20241107.e6ae5c1
-pkgrel=1
+pkgrel=2
 pkgdesc="Asynchronous RDP protocol implementation for python."
 arch=(
   'aarch64'
@@ -17,7 +17,7 @@ arch=(
 _githost='github.com'
 _gituser='skelsec'
 url="https://${_githost}/${_gituser}/${_pyname}"
-license=("custom: MIT")
+license=("MIT")
 depends=(
   'gcc-libs'
   'glibc'
