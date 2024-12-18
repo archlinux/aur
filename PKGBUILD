@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=frappe-books-bin
 _pkgname="Frappe Books"
-pkgver=0.25.0
+pkgver=0.25.1
 _electronversion=22
 pkgrel=1
 pkgdesc="Modern desktop accounting for freelancers and small-businesses.(Prebuilt version.Use system-wide electron)"
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c4240bbd20ca3face362dcddd2da39fde5b64cfe22e673a143e44c8fcedb1130'
+sha256sums=('b9e4132e5adc1b23737c33d0f5786cad76e977f92f63254a4f0a9bfa341da5e2'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
