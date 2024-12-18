@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNAmodR
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -45,8 +45,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b7fedb35353258c8ab2c8915f0367283')
-b2sums=('8fbf460349f3c6cd9c7e46e75c4564065654897742fbee3530c967ef356961064bb2aa468adbc4c2b86df515cab1ad298a679564ea35ddfaec10ddac22c35a00')
+md5sums=('391d754edd4e3269fd8d604883b37b14')
+b2sums=('1960a8898097d2942616e990468f0c7b17aa59a158e04b86944dde6439344c41326185a8d011db3e2087e805156c3a39c1308a4f0bf0e6279a4a28334a001c45')
 
 build() {
   mkdir build
