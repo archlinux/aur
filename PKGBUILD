@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=osm2world-git
 _pkgname=OSM2World
-pkgver=2024.12.13
+pkgver=2024.12.18
 pkgrel=1
 pkgdesc="Converter that creates three-dimensional models of the world from OpenStreetMap data. -git latest"
 arch=('any')

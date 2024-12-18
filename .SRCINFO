@@ -1,6 +1,6 @@
 pkgbase = osm2world-git
 	pkgdesc = Converter that creates three-dimensional models of the world from OpenStreetMap data. -git latest
-	pkgver = 2024.12.13
+	pkgver = 2024.12.18
 	pkgrel = 1
 	url = http://osm2world.org/
 	arch = any
