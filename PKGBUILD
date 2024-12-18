@@ -5,7 +5,7 @@
 # Contributor: zfo <zfoofz1@gmail.com>
 
 pkgname=gcsfuse
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="A user-space file system for interacting with Google Cloud Storage"
 url="https://github.com/GoogleCloudPlatform/gcsfuse"
@@ -15,7 +15,7 @@ depends=('glibc' 'fuse')
 makedepends=('git' 'go')
 optdepends=('google-cloud-sdk: authentication helper')
 source=("$pkgname-$pkgver::https://github.com/GoogleCloudPlatform/gcsfuse/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('52252fed46534812a27cbf304e705ec84f63f2b8062719032eb4fa04af920944')
+sha256sums=('82a303f4fd4d09f24ed879e9ed4ec9812279f3e38798da2dc40325b5c89166ea')
 _gourl=github.com/googlecloudplatform/gcsfuse/v2
 
 build() {
