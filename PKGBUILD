@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/SergeyDash/arch-mp"
 license=('MIT')
 depends=('python' 'python-gobject' 'gst-plugins-base' 'gst-plugins-good')
-source=("https://github.com/SergeyDash/arch-mp/releases/download/1.0.0/media_player" "arch-mp.desktop")
+source=("https://github.com/SergeyDash/arch-mp/releases/download/1.0.0/arch-mp" "arch-mp.desktop")
 sha256sums=('SKIP')  # SHA256 не нужен, так как файл динамически загружается
 
 package() {
