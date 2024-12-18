@@ -1,0 +1,16 @@
+pkgbase = arch-mp
+	pkgdesc = A simple GTK-based media player
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/SergeyDash/arch-mp
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	source = https://github.com/SergeyDash/arch-mp/releases/download/1.0.0/media_player
+	source = arch-mp.desktop
+	sha256sums = SKIP
+
+pkgname = arch-mp

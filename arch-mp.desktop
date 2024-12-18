@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Arch MP
+GenericName=Media Player
+Comment=A simple GTK-based media player
+Exec=/usr/bin/arch-mp
+Icon=multimedia-video-player
+Terminal=false
+Type=Application
+Categories=AudioVideo;Player;
