@@ -3,7 +3,7 @@
 
 _pkgname="supabase"
 pkgname="${_pkgname}-bin"
-pkgver=2.0.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A CLI for Supabase, an open source Firebase alternative"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_linux_arm64.tar.gz")
-sha256sums_x86_64=('e805c2863e8db70e91c74acd6b926256d497054b582ec97cc09e8432cd8afec7')
-sha256sums_aarch64=('b3c9e5decf696d90f4dfb56b55d4e8202ac560206183151707cc9d59a2e070d4')
+sha256sums_x86_64=('7b0a577cf50dac1b17bd0653628e97a2e6f6d31ba81fc4fc1574970c45753ae0')
+sha256sums_aarch64=('eda3b0af8a855bd03e959ded4eacd61013b8211c112f20b127ff4c4f34cff267')
 
 prepare() {
   cd "${srcdir}"
@@ -25,6 +25,7 @@ prepare() {
 
 build() {
   cd "${srcdir}"
+  chmod +x "${_pkgname}"
   for _sh in bash fish zsh powershell; do
     ./"${_pkgname}" completion "${_sh}" > "completions/${_pkgname}.${_sh}"
   done
