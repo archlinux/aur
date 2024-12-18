@@ -1,0 +1,24 @@
+pkgbase = vesc-tool-all-firmwares
+	pkgdesc = VESC ESC graphical configuration tool with all firmwares
+	pkgver = 6.05
+	pkgrel = 1
+	url = https://github.com/vedderb/vesc_tool
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = qt5-location
+	depends = qt5-connectivity
+	depends = qt5-serialport
+	depends = qt5-gamepad
+	depends = xdg-utils
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-wayland
+	source = vesc-tool-all-firmwares::git+https://github.com/vedderb/vesc_tool.git#branch=release_6_05
+	source = vesc-tool-all-firmwares_bldc::git+https://github.com/vedderb/bldc.git#branch=release_6_05
+	source = vesc-tool.desktop
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = 075ccf8f9d1ce81b346c9c7d553272bafdad1b1be6991c8d9f5bfd7f92d256167718bfe72e319b3b14d9acdb9d2ea7ff6b02e38a271d09baa268c84863b8e93b
+
+pkgname = vesc-tool-all-firmwares
