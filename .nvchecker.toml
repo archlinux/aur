@@ -1,0 +1,4 @@
+[portainer-bin]
+source="github-graphql"
+github="portainer/portainer"
+use_latest_release=true
