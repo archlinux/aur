@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RgnTX
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cb590ec8545dd2797c50bbd08e416503')
-b2sums=('acbfba92fe76ef69bf7a0823082c7407eb7213063563bc4e258aa54e3dd49118e6fdc1d02028aec96ff780fbcf3ae60cf83b77105d0ad151cd03bef1631c78a7')
+md5sums=('5569e79d566959caaf9fa785838cde42')
+b2sums=('cb1b387d466f1721f41b435fd04ac02e98689cb38f1fe50ad5c2bb615c3727242aa20d1c93125f527fbe1ed60958a9ed0605c0c3477a09395d28bb61ffe3a40f')
 
 build() {
   mkdir build
