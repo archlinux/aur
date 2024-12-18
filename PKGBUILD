@@ -1,34 +1,36 @@
-#!/bin/bash
+# Maintainer: envolution
+# Contributor: PumpkinCheshire <me at pumpkincheshire dot top>
+# shellcheck shell=bash disable=SC2034,SC2154
 
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
-
-_name=langcodes
 pkgname=python-langcodes
-pkgver=3.3.0
+_pkgname=langcodes
+pkgver=3.5.0
 pkgrel=1
 pkgdesc='A toolkit for working with and comparing the standardized codes for languages'
 arch=('any')
-url="https://github.com/LuminosoInsight/langcodes"
-license=('Apache')
+url="https://github.com/georgkrause/langcodes"
+license=(MIT)
+depends=('python')
 makedepends=(
-	'python'
-	'python-setuptools'
+  'python-installer'
+  'python-build'
+  'python-wheel'
+  'python-setuptools-scm'
 )
 source=(
-	"https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-	"https://raw.githubusercontent.com/LuminosoInsight/langcodes/master/LICENSE.txt"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/georgkrause/langcodes/archive/refs/tags/v${pkgver}.tar.gz"
 )
-b2sums=('2aaecc132ff7d58023591b2c8597d554d384b3e7f1f9bdc34998dab543d8eee0f4bffedd7c9a5beecf609d0b4117bb45e44f2eecb78c02dcd021c7b6e7648487'
-        'afaae2fb675c7a953af2d251e57efa75ebe6278f5858c9f802bdec25490f589ba6f85df8d73377f302a8c6120314a479e97ce557315b9352c4d293fe84ba5435')
+b2sums=('90e20a1118ada01b819c32687cdf30882df5c0eb28a27bd2e45639d18380218e1d8ce28b5e55b4c603e709a4edfa6260471f97bf65266a638170d9f9ddab4020')
 
 build() {
-	cd "$srcdir/$_name-$pkgver" || exit
-	export PYTHONHASHSEED=0
-	python setup.py build
+  cd "$_pkgname-$pkgver"
+  export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
+  python -m build --no-isolation --wheel
 }
 
 package() {
-	cd "$srcdir/$_name-$pkgver" || exit
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 "$srcdir/LICENSE.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
+  cd "$_pkgname-$pkgver"
+  python -m installer --destdir=${pkgdir} dist/*.whl
+  install -Dm644 "LICENSE.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
+# vim:set ts=2 sw=2 et:
