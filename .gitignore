@@ -1,3 +1,7 @@
-REW_linux_no_jre_*.sh
-roomeqwizard-*-any.pkg.tar
-Sampledata.mdat
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO

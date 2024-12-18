@@ -9,10 +9,10 @@ pkgver=5.31.3
 _pkgver=5_31_3
 pkgrel=1
 pkgdesc="A room acoustics analysis software for measuring and analysing room and loudspeaker responses"
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://www.roomeqwizard.com"
 license=('custom')
-depends=('java-runtime=8' 'xdg-utils')
+depends=('xdg-utils' 'bash' 'glibc' 'java-runtime=8' 'alsa-lib')
 makedepends=('java-environment=8' 'fontconfig' 'freetype2')
 source=(
     "http://www.roomeqwizard.com/installers/REW_linux_no_jre_$_pkgver.sh"
