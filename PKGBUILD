@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=pairedGSEA
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -42,8 +42,8 @@ optdepends=(
   r-writexl
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2e2d1521409b95e8f06e73b8341b2749')
-b2sums=('2d131331baa32956d6581b3353b75bd5e032f7e298ab9f2108c2318ede8e4785b7a3fad0e1869fafc9802324241872d2e0415dc3a7c5fc6f0349201e6c873050')
+md5sums=('d182fc70ccc15823d971e759d93a8ad9')
+b2sums=('734498c3562851937bc5d01f0e4beb7faf0c6d4415a192c74467dbd47c4b7c22d587d72432df57dde8a1c492f8430a85a0b6741f1628abbf0d0b511ab14f6284')
 
 build() {
   mkdir build
