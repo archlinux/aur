@@ -1,6 +1,6 @@
 pkgbase = tfel
 	pkgdesc = TFEL/MFront introduces DSLs based on C++ to handle material knowledge
-	pkgver = 4.2.2
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/thelfer/TFEL
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tfel
 	depends = gcc-libs
 	depends = gnuplot
 	provides = mfront
-	source = https://github.com/thelfer/TFEL/archive/TFEL-4.2.2.tar.gz
-	sha512sums = 55fcbd12519df7705ab2520ddfc8b5b7290865aa506a14d8bc03547a91d08d76c603f292e3c67b00b48dd52e07f806aab1fcab2d0f4a3b123fbec3ba60af77e1
+	source = https://github.com/thelfer/TFEL/archive/TFEL-5.0.0.tar.gz
+	sha512sums = eb0d27a8a59fdcedda29b24c0567e3e3708298734275a5c39a1147955e305f8dc48adf55b23762357a8bc19bfc1ef5c36e955a1f85596c5a8a52f9dc4c37cee0
 
 pkgname = tfel
