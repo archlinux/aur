@@ -1,7 +1,7 @@
 # Maintainer: Hari Chalise <harilvfs@chalisehari.com.np>
 pkgname=carch-git
 _pkgname=carch
-pkgver=v3.0.9.r27.g8e8e38b
+pkgver=v4.0.0.r2.g08fbdca
 pkgrel=1
 pkgdesc="An automated script for quick & easy Arch Linux system setup"
 arch=(any)
