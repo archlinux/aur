@@ -1,56 +1,22 @@
 # Maintainer: decipher3114 <decipher3114@gmail.com>
-pkgname="capter"
-pkgver=v2.2.2
+pkgname=capter
+pkgver=2.2.3
 pkgrel=1
-pkgdesc="A simple cross-platform screenshot tool made in rust"
-arch=("x86_64")
-url="https://github.com/decipher3114/capter"
-license=("Apache-2.0")
-depends=(
-    "git"
-    "gtk3"
-    "xdotool"
-    "libayatana-appindicator"
-    "libxcb"
-    "libxrandr"
-    "dbus"
-)
-makedepends=(
-	"rust"
-	"gtk3"
-    "xdotool"
-    "libayatana-appindicator"
-    "libxcb"
-    "libxrandr"
-    "dbus"
-)
-source=(
-    "git+https://github.com/decipher3114/capter"
-)
-noextract=()
-md5sums=('SKIP')
-
-pkgver() {  
-	cd "${srcdir}/${pkgname}"
-    git fetch --tags
-    git describe --tags | sed 's/-.*//g'
-}
-
-prepare() {
-    cd "${srcdir}/${pkgname}"
-    git fetch --all --tags
-}
-
-build() {
-    cd "${srcdir}/${pkgname}"
-    git reset --hard "${pkgver}"
-    cargo build --release
-}
-
+epoch=
+pkgdesc="A simple cross-platform screenshot tool"
+arch=('x86_64')
+depends=(gtk3 
+xdotool 
+libayatana-appindicator 
+libxcb 
+libxrandr 
+dbus)
+provides=()
+conflicts=()
+replaces=()
+options=(!lto)
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/decipher3114/Capter/releases/latest/download/capter_${pkgver}_x86_64.tar.gz)
+sha512sums=("f2789dc8ebe9056a6efcd6fbfa2e604377312323b71b8dbbab697b3d82c63a3514e864bec90dfc31d45e618f16493fa5be25fe25187dcdce098e39deb93ba61f")
 package() {
-    cd "${srcdir}/${pkgname}"
-    install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    mkdir -p "${pkgdir}/usr/share/icons"
-    cp -R --update "assets/resources/linux/hicolor" "${pkgdir}/usr/share/icons"
-    install -Dm644 "assets/resources/linux/capter.desktop" -t "${pkgdir}/usr/share/applications"
+	cp -r "${srcdir}"/* "${pkgdir}"/
 }
