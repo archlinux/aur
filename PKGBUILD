@@ -1,12 +1,14 @@
 # Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 
+_opt_meson=1
+
 set -u
 _pkgname='fdpp'
 pkgname='fdpp'
 #pkgname+='-git'
 epoch=0
-pkgver=1.7.r143.ge39aa5e
+pkgver=1.8
 pkgrel=1
 pkgdesc='64 bit FreeDOS++ for dosemu2'
 arch=(
@@ -31,6 +33,9 @@ makedepends=(
   'thunk_gen'
   #nasm          # to be removed after 1.7
 )
+if [ "${_opt_meson}" -ne 0 ]; then
+  makedepends+=('meson')
+fi
 if [ "${CARCH}" == "x86_64" ]; then
   export CROSS_LD='ld'
 else
@@ -42,9 +47,9 @@ _srcdir="${pkgname%-git}-${pkgver%.r*}"
 source=(
   "${_srcdir}.tar.gz::${url}/archive/${pkgver%%.r*}.tar.gz"
 )
-md5sums=('c799e057c720f4f9b0dccb4ba52b2a1e')
-sha256sums=('84447578d30ec5d94924d6a2c695005770333aacbca233188ff205d5ab5cbd91')
-b2sums=('79f55805086374b1aec06e5ec21b3a5c9d39bb4f777a0035810d646cf251e34bd15d17ca002b26aa2b35a90f1a988fb1e923514077baaad97d516aabe38e20cb')
+md5sums=('5040686eb72404df814ffb398a50c957')
+sha256sums=('63b7f837df0583a586140a94c6fa0fb5654dd1d0a06a1fe068ef52f12bef254c')
+b2sums=('bbab2006627fb24b0915a95a39979905d1591cfc37051414cc2d3aba73dc1c12d2e376302390abe07e63f733b6cc99318ba1591a02434efc6f134822fb3f813d')
 
 prepare() {
   set -u
@@ -63,8 +68,8 @@ prepare() {
   set +u
 }
 
-if [ "${pkgname%-git}" != "${pkgname}" ] || :; then
-  source[0]="git+${url}.git#commit=e39aa5e00f6dfecbac346a338e7c369d4f6b6ae8"
+if [ "${pkgname%-git}" != "${pkgname}" ]; then
+  source[0]="git+${url}.git"
   md5sums[0]='SKIP'
   sha256sums[0]='SKIP'
   b2sums[0]='SKIP'
@@ -85,15 +90,25 @@ fi
 build() {
   set -u
   cd "${_srcdir}"
-  bash -e -u configure
-  nice make
+  if [ -s 'configure.meson' ] && [ "${_opt_meson}" -ne 0 ]; then
+    ./configure.meson --prefix '/usr' 'build'
+    meson compile --verbose -C 'build'
+  else
+    bash -e -u configure
+    sed -E -e '/^prefix / s:= .+:= /usr:g' -i 'fdpp/defs.mak'
+    nice make
+  fi
   set +u
 }
 
 package() {
   set -u
   cd "${_srcdir}"
-  make -j1 DESTDIR="${pkgdir}" install
+  if [ -s 'configure.meson' ] && [ "${_opt_meson}" -ne 0 ]; then
+    meson install -C 'build' --destdir "${pkgdir}"
+  else
+    make -j1 DESTDIR="${pkgdir}" install
+  fi
 
   pushd "${pkgdir}/usr/share/fdpp/" > /dev/null
   if [ ! -e 'fdppkrnl.elf' ]; then

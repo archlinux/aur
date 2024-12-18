@@ -1,6 +1,6 @@
 pkgbase = fdpp
 	pkgdesc = 64 bit FreeDOS++ for dosemu2
-	pkgver = 1.7.r143.ge39aa5e
+	pkgver = 1.8
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/dosemu2/fdpp
@@ -12,17 +12,15 @@ pkgbase = fdpp
 	makedepends = clang
 	makedepends = nasm-segelf
 	makedepends = thunk_gen
-	makedepends = git
+	makedepends = meson
 	depends = comcom64
 	depends = gcc-libs
 	depends = glibc
 	depends = libelf
-	provides = fdpp=1.7
-	conflicts = fdpp
 	options = !strip
-	source = git+https://github.com/dosemu2/fdpp.git#commit=e39aa5e00f6dfecbac346a338e7c369d4f6b6ae8
-	md5sums = SKIP
-	sha256sums = SKIP
-	b2sums = SKIP
+	source = fdpp-1.8.tar.gz::https://github.com/dosemu2/fdpp/archive/1.8.tar.gz
+	md5sums = 5040686eb72404df814ffb398a50c957
+	sha256sums = 63b7f837df0583a586140a94c6fa0fb5654dd1d0a06a1fe068ef52f12bef254c
+	b2sums = bbab2006627fb24b0915a95a39979905d1591cfc37051414cc2d3aba73dc1c12d2e376302390abe07e63f733b6cc99318ba1591a02434efc6f134822fb3f813d
 
 pkgname = fdpp
