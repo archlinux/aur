@@ -4,7 +4,7 @@ _pyname="aardwolfgui"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-git"
 pkgver=0.0.8.r28.20240905.c144cb8
-pkgrel=2
+pkgrel=3
 pkgdesc="Asynchronous RDP protocol implementation for python: GUI."
 arch=(
   'any'
@@ -14,20 +14,23 @@ _gituser='skelsec'
 url="https://${_githost}/${_gituser}/${_pyname}"
 license=("MIT")
 depends=(
-  'python>=3.7'
-  'python-aardwolf>=0.2.5'
+  'python>=3.8'
+  'python-aardwolf>=0.2.7'
+  'python-pillow'
   'python-pyperclip'
-  'python-pysimplegui'
-  'python-pyqt5'
+  'python-pyqt6'
+  #'python-pyqt6-sip'
 )
 makedepends=(
   'git'
   'python-build'
   'python-installer'
-  'python-wheel'
   'python-setuptools>=61.0.0'
+  'python-wheel'
 )
-optdepends=()
+optdepends=(
+  'python-pysimplegui'
+)
 checkdepends=()
 provides=(
   "ardpclient=${pkgver}"
