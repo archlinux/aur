@@ -2,15 +2,16 @@ pkgbase = r-classint
 	pkgdesc = Choose Univariate Class Intervals
 	pkgver = 0.4.10
 	pkgrel = 1
-	url = https://cran.r-project.org/package=classInt
-	arch = i686
+	url = https://CRAN.R-project.org/package=classInt
 	arch = x86_64
-	license = GPL2
-	license = GPL3
+	license = GPL-2.0-only OR GPL-3.0-only
 	makedepends = gcc-fortran
 	depends = r>=2.2
-	depends = r-class
+	depends = r-grdevices
+	depends = r-stats
+	depends = r-graphics
 	depends = r-e1071
+	depends = r-class
 	depends = r-kernsmooth
 	optdepends = r-spdata>=0.2.6.2
 	optdepends = r-units
