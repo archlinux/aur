@@ -1,6 +1,6 @@
 pkgbase = r-cicero
 	pkgdesc = Precict cis-co-accessibility from single-cell chromatin accessibility data
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cicero
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = r-cicero
 	optdepends = r-rtracklayer
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cicero_1.22.0.tar.gz
-	sha256sums = 19d93468774586afc00d8592b58fbebeaa26808246a9088f5925523c61f1b474
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cicero_1.24.0.tar.gz
+	sha256sums = d7d5a0c42f123aea2739efa6c9983851ec27d394ae8fd76c68b9bc3b4a91418a
 
 pkgname = r-cicero
