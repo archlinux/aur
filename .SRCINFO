@@ -11,7 +11,6 @@ pkgbase = joplin-beta
 	makedepends = python
 	makedepends = python-setuptools
 	makedepends = jq
-	makedepends = moreutils
 	makedepends = nodejs-lts-iron
 	depends = electron32
 	depends = gtk3
