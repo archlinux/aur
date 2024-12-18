@@ -14,8 +14,8 @@ arch=('x86_64')
 url='https://tukaani.org/xz/'
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later' 'LicenseRef-custom' 'LicenseRef-Autoconf-exception-macro')
 depends=('sh')
-makedepends=('git' 'po4a' 'doxygen')
-provides=("liblzma.so=$pkgver" "xz=$pkgver")
+makedepends=('git' 'doxygen')
+provides=("liblzma.so" "liblzma.so=$pkgver" "xz=$pkgver") #double declaration of liblzma is intentional
 conflicts=(xz)
 source=("$pkgname::git+https://github.com/tukaani-project/xz.git")
 sha256sums=('SKIP')
@@ -23,7 +23,7 @@ validpgpkeys=('3690C240CE51B4670D30AD1C38EE757D69184620') # Lasse Collin <lasse.
 
 prepare() {
   cd $pkgname
-  PATH="usr/bin/vendor_perl:$PATH" ./autogen.sh --no-po4a
+  ./autogen.sh --no-po4a
 }
 
 pkgver() {
@@ -53,7 +53,6 @@ check() {
 package_xz-git() {
   cd $pkgname
   make DESTDIR=${pkgdir} install
-  # rm -Rf ${pkgdir}/usr/{bin,include,share,lib/pkgconfig}
   install -Dm644 README ${pkgdir}/usr/share/doc/${pkgname}/README
   install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
   cp -Rf COPYING* ${pkgdir}/usr/share/licenses/${pkgname}
