@@ -1,7 +1,7 @@
 # Maintainer: Dimitri Sabadie <hadronized@strongly-typed-thoughts.net>
 pkgname=flirt
 pkgver=0.2.1
-pkgrel=5
+pkgrel=6
 epoch=
 pkgdesc=" FiLe InteRacT, the file interaction tool for your command line "
 arch=('x86_64')
@@ -52,7 +52,7 @@ package() {
   # binary
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-	# docs / license
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  # docs / license
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
