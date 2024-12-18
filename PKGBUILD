@@ -1,4 +1,4 @@
-# Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
+# Maintainer: ikyope at outlook dot com
 
 pkgname=listen1-desktop-appimage
 pkgver=2.32.0
@@ -14,8 +14,8 @@ depends=('fuse2')
 conflicts=("listen1-desktop")
 source=("${_pkgname}::https://github.com/listen1/listen1_desktop/releases/download/v${pkgver}/${_pkgname}"
     "LICENSE.md::https://raw.githubusercontent.com/listen1/listen1_desktop/master/LICENSE.md")
-sha512sums=("36d70d642faf7bde877c81587a1f6b6dffc8f479ad730e6a71cdb614c1d82bd6696fc1a2cd8b3ab5eaa462b4b396a3715f859d91119aff969e1c78bc35378010"
-    "21c9d751b2f2691ed5dd5a7468d066e6f933c11ea1855625aeb4bc06c5b06145faf19194188affcdf30fbc2033d1597a781676e291ba7f4265931847d28a2144")
+b2sums=("5447dc289aee4c76de88cf0ff8a76788dfec7cc4edc585c4d8847cb0d28ddd5d5433ce3f45b61e2594f930c3b170cf5a80507966425ccab3f9dad9f2ca3f90f0"
+    "59d9fb2489a013121cc11df5ae126de8c46d060cf19e6456d9c0d490f2dae36f59cebce8180d890c5212700a73fdbc7eb0c65f920868c0f11fdd58aeab11cae4")
 
 _installdir=/opt/appimages
 
