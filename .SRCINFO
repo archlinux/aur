@@ -1,6 +1,6 @@
 pkgbase = r-wavcluster
 	pkgdesc = Sensitive and highly resolved identification of RNA-protein interaction sites in PAR-CLIP data
-	pkgver = 2.38.0
+	pkgver = 2.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/wavClusteR
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-wavcluster
 	optdepends = r-domc
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/wavClusteR_2.38.0.tar.gz
-	sha256sums = fb4d8dedd9e970d13d402cf07b4c670acf93aa43ba4d80cbeba308dd9593247b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/wavClusteR_2.40.0.tar.gz
+	sha256sums = ddf36d86b0bda8bd82e1fecf914168016d65a9d1f4fac5aebf733f5a74b9f669
 
 pkgname = r-wavcluster
