@@ -1,7 +1,7 @@
 # Maintainer: Florian Hülsmann <fh@cbix.de>
 
 pkgname=cadet-process
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Modeling and simulation framework for biotechnology processes – python frontend'
 arch=(any)
@@ -10,7 +10,7 @@ license=(GPL-3.0-only)
 depends=(python)
 makedepends=(git python-build python-installer python-wheel)
 source=("git+https://github.com/fau-advanced-separations/CADET-Process#tag=v$pkgver")
-sha256sums=('fd2b6f8510ae0df0487ae5bc700812f2643a1cac2dfcad29597371c760d32ebc')
+sha256sums=('bb09917c34168e86dc3fb5ffe46ca4ac9df8b3c3c21a20c6c76e2906775eca1b')
 
 build() {
 	cd CADET-Process
