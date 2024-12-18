@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/${pkgname}"
-  arch-meson build --prefix=/usr
+  arch-meson build --prefix=/usr -Druntime_subdir=/var/run/drm-lease-manager
   ninja -C build
 }
 
