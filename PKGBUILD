@@ -1,16 +1,16 @@
 # Maintainer: Evgeniy Alekseev <arcanis at archlinux dot org>
 
 pkgname=plibsys
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Cross-platform system C library with some helpful routines"
 arch=('x86_64')
 url="https://github.com/saprykin/plibsys"
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=('glibc')
 makedepends=('cmake')
 source=("https://github.com/saprykin/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('61957666fb454469e1ff68435463eaf426e960caed33540dbb495e1aa7c446c9803d100f33f1a6ea70d5f2ee2d0d19ec315f3a8c651747f65a186ad061c05e51')
+sha512sums=('ccc4dd0e54d69121542f4ddec319ec9fd2069866a93135acb87fe564c7bd067a218038dfaa4ddda4debcd897975c016165cbe3d41af6c2149d2b49fbe52f8fbb')
 
 prepare() {
   rm -rf "build"
