@@ -1,15 +1,15 @@
 pkgbase = brother-mfc-9332cdw
 	pkgdesc = LPR and CUPS drivers for Brother MFC-9332CDW
 	pkgver = 20170302
-	pkgrel = 2
-	url = http://support.brother.com/g/s/id/linux/en/index.html
+	pkgrel = 3
+	url = https://support.brother.com/g/b/downloadlist.aspx?c=de&lang=de&prod=mfc9332cdw_eu&os=128&flang=English
 	install = brother-mfc-9332cdw.install
 	arch = i686
 	arch = x86_64
 	license = unknown
 	depends = perl
 	depends = a2ps
-	depends = lib32-libcups
+	depends = libcups
 	optdepends = brscan4: Scanner support
 	source = http://download.brother.com/welcome/dlf101620/mfc9332cdwlpr-1.1.3-0.i386.deb
 	source = http://download.brother.com/welcome/dlf101621/mfc9332cdwcupswrapper-1.1.4-0.i386.deb
@@ -17,4 +17,3 @@ pkgbase = brother-mfc-9332cdw
 	sha512sums = d0a5eb28962613649831f2d5f54a61196394f6a8c256826c813af073363881e8ab86b31c23a64c95c2ed1c1f4ca6b7bf3f25c6bc7d6ff4eaa7948e18369fc482
 
 pkgname = brother-mfc-9332cdw
-

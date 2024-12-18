@@ -1,15 +1,15 @@
 model="9332cdw"
 pkgname="brother-mfc-$model"
 pkgver="20170302"
-pkgrel=2
+pkgrel=3
 lprver="1.1.3-0"
 cwver="1.1.4-0"
 pkgdesc="LPR and CUPS drivers for Brother MFC-9332CDW"
-url="http://support.brother.com/g/s/id/linux/en/index.html"
+url="https://support.brother.com/g/b/downloadlist.aspx?c=de&lang=de&prod=mfc9332cdw_eu&os=128&flang=English"
 arch=('i686' 'x86_64')
 license=('unknown')
 install="brother-mfc-${model}.install"
-depends=('perl' 'a2ps' 'lib32-libcups')
+depends=('perl' 'a2ps' 'libcups')
 optdepends=('brscan4: Scanner support')
 source=("http://download.brother.com/welcome/dlf101620/mfc${model}lpr-${lprver}.i386.deb"
         "http://download.brother.com/welcome/dlf101621/mfc${model}cupswrapper-${cwver}.i386.deb")
