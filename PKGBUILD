@@ -1,27 +1,30 @@
-# Maintainer: Stephanie Wilde-Hobbs <steph@rx14.co.uk>
-# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: envolution
+# Contributor: Stephanie Wilde-Hobbs <steph@rx14.co.uk>
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: François Charette <firmicus@gmx.net>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=xz-static
-pkgver=5.2.7
+pkgver=5.6.3
 pkgrel=1
-pkgdesc='Statically linked library and command line tools for XZ and LZMA compressed files'
+pkgdesc='Statically linked library for XZ and LZMA'
 arch=('x86_64')
 url='https://tukaani.org/xz/'
-license=('GPL' 'LGPL' 'custom')
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later' 'LicenseRef-custom' 'LicenseRef-Autoconf-exception-macro')
 depends=('sh')
+provides=("liblzma.a=$pkgver")
 options=('staticlibs')
 source=("https://tukaani.org/xz/xz-${pkgver}.tar.gz"{,.sig})
-sha256sums=('06327c2ddc81e126a6d9a78b0be5014b976a2c0832f492dcfc4755d7facf6d33'
+sha256sums=('b1d45295d3f71f25a4c9101bd7c8d16cb56348bbef3bbc738da0351e17c73317'
             'SKIP')
-validpgpkeys=('3690C240CE51B4670D30AD1C38EE757D69184620')
+validpgpkeys=('3690C240CE51B4670D30AD1C38EE757D69184620') # Lasse Collin <lasse.collin@tukaani.org> https://tukaani.org/misc/lasse_collin_pubkey.txt
 
 build() {
-	cd ${srcdir}/xz-${pkgver}
+  cd xz-${pkgver}
 
-	./configure --prefix=/usr \
-		--disable-rpath \
-		--enable-werror \
+  ./configure --prefix=/usr \
+    --disable-rpath \
+    --enable-werror \
     --disable-shared \
     --disable-xz \
     --disable-xzdec \
@@ -29,17 +32,20 @@ build() {
     --disable-lzmainfo \
     --disable-scripts \
     --disable-doc
-	make
+  make
 }
 
 check() {
-	cd ${srcdir}/xz-${pkgver}
-	make check
+  cd xz-${pkgver}
+  make check
 }
 
 package() {
-	cd ${srcdir}/xz-${pkgver}
-	make DESTDIR=${pkgdir} install
-
+  cd xz-${pkgver}
+  make DESTDIR=${pkgdir} install
   rm -Rf ${pkgdir}/usr/{bin,include,share,lib/pkgconfig}
+  install -Dm644 README ${pkgdir}/usr/share/doc/${pkgname}/README
+  install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
+  cp -Rf COPYING* ${pkgdir}/usr/share/licenses/${pkgname}
 }
+# vim:set ts=2 sw=2 et:

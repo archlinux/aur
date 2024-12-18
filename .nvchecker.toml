@@ -1,0 +1,4 @@
+[xz-static]
+source='regex'
+regex="releases.download.v[0-9.]+.xz-([0-9.]+).tar.gz"
+url="https://tukaani.org/xz/#_source_packages"
