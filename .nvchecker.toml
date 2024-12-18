@@ -1,4 +1,4 @@
-[cloud-nuke]
+[cloud-nuke-bin]
 source = "github"
 github = "gruntwork-io/cloud-nuke"
 use_latest_release = "true"
