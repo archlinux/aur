@@ -22,7 +22,7 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --no-default-features --features=cli,completion
+    cargo build --frozen --release --no-default-features --features=completion
 
     mkdir -p "completions"
     for shell in bash zsh fish; do
