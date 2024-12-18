@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=intansv
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='Integrative analysis of structural variations'
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
   r-plyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('edfb36fdf85444016c770aeddbab8eae2e767d3b7f7da3775f62b647a6675bda')
+sha256sums=('2239348fb54e4c919b58100bcab394a2c4428e4ab077e30ddeb13aa8c8933508')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
