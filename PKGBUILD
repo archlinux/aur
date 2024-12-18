@@ -7,7 +7,7 @@ pkgname="${_pkgname}"
 epoch=0
 _pkgver=1.0.0
 pkgver="${_pkgver}"
-pkgrel=8
+pkgrel=9
 pkgdesc="Printer filter for Pentax PocketJet 200 and PocketJet II printers. Needed in addition to the PPDs/ files that come with foomatic-db/ CUPS. Includes printer documentation."
 arch=('i686' 'x86_64')
 url="http://web.archive.org/web/20191225160215/http://ww1.pragana.net/gdiprinters.html#pentaxpj"
@@ -60,6 +60,7 @@ _target="pentaxpj-${_pkgver}.tar.gz"
 
 source=(
   "${_target}::http://web.archive.org/web/20160517131113if_/http://ww1.pragana.net/pentaxpj-${_pkgver}.tar.gz"
+  # Alternative source at https://www.openprinting.org/download/printing/pentaxpj
   "pentaxpj.conf.a4"
   "pentaxpj.conf.letter"
   "Pentax_PocketJet_II_and_PocketJet_200_users_guide.pdf::http://web.archive.org/web/20071017093018/http://www.megatron.fr/imprimantes/pdf/manuels/thermal/pentax/doc_pocketjet_II-200_user_guide_e.pdf"
@@ -72,7 +73,7 @@ sha256sums=(
   "402f62fef43ca1738d7ba8e7729864326ca138fa5a57fb0b46611f05585ed4c4"
   "a2e25b291591b31b215a7001308f76b1ea7ece2eb803a7258f821bae1223c51a"
   "ab714ff7dac4cf61261b63836cc238873936c0816b5978d265acf49ffcb3cfcc"
-  "348c4ba58e0dfaf49db9bee73f55f6ac049d084e9cc19df81950c0cf1f65eecc"
+  "1ccb00a76104a0af0cef342686b5ce567aa00ceb07ed2d3902f3e3dd5571d079"
   "385590851fdc8464f0cb844f0d93e2b625ee46772ce8fad9d287d640db7e9fc2"
 )
 

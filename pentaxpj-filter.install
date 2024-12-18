@@ -9,18 +9,54 @@ modify the printer's PPD file (will be under /etc/cups/ppd/ after
 installation in CUPS):
 
 In the line
-  *FoomaticRIPCommandLine: "pentaxpj%B"
+
+    *FoomaticRIPCommandLine: "pentaxpj%B"
 replace
-  pentaxpj
+
+     pentaxpj
 with
-  pentaxpj_sh
+
+     pentaxpj_sh
+
 (so the line reads like
+
     *FoomaticRIPCommandLine: "pentaxpj_sh%B"
+
 ).
 
 Otherwise, you most probably will get a "Filter failed"-error in CUPS
 and /var/log/cups/error.log will show
-  Process is dying with \"Encountered error Broken pipe during fwrite\"
+
+    Process is dying with \"Encountered error Broken pipe during fwrite\"
+
+---
+
+Also, the paper dimensions seem wrong: CUPS test page margin is not printed
+on right and bottom edge. And the left edge can be made smaller.  
+To fix, alter the PPD file e.g. as follows:
+
+Old:
+
+    *HWMargins: 18 36 18 36
+
+To new:
+
+    *% Changed from defaults to make the whole fit on the paper (only tested for A4): Increased bottom margin; decreased left margin.
+    *HWMargins: 9 72 9 36
+
+Old:
+
+    *ImageableArea Letter/Letter: "18 36 594 756"
+    *ImageableArea A4/A4: "18 36 577 806"
+    *ImageableArea Legal/Legal: "18 36 594 972"
+
+To new:
+
+    *% Changed from defaults to make the whole fit on the paper (only tested for A4, guessed for the other ones based on A4 tests): Increased right and bottom margins; decreased left margin.
+    *ImageableArea Letter/Letter: "9 72 570 756"
+    *ImageableArea A4/A4: "9 72 570 806"
+    *ImageableArea Legal/Legal: "9 72 570 972"
+
 
 === /pentaxpj-filter ===
 
