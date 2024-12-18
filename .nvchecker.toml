@@ -1,0 +1,4 @@
+[ccase-bin]
+source = "git"
+git = "https://github.com/rutrum/ccase.git"
+prefix = "v"
