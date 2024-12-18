@@ -30,7 +30,7 @@ depends=(
 optdepends=(
 	'kitty: the default terminal emulator'
 )
-makedepends=('cargo')
+makedepends=('git' 'cargo')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://github.com/m4rch3n1ng/mayland.git")
