@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SPONGE
-_pkgver=1.26.1
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -50,8 +50,8 @@ optdepends=(
   r-visnetwork
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fe6976386739e0c851946d13300fa033')
-b2sums=('aef9652f45a727466be616819cdb0cf96d8bd7f6c085ffc622c1b9aa24b09e2f2fe79ea018efc46eb1d367e047b98375fc71259b99ac0324a709cf595be38a17')
+md5sums=('2133e52cd4046b2fa7e40988ac2cdc0c')
+b2sums=('f3b93ade9302650f54b642829c4f3e2be5092c8510b00befa8f493fa9a659979efdc4e527f08ab8a426c433a0eb4dee63f0be8bba0528b62c10f937e47321f6f')
 
 build() {
   mkdir build
