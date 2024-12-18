@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=selectKSigs
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Selecting the number of mutational signatures using a perplexity-based measure and cross-validation'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('24502fc8c97e0b2631feeb2545878cbf2d2c43aa69860cee26460940de259899')
+sha256sums=('bd955e36641a6198ea28e0e94d583a48ec1894d00d532a21135a611ba6238b30')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
