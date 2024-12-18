@@ -17,8 +17,8 @@ license=(
 )
 
 # groups=(
-#         "pentaxpj"
-#        )
+#   "pentaxpj"
+# )
 
 depends=(
   "bash"
