@@ -1,0 +1,6 @@
+*.tar.*
+.vscode/
+build/
+pkg/
+src/
+libheif
