@@ -1,7 +1,7 @@
 pkgbase = python-daemon
 	pkgdesc = Library to implement a well-behaved Unix daemon process
 	pkgver = 3.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pagure.io/python-daemon/
 	arch = any
 	license = Apache

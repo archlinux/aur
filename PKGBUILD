@@ -5,7 +5,7 @@
 
 pkgname=python-daemon
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Library to implement a well-behaved Unix daemon process'
 arch=('any')
 url='https://pagure.io/python-daemon/'
@@ -27,6 +27,10 @@ build() {
 
 check() {
   cd ${pkgname//-/_}-$pkgver
+  rm -rf tmp_install
+  python -m installer --destdir=tmp_install dist/*.whl
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  export PYTHONPATH="$PWD/tmp_install/$site_packages"
   python -m unittest discover -v
 }
 
