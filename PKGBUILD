@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChIPpeakAnno
-_pkgver=3.38.1
+_pkgver=3.40.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -79,8 +79,8 @@ optdepends=(
   r-upsetr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5235bad4fe917e070b4d059fec933143')
-b2sums=('341f3114b33c51403196090c1cedaa8377c2d2a2d7c102be4910485adede1ec11adfd94fb8e186aa097591222f7c1392a1c8a359a1f6fd492bd1bc58ff709fcf')
+md5sums=('013df0ad1ca32d1c0f26de985a4d13e7')
+b2sums=('60bb19de65fcc189f748f1e73367bd7b71cc3915ec517619da4634a6b92b6c57f178156224b5e62a5909efd2c6fc14c12a1bf3b975d15ddb3720002e4c98c6f4')
 
 build() {
   mkdir build
