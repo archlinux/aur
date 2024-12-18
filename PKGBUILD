@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=CoSIA
-_pkgver=1.2.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="An Investigation Across Different Species and Tissues"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -41,8 +41,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('217ff53ed0aac2ca3c2d91ce5237c111')
-b2sums=('3fcc3231673e0ee775689b136d0eb13b4589f16a0fdb12af2efc4ab9841daf864171ecbe3734dc08565d253e888a5f1c7d216d0b3ec845c333ef69acf952f183')
+md5sums=('5c3d04805fd84a3b63480d1a47df2c97')
+b2sums=('a4b8401eb15a6e41b99349c325a60360a18be9a819b13cfed056a40740b11975b056c5a3b9463cab6b7f15b0c7de7f2dd54efd90a81208260b4d1b3efd3865c2')
 
 build() {
   mkdir build
