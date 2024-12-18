@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ribosomeProfilingQC
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -49,8 +49,8 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d633d56b98baef25b32f80e354eb9e8f')
-b2sums=('e2e0d0c504111989bb2805be01036f84f7e83c7bb8648d8b611822a4de69313d5c3cb6a0a9d8c794877c5bb2ad80589d32834fb3b9f6d3f777d1c8fbfb5d6b9b')
+md5sums=('a3c34fd8292aea1d9c4e2c2e02a04cb1')
+b2sums=('90208bed1cc7cffba571dab8b614ebc54dc97be91d1dcd7516c41b45d9d65ced8ca52a080d86f4897f9382dca0e7065b3df17b1306a555fd593a817db7321ee3')
 
 build() {
   mkdir build
