@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=gitlab-ci-local
-pkgver=4.56.0
+pkgver=4.56.2
 pkgrel=1
 pkgdesc="Run gitlab pipelines locally as shell executor or docker executor"
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(
 )
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('1357c078a398103d89fbbd78ed49d04eabf8fa7489ab58c30bf8ff6621deb742')
+sha256sums=('97895a6f81f50ac0ff6eda4c807453ac7fc4608de634d993f954743caf1a5cd9')
 
 package() {
   npm install --global \
