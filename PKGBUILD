@@ -9,7 +9,7 @@ pkgname=(
   "${pkgbase}"
   "${pkgbase}-doc"
 )
-pkgver=1.10.0+47.r4938.20241124.38eb42810
+pkgver=1.10.0+56.r4947.20241212.fc032cd8a
 pkgrel=1
 pkgdesc="Osmocom core library (functions relating to mobile communication standards). Compiled without systemd logging dependency."
 arch=(
