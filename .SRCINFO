@@ -1,7 +1,7 @@
 pkgbase = mpz
 	pkgdesc = Music player for the large local collections
 	pkgver = 1.1.0
-	pkgrel = 0
+	pkgrel = 2
 	url = https://github.com/olegantonyan/mpz
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = mpz
   depends = taglib
   depends = cmake
   provides = mpz
-	source = mpz-1.1.0-0.zip::https://github.com/olegantonyan/mpz/archive/f6b2a329286e7e04935677597f016b49a1abfa02.zip
-	sha256sums = 0eb0c0c89d99a7bf829edd46b961254dd6904c9b4a96dfc7973be7add6b7cffc
+	source = mpz-1.1.0-2.zip::https://github.com/olegantonyan/mpz/archive/92b49ee32f9bf052ef6f3a6d47f5c59d2dfbda5b.zip
+	sha256sums = e972726ca85ea9583fbedbeacd25579264f4d09c50b6672b71333d2b54d5087b
 
 pkgname = mpz
