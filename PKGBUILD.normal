@@ -40,7 +40,7 @@ source=("git+$url.git#commit=${_mozc_commit}"
         "git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=${_japanese_usage_dictionary_commit}"
         "git+https://github.com/protocolbuffers/protobuf.git#commit=${_protobuf_commit}"
         "git+https://github.com/microsoft/wil.git#commit=${_wil_commit}"
-        fcitx5.tar.xz
+        fcitx5-mozc-conf.patch
 )
 
 sha512sums=('6e93fce29a2a85d2fd562decdfd5acc6265a7c9f0a1655860b5ef0844dbb903ed2640a43bec5afbee856c8a0277a75d530bca3755070676a6d27d2e597da2b4a'
@@ -51,7 +51,7 @@ sha512sums=('6e93fce29a2a85d2fd562decdfd5acc6265a7c9f0a1655860b5ef0844dbb903ed26
             'c8ce90c2493c05a78221befc4cbbcfcbe7a0bafb7bfa55403b085bf8c3fd069c4690d1ff59ef9e0e8a813bd3673588eb38e02ad81c42a6dd0be5246f27442169'
             '91b878735e767ddf6f1fe3de61486c1e78936a0f683855e7c34a21c711f405899d3de369d2ff0a1910d65b1afc8c225d8d8b9398cf98d760f3afcfe42644fca2'
             'e0b5744660f195daae952bb505965d811517aaed9d0838fdbe19dd9b3beddb0c2c003689e46773005d66c7a72f482063853353ba061c76f2bd5bf61cfa4a63e4'
-            'ea7155d638d0828c57382c9e0f9be4238af2029eeb0d48cfa99a9f2b4eb1441704846d06f1555a3dcb2ca9277a23031baabb103a386dada2bf41406d67121e45')
+            'fc73631dfa67ef38b3e1c3637c0260ed88fde2a08949d51ccc2d2eb20e5e5641d1ca8455c98463a05322aac8814dc782f880598a2f06564056627bce935fdb6a')
 
 pkgver() {
   cd "${srcdir}/mozc" || exit
@@ -71,6 +71,8 @@ prepare() {
   git config submodule.src/third_party/protobuf.url "$srcdir/protobuf"
   git config submodule.src/third_party/wil.url "$srcdir/wil"
   git -c protocol.file.allow=always submodule update
+
+  patch -p1 -i ${srcdir}/fcitx5-mozc-conf.patch
 
   # use libstdc++ instead of libc++
   sed '/stdlib=libc++/d;/-lc++/d' -i gyp/common.gypi
@@ -155,10 +157,10 @@ package_fcitx5-mozc() {
   install_mozc-common
   ../scripts/install_server_bazel
   ../scripts/install_fcitx5_bazel
-  install -D -m 644 ${srcdir}/fcitx5/profile                  "$pkgdir/usr/share/fcitx5-mozc/fcitx5/profile"
-  install -D -m 644 ${srcdir}/fcitx5/conf/notifications.conf  "$pkgdir/usr/share/fcitx5-mozc/fcitx5/conf/notifications.conf"
-  install -D -m 644 ${srcdir}/fcitx5/conf/waylandim.conf      "$pkgdir/usr/share/fcitx5-mozc/fcitx5/conf/waylandim.conf"
-  install -D -m 644 ${srcdir}/fcitx5/conf/xim.conf            "$pkgdir/usr/share/fcitx5-mozc/fcitx5/conf/xim.conf"
+  install -D -m 644 unix/fcitx5/fcitx5/profile                  "$pkgdir/usr/share/fcitx5-mozc/fcitx5/profile"
+  install -D -m 644 unix/fcitx5/fcitx5/conf/notifications.conf  "$pkgdir/usr/share/fcitx5-mozc/fcitx5/conf/notifications.conf"
+  install -D -m 644 unix/fcitx5/fcitx5/conf/waylandim.conf      "$pkgdir/usr/share/fcitx5-mozc/fcitx5/conf/waylandim.conf"
+  install -D -m 644 unix/fcitx5/fcitx5/conf/xim.conf            "$pkgdir/usr/share/fcitx5-mozc/fcitx5/conf/xim.conf"
 }
 
 package_ibus-mozc() {
