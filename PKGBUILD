@@ -1,4 +1,4 @@
-# Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
+# Maintainer: ikyope at outlook dot com
 
 pkgname=lx-music-desktop-appimage
 pkgver=2.9.0
