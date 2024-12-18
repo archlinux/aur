@@ -19,6 +19,6 @@ pkgbase = python-pysmart
 	depends = smartmontools
 	source = python-pysmart-1.4.0::git+https://github.com/freenas/py-SMART#commit=aaffe589f2638f201ab307e85519f6b74198116d?signed
 	validpgpkeys = 5F6761715FB2876BF2355A72195598EC98A1C1DF
-	sha512sums = 847d6ed1d5992f4baf12b8bd93888987405ebb36b01b9e4b028b1ec90c8a5d72eabb84c7ae41a56aef27f363153c9acf5527179a0ed1db83644f20be6dfe6cdb
+	b2sums = 21d6f710e1564215beac6810ac87263a665d54d6d383b7f43fbd2236e6cf5ea07cc62a85af6611741c6be81da7556165ea07e29b7cf2a7afef68c65a373c9b78
 
 pkgname = python-pysmart
