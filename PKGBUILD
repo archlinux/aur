@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=customProDB
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-rmariadb
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fbeece69015d5687c3cc2ff4cd0b6544')
-b2sums=('2191f16d8759b32453cc923b72d7c1af4340b12c75f54604e07e7217b0759cdfa61a47ad85d1c46202d9f458d93159f2284c78b106b0a98e25f7b3cfb754a5f4')
+md5sums=('546d4b85686b7f4786e4d765ee96eb44')
+b2sums=('0d2ab2e13cb6883455dd26c09b8cf0aece003810db080d83d224dec4b0e1f9beb12f44736c358309e6468cb872cbde1e56de9999cc7f5490d0cf74f1d6433f09')
 
 build() {
   mkdir build
