@@ -97,7 +97,7 @@ prepare() {
   git config submodule.src/third_party/wil.url "$srcdir/wil"
   git -c protocol.file.allow=always submodule update
 
-  patch -p1 -i ${srcdir}/fcitx5-mozc-conf.patch
+  patch -p2 -i ${srcdir}/fcitx5-mozc-conf.patch
 
   # use libstdc++ instead of libc++
   sed '/stdlib=libc++/d;/-lc++/d' -i gyp/common.gypi
@@ -225,7 +225,6 @@ package_fcitx5-mozc-with-jp-dict() {
   install_mozc-with-jp-dict-common
   ../scripts/install_server_bazel
   ../scripts/install_fcitx5_bazel
-  cd src || exit
   install -D -m 644 unix/fcitx5/fcitx5/profile                  "$pkgdir/usr/share/fcitx5-mozc/fcitx5/profile"
   install -D -m 644 unix/fcitx5/fcitx5/conf/notifications.conf  "$pkgdir/usr/share/fcitx5-mozc/fcitx5/conf/notifications.conf"
   install -D -m 644 unix/fcitx5/fcitx5/conf/waylandim.conf      "$pkgdir/usr/share/fcitx5-mozc/fcitx5/conf/waylandim.conf"
