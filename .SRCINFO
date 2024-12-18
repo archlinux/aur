@@ -1,0 +1,24 @@
+pkgbase = r-bff
+	pkgdesc = Bayes Factor Functions
+	pkgver = 4.3.0
+	pkgrel = 3
+	url = https://github.com/rshudde/bff
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = r
+	depends = r-grdevices
+	depends = r-ggplot2
+	depends = r-matrix
+	depends = r-gsl
+	depends = r-stats
+	depends = r-rlang
+	optdepends = r-testthat
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-bsda
+	optdepends = r-vdiffr
+	source = git+https://github.com/rshudde/bff.git
+	sha256sums = SKIP
+
+pkgname = r-bff
