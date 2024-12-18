@@ -1,56 +1,61 @@
-# Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
+# Maintainer: envolution
+# Contributor: EatMyVenom <eat.my.venomm@gmail.com>
 # Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Pierre Schmitz <pierre@archlinux.de> ([core] package)
 # Contributor: François Charette <firmicus@gmx.net>
+# Contributor: Stephanie Wilde-Hobbs <steph@rx14.co.uk>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=xz-git
-pkgver=5.3.1alpha.r134.ga35a69d
+pkgver=5.6.3+r2706+g5794cda06
 pkgrel=1
-pkgdesc='Library and command line tools for XZ and LZMA compressed files - git checkout'
+pkgdesc='Library and command line tools for XZ and LZMA compressed files'
 arch=('x86_64')
-url='http://tukaani.org/xz/'
-license=('GPL' 'LGPL' 'custom')
+url='https://tukaani.org/xz/'
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later' 'LicenseRef-custom' 'LicenseRef-Autoconf-exception-macro')
 depends=('sh')
-makedepends=('git' 'po4a')
-provides=('lzma' 'lzma-utils' 'xz-utils' "xz=${pkgver%%.r*}")
-replaces=('lzma' 'lzma-utils' 'xz-utils')
-conflicts=('lzma' 'lzma-utils' 'xz-utils' 'xz')
-options=('!libtool')
-source=('git+http://git.tukaani.org/xz.git')
+makedepends=('git' 'po4a' 'doxygen')
+provides=("liblzma.so=$pkgver" "xz=$pkgver")
+conflicts=(xz)
+source=("$pkgname::git+https://github.com/tukaani-project/xz.git")
 sha256sums=('SKIP')
+validpgpkeys=('3690C240CE51B4670D30AD1C38EE757D69184620') # Lasse Collin <lasse.collin@tukaani.org> https://tukaani.org/misc/lasse_collin_pubkey.txt
 
-# keep an upgrade path for older installations
-PKGEXT='.pkg.tar.gz'
+prepare() {
+  cd $pkgname
+  PATH="usr/bin/vendor_perl:$PATH" ./autogen.sh --no-po4a
+}
 
 pkgver() {
-	cd xz/
-
-	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
-	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
-	fi
+  cd $pkgname
+  _version=$(git tag --sort=-v:refname --list | grep '^v[0-9.]*$' | head -n1)
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
 }
 
 build() {
-	cd xz/
+  cd $pkgname
 
-	./autogen.sh
-	./configure --prefix=/usr \
-		--disable-rpath 
-	make
+  ./configure \
+    --prefix=/usr \
+    --disable-rpath \
+    --enable-doxygen \
+    --enable-werror
+  make
 }
 
 check() {
-	cd xz/
-
-	make check
+  cd $pkgname
+  make check
 }
 
-package() {
-	cd xz/
-	make DESTDIR=${pkgdir} install
-	install -d -m0755 ${pkgdir}/usr/share/licenses/xz/
-	ln -s /usr/share/doc/xz/COPYING ${pkgdir}/usr/share/licenses/xz/
+package_xz-git() {
+  cd $pkgname
+  make DESTDIR=${pkgdir} install
+  # rm -Rf ${pkgdir}/usr/{bin,include,share,lib/pkgconfig}
+  install -Dm644 README ${pkgdir}/usr/share/doc/${pkgname}/README
+  install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
+  cp -Rf COPYING* ${pkgdir}/usr/share/licenses/${pkgname}
 }
-
+# vim:set ts=2 sw=2 et:
