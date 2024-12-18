@@ -1,0 +1,4 @@
+[python-podman-git]
+source = "git"
+git = "https://github.com/containers/podman-py.git"
+prefix = "v"

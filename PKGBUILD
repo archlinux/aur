@@ -1,29 +1,48 @@
-# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Maintainer:
+# Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
-pkgname=python-podman-git
-pkgver=4.5.0
+_pkgname="python-podman"
+pkgname="$_pkgname-git"
+pkgver=5.3.0.r16.gd3dd154
 pkgrel=1
 pkgdesc="Python bindings for Podman's RESTful API"
-arch=('any')
 url="https://github.com/containers/podman-py"
-license=('Apache')
-source=("git+$url")
+license=('Apache-2.0')
+arch=('any')
+
+depends=(
+  'python'
+  'python-requests'
+  'python-rich'
+  'python-urllib3'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+
+_pkgsrc="podman-py"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
-depends=('python' 'git')
-makedepends=('python-setuptools')
+
 conflicts=('python-podman')
 provides=('python-podman' 'python-podman-py')
 
 pkgver() {
-  git -C podman-py describe --tags --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd podman-py
-  python setup.py build
+  cd "$_pkgsrc"
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
-  cd podman-py
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "$_pkgsrc"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
