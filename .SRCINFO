@@ -1,6 +1,6 @@
 pkgbase = houdoku-git
 	pkgdesc = Manga reader and library manager for the desktop.(Use system-wide electron)
-	pkgver = 2.15.0.r0.gacb893a
+	pkgver = 2.16.0.r3.g3d4a432
 	pkgrel = 1
 	url = https://houdoku.org/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = houdoku-git
 	makedepends = pnpm
 	makedepends = gendesk
 	depends = electron32
-	provides = houdoku=2.15.0
+	provides = houdoku=2.16.0
 	conflicts = houdoku
 	source = houdoku.git::git+https://github.com/xgi/houdoku.git
 	source = houdoku.sh
