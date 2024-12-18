@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=houdoku-bin
 _pkgname=Houdoku
-pkgver=2.15.0
+pkgver=2.16.0
 _electronversion=32
 pkgrel=1
-pkgdesc="Manga reader and library manager for the desktop.(Prebuilt version)"
+pkgdesc="Manga reader and library manager for the desktop.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://houdoku.org/"
 _ghurl="https://github.com/xgi/houdoku"
@@ -24,7 +24,7 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/xgi/houdoku/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('686ffb333fee2073db389dac04e6ab8fb0932bd73ce093bc55e3728be4c381b2'
+sha256sums=('3fd7fcb792ba73d845fea7b416abf9a40801deb8f26bd16cc15eac3c5d7290e8'
             '815575dfc47f9dd48999c193cbf60a5ce81b8493dafe998e4c72fda4d61ea473'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
@@ -41,6 +41,7 @@ build() {
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    find "${srcdir}/squashfs-root/resources" -type d \( -name "*darwin*" -o -name "*win*" \) -exec rm -rf {} +
     find "${srcdir}/squashfs-root/resources" -type d -perm 700 -exec chmod 755 {} +
 }
 package() {
