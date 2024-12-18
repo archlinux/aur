@@ -11,6 +11,6 @@ pkgbase = arch-mp
 	depends = gst-plugins-good
 	source = https://github.com/SergeyDash/arch-mp/releases/download/1.0.0/arch-mp
 	source = arch-mp.desktop
-	sha256sums = SKIP
+	sha256sums = SKIP SKIP
 
 pkgname = arch-mp
