@@ -2,7 +2,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=Rhisat2
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,9 +23,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-build.patch")
-md5sums=('40eeced68deeadf6506e97eb53e4a831'
+md5sums=('bbf4203f12d4fe54294b9c4fb71330f7'
          '3f45bc291d0db4e626db5336680b2f73')
-b2sums=('f289e764d5085458a8248154e2aa8bc790c76c3e23866153757ba5e86a157b62b1d20f65732952a6a7fd0a8098b3c8289afcdd043c54fb691e69673fc07c35e0'
+b2sums=('206f8bf2625016bf3da78cafb7ca070f248be4c95953e298fdac6fe45b99dfbe544376d92838ad99bb1a64b481d3619dee113f11641af957a6701cea5a2c5b6a'
         'f3d4cc8719124604b7d295c6143d38187901cbca50da949f4c49edac0d43e818cde3ab03cc05ad77425091db705979b1d9b381c751c0fada90b48796b54fee2c')
 
 prepare() {
