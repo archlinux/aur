@@ -48,6 +48,7 @@ build() {
   "${srcdir}"/openvpn/configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
+    --enable-dco \
     --enable-pkcs11 \
     --enable-plugins \
     --enable-systemd \
