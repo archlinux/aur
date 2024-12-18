@@ -1,34 +1,21 @@
-# Maintainer Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer Anton Kudelin <kudelin at proton dot me>
 
 pkgname=libxsmm
 pkgver=1.17
-pkgrel=2
-arch=('x86_64')
+pkgrel=3
+arch=(x86_64)
 pkgdesc="A library for small dense and small sparse matrix-matrix multiplications"
-url="https://github.com/hfp/libxsmm"
-license=('BSD')
-depends=('gcc-libs')
-makedepends=('gcc-fortran' 'python')
-checkdepends=('blas' 'lapack')
-conflicts=('libxsmm-git')
-source=($pkgname-$pkgver.tar.gz::"$url/archive/$pkgver.tar.gz")
+url="https://github.com/libxsmm/libxsmm"
+license=(BSD-3-Clause)
+depends=(gcc-libs)
+makedepends=(gcc-fortran python)
+checkdepends=(blas lapack)
+source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
 sha256sums=('8b642127880e92e8a75400125307724635ecdf4020ca4481e5efe7640451bb92')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  export STATIC=0
-  export OMP=1
-
-  # Enabling CPU intrinsics is crucial for LIBXSMM performance
-  export CTARGET="-march=native"
-  
-  # Set "1" if Intel MKL is needed to be tested with LIBXSMM
-  export MKL=0
-}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make
+  make STATIC=0 OMP=1 CTARGET="-march=native" MKL=0
 }
 
 package() {
