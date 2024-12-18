@@ -1,5 +1,5 @@
 diff --git a/clang-tools-extra/clangd/AST.cpp b/clang-tools-extra/clangd/AST.cpp
-index 1b86ea19cf28..4ea1177c4b6c 100644
+index f3eee1c6335f..3667096d9c5e 100644
 --- a/clang-tools-extra/clangd/AST.cpp
 +++ b/clang-tools-extra/clangd/AST.cpp
 @@ -16,12 +16,14 @@
@@ -17,7 +17,7 @@ index 1b86ea19cf28..4ea1177c4b6c 100644
  #include "clang/AST/TemplateBase.h"
  #include "clang/AST/TypeLoc.h"
  #include "clang/Basic/Builtins.h"
-@@ -636,7 +638,7 @@ static NamedDecl *getOnlyInstantiationImpl(TemplateDeclTy *TD) {
+@@ -621,7 +623,7 @@ static NamedDecl *getOnlyInstantiationImpl(TemplateDeclTy *TD) {
    return Only;
  }
  
@@ -26,7 +26,7 @@ index 1b86ea19cf28..4ea1177c4b6c 100644
    if (TemplateDecl *TD = TemplatedDecl->getDescribedTemplate()) {
      if (auto *CTD = llvm::dyn_cast<ClassTemplateDecl>(TD))
        return getOnlyInstantiationImpl(CTD);
-@@ -648,6 +650,197 @@ NamedDecl *getOnlyInstantiation(NamedDecl *TemplatedDecl) {
+@@ -633,6 +635,197 @@ NamedDecl *getOnlyInstantiation(NamedDecl *TemplatedDecl) {
    return nullptr;
  }
  
@@ -501,7 +501,7 @@ index b41c54709510..b5d10ea8be18 100644
  // Boring implementation details of bitfield.
  
 diff --git a/clang-tools-extra/clangd/HeuristicResolver.cpp b/clang-tools-extra/clangd/HeuristicResolver.cpp
-index 26d54200eeff..f51337acc722 100644
+index 9eb892e8e4a8..1722ce738e73 100644
 --- a/clang-tools-extra/clangd/HeuristicResolver.cpp
 +++ b/clang-tools-extra/clangd/HeuristicResolver.cpp
 @@ -7,10 +7,15 @@
@@ -550,8 +550,8 @@ index 26d54200eeff..f51337acc722 100644
    if (Decls.size() != 1) // Names an overload set -- just bail.
      return nullptr;
    if (const auto *TD = dyn_cast<TypeDecl>(Decls[0])) {
-@@ -118,6 +126,108 @@ const Type *resolveDeclsToType(const std::vector<const NamedDecl *> &Decls,
-   return nullptr;
+@@ -128,6 +136,108 @@ TemplateName getReferencedTemplateName(const Type *T) {
+   return TemplateName();
  }
  
 +// Visitor that helps to extract deduced type from instantiated entities.
@@ -659,7 +659,7 @@ index 26d54200eeff..f51337acc722 100644
  // Helper function for HeuristicResolver::resolveDependentMember()
  // which takes a possibly-dependent type `T` and heuristically
  // resolves it to a CXXRecordDecl in which we can try name lookup.
-@@ -220,8 +330,14 @@ std::vector<const NamedDecl *> HeuristicResolverImpl::resolveMemberExpr(
+@@ -230,8 +340,14 @@ std::vector<const NamedDecl *> HeuristicResolverImpl::resolveMemberExpr(
    if (ME->isArrow()) {
      BaseType = getPointeeType(BaseType);
    }
@@ -674,7 +674,7 @@ index 26d54200eeff..f51337acc722 100644
    if (const auto *BT = BaseType->getAs<BuiltinType>()) {
      // If BaseType is the type of a dependent expression, it's just
      // represented as BuiltinType::Dependent which gives us no information. We
-@@ -417,43 +533,45 @@ std::vector<const NamedDecl *> HeuristicResolverImpl::resolveDependentMember(
+@@ -427,43 +543,45 @@ std::vector<const NamedDecl *> HeuristicResolverImpl::resolveDependentMember(
    }
    return {};
  }
@@ -793,10 +793,10 @@ index dcc063bbc4ad..261dcff13856 100644
  
  } // namespace clangd
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index 06b949bc4a2b..2232cd81af87 100644
+index 298fa79e3fd0..56062cf5987e 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -1358,8 +1358,9 @@ std::optional<HoverInfo> getHover(ParsedAST &AST, Position Pos,
+@@ -1359,8 +1359,9 @@ std::optional<HoverInfo> getHover(ParsedAST &AST, Position Pos,
          SelectionTree::createRight(AST.getASTContext(), TB, Offset, Offset);
      if (const SelectionTree::Node *N = ST.commonAncestor()) {
        // FIXME: Fill in HighlightRange with range coming from N->ASTNode.
@@ -809,10 +809,10 @@ index 06b949bc4a2b..2232cd81af87 100644
          HoverCountMetric.record(1, "decl");
          HI = getHoverContents(DeclToUse, PP, Index, TB);
 diff --git a/clang-tools-extra/clangd/InlayHints.cpp b/clang-tools-extra/clangd/InlayHints.cpp
-index a0ebc631ef82..7cfcfe0c9629 100644
+index fefffeb4efc1..d64794ea407b 100644
 --- a/clang-tools-extra/clangd/InlayHints.cpp
 +++ b/clang-tools-extra/clangd/InlayHints.cpp
-@@ -464,7 +464,7 @@ public:
+@@ -491,7 +491,7 @@ public:
          isa<UserDefinedLiteral>(E))
        return true;
  
@@ -821,7 +821,7 @@ index a0ebc631ef82..7cfcfe0c9629 100644
      if (CalleeDecls.size() != 1)
        return true;
  
-@@ -1108,7 +1108,7 @@ private:
+@@ -1176,7 +1176,7 @@ private:
    std::optional<Range> RestrictRange;
    FileID MainFileID;
    StringRef MainFileBuf;
@@ -831,10 +831,10 @@ index a0ebc631ef82..7cfcfe0c9629 100644
  };
  
 diff --git a/clang-tools-extra/clangd/ParsedAST.cpp b/clang-tools-extra/clangd/ParsedAST.cpp
-index 862f06196a71..a6c51bb6f58e 100644
+index 045d32afbc93..6c35cf906ea3 100644
 --- a/clang-tools-extra/clangd/ParsedAST.cpp
 +++ b/clang-tools-extra/clangd/ParsedAST.cpp
-@@ -841,8 +841,7 @@ ParsedAST::ParsedAST(PathRef TUPath, llvm::StringRef Version,
+@@ -857,8 +857,7 @@ ParsedAST::ParsedAST(PathRef TUPath, llvm::StringRef Version,
        Tokens(std::move(Tokens)), Macros(std::move(Macros)),
        Marks(std::move(Marks)), Diags(std::move(Diags)),
        LocalTopLevelDecls(std::move(LocalTopLevelDecls)),
@@ -845,7 +845,7 @@ index 862f06196a71..a6c51bb6f58e 100644
    assert(this->Action);
  }
 diff --git a/clang-tools-extra/clangd/ParsedAST.h b/clang-tools-extra/clangd/ParsedAST.h
-index 63e564bd68a7..31fb885e34c8 100644
+index 8d9d1e645692..181d62639590 100644
 --- a/clang-tools-extra/clangd/ParsedAST.h
 +++ b/clang-tools-extra/clangd/ParsedAST.h
 @@ -24,6 +24,7 @@
@@ -856,7 +856,7 @@ index 63e564bd68a7..31fb885e34c8 100644
  #include "Preamble.h"
  #include "clang-include-cleaner/Record.h"
  #include "support/Path.h"
-@@ -116,8 +117,9 @@ public:
+@@ -119,8 +120,9 @@ public:
    /// AST. Might be std::nullopt if no Preamble is used.
    std::optional<llvm::StringRef> preambleVersion() const;
  
@@ -868,7 +868,7 @@ index 63e564bd68a7..31fb885e34c8 100644
    }
  
  private:
-@@ -158,7 +160,6 @@ private:
+@@ -161,7 +163,6 @@ private:
    std::vector<Decl *> LocalTopLevelDecls;
    IncludeStructure Includes;
    include_cleaner::PragmaIncludes PI;
@@ -877,7 +877,7 @@ index 63e564bd68a7..31fb885e34c8 100644
  
  } // namespace clangd
 diff --git a/clang-tools-extra/clangd/SemanticHighlighting.cpp b/clang-tools-extra/clangd/SemanticHighlighting.cpp
-index 08f99e11ac9b..28aeb50a7edf 100644
+index e6d16af2495f..e891ff17cdcc 100644
 --- a/clang-tools-extra/clangd/SemanticHighlighting.cpp
 +++ b/clang-tools-extra/clangd/SemanticHighlighting.cpp
 @@ -95,9 +95,9 @@ bool isUniqueDefinition(const NamedDecl *Decl) {
@@ -938,7 +938,7 @@ index 08f99e11ac9b..28aeb50a7edf 100644
  
    HighlightingToken &addToken(SourceLocation Loc, HighlightingKind Kind) {
      auto Range = getRangeForSourceLocation(Loc);
-@@ -568,7 +567,7 @@ public:
+@@ -567,7 +566,7 @@ public:
      return WithInactiveLines;
    }
  
@@ -947,7 +947,7 @@ index 08f99e11ac9b..28aeb50a7edf 100644
  
  private:
    std::optional<Range> getRangeForSourceLocation(SourceLocation Loc) {
-@@ -590,7 +589,7 @@ private:
+@@ -589,7 +588,7 @@ private:
    HighlightingFilter Filter;
    std::vector<HighlightingToken> Tokens;
    std::map<Range, llvm::SmallVector<HighlightingModifier, 1>> ExtraModifiers;
@@ -956,7 +956,7 @@ index 08f99e11ac9b..28aeb50a7edf 100644
    // returned from addToken(InvalidLoc)
    HighlightingToken InvalidHighlightingToken;
  };
-@@ -1151,7 +1150,7 @@ getSemanticHighlightings(ParsedAST &AST, bool IncludeInactiveRegionTokens) {
+@@ -1154,7 +1153,7 @@ getSemanticHighlightings(ParsedAST &AST, bool IncludeInactiveRegionTokens) {
    if (!IncludeInactiveRegionTokens)
      Filter.disableKind(HighlightingKind::InactiveCode);
    // Add highlightings for AST nodes.
@@ -965,7 +965,7 @@ index 08f99e11ac9b..28aeb50a7edf 100644
    // Highlight 'decltype' and 'auto' as their underlying types.
    CollectExtraHighlightings(Builder).TraverseAST(C);
    // Highlight all decls and references coming from the AST.
-@@ -1517,9 +1516,8 @@ llvm::StringRef toSemanticTokenModifier(HighlightingModifier Modifier) {
+@@ -1520,9 +1519,8 @@ llvm::StringRef toSemanticTokenModifier(HighlightingModifier Modifier) {
    llvm_unreachable("unhandled HighlightingModifier");
  }
  
@@ -978,10 +978,10 @@ index 08f99e11ac9b..28aeb50a7edf 100644
    // FIXME: use a real diff instead, this is bad with include-insertion.
  
 diff --git a/clang-tools-extra/clangd/XRefs.cpp b/clang-tools-extra/clangd/XRefs.cpp
-index cd909266489a..dea06fca2f82 100644
+index 8d5ab2e491a4..c2759067ce39 100644
 --- a/clang-tools-extra/clangd/XRefs.cpp
 +++ b/clang-tools-extra/clangd/XRefs.cpp
-@@ -188,7 +188,8 @@ getDeclAtPositionWithRelations(ParsedAST &AST, SourceLocation Pos,
+@@ -175,7 +175,8 @@ getDeclAtPositionWithRelations(ParsedAST &AST, SourceLocation Pos,
        // This makes the `override` hack work.
        if (N->ASTNode.get<Attr>() && N->Parent)
          N = N->Parent;
@@ -991,7 +991,7 @@ index cd909266489a..dea06fca2f82 100644
                      std::back_inserter(Result),
                      [&](auto &Entry) { return !(Entry.second & ~Relations); });
      }
-@@ -1243,7 +1244,8 @@ std::vector<DocumentHighlight> findDocumentHighlights(ParsedAST &AST,
+@@ -1230,7 +1231,8 @@ std::vector<DocumentHighlight> findDocumentHighlights(ParsedAST &AST,
        DeclRelationSet Relations =
            DeclRelation::TemplatePattern | DeclRelation::Alias;
        auto TargetDecls =
@@ -1001,7 +1001,7 @@ index cd909266489a..dea06fca2f82 100644
        if (!TargetDecls.empty()) {
          // FIXME: we may get multiple DocumentHighlights with the same location
          // and different kinds, deduplicate them.
-@@ -2014,8 +2016,8 @@ static QualType typeForNode(const SelectionTree::Node *N) {
+@@ -2004,8 +2006,8 @@ static QualType typeForNode(const SelectionTree::Node *N) {
  
  // Given a type targeted by the cursor, return one or more types that are more interesting
  // to target.
@@ -1012,7 +1012,7 @@ index cd909266489a..dea06fca2f82 100644
    if (T.isNull())
      return;
  
-@@ -2043,18 +2045,18 @@ static void unwrapFindType(
+@@ -2033,18 +2035,18 @@ static void unwrapFindType(
    }
  
    // For smart pointer types, add the underlying type
@@ -1038,7 +1038,7 @@ index cd909266489a..dea06fca2f82 100644
    llvm::SmallVector<QualType> Result;
    unwrapFindType(T, H, Result);
    return Result;
-@@ -2076,10 +2078,11 @@ std::vector<LocatedSymbol> findType(ParsedAST &AST, Position Pos,
+@@ -2066,10 +2068,11 @@ std::vector<LocatedSymbol> findType(ParsedAST &AST, Position Pos,
      std::vector<LocatedSymbol> LocatedSymbols;
  
      // NOTE: unwrapFindType might return duplicates for something like
@@ -1055,7 +1055,7 @@ index cd909266489a..dea06fca2f82 100644
                   std::back_inserter(LocatedSymbols));
  
 diff --git a/clang-tools-extra/clangd/refactor/Rename.cpp b/clang-tools-extra/clangd/refactor/Rename.cpp
-index 75b30e66d637..2e6d006a48fe 100644
+index c85e13dbdfe9..c7767491527e 100644
 --- a/clang-tools-extra/clangd/refactor/Rename.cpp
 +++ b/clang-tools-extra/clangd/refactor/Rename.cpp
 @@ -168,7 +168,7 @@ llvm::DenseSet<const NamedDecl *> locateDeclAt(ParsedAST &AST,
@@ -1090,23 +1090,23 @@ index d6556bba1472..7dc4053c401a 100644
    llvm::DenseMap<const NamedDecl *, std::vector<SourceLocation>> RefLocs;
    auto HandleParam = [&](const NamedDecl *DestParam,
 diff --git a/clang-tools-extra/clangd/refactor/tweaks/DefineOutline.cpp b/clang-tools-extra/clangd/refactor/tweaks/DefineOutline.cpp
-index fef827a801c3..47e86ce8dd1d 100644
+index e4eef228b6b9..21f9f0e60640 100644
 --- a/clang-tools-extra/clangd/refactor/tweaks/DefineOutline.cpp
 +++ b/clang-tools-extra/clangd/refactor/tweaks/DefineOutline.cpp
-@@ -181,7 +181,7 @@ deleteTokensWithKind(const syntax::TokenBuffer &TokBuf, tok::TokenKind Kind,
+@@ -215,7 +215,7 @@ deleteTokensWithKind(const syntax::TokenBuffer &TokBuf, tok::TokenKind Kind,
  llvm::Expected<std::string>
- getFunctionSourceCode(const FunctionDecl *FD, llvm::StringRef TargetNamespace,
+ getFunctionSourceCode(const FunctionDecl *FD, const DeclContext *TargetContext,
                        const syntax::TokenBuffer &TokBuf,
--                      const HeuristicResolver *Resolver) {
-+                      const HeuristicResolver &Resolver) {
+-                      const HeuristicResolver *Resolver,
++                      const HeuristicResolver &Resolver,
+                       bool TargetFileIsHeader) {
    auto &AST = FD->getASTContext();
    auto &SM = AST.getSourceManager();
-   auto TargetContext = findContextForNS(TargetNamespace, FD->getDeclContext());
 diff --git a/clang-tools-extra/clangd/refactor/tweaks/ExtractFunction.cpp b/clang-tools-extra/clangd/refactor/tweaks/ExtractFunction.cpp
-index 0302839c5825..28c19e097ec9 100644
+index cd07cbf73635..0d4cd608d5a0 100644
 --- a/clang-tools-extra/clangd/refactor/tweaks/ExtractFunction.cpp
 +++ b/clang-tools-extra/clangd/refactor/tweaks/ExtractFunction.cpp
-@@ -176,7 +176,7 @@ struct ExtractionZone {
+@@ -179,7 +179,7 @@ struct ExtractionZone {
    // This performs a partial AST traversal proportional to the size of the
    // enclosing function, so it is possibly expensive.
    bool requiresHoisting(const SourceManager &SM,
@@ -1116,7 +1116,7 @@ index 0302839c5825..28c19e097ec9 100644
      llvm::SmallSet<const Decl *, 1> DeclsInExtZone;
      for (auto *RootStmt : RootStmts) {
 diff --git a/clang-tools-extra/clangd/unittests/ASTTests.cpp b/clang-tools-extra/clangd/unittests/ASTTests.cpp
-index 3101bf34acd7..229c7aa6681c 100644
+index 32c8e8a63a21..c40edd001989 100644
 --- a/clang-tools-extra/clangd/unittests/ASTTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/ASTTests.cpp
 @@ -16,6 +16,7 @@
@@ -1219,7 +1219,7 @@ index 3101bf34acd7..229c7aa6681c 100644
    auto TU = TestTU::withCode(R"cpp(
      int withAuto(
 diff --git a/clang-tools-extra/clangd/unittests/FindTargetTests.cpp b/clang-tools-extra/clangd/unittests/FindTargetTests.cpp
-index 0af6036734ba..3e7da83a31c3 100644
+index fc54f89f4941..1dd378042746 100644
 --- a/clang-tools-extra/clangd/unittests/FindTargetTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/FindTargetTests.cpp
 @@ -86,8 +86,8 @@ protected:
@@ -1234,10 +1234,10 @@ index 0af6036734ba..3e7da83a31c3 100644
      return ActualDecls;
    }
 diff --git a/clang-tools-extra/clangd/unittests/XRefsTests.cpp b/clang-tools-extra/clangd/unittests/XRefsTests.cpp
-index f53cbf01b799..1c800ea79161 100644
+index 7d824d659ad2..122d8d304d39 100644
 --- a/clang-tools-extra/clangd/unittests/XRefsTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/XRefsTests.cpp
-@@ -1222,6 +1222,42 @@ TEST(LocateSymbol, TextualSmoke) {
+@@ -1232,6 +1232,42 @@ TEST(LocateSymbol, TextualSmoke) {
                          hasID(getSymbolID(&findDecl(AST, "MyClass"))))));
  }
  
