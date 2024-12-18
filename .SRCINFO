@@ -1,11 +1,11 @@
 pkgbase = rustcraft
 	pkgdesc = Minecraft game clone written in Rust
 	pkgver = 0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/c2i-junia/rustcraft
 	arch = x86_64
 	license = MIT
-	license = CC BY-SA 4.0
+	license = CC BY-SA-4.0
 	makedepends = rustup
 	makedepends = just
 	makedepends = git
@@ -13,9 +13,10 @@ pkgbase = rustcraft
 	makedepends = mold
 	makedepends = clang
 	makedepends = vulkan-tools
-	depends = glibc
+	depends = gcc-libs
 	depends = vulkan-driver
 	depends = vulkan-icd-loader
+	depends = alsa-lib
 	source = rustcraft-0.8.tar.gz::https://github.com/c2i-junia/rustcraft/archive/v0.8.tar.gz
 	sha256sums = 5c9173396429072f514e944867b9ca4ee274c3ed17f5b5d9a79179a5fb5af0f8
 
