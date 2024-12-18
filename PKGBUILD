@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EpiTxDb
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -44,8 +44,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg38.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('20e35a30fee32809fda75ba666f36a8c')
-b2sums=('ba8bf305321b12954444d77c2f46b35b1bccfb6e5f7da515192c9dde0fcecee8b2f8055f6dc4b9dcec8ee29f4a9a4472b4a9d82867135c600832ca7e7fc66b5d')
+md5sums=('9eaa3d39c3126909d669fd4e98b76ac7')
+b2sums=('5d3c367e70bf1c060bcd1d88788a400c970afdeb0677c49a238235567bb5b21347c5c69ca7b58ab06fdf8089968675042cf5b9a4eee2987631ea852c7e016e74')
 
 build() {
   mkdir build
