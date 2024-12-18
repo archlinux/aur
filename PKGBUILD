@@ -3,7 +3,7 @@
 pkgname=c-lcrypt
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Programa de cifrado en C++ utilizando OpenSSL, Boost y otras bibliotecas."
+pkgdesc="C++ encryption program with RAM-based I/O, featuring byte shuffling, binary reversal, bit insertion, byte substitution with randomized table, and XOR key encryption for secure file handling."
 arch=('x86_64')
 url="https://github.com/Locotir/C-LCRYPT"
 license=('MIT')
