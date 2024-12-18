@@ -3,11 +3,11 @@
 
 _crate="hickory-dns"
 pkgname="hickory-dns-git"
-pkgver=0.24.0.r2.gbb203245
+pkgver=0.25.0.a4.r115.g9aaad40f7
 pkgrel=1
 pkgdesc='Hickory DNS is a safe and secure DNS server with DNSSEC support. Eventually t...'
 url='https://hickory-dns.org/'
-license=('Apache' 'MIT')
+license=('Apache-2.0' 'MIT')
 
 depends=('gcc-libs')
 makedepends=('cargo')
@@ -25,7 +25,12 @@ arch=('aarch64' 'i686' 'x86_64')
 
 pkgver() {
 	cd "$srcdir/$_crate"
-	git describe --long --tags | sed -E 's,^v?([^-]+)-([0-9]+)-(g[0-9a-f]+)$,\1.r\2.\3,'
+	_describe=$(git describe --long --tags)
+	if echo $_describe | grep alpha &>/dev/null; then
+		echo $_describe | sed -E 's,^v?([^-]+)-alpha.([0-9]+)-([0-9]+)-(g[0-9a-f]+)$,\1.a\2.r\3.\4,'
+	else
+		echo $_describe | sed -E 's,^v?([^-]+)-([0-9]+)-(g[0-9a-f]+)$,\1.r\2.\3,'
+	fi
 }
 
 build() {

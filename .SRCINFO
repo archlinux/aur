@@ -1,12 +1,12 @@
 pkgbase = hickory-dns-git
 	pkgdesc = Hickory DNS is a safe and secure DNS server with DNSSEC support. Eventually t...
-	pkgver = 0.24.0.r2.gbb203245
+	pkgver = 0.25.0.a4.r115.g9aaad40f7
 	pkgrel = 1
 	url = https://hickory-dns.org/
 	arch = aarch64
 	arch = i686
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
