@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=iSEEhex
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='iSEE extension for summarising data points in hexagonal bins'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('30900701fdb74e91a43c6c9500fa10820d47d987d789563cb810adbbc8769153')
+sha256sums=('acf0caf10049b39269551646f8e36b614e6020a5b74b2a28f67848b10a1c8087')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
