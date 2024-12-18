@@ -1,7 +1,7 @@
 # Maintainer: Dimitri Sabadie <hadronized@strongly-typed-thoughts.net>
 pkgname=flirt
 pkgver=0.2.1
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc=" FiLe InteRacT, the file interaction tool for your command line "
 arch=('x86_64')
