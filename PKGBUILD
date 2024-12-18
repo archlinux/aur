@@ -10,7 +10,7 @@ pkgver="${_pkgver}"
 pkgrel=10
 pkgdesc="Printer filter for Pentax PocketJet 200 and PocketJet II printers. Needed in addition to the PPDs/ files that come with foomatic-db/ CUPS. Includes printer documentation."
 arch=('i686' 'x86_64')
-url="http://web.archive.org/web/20191225160215/http://ww1.pragana.net/gdiprinters.html#pentaxpj"
+url="http://web.archive.org/web/20191225160215/http://ww1.pragana.net/gdiprinters.html#pentaxpj" # Alternative: https://www.openprinting.org/download/printing/pentaxpj
 license=(
   'GPL-2.0-only'
   'LicenseRef-custom:proprietary'
