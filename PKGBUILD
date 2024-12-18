@@ -2,20 +2,21 @@
 
 pkgname=epson-inkjet-printer-201304w
 _pkgname_filter=epson-inkjet-printer-filter
-_suffix=1lsb3.2.src.rpm
-pkgver=1.0.0
-pkgrel=10
+pkgver=1.0.1_1
+pkgrel=1
 pkgdesc="Epson printer driver (XP-211, XP-214, XP-216)"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('LGPL' 'custom:Epson Licence Agreement')
 depends=('cups' 'ghostscript')
 #makedepends=('libtool' 'make' 'automake' 'autoconf')
-source=(http://download.ebz.epson.net/dsc/op/stable/SRPMS/${pkgname}-${pkgver}-${_suffix} fixbuild.patch)
+#before 2023q4: source=(http://download.ebz.epson.net/dsc/op/stable/SRPMS/${pkgname}-${pkgver}-${_suffix} fixbuild.patch)
+source=(https://download3.ebz.epson.net/dsc/f/03/00/15/64/70/02fc7f8069df2901526663a791f564a9e310a6b9/${pkgname}-${pkgver//_/-}.src.rpm fixbuild.patch)
 
 build() {
+	set -x
   cd "$srcdir" || exit
-  tar xzf $pkgname-$pkgver.tar.gz
+  tar xzf $pkgname-${pkgver//_/-}.tar.gz
   FILTER_FILE=$(ls $_pkgname_filter*.tar.gz)
   tar xzf $FILTER_FILE
 
@@ -28,7 +29,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver" || exit
+  cd "$srcdir/$pkgname-${pkgver//_/-}" || exit
   install -d "$pkgdir/opt/$pkgname/"
   if [ "$CARCH" = "x86_64" ]; then
     cp -a --no-preserve=mode lib64 "$pkgdir/opt/$pkgname/"
@@ -49,5 +50,5 @@ package() {
   install -d "$pkgdir/opt/$pkgname/cups/lib/filter/"
   install -m 755 src/epson_inkjet_printer_filter "$pkgdir/opt/$pkgname/cups/lib/filter/epson_inkjet_printer_filter"
 }
-sha256sums=('db02b874dce700716e3dde6d049fc4bc037a5ebf94d8d0de8881d164f9e9f137'
+sha256sums=('5973652e1f96dbd1f3a2bfeb7ab579754313c7a67748461e22c6383a857d2026'
             '85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50')
