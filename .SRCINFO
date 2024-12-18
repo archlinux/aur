@@ -1,6 +1,6 @@
 pkgbase = r-hilda
 	pkgdesc = Conducting statistical inference on comparing the mutational exposures of mutational signatures by using hierarchical latent Dirichlet allocation
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HiLDA
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = r-hilda
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiLDA_1.18.0.tar.gz
-	sha256sums = 4958e53607e000d30c382aba8857c1ead3eeef3f98b4e04e4434014cd0daafec
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiLDA_1.20.0.tar.gz
+	sha256sums = f333ef857a85802e67598617e86844511bc18913c03f7a3ba12e9679b632796c
 
 pkgname = r-hilda
