@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=regionReport
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Generate HTML or PDF reports for a set of genomic regions or DESeq2/edgeR results'
 arch=('any')
@@ -45,7 +45,7 @@ optdepends=(
   r-whisker
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f7f22e04f1efd322e8bece91023bb83f400d8d022e4720c493b75b08a906badb')
+sha256sums=('59454fe6d81f779077f075588df10f2cd95b3e09a2455949fd4d764e07482340')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
