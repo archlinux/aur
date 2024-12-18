@@ -1,0 +1,13 @@
+pkgbase = ad
+	pkgdesc = An adaptable text editor
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/sminez/ad
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = ad-0.2.0.tar.gz::https://github.com/sminez/ad/archive/0.2.0.tar.gz
+	sha256sums = 7bb4aba27b34e0eb0814bfa14c3b6d87a0c411e8ae12de2c62f76f23ab358a70
+
+pkgname = ad
