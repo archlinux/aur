@@ -1,0 +1,15 @@
+pkgbase = genht-svn
+	pkgdesc = genht is a simple generic hash table implementation in C.
+	pkgver = r135
+	pkgrel = 1
+	url = http://www.repo.hu/projects/genht
+	arch = x86_64
+	license = 0BSD
+	makedepends = subversion
+	depends = glibc
+	provides = genht
+	conflicts = genht
+	source = svn://repo.hu/genht/trunk
+	sha256sums = SKIP
+
+pkgname = genht-svn
