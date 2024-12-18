@@ -1,6 +1,6 @@
 pkgbase = r-regutools
 	pkgdesc = regutools: an R package for data extraction from RegulonDB
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/regutools
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-regutools
 	optdepends = r-rmarkdown
 	optdepends = r-sessioninfo
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/regutools_1.16.0.tar.gz
-	sha256sums = b359d5668deba44c3dd26c550a1506b83174ea54e533a148cc275ba7b24dfefa
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/regutools_1.18.0.tar.gz
+	sha256sums = 77ff93b5e88593173634b217d67a361cf96f376f0eb3b4a5ae6a0e6a61ac0af2
 
 pkgname = r-regutools
