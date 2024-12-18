@@ -1,11 +1,11 @@
 # Maintainer: Mole Shang <135e2@135e2.dev>
 pkgname=implay
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop media player built on top of mpv and imgui"
 arch=('x86_64')
 url="https://github.com/tsl0922/ImPlay"
-license=('GPL3')
+license=('GPL-2.0-or-later')
 depends=(
   'mpv'
   'glfw'
