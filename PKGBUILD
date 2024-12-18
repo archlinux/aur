@@ -1,0 +1,32 @@
+# Maintainer: Ciptik <stepan.ciptik@yandex.ru>
+# Contributor: AGLExport <https://github.com/AGLExport>
+
+pkgname=libdlmclient-git
+pkgver=r1.0.1.0
+pkgrel=1
+pkgdesc="Client library for DRM Lease Manager"
+arch=('x86_64')
+url="https://github.com/AGLExport/drm-lease-manager"
+license=('Apache-2.0')
+depends=('libdrm' 'tomlc99-git')
+makedepends=('git' 'meson' 'ninja' 'doxygen')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+options=('!debug')
+source=("${pkgname}::git+https://github.com/AGLExport/drm-lease-manager.git")
+sha256sums=('SKIP')
+
+build() {
+  cd "$srcdir/${pkgname}"
+  arch-meson build --prefix=/usr
+  ninja -C build
+}
+
+package() {
+  cd "$srcdir/${pkgname}/build"
+  install -Dm755 libdlmclient/libdlmclient.so.0.1.0 -t "$pkgdir/usr/lib"
+  ln -s libdlmclient.so.0.1.0 "$pkgdir/usr/lib/libdlmclient.so"
+  install -Dm644 "$srcdir/${pkgname}/libdlmclient/dlmclient.h" -t "$pkgdir/usr/include/libdlmclient"
+  install -Dm644 meson-private/libdlmclient.pc -t "$pkgdir/usr/lib/pkgconfig"
+  install -Dm644 "$srcdir/${pkgname}/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+}
