@@ -2,7 +2,7 @@
 pkgname=dbgate-git
 _pkgname=DbGate
 _debname="org.${pkgname%-git}.${_pkgname}"
-pkgver=5.5.6.premium.beta.8.r0.g50232f9
+pkgver=6.1.0.r0.gf6195a4
 _electronversion=30
 _nodeversion=18
 pkgrel=1
@@ -48,7 +48,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -98,6 +98,8 @@ build() {
     cd "${srcdir}/${pkgname//-/.}/packages/web"
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=production     yarn run build
+}
+build() {
     cd "${srcdir}/${pkgname//-/.}/app"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
