@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=scider
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f363d42b5f44bc890e5261debfc62b12')
-b2sums=('4509e99e33582f8c0b3806d2d5aedb4e32d426db0a538512bd3d77e92d69051f4955e4326f4f0c70bb363d2a6441a3b96b4a649d926375434008f401e5080f37')
+md5sums=('a97bda001a8ffbe4a5491691b675310a')
+b2sums=('56c7419fc9bc38677d7b76a6c3bb80015b95901f0ecee048cf7e62911643b1bb4e8361314b923d428395ccad9c3b9c8157c4610bd5d8156fd7ccfaa68c3c1ab6')
 
 build() {
   mkdir build
