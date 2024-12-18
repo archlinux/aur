@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=metaseqR2
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -65,8 +65,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a406f8ff6d42c145b6b2bc0982d9faa4')
-b2sums=('1967c3caf3b366a9ec9f26a7e154a8313b7d809e6784179df3d9d230c15dadd3f1012873f3b7c49a20b11e4f11fa9a1be30f6aa12343bcb73aa5e36e18fc743f')
+md5sums=('63be3ca96bdfbeb4262124fe5f8fa4a2')
+b2sums=('a6ef873e0396a35aac18e2f7cdf91f68798f54f77aea0e0a3892e54025692ed6235a77af03fc92f7fe25f7176934b816ea9011e6ea7694ac2325c31839d15917')
 
 build() {
   mkdir build
