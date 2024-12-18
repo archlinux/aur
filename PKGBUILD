@@ -1,9 +1,9 @@
 # Maintainer: rpx <rpx at clearlight dot systems>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=openvsp
+pkgdesc='A parametric aircraft geometry tool'
 pkgver=3.41.1
 pkgrel=1
-pkgdesc='A parametric aircraft geometry tool'
 arch=('i686' 'x86_64')
 url='https://openvsp.org'
 license=('NASA OPEN SOURCE AGREEMENT VERSION 1.3')
@@ -64,7 +64,7 @@ build() {
         -DVSP_USE_SYSTEM_STEPCODE=false \
         -DVSP_USE_SYSTEM_TRIANGLE=false
 
-  make
+  make -j8
 
   cd "${srcdir}/build"
 
@@ -72,7 +72,7 @@ build() {
       -DVSP_LIBRARY_PATH="${srcdir}/buildlibs" \
       -DCMAKE_BUILD_TYPE=Release
 
-  make
+  make -j8
 
   make package
 }
@@ -82,19 +82,28 @@ package() {
   unzip "OpenVSP-${pkgver}-Linux.zip"
   cd "OpenVSP-${pkgver}-Linux"
 
-  # binary
-  mkdir -p ${pkgdir}/usr/bin
-  cp vsp vspaero vspscript vsploads vspaero_adjoint vspaero_complex vspaero_opt \
-  vspviewer ${pkgdir}/usr/bin/
-
-  # misc
   mkdir -p ${pkgdir}/usr/share/${pkgname}
+
+  # binaries
+  cp vsp vspaero vspscript vsploads vspaero_adjoint vspaero_complex vspaero_opt vspviewer \
+    ${pkgdir}/usr/share/${pkgname}
+ 
+  # misc
   cp README.md ${pkgdir}/usr/share/${pkgname}
   cp LICENSE ${pkgdir}/usr/share/${pkgname}
-  cp -r CustomScripts ${pkgdir}/usr/share/${pkgname}
+  cp vspIcon.png ${}pkgdir}/usr/share/${pkgname}
   cp -r airfoil ${pkgdir}/usr/share/${pkgname}
+  cp -r CustomScripts ${pkgdir}/usr/share/${pkgname}
+  cp -r help ${pkgdir}/usr/share/${pkgname}
   cp -r matlab ${pkgdir}/usr/share/${pkgname}
+  cp -r python ${pkgdir}/usr/share/${pkgname}
   cp -r scripts ${pkgdir}/usr/share/${pkgname}
   cp -r textures ${pkgdir}/usr/share/${pkgname}
   cp -r vspaero_ex ${pkgdir}/usr/share/${pkgname}
+
+  # binary symlinks, relative
+  mkdir -p ${pkgdir}/usr/bin
+  cd ${pkgdir}/usr/share/${pkgname}
+  ln -sr vsp vspaero vspscript vsploads vspaero_adjoint vspaero_complex vspaero_opt vspviewer \
+    ${pkgdir}/usr/bin/
 }
