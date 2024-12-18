@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=QuasR
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -46,8 +46,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9a98ddfa2e479bfe68cc9c8ec38fedd7')
-b2sums=('c3c01e1b4dd242c737d5c1b8d9da74547d1ced56a82b1d7741848caee395a56897b8903955ff508787b5b2155161867026f9518c10d514051476adc00f0325c4')
+md5sums=('4eff6784217d0261a50a17c0f53fff8c')
+b2sums=('fee5aeb63a29552e500550ee09b209a8bcc709e680c205e59cbb6c4242c6e4f78a6f15d6714055c346f3c03422756ac456999b1b001df487a42e024fe0862777')
 
 build() {
   mkdir build
