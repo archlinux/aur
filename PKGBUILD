@@ -3,7 +3,7 @@
 # Mantainer: XenGi
 pkgname=unrealtournament
 pkgver=469e_rc4
-pkgrel=1
+pkgrel=2
 pkgdesc="The classic Unreal Tournament from 1999 (OldUnreal pached)"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://www.unrealtournament.com/"
