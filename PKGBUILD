@@ -3,7 +3,7 @@
 
 pkgname=ios-webkit-debug-proxy
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A DevTools proxy (Chrome Remote Debugging Protocol) for iOS devices (Safari Remote Web Inspector)."
 url="https://github.com/google/ios-webkit-debug-proxy"
 arch=('i686' 'x86_64')
@@ -15,8 +15,7 @@ sha256sums=('6b7781294cc84d383c7e7ecd05af08ca8d9b2af7a49ba648178ae4d84837c52b')
 build() {
 	cd ios-webkit-debug-proxy-$pkgver
 	./autogen.sh --prefix=/usr
-	./configure LIBS="-lm" --prefix=/usr \
-	            --includedir=/usr/include/ios-webkit-debug-proxy
+	./configure LIBS="-lm" --prefix=/usr
 	make
 }
 
