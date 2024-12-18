@@ -1,6 +1,6 @@
 pkgbase = r-cogito
 	pkgdesc = Compare genomic intervals tool - Automated, complete, reproducible and clear report about genomic and epigenomic data sets
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Cogito
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-cogito
 	optdepends = r-knitr
 	optdepends = r-markdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Cogito_1.10.0.tar.gz
-	sha256sums = 799f5128ddb690c0df8d9bac42af19ceafae9b9f9760270d6c1fa3c1ba0436f6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Cogito_1.12.0.tar.gz
+	sha256sums = 7aa6bc71d99bcd9c10a7bb4c270fc4b891f6005c2dc4db3451f5061f95380560
 
 pkgname = r-cogito
