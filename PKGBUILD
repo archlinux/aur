@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GenVisR
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='Genomic Visualizations in R'
 arch=('any')
@@ -48,7 +48,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e734b6fe19d2a1710c6735d6bec56de59d69f81c9e3efff5d00a7956856ffff7')
+sha256sums=('a52ee2f09a2a517b09354b7bd3b89ca8fc33a138850c965c3ae61b6b588e8aae')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
