@@ -1,9 +1,5 @@
-*.tar.*
-*.zip
-*.orig
-*.rej
-*.swp
-*.part
-src
-pkg
-README.md
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
