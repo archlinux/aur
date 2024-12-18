@@ -1,4 +1,4 @@
-# Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
+# Maintainer: ikyope at outlook dot com
 
 pkgname=localsend-appimage
 pkgver=1.16.1
@@ -13,7 +13,7 @@ options=("!strip" "!debug")
 depends=("fuse2")
 conflicts=("localsend")
 source=("${_pkgname}::https://github.com/localsend/localsend/releases/download/v${pkgver}/${_pkgname}")
-sha512sums=("e9f01fd8a72bb21d15cadb14d0f0ec9aeb02899ac65f9361e81f541b10cb7b8a6e44d1b7ddf1dc281529e68b6f7107e88e0a52b40522a1ecaf49a71396cf9cde")
+b2sums=("85d4ddd2a993352e1636f97bd8d1bc197b9228111a602cc4bf67e9c5aea0ab912dd87e2bc13b73f61ac718c21b3f2dfe0209094f0dadbfbb93c4f2e49c25b626")
 
 _installdir=/opt/appimages
 
