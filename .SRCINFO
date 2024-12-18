@@ -1,19 +1,18 @@
 pkgbase = xz-git
 	pkgdesc = Library and command line tools for XZ and LZMA compressed files
 	pkgver = 5.6.3+r2706+g5794cda06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tukaani.org/xz/
 	arch = x86_64
 	license = GPL-2.0-or-later
 	license = LGPL-2.1-or-later
+	license = 0BSD
 	license = LicenseRef-custom
-	license = LicenseRef-Autoconf-exception-macro
 	makedepends = git
 	makedepends = doxygen
 	depends = sh
-	provides = liblzma.so
-	provides = liblzma.so=5.6.3+r2706+g5794cda06
-	provides = xz=5.6.3+r2706+g5794cda06
+	provides = liblzma.so=5.6.3
+	provides = xz=5.6.3
 	conflicts = xz
 	source = xz-git::git+https://github.com/tukaani-project/xz.git
 	validpgpkeys = 3690C240CE51B4670D30AD1C38EE757D69184620

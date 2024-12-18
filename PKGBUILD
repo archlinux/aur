@@ -8,14 +8,14 @@
 
 pkgname=xz-git
 pkgver=5.6.3+r2706+g5794cda06
-pkgrel=1
+pkgrel=2
 pkgdesc='Library and command line tools for XZ and LZMA compressed files'
 arch=('x86_64')
 url='https://tukaani.org/xz/'
-license=('GPL-2.0-or-later' 'LGPL-2.1-or-later' 'LicenseRef-custom' 'LicenseRef-Autoconf-exception-macro')
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later' '0BSD' 'LicenseRef-custom')
 depends=('sh')
 makedepends=('git' 'doxygen')
-provides=("liblzma.so" "liblzma.so=$pkgver" "xz=$pkgver") #double declaration of liblzma is intentional
+provides=("liblzma.so=${pkgver%%+*}" "xz=${pkgver%%+*}")
 conflicts=(xz)
 source=("$pkgname::git+https://github.com/tukaani-project/xz.git")
 sha256sums=('SKIP')
