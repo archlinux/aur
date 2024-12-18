@@ -10,7 +10,7 @@ pkgdesc="Supplies technical and tag information about a video or audio file (Qt 
 arch=('x86_64')
 url="https://github.com/MediaArea/MediaInfo"
 license=('BSD-2-Clause')
-depends=('libmediainfo' 'qt6-base' 'hicolor-icon-theme')
+depends=( 'hicolor-icon-theme' 'libmediainfo' 'qt6-base' 'qt6-webengine')
 makedepends=('glibc')
 conflicts=("$_pkgbasename")
 provides=("$_pkgbasename=$pkgver")

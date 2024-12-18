@@ -6,9 +6,10 @@ pkgbase = mediainfo-gui-qt
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = glibc
+	depends = hicolor-icon-theme
 	depends = libmediainfo
 	depends = qt6-base
-	depends = hicolor-icon-theme
+	depends = qt6-webengine
 	provides = mediainfo-gui=24.12
 	conflicts = mediainfo-gui
 	source = mediainfo-gui-qt-24.12.tar.gz::https://github.com/MediaArea/MediaInfo/archive/v24.12.tar.gz
