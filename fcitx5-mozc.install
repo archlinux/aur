@@ -1,4 +1,6 @@
 install_if_not_exists() {
+    USER=$(who | awk 'NR==1{print $1}')
+    HOME=$(eval echo ~$USER)
     [ -z $SUDO_USER ] && SUDO_USER=$USER
     [ -z $SUDO_HOME ] && SUDO_HOME=$HOME
     src_path=$1
@@ -9,6 +11,8 @@ install_if_not_exists() {
 }
 
 install_as_user_if_not_exists() {
+    USER=$(who | awk 'NR==1{print $1}')
+    HOME=$(eval echo ~$USER)
     [ -z $SUDO_USER ] && SUDO_USER=$USER
     [ -z $SUDO_HOME ] && SUDO_HOME=$HOME
     src_path=$1
@@ -20,6 +24,8 @@ install_as_user_if_not_exists() {
 }
 
 post_install() {
+    USER=$(who | awk 'NR==1{print $1}')
+    HOME=$(eval echo ~$USER)
     [ -z $SUDO_USER ] && SUDO_USER=$USER
     [ -z $SUDO_HOME ] && SUDO_HOME=$HOME
     install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/profile /etc/skel/.config/fcitx5/profile 
@@ -34,6 +40,8 @@ post_install() {
 }
 
 post_upgrade() {
+    USER=$(who | awk 'NR==1{print $1}')
+    HOME=$(eval echo ~$USER)
     [ -z $SUDO_USER ] && SUDO_USER=$USER
     [ -z $SUDO_HOME ] && SUDO_HOME=$HOME
     install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/profile /etc/skel/.config/fcitx5/profile 
