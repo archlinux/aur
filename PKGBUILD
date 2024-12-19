@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=5.9
+pkgver=6.0
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -19,7 +19,8 @@ depends=('mock-core-configs>=39' 'python' 'python-backoff' 'python-distro'
          'rpm-tools')
 ((_with_usermode)) && depends+=('usermode')
 makedepends=('python-argparse-manpage')
-optdepends=('createrepo_c: for mockchain command'
+optdepends=('buildah: for export_buildroot_image plugin'
+            'createrepo_c: for mockchain command'
             'dnf-plugins-core: to build RPMs for DNF based distributions (hint: use bootstrap images instead)'
             'dnf5: to build RPMs for DNF5 based distributions (hint: use bootstrap images instead)'
             'lvm2: for lvm_root plugin'
@@ -34,7 +35,7 @@ backup=("etc/$pkgname/logging.ini"
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('df2b3aba2b74add837ebf0d1ef9714bc19cd2d8a36185a65e07e03a1bcf39ee0'
+sha256sums=('5c3b698769b039000d1da402761780061d8b06132895a9b1f9800fab68f26c68'
             'f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651'
             'a32ef4b3a19490280d3e8fcdebe9dd3348636a97e214850ce6cfc6bffa56a5d3')
 
