@@ -6,7 +6,7 @@ pkgbase = blaustahl-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = libusb>=1,
+	depends = libusb>=1
 	depends = libusb<2
 	provides = blaustahl
 	conflicts = blaustahl

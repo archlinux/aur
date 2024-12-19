@@ -6,7 +6,7 @@ pkgdesc="blaustahl utility"
 arch=('x86_64')
 url="https://github.com/machdyne/blaustahl"
 license=('MIT')
-depends=('libusb>=1', 'libusb<2')
+depends=('libusb>=1' 'libusb<2')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
