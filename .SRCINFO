@@ -9,6 +9,7 @@ pkgbase = lnd-bin
 	provides = lncli
 	conflicts = lnd
 	conflicts = lnd-git
+	options = !debug
 	source = https://github.com/lightningnetwork/lnd/releases/download/v0.18.3-beta/lnd-linux-amd64-v0.18.3-beta.tar.gz
 	source = lnd-LICENSE-v0.18.3-beta::https://raw.githubusercontent.com/lightningnetwork/lnd/v0.18.3-beta/LICENSE
 	validpgpkeys = E97A1AB6C77A1D2B72F50A6F90E00CCB1C74C611

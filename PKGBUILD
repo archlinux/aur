@@ -20,6 +20,9 @@ sha512sums=(
     '49de7041d5c7448a8f5cc387e4e820eca2a87c02b70d5a38aa3823354d960843e93ca12bd8b66a13708937539da85b90328bd4c32575792f0aa6755a011ba4bb'
 )
 
+# This is a binary package, build flags do not apply
+options=(!debug)
+
 # List of maintainer pubkeys, see https://github.com/lightningnetwork/lnd/tree/master/scripts/keys
 validpgpkeys=(
     'E97A1AB6C77A1D2B72F50A6F90E00CCB1C74C611' # arshbot
