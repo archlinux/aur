@@ -1,0 +1,20 @@
+pkgbase = vscodium-translucent-marketplace
+	pkgdesc = Enable vscode marketplace in VSCodium
+	pkgver = 1.65.0
+	pkgrel = 1
+	url = https://github.com/microsoft/vscode
+	install = vscodium-translucent-marketplace.install
+	arch = any
+	license = unknown
+	depends = vscodium-translucent
+	depends = sed
+	provides = vscodium-translucent-marketplace
+	conflicts = vscodium-translucent-marketplace
+	source = vscodium-translucent-marketplace.hook
+	source = vscodium-translucent-marketplace.install
+	source = patch.sh
+	sha512sums = 5c2c52f97a9ae34f7dcdce455fc5c495b7e36cea6682b906147ba1f561d62e6735033af4afdc06d44600509a6f0202d11b439d6806798ae4c2fc6b64c5164835
+	sha512sums = 163b77249c62b043e56051578733fea31c22544838d703216a090dd4bd08b8342fddecbae3235365beb13715bde2ca9acf7e51e50b5e4d92d9a6418ab8c43345
+	sha512sums = 89823f2b5259c86f6e69c9b408a77d61509fded7a5592a52495ede14c71d67d318b4c4c5b4bf37e878aafe45d59cc53c4bba7a8769f3e469bb9bb0e155ad43aa
+
+pkgname = vscodium-translucent-marketplace
