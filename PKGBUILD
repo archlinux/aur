@@ -3,7 +3,7 @@
 
 pkgbase=kicad-library-nightly
 pkgname=('kicad-library-nightly' 'kicad-library-3d-nightly')
-pkgver=8.99.0_3415_g545c771fd6
+pkgver=8.99.0_3429_g23db557317
 pkgrel=1
 pkgdesc='KiCAD component and footprint libraries'
 arch=('any')
@@ -12,8 +12,8 @@ license=('GPL')
 makedepends=('git' 'cmake' 'make')
 options=('!strip')
 source=(
-	'git+https://gitlab.com/kicad/libraries/kicad-symbols.git'#commit=fe486c81
-	'git+https://gitlab.com/kicad/libraries/kicad-footprints.git'#commit=4d9becf0f
+	'git+https://gitlab.com/kicad/libraries/kicad-symbols.git'#commit=ca7a6ac5
+	'git+https://gitlab.com/kicad/libraries/kicad-footprints.git'#commit=6a86f0b4b
 	'git+https://gitlab.com/kicad/libraries/kicad-packages3D.git'#commit=90551c40
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP')
