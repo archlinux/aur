@@ -45,12 +45,6 @@ package() {
     # doc
     install -Dm 644 ${srcdir}/carch-${pkgver}/README.md -t ${pkgdir}/usr/share/doc/${pkgname}/README.md
 
-    # message
-    echo
-    echo ":: Carch ${pkgver} - Main Release"
-    echo ":: ---------------------------------------------------"
-    echo ":: Please execute the command carch once the installation is complete."
-    echo
 }
 
 
