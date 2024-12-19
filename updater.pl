@@ -10,11 +10,11 @@ my $installer = "";
 GetOptions("installer=s" => \$installer);
 
 chdir("/tmp");
-system("wget https://aur.archlinux.org/cgit/aur.git/snapshot/cewe-fotowelt.tar.gz -O cewe-fotowelt.tar.gz");
-system("tar -xf cewe-fotowelt.tar.gz");
+system("wget https://aur.archlinux.org/cgit/aur.git/snapshot/pixum-fotowelt.tar.gz -O pixum-fotowelt.tar.gz");
+system("tar -xf pixum-fotowelt.tar.gz");
 
-system("mv cewe-fotowelt cewe-software");
-chdir("cewe-software");
+system("mv pixum-fotowelt pixum-software");
+chdir("pixum-software");
 
 system("mv '$installer' ./");
 $installer =~ s!.*/!!;
