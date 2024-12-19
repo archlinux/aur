@@ -4,13 +4,13 @@
 _pkgname="waytune"
 pkgname="$_pkgname-git"
 pkgver=r14.1cf6c02
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of custom waybar module"
 arch=("x86_64")
 url="https://github.com/Nadim147c/WayTune"
 license=('AGPL')
 makedepends=('git' 'go')
-optdepends=("wpctl: control volume in pipewire module")
+optdepends=("wireplumber: control volume in pipewire module")
 provides=("waytune")
 conflicts=("waytune")
 source=("$pkgname::git+$url.git")
