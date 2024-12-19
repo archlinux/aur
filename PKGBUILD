@@ -1,4 +1,6 @@
 # Maintainer: Kimiblock Moe
+# Quote un quote contributor: PM
+
 pkgname=wechat
 pkgver=4.0.1.7
 pkgrel=1
@@ -12,8 +14,8 @@ options=(!debug !strip)
 
 makedepends+=()
 
-provides+=(wechat-uos wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-universal-bwrap wechat-bin)
-replaces+=(wechat-uos wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-universal-bwrap wechat-bin)
+provides+=(wechat-uos wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-universal-bwrap wechat-bin wechat-bwrap wechat-portable)
+conflicts+=(wechat-uos wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-universal-bwrap wechat-bin)
 
 depends=(
 	"portable"
@@ -100,8 +102,7 @@ md5sums_aarch64=('SKIP')
 md5sums_loong64=('SKIP')
 
 function package_wechat() {
-	conflicts=()
-	replaces+=(wechat-universal-bwrap wechat-beta-bwrap wechat-uos-bwrap)
+	conflicts+=(wechat-universal-bwrap wechat-beta-bwrap wechat-uos-bwrap)
 	tar -xf data.tar.xz ./opt
 	cp -r opt \
 		"${pkgdir}/"
