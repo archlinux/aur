@@ -1,37 +1,36 @@
-# Maintainer: peippo <christoph+aur@christophfink.com>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: peippo <christoph+aur@christophfink.com>
 
-_cranname=sodium
-_cranver=1.3.2
-pkgname=r-${_cranname,,}
+_pkgname=sodium
+_pkgver=1.4.0
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
+pkgrel=2
 pkgdesc="A Modern and Easy-to-Use Crypto Library"
-url="https://cran.r-project.org/package=${_cranname}"
-license=("MIT")
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-
-arch=("i686" "x86_64")
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
-    "libsodium>=1.0.3"
-    "r"
+  libsodium
+  r
 )
 optdepends=(
-    "r-knitr"
-    "r-rmarkdown"
+  r-knitr
+  r-rmarkdown
 )
-makedepends=()
-
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("3dcc1b53a2c2e3256c7fb186505e4236ac15b0150c52cd14d93577ddc4079411b62f3531cbfdf76d1cbca75f605d4f49855caf3973eee074c37c7e066ef5b792")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('aed7815417272ea515eab83ef1868ea6')
+b2sums=('ab312f58bed7e5ceda0a4147fb0da4e5179f6150fd9522607b4f66e2cbab8f517e6ef8b7db4f36885d01fac98a56ad63330cd767a20681fc5d84a76356366bef')
 
 build() {
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-    install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 
-    if [[ -f "${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    fi
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
