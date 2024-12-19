@@ -1,7 +1,7 @@
 pkgbase = blaustahl-git
 	pkgdesc = blaustahl utility
-	pkgver = r32.69a93f8
-	pkgrel = 1
+	pkgver = r34.587d9d4
+	pkgrel = 2
 	url = https://github.com/machdyne/blaustahl
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = blaustahl-git
 	provides = blaustahl
 	conflicts = blaustahl
 	options = !debug
-	source = git+https://github.com/machdyne/blaustahl
+	source = git+https://github.com/LunarLambda/blaustahl#branch=makefile-conventions
 	sha256sums = SKIP
 
 pkgname = blaustahl-git

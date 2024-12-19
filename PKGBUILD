@@ -1,7 +1,7 @@
 # Maintainer: Meriel Luna Mittelbach <lunarlambda@gmail.com>
 pkgname=blaustahl-git
-pkgver=r32.69a93f8
-pkgrel=1
+pkgver=r34.587d9d4
+pkgrel=2
 pkgdesc="blaustahl utility"
 arch=('x86_64')
 url="https://github.com/machdyne/blaustahl"
@@ -11,7 +11,7 @@ makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!debug)
-source=('git+https://github.com/machdyne/blaustahl')
+source=('git+https://github.com/LunarLambda/blaustahl#branch=makefile-conventions')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,12 +21,11 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	# NOTE: invoking GCC directly as upstream `Makefile` doesn't use CFLAGS/LDFLAGS
-	gcc $CFLAGS -Wall -DBACKEND_LIBUSB $LDFLAGS sw/bs.c -lusb-1.0 -o blaustahl
+	make -C sw
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -D blaustahl "$pkgdir/usr/bin"
-	install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname%-git}"
+	install -D sw/bs "$pkgdir/usr/bin/blaustahl"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/blaustahl/README.md"
 }
