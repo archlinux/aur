@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
     cd "${__pkgname}"
-	
+
     zig build -Doptimize=ReleaseSafe
 }
 
