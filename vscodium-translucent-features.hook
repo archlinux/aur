@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = vscodium-translucent
+
+[Action]
+Description = [vscodium-translucent-features] Patching product.json...
+Exec = /usr/share/vscodium-translucent-features/patch.py vscodium-translucent-features patch
+When = PostTransaction

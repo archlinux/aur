@@ -1,0 +1,24 @@
+pkgbase = vscodium-translucent-features
+	pkgdesc = Unblock some features in VSCodium
+	pkgver = 1.82.2
+	pkgrel = 1
+	url = https://github.com/microsoft/vscode
+	install = vscodium-translucent-features.install
+	arch = any
+	license = unknown
+	depends = vscodium-translucent
+	depends = python
+	depends = python-requests
+	optdepends = org.freedesktop.secrets: for settings sync feature
+	provides = vscodium-translucent-features
+	conflicts = vscodium-translucent-features
+	source = vscodium-translucent-features.hook
+	source = vscodium-translucent-features.install
+	source = patch.py
+	source = patch.json
+	md5sums = 5b3d6c42f3cf6fb87f16a74b902ce21c
+	md5sums = 1917046060a208aa89cade8ce014b711
+	md5sums = 697c73a9dbdf137ec201be5bb496b00f
+	md5sums = 5cdf96d72d223e73827626bc3bb3e176
+
+pkgname = vscodium-translucent-features
