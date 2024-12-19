@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vnite-git
 _pkgname=Vnite
-pkgver=2.0.0.alpha.0.r3.g58ffc16
+pkgver=2.2.0.r0.g719df73
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -43,7 +43,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -73,6 +73,9 @@ build() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     cp src/renderer/src/components/titlebar.tsx src/renderer/src/components/Titlebar.tsx
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     chmod +x "${srcdir}/${pkgname//-/.}/node_modules/electron-vite/bin/electron-vite.js"
     NODE_ENV=production     npx electron-vite build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} -c.electronVersion=${_electronversion}"
