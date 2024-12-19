@@ -5,7 +5,7 @@ pkgbase = paddlepaddle-bin
 	url = https://paddlepaddle.org.cn
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = python-pip
+	makedepends = python-installer
 	depends = python-httpx
 	depends = python-numpy
 	depends = python-pillow
@@ -16,6 +16,7 @@ pkgbase = paddlepaddle-bin
 	depends = perl
 	provides = paddlepaddle=2.6.2
 	conflicts = paddlepaddle
+	noextract = paddlepaddle-2.6.2-cp312-cp312-manylinux1_x86_64.whl
 	source = https://pypi.org/packages/cp312/p/paddlepaddle/paddlepaddle-2.6.2-cp312-cp312-manylinux1_x86_64.whl
 	sha256sums = 1aab2186d24402060f690a850acb21e014282b01882bcc1442f5f387dd012a50
 
