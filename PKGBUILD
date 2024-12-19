@@ -18,7 +18,7 @@ sha256sums=(SKIP)
 
 pkgver() {
     cd "${__pkgname}"
-	
+
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
