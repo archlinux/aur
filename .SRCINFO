@@ -1,29 +1,35 @@
 pkgbase = r-rpostgres
-	pkgdesc = Fully DBI-compliant C++-backed interface to PostgreSQL
+	pkgdesc = C++ Interface to PostgreSQL
 	pkgver = 1.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=RPostgres
-	arch = i686
 	arch = x86_64
-	license = GPL-3.0-only
-	makedepends = r-decor
-	depends = libpq.so
+	license = MIT
+	checkdepends = postgresql
+	checkdepends = r-dbitest
+	checkdepends = r-testthat
+	makedepends = boost
+	makedepends = r-cpp11
+	makedepends = r-plogr
+	depends = postgresql-libs
 	depends = r-bit64
-	depends = r-blob>=1.2.0
-	depends = r-dbi>=1.2.0
-	depends = r-hms>=1.1.0
+	depends = r-blob
+	depends = r-dbi
+	depends = r-hms
 	depends = r-lubridate
-	depends = r-plogr>=0.0.2
-	depends = r-cpp11
 	depends = r-withr
-	depends = r>=3.1.0
 	optdepends = r-callr
 	optdepends = r-covr
-	optdepends = r-dbitest>=1.7.3
+	optdepends = r-dbitest
 	optdepends = r-knitr
 	optdepends = r-rlang
 	optdepends = r-rmarkdown
+	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/RPostgres_1.4.7.tar.gz
+	source = system-boost.patch
+	md5sums = 1a7eb8600a0ee26082723a516bbd16d5
+	md5sums = 77a2948b75606cdf00a4e6fa280c6ce9
 	b2sums = 45a98d058d5b8699b5c82e696fe6f8b1e92b4bf5129d8893befe92b3d08fadc661fce8466df145ca2e835212d267da6a8b5681d9892255adf9c4ce4b450b9c87
+	b2sums = 6f013b9a2d207e4254eae54459db66ae2e3576c8e9d62fd0cec8c403ec6253d67ef85e316240c8d8e60703cad07201bbb50797edf12a7ca2ddb727e5685c4b9a
 
 pkgname = r-rpostgres
