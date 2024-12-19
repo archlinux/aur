@@ -1,0 +1,15 @@
+pkgbase = python-odfdo
+	pkgdesc = Pure-Python PDF library for splitting, merging, cropping, and transforming PDF pages.
+	pkgver = 3.13.2
+	pkgrel = 1
+	url = https://github.com/jdum/odfdo
+	arch = any
+	license = custom
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/o/odfdo/odfdo-3.13.2.tar.gz
+	sha256sums = 4b5aa9ddf76c18edeb883d6f79524f4a6939bfd609c8194e231015f6e8779cf5
+
+pkgname = python-odfdo
