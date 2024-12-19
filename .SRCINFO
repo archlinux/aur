@@ -5,12 +5,13 @@ pkgbase = hyprlauncher
 	url = https://github.com/hyprutils/hyprlauncher
 	install = hyprlauncher.install
 	arch = x86_64
-	license = GPL-2.0
+	license = GPL-2.0-only
 	makedepends = rustup
-	makedepends = glibc
-	makedepends = gcc-libs
 	depends = gtk4
 	depends = gtk4-layer-shell
+	depends = gcc-libs
+	depends = pango
+	depends = glib2
 	source = hyprlauncher-0.2.8.tar.gz::https://github.com/hyprutils/hyprlauncher/archive/refs/tags/v0.2.8.tar.gz
 	sha256sums = e26d2006dc730ecf1dfd00c3562fe4e751958602c3e57adbcb4531768a6d7704
 

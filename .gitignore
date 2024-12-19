@@ -1,3 +1,5 @@
-pkg
-src
-hyprlauncher-*
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD

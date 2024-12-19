@@ -5,11 +5,11 @@ pkgrel=1
 pkgdesc='GUI for launching applications, written in blazingly fast Rust!'
 arch=('x86_64')
 url="https://github.com/hyprutils/$pkgname"
-license=('GPL-2.0')
+license=('GPL-2.0-only')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('e26d2006dc730ecf1dfd00c3562fe4e751958602c3e57adbcb4531768a6d7704')
-makedepends=('rustup' 'glibc' 'gcc-libs')
-depends=('gtk4' 'gtk4-layer-shell')
+makedepends=('rustup')
+depends=('gtk4' 'gtk4-layer-shell' 'gcc-libs' 'pango' 'glib2')
 install="$pkgname.install"
 
 prepare() {
