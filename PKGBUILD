@@ -1,5 +1,5 @@
 pkgname=ruffle-bin
-pkgver=2024.11.19
+pkgver=2024.12.17
 pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_i386=1
@@ -15,11 +15,11 @@ makedepends=('unzip')
 conflicts=(ruffle-git)
 sha256sums=('7670a14a3a9ffd2a231abd9232f09c817b6312b60049175324ec4d374dffc6b8'
             'f5c8c21286d89f26c4f101e317641df02bf1af0529b6ca0897f9cebc3d654d7a')
-sha256sums_i386=('50b8ffd52f56062a4a5a4a9511b258b876b3ae22143975edc45ff1b9ee3d0a1e')
-sha256sums_pentium4=('50b8ffd52f56062a4a5a4a9511b258b876b3ae22143975edc45ff1b9ee3d0a1e')
-sha256sums_i686=('50b8ffd52f56062a4a5a4a9511b258b876b3ae22143975edc45ff1b9ee3d0a1e')
-sha256sums_x86_64=('3aa2e477588548e6937e568ba8a2c3cd3a779f21882f2d904854efd9aa5e2ccd')
-sha256sums_aarch64=('da028ee02a085568b355188313709500a827c61e11d48aec6c1e29ff348c0c49')
+sha256sums_i386=('bc34c30abbbd8219e132076225cd935bd9ae8d59406b3ed409455f070a13f345')
+sha256sums_pentium4=('bc34c30abbbd8219e132076225cd935bd9ae8d59406b3ed409455f070a13f345')
+sha256sums_i686=('bc34c30abbbd8219e132076225cd935bd9ae8d59406b3ed409455f070a13f345')
+sha256sums_x86_64=('aaf3222e770c0c474931eec74697063f1f82e810a4a4d8411f1e76b812278938')
+sha256sums_aarch64=('c66a61a86fe4f34197c584997918ddd44f98e3dd510e095abede143f1b231639')
 source=("ruffle.desktop" "ruffle.svg")
 source_x86_64=("ruffle-$pkgver-x64.tar.xz::https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-x64.tar.xz")
 
