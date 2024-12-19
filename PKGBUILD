@@ -4,7 +4,7 @@
 _pkgname=wechat
 _Pkgname=WechatLinux
 _disname=wechat
-_version=4.0.0.30
+_version=4.0.1.7
 _image_url_x86_64=https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.AppImage
 _image_url_aarch64=https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_arm64.AppImage
 
@@ -23,8 +23,8 @@ source=("LICENSE")
 source_x86_64=("${_Pkgname}-${pkgver}-x86_64.AppImage::${_image_url_x86_64}")
 source_aarch64=("${_Pkgname}-${pkgver}-aarch64.AppImage::${_image_url_aarch64}")
 sha256sums=('4348aee67f0c40bd29ec370fff75e24384907514a76104b43354d395c436f0f2')
-sha256sums_x86_64=('6a57952abb19b0cea4e2f6c873bf692760e657e846bd43e43939a20ea0aab941')
-sha256sums_aarch64=('ef12cbeebff114adaaafba324e71b9fa78a864229165580d321538e110f666ee')
+sha256sums_x86_64=('745fe982315fe1c3c84bf7b7d28f69a27e9bb0e87f0e27f93463fe0c70dfcdc3')
+sha256sums_aarch64=('c99a9ebc25a50f9613f152dcc03bf11867c56a348e690459bfabf484328a0a25')
 
 _appimage="${_Pkgname}-${pkgver}-${CARCH}.AppImage"
 noextract=("${_appimage}")
