@@ -1,11 +1,12 @@
 pkgbase = pdudaemon-git
 	pkgdesc = Daemon for controlling PDUs (Power Distribution Units)
-	pkgver = r229.09d06a7
+	pkgver = r261.8aa9950
 	pkgrel = 1
 	url = https://github.com/pdudaemon/pdudaemon
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer

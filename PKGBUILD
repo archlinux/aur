@@ -1,7 +1,7 @@
 # Maintainer: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 
 pkgname=pdudaemon-git
-pkgver=r229.09d06a7
+pkgver=r261.8aa9950
 pkgrel=1
 pkgdesc='Daemon for controlling PDUs (Power Distribution Units)'
 arch=(any)
@@ -10,7 +10,8 @@ license=('GPL2')
 depends=('python' 'python-aiohttp' 'python-requests' 'python-pexpect'
          'python-systemd' 'python-paramiko' 'python-pyserial'
          'python-hidapi' 'python-pysnmp' 'python-pyasn1' 'python-pyusb')
-makedepends=('python-setuptools' 'git' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('python-setuptools' 'python-setuptools-scm' 'git'
+             'python-build' 'python-installer' 'python-wheel')
 conflicts=('pdudaemon')
 provides=('pdudaemon')
 backup=('etc/pdudaemon/pdudaemon.conf')
