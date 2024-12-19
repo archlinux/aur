@@ -1,6 +1,6 @@
 pkgbase = skia-git
 	pkgdesc = Chromiums high-performance rendering library
-	pkgver = r73166.0b776ce0b8
+	pkgver = r74066.d746d5faaa
 	pkgrel = 1
 	url = https://github.com/google/skia
 	arch = x86_64

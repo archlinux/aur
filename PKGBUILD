@@ -4,7 +4,7 @@
 # Contributor: nyorain <nyorain at gmail dot com>
 
 pkgname=('skia-git')
-pkgver=r73166.0b776ce0b8
+pkgver=r74066.d746d5faaa
 pkgrel=1
 pkgdesc="Chromiums high-performance rendering library"
 arch=('x86_64')
@@ -19,7 +19,7 @@ pkgver() {
 
 #TODO:
 # skia-git W: ELF file ('usr/lib/libskia.so') lacks FULL RELRO, check LDFLAGS.
-# use system gn
+# use system gn, if even possible...
 # try not to use rsync
 # clean up package()
 # recheck deps + makedeps
@@ -57,7 +57,7 @@ prepare() {
     # generate the ninja build files using gn
     cd skia
     tools/git-sync-deps
-    gn gen out/Debug --args='is_official_build=true is_component_build=true'
+    bin/gn gen out/Debug --args='is_official_build=true is_component_build=true'
 }
 
 build() {
