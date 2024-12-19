@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspMachineLearning
-_pkgver=0.19.0
+_pkgver=0.19.2
 pkgname=r-${_pkgname,,}
-pkgver=0.19.0
+pkgver=0.19.2
 pkgrel=1
 pkgdesc=" Machine Learning Module for JASP"
 arch=('any')
@@ -40,7 +40,7 @@ depends=(r
 )
 groups=(r-jasp r-jaspextra)
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('0b8ec1ea6078c721e6ef255c099f1f10c851cd1c488402c3f3f314cff274d66d')
+sha256sums=('d714aebc7b0b60869bb5cd1cc36f03f67af34bda36556917ae6300d5ed86d650')
 
 
 build() {
