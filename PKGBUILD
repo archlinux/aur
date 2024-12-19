@@ -3,8 +3,8 @@ pkgname=utools-bin
 _pkgname=uTools
 pkgver=6.0.0
 _electronversion=22
-pkgrel=1
-pkgdesc="uTools Utilities.新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集"
+pkgrel=2
+pkgdesc="uTools Utilities.(Prebuilt version)新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集"
 arch=("x86_64")
 url="https://u.tools"
 _ghurl="https://github.com/uTools-Labs"
@@ -28,13 +28,12 @@ sha256sums=('e4cada2c3c49456d6cc5d49629b6a20459a2f03a8f2fc993cbdaa245e1afbc1a'
             '79ece83ed12ba8fe68f7ae40af48df0e3e8f23fcb0f1cae6908fa14221cbab64')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin} --no-sandbox/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    rm -rf "${srcdir}/opt/${_pkgname}/resources/app-update.yml"
+    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
-    ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/bin"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt" "${pkgdir}"
+    ln -sf "/opt/${_pkgname}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
