@@ -1,0 +1,16 @@
+pkgbase = arch-files
+	pkgdesc = Arch Linux Files GUI
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://archlinux.org
+	arch = any
+	license = custom
+	makedepends = pyinstaller
+	makedepends = python
+	makedepends = tk
+	source = main.py
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = arch-files
