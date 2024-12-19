@@ -1,15 +1,15 @@
 # Maintainer: Shibam Roy <royshibam9826@gmail.com>
-pkgname=remime-git
-pkgver=beta.1.gf426c9d
+pkgname=remime
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A simple way to manage your time from within your terminal. Its a simple TUI application with clock, pomodoro mode and more..."
 arch=('any')               
-conflicts=('remime')
+conflicts=('remime-git')
 url="https://github.com/ShibamRoy9826/remime"
 license=('MIT')           
 depends=('python' 'python-toml' 'python-pygame' 'python-textual' 'python-rich' )       
 makedepends=('git' 'python' 'python-setuptools')
-source=("git+https://github.com/ShibamRoy9826/remime.git")
+source=("https://github.com/ShibamRoy9826/remime/releases/download/beta/remime-${pkgver}.tar.xz")
 sha256sums=('SKIP')
 
 pkgver() {
