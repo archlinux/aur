@@ -3,7 +3,7 @@
 pkgname="stsw-link007"
 _pkgname="STLinkUpgrade"
 pkgver=3.15.7
-pkgrel=1
+pkgrel=2
 _stlink_upgrade_ver=3.15.7
 pkgdesc="The firmware upgrade application for ST-LINK, ST-LINK/V2, ST-LINK/V2-1, and STLINK-V3 boards through the USB port"
 arch=('x86_64')
@@ -29,34 +29,30 @@ options=('!strip')
 _pkg_license_name="SLA0048_${pkgname^^}.pdf"
 _pkg_zip_name="en.${pkgname}-v${pkgver//./-}.zip"
 
-# User Agent
-# sync from stm32cubeprog
-_curl_useragent="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:129.0) Gecko/20100101 Firefox/129.0"
-_curl_accept_language="Accept-Language: en-US,en;q=0.9"
-_curl_useragent="$(printf '%s' "$_curl_useragent" | sed 's/[[:space:]]\+/ /g')"
-_useragent_escaped="${_curl_useragent// /\\ }"
-_accept_language_escaped="${_curl_accept_language// /\\ }"
-
+# sync from stm32cubeide, thanks to @kumencz!
+# Download file with list of URLs to files
 _curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-link007/_jcr_content/get-software/getsw-table-nli.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
+_curl_req="$(curl -s --compressed --cookie-jar "${srcdir}http_cookies" -H "@${srcdir}http_headers" "${_curl_req_url}")"
 
-_curl_req="$(curl -s --compressed -H "${_curl_useragent}" -H "${_curl_accept_language}" "${_curl_req_url}")"
 _pkg_url="$(grep -m 1 "${_pkg_zip_name}" <<<"${_curl_req}")"
 _pkg_url="$(awk -F'"' '{print $4}' <<<"${_pkg_url}")"
 _download_path="https://www.st.com""${_pkg_url}"
 DLAGENTS=("https::/usr/bin/curl \
               -gqb '' --retry 3 --retry-delay 3 \
-              -H ${_useragent_escaped} \
-              -H ${_accept_language_escaped} \
+              --cookie "${srcdir}http_cookies" \
+              -H "@${srcdir}http_headers" \
               -o %o --compressed %u")
 
 source=("${_pkg_zip_name}::$_download_path"
         "${pkgname}.sh"
         "${pkgname}.png"
+        "http_headers"
         "https://www.st.com/resource/en/license/${_pkg_license_name}")
 
 sha256sums=('cb3bc1a7397f13839347a989b8ea664aced4de86a1af73a2490b255b880406ee'
             'ccf814ca4b768285e611c809be147be2b0df10d39ceedfafa7f901a56bd4fcd3'
             'a692a0956462419ba10a149c06e8be0f2e1a3e16dfb4b1ce06f9c612bf852d3c'
+            '12e85339c74dc80c054062432dfc6f0eb1be3214fcb4f1fab427193f4e6f0d22'
             'SKIP')
 
 package() {
