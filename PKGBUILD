@@ -6,7 +6,7 @@ pkgname=("${pkgbase}-captain-ce"
          "${pkgbase}-twig-ce"
          "${pkgbase}-hoof-ce")
 pkgver=2024.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='SIP3 monitoring system'
 arch=('any')
 url='https://sip3.io'
@@ -78,13 +78,13 @@ build() {
   mvn install -DskipTests
 
   cd "../sip3-captain-ce"
-  mvn package -DskipTests
+  mvn package -P executable-jar -DskipTests
 
   cd "../sip3-salto-ce"
-  mvn package -DskipTests -gs ${srcdir}/settings.xml
+  mvn package -P executable-jar -DskipTests -gs ${srcdir}/settings.xml
 
   cd "../sip3-twig-ce"
-  mvn package -DskipTests
+  mvn package -P executable-jar -DskipTests
 }
 
 package_sip3-captain-ce() {
