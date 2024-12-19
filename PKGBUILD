@@ -20,5 +20,5 @@ package() {
   cd "${srcdir}"
 
   # Install the built binary to the package directory
-  sudo install -Dm755 "${srcdir}/arch-files/src/dist/main" "/usr/bin/arch-files"
+  sudo install -Dm755 "${srcdir}/dist/main" "/usr/bin/arch-files"
 }
