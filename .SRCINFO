@@ -1,0 +1,18 @@
+pkgbase = pixes-bin
+	pkgdesc = Unofficial pixiv app.(Prebuilt version)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/wgh136/pixes
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	provides = pixes=1.1.0
+	conflicts = pixes
+	source = pixes-1.1.0.pkg.tar.zst::https://github.com/wgh136/pixes/releases/download/v1.1.0/pixes-1.1.0-110-x86_64.pkg.tar.zst
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/wgh136/pixes/v1.1.0/LICENSE
+	source = pixes.sh
+	sha256sums = 834ad9324036edc23f48c236a9652bef276718694ad9a9e1bba0b58d7b98a932
+	sha256sums = 5aaabbeafa067d045963cfc2d8d0fed63c41d0e20267771b1b8501a350d3b3f5
+	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
+
+pkgname = pixes-bin
