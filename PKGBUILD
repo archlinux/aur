@@ -12,10 +12,10 @@
 # Contributor: Rustmilian <Rustmilian@proton.me>
 
 pkgname=depot-tools-git
-pkgver=r10928.55d065cc0
+pkgver=r11139.fcb617891
 pkgrel=1
 pkgdesc='Tools for working with Chromium development'
-arch=(x86_64)
+arch=(any)
 url='https://chromium.googlesource.com/chromium/tools/depot_tools'
 license=(custom)
 depends=(git glibc python java-runtime)
