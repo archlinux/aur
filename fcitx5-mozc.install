@@ -1,8 +1,6 @@
 install_if_not_exists() {
-    USER=$(who | awk 'NR==1{print $1}')
-    HOME=$(eval echo ~$USER)
-    [ -z $SUDO_USER ] && SUDO_USER=$USER
-    [ -z $SUDO_HOME ] && SUDO_HOME=$HOME
+    [ -z $SUDO_USER ] && SUDO_USER=$(who|head -n1|cut -f1 -d" ")
+    [ -z $SUDO_HOME ] && SUDO_HOME=$(eval echo ~$USER)
     src_path=$1
     dest_path=$2
     if [ ! -e $dest_path ];then
@@ -11,10 +9,8 @@ install_if_not_exists() {
 }
 
 install_as_user_if_not_exists() {
-    USER=$(who | awk 'NR==1{print $1}')
-    HOME=$(eval echo ~$USER)
-    [ -z $SUDO_USER ] && SUDO_USER=$USER
-    [ -z $SUDO_HOME ] && SUDO_HOME=$HOME
+    [ -z $SUDO_USER ] && SUDO_USER=$(who|head -n1|cut -f1 -d" ")
+    [ -z $SUDO_HOME ] && SUDO_HOME=$(eval echo ~$USER)
     src_path=$1
     dest_path=$2
     if [ ! -e $dest_path ];then
@@ -24,10 +20,8 @@ install_as_user_if_not_exists() {
 }
 
 post_install() {
-    USER=$(who | awk 'NR==1{print $1}')
-    HOME=$(eval echo ~$USER)
-    [ -z $SUDO_USER ] && SUDO_USER=$USER
-    [ -z $SUDO_HOME ] && SUDO_HOME=$HOME
+    [ -z $SUDO_USER ] && SUDO_USER=$(who|head -n1|cut -f1 -d" ")
+    [ -z $SUDO_HOME ] && SUDO_HOME=$(eval echo ~$USER)
     install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/profile /etc/skel/.config/fcitx5/profile 
     sudo -u $SUDO_USER mkdir -p $SUDO_HOME/.config/fcitx5/conf
     install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/profile $SUDO_HOME/.config/fcitx5/profile
@@ -40,10 +34,8 @@ post_install() {
 }
 
 post_upgrade() {
-    USER=$(who | awk 'NR==1{print $1}')
-    HOME=$(eval echo ~$USER)
-    [ -z $SUDO_USER ] && SUDO_USER=$USER
-    [ -z $SUDO_HOME ] && SUDO_HOME=$HOME
+    [ -z $SUDO_USER ] && SUDO_USER=$(who|head -n1|cut -f1 -d" ")
+    [ -z $SUDO_HOME ] && SUDO_HOME=$(eval echo ~$USER)
     install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/profile /etc/skel/.config/fcitx5/profile 
     sudo -u $SUDO_USER mkdir -p $SUDO_HOME/.config/fcitx5/conf
     install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/profile $SUDO_HOME/.config/fcitx5/profile
