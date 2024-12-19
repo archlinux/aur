@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libwdm
-pkgver=0.2.2
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Header-only C++ library for weighted dependence measures (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ depends=('mingw-w64-eigen')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('68f88af46e2a66edfffcfdbcaccc8ca1e91014d94d4bf19f9224d8c1046a0233fe371488cbb78e636e5b1b12980553a885933eaf8253a044e4aa2842be23f80c')
+sha512sums=('5d860025ccb8014f039d4e8aa07834b35c28f1c47164a6e346a3f8d24907e472a1bbec60fc1eb14cd042beaa6b08d58c988299913270116beaa44e657d3fd5b9')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
