@@ -1,5 +1,5 @@
-pkg
-src
-hyprwall-*
-*.tar*
-*.zst
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD

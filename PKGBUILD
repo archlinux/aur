@@ -9,7 +9,7 @@ pkgdesc='GUI for setting wallpapers on Wayland (multiple backends). Written in b
 arch=('x86_64')
 url="https://github.com/hyprutils/$_pkgname"
 _url_raw="https://raw.githubusercontent.com/$(echo "$url" | awk -F'/' '{print $4 "/" $5}')"
-license=('GPL-2.0')
+license=('GPL-2.0-only')
 source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname"
     "$_pkgname-$pkgver.1::$_url_raw/refs/tags/v$pkgver/man/$_pkgname.1"
     "$_pkgname-$pkgver.png::$_url_raw/refs/tags/v$pkgver/$_pkgname.png"
@@ -17,7 +17,7 @@ source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname"
     "LICENSE-$pkgver::$_url_raw/refs/tags/v$pkgver/LICENSE"
     "README-$pkgver.md::$_url_raw/refs/tags/v$pkgver/readme.md")
 sha256sums=('8592e21a453643c9e9e22a47341595fa6c02f803aa153d58def503284fcb8f66' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-depends=('glibc' 'gcc-libs' 'gtk4')
+depends=('gtk4' 'gdk-pixbuf2' 'glib2' 'gcc-libs')
 optdepends=('hyprpaper' 'swaybg' 'swww' 'wallutils' 'feh')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
