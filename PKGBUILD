@@ -3,10 +3,10 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=anytime
-_pkgver=0.3.10
+_pkgver=0.3.11
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Anything to 'POSIXct' or 'Date' Converter"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -25,8 +25,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3dd5976e630020be7a485dedec1fe72e')
-b2sums=('755165811f3b0308ace168203562a1cabda43718f224d67a3f253671c2cc59e8aa419fe09e71784abf2e47e3c3e4526976e62fe3d2bae7ed20891b35e0d034e8')
+md5sums=('f690eb410d0212aa1701e9ea58015ca9')
+b2sums=('83c282ce2db7b160453d8c0aa26db1129b130738a3d76c52efddc7eeaa424524676961c67028a13315800c50f580c2fe9917877c3381219efd99ff75eee902fe')
 
 build() {
   mkdir build
