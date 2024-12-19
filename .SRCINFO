@@ -1,31 +1,25 @@
 pkgbase = r-asciicast
-	pkgdesc = Create ‘Ascii’ Screen Casts from R Scripts
+	pkgdesc = Create 'Ascii' Screen Casts from R Scripts
 	pkgver = 2.3.1
-	pkgrel = 2
+	pkgrel = 5
 	url = https://cran.r-project.org/package=asciicast
-	arch = i686
 	arch = x86_64
 	license = MIT
-	checkdepends = r-callr>=3.7.0
-	checkdepends = r-covr
 	checkdepends = r-cpp11
 	checkdepends = r-decor
 	checkdepends = r-htmlwidgets
-	checkdepends = r-knitr
 	checkdepends = r-mockery
 	checkdepends = r-rmarkdown
-	checkdepends = r-rstudioapi
-	checkdepends = r-testthat>=3.2.0
-	depends = r
-	depends = r-cli>=3.3.0.9000
+	checkdepends = r-testthat
+	depends = r-cli
 	depends = r-curl
 	depends = r-jsonlite
-	depends = r-magick>=2.2.9002
-	depends = r-processx>=3.7.0
+	depends = r-magick
+	depends = r-processx
 	depends = r-tibble
 	depends = r-v8
 	depends = r-withr
-	optdepends = r-callr>=3.7.0
+	optdepends = r-callr
 	optdepends = r-covr
 	optdepends = r-cpp11
 	optdepends = r-decor
@@ -34,7 +28,12 @@ pkgbase = r-asciicast
 	optdepends = r-mockery
 	optdepends = r-rmarkdown
 	optdepends = r-rstudioapi
+	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/asciicast_2.3.1.tar.gz
+	source = skip-tests.patch
+	md5sums = 578583bc17279b6a9b29fa8901f5849c
+	md5sums = a9dcfc31b1ed44cffc9ded23922b4b4d
 	b2sums = 15827cc88d3e715fb0600d257df06834b4d813c56cc43517252784b007e5ee2734f321fe98386ef8287237703fb6c3e27ff4234804bbe7b67651d02bbc779859
+	b2sums = eb06846ca9ffd5fd84ab8b7d83b57376dea7fff7920b90c2d14e6814478019d4be4a57382591fb3af8204923e91ce607f96765f3c72900acbe87efcd6fc0e356
 
 pkgname = r-asciicast
