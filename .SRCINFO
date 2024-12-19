@@ -1,11 +1,12 @@
 pkgbase = tangara-companion
 	pkgdesc = Companion app for Cool Tech Zone Tangara
 	pkgver = 0.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/haileys/tangara-companion
 	arch = x86_64
-	license = GPL-3.0-only
+	license = GPL-3.0
 	makedepends = cargo
+	makedepends = meson
 	depends = glib2
 	depends = gtk4
 	depends = libadwaita

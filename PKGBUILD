@@ -1,10 +1,10 @@
 # Maintainer: Emily Ellis <emily@scgtrp.net>
 pkgname=tangara-companion
 pkgver=0.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Companion app for Cool Tech Zone Tangara"
 depends=('glib2' 'gtk4' 'libadwaita')
-makedepends=('cargo')
+makedepends=('cargo' 'meson')
 arch=(x86_64)
 url="https://github.com/haileys/tangara-companion"
 license=('GPL-3.0')
