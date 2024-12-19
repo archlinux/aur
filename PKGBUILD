@@ -31,6 +31,9 @@ build() {
 _package() {
 	cd $pkgbase-$pkgver
 
+	LUAPKG=${pkgname%%-*}
+	depends+=($LUAPKG)
+
 	luarocks install \
 		--lua-version=$1 \
 		--deps-mode=none \
@@ -39,7 +42,7 @@ _package() {
 		$1/*.rock
 
 	find "$pkgdir/usr/bin" -type f -execdir sed -i -e "s#$pkgdir##g" {} \;
-	[ ${pkgname%%-*} != lua ] && for f in "$pkgdir/usr/bin"/*; do
+	[ $LUAPKG != lua ] && for f in "$pkgdir/usr/bin"/*; do
 		mv "$f" "$f-$1"
 	done
 
