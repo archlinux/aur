@@ -37,6 +37,6 @@ check() {
 package() {
     cd "$__pkgname"
     install -Dm0755 "bin/$__pkgname" -t "$pkgdir/usr/bin"
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$__pkgname"
-    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$__pkgname"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
