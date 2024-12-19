@@ -9,8 +9,8 @@ url="https://github.com/hypeedev/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('95a60ca4141b6d5bfbee10186f9322e5cc2962c47097b198a0cac87fc9532b86')
-makedepends=('rustup' 'glibc' 'gcc-libs')
-depends=('openssl')
+makedepends=('rustup')
+depends=('gcc-libs' 'openssl')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
