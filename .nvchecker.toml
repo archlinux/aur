@@ -1,3 +1,4 @@
 [python-auralis]
 source="pypi"
 pypi="auralis"
+prefix='v'
