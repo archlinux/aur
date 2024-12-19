@@ -8,8 +8,8 @@ pkgdesc="A fast open-source alternative of VRChat Creator Companion"
 arch=(x86_64)
 url="https://github.com/vrc-get/vrc-get/tree/master/vrc-get-gui"
 license=('MIT')
-provides=("${pkgname%-bin}")
-conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-beta-bin}")
+conflicts=("${pkgname%-beta-bin}")
 depends=(webkit2gtk-4.1 gtk3)
 source=("https://github.com/vrc-get/vrc-get/releases/download/gui-v${_pkgver}/alcom_${_pkgver}_amd64.deb"
 	"alcom-url-handler.desktop")
