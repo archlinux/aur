@@ -1,5 +1,5 @@
 pkgbase = python-odfdo
-	pkgdesc = Pure-Python PDF library for splitting, merging, cropping, and transforming PDF pages.
+	pkgdesc = Python3 library implementing the ISO/IEC 26300 OpenDocument Format standard.
 	pkgver = 3.13.2
 	pkgrel = 1
 	url = https://github.com/jdum/odfdo
