@@ -13,6 +13,7 @@ pkgbase = fdpp
 	makedepends = nasm-segelf
 	makedepends = thunk_gen
 	makedepends = meson
+	makedepends = git
 	depends = comcom64
 	depends = gcc-libs
 	depends = glibc

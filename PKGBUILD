@@ -34,7 +34,7 @@ makedepends=(
   #nasm          # to be removed after 1.7
 )
 if [ "${_opt_meson}" -ne 0 ]; then
-  makedepends+=('meson')
+  makedepends+=('meson' 'git')
 fi
 if [ "${CARCH}" == "x86_64" ]; then
   export CROSS_LD='ld'
