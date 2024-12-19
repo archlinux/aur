@@ -1,6 +1,6 @@
 pkgbase = vinecopulib-git
 	pkgdesc = C++ vine copula library
-	pkgver = r623.14fafd70
+	pkgver = r625.819df0ca
 	pkgrel = 1
 	url = https://github.com/vinecopulib-git/vinecopulib-git
 	arch = x86_64
