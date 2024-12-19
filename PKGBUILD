@@ -1,8 +1,8 @@
 # Maintainer: George Tsiamasiotis <gtsiam@windowslive.com>
 
 pkgname=carburetor
-pkgver=4.5.1
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc='Graphical settings app for tractor in GTK'
 arch=(any)
 url='https://framagit.org/tractor/carburetor'
@@ -11,42 +11,28 @@ license=('GPL-3.0-or-later')
 depends=(
   python
   python-gobject
+  python-pycountry
   gtk4
+  glib2
   libadwaita
   tractor
 )
 makedepends=(
-  python-build
-  python-setuptools
-  python-installer
-  python-wheel
+  meson
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://framagit.org/tractor/carburetor/-/archive/$pkgver/carburetor-$pkgver.tar.gz")
-sha256sums=('138656a73c75e8619970a029112d2419168dbda4c112b33d356b0ecf11ab1d3e')
+sha256sums=('c7019f51e146f4aadb8e10c0459de49cb20cbdeb904425efc4a5264945ad5bec')
 
 build() {
-  cd "$pkgname-$pkgver"
-  python -m build --wheel --no-isolation
+  arch-meson --reconfigure "$pkgname-$pkgver" build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  # Install python package
-  python -m installer --destdir="$pkgdir" dist/*.whl
-
-  # Install man page
-  install -Dm0644 -t "$pkgdir/usr/share/man/man1" \
-    data/carburetor.1
-
-  # Install desktop integration files
-  install -Dm0644 -t "$pkgdir/usr/share/applications" \
-    data/io.frama.tractor.carburetor.desktop
-  install -Dm0644 -t "$pkgdir/usr/share/metainfo" \
-    data/metainfo/io.frama.tractor.carburetor.metainfo.xml
-
-  # Install icons
-  mkdir -p "$pkgdir/usr/share/icons/hicolor"
-  cp -dpr --no-preserve=ownership data/icons/* "$pkgdir/usr/share/icons/hicolor/"
+  meson install -C build --destdir "$pkgdir"
 }
