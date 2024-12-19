@@ -4,23 +4,33 @@
 # https://github.com/openvinotoolkit/openvino/issues/452#issuecomment-722941119
 
 pkgname=openvino-git
-pkgver=2024.5.0.r149.g287ab9883ac
+pkgver=2024.6.0.r396.g83a55dfb79e
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications (git version)'
 arch=('x86_64')
 url='https://docs.openvinotoolkit.org/'
 license=('Apache-2.0')
-depends=('pugixml' 'onetbb')
-optdepends=('intel-compute-runtime: for Intel GPU plugin'
-            'ocl-icd: for Intel GPU plugin'
-            'level-zero-loader: for Intel NPU plugin'
-            'snappy: for tensorflow frontend'
-            'python: for Python API'
-            'python-numpy: for Python API'
-            'python-packaging: for Python API'
-            'python-pillow: for Python API')
-makedepends=('git' 'git-lfs' 'cmake' 'opencl-clhpp' 'opencl-headers' 'ocl-icd' 'opencv'
-             'snappy' 'python' 'python-setuptools' 'fdupes' 'patchelf' 'shellcheck')
+depends=(
+    'pugixml'
+    'onetbb')
+optdepends=(
+    'intel-compute-runtime: for Intel GPU plugin'
+    'python: for Python API'
+    'python-numpy: for Python API'
+    'python-packaging: for Python API'
+    'python-pillow: for Python API'
+    'snappy: for tensorflow frontend')
+makedepends=(
+    'cmake'
+    'fdupes'
+    'git'
+    'git-lfs'
+    'opencv'
+    'patchelf'
+    'python'
+    'python-setuptools'
+    'shellcheck'
+    'snappy')
 provides=('openvino' 'intel-openvino-git')
 conflicts=('openvino' 'intel-openvino-git')
 replaces=('intel-openvino-git')
@@ -163,7 +173,7 @@ build() {
         -DENABLE_PYTHON:BOOL='ON' \
         -DENABLE_SYSTEM_PUGIXML:BOOL='ON' \
         -DENABLE_SYSTEM_TBB:BOOL='ON' \
-        -DENABLE_SYSTEM_OPENCL:BOOL='ON' \
+        -DENABLE_SYSTEM_OPENCL:BOOL='OFF' \
         -DENABLE_SYSTEM_PROTOBUF:BOOL='OFF' \
         -DENABLE_SYSTEM_FLATBUFFERS:BOOL='OFF' \
         -DENABLE_SYSTEM_SNAPPY:BOOL='ON' \
