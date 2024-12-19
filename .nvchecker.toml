@@ -1,0 +1,5 @@
+[libwdm]
+source = "github"
+github = "tnagler/wdm"
+use_latest_release = "true"
+prefix = "v"
