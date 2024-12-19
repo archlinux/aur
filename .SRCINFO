@@ -1,18 +1,20 @@
 pkgbase = r-pkgcache
-	pkgdesc = Cache ‘CRAN’-Like Metadata and R Packages
+	pkgdesc = Cache 'CRAN'-Like Metadata and R Packages
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=pkgcache
-	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = r>=3.4
-	depends = r-callr>=2.0.4.9000
-	depends = r-cli>=3.2.0
-	depends = r-curl>=3.2
+	checkdepends = r-mockery
+	checkdepends = r-spelling
+	checkdepends = r-testthat
+	checkdepends = r-webfakes
+	depends = r-callr
+	depends = r-cli
+	depends = r-curl
 	depends = r-filelock
 	depends = r-jsonlite
-	depends = r-processx>=3.3.0.9001
+	depends = r-processx
 	depends = r-r6
 	optdepends = r-covr
 	optdepends = r-debugme
@@ -24,10 +26,15 @@ pkgbase = r-pkgcache
 	optdepends = r-rprojroot
 	optdepends = r-sessioninfo
 	optdepends = r-spelling
-	optdepends = r-webfakes>=1.1.5
+	optdepends = r-testthat
+	optdepends = r-webfakes
 	optdepends = r-withr
 	optdepends = r-zip
 	source = https://cran.r-project.org/src/contrib/pkgcache_2.2.3.tar.gz
+	source = pkgcache-bioc-fix.patch::https://github.com/r-lib/pkgcache/commit/8cefb54e030524bbcbb5885b2f0fe663f7932142.patch
+	md5sums = b6a52802450513035b0ede73b6826d58
+	md5sums = c31f9db16e6cc73b72672e739c549bdb
 	b2sums = 4358b57aeadd2897f9d311b78ffb5cfc2be34e47feee5018e7b2bfd762014e80c807e13fb6d9a2b0777d953c78ec8a78831bfb278dfc7462ed6925156cb5429b
+	b2sums = 2b5deb4abc4cd55f355720a409397040b3d9191e5ab31f4b4367655f24d28afdd2f0235c43a6ac7f8b1d7a0973af8e8d35e415f061b959d1b75d2ee28cccad49
 
 pkgname = r-pkgcache
