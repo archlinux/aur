@@ -1,0 +1,23 @@
+pkgbase = terraform-provider-alibabacloudstack-bin
+	pkgdesc = Terraform Provider For AlibabacloudStack Cloud.(Prebuilt version)
+	pkgver = 1.0.34
+	pkgrel = 1
+	url = https://github.com/aliyun/terraform-provider-alibabacloudstack
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MPL-2.0
+	depends = terraform>=0.13
+	provides = terraform-provider-alibabacloudstack=1.0.34
+	conflicts = terraform-provider-alibabacloudstack
+	source_aarch64 = terraform-provider-alibabacloudstack-1.0.34-aarch64.zip::https://github.com/aliyun/terraform-provider-alibabacloudstack/releases/download/v1.0.34/terraform-provider-alibabacloudstack_1.0.34_linux_arm64.zip
+	sha256sums_aarch64 = 3e97a37b72fe92e2f11b0117bca66883962bfcf9d38e5d9fcab52f0baabe37a3
+	source_armv7h = terraform-provider-alibabacloudstack-1.0.34-armv7h.zip::https://github.com/aliyun/terraform-provider-alibabacloudstack/releases/download/v1.0.34/terraform-provider-alibabacloudstack_1.0.34_linux_arm.zip
+	sha256sums_armv7h = 45a7407f71250342be0da8d79dee168d1766746999de23be9fecc5d56de31174
+	source_i686 = terraform-provider-alibabacloudstack-1.0.34-i686.zip::https://github.com/aliyun/terraform-provider-alibabacloudstack/releases/download/v1.0.34/terraform-provider-alibabacloudstack_1.0.34_linux_386.zip
+	sha256sums_i686 = 13e5232731de7e5e25fa2ed871e02d24519c12489e22fbcf1527a7d7bf197072
+	source_x86_64 = terraform-provider-alibabacloudstack-1.0.34-x86_64.zip::https://github.com/aliyun/terraform-provider-alibabacloudstack/releases/download/v1.0.34/terraform-provider-alibabacloudstack_1.0.34_linux_amd64.zip
+	sha256sums_x86_64 = edd3698ffd856f041d7d8ed88e75b1bd4c1cf2108a38a43ae48ca4768a3d252f
+
+pkgname = terraform-provider-alibabacloudstack-bin
