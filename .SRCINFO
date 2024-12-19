@@ -1,0 +1,23 @@
+pkgbase = rargs-bin
+	pkgdesc = A kind of xargs + awk with pattern-matching support
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/lotabout/rargs
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = help2man
+	depends = glibc
+	provides = rargs
+	conflicts = rargs
+	source = LICENSE-0.3.0::https://raw.githubusercontent.com/lotabout/rargs/v0.3.0/LICENSE
+	source = README-0.3.0.md::https://raw.githubusercontent.com/lotabout/rargs/v0.3.0/README.md
+	sha256sums = 08ef4caff3b31b5c6476cae1664a3ee2971f9adf59c0b8c7552da3bf950ebd6c
+	sha256sums = 6e47aa2a6f88b46fd15a3723dd9ec6dd0f22f9a413e1fa18990d19cb04a4a9ed
+	source_x86_64 = https://github.com/lotabout/rargs/releases/download/v0.3.0/rargs-v0.3.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c3090de95e5cf82aa53627cfbef62a62c6976052affbec0f689f99c3433b0f1f
+	source_i686 = https://github.com/lotabout/rargs/releases/download/v0.3.0/rargs-v0.3.0-i686-unknown-linux-gnu.tar.gz
+	sha256sums_i686 = 16e63a1d38f10fd9739d13a22e737c08e76c62b764e4bb81ea74eba48d8b8a0d
+
+pkgname = rargs-bin
