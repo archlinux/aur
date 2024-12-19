@@ -19,7 +19,8 @@ sha256sums=('4289447fc62a4466b67b4be87614cee9f424b630164bdc7f7bc810a25431d930')
 sha256sums_x86_64=('b087205f273f3308534befd47ff8f2d01241c3389141f298db3e3a3c39c9b037')
 sha256sums_aarch64=('98b54385c76f1ec46f9c80429be2876f377d1128d1e90deb37f9db758c767e06')
 sha256sums_i386=('d00ef98608f404a51108f4af2e18cab066306478695fe0198e52f944a216f829')
-depends=('glibc' 'gcc-libs' 'gcc' 'clang')
+depends=('gcc-libs' 'clang')
+optdepends=('gcc: g++ backend support')
 
 prepare() {
     cd "$_pkgname-$_pkgver"
@@ -57,6 +58,6 @@ package() {
     install -d "$pkgdir/usr/bin"
     ln -s "/usr/lib/$_pkgname/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
-    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
