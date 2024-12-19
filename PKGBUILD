@@ -1,21 +1,22 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
+# shellcheck disable=SC2034,SC2154,SC2164
 pkgname=firefox-tridactyl-native
-pkgver=1.24.1
-_nativever=0.4.1
+pkgver=1.24.2
+_nativever=0.5.0
 pkgrel=1
 pkgdesc="Tridactyl native messaging host application for Firefox (native: $_nativever)"
 arch=('x86_64')
 url=https://github.com/tridactyl/tridactyl
 license=('BSD-2-Clause')
-depends=('glibc')
+depends=('glibc' 'gcc-libs')
 makedepends=('nim' 'nimble' 'git' 'openssl-1.1')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tridactyl/native_messenger/archive/refs/tags/$_nativever.tar.gz")
-b2sums=('39368cf6f7d762ed614415760443214fa93fc1d31d31327008cb2327abc558f2bd3128a86061f7945eeb9ab9c74b39f92af22250a1421b563ec16133be4b880a')
+b2sums=('cc9a3b2b473f4a61f8b071a235bfc1fa7b48194c15e90b8c8fb6250f8a3b5559eeb73f312fdadf2c1cb2f64bfcd77b5201cce6329832e539742d7b059ade00c9')
 
 build() {
     cd "$srcdir/native_messenger-$_nativever/"
     sed -i -e "s-REPLACE_ME_WITH_SED-/usr/lib/tridactyl/native_main-" ./tridactyl.json
-    nimble build -d:release -d:danger --opt:speed -Y
+    nimble build -d:release --opt:speed -d:lto -y
     chmod +x ./native_main
 }
 
