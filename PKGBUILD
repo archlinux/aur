@@ -1,70 +1,64 @@
-# Maintainer: peippo <christoph+aur@christophfink.com>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: peippo <christoph+aur@christophfink.com>
 
-_cranname=pkgsearch
-_cranver=3.1.3
-pkgname=r-${_cranname,,}
+_pkgname=pkgsearch
+_pkgver=3.1.3
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
+pkgrel=4
 pkgdesc="Search and Query CRAN R Packages"
-url="https://cran.r-project.org/package=${_cranname}"
-license=("MIT")
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-
-arch=("any")
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
-    "r"
-    "r-curl"
-    "r-jsonlite"
+  r-curl
+  r-jsonlite
+)
+checkdepends=(
+  r-mockery
+  r-pingr
+  r-testthat
 )
 optdepends=(
-    "r-covr"
-    "r-memoise"
-    "r-mockery"
-    "r-pillar"
-    "r-pingr>=2.0.0"
-    "r-rstudioapi"
-    "r-shiny"
-    "r-shinyjs"
-    "r-shinywidgets"
-    "r-whoami"
-    "r-withr"
+  r-covr
+  r-memoise
+  r-mockery
+  r-pillar
+  r-pingr
+  r-rstudioapi
+  r-shiny
+  r-shinyjs
+  r-shinywidgets
+  r-testthat
+  r-whoami
+  r-withr
 )
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
+        "fix-tests.patch")
+md5sums=('5506c33a6c44075c92b56d27eb68aabf'
+         'b107e365dd7f7e32cc1e21b4d0cb3db9')
+b2sums=('2021907562f44165304dbb762b6561e58d935f2d7c2822cec12545bf169a4379d49a76006aa65a64e2f164cadafb8120c9712813b8068b9f6c6a6de0fe9eaa6c'
+        '940785dd4867c9c823c76b0ef8123c61b2404b0ba69a6f67380c9684840e6ae98fe68c58f74ea8c5bf64a2e924292e45bd528baf521eed988419a43306f3dddf')
 
-# The unittests for `r-pkgsearch` have multiple circular
-# dependency chains.
-
-# As such, the tests can not be run on first build.
-# While R packages from CRAN, generally, are well-tested
-# before they are released, in some situations, you want to
-# have thorough testing on your own end.
-
-# To run the tests, first build this package without `check()`
-# (i.e., as-is) to bootstrap `r-pkgsearch`. Then, on subsequent builds,
-# (assumining you have a local repository that is accessible from
-# the build chroot), uncomment the lines defining `checkdepends`, below,
-# as well as the `check()` function further down
-
-# checkdepends=(
-#     "${optdepends[@]}"
-#     "r-testthat>=3.0..0"
-# )
-
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("2021907562f44165304dbb762b6561e58d935f2d7c2822cec12545bf169a4379d49a76006aa65a64e2f164cadafb8120c9712813b8068b9f6c6a6de0fe9eaa6c")
-
-build() {
-    mkdir -p "${srcdir}/build/"
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
+prepare() {
+  # skip failing tests
+  patch -Np1 -i fix-tests.patch
 }
 
-# check() {
-#     export R_LIBS="build/"
-#     R CMD check --no-manual "${_cranname}"
-# }
+build() {
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
+}
 
 package() {
-    install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-    if [[ -f "${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    fi
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
