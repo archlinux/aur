@@ -4,18 +4,17 @@ pkgbase=python-drizzlepac
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.7.0.1
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="AstroDrizzle for HST images"
 arch=('i686' 'x86_64')
 url="http://www.stsci.edu/scientific-community/software/drizzlepac.html"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm>=3.4'
-             'python-wheel'
              'python-build'
              'python-installer'
-             'python-astropy>=5.0.4'
-             'python-markupsafe')
+             'python-astropy>=5.0.4')  # wheel required by new setuptools
+#            'python-markupsafe'
 #            'python-relic'
 #            'python-numpydoc'
 #            'python-sphinx_rtd_theme'
@@ -47,26 +46,27 @@ checkdepends=('python-pytest'
               'python-astroquery'
               'python-photutils'
               'python-bokeh'
-              'python-pypdf2')
+              'python-pypdf2'
+              'python-simplify-polyline')
 #              'python-pytest-remotedata'
 ##             'python-nictools'
 #              'python-pandas'
 #              'python-crds'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/tests/hap/ACSWFC3ListDefault50.csv")
-md5sums=('9f8853a7e6d4bfaf49af6699d2377980'
+md5sums=('8259a7c4b5bd200cd82cbcb3841b0812'
          'acaf7d8bcf0f6244042bba0df3d03679')
 
 get_pyinfo() {
-     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
-             python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+    [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
+        python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    sed -i -e "/markupsafe/s/<=2.0.1//" pyproject.toml
-}
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    sed -i -e "/markupsafe/s/<=2.0.1//" pyproject.toml
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -103,12 +103,12 @@ package_python-drizzlepac() {
              'python-requests'
              'python-scikit-learn>=0.20'
              'python-stsci.tools>=4.0'
-             'python-stsci.image>=2.3.4'
-             'python-stsci.imagestats'
+             'python-stsci.image>=2.3.7'
+             'python-stsci.imagestats>=1.8.2'
              'python-stsci.skypac>=1.0.9'
              'python-stsci.stimage'
              'python-stwcs>=1.5.3'
-             'python-tweakwcs>=0.8.2'
+             'python-tweakwcs>=0.8.7'
              'python-stregion>=1.1.7'
              'python-fitsblender>=0.4.2'
              'python-bokeh'
@@ -116,13 +116,14 @@ package_python-drizzlepac() {
              'python-spherical_geometry>=1.2.22'
              'python-astroquery>=0.4'
              'python-astrocut'
-             'python-photutils>1.5.0'
+             'python-photutils>=1.10.0'
              'python-lxml'
              'python-pypdf2'
              'python-scikit-image>=0.14.2'
-             'python-pytables'
-             'python-typing_extensions>4'
-             'python-markupsafe')
+#            'python-pytables'
+#            'python-typing_extensions>4'
+             'python-simplify-polyline')
+#            'python-markupsafe')
 #            'python-acstools'
 #            'python-nictools')
     optdepends=('python-yaml: HAP-pipeline specific'
