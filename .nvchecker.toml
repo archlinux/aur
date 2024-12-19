@@ -1,0 +1,4 @@
+[cosmic-ctl]
+source = "git"
+git = "https://github.com/cosmic-utils/cosmic-ctl.git"
+prefix = "v"
