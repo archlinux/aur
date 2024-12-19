@@ -1,3 +1,11 @@
+v1.14.8
+- Preliminary support for linux 6.13
+- Fix deb package conflicting dependencies
+- Fix building on kernels with enabled CONFIG_FB
+- Fix evdi softdep generation
+- Allow to upgrade when previously installed with standalone DisplayLink installer
+- Improvements in build scripts
+
 v1.14.7
 - Preliminary support for 6.11 kernel
 - Support for 6.11 kernel
