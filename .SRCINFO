@@ -1,7 +1,7 @@
 pkgbase = dracula-colors-xfce4-terminal
 	pkgdesc = Dark theme for xfce4-terminal
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dracula/xfce4-terminal
 	arch = any
 	license = MIT

@@ -1,8 +1,9 @@
+# Maintainer: Jeremy MountainJohnson <jay@jskier.com>
 # Contributor: xuelingkang <xuelingkang at 163 dot com>
 
 pkgname=dracula-colors-xfce4-terminal
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Dark theme for xfce4-terminal"
 arch=('any')
 url="https://github.com/dracula/xfce4-terminal"
