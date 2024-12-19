@@ -2,7 +2,7 @@
 # https://github.com/adamperkowski/PKGBUILDs
 _pkgname=jule
 pkgname="${_pkgname}c-git"
-pkgver=jule0.1.1.r101.g951d1d88
+pkgver=jule0.1.1.r105.gb47d1a14
 pkgrel=1
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
@@ -18,8 +18,9 @@ sha256sums=('SKIP')
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 sha256sums_i386=('SKIP')
-depends=('glibc' 'gcc-libs' 'gcc' 'clang')
+depends=('gcc-libs' 'clang')
 makedepends=('git')
+optdepends=('gcc: g++ backend support')
 provides=("${_pkgname}c")
 conflicts=("${_pkgname}c")
 
@@ -64,6 +65,6 @@ package() {
     install -d "$pkgdir/usr/bin"
     ln -s "/usr/lib/$_pkgname/bin/${_pkgname}c" "$pkgdir/usr/bin/${_pkgname}c"
 
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
-    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
