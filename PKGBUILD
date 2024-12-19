@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='ip2geo'
-pkgver='1.1.6'
+pkgver='1.1.7'
 pkgrel='2'
 pkgdesc='Import ipgeo data to files for nginx geoip module'
 arch=('x86_64' 'aarch64')
@@ -11,11 +11,14 @@ url="https://${_uri}/${pkgname}"
 license=('MIT')
 makedepends=('go' 'git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('48328309e27bb9a65907ff8a1ef27883bf47bb0bd39feb7e081b91509cae37af')
+sha256sums=('56f3f98c7394e6fed88fcfd54563d30bdc982ad4baf494241acd3007f340c480')
 
 prepare() {
   export GOPATH="${srcdir}/gopath"
   export GOBIN="${GOPATH}/bin"
+  export GOCACHE="${srcdir}/cache/go-cache"
+  export GOMODCACHE="${srcdir}/cache/go"
+  export GOTMPDIR="${srcdir}"
   mkdir -p "${GOPATH}/src/${_uri}"
   ln -snf "${srcdir}/${pkgname}-${pkgver}" "${GOPATH}/src/${_uri}/${pkgname}"
   cd "${GOPATH}/src/${_uri}/${pkgname}"
