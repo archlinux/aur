@@ -1,25 +1,23 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=oblivion-desktop
-pkgver=2.1.2
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Unofficial Warp Client"
 arch=('x86_64')
 url="https://github.com/bepass-org/oblivion-desktop"
 license=('LicenseRef-oblivion-desktop')
-_electron=electron32
+_electron=electron33
 depends=('bash' "${_electron}")
 makedepends=('gendesk' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.sh"
         'tray-icon.patch')
-sha256sums=('fe06b9a13c770b99ad51c14966616e5a386fb457b9d3f4e459f90e51d69cbdd4'
+sha256sums=('410ee5ed8773292ef05176b52e9f98d9de73d8df01c3285f66641347deee375d'
             '31676f8268a42b7cc292e7e8d71e8dab3f41f9b4a5332471134428d821b4338f'
             'd73fe075981f414a2cd3f821f102a9aeadc6b4b61fdeefeb7ba540a3c9150289')
 
 prepare() {
-    sed "s/@ELECTRON@/${_electron}/" -i "${pkgname}.sh"
-
     cd "${pkgname}-${pkgver}"
     patch -Np1 -i "${srcdir}/tray-icon.patch"
 
@@ -31,6 +29,8 @@ prepare() {
         --custom StartupWMClass='Oblivion Desktop'
 
     npm install
+
+    sed "s/@ELECTRON@/${_electron}/" -i "${srcdir}/${pkgname}.sh"
 }
 
 build() {
