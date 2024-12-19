@@ -1,14 +1,14 @@
 pkgbase = cadical
 	pkgdesc = Simple CDCL satisfiability solver
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
-	url = http://fmv.jku.at/cadical/
+	url = https://fmv.jku.at/cadical/
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = https://github.com/arminbiere/cadical/archive/rel-2.1.0.tar.gz
-	b2sums = 23eeb40a9f0f7aadb492b067c241be09c93df05ee4ab558ab3936b2b6863a5086ace8ba01b421f47d09eb8852c2a3ee94d88804ea9a71063286d08c4a3339332
+	source = https://github.com/arminbiere/cadical/archive/rel-2.1.1.tar.gz
+	b2sums = 3c059b466c3d93c324ff430ff38dcfe4a1016c01c7ef225dc6b997eefcd7c76ba43735687bcf50110820aff9073cfdb728e0c07ce22de95570425bfdb0da08be
 
 pkgname = cadical
