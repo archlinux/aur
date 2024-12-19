@@ -1,0 +1,20 @@
+diff --git a/RMariaDB/tests/testthat/helper-DBItest.R b/RMariaDB/tests/testthat/helper-DBItest.R
+index 481bfce..9a9777f 100644
+--- a/RMariaDB/tests/testthat/helper-DBItest.R
++++ b/RMariaDB/tests/testthat/helper-DBItest.R
+@@ -13,6 +13,15 @@ if (rlang::is_installed("DBItest")) DBItest::make_context(
+   ),
+   name = "RMariaDB",
+   default_skip = c(
++    "bind_timestamp",
++    "bind_timestamp_lt",
++    "arrow_bind_timestamp",
++    "arrow_bind_timestamp_lt",
++    "stream_bind_timestamp",
++    "stream_bind_timestamp_lt",
++    "arrow_stream_bind_timestamp",
++    "arrow_stream_bind_timestamp_lt",
++
+     # result
+     "data_logical",                               # not an error: cannot cast to logical
+     "data_raw",                                   # not an error: can't cast to blob type

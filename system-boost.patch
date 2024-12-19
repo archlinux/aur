@@ -1,0 +1,8 @@
+diff --git a/RMariaDB/src/Makevars.in b/RMariaDB/src/Makevars.in
+index ee434aa..2ad7f82 100644
+--- a/RMariaDB/src/Makevars.in
++++ b/RMariaDB/src/Makevars.in
+@@ -1,2 +1,2 @@
+-PKG_CPPFLAGS=@cflags@ -Ivendor -DBOOST_NO_AUTO_PTR @plogr@
++PKG_CPPFLAGS=@cflags@ -DBOOST_NO_AUTO_PTR @plogr@
+ PKG_LIBS=@libs@
