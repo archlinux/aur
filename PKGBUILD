@@ -1,7 +1,7 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 # Contributor: Alexandru Frincu <alexandru.frincu@accenture.com>
 pkgname=cm
-pkgver=3.12.9
+pkgver=3.14.3
 pkgrel=1
 pkgdesc="fast logfile viewer for Analyzing Large Logfiles
  Chipmunk is a fast logfile viewer designed for analyzing 
@@ -35,4 +35,4 @@ package() {
   ln -s /usr/lib/chipmunk/chipmunk "${pkgdir}/usr/bin/chipmunk"
 }
 
-sha256sums=('1f8aea63c7eb0e2a5b629960b205631fea035bd7a5f8726b01c1078c6b4e3f5d')
+sha256sums=('16323745a121fb3ae0e2e15911ae421f624587755febab67d85f207ea4733d73')
