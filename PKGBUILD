@@ -22,7 +22,7 @@ install=teleport.install
 source=("teleport.service"
         "teleport@.service"
         "teleport.install"
-        "LICENSE-community::https://raw.githubusercontent.com/gravitational/teleport/master/LICENSE-community")
+        "LICENSE-community::https://raw.githubusercontent.com/gravitational/teleport/master/build.assets/LICENSE-community")
 
 # The teleport servers do not allow for byte ranges to continue download so we set -C0
 # https://aur.archlinux.org/packages/teleport-bin#comment-906339
@@ -36,7 +36,7 @@ source_aarch64=("teleport-bin-${pkgver}-aarch64.tar.gz::https://get.gravitationa
 sha256sums=('b7ac1b9fa9788989b9cef9e555b278635faa4be8350a959580f19076241cde85'
             'b7aa05eeb0d39875481c56bc21edf60a5bd7184bc5c424df68a5d4eb2b2882f1'
             'c71bbe70179aceb0f49d2a4f1e0a83da040ca72373e17ca82cc2489cd6e07801'
-            'a45b5a4bdfe894ebd901568b29517fe3d8342d49f1f394feb62a8dc8fe233dda')
+            '3beda963b864fc67546e6926fd6ee8601cafee44a9d24440042efd68b7cab8f6')
 sha256sums_i386=('1ad103a67efe65a0fbcf6d5ae41681a928d92db4388ef19b9f4e2b9efde02179')
 sha256sums_x86_64=('a5a6e23dc6e6f3248f2cc90be9e1d0539734952da8b32a77e586276c72d877fa')
 sha256sums_armv7h=('5ccbf1d17831801b86caa7b19a5bf298867871159dd5b7bf670927d3a923417c')
