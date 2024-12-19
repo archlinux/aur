@@ -1,6 +1,6 @@
 pkgbase = algohub
 	pkgdesc = ACM Algorithm Hub
-	pkgver = 0.1.1_rc.0
+	pkgver = 0.1.1_rc.1
 	pkgrel = 1
 	url = https://github.com/swpu-acm/algohub.git
 	install = algohub.install
@@ -17,7 +17,7 @@ pkgbase = algohub
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/swpu-acm/algohub/releases/download/algohub-v0.1.1-rc.0/algohub_0.1.1-rc.0_amd64.deb
-	sha256sums_x86_64 = 23eb512fffc4754c58b6fe76503e81c19b48c29b5baf95410684db498c14ce3d
+	source_x86_64 = https://github.com/swpu-acm/algohub/releases/download/algohub-v0.1.1-rc.1/algohub_0.1.1-rc.1_amd64.deb
+	sha256sums_x86_64 = 9036d807c4a611219542fcef8f131ce4d4545e6a792d560f44f5e3e93d45ab48
 
 pkgname = algohub

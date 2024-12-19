@@ -1,7 +1,7 @@
 # Maintainer: 苏向夜 <fu050409@163.com>
 # Contributor: 苏向夜 <fu050409@163.com>
 pkgname=algohub
-pkgver=0.1.1_rc.0
+pkgver=0.1.1_rc.1
 pkgrel=1
 pkgdesc="ACM Algorithm Hub"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/swpu-acm/algohub/releases/download/algohub-v${pkgver//_/-}/algohub_${pkgver//_/-}_amd64.deb")
-sha256sums_x86_64=('23eb512fffc4754c58b6fe76503e81c19b48c29b5baf95410684db498c14ce3d')
+sha256sums_x86_64=('9036d807c4a611219542fcef8f131ce4d4545e6a792d560f44f5e3e93d45ab48')
 package() {
   tar -xz -f data.tar.gz -C "${pkgdir}"
   echo "[Desktop Entry]
