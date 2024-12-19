@@ -1,79 +1,71 @@
-# Maintainer: peippo <christoph+aur@christophfink.com>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: sukanka <su975853527@gmail.com>
+# Contributor: peippo <christoph+aur@christophfink.com>
 
-_cranname=pak
-_cranver=0.8.0
-pkgname=r-${_cranname,,}
-pkgdesc="Another Approach to R Package Installation"
-url="https://cran.r-project.org/package=${_cranname}"
-license=("GPL-3.0-only")
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-
-arch=("any")
+_pkgname=pak
+_pkgver=0.8.0
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Another Approach to Package Installation"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-    "r>=3.5"
+  r-callr
+  r-cli
+  r-curl
+  r-desc
+  r-filelock
+  r-jsonlite
+  r-lpsolve
+  r-pkgbuild
+  r-pkgcache
+  r-pkgdepends
+  r-pkgsearch
+  r-processx
+  r-ps
+  r-r6
+  r-zip
+)
+checkdepends=(
+  r-mockery
+  r-testthat
 )
 optdepends=(
-    "r-callr>=3.7.0"
-    "r-cli>=3.6.2"
-    "r-covr"
-    "r-curl>=4.3.2"
-    "r-desc>=1.4.1"
-    "r-filelock>=1.0.2"
-    "r-gitcreds"
-    "r-glue>=1.6.2"
-    "r-jsonlite>=1.8.0"
-    "r-mockery"
-    "r-pingr"
-    "r-pkgbuild>=1.4.2"
-    "r-pkgcache>=2.0.4"
-    "r-pkgdepends>=0.5.0.9001"
-    "r-pkgload"
-    "r-pkgsearch>=3.1.0"
-    "r-processx>=3.8.1"
-    "r-ps>=1.6.0"
-    "r-rprojroot>=2.0.2"
-    "r-rstudioapi"
-    "r-withr"
+  r-covr
+  r-gitcreds
+  r-glue
+  r-mockery
+  r-pingr
+  r-pkgload
+  r-rstudioapi
+  r-testthat
+  r-withr
 )
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
+        "system-libs.patch")
+md5sums=('a5a9201501834a359f6fb46ea3892e8e'
+         '29b1470e2d25f82ebeafc02fe3b2594a')
+b2sums=('b7f520664189c5fe01e07900e6a7b6d4bbf8c86a85eeeff78b756dfda28ace31e9ef70e03de8cbaf53800d38e4d1bbe37c538d3769683529b82944eebadae31b'
+        'b422c6a23d6850831433fdcf3e81684189bdaea1735fcc85edeff3202fe084f4167876949ff9ddfd5654cb2ce202ed005800a217dfe9bb12fb8240456880b4f1')
 
-# "${optdepends[@]}" except r-pkgdepends (circular dependency chain)
-# The unittests for `r-pak` have multiple circular
-# dependency chains.
-
-# As such, the tests can not be run on first build.
-# While R packages from CRAN, generally, are well-tested
-# before they are released, in some situations, you want to
-# have thorough testing on your own end.
-
-# To run the tests, first build this package without `check()`
-# (i.e., as-is) to bootstrap `r-pak`. Then, on subsequent builds,
-# (assumining you have a local repository that is accessible from
-# the build chroot), uncomment the lines defining `checkdepends`, below,
-# as well as the `check()` function further down
-
-# checkdepends=(
-#     "${optdepends[@]}"
-#     "r-testthat>=3.2.0"
-# )
-
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("b7f520664189c5fe01e07900e6a7b6d4bbf8c86a85eeeff78b756dfda28ace31e9ef70e03de8cbaf53800d38e4d1bbe37c538d3769683529b82944eebadae31b")
-
-build() {
-    mkdir -p "${srcdir}/build/"
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
+prepare() {
+  # devendor R dependencies
+  patch -Np1 -i system-libs.patch
 }
 
-# check() {
-#     export R_LIBS="build/"
-#     R CMD check --no-manual "${_cranname}"
-# }
+build() {
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
+}
 
 package() {
-    install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-    if [[ -f "${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    fi
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }

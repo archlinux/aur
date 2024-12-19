@@ -1,33 +1,41 @@
 pkgbase = r-pak
-	pkgdesc = Another Approach to R Package Installation
+	pkgdesc = Another Approach to Package Installation
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=pak
 	arch = any
 	license = GPL-3.0-only
-	depends = r>=3.5
-	optdepends = r-callr>=3.7.0
-	optdepends = r-cli>=3.6.2
+	checkdepends = r-mockery
+	checkdepends = r-testthat
+	depends = r-callr
+	depends = r-cli
+	depends = r-curl
+	depends = r-desc
+	depends = r-filelock
+	depends = r-jsonlite
+	depends = r-lpsolve
+	depends = r-pkgbuild
+	depends = r-pkgcache
+	depends = r-pkgdepends
+	depends = r-pkgsearch
+	depends = r-processx
+	depends = r-ps
+	depends = r-r6
+	depends = r-zip
 	optdepends = r-covr
-	optdepends = r-curl>=4.3.2
-	optdepends = r-desc>=1.4.1
-	optdepends = r-filelock>=1.0.2
 	optdepends = r-gitcreds
-	optdepends = r-glue>=1.6.2
-	optdepends = r-jsonlite>=1.8.0
+	optdepends = r-glue
 	optdepends = r-mockery
 	optdepends = r-pingr
-	optdepends = r-pkgbuild>=1.4.2
-	optdepends = r-pkgcache>=2.0.4
-	optdepends = r-pkgdepends>=0.5.0.9001
 	optdepends = r-pkgload
-	optdepends = r-pkgsearch>=3.1.0
-	optdepends = r-processx>=3.8.1
-	optdepends = r-ps>=1.6.0
-	optdepends = r-rprojroot>=2.0.2
 	optdepends = r-rstudioapi
+	optdepends = r-testthat
 	optdepends = r-withr
 	source = https://cran.r-project.org/src/contrib/pak_0.8.0.tar.gz
+	source = system-libs.patch
+	md5sums = a5a9201501834a359f6fb46ea3892e8e
+	md5sums = 29b1470e2d25f82ebeafc02fe3b2594a
 	b2sums = b7f520664189c5fe01e07900e6a7b6d4bbf8c86a85eeeff78b756dfda28ace31e9ef70e03de8cbaf53800d38e4d1bbe37c538d3769683529b82944eebadae31b
+	b2sums = b422c6a23d6850831433fdcf3e81684189bdaea1735fcc85edeff3202fe084f4167876949ff9ddfd5654cb2ce202ed005800a217dfe9bb12fb8240456880b4f1
 
 pkgname = r-pak
