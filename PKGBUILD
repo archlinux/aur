@@ -1,7 +1,7 @@
 # Maintainer: Bryan Malyn <bim9262 at gmail dot com>
 
 pkgname=wl-gammarelay-rs
-pkgver=0.4.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A simple program that provides DBus interface to control display temperature and brightness under wayland without flickering"
 makedepends=('cargo')
@@ -9,9 +9,9 @@ arch=('x86_64')
 url="https://github.com/MaxVerevkin/wl-gammarelay-rs"
 license=('GPL-3.0-only')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('42eec83de003c5f8c9c6c5abce3f0eadb80f5abb027d266bcc77183ecce14edc')
-sha512sums=('de652cc3908f7386f0c96c6a8c1dd4d4ab6a7f7ef5c99af9456729c5e1cad3e70ff7344804046b9f1bf6a37adb56dad3a50851183934de97dd10b1cdf08cb4c5')
-b2sums=('2dee927537a6117d0b6693e08bd39070f2b8a092acc2e1425497dd19db12e6fbdfd8cfea8ea0f3d80ccd794574faa0eabc3860cf290c140bbc9e8ee686b4ee08')
+sha256sums=('ca95f990b5dec2fcb87a20a6136fdae11d5f0d3ff63e3d3c0f55767e24d697ec')
+sha512sums=('a4602ebc51594d3626ff5cb254a721b3844acc429559824e0dcc5ceab1655b43bac112a767c6214cc9d65b0fd6dbd7be5234ac7105bf1f1c7a664463745a4f41')
+b2sums=('a591e08790967a45f8a5d1c686a28b4979cf97c864ee44cc7e9039435ef333ca402abf9a78f766d1060447627ae9ef85b60b26b662fd3bbaadaef8e8509cd129')
 
 build() {
   cd "$pkgname-$pkgver"
