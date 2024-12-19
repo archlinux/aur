@@ -1,6 +1,6 @@
 pkgbase = qtile-git
 	pkgdesc = A full-featured, pure-Python tiling window manager
-	pkgver = 0.28.1.r8.g391a046
+	pkgver = 0.29.0.r55.gfd6b2cd
 	pkgrel = 1
 	url = https://github.com/qtile/qtile
 	install = qtile.install
@@ -12,7 +12,7 @@ pkgbase = qtile-git
 	checkdepends = lm_sensors
 	checkdepends = procps-ng
 	checkdepends = python-bowler
-	checkdepends = python-dbus-next
+	checkdepends = python-dbus-fast
 	checkdepends = python-gobject
 	checkdepends = python-isort
 	checkdepends = python-libcst
@@ -49,7 +49,7 @@ pkgbase = qtile-git
 	optdepends = lm_sensors: for sensors widget
 	optdepends = moc: for moc widget
 	optdepends = python-bowler: for migrating configuration files
-	optdepends = python-dbus-next: for utils, notifications and several widgets
+	optdepends = python-dbus-fast: for utils, notifications and several widgets
 	optdepends = python-iwlib: for wlan widget
 	optdepends = python-keyring: for imapwidget widget
 	optdepends = python-libcst: for migrations
@@ -61,7 +61,7 @@ pkgbase = qtile-git
 	optdepends = python-xdg: launchbar widget
 	optdepends = python-xkbcommon: for Wayland backend
 	optdepends = xorg-xwayland: for XWayland support
-	provides = qtile=0.28.1.r8.g391a046
+	provides = qtile=0.29.0.r55.gfd6b2cd
 	conflicts = qtile
 	source = qtile::git+https://github.com/qtile/qtile.git
 	sha256sums = SKIP

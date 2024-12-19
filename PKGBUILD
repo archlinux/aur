@@ -11,7 +11,7 @@
 
 _pkgname="qtile"
 pkgname="$_pkgname-git"
-pkgver=0.28.1.r8.g391a046
+pkgver=0.29.0.r55.gfd6b2cd
 pkgrel=1
 pkgdesc="A full-featured, pure-Python tiling window manager"
 url="https://github.com/qtile/qtile"
@@ -47,7 +47,7 @@ checkdepends=(
   lm_sensors
   procps-ng
   python-bowler
-  python-dbus-next
+  python-dbus-fast
   python-gobject
   python-isort
   python-libcst
@@ -69,7 +69,7 @@ optdepends=(
   'lm_sensors: for sensors widget'
   'moc: for moc widget'
   'python-bowler: for migrating configuration files'
-  'python-dbus-next: for utils, notifications and several widgets'
+  'python-dbus-fast: for utils, notifications and several widgets'
   'python-iwlib: for wlan widget'
   'python-keyring: for imapwidget widget'
   'python-libcst: for migrations'
