@@ -1,6 +1,6 @@
 pkgbase = waypipe-git
 	pkgdesc = A proxy for Wayland protocol applications; like ssh -X
-	pkgver = 0.9.2.r41.gdfa4a66
+	pkgver = 0.9.2.r57.gb1e321c
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mstoeckl/waypipe
 	arch = i686
@@ -29,7 +29,6 @@ pkgbase = waypipe-git
 	provides = waypipe
 	conflicts = waypipe
 	options = debug
-	options = !strip
 	source = git+https://gitlab.freedesktop.org/mstoeckl/waypipe.git
 	sha512sums = SKIP
 

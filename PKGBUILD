@@ -1,6 +1,6 @@
 # Maintainer: Manuel Stoeckl <com dоt mstoeckl аt wppkgb>
 pkgname=waypipe-git
-pkgver=0.9.2.r41.gdfa4a66
+pkgver=0.9.2.r57.gb1e321c
 pkgrel=1
 pkgdesc='A proxy for Wayland protocol applications; like ssh -X'
 license=('GPL-3.0-or-later')
@@ -13,7 +13,8 @@ optdepends=(
 url='https://gitlab.freedesktop.org/mstoeckl/waypipe'
 source=('git+https://gitlab.freedesktop.org/mstoeckl/waypipe.git')
 sha512sums=('SKIP')
-options=(debug !strip)
+# git may be less stable than releases, so enable debuginfo
+options=(debug)
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 provides=('waypipe')
 conflicts=('waypipe')
@@ -26,7 +27,11 @@ pkgver() {
 prepare() {
 	cd waypipe
 	cargo fetch --locked
-	meson --buildtype debugoptimized -Dwerror=false --prefix /usr "$srcdir/build"
+	cd ../
+	# Use 'meson' instead of 'arch-meson', because the latter sets
+	# a 'plain' buildtype but environment variables configuring build
+	# are only set for C, not for Rust
+	meson waypipe "$srcdir/build" --buildtype debugoptimized -Dwerror=false --prefix /usr
 }
 
 check() {
