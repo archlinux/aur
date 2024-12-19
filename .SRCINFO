@@ -1,6 +1,6 @@
 pkgbase = bazelisk-bin
 	pkgdesc = A user-friendly launcher for Bazel
-	pkgver = 1.22.1
+	pkgver = 1.25.0
 	pkgrel = 1
 	url = https://github.com/bazelbuild/bazelisk
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = bazelisk-bin
 	provides = bazelisk
 	conflicts = bazel
 	conflicts = bazelisk
-	source = bazelisk-linux-amd64-1.22.1::https://github.com/bazelbuild/bazelisk/releases/download/v1.22.1/bazelisk-linux-amd64
-	sha256sums = 8fede4d1fde801590d6e7cf919e705f740768d56ae38d55d473536714719af04
+	source = bazelisk-linux-amd64-1.25.0::https://github.com/bazelbuild/bazelisk/releases/download/v1.25.0/bazelisk-linux-amd64
+	sha256sums = fd8fdff418a1758887520fa42da7e6ae39aefc788cf5e7f7bb8db6934d279fc4
 
 pkgname = bazelisk-bin
