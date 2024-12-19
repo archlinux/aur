@@ -1,0 +1,20 @@
+pkgbase = remime
+	pkgdesc = A simple way to manage your time from within your terminal. Its a simple TUI application with clock, pomodoro mode and more...
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ShibamRoy9826/remime
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-toml
+	depends = python-pygame
+	depends = python-textual
+	depends = python-rich
+	conflicts = remime-git
+	source = https://github.com/ShibamRoy9826/remime/releases/download/beta/remime-0.1.0.tar.xz
+	sha256sums = SKIP
+
+pkgname = remime
