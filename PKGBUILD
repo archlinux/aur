@@ -8,7 +8,7 @@ pkgrel=1
 makedepends=("yarn" "liburing" "git")
 depends=()
 source=("git+${url}#tag=v${pkgver}")
-md5sums=('42aaee04f3c8eeddabe30139e88f264e')
+md5sums=('ce6ac0fb837b2042a8f93a7816649431')
 provides=("element-call")
 options=()
 backup=()
