@@ -1,0 +1,24 @@
+pkgbase = pget-bin
+	pkgdesc = Fast, resumable, and parallel file download client, written in go.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Code-Hex/pget
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = help2man
+	provides = pget
+	conflicts = pget
+	source = LICENSE-0.2.1::https://raw.githubusercontent.com/Code-Hex/pget/v0.2.1/LICENSE
+	source = README-0.2.1::https://raw.githubusercontent.com/Code-Hex/pget/v0.2.1/README.md
+	sha256sums = 5d27c3c2c001baaa25373708654d0ec95fdb043285508e98ec03ca51636a27e4
+	sha256sums = dc8c72a0a304d36d609f1e05b087d3616976aa865babdc0cc01b889256cc1a15
+	source_x86_64 = https://github.com/Code-Hex/pget/releases/download/v0.2.1/pget_.0.2.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = a03327eb18616e523686fdc9e997c6be7d4bf313c8313d57316964a63cac3381
+	source_i686 = https://github.com/Code-Hex/pget/releases/download/v0.2.1/pget_.0.2.1_Linux_i386.tar.gz
+	sha256sums_i686 = a7c579b092acf3f683b5048b2687a42a06a9995b69d47a5327634af712bff718
+	source_aarch64 = https://github.com/Code-Hex/pget/releases/download/v0.2.1/pget_.0.2.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 8d8eb0a84fe5fb9ad1bc6820d73693de3f0582d044e7977db71f5992ff5883c9
+
+pkgname = pget-bin
