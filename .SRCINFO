@@ -1,8 +1,8 @@
 pkgbase = mintlocale
 	pkgdesc = Language and locale selection tool
-	pkgver = 1.6.2
+	pkgver = 1.6.4
 	pkgrel = 1
-	url = http://packages.linuxmint.com/pool/main/m/mintlocale
+	url = https://github.com/linuxmint/mintlocale
 	arch = any
 	license = GPL2
 	depends = accountsservice
@@ -14,10 +14,10 @@ pkgbase = mintlocale
 	depends = python-cairo
 	depends = python-gobject
 	depends = xapp
-	source = mintlocale-1.6.2.tar.xz::http://packages.linuxmint.com/pool/main/m/mintlocale/mintlocale_1.6.2.tar.xz
+	source = mintlocale-1.6.4.tar.xz::http://packages.linuxmint.com/pool/main/m/mintlocale/mintlocale_1.6.4.tar.xz
 	source = im_apt_check.patch
 	source = install_remove_apt_check.patch
-	sha256sums = ce08ffeefd174fe4829713f66b4192e8e06bc07fcc977377babfc43ffe0a047d
+	sha256sums = 1fbff7261a4bf962b3eabe81fc7a4e346d0aad440d848eb9f668146899ef4636
 	sha256sums = 21778d62b28e677cfb8d7784c5b486ff373534de6e6fb5603e2c8bd268abef7b
 	sha256sums = 4b8bc562521564022ae657ce1db7c3170d4184f955150bd9e51b871c73f4a996
 
