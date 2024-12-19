@@ -1,13 +1,12 @@
 pkgbase = pget-bin
 	pkgdesc = Fast, resumable, and parallel file download client, written in go.
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Code-Hex/pget
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	license = MIT
-	makedepends = help2man
 	provides = pget
 	conflicts = pget
 	source = LICENSE-0.2.1::https://raw.githubusercontent.com/Code-Hex/pget/v0.2.1/LICENSE
