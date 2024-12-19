@@ -1,7 +1,7 @@
 # Maintainer: crimist <aur at crim dot ist>
 
 pkgname=nvidia_oc
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 pkgdesc="A simple cli overclocking tool for Nvidia GPUs that supports both X11 and Wayland"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('cargo')
 provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('d9997216d2e3e590b3d53f6b29e98643a2e8ad2904d05fb13bdcea371d7f77435f23057b1fab96198b179c14b813a7bdeadc84759c7e9edb5fb25eb347dd5ed9')
+b2sums=('e83bf5a3320d39f99c691be6d70a33a3a6b1619cb3388fba20779ea53abba2ac39891b1dd86eafed0b264110e1c0e97b51af4fa8415dbcdc3596568f9ca7f53d')
 backup=('etc/nvidia_oc.json')
 
 prepare() {
