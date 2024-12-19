@@ -2,13 +2,13 @@
 
 pkgname=librnd4-svn
 pkgver=r37782
-pkgrel=1
+pkgrel=4
 pkgdesc="free/open source, flexible, modular two-dimensional CAD engine"
 arch=($CARCH)
 url="http://www.repo.hu/projects/librnd"
 license=('LGPL-2.0-or-later')
-provides=(${pkgname%-svn})
-conflicts=(${pkgname%-svn})
+provides=('librnd4=4.1.1' 'librnd3')
+conflicts=('librnd4=4.1.1' 'librnd3')
 depends=(
     glibc
     sh
