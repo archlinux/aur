@@ -30,7 +30,7 @@ build() {
     cargo build --release
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/target/release/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/target/release/${pkgname}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
