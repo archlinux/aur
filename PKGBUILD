@@ -5,7 +5,7 @@ pkgname="stm32cubeclt"
 # pkgname=("stm32cubeclt" "stlink-server" "stlink-udev-rules")
 _pkgname="STM32CubeCLT"
 pkgver=1.16.0
-pkgrel=2
+pkgrel=3
 _pkgdesc="A toolset for third-party integrated development environment (IDE) providers, allowing the use \
 of STMicroelectronics proprietary tools within their own IDE frameworks."
 arch=('x86_64')
@@ -29,7 +29,7 @@ _pkg_zip_name="en.${_pkg_sh_name}.zip"
 _curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-to\
 ols/stm32-software-development-tools/stm32-ides/stm32cubeclt/_jcr_content/get-software/getsw-table-nli.no\
 cache.html/st-site-cx/components/containers/product/get-software-table-body.html"
-_curl_req="$(curl -s --compressed -H "@${srcdir}http_headers" "$_curl_req_url")"
+_curl_req="$(curl -s --compressed --cookie-jar "${srcdir}http_cookies" -H "@${srcdir}http_headers" "$_curl_req_url")"
 
 # Extract actual download link to the desired file
 _pkg_url="$(grep -m 1 "${_pkg_zip_name}" <<< "$_curl_req")"
@@ -39,14 +39,15 @@ _download_path="https://www.st.com""$_pkg_url"
 
 DLAGENTS=("https::/usr/bin/curl \
               -gqb '' --retry 3 --retry-delay 3 \
+              --cookie "${srcdir}http_cookies" \
               -H "@${srcdir}http_headers" \
               -o %o --compressed %u")
 source=("${_pkg_zip_name}"::"$_download_path"
         'http_headers'
         "https://www.st.com/resource/en/license/${_pkg_license_name}")
 sha256sums=('f66be954b886d8c104b8316d833a3e4d85f6abd652862cba477627424e3eb9a0'
-            'e390db4335686f4a99f04002625a9dce0058b631cb3205b700c1910bf129d73c'
-            'c6d92c00dee63e0f4a54d8ea62f82a646243c3e1480142ae3e7f4ca5d77d5702')
+            '12e85339c74dc80c054062432dfc6f0eb1be3214fcb4f1fab427193f4e6f0d22'
+            'SKIP')
 
 # not used, reserved.
 _pkgname_stlink_server="stlink-server"

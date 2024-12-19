@@ -1,6 +1,6 @@
 pkgbase = stm32cubeclt
 	pkgver = 1.16.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.st.com/en/development-tools/stm32cubeclt.html
 	arch = x86_64
 	license = custom:SLA0048
@@ -11,8 +11,8 @@ pkgbase = stm32cubeclt
 	source = http_headers
 	source = https://www.st.com/resource/en/license/SLA0048_STM32CubeCLT.pdf
 	sha256sums = f66be954b886d8c104b8316d833a3e4d85f6abd652862cba477627424e3eb9a0
-	sha256sums = e390db4335686f4a99f04002625a9dce0058b631cb3205b700c1910bf129d73c
-	sha256sums = c6d92c00dee63e0f4a54d8ea62f82a646243c3e1480142ae3e7f4ca5d77d5702
+	sha256sums = 12e85339c74dc80c054062432dfc6f0eb1be3214fcb4f1fab427193f4e6f0d22
+	sha256sums = SKIP
 
 pkgname = stm32cubeclt
 	pkgdesc = A toolset for third-party integrated development environment (IDE) providers, allowing the use of STMicroelectronics proprietary tools within their own IDE frameworks. - CLT for STM32
