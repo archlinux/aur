@@ -1,69 +1,49 @@
-# Maintainer: peippo <christoph+aur@christophfink.com>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: peippo <christoph+aur@christophfink.com>
 
-_cranname=terra
-_cranver=1.7-83
-pkgname=r-${_cranname,,}
+_pkgname=terra
+_pkgver=1.8-5
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
+pkgrel=2
 pkgdesc="Spatial Data Analysis"
-url="https://cran.r-project.org/package=${_cranname}"
-license=("GPL3")
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-
-arch=("i686" "x86_64")
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-or-later')
 depends=(
-    "gdal>=2.2.3"
-    "geos>=3.4.0"
-    "proj>=4.9.3"
-    "r-rcpp>=1.0.10"
-    "r>=3.5.0"
-    "sqlite"
+  gdal
+  geos
+  proj
+  r-rcpp
+)
+checkdepends=(
+  r-tinytest
 )
 optdepends=(
-    "r-deldir"
-    "r-htmlwidgets"
-    "r-leaflet>=2.2.1"
-    "r-ncdf4"
-    "r-sf>=0.9.8"
-    "r-tinytest"
-    "r-xml"
+  r-deldir
+  r-htmlwidgets
+  r-leaflet
+  r-ncdf4
+  r-sf
+  r-tinytest
+  r-xml
 )
-
-# The unittests for `r-terra` have multiple circular
-# dependency chains.
-
-# As such, the tests can not be run on first build.
-# While R packages from CRAN, generally, are well-tested
-# before they are released, in some situations, you want to
-# have thorough testing on your own end.
-
-# To run the tests, first build this package without `check()`
-# (i.e., as-is) to bootstrap `r-terra`. Then, on subsequent builds,
-# (assumining you have a local repository that is accessible from
-# the build chroot), uncomment the lines defining `checkdepends`, below,
-# as well as the `check()` function further down
-
-# checkdepends=(
-#     "${optdepends[@]}"
-#     "r-rcmdcheck"
-# )
-
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("e8c248adbd68a6be78bc77af7ec4e7f0bfb3e7614a569bba1224295429d68e650587f2b8ea275286db30b6be6237758310171ddb6774789ab58474c9f0dc8ecc")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('d320610ce15d8f232619e06fdd2867c5')
+b2sums=('bf4e44e3c344ccf1767128d5874f227914b69698852849279055dcdcdd64f8b2ba0625e43777b402c48e591339fcabe9ce283b6712a8e73578c4d877c240fc79')
 
 build() {
-    mkdir -p "${srcdir}/build/"
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
-# check() {
-#     export R_LIBS="build/"
-#     R CMD check --no-manual "${_cranname}"
-# }
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" Rscript --vanilla tinytest.R
+}
 
 package() {
-    install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-    if [[ -f "${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    fi
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
