@@ -1,6 +1,6 @@
 pkgbase = vscodium-translucent
 	pkgdesc = Free/Libre Open Source Software Binaries of VSCode with the translucent patch applied (git build from latest release).
-	pkgver = 1.96.0.24347
+	pkgver = 1.96.1.24353
 	pkgrel = 1
 	url = https://github.com/VSCodium/vscodium.git
 	arch = x86_64
@@ -41,12 +41,12 @@ pkgbase = vscodium-translucent
 	source = vscodium-translucent.desktop
 	source = vscodium-translucent-wayland.desktop
 	source = vscodium-translucent-uri-handler.desktop
-	source = https://github.com/VSCodium/vscodium/releases/download/1.96.0.24347/VSCodium-1.96.0.24347-src.tar.gz
+	source = https://github.com/VSCodium/vscodium/releases/download/1.96.1.24353/VSCodium-1.96.1.24353-src.tar.gz
 	source = translucent.patch
 	sha256sums = 3a5bc109974fcf408855c13965f6d6be0997655c5b359de0bfd19a678c00844e
 	sha256sums = ef5759114cb0bada639bf89b778679bc7cf4d829151dc5fbf95eb33df4addcd6
 	sha256sums = 6eef345b65bf2679c928c763529540435ab9c6e1836917319810a7a2d484ae1b
-	sha256sums = 6e007f6492a23ae63b0178d2b15389d304ce9864093bc3c3ba0a8a10627aa2d3
+	sha256sums = bfb65a8434ed27b091a81381dd8a61366c5e1cce87745cca812a448d5d767806
 	sha256sums = 2aa74b7477edb3517d7afb1294aae96ee3341e9d85ce0872e2e509ff8a70c02a
 
 pkgname = vscodium-translucent
