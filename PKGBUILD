@@ -10,14 +10,13 @@ pkgname='mkpkg'
 pkgdesc='Tool to rebuild packages based on dependency triggers'
 _gitname='Arch-mkpkg'
 
-pkgver=6.1.0
+pkgver=6.2.0
 pkgrel=1
 url="https://github.com/gene-git/Arch-mkpkg"
 
 arch=(any)
 license=(MIT)
-# python-tomli is needed for python < 3.11
-depends=('python>3.9' 'pyalpm' 'python-pydantic' 'python-tomli-w' 'python-pyelftools')
+depends=('python>=3.11' 'pyalpm' 'python-pydantic' 'python-tomli-w' 'python-pyelftools')
 
 # To build docs uncommont sphinx/texlive
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatch' 'rsync'
