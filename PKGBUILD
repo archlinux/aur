@@ -7,7 +7,7 @@ url="https://archlinux.org"
 license=('custom')
 makedepends=('pyinstaller' 'python' 'tk')
 source=("main.py")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}"
