@@ -6,11 +6,11 @@ pkgrel=1
 pkgdesc='GUI for setting wallpapers on Wayland (multiple backends). Written in blazingly fast Rust!'
 arch=('x86_64')
 url="https://github.com/hyprutils/$pkgname"
-license=('GPL-2.0')
+license=('GPL-2.0-only')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('4187f26b55c15b525068045487010368746fb47d6db210d16ef7a9010a0587f3')
-makedepends=('rustup' 'pango' 'glibc' 'gcc-libs')
-depends=('gtk4')
+makedepends=('rustup' 'pango')
+depends=('gtk4' 'gdk-pixbuf2' 'glib2' 'gcc-libs')
 optdepends=('hyprpaper' 'swaybg' 'swww' 'wallutils' 'feh')
 install="$pkgname.install"
 

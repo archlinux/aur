@@ -1,3 +1,5 @@
-pkg
-src
-hyprwall-*
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
