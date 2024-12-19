@@ -1,17 +1,18 @@
 pkgbase = r-sfheaders
 	pkgdesc = Converts Between R Objects and Simple Feature Objects
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=sfheaders
-	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = r>=3.0.2
-	depends = r-geometries>=0.2.2
-	depends = r-rcpp>=1.0.10
+	checkdepends = r-testthat
+	makedepends = r-geometries
+	depends = r-rcpp
 	optdepends = r-covr
 	optdepends = r-knitr
+	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/sfheaders_0.4.4.tar.gz
+	md5sums = 28bd3e7fe95ab6d9d41c27d6f153c443
 	b2sums = a8d0e94f1b6bf4ce9957f3dfce39e2c3c4c862886c659a11e315fd2ba8b6fbde35df3b5ab2fbde25e303d762d9860921f553fe5b0aa8f1187ea66d9a59fbb5ad
 
 pkgname = r-sfheaders
