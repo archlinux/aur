@@ -6,6 +6,7 @@ pkgbase = memegen-git
 	arch = any
 	license = GPL-3.0
 	makedepends = git
+	depends = bash
 	depends = imagemagick
 	depends = ttf-ms-fonts
 	source = git+https://github.com/Vendicated/memegen

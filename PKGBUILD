@@ -11,7 +11,7 @@ license=('GPL-3.0')
 source=("git+$url")
 sha256sums=('SKIP')
 makedepends=('git')
-depends=('imagemagick' 'ttf-ms-fonts')
+depends=('bash' 'imagemagick' 'ttf-ms-fonts')
 
 pkgver() {
     cd "$_pkgname"
