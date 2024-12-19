@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=vinecopulib-git
-pkgver=r616.23a6ce46
+pkgver=r623.14fafd70
 pkgrel=1
 pkgdesc="C++ vine copula library"
 license=(MIT)
@@ -17,6 +17,13 @@ sha256sums=(SKIP)
 pkgver() {
   cd "$srcdir/vinecopulib"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/vinecopulib"
+  sed -i "1iinclude(FetchContent)" cmake/findDependencies.cmake
+  sed -i "s|wdm Boost::|Boost::|g" cmake/buildTargets.cmake
+
 }
 
 build() {
