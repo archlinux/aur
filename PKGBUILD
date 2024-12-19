@@ -2,7 +2,7 @@
 # Contributor: Byeonghoon Yoo <bh322yoo gmail com>
 
 pkgname=gdbuspp
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc='GDBus++ - a glib2 D-Bus wrapper for C++ '
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ source=(
   "https://swupdate.openvpn.net/community/releases/gdbuspp-${pkgver}.tar.xz"
 )
 sha256sums=(
-  '0a3eab5c7f1f5ba803bec0902bb008b8c7a7040fdaf0e0e94b4ac77ffebf0bfd'
+  'c7a053a13c4eb5811a542b747d5fcdb3a8e58a4a42c7237cc5e2e2ca72e0c94e'
 )
 
 prepare() {
