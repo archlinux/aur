@@ -1,16 +1,20 @@
 pkgbase = hyprpolkitagent
 	pkgdesc = A simple polkit authentication agent for Hyprland, written in QT/QML
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hyprwm/hyprpolkitagent
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = git
 	makedepends = cmake
 	makedepends = gcc
+	makedepends = qqc2-desktop-style
+	makedepends = hyprutils
+	depends = gcc-libs
 	depends = qt6-base
 	depends = polkit-qt6
-	depends = qqc2-desktop-style
+	depends = qt6-declarative
+	depends = glib2
 	source = hyprpolkitagent-0.1.1.tar.gz::https://github.com/hyprwm/hyprpolkitagent/archive/v0.1.1.tar.gz
 	sha256sums = 55bb1c6e51a1724d5f8914e787f7c37463b63ca55ea4dc09af30706eca648158
 
