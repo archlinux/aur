@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-vllm
 _pkgname=vllm
-pkgver=0.6.4.post1
+pkgver=0.6.5
 pkgrel=3
 pkgdesc="faster implementation for TTS models, to be used in highly async environment - cpu version"
 arch=('x86_64')
@@ -11,9 +11,9 @@ provides=(python-vllm)
 conflicts=(python-vllm)
 license=(Apache-2.0)
 depends=(python-installer python)
-makedepends=(gcc13 cuda cuda-tools) #won't build without detecting cuda - need to investiogate further
+makedepends=(git gcc13 cuda cuda-tools) #won't build without detecting cuda - need to investiogate further
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
-sha256sums=('a266e1d03773de22fc27dd595116ef848d066076b91a1800c63f8fca1d4bbbf7')
+sha256sums=('5c8228773ae38ddda2d38f5fc68a259856cab4891766792d859cdaf225e63bc5')
 _jobs=3
 prepare() {
   #not much luck setting CC env flags, so manually linking and pathing - this only exists for building
