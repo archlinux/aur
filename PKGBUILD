@@ -1,10 +1,10 @@
 # Maintainer: Christopher Snowhill <kode54@gmail.com>
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 # Contributor: Frank Tao <frank.tao@uwaterloo.ca>
-_wlrootsver=0.17.2
+_wlrootsver=0.18.2
 pkgname=wayfire-hidpi-xprop-git
-pkgver=0.8.1.r248.gcf3dcaae
-pkgrel=3
+pkgver=0.9.0.r23.g0f9d50d1
+pkgrel=1
 pkgdesc="3D wayland compositor, integrating the wlroots hidpi-xprop patch set"
 arch=('x86_64')
 url="https://github.com/WayfireWM/wayfire"
@@ -14,8 +14,8 @@ depends=('cairo' 'pango' 'doctest' 'freetype2' 'glm' 'nlohmann-json'
          'libpng' 'libxkbcommon' 'libxml2' 'pixman' 'polkit'
          'pkgconf' 'seatd' 'xcb-util-errors' 'xcb-util-renderutil'
          'xcb-util-wm' 'xorg-xwayland' 'wayland' 'wayland-protocols'
-         'libdisplay-info' 'wlroots-hidpi-xprop>=0.17'
-         'wlroots-hidpi-xprop<0.18' 'wf-config-git')
+         'libdisplay-info' 'wlroots-hidpi-xprop>=0.18'
+         'wlroots-hidpi-xprop<0.19' 'wf-config-git')
 makedepends=('git' 'glslang' 'meson' 'ninja' 'cmake' 'vulkan-headers')
 optdepends=('xorg-xeyes'
             'xorg-xwayland-hidpi-xprop: High DPI scaling of Xwayland applications')
