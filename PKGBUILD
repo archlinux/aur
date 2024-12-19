@@ -1,7 +1,7 @@
 # Maintainer: Faugus <felix.ribeiro@live.com>
 
 pkgname=faugus-launcher-git
-pkgver=r284.aa98129
+pkgver=r285.9809070
 pkgrel=1
 pkgdesc="A simple and lightweight app for running Windows games using UMU-Launcher"
 arch=('x86_64')
@@ -29,7 +29,7 @@ package() {
     install -Dm755 faugus-session "$pkgdir/usr/bin/faugus-session"
     install -Dm644 faugus-launcher.desktop "$pkgdir/usr/share/applications/faugus-launcher.desktop"
     install -Dm644 faugus-shortcut.desktop "$pkgdir/usr/share/applications/faugus-shortcut.desktop"
-    install -Dm644 faugus-session.desktop "$pkgdir/usr/share/xsessions/faugus-session.desktop"
+    install -Dm644 faugus-session.desktop "$pkgdir/usr/share/wayland-sessions/faugus-session.desktop"
     install -Dm644 faugus-launcher.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/faugus-launcher.png"
     install -Dm644 faugus-battlenet.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/faugus-battlenet.png"
     install -Dm644 faugus-ea.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/faugus-ea.png"
