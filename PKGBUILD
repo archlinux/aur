@@ -3,7 +3,7 @@
 # Contributor: Edward Wawrzynek <edward@wawrzynek.com>
 
 pkgname=xrcsimulator
-pkgver=15.1d
+pkgver=15.1e
 pkgdesc="FIRST Tech Challenge, FIRST Robotics Competition, and VEX Simulator"
 pkgrel=1
 arch=('x86_64')
