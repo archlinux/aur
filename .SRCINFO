@@ -1,0 +1,20 @@
+pkgbase = r-wrs2
+	pkgdesc = A Collection of Robust Statistical Methods
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=WRS2
+	arch = any
+	license = GPL-3.0-only
+	depends = r-plyr
+	depends = r-reshape
+	optdepends = r-car
+	optdepends = r-colorspace
+	optdepends = r-ggally
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-mediation
+	source = https://cran.r-project.org/src/contrib/WRS2_1.1-6.tar.gz
+	md5sums = 1d680b11b9cdc32bfd9ea886b0754904
+	b2sums = 3c24050f90afa84677d2755e46c478dab6c3319a376ad8bb2fdbebc568cf449adecdc0cb2974b9390f70a1a7e64aa55aed9a9dba12155e902f879f24988604cc
+
+pkgname = r-wrs2
