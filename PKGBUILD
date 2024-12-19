@@ -2,10 +2,10 @@
 # Contributor: Filipe Bertelli <filipebertelli@tutanota.com>
 pkgname=electron-fiddle-bin
 _pkgname="Electron Fiddle"
-pkgver=0.36.4
-_electronversion=31
+pkgver=0.36.5
+_electronversion=33
 pkgrel=1
-pkgdesc=":electron: 🚀 The easiest way to get started with Electron."
+pkgdesc=":electron: 🚀 The easiest way to get started with Electron.(Prebuilt version.Use system-wide electron)"
 arch=(
 	'aarch64'
 	'armv7h'
@@ -20,21 +20,21 @@ depends=(
 	"electron${_electronversion}"
 )
 source=("${pkgname%-bin}.sh")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_armhf.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('8786e7eac20bd72902c0a3d771dceb4ee486d369ab9c366707b639acf6654bfb')
-sha256sums_armv7h=('969777003fbe6fa24da98a150af63d2a5fb3756195242d8a74c1da94433394a7')
-sha256sums_x86_64=('42d67a4164fe79ca2553ef02b59517bb45c696ac1599e41252525d68a93fd75b')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.arm64.rpm")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.armv7hl.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
+sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('a9fd803b14a380ec7ec51b7b5d53ad27bf42a1a78a237e663ccca6d91c6617d3')
+sha256sums_armv7h=('48c0185445e02f36dff218b5ebbc31470b0c97ae31940925412f2557546f1fa1')
+sha256sums_x86_64=('cdc52bd871dae657b0a0afbb26cbc593e6a8d74f6c7c7b03c1b8f3d3471c38ee')
+prepare() {
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
