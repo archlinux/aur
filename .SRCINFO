@@ -1,0 +1,18 @@
+pkgbase = seekr-git
+	pkgdesc = System search util for linux.(Git version)
+	pkgver = 0.0.3.r12.ge7f435e
+	pkgrel = 1
+	url = https://github.com/luxluth/seekr
+	arch = any
+	license = MIT
+	makedepends = rust
+	makedepends = curl
+	makedepends = git
+	makedepends = gendesk
+	depends = gtk4
+	provides = seekr=0.0.3
+	conflicts = seekr
+	source = seekr.git::git+https://github.com/luxluth/seekr
+	sha256sums = SKIP
+
+pkgname = seekr-git
