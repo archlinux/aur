@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=shellcheck_makefile-git
-pkgver=1.27.1
+pkgver=1.27.2
 pkgrel=1
 pkgdesc="Small utility for applying Shellcheck on Makefiles. Depends only on shellcheck, make and python."
 arch=('any')
