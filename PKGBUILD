@@ -3,7 +3,7 @@
 _pkgname=polybar
 pkgname="${_pkgname}-wireguard-git"
 pkgver=3.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast and easy-to-use status bar, with patches to support WireGuard networks."
 # aarch64 is not officially supported by polybar, it is only listed here for convenience
 arch=("i686" "x86_64" "aarch64")
@@ -30,6 +30,7 @@ prepare() {
   git -C "${_pkgname}" submodule update --init --recursive
   cd "${_pkgname}" || exit 1
   git checkout ${_branchname}
+  git reset --hard origin/${_branchname}
   mkdir -p "build"
   cd ".." || exit 1
 }
