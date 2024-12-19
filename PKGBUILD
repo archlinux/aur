@@ -6,19 +6,12 @@ arch=('any')
 url="https://archlinux.org"
 license=('custom')
 makedepends=('pyinstaller' 'python' 'tk')
-source=("main.py")
+source=("https://github.com/SergeyDash/arch-files/releases/download/1.0.0/arch-files-1.0-1-any.pkg.tar.zst")
 sha256sums=('SKIP')
-
-build() {
-  cd "${srcdir}"
-
-  # Use PyInstaller to build the main.py
-  pyinstaller --onefile main.py
-}
 
 package() {
   cd "${srcdir}"
 
   # Install the built binary to the package directory
-  sudo install -Dm755 "${srcdir}/dist/main" "/usr/bin/arch-files"
+  sudo pacman -U "${srcdir}/arch-files-1.0-1-any.pkg.tar.zst"
 }
