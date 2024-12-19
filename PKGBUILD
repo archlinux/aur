@@ -9,19 +9,17 @@ url="https://github.com/ChrisTitusTech/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('fb7a15723d6b481c743201051457c3c92dca51d3a293f849397dddf626f7de25')
-makedepends=('rustup' 'glibc' 'gcc-libs')
-depends=('git' 'pacman' 'tree-sitter' 'tree-sitter-bash')
+makedepends=('cargo')
+depends=('git' 'pacman' 'tree-sitter' 'tree-sitter-bash' 'gcc-libs')
 optdepends=('ttf-nerd-fonts-symbols: symbols and icons')
 
 prepare() {
     echo "Version=$pkgver" >> "$pkgname.desktop"
-    export RUSTUP_TOOLCHAIN=stable
     cd "$pkgname-$pkgver"
     cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export RUSTFLAGS="-C link-arg=/usr/lib/libtree-sitter.so -C link-arg=/usr/lib/libtree-sitter-bash.so"
     cd "$pkgname-$pkgver"
