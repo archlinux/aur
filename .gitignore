@@ -1,3 +1,5 @@
-pkg
-src
-linutil*
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
