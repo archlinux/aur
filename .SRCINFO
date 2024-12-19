@@ -1,7 +1,7 @@
 pkgbase = doccli
 	pkgdesc = CLI do oglądania anime z docchi.pl
 	pkgver = 2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TowarzyszFatCat/doccli
 	arch = any
 	license = GPL-3.0
@@ -9,6 +9,8 @@ pkgbase = doccli
 	depends = yt-dlp
 	depends = python>=3.9
 	source = doccli-2.10.tar.gz::https://github.com/TowarzyszFatCat/doccli/archive/refs/tags/v2.10.tar.gz
+	source = doccli.sh
 	sha256sums = 2dcd98f8e052074e8e4669a7f65e96604ac591cd263f0dd182cb321ddc5bcfe3
+	sha256sums = ad3b7d1446c6182101d541a53940c8d0996d84f98787b328b3f3ede28bef7238
 
 pkgname = doccli
