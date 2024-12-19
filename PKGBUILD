@@ -1,15 +1,15 @@
-# Maintainer: Andrey Novikov <envek@envek.name>
+# Maintainer: Lefthook <lefthook@evilmartians.com>
 
 pkgname=lefthook
-pkgdesc="git hooks manager"
-pkgver=1.7.18
+pkgdesc="Git hooks manager"
+pkgver=1.10.0
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/evilmartians/lefthook"
 license=('MIT')
 makedepends=('go>=1.21' 'rsync')
 source=("https://github.com/evilmartians/lefthook/archive/v${pkgver}.tar.gz")
-sha256sums=('47a20f7b7b3f4923ac3fb648eb8b1606e1102b15802b7249fa3a238901e559a6')
+sha256sums=('651b27d53002aa7d3bfce5bdb687628786693422fe0fcd01e247ef471097c49d')
 
 build() {
   cd "$pkgname-$pkgver"
