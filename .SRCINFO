@@ -6,7 +6,6 @@ pkgbase = python-langcodes
 	arch = any
 	license = MIT
 	checkdepends = python-pytest-cov
-	checkdepends = python-language-data
 	makedepends = python-installer
 	makedepends = python-build
 	makedepends = python-wheel

@@ -18,7 +18,10 @@ makedepends=(
   'python-pytest'
   'python-setuptools-scm'
 )
-checkdepends=('python-pytest-cov' 'python-language-data')
+checkdepends=(
+'python-pytest-cov' 
+# 'python-language-data' #removed until this package is fixed
+)
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/georgkrause/langcodes/archive/refs/tags/v${pkgver}.tar.gz"
 )
