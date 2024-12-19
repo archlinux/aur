@@ -1,12 +1,12 @@
 pkgbase = icaclient
 	pkgdesc = Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)
 	pkgver = 24.11.0.85
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html
 	install = citrix-client.install
 	arch = x86_64
 	arch = aarch64
-	license = custom:Citrix
+	license = LicenseRef-Citrix
 	depends = alsa-lib
 	depends = curl
 	depends = gst-plugins-base-libs
