@@ -1,16 +1,16 @@
 # vim: filetype=bash
 # Maintainer: amano.kenji <amano.kenji@proton.me>
 pkgname=simple-dosbox-launcher
-pkgver=0.1.3
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="It launches an executable in an archive file with dosbox."
 arch=("x86_64")
 url="https://codeberg.org/amano.kenji/simple-dosbox-launcher"
-license=("custom:LICENSE")
+license=("0BSD")
 depends=("janet-spork" "janet-sh" "coreutils"
   "atool" "unionfs-fuse" "dosbox")
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/amano.kenji/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('3a13b64de3542e99d11b58581e92f78d13db111cb36a3b82db2e8e9882e7832d')
+sha256sums=('92861707fc08794484b703f9cac37a45ab5114d0509195a1940fdd1cada76b9b')
 
 build() {
   cd ${pkgname}
