@@ -3,7 +3,7 @@
 
 _pkgname="nng"
 pkgname="$_pkgname-git"
-pkgver=1.9.0.r187.gcbe9a27
+pkgver=1.9.0.r338.g6c949de
 pkgrel=1
 pkgdesc="Rewrite of the SP protocol library known as libnanomsg"
 url="https://github.com/nanomsg/nng"
@@ -39,7 +39,6 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DNNG_ENABLE_DOC=OFF # missing files
     -DNNG_ENABLE_TLS=ON
     -DBUILD_SHARED_LIBS=ON
     -Wno-dev

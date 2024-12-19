@@ -1,6 +1,6 @@
 pkgbase = nng-git
 	pkgdesc = Rewrite of the SP protocol library known as libnanomsg
-	pkgver = 1.9.0.r187.gcbe9a27
+	pkgver = 1.9.0.r338.g6c949de
 	pkgrel = 1
 	url = https://github.com/nanomsg/nng
 	arch = x86_64
