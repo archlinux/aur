@@ -5,12 +5,12 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.18.0.r2.g811cf9d
+pkgver=0.3.18.0.r13.gcba2f23
 _pandoc_type=stock
-_pandoc_ver=3.5
-_pandoc_lua_ver=0.3.3
-_pandoc_commit=31e4fabbb29d302eb972d25ce4aa10dd26bfbadc
-pkgrel=2
+_pandoc_ver=3.6
+_pandoc_lua_ver=0.4
+_pandoc_commit=8a72b8449ddccd84fcdffc1a09ae18c4baaca32a
+pkgrel=1
 pkgdesc="Pandoc filter for cross-references (static build)"
 url="https://github.com/lierdakil/pandoc-crossref"
 license=("GPL-2.0-or-later")
