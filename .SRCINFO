@@ -1,7 +1,7 @@
 pkgbase = 3dtk-svn
 	pkgdesc = 3D Toolkit with algorithms and methods to process 3D point clouds
 	pkgver = r2412
-	pkgrel = 4
+	pkgrel = 5
 	url = https://slam6d.sourceforge.io
 	arch = x86_64
 	license = GPL-3.0-only
@@ -23,7 +23,7 @@ pkgbase = 3dtk-svn
 	depends = qt5-base
 	depends = qt6-base
 	depends = apriltag
-	optdepends = ann
+	depends = ann
 	optdepends = newmat
 	optdepends = cuda
 	optdepends = python

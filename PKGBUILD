@@ -3,7 +3,7 @@
 _pkgname=3dtk
 pkgname="$_pkgname-svn"
 pkgver=r2412
-pkgrel=4
+pkgrel=5
 pkgdesc='3D Toolkit with algorithms and methods to process 3D point clouds'
 url='https://slam6d.sourceforge.io'
 license=(GPL-3.0-only)
@@ -26,9 +26,9 @@ depends=(findutils
 	 python
 	 qt5-base
 	 qt6-base
-	 apriltag)
-optdepends=(ann  
-	    newmat 
+	 apriltag
+	 ann)
+optdepends=(newmat 
 	    cuda 
 	    python)
 source=("$pkgname::svn+https://svn.code.sf.net/p/slam6d/code/trunk"
