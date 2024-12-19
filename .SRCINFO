@@ -1,8 +1,8 @@
 pkgbase = bpftune-git
 	pkgdesc = BPF/tracing tools for auto-tuning Linux
-	pkgver = r421.bfec666
-	pkgrel = 2
-	url = https://github.com/oracle-samples/bpftune
+	pkgver = r598.688b122
+	pkgrel = 1
+	url = https://github.com/oracle/bpftune
 	arch = x86_64
 	license = GPLv2 WITH Linux-syscall-note
 	makedepends = git
