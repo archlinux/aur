@@ -3,14 +3,14 @@
 # Contributor: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=cryptpad
-pkgver=2024.9.1
+pkgver=2024.12.0
 pkgrel=1
 pkgdesc="Realtime collaborative visual editor with zero knowlege server"
 arch=('any')
 url="https://github.com/$pkgname/$pkgname"
-license=(AGPL-3.0-or-later)
+license=(AGPL-3.0-only)
 depends=(nodejs)
-makedepends=(npm git)
+makedepends=(npm git unzip)
 optdepends=('nginx: HTTP server providing TLS'
             'certbot: Let’s Encrypt – automatically receive and install X.509 certificates to enable TLS'
             'certbot-nginx: Nginx plugin for Let’s Encrypt client')
@@ -21,7 +21,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('ad6a194c67350fdffae19ec0f906f04c2e584240c086def6ef00baf0997bdb01'
+sha256sums=('62b4b0f20fef16753d677b73bb2891a44e6bbea984a2137f27d57f4e089695bc'
             '792da71f113aa15177a654e08a31dabd9be864ceb42f64d55cc46d18875c475b'
             '999a271d64b75c7c447fdb21486b27463c04679677e57ea9551a3b0429c618f6'
             '986c1a67e5a00b9a766798933f1774995736a0ed345427509bdc522ad71d7e93')
@@ -31,6 +31,7 @@ build() {
     export NODE_ENV=production
     npm install --cache "$srcdir"/npm-cache
     npm run install:components --cache "$srcdir"/npm-cache
+    ./install-onlyoffice.sh --accept-license
 }
 
 package() {
