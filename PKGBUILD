@@ -5,7 +5,7 @@
 pkgname=python-langcodes
 _pkgname=langcodes
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolkit for working with and comparing the standardized codes for languages'
 arch=('any')
 url="https://github.com/georgkrause/langcodes"
@@ -19,7 +19,7 @@ makedepends=(
   'python-setuptools-scm'
 )
 checkdepends=(
-'python-pytest-cov' 
+# 'python-pytest-cov' 
 # 'python-language-data' #removed until this package is fixed
 )
 source=(

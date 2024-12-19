@@ -1,11 +1,10 @@
 pkgbase = python-langcodes
 	pkgdesc = A toolkit for working with and comparing the standardized codes for languages
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/georgkrause/langcodes
 	arch = any
 	license = MIT
-	checkdepends = python-pytest-cov
 	makedepends = python-installer
 	makedepends = python-build
 	makedepends = python-wheel
