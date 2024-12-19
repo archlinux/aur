@@ -9,7 +9,7 @@
 
 pkgname=dolphin-git
 _pkgname=dolphin
-pkgver=24.12.0+r8309+gf531cdffc
+pkgver=24.12.0+r8310+ge977737a1
 pkgrel=1
 pkgdesc='KDE File Manager (git)'
 arch=(x86_64)
