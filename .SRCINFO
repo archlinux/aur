@@ -1,7 +1,7 @@
 pkgbase = at32-ide-bin
 	pkgdesc = AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32 MCU。
 	pkgver = 1.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.arterytek.com/cn/support/index.jsp
 	install = at32-ide-bin.install
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = at32-ide-bin
 	depends = bash
 	depends = gcc-libs
 	depends = glibc
-	depends = hidapib
+	depends = hidapi
 	depends = libusb
 	depends = java-runtime
 	depends = perl
