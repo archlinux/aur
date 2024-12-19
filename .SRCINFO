@@ -1,0 +1,19 @@
+pkgbase = observatory
+	pkgdesc = A system monitor application for the COSMIC desktop environment
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/cosmic-utils/observatory
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-unknown
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	depends = mesa
+	depends = systemd-libs
+	source = git+https://github.com/cosmic-utils/observatory.git#tag=v0.2.2
+	sha256sums = 1ac2ce9723fcc92fb4cb5c34d14635f33b1dca0ad63b6540920920e3b18dad5d
+
+pkgname = observatory
