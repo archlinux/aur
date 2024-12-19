@@ -1,0 +1,21 @@
+pkgbase = ibattery-git
+	pkgdesc = An Electron application with React to monitor you battery's charging and notifies users when the battery is fully charged.(Use system-wide electron)
+	pkgver = 1.0.0.r0.gaeace41
+	pkgrel = 1
+	url = https://github.com/kofi-arthur/iBattery
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron31
+	provides = ibattery=1.0.0
+	conflicts = ibattery
+	source = ibattery.git::git+https://github.com/kofi-arthur/iBattery.git
+	source = ibattery.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = ibattery-git
