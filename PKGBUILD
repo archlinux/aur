@@ -2,7 +2,7 @@
 _pkgname=DepotDownloader
 pkgname=steamdepotdownloader
 pkgver=2.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Steam depot downloader utilizing the SteamKit2 library."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/SteamRE/DepotDownloader"
@@ -41,4 +41,5 @@ package() {
 		install -Dm755 "$srcdir/$_pkgname-${_pkgname}_$pkgver/${_pkgname}/bin/Release/net9.0/linux-arm/publish/${_pkgname}" "$pkgdir/usr/bin/depotdownloader"
 		;;
 	esac
+	install -Dm644 "$srcdir/$_pkgname-${_pkgname}_$pkgver/README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
 }
