@@ -1,32 +1,45 @@
 pkgname=svix-cli
-pkgver=0.21.1
+pkgver=1.45.0
 pkgrel=1
 pkgdesc='The Svix CLI (webhooks as a service)'
-arch=('x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://www.svix.com"
-license=('GPL')
-makedepends=('go')
-source=("https://github.com/svixhq/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('22d4e02f40e11ed5103cd83a6ec83032f91ceea0aefee5c5c67230bb5aa0953d')
+license=('MIT')
+makedepends=(cargo)
+# Disabling LTO due to https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
+options=(!lto)
+source=("https://github.com/svix/svix-webhooks/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('5c73f0717a2ae2a5df015a0ee796656eb4a5965b30a715c5a3173deac671b214')
 
-prepare(){
-  cd "$pkgname-$pkgver"
-  mkdir -p build/
+srcpkgdir="svix-webhooks-$pkgver/$pkgname"
+
+prepare() {
+  cd $srcpkgdir
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "$pkgname-$pkgver"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -ldflags "-s -w -X github.com/svix/svix-cli/version.Version=v$pkgver" -o build ./...
+  cd $srcpkgdir
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
+}
+
+check() {
+  cd $srcpkgdir
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --all-features
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 build/$pkgname "$pkgdir"/usr/bin/svix
+  cd $srcpkgdir
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/svix-cli"
+
+  # Add symlink for compatibility with previous versions
+  ln -s svix-cli "$pkgdir/usr/bin/svix"
+
+  # Syntax highlighting
   "$pkgdir"/usr/bin/svix completion bash > bash-svix
   install -D bash-svix "$pkgdir"/etc/bash_completion.d/svix
   "$pkgdir"/usr/bin/svix completion zsh > zsh-svix
