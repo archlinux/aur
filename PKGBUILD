@@ -12,7 +12,8 @@ arch=('any')
 url="https://github.com/Kamik423/cutie"
 license=('MIT')
 depends=('python' 'python-colorama' 'python-readchar')
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel python-setuptools)
+checkdepends=(python-pytest)
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
   setupfix.patch
 )
