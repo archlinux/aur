@@ -1,12 +1,12 @@
 # Maintainer: elParaguayo <elparaguayocode@gmail.com>
 pkgname=qtile-extras-git
 _pkgname=qtile-extras
-pkgver=r262.c997a9d
+pkgver=0.29.0.r23.ga4de746
 pkgrel=1
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 pkgdesc="Unofficial mods for qtile that are unlikely to be maintained in the main repo."
-url="https://github.com/elparaguayo/qtile-extras.git"
+url="https://github.com/elparaguayo/qtile-extras"
 arch=("any")
 license=("MIT")
 depends=("python" "qtile")
@@ -24,7 +24,7 @@ md5sums=("SKIP")
 pkgver()
 {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
