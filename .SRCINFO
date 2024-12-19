@@ -1,6 +1,6 @@
 pkgbase = mint-y-icons
 	pkgdesc = A flat, colorful, and modern theme based on Paper and Moka
-	pkgver = 1.7.9
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/linuxmint/mint-y-icons
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = mint-y-icons
 	depends = hicolor-icon-theme
 	optdepends = mint-x-icons: enable additional icons to inheritage
 	options = !strip
-	source = http://packages.linuxmint.com/pool/main/m/mint-y-icons/mint-y-icons_1.7.9.tar.xz
-	sha256sums = 1cfe91f5424851787e2c1823f43c97d230be69ae7cf5360c08e5df6b4c8aeacf
+	source = http://packages.linuxmint.com/pool/main/m/mint-y-icons/mint-y-icons_1.8.0.tar.xz
+	sha256sums = e4b8d8d2c4a563cc5e1eaee214cb7af9c75353d58c48716116ecfb540f01f8aa
 
 pkgname = mint-y-icons
