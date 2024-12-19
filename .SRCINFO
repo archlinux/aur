@@ -1,0 +1,12 @@
+pkgbase = hurst
+	pkgdesc = Rescaled range analysis: Hurst exponents
+	pkgver = 20241219
+	pkgrel = 1
+	url = https://members.tripod.com/professor_tom/archives/index.html
+	arch = x86_64
+	license = custom:Unknown
+	depends = glibc
+	source = hurst.c::https://members.tripod.com/professor_tom/archives/hurst.c
+	sha256sums = 6df12018bae618279a83d1b9a3d96b6d872ebbcafefe52902c10e858a324d028
+
+pkgname = hurst
