@@ -3,7 +3,7 @@
 
 pkgname=python-markitdown-git
 _pkgname=markitdown
-pkgver=r92+g77f620b56
+pkgver=r146+gcb66b35f1
 pkgrel=1
 pkgdesc="Utility tool for converting various files to Markdown (git)"
 arch=(any)
@@ -31,6 +31,7 @@ makedepends=(
   python-installer
   python-setuptools
   python-wheel
+  git
 )
 checkdepends=(python-pytest)
 source=("git+${url}.git")
