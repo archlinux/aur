@@ -4,7 +4,7 @@ pkgbase = doccli
 	pkgrel = 2
 	url = https://github.com/TowarzyszFatCat/doccli
 	arch = any
-	license = GPL-3.0
+	license = GPL-3.0-only
 	depends = mpv
 	depends = yt-dlp
 	depends = python>=3.9
