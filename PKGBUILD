@@ -1,7 +1,7 @@
 # Maintainer: Laurent Jourden <laurent85@enarel.fr>
 
 pkgname=archuseriso
-pkgver=0.8.8
+pkgver=0.8.9
 pkgrel=1
 pkgdesc="Set of bash script programs for building bootable images of Arch Linux"
 arch=('any')
@@ -18,9 +18,9 @@ optdepends=('devtools: for building ZFS packages'
 conflicts=('archuseriso')
 source=("http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz.sig")
-sha256sums=('124848c8cee15c876aff27525d27bab2ec1163dbff869724d8eae2f9ba4aa0c1'
+sha256sums=('e3ae19cec789a0c982ff565f6654572a1de9a448dffa7cdd9f0bf4a1d3288e0a'
             'SKIP')
-b2sums=('6a256e7908a52f453c48d98ec76de62c36d89fd4c3ce3cd900ca5428c195cf67f13926bb24ca9249addb908cfbce7c81b1ad8bdf4907bd0c09903c280e1ae9dd'
+b2sums=('69e5d7d6dc08836242ba633004b6807f7c4e0338e5172a62c04371d8129c83b341e63cb3bfec8afcf9aef3cf2cb6cd11a9dc902e2a9c63c245186049d200de99'
         'SKIP')
 validpgpkeys=('A5143BB56952B3189F49A175FAC4560863BEEC34') # Laurent Jourden
 
