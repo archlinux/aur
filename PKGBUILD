@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note-git
-pkgver=3.next.04.r9.g1ea67d3
-_electronversion=28
+pkgver=3.76.1.r136.g9c3a25f
+_electronversion=30
 _nodeversion=18
 pkgrel=1
-pkgdesc="A highly extensible Markdown editor. Version control, AI completion, mind map, documents encryption, code snippet running, integrated terminal, chart embedding, HTML applets, Reveal.js, plug-in, and macro replacement."
+pkgdesc="A highly extensible Markdown editor. Version control, AI completion, mind map, documents encryption, code snippet running, integrated terminal, chart embedding, HTML applets, Reveal.js, plug-in, and macro replacement.(Use system-wide electron)"
 arch=('any')
 url="https://yank-note.com/"
 _ghurl="https://github.com/purocean/yn"
@@ -23,7 +23,7 @@ makedepends=(
     'git'
     'curl'
     'gcc'
-    'cmake'
+    'python'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}"
@@ -43,7 +43,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-git}/
@@ -60,13 +60,10 @@ build() {
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        rm -rf .yarnrc
-        sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" yarn.lock
-        sed -i "s/github.com/gh.con.sh\/https:\/\/github.com/g" scripts/{download-pandoc.js,download-plantuml.js}
+        sed -i "/yarnpkg/d" .yarnrc
         {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
-            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
             echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
             echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
             echo "cacheFolder "${srcdir}"/.yarn/cache"
@@ -78,15 +75,20 @@ build() {
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
+        sed -i "s/github.com/ghproxy.net\/https:\/\/github.com/g" scripts/{download-pandoc.js,download-plantuml.js}
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
     sed -i "s/icon.icns/icon.png/" electron-builder.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
     NODE_ENV=production     yarn run electron-rebuild
-    NODE_ENV=production     npx node scripts/download-pandoc.js
-    NODE_ENV=production     npx node scripts/download-plantuml.js
+    NODE_ENV=production     yarn node scripts/download-pandoc.js
+    NODE_ENV=production     yarn node scripts/download-plantuml.js
     NODE_ENV=production     yarn run build
-    NODE_ENV=production     npm exec -c "electron-builder -l --dir -c.electronDist=${electronDist}"
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder.json
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
