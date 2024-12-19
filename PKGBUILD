@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SEtools
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='SEtools: tools for working with SummarizedExperiment'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3a324d80e6526f982eabf0c5a2c7a50f669a08481965e91897c179160bb29748')
+sha256sums=('24c7fb00be1bf5a280f4c4ef8ff435f968f847a5389e79d20243e2128d2a7898')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
