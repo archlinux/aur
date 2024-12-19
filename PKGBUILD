@@ -1,8 +1,8 @@
 # Maintainer: George Tsiamasiotis <gtsiam@windowslive.com>
 
 pkgname=tractor
-pkgver=4.5.1
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc='Setup an onion routing proxy'
 arch=(any)
 url='https://framagit.org/tractor/tractor/'
@@ -14,6 +14,7 @@ depends=(
   python-fire
   python-pysocks
   python-stem
+  glib2
   tor
   dconf
 )
@@ -21,27 +22,36 @@ makedepends=(
   python-build
   python-setuptools
   python-installer
-  python-wheel
 )
 checkdepends=(
   python-nose
+  gsettings-desktop-schemas
 )
 optdepends=(
   'carburetor: Graphical settings app using GTK'
 )
 
-source=(
-  "$pkgname-$pkgver.tar.gz::https://framagit.org/tractor/tractor/-/archive/$pkgver/tractor-$pkgver.tar.gz")
-sha256sums=('0f27211ec9da2842134d28a43139bff77bc9d7e8b1cba33a6133c92acf556fda')
+source=("$pkgname-$pkgver.tar.gz::https://framagit.org/tractor/tractor/-/archive/$pkgver/tractor-$pkgver.tar.gz"
+        "fix-tests.patch")
+
+sha256sums=('c5bece79f9771c6a68788198c3b852b2dce311b1297709b76f78f680e5a9fdc8'
+            '784b1387805d670adf8e06327c4b172ca09241770853901745fef73066d41290')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  patch -Np1 -i "$srcdir/fix-tests.patch"
+}
 
 build() {
   cd "$pkgname-$pkgver"
+
   python -m build --wheel --no-isolation
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  
+
   nosetests
 }
 
