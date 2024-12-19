@@ -1,7 +1,7 @@
 # Maintainer: Meriel Luna Mittelbach <lunarlambda@gmail.com>
 pkgname=blaustahl-git
-pkgver=r34.587d9d4
-pkgrel=2
+pkgver=r35.4c1ae04
+pkgrel=1
 pkgdesc="blaustahl utility"
 arch=('x86_64')
 url="https://github.com/machdyne/blaustahl"
@@ -11,7 +11,7 @@ makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!debug)
-source=('git+https://github.com/LunarLambda/blaustahl#branch=makefile-conventions')
+source=('git+https://github.com/machdyne/blaustahl')
 sha256sums=('SKIP')
 
 pkgver() {
