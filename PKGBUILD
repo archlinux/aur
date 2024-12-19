@@ -1,6 +1,6 @@
 # Maintainer: GANPI <some.kind@of.mail>
 pkgname=yarc-launcher
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)'
 arch=(x86_64)
@@ -30,7 +30,7 @@ source=(
 	$pkgname.desktop
 )
 sha256sums=(
-	0db66873e3ec6b5c6e19b733f54b389c997965216c4a90e4b34e98db4e565690
+	0a385fd19bba7b0f8368b555c6a392e25572fae529e93f6ec26a997b41ae6a83
 	d6cff5551389bbd5744179f169336c165ce1e9de65b34897c4ab5d40527a780e
 )
 
