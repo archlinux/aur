@@ -4,8 +4,8 @@ pkgbase="stm32cubeclt"
 pkgname="stm32cubeclt"
 # pkgname=("stm32cubeclt" "stlink-server" "stlink-udev-rules")
 _pkgname="STM32CubeCLT"
-pkgver=1.16.0
-pkgrel=3
+pkgver=1.17.0
+pkgrel=1
 _pkgdesc="A toolset for third-party integrated development environment (IDE) providers, allowing the use \
 of STMicroelectronics proprietary tools within their own IDE frameworks."
 arch=('x86_64')
@@ -15,9 +15,9 @@ makedepends=('tar'
              'bash')
 options=('!strip')
 
-_prefix="21983"
-_date="20240628"
-_suffix="1741"
+_prefix="23554"
+_date="20241124"
+_suffix="1810"
 _pkg_name=${pkgbase}_${pkgver}
 _pkg_license_name="SLA0048_${_pkgname}.pdf"
 _pkg_sh_name="st-${_pkg_name}_${_prefix}_${_date}_${_suffix}_amd64.sh"
@@ -45,7 +45,7 @@ DLAGENTS=("https::/usr/bin/curl \
 source=("${_pkg_zip_name}"::"$_download_path"
         'http_headers'
         "https://www.st.com/resource/en/license/${_pkg_license_name}")
-sha256sums=('f66be954b886d8c104b8316d833a3e4d85f6abd652862cba477627424e3eb9a0'
+sha256sums=('46672d3235023bcbf6a3a880146c800c68e189c24e5787ca46e9349ecef6778b'
             '12e85339c74dc80c054062432dfc6f0eb1be3214fcb4f1fab427193f4e6f0d22'
             'SKIP')
 
