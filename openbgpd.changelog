@@ -1,3 +1,24 @@
+## 8.7 - 2024-12-16
+    * Cache the Adj-RIB-Out for sessions that have not been down for
+      more than 1h. This significantly improves synchronisation time
+      of peers that flap.
+
+    * Implement RFC 8538: Notification Message Support for
+      BGP Graceful Restart.
+
+    * Add support for RFC 8654, extended messages.
+
+    * In bgplgd add additional endpoints to query the Adj-RIB-In and
+      Adj-RIB-Out.
+
+    * Bump internal message size limit to 128k and handle up to 10 000
+      ASPA SPAS entries as suggested in draft-ietf-sidrops-aspa-profile.
+
+    * Various improvements to the ibuf API including a new reader API
+      which is used to make all message parsing in bgpd memory safe.
+
+    * Added support for IPsec and TCP MD5 to RTR sessions.
+
 ## 8.6 - 2024-09-19
     * Filtered prefixes are now included in the Local-RIB if the config
       option 'rde rib Loc-RIB include filtered' is set.
