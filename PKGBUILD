@@ -5,13 +5,12 @@
 : ${_build_kf5:=true}
 : ${_build_kf6:=true}
 
-# basic info
 _pkgname="lightly"
 pkgbase="$_pkgname-git"
-pkgver=0.4.1.r73.g00ca234
-pkgrel=4
+pkgver=0.5.12.r0.gfcba413
+pkgrel=1
 pkgdesc="Modern style for KDE/Qt applications"
-url="https://github.com/boehs/lightly"
+url="https://github.com/Bali10050/lightly"
 arch=('x86_64' 'aarch64')
 license=("GPL-2.0-or-later")
 
@@ -23,17 +22,10 @@ makedepends=(
 
 options=(!emptydirs !debug)
 
-_pkgsrc="$_pkgname"
-source=(
-  "$_pkgname"::"git+$url.git#branch=qt6"
-  "qt6-missing-config.patch"
-)
-sha256sums=(
-  'SKIP'
-  '2553ff71310e265a9481c0afb9d50bbd1d9f66d47bd67675956199601c1a6501'
-)
+_pkgsrc="lightly.Bali10050"
+source=("$_pkgsrc"::"git+$url.git#branch=qt6")
+sha256sums=('SKIP')
 
-# common functions
 pkgver() {
   cd "$_pkgsrc"
   git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
@@ -41,14 +33,12 @@ pkgver() {
 }
 
 build() {
-  if [[ "${_build_kf5::1}" == "t" ]] ; then
-    _prepare_kf5
+  if [[ "${_build_kf5::1}" == "t" ]]; then
     _build_kf5
     _package_kf5
   fi
 
-  if [[ "${_build_kf6::1}" == "t" ]] ; then
-    _prepare_kf6
+  if [[ "${_build_kf6::1}" == "t" ]]; then
     _build_kf6
     _package_kf6
   fi
@@ -59,33 +49,20 @@ _depends_kf5=(
   'frameworkintegration5'
   'hicolor-icon-theme'
   'kcmutils5'
-  'kconfig5'
-  'kcoreaddons5'
-  'kdecoration5'
-  'kguiaddons5'
-  'ki18n5'
+  'kconfigwidgets5'
   'kiconthemes5'
-  'kwayland5'
+  'kirigami2'
   'kwindowsystem5'
-  'qt5-declarative'
-  'qt5-x11extras'
-
-  ## implicit
-  #libxcb
-  #qt5-base
-)
-
-_prepare_kf5() (
-  cd "$_pkgsrc"
-  git checkout -f master
 )
 
 _build_kf5() (
   local _cmake_options=(
     -B build_kf5
     -S "$_pkgsrc"
+    -DCMAKE_BUILD_TYPE=None
+    -DBUILD_QT5=ON
+    -DBUILD_QT6=OFF
     -DBUILD_TESTING=OFF
-    -DKDecoration2_DIR=/usr/lib/cmake/plasma5/KDecoration2
     -Wno-dev
   )
 
@@ -106,7 +83,6 @@ _package_kf5() (
 
 # KF6/Qt6
 _depends_kf6=(
-  'frameworkintegration'
   'hicolor-icon-theme'
   'kcmutils'
   'kcolorscheme'
@@ -117,23 +93,15 @@ _depends_kf6=(
   'kiconthemes'
   'kwindowsystem'
   'qt6-declarative'
-
-  ## implicit
-  #ki18n
-  #kwidgetsaddons
-  #qt6-base
-)
-
-_prepare_kf6() (
-  cd "$_pkgsrc"
-  git checkout -f qt6
-  patch -Np1 -F100 -i ../qt6-missing-config.patch
 )
 
 _build_kf6() (
   local _cmake_options=(
     -B build_kf6
     -S "$_pkgsrc"
+    -DCMAKE_BUILD_TYPE=None
+    -DBUILD_QT5=OFF
+    -DBUILD_QT6=ON
     -DBUILD_TESTING=OFF
     -Wno-dev
   )
@@ -153,12 +121,12 @@ _package_kf6() (
 )
 
 # execute
-if [[ "${_build_kf5::1}" == "t" ]] ; then
+if [[ "${_build_kf5::1}" == "t" ]]; then
   depends+=("${_depends_kf5[@]}")
 
-  pkgname+=("$_pkgname-kf5-git")
+  pkgname+=("$_pkgname-qt5-git")
 
-  package_lightly-kf5-git() {
+  package_lightly-qt5-git() {
     pkgdesc="Modern style for KF5/Qt5 applications"
 
     provides=(
@@ -169,7 +137,6 @@ if [[ "${_build_kf5::1}" == "t" ]] ; then
     )
     conflicts=(
       lightly
-      lightly-boehs-git
       lightly-kf5
       lightly-qt
       lightly-qt5
@@ -184,23 +151,21 @@ if [[ "${_build_kf5::1}" == "t" ]] ; then
   }
 fi
 
-if [[ "${_build_kf6::1}" == "t" ]] ; then
+if [[ "${_build_kf6::1}" == "t" ]]; then
   depends+=("${_depends_kf6[@]}")
 
-  pkgname+=("$_pkgname-kf6-git")
+  pkgname+=("$_pkgname-qt6-git")
 
-  package_lightly-kf6-git() {
+  package_lightly-qt6-git() {
     pkgdesc="Modern style for KF6/Qt6 applications"
 
     provides=(
       lightly-kf6
       lightly-qt6
-      lightly-qt6-git
     )
     conflicts=(
       lightly-kf6
       lightly-qt6
-      lightly-qt6-git
     )
 
     depends=("${_depends_kf6[@]}")
