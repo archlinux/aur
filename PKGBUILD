@@ -3,7 +3,7 @@
 
 pkgname=napcatqq-git
 _pkgname=NapCatQQ
-pkgver=r3348.116e8fd3
+pkgver=r3374.c25b9f86
 pkgrel=1
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
 arch=('x86_64'
@@ -11,8 +11,8 @@ arch=('x86_64'
       'loong64')
 url="https://github.com/NapNeko/NapCatQQ"
 license=('GPL2')
-depends=('linuxqq' 'xorg-server-xvfb')
-makedepends=('git' 'npm')
+depends=('linuxqq <= 3.2.13_29927' 'xorg-server-xvfb')
+makedepends=('git' 'npm' 'jq')
 options=('!strip')
 conflicts=('napcatqq'
            'liteloader-qqnt')
@@ -57,6 +57,104 @@ if [ "$1" = "patch" ]; then
 elif [ "$1" = "unpatch" ]; then
     sed -i 's#"main": *"[^"]*"#"main": "./application.asar/app_launcher/index.js"#' "$TargetFile"
 fi
+EOF
+
+    install -Dm0755 /dev/stdin "${pkgdir}/opt/QQ/resources/app/napcat/update-config.sh" << 'EOF'
+#!/bin/bash
+
+function log() {
+    echo -e "\e[32m[NapCat] $1\e[0m"
+}
+
+function get_real_home() {
+    local real_user=$(who | grep -m1 "(:0)" | cut -d' ' -f1)
+    if [ -z "$real_user" ]; then
+        real_user=$(logname 2>/dev/null)
+    fi
+    if [ -z "$real_user" ]; then
+        real_user=$SUDO_USER
+    fi
+    echo "/home/$real_user"
+}
+
+function update_configs() {
+    local target_ver=$(jq -r '.linuxVersion' /opt/QQ/resources/app/napcat/qqnt.json)
+    local build_id=$(jq -r '.linuxVerHash' /opt/QQ/resources/app/napcat/qqnt.json)
+    local real_home=$(get_real_home)
+
+    log "正在更新用户QQ配置..."
+    
+    local conf_dir="${real_home}/.config/QQ/versions"
+    local conf="${conf_dir}/config.json"
+    
+    if [ -f "$conf" ]; then
+        log "正在修改配置文件: ${conf}"
+        if [ ! -f "${conf}.napcatbak" ]; then
+            cp "${conf}" "${conf}.napcatbak"
+        fi
+        jq --arg targetVer "${target_ver}" --arg buildId "${build_id}" \
+        '.baseVersion = $targetVer | .curVersion = $targetVer | .buildId = $buildId' "${conf}" > "${conf}.tmp" && \
+        mv "${conf}.tmp" "${conf}" || { log "QQ配置更新失败!"; exit 1; }
+        log "更新用户QQ配置成功"
+    else
+        log "未找到QQ配置文件: ${conf}"
+    fi
+}
+
+function restore_configs() {
+    local real_home=$(get_real_home)
+    log "正在还原用户QQ配置..."
+    
+    local conf_dir="${real_home}/.config/QQ/versions"
+    local backup="${conf_dir}/config.json.napcatbak"
+    local conf="${conf_dir}/config.json"
+    
+    if [ -f "$backup" ]; then
+        log "正在还原配置文件: ${conf}"
+        mv "${backup}" "${conf}" || { log "QQ配置还原失败!"; exit 1; }
+        log "还原用户QQ配置成功"
+    else
+        log "未找到配置备份文件: ${backup}"
+    fi
+}
+
+case "$1" in
+    "update")
+        update_configs
+        ;;
+    "restore")
+        restore_configs
+        ;;
+    *)
+esac
+EOF
+
+
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-config.hook" << 'EOF'
+[Trigger]
+Type=Package
+Operation=Install
+Operation=Upgrade
+Target=napcatqq-git
+Target=linuxqq
+
+[Action]
+Description=Update QQ config.json for NapCat
+When=PostTransaction
+Exec=/bin/sh -c '/opt/QQ/resources/app/napcat/update-config.sh update'
+EOF
+
+
+install -Dm0644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-config-restore.hook" << 'EOF'
+[Trigger]
+Type=Package
+Operation=Remove
+Target=napcatqq-git
+
+[Action]
+Description=Restore QQ config.json
+When=PreTransaction
+Exec=/bin/sh -c '/opt/QQ/resources/app/napcat/update-config.sh restore'
 EOF
 
     install -Dm0644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-permission.hook" << 'EOF'
