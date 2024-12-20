@@ -1,0 +1,21 @@
+pkgbase = nexusmods-app-git
+	pkgdesc = A mod installer, creator and manager for all your popular games.
+	pkgver = r4877.ffb71ee
+	pkgrel = 1
+	url = https://github.com/Nexus-Mods/NexusMods.App
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = desktop-file-utils
+	makedepends = dotnet-sdk-9.0
+	makedepends = git
+	makedepends = git-lfs
+	depends = xdg-utils
+	depends = desktop-file-utils
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	depends = dotnet-runtime-9.0
+	provides = nexusmods-app
+	conflicts = nexusmods-app
+	options = !strip
+
+pkgname = nexusmods-app-git

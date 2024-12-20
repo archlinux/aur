@@ -1,0 +1,5 @@
+pkg/
+src/
+dotnet-home/
+nuget-home/
+*.pkg.tat.zst
