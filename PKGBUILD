@@ -4,7 +4,7 @@
 # https://github.com/openvinotoolkit/openvino/issues/452#issuecomment-722941119
 
 pkgname=openvino-git
-pkgver=2024.6.0.r396.g83a55dfb79e
+pkgver=2024.6.0.r398.g13d60b1f0b4
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications (git version)'
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=(
     'pugixml'
     'onetbb')
 optdepends=(
+    'ocl-icd: for Intel GPU plugin'
     'intel-compute-runtime: for Intel GPU plugin'
     'python: for Python API'
     'python-numpy: for Python API'
@@ -25,6 +26,7 @@ makedepends=(
     'fdupes'
     'git'
     'git-lfs'
+    'ocl-icd'
     'opencv'
     'patchelf'
     'python'
@@ -173,10 +175,13 @@ build() {
         -DENABLE_PYTHON:BOOL='ON' \
         -DENABLE_SYSTEM_PUGIXML:BOOL='ON' \
         -DENABLE_SYSTEM_TBB:BOOL='ON' \
-        -DENABLE_SYSTEM_OPENCL:BOOL='OFF' \
+        -DENABLE_SYSTEM_OPENCL:BOOL='ON' \
         -DENABLE_SYSTEM_PROTOBUF:BOOL='OFF' \
         -DENABLE_SYSTEM_FLATBUFFERS:BOOL='OFF' \
         -DENABLE_SYSTEM_SNAPPY:BOOL='ON' \
+        -DOpenCL_HPP:FILEPATH="${srcdir}/openvino/thirdparty/ocl/clhpp_headers/include/CL/opencl.hpp" \
+        -DOpenCL_HPP_INCLUDE_DIR:PATH="${srcdir}/openvino/thirdparty/ocl/clhpp_headers/include" \
+        -DOpenCL_INCLUDE_DIR:PATH="${srcdir}/openvino/thirdparty/ocl/cl_headers" \
         -Wno-dev
     cmake --build build
 }
@@ -184,4 +189,6 @@ build() {
 package() {
     DESTDIR="$pkgdir" cmake --install build
     install -D -m644 openvino.conf -t "${pkgdir}/etc/ld.so.conf.d"
+    cp -dr --no-preserve='ownership' openvino/bin/intel64/Release/libopenvino_{jax_frontend,template_{extension,plugin}}.so* \
+        "${pkgdir}/opt/intel/openvino/runtime/lib/intel64"
 }
