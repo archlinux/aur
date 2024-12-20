@@ -45,6 +45,7 @@ fi
 
 if [ "${initial}x" = "x" ] ; then
     echo "New version available: $c_ver (last build is $l_ver)"
+    (cd .. ; git rm *.patch; git restore --staged bnx2x_warpcore+8727_2_5g_sgmii_arch.patch; git restore bnx2x_warpcore+8727_2_5g_sgmii_arch.patch)
     cp {config,PKGBUILD,*.patch} ..
     cd ..
 
