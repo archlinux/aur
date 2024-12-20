@@ -1,80 +1,40 @@
-# Maintainer: Peter Oehme <oehme.pb at gmail dot com>
-
-pkgname=python-pymor
-_pkgname=pymor
-pkgver=2023.2.0
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Peter Oehme <oehme.pb at gmail dot com>
+_base=pymor
+pkgname=python-${_base}
+pkgver=2024.1.2
 pkgrel=1
-pkgdesc="pyMOR is a software library for building model order reduction applications with the Python programming language"
-arch=('x86_64')
-url="https://www.pymor.org"
-license=('custom')
-makedepends=(
-  'python-setuptools'
-  'python-wheel'
-  'python-pytest-runner'
-  'python-packaging'
-  'python-build'
-  'python-installer'
-  'python-hatchling'
-)
-depends=(
-  'python-qtpy'
-  'python-typer'
-  'python-numpy'
-  'python-scipy'
-  'python-pygments'
-  'python-matplotlib'
-  'python-pillow'
-)
-optdepends=(
-  'ipython: an enhanced interactive python shell'
-  'python-ipyparallel: required for pymor.parallel.ipython'
+pkgdesc="Library for building model order reduction applications with Python"
+arch=(any)
+url="https://${_base}.org"
+license=(BSD)
+makedepends=(python-build python-installer python-hatchling python-wheel)
+depends=(python-diskcache python-matplotlib python-packaging python-pillow python-pygments python-qtpy python-scipy python-typer)
+optdepends=('python-pytorch: PyTorch open source machine learning framework'
+  'python-slycot'
+  'python-ipyparallel: required for ${_base}.parallel.ipython'
+  'python-mpi4py'
+  'pyside6: Provides LGPL Qt bindings for Python and related tools for binding generation (Python 3 version)'
   'python-opengl: fast solution visualization for builtin discretizations (PySide also required)'
-  'python-pyside: Provides LGPL Qt bindings for Python and related tools for binding generation (Python 3 version)'
-  'python-sympy: symbolic mathematics'
-  'python-pytest: testing framework required to execute unit tests'
-  'pyside2: solution visualization for builtin discretizations'
+  'python-ipympl'
   'python-ipywidgets: notebook GUI elements'
-  'python-pytorch: PyTorch open source machine learning framework'
-  'jupyter_contrib_nbextensions: modular collection of jupyter extensions'
+  'python-lxml'
+  'python-meshio'
   'python-pyevtk'
   'python-xmljson'
-  'python-meshio'
-  'python-lxml'
   'gmsh'
-  'python-sphinx'
-  'python-slugify'
-  'jupyter-bash_kernel'
-  'python-sphinx_materialdesign_theme'
-  'python-sphinxcontrib-bibtex'
-  'python-sphinx-autoapi'
-  'python-myst-nb'
-  'python-slycot'
-  'python-mpi4py'
-  'python-docutils'
-  'pybind11'
-  'python-hypothesis'
-  'python-pytest-cov'
-  'python-pytest-datadir'
-  'ruff'
-  'python-hatch'
-  'python-ipympl'
-  'jupyter-server'
-  'qt6-quick3d'
   'python-scikit-fem'
 )
-source=(https://github.com/pymor/pymor/archive/tags/${pkgver}.tar.gz)
-changelog=ChangeLog
-sha256sums=('c91e3335ce29605b7c6c36b878940ab58a62d12e0365788632334f947f4bc2e8')
+source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base}/${_base}/archive/${pkgver}.tar.gz)
+sha512sums=('1ab0229f0d063f6028e62c97b6332e01844797789c8f7e98be5d415209632e67034495ad9406022990942570c492325de6e959d385a6e2a2e9452d2c1fdff42c')
 
 build() {
-  echo $(ls)
-  cd "${_pkgname}-tags-${pkgver}"
-  python -m build --wheel --no-isolation
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-  cd "${_pkgname}-tags-${pkgver}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

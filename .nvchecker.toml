@@ -1,0 +1,4 @@
+[python-pymor]
+source = "github"
+github = "pymor/pymor"
+use_max_tag = true
