@@ -1,13 +1,13 @@
 pkgbase = bskydesktop
-    pkgdesc = Bluesky Desktop - A decentralized social networking client distributed as an AppImage
-    pkgver = 1.0.8
-    pkgrel = 1
-    url = https://github.com/oxmc/bsky-desktop
-    arch = x86_64
-    arch = aarch64
-    license = MIT
-    makedepends = curl
-    depends = fuse2
-    options = !strip
+	pkgdesc = Bluesky Desktop - A decentralized social networking client distributed as an AppImage
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/oxmc/bsky-desktop
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = curl
+	depends = fuse2
+	options = !strip
 
 pkgname = bskydesktop

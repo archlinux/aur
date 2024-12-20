@@ -2,7 +2,7 @@
 # Maintainer: oxmc contact@oxmc.is-a.dev
 
 pkgname=bskydesktop
-pkgver=$(curl -s https://api.github.com/repos/oxmc/bsky-desktop/releases/latest | jq -r .tag_name | sed 's/v//')
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Bluesky Desktop - A decentralized social networking client distributed as an AppImage"
 arch=('x86_64' 'aarch64')
@@ -36,7 +36,7 @@ prepare() {
         "$icon_url"
     )
     echo "AppImage source: ${source[0]}"
-    sha256sums=('SKIP' 'SKIP')
+    sha256sums=('a06d7763a4fdd23dda3cbe09e8efffe1f8b840e8f56fa0ec7bf809b5568df4e8' 'SKIP')
     curl -L "${source[0]}" -o "$srcdir/bskyDesktop.appimage"
     curl -L "${source[1]}" -o "$srcdir/$icon_name"
 }
