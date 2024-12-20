@@ -2,7 +2,7 @@
 
 pkgname=lumen-git
 _pkgname=lumen
-pkgver=v1.6.0.r16.g3cccf79 # Can't be empty, will be set dynamically
+pkgver=v1.7.1.r1.ge72cd45 # Can't be empty, will be set dynamically
 pkgrel=1
 pkgdesc="Instant AI Git Commit message, Git changes summary from the CLI (no API key required)"
 url="https://github.com/jnsahaj/lumen"
