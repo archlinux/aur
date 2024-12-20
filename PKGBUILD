@@ -2,15 +2,15 @@
 # Maintainer: Wu, Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=native-objects
 pkgname=(lua{,51,52,53}-"$_pkgname")
-pkgver=0.0.1
+pkgver=0.5
 pkgrel=1
 pkgdesc="A Lua bindings generator written in Lua"
 arch=(any)
 url=https://github.com/Neopallium/LuaNativeObjects
 license=(GPL3)
 makedepends=(luarocks)
-source=("https://luarocks.org/manifests/Freed-Wu/native-objects-scm-1.rockspec")
-sha256sums=('6d5926b3c6950f4be1cb7f276db373a89f2a8c4e93424578548b2be0ea031e3d')
+source=("https://luarocks.org/manifests/neopallium/luanativeobjects-$pkgver-1.src.rock")
+sha256sums=('86fa6f7e2608800946a171eb809334affdf85a38bad8b7ab505fb618e9f932c4')
 _lua_version=5.4
 
 _package() {
