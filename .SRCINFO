@@ -1,6 +1,6 @@
 pkgbase = libretro-melondsds-git
 	pkgdesc = Nintendo DS core
-	pkgver = 1.0.2.r0.g8626ecf
+	pkgver = 1.1.8.r0.g08862a8
 	pkgrel = 1
 	url = https://github.com/JesseTG/melonds-ds
 	arch = aarch64
@@ -16,8 +16,8 @@ pkgbase = libretro-melondsds-git
 	makedepends = libgl
 	depends = gcc-libs
 	depends = glibc
-	depends = libretro-core-info>=1.16.0.3.r2
-	provides = libretro-melondsds=1.0.2.r0.g8626ecf
+	depends = libretro-core-info>=1.17
+	provides = libretro-melondsds=1.1.8.r0.g08862a8
 	conflicts = libretro-melondsds
 	source = libretro-melondsds::git+https://github.com/JesseTG/melonds-ds.git
 	source = git+https://github.com/melonDS-emu/melonDS.git
@@ -47,5 +47,5 @@ pkgbase = libretro-melondsds-git
 pkgname = libretro-melondsds-git
 	depends = gcc-libs
 	depends = glibc
-	depends = libretro-core-info>=1.16.0.3.r2
+	depends = libretro-core-info>=1.17
 	depends = libOpenGL.so
