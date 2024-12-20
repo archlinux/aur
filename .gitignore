@@ -1,0 +1,6 @@
+
+/src/
+/pkg/
+/subscription-manager/
+/*.pkg.tar.zst
+
