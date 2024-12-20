@@ -10,4 +10,4 @@ pkgbase = bskydesktop
     depends = fuse2
     options = !strip
 
-pkgname = bskydesktop-appimage
+pkgname = bskydesktop
