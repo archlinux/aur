@@ -2,7 +2,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=rare-bin
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Fast, realtime regex-extraction, and aggregation into common formats such as histograms, numerical summaries, tables, and more!'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/zix99/rare"
 license=('GPL3')
 provides=('rare')
 source=("$url/releases/download/${pkgver}/rare_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums=('8486bd6da8a3c2a60060613ef34c2662476cf18bdb1b867ecf74b861f886b5e4')
+sha256sums=('d7ea1dda17a0f43d0d6457046e052d3916a0e6aa345a8bfb3ae5c3eeda0a6e2c')
 
 package() {
   install -Dm755 ${srcdir}/{rare,rare-pcre} -t "${pkgdir}/usr/bin"
