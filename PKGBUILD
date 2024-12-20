@@ -1,7 +1,7 @@
 # Maintainer: shtrophic <aur at shtrophic dot net>
 
 pkgname=gmlgcd
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc='The gemlog comment daemon'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url='https://git.sr.ht/~shtrophic/gmlgcd'
 license=('AGPL-3.0-or-later')
 makedepends=('meson' 'scdoc')
 checkdepends=('fish')
-depends=('libevent' 'libbsd' 'confuse')
+depends=('libevent' 'libbsd' 'confuse' 'imsg-compat')
 
 backup=('etc/gmlgcd.conf' 'etc/gmlgcd.conf.d/help-template.gmi')
 source=(
@@ -19,7 +19,7 @@ source=(
         "tmpfiles-gmlgcd.conf"
 )
 validpgpkeys=(10F1CC925057D456798EBF9C1B3EB6FE2D338B4A)
-sha256sums=('651003875fa09dcfd2129071e7c15154342efbde821396807e9b6565cbee05dc'
+sha256sums=('22fdf0cbfce5eff5e424d66ac4b11d3e96168f7d1cce94a540e005d5b8c60278'
             'SKIP'
             'e071442fbd90cf80ce528344d4849f6372c8e75d236f3dca9a56c03f3586d92d'
             'd5414cc42d81608d0d8267d3d2d1e7ef7323abdecf96a33af54bae9416f0050e')
