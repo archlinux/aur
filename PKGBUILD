@@ -5,8 +5,8 @@
 _pkgname="legcord"
 pkgname="$_pkgname-bin"
 pkgver=1.0.5
-pkgrel=1
-pkgdesc="Discord client with builtin client mod & theme support."
+pkgrel=2
+pkgdesc="Discord client with builtin client mod & theme support"
 url="https://github.com/Legcord/Legcord"
 license=('OSL-3.0')
 arch=('x86_64' 'aarch64')
@@ -29,10 +29,40 @@ package() {
   install -dm755 "$pkgdir/$_install_path/$_pkgname"
   mv opt/Legcord/* "$pkgdir/$_install_path/$_pkgname/"
 
-  install -dm755 "$pkgdir/usr/bin"
-  ln -srf "$pkgdir/$_install_path/$_pkgname/legcord" "$pkgdir/usr/bin/legcord"
-
   install -Dm644 "usr/share/icons/hicolor/1024x1024/apps/legcord.png" -t "$pkgdir/usr/share/pixmaps/"
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/legcord" << END
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+: \${XDG_CONFIG_HOME:=\$HOME/.config}
+
+name=$_pkgname
+flags_file="\${XDG_CONFIG_HOME}/\${name}-flags.conf"
+fallback_file="\${XDG_CONFIG_HOME}/electron-flags.conf"
+
+lines=()
+if [[ -f "\${flags_file}" ]]; then
+  mapfile -t lines < "\${flags_file}"
+elif [[ -f "\${fallback_file}" ]]; then
+  mapfile -t lines < "\${fallback_file}"
+fi
+
+flags=()
+for line in "\${lines[@]}"; do
+  if [[ ! "\${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "\${line}" ]]; then
+    flags+=("\${line}")
+  fi
+done
+
+: \${ELECTRON_IS_DEV:=0}
+export ELECTRON_IS_DEV
+: \${ELECTRON_FORCE_IS_PACKAGED:=true}
+export ELECTRON_FORCE_IS_PACKAGED
+
+exec "/$_install_path/$_pkgname/$_pkgname" "\${flags[@]}" "\$@"
+END
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
