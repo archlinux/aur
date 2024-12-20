@@ -1,6 +1,6 @@
 pkgbase = r-jaspsurvival
 	pkgdesc = A Survival analysis module required by JASP
-	pkgver = 0.19.0
+	pkgver = 0.19.2
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspSurvival
 	arch = any
@@ -12,7 +12,8 @@ pkgbase = r-jaspsurvival
 	depends = r-survminer
 	depends = r-jaspbase
 	depends = r-jaspgraphs
-	source = jaspSurvival_0.19.0.tar.gz::https://github.com/jasp-stats/jaspSurvival/archive/refs/tags/v0.19.0.tar.gz
-	sha256sums = cde72b0f62e31356dc56985fbd7639472ed261513aa8e60047cb5ac4f37fe3d9
+	depends = r-ggsurvfit
+	source = jaspSurvival_0.19.2.tar.gz::https://github.com/jasp-stats/jaspSurvival/archive/refs/tags/v0.19.2.tar.gz
+	sha256sums = 67c936c2223f4b921d379ea2b53d4254784f1a76ec3aa9d3ff553d162c30394d
 
 pkgname = r-jaspsurvival

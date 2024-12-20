@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspSurvival
-_pkgver=0.19.0
+_pkgver=0.19.2
 pkgname=r-${_pkgname,,}
-pkgver=0.19.0
+pkgver=0.19.2
 pkgrel=1
 pkgdesc="A Survival analysis module required by JASP"
 arch=('any')
@@ -14,10 +14,11 @@ depends=(
   r-survminer
   r-jaspbase
   r-jaspgraphs
+  r-ggsurvfit
 )
 groups=(r-jasp r-jaspextra)
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('cde72b0f62e31356dc56985fbd7639472ed261513aa8e60047cb5ac4f37fe3d9')
+sha256sums=('67c936c2223f4b921d379ea2b53d4254784f1a76ec3aa9d3ff553d162c30394d')
 
 
 build() {
