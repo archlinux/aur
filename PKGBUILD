@@ -7,6 +7,7 @@ _pkgver="$(echo "$pkgver" | tr "." "_")"
 _repo="CommitteeOfZero/polyversal-coz-linux-patcher"
 _archive="$_projname-v$_pkgver"
 pkgrel=1
+_identifier="$_archive-$pkgrel"
 pkgdesc="The Polyversal Linux Steam Patcher for the Committee of Zero's Science Adventure Steam Patches on Linux"
 arch=("any")
 url="https://github.com/$_repo"
@@ -24,8 +25,8 @@ conflicts=("$_pkgname")
 install="$pkgname.install"
 
 source=(
-  "$_pkgname.tar.gz::https://github.com/$_repo/releases/download/$pkgver/$_archive.tar.gz"
-  "$_pkgname.svg::https://raw.githubusercontent.com/$_repo/$pkgver/assets/logo-square.svg"
+  "$_identifier.tar.gz::https://github.com/$_repo/releases/download/$pkgver/$_archive.tar.gz"
+  "$_identifier.svg::https://raw.githubusercontent.com/$_repo/$pkgver/assets/logo-square.svg"
 )
 sha256sums=(
   "f26006323e00de04d421d1ac94656208c18cf6868cede5d0654e7d410e2b8373"
@@ -55,7 +56,7 @@ package() {
 
   install -dm755 "$_binDir" "$_desktopDir" "$_iconDir"
   install -Dm755 "$_binFile" "$_binDir"
-  install -Dm644 "$_pkgname.svg" "$_iconDir"
+  install -Dm644 "$_identifier.svg" "$_iconDir/$_pkgname.svg"
   install -Dm644 "$_desktopFile" "$_desktopDir"
   install -Dm644 "$_archive/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
