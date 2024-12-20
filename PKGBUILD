@@ -3,29 +3,21 @@
 
 pkgname=mayland-git
 _pkgname=mayland
-pkgver=r242.22b1439
+pkgver=r276.e3d8301
 pkgrel=1
 pkgdesc="a bad wayland compositor"
 arch=('x86_64')
 url="https://github.com/m4rch3n1ng/mayland"
 license=('GPL-3.0-or-later')
 depends=(
-	'gcc-libs'
-	'glib2'
-	'glibc'
-	'libcap'
+    'gcc-libs'
+    'glibc'
 	'libdisplay-info'
-	'libdrm'
-	'libevdev'
-	'libffi'
 	'libinput'
-	'libx11'
-	'libxcb'
-	'libxkbcommon'
-	'llvm-libs'
-	'mesa'
+    'libxkbcommon'
+    'mesa'
 	'seatd'
-	'wayland'
+    'systemd-libs'
 )
 optdepends=(
 	'kitty: the default terminal emulator'
