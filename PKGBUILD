@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-server
 pkgver=0.22
-pkgrel=2
+pkgrel=3
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
@@ -20,15 +20,21 @@ depends=(
 	"systemd-libs"
 	"vulkan-icd-loader"
 	"x264"
-	"boost-libs"
+	"libnotify"
+	"glib2"
+	"openssl"
 )
 makedepends=(
 	"cmake"
+	"boost-libs"
 	"eigen"
 	"nlohmann-json"
 	"cli11"
 	"glib2-devel"
 	"boost"
+	"vulkan-headers"
+	"libxrandr"
+	"git"
 )
 optdepends=(
 	"cuda: NVIDIA hardware encoding"
