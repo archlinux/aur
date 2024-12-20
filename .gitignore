@@ -1,6 +1,0 @@
-*.tar*
-*.png
-*.json
-node_modules/
-pkg/
-src/
