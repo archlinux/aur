@@ -16,14 +16,17 @@ icon_name="bsky-desktop.png"
 
 prepare() {
     latest_tag=$(curl -s "https://api.github.com/repos/oxmc/bsky-desktop/releases/latest" | grep -Po '"tag_name": "\K.*?(?=")')
+    latest_sha256=$(curl -Ls "https://github.com/oxmc/bsky-desktop/releases/download/$latest_tag/sha256sums.txt" | grep "AppImage")
     echo "Latest release tag: $latest_tag"
 
     case "$CARCH" in
         x86_64)
             appimage_name="bskyDesktop-${latest_tag:1}-linux-x64.AppImage"
+            sha256sum=$(echo "$latest_sha256" | grep "x64" | cut -d' ' -f1)
             ;;
         aarch64)
             appimage_name="bskyDesktop-${latest_tag:1}-linux-arm64.AppImage"
+            sha256sum=$(echo "$latest_sha256" | grep "arm64" | cut -d' ' -f1)
             ;;
         *)
             echo "Unsupported architecture: $CARCH"
@@ -36,7 +39,7 @@ prepare() {
         "$icon_url"
     )
     echo "AppImage source: ${source[0]}"
-    sha256sums=('5b681225509b5b0e28d14cf053eff91a7a6fd375ef0b7a5711cebd8bac25fb16' 'SKIP')
+    sha256sums=("$sha256sum" 'SKIP')
     curl -L "${source[0]}" -o "$srcdir/bskyDesktop.appimage"
     curl -L "${source[1]}" -o "$srcdir/$icon_name"
 }
