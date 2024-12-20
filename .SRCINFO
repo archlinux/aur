@@ -1,6 +1,6 @@
 pkgbase = oblivion-desktop-bin
 	pkgdesc = Unofficial Warp Client for Windows/Mac/Linux (Pre-compiled version)
-	pkgver = 2.0.6
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/bepass-org/oblivion-desktop
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = oblivion-desktop-bin
 	conflicts = oblivion-desktop
 	source = https://raw.githubusercontent.com/bepass-org/oblivion-desktop/refs/heads/main/LICENSE.md
 	sha256sums = 59375a61fd8586c64e3b7bd4fe43746be9e8d7d7ed6288afb0ef706adb42ea3c
-	source_x86_64 = oblivion-desktop-2.0.6-amd64.deb::https://github.com/bepass-org/oblivion-desktop/releases/download/v2.0.6/oblivion-desktop-linux-amd64.deb
-	sha256sums_x86_64 = 730f8b5b4418ca6f06c785169b4acfa9973eceee209c0d526beb8f802d41839d
-	source_aarch64 = oblivion-desktop-2.0.6-arm64.deb::https://github.com/bepass-org/oblivion-desktop/releases/download/v2.0.6/oblivion-desktop-linux-arm64.deb
-	sha256sums_aarch64 = b1fd65baffe3b8259a2c68f745e380578032b36f67be6d6595ab5996d0ca9d70
+	source_x86_64 = oblivion-desktop-2.5.0-amd64.deb::https://github.com/bepass-org/oblivion-desktop/releases/download/v2.5.0/oblivion-desktop-linux-amd64.deb
+	sha256sums_x86_64 = ffd7033d60bd46c2075f17614a0f802fabb6734ae7863f906b56671ca8b1a5d5
+	source_aarch64 = oblivion-desktop-2.5.0-arm64.deb::https://github.com/bepass-org/oblivion-desktop/releases/download/v2.5.0/oblivion-desktop-linux-arm64.deb
+	sha256sums_aarch64 = f47cf3d1626df8d725bc6af2e7b615ffbf485adcde9728c45f7053e7a5129d1a
 
 pkgname = oblivion-desktop-bin
