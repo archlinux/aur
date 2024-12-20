@@ -1,6 +1,6 @@
 pkgbase = bskydesktop
     pkgdesc = Bluesky Desktop - A decentralized social networking client distributed as an AppImage
-    pkgver = latest
+    pkgver = 1.0.8
     pkgrel = 1
     url = https://github.com/oxmc/bsky-desktop
     arch = x86_64

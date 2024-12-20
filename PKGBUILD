@@ -2,7 +2,7 @@
 # Maintainer: oxmc contact@oxmc.is-a.dev
 
 pkgname=bskydesktop
-pkgver=1.0.8
+pkgver=$(curl -s https://api.github.com/repos/oxmc/bsky-desktop/releases/latest | jq -r .tag_name | sed 's/v//')
 pkgrel=1
 pkgdesc="Bluesky Desktop - A decentralized social networking client distributed as an AppImage"
 arch=('x86_64' 'aarch64')
