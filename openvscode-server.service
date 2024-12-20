@@ -1,0 +1,12 @@
+[Unit]
+Description=openvscode-server
+After=network.target
+
+[Service]
+Type=exec
+ExecStart=/opt/openvscode-server/bin/openvscode-server --host 127.0.0.1 --port 3000 --without-connection-token
+Restart=always
+User=%i
+
+[Install]
+WantedBy=default.target
