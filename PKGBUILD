@@ -1,6 +1,6 @@
 # Maintainer: kamisaki
 pkgname=animefetch
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="View your favorite anime details instantly in the terminal"
 arch=('x86_64')
