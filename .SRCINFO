@@ -1,11 +1,11 @@
 pkgbase = wlrobs-hg
 	pkgdesc = An obs-studio plugin that allows you to screen capture on wlroots based wayland compositors
-	pkgver = r38.8345bf985e39
+	pkgver = r72.958a52be0f0f
 	pkgrel = 1
 	url = https://hg.sr.ht/~scoopta/wlrobs
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = wayland
 	makedepends = mercurial
 	makedepends = meson
@@ -18,4 +18,3 @@ pkgbase = wlrobs-hg
 	md5sums = SKIP
 
 pkgname = wlrobs-hg
-
