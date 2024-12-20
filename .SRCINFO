@@ -6,6 +6,8 @@ pkgbase = 2cdt
 	arch = x86_64
 	license = GPL2
 	source = https://box.glgprograms.it/users/giomba/2cdt.zip
+	source = 0001-fix-incompatible-pointer-types.patch
 	sha256sums = 5ffe321b111203f4d901da5c83999179138d4bec5d9771d085e084c195bbe82c
+	sha256sums = 38ca5880f06cee2f6eafdd41d3f005b504adeb8f79226cee183662866c028e35
 
 pkgname = 2cdt
