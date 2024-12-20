@@ -8,20 +8,11 @@ pkgdesc="Netgen mesh generator"
 arch=(i686 x86_64)
 url="https://github.com/NGSolve/${_base}"
 license=(LGPL-2.1-only)
-depends=(metis opencascade openmpi) # python
-makedepends=(cmake git) # python-pybind11-stubgen
-# checkdepends=(python-pytest python-mpi4py)
-source=(${_base}-${pkgver}::git+${url}.git#tag=v${pkgver}
-  github.com-pybind11::git+https://github.com/NGSolve/pybind11.git)
-sha512sums=('7447e70731b2f98838a4d8ad65e1be192b660d9d9fde3a4474a0c7c37448342ce5b10d9b1ee20698b90996f0aab966ad7fb89b7a39f21b564bab4a9bcacd3c40'
-  'SKIP')
-
-prepare() {
-  cd ${_base}-${pkgver}
-  git submodule init
-  git config submodule.external_dependencies/pybind11.url "${srcdir}/github.com-pybind11"
-  git -c protocol.file.allow=always submodule update
-}
+depends=(metis opencascade openmpi python-mpi4py)
+makedepends=(cmake pybind11) # git python-pybind11-stubgen
+# checkdepends=(python-pytest)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('da685d466ae2bef6927750d1f19c47d75209c531e8ad913613da2aa126c1f915e736306ba2f9ad783c5e12b8d39270457c15dbfcb1b10362de1d595c840d9ef3')
 
 build() {
   cmake \
@@ -33,7 +24,7 @@ build() {
     -DCMAKE_CXX_COMPILER=g++ \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_FOR_CONDA=OFF \
-    -DBUILD_STUB_FILES=ON \
+    -DBUILD_STUB_FILES=OFF \
     -DENABLE_UNIT_TESTS=OFF \
     -DINSTALL_PROFILES=ON \
     -DINTEL_MIC=OFF \
@@ -48,11 +39,12 @@ build() {
     -DUSE_JPEG=OFF \
     -DUSE_MPEG=OFF \
     -DUSE_MPI=ON \
+    -DUSE_MPI4PY=ON \
     -DUSE_MPI_WRAPPER=OFF \
     -DUSE_NATIVE_ARCH=OFF \
     -DUSE_NUMA=OFF \
     -DUSE_OCC=ON \
-    -DUSE_PYTHON=OFF \
+    -DUSE_PYTHON=ON \
     -DUSE_STLGEOM=ON \
     -DUSE_SUPERBUILD=OFF \
     -DNG_INSTALL_DIR_PYTHON=${pkgdir} \
@@ -61,9 +53,10 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --build build --target install
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0][1:])")
+  PYTHONPATH=${site_packages} DESTDIR="${pkgdir}" cmake --build build --target install
   install -Dm 644 ${_base}-${pkgver}/LICENSE -t "${pkgdir}/usr/share/licenses/${_base}"
   install -Dm644 ${_base}-${pkgver}/doc/ng4.pdf -t "${pkgdir}/usr/share/doc/${_base}"
   # install libsrc/ needed by some packages (e.g. FreeCAD)
-  cp -R "libsrc/" "${pkgdir}/usr/share/${_base}"
+  cp -R ${_base}-${pkgver}/libsrc/ "${pkgdir}/usr/share/${_base}"
 }

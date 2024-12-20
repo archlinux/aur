@@ -7,13 +7,12 @@ pkgbase = netgen-nogui
 	arch = x86_64
 	license = LGPL-2.1-only
 	makedepends = cmake
-	makedepends = git
+	makedepends = pybind11
 	depends = metis
 	depends = opencascade
 	depends = openmpi
-	source = netgen-6.2.2404::git+https://github.com/NGSolve/netgen.git#tag=v6.2.2404
-	source = github.com-pybind11::git+https://github.com/NGSolve/pybind11.git
-	sha512sums = 7447e70731b2f98838a4d8ad65e1be192b660d9d9fde3a4474a0c7c37448342ce5b10d9b1ee20698b90996f0aab966ad7fb89b7a39f21b564bab4a9bcacd3c40
-	sha512sums = SKIP
+	depends = python-mpi4py
+	source = netgen-6.2.2404.tar.gz::https://github.com/NGSolve/netgen/archive/v6.2.2404.tar.gz
+	sha512sums = da685d466ae2bef6927750d1f19c47d75209c531e8ad913613da2aa126c1f915e736306ba2f9ad783c5e12b8d39270457c15dbfcb1b10362de1d595c840d9ef3
 
 pkgname = netgen-nogui
