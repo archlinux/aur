@@ -76,7 +76,7 @@ _major=6.12
 pkgver=${_major}.5
 _branch=6.x
 _rt=
-xanmod=1
+xanmod=2
 _revision=
 _sf_branch=rt
 pkgrel=${xanmod}
@@ -118,7 +118,7 @@ done
 
 sha256sums=('b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb'
             'SKIP'
-            '42b4e227e68e27c16a348d4fdbe90f1ec23fcbe9a61837d7c2f6a028d3b82a50'
+            '4c0298787d0b3378877b7b6ced85caf0c3c6b5a53dc402d379f72055e35d49ad'
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
