@@ -1,0 +1,16 @@
+pkgbase = cp2cp-git
+	pkgdesc = ChainPack to Cpon and back utility"
+	pkgver = r271.14b3cb7
+	pkgrel = 1
+	url = https://github.com/silicon-heaven/libshvproto-rs
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/silicon-heaven/libshvproto-rs
+	b2sums = SKIP
+
+pkgname = cp2cp-git
