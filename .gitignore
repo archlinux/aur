@@ -1,0 +1,6 @@
+
+/src/
+/pkg/
+/subscription-manager-rhsm-certificates/
+/*.pkg.tar.zst
+

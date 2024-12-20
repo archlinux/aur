@@ -1,0 +1,12 @@
+pkgbase = subscription-manager-rhsm-certificates-git
+	pkgdesc = Certificates for Red Hat Subscription Management
+	pkgver = 20220623.1.r18.g70318f1
+	pkgrel = 1
+	url = https://github.com/candlepin/subscription-manager-rhsm-certificates/
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	source = git+https://github.com/candlepin/subscription-manager-rhsm-certificates.git
+	b2sums = SKIP
+
+pkgname = subscription-manager-rhsm-certificates-git
