@@ -1,6 +1,6 @@
 pkgbase = dolphin-git
 	pkgdesc = KDE File Manager (git)
-	pkgver = 24.12.0+r8311+geca160ae5
+	pkgver = 24.12.0+r8312+gc99d84916
 	pkgrel = 1
 	url = https://apps.kde.org/dolphin/
 	arch = x86_64
@@ -50,7 +50,7 @@ pkgbase = dolphin-git
 	optdepends = kio-admin: for managing files as administrator
 	optdepends = konsole: terminal panel
 	optdepends = purpose: share context menu
-	provides = dolphin=24.12.0+r8311+geca160ae5
+	provides = dolphin=24.12.0+r8312+gc99d84916
 	conflicts = dolphin
 	source = git+https://github.com/KDE/dolphin.git
 	sha256sums = SKIP
