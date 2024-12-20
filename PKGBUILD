@@ -6,7 +6,7 @@ _pkgname=hdrview
 pkgname="$_pkgname-git"
 epoch=0
 pkgver=2.0.1+3.r339.20241220.2902140
-pkgrel=2
+pkgrel=3
 pkgdesc='High dynamic range (HDR) image viewer and comparison tool'
 url='https://github.com/wkjarosz/hdrview'
 arch=('x86_64' 'i686')
@@ -24,7 +24,6 @@ prepare() {
     -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DDOCS=ON \
     -DFETCHCONTENT_QUIET=OFF \
     -DIMATH_INSTALL_PKG_CONFIG=OFF \
     -DIMATH_INSTALL_SYM_LINK=OFF \
