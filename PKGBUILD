@@ -1,7 +1,7 @@
 # Maintainer: Arnab Bose <hirak99+arch@gmail.com>
 
 pkgname=keyshift
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Keyshift - keyboard remapping utility for Linux"
 arch=('any')
@@ -9,36 +9,35 @@ url="https://github.com/hirak99/$pkgname"
 license=('Apache')
 depends=()
 makedepends=('catch2')
+
+# Third party sources should ideally be git .tar.gz, even if forked.
+# This is for security, in provenance of origin, also helps us to know and
+# update vulnerabilities by automated git checks.
+
+# Note: If third party is updated, do the following -
+# 1. Create a new release ("v1.0.1").
+# 2. Update version (e.g. _digestppver=1.0.1).
+# 3. Compute and update the corresponding md5sum.
+_digestppver=1.0.0
+
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-  "git+https://github.com/kerukuro/digestpp.git"
+  "digestpp_v${_digestppver}.tar.gz::https://github.com/hirak99/digestpp/archive/refs/tags/v${_digestppver}.tar.gz"
 )
 md5sums=(
-  'c344eedec1a691969646cd664287f32f'
-  'SKIP'
+  'c6240f2295f501836e43a580d90338e8'
+  '698fa3454dddb558af0953668fc697fa'
 )
+
 options=(!debug)
 
-# For -git, I think we may be able to use something like below.
-# See this post for some info: https://bbs.archlinux.org/viewtopic.php?id=300329
-# prepare() {
-#   cd "$pkgname"-"$pkgver"
-#   repo="."
-#   git -C $repo submodule init
-#   git -C $repo config submodule.src/thirdparty/digestpp.url "file://$srcdir/digestpp"
-#
-#   git submodule update
-# }
-
-# As we are building from a release tag, git isn't initialized.
-# Instead we just point to the downloaded directory.
+# Extract third party sources.
 prepare() {
   cd "$pkgname"-"$pkgver"
+  cd ./src/thirdparty
   # This directory is not pulled from tag; should be empty if it exists.
-  rm -rf ./src//thirdparty/digestpp
-  pwd
-  ls
-  ln -sf "$srcdir/digestpp" ./src/thirdparty/digestpp
+  rm -rf ./digestpp
+  ln -s "$srcdir/digestpp-${_digestppver}" ./digestpp
 }
 
 package() {

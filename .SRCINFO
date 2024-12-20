@@ -1,15 +1,15 @@
 pkgbase = keyshift
 	pkgdesc = Keyshift - keyboard remapping utility for Linux
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/hirak99/keyshift
 	arch = any
 	license = Apache
 	makedepends = catch2
 	options = !debug
-	source = keyshift-1.0.7.tar.gz::https://github.com/hirak99/keyshift/archive/refs/tags/v1.0.7.tar.gz
-	source = git+https://github.com/kerukuro/digestpp.git
-	md5sums = c344eedec1a691969646cd664287f32f
-	md5sums = SKIP
+	source = keyshift-1.0.8.tar.gz::https://github.com/hirak99/keyshift/archive/refs/tags/v1.0.8.tar.gz
+	source = digestpp_v1.0.0.tar.gz::https://github.com/hirak99/digestpp/archive/refs/tags/v1.0.0.tar.gz
+	md5sums = c6240f2295f501836e43a580d90338e8
+	md5sums = 698fa3454dddb558af0953668fc697fa
 
 pkgname = keyshift
