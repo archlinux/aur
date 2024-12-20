@@ -91,7 +91,7 @@ package() {
   # misc
   cp README.md ${pkgdir}/usr/share/${pkgname}
   cp LICENSE ${pkgdir}/usr/share/${pkgname}
-  cp vspIcon.png ${}pkgdir}/usr/share/${pkgname}
+  cp vspIcon.png ${pkgdir}/usr/share/${pkgname}
   cp -r airfoil ${pkgdir}/usr/share/${pkgname}
   cp -r CustomScripts ${pkgdir}/usr/share/${pkgname}
   cp -r help ${pkgdir}/usr/share/${pkgname}
