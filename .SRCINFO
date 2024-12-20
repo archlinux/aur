@@ -1,6 +1,6 @@
 pkgbase = stylelint
 	pkgdesc = Mighty, modern CSS linter
-	pkgver = 16.11.0
+	pkgver = 16.12.0
 	pkgrel = 1
 	url = https://stylelint.io
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = stylelint
 	depends = nodejs
 	optdepends = stylelint-config-standard: for the standard shareable config
 	options = !emptydirs
-	source = git+https://github.com/stylelint/stylelint.git#tag=16.11.0
-	b2sums = fcfd7ca6ae1daba8ac070e2b799c70c20d44fa42d712bece807dc192f8a241e6cf4eed8118ae393384a6b7de58aeb8f82c34471545c7f4a5b8dd04a15c307925
+	source = git+https://github.com/stylelint/stylelint.git#tag=16.12.0
+	b2sums = 0ec7da8865c5c7cb90e2eaa8a5a38e39f1a85bc0d3912ef932bae0b34cf6f260c60ca00d804bc106c0278d1948d99bc186806633c6b55d44beaa1e6c0a62b7e4
 
 pkgname = stylelint
