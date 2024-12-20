@@ -12,7 +12,7 @@ arch=(any)
 url="https://meshcentral.com/info/"
 license=(Apache)
 #makedepends=('npm')
-depends=('npm' 'nodejs<19')
+depends=('npm' 'nodejs-lts-hydrogen<19')
 optdepends=('nodejs-acme-client: Auto trusted TLS certificate support'
 	'nodejs-modern-syslog: syslog support'
 	'nodejs-nodemailer: SMTP support'
