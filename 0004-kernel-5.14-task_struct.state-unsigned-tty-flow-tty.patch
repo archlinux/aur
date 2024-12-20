@@ -1,6 +1,6 @@
-diff -pNau5 driver.orig/8250_core.c driver/8250_core.c
---- driver.orig/8250_core.c	2021-09-12 14:39:56.901351290 -0400
-+++ driver/8250_core.c	2021-09-12 14:39:56.908018075 -0400
+diff -pNau5 a/driver/8250_core.c b/driver/8250_core.c
+--- a/driver/8250_core.c	2021-09-12 14:39:56.901351290 -0400
++++ b/driver/8250_core.c	2021-09-12 14:39:56.908018075 -0400
 @@ -3872,11 +3872,15 @@ void dump_uart(struct uart_port *port)
  	else
  	{
@@ -17,9 +17,9 @@ diff -pNau5 driver.orig/8250_core.c driver/8250_core.c
  
  static int
  serial8250_ioctl(struct uart_port *port, unsigned int cmd, unsigned long arg)
-diff -pNau5 driver.orig/serial_core.c driver/serial_core.c
---- driver.orig/serial_core.c	2021-09-12 14:39:56.904684683 -0400
-+++ driver/serial_core.c	2021-09-12 14:43:24.418663852 -0400
+diff -pNau5 a/driver/serial_core.c b/driver/serial_core.c
+--- a/driver/serial_core.c	2021-09-12 14:39:56.904684683 -0400
++++ b/driver/serial_core.c	2021-09-12 14:43:24.418663852 -0400
 @@ -121,11 +121,16 @@ static void __uart_start(struct tty_stru
  {
  	struct uart_state *state = tty->driver_data;
@@ -102,9 +102,9 @@ diff -pNau5 driver.orig/serial_core.c driver/serial_core.c
  	return ret;
  }
  
-diff -pNau5 driver.orig/serial_core.h driver/serial_core.h
---- driver.orig/serial_core.h	2021-04-19 08:11:43.000000000 -0400
-+++ driver/serial_core.h	2021-09-12 14:39:56.908018075 -0400
+diff -pNau5 a/driver/serial_core.h b/driver/serial_core.h
+--- a/driver/serial_core.h	2021-04-19 08:11:43.000000000 -0400
++++ b/driver/serial_core.h	2021-09-12 14:39:56.908018075 -0400
 @@ -626,11 +626,15 @@ void uart_console_write(struct uart_port
  	(CIRC_SPACE((circ)->head, (circ)->tail, UART_XMIT_SIZE))
  

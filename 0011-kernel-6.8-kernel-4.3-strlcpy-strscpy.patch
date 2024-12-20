@@ -1,0 +1,16 @@
+diff -pNaru5 a/driver/serial_core.c b/driver/serial_core.c
+--- a/driver/serial_core.c	2024-12-19 23:49:24.242987845 -0500
++++ b/driver/serial_core.c	2024-12-19 23:50:58.135820945 -0500
+@@ -2427,11 +2427,11 @@ uart_report_port(struct uart_driver *drv
+ 	case UPIO_DWAPB32:
+ 		snprintf(address, sizeof(address),
+ 			 "MMIO 0x%llx", (unsigned long long)port->mapbase);
+ 		break;
+ 	default:
+-		strlcpy(address, "*unknown*", sizeof(address));
++		strscpy(address, "*unknown*", sizeof(address));
+ 		break;
+ 	}
+ 
+ 	printk(KERN_INFO "%s%s%s%d at %s (irq = %d) is a %s\n",
+ 	       port->dev ? dev_name(port->dev) : "",

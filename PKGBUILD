@@ -12,10 +12,12 @@
 
 _opt_DKMS=1            # This can be toggled between installs
 
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/6.12.*/vmlinuz))"
+
 set -u
 pkgname='connecttech-cti-serial'
 pkgver='1.46'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='tty UART driver for BlueStorm BlueHeat Xtreme/104-Plus Titan and Xtreme/104-Express families'
 arch=('i686' 'x86_64')
 url='http://connecttech.com/product/pci-express-bluestorm-express/'
@@ -38,26 +40,38 @@ source=(
   '0007-kernel-6.0-set_termios-const-ktermios.patch'
   '0008-kernel-6.3-tty_port_operations-int-to-bool.patch'
   '0009-kernel-6.6-struct-tty_operations-size_t.patch'
+  '0010-gcc-no-previous-prototype-for-non-static-functions.patch'
+  '0011-kernel-6.8-kernel-4.3-strlcpy-strscpy.patch'
+  '0012-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch'
+  '0013-kernel-6.10-platform_driver-remove-void-return.patch'
 )
-_srcdir='.'
 md5sums=('6e56f2b93611e4b0f367aec3a430a8f0'
-         '97cd518024af079d1188398af69ca6cb'
-         'b8a139a882c8aa550f33cd34d2412c45'
-         'd6cf91270e603716a90ea4120a928f9f'
-         'e9181275b574a74c6a180129203b3dbf'
-         '052753de7460ae2e3cebd9baf3ef8332'
-         '8d7e5a3bfb79a0b72b4fa733149c99a9'
-         '553d7fb803cef90ffa8de4f6f091851c'
-         'ab7e1d84e0a8ea0103fec950d4c828c1')
+         '9a93004eac4487957ea4a822cc1167a1'
+         '54ced1c19a3597e087b700d98d63a10c'
+         'd0e427b7def4f2ecbf6a393158f7ce5e'
+         'dd9106c2ff838423791fd9431e8cadda'
+         '68dc760530917337e3c2947899c4c1f9'
+         '782a3a72f5acfa62cc4f8090e4a83cb6'
+         '36113fbb937a070c0e92134782eb71f8'
+         '8e4dd0aa9539f5e87d12b7adbcf653b0'
+         'c2578a9b11295b55beb707c0c76b8f58'
+         'b76bc6e1f0bfe9353e9776c099f73daa'
+         '0c10b25ea11b95873afb29663a657375'
+         'ebe2874c60ae0c9b3b6ad06af269034f')
 sha256sums=('7c1d8ade5e605bc01f80e2ca0705d048b3c83e32e68422b836f32accb436925f'
-            '3f1c0aec4f287803b0c571ce0258bf16163fed920170fb6eac2ec717f704e3e5'
-            '4b5a12f5122252ccee5aec97c392f2b718284ed0d4b70ee8b506f64fb89eced7'
-            '3b7b66ac199025183fe1b6e7ddb14524b88251ff6f7f739fbc3973dd4f5039d5'
-            '34e3d2061b794ce52fdeed91c09561e03c424572185a65714e1fcff8878ddf9a'
-            '1437ae1873d5ed5215619a96962214ca5131b3629309d21c03a8795225d66273'
-            'c7545356f49bbabc746d924c88b11e4f634e83a1cdd45a49f82637fd17171931'
-            'efc1335e6084823ae698d567d4bd4a7a1058eed03cf5a2ec880f19b3c0512826'
-            'e4ab3bdf32e0b65f9f290289720c327de1ff3d0f3a7c7fe7b92859784dbbf8a0')
+            '1f569305d4478a0dd5e1a99f0f76bb39a7d70b3cf2480320fb57a062f0e1141d'
+            'ccbc1d7cc70b7473a8c73609230a3b2fa28235e4f61d70b62049d126e0183449'
+            'cdcd583c804e7c41a60a6d633d8ffb3ac59f6ce4ec50ced95926ca1f2fa62634'
+            '08a3708e08dddb5e6127bdd13b7ad4ea8db539c3226391538c7a875be80e6912'
+            'bcb0eec3c4e7cce8d4a2382f25f0dde7a83693a26792e1244c264582f146dff1'
+            'faa4310269889649d69685a55db48b866d91987321ba03a7083d73b3b9458766'
+            'd3d205486258c0aa181ce87c68e96eb6c19ce69eb1b11da88d39f47ec694cb05'
+            '98d97104dc2e479a1012b52277a875da005d8e5ef0d06b57e8808e5e75e575d1'
+            '8bb68c2d49d4431ebfd3fda3c23d76f76b467854637185311ce93b09a7453df0'
+            '453f6a01b041e6f598b2de4467e3f346aaaa81cac041a5c02315f8b48aaff12a'
+            '24cc0ed9d03806858ebdc34b1d95e3f8b5e18b69753dd489068297c7eae3d3b9'
+            'a20bbf93ba04c297005f8976309601cb267c3a2b1e551a43a477c16348bfc159')
+noextract=("${source[0]##*/}")
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -92,6 +106,10 @@ _install_check() {
 prepare() {
   set -u
   _install_check
+  if [ ! -d "${_srcdir}" ]; then
+    mkdir "${_srcdir}"
+    bsdtar -C "${_srcdir}" -xf "${_srcdir}.tgz"
+  fi
   cd "${_srcdir}"
 
   rm -rf '.svn'
@@ -112,44 +130,60 @@ prepare() {
   sed -n -E -e '/ASYNCB_INITIALIZED|ASYNCB_SUSPENDED|ASYNCB_CTS_FLOW|ASYNCB_CHECK_CD|ASYNCB_NORMAL_ACTIVE|ASYNCB_CLOSING/ p' "/usr/lib/modules/$(uname -r)/build/include/uapi/linux/tty_flags.h" >> 'driver/serial_core_kernel510.h'
   #cp -pr 'driver' 'driver.orig'; false
   #diff -pNau5 'driver'{.orig,} > '0002-kernel-5.10-async-initialized.patch'
-  patch -Nup0 -i "${srcdir}/0002-kernel-5.10-async-initialized.patch"
+  patch -Nup1 -i "${srcdir}/0002-kernel-5.10-async-initialized.patch"
   sed -e '/ArchLinuxPatch-0002-Begin/ r driver/serial_core_kernel510.h' -i 'driver/serial_core.c' 'driver/8250_core.c'
   rm 'driver/serial_core_kernel510.h'
 
-  #cp -p driver/serial_core.c{,.orig}; false
-  #diff -pNau5 driver/serial_core.c{.orig,} > '0003-kernel-5.12-tty-low_latency.patch'
-  patch -Nup0 -i "${srcdir}/0003-kernel-5.12-tty-low_latency.patch"
+  _patches+=('0003-kernel-5.12-tty-low_latency.patch')
 
   # tty.stopped https://lore.kernel.org/lkml/20210505091928.22010-13-jslaby@suse.cz/
   # unsigned write_room https://www.spinics.net/lists/linux-serial/msg42297.html
   # unsigned chars_in_buffer https://www.spinics.net/lists/linux-serial/msg42299.html
   # set_current_state https://linux-kernel.vger.kernel.narkive.com/xnPfKhYP/patch-2-5-52-use-set-current-state-instead-of-current-state-take-1
-  #rm -f driver/*.orig; cp -pr 'driver' 'driver.orig'; false
-  #diff -pNau5 'driver'{.orig,} > '0004-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch'
-  patch -Nup0 -i "${srcdir}/0004-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch"
+  _patches+=('0004-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch')
 
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
-  #rm -f driver/*.orig; cp -pr 'driver' 'driver.orig'; false
-  #diff -pNau5 'driver'{.orig,} > '0005-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
-  patch -Nup0 -i "${srcdir}/0005-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
+  _patches+=('0005-kernel-5.15-alloc_tty_driver-put_tty_driver.patch')
+  _patches+=('0006-kernel-5.18-bitwise.patch')
+  _patches+=('0007-kernel-6.0-set_termios-const-ktermios.patch') # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
+  _patches+=('0008-kernel-6.3-tty_port_operations-int-to-bool.patch')
+  _patches+=('0009-kernel-6.6-struct-tty_operations-size_t.patch')
+  if :; then
+    _patches+=('0010-gcc-no-previous-prototype-for-non-static-functions.patch')
+    _fn_pt_0010() {
+      sed -Ene '/ARCH_LINUX_HCLIP_BEGIN/,/ARCH_LINUX_HCLIP_END/ p' 'driver/8250_core.c' >> 'driver/8250_coreArch.h'
+      sed -Ee '/ARCH_LINUX_HCLIP_BEGIN/,/ARCH_LINUX_HCLIP_END/ d' -i 'driver/8250_core.c'
+    }
+  else
+    _fn_pt_0010() { :; }
+  fi
+  _patches+=('0011-kernel-6.8-kernel-4.3-strlcpy-strscpy.patch') # https://github.com/gnif/vendor-reset/commit/f72619e468846e0bab4426f5e71b069f88c33a11
+  _patches+=('0012-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch')
+  _patches+=('0013-kernel-6.10-platform_driver-remove-void-return.patch') # https://lore.kernel.org/lkml/2024060432-relieving-yonder-85ae@gregkh/T/
 
-  #rm -f driver/*.orig; cp -pr 'driver' 'a'; ln -s 'driver' 'b'; false
-  #diff -pNaru5 'a' 'b' > '0006-kernel-5.18-bitwise.patch'
-  patch -d 'driver' -Nup1 -i "${srcdir}/0006-kernel-5.18-bitwise.patch"
+  local _pt _ptf=() _pts=()
+  for _pt in "${_patches[@]}"; do
+    set +u; msg2 "Patch ${_pt}"; set -u
+    if patch -Nup1 -i "${srcdir}/${_pt}"; then
+      _pts+=("${_pt}")
+    else
+      _ptf+=("${_pt}")
+    fi
+  done
+  if [ "${#_ptf[@]}" -gt 0 ]; then
+     if [ "${#_pts[@]}" -gt 0 ]; then
+       printf 'Patch success %s\n' "${_pts[@]}"
+       printf 'Warning: Some old patches may need to be removed even if they are successful\n'
+     fi
+     printf 'Patch failed %s\n' "${_ptf[@]}"
+     set +x
+     false
+  fi
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  #diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
 
-  # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
-  #rm -f driver/*.orig; cp -pr 'driver' 'a'; ln -s 'driver' 'b'; false
-  #diff -pNaru5 'a' 'b' > '0007-kernel-6.0-set_termios-const-ktermios.patch'
-  patch -d 'driver' -Nup1 -i "${srcdir}/0007-kernel-6.0-set_termios-const-ktermios.patch"
-
-  #rm -f driver/*.orig; cp -pr 'driver' 'a'; ln -s 'driver' 'b'; false
-  #diff -pNaru5 'a' 'b' > '0008-kernel-6.3-tty_port_operations-int-to-bool.patch'
-  patch -d 'driver' -Nup1 -i "${srcdir}/0008-kernel-6.3-tty_port_operations-int-to-bool.patch"
-
-  #rm -f driver/*.orig; cp -pr 'driver' 'a'; ln -s 'driver' 'b'; false
-  #diff -pNaru5 'a' 'b' > '0009-kernel-6.6-struct-tty_operations-size_t.patch'
-  patch -d 'driver' -Nup1 -i "${srcdir}/0009-kernel-6.6-struct-tty_operations-size_t.patch"
+  _fn_pt_0010
 
   pushd 'driver' > /dev/null
   # Fix permissions
@@ -171,7 +205,21 @@ prepare() {
   grep -qFe 'Arch Linux' 'serial_core.c' || echo "${}"
 
   # Fix makefile
-  sed -e 's: /lib/modules: /usr/lib/modules:g' -i 'Makefile'
+  #cp -p 'Makefile'{,.Arch}
+  local _seds=(
+    -e 's: /lib/modules: /usr/lib/modules:g'
+    -e '#Get this variable out of the way'
+    -e 's:KERNELRELEASE:&_ARCH:g'
+    -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple'
+    -e 's:$(shell uname -r):$(KERNELRELEASE):g'
+    -e 's:`uname -r`:$(KERNELRELEASE):g'
+    -e 's:$(KVER):$(KERNELRELEASE):g'
+    -e '# Get rid of make lines so make all makes the module'
+    -e 's:^\s\+make\s:#&:g'
+    -e '1i KERNELRELEASE ?= $(shell uname -r)'
+  )
+  sed "${_seds[@]}" -i 'Makefile'
+  test -s 'Makefile.Arch' && echo "${}"
 
   popd > /dev/null
   set +u
@@ -296,13 +344,6 @@ EOF
     install -Dpm644 driver/* -t "${_dkms}/driver"
     rm "${_dkms}/driver"/*_dr "${_dkms}/driver/readme.txt"
     make -C "${_dkms}/driver" clean
-    sed -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
-        -e 's:$(shell uname -r):$(KERNELRELEASE):g' \
-        -e 's:`uname -r`:$(KERNELRELEASE):g' \
-        -e 's:$(KVER):$(KERNELRELEASE):g' \
-        -e '# Get rid of make lines so make all makes the module' \
-        -e 's:^\s\+make\s:#&:g' \
-       -i "${_dkms}/driver/Makefile"
   fi
   set +u
 }

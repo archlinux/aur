@@ -1,0 +1,19 @@
+diff -pNaru5 a/driver/serial_core.c b/driver/serial_core.c
+--- a/driver/serial_core.c	2024-12-19 23:55:10.560717647 -0500
++++ b/driver/serial_core.c	2024-12-19 23:55:57.227896775 -0500
+@@ -681,11 +681,15 @@ static void uart_flush_buffer(struct tty
+ 
+ /*
+  * This function is used to send a high-priority XON/XOFF character to
+  * the device
+  */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,8,0)
+ static void uart_send_xchar(struct tty_struct *tty, char ch)
++#else
++static void uart_send_xchar(struct tty_struct *tty, u8 ch)
++#endif
+ {
+ 	struct uart_state *state = tty->driver_data;
+ 	struct uart_port *port = state->uart_port;
+ 	unsigned long flags;
+ 

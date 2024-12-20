@@ -1,6 +1,6 @@
-diff -pNaru5 a/serial_core.h b/serial_core.h
---- a/serial_core.h	2022-06-05 01:45:17.038405817 -0400
-+++ b/serial_core.h	2022-06-05 01:47:38.946404560 -0400
+diff -pNaru5 a/driver/serial_core.h b/driver/serial_core.h
+--- a/driver/serial_core.h	2022-06-05 01:45:17.038405817 -0400
++++ b/driver/serial_core.h	2022-06-05 01:47:38.946404560 -0400
 @@ -433,11 +433,11 @@ struct uart_icount {
  	__u32	parity;
  	__u32	brk;

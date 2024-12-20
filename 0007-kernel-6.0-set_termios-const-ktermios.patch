@@ -1,6 +1,6 @@
-diff -pNaru5 a/serial_core.c b/serial_core.c
---- a/serial_core.c	2023-01-03 00:11:58.950043260 -0500
-+++ b/serial_core.c	2023-01-03 00:12:25.156698971 -0500
+diff -pNaru5 a/driver/serial_core.c b/driver/serial_core.c
+--- a/driver/serial_core.c	2023-01-03 00:11:58.950043260 -0500
++++ b/driver/serial_core.c	2023-01-03 00:12:25.156698971 -0500
 @@ -1368,10 +1368,13 @@ static void uart_set_ldisc(struct tty_st
  	if (uport->ops->set_ldisc)
  		uport->ops->set_ldisc(uport, tty->termios.c_line);

@@ -1,6 +1,6 @@
-diff -pNaru5 a/serial_core.c b/serial_core.c
---- a/serial_core.c	2023-12-18 13:29:22.522209521 -0500
-+++ b/serial_core.c	2023-12-18 13:29:42.488180604 -0500
+diff -pNaru5 a/driver/serial_core.c b/driver/serial_core.c
+--- a/driver/serial_core.c	2023-12-18 13:29:22.522209521 -0500
++++ b/driver/serial_core.c	2023-12-18 13:29:42.488180604 -0500
 @@ -1647,11 +1647,15 @@ static void uart_port_shutdown(struct tt
  	 * Ensure that the IRQ handler isn't running on another CPU.
  	 */

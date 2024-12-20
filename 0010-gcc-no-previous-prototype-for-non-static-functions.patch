@@ -1,0 +1,31 @@
+diff -pNaru2 a/driver/8250_core.c b/driver/8250_core.c
+--- a/driver/8250_core.c	2024-12-19 23:17:03.237418134 -0500
++++ b/driver/8250_core.c	2024-12-19 23:20:07.753728402 -0500
+@@ -76,4 +76,6 @@
+ 
+ #define CTI_TTY_MINOR 0
++#include "8250_coreArch.h"
++/* ARCH_LINUX_HCLIP_BEGIN */
+ 
+ void cti_serial8250_tx_chars(struct uart_8250_port *up);
+@@ -104,4 +106,5 @@ void cti_uart_unregister_driver(struct u
+ int cti_uart_resume_port(struct uart_driver *drv, struct uart_port *uport);
+ 
++/* ARCH_LINUX_HCLIP_END */
+ /*
+  * Configuration:
+diff -pNaru5 a/driver/serial_core.c b/driver/serial_core.c
+--- a/driver/serial_core.c	2024-12-19 23:28:15.012098223 -0500
++++ b/driver/serial_core.c	2024-12-19 23:28:44.192065229 -0500
+@@ -55,10 +55,11 @@
+ #define ASYNC_CHECK_CD		(1U << ASYNCB_CHECK_CD)
+ /* ArchLinuxPatch-0002-End */
+ #endif
+ 
+ #include "cti485.h"
++#include "8250_coreArch.h"
+ 
+ #define REVISION "1.43"
+ 
+ /*
+  * This is used to lock changes in serial line configuration.

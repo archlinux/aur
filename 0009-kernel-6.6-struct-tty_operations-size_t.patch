@@ -1,6 +1,6 @@
-diff -pNaru5 a/serial_core.c b/serial_core.c
---- a/serial_core.c	2023-12-18 13:31:42.354486402 -0500
-+++ b/serial_core.c	2023-12-18 13:31:55.024139616 -0500
+diff -pNaru5 a/driver/serial_core.c b/driver/serial_core.c
+--- a/driver/serial_core.c	2023-12-18 13:31:42.354486402 -0500
++++ b/driver/serial_core.c	2023-12-18 13:31:55.024139616 -0500
 @@ -567,12 +567,17 @@ static int uart_put_char(struct tty_stru
  static void uart_flush_chars(struct tty_struct *tty)
  {

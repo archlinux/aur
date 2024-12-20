@@ -1,0 +1,31 @@
+diff -pNaru5 a/driver/8250_core.c b/driver/8250_core.c
+--- a/driver/8250_core.c	2024-12-20 00:16:14.501096382 -0500
++++ b/driver/8250_core.c	2024-12-20 00:18:08.762609427 -0500
+@@ -4758,21 +4758,27 @@ static int serial8250_probe(struct platf
+ }
+ 
+ /*
+  * Remove serial ports registered against a platform device.
+  */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,10,0)
+ static int serial8250_remove(struct platform_device *dev)
++#else
++static void serial8250_remove(struct platform_device *dev)
++#endif
+ {
+ 	int i;
+ 
+ 	for (i = 0; i < nr_uarts; i++) {
+ 		struct uart_8250_port *up = &serial8250_ports[i];
+ 
+ 		if (up->port.dev == &dev->dev)
+ 			cti_serial8250_unregister_port(i);
+ 	}
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,10,0)
+ 	return 0;
++#endif
+ }
+ 
+ static int serial8250_suspend(struct platform_device *dev, pm_message_t state)
+ {
+ 	int i;

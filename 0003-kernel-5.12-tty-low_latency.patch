@@ -1,5 +1,5 @@
---- driver/serial_core.c.orig	2021-06-29 16:54:33.109516866 -0400
-+++ driver/serial_core.c	2021-06-29 16:55:57.331119360 -0400
+--- a/driver/serial_core.c	2021-06-29 16:54:33.109516866 -0400
++++ b/driver/serial_core.c	2021-06-29 16:55:57.331119360 -0400
 @@ -911,11 +911,13 @@ static int uart_set_info(struct tty_stru
  	uport->custom_divisor   = new_info->custom_divisor;
  	port->close_delay     = close_delay;
