@@ -2,7 +2,7 @@
 # Contributor: Cameron Otsuka <cameron@otsuka.haus>
 pkgname="autoaspm-git"
 pkgver=r5.e3bbeb5
-pkgrel=1
+pkgrel=2
 pkgdesc="A script that automatically activates ASPM for all supported devices on Linux"
 arch=("any")
 url="https://github.com/notthebee/AutoASPM"
@@ -21,6 +21,6 @@ pkgver() {
 
 package() {
 	cd $pkgname/
-	install -Dm755 autoaspm.py $pkgdir/usr/sbin/autoaspm.py
+	install -Dm755 autoaspm.py $pkgdir/usr/bin/autoaspm.py
 	install -Dm644 ../$pkgname.service $pkgdir/usr/lib/systemd/system/${pkgname}.service
 }

@@ -2,7 +2,7 @@
 Description=A script that automatically activates ASPM for all supported devices on Linux
 
 [Service]
-ExecStart=/usr/sbin/autoaspm.py
+ExecStart=/usr/bin/autoaspm.py
 Type=oneshot
 
 [Install]
