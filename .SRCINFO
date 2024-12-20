@@ -10,7 +10,7 @@ pkgbase = napcatqq-git
         makedepends = git
         makedepends = npm
         makedepends = jq
-        depends = linuxqq<=3.2.13_29927
+        depends = linuxqq
         depends = xorg-server-xvfb
         provides = napcatqq
         conflicts = napcatqq
