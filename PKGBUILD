@@ -1,12 +1,12 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=opendeck-git
-pkgver=r99.4bbd9f3
+pkgver=r154.525c9ea
 pkgrel=1
 pkgdesc="A cross-platform desktop application that provides functionality for stream controller devices."
 arch=('x86_64')
 url="https://github.com/ninjadev64/OpenDeck"
 license=('GPL-3.0')
-makedepends=(git deno-init cargo dpkg hidapi webkit2gtk libappindicator-gtk3)
+makedepends=(git deno cargo dpkg hidapi webkit2gtk libappindicator-gtk3)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!lto')
@@ -22,6 +22,7 @@ pkgver() {
 }
 prepare() {
 	cd "$srcdir/${pkgname%-git}/src-tauri"
+	git submodule update --init
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 	cd ..
