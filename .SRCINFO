@@ -1,7 +1,7 @@
 pkgbase = oblivion-desktop-bin
 	pkgdesc = Unofficial Warp Client for Windows/Mac/Linux (Pre-compiled version)
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bepass-org/oblivion-desktop
 	arch = x86_64
 	arch = aarch64
