@@ -2,7 +2,7 @@
 _appname=qwerty
 pkgname="${_appname}-learner-pake"
 _pkgname=Qwerty
-pkgver=2.6.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Use Pake to package Qwerty-Learner.为键盘工作者设计的单词记忆与英语肌肉记忆锻炼软件/Words learning and English muscle memory training software designed for keyboard workers"
 arch=('x86_64')
@@ -12,21 +12,24 @@ license=("MIT")
 conflicts=("${_appname}")
 depends=(
     'gtk3'
-    'webkit2gtk'
+    'webkit2gtk-4.1'
 )
 source=(
     "${pkgname}-${pkgver}.deb::${_ghurl}/releases/download/V${pkgver}/${_pkgname}_${CARCH}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${pkgver}/LICENSE"
 )
-sha256sums=('e1a9281d897ee84ff87676dbb3071cd47cd3daf5046175a94eb12bd4106f5c74'
+sha256sums=('90e457de5e0a3ac6fda28e3b9d0d46821aeb06984953e88d4543a1b55e477ab1'
             '462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758')
-build() {
+prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed "s/com-pake-${_appname}/${pkgname%-pake}/;s/Office/Utility;/" -i "${srcdir}/usr/share/applications/com-pake-${_appname}.desktop"
+    sed -e "
+        s/com-pake-${_appname}/${pkgname%-pake}/g
+        s/Office/Utility;/g
+    " -i "${srcdir}/usr/share/applications/com-pake-${_appname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/usr/bin/${_appname}" "${pkgdir}/usr/bin/${pkgname%-pake}"
+    install -Dm755 "${srcdir}/usr/bin/pake" "${pkgdir}/usr/bin/${pkgname%-pake}"
     install -Dm644 "${srcdir}/usr/share/applications/com-pake-${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-pake}.desktop"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-pake}.png"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/pake.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-pake}.png"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
