@@ -1,6 +1,6 @@
 pkgbase = hdrview-git
 	pkgdesc = High dynamic range (HDR) image viewer and comparison tool
-	pkgver = 2.0+1.r321.20241218.a5ff972
+	pkgver = 2.0.1+3.r339.20241220.2902140
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/wkjarosz/hdrview
@@ -20,7 +20,7 @@ pkgbase = hdrview-git
 	depends = libxinerama
 	depends = libxcursor
 	depends = libx11
-	provides = hdrview=2.0+1.r321.20241218.a5ff972
+	provides = hdrview=2.0.1+3.r339.20241220.2902140
 	conflicts = hdrview
 	source = hdrview::git+https://github.com/wkjarosz/hdrview.git
 	sha256sums = SKIP

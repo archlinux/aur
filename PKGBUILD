@@ -5,7 +5,7 @@
 _pkgname=hdrview
 pkgname="$_pkgname-git"
 epoch=0
-pkgver=2.0+1.r321.20241218.a5ff972
+pkgver=2.0.1+3.r339.20241220.2902140
 pkgrel=1
 pkgdesc='High dynamic range (HDR) image viewer and comparison tool'
 url='https://github.com/wkjarosz/hdrview'
@@ -50,12 +50,17 @@ pkgver() {
 }
 
 build() {
-   cmake --build build
+   export MAKEFLAGS="-j1"
+   cmake --build build -j 1
 }
 
 package() {
   ## Install main project
   DESTDIR="$pkgdir" cmake --install build
+
+  ## Fixup wrong installation path, see https://github.com/wkjarosz/hdrview/issues/130
+  install -dvm755 "${pkgdir}/usr/bin"
+  mv -v "${pkgdir}/usr/HDRView" "${pkgdir}/usr/bin/HDRView"
 
   ## Add a lowercase executable symlink
   ln -svr "${pkgdir}/usr/bin/HDRView" "${pkgdir}/usr/bin/hdrview"
