@@ -1,0 +1,4 @@
+[speedtest-go-bin]
+source = "git"
+git = "https://github.com/showwin/speedtest-go.git"
+prefix = "v"

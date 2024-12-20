@@ -2,8 +2,8 @@
 
 _pkgname="speedtest-go"
 pkgname="${_pkgname}-bin"
-pkgver=1.7.9
-pkgrel=2
+pkgver=1.7.10
+pkgrel=1
 pkgdesc="CLI and Go API to test internet speed using speedtest.net"
 arch=('x86_64' 'aarch64' 'i686' 'armv5h' 'armv6h' 'armv7h' 'riscv64' 'loong64'
       'powerpc64' 'powerpc64le' 's390x')
@@ -23,21 +23,21 @@ source_loong64=("${_pkgsrc}-loong64.tar.gz::${url}/releases/download/v${pkgver}/
 source_powerpc64=("${_pkgsrc}-powerpc64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_ppc64.tar.gz")
 source_powerpc64le=("${_pkgsrc}-powerpc64le.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_ppc64le.tar.gz")
 source_s390x=("${_pkgsrc}-s390x.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_s390x.tar.gz")
-sha256sums_x86_64=('6f372c7f46dc1a2c7160320c8e87d6f9232c09d54128f5518edf6e1d97a71f17')
-sha256sums_i686=('ed67a939a79cfe1029b552f732ad08ede53ccb2575b8ec354cbb11158c8f6e5e')
-sha256sums_aarch64=('33a43c2db04e4c0f8fef5c2c70842a5cfd5135cb56b314ff817fa0089e7ba01c')
-sha256sums_armv5h=('ad20bcf43ab08858b605814524a2c6c75d1d2bc28e39090725b817cdd08f7e84')
-sha256sums_armv6h=('bc1118093dc410357a29db21e0b1f52b7153b38e4ca204586d0aa25a50e77ab1')
-sha256sums_armv7h=('cf83a3550c0f15cce1a66554a7a727c06c3fe220c3d7299b3488553e8afae0d6')
-sha256sums_riscv64=('11f8bdd6589865f4c0bb234659d677c20a70e3d5b30100d1e6d181e63725428f')
-sha256sums_loong64=('c26beb7386ceb8d75109a0ed9206f2aca6e5cc522f7e6aa0319a9d490e9a9748')
-sha256sums_powerpc64=('8d79c5b7453ade587c1d7098e65f0622c714d1918475d1eac3f7df7a78a81183')
-sha256sums_powerpc64le=('119942934a65cc609e7bf99b2803c01b2a18e0655748a403b08e930919a798ce')
-sha256sums_s390x=('92999ff2749cc29c3a6ff00b4a68fb7b4d8e4d4479b54aecacacbe77cfd9dab2')
+sha256sums_x86_64=('f349b09e20c55e2445c38592c96807378f53c090cc6a52b8fb14346b40b32ff2')
+sha256sums_aarch64=('8aa7f95b1fd57ebf79960017aa52d9a07d4372693dbfd40fae84464122d7e425')
+sha256sums_i686=('9f4ac3f94de6518d081c4903dc46927dcb683108cbf5d37c54035b3ddbbb8ac0')
+sha256sums_armv5h=('a82c2557663d8c17734e78cf6f916659d16c44e7f7e23fa005a635c4dfe34c7e')
+sha256sums_armv6h=('860742356e639a550fb740c4e09391179e87ece79849d879aa77ce9edf2aeb71')
+sha256sums_armv7h=('3dd94ed28bf0bd8e052b214de098a19a15d3027820f3e81c8cc17084e8692f55')
+sha256sums_riscv64=('e8be88d07764fa459d2432d9e2bb1b6378a39d5f0e028062c706e90c1ea1d95f')
+sha256sums_loong64=('f7db2d63d86e409e624e784be3a0fcf61a2af321849fce363102ff5d6fcda29c')
+sha256sums_powerpc64=('1f32f951bdebc897fbbbc87b6d8e91c95d664ca22c111aa174173d9ffb11c86e')
+sha256sums_powerpc64le=('4b72e4e1c06dff59e3a64dd99911f8813ed09afced98fde79df4fa352e781252')
+sha256sums_s390x=('12e34635f9f4b4c22f629e15ac392726104c679a3acf1f4ea729c520ef3409c3')
 
 package() {
   cd "${srcdir}"
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE"     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -vDm644 "README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "LICENSE"     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
