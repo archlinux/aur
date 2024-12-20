@@ -1,9 +1,10 @@
-# Maintainer: Nina <nina@l1f.de>
+# Maintainer: gilcu3
+# Previous Maintainer: Nina <nina@l1f.de>
 pkgname=viddy
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern watch command"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/sachaos/viddy"
 license=('MIT')
 makedepends=(cargo)
