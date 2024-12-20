@@ -14,7 +14,7 @@ optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output'
             'gst-plugins-good: For audio output')
 provides=('chatterino')
-conflicts=('chatterino2-git' 'chatterino2-appimage' 'chatterino2-nightly-appimage' 'chatterino2-7tv-git')
+conflicts=('chatterino')
 install=$pkgname.install
 source=("git+https://github.com/Mm2PL/dankerino"
         "git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake"

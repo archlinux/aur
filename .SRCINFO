@@ -1,6 +1,6 @@
 pkgbase = chatterino2-dankerino-git
 	pkgdesc = A fork of Chatterino2 with features (or fixes) that are not accepted into the upstream repo (7tv emotes included)
-	pkgver = r3693.0c3cafa4
+	pkgver = r3813.37191909
 	pkgrel = 1
 	url = https://github.com/Mm2PL/dankerino
 	install = chatterino2-dankerino-git.install
@@ -20,10 +20,7 @@ pkgbase = chatterino2-dankerino-git
 	optdepends = pulseaudio: For audio output
 	optdepends = gst-plugins-good: For audio output
 	provides = chatterino
-	conflicts = chatterino2-git
-	conflicts = chatterino2-appimage
-	conflicts = chatterino2-nightly-appimage
-	conflicts = chatterino2-7tv-git
+	conflicts = chatterino
 	source = git+https://github.com/Mm2PL/dankerino
 	source = git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake
 	source = git+https://github.com/jiakuan/qBreakpad
