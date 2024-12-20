@@ -1,0 +1,4 @@
+[vsearch-bin]
+source = "git"
+git = "https://github.com/torognes/vsearch.git"
+prefix = "v"

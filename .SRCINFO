@@ -1,0 +1,24 @@
+pkgbase = vsearch-bin
+	pkgdesc = Versatile open-source tool for microbiome analysis. https://doi.org/10.7717/peerj.2584
+	pkgver = 2.29.2
+	pkgrel = 1
+	url = https://github.com/torognes/vsearch
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	arch = powerpc64le
+	license = BSD-2-Clause OR GPL-3.0-or-later
+	depends = gcc-libs
+	depends = glibc
+	provides = vsearch
+	conflicts = vsearch
+	source_x86_64 = vsearch-2.29.2-x86_64.tar.gz::https://github.com/torognes/vsearch/releases/download/v2.29.2/vsearch-2.29.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 45b322129d84b5ef4f2c3f0f7acb91796539ad9535b4a878ab83746568c1ed47
+	source_aarch64 = vsearch-2.29.2-aarch64.tar.gz::https://github.com/torognes/vsearch/releases/download/v2.29.2/vsearch-2.29.2-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 3ab686c135f699312b3103b620a0f72068af9d57820e4cc0e4837eeb592868b5
+	source_riscv64 = vsearch-2.29.2-riscv64.tar.gz::https://github.com/torognes/vsearch/releases/download/v2.29.2/vsearch-2.29.2-linux-riscv64.tar.gz
+	sha256sums_riscv64 = 4bbc4e8298d0e0de4c1859d6772f4684c7ed4e331d23684d5c7b76a80cac316e
+	source_powerpc64le = vsearch-2.29.2-powerpc64le.tar.gz::https://github.com/torognes/vsearch/releases/download/v2.29.2/vsearch-2.29.2-linux-ppc64le.tar.gz
+	sha256sums_powerpc64le = 420b7971bb8d79a4d6d2c2cb177c785a73e28f5bf143a6c40b4501c50975acfb
+
+pkgname = vsearch-bin
