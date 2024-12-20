@@ -1,3 +1,6 @@
+### FIXME: Currently broken!, upstream installs executable to `/usr/HDRview`. Moving it to `/usr/bin/HDRview` results in segmentation fault since it does not find anymore the assets at `/usr/assets/`. Otherwise, setting `-DCMAKE_INSTALL_PREFIX=/usr/bin` must also not be done because otherwise fonts and images end up in `/usr/bin/`. See see https://github.com/wkjarosz/hdrview/issues/130.
+### TODO: If upstream does not fix it, change to installation into `/opt/hdrview/`.
+
 # Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
 # Maintainer:  Afnan Enayet <afnan at afnan.io>
 # Contributor: Eric Engestrom (https://aur.archlinux.org/account/1ace)
@@ -6,7 +9,7 @@ _pkgname=hdrview
 pkgname="$_pkgname-git"
 epoch=0
 pkgver=2.0.1+3.r339.20241220.2902140
-pkgrel=3
+pkgrel=4
 pkgdesc='High dynamic range (HDR) image viewer and comparison tool'
 url='https://github.com/wkjarosz/hdrview'
 arch=('x86_64' 'i686')
@@ -59,10 +62,6 @@ build() {
 package() {
   ## Install main project
   DESTDIR="$pkgdir" cmake --install build
-
-  ## Fixup wrong installation path, see https://github.com/wkjarosz/hdrview/issues/130
-  install -dvm755 "${pkgdir}/usr/bin"
-  mv -v "${pkgdir}/usr/HDRView" "${pkgdir}/usr/bin/HDRView"
 
   ## Add a lowercase executable symlink
   ln -svr "${pkgdir}/usr/bin/HDRView" "${pkgdir}/usr/bin/hdrview"
