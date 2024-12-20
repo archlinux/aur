@@ -20,7 +20,7 @@ optdepends=('brltty: For Braille support'
   'python-pyenchant: for spell check functionality'
   'xclip: for copy to X session clipboard'
   'speech-dispatcher: TTS support')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
 provides=('fenrir')
 conflicts=('fenrir')
 backup=('etc/fenrirscreenreader/settings/settings.conf')
