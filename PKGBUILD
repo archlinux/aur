@@ -8,7 +8,11 @@ pkgdesc='subscription-manager'
 arch=(x86_64)
 url='https://www.candlepinproject.org/docs/subscription-manager/'
 license=(GPL-2.0-only)
+provides=(subscription-manager)
 depends=(python dnf libdnf rpm-tools python-iniparse openssl glibc glib2 python-dbus python-dateutil python-requests python-setuptools python-gobject python-pyinotify)
+optdepends=(
+    subscription-manager-rhsm-certificates
+)
 makedepends=(git python-build python-installer python-wheel)
 source=("git+https://github.com/candlepin/$_name.git")
 b2sums=('SKIP')

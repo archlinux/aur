@@ -23,6 +23,8 @@ pkgbase = subscription-manager-git
 	depends = python-setuptools
 	depends = python-gobject
 	depends = python-pyinotify
+	optdepends = subscription-manager-rhsm-certificates
+	provides = subscription-manager
 	source = git+https://github.com/candlepin/subscription-manager.git
 	b2sums = SKIP
 
