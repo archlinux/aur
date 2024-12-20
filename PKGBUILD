@@ -2,7 +2,7 @@
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=vkdoom-git
-pkgver=v0.9+1615+g2a3fe915a
+pkgver=v0.9+1879+gd35195bde
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games, with a focus on Vulkan and modern computers (git version)'
 arch=('x86_64' 'aarch64') #Ok so aarch64 works i guess
@@ -13,12 +13,12 @@ depends=('bzip2'
          'hicolor-icon-theme'
          'libgl'
          'libjpeg'
-         'libvpx>=1.13'
+         'libvpx>=1.14'
          'openal'
          'sdl2'
          'vulkan-driver'
          'vulkan-icd-loader'
-         'zmusic>=1.1.8')
+         'zmusic>=1.1.14')
 makedepends=('cmake' 'desktop-file-utils' 'git')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'clang: Clang build option support'
@@ -44,10 +44,12 @@ options=(!debug !lto)
 source=('vkdoom::git+https://github.com/dpjudas/VkDoom/'
         'vkdoom.desktop'
         '0001-Enforce-file-paths.patch'
+        '0002-fix-format-security-error.patch'
         'vkdoom.svg')
 b2sums=('SKIP'
             '4129062d604c978682536d5d4cb00d1995a8a77b41235556614252f779882623b6babd46f3f9cb3544c62b67a4e9026c7bb68960c319f2cf32682535c43a2bed'
             'b61b7fd292db0632e3ea155dccbe38d80589d07c1d37c19963ac5e39103f57c489c3c08ab5a3f6a07f7f1d8ae6f7ddf3fdfc0006313312754d7b91f35d6780f4'
+            'b8aee4ead0858da3576b5464629b01bb3f4c274faa353fb359e5e86052235f8e551a97f273a76530eedcad33894545bbe2bd3e50eaae7f1a8a97e490a00754b5'
             'b9587a107c69dc98593f98454d411bcd69e9257b15d0d7d535c3afd19ce18b74a4513d67c7e973712768d60d1457dd5972d993cb84466d15525e26cf582cb105')
 
 _enforce_clang=${_enforce_clang-}
