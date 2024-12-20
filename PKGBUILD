@@ -1,8 +1,8 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=tieba-cloud-sign
-pkgver=20231124.154303
-pkgrel=2
+pkgver=20241220.171141
+pkgrel=1
 pkgdesc="Baidu Tieba Cloud Sign | 百度贴吧云签到"
 arch=("any")
 url="https://github.com/MoeNetwork/Tieba-Cloud-Sign"
