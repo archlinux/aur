@@ -2,7 +2,7 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 pkgname=python-mediapipe-git
-pkgver=0.10.13.r41.9fcc392d8
+pkgver=0.10.18.r137.0cd1f15d5
 pkgrel=1
 pkgdesc="A cross-platform, customizable ML solutions for live and streaming media"
 arch=('x86_64')
@@ -40,16 +40,10 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
 source=("${pkgname}::git+https://github.com/google/mediapipe.git"
-        "0001-update-rules_apple.patch"
-        "0002-delete-unused-com_google_protobuf_fixes.diff.patch"
         "0004-use-opencv4-headers.patch"
-        "0005-add-arg-experimental_allow_proto3_optional-to-protoc.patch"
 )
 sha256sums=('SKIP'
-            'a6b63bd50d32e2d8ac50a84173931d0d1ad66f3f4e5f9017cc43ffdda2369de8'
-            '1c1577095c85a24e491292aab7cccda98632297c732147a80ba1d8a30d398674'
-            '0f05849960ae21db7d3c1059f2c27a3358ba992f634a03b58b75b61f5031d345'
-            '827ed2dc593f2659b6092c22c13fa4fb4d3b72ae6a3a08b7e3fcacbbcc3be7bd')
+            '0f05849960ae21db7d3c1059f2c27a3358ba992f634a03b58b75b61f5031d345')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -57,19 +51,15 @@ pkgver() {
 }
 
 prepare() {
-  # build with bazel 7.0.0
   # bazel in the ArchLinux is not working
   mkdir -p ${srcdir}/bin
-  bazel_version=7.0.0
+  bazel_version=$(cat ${srcdir}/${pkgname}/.bazelversion)
   wget https://github.com/bazelbuild/bazel/releases/download/${bazel_version}/bazel-${bazel_version}-linux-x86_64 -O ${srcdir}/bin/bazel
   chmod +x ${srcdir}/bin/bazel
   export PATH=${srcdir}/bin:${PATH}
   bazel --version | sed 's/bazel //' > "${srcdir}/${pkgname}/.bazelversion"
   cd "${srcdir}/${pkgname}"
-  patch -p1 -i "${srcdir}/0001-update-rules_apple.patch"
-  patch -p1 -i "${srcdir}/0002-delete-unused-com_google_protobuf_fixes.diff.patch"
   patch -p1 -i "${srcdir}/0004-use-opencv4-headers.patch"
-  patch -p1 -i "${srcdir}/0005-add-arg-experimental_allow_proto3_optional-to-protoc.patch"
   # set __version__
   formatted_version=$(echo $pkgver | sed 's/^v//; s/r\([0-9]*\)\./post\1+/')
   sed -i "s/^__version__ = .*/__version__ = '$formatted_version'/" setup.py
