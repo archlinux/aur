@@ -2,7 +2,7 @@
 # Maintainer: oxmc contact@oxmc.is-a.dev
 
 pkgname=bskydesktop
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Bluesky Desktop - A decentralized social networking client distributed as an AppImage"
 arch=('x86_64' 'aarch64')
@@ -36,7 +36,7 @@ prepare() {
         "$icon_url"
     )
     echo "AppImage source: ${source[0]}"
-    sha256sums=('0d4089985360cb2f19fbb313354dcc3fc89858e21b6fc97dae7314bbe9c4651d' 'SKIP')
+    sha256sums=('79a1915e99c47bf48fc8af550c09752bab93a4b9adba8b22a08b77dcc83cd4fc' 'SKIP')
     curl -L "${source[0]}" -o "$srcdir/bskyDesktop.appimage"
     curl -L "${source[1]}" -o "$srcdir/$icon_name"
 }
@@ -70,7 +70,7 @@ package() {
 [Desktop Entry]
 Name=Bluesky Desktop
 Comment=Bluesky Desktop Client
-Exec=/usr/bin/bsky-desktop
+Exec=/usr/bin/bsky-desktop %u
 Icon=bsky-desktop
 Terminal=false
 Type=Application
