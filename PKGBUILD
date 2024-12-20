@@ -21,14 +21,14 @@ prepare() {
 
 package() {
     cd "$pkgname-$pkgver"
-    
+
     sed -i 's/\/opt\/freedownloadmanager\/icon\.png/freedownloadmanager/g' \
         './usr/share/applications/freedownloadmanager.desktop'
     sed -i 's/\/opt\/freedownloadmanager\/fdm/\/usr\/bin\/fdm/g' \
         './usr/share/applications/freedownloadmanager.desktop'
-    
+
     cp -dpr --no-preserve=ownership opt usr "$pkgdir"
-    
+
     install -d "$pkgdir/usr/bin"
     ln -sv "/opt/$pkgname/fdm" "$pkgdir/usr/bin/fdm"
 }
