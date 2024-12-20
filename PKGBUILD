@@ -2,8 +2,8 @@
 # Contributor:  Antonio Rojas <arojas@archlinux.org>
 
 pkgname=noto-fonts-variable-ar
-pkgver=24.5.1
-pkgrel=2
+pkgver=2024.12.01
+pkgrel=1
 epoch=1
 pkgdesc="Google Noto TTF variable fonts for Arabic Scripts"
 arch=(any)
@@ -11,7 +11,7 @@ url="https://www.google.com/get/noto/"
 license=(custom:SIL)
 optdepends=('noto-fonts-emoji: Emoji characters')
 conflicts=('noto-fonts-ar')
-_url="https://github.com/notofonts/notofonts.github.io/raw/noto-monthly-release-${pkgver}/fonts"
+_url="https://raw.githubusercontent.com/notofonts/notofonts.github.io/noto-monthly-release-${pkgver}/fonts"
 source=("${_url}/NotoKufiArabic/googlefonts/variable/NotoKufiArabic[wght].ttf"
         "${_url}/NotoNaskhArabic/googlefonts/variable/NotoNaskhArabic[wght].ttf"
         "${_url}/NotoSansArabic/googlefonts/variable/NotoSansArabic[wdth,wght].ttf"
