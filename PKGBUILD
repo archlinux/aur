@@ -4,7 +4,7 @@
 
 _pkgname="kubectl-dba"
 pkgname="${_pkgname}-bin"
-pkgver=0.49.0
+pkgver=0.50.0
 pkgrel=1
 pkgdesc="kubectl plugin for KubeDB"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -21,9 +21,9 @@ source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}
 source_armv7h=("${_pkgsrc}-armv7h.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-linux-arm.tar.gz")
 sha512sums=('249ab166610634cdb55dd1ee2ad1bfe46905af77e37a6fcd662285cf1784bc71d0981bcea476c06b3679116ed018f42bf8c2d3e01b7c9fd8fe7965efb659b15b'
             '3ccf552f646ca9716b660cec0da9f1bcabe3c88c55e992ce18f963341701f7ddbe131fd08b657e861572168482a74dded6c617f8deb4131f3b70669eeae45d93')
-sha512sums_x86_64=('7f664dd54d5fe770c9ef98cc245e0e83d5b1bc58c7281368ad9cd2ce390deb37999cfb10dfbf209ce420f8733b43081723c5fa425a170e6b7b1fc017c4181f1c')
-sha512sums_aarch64=('0f63fb4ac577ffd38591e8fbf9248762a8d1957fa1f65c8e7203bd502c4f2a65504cb18f78a760218b6dcdb5008b9151f4c61c6b0713f77fa3b3999deb34abbf')
-sha512sums_armv7h=('7c2201d06b8d6f42f2cbe245fcb867b9e0ea3c38a994655c7df92edd79afbd98be43b78cb5903db55365b4075727b1484d2768cc3b6956c3f691fdf7ad4ef8f9')
+sha512sums_x86_64=('3b7c1df4460d61236f68617934a0e41e8560a7cf838706ad568f8eba7b7e30b7f2137e4c2d1c0f850386f22dd3a40ef59ca2a2a4180df8c43a5cd9994d0f2c18')
+sha512sums_aarch64=('e4ac51d61e417d1024e6637bbfddf8db8ea570e683e2f6c763f33a050fafedd0d017d9119fc477f1887ea69245417cc6917a87c2e3182dce2588ca20ee82850c')
+sha512sums_armv7h=('4ec6a3a38f7a7138ba49f0cd721770f108c691dcb1c2ccbe91aa3ad97d35fbbfdad8ad43491536af960c9bfa00e74881b55285cf1eaea7fa43f2312abc2d115d')
 
 case "${CARCH}" in
   x86_64)
@@ -37,7 +37,6 @@ case "${CARCH}" in
     ;;
   *)
     echo "Unsupported architecture: ${CARCH}"
-    exit 1
     ;;
 esac
 

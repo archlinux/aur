@@ -1,0 +1,4 @@
+[kubectl-dba-bin]
+source = "git"
+git = "https://github.com/kubedb/cli"
+prefix = "v"
