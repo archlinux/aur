@@ -2,8 +2,8 @@
 
 pkgname=libastal-tray-git
 _pkgname=tray
-pkgver=r250.2927230
-pkgrel=1
+pkgver=r645.d7d11b3
+pkgrel=2
 provides=(astal-tray libastal-tray libastal-tray.so=0-64)
 pkgdesc="Library and cli tool for managing the systemtray."
 arch=(x86_64)
@@ -15,7 +15,7 @@ depends=(
   json-glib
   gtk3
   gdk-pixbuf2
-  libdbusmenu-gtk3
+  appmenu-glib-translator-git
 )
 makedepends=(
   meson

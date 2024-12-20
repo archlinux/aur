@@ -1,7 +1,7 @@
 pkgbase = libastal-tray-git
 	pkgdesc = Library and cli tool for managing the systemtray.
-	pkgver = r250.2927230
-	pkgrel = 1
+	pkgver = r645.d7d11b3
+	pkgrel = 2
 	url = https://github.com/Aylur/astal
 	arch = x86_64
 	groups = libastal
@@ -15,7 +15,7 @@ pkgbase = libastal-tray-git
 	depends = json-glib
 	depends = gtk3
 	depends = gdk-pixbuf2
-	depends = libdbusmenu-gtk3
+	depends = appmenu-glib-translator-git
 	provides = astal-tray
 	provides = libastal-tray
 	provides = libastal-tray.so=0-64
