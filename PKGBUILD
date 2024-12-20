@@ -2,7 +2,7 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='prm-bin'
-pkgver=3.6.2
+pkgver=3.6.3
 pkgrel=1
 pkgdesc='Pull Request Manager for Maintainers'
 url='https://github.com/ldez/prm'
@@ -11,17 +11,17 @@ license=('APACHE')
 provides=('prm')
 conflicts=('prm')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ldez/prm/releases/download/v3.6.2/prm_v3.6.2_linux_arm64.tar.gz")
-sha256sums_aarch64=('1e37c3af0dd04c218eeab891551af502961b7580827d3a79b24f5f7ff13297f6')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ldez/prm/releases/download/v3.6.3/prm_v3.6.3_linux_arm64.tar.gz")
+sha256sums_aarch64=('4843baf3b84ba5f01e767eb162888e028812cdad13e34a496f941f415ba8a642')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/ldez/prm/releases/download/v3.6.2/prm_v3.6.2_linux_armv7.tar.gz")
-sha256sums_armv7h=('23ce20a281f0920fb1dab7dbb957df9e7d709200b4ebe77291cea9cbe2d57ce7')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/ldez/prm/releases/download/v3.6.3/prm_v3.6.3_linux_armv7.tar.gz")
+sha256sums_armv7h=('26d1a17493c36f76aba2a4b1be33a6442218d3c2dabfe767dd720127d2b45a93')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/ldez/prm/releases/download/v3.6.2/prm_v3.6.2_linux_386.tar.gz")
-sha256sums_i686=('100b62950df41fff8b18f3f54a063e717f2cb8e2e108267607efb56acfca16c1')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/ldez/prm/releases/download/v3.6.3/prm_v3.6.3_linux_386.tar.gz")
+sha256sums_i686=('1e9198fd07abc8647993b953e08fad9c19cc925524d8eeb838cd4a105fb8ba36')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ldez/prm/releases/download/v3.6.2/prm_v3.6.2_linux_amd64.tar.gz")
-sha256sums_x86_64=('37375377adfddee121e857447db52a20c0867233f2cd61963e7b9d56d97d46ce')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ldez/prm/releases/download/v3.6.3/prm_v3.6.3_linux_amd64.tar.gz")
+sha256sums_x86_64=('b97f764ff519f2830cd3d8ebdf7a3438e2883c42b9a655257a8ae0a9ee4189c1')
 
 package() {
   # bin
