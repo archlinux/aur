@@ -10,6 +10,7 @@ pkgbase = waywall-git
 	depends = libxkbcommon
 	depends = luajit
 	depends = wayland
+	depends = libspng
 	source = git+https://github.com/tesselslate/waywall.git
 	md5sums = SKIP
 

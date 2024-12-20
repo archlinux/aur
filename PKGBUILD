@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/tesselslate/waywall"
 license=('GPL3')
 makedepends=(git wayland-protocols)
-depends=(libxkbcommon luajit wayland)
+depends=(libxkbcommon luajit wayland libspng)
 source=("git+https://github.com/tesselslate/${_gitname}.git")
 md5sums=('SKIP')
 
