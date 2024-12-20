@@ -1,0 +1,4 @@
+[shaderc]
+source = "git"
+git = "https://github.com/google/shaderc.git"
+prefix = "v"

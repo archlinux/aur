@@ -1,23 +1,23 @@
 pkgbase = lib32-shaderc
 	pkgdesc = Collection of tools, libraries and tests for shader compilation (32bit)
-	pkgver = 2023.7
-	pkgrel = 2
+	pkgver = 2024.3
+	pkgrel = 1
 	url = https://github.com/google/shaderc
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = python
 	makedepends = spirv-headers
-	depends = shaderc>=2023.7
+	depends = shaderc>=2024.3
 	depends = lib32-glibc
 	depends = lib32-gcc-libs
 	depends = lib32-glslang
 	depends = lib32-spirv-tools
 	provides = libshaderc_shared.so
 	conflicts = lib32-shaderc-git
-	source = shaderc-2023.7.tar.gz::https://github.com/google/shaderc/archive/v2023.7/shaderc-2023.7.tar.gz
-	sha512sums = f3c1db574312e7e5ee22fb64f47f6609369754dd1648eb4e51c30b3c40aafd9994e54560e8334d01ac7d00011285a94d0543fa9ecd6977ec34c39a965fd72269
-	b2sums = de5ee8cc35bc76ba1301e80217587cbf55885999297755d78a72fe0940431351d4070cdd0793fe8f43208d40c9ec343bbe888da2b8ded471bd241be067b1addf
+	source = shaderc-2024.3.tar.gz::https://github.com/google/shaderc/archive/v2024.3/shaderc-2024.3.tar.gz
+	sha512sums = ba990054b3e50bd1c3e7decaca80b80dfade0f15505f6e89c455b7a114b8507931dff2c570ca81fd38882472e7d7014c417ca8f4c1117fc0e6825ea9f669222a
+	b2sums = 0f9df6251b1a107c89a4e509c7a36f4035b5282f11e0b00cb7a1603b3212917894e805337d2404509b839dd9ac40aa19d8aa23bf6666b330dae2cfdabc18c9c6
 
 pkgname = lib32-shaderc
