@@ -4,7 +4,7 @@ pkgname=cp2cp-git
 _gitname=libshvproto-rs
 pkgver=r271.14b3cb7
 pkgrel=1
-pkgdesc='ChainPack to Cpon and back utility"'
+pkgdesc='ChainPack to Cpon and back utility'
 url='https://github.com/silicon-heaven/libshvproto-rs'
 license=('MIT')
 makedepends=('cargo' 'git')
@@ -12,6 +12,7 @@ depends=()
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=('git+https://github.com/silicon-heaven/libshvproto-rs')
 b2sums=('SKIP')
+
 pkgver() {
 	cd "$srcdir/$_gitname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
