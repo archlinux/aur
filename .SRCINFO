@@ -1,6 +1,6 @@
 pkgbase = portainer-bin
 	pkgdesc = A lightweight docker management UI
-	pkgver = 2.21.4
+	pkgver = 2.21.5
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/portainer/portainer
@@ -11,23 +11,23 @@ pkgbase = portainer-bin
 	license = Zlib
 	depends = docker
 	depends = docker-compose
-	provides = portainer=2.21.4
+	provides = portainer=2.21.5
 	conflicts = portainer
 	source = portainer.service
 	source = portainer.png
 	source = portainer.desktop
-	source = portainer-2.21.4-src.tar.gz::https://github.com/portainer/portainer/archive/2.21.4.tar.gz
+	source = portainer-2.21.5-src.tar.gz::https://github.com/portainer/portainer/archive/2.21.5.tar.gz
 	sha256sums = 37274c8bc36ec81eae0307b9c58f1c09b34680fe7cb3cb330f253cbb4f8e704b
 	sha256sums = 8cb50d80f1463cef0a907b7f26ec6387b792182959f51f8cd19dcb6f955b886e
 	sha256sums = a70567387c0f182fac2e56e5681a63b3dcf474d618dd357531b844009f73d8c0
-	sha256sums = 4b4a494424aacb2a20638a6f71380ec4cfddd2993b879aa2aa615f1058a14c58
-	source_armv6h = https://github.com/portainer/portainer/releases/download/2.21.4/portainer-2.21.4-linux-arm.tar.gz
-	sha256sums_armv6h = 6b9d1bb28ae5c6cc9f9193a7ce0d9a572b47d52a09d9475667721e67870c1dc9
-	source_armv7h = https://github.com/portainer/portainer/releases/download/2.21.4/portainer-2.21.4-linux-arm.tar.gz
-	sha256sums_armv7h = 6b9d1bb28ae5c6cc9f9193a7ce0d9a572b47d52a09d9475667721e67870c1dc9
-	source_aarch64 = https://github.com/portainer/portainer/releases/download/2.21.4/portainer-2.21.4-linux-arm64.tar.gz
-	sha256sums_aarch64 = e3d2705cc63a19caea8d7aa9032a31b1742c0302c7f2a50108d1bed54585bf49
-	source_x86_64 = https://github.com/portainer/portainer/releases/download/2.21.4/portainer-2.21.4-linux-amd64.tar.gz
-	sha256sums_x86_64 = 6addc5d42f0baae8f92a08add097f57fc19a29d196db68b1e60e3e6579c78b90
+	sha256sums = 83b76473930cfc379424659c1b542ffd0ec3747e24bfc5de082aa2300e10b260
+	source_armv6h = https://github.com/portainer/portainer/releases/download/2.21.5/portainer-2.21.5-linux-arm.tar.gz
+	sha256sums_armv6h = 817bca685c243019a499d39394483762fbb1fde1fa700db19eaec8d2c56438e3
+	source_armv7h = https://github.com/portainer/portainer/releases/download/2.21.5/portainer-2.21.5-linux-arm.tar.gz
+	sha256sums_armv7h = 817bca685c243019a499d39394483762fbb1fde1fa700db19eaec8d2c56438e3
+	source_aarch64 = https://github.com/portainer/portainer/releases/download/2.21.5/portainer-2.21.5-linux-arm64.tar.gz
+	sha256sums_aarch64 = be4111d434bfa94b6c97b491703cfebdb7ee314614d1a8456c458ddef411dbc0
+	source_x86_64 = https://github.com/portainer/portainer/releases/download/2.21.5/portainer-2.21.5-linux-amd64.tar.gz
+	sha256sums_x86_64 = dd28330a4cd1af67f384e0a8ae145bd13a851503d3fc308e3b1b0894c1b2e2aa
 
 pkgname = portainer-bin
