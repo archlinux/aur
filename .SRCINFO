@@ -1,0 +1,20 @@
+pkgbase = openconnect-pulse-gui-git
+	pkgdesc = Allows openconnect web-based authentication for Pulse Secure Connect appliances
+	pkgver = r23.47edbd8
+	pkgrel = 1
+	url = https://github.com/utknoxville/openconnect-pulse-gui
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = bash
+	depends = python-gobject
+	depends = webkit2gtk
+	depends = openconnect
+	source = openconnect-pulse-gui::git+https://github.com/utknoxville/openconnect-pulse-gui
+	md5sums = SKIP
+
+pkgname = openconnect-pulse-gui-git
