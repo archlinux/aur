@@ -15,7 +15,7 @@ optdepends=('python-pyaudio: for playback'
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   removewarnings.patch::${url}/pull/504.patch)
 sha512sums=('8c3fb3714c4b0aed37ba7ab6727776bf4cd7568c1f5060cf43c30ede8da2ce4b498fb83326daa19ef44635250d552295407289c3945681e028eedde1b2b418e0'
-  '45cc30a25e3e65e26b4b0ab4aa2690bd2cbe978159c9338ad051034c5307fd9d60984243ad239866e10f1a1c2d65a8bf09d2b27838215a17a6e387ffe01866ae')
+            'de0bfb193768aab0d4fa986c128eefeb741f8b38bfc1899e3f646ccc43f4b1dbd75e17e706d2277651e79e087cdefb8feb4771856c3214553dee0c9c0ab71e06')
 
 prepare() {
   cd ${_base}-${pkgver}
