@@ -1,10 +1,10 @@
 # Maintainer: bbaa <bbaa@bbaa.moe>
 _pkgname=EasyTier
 pkgbase=easytier-git
-pkgname=(easytier-core-git easytier-cli-git easytier-web-git)
+pkgname=(easytier-git easytier-core-git easytier-cli-git easytier-web-git)
 conflicts=(easytier-bin)
 pkgver=2.1.0.r0.g25ed41c
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple, decentralized mesh VPN with WireGuard support."
 arch=('x86_64')
 url="https://github.com/EasyTier/EasyTier"
@@ -34,6 +34,13 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --verbose --release
+}
+
+package_easytier-git() {
+  provides=("easytier")
+  conflicts=("easytier" "easytier-bin")
+  pkgdesc="Meta package for EasyTier, A simple, decentralized mesh VPN with WireGuard support."
+  depends=('easytier-core-git' 'easytier-cli-git' 'easytier-web-git')
 }
 
 package_easytier-core-git() {
