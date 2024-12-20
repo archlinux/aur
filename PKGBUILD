@@ -1,23 +1,21 @@
 # Maintainer: otaj <jasek.ota@gmail.com>
-# If you want to set only one GPU target compute capability, set _GPU_TARGET,
-# otherwise leave it commented out and it will build default targets (35+).
-# You can also set multiple targets separated by a semicolon
+# You can set either "native" or "all" a GPU target
 # If you want the python package to work with MKL, you need to have python-numpy-mkl installed!
 # See https://github.com/facebookresearch/faiss/issues/1393
 
-# _GPU_TARGET="native"
+_GPU_TARGET="all"
 _pkgname=faiss
 pkgbase=faiss-cuda-git
 pkgname=('faiss-cuda-git' 'python-faiss-cuda-git')
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('MIT')
-pkgver=v1.7.3.r10.ga996a4a0
+pkgver=v1.9.0.r84.g5637bb889
 pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
 sha256sums=('SKIP')
 depends=('blas' 'lapack' 'cuda' 'openmp')
-makedepends=('git' 'python' 'python-numpy' 'swig' 'python-setuptools' 'cmake')
+makedepends=('git' 'python' 'python-numpy' 'swig' 'python-setuptools' 'cmake' 'gflags')
 optdepends=('intel-mkl: To use MKL blas implemenetation' 'python-numpy-mkl: To use MKL blas implementation.')
 checkdepends=('python-pytest' 'python-scipy')
 
@@ -37,15 +35,10 @@ prepare() {
     -DCUDAToolkit_ROOT=/opt/cuda \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_TESTING=ON \
-    -DCMAKE_INSTALL_PREFIX=/usr "
-  if ! [ -z "$_GPU_TARGET" ]
-  then
-    _CMAKE_FLAGS=$_CMAKE_FLAGS"-DCMAKE_CUDA_ARCHITECTURES="$_GPU_TARGET""
-  else
-    _CMAKE_FLAGS=$_CMAKE_FLAGS"-DCMAKE_CUDA_ARCHITECTURES=35;37;50;52;60;61;70;75;80;86;87;89;90"
-  fi
-  # echo $_CMAKE_FLAGS
-  CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 CUDAHOSTCXX=/usr/bin/g++-11 cmake $_CMAKE_FLAGS ..
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CUDA_ARCHITECTURES=$_GPU_TARGET "
+  
+  CC=gcc-13 CXX=g++-13 CUDAHOSTCXX=g++-13 cmake $_CMAKE_FLAGS ..
 }
 
 check() {

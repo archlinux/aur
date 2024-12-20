@@ -1,5 +1,5 @@
 pkgbase = faiss-cuda-git
-	pkgver = v1.7.3.r10.ga996a4a0
+	pkgver = v1.9.0.r84.g5637bb889
 	pkgrel = 1
 	url = https://github.com/facebookresearch/faiss
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = faiss-cuda-git
 	makedepends = swig
 	makedepends = python-setuptools
 	makedepends = cmake
+	makedepends = gflags
 	depends = blas
 	depends = lapack
 	depends = cuda
