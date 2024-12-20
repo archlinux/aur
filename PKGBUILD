@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=7.2.r117638.g153a6dc8fa
+pkgver=7.2.r118095.g95217872ad
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -82,7 +82,7 @@ depends=(
   zlib
 )
 makedepends=(
-  amf-headers
+  amf-headers-git
   avisynthplus
   clang
   ffnvcodec-headers
