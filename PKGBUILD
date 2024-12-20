@@ -15,7 +15,7 @@ source=(
   "git+https://gitlab.com/unshumikan/mkbold-mkitalic.git#tag=${pkgver?}"
   "0001-Makefile-Use-CFLAGS-and-LDFLAGS-from-environment.patch"
 )
-arch=(i686 x86_64)
+arch=(x86_64)
 
 prepare() {
   cd "${srcdir:?}/${pkgname:?}"
