@@ -2,12 +2,13 @@
 
 pkgname=aweather-git
 provides=('aweather')
-pkgver=0.9.0.r5
+pkgver=0.9.0.r12
 pkgrel=1
 pkgdesc="Free real-time weather data viewer designed for weather enthusiasts."
 arch=('aarch64' 'x86_64')
 url="http://pileus.org/aweather/"
 license=('GPL3')
+makedepends=('asciidoc')
 depends=("grits" 'mesa' 'rsl')
 optdepends=('gpsd')
 source=('git+https://github.com/i3Craig/aweather.git')
