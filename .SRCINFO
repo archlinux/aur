@@ -1,0 +1,16 @@
+pkgbase = flow-control
+	pkgdesc = a programmer's text editor
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/neurocyte/flow
+	arch = x86_64
+	license = MIT
+	makedepends = zig>=0.13.0
+	makedepends = zig<0.14.0
+	optdepends = ripgrep: project-wide search
+	provides = flow-control
+	conflicts = flow-control
+	source = flow-0.2.0.tar.gz::https://github.com/neurocyte/flow/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = flow-control
