@@ -1,0 +1,29 @@
+From 5848ef3f755275abe762c12ee1bcaaddf2bdb947 Mon Sep 17 00:00:00 2001
+From: Tilman Blumenbach <tilman+git@ax86.net>
+Date: Fri, 20 Dec 2024 16:35:52 +0100
+Subject: [PATCH] Makefile: Use CFLAGS and LDFLAGS from environment.
+
+---
+ Makefile | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index e8e8e5d..9570d96 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,9 +1,10 @@
+ # $Id$
++# vim: sw=8 ts=8
+ #
+ MAKE	= make
+ CC      = gcc
+-CFLAGS	= -g -Wall -pedantic $(DEFS)
+-LDFLAGS	= -g -Wall -pedantic
++override CFLAGS 	+= -g -Wall -pedantic $(DEFS)
++override LDFLAGS 	+= -g -Wall -pedantic
+ DEFS    = -DSTDC_HEADERS -DHAVE_LIMITS_H # -DDEBUG
+ RM	= rm -f
+ INSTALL	= install
+-- 
+2.47.1
+

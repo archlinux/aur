@@ -5,3 +5,5 @@
 /pkg/
 /src/
 /*.pkg.tar.*
+/*.log
+/cache/
