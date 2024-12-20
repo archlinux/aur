@@ -13,6 +13,7 @@ pkgbase = limine-dracut-support-git
 	depends = dracut
 	depends = systemd
 	depends = efibootmgr
+	optdepends = sbctl: signs bootable EFI files for Secure Boot when enabled.
 	optdepends = journalctl-desktop-notification: It notifies you on Desktop when an error occurs.
 	conflicts = limine-dracut-support
 	backup = etc/limine-entry-tool.conf

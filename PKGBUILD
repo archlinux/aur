@@ -15,6 +15,7 @@ depends=(
        'systemd'
        'efibootmgr')
 optdepends=(
+        'sbctl: signs bootable EFI files for Secure Boot when enabled.'
         'journalctl-desktop-notification: It notifies you on Desktop when an error occurs.'
 )
 makedepends=('git' 'maven')
