@@ -34,7 +34,7 @@ depends=(
 	"libxkbcommon"
 	"libxcb"
 	"util-linux"
-	"openssl-1.1"
+	"openssl"
 	"libxcb"
 	"gcc-libs"
 	"nspr"
