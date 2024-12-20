@@ -1,11 +1,11 @@
-
 # Maintainer: bbaa <bbaa@bbaa.moe>
 # Contributor: cap153 <1536989047@qq.com>
 
 _pkgname=EasyTier
-pkgname=easytier
+pkgbase=easytier
+pkgname=($pkgbase-core $pkgbase-cli $pkgbase-web)
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple, decentralized mesh VPN with WireGuard support."
 arch=("x86_64" "aarch64")
 url="https://github.com/EasyTier/EasyTier"
@@ -32,12 +32,25 @@ build() {
   cargo build --verbose --release
 }
 
-package() {
+package_easytier-core() {
   install -dm755 "$pkgdir/var/lib/easytier"
   install -Dm644 "easytier.service" "$pkgdir/usr/lib/systemd/system/easytier.service"
   install -Dm644 "config.toml" "$pkgdir/etc/easytier/config.toml"
   cd "$_pkgname-$pkgver"
-  install -Dm755 "target/release/easytier-cli" "$pkgdir/usr/bin/easytier-cli"
   install -Dm755 "target/release/easytier-core" "$pkgdir/usr/bin/easytier-core"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/easytier/LICENSE"
 }
+
+
+package_easytier-cli() {
+  cd "$_pkgname-$pkgver"
+  install -Dm755 "target/release/easytier-cli" "$pkgdir/usr/bin/easytier-cli"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/easytier/LICENSE-cli"
+}
+
+package_easytier-web() {
+  cd "$_pkgname-$pkgver"
+  install -Dm755 "target/release/easytier-web" "$pkgdir/usr/bin/easytier-web"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/easytier/LICENSE-web"
+}
+
