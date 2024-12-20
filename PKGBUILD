@@ -16,11 +16,7 @@ license=('MIT')
 provides=(${_pkgname})
 options=(!strip)
 conflicts=(
-    'chatterino2-git'
-    'chatterino2-appimage'
-    'chatterino2-nightly-appimage'
-    'chatterino2-7tv-git'
-    'chatterino2-dankerino-git'
+    'chatterino'
 )
 source=(
     https://github.com/Mm2PL/dankerino/releases/download/nightly-build/$_appimage
