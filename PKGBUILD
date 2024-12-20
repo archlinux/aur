@@ -5,14 +5,28 @@
 
 pkgname=plymouth-git
 _pkgname=plymouth
-pkgver=24.004.60.r34.gedc7c3ea
+pkgver=24.004.60.r88.ga0e8b6cf
 pkgrel=1
 pkgdesc='Graphical boot splash screen (git version)'
 arch=('i686' 'x86_64')
 url='https://www.freedesktop.org/wiki/Software/Plymouth/'
 license=('GPL-2.0-or-later')
-depends=('bash' 'cantarell-fonts' 'fontconfig' 'libdrm' 'libevdev' 'libx11' 'libxkbcommon' 'systemd-libs')
-makedepends=('gtk3' 'docbook-xsl' 'git' 'meson')
+depends=(
+        'bash'
+        'cantarell-fonts'
+        'fontconfig'
+        'libdrm'
+        'libevdev'
+        'libx11'
+        'libxkbcommon'
+        'systemd-libs'
+        )
+makedepends=(
+            'docbook-xsl'
+            'git'
+            'gtk3'
+            'meson'
+            )
 optdepends=('gtk3: x11 renderer')
 provides=('plymouth')
 conflicts=('plymouth')
@@ -28,7 +42,7 @@ source=("git+https://gitlab.freedesktop.org/$_pkgname/$_pkgname.git"
 
 sha256sums=('SKIP'
             'de852646e615e06d4125eb2e646d0528d1e349bd9e9877c08c5d32c43d288b6f'
-            '77b0984473a3a179546605d5346a445e78b45967730f7da13b0d4cf701570137'
+            '5d9165b7550d6f2c251dda812817528dfd10ab191a7512819eebb2b0d5472dfb'
             'cfd0c754437d582bbc8d2cbb545a777b00b5c77a6302522577e9d88b169e2f59'
             '00ae44f702b5adce9d98d2b702d94c787491a50ad322a6b0fece1f2714743e6e'
             '91df753b37fa33493a3fa4b966f5535e9694022a4ba083dcc504404ab25715b1')
@@ -56,7 +70,7 @@ build() {
     -D background-end-color-stop=0x4D4D4D
   )
 
-  arch-meson build $_pkgname "${meson_options[@]}"
+  arch-meson $_pkgname build "${meson_options[@]}"
   meson compile -C build
 
   # Convert logo for the spinner theme

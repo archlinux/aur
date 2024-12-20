@@ -11,9 +11,13 @@ build() {
   local PLYMOUTH_MONOSPACE_FONT_NAME=$(sed -n "s/^ *MonospaceFont *= *//p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth" | sed -e 's/ [0-9]\+ *$//' -e 's/ \(Regular\|Bold\|Italic\|Bold Italic\|Oblique\|Bold Oblique\|Thin\|Light\|Extra Bold\) *$/:style=\1/')
 
   if [ -n "$PLYMOUTH_MONOSPACE_FONT_NAME" ]; then
-    local PLYMOUTH_MONOSPACE_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_MONOSPACE_FONT_NAME")
+  local PLYMOUTH_MONOSPACE_BASE_FONT_NAME=$(fc-match -f %{family} "$PLYMOUTH_MONOSPACE_FONT_NAME" | sed 's/,.*//')
+    local PLYMOUTH_MONOSPACE_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_MONOSPACE_BASE_FONT_NAME")
+    local PLYMOUTH_MONOSPACE_BOLD_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_MONOSPACE_BASE_FONT_NAME:weight=bold")
+
   else
     local PLYMOUTH_MONOSPACE_FONT_PATH=$(fc-match -f %{file} monospace)
+    local PLYMOUTH_MONOSPACE_BOLD_FONT_PATH=$(fc-match -f %{file} monospace:weight=bold)
   fi
 
   # exit if no module exists on the system for the theme
@@ -47,6 +51,7 @@ build() {
   fi
   if [ -n "$PLYMOUTH_MONOSPACE_FONT_PATH" ]; then
     add_file "$PLYMOUTH_MONOSPACE_FONT_PATH" '/usr/share/fonts/Plymouth-monospace.ttf'
+    add_file "$PLYMOUTH_MONOSPACE_BOLD_FONT_PATH" '/usr/share/fonts/Plymouth-monospace-bold.ttf'
   fi
 
   # copy xkb info and x11 locale
