@@ -1,0 +1,4 @@
+[viddy]
+source = "git"
+git = "https://github.com/sachaos/viddy.git"
+prefix = "v"

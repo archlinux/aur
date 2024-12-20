@@ -1,23 +1,37 @@
 # Maintainer: Nina <nina@l1f.de>
 pkgname=viddy
-pkgver=0.4.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="A modern watch command"
 arch=('x86_64')
 url="https://github.com/sachaos/viddy"
 license=('MIT')
-makedepends=('go')
+makedepends=(cargo)
+options=(!debug !lto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sachaos/viddy/archive/v${pkgver}.tar.gz")
-md5sums=('9ca24c4035d7d9ea7add86e3617ccba0')
+sha256sums=('59d5be862cf6b522ed069e276c28f927e5d2cea13525513959e1577a5ad6afd5')
 
+prepare() {
+	cd ${pkgname}-${pkgver}
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 build() {
-	cd "$pkgname-$pkgver"
-	go build -o "$pkgname" -trimpath -ldflags "-s -w -X main.version=$pkgver"
+	cd ${pkgname}-${pkgver}
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
+	cd ${pkgname}-${pkgver}
+	install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+}
+
+check() {
+	cd ${pkgname}-${pkgver}
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen --all-features
 }
