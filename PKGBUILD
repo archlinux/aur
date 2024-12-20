@@ -36,7 +36,7 @@ prepare() {
         "$icon_url"
     )
     echo "AppImage source: ${source[0]}"
-    sha256sums=('79a1915e99c47bf48fc8af550c09752bab93a4b9adba8b22a08b77dcc83cd4fc' 'SKIP')
+    sha256sums=('5b681225509b5b0e28d14cf053eff91a7a6fd375ef0b7a5711cebd8bac25fb16' 'SKIP')
     curl -L "${source[0]}" -o "$srcdir/bskyDesktop.appimage"
     curl -L "${source[1]}" -o "$srcdir/$icon_name"
 }
