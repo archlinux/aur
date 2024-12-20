@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspLearnStats
-_pkgver=0.19.0
+_pkgver=0.19.2
 pkgname=r-${_pkgname,,}
-pkgver=0.19.0
+pkgver=0.19.2
 pkgrel=1
 pkgdesc="Learn Classical statistics with simple examples and supporting text"
 arch=('any')
@@ -19,10 +19,12 @@ depends=(r
   r-ggforce
   r-tidyr
   r-igraph
+  r-hdinterval
+  r-metafor
 )
 groups=(r-jasp r-jaspextra)
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('0f76465a61f1029eabd187e0157a8c413a705a7bfd72351604897e46909f5174')
+sha256sums=('c5fbaa1393f6f5be9b06095c7a935dbcceb2fff31ac3cf383fa51e37f211180a')
 
 build() {
 
