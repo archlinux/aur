@@ -14,7 +14,6 @@ optdepends=('gst-plugin-pipewire: required for recorder service'
             'networkmanager: required for network service'
             'dart-sass: SASS/SCSS compilation support')
             
-conflicts=('ignis-git')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/ignis-v${pkgver}.tar.gz")
 sha256sums=('dc8a8d76b80bea19497f6029b8ab816e5eceb2f2ff9697675bd1ac87ada70513')
 

@@ -24,7 +24,6 @@ pkgbase = ignis
 	optdepends = gst-plugins-ugly: required for recorder service
 	optdepends = networkmanager: required for network service
 	optdepends = dart-sass: SASS/SCSS compilation support
-	conflicts = ignis-git
 	source = ignis-0.3.tar.gz::https://github.com/linkfrg/ignis/releases/download/v0.3/ignis-v0.3.tar.gz
 	sha256sums = dc8a8d76b80bea19497f6029b8ab816e5eceb2f2ff9697675bd1ac87ada70513
 
