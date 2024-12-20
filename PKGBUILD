@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-pyxem
 pkgshort=pyxem
-pkgver=0.19.1
+pkgver=0.20.0
 pkgrel=0
 pkgdesc="Python library for multi-dimensional diffraction microscopy extending HyperSpy"
 arch=('any')
@@ -11,19 +11,18 @@ license=('GPL3')
 
 depends=('python>=3.7'
          'python-dask'
-	 'python-diffsims>=0.5'
+	 'python-diffsims>=0.6'
          'python-hyperspy>=2.0'
 	 'python-h5py'
 	 'python-lmfit>=0.9.12'
-         'python-matplotlib>=3.6'
+         'python-matplotlib>=3.7.5'
 	 'python-numba'
 	 'python-numpy'
-	 'python-numexpr'
-	 'python-orix>=0.9'
+	 'python-orix>=0.12.1'
          'python-pooch'
 	 'python-psutil'
          'python-pyfai'
-         'python-scikit-image>=0.19.0'
+         'python-scikit-image>=0.22.0'
 	 'python-scikit-learn>=1.0'
 	 'python-scipy'
 	 'python-shapely>2.0.0'
@@ -45,4 +44,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('c8535a68c3bc2a9c21d7f01518ea8937')
+md5sums=('49c6f72135ea86d4d8f0759e41e2b6d9')
