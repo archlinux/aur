@@ -1,0 +1,13 @@
+pkgbase = omu
+	pkgdesc = oh-my-update: oh-my-zsh plugin & theme updater
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/utox39/oh-my-update
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = oh-my-update-0.1.5.tar.gz::https://github.com/utox39/oh-my-update/archive/v0.1.5.tar.gz
+	sha256sums = aebee6180d28e0ceee8acce45f2a3199715878037f263efef6533dabe398dd47
+
+pkgname = omu
