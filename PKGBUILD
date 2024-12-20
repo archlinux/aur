@@ -6,8 +6,8 @@ pkgdesc="A free, open source, portable framework for graphical application devel
 pkgver=3.4
 pkgrel=1
 arch=('x86_64')
-replaces=('glfw')
-provides=('glfw')
+conflicts=('glfw' 'glfw-wayland' 'glfw-wayland-minecraft-libdecoration' 'glfw-wayland-minecraft-cursorfix')
+provides=("glfw=$pkgver")
 url="https://www.glfw.org/"
 license=('custom:ZLIB')
 depends=('libgl' 'libxkbcommon')

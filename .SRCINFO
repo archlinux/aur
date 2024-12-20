@@ -18,8 +18,11 @@ pkgbase = glfw-waywall
 	makedepends = libxinerama
 	depends = libgl
 	depends = libxkbcommon
-	provides = glfw
-	replaces = glfw
+	provides = glfw=3.4
+	conflicts = glfw
+	conflicts = glfw-wayland
+	conflicts = glfw-wayland-minecraft-libdecoration
+	conflicts = glfw-wayland-minecraft-cursorfix
 	source = glfw-waywall-3.4.tar.gz::https://github.com/glfw/glfw/archive/3.4.tar.gz
 	source = https://raw.githubusercontent.com/tesselslate/waywall/refs/heads/main/doc/assets/glfw.patch
 	sha512sums = 39ad7a4521267fbebc35d2ff0c389a56236ead5fa4bdff33db113bd302f70f5f2869ff4e6db1979512e1542813292dff5a482e94dfce231750f0746c301ae9ed
