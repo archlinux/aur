@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-uz
 	pkgdesc = Uzbek language pack for Firefox Nightly
-	pkgver = 135.0a1.20241219.212153
+	pkgver = 135.0a1.20241220.094513
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-uz
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-uz-135.0a1.20241219.212153.xpi
-	source = firefox-nightly-i18n-uz-135.0a1.20241219.212153.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-135.0a1.uz.langpack.xpi
-	sha256sums = b5f7de0f458193a2e83638c36b925bc7079e1677f93641134c37a514ee79576c
+	noextract = firefox-nightly-i18n-uz-135.0a1.20241220.094513.xpi
+	source = firefox-nightly-i18n-uz-135.0a1.20241220.094513.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-135.0a1.uz.langpack.xpi
+	sha256sums = f80a801d3b46c21a4b61ef112fe8fecf16c8c832924b558584d0431107c2eece
 
 pkgname = firefox-nightly-i18n-uz
