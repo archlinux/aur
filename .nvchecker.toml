@@ -1,0 +1,4 @@
+[koyeb-cli]
+source = "git"
+git = "https://github.com/koyeb/koyeb-cli.git"
+prefix = "v"
