@@ -4,27 +4,25 @@
 pkgbase=fragment-mono
 _github='weiweihuanghuang/fragment-mono'
 pkgname=('ttf-fragment-mono' 'woff2-fragment-mono' 'otf-fragment-mono')
-pkgver=1.011
+pkgver=1.21
 pkgrel=1
 pkgdesc="Fragment Mono font. Monospaced version of Helvetica with coding ligatures"
 arch=('any')
 url="https://github.com/${_github}"
 license=('custom:OFL')
 depends=()
-source=("$pkgbase-$pkgver.zip::$url/releases/download/${pkgver}/${pkgbase}-fonts.zip"
-	"LICENSE::https://raw.githubusercontent.com/${_github}/main/OFL.txt")
-sha512sums=('ba0b1a398ffafcd954e505cc168d406f98cb602710fee086e4fc8d794d21e58f9a3a2f43fa083aaf137c315be109be31737ff3a80a2f1978dc5cc092362b8b1f'
-	'8d17e9ab4c121a5a02beb68f827ea0598106ddbc8a4ff80809d46f7e8890f20ea4ed7102777f7f1399bc50b5354da2140ecab50aa7d2f0e47e1b19d58ff882ff')
+source=("$pkgbase-$pkgver.zip::$url/releases/download/${pkgver}/${pkgbase}-${pkgver}.zip")
+sha512sums=('11e57d43a2f4dfeb073c34e28b2937069cc6c5bb1a0450cb16b311c14c428ead85a0665d344dde1c6860abaa593c2bcba3b5b228955b3ee3f4783eebf60f98a8')
 
 function prepare {
-	cd "${srcdir}/${pkgbase}-fonts/fonts"
+	cd "${srcdir}/${pkgbase}-${pkgver}/fonts"
 	mv webfonts woff2
 }
 
 function _package {
 	local _pkgname=$1
 	local ext="${_pkgname%%-*}"
-	cd "$srcdir/${pkgbase}-fonts/fonts/$ext"
+	cd "$srcdir/${pkgbase}-${pkgver}/fonts/$ext"
 	local fonts=(*."$ext")
 	local installdir="${ext^^}"
 
@@ -38,7 +36,7 @@ function _package {
 	done
 
 	# Install LICENSE
-	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -Dm644 "$srcdir/${pkgbase}-${pkgver}/OFL.txt" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
 
 for _pkgname in "${pkgname[@]}"; do
