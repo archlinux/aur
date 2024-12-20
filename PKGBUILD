@@ -26,7 +26,7 @@ pkgver() {
 }
 
 build() {
-    echo -e "\e[32mNote: The build may take a long time, please be patient...\e[0m"
+    echo -e "\e[32m注意：构建时间可能会有点长，请耐心等待...\e[0m"
     cd "${srcdir}/${_pkgname}"
     
     npm i
