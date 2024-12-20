@@ -1,7 +1,7 @@
 pkgbase = teleport-bin
 	pkgdesc = Modern SSH server for teams managing distributed infrastructure
 	pkgver = 17.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://goteleport.com/
 	install = teleport.install
 	arch = i386
