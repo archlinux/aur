@@ -2,9 +2,9 @@
 # Contributor: Rasmus Moorats <xx+aur@nns.ee>
 
 _java=23
-_java_minor=+37.1
+_java_minor=+11.1
 pkgname="jdk${_java}-graalvm-ee-bin"
-pkgver=23
+pkgver=23.0.1
 pkgrel=1
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${_java} version"
 arch=('x86_64'
@@ -19,10 +19,10 @@ provides=("java-runtime=${_java}"
 options=('staticlibs'
 	'!debug')
 install="$pkgname.install"
-sha256sums_x86_64=('9e0632fe4be3d7fed6f03b3afc349b72fd5cb857ec6b69008202257e8a3ed858')
-sha256sums_aarch64=('f6a12e7f09f3bc23d46d2dda6f9dc6a16f094489d56549a1dcc11a7e6826ed9f')
-source_x86_64=("https://download.oracle.com/graalvm/${_java}/archive/graalvm-jdk-${pkgver}_linux-x64_bin.tar.gz")
-source_aarch64=("https://download.oracle.com/graalvm/${_java}/archive/graalvm-jdk-${pkgver}_linux-aarch64_bin.tar.gz")
+sha256sums_x86_64=('46ec9582ebe114f93470403f2cc123238ac0c7982129c358af7d8e1de52dd663')
+sha256sums_aarch64=('1835a98b87c439c8c654d97956c22d409855952e5560a8127f56c50f3f919d7d')
+source_x86_64=("https://download.oracle.com/graalvm/${_java}/latest/graalvm-jdk-${_java}_linux-x64_bin.tar.gz")
+source_aarch64=("https://download.oracle.com/graalvm/${_java}/latest/graalvm-jdk-${_java}_linux-aarch64_bin.tar.gz")
 
 package() {
 	cd "graalvm-jdk-${pkgver}${_java_minor}"
