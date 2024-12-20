@@ -1,16 +1,16 @@
 pkgbase = fselect-bin
 	pkgdesc = Find files with SQL-like queries
-	pkgver = 0.8.6
+	pkgver = 0.8.8
 	pkgrel = 1
 	url = https://github.com/jhspetersson/fselect
 	arch = x86_64
 	license = MIT
 	provides = fselect
 	conflicts = fselect
-	source_x86_64 = fselect-0.8.6-x86_64-linux-musl.gz::https://github.com/jhspetersson/fselect/releases/download/0.8.6/fselect-x86_64-linux-musl.gz
-	source_x86_64 = fselect-0.8.6.1::https://raw.githubusercontent.com/jhspetersson/fselect/0.8.6/docs/fselect.1
-	source_x86_64 = fselect-0.8.6-usage.md::https://raw.githubusercontent.com/jhspetersson/fselect/0.8.6/docs/usage.md
-	sha256sums_x86_64 = 443cf775d8415e1ffa7b22604412d6152c9bf791451cdf173fd1518df654b2e1
+	source_x86_64 = fselect-0.8.8-x86_64-linux-musl.gz::https://github.com/jhspetersson/fselect/releases/download/0.8.8/fselect-x86_64-linux-musl.gz
+	source_x86_64 = fselect-0.8.8.1::https://raw.githubusercontent.com/jhspetersson/fselect/0.8.8/docs/fselect.1
+	source_x86_64 = fselect-0.8.8-usage.md::https://raw.githubusercontent.com/jhspetersson/fselect/0.8.8/docs/usage.md
+	sha256sums_x86_64 = 425e62f46496d3a79aa8aee7e18be97ff5a19db59fbb3a951fc297579df02f96
 	sha256sums_x86_64 = 73f8f0680a0eeeb25248c591d4ba79bb0143679e66499997b936d461ff03b64e
 	sha256sums_x86_64 = f4b0f9dbde8924c143537273a40d27bb90098748ee4fbc22e4133ab3197a7d60
 
