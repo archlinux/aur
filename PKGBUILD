@@ -6,13 +6,13 @@ pkgver=0.2.0
 pkgrel=1
 pkgdesc="a programmer's text editor"
 arch=('x86_64')
-url="https://github.com/neurocyte/flow"
+url="https://github.com/neurocyte/$_pkgname"
 license=('MIT')
 optdepends=('ripgrep: project-wide search')
 makedepends=('zig>=0.13.0' 'zig<0.14.0')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("$_pkgname-v$pkgver.tar.gz::https://github.com/neurocyte/flow/archive/refs/tags/v$pkgver.tar.gz")
+source=("https://github.com/neurocyte/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('9ce8fc5a7466e7c97b16b45a6e145e9feb9c3a8190d70d0efd45522942a2073d')
 
 build() {
