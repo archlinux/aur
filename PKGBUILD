@@ -2,7 +2,7 @@
 
 pkgname=libshv-git
 _gitname=libshv
-pkgver=r2841.f6fb5f5e
+pkgver=r2914.c8072229
 pkgrel=1
 pkgdesc='An RPC framework build around the ChainPack packing schema'
 url='https://github.com/silicon-heaven/libshv'
@@ -42,4 +42,6 @@ package() {
 	for prog_name in shvcall shvdevice minimalshvclient minimalshvbroker; do
 		ln -s shv "${pkgdir}/usr/share/bash-completion/completions/$prog_name"
 	done
+
+	rm "${pkgdir}/usr/bin/cp2cp" # To remove conflict with the rust version
 }
