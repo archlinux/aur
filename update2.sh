@@ -3,7 +3,7 @@
 set -eo pipefail +H
 
 DEB_REPO=https://repos.tixeo.com/debian
-SUITE=bullseye
+SUITE=bookworm
 COMPONENT=non-free
 ARCH=amd64
 PACKAGE=tixeoclient
