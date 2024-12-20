@@ -3,7 +3,7 @@
 _opt_DKMS=1            # This can be toggled between installs
 _opt_defaultmode='660' # default: 620
 
-#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/5.10.*/modules.alias))"
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/6.12.*/modules.alias))"
 
 # Todo: Test secure mode
 
@@ -27,7 +27,7 @@ _opt_defaultmode='660' # default: 620
 set -u
 pkgname='nslink'
 pkgver='8.00'
-pkgrel='7'
+pkgrel='8'
 pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial port Hub console terminal device server'
 # UP is not explicitly supported by NS-Link, only by the firmware updater.
 _pkgdescshort="Comtrol DeviceMaster ${pkgname} TTY driver"
@@ -62,37 +62,40 @@ source=(
   '0011-kernel-6.0-set_termios-const-ktermios.patch'
   '0012-kernel-6.6-struct-tty_operations-write-size_t.patch'
   '0013-kernel-6.3-tty_port_operations-int-to-bool.patch'
+  '0014-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch'
 )
 md5sums=('b59906d80268e69a24c211b398ffd10c'
          'e3ffb36acfdd321c919e44d477f0774a'
          '581cd5f582ed20c7cf85a4df23a9f78a'
-         '36fcfa504772df4aabbde9f23d5459d5'
-         '7e0659716e30c6e2ff5c16f20aac07be'
-         '4e0c61dc0c5da4c3125db7ac1e481aac'
-         '93e85c98fd375285887b78f2df44ce01'
-         'f85645dfe886b57273b475d3c6cd0964'
+         'dd44ac32eb3632120258cc4727221e15'
+         '23414fe236ef697e39f9bf6c26e482d9'
+         '26cd5af09d89c1b48a33fcbee00ce248'
+         '59e2c6d076c5346807088899bd05df3b'
+         '3cbb73aa4cdd04374744651ae5475b3c'
          'e5692035f047cdec52658f67954c6f4d'
          '8c329cf0f9c90cfd07ba86a4027eec48'
          'e21d8211b2f209ace648340cb5583805'
          '2774e3aa64717a7613e96fd86f649ea1'
          '98788ff1378604e9fda43eb6ef9e9e3d'
          'feb1ccc7522a6ac2b33326c7f648edb2'
-         '1ff77ae8edbcd654c680999eadd4911b')
+         '1ff77ae8edbcd654c680999eadd4911b'
+         'ed93e16d8cbac647e69a473359991c2d')
 sha256sums=('092859a3c198f8e3f5083a752eab0af74ef71dce59ed503d120792be13cc5fa3'
             'd21c5eeefdbf08a202a230454f0bf702221686ba3e663eb41852719bb20b75fb'
             '5a4e2713a8d1fe0eebd94fc843839ce5daa647f9fa7d88f62507e660ae111073'
-            'cbaa55f16357688b992a7d7c0f2fb56225edda286d97595918c50e05005d1318'
-            '7b7718789a4a23c3f16094f93b9fc0d8a5915e67e6a0aedef17cdb6adb22a1ac'
-            'a48cdf948f907b00919c3a2dadbaa2c41c28891d689195e072765c39b0b4af49'
-            '12c55d7b898b5cdcd09d6927fef1585a702fde356e8e039e7e85bbce64f3eed8'
-            '364a4fb9d8695067ee8d235d7763c59f6df417937b901a1810e00d397db21aee'
+            '9fe2680244ce4e5dc933e028a5e7944a912c2980a91cee92509904ede2cf8bea'
+            'de8de0c17c8075bbd792d271a869c5248063bf7126c60c61f37d833ee7f57fb7'
+            '79d86016eb5b2e80fd97350986fcd3c3050f10eb6fbe50f69b7fb454c8c049fa'
+            '13ec641d2371bb5fe4d4e745b95c2722652fc5bdb7ceef5a48882f9977b0c0ca'
+            '4411ef239ab5d8b227f08dc37ee33dc0a21ca9b98f03f39e90ea396d04127bdf'
             'bfa34783131c52e0bc0645c76469aaf504b13ac16d57b02d5ea9002603fb583e'
             '1353bc403b56ef0b00f4b87826991812ee24bcc9a0b2612c0027317a7aa86736'
             'a84e1a9884580917afe55816b4ec9b44ec0f4977144e7f4325647ff58642ecd6'
             '2b909997f0662ae9a49463be4c1ef2af718882924071e0d74b9c04d9d1198691'
             '7f181d1542b542989b319caf85621725389d7681cf2d5c3bb57dc774d14f1b76'
             '5a62d3658d716c8140de65c2ac2e2560ca33f0f2a58212e29df74eadb821b6ce'
-            '4c605df9b08ea2be3b3c94a2dab8554902ff15576a7075c597453306c275e3e2')
+            '4c605df9b08ea2be3b3c94a2dab8554902ff15576a7075c597453306c275e3e2'
+            '4ec33cda5131d1502ad46a26de68f0ae579e050e9ed7a111d7f9285caf972221')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -118,59 +121,49 @@ prepare() {
   fi
   unset _ver
 
-  #cp -p nslink.c{,.orig}; false
-  #diff -pNau5 nslink.c{.orig,} > '0002-kernel-5.6-proc_dir_entry-proc_ops.patch'
-  #patch -Nup0 -i "${srcdir}/0002-kernel-5.6-proc_dir_entry-proc_ops.patch"
-
-  #cp -p nslink.c{,.orig}; false
-  #diff -pNau5 nslink.c{.orig,} > '0003-tty_unregister_driver-void.patch'
-  patch -Nup0 -i "${srcdir}/0003-tty_unregister_driver-void.patch"
-
-  #cp -p nslink.c{,.orig}; false
-  #diff -pNau5 nslink.c{.orig,} > '0004-kernel-5.12-tty-low_latency.patch'
-  patch -Nup0 -i "${srcdir}/0004-kernel-5.12-tty-low_latency.patch"
+  local _patches=()
+  #_patches+=('0002-kernel-5.6-proc_dir_entry-proc_ops.patch')
+  _patches+=('0003-tty_unregister_driver-void.patch')
+  _patches+=('0004-kernel-5.12-tty-low_latency.patch')
 
   # tty.stopped https://lore.kernel.org/lkml/20210505091928.22010-13-jslaby@suse.cz/
   # unsigned write_room https://www.spinics.net/lists/linux-serial/msg42297.html
   # unsigned chars_in_buffer https://www.spinics.net/lists/linux-serial/msg42299.html
-  #cp -p nslink.c{,.orig}; false
-  #diff -pNau5 nslink.c{.orig,} > '0005-kernel-5.14-unsigned-tty-flow-tty.patch'
-  patch -Nup0 -i "${srcdir}/0005-kernel-5.14-unsigned-tty-flow-tty.patch"
+  _patches+=('0005-kernel-5.14-unsigned-tty-flow-tty.patch')
 
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
-  #rm -f *.orig; cp -p nslink.c{,.orig}; false
-  #diff -pNau5 nslink.c{.orig,} > '0006-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
-  patch -Nup0 -i "${srcdir}/0006-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
-
-  #rm -f *.orig; cp -p nslink.service{,.orig}; false
-  #diff -pNau5 nslink.service{.orig,} > '0007-service-priority.patch'
-  #patch -Nup0 -i "${srcdir}/0007-service-priority.patch"
-
-  #rm -f *.orig; cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0007-service-priority.patch'
-  patch -Nup1 -i "${srcdir}/0007-service-priority.patch"
-
-  #rm -f *.orig; cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0009-python3-nslink.patch'
-  patch -Nup1 -i "${srcdir}/0009-python3-nslink.patch"
-
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0010-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch'
-  patch -Nup1 -i "${srcdir}/0010-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch"
+  _patches+=('0006-kernel-5.15-alloc_tty_driver-put_tty_driver.patch')
+  _patches+=('0007-service-priority.patch')
+  _patches+=('0009-python3-nslink.patch')
+  _patches+=('0010-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch')
 
   # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0011-kernel-6.0-set_termios-const-ktermios.patch'
-  patch -Nup1 -i "${srcdir}/0011-kernel-6.0-set_termios-const-ktermios.patch"
+  _patches+=('0011-kernel-6.0-set_termios-const-ktermios.patch')
+  _patches+=('0012-kernel-6.6-struct-tty_operations-write-size_t.patch')
+  _patches+=('0013-kernel-6.3-tty_port_operations-int-to-bool.patch')
+  _patches+=('0014-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch')
 
+  local _pt _ptf=() _pts=()
+  for _pt in "${_patches[@]}"; do
+    set +u; msg2 "Patch ${_pt}"; set -u
+    if patch -Nup1 -i "${srcdir}/${_pt}"; then
+      _pts+=("${_pt}")
+    else
+      _ptf+=("${_pt}")
+    fi
+  done
+  if [ "${#_ptf[@]}" -gt 0 ]; then
+     if [ "${#_pts[@]}" -gt 0 ]; then
+       printf 'Patch success %s\n' "${_pts[@]}"
+       printf 'Warning: Some old patches may need to be removed even if they are successful\n'
+     fi
+     printf 'Patch failed %s\n' "${_ptf[@]}"
+     set +x
+     false
+  fi
   #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0012-kernel-6.6-struct-tty_operations-write-size_t.patch'
-  patch -Nup1 -i "${srcdir}/0012-kernel-6.6-struct-tty_operations-write-size_t.patch"
-
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0013-kernel-6.3-tty_port_operations-int-to-bool.patch'
-  patch -Nup1 -i "${srcdir}/0013-kernel-6.3-tty_port_operations-int-to-bool.patch"
+  #diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
 
   # Make package compatible
   #cp -p 'install.sh' 'install.sh.Arch' # testmode for diff comparison

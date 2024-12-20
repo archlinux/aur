@@ -1,5 +1,5 @@
---- nslink.c.orig	2020-05-21 00:58:54.304970216 -0400
-+++ nslink.c	2020-05-21 01:04:05.147271869 -0400
+--- a/nslink.c	2020-05-21 00:58:54.304970216 -0400
++++ b/nslink.c	2020-05-21 01:04:05.147271869 -0400
 @@ -5031,17 +5031,26 @@ static int queue_proc_show(struct seq_fi
  }
  static int queue_proc_open(struct inode *inode, struct file *file)

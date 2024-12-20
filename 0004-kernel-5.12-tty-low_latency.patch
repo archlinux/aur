@@ -1,5 +1,5 @@
---- nslink.c.orig	2021-08-10 16:38:55.351971026 -0400
-+++ nslink.c	2021-08-10 16:40:03.424715195 -0400
+--- a/nslink.c	2021-08-10 16:38:55.351971026 -0400
++++ b/nslink.c	2021-08-10 16:40:03.424715195 -0400
 @@ -2505,14 +2505,16 @@ static void init_nr_port(struct si_state
          info->close_delay = 500;     //ms
          info->baud_rate = 9600;

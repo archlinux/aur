@@ -1,0 +1,19 @@
+diff -pNaru5 a/nslink.c b/nslink.c
+--- a/nslink.c	2024-12-20 02:49:41.344922178 -0500
++++ b/nslink.c	2024-12-20 02:50:42.852248580 -0500
+@@ -3430,11 +3430,15 @@ static char *nrp_tty_name(struct tty_str
+                 strcpy(buf, "NULL tty");
+         return buf;
+ }
+ #endif
+ 
++#if LINUX_VERSION_CODE < VERSION_CODE(6,8,0)
+ static void nrp_send_xchar(struct tty_struct *tty, char ch)
++#else
++static void nrp_send_xchar(struct tty_struct *tty, u8 ch)
++#endif
+ {
+         struct nr_port *info = (struct nr_port *) tty->driver_data;
+ 
+         if (nslink_paranoia_check(info, "nrp_send_xchar"))
+                 return;

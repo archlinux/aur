@@ -1,5 +1,5 @@
---- nslink.c.orig	2021-11-20 15:13:52.248938958 -0500
-+++ nslink.c	2021-11-20 15:15:42.252800968 -0500
+--- a/nslink.c	2021-11-20 15:13:52.248938958 -0500
++++ b/nslink.c	2021-11-20 15:15:42.252800968 -0500
 @@ -5634,11 +5634,11 @@ int register_tty_driver(tBoxPortCount *u
  
          numBoxes = bp.boxCount;
