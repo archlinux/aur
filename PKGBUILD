@@ -3,9 +3,9 @@
 
 _pkgname=EasyTier
 pkgbase=easytier
-pkgname=($pkgbase-core $pkgbase-cli $pkgbase-web)
+pkgname=($pkgbase $pkgbase-core $pkgbase-cli $pkgbase-web)
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple, decentralized mesh VPN with WireGuard support."
 arch=("x86_64" "aarch64")
 url="https://github.com/EasyTier/EasyTier"
@@ -30,6 +30,11 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --verbose --release
+}
+
+package_easytier() {
+  pkgdesc="Meta package for EasyTier, A simple, decentralized mesh VPN with WireGuard support."
+  depends=('easytier-core' 'easytier-cli' 'easytier-web')
 }
 
 package_easytier-core() {
