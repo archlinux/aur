@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='smartctl_exporter'
-pkgver='0.12.0'
+pkgver='0.13.0'
 pkgrel='1'
 pkgdesc='Export smartctl statistics to prometheus'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ depends=('smartmontools')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}"
 	"${pkgname}.service")
-sha256sums=('30c605f7f9551399ed2da1ed610be4102734b5f3e61d4e42d5169ce597ff7870'
+sha256sums=('1a645d5e0af43f126e4c18af5a02cf31712d4c29ffc50757b83ae75d97865609'
             '5645b05537feb19bd57218ed358403ee7e1bc7520a015a2a885730cff35b7367'
             '91fa22825b6f5be3678ee394b7d60b908a989b5885079335313ab22f6ecb4b73')
 backup=("etc/conf.d/${pkgname}")
@@ -22,13 +22,16 @@ backup=("etc/conf.d/${pkgname}")
 prepare() {
   export GOPATH="${srcdir}/gopath"
   export GOBIN="${GOPATH}/bin"
+  export GOCACHE="${srcdir}/cache/go-cache"
+  export GOMODCACHE="${srcdir}/cache/go"
+  export GOTMPDIR="${srcdir}"
+  eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
   mkdir -p "${GOPATH}/src/${_uri}"
   ln -snf "${srcdir}/${pkgname}-${pkgver}" "${GOPATH}/src/${_uri}/${pkgname}"
 }
 
 build() {
   cd "${GOPATH}/src/${_uri}/${pkgname}"
-  eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
   GOOS="${GOHOSTOS}" GOARCH="${GOHOSTARCH}" BUILDTAGS="netgo static_build" \
   go build -x \
     -buildmode="pie" \
@@ -44,7 +47,7 @@ build() {
 }
 
 package() {
-  install -Dm755 "${GOPATH}/src/${_uri}/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "${pkgname}" "${pkgdir}/etc/conf.d/${pkgname}"
-  install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm0755 "${GOPATH}/src/${_uri}/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm0644 "${pkgname}" "${pkgdir}/etc/conf.d/${pkgname}"
+  install -Dm0644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 }
