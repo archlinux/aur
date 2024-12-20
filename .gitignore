@@ -1,0 +1,7 @@
+# Cloned Git repository
+/mkbold-mkitalic/
+
+# makepkg stuff
+/pkg/
+/src/
+/*.pkg.tar.*
