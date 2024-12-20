@@ -2,7 +2,7 @@
 pkgname=turbowarp-desktop-git
 _pkgname=TurboWarp
 _appname="org.turbowarp.${_pkgname}"
-pkgver=1.12.3.r57.gb036b00
+pkgver=1.13.0.beta.3.r0.g3c65aa1
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -22,7 +22,6 @@ makedepends=(
     'curl'
     'git'
     'gcc'
-    'cmake'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
@@ -42,7 +41,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-git}/
@@ -81,6 +80,9 @@ build() {
     git submodule update
     cp .npmrc extensions
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
     NODE_ENV=production     npm run fetch
     NODE_ENV=production     npm run webpack:prod
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
