@@ -2,8 +2,8 @@
 # Contributor: chr0mag <phillips.julian AT gmail DOT com>
 
 pkgname=sos
-pkgver=4.8.1
-pkgrel=2
+pkgver=4.8.2
+pkgrel=1
 pkgdesc="A unified tool for collecting system logs and other debug information"
 arch=('any')
 url="https://github.com/sosreport/sos"
