@@ -1,17 +1,17 @@
-From 12e0a15f8893187ee92fa5af8095b8bb33adefe5 Mon Sep 17 00:00:00 2001
+From 866928ba1ad8d62f62bb3abab463740da8a4d07a Mon Sep 17 00:00:00 2001
 From: Christian Hesse <mail@eworm.de>
-Date: Mon, 17 Oct 2022 16:40:29 +0200
-Subject: [PATCH] upate xclient script
+Date: Wed, 11 Sep 2024 21:14:24 +0200
+Subject: [PATCH 1/1] upate xclient script
 
 ---
- src/VBox/Additions/x11/Installer/98vboxadd-xclient | 13 +++----------
- 1 file changed, 3 insertions(+), 10 deletions(-)
+ .../Additions/x11/Installer/98vboxadd-xclient     | 15 +++------------
+ 1 file changed, 3 insertions(+), 12 deletions(-)
 
 diff --git a/src/VBox/Additions/x11/Installer/98vboxadd-xclient b/src/VBox/Additions/x11/Installer/98vboxadd-xclient
-index 7c9b5989..271261a4 100755
+index 7a45de98..bcfe024e 100755
 --- a/src/VBox/Additions/x11/Installer/98vboxadd-xclient
 +++ b/src/VBox/Additions/x11/Installer/98vboxadd-xclient
-@@ -31,18 +31,11 @@ for i in $HOME/.vboxclient-*.pid; do
+@@ -31,17 +31,9 @@ for i in $HOME/.vboxclient-*.pid; do
      test -w $i || rm -f $i
  done
  
@@ -24,12 +24,17 @@ index 7c9b5989..271261a4 100755
 -   # This script can also be triggered by a connection over SSH, which is not
 -   # what we had in mind, so we do not start VBoxClient in that case.  We do
 -   # not use "exit" here as this script is "source"d, not executed.
+-
+-    # Check wheather X11 or Wayland version of VBoxClient should be started.
 +# Do not start if the kernel module is not present; or if this script is
 +# triggered by a connection over SSH.
-+if [ -c /dev/vboxguest -a -z "${SSH_CONNECTION}" ]; then
-   /usr/bin/VBoxClient --clipboard
-   /usr/bin/VBoxClient --checkhostversion
-   /usr/bin/VBoxClient --seamless
-   /usr/bin/VBoxClient --draganddrop
--  /usr/bin/VBoxClient --vmsvga-session # In case VMSVGA emulation is enabled
++if [ -c /dev/vboxguest -a -z "${SSH_CONNECTION}" ]; then    
+     vbox_wl_check=$(/usr/bin/vboxwl --check 2> /dev/null)
+     if test "$vbox_wl_check" = "WL"; then
+         /usr/bin/VBoxClient --wayland
+@@ -52,5 +44,4 @@ elif test -z "${SSH_CONNECTION}"; then
+     fi
+ 
+     /usr/bin/VBoxClient --checkhostversion
+-    /usr/bin/VBoxClient --vmsvga-session # In case VMSVGA emulation is enabled
  fi
