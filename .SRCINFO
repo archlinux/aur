@@ -6,6 +6,7 @@ pkgbase = subscription-manager-rhsm-certificates-git
 	arch = any
 	license = GPL-2.0-only
 	makedepends = git
+	provides = subscription-manager-rhsm-certificates
 	source = git+https://github.com/candlepin/subscription-manager-rhsm-certificates.git
 	b2sums = SKIP
 

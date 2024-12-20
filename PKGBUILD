@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc='Certificates for Red Hat Subscription Management'
 arch=(any)
 url='https://github.com/candlepin/subscription-manager-rhsm-certificates/'
+provides=(subscription-manager-rhsm-certificates)
 makedepends=(git)
 license=(GPL-2.0-only)
 source=("git+https://github.com/candlepin/$_name.git")
