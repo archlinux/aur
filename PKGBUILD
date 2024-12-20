@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=redisinsight-git
 _pkgname="Redis Insight"
-pkgver=2.62.0.r30.g4fcb17a
+pkgver=2.64.0.r5.g1d58f1f
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -44,7 +44,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} --no-sandbox %U"
     cd "${srcdir}/${pkgname//-/.}"
@@ -77,6 +77,9 @@ build() {
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=development    yarn add -D "parcel" "@parcel/transformer-sass" "@parcel/transformer-less" "@nestjs/cli"
     NODE_ENV=development    yarn --cwd "${pkgname%-git}"/api/ install --cache-folder "${srcdir}/.yarn_cache"
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     yarn run build:ui
     NODE_ENV=production     yarn run build:statics
     NODE_ENV=production     yarn run build:api
