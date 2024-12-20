@@ -1,0 +1,4 @@
+[elstob-font]
+source = "git"
+git = "https://github.com/psb1558/Elstob-font.git"
+prefix = "v"
