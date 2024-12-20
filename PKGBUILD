@@ -17,6 +17,8 @@ makedepends+=()
 provides+=(wechat-uos wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-universal-bwrap wechat-bin wechat-bwrap wechat-portable)
 conflicts+=(wechat-uos wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-universal-bwrap wechat-bin)
 
+replaces+=("wechat-bin")
+
 depends=(
 	"portable"
 	"nss"
@@ -28,7 +30,6 @@ depends=(
 	"libxkbcommon"
 	"libxcb"
 	"util-linux"
-	"openssl-1.1"
 	"libxcb"
 	"gcc-libs"
 	"nspr"
