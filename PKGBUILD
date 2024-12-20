@@ -11,7 +11,7 @@ arch=('x86_64'
       'loong64')
 url="https://github.com/NapNeko/NapCatQQ"
 license=('GPL2')
-depends=('linuxqq<=3.2.13_29927' 'xorg-server-xvfb')
+depends=('linuxqq' 'xorg-server-xvfb')
 makedepends=('git' 'npm' 'jq')
 options=('!strip')
 conflicts=('napcatqq'
