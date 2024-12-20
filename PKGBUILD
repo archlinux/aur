@@ -1,7 +1,7 @@
 # Maintainer: Diablo (https://github.com/progzone122) (https://t.me/DiabloSat)
 pkgname=warp-gui
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI application based on warp-cli for linux written in Rust"
 arch=('x86_64')
 url="https://github.com/progzone122/warp-cloudflare-gui-rust"
@@ -11,6 +11,7 @@ depends=(
   'pacman>6.1'
   'cloudflare-warp-bin'
   'qt6-base'
+  'webkit2gtk-4.1'
 )
 optdepends=(
   'sudo: privilege elevation'
