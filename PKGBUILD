@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=PhiML
 pkgname=python-${_base,,}
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Unified API for machine learning"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python-scipy python-packaging)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest python-pytorch python-tensorflow python-jax)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('bfe306af3c79f25b592ab938a3640859996dfd403d5bf32c423d253b7d750ecf736c97d314efab995fe9f9852ba52a248043f169e89975135d6c33283773a2f9')
+sha512sums=('258d70f412847cd6b4feb365aa45a3aeddeb2e32f2a33267a822f842eda486fa252d14fcc43c6aaec58be5c0cb7e90766b3230432ff456e22bd767b28df1488b')
 
 build() {
   cd ${_base}-${pkgver}
