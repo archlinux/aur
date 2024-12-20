@@ -1,6 +1,6 @@
 pkgname=rteval
-pkgver=3.7
-pkgrel=2
+pkgver=3.9
+pkgrel=1
 pkgdesc="Evaluate performance of realtime Linux kernel on a particular hardware platform"
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/documentation/howto/tools/rteval"
@@ -13,9 +13,9 @@ md5sums=('SKIP')
 
 prepare() {
   cd "${pkgname}"
-  KLOAD="linux-6.1.8.tar.xz"
+  KLOAD="linux-6.12-rc4.tar.gz"
   if [ ! -f "loadsource/$KLOAD" ]; then
-    wget -P loadsource https://www.kernel.org/pub/linux/kernel/v6.x/$KLOAD
+    wget -P loadsource https://git.kernel.org/torvalds/t/$KLOAD
   fi
 }
 
