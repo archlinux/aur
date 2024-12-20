@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable
-pkgver=1.3.4
-pkgrel=2
+pkgver=1.3.5
+pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
 arch=('any')
@@ -33,7 +33,7 @@ depends=(
 	"libxkbcommon"
 	"libxcb"
 	"util-linux"
-	"openssl-1.1"
+	"openssl"
 	"libxcb"
 	"gcc-libs"
 	"nspr"
