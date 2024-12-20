@@ -1,6 +1,6 @@
 pkgbase = rlvm
 	pkgdesc = RealLive clone for Linux and OSX
-	pkgver = 0.14.r91.af2ae0e6
+	pkgver = 0.14.r94.e38cda77
 	pkgrel = 1
 	url = https://github.com/eglaysher/rlvm
 	arch = x86_64
@@ -18,12 +18,10 @@ pkgbase = rlvm
 	depends = sdl_ttf
 	depends = guichan
 	depends = gtk3
-	source = https://github.com/eglaysher/rlvm/archive/af2ae0e649f5df370fe63e493119c1c944798044.tar.gz
-	source = includes.patch
+	source = https://github.com/eglaysher/rlvm/archive/e38cda7783dc67539ce27901596ed93a2bb5c826.tar.gz
 	source = warnings.patch
 	source = gtk+3.patch
-	sha256sums = d4b26ed3680f93352bf851a8387d29ccf99ed76ec07b02e5ff8bcab98e1d272c
-	sha256sums = 56ba8679f806163e30962a0418ba462edca52050c6ac88edfadaead68a1b94a8
+	sha256sums = c2d595060cce52494d82ef59bed205fd427890b4a7e9b09465e01da8a431a3fd
 	sha256sums = dcbd9e0de8ccb91983d691f0b5fd6938fef45653ac20d244c1c19a3df01b7550
 	sha256sums = 6bf8a1d8cd64b05057859338132acef11db573c58adc3913679776b8d4a7b83a
 
