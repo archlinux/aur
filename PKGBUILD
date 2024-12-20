@@ -3,7 +3,7 @@
 pkgname=serial-studio
 _pkgname=Serial-Studio
 pkgver=3.0.6
-pkgrel=5
+pkgrel=7
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=($CARCH)
 url="https://github.com/Serial-Studio/Serial-Studio"
@@ -78,6 +78,7 @@ depends=(
 )
 makedepends=(
     cmake
+    ninja
     $_qt-5compat
     $_qt-charts
     $_qt-shadertools
@@ -104,6 +105,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr/share/serial-studio \
         -DCMAKE_INSTALL_BINDIR=/usr/bin \
         -B build \
+        -G Ninja \
         -Wno-dev
 
     cmake --build build

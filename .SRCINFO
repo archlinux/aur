@@ -1,11 +1,12 @@
 pkgbase = serial-studio
 	pkgdesc = Multi-purpose serial data visualization & processing program
 	pkgver = 3.0.6
-	pkgrel = 5
+	pkgrel = 7
 	url = https://github.com/Serial-Studio/Serial-Studio
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = qt6-5compat
 	makedepends = qt6-charts
 	makedepends = qt6-shadertools
