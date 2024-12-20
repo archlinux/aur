@@ -19,13 +19,13 @@ optdepends=('brltty: For Braille support'
   'python-pyenchant: for spell check functionality'
   'xclip: for copy to X session clipboard'
   'speech-dispatcher: TTS support')
-makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
+makedepends=('git' 'python-setuptools')
 provides=('fenrir')
 conflicts=('fenrir-git')
 backup=('etc/fenrirscreenreader/settings/settings.conf')
 source=("git+https://git.stormux.org/storm/${pkgname}.git#tag=${pkgver}"
   'fenrirscreenreader.service')
-sha512sums=('7e99adefd4c3b780bb40cbe35531c29ebfe4f6f4e94173033d067f700dc0cdc5543472933b8fdf5f1cbb589231a7023a73ac2666643ed0832ed0be4c8c8d8b3f'
+sha512sums=('037de1f99f4f7a158205e3e4cdc6d9677dd94da61950edd9571657eecfbabc7f9aa08dbe526077a81c77fd9af7453dfdb6367f07ddc1b084b021e8e5d8f0ad64'
             'e5e690bd9084d20a3c96ed391989e1db5211ef65b36a18ca6a49f8e16b40771a8a35151388df69d3cc64459d075ecb5fd0c415e11dfb43bc6ed2927612262168')
 
 package() {
