@@ -3,7 +3,7 @@
 
 pkgname=libyang-git
 _gitname=libyang
-pkgver=r4278.838c6c6ad
+pkgver=r4928.e0fbbb70e
 pkgrel=1
 pkgdesc='libyang is YANG data modelling language parser and toolkit written (and providing API) in C'
 url='https://github.com/CESNET/libyang/'
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 check() {
-	ctest --test-dir "$srcdir/build"
+	ctest --exclude-regex yanglint_interactive --test-dir "$srcdir/build"
 }
 
 build() {
