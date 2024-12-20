@@ -2,7 +2,7 @@
 # Contributor:  Antonio Rojas <arojas@archlinux.org>
 
 pkgname=noto-fonts-ar
-pkgver=24.5.1
+pkgver=2024.12.01
 pkgrel=1
 epoch=1
 pkgdesc="Google Noto TTF fonts for Arabic Scripts"
@@ -10,7 +10,7 @@ arch=(any)
 url="https://www.google.com/get/noto/"
 license=(custom:SIL)
 optdepends=('noto-fonts-emoji: Emoji characters')
-_url="https://github.com/notofonts/notofonts.github.io/raw/noto-monthly-release-${pkgver}/fonts"
+_url="https://raw.githubusercontent.com/notofonts/notofonts.github.io/noto-monthly-release-${pkgver}/fonts"
 source=("${_url}/NotoKufiArabic/hinted/ttf/NotoKufiArabic-"{Bold,Regular}.ttf
         "${_url}/NotoNaskhArabic/hinted/ttf/NotoNaskhArabic-"{Bold,Regular}.ttf
         "${_url}/NotoSansArabic/hinted/ttf/NotoSansArabic-"{Bold,Regular}.ttf
