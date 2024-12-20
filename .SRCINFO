@@ -1,7 +1,7 @@
 pkgbase = meshcentral
 	pkgdesc = The open source, multi-platform, self-hosted, feature packed web site for remote device management
 	pkgver = 1.1.35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://meshcentral.com/info/
 	arch = any
 	license = Apache
