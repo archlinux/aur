@@ -2,7 +2,7 @@
 # Contributor:  Antonio Rojas <arojas@archlinux.org>
 
 pkgname=noto-fonts-variable-lite
-pkgver=24.5.1
+pkgver=2024.12.01
 pkgrel=1
 epoch=1
 pkgdesc="Google Noto TTF variable fonts (lite version)"
@@ -13,7 +13,7 @@ optdepends=('noto-fonts-emoji: Emoji characters'
             'noto-fonts-variable-ar: Fonts for Arabic Script')
 provides=(ttf-font noto-fonts noto-fonts-extra)
 conflicts=(noto-fonts noto-fonts-extra)
-_url="https://github.com/notofonts/notofonts.github.io/raw/noto-monthly-release-${pkgver}/fonts"
+_url="https://raw.githubusercontent.com/notofonts/notofonts.github.io/noto-monthly-release-${pkgver}/fonts"
 source=("${_url}/NotoSans/googlefonts/variable/NotoSans-Italic[wdth,wght].ttf"
         "${_url}/NotoSans/googlefonts/variable/NotoSans[wdth,wght].ttf"
         "${_url}/NotoSansMono/googlefonts/variable/NotoSansMono[wdth,wght].ttf"
@@ -21,7 +21,7 @@ source=("${_url}/NotoSans/googlefonts/variable/NotoSans-Italic[wdth,wght].ttf"
         "${_url}/NotoSerif/googlefonts/variable/NotoSerif[wdth,wght].ttf"
         "${_url}/LICENSE"
         {46,66}-noto-{mono,serif,sans}.conf)
-sha256sums=('977f2f82ba421c81c7b4965e9ec9bd8119fc5afab0c743f74f8ca9c68201820e'
+sha256sums=('f2ad4b3ac7b7b04d17018d7b83ee4817f8e8e2a096b8549590574b58913b59ae'
             'e0890ec6da515d47b9d7cdb8b4ded1d9255fc4e5254ae03f9a579da6cb354717'
             '2cb2adb378a8f574213e23df697050b83c54c27df465a2015552740b2769a081'
             'e87acbc6c0efd0d9a20d6a8cbbda2b266c14be3a3a6f5af8ec9d7b2460570ad1'
