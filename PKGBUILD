@@ -4,14 +4,14 @@
 # Contributor: jakka <jakkadoujin at gmail dot com>
 
 pkgname=xray-geoip
-pkgver=202412190056
+pkgver=202412201411
 pkgrel=1
 pkgdesc="GeoIP list for Xray"
 arch=('any')
 url="https://github.com/v2fly/geoip"
 license=('CC-BY-SA-4.0')
 source=("${pkgname}-${pkgver}.dat::${url}/releases/download/${pkgver}/geoip.dat")
-sha256sums=('b75b994afcbb82f0b417001c015fa64e832bb6e66faf3a69ad4e423c9b29a463')
+sha256sums=('3f72cea0044a747fcb28cce36f70946c9e664c55949046fd22679090edc264b9')
 
 package() {
     install -Dm644 "${pkgname}-${pkgver}.dat" "${pkgdir}/usr/share/xray/geoip.dat"
