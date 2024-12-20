@@ -24,6 +24,7 @@ post_install() {
     [ -z $SUDO_HOME ] && SUDO_HOME=$(eval echo ~$SUDO_USER)
     install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/profile /etc/skel/.config/fcitx5/profile 
     sudo -u $SUDO_USER mkdir -p $SUDO_HOME/.config/fcitx5/conf
+    mkdir -p /etc/skel/.config/fcitx5/conf
     install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/profile $SUDO_HOME/.config/fcitx5/profile
     install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/notifications.conf /etc/skel/.config/fcitx5/conf/notifications.conf
     install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/notifications.conf $SUDO_HOME/.config/fcitx5/conf/notifications.conf
@@ -38,6 +39,7 @@ post_upgrade() {
     [ -z $SUDO_HOME ] && SUDO_HOME=$(eval echo ~$SUDO_USER)
     install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/profile /etc/skel/.config/fcitx5/profile 
     sudo -u $SUDO_USER mkdir -p $SUDO_HOME/.config/fcitx5/conf
+    mkdir -p /etc/skel/.config/fcitx5/conf
     install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/profile $SUDO_HOME/.config/fcitx5/profile
     install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/notifications.conf /etc/skel/.config/fcitx5/conf/notifications.conf
     install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/notifications.conf $SUDO_HOME/.config/fcitx5/conf/notifications.conf
