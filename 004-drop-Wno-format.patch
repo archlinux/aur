@@ -1,21 +1,21 @@
-From 6fed8ce04e50522c690ffa4bb100c1dd00ee4d36 Mon Sep 17 00:00:00 2001
+From c2dc4a940e485a26e1b729e94c5aa710834d1542 Mon Sep 17 00:00:00 2001
 From: Christian Hesse <mail@eworm.de>
 Date: Tue, 18 Apr 2023 22:59:50 +0200
 Subject: [PATCH 1/1] drop -Wno-format
 
 ---
- src/VBox/Devices/EFI/Firmware/Config.kmk  |  2 +-
- src/VBox/Devices/Makefile.kmk             |  2 +-
- src/VBox/Devices/PC/ipxe/Makefile.kmk     |  2 +-
- src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk |  2 +-
- src/VBox/Main/webservice/Makefile.kmk     |  3 +--
- 5 files changed
+ src/VBox/Devices/EFI/Firmware/Config.kmk  | 2 +-
+ src/VBox/Devices/Makefile.kmk             | 2 +-
+ src/VBox/Devices/PC/ipxe/Makefile.kmk     | 2 +-
+ src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk | 2 +-
+ src/VBox/Main/webservice/Makefile.kmk     | 3 +--
+ 5 files changed, 5 insertions(+), 6 deletions(-)
 
 diff --git a/src/VBox/Devices/EFI/Firmware/Config.kmk b/src/VBox/Devices/EFI/Firmware/Config.kmk
-index ddd1fc1e..0614d90c 100644
+index 5e7dcf91..04f4c854 100644
 --- a/src/VBox/Devices/EFI/Firmware/Config.kmk
 +++ b/src/VBox/Devices/EFI/Firmware/Config.kmk
-@@ -155,7 +155,7 @@ TEMPLATE_VBoxEfiBldProg_LIBS = \
+@@ -165,7 +165,7 @@ TEMPLATE_VBoxEfiBldProg_LIBS = \
  ifn1of ($(KBUILD_HOST), win) # This stuff isn't up to our standard at all! :/
   TEMPLATE_VBoxEfiBldProg_CFLAGS = $(filter-out -pedantic,$(TEMPLATE_VBoxBldProg_CFLAGS)) \
   	-Wno-sign-compare -Wno-missing-prototypes -Wno-strict-prototypes \
@@ -25,20 +25,20 @@ index ddd1fc1e..0614d90c 100644
   TEMPLATE_VBoxEfiBldProg_CXXFLAGS = $(filter-out -pedantic,$(TEMPLATE_VBoxBldProg_CXXFLAGS)) \
   	-Wno-all -Wno-shadow -Wno-empty-body -Wno-unused-parameter -Wno-unused-variable \
 diff --git a/src/VBox/Devices/Makefile.kmk b/src/VBox/Devices/Makefile.kmk
-index a17e655f..fe905681 100644
+index 613ff466..9123b767 100644
 --- a/src/VBox/Devices/Makefile.kmk
 +++ b/src/VBox/Devices/Makefile.kmk
-@@ -837,7 +837,7 @@ if !defined(VBOX_ONLY_EXTPACKS) && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SU
-   ifeq ($(KBUILD_TARGET),win)
-    $(file)_CFLAGS = -wd4018
-   else
--   $(file)_CFLAGS += -Wno-sign-compare -Wno-format -Wno-bad-function-cast
-+   $(file)_CFLAGS += -Wno-sign-compare -Wno-bad-function-cast
-   endif
-  endef
+@@ -859,7 +859,7 @@ if !defined(VBOX_ONLY_EXTPACKS) && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SU
+    ifeq ($(KBUILD_TARGET),win)
+     $(file)_CFLAGS = -wd4018
+    else
+-    $(file)_CFLAGS += -Wno-sign-compare -Wno-format -Wno-bad-function-cast
++    $(file)_CFLAGS += -Wno-sign-compare -Wno-bad-function-cast
+    endif
+   endef
  
 diff --git a/src/VBox/Devices/PC/ipxe/Makefile.kmk b/src/VBox/Devices/PC/ipxe/Makefile.kmk
-index 7f5b4c5a..33705fe7 100644
+index 6c95001a..9708145c 100644
 --- a/src/VBox/Devices/PC/ipxe/Makefile.kmk
 +++ b/src/VBox/Devices/PC/ipxe/Makefile.kmk
 @@ -396,7 +396,7 @@ endif
@@ -51,7 +51,7 @@ index 7f5b4c5a..33705fe7 100644
   ifdef VBOX_WITH_LIBLZMA
    ipxezbin_INCS     = $(SDK_VBoxLibLzma_INCS) # Can't use the proper SDK here as link order matters and liblzma depends on our runtime.
 diff --git a/src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk b/src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk
-index 081f02b0..75fe411b 100644
+index 394834e5..2f90d86f 100644
 --- a/src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk
 +++ b/src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk
 @@ -118,7 +118,7 @@ if defined(VBOX_WITH_EXTPACK_VBOXDTRACE) && defined(VBOX_WITH_EXTPACK)
@@ -64,7 +64,7 @@ index 081f02b0..75fe411b 100644
    VBoxDTraceCmd_INCS = \
    	include \
 diff --git a/src/VBox/Main/webservice/Makefile.kmk b/src/VBox/Main/webservice/Makefile.kmk
-index dbccdf4f..c6093ed4 100644
+index 84880dcd..f301f9cc 100644
 --- a/src/VBox/Main/webservice/Makefile.kmk
 +++ b/src/VBox/Main/webservice/Makefile.kmk
 @@ -264,7 +264,7 @@ ifdef VBOX_GSOAP_INSTALLED

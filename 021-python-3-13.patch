@@ -1,0 +1,13 @@
+diff --git a/configure b/configure
+index 65791d55..d850efc8 100755
+--- a/configure
++++ b/configure
+@@ -2187,7 +2187,7 @@ extern "C" int main(void)
+ }
+ EOF
+   found=
+-  SUPPYTHONLIBS="python2.7 python2.6 python3.1 python3.2 python3.3 python3.4 python3.4m python3.5 python3.5m python3.6 python3.6m python3.7 python3.7m python3.8 python3.9 python3.10 python3.11 python3.12"
++  SUPPYTHONLIBS="python2.7 python2.6 python3.1 python3.2 python3.3 python3.4 python3.4m python3.5 python3.5m python3.6 python3.6m python3.7 python3.7m python3.8 python3.9 python3.10 python3.11 python3.12 python3.13"
+   for p in $PYTHONDIR; do
+     for d in $SUPPYTHONLIBS; do
+       for b in lib/x86_64-linux-gnu lib/i386-linux-gnu lib64 lib/64 lib; do

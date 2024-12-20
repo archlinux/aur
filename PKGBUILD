@@ -7,9 +7,9 @@
 
 pkgname=virtualbox-kvm
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (KVM backend)'
-pkgver=20240828
+pkgver=20241220
 _pkgver=dev-${pkgver}
-_vboxver='7.0.20'
+_vboxver='7.1.4'
 pkgrel=1
 conflicts=('virtualbox' 'virtualbox-ose')
 depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
@@ -28,7 +28,7 @@ license=('GPL' 'custom:CDDL')
 makedepends=('alsa-lib' 'cdrkit' 'curl' 'device-mapper' 'git' 'glu' 'gsoap' 'glslang' 'iasl'
                 'jdk8-openjdk' 'libidl2' 'liblzf' 'libpulse' 'libtpms' 'libvncserver' 'libvpx'
                 'libxcomposite' 'libxcursor' 'libxinerama' 'libxml2' 'libxmu' 'libxrandr' 'libxslt'
-                'libxtst' 'linux-headers' 'mesa' 'python' 'qt5-base' 'qt5-tools' 'qt5-x11extras'
+                'libxtst' 'linux-zen-headers' 'mesa' 'python' 'qt5-base' 'qt5-tools' 'qt5-x11extras'
                 'sdl' 'sdl_ttf' 'vde2' 'xorgproto' 'xorg-server-devel' 'yasm')
 
 source=("https://download.virtualbox.org/virtualbox/${_vboxver}/VirtualBox-${_vboxver}.tar.bz2"
@@ -52,10 +52,11 @@ source=("https://download.virtualbox.org/virtualbox/${_vboxver}/VirtualBox-${_vb
         '012-vbglR3GuestCtrlDetectPeekGetCancelSupport.patch'
         '013-support-building-from-dkms.patch'
         '018-upate-xclient-script.patch'
-        '019-libxml-2-12.patch')
-sha256sums=('5cf5979bef66ebab3fcd495796b215a940e8a07c469d4bc56d064de44222dd02'
-            'f414851b39067b8be6ced44ebf1d727236c1df4418fe66ba2ad0c1edfd0bb0aa'
-            '76d98ea062fcad9e5e3fa981d046a6eb12a3e718a296544a68b66f4b65cb56db'
+        '020-python-3-12.patch'
+        '021-python-3-13.patch')
+sha256sums=('872e7a42b41f8558abbf887f1bdc7aac932bb88b2764d07cbce270cab57e3b5e'
+            '43d3f705aaae7434f88dfafdfb99b3766dc91e55f99224296ded39bd5390a8e6'
+            'f753501352054576c510aa81e83f4935079ea620e601057784b02b4d4d1eeb04'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
             'da4c49f6ca94e047e196cdbcba2c321199f4760056ea66e0fbc659353e128c9e'
             'f876e9f55243eded423fda4fc2ffe3b174dca90380a6315f7c9b3cd1c9d07206'
@@ -68,13 +69,14 @@ sha256sums=('5cf5979bef66ebab3fcd495796b215a940e8a07c469d4bc56d064de44222dd02'
             'e6e875ef186578b53106d7f6af48e426cdaf1b4e86834f01696b8ef1c685787f'
             '4001b5927348fe669a541e80526d4f9ea91b883805f102f7d571edbb482a9b9d'
             '9ee947c9b5ec5b25f52d3e72340fc3a57ca6e65a604e15b669ac582a3fb0dc1b'
-            '7675f87d31ad3137f057dc3ee3d4a2c5b2cfe8cd362adba130ddbf7a65069516'
+            'ffd30d1d5c41909518571da02c797102d459ba6dec22fe335b4778db264275e1'
             '053bfeee8863f3ffdf2f0e3f9f0d77dc61dd32764700a97a7635fd8611e20491'
-            'ad0d7af1e4c94f9efbc60827abea9e605398549b3673c40f697d042bb6bfe88a'
+            'd76b52d955215a72c296aa36d173897bcaa357528bf5a73347c52ccec8654ced'
             '81900e13d36630488accd8c0bfd2ceb69563fb2c4f0f171caba1cca59d438024'
             '00f68b86d32a1fada900c2da8dad2ab4215106cd58004f049bded99727cda2ff'
-            '87dddfd9047480e4c2b73367facf5dd3702148418c2efcd606af17c07da90fe0'
-            '7e5f1e386032dbe1042101d44bf454fddce8f7cbacea686816283840572b4201')
+            '73ed7ef243c975227660b9bbe7c576018f2c0216b3a3b5efcc4cc56c44c90914'
+            'ddb2092a5a000aa6ef854796f39dcdf86e72c06d53b24bac3835350571182df6'
+            '70245fc3abafbd3b191d87e2910f0f004050672f2d0d056db029a062e80e73bc')
 
 prepare() {
     cd "VirtualBox-${_vboxver}"
@@ -88,13 +90,11 @@ prepare() {
         fi
     done
 
-    sed -i '/cstring/a #include <cstdint>' src/libs/dxvk-native-1.9.2a/src/util/util_bit.h
-
     echo 'Applying local config'
     cp "${srcdir}/LocalConfig.kmk" .
 
     echo 'Use our CFLAGS'
-    echo "VBOX_GCC_OPT=$CXXFLAGS -Wno-error=stringop-truncation" >> LocalConfig.kmk
+    echo "VBOX_GCC_OPT=$CXXFLAGS" >> LocalConfig.kmk
 }
 
 build() {
@@ -141,8 +141,6 @@ package() {
         VBoxManage \
         VBoxSVC \
         VBoxExtPackHelperApp \
-        VBoxXPCOMIPCD \
-        VBoxTestOGL \
         VBoxBalloonCtrl \
         vbox-img \
         vboximg-mount \
