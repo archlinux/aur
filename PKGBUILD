@@ -1,9 +1,9 @@
 # Maintainer: bbaa <bbaa@bbaa.moe>
 _pkgname=EasyTier
-pkgname=easytier-git
-conflicts=("easytier")
-provides=("easytier")
-pkgver=2.0.3.r0.g4dca25d
+pkgbase=easytier-git
+pkgname=(easytier-core-git easytier-cli-git easytier-web-git)
+conflicts=(easytier-bin)
+pkgver=2.1.0.r0.g25ed41c
 pkgrel=1
 pkgdesc="A simple, decentralized mesh VPN with WireGuard support."
 arch=('x86_64')
@@ -36,12 +36,30 @@ build() {
   cargo build --verbose --release
 }
 
-package() {
+package_easytier-core-git() {
+  provides=("easytier-core")
+  conflicts=("easytier-core")
   install -dm755 "$pkgdir/var/lib/easytier"
   install -Dm644 "easytier.service" "$pkgdir/usr/lib/systemd/system/easytier.service"
   install -Dm644 "config.toml" "$pkgdir/etc/easytier/config.toml"
   cd "$_pkgname"
-  install -Dm755 "target/release/easytier-cli" "$pkgdir/usr/bin/easytier-cli"
   install -Dm755 "target/release/easytier-core" "$pkgdir/usr/bin/easytier-core"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/easytier/LICENSE"
 }
+
+package_easytier-cli-git() {
+  provides=("easytier-cli")
+  conflicts=("easytier-cli")
+  cd "$_pkgname"
+  install -Dm755 "target/release/easytier-cli" "$pkgdir/usr/bin/easytier-cli"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/easytier/LICENSE-cli"
+}
+
+package_easytier-web-git() {
+  provides=("easytier-web")
+  conflicts=("easytier-web")
+  cd "$_pkgname"
+  install -Dm755 "target/release/easytier-web" "$pkgdir/usr/bin/easytier-web"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/easytier/LICENSE-web"
+}
+
