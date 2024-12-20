@@ -44,7 +44,6 @@ sha256sums=('ae0abfc544a37a46f46e20f73010ddbe43cf12b0853701b763d3df1ab986dd36'
             '55adaa6a74015f160b0dbf45d997c004cd7ecded501940a32c69c512956b0524')
 
 prepare() {
-  # build with bazel 6.5.0
   # bazel in the ArchLinux is not working
   mkdir -p ${srcdir}/bin
   bazel_version=$(cat ${srcdir}/${_pkgname}-${pkgver}/.bazelversion)
