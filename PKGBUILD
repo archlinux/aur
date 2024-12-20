@@ -2,7 +2,7 @@
 # Contributor: Raziel23 <venom23 at runbox dot com>
 
 pkgname=vcmi-git
-pkgver=1.5.7.1062.g88f3e982e
+pkgver=1.6.0.1.g370ecf6f6
 pkgrel=1
 pkgdesc="Open-source engine for Heroes of Might and Magic III"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -21,8 +21,10 @@ install="${pkgname}.install"
 source=("${pkgname}::git+https://github.com/vcmi/vcmi.git#branch=develop"
         git+https://github.com/vcmi/innoextract.git#branch=vcmi
         git+https://github.com/fuzzylite/fuzzylite.git#branch=release
+        git+https://github.com/google/googletest.git#branch=v1.15.x
+
 )
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "${pkgname}"
@@ -31,10 +33,10 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  echo "${srcdir}"
   git submodule init
   git config submodule.innoextract.url "${srcdir}/innoextract"
   git config submodule.AI/FuzzyLite.url "${srcdir}/fuzzylite"
+  git config submodule.test/googletest.url "${srcdir}/googletest"
   git -c protocol.file.allow=always submodule update
 }
 
