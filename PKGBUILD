@@ -5,24 +5,23 @@
 
 pkgname=mkbold-mkitalic
 pkgver=0.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Make X11 BDF fonts bold and/or italic"
 url="https://gitlab.com/unshumikan/mkbold-mkitalic"
 license=("LicenseRef-X11")
 depends=(glibc)
 makedepends=(git)
 source=(
-  "git+https://gitlab.com/unshumikan/mkbold-mkitalic.git#tag=${pkgver?}"
-  "0001-Makefile-Use-CFLAGS-and-LDFLAGS-from-environment.patch"
+  "${pkgname:?}::git+https://gitlab.com/unshumikan/mkbold-mkitalic.git#tag=${pkgver?}"
+  "${pkgname:?}_0001-Makefile-Use-CFLAGS-and-LDFLAGS-from-environment.patch"
 )
 arch=(x86_64)
 
 prepare() {
   cd "${srcdir:?}/${pkgname:?}"
 
-  for i in "${srcdir:?}"/*.patch; do
-    [[ ! -f "${i?}" ]] && continue
-    patch -Np1 -i "${i?}"
+  for i in "${source[@]}"; do
+    [[ ${i?} == *.patch ]] && patch -Np1 -i "${srcdir:?}/${i?}"
   done
 }
 

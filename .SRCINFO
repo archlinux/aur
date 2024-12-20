@@ -1,14 +1,14 @@
 pkgbase = mkbold-mkitalic
 	pkgdesc = Make X11 BDF fonts bold and/or italic
 	pkgver = 0.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/unshumikan/mkbold-mkitalic
 	arch = x86_64
 	license = LicenseRef-X11
 	makedepends = git
 	depends = glibc
-	source = git+https://gitlab.com/unshumikan/mkbold-mkitalic.git#tag=0.11
-	source = 0001-Makefile-Use-CFLAGS-and-LDFLAGS-from-environment.patch
+	source = mkbold-mkitalic::git+https://gitlab.com/unshumikan/mkbold-mkitalic.git#tag=0.11
+	source = mkbold-mkitalic_0001-Makefile-Use-CFLAGS-and-LDFLAGS-from-environment.patch
 	sha256sums = 015ac7e34dcc3e1349fd8ca03441e1c865861dad419c097736a01b5055628ff0
 	sha256sums = e3ee710a7a0bd4659b272cd2bb67f14b46200edc75c0fdb922640d35d929c936
 
