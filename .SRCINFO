@@ -1,4 +1,4 @@
-pkgbase = bskydesktop-appimage
+pkgbase = bskydesktop
     pkgdesc = Bluesky Desktop - A decentralized social networking client distributed as an AppImage
     pkgver = latest
     pkgrel = 1
