@@ -3,7 +3,7 @@
 pkgname=ntpd-rs-git
 pkgver=r2676.g419832f2
 pkgrel=1
-pkgdesc='A full-featured implementation of the Network Time Protocol, including NTS support.'
+pkgdesc='A full-featured implementation of the Network Time Protocol, including NTS support, written in Rust.'
 url='https://github.com/pendulum-project/ntpd-rs'
 arch=('x86_64')
 depends=('gcc-libs' 'glibc')
@@ -17,7 +17,6 @@ conflicts=(
 replaces=(ntpd-rs ntpd-rs-git)
 changelog=CHANGELOG
 source=(
-#  "https://github.com/pendulum-project/ntpd-rs/archive/refs/tags/v$pkgver.tar.gz"
   ${pkgname}::git+https://github.com/pendulum-project/ntpd-rs.git
   'ntpd-rs.service'
   'ntpd-rs-metrics.service')
@@ -33,7 +32,6 @@ pkgver(){
 
 build() {
   cd "${srcdir}/${pkgname}"
-#  cd "$pkgname-$pkgver"
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
@@ -43,14 +41,14 @@ build() {
 }
 
 package() {
-  install -Dm644 -t "$pkgdir/usr/lib/systemd/system" ntpd-rs.service ntpd-rs-metrics.service
+  install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" ntpd-rs.service ntpd-rs-metrics.service
   echo "ntpd-rs.service" | install -Dm 644 /dev/stdin "${pkgdir}/usr/lib/systemd/ntp-units.d/50-ntpd-rs.list"
 
   cd "${srcdir}/${pkgname}"
 
-  install -Dm644 docs/examples/conf/ntp.toml.default "$pkgdir/etc/ntpd-rs/ntp.toml"
-  install -Dm755 -t "$pkgdir/usr/bin" target/x86_64-unknown-linux-gnu/release/{ntp-daemon,ntp-ctl,ntp-metrics-exporter}
+  install -Dm644 docs/examples/conf/ntp.toml.default "${pkgdir}/etc/ntpd-rs/ntp.toml"
+  install -Dm755 -t "${pkgdir}/usr/bin" target/x86_64-unknown-linux-gnu/release/{ntp-daemon,ntp-ctl,ntp-metrics-exporter}
 
-  install -Dm755 -t "$pkgdir/usr/share/man/man8" docs/precompiled/man/{ntp-daemon.8,ntp-ctl.8,ntp-metrics-exporter.8}
-  install -Dm755 -t "$pkgdir/usr/share/man/man5" docs/precompiled/man/ntp.toml.5
+  install -Dm755 -t "${pkgdir}/usr/share/man/man8" docs/precompiled/man/{ntp-daemon.8,ntp-ctl.8,ntp-metrics-exporter.8}
+  install -Dm755 -t "${pkgdir}/usr/share/man/man5" docs/precompiled/man/ntp.toml.5
 }
