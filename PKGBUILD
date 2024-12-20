@@ -10,7 +10,7 @@ pkgdesc='Powerful x86 virtualization for enterprise as well as home use (KVM bac
 pkgver=20241220
 _pkgver=dev-${pkgver}
 _vboxver='7.1.4'
-pkgrel=1
+pkgrel=2
 conflicts=('virtualbox' 'virtualbox-ose')
 depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
             'libxext' 'libxinerama' 'libxml2' 'libxmu' 'libxt' 'openssl' 'procps-ng' 'python'
@@ -23,7 +23,7 @@ backup=('etc/vbox/vbox.cfg')
 replaces=('virtualbox-ose')
 arch=('x86_64')
 url='https://github.com/cyberus-technology/virtualbox-kvm'
-license=('GPL' 'custom:CDDL')
+license=('GPL-3.0-only')
 
 makedepends=('alsa-lib' 'cdrkit' 'curl' 'device-mapper' 'git' 'glu' 'gsoap' 'glslang' 'iasl'
                 'jdk8-openjdk' 'libidl2' 'liblzf' 'libpulse' 'libtpms' 'libvncserver' 'libvpx'
@@ -74,7 +74,7 @@ sha256sums=('872e7a42b41f8558abbf887f1bdc7aac932bb88b2764d07cbce270cab57e3b5e'
             'd76b52d955215a72c296aa36d173897bcaa357528bf5a73347c52ccec8654ced'
             '81900e13d36630488accd8c0bfd2ceb69563fb2c4f0f171caba1cca59d438024'
             '00f68b86d32a1fada900c2da8dad2ab4215106cd58004f049bded99727cda2ff'
-            '73ed7ef243c975227660b9bbe7c576018f2c0216b3a3b5efcc4cc56c44c90914'
+            '87dddfd9047480e4c2b73367facf5dd3702148418c2efcd606af17c07da90fe0'
             'ddb2092a5a000aa6ef854796f39dcdf86e72c06d53b24bac3835350571182df6'
             '70245fc3abafbd3b191d87e2910f0f004050672f2d0d056db029a062e80e73bc')
 
