@@ -3,7 +3,7 @@
 pkgname="stmcufinder"
 pkgver=6.1.0
 _pkg_file_name=en.st-mcu-finderlin-v6-1-0.zip
-pkgrel=3
+pkgrel=4
 pkgdesc="STM32 and STM8 product finder for desktops"
 arch=("x86_64")
 depends=()
@@ -44,7 +44,7 @@ prepare(){
 	<com.izforge.izpack.panels.checkedhello.CheckedHelloPanel id="checkedhello.panel"/>
 	<com.izforge.izpack.panels.licence.LicencePanel id="licence.panel"/>
 	<com.st.microxplorer.install.FinderTargetPanel id="target.panel">
-		<installpath>/tmp/makepkg/stmcufinder/pkg/stmcufinder/opt/stmcufinder</installpath>
+		<installpath>${pkgdir}/opt/${pkgname}</installpath>
 	</com.st.microxplorer.install.FinderTargetPanel>
 	<com.st.microxplorer.install.MXShortcutPanel id="shortcut.panel"/>
 	<com.st.microxplorer.install.MXInstallPanel id="install.panel"/>

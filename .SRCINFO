@@ -1,7 +1,7 @@
 pkgbase = stmcufinder
 	pkgdesc = STM32 and STM8 product finder for desktops
 	pkgver = 6.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.st.com/en/development-tools/st-mcu-finder.html
 	arch = x86_64
 	license = Commercial
