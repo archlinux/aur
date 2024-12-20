@@ -2,7 +2,7 @@
 
 pkgname=libaegis
 pkgver=0.3.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Portable C implementations of the AEGIS family of high-performance authenticated encryption algorithms. "
 arch=('i686' 'x86_64' 'aarch64')
 makedepends=('cmake')
@@ -10,11 +10,11 @@ url="https://github.com/aegis-aead/libaegis.git"
 license=('MIT')
 options=('!lto')
 
-_commit=dee39ab4ba9d1014ef9e0915d40d7813c4cc4bd6
+_commit=ac5eaa3f154a4a4deaf436308dad61fdd39f13c8
 source=("git+https://github.com/aegis-aead/libaegis.git#commit=${_commit}?signed/")
 # mruby-Rakefile.patch
 # h2o-libressl-3.6.2.patch
-sha256sums=('fa7bd7562fb7e663e6c2f248c2dff76e28a9e417278cde00e9763e5dc16d1e0b')
+sha256sums=('8327e584770cf56cdc7ac42d876a2e53271eba78330b560ecbc2a76d4a6dca00')
 provides=('libaegis')
 conflicts=('libaegis')
 
