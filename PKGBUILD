@@ -29,9 +29,6 @@ prepare() {
     mv "$srcdir"/* "${startdir}/${pkgname}-${pkgver}/"
     mv "${startdir}/${pkgname}-${pkgver}/" "${srcdir}/${pkgname}-${pkgver}/"
   fi
-
-  # cd $srcdir/${pkgname}-${pkgver}
-  # patch -p1 -i $startdir/$patch
 }
 
 build() {
