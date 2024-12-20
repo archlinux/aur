@@ -6,8 +6,8 @@
 
 _pkgbasename=ffmpeg
 pkgname=("lib32-$_pkgbasename")
-pkgver=7.0.2
-pkgrel=3
+pkgver=7.1
+pkgrel=1
 epoch=2
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -26,6 +26,7 @@ depends=(
   'lib32-fribidi'
 #  'lib32-glib2'
   'lib32-glibc'
+  'lib32-glslang'
   'lib32-gmp'
   'lib32-gnutls'
   'lib32-gsm'
@@ -123,14 +124,14 @@ provides=(
 options=(
 #  debug
 )
-_tag=a18b979d17fa169a6f93c5be8732533c8e06337d
+_tag=507a51fbe9732f0f6f12f43ce12431e8faa834b7
 source=(
   "git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}"
   "add-av_stream_get_first_dts-for-chromium.patch"
 )
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 b2sums=(
-  'bcc0fb367d2822665f0918292a0cf581e0119d6ba6d2e3d0b6e794b6f74d30c118b5c47e26b5687473f01b346f8ec7e885f80729ce6115e18003b2371ff4553f'
+  'c7ec6b1db61608195117b79f3f0c8f6323c3abeb39721359da0f10e7d739da8301e04ff5fa83c022f86fc760f66e00066f9a50d97b771f797ccc679f9d912c40'
   '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de'
 )
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
@@ -140,10 +141,6 @@ prepare() {
 
   # Patching if needed
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch  # https://crbug.com/1251779
-
-  # Fix VAAPI AV1 performance with Mesa
-  git cherry-pick -n fe9d889dcd79ea18d4dfaa39df4ddbd4c8c3b15c
-  git cherry-pick -n d2d911eb9a2fc6eb8d86b3ae025a56c1a2692fba
 
 }
 
@@ -187,6 +184,7 @@ build() {
     --enable-libdvdread \
     --enable-libfreetype \
     --enable-libfribidi \
+    --enable-libglslang \
     --enable-libgsm \
     --enable-libiec61883 \
     --enable-libjack \
