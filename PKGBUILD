@@ -1,6 +1,6 @@
 # Maintainer: aarto <aarto@aur.archlinux.org>
 pkgname=limbo
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc='Limbo is a work-in-progress, in-process OLTP database management system, compatible with SQLite.'
 url='https://github.com/tursodatabase/limbo'
@@ -8,7 +8,7 @@ license=('MIT')
 arch=('x86_64')
 makedepends=(cargo mimalloc)
 source=("https://github.com/tursodatabase/limbo/releases/download/v$pkgver/source.tar.gz")
-sha256sums=('25f459dff33b4bafc4bc2f6e9fd05193a78faf5b079745620b69c5ef9f44ec67')
+sha256sums=('42ee9869f2f6352a9b3799a5dc81e9aedb1413e9e8fc5a6e4c59fd6c257fbb83')
 
 prepare() {
     cd "$pkgname-$pkgver"
