@@ -14,7 +14,6 @@ depends=(
   python-typing_extensions 
   python-numpy 
   python-diskcache 
-  llama.cpp
 )
 optdepends=(
   uvicorn # python-uvicorn

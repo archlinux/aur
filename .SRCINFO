@@ -20,7 +20,6 @@ pkgbase = python-llama-cpp
 	depends = python-typing_extensions
 	depends = python-numpy
 	depends = python-diskcache
-	depends = llama.cpp
 	optdepends = uvicorn
 	optdepends = python-fastapi
 	optdepends = python-pydantic-settings
