@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /opt/raiderio-client/RaiderIO.AppImage "$@"
+exec /opt/raiderio-client/raiderio-client.AppImage "$@"
