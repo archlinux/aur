@@ -1,6 +1,6 @@
 pkgbase = furtherance
 	pkgdesc = Track your time without being tracked
-	pkgver = 24.10.5
+	pkgver = 24.12.0
 	pkgrel = 1
 	url = https://github.com/unobserved-io/Furtherance
 	arch = x86_64
@@ -13,8 +13,9 @@ pkgbase = furtherance
 	depends = hicolor-icon-theme
 	depends = libx11
 	depends = libxss
+	depends = openssl
 	options = !lto
-	source = furtherance-24.10.5.tar.gz::https://github.com/unobserved-io/Furtherance/archive/refs/tags/24.10.5.tar.gz
-	sha256sums = c665617e373401615d1dbc3cbed5d6a3e0dea01d1dd274cad264417741558e06
+	source = furtherance-24.12.0.tar.gz::https://github.com/unobserved-io/Furtherance/archive/refs/tags/24.12.0.tar.gz
+	sha256sums = 9e40e3fb5187c603ee5bb7ccd054697414257b8344ab8c80ec4429ac0ce869be
 
 pkgname = furtherance
