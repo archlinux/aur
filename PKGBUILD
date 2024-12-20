@@ -2,26 +2,26 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='lego-bin'
-pkgver=4.20.4
-pkgrel=3
-pkgdesc='Lets Encrypt client and ACME library written in Go'
+pkgver=4.21.0
+pkgrel=1
+pkgdesc='Let s Encrypt client and ACME library written in Go'
 url='https://go-acme.github.io/lego/'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('APACHE')
 provides=('lego')
 conflicts=('lego')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/go-acme/lego/releases/download/v4.20.4/lego_v4.20.4_linux_arm64.tar.gz")
-sha256sums_aarch64=('6bde708d9c8b2e914120772bb6491d7c3dccb7f98746e171ff4c435948f599e1')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/go-acme/lego/releases/download/v4.21.0/lego_v4.21.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('d3971d6a5a1802ecfab1234f6d4db31d0e2c0a655dfc988dee96dd941b7a3abf')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/go-acme/lego/releases/download/v4.20.4/lego_v4.20.4_linux_armv7.tar.gz")
-sha256sums_armv7h=('17ad56ca5903e4dad8ae6a27e5fcce12d785f1514562ec90484e61062b1ff426')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/go-acme/lego/releases/download/v4.21.0/lego_v4.21.0_linux_armv7.tar.gz")
+sha256sums_armv7h=('e534b88223462779109ec038f6c4d13bd570df822f85e3bd7ef1fb38be2ae3dc')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/go-acme/lego/releases/download/v4.20.4/lego_v4.20.4_linux_386.tar.gz")
-sha256sums_i686=('059cfad6c8a07920b123b1e4138abd6554227a02a8834ade56741d491ac45746')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/go-acme/lego/releases/download/v4.21.0/lego_v4.21.0_linux_386.tar.gz")
+sha256sums_i686=('add67636c8829c003c0980b0a08c4b2121884dafb1cc802f00e8dcd097d05225')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/go-acme/lego/releases/download/v4.20.4/lego_v4.20.4_linux_amd64.tar.gz")
-sha256sums_x86_64=('fed2cd32fa0042feda44a4a81d73e76f51d692a779f689d3df8082dcadcc73ba')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/go-acme/lego/releases/download/v4.21.0/lego_v4.21.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('c8cc7fb636f8a5f1167e013dbd01485a72eb7393faf1776664c765a722cd6070')
 
 package() {
   # Bin
