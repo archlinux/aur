@@ -1,16 +1,18 @@
 pkgbase = python-nbstripout
 	pkgdesc = Strips outputs from Jupyter and IPython notebooks
-	pkgver = 0.7.1
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/nbstripout/
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	checkdepends = python-pytest-cram
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = jupyter-nbformat
-	source = https://pypi.org/packages/source/n/nbstripout/nbstripout-0.7.1.tar.gz
-	sha256sums = 2aad3454dc13e356f2fc94917856bc44f2bed3add77e8ba9f3a78003074bcd84
+	source = https://pypi.org/packages/source/n/nbstripout/nbstripout-0.8.1.tar.gz
+	sha256sums = eaac8b6b4e729e8dfe1e5df2c0f8ba44abc5a17a65448f0480141f80be230bb1
 
 pkgname = python-nbstripout
