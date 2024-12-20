@@ -12,12 +12,12 @@
 : ${_quarto_branch:=release/rstudio-cranberry-hibiscus}
 : ${_quarto:=false}
 
-: ${_commit:=a1fe401fc08c232d470278d1bc362d05d79753d9} # 2024.09.1+394
+: ${_commit:=cf37a3e5488c937207f992226d255be71f5e3f41} # 2024.12.0.467
 
 ## basic info
 _pkgname="rstudio-desktop"
 pkgname="$_pkgname"
-pkgver=2024.09.1.394
+pkgver=2024.12.0.467
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 url="https://github.com/rstudio/rstudio"
@@ -79,7 +79,7 @@ source=(
   "soci-$_sociver.tar.gz"::"https://github.com/SOCI/soci/archive/refs/tags/v${_sociver}.tar.gz"
 )
 sha256sums=(
-  'ee1e87413362dfeafe2a0389cef6d30dcd1a67d178344fe4c8e9e51517c43789'
+  'b43ab0a3a37a4efe6ff090be110762f763e2606ccf9b64f2ca0df52e0737ec3e'
   'SKIP'
   '4b1ff9c8545c5d802fbe06ee6cd2886630e5c03bf740e269bb625b45cf934928'
 )

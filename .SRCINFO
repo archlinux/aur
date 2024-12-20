@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = 2024.09.1.394
+	pkgver = 2024.12.0.467
 	pkgrel = 1
 	url = https://github.com/rstudio/rstudio
 	arch = x86_64
@@ -38,10 +38,10 @@ pkgbase = rstudio-desktop
 	conflicts = rstudio-desktop
 	options = !emptydirs
 	options = !debug
-	source = rstudio-2024.09.1.394-a1fe401.tar.gz::https://github.com/rstudio/rstudio/archive/a1fe401fc08c232d470278d1bc362d05d79753d9.tar.gz
+	source = rstudio-2024.12.0.467-cf37a3e.tar.gz::https://github.com/rstudio/rstudio/archive/cf37a3e5488c937207f992226d255be71f5e3f41.tar.gz
 	source = quarto::git+https://github.com/quarto-dev/quarto.git#branch=release/rstudio-cranberry-hibiscus
 	source = soci-4.0.3.tar.gz::https://github.com/SOCI/soci/archive/refs/tags/v4.0.3.tar.gz
-	sha256sums = ee1e87413362dfeafe2a0389cef6d30dcd1a67d178344fe4c8e9e51517c43789
+	sha256sums = b43ab0a3a37a4efe6ff090be110762f763e2606ccf9b64f2ca0df52e0737ec3e
 	sha256sums = SKIP
 	sha256sums = 4b1ff9c8545c5d802fbe06ee6cd2886630e5c03bf740e269bb625b45cf934928
 
