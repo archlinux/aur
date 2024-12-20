@@ -4,7 +4,7 @@
 
 pkgbase=libdxvk
 pkgname=('libdxvk' 'lib32-libdxvk')
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="Vulkan-based implementation of D3D8, 9, 10 and 11 for Linux"
 arch=(x86_64)
@@ -20,7 +20,7 @@ source=("git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 	"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
 	"git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git")
-sha256sums=('f97561db57859e548a222d57a3763b43a9ab87567a23a4dc4ce8371882fafb07'
+sha256sums=('a27bf242ff86c0520181945e3fdd05ae153dbdc159d2679e06a785a20e4d1de7'
             'SKIP'
             'SKIP'
             'SKIP'

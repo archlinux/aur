@@ -1,6 +1,6 @@
 pkgbase = libdxvk
 	pkgdesc = Vulkan-based implementation of D3D8, 9, 10 and 11 for Linux
-	pkgver = 2.5.1
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
@@ -21,12 +21,12 @@ pkgbase = libdxvk
 	provides = libdxvk_d3d9.so
 	provides = libdxvk_d3d10core.so
 	provides = libdxvk_d3d11.so
-	source = git+https://github.com/doitsujin/dxvk.git#tag=v2.5.1
+	source = git+https://github.com/doitsujin/dxvk.git#tag=v2.5.2
 	source = git+https://github.com/Joshua-Ashton/mingw-directx-headers.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git
-	sha256sums = f97561db57859e548a222d57a3763b43a9ab87567a23a4dc4ce8371882fafb07
+	sha256sums = a27bf242ff86c0520181945e3fdd05ae153dbdc159d2679e06a785a20e4d1de7
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
