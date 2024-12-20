@@ -1,6 +1,6 @@
 pkgbase = pystand
 	pkgdesc = Install Python Versions From The Python-Build-Standalone Project
-	pkgver = 2.10
+	pkgver = 2.11
 	pkgrel = 1
 	url = https://github.com/bulletmark/pystand
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = pystand
 	depends = python-platformdirs
 	depends = python-pygithub
 	depends = python-zstandard
-	source = pystand-2.10.tar.gz::https://github.com/bulletmark/pystand/archive/2.10.tar.gz
-	sha1sums = f37f0e12d7468c1620073343826a5c4e0482288c
+	source = pystand-2.11.tar.gz::https://github.com/bulletmark/pystand/archive/2.11.tar.gz
+	sha1sums = 23354d6da5f0e83e5ca3954510a4fe68ce473143
 
 pkgname = pystand
