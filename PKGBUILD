@@ -4,7 +4,7 @@
 
 _pkgname="memos"
 pkgname="memos-git"
-pkgver=0.23.0.rc.3+r3155+gce6ad4035
+pkgver=0.23.0.rc.3+r3157+gf15346e61
 pkgrel=1
 pkgdesc="A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts."
 url="https://github.com/usememos/memos"
