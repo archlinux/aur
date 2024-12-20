@@ -1,6 +1,21 @@
 [__config__]
 oldver = "old_ver.json"
 newver = "new_ver.json"
+http_timeout = 60
+
+[AlJalilDot]
+name = "AlJalilDot"
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/AlJalilDot-font"
+regex = "رقم: \\d+\\.\\d+"
+encoding = "utf-8"
+
+[AlJalil]
+name = "AlJalil"
+source = "regex"
+url = "https://fonts.qurancomplex.gov.sa/AlJalil-font"
+regex = "رقم: \\d+\\.\\d+"
+encoding = "utf-8"
 
 [Basmalah]
 name = "Basmala"
@@ -65,7 +80,7 @@ encoding = "utf-8"
 
 [UthmanTN]
 source = "regex"
-url = "https://fonts.qurancomplex.gov.sa/nashkh-font/"
+url = "https://fonts.qurancomplex.gov.sa/nashkh-font"
 regex = "رقم: \\d+"
 encoding = "utf-8"
 
