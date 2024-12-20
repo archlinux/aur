@@ -13,7 +13,7 @@
 pkgname=nextdns-unprivileged
 origname=nextdns
 pkgver=1.44.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The NextDNS DoH client running as unprivileged user.'
 arch=('x86_64')
 url='https://github.com/nextdns/nextdns'
@@ -37,7 +37,11 @@ prepare() {
 
 build() {
     cd "${origname}-$pkgver"
-    go build --buildmode=pie -trimpath -ldflags "-X main.version=$pkgver -extldflags $LDFLAGS" -o ${origname} .
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    go build -buildmode=pie -trimpath -ldflags="-linkmode=external -X main.version=$pkgver" -mod=readonly -modcacherw -o ${origname} .
 }
 
 package() {
