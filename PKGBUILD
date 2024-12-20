@@ -1,6 +1,6 @@
 # Maintainer: Martí Comas <m4rti21@proton.me>
 pkgname='book-git'
-pkgver=r56.4ff1893
+pkgver=r59.3273264
 pkgrel=1
 pkgdesc='A simple bookmark manager written in go'
 arch=('x86_64')

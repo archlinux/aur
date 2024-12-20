@@ -1,6 +1,6 @@
 pkgbase = book-git
 	pkgdesc = A simple bookmark manager written in go
-	pkgver = r56.4ff1893
+	pkgver = r59.3273264
 	pkgrel = 1
 	url = https://github.com/M4rti21/book
 	arch = x86_64
