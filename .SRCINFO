@@ -1,0 +1,26 @@
+pkgbase = pepecoin
+	pkgdesc = The world's first fully decentralized and secure blockchain for Pepe.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/pepecoinppc/pepecoin
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = git
+	makedepends = qt5-tools
+	depends = abseil-cpp
+	depends = boost-libs
+	depends = db5.3
+	depends = gcc-libs
+	depends = glibc
+	depends = libevent
+	depends = openssl
+	depends = protobuf
+	depends = qrencode
+	depends = qt5-base
+	source = pepecoin-1.1.0::git+https://github.com/pepecoinppc/pepecoin.git#tag=v1.1.0
+	source = use-c++17.patch
+	b2sums = 7c0ce6b1e00bbe422fd4e2726b1bb079d570c7304f778a84e828eece9755c67a6bfe2fc05847352fd175ed4d81a2fcee1b1ccf148a35ca73e8c146d246132e92
+	b2sums = 903a27f9b2233b7c54fad227d7f9657fbdf354fd187558cf2d7f7c7479132dfe1ffee29bc6ae4f72a98742d9902a8fa1ff822754db078961c69b412db946c671
+
+pkgname = pepecoin
