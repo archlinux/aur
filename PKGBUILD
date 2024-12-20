@@ -28,7 +28,7 @@ license=('GPL' 'custom:CDDL')
 makedepends=('alsa-lib' 'cdrkit' 'curl' 'device-mapper' 'git' 'glu' 'gsoap' 'glslang' 'iasl'
                 'jdk8-openjdk' 'libidl2' 'liblzf' 'libpulse' 'libtpms' 'libvncserver' 'libvpx'
                 'libxcomposite' 'libxcursor' 'libxinerama' 'libxml2' 'libxmu' 'libxrandr' 'libxslt'
-                'libxtst' 'linux-zen-headers' 'mesa' 'python' 'qt5-base' 'qt5-tools' 'qt5-x11extras'
+                'libxtst' 'linux-headers' 'mesa' 'python' 'qt5-base' 'qt5-tools' 'qt5-x11extras'
                 'sdl' 'sdl_ttf' 'vde2' 'xorgproto' 'xorg-server-devel' 'yasm')
 
 source=("https://download.virtualbox.org/virtualbox/${_vboxver}/VirtualBox-${_vboxver}.tar.bz2"
