@@ -28,6 +28,6 @@ pkgbase = scrt
 	options = !strip
 	options = !emptydirs
 	source = local://scrt-9.6.1-3491.ubuntu24-64.x86_64.deb
-	md5sums = d41d8cd98f00b204e9800998ecf8427e
+	md5sums = ad4e562f7e5c006bc5da7ea0d556e9d6
 
 pkgname = scrt

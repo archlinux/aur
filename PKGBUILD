@@ -20,7 +20,7 @@ depends=('fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'krb5' 'libcups'
 		'qt6-base' 'qt6-multimedia' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm' 'zlib' 'icu74')
 options=('!strip' '!emptydirs')
 source=("local://${pkgname}-${pkgver}-${incrver}.ubuntu24-64.x86_64.deb")
-md5sums=('d41d8cd98f00b204e9800998ecf8427e')
+md5sums=('ad4e562f7e5c006bc5da7ea0d556e9d6')
 
 package() {
 
