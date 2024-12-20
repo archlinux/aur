@@ -6,7 +6,7 @@ _pkgname=hdrview
 pkgname="$_pkgname-git"
 epoch=0
 pkgver=2.0.1+3.r339.20241220.2902140
-pkgrel=1
+pkgrel=2
 pkgdesc='High dynamic range (HDR) image viewer and comparison tool'
 url='https://github.com/wkjarosz/hdrview'
 arch=('x86_64' 'i686')
@@ -31,6 +31,9 @@ prepare() {
     -DOPENEXR_INSTALL=OFF \
     -DOPENEXR_INSTALL_PKG_CONFIG=OFF \
     -DOPENEXR_INSTALL_TOOLS=OFF
+
+  cd "$_pkgname"
+  git log > "git.log"
 }
 
 pkgver() {
@@ -93,7 +96,7 @@ package() {
   fi
 
   ## Install documentation and license
-  for _docfile in README.md TODO.md; do
+  for _docfile in README.md TODO.md git.log; do
     install -D -m644 -v "$srcdir/$_pkgname/$_docfile" "$pkgdir/usr/share/doc/$_pkgname/$_docfile"
   done
   install -D -m644 -v "$srcdir/$_pkgname/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
