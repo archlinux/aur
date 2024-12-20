@@ -1,6 +1,6 @@
 pkgbase = ocaml-pcre
 	pkgdesc = Perl compatible regular expressions for OCaml
-	pkgver = 8.0.0
+	pkgver = 8.0.1
 	pkgrel = 1
 	url = http://mmottl.github.io/pcre-ocaml
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ocaml-pcre
 	options = !strip
 	options = staticlibs
 	options = !debug
-	source = ocaml-pcre-8.0.0.tar.gz::https://github.com/mmottl/pcre-ocaml/releases/download/8.0.0/pcre-8.0.0.tbz
-	b2sums = ec532674a3755c8a63fafbb190e4587f37ba3838e853a9a82710234c9816611f572ffc62499d7e7db6afc2fd9e490a1260265dd92d73f71fb3a3450f153fa564
+	source = ocaml-pcre-8.0.1.tar.gz::https://github.com/mmottl/pcre-ocaml/releases/download/8.0.1/pcre-8.0.1.tbz
+	b2sums = bd20af0ffe60d0f74374e8bbe0de4fba3bfe73e7517b23f13b22f65d4f350ffe5de21b2b32a74e5ef9047622ce5274f4760c9edf27cfb1594aff84d03194dec4
 
 pkgname = ocaml-pcre
