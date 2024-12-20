@@ -3,7 +3,7 @@
 pkgname=serial-studio
 _pkgname=Serial-Studio
 pkgver=3.0.6
-pkgrel=3
+pkgrel=5
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=($CARCH)
 url="https://github.com/Serial-Studio/Serial-Studio"
@@ -28,12 +28,9 @@ depends=(
     harfbuzz
     freetype2
     icu
-    llvm-libs
     libcap
     libcups
     libdrm
-    libedit
-    libelf
     libevdev
     libffi
     libglvnd
@@ -41,7 +38,6 @@ depends=(
     libjpeg-turbo
     libice
     libp11-kit
-    libpciaccess
     libpng
     libpsl
     libidn2
@@ -55,16 +51,12 @@ depends=(
     libxau
     libxcb
     libxdmcp
-    libxml2
     libxkbcommon
-    libxshmfence
-    lm_sensors
     keyutils
     krb5
     systemd-libs
     mesa
     mtdev
-    ncurses
     nettle
     $_qt-base
     $_qt-declarative
@@ -78,21 +70,20 @@ depends=(
     openssl
     pcre2
     util-linux-libs
-    wayland
     xcb-util
     xcb-util-image
     xcb-util-renderutil
-    xz
     zlib
     zstd
 )
 makedepends=(
     cmake
-    ninja
     $_qt-5compat
     $_qt-charts
+    $_qt-shadertools
     #     $_qt-quickcontrols2
     $_qt-quickeffectmaker
+    $_qt-translations
     $_qt-tools
 )
 provides=(${_pkgname} ${pkgname})
@@ -113,11 +104,11 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr/share/serial-studio \
         -DCMAKE_INSTALL_BINDIR=/usr/bin \
         -B build \
-        -G Ninja
+        -Wno-dev
 
-    ninja -C build
+    cmake --build build
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${_pkgname}-${pkgver}/build install
+    DESTDIR="$pkgdir" cmake --install "${srcdir}"/${_pkgname}-${pkgver}/build
 }
