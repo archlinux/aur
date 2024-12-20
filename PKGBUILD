@@ -2,7 +2,7 @@
 # Maintainer: HaroldLoui <Riven970309@gmail.com>
 # Contributor: witt <1989161762 at qq dot com>
 pkgname=apifox
-pkgver=2.6.37
+pkgver=2.6.40
 pkgrel=1
 pkgdesc="API 文档、API 调试、API Mock、API 自动化测试"
 arch=("x86_64")
@@ -13,7 +13,7 @@ source=(
 	"${pkgname}-v${pkgver}.zip"::"https://file-assets.apifox.com/download/Apifox-linux-latest.zip"
 	"apifox.desktop"
 	"apifox.svg")
-sha256sums=('SKIP'
+sha256sums=('886988a5a035494fdb481fea7927268ad3beff08d84e3028afd971fac4b12b4a'
             'e89d2d53ce221c59436b7f1f9e4e9c0f2ccf6f55597df2fd16c419c8de5360a9'
             '48dbd5c9727e568c3f19b45d36851eed15fa875a0ca40e83ec35d4e30ecd350d')
 options=(!strip)
