@@ -1,6 +1,6 @@
 pkgbase = libinput-noaccum
 	pkgdesc = libinput with ACC_V120_THRESHOLD set to 1 for smooth high-resolution scrolling
-	pkgver = 1.26.2
+	pkgver = 1.27.0
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/libinput/libinput
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = libinput-noaccum
 	optdepends = python-pyudev: libinput measure
 	optdepends = python-libevdev: libinput measure
 	optdepends = python-yaml: used by various tools
-	provides = libinput=1.26.2
+	provides = libinput=1.27.0
 	conflicts = libinput
-	source = https://gitlab.freedesktop.org/libinput/libinput/-/archive/1.26.2/libinput-1.26.2.tar.bz2
-	sha256sums = e2dbbf515905086dc3f8c8536d326e04012f5716b8b047bb3392a17b13ca78ec
+	source = https://gitlab.freedesktop.org/libinput/libinput/-/archive/1.27.0/libinput-1.27.0.tar.bz2
+	sha256sums = 8e823cc9f44c51b63ae90af0b73676ed82c0402cc1cbd4a59ac91b7bb6cad716
 
 pkgname = libinput-noaccum

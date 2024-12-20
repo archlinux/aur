@@ -1,7 +1,7 @@
 # Maintainer: Aditya Bhargava <libinput-noaccum.basket389 at slmail dot me>
 _pkgname=libinput
 pkgname=$_pkgname-noaccum
-pkgver=1.26.2
+pkgver=1.27.0
 pkgrel=1
 pkgdesc="libinput with ACC_V120_THRESHOLD set to 1 for smooth high-resolution scrolling"
 url="https://gitlab.freedesktop.org/libinput/libinput"
@@ -18,7 +18,7 @@ optdepends=('gtk4: libinput debug-gui'
 provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
 source=(https://gitlab.freedesktop.org/libinput/libinput/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('e2dbbf515905086dc3f8c8536d326e04012f5716b8b047bb3392a17b13ca78ec')
+sha256sums=('8e823cc9f44c51b63ae90af0b73676ed82c0402cc1cbd4a59ac91b7bb6cad716')
 #validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
 
 prepare() {
