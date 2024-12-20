@@ -3,7 +3,7 @@
 pkgname="python-swagger-ui-py"
 _name=${pkgname#python-}
 pkgver=23.9.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Swagger UI for Python web framework, such Tornado, Flask and Sanic"
 url="https://pwzer.github.io/swagger-ui-py/"
 license=("APACHE2")
@@ -22,4 +22,5 @@ build(){
 package(){
  cd "$_name-$pkgver"
  python -m installer --destdir="$pkgdir" dist/*.whl
+ rm -rf $pkgdir/usr/lib/python*/site-packages/test
 }
