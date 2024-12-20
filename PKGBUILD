@@ -2,7 +2,7 @@
 
 pkgname=ttf-qurancomplex-fonts
 pkgver=20241221
-pkgrel=1
+pkgrel=2
 pkgdesc="Arabic fonts by King Fahd Glorious Quran Printing Complex in al-Madinah al-Munawwarah"
 arch=('any')
 url="http://fonts.qurancomplex.gov.sa"
