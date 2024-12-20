@@ -1,0 +1,9 @@
+[Unit]
+Description=A script that automatically activates ASPM for all supported devices on Linux
+
+[Service]
+ExecStart=/usr/sbin/autoaspm.py
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target
