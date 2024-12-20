@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgbase=linux-flowx13
-pkgver=6.12.4.arch1
+pkgver=6.12.6.arch1
 pkgrel=1
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 url='https://github.com/archlinux/linux'
@@ -43,17 +43,17 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('6f35f821433d8421be7167990747c7c4a0c451958fb96883446301af13d71152'
+sha256sums=('d450ab215de4e1f8bb85e0f4216760fa33fd024b4526b144f4ce0d9012b29c9e'
             'SKIP'
-            '8d84f0e5f013c6c80cd2a2fe26da8e0c1170edc058f6f378e1261541781c12b9'
+            '0f0f8493de874fe9872643696fb21461b09c374f5a14967d969975e570ccb3ff'
             'SKIP'
-            'a6a234cd982d21f0d7daa3ba921293e450abd87ff5d7474d4a153b3f34cfabc5'
+            '4100c6ed9f42652d98c129de31b1065d8dfac29a3df31eea2acc57326d372a08'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04')
-b2sums=('5f0db13ed414b6221db1acb6019580e10533ecd1b596918230a6076ce433c75c154a3799bcdab48b1fbb2ff90e573f8cc879ae2d26677c560c6818fa37ce3c24'
+b2sums=('b1b992e1c03c095203a6aa8e529768c0af00fc89e1afbbcb56821465a9e78fb8f8ca19d038bc1f08c5286e1781b407d49775f28153572d3b9fe8d80b86d540bf'
         'SKIP'
-        '3544c1e7dcf488d06c7411ebde2b9133cfd27d194f7b668784a756efc6ba5b48b237054c8404501dd6f6fb79945c570bef4cd29c314a16ad2dcb66ae48bbdbf2'
+        '8839835d5026a472b756597043dffacc66831c2d63a3e79193903d6493ba63ee6ecc0ff9ab8bc093a7000e43086f3fb642026e75b2f48be3c9e57806f6522821'
         'SKIP'
-        'fc60a774d8ba8a56b2397de7bb9908ae6e3ed733426a1b6a6574a11259f71559d77848cb4b43faf423d68c92c7fc4343be1eb1882a5f7d4e32065bf66f1e0753'
+        'f05d24a80af487ab554f5b5dbc0deeb8b2a5ffe09191ee0160598d8973dbb048dca94bee0b35406d0d40a0f812b876a572d189379a9c7d5263272a7c5d931392'
         'c0090c819342838fbb242f41ee057612ade9c1e564ea250bcd454d57677196a590e392ee6ef0b45d8d9463ab92a8ae3b3668f162c45a8d0e714747235d1cccff')
 
 
@@ -80,10 +80,6 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  scripts/config --enable  CONFIG_ANDROID
-  scripts/config --enable  CONFIG_ANDROID_BINDER_IPC
-  scripts/config --enable  CONFIG_ANDROID_BINDERFS
-  scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES ""
   make olddefconfig
   diff -u ../config .config || :
 
