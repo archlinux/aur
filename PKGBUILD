@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hihat-git
-pkgver=latest.r4.g5553175
+pkgver=1.1.1.r5.g9d2e5b3
 _electronversion=26
 _nodeversion=20
 pkgrel=1
-pkgdesc="A minimalist offline music library player for desktop, built on Electron, React, and Material UI.Use system-wide electron."
+pkgdesc="A minimalist offline music library player for desktop, built on Electron, React, and Material UI.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/johnnyshankman/hihat"
 license=('MIT')
@@ -42,7 +42,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -73,6 +73,9 @@ build() {
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     npm run lint
     NODE_ENV=production     npx ts-node ./.erb/scripts/clean.js dist
     NODE_ENV=production     npm run build
