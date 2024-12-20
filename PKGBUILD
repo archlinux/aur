@@ -192,6 +192,6 @@ Target=napcatqq-git
 [Action]
 Description=Unpatch QQ For NapCat
 When=PreTransaction
-Exec=/bin/sh -c '/opt/QQ/resources/app/napcat/napcatqq-patcher.sh unpatch && rm -rf /opt/QQ/resources/app/napcat && echo -e "\e[32mUnpatch done, but it\'s recommended to reinstall linuxqq.\e[0m";'
+Exec=/bin/sh -c '/opt/QQ/resources/app/napcat/napcatqq-patcher.sh unpatch && rm -rf /opt/QQ/resources/app/napcat && echo -e "\e[32m取消修补成功，但是仍旧建议重装linuxqq\e[0m";'
 EOF
 }
