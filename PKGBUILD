@@ -4,7 +4,7 @@ pkgname='freedroidrpg-git'
 pkgver=1.0.r9.g85156e288
 pkgrel=1
 pkgdesc="Isometric 3D role playing game taking place in the future, on Earth (git version)"
-url="http://www.freedroid.org"
+url="https://www.freedroid.org"
 arch=('x86_64')
 license=('GPL-2.0-or-later')
 depends=(
@@ -25,7 +25,7 @@ makedepends=('git' 'mesa')
 optdepends=('espeak-ng-espeak: to generate the robot taunts')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-source=("$pkgname::git+https://gitlab.com/freedroid/freedroid-src.git")
+source=("$pkgname::git+https://codeberg.org/freedroid/freedroid-src.git")
 sha256sums=('SKIP')
 
 pkgver() {
