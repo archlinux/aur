@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-bnx2x-2.5g
-pkgver=6.10.10.arch1
+pkgver=6.12.6.arch1
 pkgrel=1
 pkgdesc='Linux'
 url='https://github.com/archlinux/linux'
@@ -38,18 +38,18 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('e687e735b5eb9efb6d67b42433c93fc9118106a995514f062652873b5e809bcd'
+sha256sums=('d450ab215de4e1f8bb85e0f4216760fa33fd024b4526b144f4ce0d9012b29c9e'
             'SKIP'
             'd655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d'
-            '064b9841dd6738e8a6f8859743c66e0d603541b6afa021ab98ea7e3623fca108'
+            '0f0f8493de874fe9872643696fb21461b09c374f5a14967d969975e570ccb3ff'
             'SKIP'
-            'a32a48ab46061a1275b23f15c390e0aa48682ffe953f4f04d650bfe398700a87')
-b2sums=('8a15910089d080886046b1fd8d57ef28ce872bf428e67ccbc9d5ca92da794d6dee7ab83cc914a499b40962e2990c3b1e5b11ae7d12c1eff7bec548c9a67df03a'
+            '4100c6ed9f42652d98c129de31b1065d8dfac29a3df31eea2acc57326d372a08')
+b2sums=('b1b992e1c03c095203a6aa8e529768c0af00fc89e1afbbcb56821465a9e78fb8f8ca19d038bc1f08c5286e1781b407d49775f28153572d3b9fe8d80b86d540bf'
         'SKIP'
         '94fd2e2fa31da0ce9d04e639b0fafc37128ad2f01f8ee38708c7128fdc1568e491aca9a8296316b0736f134dc7697b573e8203018d92c1e9b6ff40648501607a'
-        '06b8f21c167f3376a62f9bd0d3e0275a4ba32736aaa5d7fb94a07e99445186ab8f9426468d33c00fd43c52c52ffdb3ee77e6802db0781ffad6b8d74cdc4951a1'
+        '8839835d5026a472b756597043dffacc66831c2d63a3e79193903d6493ba63ee6ecc0ff9ab8bc093a7000e43086f3fb642026e75b2f48be3c9e57806f6522821'
         'SKIP'
-        '4c6db23bc6ae504e866d374c398ea9f14bf50fa20f8e65d1c8f6d95c403dc2665f9dbe379a63f3424eeb2617e30c895af2eb5709522d7315008e8ca22ba2bec1')
+        'f05d24a80af487ab554f5b5dbc0deeb8b2a5ffe09191ee0160598d8973dbb048dca94bee0b35406d0d40a0f812b876a572d189379a9c7d5263272a7c5d931392')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -95,8 +95,9 @@ _package() {
     kmod
   )
   optdepends=(
-    'wireless-regdb: to set the correct wireless channels of your country'
     'linux-firmware: firmware images needed for some devices'
+    'scx-scheds: to use sched-ext schedulers'
+    'wireless-regdb: to set the correct wireless channels of your country'
   )
   provides=(
     KSMBD-MODULE
@@ -140,6 +141,7 @@ _package-headers() {
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
+  ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
 
   # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
