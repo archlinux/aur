@@ -18,6 +18,7 @@ depends=(
     'wl-clipboard'
     'upower'
     'gvfs'
+    'ttf-jetbrains-mono-nerd'
     # aur:
     'aylurs-gtk-shell-git'
 )
@@ -59,12 +60,6 @@ build() {
 package() {
     cd "$srcdir/HyprPanel"
 
-    # install fonts
-    install -dm755 "$pkgdir/usr/share/fonts/NFP"
-    cp -r "$srcdir/HyprPanel/assets/fonts/"* "$pkgdir/usr/share/fonts/NFP/"
-    fc-cache -fv
-
-    # Install HyprPanel into /usr/local/share/HyprPanel
     meson install -C build --destdir "$pkgdir"
 
     # License
