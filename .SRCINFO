@@ -1,0 +1,35 @@
+pkgbase = darkly
+	pkgdesc = Bali10050's fork of Lightly (A modern style for qt applications)
+	pkgver = 0.5.13
+	pkgrel = 1
+	url = https://github.com/Bali10050/lightly
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kdecoration
+	depends = qt6-declarative
+	depends = kcoreaddons
+	depends = kcmutils
+	depends = kcolorscheme
+	depends = kconfig
+	depends = kguiaddons
+	depends = kiconthemes
+	depends = kwindowsystem
+	depends = kcmutils5
+	depends = frameworkintegration5
+	depends = kconfigwidgets5
+	depends = kiconthemes5
+	depends = kirigami2
+	depends = kwindowsystem5
+	conflicts = lightly-kf6
+	conflicts = lightly-qt
+	conflicts = lightly-qt6-bin
+	options = !emptydirs
+	options = !debug
+	source = darkly.git::git+https://github.com/Bali10050/darkly.git#tag=v0.5.13
+	sha256sums = e978bec25a11e94dfa62e9316929049f5006b61cf1de6633cc53db37ae8d0f4b
+
+pkgname = darkly
