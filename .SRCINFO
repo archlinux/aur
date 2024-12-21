@@ -1,0 +1,20 @@
+pkgbase = payload_dumper
+	pkgdesc = Dump the payload.bin image found in Android update images
+	pkgver = 0.3.0+r28+g146952d
+	pkgrel = 1
+	url = https://github.com/5ec1cff/payload-dumper
+	arch = any
+	license = custom:None
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-bsdiff4>=1.2.3
+	depends = python-enlighten>=1.12
+	depends = python-httpx>=0.23.1
+	depends = python-protobuf>=3.20
+	source = payload-dumper-146952dfdbd758a8beb27028a25fb0dac8b7c00a.tar.gz::https://github.com/5ec1cff/payload-dumper/archive/146952dfdbd758a8beb27028a25fb0dac8b7c00a.tar.gz
+	b2sums = 7024dec33d1ee65db15a85daca39d6055a0a7686bc9b51a4e6822880f39eaea62b242928978bd70fb743907dca599127e9939d17b4de3519044995c6c20d450d
+
+pkgname = payload_dumper
