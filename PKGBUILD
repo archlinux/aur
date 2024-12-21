@@ -10,11 +10,11 @@ pkgdesc='Powerful x86 virtualization for enterprise as well as home use (KVM bac
 pkgver=20241220
 _pkgver=dev-${pkgver}
 _vboxver='7.1.4'
-pkgrel=2
+pkgrel=3
 conflicts=('virtualbox' 'virtualbox-ose')
 depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
             'libxext' 'libxinerama' 'libxml2' 'libxmu' 'libxt' 'openssl' 'procps-ng' 'python'
-            'qt5-base' 'qt5-tools' 'qt5-x11extras' 'sdl' 'shared-mime-info' 'zlib')
+            'qt6-base' 'qt6-scxml' 'qt6-tools' 'sdl' 'shared-mime-info' 'zlib')
 optdepends=('vde2: Virtual Distributed Ethernet support'
             'virtualbox-guest-iso: Guest Additions CD image'
             'virtualbox-ext-vnc: VNC server support'
@@ -26,10 +26,10 @@ url='https://github.com/cyberus-technology/virtualbox-kvm'
 license=('GPL-3.0-only')
 
 makedepends=('alsa-lib' 'cdrkit' 'curl' 'device-mapper' 'git' 'glu' 'gsoap' 'glslang' 'iasl'
-                'jdk8-openjdk' 'libidl2' 'liblzf' 'libpulse' 'libtpms' 'libvncserver' 'libvpx'
-                'libxcomposite' 'libxcursor' 'libxinerama' 'libxml2' 'libxmu' 'libxrandr' 'libxslt'
-                'libxtst' 'linux-headers' 'mesa' 'python' 'qt5-base' 'qt5-tools' 'qt5-x11extras'
-                'sdl' 'sdl_ttf' 'vde2' 'xorgproto' 'xorg-server-devel' 'yasm')
+             'jdk8-openjdk' 'libidl2' 'liblzf' 'libpulse' 'libtpms' 'libvncserver' 'libvpx'
+             'libxcomposite' 'libxcursor' 'libxinerama' 'libxml2' 'libxmu' 'libxrandr' 'libxslt'
+             'libxtst' 'linux-headers' 'mesa' 'python' 'python-setuptools' 'qt6-base' 'qt6-scxml'
+             'qt6-tools' 'sdl' 'sdl_ttf' 'vde2' 'xorgproto' 'xorg-server-devel' 'yasm')
 
 source=("https://download.virtualbox.org/virtualbox/${_vboxver}/VirtualBox-${_vboxver}.tar.bz2"
         "${url}/releases/download/${_pkgver}/kvm-backend-${_vboxver}-${_pkgver}.patch"
