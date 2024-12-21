@@ -29,7 +29,7 @@ pkgbase = fenrir
 	backup = etc/fenrirscreenreader/settings/settings.conf
 	source = git+https://git.stormux.org/storm/fenrir.git#tag=2024.12.20
 	source = fenrirscreenreader.service
-	sha512sums = 037de1f99f4f7a158205e3e4cdc6d9677dd94da61950edd9571657eecfbabc7f9aa08dbe526077a81c77fd9af7453dfdb6367f07ddc1b084b021e8e5d8f0ad64
+	sha512sums = eecadcab9db5e387dfecfe8274cdd13848dd277e053d45b1d8c88129324373bb301f231e9f2a9fa5635335382e0366f0e2b4ee1bc1c2679662066c5fc5a14239
 	sha512sums = e5e690bd9084d20a3c96ed391989e1db5211ef65b36a18ca6a49f8e16b40771a8a35151388df69d3cc64459d075ecb5fd0c415e11dfb43bc6ed2927612262168
 
 pkgname = fenrir
