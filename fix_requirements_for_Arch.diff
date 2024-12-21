@@ -1,26 +1,48 @@
---- a/gns3-server-2.2.52/requirements.txt	2024-12-02 02:14:23.000000000 +0100
-+++ b/gns3-server-2.2.52/requirements.txt	2024-12-02 14:30:45.387248932 +0100
-@@ -1,13 +1,12 @@
--jsonschema>=4.23,<4.24
+--- a/gns3-server-3.0.0/requirements.txt	2024-12-20 12:20:42.000000000 +0100
++++ b/gns3-server-3.0.0/requirements.txt	2024-12-21 15:03:12.639622741 +0100
+@@ -1,24 +1,23 @@
+-uvicorn==0.32.0
+-pydantic==2.9.2
+-fastapi==0.115.5
+-python-multipart==0.0.16
+-websockets==13.1
 -aiohttp>=3.10.10,<3.11
--aiohttp-cors>=0.7.0,<0.8
+-async-timeout==4.0.3
 -aiofiles>=24.1.0,<25.0
 -Jinja2>=3.1.4,<3.2
 -sentry-sdk>=2.17,<2.18  # optional dependency
-+jsonschema>=4.23
++uvicorn>=0.31.0
++pydantic>=2.9.2
++fastapi>=0.115.5
++python-multipart>=0.0.16
++websockets>=12.0
 +aiohttp>=3.10.5
-+aiohttp-cors>=0.7.0
++async-timeout>=4.0.3
 +aiofiles>=24.1.0
 +Jinja2>=3.1.4
 +sentry-sdk>=2.17
  psutil>=6.1.0
--async-timeout>=4.0.3,<4.1
-+async-timeout>=4.0.3
  distro>=1.9.0
 -py-cpuinfo>=9.0.0,<10.0
+-sqlalchemy==2.0.36
+-aiosqlite==0.20.0
+-alembic==1.13.3
+-bcrypt==4.2.0
+-python-jose[cryptography]==3.3.0
+-email-validator==2.2.0
+-watchfiles==0.24.0
+-zstandard==0.23.0
 -platformdirs>=2.4.0,<3  # platformdirs >=3 conflicts when building Debian packages
--importlib-resources>=1.3; python_version < '3.9'
+-importlib-resources>=1.3; python_version <= '3.9'
 -truststore>=0.10.0; python_version >= '3.10'
 +py-cpuinfo>=9.0.0
++sqlalchemy>=2.0.36
++aiosqlite>=0.20.0
++alembic>=1.13.1
++bcrypt>=4.2.0
++python-jose[cryptography]>=3.3.0
++email-validator>=2.2.0
++watchfiles>=0.24.0
++zstandard>=0.22.0
 +platformdirs>=2.4.0
 +truststore>=0.10.0
