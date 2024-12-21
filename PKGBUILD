@@ -1,16 +1,16 @@
 # Maintainer: Popolon <Popolon aL popolon.org>
 
 pkgname=asmsx
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
-_pkgname=asMSX-${pkgver}-RUN
+_pkgname=asMSX-${pkgver}
 pkgdesc="Z80 cross-assembler for MSX"
 arch=('x86_64' 'aarch64' 'riscv64' 'riscv' 'ppc' 'i386' 'i686' 'pentium4' 'arm' 'armv7h' 'armv6h')
 url="https://www.msx.org/wiki/AsMSX"
 license=('GPL3')
 makedepends=('bison' 'flex' 'make' 'gcc')
-source=("${_pkgname}.tar.gz::https://github.com/Fubukimaru/asMSX/archive/refs/tags/${pkgver}-RUN.tar.gz")
-sha256sums=('155f8e16a245cd9cf7a669344209c3da41d9c6ca0bef25c5849f191497ad791c')
+source=("${_pkgname}.tar.gz::https://github.com/Fubukimaru/asMSX/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('46d2d2c0c5234be3e6f66aaa2768640c10ca3b3e5a7d148236cc3e28d773d8e7')
 
 build() {
     cd ${_pkgname}
