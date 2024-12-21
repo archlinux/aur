@@ -1,5 +1,5 @@
 # Maintainer: DeltaCopy <7x0bb03yq@mozmail.com>
-# Description: Builds Darkly from https://github.com/Bali10050/Lightly
+# Description: Builds Darkly from https://github.com/Bali10050/Darkly
 
 # basic info
 pkgname="darkly"
