@@ -1,7 +1,7 @@
 # Maintainer: zty012 <me@zty012.de>
 # Maintainer: Littlefean <2385190373@qq.com>
 pkgname=project-graph-nightly
-pkgver=0.0.0-nightly.db25d06766b9ca60d64feca2e1d4756a92c31099
+pkgver=r106.3021c4b3661ccf6d5a972bba8e47bcedb0299d87
 pkgrel=1
 pkgdesc="A simple tool to create topology diagrams."
 arch=('x86_64')
