@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
-pkgver=1.0.0.alpha.2.r3.g2f17f33
-pkgrel=2
+pkgver=1.0.0.alpha.4.r4.g9d9ad8e
+pkgrel=1
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings-daemon"
@@ -20,6 +20,9 @@ makedepends=(
   'cargo'
   'git'
   'mold'
+)
+optdepends=(
+  'pulseaudio-alsa: Media keys support'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
