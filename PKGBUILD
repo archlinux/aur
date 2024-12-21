@@ -1,10 +1,11 @@
+# shellcheck disable=SC2034,2154
 # Maintainer: Bruno Carlin <bruno@bcarlin.net>
 pkgname=ember-language-server
-pkgver=2.29.0
+pkgver=2.30.5
 pkgrel=1
-pkgdesc="The Ember Language Server (ELS) implements the Language Server Protocol for Ember.js projects. "
+pkgdesc="The Ember Language Server (ELS) implements the Language Server Protocol for Ember.js projects."
 arch=( 'any' )
-url="https://github.com/lifeart/ember-language-server"
+url="https://github.com/ember-tooling/ember-language-server"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'jq')
@@ -17,9 +18,9 @@ makedepends=('npm' 'jq')
 #options=()
 #install=
 #changelog=
-source=("https://registry.npmjs.org/@lifeart/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('85ada9470a39e2db635d9e11b676fe466194371e973c844f5de68979a32b8c72')
-noextract=("${pkgname}-${pkgver}.tgz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ember-tooling/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('841854f09bac65f9232039e9d5b1df0eb72b2c33446e1c8cf776a9a6e02c36c6')
+noextract=("${pkgname}-${pkgver}.tar.gz")
 #validpgpkeys=()
 
 #prepare() {
@@ -42,7 +43,7 @@ package() {
   npm install -g \
     --prefix "${pkgdir}/usr" \
     --cache "${srcdir}/npm-cache" \
-    "${srcdir}/${pkgname}-${pkgver}.tgz"
+    "${srcdir}/${pkgname}-${pkgver}.tar.gz"
 
   # npm gives ownership of ALL FILES to build user
   # https://bugs.archlinux.org/task/63396
@@ -54,7 +55,7 @@ package() {
   # Remove references to $srcdir
   local tmppackage pkgjson
   tmppackage="$(mktemp)"
-  pkgjson="$pkgdir/usr/lib/node_modules/@lifeart/$pkgname/package.json"
+  pkgjson="$pkgdir/usr/lib/node_modules/@ember-tooling/$pkgname/package.json"
   jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
   mv "$tmppackage" "$pkgjson"
   chmod 644 "$pkgjson"
