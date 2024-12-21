@@ -1,0 +1,2 @@
+d /var/lib/pepecoin 0770 pepecoin pepecoin - -
+d /etc/pepecoin     0770 pepecoin pepecoin - -

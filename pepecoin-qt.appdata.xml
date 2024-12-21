@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.pepecoincore.pepecoin-qt</id>
+  <name>Pepecoin Core</name>
+  <project_license>MIT</project_license>
+  <metadata_license>CC0-1.0</metadata_license>
+  <summary>Connect to the Pepecoin P2P network</summary>
+  <url type="homepage">https://pepecoin.org/</url>
+  <url type="bugtracker">https://github.com/pepecoinppc/pepecoin/issues</url>
+  <launchable type="desktop-id">pepecoin-qt.desktop</launchable>
+  <description>
+    <p>Pepecoin is the world's first fully decentralized and secure blockchain for Pepe. No one owns or controls Pepecoin. Consensus is achieved through a simple set of rules followed by all nodes on the network. Pepecoin core is the official desktop wallet for Pepecoin. Store and manage your Pepecoin effortlessly with the intuitive wallet interface.</p>
+  </description>
+  <screenshots>
+    <screenshot>
+      <image type="source">https://pepecoin.org/assets/img/brand-assets/new_wallet_screenshot.png</image>
+    </screenshot>
+  </screenshots>
+</component>

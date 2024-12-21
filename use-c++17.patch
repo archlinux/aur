@@ -712,6 +712,27 @@ index 34c7811d6..0f6278dea 100644
  dnl Check if -latomic is required for <std::atomic>
  CHECK_ATOMIC
  
+diff --git a/src/net.cpp b/src/net.cpp
+index 8739c16de..820f4f58a 100644
+--- a/src/net.cpp
++++ b/src/net.cpp
+@@ -1470,6 +1470,7 @@ void ThreadMapPort()
+     const char * minissdpdpath = 0;
+     struct UPNPDev * devlist = 0;
+     char lanaddr[64];
++    char wanaddr[64];
+ 
+ #ifndef UPNPDISCOVER_SUCCESS
+     /* miniupnpc 1.5 */
+@@ -1488,7 +1489,7 @@ void ThreadMapPort()
+     struct IGDdatas data;
+     int r;
+ 
+-    r = UPNP_GetValidIGD(devlist, &urls, &data, lanaddr, sizeof(lanaddr));
++    r = UPNP_GetValidIGD(devlist, &urls, &data, lanaddr, sizeof(lanaddr), wanaddr, sizeof(wanaddr));
+     if (r == 1)
+     {
+         if (fDiscover) {
 diff --git a/src/net_processing.cpp b/src/net_processing.cpp
 index a9c3ef7f4..c534273c5 100644
 --- a/src/net_processing.cpp

@@ -3,3 +3,8 @@
 !PKGBUILD
 !.SRCINFO
 !use-c++17.patch
+!pepecoin.sysusers
+!pepecoin.tmpfiles
+!pepecoind.service
+!pepecoin-qt.desktop
+!pepecoin-qt.appdata.xml
