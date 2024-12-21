@@ -1,6 +1,6 @@
 pkgbase = project-graph-nightly
 	pkgdesc = A simple tool to create topology diagrams.
-	pkgver = 0.1.0
+	pkgver = 0.0.0-nightly.db25d06766b9ca60d64feca2e1d4756a92c31099
 	pkgrel = 1
 	url = https://github.com/LiRenTech/project-graph
 	arch = x86_64
