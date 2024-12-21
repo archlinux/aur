@@ -19,7 +19,7 @@ build() {
 
 check() {
   cd "$srcdir"/$pkgname-$pkgver
-  python setup.py test
+  python setup.py check
 }
 
 package() {
