@@ -2,9 +2,9 @@
 
 _rockname=silex.sile
 pkgname=("sile-${_rockname%.sile}")
-pkgver=0.6.0
+pkgver=0.7.0
 _rockrel=1
-pkgrel=2
+pkgrel=1
 pkgdesc='Extension layer for SILE and resilient'
 arch=(any)
 url="https://github.com/Omikhleia/$_rockname"
@@ -14,7 +14,7 @@ makedepends=(lua51
              luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('8706374fb0c7c783219f6ac0bd0b9a5e6d1f4650b92ef72df79d35e07a7caad6')
+sha256sums=('3ddc7c17e81d31ddeba290659902e17867f4c9c57a1916802c371502d1ada67b')
 
 package() {
 	cd "$_archive"
