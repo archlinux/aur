@@ -1,0 +1,4 @@
+[qtscrcpy]
+source = "git"
+git = "https://github.com/barry-ran/QtScrcpy.git"
+prefix = "v"

@@ -7,13 +7,13 @@
 
 ## options
 : ${_install_path:=opt}
-: ${_commit=8abdc5c389169ee060d55aacbb4a7c03b946d939} # 2.2.1
+: ${_commit=ec5f413a3893b14f6af35b8a7f1edf6f17c41c09} # 3.0.1
 
 # basic info
 _pkgname=qtscrcpy
 pkgname="$_pkgname"
-pkgver=2.2.1
-pkgrel=5
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 url="https://github.com/barry-ran/QtScrcpy"
 license=('Apache-2.0')
@@ -49,11 +49,7 @@ sha256sums=(
 )
 
 prepare() {
-  cd "$_pkgsrc_core"
-  git remote set-url origin https://github.com/barry-ran/QtScrcpyCore.git
-  git fetch origin 769943161f99dbc7b0c55f7f769e32729ab06693
-
-  cd "$srcdir/$_pkgsrc"
+  cd "$_pkgsrc"
   git submodule init
   git config submodule.QtScrcpy/QtScrcpyCore.url "$srcdir/qtscrcpycore"
   git -c protocol.file.allow=always submodule update
