@@ -2,11 +2,11 @@
 
 pkgname=pix-git
 _pkgbasename=pix
-pkgver=3.4.0.r1.ge2e441b
+pkgver=3.4.4.r0.g1403ded
 pkgrel=1
 pkgdesc="Image viewer and browser based on gthumb. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=(
     'desktop-file-utils'
     'librsvg'
