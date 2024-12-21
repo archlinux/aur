@@ -1,7 +1,7 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 
 pkgname=python-imblearn
-pkgver=0.12.4
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='A Python Package to Tackle the Curse of Imbalanced Datasets in Machine Learning'
 arch=(any)
@@ -19,12 +19,18 @@ optdepends=(
     'python-keras-applications'
     'python-tensorflow'
 )
-source=("https://github.com/scikit-learn-contrib/imbalanced-learn/archive/${pkgver}.tar.gz")
-sha256sums=('aba97be26198ae497fe979bc778d154b33aea77b6834856b123516d68a07e691')
+source=("git+https://github.com/scikit-learn-contrib/imbalanced-learn.git#tag=${pkgver}")
+# use makepkg -g to update
+sha256sums=('96eded800ac6bfaef968fd52d250b7a6cc767f7297bb593a3a6dcd8ff0e32289')
+
+build() {
+  cd "${srcdir}/imbalanced-learn"
+  python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "${srcdir}/imbalanced-learn-${pkgver}"
-  python setup.py install -O1 --root="${pkgdir}"
+  cd "${srcdir}/imbalanced-learn";
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m644 "README.rst" "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
