@@ -4,7 +4,7 @@
 # Contributor: beatgammit
 
 pkgname=servo-git
-pkgver=r48452.2ca6c4b52be
+pkgver=r49968.adfee3daa53
 pkgrel=1
 pkgdesc='Parallel Browser Project: web browser written in Rust'
 arch=(x86_64 i686)
@@ -35,7 +35,8 @@ makedepends=(rustup # doesn't work with system rust
              llvm
              python
              python-distlib
-             python-virtualenv)
+             python-virtualenv
+             uv)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!lto') # lto breaks linking
@@ -56,7 +57,6 @@ prepare() {
 
 build() {
 	cd "$pkgname"
-	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	# was failing with some error and said to install these componenets
 	# "magically" works after this
