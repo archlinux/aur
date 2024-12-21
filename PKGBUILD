@@ -3,27 +3,27 @@
 pkgbase=python-stpipe
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Framework for calibration pipeline software"
 arch=('any')
 url="https://stpipe.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm>=3.4'
-             'python-wheel'
              'python-build'
              'python-installer'
              'python-sphinx-automodapi'
              'python-sphinx_rtd_theme'
              'python-numpydoc'
              'python-crds'
-             'graphviz')
+             'graphviz')  # wheel required by new setuptools
 checkdepends=('python-pytest-doctestplus'
+#             'python-pytest-xdist'
               'python-roman-datamodels'
-##            'python-jwst'
+#             'python-jwst'
               'python-stdatamodels')   # crds already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('12d2920fc103081b135b88d512591396')
+md5sums=('4c2c3524323f433ca61539801ae63ff6')
 
 get_pyinfo() {
     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
@@ -47,7 +47,7 @@ check() {
 #   CRDS_PATH=".crds" \
 #   CRDS_PATH=".crds" CRDS_SERVER_URL="https://jwst-crds.stsci.edu" \
     PATH="tmp_install/usr/bin:${PATH}" PYTHONPATH="tmp_install/$(get_pyinfo site)" \
-        pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+        pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-stpipe() {
