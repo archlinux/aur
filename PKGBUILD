@@ -3,7 +3,7 @@
 # Upstream takes a few days to provide binary packages after a release is cut.
 
 pkgname=noseyparker-bin
-pkgver=0.19.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc='find secrets and sensitive information in textual data and Git history'
 url='https://github.com/praetorian-inc/noseyparker'
@@ -16,8 +16,8 @@ depends=(glibc gcc-libs)
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/noseyparker-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/noseyparker-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('8f277e5316717059d35c96458fcd8ebb5a3bf6da97088c70818ce43637218419')
-sha256sums_aarch64=('c698d0489461a1bb760eec2c4703e41d491ffb5a4ecad5011ddc6d198e3202bf')
+sha256sums_x86_64=('a31bb3253260359d257387f11ad19e04c491aff326a38c2bf6b2208050c8135b')
+sha256sums_aarch64=('90567e9aca772998c0f4b327d1be3c6bf5ec8a303f537c1db6b3aebaf492153e')
 
 package() {
   install -Dm755 bin/noseyparker \
