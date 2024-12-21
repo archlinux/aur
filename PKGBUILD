@@ -3,7 +3,7 @@
 _pkgname=eval-type-backport
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Like typing._eval_type, but lets older Python versions use newer typing features."
 arch=("any")
@@ -12,7 +12,7 @@ license=('MIT')
 depends=("python")
 makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pipname::1}/${_pipname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('68796cfbc7371ebf923f03bdf7bef415f3ec098aeced24e054b253a0e78f7b37')
+sha256sums=('45508fd1915b50909e46601b599e22a9e440b9fa6e0ef195b23bbb30158d7b6a')
 
 build() {
     cd "${_pipname}-${pkgver}"
