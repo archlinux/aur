@@ -2,8 +2,8 @@
 # Maintainer: CountMurphy <spartan1086@gmail.com>
 pkgname=mediatracker
 __pkgname="MediaTracker"
-pkgver=0.2.4
-pkgrel=3
+pkgver=0.2.5
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/bonukai/MediaTracker.git"
 pkgdesc="Self hosted platform for tracking movies, tv shows, video games, books and audiobooks."
@@ -12,7 +12,7 @@ depends=('nodejs-lts-iron' 'sqlite')
 conflicts=(mediatracker-git)
 makedepends=('npm')
 source=("https://github.com/bonukai/MediaTracker/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=(03f20ba8d1e752ec3c14c24ec7c917e941a6b608a786f2d70bf062cd08e69bd0285d439732642ae1c92958a8fe48eabaa742a9dc373c60d30da718a04c25d6f0)
+sha512sums=(b3df530a89c54cbf61ea82ea70c75d3dbe0e00b48dfd4e895ba1f7c5bae4b24650bbdf46ca6def6b2a2c864249ac2c78cbf5d9b80bf8a1a84ab2d8933cc71af2)
 
 
 build() {
