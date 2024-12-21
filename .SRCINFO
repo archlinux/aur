@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-sound
 	pkgdesc = Ayatana system sound indicator
-	pkgver = 24.5.0
+	pkgver = 24.5.1
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/ayatana-indicator-sound
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = ayatana-indicator-sound
 	depends = glibc
 	depends = glib2
 	depends = dconf
-	source = ayatana-indicator-sound-24.5.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-sound/archive/24.5.0.tar.gz
-	md5sums = 6160f0aee3ff1344ee2352d215f3e987
+	source = ayatana-indicator-sound-24.5.1.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-sound/archive/24.5.1.tar.gz
+	md5sums = 4c72cadebd6696c8fff3c956b6ed9701
 
 pkgname = ayatana-indicator-sound
