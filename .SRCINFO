@@ -1,7 +1,7 @@
 pkgbase = ttf-windows-fonts
 	pkgdesc = All of the fonts needed for proper Microsoft services with automated installation
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	depends = wimlib
 	depends = sudo

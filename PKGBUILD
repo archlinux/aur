@@ -2,7 +2,7 @@
 
 pkgname=ttf-windows-fonts
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="All of the fonts needed for proper Microsoft services with automated installation"
 arch=('any')
 source=(fonts.iso::http://software-static.download.prss.microsoft.com/pr/download/19042.631.201119-0144.20h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x86FRE_en-us.iso)
@@ -22,5 +22,5 @@ prepare() {
     cp wim-mount/Windows/Fonts/*.ttf fonts
     wimlib-imagex unmount wim-mount
 
-    sudo cp -r fonts /usr/share/fonts/TTF
+    sudo cp -r fonts /usr/share/fonts/TTF/windows-fonts
 }
