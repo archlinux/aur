@@ -1,0 +1,13 @@
+pkgbase = vanshot
+	pkgdesc = Screenshot tool for Wayland
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = x86_64
+	license = BSD
+	depends = grim
+	depends = slurp
+	depends = swappy
+	optdepends = wl-clipboard: copy to clipboard support
+	optdepends = otf-font-awesome: to draw the paint icons properly
+
+pkgname = vanshot
