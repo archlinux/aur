@@ -53,7 +53,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/HyprPanel"
-    arch-meson build
+    arch-meson --reconfigure build
     meson compile -C build
 }
 
