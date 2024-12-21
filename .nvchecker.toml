@@ -1,0 +1,5 @@
+[debhelper]
+source = "git"
+git = "https://salsa.debian.org/debian/debhelper.git"
+prefix = "debian/"
+include_regex = 'debian/([0-9\.]+)'

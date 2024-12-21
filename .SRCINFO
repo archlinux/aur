@@ -1,6 +1,6 @@
 pkgbase = debhelper
 	pkgdesc = Programs to automate common tasks in debian/rules when building Debian packages
-	pkgver = 13.20
+	pkgver = 13.22
 	pkgrel = 1
 	url = https://salsa.debian.org/debian/debhelper
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = debhelper
 	depends = perl-pod-parser
 	optdepends = dh-make: convert source archives into Debian package source
 	conflicts = dh-strip-nondeterminism
-	source = debhelper::git+https://salsa.debian.org/debian/debhelper.git#tag=debian/13.20
+	source = debhelper::git+https://salsa.debian.org/debian/debhelper.git#tag=debian/13.22
 	source = strip-nondeterminism::git+https://salsa.debian.org/reproducible-builds/strip-nondeterminism.git
-	sha256sums = 1f3d05435f7242257e1ff319253db84a486710525bcd1cee729c710bbcf4a994
+	sha256sums = 3f97ed69464ffa0161172c6a1b9a659cedeac37f1c507c10b50a8ca001277a8e
 	sha256sums = SKIP
 
 pkgname = debhelper
@@ -22,6 +22,6 @@ pkgname = debhelper
 	depends = binutils
 	depends = file
 	depends = man-db
+	depends = po-debconf
 	depends = python-html2text
 	depends = strip-nondeterminism
-	depends = po-debconf

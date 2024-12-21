@@ -5,7 +5,7 @@
 
 _pkgname="debhelper"
 pkgname="$_pkgname"
-pkgver=13.20
+pkgver=13.22
 pkgrel=1
 pkgdesc="Programs to automate common tasks in debian/rules when building Debian packages"
 url="https://salsa.debian.org/debian/debhelper"
@@ -27,7 +27,7 @@ optdepends=(
 _source_main() {
   _pkgsrc="$_pkgname"
   source=("$_pkgsrc"::"git+$url.git#tag=debian/$pkgver")
-  sha256sums=('1f3d05435f7242257e1ff319253db84a486710525bcd1cee729c710bbcf4a994')
+  sha256sums=('3f97ed69464ffa0161172c6a1b9a659cedeac37f1c507c10b50a8ca001277a8e')
 }
 
 _source_dh_strip_nd() {
@@ -51,11 +51,9 @@ package() {
     'binutils'
     'file'
     'man-db'
+    'po-debconf' # AUR
     'python-html2text'
     'strip-nondeterminism'
-
-    # AUR
-    'po-debconf'
   )
 
   make -C "$_pkgsrc" DESTDIR="$pkgdir" install
