@@ -3,17 +3,17 @@
 
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
-pkgver=2.8.1
-pkgrel=2
+pkgver=2.9.0
+pkgrel=1
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
 license=('AGPL3')
-depends=('gtk3' 'webkit2gtk-4.1' 'mpfr')
+depends=('gtk3' 'webkit2gtk-4.1' 'mpfr' 'gmp')
 makedepends=('cmake' 'systemd' 'glu' 'ninja' 'git')
 options=('!makeflags')
 source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('f71033dd4e9fdd8e5ac7b5be5803d0d6d09ec0fd87de92b152b3c6bbae04c103')
+sha256sums=('515a41dea3bcd2fcadb713b22e4eccfd46fbb7a7ca8dad8440e7b5e29fbbc206')
 
 build() {
   cd PrusaSlicer-version_${pkgver}
@@ -29,7 +29,7 @@ build() {
       -G Ninja \
       -B build \
       -DDEP_WX_GTK3=ON \
-      -DPrusaSlicer_deps_PLATFORM_PACKAGES="JPEG;PNG;TIFF;MPFR"
+      -DPrusaSlicer_deps_PLATFORM_PACKAGES="JPEG;PNG;TIFF;MPFR;GMP"
   ninja -C build
   cd ..
 
