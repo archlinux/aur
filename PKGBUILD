@@ -1,7 +1,7 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=code-features
 pkgver=1.96.0
-pkgrel=3
+pkgrel=1
 pkgdesc='Unblock some features in Code OSS'
 arch=('any')
 url='https://github.com/microsoft/vscode'

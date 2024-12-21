@@ -1,7 +1,7 @@
 pkgbase = code-features
 	pkgdesc = Unblock some features in Code OSS
 	pkgver = 1.96.0
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/microsoft/vscode
 	install = code-features.install
 	arch = any
