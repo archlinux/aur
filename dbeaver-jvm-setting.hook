@@ -4,8 +4,23 @@ Operation = Install
 Operation = Upgrade
 Target = usr/share/dbeaver/dbeaver.ini
 Target = usr/lib/dbeaver/dbeaver.ini
+Target = opt/dbeaver/dbeaver.ini
+
 Target = usr/share/dbeaver-ce/dbeaver.ini
 Target = usr/lib/dbeaver-ce/dbeaver.ini
+Target = opt/dbeaver-ce/dbeaver.ini
+
+Target = usr/share/dbeaver-le/dbeaver.ini
+Target = usr/lib/dbeaver-le/dbeaver.ini
+Target = opt/dbeaver-le/dbeaver.ini
+
+Target = usr/share/dbeaver-ee/dbeaver.ini
+Target = usr/lib/dbeaver-ee/dbeaver.ini
+Target = opt/dbeaver-ee/dbeaver.ini
+
+Target = usr/share/dbeaver-ue/dbeaver.ini
+Target = usr/lib/dbeaver-ue/dbeaver.ini
+Target = opt/dbeaver-ue/dbeaver.ini
 
 [Action]
 Description = Setting native jvm path for DBeaver...

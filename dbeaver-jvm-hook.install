@@ -1,9 +1,20 @@
 list_conf_files(){
   ls \
   /usr/share/dbeaver/dbeaver.ini \
+  /usr/lib/dbeaver/dbeaver.ini \
+  /opt/dbeaver/dbeaver.ini \
   /usr/share/dbeaver-ce/dbeaver.ini \
   /usr/lib/dbeaver-ce/dbeaver.ini \
-  /usr/lib/dbeaver/dbeaver.ini \
+  /opt/dbeaver-ce/dbeaver.ini \
+  /usr/share/dbeaver-ee/dbeaver.ini \
+  /usr/lib/dbeaver-ee/dbeaver.ini \
+  /opt/dbeaver-ee/dbeaver.ini \
+  /usr/share/dbeaver-le/dbeaver.ini \
+  /usr/lib/dbeaver-le/dbeaver.ini \
+  /opt/dbeaver-le/dbeaver.ini \
+  /usr/share/dbeaver-ue/dbeaver.ini \
+  /usr/lib/dbeaver-ue/dbeaver.ini \
+  /opt/dbeaver-ue/dbeaver.ini \
   2>/dev/null
 }
 
