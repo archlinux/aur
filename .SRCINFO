@@ -1,6 +1,6 @@
 pkgbase = cahute
 	pkgdesc = A toolkit to handle communication and file formats related to CASIO calculators
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://cahuteproject.org
 	install = cahute.install
@@ -18,7 +18,7 @@ pkgbase = cahute
 	replaces = libp7
 	replaces = p7screen
 	options = !strip
-	source = https://ftp.cahuteproject.org/releases/cahute-0.5.tar.gz
-	b2sums = e71dd07dff56b2593c732d6d6fa72f66465c81b1fa34c5cda84277a2d4e6197aee3d4740a425a54c9a27b781be26e032369e6add205906add00433d1fb47c2a7
+	source = https://ftp.cahuteproject.org/releases/cahute-0.6.tar.gz
+	b2sums = 686b39fd9857afe5758a4cb95e8b889516d80dc7f02507eedc83bb08f4649ba44f816c8d4e756dce044e3c265316e9f884b069ba78efec182c91b3ce4e4d49fc
 
 pkgname = cahute
