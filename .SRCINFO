@@ -1,24 +1,20 @@
 pkgbase = sensible-utils
 	pkgdesc = Utilities for sensible alternative selection
 	pkgver = 0.0.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://salsa.debian.org/debian/sensible-utils
 	arch = any
 	license = GPL-2.0-or-later
 	checkdepends = ed
+	checkdepends = shellcheck
 	makedepends = po4a
 	depends = bash
 	provides = sensible-browser=0.0.24
 	provides = sensible-editor=0.0.24
-	conflicts = sensible-browser
 	conflicts = sensible-browser-git
-	conflicts = sensible-editor
 	conflicts = sensible-editor-git
-	conflicts = sensible-pager
 	conflicts = sensible-pager-git
-	conflicts = sensible-terminal
 	conflicts = sensible-terminal-git
-	conflicts = sensible-utils-data
 	conflicts = sensible-utils-data-git
 	conflicts = sensible-utils-git
 	source = sensible-utils-0.0.24.tar.gz::https://salsa.debian.org/debian/sensible-utils/-/archive/debian/0.0.24/sensible-utils-debian-0.0.24.tar.gz
