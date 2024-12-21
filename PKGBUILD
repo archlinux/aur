@@ -2,11 +2,11 @@
 
 pkgname=xreader-git
 _pkgbasename=xreader
-pkgver=4.2.0.r0.gce89025
+pkgver=4.2.3.r0.gca48134
 pkgrel=1
 pkgdesc="Document viewer for files like PDF and Postscript. X-Apps Project (git version)."
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('poppler-glib' 'webkit2gtk-4.1' 'xapp')
 makedepends=(
     'git' 'meson' 'samurai' 'gobject-introspection' 'mathjax2'

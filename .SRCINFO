@@ -1,11 +1,11 @@
 pkgbase = xreader-git
 	pkgdesc = Document viewer for files like PDF and Postscript. X-Apps Project (git version).
-	pkgver = 4.2.0.r0.gce89025
+	pkgver = 4.2.3.r0.gca48134
 	pkgrel = 1
 	url = https://github.com/linuxmint/xreader
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = meson
 	makedepends = samurai
