@@ -1,0 +1,16 @@
+pkgbase = vala-rofi-polkit
+	pkgdesc = A tool crafted to employ Rofi, or any other program executable via a Bash script, as the authentication user interface for Polkit.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MonadicSpell/vala-rofi-polkit
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = polkit
+	depends = meson
+	depends = ninja
+	options = !debug
+	source = vala-rofi-polkit-1.0.0::git+https://github.com/MonadicSpell/vala-rofi-polkit#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = vala-rofi-polkit
