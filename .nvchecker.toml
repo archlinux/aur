@@ -1,0 +1,4 @@
+[bluetui-bin]
+source = "git"
+git = "https://github.com/pythops/bluetui.git"
+prefix = "v"
