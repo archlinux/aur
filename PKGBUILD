@@ -3,7 +3,7 @@
 _pkgname='icloud-notes'
 pkgname="${_pkgname}-git"
 pkgver=1.2.0.r0.g6635f9d
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial iCloud Notes Desktop App'
 arch=('any')
 url='https://github.com/swe-himelrana/icloud-notes'
@@ -41,7 +41,7 @@ build() {
         -c.electronVersion="$_ver"
     
     for _i in 16 32 48 128; do
-        magick "icon.png" -resize ${_i}x${_i} "icon${_i}.png"
+        magick "icon.png" -resize ${_i}x${_i} "../icon${_i}.png"
     done
 }
 
@@ -49,6 +49,11 @@ package() {
     # Desktop Entry
     install -Dm644 "icloud-notes.desktop" \
         "${pkgdir}/usr/share/applications/$_pkgname.desktop"
+    
+    # icon (except 512x512)
+    for _i in 16 32 48 128; do
+        install -Dm644 "icon${_i}.png" "${pkgdir}/usr/share/icons/hicolor/${_i}x${_i}/apps/${_pkgname}.png"
+    done
 
     cd "$_pkgname"
 
@@ -69,7 +74,4 @@ EOD
     # Icon
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps/"
     ln -s "../../../../../lib/${_pkgname}/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
-    for _i in 16 32 48 128; do
-        install -Dm644 "icon${_i}.png" "${pkgdir}/usr/share/icons/hicolor/${_i}x${_i}/apps/${_pkgname}.png"
-    done
 }

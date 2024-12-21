@@ -1,7 +1,7 @@
 pkgbase = icloud-notes-git
 	pkgdesc = Unofficial iCloud Notes Desktop App
 	pkgver = 1.2.0.r0.g6635f9d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/swe-himelrana/icloud-notes
 	arch = any
 	license = MIT
