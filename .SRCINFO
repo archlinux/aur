@@ -1,0 +1,12 @@
+pkgbase = ttf-2of5-font-git
+	pkgdesc = Font encoding the interleaved 2of5 barcode standard.
+	pkgver = r9.41dfb9d
+	pkgrel = 1
+	url = https://github.com/Holger-Will/2of5-font
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	source = ttf-2of5-font-git::git+https://github.com/Holger-Will/2of5-font.git
+	md5sums = SKIP
+
+pkgname = ttf-2of5-font-git
