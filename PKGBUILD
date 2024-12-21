@@ -9,7 +9,8 @@ arch=(any)
 url="https://${_base}.org"
 license=(BSD)
 makedepends=(python-build python-installer python-hatchling python-wheel)
-depends=(python-diskcache python-matplotlib python-packaging python-pillow python-pygments python-qtpy python-scipy python-typer)
+depends=(python-diskcache python-matplotlib python-packaging python-pillow
+  python-pygments python-qtpy python-scipy python-threadpoolctl python-typer)
 optdepends=('python-pytorch: PyTorch open source machine learning framework'
   'python-slycot'
   'python-ipyparallel: required for ${_base}.parallel.ipython'

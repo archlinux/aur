@@ -16,6 +16,7 @@ pkgbase = python-pymor
 	depends = python-pygments
 	depends = python-qtpy
 	depends = python-scipy
+	depends = python-threadpoolctl
 	depends = python-typer
 	optdepends = python-pytorch: PyTorch open source machine learning framework
 	optdepends = python-slycot
