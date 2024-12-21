@@ -468,6 +468,7 @@
 			"chatVariableResolver",
 			"mappedEditsProvider",
 			"aiRelatedInformation",
+			"chatEditing",
 			"codeActionAI",
 			"findTextInFiles",
 			"textSearchProvider",
