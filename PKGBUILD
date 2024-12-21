@@ -1,0 +1,29 @@
+# Maintainer: Patrick Mang <aur at patrickmang dot de>
+
+pkgname=goscrobble
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="A simple music scrobbler daemon for MPRIS-based music players."
+arch=(x86_64)
+url="https://github.com/p-mng/goscrobble"
+license=("custom:MIT")
+depends=(dbus)
+makedepends=(go)
+source=("goscrobble-v${pkgver}.tar.gz::https://github.com/p-mng/goscrobble/archive/refs/tags/v0.1.0.tar.gz"
+        "goscrobble.service")
+sha256sums=('827dfc378eb1f21b131164527f11dc0d9e0683f1b36498caea9a01d2f4c0baf7'
+            '5a8cd735c63071612011a7cacfbc2df1ecc3ea54cc66fd494dbd5c0fac95d80c')
+
+build() {
+	cd "${srcdir}/goscrobble-${pkgver}"
+
+	CGO_ENABLED=0 go build -v ./...
+}
+
+package() {
+	cd "${srcdir}/goscrobble-${pkgver}"
+
+	install -Dm755 "goscrobble" "${pkgdir}/usr/bin/goscrobble"
+	install -Dm644 "goscrobble.service" -t "${pkgdir}/usr/lib/systemd/user/"
+	install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+}
