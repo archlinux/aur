@@ -2,35 +2,35 @@
 
 pkgname=warcraftlogsuploader-appimage
 _pkgapp=warcraftlogsuploader
-pkgver=8.15.4
+pkgver=8.15.13
 pkgrel=1
 pkgdesc="warcraftlogs.com desktop client for Linux"
 arch=('x86_64')
 depends=("fuse2")
 conflicts=("warcraftlogsuploader")
 url="https://warcraftlogs.com/"
-source=("${_pkgapp}-2f97b82a96da843fb6ea8e0fb9a8ac0060b9fec9fee9e8a6c00a4dd40f6e581c0e8c5781c3628f6735c4b805b9d60800f1f9c73bed7d8c81315cc10fe97868fc.AppImage::https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/download/v8.15.4/warcraftlogs-v8.15.4.AppImage"
+source=("${_pkgapp}-8c14893d583ae6c82bcd334dd132a22d08abffc17c99447bb10b18eec99fd012f886b26c74f9d722f05c4e5f4492edcc391f2753f8bba43314ba80c5d708d901.AppImage::https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/download/v8.15.13/warcraftlogs-v8.15.13.AppImage"
         'start')
 license=('custom' 'MIT' 'custom:chromium-licenses')
 options=(!strip)
 # Skip checksum check for the WarcraftLogs binary, to avoid breakage on updates
-sha512sums=('2f97b82a96da843fb6ea8e0fb9a8ac0060b9fec9fee9e8a6c00a4dd40f6e581c0e8c5781c3628f6735c4b805b9d60800f1f9c73bed7d8c81315cc10fe97868fc'
+sha512sums=('8c14893d583ae6c82bcd334dd132a22d08abffc17c99447bb10b18eec99fd012f886b26c74f9d722f05c4e5f4492edcc391f2753f8bba43314ba80c5d708d901'
             '1f8d504fb27e815f7efcc8e97672bad12f531d171ab8a08c49439fb4ee63b07e9355c49e56b5fb2eb2f6d202ce56a0526b609fef4b6209832026709002eba22a')
 
 pkgver() {
     cd ${srcdir}
-    chmod +x ${srcdir}/${_pkgapp}-2f97b82a96da843fb6ea8e0fb9a8ac0060b9fec9fee9e8a6c00a4dd40f6e581c0e8c5781c3628f6735c4b805b9d60800f1f9c73bed7d8c81315cc10fe97868fc.AppImage
-    ${srcdir}/${_pkgapp}-2f97b82a96da843fb6ea8e0fb9a8ac0060b9fec9fee9e8a6c00a4dd40f6e581c0e8c5781c3628f6735c4b805b9d60800f1f9c73bed7d8c81315cc10fe97868fc.AppImage --appimage-extract >/dev/null
+    chmod +x ${srcdir}/${_pkgapp}-8c14893d583ae6c82bcd334dd132a22d08abffc17c99447bb10b18eec99fd012f886b26c74f9d722f05c4e5f4492edcc391f2753f8bba43314ba80c5d708d901.AppImage
+    ${srcdir}/${_pkgapp}-8c14893d583ae6c82bcd334dd132a22d08abffc17c99447bb10b18eec99fd012f886b26c74f9d722f05c4e5f4492edcc391f2753f8bba43314ba80c5d708d901.AppImage --appimage-extract >/dev/null
     cat ${srcdir}/squashfs-root/warcraftlogs.desktop | grep 'X-AppImage-Version' | sed 's!^X-AppImage-Version=!!g'
 }
 
 package() {
     cd ${srcdir}
-    chmod +x ${srcdir}/${_pkgapp}-2f97b82a96da843fb6ea8e0fb9a8ac0060b9fec9fee9e8a6c00a4dd40f6e581c0e8c5781c3628f6735c4b805b9d60800f1f9c73bed7d8c81315cc10fe97868fc.AppImage
-    ./${_pkgapp}-2f97b82a96da843fb6ea8e0fb9a8ac0060b9fec9fee9e8a6c00a4dd40f6e581c0e8c5781c3628f6735c4b805b9d60800f1f9c73bed7d8c81315cc10fe97868fc.AppImage --appimage-extract >/dev/null
+    chmod +x ${srcdir}/${_pkgapp}-8c14893d583ae6c82bcd334dd132a22d08abffc17c99447bb10b18eec99fd012f886b26c74f9d722f05c4e5f4492edcc391f2753f8bba43314ba80c5d708d901.AppImage
+    ./${_pkgapp}-8c14893d583ae6c82bcd334dd132a22d08abffc17c99447bb10b18eec99fd012f886b26c74f9d722f05c4e5f4492edcc391f2753f8bba43314ba80c5d708d901.AppImage --appimage-extract >/dev/null
     sed -i 's/Exec=.*/Exec=\/usr\/bin\/'${_pkgapp}' %U/' squashfs-root/warcraftlogs.desktop
 
-    install -Dm755 ${_pkgapp}-2f97b82a96da843fb6ea8e0fb9a8ac0060b9fec9fee9e8a6c00a4dd40f6e581c0e8c5781c3628f6735c4b805b9d60800f1f9c73bed7d8c81315cc10fe97868fc.AppImage "${pkgdir}/opt/${_pkgapp}/${_pkgapp}.AppImage"
+    install -Dm755 ${_pkgapp}-8c14893d583ae6c82bcd334dd132a22d08abffc17c99447bb10b18eec99fd012f886b26c74f9d722f05c4e5f4492edcc391f2753f8bba43314ba80c5d708d901.AppImage "${pkgdir}/opt/${_pkgapp}/${_pkgapp}.AppImage"
     install -Dm755 "start" "${pkgdir}/usr/bin/${_pkgapp}"
     install -dm755 "${pkgdir}/usr/share/applications/"
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps/"
