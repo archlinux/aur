@@ -1,7 +1,7 @@
 pkgname=spm-arch
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="Simple FZF Package Manager Wrapper for Arch Linux"
+pkgdesc="Simple Package Manager Wrapper for Arch Linux"
 arch=('any')
 url="https://github.com/adelmonte/Simple_Package_Manager"
 license=('GPL v3.0')
@@ -10,7 +10,7 @@ optdepends=('fish: for fish shell integration')
 provides=('spm')
 conflicts=('spm')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v.$pkgver/spm-$pkgver.tar.gz")
-sha256sums=('f65ba39920f7e0f9cdb344cc369abb29b308788057637aa0936763f7c6081c24')
+sha256sums=('1babf186ec12315adec9631185cd502667c807c19ff8de7dc79184def193719c')
 
 package() {
     cd "$srcdir"
