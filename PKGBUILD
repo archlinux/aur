@@ -6,13 +6,13 @@
 # https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/
 
 : ${_pkgtype=-dev-bin}
-: ${_pkgnamefmt:=LibreOffice}
+: ${_pkgnamefmt:=LibreOfficeDev}
 
 ## basic info
 _pkgname="libreoffice"
 pkgname="${_pkgname}${_pkgtype:-}"
 pkgdesc="A free and powerful office suite - development branch"
-pkgver=24.8.4.1
+pkgver=25.2.0.0.beta1
 pkgrel=1
 url="https://www.libreoffice.org/"
 license=('MPL-2.0' 'LGPL-3.0-or-later')
@@ -41,10 +41,11 @@ validpgpkeys=(
 
 package() {
   depends+=(
-    'curl'
-    'gtk3'
-    'lpsolve'
-    'neon'
+    'dbus'
+    'glib2'
+    'hicolor-icon-theme'
+    'libxml2'
+    'python'
   )
 
   find "$srcdir/${_pkgnamefmt}_${pkgver}"*/RPMS/*rpm -exec bsdtar -x -f '{}' -C "$pkgdir" \;
