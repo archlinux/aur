@@ -3,7 +3,7 @@
 pkgbase=python-gwcs
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=0.22.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc="A python package for managing the World Coordinate System (WCS) of astronomical data"
 arch=('any')
@@ -19,7 +19,7 @@ checkdepends=('python-pytest-doctestplus'
               'python-asdf_wcs_schemas'
               'python-typeguard')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('c933f74db1388a9761c435f917bcbd56')
+md5sums=('2f66ff5162a320372d3cc62f92f73662')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
