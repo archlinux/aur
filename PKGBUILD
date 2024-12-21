@@ -1,14 +1,13 @@
 pkgname=distribution
-pkgver=2.8.2git # fails to build from tag
-pkgrel=2
+pkgver=v3.0.0rc.2
+pkgrel=1
 pkgdesc="the Open Source Registry implementation for storing and distributing container images using the OCI Distribution Specification"
 arch=(x86_64)
 url="https://github.com/distribution/distribution/"
 license=('GPL')
 depends=()
 makedepends=('go' 'git')
-#source=("git+https://github.com/distribution/distribution.git#tag=v$pkgver")
-source=("git+https://github.com/distribution/distribution.git"
+source=("git+https://github.com/distribution/distribution.git#tag=${pkgver/rc/-rc}"
 	registry.sysuser
 	registry.service
 	registry.tmpfiles
@@ -27,7 +26,7 @@ prepare() {
 
 build() {
 	cd "$pkgname"
-	make
+	make binaries
 }
 
 package() {
