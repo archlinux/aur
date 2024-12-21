@@ -1,0 +1,1532 @@
+diff --git .git-blame-ignore-revs .git-blame-ignore-revs
+new file mode 100644
+index 0000000..e6c261b
+--- /dev/null
++++ .git-blame-ignore-revs
+@@ -0,0 +1,15 @@
++# pyupgrade
++d2a29a2c36b92d1e77ac291a42ece5d8a455a69b
++0f081e455c6082b8f43bdc1ce8d03359e13cf5be
++fec69ce479a84bac8270b5f1c95ae6344c9f797a
++59dc3c129b40a7992b5d1fab5e5f04705662f71a
++2d7173ec9277da9eb59982c03c7a6e4e06a49759
++7cfe37c6e20df0417248451dd919aeabaed1349a
++b8563af7487d4ea9cda48d5beb49b7354feda5db
++26b7b0c40d317341168090353f85e87e1d9b9f51
++c2ffbb7204424f6af32bb8f150e86c8f51bd9eb9
++55f776114a9b5ef96d2504e1118ee74d75f34cc0
++160475c6680a33a0c57535e7275cc6dad473c4ef
++0419e92e29ecb98eec10cbd2534022563dbf44e5
++6048a44d34a9398bda910563f5f85f1a43714319
++328b8843108c427c6153d2e3e2bf32ce41682433
+diff --git .pre-commit-config.yaml .pre-commit-config.yaml
+new file mode 100644
+index 0000000..d6e8f0a
+--- /dev/null
++++ .pre-commit-config.yaml
+@@ -0,0 +1,20 @@
++---
++fail_fast: false
++repos:
++  - repo: meta
++    hooks:
++      - id: check-hooks-apply
++      - id: check-useless-excludes
++  - repo: https://github.com/pre-commit/pre-commit-hooks
++    rev: "v4.6.0"
++    hooks:
++      - id: check-yaml
++  - repo: https://github.com/asottile/pyupgrade
++    rev: v3.16.0
++    hooks:
++      - id: pyupgrade
++        args: [--py37-plus]
++  - repo: https://github.com/Mateusz-Grzelinski/actionlint-py
++    rev: "v1.7.1.15"
++    hooks:
++      - id: actionlint
+diff --git docs/conf.py docs/conf.py
+index e961b4a..ee35a87 100644
+--- docs/conf.py
++++ docs/conf.py
+@@ -1,5 +1,4 @@
+ #!/usr/bin/env python3
+-# -*- coding: utf-8 -*-
+ #
+ # exdir documentation build configuration file, created by
+ # sphinx-quickstart on Fri Feb  3 09:52:17 2017.
+diff --git environment.yml environment.yml
+index b77bd4b..fd7348e 100644
+--- environment.yml
++++ environment.yml
+@@ -13,5 +13,4 @@ dependencies:
+     - pytest
+     - pytest-benchmark
+     - h5py
+-    - six
+     - pandas
+diff --git examples/axona_to_exdir.py examples/axona_to_exdir.py
+index 32a71d8..b12dd3a 100644
+--- examples/axona_to_exdir.py
++++ examples/axona_to_exdir.py
+@@ -1,7 +1,3 @@
+-from __future__ import division
+-from __future__ import print_function
+-from __future__ import with_statement
+-
+ import sys
+ import quantities as pq
+ import os
+@@ -43,7 +39,7 @@ def parse_header_and_leave_cursor(file_handle):
+         header += str(byte, 'latin-1')
+ 
+         if not byte:
+-            raise IOError("Hit end of file '" + eeg_filename + "'' before '" + search_string + "' found.")
++            raise OSError("Hit end of file '" + eeg_filename + "'' before '" + search_string + "' found.")
+ 
+         if header[-len(search_string):] == search_string:
+             break
+@@ -88,7 +84,7 @@ class AxonaFile:
+         if extension != ".set":
+             raise ValueError("file extension must be '.set'")
+ 
+-        with open(self._absolute_filename, "r") as f:
++        with open(self._absolute_filename) as f:
+             text = f.read()
+ 
+         params = parse_params(text)
+@@ -118,7 +114,7 @@ class AxonaFile:
+                 for i in range(num_chans):
+                     channel_id = self._channel_count + i
+                     channel_ids.append(channel_id)
+-                    channel_names.append("channel_{}_group_{}_internal_{}".format(channel_id, group_id, i))
++                    channel_names.append(f"channel_{channel_id}_group_{group_id}_internal_{i}")
+ 
+                 channel_index = {"group_id": group_id,
+                                  "channel_names": np.array(channel_names, dtype="S"),
+@@ -143,7 +139,7 @@ class AxonaFile:
+     def _channel_gain(self, channel_group_index, channel_index):
+         # TODO split into two functions, one for mapping and one for gain lookup
+         global_channel_index = channel_group_index * 4 + channel_index
+-        param_name = "gain_ch_{}".format(global_channel_index)
++        param_name = f"gain_ch_{global_channel_index}"
+         return float(self._params[param_name])
+ 
+     def read_epoch():
+@@ -217,7 +213,7 @@ class AxonaFile:
+         # TODO store attributes, such as pixels_per_metre
+         pos_filename = os.path.join(self._path, self._base_filename+".pos")
+         if not os.path.exists(pos_filename):
+-            raise IOError("'.pos' file not found:" + pos_filename)
++            raise OSError("'.pos' file not found:" + pos_filename)
+ 
+         with open(pos_filename, "rb") as f:
+             params = parse_header_and_leave_cursor(f)
+@@ -296,7 +292,7 @@ class AxonaFile:
+                 elif file_type == "egf":
+                     sample_count = int(params["num_EGF_samples"])
+                 else:
+-                    raise IOError("Unknown file type. Should be .eeg or .efg.")
++                    raise OSError("Unknown file type. Should be .eeg or .efg.")
+ 
+                 sample_rate_split = params["sample_rate"].split(" ")
+                 bytes_per_sample = params["bytes_per_sample"]
+@@ -323,7 +319,7 @@ class AxonaFile:
+ 
+                     params["channel_id"] = eeg_original_channel_id
+ 
+-                    gain = self._params["gain_ch_{}".format(eeg_final_channel_id)]
++                    gain = self._params[f"gain_ch_{eeg_final_channel_id}"]
+ 
+                     signal = scale_analog_signal(data,
+                                                  gain,
+@@ -402,12 +398,12 @@ if __name__ == "__main__":
+     # TODO for each channel_group, create LFP
+ 
+     for channel_index in axona_folder._channel_indexes:
+-        channel_group = processing.create_group("channel_group_{}".format(channel_index["group_id"]))
++        channel_group = processing.create_group(f"channel_group_{channel_index['group_id']}")
+         if len(channel_index["analogsignals"]) > 0:
+             lfp = channel_group.create_group("LFP")
+ 
+             for index, analog_signal in enumerate(channel_index["analogsignals"]):
+-                lfp_timeseries = lfp.require_group("LFP_timeseries_{}".format(index))
++                lfp_timeseries = lfp.require_group(f"LFP_timeseries_{index}")
+                 lfp_timeseries.attrs["num_samples"] = 1  # TODO
+                 lfp_timeseries.attrs["starting_time"] = {
+                     "value": 0.0,  # TODO
+@@ -421,7 +417,7 @@ if __name__ == "__main__":
+             event_waveform = channel_group.create_group("EventWaveform")
+ 
+             for index, spiketrain in enumerate(channel_index["spiketrains"]):
+-                waveform_timeseries = event_waveform.create_group("waveform_timeseries_{}".format(index))
++                waveform_timeseries = event_waveform.create_group(f"waveform_timeseries_{index}")
+                 waveform_timeseries.attrs["num_samples"] = spiketrain["num_spikes"]
+                 waveform_timeseries.attrs["sample_length"] = spiketrain["samples_per_spike"]
+                 waveform_timeseries.attrs["electrode_idx"] = channel_index["channel_ids"]
+diff --git examples/exdirio.py examples/exdirio.py
+index f05c541..aa8b482 100644
+--- examples/exdirio.py
++++ examples/exdirio.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ """
+ This is the implementation of the NEO IO for the exdir format.
+ Depends on: scipy
+@@ -11,9 +10,6 @@ Authors: Milad H. Mobarhan @CINPLA,
+          Mikkel E. Lepperød @CINPLA
+ """
+ 
+-from __future__ import division
+-from __future__ import print_function
+-from __future__ import with_statement
+ 
+ import sys
+ from neo.io.baseio import BaseIO
+diff --git examples/usecase_exdir.py examples/usecase_exdir.py
+index 386623d..f2899a3 100644
+--- examples/usecase_exdir.py
++++ examples/usecase_exdir.py
+@@ -42,7 +42,7 @@ for experiment in f.keys():
+         print(f[experiment]["voltage"])
+         print("First voltage:", f[experiment]["voltage"][0])
+     else:
+-        print("No voltage values for: {}".format(experiment))
++        print(f"No voltage values for: {experiment}")
+ 
+ 
+ 
+diff --git examples/usecase_h5py.py examples/usecase_h5py.py
+index 9c2d302..50bd608 100644
+--- examples/usecase_h5py.py
++++ examples/usecase_h5py.py
+@@ -47,7 +47,7 @@ for experiment in f.keys():
+         print(f[experiment]["voltage"])
+         print("First voltage:", f[experiment]["voltage"][0])
+     else:
+-        print("No voltage values for: {}".format(experiment))
++        print(f"No voltage values for: {experiment}")
+ 
+ 
+ 
+diff --git exdir/_version.py exdir/_version.py
+index 6bb9041..a0e92bf 100644
+--- exdir/_version.py
++++ exdir/_version.py
+@@ -1,4 +1,3 @@
+-
+ # This file helps to compute a version number in source trees obtained from
+ # git-archive tarball (such as those provided by githubs download-from-tag
+ # feature). Distribution tarballs (built by setup.py sdist) and build
+@@ -114,7 +113,7 @@ def run_command(
+             return None, None
+     else:
+         if verbose:
+-            print("unable to find command, tried %s" % (commands,))
++            print(f"unable to find command, tried {commands}")
+         return None, None
+     stdout = process.communicate()[0].strip().decode()
+     if process.returncode != 0:
+@@ -162,7 +161,7 @@ def git_get_keywords(versionfile_abs: str) -> Dict[str, str]:
+     # _version.py.
+     keywords: Dict[str, str] = {}
+     try:
+-        with open(versionfile_abs, "r") as fobj:
++        with open(versionfile_abs) as fobj:
+             for line in fobj:
+                 if line.strip().startswith("git_refnames ="):
+                     mo = re.search(r'=\s*"(.*)"', line)
+diff --git exdir/core/__init__.py exdir/core/__init__.py
+index 474ff48..b79694c 100644
+--- exdir/core/__init__.py
++++ exdir/core/__init__.py
+@@ -1,5 +1,3 @@
+- # -*- coding: utf-8 -*-
+-
+ """
+ .. module:: exdir.core
+ .. moduleauthor:: Svenn-Arne Dragly, Milad H. Mobarhan, Mikkel E. Lepperød, Simen Tennøe
+diff --git exdir/core/attribute.py exdir/core/attribute.py
+index 8febf40..98c6c50 100644
+--- exdir/core/attribute.py
++++ exdir/core/attribute.py
+@@ -179,8 +179,7 @@ class Attribute:
+         return attrs
+ 
+     def __iter__(self):
+-        for key in self.keys():
+-            yield key
++        yield from self.keys()
+ 
+     @property
+     def filename(self):
+@@ -212,8 +211,8 @@ class Attribute:
+             return "<Attributes of closed Exdir object>"
+         string = ""
+         for key in self:
+-            string += "{}: {},".format(key, self[key])
+-        return "Attribute({}, {{{}}})".format(self.parent.name, string)
++            string += f"{key}: {self[key]},"
++        return f"Attribute({self.parent.name}, {{{string}}})"
+ 
+     def _repr_html_(self):
+         if self.file.io_mode == OpenMode.FILE_CLOSED:
+@@ -223,5 +222,4 @@ class Attribute:
+     def __repr__(self):
+         if self.file.io_mode == OpenMode.FILE_CLOSED:
+             return "<Attributes of closed Exdir object>"
+-        return "Attributes of Exdir object '{}' at '{}'".format(
+-            self.parent.name, id(self))
++        return f"Attributes of Exdir object '{self.parent.name}' at '{id(self)}'"
+diff --git exdir/core/dataset.py exdir/core/dataset.py
+index 95bf614..d84989f 100644
+--- exdir/core/dataset.py
++++ exdir/core/dataset.py
+@@ -38,7 +38,7 @@ class Dataset(exob.Object):
+         an existing dataset, which is different from the behavior in h5py.
+     """
+     def __init__(self, root_directory, parent_path, object_name, file):
+-        super(Dataset, self).__init__(
++        super().__init__(
+             root_directory=root_directory,
+             parent_path=parent_path,
+             object_name=object_name,
+@@ -64,10 +64,10 @@ class Dataset(exob.Object):
+                 if ("required" in self.meta["plugins"][plugin_name]
+                     and self.meta["plugins"][plugin_name]["required"] == True
+                     and plugin_name not in enabled_plugins):
+-                    raise Exception((
+-                        "Plugin '{}' was used to write '{}', "
++                    raise Exception(
++                        f"Plugin '{plugin_name}' was used to write '{self.name}', "
+                         "but is not enabled."
+-                    ).format(plugin_name, self.name))
++                    )
+ 
+         plugins = self.plugin_manager.dataset_plugins.read_order
+ 
+@@ -113,13 +113,13 @@ class Dataset(exob.Object):
+             self.file._open_datasets[self.name] = self
+         except ValueError as e:
+             # Could be that it is a Git LFS file. Let's see if that is the case and warn if so.
+-            with open(self.data_filename, "r", encoding="utf-8") as f:
++            with open(self.data_filename, encoding="utf-8") as f:
+                 test_string = "version https://git-lfs.github.com/spec/v1"
+                 contents = f.read(len(test_string))
+                 if contents == test_string:
+-                    raise IOError("The file '{}' is a Git LFS placeholder. "
++                    raise OSError(f"The file '{self.data_filename}' is a Git LFS placeholder. "
+                         "Open the the Exdir File with the Git LFS plugin or run "
+-                        "`git lfs fetch` first. ".format(self.data_filename))
++                        "`git lfs fetch` first. ")
+                 else:
+                     raise e
+ 
+@@ -132,12 +132,7 @@ class Dataset(exob.Object):
+             shape=value.shape
+         )
+ 
+-        if len(value.shape) == 0:
+-            # scalars need to be set with itemset
+-            self._data_memmap.itemset(value)
+-        else:
+-            # replace the contents with the value
+-            self._data_memmap[:] = value
++        self._data_memmap[...] = value
+ 
+         # update attributes and plugin metadata
+         if attrs:
+@@ -270,8 +265,7 @@ class Dataset(exob.Object):
+     def __repr__(self):
+         if self.file.io_mode == OpenMode.FILE_CLOSED:
+             return "<Closed Exdir Dataset>"
+-        return "<Exdir Dataset {} shape {} dtype {}>".format(
+-            self.name, self.shape, self.dtype)
++        return f"<Exdir Dataset {self.name} shape {self.shape} dtype {self.dtype}>"
+ 
+     @property
+     def _data(self):
+diff --git exdir/core/exdir_file.py exdir/core/exdir_file.py
+index ebca14c..1fb7e58 100644
+--- exdir/core/exdir_file.py
++++ exdir/core/exdir_file.py
+@@ -1,13 +1,7 @@
+ import os
+ import shutil
+ import weakref
+-try:
+-    import pathlib
+-except ImportError as e:
+-    try:
+-        import pathlib2 as pathlib
+-    except ImportError:
+-        raise e
++import pathlib
+ import warnings
+ 
+ import exdir
+@@ -78,8 +72,8 @@ class File(Group):
+         recognized_modes = ['a', 'r', 'r+', 'w', 'w-', 'x']
+         if mode not in recognized_modes:
+             raise ValueError(
+-                "IO mode {} not recognized, "
+-                "mode must be one of {}".format(mode, recognized_modes)
++                f"IO mode {mode} not recognized, "
++                f"mode must be one of {recognized_modes}"
+             )
+ 
+         self.plugin_manager = exdir.plugin_interface.plugin_interface.Manager(plugins)
+@@ -97,9 +91,9 @@ class File(Group):
+                 name_validation = validation.none
+             else:
+                 raise ValueError(
+-                    'IO name rule "{}" not recognized, '
++                    f'IO name rule "{name_validation}" not recognized, '
+                     'name rule must be one of "strict", "simple", '
+-                    '"thorough", "none"'.format(name_validation)
++                    '"thorough", "none"'
+                 )
+ 
+             warnings.warn(
+@@ -126,7 +120,7 @@ class File(Group):
+         if already_exists:
+             if not exob.is_nonraw_object_directory(directory):
+                 raise RuntimeError(
+-                    "Path '{}' already exists, but is not a valid exdir file.".format(directory)
++                    f"Path '{directory}' already exists, but is not a valid exdir file."
+                 )
+ 
+         should_create_directory = False
+@@ -143,8 +137,8 @@ class File(Group):
+                     shutil.rmtree(str(directory))  # NOTE str needed for Python 3.5
+                 else:
+                     raise RuntimeError(
+-                        "File {} already exists. We won't delete the entire tree "
+-                        "by default. Add allow_remove=True to override.".format(directory)
++                        f"File {directory} already exists. We won't delete the entire tree "
++                        "by default. Add allow_remove=True to override."
+                     )
+             should_create_directory = True
+         elif mode == "w-" or mode == "x":
+@@ -227,5 +221,4 @@ class File(Group):
+     def __repr__(self):
+         if self.io_mode == OpenMode.FILE_CLOSED:
+             return "<Closed Exdir File>"
+-        return "<Exdir File '{}' (mode {})>".format(
+-            self.directory, self.user_mode)
++        return f"<Exdir File '{self.directory}' (mode {self.user_mode})>"
+diff --git exdir/core/exdir_object.py exdir/core/exdir_object.py
+index 41a768e..2970b4b 100644
+--- exdir/core/exdir_object.py
++++ exdir/core/exdir_object.py
+@@ -28,38 +28,28 @@ def _create_object_directory(directory, metadata):
+     don't already exist.
+     """
+     if directory.exists():
+-        raise IOError("The directory '" + str(directory) + "' already exists")
++        raise OSError("The directory '" + str(directory) + "' already exists")
+     valid_types = [DATASET_TYPENAME, FILE_TYPENAME, GROUP_TYPENAME]
+     typename = metadata[EXDIR_METANAME][TYPE_METANAME]
+     if typename not in valid_types:
+-        raise ValueError("{typename} is not a valid typename".format(typename=typename))
++        raise ValueError(f"{typename} is not a valid typename")
+     directory.mkdir()
+     meta_filename = directory / META_FILENAME
+     with meta_filename.open("w", encoding="utf-8") as meta_file:
+         if metadata == _default_metadata(typename):
+             # if it is the default, we know how to print it fast
+             metadata_string = (''
+-                '{exdir_meta}:\n'
+-                '   {type_meta}: "{typename}"\n'
+-                '   {version_meta}: {version}\n'
+-            '').format(
+-                exdir_meta=EXDIR_METANAME,
+-                type_meta=TYPE_METANAME,
+-                typename=typename,
+-                version_meta=VERSION_METANAME,
+-                version=1
+-            )
++                f'{EXDIR_METANAME}:\n'
++                f'   {TYPE_METANAME}: "{typename}"\n'
++                f'   {VERSION_METANAME}: 1\n'
++            '')
+         else:
+             from io import StringIO
+             with StringIO() as buf:
+                 yaml.YAML(typ="safe", pure=True).dump(metadata, buf)
+                 metadata_string = buf.getvalue()
+ 
+-        try:
+-            meta_file.write(metadata_string)
+-        except TypeError:
+-            # NOTE workaround for Python 2.7
+-            meta_file.write(metadata_string.decode('utf8'))
++        meta_file.write(metadata_string)
+ 
+ 
+ def _remove_object_directory(directory):
+@@ -67,7 +57,7 @@ def _remove_object_directory(directory):
+     Remove object directory and meta file if directory exist.
+     """
+     if not directory.exists():
+-        raise IOError("The directory '" + str(directory) + "' does not exist")
++        raise OSError("The directory '" + str(directory) + "' does not exist")
+     assert is_inside_exdir(directory)
+     shutil.rmtree(directory)
+ 
+@@ -229,7 +219,7 @@ class Object:
+         _assert_valid_name(name, self)
+         directory_name = self.directory / name
+         if directory_name.exists():
+-            raise FileExistsError("'{}' already exists in '{}'".format(name, self))
++            raise FileExistsError(f"'{name}' already exists in '{self}'")
+         directory_name.mkdir()
+         return Raw(
+             root_directory=self.root_directory,
+@@ -245,7 +235,7 @@ class Object:
+         if directory_name.exists():
+             if is_nonraw_object_directory(directory_name):
+                 raise FileExistsError(
+-                    "Directory '{}' already exists, but is not raw.".format(directory_name)
++                    f"Directory '{directory_name}' already exists, but is not raw."
+                 )
+             return Raw(
+                 root_directory=self.root_directory,
+@@ -294,5 +284,4 @@ class Object:
+     def __repr__(self):
+         if self.file.io_mode == OpenMode.FILE_CLOSED:
+             return "<Closed Exdir Group>"
+-        return "<Exdir Group '{}' (mode {})>".format(
+-            self.directory, self.file.user_mode)
++        return f"<Exdir Group '{self.directory}' (mode {self.file.user_mode})>"
+diff --git exdir/core/group.py exdir/core/group.py
+index 44b8c31..a1d5d5f 100644
+--- exdir/core/group.py
++++ exdir/core/group.py
+@@ -1,12 +1,6 @@
+ import os
+ import re
+-try:
+-    import pathlib
+-except ImportError as e:
+-    try:
+-        import pathlib2 as pathlib
+-    except ImportError:
+-        raise e
++import pathlib
+ import numpy as np
+ import exdir
+ try:
+@@ -40,16 +34,12 @@ def _assert_data_shape_dtype_match(data, shape, dtype):
+     if data is not None:
+         if shape is not None and np.prod(shape) != np.prod(data.shape):
+             raise ValueError(
+-                "Provided shape and data.shape do not match: {} vs {}".format(
+-                    shape, data.shape
+-                )
++                f"Provided shape and data.shape do not match: {shape} vs {data.shape}"
+             )
+ 
+         if dtype is not None and not data.dtype == dtype:
+             raise ValueError(
+-                "Provided dtype and data.dtype do not match: {} vs {}".format(
+-                    dtype, data.dtype
+-                )
++                f"Provided dtype and data.dtype do not match: {dtype} vs {data.dtype}"
+             )
+         return
+ 
+@@ -62,7 +52,7 @@ class Group(Object):
+         """
+         WARNING: Internal. Should only be called from require_group.
+         """
+-        super(Group, self).__init__(
++        super().__init__(
+             root_directory=root_directory,
+             parent_path=parent_path,
+             object_name=object_name,
+@@ -187,7 +177,7 @@ class Group(Object):
+ 
+         if name in self:
+             raise FileExistsError(
+-                "'{}' already exists in '{}'".format(name, self.name)
++                f"'{name}' already exists in '{self.name}'"
+             )
+ 
+         group_directory = self.directory / path
+@@ -234,8 +224,8 @@ class Group(Object):
+                 return current_object
+             else:
+                 raise TypeError(
+-                    "An object with name '{}' already "
+-                    "exists, but it is not a Group.".format(name)
++                    f"An object with name '{name}' already "
++                    "exists, but it is not a Group."
+                 )
+         elif group_directory.exists():
+             raise FileExistsError(
+@@ -296,9 +286,7 @@ class Group(Object):
+ 
+         if not isinstance(current_object, ds.Dataset):
+             raise TypeError(
+-                "Incompatible object already exists: {}".format(
+-                    current_object.__class__.__name__
+-                )
++                f"Incompatible object already exists: {current_object.__class__.__name__}"
+             )
+ 
+         data, attrs, meta = ds._prepare_write(
+@@ -308,31 +296,28 @@ class Group(Object):
+             meta={}
+         )
+ 
+-
+         # TODO verify proper attributes
+ 
+         _assert_data_shape_dtype_match(data, shape, dtype)
+         shape, dtype = _data_to_shape_and_dtype(data, shape, dtype)
+ 
++        print(f"shape: {shape} current_object.shape: {current_object.shape}")
+         if not np.array_equal(shape, current_object.shape):
+             raise TypeError(
+-                "Shapes do not match (existing {} vs "
+-                "new {})".format(current_object.shape, shape)
++                f"Shapes do not match (existing {current_object.shape} vs "
++                f"new {shape})"
+             )
+ 
+         if dtype != current_object.dtype:
+             if exact:
+                 raise TypeError(
+                     "Datatypes do not exactly match "
+-                    "existing {} vs new {})".format(current_object.dtype, dtype)
++                    f"existing {current_object.dtype} vs new {dtype})"
+                 )
+ 
+             if not np.can_cast(dtype, current_object.dtype):
+                 raise TypeError(
+-                    "Cannot safely cast from {} to {}".format(
+-                        dtype,
+-                        current_object.dtype
+-                    )
++                    f"Cannot safely cast from {dtype} to {current_object.dtype}"
+                 )
+ 
+         return current_object
+@@ -378,11 +363,9 @@ class Group(Object):
+             return self[top_directory][sub_name]
+ 
+         if name not in self:
+-            error_message = "No such object: '{name}' in path '{path}'".format(
+-                name=name,
+-                path=str(self.directory)
++            raise KeyError(
++                f"No such object: '{name}' in path '{str(self.directory)}'"
+             )
+-            raise KeyError(error_message)
+ 
+         directory = self.directory / path
+ 
+@@ -395,7 +378,7 @@ class Group(Object):
+             )
+ 
+         if not exob.is_nonraw_object_directory(directory):
+-            raise IOError(
++            raise OSError(
+                 "Directory '" + directory +
+                 "' is not a valid exdir object."
+             )
+@@ -409,11 +392,8 @@ class Group(Object):
+             return self._group(name)
+         else:
+             error_string = (
+-                "Object {name} has data type {type}.\n"
++                f"Object {name} has data type {meta_data[exob.EXDIR_METANAME][exob.TYPE_METANAME]}.\n"
+                 "We cannot open objects of this type."
+-            ).format(
+-                name=name,
+-                type=meta_data[exob.EXDIR_METANAME][exob.TYPE_METANAME]
+             )
+             raise NotImplementedError(error_string)
+ 
+@@ -449,7 +429,7 @@ class Group(Object):
+ 
+         if not isinstance(self[name], ds.Dataset):
+             raise RuntimeError(
+-                "Unable to assign value, {} already exists".format(name)
++                f"Unable to assign value, {name} already exists"
+             )
+ 
+         self[name].value = value
+@@ -503,8 +483,7 @@ class Group(Object):
+         assert_file_open(self.file)
+         # NOTE os.walk is way faster than os.listdir + os.path.isdir
+         directories = next(os.walk(str(self.directory)))[1]
+-        for name in sorted(directories):
+-            yield name
++        yield from sorted(directories)
+ 
+     def __len__(self):
+         """
+diff --git exdir/core/mode.py exdir/core/mode.py
+index c86cd1f..24b277c 100644
+--- exdir/core/mode.py
++++ exdir/core/mode.py
+@@ -12,7 +12,7 @@ def assert_file_open(file_object):
+     Decorator to check if the file is not closed.
+     """
+     if file_object.io_mode == OpenMode.FILE_CLOSED:
+-        raise IOError("Unable to operate on closed File instance.")
++        raise OSError("Unable to operate on closed File instance.")
+ 
+ 
+ def assert_file_writable(file_object):
+@@ -21,6 +21,6 @@ def assert_file_writable(file_object):
+     and that it is not in read only mode.
+     """
+     if file_object.io_mode == OpenMode.FILE_CLOSED:
+-        raise IOError("Unable to operate on closed File instance.")
++        raise OSError("Unable to operate on closed File instance.")
+     if file_object.io_mode == OpenMode.READ_ONLY:
+-        raise IOError("Cannot change data on file in read only 'r' mode")
++        raise OSError("Cannot change data on file in read only 'r' mode")
+diff --git exdir/core/raw.py exdir/core/raw.py
+index f60aee3..42821cc 100644
+--- exdir/core/raw.py
++++ exdir/core/raw.py
+@@ -8,7 +8,7 @@ class Raw(exob.Object):
+     Raw objects currently have no features apart from showing their path.
+     """
+     def __init__(self, root_directory, parent_path, object_name, file):
+-        super(Raw, self).__init__(
++        super().__init__(
+             root_directory=root_directory,
+             parent_path=parent_path,
+             object_name=object_name,
+diff --git exdir/core/validation.py exdir/core/validation.py
+index e12aac5..ef63355 100644
+--- exdir/core/validation.py
++++ exdir/core/validation.py
+@@ -1,14 +1,25 @@
+ from enum import Enum
+ import os
+-try:
+-    import pathlib
+-except ImportError as e:
+-    try:
+-        import pathlib2 as pathlib
+-    except ImportError:
+-        raise e
++import sys
++from pathlib import Path, WindowsPath
++from unicodedata import category
+ from . import constants as exob
+ 
++# `ntpath.isreserved` forbids ASCII control characters
++# (https://github.com/python/cpython/blob/7c016deae62308dd1b4e2767fc6abf04857c7843/Lib/ntpath.py#L325)
++# while `pathlib.PureWindowsPath.is_reserved` does not, so it is easiest to
++# forbid all control characters.
++if sys.version_info.minor < 13:
++    from pathlib import PureWindowsPath
++
++    def _is_reserved(path):
++        return PureWindowsPath(path).is_reserved() or _contains_control_character(path)
++else:
++    from ntpath import isreserved
++
++    def _is_reserved(path):
++        return isreserved(path) or _contains_control_character(path)
++
+ VALID_CHARACTERS = ("abcdefghijklmnopqrstuvwxyz1234567890_-.")
+ 
+ 
+@@ -18,6 +29,11 @@ class NamingRule(Enum):
+     THOROUGH = 3
+     NONE = 4
+ 
++
++def _contains_control_character(s):
++    return any(ch for ch in s if category(ch)[0] == "C")
++
++
+ def _assert_unique(parent_path, name):
+     try:
+         name_str = str(name)
+@@ -26,7 +42,7 @@ def _assert_unique(parent_path, name):
+ 
+     if (parent_path / name).exists():
+         raise RuntimeError(
+-            "'{}' already exists in '{}'".format(name, parent_path)
++            f"'{name}' already exists in '{parent_path}'"
+         )
+ 
+ 
+@@ -55,12 +71,12 @@ def _assert_nonreserved(name):
+ 
+     if name_str in reserved_names:
+         raise NameError(
+-            "Name cannot be '{}' because it is a reserved filename in Exdir.".format(name_str)
++            f"Name cannot be '{name_str}' because it is a reserved filename in Exdir."
+         )
+ 
+-    if pathlib.PureWindowsPath(name_str).is_reserved():
++    if _is_reserved(name_str):
+         raise NameError(
+-            "Name cannot be '{}' because it is a reserved filename in Windows.".format(name_str)
++            f"Name cannot be '{name_str}' because it is a reserved filename in Windows."
+         )
+ 
+ def _assert_valid_characters(name):
+@@ -72,8 +88,8 @@ def _assert_valid_characters(name):
+     for char in name_str:
+         if char not in VALID_CHARACTERS:
+             raise NameError(
+-                "Name '{}' contains invalid character '{}'.\n"
+-                "Valid characters are:\n{}".format(name_str, char, VALID_CHARACTERS)
++                f"Name '{name_str}' contains invalid character '{char}'.\n"
++                f"Valid characters are:\n{VALID_CHARACTERS}"
+             )
+ 
+ def unique(parent_path, name):
+@@ -102,7 +118,7 @@ def thorough(parent_path, name):
+     name_lower = name_str.lower()
+     _assert_valid_characters(name_lower)
+ 
+-    if isinstance(pathlib.Path(parent_path), pathlib.WindowsPath):
++    if isinstance(Path(parent_path), WindowsPath):
+         # use _assert_unique if we're already on Windows, because it is much faster
+         # than the test below
+         _assert_unique(parent_path, name)
+@@ -112,8 +128,8 @@ def thorough(parent_path, name):
+     for item in os.listdir(str(parent_path)):
+         if name_lower == item.lower():
+             raise RuntimeError(
+-                "A directory with name (case independent) '{}' already exists "
+-                " and cannot be made according to the naming rule 'thorough'.".format(name)
++                f"A directory with name (case independent) '{name}' already exists "
++                " and cannot be made according to the naming rule 'thorough'."
+             )
+ 
+ 
+diff --git exdir/plugin_interface/plugin_interface.py exdir/plugin_interface/plugin_interface.py
+index 7c32c0d..f62512e 100644
+--- exdir/plugin_interface/plugin_interface.py
++++ exdir/plugin_interface/plugin_interface.py
+@@ -228,16 +228,16 @@ def solve_plugin_order(plugins, read_mode=False):
+         queue = new_queue
+ 
+     # remove missing plugins from maps
+-    plugin_map = dict(
+-        (name, v)
++    plugin_map = {
++        name: v
+         for name, v in plugin_map.items()
+         if name in needed_plugins
+-    )
+-    dependency_map = dict(
+-        (name, v)
++    }
++    dependency_map = {
++        name: v
+         for name, v in dependency_map.items()
+         if name in needed_plugins
+-    )
++    }
+ 
+     ordered_plugins = []
+     while dependency_map:
+diff --git exdir/plugins/git_lfs.py exdir/plugins/git_lfs.py
+index 2e4f9d8..0cd5657 100644
+--- exdir/plugins/git_lfs.py
++++ exdir/plugins/git_lfs.py
+@@ -1,12 +1,6 @@
+ import subprocess
+ import exdir.plugin_interface
+-try:
+-    import pathlib
+-except ImportError as e:
+-    try:
+-        import pathlib2 as pathlib
+-    except ImportError:
+-        raise e
++import pathlib
+ import sys
+ 
+ class DatasetPlugin(exdir.plugin_interface.Dataset):
+@@ -25,7 +19,7 @@ class DatasetPlugin(exdir.plugin_interface.Dataset):
+             git_path = pathlib.Path(git_path.decode('utf-8').rstrip())
+             relative_path = path.relative_to(git_path)
+             if self.verbose:
+-                print("Fetching Git LFS object for {}".format(relative_path))
++                print(f"Fetching Git LFS object for {relative_path}")
+             command = ['git', '-c', 'lfs.fetchexclude=""', 'lfs', 'pull', '-I', str(relative_path)]
+             process = subprocess.Popen(command, cwd=str(git_path), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+             if self.verbose:
+@@ -43,7 +37,7 @@ class DatasetPlugin(exdir.plugin_interface.Dataset):
+ 
+ class Plugin(exdir.plugin_interface.Plugin):
+     def __init__(self, verbose=False):
+-        super(Plugin, self).__init__("git_lfs", dataset_plugins=[DatasetPlugin(verbose)])
++        super().__init__("git_lfs", dataset_plugins=[DatasetPlugin(verbose)])
+ 
+ def plugins():
+     return _plugins(verbose=False)
+diff --git exdir/plugins/quantities.py exdir/plugins/quantities.py
+index a7455e6..53bbd34 100644
+--- exdir/plugins/quantities.py
++++ exdir/plugins/quantities.py
+@@ -1,6 +1,3 @@
+-# Needed for quantities
+-from __future__ import absolute_import
+-
+ import exdir
+ import quantities as pq
+ import numpy as np
+diff --git exdir/utils/display.py exdir/utils/display.py
+index d4bf491..bdd567a 100644
+--- exdir/utils/display.py
++++ exdir/utils/display.py
+@@ -1,10 +1,4 @@
+-try:
+-    import pathlib
+-except ImportError as e:
+-    try:
+-        import pathlib2 as pathlib
+-    except ImportError:
+-        raise e
++import pathlib
+ import exdir
+ 
+ 
+@@ -15,9 +9,9 @@ def _build_tree(o):
+     else:
+         name = o.object_name
+ 
+-    contents += "{} ({})".format(name, o.__class__.__name__)
++    contents += f"{name} ({o.__class__.__name__})"
+     if isinstance(o, exdir.core.Dataset):
+-        contents += "<ul><li>Shape: {}</li><li>Type: {}</li></ul>".format(o.shape, o.dtype)
++        contents += f"<ul><li>Shape: {o.shape}</li><li>Type: {o.dtype}</li></ul>"
+     else:
+         try:
+             keys = o.keys()
+@@ -25,7 +19,7 @@ def _build_tree(o):
+             for a in keys:
+                 inner_contents += _build_tree(o[a])
+             if inner_contents != "":
+-                contents += "<ul>{}</ul>".format(inner_contents)
++                contents += f"<ul>{inner_contents}</ul>"
+         except AttributeError:
+             pass
+ 
+@@ -56,31 +50,31 @@ li.collapsibleListClosed{
+ }
+     """
+ 
+-    script = """
++    script = f"""
+     var node = document.getElementById('{ulid}');
+     exdir.CollapsibleLists.applyTo(node);
+-    """.format(ulid=ulid)
++    """
+ 
+-    result = ("<style>{style}</style>"
+-              "<ul id='{ulid}' class='collapsibleList'>{contents}</ul>"
+-              "<script>{script}</script>"
+-              "").format(style=style, ulid=ulid, contents=_build_tree(obj), script=script)
++    result = (f"<style>{style}</style>"
++              f"<ul id='{ulid}' class='collapsibleList'>{_build_tree(obj)}</ul>"
++              f"<script>{script}</script>"
++              "")
+ 
+     return result
+ 
+ 
+ def _build_attrs_tree(key, value):
+     contents = "<li>"
+-    contents += "{}: ".format(key)
++    contents += f"{key}: "
+     try:
+         items = value.items()
+         inner_contents = ""
+         for subkey, subvalue in items:
+             inner_contents += _build_attrs_tree(subkey, subvalue)
+         if inner_contents != "":
+-            contents += "<ul>{}</ul>".format(inner_contents)
++            contents += f"<ul>{inner_contents}</ul>"
+     except AttributeError:
+-        contents += "{}".format(value)
++        contents += f"{value}"
+ 
+     contents += "</li>"
+ 
+@@ -88,4 +82,4 @@ def _build_attrs_tree(key, value):
+ 
+ 
+ def html_attrs(attributes):
+-    return "<ul>{}</ul>".format(_build_attrs_tree("Attributes", attributes))
++    return f"<ul>{_build_attrs_tree('Attributes', attributes)}</ul>"
+diff --git requirements.txt requirements.txt
+index 6718929..eaa2baa 100644
+--- requirements.txt
++++ requirements.txt
+@@ -4,22 +4,22 @@
+ #
+ #    pip-compile requirements.in
+ #
+-h5py==3.9.0
++h5py==3.11.0
+     # via -r requirements.in
+ iniconfig==1.1.1
+     # via pytest
+-numpy==1.26.0
++numpy==2.0.0
+     # via
+     #   -r requirements.in
+     #   h5py
+     #   quantities
+ packaging==20.9
+     # via pytest
+-pluggy==0.13.1
++pluggy==1.5.0
+     # via pytest
+ pyparsing==2.4.7
+     # via packaging
+-pytest==7.4.2
++pytest==8.3.2
+     # via -r requirements.in
+-quantities==0.14.1
++quantities==0.16.0
+     # via -r requirements.in
+diff --git setup.py setup.py
+index 6ee434a..6c59268 100644
+--- setup.py
++++ setup.py
+@@ -1,14 +1,9 @@
+-# -*- coding: utf-8 -*-
+-from setuptools import setup
+-import os
+-
+ from setuptools import setup, find_packages
+ import versioneer
+ 
+ 
+-long_description = open("README.md", encoding="utf-8").read()
+-
+-install_requires = []
++with open("README.md", encoding="utf-8") as handle:
++    long_description = handle.read()
+ 
+ setup(
+     name="exdir",
+@@ -38,7 +33,7 @@ setup(
+     install_requires=[
+         "numpy>=1.20",
+         "ruamel.yaml==0.17.21",
+-        "six>=1.15",
+     ],
++    python_requires=">=3.7",
+     zip_safe=False,
+ )
+diff --git tests/benchmarks/benchmarks.py tests/benchmarks/benchmarks.py
+index a03e709..5502e41 100644
+--- tests/benchmarks/benchmarks.py
++++ tests/benchmarks/benchmarks.py
+@@ -11,7 +11,7 @@ for i in range(200):
+     one_hundred_attributes["hello" + str(i)] = "world"
+ 
+ def benchmark(name, target, setup=None, teardown=None, iterations=1):
+-    print(("Running {name}...").format(name=name))
++    print(f"Running {name}...")
+ 
+     total_time = 0
+     setup_teardown_start = time.time()
+@@ -29,18 +29,12 @@ def benchmark(name, target, setup=None, teardown=None, iterations=1):
+     total_setup_teardown = setup_teardown_end - setup_teardown_start
+ 
+     output = (
+-        "{name}\n" +
++        f"{name}\n" +
+         ("-" * len(name)) + "\n" +
+-        "Iterations:\n{iterations}\n" +
+-        "Total time:\n{total_time}\n" +
+-        "Total time (iterations + setup/teardown):\n{total_setup_teardown}\n" +
+-        "Mean:\n{mean}\n"
+-    ).format(
+-        name=name,
+-        iterations=iterations,
+-        total_time=total_time,
+-        total_setup_teardown=total_setup_teardown,
+-        mean=total_time / iterations
++        f"Iterations:\n{iterations}\n" +
++        f"Total time:\n{total_time}\n" +
++        f"Total time (iterations + setup/teardown):\n{total_setup_teardown}\n" +
++        f"Mean:\n{total_time / iterations}\n"
+     )
+ 
+     print(output)
+@@ -139,9 +133,9 @@ def add_large_dataset(obj):
+ 
+ def create_many_objects(obj):
+     for i in range(5000):
+-        group = obj.create_group("group{}".format(i))
++        group = obj.create_group(f"group{i}")
+         # data = np.zeros((10, 10, 10))
+-        # group.create_dataset("dataset{}".format(i), data=data)
++        # group.create_dataset(f"dataset{i}", data=data)
+ 
+ 
+ def iterate_objects(obj):
+@@ -155,9 +149,9 @@ def create_large_tree(obj, level=0):
+     if level > 4:
+         return
+     for i in range(3):
+-        group = obj.create_group("group_{}_{}".format(i, level))
++        group = obj.create_group(f"group_{i}_{level}")
+         data = np.zeros((10, 10, 10))
+-        group.create_dataset("dataset_{}_{}".format(i, level), data=data)
++        group.create_dataset(f"dataset_{i}_{level}", data=data)
+         create_large_tree(group, level + 1)
+ 
+ 
+diff --git tests/benchmarks/profiling.py tests/benchmarks/profiling.py
+index 7e10f18..b789118 100644
+--- tests/benchmarks/profiling.py
++++ tests/benchmarks/profiling.py
+@@ -18,4 +18,4 @@ def setup_exdir():
+ obj = setup_exdir()[0]
+ 
+ for i in range(5000):
+-    group = obj.create_group("group{}".format(i))
++    group = obj.create_group(f"group{i}")
+diff --git tests/conftest.py tests/conftest.py
+index d2c17b9..b33681d 100644
+--- tests/conftest.py
++++ tests/conftest.py
+@@ -1,16 +1,8 @@
+-from __future__ import print_function
+-
+ import pytest
+ import shutil
+ import os
+ import h5py
+-try:
+-    import pathlib
+-except ImportError as e:
+-    try:
+-        import pathlib2 as pathlib
+-    except ImportError:
+-        raise e
++import pathlib
+ import time
+ 
+ import exdir
+diff --git tests/test_attr.py tests/test_attr.py
+index fb1f41b..5c0551e 100644
+--- tests/test_attr.py
++++ tests/test_attr.py
+@@ -1,5 +1,3 @@
+-# -*- coding: utf-8 -*-
+-
+ # This file is part of Exdir, the Experimental Directory Structure.
+ #
+ # Copyright 2017 Simen Tennøe
+@@ -20,7 +18,7 @@ except ImportError:
+     import ruamel.yaml as yaml
+ 
+ from exdir.core import Attribute, File
+-import six
++
+ 
+ def test_attr_init():
+     attribute = Attribute("parent", "mode", "file")
+@@ -199,22 +197,21 @@ def test_ascii(setup_teardown_file):
+     assert out == 42
+ 
+ # TODO verify that we don't want to support non-ASCII byte strings
+-# NOTE fails with Python 2.7
+-# def test_raw(setup_teardown_file):
+-    # """Access via non-ASCII byte string."""
+-    # f = setup_teardown_file[3]
++def test_raw(setup_teardown_file):
++    """Access via non-ASCII byte string."""
++    f = setup_teardown_file[3]
+ 
+-    # name = b"non-ascii\xfe"
+-    # f.attrs[name] = 42
+-    # out = f.attrs[name]
+-    # assert out == 42
++    name = b"non-ascii\xfe"
++    f.attrs[name] = 42
++    out = f.attrs[name]
++    assert out == 42
+ 
+ 
+ def test_unicode(setup_teardown_file):
+-    """Access via Unicode string with non-ascii characters."""
++    """Access via Unicode string with non-ASCII characters."""
+     f = setup_teardown_file[3]
+ 
+-    name = six.u("Omega") + six.unichr(0x03A9)
++    name = "Omega" + chr(0x03A9)
+     f.attrs[name] = 42
+     out = f.attrs[name]
+     assert out == 42
+@@ -252,10 +249,10 @@ def test_unicode_scalar(setup_teardown_file):
+     """Storage of variable-length unicode strings (auto-creation)."""
+     f = setup_teardown_file[3]
+ 
+-    f.attrs["x"] = six.u("Hello") + six.unichr(0x2340) + six.u("!!")
++    f.attrs["x"] = "Hello" + chr(0x2340) + "!!"
+     out = f.attrs["x"]
+-    assert out == six.u("Hello") + six.unichr(0x2340) + six.u("!!")
+-    assert type(out) == six.text_type
++    assert isinstance(out, str)
++    assert out == "Hello" + chr(0x2340) + "!!"
+ 
+ 
+ def test_attrs(setup_teardown_file):
+diff --git tests/test_dataset.py tests/test_dataset.py
+index 16ddedd..2decea9 100644
+--- tests/test_dataset.py
++++ tests/test_dataset.py
+@@ -1,5 +1,3 @@
+-# -*- coding: utf-8 -*-
+-
+ # This file is part of Exdir, the Experimental Directory Structure.
+ #
+ # Copyright 2017 Simen Tennøe
+@@ -219,7 +217,7 @@ def test_create_fillval(setup_teardown_file):
+ 
+ 
+ 
+-def test_compound(setup_teardown_file):
++def test_compound_fill(setup_teardown_file):
+     """Fill value works with compound types."""
+     f = setup_teardown_file[3]
+     grp = f.create_group("test")
+@@ -239,8 +237,8 @@ def test_exc(setup_teardown_file):
+ 
+ 
+ def test_string(setup_teardown_file):
+-    """Assignement of fixed-length byte string produces a fixed-length
+-    ascii dataset """
++    """Assignment of fixed-length byte string produces a fixed-length
++    ASCII dataset"""
+     f = setup_teardown_file[3]
+     grp = f.create_group("test")
+ 
+@@ -313,7 +311,7 @@ def test_trailing_slash(setup_teardown_file):
+ 
+ 
+ # Feature: Compound types correctly round-trip
+-def test_compund(setup_teardown_file):
++def test_compound(setup_teardown_file):
+     """Compound types are read back in correct order."""
+     f = setup_teardown_file[3]
+     grp = f.create_group("test")
+@@ -506,7 +504,7 @@ def test_read(setup_teardown_file):
+     assert out.shape == (3, 3)
+ 
+ def test_write_broadcast(setup_teardown_file):
+-    """Array fill from constant is  supported."""
++    """Array fill from constant is supported."""
+     f = setup_teardown_file[3]
+ 
+     dt = np.dtype('(3,)i')
+@@ -570,7 +568,7 @@ def test_slice_zero_length_dimension(setup_teardown_file):
+     f = setup_teardown_file[3]
+ 
+     for i, shape in enumerate([(0,), (0, 3), (0, 2, 1)]):
+-        dset = f.create_dataset('x%d'%i, shape, dtype=np.int32)
++        dset = f.create_dataset(f"x{i}", shape, dtype=np.int32)
+         assert dset.shape == shape
+         out = dset[...]
+         assert isinstance(out, np.ndarray)
+@@ -589,7 +587,7 @@ def test_slice_other_dimension(setup_teardown_file):
+     f = setup_teardown_file[3]
+ 
+     for i, shape in enumerate([(3, 0), (1, 2, 0), (2, 0, 1)]):
+-        dset = f.create_dataset('x%d'%i, shape, dtype=np.int32)
++        dset = f.create_dataset(f"x{i}", shape, dtype=np.int32)
+         assert dset.shape == shape
+         out = dset[:1]
+         assert isinstance(out, np.ndarray)
+@@ -600,7 +598,7 @@ def test_slice_of_length_zero(setup_teardown_file):
+     f = setup_teardown_file[3]
+ 
+     for i, shape in enumerate([(3, ), (2, 2, ), (2,  1, 5)]):
+-        dset = f.create_dataset('x%d'%i, data=np.zeros(shape, np.int32))
++        dset = f.create_dataset(f"x{i}", data=np.zeros(shape, np.int32))
+         assert dset.shape == shape
+         out = dset[1:1]
+         assert isinstance(out, np.ndarray)
+diff --git tests/test_file.py tests/test_file.py
+index 12d80d6..0b42cba 100644
+--- tests/test_file.py
++++ tests/test_file.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ #
+ # This file is part of Exdir, the Experimental Directory Structure.
+ #
+@@ -13,14 +12,7 @@
+ 
+ 
+ import pytest
+-import os
+-try:
+-    import pathlib
+-except ImportError as e:
+-    try:
+-        import pathlib2 as pathlib
+-    except ImportError:
+-        raise e
++import pathlib
+ 
+ from exdir.core import File, Group
+ from exdir.core.exdir_object import _create_object_directory, is_nonraw_object_directory, DATASET_TYPENAME, FILE_TYPENAME
+diff --git tests/test_group.py tests/test_group.py
+index 138f35d..e21f6d2 100644
+--- tests/test_group.py
++++ tests/test_group.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ #
+ # This file is part of Exdir, the Experimental Directory Structure.
+ #
+@@ -14,18 +13,12 @@
+ 
+ import os
+ import pytest
+-try:
+-    import pathlib
+-except ImportError as e:
+-    try:
+-        import pathlib2 as pathlib
+-    except ImportError:
+-        raise e
++import pathlib
+ import numpy as np
+ try:
+     from collections.abc import KeysView, ValuesView, ItemsView
+ except:
+-    from collections import KeysView, ValuesView, ItemsView
++    from collections.abc import KeysView, ValuesView, ItemsView
+ 
+ from exdir.core import Group, File, Dataset
+ from exdir import validation as fv
+diff --git tests/test_help_functions.py tests/test_help_functions.py
+index 2a79942..f7b54c6 100644
+--- tests/test_help_functions.py
++++ tests/test_help_functions.py
+@@ -1,14 +1,4 @@
+-# -*- coding: utf-8 -*-
+-
+-import os
+-try:
+-    import pathlib
+-except ImportError as e:
+-    try:
+-        import pathlib2 as pathlib
+-    except ImportError:
+-        raise e
+-import six
++import pathlib
+ import quantities as pq
+ import numpy as np
+ import pytest
+@@ -33,9 +23,10 @@ def test_assert_valid_name_minimal(setup_teardown_folder):
+ 
+     exob._assert_valid_name("A", f)
+ 
+-    exob._assert_valid_name("\n", f)
++    with pytest.raises(NameError):
++        exob._assert_valid_name("\n", f)
+ 
+-    exob._assert_valid_name(six.unichr(0x4500), f)
++    exob._assert_valid_name(chr(0x4500), f)
+ 
+     with pytest.raises(NameError):
+         exob._assert_valid_name(exob.META_FILENAME, f)
+@@ -59,7 +50,7 @@ def test_assert_valid_name_thorough(setup_teardown_folder):
+         exob._assert_valid_name("\n", f)
+ 
+     with pytest.raises(NameError):
+-        exob._assert_valid_name(six.unichr(0x4500), f)
++        exob._assert_valid_name(chr(0x4500), f)
+ 
+     with pytest.raises(NameError):
+         exob._assert_valid_name(exob.META_FILENAME, f)
+@@ -86,7 +77,7 @@ def test_assert_valid_name_none(setup_teardown_folder):
+     invalid_name = "\n"
+     exob._assert_valid_name(invalid_name, f)
+ 
+-    invalid_name = six.unichr(0x4500)
++    invalid_name = chr(0x4500)
+     exob._assert_valid_name(invalid_name, f)
+ 
+     exob._assert_valid_name(exob.META_FILENAME, f)
+diff --git tests/test_numpy_attributes.py tests/test_numpy_attributes.py
+index b9df35a..47872c2 100644
+--- tests/test_numpy_attributes.py
++++ tests/test_numpy_attributes.py
+@@ -12,7 +12,7 @@ def test_simple(setup_teardown_folder):
+     f.attrs["array"] = np.array([1, 2, 3])
+     f.close()
+ 
+-    with open(str(setup_teardown_folder[1] / "attributes.yaml"), "r", encoding="utf-8") as f:
++    with open(str(setup_teardown_folder[1] / "attributes.yaml"), encoding="utf-8") as f:
+         content = "array:\n- 1\n- 2\n- 3\n"
+         assert content == f.read()
+ 
+@@ -23,7 +23,7 @@ def test_with_quantities(setup_teardown_folder):
+     f.attrs["array"] = np.array([1, 2, 3]) * pq.m
+     f.close()
+ 
+-    with open(str(setup_teardown_folder[1] / "attributes.yaml"), "r", encoding="utf-8")  as f:
++    with open(str(setup_teardown_folder[1] / "attributes.yaml"), encoding="utf-8")  as f:
+         content = 'array:\n  value:\n  - 1.0\n  - 2.0\n  - 3.0\n  unit: "m"\n'
+ 
+         # NOTE split and conversion to set is just because the order of the items is not important
+@@ -35,7 +35,7 @@ def test_with_quantities_reverse_order(setup_teardown_folder):
+     f.attrs["array"] = np.array([1, 2, 3]) * pq.m
+     f.close()
+ 
+-    with open(str(setup_teardown_folder[1] / "attributes.yaml"), "r")  as f:
++    with open(str(setup_teardown_folder[1] / "attributes.yaml"))  as f:
+         content = 'array:\n  value:\n  - 1.0\n  - 2.0\n  - 3.0\n  unit: "m"\n'
+ 
+         # NOTE split and conversion to set is just because the order of the items is not important
+diff --git tests/test_object.py tests/test_object.py
+index 43abce2..7b80489 100644
+--- tests/test_object.py
++++ tests/test_object.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ #
+ # This file is part of Exdir, the Experimental Directory Structure.
+ #
+@@ -14,13 +13,7 @@
+ 
+ import pytest
+ import os
+-try:
+-    import pathlib
+-except ImportError as e:
+-    try:
+-        import pathlib2 as pathlib
+-    except ImportError:
+-        raise e
++import pathlib
+ import exdir
+ try:
+     import ruamel_yaml as yaml
+diff --git tests/test_plugins.py tests/test_plugins.py
+index b9b3ea8..199d49c 100644
+--- tests/test_plugins.py
++++ tests/test_plugins.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ #
+ # This file is part of Exdir, the Experimental Directory Structure.
+ #
+diff --git tests/test_quantities.py tests/test_quantities.py
+index d2e0878..3fb0273 100644
+--- tests/test_quantities.py
++++ tests/test_quantities.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ #
+ # This file is part of Exdir, the Experimental Directory Structure.
+ #
+diff --git tests/test_raw.py tests/test_raw.py
+index f3def31..8a9e068 100644
+--- tests/test_raw.py
++++ tests/test_raw.py
+@@ -1,12 +1,6 @@
+ import os
+ import pytest
+-try:
+-    import pathlib
+-except ImportError as e:
+-    try:
+-        import pathlib2 as pathlib
+-    except ImportError:
+-        raise e
++import pathlib
+ from exdir.core import Raw
+ 
+ def test_raw_init(setup_teardown_folder):
+diff --git versioneer.py versioneer.py
+index 1e3753e..8d7359c 100644
+--- versioneer.py
++++ versioneer.py
+@@ -1,4 +1,3 @@
+-
+ # Version: 0.29
+ 
+ """The Versioneer - like a rocketeer, but for versions.
+@@ -494,7 +493,7 @@ def run_command(
+             return None, None
+     else:
+         if verbose:
+-            print("unable to find command, tried %s" % (commands,))
++            print(f"unable to find command, tried {commands}")
+         return None, None
+     stdout = process.communicate()[0].strip().decode()
+     if process.returncode != 0:
+@@ -1200,7 +1199,7 @@ def git_get_keywords(versionfile_abs: str) -> Dict[str, str]:
+     # _version.py.
+     keywords: Dict[str, str] = {}
+     try:
+-        with open(versionfile_abs, "r") as fobj:
++        with open(versionfile_abs) as fobj:
+             for line in fobj:
+                 if line.strip().startswith("git_refnames ="):
+                     mo = re.search(r'=\s*"(.*)"', line)
+@@ -1448,7 +1447,7 @@ def do_vcs_install(versionfile_source: str, ipy: Optional[str]) -> None:
+         files.append(versioneer_file)
+     present = False
+     try:
+-        with open(".gitattributes", "r") as fobj:
++        with open(".gitattributes") as fobj:
+             for line in fobj:
+                 if line.strip().startswith(versionfile_source):
+                     if "export-subst" in line.strip().split()[1:]:
+@@ -1533,7 +1532,7 @@ def write_to_version_file(filename: str, versions: Dict[str, Any]) -> None:
+     with open(filename, "w") as f:
+         f.write(SHORT_VERSION_PY % contents)
+ 
+-    print("set %s to '%s'" % (filename, versions["version"]))
++    print("set {} to '{}'".format(filename, versions["version"]))
+ 
+ 
+ def plus_or_dot(pieces: Dict[str, Any]) -> str:
+@@ -1833,7 +1832,7 @@ def get_versions(verbose: bool = False) -> Dict[str, Any]:
+     try:
+         ver = versions_from_file(versionfile_abs)
+         if verbose:
+-            print("got version from file %s %s" % (versionfile_abs, ver))
++            print(f"got version from file {versionfile_abs} {ver}")
+         return ver
+     except NotThisMethod:
+         pass
+@@ -2200,7 +2199,7 @@ def do_setup() -> int:
+     maybe_ipy: Optional[str] = ipy
+     if os.path.exists(ipy):
+         try:
+-            with open(ipy, "r") as f:
++            with open(ipy) as f:
+                 old = f.read()
+         except OSError:
+             old = ""
+@@ -2232,7 +2231,7 @@ def scan_setup_py() -> int:
+     found = set()
+     setters = False
+     errors = 0
+-    with open("setup.py", "r") as f:
++    with open("setup.py") as f:
+         for line in f.readlines():
+             if "import versioneer" in line:
+                 found.add("import")
