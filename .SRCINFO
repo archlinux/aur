@@ -16,6 +16,7 @@ pkgbase = ags-hyprpanel-git
 	depends = dart-sass
 	depends = wl-clipboard
 	depends = upower
+	depends = gvfs
 	depends = aylurs-gtk-shell-git
 	optdepends = python: GPU usage tracking (NVidia only)
 	optdepends = python-gpustat: GPU usage tracking (NVidia only)
@@ -28,6 +29,8 @@ pkgbase = ags-hyprpanel-git
 	optdepends = btop: To view system resource usage
 	optdepends = gpu-screen-recorder: To use the built in screen recorder
 	optdepends = hyprpicker: To use the preset color picker shortcut
+	optdepends = hypridle: To use hyprlands idle inhibitor
+	optdepends = hyprsunset: To enable the hyprland blue light filter
 	optdepends = matugen-bin: To use wallpaper based color schemes
 	source = git+https://github.com/Jas-SinghFSU/HyprPanel.git#branch=master
 	sha256sums = SKIP
