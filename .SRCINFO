@@ -1,6 +1,6 @@
 pkgbase = fcitx5-misty-theme
 	pkgdesc = Misty colorful theme for fcitx5
-	pkgver = r5.25cea58
+	pkgver = r6.af6da74
 	pkgrel = 1
 	url = https://github.com/ovwxxwvo/misty.fcitx5
 	arch = any

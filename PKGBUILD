@@ -3,7 +3,7 @@
 
 _reponame="misty.fcitx5"
 pkgname="fcitx5-misty-theme"
-pkgver=r5.25cea58
+pkgver=r6.af6da74
 pkgrel=1
 pkgdesc="Misty colorful theme for fcitx5"
 arch=('any')
@@ -19,9 +19,8 @@ pkgver() {
   }
 
 package() {
-  pwd
-  echo pkgname  $pkgname
-  echo reponame $_reponame
+  # echo pkgname  $pkgname
+  # echo reponame $_reponame
   cd ${_reponame}
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -dm755   "${pkgdir}/usr/share/fcitx5/themes/"
