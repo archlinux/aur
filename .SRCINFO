@@ -1,6 +1,6 @@
 pkgbase = arduino-ide
 	pkgdesc = Open-source electronics prototyping platform
-	pkgver = 2.3.3
+	pkgver = 2.3.4
 	pkgrel = 1
 	url = https://github.com/arduino/arduino-ide
 	arch = x86_64
@@ -31,10 +31,10 @@ pkgbase = arduino-ide
 	optdepends = libusb-compat: Needed for the `micronucleus` cli utility
 	optdepends = python-pyserial: Needed for esptool
 	optdepends = usbutils: Needed for stm32 boards using st-link
-	source = git+https://github.com/arduino/arduino-ide.git#tag=77136687d374dce1660191059427f1941f4cef16
+	source = git+https://github.com/arduino/arduino-ide.git#tag=1112057979aa28f20c0ca184dfd8462c28ed5cf5
 	source = arduino-ide.sh
 	source = arduino-ide.desktop
-	b2sums = a2563900cd83225f61013d198bc24b94adbd4e2d772574b1d5dea98b4c357e23d1889bad15cc1f19c00337b5f1fa2af8cef5fa76b82a141d02570aad50a95242
+	b2sums = 0f10a34560add1df2500519ce214cfc0ee9bf792ab82db280265a70a12acb3490b63e38427b7c0841071e7e341bc9bba4fcea582e7708890021a21a51f04b917
 	b2sums = 12e045253c9ba57023cbc74a6138aa314b1f7fff6a9a1e5eeb4378a3259919f783ee068f9ae7dd420544f84e8deb7c21f06173ef436d2ee50f138b8306ee2ff3
 	b2sums = 9b7c45d5081f23415c3dfd3d098cbe425b207f82a480b09f192e5d0e95511da5c8985ad20667301b8977a0ab3166c8b6aa5992e36df75173785bb026a10f8edb
 
