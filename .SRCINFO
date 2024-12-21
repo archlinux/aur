@@ -1,6 +1,6 @@
 pkgbase = ags-hyprpanel-git
 	pkgdesc = A Bar/Panel for Hyprland with extensive customizability
-	pkgver = r492.2751237
+	pkgver = r404.49c21c0
 	pkgrel = 1
 	url = https://hyprpanel.com/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = ags-hyprpanel-git
 	depends = aylurs-gtk-shell-git
 	optdepends = python: GPU usage tracking (NVidia only)
 	optdepends = python-gpustat: GPU usage tracking (NVidia only)
-	optdepends = pywal: Pywal hook for wallpapers
+	optdepends = python-pywal: Pywal hook for wallpapers
 	optdepends = pacman-contrib: Checking for pacman updates
 	optdepends = power-profiles-daemon: Switch power profiles
 	optdepends = swww: Setting wallpapers
