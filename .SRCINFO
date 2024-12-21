@@ -1,6 +1,6 @@
 pkgbase = noseyparker
 	pkgdesc = find secrets and sensitive information in textual data and Git history
-	pkgver = 0.21.0
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://github.com/praetorian-inc/noseyparker
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = noseyparker
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = noseyparker-0.21.0::https://github.com/praetorian-inc/noseyparker/archive/refs/tags/v0.21.0.zip
-	sha256sums = 92675fe56e3a1f8724d02606f893979c4b9973f337062f9df06a0c39ee35d7e5
+	source = noseyparker-0.22.0::https://github.com/praetorian-inc/noseyparker/archive/refs/tags/v0.22.0.zip
+	sha256sums = f8b876c74315d8460b66b8768a46139ca264284ecd2ab9bbe505e589a85d3c7c
 
 pkgname = noseyparker
