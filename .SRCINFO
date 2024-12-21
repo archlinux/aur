@@ -1,6 +1,6 @@
 pkgbase = session-desktop
 	pkgdesc = Onion routing based messenger
-	pkgver = 1.14.3
+	pkgver = 1.14.5
 	pkgrel = 1
 	url = https://getsession.org
 	arch = x86_64
@@ -11,15 +11,15 @@ pkgbase = session-desktop
 	makedepends = python-setuptools
 	makedepends = yarn
 	depends = bash
-	depends = electron25
+	depends = electron31
 	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = python
-	source = git+https://github.com/oxen-io/session-desktop.git#tag=v1.14.3
+	source = session-desktop-1.14.5.tar.gz::https://github.com/session-foundation/session-desktop/archive/refs/tags/v1.14.5.tar.gz
 	source = session-desktop.desktop
 	source = session-desktop.sh
-	sha256sums = 9ef02a696f6a49a3f3b9c94a892ba895e1cfb3521a0e65da2641752a3e1a8e4f
+	sha256sums = f5c747984f4f414e50e6079b9802af6da2c57fd456f9e230fc0cbf6995a84c8a
 	sha256sums = 267d772a94ba49b19e799e7ecee25c0077ded4dd9c853c073ec386a8ab6a7e5c
 	sha256sums = a5279447d005060aa77536dcabe0ab66226f9cffa668dc0b6e07a2f1e52ab5ce
 
