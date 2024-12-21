@@ -1,5 +1,5 @@
---- rocketrp2.c.orig	2021-08-10 20:56:17.604171941 -0400
-+++ rocketrp2.c	2021-08-10 20:57:28.365337602 -0400
+--- a/rocketrp2.c	2021-08-10 20:56:17.604171941 -0400
++++ b/rocketrp2.c	2021-08-10 20:57:28.365337602 -0400
 @@ -115,11 +115,15 @@
  # define rp2_tty_buffer_request_room(tty,size)        tty_buffer_request_room(tty,size)
  # define rp2_tty_insert_flip_string(tty,cbuf,size)    tty_insert_flip_string(tty,cbuf,size)

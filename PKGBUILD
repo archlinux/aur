@@ -5,6 +5,8 @@
 
 _opt_DKMS=1           # This can be toggled between installs
 
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/6.6.*/modules.alias))"
+
 # ls -l /dev/ttyRP[0-9]*
 # lsmod | grep rp2
 # lspci -v | grep -B7 -i rp2
@@ -30,8 +32,8 @@ _origmodname='rp2'
 
 set -u
 pkgname='comtrol-rocketport-express-infinity'
-pkgver='2.18'
-pkgrel='3'
+pkgver='3.01'
+pkgrel='1'
 pkgdesc='kernel module driver for Comtrol RocketPort Express Infinity Rocketmodem serial RS-232 422 485 port'
 arch=('i686' 'x86_64')
 url='http://downloads.comtrol.com/html/rp_express_drivers.htm'
@@ -42,15 +44,16 @@ install="${pkgname}-install.sh"
 _verwatch=('http://downloads.comtrol.com/rport_express/drivers/Linux/' '.*>rocketport_infinity_express-linux-\([0-9\.]\+\)\.tar\.gz.*' 'f')
 _srcdir="rocketport_infinity_express-linux-${pkgver}"
 source=(
-  "http://downloads.comtrol.com/rport_express/drivers/Linux/rocketport_infinity_express-linux-${pkgver}.tar.gz"
+  #"http://downloads.comtrol.com/rport_express/drivers/Linux/rocketport_infinity_express-linux-${pkgver}.tar.gz"
+  "https://files.comtrol.com/rport_express/drivers/linux/rocketport_infinity_express-linux-${pkgver}.tar.gz"
   '0000-kernel-5.12-tty-low_latency.patch'
   '0001-kernel-6.0-set_termios-const-ktermios.patch'
 )
-md5sums=('6d3269e9f5a0d893822a63b327081bc1'
-         'aba286dfcadfd6135e2bc90b2909587d'
+md5sums=('185f9db39e71e0a657502a5c89bc2c3e'
+         'c9266b2221c94260be22d6de216f1cc9'
          'd2a8d4ea27c25651ad3fcd3d4aafa007')
-sha256sums=('cdf12c6c93740afd842522be4fc055282d6e1d32a92f3b3a0e3bae4fa01c0fe8'
-            '807649a7dac40fc9dc184c7cef4dc7d01f84ec5936e89c0376e0508cbce1da75'
+sha256sums=('7e3aee7462986b25a00ec4ec1141c5e2538669ec4866c974799cffc346b2fccb'
+            '8ce087d7a4da17fd0c52fc257058f8f81af944bc5859978a0329019e08deb868'
             '0ea99153c86c8f6a3faa9362859d5ff0c71838b710bc2e4c9d4b888fb81c0652')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
@@ -98,6 +101,9 @@ _fn_patch_km() {
   sed -e 's:/lib/:/usr/lib/:g' \
       -e '# Switch SUBDIRS= to M= for Kernel 5.4' \
       -e 's:SUBDIRS=:M=:g' \
+      -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
+      -e 's:\$(shell uname -r):$(KERNELRELEASE):g' \
+      -e '1i KERNELRELEASE ?= $(shell uname -r)' \
     -i 'Makefile'
 
   # Branding in dmesg
@@ -141,14 +147,30 @@ prepare() {
     popd > /dev/null
   fi
 
-  #cp -p 'rocketrp2.c'{,.orig}; false
-  #diff -pNau5 'rocketrp2.c'{.orig,} > '0000-kernel-5.12-tty-low_latency.patch'
-  patch -Nup0 -i "${srcdir}/0000-kernel-5.12-tty-low_latency.patch"
+  local _patches=()
+  #_patches+=('0000-kernel-5.12-tty-low_latency.patch')
+  #_patches+=('0001-kernel-6.0-set_termios-const-ktermios.patch') # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
 
-  # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
+  local _pt _ptf=() _pts=()
+  for _pt in "${_patches[@]}"; do
+    set +u; msg2 "Patch ${_pt}"; set -u
+    if patch -Nup1 -i "${srcdir}/${_pt}"; then
+      _pts+=("${_pt}")
+    else
+      _ptf+=("${_pt}")
+    fi
+  done
+  if [ "${#_ptf[@]}" -gt 0 ]; then
+     if [ "${#_pts[@]}" -gt 0 ]; then
+       printf 'Patch success %s\n' "${_pts[@]}"
+       printf 'Warning: Some old patches may need to be removed even if they are successful\n'
+     fi
+     printf 'Patch failed %s\n' "${_ptf[@]}"
+     set +x
+     false
+  fi
   #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0001-kernel-6.0-set_termios-const-ktermios.patch'
-  patch -Nup1 -i "${srcdir}/0001-kernel-6.0-set_termios-const-ktermios.patch"
+  #diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
 
   set +u
 }
@@ -164,9 +186,10 @@ package() {
   set -u
   cd "${_srcdir}"
 
+  local _KERNELRELEASE_PKG="${KERNELRELEASE:-$(uname -r)}"
   if [ "${_opt_DKMS}" -eq 0 ]; then
     # I don't want Linux version info showing on AUR web. After a few months 'linux<0.0.0' makes it look like an out of date package.
-    local _kernelversionsmall="$(uname -r)"
+    local _kernelversionsmall="${_KERNELRELEASE_PKG}"
     _kernelversionsmall="${_kernelversionsmall%%-*}"
     _kernelversionsmall="${_kernelversionsmall%\.0}" # trim 4.0.0 -> 4.0, 4.1.0 -> 4.1
     # prevent the mksrcinfo bash emulator from getting these vars!
@@ -177,7 +200,7 @@ package() {
   sed -e 's:^\(DESTDIR\)=.*$'":\1=${pkgdir}:g" -i 'install.sh'
   install -d \
     "${pkgdir}/usr/bin" \
-    "${pkgdir}/usr/lib/modules/$(uname -r)/kernel/drivers" \
+    "${pkgdir}/usr/lib/modules/${_KERNELRELEASE_PKG}/kernel/drivers" \
     "${pkgdir}/etc/modules-load.d" \
     "${pkgdir}/etc/modprobe.d"
   ln -s '/usr/bin/true' "${pkgdir}/usr/bin/depmod"
@@ -226,9 +249,6 @@ _fn_dkmsinst() {
     pushd "$1" > /dev/null
     rm 'HISTORY' *.sh
     popd > /dev/null
-    sed -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
-        -e 's:\$(shell uname -r):$(KERNELRELEASE):g' \
-      -i "$1/Makefile"
     make -s -C "$1/" clean
 }
     if [ -z "${_opt_LEGACY_VER}" ]; then
