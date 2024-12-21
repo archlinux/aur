@@ -2,7 +2,7 @@
 
 pkgname=stygiansift-git
 _pkgname="StygianSift"
-pkgver=r170+g83aa82a0e
+pkgver=r174+g5171c74fa
 pkgrel=1
 pkgdesc="A highly customizable TUI file explorer"
 arch=("x86_64")
