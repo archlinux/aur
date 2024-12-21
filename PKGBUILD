@@ -1,18 +1,19 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=python-evalidate
-pkgver=2.0.2
-pkgrel=3
+# https://github.com/yaroslaff/evalidate/releases
+pkgver=2.0.3
+pkgrel=1
 pkgdesc='Safe and fast evaluation of untrusted user-supplied python expressions'
 arch=(any)
 url='https://github.com/yaroslaff/evalidate'
 # https://github.com/yaroslaff/evalidate/blob/v2.0.2/setup.py#L19
 license=(MIT)
 depends=(python)
-makedepends=(git python-build python-installer python-setuptools python-wheel)
+makedepends=(git python-build python-installer python-hatchling python-wheel)
 checkdepends=(python-pytest)
 source=("git+$url#tag=v$pkgver")
-sha256sums=('d5837fed00018e7cae14b1266f21751cd8f74c9f4bb37d4581e1ceeb54d6f318')
+sha256sums=('c72b662d3b462383fcd161836ba6fa9c4a23b1041c57e8b365fd352a3db40cd6')
 
 build() {
   cd evalidate
