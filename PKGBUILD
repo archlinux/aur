@@ -2,7 +2,7 @@ mkdir -p "$HOME/.cache/pacman/pkg"
 PKGDEST="$HOME/.cache/pacman/pkg/$pkgname"
 
 pkgname=vnrez
-pkgver=1.2
+pkgver=2.0
 pkgrel=1
 pkgdesc="All-in-one Linux tool for recording, screenshots to share your files online."
 arch=('any')
@@ -14,7 +14,7 @@ install=vnrez.install
 
 depends=('jq' 'ffmpeg')
 optdepends=(
-    'kooha: GNOME & KDE support'
+    'kooha: [WAYLAND] GNOME, COSMIC, KDE & Cinnamon support'
     'wl-clipboard: Wayland Clipboard support'
     'slurp: Wayland wlroots based support'
     'wf-recorder: Wayland wlroots based support'

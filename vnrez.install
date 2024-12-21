@@ -7,7 +7,7 @@ post_install() {
     printf "• \e[30m\e[46m Any X11 \e[0m: xclip & slop\n"
     echo ""
     printf "\e[1;32m✱ Otherwise, the script will refuse to work.\e[0m\n"
-    sleep 2
+    sleep 1.5
 }
 
 post_remove() {
@@ -16,6 +16,6 @@ post_remove() {
     echo ""
     printf "\e[1;31mDelete All the Dependencies:\e[0m\n"
     printf "• \e[30m\e[46m Wayland wlroots based \e[0m: wl-clipboard, slurp & wf-recorder\n"
-    printf "• \e[30m\e[46m COSMIC & GNOME / KDE Wayland \e[0m: wl-clipboard & kooha\n"
+    printf "• \e[30m\e[46m [WAYLAND] COSMIC, Cinnamon, GNOME & KDE \e[0m: wl-clipboard & kooha\n"
     printf "• \e[30m\e[46m Any X11 \e[0m: xclip & slop\n"
 }
