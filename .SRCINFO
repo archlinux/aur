@@ -1,18 +1,20 @@
-pkgbase = haveno-reto
+pkgbase = retoswap
 	pkgdesc = Decentralised P2P exchange built on Monero and Tor - unofficial Reto network
-	pkgver = 1.0.14
-	pkgrel = 2
+	pkgver = 1.0.16
+	pkgrel = 1
 	url = https://github.com/retoaccess1/haveno-reto
-	install = haveno-reto.install
+	install = retoswap.install
 	arch = any
 	license = AGPL-3.0-or-later
 	makedepends = java-environment>=21
 	depends = bash
 	depends = java-runtime>=21
 	conflicts = haveno
-	source = haveno-reto-v1.0.14.tar.gz::https://github.com/retoaccess1/haveno-reto/archive/refs/tags/v1.0.14.tar.gz
-	source = haveno-reto.desktop
-	sha512sums = bfee08a8162f693975d51d54770d3f00582507b74d8260f9808adf0f5b225f89cea1c62de6d499bf2ae498b635df86f428879c75443fdc6f576be9f8fd88831c
-	sha512sums = 90103d36dfbc4d5da1c16774a9474c5e4b9bcc9d9354d35060187aa89176989119a7ec83bd36beca9e79103aae5329db72bf981a622be1daf248bb6dffceae5c
+	conflicts = haveno-reto
+	replaces = haveno-reto
+	source = retoswap-v1.0.16.tar.gz::https://github.com/retoaccess1/haveno-reto/archive/refs/tags/v1.0.16.tar.gz
+	source = retoswap.desktop
+	sha512sums = 10562181d38edd8610102d90a73a489b1dde5a5fd9cfd7f00b3efccffa0da548d26062b9a576a7ba043897a9a2b30e6183461f9549d84a9a4947bc56443c5842
+	sha512sums = 37148505c9801c21d5e410f6a54934e290c1e009f6eaf7ecc87447c599253b1865887243c88585ea3ebee2402a26abefe918945285ac2649166ea71f35fbb117
 
-pkgname = haveno-reto
+pkgname = retoswap
