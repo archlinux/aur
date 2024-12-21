@@ -1,0 +1,1432 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c8474b9..33eabac 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -19,9 +19,9 @@ if (GIT_REPO)
+     add_definitions(-DTS_VERSION=${git_version})
+ endif()
+ 
+ 
+-set(target ts)
++set(target tsp)
+ 
+ set(TASK_SPOOLER_SOURCES
+         client.c
+         env.c
+@@ -84,8 +84,8 @@ else(TASK_SPOOLER_COMPILE_CUDA)
+ endif(TASK_SPOOLER_COMPILE_CUDA)
+ 
+ # install
+ install(CODE "execute_process(COMMAND install -c -d /usr/local/bin)")
+-install(CODE "execute_process(COMMAND install -c ts /usr/local/bin)")
++install(CODE "execute_process(COMMAND install -c tsp /usr/local/bin)")
+ install(CODE "execute_process(COMMAND ./makeman)")
+ install(CODE "execute_process(COMMAND install -c -d /usr/local/share/man/man1)")
+-install(CODE "execute_process(COMMAND install -c -m 644 ts.1 /usr/local/share/man/man1)")
++install(CODE "execute_process(COMMAND install -c -m 644 tsp.1 /usr/local/share/man/man1)")
+diff --git a/Makefile b/Makefile
+index 5b8ecaa..6d6c033 100755
+--- a/Makefile
++++ b/Makefile
+@@ -19,9 +19,9 @@ OBJECTS=main.o \
+ 	info.o \
+ 	env.o \
+ 	tail.o \
+ 	cjson/cJSON.o
+-TARGET=ts
++TARGET=tsp
+ INSTALL=install -c
+ 
+ GIT_REPO=$(shell git rev-parse --is-inside-work-tree)
+ 
+@@ -68,20 +68,20 @@ ifeq ($(GIT_REPO), true)
+ 	$(CC) $(CFLAGS) -DTS_VERSION=$${GIT_VERSION} man.c -o makeman
+ endif
+ 
+ clean:
+-	rm -f *.o cjson/*.o $(TARGET) makeman ts.1
++	rm -f *.o cjson/*.o $(TARGET) makeman tsp.1
+ 
+ install: $(TARGET)
+ 	$(INSTALL) -d $(PREFIX)/bin
+-	$(INSTALL) ts $(PREFIX)/bin
++	$(INSTALL) tsp $(PREFIX)/bin
+ 	$(INSTALL) -d $(PREFIX)/share/man/man1
+ 	./makeman
+ 	$(INSTALL) -m 644 $(TARGET).1 $(PREFIX)/share/man/man1
+ 
+ install-local: $(TARGET)
+ 	$(INSTALL) -d $(PREFIX_LOCAL)/bin
+-	$(INSTALL) ts $(PREFIX_LOCAL)/bin
++	$(INSTALL) tsp $(PREFIX_LOCAL)/bin
+ 	$(INSTALL) -d $(PREFIX_LOCAL)/.local/share/man/man1
+ 	./makeman
+ 	$(INSTALL) -m 644 $(TARGET).1 $(PREFIX_LOCAL)/.local/share/man/man1
+ 
+diff --git a/README.md b/README.md
+index 4eacee8..e8b949e 100755
+--- a/README.md
++++ b/README.md
+@@ -12,9 +12,9 @@
+ * [Related projects](https://github.com/justanhduc/task-spooler#related-projects)
+ 
+ ## About
+ 
+-**GPU Task Spooler**, or `ts` for short, is a spooling system that helps manage CPU/GPU tasks easily.
++**GPU Task Spooler**, or `tsp` for short, is a spooling system that helps manage CPU/GPU tasks easily.
+ You can think of [SLURM](https://slurm.schedmd.com/elastic_computing.html) but for small individual servers rather 
+ than high-performance clusters.
+ 
+ ### Features
+@@ -44,9 +44,9 @@ See [CHANGELOG](CHANGELOG.md).
+ A tutorial with colab is available [here](https://librecv.github.io/blog/spooler/task%20manager/deep%20learning/2021/02/09/task-spooler.html).
+ 
+ ## Tricks
+ 
+-See [here](TRICKS.md) for some cool tricks to extend `ts`.
++See [here](TRICKS.md) for some cool tricks to extend `tsp`.
+ 
+ ### A note for DL/ML researchers
+ 
+ If the codes are modified after a job is queued,
+@@ -59,23 +59,23 @@ but it requires committing every small changes.
+ 
+ #### Working with remote servers
+ 
+ Like above, one can use `rsync` to copy the code base to a temporary location on the remote server, 
+-and use `ssh` to launch the job using `ts`.
++and use `ssh` to launch the job using `tsp`.
+ This can be done either with a script or using a small plug-in [here](https://github.com/justanhduc/messenger).
+ 
+ ## Manual
+ 
+-See below/`man ts`/`ts -h` for more details.
++See below/`man tsp`/`tsp -h` for more details.
+ 
+ ```
+-usage: ts [action] [-ngfmdE] [-L <lab>] [-D <id>] [cmd...]
++usage: tsp [action] [-ngfmdE] [-L <lab>] [-D <id>] [cmd...]
+ Env vars:
+-  TS_VISIBLE_DEVICES     the GPU IDs that are visible to ts. Jobs will be run on these GPUs only.
+-  TS_SOCKET              the path to the unix socket used by the ts command.
++  TS_VISIBLE_DEVICES     the GPU IDs that are visible to tsp. Jobs will be run on these GPUs only.
++  TS_SOCKET              the path to the unix socket used by the tsp command.
+   TS_MAILTO              where to mail the result (on -m). Local user by default.
+   TS_MAXFINISHED         maximum finished jobs in the queue.
+-  TS_MAXCONN             maximum number of ts connections at once.
++  TS_MAXCONN             maximum number of tsp connections at once.
+   TS_ONFINISH            binary called on job end (passes jobid, error, outfile, command).
+   TS_ENV                 command called on enqueue. Its output determines the job information.
+   TS_SAVELIST            filename which will store the list, if the server dies.
+   TS_SLOTS               amount of jobs which can run at once, read on server start.
+@@ -150,14 +150,14 @@ Options adding jobs:
+ * To Андрею Пантюхину, who created the BSD port
+ * To the useful, although sometimes uncomfortable, UNIX interface
+ * To Alexander V. Inyukhin, for the debian packages
+ * To Pascal Bleser, for the SuSE packages
+-* To Sergio Ballestrero, who sent code and motivated the development of a multislot version of ts
++* To Sergio Ballestrero, who sent code and motivated the development of a multislot version of tsp
+ * To GNU, an ugly but working and helpful ol' UNIX implementation
+ 
+ **Others**
+ 
+ Many memory bugs are identified thanks to [Valgrind](https://valgrind.org/).
+ 
+ ## Related projects
+ 
+-[Messenger](https://github.com/justanhduc/messenger)
+\ No newline at end of file
++[Messenger](https://github.com/justanhduc/messenger)
+diff --git a/TRICKS.md b/TRICKS.md
+index f9341c0..9fc5d9f 100755
+--- a/TRICKS.md
++++ b/TRICKS.md
+@@ -10,49 +10,49 @@ chmod.
+ # A queue for each resource
+ 
+ You can use $TS_SOCKET and aliases/scripts for having different queues for
+ different resources. For instance, using bash:
+-alias tsdisk='TS_SOCKET=/tmp/socket.disk ts'
+-alias tsram='TS_SOCKET=/tmp/socket.ram ts'
+-alias tsnet='TS_SOCKET=/tmp/socket.net ts'
++alias tsdisk='TS_SOCKET=/tmp/socket.disk tsp'
++alias tsram='TS_SOCKET=/tmp/socket.ram tsp'
++alias tsnet='TS_SOCKET=/tmp/socket.net tsp'
+ 
+ You can also create shell scripts like this:
+ 
+ ```
+ << FILE ts2
+ #!/bin/sh
+ export TS_SOCKET=/tmp/socket-ts2.$USER
+-ts "$@"
++tsp "$@"
+ >> END OF FILE ts2
+ ```
+ 
+ # Be notified of a task finished
+ 
+ In X windows, inside bash, after submitting the task, I use:
+-`$ ( ts -w ; xmessage Finished! ) &`
++`$ ( tsp -w ; xmessage Finished! ) &`
+ 
+ 
+ # Killing process groups
+ 
+-ts creates a new session for the job, so the pid of the command run can be
++tsp creates a new session for the job, so the pid of the command run can be
+ used as the process group id for the command and its childs. So, you can use
+ something like:
+ ```
+-$ kill -- -`ts -p`
++$ kill -- -`tsp -p`
+ ```
+ in order to kill the job started and all its childs. I find it useful when
+ killing 'make's.
+ 
+ 
+-# Limiting the number of ts processes
++# Limiting the number of tsp processes
+ 
+ Each queued job remains in the system as a waiting process. On environments
+ where the number of processes is quite limited, the user can select the amount
+-of the maximum number of ts server connections to ts clients. That will be
++of the maximum number of tsp server connections to tsp clients. That will be
+ read from the environment variable `TS_MAXCONN` at the server start, and cannot be
+ set again once the server runs:
+ ```
+-$ ts -K     # we assure we will start the server at the next ts call
+-$ TS_MAXCONN=5 ts
++$ tsp -K     # we assure we will start the server at the next tsp call
++$ TS_MAXCONN=5 tsp
+ ```
+ Internally there is a maximum of 1000 connexions that cannot be exceeded without
+ modifying the source code (server.c).
+diff --git a/client.c b/client.c
+index 8fd26b8..178baa3 100755
+--- a/client.c
++++ b/client.c
+@@ -201,10 +201,10 @@ void c_wait_server_lines() {
+ void c_list_jobs() {
+     struct Msg m = default_msg();
+ 
+     m.type = LIST;
+-    m.u.term_width = term_width;
+-    m.u.list_format = command_line.list_format;
++    m.u.list.term_width = term_width;
++    m.u.list.list_format = command_line.list_format;
+     send_msg(server_socket, &m);
+ }
+ 
+ void c_list_gpu_jobs() {
+@@ -218,9 +218,9 @@ void c_check_version() {
+     struct Msg m = default_msg();
+     int res;
+ 
+     m.type = GET_VERSION;
+-    /* Double send, so an old ts will answer for sure at least once */
++    /* Double send, so an old tsp will answer for sure at least once */
+     send_msg(server_socket, &m);
+     send_msg(server_socket, &m);
+ 
+     /* Set up a 2 second timeout to receive the
+diff --git a/deb/pkg/DEBIAN/control b/deb/pkg/DEBIAN/control
+index fdf0a93..e5b59ea 100755
+--- a/deb/pkg/DEBIAN/control
++++ b/deb/pkg/DEBIAN/control
+@@ -1,5 +1,5 @@
+-Package: ts
++Package: tsp
+ Version: 0.5.4
+ Section: base
+ Priority: optional
+ Architecture: i386
+diff --git a/execute.c b/execute.c
+index 84eeda9..c59ddee 100755
+--- a/execute.c
++++ b/execute.c
+@@ -135,8 +135,15 @@ static void run_gzip(int fd_out, int fd_in) {
+             close(fd_out);
+     }
+ }
+ 
++static void put_job_id_env() {
++    const int jobid_len = 18;
++    char ts_jobid[jobid_len];
++    snprintf(ts_jobid, jobid_len, "TS_JOBID=%d", command_line.jobid);
++    putenv(ts_jobid);
++}
++
+ static void run_child(int fd_send_filename, char* tmpdir) {
+     char *outfname;
+     char errfname[sizeof outfname + 2]; /* .e */
+     int namesize;
+@@ -229,11 +236,12 @@ static void run_child(int fd_send_filename, char* tmpdir) {
+     if (command_line.should_go_background)
+         create_closed_read_on(0);
+ 
+     /* We create a new session, so we can kill process groups as:
+-         kill -- -`ts -p` */
++         kill -- -`tsp -p` */
+     setsid();
+     putenv("PYTHONUNBUFFERED=1");
++    put_job_id_env();   /* let child process know that it has been run from us */
+     execvp(command_line.command.array[0], command_line.command.array);
+ }
+ 
+ int run_job(struct Result *res) {
+@@ -259,9 +267,9 @@ int run_job(struct Result *res) {
+             close(p[0]);
+             run_child(p[1], tmpdir);
+             /* Not reachable, if the 'exec' of the command
+              * works. Thus, command exists, etc. */
+-            fprintf(stderr, "ts could not run the command\n");
++            fprintf(stderr, "tsp could not run the command\n");
+             exit(-1);
+             /* To avoid a compiler warning */
+             errorlevel = 0;
+             break;
+diff --git a/gentoo/ts-0.5.2.ebuild b/gentoo/ts-0.5.2.ebuild
+index 14453d7..eda1ac0 100755
+--- a/gentoo/ts-0.5.2.ebuild
++++ b/gentoo/ts-0.5.2.ebuild
+@@ -21,8 +21,8 @@ src_compile() {
+ }
+ 
+ src_install() {
+ 	exeinto /usr/bin
+-	doexe ts
+-	doman ts.1
++	doexe tsp
++	doman tsp.1
+ 	dodoc Changelog OBJECTIVES PORTABILITY PROTOCOL README TRICKS
+ }
+diff --git a/gpu.c b/gpu.c
+index fb277a9..2437155 100755
+--- a/gpu.c
++++ b/gpu.c
+@@ -8,8 +8,9 @@
+ 
+ #include "main.h"
+ 
+ #define TS_VISIBLE_DEVICES "TS_VISIBLE_DEVICES"
++#define TS_FREE_PERCENTAGE "TS_FREE_PERCENTAGE"
+ 
+ static int free_percentage = 90;
+ static int num_total_gpus;
+ static int *used_gpus = 0;
+@@ -21,8 +22,19 @@ static void set_cuda_env() {
+ 
+ void initGPU() {
+     unsigned int nDevices;
+     nvmlReturn_t result;
++    char *str;
++
++    // read TS_FREE_PERCENTAGE
++    str = getenv(TS_FREE_PERCENTAGE);
++    if (str != NULL) {
++        int value;
++        value = abs(atoi(str));
++        if (value > 0 && value < 100) {
++            free_percentage = value;
++        }
++    }
+ 
+     set_cuda_env();
+     result = nvmlInit();
+     if (NVML_SUCCESS != result)
+diff --git a/jobs.c b/jobs.c
+index 86f78b9..82182d4 100755
+--- a/jobs.c
++++ b/jobs.c
+@@ -1173,8 +1173,11 @@ void s_job_info(int s, int jobid) {
+         fd_nprintf(s, 100, "]&& ");
+     }
+     write(s, p->command, strlen(p->command));
+     fd_nprintf(s, 100, "\n");
++    if (p->label) {
++        fd_nprintf(s, 100, "Label: %s\n", p->label);
++    }
+     fd_nprintf(s, 100, "Slots required: %i\n", p->num_slots);
+ #ifndef CPU
+     fd_nprintf(s, 100, "GPUs required: %d\n", p->num_gpus);
+     fd_nprintf(s, 100, "GPU IDs: %s\n", ints_to_chars(
+diff --git a/list.c b/list.c
+index 9cdb16c..de44490 100755
+--- a/list.c
++++ b/list.c
+@@ -518,9 +518,9 @@ char *joblistdump_torun(const struct Job *p) {
+     line = (char *) malloc(maxlen);
+     if (line == NULL)
+         error("Malloc for %i failed.\n", maxlen);
+ 
+-    snprintf(line, maxlen, "ts %s\n", p->command);
++    snprintf(line, maxlen, "tsp %s\n", p->command);
+ 
+     return line;
+ }
+ 
+diff --git a/main.c b/main.c
+index c19ffbe..6152ad4 100755
+--- a/main.c
++++ b/main.c
+@@ -46,9 +46,9 @@ static void default_command_line() {
+     command_line.should_go_background = 1;
+     command_line.should_keep_finished = 1;
+     command_line.gzip = 0;
+     command_line.send_output_by_mail = 0;
+-    command_line.label = 0;
++    command_line.label = getenv("USER");
+     command_line.depend_on = NULL; /* -1 means depend on previous */
+     command_line.max_slots = 1;
+     command_line.wait_enqueuing = 1;
+     command_line.stderr_apart = 0;
+@@ -482,14 +482,14 @@ static void print_help(const char *cmd) {
+     puts(version);
+     printf("usage: %s <action> <[options] {your-command}>\n", cmd);
+     printf("Env vars:\n");
+ #ifndef CPU
+-    printf("  TS_VISIBLE_DEVICES  the GPU IDs that are visible to ts. Jobs will be run on these GPUs only.\n");
++    printf("  TS_VISIBLE_DEVICES  the GPU IDs that are visible to tsp. Jobs will be run on these GPUs only.\n");
+ #endif
+-    printf("  TS_SOCKET           the path to the unix socket used by the ts command.\n");
++    printf("  TS_SOCKET           the path to the unix socket used by the tsp command.\n");
+     printf("  TS_MAILTO           where to mail the result (on -m). Local user by default.\n");
+     printf("  TS_MAXFINISHED      maximum finished jobs in the queue.\n");
+-    printf("  TS_MAXCONN          maximum number of ts connections at once.\n");
++    printf("  TS_MAXCONN          maximum number of tsp connections at once.\n");
+     printf("  TS_ONFINISH         binary called on job end (passes jobid, error, outfile, command).\n");
+     printf("  TS_ENV              command called on enqueue. Its output determines the job information.\n");
+     printf("  TS_SAVELIST         filename which will store the list, if the server dies.\n");
+     printf("  TS_SLOTS            amount of jobs which can run at once, read on server start.\n");
+diff --git a/main.h b/main.h
+index 491b879..a01e912 100755
+--- a/main.h
++++ b/main.h
+@@ -192,10 +192,12 @@ struct Msg {
+         int max_slots;
+         int version;
+         int count_running;
+         char *label;
+-        int term_width;
+-        enum ListFormat list_format;
++        struct {
++            int term_width;
++            enum ListFormat list_format;
++        } list;
+     } u;
+ };
+ 
+ struct Procinfo {
+@@ -546,5 +548,5 @@ void setFreePercentage(int percent);
+ 
+ int getFreePercentage();
+ 
+ void cleanupGpu();
+-#endif
+\ No newline at end of file
++#endif
+diff --git a/man.c b/man.c
+index 7375497..470eb3e 100644
+--- a/man.c
++++ b/man.c
+@@ -6,9 +6,9 @@
+ #include <stdio.h>
+ #include <time.h>
+ 
+ int main() {
+-    FILE *f = fopen("ts.1", "w");
++    FILE *f = fopen("tsp.1", "w");
+     time_t T = time(NULL);
+     struct tm tm = *localtime(&T);
+     if (f == NULL)
+     {
+@@ -25,11 +25,11 @@ int main() {
+                      ".\\\" \n"
+                      ".\\\" Note: I took the gnu 'ls' man page as an example.\n"
+                      ".TH TS 1 %04d-%02d \"Task Spooler %s\"\n"
+                      ".SH NAME\n"
+-                     "ts \\- Task Spooler. A simple unix batch system\n"
++                     "tsp \\- Task Spooler. A simple unix batch system\n"
+                      ".SH SYNOPSIS\n"
+-                     ".BI \"ts [\" actions \"] [\" options \"] [\" command... ]\n"
++                     ".BI \"tsp [\" actions \"] [\" options \"] [\" command... ]\n"
+                      ".sp\n"
+                      "Actions:\n"
+                      ".BI \"[\\-KClhVTRqMg]\n"
+                      ".BI \"[\\-t [\"id ]]\n"
+@@ -66,19 +66,19 @@ int main() {
+                      ".BI \"[\\-O [\"name ]]\n"
+                      ".BI \"[\\-N [\"num ]]\n"
+                      "\n"
+                      ".SH DESCRIPTION\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "will run by default a per user unix task queue. The user can add commands to\n"
+                      "the queue, watch that queue at any moment, and look at the task results\n"
+                      "(actually, standard output and exit error).\n"
+                      ".SH SIMPLE USE\n"
+                      "Calling\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "with a command will add that command to the queue, and calling it without\n"
+                      "commands or parameters will show the task list.\n"
+                      ".SH COMMAND OPTIONS\n"
+-                     "When adding a job to ts, we can specify how it will be run and how the\n"
++                     "When adding a job to tsp, we can specify how it will be run and how the\n"
+                      "results will be collected:\n"
+                      ".TP\n"
+                      ".B \"\\-n\"\n"
+                      "Do not store the standard output/error in a file at\n"
+@@ -130,14 +130,14 @@ int main() {
+                      "as if the job failed.\n"
+                      ".TP\n"
+                      ".B \"\\-B\"\n"
+                      "In the case the queue is full (due to \\fBTS_MAXCONN\\fR or system limits),\n"
+-                     "by default ts will block the enqueuing command. Using \\fB\\-B\\fR,\n"
++                     "by default tsp will block the enqueuing command. Using \\fB\\-B\\fR,\n"
+                      "if the queue is full it will exit returning the value 2 instead of blocking.\n"
+                      ".TP\n"
+                      ".B \"\\-E\"\n"
+                      "Keep two different output files for the command stdout and stderr. stdout goes to\n"
+-                     "the file announced by ts (look at \\fB\\-o\\fR), and stderr goes to the stdout file\n"
++                     "the file announced by tsp (look at \\fB\\-o\\fR), and stderr goes to the stdout file\n"
+                      "with an additional \".e\". For example, /tmp/ts-out.SKsDw8 and /tmp/ts-out.SKsDw8.e.\n"
+                      "Only the stdout file gets created with \\fBmkstemp\\fR, ensuring it does not overwrite\n"
+                      "any other; the \".e\" will be overwritten if it existed.\n"
+                      ".TP\n"
+@@ -147,9 +147,9 @@ int main() {
+                      ".B \"\\-N [num]\"\n"
+                      "Run the command only if there are \\fbnum\\fB slots free in the queue. Without it,\n"
+                      "the job will run if there is one slot free. For example, if you use the\n"
+                      "queue to feed cpu cores, and you know that a job will take two cores, with \\fB\\-N\\fB\n"
+-                     "you can let ts know that.\n"
++                     "you can let tsp know that.\n"
+                      ".TP\n"
+                      ".B \"\\-G/--gpus [num]\"\n"
+                      "Run the job with \\fbnum\\fB GPUs.\n"
+                      ".TP\n"
+@@ -159,19 +159,19 @@ int main() {
+                      "Instead of giving a new command, we can use the parameters for other purposes:\n"
+                      ".TP\n"
+                      ".B \"\\--getenv [var]\"\n"
+                      "Get the specified environment variable value from the\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "server.\n"
+                      ".TP\n"
+                      ".B \"\\--setenv [var]\"\n"
+                      "Set the specified environment variable to the\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "server.\n"
+                      ".TP\n"
+                      ".B \"\\--unsetenv [var]\"\n"
+                      "Remove the specified environment variable from the\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "server.\n"
+                      ".TP\n"
+                      ".B \"\\--set_gpu_free_perc [num]\"\n"
+                      "Set the value of GPU memory threshold above which GPUs are considered available (90 by default).\n"
+@@ -180,17 +180,17 @@ int main() {
+                      "Get the value of GPU memory threshold above which GPUs are considered available.\n"
+                      ".TP\n"
+                      ".B \"\\-K\"\n"
+                      "Kill the\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "server for the calling client. This will remove the unix socket and\n"
+                      "all the\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "processes related to the queue. This will not kill the command being\n"
+                      "run at that time.\n"
+                      "\n"
+                      "It is not reliable to think that\n"
+-                     ".B ts -K\n"
++                     ".B tsp -K\n"
+                      "will finish when the server is really killed. By now it is a race condition.\n"
+                      ".TP\n"
+                      ".B \"\\-T\"\n"
+                      "Send SIGTERM to all running job groups.\n"
+@@ -200,9 +200,9 @@ int main() {
+                      ".TP\n"
+                      ".B \"\\-l\"\n"
+                      "Show the list of jobs - to be run, running and finished - for the current queue.\n"
+                      "This is the default behaviour if\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "is called without options.\n"
+                      ".TP\n"
+                      ".B \"\\-M/--serialize [format]\"\n"
+                      "Serialize the job list to the specified format. Choices: {default, json, tab}.\n"
+@@ -259,9 +259,9 @@ int main() {
+                      ".B \"\\-k [id]\"\n"
+                      "Kill the process group of the named job (SIGTERM),\n"
+                      "or the last running/run job if not specified.\n"
+                      "Equivalent to\n"
+-                     ".B kill -- -`ts -p`\n"
++                     ".B kill -- -`tsp -p`\n"
+                      ".TP\n"
+                      ".B \"\\-u [id]\"\n"
+                      "Make the named job (or the last in the queue) urgent - this means that it goes\n"
+                      "forward in the queue so it can run as soon as possible.\n"
+@@ -280,9 +280,9 @@ int main() {
+                      ".TP\n"
+                      ".B \"\\-V\"\n"
+                      "Show the program version.\n"
+                      ".SH MULTI-SLOT\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "by default offers a queue where each job runs only after the previous finished.\n"
+                      "Nevertheless, you can change the maximum number of jobs running at once with\n"
+                      "the\n"
+                      ".B \"\\-S [num]\"\n"
+@@ -307,17 +307,17 @@ int main() {
+                      ".SH ENVIRONMENT\n"
+                      ".TP\n"
+                      ".B \"TS_VISIBLE_DEVICES\"\n"
+                      "Similar to CUDA_VISIBLE_DEVICES, if a comma-separated string of GPU IDs is provided,\n"
+-                     "ts will run jobs on only these devices.\n"
++                     "tsp will run jobs on only these devices.\n"
+                      ".TP\n"
+                      ".B \"TS_MAXFINISHED\"\n"
+                      "Limit the number of job results (finished tasks) you want in the queue. Use this\n"
+                      "option if you are tired of\n"
+                      ".B \\-C.\n"
+                      ".TP\n"
+                      ".B \"TS_MAXCONN\"\n"
+-                     "The maximum number of ts server connections to clients. This will make the ts clients\n"
++                     "The maximum number of tsp server connections to clients. This will make the tsp clients\n"
+                      "block until connections are freed. This helps, for example, on systems with a limited\n"
+                      "number of processes, because each job waiting in the queue remains as a process. This\n"
+                      "variable has to be set at server start, and cannot be modified later.\n"
+                      ".TP\n"
+@@ -344,17 +344,17 @@ int main() {
+                      ".B \"TS_SOCKET\"\n"
+                      "Each queue has a related unix socket. You can specify the socket path with this\n"
+                      "environment variable. This way, you can have a queue for your heavy disk\n"
+                      "operations, another for heavy use of ram., and have a simple script/alias\n"
+-                     "wrapper over ts for those special queues. If it is not specified, it will be\n"
++                     "wrapper over tsp for those special queues. If it is not specified, it will be\n"
+                      ".B $TMPDIR/socket-ts.[uid].\n"
+                      ".TP\n"
+                      ".B \"TS_SLOTS\"\n"
+                      "Set the number of slots at the start of the server, similar to\n"
+                      ".B \\-S,\n"
+                      "but the contents of the variable are read only when running\n"
+                      "the first instance of\n"
+-                     ".B ts.\n"
++                     ".B tsp.\n"
+                      ".TP\n"
+                      ".B \"TS_MAILTO\"\n"
+                      "Send the letters with job results to the address specified in this variable.\n"
+                      "Otherwise, they are sent to\n"
+@@ -375,9 +375,9 @@ int main() {
+                      "is not specified.\n"
+                      ".TP\n"
+                      ".B \"TS_SAVELIST\"\n"
+                      "If it is defined when starting the queue server (probably the first\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "command run), on SIGTERM the queue status will be saved to the file pointed\n"
+                      "by this environment variable - for example, at system shutdown.\n"
+                      ".TP\n"
+                      ".B \"TS_ENV\"\n"
+@@ -388,14 +388,14 @@ int main() {
+                      ".SH FILES\n"
+                      ".TP\n"
+                      ".B /tmp/ts.error\n"
+                      "if\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "finds any internal problem, you should find an error report there.\n"
+                      "Please send this to the author as part of the bug report.\n"
+                      "\n"
+                      ".SH BUGS\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "expects a simple command line. It does not start a shell parser.\n"
+                      "If you want to run complex shell commands, you may want to run them through\n"
+                      ".B sh -c 'commands...'\n"
+                      "Also, remember that stdin/stdout/stderr will be detached, so\n"
+@@ -413,13 +413,13 @@ int main() {
+                      ".SH AUTHOR\n"
+                      "Duc Nguyen and Lluis Batlle i Rossell\n"
+                      ".SH NOTES\n"
+                      "This page describes\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "as in version %s. Other versions may differ. The file\n"
+                      ".B TRICKS\n"
+                      "found in the distribution package can show some ideas on special uses of\n"
+-                     ".B ts.", tm.tm_year + 1900, tm.tm_mon + 1, TS_MAKE_STR(TS_VERSION), TS_MAKE_STR(TS_VERSION));
++                     ".B tsp.", tm.tm_year + 1900, tm.tm_mon + 1, TS_MAKE_STR(TS_VERSION), TS_MAKE_STR(TS_VERSION));
+ #else
+     sprintf(manPage, ".\\\" Copyright @ Duc Nguyen & Lluís Batlle i Rossell\n"
+                      ".\\\"\n"
+                      ".\\\" This file may be copied under the conditions described\n"
+@@ -428,11 +428,11 @@ int main() {
+                      ".\\\" \n"
+                      ".\\\" Note: I took the gnu 'ls' man page as an example.\n"
+                      ".TH TS 1 %04d-%02d \"Task Spooler %s\"\n"
+                      ".SH NAME\n"
+-                     "ts \\- Task Spooler. A simple unix batch system\n"
++                     "tsp \\- Task Spooler. A simple unix batch system\n"
+                      ".SH SYNOPSIS\n"
+-                     ".BI \"ts [\" actions \"] [\" options \"] [\" command... ]\n"
++                     ".BI \"tsp [\" actions \"] [\" options \"] [\" command... ]\n"
+                      ".sp\n"
+                      "Actions:\n"
+                      ".BI \"[\\-KClhVTRqM]\n"
+                      ".BI \"[\\-t [\"id ]]\n"
+@@ -465,19 +465,19 @@ int main() {
+                      ".BI \"[\\-O [\"name ]]\n"
+                      ".BI \"[\\-N [\"num ]]\n"
+                      "\n"
+                      ".SH DESCRIPTION\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "will run by default a per user unix task queue. The user can add commands to\n"
+                      "the queue, watch that queue at any moment, and look at the task results\n"
+                      "(actually, standard output and exit error).\n"
+                      ".SH SIMPLE USE\n"
+                      "Calling\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "with a command will add that command to the queue, and calling it without\n"
+                      "commands or parameters will show the task list.\n"
+                      ".SH COMMAND OPTIONS\n"
+-                     "When adding a job to ts, we can specify how it will be run and how the\n"
++                     "When adding a job to tsp, we can specify how it will be run and how the\n"
+                      "results will be collected:\n"
+                      ".TP\n"
+                      ".B \"\\-n\"\n"
+                      "Do not store the standard output/error in a file at\n"
+@@ -529,14 +529,14 @@ int main() {
+                      "as if the job failed.\n"
+                      ".TP\n"
+                      ".B \"\\-B\"\n"
+                      "In the case the queue is full (due to \\fBTS_MAXCONN\\fR or system limits),\n"
+-                     "by default ts will block the enqueuing command. Using \\fB\\-B\\fR,\n"
++                     "by default tsp will block the enqueuing command. Using \\fB\\-B\\fR,\n"
+                      "if the queue is full it will exit returning the value 2 instead of blocking.\n"
+                      ".TP\n"
+                      ".B \"\\-E\"\n"
+                      "Keep two different output files for the command stdout and stderr. stdout goes to\n"
+-                     "the file announced by ts (look at \\fB\\-o\\fR), and stderr goes to the stdout file\n"
++                     "the file announced by tsp (look at \\fB\\-o\\fR), and stderr goes to the stdout file\n"
+                      "with an additional \".e\". For example, /tmp/ts-out.SKsDw8 and /tmp/ts-out.SKsDw8.e.\n"
+                      "Only the stdout file gets created with \\fBmkstemp\\fR, ensuring it does not overwrite\n"
+                      "any other; the \".e\" will be overwritten if it existed.\n"
+                      ".TP\n"
+@@ -546,38 +546,38 @@ int main() {
+                      ".B \"\\-N [num]\"\n"
+                      "Run the command only if there are \\fbnum\\fB slots free in the queue. Without it,\n"
+                      "the job will run if there is one slot free. For example, if you use the\n"
+                      "queue to feed cpu cores, and you know that a job will take two cores, with \\fB\\-N\\fB\n"
+-                     "you can let ts know that.\n"
++                     "you can let tsp know that.\n"
+                      ".SH ACTIONS\n"
+                      "Instead of giving a new command, we can use the parameters for other purposes:\n"
+                      ".TP\n"
+                      ".B \"\\--getenv [var]\"\n"
+                      "Get the specified environment variable value from the\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "server.\n"
+                      ".TP\n"
+                      ".B \"\\--setenv [var]\"\n"
+                      "Set the specified environment variable to the\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "server.\n"
+                      ".TP\n"
+                      ".B \"\\--unsetenv [var]\"\n"
+                      "Remove the specified environment variable from the\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "server.\n"
+                      ".TP\n"
+                      ".B \"\\-K\"\n"
+                      "Kill the\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "server for the calling client. This will remove the unix socket and\n"
+                      "all the\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "processes related to the queue. This will not kill the command being\n"
+                      "run at that time.\n"
+                      "\n"
+                      "It is not reliable to think that\n"
+-                     ".B ts -K\n"
++                     ".B tsp -K\n"
+                      "will finish when the server is really killed. By now it is a race condition.\n"
+                      ".TP\n"
+                      ".B \"\\-T\"\n"
+                      "Send SIGTERM to all running job groups.\n"
+@@ -587,9 +587,9 @@ int main() {
+                      ".TP\n"
+                      ".B \"\\-l\"\n"
+                      "Show the list of jobs - to be run, running and finished - for the current queue.\n"
+                      "This is the default behaviour if\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "is called without options.\n"
+                      ".TP\n"
+                      ".B \"\\-M/--serialize [format]\"\n"
+                      "Serialize the job list to the specified format. Choices: {default, json, tab}.\n"
+@@ -643,9 +643,9 @@ int main() {
+                      ".B \"\\-k [id]\"\n"
+                      "Kill the process group of the named job (SIGTERM),\n"
+                      "or the last running/run job if not specified.\n"
+                      "Equivalent to\n"
+-                     ".B kill -- -`ts -p`\n"
++                     ".B kill -- -`tsp -p`\n"
+                      ".TP\n"
+                      ".B \"\\-u [id]\"\n"
+                      "Make the named job (or the last in the queue) urgent - this means that it goes\n"
+                      "forward in the queue so it can run as soon as possible.\n"
+@@ -664,9 +664,9 @@ int main() {
+                      ".TP\n"
+                      ".B \"\\-V\"\n"
+                      "Show the program version.\n"
+                      ".SH MULTI-SLOT\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "by default offers a queue where each job runs only after the previous finished.\n"
+                      "Nevertheless, you can change the maximum number of jobs running at once with\n"
+                      "the\n"
+                      ".B \"\\-S [num]\"\n"
+@@ -695,9 +695,9 @@ int main() {
+                      "option if you are tired of\n"
+                      ".B \\-C.\n"
+                      ".TP\n"
+                      ".B \"TS_MAXCONN\"\n"
+-                     "The maximum number of ts server connections to clients. This will make the ts clients\n"
++                     "The maximum number of tsp server connections to clients. This will make the tsp clients\n"
+                      "block until connections are freed. This helps, for example, on systems with a limited\n"
+                      "number of processes, because each job waiting in the queue remains as a process. This\n"
+                      "variable has to be set at server start, and cannot be modified later.\n"
+                      ".TP\n"
+@@ -724,17 +724,17 @@ int main() {
+                      ".B \"TS_SOCKET\"\n"
+                      "Each queue has a related unix socket. You can specify the socket path with this\n"
+                      "environment variable. This way, you can have a queue for your heavy disk\n"
+                      "operations, another for heavy use of ram., and have a simple script/alias\n"
+-                     "wrapper over ts for those special queues. If it is not specified, it will be\n"
++                     "wrapper over tsp for those special queues. If it is not specified, it will be\n"
+                      ".B $TMPDIR/socket-ts.[uid].\n"
+                      ".TP\n"
+                      ".B \"TS_SLOTS\"\n"
+                      "Set the number of slots at the start of the server, similar to\n"
+                      ".B \\-S,\n"
+                      "but the contents of the variable are read only when running\n"
+                      "the first instance of\n"
+-                     ".B ts.\n"
++                     ".B tsp.\n"
+                      ".TP\n"
+                      ".B \"TS_MAILTO\"\n"
+                      "Send the letters with job results to the address specified in this variable.\n"
+                      "Otherwise, they are sent to\n"
+@@ -755,9 +755,9 @@ int main() {
+                      "is not specified.\n"
+                      ".TP\n"
+                      ".B \"TS_SAVELIST\"\n"
+                      "If it is defined when starting the queue server (probably the first\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "command run), on SIGTERM the queue status will be saved to the file pointed\n"
+                      "by this environment variable - for example, at system shutdown.\n"
+                      ".TP\n"
+                      ".B \"TS_ENV\"\n"
+@@ -768,14 +768,14 @@ int main() {
+                      ".SH FILES\n"
+                      ".TP\n"
+                      ".B /tmp/ts.error\n"
+                      "if\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "finds any internal problem, you should find an error report there.\n"
+                      "Please send this to the author as part of the bug report.\n"
+                      "\n"
+                      ".SH BUGS\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "expects a simple command line. It does not start a shell parser.\n"
+                      "If you want to run complex shell commands, you may want to run them through\n"
+                      ".B sh -c 'commands...'\n"
+                      "Also, remember that stdin/stdout/stderr will be detached, so\n"
+@@ -793,13 +793,13 @@ int main() {
+                      ".SH AUTHOR\n"
+                      "Duc Nguyen and Lluis Batlle i Rossell\n"
+                      ".SH NOTES\n"
+                      "This page describes\n"
+-                     ".B ts\n"
++                     ".B tsp\n"
+                      "as in version %s. Other versions may differ. The file\n"
+                      ".B TRICKS\n"
+                      "found in the distribution package can show some ideas on special uses of\n"
+-                     ".B ts.", tm.tm_year + 1900, tm.tm_mon + 1, TS_MAKE_STR(TS_VERSION), TS_MAKE_STR(TS_VERSION));
++                     ".B tsp.", tm.tm_year + 1900, tm.tm_mon + 1, TS_MAKE_STR(TS_VERSION), TS_MAKE_STR(TS_VERSION));
+ #endif
+     fprintf(f, "%s", manPage);
+     fclose(f);
+     return 0;
+diff --git a/reinstall b/reinstall
+index 3b2075e..f00aa5e 100755
+--- a/reinstall
++++ b/reinstall
+@@ -1,7 +1,7 @@
+ #!/bin/bash
+ 
+-ts -K
++tsp -K
+ make clean
+ make
+ sudo make uninstall
+ sudo make install
+diff --git a/server.c b/server.c
+index cd7366a..ea24af8 100755
+--- a/server.c
++++ b/server.c
+@@ -6,8 +6,9 @@
+ */
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <sys/select.h>
++#include <sys/stat.h>
+ 
+ #ifdef linux
+ 
+ #include <sys/time.h>
+@@ -175,9 +176,9 @@ void server_main(int notify_fd, char *_path) {
+     process_type = SERVER;
+     max_descriptors = get_max_descriptors();
+ 
+     /* Arbitrary limit, that will block the enqueuing, but should allow space
+-     * for usual ts queries */
++     * for usual tsp queries */
+     max_jobs = max_descriptors - 5;
+ 
+     path = _path;
+ 
+@@ -203,8 +204,11 @@ void server_main(int notify_fd, char *_path) {
+     res = listen(ls, 0);
+     if (res == -1)
+         error("Error listening.");
+ 
++    // chmod ug+rwx
++    chmod(addr.sun_path, S_IRWXU|S_IRWXG);
++
+     install_sigterm_handler();
+ 
+     set_default_maxslots();
+ 
+@@ -418,10 +422,10 @@ client_read(int index) {
+         case KILL_ALL:
+             s_kill_all_jobs(s);
+             break;
+         case LIST:
+-            term_width = m.u.term_width;
+-            s_list(s, m.u.list_format);
++            term_width = m.u.list.term_width;
++            s_list(s, m.u.list.list_format);
+             /* We must actively close, meaning End of Lines */
+             close(s);
+             remove_connection(index);
+             break;
+@@ -474,9 +478,9 @@ client_read(int index) {
+                         /* So remove_connection doesn't call s_removejob again */
+                         client_cs[i].hasjob = 0;
+ 
+                         /* We don't try to remove any notification related to
+-                         * 'i', because it will be for sure a ts client for a job */
++                         * 'i', because it will be for sure a tsp client for a job */
+                         remove_connection(i);
+                     }
+                 }
+             }
+diff --git a/signals.c b/signals.c
+index 931dd54..94eb15b 100755
+--- a/signals.c
++++ b/signals.c
+@@ -36,9 +36,9 @@ void sigint_handler(int s)
+     {
+         kill(signals_child_pid, SIGINT);
+     } else
+     {
+-        /* ts client killed by SIGINT */
++        /* tsp client killed by SIGINT */
+         exit(1);
+     }
+ }
+ 
+diff --git a/testbench.sh b/testbench.sh
+index 830fbba..5f697e7 100755
+--- a/testbench.sh
++++ b/testbench.sh
+@@ -1,159 +1,159 @@
+ #!/bin/bash
+ 
+ # Some simple tasks
+-./ts -K
+-./ts ls
+-./ts -n ls > /dev/null
+-./ts -f ls
+-./ts -nf ls > /dev/null
+-./ts ls
+-./ts cat
+-./ts -w
+-
+-LINES=`./ts -l | grep finished | wc -l`
++./tsp -K
++./tsp ls
++./tsp -n ls > /dev/null
++./tsp -f ls
++./tsp -nf ls > /dev/null
++./tsp ls
++./tsp cat
++./tsp -w
++
++LINES=`./tsp -l | grep finished | wc -l`
+ if [ $LINES -ne 5 ]; then
+   echo "Error in simple tasks."
+   exit 1
+ fi
+ if command -v jq > /dev/null
+ then
+-  LINES_JSON=`./ts -M json | jq '. | length'`
++  LINES_JSON=`./tsp -M json | jq '. | length'`
+   if [ $LINES_JSON -ne 5 ]; then
+     echo "Error in exporting JSON from simple tasks."
+     exit 1
+   fi
+ fi
+ 
+-./ts -K
++./tsp -K
+ 
+ # Check errorlevel 1
+-./ts -f ls
++./tsp -f ls
+ if [ $? -ne 0 ]; then
+   echo "Error in errorlevel 1."
+   exit 1
+ fi
+ # Check errorlevel 2
+-./ts -f patata
++./tsp -f patata
+ if [ $? -eq 0 ]; then
+   echo "Error in errorlevel 2."
+   exit 1
+ fi
+ # Check errorlevel 3
+-./ts patata
++./tsp patata
+ if [ $? -ne 0 ]; then
+   echo "Error in errorlevel 3."
+   exit 1
+ fi
+ # Check errorlevel 4
+-./ts ls
+-./ts -w
++./tsp ls
++./tsp -w
+ if [ $? -ne 0 ]; then
+   echo "Error in errorlevel 4."
+   exit 1
+ fi
+ # Check errorlevel 5
+-./ts patata
+-./ts -w
++./tsp patata
++./tsp -w
+ if [ $? -eq 0 ]; then
+   echo "Error in errorlevel 5."
+   exit 1
+ fi
+-./ts -K
++./tsp -K
+ 
+ # Check urgency
+-./ts sleep 1
+-./ts ls
+-./ts patata
+-./ts -w
++./tsp sleep 1
++./tsp ls
++./tsp patata
++./tsp -w
+ if [ $? -eq 0 ]; then
+   echo "Error in urgency 1."
+   exit 1
+ fi
+ 
+-./ts sleep 1
+-./ts ls
+-./ts patata
+-./ts -u
+-./ts -w
++./tsp sleep 1
++./tsp ls
++./tsp patata
++./tsp -u
++./tsp -w
+ if [ $? -ne 0 ]; then
+   echo "Error in urgency 2."
+   exit 1
+ fi
+ 
+-./ts -K
+-./ts sleep 1
+-./ts ls
+-./ts patata
+-./ts -u 2
+-./ts -w
++./tsp -K
++./tsp sleep 1
++./tsp ls
++./tsp patata
++./tsp -u 2
++./tsp -w
+ if [ $? -ne 0 ]; then
+   echo "Error in urgency 3."
+   exit 1
+ fi
+ 
+ # Test remove job
+-./ts -K
+-./ts sleep 1 &&
+-./ts ls 1 &&
+-./ts ls 2 &&
+-./ts -r 1 &&
+-./ts -r &&
+-./ts sleep 1 &&
+-./ts -n ls > /dev/null &&
+-./ts -n ls 2 > /dev/null &&
+-./ts -r &&
+-./ts -w
++./tsp -K
++./tsp sleep 1 &&
++./tsp ls 1 &&
++./tsp ls 2 &&
++./tsp -r 1 &&
++./tsp -r &&
++./tsp sleep 1 &&
++./tsp -n ls > /dev/null &&
++./tsp -n ls 2 > /dev/null &&
++./tsp -r &&
++./tsp -w
+ if [ $? -ne 0 ]; then
+   echo "Error in remove job."
+   exit 1
+ fi
+ 
+-./ts -K
++./tsp -K
+ 
+ # Test not adding the job to finished.
+-./ts ls
+-./ts -w
+-LINES=`./ts -l | grep finished | wc -l`
++./tsp ls
++./tsp -w
++LINES=`./tsp -l | grep finished | wc -l`
+ if [ $LINES -ne 1 ]; then
+   echo "Error in not adding the job to finished."
+   exit 1
+ fi
+ 
+-./ts -nf ls > /dev/null
+-LINES=`./ts -l | grep finished | wc -l`
++./tsp -nf ls > /dev/null
++LINES=`./tsp -l | grep finished | wc -l`
+ if [ $LINES -ne 1 ]; then
+   echo "Error in not adding the job to finished."
+   exit 1
+ fi
+ 
+-./ts -K
++./tsp -K
+ 
+ # Test clearing the finished jobs
+-./ts ls
+-./ts ls
+-./ts ls
+-./ts -nf ls > /dev/null
+-./ts -C
++./tsp ls
++./tsp ls
++./tsp ls
++./tsp -nf ls > /dev/null
++./tsp -C
+ 
+-LINES=`./ts -l | wc -l`
++LINES=`./tsp -l | wc -l`
+ if [ $LINES -ne 1 ]; then
+   echo "Error clearing the finished jobs."
+   exit 1
+ fi
+ 
+-./ts -K
++./tsp -K
+ 
+ # Test clearing the finished jobs
+ # We start the daemon
+-./ts > /dev/null
+-J1=`./ts sleep 1`
+-J2=`./ts sleep 2`
+-J3=`./ts sleep 3`
+-./ts -U $J2-$J3
++./tsp > /dev/null
++J1=`./tsp sleep 1`
++J2=`./tsp sleep 2`
++J3=`./tsp sleep 3`
++./tsp -U $J2-$J3
+ 
+ if [ $? -ne 0 ]; then
+   echo "Error clearing the finished jobs."
+   exit 1
+ fi
+ 
+-./ts -K
++./tsp -K
+diff --git a/uninstall b/uninstall
+index a05bf8a..97315f3 100755
+--- a/uninstall
++++ b/uninstall
+@@ -1,4 +1,4 @@
+ #!/bin/bash
+ 
+-ts -K
++tsp -K
+ sudo make uninstall
+diff --git a/web/article_linux_com.html b/web/article_linux_com.html
+index a94612b..ccf58d5 100755
+--- a/web/article_linux_com.html
++++ b/web/article_linux_com.html
+@@ -67,24 +67,24 @@ machine and install version 0.6 of Task Spooler from source. Task
+ Spooler does not use autotools to build, so to install it, simply run <code>make; sudo make install</code>. This will install the main Task Spooler command <code>ts</code> and its manual page into /usr/local.</p>
+ 
+ <p>A simple interaction with Task Spooler is shown below. First I add a 
+ new job to the queue and check the status. As the command is a very 
+-simple one, it is likely to have been executed immediately. Executing ts
++simple one, it is likely to have been executed immediately. Executing tsp
+  by itself with no arguments shows the executing queue, including tasks 
+-that have completed. I then use <code>ts -c</code> to get at the stdout of the executed command. The <code>-c</code> option uses <code>cat</code> to display the output file for a task. Using <code>ts -i</code> shows you information about the job. To clear finished jobs from the queue, use the <code>ts -C</code> command, not shown in the example.</p>
++that have completed. I then use <code>tsp -c</code> to get at the stdout of the executed command. The <code>-c</code> option uses <code>cat</code> to display the output file for a task. Using <code>tsp -i</code> shows you information about the job. To clear finished jobs from the queue, use the <code>tsp -C</code> command, not shown in the example.</p>
+ 
+ <pre><div class="code">
+-$ ts echo "hello world"
++$ tsp echo "hello world"
+ 6
+ 
+-$ ts
++$ tsp
+ ID   State      Output               E-Level  Times(r/u/s)   Command [run=0/1]
+ 6    finished   /tmp/ts-out.QoKfo9   0        0.00/0.00/0.00 echo hello world
+ 
+-$ ts -c 6
++$ tsp -c 6
+ hello world
+ 
+-$ ts -i 6
++$ tsp -i 6
+ Command: echo hello world
+ Enqueue time: Tue Jul 22 14:42:22 2008
+ Start time: Tue Jul 22 14:42:22 2008
+ End time: Tue Jul 22 14:42:22 2008
+@@ -103,13 +103,13 @@ create a tarball and use <a href="http://web.archive.org/web/20090227001121/http
+ tarball creation is complete. The popup will be dismissed automatically 
+ after a timeout.</p>
+ 
+ <pre><div class="code">
+-$ ts tar czvf /tmp/mytarball.tar.gz liberror-2.1.80011
++$ tsp tar czvf /tmp/mytarball.tar.gz liberror-2.1.80011
+ 11
+-$ ts notify-send "tarball creation" "the long running tar creation process is complete."
++$ tsp notify-send "tarball creation" "the long running tar creation process is complete."
+ 12
+-$ ts
++$ tsp
+ ID   State      Output               E-Level  Times(r/u/s)   Command [run=0/1]
+ 11   finished   /tmp/ts-out.O6epsS   0        4.64/4.31/0.29 tar czvf /tmp/mytarball.tar.gz liberror-2.1.80011
+ 12   finished   /tmp/ts-out.4KbPSE   0        0.05/0.00/0.02 notify-send tarball creation the long... is complete.
+ </div></pre>
+@@ -122,10 +122,10 @@ possibly execute one task. Task spooler allows you to execute multiple
+ tasks at once from your task queue to take advantage of multicore CPUs. 
+ The <code>-S</code> option allows you to set how many tasks can be executed in parallel from the queue, as shown below.</p>
+ 
+ <pre><div class="code">
+-$ ts -S 2
+-$ ts 
++$ tsp -S 2
++$ tsp
+ ID   State      Output               E-Level  Times(r/u/s)   Command [run=0/2]
+ 6    finished   /tmp/ts-out.QoKfo9   0        0.00/0.00/0.00 echo hello world
+ </div></pre>
+ 
+@@ -146,17 +146,17 @@ normally using <code>ts</code>. I use a subshell to execute the commands by havi
+ Task Spooler is aware that it cannot execute until task 28 is complete. 
+ The second time I view the queue, both tasks have completed.</p>
+ 
+ <pre><div class="code">
+-$ ts bash -c "sleep 10; echo hi"
++$ tsp bash -c "sleep 10; echo hi"
+ 28
+-$ ts -d echo there
++$ tsp -d echo there
+ 29
+-$ ts
++$ tsp
+ ID   State      Output               E-Level  Times(r/u/s)   Command [run=1/2]
+ 28   running    /tmp/ts-out.hKqDva                           bash -c sleep 10; echo hi
+ 29   queued     (file)                                       &amp;&amp; echo there
+-$ ts
++$ tsp
+ ID   State      Output               E-Level  Times(r/u/s)   Command [run=0/2]
+ 28   finished   /tmp/ts-out.hKqDva   0        10.01/0.00/0.01 bash -c sleep 10; echo hi
+ 29   finished   /tmp/ts-out.VDtVp7   0        0.00/0.00/0.00 &amp;&amp; echo there
+ $ cat /tmp/ts-out.hKqDva
+@@ -167,9 +167,9 @@ there
+ 
+ <p>You can also explicitly set dependencies on other tasks as shown below. Because the <code>ts</code>
+  command prints the ID of a new task to the console, the first command 
+ puts that ID into a shell variable for use in the second command. The 
+-second command passes the task ID of the first task to ts, telling it to
++second command passes the task ID of the first task to tsp, telling it to
+  wait for the task with that ID to complete before returning. Because 
+ this is joined with the command we wish to execute with the <code>&amp;&amp;</code> operation, the second command will execute only if the first one has finished <em>and</em> succeeded.</p>
+ 
+ <p>The first time we view the queue you can see that both tasks are running. The first task will be in the <code>sleep</code> command that we used explicitly to slow down its execution. The second command will be executing <code>ts</code>,
+@@ -178,28 +178,28 @@ tracking dependencies this way is that the second command is added to
+ the running queue even though it cannot do anything until the first task
+  is complete.</p>
+ 
+ <pre><div class="code">
+-$ FIRST_TASKID=`ts bash -c "sleep 10; echo hi"`
+-$ ts sh -c "ts -w $FIRST_TASKID &amp;&amp; echo there"
++$ FIRST_TASKID=`tsp bash -c "sleep 10; echo hi"`
++$ tsp sh -c "tsp -w $FIRST_TASKID &amp;&amp; echo there"
+ 25
+-$ ts
++$ tsp
+ ID   State      Output               E-Level  Times(r/u/s)   Command [run=2/2]
+ 24   running    /tmp/ts-out.La9Gmz                           bash -c sleep 10; echo hi
+-25   running    /tmp/ts-out.Zr2n5u                           sh -c ts -w 24 &amp;&amp; echo there
+-$ ts
++25   running    /tmp/ts-out.Zr2n5u                           sh -c tsp -w 24 &amp;&amp; echo there
++$ tsp
+ ID   State      Output               E-Level  Times(r/u/s)   Command [run=0/2]
+ 24   finished   /tmp/ts-out.La9Gmz   0        10.01/0.00/0.00 bash -c sleep 10; echo hi
+-25   finished   /tmp/ts-out.Zr2n5u   0        9.47/0.00/0.01 sh -c ts -w 24 &amp;&amp; echo there
+-$ ts -c 24
++25   finished   /tmp/ts-out.Zr2n5u   0        9.47/0.00/0.01 sh -c tsp -w 24 &amp;&amp; echo there
++$ tsp -c 24
+ hi
+-$ ts -c 25
++$ tsp -c 25
+ there
+ </div></pre>
+ 
+ <h4>Wrap-up</h4>
+ 
+-<p>Task Spooler allows you to convert a shell command to a queued command by simply prepending <code>ts</code> to the command line. One major advantage of using ts over something like the <code>at</code> command is that you can effectively run <code>tail -f</code>
++<p>Task Spooler allows you to convert a shell command to a queued command by simply prepending <code>ts</code> to the command line. One major advantage of using tsp over something like the <code>at</code> command is that you can effectively run <code>tail -f</code>
+  on the output of a running task and also get at the output of completed
+  tasks from the command line. The utility's ability to execute multiple 
+ tasks in parallel is very handy if you are running on a multicore CPU. 
+ Because you can explicitly wait for a task, you can set up very complex 
+@@ -382,9 +382,9 @@ Posted by:                     Anonymous
+        <div class="xar-accent xar-cm-comment">
+ 
+                  
+             
+-              ts - rocks.  I'd been doing my batch queuing the hard way 
++              tsp - rocks.  I'd been doing my batch queuing the hard way
+ for 10 years with scripts, 'cron' and 'at'!  I discovered 'ts' about a 
+ month ago.  I love that you can limit the number of jobs to any number 
+ (like the number of cores your system has) OR have different queues 
+ based on FIFOs or environment variables OR  ... the options are nearly 
+diff --git a/web/index.html b/web/index.html
+index a757dcf..849cb49 100755
+--- a/web/index.html
++++ b/web/index.html
+@@ -46,9 +46,9 @@ it can do something more:
+ <ul>
+ <li>It works in GNU systems with the GNU c compiler (Linux, Darwin, Cygwin,
+ FreeBSD, etc).
+ <li>No configuration at all for a simple queue.
+-<li>Good integration with renice, kill, etc. (through <kbd>`ts -p`</kbd> and
++<li>Good integration with renice, kill, etc. (through <kbd>`tsp -p`</kbd> and
+ process groups).
+ <li>Have any amount of queues identified by name, writting
+ a simple wrapper script for each (I use ts2, tsio, tsprint, etc).
+ <li>Control how many jobs may run at once in any queue (taking profit
+@@ -59,9 +59,9 @@ even after we've lost the <tt>ts</tt> task list.
+ <li>Optional separation of stdout and stderr.
+ </ul>
+ 
+ <p>You can look at an old (but representative)
+-<a href="ts-0.2.1.png">screenshot of ts-0.2.1</a> if you want.</p>
++<a href="ts-0.2.1.png">screenshot of tsp-0.2.1</a> if you want.</p>
+ 
+ <h2>Mailing list</h2>
+ 
+ <p>I created a GoogleGroup for the program. You look for the archive and the
+@@ -79,9 +79,9 @@ you can look at the old
+ 
+ <p>The queue is maintained by a server process. This server process is started
+ if it isn't there already. The communication goes through a unix socket usually in
+ <kbd>/tmp/</kbd>.</p>
+-<p>When the user requests a job (using a ts client), the client waits for the
++<p>When the user requests a job (using a tsp client), the client waits for the
+ server message to know when it can start. When the server allows starting
+ , this client usually forks, and runs the command with the proper environment, because
+ <em>the client</em> runs run the job and not the server, like in 'at' or 'cron'.
+ So, the ulimits, environment, pwd,. apply.</p>
+@@ -125,11 +125,11 @@ platforms</a>.</p>
+ <h2>Manual</h2>
+ <p>Look at its <a href="man_ts.html">manpage</a> (v0.6.1).
+ Here you also have a copy of the help for the same version:</p>
+ <pre>
+-usage: ./ts [action] [-ngfmd] [-L &lt;lab&gt;] [cmd...]
++usage: ./tsp [action] [-ngfmd] [-L &lt;lab&gt;] [cmd...]
+ Env vars:
+-  TS_SOCKET  the path to the unix socket used by the ts command.
++  TS_SOCKET  the path to the unix socket used by the tsp command.
+   TS_MAILTO  where to mail the result (on -m). Local user by default.
+   TS_MAXFINISHED  maximum finished jobs in the queue.
+   TS_ONFINISH  binary called on job end (passes jobid, error, outfile, command).
+   TS_ENV  command called on enqueue. Its output determines the job information.
+@@ -170,9 +170,9 @@ created the mailing list.
+ <li>To the useful, although sometimes uncomfortable, UNIX interface.
+ <li>To Alexander V. Inyukhin, for the debian packages.
+ <li>To Pascal Bleser, for the SuSE packages.
+ <li>To Sergio Ballestrero, who sent code and motivated the development of a
+-multislot version of ts.
++multislot version of tsp.
+ <li>To GNU, an ugly but working and helpful ol' UNIX implementation.
+ </ul>
+ 
+ <address>Author:
+diff --git a/web/ts-0.5.4.ebuild b/web/ts-0.5.4.ebuild
+index d1df259..71443f4 100755
+--- a/web/ts-0.5.4.ebuild
++++ b/web/ts-0.5.4.ebuild
+@@ -30,10 +30,10 @@ src_compile() {
+ }
+ 
+ src_install() {
+ 	exeinto /usr/bin
+-	doexe ts
+-	doman ts.1
++	doexe tsp
++	doman tsp.1
+ 	dodoc Changelog OBJECTIVES PORTABILITY PROTOCOL README TRICKS
+ }
+ 
+ src_test() {
