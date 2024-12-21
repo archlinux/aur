@@ -6,7 +6,7 @@
 
 pkgname=dlib-cuda-git
 _pkgname=dlib
-pkgver=19.24.6+r8288+gdfbee6d3c
+pkgver=19.24.6+r8289+g230c0b019
 pkgrel=2
 pkgdesc="Cross-platform C++ library using contract programming and modern C++ techniques"
 arch=('x86_64')
