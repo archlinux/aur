@@ -3,7 +3,7 @@
 
 pkgname=napcatqq-git
 _pkgname=NapCatQQ
-pkgver=r3374.c25b9f86
+pkgver=r3380.8a089c84
 pkgrel=1
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
 arch=('x86_64'
@@ -28,12 +28,10 @@ pkgver() {
 build() {
     echo -e "\e[32m注意：构建时间可能会有点长，请耐心等待...\e[0m"
     cd "${srcdir}/${_pkgname}"
-    
-    npm i
-    cd napcat.webui && npm i && cd ..
-    npm run build:shell
-    npm run depend
-    rm package-lock.json
+
+    npm i && cd napcat.webui && npm i && cd .. || exit 1
+    npm run build:shell && cd dist && npm i --omit=dev || exit 1
+    cd ..
 }
 
 package() {
@@ -77,15 +75,76 @@ function get_real_home() {
     echo "/home/$real_user"
 }
 
+function create_config_if_missing() {
+    local real_home=$(get_real_home)
+    local conf_dir="${real_home}/.config/QQ/versions"
+    local conf="${conf_dir}/config.json"
+
+    if [ ! -f "$conf" ]; then
+        log "未找到配置文件，正在创建..."
+        log "配置目录: ${conf_dir}"
+        
+        # 确保目录权限正确
+        if [ -d "${conf_dir}" ]; then
+            log "修正目录权限..."
+            chown -R $(logname):$(logname) "${real_home}/.config/QQ"
+        fi
+        
+        log "启动QQ进程..."
+        sudo -u $(logname) xvfb-run -a linuxqq >/dev/null 2>&1 &
+        QQ_PID=$!
+        log "QQ进程ID: ${QQ_PID}"
+        
+        if [ -f "$conf" ]; then
+            log "配置文件立即创建成功"
+            kill $QQ_PID 2>/dev/null
+            wait $QQ_PID 2>/dev/null
+            log "配置文件创建成功"
+            return 0
+        fi
+        
+        log "开始等待配置文件生成..."
+        for i in {1..10}; do
+            log "第 ${i} 次检查..."
+            if [ -f "$conf" ]; then
+                log "检测到配置文件"
+                kill $QQ_PID 2>/dev/null
+                wait $QQ_PID 2>/dev/null
+                log "配置文件创建成功"
+                return 0
+            fi
+            sleep 1
+        done
+        
+        log "准备结束QQ进程..."
+        kill $QQ_PID 2>/dev/null
+        wait $QQ_PID 2>/dev/null
+        log "QQ进程已结束"
+        
+        if [ ! -f "$conf" ]; then
+            log "等待配置文件生成超时"
+            log "当前目录内容:"
+            ls -la "${conf_dir}" 2>/dev/null || log "无法访问配置目录"
+            log "xvfb-run 状态: $(which xvfb-run || echo '未找到')"
+            log "linuxqq 状态: $(which linuxqq || echo '未找到')"
+            log "当前用户: $(whoami)"
+            log "目标用户: $(logname)"
+            return 1
+        fi
+    fi
+}
+
 function update_configs() {
     local target_ver=$(jq -r '.linuxVersion' /opt/QQ/resources/app/napcat/qqnt.json)
     local build_id=$(jq -r '.linuxVerHash' /opt/QQ/resources/app/napcat/qqnt.json)
     local real_home=$(get_real_home)
+    local conf_dir="${real_home}/.config/QQ/versions"
+    local conf="${conf_dir}/config.json"
 
     log "正在更新用户QQ配置..."
     
-    local conf_dir="${real_home}/.config/QQ/versions"
-    local conf="${conf_dir}/config.json"
+    # 如果配置文件不存在，尝试创建
+    create_config_if_missing
     
     if [ -f "$conf" ]; then
         log "正在修改配置文件: ${conf}"
@@ -97,7 +156,8 @@ function update_configs() {
         mv "${conf}.tmp" "${conf}" || { log "QQ配置更新失败!"; exit 1; }
         log "更新用户QQ配置成功"
     else
-        log "未找到QQ配置文件: ${conf}"
+        log "无法创建或找到QQ配置文件: ${conf}"
+        exit 1
     fi
 }
 
@@ -130,7 +190,7 @@ esac
 EOF
 
 
-    install -Dm0644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-config.hook" << 'EOF'
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/50-napcatqq-config.hook" << 'EOF'
 [Trigger]
 Type=Package
 Operation=Install
@@ -144,32 +204,7 @@ When=PostTransaction
 Exec=/bin/sh -c '/opt/QQ/resources/app/napcat/update-config.sh update'
 EOF
 
-
-install -Dm0644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-config-restore.hook" << 'EOF'
-[Trigger]
-Type=Package
-Operation=Remove
-Target=napcatqq-git
-
-[Action]
-Description=Restore QQ config.json
-When=PreTransaction
-Exec=/bin/sh -c '/opt/QQ/resources/app/napcat/update-config.sh restore'
-EOF
-
-    install -Dm0644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-permission.hook" << 'EOF'
-[Trigger]
-Type=Package
-Operation=Install
-Target=napcatqq-git
-
-[Action]
-Description=Fix NapCat Permissions
-When=PostTransaction
-Exec=/bin/sh -c 'chown -R $(logname):$(logname) /opt/QQ/resources/app/napcat /opt/QQ/resources/app/loadNapCat.js'
-EOF
-
-    install -Dm0644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-patch.hook" << 'EOF'
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/70-napcatqq-patch.hook" << 'EOF'
 [Trigger]
 Type=Package
 Operation=Install
@@ -193,5 +228,29 @@ Target=napcatqq-git
 Description=Unpatch QQ For NapCat
 When=PreTransaction
 Exec=/bin/sh -c '/opt/QQ/resources/app/napcat/napcatqq-patcher.sh unpatch && rm -rf /opt/QQ/resources/app/napcat && echo -e "\e[32m取消修补成功，但是仍旧建议重装linuxqq\e[0m";'
+EOF
+
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-config-restore.hook" << 'EOF'
+[Trigger]
+Type=Package
+Operation=Remove
+Target=napcatqq-git
+
+[Action]
+Description=Restore QQ config.json
+When=PreTransaction
+Exec=/bin/sh -c '/opt/QQ/resources/app/napcat/update-config.sh restore'
+EOF
+
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-permission.hook" << 'EOF'
+[Trigger]
+Type=Package
+Operation=Install
+Target=napcatqq-git
+
+[Action]
+Description=Fix NapCat Permissions
+When=PostTransaction
+Exec=/bin/sh -c 'chown -R $(logname):$(logname) /opt/QQ/resources/app/napcat /opt/QQ/resources/app/loadNapCat.js'
 EOF
 }
