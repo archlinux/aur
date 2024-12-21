@@ -6,7 +6,7 @@ pkgver=3.4.4.r0.gc201d9e
 pkgrel=1
 pkgdesc="A simple and easy to use image viewer. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('xapp' 'gtk3' 'cinnamon-desktop' 'libpeas' 'libexif' 'libjpeg-turbo'
          'exempi')
 makedepends=(
