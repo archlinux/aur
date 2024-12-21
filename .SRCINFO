@@ -1,12 +1,13 @@
 pkgbase = porkbun-ddns
 	pkgdesc = An unoffical DDNS-Client for Porkbun Domains
 	pkgver = 1.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mietzen/porkbun-ddns
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
+	depends = python-xdg-base-dirs
 	source = https://github.com/mietzen/porkbun-ddns/archive/refs/tags/v1.1.9.tar.gz
 	sha256sums = 94a4e74d98da543d947714816420f606e6ad5eb0a48cb470fc974d7c3d748bf7
 
