@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=dotbot
-pkgver=1.20.3
+pkgver=1.20.4
 pkgrel=1
 pkgdesc="A tool that bootstraps your dotfiles"
 arch=(any)
@@ -19,19 +19,8 @@ makedepends=(
   python-wheel
 )
 checkdepends=(python-pytest)
-source=(
-  "git+$url.git#tag=v$pkgver"
-  "conftest-remove-broken-assert.patch"
-)
-sha256sums=(
-  'b4619907b9e2cfce1880c9ee36603f3e38543b152e94941d7c0c42445317b9d9'
-  '60cdeaa5b43fd8796623e72ca2b8900a178774eb3988b6943a592fcbecca19ea'
-)
-
-prepare() {
-  cd "$pkgname"
-  patch -Np1 -i ../conftest-remove-broken-assert.patch
-}
+source=("git+$url.git#tag=v$pkgver")
+sha256sums=('9cb8ff0227c0122fea2e3d2c85481f38c70eb9c089fe659e317d85c995ba43a8')
 
 build() {
   cd "$pkgname"
