@@ -1,6 +1,6 @@
 pkgbase = python-opentelemetry
 	pkgdesc = OpenTelemetry Python API and SDK
-	pkgver = 1.28.2
+	pkgver = 1.29.0
 	pkgrel = 1
 	url = https://github.com/open-telemetry/opentelemetry-python
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = python-opentelemetry
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = python-opentelemetry-1.28.2.tar.gz::https://github.com/open-telemetry/opentelemetry-python/archive/v1.28.2.tar.gz
-	sha256sums = ef50ecf79b71e3af260695c8652e0bf9feadc6de69b489061c5f33a2ca040f1e
+	source = python-opentelemetry-1.29.0.tar.gz::https://github.com/open-telemetry/opentelemetry-python/archive/v1.29.0.tar.gz
+	sha256sums = 0f9c9d317c99b4557d0434c6760dc578631e0deac2ad7d1d1ddc694571f3e3da
 
 pkgname = python-opentelemetry-opentracing-shim
 	pkgdesc = OpenTracing Shim for OpenTelemetry
