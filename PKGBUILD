@@ -2,7 +2,7 @@
 
 _pkgname="flutter"
 pkgname="$_pkgname-bin"
-pkgver=3.27.0
+pkgver=3.27.1
 pkgrel=1
 pkgdesc="Cross platform widget toolkit for Dart (monolithic)"
 arch=("x86_64")
@@ -61,7 +61,7 @@ source=(
 )
 
 sha256sums=(
-  'c0592133cc61d7c4d42762287de84b7e0bafdd3fd62eb26eaadb342c4309d541'
+  '61497eb64cd7b3aa99ca9911ccd921c8dab79afd909ca1c9ff9546067ebcf6ca'
 )
 
 prepare() {
@@ -76,9 +76,7 @@ package() {
     lld
     llvm
     ninja
-
-    # AUR
-    unionfs-fuse
+    unionfs-fuse # AUR
   )
 
   # main files
