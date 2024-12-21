@@ -1,7 +1,7 @@
 # Maintainer: witt <1989161762 at qq dot com>
 
 pkgname=dbeaver-jvm-hook
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="A hook for dbeaver to support native jvm"
 arch=('any')
@@ -16,7 +16,7 @@ install="dbeaver-jvm-hook.install"
 source=(
   "dbeaver-jvm-setting.hook" "dbeaver-jvm-setting.sh"
 )
-sha256sums=('ec6e7794395f35613c3be6d28d8a9c7125277729e29e37f0e42b18e0b3b539c6'
+sha256sums=('d0afae5f2a9c597416cc09047af6fcb65c7675e8b53ca0b5d65281b806ee497e'
             'e42a84ee33568e84d93d3a5aa26c1a6443ea6de5d274d00d46930709b3ab3215')
 
 

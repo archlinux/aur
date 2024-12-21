@@ -1,6 +1,9 @@
 list_conf_files(){
   ls \
   /usr/share/dbeaver/dbeaver.ini \
+  /usr/share/dbeaver-ce/dbeaver.ini \
+  /usr/lib/dbeaver-ce/dbeaver.ini \
+  /usr/lib/dbeaver/dbeaver.ini \
   2>/dev/null
 }
 

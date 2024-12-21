@@ -3,6 +3,9 @@ Type = Path
 Operation = Install
 Operation = Upgrade
 Target = usr/share/dbeaver/dbeaver.ini
+Target = usr/lib/dbeaver/dbeaver.ini
+Target = usr/share/dbeaver-ce/dbeaver.ini
+Target = usr/lib/dbeaver-ce/dbeaver.ini
 
 [Action]
 Description = Setting native jvm path for DBeaver...
