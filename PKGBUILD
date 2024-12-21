@@ -1,10 +1,10 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 # Contributor: Hao Long <aur@esd.cc>
 
 pkgname=archivebox
 _pkgname=ArchiveBox
-pkgver=0.7.2
-pkgrel=4
+pkgver=0.7.3
+pkgrel=1
 pkgdesc="Open source self-hosted web archiving"
 arch=(any)
 url="https://github.com/ArchiveBox/ArchiveBox"
@@ -35,7 +35,7 @@ depends=(
 makedepends=(
   python-build
   python-installer
-  python-pdm
+  python-pdm-backend
   python-setuptools
   python-wheel
 )
@@ -43,11 +43,10 @@ checkdepends=(
   python-bottle
   python-pytest
 )
-_commit=315c9f3844d63f897e1c73c3bbbab7bf9f3e0c11
 _django_version=3.1.14
 _django_extensions_version=3.1.5
 source=(
-  "git+$url.git#commit=$_commit"
+  "git+$url.git#tag=v$pkgver"
   "git+https://github.com/jbittel/base32-crockford.git"
   "git+https://github.com/jazzband/django-taggit.git"
   "git+https://github.com/tapanpandita/pocket.git"
@@ -56,7 +55,7 @@ source=(
   "django-extensions-$_django_extensions_version::https://github.com/django-extensions/django-extensions/archive/$_django_extensions_version.tar.gz"
 )
 sha256sums=(
-  'SKIP'
+  '5a530b3e86332db33b24b675e98d9b8b3d0bd9148095aa3025495952c1d16834'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -65,17 +64,8 @@ sha256sums=(
   'a29b022fb6728678ec5f769d78eff4d8b0c0f4beb15f9b8392726d4f0bda9031'
 )
 
-_archive="$_pkgname"
-
-pkgver() {
-  cd "$_archive"
-
-  git describe --tags | sed 's/^v//'
-}
-
 prepare() {
-  cd "$_archive"
-
+  cd "$_pkgname"
   git submodule init
   git config --remove-section submodule.docs
   git config --remove-section submodule.deb_dist
@@ -102,48 +92,41 @@ prepare() {
     echo ']'
   } >> pyproject.toml
 
-  rm -rf venv
+  rm -vrf venv
   python -m venv --system-site-packages --without-pip venv
 }
 
 build() {
-  cd "$srcdir/django-$_django_version"
-  python -m build --wheel --no-isolation
-  python -m installer --destdir="$srcdir/$_archive/venv" --prefix=/ dist/*.whl
+  cd "$_pkgname"
+  python -m build --wheel --no-isolation ../django-$_django_version
+  ./venv/bin/python -m installer ../django-$_django_version/dist/*.whl
 
-  cd "$srcdir/django-extensions-$_django_extensions_version"
-  python -m build --wheel --no-isolation
-  python -m installer --destdir="$srcdir/$_archive/venv" --prefix=/ dist/*.whl
+  python -m build --wheel --no-isolation ../django-extensions-$_django_extensions_version
+  ./venv/bin/python -m installer ../django-extensions-$_django_extensions_version/dist/*.whl
 
-  cd "$srcdir/$_archive"
   python -m build --wheel --no-isolation
-  python -m installer --destdir=venv --prefix=/ dist/*.whl
+  ./venv/bin/python -m installer dist/*.whl
 }
 
 check() {
-  cd "$_archive"
-
-  rm -rf test_venv
-  cp -a venv test_venv
-  sed -i "s|#!/bin/python|#!$PWD/test_venv/bin/python|" test_venv/bin/archivebox
-  export PATH="$PWD/test_venv/bin:$PATH"
-  export PYTHONPATH="$PWD/test_venv/lib/python3.11/site-packages:$PYTHONPATH"
-
-  pytest tests
+  cd "$_pkgname"
+  rm -vrf venv-test
+  cp -va venv venv-test
+  sed -i "s|#!/bin/python|#!$PWD/venv-test/bin/python|" venv-test/bin/archivebox
+  PATH="$PWD/venv-test/bin:$PATH" ./venv-test/bin/python -m pytest tests
 }
 
 package() {
-  cd "$_archive"
-
-  install -dm755 "$pkgdir/opt/archivebox"
-  cp -a -t "$pkgdir/opt/archivebox" venv/*
+  cd "$_pkgname"
+  install -vdm755 "$pkgdir/opt/archivebox"
+  cp -va -t "$pkgdir/opt/archivebox" venv/*
   sed -i 's|#!/usr/bin/python|#!/opt/archivebox/bin/python|' "$pkgdir/opt/archivebox/bin/archivebox"
 
-  install -dm755 "$pkgdir/usr/bin"
-  ln -s /opt/archivebox/bin/archivebox "$pkgdir/usr/bin/archivebox"
+  install -vdm755 "$pkgdir/usr/bin"
+  ln -vs /opt/archivebox/bin/archivebox "$pkgdir/usr/bin/archivebox"
 
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 
   # Silence namcap warning
-  rm -r "$pkgdir/opt/archivebox/include"
+  rm -vr "$pkgdir/opt/archivebox/include"
 }
