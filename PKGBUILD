@@ -4,7 +4,7 @@ pkgbase='python-svg2tikz'
 pkgname=('python-svg2tikz')
 _module='svg2tikz'
 pkgver='3.2.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for converting SVG graphics to TikZ/PGF code"
 url="http://xyz2tex.github.io/svg2tikz/"
 depends=('python')
@@ -26,4 +26,6 @@ package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -m755 -Dt "${pkgdir}/usr/share/inkscape/extensions" ${_module}/*.py
+    install -m644 -Dt "${pkgdir}/usr/share/inkscape/extensions" ${_module}/*.inx
 }
