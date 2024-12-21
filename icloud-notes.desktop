@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=iCloud Notes
+Type=Application
+Comment=An Unofficial desktop app for iCloud Notes
+Exec=/usr/bin/icloud-notes
+Terminal=false
+Icon=icloud-notes
+Categories=Network;TextTools;Office;GTK;GNOME
+StartupWMClass=icloud-notes
+

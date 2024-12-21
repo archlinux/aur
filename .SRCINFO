@@ -1,0 +1,20 @@
+pkgbase = icloud-notes-git
+	pkgdesc = Unofficial iCloud Notes Desktop App
+	pkgver = 1.2.0.r0.g6635f9d
+	pkgrel = 1
+	url = https://github.com/swe-himelrana/icloud-notes
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = asar
+	makedepends = imagemagick
+	depends = electron30
+	depends = hicolor-icon-theme
+	depends = sh
+	source = icloud-notes::git+https://github.com/swe-himelrana/icloud-notes#branch=master
+	source = icloud-notes.desktop
+	sha256sums = SKIP
+	sha256sums = 4a511005e2cbee1debf3ebcd34278fe3745c9d6ffd6548c457e9a6945b6a0806
+
+pkgname = icloud-notes-git
