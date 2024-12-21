@@ -2,8 +2,8 @@
 
 pkgname=nextcloud-talk-desktop-bin
 _pkgname=nextcloud-talk-desktop
-pkgver=1.0.0
-_pkgver=1.0.0
+pkgver=1.0.1
+_pkgver=1.0.1
 pkgrel=1
 pkgdesc="Nextcloud Talk Desktop client based on Nextcloud Talk web application bundling"
 arch=('x86_64')
@@ -22,13 +22,13 @@ source=(https://github.com/nextcloud-releases/talk-desktop/releases/download/v${
         # nextcloud-talk.svg::'https://github.com/nextcloud/talk-desktop/blob/main/img/talk-icon-rounded.svg'
 
         
-sha256sums=('87df36f418f581795f84b4d7d3794373faa0238eb98efab9f9cae512162af78e'
+sha256sums=('5264490fb83fd53131f099fefdbc41b555c0714170b66ea5e4545c3bf868f843'
             'c657fd6071464318bc63ea09844470efc3d4210f179ed2deb8efee53052dac44'
             '8be5aed4243e7e25d46f41d68ebf7b3f85ebc4925e98391ad7e55fa98f2b83cb'
             '6da300342f6802ec1328c488b1c4786b87a462c9d2cc05b0ff55b1a03fbf32eb')
 
 prepare() {
-  # Avoid file name with space in /opt
+  # Avoid having a whitespace in the name of the binary
   mv "${srcdir}/Nextcloud Talk-linux-x64/Nextcloud Talk" "${srcdir}/Nextcloud Talk-linux-x64/nextcloud-talk"
 }
 
