@@ -17,6 +17,7 @@ depends=(
     'dart-sass'
     'wl-clipboard'
     'upower'
+    'gvfs'
     # aur:
     'aylurs-gtk-shell-git'
 )
@@ -37,6 +38,8 @@ optdepends=(
     'btop: To view system resource usage'
     'gpu-screen-recorder: To use the built in screen recorder'
     'hyprpicker: To use the preset color picker shortcut'
+    'hypridle: To use hyprlands idle inhibitor'
+    'hyprsunset: To enable the hyprland blue light filter'
     'matugen-bin: To use wallpaper based color schemes'
 )
 source=('git+https://github.com/Jas-SinghFSU/HyprPanel.git#branch=master')
