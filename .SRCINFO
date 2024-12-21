@@ -1,12 +1,11 @@
 pkgbase = hid-retrobit-dkms
 	pkgdesc = kernel module to support useful but broken Retrobit console control adapters
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/retuxx/hid-retrobit
 	install = hid-retrobit-dkms.install
-	arch = i686
-	arch = x86_64
-	license = GPL
+	arch = any
+	license = GPL-3.0-or-later
 	depends = dkms
 	optdepends = linux-headers: needed if using archlinux default kernel
 	optdepends = linux-lts-headers: needed if using the archlinux lts kernel
@@ -17,4 +16,3 @@ pkgbase = hid-retrobit-dkms
 	sha256sums = ead8fc52f79be75f0b47ab412a880dc895c60dc5effc02d02264fe2b77862370
 
 pkgname = hid-retrobit-dkms
-

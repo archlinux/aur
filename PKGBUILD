@@ -1,16 +1,13 @@
 # Maintainer: John K. Luebs <https://github.com/jkl1337>
 
-# I maintain this on github, feel free to submit a pull request to
-# https://github.com/jkl1337/packages-archlinux.git
-
 pkgname=hid-retrobit-dkms
 _pkgname=hid-retrobit
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="kernel module to support useful but broken Retrobit console control adapters"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/retuxx/hid-retrobit"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('dkms')
 optdepends=('linux-headers: needed if using archlinux default kernel'
             'linux-lts-headers: needed if using the archlinux lts kernel')
