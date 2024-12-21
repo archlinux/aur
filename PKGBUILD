@@ -10,7 +10,7 @@ optdepends=('fish: for fish shell integration')
 provides=('spm')
 conflicts=('spm')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v.$pkgver/spm-$pkgver.tar.gz")
-sha256sums=('1babf186ec12315adec9631185cd502667c807c19ff8de7dc79184def193719c')
+sha256sums=('931eca7b7c8efa1b3ffd3ac0c4610d034539ee2e69cd2e2542aa0ddd7f161363')
 
 package() {
     cd "$srcdir"
