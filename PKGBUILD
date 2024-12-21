@@ -1,13 +1,13 @@
 pkgname=distribution
-pkgver=v3.0.0rc.2
-pkgrel=1
+pkgver=3.0.0rc2
+pkgrel=2
 pkgdesc="the Open Source Registry implementation for storing and distributing container images using the OCI Distribution Specification"
 arch=(x86_64)
 url="https://github.com/distribution/distribution/"
 license=('GPL')
 depends=()
 makedepends=('go' 'git')
-source=("git+https://github.com/distribution/distribution.git#tag=${pkgver/rc/-rc}"
+source=("git+https://github.com/distribution/distribution.git#tag=v${pkgver/rc/-rc.}"
 	registry.sysuser
 	registry.service
 	registry.tmpfiles
