@@ -1,6 +1,12 @@
 Changelog
 =========
 
+**[5.10.0] ----- 2024-10-20** ::
+
+	    Use ipaddress in place of netaddr
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[5.9.3] ----- 2024-09-07** ::
 
 	    rst continued (gh seems different to sphinx)
