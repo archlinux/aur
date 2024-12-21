@@ -1,0 +1,60 @@
+# Maintainer: DeltaCopy <7x0bb03yq@mozmail.com>
+# Description: Uses the precompiled Archlinux build asset from https://github.com/Bali10050/Darkly/releases
+
+# basic info
+pkgname="darkly-bin"
+pkgver=0.5.13
+pkgrel=1
+pkgdesc="Bali10050's fork of Lightly (A modern style for qt applications)"
+url="https://github.com/Bali10050/darkly"
+arch=('x86_64' 'aarch64')
+license=("GPL-2.0-or-later")
+
+options=(!emptydirs !debug)
+
+source=(
+  "${url}/releases/download/v${pkgver}/darkly-${pkgver}-x86_64.pkg.zst"
+
+)
+
+sha256sums=(
+  'ee3eac7b65668f0b09ead51f9f0ef4f9a7661bcccf8652949f28ef121adbd40b'
+)
+
+# KF6/Qt6
+depends_kf6=(
+  'kdecoration'
+  'qt6-declarative'
+  'kcoreaddons'
+  'kcmutils'
+  'kcolorscheme'
+  'kconfig'
+  'kguiaddons'
+  'kiconthemes'
+  'kwindowsystem'
+)
+
+# KF5/QT5 for backward compatibility
+depends_kf5=(
+    'kcmutils5'
+    'frameworkintegration5'
+    'kconfigwidgets5'
+    'kiconthemes5'
+    'kirigami2'
+    'kwindowsystem5'
+)
+
+depends=("${depends_kf6[@]}" "${depends_kf5[@]}")
+
+conflicts=(
+  lightly-kf6
+  lightly-qt
+  lightly-qt6
+  lightly-qt6-bin
+  darkly
+)
+
+
+package() (
+  cp -R "${srcdir}/usr/" "${pkgdir}/usr"
+)
