@@ -1,7 +1,7 @@
 pkgname=wee-slack
-pkgver=2.10.2
-pkgrel=1
 pkgdesc='A WeeChat plugin for Slack'
+pkgver=2.11.0
+pkgrel=1
 url='https://github.com/wee-slack/wee-slack/'
 arch=('any')
 license=('MIT')
@@ -15,7 +15,7 @@ source=(
 )
 
 sha512sums=(
-  '62968e95608623adfa77c1d1cb38dd29f609492c05bb65e9cdfe49461c33979cdba9345f6b190825073a4cbd391e834556870b6c35fd4c3b7ac299d61bc35071'
+  '3c30b43711fd6a18bfa25631224f6fdeb48c952b1a7ee259deb4f83f28ec63e1e9ed51deea6437fb1fa08ad7235bbdaaf877d2d87a4a9a7517fa5a2a66a71425'
 )
 
 package() {
