@@ -58,6 +58,7 @@ conflicts=(
   lightly-qt
   lightly-qt6-bin
   lightly-qt6
+  darkly-bin
 )
 
 pkgver() {

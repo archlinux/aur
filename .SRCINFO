@@ -27,6 +27,7 @@ pkgbase = darkly
 	conflicts = lightly-kf6
 	conflicts = lightly-qt
 	conflicts = lightly-qt6-bin
+	conflicts = darkly-bin
 	options = !emptydirs
 	options = !debug
 	source = darkly.git::git+https://github.com/Bali10050/darkly.git#tag=v0.5.13
