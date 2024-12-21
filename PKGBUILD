@@ -2,14 +2,20 @@
 
 pkgname=gmlgcd
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The gemlog comment daemon'
 arch=('x86_64' 'aarch64')
 url='https://git.sr.ht/~shtrophic/gmlgcd'
 license=('AGPL-3.0-or-later')
 makedepends=('meson' 'scdoc')
 checkdepends=('fish')
-depends=('libevent' 'libbsd' 'confuse' 'imsg-compat')
+depends=(
+    'confuse'
+    'curl'
+    'imsg-compat'
+    'libbsd'
+    'libevent'
+)
 
 backup=('etc/gmlgcd.conf' 'etc/gmlgcd.conf.d/help-template.gmi')
 source=(
