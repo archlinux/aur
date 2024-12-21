@@ -1,6 +1,6 @@
 pkgbase = nagios
 	pkgdesc = Nagios is an open source host, service and network monitoring program.
-	pkgver = 4.5.8
+	pkgver = 4.5.9
 	pkgrel = 1
 	url = http://www.nagios.org
 	install = nagios.install
@@ -19,11 +19,11 @@ pkgbase = nagios
 	optdepends = php
 	optdepends = php-fpm
 	optdepends = fcgiwrap
-	source = https://github.com/NagiosEnterprises/nagioscore/releases/download/nagios-4.5.8/nagios-4.5.8.tar.gz
+	source = https://github.com/NagiosEnterprises/nagioscore/releases/download/nagios-4.5.9/nagios-4.5.9.tar.gz
 	source = nagios.install
-	md5sums = 66b73bfc148c0763a64bbf849595d818
+	md5sums = dea21ad245e301fb05d3e8408499e001
 	md5sums = e11fa7de430ed858269f82e179fc87ca
-	sha1sums = 6dc0f0b46682682e2f318b5562fc77709f949b20
+	sha1sums = 894857e733bccf6127c65f4d64a4562d03f52fb0
 	sha1sums = 04008cee208226e60b099550bd9ec7dc78cb1457
 
 pkgname = nagios
