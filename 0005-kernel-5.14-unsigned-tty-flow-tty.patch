@@ -1,6 +1,6 @@
-diff -pNaru5 perle-serial-3.9.2.orig-0005/pserial/perle-serial.c perle-serial-3.9.2/pserial/perle-serial.c
---- perle-serial-3.9.2.orig-0005/pserial/perle-serial.c	2021-09-14 11:28:43.064657062 -0400
-+++ perle-serial-3.9.2/pserial/perle-serial.c	2021-09-14 11:31:16.193566625 -0400
+diff -pNaru5 a/pserial/perle-serial.c b/pserial/perle-serial.c
+--- a/pserial/perle-serial.c	2021-09-14 11:28:43.064657062 -0400
++++ b/pserial/perle-serial.c	2021-09-14 11:31:16.193566625 -0400
 @@ -947,10 +947,14 @@ static _INLINE_ void receive_chars(struc
  #else
  	tty_flip_buffer_push(tty);

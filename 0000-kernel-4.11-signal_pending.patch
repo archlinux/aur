@@ -1,6 +1,6 @@
-diff -pNaru5 perle-serial-3.9.2.orig-0000/pparport26/pparport_pc.c perle-serial-3.9.2/pparport26/pparport_pc.c
---- perle-serial-3.9.2.orig-0000/pparport26/pparport_pc.c	2018-06-05 21:24:34.315840847 -0400
-+++ perle-serial-3.9.2/pparport26/pparport_pc.c	2018-06-05 21:24:10.199248040 -0400
+diff -pNaru5 a/pparport26/pparport_pc.c b/pparport26/pparport_pc.c
+--- a/pparport26/pparport_pc.c	2018-06-05 21:24:34.315840847 -0400
++++ b/pparport26/pparport_pc.c	2018-06-05 21:24:10.199248040 -0400
 @@ -66,10 +66,13 @@
  #include <asm/dma.h>
  #include <asm/uaccess.h>

@@ -1,0 +1,19 @@
+diff -pNaru5 a/pserial/perle-serial.c b/pserial/perle-serial.c
+--- a/pserial/perle-serial.c	2024-12-21 02:02:14.885185149 -0500
++++ b/pserial/perle-serial.c	2024-12-21 02:04:46.319942557 -0500
+@@ -2264,11 +2264,15 @@ static void ps_flush_buffer(struct tty_s
+ 
+ /*
+  * This function is used to send a high-priority XON/XOFF character to
+  * the device
+  */
++#if (LINUX_VERSION_CODE <  KERNEL_VERSION(6,8,0))
+ static void ps_send_xchar(struct tty_struct *tty, char ch)
++#else
++static void ps_send_xchar(struct tty_struct *tty, u8 ch)
++#endif
+ {
+ 	struct ps_async_struct *info = (struct ps_async_struct *)tty->driver_data;
+ 
+ 	if (ps_paranoia_check(info, tty, "ps_send_xchar"))
+ 		return;

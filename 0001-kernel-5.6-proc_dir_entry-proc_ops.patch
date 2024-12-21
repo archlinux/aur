@@ -1,6 +1,6 @@
-diff -pNaru5 perle-serial-3.9.2.orig-0001/pserial/perle-serial.c perle-serial-3.9.2/pserial/perle-serial.c
---- perle-serial-3.9.2.orig-0001/pserial/perle-serial.c	2018-03-26 14:58:05.000000000 -0400
-+++ perle-serial-3.9.2/pserial/perle-serial.c	2020-05-21 01:14:50.996007456 -0400
+diff -pNaru5 a/pserial/perle-serial.c b/pserial/perle-serial.c
+--- a/pserial/perle-serial.c	2018-03-26 14:58:05.000000000 -0400
++++ b/pserial/perle-serial.c	2020-05-21 01:14:50.996007456 -0400
 @@ -463,19 +463,28 @@ static struct proc_dir_entry *ps_proc_fi
  static int ps_read_proc(struct seq_file *m, void *v);
  static int ps_open_proc(struct inode *inode, struct file *file)

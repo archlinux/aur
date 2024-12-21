@@ -3,7 +3,7 @@
 _opt_DKMS=1           # This can be toggled between installs
 _opt_PARALLEL=0       # 0 for SPEED without parallel port, 1 to enable parallel support
 
-#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/6.6.*/modules.alias))"
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/6.12.*/modules.alias))"
 
 # Todo: /dev/ttyPS* should be created dynamically instead of all at once
 
@@ -81,7 +81,7 @@ pkgname='perle-serial'
 #_pkgver='3.9.0-14'
 _pkgver='3.9.2-4'
 pkgver="${_pkgver//-/.}"
-pkgrel='6'
+pkgrel='7'
 pkgdesc='kernel module driver for Perle UltraPort SI Express PCI-RAS modem SPEED LE multi I/O serial parallel RS-232 422 485 port'
 arch=('i686' 'x86_64')
 url='https://www.perle.com/downloads/mp_speedle.shtml'
@@ -103,29 +103,32 @@ source=(
   '0007-kernel-6.0-serial_UART_XMIT_SIZE.patch'
   '0008-kernel-6.0-set_termios-const-ktermios.patch'
   '0009-kernel-6.6-struct-tty_operations-write-size_t.patch'
+  '0010-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch'
 )
 md5sums=('85e9617af62fcab55c684fa8e4b26987'
-         '52f87acfeb5f5820a74ad6aa74d18acf'
-         '6dac46dc8f094dd8f8b760a68414bd0b'
-         'f97869736f93fb70b9f034106697c0a2'
-         'd85366f7566046dbd580850fbfa640e0'
-         '7d7c57fc3a46599aebede7f940c5c5a8'
-         '47a81ca7f524a3e86abb72ae872bac74'
-         '128ee03b62d13384a249f6f6244d0214'
+         '93b4c408f698d4325bc7751578e53247'
+         'c38711116d939add14f84bed674baeda'
+         '39c8725a21b950ea6d07ed639b958b72'
+         '189bc46c4c22e217d2349c68e1cd7743'
+         '338ba0a74a25b0eeac54a608bfa206ad'
+         '4694074701ecc72bf777360d72ad3eba'
+         '585d4a648477cabba8da29c92176e348'
          '3058470a7727ad05608a292d4850e052'
          'ac437dd477d593c042af2752d1dfaf33'
-         'b83c590138dcb1c23ad523bcbeb7ad72')
+         'b83c590138dcb1c23ad523bcbeb7ad72'
+         'e3e3ad93ef2f7709bf48da1180b7cdd5')
 sha256sums=('d9d61a941ecfd2ff41d5450557eb9071d934497dbd10229e97c8f88b48cb9a58'
-            '691e0d8d348ab9f19f0398ff79e0d4780d5110e3dd11acf3261e3f73b2983ea1'
-            '31e0d244d22b16d2c0b783e38bac2d96a53cbe0ce14f2fe11142a8691ce952aa'
-            '8dcb2c32d641cef471fe45db1e122492a82b3439c55be8c530758d519eeae289'
-            '3e2b44baf4d8e29ce5e084485f0882a8f06a1d1b045a93ffa5cdd2f8112d1bfa'
-            '7c0c4af907e68a2641beffd20bf487b47cf58ca79dea45276b5046fe81f436bc'
-            '0c942db9e9a5f41873cc2ba6edae3372da672e8f82ea5c1266a2c905d4373319'
-            '4c9e99b780353f270b96e57cd25e4ebf8e3058fa44105422ada42eb87cf798b2'
+            '727dec931217ddac00803f3f4b9bb9956320388cdad372c16aee7c329ea1fb22'
+            '24a127c2d6a1430f095974896f89e521a3f41c2b26671f15214312aa99ff2c25'
+            '1a0eb9ba95440d0b497f403e8b5775ac831fec51ef5ecc2db07e0c1fa0e820b9'
+            '4b2aac674c7add9cedab532eff1e9475e00091e80c40171a71bd07423aab153f'
+            '64c75c366d5a14523769ce3da6e5681333a5bc05a8fdec4ebc15644d1a0c64ef'
+            '20def07128b1b42dfedc9c652e427333222884192b2176a68ae318de79b4ff5d'
+            '42a8a3832742c560a85e8fc699dc0f9afd4a5f421c1d8176dbf555c2615594ad'
             '517e2aa68ee91bf2d8c0d6896dee2367cbc29f98ed5a3eb8392ca32028cd9b84'
             '9780f642f30b0870c78864418f5a46bc189f27249eba312bec91538f622c2334'
-            '9c93b5166e4b13b7a2cc39868dc578a621bbe07d7295a4d10d89328cf264d055')
+            '9c93b5166e4b13b7a2cc39868dc578a621bbe07d7295a4d10d89328cf264d055'
+            'fcea3cd1b59fd3fe82651cf758c1d21c452f82e782c5b472ad8ee08e2f3b5e70')
 
 _opt_SERIAL=1    # This is for bug testing dkms only. All cards have serial ports so this should always be enabled.
 
@@ -212,50 +215,42 @@ prepare() {
   ! test -s 'pserial/Makefile.Arch' || echo "${}"
   ! test -s 'pparport26/Makefile.Arch' || echo "${}"
 
-  # Patch
-  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}; false
-  #diff -pNaru5 perle-serial-3.9.2{.orig-0000,} > '0000-kernel-4.11-signal_pending.patch'
-  patch -Nup1 -i "${srcdir}/0000-kernel-4.11-signal_pending.patch"
-
-  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0001}; false
-  #diff -pNaru5 perle-serial-3.9.2{.orig-0001,} > '0001-kernel-5.6-proc_dir_entry-proc_ops.patch'
-  patch -Nup1 -i "${srcdir}/0001-kernel-5.6-proc_dir_entry-proc_ops.patch"
-
-  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0002}; false
-  #diff -pNaru5 perle-serial-3.9.2{.orig-0002,} > '0002-kernel-4.7-async-initialized.patch'
-  patch -Nup1 -i "${srcdir}/0002-kernel-4.7-async-initialized.patch"
-
-  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0003}; false
-  #diff -pNaru5 perle-serial-3.9.2{.orig-0003,} > '0003-kernel-5.12-tty-low_latency.patch'
-  patch -Nup1 -i "${srcdir}/0003-kernel-5.12-tty-low_latency.patch"
-
-  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0004}; false
-  #diff -pNaru5 perle-serial-3.9.2{.orig-0004,} > '0004-tty_unregister_driver-void.patch'
-  patch -Nup1 -i "${srcdir}/0004-tty_unregister_driver-void.patch"
-
-  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0005}; false
-  #diff -pNaru5 perle-serial-3.9.2{.orig-0005,} > '0005-kernel-5.14-unsigned-tty-flow-tty.patch'
-  patch -Nup1 -i "${srcdir}/0005-kernel-5.14-unsigned-tty-flow-tty.patch"
+  local _patches=()
+  _patches+=('0000-kernel-4.11-signal_pending.patch')
+  _patches+=('0001-kernel-5.6-proc_dir_entry-proc_ops.patch')
+  _patches+=('0002-kernel-4.7-async-initialized.patch')
+  _patches+=('0003-kernel-5.12-tty-low_latency.patch')
+  _patches+=('0004-tty_unregister_driver-void.patch')
+  _patches+=('0005-kernel-5.14-unsigned-tty-flow-tty.patch')
 
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
-  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0006}; false
-  #diff -pNaru5 perle-serial-3.9.2{.orig-0006,} > '0006-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
-  patch -Nup1 -i "${srcdir}/0006-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
+  _patches+=('0006-kernel-5.15-alloc_tty_driver-put_tty_driver.patch')
+  _patches+=('0007-kernel-6.0-serial_UART_XMIT_SIZE.patch') # https://lore.kernel.org/linux-arm-kernel/6fb33489-946f-ad92-df35-7f608420bc7@linux.intel.com/T/
+  _patches+=('0008-kernel-6.0-set_termios-const-ktermios.patch') # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
+  _patches+=('0009-kernel-6.6-struct-tty_operations-write-size_t.patch')
+  _patches+=('0010-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch')
 
-  # https://lore.kernel.org/linux-arm-kernel/6fb33489-946f-ad92-df35-7f608420bc7@linux.intel.com/T/
+  local _pt _ptf=() _pts=()
+  for _pt in "${_patches[@]}"; do
+    set +u; msg2 "Patch ${_pt}"; set -u
+    if patch -Nup1 -i "${srcdir}/${_pt}"; then
+      _pts+=("${_pt}")
+    else
+      _ptf+=("${_pt}")
+    fi
+  done
+  if [ "${#_ptf[@]}" -gt 0 ]; then
+     if [ "${#_pts[@]}" -gt 0 ]; then
+       printf 'Patch success %s\n' "${_pts[@]}"
+       printf 'Warning: Some old patches may need to be removed even if they are successful\n'
+     fi
+     printf 'Patch failed %s\n' "${_ptf[@]}"
+     set +x
+     false
+  fi
   #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0007-kernel-6.0-serial_UART_XMIT_SIZE.patch'
-  patch -Nup1 -i "${srcdir}/0007-kernel-6.0-serial_UART_XMIT_SIZE.patch"
-
-  # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0008-kernel-6.0-set_termios-const-ktermios.patch'
-  patch -Nup1 -i "${srcdir}/0008-kernel-6.0-set_termios-const-ktermios.patch"
-
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0009-kernel-6.6-struct-tty_operations-write-size_t.patch'
-  patch -Nup1 -i "${srcdir}/0009-kernel-6.6-struct-tty_operations-write-size_t.patch"
+  #diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
 
   set +u
 }

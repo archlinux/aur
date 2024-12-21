@@ -1,6 +1,6 @@
-diff -pNaru5 perle-serial-3.9.2.orig-0003/pserial/perle-serial.c perle-serial-3.9.2/pserial/perle-serial.c
---- perle-serial-3.9.2.orig-0003/pserial/perle-serial.c	2021-09-14 11:15:23.675520937 -0400
-+++ perle-serial-3.9.2/pserial/perle-serial.c	2021-09-14 11:19:15.647322399 -0400
+diff -pNaru5 a/pserial/perle-serial.c b/pserial/perle-serial.c
+--- a/pserial/perle-serial.c	2021-09-14 11:15:23.675520937 -0400
++++ b/pserial/perle-serial.c	2021-09-14 11:19:15.647322399 -0400
 @@ -2446,11 +2446,13 @@ static int set_serial_info(struct ps_asy
  	info->flags = ((state->flags & ~ASYNC_INTERNAL_FLAGS) |
  		       (info->flags & ASYNC_INTERNAL_FLAGS));
