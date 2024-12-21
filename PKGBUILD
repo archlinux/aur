@@ -6,7 +6,7 @@
 _pkgname="forkgram"
 pkgname="$_pkgname"
 pkgver=5.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
 license=('GPL-3.0-or-later')
@@ -71,6 +71,18 @@ _pkgsrc="frk-v$pkgver-full"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/releases/download/v$pkgver/$_pkgsrc.$_pkgext")
 sha256sums=('cad8ff0bdf5a5671b08f532172c2849ff6ce4424ad8c23d63e4a14b7cb7c79f4')
+
+source+=(
+  "0001-update-lib_base.patch"::"https://github.com/desktop-app/lib_base/compare/81056e33..70918d74.diff"
+)
+sha256sums+=(
+  '94467b435de3061c34ed84dfcd3f0057c6b5b52a3472836d17e07567d9e5d891'
+)
+
+prepare() {
+  cd "$_pkgsrc/Telegram/lib_base"
+  patch -Np1 -i "$srcdir/0001-update-lib_base.patch"
+}
 
 build() {
   local _cmake_options=(
