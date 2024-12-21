@@ -1,7 +1,7 @@
 pkgname=revbayes-mpi
 _pkgname=revbayes
-pkgver=1.2.4
-pkgrel=2
+pkgver=1.2.5
+pkgrel=1
 pkgdesc="Bayesian Phylogenetic Inference Using Graphical Models and an Interactive Model-Specification Language https://doi.org/10.1093/sysbio/syw021"
 arch=(x86_64)
 url="https://github.com/revbayes/revbayes"
@@ -12,7 +12,7 @@ conflicts=('lrzsz' 'revbayes-mpi')
 provides=('revbayes')
 source=("git+$url.git#tag=v$pkgver"
 	"rb.patch")
-md5sums=('34300da96ccf993089021d064cc13d73'
+md5sums=('c9d6f55cf1b92ccb914214b4534af3e2'
          'f5af0159704f049f8269584883bcaa80')
 
 prepare() {
