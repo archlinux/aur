@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=proton-mail
 pkgver=1.6.0
-pkgrel=1
-_nodeversion=20
+pkgrel=2
+_nodeversion=22
 pkgdesc="Proton official desktop application for Proton Mail and Proton Calendar"
 arch=('x86_64' 'aarch64')
 url="https://proton.me"
