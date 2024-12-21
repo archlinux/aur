@@ -1,13 +1,14 @@
+# Maintainer:
 # Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 
 _pkgname="devscripts"
 pkgname="$_pkgname-git"
-pkgver=2.23.4.r0.g5d69fc20
+pkgver=2.24.8.r1.g40881d2
 pkgrel=1
-pkgdesc="Scripts to make the life of a Debian Package maintainer easier (git-latest)"
+pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
-url="https://anonscm.debian.org/git/collab-maint/devscripts.git"
-license=('GPL2')
+url="https://salsa.debian.org/debian/devscripts"
+license=('GPL-2.0-or-later')
 depends=(
   'dpkg'
   'perl'
@@ -20,7 +21,7 @@ depends=(
   'debhelper'
   'debianutils'
   # 'po-debconf' # for debhelper
-  #'sensible-utils'
+  # 'sensible-utils'
 )
 makedepends=(
   'bash-completion'
@@ -35,7 +36,7 @@ makedepends=(
   'po4a'
   'python-setuptools'
 
-  # AUR
+  ## AUR
   'perl-git-wrapper'
   'perl-parse-debcontrol'
 )
@@ -48,28 +49,33 @@ optdepends=(
   'perl-moo: Required for uscan'
 )
 provides=(
+  "$_pkgname=${pkgver%%.r*}"
+  'checkbashisms'
+)
+conflicts=(
   "$_pkgname"
   'checkbashisms'
 )
-conflicts=(${provides[@]})
+
 options=('!makeflags')
+
+_pkgsrc="$_pkgname"
 source=(
-  "$_pkgname"::"git+https://anonscm.debian.org/git/collab-maint/devscripts.git"
+  "$_pkgsrc"::"git+https://salsa.debian.org/debian/devscripts"
   'fixes.patch'
 )
-
 sha256sums=(
   'SKIP'
   'f8e7ce50c0d008c5d38c94b93c9fc560e5dd2cc8f06eeb2909b0b1784911b768'
 )
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/debian\///;s/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 | sed 's/debian\///;s/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
-prepare(){
-  cd "$srcdir/$_pkgname"
+prepare() {
+  cd "$_pkgsrc"
   patch -p1 -i "$srcdir/fixes.patch"
 
   # Ensure the local folder is recognized as a package and used appropriately.
@@ -77,18 +83,17 @@ prepare(){
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
   make DESTDIR="$pkgdir" install
 
   # Install the script manpages appropriately
-  for script_manpage in scripts/*.1
-  do
-      cp -v $script_manpage "$pkgdir/usr/share/man/man1"
+  for script_manpage in scripts/*.1; do
+    cp -v $script_manpage "$pkgdir/usr/share/man/man1"
   done
 
   # Create dch symlink to debchange
