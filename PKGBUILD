@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/spm-$pkgver.ta
 sha256sums=('931eca7b7c8efa1b3ffd3ac0c4610d034539ee2e69cd2e2542aa0ddd7f161363')
 
 package() {
-    cd "$srcdir"
+    cd "$srcdir/spm-1.0.1"
     
     # Install main script
     install -Dm755 spm.sh "$pkgdir/usr/bin/spm"
