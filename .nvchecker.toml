@@ -1,5 +1,4 @@
-[python-felupe]
-source = "gitlab"
-gitlab = "fluiddyn/fluiddyn"
-host = "foss.heptapod.net"
+[python-fluiddyn]
+source = "github"
+github = "fluiddyn/fluiddyn"
 use_max_tag = true
