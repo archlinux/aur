@@ -2,7 +2,7 @@
 # Contributor: Markus Hovorka <m.hovorka@live.de>
 _base=netgen
 pkgname=${_base}-nogui
-pkgver=6.2.2404
+pkgver=6.2.2406
 pkgrel=1
 pkgdesc="Netgen mesh generator"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=(metis opencascade openmpi python-mpi4py)
 makedepends=(cmake pybind11) # git python-pybind11-stubgen
 # checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('da685d466ae2bef6927750d1f19c47d75209c531e8ad913613da2aa126c1f915e736306ba2f9ad783c5e12b8d39270457c15dbfcb1b10362de1d595c840d9ef3')
+sha512sums=('262e57dca39519c797ea58b32eb886d523926aa48979b31df0c61839f9db09eea76346d3519742b7173a78a80335c16960860772646edd20f365dab1e1a6bed8')
 
 build() {
   cmake \
@@ -53,10 +53,13 @@ build() {
 }
 
 package() {
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0][1:])")
-  PYTHONPATH=${site_packages} DESTDIR="${pkgdir}" cmake --build build --target install
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  PYTHONPATH="${srcdir}" DESTDIR="${pkgdir}" cmake --build build --target install
   install -Dm 644 ${_base}-${pkgver}/LICENSE -t "${pkgdir}/usr/share/licenses/${_base}"
   install -Dm644 ${_base}-${pkgver}/doc/ng4.pdf -t "${pkgdir}/usr/share/doc/${_base}"
+  echo ${pkgdir} # /tmp/makepkg/netgen-nogui/pkg/netgen-nogui
+  install -d ${pkgdir}${site_packages}
+  mv "${pkgdir}${pkgdir}" "${pkgdir}${site_packages}"
   # install libsrc/ needed by some packages (e.g. FreeCAD)
   cp -R ${_base}-${pkgver}/libsrc/ "${pkgdir}/usr/share/${_base}"
 }
