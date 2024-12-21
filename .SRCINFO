@@ -1,6 +1,6 @@
 pkgbase = mint-themes
 	pkgdesc = A collection of Mint themes.
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/linuxmint/mint-themes
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mint-themes
 	optdepends = mint-x-icons
 	optdepends = mint-y-icons
 	options = !strip
-	source = mint-themes_2.2.1.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-themes/mint-themes_2.2.1.tar.xz
-	sha256sums = c3724ff7d57a849c7ee66d57b29c2307ead2af89901d67a72617880f3f733abe
+	source = mint-themes_2.2.2.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-themes/mint-themes_2.2.2.tar.xz
+	sha256sums = 56ae08da36f99ed35170c0aa4e614ac027bfba04b2d6b66adb231afdda6d7022
 
 pkgname = mint-themes
