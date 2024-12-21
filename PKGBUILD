@@ -1,15 +1,9 @@
 # Maintainer: Mattia Basaglia <glax@dragon.best>
 # Contributor: Sythelux Rikd <dersyth@gmail.com>
 
-## useful links:
-# https://glaxnimate.mattbas.org/
-# https://gitlab.com/mattbas/glaxnimate
-# https://invent.kde.org/graphics/glaxnimate
-
-# basic info
 _pkgname="glaxnimate"
 pkgname="$_pkgname-git"
-pkgver=0.5.4.r325.gb530060
+pkgver=0.5.4.r506.gd47b8c5
 pkgrel=1
 pkgdesc="Simple vector animation program"
 url="https://invent.kde.org/graphics/glaxnimate"
@@ -38,17 +32,13 @@ makedepends=(
   'ninja'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
-conflicts=("$_pkgname")
+_source_main() {
+  provides=("$_pkgname=${pkgver%%.r*}")
+  conflicts=("$_pkgname")
 
-_pkgsrc="kde.$_pkgname"
-source=("$_pkgsrc"::"git+$url.git")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "$_pkgsrc"
-  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^[^0-9]+//;s/([^-]*-g)/r\1/;s/-/./g'
+  _pkgsrc="kde.$_pkgname"
+  source=("$_pkgsrc"::"git+$url.git")
+  sha256sums=('SKIP')
 }
 
 _source_glaxnimate() {
@@ -65,7 +55,6 @@ _source_glaxnimate() {
     'SKIP'
   )
 }
-_source_glaxnimate
 
 _prepare_glaxnimate() (
   cd "$_pkgsrc"
@@ -78,6 +67,9 @@ _prepare_glaxnimate() (
   _submodule_update
 )
 
+_source_main
+_source_glaxnimate
+
 prepare() {
   _submodule_update() {
     local _module
@@ -89,6 +81,15 @@ prepare() {
   }
 
   _prepare_glaxnimate
+
+  # https://invent.kde.org/graphics/glaxnimate/-/issues/701
+  sed -E -e '/Name\[(hi|sa)\]=/d' -i "$_pkgsrc/data/glaxnimate.in.desktop"
+}
+
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]+//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
@@ -99,6 +100,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DQT_MAJOR_VERSION=6
+    -DVERSION_SUFFIX=""
     -Wno-dev
   )
 

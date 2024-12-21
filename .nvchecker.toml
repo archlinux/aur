@@ -1,0 +1,4 @@
+[glaxnimate-git]
+source = "git"
+git = "https://invent.kde.org/graphics/glaxnimate.git"
+prefix = "v"
