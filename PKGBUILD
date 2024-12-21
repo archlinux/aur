@@ -2,7 +2,7 @@
 
 _name="iodata"
 pkgname="python-${_name}-git"
-pkgver=1.0.0a4.r1532.0ca750f
+pkgver=1.0.0a5.r1569.f8af4e8
 pkgrel=1
 pkgdesc="Python library for reading, writing, and converting computational chemistry file formats and generating input files. (git version)"
 arch=("any")
@@ -17,7 +17,7 @@ makedepends=(
   "python-wheel"
 )
 checkdepends=("python-pytest" "python-pytest-xdist")
-depends=("python-attrs" "python-numpy" "python-scipy")
+depends=("python-attrs" "python-numpy" "python-scipy" "python-sympy")
 provides=("python-${_name}")
 conflicts=("python-${_name}")
 source=("git+https://github.com/theochem/${_name}")
