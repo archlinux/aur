@@ -3,7 +3,7 @@
 
 _pkgname='superproductivity'
 pkgname="${_pkgname}-bin"
-pkgver=11.0.2
+pkgver=11.0.3
 pkgrel=1
 pkgdesc="ToDo List / Time Tracker / Personal Jira Task Manager"
 arch=('x86_64')
