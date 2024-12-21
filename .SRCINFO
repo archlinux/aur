@@ -1,0 +1,19 @@
+pkgbase = cpcli-git
+	pkgdesc = Check crypto prices in your terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AshtonGrimes/cpcli
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	source = git+https://github.com/AshtonGrimes/cpcli
+	sha256sums = SKIP
+
+pkgname = cpcli-git
