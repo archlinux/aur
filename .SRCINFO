@@ -1,0 +1,14 @@
+pkgbase = jitterbugpair-bin
+	pkgdesc = Launch JIT enabled iOS app with a second iOS device.
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/osy/Jitterbug/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = patchelf
+	depends = libplist
+	depends = libp11-kit
+	source = https://github.com/osy/Jitterbug/releases/download/v1.3.1/jitterbugpair-linux.zip
+	sha256sums = d3bbefe05681930cf2f562cada0357d48e2ca096231e0dff5448b550317eb05c
+
+pkgname = jitterbugpair-bin
