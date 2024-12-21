@@ -16,8 +16,8 @@ optdepends=('jre-openjdk: for launch Minecraft')
 source_x86_64=("${_pkgname}-${arch}.AppImage::${url}/releases/download/AutoBuild_feature/${_pkgname}.${pkgver}.linux-x64.AppImage")
 source_aarch64=("${_pkgname}-${arch}.AppImage::${url}/releases/download/AutoBuild_feature/${_pkgname}.${pkgver}.linux-arm64.AppImage")
 _appimage="${_pkgname}-${arch}.AppImage"
-sha512sums_x86_64=('43d332fdc14ae1bc1033fafacf8b92bff16c0fbea540d7ce0df797d740b831ff5fbf2c424f2c0ecab7f53dbdf6e6b7f5948cd5e518ca4717bf040a850eb0a69a')
-sha512sums_aarch64=('43d332fdc14ae1bc1033fafacf8b92bff16c0fbea540d7ce0df797d740b831ff5fbf2c424f2c0ecab7f53dbdf6e6b7f5948cd5e518ca4717bf040a850eb0a69a')
+sha512sums_x86_64=('2ce8ce638784626823cb3ba5a07768b60bfb28a92842c3606b74d801b454dcd67389869402c6a2d1d0677bf4f57dbb743a58102f0bceae46e1462123b4e01947')
+sha512sums_aarch64=('2ce8ce638784626823cb3ba5a07768b60bfb28a92842c3606b74d801b454dcd67389869402c6a2d1d0677bf4f57dbb743a58102f0bceae46e1462123b4e01947')
 prepare() {
 	chmod +x "${_appimage}"
 	./"${_appimage}" --appimage-extract
