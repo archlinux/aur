@@ -9,9 +9,9 @@
 
 pkgname='warfork-bin'
 # Note, you can always rebuild this package to pull the latest release from Steam
-pkgver=2.14
+pkgver=2.15.1
 pkgrel=1
-_relver=2.14
+_relver=2.15.1
 pkgdesc='Free online multiplayer competitive FPS based on the Qfusion engine (official binary via Steam)'
 url='https://www.warfork.com/'
 license=('GPL2')
