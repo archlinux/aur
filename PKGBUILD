@@ -4,7 +4,7 @@
 
 pkgbase=limo
 pkgname=("${pkgbase}" "${pkgbase}-docs")
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc='General video game mod manager with LOOT and Nexus Mods integration'
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=(
 	'qt5-svg'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+b2sums=('f8373a8f5e4e2816555251d71501f2cfa263ea538187578905252decec9339edd8211b8cd7d383155d2a55741355f3eb378e65d0efe3ba65994e50a9b18267d3')
 
 build() {
 	cd "${pkgbase}-${pkgver}" || return
