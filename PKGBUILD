@@ -2,7 +2,7 @@
 
 _pkgname="phylum"
 pkgname="${_pkgname}-bin"
-pkgver=7.2.0
+pkgver=7.3.0
 pkgrel=1
 pkgdesc="Command line interface for the Phylum API"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source_x86_64=("${_pkgsrc}-x86_64.zip::${_url}/releases/download/v${pkgver}/${_p
 source_aarch64=("${_pkgsrc}-aarch64.zip::${_url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.zip")
 b2sums=('7bbbd36aed8c996faf29a232455b265edc26dd5eac6f814f00d0a8af6174269f55c86fc3e6ddf26d7c8f33fdd59ab2bf1b20f483f47cc8d49f0490a4500a33c0'
         'd23d56095390a883bd5c4a2fd321bfe027477e24222332936f15c2653614efe93322776f9c6011102fd33210079a01edaa22ffb2326ca5187a6bf9bc50d7ca7e')
-b2sums_x86_64=('de92fb9e5c42bce3e96b6da309c1a13f137cb7c8e7e42054cb8b4fad5af1c8ea823ef32f7ca1db87a7e7adca6e144b8414114666f39b6d52d8845ca078751aa4')
-b2sums_aarch64=('51dbd73c845e0cdc7d41539e032b6eef8ad5a22166003cd7fa7e951bc24b525a497d7ce9387c40113b843a0af94810856b4cc7f7845090a09d348264f326fd07')
+b2sums_x86_64=('a0837efd649b45a94ad0fe03cbbfdf41f0679303b56158594d6799ad4025482c0cdd5a9d0164425fb1aa5297c3dff568b644573e8987cbeee212cce1546e1581')
+b2sums_aarch64=('7d4e6f4ad1562e785fd4d44d6ffbe95c5e9c2e89eed6092bf15f8874ad31b619cc7efb78b5bb8f507873db7af7cb76d650c014510b147bd968a873a9694f4cda')
 
 prepare() {
   cd "${srcdir}"
