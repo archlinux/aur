@@ -1,13 +1,13 @@
 pkgbase = usage-bin
 pkgdesc = A specification for CLIs
-pkgver = 1.7.3
+pkgver = 1.7.4
 pkgrel = 1
 url = https://github.com/jdx/usage
 arch = x86_64
 license = MIT
 makedepends = cargo
 provides = usage
-source = usage-1.7.3.tar.gz::https://github.com/jdx/usage/releases/download/v1.7.3/usage-x86_64-unknown-linux-gnu.tar.gz
-sha512sums = d7bc64f283696eef0f8b9c93d934c7f23ca8616a6a110ea1b7f36a167978ce59a72ec197a8c9004adbb412c4fb09b9da02f4978016c5c1cf025dc0b945b65f89
+source = usage-1.7.4.tar.gz::https://github.com/jdx/usage/releases/download/v1.7.4/usage-x86_64-unknown-linux-gnu.tar.gz
+sha512sums = 83fec2b70573d504e0f85ee210ee9f0212efcbdf3278aac8a6c946114a4536883930779d3c8ea573c5245d89067dc9bc6b10f5b8bdf2d3726591caffb3d67d2a
 
 pkgname = usage-bin
