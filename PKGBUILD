@@ -1,4 +1,4 @@
-# Contributor: Tilman Blumenbach <tilman (at) ax86 (dot) net>
+# Maintainer: Tilman Blumenbach <tilman (at) ax86 (dot) net>
 
 pkgbase='selfhtml'
 pkgname=('selfhtml-de' 'selfhtml-fr')
