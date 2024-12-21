@@ -5,7 +5,7 @@
 _pkgname=wlrobs
 pkgname=${_pkgname}-hg
 pkgver=r72.958a52be0f0f
-pkgrel=2
+pkgrel=3
 pkgdesc="An obs-studio plugin that allows you to screen capture on wlroots based wayland compositors"
 arch=('i686' 'x86_64')
 provides=('wlrobs')
@@ -24,10 +24,10 @@ pkgver() {
 }
 
 build() {
-	cd ${_pkgname}
-    export CFLAGS=-Wno-error
-	meson setup build -Dwerror=false
-	ninja -C build
+    cd ${_pkgname}
+    export CFLAGS="-Wno-error"
+    meson setup build -Dwerror=false
+    ninja -C build
 }
 
 package() {
