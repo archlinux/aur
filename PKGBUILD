@@ -4,10 +4,10 @@
 
 _pkgname=vscodium
 _electron=electron32
-_nodejs="20.18.0"
+_nodejs="20.18.1"
 
 pkgname=${_pkgname}-electron
-pkgver=1.95.3.24321
+pkgver=1.96.2.24355
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
