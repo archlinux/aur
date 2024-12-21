@@ -2,19 +2,23 @@
 
 pkgbase=efibooteditor
 pkgname=(efibooteditor efibooteditor-qt5)
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Boot Editor for (U)EFI based systems.'
 url='https://github.com/Neverous/efibooteditor'
 license=(LGPL3)
 depends=(efivar zlib)
-makedepends=(cmake qt6-tools qt5-base qt5-tools)
-source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/Neverous/efibooteditor/archive/refs/tags/v${pkgver}.tar.gz)
-md5sums=('695846c15abdf2114561e585215d06a2')
+makedepends=(cmake git qt6-tools qt5-base qt5-tools)
+source=(git+${url}.git?signed#tag=v${pkgver})
+md5sums=('e42651337d1bd1e1e3a1ccc2ffbbb8d5')
+
+validpgpkeys=(
+    '9E76A390AAF9772C8448DCCEE4F948F71FEE7375'
+)
 
 build() {
-    cd ${pkgbase}-${pkgver}
+    cd ${pkgbase}
 
     export BUILD_VERSION=${pkgver}-aur.${pkgrel}
 
@@ -37,7 +41,7 @@ package_efibooteditor() {
     pkgdesc='Boot Editor for (U)EFI based systems.'
     depends=(efivar qt6-base)
 
-    cd ${pkgbase}-${pkgver}
+    cd ${pkgbase}
 
     DESTDIR="${pkgdir}" cmake --install build-qt6
     install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgbase}/LICENSE
@@ -49,7 +53,7 @@ package_efibooteditor-qt5() {
     conflicts=(efibooteditor)
     provides=(efibooteditor)
 
-    cd ${pkgbase}-${pkgver}
+    cd ${pkgbase}
 
     DESTDIR="${pkgdir}" cmake --install build-qt5
     install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgbase}/LICENSE
