@@ -2,8 +2,8 @@
 
 pkgname=barpyrus-git
 _pkgname=${pkgname%-git}
-pkgver=r117.a50f18b
-pkgrel=4
+pkgver=r118.671eb8d
+pkgrel=1
 pkgdesc="A python wrapper for lemonbar/conky"
 arch=(any)
 url="https://github.com/t-wissmann/barpyrus"
