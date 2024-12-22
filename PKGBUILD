@@ -1,4 +1,4 @@
-# Maintainer: kumax <kumax2048@pm.me>
+# Maintainer: zhullyb <zhullyb [at] outlook [dot] com>
 pkgname=wechat-devtools-bin
 pkgver=1.06.2409140_2
 pkgrel=1
