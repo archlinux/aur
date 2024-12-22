@@ -17,7 +17,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://releases.aptakube.com/${_pkgname}_${pkgver}_amd64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('427a2a7ebeb56939d57757bd01366e0c19201e847e721918483ae7763f999ff5')
+sha256sums_x86_64=('58d5fbd7d7c0e5a779d3290e87bd2d4496dba64c2c26c02015aea172db1161a5')
 
 prepare() {
     chmod +x "${_appimage}"

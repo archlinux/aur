@@ -10,6 +10,6 @@ pkgbase = aptakube-appimage
 	noextract = aptakube-appimage-1.9.1.AppImage
 	options = !strip
 	source_x86_64 = aptakube-appimage-1.9.1.AppImage::https://releases.aptakube.com/aptakube_1.9.1_amd64.AppImage
-	sha256sums_x86_64 = 427a2a7ebeb56939d57757bd01366e0c19201e847e721918483ae7763f999ff5
+	sha256sums_x86_64 = 58d5fbd7d7c0e5a779d3290e87bd2d4496dba64c2c26c02015aea172db1161a5
 
 pkgname = aptakube-appimage
