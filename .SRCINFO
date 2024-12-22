@@ -1,6 +1,6 @@
 pkgbase = python-tree-sitter-make
 	pkgdesc = make grammar for tree-sitter
-	pkgver = 0.0.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/tree-sitter-grammars/tree-sitter-make
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = python-tree-sitter-make
 	license = MIT
 	makedepends = python-installer
 	depends = python-tree-sitter
-	source = https://files.pythonhosted.org/packages/cp38/t/tree_sitter_make/tree_sitter_make-0.0.1-cp38-abi3-manylinux_2_17_x86_64.whl
-	sha256sums = 5923eeeaa98e486d3b4ee0819f3eb905cec9cef1e0d3f79626c2c981a003a66e
+	source = https://files.pythonhosted.org/packages/cp39/t/tree_sitter_make/tree_sitter_make-1.1.1-cp39-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums = 6e0e424449c9e0a2f7e8476238727638acb5fe041533440fc20e21e064ef1fb7
 
 pkgname = python-tree-sitter-make
