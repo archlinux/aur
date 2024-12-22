@@ -2,7 +2,7 @@
 
 pkgname=funiculi
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Control your Denon AVR amplifier from the command line'
 arch=('any')
 url='https://github.com/claui/funiculi'
