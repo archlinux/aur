@@ -1,0 +1,14 @@
+pkgbase = rainbowpath-bin
+	pkgdesc = Program for making paths pretty.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/Soft/rainbowpath
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = rainbowpath
+	conflicts = rainbowpath
+	source_x86_64 = https://github.com/Soft/rainbowpath/releases/download/0.5.2/rainbowpath.tar.gz
+	sha256sums_x86_64 = 0fe6b62e53266939ba70ed30ca201bbe0d85e50b8d5d7e3faaac5c8347e880f3
+
+pkgname = rainbowpath-bin
