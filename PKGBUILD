@@ -2,7 +2,7 @@
 
 pkgname=youtube-dl-nightly
 pkgver=2024.12.17
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line program to download videos from YouTube.com and a few more sites'
 arch=('any')
 url='https://ytdl-org.github.io/youtube-dl'
