@@ -1,7 +1,7 @@
 pkgbase = wahoomc
 	pkgdesc = wahooMapsCreator - Create maps for Wahoo device based on latest OSM maps
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/treee111/wahooMapsCreator
 	arch = x86_64
 	license = MIT

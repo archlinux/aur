@@ -2,7 +2,7 @@
 
 pkgname=wahoomc
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='wahooMapsCreator - Create maps for Wahoo device based on latest OSM maps'
 _outname="${pkgname}-${pkgver}"
 _rootdir="wahooMapsCreator-${pkgver}"
