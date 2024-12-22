@@ -1,6 +1,6 @@
 pkgbase = funiculi-git
 	pkgdesc = Control your Denon AVR amplifier from the command line
-	pkgver = 0.1.4.r37.3400a0c
+	pkgver = 0.2.0.r56.f2ea19d
 	pkgrel = 1
 	url = https://github.com/claui/funiculi
 	arch = any

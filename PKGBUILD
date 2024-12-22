@@ -2,7 +2,7 @@
 
 pkgname=funiculi-git
 _gitpkgname=funiculi
-pkgver=0.1.4.r37.3400a0c
+pkgver=0.2.0.r56.f2ea19d
 pkgrel=1
 pkgdesc='Control your Denon AVR amplifier from the command line'
 arch=('any')
