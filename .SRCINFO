@@ -1,7 +1,7 @@
 pkgbase = nomadnet
 	pkgdesc = Off-grid, resilient mesh communication with strong encryption
 	pkgver = 0.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/markqvist/nomadnet
 	arch = any
 	license = MIT

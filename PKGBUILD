@@ -2,7 +2,7 @@
 
 pkgname=nomadnet
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Off-grid, resilient mesh communication with strong encryption"
 arch=('any')
 depends=('python-lxmf' 'python-urwid')
