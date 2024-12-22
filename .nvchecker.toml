@@ -1,0 +1,4 @@
+[deemix-gui-git]
+	source = "manual"
+	#source = "gitlab"
+	#gitlab = "RemixDev/deemix-gui"
