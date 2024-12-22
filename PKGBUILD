@@ -6,7 +6,7 @@
 pkgname='certbot-dns-duckdns'
 _pkgverUpstream="1.5"
 pkgver="1.5.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for certbot for a DNS-01 challenge with a DuckDNS domain"
 arch=('any')
 url='https://github.com/infinityofspace/certbot_dns_duckdns'

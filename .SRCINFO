@@ -1,7 +1,7 @@
 pkgbase = certbot-dns-duckdns
 	pkgdesc = Plugin for certbot for a DNS-01 challenge with a DuckDNS domain
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/infinityofspace/certbot_dns_duckdns
 	arch = any
 	license = MIT
