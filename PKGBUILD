@@ -3,7 +3,7 @@ _projectname='neotermcolor'
 pkgname="python-$_projectname"
 pkgver='2.0.10'
 _commit='f4993d2590a2bfe6d89d075a38ede39e7dd0b896'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Modern ANSII Color formatting for output in terminal'
 arch=('any')
 url="https://github.com/alttch/$_projectname"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-sha512sums=('cbfcb22170dcb8052e62078787e5c156ecdc27a1a0ad531f5c4ec8d3250ff88595a77dd47a80b02a7e5263303985135734f505fc0ee714210a61b43a85df3250')
+b2sums=('5b8804f47783cdf7d8d5729fab3f4e5c5b99b64a7395b708ca0c4a1aadc477b334c18cf174203afddca9e5d2166e0337c0723178f7dd64e50f3ee37cb1d22d21')
 
 _sourcedirectory="$_projectname-$_commit"
 
