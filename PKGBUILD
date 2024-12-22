@@ -3,7 +3,7 @@
 
 _pkgname=pikaur
 pkgname="${_pkgname}-git"
-pkgver=1.32
+pkgver=1.32.r3.g2ce728e5
 pkgrel=1
 pkgdesc="AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay."
 arch=('any')
@@ -12,9 +12,7 @@ license=('GPL-3.0-only')
 source=(
 	"$pkgname::git+${url}.git#branch=master"
 )
-b2sums=(
-	"SKIP"
-)
+b2sums=('SKIP')
 depends=(
 	'pyalpm'
 	'git'
