@@ -1,13 +1,13 @@
 pkgbase = flirt
 	pkgdesc = FiLe InteRacT, the file interaction tool for your command line
-	pkgver = 0.2.1
-	pkgrel = 6
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://sr.ht/~hadronized/flirt/
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = rust
-	source = flirt-0.2.1.tar.gz::https://static.crates.io/crates/flirt/flirt-0.2.1.crate
+	source = flirt-0.3.0.tar.gz::https://static.crates.io/crates/flirt/flirt-0.3.0.crate
 	validpgpkeys = 6C991AA06D7A7C28573799CEA94386A8A6252ECB
-	sha256sums = eb507db7a5d1a98390c797060cc97315d4f6b40fe86dde14c6069a53db1d4dc3
+	sha256sums = f80ab0c02264a0f079c6d4d3d7201c1cb2c252c3136a9e53f830cc470864e1d1
 
 pkgname = flirt
