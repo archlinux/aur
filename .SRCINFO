@@ -1,7 +1,7 @@
 pkgbase = python-proton-core
 	pkgdesc = The proton-core component contains core logic used by the other Proton components.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProtonVPN/python-proton-core
 	arch = any
 	groups = ProtonVPN

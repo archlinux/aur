@@ -2,7 +2,7 @@
 
 pkgname=python-proton-core
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The proton-core component contains core logic used by the other Proton components."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-core"
