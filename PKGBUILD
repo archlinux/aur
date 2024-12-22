@@ -3,7 +3,7 @@
 _name=sysconfigpatcher
 pkgname=python-$_name
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Patch sysconfigdata and pkgconfig files in a python installation from indygreg's python builds."
 arch=('any')
 url="https://github.com/bluss/$_name"

@@ -1,7 +1,7 @@
 pkgbase = python-sysconfigpatcher
 	pkgdesc = Patch sysconfigdata and pkgconfig files in a python installation from indygreg's python builds.
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bluss/sysconfigpatcher
 	arch = any
 	license = MIT
