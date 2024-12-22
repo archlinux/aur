@@ -1,0 +1,3 @@
+[http-server-upload]
+source = "npm"
+npm = "http-server-upload"

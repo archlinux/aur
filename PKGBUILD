@@ -1,4 +1,4 @@
-# Maintainer: Martin Rys <rys.pw/contact>
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
 pkgname=http-server-upload
 pkgver=3.0.0
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
+source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
 sha256sums=('35d335f54020bb9dfe70489e4d90e6904b22435728467176c28978f6e4a0f02c')
 validpgpkeys=()
