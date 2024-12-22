@@ -2,7 +2,7 @@
 
 pkgname=python-inplace
 _gitpkgname=inplace
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='In-place file processing in Python'
 arch=('any')
@@ -15,17 +15,13 @@ makedepends=(
   'python-build'
   'python-hatchling'
   'python-installer'
-  'python-setuptools'
-  'python-wheel'
 )
 
 source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/jwodder/inplace/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  'ef5f751b86c3f1663d5710862b72280bb9ff7e1d6742033be7b56d6a5ac79304d39f9f3bbcbc7d9dc6c80cebfd0f3d9e74679c3e48f4979c5344bb390b6a1231'
-)
+sha512sums=('71c92f5b9b53996338bb79b2a3184a9299849504d9b6a4fc99849b8e5360c65dc918965c95a6a3127a5e6c36a4d2bf541700c954904ceced271e42b28c714c02')
 
 build() {
   cd "${_gitpkgname}-${pkgver}"
