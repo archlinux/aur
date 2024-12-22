@@ -6,7 +6,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="haveno"
-pkgver="1.0.16"
+pkgver="1.0.17"
 pkgrel="1"
 pkgdesc="Decentralised P2P exchange built on Monero and Tor."
 arch=("any")
@@ -16,7 +16,7 @@ depends=("bash" "java-runtime>=21")
 makedepends=("java-environment>=21")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname}.desktop")
-sha512sums=("9cd2f849009d2a5ff53d0be0dfb14abdd8cf39a0068769c7ed5111b78916353f622a2bd7e3678eafc3234917ed42b9ab7c312b9cff7e654abc085865e443ad22"
+sha512sums=("c5a11a9f1bce517b8b55fc20e18e0b1ddce649c37208aef51c9367e39c9fd137847ffc4c38764e21ba6e4157a3cbf4d66367753f1ebe13d22ea21a39492ee013"
     "046e32ecc69058d270b5660d55c323d1458b91989f1a3ddc8a107edc28c196029d25b5a5f5f46b754a778919cca13d016ef3e17813578605938c2b3b289b8e93")
 
 build()
