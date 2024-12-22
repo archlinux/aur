@@ -3,7 +3,7 @@
 
 _pkgname=phantom-player
 pkgname=${_pkgname}-git
-pkgver=2.0.241222.0b9e4be
+pkgver=2.0.r3.g0f106d3
 pkgrel=1
 epoch=
 pkgdesc="Smart video player and playlist manager"
@@ -29,7 +29,7 @@ validpgpkeys=()
 
 pkgver() {
     cd ${_pkgname}
-    echo "2.0."$(git --no-pager log -1 --pretty='format:%cd' --date='format:%y%m%d').$(git rev-parse --short HEAD)
+    git describe --long --tags --abbrev=7 | sed 's/^d//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
