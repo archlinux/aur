@@ -1,0 +1,4 @@
+[zsh-you-should-use]
+source='github-graphql'
+github="MichaelAquilina/zsh-you-should-use"
+use_max_tag=true
