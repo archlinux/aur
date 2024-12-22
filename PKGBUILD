@@ -3,7 +3,7 @@
 # Contributor: Sematre <sematre at gmx dot de>
 
 pkgname=yt-dlp-drop-in
-pkgver=2024.08.06
+pkgver=2024.12.13
 pkgrel=1
 pkgdesc='Provide both youtube-dl command and python imports using yt-dlp'
 url="https://aur.archlinux.org/packages/yt-dlp-drop-in"
@@ -15,15 +15,6 @@ depends=('python')
 provides=("youtube-dl=${pkgver:?}")
 conflicts=("youtube-dl")
 
-source=(
-  "youtube-dl.py"
-  #"youtube-dl.sh"
-)
-sha256sums=(
-  "4b3d042525b05d84bb892a864a3ae832cc923bd630ea7e8b4d91ae9c4ec555db"
-  #"f2096dadce18216a3da2634202666713831ba8fb36f1f591e951c7329cc4f002"
-)
-
 pkgver() {
   LANG=C LC_ALL=C pacman -Si yt-dlp | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])'
 }
@@ -31,7 +22,15 @@ pkgver() {
 package() {
   depends+=('yt-dlp')
 
-  install -Dm755 "$srcdir/youtube-dl.py" "$pkgdir/usr/bin/youtube-dl"
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/youtube-dl" << END
+#!/usr/bin/env python
+
+import sys
+import yt_dlp
+
+if __name__ == '__main__':
+    yt_dlp.main(['--compat-options', 'youtube-dl'] + sys.argv[1:])
+END
 
   local _sitepackages="$(python -c 'import site; print(site.getsitepackages()[0])')"
   install -dm755 "$pkgdir/${_sitepackages:?}"

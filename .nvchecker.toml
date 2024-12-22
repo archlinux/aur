@@ -1,0 +1,4 @@
+[yt-dlp-drop-in]
+source = "pacman"
+pacman = "yt-dlp"
+strip_release = "true"
