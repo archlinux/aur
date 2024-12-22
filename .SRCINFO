@@ -1,7 +1,7 @@
 pkgbase = polyversal-patcher-bin
 	pkgdesc = The Polyversal Linux Steam Patcher for the Committee of Zero's Science Adventure Steam Patches on Linux
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CommitteeOfZero/polyversal-coz-linux-patcher
 	install = polyversal-patcher-bin.install
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = polyversal-patcher-bin
 	optdepends = zenity: Required for using Polyversal Patcher as a GUI
 	provides = polyversal-patcher
 	conflicts = polyversal-patcher
-	source = polyversal-patcher.tar.gz::https://github.com/CommitteeOfZero/polyversal-coz-linux-patcher/releases/download/2.2.0/Polyversal-v2_2_0.tar.gz
-	source = polyversal-patcher.svg::https://raw.githubusercontent.com/CommitteeOfZero/polyversal-coz-linux-patcher/2.2.0/assets/logo-square.svg
+	source = Polyversal-v2_2_0-2.tar.gz::https://github.com/CommitteeOfZero/polyversal-coz-linux-patcher/releases/download/2.2.0/Polyversal-v2_2_0.tar.gz
+	source = Polyversal-v2_2_0-2.svg::https://raw.githubusercontent.com/CommitteeOfZero/polyversal-coz-linux-patcher/2.2.0/assets/logo-square.svg
 	sha256sums = f26006323e00de04d421d1ac94656208c18cf6868cede5d0654e7d410e2b8373
 	sha256sums = 62f3a79c1446932e1ce1d4a56991113739c7d7c6d8b4a8d9c994b62468229960
 

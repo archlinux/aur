@@ -6,7 +6,7 @@ pkgver=2.2.0
 _pkgver="$(echo "$pkgver" | tr "." "_")"
 _repo="CommitteeOfZero/polyversal-coz-linux-patcher"
 _archive="$_projname-v$_pkgver"
-pkgrel=1
+pkgrel=2
 _identifier="$_archive-$pkgrel"
 pkgdesc="The Polyversal Linux Steam Patcher for the Committee of Zero's Science Adventure Steam Patches on Linux"
 arch=("any")
@@ -40,6 +40,7 @@ pkgver() {
 
 package() {
   _binDir="$pkgdir/usr/bin";
+  _docDir="$pkgdir/usr/share/doc/$_pkgname"
   _desktopDir="$pkgdir/usr/share/applications"
   _iconDir="$pkgdir/usr/share/icons/hicolor/scalable/apps"
   _binFile="$_archive/polyversal"
@@ -54,9 +55,10 @@ package() {
     -e "\$a Icon=$_pkgname" \
     "$_desktopFile"
 
-  install -dm755 "$_binDir" "$_desktopDir" "$_iconDir"
+  install -dm755 "$_binDir" "$_desktopDir" "$_iconDir" "$_docDir"
   install -Dm755 "$_binFile" "$_binDir"
   install -Dm644 "$_identifier.svg" "$_iconDir/$_pkgname.svg"
   install -Dm644 "$_desktopFile" "$_desktopDir"
+  install -Dm644 "$_archive"/{README.md,docs/*} "$_docDir"
   install -Dm644 "$_archive/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
