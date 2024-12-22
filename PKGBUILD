@@ -1,6 +1,8 @@
-pkgname=('python-stagger')
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+
+pkgname=python-stagger
 pkgver=1.0.1
-pkgrel=7
+pkgrel=8
 pkgdesc="ID3v1/ID3v2 tag manipulation package in pure Python 3"
 arch=('any')
 url="https://github.com/lorentey/stagger"
@@ -12,10 +14,10 @@ sha512sums=('9f47f95d2d8473b89725c1568067a1462ca20bf424b08f226092bae6ea3df2c62eb
 
 build() {
 	cd ${srcdir}/stagger-release-${pkgver}
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd ${srcdir}/stagger-release-${pkgver}
-	python setup.py install --prefix=/usr --root=${pkgdir}
+	python -m installer --destdir="${pkgdir}" dist/*.whl
 }

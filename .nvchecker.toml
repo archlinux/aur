@@ -1,0 +1,3 @@
+[python-stagger]
+source = "git"
+git = "https://github.com/lorentey/stagger.git"
