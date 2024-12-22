@@ -3,7 +3,7 @@
 pkgname=python-packageurl
 _gitpkgname=packageurl-python
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A purl aka. Package URL parser and builder'
 arch=('any')
 url='https://github.com/package-url/packageurl-python'
