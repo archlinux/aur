@@ -6,8 +6,9 @@ pkgdesc="A tool crafted to employ Rofi, or any other program executable via a Ba
 arch=('x86_64')
 url="https://github.com/MonadicSpell/vala-rofi-polkit"
 license=('MIT')
-depends=('polkit' 'meson' 'ninja')
-makedepends=('git')
+depends=('polkit')
+optdepends=('bash')
+makedepends=('git' 'meson' 'ninja')
 source=("${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}")
 options=('!debug')
 sha256sums=('SKIP')
@@ -20,7 +21,7 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -Dm755 rofi-polkit.sh             "$pkgdir/usr/bin/rofi-polkit.sh"
-  install -Dm755 builddir/vala-rofi-polkit  "$pkgdir/usr/bin/vala-rofi-polkit"
-  install -Dm644 LICENSE                    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 builddir/vala-polkit-forwarder "$pkgdir/usr/bin/vala-polkit-forwarder"
+  install -Dm755 vala-polkit-rofi               "$pkgdir/usr/bin/vala-polkit-rofi"
+  install -Dm644 LICENSE                        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
