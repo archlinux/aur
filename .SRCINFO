@@ -1,18 +1,18 @@
 pkgbase = stellarium-bin
 	pkgdesc = Software which renders realistic skies in real time with OpenGL
-	pkgver = 24.3
+	pkgver = 24.4
 	pkgrel = 1
 	url = https://stellarium.org/
 	arch = x86_64
 	license = GPL2
 	provides = stellarium
 	conflicts = stellarium
-	source = https://github.com/Stellarium/stellarium/releases/download/v24.3/Stellarium-24.3-qt6-x86_64.AppImage
-	source = https://github.com/Stellarium/stellarium/releases/download/v24.3/Stellarium-24.3-qt6-x86_64.AppImage.asc
+	source = https://github.com/Stellarium/stellarium/releases/download/v24.4/Stellarium-24.4-qt6-x86_64.AppImage
+	source = https://github.com/Stellarium/stellarium/releases/download/v24.4/Stellarium-24.4-qt6-x86_64.AppImage.asc
 	source = stellarium.bash
 	validpgpkeys = 79151C2E6351E7278DA1A730BF38D4D02A328DFF
-	sha256sums = 304764814caa5a23c0b848abc7e429e0ec1ef9e1f90ae999d9ef197c422562b3
-	sha256sums = 3b293d7829605bb66fb8a154d38fe7f9812d1ec4a9209f0a4348210db1bdbe64
+	sha256sums = 79a5bd45375cc952587aa44ac44efcd37303684cff6d488b8f4b59a6257eefb6
+	sha256sums = 895552f37f66d19039ae275b5735e68e43ed4bd0632453b2d0992eea1917b0e6
 	sha256sums = cc8903384ef8b8349dda202be45c3f68542dc74d40c4a1c266a5e057e96323ff
 
 pkgname = stellarium-bin

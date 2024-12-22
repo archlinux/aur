@@ -2,8 +2,8 @@
 
 pkgname=stellarium-bin
 _pkgname=stellarium
-_pkgname2=Stellarium
-pkgver=24.3
+_pkgname2=${_pkgname^}
+pkgver=24.4
 _pkgtag=v$pkgver
 pkgrel=1
 pkgdesc="Software which renders realistic skies in real time with OpenGL"
@@ -26,8 +26,8 @@ source=(
 	"$_pkgname.bash"
 )
 sha256sums=(
-	'304764814caa5a23c0b848abc7e429e0ec1ef9e1f90ae999d9ef197c422562b3'
-	'3b293d7829605bb66fb8a154d38fe7f9812d1ec4a9209f0a4348210db1bdbe64'
+	'79a5bd45375cc952587aa44ac44efcd37303684cff6d488b8f4b59a6257eefb6'
+	'895552f37f66d19039ae275b5735e68e43ed4bd0632453b2d0992eea1917b0e6'
 	'cc8903384ef8b8349dda202be45c3f68542dc74d40c4a1c266a5e057e96323ff'
 )
 
