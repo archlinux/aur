@@ -1,0 +1,4 @@
+[flatseal]
+source = "git"
+git = "https://github.com/tchx84/Flatseal.git"
+prefix = "v"
