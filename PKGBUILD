@@ -5,7 +5,7 @@
 pkgname=python-hstspreload
 _pkg="${pkgname#python-}"
 pkgver=2024.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium HSTS Preload list as a Python package"
 arch=(any)
 url="https://github.com/sethmlarson/hstspreload"
