@@ -2,7 +2,7 @@
 _pkgname=flask_limiter
 pkgname=python-flask-limiter
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Rate limiting for flask applications"
 url="https://flask-limiter.readthedocs.org"
 depends=('python' 'python-flask' 'python-limits' 'python-ordered-set' 'python-rich' 'python-typing_extensions')

@@ -1,7 +1,7 @@
 pkgbase = python-flask-limiter
 	pkgdesc = Rate limiting for flask applications
 	pkgver = 3.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flask-limiter.readthedocs.org
 	arch = any
 	license = MIT
