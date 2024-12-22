@@ -3,10 +3,10 @@
 pkgname=python-helpscout-v2
 _reponame=python-helpscout
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Client for interacting with Help Scout's API"
 url="https://pypi.org/project/${_reponame}/"
-arch=(any)
+arch=('any')
 license=('MIT')
 depends=('python' 'python-requests')
 makedepends=('python-build' 'python-installer' 'python-setuptools')

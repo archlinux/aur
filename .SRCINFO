@@ -1,7 +1,7 @@
 pkgbase = python-helpscout-v2
 	pkgdesc = Client for interacting with Help Scout's API
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/python-helpscout/
 	arch = any
 	license = MIT
