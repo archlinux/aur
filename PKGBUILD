@@ -3,7 +3,7 @@
 pkgname=python-jxlpy
 _reponame=jxlpy
 pkgver=0.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Module for reading and writing support for JPEG XL directly from Python"
 url="https://github.com/olokelo/jxlpy"
 arch=('x86_64' 'aarch64')
