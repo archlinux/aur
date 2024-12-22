@@ -4,7 +4,7 @@
 pkgname=python-xdoctest
 _name=${pkgname#python-}
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python package for executing tests in documentation strings"
 arch=(any)
 url="https://github.com/Erotemic/xdoctest"
