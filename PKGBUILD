@@ -1,7 +1,7 @@
 # Maintainer: Chris Mounce <christophermounce@gmail.com>
 
 pkgname=decker
-pkgver=1.52
+pkgver=1.53
 pkgrel=1
 pkgdesc="Multimedia platform for creating interactive documents"
 arch=('x86_64')
@@ -10,11 +10,11 @@ license=('MIT')
 makedepends=('xxd')
 depends=('glibc' 'hicolor-icon-theme' 'sdl2' 'sdl2_image')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/JohnEarnest/Decker/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('40fa09a202fbd371f29f735e8a3de57cc25f8056f59f4a87c6adfcd2279ff47f')
+sha256sums=('b095ef65b5b4a5496a433c15aa57d9d3621c4efe8d54f8e3caaafaacd0cf5dd2')
 
 build() {
     cd "$srcdir/Decker-$pkgver"
-    make EXTRA_FLAGS='-Wl,-z,now,-z,shstk' lilt decker docs
+    make -j1 EXTRA_FLAGS='-Wl,-z,now,-z,shstk' lilt decker docs
 }
 
 package() {
@@ -24,8 +24,6 @@ package() {
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 
     # Install desktop entry and icons
-    # PATCH: upstream's .desktop file missing MIME type
-    echo "MimeType=application/x-decker;" >> "Decker.desktop"
     install -Dm644 Decker.desktop "$pkgdir/usr/share/applications/Decker.desktop"
     for DIM in 32 64 128 192 256 512; do
         install -Dm644 "icon_${DIM}x${DIM}.png" "$pkgdir/usr/share/icons/hicolor/${DIM}x${DIM}/apps/decker.png"
