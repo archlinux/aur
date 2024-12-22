@@ -1,7 +1,7 @@
 pkgbase = python-lxmf
 	pkgdesc = Lightweight Extensible Message Format for Reticulum
 	pkgver = 0.5.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/markqvist/lxmf
 	arch = any
 	license = MIT
