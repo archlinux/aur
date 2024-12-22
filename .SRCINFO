@@ -1,6 +1,6 @@
 pkgbase = conceal
 	pkgdesc = Command line recycle bin
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://github.com/TD-Sky/conceal
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = conceal
 	optdepends = skim: supports skim as finder
 	provides = conceal
 	conflicts = conceal-bin
-	source = conceal-0.5.5.tar.gz::https://github.com/TD-Sky/conceal/archive/v0.5.5.tar.gz
-	sha256sums = 4b8cbebfe3a36612a78353512161560985c809c9b8f9d6586b35346fe46e15cd
+	source = conceal-0.5.6.tar.gz::https://github.com/TD-Sky/conceal/archive/v0.5.6.tar.gz
+	sha256sums = 410dc2dd9be752fd1340dde0ef278d9152734f46999114ea9a4bb24ea8aa8150
 
 pkgname = conceal
