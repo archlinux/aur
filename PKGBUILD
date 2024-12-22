@@ -1,16 +1,17 @@
-# Maintainer: Simon <simon dot hanna at serve-me dot info>
+# Maintainer: Frederick <fprice at pricemail dot com>
+# Contributor: Simon <simon dot hanna at serve-me dot info>
 # Contributor: Garrett <floft.net/contact>
 # Contributor: Macxcool <macx coool at coolnet dot xyz>
 
 pkgname=openlp
 pkgver=3.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Church presentation software."
 arch=('any')
 url='http://openlp.org/'
 license=('GPLv2')
 makedepends=('qt5-tools' 'python-pip' 'python-setuptools')
-depends=('python>=3.10' 'python<3.13' 'python-pyqt5' 'phonon-qt5'
+depends=('python>=3.10' 'python-pyqt5' 'phonon-qt5'
         'python-chardet' 'python-lxml' 'python-beautifulsoup4' 'python-pyenchant' 
         'python-mako' 'python-appdirs' 'python-pyodbc' 
         'python-pyqt5-webengine' 'qt5-multimedia' 'python-pyqt5-webengine' 'python-alembic' 
