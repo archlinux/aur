@@ -2,7 +2,7 @@
 
 pkgname=python-ink-extensions-git
 _gitpkgname=ink_extensions
-pkgver=r44.86d79e1
+pkgver=r47.7a167e4
 pkgrel=1
 pkgdesc='Python dependencies for running Inkscape extensions outside of Inkscape'
 arch=('any')
