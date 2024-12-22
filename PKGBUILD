@@ -1,26 +1,29 @@
-# Maintainer: Rich Lees <git0 at bitservices.io>
+# Maintainer: Angelo Dal Zotto <angelodalzotto97 at gmail dot com>
+# Contributor: Rich Lees <git0 at bitservices.io>
 # Contributor: Aaron Coach <aur at ezpz dot cz>
 # Contributor: Alexandra Koch <alexandra@alexandrakoch.se>
 
 pkgname=upliftpowerplay
 _name=upp
-pkgver=0.1.7
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="UPP: A tool for parsing, dumping and modifying data in Radeon PowerPlay tables"
 arch=('x86_64')
 url="https://github.com/sibradzic/upp"
 license=('GPL3')
 depends=('python' 'python-click' 'python-setuptools')
 optdepends=('python-registry: reading "soft" PowerPlay table from Windows registry')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-md5sums=('c0b42f7f9d331fd654352a06e142d474')
+source=("https://github.com/sibradzic/$_name/archive/refs/tags/v$pkgver.tar.gz")
+md5sums=('4cbc3150978f9f38f677060e4c7221b8')
 
 build() {
 	cd "$srcdir/$_name-$pkgver"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$srcdir/$_name-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 upliftpowerplay@.service "$pkgdir"/usr/lib/systemd/system/upliftpowerplay@.service
+    install -dm755 "$pkgdir"/etc/upliftpowerplay
 }
