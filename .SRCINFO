@@ -1,7 +1,7 @@
 pkgbase = python-fastdtw
 	pkgdesc = Python implementation of FastDTW
 	pkgver = 0.3.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/slaypni/fastdtw
 	arch = x86_64
 	license = MIT
