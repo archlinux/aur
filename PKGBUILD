@@ -3,7 +3,7 @@
 
 pkgname=python-soundcloud-git
 pkgver=r113.e0f577a
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python wrapper around the Soundcloud API"
 arch=(any)
 url="https://github.com/audiobridge/soundcloud-python"
