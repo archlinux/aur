@@ -1,6 +1,6 @@
 pkgbase = ved-git
 	pkgdesc = 1 MB text editor written in V with hardware accelerated text rendering (development version)
-	pkgver = 0.1+r369+g7977821cb
+	pkgver = 0.1+r365+g2fc1a7f6c
 	pkgrel = 1
 	url = https://github.com/vlang/ved
 	arch = x86_64
