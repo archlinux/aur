@@ -1,0 +1,4 @@
+[deemix-git]
+	source = "manual"
+#	source = "gitlab"
+#	gitlab = "RemixDev/deemix-py"
