@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspSummaryStatistics
-_pkgver=0.19.0
+_pkgver=0.19.2
 pkgname=r-${_pkgname,,}
-pkgver=0.19.0
+pkgver=0.19.2
 pkgrel=1
 pkgdesc="Summary Statistics Module for JASP"
 arch=('any')
@@ -23,7 +23,7 @@ depends=(r
 )
 groups=(r-jasp r-jaspextra)
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('49917b61a45d01f203e60d97ff3af21458cdb416cb6e35550515f0dce975e152')
+sha256sums=('85929553dda2efb3205ec7bd343fb5bd85c34147fc51a2fe9da38cd1cae39e26')
 
 
 build() {
