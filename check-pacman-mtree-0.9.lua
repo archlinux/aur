@@ -166,8 +166,8 @@ local function check_1_mtree_file(pkg,fs_root,verbose,file)
       if libz.gzgets(gz_fh,line,C.LINE_SIZE) == nil then break end
       
       l_line = ffi.string(line)
-      file,size,md5,sha256 = string.match(l_line, "^(%S+) .* size=(%S+) md5digest=(%S+) sha256digest=(%S+)")
-      if file and size and md5 and sha256 then
+      file,size,sha256 = string.match(l_line, "^(%S+) .* size=(%S+).* sha256digest=(%S+)")
+      if file and size and sha256 then
          if size then size=tonumber(size) end
       else
          file,symlink_linkto = string.match(l_line,"^(%S+) .* type=link link=(.*)%s$")
@@ -237,7 +237,7 @@ local function check_1_mtree_file(pkg,fs_root,verbose,file)
          if(bbb == C.ENOENT) then
          --if(string.match(msg,"No such file")) then
             if verbose > 0 then
-               printf_("EXTRA_MTREE pkg=%s file=%s size_mtree=%s md5_mtree=%s sha256_mtree=%s",pkg,file,size,md5,sha256)
+               printf_("EXTRA_MTREE pkg=%s file=%s size_mtree=%s sha256_mtree=%s",pkg,file,size,sha256)
             else
                printf_("EXTRA_MTREE pkg=%s file=%s",pkg,file)
             end
@@ -248,9 +248,9 @@ local function check_1_mtree_file(pkg,fs_root,verbose,file)
       end
 
       --print(file,type(size),size,type(fs_size),fs_size,aaa,bbb)
-      if fs_size ~= size or aaa ~= md5 or bbb ~= sha256 then
+      if fs_size ~= size or bbb ~= sha256 then
          if verbose > 0 then
-            printf_("DIFF pkg=%s file=%s size_mtree=%d size_fs=%d md5_mtree=%s md5_fs=%s sha256_mtree=%s sha256_fs=%s",pkg,file,size,fs_size,md5,aaa,sha256,bbb)
+            printf_("DIFF pkg=%s file=%s size_mtree=%d size_fs=%d sha256_mtree=%s sha256_fs=%s",pkg,file,size,fs_size,sha256,bbb)
          else 
             printf_("DIFF pkg=%s file=%s",pkg,file)
          end
@@ -282,7 +282,7 @@ local function main(arg)
    if not arg[1] then
       print("usage: " .. arg[0] .. " [ -a | pkg1 pkg2...] [-v | -vv] )")
       print("-a  = all pkgs")
-      print("-v  = verbose(include size/md5/sha256)")
+      print("-v  = verbose(include size/sha256)")
       print("-vv = even more verbose(show PKG= lines)")
       --printf_("%c%c%c@%04x.%c%c%c",99,103,109,255,110,101,116)
       
@@ -353,5 +353,4 @@ end
 -----------------------------------------------------------
 -----------------------------------------------------------
 --print(check_symlink(arg[1],arg[2]))
---print(get_openssl_evp_md5_sha256_for_file(arg[1]))
 return main(arg)
