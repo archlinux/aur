@@ -2,7 +2,7 @@
 
 pkgname=python-apollo
 _gitpkgname=apollo
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Microcontroller-based FPGA/JTAG programmer'
 arch=('any')
@@ -37,7 +37,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/greatscottgadgets/apollo/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=('a9a4db93b9c1444653d7e77b2db1c7c115ee8d0eeb850dc0f88475c4d557710610b4e6536f174041e9f872821f8857419c4b64ed7e7d8cdf756d2b0c9af38e2b')
+sha512sums=('67475167f379a988543b5e2740f7de6fdc6dc86daa6f2cf4687224609bae5db7555a26d75b5d7bff721c3809476962a0c3bc084f0e96e437188e123c3d2226d8')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
