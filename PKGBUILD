@@ -66,6 +66,7 @@ pkgver() {
 prepare() {
     cd vkdoom
     patch -i "$srcdir"/0001-Enforce-file-paths.patch -p 1
+    patch -i "$srcdir"/0002-fix-format-security-error.patch -p 1
 }
 
 build() {
