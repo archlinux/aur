@@ -1,6 +1,6 @@
 pkgbase = android-x86-boost
 	pkgdesc = Free peer-reviewed portable C++ source libraries (Android, x86)
-	pkgver = 1.84.0
+	pkgver = 1.87.0
 	pkgrel = 1
 	url = https://www.boost.org/
 	arch = any
@@ -14,13 +14,9 @@ pkgbase = android-x86-boost
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_1_84_0.tar.bz2
-	source = boost-1.81.0-phoenix-multiple-definitions.patch
-	source = boost-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch
+	source = https://boostorg.jfrog.io/artifactory/main/release/1.87.0/source/boost_1_87_0.tar.bz2
 	source = disable-version-check.patch
-	md5sums = 9dcd632441e4da04a461082ebbafd337
-	md5sums = cb1c25777e9b85af62366e7c930244b8
-	md5sums = 326826bf610c63c23247e70e648ff104
-	md5sums = 6290eb4fa0cab451aac92e12e85ef073
+	sha256sums = af57be25cb4c4f4b413ed692fe378affb4352ea50fbe294a11ef548f4d527d89
+	sha256sums = 63d12e7d703b471882608b4225c489f6a35ab425602783a4f9c4ea99a10f9c4b
 
 pkgname = android-x86-boost
