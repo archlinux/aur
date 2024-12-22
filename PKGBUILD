@@ -3,7 +3,7 @@
 _libname=pybind11-rdp
 pkgname="python-${_libname}"
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ implementation of the Ramer-Douglas-Peucker algorithm (binding to python via pybind11)'
 _rootdir="${_libname}-${pkgver}"
 arch=('x86_64')

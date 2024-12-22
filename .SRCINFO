@@ -1,7 +1,7 @@
 pkgbase = python-pybind11-rdp
 	pkgdesc = C++ implementation of the Ramer-Douglas-Peucker algorithm (binding to python via pybind11)
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cubao/pybind11-rdp
 	arch = x86_64
 	license = BSD
