@@ -13,12 +13,12 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('977e253795e1fbea5b4cc01741e95ccd6881c02a6302a28fbf9fe517480197ee')
 
 build() {
-	cd dijo-$pkgver
-	cargo build --release --locked
+  cd dijo-$pkgver
+  cargo build --release --locked
 }
 
 package() {
-	cd $pkgname-$pkgver
-	install -Dm755 target/release/dijo -t "$pkgdir/usr/bin"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/dijo"
+  cd dijo-$pkgver
+  install -Dm755 target/release/dijo -t "$pkgdir/usr/bin"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/dijo"
 }
