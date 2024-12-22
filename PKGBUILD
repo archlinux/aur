@@ -3,7 +3,7 @@
 pkgname=python-hostlist
 pkgdesc="Python module for handling LLNL hostlists"
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://www.nsc.liu.se/~kent/python-hostlist/"
 license=(GPL-2.0-or-later)
