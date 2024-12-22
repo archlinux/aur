@@ -247,10 +247,13 @@ export "KBUILD_BUILD_TIMESTAMP=$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 # Debugging
 _msg() {
-    echo ":: ${*}"
+    echo -e ":: ${*}"
 }
 _warn() {
-    echo ":: WARNING ${*//\n/\n          }"
+    echo -e ":: WARNING: ${*//\\n/\\n            }"
+}
+_error() {
+    echo -e ":: ERROR: ${*//\\n/\\n          }"
 }
 _debug_msg() {
     [ -n "${_debug_script}" ] && echo ":: debug: ${*}"
