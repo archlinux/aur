@@ -1,7 +1,7 @@
 pkgbase = pypipe-git
 	pkgdesc = Python command-line tool for pipeline processing
 	pkgver = r83.29f6595
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bugen/pypipe
 	arch = any
 	license = Apache-2.0
