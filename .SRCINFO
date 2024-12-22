@@ -2,7 +2,7 @@ pkgbase = cli-visualizer-git
 	pkgdesc = A cli visualizer for mpd
 	pkgver = 1.8+36+gb98068f
 	pkgrel = 1
-	url = https://github.com/dpayne/cli-visualizer
+	url = http://web.archive.org/web/20241004213645/https://github.com/dpayne/cli-visualizer
 	install = cli-visualizer-git.install
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = cli-visualizer-git
 	conflicts = cli-visualizer
 	conflicts = vis
 	options = !buildflags
-	source = cli-visualizer-git::git+https://github.com/dpayne/cli-visualizer
+	source = cli-visualizer-git::https://web.archive.org/web/20220627182126if_/https://codeload.github.com/dpayne/cli-visualizer/zip/refs/heads/master
 	md5sums = SKIP
 
 pkgname = cli-visualizer-git

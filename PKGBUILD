@@ -14,7 +14,7 @@ conflicts=('cli-visualizer' 'vis')
 provides=(cli-visualizer)
 options=(!buildflags)
 install=${pkgname}.install
-source=("https://web.archive.org/web/20220627182126if_/https://codeload.github.com/dpayne/cli-visualizer/zip/refs/heads/master")
+source=("cli-visualizer-git::https://web.archive.org/web/20220627182126if_/https://codeload.github.com/dpayne/cli-visualizer/zip/refs/heads/master")
 md5sums=('SKIP')
 
 build() {
