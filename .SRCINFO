@@ -1,7 +1,7 @@
 pkgbase = python-pyclip
 	pkgdesc = Cross-platform clipboard utilities supporting both binary and text data
 	pkgver = 0.7.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://pypi.org/project/pyclip/
 	arch = any
 	license = Apache-2.0
