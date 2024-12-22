@@ -2,7 +2,7 @@
 _pkgname=qiskit
 pkgname=python-${_pkgname}
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An open-source SDK for working with (IBM) quantum computers"
 arch=(x86_64)
