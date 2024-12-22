@@ -1,10 +1,10 @@
 pkgbase = gdcm
 	pkgdesc = C++ library for DICOM medical files
 	pkgver = 3.0.24
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/malaterre/GDCM
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = cmake
 	makedepends = python
 	makedepends = swig
