@@ -5,6 +5,7 @@ pkgbase = portable
 	url = https://github.com/Kraftland/portable
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = git
 	makedepends = libarchive
 	depends = coreutils
 	depends = awk

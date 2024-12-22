@@ -11,7 +11,7 @@ provides=(portable)
 groups=()
 options=(!debug !strip)
 
-makedepends+=()
+makedepends+=(git)
 
 depends=(
 	"coreutils"
