@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='certbot-dns-vultr'
 pkgver='0.2.0'
-pkgrel='2'
+pkgrel='3'
 epoch='1'
 pkgdesc='Authenticator plugin for Certbot to configure Vultr to respond to ACME dns-01 challenges to obtain HTTPS certificates'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('certbot' 'dns-lexicon' 'python>=3.4.0' 'python-acme' 'python-mock' 'py
 makedepends=('python-setuptools')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('5e19a42238f55b543218f524f65edba593a610bec3dec45b3764c180d6bcd781f37d6106089e415a97cde3894db8aa59523bf8152dee377c110800606c83b797')
+b2sums=('389440fefeb0a95773413e50fc82a2097f8b41fb82237b7693798ee8c7be996ce92c0e9efed1aca31996b3fabbc54816c80d373ef382dbe74bb9a3ffc5931bb0')
 
 _sourcedirectory="$pkgname-$pkgver"
 
