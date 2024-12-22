@@ -5,7 +5,7 @@
 
 pkgbase=ntsync
 pkgname=(ntsync-dkms ntsync-header ntsync-common)
-pkgver=6.12.1
+pkgver=6.12.6
 pkgrel=1
 pkgdesc="NT synchronization primitive driver"
 arch=(any)
@@ -19,8 +19,8 @@ source=("ntsync.c-$_commit::https://raw.githubusercontent.com/zen-kernel/zen-ker
         '99-ntsync.rules'
         'Makefile'
         'dkms.conf')
-sha256sums=('c33ddbbe7d0aa7331c9ab4cb1fed3fbaea97151399c67cce0857c9227b9f89e8'
-            'b1e1387316520db8c0ec55ff71a154020f69a037b024776aaf94b405d7046515'
+sha256sums=('f5cb59de384a210ca5a95ad28cd18ac5b894d669e040ab02ffe197031d7b6887'
+            '006437ee52a3e04f921df77081eb5c21c44c71f598b10ac534c6ef9e78296262'
             'c19771ae86e7df179f6b2f4a2837d3f0cbbbba7b32baef41a3c27120c760d78f'
             '7ca825f950853867eb137484b28053aaf5ebb6b0324ef399131134ad2a22d7fc'
             'ce5221146a19206ba043211db8f27143a82f9224c0aff24a0b584b7268fcb994'
