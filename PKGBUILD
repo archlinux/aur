@@ -1,4 +1,5 @@
-# Maintainer: Jan Cholasta <grubber at grubber cz>
+# Maintainer: Maddie Mewmews <maddie at mewmews gay>
+# Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
 pkgver=4.15pre+5+g62381cc
@@ -54,6 +55,7 @@ pkgver() {
 prepare() {
     cd gzdoom
     patch -i "$srcdir"/0001-Enforce-file-paths.patch -p 1
+    patch -i "$srcdir"/0002-fix-format-security-error.patch -p 1
 }
 
 build() {
