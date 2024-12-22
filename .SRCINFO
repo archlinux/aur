@@ -1,0 +1,22 @@
+pkgbase = byedpi-git
+	pkgdesc = A simple and fast software designed to bypass Deep Packet Inspection
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/hufrea/byedpi
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = byedpi
+	conflicts = byedpi
+	options = !debug
+	backup = etc/byedpi.conf
+	source = git+https://github.com/hufrea/byedpi.git
+	sha256sums = SKIP
+
+pkgname = byedpi-git
