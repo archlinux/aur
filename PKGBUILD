@@ -3,7 +3,7 @@
 prj='auror'
 pkgname=($prj)
 pkgdesc='only for developer until software is in first alpha'
-pkgver='0.0.0'
+pkgver='0.0.2'
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/vbextreme/${prj}.git"
@@ -11,7 +11,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/vbextreme/${prj}/arch
 license=('GPL3')
 sha256sums=('SKIP')
 makedepends=('meson' 'ninja')
-depends=('curl' 'zlib')
+depends=('curl' 'zlib' 'readline')
 
 prepare() {
     cd "${prj}-${pkgver}"
