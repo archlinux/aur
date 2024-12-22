@@ -2,7 +2,7 @@
 
 pkgname=live-photo-conv
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform tool to process live photos of Google Android"
 url="https://github.com/wszqkzqk/${pkgname}"
 arch=('x86_64' 'aarch64' 'riscv64' 'loong64')
@@ -24,6 +24,7 @@ makedepends=(
 )
 optdepends=(
     "ffmpeg: FFmpeg backend to convert internal video of a live photo to static pictures"
+    "gst-plugin-va: Hardware accelerated video decoding with GStreamer backend"
     "libavif: Support to save as .avif with GStreamer and GdkPixbuf backend"
     "libheif: Support to save photos as .heif, .heic, and .avif with GStreamer and GdkPixbuf backend"
     "libjxl: Support to save photos as .jxl with GStreamer and GdkPixbuf backend"
