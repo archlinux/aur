@@ -3,7 +3,7 @@
 pkgname=python-ioctl-opt
 _reponame=ioctl-opt
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Pythonified Linux asm-generic/ioctl.h"
 url="https://pypi.org/project/ioctl-opt/"
 arch=(any)
@@ -13,8 +13,9 @@ depends=(
 )
 makedepends=(
 	'git'
-	'python-poetry'
-	'python-wheel'
+	'python-build'
+	'python-installer'
+	'python-setuptools'
 )
 source=("https://pypi.org/packages/source/${_reponame::1}/${_reponame}/${_reponame}-${pkgver}.tar.gz")
 sha256sums=('5ed4f9a80d2e02e152a43d3648d7ed8821a0aac5ea88ecc5fcc14460ff7cf2f9')
