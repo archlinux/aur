@@ -3,7 +3,7 @@
 pkgname=python-jschon
 _gitpkgname=jschon
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Object-oriented JSON Schema implementation for Python'
 arch=('any')
 url='https://github.com/marksparkza/jschon'
