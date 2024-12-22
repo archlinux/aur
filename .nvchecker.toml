@@ -1,0 +1,4 @@
+[oauth2-proxy]
+source = "git"
+git = "https://github.com/oauth2-proxy/oauth2-proxy.git"
+prefix = "v"
