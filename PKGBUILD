@@ -1,6 +1,6 @@
 # Maintainer: Chris Lea <chris.lea@gmail.com>
 
-_basename=telnetlib_313_and_up
+_basename=telnetlib-313-and-up
 pkgname="python-${_basename}"
 pkgver=3.13.1
 pkgrel=1
@@ -19,11 +19,11 @@ makedepends=(
 )
 
 build() {
-    cd ${_basename}-${pkgver}
+    cd ${_basename//-/_}-${pkgver}
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd ${_basename}-${pkgver}
+    cd ${_basename//-/_}-${pkgver}
     python -m installer --destdir="$pkgdir" dist/*.whl
 }

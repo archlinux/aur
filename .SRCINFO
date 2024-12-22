@@ -1,4 +1,4 @@
-pkgbase = python-telnetlib_313_and_up
+pkgbase = python-telnetlib-313-and-up
 	pkgdesc = A copy of telnetlib for python 3.13+
 	pkgver = 3.13.1
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = python-telnetlib_313_and_up
 	source = https://files.pythonhosted.org/packages/source/t/telnetlib_313_and_up/telnetlib_313_and_up-3.13.1.tar.gz
 	sha256sums = 93cdf0a35e8b6463853e5bfa134288a9695c7b69b9e6f4bcfb71c0888470288a
 
-pkgname = python-telnetlib_313_and_up
+pkgname = python-telnetlib-313-and-up
