@@ -1,7 +1,7 @@
 pkgbase = python-pydes
 	pkgdesc = Pure python implementation of DES and TRIPLE DES encryption algorithm
 	pkgver = 2.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/twhiteman/pyDes
 	arch = any
 	license = MIT
