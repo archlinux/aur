@@ -5,7 +5,7 @@
 pkgname=python-cliapp-fiw
 _gitpkgname="${pkgname%-fiw}"
 pkgver=1.20180812.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Python framework for Unix-like command line programs'
 arch=('any')
 url='https://blog.liw.fi/posts/cliapp/'

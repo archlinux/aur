@@ -1,7 +1,7 @@
 pkgbase = python-cliapp-fiw
 	pkgdesc = Python framework for Unix-like command line programs
 	pkgver = 1.20180812.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://blog.liw.fi/posts/cliapp/
 	arch = any
 	license = GPL-2.0-or-later
