@@ -1,0 +1,16 @@
+pkgbase = kastel-git
+	pkgdesc = KDE Plasma 6 KRunner pastel plugin
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/Mykhail024/kastel
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = plasma-workspace
+	provides = kastel-git
+	conflicts = kastel
+	source = git+https://github.com/Mykhail024/kastel.git#tag=a626aa7034fdf9a2ee6f64595b4a024ef59f7314?signed
+	validpgpkeys = F194BF0887787571E9460B945BC1D32B8849594A
+	md5sums = SKIP
+
+pkgname = kastel-git
