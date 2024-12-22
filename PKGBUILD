@@ -4,7 +4,7 @@ _name=${pkgname#python-}
 # No tag for latest version available in PyPI
 _commit=e2b482eb0fcf171822a1d06063591bbe1c7776c1
 pkgver=0.1.9
-pkgrel=4
+pkgrel=5
 pkgdesc="A wrapper of latexdiff to compare two version of an arXiv preprint with a single command"
 arch=(any)
 url=https://github.com/temken/comparxiv
