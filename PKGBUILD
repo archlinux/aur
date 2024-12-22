@@ -43,6 +43,14 @@
 # NOT recommended when a new kernel is
 # released, but again, convenient for
 # package bumps.
+# 
+# Takes effect before '_reuse_file'.
+# 
+# Only takes effect if '_reuse_current'
+# or '_reuse_file' is enabled. Keep
+# disabled if you want to reuse your
+# existing kernel configuration without
+# any changes being applied on top.
 #
 # Set to anything but null to activate.
 : "${_reuse_current:=""}"
@@ -60,6 +68,14 @@
 # NOT recommended when a new kernel is
 # released, but again, convenient for
 # package bumps.
+# 
+# Takes effect after '_reuse_current'.
+# 
+# Only takes effect if '_reuse_current'
+# or '_reuse_file' is enabled. Keep
+# disabled if you want to reuse your
+# existing kernel configuration without
+# any changes being applied on top.
 # 
 # Set to anything but null to activate.
 : "${_reuse_file:=""}"
@@ -170,7 +186,7 @@
 # Set to '1' by default
 : "${_subarch_microarch:="1"}"
 
-# Enable compilation with LLVM
+# Enables compilation with LLVM
 # 
 # Be warned, this is largely untested
 # by me (JeremyStarTM). It *should* work,
@@ -200,7 +216,7 @@
 # ignore debug options.
 : "${_debug_kernel:=""}"
 
-# This allows you to enable or disable
+# This allows you to enable
 # debug options for THIS SCRIPT.
 # 
 # Set to anything but null to activate.
