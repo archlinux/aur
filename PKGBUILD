@@ -3,7 +3,7 @@
 pkgname=python-arm-gdb
 _name=arm_gdb
 pkgver=0.9.10
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python module for an easier access to analyze ARM Cortex-M peripherals"
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=(python-build
 checkdepends=()
 options=()
 # source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-source=(https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl)
+source=(https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name}-$pkgver-py3-none-any.whl)
 noextract=()
 sha256sums=('b9f6492f1ac412255f5b4fd0088e3c91ab8fa299789f586ecd50bd7578d26bc6')
 
@@ -33,5 +33,5 @@ sha256sums=('b9f6492f1ac412255f5b4fd0088e3c91ab8fa299789f586ecd50bd7578d26bc6')
 package() {
     #     cd "${srcdir}/${_name}-${pkgver}"
     #     python -m installer --destdir="${pkgdir}" dist/*.whl
-    python -m installer --destdir="$pkgdir" ${srcdir}/${_name//-/_}-$pkgver-py3-none-any.whl
+    python -m installer --destdir="$pkgdir" ${srcdir}/${_name}-$pkgver-py3-none-any.whl
 }

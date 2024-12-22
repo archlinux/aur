@@ -1,7 +1,7 @@
 pkgbase = python-arm-gdb
 	pkgdesc = Python module for an easier access to analyze ARM Cortex-M peripherals
 	pkgver = 0.9.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/arm-gdb
 	arch = any
 	license = MIT
