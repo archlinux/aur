@@ -2,13 +2,22 @@
 
 pkgname=python-linuxfd
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Bindings for the Linux eventfd/signalfd/timerfd/inotify syscalls"
 arch=('x86_64')
-license=('LGPL3')
-url='https://pypi.python.org/pypi/linuxfd/'
-depends=('python')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+license=('LGPL-3.0-or-later')
+url='https://github.com/FrankAbelbeck/linuxfd'
+
+depends=(
+  'glibc'
+  'python'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 
 _pypi=linuxfd
 source=(
