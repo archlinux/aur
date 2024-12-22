@@ -1,7 +1,7 @@
 pkgbase = python-bnnumerizer
 	pkgdesc = Bangla Number text to String Converter
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/bnnumerizer
 	arch = any
 	license = BSD

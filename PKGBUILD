@@ -3,7 +3,7 @@
 _name=bnnumerizer
 pkgname=python-${_name}
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bangla Number text to String Converter"
 arch=('any')
 url="https://pypi.org/project/${_name}"
