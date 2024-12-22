@@ -2,12 +2,10 @@
 
 pkgname=mediawarp-git
 _name=MediaWarp
-pkgver=0.0.5.r19.gff38e54
-pkgrel=4
+pkgver=0.0.6.r16.g22b828d
+pkgrel=1
 pkgdesc="EmbyServer API Optimization: Optimize playback of Strm files, customize the front-end style, customize the allowed access to the client, embedded scripts, work with Alist to realize Emby playback of web resources, recommended to use with AutoFilm."
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/Akimio521/MediaWarp"
 license=('AGPL-3.0-only')
 provides=(${pkgname%-git})
@@ -35,9 +33,9 @@ source=(
     "${pkgname%-git}.sysusers"
 )
 sha256sums=('SKIP'
-            '162fb09f8009c356fb60a6f2c23c1c910768aa4191d0f625400cbe9f7d275a3d'
-            '5e93ba0a2c59cf2c0b35fa61ef3818a7d1dd41a966f5547c8faaf4b197d8066c'
-            '7f0393bb6d622ad51b72c82df9a2313f378bf2d20019fee36671ffcc5878453e')
+    '162fb09f8009c356fb60a6f2c23c1c910768aa4191d0f625400cbe9f7d275a3d'
+    '5e93ba0a2c59cf2c0b35fa61ef3818a7d1dd41a966f5547c8faaf4b197d8066c'
+    '7f0393bb6d622ad51b72c82df9a2313f378bf2d20019fee36671ffcc5878453e')
 pkgver() {
     cd "${srcdir}/${pkgname}"
     (
