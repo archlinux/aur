@@ -1,7 +1,7 @@
 pkgbase = python-proton-vpn-local-agent-bin
 	pkgdesc = A python module which implements a client for the Proton Local Agent API.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProtonVPN/local-agent-rs
 	arch = x86_64
 	arch = aarch64

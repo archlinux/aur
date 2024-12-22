@@ -2,7 +2,7 @@
 
 pkgname=python-proton-vpn-local-agent-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A python module which implements a client for the Proton Local Agent API.'
 arch=('x86_64' 'aarch64')
 conflicts=('python-proton-vpn-local-agent')
