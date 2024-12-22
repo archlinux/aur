@@ -2,7 +2,7 @@
 # Contributor: spider-mario <spidermario@free.fr>
 # Contributor: Marcin Karpezo <sirmacik at gmail dot com>
 pkgname=nqp
-pkgver=2024.10
+pkgver=2024.12
 pkgrel=1
 pkgdesc="Lightweight Raku-like environment for virtual machines (MoarVM backend)"
 arch=(i686 x86_64 aarch64)
@@ -12,7 +12,7 @@ depends=("moarvm>=$pkgver")
 makedepends=('perl>=5.8')
 options=('!makeflags')
 source=("https://github.com/Raku/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=(ac58b70e798a2e28952664bf75f75bab708bc9604cf3f92f30eed4dc23360fe8e535f00cf81e2733a181dc1377c55ae90ada63278c1e603bab772e2ed65eeeb7)
+b2sums=('ea1ee9690451f3a18b9815a2515fe781ca73562fa8820994c1e21bd3f5fc7414f167f0dbdeed96de9c4d98b98fe0ae68b07cee7dfd2de467a8f69c4c8dfdd43c')
 
 build() {
 	cd "$pkgname-$pkgver"
