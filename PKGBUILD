@@ -1,6 +1,6 @@
 # Maintainer: Patrick Hechler <patrjprof-git.aur@ph.anderemails.de>
 pkgname=patrjprof-git
-pkgver=1.3.0.snapshot_r193
+pkgver=1.3.0r199
 pkgrel=1
 pkgdesc="A Free Java profiler written in Java"
 arch=('any')
@@ -30,7 +30,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "patr-java-profiler"
-  printf "%sr%s" "$(cat VERSION | sed -E 's/([^-]+)-SNAPSHOT/\1.snapshot_/')" "$(git rev-list --count HEAD)"
+  printf "%sr%s" "$(cat VERSION | sed -E 's/([^-]+)-SNAPSHOT/\1_snapshot./')" "$(git rev-list --count HEAD)"
 }
 
 build() {
