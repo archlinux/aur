@@ -3,18 +3,18 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird
-pkgver=20241006
+pkgver=20241221
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
 url='https://github.com/LadybirdBrowser/ladybird'
 license=(BSD-2-Clause)
-depends=(ffmpeg libgl qt6-base qt6-tools qt6-wayland qt6-multimedia ttf-liberation)
-makedepends=(git cmake ninja curl unzip zip tar autoconf-archive nasm)
+depends=(curl ffmpeg libgl qt6-base qt6-multimedia qt6-tools qt6-wayland ttf-liberation)
+makedepends=(autoconf-archive automake cmake git nasm ninja tar unzip zip)
 options=('!lto' '!debug')
 source=(
-  "git+$url#commit=5056bda043984953685bb4284fc698ab42418045" # 2024-10-06
-  "git+https://github.com/microsoft/vcpkg.git#commit=2960d7d80e8d09c84ae8abf15c12196c2ca7d39a" # 2024-09-30 (Toolchain/BuildVcpkg.sh)
+  "git+$url#commit=34f78ca1522654dbb1a4977020b0d5fb22bbd764" # 2024-12-21
+  "git+https://github.com/microsoft/vcpkg.git#commit=b2cb0da531c2f1f740045bfe7c4dac59f0b2b69c" # 2024-11-16 (Toolchain/BuildVcpkg.py)
   "ladybird.desktop"
 )
 sha256sums=(
