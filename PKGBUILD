@@ -2,7 +2,7 @@
 # Contributor: fishburn <frankthefishburn@gmail.com>
 
 pkgname=fsl
-pkgver=6.0.7.14
+pkgver=6.0.7.16
 pkgrel=1
 pkgdesc="A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data"
 arch=("x86_64")
