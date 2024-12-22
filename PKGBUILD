@@ -1,24 +1,26 @@
-# Maintainer: Maxime Morel <maxime@mmorel.eu>
+# Maintainer: LevitatingBusinessMan (Rein Fernhout) <me@levitati.ng>
 # Co-Maintainer: dreieck
 
 pkgname=opentrack-git
 epoch=1
-pkgver=2.3.13+r6207.20210425.0ddcf4eb
-pkgrel=2
+pkgver=2024.1.1+r6870.20241102.5ba755aa
+pkgrel=1
 pkgdesc="An application dedicated to tracking user's head movements and relaying the information to games and flight simulation software"
 arch=(
   'i686'
   'x86_64'
 )
 url="https://github.com/opentrack/opentrack/"
-license=('GPL3')
+license=('ISC')
 depends=(
   'opencv'
   'qt5-base'
 )
-optdepends=()
+optdepends=(
+  'opentrack-tracker-neuralnet'
+)
 makedepends=(
-  'cmake' 
+  'cmake'
   'git'
   'ninja'
   'wine'
