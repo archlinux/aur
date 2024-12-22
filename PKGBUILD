@@ -1,9 +1,9 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=gtg
 pkgver=0.6
-pkgrel=8
+pkgrel=9
 pkgdesc='Personal GTD like organizer for the GNOME desktop environment'
-url=https://wiki.gnome.org/Apps/GTG
+url=https://getting-things-gnome.github.io
 arch=(any)
 license=(GPL-2.0-only)
 depends=(gtksourceview4 gnome-icon-theme python-cairo python-dbus

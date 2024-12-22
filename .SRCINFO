@@ -1,8 +1,8 @@
 pkgbase = gtg
 	pkgdesc = Personal GTD like organizer for the GNOME desktop environment
 	pkgver = 0.6
-	pkgrel = 8
-	url = https://wiki.gnome.org/Apps/GTG
+	pkgrel = 9
+	url = https://getting-things-gnome.github.io
 	arch = any
 	license = GPL-2.0-only
 	checkdepends = python-mock
