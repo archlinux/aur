@@ -1,6 +1,6 @@
 pkgbase = asak-git
 	pkgdesc = A cross-platform audio recording/playback tool (git)
-	pkgver = r44.4ba21ff
+	pkgver = r54.25413aa
 	pkgrel = 1
 	url = https://github.com/chaosprint/asak
 	arch = x86_64
