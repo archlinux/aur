@@ -1,6 +1,6 @@
 # Maintainer: SinoCici <hsk6808065@163.com>
 pkgname=ideapad2024-power-management
-pkgver=0.0.2
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Manage power settings for the Lenovo Ideapad 2024 (IdeaPad Pro 5 (Gen 9)) with the CLI tool ideapad2024-power-manage, alongside a system tray icon for convenient access. Remember, you'll need to manually start the tray by executing ideapad2024-power-tray."
 arch=("any")
@@ -17,11 +17,18 @@ source=(
 	"$url/archive/refs/tags/$pkgver.tar.gz"
 )
 
-sha256sums=('9d0e53d6a55b55876872355d955b77c8f008a14ea782ac3136bc0abe8d8a0ad7')
+sha256sums=('4919a8c5f67ce5357df75f8d51c5c76862d8c36372bd76c68d6a6f5f2e89e3ab')
 
 build() {
 	# at this point the user can still be captured by $(whoami)
-	cd "$srcdir/$pkgname-$pkgver"
+	if [ -d "$srcdir/$pkgname-$pkgver" ]; then
+		cd "$srcdir/$pkgname-$pkgver"
+		echo "Changed directory to $srcdir/$pkgname-$pkgver"
+	else
+		cd "$srcdir"
+		echo "Changed directory to $srcdir"
+	fi
+
 	# we need to put the following to the /etc/sudoers.d/01_$(whoami)_ideapad2024-power-management
 	# $(whoami) ALL=(ALL) NOPASSWD: /usr/bin/cpupower frequency-set -g powersave
 	# $(whoami) ALL=(ALL) NOPASSWD: /usr/bin/cpupower frequency-set -g schedutil
@@ -29,11 +36,13 @@ build() {
 	pred="# editted by ideapad2024-power-management"
 	l1="$(whoami) ALL=(ALL) NOPASSWD: /usr/bin/cpupower frequency-set -g powersave"
 	l2="$(whoami) ALL=(ALL) NOPASSWD: /usr/bin/cpupower frequency-set -g schedutil"
+	l3="$(whoami) ALL=(ALL) NOPASSWD: /usr/bin/cpupower frequency-set -g performance"
 	post="# end of editted by ideapad2024-power-management"
 
 	echo $pred | sudo tee 01_$(whoami)_ideapad2024-power-management
 	echo $l1 | sudo tee -a 01_$(whoami)_ideapad2024-power-management
 	echo $l2 | sudo tee -a 01_$(whoami)_ideapad2024-power-management
+	echo $l3 | sudo tee -a 01_$(whoami)_ideapad2024-power-management
 	echo $post | sudo tee -a 01_$(whoami)_ideapad2024-power-management
 	echo $(whoami) | tee whoami.txt
 
@@ -41,7 +50,13 @@ build() {
 
 package() {
 	# Note that $(whoami) is not available here
-	cd "$srcdir/$pkgname-$pkgver"
+	if [ -d "$srcdir/$pkgname-$pkgver" ]; then
+		cd "$srcdir/$pkgname-$pkgver"
+		echo "Changed directory to $srcdir/$pkgname-$pkgver"
+	else
+		cd "$srcdir"
+		echo "Changed directory to $srcdir"
+	fi
 	username=$(cat "whoami.txt")
 	install -Dm 755 "ideapad2024-power-manage.py" "${pkgdir}/usr/bin/ideapad2024-power-manage"
 
@@ -57,3 +72,4 @@ package() {
 
 	# modify acpi_call permission in the build.install script, otherwise it will not work because build and package are done in virtual environment
 }
+
