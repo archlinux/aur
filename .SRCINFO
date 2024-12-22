@@ -1,13 +1,12 @@
 pkgbase = python-bumps
 	pkgdesc = Data fitting with uncertainty analysis
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bumps/bumps
 	arch = any
 	license = LicenseRef-Public Domain
 	checkdepends = python-nose
 	makedepends = python-setuptools
-	makedepends = python-sphinx
 	depends = python
 	depends = python-matplotlib
 	depends = python-numpy

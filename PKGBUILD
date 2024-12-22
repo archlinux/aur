@@ -3,7 +3,7 @@
 pkgname=python-bumps
 _name=${pkgname#python-}
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Data fitting with uncertainty analysis"
 arch=(any)
 url="https://github.com/bumps/bumps"
@@ -14,8 +14,8 @@ depends=(python
          python-scikit-learn
          python-scipy
          python-wxpython)
-makedepends=(python-setuptools
-             python-sphinx)
+makedepends=(python-setuptools)
+#             python-sphinx)
 checkdepends=(python-nose)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_name}/${_name}/archive/v${pkgver}.tar.gz"
 	"bumps.patch")
@@ -33,7 +33,7 @@ build() {
 	cd ${_name}-${pkgver}
 	python setup.py build
 	(cd bumps/dream && cc compiled.c -I ../../Random123/include/ -O2 -fopenmp -shared -lm -o _compiled.so -fPIC )
-        (cd doc && make html)
+#	(cd doc && make html)
 #	(cd doc && make pdf)
 }
 
@@ -47,6 +47,6 @@ package() {
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	mkdir -p ${pkgdir}/usr/share/licenses/python-bumps
 	cp ${srcdir}/${_name}-${pkgver}/LICENSE.txt ${pkgdir}/usr/share/licenses/python-bumps/license.txt
-	mkdir -p ${pkgdir}/usr/share/doc/python-bumps
-	cp ${srcdir}/${_name}-${pkgver}/doc/_build/html ${pkgdir}/usr/share/doc/python-bumps -R
+#	mkdir -p ${pkgdir}/usr/share/doc/python-bumps
+#	cp ${srcdir}/${_name}-${pkgver}/doc/_build/html ${pkgdir}/usr/share/doc/python-bumps -R
 }
