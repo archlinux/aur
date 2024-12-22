@@ -5,66 +5,109 @@
 # Contributor: yarost12 <yaro330@gmail.com>
 
 ### BUILD OPTIONS
-# You can modify these settings by executing "env _<setting>=<value> makepkg"
-# instead of modifying the PKGBUILD file. Here's an example:
+# You can modify these settings by
+# executing "env _<setting>=<value> makepkg"
+# instead of modifying the PKGBUILD file.
+# 
+# Here's an example:
 # env _makemenuconfig=y _copyfinalconfig=y _subarch=30 makepkg
 
-# Tweak kernel options prior to a build via menuconfig.
+# Tweak kernel options prior to a build
+# via menuconfig.
 # 
 # Set to anything but null to activate.
 : "${_makemenuconfig:=""}"
 
-# Tweak kernel options prior to a build via nconfig.
+# Tweak kernel options prior to a build
+# via nconfig.
 # 
 # Set to anything but null to activate.
 : "${_makenconfig:=""}"
 
-# Tweak kernel options prior to a build via xconfig.
+# Tweak kernel options prior to a build
+# via xconfig.
 # 
 # Set to anything but null to activate.
 : "${_makexconfig:=""}"
 
 # Use the current kernel's .config file
-# Enabling this option will use the .config of the currently
-# running kernel rather than the Arch Linux defaults. Useful
-# when the package gets updated and you already went through
-# the trouble of customizing your config options. NOT recommended
-# when a new kernel is released, but again, convenient
-# for package bumps.
+# 
+# Enabling this option will use the
+# .config of the currently running kernel
+# rather than the Clear Linux defaults.
+# 
+# Useful when the package gets updated and
+# you already went through the trouble of
+# customizing your config options.
+# 
+# NOT recommended when a new kernel is
+# released, but again, convenient for
+# package bumps.
 #
 # Set to anything but null to activate.
-: "${_use_current:=""}"
+: "${_reuse_current:=""}"
 
-# Apply selected optimizations chosen by
+# Use the 'kconfig' file placed in the
+# directory where this PKGBUILD is in.
+# 
+# Enabling this option will use the
+# .config placed next to the PKGBUILD file.
+# 
+# Useful when the package gets updated and
+# you already went through the trouble of
+# customizing your config options.
+#
+# NOT recommended when a new kernel is
+# released, but again, convenient for
+# package bumps.
+# 
+# Set to anything but null to activate.
+: "${_reuse_file:=""}"
+
+# Apply selected config changes chosen by
 # the package maintainers to the config.
-#
-# Only takes effect if '_use_current'
-# is enabled. Keep disabled if you want
-# to reuse your existing kernel configuration
-# without any changes being applied to it.
+# 
+# Only takes effect if '_reuse_current'
+# or '_reuse_file' is enabled. Keep
+# disabled if you want to reuse your
+# existing kernel configuration without
+# any changes being applied on top.
 #
 # Set to anything but null to activate.
-: "${_optimize_defconfig:=""}"
+: "${_update_kconfig_on_reuse:=""}"
 
-# Determines whether the kernel configuration should be
-# copied into the source tree before compilation starts.
+# Determines whether the final kernel
+# configuration shall be copied into
+# the package source tree (where this
+# very PKGBUILD file lives) before
+# compilation starts.
 # 
 # Set to anything but null to activate.
 : "${_copyfinalconfig:=""}"
 
-# Only compile active modules to VASTLY reduce the number
-# of modules built and the build time.
+# Only compile active modules to VASTLY
+# reduce the number of modules built
+# and the build time.
 # 
-# To keep track of which modules are needed for your specific system/hardware,
-# give modprobed-db a try: https://aur.archlinux.org/packages/modprobed-db
+# To keep track of which modules are
+# needed for your specific system/hardware,
+# give modprobed-db a try:
+# https://aur.archlinux.org/packages/modprobed-db
 # 
-# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+# More at this wiki page:
+# https://wiki.archlinux.org/index.php/Modprobed-db
+# 
 # Set to anything but null to activate.
 : "${_localmodcfg:=""}"
 
-# Optionally select a sub architecture by number or
-# leave blank, which will require user interaction during the build.
+# Optionally select a sub architecture
+# by number or leave blank, which will
+# require user interaction during the build.
 # Note that the default option is 41.
+# 
+# Requires '_update_kconfig_on_reuse_'
+# to be enabled if using an existing
+# kernel configuration.
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
@@ -111,33 +154,57 @@
 #  43. AMD-Native optimizations autodetected by the compiler (MNATIVE_AMD)
 : "${_subarch:=""}"
 
-# Selects the x86-64 microarchitecture to compile for.
-# This value is only used by the GENERIC_CPU
+# Selects the x86-64 microarchitecture
+# to compile for. This value is only
+# used by the GENERIC_CPU
 # subarchitecture and is required.
 # Can be either '1', '2', '3' or '4'
-# 
-# Set to '1' by default
 #
 # For more information see:
 # https://en.wikipedia.org/wiki/X86-64#Microarchitecture_levels
+# 
+# Requires '_update_kconfig_on_reuse_'
+# to be enabled if using an existing
+# kernel configuration.
+# 
+# Set to '1' by default
 : "${_subarch_microarch:="1"}"
 
-
 # Enable compilation with LLVM
-# Be warned, this is largely untested by me (JeremyStarTM). It *should* work,
-# but if it doesn't, write a comment and I'll fix it.
+# 
+# Be warned, this is largely untested
+# by me (JeremyStarTM). It *should* work,
+# but if it doesn't, write a comment
+# and I'll write a fix for it.
+# 
+# Requires '_update_kconfig_on_reuse_'
+# to be enabled if using an existing
+# kernel configuration.
 # 
 # Set to anything but null to activate.
 : "${_use_llvm_lto:=""}"
 
-# Debug options
-# This allows you to enable or disable debug options.
-# Set to 'y' to force enable, 'n' to force disable or '' to ignore debug options.
-# Leaving the setting empty will use the kernel configuration setting to determine
-# if debug options shall be enabled/disabled.
+# This allows you to enable or disable
+# debug options for THE COMPILED KERNEL.
+# 
+# Leaving the setting empty will leave
+# the debug settings up to the kernel
+# configuration's settings.
+# 
+# Requires '_update_kconfig_on_reuse_'
+# to be enabled if using an existing
+# kernel configuration.
+# 
+# Set to 'y' to force enable,
+# 'n' to force disable or '' to
+# ignore debug options.
+: "${_debug_kernel:=""}"
+
+# This allows you to enable or disable
+# debug options for THIS SCRIPT.
 # 
 # Set to anything but null to activate.
-: "${_debug:=""}"
+: "${_debug_script:=""}"
 
 ### BUILD OPTIONS END
 
@@ -163,7 +230,7 @@ license=(GPL-2.0-only)
 makedepends=("bc" "cpio" "gettext" "git" "libelf" "pahole" "perl" "python" "tar" "xz" "zstd")
 [[ -n "${_use_llvm_to}" ]] && makedepends+=("clang" "llvm" "lld")
 options=("!strip" "!debug")
-[[ "${_debug}" == "y" ]] && options=("!strip")
+[[ "${_debug_kernel}" == "y" ]] && options=("!strip")
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
@@ -178,10 +245,30 @@ export "KBUILD_BUILD_HOST=archlinux"
 export "KBUILD_BUILD_USER=${pkgbase}"
 export "KBUILD_BUILD_TIMESTAMP=$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
+# Debugging
+_msg() {
+    echo ":: ${*}"
+}
+_warn() {
+    echo ":: WARNING ${*//\n/\n          }"
+}
+_debug_msg() {
+    [ -n "${_debug_script}" ] && echo ":: debug: ${*}"
+}
+_debug_call() {
+    local function="${1}"
+    shift
+    local args="${*}"
+    
+    _debug_msg "call: ${function}(${args})"
+}
+
 # Applies all patches
-apply_patches() {
+_apply_patches() {
+    _debug_call "_apply_patches"
+    
     # Patch with kernel version patches
-    patch -Np1 -i ../patch-${_kernel_major}.${_kernel_minor} || true
+    patch -Np1 -i ../patch-${_kernel_major}.${_kernel_minor} || :
     
     # Set version
     echo "-${pkgrel}" > localversion.10-pkgrel
@@ -195,7 +282,7 @@ apply_patches() {
             fi
         fi
         
-        patch -Np1 -i "${srcdir}/cl-linux/${i}" || true
+        patch -Np1 -i "${srcdir}/cl-linux/${i}" || :
     done
 
     # Patch with kernel_compiler_patch patches.
@@ -204,62 +291,29 @@ apply_patches() {
     patch -Np1 -i "$srcdir/kernel_compiler_patch-$_kernelcompilerpatch/more-ISA-levels-and-uarches-for-kernel-6.1.79+.patch"
 }
 
-# Allows user to modify the kernel config
-modify_defconfig() {
-    [[ -n "$_makemenuconfig" ]] && make ${BUILD_FLAGS[*]} menuconfig
-    [[ -n "$_makexconfig" ]] && make ${BUILD_FLAGS[*]} xconfig
-    [[ -n "$_makenconfig" ]] && make ${BUILD_FLAGS[*]} nconfig
-
-    # Don't crash if all three are false
-    true
-}
-
-# Copies the kernel config
-copy_defconfig() {
-    local "_cur_major_ver=$(zcat /proc/config.gz | grep Linux | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
-    [[ "${_cur_major_ver}" != "${_kernel_major}" ]] &&
-        warning "Major version was updated, you should regen the defconfig"
-
-    if [[ -s /proc/config.gz ]]; then
-        # modprobe configs
-        zcat /proc/config.gz > ./.config
-        make ${BUILD_FLAGS[*]} olddefconfig
-    else
-        warning "Your kernel was not compiled with IKCONFIG_PROC."
-        warning "Unable to read kernel configuration, aborting."
-        exit
-    fi
-}
-
 # Updates the kernel config
-update_defconfig() {
-    # Copy configuration file (if found)
-    if [ -f "${startdir}/kconfig" ]; then
-        echo ":: Using configuration file \"${startdir}/kconfig\""
-        cp -Tf "${startdir}/kconfig" ./.config
-    else
-        echo ":: Using configuration file \"${srcdir}/${pkgbase}/config\""
-        cp -Tf $srcdir/cl-linux/config ./.config
-    fi
+_update_config() {
+    _debug_call "_update_config"
     
     # Extra configuration
-    # General setup
+    _debug_msg "Updating configuration"
+    # -> General setup
     scripts/config --set-str DEFAULT_HOSTNAME archlinux \
                 -e IKCONFIG \
                 -e IKCONFIG_PROC \
                 -u RT_GROUP_SCHED
-    # Power management and ACPI options
+    # -> Power management and ACPI options
     scripts/config -e ACPI_REV_OVERRIDE_POSSIBLE \
                 -e ACPI_TABLE_UPGRADE
-    # Virtualization
+    # -> Virtualization
     scripts/config -e KVM_SMM
-    # General architecture-dependent options
+    # -> General architecture-dependent options
     scripts/config -e KPROBES
-    # Enable loadable module support
+    # -> Enable loadable module support
     scripts/config -u MODULE_SIG_FORCE
-    # Networking support
+    # -> Networking support
     scripts/config -e NETFILTER_INGRESS
-    # Device Drivers
+    # -> Device Drivers
     scripts/config -e FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
                 -e DELL_SMBIOS_SMM \
                 -m PATA_JMICRON \
@@ -269,9 +323,9 @@ update_defconfig() {
                 -M SND_MIXER_OSS SND_PCM_OSS \
                 -E SND_PCM_OSS SND_PCM_OSS_PLUGINS \
                 -m AGP -M AGP AGP_INTEL -M AGP_INTEL AGP_VIA
-    # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
+    # -> Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
     scripts/config -e SECTION_MISMATCH_WARN_ONLY
-    # File systems
+    # -> File systems
     scripts/config -m NTFS3_FS \
                 -e NTFS3_LZX_XPRESS \
                 -e NTFS3_FS_POSIX_ACL
@@ -279,7 +333,7 @@ update_defconfig() {
                 -e SMB_SERVER_SMBDIRECT \
                 -e SMB_SERVER_CHECK_CAP_NET_ADMIN \
                 -e SMB_SERVER_KERBEROS5
-    # Security options
+    # -> Security options
     scripts/config -e SECURITY_SELINUX \
                 -e SECURITY_SELINUX_BOOTPARAM \
                 -e SECURITY_SMACK \
@@ -289,39 +343,57 @@ update_defconfig() {
                 -e SECURITY_TOMOYO \
                 -e SECURITY_APPARMOR \
                 -e SECURITY_YAMA
-    # Security options -> Landlock options
+    # -> Security options -> Landlock options
     scripts/config -e SECURITY_LANDLOCK
-    # Library routines
+    # -> Library routines
     scripts/config -k -e FONT_TER16x32
     
-    # Enable LLVM compilation
-    [[ -n "${_use_llvm_lto}" ]] && scripts/config -d LTO_NONE \
-                                                -e LTO \
-                                                -e LTO_CLANG \
-                                                -e ARCH_SUPPORTS_LTO_CLANG \
-                                                -e ARCH_SUPPORTS_LTO_CLANG_THIN \
-                                                -e HAS_LTO_CLANG \
-                                                -e LTO_CLANG_THIN \
-                                                -e HAVE_GCC_PLUGINS
+    # -> Enable LLVM compilation
+    if [ -n "${_use_llvm_lto}" ]; then
+        _debug_msg "Enabling LLVM compilation"
+        
+        scripts/config -d LTO_NONE \
+            -e LTO \
+            -e LTO_CLANG \
+            -e ARCH_SUPPORTS_LTO_CLANG \
+            -e ARCH_SUPPORTS_LTO_CLANG_THIN \
+            -e HAS_LTO_CLANG \
+            -e LTO_CLANG_THIN \
+            -e HAVE_GCC_PLUGINS
+    fi
     
-    # Enable or disable debug settings
-    [[ "${_debug}" == "y" ]] && scripts/config -e DEBUG_INFO \
-                                            -e DEBUG_INFO_BTF \
-                                            -e DEBUG_INFO_DWARF4 \
-                                            -e PAHOLE_HAS_SPLIT_BTF \
-                                            -e DEBUG_INFO_BTF_MODULES
-    [[ "${_debug}" == "n" ]] && scripts/config -d DEBUG_INFO \
-                                            -d DEBUG_INFO_BTF \
-                                            -d DEBUG_INFO_DWARF4 \
-                                            -d PAHOLE_HAS_SPLIT_BTF \
-                                            -d DEBUG_INFO_BTF_MODULES
+    # -> Enable or disable debug settings
+    case "${_debug_kernel}" in
+        "y")
+            _debug_msg "Enabling kernel debugging"
+            scripts/config -e DEBUG_INFO \
+                -e DEBUG_INFO_BTF \
+                -e DEBUG_INFO_DWARF4 \
+                -e PAHOLE_HAS_SPLIT_BTF \
+                -e DEBUG_INFO_BTF_MODULES
+            ;;
+        "n")
+            _debug_msg "Disabling kernel debugging"
+            scripts/config -d DEBUG_INFO \
+                -d DEBUG_INFO_BTF \
+                -d DEBUG_INFO_DWARF4 \
+                -d PAHOLE_HAS_SPLIT_BTF \
+                -d DEBUG_INFO_BTF_MODULES
+            ;;
+    esac
     
     # Run olddefconfig
+    _debug_msg "Running olddefconfig"
     make ${BUILD_FLAGS[*]} olddefconfig
+    
+    # Show diff of default config and updated config
+    _msg "Showing diff between the default and updated config"
     diff -u $srcdir/cl-linux/config .config || :
     
-    # Set subarch automatically
     if [ -n "${_subarch}" ]; then
+        # Set subarch
+        _debug_msg "Setting subarchitecture"
+        
         if [ "${_subarch}" == "41" ]; then
             yes "${_subarch}
 ${_subarch_microarch}" | make ${BUILD_FLAGS[*]} oldconfig
@@ -330,34 +402,71 @@ ${_subarch_microarch}" | make ${BUILD_FLAGS[*]} oldconfig
         fi
     else
         # Ask for subarch
+        _debug_msg "Asking for subarchitecture"
+        
         make ${BUILD_FLAGS[*]} oldconfig
     fi
 }
 
 # Prepares the installation
 prepare() {
+    _debug_call "prepare"
     cd "${_src_linux}" || exit 1
 
-    apply_patches
+    # Apply patches
+    _apply_patches
 
-    [[ -n "${_use_current}" ]] && copy_defconfig
-    [[ -n "${_optimize_defconfig}" ]] || [[ -z "${_use_current}" ]] && update_defconfig
+    if [ -n "${_reuse_current}" ]; then
+        # Use config from running kernel
+        
+        local "_cur_major_ver=$(zcat /proc/config.gz | grep Linux | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
+        
+        [ "${_cur_major_ver}" != "${_kernel_major}" ] &&
+            _warn "Your kernel configuration is old, please update your configuration"
+        
+        if [[ -s /proc/config.gz ]]; then
+            zcat /proc/config.gz > ./.config
+            make ${BUILD_FLAGS[*]} olddefconfig
+        else
+            _warn "WARNING: Your kernel was not compiled with 'IKCONFIG_PROC'.
+                  Unable to read kernel configuration, aborting."
+            exit 1
+        fi
+    elif [ -f "${startdir}/kconfig" ]; then
+        # Use ./kconfig
+        
+        _msg " Using configuration file \"${startdir}/kconfig\""
+        cp -Tf "${startdir}/kconfig" ./.config
+    else
+        # Use builtin
+        
+        _msg ":: Using configuration file \"${srcdir}/${pkgbase}/config\""
+        cp -Tf $srcdir/cl-linux/config ./.config
+    fi
+    
+    # Update kernel configuration
+    if [ -z "${_reuse_current}" ] || [[ -n "${_reuse_current}" && -n "${_update_kconfig_on_reuse}" ]]; then
+        _update_config
+    fi
 
     # Read and apply modprobed database
     # See https://aur.archlinux.org/packages/modprobed-db
-    [[ -n "${_localmodcfg}" ]] &&
+    if [ -n "${_localmodcfg}" ]; then
         if [ -e "${HOME}/.config/modprobed.db" ]; then
             make ${BUILD_FLAGS[*]} LSMOD=${HOME}/.config/modprobed.db localmodconfig
         else
-            echo ":: No modprobed.db file was found at ${HOME}/.config, skipping"
+            _warn "No modprobed.db file was found at ${HOME}/.config, skipping"
         fi
+    fi
 
     # Open configuration editors
-    modify_defconfig
+    [ -n "$_makemenuconfig" ] && make ${BUILD_FLAGS[*]} menuconfig
+    [ -n "$_makexconfig" ] && make ${BUILD_FLAGS[*]} xconfig
+    [ -n "$_makenconfig" ] && make ${BUILD_FLAGS[*]} nconfig
 
     # Save configuration
     # shellcheck disable=SC2015
-    [[ -n "${_copyfinalconfig}" ]] && cp -Tf ./.config "${startdir}/kconfig-new" || true
+    [ -n "${_copyfinalconfig}" ] && cp -Tf ./.config "${startdir}/kconfig-new" || :
 
     # Write kernel version
     make -s kernelrelease > version
@@ -365,12 +474,15 @@ prepare() {
 
 # Build kernel
 build() {
+    _debug_call "build"
     cd "${_src_linux}" || exit 1
     make ${BUILD_FLAGS[*]} all
 }
 
 # Packages the kernel package
 _package() {
+    _debug_call "_package"
+    
     pkgdesc="${pkgdesc} This package includes the kernel and compiled modules."
     depends=("coreutils" "kmod" "initramfs")
     optdepends=("wireless-regdb: to set the correct wireless channels of your country"
@@ -399,6 +511,8 @@ _package() {
 
 # Packages the headers package
 _package-headers() {
+    _debug_call "_package-headers"
+    
     pkgdesc="${pkgdesc} This package includes header files and scripts for building kernel modules."
     depends=("pahole")
     
