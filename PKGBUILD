@@ -1,6 +1,6 @@
 # Maintainer:
 pkgname=mcuxpresso-secure-provisioning
-pkgver=9.0.1
+pkgver=10
 pkgrel=1
 epoch=
 pkgdesc="The MCUXpresso Secure Provisioning Tool is a GUI-based application provided to simplify generation and provisioning of bootable executables on NXP MCU devices."
@@ -15,7 +15,7 @@ _binary_deb_name=${_deb_name}
 
 source=("file://${_binary_deb_name}")
 noextract=("${_binary_deb_name}")
-sha512sums=('526c02aef1022bcf5b5b22c24ef924851c44dbe6a81a53454687d31239b471bf4cc01e4e21d990aab0bd8da278525ed65705483c4f41a541158bb15c16243421')
+sha512sums=('43a4cc1bb318d20c01379702c6b7f3ecad0e2e81590eb415b558b007c1432bf352156e095552673179188be8906c70d8d433d2612e2beb48db1627bb2104a873')
 options=('!strip')
 
 prepare() {

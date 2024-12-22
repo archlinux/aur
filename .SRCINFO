@@ -1,6 +1,6 @@
 pkgbase = mcuxpresso-secure-provisioning
 	pkgdesc = The MCUXpresso Secure Provisioning Tool is a GUI-based application provided to simplify generation and provisioning of bootable executables on NXP MCU devices.
-	pkgver = 9.0.1
+	pkgver = 10
 	pkgrel = 1
 	url = https://www.nxp.com/design/software/development-software/mcuxpresso-software-and-tools-/mcuxpresso-secure-provisioning-tool:MCUXPRESSO-SECURE-PROVISIONING
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = mcuxpresso-secure-provisioning
 	depends = libusb
 	depends = libtiff5
 	depends = libdecor
-	noextract = mcuxpresso-secure-provisioning-v9.0.1-1_amd64.deb
+	noextract = mcuxpresso-secure-provisioning-v10-1_amd64.deb
 	options = !strip
-	source = file://mcuxpresso-secure-provisioning-v9.0.1-1_amd64.deb
-	sha512sums = 526c02aef1022bcf5b5b22c24ef924851c44dbe6a81a53454687d31239b471bf4cc01e4e21d990aab0bd8da278525ed65705483c4f41a541158bb15c16243421
+	source = file://mcuxpresso-secure-provisioning-v10-1_amd64.deb
+	sha512sums = 43a4cc1bb318d20c01379702c6b7f3ecad0e2e81590eb415b558b007c1432bf352156e095552673179188be8906c70d8d433d2612e2beb48db1627bb2104a873
 
 pkgname = mcuxpresso-secure-provisioning
