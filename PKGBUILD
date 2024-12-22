@@ -1,7 +1,7 @@
 # Maintainer: Jordan Cannon <LiteracyFanatic@gmail.com>
 pkgname=manga-sharp
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI manga downloader and reader with lightweight web interface'
 arch=(x86_64)
 url='https://github.com/LiteracyFanatic/manga-sharp'
