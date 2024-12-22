@@ -1,7 +1,7 @@
 pkgbase = socranop
 	pkgdesc = Soundcraft Notepad mixer tools for Linux
 	pkgver = 0.4.92a5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/socratools/socranop
 	install = socranop.install
 	arch = any
