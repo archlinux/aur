@@ -2,7 +2,7 @@
 pkgname=python-flippernested
 _name=FlipperNestedRecovery
 pkgver=2.3.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Recover keys from collected nonces using the Flipper Zero"
 arch=(x86_64)
 url=https://github.com/AloneLiberty/FlipperNestedRecovery
