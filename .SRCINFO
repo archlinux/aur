@@ -1,7 +1,7 @@
 pkgbase = jupyterlab-rise
 	pkgdesc = RISE: "Live" Reveal.js JupyterLab Slideshow Extension
 	pkgver = 0.42.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jupyterlab-contrib/rise
 	arch = any
 	license = BSD-3-Clause
