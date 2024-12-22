@@ -3,7 +3,7 @@
 
 pkgname=python-bark-git
 pkgver=0.0.0.r83.gf4f32d4
-pkgrel=1
+pkgrel=2
 pkgdesc="Text-Prompted Generative Audio Model by Suno AI"
 arch=('any')
 url="https://github.com/suno-ai/bark"
