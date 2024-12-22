@@ -12,6 +12,7 @@ pkgbase = greetd-regreet-git
 	depends = gcc-libs
 	depends = gdk-pixbuf2
 	depends = glib2
+	depends = glibc
 	depends = greetd
 	depends = gtk4
 	depends = pango
