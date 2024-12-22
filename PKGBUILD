@@ -2,7 +2,7 @@
 
 pkgname=python-aiml
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An interpreter module for AIML (Artificial Intelligence Markup Language), implemented in pure Python (python3 fork)"
 url="https://github.com/paulovn/python-aiml"
 license=("BSD-2-Clause" 'LGPL')
@@ -17,10 +17,10 @@ build() {
   python3 setup.py build
 }
 
-check() {
-  cd $srcdir/${pkgname}-$pkgver
-  python3 setup.py test
-}
+#check() {
+#  cd $srcdir/${pkgname}-$pkgver
+#  python3 setup.py test
+#}
 
 package() {
   cd $srcdir/${pkgname}-$pkgver

@@ -1,7 +1,7 @@
 pkgbase = python-aiml
 	pkgdesc = An interpreter module for AIML (Artificial Intelligence Markup Language), implemented in pure Python (python3 fork)
 	pkgver = 0.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/paulovn/python-aiml
 	arch = any
 	license = BSD-2-Clause
