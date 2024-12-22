@@ -1,5 +1,5 @@
---- driver/mxusbserial/mxusb-serial.c.orig	2021-09-14 08:57:20.885034201 -0400
-+++ driver/mxusbserial/mxusb-serial.c	2021-09-14 08:59:10.920036474 -0400
+--- a/driver/mxusbserial/mxusb-serial.c	2021-09-14 08:57:20.885034201 -0400
++++ b/driver/mxusbserial/mxusb-serial.c	2021-09-14 08:59:10.920036474 -0400
 @@ -661,11 +661,15 @@ static int serial_write (struct tty_stru
  #endif
  exit:

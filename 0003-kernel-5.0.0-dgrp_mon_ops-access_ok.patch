@@ -1,5 +1,5 @@
---- driver/mxuport/mx-uport.c.orig	2018-03-06 21:52:33.000000000 -0500
-+++ driver/mxuport/mx-uport.c	2019-03-31 21:25:37.676299896 -0400
+--- a/driver/mxuport/mx-uport.c	2018-03-06 21:52:33.000000000 -0500
++++ b/driver/mxuport/mx-uport.c	2019-03-31 21:25:37.676299896 -0400
 @@ -1055,10 +1055,16 @@ static void mxuport_set_termios (struct
  	mx_change_port_settings(mx_port, 0);
  

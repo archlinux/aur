@@ -1,5 +1,5 @@
---- driver/mxusbserial/mxbus.c.orig	2017-10-16 22:19:05.000000000 -0400
-+++ driver/mxusbserial/mxbus.c	2021-11-21 01:04:42.111372571 -0500
+--- a/driver/mxusbserial/mxbus.c	2017-10-16 22:19:05.000000000 -0400
++++ b/driver/mxusbserial/mxbus.c	2021-11-21 01:04:42.111372571 -0500
 @@ -95,11 +95,15 @@ static int usb_serial_device_probe (stru
  #endif
  exit:

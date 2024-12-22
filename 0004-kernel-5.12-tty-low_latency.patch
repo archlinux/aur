@@ -1,5 +1,5 @@
---- driver/mxuport/mx-uport.c.orig	2021-09-14 08:47:03.754388063 -0400
-+++ driver/mxuport/mx-uport.c	2021-09-14 08:47:21.044774548 -0400
+--- a/driver/mxuport/mx-uport.c	2021-09-14 08:47:03.754388063 -0400
++++ b/driver/mxuport/mx-uport.c	2021-09-14 08:47:21.044774548 -0400
 @@ -594,17 +594,19 @@ static int  mxuport_open(struct usb_seri
  	 *  Force low_latency on so that our tty_push actually forces the data through, 
  	 *  otherwise it is scheduled, and with high data rates (like with OHCI) data

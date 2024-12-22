@@ -7,7 +7,7 @@
 
 _opt_DKMS=1           # This can be toggled between installs
 
-#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/5.10.*/modules.alias))"
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/6.12.*/modules.alias))"
 
 # ls -l /dev/ttyMXUSB[0-9]*
 # lsmod | grep mx
@@ -46,7 +46,7 @@ _servicename="${pkgname}-settings"
 #pkgver='1.2'; _build='12071314'
 #pkgver='1.2.9'; _build='14103017'
 pkgver='1.2.13'; _build='18030617'
-pkgrel='7'
+pkgrel='8'
 pkgdesc='kernel module driver for Moxa multi port USB serial 1250 1410 1450 1610 1650 RS-232 422 485'
 _servicedesc='Moxa UPort persistent settings'
 arch=('i686' 'x86_64')
@@ -75,27 +75,30 @@ source=(
   '0009-kernel-6.1-user_termios_to_kernel_termios-copy_from_user.patch'
   '0010-kernel-6.0-set_termios-const-ktermios.patch'
   '0011-kernel-6.6-struct-tty_operations-size_t.patch'
+  '0012-kernel-6.11-struct-bus_type-match-const-struct-device_driver.patch'
 )
 md5sums=('17a240340a322b3da2e07fc929950288'
-         '9ec720fdaaccc41648ffb6d58c45c64e'
-         '13cc25e1625f1dc8456aaf703efbe816'
-         'dcf3339ea666cb7ed48e461ba07ebf48'
-         'b20646163937da295547dc8bf4bbaccf'
-         '4d1d2a36a1707e93f83db3d75e221c6f'
-         '637fca359414559c4e5029775da82d85'
+         '9f7d6139da105c3f0bb4e341729189be'
+         'fcc5c618b5be2989df6e1233180977ff'
+         '917f1fb1b1763004869c5343f93e8b5f'
+         'fa199dbdbaae4e9601ed957141e21b37'
+         'f5bb4993f771d29aac537d6662340899'
+         '7a722b72267962800ceeb2421da58b59'
          'a9604e54d37a29590492c92311b18400'
          'a9d2f5eb65ed26436692cfc37e607e66'
-         '4d1271d2313ab713a006a2443b8284bd')
+         '4d1271d2313ab713a006a2443b8284bd'
+         '844bc982767ef623dc119815832324c8')
 sha256sums=('aed6f9a1bb6e88a22b520dc6cbbb6624accea080dcaca727c0fab031868228b6'
-            'f753e48ea68282288bd53f045c88bd61e39a4c6cf691544953c6929888183370'
-            '151a7c84d3815814d45cebd6d58427c27a2b3c6e06c1209d984738e94fea90d8'
-            '5db4c06da7293de1a4070fa2313cdff27cc5c4b39832f7110ca52692ed16419b'
-            '045a3957b540ff8a9f9e401c343683a794837bda4e047759564df6ce2e8912a4'
-            '1b0bea590d671fc52b2e5231062ebdc07984e594e07ecdee4883fddbe78b4fa3'
-            'f16425c12383498687fd3b38e782fe54c399e0962e437d49c417f86b0d99b563'
+            'b3c7b8e625ddee04cc00fa022c18ea146a395ad09a1a7c765119c670d1cc59a3'
+            'e846b2941f4542609753179601f10e12be7fe4510a1b12630d469be5ec6bdaa9'
+            'c8aa824ace1c9e1e4e02948e3de8749d14ce726af3002aef16b6f1d66a12dd6b'
+            '71845ce9d114261a102a17f8d42a5fff55d672b0b70c6555f8ced1d201315bf2'
+            '5c4239cf2e70a358dd2acb72f4346cca118bb51e9509e3aa2669a844752cb9e9'
+            'cdb9aa88ac7f668645e81a81dee9c50678e4455dbf613d15e502e52066537be7'
             'c765e7dfdcd684d29dc5dc7595733addb95eb4264100d73ed1d541cd4329dde7'
             'fc62764f2be15e2906f7f28a80b818643257ea523eacc5aa18a444a1af4e178c'
-            '17cc56a95f1a84aa00024da223a8f416a4da3d9b8f68768f460c530719e831c7')
+            '17cc56a95f1a84aa00024da223a8f416a4da3d9b8f68768f460c530719e831c7'
+            '8b3548cafce2871458acc2aeabe62201ee1f4faeeb22776c8d2fde673be2495f')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -174,131 +177,144 @@ prepare() {
   # A few files have MS-DOS line endings
   sed -e 's:\s*\r$::g' -i $(grep -rlFe $'\r')
 
-  #cp -p driver/mxuport/mx-uport.c{,.orig}; false
-  #diff -pNaru5 driver/mxuport/mx-uport.c{.orig,} > '0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch'
-  patch -Nup0 -i "${srcdir}/0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch"
-
-  #cp -p driver/mxuport/mx-uport.c{,.orig}; false
-  #diff -pNaru5 driver/mxuport/mx-uport.c{.orig,} > '0004-kernel-5.12-tty-low_latency.patch'
-  patch -Nup0 -i "${srcdir}/0004-kernel-5.12-tty-low_latency.patch"
-
-  #cp -p driver/mxuport/mx-uport.c{,.orig}; false
-  #diff -pNaru5 driver/mxuport/mx-uport.c{.orig,} > '0005-kernel-5.13-dropped-tty_check_change.patch'
-  patch -Nup0 -i "${srcdir}/0005-kernel-5.13-dropped-tty_check_change.patch"
-
-  #cp -p driver/mxusbserial/mxusb-serial.c{,.orig}; false
-  #diff -pNaru5 driver/mxusbserial/mxusb-serial.c{.orig,} > '0006-kernel-5.14-unsigned-tty.patch'
-  patch -Nup0 -i "${srcdir}/0006-kernel-5.14-unsigned-tty.patch"
+  local _patches=()
+  _patches+=('0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch')
+  _patches+=('0004-kernel-5.12-tty-low_latency.patch')
+  _patches+=('0005-kernel-5.13-dropped-tty_check_change.patch')
+  _patches+=('0006-kernel-5.14-unsigned-tty.patch')
 
   # https://www.spinics.net/lists/backports/msg05227.html [PATCH 39/47] patches: Adapt signature of bus_type->remove callback
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.0/03551.html [PATCH] bus: Make remove callback return void
-  #cp -p driver/mxusbserial/mxbus.c{,.orig}; false
-  #diff -pNaru5 driver/mxusbserial/mxbus.c{.orig,} > '0007-kernel-5.15-bus_type.remove-void.patch'
-  patch -Nup0 -i "${srcdir}/0007-kernel-5.15-bus_type.remove-void.patch"
+  _patches+=('0007-kernel-5.15-bus_type.remove-void.patch')
 
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
-  #cp -p driver/mxusbserial/mxusb-serial.c{,.orig}; false
-  #diff -pNaru5 driver/mxusbserial/mxusb-serial.c{.orig,} > '0008-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
-  patch -Nup0 -i "${srcdir}/0008-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
+  _patches+=('0008-kernel-5.15-alloc_tty_driver-put_tty_driver.patch')
+  _patches+=('0009-kernel-6.1-user_termios_to_kernel_termios-copy_from_user.patch')
+  _patches+=('0010-kernel-6.0-set_termios-const-ktermios.patch') # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
+  _patches+=('0011-kernel-6.6-struct-tty_operations-size_t.patch')
+  _patches+=('0012-kernel-6.11-struct-bus_type-match-const-struct-device_driver.patch')
 
+  local _pt _ptf=() _pts=()
+  for _pt in "${_patches[@]}"; do
+    set +u; msg2 "Patch ${_pt}"; set -u
+    if patch -Nufp1 -i "${srcdir}/${_pt}"; then
+      _pts+=("${_pt}")
+    else
+      _ptf+=("${_pt}")
+    fi
+  done
+  if [ "${#_ptf[@]}" -gt 0 ]; then
+     if [ "${#_pts[@]}" -gt 0 ]; then
+       printf 'Patch success %s\n' "${_pts[@]}"
+       printf 'Warning: Some old patches may need to be removed even if they are successful\n'
+     fi
+     printf 'Patch failed %s\n' "${_ptf[@]}"
+     set +x
+     false
+  fi
   #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0009-kernel-6.1-user_termios_to_kernel_termios-copy_from_user.patch'
-  patch -Nup1 -i "${srcdir}/0009-kernel-6.1-user_termios_to_kernel_termios-copy_from_user.patch"
-
-  # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0010-kernel-6.0-set_termios-const-ktermios.patch'
-  patch -Nup1 -i "${srcdir}/0010-kernel-6.0-set_termios-const-ktermios.patch"
-
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0011-kernel-6.6-struct-tty_operations-size_t.patch'
-  patch -Nup1 -i "${srcdir}/0011-kernel-6.6-struct-tty_operations-size_t.patch"
+  # diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
 
   # Fix umbrella Makefile
-  sed -e '# Disable silent' \
-      -e '/make / s:\s\+-s::g' \
-      -e '# Improve chdir technique' \
-      -e 's:^\t@cd .*$:#&-:g' \
-      -e 's:^\tmake :&-C driver :g' \
-    -i 'Makefile'
+  local _sedsumb=(
+    -e '# Disable silent'
+    -e '/make / s:\s\+-s::g'
+    -e '# Improve chdir technique'
+    -e 's:^\t@cd .*$:#&-:g'
+    -e 's:^\tmake :&-C driver :g'
+  )
+  sed "${_sedsumb[@]}" -i 'Makefile'
   #cp -p driver/Makefile{,.Arch}
-  sed -e '# Remove pesky blank line. n messes up the positioning so we do it separately' \
-      -e '/^modules:/ {n; d}' \
-      -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
-      -e 's:shell uname -r:KERNELRELEASE:g' \
-      -e '# DKMS sets KERNELRELEASE which accidentally launches phase 2 of this Makefile' \
-      -e '# Fix by changing the detection var.' \
-      -e '# SUBDIRS makes more sense to me because I can see it in the Makefile!' \
-      -e 's:^ifneq (\$(KERNELRELEASE),):ifneq (\$(SUBDIRS),):g' \
-      -e '1i KERNELRELEASE?=$(shell uname -r)' \
-    -i 'driver/Makefile'
+  # Make DKMS compatible
+  local _sedsdkms=(
+    -e '# Remove pesky blank line. n messes up the positioning so we do it separately'
+    -e '/^modules:/ {n; d}'
+    -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple'
+    -e 's:shell uname -r:KERNELRELEASE:g'
+    -e '# DKMS sets KERNELRELEASE which accidentally launches phase 2 of this Makefile'
+    -e '# Fix by changing the detection var.'
+    -e '# SUBDIRS makes more sense to me because I can see it in the Makefile!'
+    -e 's:^ifneq (\$(KERNELRELEASE),):ifneq (\$(SUBDIRS),):g'
+    -e '1i KERNELRELEASE?=$(shell uname -r)'
+  )
+  sed "${_sedsdkms[@]}" -i 'driver/Makefile'
   # Make package compatible
-  sed -e '# Fix path' \
-      -e 's:/lib/:/usr/lib/:g' \
-      -e '# Get rid of useless vars' \
-      -e 's:^REL_DATE:# &:g' \
-      -e 's:^KDISVER:# &:g' \
-      -e 's:^TARGET:# &:g' \
-      -e '# Disable Fedora hack' \
-      -e '/Fedora/,/^$/ s:^.:#&:g' \
-      -e '# Remove leading @ to prevent silent execution' \
-      -e 's:^\t@:\t:g' \
-      -e '# Ungroup envchk from make module' \
-      -e '/^modules:/ s:\s\+envchk::g' \
-      -e '# Remove build log helper that hides output' \
-      -e '/^\t\$(MAKE)/ s:\s\+2>>.\+$::g' \
-      -e '# Disable all make lines' \
-      -e '/^modules:/,/^$/ s:^\t:#\t:g' \
-      -e '# Enable make lines' \
-      -e '/^modules:/,/^$/ s:^#\(\t\$(MAKE)\):\1:g' \
-      -e '# Fix install lines' \
-      -e '# Dont remake modules on install' \
-      -e '/^install:/ s:\s\+modules::g' \
-      -e '# Disable all install lines' \
-      -e '/^install:/,/^$/ s:^\t:#&:g' \
-      -e '# Enable make lines' \
-      -e '/^install:/,/^$/ s:^#\tmake:\tmake:g' \
-      -e '# Make package compatible' \
-      -e '/^install:/,/^$/ s:/usr/:"$(DESTDIR)"&:g' \
-      -e '# Disable clean_lib' \
-      -e '/^clean:/ s:\s\+clean_lib::g' \
-      -e '# Disable all clean_local lines' \
-      -e '/^clean_local:/,/^$/ s:^\t:#&:g' \
-      -e '# Enable make lines' \
-      -e '/^clean_local:/,/^$/ s:^#\tmake:\tmake:g' \
-      -e '# Disable silent' \
-      -e 's:make -s:make:g' \
-      -e '# Add kernel clean' \
-      -e 's/^clean_local:.*$/&\n\t$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) clean/g' \
-      -e '# Kernel 5.4 compatible' \
-      -e 's: SUBDIRS=\([^ ]\+\) : M=\1&:g ' \
-    -i 'driver/Makefile'
+  local _sedspkg=(
+    -e '# Fix path'
+    -e 's:/lib/:/usr/lib/:g'
+    -e '# Get rid of useless vars'
+    -e 's:^REL_DATE:# &:g'
+    -e 's:^KDISVER:# &:g'
+    -e 's:^TARGET:# &:g'
+    -e '# Disable Fedora hack'
+    -e '/Fedora/,/^$/ s:^.:#&:g'
+    -e '# Remove leading @ to prevent silent execution'
+    -e 's:^\t@:\t:g'
+    -e '# Ungroup envchk from make module'
+    -e '/^modules:/ s:\s\+envchk::g'
+    -e '# Remove build log helper that hides output'
+    -e '/^\t\$(MAKE)/ s:\s\+2>>.\+$::g'
+    -e '# Disable all make lines'
+    -e '/^modules:/,/^$/ s:^\t:#\t:g'
+    -e '# Enable make lines'
+    -e '/^modules:/,/^$/ s:^#\(\t\$(MAKE)\):\1:g'
+    -e '# Fix install lines'
+    -e '# Dont remake modules on install'
+    -e '/^install:/ s:\s\+modules::g'
+    -e '# Disable all install lines'
+    -e '/^install:/,/^$/ s:^\t:#&:g'
+    -e '# Enable make lines'
+    -e '/^install:/,/^$/ s:^#\tmake:\tmake:g'
+    -e '# Make package compatible'
+    -e '/^install:/,/^$/ s:/usr/:"$(DESTDIR)"&:g'
+    -e '# Disable clean_lib'
+    -e '/^clean:/ s:\s\+clean_lib::g'
+    -e '# Disable all clean_local lines'
+    -e '/^clean_local:/,/^$/ s:^\t:#&:g'
+    -e '# Enable make lines'
+    -e '/^clean_local:/,/^$/ s:^#\tmake:\tmake:g'
+    -e '# Disable silent'
+    -e 's:make -s:make:g'
+    -e '# Add kernel clean'
+    -e 's/^clean_local:.*$/&\n\t$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) clean/g'
+    -e '# Kernel 5.4 compatible'
+    -e 's: SUBDIRS=\([^ ]\+\) : M=\1&:g '
+  )
+  sed "${_sedspkg[@]}" -i 'driver/Makefile'
   test ! -s 'driver/Makefile.Arch'
-  sed -e '# Fix path' \
-      -e 's:/lib/:/usr/lib/:g' \
-      -e '# Get rid of useless vars' \
-      -e 's:^KDISVER:# &:g' \
-      -e '# Disable Fedora hack' \
-      -e '/Fedora/,/^endif/ s:^:#:g' \
-      -e '# Remove leading @ to prevent silent execution' \
-      -e 's:^\t@:\t:g' \
-      -e '# Fix install lines' \
-      -e '# Dont remake modules on install' \
-      -e 's@^\(install:\).*$@\1@g' \
-      -e '# Make package compatible' \
-      -e '/^install:/,/^$/ s:/usr/:"$(DESTDIR)"&:g' \
-      -e '# Disable depmod' \
-      -e 's:^\tdepmod:#&:g' \
-      -e '# Change to kernel clean' \
-      -e 's/^clean:/cleanorig:/g' \
-      -e 's/^cleanorig:/clean:\n\t$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) clean\n\n&/g' \
-      -e '# Kernel 5.4 compatible' \
-      -e 's: SUBDIRS=\([^ ]\+\) : M=\1&:g ' \
-    -i driver/{mxusbserial,mxuport}/Makefile
-  sed -e '# This make modules is never used so it contains a bug' \
-      -e '/^\t\$(MAKE)/ {s: -EXTRA: EXTRA:g; s: C : -C :g}'\
-    -i 'driver/mxusbserial/Makefile'
+  #cp -p 'driver/mxusbserial/Makefile'{,.Arch}
+  #cp -p 'driver/mxuport/Makefile'{,.Arch}
+  local _sedsdrivers=(
+    -e '# Fix path'
+    -e 's:/lib/:/usr/lib/:g'
+    -e '# Get rid of useless vars'
+    -e 's:^KDISVER:# &:g'
+    -e '# Disable Fedora hack'
+    -e '/Fedora/,/^endif/ s:^:#:g'
+    -e '# Remove leading @ to prevent silent execution'
+    -e 's:^\t@:\t:g'
+    -e '# Fix install lines'
+    -e '# Dont remake modules on install'
+    -e 's@^\(install:\).*$@\1@g'
+    -e '# Make package compatible'
+    -e '/^install:/,/^$/ s:/usr/:"$(DESTDIR)"&:g'
+    -e '# Disable depmod'
+    -e 's:^\tdepmod:#&:g'
+    -e '# Change to kernel clean'
+    -e 's/^clean:/cleanorig:/g'
+    -e 's/^cleanorig:/clean:\n\t$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) clean\n\n&/g'
+    -e '# Kernel 5.4 compatible'
+    -e 's: SUBDIRS=\([^ ]\+\) : M=\1&:g '
+  )
+  sed "${_sedsdkms[@]}" "${_sedsdrivers[@]}" -i driver/{mxusbserial,mxuport}/Makefile
+  test ! -s 'driver/mxusbserial/Makefile.Arch' -a ! -s 'driver/mxuport/Makefile.Arch'
+
+  local _sedsbug=(
+    -e '# This make modules is never used so it contains a bug'
+    -e '/^\t\$(MAKE)/ {s: -EXTRA: EXTRA:g; s: C : -C :g}'
+  )
+  sed "${_sedsbug[@]}" -i 'driver/mxusbserial/Makefile'
 
   # Change module name
   if [ "${_modulenames[1]}" != "${_origmodname}" ]; then
@@ -319,9 +335,10 @@ package() {
   set -u
   cd "${_srcdir}"
 
+  local _KERNELRELEASE_PKG="${KERNELRELEASE:-$(uname -r)}"
   if [ "${_opt_DKMS}" -eq 0 ]; then
     # I don't want Linux version info showing on AUR web. After a few months 'linux<0.0.0' makes it look like an out of date package.
-    local _kernelversionsmall="$(uname -r)"
+    local _kernelversionsmall="${_KERNELRELEASE_PKG}"
     _kernelversionsmall="${_kernelversionsmall%%-*}"
     _kernelversionsmall="${_kernelversionsmall%\.0}" # trim 4.0.0 -> 4.0, 4.1.0 -> 4.1
     # prevent the mksrcinfo bash emulator from getting these vars!
@@ -334,7 +351,7 @@ package() {
   local _driverfd='/updates'
   if [ "${_modulenames[1]}" != "${_origmodname}" ]; then
     # Don't install twice
-    rm -r "${pkgdir}/usr/lib/modules/$(uname -r)/misc"
+    rm -r "${pkgdir}/usr/lib/modules/${_KERNELRELEASE_PKG}/misc"
     # Blacklist exiting incomplete built in module
     install -Dm644 <(cat << EOF
 # Do not load built in module with only barebones support
@@ -344,9 +361,9 @@ EOF
     _driverfd='/kernel/drivers/usb/serial'
   else
     # Don't install twice
-    rm -r "${pkgdir}/usr/lib/modules/$(uname -r)/kernel"
+    rm -r "${pkgdir}/usr/lib/modules/${_KERNELRELEASE_PKG}/kernel"
     # The new driver is the same name as the built in driver so put it in updates
-    mv "${pkgdir}/usr/lib/modules/$(uname -r)"/{misc,updates}
+    mv "${pkgdir}/usr/lib/modules/${_KERNELRELEASE_PKG}"/{misc,updates}
   fi
 
   # Install persistent settings service
@@ -429,7 +446,7 @@ DEST_MODULE_LOCATION[1]="${_driverfd}"
 EOF
     ) "${_dkms}/dkms.conf"
     cp -pr 'driver/' "${_dkms}/"
-    make -s -C "${_dkms}/driver/" clean KERNELRELEASE="$(uname -r)"
+    make -s -C "${_dkms}/driver/" clean KERNELRELEASE="${_KERNELRELEASE_PKG}"
   fi
   set +u
 }

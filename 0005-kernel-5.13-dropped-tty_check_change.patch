@@ -1,5 +1,5 @@
---- driver/mxuport/mx-uport.c.orig	2021-09-14 08:49:18.570936486 -0400
-+++ driver/mxuport/mx-uport.c	2021-09-14 08:51:19.203266750 -0400
+--- a/driver/mxuport/mx-uport.c	2021-09-14 08:49:18.570936486 -0400
++++ b/driver/mxuport/mx-uport.c	2021-09-14 08:51:19.203266750 -0400
 @@ -998,10 +998,14 @@ static void mxuport_break_ctl (struct us
  	}
  

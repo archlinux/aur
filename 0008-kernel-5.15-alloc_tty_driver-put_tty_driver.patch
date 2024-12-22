@@ -1,5 +1,5 @@
---- driver/mxusbserial/mxusb-serial.c.orig	2021-11-21 01:10:31.632601395 -0500
-+++ driver/mxusbserial/mxusb-serial.c	2021-11-21 01:11:48.575138551 -0500
+--- a/driver/mxusbserial/mxusb-serial.c	2021-11-21 01:10:31.632601395 -0500
++++ b/driver/mxusbserial/mxusb-serial.c	2021-11-21 01:11:48.575138551 -0500
 @@ -1682,12 +1682,12 @@ struct tty_driver *mx_usbserial_tty_driv
  int usb_serial_init(void)
  {
