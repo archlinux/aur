@@ -2,7 +2,7 @@
 
 pkgname=itchcraft
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tech demo for interfacing with heat-based USB insect bite healers'
 arch=('any')
 url='https://github.com/claui/itchcraft'
