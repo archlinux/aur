@@ -3,12 +3,12 @@
 _name="sysrescueusbwriter"
 pkgname="systemrescue-usbwriter"
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to write SystemRescue to a USB memory stick"
 arch=('any')
 url="https://gitlab.com/systemrescue/${pkgname}"
 license=('GPL-3.0-or-later')
-depends=('bash' 'fuse2')
+depends=('bash' 'dialog' 'fuse2' 'isomd5sum' 'libisoburn' 'syslinux')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/-/archive/${pkgver}/${_pkgsrc}.tar.gz")
 sha256sums=('b2decf6ae54d4cefd3234fe015a1fb668bcbd958079a43eeab178c5fa8d4a562')
@@ -18,6 +18,7 @@ build() {
   sed -e 's/${APPDIR}//g' \
       -e 's|$("${BINDIR}/cat" "/usr/share/versions/sysrescueusbwriter")|'"${pkgver}|g" \
       -e 's|$("${BINDIR}/cat" "/usr/share/versions/sysrescueusbwriter-builddate")|'"$(date +%Y-%m-%d)|g" \
+      -e 's@$("${BINDIR}/cat" "/usr/share/versions/syslinux")@$(pacman -Q syslinux | sed -e "s#syslinux \\(.*\\)#\\1#")@g' \
       -i "${_name}"
       # -e '1i#!/bin/bash' \
 }
