@@ -1,7 +1,7 @@
 pkgbase = edgar-ssh
 	pkgdesc = A small utility to maintain SSH config files
 	pkgver = 5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.umaneti.net/edgar/about/
 	arch = any
 	license = WTFPL

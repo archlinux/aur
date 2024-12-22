@@ -2,7 +2,7 @@
 pkgname=edgar-ssh
 _upname=edgar
 pkgver=5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A small utility to maintain SSH config files"
 arch=("any")
 url="https://git.umaneti.net/${_upname}/about/"
