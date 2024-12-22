@@ -1,7 +1,7 @@
 pkgbase = python-liboqs
 	pkgdesc = Python 3 bindings for liboqs
 	pkgver = 0.10.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/open-quantum-safe/liboqs-python
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = python-liboqs
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = liboqs=1:0.10.0
+	depends = liboqs
 	depends = python
 	source = liboqs-python-0.10.0.tar.gz::https://github.com/open-quantum-safe/liboqs-python/archive/refs/tags/0.10.0.tar.gz
 	b2sums = 2a23080616f2699db45fd62f641892dba7a11ed456a7eaa7c1ffe29523f0e5544590e9491eb06736ca589b521ddc2fb248b721eca2293f8cf45d91f93a492c4b

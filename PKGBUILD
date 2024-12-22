@@ -2,13 +2,13 @@
 pkgname=python-liboqs
 _name=liboqs-python
 pkgver=0.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Python 3 bindings for liboqs"
 arch=(any)
 url=https://github.com/open-quantum-safe/liboqs-python
 license=(MIT)
 depends=(
-    liboqs=1:0.10.0
+    liboqs
     python
 )
 makedepends=(
