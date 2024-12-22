@@ -1,7 +1,7 @@
 pkgbase = python-rustworkx
 	pkgdesc = A high performance Python graph library implemented in Rust
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Qiskit/rustworkx
 	arch = x86_64
 	license = Apache-2.0
