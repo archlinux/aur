@@ -3,11 +3,11 @@ _pyname=glue-qt
 pkgname=glueviz-doc
 pkgver=1.16.0
 pkgrel=1
-_glue_qt_ver=0.3.0
+_glue_qt_ver=0.3.1
 pkgdesc="Documentation for Glue"
 arch=('any')
 url="http://glueviz.org"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=("python-${_pyname}=${_glue_qt_ver}"
              'glueviz'
              'python-sphinx<7.2.2'
@@ -22,7 +22,7 @@ makedepends=("python-${_pyname}=${_glue_qt_ver}"
              'nuspell'
              'libvoikko')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${_glue_qt_ver}.tar.gz")
-md5sums=('975341ca7746e8c193b708ec8a579bf9')
+md5sums=('ddb96f5d8ba79860c0f13302d93d1708')
 
 build() {
     cd ${srcdir}/${_pyname}-${_glue_qt_ver}/doc
