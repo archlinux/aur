@@ -422,6 +422,7 @@ prepare() {
     if [ -n "${_reuse_current}" ]; then
         # Use config from running kernel
         
+        _msg " Using configuration file from running kernel"
         local "_cur_major_ver=$(zcat /proc/config.gz | grep Linux | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
         
         [ "${_cur_major_ver}" != "${_kernel_major}" ] &&
@@ -431,15 +432,19 @@ prepare() {
             zcat /proc/config.gz > ./.config
             make ${BUILD_FLAGS[*]} olddefconfig
         else
-            _warn "WARNING: Your kernel was not compiled with 'IKCONFIG_PROC'.
-                  Unable to read kernel configuration, aborting."
+            _error "Your kernel was not compiled with 'IKCONFIG_PROC'.\nUnable to read kernel configuration, aborting."
             exit 1
         fi
-    elif [ -f "${startdir}/kconfig" ]; then
+    elif [ -n "${_reuse_file}" ]; then
         # Use ./kconfig
         
-        _msg " Using configuration file \"${startdir}/kconfig\""
-        cp -Tf "${startdir}/kconfig" ./.config
+        if [ -f "${startdir}/kconfig" ]; then
+            _msg " Using configuration file \"${startdir}/kconfig\""
+            cp -Tf "${startdir}/kconfig" ./.config
+        else
+            _error "Could not find a kernel configuration at '${startdir}/kconfig'.\nUnable to read kernel configuration, aborting."
+            exit 1
+        fi
     else
         # Use builtin
         
