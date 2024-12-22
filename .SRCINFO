@@ -1,6 +1,6 @@
 pkgbase = asak
 	pkgdesc = A cross-platform audio recording/playback tool
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/chaosprint/asak
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = asak
 	depends = gcc-libs
 	depends = alsa-lib
 	depends = jack2
-	source = asak-0.3.3.tar.gz::https://github.com/chaosprint/asak/archive/v0.3.3.tar.gz
-	sha512sums = d9e5ed65e9c7912820a49169e1294971014183578a6e1348e97ef91bcbdb7d2a1525374cdd563fabfcd409160ea0dc948b488e988a2694f89f61a20f597e3f6f
+	source = asak-0.3.4.tar.gz::https://github.com/chaosprint/asak/archive/v0.3.4.tar.gz
+	sha512sums = 4ae8dc930330f818d5e43b84e1b717bec5f30290859e4b5bbd8712ede823849916156445c848579c9296b0654f34bc9009c8d59efcded0de5afefd51f757098a
 
 pkgname = asak
