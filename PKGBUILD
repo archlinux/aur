@@ -3,7 +3,7 @@
 pkgname=python-jtagtap-git
 _gitpkgname=jtagtap
 pkgver=r4.851b71b
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple JTAG TAP described in plain Python using the nMigen/Amaranth toolbox'
 arch=('any')
 url='https://github.com/lambdaconcept/jtagtap'

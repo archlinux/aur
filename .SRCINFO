@@ -1,7 +1,7 @@
 pkgbase = python-jtagtap-git
 	pkgdesc = Simple JTAG TAP described in plain Python using the nMigen/Amaranth toolbox
 	pkgver = r4.851b71b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lambdaconcept/jtagtap
 	arch = any
 	license = BSD-2-Clause
