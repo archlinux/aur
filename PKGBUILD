@@ -1,8 +1,8 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=hoarder
-pkgver=0.19.0
-pkgrel=3
+pkgver=0.20.0
+pkgrel=1
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
 url="https://github.com/${pkgname}-app/${pkgname}"
@@ -22,7 +22,7 @@ source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}-browser.service"
         "${pkgname}-web.service"
         "${pkgname}-workers.service")
-sha256sums=('1942d4f0f3ee8e7eac254b94aa0863b2c2a9c772c8fc62574c15b53eba4948d2'
+sha256sums=('f40b872fbca547e4ad092f18ef1a51e5372144b41a19e4039bec0bcf4630775d'
             '1741afe407c55654462de14b0ec454775668dc42103f20448fc8025f646bf963'
             'bb7cf9d047374376137a9ec5ac5ad653d3569a834de8ccc3e8a6f04a870bc01e'
             '713e248fc61f429a3da627016343d89147dde147f739e51584f7398d11262896'
@@ -54,9 +54,9 @@ build() {
     pnpm deploy --node-linker=isolated --filter @hoarder/workers --prod workers
 
     # delete musl files, macos/win/android files, map file
-    find apps/web/.next -type d -name "*musl*" | xargs rm -rf
+    find {apps/web/.next,workers} -type d -name "*musl*" | xargs rm -rf
     find workers -type f -name "*.map" | xargs rm -rf
-    find workers -type d \( -name "darwin-arm64" -o -name "darwin-x64" -o -name "win32-x64" -o -name "android-arm*" \) | xargs rm -rf
+    find workers -type d \( -name "darwin-" -o -name "ios-arm*" -o -name "ios-x64*" -o -name "win32-*" -o -name "android-*" \) | xargs rm -rf
     case $CARCH in
         x86_64)  find workers -type d -name "linux-arm64" | xargs rm -rf;;
         aarch64) find workers -type d -name "linux-x64"   | xargs rm -rf;;

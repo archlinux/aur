@@ -1,7 +1,7 @@
 pkgbase = hoarder
 	pkgdesc = A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search
-	pkgver = 0.19.0
-	pkgrel = 3
+	pkgver = 0.20.0
+	pkgrel = 1
 	url = https://github.com/hoarder-app/hoarder
 	arch = x86_64
 	arch = aarch64
@@ -18,7 +18,7 @@ pkgbase = hoarder
 	optdepends = ollama: for automatic tagging
 	optdepends = yt-dlp: for download video
 	backup = etc/hoarder/hoarder.env
-	source = hoarder::git+https://github.com/hoarder-app/hoarder.git#tag=v0.19.0
+	source = hoarder::git+https://github.com/hoarder-app/hoarder.git#tag=v0.20.0
 	source = hoarder.env
 	source = hoarder.sysusers
 	source = hoarder.target
@@ -26,7 +26,7 @@ pkgbase = hoarder
 	source = hoarder-browser.service
 	source = hoarder-web.service
 	source = hoarder-workers.service
-	sha256sums = 1942d4f0f3ee8e7eac254b94aa0863b2c2a9c772c8fc62574c15b53eba4948d2
+	sha256sums = f40b872fbca547e4ad092f18ef1a51e5372144b41a19e4039bec0bcf4630775d
 	sha256sums = 1741afe407c55654462de14b0ec454775668dc42103f20448fc8025f646bf963
 	sha256sums = bb7cf9d047374376137a9ec5ac5ad653d3569a834de8ccc3e8a6f04a870bc01e
 	sha256sums = 713e248fc61f429a3da627016343d89147dde147f739e51584f7398d11262896
