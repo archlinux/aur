@@ -4,8 +4,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-file-find-object'
-pkgver='0.3.8'
-pkgrel='2'
+pkgver='0.3.9'
+pkgrel='1'
 pkgdesc="An object oriented File::Find replacement"
 arch=('any')
 license=('Artistic-2.0')
@@ -13,9 +13,9 @@ options=('!emptydirs')
 depends=('perl-class-xsaccessor>=0' 'perl-file-treecreate>=0' 'perl-module-build>=0.28' 'perl>=5.008')
 checkdepends=('perl-test-file>=1.993')
 url='https://metacpan.org/release/File-Find-Object'
-source=('http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/File-Find-Object-0.3.8.tar.gz')
-sha512sums=('f3a00f6b8ec22e7a7361ef158a4c631e1c834e19fb672cf429bdcffb3d11b35aff94a07a73b1922a8f47bab90f3dbc64c39da7a8899df9337b062a430481827e')
-_distdir="File-Find-Object-0.3.8"
+source=('http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/File-Find-Object-0.3.9.tar.gz')
+sha512sums=('6d4dffd7586c7b752390dbcb220d9a849becec161b251c39a5146abb3f736efb7301e296d274f2dcccc95626c00e9c43a8e4c46cae23645f4aedd67914414667')
+_distdir="File-Find-Object-0.3.9"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
