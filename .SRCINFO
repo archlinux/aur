@@ -1,6 +1,6 @@
 pkgbase = bux-sqlite
 	pkgdesc = Wrapper classes and utilities of the original SQLite3 CAPI
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/buck-yeh/bux-sqlite.git
 	arch = x86_64
