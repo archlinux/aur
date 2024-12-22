@@ -1,7 +1,7 @@
 pkgbase = python-flask-httpauth
 	pkgdesc = Basic and Digest HTTP authentication for Flask routes
 	pkgver = 4.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/miguelgrinberg/Flask-HTTPAuth
 	arch = any
 	license = MIT
