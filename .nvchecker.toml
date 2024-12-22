@@ -1,0 +1,4 @@
+[aax-bruteforce]
+source = "git"
+git = "https://github.com/MaxMatti/aax-bruteforce.git"
+prefix = "v"
