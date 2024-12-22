@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-constraint
 pkgver=1.4.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Module implementing support for handling CSPs (Constraint Solving Problems) over finite domain"
 arch=(any)
 url=https://github.com/python-constraint/python-constraint
