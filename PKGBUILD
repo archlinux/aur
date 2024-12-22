@@ -5,9 +5,9 @@ pkgname='python-urllib3-future-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname/-/.}"
-pkgver=2.7.906.r0.g37e0c967
+pkgver=2.12.904.r0.gdd8795dc
 pkgrel=2
-pkgdesc='Powerful HTTP 1.1, 2, and 3 client with both sync and async interfaces (built from latest commit)'
+pkgdesc='Powerful HTTP 1.1, 2, and 3 client with both sync and async interfaces (latest commit)'
 arch=('any')
 url="https://github.com/jawah/urllib3.future"
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -19,16 +19,19 @@ makedepends=(
   'python-wheel'
 )
 depends=(
-  'python>=3.7'
+  'python'
   'python-brotli'
   'python-brotlicffi'
   'python-h11'
   'python-idna'
   'python-jh2'
+  'python-pyopenssl'
   'python-python-socks'
   'python-qh3'
+  'python-socks'
   'python-typing_extensions'
   'python-urllib3'
+  'python-wsproto'
   'python-zstandard'
 )
 source=("git+$url.git")
