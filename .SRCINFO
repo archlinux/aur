@@ -1,23 +1,23 @@
 pkgbase = bertini2-git
 	pkgdesc = The redevelopment of Bertini in C++
-	pkgver = 2.0.alpha8.r76.78f9986
+	pkgver = 2.0alpha8.r111.735bd7f
 	pkgrel = 1
 	url = https://github.com/bertiniteam/b2
-	arch = any
+	arch = x86_64
 	license = custom:GPL-3.0-or-later WITH Bertini2-Additional-GPL-Terms
-	makedepends = git
 	makedepends = boost>=1.83
+	makedepends = cmake>=3.22
 	makedepends = eigen>=3.3
-	depends = glibc
-	depends = gcc-libs
+	makedepends = git
 	depends = boost-libs>=1.83
+	depends = gcc-libs
+	depends = glibc
 	depends = gmp
-	depends = mpfr
 	depends = libmpc
-	optdepends = pybertini: Python interface support
-	optdepends = bertini2-docs: HTML documentation
-	provides = bertini2=2.0.alpha8
-	provides = libbertini2.so=2.0.alpha8
+	depends = mpfr
+	optdepends = python-pybertini: Python interface support
+	provides = bertini2=2.0alpha8
+	provides = libbertini2.so
 	conflicts = bertini2
 	source = b2::git+https://github.com/bertiniteam/b2.git
 	sha256sums = SKIP
