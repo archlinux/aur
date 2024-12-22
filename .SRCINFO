@@ -1,0 +1,15 @@
+pkgbase = docker-explorer-git
+	pkgdesc = A tool to help forensicate offline docker acquisitions
+	pkgver = 20241004.r1.g9b2af4c
+	pkgrel = 1
+	url = https://github.com/google/docker-explorer
+	arch = any
+	license = Apache
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	source = git+https://github.com/google/docker-explorer
+	sha256sums = SKIP
+
+pkgname = docker-explorer-git

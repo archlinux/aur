@@ -1,0 +1,4 @@
+/docker-explorer
+/pkg
+/src
+*.pkg.tar.*
