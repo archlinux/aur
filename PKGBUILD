@@ -2,7 +2,7 @@
 
 pkgname=python-facedancer
 _gitpkgname=facedancer
-pkgver=3.0.4
+pkgver=3.0.6
 pkgrel=1
 pkgdesc='Implement your own USB device in Python using Cynthion or GreatFET hardware'
 arch=('any')
@@ -36,7 +36,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/greatscottgadgets/facedancer/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=('aab4499505877aee221cae3f5c395907578150c58b22cdd109660ddee62b137e6f2e59aae47397ba8b69703653a9d07d7e06481782f6515c840997a9702c3c4f')
+sha512sums=('5f273ea30476294dae3b2d4f5a0c5143bd30827981164aff54f14daeab25472eb2c23323c4b1d6f10e201c654dcc1edf2c32ea77905e8f8a028f106fcd9573e6')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"

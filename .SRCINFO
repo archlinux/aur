@@ -1,6 +1,6 @@
 pkgbase = python-facedancer
 	pkgdesc = Implement your own USB device in Python using Cynthion or GreatFET hardware
-	pkgver = 3.0.4
+	pkgver = 3.0.6
 	pkgrel = 1
 	url = https://github.com/greatscottgadgets/facedancer
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-facedancer
 	optdepends = python-cynthion: use Facedancer with a Cynthion backend
 	optdepends = python-rpi-gpio: use Facedancer with a Raspdancer backend
 	optdepends = python-spi-py-git: use Facedancer with a Raspdancer backend
-	source = facedancer-3.0.4.tar.gz::https://github.com/greatscottgadgets/facedancer/archive/3.0.4.tar.gz
-	sha512sums = aab4499505877aee221cae3f5c395907578150c58b22cdd109660ddee62b137e6f2e59aae47397ba8b69703653a9d07d7e06481782f6515c840997a9702c3c4f
+	source = facedancer-3.0.6.tar.gz::https://github.com/greatscottgadgets/facedancer/archive/3.0.6.tar.gz
+	sha512sums = 5f273ea30476294dae3b2d4f5a0c5143bd30827981164aff54f14daeab25472eb2c23323c4b1d6f10e201c654dcc1edf2c32ea77905e8f8a028f106fcd9573e6
 
 pkgname = python-facedancer
