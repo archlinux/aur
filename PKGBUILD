@@ -4,7 +4,7 @@
 _pkgname=python-bangla
 pkgname="$_pkgname"-git
 pkgver=0.0.0.r26.g34e2a71
-pkgrel=1
+pkgrel=2
 pkgdesc="Bangla is a package for Bangla language users with various functionalities including Bangla date and Bangla numeric conversation"
 arch=('any')
 url="https://github.com/arsho/bangla"
