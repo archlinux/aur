@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-ffmpeg
 pkgver=7.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
@@ -84,6 +84,10 @@ prepare() {
   patch -Np1 -i "${srcdir}/configure.patch"
 
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
+
+  # VAAPI HEVC encode alignment fix
+  git cherry-pick -n bcfbf2bac8f9eeeedc407b40596f5c7aaa0d5b47
+  git cherry-pick -n d0facac679faf45d3356dff2e2cb382580d7a521
 }
 
 pkgver() {
