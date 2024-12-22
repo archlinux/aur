@@ -1,9 +1,11 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: envolution
+# Contributor: Carl Smedstad <carsme@archlinux.org>
 # Contributor: AngrySoft - Sebastian Zwierzchowski
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=python-sse-starlette
 _pkgname=${pkgname#python-}
-pkgver=2.1.3
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Server Sent Events (SSE) for Starlette and FastAPI"
 arch=(any)
@@ -28,9 +30,10 @@ checkdepends=(
   python-psutil
   python-pytest
   python-pytest-asyncio
+  python-portend
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5d12efd5734676cbb115656008136db065730140de1218c99a7d9cb9afb30976')
+sha256sums=('4c733c9f79b10f1be9217f17ca67fb1515322b48d684c7590667861d437ceb43')
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -46,8 +49,7 @@ check() {
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$site_packages"
-  pytest \
-    --ignore tests/integration/test_multiple_consumers.py
+  pytest -k "not test_sse_multiple_consumers" --ignore=tests/integration/test_multiple_consumers.py
 }
 
 package() {
@@ -57,3 +59,4 @@ package() {
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
+# vim:set ts=2 sw=2 et:
