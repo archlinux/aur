@@ -1,13 +1,13 @@
 pkgbase = vim-vimwiki
 	pkgdesc = A personal wiki for Vim
-	pkgver = 2023.04.04_1
+	pkgver = 2024.01.24
 	pkgrel = 1
 	url = https://github.com/vimwiki/vimwiki
 	arch = any
 	groups = vim-plugins
 	license = MIT
 	depends = vim
-	source = vim-vimwiki-2023.04.04_1.tar.gz::https://github.com/vimwiki/vimwiki/archive/v2023.04.04_1.tar.gz
-	sha256sums = a8dc8e94bde49343b160f876962963a9b4570b5639d4262e5fb5678f85de1de8
+	source = vim-vimwiki-2024.01.24.tar.gz::https://github.com/vimwiki/vimwiki/archive/v2024.01.24.tar.gz
+	sha256sums = 587083ee6afbae027b69fb2dd074e87244a963b218ced7e16d4cb1390c6a5833
 
 pkgname = vim-vimwiki
