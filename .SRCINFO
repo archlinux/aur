@@ -1,7 +1,7 @@
 pkgbase = pikaur
 	pkgdesc = AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay.
 	pkgver = 1.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/actionless/pikaur
 	changelog = CHANGELOG
 	arch = any
