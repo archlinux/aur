@@ -1,12 +1,12 @@
 pkgbase = hyprland-qtutils
 	pkgdesc = Hyprland Qt/QML utility apps
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hyprwm/hyprland-qtutils
 	arch = x86_64
 	arch = aarch64
 	license = BSD-3-Clause
-	makedepends = base-devel
+	makedepends = gcc
 	makedepends = cmake
 	makedepends = ninja
 	depends = qt6-base
