@@ -1,12 +1,13 @@
 pkgbase = doxygen-yap
-	pkgdesc = Doxygen for Prolog
+	pkgdesc = Doxygen fork to build YAP Prolog source documentation (not for general use)
 	pkgver = 1.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vscosta/doxygen-yap
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = cmake
-	provides = doxygen
+	makedepends = git
+	depends = python
 	source = git+https://github.com/vscosta/doxygen-yap.git#commit=444ea3d68aa7d8b551f16d14af04a40907099e7d
 	sha256sums = SKIP
 
