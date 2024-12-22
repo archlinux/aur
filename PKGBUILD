@@ -2,7 +2,7 @@
 
 pkgname=uksmd
 pkgver=6.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace KSM helper daemon"
 url=https://codeberg.org/pf-kernel/uksmd
 license=(GPL-3.0-or-later)
