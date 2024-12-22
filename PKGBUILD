@@ -4,11 +4,11 @@
 _name=NBT
 pkgname=python-${_name,,}
 pkgver=1.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Named Binary Tag Reader/Writer"
 url="https://github.com/twoolie/$_name"
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pillow')
 license=('MIT')
 arch=('any')
@@ -34,7 +34,7 @@ prepare() {
 build() {
   cd "$_name-version-$pkgver"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -49,6 +49,13 @@ check() {
 package() {
   cd "$_name-version-$pkgver"
 
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # https://wiki.archlinux.org/title/Python_package_guidelines#Using_site-packages
+  local _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  local _license_path="$_site_packages/$_name-$pkgver.dist-info/LICENSE.txt"
+  [ -f "$pkgdir/$_license_path" ] || { echo "License file not found"; exit 1; }
+  ln -s "$_license_path" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

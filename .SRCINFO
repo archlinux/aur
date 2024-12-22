@@ -1,12 +1,15 @@
 pkgbase = python-nbt
 	pkgdesc = Named Binary Tag Reader/Writer
 	pkgver = 1.5.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/twoolie/NBT
 	arch = any
 	license = MIT
 	checkdepends = python-pillow
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	noextract = Sample_World.tar.gz
 	source = python-nbt-1.5.1.tar.gz::https://github.com/twoolie/NBT/archive/version-1.5.1.tar.gz
