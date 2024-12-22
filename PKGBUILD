@@ -1,14 +1,14 @@
 # Maintainer: Lili1228 <aur at lili dot lgbt>
 pkgname=86box-git
-pkgver=4.2.1.r0.gf6948478a
+pkgver=4.2.1.r396.g7fb508e0e
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'armv7h' 'aarch64')
 url='https://86box.net/'
 license=('GPL-2.0-or-later')
-depends=('fluidsynth' 'hicolor-icon-theme' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2' # explicit
-'freetype2' 'gcc-libs' 'glib2' 'glibc' 'libevdev' 'libglvnd' 'libpng' 'libx11' 'libxcb' 'libxext' 'libxi' 'libxkbcommon-x11' 'libxkbcommon' 'wayland' 'zlib') # implicit 
-makedepends=('git' 'cmake>=3.21' 'extra-cmake-modules' 'ninja' 'qt6-tools' 'vde2') # vulkan-headers on qt5
+depends=('fluidsynth' 'hicolor-icon-theme' 'libserialport' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2' # explicit
+'freetype2' 'gcc-libs' 'glib2' 'glibc' 'libevdev' 'libglvnd' 'libpng' 'libsndfile' 'libx11' 'libxcb' 'libxext' 'libxi' 'libxkbcommon-x11' 'libxkbcommon' 'wayland' 'zlib') # implicit 
+makedepends=('git' 'cmake>=3.21' 'extra-cmake-modules' 'libserialport' 'ninja' 'qt6-tools' 'vde2') # vulkan-headers on qt5
 optdepends=(
     '86box-roms-git: ROM files'
     'discord-game-sdk: Discord Rich Presence'
