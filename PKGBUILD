@@ -2,7 +2,7 @@
 _pkgname=qiskit-dynamics
 pkgname=python-${_pkgname}
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Tools for building and solving models of quantum systems in Qiskit"
 arch=(any)
 url=https://github.com/Qiskit-Extensions/qiskit-dynamics
