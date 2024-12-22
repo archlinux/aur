@@ -4,13 +4,21 @@
 
 pkgname='fhtagn'
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Literate testing for command-line programs'
 arch=('any')
 url='https://github.com/xonixx/fhtagn'
 license=('MIT')  # SPDX-License-Identifier: MIT
 depends=('awk')
+checkdepends=('makesure')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+
+check() {
+  cd "$pkgname-$pkgver"
+
+  # Please note that this will download tush
+  makesure tested_by_gawk
+}
 
 package() {
   cd "$pkgname-$pkgver"
