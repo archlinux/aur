@@ -1,7 +1,7 @@
 pkgbase = python-netifaces-plus
 	pkgdesc = Fork of al45tair/netifaces, portable module to access network interface information.
 	pkgver = 0.12.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/netifaces-plus/
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = python-netifaces-plus
 	depends = python
 	provides = python-netifaces
 	conflicts = python-netifaces
-	source = python-netifaces-plus-0.12.4-1.tar.gz::https://github.com/tsukumijima/netifaces-plus/archive/refs/tags/release_0_12_4.tar.gz
+	source = python-netifaces-plus-0.12.4-2.tar.gz::https://github.com/tsukumijima/netifaces-plus/archive/refs/tags/release_0_12_4.tar.gz
 	sha512sums = 65fdf5319e7a8073df17b5047d113cda27f82ae3fdbd0deb2af0578591f1c87ff0afdcda96c691951cdc7ec4370370d46895294d078c34296fd17cba2a664350
 
 pkgname = python-netifaces-plus
