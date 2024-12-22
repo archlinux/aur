@@ -1,0 +1,4 @@
+[packr]
+source = "git"
+git = "https://github.com/gobuffalo/packr.git"
+prefix = "v"
