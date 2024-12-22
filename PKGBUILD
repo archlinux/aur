@@ -3,8 +3,8 @@
 _pkg='keyleds'
 
 pkgname="$_pkg-git"
-pkgver=r295.1713616
-pkgrel=1
+pkgver='r295.1713616'
+pkgrel='2'
 pkgdesc='Advanced RGB LED driver/controller for G410, G513, G610, G810, G910 and GPro'
 arch=('i686' 'x86_64')
 url='https://github.com/spectras/keyleds'
@@ -24,12 +24,23 @@ makedepends=(
 backup=('etc/keyledsd.conf')
 provides=("$_pkg")
 conflicts=("$_pkg")
-source=("git+https://github.com/spectras/$_pkg.git")
-sha256sums=('SKIP')
+source=(
+  "git+https://github.com/spectras/$_pkg.git"
+  'pr74.patch'
+)
+sha256sums=(
+  'SKIP'
+  'a0edb3496655cce4a7e839af8a869e4c03ce5f3917e894df5b684b2a0ee111ad'
+)
 
 pkgver() {
     cd "$srcdir/$_pkg"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$_pkg"
+  patch -Np1 -i ../pr74.patch
 }
 
 build() {
