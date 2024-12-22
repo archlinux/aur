@@ -3,7 +3,7 @@
 pkgname=python-py-serializable
 _gitpkgname=serializable
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Serialize and deserialize Python objects to and from JSON and XML'
 arch=('any')
 url='https://github.com/madpah/serializable'

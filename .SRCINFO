@@ -1,7 +1,7 @@
 pkgbase = python-py-serializable
 	pkgdesc = Serialize and deserialize Python objects to and from JSON and XML
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/madpah/serializable
 	arch = any
 	license = Apache-2.0
