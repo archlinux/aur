@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=janitor
-_pkgver=2.2.0
+_pkgver=2.2.1
 pkgname=r-${_pkgname,,}
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='Simple Tools for Examining and Cleaning Dirty Data'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-tidygraph
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('29d5d0185e4e824bb38f905b158162a12f52dc01c2e8a487fc730ce46bf6baae')
+sha256sums=('27c401302a62cafe8e68e66a51073834bc7930872282e0feb151d13629ae6cdf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

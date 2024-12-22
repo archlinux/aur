@@ -1,6 +1,6 @@
 pkgbase = r-janitor
 	pkgdesc = Simple Tools for Examining and Cleaning Dirty Data
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=janitor
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-janitor
 	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-tidygraph
-	source = https://cran.r-project.org/src/contrib/janitor_2.2.0.tar.gz
-	sha256sums = 29d5d0185e4e824bb38f905b158162a12f52dc01c2e8a487fc730ce46bf6baae
+	source = https://cran.r-project.org/src/contrib/janitor_2.2.1.tar.gz
+	sha256sums = 27c401302a62cafe8e68e66a51073834bc7930872282e0feb151d13629ae6cdf
 
 pkgname = r-janitor
