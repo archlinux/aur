@@ -1,8 +1,8 @@
 pkgbase = gtg-git
 	pkgdesc = Getting Things GNOME! is a personal tasks and TODO-list items organizer for GNOME
-	pkgver = 0.6.r448.gc726c4d7
+	pkgver = 0.6.r511.g95e33bcd
 	pkgrel = 1
-	url = https://github.com/getting-things-gnome/gtg
+	url = https://getting-things-gnome.github.io
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
