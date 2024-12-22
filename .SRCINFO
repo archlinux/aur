@@ -1,6 +1,6 @@
 pkgbase = auror
 	pkgdesc = only for developer until software is in first alpha
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/vbextreme/auror.git
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = auror
 	depends = curl
 	depends = zlib
 	depends = readline
-	source = auror-0.0.2.tar.gz::https://github.com/vbextreme/auror/archive/v0.0.2.tar.gz
+	source = auror-0.0.3.tar.gz::https://github.com/vbextreme/auror/archive/v0.0.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = auror
