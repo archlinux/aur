@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gwasurvivr
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='gwasurvivr: an R package for genome wide survival analysis'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2747c5e87e32cbdee6624327eb14487365a575c6d017ecd502f0c7db324d2a35')
+sha256sums=('e60fed4ba5e98cb4d51be30a19ec27308ccdcf2bbb4a03f9af77b04d14e145e2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
