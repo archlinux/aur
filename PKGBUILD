@@ -5,7 +5,7 @@
 pkgbase='python-ultralytics'
 pkgname=('python-ultralytics')
 _module='ultralytics'
-pkgver=8.3.52
+pkgver=8.3.53
 _src_folder=${_module}-${pkgver}
 pkgrel=1
 pkgdesc="Ultralytics YOLOv8 for SOTA object detection, multi-object tracking, instance segmentation, pose estimation and image classification."
@@ -15,7 +15,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('AGPL-3.0-or-later')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ultralytics/ultralytics/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e2420ac892f42106536485ce009782c714b55754069de5ce08739ae620019d98')
+sha256sums=('ed98c43bbce55ca4891431aa1f1cfe85fb4d173bb61f1f72ce70e073b0899ec1')
 
 build() {
   cd "${srcdir}/${_src_folder}"
