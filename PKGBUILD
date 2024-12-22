@@ -2,10 +2,10 @@
 _pkgname=qiskit-dynamics
 pkgname=python-${_pkgname}
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Tools for building and solving models of quantum systems in Qiskit"
 arch=(any)
-url=https://github.com/Qiskit-Extensions/qiskit-dynamics
+url=https://github.com/qiskit-community/qiskit-dynamics
 license=(Apache-2.0)
 depends=(
     python-arraylias
@@ -29,7 +29,7 @@ makedepends=(
 #    python-qiskit-experiments
 #    python-qiskit-ibm-runtime
 #)
-source=($_pkgname-$pkgver.tar.gz::https://github.com/Qiskit-Extensions/$_pkgname/archive/refs/tags/$pkgver.tar.gz)
+source=($_pkgname-$pkgver.tar.gz::https://github.com/qiskit-community/$_pkgname/archive/refs/tags/$pkgver.tar.gz)
 b2sums=('8f361a8831cb6587e9e95589a646b7af36e6bc94adcea074e86a9b1e45db1b7b29f7bac7012e708915e95a7ca98e7e04540a65d7377c0480aec28fef076e8d95')
 
 #prepare() {
