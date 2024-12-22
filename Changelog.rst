@@ -1,6 +1,14 @@
 Changelog
 =========
 
+**[6.1.0] ----- 2024-12-21** ::
+
+	    Timeout between ssh reconnects now 30 seconds
+	    ssh listener is now auto restarted if it exits unexpectedly.
+	      There are normal, quite common situations where ssh process can exit prematurely. (After sleep/resume, remote server sshd restarts/reboot, changing IP address such as location change of laptop)
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[5.10.0] ----- 2024-10-20** ::
 
 	    Use ipaddress in place of netaddr
