@@ -1,0 +1,7 @@
+/.vscode/
+/amaranth/
+/src/
+/pkg/
+*.log
+*.pkg.*
+*.tar.*
