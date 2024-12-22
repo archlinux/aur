@@ -4,7 +4,7 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-amd-full-git
-pkgver=7.2.r117451.g0f5592cfc7
+pkgver=7.2.r118103.g095f8038fa
 pkgrel=1
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
 _svt_vp9_ver='3b9a3fa43da4cc5fe60c7d22afe2be15341392ea'
@@ -137,10 +137,10 @@ makedepends=('git'
              'patchutils'
              'clang'
              'nasm'
-             'amf-headers'
              'opencl-headers'
              'vulkan-headers'
              # aur:
+             'amf-headers-git'
              'decklink-sdk'
 )
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
