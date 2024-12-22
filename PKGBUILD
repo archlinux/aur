@@ -3,7 +3,7 @@
 
 pkgname=python-encodec-git
 pkgver=0.1.1.r21.g0e2d0ae
-pkgrel=1
+pkgrel=2
 pkgdesc="EnCodec: High Fidelity Neural Audio Compression by Facebook"
 arch=('any')
 url="https://github.com/facebookresearch/encodec"
