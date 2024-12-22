@@ -1,7 +1,7 @@
 pkgbase = gcc12
 	pkgdesc = The GNU Compiler Collection
-	pkgver = 12.3.0
-	pkgrel = 6
+	pkgver = 12.4.0
+	pkgrel = 1
 	url = https://gcc.gnu.org
 	arch = x86_64
 	license = GPL3
@@ -24,7 +24,7 @@ pkgbase = gcc12
 	makedepends = zstd
 	options = !emptydirs
 	options = !lto
-	source = git+https://sourceware.org/git/gcc.git#commit=8fc1a49c9312b05d925b7d21f1d2145d70818151
+	source = git+https://sourceware.org/git/gcc.git#commit=2bada4bc59bed4be34fab463bdb3c3ebfd2b41bb
 	source = c89
 	source = c99
 	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
