@@ -4,9 +4,9 @@
 pkgbase=efibooteditor
 pkgname=(efibooteditor efibooteditor-qt5)
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Boot Editor for (U)EFI based systems."
-arch=(x86_64)
+arch=(x86_64 aarch64 armv7h)
 url="https://github.com/Neverous/efibooteditor"
 license=(LGPL3)
 depends=(efivar zlib qt6-base qt5-base)
