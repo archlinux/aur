@@ -3,7 +3,7 @@
 _name="piqa"
 pkgname=python-pytorch-${_name}
 provides=("${pkgname}")
-pkgver=1.1.7
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="PyTorch Image Quality Assessment"
 url="https://github.com/francois-rozet/${_name}"
@@ -12,7 +12,7 @@ arch=('x86_64')
 depends=('python-pytorch')
 makedepends=('python-setuptools')
 source=("https://github.com/francois-rozet/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0b6f3249dbc20055ec17d4a7cfdca5830a61934ea5fc8b11f4223935099933b7')
+sha256sums=('aacf801b640aaaa8aa5ccecdc79cf59aa497a2afb9a3f47cdccbc067b6915ecb')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
