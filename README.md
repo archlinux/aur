@@ -26,7 +26,7 @@ The PKGBUILD file supports customization via environment variables. Here's a lis
 - `_debug_kernel`: Force enables kernel debugging options when set to `y`, force disables debug options when set to `n` or relies on the kconfig when unset
 - `_debug_script`: Enables debugging for the `PKGBUILD` file
 
-All of these variables just need to be set for them to apply, except for `_subarch` and `_debug`. **For more information please check their documentation inside the `PKGBUILD` file**
+All of these variables just need to be set for them to apply, except for `_subarch` and `_debug_kernel`. **For more information please check their documentation inside the `PKGBUILD` file**
 
 ## GPG errors
 If makepkg complains about invalid PGP keys, try running this command:
