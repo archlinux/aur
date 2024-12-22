@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-${_android_arch}-boost
-pkgver=1.84.0
+pkgver=1.87.0
 pkgrel=1
 _srcname=boost_${pkgver//./_}
 arch=('any')
@@ -17,29 +17,15 @@ depends=("android-${_android_arch}-bzip2"
          "android-${_android_arch}-zlib"
          "android-${_android_arch}-zstd")
 makedepends=('android-environment')
-if [[ $_android_arch == aarch64 ]] || [[ $_android_arch == x86-64 ]]; then
-makedepends+=("android-${_android_arch}-openmpi")
-optdepends+=("android-${_android_arch}-openmpi: for mpi support")
-fi
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://boostorg.jfrog.io/artifactory/main/release/$pkgver/source/$_srcname.tar.bz2"
-        "boost-1.81.0-phoenix-multiple-definitions.patch"
-        "boost-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch"
         "disable-version-check.patch")
-md5sums=('9dcd632441e4da04a461082ebbafd337'
-         'cb1c25777e9b85af62366e7c930244b8'
-         '326826bf610c63c23247e70e648ff104'
-         '6290eb4fa0cab451aac92e12e85ef073')
+sha256sums=('af57be25cb4c4f4b413ed692fe378affb4352ea50fbe294a11ef548f4d527d89'
+            '63d12e7d703b471882608b4225c489f6a35ab425602783a4f9c4ea99a10f9c4b')
 
 prepare() {
   cd "${srcdir}/$_srcname"
   source android-env ${_android_arch}
-
-  # https://github.com/boostorg/phoenix/issues/111
-  patch -Np1 -i ../boost-1.81.0-phoenix-multiple-definitions.patch
-
-  # https://github.com/boostorg/ublas/pull/97
-  patch -Np2 -i ../boost-ublas-c++20-iterator.patch
   patch -p1 -i ../disable-version-check.patch
 }
 
