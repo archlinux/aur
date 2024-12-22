@@ -4,7 +4,7 @@
 
 pkgname=python-proton-vpn-local-agent
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 _commit=9bdad2fa5fcb39bcdc521e1e5640c8706019f97c
 pkgdesc="Proton VPN local agent written in Rust"
 arch=('x86_64')
