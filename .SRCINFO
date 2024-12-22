@@ -1,0 +1,15 @@
+pkgbase = sfp-master-git
+	pkgdesc = SFP-module programmer for CH341a devices
+	pkgver = r82.a2201c3
+	pkgrel = 1
+	url = https://github.com/bigbigmdm/SFP-Master
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	depends = libusb
+	source = git+https://github.com/bigbigmdm/SFP-Master.git
+	sha256sums = SKIP
+
+pkgname = sfp-master-git
