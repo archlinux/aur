@@ -1,5 +1,5 @@
 _pkgname='asix-ax99100'
-_modulename='ax99100'
+_modulename='ax99100x'
 
 post_upgrade() {
   set -u

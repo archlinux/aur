@@ -1,0 +1,17 @@
+diff -pNaru5 a/ax99100x_pp.c b/ax99100x_pp.c
+--- a/ax99100x_pp.c	2024-01-23 02:07:50.000000000 -0500
++++ b/ax99100x_pp.c	2024-12-21 13:14:42.401719386 -0500
+@@ -587,11 +587,13 @@ static int parport_ECP_supported(struct
+ 		pword = 4;
+ 		pr_warn("0x%lx: Unsupported pword size!\n", pb->base);
+ 		break;
+ 	default:
+ 		pr_warn("0x%lx: Unknown implementation ID\n", pb->base);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,4,0)
+ 		fallthrough;	/* Assume 1 */
++#endif
+ 	case 1:
+ 		pword = 1;
+ 	}
+ 	priv->pword = pword;
+ 
