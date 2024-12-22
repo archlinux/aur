@@ -5,7 +5,7 @@
 pkgname=zsh-you-should-use
 _module='zsh-you-should-use'
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='ZSH plugin that reminds you to use existing aliases for commands you just typed'
 url='https://github.com/MichaelAquilina/zsh-you-should-use'
 depends=(zsh)
@@ -17,7 +17,8 @@ sha256sums=('6ca0128883ab73d3782f70a6b16c95ed033c2497c3e27d5db0a68c90d8fde4a2')
 
 package() {
   cd ${pkgname}-${pkgver}
-  install -Dm644 you-should-use.plugin.zsh "${pkgdir}/usr/share/zsh/plugins/${pkgname}"
+  install -Dm644 you-should-use.plugin.zsh \
+    "${pkgdir}/usr/share/zsh/plugins/${pkgname}/you-should-use.plugin.zsh"
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
   install -Dm644 README.rst ${pkgdir}/usr/share/doc/${pkgname}/README.rst
   install -Dm644 CHANGELOG.md ${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md
