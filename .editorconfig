@@ -18,12 +18,3 @@ indent_size = 2
 
 [*.json]
 indent_size = 2
-
-[*.p8]
-indent_size = 4
-
-[*.py.template]
-indent_size = 4
-
-[*.toml.template]
-indent_size = 4

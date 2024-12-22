@@ -5,7 +5,7 @@
 _pkgname=amaranth
 pkgver=0.4.5
 pkgname="python-${_pkgname}${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern hardware definition language and toolchain based on Python (formerly nMigen). Version 0.4.5."
 arch=(any)
 url="https://github.com/amaranth-lang/amaranth"
