@@ -272,7 +272,7 @@ _error() {
     echo -e ":: ERROR: ${*//\\n/\\n          }"
 }
 _debug_msg() {
-    [ -n "${_debug_script}" ] && echo ":: debug: ${*}"
+    [ -n "${_debug_script}" ] && echo ":: debug: ${*}" || :
 }
 _debug_call() {
     local function="${1}"
