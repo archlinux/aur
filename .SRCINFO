@@ -1,7 +1,7 @@
 pkgbase = loramon
 	pkgdesc = LoRa packet sniffer for RNode hardware
 	pkgver = 0.9.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/markqvist/loramon
 	arch = any
 	license = MIT
