@@ -1,7 +1,7 @@
 pkgbase = bscpylgtv
 	pkgdesc = Library to control webOS based LG TV devices
 	pkgver = 0.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chros73/bscpylgtv
 	arch = x86_64
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname="bscpylgtv"
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to control webOS based LG TV devices"
 _rootdir="${pkgname}-${pkgver}"
 url="https://github.com/chros73/bscpylgtv"
