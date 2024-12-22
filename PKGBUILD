@@ -4,13 +4,20 @@
 
 _name=imbalanced-learn
 pkgname=python-${_name,,}
-pkgver=0.12.4
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Toolbox for imbalanced dataset in machine learning'
 arch=('any')
 url="https://github.com/scikit-learn-contrib/imbalanced-learn"
 license=('MIT')
-depends=('python>=3.8' 'python-numpy>=1.17.3' 'python-scipy>=1.5.0' 'python-scikit-learn>=1.0.2')
+depends=('python>=3.10'
+	 'python-numpy>=1.24.3'
+	 'python-scipy>=1.10.1'
+	 'python-scikit-learn>=1.3.2'
+	 'python-joblib>=1.1.0'
+	 'python-threadpoolctl>=2.0.0'
+	 'python-sklearn-compat>=0.1'
+)
 optdepends=('python-keras: for dealing with Keras models'
 	    'python-tensorflow: for dealing with TensorFlow models'
 	    'python-pandas: for dealing with Pandas DataFrames'
@@ -20,7 +27,7 @@ optdepends=('python-keras: for dealing with Keras models'
 makedepends=('python-installer' 'python-wheel')
 _whl="${_name//-/_}-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=(d47fc599160d3ea882e712a3a6b02bdd353c1a6436d8d68d41b1922e6ee4a703)
+sha256sums=(7eb5859f7827cb3babfa5789978c22fe36e56527d9c9768df2d864d98d9b40fe)
 
 noextract=("$_whl")
 package() {
