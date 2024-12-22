@@ -1,7 +1,7 @@
 pkgbase = certbot-dns-standalone
 	pkgdesc = Standalone DNS server plugin for certbot verification
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/siilike/certbot-dns-standalone
 	arch = any
 	license = Apache-2.0

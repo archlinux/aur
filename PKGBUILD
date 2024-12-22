@@ -2,7 +2,7 @@
 
 pkgname=certbot-dns-standalone
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone DNS server plugin for certbot verification"
 arch=('any')
 depends=('certbot' 'python-acme' 'python-dnslib')
