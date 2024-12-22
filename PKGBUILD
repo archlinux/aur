@@ -2,7 +2,7 @@
 
 _pkgname="qbittorrent-enhanced"
 pkgname="${_pkgname}"-appimage
-pkgver=5.0.2.10
+pkgver=5.0.3.10
 pkgrel=1
 pkgdesc="A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source_x86_64=(
 )
 
 sha256sums=('e675cd856f9817474455200ba7e6f5b7cc42d6598a5eecbbbdaa0e6fd304d6b7')
-sha256sums_x86_64=('8de929b7012f47883872de9a6c05b8db9a31eb8e894a52df49df71ced0c5c837')
+sha256sums_x86_64=('67e64ce1ce373a343329b5cdb861ea0fb862913d8e639378f0a6fa80ab53d324')
 
 prepare () {
     chmod +x "${_pkgname}-${pkgver}.AppImage"
