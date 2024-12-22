@@ -1,0 +1,17 @@
+pkgbase = netventory-git
+	pkgdesc = Netventory is a fast single binary network scanning tool with a beautiful gui that runs on Linux, Mac or Windows
+	pkgver = r2.9a71679
+	pkgrel = 1
+	url = https://github.com/RamboRogers/netventory
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = netventory-git::git+https://github.com/RamboRogers/netventory.git
+	sha256sums = SKIP
+
+pkgname = netventory-git
