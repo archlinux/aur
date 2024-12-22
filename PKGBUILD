@@ -25,8 +25,8 @@ source=("${pkgname}-${pkgver}.tar.xz::${_url}/${pkgname}_${pkgver}.tar.xz"
         "im_apt_check.patch"
         "install_remove_apt_check.patch")
 sha256sums=('1fbff7261a4bf962b3eabe81fc7a4e346d0aad440d848eb9f668146899ef4636'
-            '21778d62b28e677cfb8d7784c5b486ff373534de6e6fb5603e2c8bd268abef7b'
-            '4b8bc562521564022ae657ce1db7c3170d4184f955150bd9e51b871c73f4a996')
+            '7f4e08b59ada49931cbac7b8e99871a622a03b44bbc34b3d74dc0e3c7a3e3cda'
+            'dd01db12b2c9f8d834f491292464a1c6c2b13237d173f10dea7397e7c96d1d95')
 
 ## Packaging via Linuxmint repository
 prepare() {
@@ -42,8 +42,6 @@ prepare() {
     patch -Np1 -i ../im_apt_check.patch
     #Patching "install_remove.py" file
     patch -Np1 -i ../install_remove_apt_check.patch
-    #Patching "mintlocale.py" file
-    #patch -Np1 -i ../mintlocale_apt_check.patch
 
 }
 

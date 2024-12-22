@@ -1,30 +1,29 @@
 --- a/usr/lib/linuxmint/mintlocale/install_remove.py
 +++ b/usr/lib/linuxmint/mintlocale/install_remove.py
-@@ -2,15 +2,21 @@
+@@ -2,8 +2,6 @@
  
  import os
  import gettext
 -import apt_pkg
+-import aptkit.simpleclient
  import subprocess
  import locale
  import codecs
--import mintcommon.aptdaemon
- 
+@@ -11,6 +9,13 @@
  import gi
  gi.require_version('Gtk', '3.0')
  from gi.repository import Gtk, Gdk, GdkPixbuf
 +
-++
-++# Used to detect Debian derivatives (we don't want to show APT features in other distros)
-++IS_DEBIAN = os.path.exists("/etc/debian_version")
-++
-++if IS_DEBIAN:
-++    import apt_pkg
-++    import mintcommon.aptdaemon
++# Used to detect Debian derivatives (we don't want to show APT features in other distros)
++IS_DEBIAN = os.path.exists("/etc/debian_version")
++
++if IS_DEBIAN:
++    import apt_pkg
++    import aptkit.simpleclient
  
  # i18n
  APP = 'mintlocale'
-@@ -53,8 +59,9 @@
+@@ -53,8 +58,9 @@
                      else:
                          self.language_packs.append(LanguagePack(category, language, dependency, package))
  
@@ -36,14 +35,14 @@
          self.cache_updated = False
  
  
-@@ -134,7 +141,8 @@
-         return (language_code, country_code, language_label)
+@@ -97,7 +103,8 @@
  
-     def build_lang_list(self):
--        self.cache = apt_pkg.Cache(None)
-+        if IS_DEBIAN:
-+            self.cache = apt_pkg.Cache(None)
+         self.build_lang_list()
  
-         self.builder.get_object('button_install').set_sensitive(False)
-         self.builder.get_object('button_remove').set_sensitive(False)
+-        self.apt = aptkit.simpleclient.SimpleAPTClient(self.window)
++        if IS_DEBIAN
++            self.apt = aptkit.simpleclient.SimpleAPTClient(self.window)
+ 
+     def data_func_surface(self, column, cell, model, iter_, *args):
+         pixbuf = model.get_value(iter_, 2)
 
