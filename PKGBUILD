@@ -4,7 +4,7 @@
 _pkgname=pygobject-stubs
 pkgname="python-${_pkgname}"
 pkgver=2.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PEP 561 Typing Stubs for PyGObject."
 arch=('any')
 url='https://github.com/pygobject/pygobject-stubs'
