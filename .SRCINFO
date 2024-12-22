@@ -1,7 +1,7 @@
 pkgbase = python-qiskit-algorithms
 	pkgdesc = A library of quantum algorithms for Qiskit
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/qiskit-community/qiskit-algorithms
 	arch = any
 	license = Apache-2.0
