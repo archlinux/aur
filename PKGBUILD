@@ -2,7 +2,7 @@
 pkgname=python-stanio
 _name=stanio
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A package to prepare inputs to Stan and reading its outputs"
 arch=('any')
 url="https://github.com/WardBrian/stanio"
