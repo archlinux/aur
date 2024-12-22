@@ -2,8 +2,8 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 
 pkgname=python-virtualenvwrapper
-pkgver=6.1.0
-pkgrel=4
+pkgver=6.1.1
+pkgrel=1
 pkgdesc="Extensions to Ian Bicking's virtualenv tool"
 arch=('any')
 url="https://virtualenvwrapper.readthedocs.io/"
@@ -12,7 +12,7 @@ depends=('python-virtualenv' 'python-virtualenv-clone' 'python-stevedore'
          'which')
 makedepends=('python-pbr' 'python-setuptools' 'python-setuptools-scm')
 source=(https://pypi.org/packages/source/v/virtualenvwrapper/virtualenvwrapper-$pkgver.tar.gz)
-sha256sums=('d467beac5a44be00fb5cd1bcf332398c3dab5fb3bd3af7815ea86b4d6bb3d3a4')
+sha256sums=('112e7ea34a9a3ce90aaea54182f0d3afef4d1a913eeb75e98a263b4978cd73c6')
 
 prepare() {
   cd virtualenvwrapper-$pkgver

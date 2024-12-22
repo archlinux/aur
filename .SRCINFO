@@ -1,7 +1,7 @@
 pkgbase = python-virtualenvwrapper
 	pkgdesc = Extensions to Ian Bicking's virtualenv tool
-	pkgver = 6.1.0
-	pkgrel = 4
+	pkgver = 6.1.1
+	pkgrel = 1
 	url = https://virtualenvwrapper.readthedocs.io/
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = python-virtualenvwrapper
 	depends = python-virtualenv-clone
 	depends = python-stevedore
 	depends = which
-	source = https://pypi.org/packages/source/v/virtualenvwrapper/virtualenvwrapper-6.1.0.tar.gz
-	sha256sums = d467beac5a44be00fb5cd1bcf332398c3dab5fb3bd3af7815ea86b4d6bb3d3a4
+	source = https://pypi.org/packages/source/v/virtualenvwrapper/virtualenvwrapper-6.1.1.tar.gz
+	sha256sums = 112e7ea34a9a3ce90aaea54182f0d3afef4d1a913eeb75e98a263b4978cd73c6
 
 pkgname = python-virtualenvwrapper
