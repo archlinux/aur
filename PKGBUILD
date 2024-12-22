@@ -2,7 +2,7 @@
 # Contributor: Marcin Kornat <rarvolt@gmail.com>
 pkgname=labelle
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Software to print with LabelManager PnP from Dymo"
 arch=('any')
 license=('Apache-2.0')
@@ -49,8 +49,12 @@ sha512sums=('fd5bcc6f054817f9780eb7f40b71ea883f1f4d652131f6a769fc7dff633b7ce15fc
 
 prepare() {
     cd "${pkgname}-${pkgver}"
+
     # Unpin dependency range
     sed -i -E -e 's/"(hatchling|hatch-vcs) [^"]+"/"\1"/g' pyproject.toml
+
+    # Remove flaky assertion, which only works reliable on CI with no printer attached
+    sed -i -e '/"No supported devices found"/d' src/labelle/gui/tests/test_gui.py
 }
 
 build() {

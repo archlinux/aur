@@ -1,7 +1,7 @@
 pkgbase = labelle
 	pkgdesc = Linux Software to print with LabelManager PnP from Dymo
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/labelle-org/labelle
 	arch = any
 	license = Apache-2.0
