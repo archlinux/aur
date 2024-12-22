@@ -3,7 +3,7 @@
 _srcname=alloy
 pkgname=grafana-${_srcname}
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenTelemetry Collector distribution with programmable pipelines'
 arch=('x86_64' 'aarch64')
 url='https://grafana.com/oss/alloy'
@@ -22,6 +22,7 @@ b2sums=('a84a4d8026d7f10f1f716c2fbff78f63d07a4766bdae91e05b47766ae889461bb73b980
 build() {
   cd ${_srcname}
   export GOPATH="${srcdir}"
+  export GO_TAGS=promtail_journal_enabled
   make alloy
 }
 
