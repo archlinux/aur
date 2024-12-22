@@ -13,10 +13,11 @@ pkgbase = python-pygreat
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-wheel
 	depends = python
-	depends = python-future
 	depends = python-libusb1
 	depends = python-pyusb
 	source = libgreat-2024.0.1.tar.gz::https://github.com/greatscottgadgets/libgreat/archive/v2024.0.1.tar.gz
+	source = github-pr-47.patch
 	sha512sums = 099af99347b24f5ee4549320757aea0238bc257312ea3161192615c81e0d77ffe272a665cfcee144aae8ec21c693b19034a286a790afdee99b8132c420ecf98c
+	sha512sums = 38900d94099ac9f156304de0564471036c03a1b05fa6baa91137ddfe3e84c1c91654b90fe52c5d6a84a37e942cec3c8b8a5b2377c6bcbbfaffdec2d816c01cd1
 
 pkgname = python-pygreat

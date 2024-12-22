@@ -1,0 +1,197 @@
+From 6283a9f79435126f1f45e4cbf83426f88606fcab Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Sun, 22 Dec 2024 21:41:18 +0100
+Subject: [PATCH 1/4] Replace `native_str` invocation with `str`
+
+On Python 3, `future.utils.native_str` is equivalent to `str`. [1] [2]
+
+Replace all invocations so the code depends less on the obsolete [3]
+`future` third-party package.
+
+[1]: https://github.com/PythonCharmers/python-future/blob/v1.0.0/src/future/utils/__init__.py#L8-L9
+
+[2]: https://github.com/PythonCharmers/python-future/blob/v1.0.0/src/future/utils/__init__.py#L559
+
+[3]: https://github.com/PythonCharmers/python-future/blob/v1.0.0/README.rst#status
+---
+ host/pygreat/comms.py | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/host/pygreat/comms.py b/host/pygreat/comms.py
+index 5e5f583..a21e96f 100644
+--- a/host/pygreat/comms.py
++++ b/host/pygreat/comms.py
+@@ -163,8 +163,7 @@ def _generate_object_for_class(self, class_number, overwrite=False):
+         class_docs = self.apis['core'].get_class_docs(class_number)
+ 
+         # Ensure that the class name is a string type that can be a class name.
+-        # This ensures python2 compatibility.
+-        class_name = future_utils.native_str(class_name)
++        class_name = str(class_name)
+ 
+         # If we already have an object for the given class,
+         # and we're not in overwrite mode, skip enumerating it.
+@@ -1127,7 +1126,7 @@ def method(self, *arguments, **kwargs):
+                 timeout=timeout, max_response_length=max_response_length, encoding=encoding, *arguments)
+ 
+     # Apply our known documentation to the given command.
+-    method.__name__ = future_utils.native_str(name)
++    method.__name__ = str(name)
+     method.__doc__ = doc
+ 
+     # Generate a method signature object, so the python documentation will be correct.
+
+From 31394700a0e566658ea57de86e21605c0bc0304e Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Sun, 22 Dec 2024 21:45:48 +0100
+Subject: [PATCH 2/4] =?UTF-8?q?Replace=20`raise=5Ffrom`=20with=20native=20?=
+ =?UTF-8?q?`raise=20=E2=80=A6=20from`?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+On Python 3, `future.utils.raise_from` is equivalent to the
+`raise … from …` statement. [1]
+
+Replace all invocations so the code depends less on the obsolete [2]
+`future` third-party package.
+
+[1]: https://github.com/PythonCharmers/python-future/blob/v1.0.0/src/future/utils/__init__.py#L389-L397
+
+[2]: https://github.com/PythonCharmers/python-future/blob/v1.0.0/README.rst#status
+---
+ host/pygreat/comms_backends/usb.py  | 3 +--
+ host/pygreat/comms_backends/usb1.py | 3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/host/pygreat/comms_backends/usb.py b/host/pygreat/comms_backends/usb.py
+index 558fc93..7fc6ba5 100644
+--- a/host/pygreat/comms_backends/usb.py
++++ b/host/pygreat/comms_backends/usb.py
+@@ -8,7 +8,6 @@
+ """
+ 
+ from __future__ import absolute_import
+-from future import utils as future_utils
+ 
+ import usb
+ import time
+@@ -391,7 +390,7 @@ def execute_raw_command(self, class_number, verb, data=None, timeout=1000, encod
+ 
+                 # If this was an error raised on the device side, covert it to a CommandFailureError.
+                 if is_signaled_error and rephrase_errors:
+-                    future_utils.raise_from(self._exception_for_command_failure(error_number, pretty_name), None)
++                    raise self._exception_for_command_failure(error_number, pretty_name) from None
+                 else:
+                     raise
+         finally:
+diff --git a/host/pygreat/comms_backends/usb1.py b/host/pygreat/comms_backends/usb1.py
+index 4890ddd..d61ffe4 100644
+--- a/host/pygreat/comms_backends/usb1.py
++++ b/host/pygreat/comms_backends/usb1.py
+@@ -8,7 +8,6 @@
+ """
+ 
+ from __future__ import absolute_import
+-from future import utils as future_utils
+ 
+ import sys
+ 
+@@ -438,7 +437,7 @@ def execute_raw_command(self, class_number, verb, data=None, timeout=1000, encod
+ 
+                 # If this was an error raised on the device side, covert it to a CommandFailureError.
+                 if is_signaled_error and rephrase_errors:
+-                    future_utils.raise_from(self._exception_for_command_failure(error_number, pretty_name), None)
++                    raise self._exception_for_command_failure(error_number, pretty_name) from None
+                 else:
+                     raise
+         finally:
+
+From 78b5b5da1e328c47ea12610b6a4c07a6e412dd49 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Sun, 22 Dec 2024 21:56:54 +0100
+Subject: [PATCH 3/4] Replace `raise_with_traceback` with builtin method
+
+On Python 3, `future.utils.raise_with_traceback` is equivalent to
+calling the `with_traceback` method built into `BaseException`. [1] [2]
+
+Replace all invocations so the code has no more dependencies on the
+obsolete [3] `future` third-party package.
+
+[1]: https://github.com/PythonCharmers/python-future/blob/v1.0.0/src/future/utils/__init__.py#L446-L449
+
+[2]: https://github.com/PythonCharmers/python-future/blob/v1.0.0/docs/compatible_idioms.rst#raising-exceptions
+
+[3]: https://github.com/PythonCharmers/python-future/blob/v1.0.0/README.rst#status
+---
+ host/pygreat/board.py | 1 -
+ host/pygreat/comms.py | 6 ++----
+ 2 files changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/host/pygreat/board.py b/host/pygreat/board.py
+index 432018e..74a9439 100644
+--- a/host/pygreat/board.py
++++ b/host/pygreat/board.py
+@@ -8,7 +8,6 @@
+ 
+ # FIXME: remove dependencies
+ import usb
+-import future
+ import time
+ 
+ # Use the GreatFET comms API, and the standard (core) API.
+diff --git a/host/pygreat/comms.py b/host/pygreat/comms.py
+index a21e96f..776950b 100644
+--- a/host/pygreat/comms.py
++++ b/host/pygreat/comms.py
+@@ -8,10 +8,8 @@
+ """
+ 
+ from __future__ import unicode_literals
+-from future import utils as future_utils
+ 
+ import re
+-import sys
+ import struct
+ import inspect
+ import collections
+@@ -776,7 +774,7 @@ def execute_command(self, class_number, verb, in_format, out_format,
+             # Wrap any exceptions that occur with a more specific method.
+             message = "invalid arguments in call to RPC `{}`; innner message: {}; format: {}".format(name, e, in_format)
+             outer_exception = type(e)(message)
+-            future_utils.raise_with_traceback(outer_exception, sys.exc_info()[2])
++            raise outer_exception.with_traceback(e.__traceback__) from None
+ 
+         # If we're not reading a response (e.g. if the output format is empty, or None),
+         # truncate the max_response_length to zero. This allows backends to skip waiting for a response, when they can.
+@@ -803,7 +801,7 @@ def execute_command(self, class_number, verb, in_format, out_format,
+             # Wrap any exceptions that occur with a more specific method.
+             message = "unexpected return RPC `{}`; innner message: {}; format: {}".format(name, e, out_format)
+             outer_exception = type(e)(message)
+-            future_utils.raise_with_traceback(outer_exception, sys.exc_info()[2])
++            raise outer_exception.with_traceback(e.__traceback__) from None
+ 
+         # If we have an encoding, convert any byte arguments
+         # into a string.
+
+From f1c96139adc2d0cc03057d45bdb4978d506107d4 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Sun, 22 Dec 2024 22:03:30 +0100
+Subject: [PATCH 4/4] Remove now-unused dependency on `future`
+
+---
+ host/pyproject.toml | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/host/pyproject.toml b/host/pyproject.toml
+index 39f78a4..20e9ceb 100644
+--- a/host/pyproject.toml
++++ b/host/pyproject.toml
+@@ -28,7 +28,6 @@ classifiers = [
+ 
+ dependencies = [
+     "pyusb",
+-    "future",
+     "backports.functools_lru_cache",
+ ]
+ 
