@@ -2,7 +2,7 @@
 
 pkgname=python-proton-vpn-api-core
 pkgver=0.38.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The proton-vpn-core-api acts as a facade to the other Proton VPN components, exposing a uniform API to the available Proton VPN services."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-vpn-api-core"
