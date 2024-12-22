@@ -1,6 +1,6 @@
 pkgbase = phantom-player-git
 	pkgdesc = Smart video player and playlist manager
-	pkgver = 2.0.241222.0b9e4be
+	pkgver = 2.0.r3.g0f106d3
 	pkgrel = 1
 	url = https://www.phantom-player.com/
 	arch = any
