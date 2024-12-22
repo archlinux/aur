@@ -1,7 +1,7 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=cmus-rpc-py
 pkgver=0.1.1
-pkgrel=1
+pkgrel=
 pkgdesc="Discord rich presence integration for cmus music player"
 arch=('any')
 url="https://github.com/mzivic7/$pkgname"
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --tags
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
