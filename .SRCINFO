@@ -1,6 +1,6 @@
 pkgbase = 0ad-git
 	pkgdesc = Cross-platform, 3D and historically-based real-time strategy game - built from git development version.
-	pkgver = a26.r957.g6d12d25348
+	pkgver = a26.r1134.gba0e2d0217
 	pkgrel = 1
 	epoch = 1
 	url = https://play0ad.com
@@ -29,15 +29,14 @@ pkgbase = 0ad-git
 	makedepends = which
 	makedepends = subversion
 	makedepends = makepkg-git-lfs-proto
+	makedepends = llvm
 	options = !lto
 	options = !debug
 	source = git-lfs+https://gitea.wildfiregames.com/0ad/0ad
-	source = patch.patch
 	source = https://www.python.org/ftp/python/3.11.10/Python-3.11.10.tar.xz
 	source = https://www.python.org/ftp/python/3.11.10/Python-3.11.10.tar.xz.asc
 	validpgpkeys = A035C8C19219BA821ECEA86B64E628F8D684696D
 	md5sums = SKIP
-	md5sums = 0c789b7aa65258125a488c857e3fb74b
 	md5sums = af59e243df4c7019f941ae51891c10bc
 	md5sums = SKIP
 

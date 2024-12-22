@@ -7,7 +7,7 @@
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
 epoch=1
-pkgver=a26.r957.g6d12d25348
+pkgver=a26.r1134.gba0e2d0217
 pkgrel=1
 pkgdesc="Cross-platform, 3D and historically-based real-time strategy game - built from git development version."
 arch=('i686' 'x86_64')
@@ -16,17 +16,15 @@ license=('GPL-2.0-or-later' 'LicenseRef-CCPL')
 makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'git'
              'enet' 'fmt' 'gloox' 'libminiupnpc.so'
              'libpng' 'libsodium' 'libvorbis' 'miniupnpc' 'openal'
-             'sdl2' 'wxwidgets-gtk3' 'which' 'subversion' 'makepkg-git-lfs-proto')
+             'sdl2' 'wxwidgets-gtk3' 'which' 'subversion' 'makepkg-git-lfs-proto' 'llvm')
 options=('!lto' '!debug') # lto breaks spidermonkey linking (https://bugs.gentoo.org/746947)
 source=(
   "git-lfs+https://gitea.wildfiregames.com/0ad/0ad"
-  "patch.patch"
   https://www.python.org/ftp/python/3.11.10/Python-3.11.10.tar.xz{,.asc}
 )
 validpgpkeys=('A035C8C19219BA821ECEA86B64E628F8D684696D')  # Pablo Galindo Salgado <pablogsal@gmail.com>
 md5sums=(
   'SKIP'
-  '0c789b7aa65258125a488c857e3fb74b'
   'af59e243df4c7019f941ae51891c10bc'
   'SKIP'
 )
@@ -34,11 +32,6 @@ md5sums=(
 pkgver() {
   cd ${_pkgname}
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/${_pkgname}"
-  patch -p1 -i ../patch.patch # Fix build with GCC 14
 }
 
 build() {
