@@ -8,7 +8,7 @@
 
 pkgname=ffmpeg-headless
 pkgver=7.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -113,9 +113,12 @@ source=("$pkgname::git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}")
 b2sums=('c7ec6b1db61608195117b79f3f0c8f6323c3abeb39721359da0f10e7d739da8301e04ff5fa83c022f86fc760f66e00066f9a50d97b771f797ccc679f9d912c40')
 validpgpkeys=('DD1EC9E8DE085C629B3E1846B18E8928B3948D64')   # Michael Niedermayer <michael@niedermayer.cc>
 
-# prepare() {
-#   cd "${pkgname}" || exit 1
-# }
+prepare() {
+  cd "${pkgname}" || exit 1
+  # VAAPI HEVC encode alignment fix
+  git cherry-pick -n bcfbf2bac8f9eeeedc407b40596f5c7aaa0d5b47
+  git cherry-pick -n d0facac679faf45d3356dff2e2cb382580d7a521
+}
 
 pkgver() {
   cd "${pkgname}" || exit 1
