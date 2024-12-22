@@ -2,7 +2,7 @@
 
 pkgname=python-proton-vpn-network-manager
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The proton-vpn-network-manager component provides the necessary functionality for other components to interact with NetworkManager."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-vpn-network-manager"
