@@ -6,8 +6,8 @@ pkgdesc="A machine learning-based video super resolution and frame interpolation
 arch=('x86_64')
 url="https://github.com/k4yt3x/video2x"
 license=('AGPL3')
-depends=('ffmpeg' 'ncnn' 'vulkan-driver' 'opencv' 'spdlog' 'boost-libs')
-makedepends=('git' 'cmake' 'make' 'clang' 'pkgconf' 'vulkan-headers' 'openmp' 'boost')
+depends=('ffmpeg' 'ncnn' 'vulkan-driver' 'spdlog' 'boost-libs')
+makedepends=('git' 'cmake' 'clang' 'vulkan-headers' 'openmp' 'boost')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+${url}.git")
@@ -26,7 +26,7 @@ prepare() {
 build() {
     cd "$srcdir/${pkgname%-git}"
     cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+        -DCMAKE_CXX_COMPILER=clang++ -DVIDEO2X_ENABLE_NATIVE=ON
     cmake --build build --config Release --parallel
 }
 
