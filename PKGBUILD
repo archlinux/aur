@@ -1,8 +1,9 @@
-# Maintainer: Julien Hartmann <juli1.hartmann@gmail.com>
-pkgname=keyleds
-pkgver=1.1.1
-pkgrel=2
-pkgdesc="➤ Advanced RGB LED animation driver for G213, G410, G513, G610, G810, G910 and GPro"
+# Maintainer: Jiri Tyr <jiri.tyr@gmail.com>
+
+pkgname='keyleds'
+pkgver='1.1.1'
+pkgrel='3'
+pkgdesc='Advanced RGB LED animation driver for G213, G410, G513, G610, G810, G910 and GPro'
 arch=('i686' 'x86_64')
 url="https://github.com/spectras/keyleds"
 license=('GPL3')
