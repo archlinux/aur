@@ -2,7 +2,7 @@
 
 pkgname=pypipe
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Python command-line tool for pipeline processing'
 arch=('any')
 url='https://github.com/bugen/pypipe'
