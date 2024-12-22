@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=passes
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="A digital pass manager"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('libadwaita' 'python-gobject' 'zint')
 makedepends=('meson' 'blueprint-compiler')
 checkdepends=('appstream-glib')
 source=($url/archive/v$pkgver.tar.gz)
-b2sums=('1e99594ff7ca5b312d8645d69beefdf60959b7502ea233a42905f191f93ccb60d3ca2b43eef38ce7bb4e844a132328335500b79a43c53deb85b13d6425ba6a33')
+b2sums=('f1d31b4e91539efed1eb7d3c0a15040919b56c5fa1de6eb97a8655e15bd018d5e89695593fdea76fa003a5d944e52e3330ef0fd1901e9b5cce5f3275684f6634')
 
 build() {
   arch-meson $pkgname-$pkgver build
