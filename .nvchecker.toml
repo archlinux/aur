@@ -1,0 +1,4 @@
+[libqpsd-qt6]
+source = "git"
+git = "https://github.com/roniemartinez/libqpsd.git"
+prefix = "v"
