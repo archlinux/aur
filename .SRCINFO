@@ -1,0 +1,17 @@
+pkgbase = better-libretro-pcsx2-launcher-git
+	pkgdesc = Launch Sony PlayStation 2 games through PCSX2, directly from RetroArch. This package is probably temporary until/if the original author accepts my pull request
+	pkgver = r50.6ece25a
+	pkgrel = 1
+	url = https://github.com/TheBeardOfTruth/better-libretro-pcsx2-launcher
+	arch = x86_64
+	groups = libretro
+	license = MIT
+	makedepends = git
+	depends = pcsx2
+	depends = libretro-core-info
+	provides = libretro-pcsx2-launcher
+	conflicts = libretro-pcsx2-launcher
+	source = libretro-pcsx2::git+https://github.com/TheBeardOfTruth/better-libretro-pcsx2-launcher.git
+	sha256sums = SKIP
+
+pkgname = better-libretro-pcsx2-launcher-git
