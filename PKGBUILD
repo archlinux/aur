@@ -4,7 +4,7 @@ _suffix=rc
 pkgname="obs-studio-${_suffix}"
 _pkgver=31.0.0
 pkgver="${_pkgver//-/_}"
-pkgrel=3
+pkgrel=4
 epoch=10
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -15,7 +15,7 @@ _qtver=6.6.2
 _libajantv2ver=17.0.1
 _libdatachannelver=0.21
 _mbedtlsver=3.6.1
-_pythonver=3.12
+_pythonver=3.13
 depends=(
   "alsa-lib" # Deps of ALSA plugin and CEF
   "curl" # Deps of OBS Studio and rtmp-services plugin
