@@ -2,8 +2,8 @@
 
 pkgname=python-minerva-git
 _gitpkgname=minerva
-pkgver=r128.5bac31a
-pkgrel=2
+pkgver=r137.b9fb6d8
+pkgrel=1
 pkgdesc='32-bit RISC-V soft processor'
 arch=('any')
 url='https://github.com/minerva-cpu/minerva'
@@ -11,7 +11,7 @@ license=('BSD-3-Clause')
 depends=(
   'python'
   'python-amaranth'
-  'python-jtagtap-git'
+  'python-amaranth-soc'
 )
 makedepends=(
   'git'
@@ -21,8 +21,9 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=(
-  'yices'
+  'python-pdm'
   'symbiyosys'
+  'yices'
 )
 provides=("python-minerva=${pkgver}")
 conflicts=('python-minerva')
@@ -46,6 +47,9 @@ pkgver() {
 prepare() {
   cd "${_gitpkgname}"
 
+  echo >&2 'Patching tests to use symbiyosys instead of yowasp-yosys'
+  sed -i -e 's/yowasp-sby/sby/' minerva/test/utils.py
+
   echo >&2 'Adjusting image links'
   sed -i -e 's/\(!\[Pipeline Diagram Image\]\)([^)]*)/\1(.\/pipeline-diagram.png)/' \
     README.md
@@ -58,7 +62,7 @@ build() {
 
 check() {
   cd "${_gitpkgname}"
-  python -m unittest discover -v
+  PDM_USE_VENV=false SBY=sby YOSYS=yosys python -m unittest discover -v
 }
 
 package() {

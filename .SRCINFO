@@ -1,12 +1,13 @@
 pkgbase = python-minerva-git
 	pkgdesc = 32-bit RISC-V soft processor
-	pkgver = r128.5bac31a
-	pkgrel = 2
+	pkgver = r137.b9fb6d8
+	pkgrel = 1
 	url = https://github.com/minerva-cpu/minerva
 	arch = any
 	license = BSD-3-Clause
-	checkdepends = yices
+	checkdepends = python-pdm
 	checkdepends = symbiyosys
+	checkdepends = yices
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
@@ -14,8 +15,8 @@ pkgbase = python-minerva-git
 	makedepends = python-wheel
 	depends = python
 	depends = python-amaranth
-	depends = python-jtagtap-git
-	provides = python-minerva=r128.5bac31a
+	depends = python-amaranth-soc
+	provides = python-minerva=r137.b9fb6d8
 	conflicts = python-minerva
 	source = minerva::git+https://github.com/minerva-cpu/minerva.git
 	source = pipeline-diagram.png::https://docs.google.com/drawings/d/e/2PACX-1vTMkQc8ZJoiJ2AOeFGMkK0QTNx1hSG5wDrG5seLdJ3i61E4ag7wH7VFey44qhvuXotvOKxOw-mFS-VE/pub?w=850&h=761
