@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=7.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -427,6 +427,10 @@ prepare() {
 
   ## https://crbug.com/1251779
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch
+
+  ## VAAPI HEVC encode alignment fix
+  git cherry-pick -n bcfbf2bac8f9eeeedc407b40596f5c7aaa0d5b47
+  git cherry-pick -n d0facac679faf45d3356dff2e2cb382580d7a521
 
   ### OBS changes
 
