@@ -5,22 +5,11 @@ RUN pacman --noconfirm -Sy fakeroot binutils make
 
 # Install OpenGamepadUI dependencies
 RUN pacman --noconfirm -S \
-  libx11 \
-  libxres \
-  libxcb \
-  libxext \
-  libxau \
-  libxdmcp \
+  rust \
   gamescope \
   vulkan-tools \
   mesa-utils \
   godot \
-  scons \
-  pkgconf \
-  gcc \
-  libxinerama \
-  glu \
-  alsa-lib \
   unzip \
   wget \
   git
