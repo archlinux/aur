@@ -1,7 +1,7 @@
 pkgbase = python-pyproject-patcher
 	pkgdesc = Collection of convenience functions to patch `pyproject.toml` in place
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/claui/pyproject-patcher
 	arch = any
 	license = Apache-2.0
