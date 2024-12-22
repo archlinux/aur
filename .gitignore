@@ -1,0 +1,8 @@
+/.vscode/
+/minerva/
+/src/
+/pkg/
+pipeline-diagram.png
+*.log
+*.pkg.*
+*.tar.*

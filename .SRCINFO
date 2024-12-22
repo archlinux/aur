@@ -1,0 +1,25 @@
+pkgbase = python-minerva-amaranth0.4
+	pkgdesc = 32-bit RISC-V soft processor
+	pkgver = r128.5bac31a
+	pkgrel = 1
+	url = https://github.com/minerva-cpu/minerva
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = symbiyosys
+	checkdepends = yices
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pdm-backend
+	makedepends = python-wheel
+	depends = python
+	depends = python-amaranth<0.5
+	depends = python-jtagtap-git
+	provides = python-minerva=r128.5bac31a
+	conflicts = python-minerva
+	source = minerva::git+https://github.com/minerva-cpu/minerva.git#commit=5bac31a40b6d8098ba2f4b7c4906ca667b6155f7
+	source = pipeline-diagram.png::https://docs.google.com/drawings/d/e/2PACX-1vTMkQc8ZJoiJ2AOeFGMkK0QTNx1hSG5wDrG5seLdJ3i61E4ag7wH7VFey44qhvuXotvOKxOw-mFS-VE/pub?w=850&h=761
+	sha512sums = 2815e497c0e594ff94e1831e9086bd51f03c87f9e88a9daafcbc7dd6b9cf7e8e095c56aae7a76fab28f86182af70708c751a2d0e9a3d20bb16f022b3cc22ddcc
+	sha512sums = SKIP
+
+pkgname = python-minerva-amaranth0.4
