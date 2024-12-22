@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-panda3ds
 pkgname=$_pkgname-git
-pkgver=0.8.r440.gf1b78309
+pkgver=0.8.5.r19.g3787358b
 pkgrel=1
 pkgdesc="Nintendo 3DS core"
 arch=('x86_64')
@@ -19,6 +19,7 @@ source=(
 	'cmrc::git+https://github.com/vector-of-bool/cmrc.git'
 	'cryptopp::git+https://github.com/weidai11/cryptopp.git'
 	'ELFIO::git+https://github.com/serge1/ELFIO.git'
+	'fmt::git+https://github.com/fmtlib/fmt.git'
 	'miniaudio::git+https://github.com/mackron/miniaudio.git'
 	'mio::git+https://github.com/vimpunk/mio.git'
 	'panda3ds-boost::git+https://github.com/Panda3DS-emu/ext-boost.git'
@@ -31,6 +32,7 @@ source=(
 	'xbyak::git+https://github.com/herumi/xbyak.git'
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -63,6 +65,7 @@ prepare() {
 	git config submodule.third_party/dynarmic.url ../panda3ds-dynarmic
 	git config submodule.third_party/elfio.url ../ELFIO
 	git config submodule.third_party/fdk-aac.url ../panda3ds-fdk-aac
+	git config submodule.third_party/fmt.url ../fmt
 	git config submodule.third_party/miniaudio.url ../miniaudio
 	git config submodule.third_party/mio.url ../mio
 	git config submodule.third_party/SDL2.url ../SDL

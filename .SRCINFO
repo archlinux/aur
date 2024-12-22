@@ -1,6 +1,6 @@
 pkgbase = libretro-panda3ds-git
 	pkgdesc = Nintendo 3DS core
-	pkgver = 0.8.r440.gf1b78309
+	pkgver = 0.8.5.r19.g3787358b
 	pkgrel = 1
 	url = https://panda3ds.com/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = libretro-panda3ds-git
 	depends = gcc-libs
 	depends = glibc
 	depends = libretro-core-info>=1.19.0.r8
-	provides = libretro-panda3ds=0.8.r440.gf1b78309
+	provides = libretro-panda3ds=0.8.5.r19.g3787358b
 	conflicts = libretro-panda3ds
 	options = !lto
 	source = Panda3DS::git+https://github.com/wheremyfoodat/Panda3DS.git
@@ -20,6 +20,7 @@ pkgbase = libretro-panda3ds-git
 	source = cmrc::git+https://github.com/vector-of-bool/cmrc.git
 	source = cryptopp::git+https://github.com/weidai11/cryptopp.git
 	source = ELFIO::git+https://github.com/serge1/ELFIO.git
+	source = fmt::git+https://github.com/fmtlib/fmt.git
 	source = miniaudio::git+https://github.com/mackron/miniaudio.git
 	source = mio::git+https://github.com/vimpunk/mio.git
 	source = panda3ds-boost::git+https://github.com/Panda3DS-emu/ext-boost.git
@@ -30,6 +31,7 @@ pkgbase = libretro-panda3ds-git
 	source = teakra::git+https://github.com/wwylele/teakra.git
 	source = toml11::git+https://github.com/ToruNiina/toml11.git
 	source = xbyak::git+https://github.com/herumi/xbyak.git
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
