@@ -1,7 +1,7 @@
 pkgbase = polyendtracker-midi-export
 	pkgdesc = MIDI exporter for Polyend Tracker project files
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DataGreed/polyendtracker-midi-export
 	arch = any
 	license = MIT

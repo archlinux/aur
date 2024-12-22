@@ -2,7 +2,7 @@
 
 pkgname=polyendtracker-midi-export
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='MIDI exporter for Polyend Tracker project files'
 arch=('any')
 url='https://github.com/DataGreed/polyendtracker-midi-export'
