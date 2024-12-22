@@ -1,7 +1,7 @@
 pkgbase = python-arrapi
 	pkgdesc = A set of tools based around the requests library for safely making HTTP requests on behalf of a third party.
 	pkgver = 1.4.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/meisnate12/ArrAPI
 	arch = any
 	license = MIT
