@@ -1,6 +1,6 @@
 # Maintainer: igo95862 at yandex dot ru
 pkgname=bubblejail
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="Bubblewrap based sandboxing utility"
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=(
 # Alternative if the above keyserver does not work
 # curl -s 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x5a3d06576a6a67443dfbe856f1a55e62951b2143' | gpg --import
 validpgpkeys=('5A3D06576A6A67443DFBE856F1A55E62951B2143')
-sha512sums=('576d09e87aa281bcf9b4741f106d34d34cfeed0f3e12c6a8dcbcd0e3b809a3a2ea08f24b3da161ca497ac75a09c029d44bb36d930c0f4f58296738d9ef68806f'
+sha512sums=('f41185abd02a0a526ef414a5e155bfaa52c8cc592623643f96bf14a6932c89f9e54573bdb61668754deb1c975310f055c419e7ed8f917a0d12b98773a344081a'
             'SKIP')
 
 build () {
