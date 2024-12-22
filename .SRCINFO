@@ -1,7 +1,7 @@
 pkgbase = python-inputmodule
 	pkgdesc = Python-based command line utility and library to control Framework Laptop 16 input modules
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FrameworkComputer/inputmodule-rs
 	arch = any
 	license = MIT

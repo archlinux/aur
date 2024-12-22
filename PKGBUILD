@@ -2,7 +2,7 @@
 _projectname='inputmodule-rs'
 pkgname='python-inputmodule'
 pkgver='0.2.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Python-based command line utility and library to control Framework Laptop 16 input modules'
 arch=('any')
 url="https://github.com/FrameworkComputer/$_projectname"
