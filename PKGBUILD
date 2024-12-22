@@ -1,3 +1,4 @@
+
 # Maintainer: Imperator Storm <ImperatorStorm11@protonmail.com>
 # Contributor: q234 rty <q23456yuiop at gmail dot com>
 # Contributor: Sam L. Yes <samlukeyes123 at gmail dot com>
@@ -6,8 +7,8 @@ _repo_name=waydroid_script
 _script=main.py
 pkgname=waydroid-script-git
 _pkgname=waydroid-script
-pkgver=r142.59547e7
-pkgrel=3
+pkgver=r177.1a2d3ad
+pkgrel=2
 pkgdesc="Python Script to add OpenGapps, Magisk, libhoudini translation library and libndk translation library to waydroid"
 arch=('any')
 url="https://github.com/casualsnek/$_repo_name"
