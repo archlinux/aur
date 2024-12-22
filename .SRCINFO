@@ -1,7 +1,7 @@
 pkgbase = python-tmdbapis
 	pkgdesc = A set of tools based around the requests library for safely making HTTP requests on behalf of a third party.
 	pkgver = 1.2.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meisnate12/TMDbAPIs
 	arch = any
 	license = MIT
