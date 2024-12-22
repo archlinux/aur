@@ -6,31 +6,23 @@
 
 _pkgname=stellarium
 pkgname=${_pkgname}-lite
-pkgver=24.3
+pkgver=24.4
 pkgrel=1
 pkgdesc="Stellarium without GPS and Telescope Control support (no gpsd and libindi dependencies)"
 arch=(x86_64)
 url="https://${_pkgname}.org"
-license=(GPL2)
+license=(GPL-2.0-or-later)
 depends=(nlopt libpng libglvnd freetype2 openssl 'calcmysky>=0.3'
- qt6-charts qt6-multimedia qt6-webengine ) # 'qxlsx'
+ qt6-charts qt6-multimedia qt6-webengine )
 makedepends=(cmake ninja mesa qt6-tools)
 optdepends=('man-db: manual pages for stellarium')
 conflicts=(${_pkgname})
-source=(https://github.com/Stellarium/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz{,.asc}
-        0001-Include-execution-before-any-Qt-headers.patch)
+source=(https://github.com/Stellarium/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz{,.asc})
 validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF') # Alexander Wolf <alex.v.wolf@gmail.com>
-md5sums=('375367ffdfbbe3e4d4443ecebacf97ae'
-         'SKIP'
-         'c5425c008ab745329ca61dbda116dde4')
-sha256sums=('c3ffb56a049061c7754bafab176146a2c4474ecede108d650f3c7551e1eae50a'
-            'SKIP'
-            '8f60d020b2ac6e2dcd8b5a5df6dec28ed812818ad4684df90e5f0d4256859a5d')
-
-prepare() {
-    cd ${_pkgname}-${pkgver}
-    patch -p1 -i ../0001-Include-execution-before-any-Qt-headers.patch
-}
+md5sums=('eabf3b7357a40073245f29faa5ee5c83'
+         'SKIP')
+sha256sums=('433bb8a0380313e6d9e4caf62395b724f4d74262c8aae426a0fe1a5e61a29cbb'
+            'SKIP')
 
 build() {
   PATH="/usr/bin/core_perl/:$PATH"
