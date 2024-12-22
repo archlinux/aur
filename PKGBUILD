@@ -4,7 +4,7 @@
 
 pkgname=yt-dlp-drop-in
 pkgver=2024.12.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Provide both youtube-dl command and python imports using yt-dlp'
 url="https://aur.archlinux.org/packages/yt-dlp-drop-in"
 arch=('any')
