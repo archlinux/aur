@@ -6,14 +6,14 @@ pkgname='koi-git'
 _pkgname='koi'
 __pkgname='Koi'
 pkgver=0.4.r0.gd9e239d
-pkgrel=1
+pkgrel=2
 pkgdesc="Scheduled LIGHT/DARK Theme Switching for the KDE Plasma Desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/baduhai/Koi"
 license=('LGPL3')
-depends=('gcc-libs' 'plasma-desktop' 'plasma-integration' 'plasma-workspace' 'qt6-svg' 'hicolor-icon-theme')
-makedepends=('base-devel' 'git' 'gcc' 'qt6-base' 'qt6-tools'
-             'cmake' 'cmake-extras' 'desktop-file-utils' 'extra-cmake-modules' 'fdupes')
+depends=('gcc-libs' 'hicolor-icon-theme' 'plasma-desktop' 'plasma-integration' 'plasma-workspace')
+makedepends=('base-devel' 'qt6-base' 'qt6-tools' 'cmake'
+             'desktop-file-utils' 'extra-cmake-modules' 'fdupes')
 optdepends=('xsettingsd: Apply settings to GTK applications on the fly'
             'kvantum: Powerful extra customisable themes')
 provides=("${_pkgname}")
