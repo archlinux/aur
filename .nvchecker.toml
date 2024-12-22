@@ -1,0 +1,4 @@
+[python-pytest-pylint]
+source = "git"
+git = "https://github.com/carsongee/pytest-pylint.git"
+prefix = "v"
