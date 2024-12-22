@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-galois-git
 _name=galois
-pkgver=0.4.1.r0.g60a6373
+pkgver=0.4.3.r0.gc8e7f48
 pkgrel=1
 epoch=1
 pkgdesc="A performant NumPy extension for Galois fields and their applications"
@@ -20,7 +20,10 @@ makedepends=(
     python-setuptools-scm
     python-wheel
 )
-checkdepends=(python-pytest)
+checkdepends=(
+    python-pytest
+    python-pytest-benchmark
+)
 provides=(python-galois)
 conflicts=(python-galois)
 source=($_name::git+https://github.com/mhostetter/galois.git)
@@ -40,7 +43,7 @@ check() {
     local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
     cd $_name
     python -m installer --destdir=test_dir dist/*.whl
-    PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH" pytest -v
+    PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH" pytest
 }
 
 package() {
