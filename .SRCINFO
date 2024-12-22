@@ -1,0 +1,20 @@
+pkgbase = artify-bin
+	pkgdesc = Ideas, Painting & Art
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/artifylabs/artify
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = fuse2
+	depends = xdg-user-dirs
+	depends = libayatana-appindicator
+	provides = artify
+	conflicts = artify
+	options = !debug
+	source_x86_64 = https://github.com/artifylabs/artify/releases/download/v0.0.1%2B1/artify_0.0.1+1_linux_amd64.deb
+	sha256sums_x86_64 = dcf2c5272af5f9afb6a60fbbd6d45f254ae5b0b8516a616f0c2a197f7bc25ea0
+	source_aarch64 = https://github.com/artifylabs/artify/releases/download/v0.0.1%2B1/artify_0.0.1+1_linux_aarch64.deb
+	sha256sums_aarch64 = 9effd700ab6ab995b03d71f53fac1347ea06b62ace070acbf1bfb9838ba0334f
+
+pkgname = artify-bin
