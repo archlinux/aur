@@ -1,7 +1,7 @@
 pkgbase = obs-studio-tytan652
 	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integrations. Plus my bind interface PR, and sometimes backported fixes
 	pkgver = 31.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	arch = aarch64
@@ -18,7 +18,7 @@ pkgbase = obs-studio-tytan652
 	makedepends = luajit
 	makedepends = nlohmann-json
 	makedepends = libvpl
-	makedepends = python>=3.12
+	makedepends = python>=3.13
 	makedepends = sndio
 	makedepends = swig
 	makedepends = systemd-libs
@@ -80,7 +80,7 @@ pkgbase = obs-studio-tytan652
 	optdepends = libva-mesa-driver: VAAPI encoder support
 	optdepends = swig: Scripting
 	optdepends = luajit: Lua scripting
-	optdepends = python>=3.12: Python scripting
+	optdepends = python>=3.13: Python scripting
 	optdepends = sndio: Sndio input client
 	optdepends = v4l-utils: V4L2 support
 	optdepends = systemd-libs: V4L2 support
