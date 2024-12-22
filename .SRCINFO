@@ -1,9 +1,11 @@
 pkgbase = efibooteditor-git
 	pkgdesc = Boot Editor for (U)EFI based systems.
 	pkgver = r338.b346c37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Neverous/efibooteditor
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = LGPL3
 	makedepends = cmake
 	makedepends = git
