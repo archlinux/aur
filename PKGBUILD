@@ -2,7 +2,7 @@
 # Maintainer: Bruno Carlin <bruno@bcarlin.net>
 pkgname=ember-language-server
 pkgver=2.30.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The Ember Language Server (ELS) implements the Language Server Protocol for Ember.js projects."
 arch=( 'any' )
 url="https://github.com/ember-tooling/ember-language-server"
@@ -18,9 +18,9 @@ makedepends=('npm' 'jq')
 #options=()
 #install=
 #changelog=
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ember-tooling/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('841854f09bac65f9232039e9d5b1df0eb72b2c33446e1c8cf776a9a6e02c36c6')
-noextract=("${pkgname}-${pkgver}.tar.gz")
+source=("https://registry.npmjs.com/@ember-tooling/${pkgname}/-/${pkgname}-${pkgver}.tgz")
+sha256sums=('a48194589ff1f03b8fa2c9859f7481b2b678fff9d8ce40f0588efdd6c31cb5c1')
+noextract=("${pkgname}-${pkgver}.tgz")
 #validpgpkeys=()
 
 #prepare() {
@@ -43,7 +43,7 @@ package() {
   npm install -g \
     --prefix "${pkgdir}/usr" \
     --cache "${srcdir}/npm-cache" \
-    "${srcdir}/${pkgname}-${pkgver}.tar.gz"
+    "${srcdir}/${pkgname}-${pkgver}.tgz"
 
   # npm gives ownership of ALL FILES to build user
   # https://bugs.archlinux.org/task/63396

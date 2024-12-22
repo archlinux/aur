@@ -8,8 +8,8 @@ pkgbase = ember-language-server
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = ember-language-server-2.30.5.tar.gz
-	source = ember-language-server-2.30.5.tar.gz::https://github.com/ember-tooling/ember-language-server/archive/refs/tags/v2.30.5.tar.gz
-	sha256sums = 841854f09bac65f9232039e9d5b1df0eb72b2c33446e1c8cf776a9a6e02c36c6
+	noextract = ember-language-server-2.30.5.tgz
+	source = https://registry.npmjs.com/@ember-tooling/ember-language-server/-/ember-language-server-2.30.5.tgz
+	sha256sums = a48194589ff1f03b8fa2c9859f7481b2b678fff9d8ce40f0588efdd6c31cb5c1
 
 pkgname = ember-language-server
