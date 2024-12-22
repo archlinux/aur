@@ -15,8 +15,8 @@ noextract=("${pkgname}-${pkgver}.tgz")
 sha256sums=('b840f39d9e8c41a54909f299e1850c254ed33cdefc2d983726ee1f607506a36b')
 
 package() {
-  npm install -g --prefix "${pkgdir}/usr" "${pkgname}-${pkgver}.tgz"
+	npm install -g --prefix "${pkgdir}/usr" "${pkgname}-${pkgver}.tgz"
 
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "/usr/lib/node_modules/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+	ln -s "/usr/lib/node_modules/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
