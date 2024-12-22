@@ -1,7 +1,7 @@
 pkgbase = hancho
 	pkgdesc = Simple pleasant build system in Python
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aappleby/hancho
 	arch = any
 	license = MIT
