@@ -2,7 +2,7 @@
 
 pkgname=sfp-master-git
 _pkgname=SFP-Master
-pkgver=r82.a2201c3
+pkgver=r89.89cd7de
 pkgrel=1
 pkgdesc="SFP-module programmer for CH341a devices"
 arch=('x86_64')
