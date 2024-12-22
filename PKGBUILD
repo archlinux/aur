@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-machine-learning
 pkgname=python-${_pkgname}
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Quantum Machine Learning package for IBM qiskit framework"
 arch=(x86_64)
@@ -28,7 +28,7 @@ makedepends=(
 #     python-qiskit-ibm-runtime
 #)
 source=($_pkgname-$pkgver.tar.gz::https://github.com/qiskit-community/$_pkgname/archive/refs/tags/$pkgver.tar.gz)
-b2sums=('29f7cc1b0a298fe095356ec971f82013f029c5bafb71e0da79cb7b62a3147c9961f65833b02a8dffb5443ae81eae3ede8c697b91f2a6206447da2966461f9747')
+b2sums=('aaa39abcca0b621ebfc10734ff52df2a4ca48fbe97dca686cec2fc7b1a591e7ae785f8d3dfbcd9b35dc0457d125cda63ee7890a1435fbc17ae0def22489bc7b9')
 
 build() {
     cd $_pkgname-$pkgver
