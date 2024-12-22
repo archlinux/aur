@@ -2,7 +2,7 @@
 _pkgname=dwdweather2
 pkgname=python-${_pkgname}
 pkgver=0.14.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Client to access weather data from Deutscher Wetterdienst (DWD), the federal meteorological service in Germany"
 arch=(any)
 url=https://github.com/panodata/dwdweather2
@@ -34,5 +34,6 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
     # Remove site-packages/tests
-    rm -r "$pkgdir"/usr/lib/python3.12/site-packages/tests
+    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+    rm -r "$pkgdir"/usr/lib/python$python_version/site-packages/tests
 }
