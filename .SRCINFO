@@ -1,7 +1,7 @@
 pkgbase = python-keopscore
 	pkgdesc = keopscore is the KeOps meta programming engine. This python module should be used through a binder (e.g. pykeops or rkeops)
 	pkgver = 2.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/keopscore
 	arch = any
 	license = MIT

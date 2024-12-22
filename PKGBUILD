@@ -3,7 +3,7 @@
 _name=keopscore
 pkgname=python-${_name}
 pkgver=2.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="keopscore is the KeOps meta programming engine. This python module should be used through a binder (e.g. pykeops or rkeops)"
 arch=('any')
 url="https://pypi.org/project/${_name}"
