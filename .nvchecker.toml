@@ -1,0 +1,5 @@
+[openssh]
+source = "git"
+git = "https://github.com/openssh/openssh-portable"
+from_pattern = 'V_(\d+)_(\d+)_P(\d+)'
+to_pattern = '\1.\2p\3'

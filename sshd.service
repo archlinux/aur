@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenSSH Daemon
+Wants=sshdgenkeys.service
+After=sshdgenkeys.service
+After=network.target
+
+[Service]
+Type=notify-reload
+ExecStart=/usr/bin/sshd -D
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

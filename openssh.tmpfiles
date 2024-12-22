@@ -1,0 +1,8 @@
+C /etc/pam.d/sshd
+C /etc/ssh/moduli
+C /etc/ssh/ssh_config
+C /etc/ssh/sshd_config
+C /etc/ssh/sshd_config.d/99-archlinux.conf
+
+d /etc/ssh/ssh_config.d
+d /etc/ssh/sshd_config.d
