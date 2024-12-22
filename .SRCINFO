@@ -1,7 +1,7 @@
 pkgbase = python-bnunicodenormalizer
 	pkgdesc = Bangla Unicode Normalization Toolkit
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/bnunicodenormalizer
 	arch = any
 	license = BSD

@@ -3,7 +3,7 @@
 _name=bnunicodenormalizer
 pkgname="python-${_name}"
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Bangla Unicode Normalization Toolkit"
 arch=('any')
 url="https://pypi.org/project/${_name}"
