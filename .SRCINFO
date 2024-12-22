@@ -1,7 +1,7 @@
 pkgbase = python-rns
 	pkgdesc = Self-configuring, encrypted and resilient mesh networking stack
 	pkgver = 0.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://reticulum.network/
 	arch = any
 	license = MIT
