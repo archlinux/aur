@@ -2,7 +2,7 @@
 
 pkgname=pyhgtmap
 pkgver=3.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Fork of official phyghtmap - Generate OSM contour lines from NASA SRTM data"
 _outname="${pkgname}-v${pkgver}"
 arch=('x86_64')
