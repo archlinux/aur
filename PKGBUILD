@@ -8,7 +8,7 @@ url='https://github.com/LiteracyFanatic/manga-sharp'
 license=('MIT')
 depends=(dotnet-runtime aspnet-runtime)
 options=('!strip')
-makedepends=(dotnet-sdk npm git)
+makedepends=(dotnet-sdk yarn git)
 source=("git+https://github.com/LiteracyFanatic/manga-sharp#tag=v$pkgver")
 sha256sums=(SKIP)
 
