@@ -2,7 +2,7 @@
 
 _plug=rekt
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.0.0.r6.gc9fc755
+pkgver=1.0.0.r8.g37df562
 pkgrel=1
 pkgdesc='Plugin for VapourSynth: rekt (GIT version)'
 arch=('x86_64')
