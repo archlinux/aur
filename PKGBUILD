@@ -10,7 +10,7 @@ pkgname='lockmgr'
 pkgdesc='Python Lock Manager Class (gc)'
 _gitname='lockmgr'
 
-pkgver=1.5.0
+pkgver=1.5.2
 pkgrel=1
 url="https://github.com/gene-git/lockmgr"
 
@@ -20,7 +20,7 @@ license=(MIT)
 # To build docs uncommont sphinx/texlive
 depends=('python>3.10' 'python-pynotify')
 makedepends=('git' 'python-build' 'python-wheel' 'python-hatch' 'rsync' 
-             #'python-sphinx' 'python-myst-parser' 'texlive-latexextra'
+             #'python-sphinx' 'python-myst-parser' 'texlive-latexextra' 'python-sphinx-autoapi'
             )
 # Used by package : mkpkg
 _mkpkg_depends=('python>minor')
