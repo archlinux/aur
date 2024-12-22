@@ -4,7 +4,7 @@
 
 pkgname=gita
 pkgver=0.16.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tool to manage multiple git repos"
 arch=('any')
 url="https://github.com/nosarthur/gita"
