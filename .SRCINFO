@@ -10,6 +10,8 @@ pkgbase = cp2cp-git
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	provides = cp2cp
+	conflicts = cp2cp
 	source = git+https://github.com/silicon-heaven/libshvproto-rs
 	b2sums = SKIP
 
