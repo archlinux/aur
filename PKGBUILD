@@ -20,5 +20,5 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
     # Run the install.sh script locally, passing the target installation directory
-    ./install.sh install --local
+    ./install.sh install --global
 }
