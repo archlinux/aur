@@ -10,7 +10,7 @@ url='https://github.com/lambdaconcept/jtagtap'
 license=('BSD-2-Clause')
 depends=(
   'python'
-  'python-amaranth'
+  'python-amaranth<0.5'
 )
 makedepends=(
   'git'
