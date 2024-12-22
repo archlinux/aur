@@ -1,14 +1,18 @@
 pkgbase = python-pamela
 	pkgdesc = Python PAM interface
 	pkgver = 1.2.0
-	pkgrel = 1
-	url = https://github.com/minrk/pamela
+	pkgrel = 2
+	url = https://github.com/jupyterhub/pamela
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = pam
 	depends = python
-	source = https://github.com/minrk/pamela/archive/1.2.0.tar.gz
-	md5sums = ae3a8036f28f1a1cb1d823e11aca5927
+	source = git+https://github.com/jupyterhub/pamela.git#tag=1.2.0
+	sha256sums = db14dd4aa133b71025030b9428a9de2b4d9002935ae740d86bef7537585588c6
 
 pkgname = python-pamela
