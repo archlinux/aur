@@ -1,7 +1,7 @@
 # Maintainer: Abdulkadir Furkan Şanlı <me at abdulocra dot cy>
 
 pkgname=newman
-pkgver=6.1.3
+pkgver=6.2.1
 pkgrel=1
 pkgdesc="Newman is a command-line collection runner for Postman"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-b2sums=('190c34f2b412b733dc1c18ceb793b24be411dafa3c87b09be99036e9980133e62bbd732fa4c0470af1cb086404f79395e9c64c44cc55d0d2f8f01ff7657b3240')
+b2sums=('5264199495f6c194a38f63f6e09dd1cd11f7ad33f879daeb61fdae46437ab7de2b5a0b487ada49c04cb7504fc4028177a781a39567c8d803fc97167a52214968')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package ()
