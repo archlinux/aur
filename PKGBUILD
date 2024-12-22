@@ -2,7 +2,7 @@
 _pkgname=multiset
 pkgname=python-${_pkgname}
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A multiset implementation for python"
 arch=(any)
 url=https://github.com/wheerd/multiset
