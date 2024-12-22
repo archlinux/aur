@@ -2,7 +2,7 @@
 pkgname=python-galois
 _name=${pkgname#python-}
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A performant NumPy extension for Galois fields and their applications"
 arch=(any)
 url=https://github.com/mhostetter/galois
