@@ -3,7 +3,7 @@
 
 pkgname=py3status-cpu-governor
 pkgdesc="Python module for py3status to keep track of your cpu governor state"
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 arch=('any')
 license=('MIT')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-poetry' 'python-build' 'python-installe
 url="https://github.com/mcgillij/py3status-cpu-governor"
 source=("https://github.com/mcgillij/py3status-cpu-governor/releases/download/$pkgver/py3status_cpu_governor-$pkgver.tar.gz")
 #source=("py3status_cpu_governor-$pkgver.tar.gz")
-md5sums=('692328e5952dc92fe39db3a85d6388c1')
+md5sums=('d69e7bcab8f3094d67e098878b4e21f9')
 
 build() {
   cd "$srcdir/py3status_cpu_governor-$pkgver"
