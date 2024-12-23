@@ -1,11 +1,14 @@
 pkgbase = python-slicerio
 	pkgdesc = Utilities for reading and writing files created by 3D Slicer
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lassoan/slicerio
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-numpy
 	depends = python-pynrrd
 	source = python-slicerio-1.1.1.tar.gz::https://files.pythonhosted.org/packages/source/s/slicerio/slicerio-1.1.1.tar.gz
