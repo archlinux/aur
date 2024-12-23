@@ -4,12 +4,12 @@
 pkgname=python-speechrecognition
 _pkg=speechrecognition
 pkgver=3.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Google-powered speech recognition for Python"
 arch=('any')
 url="https://github.com/Uberi/speech_recognition"
 license=('MIT')
-depends=('flac' 'python-pyaudio' 'python-requests')
+depends=('flac' 'python-audioop' 'python-pyaudio' 'python-requests' 'python-standard-aifc')
 optdepends=('pocketsphinx' 'python-vosk' 'python-whisper')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 provides=('python-speech_recognition')
