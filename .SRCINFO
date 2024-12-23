@@ -1,6 +1,6 @@
 pkgbase = torf-cli
 	pkgdesc = A tool for creating, reading and editing torrent files
-	pkgver = 5.2.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://github.com/rndusr/torf-cli/
 	arch = any
@@ -13,7 +13,9 @@ pkgbase = torf-cli
 	depends = python
 	depends = python-torf
 	depends = python-pyxdg
-	source = https://github.com/rndusr/torf-cli/archive/v5.2.0/torf-cli-5.2.0.tar.gz
-	sha256sums = 347a541f5b3efc4f092fbbe9c2dba15a94206041328901ded5ad8f35735ebfdd
+	source = https://github.com/rndusr/torf-cli/archive/v5.2.1/torf-cli-5.2.1.tar.gz
+	source = 010-torf-cli-fix-timezone-issue-in-tests.patch::https://github.com/rndusr/torf-cli/commit/a14440155add93c0fe5f5366d5d1af6195db4d96.patch
+	sha256sums = 7fa885a18a3e9fd586c038c8d4a648fac20932f90cd5be1971a24ac84c0f6037
+	sha256sums = 6bc653baeab37ee831051901cf70916fe422a6ebcb87d0f9e572dfd3c8b95718
 
 pkgname = torf-cli
