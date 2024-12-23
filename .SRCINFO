@@ -1,7 +1,7 @@
 pkgbase = python-sse-starlette
 	pkgdesc = Server Sent Events (SSE) for Starlette and FastAPI
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sysid/sse-starlette
 	arch = any
 	license = BSD-3-Clause
@@ -17,9 +17,10 @@ pkgbase = python-sse-starlette
 	makedepends = python-pdm-backend
 	makedepends = python-wheel
 	depends = python
+	depends = uvicorn
 	depends = python-anyio
 	depends = python-starlette
-	depends = uvicorn
+	depends = python-async-timeout
 	source = python-sse-starlette-2.2.0.tar.gz::https://github.com/sysid/sse-starlette/archive/v2.2.0.tar.gz
 	sha256sums = 4c733c9f79b10f1be9217f17ca67fb1515322b48d684c7590667861d437ceb43
 

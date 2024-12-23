@@ -6,16 +6,17 @@
 pkgname=python-sse-starlette
 _pkgname=${pkgname#python-}
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Server Sent Events (SSE) for Starlette and FastAPI"
 arch=(any)
 url="https://github.com/sysid/sse-starlette"
 license=(BSD-3-Clause)
 depends=(
   python
+  uvicorn
   python-anyio
   python-starlette
-  uvicorn
+  python-async-timeout
 )
 makedepends=(
   python-build
