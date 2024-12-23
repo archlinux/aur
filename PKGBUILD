@@ -4,7 +4,7 @@
 pkgname=python-markitdown
 _pkgname=${pkgname#python-}
 pkgver=0.0.1a2
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility tool for converting various files to Markdown"
 arch=(any)
 url="https://github.com/microsoft/markitdown"

@@ -1,7 +1,7 @@
 pkgbase = python-markitdown
 	pkgdesc = Utility tool for converting various files to Markdown
 	pkgver = 0.0.1a2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/markitdown
 	arch = any
 	license = MIT
