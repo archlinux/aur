@@ -1,6 +1,6 @@
 pkgbase = sourcegit
 	pkgdesc = GUI client for GIT users
-	pkgver = 8.43
+	pkgver = 8.44
 	pkgrel = 1
 	url = https://github.com/sourcegit-scm/sourcegit
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = sourcegit
 	depends = git
 	depends = xdg-utils
 	optdepends = git-credential-manager: third-party authentication support
-	source = sourcegit-8.43.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v8.43.tar.gz
+	source = sourcegit-8.44.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v8.44.tar.gz
 	source = net8.patch
-	sha256sums = c20dac14af92d85c192f3a25263ed3eda5935f2dd122f1e39b01483fc97197d0
+	sha256sums = ede0a75a9e8ad9e96f3f488fb9a716c0ec04eb365f926c8b5f38280c60d4f844
 	sha256sums = 64b66f744bbc620512fdb0933a19abb93d8b2a7dd850a5a6d0cbac3c29365041
 
 pkgname = sourcegit
