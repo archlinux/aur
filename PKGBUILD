@@ -2,7 +2,7 @@
 pkgbase=yade
 pkgname=(yade yade-cuda yade-doc)
 pkgver=2024.08a
-pkgrel=3
+pkgrel=4
 pkgdesc="Yet Another Dynamic Engine, free software for discrete element modeling."
 arch=("x86_64")
 url='https://yade-dem.org/doc/index.html'
@@ -11,7 +11,7 @@ depends=(
     'blas-openblas' 'cgal' 'coin-or-clp' 'freeglut' 'gl2ps'
     'gts' 'ipython' 'libqglviewer'
     # 'openmpi'
-    'python-mpmath' 'python-xlib' 'python-future' 'python-pyqt5'
+    'python-mpmath' 'python-xlib' 'python-pyqt5'
     'python-pyqt5-webengine' # replace pyqt5-qtwebkit
     'vtk'
     'tk'
@@ -55,6 +55,7 @@ source=("trunk-${pkgver}.tar.gz::https://gitlab.com/yade-dev/trunk/-/archive/${p
     '0004-improve-symlink.patch::https://gitlab.com/yade-dev/trunk/-/commit/357170b1.patch'
     '0005-fix-other-cmake-warning.patch::https://gitlab.com/yade-dev/trunk/-/commit/6c9caa1c.patch'
     '0006-fix-cmake-warning.patch::https://gitlab.com/yade-dev/trunk/-/commit/3cfd12d0.patch'
+    "cgal6.0.patch::https://gitlab.com/yade-dev/trunk/-/merge_requests/1066.patch"
 )
 sha512sums=('081f4c228959a92830b9d2d2fde50bc717f6932e8da051051093693ef7cedea6d87100ef02a6e72c74259d08e821065400c91002be5eea1d27afbcba8cd72df2'
     '49b65c1c3f085fa6670c82e2b6e9e98d245261cda30d42857073d1d056b5c847e3fce5da2628eca03a127b1353049ad24b86bfd8c6f71023b63bf051815bf832'
@@ -62,7 +63,8 @@ sha512sums=('081f4c228959a92830b9d2d2fde50bc717f6932e8da051051093693ef7cedea6d87
     'bb01814fd046151c2e52189cdcb752b455232a27a73fe3a202fee7d3d1a1e312c7518e006ef648f4aa7ecfb25be4e562c72dcb193d68b0d1b403c001072f1989'
     '2539400203c48e8fbebeaf128b92e3610b1d2e0f29378cc43b2c2bbd8339dec549a601d0bd691803593cd1a17c510019d2d79c8d83860fbf45cc168841f4c87a'
     'e64c3494f6ed3f2817258c7d0e386ab2b8e8efa434d9a9f0bde6d0ae5992703f224d4d59229464618f087ba34cadd021f685781dccb567a0972641fb5ceecca3'
-    '20c5dc70c2767444866fe11334dd27d9ca660d4a0eb51149f6fe5183df5bd16712f7693104767421a14c5d4a90711dd806198e34114701f6d2d8c43e5b167b3d')
+    '20c5dc70c2767444866fe11334dd27d9ca660d4a0eb51149f6fe5183df5bd16712f7693104767421a14c5d4a90711dd806198e34114701f6d2d8c43e5b167b3d'
+    'b3b033b3331d127507f2fafe40118d2092ff53349f47a964524900a0b6f3ffceed933d649e6453996fcbd4ff878218fc6e166804cd13e99d40c62429a9fd2aa7')
 options=(
     '!buildflags' # -Wp,-D_GLIBCXX_ASSERTIONS in buildflags causes coredumps in yade --test
 )
@@ -79,7 +81,14 @@ prepare() {
     patch --strip=1 --ignore-whitespace <../0004-improve-symlink.patch
     patch --strip=1 --ignore-whitespace <../0005-fix-other-cmake-warning.patch
     patch --strip=1 --ignore-whitespace <../0006-fix-cmake-warning.patch
+    # ignore failed patch for changelog
+    patch --strip=1 --ignore-whitespace <../cgal6.0.patch || true
     sed -i '/convenience.hpp/d' preprocessing/potential/BlockGen.cpp
+    sed -i '/__future__/c "import re, ${module}; \\' cMake/YadePythonHelpers.cmake
+    sed -i 's|3.12|3.13 3.12|' CMakeLists.txt
+    sed -i 's|_PyLong_Format(obj_ptr, 2)|PyNumber_ToBase(obj_ptr, 2)|' py/wrapper/customConverters.cpp
+    # pipes removed in python3.13
+    sed -i 's|pipes|shlex|' core/main/*.in
 
 }
 _build_doc() {
