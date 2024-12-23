@@ -2,7 +2,7 @@
 
 pkgname=sfdnormalize
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='SFD normalizer, discards GUI information from SFD files'
 arch=(any)
 url="https://github.com/alerque/$pkgname"
