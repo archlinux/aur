@@ -3,7 +3,7 @@
 pkgname=python-webdriver-manager
 _pkgname=webdriver_manager
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simplify management of binary drivers for different browsers in Selenium"
 arch=(any)
 url="https://github.com/SergeyPirogov/webdriver_manager"
