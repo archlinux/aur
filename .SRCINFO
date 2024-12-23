@@ -1,7 +1,7 @@
 pkgbase = python-django-huey
 	pkgdesc = An extension for django and huey that supports multi queue management
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gaiacoop/django-huey
 	arch = any
 	license = MIT
