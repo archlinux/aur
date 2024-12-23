@@ -1,7 +1,7 @@
 pkgbase = mutter-dynamic-buffering
 	pkgdesc = Window manager and compositor for GNOME (with dynamic triple/double buffering)
 	pkgver = 47.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -73,7 +73,7 @@ pkgbase = mutter-dynamic-buffering
 	source = mr1441.patch
 	b2sums = 65ad1b7cbb3261bbb044d31666cafa075599fadf8afd6f772a65faed73fd0b4c1d3d95e44e63efce62255b89bdf69542f15d2ea06cf3908d1b824467f6458abb
 	b2sums = f989bc2ceb52aad3c6a23c439df3bbc672bc11d561a247d19971d30cc85ed5d42295de40f8e55b13404ed32aa44f12307c9f5b470f2e288d1c9c8329255c43bf
-	b2sums = 42c476e00b8d0baadea1df43e07f159b3c6c83588e3c32904843a244f03749d49872a6793f28993e8ba2cd764811007a7a87c0d59119330f99ab7befa306d995
+	b2sums = f31c39b35ff22154e8592fadbc58f05a33dc2dd82ba9c32b646518ced3d193ee44617c97c1d9d03bc43843843b3702863036fc0549dcf3745e60ce7fbd8a56b6
 
 pkgname = mutter-dynamic-buffering
 	provides = mutter
