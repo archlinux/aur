@@ -4,7 +4,7 @@
 
 _electronversion=32
 pkgname=joplin-beta
-pkgver=3.2.5
+pkgver=3.2.6
 pkgrel=1
 pkgdesc="A note taking and to-do application with synchronization capabilities (beta version)"
 arch=("any")
@@ -22,7 +22,7 @@ conflicts=('joplin' 'joplin-desktop' 'joplin-appimage')
 source=("joplin-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/v${pkgver}.tar.gz"
         "joplin.desktop"
         "joplin-desktop.sh")
-sha256sums=('f85f9354461c57252e7cf419a9fc3b77c2d10f425fc2374d8dcd465d14ae9340'
+sha256sums=('9c8f442596462407902cdd503bc59a7af81af1e04b8fb0de14e7138e504479cc'
             '9e26cd5f41d08c3c2804cf4f34cb867090371423ccbe250a890fac006d405deb'
             'bd8324d35faaf6815217d1cf31a0b5e4df80692b0312ad17aea20d51f95efd56')
 
@@ -32,8 +32,6 @@ prepare() {
 	cd "${srcdir}/joplin-${pkgver}/packages/app-desktop"
 	# Ensure we're only building the AppImage target
 	pkg_json=$(jq '.build.linux.target = "AppImage"' package.json)
-	# Revert back to the old electron-builder. Joplin fails to launch when using 26.0.0-alpha.7
-	pkg_json=$(jq '.devDependencies."electron-builder" = "24.13.3"' <<<${pkg_json})
 	cat > package.json <<<${pkg_json}
 }
 
