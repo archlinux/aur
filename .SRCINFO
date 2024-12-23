@@ -1,7 +1,7 @@
 pkgbase = python-langcodes
 	pkgdesc = A toolkit for working with and comparing the standardized codes for languages
 	pkgver = 3.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/georgkrause/langcodes
 	arch = any
 	license = MIT

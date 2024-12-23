@@ -5,7 +5,7 @@
 pkgname=python-langcodes
 _pkgname=langcodes
 pkgver=3.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A toolkit for working with and comparing the standardized codes for languages'
 arch=('any')
 url="https://github.com/georgkrause/langcodes"
