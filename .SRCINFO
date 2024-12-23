@@ -1,7 +1,7 @@
 pkgbase = offpunk-git
-	pkgdesc = Fork of the command-line Gemini client AV-98 with added offline capabilities (latest git commit)
+	pkgdesc = Fork of the command-line Gemini client AV-98 with added offline capabilities (latest commit)
 	pkgver = 2.4.r11.g6d897bf
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 5
 	url = https://git.sr.ht/~lioploum/offpunk
 	arch = any
