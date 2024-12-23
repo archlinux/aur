@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=publii-git
 _pkgname=Publii
-pkgver=0.46.2.build.16966.r0.g0047d42
+pkgver=0.46.3.r0.gbbb433b
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -42,7 +42,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -76,6 +76,8 @@ build() {
     NODE_ENV=development    npm install
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+}
+build() {
     cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=development    npm run prod
     NODE_ENV=development    npm run prepare-editor

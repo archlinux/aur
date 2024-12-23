@@ -1,6 +1,6 @@
 pkgbase = publii-git
 	pkgdesc = The most intuitive Static Site CMS designed for SEO-optimized and privacy-focused websites.Use system-wide electron.
-	pkgver = 0.46.2.build.16966.r0.g0047d42
+	pkgver = 0.46.3.r0.gbbb433b
 	pkgrel = 1
 	url = https://getpublii.com
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = publii-git
 	depends = electron31
 	depends = nodejs
 	depends = libsecret
-	provides = publii=0.46.2.build.16966
+	provides = publii=0.46.3
 	conflicts = publii
 	source = publii.git::git+https://github.com/GetPublii/Publii.git
 	source = publii.sh
