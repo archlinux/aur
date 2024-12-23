@@ -3,7 +3,7 @@
 _name=solara
 pkgname=python-${_name,,}
 pkgver=1.43.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A pure Python, React-style web framework"
 arch=('any')
 url="https://solara.dev"
@@ -58,6 +58,8 @@ package() {
     mv "$pkgdir/usr/lib/${_py}/site-packages/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 
     python -m installer --destdir="$pkgdir" "$_ui_whl"
+    rm -rf "$pkgdir/usr/lib/${_py}/site-packages/prefix" # also provided by solara wheel, which installs to correct location
+
     python -m installer --destdir="$pkgdir" "$_server_whl"
     # remove duplicate license file (in incorrect location)
     rm "$pkgdir/usr/lib/${_py}/site-packages/LICENSE"
