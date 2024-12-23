@@ -1,0 +1,14 @@
+pkgbase = comlink
+	pkgdesc = An experimental IRC client
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/rockorager/comlink
+	arch = x86_64
+	license = MIT
+	makedepends = zig
+	depends = glibc
+	depends = lua
+	source = comlink-0.1.1.tar.gz::https://github.com/rockorager/comlink/archive/v0.1.1.tar.gz
+	sha256sums = 070ba419f3e3f321d446f92d3681001e9fe9253e021b39b62d1ddc59f41606c2
+
+pkgname = comlink
