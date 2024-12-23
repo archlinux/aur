@@ -2,7 +2,7 @@
 # Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 pkgname="pa-dlna"
 pkgver=0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Forwards audio streams to DLNA devices. For PulseAudio or PipeWira (via 'python-libpulse')"
 arch=(
   'any'
