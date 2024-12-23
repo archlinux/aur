@@ -1,0 +1,18 @@
+pkgbase = perl-test-cpan-changes-reallystrict
+	pkgdesc = Ensure a Changes file looks exactly like it would if it was machine generated.
+	pkgver = 1.000004
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-CPAN-Changes-ReallyStrict
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-cpan-changes>=0.27
+	depends = perl-class-tiny>=0
+	depends = perl-try-tiny>=0
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KE/KENTNL/Test-CPAN-Changes-ReallyStrict-1.000004.tar.gz
+	md5sums = 1fcbd5e1baedabaf2ae85befac71abb7
+	sha512sums = b6b7c2a90f5f64ff2a2d963563c804434eef0ce192655d272696cfc1e9c1054b691199ad2b7d649aaf4c11626fc3df40c013c1b13f88bc20c196511a066e17c9
+
+pkgname = perl-test-cpan-changes-reallystrict
