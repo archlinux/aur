@@ -3,7 +3,7 @@
 # Contributor: Stefan Husmann <stefan-husmann t-online de>
 
 pkgname=python-sqlalchemy-git
-pkgver=2.0.23.r459.g22cbc7dcb
+pkgver=2.0.23.r591.g5ded16fae
 pkgrel=1
 pkgdesc="Python SQL toolkit and Object Relational Mapper"
 arch=('x86_64')
@@ -26,12 +26,6 @@ pkgver() {
   git describe --tags | sed 's/rel_//;s/_/./g;s/-/.r/;s/-/./g;'
 }
 
-prepare() {
-  cd sqlalchemy
-  # remove pinned version dependency on setuptools, otherwise it
-  # breaks the build
-  sed -i 's/"setuptools.\+",/"setuptools",/' pyproject.toml
-}
 build() {
   cd sqlalchemy
   python -m build --wheel --no-isolation
