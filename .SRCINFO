@@ -1,7 +1,7 @@
 pkgbase = python-telnetlib-313-and-up
 	pkgdesc = A copy of telnetlib for python 3.13+
 	pkgver = 3.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/telnetlib-313-and-up/
 	arch = any
 	license = PSF-2.0
