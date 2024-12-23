@@ -1,0 +1,4 @@
+[7-zip]
+source='regex'
+regex='Download 7-Zip ([0-9.]+) \('
+url='https://7-zip.org/download.html'
