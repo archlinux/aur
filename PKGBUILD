@@ -4,7 +4,7 @@
 
 pkgname=papis-git
 _pkgname=papis
-pkgver=0.14.r4.gc9dc4b82
+pkgver=0.14.r13.gd396c744
 pkgrel=1
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
