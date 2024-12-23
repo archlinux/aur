@@ -3,7 +3,7 @@
 _name=neurokit2
 pkgname=python-${_name,,}
 pkgver=0.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="The Python Toolbox for Neurophysiological Signal Processing."
 arch=('any')
 url="https://github.com/scientisst/BioSPPy"
