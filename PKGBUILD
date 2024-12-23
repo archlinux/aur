@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/sammcj/$_pkgname"
 license=('MIT')
 depends=('glibc')
-makedepends=('go')
+makedepends=('git' 'go')
 optdepends=('ollama: ollama support.')
 provides=("$_pkgname=${pkgver/\.r*/}")
 conflicts=("$_pkgname")

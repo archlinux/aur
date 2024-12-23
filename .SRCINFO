@@ -5,6 +5,7 @@ pkgbase = gollama-git
 	url = https://github.com/sammcj/gollama
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = go
 	depends = glibc
 	optdepends = ollama: ollama support.
