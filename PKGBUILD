@@ -5,7 +5,7 @@
 _name=imbalanced-learn
 pkgname=python-${_name,,}
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Toolbox for imbalanced dataset in machine learning'
 arch=('any')
 url="https://github.com/scikit-learn-contrib/imbalanced-learn"
