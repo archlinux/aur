@@ -3,7 +3,7 @@
 _pyname=django-htmx
 pkgname=python-$_pyname
 pkgver=1.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Extensions for using Django with htmx'
 arch=(any)
 url="https://github.com/adamchainz/$_pyname"
