@@ -1,7 +1,7 @@
 pkgbase = python-cutlet
 	pkgdesc = Romaji converter
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/polm/cutlet
 	arch = any
 	license = MIT

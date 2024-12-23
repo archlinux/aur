@@ -3,7 +3,7 @@
 pkgname=python-cutlet
 _name=${pkgname#python-}
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Romaji converter"
 arch=(any)
 url="https://github.com/polm/cutlet"
