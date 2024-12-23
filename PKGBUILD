@@ -2,49 +2,30 @@
 # Maintainer: qlrd <qlrddev at gmail dot com>
 pkgname=krux-installer-bin
 _pkgname="org.selfcustody.${pkgname%-bin}"
-pkgver=0.0.14
-_electronversion=30
+pkgver=0.0.20
 pkgrel=1
-pkgdesc="A GUI based application to flash Krux firmware on K210 based devices.Use system-wide electron."
+pkgdesc="A GUI based application to flash Krux firmware on K210 based devices.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/selfcustody/krux-installer"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=(
-    "electron${_electronversion}"
-    'libx11'
-    'gdk-pixbuf2'
-    'gtk2'
-    'java-runtime'
-    'startup-notification'
-    'gconf'
-    'libgksu'
-    'libgnome-keyring'
-)
+depends=()
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"    
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"    
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/selfcustody/krux-installer/v${pkgver}/LICENSE"
-    "${pkgname%-bin}.sh"
 )
-sha256sums=('6e700f9f1841f12d20c301822ba52491002602078796ed82679ab2990b241c4e'
-            '29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    sed "s|/opt/${pkgname%-bin}/||g;s|/usr/share/icons/hicolor/0x0/apps/||g" \
-        -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+sha256sums=('23b1c0ae646aa7255b19b50725f1e9576faf50162c48df5bfded4afcc836a742'
+            '75486ea0af9309140ca6e2c401d7e67bea8f4892344e5707f6394dc5e83dfc44')
+prepare() {
+    sed -e "
+        s/\/usr\/local\/bin\/${pkgname%-bin}/${pkgname%-bin}/g
+        s/\/usr\/share\/icons\/hicolor\/512x512\/apps\/${pkgname%-bin}.png/${pkgname%-bin}/g
+    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm755 "${srcdir}/usr/local/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

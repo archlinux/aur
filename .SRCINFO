@@ -1,26 +1,15 @@
 pkgbase = krux-installer-bin
-	pkgdesc = A GUI based application to flash Krux firmware on K210 based devices.Use system-wide electron.
-	pkgver = 0.0.14
+	pkgdesc = A GUI based application to flash Krux firmware on K210 based devices.(Prebuilt version)
+	pkgver = 0.0.20
 	pkgrel = 1
 	url = https://github.com/selfcustody/krux-installer
 	arch = x86_64
 	license = MIT
-	depends = electron30
-	depends = libx11
-	depends = gdk-pixbuf2
-	depends = gtk2
-	depends = java-runtime
-	depends = startup-notification
-	depends = gconf
-	depends = libgksu
-	depends = libgnome-keyring
-	provides = krux-installer=0.0.14
+	provides = krux-installer=0.0.20
 	conflicts = krux-installer
-	source = krux-installer-0.0.14.rpm::https://github.com/selfcustody/krux-installer/releases/download/v0.0.14/krux-installer-0.0.14.x86_64.rpm
-	source = LICENSE-0.0.14::https://raw.githubusercontent.com/selfcustody/krux-installer/v0.0.14/LICENSE
-	source = krux-installer.sh
-	sha256sums = 6e700f9f1841f12d20c301822ba52491002602078796ed82679ab2990b241c4e
-	sha256sums = 29eee3e9d9c5dd67213ec3ab4a7eef57a1224750e2e9aab3a278177a9444a355
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	source = krux-installer-0.0.20.rpm::https://github.com/selfcustody/krux-installer/releases/download/v0.0.20/krux-installer-0.0.20-1.x86_64.rpm
+	source = LICENSE-0.0.20::https://raw.githubusercontent.com/selfcustody/krux-installer/v0.0.20/LICENSE
+	sha256sums = 23b1c0ae646aa7255b19b50725f1e9576faf50162c48df5bfded4afcc836a742
+	sha256sums = 75486ea0af9309140ca6e2c401d7e67bea8f4892344e5707f6394dc5e83dfc44
 
 pkgname = krux-installer-bin
