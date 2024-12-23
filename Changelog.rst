@@ -1,6 +1,12 @@
 Changelog
 =========
 
+**[6.3.0] ----- 2024-12-23** ::
+
+	    Make sure pid is always int (fixes bug where reading pid returned None)
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[6.2.0] ----- 2024-12-22** ::
 
 	    Bug fix with display of ssh prefix in status / show-info
