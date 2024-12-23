@@ -8,19 +8,18 @@ pkgname=(
   sqlitestudio-plugins
 )
 _pkgname=SQLiteStudio
-pkgver=3.4.11
+pkgver=3.4.12
 pkgrel=1
 pkgdesc='Database manager for SQLite'
 arch=(i686 x86_64)
 url='https://sqlitestudio.pl'
-_url='https://github.com/pawelsalawa/sqlitestudio'
+_git='https://github.com/pawelsalawa/sqlitestudio'
 license=('GPL3')
 depends=(
   qt5-script
   qt5-declarative
 )
 makedepends=(
-  pkgconf
   qt5-svg
   qt5-tools
   qt5-wayland
@@ -28,13 +27,13 @@ makedepends=(
   tcl
 )
 source=(
-  ${_url}/archive/refs/tags/${pkgver}.tar.gz
+  ${_git}/archive/refs/tags/${pkgver}.tar.gz
   ${pkgbase}.desktop
 )
 noextract=(
   ${pkgver}.tar.gz
 )
-sha256sums=('2334aab2727705c35fd2aa7ea044a4a3f3be595a274b9d92f8a2b0c59297beee'
+sha256sums=('eeae5af364b8a0129ed34715cf2b05a1e7848bb47d56d04e40f0264ad46596c1'
             'c5a26a9b9003b04274887a0e0febda13eea49bb46c618eaad0b5b5c88b1cc1d2')
 
 prepare(){
@@ -54,11 +53,12 @@ build(){
 
   msg2 "Making sqlitestudio3-plugins"
   cd "$srcdir"/output/build/Plugins
-  export PYTHON3=`pkgconf --cflags python3`
-  sed -i 's|python3.*9|python3.12|' "$srcdir"/Plugins/ScriptingPython/ScriptingPython.pro
+  IFS=' ' read -r -a array <<< "$(python3 -V)"
+  ver="python${array[1]%.*}"
+  sed -i "s|python3.*9|$ver|" "$srcdir"/Plugins/ScriptingPython/ScriptingPython.pro
   qmake ../../../Plugins \
-    "INCLUDEPATH += ${PYTHON3#*I}" \
-    "INCLUDEPATH += $srcdir/SQLiteStudio3/coreSQLiteStudio"
+    "INCLUDEPATH += $srcdir/SQLiteStudio3/coreSQLiteStudio" \
+    "INCLUDEPATH += /usr/include/$ver"
   (
     cd $srcdir/Plugins/DbSqliteCipher
     ln -sf $srcdir/SQLiteStudio3/coreSQLiteStudio/plugins
@@ -86,3 +86,4 @@ package_sqlitestudio-plugins(){
   cd $srcdir/output/build/Plugins
   make INSTALL_ROOT="$pkgdir/usr" install
 }
+# vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
