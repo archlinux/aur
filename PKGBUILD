@@ -32,6 +32,11 @@ check() {
   desktop-file-validate "io.ulauncher.Ulauncher.desktop"
 }
 
+pkgver() {
+  cd ulauncher || exit
+  git describe --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
   cd ulauncher || exit
   export PYTHONHASHSEED=0
