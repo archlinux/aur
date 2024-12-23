@@ -3,7 +3,7 @@
 pkgname=python-glyphtools
 _pyname=${pkgname#python-}
 pkgver=0.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Routines for extracting information from font glyphs'
 arch=(any)
 url="https://github.com/simoncozens/$_pyname"
