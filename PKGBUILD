@@ -1,6 +1,6 @@
 # Maintainer: Olivier Poitrey <rs@nextdns.io>
 pkgname=nextdns
-pkgver=1.44.0
+pkgver=1.44.3
 pkgrel=1
 pkgdesc='NextDNS DNS-over-HTTPS client'
 arch=('x86_64')
@@ -23,4 +23,6 @@ package() {
 }
 
 sha256sums=('1b091d5c2ab968c498084db071daf632c89d9222679d224597dac28fc12a3674'
+            'e15d83ec460562c8a81052f37c0e78e18842e95270895524b9853f7aca285eba')
+sha256sums=('ac77f24eb0bded216b57a82ca93960547c07561080df3fc20d1b363e38b7f3af'
             'e15d83ec460562c8a81052f37c0e78e18842e95270895524b9853f7aca285eba')
