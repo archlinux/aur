@@ -2,7 +2,7 @@
 
 pkgname=fontdiffenator
 pkgver=0.9.13
-pkgrel=3
+pkgrel=4
 pkgdesc='Font regression tester for Google Fonts'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
