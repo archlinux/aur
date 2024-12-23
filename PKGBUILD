@@ -3,7 +3,7 @@
 
 _srcname=virtme-ng
 pkgname=$_srcname-git
-pkgver=1.31.r3.gcefbab5
+pkgver=1.31.r45.ga721287
 pkgrel=1
 pkgdesc="A tool that allows to easily and quickly recompile and test a Linux kernel, starting from the source code."
 arch=('x86_64')
