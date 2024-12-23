@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=darkwrite-bin
 _pkgname=Darkwrite
-pkgver=0.3.0_alpha.2
+pkgver=0.3.1_alpha.3
 _electronversion=32
 pkgrel=1
 pkgdesc="The eye-candy note taking and to-do application for all desktops.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver//_/-}/${_pkgname}-Linux-${pkgver//_/-}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f6d9c3255fa49fb7d5e317feea39728659e07c04466d7adde958fa649129e998'
+sha256sums=('bcac06bf85609664895af6b44b698bccba3e0456cbf4ea8ca700ecffdb78c9c8'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
