@@ -1,11 +1,9 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-BUILDENV+=(!check)
-
 pkgname=python-dvc-render
 _pkgname=${pkgname#python-}
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for rendering DVC plots'
 arch=(any)
 license=(Apache-2.0)
@@ -34,7 +32,7 @@ check() {
 	cd "$_archive"
 	local _pyver=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
 	PYTHONPATH="$PWD:$PWD/build/lib.linux-$CARCH-${_pyver}"
-	pytest
+	# pytest
 }
 
 package() {
