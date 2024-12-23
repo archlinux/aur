@@ -14,7 +14,6 @@ pkgbase = ulauncher-git
 	depends = webkit2gtk-4.1
 	depends = python-cairo
 	depends = python-gobject
-	depends = python-xlib
 	depends = python-levenshtein
 	optdepends = gtk-layer-shell: wayland layer shell integration,
 	optdepends = xapp: tray icon with suport for single click,
