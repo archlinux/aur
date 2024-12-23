@@ -1,7 +1,7 @@
 pkgbase = python-llama-cpp
 	pkgdesc = Python bindings for llama.cpp
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abetlen/llama-cpp-python
 	arch = any
 	license = GPL-3.0-or-later

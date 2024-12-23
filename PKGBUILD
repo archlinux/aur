@@ -5,7 +5,7 @@
 _pkgname=llama-cpp-python
 pkgname=python-llama-cpp
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for llama.cpp"
 arch=(any)
 url=https://github.com/abetlen/llama-cpp-python
