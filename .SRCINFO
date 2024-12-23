@@ -1,7 +1,7 @@
 pkgbase = python-plottable
 	pkgdesc = Beautifully customized tables with matplotlib
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/znstrider/plottable
 	arch = any
 	license = MIT
