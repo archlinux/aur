@@ -1,13 +1,16 @@
 pkgbase = python-entry-points-txt
 	pkgdesc = Read & write entry_points.txt files
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/jwodder/entry-points-txt
 	arch = any
 	license = MIT
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	noextract = entry_points_txt-0.2.0-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/e/entry-points-txt/entry_points_txt-0.2.0-py3-none-any.whl
-	sha256sums = f17191ff7c7dcfe8753f22c5432705e7cbcca7de4b6ceb48ce298d1421c40bb7
+	source = https://files.pythonhosted.org/packages/source/e/entry-points-txt/entry_points_txt-0.2.1.tar.gz
+	sha256sums = 2bca930f93d510cb1629c434954f7c7166b98c3cc968df7fd3fc270bc3cf06e9
 
 pkgname = python-entry-points-txt
