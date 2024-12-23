@@ -1,7 +1,7 @@
 pkgbase = python-cx-freeze
 	pkgdesc = Create standalone executables from Python scripts
 	pkgver = 7.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://marcelotduarte.github.io/cx_Freeze
 	arch = x86_64
 	license = PSF-2.0
