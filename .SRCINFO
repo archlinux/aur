@@ -1,6 +1,6 @@
 pkgbase = python-duckduckgo-search
 	pkgdesc = Search for words, documents, images, news, maps and text translation using the DuckDuckGo.com search engine.
-	pkgver = 6.3.5
+	pkgver = 7.0.2
 	pkgrel = 1
 	url = https://github.com/deedy5/duckduckgo_search
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-duckduckgo-search
 	makedepends = python-wheel
 	depends = python-click
 	depends = python-primp
-	source = https://files.pythonhosted.org/packages/source/d/duckduckgo_search/duckduckgo_search-6.3.5.tar.gz
-	sha256sums = bc7604859d6f17b88ec634f322b1920207fe3d62aa61ee6dccecb19d6dda6beb
+	source = https://files.pythonhosted.org/packages/source/d/duckduckgo_search/duckduckgo_search-7.0.2.tar.gz
+	sha256sums = 39364a7272a63baa7142a503362db47b37869d37dc80bf61dd02f4626de9f918
 
 pkgname = python-duckduckgo-search
