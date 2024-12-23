@@ -6,8 +6,8 @@ _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname}"
 pkgver=1.3.0.r0.gbe08bd7
-pkgrel=1
-pkgdesc='Python bindings for Ada, a fast and WHATWG spec-compliant URL parser (built from latest commit)'
+pkgrel=2
+pkgdesc='Python bindings for Ada, a fast and WHATWG spec-compliant URL parser (latest git commit)'
 arch=('aarch64' 'x86_64')
 url="https://github.com/TkTech/$_srcname"
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -42,8 +42,8 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
