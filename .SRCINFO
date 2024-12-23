@@ -1,7 +1,7 @@
 pkgbase = python-timew-report
 	pkgdesc = An interface for Timewarrior report data
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lauft/timew-report
 	arch = any
 	license = MIT
