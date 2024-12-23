@@ -1,13 +1,13 @@
 pkgbase = minecraft-server-jar
 	pkgdesc = Official Minecraft server jar file
-	pkgver = 1.20.6
+	pkgver = 1.21.4
 	pkgrel = 1
 	url = https://minecraft.net/
 	arch = any
 	license = custom
 	depends = java-runtime-headless>=16
-	noextract = minecraft-server.1.20.6.jar
-	source = minecraft-server-1.20.6.jar::https://launcher.mojang.com/v1/objects/145ff0858209bcfc164859ba735d4199aafa1eea/server.jar
-	sha256sums = c6d01d018ca782e506f0ec60652d47fd565078be9122b625c1681bc86c29c7ec
+	noextract = minecraft-server.1.21.4.jar
+	source = minecraft-server-1.21.4.jar::https://launcher.mojang.com/v1/objects/4707d00eb834b446575d89a61a11b5d548d8c001/server.jar
+	sha256sums = 1066970b09e9c671844572291c4a871cc1ac2b85838bf7004fa0e778e10f1358
 
 pkgname = minecraft-server-jar
