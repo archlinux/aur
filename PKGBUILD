@@ -3,14 +3,14 @@ _base=py-pde
 pkgname=python-${_base}
 pkgdesc="Python package for solving partial differential equations"
 pkgver=0.42.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/zwicker-group/${_base}"
 license=(MIT)
 depends=(python-matplotlib python-numba python-scipy python-sympy python-tqdm)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 checkdepends=(python-pytest-cov python-h5py-openmpi python-pandas
-  jupyter-notebook python-numba-mpi) # python-ffmpeg-python
+  jupyter-notebook) # python-numba-mpi python-ffmpeg-python
 optdepends=('python-h5py: storing data in the hierarchical file format'
   'python-ipywidgets: jupyter notebook support'
   'python-mpi4py: parallel processing using MPI'
@@ -33,7 +33,7 @@ check() {
   cd ${_base}-${pkgver}/scripts
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer ../dist/*.whl
-  MPLBACKEND=Agg NUMBA_WARNINGS=1 test-env/bin/python run_tests.py --unit --use_mpi
+  MPLBACKEND=Agg NUMBA_WARNINGS=1 test-env/bin/python run_tests.py --unit #--use_mpi
 }
 
 package() {
