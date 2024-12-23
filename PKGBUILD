@@ -2,7 +2,7 @@
 
 pkgname=flowify
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Turn a font into a flow font'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
