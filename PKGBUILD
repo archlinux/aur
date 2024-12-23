@@ -3,7 +3,7 @@
 _name=sktime
 pkgname=python-${_name,,}
 pkgver=0.35.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A unified framework for machine learning with time series'
 arch=('any')
 url="https://github.com/sktime/sktime"

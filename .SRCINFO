@@ -1,7 +1,7 @@
 pkgbase = python-sktime
 	pkgdesc = A unified framework for machine learning with time series
 	pkgver = 0.35.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sktime/sktime
 	arch = any
 	license = BSD-3-Clause
