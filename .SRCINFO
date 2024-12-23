@@ -1,7 +1,7 @@
 pkgbase = python-urllib3-future-git
 	pkgdesc = Powerful HTTP 1.1, 2, and 3 client with both sync and async interfaces (latest commit)
 	pkgver = 2.12.904.r0.gdd8795dc
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jawah/urllib3.future
 	arch = any
 	license = MIT
