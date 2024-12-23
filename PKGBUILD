@@ -4,7 +4,7 @@
 pkgname=python-isbntools
 _pyname="${pkgname#python-}"
 pkgver=4.3.29
-pkgrel=2
+pkgrel=3
 pkgdesc="Extract, clean, transform, hyphenate and metadata for ISBNs"
 arch=(any)
 url="https://pypi.python.org/pypi/$_pyname"
