@@ -1,7 +1,7 @@
 pkgbase = python-pip-requirements-parser
 	pkgdesc = Mostly correct pip requirements parsing library
 	pkgver = 32.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nexB/pip-requirements-parser
 	arch = any
 	license = MIT

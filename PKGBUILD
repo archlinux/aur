@@ -3,7 +3,7 @@
 pkgname=python-pip-requirements-parser
 _gitpkgname=pip-requirements-parser
 pkgver=32.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Mostly correct pip requirements parsing library'
 arch=('any')
 url='https://github.com/nexB/pip-requirements-parser'
