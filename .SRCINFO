@@ -1,7 +1,7 @@
 pkgbase = easytier-git
 	pkgdesc = A simple, decentralized mesh VPN with WireGuard support.
 	pkgver = 2.1.0.r0.g25ed41c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/EasyTier/EasyTier
 	arch = x86_64
 	license = Apache-2.0
@@ -11,7 +11,6 @@ pkgbase = easytier-git
 	depends = glibc
 	depends = gcc-libs
 	conflicts = easytier-bin
-	backup = etc/easytier/config.toml
 	source = git+https://github.com/EasyTier/EasyTier.git
 	source = easytier.service
 	source = config.toml
@@ -31,6 +30,7 @@ pkgname = easytier-git
 pkgname = easytier-core-git
 	provides = easytier-core
 	conflicts = easytier-core
+	backup = etc/easytier/config.toml
 
 pkgname = easytier-cli-git
 	provides = easytier-cli

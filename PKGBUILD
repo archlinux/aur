@@ -4,14 +4,13 @@ pkgbase=easytier-git
 pkgname=(easytier-git easytier-core-git easytier-cli-git easytier-web-git)
 conflicts=(easytier-bin)
 pkgver=2.1.0.r0.g25ed41c
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple, decentralized mesh VPN with WireGuard support."
 arch=('x86_64')
 url="https://github.com/EasyTier/EasyTier"
 license=('Apache-2.0')
 depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cargo' 'protobuf')
-backup=('etc/easytier/config.toml')
 source=("git+https://github.com/EasyTier/EasyTier.git" "easytier.service" "config.toml")
 sha256sums=('SKIP'
             '8bf506d141f3a7a716a9b483c8d469ad4e727f85c9664a35dbf467ae2c27513f'
@@ -46,6 +45,7 @@ package_easytier-git() {
 package_easytier-core-git() {
   provides=("easytier-core")
   conflicts=("easytier-core")
+  backup=('etc/easytier/config.toml')
   install -dm755 "$pkgdir/var/lib/easytier"
   install -Dm644 "easytier.service" "$pkgdir/usr/lib/systemd/system/easytier.service"
   install -Dm644 "config.toml" "$pkgdir/etc/easytier/config.toml"
