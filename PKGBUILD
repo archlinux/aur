@@ -5,7 +5,7 @@
 pkgname='python-ansi'
 _pkgname='ansi'
 pkgver=0.3.7
-pkgrel=2
+pkgrel=3
 pkgdesc='ANSI cursor movement and graphics'
 arch=('any')
 url='https://github.com/tehmaze/ansi'
@@ -35,8 +35,8 @@ package() {
   umask 0022
   python -m installer --destdir="$pkgdir" "$_wheel"
 
-  install -dm0755 "$pkgdir/usr/share/licenses/$pkgname"
-  ln -sr $pkgdir/usr/lib/python*/site-packages/$_pkgname-*.dist-info/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/"
+  install -vdm0755 "$pkgdir/usr/share/licenses/$pkgname"
+  ln -sr "$pkgdir/usr/lib/python"*"/site-packages/$_pkgname-"*.dist-info/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # eof
