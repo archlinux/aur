@@ -1,11 +1,14 @@
 pkgbase = python-camelot
 	pkgdesc = A Python library to extract tabular data from PDFs
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/camelot-dev/camelot
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = ghostscript
 	depends = python-chardet
 	depends = python-click
