@@ -1,0 +1,47 @@
+GitHub: https://github.com/pschmitt/brotab/tree/json-output
+
+diff --git a/brotab/main.py b/brotab/main.py
+index 1aa4162..6291ff1 100644
+--- a/brotab/main.py
++++ b/brotab/main.py
+@@ -46,8 +46,9 @@ News:
+         https://github.com/mdn/webextensions-examples/tree/master/native-messaging
+ 
+ """
+ 
++import json
+ import os
+ import re
+ import sys
+ import time
+@@ -142,10 +143,17 @@ def list_tabs(args):
+     """
+     brotab_logger.info('Listing tabs')
+     api = MultipleMediatorsAPI(create_clients(args.target_hosts))
+     tabs = api.list_tabs([])
+-    message = '\n'.join(tabs) + '\n'
+-    sys.stdout.buffer.write(message.encode('utf8'))
++    if args.json:
++        tabs_json = [
++            {"id": x[0], "title": x[1], "url": x[2]}
++            for x in [y.split("\t") for y in tabs]
++        ]
++        print(json.dumps(tabs_json))
++    else:
++        message = "\n".join(tabs) + "\n"
++        sys.stdout.buffer.write(message.encode("utf8"))
+ 
+ 
+ def close_tabs(args):
+     # Try stdin if arguments are empty
+@@ -452,8 +460,10 @@ def parse_args(args):
+         following format:
+         "<prefix>.<window_id>.<tab_id><Tab>Page title<Tab>URL"
+         ''')
+     parser_list_tabs.set_defaults(func=list_tabs)
++    parser_list_tabs.add_argument('--json', action='store_const', const=True, default=False,
++                                  help='JSON output (default=False)')
+ 
+     parser_close_tabs = subparsers.add_parser(
+         'close',
+         help='''

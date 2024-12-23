@@ -1,7 +1,7 @@
 pkgbase = brotab
 	pkgdesc = Control your browser's tabs from the command line
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/balta2ar/brotab
 	arch = any
 	license = MIT
@@ -17,6 +17,8 @@ pkgbase = brotab
 	conflicts = brotab-bin
 	conflicts = brotab-git
 	source = brotab-1.4.2.tar.gz::https://github.com/balta2ar/brotab/archive/refs/tags/1.4.2.tar.gz
+	source = json-output.patch
 	sha256sums = d078a3ea5e0c5cc960e3ca9d0be767fa739355e096f5836b13f4c4352a58f262
+	sha256sums = 68d6c02c64afcc7da5755795ec86c33a95a7aa00c4f4b99557aaf03b70b4b64d
 
 pkgname = brotab
