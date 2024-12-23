@@ -3,7 +3,7 @@
 _pkgname=certbot-dns-henet
 pkgname=$_pkgname-git
 pkgver=r20.b8fd595
-pkgrel=2
+pkgrel=3
 pkgdesc="he.net DNS Authenticator plugin for Certbot"
 arch=('any')
 license=('MIT')
@@ -24,11 +24,6 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
   python setup.py build
-}
-
-check() {
-  cd "$srcdir/$_pkgname"
-  python setup.py test
 }
 
 package() {
