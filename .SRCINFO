@@ -1,7 +1,7 @@
 pkgbase = python-mammoth
 	pkgdesc = Convert Word documents (.docx files) to HTML
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mwilliamson/python-mammoth
 	arch = any
 	license = MIT
