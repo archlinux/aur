@@ -2,7 +2,7 @@
 pkgname=ricochlime-bin
 _pkgname=Ricochlime
 _appname="com.adilhanney.${pkgname%-bin}"
-pkgver=1.11.3
+pkgver=1.11.4
 pkgrel=1
 pkgdesc="A game where you attack the advancing slimes with your ricocheting projectiles."
 arch=(
@@ -26,20 +26,20 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_x86_64.tar.gz")
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('250fe0c5629592d64ec6ed1486cd2aa68fec20d39a6652b519289a960c20d667')
-sha256sums_x86_64=('99aba13927a70dfe0aef4369d469d995185b371b0bce287c44cb7b3861afdf95')
-build() {
+sha256sums_aarch64=('b58dd004f20460078f95230863abf2ec2785490f91de29fc664be7e7ff9f3bb6')
+sha256sums_x86_64=('67657b1cf7fdea59e8db803768b565be7f51afbf5292a7ea60de62cd056460e6')
+prepare() {
     sed -e "
-        s/@appname@/${pkgname%-bin}/
-        s/@runname@/${pkgname%-bin}/
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed "s/${_appname}/${pkgname%-bin}/" -i "${srcdir}/share/applications/${_appname}.desktop"
-    sed "s/${_appname}/${pkgname%-bin}/" -i "${srcdir}/share/metainfo/${_appname}.metainfo.xml"
+    sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/share/applications/${_appname}.desktop"
+    sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/share/metainfo/${_appname}.metainfo.xml"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/"{data,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/"{data,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/share/icons/hicolor/512x512/apps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/share/metainfo/${_appname}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-bin}.metainfo.xml"
