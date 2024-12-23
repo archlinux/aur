@@ -1,7 +1,7 @@
 pkgbase = python-pybrowsers
 	pkgdesc = Python library for detecting and launching browsers
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/roniemartinez/browsers
 	arch = any
 	license = MIT

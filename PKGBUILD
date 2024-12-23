@@ -5,7 +5,7 @@
 pkgname=python-pybrowsers
 _pkgname=browsers
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for detecting and launching browsers"
 arch=(any)
 url="https://github.com/roniemartinez/browsers"
