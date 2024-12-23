@@ -1,7 +1,7 @@
 pkgbase = psychopy
 	pkgdesc = An experiment builder for neuroscience, psychology and psychophysics
 	pkgver = 2024.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.psychopy.org
 	arch = any
 	license = GPL3
@@ -36,7 +36,6 @@ pkgname = psychopy
 	depends = python-sounddevice
 	depends = python-bidi
 	depends = python-arabic-reshaper
-	depends = python-future
 	depends = python-json-tricks
 	depends = python-xlrd
 	depends = python-openpyxl
