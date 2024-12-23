@@ -1,7 +1,7 @@
 pkgbase = trufont
 	pkgdesc = A streamlined and hackable font editor
 	pkgver = 0.6.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://trufont.github.io
 	arch = any
 	license = GPL-3.0-only

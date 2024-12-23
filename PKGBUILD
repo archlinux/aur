@@ -2,7 +2,7 @@
 
 pkgname=trufont
 pkgver=0.6.6
-pkgrel=4
+pkgrel=5
 pkgdesc='A streamlined and hackable font editor'
 arch=(any)
 url='https://trufont.github.io'
