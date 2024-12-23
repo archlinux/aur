@@ -1,0 +1,18 @@
+pkgbase = python-pybertini-docs-git
+	pkgdesc = Python interface for Bertini2 (documentation)
+	pkgver = 1.0alpha5.r1715.735bd7f
+	pkgrel = 1
+	url = https://github.com/bertiniteam/b2
+	arch = any
+	license = custom:GPL-3.0-or-later WITH Bertini2-Additional-GPL-Terms
+	makedepends = git
+	makedepends = python-pybertini
+	makedepends = python-sphinx
+	makedepends = python-sphinxcontrib-bibtex
+	provides = python-pybertini-docs=1.0alpha5
+	conflicts = python-pybertini-docs
+	replaces = pybertini-docs-git
+	source = b2::git+https://github.com/bertiniteam/b2.git
+	sha256sums = SKIP
+
+pkgname = python-pybertini-docs-git
