@@ -1,7 +1,7 @@
 pkgbase = python-metno-locationforecast
 	pkgdesc = Python interface for MET Norway's Locationforecast/2.0 weather service
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Rory-Sullivan/metno-locationforecast
 	changelog = python-metno-locationforecast.changelog
