@@ -1,7 +1,7 @@
 pkgbase = python-mmengine
 	pkgdesc = OpenMMLab Foundational Library for Training Deep Learning Models
 	pkgver = 0.10.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/open-mmlab/mmengine
 	arch = any
 	license = Apache-2.0
