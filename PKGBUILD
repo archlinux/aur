@@ -4,7 +4,7 @@
 pkgname=python-kornia-rs
 _pkgname=kornia-rs
 pkgver=0.1.7
-pkgrel=3
+pkgrel=4
 pkgdesc="A low level computer vision library in Rust"
 arch=("x86_64")
 url="https://github.com/kornia/kornia-rs"
