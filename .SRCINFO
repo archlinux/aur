@@ -1,7 +1,7 @@
 pkgbase = python-lizard
 	pkgdesc = Code analyzer for Java, C/C++, JavaScript, Python, Ruby, Swift and Objective C
 	pkgver = 1.17.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/terryyin/lizard
 	arch = any
 	license = MIT

@@ -4,7 +4,7 @@
 _pyname=lizard
 pkgname=python-$_pyname
 pkgver=1.17.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Code analyzer for Java, C/C++, JavaScript, Python, Ruby, Swift and Objective C"
 arch=('any')
 url="https://github.com/terryyin/lizard"
