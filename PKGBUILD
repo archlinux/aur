@@ -2,8 +2,8 @@
 
 _pkgname=rows
 pkgname=python-${_pkgname}-git
-pkgver=v0.4.1.r220.g6904d6c
-pkgrel=2
+pkgver=v0.4.1.r229.gd59b28f
+pkgrel=1
 pkgdesc='Import data, automatically detect types and give you high-level Python objects so you can start working with the data instead of trying to parse it'
 arch=('any')
 url='https://github.com/turicas/rows'
