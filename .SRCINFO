@@ -1,7 +1,7 @@
 pkgbase = nanoemoji
 	pkgdesc = A wee tool to build color fonts
 	pkgver = 0.15.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/googlefonts/
 	arch = any
 	license = Apache-2.0

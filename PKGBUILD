@@ -2,7 +2,7 @@
 
 pkgname=nanoemoji
 pkgver=0.15.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A wee tool to build color fonts'
 arch=(any)
 url="https://github.com/googlefonts/$_pkgname"
