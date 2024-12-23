@@ -5,8 +5,8 @@
 pkgname='python-wat-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.4.2.r1.gcf3f5aa
-pkgrel=1
+pkgver=0.4.3.r3.g0d60790
+pkgrel=2
 epoch=
 pkgdesc='WAT Inspector: Deep inspection of Python objects (latest commit)'
 arch=('any')
