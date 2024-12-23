@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-bflb-crypto-plus
-_name=bflb_crypto_plus
+_name=${pkgname#python-}
 pkgver=1.0
-pkgrel=3
+pkgrel=6
 epoch=
 pkgdesc="PyCryptoPlus is an extension to the Python Crypto module (www.pycrypto.org)."
 arch=('any')
@@ -33,9 +33,9 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/b1/a4/bda733fe91c9b3424627597768bf8ab2cf683f1e81a88544d126f94536bd/$_name-$pkgver.tar.gz")
+source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('b1b483874e5d2ecb49f9f85259715ad94b76f9627b3de9fa677f6ca5ce666242')
+sha256sums=('fb4062db0226c98831c645f63fc81d73d82511c30409f65a399b5876d6924edb')
 #validpgpkeys=()
 
 build() {
