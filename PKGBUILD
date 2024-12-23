@@ -1,10 +1,11 @@
-# Maintainer: Mingi Sung <sungmg@saltyming.net>
+# Maintainer: Olivier Poitrey <rs@nextdns.io>
+# Contributor: Mingi Sung <sungmg@saltyming.net>
 # Contributor: Nicolas Stalder <n+archlinux@stalder.io>
 
 pkgname=nextdns-bin
 pkgver=1.44.3
 pkgrel=1
-pkgdesc="NextDNS CLI client (DoH Proxy)"
+pkgdesc="NextDNS DNS/53 to DoH Proxy"
 url="https://github.com/nextdns/nextdns"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 license=(MIT)
@@ -12,34 +13,16 @@ depends=()
 provides=(nextdns)
 conflicts=(nextdns)
 backup=(etc/nextdns.conf)
-source=(nextdns.service)
-source_x86_64=(https://github.com/nextdns/nextdns/releases/download/v${pkgver}/nextdns_${pkgver}_linux_amd64.tar.gz)
-source_i686=(https://github.com/nextdns/nextdns/releases/download/v${pkgver}/nextdns_${pkgver}_linux_386.tar.gz)
-source_aarch64=(https://github.com/nextdns/nextdns/releases/download/v${pkgver}/nextdns_${pkgver}_linux_arm64.tar.gz)
-source_armv7h=(https://github.com/nextdns/nextdns/releases/download/v${pkgver}/nextdns_${pkgver}_linux_armv7.tar.gz)
-sha256sums=('00b0c930275df825475b0d86062f7488131f1b2b5e16e5ec6f9983e53138505b')
+install="nextdns.install"
+source_x86_64=("https://github.com/nextdns/nextdns/releases/download/v${pkgver}/nextdns_${pkgver}_linux_amd64.tar.gz")
+source_i686=("https://github.com/nextdns/nextdns/releases/download/v${pkgver}/nextdns_${pkgver}_linux_386.tar.gz")
+source_aarch64=("https://github.com/nextdns/nextdns/releases/download/v${pkgver}/nextdns_${pkgver}_linux_arm64.tar.gz")
+source_armv7h=("https://github.com/nextdns/nextdns/releases/download/v${pkgver}/nextdns_${pkgver}_linux_armv7.tar.gz")
 sha256sums_x86_64=('1307e6ab8a66e2fc8401047b21a6fb84be3c32802b2d9db06956c57309bd2b0d')
 sha256sums_i686=('36460c947c958cc249d1ff131e577114aeeafcf11944340eb9954daa50b25d39')
 sha256sums_aarch64=('2f99025b8b1e9026b9a372c9fc140aa5eba4b81ec4609f5acc0b1462775de834')
 sha256sums_armv7h=('c04ae4397770b8669f5892d1a6c220c2ae34a65b82266b2a569b835bb71997cf')
-b2sums=('cf97472882f3db8e4debbe9aaefd8fddb2c78b1221045b556b486e5adb2448c28ce8c9e49bf54e85858a25760bf6d981c55117975b94039ac48cd24e87e12ec6')
-b2sums_x86_64=('ccc5d60639d757d844ccdf93a3f53dcf881583bb1a9ae81b19da7f3ceafe4751d96ee1c79a7ad7bf5c4d4701563a00e60cf467f4c561755129618c6675d92b3a')
-b2sums_i686=('e002b1cda5cf38271ecfdf30c932a25d647c0538241fb05ee41aa557b04618c973271dce6d91ba590c814abff54d07a8dc9a3bf6e92a39298020198b410e185e')
-b2sums_aarch64=('ae7eeb871abb0850af3d0c081571064791dee0c421e5144242a41ae0ee5173891746276b88d73c45c95bbda1ff019c4c8b115a66d92f8b2331e8b4986d8eb20b')
-b2sums_armv7h=('02b99b4c192dc0df18d2b089d0f24634adc2cc92a3bbe680bded822d705c689a4a979e8c67be5b7a2ad4040195af95a2000a81947e09ebf5844c11d40e13d090')
-
-build() {
-  cd $srcdir
-  # post-install:
-  # - set a value for key config
-  # - consider changing value of keys listen and report-client-info
-  # - NB: setup-router overrides listen
-  ./nextdns config list | sort > nextdns.conf
-}
 
 package() {
-  install -Dm 755 nextdns ${pkgdir}/usr/bin/nextdns
-  install -Dm 644 $srcdir/nextdns.conf "$pkgdir/etc/nextdns.conf"
-  install -Dm 644 $srcdir/nextdns.service "$pkgdir/usr/lib/systemd/system/nextdns.service"
-  install -Dm 644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 755 nextdns "$pkgdir"/usr/bin/nextdns
 }
