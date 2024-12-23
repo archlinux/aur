@@ -20,7 +20,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  zig build install --prefix 'out'
+  zig build install --prefix 'out' -Doptimize=ReleaseSafe
 }
 
 check() {
