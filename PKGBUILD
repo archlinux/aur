@@ -3,7 +3,7 @@
 _name=biosppy
 pkgname=python-${_name,,}
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A toolbox for biosignal processing written in Python."
 arch=('any')
 url="https://github.com/scientisst/BioSPPy"

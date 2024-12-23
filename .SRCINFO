@@ -1,7 +1,7 @@
 pkgbase = python-biosppy
 	pkgdesc = A toolbox for biosignal processing written in Python.
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scientisst/BioSPPy
 	arch = any
 	license = BSD-3-Clause
