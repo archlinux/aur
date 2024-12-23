@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.5.rc0.r0.g39ebbe45ca5
+pkgver=10.6.beta2.r0.gc9dd1e85118
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -138,11 +138,13 @@ provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
         latte-count.patch
         pari-2.17.patch
-        eclib-20241112.patch)
+        eclib-20241112.patch
+        python-3.13.patch)
 sha256sums=('SKIP'
             'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09'
             '69766672b6d836e013a4c9885594e8219ceefc3350255ed1f528ff4847a813ec'
-            '702ef91be4049f7f533fae9d6799837114aacdee677f2d4889e4c7c415b5bd28')
+            '702ef91be4049f7f533fae9d6799837114aacdee677f2d4889e4c7c415b5bd28'
+            'dfeabde2a25c4c55391e453b9f2cbd171ab585f2c3e17a2a7206c539ac5d16eb')
 _pkgs=(standard
        bliss
        coxeter3
@@ -165,6 +167,8 @@ prepare(){
   patch -p1 -i ../pari-2.17.patch
 # Fix build with eclib 20241112
   patch -p1 -i ../eclib-20241112.patch
+# Fix issues with Python 3.13
+  patch -p1 -i ../python-3.13.patch
 
   ./bootstrap
 }
