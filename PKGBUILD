@@ -5,7 +5,7 @@
 pkgname=blueproximity-py3-git
 _pkgname=blueproximity
 pkgver=1.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A proximity detector for your mobile phone via bluetooth. (Python3 version)"
 arch=('i686' 'x86_64')
 url="https://github.com/tiktaalik-dev/blueproximity"
