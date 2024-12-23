@@ -3,7 +3,7 @@
 pkgname=python-httpx-sse
 _name=${pkgname#python-}
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Consume Server-Sent Event (SSE) messages with HTTPX"
 arch=(any)
 url="https://github.com/florimondmanca/httpx-sse"
