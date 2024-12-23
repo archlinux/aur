@@ -1,0 +1,12 @@
+pkgbase = intelmetool
+	pkgdesc = Tool for working with Intel Management Engine
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://review.coreboot.org/coreboot
+	arch = x86_64
+	license = GPL2
+	depends = pciutils
+	source = https://review.coreboot.org
+	sha256sums = SKIP
+
+pkgname = intelmetool
