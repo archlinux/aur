@@ -2,7 +2,7 @@
 
 pkgname=font-v
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Font version string reporting and modification library + executable tool'
 arch=(any)
 url="https://github.com/source-foundry/$pkgname"
