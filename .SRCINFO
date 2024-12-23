@@ -1,7 +1,7 @@
 pkgbase = ygt
 	pkgdesc = A graphical hint editor for TrueType fonts
 	pkgver = 0.2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/psb1558/ygt
 	arch = any
 	license = Apache-2.0
