@@ -1,0 +1,9 @@
+--- NAMD_3.0.1_Source/Make.charm	2024-10-15 04:47:53.000000000 +1100
++++ NAMD_3.0.1_Source/Make.charm.new	2024-12-23 19:26:34.183879123 +1100
+@@ -2,5 +2,5 @@
+ # The config script will override this setting if there is a directory
+ # called charm-8.0.0 or charm in the NAMD base directory.
+ 
+-CHARMBASE = /Projects/namd2/charm-8.0.0
++CHARMBASE = ./charm-8.0.0
+ 
