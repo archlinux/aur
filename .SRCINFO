@@ -1,7 +1,7 @@
 pkgbase = python-xformers-bin
 	pkgdesc = Transformers building blocks, supporting a composable construction
 	pkgver = 0.0.28.post3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/facebookresearch/xformers
 	arch = x86_64
 	license = BSD-3-Clause

@@ -3,7 +3,7 @@
 pkgname=python-xformers-bin
 _pkgname=xformers
 pkgver=0.0.28.post3
-pkgrel=1
+pkgrel=2
 pkgdesc="Transformers building blocks, supporting a composable construction"
 arch=('x86_64')
 url='https://github.com/facebookresearch/xformers'
