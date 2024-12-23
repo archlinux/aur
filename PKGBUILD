@@ -3,7 +3,7 @@
 pkgname=python-novas_de405
 _pyname=${pkgname#python-}
 pkgver=1997.1
-pkgrel=3
+pkgrel=4
 pkgdesc="JPL DE405 ephemeris needed by the NOVAS package"
 arch=('i686' 'x86_64')
 url="https://github.com/brandon-rhodes/python-novas"
