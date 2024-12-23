@@ -1,0 +1,25 @@
+post_install() {
+    systemctl daemon-reload;
+    if systemctl -q is-active ulauncher.service ;then
+        systemctl restart ulauncher.service
+    fi
+
+    ECHOLEN=$(echo -e | awk '{print length($0)}');
+    if [ "${ECHOLEN}" = "0" ]; then
+        ECHO='echo -e'
+    else
+        ECHO='echo'
+    fi
+
+    $ECHO "\033[36m**************************************************************\033[0m"
+    $ECHO "\033[36m*  Enable service:                                           *\033[0m"
+    $ECHO "\033[36m*      systemctl --user enable --now ulauncher.service       *\033[0m"
+    $ECHO "\033[36m*  Restart service:                                          *\033[0m"
+    $ECHO "\033[36m*      systemctl --user daemon-reload                        *\033[0m"
+    $ECHO "\033[36m*      systemctl --user restart ulauncher.service            *\033[0m"
+    $ECHO "\033[36m**************************************************************\033[0m"
+}
+
+post_upgrade() {
+  post_install
+}
