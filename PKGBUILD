@@ -1,7 +1,7 @@
 # Maintainer: mojyack <mojyack at gmail.com>
 pkgname=mikan-dictionary-git
-pkgver=1
-pkgrel=1
+pkgver=1.db79f5b
+pkgrel=2
 pkgdesc='Dictionaries for mikan input method.'
 arch=('any')
 url='https://github.com/mojyack/mikan-dictionary'

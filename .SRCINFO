@@ -1,10 +1,11 @@
 pkgbase = mikan-dictionary-git
 	pkgdesc = Dictionaries for mikan input method.
-	pkgver = 1
-	pkgrel = 1
+	pkgver = 1.db79f5b
+	pkgrel = 2
 	url = https://github.com/mojyack/mikan-dictionary
 	arch = any
 	license = MIT
+	makedepends = mecab
 	makedepends = python
 	provides = mikan-dictionary
 	conflicts = mikan-dictionary
@@ -12,4 +13,3 @@ pkgbase = mikan-dictionary-git
 	md5sums = SKIP
 
 pkgname = mikan-dictionary-git
-
