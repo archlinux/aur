@@ -1,7 +1,7 @@
 pkgbase = python-mecab
 	pkgdesc = Morphological Analysis Tool - Python3 interface
 	pkgver = 1.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://taku910.github.io/mecab/
 	arch = x86_64
 	arch = i686
