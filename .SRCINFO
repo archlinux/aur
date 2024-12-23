@@ -1,15 +1,15 @@
 pkgbase = nuiuita-bin
 	pkgdesc = Minimalist password manager desktop app made with Golang-Wails & Svelte.(Prebuilt version)
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/emarifer/Nu-i-uita
 	arch = x86_64
 	license = MIT
 	provides = nuiuita
 	conflicts = nuiuita
-	source = nuiuita-0.2.8.tar.gz::https://github.com/emarifer/Nu-i-uita/releases/download/v0.2.8/nuiuita_linux_x86_64.tar.xz
-	source = LICENSE-0.2.8::https://raw.githubusercontent.com/emarifer/Nu-i-uita/v0.2.8/LICENSE
-	sha256sums = 68d991db5d58cf1a498cbd8cce684777fdaa0d2d475dfe9787cf88a4f2b0c647
+	source = nuiuita-0.2.9.tar.gz::https://github.com/emarifer/Nu-i-uita/releases/download/v0.2.9/nuiuita_linux_x86_64.tar.xz
+	source = LICENSE-0.2.9::https://raw.githubusercontent.com/emarifer/Nu-i-uita/v0.2.9/LICENSE
+	sha256sums = c45e85b55a454b010cc20f2078d58ad6cfe7e2f5971a4b0edee49bb0f0e00d4a
 	sha256sums = cdf91bbd5ea3ee229dced263d715da1bf03bb676c4348baed0ad775ee3391929
 
 pkgname = nuiuita-bin
