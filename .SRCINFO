@@ -1,7 +1,7 @@
 pkgbase = annextimelog
 	pkgdesc = CLI to track time spent on projects, backed by Git Annex
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/nobodyinperson/annextimelog
 	arch = any
 	license = GPL-3.0-or-later
