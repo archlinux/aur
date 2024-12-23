@@ -3,7 +3,7 @@
 upstream_name=dr14_t.meter
 pkgname=python-dr14_tmeter
 pkgver=1.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Compute the DR14 of a given audio file"
 arch=(any)
 url="https://github.com/simon-r/$upstream_name"
