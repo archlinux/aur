@@ -1,10 +1,9 @@
-
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deeplink-launcher-bin
 _pkgname="DeepLink Launcher"
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
-pkgdesc="A multiplatform app designed for executing and managing deeplinks. "
+pkgdesc="A multiplatform app designed for executing and managing deeplinks.(Prebuilt version)"
 arch=('x86_64')
 url="https://play.google.com/store/apps/details?id=dev.koga.deeplinklauncher.android"
 _ghurl="https://github.com/FelipeKoga/deeplink-launcher"
@@ -27,9 +26,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_1.1.2-1_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cd4a4bd309f84da3ff0c035fef319b2852789edd540e823d1d5ffe38c10be989'
+sha256sums=('fa4be72a07a3b5ed20b5cc912754e57f20503f17af23fac43b60eded5013e6aa'
             'b7cbffe78738d12856a1287503e32c0c22c484721fd87f33bdf091d003b320e5')
-build() {
+prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/
         s/@runname@/${_pkgname}/
@@ -44,7 +43,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${pkgname%-bin}/"{bin,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}/"{bin,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname// /_}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/lib/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/share/doc/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
