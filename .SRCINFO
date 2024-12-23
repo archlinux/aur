@@ -1,7 +1,7 @@
 pkgbase = noriskclient-launcher-git
 	pkgdesc = Norisk Minecraft Client Launcher git package
 	pkgver = r655.a2d4011
-	pkgrel = 1
+	pkgrel = 2
 	url = https://norisk.gg/
 	arch = x86_64
 	arch = aarch64

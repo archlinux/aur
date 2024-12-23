@@ -1,7 +1,7 @@
 # Maintainer: 0x150 <4evnyuij on gmail fullstop com>
 pkgname=noriskclient-launcher-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r655.a2d4011
-pkgrel=1
+pkgrel=2
 pkgdesc='Norisk Minecraft Client Launcher git package'
 arch=("x86_64" 'aarch64')
 url="https://norisk.gg/"
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/nrclauncher" 
-	env RUSTFLAGS="-Clinker-plugin-lto -Clinker=clang -Clink-arg=-fuse-ld=lld" CC=clang npm run tauri build -- --bundles deb
+	env RUSTFLAGS="-Clinker=clang -Clink-arg=-fuse-ld=lld" CC=clang npm run tauri build -- --bundles deb
 }
 
 package() {
