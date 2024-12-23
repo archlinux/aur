@@ -10,13 +10,17 @@
 pkgname=librewolf-hg
 _pkgname=librewolf-nightly
 __pkgname="Librewolf Nightly"
-pkgver=132.0a1.r835902.4a074016c96b
+pkgver=135.0a1.r851452.42de37e6c1b4
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom.  Mercurial version."
 url="https://librewolf.net/"
 arch=(x86_64 aarch64)
+license=(
+  GPL
+  LGPL
+  MPL
+)
 
-license=(MPL GPL LGPL)
 depends=(
   dbus
   alsa-lib
@@ -44,7 +48,7 @@ depends=(
   libxt
   mime-types
   nspr
-  'nss>=3.104'
+  'nss>=3.107'
   pango
   ttf-font
 )
@@ -240,8 +244,8 @@ fi
   # explain that we force en-US and suggest enabling history near the session restore checkbox.
   patch -Np1 -i ${_patches_dir}/ui-patches/pref-naming.patch
 
-  # remove firefox references in the urlbar, when suggesting opened tabs.
-  patch -Np1 -i ${_patches_dir}/ui-patches/remove-branding-urlbar.patch
+#  # remove firefox references in the urlbar, when suggesting opened tabs.
+#  patch -Np1 -i ${_patches_dir}/ui-patches/remove-branding-urlbar.patch
 
   # remove cfr UI elements, as they are disabled and locked already.
   patch -Np1 -i ${_patches_dir}/ui-patches/remove-cfrprefs.patch
