@@ -1,7 +1,7 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 pkgname=hyprland-qtutils
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Hyprland Qt/QML utility apps"
 arch=('x86_64' 'aarch64')
@@ -13,6 +13,7 @@ depends=(
     'qt6-wayland'
     'pkg-config'
     'hyprutils'
+    'qqc2-desktop-style'
 )
 makedepends=(
     'gcc'

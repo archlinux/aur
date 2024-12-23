@@ -1,7 +1,7 @@
 pkgbase = hyprland-qtutils
 	pkgdesc = Hyprland Qt/QML utility apps
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hyprwm/hyprland-qtutils
 	arch = x86_64
 	arch = aarch64
@@ -13,6 +13,7 @@ pkgbase = hyprland-qtutils
 	depends = qt6-wayland
 	depends = pkg-config
 	depends = hyprutils
+	depends = qqc2-desktop-style
 	source = https://github.com/hyprwm/hyprland-qtutils/archive/refs/tags/v0.1.1.tar.gz
 	sha256sums = 3d88e7aaea9ad1c5dc7703d43e4021f06e3f582a656a7592708d8204a272236c
 
