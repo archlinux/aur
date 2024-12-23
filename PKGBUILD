@@ -4,7 +4,7 @@
 pkgname=python-mistral-common
 _pkgname=mistral-common
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="set of tools to help you work with Mistral models"
 arch=('x86_64')
 url='https://pypi.org/project/mistral-common'

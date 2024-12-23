@@ -1,7 +1,7 @@
 pkgbase = python-mistral-common
 	pkgdesc = set of tools to help you work with Mistral models
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/mistral-common
 	arch = x86_64
 	makedepends = python-build
