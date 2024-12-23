@@ -5,7 +5,7 @@
 
 pkgname=ulauncher-git
 pkgver=DEV
-pkgrel=4
+pkgrel=5
 pkgdesc='Application launcher for Linux'
 arch=('any')
 url="http://ulauncher.io"
