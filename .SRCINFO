@@ -1,7 +1,7 @@
 pkgbase = kindleunpack
 	pkgdesc = Extract text, images, and metadata from Kindle/Mobi files
 	pkgver = 0.83
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kevinhendricks/KindleUnpack
 	arch = any
 	license = GPL-3.0-only
