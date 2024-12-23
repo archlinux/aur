@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libktorrent-git
-pkgver=24.04.70.r687.5d8642b
+pkgver=25.03.70.r750.96c2b7a
 pkgrel=1
 pkgdesc="A BitTorrent protocol implementation. (GIT version)"
 arch=('x86_64')
@@ -11,7 +11,6 @@ depends=(
   'gcc-libs' # libgcc_s.so libstdc++.so
   'glibc' # libc.so
   'qt6-base' # libQt6Core.so libQt6Network.so libQt6Xml.so
-  'qt6-5compat' # libQt6Core5Compat.so
   'kconfig' # libKF6ConfigCore.so
   'kcoreaddons' # libKF6CoreAddons.so
   'kio' # libKF6KIOCore.so
@@ -42,6 +41,11 @@ pkgver() {
   cd libktorrent
   _ver="$(cat CMakeLists.txt | grep -m3 -e RELEASE_SERVICE_VERSION_MAJOR -e RELEASE_SERVICE_VERSION_MINOR -e RELEASE_SERVICE_VERSION_MICRO | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  # skip 'IPv6 -> IPv6' polltest
+  sed '/IPv6 -> IPv6/s/^/\/\//g' -i libktorrent/src/net/tests/polltest.cpp
 }
 
 build() {

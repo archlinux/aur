@@ -1,6 +1,6 @@
 pkgbase = libktorrent-git
 	pkgdesc = A BitTorrent protocol implementation. (GIT version)
-	pkgver = 24.04.70.r687.5d8642b
+	pkgver = 25.03.70.r750.96c2b7a
 	pkgrel = 1
 	url = https://invent.kde.org/network/libktorrent
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = libktorrent-git
 	depends = gcc-libs
 	depends = glibc
 	depends = qt6-base
-	depends = qt6-5compat
 	depends = kconfig
 	depends = kcoreaddons
 	depends = kio
