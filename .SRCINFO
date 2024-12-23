@@ -1,14 +1,14 @@
 pkgbase = lefthook
 	pkgdesc = Git hooks manager
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/evilmartians/lefthook
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = go>=1.21
+	makedepends = go>=1.23
 	makedepends = rsync
-	source = https://github.com/evilmartians/lefthook/archive/v1.10.0.tar.gz
+	source = hhttps://github.com/evilmartians/lefthook/releases/download/v1.10.0/lefthook_source.tar.gz
 	sha256sums = 651b27d53002aa7d3bfce5bdb687628786693422fe0fcd01e247ef471097c49d
 
 pkgname = lefthook
