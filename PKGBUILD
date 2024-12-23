@@ -4,7 +4,7 @@ pkgname=aerospike-client-python
 pkgbase='aerospike-client-python'
 pkgname=(aerospike-client-python)
 _name=aerospike
-pkgver=15.1.0
+pkgver=16.0.0
 pkgrel=1
 pkgdesc="Aerospike Client Library for Python"
 license=('Apache-2.0')
@@ -13,7 +13,7 @@ url="https://www.aerospike.com/docs/client/python"
 depends=('python' 'python-setuptools' 'openssl' 'aerospike-client-c-libuv')
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz
     $pkgbase.patch)
-sha512sums=('9007b29820206d62ff6311bae49a0abbbdbd619eb32ff6a0a293425b51bae1cf0a875f041b1a42ef81f13db7704e9e41b316824dd533db56db6469be68a1a6ce'
+sha512sums=('81fd64571bdb73380622b684d84c486558fdce31bf9d6b45835d14d3a147f9d01d3a1d8ccf89ab53135f282138e8f6018558e17cf27c6191f01a6de701fcede6'
             'f635d2b42e6d1144acbc3f26e002f49b8be45a310977e3db537f06ccb21d74c31443f8279b709f57d1425d244aad8c65533a1815bec6d91ff77075b959b915f1')
 
 prepare() {
