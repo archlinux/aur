@@ -1,6 +1,6 @@
 pkgbase = gomanagedocker-bin
 	pkgdesc = A TUI tool to manage docker objects
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/ajayd-san/gomanagedocker
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = gomanagedocker-bin
 	depends = glibc
 	provides = gomanagedocker
 	conflicts = gomanagedocker
-	source = README-1.4.md::https://github.com/ajayd-san/gomanagedocker/raw/v1.4/README.md
-	source = LICENSE-1.4::https://github.com/ajayd-san/gomanagedocker/raw/v1.4/LICENSE
-	sha256sums = b222e09ad10e03590d3fc21576a80ec31dfa21f63ec281b76b56501d94d6e69a
+	source = README-1.5.md::https://github.com/ajayd-san/gomanagedocker/raw/refs/tags/v1.5/README.md
+	source = LICENSE-1.5::https://github.com/ajayd-san/gomanagedocker/raw/refs/tags/v1.5/LICENSE
+	sha256sums = 2db7135de1348fef00f3a984e2e946e28889e5f503e7a5ae12a12601291aedf4
 	sha256sums = fe87fdeb2a8066e6ad9a6c10c251a898b20139894a01f6ea8470aee593669858
-	source_x86_64 = gomanagedocker-1.4-x86_64.tar.gz::https://github.com/ajayd-san/gomanagedocker/releases/download/v1.4/gomanagedocker_linux_amd64_v1.4.tar.gz
-	sha256sums_x86_64 = 6a5914cb03d434f40a63ed33747c37f561b9fb7f4a001b40d339472749badbcf
+	source_x86_64 = gomanagedocker-1.5-x86_64.tar.gz::https://github.com/ajayd-san/gomanagedocker/releases/download/v1.5/gomanagedocker_linux_amd64_v1.5.tar.gz
+	sha256sums_x86_64 = 36d8d15fcf84790dfd64f43714ddfed05c6459372327cef3e540b9f85145bafb
 
 pkgname = gomanagedocker-bin
