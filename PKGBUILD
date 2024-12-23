@@ -1,4 +1,5 @@
-# Maintainer: Eric Engestrom <aur@engestrom.ch>
+# Maintainer: izzqz <v@izzqz.me>
+# Contributor: Eric Engestrom <aur@engestrom.ch>
 # Contributor: Chad "crossroads1112" Sharp <crossroads1112@riseup.net>
 
 pkgname=open-dyslexic-fonts
