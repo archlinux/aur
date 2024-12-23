@@ -12,7 +12,7 @@ pkgname=(python-ipalib
          freeipa-client-common
          freeipa-client)
 pkgver=4.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
 url='http://www.freeipa.org/'
@@ -38,15 +38,19 @@ validpgpkeys=(
 	'D756764D4D7E297C6DAD117269876F72A6E2D34F'
 	'0E63D716D76AC080A4A33513F40800B6298EB963')
 source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"{,.asc}
+        "${pkgbase}-tripledes.patch::https://pagure.io/freeipa/c/bc31c2700c3779cfad688eb098042060bf09df3c.patch"
         nis-domainname.service
         ipaplatform.tar.gz)
 sha256sums=('dc88f5404e7613eb6530d71142ef43a9f89019d59cdc6ec25b778413258c317f'
             'SKIP'
+            '2bdfbf4a96d4bbf80db5f04b29dd64d45306707af6daaa3cd3517985f80c9889'
             '74a394af693e3677146eff18a770a4271fba961b2af93b15b8ae26157af1760a'
             '7e20412c9347106485adee06b5fcee174c67eb5a30b6730452e300dfc44faa5e')
 
 prepare() {
 	cd freeipa-${pkgver}
+
+	patch -p1 -i "../${pkgbase}-tripledes.patch"
 
 	rm -rf ipaplatform/arch
 
