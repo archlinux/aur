@@ -3,7 +3,7 @@
 _pyname=axisregistry
 pkgname=python-$_pyname
 pkgver=0.4.11
-pkgrel=1
+pkgrel=2
 pkgdesc='easy access to the GF Axis Registry'
 arch=(any)
 url="https://github.com/googlefonts/$_pyname"
@@ -18,11 +18,6 @@ _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
 sha256sums=('a75fe87265aaac22780b295181e9ff0d1d0b7aa7302310758c06ae25bc3cca06')
 
-prepare() {
-	cd "$_archive"
-	sed -i -e '/setuptools_scm/s/>=4,<6.1//' setup.py
-}
-
 build() {
 	cd "$_archive"
 	python -m build -wn
@@ -30,7 +25,9 @@ build() {
 
 check() {
 	cd "$_archive"
-	PYTHONPATH=Lib pytest
+	export PYTHONPATH=Lib
+	export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
+	pytest
 }
 
 package() {
