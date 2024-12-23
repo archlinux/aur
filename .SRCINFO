@@ -1,7 +1,7 @@
 pkgbase = vbox-api-git
 	pkgdesc = Python bindings to the VirtualBox SOAP API.
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zedeldi/vbox-api
 	arch = any
 	license = MIT
