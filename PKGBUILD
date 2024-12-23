@@ -4,7 +4,7 @@
 pkgname='python-runtype'
 _pkgname="${pkgname#python-}"
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Python utilities for run-time type validation and multiple dispatch'
 arch=('any')
 license=('MIT')  # SPDX-License-Identifier: MIT
