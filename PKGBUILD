@@ -11,9 +11,9 @@ depends=(python librime)
 makedepends=(python-installer)
 optdepends=(ptpython python-prompt_toolkit python-python-platformdirs)
 license=(GPL3)
-_py="cp$(python -c'import sys; print(f"{sys.version_info.major}{sys.version_info.minor}")' || echo 312)"
+_py="cp$(python -c'import sys; print(f"{sys.version_info.major}{sys.version_info.minor}")' || echo 313)"
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/${_pkgname//-/_}/${_pkgname//-/_}-$pkgver-$_py-$_py-manylinux_2_17_x86_64.whl")
-sha256sums=('9f4ff41cc15945f9ffcc0a7c26cd320963538bad75c4c2136b5a6efd8e4620c5')
+sha256sums=('62f9cb3f3f44a213506cbfc41286ba6d106ae7241aa36ea055cf08a527788548')
 
 package() {
 	python -minstaller -d"$pkgdir" ./*.whl

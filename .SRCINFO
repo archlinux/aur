@@ -11,7 +11,7 @@ pkgbase = python-pyrime
 	optdepends = ptpython
 	optdepends = python-prompt_toolkit
 	optdepends = python-python-platformdirs
-	source = https://files.pythonhosted.org/packages/cp312/p/pyrime/pyrime-0.0.7-cp312-cp312-manylinux_2_17_x86_64.whl
-	sha256sums = 9f4ff41cc15945f9ffcc0a7c26cd320963538bad75c4c2136b5a6efd8e4620c5
+	source = https://files.pythonhosted.org/packages/cp313/p/pyrime/pyrime-0.0.7-cp313-cp313-manylinux_2_17_x86_64.whl
+	sha256sums = 62f9cb3f3f44a213506cbfc41286ba6d106ae7241aa36ea055cf08a527788548
 
 pkgname = python-pyrime
