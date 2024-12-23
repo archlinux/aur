@@ -1,7 +1,7 @@
 pkgbase = python-srsly-bin
 	pkgdesc = Modern high-performance serialization utilities for Python - bin (no cython0 req)
 	pkgver = 2.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/explosion/srsly
 	arch = x86_64
 	license = MIT
