@@ -1,6 +1,6 @@
 pkgbase = unicode-git
 	pkgdesc = Display unicode character properties on the command line
-	pkgver = 2.9.r34.g11c166d
+	pkgver = 2.9.r36.gfbe96d9
 	pkgrel = 1
 	url = https://github.com/garabik/unicode
 	arch = any
@@ -12,8 +12,6 @@ pkgbase = unicode-git
 	provides = unicode
 	conflicts = unicode
 	source = unicode::git+https://github.com/garabik/unicode.git
-	source = locals.patch::https://github.com/garabik/unicode/pull/25.patch
 	sha256sums = SKIP
-	sha256sums = 45f9ba25ced5e67ee0810cc0ff2783ad879d18c5aa4647945fa15109490159c2
 
 pkgname = unicode-git
