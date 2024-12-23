@@ -1,0 +1,17 @@
+pkgbase = qc71-laptop-slimbook-dkms-git
+	pkgdesc = This a Linux kernel platform driver for Intel Whitebook LAPQC71X systems; with added Slimbook patches
+	pkgver = r99.e130a03
+	pkgrel = 1
+	url = https://github.com/Slimbook-Team/qc71_laptop
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = dkms
+	conflicts = qc71_laptop
+	source = qc71_laptop::git+https://github.com/Slimbook-Team/qc71_laptop.git#branch=slimbook
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 08251ea8ec3721b023f30a7b34842936b42a92c6d4e1ed5a2a0948f806382211
+
+pkgname = qc71-laptop-slimbook-dkms-git
