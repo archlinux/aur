@@ -1,18 +1,18 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 # Contributor: Gaute Hope <eg@gaute.vetsj.com>
 # Contributor: Melissa Padilla <mpadilla2 at hotmail dot com>
 
 pkgname=python-future
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Clean single-source support for Python 3 and 2"
 url="https://python-future.org/"
 arch=('any')
 license=('MIT')
 depends=('python')
 provides=('futurize' 'pasteurize')
-checkdepends=('python-requests' 'python-pytest')
+#checkdepends=('python-requests' 'python-pytest')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('python-setuptools: futurize and pasteurize scripts')
 options=('!emptydirs')
@@ -23,13 +23,14 @@ build() {
   cd "$srcdir"/future-$pkgver
   python -m build --wheel
 }
-
-check() {
-  cd "$srcdir"/future-$pkgver
-  # test_future needs python2 so it is disabled here
-  #PYTHONPATH="$PWD/build/lib:$PYTHONPATH" pytest -v tests/test_future
-  PYTHONPATH="$PWD/build/lib:$PYTHONPATH" pytest -v tests/test_past
-}
+# https://github.com/PythonCharmers/python-future/issues/640
+# https://python-future.org/overview.html#status
+#check() {
+#  cd "$srcdir"/future-$pkgver
+#  # test_future needs python2 so it is disabled here
+#  #PYTHONPATH="$PWD/build/lib:$PYTHONPATH" pytest -v tests/test_future
+#  PYTHONPATH="$PWD/build/lib:$PYTHONPATH" pytest -v tests/test_past
+#}
 
 package() {
   cd future-$pkgver
