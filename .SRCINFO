@@ -1,7 +1,7 @@
 pkgbase = i3-gnome-pomodoro
 	pkgdesc = Integrate gnome-pomodoro into i3
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kantord/i3-gnome-pomodoro
 	arch = any
 	license = GPL-3.0-or-later
