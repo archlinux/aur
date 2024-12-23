@@ -1,6 +1,6 @@
 pkgbase = python-periodictable
 	pkgdesc = Extensible periodic table of the elements
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = http://periodictable.readthedocs.org
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-periodictable
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
-	source = python-periodictable-2.0.1.tar.gz::https://github.com/pkienzle/periodictable/archive/v2.0.1.tar.gz
-	md5sums = ac96181d4c8f8f6c6024897aa8418cd1
+	source = python-periodictable-2.0.2.tar.gz::https://github.com/pkienzle/periodictable/archive/v2.0.2.tar.gz
+	md5sums = cafa51731c6693e1f85a6f7a7bcff393
 
 pkgname = python-periodictable
 	depends = python
