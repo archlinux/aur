@@ -4,7 +4,7 @@
 pkgname=python-annexremote
 _pkgname=AnnexRemote
 pkgver=1.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc='git annex special remotes made easy'
 url="https://github.com/Lykos153/$_pkgname"
 license=(GPL-3.0-or-later)
