@@ -1,97 +1,78 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: yustin <#archlinux-proaudio@libera.chat>
 # Contributor: kiasoc5 <kiasoc5 at tutanota dot com>
 # Contributor: xantares
 
 pkgname=stargate
 pkgver=24.02.2
-_commit=43dfd5ccd676fde64ab61d524573903b769c5e2d
-pkgrel=2
-pkgdesc="Innovation-first digital audio workstation (DAW), instrument and effect plugins, wave editor"
-license=(GPL-3.0-only)
-arch=(x86_64 aarch64)
+pkgrel=3
+pkgdesc="A DAW, plugins and wave editor"
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/stargatedaw/stargate"
+license=('GPL-3.0-only')
 depends=(
-  alsa-lib
-  fftw
-  gcc-libs
-  glibc
-  libsndfile
-  portaudio
-  portmidi
-  python
-  python-distro
-  python-jinja
-  python-mido
-  python-numpy
-  python-psutil
-  python-pymarshal
-  python-pyqt6
-  python-rtmidi
-  python-wavefile
-  python-yaml
-  qt6-svg
-  rubberband
-)
-makedepends=(
-  git
-  jq
-  libsbsms
-)
-checkdepends=(python-pytest)
-optdepends=(
-  'ffmpeg'
+  'alsa-lib'
+  'fftw'
+  'gcc-libs'
+  'glibc'
   'lame'
+  'libsndfile'
+  'portaudio'
+  'portmidi'
+  'python'
+  'python-bson'
+  'python-distro'
+  'python-jinja'
+  'python-mido'
+  'python-mutagen'
+  'python-numpy'
+  'python-psutil'
+  'python-pyaudio'
+  'python-pygame'
+  'python-pyqt5'
+  'python-pyqt6'
+  'python-pyaml'
+  'python-pymarshal'
+  'python-rtmidi'
+  'python-wavefile'
+  'python-yaml'
+  'qt6-svg'
+  'rubberband'
   'vorbis-tools'
 )
+makedepends=(
+  'gcc'
+  'git'
+  'make'
+)
 source=(
-  "git+$url.git#commit=$_commit"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/stargatedaw/stargate/archive/refs/tags/release-${pkgver}.tar.gz"
   "git+https://github.com/spatialaudio/portaudio-binaries.git"
-  "git+https://github.com/stargatedaw/stargate-soundtouch.git"
   "git+https://github.com/stargatedaw/stargate-sbsms.git"
+  "git+https://github.com/stargatedaw/stargate-soundtouch.git"
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
-
-_archive="$pkgname"
-
-pkgver() {
-  cd "$_archive"
-
-  git describe --tags | sed 's/release-//'
-}
-
+sha256sums=('93c6bc604cb8d6bea851a73f8de92364771aa84f8ccdd516ad0a20870e951d7f'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 prepare() {
-  cd "$_archive"
-
-  git submodule init
-  git config submodule.src/vendor/portaudio-binaries.url "$srcdir/portaudio-binaries"
-  git config submodule.src/vendor/soundtouch.url "$srcdir/stargate-soundtouch"
-  git config submodule.src/vendor/sbsms.url "$srcdir/stargate-sbsms"
-  git -c protocol.file.allow=always submodule update
+  mv "${pkgname}-release-${pkgver}" "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}/src"
+  # Manually clone submodule sources to the correct vendor directories
+  git clone https://github.com/spatialaudio/portaudio-binaries.git vendor/portaudio-binaries
+  git clone https://github.com/stargatedaw/stargate-soundtouch.git vendor/soundtouch
+  git clone https://github.com/stargatedaw/stargate-sbsms.git vendor/sbsms
 }
 
 build() {
-  cd "$_archive/src"
-
-  # for non-x86 architectures
-  PLAT_FLAGS="$CFLAGS" make all
-}
-
-check() {
-  cd "$srcdir/$_archive/src"
-
-  # Deselected test fails with AssertionError, unsure why
-  pytest --override-ini="addopts=" test/ \
-    --deselect test/sglib/models/daw/routing/test_midi.py
+  cd "${pkgname}-${pkgver}/src"
+  PLAT_FLAGS="${CFLAGS}" make all
 }
 
 package() {
-  cd "$_archive/src"
-
-  DESTDIR=$pkgdir make install
+  cd "${pkgname}-${pkgver}/src"
+  DESTDIR="${pkgdir}" make install
 }
+
+# vim:set ts=2 sw=2 et:
