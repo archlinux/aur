@@ -1,6 +1,6 @@
 pkgbase = vv
 	pkgdesc = Terminal image viewer
-	pkgver = 3.0.1
+	pkgver = 3.1
 	pkgrel = 1
 	url = https://github.com/wolfpld/vv
 	arch = x86_64
@@ -23,11 +23,11 @@ pkgbase = vv
 	depends = zlib
 	optdepends = poppler-glib
 	conflicts = vv-bin
-	source = vv-3.0.1.tar.gz::https://github.com/wolfpld/vv/archive/refs/tags/v3.0.1.tar.gz
+	source = vv-3.1.tar.gz::https://github.com/wolfpld/vv/archive/refs/tags/v3.1.tar.gz
 	source = base64::git+https://github.com/aklomp/base64.git#tag=v0.5.2
 	source = tracy::git+https://github.com/wolfpld/tracy.git
 	source = stb::git+https://github.com/nothings/stb.git#tag=2e2bef463a5b53ddf8bb788e25da6b8506314c08
-	sha256sums = 6bed3181f31588259184599bf8e275cf2c20dd1beddee24889cfa6a828bbcbbe
+	sha256sums = 299785f78202dd5af7b849e60a4e318fbd6c27b2162ecc2f424e267f1407c5e9
 	sha256sums = c2139ed6cc36779410ebf291df9f231145ed1c8ee0f16b6046331daa686058b7
 	sha256sums = SKIP
 	sha256sums = e2e76a8585a9b52cd0d774a4637a55f0ab9edb3ba10f852f69e1243134c17b90
