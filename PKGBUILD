@@ -1,12 +1,12 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl2-git
-pkgver=prerelease.2.29.2.r365.g1b26b5440
+pkgver=prerelease.2.29.2.r450.g9491389ba
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.libsdl.org"
-license=('MIT')
+license=('Zlib')
 depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'hidapi' 'libusb')
 makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon'
              'wayland-protocols' 'ibus' 'fcitx5' 'libxss' 'cmake' 'jack' 'pipewire'
@@ -28,11 +28,12 @@ pkgver() {
 
 build() {
 	CFLAGS+=" -ffat-lto-objects"
-	cmake -S SDL -B build \
+	cmake -S SDL -B build -G Ninja \
 	-D CMAKE_INSTALL_PREFIX=/usr \
 	-D SDL_RPI=OFF \
 	-D SDL_STATIC=OFF \
-	-D SDL_RPATH=OFF
+	-D SDL_RPATH=OFF \
+	-D SDL_ASSERTIONS=disabled
 	cmake --build build
 }
 
