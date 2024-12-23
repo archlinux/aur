@@ -2,8 +2,8 @@
 
 _name=solara
 pkgname=python-${_name,,}
-pkgver=1.42.0
-pkgrel=2
+pkgver=1.43.0
+pkgrel=1
 pkgdesc="A pure Python, React-style web framework"
 arch=('any')
 url="https://solara.dev"
@@ -15,7 +15,7 @@ depends=('python>=3.8'
 	  python-humanize
 	  python-ipykernel
 	 'python-ipyvue>=1.9.0'
-	 'python-ipyvuetify>=1.8.10'
+	 'python-ipyvuetify>=1.6.10'
 	  python-ipywidgets
 	  python-jinja
 	 'python-jupyter-client>=7.0.0'
@@ -23,7 +23,7 @@ depends=('python>=3.8'
 	  python-markupsafe
 	  jupyter-nbformat
 	  pymdown-extensions
-	 'python-reacton>=1.7.1'
+	 'python-reacton>=1.9'
 	  python-requests
 	  python-rich-click
 	  python-starlette
@@ -35,10 +35,30 @@ depends=('python>=3.8'
 makedepends=('python-installer' 'python-wheel')
 
 _whl="${_name//-/_}-$pkgver-py2.py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_whl}")
-sha256sums=(5ad674bcc3facdf0574c7c3d3de758cec883a8e4272b7bef78411ce4e2ebb835)
+_ui_name=solara_ui
+_ui_whl="${_ui_name//-/_}-$pkgver-py2.py3-none-any.whl"
+_server_name=solara-server
+_server_whl="${_server_name//-/_}-$pkgver-py2.py3-none-any.whl"
 
-noextract=("$_whl")
+source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_whl}"
+        "https://files.pythonhosted.org/packages/py2.py3/${_ui_name::1}/$_ui_name/${_ui_whl}"
+        "https://files.pythonhosted.org/packages/py2.py3/${_server_name::1}/$_server_name/${_server_whl}")
+sha256sums=(39f94c4d8c63a0998937c364258c0b833a8688494d5b104d7d1b2869bf2e7c0b
+            22ad9e450dd4fdd4a675404f55cb5006b8e14b78bc0227db05e070a28dcb89f6
+            85e5a68537ebd5c8431afd474113f5641af25479c8d7daabcdc8f1f5351729b8)
+
+noextract=("$_whl"
+"$_ui_whl"
+"$_server_whl")
 package() {
     python -m installer --destdir="$pkgdir" "$_whl"
+    # Move the license file to the correct location
+    _py="$(python -c 'from sys import version_info as vi; print(f"python{vi.major}.{vi.minor}")')"
+    mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
+    mv "$pkgdir/usr/lib/${_py}/site-packages/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+
+    python -m installer --destdir="$pkgdir" "$_ui_whl"
+    python -m installer --destdir="$pkgdir" "$_server_whl"
+    # remove duplicate license file (in incorrect location)
+    rm "$pkgdir/usr/lib/${_py}/site-packages/LICENSE"
 }
