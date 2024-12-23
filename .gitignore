@@ -1,6 +1,6 @@
 src/
 pkg/
 *.pkg.*
-*.tar.gz
+python-tts
 *.whl
 */
