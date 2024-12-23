@@ -1,7 +1,7 @@
 pkgbase = python-collada
 	pkgdesc = A python COLLADA library
 	pkgver = 0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pycollada/pycollada
 	arch = any
 	license = BSD-3-Clause

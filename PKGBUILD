@@ -4,7 +4,7 @@
 pkgname=python-collada
 _pkgname=pycollada
 pkgver=0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A python COLLADA library"
 arch=(any)
 url="https://github.com/pycollada/pycollada"
