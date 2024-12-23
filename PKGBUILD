@@ -3,7 +3,7 @@
 
 pkgname=noto-fonts-ar
 pkgver=2024.12.01
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Google Noto TTF fonts for Arabic Scripts"
 arch=(any)
@@ -18,8 +18,8 @@ source=("${_url}/NotoKufiArabic/hinted/ttf/NotoKufiArabic-"{Bold,Regular}.ttf
         66-noto-ar.conf)
 sha256sums=('a11780ed16775fde48967730810431182f8bea2588b81e79b21bb1e5133722e7'
             '02f3f4fe55fe5527ab265fdff00f30f65b020f992c8c3a09a260618c24d2b759'
-            '6a6abacebd8f08cf24cda234770d9eabfd35fe7bb76c5dd66ae99e86f630bf92'
-            'a9662e3ee87c3f9640ad25ba33078298cddab197a3e8da75a3b1feea42b85ef3'
+            '45bb0a9d6803ebc08c2befb7cc61a64a0a8d41d608582d10007e35b13df9031c'
+            '2d5d78e9cc27d7193926c7e460314c9da7dbec1268494dbf117adc53c171ac06'
             'cabdc065d2d3d30562cf1d3e753dc7062bc420beb14942e0c28a211020e2b8d1'
             'c270782ee478c685f95509e724125729e1284c82ebfbe414cc67926f29449e1d'
             'f2095b08bed08b23a6fe26112fcd679a2bee3f002eef077eb05d215ed1051bd8'
