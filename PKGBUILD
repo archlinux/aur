@@ -3,7 +3,7 @@
 
 pkgname=papis
 pkgver=0.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
 url='https://github.com/papis/papis'
