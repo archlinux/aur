@@ -5,7 +5,7 @@
 # Contributor: Brad Fanella <bradfanellaat archlinux dot us>
 # See .contrib for older/other contributors
 pkgname=eric
-pkgver=24.11
+pkgver=24.12
 pkgrel=1
 pkgdesc="A full-featured Python and Ruby IDE in PyQt"
 arch=('any')
@@ -32,7 +32,7 @@ makedepends=('python-pip')
 conflicts=(${pkgname}-common)
 replaces=(${pkgname}-common)
 source=("https://downloads.sourceforge.net/${pkgname}-ide/${pkgname}7-${pkgver}.tar.gz")
-sha256sums=('b63d8489ea411b364a6cefb696bd8b61741a62997c1f9360d14ddac647237b19')
+sha256sums=('5a064d344f911bd9757491be70bff3bc119c5a9637709b16d2d5fe5f7d861d6f')
 
 package_eric() {
     cd "${pkgname}7-${pkgver}"
