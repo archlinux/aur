@@ -2,7 +2,7 @@
 _appname=we-read
 pkgname="${_appname//-/}-pake"
 _pkgname=WeRead
-pkgver=3.0.0
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Use Pake to package WeRead.微信读书是广州腾讯科技有限公司推出的阅读软件.为用户推荐合适的书籍，并可查看微信好友的读书动态、与好友讨论正在阅读的书籍等."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname}-${pkgver}.deb::${_ghurl}/releases/download/V${pkgver}/${_pkgname}_${CARCH}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${pkgver}/LICENSE"
 )
-sha256sums=('8afc60753932bec2c583467d22d0f05d8b90ec128842eecc9e9486d77326e833'
+sha256sums=('ba32b2929e9b85e2b843f74079adbd302be3a6e4efc21b34b7f3cd647f64adbf'
             '462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758')
 build() {
     bsdtar -xf "${srcdir}/data."*
