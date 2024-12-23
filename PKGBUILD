@@ -3,7 +3,7 @@
 _name=reacton
 pkgname=python-${_name,,}
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="React for ipywidgets"
 arch=('any')
 url="https://github.com/widgetti/reacton"
