@@ -1,23 +1,4 @@
-download?job=build_logo
-logo.zip
-
-# Created by https://www.gitignore.io/api/archlinuxpackages
-
-### ArchLinuxPackages ###
-*.tar
-*.tar.*
-*.jar
-*.exe
-*.msi
-*.zip
-*.tgz
-*.log
-*.log.*
-*.sig
-
-pkg/
-src/
-
-# End of https://www.gitignore.io/api/archlinuxpackages
-
-!logo.zip
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

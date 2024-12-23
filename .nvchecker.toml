@@ -1,0 +1,4 @@
+[sublime-music]
+source = "git"
+git = "https://github.com/sublime-music/sublime-music.git"
+prefix = "v"
