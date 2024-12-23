@@ -1,0 +1,15 @@
+pkgbase = perl-extutils-hascompiler
+	pkgdesc = Check for the presence of a compiler
+	pkgver = 0.025
+	pkgrel = 1
+	url = https://metacpan.org/release/ExtUtils-HasCompiler
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/ExtUtils-HasCompiler-0.025.tar.gz
+	md5sums = ad4c2622cad747b52965ecedbee2ceff
+	sha512sums = d5560a22f43cdfb7900aeedf5780c08cec8e0761a5873fafec4018ebf872ae48adac02ad218f13d138d64a33365d34966f099b119ff14b7b6f8239708560c11d
+
+pkgname = perl-extutils-hascompiler
