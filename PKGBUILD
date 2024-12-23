@@ -3,7 +3,7 @@
 upstream_name=connexion
 pkgname=python-connexion
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Connexion is a modern Python web framework that makes spec-first and api-first development easy"
 arch=(any)
 url="https://github.com/spec-first/$upstream_name"
