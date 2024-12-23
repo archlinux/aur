@@ -4,7 +4,7 @@
 pkgname=python-anthropic
 _pkgname=anthropic-sdk-python
 pkgver=0.42.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library that provides convenient access to the Anthropic REST API"
 arch=(any)
 url="https://github.com/anthropics/anthropic-sdk-python"

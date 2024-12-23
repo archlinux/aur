@@ -1,7 +1,7 @@
 pkgbase = python-anthropic
 	pkgdesc = Python library that provides convenient access to the Anthropic REST API
 	pkgver = 0.42.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anthropics/anthropic-sdk-python
 	arch = any
 	license = MIT
