@@ -1,12 +1,13 @@
-# Maintainer: Eric Engestrom <aur@engestrom.ch>
+# Maintainer: izzqz <v@izzqz.me>
+# Contributor: Eric Engestrom <aur@engestrom.ch>
 # Contributor: Chad "crossroads1112" Sharp <crossroads1112@riseup.net>
 
 pkgname=open-dyslexic-fonts-git
-pkgver=0.91.12+30.ge7ac50af1a
+pkgver=0.91.12+74.g58c74d642d
 pkgrel=1
 pkgdesc="Typeface that uses typeface shapes & features to help offset some visual symptoms of Dyslexia"
 arch=(any)
-url="https://opendyslexic.org"
+url="https://github.com/antijingoist/opendyslexic"
 license=(SIL-OFL)
 makedepends=(git)
 source=(git+https://github.com/antijingoist/opendyslexic.git)
