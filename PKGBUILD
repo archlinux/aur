@@ -3,7 +3,7 @@
 pkgname=python-spacy-bin
 _pkgname=html2image
 pkgver=3.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Industrial-strength Natural Language Processing (NLP) in Python"
 arch=('x86_64')
 url="https://github.com/explosion/spaCy"
