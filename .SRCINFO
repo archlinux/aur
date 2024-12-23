@@ -1,6 +1,6 @@
 pkgbase = hyuga
 	pkgdesc = yet another hy language server
-	pkgver = 0.2.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/sakuraiyuta/hyuga
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = hyuga
 	depends = hy-hyrule
 	depends = python-pygls
 	depends = python-toolz
-	source = https://files.pythonhosted.org/packages/py3/h/hyuga/hyuga-0.2.1-py3-none-any.whl
-	sha256sums = 7f203e3080d9a9a1aaa92796a92afaf174a28c26223a8f22e092f80702bb0f67
+	source = https://files.pythonhosted.org/packages/py3/h/hyuga/hyuga-1.0.0-py3-none-any.whl
+	sha256sums = 6469dd72b61b2d2b6b379863f66cd4ca3f43a605b942dd951f6db28d7f8164e1
 
 pkgname = hyuga
