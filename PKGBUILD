@@ -3,7 +3,7 @@
 
 pkgname=python-pip-api
 pkgver=0.0.34
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial, importable pip API"
 url="https://github.com/di/pip-api"
 license=('Apache-2.0')
