@@ -3,7 +3,7 @@
 pkgname=python-compressed-tensors
 _pkgname=compressed-tensors
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="extends the safetensors format, providing a versatile and efficient way to store and manage compressed tensor data"
 arch=('x86_64')
 url='https://github.com/neuralmagic/compressed-tensors'
