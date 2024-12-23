@@ -1,0 +1,13 @@
+pkgbase = mecab-shogo82148-git
+	pkgdesc = Unofficial fork of taku910/mecab
+	pkgver = 0.996.10
+	pkgrel = 1
+	url = https://github.com/shogo82148/mecab
+	arch = x86_64
+	license = BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
+	provides = mecab
+	conflicts = mecab
+	source = mecab-shogo82148-git::git+https://github.com/shogo82148/mecab.git
+	md5sums = SKIP
+
+pkgname = mecab-shogo82148-git
