@@ -1,7 +1,7 @@
 pkgbase = python-ipyvuetify
 	pkgdesc = Jupyter widgets based on vuetify UI components
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/widgetti/ipyvuetify
 	arch = any
 	license = MIT

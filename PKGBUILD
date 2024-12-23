@@ -3,7 +3,7 @@
 _name=ipyvuetify
 pkgname=python-${_name,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Jupyter widgets based on vuetify UI components"
 arch=('any')
 url="https://github.com/widgetti/ipyvuetify"
