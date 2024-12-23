@@ -9,8 +9,8 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=22ab9e6e96b8904f853b2d43d9406b8bb974322f
-_bcr_commit=8b8489ef80d1171754cf8fe8b1f4b258550141f3
+_mozc_commit=56fbb9cb637cbd3e2ce5ef498c328c7b09ec7c1d
+_bcr_commit=b33bb1ca9fe86036712a084f60d9f6dfa5cc2d34
 _branch=fcitx
 
 ## follow the submodule commits in https://github.com/fcitx/mozc/tree/fcitx/src/third_party
@@ -25,7 +25,7 @@ _wil_commit=fc5dbf5
 pkgbase=mozc
 pkgname=("fcitx-$pkgbase")
 pkgver=2.30.5618.102
-pkgrel=26
+pkgrel=27
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
@@ -42,8 +42,8 @@ source=("git+$url.git#commit=${_mozc_commit}"
         "git+https://github.com/microsoft/wil.git#commit=${_wil_commit}"
 )
 
-sha512sums=('408fe521b950aff4870aeee7b79e601d2776b5236e212928d14f8c6c77748b68fe36f43c7eceb11171a4603028bc7db313b2068c79460a300b1ff97ac86e484d'
-            '1c83482f4f75707929e35aa4f2ef37d3ce6bc084d1c4df49cb9ff76dd150a0220296445c2c4df512b395624820c87a42822d84401919ec5a1486b7e84de1e795'
+sha512sums=('c7d8e197f553ea0b5217086ee813bf701262a0180c67f05320654d99432999d876b9c69dc10fba7f1cff9ec86b89f27e1f5f067e8d725c71b74029c0eee303e4'
+            '02808cbf62da74f374f21e8586bbc98f21303b4f44eba460960f95d67f009296239621ca1529bf971d1e8a6afceb5a9376bd8471fc00728db5bfd44976093523'
             '83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68'
             'f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d'
             '44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b'
