@@ -3,7 +3,7 @@
 
 _pkgname=pantalaimon
 pkgname="${_pkgname}"-git
-pkgver=e62cfe0
+pkgver=0.10.5.28.g21fb28d
 pkgrel=1
 pkgdesc="Pantalaimon is an end-to-end encryption aware Matrix reverse proxy daemon."
 arch=('x86_64')
@@ -18,24 +18,20 @@ source=("${_pkgname}::git+https://github.com/matrix-org/pantalaimon"
 sha256sums=('SKIP'
             'cf693e0324a7f2965bc9e64ab2c3d75137e7993503ddb3ae3dddc84af6c0b0e9')
 
-pkgber() {
+pkgver() {
         cd "${_pkgname}"
         git describe --always | sed -e 's|-|.|g' -e 's|v||'
-}
-
-build() {
-        cd "${_pkgname}"
 }
 
 package() {
         cd "${_pkgname}"
         python setup.py install --prefix=/usr --root="$pkgdir"
         install -Dm644 "${srcdir}"/pantalaimon.service "${pkgdir}"/usr/lib/systemd/user/pantalaimon.service
-	install -Dm644 "${srcdir}"/"${_pkgname}"/docs/man/*.md -t "${pkgdir}"/usr/share/doc/"${_pkgname}"/
-	install -Dm644 "${srcdir}"/"${_pkgname}"/docs/man/*.1 -t "${pkgdir}"/usr/share/man/man1/
-	install -Dm644 "${srcdir}"/"${_pkgname}"/docs/man/*.5 -t "${pkgdir}"/usr/share/man/man5/
-	install -Dm644 "${srcdir}"/"${_pkgname}"/docs/man/*.8 -t "${pkgdir}"/usr/share/man/man8/
-	install -Dm644 "${srcdir}"/"${_pkgname}"/LICENSE -t "${pkgdir}"/usr/share/licenses/"${_pkgname}"/
+        install -Dm644 "${srcdir}"/"${_pkgname}"/docs/man/*.md -t "${pkgdir}"/usr/share/doc/"${_pkgname}"/
+        install -Dm644 "${srcdir}"/"${_pkgname}"/docs/man/*.1 -t "${pkgdir}"/usr/share/man/man1/
+        install -Dm644 "${srcdir}"/"${_pkgname}"/docs/man/*.5 -t "${pkgdir}"/usr/share/man/man5/
+        install -Dm644 "${srcdir}"/"${_pkgname}"/docs/man/*.8 -t "${pkgdir}"/usr/share/man/man8/
+        install -Dm644 "${srcdir}"/"${_pkgname}"/LICENSE -t "${pkgdir}"/usr/share/licenses/"${_pkgname}"/
 }
 
 # vim:set ts=2 sw=2 et:
