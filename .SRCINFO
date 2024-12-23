@@ -5,6 +5,7 @@ pkgbase = screenshot_llm-git
 	url = https://github.com/ThanabordeeN/Screenshot_LLM
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	depends = python
 	depends = tk
 	depends = python-dotenv
@@ -12,7 +13,6 @@ pkgbase = screenshot_llm-git
 	optdepends = ollama: ollama support.
 	conflicts = screenshot_llm
 	source = screenshot_llm-git::git+https://github.com/ThanabordeeN/Screenshot_LLM.git
-	source = https://github.com/lainedfles/Screenshot_LLM/pull/1.patch
 	b2sums = SKIP
 	b2sums = 047aa5fb3e5a5e5263b9c802b9b779a070a8d3192030e747ceaa39ae48b5552f2f62f35e5affc8c9e5b9907f2eb7e54e8b0f2498890f5d193e12e9e5e4b54d1c
 

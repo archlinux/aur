@@ -10,14 +10,11 @@ url="https://github.com/ThanabordeeN/${_pkgname}"
 license=('MIT')
 conflicts=("${pkgname%-git}")
 depends=('python' 'tk' 'python-dotenv' 'python-markdown')
+makedepends=('git')
 optdepends=('ollama: ollama support.')
-source=("${pkgname}::git+${url}.git" "https://github.com/lainedfles/Screenshot_LLM/pull/1.patch")
+source=("${pkgname}::git+${url}.git")
 b2sums=('SKIP'
         '047aa5fb3e5a5e5263b9c802b9b779a070a8d3192030e747ceaa39ae48b5552f2f62f35e5affc8c9e5b9907f2eb7e54e8b0f2498890f5d193e12e9e5e4b54d1c')
-
-prepare() {
-  patch --directory="${pkgname}" --forward --strip=1 --input="${srcdir}/1.patch"
-}
 
 pkgver() {
   cd "${pkgname}"
