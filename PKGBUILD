@@ -1,7 +1,7 @@
 # Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
 pkgname=lith-git
 pkgver=1.7.25.r7.gb6aa6a4
-pkgrel=2
+pkgrel=3
 pkgdesc='A multiplatform WeeChat relay client'
 arch=('x86_64')
 url='https://github.com/LithApp/Lith'
@@ -33,7 +33,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DLITH_FORCE_LOCAL_PACKAGES_ONLY=ON \
-        -DVERSION="$(pkgver)"
+        -DLITH_VERSION="$(pkgver)"
 
     cmake --build "$srcdir/build"
 }
