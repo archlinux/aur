@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=netron-git
 _pkgname=Netron
-pkgver=7.9.7.r3.ge97c8a1
+pkgver=8.0.7.r3.gab27bca
 _electronversion=33
 _nodeversion=22
 pkgrel=1
-pkgdesc="Visualizer for neural network, deep learning and machine learning models.Use system-wide electron."
+pkgdesc="Visualizer for neural network, deep learning and machine learning models.(Use system-wide electron)"
 arch=('any')
 url="https://netron.app/"
 _ghurl="https://github.com/lutzroeder/netron"
@@ -48,7 +48,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -71,15 +71,18 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "/python -m pip/d;/--mac /d;/--win /d;/npx electron-builder/d" package.js
     sed -i "296,297d" package.js
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
     NODE_ENV=development    npm run install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     npm run build python
     NODE_ENV=production     npx electron-builder install-app-deps
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
