@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=openhome-bin
 _pkgname=OpenHome
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Application for importing and transferring Pokémon between save files.(Prebuilt version.Use system-wide electron)"
+pkgdesc="Application for importing and transferring Pokémon between save files.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/andrewbenington/OpenHome"
 license=('GPL-3.0-only')
@@ -14,7 +14,7 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('627ad00b6449adc35ab14e63885e5725be0d54dc4fbf6a0fe8d5ac5bfdd28a35')
+sha256sums=('9fd594b3c0e4497b25e616e95ba29575e636a3adf59b546761bd9cc74952ace7')
 prepare() {
     sed -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
