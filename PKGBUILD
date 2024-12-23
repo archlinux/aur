@@ -2,8 +2,8 @@
 
 _binname="gmd"
 pkgname="gomanagedocker"
-pkgver=1.4
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 pkgdesc="A TUI tool to manage docker objects"
 arch=('x86_64')
 url="https://github.com/ajayd-san/${pkgname}"
@@ -12,7 +12,7 @@ depends=('docker' 'glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('72802f8f00134d57830efefb2d41de0ca78784bf596ae9a210116494a0bc7cd4')
+sha256sums=('c95dc3cc2e5a267dc79e235e76c848daecd4cd2361be098fe7983fd5d28c0a32')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -36,7 +36,7 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${_binname}" "${pkgdir}/usr/bin/${_binname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm755 "build/${_binname}" "${pkgdir}/usr/bin/${_binname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

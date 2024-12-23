@@ -1,0 +1,4 @@
+[gomanagedocker]
+source = "git"
+git = "https://github.com/ajayd-san/gomanagedocker.git"
+prefix = "v"
