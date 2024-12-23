@@ -1,3 +1,5 @@
 [paperlib-appimage]
-source = "git"
-git = "https://github.com/Future-Scholars/paperlib.git"
+source = "github"
+github = "Future-Scholars/paperlib"
+use_latest_release = true
+prefix = "release-electron-"
