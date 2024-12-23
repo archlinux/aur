@@ -5,7 +5,7 @@
 
 pkgname=python-pyshortcuts
 pkgver=1.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Create desktop shortcuts to Python scripts"
 arch=('any')
 url="https://github.com/newville/pyshortcuts"
