@@ -4,7 +4,7 @@
 pkgname=python-backoff
 _name=${pkgname#python-}
 pkgver=2.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Python library providing function decorators for configurable backoff and retry"
 arch=('any')
 url="https://github.com/litl/backoff"
