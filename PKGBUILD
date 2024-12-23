@@ -19,7 +19,7 @@ source_x86_64=("${pkgname}-${pkgver}-amd64.deb"::"$url/releases/download/v$pkgve
 source_aarch64=("${pkgname}-${pkgver}-arm64.deb"::"$url/releases/download/v$pkgver-beta/${_pkgname}_${pkgver}_arm64.deb")
 
 prepare() {
-    mkdir data
+    mkdir -p data
     bsdtar -x -f data.tar.xz -C data
 }
 
