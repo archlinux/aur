@@ -1,7 +1,7 @@
 pkgbase = python-amulet-leveldb
 	pkgdesc = A Cython wrapper for Mojang's modified LevelDB library.
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Amulet-Team/Amulet-LevelDB
 	arch = any
 	license = LicenseRef-Amulet-Team-License
