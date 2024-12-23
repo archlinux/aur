@@ -5,7 +5,7 @@
 _pkgname=webargs
 pkgname=python-$_pkgname
 pkgver=8.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A friendly library for parsing HTTP request arguments, with built-in support for popular web frameworks'
 arch=('any')
 url='https://github.com/marshmallow-code/webargs'
