@@ -1,7 +1,7 @@
 pkgbase = autokey
 	pkgdesc = A desktop automation utility for Linux and X11
 	pkgver = 0.96.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/autokey/autokey
 	arch = any
 	license = GPL-3.0-or-later
@@ -11,12 +11,15 @@ pkgbase = autokey
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	source = autokey-0.96.0.tar.gz::https://github.com/autokey/autokey/archive/v0.96.0.tar.gz
+	source = https://github.com/autokey/autokey/pull/997.patch
 	sha256sums = 40341fc4cd9703a34264e9191b5938fc7ed5a6f357992d91e492975d89933acd
+	sha256sums = 3d5a186daafda423e7653c1b38a2e5076150dc9a61aa678763b71f15060765c9
 
 pkgname = autokey-common
 	pkgdesc = A desktop automation utility for Linux and X11 - common data
 	depends = imagemagick
 	depends = python-dbus
+	depends = python-magic
 	depends = python-packaging
 	depends = python-pyinotify
 	depends = python-xlib

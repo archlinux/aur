@@ -8,7 +8,7 @@ pkgname=(
 )
 pkgbase=autokey
 pkgver=0.96.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A desktop automation utility for Linux and X11"
 arch=('any')
 url="https://github.com/autokey/autokey"
@@ -20,8 +20,17 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/autokey/autokey/archive/v$pkgver.tar.gz")
-sha256sums=('40341fc4cd9703a34264e9191b5938fc7ed5a6f357992d91e492975d89933acd')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/autokey/autokey/archive/v$pkgver.tar.gz"
+        'https://github.com/autokey/autokey/pull/997.patch')
+sha256sums=('40341fc4cd9703a34264e9191b5938fc7ed5a6f357992d91e492975d89933acd'
+            '3d5a186daafda423e7653c1b38a2e5076150dc9a61aa678763b71f15060765c9')
+
+prepare() {
+  cd "$pkgbase-$pkgver"
+
+  # https://github.com/autokey/autokey/issues/961
+  patch -Np1 -i ../997.patch
+}
 
 build() {
   cd "$pkgbase-$pkgver"
@@ -40,6 +49,7 @@ package_autokey-common() {
   depends=(
     'imagemagick'
     'python-dbus'
+    'python-magic'
     'python-packaging'
     'python-pyinotify'
     'python-xlib'
