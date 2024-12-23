@@ -1,7 +1,7 @@
 pkgbase = plex-htpc
 	pkgdesc = Plex HTPC client for linux
 	pkgver = 1.69.0.264
-	pkgrel = 1
+	pkgrel = 2
 	url = http://plex.tv
 	arch = x86_64
 	license = unknown
@@ -10,7 +10,7 @@ pkgbase = plex-htpc
 	depends = alsa-lib
 	depends = dbus
 	depends = expat
-	depends = ffmpeg6.1
+	depends = ffmpeg
 	depends = fontconfig
 	depends = freetype2
 	depends = gcc-libs
