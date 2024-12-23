@@ -3,7 +3,7 @@
 _name=sklearn-compat
 pkgname=python-${_name,,}
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Ease support for compatible scikit-learn estimators across versions'
 arch=('any')
 url="https://github.com/sklearn-compat/sklearn-compat"
