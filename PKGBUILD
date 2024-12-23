@@ -21,13 +21,16 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${url}/releases/download/v
 source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-386.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-amd64.zip")
 source=("${pkgname%-bin}.sh")
-sha256sums=('39113dd1722b88e9db684ddcc798c5ec4387c03f6d38966838250586db7cf416')
+sha256sums=('f4d78002b295e10a401fbfcc6ff613237da6a804894889ab8c1b3ffc7b0f0e7d')
 sha256sums_aarch64=('ec8729093a82092b35a68a022d548f76d40a61e6ab490f1bef9842abb8134ef7')
 sha256sums_armv7h=('ba8ac3a31c61c6fb81a88e7d90167427af5d5850fb551e8422ec182c5cabb70c')
 sha256sums_i686=('f5cdf2195dc07f20cb09f716d8f916c04ee12512c2a7fe9a81d3300813a5b472')
 sha256sums_x86_64=('08415a7ab7df6d222d37c3599047a12d96abafeaa60167c4eef74fd59fceeea9')
 build() {
-    sed -i "s/@appname@/${pkgname}/g" "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@appname@/${pkgname}/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+    " "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
