@@ -10,7 +10,8 @@ pkgdesc='Application launcher for Linux'
 arch=('any')
 url="http://ulauncher.io"
 license=('GPL3')
-depends=('gtk3' 'webkit2gtk-4.1' 'python-cairo' 'python-gobject' 'python-levenshtein')
+# Note: python-xlib is not used directly, but needed by EWMH, which is vendored
+depends=('gtk3' 'webkit2gtk-4.1' 'python-cairo' 'python-gobject' 'python-xlib' 'python-levenshtein')
 makedepends=('git' 'yarn' 'python-setuptools')
 checkdepends=('desktop-file-utils')
 optdepends=('gtk-layer-shell: wayland layer shell integration' 'xapp: tray icon library - single click support' 'libappindicator-gtk3: tray icon library')
