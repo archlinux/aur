@@ -1,7 +1,7 @@
 # Patched package:
 # Maintainer: Saren Arterius <saren@wtako.net>
 # Co-maintainer: Térence Clastres <t.clastres@gmail.com>
-# Co-maintainer: Mingi Sung <me@saltyming.pe.kr>
+# Co-maintainer: Mingi Sung <sungmg@saltyming.net>
 
 # Official package:
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
@@ -19,7 +19,7 @@ _merge_requests_to_use=()
 
 _pkgname=gnome-shell
 pkgname=gnome-shell-performance-unstable
-pkgver=47.1.r1.gf0fe25db6
+pkgver=47.2
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
@@ -60,14 +60,14 @@ makedepends=(
   python-docutils
   sassc
 )
-_commit=f0fe25db663ece8f9beb99b31b6524e6332dec93  # tags/47.1^1
+_commit=dadd58f630eeea41d645ee225a63f719390829dc  # tags/47.2^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=5f9768a2eac29c1ed56f1fbb449a77a3523683b6"
 )
-sha256sums=('6d40a98a9dee39920922e5b821d92ff832176470828e4ff22b5e6ce1355d2982'
+sha256sums=('5cebee99910802e4fc2f4519fbd0b52bc19a2afcad9fbb28562281af50190693'
             '587319b45ff7d989635aed0c3bd9ef834d6e53ae46788cb6ba083d42d7e63855')
-b2sums=('279b0b007afca919db0bd38a5b751eea3a9bdc4596592b0514c57f5d6bf30d1bd736effd2c2e1e1b699ac0f9fa7b9199c92dbe844a1bec7750aef1b9df24ca1b'
+b2sums=('9067ee2207b06c0932e90c1aaaf6ac09ab7f3858c8401883d9d6925e5cf7996355bd259535e036b0d1fe10118e913bebbbf047f531b2693d581de700f45712f6'
         'e31ae379039dfc345e8032f7b9803a59ded075fc52457ba1553276d3031e7025d9304a7f2167a01be2d54c5e121bae00a2824a9c5ccbf926865d0b24520bb053')
 
 pkgver() {
