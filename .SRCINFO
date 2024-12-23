@@ -1,7 +1,7 @@
 pkgbase = kt5-bin
 	pkgdesc = Программа для управления калибраторами температуры серии КТ-5 производства ООО ИзТех
 	pkgver = 2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.iztech.ru
 	arch = x86_64
 	license = custom
@@ -14,6 +14,6 @@ pkgbase = kt5-bin
 	options = strip
 	options = !debug
 	source = https://www.iztech.ru/content/files/app/kt5-bin-linux-x86_64.tar.gz
-	md5sums = c9b67f1e7a1e1d29872d71c47baebb84
+	md5sums = 1c1a725dd49eda8115287d84aebbd6b8
 
 pkgname = kt5-bin
