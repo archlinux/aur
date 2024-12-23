@@ -7,14 +7,13 @@
 _pkgname="peazip"
 pkgname="$_pkgname"
 pkgver=10.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
 arch=('i686' 'x86_64')
 
 makedepends=(
-  'git'
   'lazarus'
   'xmlstarlet'
 )
@@ -34,8 +33,9 @@ esac
 
 options=('!debug')
 
-_pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
+_pkgsrc="PeaZip-$_commit"
+_pkgext="tar.gz"
+source=("$_pkgname-$pkgver-${_commit::7}.$_pkgext"::"https://github.com/peazip/PeaZip/archive/$_commit.$_pkgext")
 sha256sums=('SKIP')
 
 _packets=(
@@ -50,10 +50,6 @@ prepare() {
 
   # use system binaries
   sed -E -e 's&(\bHSYSBIN\b\s*)=\s*[0-9];&\1= 2;&' \
-    -i "$_pkgsrc/peazip-sources/dev/peach.pas"
-
-  # set p7zip version to 17.05
-  sed -E -e '/IFDEF LINUX/s/syntaxlevel7z:=[0-9]+/syntaxlevel7z:=3/' \
     -i "$_pkgsrc/peazip-sources/dev/peach.pas"
 
   # set paths, needs trailing slash
@@ -87,8 +83,8 @@ build() {
 
 package() {
   depends+=(
+    '7zip'
     'brotli'
-    'p7zip'
     'zstd'
   )
   depends+=('hicolor-icon-theme')
