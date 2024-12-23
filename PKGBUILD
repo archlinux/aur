@@ -5,7 +5,7 @@
 # Contributor: Ewhal <ewhal@pantsu.cat>
 
 pkgname=session-desktop-bin
-pkgver=1.14.2
+pkgver=1.14.3
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
@@ -17,7 +17,7 @@ provides=(session-desktop)
 conflicts=(session-desktop)
 options=(!strip)
 source=(https://github.com/oxen-io/session-desktop/releases/download/v$pkgver/session-desktop-linux-amd64-$pkgver.deb)
-sha256sums=('68cfecb5d73f3ee648b6eb070c3e38d0de3a7c2175a3d9a8a8d85de7112a0956')
+sha256sums=('a7a6a9ec9f81b92888747b3abe2628000ec90910208dc50e481fde7875752dab')
 
 package() {
     tar xf $srcdir/data.tar.xz -C $pkgdir
