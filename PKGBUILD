@@ -4,9 +4,9 @@
 pkgname='python-jh2-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=5.0.3.r0.g66b5a7d
-pkgrel=4
-pkgdesc='HTTP/2 State-Machine based protocol implementation (built from latest commit)'
+pkgver=5.0.4.r0.g6f3b1bf
+pkgrel=1
+pkgdesc='HTTP/2 State-Machine based protocol implementation (latest git commit)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/h2'
 license=('MIT')  # SPDX-License-Identifier: MIT
