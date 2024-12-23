@@ -3,7 +3,7 @@
 _py_name=exif
 pkgname=python-$_py_name
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Read and modify image EXIF metadata'
 arch=(any)
 url="https://gitlab.com/TNThieding/$_py_name"
