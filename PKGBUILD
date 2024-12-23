@@ -2,11 +2,10 @@
 pkgname=deepin-wine-pandaocr.pro
 _pkgname=com.pandaocr.pro.spark
 _officalname=PandaOCR.Pro
-pkgver=5.56
+pkgver=5.57
 sparkver=1.0.0
 pkgrel=1
-epoch=
-pkgdesc="多功能多引擎OCR文字识别、翻译、朗读、语音合成、日漫游戏机翻汉化、验证码识别、图床上传、以图搜图、扫码工具"
+pkgdesc="Multi-functional multi-engine OCR text recognition, translation, reading, voice synthesis, Japanese comic game machine translation to Chinese, captcha recognition, image hosting upload, reverse image search, QR code scanning tool.Use deepin-wine."
 arch=('x86_64')
 url="https://github.com/miaomiaosoft/PandaOCR.Pro"
 license=('LicenseRef-custom')
@@ -30,14 +29,14 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('f21c8dd02ee531e32a6f8b4b9cf8c49a21d6c85d422063673ff172e07deeb98f'
-            'f65f149b9e4b859ce89ab086684d3c638ec076c581a785b828ec1718a59665a5'
-            'a9088725fd1e79af9d4eb05e6d7f651cea2014ad6bb56e254279601a497c9127'
-            '983099e34823f872d36297b1993b0f426a739eb2c12952c179b38f6418ca342f')
-build() {
+            '12a9cc6ace431deb2ac6d8a08fb9db9cc4387fa2c3348a3d904e06af8e7e273f'
+            '338dae7030b4250f1541074911a7040bee7b5f616fa9b3432558a7fdb3ddae29'
+            'b467dc84c7e1c481f354394cbb7f057473dce8aac64a8be0fcf46fab3ea4ba03')
+prepare() {
     sed -e "
-        s/@appname@/${pkgname}/
-        s/@appver@/${pkgver}/
-        s/@bottlename@/${_officalname}/
+        s/@appname@/${pkgname}/g
+        s/@appver@/${pkgver}/g
+        s/@bottlename@/${_officalname}/g
     " -i "${srcdir}/${pkgname}.sh"
     bsdtar -xf "${srcdir}/data."*
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
@@ -54,14 +53,14 @@ build() {
     7z a -t7z -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/*"
     rm -rf "${srcdir}/opt/apps/${pkgname}/info"
     sed -e " 
-        s/\"\/opt\/apps\/${_pkgname}\/files\/run.sh\"/${pkgname}/
-        s/\/opt\/apps\/${_pkgname}\/entries\/icons\/hicolor\/scalable\/apps\/${_pkgname}.png/${pkgname}/
-        s/GenericName=${_pkgname}/GenericName=${pkgname}/
+        s/\"\/opt\/apps\/${_pkgname}\/files\/run.sh\"/${pkgname}/g
+        s/\/opt\/apps\/${_pkgname}\/entries\/icons\/hicolor\/scalable\/apps\/${_pkgname}.png/${pkgname}/g
+        s/GenericName=${_pkgname}/GenericName=${pkgname}/g
     " -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    cp -r "${srcdir}/opt" "${pkgdir}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt" "${pkgdir}"
     md5sum "${pkgdir}/opt/apps/${pkgname}/files/files.7z" | awk '{ print $1 }' > "${pkgdir}/opt/apps/${pkgname}/files/files.md5sum"
     install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/scalable/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
