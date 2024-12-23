@@ -3,7 +3,7 @@
 pkgname=python-dvc-data
 _pkgname=${pkgname#python-}
 pkgver=3.16.7
-pkgrel=1
+pkgrel=2
 pkgdesc='DVC’s data management subsystem'
 arch=(any)
 license=(Apache-2.0)
