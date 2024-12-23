@@ -1,7 +1,7 @@
 pkgbase = python-calcpy-git
-	pkgdesc = Terminal calculator and advanced math solver using Python, IPython and SymPy (built from latest commit)
-	pkgver = 0.1.r242.gd57a728
-	pkgrel = 2
+	pkgdesc = Terminal calculator and advanced math solver using Python, IPython and SymPy (latest git commit)
+	pkgver = 0.1.r265.gb3c1dc0
+	pkgrel = 1
 	url = https://github.com/idanpa/calcpy
 	arch = any
 	license = MIT

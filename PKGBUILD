@@ -4,9 +4,9 @@
 pkgname='python-calcpy-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.1.r242.gd57a728
-pkgrel=2
-pkgdesc='Terminal calculator and advanced math solver using Python, IPython and SymPy (built from latest commit)'
+pkgver=0.1.r265.gb3c1dc0
+pkgrel=1
+pkgdesc='Terminal calculator and advanced math solver using Python, IPython and SymPy (latest git commit)'
 arch=('any')
 url="https://github.com/idanpa/$_srcname"
 license=('MIT')  # SPDX-License-Identifier: MIT
