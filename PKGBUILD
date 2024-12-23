@@ -7,29 +7,37 @@
 # Contributor: Jan Oliver Oelerich <janoliver[at]oelerich[dot]org>
 pkgname=ovito
 pkgver=3.11.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Visualization Tool"
 url="https://www.${pkgname}.org"
 arch=(x86_64 aarch64)
 license=(GPL-3.0-or-later)
 depends=(netcdf-openmpi ffmpeg qt6-base)
-makedepends=(cmake boost qscintilla-qt6 qt6-svg libxslt python-sphinx_rtd_theme)
+makedepends=(cmake boost qscintilla-qt6 qt6-svg libxslt python-sphinx_rtd_theme git)
 conflicts=($pkgname-git)
-source=(https://gitlab.com/stuko/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2
+source=(${pkgname}-${pkgver}::git+https://gitlab.com/stuko/${pkgname}.git#tag=v${pkgver}
+  gitlab.com-tests-files::git+https://gitlab.com/${pkgname}-org/${pkgname}_test_files.git
+  github.com-src-3rdparty-zstd::git+https://github.com/facebook/zstd.git
   ${url}/wp-content/uploads/logo_rgb-768x737.png
   ${pkgname}.desktop)
-sha512sums=('9d7ba0b436ff92d7217a77a54db9db18ff626e2b39977c0315661fe7deb5f200c316479ef886e575a975ce6fb72d3ba0f80e36a932b9f27d1ce734bd8f46083f'
+sha512sums=('fb00aa050176bfea0c6e2863b7906ef0ede0cee2c5c9abc9e9f8c5d701e5b581853f68e04daae86b17d14aa50aa2ca919d3994a4644180d799a326ef99c4aa49'
+  'SKIP'
+  'SKIP'
   '1afe91e9634a6574ba58535cb9b636b63daa02d9157f50d9c5c959c9da151e9635ca73d0616fd8ccac2e7742f2289a6eba05e62b206baee4f738c53526ec4bb8'
   'fdf21d1821855b1ea93c598ef062669c29c15975a288f72240c183b8f10e8b6d38f96b15fdf02949d66bd94f76df0daed87e9c4d2201db61d4c2750be574e8cd')
 
 prepare() {
+  cd ${pkgname}-${pkgver}
   # Use zstd as share library
-  sed -i 's/libzstd_static/libzstd/' ${pkgname}-v${pkgver}/src/ovito/core/CMakeLists.txt
-  sed -i '/TARGET_INCLUDE_DIRECTORIES(Core PUBLIC/,+7 s/^/#/' ${pkgname}-v${pkgver}/src/ovito/core/CMakeLists.txt
+  sed -i 's/libzstd_static/libzstd/' src/ovito/core/CMakeLists.txt
+  git submodule init
+  git config submodule.tests/files.url "${srcdir}/gitlab.com-tests-files"
+  git config submodule.tests/files.url "${srcdir}/github.com-src-3rdparty-zstd"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
-  cmake -S ${pkgname}-v${pkgver} \
+  cmake -S ${pkgname}-${pkgver} \
     -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -50,5 +58,5 @@ package() {
   install -Dm644 "$srcdir/ovito.desktop" -t \
     "$pkgdir/usr/share/applications/"
 
-  install -Dm644 ${pkgname}-v${pkgver}/LICENSE.GPL.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ${pkgname}-${pkgver}/LICENSE.GPL.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

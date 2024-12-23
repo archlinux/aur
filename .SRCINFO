@@ -1,7 +1,7 @@
 pkgbase = ovito
 	pkgdesc = Open Visualization Tool
 	pkgver = 3.11.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.ovito.org
 	arch = x86_64
 	arch = aarch64
@@ -12,14 +12,19 @@ pkgbase = ovito
 	makedepends = qt6-svg
 	makedepends = libxslt
 	makedepends = python-sphinx_rtd_theme
+	makedepends = git
 	depends = netcdf-openmpi
 	depends = ffmpeg
 	depends = qt6-base
 	conflicts = ovito-git
-	source = https://gitlab.com/stuko/ovito/-/archive/v3.11.2/ovito-v3.11.2.tar.bz2
+	source = ovito-3.11.2::git+https://gitlab.com/stuko/ovito.git#tag=v3.11.2
+	source = gitlab.com-tests-files::git+https://gitlab.com/ovito-org/ovito_test_files.git
+	source = github.com-src-3rdparty-zstd::git+https://github.com/facebook/zstd.git
 	source = https://www.ovito.org/wp-content/uploads/logo_rgb-768x737.png
 	source = ovito.desktop
-	sha512sums = 9d7ba0b436ff92d7217a77a54db9db18ff626e2b39977c0315661fe7deb5f200c316479ef886e575a975ce6fb72d3ba0f80e36a932b9f27d1ce734bd8f46083f
+	sha512sums = fb00aa050176bfea0c6e2863b7906ef0ede0cee2c5c9abc9e9f8c5d701e5b581853f68e04daae86b17d14aa50aa2ca919d3994a4644180d799a326ef99c4aa49
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = 1afe91e9634a6574ba58535cb9b636b63daa02d9157f50d9c5c959c9da151e9635ca73d0616fd8ccac2e7742f2289a6eba05e62b206baee4f738c53526ec4bb8
 	sha512sums = fdf21d1821855b1ea93c598ef062669c29c15975a288f72240c183b8f10e8b6d38f96b15fdf02949d66bd94f76df0daed87e9c4d2201db61d4c2750be574e8cd
 
