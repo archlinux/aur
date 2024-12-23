@@ -6,7 +6,7 @@
 
 pkgname=python-webruntime
 pkgver=0.5.8
-pkgrel=4
+pkgrel=5
 pkgdesc='Launch HTML5 apps in the browser or a desktop-like runtime.'
 arch=('any')
 url='https://github.com/flexxui/webruntime'
