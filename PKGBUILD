@@ -4,7 +4,7 @@
 pkgname=python-markitdown-git
 _pkgname=markitdown
 pkgver=r146+gcb66b35f1
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility tool for converting various files to Markdown (git)"
 arch=(any)
 url="https://github.com/microsoft/markitdown"
