@@ -6,7 +6,7 @@ pkgname='python-fastfeedparser-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 pkgver=r47.3196672
-pkgrel=2
+pkgrel=3
 pkgdesc='High performance RSS, Atom and RDF parser in Python (latest commit)'
 arch=('any')
 url='https://github.com/kagisearch/fastfeedparser'
@@ -34,7 +34,7 @@ pkgver() {
 
   ( set -o pipefail
     git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
 
