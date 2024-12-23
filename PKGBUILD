@@ -1,7 +1,7 @@
 # Maintainer: Andrej Radović <r.andrej@gmail.com>
 
 pkgname=litecli
-pkgver=1.12.4
+pkgver=1.13.2
 pkgrel=1
 pkgdesc="A command-line client for SQLite databases that has auto-completion ""\
 and syntax highlighting."
