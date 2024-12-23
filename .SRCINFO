@@ -1,0 +1,18 @@
+pkgbase = python-standard-chunk
+	pkgdesc = Standard library chunk redistribution.
+	pkgver = 3.13.0
+	pkgrel = 1
+	url = https://github.com/youknowone/python-deadlib/chunk
+	arch = any
+	license = PSF-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-chunk
+	source = python-standard-chunk-3.13.0.tar.gz::https://github.com/youknowone/python-deadlib/releases/download/v3.13.0/standard_chunk-3.13.0.tar.gz
+	sha512sums = ddd837eb77c8a81fed7dbb28c790031269cbafe80428a6ca4b789cc20ef6f2537c6cb1bd333e94357377245e7bc2c680a5ceadc1f1dc73304057eace332ac188
+
+pkgname = python-standard-chunk
