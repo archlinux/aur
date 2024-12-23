@@ -1,0 +1,16 @@
+pkgbase = perl-method-delegation
+	pkgdesc = Easily delegate methods to another object
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://metacpan.org/release/Method-Delegation
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-most>=0.35
+	depends = perl-sub-install>=0.928
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/O/OV/OVID/Method-Delegation-0.03.tar.gz
+	md5sums = 6108da3e4090620d4416d836994ed5c0
+	sha512sums = c3e54f4a880de4c7d176c7f63fe8003b869ef9418426f5433802f0c717db0cffbab17bb41e2c38984aeff3ee049867b671f47369e1acff5ef680e6716cb84fee
+
+pkgname = perl-method-delegation
