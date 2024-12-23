@@ -3,7 +3,7 @@
 _pkgname=limits
 pkgname=python-limits
 pkgver=3.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="utilities to implement rate limiting"
 url="https://github.com/alisaifee/limits/"
 makedepends=(python-build python-installer python-wheel)
