@@ -1,0 +1,26 @@
+diff --git a/pubs/plugs/alias/alias.py b/pubs/plugs/alias/alias.py
+index 5bee03d..f9e26fd 100644
+--- a/pubs/plugs/alias/alias.py
++++ b/pubs/plugs/alias/alias.py
+@@ -1,7 +1,7 @@
+ import shlex
+ import subprocess
+ import argparse
+-from pipes import quote as shell_quote
++from shlex import quote as shell_quote
+ 
+ from ...plugins import PapersPlugin
+ from ...pubs_cmd import execute
+diff --git a/pubs/plugs/git/git.py b/pubs/plugs/git/git.py
+index 3bff3d6..debb98a 100644
+--- a/pubs/plugs/git/git.py
++++ b/pubs/plugs/git/git.py
+@@ -2,7 +2,7 @@ import os
+ import sys
+ import argparse
+ from subprocess import Popen, PIPE, STDOUT
+-from pipes import quote as shell_quote
++from shlex import quote as shell_quote
+ 
+ from ... import uis
+ from ...plugins import PapersPlugin

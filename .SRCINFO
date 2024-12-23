@@ -1,12 +1,15 @@
 pkgbase = pubs
 	pkgdesc = Your bibliography on the command line
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pubs/pubs
 	arch = any
 	license = LGPL-3.0
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-configobj
 	depends = python-bibtexparser
@@ -17,6 +20,8 @@ pkgbase = pubs
 	depends = python-requests
 	provides = pubs
 	source = https://github.com/pubs/pubs/archive/v0.9.0.tar.gz
+	source = replace-pipes-with-shlex.patch
 	sha256sums = 754a6033510f145702eeab4e99d71ed024f9e73245e2a71821692a9a32075b2b
+	sha256sums = 09ab0e2b9ef49591e52ec51c3207f1c5dc92c7d5f66823b4f09c07f5ff2c8924
 
 pkgname = pubs
