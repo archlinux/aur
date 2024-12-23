@@ -2,7 +2,7 @@
 pkgname=python-pytest-recording
 _pkgname=pytest_recording
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A pytest plugin that allows you recording of network interactions via VCR.py"
 arch=('any')
 url="https://pypi.org/project/${_pkgname}"
