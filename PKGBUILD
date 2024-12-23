@@ -2,7 +2,7 @@
 
 pkgname=ufodiff
 pkgver=1.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc='UFO source file diff application'
 arch=(any)
 url="https://github.com/source-foundry/$pkgname"
