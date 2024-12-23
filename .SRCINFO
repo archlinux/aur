@@ -1,7 +1,7 @@
 pkgbase = python-numpy1
 	pkgdesc = Scientific tools for Python
 	pkgver = 1.26.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.numpy.org/
 	arch = x86_64
 	license = LicenseRef-custom
@@ -21,6 +21,10 @@ pkgbase = python-numpy1
 	provides = python-numpy=1.26.4
 	conflicts = python-numpy
 	source = https://github.com/numpy/numpy/releases/download/v1.26.4/numpy-1.26.4.tar.gz
+	source = github-pr-26364.patch
+	source = tests-skipif-python-3.13.patch
 	sha512sums = f7121ab4099fa0686f9c095d456baa4a5869d651d7b7a06385f885f329cf08f11024b5df5e7b4ee705970062a8102ec4f709512eabbfd5c9fccce4ef83b9c208
+	sha512sums = ee5b380c3530b7a466433c899bff084ff27c8eb5c18aee6638a069867ffc8d8fe4b4c3ccb98800284867f975edb9755c2fd4b21ffe723956fc0117957d52ef7b
+	sha512sums = a5d850792fc26540735a44df6defffa814b2163a59420a72746e3ca6e9588cdd837bf4f7e4a37cbd13eb3d502808e16f5e61956066051ce0175dad1948ee2999
 
 pkgname = python-numpy1
