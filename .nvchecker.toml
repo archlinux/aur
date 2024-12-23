@@ -1,0 +1,4 @@
+[soapui]
+source="github-graphql"
+github="SmartBear/soapui"
+use_max_tag=true
