@@ -12,9 +12,9 @@
 
 pkgname=nextdns-unprivileged
 origname=nextdns
-pkgver=1.44.0
-pkgrel=2
-pkgdesc='The NextDNS DoH client running as unprivileged user.'
+pkgver=1.44.2
+pkgrel=1
+pkgdesc='NextDNS DNS-over-HTTPS client running as unprivileged user'
 arch=('x86_64')
 url='https://github.com/nextdns/nextdns'
 license=('MIT')
@@ -49,9 +49,11 @@ package() {
     install -vDm 755 ${origname} "${pkgdir}/usr/bin/${origname}"
     install -vDm 644 "$srcdir/${origname}.service"  "${pkgdir}/usr/lib/systemd/system/${origname}.service"
     install -vDm 644 "$srcdir/${origname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${origname}.conf"
+
+    echo -e "\nIt is not recommended to run the upstream 'nextdns install' script,\ninstead enable the service with 'systemctl enable --now nextdns'\n"
 }
 
-sha256sums=('1b091d5c2ab968c498084db071daf632c89d9222679d224597dac28fc12a3674'
+sha256sums=('d66a0a66c740c365f59bb3b398ba1103d41f34739c4f737a84a898668ce7b73e'
             '44b78be27eb618e2d93b4b480c9aef38d413bde3f8bfa6af20d651f0bf8c8b62'
             '96dcfb0ccbbf30a140ff44101b90160faadca97f9aed4b1d73e2e2db52655fec'
             'df831b86096e2f06fd4b9f603a4141daef986d709fcdebb97f39493535aab7f6')
