@@ -3,8 +3,8 @@
 # Maintainer: Magi3r <magier dot mit dot f3erball at gmail dot com>
 
 pkgname=python-wordllama
-pkgver=0.3.6.post1
-pkgrel=2
+pkgver=0.3.7
+pkgrel=1
 pkgdesc="WordLlama NLP Utility"
 arch=(any)
 url="https://github.com/dleemiller/WordLlama"
