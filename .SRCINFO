@@ -1,6 +1,6 @@
 pkgbase = powder-toy-beta
 	pkgdesc = Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat! - Beta branch
-	pkgver = 99.0.375
+	pkgver = 99.0.376
 	pkgrel = 1
 	url = https://powdertoy.co.uk/
 	install = powder-toy-beta.install
@@ -21,7 +21,7 @@ pkgbase = powder-toy-beta
 	depends = hicolor-icon-theme
 	provides = powder-toy
 	conflicts = powder-toy
-	source = powder-toy-beta-99.0.375.tar.gz::https://github.com/The-Powder-Toy/The-Powder-Toy/archive/refs/tags/v99.0.375b.tar.gz
-	sha256sums = fd99ce420ff228a537d1f4c573dbbde1ac39cc770c98ac199face347b4128779
+	source = powder-toy-beta-99.0.376.tar.gz::https://github.com/The-Powder-Toy/The-Powder-Toy/archive/refs/tags/v99.0.376b.tar.gz
+	sha256sums = c7d8ec36f5319e09929e78ee0c359aa3c84007439ea920c26c17b23e3a74496a
 
 pkgname = powder-toy-beta
