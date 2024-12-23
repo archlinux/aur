@@ -1,7 +1,7 @@
 pkgbase = python-grandalf
 	pkgdesc = graph and drawing algorithms framework
 	pkgver = 0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bdcht/grandalf
 	arch = any
 	license = MIT
