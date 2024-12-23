@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=python-tokentrim
 pkgver=0.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Token trimming utility for handling JWT tokens in Python"
 arch=('any')
 url="https://pypi.org/project/tokentrim/"

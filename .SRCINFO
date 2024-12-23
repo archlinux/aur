@@ -1,7 +1,7 @@
 pkgbase = python-tokentrim
 	pkgdesc = Token trimming utility for handling JWT tokens in Python
 	pkgver = 0.1.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/tokentrim/
 	arch = any
 	license = MIT
