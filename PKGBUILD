@@ -1,40 +1,46 @@
-pkgname=('simple-mtpfs-git')
+# Maintainer:
+
+_pkgname="simple-mtpfs"
+pkgname="$_pkgname-git"
 _srcname='simple-mtpfs'
-pkgver='r1'
-pkgrel='1'
-pkgdesc='Simple MTP fuse filesystem driver'
-arch=('i686' 'x86_64')
-url="https://github.com/phatina/${_srcname}"
-license=('GPL2')
+pkgver=0.4.0.r2.g5dfd25c
+pkgrel=1
+pkgdesc="A FUSE filesystem that supports reading/writing from MTP devices"
+url="https://github.com/phatina/simple-mtpfs"
+license=('GPL-2.0-or-later')
+arch=('x86_64' 'i686')
 
-depends=('libmtp' 'fuse' 'gcc-libs')
-makedepends=('git')
-provides=("${pkgname[0]%-git}")
-conflicts=("${pkgname[0]%-git}")
+depends=(
+  'libmtp'
+  'fuse'
+  #'gcc-libs'
+)
+makedepends=(
+  'autoconf-archive'
+  'git'
+)
 
-source=("${_srcname}::git+${url}.git")
-sha512sums=('SKIP')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_srcname}"
-
-    printf 'r%s.%s.%s\n' \
-        "$( git rev-list --count 'HEAD' )" \
-        "$( git log --max-count='1' --pretty='format:%ct' )" \
-        "$( git rev-parse --short 'HEAD' )"
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${_srcname}"
-
-    autoreconf --install --force --warnings='all'
-    ./configure --prefix='/usr'
-
-    make
+  cd "$_pkgsrc"
+  autoreconf --install --force --warnings='all'
+  ./configure --prefix='/usr'
+  make
 }
 
 package() {
-    cd "${srcdir}/${_srcname}"
-
-    make DESTDIR="${pkgdir}" install
+  cd "$_pkgsrc"
+  make DESTDIR="${pkgdir}" install
 }

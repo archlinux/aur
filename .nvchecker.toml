@@ -1,0 +1,4 @@
+[simple-mtpfs-git]
+source = "git"
+git = "https://github.com/phatina/simple-mtpfs.git"
+prefix = "v"

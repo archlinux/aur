@@ -1,19 +1,18 @@
 pkgbase = simple-mtpfs-git
-	pkgdesc = Simple MTP fuse filesystem driver
-	pkgver = r1
+	pkgdesc = A FUSE filesystem that supports reading/writing from MTP devices
+	pkgver = 0.4.0.r2.g5dfd25c
 	pkgrel = 1
 	url = https://github.com/phatina/simple-mtpfs
-	arch = i686
 	arch = x86_64
-	license = GPL2
+	arch = i686
+	license = GPL-2.0-or-later
+	makedepends = autoconf-archive
 	makedepends = git
 	depends = libmtp
 	depends = fuse
-	depends = gcc-libs
 	provides = simple-mtpfs
 	conflicts = simple-mtpfs
 	source = simple-mtpfs::git+https://github.com/phatina/simple-mtpfs.git
-	sha512sums = SKIP
+	sha256sums = SKIP
 
 pkgname = simple-mtpfs-git
-
