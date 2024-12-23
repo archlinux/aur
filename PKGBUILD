@@ -2,7 +2,7 @@
 
 pkgname=ofxstatement-paypal
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A plugin for ofxstatement to convert CSV-formatted Paypal exports to OFX format.'
 arch=('any')
 url="https://github.com/EtsBiz4Africa/ofxstatement-paypal"
