@@ -5,7 +5,7 @@
 pkgname=python-coqui-trainer
 _pkgname=coqui-ai-Trainer
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='General purpose model trainer for PyTorch that is more flexible than it should be, by 🐸Coqui. - idiap fork'
 arch=(any)
 url="https://github.com/idiap/coqui-ai-Trainer"

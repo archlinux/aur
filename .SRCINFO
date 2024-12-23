@@ -1,7 +1,7 @@
 pkgbase = python-coqui-trainer
 	pkgdesc = General purpose model trainer for PyTorch that is more flexible than it should be, by 🐸Coqui. - idiap fork
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/idiap/coqui-ai-Trainer
 	arch = any
 	license = Apache-2.0
