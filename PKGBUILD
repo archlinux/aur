@@ -3,7 +3,7 @@
 #
 pkgname=cycle-git
 pkgver=0.3.3+r29+gb9671a71d
-pkgrel=1
+pkgrel=2
 pkgdesc="Cycle is a calendar program for women (git)"
 arch=('any')
 url="https://github.com/metlov/cycle"
