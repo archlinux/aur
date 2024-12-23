@@ -1,29 +1,31 @@
+# Maintainer: mintsuki <mintsuki@protonmail.com>
+
 pkgname=xfwm4-gaps
-pkgver=4.18.0
-pkgrel=3
+pkgver=4.20.0
+pkgrel=1
 pkgdesc="Xfce's window manager - now with extra gaps"
 arch=('x86_64')
 url="https://docs.xfce.org/xfce/xfwm4/start"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 groups=('xfce4')
 depends=('libxfce4ui' 'xfconf' 'libwnck3' 'libepoxy' 'libxpresent'
          'hicolor-icon-theme')
-makedepends=('intltool')
+makedepends=('git' 'intltool' 'xfce4-dev-tools')
 provides=('xfwm4')
 conflicts=('xfwm4')
-source=(https://archive.xfce.org/src/xfce/xfwm4/${pkgver%.*}/xfwm4-$pkgver.tar.bz2
+source=("git+https://gitlab.xfce.org/xfce/xfwm4.git#tag=xfwm4-$pkgver"
         gaps.patch)
-sha256sums=('92cd1b889bb25cb4bc06c1c6736c238d96e79c1e706b9f77fad0a89d6e5fc13f'
+sha256sums=('68691593f06659f1ba1a0363be161b2cd50a84016612394c909bce1485a75cff'
             SKIP)
 
 prepare() {
-  cd "$srcdir/xfwm4-$pkgver"
+  cd xfwm4
   patch -Np1 -i ../gaps.patch
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd "$srcdir/xfwm4-$pkgver"
-
+  cd xfwm4
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -32,12 +34,13 @@ build() {
     --enable-randr \
     --enable-compositor \
     --enable-xsync \
-    --disable-debug
+    --disable-debug \
+    --enable-maintainer-mode
   make
 }
 
 package() {
-  cd "$srcdir/xfwm4-$pkgver"
+  cd xfwm4
   make DESTDIR="$pkgdir" install
 }
 
