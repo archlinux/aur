@@ -3,7 +3,7 @@
 pkgname=python-usfm2osis
 _pypiname="${pkgname#python-}"
 pkgver=0.6.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Tools for converting Bibles from USFM to OSIS XML'
 arch=(any)
 url="https://github.com/chrislit/$_pypiname"
