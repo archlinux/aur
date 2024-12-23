@@ -1,0 +1,83 @@
+post_install() {
+    if [ -d /usr/share/shadow-of-the-wyrm ]; then
+        echo -e "\n"
+        echo -e "\033[1;92mCleaning up:\033[0m"
+        if [ -f /usr/share/shadow-of-the-wyrm/scores.dat ]; then
+            mv /usr/share/shadow-of-the-wyrm/scores.dat /var/sotw/scores.dat
+	    echo -e "\033[0;94mscores.dat\033[0m moved to \033[0;94m/var/sotw/scores.dat\033[0m"
+        fi
+        rm -r /usr/share/shadow-of-the-wyrm/
+	echo -e "unused directory \033[0;94m/usr/share/shadow-of-the-wyrm\033[0m removed"
+        echo -e "\033[1;92mCleaning done.\033[0m"
+    fi
+
+    if [ -f /usr/share/sotw/scores.dat ]; then
+        mv /usr/share/sotw/scores.dat /var/sotw/scores.dat
+	echo -e "\033[0;94mscores.dat\033[0m moved to \033[0;94m/var/sotw/scores.dat\033[0m"
+    fi
+
+    logs=`ls -1 /var/sotw/*.log 2>/dev/null | wc -l`
+    if [ $logs != 0 ]; then
+        mv /var/sotw/*.log /var/sotw/log/
+        echo -e "game logs moved to \033[0;94m/var/sotw/log\033[0m"
+    fi
+
+    if [ "$(stat -c '%a' /var/sotw/log)" == "755" ]; then
+        chmod 777 /var/sotw/log
+        echo -e "fixed permissions for \033[0;94m/var/sotw/log\033[0m"
+    fi
+
+    if [ "$(stat -c '%a' /usr/share/sotw)" == "777" ]; then
+        chmod 755 /usr/share/sotw
+        echo -e "fixed permissions for \033[0;94m/usr/share/sotw\033[0m"
+    fi
+
+    echo -e "\n"
+    echo -e "\033[1;92mYou can check the game guide at \033[1;94m/usr/share/sotw/docs/Guide.pdf\033[0m"
+    echo -e "\033[1;92mThe list of commands is available in game by pressing \033[1;91m? \033[1;92mthen \033[1;92me \033[1;92m \nor at \033[1;94m/usr/share/sotw/docs/Commands.pdf\033[0m\n"
+}
+
+post_upgrade() {
+    if [ -d /usr/share/shadow-of-the-wyrm ]; then
+        echo -e "\n"
+        echo -e "\033[1;92mCleaning up:\033[0m"
+        if [ -f /usr/share/shadow-of-the-wyrm/scores.dat ]; then
+            mv /usr/share/shadow-of-the-wyrm/scores.dat /var/sotw/scores.dat
+	    echo -e "\033[0;94mscores.dat\033[0m moved to \033[0;94m/var/sotw/scores.dat\033[0m"
+        fi
+        rm -r /usr/share/shadow-of-the-wyrm/
+	echo -e "unused directory \033[0;94m/usr/share/shadow-of-the-wyrm\033[0m removed"
+        echo -e "\033[1;92mCleaning done.\033[0m"
+    fi
+
+    if [ -f /usr/share/sotw/scores.dat ]; then
+        mv /usr/share/sotw/scores.dat /var/sotw/scores.dat
+	echo -e "\033[0;94mscores.dat\033[0m moved to \033[0;94m/var/sotw/scores.dat\033[0m"
+    fi
+
+    logs=`ls -1 /var/sotw/*.log 2>/dev/null | wc -l`
+    if [ $logs != 0 ]; then
+        mv /var/sotw/*.log /var/sotw/log/
+        echo -e "game logs moved to \033[0;94m/var/sotw/log\033[0m"
+    fi
+
+    if [ "$(stat -c '%a' /var/sotw/log)" == "755" ]; then
+        chmod 777 /var/sotw/log
+        echo -e "fixed permissions for \033[0;94m/var/sotw/log\033[0m"
+    fi
+
+    if [ "$(stat -c '%a' /usr/share/sotw)" == "777" ]; then
+        chmod 755 /usr/share/sotw
+        echo -e "fixed permissions for \033[0;94m/usr/share/sotw\033[0m"
+    fi
+
+    echo -e "\n"
+    echo -e "\033[1;92mYou can check the game guide at \033[1;94m/usr/share/sotw/docs/Guide.pdf\033[0m"
+    echo -e "\033[1;92mThe list of commands is available in game by pressing \033[1;91m? \033[1;92mthen \033[1;91me \033[1;92m \nor at \033[1;94m/usr/share/sotw/docs/Commands.pdf\033[0m\n"
+}
+
+post_remove() {
+    if [ -d /var/sotw ]; then
+        rm -r /var/sotw
+    fi
+}
