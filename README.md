@@ -2,6 +2,9 @@
 This repository contains the `PKGBUILD` file required for building the `osuboot-git` package.
 You can find this package [on the AUR](https://aur.archlinux.org/packages/osuboot-git).
 
+## Original repository
+You can visit the osuboot repository [here](https://git.staropensource.de/JeremyStarTM/osuboot).
+
 ## How to build and install
 [Read this Arch Linux Wiki article.](https://wiki.archlinux.org/title/Arch_User_Repository)
 
