@@ -3,7 +3,7 @@
 
 pkgname=libkiwix-git
 _pkgname="${pkgname%-git}"
-pkgver=13.1.0.r120.g327fec18
+pkgver=14.0.0.r17.g27e7840c
 pkgrel=1
 pkgdesc="Library providing the Kiwix software core"
 license=('GPL3')
@@ -12,7 +12,7 @@ provides=('kiwix-lib')
 conflicts=('kiwix-lib')
 replaces=('kiwix-lib')
 depends=('libzim>=9.0.0' 'pugixml' 'xapian-core' 'aria2' 'libmicrohttpd' 'python' 'curl')
-makedepends=('meson' 'gtest' 'mustache')
+makedepends=('git' 'gtest' 'meson' 'mustache')
 url='https://github.com/kiwix/libkiwix'
 source=("git+${url}.git")
 sha256sums=('SKIP')

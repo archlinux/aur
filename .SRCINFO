@@ -1,12 +1,13 @@
 pkgbase = libkiwix-git
 	pkgdesc = Library providing the Kiwix software core
-	pkgver = 13.1.0.r120.g327fec18
+	pkgver = 14.0.0.r17.g27e7840c
 	pkgrel = 1
 	url = https://github.com/kiwix/libkiwix
 	arch = x86_64
 	license = GPL3
-	makedepends = meson
+	makedepends = git
 	makedepends = gtest
+	makedepends = meson
 	makedepends = mustache
 	depends = libzim>=9.0.0
 	depends = pugixml
