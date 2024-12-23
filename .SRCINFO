@@ -3,14 +3,12 @@ pkgbase = nextdns
 	pkgver = 1.44.3
 	pkgrel = 1
 	url = https://github.com/nextdns/nextdns
+	install = nextdns.install
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	options = !lto
-	options = !buildflags
 	source = https://github.com/nextdns/nextdns/archive/v1.44.3.tar.gz
-	source = nextdns.service
 	sha256sums = ac77f24eb0bded216b57a82ca93960547c07561080df3fc20d1b363e38b7f3af
-	sha256sums = e15d83ec460562c8a81052f37c0e78e18842e95270895524b9853f7aca285eba
 
 pkgname = nextdns
