@@ -4,7 +4,7 @@
 #
 # shellcheck disable=SC2034,SC2154
 pkgname=rustotpony-bin
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=2
 pkgdesc='RusTOTPony — CLI manager of one-time password generators like Google Authenticator'
 url='https://github.com/zebradil/rustotpony'
@@ -13,11 +13,11 @@ license=(MIT)
 install=''
 conflicts=(rustotpony)
 provides=(totp)
-source=(rustotpony-bin-0.5.4::https://github.com/zebradil/rustotpony/releases/download/0.5.4/totp-linux)
+source=(rustotpony-bin-0.5.5::https://github.com/zebradil/rustotpony/releases/download/0.5.5/totp-linux)
 package () 
 { 
     set -eo pipefail;
     _binname=totp;
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${_binname}"
 }
-sha256sums=('af1987b6363d261198c832ce5d57c2f1240a33e821cb7831000c4be3beeb0ae1')
+sha256sums=('82b478d1d9f2fe5250f4f48f6ac5aeb480131303e8b1e0e2a6ebb7cad3811601')
