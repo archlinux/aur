@@ -2,7 +2,7 @@
 
 pkgname=python-turkish-morphology
 pkgver=1.2.5
-pkgrel=4
+pkgrel=5
 pkgdesc='A two-level morphological analyzer for Turkish'
 arch=(any)
 url="https://github.com/google-research/${pkgname#python-}"
