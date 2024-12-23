@@ -2,7 +2,7 @@
 
 _name=scvelo
 pkgname=python-$_name
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Stochastic Single Cell RNA Velocity'
 arch=(any)
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=(python-setuptools python-setuptools-scm python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('eab08941b04e5cf1c72584c0dc6055b63a05b36e2dfa0b77220df9e5f3f0f86b')
+sha256sums=('9383a8712f81f0f2d2f1bddcfc81889ede06a0027de537b5b9af83ed821390c7')
 
 build() {
 	cd "$_name-$pkgver"
