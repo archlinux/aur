@@ -1,7 +1,7 @@
 pkgbase = python-black-macchiato
 	pkgdesc = Small utility built on top of the black Python code formatter to enable formatting of partial files
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wbolster/black-macchiato
 	arch = any
 	license = BSD-3-Clause

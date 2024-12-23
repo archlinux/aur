@@ -3,7 +3,7 @@
 _name=black-macchiato
 pkgname="python-${_name}"
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Small utility built on top of the black Python code formatter to enable formatting of partial files"
 arch=('any')
 url="https://github.com/wbolster/black-macchiato"
