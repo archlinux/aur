@@ -10,7 +10,7 @@ pkgname=(
 )
 pkgbase=pyside2
 pkgver=5.15.16
-pkgrel=1
+pkgrel=2
 pkgdesc="CPython bindings generator for C++ libraries - with Debian backport patches"
 arch=(x86_64)
 url="https://wiki.qt.io/Qt_for_Python"
