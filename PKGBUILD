@@ -4,14 +4,14 @@
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 pkgname=stellarium
 pkgver=24.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Software which renders realistic skies in real time with OpenGL"
 arch=(x86_64)
 url="https://${pkgname}.org"
 license=(GPL-2.0-or-later)
 depends=(nlopt libpng libglvnd freetype2 openssl gpsd calcmysky qt6-charts qt6-serialport
-  qt6-multimedia qt6-positioning qt6-webengine qxlsx-qt6 libindi)
-makedepends=(cmake ninja mesa qt6-tools) # doxygen graphviz
+  qt6-multimedia qt6-positioning qt6-webengine qxlsx-qt6) # libindi
+makedepends=(cmake ninja mesa qt6-tools)                  # doxygen graphviz
 optdepends=('man-db: manual pages for stellarium')
 source=(https://github.com/Stellarium/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz{,.asc})
 validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF') # Alexander Wolf <alex.v.wolf@gmail.com>
@@ -38,7 +38,7 @@ build() {
     -DENABLE_SHOWMYSKY=ON \
     -DENABLE_TESTING=0 \
     -DENABLE_XLSX=1 \
-    -DPREFER_SYSTEM_INDILIB=Yes \
+    -DPREFER_SYSTEM_INDILIB=No \
     -Wno-dev
   cmake --build build --target all
 }

@@ -1,7 +1,7 @@
 pkgbase = stellarium
 	pkgdesc = Software which renders realistic skies in real time with OpenGL
 	pkgver = 24.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stellarium.org
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -22,7 +22,6 @@ pkgbase = stellarium
 	depends = qt6-positioning
 	depends = qt6-webengine
 	depends = qxlsx-qt6
-	depends = libindi
 	optdepends = man-db: manual pages for stellarium
 	source = https://github.com/Stellarium/stellarium/releases/download/v24.4/stellarium-24.4.tar.gz
 	source = https://github.com/Stellarium/stellarium/releases/download/v24.4/stellarium-24.4.tar.gz.asc
