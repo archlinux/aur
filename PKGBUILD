@@ -6,7 +6,7 @@
 pkgname=lammps
 pkgver=20240829
 _pkgver="stable_29Aug2024_update1"
-pkgrel=1
+pkgrel=2
 pkgdesc="Public development project of the LAMMPS MD software package"
 url="https://lammps.org"
 arch=('x86_64')
@@ -45,7 +45,7 @@ build() {
         -D CMAKE_INSTALL_LIBEXECDIR="/usr/lib" \
     ../cmake
 
-    cmake --build . -j $(($(nproc) - 6))
+    cmake --build . -j $(($(nproc) - 1))
 
     cd ../tools/phonon/
     cmake -S . -B build
