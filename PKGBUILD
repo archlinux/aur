@@ -6,14 +6,14 @@ _appimage=acreom-$pkgver.AppImage
 pkgrel=1
 pkgdesc="A powerful knowledge base integrated with time management running on local markdown files"
 arch=('x86_64')
-url="https://github.com/Acreom/app/releases"
+url="https://github.com/Acreom/app"
 license=('custom:Commercial')
 provides=("acreom=${pkgver}")
 conflicts=('acreom')
 options+=('!strip')
 source=("$url/releases/download/v$pkgver/$_appimage")
 noextract=($_appimage)
-sha256sums=('')
+sha256sums=('fafcb498f1d5559a82a0352f97e726f8d8ed1b1f396e2bb4f5788e881c9b788a')
 
 prepare() {
 	chmod +x ${_appimage}
