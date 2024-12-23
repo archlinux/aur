@@ -6,7 +6,7 @@
 
 pkgname=python-dialite
 pkgver=0.5.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Lightweight pure-Python package to show simple dialogs'
 arch=('any')
 url='https://github.com/flexxui/dialite'
