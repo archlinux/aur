@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: MatMoul <matmoul at the google email domain which is .com>
 pkgname=octopi
 pkgver=0.16.2
