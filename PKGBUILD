@@ -5,7 +5,7 @@
 pkgname='python-bsky-bridge-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.0.3.r0.g1573bac
+pkgver=1.0.7.r3.gcc999d8
 pkgrel=1
 pkgdesc='Python module for the Bluesky social network API (latest commit)'
 arch=('any')
