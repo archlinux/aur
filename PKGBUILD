@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cloudpan189-go-bin
 pkgver=0.1.3
-pkgrel=7
+pkgrel=8
 pkgdesc="Cloud 189 Command Line Client (CLI), implemented based on GO.天翼云盘命令行客户端(CLI),基于GO语言实现"
 arch=(
     'aarch64'
@@ -27,7 +27,7 @@ sha256sums_armv7h=('ba8ac3a31c61c6fb81a88e7d90167427af5d5850fb551e8422ec182c5cab
 sha256sums_i686=('f5cdf2195dc07f20cb09f716d8f916c04ee12512c2a7fe9a81d3300813a5b472')
 sha256sums_x86_64=('08415a7ab7df6d222d37c3599047a12d96abafeaa60167c4eef74fd59fceeea9')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -i "s/@appname@/${pkgname}/g" "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
