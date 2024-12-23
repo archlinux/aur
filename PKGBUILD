@@ -3,11 +3,11 @@
 _pyname=blackrenderer
 pkgname=python-$_pyname
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc='a Python-based renderer for OpenType COLR fonts, with multiple backends'
 arch=(any)
 url=https://github.com/BlackFoundryCom/black-renderer
-license=(Apache)
+license=(Apache-2.0)
 _pydeps=(fonttools
          uharfbuzz)
 depends=(python

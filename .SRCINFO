@@ -1,10 +1,10 @@
 pkgbase = python-blackrenderer
 	pkgdesc = a Python-based renderer for OpenType COLR fonts, with multiple backends
 	pkgver = 0.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/BlackFoundryCom/black-renderer
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-cairo
 	checkdepends = python-numpy
 	checkdepends = python-skia
