@@ -1,7 +1,7 @@
 pkgbase = python-vllm-cuda
 	pkgdesc = faster implementation for TTS models, to be used in highly async environment - cpu version
 	pkgver = 0.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
 	license = Apache-2.0

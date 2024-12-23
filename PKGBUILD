@@ -3,7 +3,7 @@
 pkgname=python-vllm-cuda
 _pkgname=vllm
 pkgver=0.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="faster implementation for TTS models, to be used in highly async environment - cpu version"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
