@@ -3,7 +3,7 @@
 _pyname=unique_log_filter
 pkgname=python-${_pyname}
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple tool to filter out duplicate lines from a log file"
 arch=('any')
 url="https://github.com/twizmwazin/unique_log_filter"
