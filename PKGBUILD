@@ -10,8 +10,8 @@ url="https://github.com/jwodder/$_name"
 license=(MIT)
 depends=(python)
 makedepends=(python-setuptools python-build python-installer python-wheel)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('e2e1eb0780910a0148358252aad6394cc674250686c56c39aa379493438370b3')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name/-/_}-$pkgver.tar.gz")
+sha256sums=('87891c465dcbb40b40394a906f01a93214bdd51aa5d25e3a9a59cae62bc298fd')
 
 build() {
 	cd "$_name-$pkgver"
