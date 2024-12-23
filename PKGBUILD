@@ -1,6 +1,6 @@
 pkgname=hath-rust
 pkgdesc="Hentai@Home but rusty"
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/james58899/hath-rust"
@@ -13,7 +13,7 @@ source=(
     "hath-rust.service"
     "hath-rust.hook"
 )
-sha256sums=('438b6f0cecb85fee93c9cbb7889385f10aa94d332f77fdba65c58e6fce8c8fe7'
+sha256sums=('c1075d9e08a78eb67bf328a12976d1e10557902d12cc1f0dfad10cb8b52965a6'
             'cf8f40f31df60aae98d57b3044a0dd01c23d1457cd64b1478be8cae7cf19dbd5'
             '19be3ff60b1eb244b824e085da1101c0c1e8120d865b035139d712b0e864b025')
 
