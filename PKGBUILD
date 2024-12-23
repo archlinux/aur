@@ -6,7 +6,7 @@
 
 pkgname=python-flexx
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Write desktop and web apps in pure Python'
 arch=('any')
 url='https://github.com/flexxui/flexx'
