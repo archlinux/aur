@@ -1,7 +1,7 @@
 # Maintainer: Michael Clayfield <asdf me asdf michaelclayfield asdf com asdf>
 # Contributor: KawaiDesu <mail@zeym.org>
 pkgname=vikunja-api-bin
-pkgver=0.24.5
+pkgver=0.24.6
 pkgrel=1
 pkgdesc="The Todo-app to organize your life"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -22,9 +22,9 @@ sha256sums=('ee744fe59a75a6396a44f74f618feb099d077e9384460f673007fe6da3e5222f'
             '0a666743be3deaa16a436681d18003b11a1660b5fe7868fa25af2de11c7624f7'
             '77ae5d2215017969f561351a543f6777a0f55de20abb80094509188ba89e1f3e'
             'bd8537a6a74fa4c8d4ea789dd54a8684d9d696835762d1e3e36f06c9c9dfab7e')
-sha256sums_x86_64=('e32621c04f0bd45f7ab6f0da4c1508103d4b998930f9cbde4a245bae7d0eeff1')
-sha256sums_armv7h=('bcbcbed55fdb6cbcaaad2f36bee1fec1c17a2bd5a14a0c98181f3d7e659cc11f')
-sha256sums_aarch64=('b0e8e678f18c3edb6fbded896d4f6541c2283fdfe4eb8fdee892c4febd21a5d9')
+sha256sums_x86_64=('0007e0fb9e88021b390d898ad88a44d8981d52fee57ec19e0586703afb28f01a')
+sha256sums_armv7h=('4f5a04cc33eb05d6c68f91e5cf1c801bb1678b4688a743b41f59bc87a22b95e5')
+sha256sums_aarch64=('0595a36e5f1da1fb9842d152e075c08b6a85fea8f958ff4a0983df7f36377ecf')
 
 package(){
   case "${CARCH}" in
