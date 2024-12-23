@@ -1,12 +1,13 @@
 pkgbase = r-dfoptim
-	pkgdesc = Derivative-Free optimization algorithms. These algorithms do not require gradient information. More importantly, they can be used to solve non-smooth optimization problems.
+	pkgdesc = Derivative-Free Optimization
 	pkgver = 2023.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=dfoptim
 	arch = any
 	license = GPL-2.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/dfoptim_2023.1.0.tar.gz
-	sha256sums = c436a6d866c94fc71e71a1f6a39bee9245aea1a062dc8dba3b2b229b88d05c30
+	md5sums = fa0cc871a9d611318ecf2e1f671f10a6
+	b2sums = 3fc51d9fd8e63d71228ed3f708de15a5d3a32ccc9a4c631f219044516cd36f753b1f55df29e1cc878b5577f9534e01b20cd078006256feeced73f0b01e050bfe
 
 pkgname = r-dfoptim
