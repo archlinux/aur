@@ -6,7 +6,7 @@
 _pkgname=sparklines
 pkgname="python-$_pkgname"
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Text-based sparkline command line mimicking those of Edward Tufte'
 arch=('any')
 url="https://github.com/deeplook/$_pkgname"
