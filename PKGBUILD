@@ -4,9 +4,9 @@
 pkgname='python-qh3-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.0.4.r0.g4492d16
+pkgver=1.2.1.r2.gd71b435
 pkgrel=1
-pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (built from latest commit)'
+pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (latest git commit)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/qh3'
 license=('BSD-3-Clause')  # SPDX-License-Identifier: BSD-3-Clause
