@@ -14,23 +14,24 @@ source=("git+${url}.git")
 b2sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "${srcdir}/${pkgname%-git}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "${srcdir}/${pkgname%-git}"
     git submodule update --init --recursive
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "${srcdir}/${pkgname%-git}"
     cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_CXX_COMPILER=clang++ -DVIDEO2X_ENABLE_NATIVE=ON
     cmake --build build --config Release --parallel
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
-    DESTDIR="$pkgdir" cmake --install build
+    cd "${srcdir}/${pkgname%-git}"
+    DESTDIR="${pkgdir}" cmake --install build
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
