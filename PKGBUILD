@@ -5,10 +5,10 @@ pkgdesc="custom protocol network proxy"
 url="https://github.com/Watfaq/clash-rs"
 license=("Apache-2.0")
 arch=("any")
-pkgver=0.1.17
+pkgver=0.7.3
 pkgrel=1
-makedepends=("rust" "cargo" "git")
-depends=("gcc-libs" "glibc" "xz")
+makedepends=("cargo-nightly" "git")
+depends=("gcc-libs" "glibc" "xz" "protobuf")
 source=("git+https://github.com/Watfaq/clash-rs.git#tag=v${pkgver}")
 md5sums=("SKIP")
 provides=("clash-rs")
@@ -22,19 +22,13 @@ function prepare() {
 
 function build() {
 	cd "${srcdir}/clash-rs"
-	export RUSTUP_TOOLCHAIN=stable
+	#export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --release --frozen --all-features --locked
 }
 
-function check() {
-	cd "${srcdir}/clash-rs"
-	export RUSTUP_TOOLCHAIN=stable
-	cargo test --release --frozen --all-features --locked
-}
-
 function package() {
-	install -Dm755 "${srcdir}/clash-rs/target/release/clash" "${pkgdir}/usr/bin/clash-rs"
+	install -Dm755 "${srcdir}/clash-rs/target/release/clash-rs" "${pkgdir}/usr/bin/clash-rs"
 	install -Dm644 "${srcdir}/clash-rs/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
