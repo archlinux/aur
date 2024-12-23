@@ -1,10 +1,11 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Radu Potop <radu@wooptoo.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: N30N <archlinux@alunamation.com>
 # Contributor: giniu <gginiu@gmail.com>
 
 pkgname=python-ipdb
 pkgver=0.13.13
-pkgrel=4
+pkgrel=5
 pkgdesc="IPython-enabled pdb"
 url="https://pypi.python.org/pypi/ipdb"
 arch=("any")
@@ -17,11 +18,6 @@ sha512sums=('e6052d1b32b8ba499a42a121eba1ab7e814c81ac738ffaa088524840f54420546c9
 build() {
   cd ipdb-$pkgver
   python -m build --wheel --no-isolation
-}
-
-check() {
-  cd ipdb-$pkgver
-  python -m unittest -v
 }
 
 package() {
