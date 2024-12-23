@@ -1,7 +1,7 @@
 pkgbase = python-auralis
 	pkgdesc = faster implementation for TTS models, to be used in highly async environment
 	pkgver = 0.2.8.post2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/astramind-ai/Auralis
 	arch = i686
 	arch = x86_64

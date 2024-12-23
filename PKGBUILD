@@ -3,7 +3,7 @@
 pkgname=python-auralis
 _pkgname=auralis
 pkgver=0.2.8.post2
-pkgrel=1
+pkgrel=2
 pkgdesc="faster implementation for TTS models, to be used in highly async environment"
 arch=('i686' 'x86_64')
 url='https://github.com/astramind-ai/Auralis'
