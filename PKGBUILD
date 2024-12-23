@@ -5,7 +5,7 @@
 pkgname=python-langid
 _pkgname=langid
 pkgver=1.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A standalone Language Identification (LangID) tool"
 arch=('any')
 url="https://github.com/saffsd/langid.py"

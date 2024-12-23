@@ -1,7 +1,7 @@
 pkgbase = python-langid
 	pkgdesc = A standalone Language Identification (LangID) tool
 	pkgver = 1.1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/saffsd/langid.py
 	arch = any
 	license = BSD
