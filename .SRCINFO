@@ -1,7 +1,7 @@
 pkgbase = yojenkins
 	pkgdesc = A CLI tool to interface with Jenkins
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.yojenkins.com/
 	arch = any
 	license = GPL-3.0-or-later
