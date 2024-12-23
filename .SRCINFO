@@ -1,7 +1,7 @@
 pkgbase = python-pscript
 	pkgdesc = Python to JavaScript compiler
 	pkgver = 0.7.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flexxui/pscript
 	changelog = releasenotes.rst
 	arch = any
