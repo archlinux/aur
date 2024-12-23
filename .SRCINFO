@@ -1,7 +1,7 @@
 pkgbase = python-bsky-bridge-git
 	pkgdesc = Python module for the Bluesky social network API (latest commit)
 	pkgver = 1.0.7.r3.gcc999d8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0xExal/bsky-bridge
 	arch = any
 	license = MIT
