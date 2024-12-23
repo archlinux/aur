@@ -3,7 +3,7 @@
 pkgname=python-qualify
 _gitpkgname=qualify
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 # shellcheck disable=SC2016  # Not meant to be expanded
 pkgdesc='Import top-level modules from a directory not on `sys.path`'
 arch=('any')
