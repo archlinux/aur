@@ -4,7 +4,7 @@
 pkgname='python-jetforce'
 _pkgname="${pkgname/python-}"
 pkgver=0.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Experimental Gemini server written in Python'
 arch=('any')
 license=('LicenseRef-Floodgap')  # SPDX-License-Identifier: LicenseRef-Floodgap

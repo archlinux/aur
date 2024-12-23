@@ -1,7 +1,7 @@
 pkgbase = python-jetforce
 	pkgdesc = Experimental Gemini server written in Python
 	pkgver = 0.10.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/michael-lazar/jetforce
 	arch = any
 	license = LicenseRef-Floodgap
