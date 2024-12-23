@@ -1,7 +1,7 @@
 pkgbase = python-solara
 	pkgdesc = A pure Python, React-style web framework
 	pkgver = 1.42.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://solara.dev
 	arch = any
 	license = MIT

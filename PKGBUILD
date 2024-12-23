@@ -3,7 +3,7 @@
 _name=solara
 pkgname=python-${_name,,}
 pkgver=1.42.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A pure Python, React-style web framework"
 arch=('any')
 url="https://solara.dev"
