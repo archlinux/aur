@@ -5,7 +5,7 @@
 _name=tslearn
 pkgname=python-${_name,,}
 pkgver=0.6.3
-pkgrel=3
+pkgrel=4
 pkgdesc='A machine learning toolkit dedicated to time-series data'
 arch=('any')
 url="https://github.com/tslearn-team/tslearn"

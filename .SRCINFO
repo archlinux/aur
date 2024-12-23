@@ -1,7 +1,7 @@
 pkgbase = python-tslearn
 	pkgdesc = A machine learning toolkit dedicated to time-series data
 	pkgver = 0.6.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tslearn-team/tslearn
 	arch = any
 	license = BSD-2-Clause
