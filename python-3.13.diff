@@ -1,0 +1,21 @@
+diff '--color=auto' -Naur amdgpu-fan-0.1.0~/amdgpu_fan/lib/amdgpu.py amdgpu-fan-0.1.0/amdgpu_fan/lib/amdgpu.py
+--- amdgpu-fan-0.1.0~/amdgpu_fan/lib/amdgpu.py	2021-01-19 16:02:39.000000000 +0100
++++ amdgpu-fan-0.1.0/amdgpu_fan/lib/amdgpu.py	2024-12-23 17:16:16.904617952 +0100
+@@ -8,7 +8,7 @@
+ 
+ 
+ class Card:
+-    HWMON_REGEX = '^hwmon\d$'
++    HWMON_REGEX = r'^hwmon\d$'
+ 
+     def __init__(self, card_identifier):
+         self._identifier = card_identifier
+@@ -78,7 +78,7 @@
+ 
+ 
+ class Scanner:
+-    CARD_REGEX = '^card\d$'
++    CARD_REGEX = r'^card\d$'
+ 
+     def __init__(self, cards=None):
+         self.cards = self._get_cards(cards)
