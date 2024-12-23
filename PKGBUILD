@@ -5,7 +5,7 @@
 pkgname="paperless-ngx-venv"
 _pkgname="paperless-ngx"
 pkgver=2.13.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents (version with bundled dependencies)"
 url="https://docs.paperless-ngx.com/"
 license=("GPL-3.0-or-later")
@@ -60,7 +60,7 @@ b2sums=('5677607bfc09832642707eb438f87e9237beb01b97f6097f6eaf891f84cc0ec9a0b554c
         '6ecee87188daf05791ee1dbd152277e2dc09797988c2caf5f01cd2c630925332e3796159e7dce4f3ccb791f925b1c53aa91f89091254b5b55dc51322f9212509'
         '03a55bc65ae9b066e001d56599dcc1d84f19cfba7bdb866bdbb64b6bc53637668a2b0783e3012d5c80638d55667a32058ca2c337c869de5225e19c37b32804f2'
         '0d7784f9e1a960bdba55586032c2682bde0b17f601a08eead332e62a5782319e9dbcbe45b940772107c374f08e39c8d727ec0eb555b15c584238871f4ed5201f'
-        '799d3f49c2e4c77bea0063f320b16d4521f881b53ad4b54081a352e0463b2bbeb2b44403e621d09927c0e7051db3d2a317067178b0b171e991483b8c3566ef42'
+        '59521131e97659dc9eacb9bd4840dbca19b03daa674fff616c012abc607033fd00576a5868c845f844473e05a49e7dd7e8f69f69d29070c89db8700f0c0d02e9'
         '216180663dd139513b51e087e1ee59ada29482fd47e138caa9a9aead362722f9111c164e77f9f336afbad05326cc558e256d90f89a087fdbc1ba606bc2ee4517'
         '917d8a50a18b329abfcb19ee25fe8e85636979673f73ca806325eee8c0aa28af60580ac1d52d5b593ecf9e1d87a4bee051533988224b875bc7f42da02baf634b')
 backup=("etc/paperless.conf")
@@ -83,7 +83,9 @@ prepare(){
  # add customizable bind address, will be used by paperless-webserver.service
  printf "\n\n# Webserver\n\nGUNICORN_CMD_ARGS='--bind=127.0.0.1:8000'" >> "$_pkgname/paperless.conf"
 
- # workaround for https://github.com/paperless-ngx/paperless-ngx/issues/6862
+ # workaround for:
+ # 	- https://github.com/paperless-ngx/paperless-ngx/issues/6862
+ # 	- python3.13
  patch "$srcdir/$_pkgname/requirements.txt" < "$srcdir/requirements.patch"
 
  # create venv
@@ -95,7 +97,7 @@ prepare(){
 
  # fix regex warnings
  for whoosh in filters intraword; do
-	patch "$srcdir/venv/lib/python3.12/site-packages/whoosh/analysis/$whoosh.py" < "$srcdir/whoosh-$whoosh.patch"
+	patch "$srcdir/venv/lib/python3.13/site-packages/whoosh/analysis/$whoosh.py" < "$srcdir/whoosh-$whoosh.patch"
  done
 }
 
