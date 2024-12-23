@@ -6,7 +6,7 @@ export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname='python-copycat'
-pkgver='0.1.2'
+pkgver='0.1.3'
 pkgrel=00
 pkgdesc="A tool that record and replay keyboard and mouse macro."
 epoch=
@@ -16,10 +16,10 @@ license=('GPL3')
 ## EXTRA_DEPENDS ##
 noextract=()
 source=(PKGBUILD_EXTRAS)
+source+=(https://files.pythonhosted.org/packages/ae/89/1d54c1407da6ad67f73cfb2f0925a1c137ced35cb27d733b9339e6e1cb0d/copycat-0.1.3-py3-none-any.whl)
 md5sums=('d41d8cd98f00b204e9800998ecf8427e'
-         'd966d706bd7914b56240d42a71ede6f2')
-source+=(https://files.pythonhosted.org/packages/93/52/16dffd58039f147ec9f0625b2c6448f2c5ed5a063eff227c3ae6a45bfce4/copycat-0.1.2-py3-none-any.whl)
-noextract+=(copycat-0.1.2-py3-none-any.whl)
+         '3e6b5b295180c707cf449a482a4e06a8')
+noextract+=(copycat-0.1.3-py3-none-any.whl)
 depends=(python python-pydantic python-joblib)
 optdepends=(python-pynput python-ttkthemes python-pyautogui)
 makedepends=(python-pip)
