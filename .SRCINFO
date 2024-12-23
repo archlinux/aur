@@ -8,7 +8,6 @@ pkgbase = udeler
 	makedepends = npm
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = cmake
 	makedepends = gcc
 	makedepends = curl
 	depends = electron11

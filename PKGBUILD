@@ -19,7 +19,6 @@ makedepends=(
     'npm'
     'nvm'
     'gendesk'
-    'cmake'
     'gcc'
     'curl'
 )
