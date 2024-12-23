@@ -1,6 +1,6 @@
 pkgbase = cgtproxy
 	pkgdesc = A transparent proxy RULE manager written in go inspired by cgproxy.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/black-desk/cgtproxy
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cgtproxy
 	makedepends = go
 	depends = gcc-libs
 	depends = glibc
-	source = cgtproxy-98d77823838dc30f2e57cc57f9bb859c15998a71.tar.gz::https://github.com/black-desk/cgtproxy/archive/98d77823838dc30f2e57cc57f9bb859c15998a71.tar.gz
-	sha256sums = ca1c0d44d15706f508509fcfa3d1382f742816d01cd37a1688ab1b064bd36ea2
+	source = cgtproxy-5423ed50ddadbffa04778c922f97e23736996674.tar.gz::https://github.com/black-desk/cgtproxy/archive/5423ed50ddadbffa04778c922f97e23736996674.tar.gz
+	sha256sums = 680bc710ffce482bbfb5df48acc834ed300626397f0aa1550659d73f5a447061
 
 pkgname = cgtproxy
