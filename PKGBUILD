@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-thinc-bin-8.3.2
 pkgver=8.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Industrial-strength Natural Language Processing (NLP) in Python"
 arch=('x86_64')
 url='https://github.com/explosion/thinc'
