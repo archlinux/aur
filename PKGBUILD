@@ -3,7 +3,7 @@
 pkgname=python-gguf
 _pkgname=gguf
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="for writing binary files in the GGUF (GGML Universal File) format."
 arch=('x86_64')
 url='https://ggml.ai/'

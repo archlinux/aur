@@ -1,7 +1,7 @@
 pkgbase = python-gguf
 	pkgdesc = for writing binary files in the GGUF (GGML Universal File) format.
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ggml.ai/
 	arch = x86_64
 	license = MIT
