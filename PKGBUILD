@@ -6,8 +6,8 @@
 # Contributor: Asa Marco <marcoasa90[at]gmail[.]com>
 
 pkgname=openshot
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="An award-winning free and open-source video editor"
 arch=(any)
 url="https://www.openshot.org/"
@@ -39,9 +39,9 @@ source=(
   https://github.com/OpenShot/openshot-qt/archive/v$pkgver/$pkgname-$pkgver.tar.gz
   $pkgname-2.6.1-no_metric_default.patch
 )
-sha512sums=('78f8670cd53befca46a02d6af47cd06f06bb63addbe3ae3da4318b94c25add38436ba69be09fa583d8ee91ef848c48ba1f20488afd64d800b0ab6b017791be08'
+sha512sums=('3744653ed8e89e52f72975891e3c357752baa8f99f04e5492072f366fc842b97852a2380bc1bc122bdbf4de6b7afab50d2f906a6f3701fcb798739364701fa77'
             'd52441559897ce0de476a6120b7e36b082bbcb0722436a77c1a60456a86d02f370df6bc58384c838a3ad2df47c1603a6fabd5044c303284bac2ea75a99a76a8a')
-b2sums=('b040d01a0aeb5607a0213bfc0af9f6d2dbd55375f8889b6ee7ff0648d48aec3780f44e0ae14d56d0df1a63f0c6e7a524c114b301b42eab67b7fc64de05fb0bf6'
+b2sums=('d3d5d8c5394a3c8182f22978f660eb0b7f9a5d7fcb5d6e299f9d802c692ac12ba8c59b8901029f300f5747737b7163812621bf2b38ed476fccc98e2848a12e6c'
         '6f75f37be8d3e03090a8ca53e645b3269f92c7f44aa39cfbe1a03266a36d508d5c18eebbb5792ed9d6d031b3694902bc3fa3a2dac745aad60b2bc331657a364a')
 
 prepare() {
