@@ -1,7 +1,7 @@
 pkgbase = python-pkutils
 	pkgdesc = A python packaging utility library
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/reubano/pkutils
 	arch = any
 	license = MIT
