@@ -1,0 +1,11 @@
+pkgbase = elp
+	pkgdesc = Erlang Language Platform
+	pkgver = 20241209
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	source = https://github.com/WhatsApp/erlang-language-platform/releases/download/2024-12-09/elp-linux-x86_64-unknown-linux-gnu-otp-27.1.tar.gz
+	sha256sums = 514e083819f427e9a91078388ca8b5e3cddc556695cdd1c156b7ce4b3e3e3d7a
+
+pkgname = elp
