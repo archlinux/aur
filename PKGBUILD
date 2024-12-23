@@ -7,7 +7,7 @@
 # Contributor: Jan Oliver Oelerich <janoliver[at]oelerich[dot]org>
 pkgname=ovito
 pkgver=3.11.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Open Visualization Tool"
 url="https://www.${pkgname}.org"
 arch=(x86_64 aarch64)
@@ -32,7 +32,7 @@ prepare() {
   sed -i 's/libzstd_static/libzstd/' src/ovito/core/CMakeLists.txt
   git submodule init
   git config submodule.tests/files.url "${srcdir}/gitlab.com-tests-files"
-  git config submodule.tests/files.url "${srcdir}/github.com-src-3rdparty-zstd"
+  git config submodule.src/3rdparty/zstd.url "${srcdir}/github.com-src-3rdparty-zstd"
   git -c protocol.file.allow=always submodule update
 }
 
