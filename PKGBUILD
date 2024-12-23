@@ -25,15 +25,15 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_
 sha256sums=('4275ca9f876ad819fe9647c64c7f81ee5cf7e42150f6f117bfb045d0a3c95c61')
 
 build(){
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
   python -m build --wheel --no-isolation
 }
 
 package(){
-  cd "$pkgname-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "${pkgname}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   # See https://github.com/whoschek/bzfs/issues/5, tests folder accidentally in site-packages
-  rm -rf $pkgdir/usr/lib/python*/site-packages/tests
-  rm -f "$pkgdir/usr/bin/bzfs-test"
+  rm -rf "${pkgdir}"/usr/lib/python*/site-packages/tests
+  rm -f "${pkgdir}/usr/bin/bzfs-test"
 }
