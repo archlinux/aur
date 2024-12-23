@@ -1,7 +1,7 @@
 pkgbase = python-wassima-git
-	pkgdesc = Access your OS root certificates with the atmost ease (built from latest commit)
-	pkgver = 1.1.1.r0.ga7c9e9f
-	pkgrel = 2
+	pkgdesc = Access your OS root certificates with the atmost ease (latest git commit)
+	pkgver = 1.1.5.r0.g6753ae6
+	pkgrel = 1
 	url = https://github.com/jawah/wassima
 	arch = aarch64
 	arch = x86_64
