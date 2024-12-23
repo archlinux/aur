@@ -1,7 +1,7 @@
 pkgbase = python-htmltools
 	pkgdesc = Tools for creating, manipulating, and writing HTML from Python
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/posit-dev/py-htmltools
 	arch = any
 	license = MIT
