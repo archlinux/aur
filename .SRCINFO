@@ -1,7 +1,7 @@
 pkgbase = probequest
 	pkgdesc = Toolkit allowing to sniff and display the Wi-Fi probe requests passing nearby your wireless interface
 	pkgver = 0.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://probequest.skyplabs.net/en/stable/
 	arch = any
 	license = GPL-3.0-or-later
