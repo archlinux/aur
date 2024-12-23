@@ -2,7 +2,7 @@
 pkgname=udeler
 _pkgname=Udeler
 _appname=udemy-downloader-gui
-pkgver=1.13.4
+pkgver=1.14.0
 _electronversion=11
 _nodeversion=18
 pkgrel=3
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('7808cebec5fd816fe281f6bf4e8bde73cb7e12746b0b0e11c7516ebdd53d71ad'
+sha256sums=('761f51bf5bb7b412c3e566a0a4a73047a277ecd53bc38c2c4304e12da33f1ca5'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -35,7 +35,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -66,6 +66,9 @@ build() {
     cp .env.example .env
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${_appname}-${pkgver}"
     NODE_ENV=production     npm exec -c "electron-builder build --linux dir -c.electronDist=${electronDist}"
 }
 package() {
