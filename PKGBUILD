@@ -8,7 +8,7 @@
 
 pkgname=leo
 pkgver=6.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Outliner, Editor, and Personal Information Manager"
 arch=('any')
 url='https://github.com/leo-editor/leo-editor'
