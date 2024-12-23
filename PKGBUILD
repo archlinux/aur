@@ -4,7 +4,7 @@
 
 pkgname="pyp"
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Easily run Python at the shell! Magical, but never mysterious."
 arch=("any")
 url="https://github.com/hauntsaninja/pyp"

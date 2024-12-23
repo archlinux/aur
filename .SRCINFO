@@ -1,7 +1,7 @@
 pkgbase = pyp
 	pkgdesc = Easily run Python at the shell! Magical, but never mysterious.
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hauntsaninja/pyp
 	arch = any
 	license = MIT
