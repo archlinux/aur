@@ -1,6 +1,6 @@
 pkgname=mpv-uosc
 pkgver=5.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Feature-rich minimalist proximity-based UI for MPV player."
 arch=("x86_64")
 url="https://github.com/tomasklaen/uosc"
@@ -8,12 +8,11 @@ license=("LGPL-2.1-or-later")
 optdepends=(
     "mpv-thumbfast: for showing thumbnails on-the-fly on seek"
 )
-makedepends=("go" "upx")
+makedepends=("go")
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/tomasklaen/uosc/archive/refs/tags/${pkgver}.tar.gz"
 )
 sha256sums=('4a1737cf1b12d4492b7a15415640b82e82909c0c3c700dfa58dfad074a9aee30')
-options=('!strip') # UPX will break this. So we strip manually before upx the binary.
 
 prepare(){
     cd "${srcdir}/uosc-${pkgver}"
@@ -28,8 +27,6 @@ build(){
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     go build -o ./ziggy-linux ./src/ziggy/ziggy.go
-    strip "${STRIP_BINARIES}" ./ziggy-linux
-    upx ./ziggy-linux
 }
 package(){
     depends=("mpv")
