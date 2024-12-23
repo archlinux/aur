@@ -10,7 +10,6 @@ pkgbase = bertini
 	makedepends = gmp
 	makedepends = mpfr
 	makedepends = openmpi
-	noextract = bertini-1.6.tar.gz
 	source = bertini-1.6.tar.gz::https://bertini.nd.edu/BertiniSource_v1.6.tar.gz
 	source = MANUAL.pdf::https://bertini.nd.edu/BertiniUsersManual.pdf
 	source = bertini.sh
@@ -21,6 +20,7 @@ pkgbase = bertini
 pkgname = bertini-common
 	pkgdesc = Homotopy continuation solver for systems of polynomial equations (common files and documentation)
 	arch = any
+	depends = sh
 
 pkgname = bertini-serial
 	pkgdesc = Homotopy continuation solver for systems of polynomial equations (serial version)

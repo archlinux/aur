@@ -2,7 +2,7 @@
 # Contributor: Alexander Kobel <a-kobel@a-kobel.de>
 
 pkgbase="bertini"
-pkgname=("${pkgbase}-common" "${pkgbase}-serial" "${pkgbase}-parallel")
+pkgname=("${pkgbase}-"{common,serial,parallel})
 pkgver=1.6
 pkgrel=5
 pkgdesc="Homotopy continuation solver for systems of polynomial equations"
@@ -14,19 +14,23 @@ _pkgsrc="${pkgbase}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/BertiniSource_v${pkgver}.tar.gz"
         "MANUAL.pdf::${url}/BertiniUsersManual.pdf"
         "${pkgbase}.sh")
-noextract=("${_pkgsrc}.tar.gz")
 sha256sums=('0bc4c5f0b057366500fc62b37526af116cadb7dcc190ca454e0ebe00a8998998'
             '017313464d162bb32640858faa0dc40ec8498eee439cb703dc22507baa15394f'
             'f55f838946e4ab2ee73cb87cb3111989cfa9b9f6c4fcea2c0dd00a9e4d0c0db5')
 
 prepare() {
   cd "${srcdir}"
-  mkdir -p "${srcdir}/${_pkgsrc}"
-  bsdtar -xvzf "${_pkgsrc}.tar.gz" --strip-components 1 -C "${srcdir}/${_pkgsrc}"
-  
+  rm -rf "${_pkgsrc}"
+  mkdir -p "${_pkgsrc}"
+
+  mv "BertiniSource_v${pkgver//./}"/* "${_pkgsrc}"
+  rm -rf "BertiniSource_v${pkgver//./}"
+
   cd "${_pkgsrc}"
   # workaround for OpenMPI 4 compatibility
-  find . -type f -exec sed -i -e s/MPI_Address/MPI_Get_address/ -e s/MPI_Type_struct/MPI_Type_create_struct/ {} +
+  find . -type f -exec sed -e s/MPI_Address/MPI_Get_address/ \
+                           -e s/MPI_Type_struct/MPI_Type_create_struct/ \
+                           -i {} +
 }
 
 build() {
@@ -43,6 +47,7 @@ build() {
 package_bertini-common() {
   pkgdesc+=" (common files and documentation)"
   arch=('any')
+  depends=('sh')
 
   cd "${srcdir}"
   install -vDm755 "${pkgbase}.sh" "${pkgdir}/usr/bin/${pkgbase}"
@@ -61,17 +66,16 @@ package_bertini-common() {
 package_bertini-serial() {
   pkgdesc+=" (serial version)"
   depends=('bertini-common' 'glibc' 'gmp' 'mpfr')
-  provides=('bertini' 'libbertini-serial.so')
+  provides=("${pkgbase}" "lib${pkgname}.so")
 
   cd "${srcdir}/${_pkgsrc}"
   make DESTDIR="${pkgdir}" install
-  libtool --finish "${pkgdir}/usr/lib"
 
   cd "${pkgdir}/usr"
   rm -rf include
 
   cd "${pkgdir}/usr/bin"
-  rm -f bertini *parallel*
+  rm -f *parallel* bertini
 
   cd "${pkgdir}/usr/lib"
   rm -f *parallel*
@@ -80,17 +84,16 @@ package_bertini-serial() {
 package_bertini-parallel() {
   pkgdesc+=" (parallel version with OpenMPI)"
   depends=('bertini-common' 'glibc' 'gmp' 'mpfr' 'openmpi')
-  provides=('bertini' 'libbertini-parallel.so')
+  provides=("${pkgbase}" "lib${pkgname}.so")
 
   cd "${srcdir}/${_pkgsrc}"
   make DESTDIR="${pkgdir}" install
-  libtool --finish "${pkgdir}/usr/lib"
 
   cd "${pkgdir}/usr"
   rm -rf include
 
   cd "${pkgdir}/usr/bin"
-  rm -f bertini *serial*
+  rm -f *serial* bertini
 
   cd "${pkgdir}/usr/lib"
   rm -f *serial*
