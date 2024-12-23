@@ -1,7 +1,7 @@
 pkgbase = shrinko8
 	pkgdesc = Shrink (minify) Pico-8 carts, as well as other tools (e.g. linting, format conversion)
 	pkgver = 1.2.2d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thisismypassport/shrinko8
 	arch = any
 	license = MIT
