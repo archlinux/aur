@@ -3,7 +3,7 @@
 
 pkgname=python-tekore
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Client for the Spotify Web API"
 arch=("any")
 url="https://github.com/felix-hilden/tekore"
