@@ -8,7 +8,7 @@
 
 pkgname=python-stdnum
 pkgver=1.20
-pkgrel=4
+pkgrel=5
 pkgdesc='Handle, parse and validate more than 200 different standard numbers (EAN, IBAN, ISBN, etc.)'
 arch=('any')
 url='https://arthurdejong.org/python-stdnum'
@@ -44,7 +44,7 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
-    ChangeLog *.md
+    ChangeLog ./*.md
 }
 
 # eof

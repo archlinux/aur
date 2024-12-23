@@ -1,7 +1,7 @@
 pkgbase = python-stdnum
 	pkgdesc = Handle, parse and validate more than 200 different standard numbers (EAN, IBAN, ISBN, etc.)
 	pkgver = 1.20
-	pkgrel = 4
+	pkgrel = 5
 	url = https://arthurdejong.org/python-stdnum
 	arch = any
 	license = LGPL-2.1-or-later
