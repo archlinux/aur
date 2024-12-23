@@ -1,7 +1,7 @@
 pkgbase = python-pyloudnorm
 	pkgdesc = Implementation of ITU-R BS.1770-4 loudness algorithm in Python
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/saffsd/langid.py
 	arch = any
 	license = MIT
