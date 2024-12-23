@@ -1,17 +1,16 @@
 pkgbase = python-looseversion
 	pkgdesc = Version numbering for anarchists and software realists
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/effigies/looseversion
 	arch = any
-	license = PSFL2
+	license = PSF-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-flit
 	makedepends = python-hatchling
 	depends = python
-	source = looseversion-1.2.0.tar.gz::https://github.com/effigies/looseversion/archive/1.2.0.tar.gz
-	md5sums = dd279fe74ae0df00039da30a21245f25
+	source = looseversion-1.3.0.tar.gz::https://files.pythonhosted.org/packages/source/l/looseversion/looseversion-1.3.0.tar.gz
+	sha256sums = ebde65f3f6bb9531a81016c6fef3eb95a61181adc47b7f949e9c0ea47911669e
 
 pkgname = python-looseversion

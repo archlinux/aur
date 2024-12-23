@@ -1,25 +1,27 @@
-# Maintainer:  Liam Timms <timms5000@gmail.com>
+# Maintainer: devome <evinedeng@hotmail.com>
+# Contributor:  Liam Timms <timms5000@gmail.com>
 # Contributor: mark.blakeney at bullet-systems dot net
-pkgname=python-looseversion
-_name=${pkgname#python-}
-pkgver=1.2.0
+
+_pkgname=looseversion
+_pipname="${_pkgname//-/_}"
+pkgname="python-${_pkgname}"
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Version numbering for anarchists and software realists"
 arch=('any')
 url='https://github.com/effigies/looseversion'
-license=('PSFL2')
+license=('PSF-2.0')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-flit' 'python-hatchling')
-source=("${_name}-${pkgver}.tar.gz::https://github.com/effigies/${_name}/archive/${pkgver}.tar.gz")
-md5sums=('dd279fe74ae0df00039da30a21245f25')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
+source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
+sha256sums=('ebde65f3f6bb9531a81016c6fef3eb95a61181adc47b7f949e9c0ea47911669e')
 
 build() {
-    cd "$_name-$pkgver"
+    cd "${_pkgname}-${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_name-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "${_pkgname}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
-
