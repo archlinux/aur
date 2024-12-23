@@ -1,7 +1,7 @@
 pkgbase = python-huey
 	pkgdesc = huey, a little task queue
 	pkgver = 2.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coleifer/huey
 	arch = any
 	license = MIT
