@@ -4,7 +4,7 @@ _name="pybertini"
 _pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
 pkgver=1.0alpha5.r1715.735bd7f
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface for Bertini2"
 arch=('x86_64')
 url="https://github.com/bertiniteam/b2"
@@ -67,6 +67,8 @@ package() {
 
   cd "${srcdir}/${_pkgsrc}/python"
   python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  find "examples" -type f -exec install -vDm644 "{}" "${pkgdir}/usr/share/doc/${_pkgname}/{}" \;
 
   cd "${srcdir}/${_pkgsrc}/python/include"
   find . -type f -exec install -vDm644 "{}" "${pkgdir}/usr/include/${_name}/{}" \;
