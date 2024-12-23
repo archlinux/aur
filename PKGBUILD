@@ -1,4 +1,4 @@
-# Maintainer: zaps166 <spaz16@wp.pl>
+# Maintainer: zaps166 <mumei6102@gmail.com>
 
 pkgname=qmplay2-git
 pkgver=24.12.23.r0.g5bf25e02
