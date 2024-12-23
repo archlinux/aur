@@ -4,7 +4,7 @@
 pkgname=python-kornia-rs
 _pkgname=kornia-rs
 pkgver=0.1.7
-pkgrel=4
+pkgrel=5
 pkgdesc="A low level computer vision library in Rust"
 arch=("x86_64")
 url="https://github.com/kornia/kornia-rs"
@@ -17,7 +17,7 @@ sha256sums=('547a01735791de4afcfcd6e01de8a72bca5539c3b88857770edaa9d45b7bd728')
 
 build() {
   cd "$_pkgname-$pkgver/kornia-py"
-  python -m build --wheel --no-isolation
+  PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1 python -m build --wheel --no-isolation
 }
 
 package() {
