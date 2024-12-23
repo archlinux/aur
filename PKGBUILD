@@ -3,7 +3,7 @@
 
 pkgname=python-lapx
 pkgver=0.5.11.post1
-pkgrel=1
+pkgrel=2
 pkgdesc="Customized Tomas Kazmar's lap, Linear Assignment Problem solver (LAPJV/LAPMOD)."
 arch=(any)
 url="https://github.com/rathaROG/lapx"
