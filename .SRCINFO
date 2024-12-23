@@ -1,7 +1,7 @@
 pkgbase = python-hangul-romanize
 	pkgdesc = Romanize Hangul strings. If you know, you know.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/youknowone/hangul-romanize
 	arch = x86_64
 	license = BSD

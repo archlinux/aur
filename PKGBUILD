@@ -3,7 +3,7 @@
 pkgname=python-hangul-romanize
 _pkgname=hangul-romanize
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Romanize Hangul strings.  If you know, you know."
 arch=('x86_64')
 url='https://github.com/youknowone/hangul-romanize'
