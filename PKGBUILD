@@ -3,7 +3,7 @@
 _name=pathpy2
 pkgname=python-$_name
 pkgver=2.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An OpenSource python package for the analysis and visualisation of time series data on complex networks with higher- and multi-order graphical models."
 arch=('any')
 url="https://www.pathpy.net"
