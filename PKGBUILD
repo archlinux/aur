@@ -3,7 +3,7 @@
 pkgname=python-vllm-bin
 _pkgname=vllm
 pkgver=0.6.5
-pkgrel=3
+pkgrel=4
 pkgdesc="faster implementation for TTS models, to be used in highly async environment"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
