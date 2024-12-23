@@ -1,7 +1,7 @@
 pkgbase = howdy-git
 	pkgdesc = Windows Hello style facial authentication for Linux
 	pkgver = r564.aa75c76
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/boltgolt/howdy
 	install = howdy.install
 	arch = x86_64
