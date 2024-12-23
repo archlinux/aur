@@ -3,7 +3,7 @@
 _pyname=glyphsets
 pkgname=python-${_pyname,,}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='an API with data about glyph sets for many different scripts and languages'
 arch=(any)
 url="https://github.com/googlefonts/$_pyname"
