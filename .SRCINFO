@@ -1,6 +1,6 @@
 pkgbase = q-zandronum
 	pkgdesc = Zandronum 3.0 fork with improved netcode and Quake movement
-	pkgver = 1.4.19
+	pkgver = 1.4.20
 	pkgrel = 1
 	url = http://qzandronum.com/
 	install = q-zandronum.install
@@ -27,7 +27,7 @@ pkgbase = q-zandronum
 	sha256sums = 3170f827179cc7c14f2755cc6a324fc12c71cde2793d21a8f0cdb829c9bb3469
 	sha256sums = 04b74a1053b413cc59fdeedebe518f35fe2db88b7577a7eacd5858ea4c56c20d
 	sha256sums = 77967f0ef35fbeae6e3e70e3b779b9eddeb8e08fa259bfa88806b72be34973d0
-	source_x86_64 = https://github.com/IgeNiaI/Q-Zandronum/releases/download/1.4.19/Q-Zandronum_1.4.19_Linux_amd64.tar.gz
-	sha256sums_x86_64 = 2a7656b319aa85a92637cd7f93dbdf342bc421861bbd8d63db2d7b5e0ac3e8d8
+	source_x86_64 = https://github.com/IgeNiaI/Q-Zandronum/releases/download/1.4.20/Q-Zandronum_1.4.20_Linux_amd64.tar.gz
+	sha256sums_x86_64 = de7e9c61a5b6d1237deb419e9fc4f33162446752a28eda6c17a236df9939530a
 
 pkgname = q-zandronum
