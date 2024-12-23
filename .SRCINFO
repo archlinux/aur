@@ -1,7 +1,7 @@
 pkgbase = isolyzer
 	pkgdesc = Verify size of ISO image for consistency with file system (ISO 9660, UDF, HFS, HFS+) header fields
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/KBNLresearch/isolyzer
 	arch = any
 	license = Apache-2.0

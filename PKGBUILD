@@ -1,7 +1,7 @@
 # Maintainer: Arvid Norlander <VorpalBlade (at) users DOT noreply DOT github DOT com>
 pkgname=isolyzer
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Verify size of ISO image for consistency with file system (ISO 9660, UDF, HFS, HFS+) header fields"
 arch=('any')
