@@ -1,7 +1,7 @@
 # Maintainer: Arvid Norlander <VorpalBlade (at) users DOT noreply DOT github DOT com>
 pkgname=fluxvis
 pkgver=1.0.0a4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Produce flux visualization from any flux files recognized by greaseweazle"
 arch=('any')

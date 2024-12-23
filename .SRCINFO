@@ -1,7 +1,7 @@
 pkgbase = fluxvis
 	pkgdesc = Produce flux visualization from any flux files recognized by greaseweazle
 	pkgver = 1.0.0a4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adafruit/fluxvis
 	arch = any
 	license = MIT
