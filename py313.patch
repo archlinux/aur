@@ -1,0 +1,134 @@
+--- src/patator-1.0/patator.py_orig	2024-12-23 12:55:06.572614007 -0500
++++ b/patator.py	2024-12-23 13:23:29.201294076 -0500
+@@ -24,7 +24,7 @@
+ __banner__  = 'Patator %s (%s) with python-%s' % (__version__, __git__, __pyver__)
+ 
+ # README {{{
+-'''
++r'''
+ INTRODUCTION
+ ------------
+ 
+@@ -972,8 +972,10 @@
+ import ctypes
+ import glob
+ from xml.sax.saxutils import escape as xmlescape, quoteattr as xmlquoteattr
+-from ssl import wrap_socket
+ from binascii import hexlify, unhexlify
++import ssl
++from socket import socket
++from typing import Optional, Union
+ 
+ PY3 = sys.version_info >= (3,)
+ 
+@@ -1058,6 +1060,34 @@
+ 
+ # }}}
+ 
++def create_ssl_socket(sock: Union[socket, None] = None, 
++                     hostname: Optional[str] = None,
++                     **kwargs) -> ssl.SSLSocket:
++    """
++    Modern replacement for deprecated ssl.wrap_socket()
++    
++    Args:
++        sock: Existing socket to wrap, or None to create new one
++        hostname: Server hostname for verification
++        **kwargs: Additional SSL context parameters
++    
++    Returns:
++        SSLSocket: Secured socket connection
++    """
++    context = ssl.create_default_context()
++    
++    # Apply any custom SSL options
++    for key, value in kwargs.items():
++        if hasattr(context, key):
++            setattr(context, key, value)
++            
++    if sock is None:
++        sock = socket()
++        
++    if hostname:
++        return context.wrap_socket(sock, server_hostname=hostname)
++    return context.wrap_socket(sock)
++
+ # utils {{{
+ def expand_path(s):
+     return os.path.expandvars(os.path.expanduser(s))
+@@ -2671,7 +2701,7 @@
+     ('host', 'target host'),
+     ('port', 'target port [23]'),
+     ('inputs', 'list of values to input'),
+-    ('prompt_re', 'regular expression to match prompts [\w+:]'),
++    ('prompt_re', r'regular expression to match prompts [\w+:]'),
+     ('timeout', 'seconds to wait for a response and for prompt_re to match received data [20]'),
+     )
+   available_options += TCP_Cache.available_options
+@@ -2684,7 +2714,7 @@
+ 
+     return TCP_Connection(fp)
+ 
+-  def execute(self, host, port='23', inputs=None, prompt_re='\w+:', timeout='20', persistent='0'):
++  def execute(self, host, port='23', inputs=None, prompt_re: str=r'\w+:', timeout='20', persistent='0'):
+ 
+     with Timing() as timing:
+       fp, _ = self.bind(host, port, timeout=timeout)
+@@ -3358,7 +3388,7 @@
+     ('luser', 'client username [root]'),
+     ('user', 'usernames to test'),
+     ('password', 'passwords to test'),
+-    ('prompt_re', 'regular expression to match prompts [\w+:]'),
++    ('prompt_re', r'regular expression to match prompts [\w+:]'),
+     ('timeout', 'seconds to wait for a response and for prompt_re to match received data [10]'),
+     )
+   available_options += TCP_Cache.available_options
+@@ -3380,7 +3410,7 @@
+ 
+     return TCP_Connection(fp)
+ 
+-  def execute(self, host, port='513', luser='root', user='', password=None, prompt_re='\w+:', timeout='10', persistent='0'):
++  def execute(self, host, port='513', luser='root', user='', password=None, prompt_re=r'\w+:', timeout='10', persistent='0'):
+ 
+     fp, _ = self.bind(host, port, timeout=int(timeout))
+ 
+@@ -3424,7 +3454,7 @@
+     banner = self.getresp()
+ 
+     if ssl:
+-      self.sock = wrap_socket(self.sock)
++      self.sock = create_ssl_socket(self.sock)
+ 
+     return banner # welcome banner
+ 
+@@ -4251,7 +4281,7 @@
+       code = p.returncode
+ 
+     mesg = []
+-    m = re.search(' Authentication only, exit status (\d+)', err)
++    m = re.search(r' Authentication only, exit status (\d+)', err)
+     if m:
+       mesg.append(('exit', m.group(1)))
+     m = re.search(' (ERR.+?) ', err)
+@@ -4968,7 +4998,11 @@
+ 
+     has_sa = 'SA=(' in out
+     if has_sa:
+-      mesg = 'Handshake returned: %s (%s)' % (re.search('SA=\((.+) LifeType', out).group(1), re.search('\t(.+) Mode Handshake returned', out).group(1))
++      mesg = 'Handshake returned: %s (%s)' % (
++        re.search(r'SA=\((.+?) LifeType', out).group(1),
++        re.search(r'\t(.+?) Mode Handshake returned', out).group(1)
++      )
++
+     else:
+       try:
+         mesg = out.strip().split('\n')[1].split('\t')[-1]
+@@ -5151,7 +5185,7 @@
+   def execute(self, host, port, data='', timeout='2', ssl='0'):
+     fp = socket.create_connection((host, port), int(timeout))
+     if ssl != '0':
+-      fp = wrap_socket(fp)
++      fp = create_ssl_socket(fp)
+     fp.send(unhexlify(data))
+     #fp.send(b(data))
+     with Timing() as timing:
