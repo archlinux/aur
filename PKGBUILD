@@ -7,7 +7,7 @@ pkgver=0.14.0
 # setup-tools-scm doesn't get the dependencies right from the tarball sources
 # https://wiki.archlinux.org/title/Talk:Python_package_guidelines#Prefer_VCS_source_for_setuptools-scm_and_friends
 _tag=5913c570b9bc6fc882498755409d32472e8b9994 # git rev-parse "v${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Make awesome display tables using Python"
 arch=('any')
 url="https://posit-dev.github.io/great-tables/"
