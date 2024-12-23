@@ -1,0 +1,147 @@
+diff --git a/src/xfdesktop-icon-view.c b/src/xfdesktop-icon-view.c
+index 2d6cb276..b3618f0d 100644
+--- a/src/xfdesktop-icon-view.c
++++ b/src/xfdesktop-icon-view.c
+@@ -528,7 +528,8 @@ static void xfdesktop_icon_view_unselect_item_internal(XfdesktopIconView *icon_v
+                                                        ViewItem *item,
+                                                        gboolean emit_signal);
+ 
+-static void xfdesktop_icon_view_size_grid(XfdesktopIconView *icon_view);
++static void xfdesktop_icon_view_size_grid(XfdesktopIconView *icon_view,
++                                          gboolean from_resize);
+ static void xfdesktop_icon_view_clear_grid_layout(XfdesktopIconView *icon_view);
+ static inline ViewItem *xfdesktop_icon_view_item_in_grid_slot(XfdesktopIconView *icon_view,
+                                                               ViewItem **grid_layout,
+@@ -2762,7 +2763,7 @@ xfdesktop_icon_view_style_updated(GtkWidget *widget)
+ 
+     if (gtk_widget_get_realized(widget)) {
+         if (need_grid_resize) {
+-            xfdesktop_icon_view_size_grid(icon_view);
++            xfdesktop_icon_view_size_grid(icon_view, FALSE);
+         } else {
+             for (GList *l = icon_view->selected_items; l != NULL; l = l->next) {
+                 xfdesktop_icon_view_invalidate_item_text(icon_view, (ViewItem *)l->data);
+@@ -2780,7 +2781,7 @@ scale_factor_changed_cb(XfdesktopIconView *icon_view,
+ {
+     if (gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
+         xfdesktop_icon_view_invalidate_pixbuf_cache(icon_view);
+-        xfdesktop_icon_view_size_grid(icon_view);
++        xfdesktop_icon_view_size_grid(icon_view, FALSE);
+     }
+ }
+ 
+@@ -2801,7 +2802,7 @@ xfdesktop_icon_view_size_allocate(GtkWidget *widget,
+          old_allocation.width != allocation->width ||
+          old_allocation.height != allocation->height))
+     {
+-        xfdesktop_icon_view_size_grid(XFDESKTOP_ICON_VIEW(widget));
++        xfdesktop_icon_view_size_grid(XFDESKTOP_ICON_VIEW(widget), TRUE);
+     } else {
+         DBG("allocation did not change; ignoring");
+     }
+@@ -2834,7 +2835,7 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
+                            G_CALLBACK(xfdesktop_icon_view_icon_theme_changed),
+                            icon_view);
+ 
+-    xfdesktop_icon_view_size_grid(icon_view);
++    xfdesktop_icon_view_size_grid(icon_view, FALSE);
+ }
+ 
+ static void
+@@ -3684,10 +3685,26 @@ xfdesktop_icon_view_place_items(XfdesktopIconView *icon_view)
+     }
+ }
+ 
++static void
++xfdesktop_icon_view_get_icons_bounds(XfdesktopIconView *icon_view, int *max_row, int *max_col)
++{
++    if (icon_view->grid_layout != NULL) {
++        for (GList *l = icon_view->items; l != NULL; l = l->next) {
++            ViewItem *item = l->data;
++
++            if (item->placed && item->row >= 0 && item->col >= 0) {
++                *max_row = MAX(*max_row, item->row);
++                *max_col = MAX(*max_col, item->col);
++            }
++        }
++    }
++}
++
+ static gboolean
+ _xfdesktop_icon_view_build_grid_params(XfdesktopIconView *icon_view,
+                                        GtkAllocation *allocation,
+-                                       GridParams *grid_params)
++                                       GridParams *grid_params,
++                                       gboolean from_resize)
+ {
+     DBG("icon view size: %dx%d", allocation->width, allocation->height);
+ 
+@@ -3696,6 +3713,13 @@ _xfdesktop_icon_view_build_grid_params(XfdesktopIconView *icon_view,
+     if (new_nrows <= 0 || new_ncols <= 0) {
+         return FALSE;
+     } else {
++        if (from_resize && (new_nrows < icon_view->nrows || new_ncols < icon_view->ncols)) {
++            gint max_row = -1, max_col = -1;
++            xfdesktop_icon_view_get_icons_bounds(icon_view, &max_row, &max_col);
++            new_nrows = MAX(new_nrows, MIN(max_row + 1, icon_view->nrows));
++            new_ncols = MAX(new_ncols, MIN(max_col + 1, icon_view->ncols));
++        }
++
+         DBG("new grid size: rows=%d, cols=%d", new_nrows, new_ncols);
+         grid_params->nrows = new_nrows;
+         grid_params->ncols = new_ncols;
+@@ -3717,7 +3741,8 @@ _xfdesktop_icon_view_build_grid_params(XfdesktopIconView *icon_view,
+ }
+ 
+ static void
+-xfdesktop_icon_view_size_grid(XfdesktopIconView *icon_view)
++xfdesktop_icon_view_size_grid(XfdesktopIconView *icon_view,
++                              gboolean from_resize)
+ {
+     if (!gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
+         return;
+@@ -3737,7 +3762,7 @@ xfdesktop_icon_view_size_grid(XfdesktopIconView *icon_view)
+     gtk_widget_get_allocation(GTK_WIDGET(icon_view), &allocation);
+ 
+     GridParams new_grid_params;
+-    if (!_xfdesktop_icon_view_build_grid_params(icon_view, &allocation, &new_grid_params)) {
++    if (!_xfdesktop_icon_view_build_grid_params(icon_view, &allocation, &new_grid_params, from_resize)) {
+         return;
+     }
+ 
+@@ -4851,7 +4876,7 @@ xfdesktop_icon_view_set_icon_size(XfdesktopIconView *icon_view,
+     icon_view->icon_size = icon_size;
+ 
+     xfdesktop_icon_view_invalidate_pixbuf_cache(icon_view);
+-    xfdesktop_icon_view_size_grid(icon_view);
++    xfdesktop_icon_view_size_grid(icon_view, FALSE);
+ 
+     g_object_freeze_notify(G_OBJECT(icon_view));
+     g_object_notify(G_OBJECT(icon_view), "icon-size");
+@@ -4884,7 +4909,7 @@ xfdesktop_icon_view_set_font_size(XfdesktopIconView *icon_view,
+                  NULL);
+ 
+     if (icon_view->font_size_set && gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
+-        xfdesktop_icon_view_size_grid(icon_view);
++        xfdesktop_icon_view_size_grid(icon_view, FALSE);
+         xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
+     }
+ 
+@@ -4915,7 +4940,7 @@ xfdesktop_icon_view_set_use_font_size(XfdesktopIconView *icon_view,
+                  NULL);
+ 
+     if (gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
+-        xfdesktop_icon_view_size_grid(icon_view);
++        xfdesktop_icon_view_size_grid(icon_view, FALSE);
+         xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
+     }
+ 
+@@ -5260,7 +5285,7 @@ xfdesktop_icon_view_grid_geometry_for_metrics(XfdesktopIconView *icon_view,
+         .height = total_workarea->height,
+     };
+     GridParams grid_params;
+-    if (!_xfdesktop_icon_view_build_grid_params(icon_view, &allocation, &grid_params)) {
++    if (!_xfdesktop_icon_view_build_grid_params(icon_view, &allocation, &grid_params, FALSE)) {
+         return FALSE;
+     }
+ 

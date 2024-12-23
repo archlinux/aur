@@ -1,0 +1,30 @@
+pkgbase = xfdesktop-z166
+	pkgdesc = Xfce's desktop manager with icon placement modification.
+	pkgver = 4.20.0
+	pkgrel = 1
+	url = https://docs.xfce.org/xfce/xfdesktop/start
+	arch = x86_64
+	groups = xfce4
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = intltool
+	makedepends = xfce4-dev-tools
+	makedepends = patch
+	depends = libxfce4ui
+	depends = libxfce4windowing
+	depends = libwnck3
+	depends = libyaml
+	depends = gtk-layer-shell
+	depends = exo
+	depends = thunar
+	depends = garcon
+	depends = hicolor-icon-theme
+	provides = xfdesktop
+	conflicts = xfdesktop
+	source = git+https://gitlab.xfce.org/xfce/xfdesktop.git#tag=xfdesktop-4.20.0
+	source = xfdesktop-no-scramble-v2.diff
+	sha256sums = 773b31c89fa822944979379c45724db50c167cd3110736a0cf4f12fb9b230c00
+	sha256sums = bfee6b13b5ead0fb2b4d166bf1b2553ee0d3fd97cfbed899ab39dfa2bf9214a3
+
+pkgname = xfdesktop-z166
