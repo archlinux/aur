@@ -1,7 +1,7 @@
 pkgbase = python-webtest-aiohttp
 	pkgdesc = Provides integration of WebTest with aiohttp.web applications
 	pkgver = 2.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://pypi.org/project/webtest-aiohttp
 	arch = any
 	license = MIT

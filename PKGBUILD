@@ -5,7 +5,7 @@
 _distname=webtest-aiohttp
 pkgname="python-${_distname}"
 pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Provides integration of WebTest with aiohttp.web applications'
 arch=(any)
 url="https://pypi.org/project/${_distname}"
