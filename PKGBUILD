@@ -2,7 +2,7 @@
 
 _name=headerparser
 pkgname=python-$_name
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='argparse for mail-style headers'
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python python-attrs python-deprecated)
 makedepends=(python-setuptools python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('f4ca75b801b4d810cde2a278f5f07c9733e4d88e51085032fd909f5655df3ef3')
+sha256sums=('2e24ae218ed5d2ef5839fafeff084c40ee1e317bbbe6489cfe333385d7cb98e7')
 
 build() {
 	cd "$_name-$pkgver"
