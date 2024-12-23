@@ -1,10 +1,11 @@
-# Maintainer: Kevin Morris <kevr@0cost.org>
+# Maintainer: Raymond Li <aur@raymond.li>
+# Previous Maintainer: Kevin Morris <kevr@0cost.org>
 # Previous Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-dbg
 _major=3
-_minor=11
-_patch=8
+_minor=12
+_patch=7
 _pybasever=${_major}
 _pyminorver=${_pybasever}.${_minor}
 pkgver=${_pyminorver}.${_patch}
@@ -19,7 +20,7 @@ makedepends=('gcc' 'make' 'm4' 'autoconf' 'valgrind')
 options=(!debug !strip)
 
 source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz")
-sha256sums=('9e06008c8901924395bc1da303eac567a729ae012baa182ab39269f650383bb3')
+sha256sums=('24887b92e2afd4a2ac602419ad4b596372f67ac9b077190f459aba390faf5550')
 
 prepare() {
     cd Python-${pkgver}
