@@ -15,8 +15,8 @@ pkgbase = python-jaxlib-bin
 	conflicts = python-jaxlib
 	noextract = jaxlib-0.4.38-cp312-cp312-manylinux2014_x86_64.whl
 	source_x86_64 = https://files.pythonhosted.org/packages/cp312/j/jaxlib/jaxlib-0.4.38-cp312-cp312-manylinux2014_x86_64.whl
-	sha256sums_x86_64 = dad6c0a96567c06d083c0469fec40f201210b099365bd698be31a6d2ec88fd59
+	sha256sums_x86_64 = 2ce77ba8cda9259a4bca97afc1c722e4291a6c463a63f8d372c6edc85117d625
 	source_aarch64 = https://files.pythonhosted.org/packages/cp312/j/jaxlib/jaxlib-0.4.38-cp312-cp312-manylinux2014_aarch64.whl
-	sha256sums_aarch64 = 496f45b0e001a2341309cd0c74af0b670537dced79c168cb230cfcc773f0aa86
+	sha256sums_aarch64 = 248cca3771ebf24b070f49701364ceada33e6139445b06c782cca5ac5ad92bf4
 
 pkgname = python-jaxlib-bin
