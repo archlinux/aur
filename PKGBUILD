@@ -3,7 +3,7 @@
 pkgname='python-advocate'
 _name=${pkgname#python-}
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of tools based around the requests library for safely making HTTP requests on behalf of a third party."
 arch=('any')
 url="https://github.com/JordanMilne/Advocate"
