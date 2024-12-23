@@ -1,7 +1,7 @@
 pkgbase = python-mmpretrain
 	pkgdesc = OpenMMLab Pre-training Toolbox and Benchmark
 	pkgver = 1.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/open-mmlab/mmpretrain
 	arch = any
 	license = Apache-2.0
