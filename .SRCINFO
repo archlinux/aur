@@ -5,6 +5,7 @@ pkgbase = python-docopt-ng
 	url = https://github.com/jazzband/docopt-ng
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-pdm-backend
 	makedepends = python-installer

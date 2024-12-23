@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Jazzband-maintained fork of docopt, the humane command line arguments parser."
 url="https://github.com/jazzband/docopt-ng"
 depends=(python python-regex)
-makedepends=(python-build python-pdm-backend python-installer python-wheel)
+makedepends=(git python-build python-pdm-backend python-installer python-wheel)
 license=('MIT')
 arch=('any')
 source=("$_pkgname::git+$url.git#tag=$pkgver")
