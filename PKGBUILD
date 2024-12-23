@@ -4,9 +4,9 @@
 pkgname='python-ssort-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.13.0.r0.g2025243
+pkgver=0.14.0.r0.g6e66c2c
 pkgrel=1
-pkgdesc='Tool for automatically sorting python statements within a module (built from latest commit)'
+pkgdesc='Tool for automatically sorting python statements within a module (latest git commit)'
 arch=('any')
 url="https://github.com/bwhmather/$_srcname"
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -37,7 +37,7 @@ pkgver() {
 prepare() {
   cd "$_srcname/src/$_srcname"
 
-  sed -i -E 's/from ssort\.(.+) import/from .\1 import/' *.py
+  sed -i -E 's/from ssort\.(.+) import/from .\1 import/' ./*.py
 }
 
 build() {
