@@ -8,4 +8,4 @@ MimeType=x-scheme-handler/enteauth;
 Categories=Utility;
 Keywords=Authentication;2FA;
 StartupNotify=false
-StartupWMClass=Io.ente.auth
+StartupWMClass=io.ente.auth
