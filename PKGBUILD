@@ -10,7 +10,7 @@ url='https://github.com/neuralmagic/compressed-tensors'
 license=(Apache-2.0)
 depends=(python python-pytorch python-safetensors)
 makedepends=(python-build python-installer python-wheel python-setuptools)
-checkdepends=(jupyter-nbformat)
+checkdepends=(jupyter-nbformat python-transformers)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/neuralmagic/compressed-tensors/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('e707fcdf0b7e91691d1e5295cc237a1ba67e77de283b8e166308b3675497792c')
 

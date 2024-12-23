@@ -6,6 +6,7 @@ pkgbase = python-compressed-tensors
 	arch = x86_64
 	license = Apache-2.0
 	checkdepends = jupyter-nbformat
+	checkdepends = python-transformers
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
