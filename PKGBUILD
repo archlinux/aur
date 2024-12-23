@@ -2,7 +2,7 @@
 
 pkgname=ufo2otf
 pkgver=0.2.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Take UFO font sources and generate OTF’s and webfonts'
 arch=(any)
 url="https://github.com/fonts/$pkgname"
