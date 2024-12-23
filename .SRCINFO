@@ -1,7 +1,7 @@
 pkgbase = python-novas
 	pkgdesc = The United States Naval Observatory NOVAS astronomy library
 	pkgver = 3.1.1.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.usno.navy.mil/USNO/astronomical-applications/software-products/novas
 	arch = i686
 	arch = x86_64
