@@ -1,7 +1,7 @@
 pkgbase = python-easydict
 	pkgdesc = Access dict values as attributes (works recursively).
 	pkgver = 1.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/makinacorpus/easydict
 	arch = any
 	license = LGPL3

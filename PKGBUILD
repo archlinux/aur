@@ -3,7 +3,7 @@
 _name=easydict
 pkgname=python-${_name,,}
 pkgver=1.13
-pkgrel=2
+pkgrel=3
 pkgdesc='Access dict values as attributes (works recursively).'
 arch=('any')
 url="https://github.com/makinacorpus/easydict"
