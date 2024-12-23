@@ -4,7 +4,7 @@
 
 pkgname=hyperrogue-git
 _pkgname=hyperrogue
-pkgver=13.0w+r11135+g5fd863c71
+pkgver=13.0w+r11136+g4aeaa2e2d
 pkgrel=2
 pkgdesc="You are a lone outsider in a strange, non-Euclidean hyperbolic world"
 arch=('i686' 'x86_64')

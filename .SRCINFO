@@ -1,6 +1,6 @@
 pkgbase = hyperrogue-git
 	pkgdesc = You are a lone outsider in a strange, non-Euclidean hyperbolic world
-	pkgver = 13.0w+r11135+g5fd863c71
+	pkgver = 13.0w+r11136+g4aeaa2e2d
 	pkgrel = 2
 	url = http://www.roguetemple.com/z/hyper.php
 	arch = i686
