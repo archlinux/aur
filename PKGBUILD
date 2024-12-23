@@ -26,6 +26,7 @@ function pkgver(){
 
 function prepare() {
 	sed -i 's/versioneer-518/versioneer/g' "${srcdir}/Amulet-Core/pyproject.toml"
+	sed -i 's| ~= 1.17||g' "${srcdir}/Amulet-Core/pyproject.toml"
 }
 
 function build() {
