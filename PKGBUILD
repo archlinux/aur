@@ -2,10 +2,10 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=fastmatch
-_pkgver=1.1-4
+_pkgver=1.1-6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Fast 'match()' Function"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -14,8 +14,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9ed826f639a8b6d4c8519c1062a3c109')
-b2sums=('34ce4a833b5f7d173b944b05c1c5952c85d91bf3e3aac32edd977f31f5c22f2205c8e521ad0d873b620e6aa5c182710667c618b889ffc3986e604076a6b8a64d')
+md5sums=('69ecb45abf03a50ed3cfb30da1fad8db')
+b2sums=('3a7ff4a260f4d324fffc042ce5c3d0af4a5c3e66f52bd6f515b409d042391f3820d35e99f5cf3e64fb5c40ea1ebb94d01af9c61d01e39ef1aa71412273c1c100')
 
 build() {
   mkdir build
