@@ -1,12 +1,7 @@
 pkgbase = libopenshot
 	pkgdesc = A video editing, animation, and playback library for C++, Python, and Ruby
-<<<<<<< HEAD
-	pkgver = 0.3.3
-	pkgrel = 13
-=======
 	pkgver = 0.4.0
 	pkgrel = 1
->>>>>>> 343aa5a (upgpkg: 0.4.0-1)
 	url = https://github.com/openshot/libopenshot
 	arch = x86_64
 	license = LGPL-3.0-or-later
