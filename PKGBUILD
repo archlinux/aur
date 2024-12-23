@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktorrent-git
-pkgver=24.04.70.r3267.177a8d69
+pkgver=25.03.70.r3408.f578e082a
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. (GIT version)"
 arch=('x86_64')
@@ -12,7 +12,6 @@ depends=(
   'glibc' # libc.so libm.so
   'libktorrent' 'libKTorrent6.so'
   'qt6-base' # libQt6Core.so libQt6DBus.so libQt6Gui.so libQt6Network.so  libQt6Widgets.so libQt6Xml.so
-  'qt6-5compat' # libQt6Core5Compat.so
   'knotifyconfig' # libKF6NotifyConfig.so
   'kcmutils' # libKF6KCMUtils.so
   'kcompletion' # libKF6Completion.so
@@ -62,6 +61,7 @@ optdepends=(
   'phonon-qt6: for multimedia plugin'
   'qt6-webengine: for search and RSS plugin'
   'syndication: for RSS plugin'
+  'qt6-5compat: for RSS plugin'
 )
 checkdepends=('appstream')
 provides=(
