@@ -2,7 +2,7 @@
 pkgname=python-timew-report
 _name=${pkgname#python-}
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An interface for Timewarrior report data"
 arch=('any')
 license=('MIT')
