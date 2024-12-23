@@ -1,7 +1,7 @@
 pkgbase = python-html2image-bin
 	pkgdesc = Generates images from headless browsers and html/css strings or files
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vgalin/html2image
 	arch = x86_64
 	license = MIT

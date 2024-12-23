@@ -2,7 +2,7 @@
 pkgname=python-html2image-bin
 _pkgname=html2image
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Generates images from headless browsers and html/css strings or files"
 arch=('x86_64')
 url="https://github.com/vgalin/html2image"
