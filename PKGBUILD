@@ -4,7 +4,7 @@
 pkgname=python-bumpfontversion
 _pyname=${pkgname#python-}
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Bumps the version of a font source file'
 arch=(any)
 url="https://github.com/simoncozens/$_pyname"
