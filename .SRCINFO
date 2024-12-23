@@ -1,7 +1,7 @@
 pkgbase = python-scikit-base
 	pkgdesc = Base classes for sklearn-like parametric objects
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sktime/skbase
 	arch = any
 	license = BSD-3-Clause

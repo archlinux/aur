@@ -3,7 +3,7 @@
 _name=scikit-base
 pkgname=python-${_name,,}
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Base classes for sklearn-like parametric objects'
 arch=('any')
 url="https://github.com/sktime/skbase"
