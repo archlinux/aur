@@ -3,7 +3,7 @@
 _pkgname=certbot-dns-henet
 pkgname=$_pkgname-git
 pkgver=r20.b8fd595
-pkgrel=1
+pkgrel=2
 pkgdesc="he.net DNS Authenticator plugin for Certbot"
 arch=('any')
 license=('MIT')
