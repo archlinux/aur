@@ -5,7 +5,7 @@
 
 pkgname=python-pypuppetdb
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for working with the PuppetDB REST API'
 arch=('any')
 url='https://github.com/voxpupuli/pypuppetdb'
@@ -14,8 +14,15 @@ depends=('python-requests')
 makedepends=('python-setuptools' 'python-sphinx_rtd_theme'
              'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest-cov' 'python-mock' 'python-httpretty')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/voxpupuli/pypuppetdb/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('a1f924c2fa63a915581c48a14512388e949d39ff3420b79a323b50949d2bf8fadcf6d92951480e0926d07dc18d82d1f46a35e80e812e5f0daa8f7cc0622c39de')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/voxpupuli/pypuppetdb/archive/refs/tags/${pkgver}.tar.gz"
+        "fix-deprecations-warnings.patch")
+sha512sums=('a1f924c2fa63a915581c48a14512388e949d39ff3420b79a323b50949d2bf8fadcf6d92951480e0926d07dc18d82d1f46a35e80e812e5f0daa8f7cc0622c39de'
+            '386e920dfc74a3ef0eeb691010fa8e0bfb0d9b218c2d4c9b0949f06ae26e6236bb1574fbcee1f471e1db5acb8537dc9a30d24085815230f5fbb262c41644183e')
+
+prepare() {
+  cd ${pkgname#python-}-${pkgver}
+  patch -p1 < ../fix-deprecations-warnings.patch
+}
 
 build() {
   cd ${pkgname#python-}-${pkgver}
