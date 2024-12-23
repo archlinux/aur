@@ -5,7 +5,7 @@
 # Contributors: CodeImp
 
 pkgname=veeam
-pkgver=6.2.0.101
+pkgver=6.3.0.73
 pkgrel=1
 pkgdesc="Veeam Agent for Linux"
 arch=('x86_64')
@@ -14,8 +14,8 @@ install=${pkgname}.install
 license=('custom')
 depends=('ncurses' 'lvm2' 'fuse' 'mlocate' 'veeamblksnap-dkms')
 source=( "$url/rpm/el/8/x86_64/veeam-$pkgver-1.el8.x86_64.rpm" "$url/rpm/el/9/x86_64/veeam-libs-$pkgver-1.x86_64.rpm" )
-sha256sums=('d53752a915350ef20931699b7cb5d1c5104485e5e7d3d15055900f8e32916692'
-  'c2eae10e6901548bdd50d4210d2e282c63b18e8656e5825c612200cf54b8be8a')
+sha256sums=('41bb5b44dd8e7034ec250d9301ed5810550642a5705a43418a6ea8cdadba784d'
+  'af12b7fbac9041d4a4e3683fef478e6d710b1b6e7334173766b01728d3933f58')
 noextract=("$pkgname-$pkgver-1.el8.x86_64.rpm")
 backup=('etc/veeam/veeam.ini' 'usr/share/veeam/lpb_scheme.sql' 'usr/share/veeam/db_upgrade.sql' 'usr/share/veeam/db_scheme.sql' 'var/lib/veeam/veeam_db.sqlite' 'var/lib/veeam/veeam_db.sqlite-shm' 'var/lib/veeam/veeam_db.sqlite-wal')
 
