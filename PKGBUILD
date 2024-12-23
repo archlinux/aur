@@ -2,11 +2,11 @@
 
 pkgname=diffenator2
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Compare two font families, descendent of fontdiffenator'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
-license=()
+license=(Apache-2.0)
 _pydeps=(blackrenderer # [skia]
          fonttools
          freetype-py
