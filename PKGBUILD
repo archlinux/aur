@@ -1,8 +1,8 @@
-# Maintainer: zaps166 <spaz16@wp.pl>
+# Maintainer: zaps166 <mumei6102@gmail.com>
 
 pkgname=qmplay2
-pkgver=24.12.06
-pkgrel=2
+pkgver=24.12.23
+pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/zaps166/QMPlay2'
@@ -12,17 +12,12 @@ optdepends=('pulseaudio: PulseAudio support'
             'game_music_emu-kode54-git: Better chiptune support (less bugs in sound, AUR package)')
 makedepends=('ninja' 'clang' 'pkg-config' 'qt6-tools' 'cmake' 'fakeroot' 'patch')
 options=(!lto)
-source=("https://github.com/zaps166/QMPlay2/releases/download/${pkgver}/QMPlay2-src-${pkgver}.tar.xz"
-        "https://github.com/zaps166/QMPlay2/commit/2ded75d71b78ce7859bc0b9b11f30e2dfd39da95.patch")
-sha256sums=(dc59d9b87f3af6753195be1793a2e10aebf3ad59d20e2e43a5c21e10a46c7cec
-            c5dc82c79f2cf474b82fa838b90ad342e89402d8d10dd1fd0dbf9ae23f6b788d
-)
+source=("https://github.com/zaps166/QMPlay2/releases/download/${pkgver}/QMPlay2-src-${pkgver}.tar.xz")
+sha256sums=(9b7e53c01dfce2cc7359c889e07b44aefca7af18ceee820561bbc760dc26708a)
 
 prepare()
 {
     mkdir -p $srcdir/QMPlay2-build
-    cd $srcdir/QMPlay2-src-${pkgver}
-    patch -p1 < ../2ded75d71b78ce7859bc0b9b11f30e2dfd39da95.patch
 }
 
 build()
