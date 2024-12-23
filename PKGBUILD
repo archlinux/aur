@@ -1,7 +1,7 @@
 # Maintainer: mojyack <mojyack at gmail.com>
 pkgname=fcitx5-mikan-git
-pkgver=1
-pkgrel=1
+pkgver=1.6.4_r277d102
+pkgrel=2
 pkgdesc='mikan input method for fcitx5'
 arch=('x86_64')
 url='https://github.com/mojyack/mikan'
@@ -20,8 +20,9 @@ pkgver() {
 
 build() {
     cd source
+    git submodule update --recursive --init
     meson setup release
-    meson configure -Dprefix=/usr -Dlibdir=lib/fcitx5 -Ddictionary_path=share/mikan-im/dic -Dbuildtype=release release
+    meson configure -Dprefix=/usr -Dlibdir=lib/fcitx5 -Dbuildtype=release release
     ninja -C release
 }
 
