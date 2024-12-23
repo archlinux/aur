@@ -3,7 +3,7 @@
 pkgname=plex-htpc
 pkgver=1.69.0.264
 _pkghash=8ae11259
-pkgrel=1
+pkgrel=2
 pkgdesc="Plex HTPC client for linux"
 arch=('x86_64')
 url='http://plex.tv'
@@ -13,7 +13,7 @@ depends=(libgl
   alsa-lib
   dbus
   expat
-  ffmpeg6.1
+  ffmpeg
   fontconfig
   freetype2
   gcc-libs
@@ -81,7 +81,6 @@ package() {
   rm -rf $pkgdir/opt/${pkgname}/lib/libdrm.so*
   rm -rf $pkgdir/opt/${pkgname}/lib/libdrm_*.so*
   rm -rf $pkgdir/opt/${pkgname}/lib/libpciaccess.so*
-  rm -rf $pkgdir/opt/${pkgname}/lib/libswresample.so*
   rm -rf $pkgdir/opt/${pkgname}/lib/libva.so*
   rm -rf $pkgdir/opt/${pkgname}/lib/libva-*.so*
 
