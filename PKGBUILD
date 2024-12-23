@@ -2,7 +2,7 @@
 
 pkgname=fontbakery
 pkgver=0.12.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line tool for checking the quality of font projects'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
