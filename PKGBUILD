@@ -1,6 +1,6 @@
 # Maintainer: K4YT3X <aur@k4yt3x.com>
 pkgname=video2x-git
-pkgver=r941.7ee9d60
+pkgver=6.3.1.r4.g31c616d
 pkgrel=1
 pkgdesc="A machine learning-based video super resolution and frame interpolation framework"
 arch=('x86_64')
@@ -10,17 +10,28 @@ depends=('ffmpeg' 'ncnn' 'vulkan-driver' 'spdlog' 'boost-libs')
 makedepends=('git' 'cmake' 'clang' 'vulkan-headers' 'openmp' 'boost')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+${url}.git")
-b2sums=('SKIP')
+source=("git+${url}.git"
+	    "git+https://github.com/k4yt3x/libreal-esrgan-ncnn-vulkan.git"
+	    "git+https://github.com/k4yt3x/librealcugan-ncnn-vulkan.git"
+	    "git+https://github.com/k4yt3x/librife-ncnn-vulkan.git")
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${pkgname%-git}"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd "${srcdir}/${pkgname%-git}"
-    git submodule update --init --recursive
+    git rm third_party/{ncnn,spdlog,boost}
+    git submodule init
+	git config submodule.third_party/libreal_esrgan_ncnn_vulkan.url "${srcdir}/libreal-esrgan-ncnn-vulkan"
+	git config submodule.third_party/librealcugan_ncnn_vulkan.url "${srcdir}/librealcugan-ncnn-vulkan"
+	git config submodule.third_party/librife_ncnn_vulkan.url "${srcdir}/librife-ncnn-vulkan"
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
