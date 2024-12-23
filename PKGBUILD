@@ -4,7 +4,7 @@
 pkgname=python-descartes
 _pyname=descartes
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python lib for using geometric objects as matplotlib paths and patches.'
 arch=('any')
 url='https://bitbucket.org/sgillies/descartes/'
