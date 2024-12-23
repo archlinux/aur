@@ -1,11 +1,11 @@
 # Maintainer: K4YT3X <aur@k4yt3x.com>
 pkgname=video2x-qt6-git
-pkgver=r60.e01d17b
+pkgver=6.3.1.r6.g678ebb5
 pkgrel=1
 pkgdesc="The Qt6 GUI for Video2X"
 arch=('x86_64')
 url="https://github.com/k4yt3x/video2x-qt6"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 depends=('video2x' 'qt6-base')
 makedepends=('git' 'cmake' 'qt6-tools')
 provides=("${pkgname%-git}")
