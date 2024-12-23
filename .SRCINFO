@@ -1,7 +1,7 @@
 pkgbase = llama.cpp-server-tray
 	pkgdesc = Companion system tray app for llama.cpp-server-service
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/envolution/llama.cpp-server-tray
 	arch = any
 	license = MIT

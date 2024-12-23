@@ -4,7 +4,7 @@
 pkgname=llama.cpp-server-tray
 _pname=llama_cpp_server_tray
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Companion system tray app for llama.cpp-server-service"
 arch=('any')
 url="https://github.com/envolution/llama.cpp-server-tray"
