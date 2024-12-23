@@ -4,7 +4,7 @@
 pkgname=python-pydeprecate
 _pkgname=pydeprecate
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Python module for deprecation documentation"
 arch=('any')
 url="https://github.com/Borda/pydeprecate"
