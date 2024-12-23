@@ -1,0 +1,13 @@
+pkgbase = qmicroz
+	pkgdesc = C++/Qt wrapper over miniz. Zip/Unzip with Qt.
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/artemvlas/qmicroz
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = qt6-base
+	source = https://github.com/artemvlas/qmicroz/archive/refs/tags/v0.4.tar.gz
+	sha256sums = 5f8f86916402f32d359fc23c9d2133194b9b74511e6ac6afb0041cb4ddeb5af8
+
+pkgname = qmicroz
