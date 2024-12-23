@@ -1,15 +1,15 @@
 # Maintainer: claymorwan <claymorwan@proton.me> <claymorw@gmail.com>
 
-_sourceName="asset_ripper"
+_sourceName="asset-ripper"
 _exeName="AssetRipper.GUI.Free"
-_finalName="asset-ripper"
 
-pkgname=asset_ripper-bin
+pkgname=asset-ripper-bin
 pkgver=1.1.8
 pkgrel=1
 pkgdesc="GUI Application to work with engine assets, asset bundles, and serialized files"
 arch=(x86_64 aarch64)
 url="https://github.com/AssetRipper/AssetRipper"
+depends=('gcc-libs' 'dbus' 'glibc')
 
 source=("https://raw.githubusercontent.com/AssetRipper/AssetRipper/refs/tags/$pkgver/LICENSE.md"
         "https://raw.githubusercontent.com/AssetRipper/AssetRipper/refs/tags/$pkgver/Media/Images/LogoReimagined/LogoReimaginedTransparent.png")
@@ -21,7 +21,7 @@ sha256sums=('8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b'
 sha256sums_x86_64=('135a8b5a381a6708f03b1a729198fa1f75cceb6b3a3d43b65acf497f49c98b98')
 sha256sums_aarch64=('135a8b5a381a6708f03b1a729198fa1f75cceb6b3a3d43b65acf497f49c98b98')
 
-license=("GPL-3.0")
+license=("GPL-3.0-only")
 
 package() {
   install -d "$pkgdir/usr/bin/"
@@ -35,15 +35,15 @@ package() {
   install -Dm755 "libTexture2DDecoderNative.so" "$pkgdir/opt/$_sourceName/libTexture2DDecoderNative.so"
 
   install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
-  install -D LogoReimaginedTransparent.png "$pkgdir/usr/share/icons/$_finalName.png"
+  install -D LogoReimaginedTransparent.png "$pkgdir/usr/share/icons/$_sourceName.png"
 
-  ln -s "$pkgdir/opt/$_sourceName/$_exeName" "$pkgdir/usr/bin/$_finalName"
+  ln -s "/opt/$_sourceName/$_exeName" "$pkgdir/usr/bin/$_sourceName"
 
-  install -Dm0644 /dev/stdin $pkgdir/usr/share/applications/$_finalName.desktop << EOF
+  install -Dm0644 /dev/stdin $pkgdir/usr/share/applications/$_sourceName.desktop << EOF
 [Desktop Entry]
 Name=Asset Ripper
-Exec=$_finalName
-Icon=$_finalName
+Exec=$_sourceName
+Icon=$_sourceName
 Terminal=false
 Type=Application
 Comment=GUI asset ripper

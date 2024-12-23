@@ -1,18 +1,21 @@
-pkgbase = asset_ripper-bin
+pkgbase = asset-ripper-bin
 	pkgdesc = GUI Application to work with engine assets, asset bundles, and serialized files
 	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/AssetRipper/AssetRipper
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0
+	license = GPL-3.0-only
+	depends = gcc-libs
+	depends = dbus
+	depends = glibc
 	source = https://raw.githubusercontent.com/AssetRipper/AssetRipper/refs/tags/1.1.8/LICENSE.md
 	source = https://raw.githubusercontent.com/AssetRipper/AssetRipper/refs/tags/1.1.8/Media/Images/LogoReimagined/LogoReimaginedTransparent.png
 	sha256sums = 8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b
 	sha256sums = 223a74636902eeed55ad13a44e7292ff9f532df24c706dd8d566b33d00246757
-	source_x86_64 = asset_ripper.tar.gz::https://github.com/AssetRipper/AssetRipper/releases/download/1.1.8/AssetRipper_linux_x64.zip
+	source_x86_64 = asset-ripper.tar.gz::https://github.com/AssetRipper/AssetRipper/releases/download/1.1.8/AssetRipper_linux_x64.zip
 	sha256sums_x86_64 = 135a8b5a381a6708f03b1a729198fa1f75cceb6b3a3d43b65acf497f49c98b98
-	source_aarch64 = asset_ripper.tar.gz::https://github.com/AssetRipper/AssetRipper/releases/download/1.1.8/AssetRipper_linux_arm64.zip
+	source_aarch64 = asset-ripper.tar.gz::https://github.com/AssetRipper/AssetRipper/releases/download/1.1.8/AssetRipper_linux_arm64.zip
 	sha256sums_aarch64 = 135a8b5a381a6708f03b1a729198fa1f75cceb6b3a3d43b65acf497f49c98b98
 
-pkgname = asset_ripper-bin
+pkgname = asset-ripper-bin
