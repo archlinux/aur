@@ -1,7 +1,7 @@
 pkgbase = markdown2ctags
 	pkgdesc = Generate ctags-compatible tags files for Markdown documents
 	pkgver = 0.3.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/jszakmeister/markdown2ctags
 	arch = any
 	license = BSD-3-Clause
