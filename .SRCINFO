@@ -1,14 +1,17 @@
 pkgbase = rshell
-	pkgdesc = A remote shell for working with MicroPython boards.
-	pkgver = 0.0.32
+	pkgdesc = A remote shell for working with MicroPython boards
+	pkgver = 0.0.36
 	pkgrel = 1
 	url = https://github.com/dhylands/rshell
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-pyudev
 	depends = python-pyserial
-	source = https://files.pythonhosted.org/packages/source/r/rshell/rshell-0.0.32.tar.gz
-	sha256sums = 7eb230676d49cd5831452f8aa2e0630d284708fd650a8530c324b2da8146709f
+	source = https://files.pythonhosted.org/packages/source/r/rshell/rshell-0.0.36.tar.gz
+	sha256sums = 4a66d835207479550e59d0dd3e83003d04c4eca78a4e49250f887ed2dd4b0bf5
 
 pkgname = rshell
