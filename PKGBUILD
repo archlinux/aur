@@ -3,7 +3,7 @@
 _name=pathpy3
 pkgname=python-$_name
 pkgver=3.0.0a2
-pkgrel=1
+pkgrel=2
 pkgdesc="pathpy: path data analysis"
 arch=('any')
 url="https://www.pathpy.net"
@@ -26,6 +26,17 @@ build() {
 	echo "Fixing $file"
     	sed -i 's/from singledispatchmethod/from functools/' "$file"
     done
+
+    # remove deprecated sphinx calls for documentation creation (not used)
+    for file in $(grep -r 'add_stylesheet' ./ | cut -d: -f1); do
+	echo "Fixing $file"
+    	sed -i 's/add_stylesheet/add_css_file/' "$file"
+    done
+    for file in $(grep -r 'add_javascript' ./ | cut -d: -f1); do
+	echo "Fixing $file"
+    	sed -i 's/add_javascript/add_js_file/' "$file"
+    done
+
     python -m build --wheel --no-isolation -x
 }
 package() {

@@ -1,7 +1,7 @@
 pkgbase = python-pathpy3
 	pkgdesc = pathpy: path data analysis
 	pkgver = 3.0.0a2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pathpy.net
 	arch = any
 	license = AGPL
