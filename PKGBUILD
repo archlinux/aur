@@ -8,7 +8,7 @@
 _pkgname=apache-libcloud
 pkgname=python-apache-libcloud
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A standard Python library that abstracts away differences among multiple cloud provider APIs. "
 arch=('any')
 url="https://libcloud.apache.org"
