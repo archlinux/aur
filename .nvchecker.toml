@@ -1,0 +1,5 @@
+[python-markitdown]
+source="github-graphql"
+github="microsoft/markitdown"
+use_max_tag=true
+prefix='v'

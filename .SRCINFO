@@ -1,7 +1,7 @@
 pkgbase = python-markitdown
 	pkgdesc = Utility tool for converting various files to Markdown
-	pkgver = 0.0.1a2
-	pkgrel = 2
+	pkgver = 0.0.1a3
+	pkgrel = 1
 	url = https://github.com/microsoft/markitdown
 	arch = any
 	license = MIT
@@ -24,7 +24,7 @@ pkgbase = python-markitdown
 	depends = python-youtube-transcript-api
 	depends = python-speechrecognition
 	depends = python-pathvalidate
-	source = https://files.pythonhosted.org/packages/14/d8/e23bd08cd9749cb16ec5832a9e02d5f715efe2c7fc7e2637afaf41df2eee/markitdown-0.0.1a2.tar.gz
-	sha256sums = b4fb8234e01f743d9a31c5191ae446ccf8220b17ee90598323b185c145faa407
+	source = python-markitdown-0.0.1a3.tar.gz::https://github.com/microsoft/markitdown/archive/refs/tags/v0.0.1a3.tar.gz
+	sha256sums = 3f645f3d006a7bd9c2196ea22eb849c427f0746b87f6958baa693e76b922f0e5
 
 pkgname = python-markitdown
