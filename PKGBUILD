@@ -5,7 +5,7 @@
 pkgname=python-mojimoji
 _pkgname=mojimoji
 pkgver=0.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast converter between Japanese hankaku and zenkaku characters"
 url="https://github.com/studio-ousia/mojimoji"
 arch=('x86_64' 'i686')
