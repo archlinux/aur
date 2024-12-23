@@ -1,6 +1,6 @@
 pkgbase = ctune-git
 	pkgdesc = NCurses internet radio player for Linux.
-	pkgver = v1.3.2
+	pkgver = v1.3.3
 	pkgrel = 0
 	url = https://github.com/An7ar35/ctune
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = ctune-git
 	optdepends = vlc: for VLC player plugin support
 	provides = ctune
 	conflicts = ctune
-	source = git+https://github.com/An7ar35/ctune.git#tag=v1.3.2
+	source = git+https://github.com/An7ar35/ctune.git#tag=v1.3.3
 	sha512sums = SKIP
 
 pkgname = ctune-git
