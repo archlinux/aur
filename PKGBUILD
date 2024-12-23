@@ -4,7 +4,7 @@
 pkgname=python-cohere
 _pkgname=cohere-python
 pkgver=5.13.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Python Library for Accessing the Cohere API"
 arch=(any)
 url="https://github.com/cohere-ai/cohere-python"

@@ -1,7 +1,7 @@
 pkgbase = python-cohere
 	pkgdesc = Python Library for Accessing the Cohere API
 	pkgver = 5.13.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cohere-ai/cohere-python
 	arch = any
 	license = MIT
