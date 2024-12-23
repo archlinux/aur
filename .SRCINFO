@@ -1,7 +1,7 @@
 pkgbase = python-types-pygments
 	pkgdesc = Typing stubs for Pygments
 	pkgver = 2.17.0.20240106
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python/typeshed
 	arch = any
 	license = Apache-2.0
