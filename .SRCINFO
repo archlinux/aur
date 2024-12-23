@@ -1,15 +1,13 @@
 pkgbase = stardict-full-eng-rus
 	pkgdesc = Large English-Russian dictionary for Stardict
 	pkgver = 2.4.2
-	pkgrel = 8
-	url = http://download.huzheng.org/ru/
+	pkgrel = 9
+	url = https://sourceforge.net/projects/xdxf/
 	arch = any
 	license = GPL-2.0-only
-	makedepends = stardict-tools-git
-	makedepends = dictd
 	optdepends = stardict: to use the dictionary
 	optdepends = goldendict: to use the dictionary
-	source = http://sourceforge.net/projects/xdxf/files/dicts-stardict-form-xdxf/002c/stardict-comn_sdict05_eng_rus_full-2.4.2.tar.bz2
+	source = https://sourceforge.net/projects/xdxf//files/dicts-stardict-form-xdxf//002c/stardict-comn_sdict05_eng_rus_full-2.4.2.tar.bz2
 	sha256sums = 1a6d0aa6abc594f9f8fc8f4938637173267e9e54e534e2ecfbc672b7f284dcbb
 
 pkgname = stardict-full-eng-rus
