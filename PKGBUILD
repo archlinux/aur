@@ -9,10 +9,10 @@ pkgdesc="A simple program that emulates the detach feature of screen"
 arch=('x86_64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
-license=('MIT')
+license=('GPL')
 
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-ng")
 
 source=("LICENSE-${pkgver}::${_urlraw}/COPYING"
         "README-${pkgver}.md::${_urlraw}/README")
