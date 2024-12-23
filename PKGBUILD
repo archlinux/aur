@@ -1,4 +1,6 @@
-# Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
+# Maintainer: Gesh <gesh@gesh.uni.cx>
+# Contributor: Achmad Fathoni<fathoni.id(at)gmail.com>
+
 pkgname=python-pytest-recording
 _pkgname=pytest_recording
 pkgver=0.13.0
