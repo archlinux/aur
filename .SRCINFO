@@ -1,7 +1,7 @@
 pkgbase = pyside2
 	pkgdesc = CPython bindings generator for C++ libraries - with Debian backport patches
 	pkgver = 5.15.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.qt.io/Qt_for_Python
 	arch = x86_64
 	license = LGPL-3.0-or-later
@@ -47,6 +47,8 @@ pkgbase = pyside2
 	source = shiboken2-clang-Suppress-class-scope-look-up-for-paramete.patch
 	source = shiboken2-clang-Write-scope-resolution-for-all-parameters.patch
 	source = Modify-sendCommand-signatures.patch
+	source = fix-for-python-3-13.patch
+	source = bump-supported-version-3-13.patch
 	sha256sums = 6d3ed6fd17275ea74829ab56df9c2e7641bfca6b5b201cf244998fa81cf07360
 	sha256sums = ff03c7cf0c6c8307d9b175b85a9a8b98fcc846a79f845763f79cd3956b03379f
 	sha256sums = 8ae7bdbb575d644a6f07ffa78a8ced9e571772da21bcd5ccb022bb822b564861
@@ -67,6 +69,8 @@ pkgbase = pyside2
 	sha256sums = 02ad885d12e9169c071974dc72218d0f3fd52c5cdad361c6d2a841fadf4d57ad
 	sha256sums = ca24294040f1443415bcf49e90dcdfa31a523abade4b7ee44f32195be43ffdbd
 	sha256sums = 2f39461136a718a9f75bd94c1e71fc358764af25f68c650fd503c777e32ff302
+	sha256sums = 4b3419f59bc787c8ccab179065eed6c1f67a6fb3ebdc3e9d6813d682a257be4a
+	sha256sums = e6e9652da36526b5ba3a058c0870a3456e87f51db895d517ab8936cee6802dc3
 
 pkgname = pyside2
 	pkgdesc = Enables the use of Qt5 APIs in Python applications
