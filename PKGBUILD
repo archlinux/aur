@@ -4,7 +4,7 @@
 pkgname=python-httpstan
 _pkgname=httpstan
 pkgver=4.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP-based REST interface to Stan, a package for Bayesian inference."
 arch=('i686' 'x86_64')
 url='https://httpstan.readthedocs.org'

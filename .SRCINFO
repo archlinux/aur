@@ -1,7 +1,7 @@
 pkgbase = python-httpstan
 	pkgdesc = HTTP-based REST interface to Stan, a package for Bayesian inference.
 	pkgver = 4.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://httpstan.readthedocs.org
 	arch = i686
 	arch = x86_64
