@@ -5,7 +5,7 @@
 pkgname=python-shortuuid
 _pkgname=${pkgname#python-}
 pkgver=1.0.13
-pkgrel=2
+pkgrel=3
 pkgdesc='library that generates concise, unambiguous, URL-safe UUIDs'
 arch=(any)
 url="https://github.com/skorokithakis/$_pkgname"
