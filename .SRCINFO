@@ -1,10 +1,13 @@
 pkgbase = python-async-tkinter-loop
 	pkgdesc = Asynchronous mainloop implementation for tkinter.
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://insolor.github.io/async-tkinter-loop
 	arch = any
 	license = MIT
+	checkdepends = python-customtkinter
+	checkdepends = python-pytest
+	checkdepends = xorg-server-xvfb
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry-core
