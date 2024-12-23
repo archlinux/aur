@@ -1,7 +1,7 @@
 pkgbase = python-cutie
 	pkgdesc = Command line User Tools for Input Easification
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kamik423/cutie
 	arch = any
 	license = MIT
