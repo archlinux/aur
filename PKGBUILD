@@ -3,7 +3,7 @@
 pkgname=python-click-man
 _pyname="${pkgname#python-}"
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Automate generation of man pages for python click applications'
 arch=(any)
 url="https://pypi.python.org/pypi/$_pyname"
