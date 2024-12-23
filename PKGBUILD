@@ -3,7 +3,7 @@
 _name=hrv-analysis
 pkgname=python-${_name,,}
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='a package to calculate features from Rr Interval for HRV analyses'
 arch=('any')
 url="https://github.com/Aura-healthcare/hrv-analysis"

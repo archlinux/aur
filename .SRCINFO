@@ -1,7 +1,7 @@
 pkgbase = python-hrv-analysis
 	pkgdesc = a package to calculate features from Rr Interval for HRV analyses
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aura-healthcare/hrv-analysis
 	arch = any
 	license = GPL3
