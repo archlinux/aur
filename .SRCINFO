@@ -1,7 +1,7 @@
 pkgbase = snakedream-git
 	pkgdesc = Python interface for a Daydream controller.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zedeldi/snakedream
 	arch = any
 	license = MIT
