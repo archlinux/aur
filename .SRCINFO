@@ -1,0 +1,20 @@
+pkgbase = python-standard-aifc
+	pkgdesc = Standard library aifc redistribution.
+	pkgver = 3.13.0
+	pkgrel = 1
+	url = https://github.com/youknowone/python-deadlib/aifc
+	arch = any
+	license = PSF-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-chunk
+	depends = python-audioop
+	provides = python-aifc
+	source = python-standard-aifc-3.13.0.tar.gz::https://github.com/youknowone/python-deadlib/releases/download/v3.13.0/standard_aifc-3.13.0.tar.gz
+	sha512sums = 021291853a6c00c812f5a83e803980edd81cbeb47e2f20513372aeaf837825d94288cc46c36e37b789d1abadd2bd51fde974c90543be4983cbf373170cd1ee10
+
+pkgname = python-standard-aifc
