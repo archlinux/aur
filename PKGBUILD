@@ -1,5 +1,5 @@
 pkgname=gpt4all-chat
-pkgver=3.5.2
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
@@ -28,7 +28,7 @@ declare -rAg _modules_name_map=(
     [gpt4all-chat/deps/fmt]=https://github.com/fmtlib/fmt/archive/0c9fce2ffefecfdce794e1859584e25877b7b592.tar.gz
     [gpt4all-chat/deps/DuckX]=https://github.com/nomic-ai/DuckX/archive/6e31dfb280e2107fbf4f6a15098c38b014f1bbcc.tar.gz
     [gpt4all-chat/deps/QXlsx]=https://github.com/nomic-ai/QXlsx/archive/29e81b369128525749dcb6516195b6b062eda955.tar.gz
-    [gpt4all-chat/deps/Jinja2Cpp]=https://github.com/nomic-ai/jinja2cpp/archive/bcf2f82ae120f0a71c114ecb64a63ab5fe1ffc79.tar.gz
+    [gpt4all-chat/deps/Jinja2Cpp]=https://github.com/nomic-ai/jinja2cpp/archive/e0af3e4b2066776dc5c4567fe124ed68b4438124.tar.gz
     [gpt4all-chat/deps/rapidjson]=https://github.com/nomic-ai/rapidjson/archive/9b547ef4bd86210ef084abc2790bd1ddfe66b592.tar.gz
     [gpt4all-chat/deps/rapidjson/thirdparty/gtest]=https://github.com/google/googletest/archive/ba96d0b1161f540656efdaed035b3c062b60e006.tar.gz
 )
@@ -88,7 +88,7 @@ do
     fi
 done
 unset _source_str _uri
-sha256sums=('32dec7bad50832a9d36ca010e7381ed17643a94f22274ccc341a7b44933fbaf7'
+sha256sums=('7374984392b0082357c8d1f653e5525be1271adf0100742da20eec8381591561'
             'f7af6f66802f4df86eda10fe9bbcfc75c39562bed48ef6ace719a251cf1c2fdb'
             '828e04b4938eb192f20f87f94415252863b702bee1d9ab5f0a539a15de095350'
             'b348d6b9228316e4611186df0558f032a25ffa20334e68a91a09e07ce84db77a'
@@ -96,7 +96,7 @@ sha256sums=('32dec7bad50832a9d36ca010e7381ed17643a94f22274ccc341a7b44933fbaf7'
             '5f151fe3d71bb7b719eb50ed4bdedfde9c92d9d21c7eea172eec177b9875eff5'
             'b16fc2ee15a1df76e0459df32905285c94fb59135595ccbff2095167c3c865a1'
             'cf51f45eaabd9b1fccc2c871ccdd7be81730bb0172538c9375c1e33bf5ac131c'
-            '7046894b5027cbd718e395eb11abca335998432f7710ed4cd5c7eff10866a122'
+            '1eeafa748dfe3dfae049654fc7562d605fe5cdc5ccb6ec54d15b19c666bac8ff'
             '5cfd2d27211dc9d7166bc0519ca56709605309f37428415ffdd78ac96ceb19e1'
             'f94052c10b611fd374194ca6e0dc4d159459c0b370abfe9002c13058863b7039'
             '95c080489c3170b7d7c76956fe4f224a2ef721907d7b62b508e3b72a7513afd1'
