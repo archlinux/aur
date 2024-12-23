@@ -3,7 +3,7 @@
 pkgname=python-collidoscope
 _pyname=${pkgname#python-}
 pkgver=0.6.5
-pkgrel=2
+pkgrel=3
 pkgdesc='brute force detection of glyph collisions'
 arch=(any)
 url="https://github.com/simoncozens/$_pyname"
