@@ -5,7 +5,7 @@
 
 pkgname=typecatcher
 pkgver=0.4
-pkgrel=5
+pkgrel=6
 pkgdesc='Download Google webfonts for off-line use'
 arch=(any)
 url="https://github.com/andrewsomething/$pkgname"
