@@ -1,13 +1,13 @@
 pkgbase = wyrmsun
 	pkgdesc = Real-time strategy game based on history, mythology and fiction
 	pkgver = 5.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://andrettin.github.io/
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	license = CCPL:by-sa
-	license = custom:CC0
+	license = GPL-2.0-only
+	license = CC-BY-SA-3.0
+	license = CC0-1.0
 	makedepends = boost
 	makedepends = cmake
 	makedepends = glu

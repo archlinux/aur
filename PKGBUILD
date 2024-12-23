@@ -4,11 +4,11 @@
 
 pkgname=wyrmsun
 pkgver=5.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time strategy game based on history, mythology and fiction"
 arch=('i686' 'x86_64')
 url="https://andrettin.github.io/"
-license=('GPL2' 'CCPL:by-sa' 'custom:CC0')
+license=('GPL-2.0-only' 'CC-BY-SA-3.0' 'CC0-1.0')
 depends=('hicolor-icon-theme'
          'qt5-graphicaleffects'
          'qt5-location'
