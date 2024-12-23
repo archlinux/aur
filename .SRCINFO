@@ -1,6 +1,6 @@
 pkgbase = r-jaspmetaanalysis
 	pkgdesc = Meta-Analysis Module for JASP
-	pkgver = 0.19.0
+	pkgver = 0.19.2
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspMetaAnalysis
 	arch = any
@@ -27,7 +27,13 @@ pkgbase = r-jaspmetaanalysis
 	depends = r-robma
 	depends = r-metamisc
 	depends = r-ggmcmc
-	source = jaspMetaAnalysis_0.19.0.tar.gz::https://github.com/jasp-stats/jaspMetaAnalysis/archive/refs/tags/v0.19.0.tar.gz
-	sha256sums = 37e4810fc40045e73334e841324538dc7728ca4ec2891a42c162d190fda68632
+	depends = r-clubsandwich
+	depends = r-compquadform
+	depends = r-sp
+	depends = r-dfoptim
+	depends = r-nleqslv
+	depends = r-patchwork
+	source = jaspMetaAnalysis_0.19.2.tar.gz::https://github.com/jasp-stats/jaspMetaAnalysis/archive/refs/tags/v0.19.2.tar.gz
+	sha256sums = ccc68e545940063559f2d2b4bce763fef011984d3996dd4c0c31edd098f3664d
 
 pkgname = r-jaspmetaanalysis
