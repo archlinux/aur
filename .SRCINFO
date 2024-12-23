@@ -1,7 +1,7 @@
 pkgbase = i3-gnome-pomodoro-git
 	pkgdesc = Integrate gnome-pomodoro into i3
 	pkgver = 0.1.0.r92.7fe1895
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/kantord/i3-gnome-pomodoro
 	arch = any

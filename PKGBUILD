@@ -4,7 +4,7 @@
 _srcname=i3-gnome-pomodoro
 pkgname=$_srcname-git
 pkgver=0.1.0.r92.7fe1895
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Integrate gnome-pomodoro into i3"
 arch=('any')
