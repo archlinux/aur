@@ -4,8 +4,8 @@
 
 _dotnet_ver=8.0
 pkgname=imewlconverter
-pkgver=3.1.1
-pkgrel=2
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="一款开源免费的输入法词库转换程序"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/studyzy/${pkgname}"
@@ -16,7 +16,7 @@ replaces=("${pkgname}"{-bin,-cli})
 depends=("dotnet-runtime-${_dotnet_ver}")
 makedepends=("dotnet-sdk-${_dotnet_ver}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b52bed95de6b3f435ba9d2df8016e82282f0ea2ecccc1d8fecab55d70d403f70')
+sha256sums=('690a151f6666855208c64199f7430a39e62e0eadffe36680992b98877940ffc3')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
