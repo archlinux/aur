@@ -1,6 +1,6 @@
 pkgbase = ecgen-git
 	pkgdesc = Tool for generating Elliptic curve domain parameters
-	pkgver = 0.7.7.r0.gcfb85f1
+	pkgver = 0.8.0.r0.g775e592
 	pkgrel = 1
 	url = https://github.com/J08nY/ecgen
 	arch = x86_64
