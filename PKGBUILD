@@ -6,7 +6,7 @@ pkgdesc="The Qt6 GUI for Video2X"
 arch=('x86_64')
 url="https://github.com/k4yt3x/video2x-qt6"
 license=('AGPL-3.0-only')
-depends=('video2x' 'qt6-base')
+depends=('video2x' 'qt6-base' 'spdlog')
 makedepends=('git' 'cmake' 'qt6-tools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -16,12 +16,6 @@ b2sums=('SKIP')
 pkgver() {
     cd "${pkgname%-git}"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd "${srcdir}/${pkgname%-git}"
-    git rm third_party/video2x
-    git submodule update --init --recursive
 }
 
 build() {

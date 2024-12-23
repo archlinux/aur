@@ -10,6 +10,7 @@ pkgbase = video2x-qt6-git
 	makedepends = qt6-tools
 	depends = video2x
 	depends = qt6-base
+	depends = spdlog
 	provides = video2x-qt6
 	conflicts = video2x-qt6
 	source = git+https://github.com/k4yt3x/video2x-qt6.git
