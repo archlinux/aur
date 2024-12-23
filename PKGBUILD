@@ -2,7 +2,7 @@
 
 pkgname=python-pip-audit
 pkgver=2.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for scanning Python environments for known vulnerabilities'
 arch=('any')
 url='https://github.com/pypa/pip-audit'
