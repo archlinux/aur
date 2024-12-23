@@ -1,10 +1,13 @@
 pkgbase = nextdns
-	pkgdesc = NextDNS DNS-over-HTTPS client
+	pkgdesc = NextDNS DNS/53 to DoH Proxy
 	pkgver = 1.44.3
 	pkgrel = 1
 	url = https://github.com/nextdns/nextdns
 	install = nextdns.install
 	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
 	license = MIT
 	makedepends = go
 	options = !lto
