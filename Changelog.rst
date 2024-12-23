@@ -1,6 +1,12 @@
 Changelog
 =========
 
+**[6.2.0] ----- 2024-12-22** ::
+
+	    Bug fix with display of ssh prefix in status / show-info
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[6.1.0] ----- 2024-12-21** ::
 
 	    Timeout between ssh reconnects now 30 seconds
