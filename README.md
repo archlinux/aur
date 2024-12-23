@@ -39,6 +39,13 @@ This command only needs to be executed once.
 Please only submit issues if they aren't bug reports about the package or help requests.
 Please keep them on the AUR only. This prevents unnecessary signups.
 
+## Branches
+This repository (at least if you view it on [sos!git](https://git.staropensource.de/JeremyStarTM/aur-linux-clear))
+has two branches: `master` and `develop`. The `master` branch is the stable branch, where stable changes
+are introduced. The `develop` branch is (as you might have already guessed) the development branch.
+
+Please only submit PRs to the `develop` branch. Pull requests to the `master` branch will be rejected.
+
 ## License
 This package does not yet have a license as the original repository (before [me](https://git.staropensource.de/JeremyStarTM) becoming it's maintainer) did not have one yet.
 I have contacted [metak](https://aur.archlinux.org/account/metak) (the previous maintainer) to negotiate a license.
