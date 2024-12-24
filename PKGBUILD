@@ -4,7 +4,7 @@
 pkgname=caffeine-ng-git
 _pkgname=caffeine-ng
 pkgver=4.2.0.r34.g1c638ba
-pkgrel=1
+pkgrel=2
 pkgdesc="Status bar application able to temporarily inhibit the screensaver and sleep mode."
 arch=(any)
 url="https://codeberg.org/WhyNotHugo/caffeine-ng"
