@@ -7,7 +7,7 @@
 pkgname=python-vunit_hdl
 _pkg="${pkgname#python-}"
 pkgver=4.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Unit Testing Framework for VHDL/SystemVerilog'
 arch=('any')
 url='https://github.com/vunit/vunit'
