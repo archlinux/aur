@@ -1,20 +1,18 @@
-# Maintainer: Benjamin Denhartog <ben@sudoforge.com>
-
-# For ISSUES, REQUESTS, and QUESTIONS:
-# https://github.com/sudoforge/pkgbuilds
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor: Benjamin Denhartog <ben@sudoforge.com>
 
 pkgname=buildozer-bin
-pkgver=4.2.5
-pkgrel=2
+pkgver=7.3.1
+pkgrel=1
 pkgdesc='A command line tool to rewrite Bazel BUILD files using standard conventions'
 arch=('x86_64')
 license=('Apache')
 url='https://github.com/bazelbuild/buildtools'
 source=(
-  "${pkgname%-bin}-${pkgver}::${url}/releases/download/${pkgver}/${pkgname%-bin}-linux-amd64"
-  "LICENSE-${pkgver}::https://raw.githubusercontent.com/bazelbuild/buildtools/${pkgver}/LICENSE"
+  "${pkgname%-bin}-${pkgver}::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64"
+  "LICENSE-${pkgver}::https://raw.githubusercontent.com/bazelbuild/buildtools/v${pkgver}/LICENSE"
 )
-sha256sums=('e8e39b71c52318a9030dd9fcb9bbfd968d0e03e59268c60b489e6e6fc1595d7b'
+sha256sums=('3305e287b3fcc68b9a35fd8515ee617452cd4e018f9e6886b6c7cdbcba8710d4'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 
 package() {
