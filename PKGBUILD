@@ -3,7 +3,7 @@
 _base=usaddress
 pkgname=python-${_base}
 pkgver=0.5.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A python library for parsing unstructured United States address strings into address components."
 arch=('any')
 url="https://github.com/datamade/${_base}"

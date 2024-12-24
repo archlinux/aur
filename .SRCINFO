@@ -1,7 +1,7 @@
 pkgbase = python-usaddress
 	pkgdesc = A python library for parsing unstructured United States address strings into address components.
 	pkgver = 0.5.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/datamade/usaddress
 	arch = any
 	license = MIT

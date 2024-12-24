@@ -1,0 +1,4 @@
+[python-usaddress]
+source = "git"
+git = "https://github.com/datamade/usaddress.git"
+prefix = "v"
