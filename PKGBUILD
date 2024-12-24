@@ -2,7 +2,7 @@
 
 pkgname=atool2-git
 _pkgname=atool
-pkgver=r24.c135b88
+pkgver=r25.1db9e46
 pkgrel=2
 pkgdesc="A script for managing file archives of various types (with zstd support)"
 arch=('any')
@@ -31,6 +31,12 @@ sha256sums=('SKIP')
 pkgver() {
   cd ${_pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
+}
+
+prepare() {
+  cd "${srcdir}"/${_pkgname}
+  rm -rf build-aux
+  autoreconf -i
 }
 
 build() {
