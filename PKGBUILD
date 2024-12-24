@@ -3,7 +3,7 @@
 _pkgname=python-varname
 pkgname=${_pkgname}-git
 pkgver=0.13.0.r0.gea1ec82
-pkgrel=3
+pkgrel=4
 pkgdesc="A Python library to retrieve variable names from functions or classes -- git version"
 arch=('any')
 url="https://github.com/pwwang/${_pkgname}"
