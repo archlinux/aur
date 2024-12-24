@@ -2,7 +2,7 @@
 # Contributor: Yigit Dallilar <yigit.dallilar@gmail.com>
 
 pkgname=astroimagej
-pkgver=5.3.3
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="a simple and powerful tool for astronomical image analysis and precise photometry"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('java-runtime')
 license=('GPL')
 source=("${url}installation_packages/AstroImageJ_v${pkgver}.00-linux-x86_64Bit.tar.gz"
         "aij" "astroimagej.desktop")
-sha256sums=('ff720d2f364aa1e90727a782bf785f1fa5214555130cd9438c5553b2dc383c03'
+sha256sums=('38e16f536bc6ae698e1b789b2c062fe526281ec79ca16722630a6d7f60b87a28'
             '402dff16ffd0cb1c12b091bddbb75621a245c83632675f6dacd3ffb76fc3f155'
             '1b32cc64c00ce92daef1d14bfaf37868f4d0f3b4949f1d5a824cf32aee1c1f87')
 package() {
