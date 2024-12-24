@@ -1,0 +1,4 @@
+[python-inltk]
+source = "git"
+git = "https://github.com/goru001/inltk.git"
+prefix = "v"

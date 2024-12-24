@@ -3,7 +3,7 @@
 _pkgname=inltk
 pkgname=python-inltk
 pkgver=0.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Natural Language Toolkit for Indic Languages aims to provide out of the box support for various NLP tasks for Indic languages."
 arch=(x86_64)
 url=https://github.com/goru001/inltk
