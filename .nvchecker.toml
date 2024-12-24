@@ -1,0 +1,3 @@
+[python-mathparse]
+source = "git"
+git = "https://github.com/gunthercox/mathparse.git"

@@ -3,7 +3,7 @@
 _base=mathparse
 pkgname=python-${_base}
 pkgver=0.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python library for evaluating natural language mathematical equations."
 arch=('any')
 url="https://github.com/gunthercox/${_base}"
