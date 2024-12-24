@@ -2,7 +2,7 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: aimileus, Sergej Pupykin, Tiago Pierezan Camargo, robb_force
 
-## useful links
+## links
 # http://0ldsk00l.ca/nestopia/
 # https://github.com/0ldsk00l/nestopia
 
@@ -18,7 +18,7 @@ unset _pkgtype
 ## basic info
 _pkgname="nestopia"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.52.1
+pkgver=1.53.0
 pkgrel=1
 pkgdesc="High-accuracy NES/Famicom emulator"
 url="https://github.com/0ldsk00l/nestopia"
@@ -28,6 +28,8 @@ arch=('x86_64')
 depends=(
   fltk
   libarchive
+  libepoxy
+  libsamplerate
   sdl2
   zlib
 )
@@ -39,12 +41,10 @@ makedepends=(
 [ "${_build_clang::1}" == "t" ] && makedepends+=('clang' 'lld')
 [ "${_build_noglu::1}" != "t" ] && makedepends+=('glu')
 
-install="$_pkgname.install"
-
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"https://github.com/0ldsk00l/nestopia/archive/$pkgver.$_pkgext")
-sha256sums=('c9c0bce673eb3b625b538b462e49c00ed1ee1ded1e0bad09be780076880968b5')
+sha256sums=('27a26a6fd92e6acc2093bbd6c1e3ab7f2fff419d9ed6de13bc43349b52e1f705')
 
 build() {
   export CC CXX CFLAGS CXXFLAGS LDFLAGS
