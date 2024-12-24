@@ -1,7 +1,7 @@
 pkgbase = python-pydeck
 	pkgdesc = Widget for deck.gl maps
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/pydeck
 	arch = any
 	license = Apache-2.0

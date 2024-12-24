@@ -1,10 +1,10 @@
-# Maintainer: Butui Hu <hot123tea123@gmail.com>
 # Maintainer: redponike <proton (dot) me>
+# Contributor: Butui Hu <hot123tea123@gmail.com>
 
 _pkgname=pydeck
 pkgname=python-pydeck
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Widget for deck.gl maps'
 arch=('any')
 url='https://pypi.org/project/pydeck'
