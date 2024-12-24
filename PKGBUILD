@@ -1,7 +1,7 @@
 # Maintainer: John Patrick <john.patrick@gmail.com>
 pkgname=archlinux-tweak-tool-git
 _pkgname=archlinux-tweak-tool
-pkgver=r1121.fade68e
+pkgver=r1130.219736d
 pkgrel=1
 pkgdesc="Arch Linux Tweak Tool or ATT"
 arch=('x86_64')
