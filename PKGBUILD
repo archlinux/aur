@@ -4,7 +4,7 @@
 _name='krop'
 pkgname="${_name}-git"
 pkgver=r114.e96d42b
-pkgrel=3
+pkgrel=4
 pkgdesc='Simple graphical tool to crop the pages of PDF files'
 arch=('any')
 url='https://github.com/arminstraub/krop'
