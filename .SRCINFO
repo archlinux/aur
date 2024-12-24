@@ -7,15 +7,14 @@ pkgbase = paramotopy
 	license = custom:Paramotopy license
 	makedepends = boost>=1.53
 	makedepends = gmp
-	depends = glibc
-	depends = gcc-libs
-	depends = boost-libs>=1.53
 	depends = bertini
+	depends = boost-libs>=1.53
+	depends = gcc-libs
+	depends = glibc
 	depends = mpfr
 	depends = openmpi
-	optdepends = paramotopy-docs: HTML documentation
 	source = paramotopy-36121881a137cf29c7f662bd792a0e823d5742f2.tar.gz::https://github.com/ofloveandhate/paramotopy/archive/36121881a137cf29c7f662bd792a0e823d5742f2.tar.gz
-	source = paramotopy_fix_deprecated_boost_timer.patch
+	source = paramotopy_deprecated_boost_timer.patch
 	sha256sums = 4f04d932c540d68d69d2d8605699921c4e98227016999056b8afbe5d630ca54a
 	sha256sums = e355ddea4c31f22c008e63f0418a2a6e77103b6779763a817604daaa3b644c21
 
