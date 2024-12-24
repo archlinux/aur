@@ -3,7 +3,7 @@
 _base=crfsuite-rs
 pkgname=python-${_base}-git
 pkgver=0.3.1.r9.g9cf20f7
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for crfsuite with additional Rust crfsuite bindings."
 arch=('any')
 url="https://github.com/messense/${_base}"

@@ -1,7 +1,7 @@
 pkgbase = python-crfsuite-rs-git
 	pkgdesc = Python bindings for crfsuite with additional Rust crfsuite bindings.
 	pkgver = 0.3.1.r9.g9cf20f7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/messense/crfsuite-rs
 	arch = any
 	license = custom:MIT
