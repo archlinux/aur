@@ -1,7 +1,7 @@
 pkgbase = wget2-no-docs
 	pkgdesc = Updated version of wget URL retrieval tool, no docs (avoids pandoc makedep)
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/gnuwget/wget2
 	arch = i686
 	arch = x86_64

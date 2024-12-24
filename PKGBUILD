@@ -3,7 +3,7 @@
 pkgname=wget2-no-docs
 _name=wget2
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Updated version of wget URL retrieval tool, no docs (avoids pandoc makedep)"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/gnuwget/wget2"
