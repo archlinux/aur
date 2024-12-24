@@ -7,7 +7,7 @@
 
 pkgname=mastodon
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(any)
 url=https://github.com/mastodon/mastodon
@@ -47,6 +47,7 @@ prepare() {
 }
 
 build() {
+  export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
   cd mastodon-$pkgver
   sed -i '/husky install/d' package.json # Stop husky from hijacking git hooks
   bundle config set deployment true
