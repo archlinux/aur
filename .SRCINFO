@@ -1,7 +1,7 @@
 pkgbase = bt-dualboot
 	pkgdesc = Sync Bluetooth for dualboot Linux and Windows
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/x2es/bt-dualboot
 	arch = any
 	license = GPL-3.0-only

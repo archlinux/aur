@@ -3,7 +3,7 @@
 pkgname=bt-dualboot
 _pkgname=bt_dualboot
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Sync Bluetooth for dualboot Linux and Windows"
 arch=('any')
 url="https://github.com/x2es/bt-dualboot"
