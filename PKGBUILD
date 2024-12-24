@@ -20,7 +20,6 @@ conflicts+=(wechat-uos wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universa
 replaces+=("wechat-bin")
 
 depends=(
-	"portable"
 	"nss"
 	"xcb-util-renderutil"
 	"xcb-util-keysyms"
@@ -66,6 +65,7 @@ optdepends=(
 	'orca: screen reader'
 	'libpulse'
 	'libglvnd'
+	"portable: Sandbox support"
 )
 
 makedepends+=(
@@ -94,7 +94,7 @@ source_loong64=(
 )
 
 
-md5sums=('c49cd9a8142a736a45276cac413f43f7'
+md5sums=('SKIP'
          'ff710cd32cb665a70b06f6f0f83937c5'
          '468e0367346707c026e577e7bf3e3a82'
          'SKIP')
