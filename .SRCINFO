@@ -1,7 +1,7 @@
 pkgbase = python-ta
 	pkgdesc = A Technical Analysis library for financial time series datasets.
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bukosabino/ta
 	arch = any
 	license = MIT

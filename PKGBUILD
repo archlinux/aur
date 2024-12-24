@@ -3,7 +3,7 @@
 _base=ta
 pkgname=python-${_base}
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Technical Analysis library for financial time series datasets."
 arch=('any')
 url="https://github.com/bukosabino/${_base}"
