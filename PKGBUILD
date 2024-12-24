@@ -3,7 +3,7 @@
 _base=autoscraper
 pkgname=python-${_base}
 pkgver=1.1.14
-pkgrel=2
+pkgrel=3
 pkgdesc="A smart, automatic, fast and lightweight web scraper for Python"
 arch=('any')
 url="https://github.com/alirezamika/${_base}"

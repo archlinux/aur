@@ -1,7 +1,7 @@
 pkgbase = python-autoscraper
 	pkgdesc = A smart, automatic, fast and lightweight web scraper for Python
 	pkgver = 1.1.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alirezamika/autoscraper
 	arch = any
 	license = MIT

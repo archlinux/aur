@@ -1,0 +1,4 @@
+[python-autoscraper]
+source = "git"
+git = "https://github.com/alirezamika/autoscraper.git"
+prefix = "v"
