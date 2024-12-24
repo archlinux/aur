@@ -1,7 +1,7 @@
 pkgbase = python-split-folders
 	pkgdesc = A Python library to split folders with files (i.e. images) into training, validation and test (dataset) folders.
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jfilter/split-folders
 	arch = x86_64
 	license = MIT

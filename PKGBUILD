@@ -3,7 +3,7 @@
 _pkgname=split-folders
 pkgname=python-${_pkgname}
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python library to split folders with files (i.e. images) into training, validation and test (dataset) folders.'
 arch=(x86_64)
 url='https://github.com/jfilter/split-folders'

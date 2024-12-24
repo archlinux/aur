@@ -1,0 +1,3 @@
+[python-split-folders]
+source = "git"
+git = "https://github.com/jfilter/split-folders.git"
