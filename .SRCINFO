@@ -1,7 +1,7 @@
 pkgbase = obs-studio-liberty
 	pkgdesc = Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc.
 	pkgver = 31.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -17,7 +17,7 @@ pkgbase = obs-studio-liberty
 	makedepends = luajit
 	makedepends = nlohmann-json
 	makedepends = libvpl
-	makedepends = python>=3.12
+	makedepends = python>=3.13
 	makedepends = sndio
 	makedepends = swig
 	makedepends = systemd-libs
@@ -79,7 +79,7 @@ pkgbase = obs-studio-liberty
 	optdepends = libva-mesa-driver: VAAPI encoder support
 	optdepends = swig: Scripting
 	optdepends = luajit: Lua scripting
-	optdepends = python>=3.12: Python scripting
+	optdepends = python>=3.13: Python scripting
 	optdepends = sndio: Sndio input client
 	optdepends = v4l-utils: V4L2 support
 	optdepends = systemd-libs: V4L2 support
