@@ -22,9 +22,11 @@ pkgbase = rlvm-git
 	provides = rlvm
 	conflicts = rlvm
 	source = git+https://github.com/eglaysher/rlvm.git
+	source = tests.patch
 	source = warnings.patch
 	source = gtk+3.patch
 	sha256sums = SKIP
+	sha256sums = c22775cdf6f1cecee86047b0b0ed9d21c5d3425813a395fb2913e644064070bb
 	sha256sums = dcbd9e0de8ccb91983d691f0b5fd6938fef45653ac20d244c1c19a3df01b7550
 	sha256sums = 6bf8a1d8cd64b05057859338132acef11db573c58adc3913679776b8d4a7b83a
 

@@ -1,0 +1,11 @@
+--- a/test/script_machine/script_world.cc
++++ b/test/script_machine/script_world.cc
+@@ -68,7 +68,7 @@
+ ScriptWorld::~ScriptWorld() { lua_close(L); }
+ 
+ void ScriptWorld::LoadToplevelFile(const std::string& lua_file) {
+-  script_dir_ = fs::path(lua_file).branch_path();
++  script_dir_ = fs::path(lua_file).parent_path();
+ 
+   if (luaL_dofile(L, lua_file.c_str())) {
+     ostringstream oss;
