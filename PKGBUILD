@@ -25,11 +25,11 @@ build() {
 package() {
   install -Dm755 "$srcdir/.bin/play-timer" "$pkgdir/usr/bin/play-timer"
   install -Dm644 "$srcdir/$dirname-$pkgver/internal/ui/res/icon.svg" \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$glibname.svg"
   install -Dm644 "$srcdir/$dirname-$pkgver/misc/$glibname.desktop" \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
+    "$pkgdir/usr/share/applications/$glibname.desktop"
   install -Dm644 "$srcdir/$dirname-$pkgver/misc/$glibname.metainfo.xml" \
-    "$pkgdir/usr/share/metainfo/$pkgname.metainfo.xml"
+    "$pkgdir/usr/share/metainfo/$glibname.metainfo.xml"
   install -Dm644 "$srcdir/$dirname-$pkgver/misc/$glibname.gschema.xml" \
     "$pkgdir/usr/share/glib-2.0/schemas/$glibname.gschema.xml"
 }
