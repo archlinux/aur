@@ -1,0 +1,3 @@
+[python-func-timeout]
+source = "git"
+git = "https://github.com/kata198/func_timeout.git"

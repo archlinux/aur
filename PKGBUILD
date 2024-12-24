@@ -4,7 +4,7 @@
 pkgname=python-func-timeout
 epoch=1
 pkgver=4.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module which allows you to specify timeouts when calling any existing function. Also provides support for stoppable-threads"
 url="https://github.com/kata198/func_timeout"
 license=('LGPL')
