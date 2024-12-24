@@ -1,13 +1,15 @@
 # Maintainer: Stefan Biereigel <stefan@biereigel.de>
 
 ## options
+: ${_build_python:=false}
+
 _pkgtype="-git"
 
 # basic info
 _pkgname="openems"
 pkgbase="$_pkgname${_pkgtype:-}"
-pkgver=0.0.36.r15.g1ccf094
-pkgrel=3
+pkgver=0.0.36.r46.gfaec0f2
+pkgrel=1
 pkgdesc="A free and open source EC-FDTD solver"
 url="https://github.com/thliebig/openEMS"
 license=('GPL-3.0-or-later')
@@ -26,7 +28,7 @@ _depends_openems=(
   'csxcad'
   'fparser'
 )
-_depends_python_openems=(
+_depends_python=(
   'python'
   'python-h5py'
   'python-matplotlib'
@@ -35,11 +37,15 @@ _depends_python_openems=(
   # AUR
   'python-csxcad'
 )
-
-depends=(
-  ${_depends_openems[@]}
-  ${_depends_python_openems[@]}
+_makedeps_python=(
+  'cython'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
 )
+
+depends=(${_depends_openems[@]})
 makedepends=(
   'boost'
   'cmake'
@@ -48,14 +54,12 @@ makedepends=(
   'ninja'
   'nlohmann-json'
   'openmpi'
-
-  ## python module
-  'cython'
-  'python-build'
-  'python-installer'
-  'python-setuptools'
-  'python-wheel'
 )
+
+if [[ "${_build_python::1}" == "t" ]]; then
+  depends+=(${_depends_python[@]})
+  makedepends+=(${_makedeps_python[@]})
+fi
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+https://github.com/thliebig/openEMS")
@@ -83,6 +87,8 @@ _build_openems() {
 }
 
 _build_python-openems() (
+  [ "${_build_python::1}" != "t" ] && return
+
   cd "$_pkgsrc/python"
 
   export CFLAGS CXXFLAGS LDFLAGS
@@ -127,10 +133,8 @@ _package_python-openems() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-pkgname=(
-  "$_pkgname${_pkgtype:-}"
-  "python-$_pkgname${_pkgtype:-}"
-)
+pkgname=("$_pkgname${_pkgtype:-}")
+[[ "${_build_python::1}" == "t" ]] && pkgname+=("python-$_pkgname${_pkgtype:-}")
 
 for _p in "${pkgname[@]}"; do
   _q="${_p%${_pkgtype:-}}"
