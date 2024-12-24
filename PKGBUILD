@@ -3,11 +3,11 @@
 _pkgname=oversteer
 pkgname=${_pkgname}-git
 pkgver=0.8.3.r7.ga418ffa
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical application to configure Logitech Wheels'
 arch=(any)
 url=https://github.com/berarma/${_pkgname}
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(
   appstream-glib
   desktop-file-utils
