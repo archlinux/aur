@@ -1,0 +1,15 @@
+pkgbase = pyrfetch-git
+	pkgdesc = Pyrfetch is a simple and lightweight version of Neofetch Written in Python
+	pkgver = 1.1
+	pkgrel = 1.1
+	url = https://github.com/luvth/pyrfetch
+	arch = x86_64
+	license = GPL-3.0
+	depends = python
+	depends = python-psutil
+	provides = pyrfetch-git
+	conflicts = pyrfetch-git
+	source = git+https://github.com/luvth/pyrfetch.git#branch=main
+	sha256sums = SKIP
+
+pkgname = pyrfetch-git
