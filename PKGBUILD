@@ -1,6 +1,5 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 
-_pkgname=buildtools
 pkgname=buildifier
 pkgver=7.3.1
 pkgrel=5
