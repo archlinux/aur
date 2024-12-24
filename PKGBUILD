@@ -2,11 +2,11 @@
 
 pkgname=vectorscan
 pkgver=5.4.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Portable fork of hyperscan regular expression matching library'
 arch=(x86_64)
 url=https://github.com/VectorCamp/vectorscan
-license=(BSD)
+license=("BSD-3-Clause-Clear")
 makedepends=(
   boost
   cmake
