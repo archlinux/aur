@@ -1,5 +1,5 @@
---- driver/adv_main.c.orig	2020-05-20 23:34:17.254597551 -0400
-+++ driver/adv_main.c	2020-05-20 23:37:12.236351943 -0400
+--- a/driver/adv_main.c	2020-05-20 23:34:17.254597551 -0400
++++ b/driver/adv_main.c	2020-05-20 23:37:12.236351943 -0400
 @@ -257,18 +257,28 @@ unsigned int adv_proc_poll(struct file *
  	return mask;
  }

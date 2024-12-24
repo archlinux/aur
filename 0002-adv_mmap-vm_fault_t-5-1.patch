@@ -1,5 +1,5 @@
---- driver/adv_mmap.c.orig	2019-05-27 15:37:05.655080151 -0400
-+++ driver/adv_mmap.c	2019-05-27 15:37:14.062322054 -0400
+--- a/driver/adv_mmap.c	2019-05-27 15:37:05.655080151 -0400
++++ b/driver/adv_mmap.c	2019-05-27 15:37:14.062322054 -0400
 @@ -33,11 +33,16 @@ void adv_vma_close(struct vm_area_struct
  {
  //	printk("%s(%d)\n", __func__, __LINE__);

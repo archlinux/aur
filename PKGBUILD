@@ -10,7 +10,7 @@ _opt_MAXINSTPORTS=16  # Maximum install ports.
                       # /dev/ttyADV{0..n-1}
 #_opt_defaultmode='666' # default: 666
 
-#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/5.10.*/modules.alias))"
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/6.12.*/vmlinuz))"
 
 # Products, Intelligent Connectivity, Industrial Communication, Serial Device Servers
 
@@ -69,7 +69,8 @@ pkgname='advantech-vcom'
 #pkgver='2.2.3'; _dl='5/1-1Y9Q0Z6'
 #pkgver='2.2.5'; _dl='4/1-23X5L51'
 #pkgver='2.3.0'; _dl='3/1-250ZNM3'
-pkgver='2.3.4'; _dl='2/1-2HNI41Q'
+#pkgver='2.3.4'; _dl='2/1-2HNI41Q'
+pkgver='2.3.5'; _dl='4/1-2LHR0GS'
 pkgrel='1'
 pkgdesc='tty driver for Advantech Adam EKI serial console terminal servers'
 _pkgdescshort="Advantech ${pkgname} TTY driver"
@@ -104,32 +105,30 @@ source+=(
   '0005-kernel-5.17-change-PDE_DATA.patch'
   '0006-kernel-6.0-set_termios-const-ktermios.patch'
 )
-md5sums=('d1650157bea8b25c321c6c6c80e47ac2'
-         '65bb3f58bf90650cd629b94057c80da5'
+md5sums=('9c7aaead4438be5dc19128e1d30cb1a9'
+         '11a791b626120f62dfaf360f25d2e960'
          'e8e05eebaa36ccf7bfe456ab59b75386'
          'cf730b084619fac9c20106e8e6359ccc'
          '8e10c250ba777d270285e0bf79d44a1d'
-         '6b07ea60f898b5586ad8f23a28c32ab7'
-         'b30212f45f0dcebc9b88b17e4355d298'
-         '0aa930803ed243f4e45f0d31bde581c8'
+         'e57019da1f9a394fd34c930385ac5bbd'
+         'fd77eb9272ef5f21248efa91f276d313'
+         '4907379f95d10846734eed0b071ba511'
          '2cf8ab9c5541c38eba5fb9687142d94d'
-         '446602b4feef554ade9a137303883432'
+         '709e2f632a8d47aeaad1a22c80b623dd'
          '32f3a081b5926d6ea7f1cd2a22655d95'
-         'b005fdd5de28f835b7b37ecd74453785'
-         'f16423b34e00d486c6d5dc877ddde32c')
-sha256sums=('fdb2672d513c25039b46b5cf4fd449062f03567ca8617902023f2ed8213515df'
-            '02f504a23fbef07f666aaa595faba0513d9ffec5e99ebca7b7fe2299a0179e32'
+         'b005fdd5de28f835b7b37ecd74453785')
+sha256sums=('6b6b111eb4493028b919ca560717b9ece45f9f1ca8f289f5f8f8787a52cebc8b'
+            'a2283a176bc9988a2ee5282eeb12642948c19096f29e72ca5f34a7c5210ab243'
             '17fa883aeaea5821e00ead10777f54f4ad6b96f3a2f07097e3d9a77755f21c10'
             '85785f80c7be4452e5b620b5d405646f0e9bacdbec2aecea68a059b6245519aa'
             '1959411a50b800def13849672196295db3acb4aabd1db9fbc5cc52ebf390993c'
-            '9335cfe8addfdf80224d21529fe0a70a6b750fa0823cfe806f5c94ae50a06cad'
-            '77edc7a806085fc738fa4536e91fce98fb8e103f8207ec0d395f340107e83d0c'
-            '61c4b0c92488cce93e6b9ffca4f13eb7aa7fd8b267eb1438094ce41d96aaef53'
+            '554b9840d9e23fe18fc595f01181df28c141f3b4419c82c5f3e294b9b1a5946e'
+            '79746e296db2d2609f594c2a1209b4d7c957e7b8e52526a7f164e883b8009320'
+            'ab25f8ccbf8383891bdafdd6bbe421d621f21c72c870c93df2b77a73550aea23'
             'de3477551219d9fc5b1924775a4456155ef5beb5bd702fbc114ca0c956607953'
-            'aa71ede3478a5b482cd085ed2406a1ccd6be3b3ef76ab1fc0b45f4133d3c5a59'
+            '26f29ab86677f9a764d2284d1b8d9e7825e3408d7e18d145c6a1981d513bd119'
             'b65adbcbb83a21cf0a1c17b9bc2a039ad5c633021ecd90d88d5d978a03a59c23'
-            '99b7b7a2c84d8b82a3e79b2a7abe99d1696a7ff3df350560d96ce7f049e8cb27'
-            'eb41e2eb1b9df42840295c59266e9e2cf01c4f275ef1a11aca765dfe4c81926d')
+            '99b7b7a2c84d8b82a3e79b2a7abe99d1696a7ff3df350560d96ce7f049e8cb27')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -158,40 +157,45 @@ prepare() {
 
   cd "${_srcdir}"
 
+  local _patches=()
   if [ "$(vercmp "${pkgver}" "2.2.1")" -le 0 ]; then
-    #cp -p driver/adv_main.c{,.orig}; false
-    #diff -pNau5 driver/adv_main.c{.orig,} > '../0001-adv_main-access_ok_kernel-5-0.patch'
-    patch -Nup0 -i "${srcdir}/0001-adv_main-access_ok_kernel-5-0.patch"
-
-    #cp -p driver/adv_mmap.c{,.orig}; false
-    #diff -pNau5 driver/adv_mmap.c{.orig,} > '../0002-adv_mmap-vm_fault_t-5-1.patch'
-    patch -Nup0 -i "${srcdir}/0002-adv_mmap-vm_fault_t-5-1.patch"
-
+    _patches+=('0001-adv_main-access_ok_kernel-5-0.patch')
+    _patches+=('0002-adv_mmap-vm_fault_t-5-1.patch')
   fi
   if [ "$(vercmp "${pkgver}" "2.2.5")" -le 0 ]; then
-    #cp -pr daemon{,.orig}; false
-    #diff -pNarZu5 daemon{.orig,} > '../0003-gcc-10-duplicate-variables-vc_mon-stk_mon.patch'
-    patch -Nup0 -i "${srcdir}/0003-gcc-10-duplicate-variables-vc_mon-stk_mon.patch"
+    _patches+=('0003-gcc-10-duplicate-variables-vc_mon-stk_mon.patch')
   elif [ "$(vercmp "${pkgver}" "2.3.0")" -le 0 ]; then
-    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-    #diff -pNarZu5 'a' 'b' > '0003a-gcc-10-duplicate-variables-vc_mon-stk_mon.patch'
-    patch -Nup1 -i "${srcdir}/0003a-gcc-10-duplicate-variables-vc_mon-stk_mon.patch"
+    _patches+=('0003a-gcc-10-duplicate-variables-vc_mon-stk_mon.patch')
   fi
   if [ "$(vercmp "${pkgver}" "2.2.3")" -le 0 ]; then
-    #cp -p driver/adv_main.c{,.orig}; false
-    #diff -pNau5 driver/adv_main.c{.orig,} > '../0004-adv_main-proc_create_data-kernel-5.6.patch'
-    patch -Nup0 -i "${srcdir}/0004-adv_main-proc_create_data-kernel-5.6.patch"
+    _patches+=('0004-adv_main-proc_create_data-kernel-5.6.patch')
   fi
 
   if [ "$(vercmp "${pkgver}" "2.3.0")" -le 0 ]; then
-    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-    #diff -pNarZu5 'a' 'b' > '0005-kernel-5.17-change-PDE_DATA.patch'
-    patch -Nup1 -i "${srcdir}/0005-kernel-5.17-change-PDE_DATA.patch"
-
-    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-    #diff -pNarZu2 'a' 'b' > '0006-kernel-6.0-set_termios-const-ktermios.patch'
-    patch -Nup1 -i "${srcdir}/0006-kernel-6.0-set_termios-const-ktermios.patch"
+    _patches+=('0005-kernel-5.17-change-PDE_DATA.patch')
+    _patches+=('0006-kernel-6.0-set_termios-const-ktermios.patch')
   fi
+
+  local _pt _ptf=() _pts=()
+  for _pt in "${_patches[@]}"; do
+    set +u; msg2 "Patch ${_pt}"; set -u
+    if patch -Nup1 --no-backup-if-mismatch -i "${srcdir}/${_pt}"; then
+      _pts+=("${_pt}")
+    else
+      _ptf+=("${_pt}")
+    fi
+  done
+  if [ "${#_ptf[@]}" -gt 0 ]; then
+     if [ "${#_pts[@]}" -gt 0 ]; then
+       printf 'Patch success %s\n' "${_pts[@]}"
+       printf 'Warning: Some old patches may need to be removed even if they are successful\n'
+     fi
+     printf 'Patch failed %s\n' "${_ptf[@]}"
+     set +x
+     false
+  fi
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  #diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
 
   # Cosmetic correction of CRLF for Linux
   sed -e 's:\r$::g' -i 'readme.txt'
@@ -314,7 +318,7 @@ fi
     # Change original advman to systemd
     #cp -p script/advman{,.orig}; false
     #diff -pNau10 script/advman{.orig,} > '../0000-advman.systemd.patch'
-    patch -Nup0 -i "${srcdir}/0000-advman.systemd.patch"
+    patch -Nup1 -i "${srcdir}/0000-advman.systemd.patch"
   elif [ "$(vercmp "${pkgver}" "2.2.3")" -le 0 ]; then
     #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
     #diff -pNaru10 'a' 'b' > '0000a-advman.systemd.patch'

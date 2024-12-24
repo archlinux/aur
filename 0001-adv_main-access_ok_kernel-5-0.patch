@@ -1,5 +1,5 @@
---- driver/adv_main.c.orig	2019-03-10 20:06:08.695818531 -0400
-+++ driver/adv_main.c	2019-03-10 20:11:15.161215515 -0400
+--- a/driver/adv_main.c	2019-03-10 20:06:08.695818531 -0400
++++ b/driver/adv_main.c	2019-03-10 20:11:15.161215515 -0400
 @@ -75,14 +75,21 @@ long adv_proc_ioctl(struct file *filp, u
  	if(_IOC_NR(cmd) > ADVVCOM_IOCMAX){
  		printk("%s(%d) cmd = %x\n", __func__, __LINE__, cmd);
