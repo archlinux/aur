@@ -1,12 +1,13 @@
 pkgbase = squashfuse-git
 	pkgdesc = FUSE filesystem to mount squashfs archives
-	pkgver = r494.dc217a8
+	pkgver = 0.5.2.r8.gdc217a8
 	pkgrel = 1
 	url = https://github.com/vasi/squashfuse
 	arch = x86_64
 	license = LicenseRef-squashfuse
 	makedepends = git
 	makedepends = make
+	makedepends = libtool
 	depends = fuse3
 	depends = zstd
 	depends = glibc
@@ -16,6 +17,7 @@ pkgbase = squashfuse-git
 	depends = lzo
 	provides = squashfuse
 	conflicts = squashfuse
+	options = !strip
 	source = git+https://github.com/vasi/squashfuse
 	sha256sums = SKIP
 

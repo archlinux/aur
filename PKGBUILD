@@ -1,10 +1,10 @@
 # Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Tim Jester-Pfadt <t.jp@gmx.de>
-# Maintainer: KafCoppelia <k740677208@gmail.com>
+# Contributor: KafCoppelia <k740677208@gmail.com>
 
 _pkgname=squashfuse
 pkgname=${_pkgname}-git
-pkgver=r494.dc217a8
+pkgver=0.5.2.r8.gdc217a8
 pkgrel=1
 pkgdesc="FUSE filesystem to mount squashfs archives"
 arch=('x86_64')
@@ -13,13 +13,14 @@ license=('LicenseRef-squashfuse')
 provides=('squashfuse')
 conflicts=('squashfuse')
 depends=('fuse3' 'zstd' 'glibc' 'zlib' 'xz' 'lz4' 'lzo')
-makedepends=('git' 'make')
+makedepends=('git' 'make' 'libtool')
 source=("git+${url}")
 sha256sums=('SKIP')
+options=('!strip')
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
   ./autogen.sh
 }
 
