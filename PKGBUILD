@@ -4,7 +4,7 @@
 pkgname=python-matrix-synapse-shared-secret-auth
 _name=${pkgname#python-}
 pkgver=2.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Shared Secret Authenticator password provider module for Matrix Synapse"
 url="https://github.com/devture/matrix-synapse-shared-secret-auth"
 arch=('any')
