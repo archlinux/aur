@@ -5,7 +5,7 @@
 _electronversion=32
 pkgname=joplin-beta
 pkgver=3.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A note taking and to-do application with synchronization capabilities (beta version)"
 arch=("any")
 url="https://joplinapp.org/"
@@ -30,8 +30,8 @@ prepare() {
 	sed -i "s|@electronversion@|${_electronversion}|" joplin-desktop.sh
 
 	cd "${srcdir}/joplin-${pkgver}/packages/app-desktop"
-	# Ensure we're only building the AppImage target
-	pkg_json=$(jq '.build.linux.target = "AppImage"' package.json)
+	# Disable the after build script since the AppImage is not being built
+	pkg_json=$(jq 'del(.build.afterAllArtifactBuild)' package.json)
 	cat > package.json <<<${pkg_json}
 }
 
@@ -42,7 +42,9 @@ build() {
 	export YARN_ENABLE_INLINE_BUILDS=1
 
 	yarn workspace @joplin/app-desktop install
-	yarn workspace @joplin/app-desktop dist --linux --publish=never
+	yarn workspace @joplin/app-desktop dist --linux --dir \
+		-c.electronDist=/usr/lib/electron${_electronversion} \
+		-c.electronVersion=$(cat /usr/lib/electron${_electronversion}/version)
 }
 
 package() {
