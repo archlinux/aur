@@ -2,10 +2,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tvtower-bin
 _pkgname=TVTower
-pkgver=0.8.2
-_subver=20231220
-pkgrel=3
-pkgdesc="A tribute to Mad TV. Written in BlitzMax, Lua and a bit of C.Prebuilt version."
+pkgver=0.8.3
+_subver=20241223
+pkgrel=1
+pkgdesc="A tribute to Mad TV. Written in BlitzMax, Lua and a bit of C.(Prebuilt version)"
 arch=(
 	'i686'
 	'x86_64'
@@ -16,15 +16,10 @@ license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
+	'glu'
 	'libglvnd'
 	'freetype2'
 	'libxcb'
-	'lib32-glu'
-	'lib32-libxcb'
-	'lib32-gcc-libs'
-	'lib32-libglvnd'
-	'lib32-glibc'
-	'lib32-freetype2'
 )
 makedepends=(
 	'gendesk'
@@ -34,9 +29,9 @@ source=(
 	"${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_${_subver}.zip"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('503e6ff876e5afbcbb56638c6076b54d5392e67e48651b3b7bdf44faf750f286'
+sha256sums=('b06a50e3ba7c6620b470bac563006dd8158679fbe86fd9e864b62c502db812b6'
             '66ba0a42698a2815cfec1c2a5a2b459e4ea9c054481c859acf5dd4aa84d49ce8')
-build() {
+prepare() {
 	case "${CARCH}" in
 		i686)
 			_RUNNAME="${_pkgname}_Linux32"
@@ -53,6 +48,7 @@ build() {
 	install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}/logfiles"
 	bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
 	rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/"*.{bat,exe}
+	rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/"{"${_pkgname}_arm64.app","${_pkgname}.app"}
 	for _logtxt in app ai1 ai2 ai3 ai4 app.error;do
 		touch "${srcdir}/usr/lib/${pkgname%-bin}/logfiles/log.${_logtxt}.txt"
 	done
@@ -60,7 +56,7 @@ build() {
 }
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-	cp -r "${srcdir}/usr" "${pkgdir}"
+	cp -Pr --no-preserve=ownership "${srcdir}/usr" "${pkgdir}"
 	install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/LICENCE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 	install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 	install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
