@@ -24,6 +24,7 @@ pkgbase = ladybird
 	depends = ttf-liberation
 	options = !lto
 	options = !debug
+	options = !buildflags
 	source = git+https://github.com/LadybirdBrowser/ladybird#commit=34f78ca1522654dbb1a4977020b0d5fb22bbd764
 	source = git+https://github.com/microsoft/vcpkg.git#commit=b2cb0da531c2f1f740045bfe7c4dac59f0b2b69c
 	source = ladybird.desktop
