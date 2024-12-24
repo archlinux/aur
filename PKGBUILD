@@ -3,7 +3,7 @@
 pkgname=semgrep-bin
 _name=semgrep
 pkgver=1.100.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and syntax-aware semantic code pattern search for many languages: like grep but for code"
 arch=(x86_64)
 url=https://github.com/returntocorp/semgrep
