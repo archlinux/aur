@@ -1,7 +1,7 @@
 pkgbase = python-srsly-git
 	pkgdesc = Modern high-performance serialization utilities for Python
 	pkgver = 2.5.0.r0.gcaf313b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/explosion/srsly
 	arch = x86_64
 	license = MIT

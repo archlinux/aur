@@ -5,7 +5,7 @@
 pkgname=python-srsly-git
 _origpkgname=srsly
 pkgver=2.5.0.r0.gcaf313b
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern high-performance serialization utilities for Python"
 arch=("x86_64")
 url="https://github.com/explosion/srsly"
