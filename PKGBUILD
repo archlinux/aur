@@ -4,7 +4,7 @@
 pkgname=python-tinygrad
 _name=${pkgname#python-}
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="You like pytorch? You like micrograd? You love tinygrad! <3"
 arch=('any')
 url="https://github.com/tinygrad/tinygrad"
