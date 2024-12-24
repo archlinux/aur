@@ -3,7 +3,7 @@
 
 pkgname=rompr
 pkgver=2.17
-pkgrel=2
+pkgrel=3
 pkgdesc="A php web frontend to MPD and Mopidy"
 arch=('any')
 url='https://github.com/fatg3erman/RompR/'
