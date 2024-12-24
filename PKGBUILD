@@ -3,7 +3,7 @@
 pkgname='python-num2words'
 _name=${pkgname#python-}
 pkgver=0.5.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Python modules to convert numbers to words."
 arch=('any')
 url='https://github.com/savoirfairelinux/num2words'
