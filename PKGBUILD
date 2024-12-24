@@ -3,7 +3,7 @@
 pkgname="python-sqlite-migrate"
 _name=${pkgname#python-}
 pkgver="0.1b0"
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple database migration system for SQLite, based on sqlite-utils"
 arch=("any")
 url="https://github.com/simonw/sqlite-migrate"
