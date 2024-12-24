@@ -115,6 +115,10 @@ build() {
   # Also remove from LDFLAGS if necessary
   LDFLAGS=$(echo $LDFLAGS | sed 's/--as-needed,//')
 
+  # fix include path for VTK (Arch doesn't version this include directory)
+  sed -i 's/include\/vtk-..VTK_MAJOR_VERSION....VTK_MINOR_VERSION./include\/vtk/' \
+    "${srcdir}/${_realname}-$pkgver/cmake/modules/FindDEAL_II_VTK.cmake"
+
   # Skip some warnings that appear if Trilinos uses OpenMP pragmas in headers:
   extra_warning_flags=" -Wno-unknown-pragmas"
   # Also skip warnings from compiling without optimizations (debug mode) and
