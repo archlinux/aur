@@ -1,0 +1,4 @@
+[python-pdf2docx]
+source = "git"
+git = "https://github.com/artifexsoftware/pdf2docx.git"
+prefix = "v"
