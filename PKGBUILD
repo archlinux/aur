@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=muzik-offline-bin
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A cross platform, local music player.(Prebuilt version)"
 arch=('x86_64')
@@ -11,15 +11,14 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
-    'gdk-pixbuf2'
-    'webkit2gtk-4.1'
     'alsa-lib'
+    'webkit2gtk-4.1'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/muzik-apps/muzik-offline/v${pkgver}/LICENSE"
 )
-sha256sums=('0240c962b75b6919c500dd4f193eaf5716268ace3657649ae24558e6ae38e577'
+sha256sums=('a7b3e7e245c42198a45a2371e0f87f97a9e1676034abf1f4704d8781e51312b2'
             '6974cb23d06cf028e37ffbb2a90b608606b1cac5ba44de6b6d9198d83ae7591a')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
