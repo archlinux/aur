@@ -1,7 +1,7 @@
 pkgbase = python-shelved-cache
 	pkgdesc = A persistent cache implementation for Python cachetools.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mariushelf/shelved_cache
 	arch = any
 	license = MIT

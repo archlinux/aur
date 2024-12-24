@@ -3,7 +3,7 @@
 _pkgname=shelved_cache
 pkgname=python-shelved-cache
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A persistent cache implementation for Python cachetools."
 arch=('any')
 url="https://github.com/mariushelf/shelved_cache"

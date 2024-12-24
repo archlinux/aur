@@ -1,0 +1,3 @@
+[python-shelved-cache]
+source = "git"
+git = "https://github.com/mariushelf/shelved_cache.git"
