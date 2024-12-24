@@ -5,12 +5,12 @@ _appdataprefix="/var/opt"
 
 pkgname=open-webui
 pkgver=0.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
 license=('MIT')
-depends=('python')
+depends=('python312')
 makedepends=('npm' 'nvm')
 conflicts=('open-webui-git')
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz"

@@ -20,7 +20,7 @@ _install() {
 
     if [ ! -d "./venv" ]; then
         echo "Setting up virtual environment for $_appname..."
-        su "$_appuser" -s /bin/bash -c "python -m venv ${_apphome}/backend/venv" || return 1
+        su "$_appuser" -s /bin/bash -c "python3.12 -m venv ${_apphome}/backend/venv" || return 1
     fi
     echo "Updating python virtual environment..."
     su "$_appuser" -s /bin/bash -c "cd ${_apphome}/backend && ./venv/bin/pip install -r requirements.txt" || return 1
