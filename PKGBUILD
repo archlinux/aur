@@ -2,8 +2,8 @@
 # Contributor: Marc Plano-Lesay <marc.planolesay@gmail.com>
 
 pkgname="ibazel"
-pkgver="0.25.3"
-pkgrel="2"
+pkgver=0.25.3
+pkgrel=2
 pkgdesc="Tool for building Bazel targets when source files change."
 arch=("x86_64" "aarch64")
 license=("Apache 2.0")
