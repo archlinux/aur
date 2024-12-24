@@ -31,7 +31,7 @@ package() {
   tar -xvf "$srcdir/Slpct/slpct.tar.gz"
 
   install -dm 777 "$pkgdir/usr/es/SLpct"
-  install -dm 777 "$pkgdir/~/Slpct"
+  install -dm 777 "$pkgdir/$HOME/Slpct"
   install -Dt  "$pkgdir/usr/es/SLpct/"  -m 777 "$srcdir/SLpct/slpct_run"
   install -Dt  "$pkgdir/usr/es/SLpct/"  -m 777 "$srcdir/SLpct/SLpct.jar" 
   install -Dt  "$pkgdir/usr/es/SLpct/"  -m 777 "$srcdir/SLpct/app6464.png" 
