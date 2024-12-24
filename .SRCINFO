@@ -1,6 +1,6 @@
 pkgbase = thrive
 	pkgdesc = the evolution game Thrive.
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://revolutionarygamesstudio.com/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = thrive
 	license = GPL-3.0-or-later AND LicenseRef-CCPL AND OFL-1.1
 	makedepends = git
 	makedepends = git-lfs
-	makedepends = dotnet-sdk-8.0
+	makedepends = dotnet-sdk-9.0
 	makedepends = cmake
 	makedepends = clang
 	makedepends = lld
@@ -28,13 +28,13 @@ pkgbase = thrive
 	depends = fontconfig
 	depends = gcc-libs
 	options = !lto
-	source = git+https://github.com/Revolutionary-Games/Thrive.git#tag=v0.7.1
+	source = git+https://github.com/Revolutionary-Games/Thrive.git#tag=v0.8.0
 	source = git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git
 	source = git+https://github.com/jrouwe/JoltPhysics.git
 	source = git+https://github.com/cameron314/concurrentqueue.git
 	source = git+https://github.com/godotengine/godot-cpp.git
 	source = godot-mono-export-templates-4.3.zip::https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_mono_export_templates.tpz
-	sha256sums = 35817b933489968b15f236bcfd50ff43c7df7ec5e2c622221f84ad35533f246f
+	sha256sums = 918d21287e8b1a879e42b4fc3a9c4f6d3a402350e68aa5881a636b99506e24ab
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
