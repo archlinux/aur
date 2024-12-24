@@ -90,7 +90,7 @@ build() {
   # See if PETSc was configured to use 64 bit indices:
   if [ -n "${PETSC_DIR+x}" ]
   then
-      if grep '^#define PETSC_USE_64BIT_INDICES 1' $PETSC_DIR/include/petscconf.h >/dev/null
+      if grep '^#define PETSC_USE_64BIT_INDICES 1' "$PETSC_DIR/include/petscconf.h" >/dev/null
       then
          cmake_configuration_flags+=" -DDEAL_II_WITH_64BIT_INDICES=ON"
       fi
@@ -105,10 +105,10 @@ build() {
   # For GSL compatibility we need the full link interface, which includes
   # libgslcblas, so disable --as-needed with GCC:
   sed -i '/ENABLE_IF_LINKS(DEAL_II_LINKER_FLAGS "-Wl,--as-needed")/d' \
-      ${srcdir}/${_realname}-$pkgver/cmake/setup_compiler_flags_gnu.cmake
+      "${srcdir}/${_realname}-$pkgver/cmake/setup_compiler_flags_gnu.cmake"
 
   sed -i '122ifedisableexcept(FE_INVALID);\n' \
-      ${srcdir}/${_realname}-$pkgver/tests/quick_tests/scalapack.cc
+      "${srcdir}/${_realname}-$pkgver/tests/quick_tests/scalapack.cc"
 
   # Also remove from LDFLAGS if necessary
   LDFLAGS=$(echo $LDFLAGS | sed 's/--as-needed,//')
@@ -129,10 +129,10 @@ build() {
   cmake $cmake_configuration_flags -DCMAKE_INSTALL_PREFIX=$_installation_prefix \
         -DTRILINOS_DIR=/usr/                                                    \
         -DCMAKE_INSTALL_MESSAGE=NEVER -DCMAKE_CXX_FLAGS=" $extra_warning_flags" \
-        -DDEAL_II_SHARE_RELDIR=share/${pkgname}/                                \
-        -DDEAL_II_EXAMPLES_RELDIR=share/${pkgname}/examples/                    \
+        -DDEAL_II_SHARE_RELDIR="share/${pkgname}/"                              \
+        -DDEAL_II_EXAMPLES_RELDIR=share/"${pkgname}/examples/"                  \
         -DDEAL_II_UNITY_BUILD=ON                                                \
-        -DDEAL_II_COMPONENT_DOCUMENTATION=OFF ${srcdir}/${_realname}-$pkgver
+        -DDEAL_II_COMPONENT_DOCUMENTATION=OFF "${srcdir}/${_realname}-$pkgver"
 
   # deal.II needs about 3 GB/compilation process so use fewer jobs if your
   # machine does not have the memory to support the maximum number.
