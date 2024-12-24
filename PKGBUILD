@@ -2,7 +2,7 @@
 
 pkgname=frzr-sk
 _pkgname=frzr
-pkgver=0.15.2.sk15
+pkgver=0.16.0.sk1
 pkgrel=1
 pkgdesc="A deployment and update system for read-only btrfs subvolume based operating systems"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/honjow/frzr"
 license=('MIT')
 depends=('btrfs-progs' 'parted' 'libnewt' 'dosfstools' 'jq' 'util-linux' 'dmidecode' 'zstd' 'xz' 'aria2')
 
-_tag=0.15.2.sk15
+_tag=0.16.0.sk1
 source=("git+$url#tag=${_tag}")
 md5sums=('SKIP')
 backup=('etc/frzr-sk.conf')
