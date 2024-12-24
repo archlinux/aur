@@ -3,7 +3,7 @@
 pkgname=python-tradingeconomics
 _pkg="${pkgname#python-}"
 pkgver=4.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A library providing an API allowing access to Trading Economics data.'
 arch=('any')
 url='https://github.com/tradingeconomics/tradingeconomics-python'

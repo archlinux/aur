@@ -1,7 +1,7 @@
 pkgbase = python-tradingeconomics
 	pkgdesc = A library providing an API allowing access to Trading Economics data.
 	pkgver = 4.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tradingeconomics/tradingeconomics-python
 	arch = any
 	license = GPL-3.0-only
