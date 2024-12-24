@@ -1,11 +1,11 @@
 # Maintainer: Gareth Latty <gareth@lattyware.co.uk>
 pkgname=unrpa
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract files from the RPA archive format (from Ren'Py visual novels)."
 arch=("any")
 url="https://github.com/Lattyware/unrpa"
-license=("GPL3")
+license=("GPL-3.0-or-later")
 depends=("python3")
 makedepends=("python-setuptools")
 optdepends=("python-uncompyle6: ZiX archive support")
