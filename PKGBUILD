@@ -18,28 +18,24 @@ _commands=('cpz' 'rmz')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	for _command in ${_commands[@]}; do
-		cargo fetch --locked --target "$CARCH-unknown-linux-gnu" --manifest-path "${_command}/Cargo.toml"
-	done
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	# Yeah, right
+	export RUSTC_BOOTSTRAP=1
 }
 
 build() {
 	cd "$pkgname-$pkgver"
-	for _command in ${_commands[@]}; do
-		cargo build --release --frozen --manifest-path "${_command}/Cargo.toml"
-	done
+	cargo build "${_commands[@]/#/--package=}" --release --frozen --bins --tests
 }
 
 check() {
 	cd "$pkgname-$pkgver"
-	for _command in ${_commands[@]}; do
-		cargo test --release --frozen --manifest-path "${_command}/Cargo.toml"
-	done
+	cargo test "${_commands[@]/#/--package=}" --release --frozen
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	for _command in ${_commands[@]}; do
-		install -D -m 0755 -t "${pkgdir}/usr/bin/" "target/release/${_command}"
-	done
+	install -Dm755 \
+		"${_commands[@]/#/"target/release/"}" \
+		-t "$pkgdir/usr/bin"
 }
