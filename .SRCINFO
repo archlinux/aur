@@ -1,7 +1,7 @@
 pkgbase = zen-browser
 	pkgdesc = Experience tranquillity while browsing the web without people tracking you
-	pkgver = 1.0.2_b.3
-	pkgrel = 1
+	pkgver = 1.0.2_b.4
+	pkgrel = 2
 	url = https://zen-browser.app/
 	arch = x86_64
 	license = MPL-2.0
@@ -18,7 +18,7 @@ pkgbase = zen-browser
 	makedepends = mesa
 	makedepends = nasm
 	makedepends = nodejs
-	makedepends = python
+	makedepends = pyenv
 	makedepends = rust
 	makedepends = unzip
 	makedepends = wasi-compiler-rt
@@ -67,43 +67,36 @@ pkgbase = zen-browser
 	options = !lto
 	options = !makeflags
 	options = !debug
-	source = git+https://github.com/zen-browser/desktop.git#tag=1.0.2-b.3
+	source = git+https://github.com/zen-browser/desktop.git#tag=1.0.2-b.4
 	source = git+https://github.com/mozilla-l10n/firefox-l10n
 	source = https://archive.mozilla.org/pub/firefox/releases/133.0.3/source/firefox-133.0.3.source.tar.xz
-	source = desktop.patch
-	source = download-language-packs.patch
-	source = do-not-auto-disable-extensions-in-system-directories.patch
-	sha256sums = 139972b3f636a71d69ba7b44dbf4411d1d1c1a4e9ecb58402e812a981412fdfa
+	source = 0001-fix-desktop.zen.patch
+	source = 0002-download-lang-packs-withou-git-clone.zen.patch
+	source = 0003-do-not-disable-system-extensions.zen.patch
+	sha256sums = fcdc6617c1f2bd10b08516468e02863c2d6a3f364b3d6ba321b4e16b9d14349e
 	sha256sums = SKIP
 	sha256sums = f134a5420200bb03ab460f9d2867507c0edb222ce73faf4064cdbea02a0aca1b
-	sha256sums = fb8a1373a1e9f1b8b1443f75368b647f370735e5b95da82bab106000ef71fa76
-	sha256sums = f2a917dea2c5cbd702da69c0c8648047f2f28ae77c5807350f4cb4d2dd5fe4fb
-	sha256sums = 8c1dec4e17516ecc737cb4fd37a215a59a4a3dea49770290125973038d987e01
+	sha256sums = dfb0cef0eae73f1884c3ecde3c042136d8ad39172b5018d899cc39f8ebf611d0
+	sha256sums = 85980beb216499a8a60c17bda9ab2f8f57be6d67941c8f6d0ebf45c77ebf69d5
+	sha256sums = 36bff2af04da55da0cc71f960d921889ccf21c11fcd8343087c144dfcc50f10a
 
-pkgname = zen-browser-generic
-	pkgdesc = Experience tranquillity while browsing the web without people tracking you
-	provides = zen-browser=1.0.2_b.3
-	conflicts = zen-browser
-
-pkgname = zen-browser-specific
-	pkgdesc = Experience tranquillity while browsing the web without people tracking you (optimized for modern devices)
-	provides = zen-browser=1.0.2_b.3
-	conflicts = zen-browser
+pkgname = zen-browser
+	provides = zen-browser=1.0.2_b.4
 
 pkgname = zen-browser-i18n-zh-cn
 	pkgdesc = Language pack for Zen Browser (zh-CN)
 	arch = any
-	depends = zen-browser>=1.0.2_b.3
+	depends = zen-browser>=1.0.2_b.4
 	optdepends = 
 
 pkgname = zen-browser-i18n-zh-tw
 	pkgdesc = Language pack for Zen Browser (zh-TW)
 	arch = any
-	depends = zen-browser>=1.0.2_b.3
+	depends = zen-browser>=1.0.2_b.4
 	optdepends = 
 
 pkgname = zen-browser-i18n-ja
 	pkgdesc = Language pack for Zen Browser (ja)
 	arch = any
-	depends = zen-browser>=1.0.2_b.3
+	depends = zen-browser>=1.0.2_b.4
 	optdepends = 
