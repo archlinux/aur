@@ -26,13 +26,14 @@ _opt_defaultmode='660' # default: 620
 
 set -u
 pkgname='nslink'
-pkgver='8.00'
-pkgrel='8'
+pkgver='8.12'; _dl='1833783f'
+pkgrel='1'
 pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial port Hub console terminal device server'
 # UP is not explicitly supported by NS-Link, only by the firmware updater.
 _pkgdescshort="Comtrol DeviceMaster ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
-url='http://www.comtrol.com/'
+#url='http://www.comtrol.com/'
+url='https://www.pepperl-fuchs.com/global/en/classid_8222.htm'
 license=('GPL')
 depends=('glibc' 'openssl' 'python3' 'sed' 'groff' 'tcl' 'tk' 'util-linux') # python is also needed for the firmware updater
 optdepends=(
@@ -41,12 +42,13 @@ optdepends=(
 backup=('etc/nslink.conf')
 options=('!zipman' '!strip')
 install="${pkgname}-install.sh"
-_verwatch=('http://downloads.comtrol.com/html/DM_PRO_RTS_SERIALHUB_drivers.htm' '.*/devicemaster-linux-\([0-9\.]\+\)\.tar\.gz' 'l')
+#_verwatch=('http://downloads.comtrol.com/html/DM_PRO_RTS_SERIALHUB_drivers.htm' '.*/devicemaster-linux-\([0-9\.]\+\)\.tar\.gz' 'l')
 _srcdir="devicemaster-linux-${pkgver}"
-_srcdir2='DM-Firmware-Updater-1.06' # http://downloads.comtrol.com/html/DM_PRO_RTS_SERIALHUB_pvdx2.htm
+_srcdir_dm='DM-Firmware-Updater-1.06' # http://downloads.comtrol.com/html/DM_PRO_RTS_SERIALHUB_pvdx2.htm
 source=(
+  "devicemaster-linux-${pkgver}-${_dl}.zip::https://files.pepperl-fuchs.com/webcat/navi/productInfo/18/${_dl}.zip"
   #"ftp://ftp.comtrol.com/dev_mstr/rts/drivers/linux/devicemaster-linux-${pkgver}.tar.gz"
-  "https://downloads.comtrol.com/dev_mstr/rts/drivers/linux/devicemaster-linux-${pkgver}.tar.gz"
+  #"https://downloads.comtrol.com/dev_mstr/rts/drivers/linux/devicemaster-linux-${pkgver}.tar.gz"
   #'ftp://ftp.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz'
   'https://downloads.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz'
   'dmupdate.py.usage.patch'
@@ -64,7 +66,7 @@ source=(
   '0013-kernel-6.3-tty_port_operations-int-to-bool.patch'
   '0014-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch'
 )
-md5sums=('b59906d80268e69a24c211b398ffd10c'
+md5sums=('e5d1a3959fb63c2c70bab9da47af3bb4'
          'e3ffb36acfdd321c919e44d477f0774a'
          '581cd5f582ed20c7cf85a4df23a9f78a'
          'dd44ac32eb3632120258cc4727221e15'
@@ -80,7 +82,7 @@ md5sums=('b59906d80268e69a24c211b398ffd10c'
          'feb1ccc7522a6ac2b33326c7f648edb2'
          '1ff77ae8edbcd654c680999eadd4911b'
          'ed93e16d8cbac647e69a473359991c2d')
-sha256sums=('092859a3c198f8e3f5083a752eab0af74ef71dce59ed503d120792be13cc5fa3'
+sha256sums=('0d3e75732edda607006f04baa50d8d3c1b44df26e4535de47dffb341da9e99d1'
             'd21c5eeefdbf08a202a230454f0bf702221686ba3e663eb41852719bb20b75fb'
             '5a4e2713a8d1fe0eebd94fc843839ce5daa647f9fa7d88f62507e660ae111073'
             '9fe2680244ce4e5dc933e028a5e7944a912c2980a91cee92509904ede2cf8bea'
@@ -105,6 +107,13 @@ fi
 
 prepare() {
   set -u
+  set -x
+  # Pacman v7.0.0 makepkg won't unpack zip files
+  bsdtar -xf "${source[0]%%::*}"
+  if [ ! -d "${_srcdir}" ]; then
+    find -type 'f' -name "${_srcdir}.tar.gz" -exec bsdtar -xf '{}' ';' -quit
+  fi
+  set +x
   cd "${_srcdir}"
 
   # Fix permissions
@@ -123,31 +132,31 @@ prepare() {
 
   local _patches=()
   #_patches+=('0002-kernel-5.6-proc_dir_entry-proc_ops.patch')
-  _patches+=('0003-tty_unregister_driver-void.patch')
-  _patches+=('0004-kernel-5.12-tty-low_latency.patch')
+  #_patches+=('0003-tty_unregister_driver-void.patch')
+  #_patches+=('0004-kernel-5.12-tty-low_latency.patch')
 
   # tty.stopped https://lore.kernel.org/lkml/20210505091928.22010-13-jslaby@suse.cz/
   # unsigned write_room https://www.spinics.net/lists/linux-serial/msg42297.html
   # unsigned chars_in_buffer https://www.spinics.net/lists/linux-serial/msg42299.html
-  _patches+=('0005-kernel-5.14-unsigned-tty-flow-tty.patch')
+  #_patches+=('0005-kernel-5.14-unsigned-tty-flow-tty.patch')
 
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
-  _patches+=('0006-kernel-5.15-alloc_tty_driver-put_tty_driver.patch')
+  #_patches+=('0006-kernel-5.15-alloc_tty_driver-put_tty_driver.patch')
   _patches+=('0007-service-priority.patch')
   _patches+=('0009-python3-nslink.patch')
-  _patches+=('0010-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch')
+  #_patches+=('0010-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch')
 
   # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
-  _patches+=('0011-kernel-6.0-set_termios-const-ktermios.patch')
-  _patches+=('0012-kernel-6.6-struct-tty_operations-write-size_t.patch')
-  _patches+=('0013-kernel-6.3-tty_port_operations-int-to-bool.patch')
-  _patches+=('0014-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch')
+  #_patches+=('0011-kernel-6.0-set_termios-const-ktermios.patch')
+  #_patches+=('0012-kernel-6.6-struct-tty_operations-write-size_t.patch')
+  #_patches+=('0013-kernel-6.3-tty_port_operations-int-to-bool.patch')
+  #_patches+=('0014-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch')
 
   local _pt _ptf=() _pts=()
   for _pt in "${_patches[@]}"; do
     set +u; msg2 "Patch ${_pt}"; set -u
-    if patch -Nup1 -i "${srcdir}/${_pt}"; then
+    if patch -Nup1 --no-backup-if-mismatch -i "${srcdir}/${_pt}"; then
       _pts+=("${_pt}")
     else
       _ptf+=("${_pt}")
@@ -235,7 +244,7 @@ prepare() {
     -i 'nslinkd.c'
 
   # Fix up the firmware downloaders
-  cd "${srcdir}/${_srcdir2}"
+  cd "${srcdir}/${_srcdir_dm}"
 
   # Fix permissions
   find -type 'f' -perm '/111' -exec chmod 644 '{}' '+'
@@ -341,7 +350,7 @@ EOF
   fi
 
   # Install firmware updaters
-  cd "${srcdir}/${_srcdir2}"
+  cd "${srcdir}/${_srcdir_dm}"
   install -Dpm755 *.py -t "${pkgdir}/usr/bin/"
   install -Dpm644 'README.txt' -t "${pkgdir}/usr/share/nslink/"
 
