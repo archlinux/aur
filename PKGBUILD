@@ -3,12 +3,12 @@
 _pkgname=buildtools
 pkgname=buildifier
 pkgver=7.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line tool to format Bazel BUILD files'
 arch=('x86_64' 'aarch64')
 license=('Apache')
 url='https://github.com/bazelbuild/buildtools'
-makedepends=('bazel' 'git')
+makedepends=('bazel' 'git' 'python')
 conflicts=('buildifier-bin')
 _commit='45b7ddb516e521e68794bf409d73ff8a32641de3'
 source=("$pkgname::git+$url.git#commit=$_commit")
