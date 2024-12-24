@@ -1,7 +1,7 @@
 pkgbase = python-dataprep-git
 	pkgdesc = A low code data preparation library in python -- git version
 	pkgver = 0.4.4.r22.gbe3f00c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sfu-db/dataprep
 	arch = any
 	license = MIT
