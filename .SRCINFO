@@ -1,7 +1,7 @@
 pkgbase = python-vlc
 	pkgdesc = VLC bindings for python
 	pkgver = 3.0.21203
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.videolan.org/PythonBinding
 	arch = any
 	license = LGPL-2.1-or-later
