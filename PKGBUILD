@@ -3,7 +3,7 @@
 _pkgname=dlib
 pkgname=python-${_pkgname}-git
 pkgver=19.24.6.r4.gfafdac3
-pkgrel=1
+pkgrel=2
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques. -- git non-CUDA version"
 arch=('x86_64')
 url="http://www.dlib.net/"
