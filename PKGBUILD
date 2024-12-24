@@ -5,7 +5,7 @@
 
 # Maintainer: Buck Yeh <buck.yeh at gmail dot com>
 pkgname=bux-sqlite
-pkgver=1.0.3
+pkgver=1.0.5
 pkgrel=1
 epoch=
 pkgdesc='Wrapper classes and utilities of the original SQLite3 CAPI'
