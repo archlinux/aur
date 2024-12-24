@@ -3,7 +3,7 @@
 
 pkgname=python-crfsuite
 pkgver=0.9.11
-pkgrel=3
+pkgrel=4
 pkgdesc="A Python binding for crfsuite"
 arch=('x86_64')
 url="https://github.com/scrapinghub/${pkgname}"
