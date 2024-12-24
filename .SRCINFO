@@ -1,11 +1,12 @@
 pkgbase = spi-ch341-usb-dkms-git
 	pkgdesc = SPI/GPIO driver for CH341
 	pkgver = r51.7223d34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gschorcht/spi-ch341-usb
 	arch = any
 	license = GPL
 	makedepends = git
+	depends = dkms
 	conflicts = spi-ch341-usb-dkms
 	source = git+https://github.com/dimich-dmb/spi-ch341-usb.git
 	sha256sums = SKIP

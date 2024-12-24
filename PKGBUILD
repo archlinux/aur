@@ -6,13 +6,13 @@ pkgver() {
     cd "$srcdir/spi-ch341-usb"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="SPI/GPIO driver for CH341"
 arch=(any)
 url="https://github.com/gschorcht/spi-ch341-usb"
 license=('GPL')
 groups=()
-depends=()
+depends=('dkms')
 conflicts=('spi-ch341-usb-dkms')
 makedepends=('git')
 source=('git+https://github.com/dimich-dmb/spi-ch341-usb.git')
