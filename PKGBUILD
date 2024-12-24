@@ -1,4 +1,5 @@
 # Maintainer: Joshua Ellis <josh@jpellis.me>
+# Contributor: Tiago "marmis" de Paula <tiagodepalves@gmail.com>
 # Contributor: Anish Tondwalkar <anish@tjhsst.edu>
 # Contributor: Ghost91 <m_graeb11@cs.uni-kl.de>
 # Contributor: Michael Pusterhofer <pusterhofer at student dot tugraz dot at>
@@ -98,6 +99,9 @@ options=(!strip !debug)
 _installdir='/opt/Mathematica'
 
 prepare() {
+    warning "Building Mathematica (Light) takes around 10GiB of space for 'makepkg'."
+    warning 'Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work.'
+
     if [ "$(echo "${srcdir}" | wc -w)" -ne 1 ]; then
         msg2 "ERROR: The Mathematica installer doesn't support directory names with spaces."
         msg2 "Current build directory: ${srcdir}"
