@@ -1,0 +1,48 @@
+From 50d4592b1292e51cad1214d1e0593eaac44e6c90 Mon Sep 17 00:00:00 2001
+From: nicolasyang <nicolasyang243@proton.me>
+Date: Tue, 24 Dec 2024 12:03:33 +0800
+Subject: [PATCH 2/3] add 3.13 as supported controller version
+
+---
+ test/lib/ansible_test/_data/requirements/ansible-test.txt | 2 +-
+ test/lib/ansible_test/_internal/coverage_util.py          | 2 +-
+ test/lib/ansible_test/_util/target/common/constants.py    | 1 +
+ 3 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/test/lib/ansible_test/_data/requirements/ansible-test.txt b/test/lib/ansible_test/_data/requirements/ansible-test.txt
+index 17662f07a2..2b725a985b 100644
+--- a/test/lib/ansible_test/_data/requirements/ansible-test.txt
++++ b/test/lib/ansible_test/_data/requirements/ansible-test.txt
+@@ -1,5 +1,5 @@
+ # The test-constraints sanity test verifies this file, but changes must be made manually to keep it in up-to-date.
+ virtualenv == 16.7.12 ; python_version < '3'
+-coverage == 7.3.2 ; python_version >= '3.8' and python_version <= '3.12'
++coverage == 7.3.2 ; python_version >= '3.8' and python_version <= '3.13'
+ coverage == 6.5.0 ; python_version >= '3.7' and python_version <= '3.7'
+ coverage == 4.5.4 ; python_version >= '2.6' and python_version <= '3.6'
+diff --git a/test/lib/ansible_test/_internal/coverage_util.py b/test/lib/ansible_test/_internal/coverage_util.py
+index 30176236c7..f437110cc1 100644
+--- a/test/lib/ansible_test/_internal/coverage_util.py
++++ b/test/lib/ansible_test/_internal/coverage_util.py
+@@ -69,7 +69,7 @@ class CoverageVersion:
+ 
+ COVERAGE_VERSIONS = (
+     # IMPORTANT: Keep this in sync with the ansible-test.txt requirements file.
+-    CoverageVersion('7.3.2', 7, (3, 8), (3, 12)),
++    CoverageVersion('7.3.2', 7, (3, 8), (3, 13)),
+     CoverageVersion('6.5.0', 7, (3, 7), (3, 7)),
+     CoverageVersion('4.5.4', 0, (2, 6), (3, 6)),
+ )
+diff --git a/test/lib/ansible_test/_util/target/common/constants.py b/test/lib/ansible_test/_util/target/common/constants.py
+index 36a5a2c434..db81f6b135 100644
+--- a/test/lib/ansible_test/_util/target/common/constants.py
++++ b/test/lib/ansible_test/_util/target/common/constants.py
+@@ -17,4 +17,5 @@ CONTROLLER_PYTHON_VERSIONS = (
+     '3.10',
+     '3.11',
+     '3.12',
++    '3.13',
+ )
+-- 
+2.47.1
+

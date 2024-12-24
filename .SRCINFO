@@ -1,7 +1,7 @@
 pkgbase = ansible-core-2.16
 	pkgdesc = Radically simple IT automation platform (legacy version with python 3.6 remote support)
 	pkgver = 2.16.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ansible.com
 	arch = any
 	license = GPL-3.0-or-later AND BSD-2-Clause AND PSF-2.0 AND MIT AND Apache-2.0
@@ -47,9 +47,15 @@ pkgbase = ansible-core-2.16
 	replaces = ansible-base
 	source = ansible-core-2.16-2.16.14.tar.gz::https://github.com/ansible/ansible/archive/refs/tags/v2.16.14.tar.gz
 	source = 0001-do-not-pin-resolvelib.patch
+	source = 0002-add-3.13-as-supported-controller-version.patch
+	source = 0003-remove-crypt-related-tests.patch
 	sha512sums = 6a375db9481be199b0bd1fd41ffc7631bd69cab1ebdacdb0a41f42cdba60ee4916a3eb4238fd865b5b75f4f32ba42a9ee073d56d6986ce3aecf27bb75f02898c
-	sha512sums = fa3eef53633247e3e41fd636ea29309114e9a80eea868da30b8e0384165270e5c5ea979f9d30e6d6da0bb78a7ddea130a235e543794d774cd7181506a5a51299
+	sha512sums = eb39ca61e051e1c781ab302e26626cecb1b7f21952c506b3dffcbc90282a9c7e9f0ef58c3ba1f0eb9e0cc49925e14e3453e302f194931d2426363889ce513084
+	sha512sums = f71d69e583f9eeda34013d109bb51a1fac04377184261185938f3fd6656644c8841c8163d03b6b4f27be0dde4eeb9639bef7d16ff8bf1855da48129b16c772eb
+	sha512sums = 9761f8bb4cf24d5f636a68f1a71d09710e96a0df6bd59ef102b516255544264c50217f6055f2b00bd1f10fdb6213754528df2c04cfe935c2f14d68289a67c648
 	b2sums = f1d6da6785d4ec19a9903042cb6f7bbedf6fc838f8e25a3dc82ac96f89d302130790a8e3f38bbaeb248e96319fb592192bb626275ef77b8917136894103129d0
-	b2sums = e4061b50f8c9bc68de5c79e85ae9380a213d311eca4d6b6e4a593dc24b2149a5c5c9590223561c4f6e2ee4f59121d1d19c5cda8f8cbf3998046809fc118fd02f
+	b2sums = 822b30e528877d630f0b1d01a739a5617fdc1ae74e3af29c605c5bc5571bcb650677fd0671e7279011289e35be82295a5bdc6b687a9918f0501f10ab22d082db
+	b2sums = ffe584c3fbd3d1e178064dfb2b8cdcc57470a2e1cb11825007c23d6d3a6b7d7ff42877c6bc07c7fa90f040d022589e4d6c6fcf5fda31d6e7d27593d62f32065b
+	b2sums = e97afc388000f8134744055ee03ae39d3a118425528fc189f15bfac32bb8ad3103a83f745dd4dc31e211d85bb05d3c81fc6ca2615e4698cf28db7252d48401c0
 
 pkgname = ansible-core-2.16
