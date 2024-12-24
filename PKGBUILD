@@ -4,7 +4,7 @@
 _pyname=panflute
 pkgname=python-$_pyname
 pkgver=2.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A Pythonic alternative to John MacFarlane’s pandocfilters'
 arch=(any)
 url="https://github.com/sergiocorreia/$_pyname"
