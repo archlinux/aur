@@ -1,0 +1,3 @@
+[python-newspaper4k]
+source = "git"
+git = "https://github.com/andythefactory/newspaper4k.git"
