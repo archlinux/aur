@@ -12,14 +12,17 @@ depends=('boost-libs>=1.46' 'glew' 'libmad' 'libogg' 'libvorbis' 'libpng'
          'sdl_mixer' 'sdl_image' 'sdl_ttf' 'guichan' 'gtk3')
 makedepends=('scons' 'boost')
 source=("https://github.com/eglaysher/rlvm/archive/$_pkgver.tar.gz"
+        "tests.patch"
         "warnings.patch"
         "gtk+3.patch")
 sha256sums=('c2d595060cce52494d82ef59bed205fd427890b4a7e9b09465e01da8a431a3fd'
+            'c22775cdf6f1cecee86047b0b0ed9d21c5d3425813a395fb2913e644064070bb'
             'dcbd9e0de8ccb91983d691f0b5fd6938fef45653ac20d244c1c19a3df01b7550'
             '6bf8a1d8cd64b05057859338132acef11db573c58adc3913679776b8d4a7b83a')
 
 prepare() {
   cd "$srcdir/$pkgname-$_pkgver"
+  patch -Np1 -i "$srcdir/tests.patch"
   patch -Np1 -i "$srcdir/warnings.patch"
   patch -Np1 -i "$srcdir/gtk+3.patch"
 }
