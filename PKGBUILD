@@ -1,4 +1,5 @@
 # Maintainer: Joshua Ellis <josh@jpellis.me>
+# Contributor: Tiago "marmis" de Paula <tiagodepalves@gmail.com>
 # Contributor: Anish Tondwalkar <anish@tjhsst.edu>
 # Contributor: Ghost91 <m_graeb11@cs.uni-kl.de>
 # Contributor: Michael Pusterhofer <pusterhofer at student dot tugraz dot at>
@@ -98,7 +99,7 @@ options=(!strip !debug)
 
 ## The final package can be very large (especially if documentation is kept) and
 ## compression can be quite slow.  In most cases, the package is installed
-## straight away and the package need not be kept, so compression is disabled.
+## straight away and the package need not be kept, so compression can be disabled.
 # PKGEXT='.pkg.tar'
 
 ## Here you can change the installation directory. The default is '/opt/Mathematica'.
