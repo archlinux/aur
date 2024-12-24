@@ -3,7 +3,7 @@
 _pkg=python-docx
 pkgname=${_pkg}-git
 pkgver=1.1.2.r0.g0cf6d71
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python library for creating and updating Microsoft Word (.docx) files"
 arch=('any')
 url="https://github.com/python-openxml/python-docx"
