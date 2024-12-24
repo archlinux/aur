@@ -46,6 +46,8 @@ optdepends=(
       'zlib: Compression library implementing the deflate compression method found in gzip and PKZIP'
       )
 makedepends=('cmake')
+# LTO is too expensive to link and deal.II manages its own debug build
+options=(!lto !debug !strip)
 install=deal-ii.install
 source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz)
 sha1sums=('aad6d6f578baa51b0a66f21ea8113d3b49cc6d7e')

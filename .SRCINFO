@@ -35,6 +35,9 @@ pkgbase = deal-ii
 	optdepends = suitesparse: A collection of sparse matrix libraries
 	optdepends = vtk: Software system for 3D computer graphics, image processing, and visualization
 	optdepends = zlib: Compression library implementing the deflate compression method found in gzip and PKZIP
+	options = !lto
+	options = !debug
+	options = !strip
 	source = https://github.com/dealii/dealii/releases/download/v9.6.2/dealii-9.6.2.tar.gz
 	sha1sums = aad6d6f578baa51b0a66f21ea8113d3b49cc6d7e
 
