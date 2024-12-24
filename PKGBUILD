@@ -1,9 +1,6 @@
-# Maintainer: Yvaniak <ewen at philippot dot biz>
-# Maintainer: Benjamin Denhartog <ben@sudoforge.com>
-
-# For ISSUES, REQUESTS, and QUESTIONS:
-# feel free to let on the aur package page
-
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor: Yvaniak <ewen at philippot dot biz>
+# Contributor: Benjamin Denhartog <ben@sudoforge.com>
 
 pkgname=buildifier-bin
 pkgver=7.3.1
