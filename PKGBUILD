@@ -5,7 +5,7 @@
 
 pkgname=buildozer-bin
 pkgver=4.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line tool to rewrite Bazel BUILD files using standard conventions'
 arch=('x86_64')
 license=('Apache')
@@ -18,7 +18,7 @@ sha256sums=('e8e39b71c52318a9030dd9fcb9bbfd968d0e03e59268c60b489e6e6fc1595d7b'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 
 package() {
-  cd "${srcdir}"
+  cd "${srcdir}" || exit
 
   # Install the license file
   install -D -m 0644 \
