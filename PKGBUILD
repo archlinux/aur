@@ -3,7 +3,7 @@
 _pkgname=buildtools
 pkgname=buildifier
 pkgver=7.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A command line tool to format Bazel BUILD files'
 arch=('x86_64' 'aarch64')
 license=('Apache')
@@ -29,7 +29,6 @@ package() {
 
   # Install the binary
   install -D -m 0755 \
-    "./bazel-bin/${pkgname}/${pkgname}" \
     "./bazel-bin/$pkgname/$pkgname_/$pkgname" \
     "${pkgdir}/usr/bin/$pkgname"
 }
