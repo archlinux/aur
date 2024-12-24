@@ -1,26 +1,54 @@
-# Maintainer: Marc Plano-Lesay <marc.planolesay@gmail.com>
+# Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
+# Contributor: Marc Plano-Lesay <marc.planolesay@gmail.com>
 
 pkgname="ibazel"
-pkgver="0.23.2"
+pkgver="0.25.3"
 pkgrel="1"
 pkgdesc="Tool for building Bazel targets when source files change."
-arch=("i686" "x86_64")
+arch=("x86_64" "aarch64")
 license=("Apache 2.0")
 url="https://github.com/bazelbuild/bazel-watcher"
 makedepends=("bazel" "git" "python")
 depends=("bazel")
+conflicts=('ibazel-git')
+_bazelisk_pkgver="1.25.0"
+_commit='778a4da3ed8c177a310e5d28a14bf4fdbaf4fef3'
+source=("${pkgname}::git+$url.git#commit=$_commit")
+source_x86_64=(
+  "bazelisk-bin-x86_64-${_bazelisk_pkgver}::https://github.com/bazelbuild/bazelisk/releases/download/v${_bazelisk_pkgver}/bazelisk-linux-amd64"
+)
+source_aarch64=(
+  "bazelisk-bin-aarch64-${_bazelisk_pkgver}::https://github.com/bazelbuild/bazelisk/releases/download/v${_bazelisk_pkgver}/bazelisk-linux-arm64"
+)
+sha256sums=('f7d4c649b811ab0419635a920806f9e2313951b2988f45612cc6d7755b4ca095')
+sha256sums_x86_64=('fd8fdff418a1758887520fa42da7e6ae39aefc788cf5e7f7bb8db6934d279fc4')
+sha256sums_aarch64=('4c8d966e40ac2c4efcc7f1a5a5cceef2c0a2f16b957e791fa7a867cce31e8fcb')
 
-source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=("e7f68d8b37955931ae73611225f05c9f1b678871891c486c450846276550966b")
+prepare() {
+  chmod +x "${srcdir}/bazelisk-bin-${CARCH}-${_bazelisk_pkgver}"
+}
 
 build() {
-  cd bazel-watcher-$pkgver
-  bazel build //cmd/ibazel:ibazel --config release --platforms=@io_bazel_rules_go//go/toolchain:linux_amd64
+  cd "${pkgname}" || exit
+
+  if [ "${CARCH}" == "aarch64" ]; then
+    _platforms="--platforms=@io_bazel_rules_go//go/toolchain:linux_arm64"
+  else
+    _platforms="--platforms=@io_bazel_rules_go//go/toolchain:linux_amd64"
+  fi
+
+  "${srcdir}/bazelisk-bin-${CARCH}-${_bazelisk_pkgver}" \
+    build --config=release "${_platforms}" \
+    "//cmd/${pkgname}"
 }
 
 package() {
-  cd bazel-watcher-$pkgver
-  install -Dm755 bazel-bin/cmd/ibazel/ibazel_/ibazel "$pkgdir"/usr/bin/ibazel
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/ibazel/LICENSE
+  cd "${pkgname}" || exit
+
+  install -Dm755 \
+    ./bazel-bin/cmd/${pkgname}/${pkgname}_/${pkgname} \
+    "${pkgdir}/usr/bin/${pkgname}"
+
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
