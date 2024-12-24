@@ -3,7 +3,7 @@
 _pkgname=langid.py
 pkgname=python-langid-git
 pkgver=r242.4153583
-pkgrel=1
+pkgrel=2
 pkgdesc="Stand-alone language identification system using python"
 arch=('any')
 url="https://github.com/saffsd/${_pkgname}"
