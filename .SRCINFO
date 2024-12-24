@@ -1,7 +1,7 @@
 pkgbase = borgwarehouse
 	pkgdesc = WebUI for a BorgBackup central repository server
 	pkgver = 2.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ravinou/borgwarehouse
 	arch = x86_64
 	license = AGPL-3.0-or-later

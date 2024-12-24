@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hatt hotmail.com>
 pkgname=borgwarehouse
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="WebUI for a BorgBackup central repository server"
 arch=("x86_64")
 url="https://github.com/ravinou/borgwarehouse"
