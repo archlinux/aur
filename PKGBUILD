@@ -1,12 +1,12 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=oblivion-desktop-git
-pkgver=1.14.0.r0.gc501d7c
+pkgver=2.8.5.r2.g85a1798
 pkgrel=1
 pkgdesc="Unofficial Warp Client for Windows/Mac/Linux (GitHub Version)"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/bepass-org/oblivion-desktop"
 license=("custom:${pkgname%-git}")
-_electron=electron27
+_electron=electron33
 depends=('bash' "${_electron}")
 makedepends=('asar' 'gendesk' 'git' 'npm')
 optdepends=('libappindicator-gtk3: systray and app indicator support')

@@ -1,6 +1,6 @@
 pkgbase = oblivion-desktop-git
 	pkgdesc = Unofficial Warp Client for Windows/Mac/Linux (GitHub Version)
-	pkgver = 1.14.0.r0.gc501d7c
+	pkgver = 2.8.5.r2.g85a1798
 	pkgrel = 1
 	url = https://github.com/bepass-org/oblivion-desktop
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = oblivion-desktop-git
 	makedepends = git
 	makedepends = npm
 	depends = bash
-	depends = electron27
+	depends = electron33
 	optdepends = libappindicator-gtk3: systray and app indicator support
 	provides = oblivion-desktop
 	conflicts = oblivion-desktop
