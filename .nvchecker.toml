@@ -1,0 +1,3 @@
+[python-newspaper]
+source = "pypi"
+pypi = "newspaper3k"

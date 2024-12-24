@@ -1,7 +1,7 @@
 pkgbase = python-newspaper
 	pkgdesc = Article scraping & curation
 	pkgver = 0.2.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/codelucas/newspaper
 	arch = any
 	license = BSD
