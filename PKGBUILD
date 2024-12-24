@@ -3,15 +3,17 @@
 # Contributor: Matthew Murray <matt@mattmurr.xyz>
 pkgname=open-fprintd
 pkgver=0.6
-pkgrel=5
+pkgrel=6
 pkgdesc="Fprintd replacement which allows you to have your own backend as a standalone service"
 arch=(any)
 license=('GPL')
-depends=(python
-         fprintd-clients
-         gobject-introspection-runtime
-         dbus-python
-         python-gobject)
+depends=(
+  python
+  fprintd-clients # AUR
+  gobject-introspection-runtime
+  dbus-python
+  python-gobject
+)
 makedepends=(python-setuptools)
 url="https://github.com/uunicorn/${pkgname}"
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz")
