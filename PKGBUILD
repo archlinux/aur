@@ -3,7 +3,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qmplay2-appimage
 _pkgname=QMPlay2
-pkgver=24.12.06
+pkgver=24.12.23
 pkgrel=1
 pkgdesc="A video and audio player which can play most formats and codecs"
 arch=('x86_64')
@@ -22,8 +22,8 @@ options=(
 )
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-1-${CARCH}.AppImage")
-sha256sums=('8895b682059100b4864012a49ab8502723ce406b3b621b66ca3e9559c329474e')
-build() {
+sha256sums=('fbd50e5792c1544e66612843c10d26698610c6f44baff2fb45ea9ce0eb014773')
+prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -e "
