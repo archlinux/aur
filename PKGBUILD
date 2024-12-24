@@ -3,7 +3,7 @@
 pkgname=python-pairwisedist
 _module=${pkgname#python-}
 pkgver=1.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Calculate the pairwise-distance matrix for an array of n samples by p features'
 arch=(any)
 url="https://github.com/GuyTeichman/pairwisedist"
@@ -16,9 +16,10 @@ depends=(
         )
 makedepends=(
              'python-setuptools' 
-             'python-installer' 
-             'python-pytest-runner'
+             'python-installer'
+             'python-pip'
             )
+            # 'python-pytest-runner'
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
 md5sums=('7fb70febbac6a6b35584ab4c30e41f39')
 
