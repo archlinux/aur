@@ -4,7 +4,7 @@
 _pkgname=srsly
 pkgname=python-${_pkgname}
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern high-performance serialization utilities for Python'
 arch=(x86_64 aarch64)
 url='https://github.com/explosion/srsly'
