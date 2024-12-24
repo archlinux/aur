@@ -1,7 +1,7 @@
 # Maintainer: Giovanni De Paola <avvdepaola at proton dot me>
 pkgname=slpct
 pkgver=1.33.0
-pkgrel=3
+pkgrel=4
 pkgdesc="redattore atti gratuito per il Processo Civile Telematico"
 arch=('any')
 url='https://github.com/Marx79/Slpct.git'
@@ -30,7 +30,8 @@ package() {
 	
   tar -xvf "$srcdir/Slpct/slpct.tar.gz"
 
-  install -dm 777 "$pkgdir/usr/es/SLpct"	
+  install -dm 777 "$pkgdir/usr/es/SLpct"
+  install -dm 777 "$pkgdir/~/Slpct"
   install -Dt  "$pkgdir/usr/es/SLpct/"  -m 777 "$srcdir/SLpct/slpct_run"
   install -Dt  "$pkgdir/usr/es/SLpct/"  -m 777 "$srcdir/SLpct/SLpct.jar" 
   install -Dt  "$pkgdir/usr/es/SLpct/"  -m 777 "$srcdir/SLpct/app6464.png" 
