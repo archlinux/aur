@@ -6,8 +6,8 @@
 # Contributor: Skunnyk <skunnyk@archlinux.fr>
 
 pkgname=playonlinux
-pkgver=4.4+29+gd0ae9ce6
-pkgrel=3
+pkgver=4.4+47+g10f7853c
+pkgrel=1
 pkgdesc="GUI for managing Windows programs under linux"
 arch=('x86_64')
 url="https://www.playonlinux.com/"
@@ -17,7 +17,7 @@ depends=('wine' 'imagemagick' 'xterm' 'python-wxpython' 'cabextract' 'unzip' 'me
 makedepends=(git)
 #source=(https://www.playonlinux.com/script_files/PlayOnLinux/${pkgver/.0/}/PlayOnLinux_${pkgver/.0/}.tar.gz
 #source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PlayOnLinux/POL-POM-4/archive/refs/tags/4.4.tar.gz"
-source=("playonlinux4::git+https://github.com/PlayOnLinux/POL-POM-4.git#commit=d0ae9ce61668861dacd5c4981e7f3b020e3cc327"
+source=("playonlinux4::git+https://github.com/PlayOnLinux/POL-POM-4.git#commit=10f7853c84f456f19289c22fe19a9a99f94d9dda"
         PlayOnLinuxUrlHandler.desktop)
 options=(!strip)
 sha256sums=('SKIP'
