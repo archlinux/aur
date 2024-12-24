@@ -1,7 +1,7 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor: Benjamin Denhartog <ben@sudoforge.com>
 
-pkgname=buildifier
+pkgname=buildozer
 pkgver=7.3.1
 pkgrel=1
 pkgdesc='A command line tool to rewrite Bazel BUILD files using standard conventions'

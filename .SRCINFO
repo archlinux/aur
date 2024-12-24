@@ -1,4 +1,4 @@
-pkgbase = buildifier
+pkgbase = buildozer
 	pkgdesc = A command line tool to rewrite Bazel BUILD files using standard conventions
 	pkgver = 7.3.1
 	pkgrel = 1
@@ -10,7 +10,7 @@ pkgbase = buildifier
 	makedepends = git
 	makedepends = python
 	conflicts = buildozer-bin
-	source = buildifier::git+https://github.com/bazelbuild/buildtools.git#commit=45b7ddb516e521e68794bf409d73ff8a32641de3
+	source = buildozer::git+https://github.com/bazelbuild/buildtools.git#commit=45b7ddb516e521e68794bf409d73ff8a32641de3
 	md5sums = SKIP
 
-pkgname = buildifier
+pkgname = buildozer
