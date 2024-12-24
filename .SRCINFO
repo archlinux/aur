@@ -1,7 +1,7 @@
 pkgbase = python-simpleaudio
 	pkgdesc = A simple audio playback Python extension
 	pkgver = 1.0.4
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/hamiltron/py-simple-audio
 	arch = x86_64
 	arch = aarch64

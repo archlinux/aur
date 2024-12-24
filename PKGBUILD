@@ -6,7 +6,7 @@
 pkgname=python-simpleaudio
 _pkgname=py-simple-audio
 pkgver=1.0.4
-pkgrel=6
+pkgrel=7
 pkgdesc='A simple audio playback Python extension'
 arch=('x86_64' 'aarch64')
 url="https://github.com/hamiltron/${_pkgname}"
