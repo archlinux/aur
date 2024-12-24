@@ -2,7 +2,7 @@
 # Contributor: devome <evinedeng@hotmail.com>
 
 pkgname=lobe-chat
-pkgver=1.39.0
+pkgver=1.39.1
 pkgrel=1
 pkgdesc="An open-source, modern-design LLMs/AI chat framework"
 arch=("x86_64" "aarch64")
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('36403ce91d6dd337ff011e47d0fc7ef76e3dc627ad0a259223af9779cd7c17f0'
+sha256sums=('5b6741189fa7e8fdc9f6a5d16275f8bd6adff9441d13daec204d16f0210a2bc3'
             '31425770cc37294fe223755f33a1dde387250f36d25e36d47d46de0962f3f8e5'
             '43143b06b5418e718fafa404999f6f1266a8f11c7427d93b81a23a2a0b348595'
             '4205728d7528ccc94f2a9eb25655cf4bed59502be3726f17da814355c540f528'
