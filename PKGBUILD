@@ -1,4 +1,5 @@
 # Maintainer: coolpuppykid <neduos67@gmail.com>
+# Maintainer: luvth <raphonlinux@gmail.com>
 
 pkgname="pyrfetch-git"
 pkgver=1.1
