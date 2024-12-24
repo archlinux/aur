@@ -1,0 +1,3 @@
+[python-textblob]
+source = "git"
+git = "https://github.com/sloria/textblob.git"

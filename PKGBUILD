@@ -3,7 +3,7 @@
 _pkgname=textblob
 pkgname=python-${_pkgname}
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, Pythonic, text processing--Sentiment analysis, part-of-speech tagging, noun phrase extraction, translation, and more.'
 arch=('any')
 url='https://github.com/sloria/textblob'
