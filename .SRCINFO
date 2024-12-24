@@ -1,6 +1,6 @@
 pkgbase = httptoolkit-git
 	pkgdesc = A beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client.Use system-wide electron.
-	pkgver = 1.19.0.r0.g66e6875
+	pkgver = 1.19.3.r0.gd53c945
 	pkgrel = 1
 	url = https://httptoolkit.com/
 	arch = any
@@ -10,13 +10,12 @@ pkgbase = httptoolkit-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = gcc
-	makedepends = cmake
 	makedepends = curl
-	depends = electron29
+	depends = electron31
 	depends = mercurial
 	depends = nodejs
 	depends = java-runtime
-	provides = httptoolkit=1.19.0
+	provides = httptoolkit=1.19.3
 	conflicts = httptoolkit
 	options = !strip
 	options = !emptydirs
