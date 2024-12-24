@@ -1,6 +1,6 @@
 pkgname=activitywatch
 pkgver=0.13.2
-pkgrel=1
+pkgrel=2
 url="https://github.com/ActivityWatch/${pkgname}"
 pkgdesc="automatically tracks how you spend time on your devices"
 license=("MPL2")
@@ -58,10 +58,12 @@ build() {
 
 
     cd "../aw-watcher-afk"
+    sed -i "s/,<3.13//g" pyproject.toml
     python -m build --wheel --no-isolation
 
 
     cd "../aw-watcher-window"
+    sed -i "s/,<3.13//g" pyproject.toml
     python -m build --wheel --no-isolation
 
 

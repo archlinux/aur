@@ -1,7 +1,7 @@
 pkgbase = activitywatch
 	pkgdesc = automatically tracks how you spend time on your devices
 	pkgver = 0.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ActivityWatch/activitywatch
 	arch = x86_64
 	license = MPL2
