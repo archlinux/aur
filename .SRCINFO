@@ -1,7 +1,7 @@
 pkgbase = python-metaphone
 	pkgdesc = A Python implementation of the Metaphone and Double Metaphone algorithms
 	pkgver = 0.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/oubiwann/metaphone
 	arch = any
 	license = custom:BSD-3-clause

@@ -1,0 +1,4 @@
+[python-metaphone]
+source = "git"
+git = "https://github.com/oubiwann/metaphone.git"
+prefix = "v"
