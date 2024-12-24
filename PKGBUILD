@@ -3,7 +3,7 @@
 
 pkgname=python-blue-loader
 pkgver=0.1.54
-pkgrel=1
+pkgrel=2
 pkgdesc="Python tools to communicate with Ledger Blue, Nano S and Nano X"
 arch=('any')
 url="https://github.com/LedgerHQ/blue-loader-python"
