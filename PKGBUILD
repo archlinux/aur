@@ -1,17 +1,17 @@
 # Maintainer: outfoxxed <outfoxxed@outfoxxed.me>
 
 pkgname=hy3
-pkgver=0.45.0
+pkgver=0.46.0
 pkgrel=1
 pkgdesc='Hyprland plugin for i3 like tiling'
 arch=('x86_64')
 url='https://github.com/outfoxxed/hy3'
 license=('GPL3')
 makedepends=('git' 'cmake')
-depends=('gcc-libs' 'glibc' 'hyprland=0.45.2')
+depends=('gcc-libs' 'glibc' 'hyprland=0.46.2')
 conflicts=('hyprland-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/hl$pkgver.tar.gz")
-sha256sums=('ea5250e4a571e2c982bac13e3d51ebe5846329fb71b56cfd35c0f9128a9f24ba')
+sha256sums=('bb7feb6b34e58b580346223f86173cf57c9f3adab065e31812c13933bf370a71')
 
 build() {
   cmake -B build -S "$pkgname-hl$pkgver" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX='/usr'
