@@ -1,7 +1,7 @@
 pkgbase = bar-gmail
 	pkgdesc = Get notifications and unread messages count from Gmail (Waybar/Polybar module)
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crabvk/bar-gmail
 	arch = any
 	license = MIT
