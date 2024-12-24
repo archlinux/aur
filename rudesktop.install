@@ -1,3 +1,14 @@
+# Colored makepkg-like functions
+
+_all_off="$(tput sgr0)"
+_bold="${_all_off}$(tput bold)"
+_blue="${_bold}$(tput setaf 4)"
+_yellow="${_bold}$(tput setaf 3)"
+
+note() {
+  printf "${_blue}==>${_yellow} NOTE:${_bold} %s${_all_off}\n" "$1"
+}
+
 pre_install(){
   if [ "$(systemctl is-active --quiet rudesktop.service)" == "active" ]; then
     systemctl --quiet stop rudesktop.service
@@ -14,10 +25,10 @@ post_install(){
 
   systemctl --quiet daemon-reload
 
-  echo "   Please enable and start rudesktop service manually:"
-  echo "       sudo systemctl enable --now rudesktop.service"
-  echo "   And for convinience:"
-  echo "       xdg-mime default rudesktop.desktop x-scheme-handler/rudesktop"
+  note "Please enable and start rudesktop service manually:"
+  note "  sudo systemctl enable --now rudesktop.service"
+  note "And for convinience:"
+  note "  xdg-mime default rudesktop.desktop x-scheme-handler/rudesktop"
 }
 
 post_upgrade() {

@@ -1,7 +1,7 @@
 pkgbase = rudesktop
 	pkgdesc = Ru-Desktop client for home use
 	pkgver = 2.7.876
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rudesktop.ru/downloads/
 	install = rudesktop.install
 	arch = x86_64
