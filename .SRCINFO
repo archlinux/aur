@@ -1,6 +1,6 @@
 pkgbase = brickstore
 	pkgdesc = Tool to manage LEGO inventory offline for BrickLink.
-	pkgver = 2024.12.1
+	pkgver = 2024.12.2
 	pkgrel = 1
 	url = https://github.com/rgriebl/brickstore
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = brickstore
 	depends = qt6-shadertools
 	depends = libsecret
 	depends = tbb
-	source = brickstore-2024.12.1.tar.gz::https://github.com/rgriebl/brickstore/archive/v2024.12.1.tar.gz
-	sha256sums = 0bf141800200999bf16d663ca2e3bfad8b0d3259039e7ce8b65fb86edd4fb5fa
+	source = brickstore-2024.12.2.tar.gz::https://github.com/rgriebl/brickstore/archive/v2024.12.2.tar.gz
+	sha256sums = 3b11d8e2af42834d65eb2b0fd6bc75f22e623ea65bd520ad08c0f93fc62c8ea5
 
 pkgname = brickstore
