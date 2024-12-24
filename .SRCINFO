@@ -1,6 +1,6 @@
 pkgbase = intel-compute-runtime-git
 	pkgdesc = Intel(R) Graphics Compute Runtime for oneAPI Level Zero and OpenCL(TM) Driver (git version)
-	pkgver = 22.43.24558.r1148.ge1dbc98531
+	pkgver = 22.43.24558.r6587.g14a7072d07
 	pkgrel = 1
 	url = https://01.org/compute-runtime/
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = intel-compute-runtime-git
 	makedepends = igsc
 	makedepends = libva
 	makedepends = level-zero-headers-git
-	makedepends = python
 	depends = intel-gmmlib
 	depends = intel-graphics-compiler-git
 	optdepends = libva: for cl_intel_va_api_media_sharing
