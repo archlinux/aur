@@ -5,7 +5,7 @@
 pkgname=python-wasabi
 _pkg="${pkgname#python-}"
 pkgver=1.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight console printing and formatting toolkit'
 arch=('any')
 url='https://github.com/explosion/wasabi'

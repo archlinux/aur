@@ -1,7 +1,7 @@
 pkgbase = python-wasabi
 	pkgdesc = Lightweight console printing and formatting toolkit
 	pkgver = 1.1.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/explosion/wasabi
 	arch = any
 	license = MIT
