@@ -3,7 +3,7 @@
 pkgname=python-wbdata
 _pkg="${pkgname#python-}"
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A library to access World Bank data'
 arch=('any')
 url='https://github.com/oliversherouse/wbdata'

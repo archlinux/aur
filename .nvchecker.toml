@@ -1,0 +1,4 @@
+[python-wbdata]
+source = "git"
+git = "https://github.com/oliversherouse/wbdata.git"
+prefix = "v"

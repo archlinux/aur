@@ -1,7 +1,7 @@
 pkgbase = python-wbdata
 	pkgdesc = A library to access World Bank data
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/oliversherouse/wbdata
 	arch = any
 	license = GPL-2.0-or-later
