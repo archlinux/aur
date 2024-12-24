@@ -2,7 +2,7 @@
 # Contributor: Linus Sjögren <thelinx@unreliablepollution.net>
 # Contributor: Andrzej Giniewicz < gginiu@gmail.com >
 pkgname=love-git
-pkgver=20240406.92a03719
+pkgver=20241223.3a6a36e2
 pkgrel=1
 pkgdesc="An open-source 2D game engine which uses the versatile Lua scripting language to create dynamic gaming experiences."
 arch=(i686 x86_64 armv6h armv7h aarch64)
@@ -10,7 +10,7 @@ url="https://love2d.org/"
 license=('Zlib')
 depends=(
 	'luajit' 'freetype2' 'openal' 'libvorbis' 'libmodplug'
-	'sdl2' 'zlib' 'libtheora' 'harfbuzz' 'libogg' 'gcc-libs' 'glibc'
+	'sdl3' 'zlib' 'libtheora' 'harfbuzz' 'libogg' 'gcc-libs' 'glibc'
 )
 replaces=('love-hg')
 source=('git+https://github.com/love2d/love')
@@ -30,6 +30,7 @@ build() {
 		-DCMAKE_BUILD_TYPE='None' \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
 		-DCMAKE_SKIP_INSTALL_RPATH=YES \
+		-DLOVE_USE_SDL3=YES \
 		-Wno-dev
 
 	msg "Building"
