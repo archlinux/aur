@@ -1,7 +1,7 @@
 pkgbase = python-milksnake
 	pkgdesc = Distribute dynamic linked libraries in Python wheels
 	pkgver = 0.1.5.r3.gef0723e
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/getsentry/milksnake
 	arch = any
 	license = Apache
