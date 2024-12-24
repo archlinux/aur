@@ -7,7 +7,7 @@
 
 pkgname=buildifier-bin
 pkgver=7.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line tool to format Bazel BUILD files'
 arch=('x86_64')
 license=('Apache')
@@ -20,7 +20,7 @@ sha256sums=('54b7f2ce8f22761cfad264416e912056ae9c8645f59eb6583b846b4864a1ee83'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 
 package() {
-  cd "${srcdir}"
+  cd "${srcdir}" || exit
 
   # Install the license file
   install -D -m 0644 \
