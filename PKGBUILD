@@ -4,7 +4,7 @@
 _name=RaySession
 pkgname=${_name,,}
 pkgver=0.14.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Session manager for audio programs using the Non Session Manager (NSM) API"
 arch=(any)
 url='https://github.com/Houston4444/RaySession'
@@ -24,6 +24,8 @@ sha256sums=('72bf64a9976a63a5aaf91933c18c4dadbfcf2c54442948167953482d552473b0'
 prepare() {
   cd $_name-$pkgver
   patch -p1 -N -r - -i "$srcdir"/raysession-makefile-destdir.patch
+  # remove unused cgitb import, incompatible with Python >= 3.13
+  sed -i -e '/cgitb/d' HoustonPatchbay/patchbay/patchcanvas/portgroup_widget.py
 }
 
 build() {
