@@ -2,7 +2,7 @@
 
 pkgname=bar-protonmail
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Get notifications and unread messages count from ProtonMail (Waybar/Polybar module)'
 arch=('any')
 url='https://github.com/crabvk/bar-protonmail'
