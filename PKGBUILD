@@ -6,7 +6,7 @@
 
 pkgname=emerald-themes
 pkgver=0.8.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Themes for Emerald Compiz decorator"
 arch=('any')
 url="https://gitlab.com/compiz/${pkgname}/"
