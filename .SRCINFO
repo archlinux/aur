@@ -1,0 +1,18 @@
+pkgbase = play-timer
+	pkgdesc = Timer app (GUI/CLI) with native DE integration — GNOME, Plasma or any MPRIS compatible setup.
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/efogdev/mpris-timer
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = glib2
+	makedepends = gtk3
+	depends = glib2
+	depends = gtk3
+	depends = wayland
+	depends = pulse-native-provider
+	source = play-timer-1.6.2.tar.gz::https://github.com/efogdev/mpris-timer/archive/refs/tags/1.6.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = play-timer
