@@ -4,7 +4,7 @@
 pkgname=anki-sync-server
 _name="anki"
 pkgver="24.11rc2"
-pkgrel=1
+pkgrel=2
 pkgdesc='Sync server for anki (official version)'
 url="https://github.com/ankitects/anki"
 depends=(
