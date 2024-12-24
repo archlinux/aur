@@ -1,13 +1,13 @@
 pkgbase = xq
 	pkgdesc = Command-line XML and HTML beautifier and content extractor
-	pkgver = 1.2.5
+	pkgver = 1.3.0
 	pkgrel = 2
 	url = https://github.com/sibprogrammer/xq
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	conflicts = yq
-	source = xq-1.2.5.tar.gz::https://github.com/sibprogrammer/xq/archive/refs/tags/v1.2.5.tar.gz
-	sha256sums = 9432a992d2f0ab82a7350da6317e27f835713c340177518dd08581bd0e918365
+	source = xq-1.3.0.tar.gz::https://github.com/sibprogrammer/xq/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 6f75b4433ac83b9ddbc60e1106349e22654d14bb58e198f811b2f9d10181ee8f
 
 pkgname = xq

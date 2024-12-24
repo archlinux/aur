@@ -2,7 +2,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=xq
-pkgver=1.2.5
+pkgver=1.3.0
 pkgrel=2
 pkgdesc='Command-line XML and HTML beautifier and content extractor'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('go')
 conflicts=('yq')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9432a992d2f0ab82a7350da6317e27f835713c340177518dd08581bd0e918365')
+sha256sums=('6f75b4433ac83b9ddbc60e1106349e22654d14bb58e198f811b2f9d10181ee8f')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
