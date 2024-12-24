@@ -1,35 +1,43 @@
 # Maintainer: Stefan Biereigel <stefan@biereigel.de>
 
 ## options
+: ${_build_python:=false}
+
 _pkgtype="-git"
 
 # basic info
 _pkgname="csxcad"
 pkgbase="$_pkgname${_pkgtype:-}"
-pkgver=0.6.3.r4.g9257bf1
-pkgrel=2
+pkgver=0.6.3.r21.g303390a
+pkgrel=1
 pkgdesc="A C++ library to describe geometrical objects and their properties"
 url="https://github.com/thliebig/CSXCAD"
 license=('LGPL-3.0-or-later')
 arch=('i686' 'x86_64')
 
 _depends_csxcad=(
+  'fmt'
+  'fparser' # AUR
   'hdf5'
   'tinyxml'
+  'verdict'
   'vtk'
-
-  # AUR
-  'fparser'
 )
-_depends_python_csxcad=(
+_depends_python=(
   'python'
   'python-matplotlib'
   'python-numpy'
 )
+_makedeps_python=(
+  'cython'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 
 depends=(
   ${_depends_csxcad[@]}
-  ${_depends_python_csxcad[@]}
 )
 makedepends=(
   'cgal'
@@ -38,14 +46,12 @@ makedepends=(
   'git'
   'ninja'
   'nlohmann-json'
-
-  ## python module
-  'cython'
-  'python-build'
-  'python-installer'
-  'python-setuptools'
-  'python-wheel'
 )
+
+if [[ "${_build_python::1}" == "t" ]]; then
+  depends+=(${_depends_python[@]})
+  makedepends+=(${_makedeps_python[@]})
+fi
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+https://github.com/thliebig/CSXCAD")
@@ -75,6 +81,8 @@ _build_csxcad() {
 }
 
 _build_python-csxcad() (
+  [ "${_build_python::1}" != "t" ] && return
+
   cd "$_pkgsrc/python"
 
   export CFLAGS CXXFLAGS LDFLAGS
@@ -119,10 +127,9 @@ _package_python-csxcad() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-pkgname=(
-  "$_pkgname${_pkgtype:-}"
-  "python-$_pkgname${_pkgtype:-}"
-)
+pkgname=("$_pkgname${_pkgtype:-}")
+[[ "${_build_python::1}" == "t" ]] && pkgname+=("python-$_pkgname${_pkgtype:-}")
+
 
 for _p in "${pkgname[@]}"; do
   _q="${_p%${_pkgtype:-}}"

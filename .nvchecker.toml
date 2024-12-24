@@ -1,0 +1,4 @@
+[csxcad-git]
+source = "git"
+git = "https://github.com/thliebig/CSXCAD.git"
+prefix = "v"
