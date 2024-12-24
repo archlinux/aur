@@ -2,7 +2,7 @@
 # Quote un quote contributor: PM
 
 pkgname=wechat
-pkgver=4.0.1.7
+pkgver=4.0.1.11
 pkgrel=1
 epoch=
 pkgdesc="微信是一种生活方式. This is a repackage of the official WeChat which includes an optional sandbox support"
