@@ -3,7 +3,7 @@
 _base=parserator
 pkgname=python-${_base}
 pkgver=0.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A toolkit for making domain-specific probabilistic parsers"
 arch=('any')
 url="https://github.com/datamade/${_base}"

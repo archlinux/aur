@@ -1,0 +1,4 @@
+[python-parserator]
+source = "git"
+git = "https://github.com/datamade/parserator.git"
+prefix = "v"

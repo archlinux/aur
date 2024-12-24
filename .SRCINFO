@@ -1,7 +1,7 @@
 pkgbase = python-parserator
 	pkgdesc = A toolkit for making domain-specific probabilistic parsers
 	pkgver = 0.6.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/datamade/parserator
 	arch = any
 	license = MIT
