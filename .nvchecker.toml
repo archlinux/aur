@@ -1,0 +1,3 @@
+[python-chatterbot]
+source = "git"
+git = "https://github.com/gunthercox/chatterbot.git"

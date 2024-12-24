@@ -1,7 +1,7 @@
 pkgbase = python-chatterbot
 	pkgdesc = A machine learning, conversational dialog engine for creating chatbots.
 	pkgver = 1.0.8
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/gunthercox/chatterbot
 	arch = any
 	license = custom:BSD-3-clause
