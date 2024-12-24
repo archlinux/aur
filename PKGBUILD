@@ -5,7 +5,7 @@
 _base=curses-menu
 pkgname=python-${_base}
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple console menu system using curses"
 arch=('any')
 url="https://github.com/pmbarrett314/${_base}"
