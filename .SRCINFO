@@ -1,11 +1,11 @@
 pkgbase = python-google-cloud-storage
 	pkgdesc = Google Cloud Storage API client library
-	pkgver = 2.18.2
+	pkgver = 2.19.0
 	pkgrel = 1
 	url = https://github.com/googleapis/python-storage
 	changelog = CHANGELOG.md
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-recommonmark
@@ -18,7 +18,7 @@ pkgbase = python-google-cloud-storage
 	depends = python-google-resumable-media
 	depends = python-requests
 	optdepends = python-protobuf
-	source = python-google-cloud-storage-2.18.2.tar.gz::https://github.com/googleapis/python-storage/archive/v2.18.2.tar.gz
-	b2sums = fbc33d053326ca7558d22cc9fa821be7fd5223907b778e78c48f80800f30e0dd3ae1f4269a903a665cc07507daac187d04d00165d7bebdb4f42b6740f9d2a788
+	source = python-google-cloud-storage-2.19.0.tar.gz::https://github.com/googleapis/python-storage/archive/v2.19.0.tar.gz
+	b2sums = 8366b4417215eea83f0456a44f6b3dcb03c139d3c67d1f97e4cd77f83fe1e9dd9af1be23e979ba41f43b1fab916fa7fc6d0cf051082fc5ecf0d54e4c4009ac02
 
 pkgname = python-google-cloud-storage
