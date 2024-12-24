@@ -1,0 +1,3 @@
+[python-probableparsing]
+source = "git"
+git = "https://github.com/datamade/probableparsing.git"

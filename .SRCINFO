@@ -1,7 +1,7 @@
 pkgbase = python-probableparsing
 	pkgdesc = Common methods for probable parsers
 	pkgver = 0.0.1.r3.g5e3e96
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/datamade/probableparsing
 	arch = any
 	license = MIT
