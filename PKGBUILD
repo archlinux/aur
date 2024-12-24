@@ -3,7 +3,7 @@
 
 pkgname=python-google-cloud-firestore
 pkgver=2.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Google's Firestore Python client library"
 arch=('any')
 url=https://github.com/googleapis/python-firestore

@@ -1,0 +1,4 @@
+[python-google-cloud-firestore]
+source = "git"
+git = "https://github.com/googleapis/python-firestore.git"
+prefix = "v"
