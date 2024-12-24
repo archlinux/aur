@@ -1,7 +1,7 @@
 pkgbase = python-oauth2token
 	pkgdesc = Simple cli tools to create and use oauth2token
 	pkgver = 0.0.3.r3.gef0e3f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vannten/oauth2token
 	arch = any
 	license = GPL
