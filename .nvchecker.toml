@@ -1,0 +1,3 @@
+[git-review]
+source = "git"
+git = "https://opendev.org/opendev/git-review.git"
