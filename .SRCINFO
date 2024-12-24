@@ -1,7 +1,7 @@
 pkgbase = limine-dracut-support
 	pkgdesc = Install kernel for Limine bootloader.
-	pkgver = 1.7.0
-	pkgrel = 2
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-entry-tool
 	arch = any
 	license = GPL3
@@ -13,10 +13,11 @@ pkgbase = limine-dracut-support
 	depends = dracut
 	depends = systemd
 	depends = efibootmgr
+	optdepends = sbctl: signs bootable EFI files for Secure Boot when enabled.
 	optdepends = journalctl-desktop-notification: It notifies you on Desktop when an error occurs.
 	conflicts = limine-dracut-support-git
 	backup = etc/limine-entry-tool.conf
-	source = limine-entry-tool-1.7.0.tar.gz::https://gitlab.com/Zesko/limine-entry-tool/-/archive/1.7.0/limine-entry-tool-1.7.0.tar.gz
-	sha256sums = bf5ff92693df7851a59590449c037bc0bc00aea9d9ade741b0f6a3e25ac812de
+	source = limine-entry-tool-1.8.0.tar.gz::https://gitlab.com/Zesko/limine-entry-tool/-/archive/1.8.0/limine-entry-tool-1.8.0.tar.gz
+	sha256sums = 3bc1bf7f604c1711235f5c88d42016eec549a2dcb00e55772795a63575d80062
 
 pkgname = limine-dracut-support

@@ -1,8 +1,8 @@
 # Maintainer: Zesko
 _pkgname="limine-entry-tool"
 pkgname="limine-dracut-support"
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="Install kernel for Limine bootloader."
 arch=("any")
 url="https://gitlab.com/Zesko/limine-entry-tool"
@@ -16,12 +16,13 @@ depends=(
         'systemd'
         'efibootmgr')
 optdepends=(
+        'sbctl: signs bootable EFI files for Secure Boot when enabled.'
         'journalctl-desktop-notification: It notifies you on Desktop when an error occurs.'
 )
 makedepends=('git' 'maven')
 backup=(etc/limine-entry-tool.conf)
 conflicts=('limine-dracut-support-git')
-sha256sums=('bf5ff92693df7851a59590449c037bc0bc00aea9d9ade741b0f6a3e25ac812de')
+sha256sums=('3bc1bf7f604c1711235f5c88d42016eec549a2dcb00e55772795a63575d80062')
 
 build() {
   cd "$srcdir/${_pkgname}-${pkgver}"
