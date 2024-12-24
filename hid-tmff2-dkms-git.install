@@ -1,18 +1,27 @@
-# https://wiki.archlinux.org/index.php/Dynamic_Kernel_Module_Support
-# https://git.archlinux.org/pacman.git/plain/proto/proto.install
+# Do NOT load the module automatically:
+# https://wiki.archlinux.org/title/DKMS_package_guidelines#Module_loading_automatically_in_.install
+#
+# Relevant Documentation:
+# https://wiki.archlinux.org/title/DKMS_package_guidelines#.install
 
 post_install() {
-  dkms install -m hid-tmff2 -v ${1%%-*}
+  # Unloading hid_thrustmaster to avoid conflict
+  # See the .conf file containing the blacklist for info why
+  # But despite blacklisting it we unload it immedialty for make sure it is gone
+  rmmod hid_thrustmaster
+
+  # dkms install -m hid-tmff2 -v ${1%%-*}
 }
 
-pre_upgrade() {
-  pre_remove ${2%%-*}
-}
+# pre_upgrade() {
+#   pre_remove ${2%%-*}
+# }
 
 post_upgrade() {
-  post_install ${1%%-*}
+  # post_install ${1%%-*}
+  post_install
 }
 
-pre_remove() {
-  dkms remove -m hid-tmff2 -v ${1%%-*} --all
-}
+# pre_remove() {
+#   dkms remove -m hid-tmff2 -v ${1%%-*} --all
+# }

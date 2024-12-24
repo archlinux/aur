@@ -2,7 +2,7 @@
 
 _pkgbase=hid-tmff2
 pkgname="${_pkgbase}-dkms-git"
-pkgver=r266.542f3f0
+pkgver=r276.11cca6d
 pkgrel=1
 pkgdesc="Linux kernel module (DKMS) for Thrustmaster T300RS, T248, TX and TS-XW"
 arch=('x86_64')
@@ -16,11 +16,13 @@ install="${pkgname}.install"
 source=(
   "git+${url}"
   "${pkgname}.install"
+  "${pkgname}.conf"
 )
 #md5sums=(use 'updpkgsums')
 md5sums=(
   SKIP
-  SKIP
+  a14f91ce429c03ec028d8781663436a4
+  88b6b3b589c025fda6f9c9091837a8ad
 )
 
 pkgver() {
@@ -45,4 +47,7 @@ package() {
 
   # Copy sources (including Makefile)
   cp -r $srcdir/${_pkgbase}/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+
+  # Include Blacklist for hid_thrustmaster
+  install -Dm644 "${srcdir}/${pkgname}.conf" "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
 }
