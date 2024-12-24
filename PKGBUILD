@@ -35,7 +35,7 @@ optdepends=(
   'yay: for AUR support'
 )
 
-conflicts=('alpm-octopi-utils')
+conflicts=('alpm_octopi_utils')
 
 _pkgsrc_octopi="$_pkgname-$pkgver"
 _pkgsrc_alpm_utils="alpm_octopi_utils"
