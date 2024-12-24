@@ -1,7 +1,7 @@
 pkgbase = python-hvac
 	pkgdesc = Python 2.7/3.X client for HashiCorp Vault
 	pkgver = 2.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://python-hvac.org/
 	arch = any
 	license = Apache-2.0
