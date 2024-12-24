@@ -1,7 +1,7 @@
 pkgbase = python-inputs-git
 	pkgdesc = Cross-platform Python support for keyboards, mice and gamepads - git version
 	pkgver = 0.5.r2.ga46681d
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/zeth/inputs
 	arch = any
 	license = BSD
