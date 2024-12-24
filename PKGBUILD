@@ -4,7 +4,7 @@
 pkgname='python-pygad'
 _name='pygad'
 pkgver=3.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python 3 Library for Building the Genetic Algorithm and Training Machine Learning Algorithms"
 url="https://github.com/ahmedfgad/GeneticAlgorithmPython"
 depends=('python-numpy' 'python-matplotlib' 'python-cloudpickle')
