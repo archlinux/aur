@@ -2,7 +2,7 @@
 
 pkgname=reboot-guard
 pkgver=1.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Block systemd-initiated poweroff/reboot/halt until configurable condition checks pass"
 arch=('any')
 url="https://github.com/ryran/reboot-guard"
