@@ -1,9 +1,7 @@
-# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
-
 pkgname=python-ezdxf
-_commit=66d2988c880b2793ee95083108d3628b18d08623
-pkgver=1.3.4
-pkgrel=2
+_commit=063bb398c5c4ed036611c8699668bd0b9a0e3a86
+pkgver=1.3.5
+pkgrel=1
 pkgdesc="Python interface to DXF"
 arch=('x86_64')
 url=https://ezdxf.mozman.at/
@@ -15,6 +13,7 @@ python-numpy
 python-fonttools
 )
 makedepends=(
+python-setuptools
 python-build
 python-installer
 python-wheel
@@ -22,11 +21,11 @@ cython
 git
 )
 checkdepends=(
-python-nurbs
 python-pytest
+python-pillow
 )
 source=("git+https://github.com/mozman/ezdxf.git#commit=${_commit}")
-sha256sums=('2bdb44f1aab4ed6f9d53f0dd275601a0e751d31f2ac82f56d499a5df4f19f43a')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ezdxf

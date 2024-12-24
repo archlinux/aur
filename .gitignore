@@ -2,3 +2,4 @@ ezdxf/
 pkg/
 src/
 *.pkg.tar.zst
+*.log
