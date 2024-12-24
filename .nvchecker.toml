@@ -1,0 +1,3 @@
+[python-indic-nlp-library]
+source = "git"
+git = "https://github.com/anoopkunchukuttan/indic_nlp_library.git"

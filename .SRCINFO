@@ -1,7 +1,7 @@
 pkgbase = python-indic-nlp-library
 	pkgdesc = Resources and tools for Indian language Natural Language Processing.
 	pkgver = 0.92
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anoopkunchukuttan/indic_nlp_library
 	arch = any
 	license = MIT
