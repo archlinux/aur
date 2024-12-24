@@ -1,7 +1,7 @@
 pkgbase = python-free-proxy
 	pkgdesc = Free proxy scraper written in python
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jundymek/free-proxy
 	arch = any
 	license = MIT

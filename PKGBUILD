@@ -2,7 +2,7 @@
 pkgname=python-free-proxy
 _name="free_proxy"
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Free proxy scraper written in python"
 arch=(any)
 url="https://github.com/jundymek/free-proxy"
