@@ -7,7 +7,7 @@ pkgver=0.9.3.1
 pkgrel=4
 url="https://github.com/andythefactory/newspaper4k"
 arch=('any')
-license=('BSD')
+license=('MIT')
 depends=(
 	'python-beautifulsoup4'
 	'python-feedparser'
