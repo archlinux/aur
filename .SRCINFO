@@ -1,7 +1,7 @@
 pkgbase = python-glom
 	pkgdesc = Python's nested data operator
 	pkgver = 24.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mahmoud/glom
 	arch = any
 	license = BSD-3

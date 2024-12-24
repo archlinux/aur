@@ -3,7 +3,7 @@
 pkgname=python-glom
 _name=glom
 pkgver=24.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python's nested data operator"
 arch=('any')
 url='https://github.com/mahmoud/glom'
