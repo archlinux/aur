@@ -1,0 +1,4 @@
+[python-python-ffmpeg-git]
+source = "git"
+git = "https://github.com/jonghwanhyeon/python-ffmpeg.git"
+prefix = "v"

@@ -5,6 +5,7 @@ pkgbase = python-python-ffmpeg-git
 	url = https://github.com/jonghwanhyeon/python-ffmpeg
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer

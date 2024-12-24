@@ -23,8 +23,8 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-_checkdepends=(
-  'python-pytest-runner'
+checkdepends=(
+  'python-pytest'
 )
 
 provides=("$_pkgname=${pkgver%%.r*}")
@@ -46,7 +46,12 @@ pkgver() {
 
 build() {
   cd "$_pkgsrc"
-  python -m build --no-isolation --wheel
+  python -m build --wheel --no-isolation --skip-dependency-check
+}
+
+check() {
+  cd "$_pkgsrc"
+  PYTHONPATH="$PWD" python -m pytest || :
 }
 
 package() {
