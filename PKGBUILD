@@ -4,7 +4,7 @@
 pkgname=python-klein
 # https://github.com/twisted/klein/blob/trunk/NEWS.rst
 pkgver=24.8.0
-pkgrel=2
+pkgrel=3
 arch=(any)
 pkgdesc='A web micro-framework built on werkzeug and twisted.web'
 url='https://github.com/twisted/klein'

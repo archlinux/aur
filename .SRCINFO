@@ -1,7 +1,7 @@
 pkgbase = python-klein
 	pkgdesc = A web micro-framework built on werkzeug and twisted.web
 	pkgver = 24.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/twisted/klein
 	arch = any
 	license = MIT
