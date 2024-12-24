@@ -3,7 +3,7 @@
 _pkgname=gbinder-python
 pkgname=python-gbinder-git
 pkgver=1.1.2.r0.ga2c5093
-pkgrel=3
+pkgrel=4
 pkgdesc="Python bindings for libgbinder - git version"
 arch=('any')
 url="https://github.com/erfanoabdi/gbinder-python"
