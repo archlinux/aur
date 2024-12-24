@@ -107,7 +107,9 @@ build() {
   sed -i '/ENABLE_IF_LINKS(DEAL_II_LINKER_FLAGS "-Wl,--as-needed")/d' \
       "${srcdir}/${_realname}-$pkgver/cmake/setup_compiler_flags_gnu.cmake"
 
-  sed -i '122ifedisableexcept(FE_INVALID);\n' \
+  sed -i '28i#include <cfenv>' \
+      "${srcdir}/${_realname}-$pkgver/tests/quick_tests/scalapack.cc"
+  sed -i '123ifedisableexcept(FE_INVALID);\n' \
       "${srcdir}/${_realname}-$pkgver/tests/quick_tests/scalapack.cc"
 
   # Also remove from LDFLAGS if necessary
@@ -140,6 +142,13 @@ build() {
 
   cd "${srcdir}/build"
   echo "export DEAL_II_DIR=$_installation_prefix" > ./deal-ii.sh
+}
+
+check() {
+    cd "${srcdir}/build"
+    # Permit oversubscription in the p4est test
+    export PRTE_MCA_rmaps_default_mapping_policy=:oversubscribe
+    make $MAKEFLAGS test
 }
 
 package() {
