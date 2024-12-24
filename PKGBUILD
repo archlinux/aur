@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=swaystatus-git
-pkgver=0.4.3.r5.a6f3c7e
+pkgver=0.5.0.r2.2268aec
 pkgrel=1
 pkgdesc="Generate a status line for swaybar"
 arch=('any')
@@ -17,12 +17,12 @@ source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}" || return
     git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 check() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}" || return
     PYTHONPATH=$PWD/src pytest --no-cov
 }
 
@@ -31,11 +31,11 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}" || return
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}" || return
     python -m installer --compile-bytecode=1 --destdir="$pkgdir" dist/*.whl
 }
