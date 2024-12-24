@@ -3,7 +3,7 @@
 # Contributor: Matthew Murray <matt@mattmurr.xyz>
 pkgname=fprintd-clients-git
 pkgver=1.90.1.r2.g54e56d6
-pkgrel=7
+pkgrel=8
 pkgdesc='Fprintd without the daemon (debian/clients-only git branch)'
 arch=(x86_64)
 license=('GPL-2.0-or-later')
@@ -19,6 +19,7 @@ depends=(
 )
 makedepends=(
   git
+  glib2-devel
   meson
   pam_wrapper
   python-cairo
