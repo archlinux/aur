@@ -4,32 +4,31 @@ pkgname=play-timer
 pkgver=1.6.2
 pkgrel=1
 pkgdesc="Timer app (GUI/CLI) with native DE integration — GNOME, Plasma or any MPRIS compatible setup."
-arch=('x86_64')
+arch=('x86_64' 'amd64')
+curarch=$(uname -m)
 url="https://github.com/efogdev/mpris-timer"
 license=('MIT')
 depends=('glib2' 'gtk3' 'wayland' 'pulse-native-provider')
-makedepends=('go' 'glib2' 'gtk3')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('SKIP')
-dirname="mpris-timer"
+source=("$pkgname-$curarch::$url/releases/download/$pkgver/$pkgname-$curarch"
+        "$pkgname-$curarch.sha256::$url/releases/download/$pkgver/$pkgname-$curarch.sha256")
+sha256sums=('SKIP' 'SKIP')
 glibname="io.github.efogdev.mpris-timer"
 
-build() {
-  export GOBIN="$srcdir/.bin"
-  export GO111MODULE=on
-  cd "$srcdir/$dirname-$pkgver"
-  go build -tags wayland -trimpath -ldflags="-s -w" -o "$GOBIN/play-timer" ./cmd/main.go
+prepare() {
+  sha256sum -c "$srcdir/$pkgname-$curarch.sha256"
+  git clone "$url" "$srcdir/repo"
+  cp -r "$srcdir/repo/misc" "$srcdir/"
+  cp -r "$srcdir/repo/internal/ui/res" "$srcdir/"
 }
 
 package() {
-  install -Dm755 "$srcdir/.bin/play-timer" "$pkgdir/usr/bin/play-timer"
-  install -Dm644 "$srcdir/$dirname-$pkgver/internal/ui/res/icon.svg" \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  install -Dm644 "$srcdir/$dirname-$pkgver/misc/$glibname.desktop" \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "$srcdir/$dirname-$pkgver/misc/$glibname.metainfo.xml" \
-    "$pkgdir/usr/share/metainfo/$pkgname.metainfo.xml"
-  install -Dm644 "$srcdir/$dirname-$pkgver/misc/$glibname.gschema.xml" \
+  install -Dm755 "$srcdir/$pkgname-$curarch" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$srcdir/misc/$glibname.desktop" \
+    "$pkgdir/usr/share/applications/$glibname.desktop"
+  install -Dm644 "$srcdir/misc/$glibname.metainfo.xml" \
+    "$pkgdir/usr/share/metainfo/$glibname.metainfo.xml"
+  install -Dm644 "$srcdir/misc/$glibname.gschema.xml" \
     "$pkgdir/usr/share/glib-2.0/schemas/$glibname.gschema.xml"
+  install -Dm644 "$srcdir//res/icon.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$glibname.svg"
 }
-
