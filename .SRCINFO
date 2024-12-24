@@ -1,7 +1,7 @@
 pkgbase = stargate
 	pkgdesc = A DAW, plugins and wave editor
 	pkgver = 24.02.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/stargatedaw/stargate
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = stargate
 	depends = fftw
 	depends = gcc-libs
 	depends = glibc
-	depends = lame
 	depends = libsndfile
 	depends = portaudio
 	depends = portmidi
@@ -37,14 +36,16 @@ pkgbase = stargate
 	depends = python-yaml
 	depends = qt6-svg
 	depends = rubberband
-	depends = vorbis-tools
+	optdepends = ffmpeg: For additional audio and video format support
+	optdepends = lame: For MP3 encoding support
+	optdepends = vorbis-tools: For Ogg Vorbis support
 	source = stargate-24.02.2.tar.gz::https://github.com/stargatedaw/stargate/archive/refs/tags/release-24.02.2.tar.gz
-	source = git+https://github.com/spatialaudio/portaudio-binaries.git
-	source = git+https://github.com/stargatedaw/stargate-sbsms.git
-	source = git+https://github.com/stargatedaw/stargate-soundtouch.git
+	source = git+https://github.com/spatialaudio/portaudio-binaries.git#commit=71bfaa6f71693b3d18d1cab0ddb0d16e0f767cc9
+	source = git+https://github.com/stargatedaw/stargate-sbsms.git#commit=64fc9d97688ee02c2d93094d5d4b013c07ba4fcf
+	source = git+https://github.com/stargatedaw/stargate-soundtouch.git#commit=464f474c0be5d7e0970909dd30593012e4621468
 	sha256sums = 93c6bc604cb8d6bea851a73f8de92364771aa84f8ccdd516ad0a20870e951d7f
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 12869b94cbf00457ee2cf322344690e590829bea4ec9d16c263feba1e3c5df64
+	sha256sums = e86746d0c42a0ae8424090508927c9cbc7de460922cc7c857efa7ef93e9b33e3
+	sha256sums = d8c010ae36e4160216fa34dfd4dbcc118e2b0bd1612e34a29deb184b292011fb
 
 pkgname = stargate
