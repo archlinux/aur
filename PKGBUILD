@@ -1,4 +1,5 @@
-# Maintainer: Antoine Lubineau <antoine@lubignon.info>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=fuc
 pkgver=1.1.9
