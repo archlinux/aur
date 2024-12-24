@@ -5,7 +5,7 @@
 
 _opt_DKMS=1           # This can be toggled between installs
 
-#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/6.6.*/modules.alias))"
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/6.12.*/vmlinuz))"
 
 # ls -l /dev/ttyRP[0-9]*
 # lsmod | grep rp2
@@ -98,13 +98,19 @@ _fn_patch_km() {
   chmod 755 *.sh
 
   # Fix umbrella makefile
-  sed -e 's:/lib/:/usr/lib/:g' \
-      -e '# Switch SUBDIRS= to M= for Kernel 5.4' \
-      -e 's:SUBDIRS=:M=:g' \
-      -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
-      -e 's:\$(shell uname -r):$(KERNELRELEASE):g' \
-      -e '1i KERNELRELEASE ?= $(shell uname -r)' \
-    -i 'Makefile'
+  #cp -p 'Makefile'{,.Arch}
+  local _seds=(
+    -e 's:/lib/:/usr/lib/:g'
+    -e '# Switch SUBDIRS= to M= for Kernel 5.4'
+    -e 's:SUBDIRS=:M=:g'
+    -e '/^clean:/ a TaB$(MAKE) -C $(LINUX_SRC) M=$(PWD) clean'
+    -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple'
+    -e 's:\$(shell uname -r):$(KERNELRELEASE):g'
+    -e '1i KERNELRELEASE ?= $(shell uname -r)'
+  )
+  sed "${_seds[@]}" -i 'Makefile'
+  sed -e 's:^TaB:\t:g' -i 'Makefile'
+  test ! -s 'Makefile.Arch'
 
   # Branding in dmesg
   sed -e '/printk/ s@DRV_VERS@& " Arch Linux'" https://aur.archlinux.org/packages/${pkgname}/"'" @g' -i "${_origmodname}.c"
@@ -154,7 +160,7 @@ prepare() {
   local _pt _ptf=() _pts=()
   for _pt in "${_patches[@]}"; do
     set +u; msg2 "Patch ${_pt}"; set -u
-    if patch -Nup1 -i "${srcdir}/${_pt}"; then
+    if patch -Nup1 --no-backup-if-mismatch -i "${srcdir}/${_pt}"; then
       _pts+=("${_pt}")
     else
       _ptf+=("${_pt}")
