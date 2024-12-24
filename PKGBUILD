@@ -3,7 +3,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r66305.b6561f5e2b0
+pkgver=r66326.f5d13e32af1
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -13,7 +13,7 @@ conflicts=(ladybird)
 provides=(ladybird)
 depends=(curl ffmpeg libgl qt6-base qt6-multimedia qt6-tools qt6-wayland ttf-liberation)
 makedepends=(autoconf-archive automake cmake git nasm ninja tar unzip zip)
-options=('!lto' '!debug')
+options=('!lto' '!debug' '!buildflags')
 source=(
   "git+$url"
   "git+https://github.com/microsoft/vcpkg.git#commit=b322364f06308bdd24823f9d8f03fe0cc86fd46f" # 2024-12-16 (Toolchain/BuildVcpkg.py)
