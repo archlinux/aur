@@ -10,7 +10,7 @@ url="https://github.com/luvth/pyrfetch"
 license=("GPL-3.0")
 provides=(pyrfetch-git)
 conflicts=(pyrfetch-git)
-depends=(python python-psutil)
+depends=(python3 python-psutil)
 source=("git+https://github.com/luvth/pyrfetch.git#branch=main")
 sha256sums=("SKIP")
 
