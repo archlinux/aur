@@ -4,7 +4,7 @@
 
 pkgname=krdc-git
 _pkgname=krdc
-pkgver=24.07.70.r58.g7a0de69
+pkgver=25.03.70.r57.gfc96a2b
 pkgrel=1
 pkgdesc='Remote Desktop Client'
 url='https://apps.kde.org/krdc/'
@@ -29,13 +29,13 @@ depends=(gcc-libs
          kxmlgui
          qt6-base)
 makedepends=(extra-cmake-modules
-             freerdp2
+             freerdp
              kdoctools
              libvncserver
              git)
 optdepends=('libvncserver: VNC support'
             'libssh: VNC support'
-            'freerdp2: RDP support'
+            'freerdp: RDP support'
             'keditbookmarks: to edit bookmarks')
 groups=(kde-applications
         kde-network)
@@ -55,7 +55,9 @@ pkgver() {
 
 build() {
   cmake -B build -S $_pkgname \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DWITH_RDP=OFF \
+    -DWITH_RDP3=ON
   cmake --build build
 }
 
