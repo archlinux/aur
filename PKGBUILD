@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-graphics-compiler-git
-pkgver=1.0.15136.0.r195.g29f439cf2
+pkgver=2.5.4.r47.g44118b4fb
 _llvmmaj=14
 _llvmver="${_llvmmaj}.0.5"
 pkgrel=1
@@ -11,7 +11,7 @@ arch=('x86_64')
 url='https://github.com/intel/intel-graphics-compiler/'
 license=('MIT' 'custom')
 depends=('gcc-libs' 'zlib')
-makedepends=('git' 'cmake' 'python' 'python-mako')
+makedepends=('git' 'cmake' 'python' 'python-mako' 'python-yaml')
 provides=('intel-graphics-compiler' "intel-opencl-clang=${_llvmmaj}.0.0")
 conflicts=('intel-graphics-compiler' 'intel-opencl-clang')
 options=('!emptydirs' '!lto')
@@ -31,43 +31,61 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-    ln -sf intel-graphics-compiler igc
-    ln -sf ../../../SPIRV-LLVM-Translator llvm-project/llvm/projects/llvm-spirv
-    ln -sf ../../../opencl-clang llvm-project/llvm/projects/opencl-clang
+    # rename to prevent SPIRV-LLVM-Translator from being included
+    # twice by the build process, which causes the build to fail
+    mv SPIRV-LLVM-Translator{,-IGC-LLVM}
+
+    ln -s "${srcdir}/SPIRV-LLVM-Translator-IGC-LLVM"  "${srcdir}/llvm-project/llvm/projects/llvm-spirv"
+    ln -s "${srcdir}/opencl-clang" "${srcdir}/llvm-project/llvm/projects/opencl-clang"
 }
 
 pkgver() {
-    git -C intel-graphics-compiler describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^igc\.//'
+    #git -C intel-graphics-compiler describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^igc\.//'
+    
+    local _tag
+    cd intel-graphics-compiler
+    _tag="$(git tag --list --sort='-v:refname' 'v*' | sed -n 's/^v//;1p')"
+    
+    printf "${_tag}.r%s.g%s"  "$(git rev-list --count "v${_tag}..HEAD")" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    export CXXFLAGS+=" -I ${srcdir}/SPIRV-LLVM-Translator/include" #-Wno-error=odr -Wno-error=stringop-overflow="
-    export CXXFLAGS+=' -Wno-error=restrict -Wno-error=deprecated-declarations'
+    # Prevent IGC to load LLVM 15+ symbols
+    CFLAGS+=" -fno-semantic-interposition"
+    CXXFLAGS+=" -fno-semantic-interposition"
+    LDFLAGS+=" -Wl,-Bsymbolic"
+    
+    # fix error: "_FORTIFY_SOURCE" redefined [-Werror]
+    # note: upstream forces _FORTIFY_SOURCE=2
+    export CFLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
+    export CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
+    
     EMAIL='someone@archlinux.org' \
     cmake -B build -S intel-graphics-compiler \
         -G 'Unix Makefiles' \
-        -DCMAKE_BUILD_TYPE='Release' \
-        -DCMAKE_INSTALL_PREFIX='/usr' \
-        -DCMAKE_INSTALL_LIBDIR='lib' \
-        -DIGC_OPTION__ARCHITECTURE_TARGET='Linux64' \
-        -DIGC_OPTION__CLANG_MODE='Source' \
-        -DIGC_OPTION__LLD_MODE='Source' \
-        -DIGC_OPTION__LLVM_PREFERRED_VERSION="${_llvmver}" \
-        -DIGC_OPTION__LLVM_MODE='Source' \
-        -DIGC_OPTION__LINK_KHRONOS_SPIRV_TRANSLATOR='OFF' \
-        -DIGC_OPTION__SPIRV_TOOLS_MODE='Source' \
-        -DIGC_OPTION__VC_INTRINSICS_MODE='Source' \
-        -DCCLANG_FROM_SYSTEM='OFF' \
-        -DINSTALL_GENX_IR='ON' \
+        -DCMAKE_BUILD_TYPE:STRING='Release' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
+        -DIGC_OPTION__ARCHITECTURE_TARGET:STRING='Linux64' \
+        -DIGC_OPTION__CLANG_MODE:STRING='Source' \
+        -DIGC_OPTION__LLD_MODE:STRING='Source' \
+        -DIGC_OPTION__LLVM_PREFERRED_VERSION:STRING="${_llvmver}" \
+        -DIGC_OPTION__LLVM_MODE:STRING='Source' \
+        -DIGC_OPTION__LINK_KHRONOS_SPIRV_TRANSLATOR:BOOL='ON' \
+        -DIGC_OPTION__SPIRV_TOOLS_MODE:STRING='Source' \
+        -DIGC_OPTION__USE_KHRONOS_SPIRV_TRANSLATOR_IN_SC:BOOL='ON' \
+        -DIGC_OPTION__USE_PREINSTALLED_SPIRV_HEADERS:BOOL='OFF' \
+        -DIGC_OPTION__VC_INTRINSICS_MODE:STRING='Source' \
+        -DCCLANG_FROM_SYSTEM:BOOL='OFF' \
         -Wno-dev
     cmake --build build
 }
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-    install -D -m644 igc/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 intel-graphics-compiler/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
     mv "${pkgdir}/usr/include"/opencl-c{,-base}.h "${pkgdir}/usr/include/igc"
-    mv "${pkgdir}/usr/lib/igc/NOTICES.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
+    mv "${pkgdir}/usr/lib/igc${pkgver%%.*}/NOTICES.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
     rm "${pkgdir}/usr/bin/lld"
     
     # additional files for opencl-clang
