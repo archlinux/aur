@@ -3,7 +3,7 @@
 _pkg=gnews
 pkgname=python-${_pkg}-git
 pkgver=r172.a322163
-pkgrel=1
+pkgrel=2
 pkgdesc='A library that provides an API to search for articles on Google News and returns a usable JSON response.'
 arch=('any')
 url=https://github.com/ranahaani/gnews
