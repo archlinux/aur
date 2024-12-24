@@ -4,8 +4,8 @@
 
 pkgname=dangerzone-bin
 _pkgname=dangerzone
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="Take potentially dangerous PDFs, office documents, or images and convert them to a safe PDF"
 url="https://github.com/freedomofpress/dangerzone"
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!debug')
 source=("${_pkgname}-${pkgver}.deb::https://packages.freedom.press/apt-tools-prod/pool/main/d/dangerzone/dangerzone_${pkgver}_amd64.deb")
 
 install=${_pkgname}.install
-sha256sums=('e6e13f5d78edd8ba008542e32498429852d48aa917211159ecbed14d1637587b')
+sha256sums=('ff543088e13aca227499cedffdc7c15569cdebee742afdabdd5458e69c6a6748')
 pythonpath="#!/usr/bin/env python3"
 
 package() {
