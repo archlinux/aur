@@ -1,12 +1,11 @@
 pkgbase = ibazel
 	pkgdesc = Tool for building Bazel targets when source files change.
 	pkgver = 0.25.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bazelbuild/bazel-watcher
 	arch = x86_64
 	arch = aarch64
 	license = Apache 2.0
-	makedepends = bazel
 	makedepends = git
 	makedepends = python
 	depends = bazel
