@@ -1,0 +1,4 @@
+[python-firebase-admin]
+source = "git"
+git = "https://github.com/firebase/firebase-admin-python.git"
+prefix = "v"

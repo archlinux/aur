@@ -3,7 +3,7 @@
 _base=firebase-admin-python
 pkgname=python-firebase-admin
 pkgver=6.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Firebase Admin Python SDK enables server-side (backend) Python developers to integrate Firebase into their services and applications."
 arch=('any')
 url="https://github.com/firebase/firebase-admin-python"
