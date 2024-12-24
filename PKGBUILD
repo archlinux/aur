@@ -5,20 +5,20 @@
 _slug=Befaco
 _name=$_slug
 pkgname=vcvrack-${_slug,,}
-pkgver=2.2.0
+pkgver=2.8.2
 pkgrel=1
 pkgdesc='VCV Rack plugin collection'
-arch=(x86_64)
+arch=(aarch64 x86_64)
 url='https://github.com/VCVRack/Befaco'
-license=(custom 'CCPL:by-nc' GPL3)
+license=(custom  CC-BY-NC-4.0  GPL-3.0-or-later)
 groups=(proaudio vcvrack-plugins)
 depends=(vcvrack)
 makedepends=(simde zstd)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/VCVRack/$_name/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e1aa5c32d58e8c7ea3ba9628d5a38ea99287a5f0e54348410161f1b2c66c2f73')
+source=("git+https://github.com/VCVRack/$_name#tag=v$pkgver")
+sha256sums=('2b4c157e5cfa2954bdd9a6d0194da38f218691c17e990f3e0b7db9f8a5f09607')
 
 build() {
-  cd $_name-$pkgver
+  cd $_name
   # vcvrack make flags
   export SLUG=$_slug
   export VERSION=$pkgver
@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-  cd $_name-$pkgver
+  cd $_name
   install -vDm644 LICENSE.md -t "$pkgdir"/usr/share/licenses/$pkgname
   install -d "$pkgdir"/usr/lib/vcvrack/plugins
   cp -va dist/$_slug -t "$pkgdir"/usr/lib/vcvrack/plugins
