@@ -1,19 +1,19 @@
 pkgbase = carapace-bridge-bin
 	pkgdesc = completion bridge
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/carapace-sh/carapace-bridge
 	license = MIT
 	conflicts = carapace-bridge
 	provides = carapace-bridge
 	arch = aarch64
-	source_aarch64 = https://github.com/carapace-sh/carapace-bridge/releases/download/v1.2.1/carapace-bridge_1.2.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 9bf816ec472dc98de33affc6a608950df07615a19e1255f004238087c77c1b27
+	source_aarch64 = https://github.com/carapace-sh/carapace-bridge/releases/download/v1.2.2/carapace-bridge_1.2.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = ff7334cb231dfb5157ece92280a593f38f26cc943f5ab8b45f744f74a5c02757
 	arch = i686
-	source_i686 = https://github.com/carapace-sh/carapace-bridge/releases/download/v1.2.1/carapace-bridge_1.2.1_linux_386.tar.gz
-	sha256sums_i686 = ed029a94f0465041c7465943e144b1601e942ef48ad58acaa43376227037d847
+	source_i686 = https://github.com/carapace-sh/carapace-bridge/releases/download/v1.2.2/carapace-bridge_1.2.2_linux_386.tar.gz
+	sha256sums_i686 = 96336ce2365a98a608f7bfcf71874a671732c4132f7f87d92f3e2269a40afe3a
 	arch = x86_64
-	source_x86_64 = https://github.com/carapace-sh/carapace-bridge/releases/download/v1.2.1/carapace-bridge_1.2.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = b27cf89df5fcdd83c8767c4c68a7eee7888eee16fb5bb99126d35fdc3bf70699
+	source_x86_64 = https://github.com/carapace-sh/carapace-bridge/releases/download/v1.2.2/carapace-bridge_1.2.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = b965bd3e1762a4efb31730b7c4b102c5d1b390f7495330c8fdf81017278b7297
 	
 pkgname = carapace-bridge-bin
