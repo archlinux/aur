@@ -3,7 +3,7 @@
 _name=varname
 pkgname=python-varname
 pkgver=0.13.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python library to retrieve variable names from functions or classes"
 arch=('any')
 url="https://github.com/pwwang/${pkgname}"
