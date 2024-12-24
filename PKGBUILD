@@ -2,24 +2,20 @@
 # Contributor: Christian Babeux <christian.babeux@0x80.ca>
 
 pkgname=gambit-c
-pkgver=4.9.4
-pkgrel=4
+pkgver=4.9.5
+pkgrel=1
 pkgdesc='Efficient implementation of the Scheme programming language'
 arch=(x86_64)
 url='https://github.com/gambit/gambit'
 license=(Apache LGPL)
 options=(staticlibs !lto)
-makedepends=(git setconf)
-source=("${pkgname/-c}-$pkgver.tar.gz::https://gambitscheme.org/latest/gambit-v${pkgver//./_}.tgz")
-b2sums=('f2d638a8ab901fb9d14d2f91291dd732e66913f18dc4e6c9c50af7aa1aafa49e97bdd7a704dfd1f14fa71aa16a859fe9b7a7bcbc5ee5953a1dac56966071148b')
-
-prepare() {
-  setconf -d ${pkgname/-c}-$pkgver/include/stamp-release.h \
-    ___STAMP_RELEASE_VERSION=\"v$pkgver\"
-}
+makedepends=(git)
+_srcname=${pkgname/-c}-v${pkgver//./_}
+source=("https://gambitscheme.org/latest/${_srcname}.tgz")
+b2sums=('1e3c32eb03acb97fafc639941312682c59c173a9605f516bb83bec210c2cc6163ea3357ae08a82572314fa252480a3eb3001a874ea9a8a2e34a389fe090a5de9')
 
 build() {
-  cd ${pkgname/-c}-$pkgver
+  cd ${_srcname}
   ./configure \
     --docdir=/usr/share/doc/gambit-c \
     --enable-gcc-opts \
@@ -31,7 +27,7 @@ build() {
 }
 
 package() {
-  make -C ${pkgname/-c}-$pkgver install DESTDIR="$pkgdir"
+  make -C ${_srcname} install DESTDIR="$pkgdir"
   # /usr/bin/gsc conflicts with ghostscript
   mv "$pkgdir/usr/bin/gsc" "$pkgdir/usr/bin/gambitc"
   ln -sf /usr/bin/gambitc "$pkgdir/usr/bin/gsc-script"
