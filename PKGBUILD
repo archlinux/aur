@@ -3,7 +3,7 @@
 # Contributor: Matthew Murray <matt@mattmurr.xyz>
 pkgname=python-validity
 pkgver=0.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Validity fingerprint sensor driver"
 arch=(any)
 license=(MIT)
