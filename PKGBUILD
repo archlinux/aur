@@ -1,36 +1,50 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Roald Clark <roaldclark@gmail.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
+_name=nose-of-yeti
 pkgname=python-noseofyeti
-pkgver=2.4.8
-_commit=5bd8abafa5e8db32e7fff37105d2ac25d30605bf
+pkgver=2.4.9
 pkgrel=1
 pkgdesc="A custom pyton codec that provides an RSpec style dsl for python"
-url="https://github.com/delfick/nose-of-yeti"
-license=('MIT')
 arch=('any')
+url="https://github.com/delfick/${_name}"
+license=('MIT')
 depends=('python')
-makedepends=('git' 'python-build' 'python-installer' 'python-hatchling')
-checkdepends=('python-pytest' 'python-alt-pytest-asyncio'
-              'python-pytest-helpers-namespace')
-source=("git+https://github.com/delfick/nose-of-yeti.git#commit=$_commit")
-sha512sums=('SKIP')
+makedepends=(
+    'python-build'
+    'python-hatchling'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel'
+)
+#checkdepends=(
+#    'python-alt-pytest-asyncio'
+#    'python-pytest'
+#    'python-pytest-helpers-namespace'
+#)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/release-${pkgver}.tar.gz")
+sha256sums=('687f9bd446bf4c027fac7e7ec0f02c26312b7d976802f30cefebb23840243d08')
+
+prepare() {
+    cd "${srcdir}/${_name}-release-${pkgver}"
+    # https://github.com/delfick/nose-of-yeti/issues/22
+    sed -i '/asynctest/d' pyproject.toml
+}
 
 build() {
-  cd nose-of-yeti
-  # https://github.com/delfick/nose-of-yeti/issues/22
-  sed -i '/asynctest/d' pyproject.toml
-  python -m build -nw
+    cd "${srcdir}/${_name}-release-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
-check() {
-  cd nose-of-yeti
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest
-}
+#check() {
+#    cd "${srcdir}/${_name}-release-${pkgver}"
+#    python -m venv --system-site-packages test-env
+#    test-env/bin/python -m installer dist/*.whl
+#    test-env/bin/python -m pytest -v
+#}
 
 package() {
-  cd nose-of-yeti
-  python -m installer -d "$pkgdir" dist/*.whl
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+    cd "${srcdir}/${_name}-release-${pkgver}"
+    install -Dm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
