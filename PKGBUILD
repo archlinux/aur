@@ -3,7 +3,7 @@
 _gemname=asciidoctor-epub3
 pkgname="ruby-$_gemname"
 
-pkgver=1.5.1
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="An extension for Asciidoctor that converts AsciiDoc documents to EPUB3 and KF8/MOBI (Kindle) e-book archives"
 
@@ -20,7 +20,7 @@ depends=( "ruby"
 options=(!emptydirs)
 source=( "https://rubygems.org/downloads/$_gemname-$pkgver.gem" )
 noextract=( "$_gemname-$pkgver.gem" )
-sha256sums=( "efff22bcd2e8562f8ab0df7e13de0247dd8edb3fc41e6286b36ca330c5a69e16" )
+sha256sums=( "94caaf7c13f050779f4a85af517cbc55c5e31e211c5a60dde9b9647732b4c2fa" )
 
 package() {
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
