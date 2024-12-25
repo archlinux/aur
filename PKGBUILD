@@ -2,15 +2,15 @@
 # Contributor: xantares <xantares09 [at] hotmail.com>
 pkgbase=stanmath
 pkgname=(stanmath stanmath-docs)
-pkgver=4.9.0
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="reverse-mode automatic differentiation library"
 license=('BSD-3-Clause')
 arch=('any')
 makedepends=(make doxygen)
 url="https://github.com/stan-dev/math"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver/_/-}.tar.gz")
-sha256sums=('876881b71dee6fec32f2b4aa52692994cccd2a19c6de1b986d7fc457155f219c')
+sha256sums=('29c4baec9cb1be47204c104cffe6e185acdf247b0f77724af5f9f2f29c85c91a')
 options=(!strip)
 
 prepare() {
@@ -43,5 +43,4 @@ package_stanmath-docs() {
   cd math-${pkgver/_/-}
   install -d "$pkgdir"/usr/share/doc/stan
   cp -r doc "$pkgdir"/usr/share/doc/stan/math
-  install -Dm644 LICENSE.md -t "$pkgdir"/usr/share/licenses/stanmath/
 }
