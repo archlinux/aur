@@ -1,0 +1,16 @@
+pkgbase = authbind-git
+	pkgdesc = Allows non-root programs to bind() to low ports
+	pkgver = 2.1.2.r17.g33818c4
+	pkgrel = 1
+	url = https://tracker.debian.org/pkg/authbind
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = glibc
+	provides = authbind=2.1.2.r17.g33818c4
+	conflicts = authbind
+	source = git+https://www.chiark.greenend.org.uk/ucgi/~ian/githttp/authbind.git
+	sha256sums = SKIP
+
+pkgname = authbind-git
