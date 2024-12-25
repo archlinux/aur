@@ -1,8 +1,8 @@
 # Maintainer: Massimo Pavoni <real.damax@gmail.com>
 
 pkgname=ttf-uiua386
-pkgver=0.14.0
-pkgrel=1
+pkgver=0.14.1
+pkgrel=0
 _colorCommit=62fa5e1befaf9e12c31a012eb25ceab91e811ed3
 pkgdesc="Uiua fonts with language glyphs, inspired by APL386"
 arch=(any)
