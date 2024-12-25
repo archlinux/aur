@@ -3,18 +3,25 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-epg2vdr
 pkgver=1.2.16
-pkgrel=3
-_vdrapi=2.6.7
+pkgrel=4
+_vdrapi=5
 pkgdesc="Used to retrieve EPG data into the VDR"
 url="https://github.com/horchi/vdr-plugin-epg2vdr"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL-2.0-or-later')
 depends=('jansson' 'libmariadbclient' 'libutil-linux' 'python' 'tinyxml2' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
-source=("$pkgname-$pkgver.tar.gz::https://github.com/horchi/vdr-plugin-epg2vdr/archive/refs/tags/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/horchi/vdr-plugin-epg2vdr/archive/refs/tags/$pkgver.tar.gz"
+        "${pkgname}-vdr-2.7.1-compat.patch::https://github.com/user-attachments/files/17193197/GetEvent.txt")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         'var/lib/vdr/plugins/epg2vdr/epg.dat')
-sha256sums=('a4e12437ceb859bb6cbf98416aadba4b831ea636cd903631a2f4bdf612af17f0')
+sha256sums=('a4e12437ceb859bb6cbf98416aadba4b831ea636cd903631a2f4bdf612af17f0'
+            '3bd88cd65fee232e5b24eee7549a429668a7d6ab46adbd133a64dc48627b1d9f')
+
+prepare() {
+  cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
+  patch -p1 -i "${srcdir}/${pkgname}-vdr-2.7.1-compat.patch"
+}
 
 build() {
   cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
