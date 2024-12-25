@@ -3,7 +3,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird
-pkgver=20241221
+pkgver=20241225
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -13,8 +13,8 @@ depends=(curl ffmpeg libgl qt6-base qt6-multimedia qt6-tools qt6-wayland ttf-lib
 makedepends=(autoconf-archive automake cmake git nasm ninja tar unzip zip)
 options=('!lto' '!debug' '!buildflags')
 source=(
-  "git+$url#commit=34f78ca1522654dbb1a4977020b0d5fb22bbd764" # 2024-12-21
-  "git+https://github.com/microsoft/vcpkg.git#commit=b2cb0da531c2f1f740045bfe7c4dac59f0b2b69c" # 2024-11-16 (Toolchain/BuildVcpkg.py)
+  "git+$url#commit=202bf901d76e8d2d5badac607ebf0ba742598235" # 2024-12-25
+  "git+https://github.com/microsoft/vcpkg.git#commit=b322364f06308bdd24823f9d8f03fe0cc86fd46f" # 2024-12-16 (Toolchain/BuildVcpkg.py)
   "ladybird.desktop"
 )
 sha256sums=(
@@ -32,7 +32,9 @@ build() {
     --preset default \
     -B build \
     -S ladybird \
+    -DBUILD_SHARED_LIBS=OFF \
     -DCMAKE_BUILD_TYPE=Release \
+    -DVCPKG_OVERLAY_TRIPLETS="${srcdir}/ladybird/Meta/CMake/vcpkg/distribution-triplets" \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" \
     -DENABLE_INSTALL_HEADERS=OFF \
