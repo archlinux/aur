@@ -1,0 +1,32 @@
+Index: vdr-plugin-vompserver-0.5.1+git20231106-4-269b046/vompclientrrproc.c
+===================================================================
+--- vdr-plugin-vompserver-0.5.1+git20231106-4-269b046.orig/vompclientrrproc.c	2023-11-06 16:51:03.000000000 +0100
++++ vdr-plugin-vompserver-0.5.1+git20231106-4-269b046/vompclientrrproc.c	2024-09-10 09:15:22.464388346 +0200
+@@ -2497,7 +2497,11 @@
+   {
+      const cSchedule *Schedule = tSchedules->GetSchedule(channel->GetChannelID());
+      if (Schedule) {
++#if APIVERSNUM > 20501
++        event = Schedule->GetEventById(eventid);
++#else
+         event = Schedule->GetEvent(eventid);
++#endif
+     }
+   }
+     
+Index: vdr-plugin-vompserver-0.5.1+git20231106-4-269b046/picturereader.c
+===================================================================
+--- vdr-plugin-vompserver-0.5.1+git20231106-4-269b046.orig/picturereader.c	2023-11-06 16:51:03.000000000 +0100
++++ vdr-plugin-vompserver-0.5.1+git20231106-4-269b046/picturereader.c	2024-09-10 09:17:06.612872707 +0200
+@@ -238,7 +238,11 @@
+         Schedule = tSchedules->GetSchedule(channel);
+       }
+       const cEvent *event = NULL;
++#if APIVERSNUM > 20501
++      if (Schedule) event=Schedule->GetEventById(req.primary_id);
++#else
+       if (Schedule) event=Schedule->GetEvent(req.primary_id);
++#endif
+       ScraperGetPosterThumb getter;
+       getter.event = event;
+       getter.recording = NULL;
