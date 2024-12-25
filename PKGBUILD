@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mogan-bin
-pkgver=1.2.9.7
+pkgver=1.2.9.8
 _libgit2ver=1.1.1
 pkgrel=1
-pkgdesc="A structured wysiwyg scientific text editor"
+pkgdesc="A structured wysiwyg scientific text editor.(Prebuilt version)"
 arch=('x86_64')
 url="https://mogan.app/"
 _ghurl="https://github.com/XmacsLabs/mogan"
@@ -32,9 +32,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-research-v${pkgver}-fedora41.rpm"
     "libgit2-${_libgit2ver}.tar.gz::${_libgit2url}/archive/refs/tags/v${_libgit2ver}.tar.gz"
 )
-sha256sums=('fc6171d44e29351c2bd16fffbbb18ed287ef20b8871f7b9ca2ce898587dd948c'
+sha256sums=('578fe5e76b71a61851b22bbf478a782f6b0f4dbc97d508b473243e3a81ab2b13'
             '13a525373f64c711a00a058514d890d1512080265f98e0935ab279393f21a620')
-build() {
+prepare() {
     cd "${srcdir}/libgit2-${_libgit2ver}"
     install -Dm755 -d build
     cd build
