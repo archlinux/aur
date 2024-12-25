@@ -1,4 +1,4 @@
-THIS_JDK='openjdk-zulu-ca-fx-bin'
+THIS_JDK='openjdk-zulu8-ca-fx-bin'
 
 fix_default() {
   if [ ! -x /usr/bin/java ]; then
