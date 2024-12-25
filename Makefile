@@ -13,11 +13,10 @@ Available make targets:
   install   Build and install $(NAME).
   mrproper  Cleanup thoroughly, including downloaded files.
   remove    Print command to uninstall $(NAME) and its orphaned dependencies.
-  schk      Check shell scripts.
 
 endef
 
-.PHONY:	build clean help mrproper remove schk
+.PHONY:	build clean help install mrproper remove shc
 
 help:
 	$(info $(usage))
@@ -41,5 +40,5 @@ install:	PKGBUILD
 remove:
 	@echo -e "# Run the following only if you are certain:\nsudo pacman -Rs $(NAME)"
 
-schk:
-	shellcheck -s bash -e SC2034,SC2154 PKGBUILD *.install
+shc:	PKGBUILD *.install
+	shcare $^ || shellcheck $^
