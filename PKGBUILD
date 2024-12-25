@@ -1,16 +1,16 @@
 # Maintainer: picokan <todaysoracvle@protonmail.com>
 
 pkgname=bazarr-runit
-pkgver=20240422
+pkgver=20241225
 pkgrel=1
 pkgdesc="Runit service script for bazarr."
 arch=("any")
 url="https://bazarr.media"
-license=("GPL-3.0")
+license=("GPL-3.0-or-later")
 depends=("bazarr" "runit")
 install=bazarr.install
 source=("bazarr.run")
-sha256sums=('7232c3971621d3afa8f8377fee91c10e27eb7e1184861d96708906cfeccfd7f0')
+sha256sums=('25e8b8f20d46e7d534a88f7d0aaf0c7da852bda9f4be7b7ec2d8a24016b1afcc')
 
 package() {
 	cd "$srcdir"

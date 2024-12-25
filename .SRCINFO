@@ -1,11 +1,11 @@
 pkgbase = bazarr-runit
 	pkgdesc = Runit service script for bazarr.
-	pkgver = 20240422
+	pkgver = 20241225
 	pkgrel = 1
 	url = https://bazarr.media
 	install = bazarr.install
 	arch = any
-	license = GPL-3.0
+	license = GPL-3.0-or-later
 	depends = bazarr
 	depends = runit
 	source = bazarr.run
