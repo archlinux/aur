@@ -43,7 +43,7 @@ pkgbase = qualcommsoftwarecenter
 	provides = qsc-cli
 	options = !strip
 	options = !emptydirs
-	source = https://softwarecenter.qualcomm.com/api/download/software/qsc/linux/latest.deb
+	source = https://softwarecenter.qualcomm.com/api/download/software/tool/Qualcomm_Software_Center/1.9.3/Linux/QualcommSoftwareCenter1.9.3.Linux-x86.deb
 	sha512sums = f6e40e4147dd6e3fdcf154de678314b881a1a3d33f8ee6db0df976458d39484a2fa6ebe62f47043baece904077cf85e4744d008d7b36fa0494f5ae8b637c234c
 
 pkgname = qualcommsoftwarecenter

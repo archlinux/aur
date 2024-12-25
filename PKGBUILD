@@ -12,7 +12,7 @@ provides=('qpm3-cli' 'qsc-cli')
 depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dash' 'dbus' 'desktop-file-utils' 'e2fsprogs' 'expat' 'glib2' 'gnutls' 'gtk3' 'intel-oneapi-basekit' 'libcups' 'libdrm' 'libidn2' 'libx11' 'libxcb' 'libxcomposite' 'libxcrypt-compat' 'libxdamage' 'libxext' 'libxfixes' 'libxrandr' 'mesa' 'nspr' 'nss' 'openssl' 'pango' 'rtmpdump' 'sqlite' 'sudo' 'xdg-utils' 'zlib')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://softwarecenter.qualcomm.com/api/download/software/qsc/linux/latest.deb")
+source=("https://softwarecenter.qualcomm.com/api/download/software/tool/Qualcomm_Software_Center/${pkgver}/Linux/QualcommSoftwareCenter${pkgver}.Linux-x86.deb")
 sha512sums=('f6e40e4147dd6e3fdcf154de678314b881a1a3d33f8ee6db0df976458d39484a2fa6ebe62f47043baece904077cf85e4744d008d7b36fa0494f5ae8b637c234c')
 
 package(){
