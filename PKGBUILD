@@ -121,8 +121,8 @@ package() {
   # Move scanbuild-py into site-packages and install Python bindings
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   install -d "$pkgdir/$site_packages"
-  mv "$pkgdir"/usr/lib/libear "$pkgdir/$site_packages/libear15"
-  mv "$pkgdir"/usr/lib/libscanbuild "$pkgdir/$site_packages/libscanbuild15"
+  #mv "$pkgdir"/usr/lib/libear "$pkgdir/$site_packages/libear15"
+  #mv "$pkgdir"/usr/lib/libscanbuild "$pkgdir/$site_packages/libscanbuild15"
   cp -a ../bindings/python/clang "$pkgdir/$site_packages/clang15"
 
 
