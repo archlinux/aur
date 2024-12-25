@@ -7,7 +7,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
 _pkgname=Notesnook
-pkgver=3.0.22
+pkgver=3.0.23
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -40,7 +40,7 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.sh"
 )
-sha256sums=('54147693689b4d8a685b248e55574943d81dfe5a01808d9078a330e2a465d492'
+sha256sums=('e5ddafa088c5fc52e1a78384beb1381d869660ad04f77d9d28e422354f9663d0'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
@@ -49,7 +49,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -80,6 +80,9 @@ build() {
     sed -i "s/npm \${/NODE_ENV=development npm \${/g" scripts/bootstrap.mjs
     # Install packages
     NODE_ENV=development    npm install --ignore-scripts --prefer-offline --no-audit
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     npm run bootstrap -- --scope=web
     # Generate desktop build
     NODE_ENV=production     npx nx build:desktop @notesnook/web
