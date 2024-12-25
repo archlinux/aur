@@ -2,8 +2,8 @@
 # Maintainer: Guoxin "7Ji" Pu <pugokushin@gmail.com>
 pkgbase=wps-office-365
 pkgname=('wps-office-365' 'wps-office-365-xiezuo' 'wps-office-365-fonts')
-pkgver=12.8.2.18605
-pkgrel=2
+pkgver=12.8.2.19313
+pkgrel=1
 pkgdesc="WPS Office, is an office productivity suite."
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://365.wps.cn/"
@@ -21,9 +21,9 @@ options=(!strip !zipman !debug)
 source_x86_64=("https://wps-linux-365.wpscdn.cn/wps/download/ep/Linux365/${pkgver: -5}/wps-office_${pkgver}.AK.preload.sw_amd64.deb")
 source_aarch64=("https://wps-linux-365.wpscdn.cn/wps/download/ep/Linux365/${pkgver: -5}/wps-office_${pkgver}.AK.preload.sw_arm64.deb")
 source_loong64=("https://wps-linux-365.wpscdn.cn/wps/download/ep/Linux365/${pkgver: -5}/wps-office_${pkgver}.AK.preload.sw_loongarch64.deb")
-sha256sums_x86_64=('7f2db7f328dd695ea964e3ee940311265723fc81de4438e0320ad3542d093cb4')
-sha256sums_aarch64=('0735a908ccc2ce7e11157bdeee855de34e44aeb40b89fe70c06742f77f28517c')
-sha256sums_loong64=('ad38994277912eeb9f96aca342a7e898ed74ef37b11f0d2bb4bac938835a527b')
+sha256sums_x86_64=('2ef31e4df57e3fb844c1740bd4620ee4f1a8c3d3c60a6854da431c3d8a8e2ed1')
+sha256sums_aarch64=('6b7b52c7af6cfc5c35c7ccfbe152bf3b32b197e07a2bf8ad3002968729ee8f22')
+sha256sums_loong64=('f194ca91d752f1e7729bd412d5b4f4e795ed0835f09da1ca48c7f2e72a0b2421')
 
 prepare() {
   xz -df data.tar.xz
