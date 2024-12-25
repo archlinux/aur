@@ -1,33 +1,9 @@
 #!/usr/bin/bash
 
 build() {
-    add_file "/etc/libccid_Info.plist"
-    add_file "/usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist"
-    add_binary "/usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Linux/libccid.so"
+    add_binary '/usr/lib/cryptsetup/libcryptsetup-token-systemd-pkcs11.so'
 
-    add_systemd_unit "pcscd.service"
-    add_dir "/usr/lib/systemd/system/pcscd.service.d/"
-    (
-      echo "[Unit]"
-      echo "DefaultDependencies=no"
-      echo "[Service]"
-      echo "ExecStart="
-      echo "ExecStart=/usr/bin/pcscd --foreground --disable-polkit"
-    ) > "$BUILDROOT/usr/lib/systemd/system/pcscd.service.d/mkinitcpio.conf"
-
-    add_systemd_unit "pcscd.socket"
-    add_dir "/usr/lib/systemd/system/pcscd.socket.d/"
-    (
-      echo "[Unit]"
-      echo "DefaultDependencies=no"
-    ) > "$BUILDROOT/usr/lib/systemd/system/pcscd.socket.d/mkinitcpio.conf"
-
-    # pcscd.socket -> cryptsetup-pre.target -> systemd-cryptsetup@.service -> cryptsetup.target
-    add_systemd_unit "cryptsetup-pre.target"
-    add_symlink "/usr/lib/systemd/system/cryptsetup-pre.target.wants/pcscd.socket" "/usr/lib/systemd/system/pcscd.socket"
-    add_symlink "/usr/lib/systemd/system/cryptsetup.target.wants/cryptsetup-pre.target" "/usr/lib/systemd/system/cryptsetup-pre.target"
-
-    for FILE in /usr/lib/libp11-kit.so* /usr/lib/libpcsclite_real.so*; do
+    for FILE in /usr/lib/libp11-kit.so* /usr/lib/libpcsclite.so* /usr/lib/libpcsclite_real.so*; do
         if [[ -L "${FILE}" ]]; then
             add_symlink "${FILE}"
         else
@@ -35,8 +11,29 @@ build() {
         fi
     done
 
-    add_binary "/usr/lib/pkcs11/librtpkcs11ecp.so"
-    add_file "/usr/share/p11-kit/modules/rutoken.module"
+    printf 'module: librtpkcs11ecp.so\n' | add_file - '/usr/share/p11-kit/modules/rutoken.module' 644
+
+    add_binary '/usr/lib/pkcs11/librtpkcs11ecp.so'
+
+    add_systemd_unit 'pcscd.service'
+    printf '%s\n' \
+        '[Unit]' \
+        'DefaultDependencies=no' \
+        '[Service]' \
+        'ExecStart=' \
+        'ExecStart=/usr/bin/pcscd --foreground --disable-polkit' \
+    | add_systemd_drop_in 'pcscd.service' 'mkinitcpio'
+
+    add_systemd_unit 'pcscd.socket'
+    printf '[Unit]\nDefaultDependencies=no\n' | add_systemd_drop_in 'pcscd.socket' 'mkinitcpio'
+
+    # pcscd.socket -> cryptsetup-pre.target -> systemd-cryptsetup@.service -> cryptsetup.target
+    add_systemd_unit 'cryptsetup-pre.target'
+    add_symlink '/usr/lib/systemd/system/cryptsetup-pre.target.wants/pcscd.socket' '/usr/lib/systemd/system/pcscd.socket'
+    add_symlink '/usr/lib/systemd/system/cryptsetup.target.wants/cryptsetup-pre.target' '/usr/lib/systemd/system/cryptsetup-pre.target'
+
+    add_file '/usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist'
+    add_binary '/usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Linux/libccid.so'
 }
 
 help() {
