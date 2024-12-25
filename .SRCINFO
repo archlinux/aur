@@ -1,0 +1,19 @@
+pkgbase = python-remotezip2
+	pkgdesc = Python module to access single members of a zip archive without downloading the full content from a remote web server (fork)
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/doronz88/python-remotezip2
+	arch = any
+	license = MIT
+	checkdepends = python-requests-mock
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-requests
+	source = python-remotezip2-0.0.2.tar.gz::https://github.com/doronz88/python-remotezip2/archive/refs/tags/v0.0.2.tar.gz
+	sha256sums = d1a91009a96973fac5caaa9374aa0b39ee149765c837f60a6384270886d68898
+
+pkgname = python-remotezip2
