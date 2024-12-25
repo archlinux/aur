@@ -2,7 +2,7 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-softhddevice
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 epoch=1
 _vdrapi=5
@@ -19,7 +19,7 @@ _plugname=${pkgname//vdr-/}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ua0lnj/vdr-plugin-softhddevice/archive/v$pkgver.tar.gz"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('e3306dfe00494be46eb0560146e97dbdcaf93a13ee690c5e80496df54fea841e'
+sha256sums=('6870dd2048e6d02d3c08dfa5b8737935eb81f0355bc861c2dcaa254babcffa43'
             '889d4c19770a926f8aa6a014ff8219800a7a74c464ef0b12dcef6bb8db93e719')
 
 prepare() {
