@@ -1,23 +1,22 @@
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
-# Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
-
 pkgname=clang15
 pkgver=15.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="C language family frontend for LLVM 15"
 arch=('x86_64')
 url="https://clang.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 depends=('llvm15-libs' 'gcc' 'compiler-rt15')
 makedepends=('llvm15' 'cmake' 'ninja' 'python')
+conflicts=('python-clang15')
 optdepends=('openmp: OpenMP support in clang with -fopenmp'
+            'python: python bindings'
             'llvm15: referenced by some clang headers')
 checkdepends=('llvm')
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/clang-$pkgver.src.tar.xz{,.sig}
         $_source_base/llvm-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig}
-        $pkgname-linker-wrapper-tool-r1.patch::https://github.com/llvm/llvm-project/commit/c2aabcfc8395.patch
+        $pkgname-linker-wrapper-tool-r1.patch
         lit16.patch
         enable-fstack-protector-strong-by-default.patch)
 sha256sums=('a6b673ef15377fb46062d164e8ddc4d05c348ff8968f015f7f4af03f51000067'
@@ -70,6 +69,12 @@ prepare() {
   rm test/Driver/XRay/xray-instrument-{cpu,os}.c
 }
 
+_python_optimize() {
+  python -m compileall "$@"
+  python -O -m compileall "$@"
+  python -OO -m compileall "$@"
+}
+
 build() {
   cd clang-$pkgver.src/build
 
@@ -113,9 +118,21 @@ package() {
   DESTDIR="$pkgdir" ninja install-distribution
   install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
+  # Move scanbuild-py into site-packages and install Python bindings
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir/$site_packages"
+  mv "$pkgdir"/usr/lib/libear "$pkgdir/$site_packages/libear15"
+  mv "$pkgdir"/usr/lib/libscanbuild "$pkgdir/$site_packages/libscanbuild15"
+  cp -a ../bindings/python/clang "$pkgdir/$site_packages/clang15"
+
+
   mv "$pkgdir"/usr/lib/{llvm15/lib/,}libclang-cpp.so.15
   ln -s ../../libclang-cpp.so.15 "$pkgdir/usr/lib/llvm15/lib/libclang-cpp.so.15"
   ln -s llvm15/lib/libclang.so.15 "$pkgdir"/usr/lib/libclang.so.15
+
+  # Compile Python scripts
+  _python_optimize "$pkgdir/usr/share" "$pkgdir/$site_packages"
 }
+
 
 # vim:set ts=2 sw=2 et:
