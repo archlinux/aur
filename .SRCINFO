@@ -1,12 +1,12 @@
 pkgbase = ttf-fluentui-system-icons
 	pkgdesc = A collection of familiar, friendly and modern icons from Microsoft.
-	pkgver = 1.1.266
+	pkgver = 1.1.271
 	pkgrel = 1
 	url = https://aka.ms/fluentui-system-icons
 	arch = any
 	license = MIT
 	conflicts = ttf-fluentui-system-icons
-	source = ttf-fluentui-system-icons-1.1.266.tar.gz::https://github.com/microsoft/fluentui-system-icons/archive/refs/tags/1.1.266.tar.gz
-	sha256sums = 9ba30870fa64613a860506bfb1355d05d9bb82bdc0ab5b5be6bd7d86b40134e9
+	source = ttf-fluentui-system-icons-1.1.271.tar.gz::https://github.com/microsoft/fluentui-system-icons/archive/refs/tags/1.1.271.tar.gz
+	sha256sums = e11948bc6eb3998b2f065201f54461a44026d443b0ef53e0b260e8958f6b572b
 
 pkgname = ttf-fluentui-system-icons
