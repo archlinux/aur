@@ -3,7 +3,7 @@
 
 pkgname='motoko'
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Based on Go modules, update a dependency to a major version.'
 url='https://github.com/ldez/motoko'
 arch=('aarch64' 'x86_64')
@@ -12,7 +12,9 @@ provides=('motoko')
 conflicts=('motoko')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/ldez/motoko/releases/download/v0.3.2/motoko-v0.3.2-source.tar.gz")
-sha256sums=('d6c0916b27834de3aa1f80ef98682ce315ab956f42278b0816cf8f2df7dad7bc')build() {
+sha256sums=('d6c0916b27834de3aa1f80ef98682ce315ab956f42278b0816cf8f2df7dad7bc')
+
+build() {
   export BUILD_DATE=$(date -u '+%Y-%m-%d_%I:%M:%S%p')
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
