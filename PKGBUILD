@@ -21,18 +21,34 @@ prepare() {
 
 package() {
     cd "${srcdir}/grayjay/Grayjay.Desktop-linux-x64-v2"
-    install -dm755 "${pkgdir}/opt/grayjay"
+
+    # Create necessary directories
+    install -dm755 "${pkgdir}/usr/share/grayjay"
     install -dm755 "${pkgdir}/usr/bin"
     install -dm755 "${pkgdir}/usr/share/applications"
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
 
-    cp -r ./* "${pkgdir}/opt/grayjay/"
-    cat > "${pkgdir}/usr/bin/grayjay" << EOF
+    # Create launcher script that copies app to user directory on first run
+    cat > "${pkgdir}/usr/bin/grayjay" << 'EOF'
 #!/bin/sh
-exec /opt/grayjay/Grayjay "\$@"
+APP_DIR="$HOME/.local/share/grayjay"
+
+# Check if app is already installed in user directory
+if [ ! -d "$APP_DIR" ]; then
+    echo "First run - installing Grayjay to $APP_DIR"
+    mkdir -p "$APP_DIR"
+    cp -r /usr/share/grayjay/* "$APP_DIR/"
+    chmod u+w -R "$APP_DIR"
+fi
+
+exec "$APP_DIR/Grayjay" "$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/grayjay"
 
+    # Copy application files to system directory (will be copied to user dir on first run)
+    cp -r ./* "${pkgdir}/usr/share/grayjay/"
+
+    # Create desktop entry
     cat > "${pkgdir}/usr/share/applications/grayjay.desktop" << EOF
 [Desktop Entry]
 Name=Grayjay
@@ -44,8 +60,7 @@ Type=Application
 Categories=Network;Video;AudioVideo;
 EOF
 
+    # Install icon
     install -Dm644 "grayjay.png" \
         "${pkgdir}/usr/share/icons/hicolor/512x512/apps/grayjay.png"
-
-    chmod 755 "${pkgdir}/opt/grayjay/Grayjay"
 }
