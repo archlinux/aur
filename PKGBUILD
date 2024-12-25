@@ -2,8 +2,8 @@
 # Co-Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=gnome-radio
-pkgver=48.0
-pkgrel=2
+pkgver=48.1
+pkgrel=1
 pkgdesc="Easily find live radio programs based on geographical location of radio broadcasters on the Internet"
 arch=('x86_64')
 url="https://wiki.gnome.org/Apps/Radio"
@@ -12,8 +12,8 @@ depends=('libchamplain' 'geoclue' 'gst-plugins-base' 'gst-plugins-bad' 'geocode-
 makedepends=('intltool' 'itstool' 'python')
 conflicts=('gnome-internet-radio-locator')
 replaces=('gnome-internet-radio-locator')
-source=(http://www.gnomeradio.org/src/gnome-radio-48.0.tar.xz)
-sha256sums=('0d4f8ca222456938d2403985518ddf97e60b95c05c189de8773ceba63813c8de')
+source=(http://www.gnomeradio.org/src/gnome-radio-48.1.tar.xz)
+sha256sums=('8a7886d8ea155ff9fd58d1da97c2cdf1e2cec5e521ff493487d4b7b206ae00e0')
 
 prepare() {
   cd $pkgname-$pkgver
