@@ -4,7 +4,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook-git
 _pkgname=Notesnook
-pkgver=3.0.22.r0.g67a61dd
+pkgver=3.0.24.r0.gb296f5d
 _electronversion=31
 _nodeversion=22
 pkgrel=1
@@ -26,7 +26,6 @@ makedepends=(
     'npm'
     'git'
     'zip'
-    'cmake'
     'gcc'
     'curl'
     'yarn'
@@ -52,7 +51,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -84,6 +83,9 @@ build() {
     sed -i "s/npm \${/NODE_ENV=development npm \${/g" scripts/bootstrap.mjs
     # Install packages
     NODE_ENV=development    npm install --ignore-scripts --prefer-offline --no-audit
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     npm run bootstrap -- --scope=web
     # Generate desktop build
     NODE_ENV=production     npx nx build:desktop @notesnook/web
