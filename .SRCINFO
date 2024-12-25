@@ -21,6 +21,7 @@ pkgbase = python-openai-whisper-git
 	depends = python-tqdm
 	provides = python-openai-whisper=20240930
 	conflicts = python-openai-whisper
+	conflicts = whisper
 	source = openai.whisper::git+https://github.com/openai/whisper.git
 	source = pr2409-python-3.13.patch::https://github.com/openai/whisper/pull/2409.diff
 	sha256sums = SKIP

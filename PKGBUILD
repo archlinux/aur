@@ -31,7 +31,10 @@ checkdepends=(
 )
 
 provides=("$_pkgname=${pkgver%%.r*}")
-conflicts=("$_pkgname")
+conflicts=(
+  "$_pkgname"
+  'whisper'
+)
 
 _pkgsrc="openai.whisper"
 source=(
