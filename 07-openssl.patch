@@ -1,0 +1,118 @@
+From: Russ Allbery <rra@debian.org>
+Date: Mon, 30 Jun 2008 19:06:34 -0700
+Subject: Support GnuTLS via OpenSSL compat library
+
+Detect the GnuTLS OpenSSL compatibility library and probe for a few
+small things that it does differently than OpenSSL.
+---
+ configure.in      | 18 +++++++++++++-----
+ src/socket.c      | 19 ++++++++++++++-----
+ src/tfconfig.h.in |  2 ++
+ 3 files changed, 29 insertions(+), 10 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index ffed268..e783564 100644
+--- a/configure.in
++++ b/configure.in
+@@ -294,14 +294,19 @@ if test "$enable_ssl" = "yes"; then
+     old_CPPFLAGS="$CPPFLAGS"
+     while true; do
+ 	dnl -lssl needs -lcrypto
+-	dnl Try in default locations first, then /usr/local/ssl
++	dnl Try in default locations first, then /usr/local/ssl, then try the
++        dnl GnuTLS compatibility layer
+ 	LIBS="$LIBS -lssl -lcrypto"
+ 	AC_MSG_CHECKING([for libcrypto and libssl])
+ 	AC_TRY_LINK_FUNC(SSL_new, AC_MSG_RESULT([yes]),
+ 	    CFLAGS="$CFLAGS -L/usr/local/ssl/lib";
+ 	    CPPFLAGS="-I/usr/local/ssl/include $CPPFLAGS";
+ 	    AC_TRY_LINK_FUNC(SSL_new, AC_MSG_RESULT([/usr/local/ssl]),
+-		AC_MSG_RESULT([no]); break))
++		LIBS="$old_LIBS -lgnutls-openssl"
++		CFLAGS="$old_CFLAGS"
++		CPPFLAGS="$old_CPPFLAGS"
++		AC_TRY_LINK_FUNC(SSL_new, AC_MSG_RESULT([gnutls]),
++		    AC_MSG_RESULT([no]); break)))
+ 	dnl Red Hat 9 and Yellow Dog Linux have ssl.h in a standard place,
+ 	dnl but it depends on krb5.h which isn't in a standard place.
+ 	AC_MSG_CHECKING(for ssl kerberos dependency)
+@@ -311,9 +316,12 @@ if test "$enable_ssl" = "yes"; then
+ 	else
+ 	    AC_MSG_RESULT([no])
+ 	fi
+-	AC_CHECK_HEADER(openssl/ssl.h, , break)
+-	AC_DEFINE(HAVE_SSL)
+-	ok=1
++	AC_CHECK_HEADER(openssl/ssl.h, ok=1,
++	    [AC_CHECK_HEADERS([gnutls/openssl.h], [ok=1])])
++	if test "$ok" = "1"; then
++	    AC_DEFINE(HAVE_SSL)
++            AC_CHECK_FUNCS(ERR_peek_error)
++	fi
+ 	break
+     done
+     if test "$ok" = "0"; then
+diff --git a/src/socket.c b/src/socket.c
+index 6b671cf..f699504 100644
+--- a/src/socket.c
++++ b/src/socket.c
+@@ -30,8 +30,12 @@ static const char RCSid[] = "$Id: socket.c,v 35004.288 2007/01/13 23:12:39 kkeys
+ #include <signal.h>	/* for killing resolver child process */
+ 
+ #if HAVE_SSL
+-# include <openssl/ssl.h>
+-# include <openssl/err.h>
++# if HAVE_GNUTLS_OPENSSL_H
++#  include <gnutls/openssl.h>
++# else
++#  include <openssl/ssl.h>
++#  include <openssl/err.h>
++# endif
+     SSL_CTX *ssl_ctx;
+ #endif
+ 
+@@ -532,9 +536,11 @@ static void ssl_io_err(Sock *sock, int ret, int hook)
+     case SSL_ERROR_WANT_WRITE:
+ 	ssl_io_err_hook("SSL", "SSL_ERROR_WANT_WRITE");
+ 	break;
++#ifdef SSL_ERROR_WANT_CONNECT
+     case SSL_ERROR_WANT_CONNECT:
+ 	ssl_io_err_hook("SSL", "SSL_ERROR_WANT_CONNECT");
+ 	break;
++#endif
+     case SSL_ERROR_SYSCALL:
+ 	if (ret == 0) {
+ 	    ssl_io_err_hook("SSL/system", "invalid EOF");
+@@ -2904,9 +2910,12 @@ static int handle_socket_input(const char *simbuffer, int simlen)
+ #if HAVE_SSL
+ 	    if (xsock->ssl) {
+ 		count = SSL_read(xsock->ssl, inbuffer, sizeof(inbuffer));
+-		if (count == 0 &&
+-		    SSL_get_error(xsock->ssl, 0) == SSL_ERROR_SYSCALL &&
+-		    ERR_peek_error() == 0)
++		if (count == 0
++# if HAVE_ERR_PEEK_ERROR
++		    && SSL_get_error(xsock->ssl, 0) == SSL_ERROR_SYSCALL &&
++		    ERR_peek_error() == 0
++# endif
++		    )
+ 		{
+ 		    /* Treat a count of 0 with no errors as a normal EOF */
+ 		    goto eof;
+diff --git a/src/tfconfig.h.in b/src/tfconfig.h.in
+index ef9a245..b67bc1f 100644
+--- a/src/tfconfig.h.in
++++ b/src/tfconfig.h.in
+@@ -37,10 +37,12 @@
+ #define HAVE_LIBZ 0
+ #define SOCKS 0
+ #define HAVE_SSL 0
++#define HAVE_GNUTLS_OPENSSL_H 0
+ 
+ #define HAVE_BCOPY 0
+ #define HAVE_BZERO 0
+ #define HAVE_CONNECT 0
++#define HAVE_ERR_PEEK_ERROR 0
+ #define HAVE_FILENO 0
+ #define HAVE_GETCWD 0
+ #define HAVE_GETHOSTBYNAME 0

@@ -1,0 +1,102 @@
+diff -c tf-50b8/configure tf-50b8-patched/configure
+*** tf-50b8/configure	Sun Jan 14 14:44:58 2007
+--- tf-50b8-patched/configure	Sat Aug 28 01:06:56 2010
+***************
+*** 867,872 ****
+--- 867,875 ----
+    --disable-mailcheck     disable mail checking
+    --enable-mailcheck=DIR  enable checking for mail in directory DIR
+                            (needed only if configure guesses incorrectly)
++   --enable-atcp           enable ATCP support
++   --enable-gmcp           enable GMCP support
++   --enable-option102      enable telnet option 102 support
+    --disable-history       disable /recall and other history features
+    --disable-process       disable /quote and /repeat
+    --disable-float         disable floating point arithmetic and functions
+***************
+*** 1409,1414 ****
+--- 1412,1441 ----
+    enable_mailcheck=yes
+  fi;
+  
++ # Check whether --enable-atcp or --disable-atcp was given.
++ if test "${enable_atcp+set}" = set; then
++   enableval="$enable_atcp"
++ 
++ else
++   enable_atcp=no
++ fi;
++ 
++ # Check whether --enable-gmcp or --disable-gmcp was given.
++ if test "${enable_gmcp+set}" = set; then
++   enableval="$enable_gmcp"
++ 
++ else
++   enable_gmcp=no
++ fi;
++ 
++ # Check whether --enable-option102 or --disable-option102 was given.
++ if test "${enable_option102+set}" = set; then
++   enableval="$enable_option102"
++ 
++ else
++   enable_option102=no
++ fi;
++ 
+  # User feature options
+  # Check whether --enable-history or --disable-history was given.
+  if test "${enable_history+set}" = set; then
+***************
+*** 8773,8778 ****
+--- 8800,8817 ----
+  #define ENABLE_INET6 1
+  _ACEOF
+    fi
++ if test "$enable_atcp"   = "yes"; then cat >>confdefs.h <<\_ACEOF
++ #define ENABLE_ATCP 1
++ _ACEOF
++   fi
++ if test "$enable_gmcp"   = "yes"; then cat >>confdefs.h <<\_ACEOF
++ #define ENABLE_GMCP 1
++ _ACEOF
++   fi
++ if test "$enable_option102"   = "yes"; then cat >>confdefs.h <<\_ACEOF
++ #define ENABLE_OPTION102 1
++ _ACEOF
++   fi
+  if test "$enable_history" = "no"; then cat >>confdefs.h <<\_ACEOF
+  #define NO_HISTORY 1
+  _ACEOF
+diff -c tf-50b8/configure.in tf-50b8-patched/configure.in
+*** tf-50b8/configure.in	Sat Jan 13 18:12:35 2007
+--- tf-50b8-patched/configure.in	Sat Aug 28 01:09:20 2010
+***************
+*** 74,79 ****
+--- 74,88 ----
+    --enable-mailcheck=DIR  enable checking for mail in directory DIR
+                            (needed only if configure guesses incorrectly)],
+      , enable_mailcheck=yes)
++ AC_ARG_ENABLE(atcp,
++ [  --enable-atcp     enable ATCP support,
++     , enable_atcp=no)
++ AC_ARG_ENABLE(gmcp,
++ [  --enable-gmcp     enable GMCP support,
++     , enable_gmcp=no)
++ AC_ARG_ENABLE(option102,
++ [  --enable-option102     enable 102 option support,
++     , enable_option102=no)
+  
+  # User feature options
+  AC_ARG_ENABLE(history,
+***************
+*** 704,709 ****
+--- 713,721 ----
+  dnl ### write variables
+  
+  if test "$enable_inet6"   = "yes"; then AC_DEFINE(ENABLE_INET6)  fi
++ if test "$enable_atcp"    = "yes"; then AC_DEFINE(ENABLE_ATCP)  fi
++ if test "$enable_gmcp"    = "yes"; then AC_DEFINE(ENABLE_GMCP)  fi
++ if test "$enable_option102"  = "yes"; then AC_DEFINE(ENABLE_OPTION102)  fi
+  if test "$enable_history" = "no"; then AC_DEFINE(NO_HISTORY)  fi
+  if test "$enable_process" = "no"; then AC_DEFINE(NO_PROCESS)  fi
+  if test "$enable_float"   = "no"; then AC_DEFINE(NO_FLOAT)    fi

@@ -1,3 +1,13 @@
+From: Russ Allbery <rra@debian.org>
+Date: Sun, 17 Feb 2008 20:42:29 -0800
+Subject: Add DESTDIR support
+
+Original patch taken from Joel Baker's Debian package.  This adds
+DESTDIR where needed to the Unix makefile fragment.
+---
+ unix/unix.mak | 38 +++++++++++++++++++-------------------
+ 1 file changed, 19 insertions(+), 19 deletions(-)
+
 diff --git a/unix/unix.mak b/unix/unix.mak
 index 60f1b18..944e0dd 100644
 --- a/unix/unix.mak

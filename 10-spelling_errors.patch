@@ -1,3 +1,14 @@
+From: Russ Allbery <rra@debian.org>
+Date: Sun, 14 Aug 2016 14:22:52 -0700
+Subject: Fix spelling errors
+
+occured -> occurred everywhere
+---
+ CHANGES       | 4 ++--
+ src/command.c | 2 +-
+ src/signals.c | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
 diff --git a/CHANGES b/CHANGES
 index 037c766..dfc5029 100644
 --- a/CHANGES
@@ -46,16 +57,3 @@ index bd96b87..a00c70e 100644
      fprintf(dumpfile, "> %.512s\r\n", version);
      if (*sysname) fprintf(dumpfile, "> %.256s\r\n", sysname);
      fprintf(dumpfile, "> %.256s\r\n", featurestr->data);
-diff --git a/src/tf.1.nroffman b/src/tf.1.nroffman
-index 90691db..84b7140 100644
---- a/src/tf.1.nroffman
-+++ b/src/tf.1.nroffman
-@@ -129,7 +129,7 @@ commands to use in a \fITF\fR configuration file are /addworld and /load.
- 
- For backward compatibility, \fITF\fR will also try
- to read the \fITinyTalk\fR configuration file.
--Its name defautls to $HOME/.tinytalk, or can be defined by the TINYTALK
-+Its name defaults to $HOME/.tinytalk, or can be defined by the TINYTALK
- environment variable.
- This file may start with a list of worlds that will be defined as if with
- /addworld.

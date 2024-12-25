@@ -1,3 +1,14 @@
+From: Russ Allbery <rra@debian.org>
+Date: Sun, 17 Feb 2008 22:17:59 -0800
+Subject: Minor man page fixes
+
+Escape hyphens properly, add a better man page header, fix the
+placement of punctuation around font changes, and fix a spelling
+error.
+---
+ src/tf.1.nroffman | 34 +++++++++++++++++-----------------
+ 1 file changed, 17 insertions(+), 17 deletions(-)
+
 diff --git a/src/tf.1.nroffman b/src/tf.1.nroffman
 index e8daaca..90691db 100644
 --- a/src/tf.1.nroffman

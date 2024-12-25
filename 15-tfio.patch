@@ -1,0 +1,26 @@
+Include "socket.h" for main_loop prototype. For C99 compatibility.
+
+Also fixed via this in <https://github.com/ingwarsw/tinyfugue>:
+
+commit 7b280f0f54dac62342c4f2a13a70b79bfb01a7b8
+Author: Karol Lassak <ingwar@ingwar.eu.org>
+Date:   Wed Dec 2 15:04:42 2020 +0000
+
+    Add actions file (#31)
+    
+    Switch from travis to GH actions
+    
+    Also fixes for new C compilator and finding of lua and python libraries
+
+diff --git a/src/tfio.c b/src/tfio.c
+index 151583ebb17cd81e..bbbbd90f7de31134 100644
+--- a/src/tfio.c
++++ b/src/tfio.c
+@@ -45,6 +45,7 @@ static const char RCSid[] = "$Id: tfio.c,v 35004.114 2007/01/13 23:12:39 kkeys E
+ #include "variable.h"	/* getvar() */
+ #include "keyboard.h"	/* keyboard_pos */
+ #include "expand.h"	/* current_command */
++#include "socket.h"	/* main_loop */
+ #include "cmdlist.h"
+ 
+ TFILE *loadfile = NULL; /* currently /load'ing file */

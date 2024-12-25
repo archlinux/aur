@@ -1,3 +1,13 @@
+From: Russ Allbery <rra@debian.org>
+Date: Sun, 14 Aug 2016 14:14:47 -0700
+Subject: Fix library install path
+
+The upstream top-level configure script doesn't correctly handle
+--program-suffix without this tweak.
+---
+ configure.in | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
 diff --git a/configure.in b/configure.in
 index e783564..c938531 100644
 --- a/configure.in

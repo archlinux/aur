@@ -1,0 +1,24 @@
+From: Russ Allbery <rra@debian.org>
+Date: Sun, 10 May 2020 15:27:41 -0700
+Subject: Fix duplicate world_decl definitions
+
+world_decl was an unused variable added solely to do a forward
+declaration of struct World.  It can simply be omitted, which
+fixes link errors with GCC 10.
+---
+ src/socket.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/socket.h b/src/socket.h
+index 12cfd6f..36dd90a 100644
+--- a/src/socket.h
++++ b/src/socket.h
+@@ -21,7 +21,7 @@
+ #define CONN_BG		0x08
+ #define CONN_FG		0x10
+ 
+-struct World   *world_decl;	/* declares struct World */
++struct World;	/* declares struct World */
+ 
+ extern String *incoming_text;
+ extern int quit_flag;

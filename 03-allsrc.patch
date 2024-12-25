@@ -1,0 +1,333 @@
+diff -c tf-50b8/src/expr.c tf-50b8-patched/src/expr.c
+*** tf-50b8/src/expr.c	Sat Jan 13 18:12:39 2007
+--- tf-50b8-patched/src/expr.c	Sat Aug 28 01:12:57 2010
+***************
+*** 972,977 ****
+--- 972,995 ----
+  		(n>2 ? opdstd(n-2) : ""));
+              return newint(i);
+  
++ #if ENABLE_ATCP
++         case FN_atcp:
++             i = handle_atcp_function(opdstr(n), (n>1 ? opdstd(n-1) : NULL));
++             return newint(i);
++ #endif
++ 
++ #if ENABLE_GMCP
++         case FN_gmcp:
++             i = handle_gmcp_function(opdstr(n), (n>1 ? opdstd(n-1) : NULL));
++             return newint(i);
++ #endif
++ 
++ #if ENABLE_OPTION102
++         case FN_option102:
++             i = handle_option102_function(opdstr(n), (n>1 ? opdstd(n-1) : NULL));
++             return newint(i);
++ #endif
++ 
+          case FN_fake_recv:
+              i = handle_fake_recv_function(opdstr(n),
+  		(n>1 ? opdstd(n-1) : NULL), (n>2 ? opdstd(n-2) : ""));
+diff -c tf-50b8/src/funclist.h tf-50b8-patched/src/funclist.h
+*** tf-50b8/src/funclist.h	Sat Jan 13 18:12:39 2007
+--- tf-50b8-patched/src/funclist.h	Sat Aug 28 01:14:08 2010
+***************
+*** 17,22 ****
+--- 17,25 ----
+  funccode(ascii,		1,	1,  1),
+  funccode(asin,		1,	1,  1),
+  funccode(atan,		1,	1,  1),
++ #if ENABLE_ATCP
++ funccode(atcp,		0,	1,  2),
++ #endif
+  funccode(char,		1,	1,  1),
+  funccode(columns,	0,	0,  0),
+  funccode(cos,		1,	1,  1),
+***************
+*** 36,41 ****
+--- 39,47 ----
+  funccode(gethostname,	0,	0,  0),
+  funccode(getopts,	0,	1,  2),
+  funccode(getpid,	1,	0,  0),
++ #if ENABLE_GMCP
++ funccode(gmcp,		0,	1,  2),
++ #endif
+  funccode(idle,		0,	0,  1),
+  funccode(is_connected,	0,	0,  1),
+  funccode(is_open,	0,	0,  1),
+***************
+*** 62,67 ****
+--- 68,76 ----
+  funccode(nlog,		0,	0,  0),
+  funccode(nmail,		0,	0,  0),
+  funccode(nread,		0,	0,  0),
++ #if ENABLE_OPTION102
++ funccode(option102,	0,	1,  2),
++ #endif
+  funccode(pad,		1,	1,  (unsigned)-1),
+  funccode(pow,		1,	2,  2),
+  funccode(prompt,	0,	1,  1),
+diff -c tf-50b8/src/globals.h tf-50b8-patched/src/globals.h
+*** tf-50b8/src/globals.h	Sat Jan 13 18:12:39 2007
+--- tf-50b8-patched/src/globals.h	Sat Aug 28 01:15:00 2010
+***************
+*** 158,163 ****
+--- 158,166 ----
+  #define TFMAILPATH	getstdvar(VAR_TFMAILPATH)
+  #define alert_attr	getattrvar(VAR_alert_attr)
+  #define alert_time	gettimevar(VAR_alert_time)
++ #define atcp		getintvar(VAR_atcp)
++ #define gmcp		getintvar(VAR_gmcp)
++ #define OPTION102	getintvar(VAR_OPTION102)
+  #define auto_fg		getintvar(VAR_auto_fg)
+  #define background	getintvar(VAR_background)
+  #define backslash	getintvar(VAR_backslash)
+diff -c tf-50b8/src/hooklist.h tf-50b8-patched/src/hooklist.h
+*** tf-50b8/src/hooklist.h	Sat Jan 13 18:12:39 2007
+--- tf-50b8-patched/src/hooklist.h	Sat Aug 28 01:16:12 2010
+***************
+*** 12,17 ****
+--- 12,20 ----
+   */
+  
+  gencode(ACTIVITY,	HT_ALERT | HT_XSOCK),
++ #if ENABLE_ATCP
++ gencode(ATCP,		0),
++ #endif
+  gencode(BAMF,		HT_WORLD | HT_XSOCK),
+  gencode(BGTEXT,		0),
+  gencode(BGTRIG,		HT_ALERT | HT_XSOCK),
+***************
+*** 19,24 ****
+--- 22,30 ----
+  gencode(CONFLICT,	0),
+  gencode(CONNECT,	HT_WORLD | HT_XSOCK),
+  gencode(DISCONNECT,	HT_WORLD | HT_XSOCK),
++ #if ENABLE_GMCP
++ gencode(GMCP,		0),
++ #endif
+  gencode(ICONFAIL,	HT_WORLD | HT_XSOCK),
+  gencode(KILL,		0),
+  gencode(LOAD,		0),
+***************
+*** 28,33 ****
+--- 34,42 ----
+  gencode(MAIL,		HT_ALERT),
+  gencode(MORE,		0),
+  gencode(NOMACRO,	0),
++ #if ENABLE_OPTION102
++ gencode(OPTION102,	0),
++ #endif
+  gencode(PENDING,	HT_WORLD | HT_XSOCK),
+  gencode(PREACTIVITY,	0),
+  gencode(PROCESS,	0),
+diff -c tf-50b8/src/socket.c tf-50b8-patched/src/socket.c
+*** tf-50b8/src/socket.c	Sat Jan 13 18:12:39 2007
+--- tf-50b8-patched/src/socket.c	Fri Sep 24 02:39:49 2010
+***************
+*** 436,441 ****
+--- 436,447 ----
+  /* 85 & 86 are not standard.  See http://www.randomly.org/projects/MCCP/ */
+  #define TN_COMPRESS	((char)85)	/* MCCP v1 */
+  #define TN_COMPRESS2	((char)86)	/* MCCP v2 */
++ /* 200 is not standard. See http://www.ironrealms.com/rapture/manual/files/FeatATCP-txt.html */
++ #define TN_ATCP		((char)200)	/* ATCP */
++ /* 201 is not standard. See http://www.aardwolf.com/wiki/index.php/Clients/GMCP */
++ #define TN_GMCP		((char)201)	/* GMCP */
++ /* 102 is not standard. See http://www.aardwolf.com/blog/category/technical */
++ #define TN_102	((char)102)	/* Option 102 */
+  
+  #define UCHAR		unsigned char
+  
+***************
+*** 608,613 ****
+--- 614,622 ----
+      telnet_label[(UCHAR)TN_CHARSET]	= "CHARSET";
+      telnet_label[(UCHAR)TN_COMPRESS]	= "COMPRESS";
+      telnet_label[(UCHAR)TN_COMPRESS2]	= "COMPRESS2";
++     telnet_label[(UCHAR)TN_ATCP]	= "ATCP";
++     telnet_label[(UCHAR)TN_GMCP]	= "GMCP";
++     telnet_label[(UCHAR)TN_102]		= "102";
+      telnet_label[(UCHAR)TN_EOR]		= "EOR";
+      telnet_label[(UCHAR)TN_SE]		= "SE";
+      telnet_label[(UCHAR)TN_NOP]		= "NOP";
+***************
+*** 2439,2444 ****
+--- 2448,2492 ----
+      return result;
+  }
+  
++ #if ENABLE_ATCP
++ int handle_atcp_function(conString *string, const char *world)
++ {
++    Sock *old_xsock = xsock;
++ 
++    xsock = (!world || !*world) ? xsock : find_sock(world);
++ 	Sprintf(telbuf, "%c%c%c%s%c%c", TN_IAC, TN_SB, TN_ATCP, string->data, TN_IAC, TN_SE);
++ 	telnet_send(telbuf);
++    xsock = old_xsock;
++ 	return 1;
++ }
++ #endif
++ 
++ #if ENABLE_GMCP
++ int handle_gmcp_function(conString *string, const char *world)
++ {
++    Sock *old_xsock = xsock;
++ 
++    xsock = (!world || !*world) ? xsock : find_sock(world);
++ 	Sprintf(telbuf, "%c%c%c%s%c%c", TN_IAC, TN_SB, TN_GMCP, string->data, TN_IAC, TN_SE);
++ 	telnet_send(telbuf);
++    xsock = old_xsock;
++ 	return 1;
++ }
++ #endif
++ 
++ #if ENABLE_OPTION102
++ int handle_option102_function(conString *string, const char *world)
++ {
++    Sock *old_xsock = xsock;
++ 
++    xsock = (!world || !*world) ? xsock : find_sock(world);
++ 	Sprintf(telbuf, "%c%c%c%s%c%c", TN_IAC, TN_SB, TN_102, string->data, TN_IAC, TN_SE);
++ 	telnet_send(telbuf);
++    xsock = old_xsock;
++ 	return 1;
++ }
++ #endif
++ 
+  int handle_fake_recv_function(conString *string, const char *world,
+      const char *flags)
+  {
+***************
+*** 2825,2830 ****
+--- 2873,2893 ----
+  	}
+  	xsock->flags |= SOCKCOMPRESS;
+  	break;
++ #if ENABLE_ATCP
++     case TN_ATCP:
++ 	    do_hook(H_ATCP, NULL, "%s", xsock->subbuffer->data + 3);
++ 	    break;
++ #endif
++ #if ENABLE_GMCP
++     case TN_GMCP:
++ 	    do_hook(H_GMCP, NULL, "%s", xsock->subbuffer->data + 3);
++ 	    break;
++ #endif
++ #if ENABLE_OPTION102
++     case TN_102:
++ 	    do_hook(H_OPTION102, NULL, "%s", xsock->subbuffer->data + 3);
++ 	    break;
++ #endif
+      default:
+  	no_reply("unknown option");
+          break;
+***************
+*** 2967,2972 ****
+--- 3030,3036 ----
+  		case Z_STREAM_END:
+  		    /* handle stuff inflated before stream end */
+  		    count = (char*)xsock->zstream->next_out - outbuffer;
++ 		    if(count > 0)
+  		    received += handle_socket_input(outbuffer, count);
+  		    /* prepare to handle noncompressed stuff after stream end */
+  		    buffer = (char*)xsock->zstream->next_in;
+***************
+*** 3072,3078 ****
+                  continue;  /* avoid non-telnet processing */
+  
+              } else if (xsock->fsastate == TN_SB) {
+! 		if (xsock->subbuffer->len > 255) {
+  		    /* It shouldn't take this long; server is broken.  Abort. */
+  		    SStringcat(xsock->buffer, CS(xsock->subbuffer));
+  		    Stringtrunc(xsock->subbuffer, 0);
+--- 3136,3142 ----
+                  continue;  /* avoid non-telnet processing */
+  
+              } else if (xsock->fsastate == TN_SB) {
+! 		if (xsock->subbuffer->len > 1023) {
+  		    /* It shouldn't take this long; server is broken.  Abort. */
+  		    SStringcat(xsock->buffer, CS(xsock->subbuffer));
+  		    Stringtrunc(xsock->subbuffer, 0);
+***************
+*** 3128,3133 ****
+--- 3192,3206 ----
+  		    (rawchar == TN_COMPRESS && mccp) ||
+  		    (rawchar == TN_COMPRESS2 && mccp) ||
+  #endif
++ #if ENABLE_ATCP
++ 		    (rawchar == TN_ATCP && atcp) ||
++ #endif
++ #if ENABLE_GMCP
++ 		    (rawchar == TN_GMCP && gmcp) ||
++ #endif
++ #if ENABLE_OPTION102
++ 		    (rawchar == TN_102 && 102) ||
++ #endif
+                      rawchar == TN_ECHO ||
+                      rawchar == TN_SEND_EOR ||
+                      rawchar == TN_BINARY)              /* accept any of these */
+diff -c tf-50b8/src/socket.h tf-50b8-patched/src/socket.h
+*** tf-50b8/src/socket.h	Sat Jan 13 18:12:39 2007
+--- tf-50b8-patched/src/socket.h	Sat Aug 28 01:26:08 2010
+***************
+*** 45,50 ****
+--- 45,59 ----
+  extern int     local_echo(int flag);
+  extern int     handle_send_function(conString *string, const char *world,
+                       const char *flags);
++ #if ENABLE_ATCP
++ extern int     handle_atcp_function(conString *string, const char *world);
++ #endif
++ #if ENABLE_GMCP
++ extern int     handle_gmcp_function(conString *string, const char *world);
++ #endif
++ #if ENABLE_OPTION102
++ extern int     handle_option102_function(conString *string, const char *world);
++ #endif
+  extern int     handle_fake_recv_function(conString *string, const char *world,
+  		    const char *flags);
+  extern int     is_connected(const char *worldname);
+diff -c tf-50b8/src/tfconfig.h.in tf-50b8-patched/src/tfconfig.h.in
+*** tf-50b8/src/tfconfig.h.in	Sat Jan 13 18:12:39 2007
+--- tf-50b8-patched/src/tfconfig.h.in	Sat Aug 28 01:27:06 2010
+***************
+*** 94,99 ****
+--- 94,102 ----
+  #define NO_PROCESS 0
+  #define NO_FLOAT 0
+  #define NCOLORS 16
++ #define ENABLE_ATCP 0
++ #define ENABLE_GMCP 0
++ #define ENABLE_OPTION102 0
+  
+  #define HAVE_MCCP (HAVE_ZLIB_H && HAVE_LIBZ)
+  
+diff -c tf-50b8/src/varlist.h tf-50b8-patched/src/varlist.h
+*** tf-50b8/src/varlist.h	Sat Jan 13 18:12:39 2007
+--- tf-50b8-patched/src/varlist.h	Sat Aug 28 01:28:51 2010
+***************
+*** 43,48 ****
+--- 43,63 ----
+  varstrx(VAR_TZ,		"TZ",		NULL,		ch_timezone)
+  varstr (VAR_alert_attr,	"alert_attr",	"Br",		ch_attr)
+  vartime(VAR_alert_time,	"alert_time",	5,0,		NULL)
++ #if ENABLE_ATCP
++ varflag(VAR_atcp,	"atcp",		TRUE,		NULL)
++ #else
++ varenum(VAR_atcp,	"atcp",		FALSE,		NULL,	enum_off)
++ #endif
++ #if ENABLE_GMCP
++ varflag(VAR_gmcp,	"gmcp",		TRUE,		NULL)
++ #else
++ varenum(VAR_gmcp,	"gmcp",		FALSE,		NULL,	enum_off)
++ #endif
++ #if ENABLE_OPTION102
++ varflag(VAR_OPTION102,	"option102",	TRUE,		NULL)
++ #else
++ varenum(VAR_OPTION102,	"option102",	FALSE,		NULL,	enum_off)
++ #endif
+  #if 0
+  varflag(VAR_auto_fg,	"auto_fg",	FALSE,		NULL)
+  #endif

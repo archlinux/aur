@@ -1,0 +1,22 @@
+From: Russ Allbery <rra@debian.org>
+Date: Sun, 10 May 2020 16:01:30 -0700
+Subject: Fix spelling error in manual page
+
+defautls -> defaults
+---
+ src/tf.1.nroffman | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/tf.1.nroffman b/src/tf.1.nroffman
+index 90691db..84b7140 100644
+--- a/src/tf.1.nroffman
++++ b/src/tf.1.nroffman
+@@ -129,7 +129,7 @@ commands to use in a \fITF\fR configuration file are /addworld and /load.
+ 
+ For backward compatibility, \fITF\fR will also try
+ to read the \fITinyTalk\fR configuration file.
+-Its name defautls to $HOME/.tinytalk, or can be defined by the TINYTALK
++Its name defaults to $HOME/.tinytalk, or can be defined by the TINYTALK
+ environment variable.
+ This file may start with a list of worlds that will be defined as if with
+ /addworld.

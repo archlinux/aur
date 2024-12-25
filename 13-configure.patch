@@ -1,0 +1,21 @@
+Fix old autoconf-generated code for compatibility with C99: undeclared
+functions can now longer be called.
+
+Fixed in <https://github.com/ingwarsw/tinyfugue> by moving to current
+autoconf.
+
+diff --git a/configure b/configure
+index ea48217c90151d8f..9d4a80250acf575a 100755
+--- a/configure
++++ b/configure
+@@ -3060,8 +3060,8 @@ main ()
+   for (i = 0; i < 256; i++)
+     if (XOR (islower (i), ISLOWER (i))
+ 	|| toupper (i) != TOUPPER (i))
+-      exit(2);
+-  exit (0);
++      return 2;
++  return 0;
+ }
+ _ACEOF
+ rm -f conftest$ac_exeext
