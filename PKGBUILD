@@ -2,9 +2,9 @@
 
 # Maintainer: George Kranis https://github.com/gkranis/vdr4arch
 pkgname=vdr-eepg
-pkgver=0.0.6
-_vdrapi=2.6.7
-pkgrel=8
+pkgver=0.0.7
+pkgrel=1
+_vdrapi=5
 pkgdesc="Extended EPG (EEPG) plugin for VDR"
 url="https://github.com/vdr-projects/vdr-plugin-eepg"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -13,7 +13,7 @@ depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-eepg/archive/refs/tags/$pkgver.tar.gz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('c603c2c5683c002ad0f0e79c0e91247283b49dfc73211a4923df2ff209a0e771')
+sha256sums=('7ef5ffb0eb26895561215a7e24e4a33123d626c19d59cc0d1ea013c07209bc40')
 
 build() {
   cd "${srcdir}/vdr-plugin-${_plugname}-$pkgver"
