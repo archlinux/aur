@@ -1,18 +1,17 @@
 pkgbase = prm
 	pkgdesc = Pull Request Manager for Maintainers
 	pkgver = 3.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ldez/prm
 	arch = aarch64
 	arch = x86_64
 	license = APACHE
-	depends = git
 	makedepends = go
 	makedepends = git
-	conflicts = prm
+	depends = git
 	provides = prm
-	
-	source = https://github.com/ldez/prm/releases/download/v3.6.4/prm_v3.6.4_sources.tar.gz
+	conflicts = prm
+	source = prm_3.6.4.tar.gz::https://github.com/ldez/prm/releases/download/v3.6.4/prm_v3.6.4_sources.tar.gz
 	sha256sums = 849d0e6f7b3d351c35da610f06ec8f8767ccf13836880ba7630a3a87e490212e
-	
+
 pkgname = prm

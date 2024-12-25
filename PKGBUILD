@@ -3,7 +3,7 @@
 
 pkgname='prm'
 pkgver=3.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Pull Request Manager for Maintainers'
 url='https://github.com/ldez/prm'
 arch=('aarch64' 'x86_64')
@@ -13,13 +13,13 @@ conflicts=('prm')
 depends=('git')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/ldez/prm/releases/download/v3.6.4/prm_v3.6.4_sources.tar.gz")
-sha256sums=('849d0e6f7b3d351c35da610f06ec8f8767ccf13836880ba7630a3a87e490212e')prepare() {
-  cd "${pkgname}_${pkgver}"
+sha256sums=('849d0e6f7b3d351c35da610f06ec8f8767ccf13836880ba7630a3a87e490212e')
+
+prepare() {
   go mod download
 }
-build() {
-  cd "${pkgname}-${pkgver#v}"
 
+build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -27,11 +27,10 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   go build -ldflags="-w -s -buildid='' -linkmode=external -X main.version=v${pkgver}" .
 
-  ls -alF
   chmod +x "./${pkgname}"
 }
+
 package() {
-  cd "${pkgname}-${pkgver#v}"
   ls -alF
 
   # Bin
