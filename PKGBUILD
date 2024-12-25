@@ -2,7 +2,7 @@
 
 pkgname=apipost-bin
 pkgver=8.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Apipost = Postman + Swagger + Mock + Jmeter"
 arch=('x86_64' 'aarch64')
 conflicts=("${pkgname%-bin}")
@@ -16,6 +16,7 @@ source_aarch64=("apipost_linux_arm64_${pkgver}.deb::https://www.apipost.cn/dl.ph
 package() {
   tar -xf data.tar.xz -C "${pkgdir}"
 
+  install -dm755 "${pkgdir}/usr/bin"
   ln -s /opt/Apipost/apipost "${pkgdir}/usr/bin/apipost"
 }
 sha256sums_x86_64=('2580a103c618b6ae00f4d641143f00318911722ad870d0e2d56fe82850c79693')
