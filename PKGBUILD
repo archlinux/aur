@@ -8,13 +8,13 @@
 
 pkgname=xrdp
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source remote desktop protocol (RDP) server"
 url="https://github.com/neutrinolabs/xrdp"
 arch=(i686 x86_64 armv6h armv7l aarch64)
 license=('Apache-2.0')
 makedepends=('nasm' 'cmocka')
-depends=('libxrandr' 'fuse' 'libfdk-aac' 'ffmpeg' 'imlib2')
+depends=('libxrandr' 'fuse' 'libfdk-aac' 'ffmpeg' 'imlib2' 'fuse3')
 checkdepends=('check')
 optdepends=('tigervnc' 'tightvnc' 'realvnc-vnc-server')
 backup=('etc/xrdp/sesman.ini'
