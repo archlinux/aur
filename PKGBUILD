@@ -6,7 +6,7 @@ _electronversion=31
 pkgrel=1
 pkgdesc="Path of Exile 2 trading app for price checking"
 arch=('x86_64')
-url="https://github.com/Kvan7/Exiled-Exchange-2/releases"
+url="https://kvan7.github.io/Exiled-Exchange-2/download"
 _ghurl="https://github.com/Kvan7/Exiled-Exchange-2"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
