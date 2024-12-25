@@ -1,7 +1,7 @@
 pkgbase = vdr-vdrtva
 	pkgdesc = Automatic 'series record' function. Written for UK Freeview
-	pkgver = 0.3.7
-	pkgrel = 7
+	pkgver = 0.3.8
+	pkgrel = 1
 	url = https://github.com/vdr-projects/vdr-plugin-vdrtva
 	arch = x86_64
 	arch = i686
@@ -11,11 +11,11 @@ pkgbase = vdr-vdrtva
 	license = GPL2
 	makedepends = git
 	depends = gcc-libs
-	depends = vdr-api=2.6.7
+	depends = vdr-api=5
 	backup = etc/vdr/conf.avail/50-vdrtva.conf
-	source = vdr-plugin-vdrtva-0.3.7.tar.gz::https://github.com/vdr-projects/vdr-plugin-vdrtva/archive/refs/tags/v0.3.7.tar.gz
+	source = vdr-plugin-vdrtva-0.3.8.tar.gz::https://github.com/vdr-projects/vdr-plugin-vdrtva/archive/refs/tags/0.3.8.tar.gz
 	source = 50-vdrtva.conf
-	sha256sums = a9bed819c424256ad587e3c9d0f580b7cffdcdd9c0c020f2bfc92c09f002cb84
+	sha256sums = 186f159487a754e84993c8b366367cee8cc2d706c701ea2caf2c0e63e83c370a
 	sha256sums = c9d53920822753461d997a7190992c867af4f523d7c64ec2f528f7fce783840f
 
 pkgname = vdr-vdrtva
