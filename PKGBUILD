@@ -4,8 +4,8 @@
 # Contributor: Krut Patel <kroot.patel@gmail.com>
 
 pkgname=sioyek-git
-pkgver=2.0.0.r961.ga6ec43d
-pkgrel=2
+pkgver=2.0.0.r965.gbab683c
+pkgrel=1
 pkgdesc="PDF viewer for research papers and technical books."
 arch=(x86_64)
 license=(GPL3)
