@@ -1,0 +1,38 @@
+From 5d4b227597ae8346dec5a9d5d7085f9a1686c6a1 Mon Sep 17 00:00:00 2001
+From: Stefan Hofmann <stefan.hofmann@t-online.de>
+Date: Mon, 9 Sep 2024 18:07:45 +0200
+Subject: [PATCH] Catered for the removal of deprecated interface functions
+
+---
+ femon.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/femon.c b/femon.c
+index a368b3f..7925192 100644
+--- a/femon.c
++++ b/femon.c
+@@ -120,8 +120,21 @@ cOsdObject *cPluginFemon::MainMenuAction(void)
+ {
+   // Perform the action when selected from the main VDR menu.
+   debug1("%s", __PRETTY_FUNCTION__);
++#if APIVERSNUM >= 20402
++  bool isPlaying;
++  bool noChannels;
++  {  // minimal scope to avoid potential deadlock with two mutexes
++     cMutexLock mutexLock;
++     isPlaying = cControl::Control(mutexLock);
++  }{
++     LOCK_CHANNELS_READ;
++     noChannels = Channels->Count() <= 0;
++  }
++  if (isPlaying || noChannels)
++#else
+   LOCK_CHANNELS_READ;
+   if (cControl::Control() || (Channels->Count() <= 0))
++#endif
+      Skins.Message(mtInfo, tr("Femon not available"));
+   else
+      return cFemonOsd::Instance(true);
+-- 
+2.46.0.windows.1
+
