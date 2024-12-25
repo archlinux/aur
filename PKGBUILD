@@ -1,23 +1,23 @@
 # Mostly a copy of feishu-bin's PKGBUILD with s/feishu/lark/
-# Maintainer: Sabit Maulana <sbtmul@gmail.com>
+# Contributor: Sabit Maulana <sbtmul@gmail.com>
+# Maintainer: aliu <double-a, r-o-n to the 0-1-3-0 at ur gmail.com>
 pkgname=larksuite-bin
-pkgver=7.18.11
+pkgver=7.28.10
 #_pkgrel=24
-_pkghash=c29ca886
+_pkghash=1d51a0a0
 _pkgtyp=stable
 pkgrel=1
 pkgdesc="Linux client of Lark Suite"
 arch=('x86_64')
 url="https://www.larksuite.com/download"
 license=('unknown')
-depends=('ca-certificates' 'gtk3' 'nss' 'xdg-utils')
+depends=('ca-certificates' 'gtk3' 'libpulse' 'libmfx' 'alsa-lib' 'xdg-utils')
 replaces=('bytedance-lark-dev-bin')
-conflicts=('lark')
 provides=('bytedance-lark' 'lark')
-options=('!strip' '!emptydirs')
+options=('!emptydirs')
 install=${pkgname}.install
 source=("https://sf16-va.larksuitecdn.com/obj/lark-artifact-storage/${_pkghash}/Lark-linux_x64-${pkgver}.deb")
-sha256sums=('11e28fe632b5c67c11aad27d87bc3a1710b9106221ebc9c5dc020950c81eb6ad')
+sha256sums=('d35d5fd55654aee2becc12d3b464e5e10103620589cb6cf61925b0b167aaf07b')
 
 package(){
   # Extract package data

@@ -11,14 +11,6 @@ post_install() {
       "bytedance-lark"
   done
 
-  UPDATE_MENUS="`which update-mime-database usr/share/mime &> /dev/null 2> /dev/null || true`"
-  if [ -x "$UPDATE_MENUS" ]; then
-    update-mime-database usr/share/mime &> /dev/null
-  fi
-
-  # Update cache of .desktop file MIME types. Non-fatal since it's just a cache.
-  update-desktop-database > /dev/null 2>&1 || true
-
   NSS_FILES="libnspr4.so.0d libplds4.so.0d libplc4.so.0d libssl3.so.1d \
       libnss3.so.1d libsmime3.so.1d libnssutil3.so.1d"
 
@@ -77,14 +69,6 @@ pre_remove() {
     size="$(echo ${icon} | sed 's/[^0-9]//g')"
     "$XDG_ICON_RESOURCE" uninstall --size "${size}" "bytedance-lark"
   done
-
-  UPDATE_MENUS="`which update-mime-database usr/share/mime &> /dev/null 2> /dev/null || true`"
-  if [ -x "$UPDATE_MENUS" ]; then
-    update-mime-database usr/share/mime &> /dev/null
-  fi
-
-  # Update cache of .desktop file MIME types. Non-fatal since it's just a cache.
-  update-desktop-database > /dev/null 2>&1 || true
 }
 
 post_remove() {
