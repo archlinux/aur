@@ -3,7 +3,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r66326.f5d13e32af1
+pkgver=r66352.7cd6ea6f333
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -39,7 +39,9 @@ build() {
     --preset default \
     -B build \
     -S ladybird \
+    -DBUILD_SHARED_LIBS=OFF \
     -DCMAKE_BUILD_TYPE=Release \
+    -DVCPKG_OVERLAY_TRIPLETS="${srcdir}/ladybird/Meta/CMake/vcpkg/distribution-triplets" \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" \
     -DENABLE_INSTALL_HEADERS=OFF \
