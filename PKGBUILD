@@ -1,13 +1,13 @@
-# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=awakened-poe-trade-bin
-_pkgname=Awakened-PoE-Trade
-pkgver=3.25.102
+# Maintainer: Wrxn <arch at rnny dot xyz>
+pkgname=exiled-exchange-2-bin
+_pkgname=Exiled-Exchange-2
+pkgver=0.1.4
 _electronversion=31
 pkgrel=1
-pkgdesc="Path of Exile trading app for price checking"
+pkgdesc="Path of Exile 2 trading app for price checking"
 arch=('x86_64')
-url="https://snosme.github.io/awakened-poe-trade/download"
-_ghurl="https://github.com/SnosMe/awakened-poe-trade"
+url="https://github.com/Kvan7/Exiled-Exchange-2/releases"
+_ghurl="https://github.com/Kvan7/Exiled-Exchange-2"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -19,10 +19,10 @@ makedepends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/SnosMe/awakened-poe-trade/v${pkgver}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/Kvan7/Exiled-Exchange-2/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('95c74a27e07c3509b232cbfeefaf9e784492adf47feccabab2f3b954a6a83546'
+sha256sums=('e47bac026f725a9068d9c8058bba8b627f690398cec8692d0e08d7fed5d20b44'
             '5c8de7f881b34dc31f872531a1eee1eabc79e10acd8fc91c026e10c5a8258c3f'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
@@ -38,12 +38,20 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+
+    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/resources/app-update.yml" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/squashfs-root/resources/app.asar.unpacked/" "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    chmod 755 $(find "${pkgdir}/usr/lib/${pkgname%-bin}/" -type d)
+    chmod 644 $(find "${pkgdir}/usr/lib/${pkgname%-bin}/" -type f)
+
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
+
     for _icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024; do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
+
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
