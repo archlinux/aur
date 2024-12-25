@@ -2,7 +2,7 @@
 pkgname=stow-cm-nightly-bin
 _pkgname=stow-cm
 pkgver=nightly
-pkgrel=3
+pkgrel=5
 pkgdesc="config manager (gun-stow like)"
 arch=('x86_64')
 url="https://github.com/someoneonsmile/${_pkgname}"
