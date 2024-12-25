@@ -1,0 +1,20 @@
+pkgbase = choco-fontviewer
+	pkgdesc = View and install fonts with Google Fonts support
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/chocolateimage/fontviewer
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = meson
+	makedepends = gtkmm3
+	makedepends = json-glib
+	makedepends = curl
+	makedepends = pangomm
+	makedepends = glibmm
+	depends = gtk3
+	depends = fontconfig
+	source = fontviewer-1.1.0.tar.gz::https://github.com/chocolateimage/fontviewer/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 740761cdfb1741e5423b805c2a7a97d0c354c601c0904f5518dc28516495af1d
+
+pkgname = choco-fontviewer
