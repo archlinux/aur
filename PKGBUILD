@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xterminal-bin
 _pkgname=XTerminal
-pkgver=2.7.1
+pkgver=2.9.3
 _electronversion=31
 pkgrel=1
 pkgdesc="Not only powerful SSH tools, but also local consoles, and more coming soon.(Prebuilt version.Use system-wide electron)不仅是强大的SSH工具,更提供本地控制台,以及更多即将推出的开发相关功能."
@@ -28,8 +28,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://cdn-cn.xterminal
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://cdn-cn.xterminal.cn/downloads/${_pkgname}-${pkgver}-linux-x86_64.rpm")
 sha256sums=('8d08a959e0086a206ef3454cc0fc323454c73609cd764f102d8d2d076dafa0af'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('b9fe72e0fc4b5f4b77c253cce510e364479ef79725f8b103daab574fcf4df776')
-sha256sums_x86_64=('039282b712a1be177bafa61de645388d75cd8979a1409c8ddf733acfcd3fa224')
+sha256sums_aarch64=('2a989e31d229d40c6959d51161887874106577a3c799acbe7f1e793d2451db4f')
+sha256sums_x86_64=('1af5dade838a5f995a44a1ee805b1bd1d2a79b1fc9def00bc5bc45e20dd843cc')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
