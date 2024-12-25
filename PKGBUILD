@@ -2,7 +2,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=tabby
-pkgver=1.0.215
+pkgver=1.0.216
 pkgrel=1
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
@@ -11,23 +11,22 @@ license=('MIT')
 conflicts=('terminus-terminal')
 replaces=('terminus-terminal')
 _electron=electron29
-depends=('bash' "${_electron}" 'fontconfig' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'nodejs' 'python')
-makedepends=('gendesk' 'git' 'python-setuptools' 'yarn')
+depends=('bash' "${_electron}" 'fontconfig' 'gcc-libs' 'glib2'  'glibc' 'hicolor-icon-theme' 'libsecret'  'nodejs')
+makedepends=('gendesk' 'git' 'python' 'yarn')
 source=("git+https://github.com/Eugeny/tabby.git#tag=v${pkgver}"
         "${pkgname}.sh"
         'build.patch')
-sha256sums=('e3e1c4c3f90490972d4b031444b0780c9a05a620275d8add95bf771f80710385'
+sha256sums=('b1c632e5b40b35d35b08fa190fdcc82d6d540ea226c1f56516b15b8808a18e51'
             'e10c3846ec9ffd5d711397cece65d53fb2b81af1d08706442f04328c7bcbbb5a'
-            '3718fc3b957179d1efd18e1aff4dc2de3123093ffa5fd8e357c132f082e3cf40')
+            'f5581859b734a2f9199a331540fc9beac0a102705a519f6070858ddd7db8b401')
 
 prepare() {
     cd "${pkgname}"
     patch -Np1 -i "${srcdir}/build.patch"
-
-    sed "s/@ELECTRON@/${_electron}/" -i "${srcdir}/${pkgname}.sh"
     sed -e "s|@ELECTRON_DIST@|/usr/lib/${_electron}|" \
         -e "s|@ELECTRON_VERSION@|$(cat /usr/lib/${_electron}/version)|" \
         -i scripts/build-linux.mjs
+    sed "s/@ELECTRON@/${_electron}/" -i "${srcdir}/${pkgname}.sh"
 
     gendesk -f -n \
         --pkgname "${pkgname}" \
@@ -37,7 +36,8 @@ prepare() {
         --categories 'Utility;TerminalEmulator;System' \
         --custom StartupWMClass="${pkgname}"
 
-    yarn install
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    yarn install --frozen-lockfile
 }
 
 build(){

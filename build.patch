@@ -7,7 +7,7 @@ index f21d57e..6e2be82 100644
  }
  
 -const builtinPluginsPath = process.env.TABBY_DEV ? path.dirname(remote.app.getAppPath()) : path.join((process as any).resourcesPath, 'builtin-plugins')
-+const builtinPluginsPath = process.env.TABBY_DEV ? path.dirname(remote.app.getAppPath()) : path.join(remote.app.getAppPath().replace('/app.asar', ''), 'builtin-plugins')
++const builtinPluginsPath = process.env.TABBY_DEV ? path.dirname(remote.app.getAppPath()) : path.join(path.dirname(remote.app.getAppPath()), 'builtin-plugins')
  
  const cachedBuiltinModules = {
      '@angular/animations': require('@angular/animations'),
