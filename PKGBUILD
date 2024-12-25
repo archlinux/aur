@@ -6,7 +6,7 @@
 # Maintainer: Sathya Pramodh <sathyapramodh17@gmail.com>
 pkgname=resetti-git
 _devbranch="dev"
-pkgver=0.5.2_devel.r397.2a1cec7
+pkgver=0.7.0_devel.r426.17e88d4
 pkgrel=1
 pkgdesc="resetti is a Linux-compatible reset macro for Minecraft speedruns. It supports
 a variety of different resetting styles, categories, and Minecraft versions."
@@ -45,7 +45,5 @@ package() {
 	then
 		mkdir -p ~/.local/share/resetti
 	fi
-	install -Dm0755 out/bench ~/.local/share/resetti/bench
-	install -Dm0664 internal/res/scene-setup.lua ~/.local/share/resetti/scene-setup.lua
 	install -Dm0664 internal/res/default.toml ~/.local/share/resetti/default.toml
 }
