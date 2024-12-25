@@ -4,23 +4,20 @@
 _pkgname="qcsxcad"
 pkgname="$_pkgname"
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt-GUI for CSXCAD"
-arch=("x86_64")
 url="https://github.com/thliebig/QCSXCAD"
 license=("LGPL-3.0-or-later")
+arch=("x86_64")
 
 depends=(
+  'csxcad' # AUR
   'qt5-base'
   'tinyxml'
   'vtk'
-
-  ## AUR
-  'csxcad'
 )
 makedepends=(
   'cmake'
-  'fast_float'
   'fmt'
   'glew'
   'ninja'
