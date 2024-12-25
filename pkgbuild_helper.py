@@ -20,7 +20,7 @@ def fetch_latest_version():
             html_content = response.read().decode("utf-8")
 
         # 使用正则提取第一个版本号
-        version_pattern = re.compile(r'<a[^>]+href=["\'].*?(v?\d+\.\d+\.\d+).*?["\']', re.IGNORECASE)
+        version_pattern = re.compile(r'client=Linux[^"\']*version=(\d+\.\d+\.\d+)', re.IGNORECASE)
         match = version_pattern.search(html_content)
 
         if match:
