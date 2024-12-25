@@ -1,6 +1,6 @@
 pkgbase = codefuse-ide-git
-	pkgdesc = AI Native IDE based on CodeFuse and OpenSumi.
-	pkgver = 0.6.2.r2.ga6c254b
+	pkgdesc = AI Native IDE based on CodeFuse and OpenSumi.(Use system-wide electron)
+	pkgver = 0.7.0.r1.g8871332
 	pkgrel = 1
 	url = https://codefuse.ai/
 	arch = any
@@ -11,10 +11,9 @@ pkgbase = codefuse-ide-git
 	makedepends = git
 	makedepends = curl
 	makedepends = gcc
-	makedepends = cmake
-	makedepends = nodejs
+	makedepends = python
 	depends = electron30
-	provides = codefuse-ide=0.6.2
+	provides = codefuse-ide=0.7.0
 	conflicts = codefuse-ide
 	source = codefuse-ide.git::git+https://github.com/codefuse-ai/codefuse-ide
 	source = codefuse-ide.sh
