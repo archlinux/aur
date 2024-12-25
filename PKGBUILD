@@ -2,7 +2,7 @@
 _pkgname=notesnook
 pkgname="${_pkgname}-electron-bin"
 _appname=Notesnook
-pkgver=3.0.22
+pkgver=3.0.23
 _electronversion=31
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Prebuilt version.Use system-wide electron)"
@@ -28,9 +28,9 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('edb55f1ccf856b0d1beaa835ac7f67cad928e5f1334a5709f37dabf649dcb5b4')
-sha256sums_x86_64=('13ad79d755148ceefaa7eee5aab13decd5b992a37c5ddc91746ddc9289ec4be9')
-build() {
+sha256sums_aarch64=('b1ad61f31601ac81694c94a04cdd4213e7875f98fca4a3b1f071bd3b4076bd5c')
+sha256sums_x86_64=('1158fb12aa2688aeb211dc779da81d7c8d90f870e43ab634da280a3c50c0ed3b')
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
@@ -43,8 +43,8 @@ build() {
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g;s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g" -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
     sed -e "
-        s/dirname(process.execPath),\"..\",\"Resources\"/dirname(\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\')/
-        s/dirname(process.execPath),\"resources\"/dirname(\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\')/
+        s/dirname(process.execPath),\"..\",\"Resources\"/dirname(\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\')/g
+        s/dirname(process.execPath),\"resources\"/dirname(\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\')/g
     " -i "${srcdir}/squashfs-root/resources/app/build/electron.js"
 }
 package() {
