@@ -2,14 +2,14 @@
 
 _pkgname='boost-histogram'
 pkgname="python-${_pkgname}"
-pkgver='1.4.1'
-pkgrel=6
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Python bindings for Boost's Histogram library."
 arch=('x86_64')
 url='https://github.com/scikit-hep/boost-histogram'
 license=('custom:BSD3')
 depends=('python-numpy')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-scikit-build-core' 'python-setuptools-scm' 'pybind11')
 checkdepends=('python-pytest' 'python-pytest-benchmark')
 source=(
   "${pkgname}::git+https://github.com/scikit-hep/boost-histogram.git#tag=v${pkgver}"
@@ -23,7 +23,7 @@ source=(
   "${pkgname}-variant2::git+https://github.com/boostorg/variant2.git"
 )
 
-sha256sums=('18e70c0fc5fc3dfebdc0e04e901348a81e90575e038ccba7cca65dc8e2563b4f'
+sha256sums=('ad8979e449d09cb68c256f35dcc7019ec19b5bc8801fae9a4ffd75287e6679d1'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -38,7 +38,7 @@ prepare() {
   git submodule init
 
   git config submodule."pybind11".url "${srcdir}/${pkgname}"-pybind11
-  git config submodule."extern/boosthistogram".url "${srcdir}/${pkgname}"-histogram
+  git config submodule."extern/histogram".url "${srcdir}/${pkgname}"-histogram
   git config submodule."extern/core".url "${srcdir}/${pkgname}"-core
   git config submodule."extern/mp11".url "${srcdir}/${pkgname}"-mp11
   git config submodule."extern/config".url "${srcdir}/${pkgname}"-config
@@ -56,9 +56,9 @@ build() {
 
 check() {
   cd "${srcdir}/${pkgname}"
-  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-${python_version}" pytest \
-    --override-ini="filterwarnings=ignore::DeprecationWarning"
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest -v --override-ini="filterwarnings=ignore::DeprecationWarning"
 }
 
 package() {
