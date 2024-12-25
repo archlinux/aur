@@ -13,9 +13,9 @@ _devenv=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.0.rc2.w9.sc2de76b
+pkgver=10.0.rc3.w7.sf10d2d0
 pkgrel=1
-eval pkgrel=3
+eval pkgrel=4
 
 ################################################################################################################################
 ################################################################################################################################
@@ -32,10 +32,10 @@ _enabled_staging=()
 
 ## if all staging patches are to be applied, what (array of) patches to omit?
 ## e.g. "Compiler_Warnings user32-. . ."
-_disabled_staging=(eventfd_synchronization wined3d-unset-flip-gdi) # added manually from proton
+_disabled_staging=(eventfd_synchronization) # added manually from proton
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="12-16-2024-538cae09-c2de76b8"
+_patchbase_tag="12-25-2024-e713c348-f10d2d04"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -45,8 +45,8 @@ _custompatches=false
 
 ## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
 ## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=538cae099cde66706428ead4ae8951c1e389d3f2
-_desired_staging_commit=c2de76b8048c67aa33c57cff60f98ba1b1675e72
+_desired_wine_commit=e713c3487f9fc9b7ded528f9ce49844facb99a90
+_desired_staging_commit=f10d2d045221c84cb75e9a85919790c2437a647a
 
 ## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -65,13 +65,13 @@ _strip_package=true
 ##   "true": system clang (/usr/bin/clang)
 ##   "bundled": llvm-mingw's clang (requires _use_mingw=llvm)
 ##   anything else: gcc
-_use_clang=true
+_use_clang=bundled
 
 ## for cross compilation
 ##   llvm: llvm-mingw-{ucrt,msvcrt} (msvcrt will be preferred if both exist in /opt/llvm-mingw/, but it doesn't matter)
 ##   msvc: clang in msvc-mode
 ##   anything else: regular mingw-gcc
-_use_mingw=msvc
+_use_mingw=llvm
 
 ## leave empty unless you want to manually change the type of build (true: wow64)
 _wow64build=
@@ -99,15 +99,13 @@ pkgname=wine-osu-spectator"${_wowname}"
 pkgdesc="A compatibility layer for running Windows programs, but with osu! specific patches (doesn't conflict with other Wine installations)"
 if [ "$_wow64build" = "true" ]; then pkgdesc+=" (WoW64 version)"; fi
 
-provides=("${pkgname}")
-conflicts=("${pkgname}")
-
 install=wine"${_wowname}".install
 url="http://www.winehq.com"
 arch=(x86_64)
 license=(LGPL)
 
-options=('!buildflags' '!staticlibs' 'ccache' '!lto' '!debug' '!strip')
+options=('!staticlibs' '!lto' '!debug' '!strip')
+if [ "${_devenv}" != "true" ]; then options+=('!buildflags'); fi
 
 source=(
   "winestart"
@@ -191,7 +189,7 @@ makedepends=(autoconf bison ccache perl fontforge flex gawk
   gtk3
   zlib
   xz
-#  ntsync-header
+  'ntsync-header>=6.12.6'
 )
 
 optdepends=(
@@ -215,6 +213,7 @@ optdepends=(
   samba
   dosbox
   libusb
+  NTSYNC-MODULE
 )
 
 if [ "${_wow64build}" != "true" ]; then
@@ -246,14 +245,12 @@ if [ "${_use_clang}" = "true" ]; then
   _lld_lto="true" # will apply _makefile_add_lto_flags() after _configure64(), and the "5000-clang-fixup-lto.patch" from the wine-osu-patches repo
   _use_polly="${_use_polly:-} native"
 elif [ "${_use_clang}" = "bundled" ] && [ "${_use_mingw}" = "llvm" ]; then
-  makedepends+=(polly)
   _cc="clang"
   _cxx="clang++"
 
   _extra_native_flags="${_fake_gnuc_flag} -flto=thin -D__LLD_LTO__"
   _extra_ld_flags="-flto=thin -fuse-ld=lld"
   _lld_lto="true"
-  _use_polly="${_use_polly:-} native"
 else
   _cc="gcc"
   _cxx="g++"
@@ -338,8 +335,11 @@ _set_vars() {
   _native_common_cflags="${_lto_flags:-} ${_extra_native_flags:-} -ffunction-sections -fdata-sections" # only for the non-mingw side
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
-  _GCC_FLAGS="${_common_cflags} ${_native_common_cflags} ${CPPFLAGS}"
-  _CROSS_FLAGS="${_common_cflags} ${CPPFLAGS} ${_extra_cross_flags}"
+  _GCC_FLAGS="${_common_cflags:-} ${_native_common_cflags:-} ${CPPFLAGS:-}"
+  _CROSS_FLAGS="${_common_cflags:-} ${_extra_cross_flags:-} ${CPPFLAGS:-}"
+
+  _LD_FLAGS="${_GCC_FLAGS:-} ${_extra_ld_flags:-} -Wl,-O2,--sort-common,--as-needed,--gc-sections"
+  _CROSS_LD_FLAGS="${_CROSS_FLAGS:-}"
 
   if [[ "${_use_polly}" =~ native ]]; then
     _GCC_FLAGS+=" ${_polly_flags}"
@@ -349,13 +349,10 @@ _set_vars() {
     _CROSS_FLAGS+=" ${_polly_flags}"
   fi
 
-  _LD_FLAGS="${_GCC_FLAGS} ${_extra_ld_flags:-} -Wl,-O2,--sort-common,--as-needed,--gc-sections"
-  _CROSS_LD_FLAGS="${_common_cflags} ${CPPFLAGS}"
-
   if [ "${_use_mingw}" = "msvc" ]; then
-    _CROSS_LD_FLAGS+=" -Wl,/FILEALIGN:4096,/OPT:REF,/OPT:ICF"
+    _CROSS_LD_FLAGS="${_CROSS_LD_FLAGS:-} -Wl,/FILEALIGN:4096,/OPT:REF,/OPT:ICF"
   else
-    _CROSS_LD_FLAGS+=" -Wl,-O2,--sort-common,--as-needed,--file-alignment=4096"
+    _CROSS_LD_FLAGS="${_CROSS_LD_FLAGS:-} -Wl,-O2,--sort-common,--as-needed,--file-alignment=4096"
   fi
 
   export CC="ccache ${_cc}"
@@ -399,7 +396,7 @@ _set_vars32() {
   #   export I386_LIBS="-latomic"
   # fi
 
-  export PKG_CONFIG_PATH="/usr/lib32/ffmpeg-minimal-dev/pkgconfig:${PKG_CONFIG_PATH}"
+  export PKG_CONFIG_PATH="/usr/lib32/ffmpeg-minimal-dev/pkgconfig:/usr/lib32/pkgconfig:${PKG_CONFIG_PATH}"
 
   _common_64_cflags=""
   _common_32_cflags=""
@@ -531,9 +528,9 @@ prepare() { _set_vars;
       printf "\nOverrode all staging patches matching those in staging-overrides/*.spatch\n\n" >> "${_where}"/patchlog.txt
     fi
 
-    if [ "${_wow64build}" = "true" ]; then
-      _disabled_staging+=(ntdll-Syscall_Emulation) # known to causes issues on wow64
-    fi
+    # if [ "${_wow64build}" = "true" ]; then
+    #   _disabled_staging+=(ntdll-Syscall_Emulation) # known to causes issues on wow64
+    # fi
 
     # shellcheck disable=SC2048,SC2086
     "${staging_patcher[@]}" DESTDIR="${srcdir}"/"${pkgname}" --no-autoconf "${_enabled_staging[@]}" ${_disabled_staging[*]/#/-W } &>> "${_where}"/patchlog.txt || \

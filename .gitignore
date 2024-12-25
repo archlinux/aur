@@ -1,0 +1,10 @@
+src
+pkg
+custompatches
+wine
+wine-staging
+wine-osu-patches
+*pkg.tar*
+PKGBUILD\.*
+.confcaches
+patchlog.txt
