@@ -1,0 +1,4 @@
+[python-openai-whisper-git]
+source = "git"
+git = "https://github.com/openai/whisper.git"
+prefix = "v"
