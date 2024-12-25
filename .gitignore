@@ -1,1 +1,2 @@
 git-buildpackage/
+*.pkg.tar.zst
