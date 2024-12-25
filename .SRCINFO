@@ -1,0 +1,12 @@
+pkgbase = simple-thumbnailer-pdf
+	pkgdesc = Minimal PDF thumbnailer for GNOME
+	pkgver = r2.e3e013c
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = poppler
+	conflicts = evince
+	source = git+https://gitlab.com/zoli111/simple-thumbnailers
+	sha256sums = SKIP
+
+pkgname = simple-thumbnailer-pdf
