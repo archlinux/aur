@@ -2,19 +2,17 @@
 # Old Maintainer: JinguTech <xiuluo dot android at gmail dot com>
 # Contributor: Alkindi42
 
-_electronversion=32
+_electron=electron32
 pkgname=joplin-beta
 pkgver=3.2.6
-pkgrel=3
+pkgrel=4
 pkgdesc="A note taking and to-do application with synchronization capabilities (beta version)"
 arch=("x86_64")
 url="https://joplinapp.org/"
 license=("AGPL-3.0-or-later")
-depends=("electron${_electronversion}" "gtk3" "libexif" "libgsf" "libjpeg-turbo" "libwebp" "libxss"
-	"nss" "orc" "rsync" "libvips")
-optdepends=("libappindicator-gtk3: for tray icon")
+depends=("${_electron}")
 makedepends=(
-	"git" "yarn" "npm" "python" "python-setuptools" "jq"
+	"git" "yarn" "npm" "python" "python-setuptools" "rsync" "jq" "moreutils"
 	# Fails to build with the latest nodejs version
 	"nodejs-lts-iron"
 )
@@ -24,17 +22,18 @@ source=("joplin-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/v$
         "joplin-desktop.sh")
 sha256sums=('9c8f442596462407902cdd503bc59a7af81af1e04b8fb0de14e7138e504479cc'
             '9e26cd5f41d08c3c2804cf4f34cb867090371423ccbe250a890fac006d405deb'
-            'ac075c916959ded879fc282a08cd8833e1286e7b8c83c4a16c61781878d23110')
+            'a4d29f005a1f6ff112adb1dd64fd366d1b08ee0a469290126313d87a6be0cf2a')
 
 prepare() {
-	sed -i "s|@electronversion@|${_electronversion}|" joplin-desktop.sh
+	sed -i "s|@electron@|${_electron}|" joplin-desktop.sh
 
 	cd "${srcdir}/joplin-${pkgver}/packages/app-desktop"
+
+	set -o pipefail
 	# Disable the after build script since the AppImage is not being built
-	pkg_json=$(jq 'del(.build.afterAllArtifactBuild)' package.json)
+	jq 'del(.build.afterAllArtifactBuild)' package.json | sponge package.json
 	# Disable building asar archive
-	pkg_json=$(jq '.build.asar = false' <<<${pkg_json})
-	cat > package.json <<<${pkg_json}
+	jq '.build.asar = false' package.json | sponge package.json
 }
 
 build() {
@@ -45,8 +44,8 @@ build() {
 
 	yarn workspace @joplin/app-desktop install
 	yarn workspace @joplin/app-desktop dist --linux --publish=never --dir \
-		-c.electronDist=/usr/lib/electron${_electronversion} \
-		-c.electronVersion=$(cat /usr/lib/electron${_electronversion}/version)
+		-c.electronDist=/usr/lib/${_electron} \
+		-c.electronVersion=$(cat /usr/lib/${_electron}/version)
 }
 
 package() {
