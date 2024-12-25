@@ -3,12 +3,12 @@
 # Contributor: robertfoster
 
 pkgname=rtpengine
-pkgver=13.0.1.6
+pkgver=13.1.1.1
 pkgrel=1
-pkgdesc='The Sipwise media proxy for Kamailio'
-url="https://github.com/sipwise/rtpengine"
-license=('GPL-3.0-or-later')
+pkgdesc="A media relay for RTP sessions"
 arch=('x86_64')
+url="https://github.com/sipwise/rtpengine"
+license=('GPL-2.0-only')
 depends=(
   'bcg729'
   'curl'
@@ -19,6 +19,8 @@ depends=(
   'hiredis'
   'iptables'
   'json-glib'
+  'libconfig'
+  'libcurl-gnutls'
   'libevent'
   'libmnl'
   'libnftnl'
@@ -34,56 +36,64 @@ depends=(
   'pcre2'
   'perl'
   'perl-bencode'
-  'perl-config-tiny'
-  'perl-exporter-tidy'
+  'perl-data-dumper'
+  'perl-io-socket-ip'
   'perl-json'
   'perl-socket6'
-  'rtpengine-kernel-dkms'
+  'perl-xmlrpc-lite'
   'spandsp'
   'systemd-libs'
   'zlib'
 )
 makedepends=(
+  'gcc'
   'gperf'
-  'pkgconf'
-  'pandoc-cli'
+  'linux-headers'
+  'make'
+  'pandoc'
 )
-optdepends=('libiptcdata: iptables management support'
-            'mariadb-clients: media playback and call recording daemon support')
+optdepends=('rtpengine-kernel-dkms: Kernel module support for RTPengine')
+options=(!emptydirs)
 backup=('etc/rtpengine/rtpengine.conf'
         'etc/rtpengine/rtpengine-recording.conf')
-options=('emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/mr${pkgver}.tar.gz"
-        'rtpengine.sysusers')
-sha256sums=('5c5a233e755ab5673e5ed55d88b2b4434e0f665051597f20dc89740ddf2837ec'
-            'ea1580fbf7372309533e56d2a33714dc4d58311429ba60bf25b1bddee5ff7231')
+        "${pkgname}.sysusers")
+sha256sums=('4d6297851508a5eb6681c76c13f0c20f9b2ad28476541080bc0b55b2049fe3b6'
+            '9ee6664c7368cc0466d813c199c997ac4889eb0e72f7f0b51149510cf0ae0b3e')
+
+build() {
+  cd "${pkgname}-mr${pkgver}"
+
+  # Build the project with transcoding support
+  make all with_transcoding=yes PREFIX=/usr
+}
 
 package() {
   cd "${pkgname}-mr${pkgver}"
 
-  # Install core binaries and utilities
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" with_transcoding=yes PREFIX=/usr install
 
   # Install configuration files
-  install -Dvm644 -t "${pkgdir}/etc/${pkgname}" etc/{rtpengine,rtpengine-recording}.conf
+  install -Dm644 "etc/${pkgname}.conf" "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
+  install -Dm644 "etc/${pkgname}-recording.conf" "${pkgdir}/etc/${pkgname}/${pkgname}-recording.conf"
 
-  # Install systemd service files
-  install -Dvm644 -t "${pkgdir}/usr/lib/systemd/system" el/{rtpengine,rtpengine-recording}.service
-
-  # Install sysconfig files (for runtime environment variables)
-  install -Dvm644 el/rtpengine.sysconfig "${pkgdir}/etc/sysconfig/rtpengine"
-  install -Dvm644 el/rtpengine-recording.sysconfig "${pkgdir}/etc/sysconfig/rtpengine-recording"
-
-  # Install sysusers configuration
-  install -Dvm644 "${srcdir}/rtpengine.sysusers" "${pkgdir}/usr/lib/sysusers.d/rtpengine.conf"
-
-  # Create spool directory with appropriate permissions
-  install -dv -m750 "${pkgdir}/var/spool/rtpengine"
+  # Install systemd service files from the el directory
+  install -Dm644 el/${pkgname}.service "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm644 el/${pkgname}-recording.service "${pkgdir}/usr/lib/systemd/system/${pkgname}-recording.service"
 
   # Install Perl modules
-  install -Dvm644 -t "${pkgdir}/usr/share/perl5/vendor_perl/NGCP" perl/NGCP/Rtpengine.pm
-  install -Dvm644 -t "${pkgdir}/usr/share/perl5/vendor_perl/NGCP/Rtpclient" perl/NGCP/Rtpclient/*.pm
-  install -Dvm644 -t "${pkgdir}/usr/share/perl5/vendor_perl/NGCP/Rtpengine" perl/NGCP/Rtpengine/*.pm
+  install -Dm644 -t "${pkgdir}/usr/share/perl5/vendor_perl/NGCP" perl/NGCP/Rtpengine.pm
+  install -Dm644 -t "${pkgdir}/usr/share/perl5/vendor_perl/NGCP/Rtpclient" perl/NGCP/Rtpclient/*.pm
+  install -Dm644 -t "${pkgdir}/usr/share/perl5/vendor_perl/NGCP/Rtpengine" perl/NGCP/Rtpengine/*.pm
+
+  # Install the sysusers configuration file
+  install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+
+  # Create spool directory
+  install -d "${pkgdir}/var/spool/rtpengine"
+
+  # Remove the usr/libexec directory if it exists
+  rm -rf "${pkgdir}/usr/libexec"
 }
 
 # vim: set ts=2 sw=2 et:
