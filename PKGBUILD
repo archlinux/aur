@@ -2,7 +2,7 @@
 pkgname=bright-nightly-bin
 _pkgname=bright
 pkgver=nightly
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatically adjust brightness based on configuration"
 arch=('x86_64')
 url="https://github.com/someoneonsmile/${_pkgname}"

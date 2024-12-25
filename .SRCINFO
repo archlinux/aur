@@ -1,7 +1,7 @@
 pkgbase = bright-nightly-bin
 	pkgdesc = Automatically adjust brightness based on configuration
 	pkgver = nightly
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/someoneonsmile/bright
 	arch = x86_64
 	license = GPL2
