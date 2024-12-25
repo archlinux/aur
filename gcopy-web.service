@@ -8,6 +8,7 @@ User = gcopy
 Restart = on-failure
 EnvironmentFile = -/etc/gcopy/gcopy-web.env
 ExecStart = /usr/bin/node /usr/share/gcopy-web/server.js
+SyslogIdentifier = gcopy-web
 TimeoutStopSec = 5
 
 [Install]

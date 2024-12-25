@@ -2,7 +2,7 @@
 
 pkgbase=gcopy
 pkgname=("${pkgbase}" "${pkgbase}-web")
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="A clipboard synchronization service for different devices that can synchronize text, screenshots, and files"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -15,9 +15,9 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgbase}.env"
         "${pkgbase}.service"
         "${pkgbase}.sysusers")
-sha256sums=('6bcb094691edd91f032fe99dc970ca50f30c122b7a10709eff10c420cffb5f31'
+sha256sums=('8332314a2b6e10a5f11971266949f3e4fe928f8d158f0d721c0e795033a2e8d2'
             '1b47cd9ba854ec53df8de892c906cf74a687f237ca141b200aada620316200ee'
-            'e0a382959b7ab55c45743506113aab6d94427d68dacdfd971cc8ba2b484d954c'
+            '1ffd97492315c562f075b14cf1d5a6cbda1806f635ef57868ef10fa39fec3cbb'
             '1fbb6961942c7c1f9e8876613d10356608e84e00914ac9acf7b134a4366b350b'
             'f052954e81b58a02e429eef3e19a54b53a900c2ad2a3e251ecaa9b783367f2f5'
             'f4cebdaa1dc7e571b53fbbc48651af3d657cb7dd5c0e39e353a2646a9ccf1cb0')
