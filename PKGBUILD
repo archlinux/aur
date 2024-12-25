@@ -3,7 +3,8 @@
 
 pkgname=pylon
 pkgdesc="Basler camera Software suite"
-pkgver=7.5.0.15658
+pkgver="8.0.1_16188"
+_pkgver="${pkgver//_/-}"
 pkgrel=1
 arch=(x86_64)
 license=(custom)
@@ -15,21 +16,23 @@ depends=(fontconfig freetype2 mesa-utils libice libsm libusb libx11 libxcb xcb-u
 makedepends=(patchelf)
 
 source=(
-	"https://www2.baslerweb.com/media/downloads/software/pylon_software/${pkgname}-${pkgver}_linux-${CARCH}_setup.tar.gz"
+    "https://downloadbsl.blob.core.windows.net/software/${pkgname}-${_pkgver}_linux-${CARCH}_setup.tar.gz"
 	"LICENSE"
 )
 
 
-sha512sums=('3ac3b608d3cab415fe45a680278459aaa13f1fa9db94c514c1355215e1d53a0d83131a43d120310c0ad5da919bf9df6263b4f804993a0b757bc5fa5e21aaffb5'
-'a88072c34d5b18ebbdcc3003c7bbd899f81557500f963cda988239df7e692637fe29948b866fe80341b28c4820e1593f35fe37473de9ba35f7de8a8b31601ae1')
+sha512sums=(
+    '15887a74d36dd84d974f79dd4a7c00b9f7ffafb02333eb763968ca3e5c203f3a27edcf60945e56d395d98302e72c8a8ca0e83919d7603b1784149634cace98ca'
+    'a88072c34d5b18ebbdcc3003c7bbd899f81557500f963cda988239df7e692637fe29948b866fe80341b28c4820e1593f35fe37473de9ba35f7de8a8b31601ae1'
+)
 
 _dir="$pkgname_$pkgver_$CARCH"
 
 prepare() {
 	mkdir -p "$srcdir/$_dir"
 	cd "$srcdir/$_dir"
-	bsdtar -xf "../${pkgname}-${pkgver}_linux-${CARCH}_setup.tar.gz"
-	bsdtar -xf "${pkgname}-${pkgver}_linux-${CARCH}.tar.gz"
+	bsdtar -xf "../${pkgname}-${_pkgver}_linux-${CARCH}_setup.tar.gz"
+	bsdtar -xf "${pkgname}-${_pkgver}_linux-${CARCH}.tar.gz"
 }
 
 _shrink_rpaths() {
