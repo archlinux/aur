@@ -2,7 +2,7 @@
 # Contributor: Yurenev Nikolay <yurnik2004 at gmail.com>
 
 pkgname='zvm'
-pkgver='0.8.1'
+pkgver='0.8.2'
 pkgrel='1'
 pkgdesc='Version manager for Zig compilers'
 arch=('x86_64' 'armv7h')
@@ -10,18 +10,18 @@ url='https://github.com/tristanisham/zvm'
 license=('MIT')
 makedepends=('go')
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/tristanisham/zvm/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://github.com/tristanisham/zvm/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-md5sums=('2cda741e2021765c85fdc2763f13b52f')
+md5sums=('2c9d7717eab444bd0cbd763d625a2a97')
 
 build() {
-    cd $pkgname-$pkgver
-    go build
+  cd $pkgname-$pkgver
+  go build
 }
 
 package() {
-    cd $pkgname-$pkgver
-    mkdir -p "$pkgdir/usr/bin"
-    cp zvm "$pkgdir/usr/bin"
+  cd $pkgname-$pkgver
+  mkdir -p "$pkgdir/usr/bin"
+  cp zvm "$pkgdir/usr/bin"
 }
