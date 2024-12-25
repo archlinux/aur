@@ -1,0 +1,20 @@
+pkgbase = manuals
+	pkgdesc = Install, Browse, and Search developer documentation
+	pkgver = 47.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/chergert/manuals
+	arch = x86_64
+	license = GPL-3.0-or-later
+	checkdepends = appstream
+	makedepends = meson
+	depends = flatpak
+	depends = gettext
+	depends = gom
+	depends = libadwaita
+	depends = libdex
+	depends = libpanel
+	depends = webkitgtk-6.0
+	source = https://gitlab.gnome.org/chergert/manuals/-/archive/47.0/manuals-47.0.tar.bz2
+	sha256sums = 0803ff57dc70c7d8e465dae7e92ac8d0d5d21e70cf5adddfaf4ea2fdafe8aa3a
+
+pkgname = manuals
