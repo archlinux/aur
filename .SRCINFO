@@ -1,7 +1,7 @@
 pkgbase = tblock
 	pkgdesc = An anti-capitalist ad-blocker that uses the hosts file
 	pkgver = 2.7.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tblock.me
 	install = tblock.install
 	arch = any
