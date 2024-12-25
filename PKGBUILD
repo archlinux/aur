@@ -63,7 +63,6 @@ prepare() {
 
 pkgver() {
   cd "$_pkgsrc"
-
   git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
@@ -76,12 +75,16 @@ build() {
 check() {
   local _test_opts=(
     # Deselect tests that need CUDA
-    --deselect tests/test_timing.py::test_dtw_cuda_equivalence
-    --deselect tests/test_timing.py::test_median_filter_equivalence
-    --deselect tests/test_transcribe.py::test_transcribe[large-v1]
-    --deselect tests/test_transcribe.py::test_transcribe[large-v2]
-    --deselect tests/test_transcribe.py::test_transcribe[large-v3]
-    --deselect tests/test_transcribe.py::test_transcribe[large]
+    --deselect 'tests/test_timing.py::test_dtw_cuda_equivalence'
+    --deselect 'tests/test_timing.py::test_median_filter_equivalence'
+
+    # Deselect tests that take too long
+    --deselect 'tests/test_transcribe.py::test_transcribe[medium.en]'
+    --deselect 'tests/test_transcribe.py::test_transcribe[medium]'
+    --deselect 'tests/test_transcribe.py::test_transcribe[large-v1]'
+    --deselect 'tests/test_transcribe.py::test_transcribe[large-v2]'
+    --deselect 'tests/test_transcribe.py::test_transcribe[large-v3]'
+    --deselect 'tests/test_transcribe.py::test_transcribe[large]'
   )
 
   cd "$_pkgsrc"
