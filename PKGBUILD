@@ -2,7 +2,7 @@
 # Contributor: douglarek
 
 pkgname=yuki-iptv-bin
-pkgver=0.0.14
+pkgver=0.0.17
 pkgrel=1
 pkgdesc="IPTV player with EPG support"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('yt-dlp: YouTube channel support')
 provides=('yuki-iptv')
 conflicts=('yuki-iptv')
 source=("yuki-iptv_${pkgver}_all.deb::$url/releases/download/$pkgver/yuki-iptv_${pkgver}_all.deb")
-sha512sums=('c3da972abac0023729d466aeeeeafa776d4be8143640ccba094e9ed96bf5f66377c79645826e1cd04cd8aee000a9a0baccbc702b73d32db57cbcd4fbf0c49112')
+sha512sums=('bd6e830a79f53da7be90208d76d48a5135b9aa497b6614de96398eea7be60b12d508555ee10baf4fe81167c289a45dac40e19cdb40a35c74d019ca8a91b06cdf')
 
 package() {
         bsdtar -xf data.tar.xz -C "${pkgdir}"
