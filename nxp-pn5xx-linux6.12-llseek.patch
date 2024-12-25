@@ -1,0 +1,11 @@
+diff --color -ura nxp-pn5xx.orig/pn5xx_i2c.c nxp-pn5xx.new/pn5xx_i2c.c
+--- nxp-pn5xx.orig/pn5xx_i2c.c	2024-12-25 17:56:55.611123301 +0100
++++ nxp-pn5xx.new/pn5xx_i2c.c	2024-12-25 17:57:22.977789016 +0100
+@@ -398,7 +398,6 @@
+ 
+ static const struct file_operations pn54x_dev_fops = {
+ 	.owner	= THIS_MODULE,
+-	.llseek	= no_llseek,
+ 	.read	= pn54x_dev_read,
+ 	.write	= pn54x_dev_write,
+ 	.open	= pn54x_dev_open,
