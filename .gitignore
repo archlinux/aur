@@ -1,4 +1,4 @@
-*.pkg.tar.xz
-pkg
-src
-fuse-ext2
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

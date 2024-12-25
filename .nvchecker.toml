@@ -1,0 +1,4 @@
+[fuse-ext2-git]
+source = "git"
+git = "https://github.com/alperakcan/fuse-ext2.git"
+prefix = "v"
