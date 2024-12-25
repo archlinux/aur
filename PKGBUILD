@@ -6,7 +6,7 @@
 # Maintainer: Sathya Pramodh <sathyapramodh17@gmail.com>
 pkgname=resetti
 _rawurl="https://raw.githubusercontent.com/tesselslate/resetti/main"
-pkgver="0.5.3"
+pkgver="0.7.0"
 pkgrel=1
 pkgdesc="resetti is a Linux-compatible reset macro for Minecraft speedruns. It supports
 a variety of different resetting styles, categories, and Minecraft versions."
@@ -24,11 +24,9 @@ replaces=()
 backup=()
 options=()
 source=("$url/releases/download/v$pkgver/resetti"
-	"$url/releases/download/v$pkgver/bench"
-	"$_rawurl/internal/res/default.toml"
-	"$_rawurl/internal/res/scene-setup.lua")
+	"$_rawurl/internal/res/default.toml")
 noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP')
 validategpgkeys=()
 
 package() {
@@ -37,7 +35,5 @@ package() {
 	then
 		mkdir -p ~/.local/share/resetti
 	fi
-	install -Dm0755 bench ~/.local/share/resetti
 	install -Dm0664 default.toml ~/.local/share/resetti
-	install -Dm0644 scene-setup.lua ~/.local/share/resetti
 }
