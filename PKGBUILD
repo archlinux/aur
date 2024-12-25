@@ -1,47 +1,42 @@
-# Maintainer: Jozef Riha <jose1711 at gmail dot com>
+# Maintainer: 
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
+# Contributor: Jozef Riha <jose1711 at gmail dot com>
 
 pkgname=florb-git
-pkgver=r156.85d2be7
+pkgver=r170.81a2051
 pkgrel=1
 pkgdesc="simple FLTK powered map viewer and GPX editor"
-url="http://florb.shugaa.de/"
-arch=('x86_64' 'i686')
-license=('MIT')
-
-depends=('fltk' 'yaml-cpp' 'libxpm' 'curl' 'tinyxml2' 'boost-libs')
-optdepends=('gpsbabel')
-provides=('florb')
-conflicts=('florb')
-makedepends=('omake' 'gendesk' 'git' 'gpsd')
-md5sums=('SKIP'
-         '949001a25d72c44013f9c708c138690d')
-
-
-source=("${pkgname}"::'git://github.com/shugaa/florb.git'
-        gpsdclient.patch)
+url="https://github.com/4fury-c3440d8/florb"
+arch=(x86_64 i686)
+license=(MIT)
+depends=(fltk yaml-cpp libxpm curl tinyxml2 boost-libs gpsd)
+makedepends=(omake gendesk git boost translate-toolkit python-cwcwidth)
+optdepends=(gpsbabel)
+provides=(florb)
+conflicts=(florb)
+sha256sums=('SKIP')
+source=("git+https://github.com/4fury-c3440d8/florb.git")
 
 pkgver() {
-  cd "$srcdir/${pkgname}"
+  cd florb/src
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "$srcdir/${pkgname}/src"
-  sed -i '/^#include/s%Fl/%FL/%' dlg_ui_ex.cpp dlg_settings_ex.cpp
-  sed -i '/^CXXFLAGS = -std=/s/^CXXFLAGS = /CXXFLAGS = -fPIC /' OMakefile
-  # patch -p0 -i "${srcdir}/gpsdclient.patch"
-}
-
 build() {
-  cd $srcdir/$pkgname/src
+  cd florb/src
   gendesk -f -n --pkgname florb --exec florb --pkgdesc "$pkgdesc" --categories 'Utility;Maps'
   omake
+  omake i18nupdate
+  omake i18ncompile
 }
 
 package() {
-  cd $srcdir/$pkgname/src
-  omake PREFIX=$pkgdir/usr install
+  cd florb
+  install -D LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd src
+  omake PREFIX=${pkgdir}/usr install
   install -Dm644 florb.desktop "${pkgdir}/usr/share/applications/florb.desktop"
-  install -Dm755 res/florb.svg "${pkgdir}/usr/share/pixmaps/florb.svg"
-  install -Dm755 res/florb.png "${pkgdir}/usr/share/pixmaps/florb.png"
+  install -D res/florb.svg "${pkgdir}/usr/share/pixmaps/florb.svg"
+  install -D res/florb.png "${pkgdir}/usr/share/pixmaps/florb.png"
+
 }
