@@ -1,0 +1,21 @@
+pkgbase = dropbear
+	pkgdesc = Lightweight SSH server
+	pkgver = 2024.86
+	pkgrel = 1
+	url = https://github.com/mkj/dropbear
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	options = emptydirs
+	source = git+https://github.com/mkj/dropbear#tag=DROPBEAR_2024.86
+	source = dropbear.service
+	source = localoptions.h
+	validpgpkeys = F7347EF2EE2E07A267628CA944931494F29C6773
+	b2sums = eab60b3eb54ef8178e96079995fb1d42429a8d3fe583c93644b7115e7ae74c3703dbc230b31dd55755791990e7a9611bf07bdb8a907ad76385e5d391c7abfc8e
+	b2sums = e3481447cac72e416a1d332ddb4bc2fbc78b2e558f929449469e05c269e27482e13357d467b8a11c9b7bf6fdecdd6e57717c8008247922adfc545c36e5775217
+	b2sums = 49628bbce0d26eb33598de276ede705bd592a38b7892c9db0ceebfb0598a1ee6e7e84ed03dbf255ee1adcad0c5214d38dc03e6c04176a405f59a19765cb28388
+
+pkgname = dropbear-dnat
+	depends = libxcrypt
+	depends = zlib
+	conflicts = dropbear

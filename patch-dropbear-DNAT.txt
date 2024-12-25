@@ -1,0 +1,33 @@
+--- ./src/tcp-accept.c.orig	2024-12-25 11:23:40.285767659 +0200
++++ ./src/tcp-accept.c	2024-12-25 12:17:02.879907002 +0200
+@@ -32,6 +32,11 @@
+ #include "listener.h"
+ #include "listener.h"
+ #include "runopts.h"
++#define LINUX_NETFILTER
++#ifdef LINUX_NETFILTER
++#include <linux/netfilter_ipv4.h>
++#endif
++
+ 
+ #if DROPBEAR_TCP_ACCEPT
+ 
+@@ -76,6 +81,18 @@
+ 			/* host to connect, port to connect */
+ 			addr = tcpinfo->sendaddr;
+ 			port = tcpinfo->sendport;
++
++         struct sockaddr_in orig_addr,sock_addr;
++         int s_orig_addr ,s_sock_addr;
++         s_orig_addr = s_sock_addr = sizeof orig_addr;
++         if(getsockopt(fd, SOL_IP, SO_ORIGINAL_DST, &orig_addr, &s_orig_addr) == 0
++          && getsockname(fd, (struct sockaddr *)&sock_addr, &s_sock_addr) == 0
++          && memcmp(&orig_addr.sin_addr,&sock_addr.sin_addr,sizeof orig_addr.sin_addr) != 0 ) {
++            TRACE(("tcp_acceptor inside DNAT patch"))
++            addr = inet_ntoa(orig_addr.sin_addr);
++            port = ntohs(orig_addr.sin_port);
++         }
++
+ 		} else {
+ 			dropbear_assert(tcpinfo->tcp_type == forwarded);
+ 			/* "forwarded-tcpip" */

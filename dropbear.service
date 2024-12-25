@@ -1,0 +1,10 @@
+[Unit]
+Description=Dropbear SSH Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/dropbear -F -P /run/dropbear.pid -R
+
+[Install]
+WantedBy=multi-user.target
