@@ -1,7 +1,7 @@
 pkgbase = borgctl
 	pkgdesc = borgctl - borgbackup without bash scripts
 	pkgver = 0.4.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kmille/borgctl
 	arch = any
 	license = GPL3
