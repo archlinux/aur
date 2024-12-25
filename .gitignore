@@ -1,0 +1,6 @@
+*.log
+pkg/
+src/
+675929762a09ad0b40cb2667918a7061c47a418c.patch
+761aa1d15970fcb6aadb7d6152737fa9b2d4b0d0.patch
+*.tar.gz
