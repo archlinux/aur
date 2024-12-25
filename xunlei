@@ -1,3 +1,0 @@
-#!/bin/bash
-export LD_LIBRARY_PATH=/opt/xunlei:$LD_LIBRARY_PATH
-/opt/xunlei/thunder -start $1

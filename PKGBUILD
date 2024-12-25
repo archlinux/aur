@@ -1,51 +1,65 @@
-# Maintainer: Sukanka <su975853527 [AT] gmail.com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Sukanka <su975853527 [AT] gmail.com>
 pkgname=xunlei-bin
+_debname="com.${pkgname%-bin}.download"
 pkgver=1.0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Xunlei download, 迅雷"
-arch=("x86_64" "aarch64")
-url="https://www.xunlei.com/"
-license=("custom")
-depends=('dbus-glib' 'libxtst' 'gtk2' 'alsa-lib' 'nss' 'libxss')
-provides=('xunlei')
-source=("license.html"
-    "xunlei"
+arch=(
+    'aarch64'
+    'x86_64'
 )
-source_x86_64=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.xunlei.download/com.xunlei.download_${pkgver}_amd64.deb")
-source_aarch64=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.xunlei.download/com.xunlei.download_${pkgver}_arm64.deb")
-
-sha512sums=('3b0056713d046b01b01de9679a605bbf810c1f6f8c022b2200e14ef864db0583c46b3b9ccc9a0246bb3d70d3fad3415c33804cac5486d1cffb2d3081566d17bd'
-            'c8c737c7fb30b7428005aa6bfb51fbc9ed3b2867286e1f461be900001d36f1961147912efa828c106ba846672a7571537fb42f5860bc687de30f5613e458881c')
-sha512sums_x86_64=('3e6ffe2b3060927f4854cd16db2cbdb77c8fa2bcfd8939a4fc852873e0c55bf21f9a2d225cb504c1864def6a33ef67ebf3d2cf5289800404981c65f10769abbc')
-sha512sums_aarch64=('f155c252cb148ab75672868c5a125c35c6f11287df0f1a4d811e581051b66bb545be5507c0540e134db9268c5cf6522ec8b3e4633a0d59025f05c0bf3a67724f')
-
+url="https://www.xunlei.com/"
+_dlurl="https://com-store-packages.uniontech.com/appstore"
+license=('LicenseRef-custom')
+conflicts=("${pkgname%-bin}")
+prodives=("${pkgname%-bin}=${pkgver}")
+depends=(
+    'libxtst'
+    'dbus-glib'
+    'gtk2'
+    'alsa-lib'
+    'nss'
+    'libxss'
+    'nodejs'
+)
+options=(
+    '!strip'
+)
+source=(
+    "LICENSE.html"
+    "${pkgname%-bin}.sh"
+)
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_dlurl}/pool/appstore/c/${_debname}/${_debname}_${pkgver}_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_dlurl}/pool/appstore/c/${_debname}/${_debname}_${pkgver}_amd64.deb")
+sha256sums=('b548c4f5388c460335cc5672c132f4dd31930c6d1cad25b0e410a69d3a9d2272'
+            'a1d15b342d2c3f3a4e4dce5b978f40f814a96ab4fd7f724cde499cfbb7bcff64')
+sha256sums_aarch64=('880f666e9d3049eebaa82e65a6131314fce63898f31df58ab9b1913e229c55d8')
+sha256sums_x86_64=('2be7873e61b6b53e59f915b18a0834de2b70e9172793931994e0ea4bf26d0279')
 prepare() {
-    cd ${srcdir}
-    tar -Jxvf data.tar.xz -C "${srcdir}"
-
+    sed -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/thunder/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
+    sed -e "
+        s/\/opt\/apps\/${_debname}\/files\/start.sh/${pkgname%-bin}/g
+        s/\/opt\/apps\/${_debname}\/entries\/icons\/hicolor\/256x256\/apps\/${_debname}.png/${pkgname%-bin}/g
+        s/Categories=net/Categories=NetWork/g
+    " -i "${srcdir}/opt/apps/${_debname}/entries/applications/${_debname}.desktop"
 }
-
 package() {
-    cd ${srcdir}
-    mkdir -p ${pkgdir}/opt/xunlei
-    mv opt/apps/com.xunlei.download/files/* ${pkgdir}/opt/xunlei
-
-    install -D opt/apps/com.xunlei.download/entries/applications/com.xunlei.download.desktop \
-        ${pkgdir}/usr/share/applications/com.xunlei.download.desktop
-
-    mkdir -p ${pkgdir}/usr/share/
-    mv opt/apps/com.xunlei.download/entries/icons ${pkgdir}/usr/share/icons
-    mv ${pkgdir}/usr/share/icons/hicolor/scalable/apps/com.thunder.download.svg \
-        ${pkgdir}/usr/share/icons/hicolor/scalable/apps/com.xunlei.download.svg
-
-    install -Dm644 license.html ${pkgdir}/usr/share/licenses/xunlei/license.html
-
-    sed -i 's|^Exec.*|Exec=xunlei %U|;s|^Icon.*|Icon=com.xunlei.download|;s|^Categories.*|Categories=Network|' \
-    ${pkgdir}/usr/share/applications/com.xunlei.download.desktop
-
-    install -Dm755 xunlei ${pkgdir}/opt/xunlei/start.sh
-    mkdir -p ${pkgdir}/usr/bin
-    ln -s /opt/xunlei/start.sh ${pkgdir}/usr/bin/xunlei
-
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/apps/${_debname}/files/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    _icon_sizes=(16x16 24x24 32x32 48x48 128x128 256x256)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/opt/apps/${_debname}/entries/icons/hicolor/${_icons}/apps/${_debname}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
+    done
+    install -Dm644 "${srcdir}/opt/apps/${_debname}/entries/icons/hicolor/scalable/apps/com.thunder.download.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
+    install -Dm644 "${srcdir}/opt/apps/${_debname}/entries/applications/${_debname}.desktop" \
+        "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
