@@ -4,13 +4,13 @@
 
 _pkgname=lammps
 pkgname=${_pkgname}-git
-pkgver=patch_19Nov2024.r112.gaeb2190
+pkgver=patch_19Nov2024.r119.gf00addc
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
 license=('GPL')
-depends=('fftw' 'openmpi' 'ffmpeg' 'libpng' 'python' 'qt6-charts')
+depends=('fftw' 'openmpi' 'ffmpeg' 'libpng' 'python' 'intel-oneapi-mkl')
 makedepends=('cmake>=3.1' 'git' 'python-pip' 'python-build')
 conflicts=('lammps')
 provides=('lammps')
@@ -55,7 +55,6 @@ build() {
         -D PKG_PHONON=on \
         -D PKG_KSPACE=on \
         -D PKG_MANYBODY=on \
-        -D BUILD_LAMMPS_GUI=on \
         -D LAMMPS_EXCEPTIONS=on \
         -D BUILD_LIB=on \
         -D BUILD_SHARED_LIBS=on \
@@ -64,6 +63,8 @@ build() {
         -D CMAKE_INSTALL_LIBDIR="lib" \
         -D CMAKE_INSTALL_LIBEXECDIR="/usr/lib" \
     ../cmake
+
+        # -D BUILD_LAMMPS_GUI=on \
 
     cmake --build . -j $(($(nproc) - 1))
 
@@ -83,26 +84,26 @@ package() {
     cd ${_pkgname}/build
     make DESTDIR="${pkgdir}" install
 
-    mkdir -p "${pkgdir}/usr/share/examples/lammps"
-    cp -r "../examples/." "${pkgdir}/usr/share/examples/lammps/"
-    cp -r "../python/examples" "${pkgdir}/usr/share/examples/lammps/python/more"
-    find "${pkgdir}/usr/share/examples/lammps/" -type f -exec chmod 644 '{}' +
+    # mkdir -p "${pkgdir}/usr/share/examples/lammps"
+    # cp -r "../examples/." "${pkgdir}/usr/share/examples/lammps/"
+    # cp -r "../python/examples" "${pkgdir}/usr/share/examples/lammps/python/more"
+    # find "${pkgdir}/usr/share/examples/lammps/" -type f -exec chmod 644 '{}' +
 
     install -Dm644 "../tools/vim/lammps.vim" "${pkgdir}/usr/share/vim/vimfiles/syntax/lammps.vim"
     install -Dm644 "../tools/vim/filetype.vim" "${pkgdir}/usr/share/vim/vimfiles/ftdetect/lammps.vim"
-    #   install -Dm644 "../tools/kate/lammps.xml" "${pkgdir}/usr/share/katepart5/syntax/lammps.xml"
+
     install -Dm755 "../tools/phonon/build/phana" "${pkgdir}/usr/bin/phana"
 
     # python lib
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ../python/dist/*.whl
 
 
-    # 遍历以 lib 开头的文件
-    for file in "${pkgdir}/usr/lib/lib"*; do
-        # 如果文件不是 liblammps，则删除
-        [[ "$(basename "$file")" == liblammps* ]] || rm -f "$file"
-    done
-    rm -f ${pkgdir}/usr/lib/ld-linux*
+    # # 遍历以 lib 开头的文件
+    # for file in "${pkgdir}/usr/lib/lib"*; do
+    #     # 如果文件不是 liblammps，则删除
+    #     [[ "$(basename "$file")" == liblammps* ]] || rm -f "$file"
+    # done
+    # rm -f ${pkgdir}/usr/lib/ld-linux*
 
 
 }
