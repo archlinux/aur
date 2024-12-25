@@ -2,8 +2,8 @@
 
 _pkgname='hist'
 pkgname="python-${_pkgname}"
-pkgver='2.7.2'
-pkgrel=3
+pkgver=2.8.0
+pkgrel=1
 pkgdesc="Python bindings for Boost's Histogram library."
 arch=('any')
 url='https://github.com/scikit-hep/hist'
@@ -20,7 +20,7 @@ optdepends=(
   'python-scipy: for fit support'
 )
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
-sha256sums=('a4610816497d2a64ea5f86f49062f93ad9e6e2fd130220199e18a73967f7bbc3')
+sha256sums=('75b2fdd4226293a0822dd9e7fb1424710d25ee3aed2e4f6b3668cd53472bd4fa')
 
 build() {
   cd "${pkgname}"
