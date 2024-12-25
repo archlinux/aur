@@ -1,6 +1,6 @@
 # Maintainer: Nathan Chere <git@nathanchere.com.au>
 pkgname=grayjay-bin
-pkgver=0.r20241225
+pkgver=2
 pkgrel=1
 pkgdesc="Grayjay Desktop - follow creators, not platform (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
@@ -41,7 +41,7 @@ if [ ! -d "$APP_DIR" ]; then
     chmod u+w -R "$APP_DIR"
 fi
 
-exec "$APP_DIR/Grayjay" "$@"
+exec sh -c "cd '$APP_DIR' && exec ./Grayjay \"\$@\"" -- "$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/grayjay"
 

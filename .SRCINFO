@@ -1,0 +1,23 @@
+pkgbase = grayjay-bin
+	pkgdesc = Grayjay Desktop - follow creators, not platform (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)
+	pkgver = 2
+	pkgrel = 1
+	url = https://grayjay.app/desktop/
+	arch = x86_64
+	license = Source First License 1.1
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libsecret
+	depends = libappindicator-gtk3
+	provides = grayjay
+	conflicts = grayjay
+	options = !strip
+	source = Grayjay.Desktop-linux-x64.zip::https://updater.grayjay.app/Apps/Grayjay.Desktop/Grayjay.Desktop-linux-x64.zip
+	sha256sums = 314e002552a413cd3f13d8a4abd44a20bf59de7a70982d8dd0f1f26ddfbe8d03
+
+pkgname = grayjay-bin
