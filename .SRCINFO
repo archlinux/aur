@@ -1,15 +1,15 @@
 pkgbase = lzma_alone
 	pkgdesc = An algorithm used to perform lossless data compression
-	pkgver = 24.07
+	pkgver = 24.09
 	pkgrel = 1
 	url = https://www.7-zip.org/sdk.html
 	arch = x86_64
 	license = LZMA-SDK-9.22
 	depends = gcc-libs
-	noextract = lzma2407.7z
-	source = https://www.7-zip.org/a/lzma2407.7z
+	noextract = lzma2409.7z
+	source = https://www.7-zip.org/a/lzma2409.7z
 	source = 010-lzma_alone-use-arch-flags.patch
-	sha256sums = 40bbf732b568b8c4464f336522cca6f08723a95afec004278d8d2c9def877102
+	sha256sums = 79b39f10b7b69eea293caa90c3e7ea07faf8f01f8ae9db1bb1b90c092375e5f3
 	sha256sums = 8c1905241ce2d517b019b3101bab5e4994ca6864fe00b6ce303470adec66ed85
 
 pkgname = lzma_alone
