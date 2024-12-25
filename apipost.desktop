@@ -1,7 +1,0 @@
-[Desktop Entry]
-Terminal=false
-Type=Application
-Name=ApiPost
-Icon=apipost
-Exec=apipost %U
-Categories=Development;

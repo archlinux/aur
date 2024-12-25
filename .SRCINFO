@@ -1,16 +1,16 @@
 pkgbase = apipost-bin
-	pkgdesc = An API debugging and management tool that supports team collaboration and can generate documents directly.
-	pkgver = 8.1.6
+	pkgdesc = Apipost = Postman + Swagger + Mock + Jmeter
+	pkgver = 8.1.9
 	pkgrel = 1
 	url = https://www.apipost.cn/
 	arch = x86_64
 	arch = aarch64
 	license = custom: commercial
-	source = apipost.desktop
-	sha256sums = a13dc2b268aabd55bb48fc00171aa740501fe579b875df5f612a721392303854
-	source_x86_64 = apipost_linux_x64_8.1.6.tar.xz::https://www.apipost.cn/dl.php?client=LinuxXz&arch=x64&version=8.1.6
-	sha256sums_x86_64 = a87b79d1d8e79594077c912c5df25220f16cfbec40a8e06c24f807ea3c81d1bc
-	source_aarch64 = apipost_linux_arm64_8.1.6.tar.xz::https://www.apipost.cn/dl.php?client=LinuxXz&arch=arm64&version=8.1.6
-	sha256sums_aarch64 = 0900a93a9fe5d06dda70a2232911736b64a4471fb2a6db44bb49bb24dc654327
+	optdepends = libappindicator-gtk3
+	conflicts = apipost
+	source_x86_64 = apipost_linux_x64_8.1.9.deb::https://www.apipost.cn/dl.php?client=Linux&arch=x64&version=8.1.9
+	sha256sums_x86_64 = 2580a103c618b6ae00f4d641143f00318911722ad870d0e2d56fe82850c79693
+	source_aarch64 = apipost_linux_arm64_8.1.9.deb::https://www.apipost.cn/dl.php?client=Linux&arch=arm64&version=8.1.9
+	sha256sums_aarch64 = 5df8c6ba5dbbce82146fe7d2692ddaf0d1aff0aea2f9111974873939c64c6170
 
 pkgname = apipost-bin
