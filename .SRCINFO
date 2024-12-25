@@ -1,6 +1,6 @@
 pkgbase = vdr-live
 	pkgdesc = Adds the possibility to control VDR and some of it's plugins by a web interface.
-	pkgver = 3.3.11
+	pkgver = 3.3.12
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/MarkusEh/vdr-plugin-live
@@ -18,9 +18,9 @@ pkgbase = vdr-live
 	optdepends = vdr-streamdev: Stream live TV
 	optdepends = ffmpeg: Transcoding video streams
 	backup = etc/vdr/conf.avail/50-live.conf
-	source = vdr-live-3.3.11.tar.gz::https://github.com/MarkusEh/vdr-plugin-live/archive/v3.3.11.tar.gz
+	source = vdr-live-3.3.12.tar.gz::https://github.com/MarkusEh/vdr-plugin-live/archive/v3.3.12.tar.gz
 	source = 50-live.conf
-	sha256sums = 330d47a60999ac5fa398ee269135a15f3d6cdfa68d3248779a2b456aed23ca65
+	sha256sums = 59a9ebf70b5d66827276388b1fe4608a039ab1c78e7e4e866602e54c9339a1ce
 	sha256sums = a14466937a4c618341ca3120bf353ca5b207dda0aca3b605532d3500415d7fea
 
 pkgname = vdr-live
