@@ -1,10 +1,10 @@
 pkgbase = tek
 	pkgdesc = A colorful music making program for your linux terminal
 	pkgver = 0.2.0.rc6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/unspeaker/tek
 	arch = x86_64
-	license = LicenseRef-TEK
+	license = custom:tek
 	makedepends = cargo
 	depends = pipewire-jack
 	depends = gcc-libs
