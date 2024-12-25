@@ -1,7 +1,7 @@
 # Maintainer: Wenqian <lazycat7706@gmail.com>
 
 pkgname=kubewrap
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Wrap kubectl command, offers some useful tools"
 arch=('x86_64')
