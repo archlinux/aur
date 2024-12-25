@@ -1,5 +1,5 @@
 pkgname=wush
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='lets you easily transfer files and open shells over a peer-to-peer WireGuard connection'
 arch=('x86_64')
