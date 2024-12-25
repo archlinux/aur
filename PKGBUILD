@@ -4,7 +4,7 @@
 pkgname=linode-cli
 pkgver=5.55.0
 _pkgver=4.191.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Linode API wrapper"
 arch=('any')
 url="https://techdocs.akamai.com/cloud-computing/docs/cli"
