@@ -3,14 +3,14 @@
 
 pkgname="ibazel"
 pkgver=0.25.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool for building Bazel targets when source files change."
 arch=("x86_64" "aarch64")
 license=("Apache 2.0")
 url="https://github.com/bazelbuild/bazel-watcher"
 makedepends=("git" "python")
 depends=("bazel")
-conflicts=('ibazel-git')
+conflicts=('ibazel-bin' 'ibazel-git')
 _bazelisk_pkgver="1.25.0"
 _commit='778a4da3ed8c177a310e5d28a14bf4fdbaf4fef3'
 source=("${pkgname}::git+$url.git#commit=$_commit")
@@ -20,7 +20,7 @@ source_x86_64=(
 source_aarch64=(
   "bazelisk-bin-aarch64-${_bazelisk_pkgver}::https://github.com/bazelbuild/bazelisk/releases/download/v${_bazelisk_pkgver}/bazelisk-linux-arm64"
 )
-sha256sums=('f7d4c649b811ab0419635a920806f9e2313951b2988f45612cc6d7755b4ca095')
+sha256sums=('SKIP')
 sha256sums_x86_64=('fd8fdff418a1758887520fa42da7e6ae39aefc788cf5e7f7bb8db6934d279fc4')
 sha256sums_aarch64=('4c8d966e40ac2c4efcc7f1a5a5cceef2c0a2f16b957e791fa7a867cce31e8fcb')
 
