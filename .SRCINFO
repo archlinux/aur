@@ -1,6 +1,6 @@
 pkgbase = notesnook-bin
 	pkgdesc = A fully open source & end-to-end encrypted note taking alternative to Evernote (binary release)
-	pkgver = 3.0.22
+	pkgver = 3.0.23
 	pkgrel = 1
 	url = https://github.com/streetwriters/notesnook
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = notesnook-bin
 	depends = nss
 	provides = notesnook
 	conflicts = notesnook
-	source_x86_64 = notesnook_linux_x86_64-3.0.22.AppImage::https://github.com/streetwriters/notesnook/releases/download/v3.0.22/notesnook_linux_x86_64.AppImage
-	sha256sums_x86_64 = 13ad79d755148ceefaa7eee5aab13decd5b992a37c5ddc91746ddc9289ec4be9
-	source_aarch64 = notesnook_linux_x86_64-3.0.22.AppImage::https://github.com/streetwriters/notesnook/releases/download/v3.0.22/notesnook_linux_arm64.AppImage
+	source_x86_64 = notesnook_linux_x86_64-3.0.23.AppImage::https://github.com/streetwriters/notesnook/releases/download/v3.0.23/notesnook_linux_x86_64.AppImage
+	sha256sums_x86_64 = 1158fb12aa2688aeb211dc779da81d7c8d90f870e43ab634da280a3c50c0ed3b
+	source_aarch64 = notesnook_linux_x86_64-3.0.23.AppImage::https://github.com/streetwriters/notesnook/releases/download/v3.0.23/notesnook_linux_arm64.AppImage
 	sha256sums_aarch64 = SKIP
 
 pkgname = notesnook-bin
