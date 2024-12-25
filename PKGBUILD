@@ -1,16 +1,23 @@
-# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
+# Maintainer: redponike <proton (dot) me>
+# Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=python-biom-format
-pkgver=2.1.8
+pkgver=2.1.16
 pkgrel=1
 pkgdesc="The Biological Observation Matrix (BIOM) Format Project"
 arch=('x86_64')
 url="http://biom-format.org"
-license=('BSD')
-depends=('python-numpy' 'python-click' 'python-future' 'python-scipy' 'python-pandas' 'python-six' 'python-h5py')
+license=('BSD-3-Clause')
+depends=(
+    'python-numpy'
+    'python-click'
+    'python-scipy'
+    'python-pandas'
+    'python-h5py'
+)
 makedepends=('python-setuptools' 'cython')
 source=("https://github.com/biocore/biom-format/archive/${pkgver}.tar.gz")
-sha256sums=('91cae2e11702c763eeb8a4e1db3cf120e7cdaae8cc38aaae7163be74e6cff77a')
+sha256sums=('17e135c4ed7e003f7b35e7f7cec8ce02c1c22fd06ff6a404887ea1ef4205693a')
 
 prepare(){
   cd "biom-format-$pkgver"
@@ -27,5 +34,3 @@ package(){
   cd "biom-format-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
-
-# vim:ts=2:sw=2:et:
