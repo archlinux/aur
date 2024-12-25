@@ -6,6 +6,7 @@ pkgrel=2
 pkgdesc="Apipost = Postman + Swagger + Mock + Jmeter"
 arch=('x86_64' 'aarch64')
 conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}")
 url="https://www.apipost.cn/"
 license=('custom: commercial')
 optdepends=('libappindicator-gtk3')
