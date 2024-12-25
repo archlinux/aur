@@ -1,0 +1,18 @@
+pkgbase = grayjay-git
+	pkgdesc = Grayjay Desktop - follow creators, not platform (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)
+	pkgver = 3
+	pkgrel = 1
+	url = https://github.com/futo-org/Grayjay.Desktop
+	arch = x86_64
+	license = GPL3
+	makedepends = dotnet-sdk
+	makedepends = git
+	depends = dotnet-runtime
+	source = grayjay-3.tar.gz::https://github.com/futo-org/Grayjay.Desktop/archive/refs/tags/3.tar.gz
+	source = grayjay-engine::git+https://github.com/futo-org/Grayjay.Engine.git
+	source = futo-mdns::git+https://github.com/futo-org/FUTO.MDNS.git
+	sha256sums = d92e55a3c186b5a7549a956e08952ca6655d4941ffb08ed602b3a939b555cafb
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = grayjay-git
