@@ -5,7 +5,7 @@
 _variant=gaokun3
 pkgbase=linux-$_variant
 pkgver=6.12.y
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux for HUAWEI MateBook E Go (sc8280xp)'
 url='https://github.com/steev/linux.git'
 arch=('any')
@@ -140,8 +140,10 @@ _package() {
     kmod
   )
   optdepends=(
-    'wireless-regdb: to set the correct wireless channels of your country'
+    'linux-firmware: firmware images needed for some devices'
     'linux-firmware-gaokun3: Firmware files for HUAWEI MateBook E Go (sc8280xp)'
+    'linux-firmware-qcom: Firmware files for Qualcomm SoCs'
+    'wireless-regdb: to set the correct wireless channels of your country'
   )
   provides=(
     KSMBD-MODULE
