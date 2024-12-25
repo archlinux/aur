@@ -3,9 +3,9 @@
 # Contributor: Adam Ehlers Nyholm Thomsen<adament@adament.net>
 
 pkgname=davix
-pkgver=0.8.4
+pkgver=0.8.5
 _pkgver="R_${pkgver//./_}"
-pkgrel=3
+pkgrel=1
 pkgdesc="A client for data and file management over the WebDav, Amazon S3, Microsoft Azure and HTTP protocols."
 arch=('x86_64')
 url="https://github.com/cern-fts/davix"
@@ -18,7 +18,7 @@ source=(
   "${pkgname}-curl::git+https://github.com/curl/curl"
   "${pkgname}-googletest::git+https://github.com/google/googletest"
 )
-b2sums=('SKIP'
+b2sums=('cd5b5b70e3f322be9c6e01ee38e40093932496a4cbbbd28e979f8fd33ba639e035b2ba02cfe72287c64b4821788210985b5d176ba90a9b7ceac7d6688c264658'
         'SKIP'
         'SKIP')
 
@@ -29,6 +29,8 @@ prepare() {
   git config submodule."deps/curl".url "${srcdir}/${pkgname}"-curl
   git config submodule."deps/googletest".url "${srcdir}/${pkgname}"-googletest
   git -c protocol.file.allow=always submodule update --init --recursive
+
+  git cherry-pick -n ed440bba8b405f57f97a793b517c8e0a30cb6ce0 # Fix build
 
   mkdir -p build
 }
@@ -57,3 +59,4 @@ package() {
   cd "${srcdir}/${pkgname}"/build
   make DESTDIR="${pkgdir}/" install
 }
+
