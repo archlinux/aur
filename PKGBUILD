@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname=systemd-timer-notify
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Displays a desktop notification when a systemd service starts and automatically closes it when the service finishes."
 arch=('any')
@@ -12,12 +12,12 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 backup=("etc/${pkgname}.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('947a08f394df96f3bac77e97a2a3d2dc4c3ea93c83b381ff2d5d4f350750537d')
+sha256sums=('e0365ae6c87250cdedf10825d6444165dc0240acc886d44db459209fce7b1b23')
 
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -dm 755 "usr/share/doc/${pkgname}/"
   cp -r screenshots README.md CHANGELOG.md "usr/share/doc/${pkgname}/"
-  cp -vr usr etc "$pkgdir"
+  cp -r usr etc "$pkgdir"
 }
