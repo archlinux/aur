@@ -1,4 +1,4 @@
-pkgbase = dropbear
+pkgbase = dropbear-dnat
 	pkgdesc = Lightweight SSH server
 	pkgver = 2024.86
 	pkgrel = 1
