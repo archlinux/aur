@@ -3,12 +3,11 @@
 
 pkgname='stanc'
 pkgdesc="A package for obtaining Bayesian inference using the No-U-Turn sampler, a variant of Hamiltonian Monte Carlo."
-pkgver=2.35.0
-_mathver=4.9.0
-pkgrel=3
+pkgver=2.36.0
+pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://mc-stan.org/'
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('gcc-libs')
 makedepends=(
   # needed if compile against system library
@@ -28,8 +27,8 @@ source=("stanc-${pkgver}.tar.gz::https://github.com/stan-dev/cmdstan/archive/ref
   cli11.patch
   local
 )
-sha512sums=('6d4305abcab29bb352530795f32f9a85d6f85dc9373059ea14782272f6ac92dd13cfcb1f13f6af79514d51566c1e7bb64d62ff58d26118d62c53c2df1f3c41d8'
-  '36a6694c7fbebb3e7bb659ba754ae7a95703750a23b6ec1a0130cf39d251bae68662da74dd21e687bb81d9d2881cdbc5688973af103ae7fcf769f2c0aeb4eec3'
+sha512sums=('66e5c24391786675a3ddde0042a8a09018141b4bae1706eb3bc05366287cb02f448bd15d83f7560be8f90d5a747045f7d9c40c8ebcbd92d7456e47cb0d649276'
+  'dc2ccb8aa077a9bdde2caa71796b0a3718b88abfe62ab881e5171d988f4c839573d5c89a51eec54e8907f03157bb68acbcc26d523735cd5d90c219b0111c53cb'
   'c9ad30e8dcb9264315c7078f8f4495417e6937b0207b043776e1fab2acd10704d5518ae04aa535827d17178311014bbe1555692aec0833b7c039e9af1e6c5ad5'
   'b0ed660067f8266adc4eff0c8ef50ef2da0bdb4c161a82e02b6898b84a81740ca6968ec686b4a13140102a57aee23f9b3df1208ca460120db9e3325e1903c7b4')
 
