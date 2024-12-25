@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=csbooks-bin
 _pkgname=csBooks
-pkgver=8.2.2
+pkgver=8.4.0
 _electronversion=13
-pkgrel=3
-pkgdesc="A smart book management and reading software,also a PDF reader, EPUB reader, MOBI reader and DJVU file reader.Prebuilt version.Use system-wide electron."
+pkgrel=1
+pkgdesc="A smart book management and reading software,also a PDF reader, EPUB reader, MOBI reader and DJVU file reader.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://caesiumstudio.com/csbooks/"
 _ghurl="https://github.com/caesiumstudio/csBooks-updates"
@@ -16,13 +16,13 @@ depends=(
 )
 source=(
     "${pkgname}-${pkgver}.pacman::${_ghurl}/releases/download/latest/${_pkgname}-${pkgver}.pacman"
-    "LICENSE-${pkgver}.html"
+    "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a6f544e1b9a6546701a304b651b9ab6f34b20866ad832f88378085bcc666a95e'
+sha256sums=('52104c94a3bb8b29591642a29391f9f6f73faf20715b7982bcf61dc2ced60eef'
             'a54c7d4ad986843b71f0b31fc110e5c5b62634518198731207e503e8642f5d4b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
@@ -42,5 +42,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
+    install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
