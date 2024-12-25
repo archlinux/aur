@@ -1,0 +1,19 @@
+Index: vdr-plugin-radio/radioaudio.c
+===================================================================
+--- vdr-plugin-radio.orig/radioaudio.c  2024-09-14 18:32:18.644732674 +0200
++++ vdr-plugin-radio/radioaudio.c       2024-09-14 18:32:18.639732740 +0200
+@@ -2392,7 +2392,14 @@
+     // check end @ replay
+     if (RT_Replay) {
+         int rplayCur, rplayTot;
++#if APIVERSNUM > 20402
++       {
++            cMutexLock ControlMutexLock;
++            cControl::Control(ControlMutexLock)->GetIndex(rplayCur, rplayTot, false);
++       }
++#else
+         cControl::Control()->GetIndex(rplayCur, rplayTot, false);
++#endif
+         if (rplayCur >= rplayTot - 1) {
+             Hide();
+             return osEnd;
