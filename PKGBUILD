@@ -3,8 +3,8 @@
 
 _pkgname=cdpcurl
 pkgname="$_pkgname-git"
-pkgver=r12.g8dc4b89
-pkgrel=2
+pkgver=r16.gc315d8d
+pkgrel=1
 pkgdesc='CLI for the Coinbase Developer Platform (CDP)'
 url='https://github.com/coinbase/cdpcurl'
 arch=('aarch64' 'i686' 'x86_64')
