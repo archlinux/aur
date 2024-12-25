@@ -4,13 +4,13 @@
 
 pkgbase=jellyfin-git
 pkgname=(jellyfin-git jellyfin-web-git jellyfin-server-git)
-pkgver=10.8.0.alpha5.r2652.gfd1dc860c9
+pkgver=10.11.0.r26689.5774b60
 pkgrel=1
 pkgdesc='The Free Software Media System'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://github.com/jellyfin/jellyfin'
 license=('GPL2')
-makedepends=('dotnet-sdk>=8' 'npm' 'git')
+makedepends=('dotnet-sdk>=9' 'npm' 'git')
 provides=('jellyfin')
 conflicts=('jellyfin')
 source=('git+https://github.com/jellyfin/jellyfin.git'
@@ -28,8 +28,8 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd jellyfin
-  # cutting off 'v' prefix that presents in the git tag
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "%s.r%s.%s" "$(grep AssemblyVersion SharedVersion.cs | cut -d'"' -f2)" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build(){
@@ -46,7 +46,7 @@ build(){
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
   # Force dotnet to use 8.x when multiple SDKs are installed
-  dotnet new globaljson --sdk-version 8.0.0 --roll-forward latestMinor --force
+  dotnet new globaljson --sdk-version 9.0.0 --roll-forward latestMinor --force
 
   dotnet build --configuration Release Jellyfin.Server
   # Ideally, this would be run in package() with the --output variable pointing
@@ -66,7 +66,7 @@ package_jellyfin-git() {
 
 package_jellyfin-server-git() {
   pkgdesc="Jellyfin server component"
-  depends=('dotnet-runtime>=8' 'aspnet-runtime>=8' 'ffmpeg' 'sqlite')
+  depends=('dotnet-runtime>=9' 'aspnet-runtime>=9' 'ffmpeg' 'sqlite')
   backup=('etc/conf.d/jellyfin')
   provides=('jellyfin-server')
   conflicts=('jellyfin-server')
