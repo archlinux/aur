@@ -23,7 +23,6 @@ makedepends=(
     'nvm'
     'gendesk'
     'curl'
-    'python'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"

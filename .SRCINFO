@@ -9,7 +9,6 @@ pkgbase = creamplayer
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
-	makedepends = python
 	depends = electron33
 	depends = python
 	depends = python-requests
