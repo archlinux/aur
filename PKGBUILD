@@ -1,26 +1,46 @@
-# Maintainer: Gabriele Musco <emaildigabry@gmail.com>
-# Upstream URL: https://github.com/jath03/openrgb-python
+# Maintainer:
+# Contributor: Gabriele Musco <emaildigabry@gmail.com>
 
-pkgname=python-openrgb-git
-pkgver=v0.0.7.r1.g801c085
+_pkgname="python-openrgb"
+pkgname="$_pkgname-git"
+pkgver=0.3.3.r0.g0e678de
 pkgrel=1
 pkgdesc="A python client for the OpenRGB SDK"
-arch=('any')
 url="https://github.com/jath03/openrgb-python"
-license=('GPL-3.0')
-makedepends=('python-setuptools' 'git')
-depends=('openrgb' 'python')
-conflicts=('python-openrgb')
-provides=('python-openrgb')
-source=("python-openrgb::git+$url")
+license=('GPL-3.0-only')
+arch=('any')
+
+depends=(
+  'openrgb'
+  'python'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+
+conflicts=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/python-openrgb"
-  git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$_pkgsrc"
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
-  cd "${srcdir}/python-openrgb"
-  python setup.py install --root="${pkgdir}"
+  cd "$_pkgsrc"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }

@@ -1,0 +1,4 @@
+[python-openrgb-git]
+source = "git"
+git = "https://github.com/jath03/openrgb-python.git"
+prefix = "v"
