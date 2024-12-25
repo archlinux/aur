@@ -1,0 +1,21 @@
+pkgbase = paragraph-editor-git
+	pkgdesc = Text editor focused on story creation tools.(Use system-wide electron)
+	pkgver = r12.41c404a
+	pkgrel = 1
+	url = https://github.com/emanoelhenrick/Paragraph
+	arch = any
+	license = Unlicense
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron30
+	provides = paragraph-editor=r12.41c404a
+	conflicts = paragraph-editor
+	source = paragraph-editor.git::git+https://github.com/emanoelhenrick/Paragraph
+	source = paragraph-editor.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = paragraph-editor-git
