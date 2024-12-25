@@ -1,7 +1,7 @@
 pkgbase = python-pythumbnailer
 	pkgdesc = Create static HTML galleries with thumbnails
 	pkgver = 0.9.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/somini/pythumbnailer/
 	arch = any
 	license = GPL
