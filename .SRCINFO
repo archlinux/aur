@@ -5,5 +5,7 @@ pkgbase = grayjay
 	url = https://grayjay.app/desktop/
 	arch = any
 	license = Source First License 1.1
+	depends = grayjay-bin
+	conflicts = grayjay-git
 
 pkgname = grayjay

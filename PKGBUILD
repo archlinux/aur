@@ -6,6 +6,8 @@ pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-
 arch=('any')
 url="https://grayjay.app/desktop/"
 license=('Source First License 1.1')
+depends=('grayjay-bin')
+conflicts=('grayjay-git')
 
 package() {
     # This is an empty meta package
