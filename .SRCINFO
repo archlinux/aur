@@ -1,6 +1,6 @@
 pkgbase = python-pptx
 	pkgdesc = A Python library for creating and updating PowerPoint (.pptx) files
-	pkgver = 0.6.23
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/scanny/python-pptx
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-pptx
 	depends = python-pillow>=3.3.2
 	depends = python-pytest>=2.5
 	depends = python-xlsxwriter>=0.5.7
-	source = python-pptx-0.6.23.tar.gz::https://github.com/scanny/python-pptx/archive/refs/tags/v0.6.23.tar.gz
-	sha256sums = 64e0546c0c4267f5362810b2cea4c8e4e44805522aded202fdcc5f9936d50363
+	source = python-pptx-1.0.2.tar.gz::https://github.com/scanny/python-pptx/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 1eddfbb81fa264345a205f53714d0ee0c544bada7d7e866b8d531bc7d4a30989
 
 pkgname = python-pptx
