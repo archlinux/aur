@@ -4,19 +4,26 @@
 pkgbase=vdr-mp3
 pkgname=('vdr-mp3' 'vdr-mplayer')
 pkgver=0.10.4
-_vdrapi=2.6.7
-pkgrel=7
+_vdrapi=5
+pkgrel=8
 url="https://github.com/vdr-projects/vdr-plugin-mp3"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' 'libid3tag' 'libmad' 'libsndfile' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-mp3/archive/refs/tags/$pkgver.tar.gz"
+        "${pkgname}-vdr-2.7.1-compat.patch"
         "50-mp3.conf"
         "50-mplayer.conf")
 sha256sums=('76c1af908b588b46a18f8f3a0f3db77f5859ef318654a7ee242d7a8e5db1ca2a'
+            '74da0b7d2a81ab3cfca973ace280ea573dc1a2978760ac209b824920a7c27da6'
             '20e317563665dde7d87e947199218a8ae818e266dfc8708fd02f183b2e544e10'
             'af37a97a79d9ec79b50d59d45e8f7e0c7660a71090162d69610d13469260d804')
+
+prepare() {
+  cd "$srcdir/vdr-plugin-$_plugname-$pkgver"
+  patch -p1 -i "${srcdir}/${pkgname}-vdr-2.7.1-compat.patch"
+}
 
 package_vdr-mp3() {
   pkgdesc="Allows playback of MP3 and other audio files."

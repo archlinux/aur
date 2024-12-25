@@ -1,0 +1,22 @@
+--- a/mp3.c
++++ b/mp3.c
+@@ -281,7 +281,8 @@ void cMP3Control::Stop(void)
+ bool cMP3Control::SetPlayList(cPlayList *plist)
+ {
+   bool res;
+-  cControl *control=cControl::Control();
++  cMutexLock ControlMutexLock;
++  cControl *control = cControl::Control(ControlMutexLock);
+   // is there a running MP3 player?
+   if(control && typeid(*control)==typeid(cMP3Control)) {
+     // add songs to running playlist
+@@ -1694,7 +1695,8 @@ cString cPluginMp3::SVDRPCommand(const char *Command, const char *Option, int &R
+     else { ReplyCode=501; return "Missing filename"; }
+     }
+   else if(!strcasecmp(Command,"CURR")) {
+-    cControl *control=cControl::Control();
++    cMutexLock ControlMutexLock;
++    cControl *control = cControl::Control(ControlMutexLock);
+     if(control && typeid(*control)==typeid(cMP3Control)) {
+       cMP3PlayInfo mode;
+       if(mgr->Info(-1,&mode)) return mode.Filename;
