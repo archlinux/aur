@@ -1,6 +1,6 @@
-# Maintainer: Sainnhe Park <sainnhe@gmail.com>
+# Maintainer: Nathan Chere <git@nathanchere.com.au>
 pkgname=sddm-sugar-candy-git
-pkgver=r53.2b72ef6
+pkgver=1.6r42.d31dbf5
 pkgrel=1
 pkgdesc="Sugar Candy is the sweetest login theme available for the SDDM display manager."
 arch=('any')
@@ -11,12 +11,12 @@ makedepends=('git')
 provides=("sddm-sugar-candy")
 conflicts=("sddm-sugar-candy")
 backup=('usr/share/sddm/themes/sugar-candy/theme.conf')
-source=('sugar-candy::git+https://framagit.org/MarianArlt/sddm-sugar-candy.git')
+source=('sugar-candy::git+https://github.com/Kangie/sddm-sugar-candy.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/sugar-candy"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "1.6r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
