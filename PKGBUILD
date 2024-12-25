@@ -5,7 +5,7 @@
 pkgname=python-pep8-naming
 _name=${pkgname#python-}
 pkgver=0.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="This module provides a name plugin for flake8, the Python code checker"
 arch=(any)
 url="https://github.com/PyCQA/pep8-naming"
