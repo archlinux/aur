@@ -1,4 +1,5 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: sonofaglitch <sonofaglitch@mailbox.org>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Christian Babeux <christian.babeux@0x80.ca>
 
 pkgname=gambit-c
