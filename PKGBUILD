@@ -1,8 +1,9 @@
 # Maintainer: username227 <gfrank227 [at] gmail [dot] com>
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 pkgname=shadps4
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+_pkgname=shadPS4
+pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
 url="https://shadps4.net/"
@@ -18,6 +19,8 @@ depends=(
 )
 makedepends=(
 	'boost>=1.84'
+	'clang'
+	'ninja'
 	'cmake>=3.16.3'
 	'ffmpeg'
 	'fmt>=10.2'
@@ -46,18 +49,71 @@ optdepends=(
 )
 provides=("$pkgname=$pkgver")
 conflicts=("$pkgname-git")
+options=("!debug")
 source=(
-	"$pkgname::git+https://github.com/shadps4-emu/shadPS4.git#tag=v.${pkgver}"
-	"$pkgname-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git"
-	"$pkgname-imgui::git+https://github.com/shadps4-emu/ext-imgui.git"
-	"$pkgname-libatrac9::git+https://github.com/shadps4-emu/ext-LibAtrac9.git"
-	"$pkgname-sirit::git+https://github.com/shadps4-emu/sirit.git"
-	"$pkgname-tracy::git+https://github.com/shadps4-emu/tracy.git"
-	"libpng::git+https://github.com/pnggroup/libpng.git"
-	"zydis::git+https://github.com/zyantific/zydis.git"
+	"git+https://github.com/shadps4-emu/shadPS4.git#tag=v.${pkgver}"
+	"git+https://github.com/shadps4-emu/ext-cryptopp.git"
+	"git+https://github.com/shadps4-emu/ext-cryptoppwin.git"
+	"git+https://github.com/shadps4-emu/ext-zlib-ng.git"
+	"git+https://github.com/shadps4-emu/ext-SDL.git"
+	"git+https://github.com/shadps4-emu/ext-fmt.git"
+	"git+https://github.com/KhronosGroup/Vulkan-Headers.git"
+	"git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 	"git+https://github.com/KhronosGroup/glslang.git"
+	"git+https://github.com/Tessil/robin-map.git"
+	"git+https://github.com/herumi/xbyak.git"
+	"git+https://github.com/shadps4-emu/winpthreads.git"
+	"git+https://github.com/Neargye/magic_enum.git"
+	"git+https://github.com/ToruNiina/toml11.git"
+	"zygis::git+https://github.com/zyantific/zydis.git"
+	"git+https://github.com/shadps4-emu/sirit.git"
+	"git+https://github.com/Cyan4973/xxHash.git"
+	"git+https://github.com/shadps4-emu/tracy.git"
+	"git+https://github.com/shadps4-emu/ext-boost.git"
+	"git+https://github.com/HowardHinnant/date.git"
+	"git+https://github.com/shadps4-emu/ext-ffmpeg-core.git"
+	"git+https://github.com/ROCm/half.git"
+	"git+https://github.com/shadps4-emu/ext-imgui.git"
+	"git+https://github.com/zeux/pugixml.git"
+	"git+https://github.com/shadps4-emu/ext-discord-rpc.git"
+	"git+https://github.com/shadps4-emu/ext-LibAtrac9.git"
+	"libpng::git+https://github.com/pnggroup/libpng.git"
+	"git+https://github.com/USCiLab/cereal"
+	"git+https://github.com/KhronosGroup/MoltenVK"
+	"git+https://github.com/KhronosGroup/SPIRV-Cross"
+	"git+https://github.com/KhronosGroup/SPIRV-Headers"
+	"git+https://github.com/doctest/doctest.git"
+	"git+https://github.com/nlohmann/json.git"
+	"git+https://github.com/alex-shpak/hugo-book.git"
+	"git+https://github.com/zyantific/zycore-c"
 )
-b2sums=('1fc08bc3a73c306e0bb87bd8f255ceb54e28b30fd20e29a276acf43fc4d7a351227b43f0ab78d0d8cd63eea90441a7f4f539c9ead2ab9129a780172b8051c67d'
+b2sums=('25eee1abe55fff35c406ac6cba0e76f1ff74444d59d6927b423b5ca804b11defe71aaee75b7cc02206cdf1b0d0d213988c7c9105418ede9cdb1f9df685c6237b'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -68,29 +124,38 @@ b2sums=('1fc08bc3a73c306e0bb87bd8f255ceb54e28b30fd20e29a276acf43fc4d7a351227b43f
         'SKIP')
 
 prepare() {
-	cd $pkgname
-	git config submodule.externals/dear_imgui.url ../$pkgname-imgui
-	git config submodule.externals/discord-rpc.url ../$pkgname-discord-rpc
-	git config submodule.externals/LibAtrac9.url ../$pkgname-libatrac9
-	git config submodule.externals/libpng.url ../libpng
-	git config submodule.externals/sirit.url ../$pkgname-sirit
-	git config submodule.externals/tracy.url ../$pkgname-tracy
-	git config submodule.externals/zydis.url ../zydis
-	git config submodule.externals/glslang.url ../glslang
-	git -c protocol.file.allow=always submodule update
-	sed -i '/\/zlib-ng/d' externals/CMakeLists.txt
+    cd "$srcdir/$_pkgname"
+    git submodule init
+    for submodule in {cryptopp-cmake,cryptopp,cryptoppwin,zlib-ng,sdl3,fmt,vulkan-headers,vma,glslang,robin-map,xbyak,winpthreads,magic_enum,toml11,zydis,sirit,xxhash,tracy,ext-boost,date,ffmpeg-core,half,dear_imgui,pugixml,discord-rpc,LibAtrac9,libpng,cereal,MoltenVK,SPIRV-Cross};
+    do
+    git config submodule.${submodule}.url "$srcdir/${submodule}"
+    done
+    git -c protocol.file.allow=always submodule update
+    cd $srcdir/$_pkgname/externals/sirit
+    git submodule init
+    git config submodule.externals/sirit/externals/SPIRV-Headers.url ../SPIRV-Headers
+    git -c protocol.file.allow-always submodule update
+    cd $srcdir/$_pkgname/externals/toml11
+    git submodule init
+    for submodule in {doctest,json,hugo-book};
+    do
+    git config submodule.${submodule}.url "../{submodule}"
+    done
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
-	cmake -B build -S $pkgname \
+	cmake -B build -S $_pkgname -G Ninja \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_CXX_COMPILER=clang++ \
+		-DCMAKE_C_COMPILER=clang \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_SKIP_INSTALL_RPATH=ON \
 		-DENABLE_QT_GUI=ON \
 		-DENABLE_UPDATER=OFF \
-		-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
+		-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=OFF \
 		-Wno-dev
 	cmake --build build
 }
