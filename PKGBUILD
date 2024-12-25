@@ -2,7 +2,7 @@
 
 pkgname=lcevcdec-git
 pkgver=3.2.1.r12.g364ae4f
-pkgrel=1
+pkgrel=2
 pkgdesc='Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC) (git version)'
 arch=('x86_64')
 url='https://github.com/v-novaltd/LCEVCdec/'
@@ -29,6 +29,8 @@ build() {
     cmake -B build -S LCEVCdec \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DVN_CORE_AVX2:BOOL='OFF' \
+        -DVN_CORE_SSE:BOOL='OFF' \
         -DVN_SDK_FFMPEG_LIBS_PACKAGE:STRING='' \
         -DVN_SDK_SAMPLE_SOURCE:BOOL='OFF' \
         -DVN_SDK_UNIT_TESTS:BOOL='OFF' \
