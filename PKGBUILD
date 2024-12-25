@@ -1,40 +1,58 @@
-# Maintainer: Matyas Mehn <matyas.mehn at tum dot de>
-# PKGBUILD adapted from: Daniel Landau <aur@landau.fi> https://aur.archlinux.org/packages/qcsxcad
+# Maintainer:
+# Contributor: Matyas Mehn <matyas.mehn at tum dot de>
 
-_pkgname=QCSXCAD
-pkgname=qcsxcad-git
-provides=("qcsxcad")
-conflicts=("qcsxcad")
-pkgver=20220317
+_pkgname="qcsxcad"
+pkgname="$_pkgname-git"
+pkgver=0.6.3.r2.ga6a9c0e
 pkgrel=1
 pkgdesc="Qt-GUI for CSXCAD"
+url="https://github.com/thliebig/QCSXCAD"
+license=("LGPL-3.0-or-later")
 arch=("x86_64")
-url="https://github.com/thliebig/$_pkgname"
-license=("LGPL3")
-depends=("csxcad-git" "openems" "tinyxml" "vtk" "qt5-base" "ospray" "openvr" "pdal" "liblas" "adios2" "gl2ps" "cgns" "openmpi" "openmp" "eigen" "utf8cpp")
-makedepends=("cmake" "python-mpi4py")
-optdepends=()
-source=("git+https://github.com/thliebig/$_pkgname"
+
+depends=(
+  'csxcad' # AUR
+  'qt5-base'
+  'tinyxml'
+  'vtk'
 )
-md5sums=('SKIP')
+makedepends=(
+  'cmake'
+  'fmt'
+  'glew'
+  'ninja'
+  'nlohmann-json'
+  'openmpi'
+  'verdict'
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git show -s --format="%ci" HEAD | sed -e 's/-//g' -e 's/ .*//'
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  mkdir -p build
+  cd "$_pkgname"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}/build"
-  cmake ..
-  make
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}/build"
-  make install DESTDIR="$pkgdir"
+  DESTDIR="$pkgdir" cmake --install build
 }
