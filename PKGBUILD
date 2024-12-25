@@ -3,7 +3,7 @@
 
 pkgname=starlark-rust
 _pkgname=starlark
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Rust implementation of the Starlark language'
 arch=('x86_64')
@@ -14,20 +14,23 @@ makedepends=('git' 'rustup')
 provides=('starlark')
 options=('!lto')
 source=("https://github.com/facebookexperimental/starlark-rust/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4d2cd3fbd9254b61d8251299adac5f61a5d5cd97fb5d63423b875e5fefb85e1c')
+sha256sums=('c27d974dd242f133184a5fc53a145374f193464e163fa6fbd4cade566e3cfab6')
 
 prepare() {
   cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
   cargo build --frozen --release --workspace
 }
 
 check() {
   cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --workspace
 }
 
