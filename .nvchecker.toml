@@ -1,0 +1,7 @@
+[gtypist]
+source = "git"
+git = "https://git.savannah.gnu.org/git/gtypist.git"
+include_regex = "^release-.*$"
+prefix = "release-"
+from_pattern = "-"
+to_pattern = "."

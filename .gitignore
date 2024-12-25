@@ -2,4 +2,5 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
-!gtypist_fix_ncurses.patch
+!.nvchecker.toml
+!*.patch
