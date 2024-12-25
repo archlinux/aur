@@ -1,7 +1,7 @@
 pkgbase = lammps
 	pkgdesc = Public development project of the LAMMPS MD software package
 	pkgver = 20240829
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lammps.org
 	arch = x86_64
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = lammps
 	depends = ffmpeg
 	depends = libpng
 	depends = python
-	depends = qt6-charts
+	depends = intel-oneapi-mkl
 	optdepends = clang
 	optdepends = python
 	optdepends = python-mpi4py
