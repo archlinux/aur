@@ -28,9 +28,6 @@ build() {
 
 package() {
   make -C ${_srcname} install DESTDIR="$pkgdir"
-  # /usr/bin/gsc conflicts with ghostscript
-  mv "$pkgdir/usr/bin/gsc" "$pkgdir/usr/bin/gambitc"
-  ln -sf /usr/bin/gambitc "$pkgdir/usr/bin/gsc-script"
 }
 
 # getver: github.com/gambit/gambit/releases/latest
