@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deeplink-launcher-bin
-_pkgname="DeepLink Launcher"
-pkgver=1.7.3
+_pkgname='DeepLink Launcher'
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="A multiplatform app designed for executing and managing deeplinks.(Prebuilt version)"
 arch=('x86_64')
