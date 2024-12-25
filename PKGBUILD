@@ -3,7 +3,7 @@
 pkgname=python-eduvpn-client
 _name=$pkgname
 pkgver=4.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux client and Python client API for eduVPN"
 arch=('any')
 url="https://codeberg.org/eduVPN/linux-app"
@@ -18,6 +18,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 source=("$url/releases/download/${pkgver}/${_name}-${pkgver}.tar".{xz,xz.asc})
 sha256sums=('2074488ebc8021e19c16acf904c5ac134fe00a56929a7c168637357f573af6f9'
             'SKIP')
+validpgpkeys=('227FF3F8F829D9A9314D9EBA02BB8048BBFF222C')
 
 # NOTE GPG keys can be found under the `keys/` directory in `src/python-eduvpn-client-$pkgver`.
 
