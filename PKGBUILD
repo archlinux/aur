@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onekey-wallet-bin
 _pkgname=OneKey-Wallet
-pkgver=5.4.0
+pkgver=5.5.0
 _electronversion=27
 pkgrel=1
 pkgdesc="Secure, open source and community driven crypto wallet runs on all platforms and trusted by millions.(Prebuilt version.Use system-wide electron)"
@@ -31,9 +31,9 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('e8b21e6b13acb10a5f30b65ee62e60ac3be128dc7098fd2eeb27ccf7e6615f03')
-sha256sums_x86_64=('058b0f511d3e1990c8dd23b8ee0848db3265a93ea03e044c9405960e1cb3179d')
-build() {
+sha256sums_aarch64=('1ffc8fb1d014396e494a230b72cd16ee68648f6cff4f781d729b7d6da378d1aa')
+sha256sums_x86_64=('4ad6baf6b59ce32d09ccc39d3883430857f231bc12c0286e312ae076b6fc46a1')
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
