@@ -3,11 +3,11 @@
 
 pkgname=utterly-round-plasma-style
 pkgver=2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A rounded Desktop theme and Window borders for Plasma 5 that follows
 any color scheme'
 url='https://github.com/HimDek/Utterly-Round-Plasma-Style'
-_commit='ebb9f1d6078382c67dd5fc14bc8c5f631dc21419'
+_commit='7e011c19382f8afa99daac3226828ce82eaf4f13'
 arch=('any')
 license=('GPL2')
 depends=('kwin')
