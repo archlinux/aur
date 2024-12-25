@@ -1,7 +1,7 @@
 pkgbase = run-reduce-deb
 	pkgdesc = A Java GUI frontend for REDUCE
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fjwright/Run-REDUCE
 	arch = any
 	license = GPL3
@@ -10,6 +10,8 @@ pkgbase = run-reduce-deb
 	depends = java-environment>=16
 	provides = run-reduce
 	source = https://github.com/fjwright/Run-REDUCE/releases/download/v3.1/run-reduce_3.1-1_amd64.deb
+	source = run-reduce.desktop
 	sha256sums = a25c70f68b054469bf95aa80537a0b9746a983dc21e1a388ce903169fcb72804
+	sha256sums = 4657b457709b6f9dff282d789e073b44a79a9e04a341e01331d91c11d391ebed
 
 pkgname = run-reduce-deb

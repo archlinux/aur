@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Run Reduce Algebra System
+GenericName=Computer Algebra System
+Comment=Run the Reduce Computer Algebra System
+Exec=/usr/bin/run-reduce
+Icon=reduce
+Type=Application
+Terminal=false
+Categories=Education;Math;
