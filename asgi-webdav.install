@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+_pkgname=asgi-webdav
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+post_install() {
+    note "Please modify the configuration file '/etc/$_pkgname/config.json' according to https://rexzhang.github.io/asgi-webdav/reference/config-file"
+}
