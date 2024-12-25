@@ -1,0 +1,20 @@
+--- feed2toot/confparse.py	2024-12-25 11:00:38.256786434 -0500
++++ feed2toot/confparse.py.new	2024-12-25 11:04:27.329377923 -0500
+@@ -17,7 +17,7 @@
+ '''Get values of the configuration file'''
+ 
+ # standard library imports
+-from configparser import SafeConfigParser
++from configparser import ConfigParser
+ import logging
+ import os
+ import os.path
+@@ -58,7 +58,7 @@
+         for pathtoconfig in self.clioptions.configs:
+             options = {}
+             # read the configuration file
+-            config = SafeConfigParser()
++            config = ConfigParser()
+             if not config.read(os.path.expanduser(pathtoconfig)):
+                 sys.exit('Could not read config file')
+             ####################
