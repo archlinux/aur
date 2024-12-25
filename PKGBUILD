@@ -1,6 +1,6 @@
 # Maintainer: Ilya Zlobintsev <ilya.zlve@gmail.com>
 pkgname=qbittorrent-cli-bin
-pkgver=1.8.24012.1
+pkgver=1.8.24285.1
 pkgrel=1
 pkgdesc="Command line interface for remote qBittorrent instances"
 arch=("any")
@@ -21,9 +21,9 @@ changelog=
 source_x86_64=("https://github.com/fedarovich/qbittorrent-cli/releases/download/v${pkgver}/qbt-linux-x64-net6-${pkgver}.tar.gz")
 source_arm=("https://github.com/fedarovich/qbittorrent-cli/releases/download/v${pkgver}/qbt-linux-arm-net6-${pkgver}.tar.gz")
 source_aarch64=("https://github.com/fedarovich/qbittorrent-cli/releases/download/v${pkgver}/qbt-linux-arm64-net6-${pkgver}.tar.gz")
-sha256sums_x86_64=('49511e02b694d475c1cb89220230fe31263a3938d9e1b9e33d09ed220718a3b0')
-sha256sums_arm=('d5a7fcd68b21da6d4f676da34b152686e6a24a60dc7e9519d07d37a5d28add9d')
-sha256sums_aarch64=('1aa9849b606fd558bbe2b5dae421506696a0c185beda55e48b7a82a91807dab2')
+sha256sums_x86_64=('c261e875bb1fc566e54c5427d06761f4d61ea483e5917d60840aa44a33ee1c92')
+sha256sums_arm=('d724753bd4b8cc599f1ff20f8ca98988e72d7a83d99aba82faaca60b5416c039')
+sha256sums_aarch64=('3cb7c236bdc62b476c6a1256eeeba3a402da44195c4cd23c91ead6c3e0ecb72f')
 
 package() {
 	mkdir -p "$pkgdir/usr/lib/$pkgname"
