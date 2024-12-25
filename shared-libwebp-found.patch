@@ -1,0 +1,11 @@
+diff -ura aseprite.orig/CMakeLists.txt aseprite.new/CMakeLists.txt
+--- aseprite.orig/CMakeLists.txt	2024-12-25 12:50:48.325195746 -0800
++++ aseprite.new/CMakeLists.txt	2024-12-25 12:51:47.829384607 -0800
+@@ -361,6 +361,7 @@
+     find_library(WEBPMUX_LIBRARY NAMES webpmux)
+     set(WEBP_LIBRARIES ${WEBP_LIBRARY} ${WEBPDEMUX_LIBRARY} ${WEBPMUX_LIBRARY})
+     find_path(WEBP_INCLUDE_DIRS NAMES decode.h PATH_SUFFIXES webp)
++    set(WEBP_FOUND ON)
+   else()
+     find_library(WEBP_LIBRARIES webp
+       NAMES libwebp # required for Windows

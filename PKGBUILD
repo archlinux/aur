@@ -7,12 +7,13 @@
 # Contributor: Benoit Favre <benoit.favre@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
+# Contributor: Jomar Milan <jomarm@jomarm.com>
 
 pkgname=aseprite
 pkgver=1.3.10.1
 _skiaver=m102
 _skiahash=861e4743af
-pkgrel=3
+pkgrel=4
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -50,7 +51,8 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         shared-libwebp.patch
         shared-skia-deps.patch
         optional-pixman.patch
-        fix-shared-tinyxml2.patch)
+        fix-shared-tinyxml2.patch
+        shared-libwebp-found.patch)
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
 sha256sums=('8eea1db7f3465c5d1442c19599de53ab6d69431767ffa320459f5c3ff8cc80b4'
@@ -61,7 +63,8 @@ sha256sums=('8eea1db7f3465c5d1442c19599de53ab6d69431767ffa320459f5c3ff8cc80b4'
             '0f8adb959d7000697af453d6cf5aaf9984b74868008382aad541d2c29871c751'
             'eb9f544e68b41b5cb1a9ab7a6648db51587e67e94f1a452cb5a84f3d224bf5d0'
             'c2d14f9738a96a9db3695c00ac3d14b1312b6a595b151bd56e19422c86517654'
-            'ba02fc060dc930cfd66a8903a5d8a59f981753bdf416e91cc77a48c56c86aea3')
+            'ba02fc060dc930cfd66a8903a5d8a59f981753bdf416e91cc77a48c56c86aea3'
+            '72605d6760c29eb98f2d8d8cf2cc9f9f7d7655bcf7cfc944f6a46b0957adbb14')
 _debug="true"
 prepare() {
 	# Extract Aseprite's sources
@@ -89,6 +92,8 @@ prepare() {
 	# TinyEXIF cannot find tinyxml2 otherwise
 	[[ -n $_debug ]] && echo fix-shared-tinyxml2.patch
 	env -C aseprite/third_party/TinyEXIF patch -tp1 <fix-shared-tinyxml2.patch
+        [[ -n $_debug ]] && echo shared-libwebp-found.patch
+        env -C aseprite patch -tp1 <shared-libwebp-found.patch
 }
 
 build() {
