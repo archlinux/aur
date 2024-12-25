@@ -1,8 +1,8 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=onagre
-pkgver=1.1.0
-pkgrel=4
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="General purpose application launcher for X and Wayland inspired by Rofi/Wofi and Alfred"
 arch=(x86_64)
 url="https://github.com/$pkgname-launcher/$pkgname"
@@ -10,15 +10,13 @@ license=(MIT)
 depends=(
   gcc-libs
   glibc
-  fontconfig
-  freetype2
-  libxkbcommon
   pop-launcher
+  vulkan-driver
 )
 makedepends=(rust)
 options=(!debug !lto)
 source=($url/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('6a55eabc644e89ce3cab58369d8afec23e0a8c6fd497c87cbcb2b0343b2603bfce6ca246b3d892de56f04aa4f290049f8076feffa5181f130c43bb4f24f5914a')
+b2sums=('53172d6fbbc1299e215d4bd333d5e190a357b7adf01f8ec3357d06f1045243f6b620b813a21049f1a6e8835e9650342c2580e0ec984dedcd57a09bf6c72a4269')
 
 prepare() {
   cd $pkgname-$pkgver
