@@ -1,10 +1,5 @@
 post_install() {
-  echo "Run 'systemctl restart systemd-binfmt' in order to make the wine binfmt available on your system."
   post_upgrade
-}
-
-post_remove() {
-  echo "binfmt binary formats will be updated at reboot"
 }
 
 post_upgrade() {
@@ -13,7 +8,9 @@ post_upgrade() {
 }
 
 inform_patches() {
-  echo "Remember to export WINEESYNC=1 to use Esync or WINEFSYNC=1 to use Fsync"
+  echo "For optimal performance, please make sure your system has the ntsync module properly set up and loaded."
+  echo "'wine: using fast synchronization.' will be printed when starting wine if it is working correctly."
+  echo "You can still use Esync or Fsync instead if you export WINE_DISABLE_FAST_SYNC=1."
   echo ""
   echo "Please be aware winepulse.drv will negotiate the lowest possible period size with your audio server"
   echo "This will result in a 2.7ms period size with pipewire-pulse, as pulse.min.req = 128/48000 by default"
