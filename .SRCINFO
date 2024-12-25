@@ -1,6 +1,6 @@
 pkgbase = pinac-workspace-git
 	pkgdesc = OpenSource & Cross-Platform alternative of "Copilot for Windows".Use system-wide electron.
-	pkgver = 2.0.9.r35.gfd8bd96
+	pkgver = 2.0.9.r71.gc2e5198
 	pkgrel = 1
 	url = https://github.com/pinacai/PINAC_Workspace
 	arch = any
