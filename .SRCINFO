@@ -1,8 +1,8 @@
 pkgbase = python-eduvpn_common
 	pkgdesc = EduVPN common library for python clients
-	pkgver = 2.1.0
+	pkgver = 2.99.0
 	pkgrel = 1
-	url = https://github.com/eduvpn/eduvpn-common
+	url = https://codeberg.org/eduVPN/eduvpn-common
 	arch = x86_64
 	license = MIT
 	makedepends = go
@@ -12,10 +12,9 @@ pkgbase = python-eduvpn_common
 	makedepends = python-setuptools
 	depends = python
 	depends = glibc
-	source = https://github.com/eduvpn/eduvpn-common/releases/download/2.1.0/eduvpn-common-2.1.0.tar.xz
-	source = https://github.com/eduvpn/eduvpn-common/releases/download/2.1.0/eduvpn-common-2.1.0.tar.xz.asc
-	validpgpkeys = 227FF3F8F829D9A9314D9EBA02BB8048BBFF222C
-	sha256sums = 3a07229c478a303b598f74f0fbb70cb05dfce59653051fc9e5da888a10d3963f
+	source = https://codeberg.org/eduVPN/eduvpn-common/releases/download/2.99.0/eduvpn-common-2.99.0.tar.xz
+	source = https://codeberg.org/eduVPN/eduvpn-common/releases/download/2.99.0/eduvpn-common-2.99.0.tar.xz.asc
+	sha256sums = 86f810c5fc7594ab0255b0059f0a0118cc1af2e983d340b8c0eea177f202a683
 	sha256sums = SKIP
 
 pkgname = python-eduvpn_common

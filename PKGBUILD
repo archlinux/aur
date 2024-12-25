@@ -1,18 +1,20 @@
 # Maintainer: Hans-Nikola Viessmann <hans AT viess DOT mn>
+
 _name=eduvpn-common
 pkgname="python-${_name/-/_}"
-pkgver=2.1.0
+pkgver=2.99.0
 pkgrel=1
 pkgdesc='EduVPN common library for python clients'
 arch=('x86_64')
-url="https://github.com/eduvpn/eduvpn-common"
+url="https://codeberg.org/eduVPN/eduvpn-common"
 license=('MIT')
 depends=('python' 'glibc')
 makedepends=('go' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$url/releases/download/$pkgver/$_name-$pkgver.tar".{xz,xz.asc})
-sha256sums=('3a07229c478a303b598f74f0fbb70cb05dfce59653051fc9e5da888a10d3963f'
+sha256sums=('86f810c5fc7594ab0255b0059f0a0118cc1af2e983d340b8c0eea177f202a683'
             'SKIP')
-validpgpkeys=('227FF3F8F829D9A9314D9EBA02BB8048BBFF222C')
+
+# NOTE GPG keys can be found under the `keys/` directory in `src/eduvpn-common-$pkgver`.
 
 build() {
   cd "$_name-$pkgver"
