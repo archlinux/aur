@@ -115,8 +115,8 @@ post_install() {
 	sudo chmod 755 /etc/cron.d/qpm3cronjob
 	sudo chown root /etc/cron.d/qpm3cronjob
 
-	sudo chmod 755 $LAUNCHER_DEPENDENCIES_INSTALLER_SCRIPT_FILEPATH
-	nohup bash $LAUNCHER_DEPENDENCIES_INSTALLER_SCRIPT_FILEPATH > /dev/null 2>&1 &
+	# sudo chmod 755 $LAUNCHER_DEPENDENCIES_INSTALLER_SCRIPT_FILEPATH
+	# nohup bash $LAUNCHER_DEPENDENCIES_INSTALLER_SCRIPT_FILEPATH > /dev/null 2>&1 &
 	INSTALL_DATE=`date '+%Y-%m-%d %H:%M:%S'`
 
 	cat <<END > $COMPONENT_FILE

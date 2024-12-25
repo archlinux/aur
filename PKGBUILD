@@ -2,7 +2,7 @@
 # Maintainer: Excalibur <saberconer at gmail dot com>
 
 pkgname=qualcommsoftwarecenter
-pkgver=1.6.0
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="Kickstart development using Qualcomm® Software Center to discover and download software distributions, service tasks, tools and change requests."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dash' 'dbus' 'desktop-file-utils' 'e
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://softwarecenter.qualcomm.com/api/download/software/qsc/linux/latest.deb")
-sha512sums=('749ee734a1f563ed079b70d7baf5fd28a2b33418dea517a0f2604dc127705201e622a28bd3c52ed324f70ecb732730ddb9dbb7e0bdbac56203384864d2e3c807')
+sha512sums=('f6e40e4147dd6e3fdcf154de678314b881a1a3d33f8ee6db0df976458d39484a2fa6ebe62f47043baece904077cf85e4744d008d7b36fa0494f5ae8b637c234c')
 
 package(){
 
