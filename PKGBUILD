@@ -12,7 +12,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 backup=("etc/${pkgname}.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('e0365ae6c87250cdedf10825d6444165dc0240acc886d44db459209fce7b1b23')
+sha256sums=('44c281294eb4fb8f81709831e1a2fda99d7427ec21e63647f55efa5479b5b074')
 
 
 package() {

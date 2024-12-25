@@ -14,6 +14,6 @@ pkgbase = systemd-timer-notify
 	conflicts = systemd-timer-notify-git
 	backup = etc/systemd-timer-notify.conf
 	source = systemd-timer-notify-1.2.0.tar.gz::https://gitlab.com/Zesko/systemd-timer-notify/-/archive/1.2.0/systemd-timer-notify-1.2.0.tar.gz
-	sha256sums = e0365ae6c87250cdedf10825d6444165dc0240acc886d44db459209fce7b1b23
+	sha256sums = 44c281294eb4fb8f81709831e1a2fda99d7427ec21e63647f55efa5479b5b074
 
 pkgname = systemd-timer-notify
