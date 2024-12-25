@@ -18,7 +18,7 @@ makedepends=('help2man')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://ftp.gnu.org/gnu/${pkgname}/${_pkgsrc}.tar.gz"
 #         "${_pkgsrc}.tar.gz.sig::https://ftp.gnu.org/gnu/${pkgname}/${_pkgsrc}.tar.gz.sig"
-        "${pkgname}_ncurses_is_ncursesw.patch.patch")
+        "${pkgname}_ncurses_is_ncursesw.patch")
 sha256sums=('f1e79cd95742c84c6d035f6d8f393a2a1be0e00b1c016a22462df16d6667562c'
             '9de7d6ef0bafc559a50011ca1ad4f66d43e955016f03475488b09e9dd7b08740')
 # validpgpkeys=('F8F09C0B79F90A20F953FB1CA6D813D8C94AFA52'  # Tim Marston <edam@waxworlds.org>
