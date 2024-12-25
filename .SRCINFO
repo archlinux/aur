@@ -1,0 +1,14 @@
+pkgbase = tek
+	pkgdesc = A colorful music making program for your linux terminal
+	pkgver = 0.2.0.rc6
+	pkgrel = 1
+	url = https://codeberg.org/unspeaker/tek
+	arch = x86_64
+	license = LicenseRef-TEK
+	makedepends = cargo
+	depends = pipewire-jack
+	depends = gcc-libs
+	source = tek-0.2.0.rc6.tar.gz::https://codeberg.org/unspeaker/tek/archive/0.2.0-rc.6.tar.gz
+	sha256sums = 15966fba23b6ea121522ebfa741cfaf73fd3b306869bd690912aa54857c7a2d1
+
+pkgname = tek
