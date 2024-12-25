@@ -3,8 +3,8 @@
 
 pkgname=python-hmmlearn
 _pyname=${pkgname#python-}
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.3.3
+pkgrel=1
 pkgdesc='Hidden Markov Models in Python with scikit-learn like API'
 arch=(x86_64)
 url="https://hmmlearn.readthedocs.org"
@@ -28,4 +28,4 @@ package() {
     install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
 
-sha256sums=('edaf485fdb1ea88da9ac642b2006c63d9950dd15d4d132f7205305d383e6f745')
+sha256sums=('1d3c5dc4c5257e0c238dc1fe5387700b8cb987eab808edb3e0c73829f1cc44ec')

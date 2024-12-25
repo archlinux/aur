@@ -1,7 +1,7 @@
 pkgbase = python-hmmlearn
 	pkgdesc = Hidden Markov Models in Python with scikit-learn like API
-	pkgver = 0.3.2
-	pkgrel = 2
+	pkgver = 0.3.3
+	pkgrel = 1
 	url = https://hmmlearn.readthedocs.org
 	arch = x86_64
 	license = BSD-3-Clause
@@ -12,7 +12,7 @@ pkgbase = python-hmmlearn
 	makedepends = pybind11
 	depends = python
 	depends = python-scikit-learn
-	source = https://pypi.python.org/packages/source/h/hmmlearn/hmmlearn-0.3.2.tar.gz
-	sha256sums = edaf485fdb1ea88da9ac642b2006c63d9950dd15d4d132f7205305d383e6f745
+	source = https://pypi.python.org/packages/source/h/hmmlearn/hmmlearn-0.3.3.tar.gz
+	sha256sums = 1d3c5dc4c5257e0c238dc1fe5387700b8cb987eab808edb3e0c73829f1cc44ec
 
 pkgname = python-hmmlearn
