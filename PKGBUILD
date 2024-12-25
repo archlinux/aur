@@ -1,7 +1,7 @@
 # private key to sign chromium extension is generated with `openssl genrsa 2048 | openssl pkcs8 -topk8 -nocrypt -traditional`
 
 _channel=nightly
-_date=2024-12-24
+_date=2024-12-25
 
 pkgbase=ruffle-nightly
 pkgname=(
@@ -22,7 +22,7 @@ makedepends=("cargo" "cmake" "java-environment" "npm" "nodejs-lts-iron"
              "clang" "jq" "git" "chromium" "openssl")
 source=("git+https://github.com/ruffle-rs/ruffle.git#tag=$_channel-$_date"
         "chromium-extension-ruffle.key")
-sha256sums=('01a104efe2fb1da78a1b0bce08dd1b98ae0c95af30942d17d0a8f0e2259a70de'
+sha256sums=('4f0d2cbacdfa875d7dde91bfb25a3cdcf7fe1aecebc00b8ca6480497e6da52a3'
             'dac5c0e9661e41834b76d6d047dc94e41dd7a80d98e1c39cb4f2c95b1a7c7a46')
 options=("!lto")
 
