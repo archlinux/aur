@@ -2,7 +2,7 @@
 
 pkgname=onagre
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="General purpose application launcher for X and Wayland inspired by Rofi/Wofi and Alfred"
 arch=(x86_64)
 url="https://github.com/$pkgname-launcher/$pkgname"
@@ -13,7 +13,7 @@ depends=(
   fontconfig
   freetype2
   libxkbcommon
-  pop-launcher-git
+  pop-launcher
 )
 makedepends=(rust)
 options=(!debug !lto)
