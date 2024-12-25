@@ -1,17 +1,17 @@
 pkgbase = python-common-ta-lib
 	pkgdesc = Python wrapper for TA-Lib
-	pkgver = 0.4.32
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/TA-Lib/ta-lib-python
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python-numpy<2.0.0
+	makedepends = python-numpy<3.0.0
 	makedepends = cython
 	makedepends = ta-lib
 	makedepends = python-build
-	source = https://github.com/TA-Lib/ta-lib-python/archive/refs/tags/TA_Lib-0.4.32.tar.gz
-	sha256sums = 34b03fa32465632b5eabdd2ea0278abf8270b0b07512d02e1e35443a09689abe
+	source = https://github.com/TA-Lib/ta-lib-python/archive/refs/tags/TA_Lib-0.5.1.tar.gz
+	sha256sums = 14490c550b806a4697118446530d5a3b4b770939651aa5b14c067d4c1fbb96cf
 
 pkgname = python-ta-lib
 	depends = python-numpy
