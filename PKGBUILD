@@ -1,6 +1,6 @@
 pkgname=influxdb-cxx
-pkgver=0.6.7
-pkgrel=2
+pkgver=0.7.3
+pkgrel=1
 pkgdesc="C++ client library for InfluxDB 1.x/2.x"
 url=https://github.com/offa/influxdb-cxx
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=(cmake boost)
 options=(staticlibs)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/offa/influxdb-cxx/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('4e871c6d06c94b24b45aeedb7c74c75aed17332fbde76fc1e6c2ad06aeb41e268a95f4cab1c12c4402765c11811feb84bf48d60b138717c485327848782e402c')
+sha512sums=('f109b5fa303431442e40601adcb623df6d5adcacded1872e708b6bc1ba630305e9d36e8bede270ccff37df269836f1540289a9a4de89a083250b2a4a8a09d63e')
 
 prepare() {
 	rm -rf build-shared build-static
@@ -23,6 +23,7 @@ prepare() {
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_INSTALL_INCLUDEDIR="include/influxdb-cxx" \
 	-DBUILD_SHARED_LIBS=OFF \
+        -DINFLUXCXX_INSTALL_HEADER_TO_SUBDIR=OFF \
 	-DINFLUXCXX_TESTING=OFF \
 	-DINFLUXCXX_SYSTEMTEST=OFF \
 	-DINFLUXCXX_COVERAGE=OFF
@@ -34,6 +35,7 @@ prepare() {
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_INSTALL_INCLUDEDIR="include/influxdb-cxx" \
 	-DBUILD_SHARED_LIBS=ON \
+        -DINFLUXCXX_INSTALL_HEADER_TO_SUBDIR=OFF \
 	-DINFLUXCXX_TESTING=OFF \
 	-DINFLUXCXX_SYSTEMTEST=OFF \
 	-DINFLUXCXX_COVERAGE=OFF
