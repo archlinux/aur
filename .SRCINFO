@@ -1,6 +1,6 @@
 pkgbase = lib32-tcl
 	pkgdesc = The Tcl scripting language
-	pkgver = 8.6.14
+	pkgver = 8.6.16
 	pkgrel = 1
 	url = http://tcl.sourceforge.net/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lib32-tcl
 	depends = lib32-zlib
 	depends = tcl
 	options = staticlibs
-	source = https://downloads.sourceforge.net/sourceforge/tcl/tcl8.6.14-src.tar.gz
-	b2sums = 7089747a4d539b46e710ecb795aa3cd5576243862fae3cf8e6f0efb15681174881396c0147071dca18421d9d95eb35557b17d623f0f63383476fe882cef35a61
+	source = https://downloads.sourceforge.net/sourceforge/tcl/tcl8.6.16-src.tar.gz
+	b2sums = 19e3b5e44855c32469a89a4e1860912b29df97d1fde595b678ca046a0e5de2d2ae0f1ef5d49470e6fc2b41365427b2bf3c06815653f7e836f4c1c09a4dedcee6
 
 pkgname = lib32-tcl
