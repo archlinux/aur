@@ -44,9 +44,9 @@ pkgname=("bareos-bconsole"
 #         "bareos-vadp-dumper"
 #         "bareos-vmware-vix-disklib"
 
-pkgver=23.0.1
+pkgver=23.1.1
 pkgmajor=${pkgver%%.*}
-pkgrel=2
+pkgrel=1
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
@@ -59,12 +59,11 @@ source=("git+https://github.com/bareos/bareos.git#tag=Release/${pkgver}"
         "0004-sqlspam.patch"
         "0005-httpd.patch")
 
-md5sums=('SKIP'
+md5sums=('8144e300df3ab7e004fec86007f45851'
          '419b0c64af750aa3e8ea668edf464d3e'
          '5bf1233d94dfecc9060746bfb39b9d2b'
          'ca4c929a2462cafaead8d0b49e3cebed'
-         'a6a260808e46c20b1c22aa2efebc3fe1'
-         )
+         'a6a260808e46c20b1c22aa2efebc3fe1')
 
 python3_ver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))");#"
 
