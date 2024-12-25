@@ -1,7 +1,7 @@
 # Maintainer: Faaris <faaris dot ansari at proton dot me>
 _pkgname=electron-nightly
 pkgname=${_pkgname}-bin
-pkgver=35.0.0.nightly.20241220
+pkgver=35.0.0.nightly.20241223
 pkgrel=1
 pkgdesc="Electron Nightly build for Linux - Binary version"
 arch=('x86_64')
@@ -13,7 +13,7 @@ _ver_main="${pkgver%%.nightly.*}"
 _ver_date="${pkgver##*.}"
 _file_name="electron-v${_ver_main}-nightly.${_ver_date}-linux-x64.zip"
 source=("$url/releases/download/v${_ver_main}-nightly.${_ver_date}/${_file_name}")
-sha256sums=('56a23102b26d551128d736a512e9ee250ad1c768321a196dc5351917c586fa94')
+sha256sums=('de58d27489ec14cc7c926a3e3b3a30220f6bdbbb80d66d713cc2367694184a25')
 
 package() {
     install -dm755 "$pkgdir/usr/lib/$_pkgname" "$pkgdir/usr/bin"
