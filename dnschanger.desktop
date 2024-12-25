@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=DNS Changer
-Exec=dnschanger %U
-Terminal=false
-Type=Application
-Icon=dnschanger
-StartupWMClass=DNS Changer
-Comment=DNS Changer for Windows, Mac and Linux operating systems
-Categories=Utilities;

@@ -1,0 +1,5 @@
+[dnschanger-desktop]
+source = "github"
+github = "DnsChanger/dnsChanger-desktop"
+use_max_tag = true
+prefix = "v"
