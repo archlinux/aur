@@ -1,7 +1,7 @@
 pkgbase = vdr-xmltv2vdr
 	pkgdesc = Add epg info from epg sources into vdr
-	pkgver = 0.2.3
-	pkgrel = 4
+	pkgver = 0.2.4
+	pkgrel = 1
 	url = https://github.com/vdr-projects/vdr-plugin-xmltv2vdr
 	arch = x86_64
 	arch = i686
@@ -17,9 +17,9 @@ pkgbase = vdr-xmltv2vdr
 	depends = sqlite
 	depends = vdr-api=5
 	backup = etc/vdr/conf.avail/50-xmltv2vdr.conf
-	source = vdr-xmltv2vdr-0.2.3.tar.gz::https://github.com/vdr-projects/vdr-plugin-xmltv2vdr/archive/refs/tags/0.2.3.tar.gz
+	source = vdr-xmltv2vdr-0.2.4.tar.gz::https://github.com/vdr-projects/vdr-plugin-xmltv2vdr/archive/refs/tags/0.2.4.tar.gz
 	source = 50-xmltv2vdr.conf
-	sha256sums = e543f2ce175960a6664d6c06dd3c9dc89c15599e144c0c8551efd66368293579
+	sha256sums = 6ed8886f5f6fc97b136cbe26e380ed3a8083300318db934e001a4918617a9785
 	sha256sums = e4026eb61fd31dd51cb33cb5d0fbf1fbfb9b36205c9c6fbe94bb9b5dc177080b
 
 pkgname = vdr-xmltv2vdr

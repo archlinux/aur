@@ -2,8 +2,8 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-xmltv2vdr
-pkgver=0.2.3
-pkgrel=4
+pkgver=0.2.4
+pkgrel=1
 _vdrapi=5
 pkgdesc="Add epg info from epg sources into vdr"
 url='https://github.com/vdr-projects/vdr-plugin-xmltv2vdr'
@@ -14,7 +14,7 @@ _plugname=${pkgname//vdr-/}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-xmltv2vdr/archive/refs/tags/$pkgver.tar.gz"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('e543f2ce175960a6664d6c06dd3c9dc89c15599e144c0c8551efd66368293579'
+sha256sums=('6ed8886f5f6fc97b136cbe26e380ed3a8083300318db934e001a4918617a9785'
             'e4026eb61fd31dd51cb33cb5d0fbf1fbfb9b36205c9c6fbe94bb9b5dc177080b')
 
 build() {
