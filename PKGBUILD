@@ -2,8 +2,8 @@
 
 pkgname=lean
 _pkgname=${pkgname#python-}
-pkgver=4.13.0
-pkgrel=2
+pkgver=4.14.0
+pkgrel=1
 pkgdesc='Lean 4 programming language and theorem prover'
 arch=('x86_64')
 url='https://github.com/leanprover/lean4'
@@ -14,7 +14,7 @@ makedepends=('ccache' 'cmake')
 optdepends=()
 options=('ccache')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8392396c1b5fb6650277c1eac29ff6549a559c64c3eb3d88acb3cb2db05d3de1')
+sha256sums=('c472518de47d10005784716ad83ffc6f02c99e8e639b04980db35b7f8e02682b')
 
 build() {
     cd "$srcdir/lean4-$pkgver"
