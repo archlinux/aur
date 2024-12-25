@@ -1,15 +1,19 @@
 pkgbase = payload-dumper-go-bin
-	pkgdesc = an android OTA payload dumper written in Go
-	pkgver = 1.2.2
+	pkgdesc = an android OTA payload dumper written in Go.(Prebuilt version)
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/ssut/payload-dumper-go
+	arch = aarch64
+	arch = armv7h
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	provides = payload-dumper-go
-	conflicts = payload-dumper-go
-	source = https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_linux_amd64.tar.gz
-	source = https://github.com/ssut/payload-dumper-go/raw/1.2.2/LICENSE
-	sha256sums = 55015ae32ee0156bd9b64c58c6c1d7753773a286232254af3b0c67fcc8d7960a
-	sha256sums = 4a26a47cfc98fcad333c3e1ccda022cdeb0e19cde4f1fe4aef4a51f621769922
+	conflicts = payload-dumper-go=1.3.0
+	source_aarch64 = payload-dumper-go-1.3.0-aarch64.tar.gz::https://github.com/ssut/payload-dumper-go/releases/download/1.3.0/payload-dumper-go_1.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2512b2a57556f12c24304898363fa9640b8485b6ead3f2184e253c4890fe6de5
+	source_armv7h = payload-dumper-go-1.3.0-armv7h.tar.gz::https://github.com/ssut/payload-dumper-go/releases/download/1.3.0/payload-dumper-go_1.3.0_linux_armv7.tar.gz
+	sha256sums_armv7h = 61463a27388041a18b478f9c97671e75afbf19b9a002293038dcc3a40bb5c5cc
+	source_x86_64 = payload-dumper-go-1.3.0-x86_64.tar.gz::https://github.com/ssut/payload-dumper-go/releases/download/1.3.0/payload-dumper-go_1.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1b973d521cda71268ddbaa0388fe28d6a94b370c58e21352137c5f9077b0bfe7
 
 pkgname = payload-dumper-go-bin
