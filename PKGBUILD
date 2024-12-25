@@ -2,7 +2,7 @@
 
 pkgname=python-ipsw_parser
 _pkgname="${pkgname#python-}"
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=1
 pkgdesc='Python3 utility for parsing and extracting data from IPSW'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
 )
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools' 'python-setuptools-scm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4d0006a038f18e859307967b100c3b226e11d4ca5a7ac778c23c4eb734707e29')
+sha256sums=('b7c0bde62585a2b33ee3a7854d4473ab8766cc4ed654c3ed017995e6e3af3928')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
