@@ -9,7 +9,7 @@ _pybind11_ver=2.9.2
 _onnx_graphsurgeon_ver=0.5.3
 _polygraphy_ver=0.49.14
 _tensorflow_quantization_ver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
 url='https://developer.nvidia.com/tensorrt/'
@@ -132,8 +132,10 @@ package_tensorrt() {
 }
 
 package_python-tensorrt() {
-    pkgdesc+=' (python bindings and tools)'
-    license=('LicenseRef-Custom' 'Apache-2.0')
+    #pkgdesc+=' (python bindings and tools)'
+    pkgdesc+=' (python tools)'
+    #license=('LicenseRef-Custom' 'Apache-2.0')
+    license=('Apache-2.0')
     depends=('python' 'python-numpy' 'tensorrt')
     optdepends=('python-onnx: for onnx_graphsurgeon python module'
                 'python-onnxruntime: for onnx_graphsurgeon and polygraphy python modules'
@@ -144,9 +146,9 @@ package_python-tensorrt() {
               "python-polygraphy=${_polygraphy_ver}"
               "python-tensorflow-quantization=${_tensorflow_quantization_ver}")
     
-    local _pyver
-    _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
-    python -m installer --destdir="$pkgdir" "TensorRT-${pkgver}/python/tensorrt-${pkgver%.*}-cp${_pyver/./}-none-linux_${CARCH}.whl"
+    #local _pyver
+    #_pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
+    #python -m installer --destdir="$pkgdir" "TensorRT-${pkgver}/python/tensorrt-${pkgver%.*}-cp${_pyver/./}-none-linux_${CARCH}.whl"
     
     local _dir
     for _dir in TensorRT/tools/{onnx-graphsurgeon,Polygraphy,tensorflow-quantization}/dist

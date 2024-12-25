@@ -1,7 +1,7 @@
 pkgbase = tensorrt
 	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware
 	pkgver = 10.7.0.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.nvidia.com/tensorrt/
 	arch = x86_64
 	license = LicenseRef-NVIDIA-TensorRT-SLA
@@ -49,8 +49,7 @@ pkgname = tensorrt
 	depends = cudnn
 
 pkgname = python-tensorrt
-	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware (python bindings and tools)
-	license = LicenseRef-Custom
+	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware (python tools)
 	license = Apache-2.0
 	depends = python
 	depends = python-numpy
