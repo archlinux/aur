@@ -19,12 +19,11 @@ b2sums=('3218878cdc4a2049fd7f2a8e0426ec589bf304e0bb24ad557e5bea39cbaba76e6a1c52f
 
 prepare() {
     mv "tf-50b8" "$pkgname-$pkgver"
-
     cd "$pkgname-$pkgver"
 
-    rm -rfv src/pcre-2.08
+    rm -rf src/pcre-2.08
 
-    for pf in "$startdir"/*.patch; do
+    for pf in ../../*.patch; do
         patch -V none -tp1 < "$pf"
     done
 }
