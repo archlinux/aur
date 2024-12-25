@@ -1,0 +1,13 @@
+pkgbase = kubewrap
+	pkgdesc = Wrap kubectl command, offers some useful tools
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/fioncat/kubewrap
+	arch = x86_64
+	license = MIT
+	provides = kubewrap
+	conflicts = kubewrap
+	source = kubewrap-0.1.0::https://github.com/fioncat/kubewrap/releases/download/v0.1.0/kubewrap-linux-amd64.tar.gz
+	sha256sums = 9ca4ae29cccb035a866bbe23294d69177da9a5bbcc4a69a197a7304739d0d087
+
+pkgname = kubewrap
