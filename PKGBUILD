@@ -2,7 +2,7 @@
 # Maintainer: Jun Xiang <contact@ngjx.org>
 
 pkgname='waku-bin'
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc='A simple template repository generator. Lets make starting new projects feel like a breeze again!'
 url='https://github.com/caffeine-addictt/waku'
@@ -12,17 +12,17 @@ provides=('waku')
 conflicts=('waku')
 depends=('git')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.7.3/waku_Linux_arm64.tar.gz")
-sha256sums_aarch64=('c88297dcb090775b70df8759bf6dc870fa6eb82e4b8854c8ea6f99b70ae93b30')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.7.4/waku_Linux_arm64.tar.gz")
+sha256sums_aarch64=('feaaddfb26674d302cdf668455bfd959441900a92477367c9751b6936de3e6d3')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.7.3/waku_Linux_armv7.tar.gz")
-sha256sums_armv7h=('2dfa4f6fe2aa034218c816c5f9c2e7a13a1f8129105c23f9cdc9def2d6edd873')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.7.4/waku_Linux_armv7.tar.gz")
+sha256sums_armv7h=('158052d8a7e2535b9dbf4ade34b6fc4a0bc7cb179d7f48264ba0af1b63a95526')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.7.3/waku_Linux_i386.tar.gz")
-sha256sums_i686=('1c22c056662b487bd3219bca9fa711d93d787fce656ba7b8263c864a88813fc9')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.7.4/waku_Linux_i386.tar.gz")
+sha256sums_i686=('e8257d1d30e52204e625a316d61d3061f00aaa0ba3e92e585b462dc297dd75d7')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.7.3/waku_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('b53fb8437817aca7a1ef5c337ca3aa928fa167ca78559435f9b1d7b788d71cb7')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.7.4/waku_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('d343baa01da0333ae26ca07eeacb2bc5c23841ccead89c4d3d7cf9b7fcd35d40')
 
 package() {
   # bin
