@@ -1,7 +1,7 @@
 pkgbase = xrdp
 	pkgdesc = An open source remote desktop protocol (RDP) server
 	pkgver = 0.10.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/neutrinolabs/xrdp
 	install = xrdp.install
 	arch = i686
@@ -14,7 +14,6 @@ pkgbase = xrdp
 	makedepends = nasm
 	makedepends = cmocka
 	depends = libxrandr
-	depends = fuse
 	depends = libfdk-aac
 	depends = ffmpeg
 	depends = imlib2
