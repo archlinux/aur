@@ -1,0 +1,24 @@
+pkgbase = adbr-git
+	pkgdesc = ADB Client in pure Rust.
+	pkgver = r13.baf5e48
+	pkgrel = 1
+	url = https://github.com/xDvir/ADBRClient
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	depends = libusb
+	optdepends = android-udev: Udev rules to connect Android devices to your linux box
+	optdepends = adbr-server: ADB Server in pure Rust.
+	provides = adbr
+	conflicts = adbr
+	options = !strip
+	options = !lto
+	options = !debug
+	source = adbr-git::git+https://github.com/xDvir/ADBRClient.git
+	sha256sums = SKIP
+
+pkgname = adbr-git
