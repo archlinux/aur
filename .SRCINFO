@@ -5,7 +5,7 @@ pkgbase = bright-nightly-bin
 	url = https://github.com/someoneonsmile/bright
 	arch = x86_64
 	license = GPL2
-	source = bright.tar.gz::https://github.com/someoneonsmile/bright/releases/download/nightly/bright-x86_64-unknown-linux-musl.tar.gz
+	source = bright-20241225.tar.gz::https://github.com/someoneonsmile/bright/releases/download/nightly/bright-x86_64-unknown-linux-musl.tar.gz
 	sha512sums = SKIP
 
 pkgname = bright-nightly-bin
