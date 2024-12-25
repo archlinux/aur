@@ -14,13 +14,11 @@ Available make targets:
   install   Build and install $(NAME).
   janitor   Housekeeping jobs.
   mrproper  Cleanup thoroughly, including downloaded files.
-  push      Push to all configured Git remotes.
   remove    Print command to uninstall $(NAME) and its orphaned dependencies.
-  schk      Check shell scripts.
 
 endef
 
-.PHONY:	build clean help janitor mrproper push remove schk
+.PHONY:	build clean geninteg help install janitor mrproper remove shc
 
 help:
 	$(info $(usage))
@@ -52,8 +50,5 @@ remove:
 janitor:	.gitignore .SRCINFO
 	sort -o $< $<
 
-push:
-	for _r in $(shell git remote); do git push $$_r; done; unset _r
-
-schk:
-	shellcheck -s bash -e SC2034 PKGBUILD *.sh
+shc:	PKGBUILD *.sh
+	shcare $^ || shellcheck $^

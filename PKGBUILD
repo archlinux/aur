@@ -1,5 +1,6 @@
 # Maintainer: Morbius <archlinux@seichter.de>
 # vim: ts=4 sw=4 noet
+# shellcheck shell=bash disable=2034
 
 pkgname="automx2"
 pkgver="2024.2"
