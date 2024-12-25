@@ -38,7 +38,6 @@ post_upgrade() {
     && echo ":: Restarting cellframe-node.service..." \
     && systemctl restart cellframe-node.service \
     || echo ":: cellframe-node.service not enabled, skipping restart..."
-    _showmsg
 }
 
 pre_remove() {
@@ -47,5 +46,4 @@ pre_remove() {
     && systemctl disable cellframe-node.service \
     || true
     systemctl daemon-reload
-    _showmsg
 }
