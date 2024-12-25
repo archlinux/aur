@@ -1,0 +1,5 @@
+[plow]
+source = "github"
+github = "six-ddc/plow"
+use_latest_release = "true"
+prefix = "v"
