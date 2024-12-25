@@ -1,0 +1,6 @@
+#!/bin/bash
+
+post_install() {
+    chmod -R 777 /opt/htmlbuilder
+    chown -R "$(id -un)" /opt/htmlbuilder
+}

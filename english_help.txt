@@ -1,0 +1,157 @@
+Author: Nazarov A.A., 2012-2024, Orenburg
+Site: https://htmlbuilder.onhalt.site
+E-mail: programmist.nazarov@gmail.com
+
+Custom fields in content
+
+in common settings can be created (or deleted)
+additional columns for content table with
+names started with custom_
+
+For output use shortcode {custom_name}
+
+Menu support
+
+{menu=ID_MENU} works in global blocks
+
+In template for item can be used
+{itemUrl}, {ext}, {itemTitle} shortcodes
+
+In template of menu for output items
+list just use {items}
+
+Paste content from remote source
+
+{remote_url="https://something.com/source.txt"}
+
+- Template support
+- Pages are saved under the name /{id}.htm
+- In the HEAD template section, the {title} code corresponds to the page title
+- Codes are available in the BODY template section
+
+{title} - page title
+{body} - html content markup
+{dt} - date of material
+{tags} - tags of material
+
+- Global markup blocks
+
+{id of the global block} is replaced by the markup of this block
+   in templates
+   in page content
+
+- Category list template
+
+{sectionUrl} - part of the address of the link to the category
+{sectionTitle} - section title
+{sectionNote} - annotation of section
+{sectionFullText} - full description of section
+{items} - list of category elements
+{sort_order} - navigation links for changing sort order
+{pager} - pagination
+
+- Category List Item Template
+
+{itemUrl} - part of the address of the link to the page
+{itemTitle} - page title
+{itemDt} - date of material
+{itemTags} - tags of material
+{ext} - preferred file extension
+{fX}, {vX} - caption and value of additional fields,X=1..7
+{custom_name} - value of user custom column
+
+- Quick links
+
+In order to quickly link to a page with a known id,
+it is enough to write [id] in the text
+
+To put a link in the text to a section by its id,
+it is enough to type <<id>> in the markup
+
+((image_id)) - output image
+||attachment_id|| - output link to attached document
+
+- Custom fields
+
+The material of each page can be supplemented with 7 text fields
+to include additional information in the publication
+(keywords, links, images, etc.)
+
+The field label is included in the template using the {fX} code,
+the value of the additional field using the {vX} code, where
+X - field number from 1 to 7. Edit field labels
+available on the General Settings tab.
+
+
+
+- Module support
+
+A module is a console program that extends the capabilities of a generator.
+Modules can be written in any programming language,
+allowing you to save plain text files to disk.
+The only requirement is a module named modulename
+must create a modulename.tmp file.
+This file takes the generator and deletes the temporary file.
+
+For example, the youtube module inserts HTML markup for
+player by video ID. To call a module, you need
+frame its name and call parameters with a % sign:
+
+%youtubeID%
+
+Modules can also be used to process HTML snippets,
+To do this, the text must be framed with special tags.
+
+~module~
+HTML snippet
+~/module~
+
+The fragment is passed by the generator to a temporary module.inp file,
+the module must provide the output file module.out to the generator.
+The input and output file will be removed automatically by the generator.
+For example, to automatically convert markdown to HTML,
+just call the code
+
+~markdown~
+markup
+~/markdown~
+
+The path to the module must be specified in the PATH variable, or the module
+should be set to directory with HtmlBuilder
+
+
+- Archiver
+
+The program uses the 7z utility of the 7-Zip archiver.
+The 7z utility must be installed in the C:\Program Files\7-Zip directory
+You can get the archiver at http://www.7-zip.org/
+
+SITE PAGE GENERATION ORDER
+
+1. The page is wrapped in a template
+2. Global blocks {block} are filled
+3. Links to pages [pageID]
+4. Links to the categories of the section <<sectionID>> are included
+5. %module% handlers are executed
+6. Run handlers ~module~ .... ~/module~
+
+For sections:
+Pages are sorted by
+- default order (set in general settings)
+- by caption of page (ascending, descending)
+- by date of publication (ascending, descending).
+For default sorted order sections will be placed to
+/section_SECTIONID.html
+For non-default sort order will be created navigation folders:
+/o/FIELD-[ASC-DESC]/section_SECTIONID.html
+
+USAGE EXAMPLE
+
+1. Create directory C:\MySite
+2. Add 2-3 pages
+3. Click the "Create a site" button
+4. Click the "Archive" button.
+The archive directory will open in a new explorer window.
+5. In a browser, go to http://staticloud.com/
+6. Drag the site.zip archive onto the page
+7. Site published!

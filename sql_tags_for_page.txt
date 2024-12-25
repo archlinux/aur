@@ -1,0 +1,11 @@
+SELECT * FROM
+tags_pages
+	LEFT JOIN tags
+	ON
+	tags.tag_id = tags_pages.id_tag
+	LEFT JOIN content
+	ON
+	tags_pages.id_page = content.id
+        WHERE content.id = :ID_PAGE
+
+

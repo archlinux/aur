@@ -1,0 +1,523 @@
+align-content:normal | baseline | center | stretch | flex-start | flex-end | space-between | space-around | space-evenly
+align-items : normal | baseline | center | stretch | flex-start | flex-end
+align-self : auto | baseline | center | stretch | flex-start | flex-end
+animation : animation-name    animation-duration    animation-delay    animation-direction    animation-iteration-count    animation-play-state    animation-fill-mode    animation-timing-function
+animation-delay : value
+animation-direction : normal | reverse | alternate | alternate-reverse
+animation-duration : +ve value
+animation-fill-mode : none | forwards | backwards | both
+animation-iteration-count : +ve value | infinite
+animation-name : none | keyframe-name1, keyframe-name2
+animation-play-state : running | paused
+animation-delay : ease | ease-in | ease-out | ease-in-out
+backface-visibility : none | length
+background : background-color   background-image   background-position   /   background-size   background-repeat   background-attachment   background-origin   background-clip
+background-attachment : fixed | scroll | local
+background-blend-mode : normal | multiply | screen | overlay | darken | lighten | color-dodge | color-burn | hard-light | soft-light | difference | exclusion | hue | saturation | color | luminosity
+background-clip: border-box;
+background-color : color-name | rgb value | hexadecimal value
+background-image : none | url(), url(),...
+background-origin : border-box | padding-box | content-box
+background-position : [ percentage | length | left | center | right]    [percentage | length | top | center | bottom]
+background-repeat : no-repeat | repeat | repeat-x | repeat-y | space | round
+background-size : contain | cover | auto | length | percentage
+block-size : auto | +ve length
+border : border-width    border-style    border-color;
+border-block : border-block-width    border-block-style    border-block-color;
+border-block-color : border-block-start-color    border-block-end-color
+border-block-end : border-block-end-width    border-block-end-style    border-block-end-color
+border-block-end-color : currentColor | color-name | rgb value | hexadecimal value
+border-block-end-style : none | hidden | dashed | solid | dotted | double | ridge | groove | inset | outset
+border-block-end-width : medium | thin | thick | +ve length
+border-block-start : border-block-start-width    border-block-start-style    border-block-start-color
+border-block-start-color : currentColor | color-name | rgb value | hexadecimal value
+border-block-start-style : none | hidden | dashed | solid | dotted | double | ridge | groove | inset | outset
+border-block-start-width : medium | thin | thick | +ve length
+border-block-style : border-block-start-style    border-block-end-style
+border-block-width : border-block-start-width    border-block-end-width
+border-bottom : border-bottom-width    border-bottom-style    border-bottom-color;
+border-bottom-color : currentColor | color-name | rgb value | hexadecimal value
+border-bottom-left-radius : +XY-length | X-length Y-length
+border-bottom-right-radius : +XY-length | X-length Y-length
+border-bottom-style : none | hidden | dashed | solid | dotted | double | ridge | groove | inset | outset
+border-bottom-width : medium | thin | thick | +ve length
+border-collapse : separate | collapse
+border-color : border-top-color   border-right-color   border-bottom-color   border-left-color
+border-end-end-radius : +ve length | X-length Y-length
+border-end-start-radius : +ve length | X-length Y-length
+border-image :border-image-source    border-image-slice    [ /border-image-width   |  / border-image-width / border-image-outset ]    border-image-repeat
+border-image-outset : length | number
+border-image-repeat : stretch | repeat | round | space
+border-image-slice : +ve number | +ve percentage
+border-image-source : none | url()
+border-image-width : +ve length | +ve percentage | +ve number | auto
+border-inline : border-inline-width    border-inline-style    border-inline-color;
+
+border-inline-color : border-inline-start-color    border-inline-end-color
+
+border-inline-end : border-inline-end-width    border-inline-end-style    border-inline-end-color
+
+border-inline-end-color : currentColor | color-name | rgb value | hexadecimal value
+
+border-inline-end-style : none | hidden | dashed | solid | dotted | double | ridge | groove | inset | outset
+
+border-inline-end-width : medium | thin | thick | +ve length
+
+border-inline-start : border-inline-start-width    border-inline-start-style    border-inline-start-color
+
+border-inline-start-color : currentColor | color-name | rgb value | hexadecimal value
+
+border-inline-start-style : none | hidden | dashed | solid | dotted | double | ridge | groove | inset | outset
+
+border-inline-start-width : medium | thin | thick | +ve length
+
+border-inline-style : border-inline-start-style    border-inline-end-style
+
+border-inline-width : border-inline-start-width    border-inline-end-width
+
+border-left : border-left-width    border-left-style    border-left-color;
+
+border-left-color : currentColor | color-name | rgb value | hexadecimal value
+
+border-left-style : none | hidden | dashed | solid | dotted | double | ridge | groove | inset | outset
+
+border-left-width : medium | thin | thick | +ve length
+
+border-radius : border-top-left-radius    border-top-right-radius    border-bottom-right-radius    border-bottom-left-radius
+
+border-right : border-right-width    border-right-style    border-right-color;
+
+text-decoration-color : currentColor | color-name | rgb value | hexadecimal value
+
+border-right-style : none | hidden | dashed | solid | dotted | double | ridge | groove | inset | outset
+
+border-right-width : medium | thin | thick | +ve length
+
+border-spacing : +ve length
+
+border-start-end-radius : +ve length | X-length Y-length
+
+border-start-start-radius : +ve length | X-length Y-length
+
+border-style : border-top-style   border-right-style   border-bottom-style   border-left-style
+
+border-top : border-top-width    border-top-style    border-top-color;
+
+border-top-color : currentColor | color-name | rgb value | hexadecimal value
+
+border-top-left-radius : +XY-length | X-length Y-length
+
+border-top-right-radius : +XY-length | X-length Y-length
+
+border-top-style : none | hidden | dashed | solid | dotted | double | ridge | groove | inset | outset
+
+border-top : medium | thin | thick | length
+
+border-width : border-top-width   border-right-width   border-bottom-width   border-left-width
+
+bottom : auto | length | percentage
+
+box-shadow : none | X-offset    Y-offset    blur-radius    spread-distance    shadow-color    [ inset ]
+
+box-sizing : content-box | border-box
+
+caption-side : top | bottom
+
+caret-color : color-name | rgb value | hexadecimal value
+
+clear : none | left | right
+
+color : color-name | rgb value | hexadecimal value
+
+column-count : auto | integer
+
+column-fill : balance | auto
+
+column-gap : normal | +ve length
+
+column-rule : column-rule-width   column-rule-style   column-rule-color
+
+column-rule-color : currentColor | color-name | rgb value | hexadecimal value
+
+column-rule-style : none | hidden | dashed | solid | dotted | double | ridge | groove
+
+column-rule-width : medium | thin | thick | length
+
+column-span : none | all
+
+column-width : auto | length
+
+content : normal | none | url(image-address) | string | open-quote | close-quote
+
+columns : column-width   column-count
+
+cursor : auto | default | none | context-menu | help | pointer | progress | wait | cell | crosshair | text | vertical-text | alias | copy | move | no-drop | not-allowed | grab | *-resize | zoom-in | zoom-out
+
+direction : ltr | rtl
+
+display : block | inline | table | flex | grid | table-row-group | table-header-group | table-footer-group | table-row | table-cell | table-column-group | table-column | table-caption | none | inline-block | inline-table | inline-flex | inline-grid
+
+empty-cells : separate | collapse
+fill : currentColor | color-name | rgb value | hexadecimal value
+
+opacity : value between 0 and 1
+
+filter : none | blur() | brightness() | contrast() | drop-shadow() | grayscale() | hue-rotate() | invert() | opacity() | sepia()
+
+flex : none | [flex-grow | flex-shrink ] flex-basis
+
+flex-basis : auto | +ve integer
+
+flex-direction : row | row-reverse | column | column-reverse
+
+flex-flow : flex-direction   flex-wrap
+
+flex-grow : +ve integer
+
+flex-shrink : +ve integer
+
+flex-wrap : nowrap | wrap | wrap-reverse
+
+float : none | left | right
+
+font : font-style    font-variant    font-weight    font-stretch      font-size   /   line-height    font-family
+
+font-family : list of family-names, generic-family
+
+font-feature-settings : string [ integer | on | off ]
+
+font-kerning : auto | normal | none
+
+font-size : medium | xx-small | x-small | small | medium | large | x-large | xx-large | larger | smaller | length | percentage
+font-style : normal | italic | oblique
+font-variant : normal | italic | oblique
+font-variant-caps : normal | small-caps | all-small-caps | petite-caps | all-petite-caps | unicase | titling-caps
+font-variant-numeric : normal | lining-nums | super
+font-weight : value | normal | bold | bolder | lighter
+
+
+gap : row-gap    column-gap
+
+grid : grid-template | grid-template-rows / [ grid-auto-flow] grid-auto-columns | [grid-auto-flow] grid-auto-rows / grid-template-columns
+
+grid-area : grid-row-start / grid-column-start / grid-row-end / grid-column-end :
+
+grid-auto-columns : auto | [track-size]+
+
+grid-auto-flow : [row | column]
+
+grid-auto-rows : auto | [track-size]+
+
+grid-column : grid-column-start / grid-column-end  |  grid-column-start / span columns
+
+grid-column-end : auto | grid-line (named or numbered)
+
+grid-column-start : grid-line (named or numbered)
+
+grid-row : grid-row-start / grid-row-end | grid-row-start / span columns
+
+grid-row-end : grid-line (named or numbered)
+
+grid-row-start : grid-line (named or numbered)
+
+grid-template : none | [ grid-template-rows  /  grid-template-columns ] | [ line-name   grid-area   track-size ]+  /  track-list
+
+grid-template-areas : space separated strings
+
+grid-template-columns : col-size1    col-size2    col-size3 ..
+grid-template-rows : row-size1    row-size2    row-size3 ..
+
+height : auto | length | percentage | min-content | max-content
+
+inline-size : auto | +ve length | +ve percentage
+
+justify-content : baseline | center | stretch | flex-start | flex-end | space-between | space-around | space-evenly
+
+justify-items : baseline | center | stretch | flex-start | flex-end
+
+justify-self : baseline | center | stretch | flex-start | flex-end
+
+left : auto | length | percentage
+
+letter-spacing : normal | length
+
+line-height : normal | length | percentage
+
+list-style : list-style-type    list-style-position    list-style-image
+
+list-style-image : none | url(image-address)
+
+list-style-position : inside | outside
+
+list-style-type : disc | circle | decimal | decimal-leading-zero | lower-roman | upper-roman | lower-greek | lower-latin | upper-latin | lower-alpha | upper-alpha | armenian | georgian
+
+margin : margin-top    margin-right    margin-bottom    margin-left
+
+margin-block : margin-block-start    margin-block-end
+
+margin-block-end : length
+
+margin-block-start : length
+
+margin-bottom : length
+
+margin-inline : margin-inline-start    margin-inline-end
+
+margin-inline-end : length
+
+margin-inline-start : length
+
+margin-left : length
+
+margin-right : length
+
+margin-top : length
+
+marker : none | marker-reference
+
+marker-end : none | marker-reference
+
+marker-mid : none | marker-reference
+
+marker-start : none | marker-reference
+
+mask : mask-image    mask-position    mask-size    mask-repeat    mask-origin    mask-clip
+
+mask-clip : border-box | padding-box | content-box
+
+mask-composite : add | subtract | intersect | exclude | clear | copy | destination-atop | destination-in | destination-out | destination-over | source-atop | source-in | source-out | source-over | xor
+
+mask-image : none | image
+
+mask-origin : border-box | padding-box | content-box
+
+mask-position : [ percentage | length | left | center | right]    [percentage | length | top | center | bottom]
+
+mask-repeat : no-repeat | repeat | repeat-x | repeat-y | space | round
+
+mask-size : contain | cover | auto | +ve length | +ve percentage
+
+min-block-size : none | min-content | max-content | +ve length | +ve percentage | auto
+
+max-height : none | min-content | max-content | +ve length | +ve percentage | auto
+
+min-inline-size : none | min-content | max-content | +ve length | +ve percentage | auto
+
+max-width : none | min-content | max-content | +ve length | +ver percentage | auto
+
+min-block-size : none | min-content | max-content | +ve length | +ve percentage | auto
+
+min-height : none | min-content | max-content | +ve length | +ve percentage | auto
+
+min-inline-size : none | min-content | max-content | +ve length | +ve percentage | auto
+
+min-width : none | min-content | max-content | +ve length | +ve percentage | auto
+
+mix-blend-mode : normal | multiply | screen | overlay | darken | lighten | color-dodge | color-burn | hard-light | soft-light | difference | exclusion | hue | saturation | color | luminosity
+
+opacity : value between 0 and 1
+
+order : integer
+
+outline : outline-width    outline-style    outline-color
+
+outline-color : currentColor | color-name | rgb value | hexadecimal value
+
+outline-offset : length
+
+outline-style : none | hidden | dashed | solid | dotted | double | ridge | groove | inset | outset
+
+outline-width : medium | thin | thick | +ve length
+
+ overflow : overflow-x   overflow-y
+
+overflow-wrap : normal | break-word
+
+overflow-x : visible | hidden | scroll | auto
+
+overflow-y : visible | hidden | scroll | auto
+
+padding :+ve length
+
+padding-block : padding-block-start    padding-block-end
+
+padding-block-end : +ve length
+
+padding-block-start : +ve length
+
+padding-bottom :+ve length
+
+padding-inline : padding-inline-start    padding-inline-end
+
+padding-inline-end : length
+
+padding-inline-start : length
+
+padding-left :+ve length
+
+padding-right :+ve length
+
+padding-top :+ve length
+
+perspective : none | length
+
+perspective-origin : [ percentage | length | left | center | right]    [percentage | length | top | center | bottom]
+
+place-content : align-content   justify-content
+
+place-items : align-items    justify-items
+
+place-self : align-self   justify-self
+
+position : static | relative | absolute | sticky | fixed
+
+resize : none | both | horizontal | vertical
+
+right : auto | length | percentage
+
+row-gap : normal | length
+
+scroll-margin :scroll-margin-top    scroll-margin-right    scoll-margin-bottom    scroll-margin-left
+
+scroll-margin-block :+ve length
+
+scroll-margin-block-end :+ve length
+
+scroll-margin-block-start :+ve length
+
+scroll-margin-bottom :+ve length
+
+scroll-margin-inline :+ve length
+
+scroll-margin-inline-end :+ve length
+
+scroll-margin-inline-start :+ve length
+
+scroll-margin-left :+ve length
+
+scroll-margin-right :+ve length
+
+scroll-margin-top :+ve length
+
+scroll-padding :scroll-padding-top    scroll-padding-right    scroll-padding-bottom    scroll-padding-left
+
+scroll-padding-block :+ve length
+
+scroll-padding-block-end :+ve length
+
+scroll-padding-block-start :+ve length
+
+scroll-padding-bottom :+ve length
+
+scroll-padding-inline :+ve length
+
+scroll-padding-inline-end :+ve length
+
+scroll-padding-inline-start :+ve length
+
+scroll-padding-left :+ve length
+
+scroll-padding-right :+ve length
+
+scroll-padding-top :+ve length
+
+scroll-snap-align : none | start | end | center
+
+scroll-snap-stop : normal | always
+
+scroll-snap-type : none   |   [ x | y | block | inline ]   [ mandatory | proximity]
+
+shape-margin : length
+
+shape-outside :polygon
+
+stroke : currentColor | color-name | rgb value | hexadecimal value
+
+stroke-color : currentColor | color-name | rgb value | hexadecimal value
+
+stroke-dasharray : none | length | percentage
+
+stroke-dashoffset : length | percentage
+
+stroke-linecap : butt | round | square
+
+stroke-linejoin : miter | bevel | round
+
+stroke-opacity : value between 0 and 1
+
+stroke-width : +ve length | percentage
+
+tab-size : length | number
+
+table-layout : auto | fixed
+
+text-align : start | end | left | right | center | justify | match-parent
+
+text-align-last : start | end | left | right | center | justify | match-parent
+
+text-decoration : text-decoration-line    text-decoration-style    text-decoction-color
+
+text-emphasis-color : currentColor | color-name | rgb value | hexadecimal value
+
+text-decoration-line : none | underline | overline | line-through
+
+text-decoration-ink-skip : none | auto
+
+text-decoration-style : solid | double | dotted | dashed | wavy
+
+text-emphasis : text-emphasis-style    text-emphasis-color
+
+text-emphasis-color : currentColor | color-name | rgb value | hexadecimal value
+
+text-emphasis-position : over | under
+
+text-emphasis-style : none | [ filled | open ] [ dot | circle | double-circle | triangle | sesame ]
+
+text-indent : length | percentage
+
+text-overflow : clip | ellipsis
+
+text-shadow : none | horizontal-offset   vertical-offset   blur-radius   shadow-color
+
+text-transform : none | capitalize | uppercase | lowercase
+text-underline-position : auto | underline
+top : auto | length | percentage
+
+transform : none | translate() | rotate() | scale() | skew()
+
+transform-origin : [left | center | right | length | percentage ] [ top | bottom | length | percentage]
+
+transform-style : flat | preserve-3d
+
+transition : none | [ transition-property    transition-duration    transition-timing-function    transition-delay ]
+
+transition-delay : time (seconds or milliseconds)
+
+transition-duration: : time (seconds or milliseconds)
+transition-property : property-name
+
+transition-timing-function : ease | ease-in | ease-out | ease-in-out
+
+user-select : auto | text | none | all
+
+vertical-align : baseline | text-bottom | middle | text-top | top | bottom | sub | super | length | percentage
+
+visibility : visible | hidden | collapse
+
+animation-delay : normal | pre | nowrap | pre-wrap | break-spaces | pre-line
+
+width : auto | length | percentage | min-content | max-content
+
+word-break : normal | keep-all | break-all
+
+word-spacing : normal | length
+
+writing-mode : horizontal-tb | vertical-rl | vertical-lr
+
+z-index : integer | auto
+
+
+
+
+
+

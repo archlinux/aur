@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units Count="53">
+      <Unit0>
+        <Filename Value="htmlbuilder.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="72" Y="14"/>
+        <UsageCount Value="200"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <TopLine Value="4609"/>
+        <CursorPos Y="4623"/>
+        <ExtraEditorCount Value="1"/>
+        <ExtraEditor1>
+          <EditorIndex Value="-1"/>
+          <WindowIndex Value="-1"/>
+          <TopLine Value="1376"/>
+          <CursorPos X="67" Y="1378"/>
+        </ExtraEditor1>
+        <ComponentState Value="1"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="db_helpers.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="18" Y="30"/>
+        <UsageCount Value="200"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="db_insertdemo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="332"/>
+        <CursorPos X="57" Y="649"/>
+        <UsageCount Value="200"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="db_create_tables.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="64" Y="251"/>
+        <UsageCount Value="200"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="replacers.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="51" Y="38"/>
+        <UsageCount Value="200"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="editor_in_window.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmEditor"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="366"/>
+        <CursorPos X="6" Y="370"/>
+        <ComponentState Value="2"/>
+        <UsageCount Value="202"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="editor_css.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmEditorCss"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="67"/>
+        <CursorPos X="8" Y="74"/>
+        <UsageCount Value="195"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="editor_js.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmEditorJs"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="61"/>
+        <CursorPos Y="69"/>
+        <UsageCount Value="191"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="css_props_dlg.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCssProps"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="5" Y="17"/>
+        <UsageCount Value="180"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="sitemap_thread.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="10"/>
+        <CursorPos X="18" Y="36"/>
+        <UsageCount Value="173"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="selectortagspages.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="selectorTagsPages"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="134"/>
+        <CursorPos X="10" Y="33"/>
+        <UsageCount Value="136"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="types_for_app.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="179"/>
+        <CursorPos X="47" Y="194"/>
+        <UsageCount Value="136"/>
+        <Loaded Value="True"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="const_for_app.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="136"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="sql_tags_for_all.txt"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="20"/>
+        <UsageCount Value="134"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="sql_tags_for_page.txt"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="132"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="sql_pages_by_tag.txt"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="35" Y="10"/>
+        <UsageCount Value="132"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="selectors_for_menu.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="62"/>
+        <UsageCount Value="98"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="renderhtml.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="RenderHtml"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="10"/>
+        <CursorPos X="3" Y="16"/>
+        <UsageCount Value="95"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="asyncqueue.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="AsyncQueue"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="94"/>
+        <CursorPos X="15" Y="104"/>
+        <UsageCount Value="72"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="storing_attachments.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="8"/>
+        <CursorPos X="74" Y="37"/>
+        <UsageCount Value="46"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="fontsettings.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="FontSettings"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="18"/>
+        <CursorPos X="30" Y="35"/>
+        <UsageCount Value="40"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="selection_history_dialog.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSelectionHistory"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="10"/>
+        <CursorPos X="25" Y="24"/>
+        <UsageCount Value="27"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="selection_history_manager.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="26"/>
+        <CursorPos X="23" Y="48"/>
+        <UsageCount Value="23"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="E:\02 ЛИЧНОЕ\01 Документы\05 АРТЕМ [1GB]\02 ИСХОДНИКИ\Nav\modelfromdb.pas"/>
+        <TopLine Value="59"/>
+        <CursorPos X="27" Y="44"/>
+        <UsageCount Value="7"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="E:\02 ЛИЧНОЕ\РАЗЛИЧНЫЕ КОПИИ\COPIES\18_09_2012_12_33\pargn.lfm"/>
+        <TopLine Value="31"/>
+        <UsageCount Value="7"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="E:\02 ЛИЧНОЕ\РАЗЛИЧНЫЕ КОПИИ\COPIES\18_09_2012_12_31\parogenerator.lpr"/>
+        <TopLine Value="6"/>
+        <UsageCount Value="7"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="E:\02 ЛИЧНОЕ\РАЗЛИЧНЫЕ КОПИИ\COPIES\18_09_2012_12_31\pargn.pas"/>
+        <TopLine Value="283"/>
+        <CursorPos X="7" Y="287"/>
+        <UsageCount Value="7"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="C:\lazarus\lcl\include\control.inc"/>
+        <TopLine Value="3261"/>
+        <CursorPos Y="3270"/>
+        <UsageCount Value="8"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="C:\LAZARUS_LIB\SYNAPSE\blcksock.pas"/>
+        <TopLine Value="1916"/>
+        <CursorPos X="13" Y="1925"/>
+        <UsageCount Value="9"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="C:\LAZARUS_LIB\SYNAPSE\ftpsend.pas"/>
+        <UsageCount Value="7"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="C:\lazarus\components\synedit\syneditlazdsgn.pas"/>
+        <UnitName Value="SynEditLazDsgn"/>
+        <TopLine Value="27"/>
+        <CursorPos X="34" Y="37"/>
+        <UsageCount Value="8"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="..\..\..\usr\lib\lazarus\components\lazreport\source\lr_pars.pas"/>
+        <UnitName Value="LR_Pars"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="148"/>
+        <CursorPos X="34" Y="154"/>
+        <UsageCount Value="7"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="main.lfm"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="6" Y="4"/>
+        <UsageCount Value="7"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="asn1util.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="7"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="..\Загрузки\HtmlBuilder-master\main.lfm"/>
+        <HasResources Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="15" Y="3"/>
+        <UsageCount Value="7"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="..\..\..\usr\lib\lazarus\lcl\include\dbcustomnavigator.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="480"/>
+        <CursorPos Y="489"/>
+        <UsageCount Value="8"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="..\..\..\usr\lib64\lazarus\lcl\interfaces\qt5\qtwidgets.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="5646"/>
+        <CursorPos Y="5746"/>
+        <UsageCount Value="8"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="..\..\..\usr\lib\lazarus\lcl\interfaces\qt5\qtwidgets.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="4606"/>
+        <CursorPos Y="4606"/>
+        <UsageCount Value="9"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="..\..\..\usr\lib\lazarus\lcl\include\control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3592"/>
+        <CursorPos Y="3612"/>
+        <UsageCount Value="26"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="..\..\..\run\user\1000\doc\e0daf323\usr\lib\fpc\src\packages\sqlite\src\sqlite3.pp"/>
+        <UnitName Value="SQLite3"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="2"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="..\..\..\run\user\1000\doc\e0daf323\usr\lib\fpc\src\packages\fcl-db\src\sqldb\sqlite\sqlite3conn.pp"/>
+        <UnitName Value="SQLite3Conn"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="871"/>
+        <CursorPos X="22" Y="890"/>
+        <UsageCount Value="2"/>
+      </Unit41>
+      <Unit42>
+        <Filename Value="..\..\..\usr\lib\lazarus\components\sqldb\registersqldb.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="100"/>
+        <CursorPos X="10" Y="107"/>
+        <UsageCount Value="2"/>
+      </Unit42>
+      <Unit43>
+        <Filename Value="..\..\..\usr\lib\fpc\src\packages\fcl-db\src\sqldb\sqlite\sqlite3conn.pp"/>
+        <UnitName Value="SQLite3Conn"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="914"/>
+        <CursorPos X="7" Y="892"/>
+        <UsageCount Value="2"/>
+      </Unit43>
+      <Unit44>
+        <Filename Value="..\..\..\usr\lib\fpc\src\packages\fcl-db\src\sqlite\sqlite3ds.pas"/>
+        <UnitName Value="SQLite3DS"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="2"/>
+      </Unit44>
+      <Unit45>
+        <Filename Value="..\..\..\usr\lib\lazarus\lcl\include\customform.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2215"/>
+        <CursorPos Y="2240"/>
+        <UsageCount Value="24"/>
+      </Unit45>
+      <Unit46>
+        <Filename Value="..\..\..\usr\lib\lazarus\lcl\include\treeview.inc"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="482"/>
+        <CursorPos Y="491"/>
+        <UsageCount Value="7"/>
+      </Unit46>
+      <Unit47>
+        <Filename Value="..\..\..\usr\lib\lazarus\lcl\include\application.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2379"/>
+        <CursorPos X="64" Y="2213"/>
+        <UsageCount Value="8"/>
+      </Unit47>
+      <Unit48>
+        <Filename Value="..\..\..\usr\lib\lazarus\lcl\include\dbimage.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="123"/>
+        <CursorPos X="43" Y="157"/>
+        <UsageCount Value="15"/>
+      </Unit48>
+      <Unit49>
+        <Filename Value="..\..\..\usr\lib\fpc\src\rtl\objpas\classes\classesh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="720"/>
+        <CursorPos X="15" Y="739"/>
+        <UsageCount Value="10"/>
+      </Unit49>
+      <Unit50>
+        <Filename Value="..\..\..\usr\lib\lazarus\lcl\include\picture.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="595"/>
+        <CursorPos X="34" Y="608"/>
+        <UsageCount Value="9"/>
+      </Unit50>
+      <Unit51>
+        <Filename Value="..\..\..\usr\lib\lazarus\lcl\include\wincontrol.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="6474"/>
+        <CursorPos Y="6489"/>
+        <UsageCount Value="18"/>
+      </Unit51>
+      <Unit52>
+        <Filename Value="emoji_shortcodes.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="20"/>
+        <CursorPos X="21" Y="36"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit52>
+    </Units>
+    <OtherDefines Count="1">
+      <Define0 Value="UseCThreads"/>
+    </OtherDefines>
+    <JumpHistory Count="19" HistoryIndex="18">
+      <Position1>
+        <Filename Value="main.pas"/>
+        <Caret Line="2217" Column="48" TopLine="2209"/>
+      </Position1>
+      <Position2>
+        <Filename Value="main.pas"/>
+        <Caret Line="2223" Column="67" TopLine="2211"/>
+      </Position2>
+      <Position3>
+        <Filename Value="main.pas"/>
+        <Caret Line="2214" Column="5" TopLine="2202"/>
+      </Position3>
+      <Position4>
+        <Filename Value="main.pas"/>
+        <Caret Line="2333" Column="35" TopLine="2327"/>
+      </Position4>
+      <Position5>
+        <Filename Value="main.pas"/>
+        <Caret Line="6060" Column="23" TopLine="6058"/>
+      </Position5>
+      <Position6>
+        <Filename Value="main.pas"/>
+        <Caret Line="58" Column="10" TopLine="48"/>
+      </Position6>
+      <Position7>
+        <Filename Value="main.pas"/>
+        <Caret Line="485" Column="20" TopLine="467"/>
+      </Position7>
+      <Position8>
+        <Filename Value="main.pas"/>
+        <Caret Line="486" Column="20" TopLine="468"/>
+      </Position8>
+      <Position9>
+        <Filename Value="main.pas"/>
+        <Caret Line="2307" Column="23" TopLine="2288"/>
+      </Position9>
+      <Position10>
+        <Filename Value="main.pas"/>
+        <Caret Line="784" Column="88" TopLine="777"/>
+      </Position10>
+      <Position11>
+        <Filename Value="main.pas"/>
+        <Caret Line="1297" Column="63" TopLine="1286"/>
+      </Position11>
+      <Position12>
+        <Filename Value="main.pas"/>
+        <Caret Line="2277" Column="20" TopLine="2266"/>
+      </Position12>
+      <Position13>
+        <Filename Value="main.pas"/>
+        <Caret Line="2852" TopLine="2843"/>
+      </Position13>
+      <Position14>
+        <Filename Value="emoji_shortcodes.pas"/>
+        <Caret Column="6"/>
+      </Position14>
+      <Position15>
+        <Filename Value="emoji_shortcodes.pas"/>
+        <Caret Line="13" Column="32"/>
+      </Position15>
+      <Position16>
+        <Filename Value="main.pas"/>
+        <Caret Line="20" Column="19" TopLine="17"/>
+      </Position16>
+      <Position17>
+        <Filename Value="types_for_app.pas"/>
+        <Caret Line="194" Column="47" TopLine="179"/>
+      </Position17>
+      <Position18>
+        <Filename Value="emoji_shortcodes.pas"/>
+        <Caret Line="13" Column="13" TopLine="2"/>
+      </Position18>
+      <Position19>
+        <Filename Value="main.pas"/>
+        <Caret Line="4623" TopLine="4609"/>
+      </Position19>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode="default"/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

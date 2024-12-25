@@ -1,0 +1,53 @@
+object frmSelectionHistory: TfrmSelectionHistory
+  Left = 515
+  Height = 225
+  Top = 343
+  Width = 540
+  Caption = 'История буфера обмена'
+  ClientHeight = 225
+  ClientWidth = 540
+  OnCreate = FormCreate
+  Position = poMainFormCenter
+  LCLVersion = '3.4.0.0'
+  object lboSelectionHistory: TListBox
+    Left = 0
+    Height = 175
+    Top = 0
+    Width = 540
+    Align = alClient
+    ItemHeight = 0
+    TabOrder = 0
+  end
+  object btnCancel: TButton
+    Left = 0
+    Height = 25
+    Top = 175
+    Width = 540
+    Action = acCancel
+    Align = alBottom
+    ModalResult = 2
+    TabOrder = 1
+  end
+  object btnOK: TButton
+    Left = 0
+    Height = 25
+    Top = 200
+    Width = 540
+    Action = acOk
+    Align = alBottom
+    ModalResult = 1
+    TabOrder = 2
+  end
+  object alActions: TActionList
+    Left = 488
+    Top = 8
+    object acOk: TAction
+      Caption = 'Выбрать фрагмент'
+      OnExecute = acOkExecute
+    end
+    object acCancel: TAction
+      Caption = 'Отмена'
+      OnExecute = acCancelExecute
+    end
+  end
+end
