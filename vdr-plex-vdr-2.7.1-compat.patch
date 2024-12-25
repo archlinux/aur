@@ -1,0 +1,60 @@
+Index: vdr-plugin-plex-0.4.0+git20170710-2-6affa0c/hlsPlayerControl.cpp
+===================================================================
+--- vdr-plugin-plex-0.4.0+git20170710-2-6affa0c.orig/hlsPlayerControl.cpp	2017-07-10 19:56:15.000000000 +0200
++++ vdr-plugin-plex-0.4.0+git20170710-2-6affa0c/hlsPlayerControl.cpp	2024-09-10 06:27:05.489505805 +0200
+@@ -15,7 +15,12 @@
+ // static
+ cControl *cHlsPlayerControl::Create(plexclient::cVideo Video) {
+     // Stop already playing stream
++#if APIVERSNUM > 20402
++    cMutexLock ControlMutexLock;
++    cHlsPlayerControl *c = dynamic_cast<cHlsPlayerControl *>(cControl::Control(ControlMutexLock, true));
++#else
+     cHlsPlayerControl *c = dynamic_cast<cHlsPlayerControl *>(cControl::Control(true));
++#endif
+     if (c) {
+         c->Stop();
+     }
+Index: vdr-plugin-plex-0.4.0+git20170710-2-6affa0c/PlexHTTPRequestHandler.cpp
+===================================================================
+--- vdr-plugin-plex-0.4.0+git20170710-2-6affa0c.orig/PlexHTTPRequestHandler.cpp	2017-07-10 19:56:15.000000000 +0200
++++ vdr-plugin-plex-0.4.0+git20170710-2-6affa0c/PlexHTTPRequestHandler.cpp	2024-09-10 06:30:36.290916864 +0200
+@@ -201,7 +201,12 @@
+ 
+             } else if (request.getURI().find("/playback") != std::string::npos) {
+                 if (request.getURI().find("/playback/seekTo") != std::string::npos) {
++#if APIVERSNUM > 20402
++    cMutexLock ControlMutexLock;
++    cHlsPlayerControl *control = dynamic_cast<cHlsPlayerControl *>(cControl::Control(ControlMutexLock, true));
++#else
+                     cHlsPlayerControl *control = dynamic_cast<cHlsPlayerControl *>(cControl::Control(true));
++#endif
+                     if (query.find("offset") != query.end()) {
+                         int offset = atoi(query["offset"].c_str()) / 1000;
+                         if (control) {
+@@ -247,7 +252,12 @@
+                 } else if (request.getURI().find("/playback/stop") != std::string::npos) {
+                     cRemote::Put(kStop);
+                 } else if (request.getURI().find("/playback/stepForward") != std::string::npos) {
++#if APIVERSNUM > 20402
++                    cMutexLock ControlMutexLock;
++                    cHlsPlayerControl *control = dynamic_cast<cHlsPlayerControl *>(cControl::Control(ControlMutexLock, true));
++#else
+                     cHlsPlayerControl *control = dynamic_cast<cHlsPlayerControl *>(cControl::Control(true));
++#endif
+                     if (control) {
+                         control->JumpRelative(30);
+                     } else if (cMyPlugin::PlayingFile) {
+@@ -261,7 +271,12 @@
+                     } else
+                         cRemote::Put(kFastFwd);
+                 } else if (request.getURI().find("/playback/stepBack") != std::string::npos) {
++#if APIVERSNUM > 20402
++                    cMutexLock ControlMutexLock;
++                    cHlsPlayerControl *control = dynamic_cast<cHlsPlayerControl *>(cControl::Control(ControlMutexLock, true));
++#else
+                     cHlsPlayerControl *control = dynamic_cast<cHlsPlayerControl *>(cControl::Control(true));
++#endif
+                     if (control) {
+                         control->JumpRelative(-15);
+                     } else if (cMyPlugin::PlayingFile) {
