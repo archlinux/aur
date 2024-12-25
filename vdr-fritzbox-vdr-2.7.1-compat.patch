@@ -1,0 +1,59 @@
+From 794cf1aec9c3c262dc6e7ed6e217f64e1008100d Mon Sep 17 00:00:00 2001
+From: Stefan Hofmann <stefan.hofmann@t-online.de>
+Date: Sun, 22 Sep 2024 12:22:01 +0200
+Subject: [PATCH] Fixed build issues with VDR API
+
+---
+ fritzeventhandler.cpp | 14 ++++++++++++--
+ notifyosd.cpp         |  2 +-
+ 2 files changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/fritzeventhandler.cpp b/fritzeventhandler.cpp
+index 565c75d..a9eacc3 100644
+--- a/fritzeventhandler.cpp
++++ b/fritzeventhandler.cpp
+@@ -146,7 +146,12 @@ void cFritzEventHandler::handleCall(bool outgoing, int connId,
+ 
+ 	bool currPlay, currForw;
+ 	int currSpeed;
+-	cControl *control = cControl::Control();
++#if APIVERSNUM >= 20402
++    cMutexLock mutexLock;
++    cControl* control = cControl::Control(mutexLock);
++#else
++    cControl* control = cControl::Control();
++#endif
+ 	if (control) {
+ 		control->GetReplayMode(currPlay, currForw, currSpeed);
+ 	}
+@@ -244,7 +249,12 @@ void cFritzEventHandler::handleDisconnect(int connId, std::string duration) {
+ 
+ 	bool currPlay, currForw;
+ 	int currSpeed;
+-	cControl *control = cControl::Control();
++#if APIVERSNUM >= 20402
++    cMutexLock mutexLock;
++    cControl* control = cControl::Control(mutexLock);
++#else
++    cControl* control = cControl::Control();
++#endif
+ 	if (control) {
+ 		control->GetReplayMode(currPlay, currForw, currSpeed);
+ 	}
+diff --git a/notifyosd.cpp b/notifyosd.cpp
+index d7f6b1e..947f8c1 100644
+--- a/notifyosd.cpp
++++ b/notifyosd.cpp
+@@ -128,7 +128,7 @@ void cNotifyOsd::Show(void) {
+ 		delete osd;
+ 	osd = cOsdProvider::NewOsd(left, top);
+ 	// defines drawing area and color depth
+-	tArea Area = { 0, 0, width-1, height-1, colorDepth };
++	tArea Area = { 0, 0, (int)(width-1), (int)(height-1), colorDepth };
+ 	osd->SetAreas(&Area, 1);
+ 	// draw osd frame, 2px thick
+ 	osd->DrawRectangle(0,             0,             width-1,               height-1,               clrBackground);
+-- 
+2.46.1.windows.1
+
+
