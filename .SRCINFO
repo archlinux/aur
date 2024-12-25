@@ -1,7 +1,7 @@
 pkgbase = python-gemmi
 	pkgdesc = macromolecular crystallography library (Python bindings)
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gemmi.readthedocs.io/
 	arch = x86_64
 	license = MPL-2.0

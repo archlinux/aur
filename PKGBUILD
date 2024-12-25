@@ -2,7 +2,7 @@
 _pyname="gemmi"
 pkgname="python-${_pyname}"
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="macromolecular crystallography library (Python bindings)"
 arch=(x86_64)
 url="https://gemmi.readthedocs.io/"
