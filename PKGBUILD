@@ -2,10 +2,10 @@
 _pkgname=butterfly
 pkgname="linwood-${_pkgname}-bin"
 _appname="dev.linwood.${_pkgname}"
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.2.3
+pkgrel=1
 pkgdesc="Powerful, minimalistic, cross-platform, opensource note-taking app.(Prebuilt version)"
-arch=("x86_64")
+arch=('x86_64')
 url="https://docs.butterfly.linwood.dev/"
 _ghurl="https://github.com/LinwoodDev/Butterfly"
 license=(
@@ -25,10 +25,10 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/LinwoodDev/Butterfly/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('755121a7bf9611bca8d7d044ba7818025d76457ad00dd173e39b69775014a916'
+sha256sums=('065e801362676238f4b33521a26f1ae7b16c6aae88b97ffa93a4ccd5db1d3c29'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-build() {
+prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
