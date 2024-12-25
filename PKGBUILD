@@ -3,7 +3,7 @@
 pkgname=play-timer-git
 provides=('play-timer')
 pkgver=1.6.2
-pkgrel=1
+pkgrel=3
 pkgdesc="Timer app (GUI/CLI) with native DE integration — GNOME, Plasma or any MPRIS compatible setup."
 arch=('x86_64' 'amd64')
 url="https://github.com/efogdev/mpris-timer"
