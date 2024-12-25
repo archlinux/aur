@@ -1,16 +1,19 @@
 pkgbase = buildifier
 	pkgdesc = A command line tool to format Bazel BUILD files
 	pkgver = 7.3.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/bazelbuild/buildtools
 	arch = x86_64
 	arch = aarch64
 	license = Apache
-	makedepends = bazel
 	makedepends = git
 	makedepends = python
 	conflicts = buildifier-bin
 	source = buildifier::git+https://github.com/bazelbuild/buildtools.git#commit=45b7ddb516e521e68794bf409d73ff8a32641de3
 	md5sums = SKIP
+	source_x86_64 = bazelisk-bin-x86_64-1.25.0::https://github.com/bazelbuild/bazelisk/releases/download/v1.25.0/bazelisk-linux-amd64
+	sha256sums_x86_64 = fd8fdff418a1758887520fa42da7e6ae39aefc788cf5e7f7bb8db6934d279fc4
+	source_aarch64 = bazelisk-bin-aarch64-1.25.0::https://github.com/bazelbuild/bazelisk/releases/download/v1.25.0/bazelisk-linux-arm64
+	sha256sums_aarch64 = 4c8d966e40ac2c4efcc7f1a5a5cceef2c0a2f16b957e791fa7a867cce31e8fcb
 
 pkgname = buildifier
