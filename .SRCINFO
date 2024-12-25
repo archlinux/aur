@@ -1,27 +1,24 @@
 pkgbase = python-aqtinstall
-	pkgdesc = Another unofficial Qt installer
-	pkgver = 3.1.6
+	pkgdesc = aqt: Another (unofficial) Qt CLI Installer on multi-platforms
+	pkgver = 3.1.21
 	pkgrel = 1
 	url = https://github.com/miurahr/aqtinstall
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
-	checkdepends = python-pytest-socket
-	makedepends = python-twine
+	checkdepends = twine
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
-	depends = python
-	depends = python-defusedxml
-	depends = python-requests
 	depends = python-beautifulsoup4
-	depends = python-semantic-version
-	depends = python-texttable
+	depends = python-defusedxml
+	depends = python-humanize
 	depends = python-patch
 	depends = python-py7zr
-	depends = python-humanize
-	source = python-aqtinstall::git+https://github.com/miurahr/aqtinstall.git#tag=v3.1.6
-	sha512sums = SKIP
+	depends = python-requests
+	depends = python-semantic-version
+	depends = python-texttable
+	source = https://pypi.io/packages/source/a/aqtinstall/aqtinstall-3.1.21.tar.gz
+	sha256sums = d6fbcf4ede59b9dafe9fbbc868a63cf4531d85797376a696a47d7dbf4e44e5a9
 
 pkgname = python-aqtinstall
