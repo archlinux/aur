@@ -1,0 +1,4 @@
+[darkly-git]
+source = "git"
+git = "https://github.com/Bali10050/lightly"
+prefix = "v"
