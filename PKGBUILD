@@ -2,17 +2,17 @@
 
 _pkgname='histoprint'
 pkgname="python-${_pkgname}"
-pkgver='2.4.0'
-pkgrel=4
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="Pretty print Numpy (and other) histograms to the console."
 arch=('any')
 url='https://github.com/scikit-hep/histoprint'
 license=('MIT')
 depends=('python-numpy' 'python-click' 'python-uhi')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm' 'python-toml')
+makedepends=('git' 'python-build' 'python-installer' 'python-hatchling' 'python-hatch-vcs')
 checkdepends=('python-pytest')
 source=("${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('afb8969adfbaa332117b606c86ca89618fd632f47df37c912da9fba9c20c04c0')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -21,7 +21,7 @@ build() {
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  PYTHONPATH="${PWD}/build/lib" pytest
+  PYTHONPATH="${PWD}" pytest
 }
 
 package() {

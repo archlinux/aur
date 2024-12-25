@@ -1,7 +1,7 @@
 pkgbase = python-histoprint
 	pkgdesc = Pretty print Numpy (and other) histograms to the console.
-	pkgver = 2.4.0
-	pkgrel = 4
+	pkgver = 2.6.0
+	pkgrel = 1
 	url = https://github.com/scikit-hep/histoprint
 	arch = any
 	license = MIT
@@ -9,13 +9,12 @@ pkgbase = python-histoprint
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-setuptools-scm
-	makedepends = python-toml
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
 	depends = python-numpy
 	depends = python-click
 	depends = python-uhi
-	source = python-histoprint-2.4.0::git+https://github.com/scikit-hep/histoprint#tag=v2.4.0
-	sha256sums = SKIP
+	source = python-histoprint-2.6.0::git+https://github.com/scikit-hep/histoprint#tag=v2.6.0
+	sha256sums = afb8969adfbaa332117b606c86ca89618fd632f47df37c912da9fba9c20c04c0
 
 pkgname = python-histoprint
