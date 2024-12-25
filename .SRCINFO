@@ -1,6 +1,6 @@
 pkgbase = python-psrqpy
 	pkgdesc = A python module to query the ATNF pulsar catalogue
-	pkgver = 1.2.7
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/mattpitkin/psrqpy
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-psrqpy
 	depends = python-matplotlib
 	conflicts = python-psrqpy-git
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/p/psrqpy/psrqpy-1.2.7.tar.gz
-	sha256sums = 25fe3e00b0a98d6fd813846908bf628927c1d9234df85df705e40698b56bfc8c
+	source = https://files.pythonhosted.org/packages/source/p/psrqpy/psrqpy-1.3.0.tar.gz
+	sha256sums = ddeabf55fd22a149f9fe0926902443f6a990d13b6d4e820fcff89362a6dee68c
 
 pkgname = python-psrqpy
