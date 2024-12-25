@@ -3,29 +3,34 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-suspendoutput
 pkgver=2.1.0
-_vdrapi=2.6.7
-pkgrel=10
+_vdrapi=5
+pkgrel=11
 pkgdesc="Output device that does nothing"
-url="http://phivdr.dyndns.org/vdr/vdr-dummydevice/"
+url='https://phivdr.dyndns.org/vdr/vdr-dummydevice/'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 makedepends=('ffmpeg')
 _plugname=${pkgname//vdr-/}
-source=("http://phivdr.dyndns.org/vdr/$pkgname/$pkgname-$pkgver.tgz"
+source=("https://phivdr.dyndns.org/vdr/$pkgname/$pkgname-$pkgver.tgz"
         "$pkgname-nooutput.patch"
         "$pkgname-timer_fix_vdr2.4.patch"
+        "${pkgname}-vdr-2.7.1-compat.patch"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 sha256sums=('3109de8b18431613b8ebd5d9a2dd8b6b730a8efd321beb2b13508ae1825c80ed'
             '23bfb82b24555fd936538cfc33d232bc8833547182d5429996abf486023ab4b6'
             '681cade0debc9c22df507a816d3137635b03243dd76f18df648a6df7d3bf7b77'
+            '474aec1d7a61223d214fac994760449631a73939aea6734ed56c20d1fb0b2cb9'
             'df5a85dd056e5dd99c723bb96ec5f822df3beed97e232a33378542e2e686d8de')
+
+DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 prepare() {
   cd "${srcdir}/${_plugname}-${pkgver}"
   patch -p1 -i "$srcdir/$pkgname-nooutput.patch"
   patch -p1 -i "$srcdir/$pkgname-timer_fix_vdr2.4.patch"
+  patch -p1 -i "${srcdir}/${pkgname}-vdr-2.7.1-compat.patch"
 
   # http://www.vdr-wiki.de/wiki/index.php/Kategorie:Raspbian_VDR_Streaming_Client_mittels_Streamdev_und_rpihddevice#Installation_vorbereiten
   for i in *.mpg; do

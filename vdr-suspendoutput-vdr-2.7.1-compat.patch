@@ -1,0 +1,21 @@
+Index: vdr-plugin-suspendoutput-2.1.0/suspendoutput.c
+===================================================================
+--- vdr-plugin-suspendoutput-2.1.0.orig/suspendoutput.c	2024-09-10 09:09:10.000000000 +0200
++++ vdr-plugin-suspendoutput-2.1.0/suspendoutput.c	2024-09-10 09:11:30.679021109 +0200
+@@ -325,9 +325,16 @@
+      (!cDummyPlayerControl::IsOpen()) ) {
+     bool Play, Forward;
+     int Speed;
++#if APIVERSNUM > 20408
++    cMutexLock ControlMutexLock;
++    if(cControl::Control(ControlMutexLock) &&
++       cControl::Control(ControlMutexLock)->GetReplayMode(Play, Forward, Speed) &&
++       Play)
++#else
+     if(cControl::Control() &&
+        cControl::Control()->GetReplayMode(Play, Forward, Speed) &&
+        Play)
++#endif
+       Activity();
+   }
+ 
