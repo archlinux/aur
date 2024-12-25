@@ -7,19 +7,20 @@ pkgdesc="Support for cryptographic tokens from Aktiv-Soft JSC"
 url="https://www.rutoken.ru/support/download/"
 arch=('x86_64')
 license=("custom")
-depends=("glibc" "gcc-libs" "pcsclite" "ccid")
+depends=("glibc" "pcsclite" "ccid")
+makedepends=("patchelf")
 optdepends=("libp11-kit: for sd-rutoken")
 options=('!strip')
-source=("https://download.rutoken.ru/Rutoken/Utilites/rtAdmin/2.4/Linux/rtadmin.zip"
+source=("https://download.rutoken.ru/Rutoken/Utilites/rtAdmin/3.1/Linux/rtadmin.zip"
         "https://download.rutoken.ru/Rutoken/PKCS11Lib/${pkgver}/Linux/x64/librtpkcs11ecp-${pkgver}-1.x86_64.rpm"
         "sd-rutoken")
-sha256sums=('e1f9673a79212daba215b2421e6003e2ddb36edb247922e0941122e36901832b'
+sha256sums=('fb434d6d68147f4f8719167f345a2accee46a83df76e24a87ce1072a50bf9521'
             '07698a5b94aa227f0c63aae6b88d18e87e3fe28b076286d11cf29d8bc29f4e01'
             'SKIP')
 
 package() {
-  bsdtar -xf "${srcdir}/linux-x64.zip"
-  install -Dm755 "linux-x64/rtadmin" "$pkgdir/usr/bin/rtadmin"
+  install -Dm755 "glibc-x86_64/rtadmin" "$pkgdir/usr/bin/rtadmin"
+  patchelf --add-rpath "/usr/lib/pkcs11" "$pkgdir/usr/bin/rtadmin"
 
   install -Dm755 "opt/aktivco/rutokenecp/x86_64/librtpkcs11ecp.so" "$pkgdir/usr/lib/pkcs11/librtpkcs11ecp.so"
   install -Dm644 "usr/share/doc/librtpkcs11ecp/LICENSE" "$pkgdir/usr/share/doc/librtpkcs11ecp/LICENSE"
