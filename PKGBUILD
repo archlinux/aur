@@ -1,28 +1,74 @@
-# Maintainer: Paragoumba <aur at paragoumba dot fr>
+# Maintainer:
+# Contributor: Paragoumba <aur at paragoumba dot fr>
 # Contributor: Renaud Littolff <rlittolff@gmail.com>
 
 pkgname=proton-pass
 pkgver=1.26.0
-pkgrel=1
-pkgdesc="Open-source password manager for effortless protection. Securely store, share and auto-login your accounts with Proton Pass, using end-to-end encryption trusted by millions."
-arch=("x86_64")
+_pkgver="${pkgver}-rc9"
+pkgrel=2
+pkgdesc="Open-source and secure identity manager"
+arch=('x86_64')
 url="https://proton.me/pass"
-groups=("ProtonPass")
+license=('GPL-3.0-or-later')
+_electron=electron33
+depends=('alsa-lib'
+         'at-spi2-core'
+         'cairo'
+         'dbus'
+         "${_electron}"
+         'expat'
+         'gcc-libs'
+         'glib2'
+         'glibc'
+         'gtk3'
+         'libcups'
+         'libdrm'
+         'libx11'
+         'libxcb'
+         'libxcomposite'
+         'libxdamage'
+         'libxext'
+         'libxfixes'
+         'libxkbcommon'
+         'libxrandr'
+         'mesa'
+         'nspr'
+         'nss'
+         'pango'
+         'systemd-libs')
+makedepends=('gendesk' 'npm' 'rustup' 'yarn')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ProtonMail/WebClients/archive/refs/tags/${pkgname}@${_pkgver}.tar.gz")
+sha256sums=('34d6f5f76120a76e3c288beb38782d9f5d0dbbf385059f7544cccf013a852292')
 
-makedepends=("git" "python-setuptools")
-source=("https://proton.me/download/pass/linux/proton-pass_${pkgver}_amd64.deb")
-sha256sums=('b5d8d4b9057dc3a4170c37bb7f0f524b81f76ec0db950834a08cf99da417ace2')
+prepare() {
+    cd "WebClients-${pkgname}-${_pkgver}/applications/pass-desktop"
+    gendesk -f -n \
+        --pkgname "${pkgname}" \
+        --pkgdesc "${pkgdesc}" \
+        --name 'Proton Pass' \
+        --genericname 'Password Manager' \
+        --categories 'Utility'
 
-conflicts=('protonpass' 'protonpass-bin' 'proton-pass-bin')
-replaces=('protonpass-bin' 'proton-pass-bin')
+    sed "s/process.resourcesPath/path.dirname(app.getAppPath())/" -i src/main.ts
+
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    yarn install
+    rustup default stable
+}
+
+build() {
+    cd "WebClients-${pkgname}-${_pkgver}/applications/pass-desktop"
+    yarn run build:desktop
+}
 
 package() {
-	tar -xvf data.tar.xz -C "$pkgdir/"
+    cd "WebClients-${pkgname}-${_pkgver}/applications/pass-desktop"
+    install -d "${pkgdir}/opt/${pkgname}"
+    cp -r "out/Proton Pass-linux-x64/"* "${pkgdir}/opt/${pkgname}"
 
-	install -d "$pkgdir/opt/"
-	mv "$pkgdir/usr/lib/proton-pass" "$pkgdir/opt/"
+    install -d "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgname}/Proton Pass" "${pkgdir}/usr/bin/${pkgname}"
 
-	ln -sf "/opt/proton-pass/Proton Pass" "$pkgdir/usr/bin/proton-pass"
-
-	rm -rf "$pkgdir"/usr/share/{doc,lintian}
+    install -Dm644 assets/logo.svg "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
+    install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }

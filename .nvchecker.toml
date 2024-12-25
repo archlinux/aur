@@ -1,0 +1,6 @@
+[proton-pass]
+source = "github"
+github = "ProtonMail/WebClients"
+use_max_tag = true
+include_regex = "proton-pass@(.*)"
+prefix = "proton-pass@"
