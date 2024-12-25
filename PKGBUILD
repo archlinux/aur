@@ -3,7 +3,7 @@
 
 pkgname=napcatqq-git
 _pkgname=NapCatQQ
-pkgver=r3380.8a089c84
+pkgver=r3404.02a89994
 pkgrel=1
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
 arch=('x86_64'
@@ -31,7 +31,6 @@ build() {
 
     npm i && cd napcat.webui && npm i && cd .. || exit 1
     npm run build:shell && cd dist && npm i --omit=dev || exit 1
-    cd ..
 }
 
 package() {
@@ -96,7 +95,6 @@ function create_config_if_missing() {
         log "QQ进程ID: ${QQ_PID}"
         
         if [ -f "$conf" ]; then
-            log "配置文件立即创建成功"
             kill $QQ_PID 2>/dev/null
             wait $QQ_PID 2>/dev/null
             log "配置文件创建成功"
@@ -116,19 +114,11 @@ function create_config_if_missing() {
             sleep 1
         done
         
-        log "准备结束QQ进程..."
         kill $QQ_PID 2>/dev/null
         wait $QQ_PID 2>/dev/null
-        log "QQ进程已结束"
         
         if [ ! -f "$conf" ]; then
             log "等待配置文件生成超时"
-            log "当前目录内容:"
-            ls -la "${conf_dir}" 2>/dev/null || log "无法访问配置目录"
-            log "xvfb-run 状态: $(which xvfb-run || echo '未找到')"
-            log "linuxqq 状态: $(which linuxqq || echo '未找到')"
-            log "当前用户: $(whoami)"
-            log "目标用户: $(logname)"
             return 1
         fi
     fi
@@ -140,8 +130,6 @@ function update_configs() {
     local real_home=$(get_real_home)
     local conf_dir="${real_home}/.config/QQ/versions"
     local conf="${conf_dir}/config.json"
-
-    log "正在更新用户QQ配置..."
     
     # 如果配置文件不存在，尝试创建
     create_config_if_missing
@@ -163,7 +151,6 @@ function update_configs() {
 
 function restore_configs() {
     local real_home=$(get_real_home)
-    log "正在还原用户QQ配置..."
     
     local conf_dir="${real_home}/.config/QQ/versions"
     local backup="${conf_dir}/config.json.napcatbak"
@@ -227,7 +214,7 @@ Target=napcatqq-git
 [Action]
 Description=Unpatch QQ For NapCat
 When=PreTransaction
-Exec=/bin/sh -c '/opt/QQ/resources/app/napcat/napcatqq-patcher.sh unpatch && rm -rf /opt/QQ/resources/app/napcat && echo -e "\e[32m取消修补成功，但是仍旧建议重装linuxqq\e[0m";'
+Exec=/bin/sh -c '/opt/QQ/resources/app/napcat/napcatqq-patcher.sh unpatch && rm -rf /opt/QQ/resources/app/napcat && echo -e "\e[32m[NapCat] 取消修补成功，但是仍旧建议重装linuxqq\e[0m";'
 EOF
 
     install -Dm0644 /dev/stdin "${pkgdir}/etc/pacman.d/hooks/napcatqq-config-restore.hook" << 'EOF'
