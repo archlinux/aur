@@ -7,7 +7,6 @@ pkgdesc="Share your clipboard between different devices"
 arch=('x86_64')
 url="https://github.com/fioncat/csync"
 license=('MIT')
-depends=('git' 'fzf')
 provides=('csync-fioncat')
 conflicts=('csync-fioncat')
 
