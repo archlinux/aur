@@ -10,7 +10,7 @@ pkgname='proftpd'
 #pkgname+='-git'
 pkgver=1.3.8c
 # 0.0.0a to 0.0.0b are not seen as updates by some AUR helpers and pacman vercmp. We increase pkgrel with this kind of version change (too bad, this would work if they were equal, but they aren't. -# has no effect)
-pkgrel=1
+pkgrel=4
 epoch='2'
 pkgdesc='High-performance, scalable FTP SSL TLS and SFTP server'
 arch=('x86_64' 'i686')
