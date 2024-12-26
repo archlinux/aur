@@ -1,7 +1,7 @@
 pkgbase = python-click-option-group
 	pkgdesc = Option groups missing in Click
 	pkgver = 0.5.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/click-contrib/click-option-group
 	arch = any
 	license = BSD

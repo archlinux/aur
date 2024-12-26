@@ -4,7 +4,7 @@
 _name=click-option-group
 pkgname=python-click-option-group
 pkgver=0.5.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Option groups missing in Click"
 arch=(any)
 url="https://github.com/click-contrib/click-option-group"
@@ -33,9 +33,9 @@ build() {
 check() {
   cd $_name-$pkgver
 
-  #local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  #python -m installer --destdir=test_dir dist/*.whl
-  #export PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH"
+  local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  python -m installer --destdir=test_dir dist/*.whl
+  export PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH"
 
   pytest -vv
 }
