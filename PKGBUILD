@@ -1,7 +1,7 @@
-_electron='electron32'
+_electron='electron33'
 
 pkgname=webcord
-pkgver=4.10.2
+pkgver=4.10.3
 pkgrel=1
 pkgdesc='A Discord and SpaceBar Electron-based client implemented without Discord API'
 arch=('any')
@@ -22,7 +22,7 @@ source=(
 )
 
 sha256sums=(
-    '868115f11bd43d3cec142b43c9c37da69b47d5b3e8488a3f172f7d016b522b99'
+    'ae0256a0693379778b6c36730cceb4e5098018ecd2196359e1a2aefd011842be'
     'c803c7227982fad22390a8d6d11f3707171d5e9b1a394731a6a07773eab75b1f'
     '5923151d1cc05d7e2ab0cb2103921f5f3985e08e48c74e7aa12003b32c0e2bae'
     'c41c46200b0dacf7d2ae3983e66bb9aad8314fdfc821f3ed559245ca205c087c'
