@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=wechat-bwrap
-pkgver=1
+pkgver=2
 pkgrel=1
 epoch=1
 pkgdesc="Sandboxing for WeChat. 沙盒微信."
@@ -33,5 +33,7 @@ md5sums=('SKIP')
 function package() {
 	install -Dm644 portable-config \
 		"${pkgdir}/usr/lib/wechat/portable-config"
+	install -d "${pkgdir}/usr/bin"
+	ln -srf "${pkgdir}/usr/bin/portable" "${pkgdir}/usr/bin/wechat-sandbox-provider"
 }
 
