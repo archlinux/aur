@@ -3,7 +3,7 @@
 
 pkgname=brother-dcpt310
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Driver for the Brother DCP-T310 multifuncional printer"
 url="http://solutions.brother.com/linux/en_us/index.html"
 license=('LicenseRef-Brother')
@@ -12,12 +12,8 @@ arch=('i686' 'x86_64')
 optdepends=('sane: scanning support'
             'brscan4: making dcpt310 available to sane'
             'brscan-skey: scankey support if connected via usb')
-
-if [[ "$CARCH" == "x86_64" ]] ; then
-	depends=('a2ps' 'cups' 'lib32-glibc' 'lib32-gcc-libs' 'bash' 'perl')
-elif [[ "$CARCH" == "i686" ]] ; then
-	depends=('a2ps' 'cups' 'bash' 'perl')
-fi
+depends_x86_64=('a2ps' 'cups' 'lib32-glibc' 'lib32-gcc-libs' 'bash' 'perl' 'ghostscript')
+depends_i686=('a2ps' 'cups' 'bash' 'perl' 'ghostscript')
 
 source=(
 	"https://download.brother.com/welcome/dlf103619/dcpt310pdrv-$pkgver-0.i386.rpm"
