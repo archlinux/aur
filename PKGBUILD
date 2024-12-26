@@ -85,32 +85,35 @@ pkgrel=1
 pkgdesc="Linux"
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
-license=(GPL2)
+license=(GPL-2.0-only)
 makedepends=(
     bc
     cpio
     gettext
-    git
     libelf
     pahole
     perl
     python
     tar
     xz
+    git
 
     # htmldocs
     graphviz
     imagemagick
     python-sphinx
+    python-yaml
     texlive-latexextra
 )
-options=('!strip')
+options=(
+    !strip
+)
 
 _srcname="linux-bcachefs"
 _src_url="https://github.com/koverstreet/bcachefs.git"
 _srcname_kernel_patch="kernel_compiler_patch"
 _src_url_kernel_patch="https://github.com/graysky2/${_srcname_kernel_patch}.git"
-_kernel_patch_name="more-uarches-for-kernel-6.1.79-6.8-rc3.patch"
+_kernel_patch_name="more-ISA-levels-and-uarches-for-kernel-6.1.79+.patch"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
@@ -135,12 +138,9 @@ validpgpkeys=(
     83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('SKIP'
-            'SKIP'
-            '4cbb4e50a4dddf5298822c246c16a450798fd5b8cbb16df8372e7aef4b8ab476')
 b2sums=('SKIP'
         'SKIP'
-        '601a1701fce0645517897ad81a311ac1e3dfc7f67f0844c1befdc3f9a432881caa27a40dfc3f3b70e3e4b84b664402ca9d091d807438a2175f1da860b86b2af4')
+        'f05d24a80af487ab554f5b5dbc0deeb8b2a5ffe09191ee0160598d8973dbb048dca94bee0b35406d0d40a0f812b876a572d189379a9c7d5263272a7c5d931392')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -207,6 +207,7 @@ pkgver() {
 build() {
     cd $_srcname
     make all
+    make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
 
 _package() {
@@ -215,7 +216,7 @@ _package() {
         coreutils
         initramfs
         kmod
-        bcachefs-tools-git
+        bcachefs-tools
     )
     optdepends=(
         'wireless-regdb: to set the correct wireless channels of your country'
@@ -259,10 +260,11 @@ _package-headers() {
 
     msg2 "Installing build files..."
     install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-        localversion.* version vmlinux
+        localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
     install -Dt "$builddir/kernel" -m644 kernel/Makefile
     install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
     cp -t "$builddir" -a scripts
+    ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
 
     # required when STACK_VALIDATION is enabled
     install -Dt "$builddir/tools/objtool" tools/objtool/objtool
