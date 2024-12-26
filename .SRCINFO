@@ -1,7 +1,7 @@
 pkgbase = electron-cash
 	pkgdesc = Lightweight Bitcoin Cash wallet
 	pkgver = 4.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.electroncash.org/
 	arch = any
 	license = MIT
@@ -49,8 +49,10 @@ pkgbase = electron-cash
 	source = electron-cash-4.4.2.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/4.4.2.tar.gz
 	source = secp256k1-0.20.9.tar.gz::https://github.com/Electron-Cash/secp256k1/archive/v0.20.9.tar.gz
 	source = electrum-locale-89ce57ff1fa0fbd0135888014c854c142753a166.tar.gz::https://github.com/Electron-Cash/electrum-locale/archive/89ce57ff1fa0fbd0135888014c854c142753a166.tar.gz
+	source = fix-certs.patch
 	sha256sums = 7b89b99dca0c374eb5e6e210c71bb645d5e951ddebaf495bbb4537f18b5edc20
 	sha256sums = 68e84775e57da77e19ccb6b0dde6ca0882377bdd48ecc6da0047a70201ec64c8
 	sha256sums = d232f958cc3c048f8dd3d17333be0cf7ee6f0d5776300bff1da55f2397544c09
+	sha256sums = SKIP
 
 pkgname = electron-cash
