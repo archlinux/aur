@@ -1,13 +1,14 @@
 pkgbase = php-font-lib
 	pkgdesc = FontLib :: A library to read, parse, export and make subsets of different types of font files.
-	pkgver = 0.5.4
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/PhenX/php-font-lib
 	arch = any
-	license = LGPL
+	license = LGPL-2.1-only
 	depends = php>=5.3
 	options = !strip
-	source = php-font-lib-0.5.4.tar.gz::https://github.com/PhenX/php-font-lib/archive/0.5.4.tar.gz
-	sha256sums = 6950bf1ec4e9e21067c0ed5336268e0806217b5f92bf071e48047f3a50385758
+	source = php-font-lib-1.0.1.tar.gz::https://github.com/PhenX/php-font-lib/archive/1.0.1.tar.gz
+	md5sums = f50bf1cbfef9484d39742176588203df
+	sha256sums = 0deaa84c9c72684564bd85c50de1d6256b4a68853205bfb4a7b507c4f0e50506
 
 pkgname = php-font-lib
