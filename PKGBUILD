@@ -11,12 +11,8 @@ license=('Source First License 1.1')
 depends=('dotnet-runtime' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libsecret' 'libappindicator-gtk3')
 makedepends=('dotnet-sdk' 'git')
 options=(!debug)
-source=("grayjay-desktop::git+https://github.com/futo-org/Grayjay.Desktop.git"
-        "grayjay-engine::git+https://github.com/futo-org/Grayjay.Engine.git"
-        "futo-mdns::git+https://github.com/futo-org/FUTO.MDNS.git")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+source=("grayjay-desktop::git+https://github.com/futo-org/Grayjay.Desktop.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/grayjay-desktop"
@@ -25,20 +21,15 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/grayjay-desktop"
-    rm -rf Grayjay.Engine FUTO.MDNS
-    cp -r "$srcdir/grayjay-engine" Grayjay.Engine/
-    cp -r "$srcdir/futo-mdns" FUTO.MDNS/
+    git config submodule.FUTO.MDNS.url https://github.com/futo-org/FUTO.MDNS.git
+    git config submodule.Grayjay.Engine.url https://github.com/futo-org/Grayjay.Engine.git
+    git config submodule.JustCef.url https://github.com/futo-org/JustCef.git
+    git submodule update --init --recursive
 }
 
 build() {
     cd "$srcdir/grayjay-desktop"
-    dotnet restore Grayjay.ClientServer/Grayjay.ClientServer.csproj
-    dotnet build Grayjay.ClientServer/Grayjay.ClientServer.csproj \
-        --configuration Release \
-        --no-restore \
-        --no-self-contained \
-        /p:DebugType=None \
-        /p:DebugSymbols=false
+    ./build.sh
 }
 
 package() {
