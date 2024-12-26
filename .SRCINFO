@@ -1,7 +1,7 @@
 pkgbase = libtorrent-ps
 	pkgdesc = BitTorrent library written in C++ for use with rtorrent-ps
 	pkgver = 1.1.r71.gee296b1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rakshasa/libtorrent
 	arch = any
 	license = GPL-2.0-only
@@ -10,10 +10,10 @@ pkgbase = libtorrent-ps
 	depends = zlib
 	provides = libtorrent
 	conflicts = libtorrent
-	source = libtorrent-0.13.8.tar.gz::https://github.com/rakshasa/libtorrent/archive/v0.13.8.tar.gz
+	source = libtorrent-0.15.0.tar.gz::https://github.com/rakshasa/libtorrent/archive/v0.15.0.tar.gz
 	source = lt-ps-better-bencode-errors_all.patch
 	source = lt-ps-honor_system_file_allocate_all.patch
-	sha256sums = 0f6c2e7ffd3a1723ab47fdac785ec40f85c0a5b5a42c1d002272205b988be722
+	sha256sums = f55fb872282a2964049dadb89c4d1fb580a1cef981b9a421991efd5282ca90b7
 	sha256sums = 3c0f802deecb15b93d8b569f00fdefe9e614f9688cfaabfbe567b8da70d2e93d
 	sha256sums = 5219bba547aff9ff3b2b6bd937284c3fed7c324473db20ff479e38302bdbda52
 
