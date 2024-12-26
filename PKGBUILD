@@ -28,22 +28,26 @@ depends=(
 )
 conflicts=('carch-git')
 makedepends=()
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}::https://github.com/harilvfs/carch/archive/refs/tags/${pkgver}.tar.gz")
 md5sums=('SKIP')
 
 package() {
-    cd "$pkgname-$pkgver"
     
-    install -Dm0755 "build/$pkgname" -t "$pkgdir/usr/bin"
+    install -dm 755 ${pkgdir}/usr/bin/scripts
+    cp -r ${srcdir}/carch-${pkgver}/scripts/. ${pkgdir}/usr/bin/scripts
 
-    install -Dm0755 "gtk/$pkgname-gtk.py" -t "$pkgdir/usr/bin"
+    install -Dm 755 ${srcdir}/carch-${pkgver}/build/carch ${pkgdir}/usr/bin/carch
     
-    install -d "$pkgdir/usr/bin/scripts"
-    install -Dm 0755 "scripts/*.sh" -t ${pkgdir}/usr/bin/scripts/
+    install -Dm 755  ${srcdir}/carch-${pkgver}/gtk/carch-gtk.py ${pkgdir}/usr/bin/carch-gtk
     
+    # license
+    install -Dm 755 ${srcdir}/carch-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
-    install -Dm644 "man/$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
-    install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications"
-    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    # doc
+    install -Dm 755 ${srcdir}/carch-${pkgver}/README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
+    
+    install -Dm 755 ${srcdir}/carch-${pkgver}/carch.desktop ${pkgdir}/usr/share/applications/carch.desktop
+
+    install -Dm 755 ${srcdir}/carch-${pkgver}/man/carch.1 ${pkgdir}/usr/share/man/man.1/carch.1
+
 }

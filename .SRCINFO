@@ -24,7 +24,7 @@ pkgbase = carch
 	depends = tar
 	conflicts = carch-git
 	options = !strip
-	source = carch-v4.1.0.tar.gz::https://github.com/harilvfs/carch/archive/v4.1.0.tar.gz
+	source = carch-v4.1.0::https://github.com/harilvfs/carch/archive/refs/tags/v4.1.0.tar.gz
 	md5sums = SKIP
 
 pkgname = carch
