@@ -1,0 +1,19 @@
+pkgbase = tabracing
+	pkgdesc = Unofficial TAB Australia desktop application.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/linuxbombay/tab/
+	arch = x86_64
+	arch = arm7h
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = libelectron
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	depends = git
+	source = https://gitlab.com/linuxbombay/tab//application/-/archive/1.0.0/application-1.0.0.tar.bz2
+	sha256sums = aa545900cb3183f3a1631d08f99c47dd2a51d50275ae370d3c2fcf71b0cd0d33
+
+pkgname = tabracing
