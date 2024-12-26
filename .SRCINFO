@@ -7,6 +7,8 @@ pkgbase = roxide-release
 	license = MIT
 	depends = git
 	depends = fzf
+	options = !strip
+	options = !debug
 	source = roxide-release-0.17.1::https://github.com/fioncat/roxide/releases/download/v0.17.1/roxide-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = 3d36fadc5c197304cb53eb894771efafbdbbdb1d173b16797f8d8b51301d6a2e
 
