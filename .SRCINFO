@@ -13,6 +13,6 @@ pkgbase = kahip
 	depends = python
 	optdepends = gurobi: for ILP solver in ilp_improve
 	source = KaHIP-3.17.tar.gz::https://github.com/KaHIP/KaHIP/archive/v3.17.tar.gz
-	sha512sums = c3ba72965fe3d842515813e5244dfccc469f1df4b5e6a6cfe2813fe33f4b427508b66c5c570f1c9d2e6e191f5b15d525ded6736ced132bdb5f654e301936da64
+	sha512sums = 5ef655cfa56c466a75739e071f237a8dc915b98f2d066a547691bdd1f871b9233b4d5433df253e78405be63c64a33a3e02feb1fdc17f87b21604a282204bef3d
 
 pkgname = kahip
