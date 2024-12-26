@@ -4,20 +4,20 @@
 set -u
 pkgname='nopoll'
 #pkgname+='-git'
-pkgver='0.4.8.b429'
+pkgver='0.4.9.b462'
 pkgrel=1
 pkgdesc='Websocket library written in C'
 arch=('i686' 'x86_64')
 url='http://www.aspl.es/nopoll'
-license=('LGPL')
-depends=('openssl')
+license=('LGPL-2.1-only')
+depends=('glibc' 'openssl')
 #_verwatch=("${url}/downloads/" "nopoll-\(.*\)\.tar\.gz" 'l')
 _giturl='https://github.com/ASPLes/nopoll'
 _verwatch=("${_giturl}/releases.atom" '\s\+<link rel="alternate" type="text/html" href=".*/'"${_giturl##*/}"'/releases/tag/v\?\([^"]\+\)"/>.*' 'f') # RSS
 _srcdir="${pkgname}-${pkgver}"
 source=("http://www.aspl.es/nopoll/downloads/nopoll-${pkgver}.tar.gz")
-md5sums=('4f020dee926ff2a662a76deb5a201e8e')
-sha256sums=('4031f2afd57dbcdb614dd3933845be7fcf92a85465b6228daab3978dc5633678')
+md5sums=('d7de814fe41c1bd1c75d08c98ad6d071')
+sha256sums=('80bfa3e0228e88e290dd23eb94d9bb1f4d726fb117c11cfb048cbdd1d71d379a')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
   makedepends+=('git')
@@ -33,7 +33,7 @@ if [ "${pkgname%-git}" != "${pkgname}" ]; then
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
   }
 else
-  true && pkgver="${pkgver%.b*}"
+  true # && pkgver="${pkgver%.b*}"
 fi
 
 build() {
