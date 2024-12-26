@@ -1,13 +1,17 @@
 pkgbase = systemrescue-usbwriter-git
 	pkgdesc = Tool to write SystemRescue to a USB memory stick
 	pkgver = 1.0.2.r4.g82bb482
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/systemrescue/systemrescue-usbwriter
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = bash
+	depends = dialog
 	depends = fuse2
+	depends = isomd5sum
+	depends = libisoburn
+	depends = syslinux
 	provides = systemrescue-usbwriter=1.0.2
 	conflicts = systemrescue-usbwriter
 	source = systemrescue-usbwriter::git+https://gitlab.com/systemrescue/systemrescue-usbwriter.git

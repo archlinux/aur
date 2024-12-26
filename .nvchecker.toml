@@ -1,3 +1,0 @@
-[systemrescue-usbwriter]
-source = "git"
-git = "https://gitlab.com/systemrescue/systemrescue-usbwriter.git"
