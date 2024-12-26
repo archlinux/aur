@@ -5,6 +5,7 @@ pkgbase = dooit-git
 	url = https://github.com/kraanzu/dooit
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-wheel
 	makedepends = python-installer

@@ -1,4 +1,4 @@
-# Maintainer: Murli Tawari <kraanzu@gmail.com>
+# Contributor: Murli Tawari <kraanzu@gmail.com>
 
 pkgname=dooit-git
 _pkgname=${pkgname%-git}
@@ -9,7 +9,7 @@ url="https://github.com/kraanzu/dooit"
 arch=('any')
 license=('MIT')
 depends=('python' 'python-pyperclip' 'python-pyaml' 'python-poetry'  'python-dateutil' 'python-textual' 'python-appdirs-git' 'python-six')
-makedepends=('python-build' 'python-wheel' 'python-installer')
+makedepends=('git' 'python-build' 'python-wheel' 'python-installer')
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
