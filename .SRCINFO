@@ -1,7 +1,7 @@
 pkgbase = 3fa-bin
-	pkgdesc = A secure and scalable multi-factor authentication system including a client application, admin dashboard, and backend server
+	pkgdesc = A secure and scalable multi-factor authentication system including a client application, admin dashboard, and backend server.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://3fa.netlify.app/
 	arch = x86_64
 	license = AGPL-3.0-only
