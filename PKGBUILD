@@ -1,12 +1,13 @@
 # Maintainer: Specter119 <spcter119 AT gmail.com>
-# Maintainer: gökçe aydos <aur-2023 aydos.de>
+# Maintainer: Blair Bonnett <blair.bonnett AT gmail.com>
+# Contributor: gökçe aydos <aur-2023 aydos.de>
 
 pkgname=jupyterlab_code_formatter
-pkgver=2.2.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='A universal code formatter for JupyterLab.'
 arch=(any)
-url=https://pypi.org/project/${pkgname//_/-}
+url=https://jupyterlab-code-formatter.readthedocs.io/
 license=(MIT)
 depends=(
     python
@@ -26,14 +27,61 @@ depends=(
     python-terminado
     python-debugpy
 )
-makedepends=(python-{build,installer,wheel,hatch,hatch-jupyter-builder,hatch-nodejs-version})
-optdepends=(autopep8 yapf python-isort python-black)
+makedepends=(
+  python-build
+  python-hatch-jupyter-builder
+  python-hatch-nodejs-version
+  python-installer
+)
+checkdepends=(
+  python-black
+  python-isort
+  python-pytest
+  python-pytest-jupyter
+  yapf
+)
+optdepends=(
+  'astyle: formatting of C, C++, C# and Java code'
+  'autopep8: PEP8 compliant formatting of Python code using pycodestyle'
+  'python-black: PEP8 compliant formatting of Python code with Black'
+  'python-isort: sort imports in Python code'
+  'python-ruff: Python formatting using Ruff'
+  'r-formatr: automatic formatting of R code'
+  'r-styler: R code formatting with Styler'
+  'rust: formatting of Rust code'
+  'scalafmt: Scala code formatting'
+  'yapf: Python code formatting'
+)
+
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('85322819da61f025ebc7c4a842979994fa812ad44c334fdb6ebb9ebad58dae08')
+sha256sums=('55adb8fa8b9bd58f0b39e7d3ead6c1e862e9ebc1444a66cdb4233d8dc6351d4b')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation -x
+}
+
+check() {
+  cd $srcdir/$pkgname-$pkgver
+
+  # Build an array of tests to skip based on what the user has installed.
+  local skip_tests=('test_can_apply_ruff_formatter')
+  if ! pacman -Qqs python-ruff > /dev/null; then
+    skip_tests+=('test_can_apply_ruff')
+  fi
+  if ! pacman -Qqs r-styler > /dev/null; then
+    skip_tests+=('test_can_use_styler')
+  fi
+
+  # Generate a filter expression from the array.
+  local karg=""
+  for testname in "${skip_tests[@]}"; do
+    karg="$karg and not $testname"
+  done
+  karg="${karg:5}"  # Trim the leading ' and '.
+
+  # And run the tests.
+  JUPYTER_PLATFORM_DIRS=1 python -m pytest -k "$karg"
 }
 
 package() {
@@ -41,4 +89,7 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   mv "$pkgdir"/usr/etc "$pkgdir"
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
+  # Remove unit tests from the final package.
+  rm -rf "$pkgdir/"usr/lib/python*/site-packages/jupyterlab_code_formatter/tests
 }

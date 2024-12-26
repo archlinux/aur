@@ -1,4 +1,5 @@
 pkg/
 src/
 jupyterlab_code_formatter-*.tar.gz
-LICENSE
+jupyterlab_code_formatter-*.pkg*
+*.log
