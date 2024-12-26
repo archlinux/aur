@@ -1,5 +1,4 @@
 # Maintainer: Kimiblock Moe
-# Quote un quote contributor: PM
 
 pkgname=wechat
 pkgver=4.0.1.11
@@ -65,7 +64,7 @@ optdepends=(
 	'orca: screen reader'
 	'libpulse'
 	'libglvnd'
-	"portable: Sandbox support"
+	"wechat-bwrap: Sandbox support"
 )
 
 makedepends+=(
