@@ -1,0 +1,16 @@
+diff -pNaru5 a/lib/libnids-1.21_patched/src/tcp.c b/lib/libnids-1.21_patched/src/tcp.c
+--- a/lib/libnids-1.21_patched/src/tcp.c	2024-09-30 19:30:24.000000000 -0400
++++ b/lib/libnids-1.21_patched/src/tcp.c	2024-12-26 00:09:07.202935378 -0500
+@@ -368,11 +368,11 @@ ride_lurkers(struct tcp_stream * a_tcp,
+ 	i->whatto &= ~COLLECT_scu;
+     }
+ }
+ 
+ static void
+-notify(struct tcp_stream * a_tcp, struct half_stream * rcv, struct time* t)
++notify(struct tcp_stream * a_tcp, struct half_stream * rcv, struct timeval* t)
+ {
+   struct lurker_node *i, **prev_addr;
+   char mask;
+ 
+   if (rcv->count_new_urg) {

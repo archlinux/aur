@@ -6,23 +6,55 @@
 
 set -u
 pkgname='justniffer'
-pkgver='0.5.15'
+pkgver='0.5.16'
 pkgrel='1'
 pkgdesc='TCP sniffer. It reassembles and reorders packets and displays the tcp flow in a customizable way.'
 arch=('i686' 'x86_64')
 url='http://justniffer.sourceforge.net'
-license=('GPL')
-depends=('python2>=2.4' 'libpcap' 'boost') # 'libnids' the package includes its own custom version of libnids
+_giturl='https://github.com/onotelli/justniffer'
+license=('GPL-3.0-only')
+depends=('glibc' 'gcc-libs' 'libpcap' 'boost-libs') # 'libnids' the package includes its own custom version of libnids
+#depends+=('python')
 # I suspect python2 is a makedepends. No python code goes into the package.
-_verwatch=('https://sourceforge.net/projects/justniffer/files/' "\s\+${pkgname}_\([0-9.]\+\)\.tar\.gz" 'f')
-source=("https://sourceforge.net/projects/${pkgname}/files/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('d1ad84933cceda842e6b9b2f34891daa69279b643bd346f9e4778910eba50bf6')
+#_verwatch=('https://sourceforge.net/projects/justniffer/files/' "\s\+${pkgname}_\([0-9.]\+\)\.tar\.gz" 'f')
+_patches=(
+  '0000-libnids-tcp-notify-struct-timeval.patch'
+)
+_srcdir="justniffer-${pkgver}"
+source=("${_srcdir//-/_}.tar.gz::${_giturl}/archive/refs/tags/v${pkgver}.tar.gz" "${_patches[@]}")
+md5sums=('8ebf9653f5a3fc0d956ffbaceb0c8f11'
+         '5078bfc2a875a16b5c75e362cd36a097')
+sha256sums=('60e91abd7c0f3c6dbac3da1dd4a11679f9c804ddda269c27c42f8dbf54fc2fb7'
+            '9da5e2ff6af4ba572ce958c4fb7c2cdc0a0e19282c5582c73c2c19dd1d726cd9')
 
 prepare() {
   set -u
-  cd "${pkgname}-${pkgver}"
+  cd "${_srcdir}"
 
-  rm -rf '.svn'
+  rm -rf '.svn' '.git'
+
+  local _pt _ptf=() _pts=()
+  for _pt in "${_patches[@]}"; do
+    set +u; msg2 "Patch ${_pt}"; set -u
+    if patch -Nup1 --no-backup-if-mismatch -i "${srcdir}/${_pt}"; then
+      _pts+=("${_pt}")
+    else
+      _ptf+=("${_pt}")
+    fi
+  done
+  if [ "${#_ptf[@]}" -gt 0 ]; then
+     if [ "${#_pts[@]}" -gt 0 ]; then
+       printf 'Patch success %s\n' "${_pts[@]}"
+       printf 'Warning: Some old patches may need to be removed even if they are successful\n'
+     fi
+     printf 'Patch failed %s\n' "${_ptf[@]}"
+     set +x
+     false
+  fi
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  #diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
+
+if ! :; then
   #Use python 2.x instead of 3.x
   sed -i -e 's/python/python2/' python/*.py
   sed -i -e 's/python/python2/' 'python/justniffer-grab-http-traffic.in'
@@ -41,24 +73,28 @@ prepare() {
 
   rm -rf 'm4/' # http://stackoverflow.com/questions/3096989/libtool-version-mismatch-error
   mkdir 'm4'
-  autoreconf --force --install
-  CPPFLAGS='-P' CXXFLAGS='-O2' CFLAGS='-O2' LDFLAGS='-Wl,-z,defs' \
-  ./configure --enable-dependency-tracking --enable-python --prefix='/usr' --sbindir='/usr/bin' PYTHON='python2'
+fi
   set +u
 }
 
 build() {
   set -u
-  cd "${pkgname}-${pkgver}"
-  #local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  make -s # -j "${_nproc}" # Too small
+  cd "${_srcdir}"
+  if [ ! -s 'configure' ]; then
+    autoreconf --force --install
+  fi
+  if [ ! -s 'Makefile' ]; then
+    #CPPFLAGS='-P' CXXFLAGS='-O2' CFLAGS='-O2' LDFLAGS='-Wl,-z,defs' \\
+    ./configure --enable-dependency-tracking --disable-python --prefix='/usr' --sbindir='/usr/bin' # PYTHON='python2'
+  fi
+  nice make -s
   set +u
 }
 
 package() {
   set -u
-  cd "${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  cd "${_srcdir}"
+  make -j1 DESTDIR="${pkgdir}" install
   set +u
 }
 set +u
