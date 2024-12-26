@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=wechat-bwrap
-pkgver=2
+pkgver=3
 pkgrel=1
 epoch=1
 pkgdesc="Sandboxing for WeChat. 沙盒微信."
@@ -28,12 +28,52 @@ source=(
 )
 
 
-md5sums=('SKIP')
+md5sums=('d040d6a8dc61703ab42c2cb3a79eb396')
 
 function package() {
 	install -Dm644 portable-config \
 		"${pkgdir}/usr/lib/wechat/portable-config"
 	install -d "${pkgdir}/usr/bin"
-	ln -srf "${pkgdir}/usr/bin/portable" "${pkgdir}/usr/bin/wechat-sandbox-provider"
+	echo '''#!/usr/bin/bash
+if [ ! -f /usr/lib/wechat/portable-config ]; then
+	echo "You'll need to install wechat-bwrap for sandboxing to work!"
+	notify-send "You'll need to install wechat-bwrap for sandboxing to work!"
+	zenity --error --title "Sandbox non-functional" --icon=security-low-symbolic --text "Please install aur/wechat-bwrap"
+fi
+export _portalConfig=/usr/lib/wechat/portable-config
+portable $@
+''' "${pkgdir}/usr/bin/wechat-sandbox-provider"
+	echo '''[Desktop Entry]
+Comment=WeChat
+Comment[zh_CN]=微信
+Exec=/usr/bin/wechat.sh %u
+Icon=wechat
+Name=WeChat
+Name[zh_CN]=微信
+Categories=Utility;Network;InstantMessaging;Chat;
+Terminal=false
+Type=Application
+Keywords=wechat;weixin;we;w;
+Keywords[zh_CN]=微;微信;wechat;weixin;we;w;
+X-GNOME-SingleWindow=true
+SingleMainWindow=true
+Actions=nosandbox;opendir;
+StartupWMClass=wechat
+StartupNotify=true
+X-Flatpak-RenamedFrom=wechat.desktop;
+X-Flatpak-Tags=proprietary;
+X-Flatpak=com.qq.weixin;
+
+[Desktop Action nosandbox]
+Name=Toggle Sandbox...
+Name[zh_CN]=更改沙盒偏好...
+Exec=/usr/bin/wechat.sh --actions f5aaebc6-0014-4d30-beba-72bce57e0650
+Icon=security-low-symbolic
+
+[Desktop Action opendir]
+Name=Open WeChat Home
+Name[zh_CN]=打开数据目录
+Exec=/usr/bin/wechat.sh --actions opendir
+Icon=insert-image-symbolic''' >"${pkgdir}/usr/lib/wechat/alt.desktop"
 }
 
