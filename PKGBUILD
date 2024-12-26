@@ -1,33 +1,33 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="kaskade"
-pkgver=3.0.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="A text user interface for Kafka. Interact and consume topics from your terminal in style!"
 arch=('any')
 url="https://github.com/sauljabin/${pkgname}"
 license=('MIT')
-depends=('python>=3.10' 'python-cloup' 'python-textual'
-         'python-confluent-kafka' 'python-rich' 'python-protobuf'
-         'python-click')
+depends=('python>=3.10' 'python-click' 'python-cloup' 'python-confluent-kafka'
+         'python-fastavro' 'python-protobuf' 'python-rich' 'python-textual')
 makedepends=('python-build' 'python-installer' 'python-poetry-core>=1')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('18d14e3b8b6336a6dffe886b4c6650204dafac8c1acbba26c252ae81075f1819')
+sha256sums=('9abb9a4d68f31a519c540a73b445305ddcc82de03ba805756683a3cac635ce8c')
 
-build () {
+build() {
   cd "${srcdir}/${_pkgsrc}"
   python -m build --wheel --no-isolation
 }
 
-package () {
+package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
   cd "${srcdir}/${_pkgsrc}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   rm -f "${pkgdir}${site_packages}/LICENSE"
 
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "README.md"    "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 
   install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
   cd "${pkgdir}/usr/share/licenses/${pkgname}"

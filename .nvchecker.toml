@@ -1,0 +1,4 @@
+[kaskade]
+source = "git"
+git = "https://github.com/sauljabin/kaskade.git"
+prefix = "v"
