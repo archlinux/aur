@@ -139,7 +139,7 @@ _CMAKE_FLAGS+=(
                                   )
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=9.0.r3246.g89b896c9b
+pkgver=9.0.r3407.g2d49aea29
 pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
@@ -173,7 +173,7 @@ fi
 ((!DISABLE_VTK))             && depends+=('vtk' 'tbb' 'freetype2' 'qt5-base' 'fmt' 'glew' 'pugixml' \
                                             'libxcursor' 'mariadb-libs' 'postgresql-libs' 'jdk11-openjdk')
 ((!DISABLE_VTK))             && makedepends+=('cli11' 'ospray' 'openxr' 'openvr' 'python-mpi4py' 'boost' 'pdal' 'opencascade' \
-                                        'liblas' 'adios2' 'libharu' 'cgns' 'eigen' 'utf8cpp' 'fast_float')
+                                        'liblas' 'adios2' 'libharu' 'cgns' 'eigen' 'utf8cpp' 'fast_float' 'anari-sdk')
 # AUR
 ((!DISABLE_MMG))             && depends+=('mmg')
 ((!DISABLE_TRILINOS || (!DISABLE_ZOLTAN && DISABLE_INTERNAL_ZOLTAN) ))        && depends+=('trilinos')
