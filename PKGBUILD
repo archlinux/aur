@@ -1,24 +1,23 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=canboat
-pkgver=5.0.3
+pkgver=5.1.2
 pkgrel=1
 epoch=
 pkgdesc="CAN Boat provides NMEA 2000 and NMEA 0183 utilities. It contains a NMEA 2000 PGN decoder and can read and write N2K messages. It is not meant as an end-user tool but as a discovery mechanism for delving into NMEA 2000 networks."
-arch=(aarch64
-    riscv64
-    x86_64)
+arch=($CARCH)
 url="https://github.com/canboat/canboat"
-license=('MIT')
+license=('Apache-2.0')
 groups=()
-depends=(glibc
-    libftdi
+depends=(bash
+    glibc
     perl
     php
     ksh)
 makedepends=(
-#     help2man
+    #     help2man
     git
+    libftdi
     libxml2
     libxslt
     python3
@@ -29,18 +28,20 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
 backup=()
-options=('!strip')
+options=()
 install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('b095726ec4d7225ff10d13bbf2c9df68b6f82067128892f50a9ca845a55882b2')
+sha256sums=('280e96a0fabdc64a972fc80bf6c75e5a0e6925df035fd207c9768da60470f147')
 #validpgpkeys=()
 
 build() {
+    #     export LDFLAGS="-z relro -z now -z shstk"
     cd "${srcdir}/${pkgname}-${pkgver}"
+
+    make
     make generated
-#     make
 }
 
 check() {
@@ -52,7 +53,7 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     make DESTDIR="$pkgdir" PREFIX=/usr install
     install -Dm0644 docs/* -t "${pkgdir}/usr/share/doc/${pkgname}"
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/60-canboat-actisense.rules" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/60-canboat-actisense.rules" <<EOF
 # Copy this file to /etc/udev/rules.d/
 # If rules fail to reload automatically, you can refresh udev rules
 # with the command "sudo udevadm control --reload"
