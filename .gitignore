@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !python312-crash-fix.patch
+!python313-compile-fix.patch

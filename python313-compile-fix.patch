@@ -1,0 +1,31 @@
+From fd88812696f455aef4d1e21da99610534c73c921 Mon Sep 17 00:00:00 2001
+From: Echo J <tcg96nougat@gmail.com>
+Date: Thu, 26 Dec 2024 10:35:10 +0200
+Subject: [PATCH] Remove PyEval_InitThreads() call on Python >=3.7
+
+This function has been removed in Python 3.13 (and has been deprecated
+since Python 3.9)
+---
+ c_src/simpleaudio.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/c_src/simpleaudio.c b/c_src/simpleaudio.c
+index b0b24b8..b9edeee 100644
+--- a/c_src/simpleaudio.c
++++ b/c_src/simpleaudio.c
+@@ -158,10 +158,12 @@ static PyObject* _play_buffer(PyObject *self, PyObject *args)
+     }
+     num_samples = buffer_obj.len / bytes_per_channel / num_channels;
+ 
++#if PY_VERSION_HEX < 0x03070000
+     /* explicitly tell Python we're using threading since the
+        it requires a cross-thread API call to release the buffer
+        view when we're done playing audio */
+     PyEval_InitThreads();
++#endif
+ 
+     /* fixed 100ms latency */
+     return play_os(buffer_obj, num_samples, num_channels, bytes_per_channel, sample_rate, &play_list_head, SA_LATENCY_US);
+-- 
+2.47.1
+
