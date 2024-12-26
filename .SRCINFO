@@ -1,6 +1,6 @@
 pkgbase = regclient
 	pkgdesc = Docker and OCI Registry tooling - regctl / regsync / regbot
-	pkgver = 0.7.2
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/regclient/regclient
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = regclient
 	license = Apache-2.0
 	makedepends = go
 	depends = glibc
-	source = https://github.com/regclient/regclient/archive/v0.7.2/regclient-0.7.2.tar.gz
+	source = https://github.com/regclient/regclient/archive/v0.8.0/regclient-0.8.0.tar.gz
 	sha256sums = eb8b3253b6fbb95032386cdd05c6fe9ada723c0aa9971c47190e5e967b46e754
 
 pkgname = regclient-regctl
