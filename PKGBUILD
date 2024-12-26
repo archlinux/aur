@@ -2,17 +2,26 @@
 # Contributor: 
 
 pkgname=bobcat-git
-pkgver=r53.6b41f76
+pkgver=r67.fdcb96a
 pkgrel=1
 pkgdesc="CLI script to browse and solve problems on Kattis, the online judge"
 arch=('any')
 url="https://github.com/0WN463/bobcat"
 license=('MIT')
 depends=('python' 'python-requests' 'python-lxml' 'python-beautifulsoup4')
-makedepends=('git')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('python-unicodeit: LaTeX to unicode conversion')
 source=("git+$url")
 sha256sums=('SKIP')
+
+prepare() {
+  git -C "${srcdir}/bobcat" clean -dfx
+}
+
+build() {
+  cd "${srcdir}/bobcat"
+  python -m build --wheel --no-isolation
+}
 
 pkgver() {
   cd "${srcdir}/bobcat"
@@ -21,7 +30,7 @@ pkgver() {
 
 package() {
   cd "${srcdir}/bobcat"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
