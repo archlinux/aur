@@ -5,6 +5,8 @@ pkgbase = kubewrap-release
 	url = https://github.com/fioncat/kubewrap
 	arch = x86_64
 	license = MIT
+	options = !strip
+	options = !debug
 	source = kubewrap-release-0.1.0::https://github.com/fioncat/kubewrap/releases/download/v0.1.0/kubewrap-linux-amd64.tar.gz
 	sha256sums = 9ca4ae29cccb035a866bbe23294d69177da9a5bbcc4a69a197a7304739d0d087
 
