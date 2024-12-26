@@ -1,4 +1,5 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Peter Semiletov <peter.semiletov@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Roman Kyrylych <roman@archlinux.org>
@@ -8,38 +9,36 @@
 
 pkgname=tea-qt
 pkgver=63.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS with PDF and DJVU support"
 arch=(x86_64)
 url="https://tea.ourproject.org/"
-license=(GPL3)
-depends=(qt6-base hunspell )
+license=(GPL-3.0-or-later)
+depends=(qt6-base glibc gcc-libs hunspell)
 makedepends=(cmake git)
 optdepends=('poppler: open and search text in PDF files'
             'djvulibre: open and search in DJVU')
 source=("git+https://github.com/psemiletov/tea-qt.git#tag=${pkgver}")
-sha512sums=('SKIP')
-
-prepare() {
-  mkdir -p "${srcdir}/tea-qt/build"
-}
+sha512sums=('5b201a63767540007d3079b29bbddc37358bdedfb1bff684e4ad24c89cccf3d321e9ab3dd7416439325bff07ef47e2efd5655b0212c2ce5a203b315a15aa4b7d')
 
 build() {
-  cd "${srcdir}/tea-qt/build"
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_PDF=ON \
+  local _flags=(
+    -DUSE_PDF=ON
     -DUSE_DJVU=ON
+  )
 
-  make
+  cmake -B build -S "tea-qt" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
+
+  cmake --build build
 
   cd "${srcdir}/tea-qt/"
   sed -i 's/tea %F/tea-qt %F/g' desktop/tea.desktop
 }
 
-
 package(){
-  cd "${srcdir}/tea-qt/build"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
   mv "${pkgdir}/usr/bin/tea" "${pkgdir}/usr/bin/tea-qt"
 }
