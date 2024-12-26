@@ -2,8 +2,8 @@
 
 _pkgname_prefix=globalprotect-openconnect
 pkgname="${_pkgname_prefix}-git"
-pkgver=2.3.9.r3.ged7c8ca
-pkgrel=1
+pkgver=2.3.9
+pkgrel=3
 pkgdesc="A GUI for GlobalProtect VPN, based on OpenConnect, supports the SSO authentication method."
 arch=(x86_64 aarch64)
 url="https://github.com/yuezk/GlobalProtect-openconnect"
@@ -18,17 +18,9 @@ provides=('globalprotect-openconnect' 'gpclient' 'gpservice' 'gpauth' 'gpgui')
 
 install=gp.install
 
-source=("${_pkgname_prefix}::git+https://github.com/yuezk/GlobalProtect-openconnect.git#branch=main")
-
-sha256sums=("SKIP")
+source=("${_pkgname_prefix}::git+https://github.com/yuezk/GlobalProtect-openconnect.git#tag=v${pkgver}")
 
 options=('!strip')
-
-pkgver() {
-  cd "${_pkgname_prefix}"
-
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
@@ -64,3 +56,4 @@ package() {
   install -Dm644 packaging/files/usr/share/icons/hicolor/256x256@2/apps/gpgui.png "${pkgdir}/usr/share/icons/hicolor/256x256@2/apps/gpgui.png"
   install -Dm644 packaging/files/usr/share/polkit-1/actions/com.yuezk.gpgui.policy "${pkgdir}/usr/share/polkit-1/actions/com.yuezk.gpgui.policy"
 }
+sha256sums=('16bac6be2e2d073f385a009ce6c8091b653b7e4a6f738b82a4095bf06054982a')
