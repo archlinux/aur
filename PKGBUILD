@@ -2,14 +2,14 @@
 
 _pkgname=SuperTabbar
 pkgname=supertabbar-git
-pkgver=6c8dc30
+pkgver=r26.6c8dc30
 pkgrel=1
 pkgdesc="SuperTabbar 超级标签栏"
-arch=('any')
+arch=($CARCH)
 url="https://gitee.com/Limexb/SuperTabbar"
 license=('GPL3')
-provides=(${pkgname})
-conflicts=(${pkgname} 'supertabber')
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
 depends=('dtkwidget' 'dtkgui')
 makedepends=('git' 'qconf')
@@ -21,10 +21,16 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git describe --always | sed 's|-|.|g'
-#     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    (
+        set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
+prepare() {
+    git -C "${srcdir}/${_pkgname}" clean -dfx
+}
 build() {
     cd "${srcdir}/${_pkgname}"
     qmake ./${_pkgname}.pro -spec linux-g++ CONFIG+=qtquickcompiler -o build/
