@@ -6,7 +6,7 @@
 set -u
 pkgname='pmacct'
 #pkgname+='-git'
-pkgver=1.7.8
+pkgver=1.7.9
 _pkgver="${pkgver%%.r[0-9]*}"
 _pkgverb="${_pkgver%%.[a-z]*}"
 _pkgverb="${_pkgverb%%[a-z]*}"
@@ -25,12 +25,12 @@ source=(
   'sfacctd.rc.d'
   'uacctd.rc.d'
 )
-md5sums=('35a1de30d9f089bf260b9704ab383666'
+md5sums=('77ca7140820626aba4d4d05218a01c6e'
          '3b9313a756b75b4b571b17693db0ae04'
          'f732e33cbccba5a492d2ee95b5f88221'
          '235c1e77690fbe939a69c98dad041203'
          '9a49065076b645df94e30278052a8796')
-sha256sums=('4df50a3c6c7bdace3345bbf3bd4f6fa7a6722ec1fb45dfd266ad956b327da98a'
+sha256sums=('94185c33d659772035c63be0a82601bb9eb064fb4be1d68ba279b47204b2750a'
             '504b31e1a3ccc6ab9fd56960800e6146cae69c479d1a87a5f491042c382e4384'
             '143e7b83d15df723e2668383efb108e458818b47fdd62a6201b159a5430379e7'
             '990915185774ccb6f167433f1f4a4c415dc60fcaaee2af9d9239dfafefcb8166'
