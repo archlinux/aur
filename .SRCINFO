@@ -1,5 +1,5 @@
 pkgbase = albert-launcher-git
-	pkgdesc = TAI-powered file launcher and semantic search assistant. Like Spotlight/Alfred but with advanced AI capabilities for understanding context and meaning. Features local processing, privacy-first design, and seamless integration with your workflow.(Use system-wide electron)
+	pkgdesc = Your AI-powered file launcher and search assistant. Think Spotlight or Alfred, but with the intelligence to understand what you're looking for.(Use system-wide electron)
 	pkgver = 2.0.1.r0.g9a27946
 	pkgrel = 1
 	url = https://www.producthunt.com/posts/albert-launcher
