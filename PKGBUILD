@@ -10,7 +10,7 @@ pkgver=0.15.0
 pkgrel=1
 pkgdesc='Ncurses BitTorrent client based on libTorrent, with IPv6 patch'
 url='http://rakshasa.github.io/rtorrent/'
-license=('GPL')
+license=('GPL-2.0-only')
 arch=('x86_64')
 depends=('libtorrent-ipv6=0.15.0' 'tinyxml2')
 makedepends=('git')
@@ -26,7 +26,7 @@ prepare() {
     autoheader
     libtoolize --automake --copy --force
     automake --add-missing --copy --gnu
-    autoconf
+    autoconf -fiv
 }
 
 build() {

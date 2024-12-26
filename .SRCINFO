@@ -4,7 +4,7 @@ pkgbase = rtorrent-ipv6
 	pkgrel = 1
 	url = http://rakshasa.github.io/rtorrent/
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = git
 	depends = libtorrent-ipv6=0.15.0
 	depends = tinyxml2
