@@ -1,7 +1,7 @@
 # Maintainer:  Markus Hansmair <archlinux at zendro dot de>
 
 pkgname=mkinitcpio-systemd-extras
-pkgver=0.5.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="Collection of mkinitcpio install hooks for systemd based initramfs"
 arch=('any')
@@ -10,8 +10,11 @@ license=('GPL')
 depends=('mkinitcpio')
 makedepends=('git')
 optdepends=('tinyssh: for sd-tinyssh'
-            'python: for converting OpenSSH host keys to tinyssh format'
-            'dropbear: for sd-dropbear')
+            'python: for sd-tinyssh (converting OpenSSH host keys to tinyssh format)'
+            'dropbear: for sd-dropbear'
+            'clevis: for sd-clevis (unlocking luks encrypted volumes with clevis)'
+            'tpm2-tools: for sd-clevis (unlocking with TPM2)'
+            'curl: for sd-clevis (unlocking with tang)')
 conflicts=('mkinitcpio-netconf' 'mkinitcpio-tinyssh' 'mkinitcpio-dropbear')
 source=("repo::git+https://github.com/wolegis/mkinitcpio-systemd-extras.git#tag=v${pkgver}")
 sha256sums=('SKIP')
