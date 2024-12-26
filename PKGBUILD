@@ -11,6 +11,8 @@ url="http://cole-trapnell-lab.github.io/cufflinks/"
 license=('BSL-1.0')
 depends=('boost-libs' 'eigen' 'python' 'samtools')
 makedepends=('boost' 'git')
+provides=('cufflinks')
+conflicts=('cufflinks')
 source=('git+https://github.com/cole-trapnell-lab/cufflinks.git'
         "$pkgname.patch::https://github.com/cole-trapnell-lab/cufflinks/pull/108.patch")
 sha256sums=('SKIP'
