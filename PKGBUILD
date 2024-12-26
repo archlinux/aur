@@ -2,38 +2,36 @@
 # Contributor: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=cutlass-headers
-pkgver=3.5.1
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="CUDA Templates for Linear Algebra Subroutines (headers only)"
 arch=(x86_64)
 url="https://github.com/NVIDIA/cutlass"
-license=('BSD-3-Clause')
+license=(BSD-3-Clause)
 depends=(cuda)
 makedepends=(cmake ninja)
 conflicts=(cutlass)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('680a67beabf821873655ea8145a84a0a6084b5d9dbd03bdc1b49a7964bcd4e7e5e3b213fea46d09583715e8862795455cbc47e5dac4e5bba546b7aeaf31881ce')
-
-prepare() {
-    cd cutlass-$pkgver
-
-    # https://github.com/NVIDIA/cutlass/issues/1248
-    # delete last two lines (comment and bad add_library(...)
-    head -n -2 cmake/NvidiaCutlassConfig.cmake > cmake/NvidiaCutlassConfig.cmake
-}
+b2sums=('73b69dcee72ca791b4474bd39c821987627576ffbb0bb46261cf58bce9cc585f5002b8e42c1657feb88ca34d2e4575f7623526ec1715393b052128544dff449b')
 
 build() {
-    # this should not actually build anything, we want to install just the headers
-    cmake -S cutlass-$pkgver -B build -G Ninja \
-        -DCMAKE_BUILD_TYPE=None \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCUTLASS_ENABLE_HEADERS_ONLY=ON \
+    local cmake_options=(
+        -B build
+        -S cutlass-$pkgver
+        -G Ninja
+        -W no-dev
+        -DCMAKE_BUILD_TYPE=None
+        -DCMAKE_INSTALL_PREFIX=/usr
+        # this should not actually build anything, we want to install just the headers
+        -DCUTLASS_ENABLE_HEADERS_ONLY=ON
         -DCUTLASS_INSTALL_TESTS=OFF
+    )
+    cmake "${cmake_options[@]}"
     cmake --build build
 }
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-    install -Dm644 cutlass-$pkgver/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -vDm 644 cutlass-$pkgver/LICENSE.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
     rm -rfv "$pkgdir"/usr/test
 }
