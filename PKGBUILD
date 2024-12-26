@@ -8,8 +8,8 @@
 set -u
 _pkgname=lynx
 pkgname="${_pkgname}-current"
-_basever='2.9.0'
-pkgver="${_basever}rel.0"
+_basever='2.9.2'
+pkgver="${_basever}"
 pkgrel='1'
 pkgdesc='A text browser for the World Wide Web (current development version)'
 arch=('i686' 'x86_64')
@@ -25,8 +25,8 @@ backup=('etc/lynx.cfg')
 #_srcdir="lynx${_basever//./-}"
 _srcdir="lynx${pkgver%rel.0}"
 source=("https://invisible-mirror.net/archives/lynx/tarballs/${_pkgname}${pkgver%rel.0}.tar.bz2") #{,.asc})
-md5sums=('1f18b108fac153e63aad66c1e05be362')
-sha256sums=('5bcae5e2e6043ca7b220963a97763c49c13218d849ffda6be7739bfd5a2d36ff')
+md5sums=('3ce01505e82626ca4d7291d7e649c4c9')
+sha256sums=('7374b89936d991669e101f4e97f2c9592036e1e8cdaa7bafc259a77ab6fb07ce')
 #validpgpkeys=('0AFD1FFEEA2EA063B959ACDA5DDF8FB7688E31A6')
 
 _configure() {
