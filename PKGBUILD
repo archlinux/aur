@@ -4,7 +4,7 @@
 
 pkgname=paps
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Converts Unicode text to postscript and pdf using pango'
 url='https://github.com/dov/paps'
 arch=('x86_64')
