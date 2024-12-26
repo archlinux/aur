@@ -1,6 +1,6 @@
 pkgname=python-ocp
 pkgver=7.7.2.1+r4.g544d7fd5
-pkgrel=2
+pkgrel=3
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
 url=https://github.com/CadQuery/OCP
@@ -10,9 +10,6 @@ depends=(
 python
 opencascade
 vtk
-fmt
-glew
-clang15
 )
 
 makedepends=(
@@ -48,10 +45,14 @@ libharu
 verdict
 eigen
 utf8cpp
-glew
+nlohmann-json
 fast_float
 python-lief
 python-logzero
+double-conversion
+clang15
+glew
+fmt
 )
 
 conflicts=(python-ocp-git)
@@ -96,8 +97,9 @@ prepare(){
     git -C pywrap checkout ${_pywrap_commit}
   fi
 
-  sed "s,-i \${CLANG_INSTALL_PREFIX}/lib/clang/\${LLVM_VERSION}/include/,-i \"$(clang -print-resource-dir)/include\"," -i CMakeLists.txt
-  sed "s,-n \${N_PROC},--njobs ${_n_parallel_build_jobs}," -i CMakeLists.txt
+  sed "s,-i \${CLANG_INSTALL_PREFIX}/lib/clang/\${LLVM_VERSION}/include/,-i \"$(clang -print-resource-dir)/include\"," --in-place CMakeLists.txt
+  sed "s,-n \${N_PROC},--njobs ${_n_parallel_build_jobs}," --in-place CMakeLists.txt
+  sed "s,\${VTK_INCLUDE_DIR},/usr/include/vtk," --in-place CMakeLists.txt  # fix vtk include dir for vtk 9.4
 
   # use upstream's headers, not whatever is shipped here
   rm -r opencascade
