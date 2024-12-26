@@ -5,17 +5,23 @@
 #_opt_OpenSSL='-1.1'
 _opt_OpenSSL=''
 
+set -u
 pkgname='proftpd'
 #pkgname+='-git'
 pkgver=1.3.8c
-# 0.0.0a to 0.0.0b are not seen as updates by some AUR helpers. We increase pkgrel with this kind of version change
-pkgrel=2
+# 0.0.0a to 0.0.0b are not seen as updates by some AUR helpers and pacman vercmp. We increase pkgrel with this kind of version change (too bad, this would work if they were equal, but they aren't. -# has no effect)
+pkgrel=1
 epoch='2'
 pkgdesc='High-performance, scalable FTP SSL TLS and SFTP server'
 arch=('x86_64' 'i686')
 url='http://www.proftpd.org/'
 license=('GPL')
-if [ "$(vercmp "${pkgver}" "1.3.8")" -lt 0 ]; then
+if [[ "${pkgver}" =~ ^([.0-9]+)([a-z])$ ]]; then
+  _pkgvercmp="${BASH_REMATCH[1]}.${BASH_REMATCH[2]}" # we promote 1.3.8c -> 1.3.8.c to vercmp greater than 1.3.8
+else
+  _pkgvercmp="${pkgver}" # We don't modify 1.3.8rc1 to vercmp less than 1.3.8
+fi
+if [ "$(vercmp "${_pkgvercmp}" "1.3.8")" -lt 0 ]; then
   _opt_OpenSSL='-1.1'
 fi
 depends=('mariadb-libs' 'postgresql-libs' 'libcap' 'pam' 'hiredis')
@@ -63,6 +69,8 @@ pkgver() {
 }
 fi
 
+true && pkgver="${_pkgvercmp}" # Let's see if Repology paints this dotted version in black (bogus)
+
 prepare() {
   set -u
   cd "${_srcdir}"
@@ -92,7 +100,7 @@ _configure() {
   cd "${_srcdir}"
   #CFLAGS="${CFLAGS/-march=x86-64/-march=native}"
   #CXXFLAGS="${CXXFLAGS/-march=x86-64/-march=native}"
-  if [ "$(vercmp "${pkgver}" '1.3.7')" -lt 0 ]; then
+  if [ "$(vercmp "${_pkgvercmp}" '1.3.7')" -lt 0 ]; then
     CFLAGS+=' -fcommon'
   fi
   #CFLAGS+=' -fno-strict-aliasing'
@@ -103,15 +111,15 @@ _configure() {
     'mod_facl'
     'mod_quotatab'
     'mod_quotatab_file'
-    'mod_quotatab_sql'
     'mod_sftp'
-    'mod_sql'
-    'mod_sql_passwd'
     'mod_tls'
     'mod_tls_shmcache'
   )
   if [ -z "${_opt_OpenSSL}" ]; then
-    _modules+=( # linked to latest OpenSSL
+    _modules+=( # these link to latest OpenSSL so cannot be used if using an old version
+      'mod_quotatab_sql'
+      'mod_sql'
+      'mod_sql_passwd'
       'mod_ldap'
       'mod_sql_mysql'
       'mod_sql_postgres'
