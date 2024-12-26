@@ -11,37 +11,33 @@ url="https://github.com/futo-org/Grayjay.Desktop"
 license=('Source First License 1.1')
 depends=('dotnet-runtime' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libsecret' 'libappindicator-gtk3')
 makedepends=('dotnet-sdk' 'git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/futo-org/Grayjay.Desktop/archive/refs/tags/$pkgver.tar.gz"
-        "grayjay-engine::git+https://github.com/futo-org/Grayjay.Engine.git"
-        "futo-mdns::git+https://github.com/futo-org/FUTO.MDNS.git")
-sha256sums=('d92e55a3c186b5a7549a956e08952ca6655d4941ffb08ed602b3a939b555cafb'
-            'SKIP'
-            'SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/futo-org/Grayjay.Desktop/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('d92e55a3c186b5a7549a956e08952ca6655d4941ffb08ed602b3a939b555cafb')
 
 prepare() {
-    cd "Grayjay.Desktop-$pkgver"
-    rm -rf Grayjay.Engine FUTO.MDNS
-    cp -r "$srcdir/grayjay-engine" Grayjay.Engine/
-    cp -r "$srcdir/futo-mdns" FUTO.MDNS/
+    cd "$srcdir/grayjay-desktop"
+    git config submodule.FUTO.MDNS.url https://github.com/futo-org/FUTO.MDNS.git
+    git config submodule.Grayjay.Engine.url https://github.com/futo-org/Grayjay.Engine.git
+    git config submodule.JustCef.url https://github.com/futo-org/JustCef.git
+    git submodule update --init --recursive
 }
 
 build() {
-    cd "Grayjay.Desktop-$pkgver"
-    dotnet restore Grayjay.ClientServer/Grayjay.ClientServer.csproj
-    dotnet build Grayjay.ClientServer/Grayjay.ClientServer.csproj --configuration Release --no-restore --no-self-contained /p:DebugType=None /p:DebugSymbols=false
+    cd "$srcdir/grayjay-desktop"
+    bash ./build.sh
 }
 
 package() {
-    cd "Grayjay.Desktop-$pkgver"
+    cd "${srcdir}/grayjay-desktop/Grayjay.Desktop.CEF/bin/Release/net8.0/linux-x64/publish"
 
-    install -dm755 "$pkgdir/usr/lib/$pkgname"
-    install -dm755 "$pkgdir/usr/bin"
-    install -dm755 "$pkgdir/usr/share/applications"
-    install -dm755 "$pkgdir/usr/share/icons/hicolor/512x512/apps"
+    # Create necessary directories
+    install -dm755 "${pkgdir}/usr/share/grayjay"
+    install -dm755 "${pkgdir}/usr/bin"
+    install -dm755 "${pkgdir}/usr/share/applications"
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
 
-    cp -r Grayjay.ClientServer/bin/Release/net8.0/* "$pkgdir/usr/lib/$pkgname/"
-
-    cat > "$pkgdir/usr/bin/grayjay" << 'EOF'
+    # Create launcher script that copies app to user directory on first run
+    cat > "${pkgdir}/usr/bin/grayjay" << 'EOF'
 #!/bin/sh
 APP_DIR="$HOME/.local/share/grayjay"
 
@@ -49,15 +45,20 @@ APP_DIR="$HOME/.local/share/grayjay"
 if [ ! -d "$APP_DIR" ]; then
     echo "First run - installing Grayjay to $APP_DIR"
     mkdir -p "$APP_DIR"
-    cp -r /usr/lib/grayjay-git/* "$APP_DIR/"
+    cp -r /usr/share/grayjay/* "$APP_DIR/"
     chmod u+w -R "$APP_DIR"
 fi
 
 exec sh -c "cd '$APP_DIR' && exec ./Grayjay \"\$@\"" -- "$@"
 EOF
-    chmod 755 "$pkgdir/usr/bin/grayjay"
+    chmod 755 "${pkgdir}/usr/bin/grayjay"
 
-    cat > "$pkgdir/usr/share/applications/grayjay.desktop" << EOF
+    # Copy application files to system directory (will be copied to user dir on first run)
+    cp -a ./* "${pkgdir}/usr/share/grayjay/"
+    chmod -R u=rwX,g=rX,o=rX "${pkgdir}/usr/share/grayjay/"
+
+    # Create desktop entry
+    cat > "${pkgdir}/usr/share/applications/grayjay.desktop" << EOF
 [Desktop Entry]
 Name=Grayjay
 Comment=Privacy-respecting client for YouTube, Rumble, Twitch, Spotify etc
@@ -68,6 +69,8 @@ Type=Application
 Categories=Network;Video;AudioVideo;
 EOF
 
-    install -Dm644 "Grayjay.Desktop.CEF/grayjay.png" \
-        "$pkgdir/usr/share/icons/hicolor/512x512/apps/grayjay.png"
+    # Install icon
+    cd "${srcdir}/grayjay-desktop/Grayjay.Desktop.CEF"
+    install -Dm644 "grayjay.png" \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/grayjay.png"
 }

@@ -20,10 +20,6 @@ pkgbase = grayjay
 	provides = grayjay
 	conflicts = grayjay-git
 	source = grayjay-3.tar.gz::https://github.com/futo-org/Grayjay.Desktop/archive/refs/tags/3.tar.gz
-	source = grayjay-engine::git+https://github.com/futo-org/Grayjay.Engine.git
-	source = futo-mdns::git+https://github.com/futo-org/FUTO.MDNS.git
 	sha256sums = d92e55a3c186b5a7549a956e08952ca6655d4941ffb08ed602b3a939b555cafb
-	sha256sums = SKIP
-	sha256sums = SKIP
 
 pkgname = grayjay
