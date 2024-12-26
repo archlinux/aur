@@ -1,12 +1,10 @@
 pkgbase = sudo-rs
 	pkgdesc = A safety oriented and memory safe implementation of sudo and su written in Rust.
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trifectatechfoundation/sudo-rs
 	install = sudo-rs.install
 	arch = x86_64
-	arch = aarch64
-	arch = riscv64
 	license = Apache-2.0 AND MIT
 	makedepends = cargo
 	makedepends = clang
@@ -15,6 +13,8 @@ pkgbase = sudo-rs
 	depends = pam
 	provides = sudo-rs
 	conflicts = sudo-rs
+	options = !debug
+	options = !strip
 	source = sudo-rs-0.2.3.tar.gz::https://github.com/trifectatechfoundation/sudo-rs/archive/refs/tags/v0.2.3.tar.gz
 	sha256sums = 2371c91644185c2bcf1f02408c2cc7a79b1dd1ba740088a9a16f0f947b649cdc
 
