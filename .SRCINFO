@@ -1,7 +1,7 @@
 pkgbase = myoffice-standard-home-edition-bin
 	pkgdesc = A set of office applications for creating text and spreadsheet documents. Home edition.
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://myoffice.ru/products/standard-home-edition/
 	install = myoffice-standard-home-edition-bin.install
 	arch = x86_64
@@ -36,6 +36,6 @@ pkgbase = myoffice-standard-home-edition-bin
 	options = !strip
 	options = !emptydirs
 	source = https://preset.myoffice-app.ru/myoffice-standard-home-edition_2.7.0_amd64.deb
-	sha512sums = 7409419c6970a7e460c1da18243ccd45a24ca3db4fcc6bb72519d096ba22f25a
+	sha256sums = 7409419c6970a7e460c1da18243ccd45a24ca3db4fcc6bb72519d096ba22f25a
 
 pkgname = myoffice-standard-home-edition-bin

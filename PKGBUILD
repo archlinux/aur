@@ -3,7 +3,7 @@
 _my_pkg=myoffice-standard-home-edition
 pkgname=${_my_pkg}-bin
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of office applications for creating text and spreadsheet documents. Home edition."
 arch=('x86_64')
 url="https://myoffice.ru/products/standard-home-edition/"
@@ -16,7 +16,7 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
 source=("https://preset.myoffice-app.ru/${_my_pkg}_${pkgver}_amd64.deb")
-sha512sums=('7409419c6970a7e460c1da18243ccd45a24ca3db4fcc6bb72519d096ba22f25a')
+sha256sums=('7409419c6970a7e460c1da18243ccd45a24ca3db4fcc6bb72519d096ba22f25a')
 
 package(){
 	tar xzf data.tar.gz -C "${pkgdir}"
