@@ -3,14 +3,18 @@
 
 set -u
 pkgname='tcpslice'
-pkgver='1.6'
+pkgver='1.8'
 pkgrel='1'
 pkgdesc="A tool for extracting portions of packet-trace files generated using tcpdump's -w flag."
 arch=('i686' 'x86_64')
 url='https://www.tcpdump.org/'
 _giturl="https://github.com/the-tcpdump-group/${pkgname}"
 license=('BSD')
-depends=('libpcap')
+depends=('glibc' 'libpcap' 'libnids')
+optdepends=(
+  'libosip2: track SIP calls'
+  #'libooh323c: track H323 calls'
+)
 _srcdir="${pkgname}-${pkgver}"
 source=(
   #"ftp://ftp.ee.lbl.gov/${pkgname}-${pkgver}.tar.gz"
@@ -18,14 +22,17 @@ source=(
   'LICENSE'
 )
 _srcdir="${pkgname}-${_srcdir}"
-md5sums=('2a18e9da13b1dee08b92d10a88a97c38'
+md5sums=('e5bf5893741d0ec919ac352f5af05b61'
          'a8c9bb95fd32da1c9fdf4b5825ba7628')
-sha256sums=('b9143ed454d173e3bd5161406379bbb259f35f57adb37a1f8aa6aebd4cb9233f'
+sha256sums=('2d69ec18fa5d517c4ee4aa317cbf3be0c1a7a962a4a38d6b082096df177d01d0'
             '6f4b64754b831217eee983f787d3b278ae7e73e4563c52bfe69cf7b07566f588')
 
 build() {
   set -u
   cd "${_srcdir}"
+  if [ ! -s 'configure' ]; then
+    ./autogen.sh
+  fi
   if [ ! -s 'Makefile' ]; then
     ./configure --sbindir='/usr/bin' --prefix='/usr'
   fi
