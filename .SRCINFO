@@ -1,6 +1,6 @@
 pkgbase = camlpdf
 	pkgdesc = Coherent Graphics OCaml library for reading, writing and modifying PDF files
-	pkgver = 2.7.1
+	pkgver = 2.8
 	pkgrel = 1
 	url = https://github.com/johnwhitington/camlpdf
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = camlpdf
 	depends = glibc
 	options = !makeflags
 	options = staticlibs
-	source = camlpdf-2.7.1.tar.gz::https://github.com/johnwhitington/camlpdf/archive/v2.7.1.tar.gz
-	md5sums = 5ec4c14006769e68be97a3ed70d46bc7
-	sha256sums = 601aa26ef173ce1478128383124fc92d087f173d03b40846607d2d8667dbb784
+	source = camlpdf-2.8.tar.gz::https://github.com/johnwhitington/camlpdf/archive/v2.8.tar.gz
+	md5sums = 878c5f0e655bc101eb4c43c04843b8af
+	sha256sums = ab7752bfc3f28f3fc75e4d0d46bab1de254a212adf0c01c146db44efc2659efd
 
 pkgname = camlpdf
