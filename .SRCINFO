@@ -1,7 +1,7 @@
 pkgbase = aeon-bin
-	pkgdesc = Scan the internet for your personal information and modify or remove it
+	pkgdesc = Scan the internet for your personal information and modify or remove it.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.2.22
-	pkgrel = 11
+	pkgrel = 12
 	url = https://aeon.technology/
 	arch = x86_64
 	license = EUPL-1.2
@@ -14,6 +14,6 @@ pkgbase = aeon-bin
 	source = aeon-0.2.22.deb::https://github.com/leinelissen/aeon/releases/download/v0.2.22/aeon_0.2.22_amd64.deb
 	source = aeon.sh
 	sha256sums = 3a3c1112a6a750d503f08ccb2a7481dead7e4e58fc057d99f04f364dcf3c916a
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = aeon-bin
