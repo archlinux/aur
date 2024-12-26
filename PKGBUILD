@@ -2,7 +2,7 @@
 pkgname=scrolltext
 _name=${pkgname#python-}
 pkgver=0.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple terminal application for scrolling text."
 arch=('any')
 url="https://github.com/jimdeekepler/python-scrolltext"
