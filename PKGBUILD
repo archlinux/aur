@@ -93,7 +93,7 @@ source_loong64=(
 
 
 md5sums=('SKIP'
-         'ff710cd32cb665a70b06f6f0f83937c5'
+         'SKIP'
          '468e0367346707c026e577e7bf3e3a82')
 md5sums_x86_64=('SKIP')
 md5sums_aarch64=('SKIP')
