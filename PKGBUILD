@@ -1,7 +1,7 @@
 # Maintainer: Locotir <magazo2005@gmail.com>
 
 pkgname=c-lcrypt
-pkgver=1.5.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="C++ encryption program with RAM-based I/O, featuring byte shuffling, binary reversal, bit insertion, byte substitution with randomized table, and XOR key encryption for secure file/folder handling."
 arch=('x86_64')
