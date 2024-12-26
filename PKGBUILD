@@ -2,7 +2,7 @@
 
 _name='pymunk'
 pkgname=python-${_name}
-pkgver=6.9.0
+pkgver=6.10.0
 pkgrel=1
 pkgdesc="Pymunk (built on top of Chipmunk2D) is an easy-to-use pythonic 2D physics library that can be used whenever you need 2D rigid body physics from Python."
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-cffi>=1.17.1' 'gcc')
 depends=('python>=3.8' 'python-cffi>=1.17.1')
 optdepends=('python-pyglet<2.0.0' 'python-pygame' 'python-sphinx' 'python-aafigure' 'python-wheel' 'python-matplotlib' 'python-numpy' 'python-sphinx-autodoc-typehints')
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('765f7c561a859a1b565bc517a47cc3992d6258e860f9174c533033c218af63c3')
+sha256sums=('62f7c7247c05b8441fb0e1937532c3d3b9c21a46aa48f3881cf5c892cf2acb25')
 
 build() {
 	cd "$srcdir"/pymunk-$pkgver
