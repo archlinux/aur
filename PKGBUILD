@@ -5,7 +5,7 @@ _base=pympress
 pkgname=python-${_base}
 pkgdesc="Simple and powerful dual-screen PDF reader designed for presentations"
 pkgver=1.8.5
-pkgrel=2
+pkgrel=3
 arch=(any)
 url="https://github.com/Cimbali/${_base}"
 license=(GPL-2.0-or-later)
@@ -19,6 +19,11 @@ optdepends=('vlc: for playing videos'
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('e110d99935a43f7b4b36581993247c8f44cb214759a98017f8d49f9aadcb998528787154a0c6e53d39c1da650df8a314513af06482b1dc145ea020dd278f4aea')
 
+prepare() {
+  # https://github.com/Cimbali/pympress/issues/330
+  sed -i 's/ a_widget.props/ list(a_widget.props)/' ${_base}-${pkgver}/${_base}/builder.py
+}
+
 build() {
   cd ${_base}-${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
@@ -27,4 +32,5 @@ build() {
 package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/${pkgname}"
 }
