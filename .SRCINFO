@@ -1,0 +1,16 @@
+pkgbase = aione-bin
+	pkgdesc = AIOne : An all-in-one AI desktop app that provides access to ChatGPT, Gemini and Claude.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://sumexxx.github.io/AIOne/
+	arch = x86_64
+	license = MIT
+	depends = electron33
+	conflicts = aione
+	options = !emptydirs
+	source = aione-1.0.0.rpm::https://github.com/SUMExXx/AIOne/releases/download/v1.0.0/aione-1.0.0-1.x86_64.rpm
+	source = aione.sh
+	sha256sums = 1e9e68999268d9d3c7169fca60d0fce22f784c0d0118a79adcad29a6606ae444
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = aione-bin
