@@ -1,5 +1,4 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-# Co-Maintainer: wcyat <wcyat at wcyat dot me>
 pkgname=electronmail
 pkgver=5.3.0
 pkgrel=1
