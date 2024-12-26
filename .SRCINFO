@@ -1,7 +1,7 @@
 pkgbase = larksuite-bin
 	pkgdesc = Linux client of Lark Suite
 	pkgver = 7.28.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.larksuite.com/download
 	install = larksuite-bin.install
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = larksuite-bin
 	depends = libmfx
 	depends = alsa-lib
 	depends = xdg-utils
+	depends = appmenu-gtk-module
+	optdepends = appmenu-gtk-module: Appmenu support
 	provides = bytedance-lark
 	provides = lark
 	replaces = bytedance-lark-dev-bin
