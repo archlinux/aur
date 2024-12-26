@@ -1,7 +1,7 @@
 pkgbase = adbr-server-git
 	pkgdesc = ADB Server in pure Rust.
 	pkgver = r2.a601e45
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xDvir/ADBRServer
 	arch = x86_64
 	license = Apache-2.0
@@ -16,6 +16,7 @@ pkgbase = adbr-server-git
 	conflicts = adbr-server
 	options = !strip
 	options = !lto
+	options = !debug
 	source = adbr-server-git::git+https://github.com/xDvir/ADBRServer.git
 	sha256sums = SKIP
 

@@ -2,7 +2,7 @@
 
 pkgname=adbr-server-git
 pkgver=r2.a601e45
-pkgrel=1
+pkgrel=2
 pkgdesc="ADB Server in pure Rust."
 arch=($CARCH)
 url="https://github.com/xDvir/ADBRServer"
@@ -24,7 +24,7 @@ optdepends=(
     'adbr: ADB Client in pure Rust.'
 )
 backup=()
-options=('!strip' '!lto')
+options=('!strip' '!lto' '!debug')
 install=
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
