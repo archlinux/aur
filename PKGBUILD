@@ -1,10 +1,11 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: killab33z <killab33z @ protonmail-dot-ch>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Alexander Bruegmann <mail[at]abruegmann[dot]eu>
 
 pkgname=python-requests-pkcs12
 _pkg=requests_pkcs12
-pkgver=1.22
+pkgver=1.25
 pkgrel=1
 pkgdesc='Adds PKCS#12 support to python-requests'
 arch=('any')
@@ -13,17 +14,12 @@ url="https://github.com/m-click/requests_pkcs12"
 depends=('python-requests' 'python-cryptography')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('e33f6479c84fbe664917feeb37c9949691f3cee1783ffa0580c1f494541707f5')
+sha512sums=('8e03093f70871909fde53007133ac7428bde6391300647a94657e56b1e72027056be0f8c9257b4f8733a68477e2d66b14c30b68b21e24d097713ca33ed68fca7')
 
 build() {
 	cd "$_pkg-$pkgver"
 	python -m build --wheel --no-isolation
 }
-
-# check() {
-# 	cd "$_pkg-$pkgver"
-# 	python setup.py test
-# }
 
 package() {
 	cd "$_pkg-$pkgver"
