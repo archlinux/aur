@@ -1,8 +1,8 @@
 pkgbase = python-language-data
 	pkgdesc = Languages supplementary data for python-langcodes
 	pkgver = 1.3.0
-	pkgrel = 1
-	url = https://github.com/rspeer/language_data
+	pkgrel = 2
+	url = https://github.com/georgkrause/language_data
 	arch = any
 	license = MIT
 	makedepends = python-build

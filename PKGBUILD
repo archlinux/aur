@@ -3,10 +3,10 @@
 pkgname='python-language-data'
 _proj_name='language_data'
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Languages supplementary data for python-langcodes'
 arch=(any)
-url='https://github.com/rspeer/language_data'
+url='https://github.com/georgkrause/language_data'
 license=('MIT')
 depends=(
   'python'
