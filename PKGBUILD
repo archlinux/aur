@@ -59,7 +59,7 @@ depends=(
 )
 
 optdepends=(
-	"wechat-bwrap: Sandbox support"
+	"wechat-sandbox-provider: Sandbox support"
 	'ttf-twemoji: An emoji font that will work with WeChat'
 	'at-spi2-core: accessibility'
 	'orca: screen reader'
