@@ -1,7 +1,7 @@
 # shellcheck disable=SC2034,SC2148,SC2128,SC2154,SC2164
 # Maintainer: javalsai <javalsai@proton.me>
 pkgname=lidm-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 depends=('pam')
 makedepends=('gzip')
