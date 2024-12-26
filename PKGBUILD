@@ -1,6 +1,6 @@
 # Maintainer: Wenqian <lazycat7706@gmail.com>
 
-pkgname=roxide
+pkgname=roxide-release
 pkgver=0.17.1
 pkgrel=1
 pkgdesc="A git repositories manager CLI, easy to use and very fast"

@@ -1,4 +1,4 @@
-pkgbase = roxide
+pkgbase = roxide-release
 	pkgdesc = A git repositories manager CLI, easy to use and very fast
 	pkgver = 0.17.1
 	pkgrel = 1
@@ -7,7 +7,7 @@ pkgbase = roxide
 	license = MIT
 	depends = git
 	depends = fzf
-	source = roxide-0.17.1::https://github.com/fioncat/roxide/releases/download/v0.17.1/roxide-x86_64-unknown-linux-gnu.tar.gz
+	source = roxide-release-0.17.1::https://github.com/fioncat/roxide/releases/download/v0.17.1/roxide-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = 3d36fadc5c197304cb53eb894771efafbdbbdb1d173b16797f8d8b51301d6a2e
 
-pkgname = roxide
+pkgname = roxide-release
