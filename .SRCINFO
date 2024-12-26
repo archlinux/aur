@@ -1,7 +1,7 @@
 pkgbase = python-jlc2kicadlib
 	pkgdesc = JLC2KiCad_lib is a python script that generate a component library (symbol, footprint and 3D model) for KiCad from the JLCPCB/easyEDA library.
 	pkgver = 1.0.32
-	pkgrel = 0
+	pkgrel = 5
 	url = https://pypi.org/project/JLC2KiCadLib
 	arch = any
 	license = MIT
