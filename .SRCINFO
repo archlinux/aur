@@ -1,7 +1,7 @@
 pkgbase = git-donkey
 	pkgdesc = A CLI tool to help you manage your local git branches/repositories.
 	pkgver = v1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bupd/git-donkey
 	arch = x86_64
 	license = MIT

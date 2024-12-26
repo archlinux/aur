@@ -2,7 +2,7 @@
 
 pkgname=git-donkey
 pkgver=v1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A CLI tool to help you manage your local git branches/repositories."
 arch=('x86_64')
 url="https://github.com/bupd/git-donkey"
@@ -35,5 +35,9 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname" # Install the binary
+
+  # Move license
+  install -Dm 644 README*.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
