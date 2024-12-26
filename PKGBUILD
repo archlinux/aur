@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=upscayl-git
 _pkgname=Upscayl
-pkgver=2.11.5.r64.gf3af1d0
+pkgver=2.15.1.r3.g04db044
 pkgrel=1
 _electronversion=27
-_nodeversion=18
-pkgdesc="Free and Open Source AI Image Upscaler for Linux, MacOS and Windows built with Linux-First philosophy.Use system-wide electron."
+_nodeversion=18.20.5
+pkgdesc="Free and Open Source AI Image Upscaler.(Use system-wide electron)"
 arch=('x86_64')
 url='https://upscayl.org/'
 _ghurl='https://github.com/upscayl/upscayl'
@@ -44,7 +44,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -76,6 +76,9 @@ build() {
     NODE_ENV=development    npm install
     rm -rf node_modules/sharp
     NODE_ENV=development SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install --arch=x64 --platform=linux --libc=glibc --build-from-source sharp
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
