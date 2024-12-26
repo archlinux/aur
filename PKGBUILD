@@ -12,7 +12,7 @@ _last_modified_aarch64=1735023075
 
 pkgname="${_pkgname}"-appimage
 pkgver="${_version}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Wechat for Linux"
 arch=('x86_64' 'aarch64')
 url="https://linux.weixin.qq.com"
@@ -30,7 +30,10 @@ sha256sums_aarch64=('460f8558d80e3c2d3620b52c910a909a5cf5a8d6fd00c76f2dc456bfb35
 
 _last_modified=$(eval echo \${_last_modified_${CARCH}})
 _appimage="${_Pkgname}-${_last_modified}-${CARCH}.AppImage"
-noextract=("${_appimage}")
+noextract=(
+    ${source_x86_64}
+    ${source_aarch64}
+)
 
 prepare() {
     chmod +x "${_appimage}"
