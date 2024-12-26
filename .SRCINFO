@@ -1,6 +1,6 @@
 pkgbase = peru-git
 	pkgdesc = A tool for fetching code
-	pkgver = 679.bc8de02
+	pkgver = 690.7007451
 	pkgrel = 1
 	url = https://github.com/buildinspace/peru
 	arch = any
@@ -8,7 +8,6 @@ pkgbase = peru-git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-yaml
-	depends = python-docopt
 	depends = git
 	optdepends = mercurial: fetching from hg repos
 	optdepends = subversion: fetching from svn repos

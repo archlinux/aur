@@ -4,7 +4,7 @@ pkgname=peru-git
 pkgdesc='A tool for fetching code'
 url='https://github.com/buildinspace/peru'
 license=('MIT')
-pkgver=679.bc8de02
+pkgver=690.7007451
 pkgver() {
   cd "$srcdir/peru"
   echo $(git rev-list --count master).$(git rev-parse --short master)
@@ -13,7 +13,7 @@ pkgrel=1
 arch=('any')
 # Asyncio and pathlib are standard in Python 3.4, so they're not in the
 # dependencies list.
-depends=(python python-yaml python-docopt git)
+depends=(python python-yaml git)
 makedepends=(python-setuptools)
 optdepends=(
   'mercurial: fetching from hg repos'
