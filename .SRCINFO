@@ -1,0 +1,22 @@
+pkgbase = itime-git
+	pkgdesc = A desktop efficiency application developed based on Vue 3, Arco Design, and Electron.(Use system-wide electron)一款基于vue3、arco design、electron开发的桌面端效率应用
+	pkgver = 1.1.0.r4.g6e4d2b3
+	pkgrel = 1
+	url = https://github.com/AZCodingAccount/iTime
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	makedepends = pnpm
+	depends = electron28
+	provides = itime=1.1.0
+	conflicts = itime
+	source = itime.git::git+https://github.com/AZCodingAccount/iTime.git
+	source = itime.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = itime-git
