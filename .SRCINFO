@@ -15,7 +15,7 @@ pkgbase = python-jupyter-book
 	depends = jupyter-server
 	depends = python-ipykernel
 	depends = python-platformdirs
-	source = jupyter-book-2.0.0a0.tar.gz::https://github.com/executablebooks/jupyter-book/archive/v2.0.0a0.tar.gz
+	source = jupyter-book-2.0.0a0.tar.gz::https://github.com/jupyter-book/jupyter-book/archive/v2.0.0a0.tar.gz
 	sha512sums = cc5bea7cbb9444f1ce8ae07b1597c37101e4aa1c288c6e208a5471f710cdad50e582da377d2d2c54c361febdb7751149e02fe76cb4fe7e610545a10160b9fad5
 
 pkgname = python-jupyter-book
