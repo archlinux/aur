@@ -1,59 +1,88 @@
 # Maintainer: Kyle De'Vir (QuartzDragon) <kyle.devir.mykolab.com>
 
 pkgname=bcachefs-tools-git
-pkgver=1339
+pkgver=v1.13.0.r36.g601deb6
 pkgrel=1
-pkgdesc="BCacheFS filesystem utilities"
+pkgdesc="BCacheFS filesystem utilities (Git)"
+arch=('x86_64')
 url="https://github.com/koverstreet/bcachefs-tools"
-arch=("x86_64")
-license=("GPL2")
-install="$pkgname.install"
+license=('GPL-2.0-only')
 
 provides=(bcachefs-tools)
 conflicts=(bcachefs-tools)
-dependsarray="attr cargo clang fuse3 git keyutils libaio libscrypt libsodium liburcu libutil-linux pkgconf python-docutils systemd valgrind zlib"
-makedepends=(${dependsarray})
-depends=(${dependsarray})
-
-options=('!strip')
+depends=(
+  bash
+  fuse3
+  gcc-libs
+  libaio.so libaio
+  libblkid.so libuuid.so util-linux-libs
+  libkeyutils.so keyutils
+  libsodium.so libsodium
+  liburcu
+  libz.so zlib
+  libzstd.so zstd
+  lz4
+  libudev.so systemd-libs
+  udev
+)
+makedepends=(
+  cargo
+  clang
+  llvm
+  pkgconf
+  valgrind
+)
 
 _reponame="bcachefs-tools"
 _repo_url="https://github.com/koverstreet/$_reponame"
 
-source=(
-    "git+$_repo_url"
-    "add-mkinitcpio-hook-for-Arch.patch"
-)
-sha512sums=('SKIP'
-            '5ebb0c6b17e7a61ccd2c157a0a833bc51e1d66cdf9711c8038c9e695ba22bf4098695658401bef9560ec02722787de0d89e1ccf7b8a716f9eeb136ad2e59daca')
-
-prepare() {
-    cd "$srcdir/$_reponame"
-
-    PName="add-mkinitcpio-hook-for-Arch.patch"
-    msg2 "Patching with $PName ..."
-    patch -Np1 -i "../$PName"
-}
+options=('!lto' '!strip')
+source=("git+$_repo_url")
+b2sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_reponame"
-
-    echo "$(git rev-list --count HEAD)"
+    git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cd "$srcdir/$_reponame"
 
-    make
+    # this uses malloc_usable_size, which is incompatible with fortification level 3
+    export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+    export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+
+    BCACHEFS_FUSE=1 make \
+        LIBEXECDIR=/usr/lib \
+        DESTDIR="${pkgdir}" \
+        ROOT_SBINDIR="/usr/bin" \
+        INITRAMFS_DIR="/usr/lib/initcpio/"
 }
 
 package() {
     cd "$srcdir/$_reponame"
 
-    make DESTDIR="$pkgdir" PREFIX="/usr" ROOT_SBINDIR="/usr/bin" INITRAMFS_DIR="/etc/initcpio" install
+    # this uses malloc_usable_size, which is incompatible with fortification level 3
+    export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+    export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
-    install -Dm644 "arch/etc/initcpio/hooks/bcachefs" \
-                   "$pkgdir/etc/initcpio/hooks/bcachefs"
-    install -Dm644 "arch/etc/initcpio/install/bcachefs" \
-                   "$pkgdir/etc/initcpio/install/bcachefs"
+    BCACHEFS_FUSE=1 make \
+        PREFIX="/usr" \
+        LIBEXECDIR=/usr/lib \
+        DESTDIR="${pkgdir}" \
+        ROOT_SBINDIR="/usr/bin" \
+        INITRAMFS_DIR="/usr/lib/initcpio/" \
+        install
+
+    # replace incompatible initcpio hooks
+    rm -rf "${pkgdir}"/usr/lib/initcpio/*
+    install -dm755 "${pkgdir}"/usr/lib/initcpio/{hooks,install}
+    install -Dm644 arch/etc/initcpio/hooks/bcachefs "${pkgdir}"/usr/lib/initcpio/hooks/
+    install -Dm644 arch/etc/initcpio/install/bcachefs "${pkgdir}"/usr/lib/initcpio/install/
+
+    # package completions
+    install -dm755 "${pkgdir}"/usr/share/{bash-completion/completions,fish/vendor_completions.d,zsh/site-functions}
+    "${pkgdir}"/usr/bin/bcachefs completions bash > "${pkgdir}"/usr/share/bash-completion/completions/bcachefs
+    "${pkgdir}"/usr/bin/bcachefs completions fish > "${pkgdir}"/usr/share/fish/vendor_completions.d/bcachefs.fish
+    "${pkgdir}"/usr/bin/bcachefs completions zsh > "${pkgdir}"/usr/share/zsh/site-functions/_bcachefs
 }
