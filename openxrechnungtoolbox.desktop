@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=OpenXRechnungToolbox
+GenericName=GUI for visualization and validation of XRechnung
+Exec=/usr/bin/openxrechnungtoolbox
+Terminal=false
+Type=Application
+Categories=Java;Office;

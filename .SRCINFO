@@ -1,0 +1,17 @@
+pkgbase = openxrechnungtoolbox
+	pkgdesc = Visualization and validation of XRechnung (and other EN16931 compliant e-invoices)
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://jcthiele.github.io/OpenXRechnungToolbox/
+	arch = x86_64
+	license = GPL3
+	depends = desktop-file-utils
+	depends = xdg-user-dirs
+	depends = java-runtime>=8
+	options = !strip
+	source = https://github.com/jcthiele/OpenXRechnungToolbox/releases/download/2024-10-05-3.0.0/OpenXRechnungToolbox_3.0.0_Linux_64bit.zip
+	source = openxrechnungtoolbox.desktop
+	sha256sums = 33859aa170e7743a2437721835f2cfee97bffd104bf6c0b611220a2e0a9af59b
+	sha256sums = ece0dc3c3984e71953a8d8cd8b334c374bf621dab8a262c61ae47a29c9d66440
+
+pkgname = openxrechnungtoolbox
