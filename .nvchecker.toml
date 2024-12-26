@@ -1,0 +1,3 @@
+[faircamp-bin]
+source = "git"
+git = "https://codeberg.org/simonrepp/faircamp.git"
