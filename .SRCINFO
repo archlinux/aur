@@ -1,6 +1,6 @@
 pkgbase = carch
 	pkgdesc = An automated script for quick & easy Arch Linux system setup
-	pkgver = v4.0.0
+	pkgver = v4.1.0
 	pkgrel = 1
 	url = https://github.com/harilvfs/carch
 	arch = any
@@ -18,9 +18,13 @@ pkgbase = carch
 	depends = unzip
 	depends = python
 	depends = gtk3
+	depends = noto-fonts-emoji
+	depends = ttf-joypixels
+	depends = curl
+	depends = tar
 	conflicts = carch-git
 	options = !strip
-	source = carch-v4.0.0::https://github.com/harilvfs/carch/archive/refs/tags/v4.0.0.tar.gz
+	source = carch-v4.1.0.tar.gz::https://github.com/harilvfs/carch/archive/v4.1.0.tar.gz
 	md5sums = SKIP
 
 pkgname = carch
