@@ -1,7 +1,7 @@
 pkgbase = vim-dracula
 	pkgdesc = A dark theme for Vim
 	pkgver = 2.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://draculatheme.com/vim
 	arch = any
 	groups = vim-plugins
@@ -12,7 +12,7 @@ pkgbase = vim-dracula
 	provides = vim-lightline-dracula
 	conflicts = vim-airline-dracula
 	conflicts = vim-lightline-dracula
-	source = git+https://draculatheme.com/vim#tag=2.0.0
-	sha512sums = cd86681aff1bd5dfc3b6747e7468fa192776c00cd10dbf6ae99703a679f2576d7c9e1439a829c22459b7bc3248d3657213c6a8d68acd579bb90cf496fa089c71
+	source = vim-dracula::git+https://github.com/dracula/vim#tag=v2.0.0
+	sha512sums = 8a1ab7b57e3ecd8f19e2326aea17d848caddd4f46bc7932a3ed81e37526edb39a86878240e8a3a9b66d1d58a4f354393327c051cad84dc51097a07831b62d76a
 
 pkgname = vim-dracula

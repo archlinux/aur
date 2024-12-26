@@ -4,7 +4,7 @@
 
 pkgname=vim-dracula
 pkgver=2.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A dark theme for Vim"
 arch=('any')
 url="https://draculatheme.com/vim"
@@ -21,4 +21,5 @@ package() {
 	cd "${srcdir}/${pkgname}"
 	find after autoload colors doc \
 	  -type f -exec install -Dvm 644 '{}' "${pkgdir}/usr/share/vim/vimfiles/{}" \;
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
