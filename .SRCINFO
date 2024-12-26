@@ -1,0 +1,14 @@
+pkgbase = easy-switcher
+	pkgdesc = Keyboard layout switcher for Linux
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/freemind001/easy-switcher
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = fpc
+	depends = glibc
+	options = !debug
+	source = https://github.com/freemind001/easy-switcher/archive/0.3/easy-switcher-0.3.tar.gz
+	b2sums = 879746528b7ac2db24d6cb14253964441ee1d8d95722b1407538622bbe282a70291a0f33a815128f8c0a31f028200581b5fecf58fcd994a2fa8fea7a823a18d9
+
+pkgname = easy-switcher
