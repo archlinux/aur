@@ -2,11 +2,9 @@
 
 pkgname=opengnb
 pkgver=1.4.5.a
-pkgrel=3
+pkgrel=4
 pkgdesc="GNB is open source de-centralized VPN to achieve layer3 network via p2p with the ultimate capability of NAT Traversal."
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/gnbdev/opengnb"
 license=('GPL-3.0-or-later')
 provides=(${pkgname})
@@ -28,12 +26,12 @@ sha256sums=('a68817d63dcf3e15166b52389e5bc46affcf18f910932dd8dd8eb7247eb47b9a')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    sed -i  -e 's|-I./libs|-I./libs -I/usr/include|g' \
-        -e 's|-I./libs/miniupnpc/|-I/usr/include/miniupnpc|g' \
-        -e 's|-I./libs/libnatpmp | |g' \
-        -e 's|-I./libs/zlib | |g' \
-        -e 's| -pthread| -pthread -z relro -z now -z shstk|g' Makefile.linux
-
+    #     sed -i -e 's|-I./libs|-I./libs -I/usr/include|g' \
+    #         -e 's|-I./libs/miniupnpc/|-I/usr/include/miniupnpc|g' \
+    #         -e 's|-I./libs/libnatpmp | |g' \
+    #         -e 's|-I./libs/zlib | |g' \
+    #         -e 's| -pthread| -pthread -z relro -z now -z shstk|g' Makefile.linux
+    sed -i -e 's| -pthread| -pthread -z relro -z now -z shstk|g' Makefile.linux
     sed -i -e 's|sbin|bin|g' scripts/opengnb\@.service
 }
 
