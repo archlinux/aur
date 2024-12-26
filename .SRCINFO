@@ -1,7 +1,7 @@
 pkgbase = musicfree-desktop
 	pkgdesc = Plug-in, customized, ad-free music player.Prebuilt version.Use system-wide electron.插件化、定制化、无广告的免费音乐播放器
-	pkgver = 0.0.5
-	pkgrel = 2
+	pkgver = 0.0.6
+	pkgrel = 1
 	url = http://musicfree.upup.fun/
 	arch = any
 	license = GPL-3.0-only
@@ -14,9 +14,10 @@ pkgbase = musicfree-desktop
 	depends = libvips
 	depends = nodejs
 	conflicts = musicfree-desktop
-	source = musicfree-desktop-0.0.5.tar.gz::https://github.com/maotoumao/MusicFreeDesktop/archive/refs/tags/v0.0.5.tar.gz
+	options = !emptydirs
+	source = musicfree-desktop-0.0.6.tar.gz::https://github.com/maotoumao/MusicFreeDesktop/archive/refs/tags/v0.0.6.tar.gz
 	source = musicfree-desktop.sh
-	sha256sums = e8ec94e14c56377428523694a94a6b097f748e69c1d9360fb65815807ef1a3ce
+	sha256sums = 174fca13c88ad5727566aa57397724b5918f01a17cae1fcb05ddcbd67e41875a
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = musicfree-desktop

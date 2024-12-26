@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=musicfree-desktop
 _pkgname=MusicFreeDesktop
-pkgver=0.0.5
+pkgver=0.0.6
 _electronversion=25
 _nodeversion=18
-pkgrel=2
+pkgrel=1
 pkgdesc="Plug-in, customized, ad-free music player.Prebuilt version.Use system-wide electron.插件化、定制化、无广告的免费音乐播放器"
 arch=('any')
 url="http://musicfree.upup.fun/"
@@ -24,11 +24,14 @@ makedepends=(
     'curl'
     'gcc'
 )
+options=(
+    '!emptydirs'
+)
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('e8ec94e14c56377428523694a94a6b097f748e69c1d9360fb65815807ef1a3ce'
+sha256sums=('174fca13c88ad5727566aa57397724b5918f01a17cae1fcb05ddcbd67e41875a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -36,7 +39,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -47,6 +50,7 @@ build() {
     _ensure_local_nvm
     gendesk -f -q -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${_pkgname}-${pkgver}"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -58,15 +62,18 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
-        sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" package-lock.json
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    chmod +x node_modules/.bin/*
     NODE_ENV=production     npm run package
 }
 package() {
