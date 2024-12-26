@@ -6,8 +6,8 @@ This repository provides an automated daily build for updating the Arch Linux AU
 
 The `raiderio-client` is a tool used by World of Warcraft players to synchronize data from [Raider.IO](https://raider.io), providing real-time Mythic+ and raid progression tracking. This automated build ensures that the latest release of the client is always available on the Arch User Repository (AUR) for Arch Linux users.
 
-[raiderio-client on AUR](https://aur.archlinux.org/packages/raiderio-client)
-[raiderio-client on GitHub](https://github.com/Deltachaos/aur-raiderio-client)
+* [raiderio-client on AUR](https://aur.archlinux.org/packages/raiderio-client)
+* [raiderio-client on GitHub](https://github.com/Deltachaos/aur-raiderio-client)
 
 ## Features
 
