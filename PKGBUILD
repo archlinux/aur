@@ -3,48 +3,19 @@
 _base=jupyter-book
 pkgname=python-${_base}
 pkgdesc="Build a book with Jupyter Notebooks and Sphinx"
-pkgver=1.0.3
+pkgver=2.0.0a0
 pkgrel=1
 arch=(any)
 url="https://${_base/-/}.org"
 license=(BSD-3-Clause)
-depends=(python-click
-  python-jinja
-  python-jsonschema
-  python-linkify-it-py
-  python-myst-nb
-  python-yaml
-  python-sphinx-comments
-  python-sphinx-copybutton
-  python-sphinx-external-toc
-  python-sphinx-jupyterbook-latex
-  python-sphinx_design
-  python-sphinx-thebe
-  python-sphinx-book-theme
-  python-sphinx-togglebutton
-  python-sphinxcontrib-bibtex
-  python-sphinx-multitoc-numbering)
-makedepends=(python-build python-installer python-flit-core)
-checkdepends=(python-pytest python-jupytext python-texsoup python-cookiecutter
-  python-sphinx-inline-tabs python-altair texlive-binextra texlive-xetex
-  texlive-latexrecommended texlive-pictures texlive-fontsrecommended
-  texlive-fontsextra texlive-latexextra)
+depends=(python-jupyter-core jupyter-server python-ipykernel python-platformdirs)
+makedepends=(python-build python-installer python-hatch-nodejs-version python-hatch-deps-selector python-hatch-jupyter-builder npm)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/executablebooks/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('60740ffbf30988bf16ab037517614239a517b9608a004451dd36e41680909d2b818cc02d07d1fc81de85dda3d3654364613af53abd563a6e3a026fbef9083f42')
+sha512sums=('cc5bea7cbb9444f1ce8ae07b1597c37101e4aa1c288c6e208a5471f710cdad50e582da377d2d2c54c361febdb7751149e02fe76cb4fe7e610545a10160b9fad5')
 
 build() {
   cd ${_base}-${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
-}
-
-check() {
-  cd ${_base}-${pkgver}
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  PATH=${srcdir}/${_base}-${pkgver}/test-env/bin:$PATH test-env/bin/python -m pytest \
-    -k 'not execution_timeout and not toc_numbered[_toc_numbered.yml] and not toc_numbered[_toc_numbered_depth.yml] and not toc_numbered[_toc_numbered_parts.yml] and not toc_numbered[_toc_numbered_parts_subset.yml] and not toc_numbered[_toc_numbered_depth_parts_subset.yml] and not mathjax_config_warning and not mathjax_config_warning_mathjax2path and not toc_parts' \
-    --ignore=tests/test_pdf.py \
-    --ignore=tests/test_sphinx_multitoc_numbering.py
 }
 
 package() {
