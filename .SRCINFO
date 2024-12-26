@@ -35,7 +35,7 @@ pkgbase = globalprotect-openconnect-git
 	provides = gpgui
 	conflicts = globalprotect-openconnect
 	options = !strip
-	source = globalprotect-openconnect::git+https://github.com/yuezk/GlobalProtect-openconnect.git#commit=0f67be4
-	sha256sums = SKIP
+	source = globalprotect-openconnect::git+https://github.com/yuezk/GlobalProtect-openconnect.git#tag=v2.3.9
+	sha256sums = 16bac6be2e2d073f385a009ce6c8091b653b7e4a6f738b82a4095bf06054982a
 
 pkgname = globalprotect-openconnect-git
