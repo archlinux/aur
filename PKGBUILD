@@ -4,7 +4,7 @@ pkgname=git-monitor-git
 _pkgname=git-monitor
 pkgdesc='Monitor Git repositories for new commits'
 pkgver=r37.a0fa2fe
-pkgrel=1
+pkgrel=2
 url="https://github.com/Kriechi/${_pkgname}"
 arch=('x86_64')
 license=('MIT')
@@ -40,4 +40,5 @@ package()
 {
   cd ${srcdir}/${_pkgname}
   install -Dm755 build/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
