@@ -23,6 +23,8 @@ source=(
 md5sums=('9a76b5e3cdea24e590b1a22a4d6cc747')
 sha256sums=('665e39f074b0da0ce15367fc0fff2ad322c889d752bf5b0ba6af7b895419fe08')
 
+true && pkgver="${pkgver%%_dos*}"
+
 prepare() {
   set -u
   cd "${_srcdir}"

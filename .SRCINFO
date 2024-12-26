@@ -1,6 +1,6 @@
 pkgbase = smallerc
 	pkgdesc = simple and small single-pass C compiler
-	pkgver = 1.0.2_dos.win.b120a9c
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/alexfru/SmallerC
 	arch = x86_64
