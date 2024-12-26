@@ -1,41 +1,39 @@
-# Maintainer: Grey Christoforo <first name @ last name .net>
+# Maintainer: a821 at (nospam) mail de
+# Contributor: Guoyi Zhang <myname at malacology dot net>
+# Contributor: Grey Christoforo <first name @ last name .net>
 
 pkgname=cufflinks-git
-pkgver=v2.2.1.r83.gb4fa050
+pkgver=2.2.1.r89.gdc3b0cb
 pkgrel=1
-pkgdesc="Cufflinks assembles transcripts, estimates their abundances, and tests for differential expression and regulation in RNA-Seq samples.."
+pkgdesc="Transcriptome assembly and differential expression analysis for RNA-Seq"
 arch=("x86_64")
-url="http://cole-trapnell-lab.github.io/projects/cufflinks/"
-license=('Artistic')
-depends=('boost' 'eigen3' 'python2' 'samtools' 'perl')
-source=('git+https://github.com/cole-trapnell-lab/cufflinks.git')
-md5sums=('SKIP')
+url="http://cole-trapnell-lab.github.io/cufflinks/"
+license=('BSL-1.0')
+depends=('boost-libs' 'eigen' 'python' 'samtools')
+makedepends=('boost' 'git')
+source=('git+https://github.com/cole-trapnell-lab/cufflinks.git'
+        "$pkgname.patch::https://github.com/cole-trapnell-lab/cufflinks/pull/108.patch")
+sha256sums=('SKIP'
+            '22c7ff96d9081290edb10bbdf4193eb08f6d9b5b64980eb82ce9cb62fb513c97')
 
 pkgver() {
   cd cufflinks
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd cufflinks
-
-  sed -i 's,hash\[pos\]\.hash,(hash[pos].hash),g' src/GHash.hh
-
-  
- 
-  ./autogen.sh
-  # cufflinks uses python2 but archlinux uses python3 as default python
-  perl -i -pne '$_ =~ s/python/python2/ if $_ =~ /^#!\/usr/' src/cuffmerge
-
-  export EIGEN_CPPFLAGS="-I/usr/include/eigen3"
-  export LDFLAGS="-L/usr/lib -lboost_system"
-  ./configure --prefix=/usr
+  sed -i '/^AM_INIT_AUTOMAKE$/d;s/c++03/c++11/' configure.ac
+  sed -i "s@sprintf((char \*)vdptr(vs),cmdline);@sprintf((char \*)vdptr(vs),\"%s\",cmdline);@g" src/locfit/makecmd.c
+  sed -i "s@int curwin;@extern int curwin;@g" src/locfit/startlf.c
+  patch -p1 < "../$pkgname.patch"
+  autoreconf -fiv
 }
 
 build() {
   cd cufflinks
-  export EIGEN_CPPFLAGS="-I/usr/include/eigen3"
-  export LDFLAGS="-L/usr/lib -lboost_system"
+  export CFLAGS+=" -fpermissive"
+  ./configure --prefix=/usr
   make
 }
 
