@@ -69,7 +69,10 @@ pkgver() {
 }
 fi
 
-true && pkgver="${_pkgvercmp}" # Let's see if Repology paints this dotted version in black (bogus)
+#true && pkgver="${_pkgvercmp}" # Let's see if Repology paints this dotted version in black (bogus)
+if [[ "${pkgver}" =~ ^[.0-9]+$ ]]; then
+  pkgver+='A' # we promote 1.3.8 -> 1.3.8A to vercmp more than 1.3.7c and less than than 1.3.8a
+fi
 
 prepare() {
   set -u
