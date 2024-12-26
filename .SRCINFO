@@ -1,7 +1,7 @@
 pkgbase = acodec-bin
-	pkgdesc = Encoder & decoder for various algorithms with graphical user interface.
+	pkgdesc = Encoder & decoder for various algorithms with graphical user interface.(Prebuilt version)
 	pkgver = 2.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/albertus82/acodec
 	arch = aarch64
 	arch = armv7h

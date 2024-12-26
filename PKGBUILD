@@ -2,13 +2,13 @@
 pkgname=acodec-bin
 _pkgname=ACodec
 pkgver=2.5.5
-pkgrel=1
-pkgdesc="Encoder & decoder for various algorithms with graphical user interface."
+pkgrel=2
+pkgdesc="Encoder & decoder for various algorithms with graphical user interface.(Prebuilt version)"
 arch=(
-    "aarch64"
-    "armv7h"
-    "i686"
-    "x86_64"
+    'aarch64'
+    'armv7h'
+    'i686'
+    'x86_64'
 )
 url="https://github.com/albertus82/acodec"
 license=('GPL-3.0-only')
@@ -25,19 +25,22 @@ sha256sums_aarch64=('cee2d61fc1b077d620c09cb6e3e989587d23d7472781d6e44e01805f5a3
 sha256sums_armv7h=('20208ee3c85fc57b2c5084193d39b2db5404c5c26238b7439fcd13bffb8be2a5')
 sha256sums_i686=('9acd98f1246633388746bc37f314a8bb281e49d839dad037f5befa7d70ad715d')
 sha256sums_x86_64=('81aa0edf486a5a728c724b12d765678e4a15820732462b5d8a5a7d5725dd14ba')
-build() {
-    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin}"
+prepare() {
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin}"
     cp "${srcdir}/${pkgname%-bin}.desktop" "${srcdir}/${pkgname%-bin}w.desktop"
-    sed "s|Name=${_pkgname}|Name=${_pkgname}-w|g;s|Exec=${pkgname%-bin}|Exec=${pkgname%-bin}w|g" \
-        -i "${srcdir}/${pkgname%-bin}w.desktop"
+    sed -e "
+        s/Name=${_pkgname}/Name=${_pkgname}-w/g
+        s/Exec=${pkgname%-bin}/Exec=${pkgname%-bin}w/g
+    " -i "${srcdir}/${pkgname%-bin}w.desktop"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt,/usr/bin}
-    cp -r "${srcdir}/${pkgname%-bin}" "${pkgdir}/opt"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-bin}" "${pkgdir}/opt"
     ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     ln -sf "/opt/${pkgname%-bin}/${pkgname%-bin}w.sh" "${pkgdir}/usr/bin/${pkgname%-bin}w"
     install -Dm644 "${srcdir}/${pkgname%-bin}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256;do
+    _icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname%-bin}/icon/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
