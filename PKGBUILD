@@ -7,7 +7,7 @@ _opt_OpenSSL=''
 
 pkgname='proftpd'
 #pkgname+='-git'
-pkgver=1.3.8b
+pkgver=1.3.8c
 # 0.0.0a to 0.0.0b are not seen as updates by some AUR helpers. We increase pkgrel with this kind of version change
 pkgrel=2
 epoch='2'
@@ -15,6 +15,9 @@ pkgdesc='High-performance, scalable FTP SSL TLS and SFTP server'
 arch=('x86_64' 'i686')
 url='http://www.proftpd.org/'
 license=('GPL')
+if [ "$(vercmp "${pkgver}" "1.3.8")" -lt 0 ]; then
+  _opt_OpenSSL='-1.1'
+fi
 depends=('mariadb-libs' 'postgresql-libs' 'libcap' 'pam' 'hiredis')
 depends+=('libsodium' 'acl' 'perl' 'zlib' 'libxcrypt' 'libldap' 'ncurses' 'glibc' "openssl${_opt_OpenSSL}")
 backup=(
@@ -29,14 +32,18 @@ source=(
   'proftpd.service'
   'proftpd.tmpfiles'
 )
-md5sums=('778cdeeac86e1d26451112bb7d4662af'
+md5sums=('790e3d6221eb5a195dde6da5e4f17dff'
          '4d7a3eedc1852d4fa9faafc072fb8320'
          'f7e0c3a402a845ba8d546b2801f77ed2'
          '907b149a120b046f05647c73502e23c9')
-sha256sums=('183ab7c6107de271a2959ff268f55c9b6c76b2cf0029e6584fccc019686601e0'
+sha256sums=('2a48f2ca338456e750d2373bf671025ed799e04e0baa16c7bb8dbfd67d8734d2'
             'eaacf8df09c3d267cb08e962910af9cab50d1d5b007b232eb79b5240d8c5a721'
             '3a4558773ed747ab66b51551b6fc1732148e30908edc010f00a5e8675c817e64'
             '359cb8f5b30e66627929f7c50cbdd7dcc6919f7261f36eb617045210caf90abb')
+
+_cherries=(
+#CHERRIES
+)
 
 _srcdir="${pkgname}-${pkgver}"
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
@@ -62,8 +69,8 @@ prepare() {
   local _f
   shopt -s nullglob
   for _f in "${startdir}"/*.localpatch; do
-    patch -Nup1 -i "${_f}"
     set +u; msg2 "Patch ${_f}"; set -u
+    patch -Nup1 -i "${_f}"
   done
   shopt -u nullglob
   sed -E -e '/^#define SFTP_DH_PREF_MIN_LEN/ s:2048:3072:g' -i 'contrib/mod_sftp/kex.c' # update group-exchange to modern standards
@@ -72,6 +79,11 @@ prepare() {
     -e '/digests\[\] =/,/^}/ s:,\s*FALSE\s*,:,/* patched */TRUE,:'
   )
   #sed -E "${_allcrypto[@]}" -i 'contrib/mod_sftp/crypto.c'
+  local _cherry
+  for _cherry in "${_cherries[@]}"; do
+    set +u; msg2 "Cherry-pick ${_cherry}"; set -u
+    git cherry-pick -n "${_cherry}"
+  done
   set +u
 }
 
@@ -80,25 +92,31 @@ _configure() {
   cd "${_srcdir}"
   #CFLAGS="${CFLAGS/-march=x86-64/-march=native}"
   #CXXFLAGS="${CXXFLAGS/-march=x86-64/-march=native}"
-  #CFLAGS+=' -fcommon'
+  if [ "$(vercmp "${pkgver}" '1.3.7')" -lt 0 ]; then
+    CFLAGS+=' -fcommon'
+  fi
   #CFLAGS+=' -fno-strict-aliasing'
   CFLAGS+=' -DOPENSSL_NO_DSA'
   local _modules=(
     'mod_digest'
     'mod_dynmasq'
     'mod_facl'
-    'mod_ldap'
     'mod_quotatab'
     'mod_quotatab_file'
     'mod_quotatab_sql'
     'mod_sftp'
     'mod_sql'
-    'mod_sql_mysql'
     'mod_sql_passwd'
-    'mod_sql_postgres'
     'mod_tls'
     'mod_tls_shmcache'
   )
+  if [ -z "${_opt_OpenSSL}" ]; then
+    _modules+=( # linked to latest OpenSSL
+      'mod_ldap'
+      'mod_sql_mysql'
+      'mod_sql_postgres'
+      )
+  fi
   _modules+=('mod_ifsession') # must be last
   local _m="$(printf '%s:' "${_modules[@]}")"
   local _conf=(
