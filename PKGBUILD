@@ -44,6 +44,9 @@ build() {
 }
 
 package() {
+  cd "${srcdir}/${_pkgsrc}-${CARCH}"
+  cp -vr --no-preserve=ownership * "${pkgdir}"
+
   cd "${srcdir}"
   install -vDm644 "ALTERNATIVES-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/ALTERNATIVES.md"
   install -vDm644 "ARCHITECTURE-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/ARCHITECTURE.md"
@@ -51,7 +54,4 @@ package() {
   install -vDm644 "CHANGELOG-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/CHANGELOG.md"
   install -vDm644 "CREDITS-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/CREDITS.md"
   install -vDm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  
-  cd "${_pkgsrc}-${CARCH}"
-  cp -vr --no-preserve=ownership * "${pkgdir}"
 }
