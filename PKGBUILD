@@ -4,13 +4,15 @@
 _pkgname=wechat
 _Pkgname=WechatLinux
 _disname=wechat
-_version=4.0.1.7
+_version=4.0.1
 _image_url_x86_64=https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.AppImage
 _image_url_aarch64=https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_arm64.AppImage
+_last_modified_x86_64=1735023105
+_last_modified_aarch64=1735023075
 
 pkgname="${_pkgname}"-appimage
 pkgver="${_version}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Wechat for Linux"
 arch=('x86_64' 'aarch64')
 url="https://linux.weixin.qq.com"
@@ -20,18 +22,20 @@ depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('wechat')
 
 source=("LICENSE")
-source_x86_64=("${_Pkgname}-${pkgver}-x86_64.AppImage::${_image_url_x86_64}")
-source_aarch64=("${_Pkgname}-${pkgver}-aarch64.AppImage::${_image_url_aarch64}")
+source_x86_64=("${_Pkgname}-${_last_modified_x86_64}-x86_64.AppImage::${_image_url_x86_64}")
+source_aarch64=("${_Pkgname}-${_last_modified_aarch64}-aarch64.AppImage::${_image_url_aarch64}")
 sha256sums=('4348aee67f0c40bd29ec370fff75e24384907514a76104b43354d395c436f0f2')
-sha256sums_x86_64=('745fe982315fe1c3c84bf7b7d28f69a27e9bb0e87f0e27f93463fe0c70dfcdc3')
-sha256sums_aarch64=('c99a9ebc25a50f9613f152dcc03bf11867c56a348e690459bfabf484328a0a25')
+sha256sums_x86_64=('80159c350d68d4065f36c9aed558b52a296abf761b47ec2a3a87785d801e54aa')
+sha256sums_aarch64=('460f8558d80e3c2d3620b52c910a909a5cf5a8d6fd00c76f2dc456bfb3508469')
 
-_appimage="${_Pkgname}-${pkgver}-${CARCH}.AppImage"
+_last_modified=$(eval echo \${_last_modified_${CARCH}})
+_appimage="${_Pkgname}-${_last_modified}-${CARCH}.AppImage"
 noextract=("${_appimage}")
 
 prepare() {
     chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
+    ./"${_appimage}" --appimage-extract ${_disname}.desktop
+    ./"${_appimage}" --appimage-extract ${_disname}.png
 }
 
 build() {
@@ -40,9 +44,6 @@ build() {
         -e "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" \
         -e "s|Icon=.*|Icon=/usr/share/icons/${_pkgname}.png|" \
         "squashfs-root/${_disname}.desktop"
-
-    # Fix permissions; .AppImage permissions are 700 for all directories
-    chmod -R a-x+rX squashfs-root/usr
 }
 
 package() {

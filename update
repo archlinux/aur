@@ -1,0 +1,57 @@
+#!/bin/bash
+
+error() {
+    echo "[ERROR]" $@ >/dev/stderr
+    exit 1
+}
+
+get_latest() {
+    for carch; do
+        arch=
+        case "$carch" in
+            "x86_64") arch=x86_64;;
+            "aarch64") arch=arm64;;
+            *) error \"${carch}\" is not supported;;
+        esac
+        last_modified=$(curl --head https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_${arch}.AppImage 2>/dev/null | sed -E -n -e "s|^Last-Modified:\s+||ip")
+
+        [ "$?" = "0" ] || error \"${carch}\" unable to get update time
+
+        echo last_modified_${carch}=$(date -u -d "$last_modified" +%s)
+    done
+}
+
+eval $(grep -E '^arch=' PKGBUILD)
+archs="${arch[@]}"
+eval $(get_latest $archs)
+update=0
+for arch in $archs; do
+    eval $(grep -E "^_last_modified_${arch}=" PKGBUILD)
+    [ "${update}" = 1 ] || eval "[ \${_last_modified_${arch}} -lt \${last_modified_${arch}} ] && update=1"
+    eval "sed -i -e \"s|_last_modified_${arch}=.*|_last_modified_${arch}=\${last_modified_${arch}}|\" PKGBUILD"
+done
+
+[ "${update}" = "0" ] && exit 0
+updpkgsums
+
+arch=$(uname -m)
+last_modified=$(eval echo -n \${last_modified_${arch}})
+bin=./WechatLinux-${last_modified}-${arch}.AppImage
+
+chmod a+x $bin
+
+$bin --appimage-extract wechat.desktop
+version=$(sed -n "s|^X-AppImage-Version=||p" squashfs-root/wechat.desktop)
+
+eval $(grep -E '^_version=' PKGBUILD)
+if [ "$_version" = "$version" ]; then
+    eval $(grep -E '^pkgrel=' PKGBUILD)
+    sed -i \
+        -e "s|pkgrel=.*|pkgrel=$(expr ${pkgrel} + 1)|" PKGBUILD
+else
+    sed -i \
+        -e "s|_version=.*|_version=${version}|" \
+        -e "s|pkgrel=.*|pkgrel=1|" PKGBUILD
+fi
+
+makepkg --printsrcinfo > .SRCINFO
