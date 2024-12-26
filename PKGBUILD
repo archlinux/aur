@@ -29,20 +29,20 @@ prepare() {
 
 build() {
     cd "$srcdir/grayjay-desktop"
-    ./build.sh
+    bash ./build.sh
 }
 
 package() {
-    cd "$srcdir/grayjay-desktop"
+    cd "${srcdir}/grayjay-desktop/Grayjay.Desktop.CEF/bin/Release/net8.0/linux-x64/publish"
 
-    install -dm755 "$pkgdir/usr/lib/$pkgname"
-    install -dm755 "$pkgdir/usr/bin"
-    install -dm755 "$pkgdir/usr/share/applications"
-    install -dm755 "$pkgdir/usr/share/icons/hicolor/512x512/apps"
+    # Create necessary directories
+    install -dm755 "${pkgdir}/usr/share/grayjay"
+    install -dm755 "${pkgdir}/usr/bin"
+    install -dm755 "${pkgdir}/usr/share/applications"
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
 
-    cp -r Grayjay.ClientServer/bin/Release/net8.0/* "$pkgdir/usr/lib/$pkgname/"
-
-    cat > "$pkgdir/usr/bin/grayjay" << 'EOF'
+    # Create launcher script that copies app to user directory on first run
+    cat > "${pkgdir}/usr/bin/grayjay" << 'EOF'
 #!/bin/sh
 APP_DIR="$HOME/.local/share/grayjay"
 
@@ -50,15 +50,20 @@ APP_DIR="$HOME/.local/share/grayjay"
 if [ ! -d "$APP_DIR" ]; then
     echo "First run - installing Grayjay to $APP_DIR"
     mkdir -p "$APP_DIR"
-    cp -r /usr/lib/grayjay-git/* "$APP_DIR/"
+    cp -r /usr/share/grayjay/* "$APP_DIR/"
     chmod u+w -R "$APP_DIR"
 fi
 
 exec sh -c "cd '$APP_DIR' && exec ./Grayjay \"\$@\"" -- "$@"
 EOF
-    chmod 755 "$pkgdir/usr/bin/grayjay"
+    chmod 755 "${pkgdir}/usr/bin/grayjay"
 
-    cat > "$pkgdir/usr/share/applications/grayjay.desktop" << EOF
+    # Copy application files to system directory (will be copied to user dir on first run)
+    cp -a ./* "${pkgdir}/usr/share/grayjay/"
+    chmod -R u=rwX,g=rX,o=rX "${pkgdir}/usr/share/grayjay/"
+
+    # Create desktop entry
+    cat > "${pkgdir}/usr/share/applications/grayjay.desktop" << EOF
 [Desktop Entry]
 Name=Grayjay
 Comment=Privacy-respecting client for YouTube, Rumble, Twitch, Spotify etc
@@ -69,6 +74,8 @@ Type=Application
 Categories=Network;Video;AudioVideo;
 EOF
 
-    install -Dm644 "Grayjay.Desktop.CEF/grayjay.png" \
-        "$pkgdir/usr/share/icons/hicolor/512x512/apps/grayjay.png"
+    # Install icon
+    cd "${srcdir}/grayjay-desktop/Grayjay.Desktop.CEF"
+    install -Dm644 "grayjay.png" \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/grayjay.png"
 }

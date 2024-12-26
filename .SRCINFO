@@ -21,10 +21,6 @@ pkgbase = grayjay-git
 	conflicts = grayjay-bin
 	options = !debug
 	source = grayjay-desktop::git+https://github.com/futo-org/Grayjay.Desktop.git
-	source = grayjay-engine::git+https://github.com/futo-org/Grayjay.Engine.git
-	source = futo-mdns::git+https://github.com/futo-org/FUTO.MDNS.git
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = grayjay-git
