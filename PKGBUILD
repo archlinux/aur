@@ -5,36 +5,41 @@
 
 _pkgname="cpdf"
 pkgname="${_pkgname}-bin"
-pkgver=2.7.2
+pkgver=2.8
 pkgrel=1
 pkgdesc="Coherent PDF commandline tool to manipulate PDF files"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'aarch64' 'i686')
 url="https://community.coherentpdf.com"
-_url_bin="https://github.com/coherentgraphics/${_pkgname}-binaries"
-_url_src="https://github.com/johnwhitington/${_pkgname}-source"
+_url_bin="https://github.com/coherentgraphics/cpdf-binaries"
+_url_src="https://github.com/johnwhitington/cpdf-source"
 license=('AGPL-3.0-or-later OR custom:Coherent PDF License')
 depends=('glibc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("README-${pkgver}.md::${_url_bin}/raw/v${pkgver}/README.md"
-        "LICENSE-${pkgver}.md::${_url_bin}/raw/v${pkgver}/LICENSE.md"
-        "MANUAL-${pkgver}.pdf::${_url_bin}/raw/v${pkgver}/cpdfmanual.pdf"
-        "${_pkgsrc}.1.man::${_url_src}/raw/v${pkgver}/${_pkgname}.1")
-source_x86_64=("${_pkgsrc}-x86_64::${_url_bin}/raw/v${pkgver}/Linux-Intel-64bit/${_pkgname}")
-source_i686=("${_pkgsrc}-i686::${_url_bin}/raw/v${pkgver}/old32bit/Linux-Intel-32bit/${_pkgname}")
-sha256sums=('ce7ff77fcead0f883823189e5e959f272fec75ed8d33e6853244ba891915c2c7'
+source=("ACKNOWLEDGEMENTS-${pkgver}.md::${_url_bin}/raw/refs/tags/v${pkgver}/ACKNOWLEDGEMENTS.md"
+        "LICENSE-${pkgver}.md::${_url_bin}/raw/refs/tags/v${pkgver}/LICENSE.md"
+        "MANUAL-${pkgver}.pdf::${_url_bin}/raw/refs/tags/v${pkgver}/cpdfmanual.pdf"
+        "README-${pkgver}.md::${_url_bin}/raw/refs/tags/v${pkgver}/README.md"
+        "${_pkgsrc}.man.1::${_url_src}/raw/refs/tags/v${pkgver}/${_pkgname}.1")
+source_x86_64=("${_pkgsrc}-x86_64::${_url_bin}/raw/refs/tags/v${pkgver}/Linux-ARM-64bit/${_pkgname}")
+source_aarch64=("${_pkgsrc}-aarch64::${_url_bin}/raw/refs/tags/v${pkgver}/Linux-Intel-64bit/${_pkgname}")
+source_i686=("${_pkgsrc}-i686::${_url_bin}/raw/refs/tags/v${pkgver}/Linux-Intel-32bit/${_pkgname}")
+sha256sums=('9b7e59d3b6574d31426abc8004f3445ab55495d48020f9c0eab9ca0234631f42'
             '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
-            '08c78183de44202bf30dfd80c7f91e0cf3fbdab33e46980435601e27262b1509'
-            '9012184f7d1853ff3119598b7552a8ee973f2d0fb06e8c62aa2b039c903a4a39')
-sha256sums_x86_64=('e050f26b5cd5c3fad05569d33ea9b4af8c3c3a5be649306ba7cf58a06dae084d')
-sha256sums_i686=('85a02374a44935e14b9e84e364c190fd9f9bf3b277d4873decd1bc9da34ce77d')
+            '7388f698fe65510673400c62716fa8ec9a7e411fbf31a1086614117e868a24ca'
+            'faac74183c571371f9a2e15102db31064a3b53f101e38b8894cc4757f426e5ab'
+            'b6f4d42627c094365103a5a8c750b0ae020b385fdd785f8deede3f472576ec09')
+sha256sums_x86_64=('efca6db7f6293021d653bc0d0ca20e11970701497bf70acdab3a3bac5d57b28f')
+sha256sums_aarch64=('efca6db7f6293021d653bc0d0ca20e11970701497bf70acdab3a3bac5d57b28f')
+sha256sums_i686=('1cb206f50e6f911e931baf4f8c0ada0b36fecca5199739af2c981c3ab9a96f2f')
 
 package() {
   cd "${srcdir}"
-  install -Dm755 "${_pkgsrc}-${CARCH}"  "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "README-${pkgver}.md"  "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "MANUAL-${pkgver}.pdf" "${pkgdir}/usr/share/doc/${_pkgname}/MANUAL.pdf"
-  install -Dm644 "LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
-  install -Dm644 "${_pkgsrc}.1.man"     "${pkgdir}/usr/share/man/man1/${_pkgname}.1"  
+  install -vDm755 "${_pkgsrc}-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -vDm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "ACKNOWLEDGEMENTS-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/ACKNOWLEDGEMENTS.md"
+  install -vDm644 "MANUAL-${pkgver}.pdf" "${pkgdir}/usr/share/doc/${_pkgname}/MANUAL.pdf"
+  install -vDm644 "LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
+  install -vDm644 "${_pkgsrc}.man.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"  
 }

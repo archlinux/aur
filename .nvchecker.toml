@@ -1,0 +1,4 @@
+[cpdf-bin]
+source = "git"
+git = "https://github.com/coherentgraphics/cpdf-binaries.git"
+prefix = "v"
