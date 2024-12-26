@@ -1,5 +1,4 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-# Co-Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 pkgname=vulkan-caps-viewer-x11-bin
 pkgver=4.00
 pkgrel=1
