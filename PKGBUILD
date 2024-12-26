@@ -35,14 +35,10 @@ function package() {
 		"${pkgdir}/usr/lib/wechat/portable-config"
 	install -d "${pkgdir}/usr/bin"
 	echo '''#!/usr/bin/bash
-if [ ! -f /usr/lib/wechat/portable-config ]; then
-	echo "You'll need to install wechat-bwrap for sandboxing to work!"
-	notify-send "You'll need to install wechat-bwrap for sandboxing to work!"
-	zenity --error --title "Sandbox non-functional" --icon=security-low-symbolic --text "Please install aur/wechat-bwrap"
-fi
 export _portalConfig=/usr/lib/wechat/portable-config
 portable $@
-''' "${pkgdir}/usr/bin/wechat-sandbox-provider"
+''' >"${pkgdir}/usr/bin/wechat-sandbox-provider"
+	chmod 755 "${pkgdir}/usr/bin/wechat-sandbox-provider"
 	echo '''[Desktop Entry]
 Comment=WeChat
 Comment[zh_CN]=微信
