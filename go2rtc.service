@@ -1,0 +1,18 @@
+[Unit]
+Description=go2rtc streaming daemon
+Requires=network-online.target
+Documentation=file:/usr/doc/go2rtc/README.md
+
+[Service]
+User=go2rtc
+RuntimeDirectory=go2rtc
+RuntimeDirectoryPreserve=restart
+ExecStart=/usr/bin/go2rtc --config /etc/go2rtc.yaml --daemon
+NoNewPrivileges=yes
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+
+[Install]
+WantedBy=multi-user.target
