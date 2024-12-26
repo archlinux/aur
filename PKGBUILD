@@ -9,8 +9,8 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=e191411505ba37692b3a49badc3bbc3fbcbab49b
-_bcr_commit=7664af655c98dfb46bc6f55449fbff4d9d0531f4
+_mozc_commit=bab5c6ade76437ed26cd6073c8eee53bc6d75a02
+_bcr_commit=21335845a67133e64d010eb3ab1d8f8565188234
 _dict_to_mozc_commit=a7ff0c833d104523d61dda760112db0476108740
 _branch=fcitx
 # Sudachi Dictionary
@@ -58,8 +58,8 @@ source=("git+$url.git#commit=${_mozc_commit}"
         fcitx5-mozc-conf.patch
         )
 
-sha512sums=('89b4a1ebe597e51131f68d1e0d01b5de6d748d15704a0626e162d5fa1109d22944f9e963e81b9a151fd18ac210c8b77f388ace4d3ceb82aba17f1b3da5676d6f'
-            '4e83244c9dcd33fe2c6bbfb76e509e2fb49d545a74b75768c96eaf156e4832b0883fc69534b56f2c6523933008bfc111aa74096833416fe2bb67c86fbf0055d4'
+sha512sums=('d4d0abd7591e650664c3758f8d6779fbf38a30d9e65d51cd06df46f47fd40e31a7e153a940d51db9e9ff0676a6985f22267c2fb91e941d1c7bfd04f8004b1882'
+            'd176560e33b9997fa8f2975fe1ebdd87ec19dff45fb33bb5c60db76067291dff8feb3583d544bcd2c0efc2f74812c58c33f8dbd9f11cdb27b2a6f5e61844fab3'
             '83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68'
             'f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d'
             '44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b'
@@ -116,7 +116,10 @@ prepare() {
   msg '1. Build the rust program(mozcdict-ext), it may take some time...'
   rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n) | grep -v musl && TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep -v musl|head -n1) || TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep musl|head -n1)
   unset RUSTC
+  CC_=$CC
+  unset CC
   cargo build --release --target $TARGET -F use-mimalloc-rs || cargo build --release --target $TARGET
+  export CC=$CC_
   msg '2. Convert SudachiDict to Mozc System Dictionary format. It may take some time...'
   cat "${srcdir}"/mozc/src/data/dictionary_oss/dictionary*.txt > all-dict.txt
   cat ${srcdir}/small_lex.csv ${srcdir}/core_lex.csv ${srcdir}/notcore_lex.csv > all.csv
