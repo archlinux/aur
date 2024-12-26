@@ -1,7 +1,7 @@
 # Maintainer: jdev082 <jdev0894@gmail.com>
 
 pkgname=catalyst-browser-bin
-pkgver=3.9.5
+pkgver=3.9.6
 pkgrel=1
 pkgdesc="A minimal, functional, and customizable user-focused FOSS web browser "
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('asar')
 conflicts=('catalyst-browser-rc-bin')
 source=("https://github.com/CatalystDevOrg/Catalyst/releases/download/v${pkgver}/catalyst_${pkgver}_amd64.deb")
-sha256sums=("87c48eda0ae26cb47d733795a854e60ae6ae191670401e81ab06f3c8b6f3e723")
+sha256sums=("d3a5e2f04d05dd72d5e508bbbca85219374413391d2f6677f68ce2abb32dc8e6")
 prepare() {
   tar -xf data.tar.xz
   asar extract opt/catalyst/resources/app.asar asar
