@@ -1,6 +1,6 @@
 pkgbase = yoctools
 	pkgdesc = (Yun on Chip) 以极简开发为理念，以 CPU 架构、芯片平台、操作系统、云服务和开发套件为基础，助力开发者从芯片到云的全链路高效设计，是面向 IoT 领域的全栈技术平台
-	pkgver = 2.1.2
+	pkgver = 2.1.3
 	pkgrel = 1
 	url = https://pypi.org/project/yoctools/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = yoctools
 	depends = python-ruamel-yaml
 	depends = python-xlsxwriter
 	options = !debug
-	source = yoctools-2.1.2.tar.gz::https://files.pythonhosted.org/packages/source/y/yoctools/yoctools-2.1.2.tar.gz
-	sha256sums = ae80b6ccf2745014778c26e19bf086021c787f35c6888c39cff29a519567816b
+	source = yoctools-2.1.3.tar.gz::https://files.pythonhosted.org/packages/source/y/yoctools/yoctools-2.1.3.tar.gz
+	sha256sums = bca3fcb258d24038fdf701c64feaa7e8a4934b431620a00a6abc84e7aa19798a
 
 pkgname = python-yoctools
