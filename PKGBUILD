@@ -21,7 +21,7 @@ source=("ALTERNATIVES-${pkgver}.md::${_url}/raw/tag/${pkgver}/ALTERNATIVES.md"
         "CHANGELOG-${pkgver}.md::${_url}/raw/tag/${pkgver}/CHANGELOG.md"
         "CREDITS-${pkgver}.md::${_url}/raw/tag/${pkgver}/CREDITS.md"
         "README-${pkgver}.md::${_url}/raw/tag/${pkgver}/README.md")
-source_x86_64=("${_pkgsrc}-x86_64.deb::https://simonrepp.com/${_pkgname}/packages/${_pkgsrc//-/_}-1+deb12_amd64.deb")
+source_x86_64=("${_pkgsrc}-x86_64.deb::${url}/packages/${_pkgsrc//-/_}-1+deb12_amd64.deb")
 sha256sums=('6228260876ad0e3a96a573ad5cc1eef5ed9614241c593289e4042247a3bb3887'
             '85f8be57e130612859e89bf4eb51ba390db1783eee925bbd002a83ba5235386e'
             'a5b4460dfdf0da78319372efb12cb7e889b14d726080315df3e7902d5cb41a3a'
