@@ -13,8 +13,8 @@ options=(!debug !strip)
 
 makedepends+=()
 
-provides+=(wechat-uos wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-universal-bwrap wechat-bin wechat-bwrap wechat-portable)
-conflicts+=(wechat-uos wechat-uos-bwrap wechat-uos-qt wechat-bin wechat-universal wechat-universal-bwrap wechat-bin)
+provides+=(wechat-uos wechat-bin wechat-universal)
+conflicts+=(wechat-uos wechat-bin wechat-universal)
 
 replaces+=("wechat-bin")
 
