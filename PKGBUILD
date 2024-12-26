@@ -2,7 +2,7 @@
 
 _pkgname="tsukimi"
 pkgname="${_pkgname}-git"
-pkgver=0.16.5.r800.gaf9eeec
+pkgver=0.18.0.r1012.g02000a5
 pkgrel=1
 pkgdesc='A simple third-party Emby client'
 arch=('x86_64')
@@ -17,6 +17,9 @@ depends=('mpv'
 	'gtk4')
 makedepends=(
 	'git'
+	'clang'
+	'lld'
+	'llvm'
 	'cargo')
 source=(
 	tsukimi::git+https://github.com/tsukinaha/tsukimi.git
@@ -36,6 +39,13 @@ prepare() {
 	cd "${srcdir}/${_pkgname}"
 	git remote update
 	git submodule update --init --recursive
+
+	export CC=clang
+	export CXX=clang++
+	export AR=llvm-ar
+	export NM=llvm-nm
+	export RANLIB=llvm-ranlib
+
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -43,6 +53,14 @@ build() {
 	cd "${srcdir}/${_pkgname}"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+
+	export CC=clang
+	export CXX=clang++
+	export AR=llvm-ar
+	export NM=llvm-nm
+	export RANLIB=llvm-ranlib
+	export RUSTFLAGS="-C linker=clang -C link-arg=-fuse-ld=lld"
+
 	cargo build --frozen --release
 }
 
