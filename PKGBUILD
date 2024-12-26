@@ -1,7 +1,7 @@
 # Maintainer: Kirill Petrov AKA Hammerill <kyrylo@hammerill.com>
 
 pkgname=gnome-console-alt-shortcuts-git
-_pkgname=console
+_pkgname=console-alt-shortcuts
 pkgver=43.rc.r12.g3df6390
 pkgrel=1
 pkgdesc="A simple user-friendly terminal emulator for the GNOME desktop with Alt-based shortcuts instead of Shift+Ctrl"
