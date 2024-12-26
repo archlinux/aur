@@ -65,9 +65,6 @@ makedepends=(
   proj
   python-matplotlib
   python-mpi4py
-  qt5-base
-  qt5-tools
-  qt5-declarative
   rapidjson
   sqlite
   tk
@@ -113,7 +110,6 @@ optdepends=(
   'python: python bindings'
   'python-matplotlib: for Matplotlib rendering'
   'python-mpi4py: OpenMPI python support'
-  'qt5-declarative: QML plugin'
   sqlite
   'tk: tcl bindings'
   unixodbc
@@ -165,7 +161,6 @@ build() {
     -DVTK_SMP_ENABLE_OPENMP=ON \
     -DVTK_SMP_IMPLEMENTATION_TYPE=TBB \
     -DVTK_PYTHON_VERSION=3 \
-    -DVTK_QT_VERSION=5 \
     -DVTK_USE_MPI=ON \
     -DVTK_USE_TK=ON \
     -DVTK_VERSIONED_INSTALL=OFF \
@@ -182,6 +177,7 @@ build() {
     -DVTK_MODULE_ENABLE_VTK_DomainsMicroscopy=NO \
     -DVTK_MODULE_ENABLE_VTK_FiltersOpenTURNS=NO \
     -DVTK_MODULE_ENABLE_VTK_RenderingZSpace=NO \
+    -DVTK_MODULE_ENABLE_VTK_GUISupportQtQuick=NO \
     -DOpenGL_GL_PREFERENCE=LEGACY \
     -DVTK_IGNORE_CMAKE_CXX11_CHECKS=ON \
     -Wno-dev
