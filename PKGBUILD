@@ -10,7 +10,7 @@
 
 pkgname=p7zip-gui
 pkgver=16.02
-pkgrel=9
+pkgrel=10
 pkgdesc='Graphic user interface (alpha quality) for the 7zip file archiver'
 url='http://p7zip.sourceforge.net'
 license=('custom:unRAR' ' LGPL-2.1-or-later')
@@ -21,7 +21,6 @@ optdepends=('desktop-file-utils: desktop entries'
 makedepends=('python')
 makedepends_i686=('nasm')
 makedepends_x86_64=('yasm')
-conflicts=('7-zip-full')
 install='p7zip-gui.install'
 source=("https://downloads.sourceforge.net/project/p7zip/p7zip/${pkgver}/p7zip_${pkgver}_src_all.tar.bz2"
         'https://src.fedoraproject.org/rpms/p7zip/raw/rawhide/f/14-Fix-g++-warning.patch'
@@ -30,6 +29,7 @@ source=("https://downloads.sourceforge.net/project/p7zip/p7zip/${pkgver}/p7zip_$
         'https://raw.githubusercontent.com/archlinux/svntogit-packages/a82b67f5d36f374afd154e7648bb13ec38a3c497/trunk/CVE-2018-5996.patch'
         'https://raw.githubusercontent.com/archlinux/svntogit-packages/a82b67f5d36f374afd154e7648bb13ec38a3c497/trunk/CVE-2018-10115.patch'
         'https://src.fedoraproject.org/rpms/p7zip/raw/rawhide/f/gcc10-conversion.patch'
+        "${pkgname}-Implement-exit-P7ZIP-Desktop-from-file-menu.patch::https://github.com/ErnyTech/p7zip/commit/82cb61d50f77f457528e3fb003f7b6a36226480b.patch"
         '7zFM.desktop')
 sha256sums=('5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f'
             'a923c8876f36201064b0efabbc2121e47cf7a78a0700d3974ef24ab3a05bd88a'
@@ -38,6 +38,7 @@ sha256sums=('5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f'
             '9c92b9060fb0ecc3e754e6440d7773d04bc324d0f998ebcebc263264e5a520df'
             'c397eb6ad60bfab8d388ea9b39c0c13ae818f86746210c6435e35b35c786607f'
             'f90013d66d3c9865cb56fed2fb0432057a07283d5361e2ae9e98c3d3657f42a1'
+            '3dd3f25e4eb9e53b172309df6a27d4393ad031e978ac3fdf650b86048aeaa76f'
             'ae1f3c95ec40e82f7b74bd039bd9cbfa69136682e161b91a4534b7d9cdedcbd4')
 
 prepare() {
@@ -48,6 +49,7 @@ prepare() {
 	patch -p1 -i ${srcdir}/CVE-2018-5996.patch
 	patch -p1 -i ${srcdir}/CVE-2018-10115.patch
 	patch -p1 -i ${srcdir}/gcc10-conversion.patch
+	patch -p1 -i ${srcdir}/${pkgname}-Implement-exit-P7ZIP-Desktop-from-file-menu.patch
 
 	if [[ ${CARCH} = x86_64 ]]; then
 		cp makefile.linux_amd64_asm makefile.machine
@@ -63,7 +65,7 @@ prepare() {
 
 build() {
 	cd ${srcdir}/p7zip_${pkgver}
-	make 7zFM 7zG OPTFLAGS="${CXXFLAGS}"
+	make all5 OPTFLAGS="${CXXFLAGS}"
 }
 
 package() {
@@ -73,14 +75,6 @@ package() {
 		DEST_HOME="/usr" \
 		DEST_MAN="/usr/share/man"
 
-	# remove files provided by p7zip package
-	rm -f -R \
-		${pkgdir}/usr/lib/p7zip/Codecs \
-		${pkgdir}/usr/lib/p7zip/7z.so \
-		${pkgdir}/usr/share/man
-	find ${pkgdir}/usr/share/doc -type f -not -path "${pkgdir}/usr/share/doc/p7zip/DOC/MANUAL/fm*" -delete
-	find ${pkgdir}/usr/share/doc -type d -empty -delete
-
 	install -D -m 644 GUI/p7zip_32.png ${pkgdir}/usr/share/icons/hicolor/32x32/apps/p7zip.png
 	install -D -m 644 -t ${pkgdir}/usr/share/kservices5/ServiceMenus GUI/kde4/*.desktop
 	install -D -m 644 -t ${pkgdir}/usr/share/kio/servicemenus GUI/kde4/*.desktop
@@ -88,4 +82,16 @@ package() {
 	ln -s 7zCon.sfx ${pkgdir}/usr/lib/p7zip/7z.sfx
 	ln -s /usr/share/doc/p7zip/DOC/MANUAL ${pkgdir}/usr/lib/p7zip/help
 	chmod +x ${pkgdir}/usr/bin/p7zipForFilemanager
+
+	install -d ${pkgdir}/usr/share/licenses/${pkgname}
+	ln -s -t ${pkgdir}/usr/share/licenses/${pkgname}/ \
+		/usr/share/doc/p7zip/DOC/License.txt \
+		/usr/share/doc/p7zip/DOC/unRarLicense.txt
+
+	# remove conflicts with 7zip package and man pages
+	rm \
+		${pkgdir}/usr/bin/7z \
+		${pkgdir}/usr/bin/7za \
+		${pkgdir}/usr/bin/7zr
+	rm -R ${pkgdir}/usr/share/man
 }
