@@ -1,6 +1,6 @@
 pkgname=vtk93
 pkgver=9.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Software system for 3D computer graphics, image processing, and visualization, version 9.3.x"
 arch=(x86_64)
 url="https://www.vtk.org"
@@ -52,7 +52,7 @@ makedepends=(
   mariadb-libs
   netcdf
   nlohmann-json
-  opencascade
+  ninja
   openimagedenoise
   openmp
   openmpi
@@ -97,7 +97,6 @@ optdepends=(
   lz4
   mariadb-libs
   netcdf
-  opencascade
   openimagedenoise
   'openmpi: OpenMPI support'
   openvdb
@@ -117,15 +116,11 @@ optdepends=(
 )
 options=(staticlibs)
 source=(${url}/files/release/${pkgver%.*}/VTK-${pkgver}.tar.gz
-        vtk-occt.patch
         ospray-3.patch
-        https://github.com/Kitware/VTK/commit/761aa1d15970fcb6aadb7d6152737fa9b2d4b0d0.patch
         https://github.com/Kitware/VTK/commit/675929762a09ad0b40cb2667918a7061c47a418c.patch
         fmt-11.patch)
 sha256sums=('8354ec084ea0d2dc3d23dbe4243823c4bfc270382d0ce8d658939fd50061cab8'
-            'df958eabc7dc4f5b33383ce0fb0f90a3ba202c1c2a24d3b5b9e7cfb1fb38b011'
             'faf3fd2eea2f73a07f5dcbd67920161a07ae554e008ad1e4099153fec2882278'
-            '46de5cee71d696d9632472e27ed369ec49f0e276c3e4bb0a397397d928553864'
             'b4e9abaf2ec617c48c670fb5f5d22ecf3c4c79b261499fc5d1af6d1911d9360e'
             '8161d4e184a3f2d075be26605c0d38f04314a8e26146ab5b1c33f87dabc2b0d2')
 
@@ -134,9 +129,7 @@ prepare() {
   _fast_float_version=$(pacman -Q fast_float | sed -e 's/.* //; s/-.*//g')
   sed -i "s|3.9.0|${_fast_float_version}|" ThirdParty/fast_float/CMakeLists.txt
 
-  patch -Np1 -i "$srcdir"/vtk-occt.patch
   patch -Np1 -i ../ospray-3.patch # Fix build with ospray 3.0
-  patch -Np1 -i "$srcdir"/761aa1d15970fcb6aadb7d6152737fa9b2d4b0d0.patch # Fix OCCT 7.8.0
   patch -Np1 -i "$srcdir"/675929762a09ad0b40cb2667918a7061c47a418c.patch # Fix python 3.13 segfault
   patch -p1 -i ../fmt-11.patch # Fix build with fmt 11
 }
@@ -147,6 +140,7 @@ build() {
   # To set tcl lib path
   local _tkver=$(echo 'puts $tcl_version' | tclsh)
   cmake -B build -S VTK-${pkgver} \
+    -G "Ninja" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS -ffat-lto-objects" \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -178,11 +172,14 @@ build() {
     -DVTK_MODULE_ENABLE_VTK_FiltersOpenTURNS=NO \
     -DVTK_MODULE_ENABLE_VTK_RenderingZSpace=NO \
     -DVTK_MODULE_ENABLE_VTK_GUISupportQtQuick=NO \
+    -DVTK_MODULE_ENABLE_VTK_IOOCCT=NO \
     -DOpenGL_GL_PREFERENCE=LEGACY \
     -DVTK_IGNORE_CMAKE_CXX11_CHECKS=ON \
     -Wno-dev
 #    -DFIDES_USE_EXTERNAL_RAPIDJSON=ON \
-  cmake --build build
+  local _build_threads=1
+#  local _build_threads=10  # needs ~32+GiB of RAM
+  cmake --build build -- -j${_build_threads}
 }
 
 package() {
