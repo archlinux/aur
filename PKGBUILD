@@ -4,7 +4,7 @@ pkgname=waveterm-bin
 _pkgname=Wave
 pkgver=0.10.4
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source, cross-platform terminal for seamless workflows.(Prebuilt version.Use system-wide electron)'
 arch=(
     'aarch64'
@@ -15,6 +15,9 @@ _ghurl="https://github.com/wavetermdev/waveterm"
 license=('Apache-2.0')
 depends=(
     "electron${_electronversion}"
+)
+options=(
+    '!strip'
 )
 source=(
     "${pkgname%-bin}.sh"
@@ -37,7 +40,6 @@ prepare() {
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
         s/TerminalEmulator/TerminalEmulator;Utility/g
     " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" -type f \( -name "*darwin*" -o -name "*arm64" -o -name "*windows*" \) -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
