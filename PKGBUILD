@@ -77,7 +77,6 @@ source=(
 	wechat.sh
 	wechat.desktop
 	wechat.svg
-	portable-config
 )
 
 source_x86_64=(
@@ -95,8 +94,7 @@ source_loong64=(
 
 md5sums=('SKIP'
          'ff710cd32cb665a70b06f6f0f83937c5'
-         '468e0367346707c026e577e7bf3e3a82'
-         'SKIP')
+         '468e0367346707c026e577e7bf3e3a82')
 md5sums_x86_64=('SKIP')
 md5sums_aarch64=('SKIP')
 md5sums_loong64=('SKIP')
@@ -106,8 +104,6 @@ function package_wechat() {
 	tar -xf data.tar.xz ./opt
 	cp -r opt \
 		"${pkgdir}/"
-	install -Dm644 portable-config \
-		"${pkgdir}/usr/lib/wechat/portable-config"
 	install -Dm644 wechat.desktop \
 		"${pkgdir}/usr/share/applications/com.qq.weixin.desktop"
 	install -Dm755 wechat.sh \
