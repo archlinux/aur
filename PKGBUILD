@@ -1,70 +1,29 @@
-# Maintainer: tarball <bootctl@gmail.com>
+# Maintainer: devome <evinedeng@hotmail.com>
+# Contributor: tarball <bootctl@gmail.com>
 # Contributor: Karol Babioch <karol@babioch.de
 
-pkgname=('tika' 'tika-server')
-pkgver=2.9.2
+pkgname=tika
+pkgver=3.0.0
 pkgrel=1
-pkgdesc='Apache Tika — detect and extract metadata and text from over a thousand different file types'
+pkgdesc="Detects and extracts metadata and text from over a thousand different file types, such as PPT, XLS, and PDF. (desktop)"
 arch=('any')
-url='https://tika.apache.org'
-license=('Apache')
+url="https://${pkgname}.apache.org"
+license=('Apache-2.0')
 depends=('java-runtime-headless')
-optdepends=(
-  'tesseract: OCR support'
-)
-makedepends=('git' 'maven')
-source=(
-  "https://github.com/apache/tika/archive/refs/tags/$pkgver.tar.gz"
-  'tika-server.service'
-  'tika.desktop'
-  'tika.sh'
-  'tika.svg'
-)
-sha256sums=('6d4ddf8676c4081e239a9baabd48ed1c39b4cfb02601ba67466ef7bf01094c11'
-            '4bfed9962d831fa5de01c94f83ee4784c9dd371d72035125508a63debd161862'
-            '490cfc11aa05722a7831a3938a63df39b9d4d08e47e88b973479fffac17ce246'
-            'caf002fe624623a6598e1753e42400e58f951d37cdf2410aaf0fd8e6343bc5c5'
+optdepends=('tesseract: OCR support')
+source=("${pkgname}-${pkgver}.jar::https://dlcdn.apache.org/${pkgname}/${pkgver}/${pkgname}-app-${pkgver}.jar"
+        "${pkgname}.desktop"
+        "${pkgname}.sh"
+        "${pkgname}.svg")
+sha256sums=('f2c156533fac004d3d30d322555bb1f2581a104558a913bfc74d8c48dcf4541c'
+            '7ee34098c9cd2a62589c86b08a39199e7e51243e8a8f8b3cc0b5135ad10ed3b0'
+            '731db35413b27db83915fe674c0e7094f198ab4ff2fa3a7707884dbad3f2ec1e'
             'ccae8a7ff8b30e73511e11f5c33facbf87d7e47db8cc86e14a52116ac96da9b7')
+noextract=("${pkgname}-${pkgver}.jar")
 
-# Tests: https://issues.apache.org/jira/browse/TIKA-2487
-#
-# Vulnerability scanning only creates problems for the end user. There has been
-# a vulnerability in a SQLite package at the time of writing this that the
-# upstream does not consider serious enough to warrant a new release. They
-# actually recommend disabling scanning if it breaks your builds…
-build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  mvn clean install \
-    -Dmaven.test.skip=true \
-    -Dmaven.repo.local=m2 \
-    -Dossindex.skip
-}
-
-package_tika() {
-  install -Dm755 tika.sh "$pkgdir/usr/bin/tika"
-  install -Dm644 tika.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/tika.svg"
-  install -Dm644 tika.desktop "$pkgdir/usr/share/applications/tika.desktop"
-
-  cd "$srcdir/$pkgname-$pkgver"
-
-  install -Dm644 "tika-app/target/tika-app-$pkgver.jar" \
-    "$pkgdir/usr/lib/tika/tika-app.jar"
-}
-
-package_tika-server() {
-  install -dm755 "$pkgdir/etc/default"
-
-  cat >"$pkgdir/etc/default/tika-server" <<EOF
-HOST=localhost
-PORT=9998
-EOF
-
-  install -Dm644 tika-server.service \
-    "$pkgdir/usr/lib/systemd/system/tika-server.service"
-
-  cd "$srcdir/tika-$pkgver"
-
-  install -Dm644 "tika-server/tika-server-standard/target/tika-server-standard-$pkgver.jar" \
-    "$pkgdir/usr/lib/tika-server/tika-server.jar"
+package() {
+    install -Dm644 "${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}.jar"
+    install -Dm644 "${pkgname}.desktop"       "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm755 "${pkgname}.sh"            "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${pkgname}.svg"           "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 }
