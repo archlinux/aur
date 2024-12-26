@@ -13,7 +13,7 @@ options=(!debug !strip)
 
 makedepends+=()
 
-provides+=(wechat-uos-bwrap wechat-uos-qt wechat-universal-bwrap wechat-bwrap wechat-portable wechat-beta-bwrap)
+provides+=(wechat-uos-bwrap wechat-uos-qt wechat-universal-bwrap wechat-bwrap wechat-portable wechat-beta-bwrap wechat-sandbox-provider)
 
 depends=("wechat" "portable")
 

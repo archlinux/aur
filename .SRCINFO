@@ -14,6 +14,7 @@ pkgbase = wechat-bwrap
 	provides = wechat-bwrap
 	provides = wechat-portable
 	provides = wechat-beta-bwrap
+	provides = wechat-sandbox-provider
 	options = !debug
 	options = !strip
 	source = portable-config
