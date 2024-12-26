@@ -1,7 +1,7 @@
 # Maintainer: Azad Ahmadi <azadahmadi@mailo.com>
 pkgname=gscal
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GTK Simple Calendar"
 arch=(any)
 url="https://github.com/Akmadan23/gscal"

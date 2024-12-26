@@ -1,7 +1,7 @@
 pkgbase = gscal
 	pkgdesc = GTK Simple Calendar
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Akmadan23/gscal
 	arch = any
 	license = GPL-3
