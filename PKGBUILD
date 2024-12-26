@@ -189,8 +189,8 @@ _opt_HF_System_LIBTIFF=1
 set -u
 pkgname='hylafaxplus'
 _pkgnick='hylafax'
-pkgver='7.0.8'
-pkgrel='2'
+pkgver='7.0.9'
+pkgrel='1'
 _sendfaxvsicommit='18fabc74490362cd26690331d546d727c727db25'
 pkgdesc='Enterprise Fax Server'
 arch=('i686' 'x86_64')
@@ -248,7 +248,7 @@ source=(
   '0006-hylafaxplus-jobfmt-assigned-modem-to-used-modem.patch'
   '1000-hylafaxplus-modem-support.patch'
 )
-md5sums=('3b04ab1eef3ea44706c461168cab1f24'
+md5sums=('dbec730863f38da8e6f0a295fdd898b6'
          '3af38f1eaa4f9fb92cac2f0cf9544321'
          '916f2c100eb2b41ef6b35f96bdb9444a'
          'ae0a86260ab7ed94187a5d8e560a82ac'
@@ -260,7 +260,7 @@ md5sums=('3b04ab1eef3ea44706c461168cab1f24'
          '0de848f554e2a93c09352eadb2b2e260'
          '151567ca960d860c88ff0e5154cb5b78'
          'dd1e2859dd1cc13db863ba74bc539ca0')
-sha256sums=('b0b8ef80cfffe40d3b6f571165fe5d26392bf4a88c5b34f56dda53aacc66a30e'
+sha256sums=('a167466338d4b3ccf2081a07f9c64753575cc8791c17b56541b02deddff3b9c2'
             '0aed186ab30fdb7cf36895a0ff50b03bd4a68db63cf4f19763995dabd9caffb0'
             '466ab17cdaa1eb1f1f0b5bdc444a90df5835a1896b1363584264920bbc3929f2'
             '8b2dbf38d13d0c25e6164e691187b4f45ae971c009e80911cd96aac0f61cf871'
