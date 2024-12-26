@@ -1,7 +1,7 @@
 # Maintainer: Charles Vejnar <first name [dot] last name [at] gmail [dot] com>
 
 pkgname=python-pyfaidx
-pkgver=0.8.1.1
+pkgver=0.8.1.3
 pkgrel=1
 pkgdesc="Efficient pythonic random access to fasta subsequences."
 arch=("any")
@@ -14,7 +14,7 @@ makedepends=('python-build'
              'python-setuptools-scm'
              'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mdshw5/pyfaidx/archive/v$pkgver.tar.gz")
-sha1sums=('b7db39565588a9774241196412bbe0cc19738407')
+sha1sums=('f669b56108167d187d7c35f5e5c933eaf87d0300')
 
 build() {
     cd "$srcdir/pyfaidx-$pkgver"
