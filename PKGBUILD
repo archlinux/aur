@@ -2,7 +2,7 @@
 
 pkgname=anyfetch
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fetch utility that allows uploading ASCII art via a web interface"
 arch=('any')
 url="https://github.com/Senya44ka/anyfetch"
