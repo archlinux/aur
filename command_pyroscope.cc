@@ -29,7 +29,10 @@
 #include <rak/path.h>
 #include <rak/algorithm.h>
 #include <rak/functional.h>
+#if RT_HEX_VERSION <= 0x000A00
+// this is removed in 0.15.0 mainline
 #include <rak/functional_fun.h>
+#endif
 
 #include "core/download.h"
 #include "core/manager.h"
