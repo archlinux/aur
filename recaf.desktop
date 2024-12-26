@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=
+Name=Recaf
+Comment=
+Exec=/usr/bin/recaf
+Icon=recaf
+Terminal=false
+MimeType=application/java-archive
+Categories=Development;Java
