@@ -12,6 +12,8 @@ source=("$pkgname-$pkgver::https://github.com/fioncat/otree/releases/download/v$
 ")
 sha256sums=('eadfc85bca14a13ef30ed4032a85b5d806e69cca1b7e7a45bdeb3b5bb908de16')
 
+options=('!strip' '!debug')
+
 package() {
     install -Dm755 "otree" "$pkgdir/usr/bin/otree"
 }

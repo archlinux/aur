@@ -5,6 +5,8 @@ pkgbase = otree-release
 	url = https://github.com/fioncat/otree
 	arch = x86_64
 	license = MIT
+	options = !strip
+	options = !debug
 	source = otree-release-0.2.0::https://github.com/fioncat/otree/releases/download/v0.2.0/otree-x86_64-unknown-linux-musl.tar.gz
 	sha256sums = eadfc85bca14a13ef30ed4032a85b5d806e69cca1b7e7a45bdeb3b5bb908de16
 
