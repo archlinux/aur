@@ -6,7 +6,7 @@
 
 pkgname=butt
 pkgver=1.44.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Easy to use, multi OS streaming tool"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL2')
@@ -24,7 +24,12 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  ./configure --with-client --enable-webrtc --prefix=/usr LDFLAGS="-L$(dirname $(fltk-config --libs))"
+
+  # Replacing _FORTIFY_SOURCE here fixes build warnings
+  ./configure --with-client --enable-webrtc --prefix=/usr \
+    CFLAGS="${CFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}" \
+    CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
+
   make
 }
 
@@ -56,5 +61,3 @@ package() {
     install -Dm644 "${file}" "${pkgdir}/usr/share/pixmaps/${filename}"
   done
 }
-
-# vim:set ts=2 sw=2 et:
