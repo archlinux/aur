@@ -1,7 +1,7 @@
 # Maintainers: NNNN4 <NNNNFour4@gmail.com>
 
 pkgname=etterna
-pkgver=0.72.3
+pkgver=0.74.0
 pkgrel=1
 pkgdesc="A advanced cross-platform rhythm game focused on keyboard play"
 arch=('i686' 'x86_64')
@@ -10,6 +10,7 @@ license=('MIT')
 depends=('glu' 'libpulse' 'libxrandr' 'curl' 'openssl-1.1')
 makedepends=('cmake')
 optdepends=('jack: Audio server')
+options=('!debug')
 provides=('etterna')
 conflicts=('etterna-git')
 install='etterna.install'
@@ -20,7 +21,7 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}"
 )
-sha256sums=('a214826c6d934e839672bd61ed53e7064e7f60820dbd576572fc56835bcce1b3'
+sha256sums=('8b3a499aab89d738470c52131d462dd97a4b93b9061ccc512549722a72196d69'
             'b60b9fa7a4672b44d7cd14558da120d450537ff1bab2495d4341b2793fa3ab10'
             '3962c6a32780c51d9523126a6de09e5212be428452bc4e34991f98403df444cb'
             '6487ffe86bd2de027d83e9eabbdc5c80b0dfe1b6c96df92b60ab0991d9e28c9f'
