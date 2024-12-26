@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=creamplayer
 _pkgname=Creamplayer
-pkgver=5.1.0
+pkgver=5.2.0
 _electronversion=33
 _nodeversion=22
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('c6b0d8162d6f250ca8d1a7676a1e82bd66c99bbb0e288d65aa1bc124c9826417'
+sha256sums=('3feb49a283b6f6bae9d4d3b3522ccc019dd4eb40ce461cb34a90501a75bc66c6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
