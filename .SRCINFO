@@ -1,7 +1,7 @@
 pkgbase = assistant
 	pkgdesc = Secure remote access to computers over a local network or over the Internet.
-	pkgver = 6.0
-	pkgrel = 8
+	pkgver = 6.2
+	pkgrel = 81
 	url = https://xn--80akicokc0aablc.xn--p1ai/
 	install = assistant.install
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = assistant
 	depends = hicolor-icon-theme
 	depends = v4l-utils
 	options = !strip
-	source = https://xn--80akicokc0aablc.xn--p1ai/%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C/Download/1089
+	source = https://xn--80akicokc0aablc.xn--p1ai/%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C/Download/1198
 	source = https://archive.archlinux.org/packages/l/libtiff/libtiff-4.5.0-4-x86_64.pkg.tar.zst
-	md5sums = 1563A25D7B6D671CF6E0BBE4CBAD0754
+	md5sums = A88380236CD7C2A442D22EB5C174E907
 	md5sums = f06d9d5070038b0dc84b0bdfc8cf37b8
 
 pkgname = assistant
