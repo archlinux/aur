@@ -1,7 +1,7 @@
 pkgbase = acast-bin
-	pkgdesc = A free and open source solution for recording terminal sessions and sharing them on the web.一个免费开源的终端会话录制和分享工具
+	pkgdesc = A free and open source solution for recording terminal sessions and sharing them on the web.(Prebuilt version)一个免费开源的终端会话录制和分享工具
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://asciinema.org/
 	arch = aarch64
 	arch = x86_64

@@ -2,11 +2,11 @@
 pkgname=acast-bin
 _pkgname=asciinema
 pkgver=0.4.0
-pkgrel=1
-pkgdesc="A free and open source solution for recording terminal sessions and sharing them on the web.一个免费开源的终端会话录制和分享工具"
+pkgrel=2
+pkgdesc="A free and open source solution for recording terminal sessions and sharing them on the web.(Prebuilt version)一个免费开源的终端会话录制和分享工具"
 arch=(
-    "aarch64"
-    "x86_64"
+    'aarch64'
+    'x86_64'
 )
 url="https://asciinema.org/"
 _ghurl="https://github.com/gvcgo/asciinema"
