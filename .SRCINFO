@@ -1,0 +1,27 @@
+pkgbase = ghostty
+	pkgdesc = Fast, native, feature-rich terminal emulator pushing modern features
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ghostty-org/ghostty
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	makedepends = zig>=0.13.0
+	makedepends = zig<0.14.0
+	makedepends = pandoc-cli
+	depends = bzip2
+	depends = fontconfig
+	depends = freetype2
+	depends = gtk4
+	depends = harfbuzz
+	depends = libadwaita
+	depends = libpng
+	depends = oniguruma
+	depends = pixman
+	depends = zlib
+	provides = ghostty
+	conflicts = ghostty
+	source = https://github.com/ghostty-org/ghostty/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = bd12953c8bbe7149e2f94e7e578a88e981932a69aa483f5ce9a2cfba726e0015
+
+pkgname = ghostty
