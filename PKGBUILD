@@ -13,7 +13,7 @@ pkgrel=1
 pkgdesc='BitTorrent library with a focus on high performance and good code, with ipv6 support'
 url='https://github.com/rakshasa/libtorrent'
 arch=('x86_64')
-license=('GPL')
+license=('GPL-2.0-onl')
 depends=('openssl' 'zlib')
 makedepends=('git')
 conflicts=("${_pkgname}")
@@ -31,7 +31,7 @@ prepare() {
     autoheader
     libtoolize --automake --copy --force
     automake --add-missing --copy --gnu
-    autoconf
+    autoconf -fiv
 }
 
 build() {
