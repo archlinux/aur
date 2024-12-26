@@ -7,7 +7,7 @@
 
 pkgname='electron-cash-git'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.4.0.r19.g130392e5c
+pkgver=4.4.2.r3.g339201c16
 pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
@@ -56,14 +56,27 @@ optdepends=(
 )
 provides=("${pkgname/-git/}")
 conflicts=("${pkgname/-git/}")
-source=("${pkgname}::git+https://github.com/Electron-Cash/Electron-Cash.git")
-sha256sums=('SKIP')
+source=(
+  "${pkgname}::git+https://github.com/Electron-Cash/Electron-Cash.git"
+  "git+https://github.com/Electron-Cash/electrum-locale.git"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
   cd "${pkgname}"
 
   git describe --long --tags \
     | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${pkgname}"
+  git submodule init contrib/electrum-locale
+  git config submodule.contrib/electrum-locale.url "$srcdir/electrum-locale"
+  git -c protocol.file.allow=always submodule update contrib/electrum-locale
 }
 
 build() {
@@ -85,7 +98,7 @@ build() {
 check() {
   cd "${pkgname}"
 
-  tox -e py312 -- --ignore-glob='*regtest*'
+  tox -e py313 -- --ignore-glob='*regtest*'
 }
 
 package() {

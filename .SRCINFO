@@ -1,6 +1,6 @@
 pkgbase = electron-cash-git
 	pkgdesc = Lightweight Bitcoin Cash wallet
-	pkgver = 4.4.0.r19.g130392e5c
+	pkgver = 4.4.2.r3.g339201c16
 	pkgrel = 1
 	url = http://www.electroncash.org/
 	arch = any
@@ -44,6 +44,8 @@ pkgbase = electron-cash-git
 	provides = electron-cash
 	conflicts = electron-cash
 	source = electron-cash-git::git+https://github.com/Electron-Cash/Electron-Cash.git
+	source = git+https://github.com/Electron-Cash/electrum-locale.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = electron-cash-git
