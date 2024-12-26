@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+exec java -cp "/usr/lib/jvm/default-runtime/lib/*:/usr/share/java/recaf/recaf.jar" "me.coley.recaf.Recaf" "$@"
