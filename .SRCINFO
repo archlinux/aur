@@ -1,0 +1,21 @@
+pkgbase = revbayes-bin
+	pkgdesc = Bayesian Phylogenetic Inference Using Graphical Models and an Interactive Model-Specification Language https://doi.org/10.1093/sysbio/syw021
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://revbayes.github.io
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gcc-libs
+	depends = glibc
+	provides = revbayes
+	conflicts = revbayes
+	source = README-1.2.5.md::https://github.com/revbayes/revbayes/raw/refs/tags/v1.2.5/README.md
+	source = NEWS-1.2.5.md::https://github.com/revbayes/revbayes/raw/refs/tags/v1.2.5/NEWS.md
+	source = LICENSE-1.2.5::https://github.com/revbayes/revbayes/raw/refs/tags/v1.2.5/LICENSE
+	sha256sums = 5c723bb7bcec0dbb1659a9cfde5cb6bd65b87164912e47a827f757bcaa627dbf
+	sha256sums = 4529871f7202451a393e83ee8ae53d6e69c1b9d396ee96cbc652ac764843cacb
+	sha256sums = 12ac5047f2af0522f06798b1589ffc4599bc29c91f954d7874e0320634e777c0
+	source_x86_64 = revbayes-1.2.5-x86_64.tar.gz::https://github.com/revbayes/revbayes/releases/download/v1.2.5/revbayes-v1.2.5-linux64.tar.gz
+	sha256sums_x86_64 = bfcc7718759a875c614a96cd2c0e2080f98dc599a6166858317cb3ea284e4327
+
+pkgname = revbayes-bin

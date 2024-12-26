@@ -1,0 +1,4 @@
+[revbayes-bin]
+source = "git"
+git = "https://github.com/revbayes/revbayes.git"
+prefix = "v"
