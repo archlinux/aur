@@ -6,23 +6,24 @@ set -u
 _pkgname='littler'
 pkgname="${_pkgname}"
 pkgname+='-git'
-pkgver=0.3.19.r40.gb1b3b14
+pkgver=0.3.19.r43.ge9013f1
 pkgrel=1
 pkgdesc='a hash-bang and simple command line pipe front end for GNU R'
 arch=('i686' 'x86_64')
 #url="http://code.google.com/p/littler"
 url='https://dirk.eddelbuettel.com/code/littler.html'
-#url="https://github.com/eddelbuettel/${_pkgname}"
+#url="https://github.com/eddelbuettel/littler"
 license=('GPL-2.0-or-later')
 #groups=('science')
 depends=('glibc')
-makedepends=('make' 'r' 'sh')
+makedepends=('make' 'r')
 _giturl="https://github.com/eddelbuettel/${_pkgname}"
-source=("${_pkgname}-${pkgver}.tar.gz::${_giturl}/archive/${pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/littler_${pkgver}.tar.gz")
+#source=("${_pkgname}-${pkgver}.tar.gz::${_giturl}/archive/${pkgver}.tar.gz")
 #source=("http://dirk.eddelbuettel.com/code/littler/${pkgname}_${pkgver}.tar.gz")
 #source=("http://http.debian.net/debian/pool/main/l/littler/littler_0.2.3.orig.tar.gz")
-md5sums=('be4e66891b7295cb81042ae9d4f6a097')
-sha256sums=('be865bba2f06c76486080e4d4bdc2bcf7a01e3b4ed516037d447890b637b7c6a')
+md5sums=('194f1116ebf52154948847b0acd5c76a')
+sha256sums=('9810cca571878782afdd579d81404eb8a951ea4b9171d6bf7bdee7d7ed5b065a')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pkgname}"
@@ -42,6 +43,7 @@ pkgver() {
 }
 else
   _srcdir="${pkgname}-${pkgver}"
+  _srcdir="${pkgname}"
   _verwatch=("${_giturl}/releases.atom" "\s\+<title>littler \([^<]\+\)</title>" 'f') # RSS
 fi
 
@@ -68,8 +70,9 @@ build() {
     sed -i -e 's:^./configure:exit 0\n&:g' 'bootstrap'
     ./bootstrap
   fi
-  if [ ! -s 'confi.log' ]; then
+  if [ ! -s 'src/Makevars' ]; then
     ./configure --prefix='/usr'
+    sed -e 's:/usr/lib64/:/usr/lib/:g' -i 'src/Makevars'
   fi
   make -j1 -C 'src' -f 'Makevars'
   set +u
@@ -77,7 +80,7 @@ build() {
 
 package() {
   set -u
-  depends+=('r' 'sh')
+  depends+=('r')
   cd "${_srcdir}"
   #make DESTDIR="${pkgdir}" install
   install -Dpm755 'inst/bin/r' -t "${pkgdir}/usr/bin/"

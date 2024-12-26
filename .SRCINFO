@@ -1,6 +1,6 @@
 pkgbase = littler-git
 	pkgdesc = a hash-bang and simple command line pipe front end for GNU R
-	pkgver = 0.3.19.r40.gb1b3b14
+	pkgver = 0.3.19.r43.ge9013f1
 	pkgrel = 1
 	url = https://dirk.eddelbuettel.com/code/littler.html
 	arch = i686
@@ -8,7 +8,6 @@ pkgbase = littler-git
 	license = GPL-2.0-or-later
 	makedepends = make
 	makedepends = r
-	makedepends = sh
 	makedepends = git
 	depends = glibc
 	provides = littler=0.3.19
@@ -20,4 +19,3 @@ pkgbase = littler-git
 pkgname = littler-git
 	depends = glibc
 	depends = r
-	depends = sh
