@@ -1,0 +1,24 @@
+From 0934dfe97099873f6b4415de23b3e784c745673c Mon Sep 17 00:00:00 2001
+From: Dima Kogan <dima@secretsauce.net>
+Date: Fri, 6 Sep 2024 14:17:58 -0700
+Subject: [PATCH] I build with numpy2
+
+---
+ mrcal-pywrap.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/mrcal-pywrap.c b/mrcal-pywrap.c
+index 62963210..ec780391 100644
+--- a/mrcal-pywrap.c
++++ b/mrcal-pywrap.c
+@@ -12,6 +12,10 @@
+ #include <Python.h>
+ #include <structmember.h>
+ #include <numpy/arrayobject.h>
++// Required for numpy 2. They now #include complex.h, so I is #defined to be the
++// complex I, which conflicts with my usage here
++#undef I
++
+ #include <signal.h>
+ #include <dogleg.h>
+ 
