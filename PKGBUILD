@@ -41,6 +41,10 @@ exports.vip_source_limit = Infinity;
 	rm -vrf ./node_modules/node-gyp/
 	rm -vrf ./node_modules/sqlite3/{build-tmp-napi-v6,deps}
 	find . \( -name "cli.js" -or -name "bin.js" \) -delete
+	find . -type f -path "*/node_modules/*" -and -path "*/bin/*" -printf "removed %p\n" -delete
+	find . -type f -path "*man/man*" -printf "removed %p\n" -delete
+	rm -vr ./node_modules/sqlite3/node_modules/node-addon-api/tools/
+	rm -v ./node_modules/duplexer2/example.js ./node_modules/ajv/scripts/info
 }
 
 package() {
