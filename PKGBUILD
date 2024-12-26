@@ -1,30 +1,31 @@
-# Maintainer: Konrad Beckmann <konrad.beckmann@gmail.com>
+# Maintainer:
+# Contributor: Konrad Beckmann <konrad.beckmann@gmail.com>
 
 _pkgname="appcsxcad"
 pkgname="$_pkgname-git"
-pkgver=0.2.3.r0.g047ca6d
-pkgrel=1
+pkgver=0.2.3.r5.g6356e7d
+pkgrel=2
 pkgdesc="Minimal GUI Application using the QCSXCAD library"
 url="https://github.com/thliebig/AppCSXCAD"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 
 depends=(
-  'csxcad-git'
-  'glew'
-  'hdf5-openmpi'
   'libxcursor'
+  'qt5-base'
+  'vtk'
+
+  # AUR
+  'csxcad-git'
   'openems-git'
   'qcsxcad'
-  'qt5-base'
-  'qt5-x11extras'
-  'vtk'
 )
 makedepends=(
   'cmake'
   'git'
   'ninja'
   'nlohmann-json'
+  'openmpi'
 )
 
 provides=("$_pkgname=${pkgver%%.r*}")
