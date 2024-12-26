@@ -1,41 +1,45 @@
-# Maintainer: Cp Dong <cp-dong at outlook dot com>
+# Maintainer: Casper Dong <cp-dong at outlook dot com>
 pkgname=apple-sf-script-extension-fonts
-pkgver=1.1
+pkgver=6.0.1.1726709071
 pkgrel=1
-pkgdesc='Apple SF Script Extensions, containing SF Arabic, SF Armenian, SF Georgian and SF Hebrew, designed to fit with SF Pro for multilingual typesetting'
+pkgdesc='Apple SF Script Extensions, including SF Arabic, SF Armenian, SF Georgian, and SF Hebrew'
 arch=(any)
 url='https://developer.apple.com/fonts/'
 license=('custom')
 depends=('apple-fonts')
 makedepends=(p7zip)
-source=('https://devimages-cdn.apple.com/design/resources/download/SF-Arabic.dmg'
-        'https://devimages-cdn.apple.com/design/resources/download/SF-Armenian.dmg'
-        'https://devimages-cdn.apple.com/design/resources/download/SF-Georgian.dmg'
-        'https://devimages-cdn.apple.com/design/resources/download/SF-Hebrew.dmg'
-        'LICENSE.THE-APPLE-SAN-FRANCISCO-FONT')
+_baseurl='https://devimages-cdn.apple.com/design/resources/download/'
+source=("${_baseurl}SF-Arabic.dmg"
+        "${_baseurl}SF-Armenian.dmg"
+        "${_baseurl}SF-Georgian.dmg"
+        "${_baseurl}SF-Hebrew.dmg")
 noextract=("${source[@]##*/}")
-sha256sums=('d5c941a7e69e3d22cd47d26b4be8d1787ee9109b6c1fece9cec88128b42fbd4b'
-            '00332b773b25bc0400f5e2edcdf46d521f3d778f76d4d4755f8bdeb1d917cfb5'
-            '3bc1a6f5a1d728982d0cdf3c660352d1b4afed06f7ef45413ef033f1ec7770be'
-            '04f35fa56d704b21e0179da1e4867c20a70582f39400d20f3247d1718dff03ce'
-            'd01bdb70f65b7c4df3da4dc2edd9ba1e65c4fb72cb5b39c226e19e2b1c44c178')
+sha256sums=('2760c62d502b77012c49517c2ea392ec2d4c647fe060985c927df48d105197b9'
+            'ffd715ae93d7c215be3f434b84624184779bb50b2bb3d66b8fd42880c65fadad'
+            'c16b1798472b26232445331ea51ac8299260674fe8fb7f3a354eedeb5390a2d2'
+            '3258e40715b8bcf45e9441dbbf7218aeeaa570065dcc1f7bfa55c9ed6d0b9384')
 
 prepare() {
     cd "$srcdir"
-    mkdir -p fonts src
+    mkdir -p fonts licenses tmp
     for archive in *.dmg; do
-        7z e "$archive" -y -osrc/
-        cd src/
+        7z e "$archive" -y -otmp/
+        cd tmp/
         7z x *.pkg -y
-        7z x 'Payload~'
+        font=`grep -o -e "THE APPLE .* FONT" Resources/English.lproj/License.rtf | head -n 1`
+        mv Resources/English.lproj/License.rtf "$srcdir/licenses/LICENSE.${font// /-}"
+        cd *.pkg/
+        7z x Payload -y
+        7z x 'Payload~' -y
         mv Library/Fonts/* "$srcdir/fonts/"
         cd "$srcdir"
-        rm -rf src/{*,.*}
+        rm -r tmp/{*,.*}
     done
-    rmdir src/
+    rmdir tmp/
 }
 
 package() {
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.THE-APPLE-SAN-FRANCISCO-FONT
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/licenses"/*
+    
     install -Dm644 -t "$pkgdir/usr/share/fonts/$pkgname" "$srcdir/fonts"/*
 }
