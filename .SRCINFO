@@ -13,7 +13,9 @@ pkgbase = nsisbi-ext
 	arch = riscv64
 	license = MIT
 	makedepends = git
-	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
 	source = nsisbi-ext-git::git+https://github.com/kmod-midori/unity-nsisbi-ext.git
 	sha256sums = SKIP
 

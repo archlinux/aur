@@ -6,17 +6,29 @@ pkgdesc="Extract files from NSIS installers created with the NSISBI format (i.e.
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/kmod-midori/unity-nsisbi-ext"
 license=('MIT')
-depends=()
-makedepends=('git' 'rust')
+depends=('gcc-libs' 'glibc')
+makedepends=('git' 'cargo')
 source=("${pkgname}-git::git+https://github.com/kmod-midori/unity-nsisbi-ext.git")
 sha256sums=('SKIP')
 
+prepare() {
+    cd "$srcdir/$pkgname-git"
+
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
-  cd "$srcdir/$pkgname-git"
-  cargo build --bins -r
+    cd "$srcdir/$pkgname-git"
+
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin/"
-  cp "$srcdir/$pkgname-git/target/release/nsisbi-ext" "$pkgdir/usr/bin/"
+    mkdir -p "$pkgdir/usr/bin/"
+    cd "$srcdir/$pkgname-git"
+
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
