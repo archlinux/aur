@@ -2,7 +2,7 @@
 # Maintainer: Chandler Klüser <chandler.kluser@gmail.com>
 
 pkgname=amiberry
-pkgver=7.0.0.rc1
+pkgver=7.0.0.rc2
 pkgrel=0
 pkgdesc="Amiga Emulator for ARM Boards (amd64 build)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('flac' 'sdl2' 'sdl2_image' 'sdl2_ttf' 'mpg123' 'libmpeg2' 'libserialpor
 makedepends=('glibc' 'git' 'cmake' 'ninja')
 provides=("amiberry=${pkgver}")
 conflicts=('amiberry')
-source=(${pkgname%-git}::'git+https://github.com/BlitterStudio/amiberry.git#commit=95e54b5af72fec8dd8218acb0b41ac9312be233b')
+source=(${pkgname%-git}::'git+https://github.com/BlitterStudio/amiberry.git#commit=6505ca86314b5171d33cd2cba4df46bfeeaff3ca')
 md5sums=('SKIP')
 sha256sums=('SKIP')
 

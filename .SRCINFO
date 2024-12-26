@@ -1,6 +1,6 @@
 pkgbase = amiberry
 	pkgdesc = Amiga Emulator for ARM Boards (amd64 build)
-	pkgver = 7.0.0.rc1
+	pkgver = 7.0.0.rc2
 	pkgrel = 0
 	url = https://github.com/BlitterStudio/amiberry
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = amiberry
 	depends = libserialport
 	depends = portmidi
 	depends = enet
-	provides = amiberry=7.0.0.rc1
+	provides = amiberry=7.0.0.rc2
 	conflicts = amiberry
-	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#commit=95e54b5af72fec8dd8218acb0b41ac9312be233b
+	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#commit=6505ca86314b5171d33cd2cba4df46bfeeaff3ca
 	md5sums = SKIP
 	sha256sums = SKIP
 
