@@ -3,7 +3,7 @@
 
 pkgname=assistant
 pkgver=6.2
-pkgrel=81
+pkgrel=1
 _pkg=1198
 pkgdesc='Secure remote access to computers over a local network or over the Internet.'
 arch=('x86_64')
