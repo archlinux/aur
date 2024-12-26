@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spie-bin
 _pkgname=SPIE
-pkgver=0.2.0
-_electronversion=31
-pkgrel=2
+pkgver=0.3.0
+_electronversion=33
+pkgrel=1
 pkgdesc="A minimal serial monitor application using Electron, Node SerialPort and Ionic/Angular.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/robsonos/spie"
@@ -13,21 +13,15 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
 )
-makedepends=(
-    'gendesk'
-    'libicns'
-)
 source=(
-    "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-x64-${pkgver}-install.tar.xz"
-    "${pkgname%-bin}-${pkgver}.icns::https://raw.githubusercontent.com/robsonos/spie/v${pkgver}/apps/spie/resources/icons/icon.icns"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-${pkgver}-install.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/robsonos/spie/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f5b968118746288a3cde072b15add5fc7c14c0a66f3b8b642fa7561bc57df5fa'
-            '5dbb6967af509e69054c662c537915b0c4a025b3ed099c7684deed08eeb6985f'
+sha256sums=('1f7ce81cb043fc129ba125b00eec072674af7dd788507f4b0807c96f529a7c88'
             '2f5007c3cf090c9851c50bcfa349730ca9ed47f48b40b7fa5b48739599774ac3'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
@@ -35,20 +29,23 @@ build() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
-    icns2png -x "${srcdir}/${pkgname%-bin}-${pkgver}.icns" -o "${srcdir}"
-    find "${srcdir}/${_pkgname}-"* \( -name "android-*" -o -name "darwin-*" -o -name "win32-*" -o -name "linux-arm*" \) \
+    bsdtar -xf "${srcdir}/data."*
+    find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" \( -name "android-*" -o -name "darwin-*" -o -name "win32-*" -o -name "linux-arm*" \) \
         -type d -exec rm -rf {} +
+    sed -e "
+        s/\"\/opt\/SPIE\/\${productName}\"/${pkgname%-bin}/g
+        s/Icon=\${productName}/Icon=${pkgname%-bin}/g
+    " -i "${srcdir}/usr/share/applications/\${productName}.desktop"
 }
 package() {
    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-   install -Dm644 "${srcdir}/${_pkgname}-linux-x64-${pkgver}-install/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-   cp -Pr --no-preserve=ownership "${srcdir}/${_pkgname}-linux-x64-${pkgver}-install/resources/app.asar.unpacked"  "${pkgdir}/usr/lib/${pkgname%-bin}"
+   install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+   cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked"  "${pkgdir}/usr/lib/${pkgname%-bin}"
    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-   install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-   _icon_sizes=(16x16 32x32 256x256 512x512 1024x1024)
+   install -Dm644 "${srcdir}/usr/share/applications/\${productName}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+   _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}_${_icons}x32.png" \
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/\${productName}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
 }
