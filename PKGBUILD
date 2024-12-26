@@ -1,5 +1,7 @@
+# Maintainer: Maks Verver <maks@verver.ch>
+
 pkgname=pypy3-numpy
-pkgver=1.26.4
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
@@ -7,22 +9,32 @@ license=('custom')
 url="https://www.numpy.org/"
 depends=('cblas' 'lapack' 'pypy3')
 optdepends=('blas-openblas: faster linear algebra')
-makedepends=('pypy3-setuptools' 'gcc-fortran' 'pypy3-cython')
-options=('staticlibs')
+makedepends=('pypy3-build' 'pypy3-cython' 'pypy3-installer' 'meson-pypy3' 'cmake' 'gcc-fortran')
 source=("https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
-md5sums=('19550cbe7bedd96a928da9d4ad69509d')
-sha256sums=('2a02aba9ed12e4ac4eb3ea9421c420301a0c6460d9830d74a9df87efa4912010')
+md5sums=('57c5757508a50d1daefa4b689e9701cb')
+sha256sums=('45681fd7128c8ad1c379f0ca0776a8b0c6583d2f69889ddac01559dfe4390918')
 
 build() {
-	cd numpy-$pkgver
-	pypy3 setup.py build
+  cd numpy-$pkgver
+  CYTHON=/usr/bin/cython-pypy3 \
+  CFLAGS+=" -ffat-lto-objects" \
+  CXXFLAGS+=" -ffat-lto-objects" \
+  pypy3 -m build --wheel --no-isolation --skip-dependency-check \
+    -Csetup-args="-Dblas=cblas" \
+    -Csetup-args="-Dlapack=lapack"
 }
 
 package() {
-	cd numpy-$pkgver
-	pypy3 setup.py install --prefix=/opt/pypy3 --root="$pkgdir" --optimize=1
-	install -D -m644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/pypy3-numpy/
+  cd numpy-$pkgver
+  pypy3 -m installer --destdir="$pkgdir" dist/*.whl
 
-	install -d "$pkgdir"/usr/bin
-	mv "$pkgdir"/opt/pypy3/bin/f2py "$pkgdir"/usr/bin/f2py-pypy3
+  # Symlink license file
+  local site_packages=$(pypy3 -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir"/usr/share/licenses/$pkgname
+  ln -s "$site_packages"/numpy-$pkgver.dist-info/LICENSE.txt \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
+
+  # Symlink f2py
+  mkdir -p "$pkgdir"/usr/bin
+  ln -s /opt/pypy3/bin/f2py "$pkgdir"/usr/bin/f2py-pypy3
 }
