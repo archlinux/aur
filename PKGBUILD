@@ -2,7 +2,7 @@
 # Co-maintainer: Edu4rdSHL <edu4rdshl@protonmail.com>
 pkgname=waveterm-git
 _pkgname=Wave
-pkgver=0.10.1.r0.gd2bc4c2
+pkgver=0.10.4.r9.g9c8084a
 _electronversion=33
 _nodeversion=22
 pkgrel=1
@@ -94,7 +94,6 @@ prepare() {
         /- task: build:server:windows/d
         s/ && yarn electron-builder -c electron-builder.config.cjs -p never//g
     " -i Taskfile.yml
-    sed -i "192,199d;176,183d" Taskfile.yml
     gem install fpm
     _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
     corepack enable yarn
