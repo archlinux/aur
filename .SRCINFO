@@ -1,0 +1,15 @@
+pkgbase = python-hatch-deps-selector
+	pkgdesc = Select variants of your dependencies with environment variables
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/jupyter-book/hatch-deps-selector
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	source = hatch-deps-selector-0.1.2.tar.gz::https://github.com/jupyter-book/hatch-deps-selector/archive/v0.1.2.tar.gz
+	sha512sums = 34efa22174bc6830209bc5570973863d5faec8673a98e3444c682fdd55ae5b728f90c43e74330d34d5366e523906b2cd0ab7ddb855bc2ea00f4c7b27e2ba1aff
+
+pkgname = python-hatch-deps-selector

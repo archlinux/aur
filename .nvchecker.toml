@@ -1,0 +1,5 @@
+[python-hatch-deps-selector]
+source = "github"
+github = "jupyter-book/hatch-deps-selector"
+use_latest_release = "true"
+prefix = "v"
