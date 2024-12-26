@@ -1,7 +1,7 @@
 pkgbase = aero-browser-bin
-	pkgdesc = A fast and lightweight web browser made with electron and react that allows you to navigate the Internet with ease.Prebuilt version.Use system-wide electron.
+	pkgdesc = A fast and lightweight web browser made with electron and react that allows you to navigate the Internet with ease.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.2.2_alpha
-	pkgrel = 7
+	pkgrel = 8
 	url = https://aero-mymeiy532-frostbreker.vercel.app/
 	arch = aarch64
 	arch = x86_64
