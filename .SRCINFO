@@ -1,6 +1,6 @@
 pkgbase = dbgate-bin
 	pkgdesc = Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others.(Prebuilt version.Use system-wide electron)
-	pkgver = 6.1.0
+	pkgver = 6.1.2
 	pkgrel = 1
 	url = https://dbgate.org/
 	arch = aarch64
@@ -9,17 +9,17 @@ pkgbase = dbgate-bin
 	license = MIT
 	makedepends = fuse2
 	depends = electron30
-	provides = dbgate=6.1.0
+	provides = dbgate=6.1.2
 	conflicts = dbgate
-	source = LICENSE-6.1.0::https://raw.githubusercontent.com/dbgate/dbgate/v6.1.0/LICENSE
+	source = LICENSE-6.1.2::https://raw.githubusercontent.com/dbgate/dbgate/v6.1.2/LICENSE
 	source = dbgate.sh
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = dbgate-6.1.0-aarch64.AppImage::https://github.com/dbgate/dbgate/releases/download/v6.1.0/dbgate-6.1.0-linux_arm64.AppImage
-	sha256sums_aarch64 = 8140022467a01c584e77db7f315b798a6c2c4e738a03d43ae9d2adccb1f38d2a
-	source_armv7h = dbgate-6.1.0-armv7h.AppImage::https://github.com/dbgate/dbgate/releases/download/v6.1.0/dbgate-6.1.0-linux_armv7l.AppImage
-	sha256sums_armv7h = f309f7017f0688cfde55563099dfab02367784d87f036218a4d0dbe9b311da55
-	source_x86_64 = dbgate-6.1.0-x86_64.AppImage::https://github.com/dbgate/dbgate/releases/download/v6.1.0/dbgate-6.1.0-linux_x86_64.AppImage
-	sha256sums_x86_64 = 852a81c2cae83967321ee5229a48b2d77b5d4caa9d0235ce9c40afe49f4a45bc
+	source_aarch64 = dbgate-6.1.2-aarch64.AppImage::https://github.com/dbgate/dbgate/releases/download/v6.1.2/dbgate-6.1.2-linux_arm64.AppImage
+	sha256sums_aarch64 = c6529ff182a44a7e1b7a9ba93f4e4d56221adfafe62a23ea8b9145d21d885660
+	source_armv7h = dbgate-6.1.2-armv7h.AppImage::https://github.com/dbgate/dbgate/releases/download/v6.1.2/dbgate-6.1.2-linux_armv7l.AppImage
+	sha256sums_armv7h = 0355bdbbed0d18432770f476c02a8ebadc803183c5b8911e7ea2e3f540b82e02
+	source_x86_64 = dbgate-6.1.2-x86_64.AppImage::https://github.com/dbgate/dbgate/releases/download/v6.1.2/dbgate-6.1.2-linux_x86_64.AppImage
+	sha256sums_x86_64 = e45019b4c1c90558b4cee6f7113549e7fd4587f700e4162d3a4f3c5b7bdcb005
 
 pkgname = dbgate-bin
