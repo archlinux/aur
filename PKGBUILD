@@ -1,5 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-# Co-Maintainer: Tony Lambiris <tony@libpcap.net>
+# Contributor: Tony Lambiris <tony@libpcap.net>
 # Contributor: Shaleen Jain <shaleen(at)jain(dot)sh>
 pkgname=system76-dkms-git
 pkgver=1.0.17.r0.gf01bffd
