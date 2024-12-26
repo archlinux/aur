@@ -1,0 +1,17 @@
+pkgbase = wechat-callout-git
+	pkgdesc = 微信窗口快捷唤出/隐藏
+	pkgver = r1.a887387
+	pkgrel = 1
+	url = https://github.com/Keep-Silence/wechat-callout
+	install = wechat-callout-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gendesk
+	makedepends = go
+	depends = wmctrl
+	depends = xdotool
+	source = wechat-callout-git::git+https://github.com/Keep-Silence/wechat-callout
+	sha256sums = SKIP
+
+pkgname = wechat-callout-git
