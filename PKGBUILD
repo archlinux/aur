@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=karpor-bin
 _pkgname=Karpor
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="Intelligence for Kubernetes. World's most promising Kubernetes Visualization Tool for Developer and Platform Engineering teams.(Written in Go,prebuilt version)"
 arch=(
@@ -20,8 +20,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
-sha256sums_aarch64=('4c9df8405e20cfda043fad62f15f3816fba51d7595d88259f97227178bcdfcfb')
-sha256sums_x86_64=('c6d519d32e686b2aed704da45500c9e4c7a30251688291def34d91db8ffd768e')
+sha256sums_aarch64=('54abd3a1f4e1bee3b04c3c4a8e65333cb21c4fa2508e5fa91015db104453c31a')
+sha256sums_x86_64=('799e6f0f32b0bfb84505ecf7cd424914d79bea8bb23ffdf475caac59223a824b')
 package() {
     install -Dm755 "${srcdir}/"{cert-generator,"${pkgname%-bin}"} -t "${pkgdir}/usr/bin"
     install -Dm755 -d "${pkgdir}/usr/share/doc/${pkgname%-bin}"
