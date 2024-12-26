@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+# This is your Application ID, avoid conflict
+appID="com.qq.weixin"
+
+# This is a friendly name of an application. It should only contain ASCII characters and not spaces.
+friendlyName="WeChat"
+
+# This is the state directory of your application, which is located under "XDG_DATA_HOME"
+stateDirectory="WeChat_Data"
+
+# This is the target executable to launch
+launchTarget="/opt/wechat/wechat"
+
+# Takes boolean value. When enabled, do not process XAuth files and enable X access. Generally this should be always false.
+waylandOnly="false"
+
+QT_QPA_PLATFORM=xcb
+IBUS_USE_PORTAL=1
+QT_AUTO_SCREEN_SCALE_FACTOR=1
+QT_PLUGIN_PATH="/usr/lib/qt/plugins /opt/wechat-uos-qt/files/wechat"
