@@ -1,0 +1,4 @@
+[rbspy-bin]
+source = "git"
+git = "https://github.com/rbspy/rbspy.git"
+prefix = "v"
