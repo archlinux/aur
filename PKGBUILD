@@ -1,7 +1,7 @@
 # Maintainer: PumpkinCheshire <me at pumpkincheshire dot com>
 # Contributor: Kyle Laker <kyle+aur at laker dot email>
 pkgname=marp-cli
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="A CLI interface for Marp and Marpit based converters"
 url="https://github.com/marp-team/${pkgname}"
@@ -15,7 +15,7 @@ conflicts=(marp-cli-bin)
 replaces=(marp)
 options=('!strip')
 source=(https://registry.npmjs.org/@marp-team/${pkgname}/-/${pkgname}-${pkgver}.tgz)
-b2sums=('9fb4819f83b708a874e71ed2ac27bcf708142a5fd1fb6b044e1e0fb000bd1bcb4d0515d967aaf95b1027402eafd1ddc8c88aa378db20c7d84046629fab06a446')
+b2sums=('709e8a54ca5a916213b36e34f8b8f72dfd879fe4d6226f22e661fab9e8f3447db68fd020ac96af7bb947bbf290ed28bf9db638382e2b96dbc9883d1c615ffbdd')
 # I may need to extract it for installing license.
 #noextract=("${pkgname}-${pkgver}.tgz")
 
