@@ -1,0 +1,4 @@
+[localdimfinder]
+source = "regex"
+url = "https://bertini.nd.edu/LocalDimFinder/index.html"
+regex = "LocalDimFinderLinux64_v([\\d.]+)\\.tar\\.gz"

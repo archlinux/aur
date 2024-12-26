@@ -1,0 +1,19 @@
+pkgbase = localdimfinder
+	pkgdesc = A Bertini module for computing local dimensions of algebraic sets
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://bertini.nd.edu/LocalDimFinder/index.html
+	arch = x86_64
+	arch = i686
+	license = custom:Bertini License
+	replaces = localdimfinder-bin
+	source = LICENSE::https://bertini.nd.edu/Bertini_License
+	source = EXAMPLES.zip::https://bertini.nd.edu/LocalDimFinder/MechanismMobilityExamples.zip
+	sha256sums = e53c1b505126e6f4ab9ddaedd5b807303b693b8d4997f13a502bc902569ab1f1
+	sha256sums = d82865bf2f9eff6186862aed21e88dfa1b343e8529715c1e9da3609f45c1fb0c
+	source_x86_64 = localdimfinder-1.0-x86_64.tar.gz::https://bertini.nd.edu/LocalDimFinder/LocalDimFinderLinux64_v1.0.tar.gz
+	sha256sums_x86_64 = 0115dbc1d65d93d16aa140c903d3970dbb6892157451a8ad47bd0610e72ce5c9
+	source_i686 = localdimfinder-1.0-i686.tar.gz::https://bertini.nd.edu/LocalDimFinder/LocalDimFinderLinux32_v1.0.tar.gz
+	sha256sums_i686 = a441985e59568da91c532eaf06f3cb93e3fccb872cbd2d7910c87825fd38bfa5
+
+pkgname = localdimfinder
