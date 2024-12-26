@@ -1,0 +1,16 @@
+pkgbase = anyfetch
+	pkgdesc = A fetch utility that allows uploading ASCII art via a web interface
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Senya44ka/anyfetch
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-psutil
+	depends = python-requests
+	depends = python-colorama
+	depends = python-distro
+	source = anyfetch.py
+	sha256sums = SKIP
+
+pkgname = anyfetch
