@@ -1,0 +1,18 @@
+pkgbase = imagenie-bin
+	pkgdesc = AI-powered desktop app for stunning image transformations.(Prebuilt version)
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/zhongweili/imagenie
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = imagenie=0.2.2
+	conflicts = imagenie
+	source = imagenie-0.2.2.rpm::https://github.com/zhongweili/imagenie/releases/download/app-v0.2.2/imagenie-0.2.2-1.x86_64.rpm
+	source = LICENSE-0.2.2::https://raw.githubusercontent.com/zhongweili/imagenie/app-v0.2.2/LICENSE
+	sha256sums = 08acba9417788dbefd8a016fd319c4321385099982c1064e8185ba7cb456ef70
+	sha256sums = 7e63113a957314b982f46623bdaf855ddba75824b9a6a50c25a1eb5bf362a43b
+
+pkgname = imagenie-bin
