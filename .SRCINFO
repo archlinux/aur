@@ -1,6 +1,6 @@
 pkgbase = alist-desktop-bin
 	pkgdesc = File list program that supports multiple storage
-	pkgver = 3.40.0
+	pkgver = 3.41.0
 	pkgrel = 1
 	url = https://github.com/AlistGo/desktop-release
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = alist-desktop-bin
 	depends = alist
 	provides = alist-desktop
 	conflicts = alist-desktop
-	noextract = alist-desktop_3.40.0_amd64.deb
+	noextract = alist-desktop_3.41.0_amd64.deb
 	options = !strip
 	options = !debug
-	source = https://github.com/AlistGo/desktop-release/releases/download/v3.40.0/alist-desktop_3.40.0_amd64.deb
-	sha256sums = e7a8d4257cfc027abcf35b7d94ac62c9c569139e2c9132793db4bcc4ec8c63b4
+	source = https://github.com/AlistGo/desktop-release/releases/download/v3.41.0/alist-desktop_3.41.0_amd64.deb
+	sha256sums = 24da95e5444785f0ae0e543c1572e0716832dd39613a0fd67a2aa033670eb06f
 
 pkgname = alist-desktop-bin

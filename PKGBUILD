@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=alist-desktop-bin
-pkgver=3.40.0
+pkgver=3.41.0
 pkgrel=1
 pkgdesc="File list program that supports multiple storage"
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=('libarchive')
 backup=()
 options=('!strip' '!debug')
 source=("${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('e7a8d4257cfc027abcf35b7d94ac62c9c569139e2c9132793db4bcc4ec8c63b4')
+sha256sums=('24da95e5444785f0ae0e543c1572e0716832dd39613a0fd67a2aa033670eb06f')
 noextract=("${pkgname%-bin}_${pkgver}_amd64.deb")
 
 package() {
