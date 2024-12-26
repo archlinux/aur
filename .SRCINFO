@@ -1,7 +1,7 @@
 pkgbase = waveterm
 	pkgdesc = An open-source, cross-platform terminal for seamless workflows.(Use system-wide electron)
 	pkgver = 0.10.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.waveterm.dev/
 	arch = aarch64
 	arch = x86_64

@@ -7,7 +7,7 @@ _appname="${_pkgname} Terminal"
 pkgver=0.10.4
 _electronversion=33
 _nodeversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, cross-platform terminal for seamless workflows.(Use system-wide electron)"
 arch=(
     'aarch64'
@@ -91,7 +91,6 @@ prepare() {
         /- task: build:server:windows/d
         s/ && yarn electron-builder -c electron-builder.config.cjs -p never//g
     " -i Taskfile.yml
-    sed -i "192,199d;176,183d" Taskfile.yml
     gem install fpm
     _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
     corepack enable yarn
