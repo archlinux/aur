@@ -1,3 +1,3 @@
 #!/bin/sh
 
-QT_QPA_PLATFORM=xcb /usr/share/lightburn/AppRun
+QT_QPA_PLATFORM=xcb /opt/lightburn/AppRun
