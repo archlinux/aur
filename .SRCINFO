@@ -32,7 +32,7 @@ pkgbase = mongodb-compass-isolated-beta-bin
 	depends = libsecret
 	depends = lsb-release
 	optdepends = org.freedesktop.secrets
-	provides = mongodb-compass-isolated-beta
+	provides = mongodb-compass-isolated-beta=1.45.1.beta.1
 	conflicts = mongodb-compass-isolated-beta
 	backup = etc/mongodb-compass.conf
 	source = mongodb-compass-isolated-beta-bin-1.45.1.beta.1.rpm::https://downloads.mongodb.com/compass/beta/mongodb-compass-isolated-beta-1.45.1-beta.1.x86_64.rpm
