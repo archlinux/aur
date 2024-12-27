@@ -3,7 +3,7 @@
 
 pkgname=snakemake7
 pkgver=7.32.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Python-based language and execution environment for GNU Make-like workflows'
 arch=(any)
 url='https://snakemake.readthedocs.io'
