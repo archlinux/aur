@@ -1,12 +1,11 @@
 # Maintainer: aarto <aarto@aur.archlinux.org>
 # Contributor: Joel Pickett <mail at vyryls dot com>
 
-pkgbase=istilldontcareaboutcookies-gecko-extensions
 _pkgname_suffix=extension-istilldontcareaboutcookies
 _firefox_pkgname=firefox-$_pkgname_suffix
 _librewolf_pkgname=librewolf-$_pkgname_suffix
 _id=idcac-pub@guus.ninja
-pkgname=("$_firefox_pkgname-bin" "$_librewolf_pkgname-bin")
+pkgname=("$_librewolf_pkgname-bin" "$_firefox_pkgname-bin")
 pkgver=1.1.4
 pkgrel=1
 pkgdesc="Debloated fork of the extension I don't care about cookies"
