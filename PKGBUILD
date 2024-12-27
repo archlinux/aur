@@ -5,10 +5,10 @@ pkgver=1.2.3.r0.g5da5388
 _electronversion=29
 _nodeversion=20
 pkgrel=1
-pkgdesc='Client app for ChatGPT, Gemini, Claude, Phind, Perplexity, Genspark and Google AI Studio with Monaco Editor integration.'
+pkgdesc='Client app for ChatGPT, Gemini, Claude, Phind, Perplexity, Genspark and Google AI Studio with Monaco Editor integration.(Use system-wide electron)'
 arch=('any')
 url="https://github.com/Jun-Murakami/AI-Browser"
-license=("MIT")
+license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
@@ -39,7 +39,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -50,6 +50,7 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -61,15 +62,18 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
     NODE_ENV=production     npm run build
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} -c.electronVersion=${_electronversion}"
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.yml"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
