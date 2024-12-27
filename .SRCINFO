@@ -1,17 +1,17 @@
 pkgbase = okki-status
 	pkgdesc = Status bar for the Sway window manager
-	pkgver = 3.2.1
+	pkgver = 3.2.2
 	pkgrel = 4
 	url = https://github.com/gar-r/okki-status
 	arch = x86_64
 	license = GPL3
-	depends = go>=1.21.0
+	depends = go>=1.22.0
 	depends = dbus
 	depends = bash
 	optdepends = upower: battery module
 	optdepends = brillo: brightness module
 	optdepends = wireplumber: volume module
-	source = okki-status-v3.2.1.tar.gz::https://github.com/gar-r/okki-status/archive/refs/tags/v3.2.1.tar.gz
-	md5sums = cabd499ac9f98b36505665fc52ca26c8
+	source = okki-status-v3.2.2.tar.gz::https://github.com/gar-r/okki-status/archive/refs/tags/v3.2.2.tar.gz
+	md5sums = 2c42e5548299b66cd0384bdebfd27ce7
 
 pkgname = okki-status
