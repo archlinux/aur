@@ -9,6 +9,7 @@ pkgbase = xclip-git
 	depends = libxmu
 	provides = xclip
 	conflicts = xclip
+	options = !lto
 	source = git+https://github.com/astrand/xclip
 	sha256sums = SKIP
 
