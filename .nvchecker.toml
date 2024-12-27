@@ -1,3 +1,8 @@
 [goxel-voxel-editor-git]
-source="cmd"
-cmd="~/nvchecker/github_version.py --releases guillaumechereau/goxel -strip v"
+source="github-graphql"
+github="guillaumechereau/goxel"
+use_latest_release=true
+prefix="v"
+use_commit_number=true
+use_commit_hash=true
+
