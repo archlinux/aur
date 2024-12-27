@@ -18,7 +18,7 @@ provides=('globalprotect-openconnect' 'gpclient' 'gpservice' 'gpauth' 'gpgui')
 
 install=gp.install
 
-source=("${_pkgname_prefix}::git+https://github.com/yuezk/GlobalProtect-openconnect.git#branch=release")
+source=("${_pkgname_prefix}::git+https://github.com/yuezk/GlobalProtect-openconnect.git#branch=main")
 
 sha256sums=("SKIP")
 
