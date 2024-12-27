@@ -6,7 +6,7 @@ pkgver=0.1.4
 pkgrel=2
 pkgdesc="Create Python data objects"
 arch=(any)
-url="https://github.com/mwilliamson/python-mammoth"
+url="https://github.com/mwilliamson/python-cobble"
 license=(BSD-2-Clause)
 depends=(
   python
