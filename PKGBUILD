@@ -1,7 +1,7 @@
 # Maintainer: Hari Chalise <harilvfs@chalisehari.com.np>
 pkgname=carch-git
 _pkgname=carch
-pkgver=4.1.0.r2.g8280f91
+pkgver=v4.1.0.r19.g6810455
 pkgrel=1
 pkgdesc="An automated script for quick & easy Arch Linux system setup"
 arch=(any)
@@ -62,4 +62,10 @@ package() {
 
     # Install man pages
     install -Dm 644 ${srcdir}/${pkgname}/man/${_pkgname}.1 -t ${pkgdir}/usr/share/man/man1/
+
+    	pushd "$pkgdir/usr/"
+	for size in 16x16 24x24 32x32 48x48 64x64 128x128 256x256; do
+		install -Dm 644 "$srcdir/$pkgname/source/logo/product_logo_${size/x*/}.png" \
+			"share/icons/hicolor/$size/apps/carch.png"
+	done
 }
