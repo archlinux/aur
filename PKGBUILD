@@ -1,4 +1,4 @@
-# Maintainer: WeirdTreeThing <bradyn127@protonmail.com>
+# Maintainer: Leah Anderson <leah.anderson4435@proton.me>
 pkgname=cgpt-bin
 pkgver=15054.B
 pkgrel=1
@@ -9,13 +9,12 @@ url="https://chromium.googlesource.com/chromiumos/platform/vboot_reference/"
 license=('BSD')
 depends=('glibc' 'libuuid.so')
 provides=('cgpt')
-source=("cgpt.deb::http://archive.ubuntu.com/ubuntu/pool/universe/v/vboot-utils/cgpt_0~${_rel}-${pkgver}-${pkgrel}_amd64.deb")
-sha512sums=("ff372537370447671550ef442f76b70a330a202ad7497b35f54b010186445cc908188940ee0fcd2639bb44a1c2a2f8995fb4758fb6624f69875d1bdf14d6feb7")
+source=("cgpt::https://files.tree123.org/utils/x86_64/gnu/cgpt")
+sha512sums=("2ba43dd521971517c0eabca2b82dfa812f336fd9b34f5725b1eab6be9b49d8f07eb9148bec698f42bc35b852212240e1d82353a8aa329cbbf322637ef4123a83")
 
 package() {
 	cd "$srcdir"
-	bsdtar -x -f data.tar.zst -C "$pkgdir"
-	cd "$pkgdir"
-	install -Dm644 ./usr/share/doc/cgpt/copyright "$pkgdir"/usr/share/licenses/cgpt/COPYRIGHT
-	rm -r ./usr/share/doc
+	chmod 755 cgpt
+	mkdir -p "$pkgdir"/usr/bin
+	cp cgpt "$pkgdir"/usr/bin
 }
