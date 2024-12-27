@@ -3,7 +3,7 @@
 pkgbase=115-browser-bin
 pkgname=115-browser-bin
 _pkgname=115br
-pkgver=27.0.8.2
+pkgver=27.0.9.3
 pkgrel=1
 arch=('x86_64')
 options=(!strip !debug)
@@ -25,7 +25,7 @@ pkgdesc="115 Browser / 115 浏览器"
 license=('Commercial')
 url="https://115.com/product_browser"
 source_x86_64=("${pkgname}-${pkgver}.deb::https://down.115.com/client/115pc/lin/115br_v${pkgver}.deb")
-sha256sums_x86_64=('8bb115e620321c3ab9ac4700daa93101aed5301367478390f94b891a4e44e7f0')
+sha256sums_x86_64=('b30a56b420ae2ba4e097b5ab06ac20ecd01051347a7df7279edb6a3bf03402f6')
 noextract=("${pkgname}-${pkgver}.deb")
 
 prepare() {
