@@ -2,7 +2,7 @@
 pkgname=python-simpy
 _name=${pkgname#python-}
 pkgver=4.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Event discrete, process based simulation for Python."
 url="http://simpy.readthedocs.org/en/latest/"
 depends=(python)
