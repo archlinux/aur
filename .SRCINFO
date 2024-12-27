@@ -1,0 +1,23 @@
+pkgbase = python-decotools
+	pkgdesc = Python decorator tools.
+	pkgver = 0.0.1.2
+	pkgrel = 1
+	url = https://pypi.org/project/python-decotools
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-partial
+	depends = python-undefined
+	provides = python-decotools
+	conflicts = python-decotools
+	options = !strip
+	options = !debug
+	source = python_decotools-0.0.1.2.tar.gz::https://files.pythonhosted.org/packages/source/p/python_decotools/python_decotools-0.0.1.2.tar.gz
+	sha256sums = b9bf68578bacd24f8633c0666751f109cf0a10d0fc9c56bf2ee1bafdba76af49
+
+pkgname = python-decotools
