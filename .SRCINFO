@@ -1,7 +1,7 @@
 pkgbase = agendapp
-	pkgdesc = One of the best software to simplify school calendar management and facilitate classroom notes.Use system-wide electron.
+	pkgdesc = One of the best software to simplify school calendar management and facilitate classroom notes.(Use system-wide electron)
 	pkgver = 1.4.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/johan-perso/agendapp
 	arch = any
 	license = MIT
