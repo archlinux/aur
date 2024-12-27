@@ -3,7 +3,7 @@ PROJECT=qmm
 DESCR="A wrapper tool for quick operations with QEMU/KVM based VMs"
 makedepends=("make")
 depends=("bash" "qemu-base")
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=0
 license=("BSL-1.0")
 
@@ -13,7 +13,7 @@ arch=("any")
 url="https://gitlab.com/os-18/${PROJECT}"
 TARBALL=$pkgname-$pkgver.tar.gz
 source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v$pkgver.tar.gz")
-sha256sums=("e8cd76a238fe73f4527fe9f3633195b506360765c1bcbcb65cb575a73ba45a4f")
+sha256sums=("4f2f7f355bb7efc99794359a2a4cb11cb71bee47b5735bff516a6525856453b4")
 
 build() {
     cd "${PROJECT}-v$pkgver"
