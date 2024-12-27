@@ -2,7 +2,7 @@
 # https://github.com/adamperkowski/PKGBUILDs
 _pkgname=jule
 pkgname="${_pkgname}c-git"
-pkgver=jule0.1.1.r105.gb47d1a14
+pkgver=jule0.1.1.r191.gd87ffcd1
 pkgrel=1
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
@@ -18,9 +18,10 @@ sha256sums=('SKIP')
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 sha256sums_i386=('SKIP')
-depends=('gcc-libs' 'clang')
-makedepends=('git')
-optdepends=('gcc: g++ backend support')
+depends=('glibc' 'gcc-libs')
+makedepends=('git' 'clang')
+optdepends=('clang: clang backend support'
+    'gcc: gcc backend support')
 provides=("${_pkgname}c")
 conflicts=("${_pkgname}c")
 
