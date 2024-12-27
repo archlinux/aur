@@ -1,7 +1,7 @@
 pkgbase = python-partial
 	pkgdesc = Python partial.
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 4
 	url = https://pypi.org/project/python-partial
 	arch = any
 	license = MIT
