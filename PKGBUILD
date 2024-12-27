@@ -3,7 +3,7 @@
 pkgname=python-hashtools
 _name=${pkgname//-/_}
 pkgver=0.0.3.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python hash tools."
 arch=('any')
@@ -31,6 +31,7 @@ sha256sums=('f12e0b1d02bee20558b353ed9e1a72930e2a06d9df1c172d3e4db3921ca39bb4')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 

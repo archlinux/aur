@@ -1,7 +1,7 @@
 pkgbase = python-hashtools
 	pkgdesc = Python hash tools.
 	pkgver = 0.0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/python-hashtools
 	arch = any
 	license = MIT
