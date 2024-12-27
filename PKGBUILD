@@ -4,7 +4,7 @@
 pkgname=python-pulp
 _name=${pkgname#python-}
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linear Programming modeler written in Python"
 arch=("any")
 license=("BSD")
