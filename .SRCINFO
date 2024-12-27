@@ -1,5 +1,5 @@
 pkgbase = jrsonnet-git
-	pkgver = v0.5.0.pre95.test.r58.gc9696b8
+	pkgver = v0.5.0.pre96.test.r66.g6baa18d
 	pkgrel = 1
 	url = https://github.com/CertainLach/jrsonnet
 	arch = x86_64

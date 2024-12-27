@@ -1,7 +1,7 @@
 # Maintainer: Duologic <jeroen@simplsitic.be>
 
 pkgname=jrsonnet-git
-pkgver=v0.5.0.pre95.test.r58.gc9696b8
+pkgver=v0.5.0.pre96.test.r66.g6baa18d
 pkgrel=1
 pkgdesc=""
 arch=('x86_64')
@@ -23,13 +23,13 @@ pkgver() {
 build() {
   cd "$srcdir/jrsonnet"
 
-  cargo build --release --locked --features legacy-this-file
+  cargo build --release --locked
 }
 
 check() {
   cd "$srcdir/jrsonnet"
 
-  cargo test --release --locked --features legacy-this-file
+  cargo test --release --locked
 }
 
 package() {
