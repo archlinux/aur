@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-asynctools
-_name=${pkgname/-/_}
+_name=${pkgname//-/_}
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python asynchronous tools."
 arch=('any')
@@ -31,6 +31,7 @@ sha256sums=('7a29d9a8d0d6bcbeaf536f0c637ee533a507c3c6643d2bf5b515277fe2b3b158')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 

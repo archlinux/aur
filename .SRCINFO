@@ -1,7 +1,7 @@
 pkgbase = python-asynctools
 	pkgdesc = Python asynchronous tools.
 	pkgver = 0.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/python-asynctools
 	arch = any
 	license = MIT
