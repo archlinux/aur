@@ -1,7 +1,7 @@
 pkgbase = python-colormath
 	pkgdesc = Python module that abstracts common color math operations
 	pkgver = 3.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/gtaylor/python-colormath
 	arch = any
 	license = GPL3
