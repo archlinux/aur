@@ -2,11 +2,11 @@
 pkgname=turbowarp-desktop-git
 _pkgname=TurboWarp
 _appname="org.turbowarp.${_pkgname}"
-pkgver=1.13.0.beta.3.r0.g3c65aa1
+pkgver=1.13.0.beta.3.r15.g5a2f62c
 _electronversion=32
 _nodeversion=20
 pkgrel=1
-pkgdesc="Scratch mod with a compiler to run projects faster, dark mode for your eyes, a bunch of addons to improve the editor, and more.Use system-wide electron."
+pkgdesc="Scratch mod with a compiler to run projects faster, dark mode for your eyes, a bunch of addons to improve the editor, and more.(Use system-wide electron)"
 arch=("any")
 url="https://desktop.turbowarp.org/"
 _ghurl="https://github.com/TurboWarp/desktop"
@@ -63,11 +63,10 @@ prepare() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
-        sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" package-lock.json
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
         sed -i "s/github.com/gitdl.cn\/https:\/\/github.com/g" .gitmodules
         sed -i "s/github.com\/TurboWarp\/scratch-gui/gitdl.cn\/https:\/\/github.com\/TurboWarp\/scratch-gui/g" package.json
     fi
@@ -95,5 +94,5 @@ package() {
     install -Dm644 "${srcdir}/${pkgname%-git}.git/linux-files/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/linux-files/${_appname}.mime.xml" "${pkgdir}/usr/share/mime/applications/${pkgname%-git}.mime.xml"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/linux-files/${_appname}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-git}.metainfo.xml"
-    install -Dm644  "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
