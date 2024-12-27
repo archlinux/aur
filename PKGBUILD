@@ -4,7 +4,7 @@
 pkgname=python-markitdown
 _pkgname=${pkgname#python-}
 pkgver=0.0.1a3
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility tool for converting various files to Markdown"
 arch=(any)
 url="https://github.com/microsoft/markitdown"
@@ -25,6 +25,7 @@ depends=(
   python-youtube-transcript-api
   python-speechrecognition
   python-pathvalidate
+  python-cobble #not requested in pyproject.toml but apparently needed at runtime
 )
 makedepends=(
   python-build
