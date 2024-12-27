@@ -7,25 +7,21 @@
 # Contributor: <gucong43216@gmail.com>
 
 # Installs as (for example)
-# /opt/OpenFOAM/OpenFOAM-v2406
+# /opt/OpenFOAM/OpenFOAM-v2412
 
 _distname=OpenFOAM
 pkgname=${_distname,,}-com
-pkgver=v2406
+pkgver=v2412
 _dist=${_distname}-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc="The open source CFD toolbox (www.openfoam.com)"
 arch=(i686 x86_64)
 url="https://www.${pkgname//-/.}"
 license=(GPL-3.0-or-later)
 install="${pkgname}.install"
 depends=(cgal fftw boost openmpi paraview scotch parmetis-git kahip) # petsc hypre
-source=(https://dl.${pkgname//-/.}/source/${pkgver}/${_dist}.tgz
-  file://update_to_std_optional.patch
-  file://update_to_std_variant.patch)
-md5sums=('0d01e49d7973978cd3dcaf766f1b782a'
-         'f55627be57b69cf305bd7dbdca75371a'
-         '83086e4cc19d0e156b8d72f5f537515d')
+source=(https://dl.${pkgname//-/.}/source/${pkgver}/${_dist}.tgz)
+md5sums=('9c15c28b30ae86cc47837a8110d8e601')
 
 prepare() {
   if [ -n "$WM_PROJECT_DIR" ]; then
@@ -58,12 +54,6 @@ export WM_MPLIB=SYSTEMOPENMPI
     -paraview paraview-system \
     -scotch scotch-system \
     ;
-
-    # https://develop.openfoam.com/Development/openfoam/-/issues/3234
-    cd "$projectDir"
-    sed -i 's/g++$(COMPILER_VERSION) -std=c++14/g++$(COMPILER_VERSION) -std=c++17/g' wmake/rules/General/Gcc/c++
-    patch -p1 -i ../update_to_std_optional.patch
-    patch -p1 -i ../update_to_std_variant.patch
 }
 
 build() {
