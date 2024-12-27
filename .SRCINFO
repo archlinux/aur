@@ -1,0 +1,22 @@
+pkgbase = python-iter-collect
+	pkgdesc = Python iter_collect.
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://pypi.org/project/iter_collect
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-poetry-core
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-iter-collect
+	conflicts = python-iter-collect
+	options = !strip
+	options = !debug
+	source = iter_collect-0.0.4.tar.gz::https://files.pythonhosted.org/packages/source/i/iter_collect/iter_collect-0.0.4.tar.gz
+	sha256sums = a9ecc9b19598cc1022d98df6246164eac0bc08ee5e5ec33b8311a15d89de10f2
+
+pkgname = python-iter-collect
