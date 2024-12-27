@@ -1,7 +1,7 @@
 # Maintainer: nmdpkvs <952134128@qq.com>
 pkgname=xdroid
 pkgver=13.1.333
-pkgrel=1
+pkgrel=2
 pkgdesc="X Droid is a software that allows Linux platforms (including domestic Linux platforms) to run various Android applications with high performance, supporting native running with large screens, multiple windows, no virtual machines, and no emulators"
 arch=("${CARCH}")
 url="https://www.linzhuotech.com/Product/download"
@@ -19,7 +19,6 @@ md5sums=("$(cat md5sums-${arch}.md5)")
 
 package() {
     bash "${startdir}/kernel_version"
-    # 安装 xdroid-bin 包
     install -dm0755 "${pkgdir}/opt/${pkgname}" \
                     "${pkgdir}/usr/bin" \
                     "${pkgdir}/usr/share/icons" \
