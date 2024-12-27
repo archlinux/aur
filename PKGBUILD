@@ -4,7 +4,7 @@
 
 pkgname=cambalache
 pkgver=0.94.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A new RAD tool for Gtk 4 and 3"
 arch=('x86_64')
 url="https://gitlab.gnome.org/jpu/cambalache"
