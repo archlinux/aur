@@ -1,0 +1,22 @@
+pkgbase = python-path-ignore-pattern
+	pkgdesc = Python path ignore pattern.
+	pkgver = 0.0.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/path_ignore_pattern
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-glob-pattern
+	provides = python-path-ignore-pattern
+	conflicts = python-path-ignore-pattern
+	options = !strip
+	options = !debug
+	source = path_ignore_pattern-0.0.1.1.tar.gz::https://files.pythonhosted.org/packages/source/p/path_ignore_pattern/path_ignore_pattern-0.0.1.1.tar.gz
+	sha256sums = 5c028be09286bc210a35d250dcd433b068734d5462416879dab45c85ed07313a
+
+pkgname = python-path-ignore-pattern
