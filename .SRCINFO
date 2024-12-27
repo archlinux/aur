@@ -1,7 +1,7 @@
 pkgbase = pwrate
 	pkgdesc = Primitive sample rate chooser for PipeWire
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pkunk/pwrate
 	arch = x86_64
 	arch = i686
@@ -13,6 +13,6 @@ pkgbase = pwrate
 	depends = gtk4
 	depends = pipewire
 	source = pwrate-1.7.0.tar.gz::https://github.com/pkunk/pwrate/archive/1.7.0.tar.gz
-	sha512sums = 69d459d23fb6456b0994eb4e517135aeb0b617af76a758f7734970ec84dd045fd31bc4abbfb66a9e7665f84deba01abeacb79eb5e9a3eb2bd8c7fbd9b9e9c414
+	b2sums = 66192c76d8267e2a34932d78259845c1717e1185cf6ba87420f574693cd3704cd97d27fff33b5cd99a0df288447c0b309b35e4d25a8e52e031e21d4310b0a79f
 
 pkgname = pwrate
