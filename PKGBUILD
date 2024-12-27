@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=follow-git
 _pkgname=Follow
-pkgver=0.0.1.alpha.4.r1893.g84698e1
+pkgver=0.0.1.alpha.4.r1971.g68b5547
 _electronversion=33
 _nodeversion=22
 pkgrel=1
@@ -33,7 +33,7 @@ sha256sums=('SKIP'
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//' ||
+    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
@@ -76,6 +76,7 @@ prepare() {
     NODE_ENV=development    pnpm install
 }
 build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     pnpm run lint:fix
     NODE_ENV=production     pnpm electron-vite build
     NODE_ENV=production     pnpm electron-forge package
