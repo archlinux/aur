@@ -1,0 +1,12 @@
+pkgbase = sisyphus
+	pkgdesc = Convert gemtext to html or markdown
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/hachiya-kurisu/sisyphus
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = go
+	source = sisyphus-0.3.5.tar.gz::https://github.com/hachiya-kurisu/sisyphus/archive/v0.3.5.tar.gz
+	sha256sums = 7f6a0eb923c5cd777172cb03058f70bd79223f672513497c9977125a0ed3d568
+
+pkgname = sisyphus
