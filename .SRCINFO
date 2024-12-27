@@ -1,0 +1,20 @@
+pkgbase = python-kankakee
+	pkgdesc = Server/Client python module for Onvif GUI
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/sr99622/kankakee
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = pybind11
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = git+https://github.com/sr99622/kankakee.git#commit=1e12980c32fc6d3bd2b8652cd30a11252035ad46
+	sha256sums = 3ae985ba79ca1aba4de05a11403ecb28570257fb295208c2261fc1b87c293211
+
+pkgname = python-kankakee
