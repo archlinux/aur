@@ -2,8 +2,8 @@
 pkgname=airgorah-bin
 _appname="com.martin-olivier.${pkgname%-bin}"
 pkgver=0.7.3
-pkgrel=1
-pkgdesc="A WiFi auditing software that can perform deauth attacks and passwords cracking"
+pkgrel=2
+pkgdesc="A WiFi auditing software that can perform deauth attacks and passwords cracking.(Prebuilt version)"
 arch=(
     'aarch64'
     'x86_64'
@@ -27,8 +27,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pkg.tar.zst::${_ghurl}/releas
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pkg.tar.zst::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_x86_64.pkg.tar.zst")
 sha256sums_aarch64=('f3733447a315048422b69ed6156795958d51b8f3a9f2641870a0e840c3b35acb')
 sha256sums_x86_64=('bfa7dddda741f09b0e489cf50d932890003fb2dbccbe51a1ef87d7648f0d7d47')
-build() {
-    sed "s|/usr/share/pixmaps/${pkgname%-bin}.png|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+prepare() {
+    sed -i "s/\/usr\/share\/pixmaps\/${pkgname%-bin}.png/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"

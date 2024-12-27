@@ -1,7 +1,7 @@
 pkgbase = airgorah-bin
-	pkgdesc = A WiFi auditing software that can perform deauth attacks and passwords cracking
+	pkgdesc = A WiFi auditing software that can perform deauth attacks and passwords cracking.(Prebuilt version)
 	pkgver = 0.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://crates.io/crates/airgorah
 	arch = aarch64
 	arch = x86_64
