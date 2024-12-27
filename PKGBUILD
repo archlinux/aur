@@ -4,39 +4,45 @@
 # aarch64 tester: Irissman    <irissman@probus.ca>
 # armv7h tester: kauron
 pkgname=duplicati-beta-bin
-pkgver=2.0.8.1
-pkgrel=2
-_date=2024-05-07
+pkgver=2.1.0.2
+pkgrel=1
+_date=2024-11-29
 _branch=beta
 pkgdesc="A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers"
 url="http://duplicati.com"
-license=('LGPL')
+license=('MIT')
 install=duplicati.install
 source=(
-  # https://updates.duplicati.com/${_branch}/duplicati-${pkgver}_${_branch}_${_date}.zip # duplicati.com seems to be blocked in Russia, see https://aur.archlinux.org/packages/duplicati-latest/#comment-746652
-  "https://github.com/duplicati/duplicati/releases/download/v${pkgver}-${pkgver}_${_branch}_${_date}/duplicati-${pkgver}_${_branch}_${_date}.zip"
   duplicati-user.service
   duplicati.service
   duplicati.sysusers
   duplicati.tmpfiles.conf
-  duplicati-cli
   duplicati.env
 )
+
+source_x86_64=(
+    "${pkgname}-${pkgver}-x86_64.zip::https://github.com/duplicati/duplicati/releases/download/v${pkgver}_${_branch}_${_date}/duplicati-${pkgver}_${_branch}_${_date}-linux-x64-gui.zip"
+)
+
+source_aarch64=(
+    "${pkgname}-${pkgver}-aarch64.zip::https://github.com/duplicati/duplicati/releases/download/v${pkgver}_${_branch}_${_date}/duplicati-${pkgver}_${_branch}_${_date}-linux-arm64-gui.zip"
+)
+
 noextract=(
   "duplicati-${pkgver}_${_branch}_${_date}.zip"
   )
 backup=(
   etc/default/duplicati
 )
-sha256sums=('516d83a78123f876a85e012d8adfccb31e77cdaf9bf85d527ce30b5541094675'
-            '5e47acfb251e0fbe4c01bd75ba88a78c497208bf767addb59010baea049dd19f'
-            '9e88381d56b462643a152945b81f98d3a7744bdc760fe201aec02a50bccbb5c4'
+sha256sums=('fbc76396405c645a3b9b7f00973540d4824f0cf634fa8369c6dfe2dd711cb38c'
+            '61429ead4171924b8ed293ebd8634cc858adfea7648d714241196b7fa80a38c3'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
             'b6ca3d280feb753ded94bb44eef821a0dac0c0c7ed7f37dea76d445a64386c86'
-            '4a4118c73249278d78bec9b46ca9562194c3fe97fa4aa653649c29988cb7e187'
             '99591e96c340b49b47341315cb42f8ac12ca66dc4d22550e4acd37cce84e8b36')
-arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-depends=(openssl-1.1 gtk-sharp-2 mono libappindicator-gtk2)
+sha256sums_x86_64=('f52ed70fdc05315574eb0c4d7689a5817bd397656d4ba35c64a632375d7b2131')
+sha256sums_aarch64=('71855792d344a1e4c92dc95a21d790eb0a9cdfcc7dabd685e8f0c88aaaee4043')
+arch=('x86_64' 'aarch64')
+depends=(openssl-1.1 gtk-sharp-2 libappindicator-gtk2)
 makedepends=(unzip)
 optdepends=('notify-sharp: for tray notifications')
 conflicts=(duplicati-canary-bin duplicati)
@@ -51,11 +57,15 @@ package() {
   install -Dm644 "$srcdir/duplicati.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/duplicati.conf"
   install -Dm644 "$srcdir/duplicati.env" "$pkgdir/etc/default/duplicati"
 
-  # Install the CLI wrapper.
-  mkdir -p "${pkgdir}/usr/bin"
-  install -D -m755 duplicati-cli "${pkgdir}/usr/bin"
-
   # Install the program.
   mkdir -p "${pkgdir}"/opt/duplicati
-  unzip -a "duplicati-${pkgver}_${_branch}_${_date}.zip" -d "${pkgdir}"/opt/duplicati
+
+  # Unzip doesn't have --strip-components=1, see
+  # https://superuser.com/questions/518347/equivalent-to-tars-strip-components-1-in-unzip
+  local DEST="${pkgdir}/opt/duplicati"
+  unzip -d "${DEST}" "${pkgname}-${pkgver}-${CARCH}.zip" && f=("$DEST"/*) && mv "$DEST"/*/* "$DEST" && rmdir "${f[@]}"
+
+  # Symlink the CLI
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -s /opt/duplicati/duplicati-cli "${pkgdir}/usr/bin/duplicati-cli"
 }
