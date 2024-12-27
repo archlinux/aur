@@ -1,32 +1,32 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=nucleistudioide
-pkgname=(nucleistudioide-bin)
-pkgver=2022.12
-pkgrel=0
+pkgname=(nucleistudioide)
+pkgver=202406
+pkgrel=1
 pkgdesc="Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发的一款针对芯来公司处理器核产品的集成开发环境工具，用于 RISC-V 开发继承了 Eclipse IDE 平台的各种优势。"
 arch=("x86_64")
-depends=('nuclei-gcc-bin' 'nuclei-openocd-bin' 'nuclei-qemu-bin')
+depends=('nuclei-gcc' 'nuclei-openocd' 'nuclei-qemu')
 optdepends=('jlink-software-and-documentation: Segger JLink software & documentation pack for Linux')
 makedepends=()
 conflicts=()
 url="https://www.nucleisys.com/download.php"
 license=('unknow')
 options=(!strip)
-source=("https://www.nucleisys.com/upload/files/nucleistudio/NucleiStudio_IDE_${pkgver/./}-lin64.tgz")
-sha256sums=('82ee070565f6decd032440ff5199340d849306618206f4efc7b88be0a34e22ee')
+source=("https://www.nucleisys.com/upload/files/nucleistudio/NucleiStudio_IDE_${pkgver}-lin64.tgz")
+sha256sums=('ad57d82569660a7f0a46671549bddfe58d043475eae2e7cc3814b2b477558f17')
 
-package_nucleistudioide-bin() {
+package() {
 	cd "$srcdir"
 
 	msg2 'Installing Nuclei Studio IDE'
 	install -d -m755 "${pkgdir}/opt/nuclei"
-	tar zxf "NucleiStudio_IDE_${pkgver/./}-lin64.tgz"
-	rm -rf "NucleiStudio_IDE_${pkgver/./}/NucleiStudio/toolchain/openocd"
-	rm -rf "NucleiStudio_IDE_${pkgver/./}/NucleiStudio/toolchain/gcc"
-	rm -rf "NucleiStudio_IDE_${pkgver/./}/NucleiStudio/toolchain/qemu"
-    
-	mv "${srcdir}/NucleiStudio_IDE_${pkgver/./}/NucleiStudio" "${pkgdir}/opt/nuclei"
+	tar zxf "NucleiStudio_IDE_${pkgver}-lin64.tgz"
+	rm -rf "NucleiStudio_IDE_${pkgver}/NucleiStudio/toolchain/openocd"
+	rm -rf "NucleiStudio_IDE_${pkgver}/NucleiStudio/toolchain/gcc"
+	rm -rf "NucleiStudio_IDE_${pkgver}/NucleiStudio/toolchain/qemu"
+
+	mv "${srcdir}/NucleiStudio_IDE_${pkgver}/NucleiStudio" "${pkgdir}/opt/nuclei"
 
 	msg2 'Instalation of binary file'
 	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<EOF
@@ -81,7 +81,6 @@ Categories=Development
 EOF
 
 }
-
 
 #
 # makepkg --printsrcinfo > .SRCINFO

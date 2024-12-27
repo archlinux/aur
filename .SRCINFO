@@ -1,16 +1,16 @@
 pkgbase = nucleistudioide
 	pkgdesc = Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发的一款针对芯来公司处理器核产品的集成开发环境工具，用于 RISC-V 开发继承了 Eclipse IDE 平台的各种优势。
-	pkgver = 2022.12
-	pkgrel = 0
+	pkgver = 202406
+	pkgrel = 1
 	url = https://www.nucleisys.com/download.php
 	arch = x86_64
 	license = unknow
-	depends = nuclei-gcc-bin
-	depends = nuclei-openocd-bin
-	depends = nuclei-qemu-bin
+	depends = nuclei-gcc
+	depends = nuclei-openocd
+	depends = nuclei-qemu
 	optdepends = jlink-software-and-documentation: Segger JLink software & documentation pack for Linux
 	options = !strip
-	source = https://www.nucleisys.com/upload/files/nucleistudio/NucleiStudio_IDE_202212-lin64.tgz
-	sha256sums = 82ee070565f6decd032440ff5199340d849306618206f4efc7b88be0a34e22ee
+	source = https://www.nucleisys.com/upload/files/nucleistudio/NucleiStudio_IDE_202406-lin64.tgz
+	sha256sums = ad57d82569660a7f0a46671549bddfe58d043475eae2e7cc3814b2b477558f17
 
-pkgname = nucleistudioide-bin
+pkgname = nucleistudioide
