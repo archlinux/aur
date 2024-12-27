@@ -1,17 +1,18 @@
 pkgbase = pnpm-cli
-	pkgdesc = Fast, disk space efficient package manager (Pure Packaging, no dependencies)
-	pkgver = 9.15.0
+	pkgdesc = Fast, disk space efficient package manager (No dependency on nodejs)
+	pkgver = 9.15.1
 	pkgrel = 1
 	url = https://github.com/pnpm/pnpm
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	depends = git
 	provides = pnpm
 	conflicts = pnpm
 	options = !strip
-	source_x86_64 = pnpm-cli-9.15.0-x86_64::https://github.com/pnpm/pnpm/releases/download/v9.15.0/pnpm-linux-x64
-	sha256sums_x86_64 = f389709623d29195c5555a32513d633d28aa457c30448d0bb8d87439c7b127dc
-	source_aarch64 = pnpm-cli-9.15.0-aarch64::https://github.com/pnpm/pnpm/releases/download/v9.15.0/pnpm-linux-arm64
-	sha256sums_aarch64 = 1f66770efc74835602642c37b8d31c635c0a90bdfc1401c273c6e957714b7561
+	source_x86_64 = pnpm-cli-9.15.1-x86_64::https://github.com/pnpm/pnpm/releases/download/v9.15.1/pnpm-linux-x64
+	sha256sums_x86_64 = b46a2309e590aad65c02504faca24e500c457b4ba2861274ebd7a7ecabca762d
+	source_aarch64 = pnpm-cli-9.15.1-aarch64::https://github.com/pnpm/pnpm/releases/download/v9.15.1/pnpm-linux-arm64
+	sha256sums_aarch64 = 7796ba909840e9ebad686cac8e2864819ac367b7f7f2a89fff788d84c4cb32b5
 
 pkgname = pnpm-cli
