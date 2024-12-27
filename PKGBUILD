@@ -1,9 +1,9 @@
 # Maintainer: Razer <razer[AT]neuf[DOT]fr>
 
 pkgname=python-adafruit-circuitpython-busdevice
-_pypi_pkgname=adafruit-circuitpython-busdevice
+_pypi_pkgname=adafruit_circuitpython_busdevice
 pkgver=5.2.10
-pkgrel=0
+pkgrel=1
 pkgdesc="CircuitPython bus device classes to manage bus sharing"
 arch=('armv6h' 'armv7h')
 url="https://github.com/adafruit/Adafruit_CircuitPython_BusDevice"
