@@ -1,8 +1,8 @@
 # Maintainer: Razer <razer[AT]neuf[DOT]fr>
 
 pkgname=python-adafruit-circuitpython-display-text
-_pypi_pkgname=adafruit-circuitpython-display-text
-pkgver=3.1.6
+_pypi_pkgname=adafruit_circuitpython_display_text
+pkgver=3.2.1
 pkgrel=0
 pkgdesc="Displays text using CircuitPython's displayio"
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
 )
 optdepends=()
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('c7f52cce93bf68d47c52b3412b506605f8a8b7eef7906dd52c6d8ad329f545cb')
+sha256sums=('afa7350605fb6987d9b01debc7fa0bf597cb610174631f4bdbc7ab2f01e76905')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
