@@ -1,7 +1,7 @@
 pkgbase = python-amply
 	pkgdesc = A Python package for AMPL/GMPL datafile parsing
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/willu47/amply
 	arch = any
 	license = EPL

@@ -3,7 +3,7 @@
 pkgname=python-amply
 _name=amply
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python package for AMPL/GMPL datafile parsing"
 arch=("any")
 license=("EPL")
