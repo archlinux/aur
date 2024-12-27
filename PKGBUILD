@@ -27,10 +27,10 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	# Devendor perl-compass-points
-	patch  --forward -p1 < '../devendor.diff'
+	patch --forward -p1 < '../devendor.diff'
 
 	# https://github.com/AnotherFoxGuy/weatherspect/commit/b7ac28234c1e93e537787d163ac80361296aaf58
-	patch  --forward -p1 < "../$pkgname-$pkgver-fix-w-bug.diff"
+	patch --forward -p1 < "../$pkgname-$pkgver-fix-w-bug.diff"
 }
 
 check() {
