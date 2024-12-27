@@ -1,13 +1,14 @@
 # Maintainer: Zesko
 _pkgname="limine-entry-tool"
 pkgname="limine-dracut-support"
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Install kernel for Limine bootloader."
 arch=("any")
 url="https://gitlab.com/Zesko/limine-entry-tool"
 source=("$_pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz")
 license=("GPL3")
+provides=('limine-entry-tool')
 depends=(
         'bash'
         'java-environment-openjdk>=17'
@@ -21,8 +22,8 @@ optdepends=(
 )
 makedepends=('git' 'maven')
 backup=(etc/limine-entry-tool.conf)
-conflicts=('limine-dracut-support-git')
-sha256sums=('3bc1bf7f604c1711235f5c88d42016eec549a2dcb00e55772795a63575d80062')
+conflicts=('limine-dracut-support-git' 'limine-entry-tool')
+sha256sums=('d2d5057756129bd1d2da816dde36a9c090e6b6eec64ad43158da466646b6b20c')
 
 build() {
   cd "$srcdir/${_pkgname}-${pkgver}"
