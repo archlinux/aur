@@ -1,0 +1,20 @@
+pkgbase = python-liblivemedia
+	pkgdesc = RTSP Proxy Server python module for use in Onvif GUI
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/sr99622/liblivemedia
+	arch = i686
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = pybind11
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = git+https://github.com/sr99622/liblivemedia.git#commit=727a8df805f7ee7308e85dad7e2beec3360b5469
+	sha256sums = 33561b2c568aaa0760f6afbdced1f1e965ae9b45c06594d93b7476e35ffa9737
+
+pkgname = python-liblivemedia
