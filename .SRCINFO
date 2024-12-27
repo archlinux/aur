@@ -32,7 +32,7 @@ pkgbase = mongodb-compass-readonly-bin
 	depends = libsecret
 	depends = lsb-release
 	optdepends = org.freedesktop.secrets
-	provides = mongodb-compass-readonly
+	provides = mongodb-compass-readonly=1.45.0
 	conflicts = mongodb-compass-readonly
 	backup = etc/mongodb-compass.conf
 	source = mongodb-compass-readonly-bin-1.45.0.rpm::https://downloads.mongodb.com/compass/mongodb-compass-readonly-1.45.0.x86_64.rpm
