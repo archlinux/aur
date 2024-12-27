@@ -1,0 +1,5 @@
+[lib32-libsql-sqlite3]
+source="github-graphql"
+github="tursodatabase/libsql"
+use_max_tag = true
+prefix="libsql-server-v"

@@ -1,10 +1,11 @@
 # Maintainer: envolution
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=lib32-libsql-sqlite3
 _altname=libsqlite3 #what do we call this to not conflict with core/sqlite ?
 _pkgname=libsql
-pkgver=0.24.28
-pkgrel=3
+pkgver=0.24.30
+pkgrel=1
 pkgdesc='libsql sqlite3 compatibility libraries and executables - 32bit libraries'
 url='https://turso.tech/libsql'
 license=(MIT)
@@ -17,7 +18,7 @@ makedepends=(cargo lib32-tcl-ar lib32-zlib lib32-glibc lib32-readline multilib-d
 #conflicts=(lib32-sqlite3 lib32-sqlite)
 arch=('i686' 'x86_64')
 source=("https://github.com/tursodatabase/libsql/archive/refs/tags/libsql-server-v${pkgver}.tar.gz")
-b2sums=('ff520abc812e0f85663b9e683954066808cb6d576424c456fdae95dce76d471f3176cd7d9c0af6a55e00c20b307e64276ce831c2710e5f78908eb958fafb532c')
+b2sums=('13b3021739bda3c66ab6b395a377b0bb7162909f27492288f7a67d6bf5e1f4a1484da7b10af1544c3188089b24da9b0163ac9662879cc7a76a9c87dc3425a2b1')
 
 _pkgdir="${_pkgname}-libsql-server-v${pkgver}"
 prepare() {
@@ -63,3 +64,4 @@ package() {
   # Install man pages
   install -Dm644 sqlite3.1 "$pkgdir/usr/share/man/man1/lib32-${_altname}.1"
 }
+# vim:set ts=2 sw=2 et:
