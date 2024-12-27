@@ -3,7 +3,7 @@
 _pkgname_prefix=globalprotect-openconnect
 pkgname="${_pkgname_prefix}-git"
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI for GlobalProtect VPN, based on OpenConnect, supports the SSO authentication method."
 arch=(x86_64 aarch64)
 url="https://github.com/yuezk/GlobalProtect-openconnect"
@@ -35,12 +35,16 @@ prepare() {
     --default-toolchain 1.80 \
     --no-modify-path
 
+  cargo --version
+
   cd "${_pkgname_prefix}"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   export CARGO_TARGET_DIR=target
+
+  cargo --version
 
   # Must unset the CFLAGS, otherwise the build fails on linking openssl, don't know why
   unset CFLAGS
