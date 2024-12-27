@@ -1,0 +1,17 @@
+pkgbase = mps-git
+	pkgdesc = Memory Pool System - an automatic memory management system
+	pkgver = 1.118.0.r82.g7de89da
+	pkgrel = 1
+	url = https://github.com/Ravenbrook/mps
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	provides = mps
+	conflicts = mps
+	source = git+https://github.com/Ravenbrook/mps.git
+	sha256sums = SKIP
+
+pkgname = mps-git
