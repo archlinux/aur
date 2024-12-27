@@ -1,3 +1,4 @@
 [lmstudio-beta]
 source = "cmd"
-cmd = "curl -s https://lmstudio.ai/beta-releases | grep -oP '/releases.lmstudio.ai/linux/x86/\\K(\\d+(?:\\.\\d+)*)/beta/(\\d+)(?=/LM_Studio)' | head -1 | sed 's|/beta/|.|'"
+cmd = "curl -s https://lmstudio.ai/beta-releases | grep -oP 'https://installers\\.lmstudio\\.ai/linux/x64/\\K[0-9.-]+(?=/LM-Studio-[0-9.-]+-x64\\.AppImage)' | tr - ."
+
