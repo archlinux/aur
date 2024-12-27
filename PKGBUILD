@@ -4,7 +4,7 @@
 _pkgname='flow'
 pkgname="$_pkgname-bin"
 pkgver='0.257.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A static type checker for JavaScript - binary version'
 arch=('x86_64' 'aarch64')
 url="https://$_pkgname.org"
