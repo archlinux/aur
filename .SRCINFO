@@ -1,0 +1,21 @@
+pkgbase = python-posixpatht
+	pkgdesc = Another posixpath module, supports names that contain backslashes.
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://pypi.org/project/posixpatht
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-posixpatht
+	conflicts = python-posixpatht
+	options = !strip
+	options = !debug
+	source = posixpatht-0.0.4.tar.gz::https://files.pythonhosted.org/packages/source/p/posixpatht/posixpatht-0.0.4.tar.gz
+	sha256sums = adb5c1a41e0eecee4317b1032737f7d4c19e5093abfd856a95b4732ff613fb08
+
+pkgname = python-posixpatht
