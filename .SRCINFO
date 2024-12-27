@@ -1,10 +1,11 @@
 pkgbase = mpris-miniplayer
 	pkgdesc = MPRIS Miniplayer
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.dummkopf.live/InventorX/mpris-miniplayer
 	arch = x86_64
 	license = ZLIB
+	depends = playerctl
 	depends = raylib
 	depends = sdbus-cpp
 	depends = imgui
