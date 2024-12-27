@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Winger <bmw@disroot.org>
 
 pkgname=portmod
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="A cli tool to manage mods for OpenMW"
 replaces=('openmmm')
@@ -15,7 +15,7 @@ makedepends=("python" "python-setuptools" "python-setuptools-scm" "rust" "python
 checkdepends=("python-pytest")
 optdepends=("tr-patcher" "python-argcomplete" "python-deprecated")
 source=("https://gitlab.com/portmod/portmod/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('987203646c38cc060cef48733d45d84dfb60cea5aa9011ff35d84a468fe5d825eaaf17cad2557c5aa99fddc4d24a33b02685e77a5d056156c19993e49cf53b6c')
+sha512sums=('2dcfa37976fcaa523a0f43a8291e6dc18227dd85c6256189231f08462bfeaa1e1cc182293c409b021b09aead08c756c8317171d04d141e2d2443e779242661b4')
 
 build() {
   cd "$srcdir/$pkgname-v$pkgver"
@@ -33,8 +33,7 @@ build() {
 
 check() {
   cd "$srcdir/$pkgname-v$pkgver"
-  # Disable for now, some tests will fail without a network connection
-  # SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver pytest
+  SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver pytest
 }
 
 package() {
