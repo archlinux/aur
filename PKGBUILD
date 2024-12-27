@@ -33,15 +33,13 @@ prepare() {
     -q \
     --profile minimal \
     --default-toolchain 1.80 \
-    --no-modify-path \
-    --no-update-default-toolchain
+    --no-modify-path
 
   cd "${_pkgname_prefix}"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
   # Must unset the CFLAGS, otherwise the build fails on linking openssl, don't know why
