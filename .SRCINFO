@@ -1,0 +1,21 @@
+pkgbase = python-iterdir
+	pkgdesc = python iterate over path tree.
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://pypi.org/project/iterdir
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-iterdir
+	conflicts = python-iterdir
+	options = !strip
+	options = !debug
+	source = iterdir-0.0.6.tar.gz::https://files.pythonhosted.org/packages/source/i/iterdir/iterdir-0.0.6.tar.gz
+	sha256sums = 6fe55c38635f34b74a61f19117bd0939cb783e2bd67f6e7bffb85a4be4b19668
+
+pkgname = python-iterdir
