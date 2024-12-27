@@ -4,6 +4,6 @@ Exec=youtube-music
 Terminal=false
 Type=Application
 Icon=youtube-music
-StartupWMClass=YouTube Music
+StartupWMClass=com.github.th_ch.youtube_music
 Comment=YouTube Music Desktop App - including custom plugins
 Categories=AudioVideo;
