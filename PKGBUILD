@@ -2,7 +2,7 @@
 
 _pkgname=LiquidLauncher
 
-pkgname="${_pkgname}"-appimage
+pkgname="liquidlauncher-appimage"
 pkgver=0.4.0
 pkgrel=1
 pkgdesc="A LiquidBounce launcher for Minecraft, written in Rust using Tauri."
