@@ -3,7 +3,7 @@
 pkgname=python-plotink
 _gitpkgname=plotink
 pkgver=1.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Common files for Inkscape extensions to drive EggBot, WaterColorBot, and similar plotter-type machines'
 arch=('any')
 url='https://github.com/evil-mad/plotink'
