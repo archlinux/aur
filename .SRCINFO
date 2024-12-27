@@ -1,0 +1,21 @@
+pkgbase = sharun-bin
+	pkgdesc = Run dynamically linked ELF binaries everywhere
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/VHSgunzo/sharun
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = sharun
+	conflicts = sharun
+	source = LICENSE-0.2.2::https://raw.githubusercontent.com/VHSgunzo/sharun/v0.2.2/LICENSE
+	source = README-0.2.2.md::https://raw.githubusercontent.com/VHSgunzo/sharun/v0.2.2/README.md
+	sha256sums = 39f388e52094ccc94bf793a75c8021fb673fcff2b8e10c316501c9d09ad8cd1a
+	sha256sums = 17191be70bda57af859858fa9e9943750beeb53ae0c2306fd042343f39340f5d
+	source_x86_64 = https://github.com/VHSgunzo/sharun/releases/download/v0.2.2/sharun-x86_64
+	sha256sums_x86_64 = ea660a65656340db29fba500275611d28e0945578cbf975eea1559e30402311a
+	source_aarch64 = https://github.com/VHSgunzo/sharun/releases/download/v0.2.2/sharun-aarch64
+	sha256sums_aarch64 = 0980db893b9fa03351ac712eb1b7dd19d1f9425e32000f82e825b01f4dbbd087
+
+pkgname = sharun-bin
