@@ -1,0 +1,43 @@
+From a6956ad4d9e7bc4adca8d858f0f3c7f8a06049d1 Mon Sep 17 00:00:00 2001
+From: Zhang Hua <zhanghua.00@qq.com>
+Date: Fri, 27 Dec 2024 17:22:30 +0800
+Subject: [PATCH] Remove broken sp://desktop/v1/version
+
+---
+ src/services/api.js | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/src/services/api.js b/src/services/api.js
+index 7c6d9c1..6f207c9 100644
+--- a/src/services/api.js
++++ b/src/services/api.js
+@@ -1,7 +1,6 @@
+ const Api = (() => {
+     async function getOS() {
+-        const systemInfo = await Spicetify.CosmosAsync.get("sp://desktop/v1/version")
+-        return systemInfo.platform
++        return Spicetify.Platform.operatingSystem
+     }
+ 
+     async function isPremium() {
+@@ -28,15 +27,13 @@ const Api = (() => {
+     }
+ 
+     async function isAppLaterThan(specifiedVersion) {
+-        let appInfo = await Spicetify.CosmosAsync.get("sp://desktop/v1/version")
+-        let result = appInfo.version.localeCompare(specifiedVersion, undefined, { numeric: true, sensitivity: "base" })
++        let result = Spicetify.Platform.version.localeCompare(specifiedVersion, undefined, { numeric: true, sensitivity: "base" })
+ 
+         return result === 1
+     }
+ 
+     async function isAppEarlierThan(specifiedVersion) {
+-        let appInfo = await Spicetify.CosmosAsync.get("sp://desktop/v1/version")
+-        let result = appInfo.version.localeCompare(specifiedVersion, undefined, { numeric: true, sensitivity: "base" })
++        let result = Spicetify.Platform.version.localeCompare(specifiedVersion, undefined, { numeric: true, sensitivity: "base" })
+ 
+         return result !== 1
+     }
+-- 
+2.47.1
+

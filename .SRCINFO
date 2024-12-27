@@ -1,7 +1,7 @@
 pkgbase = spicetify-theme-nord-git
 	pkgdesc = Nord Themed Spotify (JoshuaWierenga's fork)
-	pkgver = r527.g212f1d1
-	pkgrel = 2
+	pkgver = r535.gcca99f3
+	pkgrel = 1
 	url = https://tetrax-10.github.io/Nord-Spotify/
 	arch = any
 	license = MIT
@@ -10,7 +10,9 @@ pkgbase = spicetify-theme-nord-git
 	depends = spicetify-cli
 	provides = spicetify-theme-nord
 	conflicts = spicetify-theme-nord
-	source = git+https://github.com/JoshuaWierenga/Nord-Spotify
+	source = git+https://github.com/JoshuaWierenga/Nord-Spotify#branch=fixes
+	source = 0001-Remove-broken-sp-desktop-v1-version.patch
 	sha256sums = SKIP
+	sha256sums = 99aa2aabb1dd61293f1e24f3a7c2ed4061c5fef1c1ffb98d5835ed7c8854c851
 
 pkgname = spicetify-theme-nord-git
