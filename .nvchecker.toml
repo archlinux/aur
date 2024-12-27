@@ -1,0 +1,4 @@
+[monocle-bin]
+source = "git"
+git = "https://github.com/bgpkit/monocle.git"
+prefix = "v"
