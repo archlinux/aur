@@ -1,0 +1,21 @@
+pkgbase = python-encode-uri
+	pkgdesc = Encodes a URI by replacing each instance of certain characters.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://pypi.org/project/python-encode-uri
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-encode-uri
+	conflicts = python-encode-uri
+	options = !strip
+	options = !debug
+	source = python_encode_uri-0.0.3.tar.gz::https://files.pythonhosted.org/packages/source/p/python_encode_uri/python_encode_uri-0.0.3.tar.gz
+	sha256sums = afb67110d593f8024bde269ec2d4789332fe7028d907bf91e32c14f422bf9581
+
+pkgname = python-encode-uri
