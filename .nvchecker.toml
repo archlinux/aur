@@ -1,0 +1,4 @@
+[karpor]
+source = "git"
+git = "https://github.com/KusionStack/karpor.git"
+prefix = "v"
