@@ -1,0 +1,4 @@
+[python-elgato-streamdeck]
+source = "git"
+git = "https://github.com/abcminiuser/python-elgato-streamdeck.git"
+prefix = "v"

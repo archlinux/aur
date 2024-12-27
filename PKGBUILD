@@ -3,7 +3,7 @@
 
 _pkgname="python-elgato-streamdeck"
 pkgname="$_pkgname"
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="Library to control Elgato Stream Deck devices"
 url="https://github.com/abcminiuser/python-elgato-streamdeck"
@@ -11,6 +11,7 @@ license=('MIT')
 arch=('any')
 
 depends=(
+  'python'
   'python-pillow'
 )
 makedepends=(
@@ -22,12 +23,8 @@ makedepends=(
 
 _pkgsrc="$_pkgname-${pkgver%%.r*}"
 _pkgext="tar.gz"
-source=(
-  "$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/${pkgver%%.r*}.$_pkgext"
-)
-sha256sums=(
-  '1aa458a9f718b3a62acc1cc0434fd5a41333bea1c7a318426132fdecc7603d19'
-)
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/${pkgver%%.r*}.$_pkgext")
+sha256sums=('9726eaa4d6c82321d1c1d1a2f09b286b57d850c44506cd0e65697a685821b2d9')
 
 build() {
   cd "$_pkgsrc"
