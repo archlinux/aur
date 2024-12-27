@@ -1,0 +1,45 @@
+--- a/TrrntZipUI/TrrntZipUI.csproj
++++ b/TrrntZipUI/TrrntZipUI.csproj
+@@ -1,5 +1,6 @@
+-<?xml version="1.0" encoding="utf-8"?>
++﻿<?xml version="1.0" encoding="utf-8"?>
+ <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
++  <Import Project="..\packages\ILRepack.2.0.18\build\ILRepack.props" Condition="Exists('..\packages\ILRepack.2.0.18\build\ILRepack.props')" />
+   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+   <PropertyGroup>
+     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+@@ -30,13 +31,15 @@
+     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+     <UseApplicationTrust>false</UseApplicationTrust>
+     <BootstrapperEnabled>true</BootstrapperEnabled>
++    <NuGetPackageImportStamp>
++    </NuGetPackageImportStamp>
+   </PropertyGroup>
+   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+     <PlatformTarget>AnyCPU</PlatformTarget>
+     <DebugSymbols>true</DebugSymbols>
+     <DebugType>full</DebugType>
+     <Optimize>false</Optimize>
+-    <OutputPath>..\..\stage\Private\Debug\TrrntZipUI\</OutputPath>
++    <OutputPath>bin\Debug\</OutputPath>
+     <DefineConstants>DEBUG;TRACE</DefineConstants>
+     <ErrorReport>prompt</ErrorReport>
+     <WarningLevel>4</WarningLevel>
+@@ -46,7 +49,7 @@
+     <PlatformTarget>AnyCPU</PlatformTarget>
+     <DebugType>pdbonly</DebugType>
+     <Optimize>false</Optimize>
+-    <OutputPath>..\..\stage\Private\Release\TrrntZipUI\</OutputPath>
++    <OutputPath>bin\Release\</OutputPath>
+     <DefineConstants>
+     </DefineConstants>
+     <ErrorReport>prompt</ErrorReport>
+--- a/TrrntZipUI/packages.config
++++ b/TrrntZipUI/packages.config
+@@ -1,5 +1,6 @@
+ ﻿<?xml version="1.0" encoding="utf-8"?>
+ <packages>
++  <package id="ILRepack" version="2.0.18" targetFramework="net472" />
+   <package id="Microsoft.Bcl.AsyncInterfaces" version="6.0.0" targetFramework="net472" />
+   <package id="System.Buffers" version="4.5.1" targetFramework="net472" />
+   <package id="System.Memory" version="4.5.4" targetFramework="net472" />

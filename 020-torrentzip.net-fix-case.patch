@@ -1,6 +1,6 @@
 --- a/TrrntZipUI/TrrntZipUI.csproj
 +++ b/TrrntZipUI/TrrntZipUI.csproj
-@@ -77,7 +77,7 @@
+@@ -94,7 +94,7 @@
      <Compile Include="FrmTrrntzip.cs">
        <SubType>Form</SubType>
      </Compile>
@@ -8,4 +8,4 @@
 +    <Compile Include="frmTrrntzip.designer.cs">
        <DependentUpon>FrmTrrntzip.cs</DependentUpon>
      </Compile>
-     <Compile Include="Program.cs" />
+     <Compile Include="FileAdder.cs" />
