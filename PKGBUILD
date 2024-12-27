@@ -2,7 +2,7 @@
 # https://www.hoptodesk.com/changelog
 pkgname=hoptodesk-bin
 pkgver=1.42.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A free remote desktop tool that allows users to share their screens and remotely control access to their computers and devices."
 arch=('x86_64')
 url="https://www.hoptodesk.com"
@@ -20,7 +20,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/${pkgname%-bin}.deb"
 )
-sha256sums=('932533c52327211f6be8acf9d7a375e27bb5ff6e6e2c00a24da41976b028f28b')
+sha256sums=('7a85d90ad60e78f08c5d8641f853392202000302417a0a32f6120eddbc0604f4')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/usr\/share\/icons\/hicolor\/128x128\/128x128.png/${pkgname%-bin}/" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
