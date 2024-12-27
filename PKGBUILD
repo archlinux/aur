@@ -3,7 +3,7 @@
 pkgname=python-magnet2torrent
 _name=${pkgname#python-}
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Turn a bittorrent magnet links into a .torrent file."
 arch=('any')
@@ -15,8 +15,9 @@ conflicts=(${pkgname})
 depends=(
     python
     python-aiohttp
-    python-expiringdict
     python-yarl
+    #AUR
+    python-expiringdict
 )
 makedepends=(
     python-build
