@@ -1,7 +1,7 @@
 pkgbase = python-pybigwig
 	pkgdesc = A Python extension for quick access to bigWig and bigBed files
 	pkgver = 0.3.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deeptools/pyBigWig
 	arch = any
 	license = MIT

@@ -3,7 +3,7 @@
 pkgname=python-pybigwig
 _name=pyBigWig
 pkgver=0.3.23
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python extension for quick access to bigWig and bigBed files"
 arch=(any)
 url=https://github.com/deeptools/pyBigWig
