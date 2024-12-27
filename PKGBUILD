@@ -2,7 +2,7 @@
 
 pkgname="obsidian-cli"
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Interact with Obsidian in the terminal. Open, search, create, update and move notes!"
 arch=('x86_64' 'aarch64')
 url="https://yakitrak.github.io/obsidian-cli-docs"
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d9e8a31a6915a5cde3651f6336a14fd7708a3696c11dc40bcfb046e8a5b1a24f')
+sha256sums=('77c3fa6a0d402161545531ff148ce8cd6d6be31e4ed6ef9b67edb4f7bf48fc16')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
