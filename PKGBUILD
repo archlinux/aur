@@ -12,6 +12,7 @@ url="https://github.com/open-webui/open-webui"
 license=('MIT')
 depends=('python312')
 makedepends=('npm' 'nvm')
+optdepends=('ollama' 'tika-server')
 conflicts=('open-webui-git')
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "open-webui.service"
