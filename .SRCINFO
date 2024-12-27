@@ -1,0 +1,26 @@
+pkgbase = python-http-request
+	pkgdesc = Python http response utils.
+	pkgver = 0.0.5.3
+	pkgrel = 1
+	url = https://pypi.org/project/python-http-request
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-poetry-core
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-asynctools
+	depends = python-filewrap
+	depends = python-integer-tool
+	depends = python-texttools
+	provides = python-http-request
+	conflicts = python-http-request
+	options = !strip
+	options = !debug
+	source = python_http_request-0.0.5.3.tar.gz::https://files.pythonhosted.org/packages/source/p/python_http_request/python_http_request-0.0.5.3.tar.gz
+	sha256sums = 7ca5a606e0198949413315df0654b2d50185e47bd3841f9197e2a94f7dae83f5
+
+pkgname = python-http-request
