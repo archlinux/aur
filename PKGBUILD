@@ -2,9 +2,9 @@
 
 pkgname=linkandroid-bin
 _pkgname=LinkAndroid
-pkgver=0.2.0
-_pkgver=v0.2.0
-pkgrel=1
+pkgver=0.3.0
+_pkgver=v0.3.0
+pkgrel=2
 pkgdesc='全能手机连接助手,简单 高清投屏,多设备,USB/无线连接,录屏 MP4/GIF录屏,截屏美化,命令行,强大 文件管理,键盘鼠标OTG,应用管理。'
 arch=('x86_64' 'arm64')
 url="https://linkandroid.com/"
@@ -27,8 +27,8 @@ source_arm64=("https://github.com/modstart-lib/linkandroid/releases/download/$_p
 options=('!strip' '!debug')
 
 sha256sums=('6b39c2445af52bf98c9fd3979b0a45f400178f2ec4ffd9188370c3ac6ae2e1f1')
-sha256sums_x86_64=('7085866ecdeaff8b76dd6e7b397114766c5d17a11a2f8d348bbdd0f2b3f58f1e')
-sha256sums_arm64=('b96a1b211e8556fdc299505a7e280a97fa31311a7af5c6f1fdd9ffbb717c64fa')
+sha256sums_x86_64=('121ebf28271eecacbbc869f880bc80a151f36f99353c0535bc95dd70efb623e4')
+sha256sums_arm64=('231fc18fbbab53edafad691b58f49eb0d7d59c5ac97d28417d0e2ddc8ce3bc6d')
 
 package() {
     bsdtar -xf "${srcdir}/data."* -C "$pkgdir/"
