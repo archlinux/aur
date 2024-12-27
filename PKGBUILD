@@ -5,8 +5,9 @@ pkgname="${_pkgname}-git"
 pkgdesc="Current weather info for status bars like polybar"
 
 pkgver=1.4.0.r0.g799bac9
-pkgrel=1
+pkgrel=2
 arch=("any")
+options=('!debug')
 
 url="https://github.com/awersching/wedder"
 source=("git+https://github.com/awersching/wedder.git")
