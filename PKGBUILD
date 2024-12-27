@@ -2,8 +2,8 @@
 
 pkgname=python-django-channels
 _pypi_pkgname=channels
-pkgver=4.1.0
-pkgrel=1
+pkgver=4.2.0
+pkgrel=0
 pkgdesc="Developer-friendly asynchrony for Django"
 arch=(any)
 url="http://github.com/django/channels"
