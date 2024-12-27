@@ -9,8 +9,8 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=bab5c6ade76437ed26cd6073c8eee53bc6d75a02
-_bcr_commit=21335845a67133e64d010eb3ab1d8f8565188234
+_mozc_commit=8fc360d3b1ba493ad49130f65d61901602948cc5
+_bcr_commit=0d1e9906f2a212478a7bdd009b92dca4ed001582
 _dict_to_mozc_commit=a7ff0c833d104523d61dda760112db0476108740
 _branch=fcitx
 # Sudachi Dictionary
@@ -28,7 +28,7 @@ _wil_commit=fc5dbf5
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.30.5618.102
-pkgrel=33
+pkgrel=34
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
@@ -58,8 +58,8 @@ source=("git+$url.git#commit=${_mozc_commit}"
         fcitx5-mozc-conf.patch
         )
 
-sha512sums=('d4d0abd7591e650664c3758f8d6779fbf38a30d9e65d51cd06df46f47fd40e31a7e153a940d51db9e9ff0676a6985f22267c2fb91e941d1c7bfd04f8004b1882'
-            'd176560e33b9997fa8f2975fe1ebdd87ec19dff45fb33bb5c60db76067291dff8feb3583d544bcd2c0efc2f74812c58c33f8dbd9f11cdb27b2a6f5e61844fab3'
+sha512sums=('7971832f5d88d2d4cf955c57bb1faeaeb4ef57c6bd408b3b4e5b658ebc420e631044e632faf262004504b825cbb37e3808c38c4898d75f89a12eea32ada500db'
+            'b6129651986a9e087943dc144b45e85cae7f57aebe97969ffa4c34e74300bb5d2f3915a58864d62b4836c52384bea2e4b852c6afbc3ce07e1c110e1d8ca7b67d'
             '83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68'
             'f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d'
             '44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b'
@@ -160,7 +160,7 @@ build() {
   # The bazel rules have changed, so the cache will be deleted.
   #bazel clean --expunge
 
-  bazel build --registry=file://$srcdir/bcr --config oss_linux --config release_build package unix/fcitx5:fcitx5-mozc.so --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized $BAZEL_LDOPTS $BAZEL_COPTS $BAZEL_CXXOPTS
+  ../scripts/build_fcitx5_bazel --registry=file://${srcdir}/bcr --config release_build --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized $BAZEL_LDOPTS $BAZEL_COPTS $BAZEL_CXXOPTS package
   bazel shutdown
 }
 
