@@ -2,46 +2,57 @@
 
 pkgname=netassistant-git
 _pkgname=NetAssistant
-pkgver=v1.0.0.r4.ge6bca9a
+pkgver=1.0.0.r4.ge6bca9a
 pkgrel=1
 epoch=
 pkgdesc="A network debugging assistant based on Qt GUI."
-arch=('any')
+arch=($CARCH)
 url="https://github.com/busyluo/NetAssistant"
-license=('GPL3')
+license=('GPL-3.0-only')
 groups=()
-depends=('qt5-base')
-makedepends=("gcc" "git")
+depends=(qt5-base)
+makedepends=(
+  git
+  qt5-tools
+)
 checkdepends=()
 optdepends=()
-provides=(NetAssistant)
-conflicts=(netassistant)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 replaces=()
 backup=()
 options=('!strip')
 install=
 changelog=
-source=("${_pkgname}::git+https://hub.fastgit.org/busyluo/NetAssistant.git")
+source=("${_pkgname}::git+${url}.git")
 noextract=()
 sha256sums=('SKIP')
 #validpgpkeys=()
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/${_pkgname}"
+  (
+    set -o pipefail
+    git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
+}
+
+prepare() {
+  git -C "${srcdir}/${_pkgname}" clean -dfx
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}"
-    qmake
-    make
+  cd "${srcdir}/${_pkgname}"
+  qmake
+  make
 }
 
 package() {
-    install -Dm0755 "${srcdir}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm0755 "${srcdir}/${_pkgname}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm0644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/metainfo/io.github.busyluo.netassistant.metainfo.xml" << EOF
+  install -Dm0755 "${srcdir}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-git}"
+  install -Dm0755 "${srcdir}/${_pkgname}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+  install -Dm0644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+  install -Dm0644 /dev/stdin "${pkgdir}/usr/share/metainfo/io.github.busyluo.netassistant.metainfo.xml" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>io.github.busyluo.netassistant</id>
@@ -62,7 +73,7 @@ package() {
 </component>
 EOF
 
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/io.github.busyluo.netassistant.desktop" << EOF
+  install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/io.github.busyluo.netassistant.desktop" <<EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
