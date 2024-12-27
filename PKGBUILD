@@ -2,7 +2,7 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=affine
 _pkgname=AFFiNE
-pkgver=0.18.2
+pkgver=0.19.0
 _electronversion=33
 pkgrel=1
 pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use."
@@ -34,7 +34,7 @@ source=(
     "${pkgname}.sh"
     "${pkgname}.desktop"
 )
-sha256sums=('1ed6689ebbcacdc3ad9cb4773ccad0b0358c8fb32f636d581a1aa740ea0caf3b'
+sha256sums=('044bba39fac789c319fb962553b1c1c4e7b9be077776ba450d05f03a61e7448f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980'
             '18724474ab2351ed00965f9fe9adea04967458dec810866b572cf44ca8185b5b')
 
@@ -59,14 +59,14 @@ build() {
     export APP_VERSION="${pkgver}"
     ./scripts/set-version.sh $APP_VERSION
     CFLAGS+=' -ffat-lto-objects' # https://github.com/launchbadge/sqlx/issues/3149
-    yarn workspace @affine/native build
+    yarn affine @affine/native build
     export BUILD_TYPE=stable
-    SKIP_NX_CACHE=1 yarn workspace @affine/electron generate-assets
+    SKIP_NX_CACHE=1 yarn affine @affine/electron generate-assets
     yarn config set nmMode classic
     yarn config set nmHoistingLimits workspaces
     find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +
     yarn install
-    SKIP_WEB_BUILD=1 SKIP_BUNDLE=1 HOIST_NODE_MODULES=1 DEBUG='*' yarn workspace @affine/electron make --platform=linux --arch="${_arch}"
+    SKIP_WEB_BUILD=1 SKIP_BUNDLE=1 HOIST_NODE_MODULES=1 DEBUG='*' yarn affine @affine/electron make --platform=linux --arch="${_arch}"
     unzip packages/frontend/apps/electron/out/stable/make/zip/linux/${_arch}/${_pkgname}-linux-${_arch}-${pkgver}.zip
 }
 
