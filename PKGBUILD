@@ -4,17 +4,37 @@
 
 pkgbase=lief
 pkgname=(lief python-lief)
-pkgver=0.15.1
-pkgrel=1
+pkgver=0.14.1
+pkgrel=2
 pkgdesc='Library to instrument executable formats'
 arch=('x86_64')
 url='https://github.com/lief-project/lief'
 license=(Apache-2.0)
-depends=(tl-expected)
-makedepends=(cmake python nlohmann-json python-build python-installer python-wheel python-tomli python-scikit-build-core ninja python-cattrs python-packaging python-rich python-setuptools python-pydantic python-pydantic-core python-pyproject-metadata python-pathspec)
+depends=(
+  tl-expected
+)
+makedepends=(
+  cmake
+  python
+  nlohmann-json
+  python-build
+  python-installer
+  python-wheel
+  python-tomli
+  python-scikit-build-core
+  ninja
+  python-cattrs
+  python-packaging
+  python-rich
+  python-setuptools
+  python-pydantic
+  python-pydantic-core
+  python-pyproject-metadata
+  python-pathspec
+)
 provides=(libLIEF.so)
-source=($url/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('28653b59afc8b8b255251f21a0f3cbfbdec05dd988fb3f473e22dde28f427ad8')
+source=("lief-${pkgver}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('92916dcb3178353d863aef4f409186889983c56e025b774741d5316a72ec3a7d')
 
 prepare() {
   cd "LIEF-$pkgver/api/python"
@@ -25,12 +45,13 @@ build() {
   cd "LIEF-$pkgver"
   cmake \
     -B build \
-    -G Ninja \
+    -G "Ninja" \
     -D CMAKE_BUILD_TYPE=Release \
     -D BUILD_SHARED_LIBS=ON \
     -D LIEF_EXAMPLES=OFF \
     -D LIEF_PYTHON_API=ON \
     -D LIEF_OPT_NLOHMANN_JSON_EXTERNAL=ON \
+    -D LIEF_OPT_MBEDTLS_EXTERNAL=OFF \
     -D LIEF_OPT_EXTERNAL_EXPECTED=ON
   cmake --build build
 
