@@ -2,7 +2,7 @@
 # Contributor: Sukanka <su975853527 [AT] gmail.com>
 pkgname=yank-note-bin
 _pkgname=Yank-Note
-pkgver=3.78.1
+pkgver=3.78.2
 _electronversion=30
 pkgrel=1
 pkgdesc='A Hackable Markdown Note Application for Programmers.(Prebuilt version.Use system-wide electron)'
@@ -26,8 +26,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-arm64-${pkgver}.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-${pkgver}.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('e5888336413c8a419a01a2e37af60cea4261374968783b074573dc28442eb6a5')
-sha256sums_x86_64=('8a058b7ca4db9b6901121579d130139cc98f83e96309ffc2788d2a23c77aaff1')
+sha256sums_aarch64=('08731bebaa450f04a786c2994b680ca945866ccd41dc1bf9d74eefd1809a6e4f')
+sha256sums_x86_64=('89179a26949e69caff8e8b254483e0a27cc64622d2322643365d693dbb6dba9e')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/
