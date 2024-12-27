@@ -1,0 +1,4 @@
+[chromap-bin]
+source = "git"
+git = "https://github.com/haowenz/chromap.git"
+prefix = "v"

@@ -1,0 +1,22 @@
+pkgbase = chromap-bin
+	pkgdesc = An ultrafast method for aligning and preprocessing high throughput chromatin profiles
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://haowenz.github.io/chromap
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	provides = chromap
+	conflicts = chromap
+	source = README-0.2.7.md::https://github.com/haowenz/chromap/raw/refs/tags/v0.2.7/README.md
+	source = LICENSE-0.2.7::https://github.com/haowenz/chromap/raw/refs/tags/v0.2.7/LICENSE
+	source = chromap-0.2.7.man.1::https://github.com/haowenz/chromap/raw/refs/tags/v0.2.7/chromap.1
+	sha256sums = 82dfb58777e26673d1e844886c0d51b1cf491054f309fe0bd933b74406155117
+	sha256sums = ecc3cb7fc6ab0fb563e0900c0960aef0e8dc0229c022013b1760baf07f85b5cf
+	sha256sums = dda3f7875f7a2501ca42b73fbbecc63083c195bd64427de2df19aab14b4f343f
+	source_x86_64 = chromap-0.2.7-x86_64.tar.bz2::https://github.com/haowenz/chromap/releases/download/v0.2.7/chromap-0.2.7_x64-linux.tar.bz2
+	sha256sums_x86_64 = 371d9fbd5da507b51ab8c696f069bd94d04e27a2241980b129e54e1dedc1a567
+
+pkgname = chromap-bin
