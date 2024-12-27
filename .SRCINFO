@@ -1,6 +1,6 @@
 pkgbase = redisinsight
 	pkgdesc = Desktop manager that provides an intuitive and efficient GUI for Redis, allowing you to interact with your databases, monitor, and manage your data.
-	pkgver = 2.64.0
+	pkgver = 2.64.1
 	pkgrel = 2
 	url = https://redis.com/redis-enterprise/redis-insight
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = redisinsight
 	makedepends = clang
 	provides = redis-insight
 	conflicts = redis-insight-bin
-	source = redisinsight-2.64.0.tar.gz::https://github.com/RedisInsight/RedisInsight/archive/2.64.0.tar.gz
-	sha256sums = 25fc3c2ac0c0902a3ed3f69878ec4c248ca09b713c0136fb5ea7122fa467b756
+	source = redisinsight-2.64.1.tar.gz::https://github.com/RedisInsight/RedisInsight/archive/2.64.1.tar.gz
+	sha256sums = 850ea1cb2dc9b6a77df253447e163c50ede91a59d7d8e6f0047f158593fcb2db
 
 pkgname = redisinsight
