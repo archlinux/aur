@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-google-speak
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Simple class to create speech files using Google Translate URL"
 arch=(any)
@@ -9,8 +9,8 @@ url="https://github.com/marcus67/python_google_speak"
 license=(GPL3)
 depends=(python-requests python-playsound)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-source=(https://pypi.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('a3a169e9d1817ee6c46c3baa6af26af6d77dd7b21840eac0068454eb3ebde960abe9fc6fc73a4e141bca45bb0c9f577b06d377ead791b0cc2abd1fc671dacbd2')
+source=(https://pypi.org/packages/source/${pkgname::1}/${pkgname}/${pkgname//-/_}-${pkgver}.tar.gz)
+sha512sums=('21224e2b225bd7310bc84fa137bcf96b470680ca1af09aeb5b5fd546998f5c3764764081277d2a0c456e6b88e540752b167503cc91d4aa76df8fff48ebbe29b1')
 
 build() {
   cd ${pkgname}-${pkgver}
