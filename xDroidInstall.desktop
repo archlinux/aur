@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=System;
+Comment=xDroid xDroidInstall
+Exec=xDroidInstall
+Hidden=false
+Icon=xAppCenter
+Name=xDroidInstall
+NoDisplay=false
+Type=Application
+X-Deepin-Vendor=user-custom

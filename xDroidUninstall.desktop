@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=System;
+Comment=xDroid xDroidUninstall
+Exec=xDroidUninstall
+Hidden=false
+Icon=xAppCenter
+Name=xDroidUninstall
+NoDisplay=false
+Type=Application
+X-Deepin-Vendor=user-custom
