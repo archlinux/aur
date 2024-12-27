@@ -3,7 +3,8 @@
 pkgname=wedder
 pkgdesc="Current weather info for status bars like polybar"
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
+options=("!debug")
 
 arch=("x86_64")
 url="https://github.com/awersching/wedder"
