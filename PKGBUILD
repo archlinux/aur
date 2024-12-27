@@ -2,7 +2,7 @@
 # Contributor: John Lane <archlinux at jelmail dot com>
 pkgname='railway-sans-font'
 pkgver='20170421'
-pkgrel='7'
+pkgrel='8'
 pkgdesc="An open source version of Edward Johnston's Timeless Typeface for London Underground of 1916"
 arch=('any')
 url='https://www.ffonts.net/Railway-Semibold.font'
@@ -12,8 +12,8 @@ source=(
 	"$pkgname-$pkgver.zip::$url.zip"
 	'LICENSE'
 )
-sha512sums=('8f94b1ab77975e70f4795261f63d59c9400a24f53a48e9cc385f39ae990812fa466064e2ab246286baa5a4b78cff806501fddfcc2cb4f5d6131c22e2c184c3c2'
-            'e744197e9e025386ad76a5b05564f1c0c0626da7f2febe19cceae8bbcfcc483e913c55ba13729f36a7f1a947d5c357e56b6b6a9ba895b94b6baff0833f7a3ace')
+b2sums=('7334af177dbf32427fc411e2355cb659c6b64ad3c06a2522f18cdb45f562b79e0885dfbbea1a5790f5ddaf41c26f960617548bb48aa880704d27743fe136d805'
+        'be49b9f318177caa8944438307bf956b6d03b8d69dc3a528bd6fc64020e02e715ab518d8ed9761fa144f41487ea1fc3638fb7b3288653f69ea310daa1b9db3ae')
 
 check() {
 	_checkoutput="$(fc-scan "$srcdir/"{'O','T'}'TF/'*)"
@@ -23,8 +23,8 @@ check() {
 
 package() {
 	cd "$srcdir/"
-	install -dm755 "$pkgdir/usr/share/fonts/"{'O','T'}'TF'
-	install -Dm644 'OTF/'*'.otf' "$pkgdir/usr/share/fonts/OTF/"
-	install -Dm644 'TTF/'*'.ttf' "$pkgdir/usr/share/fonts/TTF/"
+	install -dm755 "$pkgdir/usr/share/fonts/"{'O','T'}"TF/$pkgname/"
+	install -Dm644 'OTF/'*'.otf' "$pkgdir/usr/share/fonts/OTF/$pkgname/"
+	install -Dm644 'TTF/'*'.ttf' "$pkgdir/usr/share/fonts/TTF/$pkgname/"
 	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/OFL-1.1-RFN"
 }
