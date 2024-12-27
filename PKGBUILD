@@ -12,8 +12,8 @@ fi
 ## basic info
 _pkgname="ryujinx-git"
 pkgname="$_pkgname"
-pkgver=r3636.1d0152b96
-pkgrel=2
+pkgver=r3731.9eb273a0f
+pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://github.com/GreemDev/Ryujinx"
 license=('MIT')
@@ -93,27 +93,28 @@ package() {
   desktop-file-edit --set-icon="ryujinx" "$pkgdir/usr/share/applications/ryujinx.desktop"
 }
 
-_update_version() {
-  : ${_pkgver:=$pkgver}
+# update_version() {
+#  : ${_pkgver:=$pkgver}
+#
+#  if [[ "${_autoupdate::1}" != "t" ]]; then
+#    return
+#  fi
+#
+#  local _response _tag _pkgver_new
+#  _response=$(curl -Ssf "$url/releases")
+#  _tag=$(
+#    printf '%s' "$_response" \
+#      | grep -E '/tree/([0-9\.]+)"' \
+#      | sed -E 's&^.*/tree/([0-9\.]+)".*$&\1&' \
+#      | sort -rV | head -1
+#  )
+#  _pkgver_new="${_tag#v}"
+#
+#  if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
+#    _pkgver="${_pkgver_new:?}"
+#    else
+#  fi
+#}
 
-  if [[ "${_autoupdate::1}" != "t" ]]; then
-    return
-  fi
-
-  local _response _tag _pkgver_new
-  _response=$(curl -Ssf "$url/releases")
-  _tag=$(
-    printf '%s' "$_response" \
-      | grep -E '/tree/([0-9\.]+)"' \
-      | sed -E 's&^.*/tree/([0-9\.]+)".*$&\1&' \
-      | sort -rV | head -1
-  )
-  _pkgver_new="${_tag#v}"
-
-  if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
-    _pkgver="${_pkgver_new:?}"
-  fi
-}
-
-_update_version
+# _update_version
 _source_ryujinx
