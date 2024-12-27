@@ -4,7 +4,7 @@
 
 _pkgname=xclip
 pkgname=$_pkgname-git
-pkgver=r173.b372f73
+pkgver=r185.e5b2036
 pkgrel=3
 pkgdesc='Command line interface to the X11 clipboard'
 url='https://github.com/astrand/xclip'
