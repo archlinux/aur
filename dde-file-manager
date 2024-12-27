@@ -1,0 +1,62 @@
+#!/bin/bash
+#
+# Copyright (C) 2024 Guoxin "7Ji" Pu <pugokushin@gmail.com>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+#
+
+applet_dde() {
+	local item=
+	while (($#)); do
+		case "$1" in
+		'--show-item')
+			item="$2"
+			shift
+			;;
+		esac
+		shift
+	done
+	if [[ "${item}" ]]; then
+		local path object target
+		path=$(readlink -f -- "${item}") # Resolve this to absolute path that's same across host / guest
+		echo "Fake deepin file manager: dbus-send to open '${path}' in file manager"
+		if [[ -d "${path}" ]]; then
+			# WeChat pass both files and folders in the same way, if we use ShowItems for folders,
+			# it would open that folder's parent folder, which is not right.
+			object=ShowFolders
+			target=folders
+		else
+			object=ShowItems
+			target=items
+		fi
+		exec dbus-send --print-reply --dest=org.freedesktop.FileManager1 \
+			/org/freedesktop/FileManager1 \
+			org.freedesktop.FileManager1."${object}" \
+			array:string:"file://${path}" \
+			string:fake-dde-file-manager-show-"${target}"
+		# We should not fall to here, but add a fallback anyway
+		echo "Fake deepin file manager: fallback: xdg-open to show '${path}' in file manager"
+		exec xdg-open "${path}"
+	else
+		echo "Fake deepin file manager: xdg-open with args $@"
+		exec xdg-open "$@"
+	fi
+	# At this stage, it's either: dbus-send not found, or xdg-open not found, this should not happen
+	# In whatever case, bail out
+	echo "Fake deepin file manager: could not open any thing, original args: $@"
+	return 1
+}
+
+applet_dde "$@"
