@@ -7,13 +7,13 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=3.7.1.r2398.g81ff6db62
+pkgver=4.0b1.r45.gc473aa60a
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
 arch=('i686' 'x86_64' 'arm')
 url="https://github.com/fish-shell/fish-shell"
-license=('GPL-2.0-or-later')
+license=('GPL-2.0-only AND BSD-3-Clause AND ISC AND MIT AND PSF-2.0')
 depends=(
   'glibc'
   'ncurses'
