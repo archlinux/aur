@@ -1,9 +1,9 @@
 # Maintainer: Jake Stanger <mail@jstanger.dev>
 
 pkgname=ironbar-git
-pkgver=0.16.0.r121.gbdf6b3b
+pkgver=0.16.1.r121.g67426bd
 pkgrel=1
-makedepends=('rust' 'cargo' 'git' 'openssl' 'libpulse' 'luajit' 'libdbusmenu-gtk3')
+makedepends=('rust' 'cargo' 'git' 'openssl' 'libpulse' 'luajit' 'libinput')
 depends=('gtk3' 'gtk-layer-shell' 'lua51-lgi' 'libdbusmenu-glib' 'libdbusmenu-gtk3')
 provides=('ironbar')
 conflicts=('ironbar')
