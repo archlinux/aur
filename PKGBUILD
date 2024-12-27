@@ -2,16 +2,18 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 
-pkgbase=lief
-pkgname=(lief python-lief)
+pkgname=lief
 pkgver=0.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Library to instrument executable formats'
 arch=('x86_64')
 url='https://github.com/lief-project/lief'
 license=(Apache-2.0)
 depends=(
   tl-expected
+)
+optdepends=(
+  'python: python bindings'
 )
 makedepends=(
   cmake
@@ -55,17 +57,12 @@ build() {
     -D LIEF_OPT_EXTERNAL_EXPECTED=ON
   cmake --build build
 
-  cd api/python
-  python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation api/python
 }
 
-package_lief() {
+package() {
   cd "LIEF-$pkgver"
   DESTDIR="$pkgdir" cmake --install build
-}
 
-package_python-lief() {
-  depends+=(python lief)
-  cd "LIEF-$pkgver/api/python"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" api/python/dist/*.whl
 }
