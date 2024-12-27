@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=alicorn-git
 _pkgname=Alicorn
-pkgver=r1161.0684452
+pkgver=r1180.2128214
 _electronversion=33
 _nodeversion=22
 pkgrel=1
@@ -38,7 +38,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -70,15 +70,24 @@ build() {
         echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
     fi
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    sed -e "
+        2i\  \"name\": \"${_pkgname}\",
+        2i\  \"description\": \"${pkgdesc}\",
+        3i\  \"main\": \"dist\/prod\/main.js\",
+        s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
+    " -i package.json
     NODE_ENV=development    pnpm install
-    NODE_ENV=production     pnpm run release-full
-    NODE_ENV=production     npx electron-packager dist/release "${pkgname%-git}" --overwrite --platform=linux --icon ./resources/build/icon --out out
+    NODE_ENV=development    pnpm add -D electron-builder
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
+    NODE_ENV=production     pnpm run main:prod
+    NODE_ENV=production     pnpm run renderer:prod
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/out/${pkgname%-git}-linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}/app"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/dist/prod/"* "${pkgdir}/usr/lib/${pkgname%-git}/app"
     install -Dm644 "${srcdir}/${pkgname//-/.}/resources/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
