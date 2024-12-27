@@ -9,6 +9,7 @@ pkgbase = python-markitdown
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-hatch
 	depends = python
 	depends = python-beautifulsoup4
 	depends = python-requests
