@@ -1,7 +1,7 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 
 pkgname=puddletag-git
-pkgver=2.3.0.r19.g180463d
+pkgver=2.4.0.r10.g1b7b714
 pkgrel=1
 pkgdesc="An audio tag editor for GNU/Linux, git version"
 url="https://github.com/${pkgname%%-*}/${pkgname%%-*}"
