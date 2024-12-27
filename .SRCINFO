@@ -1,0 +1,22 @@
+pkgbase = python-asynctools
+	pkgdesc = Python asynchronous tools.
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://pypi.org/project/python-asynctools
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-decotools
+	depends = python-undefined
+	provides = python-asynctools
+	conflicts = python-asynctools
+	options = !strip
+	source = python_asynctools-0.0.7.tar.gz::https://files.pythonhosted.org/packages/source/p/python_asynctools/python_asynctools-0.0.7.tar.gz
+	sha256sums = 7a29d9a8d0d6bcbeaf536f0c637ee533a507c3c6643d2bf5b515277fe2b3b158
+
+pkgname = python-asynctools
