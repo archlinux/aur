@@ -31,6 +31,7 @@ makedepends=(
   python-installer
   python-setuptools
   python-wheel
+  python-hatch
   git
 )
 checkdepends=(python-pytest)
