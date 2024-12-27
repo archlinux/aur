@@ -1,6 +1,6 @@
 # Maintainer: J. King <jking@jkingweb.ca>
 pkgname="arsse-git"
-pkgver=0.10.4
+pkgver=0.10.6
 pkgrel=1
 epoch=
 pkgdesc="Multi-protocol RSS/Atom newsfeed synchronization server, bugfix-testing version"
@@ -77,3 +77,4 @@ package() {
     cp dist/arch/*.service "$pkgdir/usr/lib/systemd/system"
     cp dist/arch/systemd-environment "$pkgdir/etc/webapps/arsse/systemd-environment"
 }
+
