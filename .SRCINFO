@@ -1,7 +1,7 @@
 pkgbase = onvif-util
 	pkgdesc = A client side implementation of the ONVIF specification - CLI app
-	pkgver = 1.4.6
-	pkgrel = 2
+	pkgver = 1.4.7
+	pkgrel = 1
 	url = https://github.com/sr99622/libonvif
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = onvif-util
 	makedepends = git
 	makedepends = libonvif
 	depends = libonvif
-	source = git+https://github.com/sr99622/libonvif.git#commit=5c8433978a1bc15a5b662b451759af4f5d7e27be
-	sha256sums = 3db685e429d00f733307b8c056a63817b864162d6b6d404ec83966138273ed8a
+	source = git+https://github.com/sr99622/libonvif.git#commit=c47d839416cb6b46bad644468e08a65e7a7139cf
+	sha256sums = 9a8e2801e7265085e2af58878b9d09c6fee0b8c39d2f9c2d0f79a3993849ffd8
 
 pkgname = onvif-util

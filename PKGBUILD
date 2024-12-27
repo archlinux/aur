@@ -3,8 +3,8 @@
 # All my PKGBUILDs are managed at https://github.com/tmn505/AUR
 
 pkgname=onvif-util
-pkgver=1.4.6
-pkgrel=2
+pkgver=1.4.7
+pkgrel=1
 pkgdesc='A client side implementation of the ONVIF specification - CLI app'
 url='https://github.com/sr99622/libonvif'
 license=('LGPL-2.1-or-later')
@@ -13,13 +13,12 @@ depends=('libonvif')
 makedepends=('cmake'
              'git'
              'libonvif')
-# _prjrel=2.0.1
-source=("git+${url}.git#commit=5c8433978a1bc15a5b662b451759af4f5d7e27be")
-sha256sums=('3db685e429d00f733307b8c056a63817b864162d6b6d404ec83966138273ed8a')
+# _prjrel=2.3.2
+source=("git+${url}.git#commit=c47d839416cb6b46bad644468e08a65e7a7139cf")
+sha256sums=('9a8e2801e7265085e2af58878b9d09c6fee0b8c39d2f9c2d0f79a3993849ffd8')
 
 prepare() {
 	cd ${srcdir}/libonvif/${pkgname}
-	git checkout d6e77c48f3e2a1993535214f0168d4fd5ba9d734 src/onvif-util.cpp
 	sed -e 's,libonvif,onvif,' -i CMakeLists.txt
 }
 
