@@ -1,0 +1,16 @@
+pkgbase = release-tag-bin
+	pkgdesc = Automatically create semantic version git tags
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/jmelahman/tag
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tag
+	conflicts = release-tag
+	source_x86_64 = https://github.com/jmelahman/tag/releases/download/v0.6.1/tag_v0.6.1_x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 20f98d8c3b1a65d7525498130f106e4193cd6cdf5a8713ef0dc3ee676121feb7
+	source_aarch64 = https://github.com/jmelahman/tag/releases/download/v0.6.1/tag_v0.6.1_aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 91d2d9bebd7e43e0c4f5ed6994bf91fca8f2c79fa86f02f0ef84b095c3f60474
+
+pkgname = release-tag-bin
