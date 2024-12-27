@@ -24,7 +24,7 @@ pkgbase = electron6-bin
 	optdepends = kde-cli-tools: file deletion support (kioclient5)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron6
+	provides = electron6=6.1.12
 	conflicts = electron6
 	source = electron-launcher.sh
 	b2sums = 49d2beda3260b6a09b7365a119524bd9b0c03b89e95be608a89f728d72e3694892d3ad0d02db85c09ce2f4ccb458ea207fab27f84a2e7e15a2fd4f720d991dac
