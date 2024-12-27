@@ -1,0 +1,21 @@
+pkgbase = python-partial
+	pkgdesc = Python partial.
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://pypi.org/project/python-partial
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-partial
+	conflicts = python-partial
+	options = !strip
+	options = !debug
+	source = python_partial-0.0.6.tar.gz::https://files.pythonhosted.org/packages/source/p/python_partial/python_partial-0.0.6.tar.gz
+	sha256sums = 41de075d9a01ec9a5981591a6944c4b4cbfbb9da4d259814e55e21a70dd81e43
+
+pkgname = python-partial
