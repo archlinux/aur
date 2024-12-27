@@ -2,11 +2,11 @@
 pkgname=python-easydev
 _name=${pkgname#python-}
 pkgver=0.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides utilities that are of general usage for the development of Python packages"
 arch=(any)
 license=(BSD)
-depends=(python-sphinx)
+depends=(python)
 makedepends=(python-build python-installer python-wheel python-poetry-core)
 url="https://github.com/cokelaer/easydev"
 source=($_name-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
