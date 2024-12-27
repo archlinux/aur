@@ -1,49 +1,43 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Adam Perkowski <adas1per@protonmail.com>
+# https://github.com/adamperkowski/PKGBUILDs
+
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=lnx
 pkgver=0.9.0
+_pkgver="$pkgver-master"
 pkgrel=1
-pkgdesc='An adaptable search engine API'
+pkgdesc='Adaptable search engine API'
 arch=('x86_64')
-url='https://lnx.rs'
+url="https://github.com/$pkgname-search/$pkgname"
 license=('MIT')
-depends=('gcc-libs')
-makedepends=('git' 'rust')
-options=('!lto')
-_commit='6fbb7defe4c4d8331bfb19ae72b815b5d9933bb4'
-source=("$pkgname::git+https://github.com/lnx-search/lnx.git#commit=$_commit")
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-  git describe --tags | sed 's/^v//'
-}
+makedepends=('cargo')
+depends=('gcc-libs' 'glibc' 'mimalloc' 'zstd')
+source=("$pkgname-$pkgver::$url/archive/$_pkgver.tar.gz")
+md5sums=('1aeae479dfd3c8ae928369115dfd2088')
 
 prepare() {
-  cd "$pkgname"
-
-  # download dependencies
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cd "$pkgname-$_pkgver"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "$pkgname"
-
-  cargo build --frozen --release
+  cd "$pkgname-$_pkgver"
+  export CARGO_TARGET_DIR=target
+  export RUSTFLAGS="-C link-arg=/usr/lib/libmimalloc.so -C link-arg=/usr/lib/libzstd.so"
+  cargo build --release --frozen
 }
 
 check() {
-  cd "$pkgname"
-  # skip failing test
-  cargo test --frozen -- --skip index::tests::default_writer_settings_expect_ok
+  cd "$pkgname-$_pkgver"
+  cargo test --release --frozen
 }
 
 package() {
-  cd "$pkgname"
-
-  # binary
-  install -vDm755 -t "$pkgdir/usr/bin" target/release/lnx
-
-  # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  cd "$pkgname-$_pkgver"
+  install -Dm0755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
+
+# vim: ts=2 sw=2 et:
