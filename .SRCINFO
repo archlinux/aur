@@ -1,0 +1,26 @@
+pkgbase = python-pybertini
+	pkgdesc = Python interface for Bertini2
+	pkgver = 1.0alpha5
+	pkgrel = 1
+	url = https://github.com/bertiniteam/b2
+	arch = x86_64
+	license = custom:GPL-3.0-or-later WITH Bertini2-Additional-GPL-Terms
+	makedepends = boost>=1.83
+	makedepends = eigen>=3.3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = bertini2
+	depends = boost-libs>=1.83
+	depends = eigenpy>=3.3
+	depends = gcc-libs
+	depends = glibc
+	depends = gmp
+	depends = mpfr
+	depends = python
+	depends = python-numpy
+	source = b2-436c6ec507594b13edf67212256f90d2b83fa121.tar.gz::https://github.com/bertiniteam/b2/archive/436c6ec507594b13edf67212256f90d2b83fa121.tar.gz
+	sha256sums = b9b34a27a53924d2e4556c4646a791b6c918f7dc306450daae585d60177a9656
+
+pkgname = python-pybertini

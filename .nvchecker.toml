@@ -1,0 +1,6 @@
+[python-pybertini]
+source = "regex"
+url = "https://raw.githubusercontent.com/bertiniteam/b2/refs/heads/develop/python/setup.py"
+regex = "version=['\"](.+?)['\"]"
+from_pattern = "(.+?)\\.(alpha|beta)"
+to_pattern = "\\1\\2"
