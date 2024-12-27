@@ -3,14 +3,14 @@
 pkgname=qefientrymanager-git
 _pkgname=${pkgname%-git}
 _srcname=QEFIEntryManager
-pkgver=0.4.0.r2.ge35f78a
-pkgrel=1
+pkgver=0.4.1.r0.g9596731
+pkgrel=3
 epoch=1
 pkgdesc="A userspace cross-platform EFI boot entry management GUI App based on Qt"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/Inokinoki/${_srcname}"
 license=('GPL-3.0-or-later')
-depends=('qt6-base' 'qt6-wayland' 'efivar' 'hicolor-icon-theme')
+depends=('qt6-base' 'qt6-wayland' 'efivar' 'hicolor-icon-theme' 'polkit')
 makedepends=('git' 'cmake' 'qt6-tools' 'clang')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
