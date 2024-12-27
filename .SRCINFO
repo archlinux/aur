@@ -1,0 +1,25 @@
+pkgbase = python-p115cipher
+	pkgdesc = 115 cipher module.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://pypi.org/project/p115cipher
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-lz4
+	depends = python-ecdsa
+	depends = python-pycryptodome
+	depends = python-iterutils
+	provides = python-p115cipher
+	conflicts = python-p115cipher
+	options = !strip
+	options = !debug
+	source = p115cipher-0.0.3.tar.gz::https://files.pythonhosted.org/packages/source/p/p115cipher/p115cipher-0.0.3.tar.gz
+	sha256sums = cb8e9d480952e2a17850f2d1dc00892e50d63f06cc021d4dcc286e9b81a505eb
+
+pkgname = python-p115cipher
