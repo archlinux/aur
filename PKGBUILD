@@ -2,7 +2,7 @@
 
 pkgname=grass-desktop-node
 pkgver=4.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Grass Desktop Node is a lightweight standalone application that is designed to run on any desktop.
     Users of the desktop node are awarded priority network traffic and are able to earn additional rewards for
     occasional access to the user's bandwidth."
@@ -18,14 +18,11 @@ sha256sums=('11f9dd4dacaf56d44b3c8b7d27e5aebd318406a2a2293f947084dd9c5b7818dd')
 
 prepare() {
     cd ${srcdir}
-    mkdir -p grass
-    bsdtar -xf grass_${pkgver}_amd64.deb -C grass/
-    rm grass_${pkgver}_amd64.deb
-    bsdtar -xf grass/data.tar.gz -C grass/
-    rm grass/data.tar.gz
+    bsdtar -xf data.tar.gz -C ./
+    rm data.tar.gz
 }
 
 
 package() {
-    cp -ar ${srcdir}/grass/usr ${pkgdir}/
+    cp -ar ${srcdir}/usr ${pkgdir}/
 }
