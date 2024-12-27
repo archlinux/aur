@@ -1,0 +1,17 @@
+pkgbase = karpor-git
+	pkgdesc = Kubernetes visualization tool for developer and platform engineering teams
+	pkgver = 0.5.9.r2.g04f6467
+	pkgrel = 1
+	url = https://github.com/KusionStack/karpor
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = karpor=0.5.9
+	conflicts = karpor
+	source = karpor::git+https://github.com/KusionStack/karpor.git
+	sha256sums = SKIP
+
+pkgname = karpor-git
