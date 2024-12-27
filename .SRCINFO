@@ -1,0 +1,20 @@
+pkgbase = xdroid
+        pkgdesc = 卓懿,让安卓应用融入Linux平台应用生态体系，卓懿 x86_64 版（个人免费下载使用，不得用于商业用途）。
+        pkgver = 13.1.333
+        pkgrel = 1
+        url = https://www.linzhuotech.com/Product/download
+        arch = x86_64
+        license = custom
+        makedepends = libarchive
+        depends = dkms
+        depends = xdg-utils
+        optdepends = linux-headers: 用于构建Linux内核模块的头文件和脚本
+        optdepends = linux-lts-headers: 用于构建LTS Linux内核模块的头文件和脚本
+        optdepends = linux-zen-headers: 用于构建Linux ZEN内核模块的头文件和脚本
+        provides = xDroidInstall
+        noextract = xdroid-13.1.333.tar.gz
+        options = !strip
+        source = xdroid-13.1.333.tar.gz::https://github.com/ChestnutYueyue/xdroid-bin/releases/download/v13.1.333/xDroidInstall-x86_64-v13.1.333.tar.gz
+        md5sums = 55c6a49f1df84b12772a0a77a251aeab
+
+pkgname = xdroid
