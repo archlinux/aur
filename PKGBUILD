@@ -1,43 +1,143 @@
-# Maintainer: Peter Mattern <pmattern at arcor dot de>
+# Maintainer: Butui Hu <hot123tea123@gmail.com>
+# Contributor: Peter Mattern <pmattern at arcor dot de>
 
-_pkgname=itk
-pkgname=$_pkgname-git
-pkgver=5.3rc02.220.g6682f865b3
+_pkgname=ITK
+pkgname=(itk-git python-itk-git)
+_pkgver=5.4
+pkgver=5.4.r56513.ac77fef71f
 pkgrel=1
-pkgdesc='Open-source, cross-platform C++ toolkit for segmentation and registration'
-arch=('i686' 'x86_64')
+pkgdesc='An open-source, cross-platform library that provides developers with an extensive suite of software tools for image analysis'
+arch=('x86_64')
 url='https://www.itk.org'
 license=('Apache-2.0')
-depends=('eigen' 'gdcm-git' 'gtest' 'hdf5-openmpi')
-makedepends=('git' 'cmake')
-provides=("$_pkgname" "insight-toolkit"{,-git})
-conflicts=("$_pkgname" "insight-toolkit"{,-git})
-source=("git+https://github.com/insightsoftwareconsortium/itk.git")
-sha256sums=("SKIP")
+depends=(
+  dcmtk
+  double-conversion
+  eigen
+  expat
+  fftw
+  gcc-libs
+  gdcm
+  hdf5
+  intel-oneapi-mkl
+  libjpeg-turbo
+  libpng
+  libtiff
+  vxl
+  zlib
+)
+makedepends=(
+  castxml
+  cmake
+  gcc13
+  git
+#  gtest
+  python
+  subversion
+  swig
+)
+options=(!emptydirs)
+source=("${_pkgname}::git+https://github.com/InsightSoftwareConsortium/ITK.git")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  git describe --always | sed 's:^v::;s:-:.:g'
+  cd "${_pkgname}"
+  printf "%s.r%s.%s" "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+get_pyver() {
+  python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
+}
+
+prepare() {
+  # quick fix for building with swig < 4.3.0
+  find ${_pkgname} -type f -exec sed -i "s/SWIG_Py_DECREF/Py_DECREF/g" {} \;
+  find ${_pkgname} -type f -exec sed -i "s/SWIG_Py_INCREF/Py_INCREF/g" {} \;
 }
 
 build() {
-  rm -Rf build && mkdir build
-  cd build
-  cmake $srcdir/$_pkgname \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DBUILD_SHARED_LIBS=ON \
-      -DBUILD_TESTING=OFF \
-      -DITK_USE_SYSTEM_LIBRARIES=ON \
-      -DITK_USE_SYSTEM_GDCM=ON \
-      -DITK_WRAP_JAVA=OFF \
-      -DITK_WRAP_PERL=OFF \
-      -DITK_WRAP_PYTHON=OFF \
-      -DITK_WRAP_RUBY=OFF \
-      -DITK_WRAP_TCL=OFF
-  make
+  # we build the default modules by default
+  # you could add additional modules by setting -DModule_<NAME>=ON
+  cmake_opts=(
+    -DBUILD_SHARED_LIBS=ON
+    -DBUILD_TESTING=OFF
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_CXX_COMPILER=g++-13
+    -DCMAKE_C_COMPILER=gcc-13
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_SKIP_INSTALL_RPATH=ON
+    -DCMAKE_SKIP_RPATH=ON
+    -DDO_NOT_BUILD_ITK_TEST_DRIVER=ON
+    -DITK_BUILD_DEFAULT_MODULES=ON
+    -DITK_LEGACY_REMOVE=ON
+    -DITK_USE_MKL=ON
+    -DITK_USE_SYSTEM_CASTXML=ON
+    -DITK_USE_SYSTEM_DCMTK=ON
+    -DITK_USE_SYSTEM_DOUBLECONVERSION=ON
+    -DITK_USE_SYSTEM_EIGEN=ON
+    -DITK_USE_SYSTEM_EXPAT=ON
+    -DITK_USE_SYSTEM_FFTW=ON
+    -DITK_USE_SYSTEM_GDCM=OFF
+    -DITK_USE_SYSTEM_GOOGLETEST=OFF
+    -DITK_USE_SYSTEM_HDF5=ON
+    -DITK_USE_SYSTEM_JPEG=ON
+    -DITK_USE_SYSTEM_MINC=OFF
+    -DITK_USE_SYSTEM_PNG=ON
+    -DITK_USE_SYSTEM_SWIG=ON
+    -DITK_USE_SYSTEM_TIFF=ON
+    -DITK_USE_SYSTEM_VXL=ON
+    -DITK_USE_SYSTEM_ZLIB=ON
+    -DITK_WRAP_IMAGE_DIMS="2;3;4"
+    -DITK_WRAP_PYTHON=ON
+    -DITK_WRAP_complex_double=ON
+    -DITK_WRAP_complex_float=ON
+    -DITK_WRAP_covariant_vector_double=ON
+    -DITK_WRAP_covariant_vector_float=ON
+    -DITK_WRAP_double=ON
+    -DITK_WRAP_float=ON
+    -DITK_WRAP_rgb_unsigned_char=ON
+    -DITK_WRAP_rgb_unsigned_short=ON
+    -DITK_WRAP_rgb_unsigned_short=ON
+    -DITK_WRAP_rgba_unsigned_char=ON
+    -DITK_WRAP_rgba_unsigned_short=ON
+    -DITK_WRAP_rgba_unsigned_short=ON
+    -DITK_WRAP_signed_char=ON
+    -DITK_WRAP_signed_long_long=ON
+    -DITK_WRAP_signed_short=ON
+    -DITK_WRAP_unsigned_char=ON
+    -DITK_WRAP_unsigned_long_long=ON
+    -DITK_WRAP_unsigned_short=ON
+    -DITK_WRAP_vector_double=ON
+    -DModule_MorphologicalContourInterpolation=ON
+)
+
+  cmake -B "build" -S "${srcdir}/${_pkgname}" \
+    ${cmake_opts[@]} \
+    -DITK_USE_GPU=OFF
+  make -C "${srcdir}/build"
 }
 
-package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+package_itk-git() {
+  provides=(itk=${_pkgver})
+  conflicts=(itk)
+
+  make -C "${srcdir}/build" DESTDIR="${pkgdir}" install
+  rm -rf "${pkgdir}/usr/lib/python$(get_pyver)"
 }
+
+package_python-itk-git() {
+  pkgdesc="${pkgdesc} (Python binding)"
+  depends+=(
+    itk
+    python-numpy
+    python-xarray
+  )
+  provides=(python-itk=${_pkgver})
+  conflicts=(python-itk)
+
+  make -C "${srcdir}/build" DESTDIR="${srcdir}/dist" install
+  install -dm755 "${pkgdir}/usr/lib"
+  cp -a "${srcdir}/dist/usr/lib/python$(get_pyver)" "${pkgdir}/usr/lib"
+  python -O -m compileall "${pkgdir}/usr/lib"
+}
+# vim:set ts=2 sw=2 et:
