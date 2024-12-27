@@ -1,20 +1,19 @@
 pkgbase = tenvideo
-	pkgdesc = Tencent Video is committed to building China's leading online video media platform
+	pkgdesc = China's leading online video media platform.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://v.qq.com
 	arch = x86_64
-	license = custom:tencent
+	license = LicenseRef-custom
+	depends = electron7
 	depends = libappindicator-gtk3
-	depends = nss
-	depends = libxss
 	depends = xdg-utils
-	depends = libsecret
-	depends = libnotify
-	source = https://dldir1.qq.com/qqtv/linux/Tenvideo_universal_1.0.10_amd64.deb
-	source = https://www.qq.com/contract20180827.htm
-	sha256sums = d890f867c92e3620950764896c4dd54ef0f552c79d55998458d4bf046ae2452a
-	sha256sums = 43a7774ae2b5382b77d889672b8a004e8e168f112ce09eb0262dad56a68de7c2
+	conflicts = tenvideo
+	source = tenvideo-1.0.10.rpm::https://dldir1.qq.com/qqtv/linux/Tenvideo_universal-1.0.10.x86_64.rpm
+	source = LICENSE.htm::https://www.qq.com/contract20180827.htm
+	source = tenvideo.sh
+	sha256sums = 5f26f0cf722dac9dd764abbb860d709de3122f756e8e29e20944b40ac2e17fd1
+	sha256sums = 7827da1d244c3f678ea95bf0f315311ebd3f0509c4efe306b2a3c523ab47a175
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = tenvideo
-

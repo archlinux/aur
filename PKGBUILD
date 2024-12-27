@@ -1,41 +1,52 @@
-# Maintainer: qaz <fkxxyz@163.com>
-# Maintainer: qaz <fkxxyz@163.com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: qaz <fkxxyz@163.com>
 pkgname=tenvideo
+_pkgname=Tenvideo
+_appname=TencentVideo
+_zhsname='腾讯视频'
 pkgver=1.0.10
-pkgrel=1
-pkgdesc="Tencent Video is committed to building China's leading online video media platform"
+_electronversion=7
+pkgrel=2
+pkgdesc="China's leading online video media platform.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://v.qq.com"
-license=('custom:tencent')
-depends=('libappindicator-gtk3' 'nss' 'libxss' 'xdg-utils' 'libsecret' 'libnotify')
+license=('LicenseRef-custom')
+conflicts=("${pkgname}")
+prodives=("${pkgname}=${pkgver}")
+depends=(
+  "electron${_electronversion}"
+  'libappindicator-gtk3'
+  'xdg-utils'
+)
 source=(
-  "https://dldir1.qq.com/qqtv/linux/Tenvideo_universal_${pkgver}_amd64.deb"
-  "https://www.qq.com/contract20180827.htm"
-  )
-
+    "${pkgname}-${pkgver}.rpm::https://dldir1.qq.com/qqtv/linux/Tenvideo_universal-${pkgver}.${arch}.rpm"
+    "LICENSE.htm::https://www.qq.com/contract20180827.htm"
+    "${pkgname}.sh"
+)
+sha256sums=('5f26f0cf722dac9dd764abbb860d709de3122f756e8e29e20944b40ac2e17fd1'
+            '7827da1d244c3f678ea95bf0f315311ebd3f0509c4efe306b2a3c523ab47a175'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-  cd ${srcdir}
-  bsdtar xf data.tar.xz
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname}_universal/g
+        s/@options@//g
+    " -i "${srcdir}/${pkgname}.sh"
+    sed -e "
+        s/\"\/opt\/${_zhsname}\/${_appname}\"/${pkgname}/g
+        s/Icon=${_appname}/Icon=${pkgname}/g
+    " -i "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
-
-build() {
-  cd ${srcdir}
-  v=$'\u817e\u8baf\u89c6\u9891'
-  rm -rf "opt/tenvideo"
-  mv "opt/$v" "opt/tenvideo"
-  sed -i 's/\/opt\/'"$v"'/\/opt\/tenvideo/g' "usr/share/applications/TencentVideo.desktop"
-}
-
 package() {
-  cd ${srcdir}
-  cp -rf "opt" "usr" "${pkgdir}/"
-  install -Dm644 "contract20180827.htm" "${pkgdir}/usr/share/licenses/tenvideo/contract.htm"
-  install -d "${pkgdir}/usr/bin"
-  ln -sf "/opt/tenvideo/TencentVideo" "${pkgdir}/usr/bin/tenvideo"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/opt/${_zhsname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+    _icon_sizes=(16x16 22x22 24x24 32x32 36x36 48x48 64x64 72x72 96x96 128x128 256x256)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_appname}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
+    done
+    install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "${srcdir}/LICENSE.htm" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim:set ts=2 sw=2 et:
-sha256sums=('d890f867c92e3620950764896c4dd54ef0f552c79d55998458d4bf046ae2452a'
-            '43a7774ae2b5382b77d889672b8a004e8e168f112ce09eb0262dad56a68de7c2')
-
