@@ -25,6 +25,7 @@ depends=(
   python-youtube-transcript-api
   python-speechrecognition
   python-pathvalidate
+  python-cobble #not requested by pyproject.toml but apparently needed at runtime
 )
 makedepends=(
   python-build

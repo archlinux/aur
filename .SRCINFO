@@ -27,6 +27,7 @@ pkgbase = python-markitdown-git
 	depends = python-youtube-transcript-api
 	depends = python-speechrecognition
 	depends = python-pathvalidate
+	depends = python-cobble
 	provides = python-markitdown
 	conflicts = python-markitdown
 	source = git+https://github.com/microsoft/markitdown.git
