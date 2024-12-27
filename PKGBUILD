@@ -1,15 +1,15 @@
 # Maintainer: Andrew Grechkin <andrew.grechkin@gmail.com>
 _name=fuse3-p7zip
 pkgname="$_name-git"
-pkgver=1.2.3
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="fuse3 file system that uses the p7zip library to mount archives"
+pkgdesc="fuse3 file system that uses the 7zip library to mount archives"
 arch=('x86_64')
 url="https://github.com/andrew-grechkin/fuse3-p7zip"
 license=('GPL')
-depends=('fuse3' 'p7zip')
+depends=('fuse3' '7zip')
 makedepends=('cmake' 'git' 'go-md2man')
-source=("git+https://github.com/andrew-grechkin/fuse3-p7zip#commit=9cb0a3c5dea5d9937e34841522e98256fdb002ac")
+source=("git+https://github.com/andrew-grechkin/fuse3-p7zip#commit=2.0.0")
 sha256sums=('SKIP')
 
 prepare() {
