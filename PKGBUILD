@@ -3,7 +3,7 @@
 pkgname=python-undefined
 _name=${pkgname//-/_}
 pkgver=0.0.3
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="Python undefined type."
 arch=('any')
@@ -17,7 +17,6 @@ depends=(
 )
 makedepends=(
     python-poetry
-    python-poetry-core
     python-build
     python-installer
     python-wheel
@@ -29,10 +28,15 @@ sha256sums=('05a0175a29cee018c97efe28e288cea9ee894bfd6e076f3ca46e988a3d43a524')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    #     python_version=$(python --version 2>&1)
+    #     python_version=${python_version#Python }
+    #     python_version=$(echo "$python_version" | awk -F'.' '{print $1"."$2}')
+    #     rm -rf ${pkgdir}/usr/lib/python${python_version}/site-packages/LICENSE
 }
