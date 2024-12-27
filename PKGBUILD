@@ -3,7 +3,7 @@
 pkgname=python-115
 _name=${pkgname//-/_}
 pkgver=0.0.9.8.8.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python wrapper for 115 webdisk."
 arch=('any')
@@ -17,7 +17,25 @@ depends=(
     python-httpx
     python-orjson
     python-requests
-    python-urllib3)
+    python-rich
+    python-yarl
+    python-urllib3
+    #AUR
+    python-asynctools
+    python-concurrenttools
+    python-dictattr
+    python-download
+    python-filewrap
+    python-glob-pattern
+    python-hashtools
+    python-httpfile
+    python-httpx-request
+    python-magnet2torrent
+    python-iterutils
+    python-texttools
+    python-urlopen
+    python-undefined
+)
 makedepends=(
     python-poetry
     python-build
