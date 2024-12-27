@@ -3,7 +3,7 @@
 pkgname=python-treetable-git
 _gitpkgname=treetable
 pkgver=r37.8ea894b
-pkgrel=1
+pkgrel=2
 pkgdesc='Pretty-print ASCII tables with a tree-like structure'
 arch=('any')
 url='https://github.com/adefossez/treetable'
