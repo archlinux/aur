@@ -3,8 +3,8 @@ _pkgname=air_controller
 pkgname="${_pkgname//_/-}-desktop-bin"
 _appname=AirController
 pkgver=0.4.0
-pkgrel=4
-pkgdesc="A new handy and powerful Android phone assistant,powered by Flutter."
+pkgrel=5
+pkgdesc="A new handy and powerful Android phone assistant,powered by Flutter.(Prebuilt version)"
 arch=('x86_64')
 url="http://ac.yhdm360.cn/"
 _ghurl="https://github.com/air-controller/air-controller-desktop"
@@ -29,19 +29,23 @@ source=(
 )
 sha256sums=('9c81fa659acffa74b7576e5dfbc62486d8131157b9d4bfc2a34bdc567bc080c8'
             '72bf32e1daa153b870aff8200c06521b4d15d7aedba46d4c37570c49cacc1ace'
-            '2ce176a5c3aec15df075bb898c0c82f8a10c51fee35c24a5c0c795775a4b05f9')
+            '97155fcff09b03405209fd5bb1f341d0d0d92e83ca9cf96c219d19214456e9b1')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${pkgname%-bin}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|${_pkgname}_desktop|${pkgname%-bin}|g;s|${_pkgname}|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    sed -e "
+        s/${_pkgname}_desktop/${pkgname%-bin}/g
+        s/${_pkgname}/${pkgname%-bin}/g
+    " -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/squashfs-root/${_pkgname}_desktop" "${pkgdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/"{data,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/"{data,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
