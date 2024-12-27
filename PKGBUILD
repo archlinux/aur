@@ -1,19 +1,18 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="obsidian-cli"
-pkgver=0.1.7
-pkgrel=2
+pkgver=0.1.8
+pkgrel=1
 pkgdesc="Interact with Obsidian in the terminal. Open, search, create, update and move notes!"
-arch=('any')
-url="https://github.com/Yakitrak/${pkgname}"
+arch=('x86_64' 'aarch64')
+url="https://yakitrak.github.io/obsidian-cli-docs"
+_url="https://github.com/Yakitrak/${pkgname}"
 license=('MIT')
-makedepends=('go')
 depends=('glibc')
-optdepends=('bash-completion: for shell auto-completion'
-            'zsh-completions: for shell auto-completion')
+makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('85b5a0664b919921c34652b71b6625e5dfd6e9775206aadf70b32dcb76481d39')
+source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('d9e8a31a6915a5cde3651f6336a14fd7708a3696c11dc40bcfb046e8a5b1a24f')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -41,13 +40,13 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   cd "completions"
-  install -Dm644 "${pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm644 "${pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
-  install -Dm644 "${pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-  install -Dm644 "${pkgname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${pkgname}.ps1"
+  install -vDm644 "${pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -vDm644 "${pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -vDm644 "${pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -vDm644 "${pkgname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${pkgname}.ps1"
 }

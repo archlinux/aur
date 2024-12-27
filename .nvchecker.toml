@@ -1,0 +1,4 @@
+[obsidian-cli]
+source = "git"
+git = "https://github.com/Yakitrak/obsidian-cli.git"
+prefix = "v"

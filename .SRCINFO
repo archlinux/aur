@@ -1,15 +1,14 @@
 pkgbase = obsidian-cli
 	pkgdesc = Interact with Obsidian in the terminal. Open, search, create, update and move notes!
-	pkgver = 0.1.7
-	pkgrel = 2
-	url = https://github.com/Yakitrak/obsidian-cli
-	arch = any
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://yakitrak.github.io/obsidian-cli-docs
+	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	optdepends = bash-completion: for shell auto-completion
-	optdepends = zsh-completions: for shell auto-completion
-	source = obsidian-cli-0.1.7.tar.gz::https://github.com/Yakitrak/obsidian-cli/archive/refs/tags/v0.1.7.tar.gz
-	sha256sums = 85b5a0664b919921c34652b71b6625e5dfd6e9775206aadf70b32dcb76481d39
+	source = obsidian-cli-0.1.8.tar.gz::https://github.com/Yakitrak/obsidian-cli/archive/refs/tags/v0.1.8.tar.gz
+	sha256sums = d9e8a31a6915a5cde3651f6336a14fd7708a3696c11dc40bcfb046e8a5b1a24f
 
 pkgname = obsidian-cli
