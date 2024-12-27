@@ -1,6 +1,6 @@
 pkgbase = pinokio-bin
 	pkgdesc = AI Browser.
-	pkgver = 2.15.1
+	pkgver = 3.0.31
 	pkgrel = 1
 	url = https://github.com/pinokiocomputer/pinokio
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = pinokio-bin
 	optdepends = libappindicator-gtk3
 	provides = pinokio
 	conflicts = pinokio
-	source_x86_64 = https://github.com/pinokiocomputer/pinokio/releases/download/2.15.1/Pinokio_2.15.1_amd64.deb
-	sha256sums_x86_64 = 2c319bd7cf4cd9200c1619431d2d0be739f4c14f44094abc0d685728d1877a0e
-	source_aarch64 = https://github.com/pinokiocomputer/pinokio/releases/download/2.15.1/Pinokio_2.15.1_arm64.deb
-	sha256sums_aarch64 = 231f1dde32889043aa26bcb56e2238b9ad4be4127690f7d0eb85169d5cf426e6
+	source_x86_64 = https://github.com/pinokiocomputer/pinokio/releases/download/3.0.31/Pinokio_3.0.31_amd64.deb
+	sha256sums_x86_64 = 8e60c5969e35fabc13d366526aef180b2c231e227003338a6fce3cfe2e616975
+	source_aarch64 = https://github.com/pinokiocomputer/pinokio/releases/download/3.0.31/Pinokio_3.0.31_arm64.deb
+	sha256sums_aarch64 = 27428a0d0ff01ab2a6576481b3201f1f921fdddb8ca849e4666acd3569a02010
 
 pkgname = pinokio-bin
