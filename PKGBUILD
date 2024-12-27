@@ -7,7 +7,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=xz-git
-pkgver=5.6.3+r2706+g5794cda06
+pkgver=5.6.3+r2714+gf7a248f56
 pkgrel=2
 pkgdesc='Library and command line tools for XZ and LZMA compressed files'
 arch=('x86_64')
@@ -15,7 +15,8 @@ url='https://tukaani.org/xz/'
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later' '0BSD' 'LicenseRef-custom')
 depends=('sh')
 makedepends=('git' 'doxygen')
-provides=("liblzma.so=${pkgver%%+*}" "xz=${pkgver%%+*}")
+#provides=("liblzma.so=${pkgver%%+*}" "xz=${pkgver%%+*}")
+provides=('liblzma.so' "xz=${pkgver%%+*}") #setting .so to pkgver breaks expected dependency version '5-64'
 conflicts=(xz)
 source=("$pkgname::git+https://github.com/tukaani-project/xz.git")
 sha256sums=('SKIP')
