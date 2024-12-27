@@ -1,6 +1,6 @@
 # Maintainer: tobiko461 <aur@skillissue.de>
 pkgname=fanbox-dl-bin
-pkgver=0.27.1
+pkgver=0.27.2
 pkgrel=1
 pkgdesc="Pixiv Fanbox Downloader"
 arch=('aarch64' 'i386' 'x86_64')
@@ -11,9 +11,9 @@ source_aarch64=("https://github.com/hareku/${pkgname%-bin}/releases/download/v$p
 source_i386=("https://github.com/hareku/${pkgname%-bin}/releases/download/v$pkgver/fanbox-dl_Linux_i386.tar.gz")
 source_x86_64=("https://github.com/hareku/${pkgname%-bin}/releases/download/v$pkgver/fanbox-dl_Linux_x86_64.tar.gz")
 
-sha256sums_aarch64=("2f439d20f1163a6d99427d33d8c9ef47cc7cdfb8e6d989d01999610f9fac6c5b")
-sha256sums_i386=("b26aca86b5a82820deea39e785e7de90eca741deeef3c44a9344910bf69afe0f")
-sha256sums_x86_64=("56cddd6f607bb0771602ccf26cf0139b8ee71732761782ea15acc8c02e8698d5")
+sha256sums_aarch64=("e6b9ad3401ff1760796d06b7e21c80685ea3c30cc84df4f8d487e1d41c494d5c")
+sha256sums_i386=("5a32b433d1184e3f3f699f89b99e28f425d4bd8a63d524dadab1d4e76c2f4a18")
+sha256sums_x86_64=("d95daa9ac155e92ad95a0278f6417eb4888d5c993d19dc90d23a1912a5c04782")
 
 package() {
 	install -Dm755 "${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
