@@ -2,7 +2,7 @@
 pkgname=python-argparse_dataclass
 _name=${pkgname#python-}
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Declarative CLIs with argparse and dataclasses"
 arch=('any')
 url="https://github.com/mivade/argparse_dataclass"
