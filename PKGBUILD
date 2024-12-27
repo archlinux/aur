@@ -114,7 +114,7 @@ DOCS_PDF= # Generate and install pdf documentation.
 
 NOGZ="YES" # Don't compress .el files.
 
-MPS="/opt/mps" # The directory mps is installed in.
+MPS="/usr" # The directory mps is installed in.
 ################################################################################
 
 ################################################################################
@@ -130,7 +130,7 @@ arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
 depends_nox=('gnutls' 'libxml2' 'jansson')
-depends=("${depends_nox[@]}" 'harfbuzz')
+depends=("${depends_nox[@]}" 'harfbuzz' 'mps')
 makedepends=('git' 'mold')
 provides=('emacs')
 conflicts=('emacs')
@@ -189,11 +189,11 @@ if [[ $CLANG == "YES" ]]; then
   if [[ ! $MOLD == "YES" ]]; then
     makedepends+=('mold')
     export LD="lld"
-    export LDFLAGS+=" -L$MPS"
+    export LDFLAGS+=" -L$MPS/lib"
     export CCFLAGS+=' -fuse-ld=lld'
     export CXXFLAGS+=' -fuse-ld=lld'
-    export CPPFLAGS+=" -I$MPS"
-    export CFLAGS+=" -I$MPS --ld-path=/usr/bin/mold"
+    export CPPFLAGS+=" -I$MPS/include"
+    export CFLAGS+=" -I$MPS/include --ld-path=/usr/bin/mold"
     export CXXFLAGS+=" --ld-path=/usr/bin/mold"
   else
     makedepends+=('lld')

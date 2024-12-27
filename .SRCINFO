@@ -14,6 +14,7 @@ pkgbase = emacs-igc-git
 	depends = libxml2
 	depends = jansson
 	depends = harfbuzz
+	depends = mps
 	depends = libgccjit
 	depends = tree-sitter
 	depends = libjpeg-turbo
