@@ -1,7 +1,7 @@
 pkgbase = akuse
-	pkgdesc = Simple and easy to use anime streaming desktop app without ads.Use system-wide electron.
+	pkgdesc = Simple and easy to use anime streaming desktop app without ads.(Use system-wide electron)
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/akuse-app/Akuse
 	arch = any
 	license = GPL-3.0-or-later
