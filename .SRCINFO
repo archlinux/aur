@@ -1,0 +1,22 @@
+pkgbase = python-texttools
+	pkgdesc = Python texttools.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://pypi.org/project/python-texttools
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-wcwidth
+	provides = python-texttools
+	conflicts = python-texttools
+	options = !strip
+	options = !debug
+	source = python_texttools-0.0.2.tar.gz::https://files.pythonhosted.org/packages/source/p/python_texttools/python_texttools-0.0.2.tar.gz
+	sha256sums = a0ba4f4dff4f328bee17d8db923de59d43641e8e6d8d15bd6a695d7cd53f66e1
+
+pkgname = python-texttools
