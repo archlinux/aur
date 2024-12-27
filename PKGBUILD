@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/mirdukkkkk/beefetch"
 license=('GPL3.0-only')
 source=("https://raw.githubusercontent.com/mirdukkkkk/beefetch/$pkgver/beefetch")
-sha512sums=('3a7974110ca61a5cee7f2f7668c808d7f33f5fed4c10228ea8cf0aa8e80877c386d67e36e3f723738de577e9b596dd86e4be68914b1fe95db94993599df9c37e')
+sha512sums=('c592002bf6e470bd81220ce22c4f4cb21fa9700dd0d9c385bc4c864cc825e8644ecf98428b63c775c11ab42b1ebc59467defcc3bb8b6ced4411688423866d01f')
 
 package() {
     install -Dm755 beefetch "$pkgdir"/usr/bin/beefetch
