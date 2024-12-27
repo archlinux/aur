@@ -1,28 +1,26 @@
---- setup.py	2023-12-24 11:32:47.740182920 +0300
-+++ setup.py	2023-12-24 11:34:31.217200306 +0300
-@@ -89,10 +89,6 @@
- cmdclass = {}
- ext_modules = []
+--- a/setup.py	2024-12-27 04:10:19.630516943 +0300
++++ b/setup.py	2024-12-27 04:42:21.118387447 +0300
+@@ -151,7 +151,7 @@
  
--# We want this even if SKIP_CUDA_BUILD because when we run python setup.py sdist we want the .hpp
--# files included in the source distribution, in case the user compiles from source.
--subprocess.run(["git", "submodule", "update", "--init", "csrc/cutlass"])
--
- if not SKIP_CUDA_BUILD:
-     print("\n\ntorch.__version__  = {}\n\n".format(torch.__version__))
-     TORCH_MAJOR = int(torch.__version__.split(".")[0])
-@@ -207,7 +203,6 @@
-             include_dirs=[
-                 Path(this_dir) / "csrc" / "flash_attn",
-                 Path(this_dir) / "csrc" / "flash_attn" / "src",
--                Path(this_dir) / "csrc" / "cutlass" / "include",
-             ],
+     # Check, if ATen/CUDAGeneratorImpl.h is found, otherwise use ATen/cuda/CUDAGeneratorImpl.h
+     # See https://github.com/pytorch/pytorch/pull/70650
+-    generator_flag = []
++    generator_flag = ['-DGLOG_USE_GLOG_EXPORT']
+     torch_dir = torch.__path__[0]
+     if os.path.exists(os.path.join(torch_dir, "include", "ATen", "CUDAGeneratorImpl.h")):
+         generator_flag = ["-DOLD_GENERATOR_PATH"]
+@@ -523,6 +523,7 @@
+             "docs",
+             "benchmarks",
+             "flash_attn.egg-info",
++            "hopper",
          )
-     )
-@@ -319,6 +314,5 @@
-         "torch",
-         "einops",
+     ),
+     author="Tri Dao",
+@@ -550,6 +551,5 @@
+     setup_requires=[
          "packaging",
+         "psutil",
 -        "ninja",
      ],
  )
