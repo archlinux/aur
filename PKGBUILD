@@ -18,7 +18,7 @@ noextract=("${pkgname}-${pkgver}.tar.gz")
 md5sums=("$(cat md5sums-${arch}.md5)")
 
 package() {
-    exec "${startdir}/kernel_version"
+    bash "${startdir}/kernel_version"
     # 安装 xdroid-bin 包
     install -dm0755 "${pkgdir}/opt/${pkgname}" \
                     "${pkgdir}/usr/bin" \
