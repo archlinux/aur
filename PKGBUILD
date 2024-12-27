@@ -4,14 +4,17 @@
 pkgname=(backintime backintime-cli)
 _pkgname="backintime"
 pkgver=1.5.3
-pkgrel=2
+pkgrel=3
 arch=(any)
 url="https://github.com/bit-team/backintime"
 license=(GPL)
 makedepends=(python)
 #checkdepends=(openssh python-dbus rsync systemd python-pyfakefs oxygen-icons python-pylint)
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/bit-team/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ba4b28bd9b2f4dd0dae90a1a990ac352880546bb82db3a6176568be3f9de4f46')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/bit-team/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
+backintime-backup-job.{service,timer})
+sha256sums=('ba4b28bd9b2f4dd0dae90a1a990ac352880546bb82db3a6176568be3f9de4f46'
+            '8a3aa12434048d604836b709df18528fe51867de7c8d229190eb5b518fa6d918'
+            '5f9346be71d16786cb547362fe35755c8af59095e985c27d28ac14dfe791b7c8')
 
 #prepare() {i
 #  cd "$_pkgname-$pkgver"
@@ -47,7 +50,8 @@ package_backintime() {
   pkgdesc="Simple backup system inspired from the Flyback Project and TimeVault. Qt5 GUI version."
   depends=("backintime-cli=$pkgver" polkit python-dbus python-pyqt6 xorg-xdpyinfo sshfs)
   # note users can optionally install EITHER kompare OR meld but not both!
-  optdepends=('kompare: diff/patch frontend'
+  optdepends=('cronie: to trigger automated backups'
+  'kompare: diff/patch frontend'
   'meld: diff/patch frontend'
   'qt6-translations: translate BIT dialogs into native language')
   install=backintime.install
@@ -56,6 +60,18 @@ package_backintime() {
   make DESTDIR="$pkgdir" install
   python -m compileall -d /usr "$pkgdir"/usr
   python -O -m compileall -d /usr "$pkgdir"/usr
+
+  mkdir "$pkgdir/usr/share/$_pkgname/contrib"
+  install -m644 "$srcdir/$_pkgname-backup-job.service" "$pkgdir/usr/share/$_pkgname/contrib/$_pkgname-backup-job.service"
+  install -m644 "$srcdir/$_pkgname-backup-job.timer" "$pkgdir/usr/share/$_pkgname/contrib/$_pkgname-backup-job.timer"
+
+  cat <<EOF > "$pkgdir/usr/share/$_pkgname/contrib/README.txt"
+Example user systemd timer and service units are provided. To use,
+refer to https://wiki.archlinux.org/title/Systemd/User#How_it_works
+
+Optionally adjust the value for OnCalendar= with a valid setting.
+See man systemd.timer for options.
+EOF
 }
 
 # vim:set ts=8 sts=2 sw=2 et:

@@ -1,12 +1,16 @@
 pkgbase = backintime
 	pkgver = 1.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bit-team/backintime
 	arch = any
 	license = GPL
 	makedepends = python
 	source = backintime-1.5.3.tar.gz::https://github.com/bit-team/backintime/archive/refs/tags/v1.5.3.tar.gz
+	source = backintime-backup-job.service
+	source = backintime-backup-job.timer
 	sha256sums = ba4b28bd9b2f4dd0dae90a1a990ac352880546bb82db3a6176568be3f9de4f46
+	sha256sums = 8a3aa12434048d604836b709df18528fe51867de7c8d229190eb5b518fa6d918
+	sha256sums = 5f9346be71d16786cb547362fe35755c8af59095e985c27d28ac14dfe791b7c8
 
 pkgname = backintime
 	pkgdesc = Simple backup system inspired from the Flyback Project and TimeVault. Qt5 GUI version.
@@ -17,6 +21,7 @@ pkgname = backintime
 	depends = python-pyqt6
 	depends = xorg-xdpyinfo
 	depends = sshfs
+	optdepends = cronie: to trigger automated backups
 	optdepends = kompare: diff/patch frontend
 	optdepends = meld: diff/patch frontend
 	optdepends = qt6-translations: translate BIT dialogs into native language

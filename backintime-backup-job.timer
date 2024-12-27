@@ -1,0 +1,10 @@
+[Unit]
+Description=Start a backintime snapshot once daily
+
+[Timer]
+OnCalendar=daily
+AccuracySec=1m
+Persistent=true
+
+[Install]
+WantedBy=timers.target

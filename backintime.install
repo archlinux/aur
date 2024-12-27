@@ -1,9 +1,9 @@
 post_install() {
-  if ! systemctl is-enabled -q cronie; then
-    echo
-    echo ">>> Enable cronie.service in order for BIT scheduling to work"
-    echo
-  fi
+  cat <<EOF
+>>> Enable a cron daemon such as cronie or use the included
+    systemd user units in /usr/share/backintime/contrib/ in
+    order to get backintime scheduling to work
+EOF
 }
 
 post_upgrade() {
