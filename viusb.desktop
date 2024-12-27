@@ -1,0 +1,19 @@
+[Desktop Entry]
+Comment[en_US]=Qt-powered advanced "visual" lsusb
+Comment=Qt-powered advanced "visual" lsusb
+Exec=viusb
+GenericName[en_US]=
+GenericName=
+Icon=liveusb-creator
+MimeType=
+Name[en_US]=viUSB
+Name=viUSB
+NoDisplay=false
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=0.1
+X-KDE-SubstituteUID=false
+X-KDE-Username=

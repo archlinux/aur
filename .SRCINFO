@@ -1,0 +1,18 @@
+pkgbase = viusb
+	pkgdesc = Qt-powered advanced 'visual' lsusb
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/0x64620/viusb
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = make
+	makedepends = git
+	depends = qt5-base
+	depends = usbutils
+	source = git+https://github.com/0x64620/viusb.git
+	source = viusb.desktop
+	sha256sums = SKIP
+	sha256sums = 4576c44737cd208e591b2a9181b321e7aafce90d9087fb3dc30618b13d6f20d7
+
+pkgname = viusb
