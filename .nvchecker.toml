@@ -1,0 +1,4 @@
+[ft-crypt-bin]
+source = "regex"
+url = "https://sourceforge.net/projects/ft-crypt/files/"
+regex = "FTC - File and Text encryption, version ([\\d.]+)"
