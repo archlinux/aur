@@ -11,7 +11,7 @@ pkgdesc='Build cross platform desktop apps with web technologies - version 8 - b
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://${_projectname}js.org"
 license=('MIT')
-provides=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy')
 optdepends=(
