@@ -119,7 +119,7 @@ prepare() {
 }
 build() {
     cd "$srcdir"/"$pkgname"/build
-    ../qemu-${pkgver}/configure --target-list="i386-softmmu" --prefix=/usr --disable-xen
+    ../qemu-${pkgver}/configure --target-list="i386-softmmu" --prefix=/usr --disable-xen --extra-cflags=-march=native
     make clean
     make qemu-system-i386
     export WATCOM="$srcdir"/"$pkgname"/watcom
