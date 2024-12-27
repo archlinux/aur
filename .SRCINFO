@@ -1,0 +1,23 @@
+pkgbase = python-hashtools
+	pkgdesc = Python hash tools.
+	pkgver = 0.0.3.3
+	pkgrel = 1
+	url = https://pypi.org/project/python-hashtools
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-filewrap
+	depends = python-iterdir
+	provides = python-hashtools
+	conflicts = python-hashtools
+	options = !strip
+	options = !debug
+	source = python_hashtools-0.0.3.3.tar.gz::https://files.pythonhosted.org/packages/source/p/python_hashtools/python_hashtools-0.0.3.3.tar.gz
+	sha256sums = f12e0b1d02bee20558b353ed9e1a72930e2a06d9df1c172d3e4db3921ca39bb4
+
+pkgname = python-hashtools
