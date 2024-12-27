@@ -39,7 +39,11 @@ pkgbase = wine-osu-spectator-wow64
 	makedepends = zlib
 	makedepends = xz
 	makedepends = ntsync-header>=6.12.6
-	makedepends = llvm-mingw-w64-toolchain
+	makedepends = mingw-w64-binutils
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-crt
+	makedepends = mingw-w64-headers
+	makedepends = mingw-w64-winpthreads
 	makedepends = fontconfig
 	makedepends = lcms2
 	makedepends = libxml2
