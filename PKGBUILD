@@ -4,9 +4,9 @@
 # aarch64 tester: Irissman    <irissman@probus.ca>
 # armv7h tester: kauron
 pkgname=duplicati-canary-bin
-pkgver=2.1.0.101
+pkgver=2.1.0.103
 pkgrel=1
-_date=2024-12-06
+_date=2024-12-21
 _branch=canary
 pkgdesc="A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers"
 url="http://duplicati.com"
@@ -41,8 +41,8 @@ sha256sums=('fbc76396405c645a3b9b7f00973540d4824f0cf634fa8369c6dfe2dd711cb38c'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
             'b6ca3d280feb753ded94bb44eef821a0dac0c0c7ed7f37dea76d445a64386c86'
             '99591e96c340b49b47341315cb42f8ac12ca66dc4d22550e4acd37cce84e8b36')
-sha256sums_x86_64=('a5b33c96251ada0f136f592de35b2753fec351b6450affbd03a6f84285f38bba')
-sha256sums_aarch64=('7bbdbf15d9a464e245ff60dda510225857c552e533c66c4526bbbef6d760b137')
+sha256sums_x86_64=('4d36cb01a9645ad89011caebdecf215f201218af8c9398209733de8fe37b51e0')
+sha256sums_aarch64=('34c3bcc9892d83aad379533f6ae01a39b1e19803bae5bf45f8497bbf35709a42')
 
 
 
@@ -63,10 +63,6 @@ package() {
   install -Dm644 "$srcdir/duplicati.tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/duplicati.conf"
   install -Dm644 "$srcdir/duplicati.env" "$pkgdir/etc/default/duplicati"
 
-  # Install the CLI wrapper.
-  mkdir -p "${pkgdir}/usr/bin"
-
-  
   # Install the program.
   mkdir -p "${pkgdir}"/opt/duplicati
 
@@ -78,5 +74,4 @@ package() {
   # Symlink the CLI
   mkdir -p "${pkgdir}/usr/bin"
   ln -s /opt/duplicati/duplicati-cli "${pkgdir}/usr/bin/duplicati-cli"
-  
 }
