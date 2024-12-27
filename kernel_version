@@ -1,0 +1,49 @@
+#!/bin/bash
+
+version_compare() {
+    local v1=$1
+    local v2=$2
+    local IFS=.
+    local i ver1=($v1) ver2=($v2)
+    # 比较每个部分的大小
+    for ((i = 0; i < ${#ver1[@]} && i < ${#ver2[@]}; i++)); do
+        if [[ -z ${ver2[i]} ]]; then
+            echo "1"
+            return
+        elif [[ -z ${ver1[i]} ]]; then
+            echo "2"
+            return
+        elif ((10#${ver1[i]} > 10#${ver2[i]})); then
+            echo "1"
+            return
+        elif ((10#${ver1[i]} < 10#${ver2[i]})); then
+            echo "2"
+            return
+        fi
+    done
+    if ((${#ver1[@]} > ${#ver2[@]})); then
+        echo "1"
+    elif ((${#ver1[@]} < ${#ver2[@]})); then
+        echo "2"
+    else
+        echo "0"
+    fi
+}
+
+# 获取内核版本号
+# kernel_version_part=$(uname -r | cut -d- -f1 | cut -d. -f1-2 )
+kernel_version_part=$(uname -r | cut -d- -f1)
+# 比较内核版本  内核版本大于等于 4.5.0 i且内核版本小于 6.7.0
+if [[ $(version_compare "$kernel_version_part" "4.5.0") == "1" && $(version_compare "$kernel_version_part" "6.7.0") == "2" ]]; then
+    echo "您的系统内核版本为：$kernel_version_part ，符合安装条件。"
+else
+    echo "您的系统内核版本为：$kernel_version_part"
+    read -r -p "是否安装linux-lts-6.6.67?[Y/n]" answer
+    if [ "$answer" == "y" ]; then
+        echo "正在安装 linux-lts-6.6.67..."
+        yes y | sudo pacman -U https://archive.archlinux.org/packages/.all/linux-lts-6.6.67-1-x86_64.pkg.tar.zst https://archive.archlinux.org/packages/.all/linux-lts-headers-6.6.67-1-x86_64.pkg.tar.zst
+        sudo grub-mkconfig -o /boot/grub/grub.cfg
+        echo "LTS内核安装完成 请重启后 重新运行脚本。"
+        exit 1
+    fi
+fi
