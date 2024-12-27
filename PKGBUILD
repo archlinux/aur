@@ -1,17 +1,17 @@
 # Maintainer: mirdukkkkk <contact@mirdukkkkk.space>
 
 pkgname=beefetch
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Neofetch clone written in bash with the ability to display 🐝"
 arch=('any')
 url="https://github.com/mirdukkkkk/beefetch"
-license=('GPL3.0-only')
-source=("https://raw.githubusercontent.com/mirdukkkkk/beefetch/$pkgver/beefetch")
-sha512sums=('c592002bf6e470bd81220ce22c4f4cb21fa9700dd0d9c385bc4c864cc825e8644ecf98428b63c775c11ab42b1ebc59467defcc3bb8b6ced4411688423866d01f')
+license=('GPL3')
+source=("https://raw.githubusercontent.com/mirdukkkkk/$pkgname/$pkgver/$pkgname")
+sha512sums=('5bfc870e5148b0531d9928fc40ab6a0dcab40bc818776616a77aa1855cfc959c65d2bde25dbd8558482326248c2d6a367adb3e34bc257b7500f4f491e6a0143a')
 
 package() {
-    install -Dm755 beefetch "$pkgdir"/usr/bin/beefetch
+    install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
 package_debug() {
