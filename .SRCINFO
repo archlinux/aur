@@ -1,7 +1,7 @@
 pkgbase = opennoodl
 	pkgdesc = Low-code for when experience matters
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://learn-noodl.com
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,8 @@ pkgbase = opennoodl
 	makedepends = libxcrypt-compat
 	depends = nodejs
 	source = https://github.com/The-Low-Code-Foundation/OpenNoodl/archive/refs/tags/release.tar.gz
+	source = https://nodejs.org/dist/v16.20.2/node-v16.20.2-linux-x64.tar.xz
 	sha256sums = fba7b649275389ca5e04fe1f8d3454d6f0376bdfdabea90794ace60317edf0ef
+	sha256sums = 874463523f26ed528634580247f403d200ba17a31adf2de98a7b124c6eb33d87
 
 pkgname = opennoodl

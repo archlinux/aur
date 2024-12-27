@@ -2,48 +2,24 @@
 
 pkgname=opennoodl
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-code for when experience matters"
 arch=('x86_64')
 url="https://learn-noodl.com"
 license=('GPL3')
 depends=('nodejs')
 makedepends=('git' 'npm' 'jq' 'libxcrypt-compat')
-source=("https://github.com/The-Low-Code-Foundation/OpenNoodl/archive/refs/tags/release.tar.gz")
-sha256sums=('fba7b649275389ca5e04fe1f8d3454d6f0376bdfdabea90794ace60317edf0ef')
+source=("https://github.com/The-Low-Code-Foundation/OpenNoodl/archive/refs/tags/release.tar.gz"
+        "https://nodejs.org/dist/v16.20.2/node-v16.20.2-linux-x64.tar.xz")
+sha256sums=('fba7b649275389ca5e04fe1f8d3454d6f0376bdfdabea90794ace60317edf0ef'
+            '874463523f26ed528634580247f403d200ba17a31adf2de98a7b124c6eb33d87')
 
 build() {
     cd "$srcdir/OpenNoodl-release"
 
-    # Determine the NVM installation directory
-    nvm_default_install_dir() {
-        [ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm"
-    }
-
-    nvm_install_dir() {
-        if [ -n "$NVM_DIR" ]; then
-            printf %s "${NVM_DIR}"
-        else
-            nvm_default_install_dir
-        fi
-    }
-
-    # Check if nvm is installed
-    NVM_DIR=$(nvm_install_dir)
-    if [ ! -s "$NVM_DIR/nvm.sh" ]; then
-        echo "Error: nvm is not installed in the expected location: $NVM_DIR"
-        echo "Please install nvm before proceeding. Use the following command:"
-        echo "    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/refs/heads/master/install.sh | bash"
-        exit 1
-    fi
-
-    # Source nvm
-    export NVM_DIR
-    [ -s "$NVM_DIR/nvm.sh" ] && \source "$NVM_DIR/nvm.sh"
-
-    # Use Node.js 16
-    nvm install 16
-    nvm use 16
+    # Extract the Node.js tarball
+    tar -xvf "$srcdir/node-v16.20.2-linux-x64.tar.xz" -C "$srcdir"
+    export PATH="$srcdir/node-v16.20.2-linux-x64/bin:$PATH"  # Add Node.js 16 to the PATH
 
     # Initialize a fake git repository if needed
     if [ ! -d .git ]; then
