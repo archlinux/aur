@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname="pyp"
-pkgver=1.1.0
+pkgver=1.3.0
 pkgrel=3
 pkgdesc="Easily run Python at the shell! Magical, but never mysterious."
 arch=("any")
@@ -12,7 +12,7 @@ license=("MIT")
 depends=("python" "python-astunparse")
 makedepends=("python-build" "python-installer" "python-wheel" "python-flit-core")
 source=("$pkgname-pkgver.tar.gz::https://github.com/hauntsaninja/pyp/archive/v${pkgver}.tar.gz")
-sha256sums=('1c6a843ee6eb85304f4ad170958ba5decd72964d1936ed4460a72d02b696f543')
+sha256sums=('0f140c19947676846c426515733b0be9ced8836068f7cba83ed210bbe80e0649')
 
 build() {
   cd "$pkgname-$pkgver"
