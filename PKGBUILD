@@ -1,8 +1,8 @@
 # Maintainer: Razer <razer[AT]neuf[DOT]fr>
 
 pkgname=python-adafruit-circuitpython-dht
-_pypi_pkgname=adafruit-circuitpython-dht
-pkgver=4.0.5
+_pypi_pkgname=adafruit_circuitpython_dht
+pkgver=4.0.6
 pkgrel=0
 pkgdesc="CircuitPython support for DHT11 and DHT22 type temperature/humidity devices"
 arch=('armv6h' 'armv7h')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-pip')
 depends=('python' 'python-adafruit-circuitpython-busdevice')
 optdepends=()
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('98d7d326ed67302d6d8972970a943f0a9760cc96fd6538da48e17db6cd2456ab')
+sha256sums=('d4b3a560a5595ce58a0349127d2f098840e5d3b875a14555dbd45d7d2e059f30')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
