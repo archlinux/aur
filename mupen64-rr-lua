@@ -3,7 +3,7 @@
 # set the prefix for Wine
 export WINEPREFIX="$HOME/.mupen64-rr-lua"
 
-# check if the game's user directory has been initialized
+# check if the emulator's user directory has been initialized
 if [ ! -d "$WINEPREFIX" ]; then
     # create the directory for the wine prefix
     mkdir -p "$WINEPREFIX" || exit 1
@@ -15,5 +15,5 @@ if [ ! -d "$WINEPREFIX" ]; then
     #winetricks -q dxvk || exit 1
 fi
 
-# run the game
+# run the emulator
 WINEDEBUG=-all wine /opt/mupen64-rr-lua/mupen64.exe "$@"
