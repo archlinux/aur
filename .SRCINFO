@@ -1,7 +1,7 @@
 pkgbase = python-usb-protocol
 	pkgdesc = Utilities, data structures, constants, parsers, and tools for working with USB data
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greatscottgadgets/python-usb-protocol
 	arch = any
 	license = BSD-3-Clause
