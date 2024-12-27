@@ -1,7 +1,7 @@
 pkgbase = python-cgen
 	pkgdesc = A C/C++ source generation from an AST
 	pkgver = 2020.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/inducer/cgen
 	arch = any
 	license = MIT
