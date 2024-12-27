@@ -1,7 +1,7 @@
 pkgbase = wxtoimg-beta
 	pkgdesc = Software to decode APT and WEFAX signals from weather satellites
 	pkgver = 2.11.2
-	pkgrel = 10
+	pkgrel = 11
 	url = https://wxtoimgrestored.xyz/beta
 	arch = x86_64
 	arch = i686
@@ -15,17 +15,17 @@ pkgbase = wxtoimg-beta
 	depends = fontconfig
 	depends = libx11
 	depends = libxft
-	provides = wxtoimg
+	provides = wxtoimg=2.11.2
 	conflicts = wxtoimg
 	source = LICENSE
-	sha512sums = 91339b0071ab768135d2dd3823e9ea1fd56aa03bc20a441718aa01049e521f7acab4306666f112f7cce7859e4496bc8e7aa22799d0ef224759ac3901dbfe8d62
+	b2sums = 20302805a1660d3897a430d10d8a0c793b5fa5688a8be766fa08cc115b84bfc93d445aa01fe59c164d16a1479489e54ff84e3ce840f3ca6a80c9670efc792290
 	source_x86_64 = wxtoimg-beta-2.11.2-x86_64.tar.gz::https://wxtoimgrestored.xyz/beta/wxtoimg-linux-amd64-2.11.2-beta.tar.gz
-	sha512sums_x86_64 = ef0ee0c94723e2335689ef16ae7167f18e5c5bcefca2c47c3a37528834c470f28ba7c62fa6b8253ed77ce34df8fd75b400287272dd0f2d5fc4f125148d35cc08
+	b2sums_x86_64 = 5c36e56336453e109678afdd46db2c6ddb8a7c8c30985137ea68a2daff05c349459f90dd5660650a0dfc377661ea974df42fa06a40e595d4bf20594286879e72
 	source_i686 = wxtoimg-beta-2.11.2-i686.tar.gz::https://wxtoimgrestored.xyz/beta/wxtoimg-linux-i386-2.11.2-beta.tar.gz
-	sha512sums_i686 = e5e48c4f1f5a4a53c4029c2507c3e3f530851a28d7a59f296d4f6933decbf45ef6255e35776493ed9e673bb526f72b4008479b6aff687d26be3f2c07a434798a
+	b2sums_i686 = e0fee39c4785f3f2c20e358e3e2ce4fe70843fd53bc77a19f98743a08cf1d0f4affd212a30afacbca058dfb3a72c35991dc999cd11339a88d47dfc4c7fd08aee
 	source_pentium4 = wxtoimg-beta-2.11.2-pentium4.tar.gz::https://wxtoimgrestored.xyz/beta/wxtoimg-linux-i386-2.11.2-beta.tar.gz
-	sha512sums_pentium4 = e5e48c4f1f5a4a53c4029c2507c3e3f530851a28d7a59f296d4f6933decbf45ef6255e35776493ed9e673bb526f72b4008479b6aff687d26be3f2c07a434798a
+	b2sums_pentium4 = e0fee39c4785f3f2c20e358e3e2ce4fe70843fd53bc77a19f98743a08cf1d0f4affd212a30afacbca058dfb3a72c35991dc999cd11339a88d47dfc4c7fd08aee
 	source_armv7h = wxtoimg-beta-2.11.2-armv7h.tar.gz::https://wxtoimgrestored.xyz/beta/wxtoimg-linux-armhf-2.11.2-beta.tar.gz
-	sha512sums_armv7h = 6ff3ec0b3aa10ce6c5ae204adc41a4a05e0c5004f0a03f32dde8e5817e6112979e5059d033e1ada3a7892a5b9ee7bb309e355f996f12156eea54e5f819db5690
+	b2sums_armv7h = e6cf6bdd543bf9ab022c1639d647acdc8504664e143c138cd909c5f5c299b879a86d3828478a3a2a933aa2e8f9df7387becb3c9d8fda92ee2f3718ea33be372b
 
 pkgname = wxtoimg-beta
