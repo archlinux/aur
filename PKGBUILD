@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jammer-bin
 _pkgname="Jammer"
-pkgver=3.1.0.1
+pkgver=3.2.1.2
 pkgrel=1
 pkgdesc="Play songs in cli with youtube and soundcloud support.(Prebuilt version)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/jooapa/jammer/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2d34fe80a1960081da7ba9e1f154ef91b8289a0b2fe97fc01c624259f1a93223'
+sha256sums=('5bcf370ab8fbe3f485bd2a58f2c63659cd17b4259210843f9a3d69a122c84faf'
             '551f3173ed7196d0ffc218873820c270171c788602b03b05c0c17929ea9d993e'
             '6731a288a4110a682e80c898ff52bb4d3ff5f5849dcc3b7f6814279391d12ba4')
 prepare() {
