@@ -1,6 +1,6 @@
 pkgbase = linkandroid-git
-	pkgdesc = Link android to PC easily
-	pkgver = 20241123.05d1bea
+	pkgdesc = Easily project Android screen to PC
+	pkgver = 20241223.0706be2
 	pkgrel = 1
 	url = https://linkandroid.com/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = linkandroid-git
 	depends = ffmpeg
 	conflicts = linkandroid
 	conflicts = linkandroid-bin
-	source = git+https://gitee.com/modstart-lib/linkandroid.git
+	source = git+https://github.com/modstart-lib/linkandroid.git
 	sha256sums = SKIP
 
 pkgname = linkandroid-git

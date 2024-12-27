@@ -2,8 +2,8 @@
 
 pkgname=linkandroid-git
 _pkgname=LinkAndroid
-pkgdesc="Link android to PC easily"
-pkgver=20241123.05d1bea
+pkgdesc="Easily project Android screen to PC"
+pkgver=20241223.0706be2
 pkgrel=1
 arch=('x86_64' 'arm64')
 url=https://linkandroid.com/
@@ -29,7 +29,7 @@ makedepends=('asar'
 conflicts=("${pkgname%-git}"
     "${pkgname%-git}-bin"
 )
-source=("git+https://gitee.com/modstart-lib/linkandroid.git")
+source=("git+https://github.com/modstart-lib/linkandroid.git")
 sha256sums=('SKIP')
 _electronversion=33
 _nodeversion=23
