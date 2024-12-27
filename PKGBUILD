@@ -1,8 +1,9 @@
 # Maintainer: envolution
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=libsql
-pkgver=0.24.28
-pkgrel=2
+pkgver=0.24.30
+pkgrel=1
 pkgdesc='Fork of SQLite that is both Open Source, and Open Contributions'
 url='https://turso.tech/libsql'
 license=(MIT)
@@ -11,7 +12,7 @@ optdepends=('libsql-sqlite3: use libsql for your sqlite3 needs')
 options=(!lto)
 arch=('i686' 'x86_64')
 source=("https://github.com/tursodatabase/libsql/archive/refs/tags/libsql-server-v${pkgver}.tar.gz")
-b2sums=('ff520abc812e0f85663b9e683954066808cb6d576424c456fdae95dce76d471f3176cd7d9c0af6a55e00c20b307e64276ce831c2710e5f78908eb958fafb532c')
+b2sums=('13b3021739bda3c66ab6b395a377b0bb7162909f27492288f7a67d6bf5e1f4a1484da7b10af1544c3188089b24da9b0163ac9662879cc7a76a9c87dc3425a2b1')
 
 _pkgdir="${pkgname}-libsql-server-v${pkgver}"
 prepare() {
@@ -23,6 +24,8 @@ prepare() {
 build() {
   cd $_pkgdir
   # TODO: figure out what flag is causing the build failure, possibly force-frame-pointer?
+  #RUSTFLAGS=$(echo "$RUSTFLAGS" | sed 's|-Cforce-frame-pointers=yes||g' | xargs)
+  ## even removing the flag results in compilation problems with unstable config options.  We unset the variables just to avoid the incompatible macros
   unset RUSTFLAGS
   unset DEBUG_RUSTFLAGS
 
@@ -48,11 +51,8 @@ package() {
   install -Dm644 "target/release/libbottomless.a" "$pkgdir/usr/lib/libbottomless.a"
   install -Dm644 "target/release/libsql_experimental.a" "$pkgdir/usr/lib/libsql_experimental.a"
 
-  # Install RLIB libraries
-  for lib in target/release/*.rlib; do
-    install -Dm644 "$lib" "$pkgdir/usr/lib/$(basename $lib)"
-  done
-
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 README-libsql.md "$pkgdir/usr/share/doc/$pkgname/README-libsql.md"
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
+# vim:set ts=2 sw=2 et:
