@@ -3,20 +3,21 @@
 pkgbase=lightway-core
 pkgname=('lightway-core' 'lightway-core-doc')
 pkgver=1.17.5
-pkgrel=1
+pkgrel=2
 _ruby_ver=3.1.6
 _ceedling_ver=0.31.1
 pkgdesc='A VPN protocol by ExpressVPN'
 arch=('x86_64')
 url='https://www.expressvpn.com/lightway/'
 license=('GPL-2.0-or-later')
-makedepends=('git' 'cmake' 'doxygen' 'graphviz'
-             'rbenv' 'rust' 'libffi' 'libyaml' 'openssl' 'zlib')
+makedepends=('git' 'cmake' 'doxygen' 'graphviz')
 source=("https://github.com/expressvpn/lightway-core/archive/v${pkgver}/${pkgbase}-${pkgver}.tar.gz"
         'git+https://github.com/wolfSSL/wolfssl.git'
+        "https://cache.ruby-lang.org/pub/ruby/${_ruby_ver%.*}/ruby-${_ruby_ver}.tar.xz"
         '010-lightway-core-disable-werror-on-wolfssl.patch')
 sha256sums=('8ad6124a6e31c98662dab95a9d3977792d259e9fb73c1b0a9c50aa809824322e'
             'SKIP'
+            '597bd1849f252d8a6863cb5d38014ac54152b508c36dca156f6356a9e63c6102'
             'fd82affc9e605a7963e5b4908d8decc877980ac007f9ba5aabeccf9019cf5727')
 
 prepare() {
@@ -32,24 +33,27 @@ prepare() {
 }
 
 build() {
-    export GEM_HOME="${srcdir}/ruby/versions/${_ruby_ver}"
-    export GEM_PATH="$GEM_HOME"
-    export PATH="${GEM_HOME}/bin:${PATH}"
-    export RBENV_ROOT="${srcdir}/ruby"
-    rbenv install --force "$_ruby_ver"
-    gem install --no-user-install --install-dir "${srcdir}/ruby/versions/${_ruby_ver}" ceedling -v "$_ceedling_ver"
+    local _ruby_root="${srcdir}/ruby/${_ruby_ver}"
+    export GEM_HOME="$_ruby_root"
+    export GEM_PATH="$_ruby_root"
+    export PATH="${_ruby_root}/bin${PATH:+":${PATH}"}"
+    cd "ruby-${_ruby_ver}"
+    ./configure --prefix="$_ruby_root" --enable-shared
+    make install
+    gem install --no-user-install --install-dir "$_ruby_root" ceedling -v "$_ceedling_ver"
     
     export CFLAGS+=' -ffat-lto-objects'
     [ -z "$LC_ALL" ] && export LC_ALL='C'
-    cd "${pkgbase}-${pkgver}"
+    cd "../${pkgbase}-${pkgver}"
     ceedling release project:linux
     doxygen
 }
 
 check() {
-    export GEM_HOME="${srcdir}/ruby/versions/${_ruby_ver}"
-    export GEM_PATH="$GEM_HOME"
-    export PATH="${GEM_HOME}/bin:${PATH}"
+    local _ruby_root="${srcdir}/ruby/${_ruby_ver}"
+    export GEM_HOME="$_ruby_root"
+    export GEM_PATH="$_ruby_root"
+    export PATH="${_ruby_root}/bin${PATH:+":${PATH}"}"
     
     cd "${pkgbase}-${pkgver}"
     ceedling test project:linux
