@@ -6,7 +6,7 @@ _use_poppler=OFF  # ON or OFF
 _qt_version_major=6  # 5 or 6
 
 pkgname=beamerpresenter-git
-pkgver=0.2.5_983.c30fca1
+pkgver=0.2.6_1010.550b5c6
 pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter (git)"
 arch=('x86_64')
@@ -39,7 +39,7 @@ fi
 
 
 pkgver() {
-    printf "0.2.5_%s.%s" \
+    printf "0.2.6_%s.%s" \
         "$(git -C "${srcdir}/BeamerPresenter" rev-list --count HEAD)" \
         "$(git -C "${srcdir}/BeamerPresenter" rev-parse --short HEAD)"
 }
@@ -71,5 +71,5 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" cmake --install "${pkgname}-${pkgver}/build"
-    install -Dm644 "${srcdir}/BeamerPresenter/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "${srcdir}/BeamerPresenter/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
