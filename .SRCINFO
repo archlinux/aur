@@ -1,0 +1,26 @@
+pkgbase = radiogogo-bin
+	pkgdesc = Go-powered CLI to surf global radio waves via a sleek TUI.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/matteo-pacini/radiogogo
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	arch = armv7h
+	license = MIT
+	provides = radiogogo
+	conflicts = radiogogo
+	source = README-0.3.2.md::https://github.com/matteo-pacini/radiogogo/raw/refs/tags/v0.3.2/README.md
+	source = LICENSE-0.3.2::https://github.com/matteo-pacini/radiogogo/raw/refs/tags/v0.3.2/LICENSE
+	sha256sums = a97e241f232d9be3a8a8ed8241b03e3e8cb977d7a9f5f2d4dc79a8c4a590df34
+	sha256sums = 4540d32521736ca767f366cf07d64fefa02d9fe93b7e30e42925a00b9a7e2f7c
+	source_x86_64 = radiogogo-0.3.2-x86_64.zip::https://github.com/matteo-pacini/radiogogo/releases/download/v0.3.2/radiogogo_v0.3.2_linux_amd64.zip
+	sha256sums_x86_64 = 567f711a98cf38325ec9d37507f7e6dcf878f7eeb916ccde28408c4ae45e422e
+	source_aarch64 = radiogogo-0.3.2-aarch64.zip::https://github.com/matteo-pacini/radiogogo/releases/download/v0.3.2/radiogogo_v0.3.2_linux_arm64.zip
+	sha256sums_aarch64 = 36e60e76f8e0bd69fe3689c71bba373e200277ea37b61d301f6b32fd04173789
+	source_i686 = radiogogo-0.3.2-i686.zip::https://github.com/matteo-pacini/radiogogo/releases/download/v0.3.2/radiogogo_v0.3.2_linux_386.zip
+	sha256sums_i686 = b7c73a5928a0891d07f03e9a52ff0009b39a1bd5628de69628fd31b1c0535bd3
+	source_armv7h = radiogogo-0.3.2-armv7h.zip::https://github.com/matteo-pacini/radiogogo/releases/download/v0.3.2/radiogogo_v0.3.2_linux_arm.zip
+	sha256sums_armv7h = 808f2275f87a0b84210e38dd6874d7530df485a89f5464bac97f727e0086829e
+
+pkgname = radiogogo-bin
