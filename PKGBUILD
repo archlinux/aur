@@ -67,12 +67,12 @@ package() {
         echo "您的系统内核版本为：$kernel_version_part ，符合安装条件。"
     else
         echo "您的系统内核版本为：$kernel_version_part"
-        read -r -p "是否安装LTS内核版本?[Y/n]" answer
+        read -r -p "是否安装linux-lts-6.6.67?[Y/n]" answer
         if [ "$answer" == "y" ]; then
-            echo "正在安装 LTS内核版本..."
-            sudo pacman -S linux-lts linux-lts-headers
+            echo "正在安装 linux-lts-6.6.67..."
+            yes y | sudo pacman -U https://archive.archlinux.org/packages/.all/linux-lts-6.6.67-1-x86_64.pkg.tar.zst https://archive.archlinux.org/packages/.all/linux-lts-headers-6.6.67-1-x86_64.pkg.tar.zst
             sudo grub-mkconfig -o /boot/grub/grub.cfg
-            echo "LTS内核版本安装完成 请重启后 重新运行脚本。"
+            echo "LTS内核安装完成 请重启后 重新运行脚本。"
             exit 1
         fi
     fi
