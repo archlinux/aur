@@ -1,26 +1,23 @@
 # Maintainer: Your Jonathan Donszelmann <jonabent@gmail.com>
 
 pkgname="dumpasm-git"
-pkgver=5.2576b42
+pkgver=r15.8f2bb63
 pkgrel=1
 pkgdesc="compile semicolon seperated assembly instructions and hexdump"
-arch=('x86_64')
-url="https://github.com/jonay2000/${pkgname}"
-license=('GPL')
-depends=('binutils')
+arch=('any')
+url="https://github.com/jonay2000/dumpasm"
+license=('unknown')
+depends=('bash' 'binutils' 'nasm')
 makedepends=('git')
-
-source=("${pkgname%-git}::git://github.com/jonay2000/dumpasm.git")
+provides=('dumpasm')
+source=("git+${url}.git")
 md5sums=('SKIP')
 
-
 pkgver() {
-  cd "${srcdir}/dumpasm"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "dumpasm"
+  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 package() {
-  mkdir -p "${pkgdir}/usr/bin"
-  install -D -m755 "${srcdir}/dumpasm/dumpasm" "${pkgdir}/usr/bin/"
+  install -Dm755 "dumpasm/dumpasm" -t "${pkgdir}/usr/bin/"
 }
-
