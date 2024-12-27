@@ -1,7 +1,7 @@
 # Contributor: David Vachulka <archdvx@dxsolutions.org>
 
 pkgname=dxde
-pkgver=1.40.12
+pkgver=1.40.13
 pkgrel=1
 pkgdesc="Program pro vedeni danove evidence (for czech tax records)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('wxwidgets-gtk3' 'openssl' 'fontconfig' 'curl')
 makedepends=('cmake')
 install=${pkgname}.install
 source=(https://files.dxsolutions.org/$pkgname-$pkgver.tar.gz)
-md5sums=('23d995a8fbee115cabb03cd8649593d5')
+md5sums=('b4a82ef71c19535544888d417c07a57a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
