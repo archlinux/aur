@@ -3,9 +3,9 @@
 
 pkgname='arcconf'
 _pkgname='Arcconf'
-_pkgrel='26842'
-pkgver="4.18.00.${_pkgrel}"
-_rpmver="4.18-${_pkgrel}"
+_pkgrel='27147'
+pkgver="4.23.00.${_pkgrel}"
+_rpmver="4.23-${_pkgrel}"
 pkgrel='1'
 pkgdesc='Microsemi Adaptec command line interface utility'
 arch=('x86_64' 'aarch64')
@@ -14,14 +14,14 @@ url='https://storage.microsemi.com/en-us/support'
 license=('custom')
 source=("https://download.adaptec.com/raid/storage_manager/${pkgname}_B${_pkgrel}.zip"
 	"https://download.adaptec.com/raid/storage_manager/${pkgname}_v3_07_23980.zip")
-sha256sums=('9b65802934df1537b5ae8351f5d48bcdbb71cfd6fa5547620ca08b50004b9eba'
+sha256sums=('14f25095870e0652083f5f8924a85ddf5aa805623a5a521d93b746d9570550d4'
             '27beeaff6e51f2aa8292ff3f31c3774011468ccba1483755e056f2a82db012d1')
 noextract=("${source[@]##*/}")
 
 _current_str="${pkgname}_${_pkgrel}"
 _legacy_str="${pkgname}_legacy"
 _archstr="$([[ "${CARCH}" == 'x86_64' ]] && \
-  echo -n "${_current_str}_src/linux_x64/cmdline/linux_x64/rpm" || \
+  echo -n "${_current_str}_src/linux_x64/rpm" || \
   echo -n "${_current_str}_src/linuxarm_x64/rpm")"
 # The legacy is version of software for HBA1000 Adaptec controlles and older (the 'aacraid' linux driver)
 # The 'current' version support HBA1100 Microsemi controllers and higher (the 'smartpqi' linux driver)
