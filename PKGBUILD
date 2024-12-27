@@ -36,7 +36,7 @@ prepare() {
 	sed "s,ROOT,${srcdir}/${_basename}," installer.properties.template > installer.properties
 
 	# Extract source by running the installer.
-	"./${_installer}" -f "${srcdir}/installer.properties"
+	JAVA_TOOL_OPTIONS="-Djdk.util.zip.disableZip64ExtraFieldValidation=true" "./${_installer}" LAX_VM /usr/bin/java -f "${srcdir}/installer.properties"
 }
 
 package() {
