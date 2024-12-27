@@ -43,12 +43,13 @@ _patchbase_tag="12-25-2024-e713c348-f10d2d04"
 ## also recommended to set _desired_wine_commit and _desired_staging_commit if this is used (see below)
 _custompatches=false
 
-## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
-## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
+## (custompatches=true) uses wine/staging master if empty, uses given commit or tag if set
+##                     (if you want to update them to current master, just set them empty)
+## (custompatches=false) ignored and overwritten by upstream commits from patchbase repo
 _desired_wine_commit=e713c3487f9fc9b7ded528f9ce49844facb99a90
 _desired_staging_commit=f10d2d045221c84cb75e9a85919790c2437a647a
 
-## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
+## (custompatches=true) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
 
 ## wine/staging upstream urls
@@ -61,38 +62,26 @@ _install_static=false
 ## strips debug and all other symbols from binaries to reduce size
 _strip_package=true
 
+## for cross compilation
+##   "llvm": llvm-mingw (msvcrt will be preferred if both exist in /opt/llvm-mingw/, but it doesn't matter)
+##   "msvc": clang in msvc-mode
+##   anything else: regular mingw-gcc
+_use_mingw=gcc
+
 ## for native compilation:
 ##   "true": system clang (/usr/bin/clang)
 ##   "bundled": llvm-mingw's clang (requires _use_mingw=llvm)
 ##   anything else: gcc
-_use_clang=bundled
-
-## for cross compilation
-##   llvm: llvm-mingw-{ucrt,msvcrt} (msvcrt will be preferred if both exist in /opt/llvm-mingw/, but it doesn't matter)
-##   msvc: clang in msvc-mode
-##   anything else: regular mingw-gcc
-_use_mingw=llvm
+_use_clang=false
 
 ## leave empty unless you want to manually change the type of build (true: wow64)
 _wow64build=
-
-## not functional yet
-_autoupdate=false
 
 ################################################################################################################################
 ################################################################################################################################
 
 _wow64build=${_wow64build:-"$(cat "${_where}/buildiswow64")"}
-if [ "${_custompatches}" != "true" ]; then _custompatches= ; fi
 if [ "$_wow64build" = "true" ]; then _wowname="-wow64"; else _wowname=""; fi
-
-if [ "${_generic_release}" = "true" ]; then
-  PKGEXT='.pkg.tar.xz'
-  COMPRESSXZ=(xz -9 -c -z - --threads=0)
-  _cpu_target="-march=nocona -mtune=core-avx2" # same as Proton
-else
-  _cpu_target="-march=native -mtune=native"
-fi
 
 pkgname=wine-osu-spectator"${_wowname}"
 
@@ -106,6 +95,22 @@ license=(LGPL)
 
 options=('!staticlibs' '!lto' '!debug' '!strip')
 if [ "${_devenv}" != "true" ]; then options+=('!buildflags'); fi
+
+if [ "${_generic_release}" = "true" ]; then
+  PKGEXT='.pkg.tar.xz'
+  COMPRESSXZ=(xz -9 -c -z - --threads=0)
+  _cpu_target="-march=nocona -mtune=core-avx2" # same as Proton
+else
+  _cpu_target="-march=native -mtune=native"
+fi
+
+if [ -z "${MAKEFLAGS}" ]; then
+  _mjobsflag="-j$(($(nproc) + 1))"
+else
+  _mjobsflag="${MAKEFLAGS#-j* }"
+fi
+
+if [ "${_custompatches}" != "true" ]; then _custompatches= ; fi
 
 source=(
   "winestart"
@@ -287,7 +292,7 @@ if [ "${_use_mingw}" = "llvm" ]; then
   fi
 
   _cross_path="${_mingw_path}":"${PATH}"
-  _extra_cross_flags="${_extra_cross_flags:-} -ffunction-sections -fdata-sections -Wl,--gc-sections"
+  _extra_cross_flags="${_extra_cross_flags:-}"
 else
   # remove llvm-mingw paths from externally set PATH
   if [[ "${PATH}" =~ "llvm-mingw" ]]; then
@@ -305,7 +310,7 @@ else
     _cross32="clang"
     _crossxx32="clang++"
 
-    _extra_cross_flags="${_extra_cross_flags:-} --rtlib=compiler-rt -ffunction-sections -fdata-sections"
+    _extra_cross_flags="${_extra_cross_flags:-}"
     _use_polly="${_use_polly:-} cross"
   else
     makedepends+=(mingw-w64-binutils mingw-w64-gcc mingw-w64-crt mingw-w64-headers mingw-w64-winpthreads)
@@ -405,23 +410,6 @@ _set_vars32() {
   export CROSSCC="${i386_CC}"
 }
 
-## ccache configuration (taken from https://raw.githubusercontent.com/openglfreak/wine-tkg-userpatches/next/config/ccache.cfg)
-_prep_ccache() {
-  _compilerhash="$(md5sum "$(command -v "${_cc}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross64}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross32}")" | cut -d ' ' -f 1)"
-  export _compilerhash
-
-  export CCACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/ccache/wine"
-  mkdir -p "${CCACHE_DIR}"
-  export CCACHE_COMPILERCHECK="string:${_compilerhash}" \
-         CCACHE_BASEDIR="${srcdir}"
-  ccache --set-config=compression=true \
-         --set-config=compression_level=1 \
-         --set-config=sloppiness=file_macro,time_macros \
-         --set-config=hash_dir=false \
-         --set-config=inode_cache=true \
-         --set-config=temporary_dir="${CCACHE_DIR}/tmp"
-}
-
 prepare() { _set_vars;
   if [ "${_where}/src" != "${srcdir}" ]; then _failure "Something weird is going on with your PKGBUILD's path, exiting early to avoid tampering with your files."; fi
   cd "${_where}" || _failure
@@ -429,8 +417,10 @@ prepare() { _set_vars;
   ## Removes pkg dir if already existing
   rm -rf "${_where}"/pkg || true
 
-  ## Rename our working copy of the wine source
-  mv "${srcdir}"/wine "${srcdir}"/"${pkgname}" || _failure
+  ## Make an alias for the wine source
+  rm -rf "${srcdir:?}/${pkgname:?}" &>/dev/null || true
+  ln -sr "${srcdir}"/wine "${srcdir:?}/${pkgname:?}" || _failure
+  if [ ! -L "${srcdir}/${pkgname}" ]; then _failure "Something weird is going on with your src/ directory paths, try clearing it out first."; fi
 
   ## Source base re-configuration
   _desired_wine_commit=${_desired_wine_commit:-master}
@@ -444,10 +434,8 @@ prepare() { _set_vars;
     if [ -f "${srcdir}"/wine-osu-patches/staging-exclude ]; then
       IFS=" " read -r -a _disabled_staging <<< "$(sed -E "s/-W\ //g" "${srcdir}"/wine-osu-patches/staging-exclude)"
     fi
-    if [ "${_autoupdate}" != "true" ]; then
-      _desired_wine_commit=$_patchbase_wine_commit
-      _desired_staging_commit=$_patchbase_staging_commit
-    fi
+    _desired_wine_commit=$_patchbase_wine_commit
+    _desired_staging_commit=$_patchbase_staging_commit
   else
     msg "Using custom patches"
     _patchdir="${_where}/custompatches"
@@ -455,38 +443,34 @@ prepare() { _set_vars;
 
   ## Staging setup
 
-  if [ "${_autoupdate}" != "true" ]; then
-    cd "${srcdir}"/wine-staging || _failure
-    git reset --hard "${_desired_staging_commit}" || _failure
+  cd "${srcdir}"/wine-staging || _failure
+  git reset --hard "${_desired_staging_commit}" || _failure
 
-    if [ "${_custompatches}" = "true" ]; then
-      _patchbase_staging_commit=$(git rev-parse HEAD)
-      _desired_staging_commit=$_patchbase_staging_commit
+  if [ "${_custompatches}" = "true" ]; then
+    _patchbase_staging_commit=$(git rev-parse HEAD)
+    _desired_staging_commit=$_patchbase_staging_commit
 
-      if [ "${_use_staging}" = "true" ] && [ "${_use_staging_upstream}" = "true" ]; then
-        _patchbase_wine_commit="$(cat "${srcdir}"/wine-staging/staging/upstream-commit)"
-        _desired_wine_commit=$_patchbase_wine_commit
-      fi
+    if [ "${_use_staging}" = "true" ] && [ "${_use_staging_upstream}" = "true" ]; then
+      _patchbase_wine_commit="$(cat "${srcdir}"/wine-staging/staging/upstream-commit)"
+      _desired_wine_commit=$_patchbase_wine_commit
     fi
-
-    sed -i "s/^_desired_staging_commit=.*$/_desired_staging_commit=${_desired_staging_commit}/g" "${_where}/PKGBUILD"
   fi
+
+  sed -i "s/^_desired_staging_commit=.*$/_desired_staging_commit=${_desired_staging_commit}/g" "${_where}/PKGBUILD"
 
   msg2 "Wine staging at: $_patchbase_staging_commit"
 
   ## Mainline setup
 
-  if [ "${_autoupdate}" != "true" ]; then
-    cd "${srcdir}"/"${pkgname}" || _failure
-    git reset --hard "${_desired_wine_commit}" || _failure
+  cd "${srcdir}"/"${pkgname}" || _failure
+  git reset --hard "${_desired_wine_commit}" || _failure
 
-    if [ "${_custompatches}" = "true" ]; then
-      _patchbase_wine_commit=$(git rev-parse HEAD)
-      _desired_wine_commit=$_patchbase_wine_commit
-    fi
-
-    sed -i "s/^_desired_wine_commit=.*$/_desired_wine_commit=${_desired_wine_commit}/g" "${_where}/PKGBUILD"
+  if [ "${_custompatches}" = "true" ]; then
+    _patchbase_wine_commit=$(git rev-parse HEAD)
+    _desired_wine_commit=$_patchbase_wine_commit
   fi
+
+  sed -i "s/^_desired_wine_commit=.*$/_desired_wine_commit=${_desired_wine_commit}/g" "${_where}/PKGBUILD"
 
   msg2 "Wine mainline at: $_patchbase_wine_commit"
 
@@ -567,17 +551,23 @@ prepare() { _set_vars;
 
   if [ "${_strip_package}" = "true" ]; then
     awk -i inplace '/STRIPPROG=/ { sub(/ %s/, " %s -s") }1' "${srcdir}/${pkgname}/tools/makedep.c"
+    # shellcheck disable=SC2016
     sed -i 's|stripcmd=$stripprog|stripcmd="$stripprog -s"|g' "${srcdir}/${pkgname}/tools/install-sh"
   fi
 
   ## clean up .orig files if patches succeeded
-  find "${srcdir}"/"${pkgname}" -iregex ".*orig" -execdir rm {} \;
+  find "${srcdir}"/"${pkgname}"/ -iregex ".*orig" -execdir rm '{''}' '+'
 
-  # ./dlls/winevulkan/make_vulkan # don't really need dx12 support for this package...
+  # run this if e.g. proton vkd3d is in the wine tree
+  # msg2 "Running make_vulkan..."
+  # ./dlls/winevulkan/make_vulkan -x vk.xml
 
-  tools/make_requests
+  msg2 "Running make_requests..."
+  tools/make_requests || _failure
+
   if [ -e tools/make_specfiles ]; then
-    tools/make_specfiles
+    msg2 "Running make_specfiles..."
+    tools/make_specfiles || _failure
   fi
 
   ## make tools/make_makefiles happy
@@ -585,12 +575,16 @@ prepare() { _set_vars;
   git config user.email "wine@build.dev" &>/dev/null || true
   git config user.name "winebuild" &>/dev/null || true
   git add --all &>/dev/null || true
-  git commit --allow-empty -m "makepkg" &>/dev/null || true
+  git commit --allow-empty -m "pre" &>/dev/null || true
 
-  tools/make_makefiles
+  msg2 "Running make_makefiles..."
+  tools/make_makefiles || _failure
 
-  _prep_ccache
+  msg2 "Running autoreconf..."
   autoreconf -fi
+
+  git add --all &>/dev/null || true
+  git commit --amend --allow-empty -m "makepkg" &>/dev/null || true
 }
 
 _configure64() { _set_vars64;
@@ -632,24 +626,41 @@ _tools64() { _set_vars64;
   shopt -u globstar
 }
 
+# shellcheck disable=SC2120
 _build64() { _set_vars64;
   cd "${build64dir}" || _failure
 
   msg2 "Building Wine-64"
-
-  make -j$(($(nproc) + 1)) || _failure "Compilation failed"
+  if [ "${_wow64build}" = "true" ]; then
+    make "${_mjobsflag:-}" || _failure "Wine-64 Compilation failed"
+  else
+    MAKEFLAGS="${_mjobsflag:-}"
+    exec "${@}" || _failure "Wine-64 Compilation failed"
+  fi
 }
 
+# invoked by make -f Makefile.single
 _build32() { _set_vars32;
   cd "${build32dir}" || _failure
 
   msg2 "Building Wine-32"
 
-  make -j$(($(nproc) + 1)) || _failure "Compilation failed"
+  MAKEFLAGS="${_mjobsflag:-}"
+  exec "${@}" || _failure "Wine-32 Compilation failed"
 }
 
 build() { _set_vars;
+  _sharedopts=(); _wine64opts=(); _wine32opts=()
+
   if [ "${_devenv}" = "true" ]; then
+    msg "Optimizing development environment..."
+    _compilerhash="$(md5sum "$(command -v "${_cc}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross64}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross32}")" | cut -d ' ' -f 1)"
+    export _compilerhash
+
+    # ccache
+    _prep_ccache
+
+    # configure cache
     _confcachedir="${_where}"/.confcaches
     _compilerwithflagshash="$(sha512sum - < <(printf '%s' "${CFLAGS}${LDFLAGS}${CROSSCFLAGS}${CROSSLDFLAGS}${_compilerhash}") | cut -d ' ' -f 1)"
     _confcacheprefix="${_confcachedir}"/"${pkgver%.w*}-${pkgrel}-${_compilerwithflagshash}"
@@ -658,10 +669,38 @@ build() { _set_vars;
       mkdir "${_confcachedir}" || \
           _failure "Couldn't create an autoconf cache directory in ${_confcachedir#"${_where}/"}. This shouldn't have happened."
     fi
-    ln -s "${HOME}/.config/edwkspc/wine/".* "${srcdir}"/"${pkgname}"/ || true
+
+    _sharedopts+=(--config-cache)
+    _wine64opts+=(--cache-file="${_confcacheprefix}"-64.cache)
+    _wine32opts+=(--cache-file="${_confcacheprefix}"-32.cache)
+
+    # "awesome"
+    if [ ! -f "${_confcacheprefix}"-64.cache ]; then
+      rm -rf "${srcdir}"/*64-build || true
+      find "${_confcachedir}"/ -type f -regex '.*64\.cache' -execdir mv '{''}'{,.off} ';' || true
+      if [ -f "${_confcacheprefix}"-64.cache.off ]; then
+        mv "${_confcacheprefix}"-64.cache{.off,}
+      fi
+    fi
+    if [ ! -f "${_confcacheprefix}"-32.cache ]; then
+      rm -rf "${srcdir}"/*32-build || true
+      find "${_confcachedir}"/ -type f -regex '.*32\.cache' -execdir mv '{''}'{,.off} ';' || true
+      if [ -f "${_confcacheprefix}"-32.cache.off ]; then
+        mv "${_confcacheprefix}"-32.cache{.off,}
+      fi
+    fi
+
+    git -C "${srcdir}"/"${pkgname}"/ config --unset commit.gpgsign &>/dev/null || true
+    git -C "${srcdir}"/"${pkgname}"/ config --unset user.email &>/dev/null || true
+    git -C "${srcdir}"/"${pkgname}"/ config --unset user.name &>/dev/null || true
+    ln -s "${HOME}/.config/edwkspc/wine/".* "${srcdir}"/"${pkgname}"/ &>/dev/null || true
+    printf '%s\n%s\n%s' '.vscode' '.gitignore' '*patch' > "${srcdir}"/"${pkgname}"/.gitignore || true # vscode? cringe!
+  else
+    # was it worth it?
+    rm -rf "${srcdir}"/*-build || true
   fi
 
-  _sharedopts=(
+  _sharedopts+=(
     --prefix=/opt/"${pkgname}"
     --disable-tests
     --disable-winemenubuilder
@@ -684,11 +723,10 @@ build() { _set_vars;
     --without-netapi
   )
 
-  _wine64opts=(
+  _wine64opts+=(
     --libdir=/opt/"${pkgname}"/lib64
     --with-mingw="${x86_64_CC}"
   )
-  _wine32opts=()
 
   if [ "${_wow64build}" = "true" ]; then
     _wine64opts+=(--enable-archs="x86_64,i386")
@@ -702,17 +740,10 @@ build() { _set_vars;
     )
   fi
 
-  if [ "${_devenv}" = "true" ]; then
-    _sharedopts+=(--config-cache)
-    _wine64opts+=(--cache-file="${_confcacheprefix}"-64.cache)
-    _wine32opts+=(--cache-file="${_confcacheprefix}"-32.cache)
-  fi
-
   local _old_SOURCE_DATE_EPOCH="$SOURCE_DATE_EPOCH"
   export SOURCE_DATE_EPOCH=0
 
-  rm -rf "${build64dir}" || true
-  mkdir "${build64dir}" || true
+  if [ ! -d "${build64dir}" ]; then mkdir "${build64dir}"; fi
 
   ## don't build lib32 for wow64 builds
   if [ "${_wow64build}" = "true" ]; then
@@ -723,9 +754,8 @@ build() { _set_vars;
     trap 'rm -f -- "$_TMP_VARFILE"' EXIT
     { ( unset MAKEFLAGS; unset MFLAGS; set ); echo; set +o; } >"$_TMP_VARFILE"
 
-    rm -rf "${build32dir}" || true
-    mkdir "${build32dir}" || true
-    make -f "${_where}"/Makefile.single -j$(($(nproc) + 1))
+    if [ ! -d "${build32dir}" ]; then mkdir "${build32dir}"; fi
+    make -f "${_where}"/Makefile.single "${_mjobsflag:-}"
   fi
 
   export SOURCE_DATE_EPOCH="$_old_SOURCE_DATE_EPOCH"
@@ -742,7 +772,7 @@ package() { _set_vars;
     _set_vars32
     msg2 "Packaging Wine-32"
     cd "${build32dir}" || _failure
-    make -j$(($(nproc) + 1)) \
+    make "${_mjobsflag:-}" \
       prefix="${pkgdir}"/opt/"${pkgname}" \
       libdir="${pkgdir}"/opt/"${pkgname}"/lib \
       dlldir="${pkgdir}"/opt/"${pkgname}"/lib/wine $_installtype || _failure "Wine-32 installation failed"
@@ -751,7 +781,7 @@ package() { _set_vars;
   _set_vars64
   msg2 "Packaging Wine-64"
   cd "${build64dir}"|| _failure
-  make -j$(($(nproc) + 1)) \
+  make "${_mjobsflag:-}" \
     prefix="${pkgdir}"/opt/"${pkgname}" \
     libdir="${pkgdir}"/opt/"${pkgname}"/lib64 \
     dlldir="${pkgdir}"/opt/"${pkgname}"/lib64/wine $_installtype || _failure "Wine-64 installation failed"
@@ -759,7 +789,7 @@ package() { _set_vars;
   if [ "${_install_static}" != "true" ] && [ "${_strip_package}" = "true" ]; then # stripping with static libs is broken for some reason?
     msg "Stripping symbols from libraries..."
 
-    find "${pkgdir}"/opt/"${pkgname}"/lib{,64} \
+    find "${pkgdir}"/opt/"${pkgname}"/lib{,64}/ \
       -type f '(' -iname '*.a' -or -iname '*.dll' -or -iname '*.so' -or -iname '*.sys' -or -iname '*.drv' -or -iname '*.exe' ')' \
       -print0 \
       | xargs -0 strip -s &>/dev/null || true
@@ -839,6 +869,21 @@ _makefile_add_lto_flags() {
         rm -f "$makefile.new"
         return 1
     fi
+}
+
+## ccache configuration (taken from https://raw.githubusercontent.com/openglfreak/wine-tkg-userpatches/next/config/ccache.cfg)
+## only with _devenv=true
+_prep_ccache() {
+  export CCACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/ccache/wine"
+  mkdir -p "${CCACHE_DIR}"
+  export CCACHE_COMPILERCHECK="string:${_compilerhash}" \
+         CCACHE_BASEDIR="${srcdir}"
+  ccache --set-config=compression=true \
+         --set-config=compression_level=1 \
+         --set-config=sloppiness=file_macro,time_macros \
+         --set-config=hash_dir=false \
+         --set-config=inode_cache=true \
+         --set-config=temporary_dir="${CCACHE_DIR}/tmp"
 }
 
 _failure() {
