@@ -16,6 +16,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=("git+https://github.com/astrand/$_pkgname")
 sha256sums=('SKIP')
+options=(!lto)
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
