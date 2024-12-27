@@ -1,6 +1,6 @@
 # shellcheck disable=SC2148
 pkgname=binsider-git
-pkgver=r204.7e0dbbb
+pkgver=r259.b3c5487
 pkgrel=1
 pkgdesc="Analyze ELF binaries like a boss. Git master version."
 arch=('x86_64')

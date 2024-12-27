@@ -1,6 +1,6 @@
 pkgbase = binsider-git
 	pkgdesc = Analyze ELF binaries like a boss. Git master version.
-	pkgver = r204.7e0dbbb
+	pkgver = r259.b3c5487
 	pkgrel = 1
 	url = https://github.com/orhun/binsider
 	arch = x86_64
