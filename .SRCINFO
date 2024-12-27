@@ -1,0 +1,21 @@
+pkgbase = python-integer-tool
+	pkgdesc = Python functions for integer.
+	pkgver = 0.0.2.1
+	pkgrel = 1
+	url = https://pypi.org/project/integer_tool
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-integer-tool
+	conflicts = python-integer-tool
+	options = !strip
+	options = !debug
+	source = integer_tool-0.0.2.1.tar.gz::https://files.pythonhosted.org/packages/source/i/integer_tool/integer_tool-0.0.2.1.tar.gz
+	sha256sums = a87be9b9e0e97ea26a3a21378ece1f1ab8ac6d6df4eec218dfe7d38159218522
+
+pkgname = python-integer-tool
