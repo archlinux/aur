@@ -4,7 +4,7 @@ _pkgname=jule
 pkgname="${_pkgname}c"
 pkgver=0.1.1
 _pkgver="$_pkgname$pkgver"
-pkgrel=3
+pkgrel=4
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
 url="https://github.com/${_pkgname}lang/$_pkgname"
@@ -19,8 +19,10 @@ sha256sums=('4289447fc62a4466b67b4be87614cee9f424b630164bdc7f7bc810a25431d930')
 sha256sums_x86_64=('b087205f273f3308534befd47ff8f2d01241c3389141f298db3e3a3c39c9b037')
 sha256sums_aarch64=('98b54385c76f1ec46f9c80429be2876f377d1128d1e90deb37f9db758c767e06')
 sha256sums_i386=('d00ef98608f404a51108f4af2e18cab066306478695fe0198e52f944a216f829')
-depends=('gcc-libs' 'clang')
-optdepends=('gcc: g++ backend support')
+depends=('glibc' 'gcc-libs')
+makedepends=('clang')
+optdepends=('clang: clang backend support'
+    'gcc: gcc backend support')
 
 prepare() {
     cd "$_pkgname-$_pkgver"
