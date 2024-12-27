@@ -16,7 +16,7 @@ source=(
 	"https://gh.api.99988866.xyz/https://github.com/haowenz/chromap/releases/download/v${pkgver}/$file_name"
 )
 
-chromap_sum=
+chromap_sum=5f8090c83e0aece3abc954dcc7ae5c80cd3e509d6c9922c6a41d35aa1e8c0b7ffabc52bedc538b86396538b646be564739e9fc04cdbfe2c34b658c9de44b4b66
 sha512sums=(
 	$chromap_sum
 )
