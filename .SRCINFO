@@ -1,7 +1,7 @@
 pkgbase = python-rchitect
 	pkgdesc = Minimal R API for Python
 	pkgver = 0.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/randy3k/rchitect
 	arch = any
 	license = MIT
