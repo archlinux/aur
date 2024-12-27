@@ -1,6 +1,6 @@
 # Maintainer: Dan Walsh <dan@danwalsh.ca>
 pkgname=redisinsight
-pkgver=2.60.0
+pkgver=2.64.0
 pkgrel=2
 pkgdesc="Desktop manager that provides an intuitive and efficient GUI for Redis, allowing you to interact with your databases, monitor, and manage your data."
 arch=('x86_64')
@@ -21,7 +21,7 @@ python-setuptools
 clang
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RedisInsight/RedisInsight/archive/$pkgver.tar.gz")
-sha256sums=('09be44dbfb939467b9406c465c5f66b48fb1cc0782cd865c55e655cd5c4ab5e5')
+sha256sums=('25fc3c2ac0c0902a3ed3f69878ec4c248ca09b713c0136fb5ea7122fa467b756')
 
 _ensure_local_nvm() {
     # let's be sure we are starting clean
