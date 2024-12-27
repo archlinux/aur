@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=radian
 pkgver=0.6.13
-pkgrel=2
+pkgrel=3
 pkgdesc="A 21st century R console"
 url="https://github.com/randy3k/radian"
 arch=('i686' 'x86_64')
