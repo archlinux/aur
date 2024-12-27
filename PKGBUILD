@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=nuclei-qemu
-pkgname=(nuclei-qemu-bin)
-pkgver=2022.12
-pkgrel=0
+pkgname=(nuclei-qemu)
+pkgver=2024.06
+pkgrel=1
 pkgdesc="nuclei-qemu 是 Nuclei Studio IDE 的仿真工具。"
 arch=("x86_64")
 makedepends=()
@@ -16,7 +16,7 @@ license=('unknow')
 options=(!strip)
 
 source=("https://www.nucleisys.com/upload/files/toochain/qemu/nuclei-qemu-${pkgver}-linux-x64.tar.gz")
-sha256sums=('0c8506d6783aedc9585e7635216f6c0c6924a42fb4e12e0e40a3512b3cf21757')
+sha256sums=('6e780fef70054184d22897fdddcee54526d97506db8cd2f4c6baa3fcfc734510')
 
 package_nuclei-qemu-bin() {
 	msg2 'Installing Nuclei QEMU'
