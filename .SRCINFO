@@ -4,6 +4,7 @@ pkgbase = karpor
 	pkgrel = 1
 	url = https://github.com/KusionStack/karpor
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	makedepends = go
 	depends = glibc
