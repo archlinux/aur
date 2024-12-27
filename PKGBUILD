@@ -6,8 +6,8 @@
 # Contributor: Skunnyk <skunnyk@archlinux.fr>
 
 pkgname=playonlinux
-pkgver=4.4+47+g10f7853c
-pkgrel=2
+pkgver=4.4.r47.g10f7853
+pkgrel=1
 pkgdesc="GUI for managing Windows programs under linux"
 arch=('x86_64')
 url="https://www.playonlinux.com/"
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/playonlinux4"
-  git describe --tags | sed 's/^v//;s/-/+/g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
