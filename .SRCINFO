@@ -1,0 +1,21 @@
+pkgbase = ryujinx-canary
+	pkgdesc = Experimental Nintendo Switch Emulator written in C#
+	pkgver = 1.2.146
+	pkgrel = 1
+	url = https://github.com/Ryubing/Ryujinx
+	arch = x86_64
+	license = MIT
+	makedepends = desktop-file-utils
+	makedepends = dotnet-sdk-bin
+	depends = gcc-libs
+	depends = zlib
+	options = !strip
+	options = !debug
+	source = ryujinx-canary-1.2.146.tar.gz::https://github.com/Ryubing/Ryujinx/archive/refs/tags/Canary-1.2.146.tar.gz
+	source = PKGBUILD.canary
+	source = PKGBUILD.common
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ryujinx-canary
