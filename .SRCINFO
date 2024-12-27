@@ -1,0 +1,21 @@
+pkgbase = python-startfile
+	pkgdesc = Python startfile.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://pypi.org/project/python-startfile
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-startfile
+	conflicts = python-startfile
+	options = !strip
+	options = !debug
+	source = python_startfile-0.0.2.tar.gz::https://files.pythonhosted.org/packages/source/p/python_startfile/python_startfile-0.0.2.tar.gz
+	sha256sums = 71d27ce9025619598149ea97b756aeb0b1b8f588f660f99f7ddc4c14cf1cab87
+
+pkgname = python-startfile
