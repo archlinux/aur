@@ -2,7 +2,7 @@
 
 pkgname=portmod
 pkgver=2.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cli tool to manage mods for OpenMW"
 replaces=('openmmm')
 arch=(any)
