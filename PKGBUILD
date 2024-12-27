@@ -2,14 +2,14 @@
 # Contributor:
 
 pkgname=work
-pkgver=1.0.9
-pkgrel=2
+pkgver=1.0.10
+pkgrel=1
 pkgdesc='A stupid simple time tracker.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/jmelahman/work'
 license=('MIT')
 makedepends=('go' 'git')
-_commit='58cd77147c09638119f3f486e93ca96b57f56d3e'
+_commit='c4f8f4a409b85d3fa1ce50423236e6e5c76727c7'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 

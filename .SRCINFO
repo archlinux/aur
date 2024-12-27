@@ -1,7 +1,7 @@
 pkgbase = work
 	pkgdesc = A stupid simple time tracker.
-	pkgver = 1.0.9
-	pkgrel = 2
+	pkgver = 1.0.10
+	pkgrel = 1
 	url = https://github.com/jmelahman/work
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = work
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = work::git+https://github.com/jmelahman/work.git#commit=58cd77147c09638119f3f486e93ca96b57f56d3e
+	source = work::git+https://github.com/jmelahman/work.git#commit=c4f8f4a409b85d3fa1ce50423236e6e5c76727c7
 	md5sums = SKIP
 
 pkgname = work
