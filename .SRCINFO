@@ -1,7 +1,7 @@
 pkgbase = python-pyfwup
 	pkgdesc = Python Firmware Upgrader, a DFU (and similar) utility for Python
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greatscottgadgets/pyfwup
 	arch = any
 	license = BSD-3-Clause
