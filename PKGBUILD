@@ -3,14 +3,14 @@
 _projectname='MaterialDesign-Webfont'
 pkgname='ttf-material-design-icons-webfont'
 pkgver='7.4.47'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Material Design webfont icons from materialdesignicons.com'
 arch=('any')
 url='https://materialdesignicons.com'
 license=('Apache-2.0')
 checkdepends=('fontconfig')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Templarian/$_projectname/archive/v$pkgver.tar.gz")
-sha512sums=('31f3494be5fcde45a3a0138948b1ec0a73b56f8a999449cfd96c7eacd8d1dbae0fdc7e76f7da4b61b1e53e3b28fd21a9369ab190317067f62c1e643b908eec61')
+b2sums=('bf774f5e65d5bd789c6ea00f87d260f9c19232c3794c32857732b647d609cc87936b1f8c1c261dac1f021536bc4e14574d5b14458d8972ff0b0fdc25d7597c1d')
 
 _sourcedirectory="$_projectname-$pkgver"
 
@@ -21,5 +21,6 @@ check() {
 }
 
 package() {
-	install -Dm644 "$srcdir/$_sourcedirectory/fonts/materialdesignicons-webfont.ttf" "$pkgdir/usr/share/fonts/TTF/materialdesignicons-webfont.ttf"
+	install -dm755 "$pkgdir/usr/share/fonts/TTF/$pkgname/"
+	install -Dm644 "$srcdir/$_sourcedirectory/fonts/materialdesignicons-webfont.ttf" "$pkgdir/usr/share/fonts/TTF/$pkgname/materialdesignicons-webfont.ttf"
 }
