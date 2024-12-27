@@ -2,7 +2,7 @@
 pkgname=python-throttler
 _name=${pkgname#python-}
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Zero-dependency Python package for easy throttling with asyncio support'
 arch=('any')
 url="https://github.com/uburuntu/throttler"
