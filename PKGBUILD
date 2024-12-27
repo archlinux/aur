@@ -1,10 +1,9 @@
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
-# Contributor: Peter Mattern <pmattern at arcor dot de>
 
 _pkgname=ITK
 pkgname=(itk-git python-itk-git)
 _pkgver=5.4
-pkgver=5.4.r56513.ac77fef71f
+pkgver=5.4.r56515.8e039bbf7b
 pkgrel=1
 pkgdesc='An open-source, cross-platform library that provides developers with an extensive suite of software tools for image analysis'
 arch=('x86_64')
@@ -18,11 +17,12 @@ depends=(
   fftw
   gcc-libs
   gdcm
+  glibc
   hdf5
   intel-oneapi-mkl
   libjpeg-turbo
   libpng
-  libtiff
+  libtiff.so
   vxl
   zlib
 )
@@ -31,7 +31,7 @@ makedepends=(
   cmake
   gcc13
   git
-#  gtest
+  # gtest
   python
   subversion
   swig
@@ -77,7 +77,7 @@ build() {
     -DITK_USE_SYSTEM_EIGEN=ON
     -DITK_USE_SYSTEM_EXPAT=ON
     -DITK_USE_SYSTEM_FFTW=ON
-    -DITK_USE_SYSTEM_GDCM=OFF
+    -DITK_USE_SYSTEM_GDCM=ON
     -DITK_USE_SYSTEM_GOOGLETEST=OFF
     -DITK_USE_SYSTEM_HDF5=ON
     -DITK_USE_SYSTEM_JPEG=ON
@@ -108,7 +108,12 @@ build() {
     -DITK_WRAP_unsigned_long_long=ON
     -DITK_WRAP_unsigned_short=ON
     -DITK_WRAP_vector_double=ON
+    -DModule_GenericLabelInterpolator=ON
+    -DModule_ITKIODCMTK=ON
+    -DModule_ITKIOTransformMINC=ON
+    -DModule_ITKReview=ON
     -DModule_MorphologicalContourInterpolation=ON
+    # -DModule_SimpleITKFilters=ON
 )
 
   cmake -B "build" -S "${srcdir}/${_pkgname}" \
