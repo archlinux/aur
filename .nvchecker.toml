@@ -1,0 +1,4 @@
+[wush-bin]
+source = "git"
+git = "https://github.com/coder/wush.git"
+prefix = "v"
