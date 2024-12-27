@@ -1,0 +1,23 @@
+pkgbase = python-ed2k
+	pkgdesc = Python ed2k hash module.
+	pkgver = 0.0.2.1
+	pkgrel = 1
+	url = https://pypi.org/project/ed2k
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pycryptodome
+	depends = python-filewrap
+	depends = python-iterdir
+	provides = ed2k
+	conflicts = ed2k
+	options = !strip
+	source = ed2k-0.0.2.1.tar.gz::https://files.pythonhosted.org/packages/source/e/ed2k/ed2k-0.0.2.1.tar.gz
+	sha256sums = 84eacfdf605087806a57d56e21cbea08dbcc75410ad51e567cf6e510367b4f83
+
+pkgname = python-ed2k
