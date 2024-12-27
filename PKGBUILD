@@ -3,7 +3,7 @@
 pkgname='ttf-google-fonts-typewolf'
 pkgver='20240105'
 _commit='e10dd01507a2a015ddbe8140aae06354dce94889'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Typewolf's curated collection of the 40 best fonts from the Google Fonts project"
 arch=('any')
 url='https://www.typewolf.com/google-fonts'
@@ -79,7 +79,7 @@ _ignore=(
 	'Inconsolata[wdth,wght].ttf'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/google/fonts/archive/$_commit.tar.gz")
-sha512sums=('df2467e8a863c5132f73f3233290c0ed1d00c037e36dc10bbafbd97836860705ad7138b473287d44d1cc3e39821ace7a4ebc416a7e8afe93ab792ef84ae66049')
+b2sums=('ca5d7cd8d7bcb66a9ea70ed932cbff18f5359a118a27d76a085536161abd946c3f32ae36e7e549e5f08e717fbd0e69ac9dc42cac5503d6ca48cbc9cdb7e4fd0a')
 
 _sourcedirectory="fonts-$_commit"
 
@@ -110,12 +110,12 @@ package() {
 	# Replace spaces with pipe symbols
 	_ignoreregex="${_ignore[*]// /|}"
 
-	install -dm755 "$pkgdir/usr/share/fonts/TTF"
+	install -dm755 "$pkgdir/usr/share/fonts/TTF/$pkgname/"
 
 	find . \
 		-type f \
 		-regextype egrep \
 		-regex ".*/($_regex)/.+\.ttf" \
 		! -regex ".*/($_ignoreregex)" \
-		-execdir install -Dm644 '{}' "$pkgdir/usr/share/fonts/TTF" \;
+		-execdir install -Dm644 '{}' "$pkgdir/usr/share/fonts/TTF/$pkgname" \;
 }
