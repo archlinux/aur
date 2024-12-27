@@ -1,0 +1,21 @@
+pkgbase = python-dictattr
+	pkgdesc = Python dictattr.
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://pypi.org/project/python-dictattr
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-dictattr
+	conflicts = python-dictattr
+	options = !strip
+	options = !debug
+	source = python_dictattr-0.0.4.tar.gz::https://files.pythonhosted.org/packages/source/p/python_dictattr/python_dictattr-0.0.4.tar.gz
+	sha256sums = 9ae8239889ead9cb1fdaeb0c137a1cdf249bd258a9a74a9b643fd6b3c9f51ded
+
+pkgname = python-dictattr
