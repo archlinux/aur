@@ -1,0 +1,12 @@
+pkgbase = gengou
+	pkgdesc = Find japanese era names / era years
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/hachiya-kurisu/gengou
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = go
+	source = gengou-0.0.8.tar.gz::https://github.com/hachiya-kurisu/gengou/archive/v0.0.8.tar.gz
+	sha256sums = 462a74c1ecb22b7324b7941316e4890aa56793300d8f5a8db8183b4b66611b56
+
+pkgname = gengou
