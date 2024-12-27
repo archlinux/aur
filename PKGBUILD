@@ -3,7 +3,7 @@
 pkgname=python-diffq
 _gitpkgname=diffq
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Differentiable quantization using pseudo quantization noise'
 arch=('x86_64')
 url='https://github.com/facebookresearch/diffq'

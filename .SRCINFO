@@ -1,7 +1,7 @@
 pkgbase = python-diffq
 	pkgdesc = Differentiable quantization using pseudo quantization noise
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/facebookresearch/diffq
 	arch = x86_64
 	license = CC-BY-NC-4.0
