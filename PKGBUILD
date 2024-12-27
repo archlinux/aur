@@ -9,7 +9,7 @@ arch=('any')
 url="https://pinyin.sogou.com/dict/"
 license=('custom')
 makedepends=('libime' 'git')
-source=(git+https://github.com/maoyaotang12/sougouscel.gitt)
+source=(git+https://github.com/maoyaotang12/sougouscel.git)
 sha512sums=('SKIP')
 
 pkgver() {
