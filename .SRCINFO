@@ -1,7 +1,7 @@
 pkgbase = python-filewrap
 	pkgdesc = Python file wrappers.
 	pkgver = 0.2.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/python-filewrap
 	arch = any
 	license = MIT

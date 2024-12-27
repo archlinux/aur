@@ -3,7 +3,7 @@
 pkgname=python-filewrap
 _name=${pkgname//-/_}
 pkgver=0.2.6.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python file wrappers."
 arch=('any')
@@ -30,6 +30,7 @@ sha256sums=('4581cd74b693b8b1f3156368d0b2df6c26ce6acfe6c273efe92125956b300308')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 
