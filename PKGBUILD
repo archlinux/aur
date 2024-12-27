@@ -1,6 +1,6 @@
 # Maintainer: Philipp Nowak <nowak dot philipp97 at gmail dot com>
 pkgname=c_formatter_42
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="C formatter for 42 norminette"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/dawnbeen/c_formatter_42"
 license=('GPL')
 depends=('python>=3.8' 'python-setuptools' 'gcc-libs' 'zlib' 'glibc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dawnbeen/c_formatter_42/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('f1c08c7d6a3f52e6d830602424a714df4cec3e49e2d4bf5544f43d6a805e8ce0fe767c9ab72967286da10007ba712f734e5e30906568561b6e56a861052de3e1')
+b2sums=('4e1f6b0a618971b7ff6ff13ac5a3aaef855ca49e89bf76ad78832bee0c6b096be04c341c37133ffb13176b76a69a631ec8a4f12c5424608c2444736dcadd2fbb')
 options=(!debug)	# To prevent debug package
 
 build() {
