@@ -2,14 +2,14 @@
 
 pkgname=fcitx5-pinyin-sougou-dict-git
 _pkgname=sougouscel
-pkgver=20241130.r0.g110582a
+pkgver=20241227.r0.g8759bf6
 pkgrel=1
 pkgdesc="Fcitx5-pinyin搜狗官网词库全部词量"
 arch=('any')
 url="https://pinyin.sogou.com/dict/"
 license=('custom')
 makedepends=('libime' 'git')
-source=(git+https://github.com/maoyaotang12/sougouscel.git)
+source=(git+https://github.com/maoyaotang12/sougouscel.gitt)
 sha512sums=('SKIP')
 
 pkgver() {
