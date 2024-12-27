@@ -3,8 +3,8 @@
 pkgname=ironbar-git
 pkgver=0.16.1.r121.g67426bd
 pkgrel=1
-makedepends=('rust' 'cargo' 'git' 'openssl' 'libpulse' 'luajit' 'libinput')
-depends=('gtk3' 'gtk-layer-shell' 'lua51-lgi' 'libdbusmenu-glib' 'libdbusmenu-gtk3')
+makedepends=('rust' 'cargo' 'git' 'openssl' 'libpulse' 'luajit')
+depends=('gtk3' 'gtk-layer-shell' 'lua51-lgi' 'libdbusmenu-glib' 'libinput' 'libdbusmenu-gtk3')
 provides=('ironbar')
 conflicts=('ironbar')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
