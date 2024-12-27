@@ -1,10 +1,10 @@
 pkgbase = fake-deepin-file-manager
 	pkgdesc = Workaround the Show in Folder functionality for wechat
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/7Ji-PKGBUILDs/wechat-universal-bwrap
 	arch = any
-	license = GPL-2.0-only
+	license = GPL-2.0-or-later
 	depends = dbus
 	depends = xdg-utils
 	provides = deepin-file-manager
