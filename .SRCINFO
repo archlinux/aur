@@ -1,7 +1,7 @@
 pkgbase = ai-chat-bin
-	pkgdesc = A cross-platform desktop application that provides quick access to chatbots like OpenAI ChatGPT from the menu bar (tray)
+	pkgdesc = A cross-platform desktop application that provides quick access to chatbots like OpenAI ChatGPT from the menu bar (tray).(Prebuilt version.Use system-wide electron)
 	pkgver = 1.2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.chatbar.top/
 	arch = x86_64
 	license = LicenseRef-unknown
