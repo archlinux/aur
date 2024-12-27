@@ -8,7 +8,7 @@ url="https://github.com/Ly-sec/swiftfetch"
 license=('MIT')
 depends=()
 makedepends=('rust' 'cargo' 'git')
-source=("$pkgname::git+https://github.com/Ly-sec/swiftfetch.git#tag=v$pkgver")
+source=("$pkgname::git+https://github.com/Ly-sec/swiftfetch.git#tag=v0.1.2-2")
 sha256sums=('SKIP')
 
 build() {
