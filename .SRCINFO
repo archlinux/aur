@@ -1,0 +1,23 @@
+pkgbase = python-magnet2torrent
+	pkgdesc = Turn a bittorrent magnet links into a .torrent file.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://pypi.org/project/magnet2torrent
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aiohttp
+	depends = python-expiringdict
+	depends = python-yarl
+	provides = python-magnet2torrent
+	conflicts = python-magnet2torrent
+	options = !strip
+	options = !debug
+	source = magnet2torrent-1.2.1.tar.gz::https://files.pythonhosted.org/packages/source/m/magnet2torrent/magnet2torrent-1.2.1.tar.gz
+	sha256sums = 4ba53d304f1db33d33fe227aee5b34f6e640fd2d3199ff0ec3d8cc050cded631
+
+pkgname = python-magnet2torrent
