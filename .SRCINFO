@@ -1,0 +1,19 @@
+pkgbase = sstv-git
+	pkgdesc = SSTV audio file decoder
+	pkgver = r48.3e556ee
+	pkgrel = 1
+	url = https://github.com/colaclanth/sstv
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-soundfile
+	depends = python-scipy
+	source = git+https://github.com/colaclanth/sstv
+	b2sums = SKIP
+
+pkgname = sstv-git
