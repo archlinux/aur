@@ -31,38 +31,28 @@ package() {
     cd "${srcdir}/grayjay-desktop/Grayjay.Desktop.CEF/bin/Release/net8.0/linux-x64/publish"
 
     # Create necessary directories
-    install -dm755 "${pkgdir}/usr/share/grayjay"
+    install -dm755 "${pkgdir}/opt/grayjay"
     install -dm755 "${pkgdir}/usr/bin"
     install -dm755 "${pkgdir}/usr/share/applications"
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
 
-    # Create launcher script that copies app to user directory on first run
+    # Create launcher script
     cat > "${pkgdir}/usr/bin/grayjay" << 'EOF'
 #!/bin/sh
-APP_DIR="$HOME/.local/share/grayjay"
-
-# Check if app is already installed in user directory
-if [ ! -d "$APP_DIR" ]; then
-    echo "First run - installing Grayjay to $APP_DIR"
-    mkdir -p "$APP_DIR"
-    cp -r /usr/share/grayjay/* "$APP_DIR/"
-    chmod u+w -R "$APP_DIR"
-fi
-
-exec sh -c "cd '$APP_DIR' && exec ./Grayjay \"\$@\"" -- "$@"
+cd /opt/grayjay && exec ./Grayjay --no-sandbox "$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/grayjay"
 
-    # Copy application files to system directory (will be copied to user dir on first run)
-    cp -a ./* "${pkgdir}/usr/share/grayjay/"
-    chmod -R u=rwX,g=rX,o=rX "${pkgdir}/usr/share/grayjay/"
+    # Copy application files
+    cp -a ./* "${pkgdir}/opt/grayjay/"
+    chmod -R u=rwX,g=rX,o=rX "${pkgdir}/opt/grayjay/"
 
     # Create desktop entry
     cat > "${pkgdir}/usr/share/applications/grayjay.desktop" << EOF
 [Desktop Entry]
 Name=Grayjay
 Comment=Privacy-respecting client for YouTube, Rumble, Twitch, Spotify etc
-Exec=/usr/bin/grayjay
+Exec=/usr/bin/grayjay --no-sandbox
 Icon=grayjay
 Terminal=false
 Type=Application
