@@ -4,7 +4,7 @@
 pkgname='vkteams-bin'
 pkgbasename='vkteams'
 pkgver=24.9.3.49057
-pkgrel=1
+pkgrel=2
 pkgdesc='Official desktop application for the VK Teams messaging service'
 arch=("x86_64")
 url='https://teams.vk.com'
@@ -27,8 +27,8 @@ package() {
     install -dm755 "$pkgdir/opt/$pkgbasename"
     install -dm755 "$pkgdir/usr/bin"
     cp -ar --no-preserve=ownership "$srcdir"/!(${pkgbasename}.sh|${pkgbasename}.png) "$pkgdir/opt/$pkgbasename"
-    rm -rf "$pkgdir/opt/$pkgbasename/unittests"
     rm -f "$pkgdir/opt/$pkgbasename/lib/libXcursor.so.1"
+    rm -f "$pkgdir/opt/$pkgbasename/plugins/platforms/libqwayland-generic.so"
     install -Dm755 "../$pkgbasename.sh" "$pkgdir/usr/bin/$pkgbasename"
     install -Dm644 "../$pkgbasename.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgbasename.png"
 }
