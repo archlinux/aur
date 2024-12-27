@@ -3,7 +3,7 @@
 pkgname=python-decotools
 _name=${pkgname//-/_}
 pkgver=0.0.1.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python decorator tools."
 arch=('any')
@@ -31,6 +31,7 @@ sha256sums=('b9bf68578bacd24f8633c0666751f109cf0a10d0fc9c56bf2ee1bafdba76af49')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 
