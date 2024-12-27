@@ -25,7 +25,7 @@ pkgbase = electron7-bin
 	optdepends = libappindicator-gtk3: StatusNotifierItem support
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron7
+	provides = electron7=7.3.3
 	conflicts = electron7
 	source = electron-launcher.sh
 	b2sums = 49d2beda3260b6a09b7365a119524bd9b0c03b89e95be608a89f728d72e3694892d3ad0d02db85c09ce2f4ccb458ea207fab27f84a2e7e15a2fd4f720d991dac
