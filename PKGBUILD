@@ -9,7 +9,7 @@ arch=(x86_64 aarch64)
 url="https://github.com/yuezk/GlobalProtect-openconnect"
 license=('GPL3')
 
-makedepends=(git pkg-config 'rust>=1.80' 'openconnect>=8.20' webkit2gtk-4.1 curl wget file openssl appmenu-gtk-module libappindicator-gtk3 librsvg libsecret)
+makedepends=(git pkg-config 'openconnect>=8.20' webkit2gtk-4.1 curl wget file openssl appmenu-gtk-module libappindicator-gtk3 librsvg libsecret)
 depends=('openconnect>=8.20' openssl webkit2gtk-4.1 libappindicator-gtk3 libsecret libxml2)
 optdepends=('wmctrl: for window management')
 
@@ -23,7 +23,18 @@ source=("${_pkgname_prefix}::git+https://github.com/yuezk/GlobalProtect-openconn
 options=('!strip')
 
 prepare() {
-  export RUSTUP_TOOLCHAIN=stable
+  # Install the rust toolchain
+  export RUSTUP_HOME="${srcdir}/.rustup"
+  export CARGO_HOME="${srcdir}/.cargo"
+  export PATH="${CARGO_HOME}/bin:${PATH}"
+
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- \
+    -y \
+    -q \
+    --profile minimal \
+    --default-toolchain 1.80 \
+    --no-modify-path \
+    --no-update-default-toolchain
 
   cd "${_pkgname_prefix}"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"

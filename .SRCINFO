@@ -9,7 +9,6 @@ pkgbase = globalprotect-openconnect-git
 	license = GPL3
 	makedepends = git
 	makedepends = pkg-config
-	makedepends = rust>=1.80
 	makedepends = openconnect>=8.20
 	makedepends = webkit2gtk-4.1
 	makedepends = curl
