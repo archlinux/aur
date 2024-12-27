@@ -1,7 +1,7 @@
 pkgbase = python-pydstool
 	pkgdesc = Simulation and analysis environment for dynamical systems
 	pkgver = 0.91.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/robclewley/pydstool
 	arch = any
 	license = BSD

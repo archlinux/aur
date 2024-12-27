@@ -2,7 +2,7 @@
 pkgname=python-pydstool
 _pkgname=PyDSTool
 pkgver=0.91.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Simulation and analysis environment for dynamical systems"
 url="https://github.com/robclewley/pydstool"
 license=('BSD')
