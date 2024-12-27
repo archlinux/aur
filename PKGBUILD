@@ -10,7 +10,7 @@ license=('GPL-3.0-only' 'LicenseRef-BeekeeperStudioApplicationEULA')
 _electronpkg='electron31'
 depends=("$_electronpkg")
 makedepends=('git' 'libxcrypt-compat' 'nodejs' 'python' 'yarn')
-provides=("$pkgname-ultimate")
+provides=("$pkgname-ultimate=$pkgver")
 conflicts=("$pkgname-ultimate")
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"

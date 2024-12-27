@@ -15,7 +15,7 @@ pkgbase = beekeeper-studio
 	makedepends = python
 	makedepends = yarn
 	depends = electron31
-	provides = beekeeper-studio-ultimate
+	provides = beekeeper-studio-ultimate=5.0.9
 	conflicts = beekeeper-studio-ultimate
 	source = beekeeper-studio-5.0.9.tar.gz::https://github.com/beekeeper-studio/beekeeper-studio/archive/v5.0.9.tar.gz
 	source = electron-launcher.sh
