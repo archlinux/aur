@@ -3,11 +3,11 @@
 pkgname=python-ed2k
 _name=${pkgname#python-}
 pkgver=0.0.2.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python ed2k hash module."
 arch=('any')
-url="https://pypi.org/project/ed2k"
+url="https://pypi.org/project/${_name}"
 license=(MIT)
 groups=()
 provides=(${_name})
@@ -32,6 +32,7 @@ sha256sums=('84eacfdf605087806a57d56e21cbea08dbcc75410ad51e567cf6e510367b4f83')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 

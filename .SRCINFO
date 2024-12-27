@@ -1,7 +1,7 @@
 pkgbase = python-ed2k
 	pkgdesc = Python ed2k hash module.
 	pkgver = 0.0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/ed2k
 	arch = any
 	license = MIT
