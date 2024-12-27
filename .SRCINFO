@@ -1,0 +1,17 @@
+pkgbase = python-jupyprint
+	pkgdesc = A simple python package to print markdown and LaTeX equations from code cells in Jupyter notebooks
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/pxr687/jupyprint
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pandas
+	depends = ipython
+	source = https://pypi.org/packages/source/j/jupyprint/jupyprint-0.1.6.tar.gz
+	sha512sums = fcca5f4bef2288041e979944adba1f443c7270215b9389e759677c50786d075f30e54f4e9a7e18e45e1578b54b7348d1f42c9dae02a58633746511e8326fcede
+
+pkgname = python-jupyprint
