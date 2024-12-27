@@ -1,13 +1,13 @@
 pkgname=wush
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='lets you easily transfer files and open shells over a peer-to-peer WireGuard connection'
 arch=('x86_64')
 url="https://github.com/coder/wush"
 license=('CC0-1.0')
 makedepends=('go')
-source=("git+$url.git#tag=b13f0553933bbac94d7290b284905adc9ac0f523")
-sha256sums=('7332f0f5d7a8e7491f6c8592723a6acc2891b9f6bd4ff749a5eb6cffe94795b7')
+source=("git+$url.git#tag=ca4d666d41f63e470ef4327c19b4feb762a814b6")
+sha256sums=('97ec90787cfd7e4940943cc85494112ebf889b29a590aef007cf9886247fdd28')
 
 prepare(){
   cd "$pkgname"
