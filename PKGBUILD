@@ -1,6 +1,7 @@
 # Maintainer: 1zuna <marco@ccbluex.net>
 
 _pkgname=LiquidLauncher
+_binname=liquidlauncher
 
 pkgname="liquidlauncher-appimage"
 pkgver=0.4.0
@@ -13,8 +14,8 @@ depends=('zlib' 'fuse2')
 options=(!strip)
 _appimage="${_pkgname}_${pkgver}_amd64.AppImage"
 noextract=("${_appimage}")
-source=("https://github.com/CCBlueX/LiquidLauncher/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage.tar.gz")
-sha256sums=('f0c9922d1e14ff52c461a2451bc31ecd60f901554f2226d3528351d9fd70c6d8')
+source_x86_64=("https://github.com/CCBlueX/LiquidLauncher/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage.tar.gz")
+sha256sums_x86_64=('f0c9922d1e14ff52c461a2451bc31ecd60f901554f2226d3528351d9fd70c6d8')
 
 prepare() {
     tar -xzf "${_appimage}.tar.gz"
@@ -45,7 +46,7 @@ package() {
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/$_binname"
 
     # Symlink license
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"

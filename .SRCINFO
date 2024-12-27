@@ -9,7 +9,7 @@ pkgbase = liquidlauncher-appimage
 	depends = fuse2
 	noextract = LiquidLauncher_0.4.0_amd64.AppImage
 	options = !strip
-	source = https://github.com/CCBlueX/LiquidLauncher/releases/download/v0.4.0/LiquidLauncher_0.4.0_amd64.AppImage.tar.gz
-	sha256sums = f0c9922d1e14ff52c461a2451bc31ecd60f901554f2226d3528351d9fd70c6d8
+	source_x86_64 = https://github.com/CCBlueX/LiquidLauncher/releases/download/v0.4.0/LiquidLauncher_0.4.0_amd64.AppImage.tar.gz
+	sha256sums_x86_64 = f0c9922d1e14ff52c461a2451bc31ecd60f901554f2226d3528351d9fd70c6d8
 
 pkgname = liquidlauncher-appimage
