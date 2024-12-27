@@ -1,0 +1,13 @@
+pkgbase = amandadb
+	pkgdesc = Simple Rust database inspired by Redis
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Pedrinjs/AmandaDB
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cargo
+	source = amandadb-1.0.0::git+https://github.com/Pedrinjs/AmandaDB.git
+	sha256sums = SKIP
+
+pkgname = amandadb
