@@ -1,7 +1,7 @@
 From a6956ad4d9e7bc4adca8d858f0f3c7f8a06049d1 Mon Sep 17 00:00:00 2001
 From: Zhang Hua <zhanghua.00@qq.com>
 Date: Fri, 27 Dec 2024 17:22:30 +0800
-Subject: [PATCH] Remove broken sp://desktop/v1/version
+Subject: [PATCH 1/2] Remove broken sp://desktop/v1/version
 
 ---
  src/services/api.js | 9 +++------

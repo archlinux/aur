@@ -12,13 +12,16 @@ conflicts=("spicetify-theme-nord")
 source=(
     "git+https://github.com/JoshuaWierenga/Nord-Spotify#branch=fixes"
     "0001-Remove-broken-sp-desktop-v1-version.patch"
+    "0002-Remove-broken-sp-product-state-v1-values.patch"
 )
 sha256sums=('SKIP'
-            '99aa2aabb1dd61293f1e24f3a7c2ed4061c5fef1c1ffb98d5835ed7c8854c851')
+            '92621b7c2f74682fba932d32b09cf58b3266f98216025da51400eb5ad5ef45b1'
+            '9c2304016f3c8aa7ebd146936dc1621ff70ec8884f6e7497a7b8874ac418d922')
 
 prepare() {
     cd "${srcdir}/Nord-Spotify"
     git apply ../0001-Remove-broken-sp-desktop-v1-version.patch
+    git apply ../0002-Remove-broken-sp-product-state-v1-values.patch
 }
 pkgver() {
     cd "${srcdir}/Nord-Spotify"
