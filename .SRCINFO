@@ -4,10 +4,11 @@ pkgbase = python-pybind11-stubgen
 	pkgrel = 1
 	url = https://github.com/sizmailov/pybind11-stubgen
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = pybind11
 	source = pybind11-stubgen-2.5.1::git+https://github.com/sizmailov/pybind11-stubgen.git#tag=v2.5.1
