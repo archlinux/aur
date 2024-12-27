@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=seqArchR
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,8 +39,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6d12e6fcb163cc682986160f06cc63c9')
-b2sums=('d73cc31ed4c3c82bdf0d6ff6b9dd02365e3da339e8db2cabc5c782d20ef110e3ccd43805fc931f7ab38e1c3923168fc80186d61184c2fb3b39545c0ce550924f')
+md5sums=('51de82aa4ddab7b96a23a2bf7125e07b')
+b2sums=('f87aa51f3fcac6c97753b7328927671d833157516f92741d72142f4596aafc3db2a8b6ae67158cf56e5265d96b71048bd6aee110ec5612db7f258c8f8dd333e3')
 
 build() {
   mkdir build
