@@ -1,12 +1,13 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname="radiogogo"
+_name="RadioGoGo"
+_pkgname="${_name,,}"
 pkgname="${_pkgname}-bin"
 pkgver=0.3.2
 pkgrel=1
 pkgdesc="Go-powered CLI to surf global radio waves via a sleek TUI."
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
-url="https://github.com/matteo-pacini/${_pkgname}"
+url="https://github.com/matteo-pacini/${_name}"
 license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
