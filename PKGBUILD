@@ -18,7 +18,7 @@ depends=(
 	'krb5' 'libsecret' 'lsb-release'
 )
 optdepends=('org.freedesktop.secrets')
-provides=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 backup=('etc/mongodb-compass.conf')
 _betaprefix="$([[ "$_pkgname" =~ -beta$ ]] && printf 'beta/' || printf '')"
