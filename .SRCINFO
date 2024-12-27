@@ -1,7 +1,7 @@
 pkgbase = sail-img
 	pkgdesc = The missing small and fast image decoding library for humans (not for machines)
 	pkgver = 0.9.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HappySeaFox/sail
 	arch = x86_64
 	license = MIT

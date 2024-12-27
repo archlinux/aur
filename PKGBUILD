@@ -1,7 +1,7 @@
 # Maintainer: Šimon Hacaj <hacajsimon@gmail.com>
 pkgname="sail-img"
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The missing small and fast image decoding library for humans (not for machines)"
 arch=(x86_64)
 url="https://github.com/HappySeaFox/sail"
@@ -26,7 +26,7 @@ build() {
     cd "${srcdir}/sail-${pkgver}/build"
     cmake -DCMAKE_BUILD_TYPE=Release .. \
             -DSAIL_BUILD_APPS=OFF -DSAIL_BUILD_EXAMPLES=OFF \
-            -DSAIL_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=/usr
+            -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr
 
     cmake --build . --config Release
 }
