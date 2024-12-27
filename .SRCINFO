@@ -1,0 +1,14 @@
+pkgbase = nature-sounds-bin
+	pkgdesc = A lightweight, nature sounds player for the command-line
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/jmelahman/nature-sounds
+	arch = x86_64
+	license = GPL-3.0
+	depends = alsa-utils
+	provides = nature-sounds
+	conflicts = nature-sounds
+	source_x86_64 = https://github.com/jmelahman/nature-sounds/releases/download/v0.2.9/nature-sounds_0.2.9_linux_amd64.tar.gz
+	sha256sums_x86_64 = b0ef059c42eca395a7ff32f59d8ffe0362e0611819729e874bb2e9827fa6c8b7
+
+pkgname = nature-sounds-bin

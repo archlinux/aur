@@ -1,0 +1,5 @@
+[nature-sounds-bin]
+source = "github"
+github = "jmelahman/nature-sounds"
+use_latest_release = true
+prefix = "v"
