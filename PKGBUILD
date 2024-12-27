@@ -3,9 +3,9 @@
 pkgname=qhot-git
 _realname=qhot
 confilicts=('qhot')
-pkgver=qt6+1.1.0+2.r89.20240421.9f515c6
+pkgver=qt6+1.1.1.r93.20241122.e2fb0ba
 pkgrel=1
-gittag=qt6-1.1.0
+gittag=qt6-1.1.1
 pkgdesc="Hot reload for nested QML files!"
 arch=('i686' 'x86_64')
 url="https://github.com/patrickelectric/qhot"
