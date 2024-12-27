@@ -16,6 +16,7 @@ pkgbase = emacs-pgtk-igc-git
 	depends = libxml2
 	depends = jansson
 	depends = harfbuzz
+	depends = mps
 	depends = libgccjit
 	depends = gtk3
 	depends = tree-sitter
