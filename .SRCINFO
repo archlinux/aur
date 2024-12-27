@@ -1,0 +1,23 @@
+pkgbase = mirador-git
+	pkgdesc = CLI to watch mailbox changes
+	pkgver = r18.g5cbf315
+	pkgrel = 1
+	url = https://github.com/pimalaya/mirador
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = dbus>=1.16.0
+	depends = libgit2
+	depends = zlib
+	provides = mirador
+	conflicts = mirador
+	options = !lto
+	source = mirador-git::git+https://github.com/pimalaya/mirador
+	b2sums = SKIP
+
+pkgname = mirador-git
