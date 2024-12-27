@@ -1,7 +1,7 @@
 pkgbase = shd
 	pkgdesc = Console tool to display drive list with commonly checked smart info
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alttch/shd
 	arch = x86_64
 	arch = i686
@@ -12,6 +12,6 @@ pkgbase = shd
 	makedepends = cargo
 	depends = smartmontools>=7.0
 	source = shd-0.1.6.tar.gz::https://github.com/alttch/shd/archive/v0.1.6.tar.gz
-	sha512sums = 0e317c68983f7b49e440b22866a667a5e188b6ff09bcbb6cefc08a5f87591b14adf3c7818203299c19be6e966cc67705191d96539c1eb778340b34693eb27fe4
+	b2sums = e2b80ff64dae23d38cb3e4b0209db0dd8091cd528c09600b2e051f75804ceb055f21dd33acdd96ef7c69e2ad5190a844f00bbba8f463c04089d986fd689ac313
 
 pkgname = shd
