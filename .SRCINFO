@@ -1,0 +1,21 @@
+pkgbase = python-http-response
+	pkgdesc = Python http response utils.
+	pkgver = 0.0.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/http_response
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-http-response
+	conflicts = python-http-response
+	options = !strip
+	options = !debug
+	source = http_response-0.0.1.1.tar.gz::https://files.pythonhosted.org/packages/source/h/http_response/http_response-0.0.1.1.tar.gz
+	sha256sums = 3e09d8b4ae3ced9bf3258e1a8d2bf4c962e788621908be9333a0293edb7e0f4e
+
+pkgname = python-http-response
