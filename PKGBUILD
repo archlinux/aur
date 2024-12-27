@@ -2,7 +2,7 @@
 
 pkgname=beefetch
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Neofetch clone written in bash with the ability to display 🐝"
 arch=('any')
 url="https://github.com/mirdukkkkk/beefetch"
