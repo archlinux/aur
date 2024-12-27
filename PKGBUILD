@@ -6,7 +6,7 @@
 pkgname=lnx
 pkgver=0.9.0
 _pkgver="$pkgver-master"
-pkgrel=1
+pkgrel=2
 pkgdesc='Adaptable search engine API'
 arch=('x86_64')
 url="https://github.com/$pkgname-search/$pkgname"
