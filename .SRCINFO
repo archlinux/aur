@@ -1,13 +1,13 @@
-pkgbase = icy_draw-bin
-	pkgdesc = IcyDraw is a full features ansi drawing tool doing things a bit different than other tools.
-	pkgver = 0.3.2
+pkgbase = icy_view-bin
+	pkgdesc = Icyview is a full features ansi viewing tool doing things a bit different than other tools.
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/mkrueger/icy_tools
 	arch = x86_64
 	license = Apache-2.0
-	provides = icy_draw
-	source = https://github.com/mkrueger/icy_tools/releases/download/IcyDraw0.3.2/icy_draw_linux_0.3.2.zip
-	sha256sums = 2eb33d2e679556623711c6e68d1f0ceaa9e6a57fa8530814f5b0e7102aed6a02
-	sha512sums = 4d20e7c8dcf83cea6cac2c63c5f7f86ae4bc27b34cc7e98508e0b0661afac45a0d1beafd1df06fa4f10287eb8664d0f8bd6369d268978965c264da4c2e7f435f
+	provides = icy_view
+	source = https://github.com/mkrueger/icy_tools/releases/download/IcyView0.7.1/icy_view_linux_0.7.1.zip
+	sha256sums = a472f67ca940959c59de3a000473e4b7cb99813e366007520b6f8b5d83876b39
+	sha512sums = cdcf7b5b641cf2904217018ce740cbcf67ea5174c0e4e24f1665d2b9d86de32e9c79df0fc0d469aa0a9a9f82547c66ef1fee52b2dcee7e049ad911d46f2ff1ea
 
-pkgname = icy_draw-bin
+pkgname = icy_view-bin
