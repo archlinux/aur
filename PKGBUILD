@@ -4,8 +4,8 @@ _pkgname=AIHub
 pkgver=1.8.9
 _electronversion=30
 _nodeversion=21
-pkgrel=2
-pkgdesc="A collection of large model capabilities of the client.Use system-wide electron.一款集合多家大模型能力的客户端."
+pkgrel=3
+pkgdesc="A collection of large model capabilities of the client.(Use system-wide electron)一款集合多家大模型能力的客户端."
 arch=('any')
 url="https://github.com/classfang/AIHub"
 license=('Apache-2.0')
@@ -19,6 +19,7 @@ makedepends=(
     'nvm'
     'gendesk'
     'curl'
+    'yarn'
 )
 source=(
     "${pkgname}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -32,7 +33,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -47,23 +48,31 @@ build() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    {
-        echo -e '\n'	
-        #echo 'build_from_source=true'
-        echo "cache=${srcdir}/.npm_cache"
-    } >> .npmrc
+    mkdir -p "${srcdir}/.electron-gyp"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        } >> .npmrc
+            echo -e '\n'
+            echo 'registry "https://registry.npmmirror.com"'
+            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
+            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
+            echo "cacheFolder "${srcdir}"/.yarn/cache"
+            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
+            echo "globalFolder "${srcdir}"/.yarn/global"
+            echo 'useHardlinks true'
+            #echo 'buildFromSource true'
+            echo 'linkWorkspacePackages true'
+            echo 'fetchRetries 3'
+            echo 'fetchRetryTimeout 10000'
+        } >> .yarnrc
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install
-    NODE_ENV=production     npm run build
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+}
+build() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    NODE_ENV=production     yarn run build
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder.yml
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
