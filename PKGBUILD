@@ -3,7 +3,7 @@
 pkgname=python-p115cipher
 _name=${pkgname#python-}
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="115 cipher module."
 arch=('any')
@@ -33,6 +33,7 @@ sha256sums=('cb8e9d480952e2a17850f2d1dc00892e50d63f06cc021d4dcc286e9b81a505eb')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 
