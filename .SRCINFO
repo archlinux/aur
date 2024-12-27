@@ -1,0 +1,23 @@
+pkgbase = python-glob-pattern
+	pkgdesc = Python shell glob pattern.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://pypi.org/project/glob_pattern
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-poetry-core
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-posixpatht
+	provides = python-glob-pattern
+	conflicts = python-glob-pattern
+	options = !strip
+	options = !debug
+	source = glob_pattern-0.0.2.tar.gz::https://files.pythonhosted.org/packages/source/g/glob_pattern/glob_pattern-0.0.2.tar.gz
+	sha256sums = 394db5fcbd8e45e726d821536a539cdadc53cfbbcc772d44d0a5837891b8ee18
+
+pkgname = python-glob-pattern
