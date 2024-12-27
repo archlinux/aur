@@ -1,7 +1,7 @@
 pkgbase = python-concurrenttools
 	pkgdesc = Python concurrent tools.
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/python-concurrenttools
 	arch = any
 	license = MIT

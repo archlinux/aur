@@ -3,7 +3,7 @@
 pkgname=python-concurrenttools
 _name=${pkgname//-/_}
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python concurrent tools."
 arch=('any')
@@ -32,6 +32,7 @@ sha256sums=('c042d5aabac1142bda7423eae1e101202119d0248f3f3febf98b8aa097687509')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 
