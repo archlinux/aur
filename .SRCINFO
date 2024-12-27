@@ -6,6 +6,7 @@ pkgbase = grayjay-bin
 	arch = x86_64
 	license = Source First License 1.1
 	depends = gtk3
+	depends = unzip
 	depends = libnotify
 	depends = nss
 	depends = libxss
