@@ -3,7 +3,7 @@ pkgname=albumate-bin
 _pkgname=Albumate
 pkgver=0.1.0
 _electronversion=31
-pkgrel=1
+pkgrel=2
 pkgdesc="An AI-powered desktop app for effortless photo organization.(Prebuilt version.Use system-wide electron.)"
 arch=('x86_64')
 url="https://github.com/wladimiiir/albumate"
@@ -22,7 +22,7 @@ source=(
 )
 sha256sums=('6ea57b6ffdb8b1957f4d3ec03cecc418080cf853d6aa12562bc7256626c34abd'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
