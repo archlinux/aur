@@ -1,0 +1,13 @@
+pkgbase = tinytetris
+	pkgdesc = 80x23 terminal tetris!
+	pkgver = r11+g38d4cc3
+	pkgrel = 1
+	url = https://github.com/taylorconor/tinytetris
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = ncurses
+	source = tinytetris-38d4cc33cd31fc30ac4599df793164b3ff3c3327.tar.gz::https://github.com/taylorconor/tinytetris/archive/38d4cc33cd31fc30ac4599df793164b3ff3c3327.tar.gz
+	sha256sums = 8ca9c0fb02b003979e90a86eafc69ca51b78a773c3cda007da2be8ef185bf147
+
+pkgname = tinytetris
