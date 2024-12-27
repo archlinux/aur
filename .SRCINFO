@@ -1,14 +1,14 @@
 pkgbase = libsql-sqlite3
 	pkgdesc = libsql sqlite3 compatibility libraries and executables
-	pkgver = 0.24.28
-	pkgrel = 3
+	pkgver = 0.24.30
+	pkgrel = 1
 	url = https://turso.tech/libsql
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/tursodatabase/libsql/archive/refs/tags/libsql-server-v0.24.28.tar.gz
-	b2sums = ff520abc812e0f85663b9e683954066808cb6d576424c456fdae95dce76d471f3176cd7d9c0af6a55e00c20b307e64276ce831c2710e5f78908eb958fafb532c
+	source = https://github.com/tursodatabase/libsql/archive/refs/tags/libsql-server-v0.24.30.tar.gz
+	b2sums = 13b3021739bda3c66ab6b395a377b0bb7162909f27492288f7a67d6bf5e1f4a1484da7b10af1544c3188089b24da9b0163ac9662879cc7a76a9c87dc3425a2b1
 
 pkgname = libsql-sqlite3
 	pkgdesc = A compatibility binary for SQLite3 using libsql
