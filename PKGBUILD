@@ -9,7 +9,7 @@ url="https://github.com/FrameworkComputer/$_projectname"
 license=('MIT')
 depends=('inputmodule-udev' 'python>=3.7.0' 'python-getkey' 'python-opencv' 'python-pillow' 'python-pyserial' 'python-pysimplegui')
 makedepends=('python-build' 'python-hatchling' 'python-hatch-vcs' 'python-installer' 'python-wheel')
-provides=('ledmatrixctl' 'ledmatrixgui')
+provides=("ledmatrixctl=$pkgver" "ledmatrixgui=$pkgver")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 b2sums=('8664ff4aa73cda06e57c73c740d56f4f2d64b236b88c8cb1199e09703cad050c5b3693ed8b11de224c8b6689d0d7f01b57cbf150070b30aa00587332f6c406f6')
 
