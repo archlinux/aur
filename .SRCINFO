@@ -6,8 +6,7 @@ pkgbase = flow-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	optdepends = bash-completion: Tab completion support for bash
-	provides = flow
+	provides = flow=0.257.1
 	conflicts = flow
 	source = flow-bin-0.257.1-bash-completion::https://github.com/facebook/flow/raw/v0.257.1/resources/shell/bash-completion
 	source = flow-bin-0.257.1-LICENSE::https://github.com/facebook/flow/raw/v0.257.1/LICENSE
