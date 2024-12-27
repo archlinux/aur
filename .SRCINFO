@@ -1,0 +1,22 @@
+pkgbase = shd-bin
+	pkgdesc = Console tool to display drive list with commonly checked smart info
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/alttch/shd
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = smartmontools
+	provides = shd
+	conflicts = shd
+	source = LICENSE-0.1.6::https://raw.githubusercontent.com/alttch/shd/v0.1.6/LICENSE
+	source = README-0.1.6.md::https://raw.githubusercontent.com/alttch/shd/v0.1.6/README.md
+	sha256sums = 48a6732017f3cd9fc0ddc0760faf43d0884550c7cbe2f295a25f73f0e817d112
+	sha256sums = d71b54e3c7e82e4434cb2057187eda65d3d1e73f5fd646fc5e6440ba037b4ef3
+	source_x86_64 = https://github.com/alttch/shd/releases/download/v0.1.6/shd-0.1.6-x86_64
+	sha256sums_x86_64 = 5f4a7b64cfafa2c86b481ba3796f630a5dd74dc2642b70c25f0be3b6ecaaf8b3
+	source_aarch64 = https://github.com/alttch/shd/releases/download/v0.1.6/shd-0.1.6-aarch64
+	sha256sums_aarch64 = c78899ac69385bc25981c462b50468389e69f39d58c81e582a1abe40ff39aa21
+
+pkgname = shd-bin
