@@ -1,0 +1,13 @@
+pkgbase = pngdefry
+	pkgdesc = A tool to remove -iphone optimization and reorder RGB(A) pixels for PNG images
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Tatsh/pngdefry
+	arch = x86_64
+	license = public-domain
+	makedepends = base-devel
+	depends = glibc
+	source = https://github.com/Tatsh/pngdefry/archive/refs/heads/master.tar.gz
+	sha256sums = d6b69f14b7fcb9605b09a6a408c46df74de04b04fc4075febb1499ad6bf1c276
+
+pkgname = pngdefry
