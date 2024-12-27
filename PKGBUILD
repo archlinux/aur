@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=teamide-bin
 _pkgname=TeamIDE
-pkgver=2.6.31
+pkgver=2.6.32
 _electronversion=22
 pkgrel=1
 pkgdesc="Integrate MySQL, Oracle, Kingbase, Dameng, Shentong databases, SSH, FTP, Redis, Zookeeper, Kafka, Elasticsearch, Mongodb, small tools and other management tools.(Prebuilt version.Use system-wide electron)"
@@ -22,9 +22,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('90b6ce144aee2276c33866b6346073362c25b2c39b9f972d575404c0aa846a90'
+sha256sums=('b8bb991406e772c1f07c63d9532179d2a7800c81a64c72a0a4a6f64a6a63036e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
