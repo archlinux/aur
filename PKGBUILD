@@ -6,25 +6,26 @@
 
 pkgbase=libc++-msan
 pkgname=(libc++-msan libc++abi-msan)
-pkgver=15.0.7
-pkgrel=3
+pkgver=18.1.8
+pkgrel=4
+pkgdesc='LLVM C++ standard library - with support for memory sanitizers.'
 url="https://libcxx.llvm.org/"
-license=('custom:Apache 2.0 with LLVM Exception')
+license=('Apache-2.0 WITH LLVM-exception')
 arch=('x86_64')
-depends=('gcc-libs')
+depends=('gcc-libs' 'glibc')
 makedepends=('clang' 'cmake' 'ninja' 'python')
 checkdepends=('llvm')
-options=(!lto)
+options=('!lto' 'staticlibs')
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-project-$pkgver.src.tar.xz"{,.sig})
-sha512sums=('4836d3603f32e8e54434cbfa8ef33d9d473ac5dc20ebf9c67132653c73f4524931abd1084655eaee5f20bcfcb91bcc4bbc5c4a0b603ad0c9029c556e14dc4c52'
+sha512sums=('25eeee9984c8b4d0fbc240df90f33cbb000d3b0414baff5c8982beafcc5e59e7ef18f6f85d95b3a5f60cb3d4cd4f877c80487b5768bc21bc833f107698ad93db'
             'SKIP')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
- 
+
 prepare() {
   mkdir -p build
   sed -i 's/CREDITS.TXT/CREDITS/' llvm-project-$pkgver.src/libcxx{,abi}/LICENSE.TXT
 }
- 
+
 build() {
   cd build
 
@@ -37,6 +38,8 @@ build() {
     -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi" \
     -DLLVM_EXTERNAL_LIT=/usr/bin/lit \
     -DLLVM_ENABLE_PIC=ON \
+    -DLIBCXX_INSTALL_MODULES=ON \
+    -DLIBCXXABI_USE_LLVM_UNWINDER=OFF \
     -DLLVM_USE_SANITIZER=MemoryWithOrigins \
     ../llvm-project-$pkgver.src/runtimes
   ninja cxx cxxabi
@@ -49,7 +52,7 @@ check() {
 }
 
 # Do not remove the space before the () or commitpkg will
-# accidentally to run this function on the system (!!!) 
+# accidentally to run this function on the system (!!!)
 package_libc++-msan () {
   pkgdesc='LLVM C++ standard library - with support for memory sanitizers.'
   depends=("libc++abi-msan=$pkgver-$pkgrel")
@@ -62,14 +65,15 @@ package_libc++-msan () {
   install -Dm0644 llvm-project-$pkgver.src/libcxx/CREDITS.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/CREDITS
   install -Dm0644 llvm-project-$pkgver.src/libcxx/LICENSE.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
- 
+
 package_libc++abi-msan() {
   pkgdesc='Low level support for the LLVM C++ standard library - with support for memory sanitizers.'
   options=('staticlibs')
   provides=('libc++abi')
   conflicts=('libc++abi')
-  
+
   DESTDIR="$pkgdir" ninja -C build install-cxxabi
+
   install -Dm0644 llvm-project-$pkgver.src/libcxxabi/CREDITS.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/CREDITS
   install -Dm0644 llvm-project-$pkgver.src/libcxxabi/LICENSE.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
