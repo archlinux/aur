@@ -1,12 +1,16 @@
 pkgbase = ast-grep
 	pkgdesc = A fast and polyglot tool for code structural search, lint, rewriting at large scale
 	pkgver = 0.32.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ast-grep.github.io/
 	arch = x86_64
 	license = MIT
 	checkdepends = python
 	makedepends = cargo
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-maturin
 	depends = gcc-libs
 	options = !lto
 	source = ast-grep-0.32.2.tar.gz::https://github.com/ast-grep/ast-grep/archive/0.32.2.tar.gz
@@ -14,3 +18,6 @@ pkgbase = ast-grep
 	b2sums = 7b019477e997d793c3dbf2867b1f8d9acbfa97cc54ee43f6dddb57439d9992d844a21eb33d63a8f7a5cf68a7bc637e4a59d2413fcabe14e27ca2dcad64c4c038
 
 pkgname = ast-grep
+
+pkgname = python-ast-grep
+	depends = python
