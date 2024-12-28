@@ -1,7 +1,7 @@
 # Maintainer: Ujhhgtg <feyxiexzf@gmail.com>
 
 pkgname=phira-bin
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="A clone of the music game Phigros that supports custom beatmaps, multiplayer etc."
 arch=('x86_64')
@@ -34,11 +34,9 @@ source=(
     "run.sh"
     "${pkgname%-bin}.desktop"
 )
-b2sums=(
-    '80d1791a472da272a4d9fe1b61f0b947043b9e10046368902fb7867d96efdbaa8154b43d2aefa10f3e3fabe44e78b9a90e73b92d29aec914cf172bf6237a6de2'
-    '4fb82fe12455f20e556ee34d225978aaef738c77d1eb6f10c022a1f86a74dc0db6cb43aaa55753a41b92d62fd949de58667fac561e8a725f70e810d01abe1693'
-    '6be953d4402faf3dda9bd2cfb8bff31b1cb1bfce81bad2f3f0d1af034f3b0a33e0a88026f5cb030ae737b90e3fc3c72da3938d153e3e930beefaf2910b356224'
-)
+b2sums=('b92fb2e2440dff5371891b214c43d7a1807c1ac9307278d69d0fd7c8314f153173efd121b4a763be221fe99f88cc275a0b3da6fda5b4b4fedb27c1773df6e33b'
+        '4fb82fe12455f20e556ee34d225978aaef738c77d1eb6f10c022a1f86a74dc0db6cb43aaa55753a41b92d62fd949de58667fac561e8a725f70e810d01abe1693'
+        '6be953d4402faf3dda9bd2cfb8bff31b1cb1bfce81bad2f3f0d1af034f3b0a33e0a88026f5cb030ae737b90e3fc3c72da3938d153e3e930beefaf2910b356224')
 
 package() {
     # game
