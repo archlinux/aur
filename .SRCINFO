@@ -1,7 +1,7 @@
 pkgbase = lcevcdec-git
 	pkgdesc = Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC) (git version)
 	pkgver = 3.2.1.r12.g364ae4f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/v-novaltd/LCEVCdec/
 	arch = x86_64
 	license = BSD-3-Clause-Clear
