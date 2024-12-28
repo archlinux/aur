@@ -1,0 +1,24 @@
+pkgbase = python-renamer
+	pkgdesc = Python batch renamer.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/python-renamer
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-filerev
+	depends = python-iterdir
+	depends = python-json-write
+	provides = python-renamer
+	conflicts = python-renamer
+	options = !strip
+	options = !debug
+	source = python_renamer-0.0.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python_renamer/python_renamer-0.0.1.tar.gz
+	sha256sums = a9d6ae5d65fd1948b88578712e4c4be572ecfb466adef301c37d5c3822817aab
+
+pkgname = python-renamer
