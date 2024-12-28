@@ -1,0 +1,23 @@
+pkgbase = python-p115rsacipher
+	pkgdesc = 115 webdisk RSA encryption and decryption.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/p115rsacipher
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = p115rsacipher
+	provides = python-p115rsacipher
+	conflicts = p115rsacipher
+	conflicts = python-p115rsacipher
+	options = !strip
+	options = !debug
+	source = p115rsacipher-0.0.1.tar.gz::https://files.pythonhosted.org/packages/source/p/p115rsacipher/p115rsacipher-0.0.1.tar.gz
+	sha256sums = b62fc3112dde0a9c1445bed959a8f1f72a5a283733d546befc7132d2b77e7d2c
+
+pkgname = python-p115rsacipher
