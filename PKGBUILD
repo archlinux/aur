@@ -1,39 +1,24 @@
-# Maintainer: William Di Luigi <williamdiluigi@gmail.com>
+# Maintainer: Yufan You <ouuansteve at gmail>
+# Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=testlib
 pkgver=0.9.41
-pkgrel=1
-pkgdesc="A library used to write the auxiliary programs (validators, generators, and so on) for programming contest problems."
+pkgrel=2
+pkgdesc='C++ library to develop competitive programming problems'
 arch=('any')
-url="http://codeforces.com/testlib"
+url='https://github.com/MikeMirzayanov/testlib'
 license=('MIT')
-makedepends=(
-  'git'
-  'unzip'
-)
-
-source=(
-  "https://github.com/MikeMirzayanov/testlib/archive/refs/tags/${pkgver}.zip"
-)
-sha256sums=(
-  'SKIP'
-)
-
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('749709b96b76c0f0492841aa08278b7b5daa34d099ab3095f36ec796a790baac')
 
 package() {
-  unzip -o ${pkgver}.zip
-  cd testlib-${pkgver}
+  cd "$pkgname-$pkgver"
 
-  # Copy testlib.h
-  install -D -m644 testlib.h $pkgdir/usr/include/testlib.h
+  install -Dm644 testlib.h -t "$pkgdir/usr/include"
 
-  # Copy auxiliary files
-  install -d -m644 $pkgdir/usr/share/testlib/checkers
-  install -D -m644 checkers/*.cpp $pkgdir/usr/share/testlib/checkers
-  install -d -m644 $pkgdir/usr/share/testlib/generators
-  install -D -m644 generators/*.cpp $pkgdir/usr/share/testlib/generators
-  install -d -m644 $pkgdir/usr/share/testlib/interactors
-  install -D -m644 interactors/*.cpp $pkgdir/usr/share/testlib/interactors
-  install -d -m644 $pkgdir/usr/share/testlib/validators
-  install -D -m644 validators/*.cpp $pkgdir/usr/share/testlib/validators
+  for dir in checkers generators interactors validators; do
+    install -Dm644 $dir/*.cpp -t "$pkgdir/usr/share/$pkgname/$dir"
+  done
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

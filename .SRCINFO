@@ -1,13 +1,11 @@
 pkgbase = testlib
-	pkgdesc = A library used to write the auxiliary programs (validators, generators, and so on) for programming contest problems.
+	pkgdesc = C++ library to develop competitive programming problems
 	pkgver = 0.9.41
-	pkgrel = 1
-	url = http://codeforces.com/testlib
+	pkgrel = 2
+	url = https://github.com/MikeMirzayanov/testlib
 	arch = any
 	license = MIT
-	makedepends = git
-	makedepends = unzip
-	source = https://github.com/MikeMirzayanov/testlib/archive/refs/tags/0.9.41.zip
-	sha256sums = SKIP
+	source = https://github.com/MikeMirzayanov/testlib/archive/refs/tags/0.9.41.tar.gz
+	sha256sums = 749709b96b76c0f0492841aa08278b7b5daa34d099ab3095f36ec796a790baac
 
 pkgname = testlib
