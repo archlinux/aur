@@ -1,7 +1,7 @@
 pkgbase = fjord-engine-git
 	pkgdesc = A simple 2d game engine based off of SDL2
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 5
 	url = https://github.com/Lucasmoidel/Fjord.git
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = fjord-engine-git
 	makedepends = make
 	makedepends = sdl2
 	makedepends = sdl2_ttf
-	makedepends = jsoncpp
+	makedepends = nlohmann-json
 	makedepends = yaml-cpp
 	makedepends = box2d
 	makedepends = cmake
