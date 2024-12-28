@@ -8,14 +8,14 @@
 
 pkgname=ollama-cuda-git
 _pkgname=ollama
-pkgver=0.5.4+r3750+gdd352ab27
-pkgrel=2
+pkgver=0.5.4+r3757+gb68e8e572
+pkgrel=3
 pkgdesc='Create, run and share large language models (LLMs)'
 arch=(x86_64)
 url='https://github.com/ollama/ollama'
 license=(MIT)
 options=('!lto')
-makedepends=(cmake git go cuda)
+makedepends=(cmake git go cuda gcc13)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=(git+https://github.com/ollama/ollama.git
@@ -44,12 +44,13 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOPATH="${srcdir}"
   export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw '-ldflags=-linkmode=external -compressdwarf=false -X=github.com/ollama/ollama/version.Version=$pkgver -X=github.com/ollama/ollama/server.mode=release'"
+  export NVCC_CCBIN='gcc-13'
+  local _threads=$(($(nproc) / 2)) #try use real cores and not extra threads in an effort to minimize ram usage
 
   cd ollama
-
   # Unset these otherwise somehow nvcc will try to use them.
   unset CFLAGS CXXFLAGS
-  make dist CUDA_12_PATH=/opt/cuda
+  make -j${_threads} dist CUDA_12_PATH=/opt/cuda
   go build .
 }
 
