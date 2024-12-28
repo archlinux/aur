@@ -2,7 +2,7 @@
 
 pkgname=lcevcdec
 pkgver=3.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC)'
 arch=('x86_64')
 url='https://github.com/v-novaltd/LCEVCdec/'
@@ -22,6 +22,8 @@ prepare() {
 }
 
 build() {
+    export CFLAGS+=' -DNDEBUG -ffat-lto-objects'
+    export CXXFLAGS+=' -DNDEBUG -ffat-lto-objects'
     cmake -B build -S LCEVCdec \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
