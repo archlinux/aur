@@ -11,7 +11,7 @@ pkgbase = bsky-desktop
 	depends = gtk3
 	depends = nss
 	depends = libxss
-	source = https://github.com/enderfoxbg/bsky/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 1aea60e41a12e2458e32ceac7ec96d49b355895a7c3e21108e8b2f14b32267b2
+	source = bsky-1.0.1.tar.gz::https://github.com/enderfoxbg/bsky/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = SKIP
 
 pkgname = bsky-desktop
