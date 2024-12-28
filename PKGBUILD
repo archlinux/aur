@@ -21,9 +21,7 @@ package() {
     cd "bsky-$pkgver"
     install -d "$pkgdir/usr/lib/$pkgname"
     cp -r dist/linux-unpacked/* "$pkgdir/usr/lib/$pkgname/"
-
-    # Create desktop entry
-    install -Dm644 "build/icon.png" "$pkgdir/usr/share/pixmaps/bsky-desktop.png"
+    install -Dm644 "icons/icon.png" "$pkgdir/usr/share/pixmaps/bsky-desktop.png"
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/bsky-desktop.desktop" << END
 [Desktop Entry]
 Name=Bluesky
