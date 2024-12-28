@@ -2,7 +2,7 @@
 # Maintainer: Renge <renge At renge.io>
 
 pkgname=open-in-mpv
-pkgver=2.3.0
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Handler for open-in-mpv, a simple web extension which helps open video in mpv."
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=(
   'make'
 )
 source=("$pkgname-$pkgver.zip::https://github.com/Baldomo/${pkgname}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('0af6b17ca42522e227695da5723c69df9bce7a90d745b47f4a6f66b7db70840a')
+sha256sums=('84e3628a37fcea4ad45c0003468f4e83b513983d29d6694ab0e6df8e5fe556f4')
 
 prepare(){
 	cd "$pkgname-$pkgver"
