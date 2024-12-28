@@ -14,10 +14,10 @@ sha256sums=("SKIP")
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release
+  make build
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  make PKGDIR="$pkgname" install
 }
