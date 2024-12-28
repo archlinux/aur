@@ -181,7 +181,7 @@ _package() {
   install -Dm644 arch/arm64/boot/dts/qcom/sc8280xp-huawei-gaokun3.dtb -T "$pkgdir/boot/sc8280xp-huawei-$_variant.dtb"
 
   # _variant allow you to repeat the package as another name (for test purpose when you have already installed the kernel)
-  sed -i "s/#VARIANT#/$_variant/g" $srcdir/*
+  sed -i "s/#VARIANT#/$_variant/g" "$srcdir/linux-gaokun3.preset" "$srcdir/update-grub"
   install -Dm644 "${srcdir}/mkinitcpio-gaokun3.conf" -T "$pkgdir/etc/mkinitcpio-$_variant.conf"
   install -Dm644 "${srcdir}/linux-gaokun3.preset" -T "$pkgdir/etc/mkinitcpio.d/linux-$_variant.preset"
   install -Dm744 "${srcdir}/update-grub" -t "$pkgdir/usr/bin/"
