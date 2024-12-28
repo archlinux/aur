@@ -1,7 +1,7 @@
 # Maintainer: SuicideCatt <random.cat.from.internet@gmail.com>
 
 pkgname=sct_logcolors
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Colored and formated text generator for std::ostream"
 url="https://github.com/SuicideCatt/LogColors"
