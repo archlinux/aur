@@ -3,7 +3,7 @@
 pkgname=python-argtools
 _name=${pkgname//-/_}
 pkgver=0.0.1
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="Python argument tools."
 arch=('any')
@@ -28,6 +28,7 @@ sha256sums=('3de043b9ac64b4ef92b459f0c356495b860a72b4769090adfd6115e884b9998d')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 

@@ -1,7 +1,7 @@
 pkgbase = python-argtools
 	pkgdesc = Python argument tools.
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://pypi.org/project/python-argtools
 	arch = any
 	license = MIT
