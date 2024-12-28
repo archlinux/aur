@@ -3,7 +3,7 @@
 
 pkgname=connections
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line client for the NYT Connections game.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/jmelahman/connections'
@@ -27,6 +27,8 @@ build() {
 
 package() {
   cd "$pkgname" || exit
+
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
