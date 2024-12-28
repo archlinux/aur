@@ -1,0 +1,4 @@
+[python-deadlib]
+source = "git"
+git = "https://github.com/youknowone/python-deadlib.git"
+prefix = "v"
