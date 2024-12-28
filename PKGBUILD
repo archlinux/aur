@@ -3,7 +3,7 @@
 pkgname=python-cookietools
 _name=${pkgname/-/_}
 pkgver=0.0.4
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="Python cookietools."
 arch=('any')
@@ -28,6 +28,7 @@ sha256sums=('bca1967078a11b54f8a4e10d9c16534c9008a7e9b4c2a05f051d4309017b0450')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 

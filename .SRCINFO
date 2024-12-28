@@ -1,7 +1,7 @@
 pkgbase = python-cookietools
 	pkgdesc = Python cookietools.
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 4
 	url = https://pypi.org/project/python-cookietools
 	arch = any
 	license = MIT
