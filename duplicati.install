@@ -5,6 +5,11 @@ post_install() {
   cat  <<EOF
   * UI can be accessed via following URL: http://localhost:8200
   * Running duplicati user instance (using current user account)
+    - set up database password:              systemctl --user edit duplicati
+           [Service]
+           Environment="SETTINGS_ENCRYPTION_KEY=<your_password_here>"
+      (see https://github.com/duplicati/duplicati/releases/tag/v2.0.9.106_canary_2024-09-03 for details)
+
     - to start duplicati manually:           systemctl --user start duplicati
     - to autostart duplicati on user login:  systemctl --user enable duplicati
   *
@@ -16,6 +21,8 @@ post_install() {
 EOF
 }
 
+## arg 1:  the new package version
+## arg 2:  the old package version
 post_upgrade() {
   mkdir -p /var/lib/duplicati
   chown -R duplicati:duplicati /var/lib/duplicati
@@ -50,6 +57,25 @@ EOF
   * from 2.0.6.104-5. The install path was also changed from /opt/duplicati-latest to
   * /opt/duplicati, so please update any scripts that referred to the installation
   * directory directly.
+
+EOF
+  fi
+
+  if [ $(vercmp $2 2.0.8.1-1) -lt 0 ]; then
+    cat <<EOF
+  * Version 2.1.0.2-1 was a major overhaul of the code organization, and now includes
+  * a vendored .NET runtime. The name of the binaries also changed.
+  * Please report any issues on the AUR.
+  * https://aur.archlinux.org/packages/duplicati-beta-bin
+
+  * This version also changes the webserver, and now requires authentication to use
+  * the default http://localhost:8200. To set up encryption, you will need to provide a
+  * password for the database using the environment variable SETTINGS_ENCRYPTION_KEY.
+  * See https://github.com/duplicati/duplicati/releases/tag/v2.0.9.106_canary_2024-09-03 for details.
+  * One way to provide the environment variable is by running
+  * systemctl --user edit duplicati and adding
+      [Service]
+      Environment="SETTINGS_ENCRYPTION_KEY=<your_password_here>"
 
 EOF
   fi

@@ -3,7 +3,7 @@ Description=Duplicati
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/mono /opt/duplicati/Duplicati.Server.exe --webservice-port=8200
+ExecStart=/opt/duplicati/duplicati-server --webservice-port=8200
 Restart=on-abort
 EnvironmentFile=-/etc/default/duplicati
 User=duplicati
