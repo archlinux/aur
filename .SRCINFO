@@ -1,0 +1,21 @@
+pkgbase = python-sqlite-logger
+	pkgdesc = Write logs to SQLite db file.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/sqlite_logger
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-sqlite-logger
+	conflicts = python-sqlite-logger
+	options = !strip
+	options = !debug
+	source = sqlite_logger-0.0.1.tar.gz::https://files.pythonhosted.org/packages/source/s/sqlite_logger/sqlite_logger-0.0.1.tar.gz
+	sha256sums = 791c4fe490185478cf09fcc107a248fcb453b08b38fe5f1e0fab56373c2ac0f9
+
+pkgname = python-sqlite-logger
