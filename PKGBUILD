@@ -248,6 +248,11 @@ prepare() {
   _prepare_ffnvcodec
 
   cd mpv-build
+  sed -e 's|meson setup|arch-meson|g' \
+      -e 's|-Dprefer_static=true||g' \
+      -e 's|-Dbuildtype=release||g' \
+      -i scripts/{mpv,libplacebo}-config
+
   ln -sf -t . "../mpv"
   ln -sf -t . "../ffmpeg"
   ln -sf -t . "../libass"
@@ -363,12 +368,7 @@ prepare() {
   )
 
   _mpv_options=(
-    '-Dprefix=/usr'
-    '-Dlibexecdir=lib'
-    '-Dsbindir=bin'
-    '-Dbuildtype=plain'
     '-Db_lto=true'
-    '-Db_pie=true'
     '-Db_staticpic=true'
     '-Ddefault_library=shared'
     '-Dc_link_args="-Wl,-Bsymbolic"'
@@ -530,10 +530,6 @@ prepare() {
   (IFS=$'\n'; echo "${_mpv_options[*]}" > mpv_options)
   (IFS=$'\n'; echo "${_libass_options[*]}" > libass_options)
   (IFS=$'\n'; echo "${_libplacebo_options[*]}" > libplacebo_options)
-
-  sed -i 's|-Dprefer_static=true||g' "${srcdir}/mpv-build/scripts/mpv-config"
-  sed -i 's|-Dbuildtype=release||g' "${srcdir}/mpv-build/scripts/mpv-config"
-
 }
 
 build() {
