@@ -1,0 +1,6 @@
+[apvlv]
+source = "git"
+git = "https://github.com/naihe2010/apvlv.git"
+prefix = "v"
+from_pattern = "-"
+to_pattern = "_"

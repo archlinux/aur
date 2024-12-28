@@ -6,41 +6,30 @@
 # Contributor: tocer.deng <tocer.deng@gmail.com>
 
 pkgname=apvlv
-pkgver=0.6.0
+pkgver=0.7.0_alpha
 pkgrel=1
-pkgdesc="A PDF/DJVU/EPUB viewer which behaves like Vim"
+pkgdesc="A PDF/EPUB/TXT/FB2/MOBI/CBZ/HTML viewer which behaves like Vim"
 arch=('x86_64')
 url="https://github.com/naihe2010/apvlv"
 license=('GPL-2.0-or-later')
-depends=('cairo'
-         'djvulibre'
-         'ebook-tools'
-         'gcc-libs'
-         'gdk-pixbuf2'
-         'glib2'
-         'glibc'
-         'gtk3'
-         'libxml2'
-         'pango'
-         'poppler-glib'
-         'webkit2gtk')
-backup=('etc/apvlvrc')
-makedepends=('cmake' 'freetype2' 'ghostscript')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}-final.tar.gz")
-sha256sums=('8cec385df3b8655c19710de4d29220a4739c04b97906a8f07f97b6b17747680c')
+depends=('djvulibre' 'gcc-libs' 'glibc' 'libmupdf' 'qt6-base' 'qt6-webengine' 'quazip-qt6' 'tesseract')
+makedepends=('clang' 'cmake' 'ghostscript' 'libreoffice-sdk' 'man-db' 'qt6-tools')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver//_/-}.tar.gz")
+sha256sums=('c763ff61eb4f907ce66747045e242a06d8ff36083d0ff5805277ce26a707e0fa')
 
 build() {
-  cmake -B build -S "${pkgname}-${pkgver}-final" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DAPVLV_WITH_DJVU=ON \
-    -Wno-dev
-  cmake --build build
+    mkdir -p "${pkgname}-${pkgver//_/-}/share/doc/apvlv/translations"
+    cmake -B build -S "${pkgname}-${pkgver//_/-}" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_PREFIX_PATH=/usr/lib/qt6 \
+        -Wno-dev
+    cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
+    DESTDIR="${pkgdir}" cmake --install build
 
-  install -d "${pkgdir}/usr/share/man/man1"
-  mv "${pkgdir}/usr/share/man/apvlv.1" "${pkgdir}/usr/share/man/man1"
+    install -d "${pkgdir}/usr/share/man/man1"
+    mv "${pkgdir}/usr/share/man/apvlv.1" "${pkgdir}/usr/share/man/man1"
 }
