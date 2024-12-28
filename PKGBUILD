@@ -3,7 +3,7 @@
 pkgname=python-iterdir
 _name=${pkgname#python-}
 pkgver=0.0.6
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="python iterate over path tree."
 arch=('any')
@@ -28,6 +28,7 @@ sha256sums=('6fe55c38635f34b74a61f19117bd0939cb783e2bd67f6e7bffb85a4be4b19668')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 

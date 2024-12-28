@@ -1,7 +1,7 @@
 pkgbase = python-iterdir
 	pkgdesc = python iterate over path tree.
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 4
 	url = https://pypi.org/project/iterdir
 	arch = any
 	license = MIT
