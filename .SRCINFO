@@ -1,6 +1,6 @@
 pkgbase = ollama-nogpu-git
 	pkgdesc = Create, run and share large language models (LLMs)
-	pkgver = 0.5.4+r3755+g023e4bca1
+	pkgver = 0.5.4+r3757+gb68e8e572
 	pkgrel = 1
 	url = https://github.com/ollama/ollama
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ollama-nogpu-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = go
-	provides = ollama=0.5.4+r3755+g023e4bca1
+	provides = ollama=0.5.4+r3757+gb68e8e572
 	conflicts = ollama
 	options = !lto
 	source = git+https://github.com/ollama/ollama.git
