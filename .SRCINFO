@@ -142,7 +142,6 @@ pkgbase = mpv-full-build-git
 	optdepends = nvidia-utils: for hardware accelerated video decoding with CUDA
 	optdepends = onevpl: mpv ffmpeg intel graphic support
 	optdepends = shine: Additional libshine support for ffmpeg
-	optdepends = tensorflow: mpv ffmpeg DNN module backend
 	optdepends = vo-amrwbenc: Additional libvo-amrwbenc support for ffmpeg
 	optdepends = xavs: Additional libxavs support for ffmpeg
 	optdepends = xavs2: Additional libxavs2 support for ffmpeg

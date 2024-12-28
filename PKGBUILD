@@ -180,7 +180,7 @@ _makeoptdepends=('cuda: mpv ffmpeg nvcc and libnpp support'
                  'nvidia-utils: for hardware accelerated video decoding with CUDA'
                  'onevpl: mpv ffmpeg intel graphic support'
                  'shine: Additional libshine support for ffmpeg'
-                 'tensorflow: mpv ffmpeg DNN module backend'
+                 # 'tensorflow: mpv ffmpeg DNN module backend'
                  'vo-amrwbenc: Additional libvo-amrwbenc support for ffmpeg'
                  'xavs: Additional libxavs support for ffmpeg'
                  'xavs2: Additional libxavs2 support for ffmpeg')
@@ -205,9 +205,9 @@ if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
   if [ -f /usr/lib/libvpl.so ]; then
     depends+=('onevpl')
   fi
-  if [ -f /usr/lib/libtensorflow.so ]; then
-    depends+=('tensorflow')
-  fi
+  # if [ -f /usr/lib/libtensorflow.so ]; then
+  #   depends+=('tensorflow')
+  # fi
   if [ -f /usr/lib/libvo-amrwbenc.so ]; then
     depends+=('vo-amrwbenc')
   fi
@@ -324,6 +324,7 @@ prepare() {
     '--enable-libsrt'
     '--enable-libssh'
     '--enable-libsvtav1'
+    '--disable-libtensorflow'
     '--enable-libtesseract'
     '--enable-libtheora'
     '--enable-libtwolame'
@@ -510,10 +511,10 @@ prepare() {
     else
       _ffmpeg_options+=('--enable-libmfx')
     fi
-    if [ -f /usr/lib/libtensorflow.so ]; then
-      _ffmpeg_options+=('--enable-libtensorflow')
-      _ffmpeg_options+=('--extra-cflags=-I/usr/include/tensorflow')
-    fi
+    # if [ -f /usr/lib/libtensorflow.so ]; then
+    #   _ffmpeg_options+=('--enable-libtensorflow')
+    #   _ffmpeg_options+=('--extra-cflags=-I/usr/include/tensorflow')
+    # fi
     if [ -f /usr/lib/libvo-amrwbenc.so ]; then
       _ffmpeg_options+=('--enable-libvo-amrwbenc')
     fi
