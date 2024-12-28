@@ -4,7 +4,7 @@ pkgname=python-iter-collect
 _name=${pkgname#python-}
 _name=${_name//-/_}
 pkgver=0.0.4
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="Python iter_collect."
 arch=('any')
@@ -30,6 +30,7 @@ sha256sums=('a9ecc9b19598cc1022d98df6246164eac0bc08ee5e5ec33b8311a15d89de10f2')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 

@@ -1,7 +1,7 @@
 pkgbase = python-iter-collect
 	pkgdesc = Python iter_collect.
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 4
 	url = https://pypi.org/project/iter_collect
 	arch = any
 	license = MIT
