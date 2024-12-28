@@ -1,7 +1,7 @@
 pkgbase = python-instructor
 	pkgdesc = Structured outputs for LLMs
-	pkgver = 1.7.1
-	pkgrel = 3
+	pkgver = 1.7.2
+	pkgrel = 1
 	url = https://github.com/jxnl/instructor
 	arch = any
 	license = MIT
@@ -31,7 +31,7 @@ pkgbase = python-instructor
 	optdepends = python-cohere: support for Cohere models
 	optdepends = python-google-generativeai: support for Google Gemini models
 	optdepends = python-writerai: Writer authenticates your API requests using your account’s API keys.
-	source = python-instructor-1.7.1.tar.gz::https://github.com/jxnl/instructor/archive/1.7.1.tar.gz
-	sha256sums = 73a584828ba23cfa147ea50bf3484254f442faff5b833e10301a5d5f92404137
+	source = python-instructor-1.7.2.tar.gz::https://github.com/jxnl/instructor/archive/1.7.2.tar.gz
+	sha256sums = 6c2fc164b0182dcb9654d09560e0da9271c82b3925339142ae9679b93d56118e
 
 pkgname = python-instructor

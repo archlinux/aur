@@ -3,8 +3,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.7.1
-pkgrel=3
+pkgver=1.7.2
+pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
 url="https://github.com/jxnl/instructor"
@@ -44,7 +44,7 @@ optdepends=(
   'python-writerai: Writer authenticates your API requests using your account’s API keys.'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('73a584828ba23cfa147ea50bf3484254f442faff5b833e10301a5d5f92404137')
+sha256sums=('6c2fc164b0182dcb9654d09560e0da9271c82b3925339142ae9679b93d56118e')
 
 _archive="$_pkgname-$pkgver"
 
@@ -82,7 +82,6 @@ check() {
     --deselect tests/test_simple_types.py::test_partial_not_simple \
     --deselect tests/llm/test_anthropic/test_multimodal.py \
     --deselect tests/test_response_model_conversion.py::test_json_preserves_description_of_non_english_characters_in_json_mode
-
 }
 
 package() {
