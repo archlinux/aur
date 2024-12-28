@@ -1,0 +1,21 @@
+pkgbase = python-filerev
+	pkgdesc = Reversed iterator for files.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://pypi.org/project/filerev
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-filerev
+	conflicts = python-filerev
+	options = !strip
+	options = !debug
+	source = filerev-0.0.2.tar.gz::https://files.pythonhosted.org/packages/source/f/filerev/filerev-0.0.2.tar.gz
+	sha256sums = 522810e5d543dc2a18f94b18154ffd863ce0757aa5ee53d6277f1cb3d0e1bdd2
+
+pkgname = python-filerev
