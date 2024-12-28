@@ -2,7 +2,7 @@
 
 _pkgname=death-road-to-canada
 pkgname=${_pkgname}-gog
-pkgver=20210402
+pkgver=20221026
 pkgrel=2
 arch=('x86_64')
 license=(custom)
@@ -23,14 +23,14 @@ optdepends=(
 )
 
 source=(
-	"gog://death_road_to_canada_liver_update_46139.sh"
+	"gog://death_road_to_canada_mandible_nerve_update_59780.sh"
 	"${pkgname}"
 	"${pkgname}.desktop"
 	"${pkgname}.profile"
 	"0000-start.sh.patch"
 )
 sha512sums=(
-	'2492170d69788a9e9fbea1ade2039f0f92d88b8152ec1fb0711bd88dbcd9c0ddcd7e869e566c41057cb1035e40fab8e767960c51e42d62bda7b11fce4eccb4af'
+	'5dec04d115e82f3e07e96e15a1721cb1490391c566826a4d2c3d33a66f6af241d85872c01d8c4f3df130da6d8fb916ce13ac8546bf1cecc3925bd4d7cccf8d7c'
 	'SKIP'
 	'SKIP'
 	'SKIP'
