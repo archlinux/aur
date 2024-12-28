@@ -1,0 +1,21 @@
+From 3dfd56fb6bbfaabe2c8d62a42badc4766c06cb04 Mon Sep 17 00:00:00 2001
+From: Alexandre Detiste <alexandre.detiste@gmail.com>
+Date: Tue, 27 Aug 2024 23:52:11 +0200
+Subject: [PATCH] remove stale dependency on six
+
+---
+ setup.cfg | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/setup.cfg b/setup.cfg
+index 914689f..9f8e9cd 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -8,7 +8,6 @@ url = https://github.com/twisted/tubes/
+ [options]
+ packages = find:
+ install_requires =
+-    six
+     Twisted
+ 
+ [bdist_wheel]
