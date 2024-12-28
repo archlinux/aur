@@ -2,12 +2,12 @@
 # Contributor: Dario Ostuni <dario.ostuni@gmail.com>
 
 pkgname=python-vulkan-git
-pkgver=1.1.99.1.r8.gc858f33
-pkgrel=1
+pkgver=1.3.275.1.r1.g3dff490
+pkgrel=2
 pkgdesc="The ultimate Python binding for Vulkan API"
 arch=(any)
 url="https://github.com/realitix/vulkan"
-license=(Apache)
+license=(Apache-2.0)
 depends=(python python-cffi vulkan-icd-loader)
 makedepends=(git python-build python-wheel python-installer python-setuptools)
 provides=(python-vulkan)
