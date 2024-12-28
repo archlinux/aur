@@ -3,7 +3,7 @@
 pkgname=python-p115nano302
 _name=${pkgname#python-}
 pkgver=0.0.6.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="115 nano 302 backend."
 arch=('any')
@@ -16,11 +16,11 @@ depends=(
     python
     python-orjson
     python-yaml
+    uvicorn
     #AUR
     python-blacksheep
     python-cachedict
     python-p115cipher
-    uvicorn
 )
 makedepends=(
     python-poetry
