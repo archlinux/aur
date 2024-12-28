@@ -1,0 +1,4 @@
+#!/bin/bash
+
+grub-mkconfig -o /boot/grub/grub.cfg
+sed -i 's/^\(.*\)\(initrd\)\(.*\/boot\/\)\(.*img$\)/\1\2\3\4\n\1devicetree\3sc8280xp-huawei-#VARIANT#.dtb/' /boot/grub/grub.cfg

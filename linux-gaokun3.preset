@@ -1,9 +1,9 @@
-ALL_config="/etc/mkinitcpio-gaokun3.conf"
-ALL_kver="/boot/vmlinuz-linux-gaokun3"
+ALL_config="/etc/mkinitcpio-#VARIANT#.conf"
+ALL_kver="/boot/vmlinuz-linux-#VARIANT#"
 
 PRESETS=('default')
 
-#default_config="/etc/mkinitcpio-gaokun3.conf"
-default_image="/boot/initramfs-linux-gaokun3.img"
-#default_uki="/efi/EFI/Linux/arch-linux-gaokun3.efi"
+#default_config="/etc/mkinitcpio-#VARIANT#.conf"
+default_image="/boot/initramfs-linux-#VARIANT#.img"
+#default_uki="/efi/EFI/Linux/arch-linux-#VARIANT#.efi"
 #default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"

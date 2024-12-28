@@ -4,8 +4,10 @@
 
 _variant=gaokun3
 pkgbase=linux-$_variant
+# TODO: 6.12.y is a branch version, try to fetch from 6.12 to 6.20
+# to get the latest branch, then fetch kernel version from Makefile
 pkgver=6.12.y
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux for HUAWEI MateBook E Go (sc8280xp)'
 url='https://github.com/steev/linux.git'
 arch=('any')
@@ -70,15 +72,17 @@ bfb536e63f18bbe22b223542959e2cdf229ebad58f57a48fa4c706d494cdc7cc
 
 source=(
   config # dirty, need clean
-  sc8280xp-huawei-gaokun3.dts
-  mkinitcpio-gaokun3.conf
   linux-gaokun3.preset
+  mkinitcpio-gaokun3.conf
+  sc8280xp-huawei-gaokun3.dts
+  update-grub
 )
 sha256sums=(
   '2d165a723cdc8d8cbfea185a346bd82b1a20371485ba166943de198f3968ee5e'
-  '50dbaa34024da7a017fd180bfa666c38325e1d9493e672374cfb6efe013ddec1'
+  '53b52ebe0de167308134725740651371f90b34a290cbe7dc1727adf2a1fcb62d'
   'faab2f04e13dfc97067cc0aa95fe5f11d1f73b17c6ff20a1dd56fce4bc84a5b6'
-  'b89e6201c76572de9783921865567a1c4b24b9fb2ab7b968ba6a22114f255592'
+  '50dbaa34024da7a017fd180bfa666c38325e1d9493e672374cfb6efe013ddec1'
+  '3bb0d75940d7ff605f412608bc4d83c08938d0c52c705ed2bc5b265f084bea29'
 )
 
 source+=("${_patch_list[@]}")
@@ -103,9 +107,9 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
   git clone --depth=1 $url -b lenovo-x13s-linux-$pkgver
   cd $_srcname
-  git apply ../00*patch
+  git apply $srcdir/00*patch # Not using git am to avoid setting git identity
   rm -rf .git # or our kernel name with the hash tag
-  mv ../sc8280xp-huawei-gaokun3.dts arch/arm64/boot/dts/qcom/sc8280xp-huawei-gaokun3.dts
+  cp $srcdir/sc8280xp-huawei-gaokun3.dts arch/arm64/boot/dts/qcom/sc8280xp-huawei-gaokun3.dts
 
   echo "Setting version..."
   echo "${pkgbase#linux}" > localversion.10-pkgname
@@ -117,9 +121,9 @@ prepare() {
      scripts/asn1_compiler scripts/kallsyms scripts/sorttable || :
 
   echo "Setting config..."
-  cp ../config .config
+  cp $srcdir/config .config
   make $build_flag olddefconfig
-  diff -u ../config .config || :
+  diff -u $srcdir/config .config || :
 
   make $build_flag -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -173,11 +177,14 @@ _package() {
   # remove build link
   rm "$modulesdir"/build
 
-  # devicetree
-  install -Dm644 arch/arm64/boot/dts/qcom/sc8280xp-huawei-gaokun3.dtb -t "$pkgdir/boot/"
+  # devicetree & files
+  install -Dm644 arch/arm64/boot/dts/qcom/sc8280xp-huawei-gaokun3.dtb -T "$pkgdir/boot/sc8280xp-huawei-$_variant.dtb"
 
-  install -Dm644 "${srcdir}/mkinitcpio-gaokun3.conf" -t "$pkgdir/etc/"
-  install -Dm644 "${srcdir}/linux-gaokun3.preset" -t "$pkgdir/etc/mkinitcpio.d/"
+  # _variant allow you to repeat the package as another name (for test purpose when you have already installed the kernel)
+  sed -i "s/#VARIANT#/$_variant/g" $srcdir/*
+  install -Dm644 "${srcdir}/mkinitcpio-gaokun3.conf" -T "$pkgdir/etc/mkinitcpio-$_variant.conf"
+  install -Dm644 "${srcdir}/linux-gaokun3.preset" -T "$pkgdir/etc/mkinitcpio.d/linux-$_variant.preset"
+  install -Dm744 "${srcdir}/update-grub" -t "$pkgdir/usr/bin/"
 }
 
 _cross_compile_tools() {
