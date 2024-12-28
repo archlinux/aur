@@ -1,12 +1,13 @@
 pkgbase = video2x-qt6-git
 	pkgdesc = The Qt6 GUI for Video2X
-	pkgver = 6.3.1.r6.g678ebb5
+	pkgver = 6.3.1.r9.gd365597
 	pkgrel = 1
 	url = https://github.com/k4yt3x/video2x-qt6
 	arch = x86_64
 	license = ISC
 	makedepends = git
 	makedepends = cmake
+	makedepends = clang
 	makedepends = qt6-tools
 	depends = video2x
 	depends = qt6-base
