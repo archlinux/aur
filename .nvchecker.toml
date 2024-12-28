@@ -1,0 +1,4 @@
+[go-life]
+source = "git"
+git = "https://github.com/sachaos/go-life.git"
+prefix = "v"

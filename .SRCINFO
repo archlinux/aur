@@ -1,0 +1,13 @@
+pkgbase = go-life
+	pkgdesc = Terminal based Conway's Game of Life. Implemented in Go.
+	pkgver = 0.4.0+r7+gc22a0f1
+	pkgrel = 1
+	url = https://github.com/sachaos/go-life
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = go-life-c22a0f1b479af8ff5568cd18d1029f65917f98c9.tar.gz::https://github.com/sachaos/go-life/archive/c22a0f1b479af8ff5568cd18d1029f65917f98c9.tar.gz
+	sha256sums = 2f4859d038e8533843c4620895220ab8f2f5380f1343e496c0bfa4dbe06211c3
+
+pkgname = go-life
