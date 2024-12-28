@@ -1,7 +1,7 @@
 pkgbase = python-yapps2
 	pkgdesc = Yet Another Python Parser System, Python3 fork by smurfix
 	pkgver = 2.2.1
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/smurfix/yapps
 	arch = any
 	license = MIT
