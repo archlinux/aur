@@ -1,20 +1,31 @@
 pkgbase = dbeaver-ue
-	pkgdesc = A universal database tool for developers and database administrators. Ultimate Edition includes NoSQL and cloud database support.
-	pkgver = 21.3.0
+	pkgdesc = A universal database tool for developers and database administrators. Multifunctional database tool with native AWS, Azure, and Google Cloud support.
+	pkgver = 24.3.0
 	pkgrel = 1
 	url = http://dbeaver.com/
-	install = dbeaver-ue.install
 	arch = x86_64
+	arch = aarch64
 	license = Commercial
-	depends = java-runtime>=1.8
+	makedepends = tar
+	depends = java-runtime>=17
 	depends = gtk3
 	depends = gtk-update-icon-cache
-	noextract = dbeaver-ue-21.3.0-linux.gtk.x86_64.tar.gz
-	source = dbeaver-ue.desktop
-	source = dbeaver-ue.install
-	sha256sums = da0db9b8344aaf532dabd43c06c3ddd2e2274bf326a1f30f2bf511f2d9aaf837
-	sha256sums = 0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f
-	source_x86_64 = https://dbeaver.com/files/21.3.0/dbeaver-ue-21.3.0-linux.gtk.x86_64-nojdk.tar.gz
-	sha256sums_x86_64 = 055db52cad75b36af6befdd0280ea4e57fc0aa4085eda45b7cdab3b27cbf1841
+	depends = libsecret
+	provides = dbeaver
+	provides = dbeaver-ue
+	provides = dbeaver-ue-bin
+	conflicts = dbeaver-plugin-sshj-lib
+	conflicts = dbeaver
+	conflicts = dbeaver-ce
+	conflicts = dbeaver-le
+	conflicts = dbeaver-ue
+	conflicts = dbeaver-ee
+	options = !strip
+	source = dbeaver.sh
+	sha256sums = 9ee119a8b9b5b5f1382d23f88b8e433743e7a7fe6191be1103bd23ba84abfee5
+	source_x86_64 = dbeaver-ue-24.3.0-x86_64.tar.gz::https://dbeaver.com/files/24.3.0/dbeaver-ue-24.3.0-linux.gtk.x86_64-nojdk.tar.gz
+	sha256sums_x86_64 = e85a36d479cdeb2367da15158b52e45eb84d7ff3d665276ec34b5c78c8a5692c
+	source_aarch64 = dbeaver-ue-24.3.0-aarch64.tar.gz::https://dbeaver.com/files/24.3.0/dbeaver-ue-24.3.0-linux.gtk.aarch64-nojdk.tar.gz
+	sha256sums_aarch64 = 2951b8fe34ba9b62d43e5e887d06869c5eb595e5312491f65b91e8a0736a9b17
 
 pkgname = dbeaver-ue
