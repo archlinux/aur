@@ -30,9 +30,6 @@ build() (
   echo "Building AVA Interface..."
   dotnet publish "${_args[@]}" -o publish_ava "$_pkgsrc/src/Ryujinx"
 
-  echo "Building SDL2 Headless..."
-  dotnet publish "${_args[@]}" -o publish_sdl "$_pkgsrc/src/Ryujinx.Headless.SDL2"
-
   echo "Shutting down dotnet build server in background."
   (timeout -k 45 30 dotnet build-server shutdown) > /dev/null 2>&1 &
 )
@@ -41,12 +38,10 @@ package() {
   # program
   install -dm755 "$pkgdir/$_install_path/ryujinx"
   cp -a --update=none --reflink=auto publish_ava/* "$pkgdir/$_install_path/ryujinx/"
-  cp -a --update=none --reflink=auto publish_sdl/* "$pkgdir/$_install_path/ryujinx/"
 
   # symlinks
   install -dm755 "$pkgdir/usr/bin"
   ln -s "/$_install_path/ryujinx/Ryujinx" "$pkgdir/usr/bin/ryujinx"
-  ln -s "/$_install_path/ryujinx/Ryujinx.Headless.SDL2" "$pkgdir/usr/bin/ryujinx.sdl"
 
   # .desktop
   install -Dm644 "$_pkgsrc"/distribution/linux/Ryujinx.desktop "$pkgdir/usr/share/applications/ryujinx.desktop"
@@ -64,7 +59,6 @@ package() {
   find "$pkgdir" -type d -exec chmod 755 {} \;
   find "$pkgdir" -type f -exec chmod 644 {} \;
   chmod 755 "$pkgdir/$_install_path/ryujinx/Ryujinx"
-  chmod 755 "$pkgdir/$_install_path/ryujinx/Ryujinx.Headless.SDL2"
   chmod 755 "$pkgdir/$_install_path/ryujinx/Ryujinx.sh"
 
   # fix desktop file
