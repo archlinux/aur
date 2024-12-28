@@ -1,6 +1,6 @@
 # Maintainer: gifnksm <makoto.nksm+aur@gmail.com>
 pkgname=souko
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 epoch=
 pkgdesc="Provides an easy way to organize clones of remote git repositories"
@@ -11,7 +11,8 @@ depends=('glibc' 'gcc-libs' 'libgit2' 'openssl')
 conflicts=('souko-bin')
 provides=('souko')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gifnksm/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f2e535899d9d48fd5233248f920bb12f9ef3ecf79ecfcfebba2fb89af753b243')
+sha256sums=('ac927d86b2f4f9f3a2fc284e9bbd8162df3b4dac409fb7589cd1e5a405bb5bf6')
+options=(!lto)
 
 build() {
 	cd "${pkgname}-${pkgver}"
@@ -39,6 +40,7 @@ package() {
 	install -Dm 644 noarch/completion/_souko -t "${pkgdir}/usr/share/zsh/site-functions/"
 	install -Dm 644 noarch/completion/souko.bash -t "${pkgdir}/usr/share/bash-completion/completions/"
 	install -Dm 644 noarch/completion/souko.fish -t "${pkgdir}/usr/share/fish/vendor_completions.d/"
+	install -Dm 644 noarch/completion/souko.nu -T "${pkgdir}/usr/share/nushell/vendor/autoload/souko-completions.nu"
 
 	install -Dm 644 noarch/LICENSE-* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 	install -Dm 644 noarch/README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
