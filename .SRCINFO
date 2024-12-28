@@ -1,0 +1,21 @@
+pkgbase = python-treedir
+	pkgdesc = Iterate a directory in a tree-like format.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/python-treedir
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-treedir
+	conflicts = python-treedir
+	options = !strip
+	options = !debug
+	source = python_treedir-0.0.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python_treedir/python_treedir-0.0.1.tar.gz
+	sha256sums = 33eadea91f8a8cf3c5f46f0d2309184097402490facd9081eafffa48299e48c0
+
+pkgname = python-treedir
