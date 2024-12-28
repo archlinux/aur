@@ -1,6 +1,8 @@
 [Unit]
 Description=A tool for solving SNI RST
 Documentation=https://github.com/URenko/Accesser
+Wants=network-online.target
+After=network-online.target nss-lookup.target
 
 [Service]
 Type=simple
@@ -9,6 +11,4 @@ ExecStart=accesser
 ExecStop=kill $MAINPID
 
 [Install]
-Wants=network-online.target
-After=network-online.target nss-lookup.target
 WantedBy=default.target
