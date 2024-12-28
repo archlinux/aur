@@ -2,8 +2,8 @@
 
 _pkgname=synapse-s3-storage-provider
 pkgname=python3-${_pkgname}
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.0
+pkgrel=0
 pkgdesc="Synapse storage provider to fetch and store media in Amazon S3"
 arch=('any')
 url='https://github.com/matrix-org/synapse-s3-storage-provider'
@@ -11,7 +11,7 @@ license=('Apache')
 makedepends=('python-setuptools')
 depends=('python-boto3' 'matrix-synapse')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('83f32273363006d71a8ab258ea46dedd5280d9f0861e8fef8584bfd61268d931')
+sha256sums=('c162f18be985ba723d0ee9791095741a2465a979b13d690388b6faf4a9f6749f')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
