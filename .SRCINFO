@@ -1,7 +1,7 @@
 pkgbase = python-snakemake-interface-report-plugins
 	pkgdesc = The interface for Snakemake report plugins
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/snakemake/snakemake-interface-report-plugins
 	arch = any
 	license = MIT
