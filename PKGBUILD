@@ -4,7 +4,7 @@
 # Contributor: jskier <jay @jskier.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=keeper-commander
-pkgver=16.11.22
+pkgver=17.0.0
 pkgrel=2
 pkgdesc="CLI, SDK and interactive shell for Keeper® Password Manager."
 arch=('any')
@@ -34,8 +34,10 @@ makedepends=(
   'python-setuptools'
 )
 checkdepends=('python-ifaddr')
+provides+=('python-keeper-dag' 'python-discovery-common')
+conflicts+=('python-keeper-dag' 'python-discovery-common')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('462a3d4f155bb3bcc91cdbeda1c998bbea3fa5e8371d0e87a7be59a0185635918f7d276aa7e44636a0be340aabf26eee72002cdc6968427b07bcdf8d15644b9e')
+sha512sums=('ed4c451154726cc9a40d39be85a5aefd715c226bfd3253facab53ec321a478fd9f3ef3639719524b957f4559e6972b7f6c97ff43bf413d044eeda077d2f93f48')
 
 build() {
   cd "Commander-$pkgver"
@@ -44,18 +46,27 @@ build() {
 
 check() {
   cd "Commander-$pkgver"
-  python -m pytest -s -v \
+  rm -rf test-env
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  for whl in libs/*.whl; do
+    test-env/bin/python -m installer "$whl"
+  done
+  test-env/bin/python -m pytest -s -v \
+    --deselect=unit-tests/pam/test_private_tunnel.py::TestPrivateTunnelEntrance::test_forward_data_to_tunnel_generic_exception \
     --deselect=tests/test_enterprise_commands.py::TestEnterpriseCommands::test_add_enterprise_user \
     --deselect=tests/test_enterprise_commands.py::TestEnterpriseCommands::test_commands \
     --deselect=tests/test_enterprise_commands.py::TestEnterpriseCommands::test_report_commands \
     --deselect=tests/test_vault_commands.py::TestConnectedCommands::test_commands \
     --deselect=tests/test_vault_commands.py::TestConnectedCommands::test_quoting \
-    --deselect=tests/test_vault_commands.py::TestConnectedCommands::test_vault_reports \
-    --deselect=unit-tests/pam-tunnel/test_private_tunnel.py::TestPrivateTunnelEntrance::test_forward_data_to_tunnel_generic_exception
+    --deselect=tests/test_vault_commands.py::TestConnectedCommands::test_vault_reports
 }
 
 package() {
   cd "Commander-$pkgver"
+  for whl in libs/*.whl; do
+    python -m installer --destdir="$pkgdir" "$whl"
+  done
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
