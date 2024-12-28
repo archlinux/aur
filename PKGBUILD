@@ -2,8 +2,8 @@
 pkgname=uotantoolbox_linux-bin
 _pkgname=UotanToolbox_Linux
 pkgver=3.2.1
-pkgrel=1
-pkgdesc='鱼滩工具箱,为玩机发烧友而生  支持OpenHarmony和HarmonyOS NEXT设备'
+pkgrel=2
+pkgdesc='鱼柚坛工具箱 NT,为玩机发烧友而生。'
 arch=('x86_64' 'arm64' 'loong64')
 url="https://toolbox.uotan.cn/"
 license=('GPL-3.0')
