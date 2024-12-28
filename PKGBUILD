@@ -4,7 +4,7 @@ pkgname=python-path-predicate
 _name=${pkgname#python-}
 _name=${_name//-/_}
 pkgver=0.0.1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python path predication."
 arch=('any')
@@ -16,7 +16,7 @@ conflicts=(${pkgname})
 depends=(
     python
     #AUR
-    python-ignore-pattern
+    python-path-ignore-pattern
 )
 makedepends=(
     python-poetry

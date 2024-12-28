@@ -1,7 +1,7 @@
 pkgbase = python-path-predicate
 	pkgdesc = Python path predication.
 	pkgver = 0.0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/path_predicate
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-path-predicate
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	depends = python-ignore-pattern
+	depends = python-path-ignore-pattern
 	provides = python-path-predicate
 	conflicts = python-path-predicate
 	options = !strip
