@@ -1,7 +1,7 @@
 pkgbase = python-http-response
 	pkgdesc = Python http response utils.
 	pkgver = 0.0.1.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://pypi.org/project/http_response
 	arch = any
 	license = MIT
