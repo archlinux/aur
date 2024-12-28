@@ -1,0 +1,4 @@
+[epy-ereader-git]
+source = "git"
+git = "https://github.com/wustho/epy.git"
+prefix = "v"

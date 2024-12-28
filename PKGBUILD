@@ -5,7 +5,7 @@
 _pkgname="epy-ereader"
 pkgname="$_pkgname-git"
 pkgver=2023.6.11.r0.g6b0e9fe
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI Ebook Reader"
 url='https://github.com/wustho/epy'
 license=('GPL-3.0-only')
@@ -13,6 +13,7 @@ arch=('any')
 
 depends=(
   'python'
+  'python-standard-imghdr'
 )
 makedepends=(
   'git'
@@ -33,7 +34,7 @@ conflicts=(
 
 _pkgsrc="$_pkgname"
 source=(
-  "$_pkgsrc"::"git+$url"
+  "$_pkgsrc"::"git+$url.git"
 
   "Downloads.png"::"https://static.pepy.tech/personalized-badge/epy-reader?period=month&units=none&left_color=grey&right_color=brightgreen&left_text=downloads/month"
   "screenshot.png"::"https://raw.githubusercontent.com/wustho/epy/master/screenshot.png"
@@ -67,14 +68,12 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-
-  python -m build --no-isolation --wheel
+  cd "$_pkgsrc"
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
   cd "$_pkgsrc"
-
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" "README.md"
