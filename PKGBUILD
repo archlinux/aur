@@ -5,9 +5,9 @@
 
 _pkgname=qmk
 pkgname=qmk-lite
-pkgver=1.1.2
+pkgver=1.1.5
 _qmk_udev_pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI tool for customizing supported mechanical keyboards - device-specific dependencies set as optional"
 arch=('any')
 url="https://github.com/qmk/qmk_cli"
@@ -15,7 +15,7 @@ license=('MIT')
 depends=('python-appdirs' 'python-argcomplete' 'python-colorama'
          'python-milc' 'python-dotty-dict' 'python-jsonschema' 'git' 
          'python-hjson' 'python-pygments'
-         'python-hid' 'python-pyusb')
+         'python-hid' 'python-pyusb' 'python-pyserial' 'python-pillow')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=('gcc'
             'libffi'
@@ -38,7 +38,7 @@ provides=('qmk')
 conflicts=('qmk')
 source=("https://files.pythonhosted.org/packages/source/q/qmk/qmk-${pkgver}.tar.gz"
         "qmk-udev-${_qmk_udev_pkgver}.tar.gz::https://github.com/qmk/qmk_udev/archive/refs/tags/v${_qmk_udev_pkgver}.tar.gz")
-sha256sums=('f871f88f1a0ca31ba31a009d716417e46bc538a4f8df8ede6a801c9076c22998'
+sha256sums=('2efe3c752230c6ba24b8719c3b6e85a5644bf8f7d0dd237757eda9b7b7e60b11'
             'e6cde001890e1d030d13bbe18799b76754aaea8a6d1309ce8c7956d713714920')
 
 build() {
