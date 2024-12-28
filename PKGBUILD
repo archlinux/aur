@@ -1,15 +1,15 @@
 # Maintainer: William Huang <wp /at/ nerde /dot/ pw>
 
 pkgname=ttc-genwan
-pkgver=1.501
+pkgver=2.100
 pkgrel=1
 pkgdesc='Open source Chinese/Japanese fonts based on Adobe Source Han.'
 arch=('any')
 url='https://github.com/ButTaiwan/genwan-font'
 license=('OFL')
 
-source=('https://github.com/ButTaiwan/genwan-font/releases/download/v1.501/GenWanMin.zip')
-b2sums=('c73816097282165a057af7c83142b562e0b938eaa87d792f07b722f74682c106ede1baa1069c2d633c1e427a572efd1a58b055fc91af18caedecd92dc40a6bde')
+source=('https://github.com/ButTaiwan/genwan-font/releases/download/v2.100/GenWanMin2-ttc.zip')
+b2sums=('9c6f2e6be1aee63a2c79edb59d4d6137f5ea1f81356a1d2166aea967eb696a5099f2f35553b32c287abb4f1929a08aacf5863c73a9ea1198f30f441a496019d6')
 
 package() {
 	cd "$srcdir"
