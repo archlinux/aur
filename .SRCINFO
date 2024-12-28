@@ -1,6 +1,6 @@
 pkgbase = mts-link
 	pkgdesc = MTS Link desktop application based on Electron and React
-	pkgver = 1.2.7
+	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://mts-link.ru
 	changelog = mts-link.changelog
@@ -17,9 +17,9 @@ pkgbase = mts-link
 	depends = nss
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3: Systray indicator support
-	source = https://apps.webinar.ru/desktop/mts-link-1.2.7.tar.gz
+	source = https://apps.webinar.ru/desktop/mts-link-1.2.8.tar.gz
 	source = mts-link.desktop
-	sha256sums = 354201da04e1db1ce7ef5e5cbc3e3e057503ab403ca5b034f53119bf53bd8c91
+	sha256sums = 6fd1928c1465a80563bb1b3b1e0c75567c4da35ae7cef12ad0a2f67e2b402e54
 	sha256sums = 39ed5a6cd08c729bfd10140bb5a9c8e3e469553915c97b6de8f6078c4ea59cb0
 
 pkgname = mts-link
