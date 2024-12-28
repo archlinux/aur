@@ -4,7 +4,7 @@
 pkgname=release-tag
 _pkgname=tag
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Automatically create semantic version git tags.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/jmelahman/tag'
@@ -28,6 +28,8 @@ build() {
 
 package() {
   cd "${_pkgname}" || exit
+
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm755 "${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
 }
