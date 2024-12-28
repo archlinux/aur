@@ -16,11 +16,10 @@ _cachy_config=${_cachy_config-}
 # 'bore' - select 'Burst-Oriented Response Enhancer'
 # 'bmq' - select 'BMQ Scheduler'
 # 'hardened' - select 'BORE Scheduler hardened' ## kernel with hardened config and hardening patches with the bore scheduler
-# 'cachyos' - select 'Sched-Ext Scheduler Framework Variant Scheduler with BORE Scheduler'
+# 'cachyos' - select 'CachyOS Default Scheduler (BORE)'
 # 'eevdf' - select 'EEVDF Scheduler'
 # 'rt' - select EEVDF, but includes a series of realtime patches
 # 'rt-bore' - select Burst-Oriented Response Enhancer, but includes a series of realtime patches
-# 'sched-ext' - select 'sched-ext' Scheduler, based on EEVDF
 _cpusched=${_cpusched-eevdf}
 
 ### Tweak kernel options prior to a build via nconfig
@@ -51,6 +50,9 @@ _NUMAdisable=${_NUMAdisable-}
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=${_localmodcfg-}
 
+# Path to the list of used modules
+_localmodcfg_path=${_localmodcfg_path-"$HOME/.config/modprobed.db"}
+
 # Use the current kernel's .config file
 # Enabling this option will use the .config of the RUNNING kernel rather than
 # the ARCH defaults. Useful when the package gets updated and you already went
@@ -61,18 +63,11 @@ _use_current=${_use_current-}
 ### Enable KBUILD_CFLAGS -O3
 _cc_harder=${_cc_harder-y}
 
-### Enable KBUILD_CFLAGS -Os
-## DO NOT SET, THIS IS FOR INTERNAL CI USE ONLY.
-_cc_size=${_cc_size-}
-
-### Set this to your number of threads you have in your machine otherwise it will default to 320
-_nr_cpus=${_nr_cpus-}
-
 ### Set performance governor as default
 _per_gov=${_per_gov-}
 
 ### Enable TCP_CONG_BBR3
-_tcp_bbr3=${_tcp_bbr3-y}
+_tcp_bbr3=${_tcp_bbr3-}
 
 ### Running with a 1000HZ, 750Hz, 625Hz, 600 Hz, 500Hz, 300Hz, 250Hz and 100Hz tick rate
 _HZ_ticks=${_HZ_ticks-300}
@@ -81,7 +76,7 @@ _HZ_ticks=${_HZ_ticks-300}
 ### Full tickless can give higher performances in various cases but, depending on hardware, lower consistency.
 _tickrate=${_tickrate-idle}
 
-## Choose between full(low-latency), voluntary or server
+## Choose between full(low-latency), voluntary, server
 _preempt=${_preempt-server}
 
 ### Transparent Hugepages
@@ -119,6 +114,10 @@ _use_llvm_lto=${_use_llvm_lto-none}
 # https://github.com/CachyOS/linux-cachyos/issues/36
 _use_lto_suffix=${_use_lto_suffix-y}
 
+# Use suffix -gcc when requested by the user
+# This was added to facilitate https://github.com/CachyOS/linux-cachyos/issues/286
+_use_gcc_suffix=${_use_gcc_suffix-}
+
 # KCFI is a proposed forward-edge control-flow integrity scheme for
 # Clang, which is more suitable for kernel use than the existing CFI
 # scheme used by CONFIG_CFI_CLANG. kCFI doesn't require LTO, doesn't
@@ -143,26 +142,33 @@ _build_nvidia_open=${_build_nvidia_open-}
 # Build a debug package with non-stripped vmlinux
 _build_debug=${_build_debug-}
 
-if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ "$_use_lto_suffix" = "y"  ]; then
-    _pkgsuffix=cachyos-server-lto
-    pkgbase="linux-$_pkgsuffix"
+# ATTENTION: Do not modify after this line
+_is_lto_kernel() {
+    [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]]
+    return $?
+}
 
-elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
-    _pkgsuffix=cachyos-server
-    pkgbase="linux-$_pkgsuffix"
+if _is_lto_kernel && [ "$_use_lto_suffix" = "y"  ]; then
+    _pkgsuffix="cachyos-server-lto"
+elif ! _is_lto_kernel && [ "$_use_gcc_suffix" = "y" ]; then
+    _pkgsuffix="cachyos-server-gcc"
+else
+    _pkgsuffix="cachyos-server"
 fi
-_major=6.11
-_minor=0
+
+pkgbase="linux-$_pkgsuffix"
+_major=6.12
+_minor=7
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-#_stable=${_major}.${_minor}
-_stable=${_major}
+_stable=${_major}.${_minor}
+#_stable=${_major}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux EEVDF scheduler Kernel by CachyOS targeted for Servers workloads'
-pkgrel=5
+pkgrel=1
 _kernver="$pkgver-$pkgrel"
 _kernuname="${pkgver}-${_pkgsuffix}"
 arch=('x86_64')
@@ -183,7 +189,7 @@ makedepends=(
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=560.35.03
+_nv_ver=565.77
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="open-gpu-kernel-modules-${_nv_ver}"
 source=(
@@ -193,7 +199,7 @@ source=(
     "${_patchsource}/all/0001-cachyos-base-all.patch")
 
 # LLVM makedepends
-if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_kcfi" ]; then
+if _is_lto_kernel; then
     makedepends+=(clang llvm lld)
     source+=("${_patchsource}/misc/dkms-clang.patch")
     BUILD_FLAGS=(
@@ -212,14 +218,13 @@ fi
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=baa50314567afd986a00838f0fa65fdacbd12daf")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=e65f69e41f4a276d7d0d1800a2878308a0ba84a6")
 fi
 
 # NVIDIA pre-build module support
 if [ -n "$_build_nvidia" ]; then
     source+=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${_nv_ver}/${_nv_pkg}.run"
-             "${_patchsource}/misc/nvidia/0001-Make-modeset-and-fbdev-default-enabled.patch"
-             "${_patchsource}/misc/nvidia/0004-6.11-Add-fix-for-fbdev.patch")
+             "${_patchsource}/misc/nvidia/0001-Make-modeset-and-fbdev-default-enabled.patch")
 fi
 
 if [ -n "$_build_nvidia_open" ]; then
@@ -227,40 +232,29 @@ if [ -n "$_build_nvidia_open" ]; then
              "${_patchsource}/misc/nvidia/0001-Make-modeset-and-fbdev-default-enabled.patch"
              "${_patchsource}/misc/nvidia/0002-Do-not-error-on-unkown-CPU-Type-and-add-Zen5-support.patch"
              "${_patchsource}/misc/nvidia/0003-Add-IBT-Support.patch"
-             "${_patchsource}/misc/nvidia/0004-6.11-Add-fix-for-fbdev.patch"
-             "${_patchsource}/misc/nvidia/0005-6.12-drm_outpull_pill-changed-check.patch")
+             "${_patchsource}/misc/nvidia/0004-silence-event-assert-until-570.patch"
+             "${_patchsource}/misc/nvidia/0005-nvkms-Sanitize-trim-ELD-product-name-strings.patch")
 fi
 
 ## List of CachyOS schedulers
 case "$_cpusched" in
-    cachyos) # CachyOS Scheduler (Sched-ext + BORE + Cachy Sauce)
-        source+=("${_patchsource}/sched/0001-sched-ext.patch"
-                 "${_patchsource}/sched/0001-bore-cachy-ext.patch");;
-    bore) ## BORE Scheduler
-        source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
+    cachyos|bore|rt-bore|hardened) # CachyOS Scheduler (BORE)
+        source+=("${_patchsource}/sched/0001-bore-cachy.patch");;&
     bmq) ## Project C Scheduler
         source+=("${_patchsource}/sched/0001-prjc-cachy.patch");;
-    eevdf) ## 6.12 EEVDF patches
-        source+=("${_patchsource}/sched/0001-eevdf-next.patch");;
+    hardened) ## Hardened Patches
+        source+=("${_patchsource}/misc/0001-hardened.patch");;
     rt) ## EEVDF with RT patches
-        source+=("${_patchsource}/misc/0001-rt.patch"
-                 linux-cachyos-rt.install);;
+        source+=("${_patchsource}/misc/0001-rt.patch");;
     rt-bore) ## RT with BORE Scheduler
-        source+=("${_patchsource}/misc/0001-rt.patch"
-                 "${_patchsource}/sched/0001-bore-cachy-rt.patch"
-                 linux-cachyos-rt.install);;
-    hardened) ## Hardened Patches with BORE Scheduler
-        source+=("${_patchsource}/sched/0001-bore-cachy.patch"
-                 "${_patchsource}/misc/0001-hardened.patch");;
-    sched-ext) ## SCHED-EXT
-        source+=("${_patchsource}/sched/0001-sched-ext.patch");;
+        source+=("${_patchsource}/misc/0001-rt.patch");;
 esac
 
 export KBUILD_BUILD_HOST=cachyos
 export KBUILD_BUILD_USER="$pkgbase"
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
-_die() { error "$@" ; exit; }
+_die() { error "$@" ; exit 1; }
 
 prepare() {
     cd "$_srcname"
@@ -287,16 +281,16 @@ prepare() {
     ### Select CPU optimization
     if [ -n "$_processor_opt" ]; then
         MARCH="${_processor_opt^^}"
-        MARCH2=${MARCH}
 
-        if [[ ! "$MARCH" =~ GENERIC* ]]; then
-            MARCH2="M${MARCH}"
-        else
-            MARCH2="${MARCH/V/CPU}"
+        if [ "$MARCH" != "GENERIC" ]; then
+            if [[ "$MARCH" =~ GENERIC_V[1-4] ]]; then
+                X86_64_LEVEL="${MARCH//GENERIC_V}"
+                scripts/config --set-val X86_64_VERSION "${X86_64_LEVEL}"
+            else
+                scripts/config -k -d CONFIG_GENERIC_CPU
+                scripts/config -k -e "CONFIG_M${MARCH}"
+            fi
         fi
-
-        scripts/config -k -d CONFIG_GENERIC_CPU
-        scripts/config -k -e "CONFIG_${MARCH2}"
     fi
 
     ### Use autooptimization
@@ -314,13 +308,11 @@ prepare() {
     [ -z "$_cpusched" ] && _die "The value is empty. Choose the correct one again."
 
     case "$_cpusched" in
-        cachyos) scripts/config -e SCHED_CLASS_EXT -e SCHED_BORE --set-val MIN_BASE_SLICE_NS 1000000;;
-        bore|hardened) scripts/config -e SCHED_BORE --set-val MIN_BASE_SLICE_NS 1000000;;
+        cachyos|bore|hardened) scripts/config -e SCHED_BORE;;
         bmq) scripts/config -e SCHED_ALT -e SCHED_BMQ;;
         eevdf) ;;
-        rt) scripts/config -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -d PREEMPT_RT -d PREEMPT_DYNAMIC -e PREEMPT_BUILD -e PREEMPT_BUILD_AUTO -e PREEMPT_AUTO;;
-        rt-bore) scripts/config -e SCHED_BORE --set-val MIN_BASE_SLICE_NS 1000000 -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -d PREEMPT_RT -d PREEMPT_DYNAMIC -e PREEMPT_BUILD -e PREEMPT_BUILD_AUTO -e PREEMPT_AUTO;;
-        sched-ext) scripts/config -e SCHED_CLASS_EXT;;
+        rt) scripts/config -d PREEMPT -d PREEMPT_DYNAMIC -e PREEMPT_RT;;
+        rt-bore) scripts/config -e SCHED_BORE -d PREEMPT -d PREEMPT_DYNAMIC -e PREEMPT_RT;;
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
 
@@ -376,17 +368,6 @@ prepare() {
             -d NUMA_BALANCING_DEFAULT_ENABLED
     fi
 
-    ### Setting NR_CPUS
-    if [[ "$_nr_cpus" -ge 2 && "$_nr_cpus" -le 512 ]]; then
-        echo "Setting custom NR_CPUS..."
-        scripts/config --set-val NR_CPUS "$_nr_cpus"
-    elif [ -z "$_nr_cpus" ]; then
-        echo "Setting default NR_CPUS..."
-        scripts/config --set-val NR_CPUS 320
-    else
-        _die "The value '$_nr_cpus' is invalid. Please select a numerical value from 2 to 512..."
-    fi
-
     ### Select performance governor
     if [ -n "$_per_gov" ]; then
         echo "Setting performance governor..."
@@ -413,9 +394,9 @@ prepare() {
         [ -z "$_preempt" ] && _die "The value is empty. Choose the correct one again."
 
         case "$_preempt" in
-            full) scripts/config -e PREEMPT_BUILD -d PREEMPT_NONE -d PREEMPT_VOLUNTARY -e PREEMPT -e PREEMPT_COUNT -e PREEMPTION -e PREEMPT_DYNAMIC;;
-            voluntary) scripts/config -e PREEMPT_BUILD -d PREEMPT_NONE -e PREEMPT_VOLUNTARY -d PREEMPT -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_DYNAMIC;;
-            server) scripts/config -e PREEMPT_NONE_BUILD -e PREEMPT_NONE -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPTION -d PREEMPT_DYNAMIC;;
+            full) scripts/config -e PREEMPT_DYNAMIC -e PREEMPT -d PREEMPT_VOLUNTARY -d PREEMPT_NONE;;
+            voluntary) scripts/config -d PREEMPT_DYNAMIC -e PREEMPT_VOLUNTARY_BUILD -d PREEMPT -e PREEMPT_VOLUNTARY -d PREEMPT_NONE;;
+            server) scripts/config -d PREEMPT_DYNAMIC -e PREEMPT_NONE_BUILD -d PREEMPT -d PREEMPT_VOLUNTARY -e PREEMPT_NONE;;
             *) _die "The value '$_preempt' is invalid. Choose the correct one again.";;
         esac
 
@@ -429,11 +410,20 @@ prepare() {
             -e CC_OPTIMIZE_FOR_PERFORMANCE_O3
     fi
 
-    ### Enable Os
-    if [ -n "$_cc_size" ] && [ -z "$_cc_harder" ]; then
-        echo "Enabling KBUILD_CFLAGS -Os..."
+    ### CI-only stuff
+    if [[ -n "$CI" || -n "$GITHUB_RUN_ID" ]]; then
+        echo "Detected build inside CI"
         scripts/config -d CC_OPTIMIZE_FOR_PERFORMANCE \
-            -e CONFIG_CC_OPTIMIZE_FOR_SIZE
+            -d CC_OPTIMIZE_FOR_PERFORMANCE_O3 \
+            -e CONFIG_CC_OPTIMIZE_FOR_SIZE \
+            -d SLUB_DEBUG \
+            -d PM_DEBUG \
+            -d PM_ADVANCED_DEBUG \
+            -d PM_SLEEP_DEBUG \
+            -d ACPI_DEBUG \
+            -d LATENCYTOP \
+            -d SCHED_DEBUG \
+            -d DEBUG_PREEMPT
     fi
 
     ### Enable bbr3
@@ -479,9 +469,9 @@ prepare() {
     ### Optionally load needed modules for the make localmodconfig
     # See https://aur.archlinux.org/packages/modprobed-db
     if [ -n "$_localmodcfg" ]; then
-        if [ -e "$HOME/.config/modprobed.db" ]; then
+        if [ -e "$_localmodcfg_path" ]; then
             echo "Running Steven Rostedt's make localmodconfig now"
-            make "${BUILD_FLAGS[@]}" LSMOD="$HOME/.config/modprobed.db" localmodconfig
+            make "${BUILD_FLAGS[@]}" LSMOD="${_localmodcfg_path}" localmodconfig
         else
             _die "No modprobed.db data found"
         fi
@@ -520,20 +510,18 @@ prepare() {
 
         # Use fbdev and modeset as default
         patch -Np1 -i "${srcdir}/0001-Make-modeset-and-fbdev-default-enabled.patch" -d "${srcdir}/${_nv_pkg}/kernel"
-        # Fix broken fbdev on 6.11
-        patch -Np2 -i "${srcdir}/0004-6.11-Add-fix-for-fbdev.patch" -d "${srcdir}/${_nv_pkg}/kernel"
     fi
 
     if [ -n "$_build_nvidia_open" ]; then
         patch -Np1 -i "${srcdir}/0001-Make-modeset-and-fbdev-default-enabled.patch" -d "${srcdir}/${_nv_open_pkg}/kernel-open"
-        # Fix for https://bugs.archlinux.org/task/74886
-        patch -Np1 --no-backup-if-mismatch -i "${srcdir}/0003-Add-IBT-Support.patch" -d "${srcdir}/${_nv_open_pkg}"
         # Fix for Zen5 error print in dmesg
         patch -Np1 --no-backup-if-mismatch -i "${srcdir}/0002-Do-not-error-on-unkown-CPU-Type-and-add-Zen5-support.patch" -d "${srcdir}/${_nv_open_pkg}"
-        # Fix broken fbdev on 6.11
-        patch -Np1 --no-backup-if-mismatch -i "${srcdir}/0004-6.11-Add-fix-for-fbdev.patch" -d "${srcdir}/${_nv_open_pkg}"
-        # Fix for 6.12 Module Compilation
-        patch -Np1 --no-backup-if-mismatch -i "${srcdir}/0005-6.12-drm_outpull_pill-changed-check.patch" -d "${srcdir}/${_nv_open_pkg}"
+        # Fix for https://bugs.archlinux.org/task/74886
+        patch -Np1 --no-backup-if-mismatch -i "${srcdir}/0003-Add-IBT-Support.patch" -d "${srcdir}/${_nv_open_pkg}"
+        # Fix for CS2 dmesg spam
+        patch -Np1 --no-backup-if-mismatch -i "${srcdir}/0004-silence-event-assert-until-570.patch" -d "${srcdir}/${_nv_open_pkg}"
+        # Fix for HDMI names
+        patch -Np1 --no-backup-if-mismatch -i "${srcdir}/0005-nvkms-Sanitize-trim-ELD-product-name-strings.patch" -d "${srcdir}/${_nv_open_pkg}"
     fi
 }
 
@@ -584,8 +572,8 @@ _package() {
     optdepends=('wireless-regdb: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig'
-                'uksmd: Userspace KSM helper daemon')
-    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE UKSMD-BUILTIN)
+                'scx-scheds: to use sched-ext schedulers')
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE UKSMD-BUILTIN NTSYNC-MODULE)
 
     cd "$_srcname"
 
@@ -600,7 +588,7 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    ZSTD_CLEVEL=19 make "${BUILD_FLAGS[@]}" INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
         DEPMOD=/doesnt/exist  modules_install  # Suppress depmod
 
     # remove build links
@@ -713,7 +701,7 @@ _package-zfs(){
     cd "${srcdir}/zfs"
     install -dm755 "${modulesdir}"
     install -m644 module/*.ko "${modulesdir}"
-    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
+    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 -T0 {} +
     #  sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${pkgver}-${pkgbase}'/" "$startdir/zfs.install"
 }
 
@@ -731,7 +719,7 @@ _package-nvidia(){
     install -dm755 "${modulesdir}"
     install -m644 kernel/*.ko "${modulesdir}"
     install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 LICENSE
-    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
+    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 -T0 {} +
 }
 
 _package-nvidia-open(){
@@ -749,7 +737,7 @@ _package-nvidia-open(){
     install -m644 kernel-open/*.ko "${modulesdir}"
     install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 COPYING
 
-    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
+    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 -T0 {} +
 }
 
 pkgname=("$pkgbase")
@@ -765,8 +753,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('e7750c0878d71a56a0ce52d4c4c912199dad5bf5e2e8f872585a6494afbb37cbd852e612a6858936d2dc9b7776a3933818f540db408d57e90d18ea5249bba7ab'
-        'b338ac759eaa3ff4c3fd34bea73fd4dbca1513d35b5a9e44cff1ac8ecb6d29f3db81e85a529fe854a20bc92aff19d215e578a47180242c9951879dd40f79e329'
-        'b1e964389424d43c398a76e7cee16a643ac027722b91fe59022afacb19956db5856b2808ca0dd484f6d0dfc170482982678d7a9a00779d98cd62d5105200a667'
-        '9eb3b415c780a04ceb820531acbf0994df0f626af1f3a3186845e178d39602d132b09668ea2073a11d20abf394f2e479d765b3de06afca3ce22a99738d5c7f32'
-        'b80a343bc571f5f842d3390c8754bbf2b98c8f74beae2e7834a84d91c30d706bf3bf7a719414603b8b2218b2166ce9687d1d5bb36824cc9488d257a853372c5e')
+b2sums=('ddf10abdcc50c077495050bd695b1e6f2547955c8f6a07a689e38a35c205ccc97849a1270be844eb30d07f396eb9af2f3ea8b4ad0c383711785456cc910d4554'
+        'a2747236876de1e02c7bde58be26b18656e619c8271402827c2e62df694d32798fb02f2217590a16ea9ab310fb602331913a5e109534a5ce2afc76603a3fc144'
+        '390c7b80608e9017f752b18660cc18ad1ec69f0aab41a2edfcfc26621dcccf5c7051c9d233d9bdf1df63d5f1589549ee0ba3a30e43148509d27dafa9102c19ab'
+        'eca1dfac5ed04a654ce1eca196eefa38416ec2ebd281fb366cf87143e769b2794d94d6932ba9ebe155aabe034b32346eec819fee3bdce1b518d8c6dc27f0924c')
