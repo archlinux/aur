@@ -8,8 +8,8 @@ url="https://github.com/enderfoxbg/bsky"
 license=('GPL3')
 depends=('gtk3' 'nss' 'libxss')
 makedepends=('npm' 'nodejs' 'git')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1aea60e41a12e2458e32ceac7ec96d49b355895a7c3e21108e8b2f14b32267b2')
+source=("bsky-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 build() {
     cd "bsky-$pkgver"
