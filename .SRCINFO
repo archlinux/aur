@@ -1,15 +1,13 @@
 pkgbase = sandbar-git
 	pkgdesc = dwm-like bar for the river wayland compositor
-	pkgver = v0.1.r13.aa3f203
+	pkgver = v0.1.r17.e64a8b7
 	pkgrel = 1
 	url = https://github.com/kolunmi/sandbar
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	depends = wayland
 	depends = pixman
 	depends = fcft
-	depends = tllist
 	provides = sandbar
 	conflicts = sandbar
 	source = sandbar::git+https://github.com/kolunmi/sandbar.git
