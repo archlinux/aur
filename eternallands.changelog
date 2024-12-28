@@ -1,3 +1,10 @@
+2024-12-28 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD:
+	Added implicitly satisfied dependencies to the depends array
+	Exported compilation flags to CMake
+	Fixed SPDX custom license identifier
+
 2021-12-24 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD:

@@ -5,21 +5,21 @@
 # Maintainer: Angelo Theodorou <encelo@users.sourceforge.net>
 
 pkgname=eternallands
-pkgver=1.9.6.1
-_version=${pkgver}
-_dataversion=${pkgver}
-pkgrel=1
+pkgver=1.9.7.0
+_version="${pkgver}-4"
+_dataversion=1.9.7
+pkgrel=0
 pkgdesc="A free 3D MMORPG game with thousands of on-line players"
 arch=('i686' 'x86_64')
-license=('custom')
+license=('LicenseRef-EternalLands')
 url="http://www.eternal-lands.com/"
-depends=('sdl2_net' 'sdl2_image' 'sdl2_ttf' 'openal' 'cal3d' 'libvorbis' 'glu' 'openssl')
+depends=('sdl2_net' 'sdl2_image' 'sdl2_ttf' 'openal' 'cal3d' 'libvorbis' 'glu' 'openssl' 'libpng' 'sdl2' 'glibc' 'gcc-libs' 'libglvnd' 'libxml2' 'libx11' 'zlib' 'bash')
 makedepends=('unzip' 'cmake')
 optdepends=('zenity: to use the launch script' 'kdialog: to use the launch script')
 options=('!emptydirs')
 changelog=eternallands.changelog
-source=("https://github.com/raduprv/Eternal-Lands/archive/refs/tags/${_version}.tar.gz" "https://github.com/raduprv/Eternal-Lands/releases/download/${_dataversion}/eternallands-data_${_dataversion}.zip")
-md5sums=('55d17ee3950b1d6ac966f32af28f70b6' 'f55207a3bb74c444eac1d6c186117629')
+source=("https://github.com/raduprv/Eternal-Lands/archive/refs/tags/${_version}.tar.gz" "https://github.com/raduprv/Eternal-Lands/releases/download/${_version}/eternallands-data_${_dataversion}.zip")
+md5sums=('95b896f1e4dbb1b692fbde634954bc34' 'fb57fcca852b2d649762f87db316e5ec')
 
 build()
 {
@@ -29,7 +29,7 @@ build()
   sed -i "s|/usr/share/games/EternalLands/|/usr/share/eternallands/|" pkgfiles/eternallands
   sed -i "s|#data_dir = /usr/share/games/EternalLands|#data_dir = /usr/share/eternallands|" pkgfiles/eternallands
   sed -i "s|#data_dir = \\\/usr\\\/share\\\/games\\\/EternalLands|#data_dir = \\\/usr\\\/share\\\/eternallands|" pkgfiles/eternallands
-  cmake -B build -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=${pkgdir}/usr/ -D LOCAL_NLOHMANN_JSON=On
+  cmake -B build -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=${pkgdir}/usr/ -D LOCAL_NLOHMANN_JSON=On -D EXTRA_C_FLAGS="${CFLAGS}" -D EXTRA_CXX_FLAGS="${CXXFLAGS}" -D EXTRA_LD_FLAGS="${LDFLAGS}"
   make -C build
 }
 
