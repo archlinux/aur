@@ -5,6 +5,7 @@ pkgver=0.7.10
 pkgrel=1
 provides=("icy_term")
 pkgdesc="IcyTERM is a BBS terminal program with allows you to connect to BBSes"
+groups=("icy_tools-bin")
 arch=('x86_64')
 url="https://github.com/mkrueger/icy_tools"
 license=('Apache-2.0')
