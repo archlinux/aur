@@ -1,0 +1,4 @@
+[superhighway84-bin]
+source = "git"
+git = "https://github.com/mrusme/superhighway84.git"
+prefix = "v"
