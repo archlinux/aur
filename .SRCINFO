@@ -1,0 +1,24 @@
+pkgbase = python-kmedoids
+	pkgdesc = Fast K-Medoids clustering in Python with FasterPAM
+	pkgver = 0.5.3.1
+	pkgrel = 1
+	url = https://github.com/kno10/python-kmedoids
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = maturin
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = python-installer
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-pytest
+	depends = python
+	depends = python-numpy
+	depends = python-scikit-learn
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = kmedoids::git+https://github.com/kno10/python-kmedoids.git#tag=v0.5.3.1
+	sha256sums = fbf38b61f29f628fba3ecc915ad339cdb3364706ae54ead61f1a7face6a2d58d
+
+pkgname = python-kmedoids
