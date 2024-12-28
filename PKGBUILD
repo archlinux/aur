@@ -3,15 +3,15 @@
 pkgname=python-httpfile
 _name=${pkgname//-/_}
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python httpfile."
 arch=('any')
-url="https://pypi.org/project/${_name}"
+url="https://pypi.org/project/${pkgname}"
 license=(MIT)
 groups=()
-provides=(${_name} ${pkgname})
-conflicts=(${_name} ${pkgname})
+provides=(${pkgname})
+conflicts=(${pkgname})
 depends=(
     python
     python-poetry
@@ -33,6 +33,7 @@ sha256sums=('2181043a0bc306039efedb81a0bea44d4cc769b63e4f4baf945f79797da735af')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 
