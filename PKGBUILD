@@ -5,7 +5,7 @@
 # Contributor: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=syncterm-git
-pkgver=1.2rc1.r776.g7737648
+pkgver=1.4
 pkgrel=1
 pkgdesc="A BBS terminal program, supporting ANSI music and IBM charset."
 url="https://gitlab.synchro.net/main/sbbs"
