@@ -1,0 +1,22 @@
+pkgbase = python-cachedict
+	pkgdesc = Python cache dict.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://pypi.org/project/cachedict
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-undefined
+	provides = python-cachedict
+	conflicts = python-cachedict
+	options = !strip
+	options = !debug
+	source = cachedict-0.0.2.tar.gz::https://files.pythonhosted.org/packages/source/c/cachedict/cachedict-0.0.2.tar.gz
+	sha256sums = bf8df9a2963e0d5890ee49c00028fcdbd41084ff7fad552fff86a373a0f5b9ae
+
+pkgname = python-cachedict
