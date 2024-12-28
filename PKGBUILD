@@ -1,22 +1,25 @@
+# Maintainer: Astro Benzene <universebenzene at sina dot com>
+# Maintainer: Stefan Husmann <stefan-husmann at t-online dot de>
 # Contributor: kusakata <shohei atmark kusakata period com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=formiko
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="reStructuredText editor and live previewer"
 url="https://github.com/ondratu/formiko"
-license=('BSD')
+license=('BSD-3-Clause')
 arch=('any')
-depends=('gobject-introspection-runtime' 'gtk3' 'gtksourceview3' 'gtkspell3' \
-	 'hicolor-icon-theme' 'python' 'python-docutils' 'python-gobject' 'webkit2gtk')
-optdepends=('python-recommonmark: for Common Mark support (MarkDown)')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ondratu/formiko/archive/${pkgver}.tar.gz")
-sha256sums=('993e0dfdf9cba1a0c9d75da4926f7df9664823885c873f7f5bb4b5bd4e9a7711')
+makedepends=('python-setuptools')
+depends=('gobject-introspection-runtime' 'gtk3' 'gtksourceview4' 'gtkspell3'
+         'hicolor-icon-theme' 'python' 'python-docutils' 'python-gobject' 'webkit2gtk-4.1')
+optdepends=('python-recommonmark: for Common Mark support (MarkDown)'
+            'python-pygments: for syntax color in html output code blocks')
+#source=("$pkgname-$pkgver.tar.gz::https://github.com/ondratu/formiko/archive/${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('2d0fd315cc9e1ef9c113a752a3e618dc27d2127227c199323d4002ecf3c04622')
 
 package() {
-  cd $pkgname-$pkgver 
-  python setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/${pkgname}/COPYING
+    cd ${srcdir}/${pkgname}-${pkgver}
+    python setup.py install --root="${pkgdir}/" --optimize=1
+    install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING
 }
-
