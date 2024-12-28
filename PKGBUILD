@@ -10,7 +10,7 @@
 _pkgname=hyprland
 pkgname=$_pkgname-hidpi-xprop-git
 pkgver=0.46.0.r40.c600e1aa
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyprland is an independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/hyprwm/Hyprland"
@@ -19,7 +19,6 @@ depends=(
   aquamarine-git
   cairo
   gcc-libs
-  glaze
   glib2
   glibc
   glslang
@@ -63,6 +62,7 @@ depends=(
 makedepends=(
   cmake
   git
+  glaze
   hyprwayland-scanner-git
   #patch
   #pkgconf
