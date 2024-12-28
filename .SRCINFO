@@ -1,0 +1,22 @@
+pkgbase = python-path-predicate
+	pkgdesc = Python path predication.
+	pkgver = 0.0.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/path_predicate
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-ignore-pattern
+	provides = python-path-predicate
+	conflicts = python-path-predicate
+	options = !strip
+	options = !debug
+	source = path_predicate-0.0.1.1.tar.gz::https://files.pythonhosted.org/packages/source/p/path_predicate/path_predicate-0.0.1.1.tar.gz
+	sha256sums = 3c817fb8abe53c3a95c28b5187cd482c8bf7bb9c0654d77e7d7209f98ef7c590
+
+pkgname = python-path-predicate
