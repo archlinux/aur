@@ -2,9 +2,9 @@
 
 pkgname=tiny-json-git
 pkgver=r82.025cdde
-pkgrel=1
+pkgrel=2
 pkgdesc="The tiny-json is a versatile and easy to use json parser in C suitable for embedded systems. It is fast, robust and portable. "
-arch=($CARCH)
+arch=(any)
 url="https://github.com/rafagafe/tiny-json"
 license=('MIT')
 provides=(${pkgname%-git})
@@ -41,6 +41,6 @@ check() {
 }
 
 package() {
-    install -Dm0644 "${srcdir}/${pkgname}/${pkgname%-git}.c" -t "${pkgdir}/usr/lib/${pkgname%-git}/"
-    install -Dm0644 "${srcdir}/${pkgname}/${pkgname%-git}.h" -t "${pkgdir}/usr/lib/${pkgname%-git}/"
+    install -Dm0644 "${srcdir}/${pkgname}/${pkgname%-git}.c" -t "${pkgdir}/usr/include/${pkgname%-git}/"
+    install -Dm0644 "${srcdir}/${pkgname}/${pkgname%-git}.h" -t "${pkgdir}/usr/include/${pkgname%-git}/"
 }
