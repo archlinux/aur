@@ -1,0 +1,25 @@
+pkgbase = python-dupan
+	pkgdesc = Python wrapper for baidu webdisk <https://pan.baidu.com>.
+	pkgver = 0.0.1.3.8
+	pkgrel = 1
+	url = https://pypi.org/project/python-dupan
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-lxml
+	depends = python-qrcode
+	depends = python-requests
+	depends = python-ddddocr
+	provides = python-dupan
+	conflicts = python-dupan
+	options = !strip
+	options = !debug
+	source = python_dupan-0.0.1.3.8.tar.gz::https://files.pythonhosted.org/packages/source/p/python_dupan/python_dupan-0.0.1.3.8.tar.gz
+	sha256sums = a9790fbdac2182a4c834eb663019089fc4995b5b1a109cd65cd8c2a265edfd90
+
+pkgname = python-dupan
