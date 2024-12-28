@@ -3,11 +3,11 @@
 pkgname='linux-firmware-gaokun3'
 _tag=200.0.10.0
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Firmware files for HUAWEI MateBook E Go (sc8280xp)'
 license=('custom')
 arch=('any')
-makedepends=('cabextract')
+makedepends=('libarchive')
 options=(
     !debug
     !strip
@@ -22,11 +22,14 @@ sha256sums=(
     'ee911c748deadc0191af50074b26ad177c8a2e78ff00e9578504b71d5d27b08a'
 )
 
-_gpu='qcdx8280.cab'
-_adsp='qcsubsys_ext_adsp8280.cab'
-_cdsp='qcsubsys_ext_cdsp8280.cab'
-_sdsp='qcsubsys_ext_scss8280.cab'
 _dir='/usr/lib/firmware/qcom/sc8280xp/HUAWEI/gaokun3'
+
+_archive_list=(
+'qcdx8280.cab' # gpu
+'qcsubsys_ext_adsp8280.cab' # adsp
+'qcsubsys_ext_cdsp8280.cab' # cdsp
+'qcsubsys_ext_scss8280.cab' # sdsp/slpi
+)
 
 _file_list=(
 'adspr.jsn'
@@ -43,7 +46,10 @@ _file_list=(
 
 prepare() {
     cd "${srcdir}"
-    cabextract ${_gpu} ${_adsp} ${_cdsp} ${_sdsp}
+
+    for item in "${_archive_list[@]}"; do
+        bsdtar -xf ${item}
+    done
 }
 
 package() {
@@ -52,7 +58,7 @@ package() {
     cd "${pkgdir}/${_dir}/../.."
     ln -s 'HUAWEI/gaokun3/audioreach-tplg.bin' 'SC8280XP-HUAWEI-MATEBOOKEGO-tplg.bin'
 
-    cd "${srcdir}/${_ver}"
+    cd "${srcdir}"
     for item in "${_file_list[@]}"; do
         install -Dm644 "${item}" -t "${pkgdir}/${_dir}"
     done
