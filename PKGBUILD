@@ -9,6 +9,7 @@ pkgdesc="Detects and extracts metadata and text from over a thousand different f
 arch=('any')
 url="https://${pkgname}.apache.org"
 license=('Apache-2.0')
+backup=("etc/default/${pkgname}")
 depends=('java-runtime-headless')
 source=("${pkgname}-${pkgver}.jar::https://dlcdn.apache.org/tika/${pkgver}/${pkgname}-standard-${pkgver}.jar"
         "${pkgname}.env"

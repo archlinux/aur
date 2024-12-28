@@ -7,6 +7,7 @@ pkgbase = tika-server
 	license = Apache-2.0
 	depends = java-runtime-headless
 	noextract = tika-server-3.0.0.jar
+	backup = etc/default/tika-server
 	source = tika-server-3.0.0.jar::https://dlcdn.apache.org/tika/3.0.0/tika-server-standard-3.0.0.jar
 	source = tika-server.env
 	source = tika-server.service
