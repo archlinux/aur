@@ -2,7 +2,9 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-xformers-bin
 _pkgname=xformers
-pkgver=0.0.28.post3
+_cp='cp312'
+_cu='cu124'
+pkgver=0.0.29
 pkgrel=2
 pkgdesc="Transformers building blocks, supporting a composable construction"
 arch=('x86_64')
@@ -12,8 +14,8 @@ depends=(python python-pytorch python-numpy)
 provides=(python-xformers)
 conflicts=(python-xformers)
 makedepends=(python-installer python-wheel)
-sha256sums=('c550f72bb4e55b67bd847e9272b7f41d27ac82b6b99f35a710a1292f2f218a3a')
-source=("https://files.pythonhosted.org/packages/01/ba/048171c15dfd4f9bff63aaf6e93586ea1ea3e14cc66cd2cea59a50fc2047/xformers-${pkgver}-cp312-cp312-manylinux_2_28_x86_64.whl")
+sha256sums=('9ab3a55cc1c1625ab2210f754442f4c974841d8d9a5b14f06b80168d1aca9a3a')
+source=("https://download.pytorch.org/whl/${_cu}/xformers-${pkgver}-${_cp}-${_cp}-manylinux_2_28_${CARCH}.whl")
 package() {
   python -m installer --destdir="$pkgdir" *.whl
 }
