@@ -2,7 +2,7 @@
 pkgname=python-snakemake-interface-common
 _name=${pkgname#python-}
 pkgver=1.17.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Common functions and classes for Snakemake and its plugins"
 arch=('any')
 url="https://github.com/snakemake/snakemake-interface-common"
