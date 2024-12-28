@@ -3,14 +3,14 @@
 
 _pkgname=gimp
 pkgname=${_pkgname}-devel-noconflict
-_pkgver=3.0.0-RC1
+_pkgver=3.0.0-RC2
 pkgver=${_pkgver/-RC/rc}
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (Development version, doesn't conflict with gimp 2.0)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.gimp.org/"
 license=('GPL' 'LGPL')
-depends=(appstream-glib atk 'babl>=0.1.110' cairo fontconfig freetype2 gdk-pixbuf2 'gegl>=0.4.50' libgexiv2 glib2 glib-networking gtk3 gvfs harfbuzz bzip2 libjpeg xz libmypaint libpng poppler-glib librsvg libtiff lcms2 mypaint-brushes1 pango poppler-data zlib libxmu python-gobject)
+depends=(appstream-glib atk 'babl>=0.1.110' cairo fontconfig freetype2 gdk-pixbuf2 'gegl>=0.4.52' libgexiv2 glib2 glib-networking gtk3 gvfs harfbuzz bzip2 libjpeg xz libmypaint libpng poppler-glib librsvg libtiff lcms2 mypaint-brushes1 pango poppler-data zlib libxmu python-gobject)
 makedepends=(cfitsio iso-codes ghostscript aalib libheif libmng libwebp libwmf libxcursor libxpm openexr openjpeg2 libjxl qoi-headers vala meson gobject-introspection alsa-lib gjs appstream glib2-devel libilbm)
 # 'gutenprint: for sophisticated printing only as gimp has built-in cups print support' # GIMP 2.0 only
 # 'graphviz: "Show Image Graph" in "File > Debug" menu' # Unstable branches only
@@ -34,11 +34,12 @@ optdepends=('alsa-lib: for MIDI event controller module'
             'gdb: Debugger'
             'lldb: Debugger'
             'xdg-utils: Sending email with xdg-email'
-            'gjs: JavaScript scripting support')
+            'gjs: JavaScript scripting support'
+            'xdg-desktop-portal: Screenshot and color-picking on Wayland')
 provides=("${_pkgname}=${pkgver}")
 source=(https://download.gimp.org/pub/gimp/v${_pkgver%.*}/${_pkgname}-${_pkgver}.tar.xz
         linux.gpl)
-sha256sums=('b3d0b264c5e38e789faaf3417003397f3240014c59c7f417f9ca3bd39c5ffb66'
+sha256sums=('f4d2f96df180ce5543f8b2b35707b9bf11459f00f726ca73da2f406d686d9db7'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
 
 prepare() {
