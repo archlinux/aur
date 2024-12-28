@@ -1,0 +1,22 @@
+pkgbase = python-retrytools
+	pkgdesc = Python retry tools.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://pypi.org/project/python-retrytools
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-decotools
+	provides = python-retrytools
+	conflicts = python-retrytools
+	options = !strip
+	options = !debug
+	source = python_retrytools-0.0.2.tar.gz::https://files.pythonhosted.org/packages/source/p/python_retrytools/python_retrytools-0.0.2.tar.gz
+	sha256sums = ba1e271e848bf54b4e2bc62d5130e857511fc3d0d645c85114bc7d3bb987a8e8
+
+pkgname = python-retrytools
