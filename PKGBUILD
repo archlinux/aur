@@ -4,7 +4,7 @@
 
 pkgname=python-fritzconnection-git
 pkgver=1.9.1.r282.g1e200b1
-pkgrel=2
+pkgrel=3
 pkgdesc='Python-Tool to communicate with the AVM Fritz!Box.'
 license=('MIT')
 arch=('any')

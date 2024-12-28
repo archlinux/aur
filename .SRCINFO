@@ -1,7 +1,7 @@
 pkgbase = python-fritzconnection-git
 	pkgdesc = Python-Tool to communicate with the AVM Fritz!Box.
 	pkgver = 1.9.1.r282.g1e200b1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kbr/fritzconnection
 	arch = any
 	license = MIT
