@@ -1,0 +1,4 @@
+[skippy-xd-git]
+source = "git"
+git = "https://github.com/felixfung/skippy-xd.git"
+prefix = "v"
