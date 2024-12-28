@@ -2,8 +2,8 @@
 
 pkgbase=miassistanttool-git
 pkgname=miassistanttool-git
-pkgver=1.1.r17.g79ecedc
-pkgrel=3
+pkgver=1.2.r0.g0912888
+pkgrel=2
 pkgdesc="MiAssistantTool"
 arch=($CARCH)
 url="https://github.com/offici5l/MiAssistantTool"
@@ -15,7 +15,9 @@ replaces=()
 depends=(
     curl
     glibc
-    libusb)
+    libusb
+    openssl
+    tiny-json)
 makedepends=(
     git
 )
@@ -42,7 +44,9 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    gcc -o ${pkgname%-git} main.c libs/*.c -lusb-1.0 -lcurl
+    gcc -o ${pkgname%-git} *.c /usr/include/tiny-json/tiny-json.c \
+        -I/usr/include/openssl -lssl -lcrypto -lcurl \
+        -lusb-1.0 -lcurl
 }
 
 package() {
