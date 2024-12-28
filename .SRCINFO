@@ -1,12 +1,12 @@
 pkgbase = nerd-fonts-sf-mono-ligatures
 	pkgdesc = Monospaced variant of San Francisco. Sourced directly from Apple, patched with the Nerd Fonts Patcher and Fira Code ligatures
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.apple.com/fonts/
 	arch = any
 	license = custom
 	makedepends = git
-	makedepends = p7zip
+	makedepends = 7zip
 	makedepends = python
 	makedepends = fontforge
 	makedepends = parallel

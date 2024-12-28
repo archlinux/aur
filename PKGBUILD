@@ -7,7 +7,7 @@ pkgdesc="Monospaced variant of San Francisco. Sourced directly from Apple, patch
 
 # Nerd font patcher version
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 
 # SF Mono version (extracted from PackageInfo) 
 _fontver=6.0.1.1726709071
@@ -21,7 +21,7 @@ _firaver=6.2
 arch=('any')
 url='https://developer.apple.com/fonts/'
 license=('custom')
-makedepends=('git' 'p7zip' 'python' 'fontforge' 'parallel')
+makedepends=('git' '7zip' 'python' 'fontforge' 'parallel')
 conflicts=('nerd-fonts-sf-mono')
 provides=('nerd-fonts-sf-mono')
 source=("SF-Mono-$_fontver.dmg::https://developer.apple.com/design/downloads/SF-Mono.dmg"
