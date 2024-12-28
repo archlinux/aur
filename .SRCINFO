@@ -1,0 +1,21 @@
+pkgbase = python-sqlitetools
+	pkgdesc = Python sqlite3 tools.
+	pkgver = 0.0.2.1
+	pkgrel = 1
+	url = https://pypi.org/project/sqlitetools
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-sqlitetools
+	conflicts = python-sqlitetools
+	options = !strip
+	options = !debug
+	source = sqlitetools-0.0.2.1.tar.gz::https://files.pythonhosted.org/packages/source/s/sqlitetools/sqlitetools-0.0.2.1.tar.gz
+	sha256sums = 5052ed29a5989ac41b777431caf31d66f1cb5f5b7b9c56ffaaf45be4b3710089
+
+pkgname = python-sqlitetools
