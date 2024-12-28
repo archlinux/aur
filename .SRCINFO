@@ -1,0 +1,11 @@
+pkgbase = dora-ssr
+	pkgdesc = A game engine for rapid development across devices, featuring a built-in Web IDE with intuitive toolchain.
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/IppClub/Dora-SSR
+	arch = x86_64
+	license = MIT
+	source = dora.zip::https://github.com/limuy2022/Dora-SSR/releases/download/1.6.2/dora-ssr-archlinux.zip
+	sha256sums = 66c57b9d7a7e88d08f798be3cc57eda3521d56ab040849c31784513764dc9b34
+
+pkgname = dora-ssr
