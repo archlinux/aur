@@ -19,6 +19,12 @@ check() {
   PYTHONPATH=src py.test
 }
 
+prepare() {
+    cd $srcdir/$_pkgname-$pkgver
+    # Setuptools 75 seems to work fine
+    sed -i 's/setuptools<74/setuptools/g' pyproject.toml
+}
+
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
   python -m build --wheel --no-isolation
