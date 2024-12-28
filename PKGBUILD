@@ -2,7 +2,7 @@
 # Contributor: Tristelune <tristelune@archlinux.info>
 
 pkgname=upplay
-pkgver=1.7.9
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Qt5 based UPnP audio Control point"
 url="https://www.lesbonscomptes.com/upplay/"
@@ -12,7 +12,7 @@ depends=(libupnpp qt6-base qt6-webchannel qt6-webengine jsoncpp glibc gcc-libs h
          libupnpp.so)
 makedepends=(qt6-tools)
 source=("https://www.lesbonscomptes.com/upplay/downloads/upplay-$pkgver.tar.gz")
-sha256sums=('3ffb6622ad58c13952961ed6f9018ad6448b5f0c21462fda91c67fa2c9b0ef45')
+sha256sums=('68e1aa1f458a67abceabc0b26fcace34f99ebabb9b346c92f946222431a93c8b')
 
 build(){
   cd "upplay-${pkgver}"
