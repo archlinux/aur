@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=hoarder-cli
-pkgver=0.13.7
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Command Line Interface (CLI) for Hoarder"
 arch=("any")
@@ -10,7 +10,7 @@ license=('AGPL-3.0-or-later')
 depends=("nodejs")
 makedepends=("npm")
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/@hoarderapp/cli/-/cli-${pkgver}.tgz")
-sha256sums=('e55ab8fcd8083472d09970fb8bed52c5e7cb75bbdada10c3041fdc87360194dd')
+sha256sums=('1ca03658f904006565eca565a156b5ef48c75787095ca1d6b22b305d38f3d818')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
