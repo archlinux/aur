@@ -1,7 +1,7 @@
 pkgbase = python-posixpatht
 	pkgdesc = Another posixpath module, supports names that contain backslashes.
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 4
 	url = https://pypi.org/project/posixpatht
 	arch = any
 	license = MIT

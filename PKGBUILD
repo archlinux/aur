@@ -3,7 +3,7 @@
 pkgname=python-posixpatht
 _name=${pkgname#python-}
 pkgver=0.0.4
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="Another posixpath module, supports names that contain backslashes."
 arch=('any')
@@ -28,6 +28,7 @@ sha256sums=('adb5c1a41e0eecee4317b1032737f7d4c19e5093abfd856a95b4732ff613fb08')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 
