@@ -1,0 +1,13 @@
+pkgbase = libtermgl
+	pkgdesc = 2D & 3D graphics engine in the terminal
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/wojciech-graj/TermGL
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = libtermgl.so
+	source = TermGL-1.5.0.tar.gz::https://github.com/wojciech-graj/TermGL/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = f5f27aac5b275fad396162fe67e54be6b0dea6a8ad9224e434f3fbd7e8d8b10e
+
+pkgname = libtermgl
