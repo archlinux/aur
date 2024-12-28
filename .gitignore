@@ -1,6 +1,6 @@
-*.xz
 *.tar.gz
 *.tar.zst
-/src
-/pkg
 /*.log
+/pkg
+/src
+/storj

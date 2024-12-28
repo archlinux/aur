@@ -1,12 +1,13 @@
 pkgbase = storj-uplink
 	pkgdesc = Storj Tardigrade Uplink
-	pkgver = 1.95.1
+	pkgver = 1.119.8
 	pkgrel = 1
 	url = https://github.com/storj/storj
 	arch = x86_64
 	license = AGPL-3.0
+	makedepends = git
 	makedepends = go
-	source = https://github.com/storj/storj/archive/v1.95.1.tar.gz
-	sha512sums = c08bf794b4b07553f4e7b065a00dfd02dd033b209bdd06bf72c89cff7adeee4a5f49ebc265c1ccab9da1acc309dd8a5bea43cf53ffb2bea3356aa823c6eda2f5
+	source = git+https://github.com/storj/storj.git#tag=v1.119.8
+	sha512sums = b2fdb9ff7160da92e48a9be28f76fba67bf6f01a2fd463f209b2439b741a848cbe239714083400f7f728105454cc7e12ef03b0e05dc09a846193668703881513
 
 pkgname = storj-uplink
