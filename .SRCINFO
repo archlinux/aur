@@ -1,0 +1,21 @@
+pkgbase = python-torrent-tool
+	pkgdesc = torrent tool.
+	pkgver = 0.0.4.3
+	pkgrel = 1
+	url = https://pypi.org/project/torrent_tool
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-torrent-tool
+	conflicts = python-torrent-tool
+	options = !strip
+	options = !debug
+	source = torrent_tool-0.0.4.3.tar.gz::https://files.pythonhosted.org/packages/source/t/torrent_tool/torrent_tool-0.0.4.3.tar.gz
+	sha256sums = 8d15c3495ff03cee6783bab38685088eae17b8a5c98527fb40aef38dca2852f1
+
+pkgname = python-torrent-tool
