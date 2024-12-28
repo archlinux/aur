@@ -1,6 +1,7 @@
 # Maintainer: envolution
+# shellcheck shell=bash disable=SC2034,SC2154
 pkgname=clang17-bin
-pkgver=17.0.6.18
+pkgver=17.0.6.19
 pkgrel=1
 pkgdesc="C, C++ and Objective-C compiler - sourced from Debian sid"
 arch=(x86_64)
@@ -23,17 +24,17 @@ _debver="${pkgver%.*}-${pkgver##*.}"
 source=()
 noextract=()
 
-for package in "${_packages[@]}"; do
-  source+=("${package}-${_debver}.deb::http://deb.debian.org/debian/pool/main/l/llvm-toolchain-17/${package}_${_debver}_amd64.deb")
-  noextract+=("${package}-${_debver}.deb")
+for _package in "${_packages[@]}"; do
+  source+=("${_package}-${_debver}.deb::http://deb.debian.org/debian/pool/main/l/llvm-toolchain-17/${_package}_${_debver}_amd64.deb")
+  noextract+=("${_package}-${_debver}.deb")
 done
 
-sha256sums=('de7aed46e704d46e46ca02ac8ed2f111338993d7c6b02dde23d8621bd3b13900'
-            'ec49ef1945b9b6a2b1fe978544af09705a05036b283036a3aaba01dc12908969'
-            '86f5e4dfc41055ea3c8d5fe5d4c60dbb9512a854ae9caca198f491a05e9590df'
-            'f17e493249e614d5f5db11c60690eefa366f5efbc28d75640a311a570a16ace1'
-            '55f9668899c968e790412f1e0a014ae2d9e8beba7f0611841093859064cbe4dc'
-            '78c11daa6465b688bd27e7d4489cd732352a80ecc27f521e318b7a8d1ab8a328')
+sha256sums=('f06f1dfdfb53e23f0d3da7a69f475eb4431f99b5c477567a3674e28e908c532f'
+            'cbb479691ad9913c3ac908dde2dbef11f7f0035c3d5fd4ad236731327333e0d4'
+            'bcf5d1c7071f6db65086621e1da5dcd9e1e97ebcddfa82e934f1c09d041f83a2'
+            'b1e916d93f3f2286384d86e5ac6f2c04538a91707600aacbc038936f726920ca'
+            '00369b106763c1f95e73ef208b61a4559e2f7d8ca9836fabba6410b267d8b9da'
+            '369f3f9fe220d8dbc6bfaff9231e0eeab192489307fddc3c59185c8599e0684a')
 
 package() {
   for _package in "${_packages[@]}"; do
@@ -46,3 +47,4 @@ package() {
   ln -s /usr/lib/libedit.so "${pkgdir}"/usr/lib/llvm-17/lib/libedit.so.2
   install -Dm644 ${pkgdir}/usr/share/doc/${_packages[0]}/copyright "${pkgdir}"/usr/share/licenses/${_packages[0]}/LICENSE
 }
+# vim:set ts=2 sw=2 et:
