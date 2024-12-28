@@ -1,0 +1,25 @@
+pkgbase = python-guardpost
+	pkgdesc = Framework to handle authentication and authorization.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://pypi.org/project/guardpost
+	arch = any
+	license = MIT
+	makedepends = python-hatchling
+	makedepends = python-typing_extensions
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cryptography
+	depends = python-pyjwt
+	depends = python-rodi
+	provides = python-guardpost
+	conflicts = python-guardpost
+	options = !strip
+	options = !debug
+	source = guardpost-1.0.2.tar.gz::https://files.pythonhosted.org/packages/source/g/guardpost/guardpost-1.0.2.tar.gz
+	sha256sums = 4566616c1bc01c148275ed8d1cd56f7dffeced490c7d8c599c90293308e55c94
+
+pkgname = python-guardpost
