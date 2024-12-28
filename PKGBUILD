@@ -21,7 +21,20 @@ package() {
     cd "bsky-$pkgver"
     install -d "$pkgdir/usr/lib/$pkgname"
     cp -r dist/linux-unpacked/* "$pkgdir/usr/lib/$pkgname/"
-    
+
+    # Create desktop entry
+    install -Dm644 "build/icon.png" "$pkgdir/usr/share/pixmaps/bsky-desktop.png"
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/bsky-desktop.desktop" << END
+[Desktop Entry]
+Name=Bluesky
+Comment=An unofficial desktop client for Bluesky
+Exec=/usr/bin/bsky-desktop
+Icon=bsky-desktop
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;
+END
+
     install -d "$pkgdir/usr/bin"
     ln -s "/usr/lib/$pkgname/bsky" "$pkgdir/usr/bin/bsky-desktop"
 }
