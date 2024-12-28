@@ -1,7 +1,7 @@
 pkgbase = python-path-ignore-pattern
 	pkgdesc = Python path ignore pattern.
 	pkgver = 0.0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/path_ignore_pattern
 	arch = any
 	license = MIT

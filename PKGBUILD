@@ -4,7 +4,7 @@ pkgname=python-path-ignore-pattern
 _name=${pkgname#python-}
 _name=${_name//-/_}
 pkgver=0.0.1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python path ignore pattern."
 arch=('any')
@@ -31,6 +31,7 @@ sha256sums=('5c028be09286bc210a35d250dcd433b068734d5462416879dab45c85ed07313a')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 
