@@ -1,31 +1,22 @@
 # Maintainer: qxb3 <qxbthree@gmail.com>
 # Package: fum
 # Description: A tui-based mpris music client.
-# Version: 0.1.1
+# Version: 0.1.3
 # License: MIT
 # URL: https://github.com/qxb3/fum
 
 pkgname=fum
-pkgver=0.1.1
-pkgrel=1
+pkgver=0.1.3
+pkgrel=2
 pkgdesc="A tui-based mpris music client."
 arch=('x86_64')
 url="https://github.com/qxb3/fum"
 license=('MIT')
 depends=('rust' 'cargo' 'glib2')
 makedepends=('rust' 'cargo' 'git')
-source=("git+https://github.com/qxb3/$pkgname.git#branch=main")
+source=("https://github.com/qxb3/fum/releases/download/v$pkgver/fum-x86-64_v$pkgver")
 sha256sums=('SKIP')
 
-# Build function
-build() {
-  cd "$srcdir/${pkgname}"
-  cargo build --release
-}
-
-# Package function
 package() {
-  cd "$srcdir/${pkgname}"
-  install -Dm755 "target/release/fum" "$pkgdir/usr/bin/fum"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$srcdir/fum-x86-64_v$pkgver" "$pkgdir/usr/bin/fum"
 }
