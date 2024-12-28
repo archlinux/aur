@@ -1,0 +1,5 @@
+[python-foamlib]
+source = "github"
+github = "gerlero/foamlib"
+use_latest_release = "true"
+prefix = "v"
