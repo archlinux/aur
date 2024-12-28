@@ -1,0 +1,21 @@
+pkgbase = python-mask
+	pkgdesc = Python integer mask code.
+	pkgver = 0.0.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/python-mask
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-mask
+	conflicts = python-mask
+	options = !strip
+	options = !debug
+	source = python_mask-0.0.1.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python_mask/python_mask-0.0.1.1.tar.gz
+	sha256sums = 44184e610222450c3a1a3717278081db1e5f0051532801bd3c2da6c375182995
+
+pkgname = python-mask
