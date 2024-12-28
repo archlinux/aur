@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 build() {
     cd "bsky-$pkgver"
     npm install
-    NODE_ENV=production npm run build:linux
+    NODE_ENV=production npm run build:aur
 }
 
 package() {
