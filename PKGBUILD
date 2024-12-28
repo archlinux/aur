@@ -1,7 +1,7 @@
 # Maintainer:  <me@sfxr.de>
 
 pkgname=stack-static
-_pkgver=3.1.1
+_pkgver=3.3.1
 pkgver=${_pkgver}
 pkgrel=1
 _vpref=''
@@ -21,9 +21,10 @@ source=(
   "https://github.com/commercialhaskell/stack/releases/download/${_vpref}v${_pkgver}/stack-${_pkgver}-linux-x86_64.tar.gz"
   "https://github.com/commercialhaskell/stack/releases/download/${_vpref}v${_pkgver}/stack-${_pkgver}-linux-x86_64.tar.gz.asc"
 )
-sha256sums=('d096125ea3d987a55d17f7d4f8599ee2fd96bd2d0f033566e28ddfe248f730f9'
+sha256sums=('88d7e517342c125b0a098d9d578fe53e590618ae4b2427283a27408a1ebd06d8'
             'SKIP')
 validpgpkeys=('C5705533DA4F78D8664B5DC0575159689BEFB442')
+options+=( !debug )
 
 package() {
   cd "${srcdir}"
