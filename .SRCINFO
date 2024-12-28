@@ -1,0 +1,19 @@
+pkgbase = mangal5-git
+	pkgdesc = The most advanced cli manga downloader. (luevano fork / v5 branch)
+	pkgver = 5.11.4.r0.g674ef51
+	pkgrel = 1
+	url = https://github.com/luevano/mangal
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = just
+	makedepends = npm
+	provides = mangal
+	conflicts = mangal
+	conflicts = mangal-bin
+	conflicts = mangal-git
+	source = mangal::git+https://github.com/luevano/mangal.git
+	sha256sums = SKIP
+
+pkgname = mangal5-git

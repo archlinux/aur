@@ -1,0 +1,11 @@
+# built package
+*.pkg.tar*
+
+# fakeroot
+pkg/
+
+# build directory
+src/
+
+# cloned mangal git directory
+mangal/
