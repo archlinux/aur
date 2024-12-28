@@ -1,6 +1,6 @@
 pkgbase = pterodactyl-wings-bin
 	pkgdesc = The server control plane for Pterodactyl Panel - binary package
-	pkgver = 1.11.11
+	pkgver = 1.11.13
 	pkgrel = 1
 	url = https://pterodactyl.io/
 	arch = x86_64
@@ -13,9 +13,12 @@ pkgbase = pterodactyl-wings-bin
 	options = !strip
 	source = pterodactyl-wings.service
 	sha256sums = 62dfff25f9bdae4769f4201ed30e7c2bfca54611bee75512c5626e74c764f46e
-	source_x86_64 = pterodactyl-wings-x86_64::https://github.com/pterodactyl/wings/releases/download/v1.11.11/wings_linux_amd64
-	sha256sums_x86_64 = 320272339ca71c5254d1879f10c2a5d5df9c39cec73dd7385bd96fa93c874b0a
-	source_aarch64 = pterodactyl-wings-x86_64::https://github.com/pterodactyl/wings/releases/download/v1.11.11/wings_linux_arm64
-	sha256sums_aarch64 = 06f5b6eb36a1fbeea18a09ea266fe42f78a4f94eefd93dd18242d7474993196a
+	b2sums = d9afe390fe810ea2b34298d0f53b3fc06033917e35ac1525b1bc905d4835771a6bbbe5383d671576745f4c70b33d5ad08f1ca90d334d0c4a109fda57f76f39c0
+	source_x86_64 = pterodactyl-wings-1.11.13-amd64::https://github.com/pterodactyl/wings/releases/download/v1.11.13/wings_linux_amd64
+	sha256sums_x86_64 = aca5fa45ddf1c10f092c16dd758b920d8a3fa9f91c37aacc62745e72958bf71a
+	b2sums_x86_64 = 79484ba05c61742f867103e11386855ffd8dd8aa707d7d6fa6bcc43f61b02f9ff24522160f8a8a097e16b0c99db7d3dce104f889d388abd199b39d1121862f67
+	source_aarch64 = pterodactyl-wings-1.11.13-arm64::https://github.com/pterodactyl/wings/releases/download/v1.11.13/wings_linux_arm64
+	sha256sums_aarch64 = a3d71e8c67e261fdd287f73dcab98d2a55dbba9ce001794e0006e4ed88fafe6a
+	b2sums_aarch64 = 3f2bf544b584dc8d33314f39c961b2f208697d463e90684319bef1c69e6df6800d05e385432d3de8c9381ceda1c45d6f184e3b25ecc55e28f4a958e538eb21f8
 
 pkgname = pterodactyl-wings-bin
