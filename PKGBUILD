@@ -2,7 +2,7 @@
 pkgname=python-snakemake-interface-storage-plugins
 _name=${pkgname#python-}
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Common functions and classes for Snakemake and its plugins"
 arch=('any')
 url=https://github.com/snakemake/snakemake-interface-storage-plugins
