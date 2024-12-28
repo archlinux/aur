@@ -1,26 +1,19 @@
-# Maintainer: fuero <fuerob@gmail.com>
+# Maintainer: envolution
+# Contributor: fuero <fuerob@gmail.com>
+# shellcheck shell=bash disable=SC2034,SC2154
 pkgname=kwok
-pkgver=0.1.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Kubernetes WithOut Kubelet - set up a cluster of thousands of (fake) nodes in seconds'
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="https://github.com/kubernetes-sigs/${pkgname}"
 license=('Apache')
 makedepends=('go')
 depends=('glibc')
 source=(
-	"${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-	use-goflags.patch
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=(
-        'f8b5d01df09e1b68078c9754bb1922f1e9be3794fd519cd0de615280a0fff84d'
-        '83cb15ccfed8df335747e65626d1159c3937b3445a51e36db28ee6778cbb9f39'
-)
-
-prepare(){
-  cd "${pkgname}-${pkgver}"
-  patch -p1 < ${srcdir}/use-goflags.patch
-}
+sha256sums=('cb43f7574205448a7c89b53201c40db6055f1ceebf011051248f092c893fa1cb')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -28,30 +21,44 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export CGO_LDFLAGS_ALLOW=".*"
-  export CGO_ENABLED=1
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
   make \
-	EXTRA_LDFLAGS="-linkmode=external -w -s -v" \
-	EXT_LDFLAGS="${LDFLAGS}" \
-	VERSION="${pkgver}" \
-	build
+    EXTRA_LDFLAGS="-linkmode=external -w -s -v" \
+    EXT_LDFLAGS="${LDFLAGS}" \
+    VERSION="${pkgver}" \
+    build
 }
 
 check() {
   cd "${pkgname}-${pkgver}"
-  go test ./...
+  make unit-test
 }
 
 package() {
+  declare -A arch_map=(
+    [x86_64]=amd64
+    [i686]=386
+  )
+  export GOARCH=${arch_map[$CARCH]:-}
+
   cd "${pkgname}-${pkgver}"
-  HOST_ARCH="$(uname -m | sed -e "s/x86_64/amd64/" -e "s/i386/386/")"
-  for i in kwok kwokctl
-  do
-	strip "bin/linux/${HOST_ARCH}/${i}"
-  	install -Dm755 "bin/linux/${HOST_ARCH}/${i}" "$pkgdir/usr/bin/${i}"
+  for i in kwok kwokctl; do
+    install -Dm755 "bin/linux/${GOARCH}/${i}" "$pkgdir/usr/bin/${i}"
   done
+
+  install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+
+  install -m644 README.md CONTRIBUTING.md RELEASE.md SECURITY.md \
+    "$pkgdir/usr/share/doc/$pkgname/"
+
+  install -m644 LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/"
+
+  if [ -f "code-of-conduct.md" ]; then
+    install -m644 code-of-conduct.md "$pkgdir/usr/share/doc/$pkgname/"
+  fi
 }
 
-# getver: https://github.com/kubernetes-sigs/kwok/releases
+# vim:set ts=2 sw=2 et:
