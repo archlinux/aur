@@ -10,12 +10,12 @@
 
 pkgname=peazip-qt-bin
 pkgver=10.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PeaZip file manager and archiver (binary release)'
 url='https://github.com/peazip/PeaZip'
 license=('LGPL-3.0-or-later')
 arch=('x86_64')
-depends=('brotli' 'hicolor-icon-theme' 'libx11' 'p7zip' 'qt5pas' 'zstd')
+depends=('7zip' 'brotli' 'hicolor-icon-theme' 'libx11' 'qt5pas' 'zstd')
 options=('!emptydirs')
 optdepends=('arc: Arc file archiver and compressor'
             'paq8o: PAQ8 series of archivers, resurrected by new maintainers'

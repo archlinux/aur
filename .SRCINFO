@@ -1,14 +1,14 @@
 pkgbase = peazip-qt-bin
 	pkgdesc = PeaZip file manager and archiver (binary release)
 	pkgver = 10.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/peazip/PeaZip
 	arch = x86_64
 	license = LGPL-3.0-or-later
+	depends = 7zip
 	depends = brotli
 	depends = hicolor-icon-theme
 	depends = libx11
-	depends = p7zip
 	depends = qt5pas
 	depends = zstd
 	optdepends = arc: Arc file archiver and compressor
