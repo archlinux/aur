@@ -1,5 +1,6 @@
-# Maintainer: Daniel Milde <daniel@milde.cz>
-# Co-Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainer: a821 at (nospam) mail de
+# Contributor: Daniel Milde <daniel@milde.cz>
+# Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 # Modified from extra/python; original contributors:
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
@@ -9,34 +10,30 @@
 
 shopt -s extglob
 
-pkgbase=python-git
-pkgname=(python-git)
-pkgver=3.12.0a0.r114486.91f40f3f78d
+pkgname=python-git
+pkgver=3.14.0a3.r78.gaeb9b65aa26
 pkgrel=1
-_pybasever=3.12
-pkgdesc="Next generation of the python high-level scripting language"
+pkgdesc="The Python programming language"
 arch=('x86_64')
-license=('custom')
+license=('PSF-2.0')
 url="https://www.python.org/"
-depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib')
-makedepends=('tk' 'sqlite' 'valgrind' 'bluez-libs' 'mpdecimal' 'xz' 'git' 'llvm' 'gdb' 'xorg-server-xvfb')
-checkdepends=('ttf-font')
+depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib' 'tzdata' 'mpdecimal')
+makedepends=('tk' 'sqlite' 'bluez-libs' 'git' 'llvm' 'gdb' 'xorg-server-xvfb' 'ttf-font')
 source=("git+https://github.com/python/cpython#branch=main")
 sha512sums=('SKIP')
 
 pkgver() {
   cd cpython
-  printf "%s.r%s.%s" \
-      "$_pybasever.0a0" \
-      "$(git rev-list --count HEAD)" \
-      "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 prepare() {
   cd cpython
 
-  # FS#23997
-  sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
+  # Ensure that we are using the system copy of various libraries (expat, libffi, and libmpdec),
+  # rather than copies shipped in the tarball
+  rm -r Modules/expat
+  rm -r Modules/_decimal/libmpdec
 }
 
 build() {
@@ -67,7 +64,7 @@ build() {
   LC_CTYPE=en_US.UTF-8 xvfb-run -s "-screen 0 1920x1080x16 -ac +extension GLX" -a -n "$servernum" make EXTRA_CFLAGS="$CFLAGS"
 }
 
-package_python-git() {
+package() {
   optdepends=('sqlite'
               'mpdecimal: for decimal'
               'xz: for lzma'
@@ -87,11 +84,10 @@ package_python-git() {
   rm "${pkgdir}/usr/lib/libpython3.so"
   rm "${pkgdir}/usr/share/man/man1/python3.1"
 
+  local _pybasever=$(sed -n 's/^VERSION=//p' configure)
+
   # some useful "stuff" FS#46146
   install -dm755 "${pkgdir}"/usr/lib/python${_pybasever}/Tools/{i18n,scripts}
   install -m755 Tools/i18n/{msgfmt,pygettext}.py "${pkgdir}"/usr/lib/python${_pybasever}/Tools/i18n/
   install -m755 Tools/scripts/{README,*py} "${pkgdir}"/usr/lib/python${_pybasever}/Tools/scripts/
-
-  # License
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
