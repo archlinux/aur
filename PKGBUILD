@@ -4,7 +4,7 @@ pkgbase=mkdocstrings-python
 _pyname=("${pkgbase//-/_}")
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
-pkgver=1.12.2
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="A Python handler for mkdocstrings"
 url="https://mkdocstrings.github.io"
@@ -25,12 +25,15 @@ makedepends=('python-pdm-backend'
 #             'mkdocstrings'
 #             )
 checkdepends=('python-pytest'
+#             'python-pytest-xdist'
               'python-griffe'
               'mkdocstrings'
+              'python-beautifulsoup4'
+              'python-inline-snapshot'
               'mkdocs-material')
 #source=("https://github.com/mkdocstrings/mkdocstrings/archive/refs/tags/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('7a1760941c0b52a2cd87b960a9e21112ffe52e7df9d0b9583d04d47ed2e186f3')
+sha256sums=('2dbd5757e8375b9720e81db16f52f1856bf59905428fd7ef88005d1370e2f64c')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -54,11 +57,11 @@ check() {
 
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_mkdocstrings-python() {
-    depends=('python>=3.8'
+    depends=('python>=3.9'
              'mkdocs-autorefs>=1.2'
              'mkdocstrings>=0.26'
              'python-griffe>=0.49')
