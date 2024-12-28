@@ -2,7 +2,7 @@
 
 pkgname='tremotesf'
 pkgver=2.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Remote GUI for transmission-daemon'
 _github='https://github.com/equeim/tremotesf2'
 url="${_github}"
