@@ -1,7 +1,7 @@
 # Maintainer: grtsinry43 <grtsinry43@outlook.com>
 
 pkgname=bili-liveluckdraw-appimage
-pkgver=1.0.0
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="一个B站直播抽奖工具，通过获取弹幕关键词进行抽奖，使用Electron + React + Vite构建"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=(!strip)
 source_x86_64=("bili-liveluckdraw-${pkgver}.AppImage::https://github.com/grtsinry43/Bili-LiveLuckDraw/releases/download/v${pkgver}/Bili-LiveLuckDraw-Linux-v${pkgver}.AppImage"
               "icon.png::https://github.com/grtsinry43/Bili-LiveLuckDraw/raw/main/public/icon.png")
 noextract=("bili-liveluckdraw-${pkgver}.AppImage")
-sha256sums_x86_64=('1b99eaaaec4b55d392970c75023e6db2e205127f2fb7196d99b22b79751a235d'
+sha256sums_x86_64=('f7c05cc710be318f9baebed6df6d57385a4e20db14333091c81699917e4bf8dc'
                     '5da3f0c0fe4d63683191a14c54bb4117fef51e3d6289a22ef02c98cd8262eaa6'
 )
 
