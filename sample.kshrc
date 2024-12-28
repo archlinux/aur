@@ -7,6 +7,9 @@ set -o emacs -o notify -o globstar
 [[ -o globcasedetect ]] && set -o globcasedetect
 #[[ -o noarrowkeysearch ]] && set -o noarrowkeysearch
 
+# Get the effective user ID now to avoid running id(1) every time $PS1 is printed
+integer euid=$(id -u)
+
 # Specify search path for autoloadable functions
 FPATH=/usr/share/ksh/functions:~/.func
 
@@ -29,7 +32,7 @@ HISTSIZE=2000
 ((.sh.version >= 20220806)) && unalias r
 
 # Below is a basic example that provides extra tilde expansions
-if ((.sh.version >= 20210318)) && [[ $(id -u) != 0 ]]; then
+if ((.sh.version >= 20210318)) && ((euid != 0)); then
 	.sh.tilde.get()
 	{
 		case ${.sh.tilde} in
@@ -55,9 +58,6 @@ typeset -A color=(
 	#[underline]=$'\E[4m'
 	#[spaced_dots]=$'\E[4:5m'
 )
-
-# Get the effective user ID now to avoid running id(1) every time $PS1 is printed
-integer euid=$(id -u)
 
 PS1.get()
 {
