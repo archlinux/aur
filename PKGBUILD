@@ -3,7 +3,7 @@
 _pkgname="baca-ereader"
 pkgname="$_pkgname-git"
 pkgver=0.1.17.r0.g13ee794
-pkgrel=2
+pkgrel=3
 pkgdesc="TUI Ebook Reader"
 url="https://github.com/wustho/baca"
 license=("GPL-3.0-only")
@@ -25,6 +25,7 @@ depends=(
   'python-climage'
   # 'python-kdtree'
   'python-markdownify'
+  'python-standard-imghdr'
   'python-textual'
   'python-thefuzz'
 )
@@ -81,7 +82,7 @@ pkgver() {
 
 build() {
   cd "$_pkgsrc"
-  python -m build --no-isolation --wheel
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {

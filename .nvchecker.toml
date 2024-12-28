@@ -1,0 +1,4 @@
+[baca-ereader-git]
+source = "git"
+git = "https://github.com/wustho/baca.git"
+prefix = "v"
