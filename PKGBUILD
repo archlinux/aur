@@ -3,7 +3,7 @@
 pkgname=python-texttools
 _name=${pkgname//-/_}
 pkgver=0.0.2
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="Python texttools."
 arch=('any')
@@ -29,6 +29,7 @@ sha256sums=('a0ba4f4dff4f328bee17d8db923de59d43641e8e6d8d15bd6a695d7cd53f66e1')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 
