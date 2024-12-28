@@ -1,10 +1,10 @@
 pkgname=python-ocp
 pkgver=7.7.2.1+r4.g544d7fd5
-pkgrel=3
+pkgrel=4
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
 url=https://github.com/CadQuery/OCP
-license=('Apache')
+license=('Apache-2.0')
 
 depends=(
 python
@@ -47,7 +47,7 @@ eigen
 utf8cpp
 nlohmann-json
 fast_float
-python-lief
+lief
 python-logzero
 double-conversion
 clang15
