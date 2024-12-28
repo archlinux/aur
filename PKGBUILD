@@ -2,16 +2,16 @@
 # Contributor: Allen M. <ase1590@hotmail.com>
 
 pkgname=python-wxpython-git
-pkgver=4.2.1.r25.g83db65a2
-pkgrel=1
+pkgver=4.2.2.r53.g9dd38b6a
+pkgrel=2
 pkgdesc="Python 3 implementation of the WxPython UI library"
 arch=(x86_64)
 url="https://github.com/wxWidgets/Phoenix"
 license=('custom:wxWindows')
-depends=('wxwidgets-gtk3' 'python-six')
+depends=(wxwidgets-gtk3 wxwidgets-common python-six python-setuptools python-numpy glibc gcc-libs )
 optdepends=('python-pypubsub: Alternative to the deprecated wx.lib.pubsub API')
-makedepends=(git 'mesa' 'glu' 'webkit2gtk' 'python-requests' 'python-setuptools' 'python-attrdict' 'sip' 'doxygen' 'waf')
-checkdepends=('xorg-server-xvfb' 'python-pytest-forked' 'python-numpy')
+makedepends=(git mesa glu webkit2gtk python-requests python-attrdict sip doxygen waf)
+checkdepends=(xorg-server-xvfb python-pytest-forked)
 provides=(python-wxpython)
 conflicts=(python-wxpython wxpython-phoenix-git)
 replaces=(wxpython-phoenix-git)
