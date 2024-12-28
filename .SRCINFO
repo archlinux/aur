@@ -1,0 +1,17 @@
+pkgbase = python-aioshutil
+	pkgdesc = Asynchronous shutil module
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/kumaraditya303/aioshutil
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest-cov
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	source = aioshutil-1.5.tar.gz::https://github.com/kumaraditya303/aioshutil/archive/v1.5.tar.gz
+	sha512sums = 63e618051b02a899c034bed127da1f457f20af2e1d058a3da60da30a86a727731478792809d50ceb89ea6b7fe2a41d294d2b74131d207bd49a5b2928e4108479
+
+pkgname = python-aioshutil

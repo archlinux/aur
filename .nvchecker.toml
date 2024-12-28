@@ -1,0 +1,5 @@
+[python-aioshutil]
+source = "github"
+github = "kumaraditya303/aioshutil"
+use_max_tag = "true"
+prefix = "v"
