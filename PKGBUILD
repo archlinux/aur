@@ -4,7 +4,7 @@
 
 pkgname=python-fritzconnection-git
 pkgver=1.9.1.r282.g1e200b1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python-Tool to communicate with the AVM Fritz!Box.'
 license=('MIT')
 arch=('any')
@@ -28,7 +28,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd fritzconnection
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
