@@ -3,7 +3,7 @@
 pkgname=python-clouddrive
 _name=${pkgname#python-}
 pkgver=0.0.12.4
-pkgrel=2
+pkgrel=4
 epoch=
 pkgdesc="Python wrapper for CloudDrive."
 arch=('any')
@@ -14,13 +14,20 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 depends=(
     python
+    python-cachetools
     python-dateutil
+    python-pyfuse3
     python-grpcio
     python-grpcio-tools
+    python-orjson
+    python-psutil
     python-protobuf
+    python-ujson
+    python-urllib3
     python-yarl
     #AUR
     python-argtools
+    python-concurrenttools
     python-download
     python-filewrap
     python-httpfile
