@@ -8,13 +8,13 @@ url="https://github.com/enderfoxbg/bsky"
 license=('GPL3')
 depends=('gtk3' 'nss' 'libxss')
 makedepends=('npm' 'nodejs' 'git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2de00ca78e52ee0979b6e4edb06a7418bad274172f69e153a6cbaf741ae1f872')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('1aea60e41a12e2458e32ceac7ec96d49b355895a7c3e21108e8b2f14b32267b2')
 
 build() {
     cd "bsky-$pkgver"
     npm install
-    npm run build:linux
+    NODE_ENV=production npm run build:linux
 }
 
 package() {
