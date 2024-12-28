@@ -3,7 +3,7 @@
 
 pkgname=papis
 pkgver=0.14
-pkgrel=2
+pkgrel=3
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
 url='https://github.com/papis/papis'
@@ -78,15 +78,20 @@ checkdepends=(
 _patchUrl='https://patch-diff.githubusercontent.com/raw'
 source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}-PR945.patch::${_patchUrl}/papis/papis/pull/945.patch"
+    "${pkgname}-PR955.patch::${_patchUrl}/papis/papis/pull/955.patch"
 )
 sha256sums=('5bb9f037b84061dda990652581d0b2171d05dbb970f1657ff7b390ef8345ecee'
-            '07fef0a1e26e9b64aff5372eca91c28b75568a88b09113550a020546ec23739f')
+            '07fef0a1e26e9b64aff5372eca91c28b75568a88b09113550a020546ec23739f'
+            '35ef66d7f175be279c6c0143b24b69e4bfaef97abf12909cfbd88c9610d8719d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
   # Enable autoskipping git integration tests, see
   # https://github.com/papis/papis/issues/944
   patch -p1 < "../${pkgname}-PR945.patch"
+  # Fix zenodo tests for new versions of markdownify, see
+  # https://github.com/papis/papis/pull/955
+  patch -p1 < "../${pkgname}-PR955.patch"
 }
 
 build() {
