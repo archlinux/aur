@@ -1,7 +1,7 @@
 pkgbase = hyprland-hidpi-xprop-git
 	pkgdesc = Hyprland is an independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks
 	pkgver = 0.46.0.r40.c600e1aa
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hyprwm/Hyprland
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = hyprland-hidpi-xprop-git
 	makedepends = git
 	makedepends = glaze
 	makedepends = hyprwayland-scanner-git
+	makedepends = python
 	makedepends = xorgproto
 	depends = aquamarine-git
 	depends = cairo
