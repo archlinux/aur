@@ -6,7 +6,7 @@
 pkgname=python-simpleaudio
 _pkgname=py-simple-audio
 pkgver=1.0.4
-pkgrel=8
+pkgrel=9
 pkgdesc='A simple audio playback Python extension'
 arch=('x86_64' 'aarch64')
 url="https://github.com/hamiltron/${_pkgname}"
@@ -36,10 +36,13 @@ build() {
 }
 
 check() {
-    cd "${_pkgname}-${pkgver}"
     local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
 
-    PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-cpython-${python_version}" python -m unittest discover -v
+    # Workaround for unittest not respecting PYTHONSAFEPATH
+    [ -L simpleaudio_tests ] || ln -s "${_pkgname}-${pkgver}"/tests simpleaudio_tests
+
+    PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="${PWD}/${_pkgname}-${pkgver}/build/lib.linux-${CARCH}-cpython-${python_version}" \
+        python -m unittest discover -v
 }
 
 package() {
