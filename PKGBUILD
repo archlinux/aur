@@ -1,14 +1,15 @@
 # Maintainer: waschtl <tyrolyean@tyrolyean.net>
 
-pkgname=icy_draw-bin
+_pkgname=icy_draw
+pkgname=${_pkgname}-bin
 pkgver=0.3.2
 pkgrel=1
+groups=("icy_tools-bin")
 provides=("icy_draw")
 pkgdesc="IcyDraw is a full features ansi drawing tool doing things a bit different than other tools."
 arch=('x86_64')
 url="https://github.com/mkrueger/icy_tools"
 license=('Apache-2.0')
-makedepends=()
 optdepends=()
 source=("$url/releases/download/IcyDraw$pkgver/icy_draw_linux_$pkgver.zip")
 sha256sums=('2eb33d2e679556623711c6e68d1f0ceaa9e6a57fa8530814f5b0e7102aed6a02')
