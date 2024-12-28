@@ -3,7 +3,7 @@
 # Contributor: Moses Narrow <moe_narrow@use.startmail.com>
 
 pkgname="pterodactyl-panel"
-pkgver=1.11.7
+pkgver=1.11.10
 pkgrel=1
 pkgdesc="An open-source game server management panel"
 url="https://pterodactyl.io/"
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/pterodactyl/panel/releases/
         "pterodactyl-queue.service"
         "pterodactyl-scheduler.service"
         "pterodactyl-scheduler.timer")
-b2sums=('b843347e941040cf692c2537bd92b8db293259ad6c338a6f026bc67de61061bbf0a0df1930806189257e5490a41afa5b8b804c907be917ae61aae81e8a50b4d8'
+b2sums=('3bfcb8fb2d723681fbefc22bfcf5ae2167b516b5d8459a3f883e09cc184fa1cab9685a3af8ee5b9ddd7975e10e8fb97b89ab426ba15310fde5537dde2a448266'
         'c59cd8370e4360538038fa2a6daac10c327407c3c2e71b1d9b60b107c2f69ab5377f22d4d8e00c7e0cdc9c882aa0ae663531f4ee12e39cc58e20ef66d5e4d48e'
         '38fa485a2d71cb9e7b5d181ded53bc9e228628cafb854ca9bd7087895b42af78b735c636840e3f2f74abdad03fa4682cc81d5b34972498ddbaf41a6f784469a2'
         '8924479c22eaff27483d0d85ec2c2385193d754adac6b655e0ef986bec1ab871c4a269f511b8f4a2b98b5f89ee45d0ed300ce1f632a2d33a2e0260e8e4a66ad7')
