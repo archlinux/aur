@@ -1,34 +1,26 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-apscheduler
-pkgver=3.10.4
-pkgrel=2
+_name=apscheduler
+pkgver=3.11.0
+pkgrel=1
 pkgdesc="In-process task scheduler with Cron-like capabilities"
 url="https://github.com/agronholm/apscheduler"
 license=('MIT')
 arch=('any')
 depends=('python-setuptools' 'python-six' 'python-pytz' 'python-tzlocal')
-makedepends=('git' 'python-setuptools-scm')
-checkdepends=('pifpaf' 'python-gevent' 'python-pytest-asyncio' 'python-pytest-cov'
-              'python-pytest-tornado' 'python-redis' 'python-sqlalchemy' 'python-tornado'
-              'python-twisted' 'redis')
+makedepends=("python-build" "python-packaging" "python-wheel" "python-installer")
 # python-kazoo, python-pymongo removed due to lack of running service
-source=("git+https://github.com/agronholm/apscheduler.git#tag=$pkgver")
-sha512sums=('c2b5648f8696afcc5413734de069977346a9c9adbb59a9889fd38cc0c9aa827e25977b7a3bef390f700a65ad4bdc31aaa49d469bfdeda66523adb9accf7c6b63')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+b2sums=('1c18a3779f73a6efaaa92e9a12bd34afaa4afbbeed76bf20b07a2eb9dbb11740e7e6d0f2a94bdd6c8a7ad16ea4db855ccce8a9dc007aa6da7d91b7362af90753')
 
-build() {
-  cd apscheduler
-  python setup.py build
+build(){
+ cd "$_name-$pkgver"
+ python -m build --wheel --no-isolation
 }
 
-check() {
-  cd apscheduler
-  python setup.py egg_info
-  pifpaf run redis -- python -m pytest
-}
-
-package() {
-  cd apscheduler
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
+package(){
+ cd "$_name-$pkgver"
+ python -m installer --destdir="$pkgdir" dist/*.whl
+ install -D -m 644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
