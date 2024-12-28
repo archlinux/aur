@@ -1,0 +1,18 @@
+pkgbase = go-life-bin
+	pkgdesc = Terminal based Conway's Game of Life. Implemented in Go.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/sachaos/go-life
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = go-life
+	conflicts = go-life
+	source = README-0.4.0.md::https://github.com/sachaos/go-life/raw/refs/tags/v0.4.0/README.md
+	source = LICENSE-0.4.0::https://github.com/sachaos/go-life/raw/refs/tags/v0.4.0/LICENSE
+	sha256sums = e76481ce6d1f7e87015786ee38f56cc8e584900f9beeb48783d0132f0f4edfb8
+	sha256sums = 006e6f1c4848f6159f633d47514148ed8cf22ad8cc8f9d95b288fb28832465e0
+	source_x86_64 = go-life-0.4.0-x86_64::https://github.com/sachaos/go-life/releases/download/v0.4.0/go-life_linux_amd64
+	sha256sums_x86_64 = 5d75b0313d5b0b7e0221d03e6cd57f28c3a64049c0c60d35d0bbe4badd0cc1e4
+
+pkgname = go-life-bin
