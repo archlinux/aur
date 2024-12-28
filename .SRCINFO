@@ -1,0 +1,13 @@
+pkgbase = statcat
+	pkgdesc = A fast and customizable system fetch written in Rust
+	pkgver = V3.1.0.beta
+	pkgrel = 1
+	url = https://github.com/fluffocj/statcat
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = git+https://github.com/fluffocj/statcat#tag=V3.1.0.beta
+	sha256sums = SKIP
+
+pkgname = statcat
