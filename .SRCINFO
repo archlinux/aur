@@ -1,6 +1,6 @@
 pkgbase = openandroidinstaller-git
 	pkgdesc = Makes installing alternative Android distributions nice and easy.
-	pkgver = v0.5.3.beta.r13.g562acd3
+	pkgver = v0.5.3.beta.r14.g3a79be5
 	pkgrel = 1
 	url = https://openandroidinstaller.org/
 	arch = any
@@ -33,7 +33,6 @@ pkgname = openandroidinstaller-git
 	depends = python-certifi
 	depends = python-cffi
 	depends = python-charset-normalizer
-	depends = python-exceptiongroup
 	depends = python-flet
 	depends = python-schema
 	depends = python-yaml
