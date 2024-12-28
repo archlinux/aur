@@ -438,6 +438,7 @@ prepare() {
     '-Djpeg=enabled'
     '-Dsdl2-video=enabled'
     '-Dshaderc=disabled'
+    '-Dspirv-cross=disabled'
     '-Dplain-gl=enabled'
     '-Dvdpau=enabled'
     '-Dvaapi=enabled'
@@ -458,6 +459,16 @@ prepare() {
     '-Dios-gl=disabled'
     '-Dvideotoolbox-gl=disabled'
     '-Dvideotoolbox-pl=disabled'
+
+    # macOS features
+    '-Dmacos-10-15-4-features=disabled'
+    '-Dmacos-11-features=disabled'
+    '-Dmacos-11-3-features=disabled'
+    '-Dmacos-12-features=disabled'
+    '-Dmacos-cocoa-cb=disabled'
+    '-Dmacos-media-player=disabled'
+    '-Dmacos-touchbar=disabled'
+    '-Dswift-build=disabled'
 
     # windows features
     '-Dwin32-smtc=disabled'
