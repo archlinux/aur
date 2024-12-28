@@ -16,7 +16,6 @@ pkgbase = peazip-qt-bin
 	optdepends = quad: High-performance file compressor that utilizes an advanced LZ-based compression algorithm
 	optdepends = upx: Extendable, high-performance executable packer for several executable formats
 	optdepends = zpaq: Programmable file compressor, library and utilities
-	optdepends = 7-zip: File archiver with a high compression ratio
 	provides = peazip
 	conflicts = peazip
 	options = !emptydirs

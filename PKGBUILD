@@ -21,8 +21,7 @@ optdepends=('arc: Arc file archiver and compressor'
             'paq8o: PAQ8 series of archivers, resurrected by new maintainers'
             'quad: High-performance file compressor that utilizes an advanced LZ-based compression algorithm'
             'upx: Extendable, high-performance executable packer for several executable formats'
-            'zpaq: Programmable file compressor, library and utilities'
-            '7-zip: File archiver with a high compression ratio')
+            'zpaq: Programmable file compressor, library and utilities')
 provides=("peazip")
 conflicts=("peazip")
 source=("$url/releases/download/$pkgver/peazip-$pkgver.LINUX.Qt5-1.x86_64.rpm")
