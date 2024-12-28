@@ -1,0 +1,22 @@
+pkgbase = python-statsdir
+	pkgdesc = statsdir
+	pkgver = 0.0.2.1
+	pkgrel = 1
+	url = https://pypi.org/project/statsdir
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-iterdir
+	provides = python-statsdir
+	conflicts = python-statsdir
+	options = !strip
+	options = !debug
+	source = statsdir-0.0.2.1.tar.gz::https://files.pythonhosted.org/packages/source/s/statsdir/statsdir-0.0.2.1.tar.gz
+	sha256sums = 1e02e5e14ecc6595fdad5f0577b33c6319205ae3facf38a08f9ef92424c9a1fc
+
+pkgname = python-statsdir
