@@ -3,7 +3,7 @@
 
 pkgname=cloudip
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool for identifying cloud providers'
 arch=('x86_64')
 url="https://github.com/jongwoo328/$pkgname"
@@ -26,7 +26,10 @@ build() {
   export CGO_LDFLAGS="$LDFLAGS"
   export GOPATH="$srcdir"
   export GOFLAGS='-buildmode=pie -mod=readonly -modcacherw'
-  go build -o "build/$pkgname" .
+  go build \
+    -ldflags "-X 'cloudip/cmd.Version=$pkgver'" \
+    -o "build/$pkgname" \
+    .
 }
 
 check() {
