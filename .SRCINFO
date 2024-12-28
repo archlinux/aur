@@ -1,0 +1,21 @@
+pkgbase = python-property
+	pkgdesc = Python property discriptors
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://pypi.org/project/python-property
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-property
+	conflicts = python-property
+	options = !strip
+	options = !debug
+	source = python_property-0.0.3.tar.gz::https://files.pythonhosted.org/packages/source/p/python_property/python_property-0.0.3.tar.gz
+	sha256sums = 98dd9d48104a476ccc2a7ae479c56a29a8b490b9f02865d43c17e12e08738a2b
+
+pkgname = python-property
