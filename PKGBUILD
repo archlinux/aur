@@ -3,17 +3,20 @@
 # Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 
 pkgname=lief
-pkgver=0.14.1
-pkgrel=3
+pkgver=0.16.1
+pkgrel=1
 pkgdesc='Library to instrument executable formats'
 arch=('x86_64')
 url='https://github.com/lief-project/lief'
 license=(Apache-2.0)
 depends=(
-  tl-expected
+  mbedtls
 )
 optdepends=(
   'python: python bindings'
+)
+conflicts=(
+  python-lief
 )
 makedepends=(
   cmake
@@ -33,10 +36,11 @@ makedepends=(
   python-pydantic-core
   python-pyproject-metadata
   python-pathspec
+  tl-expected
 )
 provides=(libLIEF.so)
 source=("lief-${pkgver}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('92916dcb3178353d863aef4f409186889983c56e025b774741d5316a72ec3a7d')
+sha256sums=('9fb3d18bd2182170f65c63b577c680de53605e92d18a22d49b535ca61349c5db')
 
 prepare() {
   cd "LIEF-$pkgver/api/python"
@@ -53,11 +57,23 @@ build() {
     -D LIEF_EXAMPLES=OFF \
     -D LIEF_PYTHON_API=ON \
     -D LIEF_OPT_NLOHMANN_JSON_EXTERNAL=ON \
-    -D LIEF_OPT_MBEDTLS_EXTERNAL=OFF \
-    -D LIEF_OPT_EXTERNAL_EXPECTED=ON
+    -D LIEF_OPT_MBEDTLS_EXTERNAL=ON \
+    -D LIEF_OPT_EXTERNAL_EXPECTED=ON \
+    -D LIEF_RUST_API=ON \
+    -D LIEF_DEX=ON \
+    -D LIEF_DOC=ON \
+    -D LIEF_PE=ON \
+    -D LIEF_TESTS=OFF
   cmake --build build
 
   python -m build --wheel --no-isolation api/python
+}
+
+check() {
+  cd "LIEF-$pkgver"
+  #ctest --output-on-failure --test-dir build
+  #python tests/run_pytest.py
+  #python tests/run_tools_check.py
 }
 
 package() {
