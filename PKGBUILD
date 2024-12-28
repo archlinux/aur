@@ -14,6 +14,7 @@ options=(!debug !strip)
 makedepends+=(git)
 
 depends=(
+	"procps-ng"
 	"coreutils"
 	"awk"
 	"xxd"
