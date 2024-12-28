@@ -6,7 +6,7 @@
 # Contributor: Tsekhovoy Eugene aka Krash <8552246@gmail.com>
 
 pkgname=mc-git
-pkgver=4.8.32.r12.g9e06a50eb
+pkgver=4.8.32.r205.g17c2a65cd
 pkgrel=1
 pkgdesc='A file manager that emulates Norton Commander'
 arch=('x86_64')
@@ -28,6 +28,7 @@ optdepends=(
     'python: to access uc1541 or s3 storage'
     'python-boto: s3+ extfs'
     'python-pytz: s3+ extfs'
+    'rpm-tools: open rpm packages'
     'unace: uace extfs'
     'unarj: uarj extfs'
     'unrar: urar extfs'
