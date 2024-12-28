@@ -5,7 +5,7 @@
 # Contributor: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=syncterm-git
-pkgver=1.3.r0.g4b05587
+pkgver=1.2rc1.r776.g7737648
 pkgrel=1
 pkgdesc="A BBS terminal program, supporting ANSI music and IBM charset."
 url="https://gitlab.synchro.net/main/sbbs"
@@ -18,7 +18,7 @@ optdepends=('hicolor-icon-theme: for GUI icon support'
             'libx11: for X11 GUI support')
 provides=(syncterm)
 conflicts=(syncterm)
-source=("syncterm::git+https://gitlab.synchro.net/main/sbbs.git#branch=syncterm-1.3")
+source=("syncterm::git+https://gitlab.synchro.net/main/sbbs.git")
 sha256sums=('SKIP')
 
 pkgver()  {
