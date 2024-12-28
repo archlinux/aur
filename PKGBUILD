@@ -3,7 +3,7 @@
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Kevin Majewski < kevin.majewski02 AT gmail.com >
 pkgname=video-downloader
-pkgver=0.12.19
+pkgver=0.12.21
 pkgrel=1
 pkgdesc="Download videos from websites like YouTube and many others (based on yt-dlp)"
 arch=('any')
@@ -23,7 +23,7 @@ depends=(
 makedepends=('meson')
 checkdepends=('appstream-glib' 'flake8')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a5dc3c2c779f7fcdbb3801c4fc07ff98ef48d0ced742481df0539717bc4e449a')
+sha256sums=('f9c4ea71e8290ed54fdfd5f7f6d69cb095eae9bce4f3f6b99c8ca2b47a99821f')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
