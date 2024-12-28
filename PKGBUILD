@@ -4,7 +4,7 @@ pkgbase=python-griffe
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.5.1
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Signatures for entire Python programs"
 arch=('any')
@@ -29,6 +29,7 @@ makedepends=('python-pdm-backend'
 #            'mkdocstrings-python'
 #            'git') # avoid circular dep
 checkdepends=('python-pytest'
+#             'python-pytest-xdist'
               'python-colorama'
               'python-jsonschema'
               'mkdocstrings'
@@ -37,7 +38,7 @@ checkdepends=('python-pytest'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       "https://github.com/mkdocstrings/griffe/raw/main/logo.svg")
 #       "${pkgver}-schema.json::https://github.com/mkdocstrings/griffe/raw/${pkgver}/docs/schema.json")
-md5sums=('36f3f0261ed5f4181023ddd66720d8ee')
+md5sums=('68a1b26e312a6f9fe0965c7f4455c9ad')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -64,7 +65,7 @@ check() {
     # ignore mkdocstrings related
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-griffe() {
