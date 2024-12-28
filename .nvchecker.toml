@@ -1,0 +1,5 @@
+[ta-lib]
+source = "git"
+git = "https://github.com/TA-Lib/ta-lib.git"
+prefix = "v"
+exclude_regex = '.*[a-z]{2}.*'
