@@ -1,0 +1,24 @@
+pkgbase = python-aiohttp-client-request
+	pkgdesc = aiohttp request extension.
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://pypi.org/project/aiohttp_client_request
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aiohttp
+	depends = python-argtools
+	depends = python-cookietools
+	provides = python-aiohttp-client-request
+	conflicts = python-aiohttp-client-request
+	options = !strip
+	options = !debug
+	source = aiohttp_client_request-0.0.4.tar.gz::https://files.pythonhosted.org/packages/source/a/aiohttp_client_request/aiohttp_client_request-0.0.4.tar.gz
+	sha256sums = 1d192bf619e6b0521da7c2a482b580ff2efc677c778f4c208ddeb244cb4ca3f9
+
+pkgname = python-aiohttp-client-request
