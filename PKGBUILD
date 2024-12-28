@@ -3,7 +3,7 @@
 pkgname=python-rodi
 _name=${pkgname#python-}
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Implementation of dependency injection for Python 3"
 arch=('any')
@@ -21,8 +21,9 @@ makedepends=(
     flake8
     mypy
     python-black
-    python-poetry
+    python-flake8-black
     python-build
+    python-hatchling
     python-installer
     python-wheel
     python-setuptools
