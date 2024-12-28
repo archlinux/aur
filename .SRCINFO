@@ -4,7 +4,7 @@ pkgbase = tuibox
 	pkgrel = 1
 	url = https://github.com/Cubified/tuibox
 	arch = any
-	license = custom:None
+	license = MIT
 	source = tuibox-28035a91f23808024b4effccb47a0ae0d5b297b3.tar.gz::https://github.com/Cubified/tuibox/archive/28035a91f23808024b4effccb47a0ae0d5b297b3.tar.gz
 	sha256sums = 6536fabd710217144c09d66abdbed03b7e6bf3006b10bf320b316c16ce9a7ca6
 
