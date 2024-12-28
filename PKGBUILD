@@ -31,7 +31,7 @@ package() {
 	install -vDm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # mkdir -p "${pkgdir}/usr/lib" "${pkgdir}/usr/include"
-	# make DESTDIR="${pkgdir}" install
+  # make DESTDIR="${pkgdir}" install
 
   install -vDm644 "${pkgname}.so" "${pkgdir}/usr/lib/${pkgname}.so.${pkgver}"
   install -vDm644 "${_name}.h"    "${pkgdir}/usr/include/${_name}.h"
