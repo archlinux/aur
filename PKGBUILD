@@ -3,7 +3,7 @@
 pkgname=python-startfile
 _name=${pkgname//-/_}
 pkgver=0.0.2
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="Python startfile."
 arch=('any')
@@ -28,6 +28,7 @@ sha256sums=('71d27ce9025619598149ea97b756aeb0b1b8f588f660f99f7ddc4c14cf1cab87')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 
