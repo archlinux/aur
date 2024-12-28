@@ -12,7 +12,7 @@ pkgbase = python-sunpy
 	makedepends = python-extension-helpers
 	makedepends = python-numpy
 	source = https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-6.0.4.tar.gz
-	md5sums = 6d05c8a13d413c0908008c41e3f42c0b
+	md5sums = 36e7d35020259e61c61cfb91bd9b9ce8
 
 pkgname = python-sunpy
 	depends = python>=3.10

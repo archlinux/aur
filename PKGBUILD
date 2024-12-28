@@ -84,7 +84,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #        "http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz"
 #        "http://data.sunpy.org/sunpy/v1/glg_cspec_n5_110607_v00.pha")
 ##       "http://netdrms01.nispdc.nso.edu/VSO/WSDL/VSOi_rpc_literal.wsdl")
-md5sums=('6d05c8a13d413c0908008c41e3f42c0b')
+md5sums=('36e7d35020259e61c61cfb91bd9b9ce8')
 #        'bde3bd7a691b38e2e4c4e1d17b143b24'
 #        '01efaf052d81efc32a92050a249aa557'
 #        'ead6d3ce4c183c471d76bf1bc3be44a3'
