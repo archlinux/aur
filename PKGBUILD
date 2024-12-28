@@ -2,17 +2,16 @@
 
 pkgname=crm
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="crm (Cargo registry manager)"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/wtklbm/crm"
 license=('MIT' 'Apache-2.0')
 provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
-depends=(gcc-libs
+depends=(
+    gcc-libs
     glibc)
 makedepends=(cargo)
 backup=()
