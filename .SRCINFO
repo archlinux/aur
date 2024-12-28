@@ -1,7 +1,7 @@
 pkgbase = work
 	pkgdesc = A stupid simple time tracker.
 	pkgver = 1.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jmelahman/work
 	arch = i686
 	arch = x86_64
