@@ -1,6 +1,6 @@
 pkgbase = kubectl-explore-bin
 	pkgdesc = A kubectl plugin to interactively explore API resources through a TUI
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/keisku/kubectl-explore
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = kubectl-explore-bin
 	provides = kubectl-explore
 	conflicts = kubectl-explore
 	conflicts = kubectl-explore-git
-	source = kubectl-explore-0.10.0.tar.gz::https://github.com/keisku/kubectl-explore/releases/download/v0.10.0/kubectl-explore_v0.10.0_linux_amd64.tar.gz
-	sha256sums = 997e3134d7f29dd0634e4f0d1e5a8faef5312804c80e688791ec8b8f7fa1021d
+	source = kubectl-explore-0.11.0.tar.gz::https://github.com/keisku/kubectl-explore/releases/download/v0.11.0/kubectl-explore_v0.11.0_linux_amd64.tar.gz
+	sha256sums = 143a38bee32a039c4d59a04bc9565f2a9c0e385727267137c670c6102a7232b3
 
 pkgname = kubectl-explore-bin
