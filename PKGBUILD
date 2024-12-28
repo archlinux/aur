@@ -26,9 +26,9 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${_pkgsrc}"
+  cd "${srcdir}/${_pkgsrc}"
   install -vDm644 "README.md"   "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-	install -vDm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # mkdir -p "${pkgdir}/usr/lib" "${pkgdir}/usr/include"
   # make DESTDIR="${pkgdir}" install
