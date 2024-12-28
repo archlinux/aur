@@ -1,6 +1,6 @@
 pkgbase = minicom-git
 	pkgdesc = A serial communication program
-	pkgver = v2.9.rc1+r376+g40609fae2
+	pkgver = 2.9+r376+g40609fae2
 	pkgrel = 1
 	url = https://salsa.debian.org/minicom-team/minicom
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = minicom-git
 	makedepends = perl
 	depends = bash
 	optdepends = lrzsz: for xmodem, ymodem and zmodem file transfer protocols
-	provides = minicom=v2.9.rc1+r376+g40609fae2
+	provides = minicom=2.9+r376+g40609fae2
 	conflicts = minicom
 	backup = etc/minirc.dfl
 	source = git+https://salsa.debian.org/minicom-team/minicom.git

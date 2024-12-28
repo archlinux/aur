@@ -8,7 +8,7 @@
 
 pkgname=minicom-git
 _pkgname=minicom
-pkgver=v2.9.rc1+r376+g40609fae2
+pkgver=2.9+r376+g40609fae2
 pkgrel=1
 pkgdesc='A serial communication program'
 arch=('x86_64')
@@ -25,10 +25,10 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  _version=$(git tag --sort=-v:refname --list | head -n1 | tr - .)
+  _version=$(git describe --tags --abbrev=0)
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
-  echo "${_version}+r${_commits}+g${_short_commit_hash}"
+  echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
 }
 
 prepare() {
