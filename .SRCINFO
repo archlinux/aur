@@ -1,6 +1,6 @@
 pkgbase = python-yattag
 	pkgdesc = Python library for generating HTML or XML in a pythonic way.
-	pkgver = 1.15.2
+	pkgver = 1.16.1
 	pkgrel = 1
 	url = http://yattag.org
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-yattag
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://pypi.python.org/packages/source/y/yattag/yattag-1.15.2.tar.gz
-	sha256sums = aad9f540bd22dc503e5b5506cc47856facf081aa71fd35f727371b63e1e402bf
+	source = https://pypi.python.org/packages/source/y/yattag/yattag-1.16.1.tar.gz
+	sha256sums = baa8f254e7ea5d3e0618281ad2ff5610e0e5360b3608e695c29bfb3b29d051f4
 
 pkgname = python-yattag
