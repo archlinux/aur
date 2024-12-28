@@ -1,6 +1,6 @@
 pkgbase = syncterm-git
 	pkgdesc = A BBS terminal program, supporting ANSI music and IBM charset.
-	pkgver = 1.2rc1.r776.g7737648
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://gitlab.synchro.net/main/sbbs
 	arch = x86_64
