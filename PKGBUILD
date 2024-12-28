@@ -1,7 +1,8 @@
+# Maintainer: Noor Christensen <archlinux_AT_technopragmatics_DOT_org>
 # Maintainer: Rasmus Lindroth <rasmus@lindroth.xyz>
 pkgname=tut
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A TUI for Mastodon with vim inspired keys'
 arch=('any')
 conflicts=('tut-bin')
@@ -14,9 +15,8 @@ sha256sums=('afa8c49036461a36c091d83ef51f9a3bbd938ee78f817c6467175699a989b863')
 build() {
   cd $pkgname-$pkgver
   go build \
-    -gcflags "all=-trimpath=$PWD" \
-    -asmflags "all=-trimpath=$PWD" \
-    -ldflags "-extldflags $LDFLAGS" \
+    -trimpath \
+    -ldflags="-linkmode=external -extldflags=$(LDFLAGS)" \
     -o $pkgname .
 }
 
