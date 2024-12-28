@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!chroot-build.sh
+!.nvchecker.toml
+!*.asc
+!*/

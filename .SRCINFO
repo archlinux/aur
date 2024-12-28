@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-pinned-apps-in-appgrid-git
+	pkgdesc = Keep pinned apps in AppGrid
+	pkgver = r23.099bc78
+	pkgrel = 1
+	url = https://github.com/brunos3d/pinned-apps-in-appgrid
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = gnome-shell>=1:45
+	provides = gnome-shell-extension-pinned-apps-in-appgrid
+	conflicts = gnome-shell-extension-pinned-apps-in-appgrid
+	source = gnome-shell-extension-pinned-apps-in-appgrid::git+https://github.com/brunos3d/pinned-apps-in-appgrid.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-pinned-apps-in-appgrid-git
