@@ -1,0 +1,22 @@
+pkgbase = python-capture-stream
+	pkgdesc = Capture video stream, save as screenshots.
+	pkgver = 0.0.1.5
+	pkgrel = 1
+	url = https://pypi.org/project/capture_stream
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-opencv
+	provides = python-capture-stream
+	conflicts = python-capture-stream
+	options = !strip
+	options = !debug
+	source = capture_stream-0.0.1.5.tar.gz::https://files.pythonhosted.org/packages/source/c/capture_stream/capture_stream-0.0.1.5.tar.gz
+	sha256sums = 3d25b93c989e33bce12129e3452aa85ddc1d8d5c029854dabaef69dfa205a1ce
+
+pkgname = python-capture-stream
