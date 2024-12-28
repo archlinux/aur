@@ -1,0 +1,14 @@
+pkgbase = stride
+	pkgdesc = Protein secondary structure assignment from atomic coordinates
+	pkgver = 19960129
+	pkgrel = 1
+	url = https://webclu.bio.wzw.tum.de/stride/
+	arch = x86_64
+	license = LicenseRef-stride
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	source = https://webclu.bio.wzw.tum.de/stride/stride.tar.gz
+	b2sums = 0a6fbb7da0a18cc9fbc4beb3214488080e5f6b85b93f87a33f3d6c38385da12707ee0eb2a10a86c9f6dd3884bd043e3f7f36c6aac797da7dc4f351fab047a950
+
+pkgname = stride
