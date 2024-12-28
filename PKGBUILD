@@ -3,7 +3,7 @@
 
 pkgname=ruby-plist
 _gemname=${pkgname#ruby-}
-pkgver=3.7.1
+pkgver=3.7.2
 pkgrel=1
 pkgdesc='A library to manipulate Property List files'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(rubygems
              ruby-rdoc)
 _archive="$_gemname-$pkgver"
 source=("https://rubygems.org/downloads/$_archive.gem")
-sha256sums=('3f9542db1115d10fb77d87604dcb426755174920cc89453755efacb34a1cc42c')
+sha256sums=('d37a4527cc1116064393df4b40e1dbbc94c65fa9ca2eec52edf9a13616718a42')
 
 package() {
 	cd "$srcdir"

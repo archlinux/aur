@@ -1,6 +1,6 @@
 pkgbase = ruby-plist
 	pkgdesc = A library to manipulate Property List files
-	pkgver = 3.7.1
+	pkgver = 3.7.2
 	pkgrel = 1
 	url = https://rubygems.org/gems/plist
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = ruby-plist
 	makedepends = rubygems
 	makedepends = ruby-rdoc
 	depends = ruby
-	source = https://rubygems.org/downloads/plist-3.7.1.gem
-	sha256sums = 3f9542db1115d10fb77d87604dcb426755174920cc89453755efacb34a1cc42c
+	source = https://rubygems.org/downloads/plist-3.7.2.gem
+	sha256sums = d37a4527cc1116064393df4b40e1dbbc94c65fa9ca2eec52edf9a13616718a42
 
 pkgname = ruby-plist
