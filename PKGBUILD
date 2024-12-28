@@ -4,7 +4,7 @@ pkgname=python-integer-tool
 _name=${pkgname#python-}
 _name=${_name//-/_}
 pkgver=0.0.2.1
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="Python functions for integer."
 arch=('any')
@@ -29,6 +29,7 @@ sha256sums=('a87be9b9e0e97ea26a3a21378ece1f1ab8ac6d6df4eec218dfe7d38159218522')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 

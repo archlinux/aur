@@ -1,7 +1,7 @@
 pkgbase = python-integer-tool
 	pkgdesc = Python functions for integer.
 	pkgver = 0.0.2.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://pypi.org/project/integer_tool
 	arch = any
 	license = MIT
