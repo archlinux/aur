@@ -4,7 +4,7 @@ pkgname=python-glob-pattern
 _name=${pkgname#python-}
 _name=${_name//-/_}
 pkgver=0.0.2
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="Python shell glob pattern."
 arch=('any')
@@ -32,6 +32,7 @@ sha256sums=('394db5fcbd8e45e726d821536a539cdadc53cfbbcc772d44d0a5837891b8ee18')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 

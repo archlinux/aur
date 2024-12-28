@@ -1,7 +1,7 @@
 pkgbase = python-glob-pattern
 	pkgdesc = Python shell glob pattern.
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 4
 	url = https://pypi.org/project/glob_pattern
 	arch = any
 	license = MIT
