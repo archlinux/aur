@@ -1,7 +1,7 @@
 pkgbase = python-http-request
 	pkgdesc = Python http response utils.
 	pkgver = 0.0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/python-http-request
 	arch = any
 	license = MIT

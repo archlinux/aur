@@ -3,7 +3,7 @@
 pkgname=python-http-request
 _name=${pkgname//-/_}
 pkgver=0.0.5.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python http response utils."
 arch=('any')
@@ -34,6 +34,7 @@ sha256sums=('7ca5a606e0198949413315df0654b2d50185e47bd3841f9197e2a94f7dae83f5')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 
