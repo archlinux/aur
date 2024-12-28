@@ -19,5 +19,5 @@ sha256sums=('SKIP')
 package() {
 	cd Fjord
 	pwd
-	make install
+	make
 }
