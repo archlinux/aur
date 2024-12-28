@@ -1,7 +1,7 @@
 pkgbase = python-httpx-request
 	pkgdesc = httpx request extension.
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 4
 	url = https://pypi.org/project/httpx_request
 	arch = any
 	license = MIT

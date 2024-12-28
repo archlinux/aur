@@ -4,7 +4,7 @@ pkgname=python-httpx-request
 _name=${pkgname#python-}
 _name=${_name//-/_}
 pkgver=0.1.2
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="httpx request extension."
 arch=('any')
@@ -32,6 +32,7 @@ sha256sums=('1180fc01258b7a3cc5ddc30cc78066bf681fbbd5c38f7d147a81f3093b7eee76')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 
