@@ -3,10 +3,10 @@
 pkgname=z26
 pkgver=4.07
 _pkgver=${pkgver//.}
-pkgrel=1
+pkgrel=2
 pkgdesc="An Atari 2600 Emulator"
 arch=('x86_64' 'aarch64' 'riscv64' 'riscv' 'ppc' 'i386' 'i686' 'pentium4' 'arm' 'armv7h' 'armv6h')
-url="https://aeriform.gitbook.io/minicube64"
+url="https://whimsey.com/z26/"
 # implicit has it based on fake6502 https://github.com/omarandlorraine/fake6502
 license=('GPL2')
 depends=('sdl2')

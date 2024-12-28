@@ -1,8 +1,8 @@
 pkgbase = z26
 	pkgdesc = An Atari 2600 Emulator
 	pkgver = 4.07
-	pkgrel = 1
-	url = https://aeriform.gitbook.io/minicube64
+	pkgrel = 2
+	url = https://whimsey.com/z26/
 	arch = x86_64
 	arch = aarch64
 	arch = riscv64
