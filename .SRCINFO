@@ -1,5 +1,5 @@
 pkgbase = python-vllm-cuda
-	pkgdesc = faster implementation for TTS models, to be used in highly async environment - cpu version
+	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs
 	pkgver = 0.6.5
 	pkgrel = 2
 	url = https://github.com/vllm-project/vllm
@@ -11,6 +11,7 @@ pkgbase = python-vllm-cuda
 	makedepends = cuda-tools
 	depends = python-installer
 	depends = python
+	depends = pytorch
 	provides = python-vllm
 	conflicts = python-vllm
 	source = git+https://github.com/vllm-project/vllm.git#tag=v0.6.5

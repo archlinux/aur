@@ -4,13 +4,13 @@ pkgname=python-vllm-cuda
 _pkgname=vllm
 pkgver=0.6.5
 pkgrel=2
-pkgdesc="faster implementation for TTS models, to be used in highly async environment - cpu version"
+pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
 provides=(python-vllm)
 conflicts=(python-vllm)
 license=(Apache-2.0)
-depends=(python-installer python)
+depends=(python-installer python pytorch)
 makedepends=(git gcc13 cuda cuda-tools) #won't build without detecting cuda - need to investiogate further
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
 sha256sums=('5c8228773ae38ddda2d38f5fc68a259856cab4891766792d859cdaf225e63bc5')
