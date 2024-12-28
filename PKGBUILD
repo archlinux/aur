@@ -9,8 +9,8 @@ _electron="electron33"  # As of 2024-10-21, latest working version is `electron3
 _nodeversion=20         # As of 2024-10-20, the minimum version of `nodejs` is 20.
 _pkgname="schildichat-desktop"
 pkgname="${_pkgname}-git"
-pkgver=1.11.88.sc.0.test.0.r528.20241217.240975c
-pkgrel=2
+pkgver=1.11.89.sc.0.test.0.r529.20241219.a1299ff
+pkgrel=1
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience. Build of the latest git checkout."
 arch=(
   "x86_64"
