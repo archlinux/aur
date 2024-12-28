@@ -3,7 +3,7 @@
 pkgname=python-encode-uri
 _name=${pkgname//-/_}
 pkgver=0.0.3
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="Encodes a URI by replacing each instance of certain characters."
 arch=('any')
@@ -28,6 +28,7 @@ sha256sums=('afb67110d593f8024bde269ec2d4789332fe7028d907bf91e32c14f422bf9581')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 

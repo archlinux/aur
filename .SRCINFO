@@ -1,7 +1,7 @@
 pkgbase = python-encode-uri
 	pkgdesc = Encodes a URI by replacing each instance of certain characters.
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 4
 	url = https://pypi.org/project/python-encode-uri
 	arch = any
 	license = MIT
