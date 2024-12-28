@@ -1,7 +1,7 @@
 pkgbase = python-download
 	pkgdesc = Python for download.
 	pkgver = 0.0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/python-download
 	arch = any
 	license = MIT

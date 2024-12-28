@@ -3,7 +3,7 @@
 pkgname=python-download
 _name=${pkgname//-/_}
 pkgver=0.0.3.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python for download."
 arch=('any')
@@ -34,6 +34,7 @@ sha256sums=('9f86cced9ac48af00f988e07e4638f78815f3d3b7ff3a646061a53753fb43c85')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 
