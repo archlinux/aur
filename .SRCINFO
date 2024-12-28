@@ -1,7 +1,7 @@
 pkgbase = python-urlopen
 	pkgdesc = Python urlopen wrapper.
 	pkgver = 0.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/python-urlopen
 	arch = any
 	license = MIT
