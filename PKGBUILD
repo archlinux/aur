@@ -6,9 +6,9 @@
 
 _pkgname="darkly"
 pkgbase="$_pkgname-git"
-pkgver=0.5.13.r7.g5dd83d9
+pkgver=0.5.13.r9.g5e74e10
 pkgrel=1
-pkgdesc="Modern style for KDE/Qt applications"
+pkgdesc="Modern style for KDE/Qt applications (fork of Lightly)"
 url="https://github.com/Bali10050/Darkly"
 arch=('x86_64' 'aarch64')
 license=("GPL-2.0-or-later")
@@ -126,7 +126,7 @@ if [[ "${_build_qt5::1}" == "t" ]]; then
   pkgname+=("$_pkgname-qt5-git")
 
   package_darkly-qt5-git() {
-    pkgdesc="Modern style for KF5/Qt5 applications"
+    pkgdesc="Modern style for KF5/Qt5 applications (fork of Lightly)"
 
     depends=(
       "$_pkgname-qt6-git"
@@ -154,7 +154,7 @@ if [[ "${_build_qt6::1}" == "t" ]]; then
   pkgname+=("$_pkgname-qt6-git")
 
   package_darkly-qt6-git() {
-    pkgdesc="Modern style for KF6/Qt6 applications"
+    pkgdesc="Modern style for KF6/Qt6 applications (fork of Lightly)"
 
     depends=("${_depends_qt6[@]}")
 
