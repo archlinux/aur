@@ -1,7 +1,7 @@
 _pkgname=glog
 pkgname=mingw-w64-google-$_pkgname
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="Logging library for C++ (mingw-w64)"
 arch=(any)
 license=('custom:BSD3')
@@ -9,7 +9,7 @@ url='https://github.com/google/glog'
 makedepends=('mingw-w64-cmake')
 options=(!strip !buildflags staticlibs)
 source=("glog-$pkgver.tar.gz::https://github.com/google/glog/archive/v$pkgver.tar.gz")
-sha512sums=('7222bb432c2b645238018233b2d18f254156617ef2921d18d17364866a7a3a05533fff1d63fd5033e1e5d3746a11806d007e7a36efaff667a0d3006dee45c278')
+sha512sums=('2dabac87d44e4fe58beceb31b22be732b47df84c22f1af8c0e7d0f262de939889de1f16025c1256539f2833ef3393bc92034e983aa2886752bb8705801a68630')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
