@@ -1,7 +1,7 @@
 pkgbase = uotantoolbox_linux-bin
-	pkgdesc = 鱼滩工具箱,为玩机发烧友而生 支持OpenHarmony和HarmonyOS NEXT设备
+	pkgdesc = 鱼柚坛工具箱 NT,为玩机发烧友而生。
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://toolbox.uotan.cn/
 	arch = x86_64
 	arch = arm64
