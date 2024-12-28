@@ -1,4 +1,3 @@
 [libnick]
-source = "github"
-github = "NickvisionApps/libnick"
-use_max_tag = true
+source = "git"
+git = "https://github.com/NickvisionApps/libnick.git"
