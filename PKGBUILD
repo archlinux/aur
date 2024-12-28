@@ -4,7 +4,7 @@
 
 pkgname="automx2"
 pkgver="2024.2"
-pkgrel=1
+pkgrel=2
 pkgdesc="Mail User Agent (email client) configuration made easy"
 backup=("etc/automx2/automx2.conf")
 install="install.sh"

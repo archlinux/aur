@@ -1,7 +1,7 @@
 pkgbase = automx2
 	pkgdesc = Mail User Agent (email client) configuration made easy
 	pkgver = 2024.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rseichter/automx2
 	install = install.sh
 	arch = any
