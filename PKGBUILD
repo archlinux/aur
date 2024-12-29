@@ -3,14 +3,14 @@ pkgver=0.0.19bc636a
 pkgrel=1
 pkgdesc="glscopeclient and other client applications for libscopehal"
 arch=('x86_64')
-url="https://github.com/glscopeclient/scopehal-apps"
+url="https://github.com/ngscopeclient/scopehal-apps"
 license=('BSD-3-Clause')
 groups=()
 depends=('gtkmm3' 'libsigc++' 'ffts-git' 'openmp' 'glfw' 'yaml-cpp' 'glew' 'libsigc++-3.0' 'hidapi>=0.13.1')
 # could be also built against 'libsigc++' (2.x version) instead of 'libsigc++-3.0', what should be our target?
 optdepends=('libvulkan.so'  'spirv-tools' 'shaderc' 'liblxi' 'linux-gpib' )
 makedepends=('cmake' 'git' 'vulkan-headers' 'catch2')
-source=("git+https://github.com/glscopeclient/scopehal-apps.git"
+source=("git+https://github.com/ngscopeclient/scopehal-apps.git"
   "modules.patch")
 sha256sums=('SKIP'
   '30f8bac9602eda284761339365d3c914c6fd661e70bb51c7675081e6aef5a27b')
