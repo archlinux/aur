@@ -1,15 +1,18 @@
 pkgbase = python-cement
-	pkgdesc = CLI Application Framework for Python
-	pkgver = 3.0.10
+	pkgdesc = CLI application framework for Python
+	pkgver = 3.0.12
 	pkgrel = 1
 	url = https://builtoncement.com/
 	arch = any
-	license = Apache2
+	license = Apache-2.0
 	makedepends = python
-	makedepends = python-distribute
-	source = https://pypi.io/packages/source/c/cement/cement-3.0.10.tar.gz
-	md5sums = 26b81fc5c2c5f3c40d7fd093b2fbea58
-	sha256sums = 73d1015ebf9b8df13e6bc987edf0d4be3f1c8b4438921eea8d66cbb5504aee15
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-pdm-backend
+	source = https://pypi.io/packages/source/c/cement/cement-3.0.12.tar.gz
+	md5sums = e17409cbf91cba60ea9dcba07bea529e
+	sha256sums = 9c4a7c6c644edb06d0a9d4fe246c9be06b0ba713a283e9288a6c4676c3e0c15b
 
 pkgname = python-cement
-	depends = python
