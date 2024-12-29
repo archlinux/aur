@@ -1,0 +1,13 @@
+diff --git a/include/sol/stack_core.hpp b/include/sol/stack_core.hpp
+index aef8e47e..5b86db5b 100644
+--- a/include/sol/stack_core.hpp
++++ b/include/sol/stack_core.hpp
+@@ -43,6 +43,8 @@
+ #include <algorithm>
+ #include <sstream>
+ #include <optional>
++#include <stdexcept>
++#include <limits>
+ 
+ namespace sol {
+        namespace detail {

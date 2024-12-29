@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 466ba82..7b9e7b3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -78,7 +78,7 @@ if (BUILD_BIN)
+       ${LUA_DIR}/linit.c
+   )
+   add_library(lua STATIC ${LUA_SRC})
+-  target_compile_definitions(lua PRIVATE LUA_COMPAT_5_2)
++  target_compile_definitions(lua PRIVATE LUA_USE_POSIX)
+   target_include_directories(lua INTERFACE ${LUA_DIR})
+ 
+   # Sol2
