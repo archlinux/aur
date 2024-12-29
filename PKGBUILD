@@ -53,14 +53,6 @@ depends_kf5=(
 
 depends=("${depends_kf6[@]}" "${depends_kf5[@]}")
 
-conflicts=(
-  lightly-kf6
-  lightly-qt
-  lightly-qt6-bin
-  lightly-qt6
-  darkly-bin
-)
-
 pkgver() {
   cd "$srcdir/$pkgname.git"
   git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -79,11 +71,7 @@ build() (
   )
 
   cmake "${cmake_options[@]}"
-
-  # for build optimization: use all cores -1 to not overload system
-
-  printf "Using $(($(nproc) - 1)) cores\n"
-  cmake --build $build_dir -j $(($(nproc) - 1))
+  cmake --build $build_dir
 )
 
 package() (
