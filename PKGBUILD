@@ -3,7 +3,7 @@
 
 pkgname=mixing-station
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Mixer remote control for multiple mixers'
 arch=('any')
 url='https://mixingstation.app/'
@@ -18,7 +18,7 @@ source=(
   'ms-icon.png::https://mixingstation.app/ms-docs/assets/ms.png'
   'mixing-station.desktop')
 sha256sums=(
-  '5e02636359918ffd4e5d6786858d434d826403b340322ee34be8ba6838cbe901' # release.zip
+  'aeab5c63e81cebb4a82331773682d2532941a59d379e094f41380b12e4c2bb79' # release.zip
   '2bf580819e9ddb5183d7d1a260ed50e759339038fc767c5a065333d7aebb46f9' # mixing-station
   'a5d350e62b37f9394944421d94aaa1a823f396a0e76727cb37898029bc5d77bf' # copyright.txt
   '2a9b5fedbaf45ff7c7822b9cfc6dd50541b68ca39545611814f034608c2f9a00' # ms-icon.png
