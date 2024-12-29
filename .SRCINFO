@@ -1,6 +1,6 @@
 pkgbase = kak-cd-git
 	pkgdesc = Commands to change or print working directory
-	pkgver = r11.6f15118
+	pkgver = r10.0f775fe
 	pkgrel = 1
 	url = https://github.com/Delapouite/kakoune-cd
 	arch = any
