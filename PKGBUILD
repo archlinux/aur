@@ -5,7 +5,7 @@
 
 _pkg=cado-nfs
 pkgname=${_pkg}-git
-pkgver=20240318.a24829267
+pkgver=20241219.cb69f536e
 pkgrel=1
 pkgdesc="Implementation of the Number Field Sieve (NFS) algorithm for factoring integers"
 arch=('x86_64')
@@ -13,7 +13,7 @@ url="http://cado-nfs.gforge.inria.fr/"
 license=('LGPL2')
 # We configure with optional curl, hwloc, gmp-ecm.
 # Configuring with hwloc makes binaries in linalg/bwc depend on it.
-depends=('gmp' 'python' 'sqlite' 'hwloc')
+depends=('gmp' 'python' 'sqlite' 'hwloc' 'python-flask' 'python-requests')
 makedepends=('git' 'cmake' 'inetutils' 'curl' 'gmp-ecm')
 optdepends=('curl: for cado-nfs-client.py'
             'gmp-ecm: for JL DLP polynomial selection'
