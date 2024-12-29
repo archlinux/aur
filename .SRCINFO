@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-extension-gtile-git
 	pkgdesc = A window tiling extension for GNOME
-	pkgver = 53.r0.g138a98c
+	pkgver = 63.r0.gee8014c
 	pkgrel = 1
 	url = https://github.com/gTile/gTile
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = git
-	makedepends = npm
+	makedepends = nvm
 	depends = gnome-shell
 	provides = gnome-shell-extension-gtile
 	conflicts = gnome-shell-extension-gtile
