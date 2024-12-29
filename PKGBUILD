@@ -3,13 +3,13 @@
 # Contributor: Fabio Lolix <fabio.loli@disroot.org>>
 
 pkgname=free-delta
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="An Open Source System for Processing Taxonomic Descriptions"
 arch=('x86_64')
 url="http://freedelta.sourceforge.net/"
 #url="https://www.delta-intkey.com/"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=(gtk2 classic-delta)
 makedepends=(lazarus imagemagick git)
 source=("git+https://github.com/maurobio/freedelta.git#tag=v$pkgver"
@@ -19,11 +19,11 @@ source=("git+https://github.com/maurobio/freedelta.git#tag=v$pkgver"
 	"https://packages.lazarus-ide.org/HtmlViewer.zip"
 	"https://packages.lazarus-ide.org/HistoryFiles.zip"
 	"git+https://github.com/skalogryz/richmemo.git")
-sha256sums=('SKIP'
+sha256sums=('e7c9117075d257d14c4aee59dc3ce61eb9d58f257d7805aaa09b3c2f3c3fac35'
             'df398bcf5f3ef5ae7bddd624e309f9b30188eb1200befc436acf11f4a8fcd7c9'
-            'f1016ae77daafcc54e7a5055bfbb08b019ded06036e2766d2dd3b650305dce25'
+            '364cc15da5fbd5ba6e101793f8f6c906ef31aba22ffaf5621d700986d3cbc786'
             '7d7176cb08b546c6f7537032aba9fbca60c72e17cfc66dc320ebcbb8a239b03a'
-            '520f7ec155398c94a96d504453bcc6bfec08108c42e8b5db78c8d7b5187fa04c'
+            '23425f67446a1751858c2a149da7669d1ee297cc2e724da719763ff015f274b4'
             '56921e78696d12690f0123e742d92663706386e6342a46e96a0ed9a14cbecc92'
             'SKIP')
 prepare () {
