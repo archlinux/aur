@@ -2,7 +2,7 @@
 
 pkgname=mkinitcpio-cleviseal-hook
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An initcpio hook to extend PCRs after clevis to prevent unsealing the root volume key after initramfs'
 arch=('any')
 url='https://aur.archlinux.org/mkinitcpio-cleviseal-hook'
@@ -26,5 +26,5 @@ build() {
 package() {
   install -Dm644 "${srcdir}/cleviseal.hook" "${pkgdir}/etc/initcpio/hooks/cleviseal"
   install -Dm644 "${srcdir}/cleviseal.install" "${pkgdir}/etc/initcpio/install/cleviseal"
-  install -Dm755 "${srcdir}/tpm-rebind.sh" "${pkgdir}/usr/sbin/cleviseal-tpm-rebind"
+  install -Dm755 "${srcdir}/tpm-rebind.sh" "${pkgdir}/usr/bin/cleviseal-tpm-rebind"
 }
