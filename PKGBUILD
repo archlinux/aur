@@ -1,66 +1,82 @@
 # Maintainer: Nathan Chere <git@nathanchere.com.au>
+# Contributor: Phillip Schichtel <phillip@schich.tel>
 pkgname=grayjay
 pkgver=3
-pkgrel=1
+pkgrel=2
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
 provides=('grayjay')
 conflicts=('grayjay-bin')
 conflicts=('grayjay-git')
-url="https://github.com/futo-org/Grayjay.Desktop"
+options=('!strip' 'staticlibs')
+_futo_videostreaming_base='https://gitlab.futo.org/videostreaming'
+url="${_futo_videostreaming_base}/Grayjay.Desktop"
 license=('Source First License 1.1')
-depends=('dotnet-runtime' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libsecret' 'libappindicator-gtk3')
-makedepends=('dotnet-sdk' 'git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/futo-org/Grayjay.Desktop/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d92e55a3c186b5a7549a956e08952ca6655d4941ffb08ed602b3a939b555cafb')
+depends=('ffmpeg' 'libsodium')
+makedepends=('dotnet-sdk>=8' 'dotnet-sdk<9' 'git')
+source=("${pkgname}::git+${_futo_videostreaming_base}/Grayjay.Desktop.git#commit=3b3e83f94dd196f25ff1fea1214ebacce763ee4e"
+        "${pkgname}.desktop"
+        "${pkgname}.sh"
+        "Grayjay.Desktop.CEF.csproj.user"
+        "FUTO.MDNS.csproj.user")
+sha256sums=('837523d79a526822ae5b6bdf26edbcdeaf15a37c7622f977928f1af9556f81ce'
+            'a058a42827e66bebb74c5b19479612809a569fbe4aca6d1f90b50927a6b59f1c'
+            'e73c73564dd6d1e4fc99b2151a8c0511dee103969a85595564aa20a2d2ba854a'
+            '16012059237ee70057bcb78926729452f6922d14050f022e4c1b6826eb6f7185'
+            '866d23e27921778ea28111a261f10b1a1c5b7b9b62a204ec29125c72da59de45')
 
 prepare() {
-    cd "$srcdir/grayjay-desktop"
-    git config submodule.FUTO.MDNS.url https://github.com/futo-org/FUTO.MDNS.git
-    git config submodule.Grayjay.Engine.url https://github.com/futo-org/Grayjay.Engine.git
-    git config submodule.JustCef.url https://github.com/futo-org/JustCef.git
+    cd "${srcdir}/${pkgname}"
+    git config submodule.FUTO.MDNS.url "${_futo_videostreaming_base}/FUTO.MDNS.git"
+    git config submodule.Grayjay.Engine.url "${_futo_videostreaming_base}/Grayjay.Engine.git"
+    git config submodule.JustCef.url "${_futo_videostreaming_base}/JustCef.git"
     git submodule update --init --recursive
+
+    cp "${srcdir}/Grayjay.Desktop.CEF.csproj.user" Grayjay.Desktop.CEF
+    cp "${srcdir}/FUTO.MDNS.csproj.user" FUTO.MDNS/FUTO.MDNS
 }
 
+_configuration="Release"
+_target="linux-x64"
+
 build() {
-    cd "$srcdir/grayjay-desktop"
-    bash ./build.sh
+    cd "${srcdir}/${pkgname}"
+
+    # Build front-end
+    cd Grayjay.Desktop.Web
+    npm install
+    npm run build
+    cd ..
+
+    # Publish CEF
+    local _targetdir="Grayjay.Desktop.CEF/bin/${_configuration}/net8.0/${_target}"
+    rm -R "${_targetdir}" 2> /dev/null || true
+    mkdir -p "${_targetdir}/publish/wwwroot"
+    cp -a "Grayjay.Desktop.Web/dist" "${_targetdir}/publish/wwwroot/web"
+
+    cd Grayjay.Desktop.CEF
+    dotnet publish -r "${_target}" -c "${_configuration}"
+    cd ..
 }
 
 package() {
-    cd "${srcdir}/grayjay-desktop/Grayjay.Desktop.CEF/bin/Release/net8.0/linux-x64/publish"
-
     # Create necessary directories
-    install -dm755 "${pkgdir}/opt/grayjay"
+    install -dm755 "${pkgdir}/opt/${pkgname}"
     install -dm755 "${pkgdir}/usr/bin"
     install -dm755 "${pkgdir}/usr/share/applications"
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-
-    # Create launcher script
-    cat > "${pkgdir}/usr/bin/grayjay" << 'EOF'
-#!/bin/sh
-cd /opt/grayjay && exec ./Grayjay --no-sandbox "$@"
-EOF
-    chmod 755 "${pkgdir}/usr/bin/grayjay"
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
     # Copy application files
-    cp -a ./* "${pkgdir}/opt/grayjay/"
-    chmod -R u=rwX,g=rX,o=rX "${pkgdir}/opt/grayjay/"
+    local _appdir="${pkgdir}/opt/${pkgname}"
+    cp -va "${srcdir}/${pkgname}/Grayjay.Desktop.CEF/bin/${_configuration}/net8.0/${_target}/publish/." "${_appdir}"
+    rm -v "${_appdir}/ffmpeg"
+    rm -v "${_appdir}/Portable"
+    rm -v "${_appdir}/libsodium.so"
+    find "${_appdir}" -type f -name '*.so' -o -name '*.so.*' -o -name 'dotcefnative' -exec chmod a+x "{}" \;
 
-    # Create desktop entry
-    cat > "${pkgdir}/usr/share/applications/grayjay.desktop" << EOF
-[Desktop Entry]
-Name=Grayjay
-Comment=Privacy-respecting client for YouTube, Rumble, Twitch, Spotify etc
-Exec=/usr/bin/grayjay --no-sandbox
-Icon=grayjay
-Terminal=false
-Type=Application
-Categories=Network;Video;AudioVideo;
-EOF
-
-    # Install icon
-    cd "${srcdir}/grayjay-desktop/Grayjay.Desktop.CEF"
-    install -Dm644 "grayjay.png" \
-        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/grayjay.png"
+    install -Dm755 "${srcdir}/grayjay.sh" "${pkgdir}/usr/bin/grayjay"
+    install -Dm644 "${srcdir}/grayjay.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "${srcdir}/grayjay/Grayjay.Desktop.CEF/grayjay.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+    install -Dm644 "${srcdir}/grayjay/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
