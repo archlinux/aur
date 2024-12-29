@@ -1,0 +1,15 @@
+pkgbase = datatype99
+	pkgdesc = Algebraic data types for C99
+	pkgver = 1.6.4
+	pkgrel = 1
+	url = https://github.com/hirrolot/datatype99
+	arch = any
+	license = MIT
+	checkdepends = cmake>=3.16
+	depends = metalang99
+	source = datatype99-1.6.4.tar.gz::https://github.com/hirrolot/datatype99/archive/refs/tags/v1.6.4.tar.gz
+	source = datatype99_cmake_system_libs.patch
+	sha256sums = f8488decc7ab035e3af77ee62e64fc678d5cb57831457f7270efe003e63d6f09
+	sha256sums = a19bf501291061ed836231340a28106c922952a7cdde9d55c6d8438bf03dc196
+
+pkgname = datatype99

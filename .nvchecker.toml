@@ -1,0 +1,4 @@
+[datatype99]
+source = "git"
+git = "https://github.com/hirrolot/datatype99.git"
+prefix = "v"
