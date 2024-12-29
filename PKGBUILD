@@ -1,8 +1,8 @@
 
 # Maintainer: noTmeDev <notmedev28@gmail.com>
 pkgname='termtree'
-pkgver=2.3.1
-pkgrel=2
+pkgver=2.3.2
+pkgrel=1
 pkgdesc="A file tree view"
 arch=('x86_64')
 url="https://github.com/bendikMichal/termtree"
