@@ -1,0 +1,4 @@
+[smolrtsp-libevent]
+source = "git"
+git = "https://github.com/OpenIPC/smolrtsp-libevent.git"
+prefix = "v"
