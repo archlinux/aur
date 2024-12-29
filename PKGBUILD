@@ -2,7 +2,7 @@ _pkgname=slimevr
 pkgname=$_pkgname-bin
 pkgver=0.13.2
 _tag=v0.13.2
-pkgrel=4
+pkgrel=5
 pkgdesc="VR Full Body Tracking System"
 arch=('x86_64')
 url="https://github.com/SlimeVR/SlimeVR-Server"
@@ -24,7 +24,7 @@ source=("$url/releases/download/$_tag/$_appimage"
 		"$url/raw/$_tag/LICENSE-MIT"
 		"$url/raw/$_tag/LICENSE-APACHE")
 noextract=()
-sha512sums=('ebb1f349ef4b6478c44b5da1beb8abfad8b6dfead14194a32a6610ab54ba34f63b28bf60c54f8a02ec3cc26842d6967f9245e46221103e49b118250193d61c7f'
+sha512sums=('c42fe0efbd126bfa6b58862494ac356e489f65ac38003e15a9796ff02c96a17b21841a78ed5463f0c9a55dd479367cccfdc57040d3ff364360ab8f4b844c0444'
             '3b6306600ce9420d982a589293281db31c3c013bc9e0a829ae85e924f1318fa420bad7c73d0b1924ffdc74a92d44793de749daccd383ddcdc4c82169bf1d7e9d'
             '530b18b93fcec33499964bcbc019398194035247efdf6c1a8bf78fb56c7e1e0e401b02287b5201423b2bcfb4f8c7fddbf0aba161e3909ac25078b426459558ae')
 validpgpkeys=()
@@ -34,7 +34,8 @@ prepare() {
   chmod +x "$_appimage"
   ./"$_appimage" --appimage-extract
   # Create an exec file with an environment variable that disables AppImageLauncher integration
-  echo env APPIMAGELAUNCHER_DISABLE=true /opt/$_pkgname/$_pkgname > $_pkgname
+  echo '#!/usr/bin/env sh' > $_pkgname
+  echo env APPIMAGELAUNCHER_DISABLE=true /opt/$_pkgname/$_pkgname >> $_pkgname
 }
 
 package() {
