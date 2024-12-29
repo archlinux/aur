@@ -2,8 +2,8 @@
 
 pkgname=python-clouddrive
 _name=${pkgname#python-}
-pkgver=0.0.12.4
-pkgrel=4
+pkgver=0.0.12.7.1
+pkgrel=1
 epoch=
 pkgdesc="Python wrapper for CloudDrive."
 arch=('any')
@@ -47,7 +47,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('83dab4bed4513cec054d45cd957a51d2d4f6d422c343554a38088574f0a4e3a6')
+sha256sums=('4ccf1534e9666b96ff3a7204a9b94967cbe48cc1bece4e03108fd9ab286f8b2b')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
