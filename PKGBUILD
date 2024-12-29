@@ -2,7 +2,7 @@
 
 pkgname=python-p115servedb
 _name=${pkgname#python-}
-pkgver=0.0.5.4.1
+pkgver=0.0.5.4.2
 pkgrel=1
 epoch=
 pkgdesc="115 网盘基于 p115updatedb 导出数据库的挂载服务"
@@ -43,7 +43,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('d526d29cc77fdc9ad925918e22f93d854ef7a270d20cd518ccb6e5efd005a258')
+sha256sums=('ad05ef9ac9b419cacdcd48a26c9e0b73c824c31849588890ade4791527de03ac')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
