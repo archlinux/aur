@@ -4,7 +4,7 @@ pkgver=0.0.9.r1.g957a15f
 pkgrel=1
 pkgdesc="Generate SDL2 Controller mapping strings"
 arch=('any')
-url='https://gitlab.com/ryochan7/$base_name'
+url="https://gitlab.com/ryochan7/$base_name"
 depends=('sdl2' 'qt6-base>=6.4' 'qt6-declarative>=6.4')
 makedepends=('cmake' 'git')
 source=("git+https://gitlab.com/ryochan7/$base_name")
