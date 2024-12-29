@@ -1,13 +1,13 @@
-# Maintainer: Midov <midov@midov.pl>
+# Contributor: Midov <midov@midov.pl>
 
 pkgname=pantalaimon
 pkgver=0.10.5
-pkgrel=5
+pkgrel=6
 pkgdesc='Pantalaimon is an end-to-end encryption aware Matrix reverse proxy daemon.'
 arch=('any')
 url='https://github.com/matrix-org/pantalaimon'
 license=('Apache')
-depends=('python' 'libolm' 'python-matrix-nio<0.20' 'python-prompt_toolkit' 'python-janus' 'python-peewee' 'python-logbook' 'python-aiohttp' 'python-cachetools' 'python-pycryptodome' 'python-unpaddedbase64' 'python-h2' 'python-h11' 'python-notify2' 'python-pydbus' 'python-olm' 'python-jsonschema' 'python-atomicwrites' 'python-click' 'python-appdirs' 'python-keyring>=21.2.1' 'python-future' 'python-jaraco.classes')
+depends=('python' 'python-matrix-nio' 'python-prompt_toolkit' 'python-janus' 'python-peewee' 'python-logbook' 'python-aiohttp' 'python-cachetools' 'python-notify2' 'python-pydbus' 'python-jsonschema' 'python-click' 'python-appdirs' 'python-keyring>=21.2.1' 'python-attrs' 'python-dbus' 'glib2' 'python-multidict' 'python-gobject')
 makedepends=('python-setuptools')
 source=("https://github.com/matrix-org/pantalaimon/archive/${pkgver}.tar.gz"
         "${pkgname}.service")
