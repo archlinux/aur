@@ -55,8 +55,6 @@ depends=(
 	"libdrm"
 	"mesa"
 	"bash"
-	"lsb-release"
-	"psmisc"
 )
 
 optdepends=(
