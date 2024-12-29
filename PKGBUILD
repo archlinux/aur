@@ -11,7 +11,7 @@ url='https://aur.archlinux.org/mkinitcpio-cleviseal-hook'
 license=('MIT')
 depends=('clevis' 'tpm2-tools' 'mkinitcpio' 'mkinitcpio-clevis-hook' 'python' 'python-yaml')
 source=(
-  'tpm-rebind.sh'
+  'tpm-rebind.py'
   'cleviseal.hook'
   'cleviseal.install'
 )
