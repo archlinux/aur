@@ -6,7 +6,7 @@
 # Maintainer: Lucas Moidel <lucas122133@gmail.com>
 pkgname=fjord-engine-git
 pkgver=0.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A simple 2d game engine based off of SDL2"
 arch=(x86_64)
 url="https://github.com/Lucasmoidel/Fjord.git"
