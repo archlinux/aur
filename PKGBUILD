@@ -14,9 +14,9 @@ makedepends=(
   python-poetry-core
   python-installer
 )
-source=($_pkgname::git+$url.git)
 provides=(python-$_pkgname)
 conflicts=(python-$_pkgname)
+source=($_pkgname::git+$url.git)
 sha256sums=(SKIP)
 
 pkgver() {
