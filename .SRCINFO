@@ -8,6 +8,7 @@ pkgbase = gforth
 	arch = x86_64
 	arch = armv6h
 	license = GPL-3.0-or-later
+	makedepends = texlive-meta
 	depends = libtool
 	depends = texinfo
 	options = !lto
