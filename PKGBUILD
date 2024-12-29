@@ -1,14 +1,14 @@
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Excitable Snowball <excitablesnowball@gmail.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=bibcure
 pkgver=0.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Helps you to have a better bibtex file"
 url="https://github.com/bibcure/bibcure"
 arch=('any')
 license=('AGPL3')
-depends=('python-bibtexparser' 'python-future' 'doi2bib' 'title2bib' 'arxivcheck')
+depends=('python-bibtexparser' 'doi2bib' 'title2bib' 'arxivcheck' 'python' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bibcure/bibcure/archive/$pkgver.tar.gz")
 sha256sums=('b87a89ea2c1f7b414c41aba9f382da14cc2dfeb2a5b8c92e04625c745080bd81')
 
