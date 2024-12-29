@@ -3,7 +3,7 @@
 _pkgauthor=VHSgunzo
 _pkgname=sharun
 pkgname=${_pkgname}-bin
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Run dynamically linked ELF binaries everywhere'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -18,9 +18,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[0]}")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[1]}")
 sha256sums=('39f388e52094ccc94bf793a75c8021fb673fcff2b8e10c316501c9d09ad8cd1a'
-            '17191be70bda57af859858fa9e9943750beeb53ae0c2306fd042343f39340f5d')
-sha256sums_x86_64=('ea660a65656340db29fba500275611d28e0945578cbf975eea1559e30402311a')
-sha256sums_aarch64=('0980db893b9fa03351ac712eb1b7dd19d1f9425e32000f82e825b01f4dbbd087')
+            '0a031cdb7e216964784578cc50268e02072550953f840dbe261e4bd32ae4bcd9')
+sha256sums_x86_64=('7b6e9f2aeb35caa80ae226a44bcd62dfaeee87992e4a65e916b35fb2125a7f97')
+sha256sums_aarch64=('d13268ad1920c4c440696efa5b2a875df3dbf9724e26e70ca1d6f7e4a89de430')
 
 
 package() {
