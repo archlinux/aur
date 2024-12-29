@@ -1,0 +1,15 @@
+pkgbase = smolrtsp-libevent-git
+	pkgdesc = SmolRTSP + libevent 2.x
+	pkgver = 0.1.0.r1.g7451e74
+	pkgrel = 1
+	url = https://github.com/OpenIPC/smolrtsp-libevent
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = libevent>=2
+	provides = smolrtsp-libevent=0.1.0
+	conflicts = smolrtsp-libevent
+	source = smolrtsp-libevent::git+https://github.com/OpenIPC/smolrtsp-libevent.git
+	sha256sums = SKIP
+
+pkgname = smolrtsp-libevent-git
