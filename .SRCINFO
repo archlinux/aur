@@ -1,0 +1,14 @@
+pkgbase = revq
+	pkgdesc = A CLI tool to seach and filter GitHub pull requests
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/k3ii/revq
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	options = !lto
+	source = revq-0.1.0.tar.gz::https://github.com/k3ii/revq/archive/v0.1.0.tar.gz
+	sha256sums = 63062e78d634426a2db48b4df2712dd04a6782f7cb78a7bb791d46906352d580
+
+pkgname = revq
