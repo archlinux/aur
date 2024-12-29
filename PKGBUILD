@@ -20,7 +20,7 @@ md5sums=(
 )
 
 build() {
-  printf 'No build step needed'
+  echo 'No build step needed'
 }
 
 package() {
