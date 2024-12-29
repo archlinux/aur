@@ -1,9 +1,7 @@
-# Maintainer: PAPPY <pappy _AT_ a s c e l i o n _DOT_ com>
-# Old Maintainer: Jean Lucas <jean@4ray.co>
-# Contributor: Sander Zuidema <s.zuidema at bazix dot nl>
+# Maintainer: pappy <pa314159@users.noreply.github.com>
 
 pkgname=gluon-scenebuilder
-pkgver=22.0.0
+pkgver=23.0.1
 pkgrel=1
 pkgdesc="Open-source drag & drop UI design tool for JavaFX (Java 8) by Gluon (binary)"
 arch=('any')
@@ -12,7 +10,7 @@ license=('BSD')
 options=(!strip)
 conflicts=('javafx-scenebuilder')
 source=(http://download.gluonhq.com/scenebuilder/$pkgver/install/linux/SceneBuilder-$pkgver.deb)
-sha512sums=('52bc2430d9a2e468873e35833624ae0c6987ffb5571c16616f40efbb4303f37c56256c086584c278a3bcfc5b870e831b14ef99a98a5ab501260d22a615ebf3a8')
+sha512sums=('5a6e4d6bd46504bc0661d422f49b682853154e2b6fe648963aea59d517fe9372b5605e6e0a488fd38536b3e674ee3bfafd7e9a64bac472536bb872729125e08e')
 
 package() {
 	bsdtar -xJ -C $pkgdir -f $srcdir/data.tar.xz
