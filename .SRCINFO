@@ -1,6 +1,6 @@
 pkgbase = python-p115nano302
 	pkgdesc = 115 nano 302 backend.
-	pkgver = 0.0.7.1
+	pkgver = 0.0.7.2
 	pkgrel = 1
 	url = https://pypi.org/project/p115nano302
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-p115nano302
 	conflicts = python-p115nano302
 	options = !strip
 	options = !debug
-	source = p115nano302-0.0.7.1.tar.gz::https://files.pythonhosted.org/packages/source/p/p115nano302/p115nano302-0.0.7.1.tar.gz
-	sha256sums = 964bacc4b7a7d6a662b6cc54012f1d7b6f32d873a3ebbf454c0e2e613aba5648
+	source = p115nano302-0.0.7.2.tar.gz::https://files.pythonhosted.org/packages/source/p/p115nano302/p115nano302-0.0.7.2.tar.gz
+	sha256sums = 6f341916e15498989176fe4d4683f1ed26cd757fa25d51a3fbde68964dd67d48
 
 pkgname = python-p115nano302
