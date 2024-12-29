@@ -45,7 +45,7 @@ package() {
 	# Install firmware
 	install -m644 -D -t "${pkgdir}/usr/lib/firmware/" usr/lib/firmware/*.bin
 	# 复制软链接 覆盖
-	find "${pkgdir}/usr/lib/firmware" -maxdepth 1 -type l -exec cp -P -f {} "${pkgdir}/usr/lib/firmware/" \;
+	find "usr/lib/firmware" -maxdepth 1 -type l -exec cp -P -f {} "${pkgdir}/usr/lib/firmware/" \;
 
 	# Install firmware DSDT and EDID
 	install -m644 -D -t "${pkgdir}/usr/lib/firmware/dsdt/" usr/lib/firmware/dsdt/*
