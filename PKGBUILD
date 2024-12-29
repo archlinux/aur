@@ -2,7 +2,7 @@
 
 pkgname=python-reverse-proxy
 _name=${pkgname//-/_}
-pkgver=0.0.9.1
+pkgver=0.0.9.2
 pkgrel=1
 epoch=
 pkgdesc="Python reverse proxy."
@@ -30,7 +30,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('a46f9909fea280565cb506ccc257ea19f295162b7aac6bc20a7749f0778e9966')
+sha256sums=('e7a104dabadc57bef17148a125d566e02144bfd4a7523a6d567511b10412bf6f')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
