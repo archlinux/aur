@@ -49,7 +49,7 @@ depends=(
 	"libx11"
 	"expat"
 	"libvlc"
-	"jack"
+	"libjack.so"
 	"libxdamage"
 	"libdrm"
 	"mesa"
