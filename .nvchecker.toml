@@ -1,0 +1,4 @@
+[metalang99]
+source = "git"
+git = "https://github.com/hirrolot/metalang99.git"
+prefix = "v"

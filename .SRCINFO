@@ -1,0 +1,12 @@
+pkgbase = metalang99
+	pkgdesc = Full-blown preprocessor metaprogramming
+	pkgver = 1.13.3
+	pkgrel = 1
+	url = https://metalang99.readthedocs.io
+	arch = any
+	license = MIT
+	checkdepends = cmake>=3.16
+	source = metalang99-1.13.3.tar.gz::https://github.com/hirrolot/metalang99/archive/refs/tags/v1.13.3.tar.gz
+	sha256sums = 91fe8d4edcc2e7f91c5b567a2b90f2e30c2373f1ebbabcf209ea0d74f63bc1e9
+
+pkgname = metalang99
