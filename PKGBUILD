@@ -3,20 +3,39 @@
 # Contributor: revelation60 <benruyl@gmail.com>
 pkgname=gnome-shell-extension-gtile
 _uuid=gTile@vibou
-pkgver=62
+pkgver=63
 pkgrel=1
+_nodeversion=20
 pkgdesc="A window tiling extension for GNOME Shell"
 arch=('any')
 url="https://github.com/gTile/gTile"
 license=('GPL-2.0-or-later')
 depends=('gnome-shell')
-makedepends=('git' 'npm' 'typescript')
+makedepends=('git' 'nvm' 'typescript')
 source=("https://github.com/gTile/gTile/archive/V$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('27e46df19d7639b91ec5c6dbf839ee09d24923bdb7384e1361374fb663bac6fb')
+sha256sums=('b8d6fd432e7a572e655dcb662a8f6729e54bfcdb39b4dbd262d61ed9c8c001d7')
+
+_ensure_local_nvm() {
+  # let's be sure we are starting clean
+  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+  export NVM_DIR="$srcdir/.nvm"
+
+  # The init script returns 3 if version specified
+  # in ./.nvrc is not (yet) installed in $NVM_DIR
+  # but nvm itself still gets loaded ok
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
+prepare() {
+  cd gTile-$pkgver
+  _ensure_local_nvm
+  nvm install "${_nodeversion}"
+}
 
 build() {
   cd gTile-$pkgver
   export npm_config_cache="$srcdir/npm_cache"
+  _ensure_local_nvm
   npm install
   npm run build
   npm run build:dist
