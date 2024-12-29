@@ -3,7 +3,7 @@
 pkgbase=img2kvm-rs-git
 pkgname=img2kvm-rs-git
 pkgver=r1.e742a8f
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility that convert disk image in Proxmox VE."
 arch=('x86_64')
 url="https://github.com/ywjno/img2kvm-rs"
@@ -28,10 +28,15 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
+}
+
+prepare() {
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
@@ -39,12 +44,12 @@ build() {
     export CARGO_TARGET_DIR=target
 
     cd "${srcdir}/${pkgname}/"
-    cargo build  --release --all-features
+    cargo build --release --all-features
 }
 
 check() {
     cd "${srcdir}/${pkgname}/"
-    cargo test  --release --all-features
+    cargo test --release --all-features
 }
 
 package() {

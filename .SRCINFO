@@ -1,7 +1,7 @@
 pkgbase = img2kvm-rs-git
 	pkgdesc = A utility that convert disk image in Proxmox VE.
 	pkgver = r1.e742a8f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ywjno/img2kvm-rs
 	install = img2kvm-rs-git.install
 	arch = x86_64
