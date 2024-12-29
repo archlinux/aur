@@ -8,7 +8,7 @@ pkgname=(
   sqlitestudio-plugins
 )
 _pkgname=SQLiteStudio
-pkgver=3.4.12
+pkgver=3.4.13
 pkgrel=1
 pkgdesc='Database manager for SQLite'
 arch=(i686 x86_64)
@@ -33,7 +33,7 @@ source=(
 noextract=(
   ${pkgver}.tar.gz
 )
-sha256sums=('eeae5af364b8a0129ed34715cf2b05a1e7848bb47d56d04e40f0264ad46596c1'
+sha256sums=('5f829540d28a3960de62b980766576f65a462add97b59962796e40eefb0605b6'
             'c5a26a9b9003b04274887a0e0febda13eea49bb46c618eaad0b5b5c88b1cc1d2')
 
 prepare(){
@@ -53,12 +53,11 @@ build(){
 
   msg2 "Making sqlitestudio3-plugins"
   cd "$srcdir"/output/build/Plugins
-  IFS=' ' read -r -a array <<< "$(python3 -V)"
-  ver="python${array[1]%.*}"
-  sed -i "s|python3.*9|$ver|" "$srcdir"/Plugins/ScriptingPython/ScriptingPython.pro
+  ver="$(python -c"import sys;print(sys.version_info.major,sys.version_info.minor,sep='.')")"
+  sed -i "s|python3.*9|python$ver|" "$srcdir"/Plugins/ScriptingPython/ScriptingPython.pro
   qmake ../../../Plugins \
     "INCLUDEPATH += $srcdir/SQLiteStudio3/coreSQLiteStudio" \
-    "INCLUDEPATH += /usr/include/$ver"
+    "INCLUDEPATH += /usr/include/python$ver"
   (
     cd $srcdir/Plugins/DbSqliteCipher
     ln -sf $srcdir/SQLiteStudio3/coreSQLiteStudio/plugins
