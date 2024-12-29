@@ -2,7 +2,7 @@
 # Contributor: Phillip Schichtel <phillip@schich.tel>
 pkgname=grayjay
 pkgver=3
-pkgrel=3
+pkgrel=4
 pkgdesc="Follow creators, not platforms (privacy- and freedom-respecting streaming client)"
 arch=('x86_64')
 provides=('grayjay')
@@ -31,6 +31,7 @@ prepare() {
     git config submodule.Grayjay.Engine.url "${_futo_videostreaming_base}/Grayjay.Engine.git"
     git config submodule.JustCef.url "${_futo_videostreaming_base}/JustCef.git"
     git submodule update --init --recursive
+    git lfs fetch --all
 
     cp "${srcdir}/Grayjay.Desktop.CEF.csproj.user" Grayjay.Desktop.CEF
     cp "${srcdir}/FUTO.MDNS.csproj.user" FUTO.MDNS/FUTO.MDNS

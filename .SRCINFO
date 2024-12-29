@@ -1,7 +1,7 @@
 pkgbase = grayjay
 	pkgdesc = Follow creators, not platforms (privacy- and freedom-respecting streaming client)
 	pkgver = 3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.futo.org/videostreaming/Grayjay.Desktop
 	arch = x86_64
 	license = custom:Source-First-License-1.1
