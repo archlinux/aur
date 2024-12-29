@@ -1,15 +1,16 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-# Submitter: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Contibutor: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 # Contributor: Andrés J. Díaz <ajdiaz@ajdiaz.me>
 
 pkgname=('libolm-git' 'python-olm-git')
 _pkg=olm
-pkgver=3.2.14.r2.g0eb4550
+pkgver=3.2.16.r1.g6d4b5b0
 pkgrel=1
 pkgdesc='An implementation of a well known cryptographic ratchet in C++'
 arch=('x86_64')
 url="https://gitlab.matrix.org/matrix-org/olm"
 license=('Apache')
+depends=('glibc')
 makedepends=(
   'cmake'
   'git'
@@ -18,7 +19,7 @@ makedepends=(
   'python-installer'
   'python-setuptools'
   'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-benchmark' 'python-aspectlib' 'python-future')
+checkdepends=('python-pytest' 'python-pytest-benchmark' 'python-aspectlib')
 source=("$_pkg::git+$url")
 md5sums=('SKIP')
 
@@ -47,7 +48,7 @@ check() {
 }
 
 package_libolm-git() {
-  depends=('gcc-libs')
+  depends+=('gcc-libs')
   provides=('libolm' 'libolm.so')
   conflicts=('libolm')
 
@@ -56,7 +57,7 @@ package_libolm-git() {
 }
 
 package_python-olm-git() {
-  depends=('libolm.so' 'python-cffi' 'python-future')
+  depends+=('libolm.so' 'python')
   provides=('python-olm')
   conflicts=('python-olm')
 
