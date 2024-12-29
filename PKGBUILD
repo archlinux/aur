@@ -2,7 +2,7 @@
 
 _pkgname=iyuuplus
 pkgname="${_pkgname}-git"
-pkgver=20241015.220947
+pkgver=20241229.160638
 pkgrel=1
 pkgdesc="IYUU Auto Reseed Plus"
 arch=("any")
@@ -17,7 +17,7 @@ source=("${_pkgname}::git+${url}.git"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles")
 sha256sums=('SKIP'
-            'e20db7d3e6cdaa5f3b345bde4bd63cde2458b23516c80cfebcf0a32ec19d921c'
+            '2599c5f243b573a4db2ff925e2ad75337338dc61a293b1a1c17acf3681b3d3ff'
             'e64af1d0d088fa30e864897a43597026ee95f5e2590e79ac4055786795c60622'
             '4c0928194248ce56deab7a1eeec78d4a3827d7e8fbceba142b46d4f9c8eed387')
 options=(!strip !debug)
@@ -52,5 +52,5 @@ package() {
     chmod 755 "${pkgdir}/srv/${_pkgname}/start.php"
 
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/srv/${_pkgname}/start.php"     "${pkgdir}/usr/bin/${_pkgname}"
+    ln -s "/srv/${pkgname}/start.php"    "${pkgdir}/usr/bin/${pkgname}"
 }
