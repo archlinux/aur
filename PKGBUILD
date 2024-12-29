@@ -7,11 +7,12 @@ pkgver="0.7.7+r10+g${_commit::7}"
 pkgrel=1
 pkgdesc="Full-featured interfaces for C99"
 arch=('any')
-url="https://github.com/hirrolot/${pkgname}"
+url="https://hirrolot.github.io/slice99"
+_url="https://github.com/hirrolot/${pkgname}"
 license=('MIT')
 checkdepends=('cmake>=3.16')
 _pkgsrc="${pkgname}-${_commit}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/${_commit}.tar.gz")
+source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz")
 sha256sums=('de1ddfc74bf6abb3fdfe57c25f661100c939378196be412aa1deab9567bd0f7e')
 
 check() {
