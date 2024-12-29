@@ -1,0 +1,7 @@
+[openfoam]
+source = "cmd"
+cmd = """
+for i in {12..40}; do git ls-remote \"https://github.com/OpenFOAM/OpenFOAM-$i.git\" &>/dev/null && LATEST=$i || \
+  break; done && git ls-remote --tags \"https://github.com/OpenFOAM/OpenFOAM-${LATEST}.git\" | grep -Eo 'tags/[0-9]{8}' | \
+  tail -n1 | sed 's/tags\\///' | awk \"{print \\\"${LATEST}.\\\" \\$1}\"
+"""

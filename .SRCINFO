@@ -1,11 +1,11 @@
 pkgbase = openfoam
 	pkgdesc = The open source CFD toolbox (www.openfoam.org)
-	pkgver = 11.20240704
+	pkgver = 12.20240902
 	pkgrel = 1
 	url = http://www.openfoam.org
 	install = openfoam.install
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = bash
 	depends = bzip2
 	depends = paraview
@@ -14,8 +14,9 @@ pkgbase = openfoam
 	depends = boost
 	depends = flex
 	depends = cgal
+	depends = trilinos
 	provides = openfoam
-	source = https://github.com/OpenFOAM/OpenFOAM-11/archive/refs/tags/20240704.tar.gz
-	md5sums = 8f0c78639ccf04d941cbafabc8d7ecfa
+	source = openfoam-org-12.20240902.tar.gz::https://github.com/OpenFOAM/OpenFOAM-12/archive/refs/tags/20240902.tar.gz
+	md5sums = 674a453ed1464355d3079eda62f738ba
 
 pkgname = openfoam-org
