@@ -3,44 +3,45 @@
 
 _pkgname="miktex"
 pkgname="${_pkgname}-git"
-pkgver=24.4.r9.g07fb41f
+pkgver=24.12.r11.g4910e19
 pkgrel=1
 pkgdesc="A distribution of the TeX/LaTeX typesetting system"
-arch=('any')
+arch=('x86_64')
 url="https://miktex.org"
 _url="https://github.com/MiKTeX/${_pkgname}"
-license=('custom:MiKTeX license')
-makedepends=('git' 'cmake>=3.12.0' 'apr' 'apr-util' 'boost' 'gmp'
-             'harfbuzz-icu' 'libjpeg' 'pixman' 'poppler' 'libxslt' 'potrace')
-depends=('glibc' 'gcc-libs' 'boost-libs' 'bzip2' 'cairo' 'curl' 'expat'
-         'fontconfig' 'freetype2' 'fribidi' 'gd' 'graphite' 'harfbuzz'
-         'hunspell' 'icu' 'log4cxx' 'xz' 'mpfi' 'mpfr' 'libmspack' 'openssl'
-         'libpng' 'popt' 'poppler-qt6' 'uriparser' 'zlib' 'zziplib' 'qt6-base'
-         'qt6-declarative' 'qt6-tools' 'qt6-5compat')
+license=('custom:MiKTeX License')
+depends=('boost-libs' 'bzip2' 'cairo' 'curl' 'expat' 'fontconfig' 'freetype2'
+         'fribidi' 'gcc-libs' 'gd' 'glibc' 'graphite' 'harfbuzz' 'hunspell'
+         'icu' 'libmspack' 'libpng' 'log4cxx' 'mpfi' 'mpfr' 'openssl'
+         'poppler-qt6' 'popt' 'qt6-5compat' 'qt6-base' 'qt6-declarative'
+         'qt6-tools' 'uriparser' 'xz' 'zlib' 'zziplib')
+makedepends=('apr' 'apr-util' 'boost' 'cmake>=3.12' 'git' 'gmp' 'harfbuzz-icu'
+             'libjpeg' 'libxslt' 'pixman' 'poppler' 'potrace')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
 source=("${_pkgsrc}::git+${_url}.git"
-        "${_pkgname}_fix_outocp.patch")
+        "${_pkgname}_format_security.patch")
 sha256sums=('SKIP'
             'a094dbfb9221664303179e8a3c3093dd4095e05ef0312d41dcd1482bca99b2a5')
 
 pkgver() {
-  cd "${_pkgsrc}"
+  cd "${srcdir}/${_pkgsrc}"
   git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  patch -p1 -i "${srcdir}/${_pkgname}_fix_outocp.patch"
+  patch -Np1 -i "${srcdir}/${_pkgname}_format_security.patch"
 
-  find . -name "*.h"   -exec sed -i 's|log4cxx/rollingfileappender.h|log4cxx/rolling/rollingfileappender.h|g' {} +
-  find . -name "*.cpp" -exec sed -i 's|log4cxx/rollingfileappender.h|log4cxx/rolling/rollingfileappender.h|g' {} +
+  find . -type f \( -name '*.h' -o -name '*.cpp' \) -exec \
+    sed -i 's|log4cxx/rollingfileappender.h|log4cxx/rolling/rollingfileappender.h|g' {} +
 
   cd "cmake/modules"
   cp "FindPOPPLER_QT5.cmake" "FindPOPPLER_QT6.cmake"
-  sed -i 's/QT5/QT6/g' "FindPOPPLER_QT6.cmake"
-  sed -i 's/qt5/qt6/g' "FindPOPPLER_QT6.cmake"
+  sed -e 's/QT5/QT6/g' \
+      -e 's/qt5/qt6/g' \
+      -i "FindPOPPLER_QT6.cmake"
 }
 
 build() {
@@ -67,15 +68,31 @@ package() {
   cd "${srcdir}"
   DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
 
-  cd "${_pkgsrc}"
-  install -Dm644 "README.md"  "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "COPYING.md" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING.md"
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm644 "README.md"    "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "HACKING.md"   "${pkgdir}/usr/share/doc/${_pkgname}/HACKING.md"
+  install -vDm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${_pkgname}/CHANGELOG.md"
+  install -vDm644 "COPYING.md"   "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING.md"
 
-  cd "${pkgdir}/opt/${_pkgname}"  
+  cd "${pkgdir}/opt/${_pkgname}"
   find "share" -type f -exec install -Dm644 "{}" "${pkgdir}/usr/{}" \;
-  sed -i 's/^Exec=miktex-console$/Exec=\/opt\/miktex\/bin\/miktex-console/' "${pkgdir}/usr/share/applications/miktex-console.desktop"
-  rm -rf "share"
+  find "man"   -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/{}" \;
+  rm -rf "share" "man"
 
-  find "man" -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/{}" \;
-  rm -rf "man"
+  cd "${pkgdir}/usr/share/applications"
+  find "icons" -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/{}" \;
+  rm -rf "icons"
+
+  sed -i 's|Exec=|Exec=/opt/miktex/bin/|' "miktex-console.desktop"
+
+  cd "${pkgdir}/usr/share/polkit-1/actions"
+  sed -i 's|/usr/bin|/opt/miktex/bin|' "miktex-console.policy"
+
+  cd "${pkgdir}/opt/${_pkgname}/bin"
+  for _gsu in pkexec kdesu gksu; do
+    ln -s "/usr/bin/${_gsu}" "${_gsu}"
+  done
+
+  install -dm755 "${pkgdir}/usr/bin"
+  find . -type f -name 'miktex*' -exec ln -s "/opt/miktex/bin/{}" "${pkgdir}/usr/bin/{}" \;
 }
