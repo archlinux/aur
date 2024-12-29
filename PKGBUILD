@@ -1,38 +1,47 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Javier Tia <javier dot tia at gmail dot com>
 
-pkgname=libcello
-pkgver=2.1.0
-pkgrel=2
-pkgdesc='Higher level programming library in C'
+_Name="Cello"
+_name="${_Name,,}"
+pkgname="lib${_name}"
+_commit_rel="da28eefbc95d8bd5628e5f1c4cc12bc1b13fef4f" # 2.1.0
+_commit="61ee5c3d9bca98fd68af575e9704f5f02533ae26" # r25
+pkgver="2.1.0+r25+g${_commit::7}"
+pkgrel=1
+pkgdesc="Higher level programming library in C"
 arch=('x86_64')
-url='https://github.com/orangeduck/cello'
-license=('BSD')
+url="https://libcello.org"
+_url="https://github.com/orangeduck/${_Name}"
+license=('BSD-2-Clause')
 depends=('glibc')
-provides=('libCello.so')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-        'Makefile.patch')
-sha256sums=('c138d974325fcb9640307c8b2d5dcc2d7127a1ccc5589d6c0794f86a5cb4001d'
-            'a4930124b2b94ca3f7fffb3328d6b5521244e2b6a20bf418d2068a523c159d46')
-
-prepare() {
-  patch -p1 -d "Cello-$pkgver" < Makefile.patch
-}
+provides=("lib${_Name}.so")
+_pkgsrc="${_Name}-${_commit}"
+source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz")
+sha256sums=('89c928bf356b9dcb563ed9f287771be1279a4b5a2c5c266c0a6bc575ce1ec037')
 
 build() {
-  cd "Cello-$pkgver"
-  make LFLAGS="${LDFLAGS}" CFLAGS+=-I./include
+  cd "${srcdir}/${_pkgsrc}"
+  make CFLAGS="${CFLAGS} -I./include -fPIC" LFLAGS="${LDFLAGS}"
 }
 
 check() {
-  cd "Cello-$pkgver"
+  cd "${srcdir}/${_pkgsrc}"
   make check
 }
 
 package() {
-  cd "Cello-$pkgver"
-  make install PREFIX=/usr DESTDIR="$pkgdir/"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
+  cd "${srcdir}/${_pkgsrc}"
+  # make install PREFIX="${pkgdir}/usr"
 
-# vim:set ft=sh ts=2 sw=2 et:
+  find "include" -type f -exec install -vDm644 "{}" "${pkgdir}/usr/{}" \;
+
+  install -vDm644 "lib${_Name}.so" "${pkgdir}/usr/lib/lib${_Name}.so.${pkgver%%+*}"
+  install -vDm644 "lib${_Name}.a"  "${pkgdir}/usr/lib/lib${_Name}.a"
+  install -vDm644 "README.md"      "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE.md"     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+
+  cd "${pkgdir}/usr/lib"
+  ln -vs "lib${_Name}.so.${pkgver%%+*}" "lib${_Name}.so.${pkgver%%.*}"
+  ln -vs "lib${_Name}.so.${pkgver%%+*}" "lib${_Name}.so"
+}
