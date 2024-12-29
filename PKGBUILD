@@ -1,7 +1,7 @@
 # Maintainer: Sving1024 <sving1024@outlook.com>
 _name=accesser
 pkgname=python-${_name}-git
-pkgver=0.10.0.r3.gc73e35a
+pkgver=0.10.0.r4.gaaa6ec3
 pkgrel=1
 arch=('any')
 pkgdesc="A tool for solving SNI RST"
@@ -34,10 +34,8 @@ source=(
     "${_name}::git+https://github.com/URenko/Accesser.git"
     "accesser.service"
 )
-sha256sums=(
-    'SKIP'
-    'cb16c9771c4fbaf70b6b8f898475d8d024dd57ab385cfecfe364cb678dcbbabe'
-)
+sha256sums=('SKIP'
+            '0ab7e33edd1b9294cb7f47224bae146846a0007d319c30000a564f02e7c16e4d')
 backup=(
     'etc/accesser/pac'
     'etc/accesser/config.toml'
