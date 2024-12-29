@@ -93,7 +93,7 @@ source_loong64=(
 )
 
 
-md5sums=('2cabcc465720117977304b61f32f03b0'
+md5sums=('289f5a646504a8ac5a9ab6a2dcff969a'
          'caa351d13a96f34bee10ed171e7d520d'
          '468e0367346707c026e577e7bf3e3a82')
 md5sums_x86_64=('ed17e297694a869073a4880d7f820703')

@@ -15,5 +15,5 @@ fi
 if [ -f /usr/bin/wechat-sandbox-provider ]; then
 	/usr/bin/wechat-sandbox-provider "$@"
 else
-	/opt/wechat/wechat $@
+	/opt/apps/com.tencent.wechat/files/wechat $@
 fi
