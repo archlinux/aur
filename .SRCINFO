@@ -1,25 +1,28 @@
 pkgbase = grayjay
 	pkgdesc = Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)
 	pkgver = 3
-	pkgrel = 1
-	url = https://github.com/futo-org/Grayjay.Desktop
+	pkgrel = 2
+	url = https://gitlab.futo.org/videostreaming/Grayjay.Desktop
 	arch = x86_64
 	license = Source First License 1.1
-	makedepends = dotnet-sdk
+	makedepends = dotnet-sdk>=8
+	makedepends = dotnet-sdk<9
 	makedepends = git
-	depends = dotnet-runtime
-	depends = gtk3
-	depends = libnotify
-	depends = nss
-	depends = libxss
-	depends = libxtst
-	depends = xdg-utils
-	depends = at-spi2-core
-	depends = libsecret
-	depends = libappindicator-gtk3
+	depends = ffmpeg
+	depends = libsodium
 	provides = grayjay
 	conflicts = grayjay-git
-	source = grayjay-3.tar.gz::https://github.com/futo-org/Grayjay.Desktop/archive/refs/tags/3.tar.gz
-	sha256sums = d92e55a3c186b5a7549a956e08952ca6655d4941ffb08ed602b3a939b555cafb
+	options = !strip
+	options = staticlibs
+	source = grayjay::git+https://gitlab.futo.org/videostreaming/Grayjay.Desktop.git#commit=3b3e83f94dd196f25ff1fea1214ebacce763ee4e
+	source = grayjay.desktop
+	source = grayjay.sh
+	source = Grayjay.Desktop.CEF.csproj.user
+	source = FUTO.MDNS.csproj.user
+	sha256sums = 837523d79a526822ae5b6bdf26edbcdeaf15a37c7622f977928f1af9556f81ce
+	sha256sums = a058a42827e66bebb74c5b19479612809a569fbe4aca6d1f90b50927a6b59f1c
+	sha256sums = e73c73564dd6d1e4fc99b2151a8c0511dee103969a85595564aa20a2d2ba854a
+	sha256sums = 16012059237ee70057bcb78926729452f6922d14050f022e4c1b6826eb6f7185
+	sha256sums = 866d23e27921778ea28111a261f10b1a1c5b7b9b62a204ec29125c72da59de45
 
 pkgname = grayjay
