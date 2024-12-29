@@ -6,8 +6,10 @@ arch=('x86_64')
 url="https://github.com/glscopeclient/scopehal-apps"
 license=('BSD')
 groups=()
-depends=('gtkmm3' 'libsigc++' 'ffts' 'openmp' 'glfw' 'libvulkan.so' 'yaml-cpp' 'glew' 'catch2' 'spirv-tools' 'shaderc' 'liblxi' 'linux-gpib')
-makedepends=('cmake' 'git' 'vulkan-headers')
+depends=('gtkmm3' 'libsigc++' 'ffts-git' 'openmp' 'glfw' 'yaml-cpp' 'glew' 'libsigc++-3.0' 'hidapi>=0.13.1')
+# could be also built against 'libsigc++' (2.x version) instead of 'libsigc++-3.0', what should be our target?
+optdepends=('libvulkan.so'  'spirv-tools' 'shaderc' 'liblxi' 'linux-gpib' )
+makedepends=('cmake' 'git' 'vulkan-headers' 'catch2')
 source=("git+https://github.com/glscopeclient/scopehal-apps.git"
   "modules.patch")
 sha256sums=('SKIP'
