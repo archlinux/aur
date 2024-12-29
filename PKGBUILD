@@ -1,9 +1,9 @@
-# Maintainer: fuero <fuerob@gmail.com>
+# Contributor: fuero <fuerob@gmail.com>
 _pkgname=bashhub-client
 pkgname=${_pkgname}
 # renovate: datasource=github-releases depName=rcaloras/bashhub-client
 pkgver=2.4.1
-pkgrel=6
+pkgrel=7
 pkgdesc='saves every terminal command entered across all sessions and system to the cloud'
 arch=('x86_64')
 _repo_prefix='github.com/rcaloras'
@@ -20,22 +20,21 @@ depends=(
 	python-jsonpickle
 	python-inflection
 	python-humanize
+	python-requests
+	python-click
+	python-dateutil
+	python-future
 	python-npyscreen
 )
 conflicts=(${_pkgname}-git)
 provides=(${_pkgname})
 checkdepends=(
 	python-pytest
-	python-click
-	python-dateutil
-	python-requests
-	python-future
-	python-mock
+	procps-ng
 )
 makedepends=(
 	python-build
     python-installer
-    python-wheel
     python-setuptools
 )
 
