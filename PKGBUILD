@@ -14,6 +14,8 @@ conflicts=('roxide')
 source=("$pkgname-$pkgver::https://github.com/fioncat/roxide/releases/download/v${pkgver}/roxide-x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('7853b6a66bd4186a9e8c3b9c937b28a938ca7ce19f3855da08d14d6fe8d64f63')
 
+options=('!strip' '!debug')
+
 package() {
     install -Dm755 "roxide" "$pkgdir/usr/bin/roxide"
 }

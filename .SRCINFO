@@ -9,6 +9,8 @@ pkgbase = roxide
 	depends = fzf
 	provides = roxide
 	conflicts = roxide
+	options = !strip
+	options = !debug
 	source = roxide-0.17.4::https://github.com/fioncat/roxide/releases/download/v0.17.4/roxide-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = 7853b6a66bd4186a9e8c3b9c937b28a938ca7ce19f3855da08d14d6fe8d64f63
 
