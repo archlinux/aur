@@ -47,13 +47,8 @@ depends_kf5=(
 depends=("${depends_kf6[@]}" "${depends_kf5[@]}")
 
 conflicts=(
-  lightly-kf6
-  lightly-qt
-  lightly-qt6
-  lightly-qt6-bin
   darkly
 )
-
 
 package() (
   cp -R "${srcdir}/usr/" "${pkgdir}/usr"
