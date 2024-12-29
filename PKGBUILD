@@ -26,6 +26,12 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  if [ -e "$BUILDDIR/config.h" ]; then
+    cp "$BUILDDIR/config.h" "$srcdir"/"$pkgname"
+  fi
+}
+
 build() {
   cd "$pkgname"
   make
