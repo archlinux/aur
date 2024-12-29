@@ -2,7 +2,7 @@
 
 pkgname=hyprland-nox
 pkgver=0.46.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks. (w/o XWayland support)"
 arch=('x86_64')
 url='https://github.com/hyprwm/Hyprland'
@@ -15,7 +15,6 @@ depends=('aquamarine'
          'glibc'
          'hyprcursor'
          'hyprgraphics'
-         'hyprland-qtutils'
          'hyprlang'
          'hyprutils'
          'libdrm'
@@ -39,7 +38,8 @@ makedepends=('cmake'
 optdepends=('cmake: to build and install plugins using hyprpm'
             'cpio: to build and install plugins using hyprpm'
             'meson: to build and install plugins using hyprpm'
-            'uwsm: to launch a systemd based session via hyprland-uwsm.desktop')
+            'uwsm: to launch a systemd based session via hyprland-uwsm.desktop'
+            'hyprland-qtutils: Hyprland might invoke this to show some dialogs and popups if available')
 provides=("${pkgname%-nox}")
 conflicts=("${pkgname%-nox}")
 replaces=()

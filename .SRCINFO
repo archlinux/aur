@@ -1,7 +1,7 @@
 pkgbase = hyprland-nox
 	pkgdesc = An independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks. (w/o XWayland support)
 	pkgver = 0.46.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hyprwm/Hyprland
 	arch = x86_64
 	license = BSD-3-Clause
@@ -18,7 +18,6 @@ pkgbase = hyprland-nox
 	depends = glibc
 	depends = hyprcursor
 	depends = hyprgraphics
-	depends = hyprland-qtutils
 	depends = hyprlang
 	depends = hyprutils
 	depends = libdrm
@@ -37,6 +36,7 @@ pkgbase = hyprland-nox
 	optdepends = cpio: to build and install plugins using hyprpm
 	optdepends = meson: to build and install plugins using hyprpm
 	optdepends = uwsm: to launch a systemd based session via hyprland-uwsm.desktop
+	optdepends = hyprland-qtutils: Hyprland might invoke this to show some dialogs and popups if available
 	provides = hyprland
 	conflicts = hyprland
 	source = hyprland-nox::git+https://github.com/hyprwm/Hyprland#tag=v0.46.2
