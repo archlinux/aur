@@ -5,12 +5,12 @@ pkgbase = fum
 	url = https://github.com/qxb3/fum
 	arch = x86_64
 	license = MIT
-	makedepends = rust
-	makedepends = cargo
-	makedepends = git
-	depends = rust
-	depends = cargo
 	depends = glib2
+	depends = dbus
+	depends = ncurses
+	depends = libpng
+	depends = openssl
+	depends = zlib
 	source = https://github.com/qxb3/fum/releases/download/v0.1.4/fum-x86-64_v0.1.4
 	sha256sums = SKIP
 

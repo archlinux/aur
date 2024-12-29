@@ -12,8 +12,7 @@ pkgdesc="A tui-based mpris music client."
 arch=('x86_64')
 url="https://github.com/qxb3/fum"
 license=('MIT')
-depends=('rust' 'cargo' 'glib2')
-makedepends=('rust' 'cargo' 'git')
+depends=('glib2' 'dbus' 'ncurses' 'libpng' 'openssl' 'zlib')
 source=("https://github.com/qxb3/fum/releases/download/v$pkgver/fum-x86-64_v$pkgver")
 sha256sums=('SKIP')
 
