@@ -5,30 +5,34 @@
 pkgbase="gamin"
 pkgname=("${pkgbase}" "${pkgbase}-docs" "python2-${pkgbase}")
 pkgver=0.1.10
-pkgrel=10
+pkgrel=11
 pkgdesc="File and directory monitoring system defined to be a subset of the FAM (File Alteration Monitor)"
 arch=('x86_64' 'i686')
-url="https://download.gnome.org/sources/${pkgbase}"
+url="https://gitlab.gnome.org/Archive/gamin"
 license=('LGPL-2.0-only')
 makedepends=('doxygen' 'glib2' 'gtk-doc' 'python2')
 _pkgsrc="${pkgbase}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://download.gnome.org/sources/${pkgbase}/${pkgver%.*}/${_pkgsrc}.tar.gz"
-        "${pkgbase}_armel-gnueabi.patch::https://sources.debian.org/data/main/${pkgbase::1}/${pkgbase}/${pkgver}-6/debian/patches/16_armel-gnueabi.patch"
-        "${pkgbase}_deprecated_const_return.patch::https://sources.debian.org/data/main/${pkgbase::1}/${pkgbase}/${pkgver}-6/debian/patches/17_deprecated_const_return.patch"
-        "${pkgbase}_server_deadlock.patch::https://sources.debian.org/data/main/${pkgbase::1}/${pkgbase}/${pkgver}-6/debian/patches/18_gam_server_deadlocks.patch"
-        "${pkgbase}_poll_files_on_ntfs4.patch")
+        "${pkgbase}_linux-specific_armel-gnueabi.patch::${url}/-/commit/05dcfcd69848e119c6a30d363bc41e896029f8af.patch"
+        "${pkgbase}_poll_files_on_nfs4.patch::${url}/-/commit/b92b17ecced6df463da73d6de566740cf5cd00d4.patch"
+        "${pkgbase}_deprecated_g_const_return.patch::${url}/-/commit/77fe68f43ce75e920b0a94b0bc572cf3a21714f2.patch"
+        "${pkgbase}_server_deadlock_ih_sub_cancel.patch::${url}/-/commit/f9c67a13af33f389429e4e760f2023a23a9ac19f.patch")
 sha512sums=('21bfe6fcf8fb3117cd5a08c8ce3b8d0d1dd23e478e60a95b76c20d02cc29b050dde086578d81037990484ff891c3e104d2cbbf3d294b4a79346b14a0cae075bb'
-            '759d58d4dba14efad1790701e0b4357994139ec5aa1b3425e2a36e2fdf9dff839d4232a57d1dfb7130b8a5ade40dcf37d8d57d21660d00a47504f09b402a718f'
-            'c4c10bee70c7231db395cbfe5bdf513ade6be599a11a9d35888ddfaca42d619fe2b5e87c2b2bab469ea98ba718bc01711252313ba5f53c392379b669f5b2902b'
-            'ae2d3f3cd16e2da05836cbb2f21527896db5d5067ef4b120e943693234a685527eff528955ed80120265ca70e04a88cc28413cc34311d6faa068c620339fad38'
-            'dcb23fd68e106a1b578235ef0b01b49773908ca6ded706610103f880f77a2aa0b0403cb720b9c6b062bac71e9d66cd2288b489c558839fc23295b18635bf399f')
+            '915a8d9fc8254da0707e928c5c4578dada8d95e40893c1e0ccf275cd190016d3ccc223589c04d7da06999627b72722b2e9259e23f740091587afe4ecbc48b4a3'
+            '59b78ca12c31661ea85a213cb7dc79c1bf35a53639f073fdc7618200e0d5c0c15c50b3670f1f31c156640a85a2bad8eba5e7622c7eab9dff5124a9c5c8d1775f'
+            '4c339bb91ea8b930b95bbfb4cbb71bb1e1a9e7d41f22639e8eca3719089a9110d8538087751c16f8259f1834e84b07a968f95b1a79c06b6bb5516c5638722c18'
+            '69e6a0cbaffacde809d7be6839269d61d29fa8fcec4b7fa8c4c69cf41eb612c5f03cba5cb3e6b58fc25b63158a3d71f8895be96213edbb5a9d9150057a6d58c2')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  patch -Np1 -i "../${pkgbase}_armel-gnueabi.patch"
-  patch -Np1 -i "../${pkgbase}_deprecated_const_return.patch"
-  patch -Np1 -i "../${pkgbase}_server_deadlock.patch" # https://bugs.archlinux.org/task/33642
-  patch -Np1 -i "../${pkgbase}_poll_files_on_ntfs4.patch"
+  # https://bugzilla.gnome.org/show_bug.cgi?id=588338
+  patch -Np1 -i "${srcdir}/${pkgbase}_linux-specific_armel-gnueabi.patch"
+  # https://bugzilla.gnome.org/show_bug.cgi?id=693006
+  patch -Np1 -i "${srcdir}/${pkgbase}_poll_files_on_nfs4.patch"
+  # https://bugzilla.gnome.org/show_bug.cgi?id=658884
+  patch -Np1 -i "${srcdir}/${pkgbase}_deprecated_g_const_return.patch"
+  # https://bugzilla.gnome.org/show_bug.cgi?id=667230, https://bugs.archlinux.org/task/33642
+  patch -Np1 -i "${srcdir}/${pkgbase}_server_deadlock_ih_sub_cancel.patch"
 
   cd "python"
   sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' "${pkgbase}.py"
