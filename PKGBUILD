@@ -6,7 +6,7 @@
 
 pkgname=dlib-git
 _pkgname=dlib
-pkgver=19.24.6+r8289+g230c0b019
+pkgver=19.24.6+r8290+gdaefd41b9
 pkgrel=2
 pkgdesc="Cross-platform C++ library using contract programming and modern C++ techniques"
 arch=('x86_64')
