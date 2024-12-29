@@ -19,7 +19,6 @@ depends=(
   'gtk2'
   'zstd'
 )
-options=('!emptydirs')
 optdepends=(
   'arc: Arc file archiver and compressor'
   'paq8o: PAQ8 series of archivers, resurrected by new maintainers'
