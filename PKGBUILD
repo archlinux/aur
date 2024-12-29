@@ -1,7 +1,7 @@
 # Maintainer: RaphGL <raphfl.dev@gmail.com>
 pkgname=tuckr-git
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.10.1
+pkgrel=1
 epoch=1
 pkgdesc="A super powered replacement for GNU Stow"
 arch=('x86_64' 'i686' 'aarch64')
