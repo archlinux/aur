@@ -1,6 +1,6 @@
 pkgbase = python-p115qrcode
 	pkgdesc = 115 网盘二维码扫码登录.
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://pypi.org/project/p115qrcode
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = python-p115qrcode
 	conflicts = python-p115qrcode
 	options = !strip
 	options = !debug
-	source = p115qrcode-0.0.2.tar.gz::https://files.pythonhosted.org/packages/source/p/p115qrcode/p115qrcode-0.0.2.tar.gz
-	sha256sums = 16ad05e30853520b0f5919c261fb00859adb3b00842896f55aad9e061cb44ca8
+	source = p115qrcode-0.0.3.tar.gz::https://files.pythonhosted.org/packages/source/p/p115qrcode/p115qrcode-0.0.3.tar.gz
+	sha256sums = b527bf3e2b5853fd72037a9d45ce13a3aa34f982bde90c986d74955d3dc36ce8
 
 pkgname = python-p115qrcode
