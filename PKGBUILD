@@ -2,7 +2,7 @@
 
 _pkgname="metalang99"
 pkgname="${_pkgname}-git"
-pkgver=1.13.3
+pkgver=1.13.3.r14.gbbd4749
 pkgrel=1
 pkgdesc="Full-blown preprocessor metaprogramming"
 arch=('any')
@@ -16,6 +16,11 @@ conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
 source=("${_pkgsrc}::git+${_url}.git")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_pkgsrc}"
+  git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 check() {
   cd "${srcdir}/${_pkgsrc}"

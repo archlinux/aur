@@ -1,6 +1,6 @@
 pkgbase = metalang99-git
 	pkgdesc = Full-blown preprocessor metaprogramming
-	pkgver = 1.13.3
+	pkgver = 1.13.3.r14.gbbd4749
 	pkgrel = 1
 	url = https://metalang99.readthedocs.io
 	arch = any
