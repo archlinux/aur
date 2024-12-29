@@ -3,7 +3,7 @@
 _pkgname=moon
 pkgname="${_pkgname}-bin"
 pkgdesc='Task runner and repo management tool for the web ecosystem'
-pkgver=1.30.5
+pkgver=1.30.6
 pkgrel=1
 license=('MIT')
 provides=("${_pkgname}")
@@ -11,16 +11,17 @@ conflicts=("${_pkgname}")
 url='https://github.com/moonrepo/moon'
 arch=('x86_64' 'aarch64')
 depends=('gcc-libs')
-source=("LICENSE::https://raw.githubusercontent.com/moonrepo/moon/v${pkgver}/LICENSE")
+source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/moonrepo/moon/v${pkgver}/LICENSE")
 source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}.bin::${url}/releases/download/v${pkgver}/moon-${arch[0]}-unknown-linux-gnu")
 source_aarch64=("${_pkgname}-${pkgver}-${arch[1]}.bin::${url}/releases/download/v${pkgver}/moon-${arch[1]}-unknown-linux-gnu")
 sha256sums=('d2ac84cff76ea43a70d2be1ba690fc03d51a9be8e8fc18281a229ddc5845e4a5')
-sha256sums_x86_64=('b4775e1c7b5d69c0c829d956ec1c1a719e9bae9aa5d1cf0edb32547efc929f39')
-sha256sums_aarch64=('08b2c1c5b0ad59a3b215cccd6a85ad0f445fbb5586549e852edb2f408c8a0506')
+sha256sums_x86_64=('528f3d31a9225fda26e6bde1d8ee4f54f7e40d828e9f2235258cd12a864becbd')
+sha256sums_aarch64=('c6f0b9ed39d0e643c89a2f91a7f621664c96e36e396594855dd3fdba43a91d21')
 
 prepare() {
-  mkdir -p completions
   chmod +x "${_pkgname}-${pkgver}-${CARCH}.bin"
+
+  mkdir -p completions
   "./${_pkgname}-${pkgver}-${CARCH}.bin" completions --shell bash >"completions/bash"
   "./${_pkgname}-${pkgver}-${CARCH}.bin" completions --shell zsh >"completions/zsh"
   "./${_pkgname}-${pkgver}-${CARCH}.bin" completions --shell fish >"completions/fish"
@@ -28,7 +29,8 @@ prepare() {
 
 package() {
   install -Dm 755 "${_pkgname}-${pkgver}-${CARCH}.bin" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm 644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  install -Dm 644 "LICENSE-${pkgver}" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   install -Dm 644 "completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
   install -Dm 644 "completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
