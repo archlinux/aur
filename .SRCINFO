@@ -1,7 +1,7 @@
 pkgbase = openjdk-zulu17-ca-fx-bin
 	pkgdesc = Azul Zulu Builds of OpenJDK 17 With OpenJFX are open source, TCK-tested and certified builds of OpenJDK 17.
 	pkgver = 17.54.21+17.0.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.azul.com/downloads
 	install = install_openjdk-zulu17-ca-fx-bin.sh
 	arch = x86_64
@@ -18,6 +18,8 @@ pkgbase = openjdk-zulu17-ca-fx-bin
 	provides = java-runtime-headless=17
 	provides = java-runtime-headless-openjdk=17
 	provides = jre17-openjdk-headless=17
+	provides = java-openjfx=17
+	provides = java17-openjfx=17
 	source = https://cdn.azul.com/zulu/bin/zulu17.54.21-ca-fx-jdk17.0.13-linux_x64.tar.gz
 	sha256sums = b3d566934b49589346a304dabcab1faef84882aae445a080eae433355423a7f9
 
