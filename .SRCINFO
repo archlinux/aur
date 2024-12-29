@@ -1,19 +1,18 @@
 pkgbase = chaosblade-bin
 	pkgdesc = Chaosblade: An Easy to Use and Powerful Chaos Engineering Toolkit
-	pkgver = 1.7.2
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = https://github.com/chaosblade-io/chaosblade
-	arch = any
+	arch = x86_64
 	license = Apache-2.0
 	makedepends = libarchive
 	depends = go
 	depends = docker
-	provides = chaosblade-bin
+	provides = chaosblade
 	conflicts = chaosblade
-	conflicts = chaosblade-git
-	noextract = chaosblade-1.7.2.tar.gz
+	noextract = chaosblade-1.7.4.tar.gz
 	options = !strip
-	source = chaosblade-1.7.2.tar.gz::https://github.com/chaosblade-io/chaosblade/releases/download/v1.7.2/chaosblade-1.7.2-linux-amd64.tar.gz
-	sha256sums = 94214d09b6c454065592267df682a45409bc74b2f2cf840bdfc9eb77ccccfbdc
+	source = chaosblade-1.7.4.tar.gz::https://github.com/chaosblade-io/chaosblade/releases/download/v1.7.4/chaosblade-1.7.4-linux-amd64.tar.gz
+	sha256sums = bab6a1def7b81c0decc4038a6aac5fce2cbc86322a35db283b73b5531562fd7c
 
 pkgname = chaosblade-bin
