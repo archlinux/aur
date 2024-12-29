@@ -1,13 +1,12 @@
 pkgbase = gspt-git
 	pkgdesc = Spotify for Terminal written in Go.
-	pkgver = r326.8189963
+	pkgver = r328.203df89
 	pkgrel = 1
 	url = https://github.com/aditya-K2/gspt
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = go
-	makedepends = make
 	source = gspt-git::git+https://github.com/aditya-K2/gspt
 	sha256sums = SKIP
 

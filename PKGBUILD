@@ -1,14 +1,14 @@
-# Maintainer: aditya-K2 <adityakurdunkar2@gmail.com>
+# Contributor: aditya-K2 <adityakurdunkar2@gmail.com>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=gspt-git
-pkgver=r326.8189963
+pkgver=r328.203df89
 pkgrel=1
 pkgdesc='Spotify for Terminal written in Go.'
 arch=('x86_64')
 url="https://github.com/aditya-K2/gspt"
-license=('GPL3')
-makedepends=('git' 'go' 'make')
+license=('GPL-3.0-or-later')
+makedepends=('git' 'go')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
@@ -17,16 +17,14 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-   cd "$pkgname"
-   git config --global --add safe.directory "$(pwd)"
-}
-
 build() {
-    cd "$pkgname"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  make -C "$pkgname" gspt
 }
 
 package() {
-    cd "$pkgname"
-    sudo make install
+  install -Dm755 "$pkgname/bin/gspt" -t "$pkgdir/usr/bin"
 }
