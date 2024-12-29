@@ -21,7 +21,7 @@ pkgbase = grayjay
 	source = FUTO.MDNS.csproj.user
 	sha256sums = 837523d79a526822ae5b6bdf26edbcdeaf15a37c7622f977928f1af9556f81ce
 	sha256sums = 3d37aacfe2c23495448da3d7202abfa2e28db5a10cb69453f9b00b1e80a70f5d
-	sha256sums = c6cf4ed075c0d41fb2166848e9c22f00512dfff5cac2fd060e87cddc517d960a
+	sha256sums = 3a1f43abacc62ad257edbb6c7744c132f5a50d64d0725aa79e251ddc19b6e489
 	sha256sums = bc13ae396e2fcd2849e4564db67fad6e1461cedebb2abdafece81fc4c00f38dd
 	sha256sums = be103a98e070fd289a2e5bbd1ad1e8e45fd6d9e3c9c01e791c93cc89fe1a8936
 

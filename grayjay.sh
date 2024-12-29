@@ -8,6 +8,6 @@ appdir='/opt/grayjay'
 mkdir -p "${workdir}"
 cd "${workdir}"
 
-ln -sf "${appdir}/wwwroot" "${workdir}/wwwroot"
+ln -sfT "${appdir}/wwwroot" "${workdir}/wwwroot"
 
 exec /opt/grayjay/Grayjay "$@" 
