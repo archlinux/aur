@@ -1,20 +1,15 @@
 pkgbase = cpp-coveralls
 	pkgdesc = Upload gcov results to coveralls.io
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eddyxu/cpp-coveralls
 	arch = x86_64
 	license = Apache
 	makedepends = python-setuptools
 	depends = python
 	depends = python-requests
-	depends = python-future
-	depends = python-certifi
-	depends = python-cryptography
-	depends = python-pyopenssl
-	depends = python-ipaddress
+	depends = python-yaml
 	source = https://github.com/eddyxu/cpp-coveralls/archive/v0.4.2.tar.gz
 	sha256sums = a5b7a5a92531a6b5d8e19724fad4259fb233f341e5b76df2723a040894a0d24a
 
 pkgname = cpp-coveralls
-

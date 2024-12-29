@@ -3,13 +3,12 @@
 
 pkgname=cpp-coveralls
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Upload gcov results to coveralls.io'
 arch=('x86_64')
 url='https://github.com/eddyxu/cpp-coveralls'
 license=('Apache')
-depends=('python' 'python-requests' 'python-future' 'python-certifi'
-         'python-cryptography' 'python-pyopenssl' 'python-ipaddress')
+depends=('python' 'python-requests' 'python-yaml')
 makedepends=('python-setuptools')
 source=("https://github.com/eddyxu/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('a5b7a5a92531a6b5d8e19724fad4259fb233f341e5b76df2723a040894a0d24a')
