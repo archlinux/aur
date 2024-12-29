@@ -1,0 +1,13 @@
+pkgbase = pipac
+	pkgdesc = Maintain Arch linux system packages based on package lists (declarative package management).
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/j4kub5/pipac
+	arch = any
+	depends = python
+	optdepends = yay: preferred AUR helper
+	optdepends = paru: alternative AUR helper
+	source = pipac-0.2.0.tar.gz::https://github.com/j4kub5/pipac/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = pipac
