@@ -1,0 +1,27 @@
+pkgbase = sioyek-devel
+	pkgdesc = A PDF viewer designed for reading research papers and technical books.
+	pkgver = r1902.ed14e38
+	pkgrel = 1
+	url = https://github.com/ahrm/sioyek
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = libmupdf
+	depends = qt6-speech
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = sqlite3
+	depends = zlib
+	optdepends = qt6-wayland
+	provides = sioyek
+	conflicts = sioyek-git
+	conflicts = sioyek
+	source = git+https://github.com/ahrm/sioyek.git#branch=development
+	sha512sums = SKIP
+
+pkgname = sioyek-devel
