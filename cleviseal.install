@@ -2,6 +2,7 @@
 
 build() {
     add_binary "tpm2_pcrextend"
+    add_binary "poweroff"
 
     add_runscript
 }

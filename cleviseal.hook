@@ -2,7 +2,7 @@
 
 run_hook() {
     # "cleviseal" as a sha256
-    tpm2_pcrextend '7:sha256=6110bc36fe2e56be352e4584d0a3c153c031b3e04cc45c8adb339c984cdf8127' || exit 1
+    tpm2_pcrextend '7:sha256=6110bc36fe2e56be352e4584d0a3c153c031b3e04cc45c8adb339c984cdf8127' || poweroff -f
 }
 
 # vim: set ft=sh ts=4 sw=4 et:
