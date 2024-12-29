@@ -1,4 +1,5 @@
 # Maintainer: Kimiblock Moe
+# Contributor: wszqkzqk
 
 pkgname=wechat
 pkgver=4.0.1.7
