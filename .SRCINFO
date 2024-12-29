@@ -1,0 +1,12 @@
+pkgbase = gtk-theme-razor-sharp
+	pkgdesc = A Amazing GTK3/4 red theme made by NillyTheL0L
+	pkgver = r11.da5ccb8
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1708445
+	arch = any
+	license = GPL3
+	options = !strip
+	source = https://github.com/nillythel0l/razor-sharp/archive/da5ccb8.tar.gz
+	sha256sums = af258097e176ad7572b6d22ef8295b34955063fdb1eafbc6b5a48b04f04b19c1
+
+pkgname = gtk-theme-razor-sharp
