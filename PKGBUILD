@@ -2,10 +2,10 @@
 
 pkgbase=structstore
 pkgname=(structstore structstore_py)
-pkgver=0.2.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Structured object storage, dynamically typed, to be shared between processes'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/mertemba/structstore'
 license=('BSD-3-Clause')
 depends=('glibc' 'gcc-libs' 'yaml-cpp')
