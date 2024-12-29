@@ -1,4 +1,5 @@
-# Maintainer:  Novikov Maxim <the.mlex@gmail.com>
+# Submitter  Novikov Maxim <the.mlex@gmail.com>
+# Maintainer  Klaus Zipfel <zipfel@iqo.uni-hannover.de>
 pkgname=fusioninventory-agent-bin
 _pkgname="FusionInventory-Agent"
 pkgver=2.6
@@ -22,13 +23,11 @@ depends=(
   #'perl-xml-treepp>=0.26'
   'perl-data-structure-util'
   #'perl-proc-daemon'
+  # Used to fetch missing perl dependencies
+  'cpanminus'
 )
-source=("https://github.com/fusioninventory/fusioninventory-agent/releases/download/${pkgver}/fusioninventory-agent_${pkgver}-${pkgrel}_all.deb"
-  "agent.cfg"
-)
-md5sums=('6a7599a355f03192cf16ef852bc93944'
-  'eaf2c13c8adb7e57da038f3ae521ab35'
-)
+source=("https://github.com/fusioninventory/fusioninventory-agent/releases/download/${pkgver}/fusioninventory-agent_${pkgver}-${pkgrel}_all.deb")
+md5sums=('6a7599a355f03192cf16ef852bc93944')
 
 
 package() {
@@ -45,5 +44,5 @@ package() {
   cp -a ${srcdir}/lib/ $pkgdir/usr/lib/
   cp -a ${srcdir}/var/ $pkgdir/var/
   
-  install -D -m444 ${srcdir}/agent.cfg $pkgdir/etc/fusioninventory/agent.cfg.default
+  install -D -m444 ${srcdir}/usr/share/fusioninventory/etc/agent.cfg $pkgdir/etc/fusioninventory/agent.cfg.default
 }

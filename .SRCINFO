@@ -13,11 +13,10 @@ pkgbase = fusioninventory-agent-bin
 	depends = perl-net-ip
 	depends = perl-text-template
 	depends = perl-data-structure-util
+	depends = cpanminus
 	provides = fusioninventory-agent
 	conflicts = fusioninventory-agent
 	source = https://github.com/fusioninventory/fusioninventory-agent/releases/download/2.6/fusioninventory-agent_2.6-1_all.deb
-	source = agent.cfg
 	md5sums = 6a7599a355f03192cf16ef852bc93944
-	md5sums = eaf2c13c8adb7e57da038f3ae521ab35
 
 pkgname = fusioninventory-agent-bin

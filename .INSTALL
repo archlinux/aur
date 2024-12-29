@@ -1,4 +1,4 @@
 post_install() {
-  cpan install UNIVERSAL::require
-  cpan install FusionInventory::Agent
+  export PATH=$PATH:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+  cpanm --notest --installdeps FusionInventory::Agent
 }
