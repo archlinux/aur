@@ -1,4 +1,5 @@
-# Maintainer: XSilverTH <XSilverTH AT proton DOT me>
+# Maintainer: Izuna <1zuna AT ccbluex DOT net>
+# Previous Maintainer: XSilverTH <XSilverTH AT proton DOT me>
 
 pkgname=liquidlauncher-bin
 pkgver=0.4.0
