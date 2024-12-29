@@ -4,7 +4,7 @@
 
 pkgname=intel-npu-driver
 pkgver=1.10.1.20241220_12430270326
-pkgrel=1
+pkgrel=2
 _main_ver=$(echo $pkgver | cut -d'.' -f1-3)
 pkgdesc="Intel(R) NPU (Neural Processing Unit) Driver"
 arch=('x86_64')
@@ -24,7 +24,7 @@ noextract=("${source[@]%%::*}")
 sha256sums=('d75b8bab718e97bb201ff3d09e0d660ae89bab411700dff45a2743cc94d47ad0'
             '81bde738f384ca93ecad9ce0b8d612388426241820a72412fe7317413ba93217'
             '33b19c431c93d3e199208af633b4dcf90154e1986cab327959c7702df75b3660'
-            '451963b6682694730dbe4889fff2ef1c20def68992e2594880c15a28e6c87be5')
+            '9cd7b75cc0af6941de80c7fccd3f63217de5c0691b63fb1319b73d1e033c9c4f')
 
 prepare() {
   cd "$srcdir"
