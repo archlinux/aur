@@ -28,11 +28,8 @@ depends=(
 	"libxkbcommon-x11"
 	"libxkbcommon"
 	"libxcb"
-	"util-linux"
-	"libxcb"
 	"gcc-libs"
 	"nspr"
-	"bzip2"
 	"glibc"
 	"zlib"
 	"libxcomposite"
@@ -55,6 +52,7 @@ depends=(
 	"libdrm"
 	"mesa"
 	"bash"
+	"libglvnd"
 )
 
 optdepends=(
@@ -63,7 +61,7 @@ optdepends=(
 	'at-spi2-core: accessibility'
 	'orca: screen reader'
 	'libpulse'
-	'libglvnd'
+	"hicolor-icon-theme"
 )
 
 makedepends+=(
