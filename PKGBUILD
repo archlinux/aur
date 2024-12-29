@@ -25,17 +25,16 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/scopehal-apps"
-  mkdir -p build
-  cd build
-  cmake .. \
+  cmake \
+    -B build \
+    -S "$srcdir/scopehal-apps" \
+    -Wno-dev \
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DCMAKE_INSTALL_PREFIX=/usr
   # -DBUILD_DOCS=ON
-  make
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/scopehal-apps/build"
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" cmake --install build
 }
