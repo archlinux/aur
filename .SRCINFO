@@ -1,6 +1,6 @@
 pkgbase = big-launcher-git
 	pkgdesc = Launcher for the big screen
-	pkgver = ab7f562
+	pkgver = f8935c0
 	pkgrel = 1
 	url = https://github.com/complexlogic/big-launcher
 	arch = i686
@@ -23,6 +23,6 @@ pkgbase = big-launcher-git
 	source = git+https://github.com/complexlogic/big-launcher
 	source = https://github.com/complexlogic/big-launcher/files/10326572/assets.zip
 	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 86c72ff76831c1a458924f48cb1b7d43
 
 pkgname = big-launcher-git
