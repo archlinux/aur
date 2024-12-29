@@ -1,0 +1,15 @@
+pkgbase = metalang99-git
+	pkgdesc = Full-blown preprocessor metaprogramming
+	pkgver = 1.13.3
+	pkgrel = 1
+	url = https://metalang99.readthedocs.io
+	arch = any
+	license = MIT
+	checkdepends = cmake>=3.16
+	makedepends = git
+	provides = metalang99=1.13.3
+	conflicts = metalang99
+	source = metalang99::git+https://github.com/hirrolot/metalang99.git
+	sha256sums = SKIP
+
+pkgname = metalang99-git
