@@ -2,7 +2,7 @@
 # Contributor: Kevin Schmidt <kevin.patrick.schmidt@googlemail.com>
 
 pkgname=openwrt-devel
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='Metapackage to pull all dependencies required to build OpenWrt'
 arch=('x86_64')
@@ -22,10 +22,3 @@ optdepends=(
   'python-elftools: compiling uboot for arm'
   'swig'
 )
-
-package() {
-  # currently, OpenWrt expects /usr/bin/python3.11
-  # https://github.com/openwrt/openwrt/pull/15245
-  mkdir -p "$pkgdir"/usr/bin
-  ln -s python3.12 "$pkgdir"/usr/bin/python3.11
-}
