@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="glscopeclient and other client applications for libscopehal"
 arch=('x86_64')
 url="https://github.com/glscopeclient/scopehal-apps"
-license=('BSD')
+license=('BSD-3-Clause')
 groups=()
 depends=('gtkmm3' 'libsigc++' 'ffts-git' 'openmp' 'glfw' 'yaml-cpp' 'glew' 'libsigc++-3.0' 'hidapi>=0.13.1')
 # could be also built against 'libsigc++' (2.x version) instead of 'libsigc++-3.0', what should be our target?
