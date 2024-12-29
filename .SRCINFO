@@ -11,7 +11,7 @@ pkgbase = python-tcolorpy
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://pypi.org/packages/source/t/tcolorpy/tcolorpy-0.1.6.tar.gz
-	sha512sums = c96cfbba2c42a17618aa68f252f6e18a5a842eeeced0d2ccdf6aee903d5552375575652bb4d6417e4e0f566b92750afccf9c3fc1866b67b95ab91d4129c02a0a
+	source = tcolorpy-0.1.6.tar.gz::https://github.com/thombashi/tcolorpy/archive/v0.1.6.tar.gz
+	sha512sums = bf77b9fe8f61eb1e751489ed5bba22e59e2b954bf03963b50d4640680ebd37fef763804be2ef6dd202974ff37ba9e5b39074bd346a6e626aaab0e2dde9f55d40
 
 pkgname = python-tcolorpy
