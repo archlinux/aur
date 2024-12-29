@@ -1,7 +1,7 @@
 # Maintainer: Sosuke Inaba <mail[at]daizu[dot]dev>
 
 pkgname=ttf-pending-mono
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="A composite font of BIZ UD Gothic and Commit Mono"
 arch=(any)
@@ -14,13 +14,13 @@ source=("$url/releases/download/v$pkgver/PendingMono_v$pkgver.zip"
         "$url/releases/download/v$pkgver/PendingMonoHWNF_v$pkgver.zip"
         "$url/releases/download/v$pkgver/PendingMonoHWJPDOC_v$pkgver.zip"
         "https://raw.githubusercontent.com/yuru7/pending-mono/v$pkgver/LICENSE")
-sha256sums=('76388ee21bb11cf09b43fac154826e0da0499be6ffc49633e3f85b53f0947e3d'
-            'fefafcaa1af11c1841f8aa943205a7303b1a091f20ded17467cc414a9e863106'
-            '9aadcdd6c95a737330842b23b0adba3eb6ad7208c377ee4823592f83c90c4da1'
-            'c03d8b16af20718fd0ce94b8658912f4f706e8ea8558b0564f6a90888e00460c'
-            '67a2f9142999e19d30e8aeaac19ae15caf9d348fa726d17e80bb753f64ea50e4'
-            'fdf487f62573c5d37b28f50500d1bb94e2275209c4a23ada28ae724169411167'
-            '9d23767271951afeaddbe5de4dec5d1cb60456c06f45e4d04fbb9ab517d79e30')
+sha256sums=('b673a17307bc3f7662a78ecda3d289e9b8fbe3642553890c3d917d9caee21cb8'
+            '5639fac7ab8c4a981c725cfc959e4763f4f1df11ad85baaa4d15df99a050d8e4'
+            'b4bcd53ea5647db93ee539ea08cc3225618ae7d8f5984dbb4795ef85e5fb3b07'
+            '9c800020e6b04098e5abcadc411287fdae009d712aa6eb411beb8ffefc53dbc7'
+            '3ca0274e3067336b6522665d0d7475fe6f41f07d21e016e88c2ab044aab255e5'
+            'fd5a53ae410ccd28fbe4b554d4bb683c6de37ad794aa7dbeb6d721ac0dd9625e'
+            '03be85d01384bf68cb682f9f4f81c3e99e37b943270cf2bdca2c1cabec6f31ce')
 
 package() {
     install -d $pkgdir/usr/share/fonts/TTF
