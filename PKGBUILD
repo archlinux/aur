@@ -6,14 +6,15 @@ pkgver=0.7.7.r10.g63404eb
 pkgrel=1
 pkgdesc="Full-featured interfaces for C99"
 arch=('any')
-url="https://github.com/hirrolot/${_pkgname}"
+url="https://hirrolot.github.io/slice99"
+_url="https://github.com/hirrolot/${_pkgname}"
 license=('MIT')
 makedepends=('git')
 checkdepends=('cmake>=3.16')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
-source=("${_pkgsrc}::git+${url}.git")
+source=("${_pkgsrc}::git+${_url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
