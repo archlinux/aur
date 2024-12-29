@@ -99,6 +99,11 @@ md5sums_x86_64=('SKIP')
 md5sums_aarch64=('SKIP')
 md5sums_loong64=('SKIP')
 
+function pkgver() {
+	tar -xf control.tar.xz ./control
+	cat control | grep 'Version: ' | cut -c '10-'
+}
+
 function package_wechat() {
 	tar -xf data.tar.xz ./opt
 	cp -r opt \
