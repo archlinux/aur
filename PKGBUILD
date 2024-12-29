@@ -2,20 +2,20 @@
 
 pkgname=ntp-refclock
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 ntpver=4.2.8p16
 pkgdesc='Wrapper for ntpd reference clock drivers'
 arch=('x86_64' 'armv7h' 'aarch64')
-license=('BSD')
+license=('BSD-2-Clause')
 url='https://github.com/mlichvar/ntp-refclock'
 source=("https://github.com/mlichvar/ntp-refclock/archive/v${pkgver}.tar.gz"
-	"https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-${ntpver%.*p*}/ntp-${ntpver}.tar.gz")
-sha1sums=('53f1488052e002c61fe374ad11f32a8de2f06872'
-          '7365404cba22b02454aff8a2cdb636dbcd2f12a5')
+		"https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-${ntpver%.*p*}/ntp-${ntpver}.tar.gz")
+sha256sums=('fb2ef8bdf29715d180575fb66657224311822e01ad2dfd512694756fa3d49921'
+            '5225858bfd843b080fb9daa5b7370519130e5e49ac3eb0371e334bdc06c52dd7')
 
 build() {
-	#first build the NTP code
 	cd "${srcdir}/ntp-${ntpver}"
+	#first build the NTP code
 	#disable building NTP components that rely on external libs, we don't use them anyway
 	./configure --enable-all-clocks --enable-parse-clocks --without-crypto
 	make

@@ -1,15 +1,15 @@
 pkgbase = ntp-refclock
 	pkgdesc = Wrapper for ntpd reference clock drivers
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mlichvar/ntp-refclock
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = BSD
+	license = BSD-2-Clause
 	source = https://github.com/mlichvar/ntp-refclock/archive/v0.6.tar.gz
 	source = https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-4.2.8p16.tar.gz
-	sha1sums = 53f1488052e002c61fe374ad11f32a8de2f06872
-	sha1sums = 7365404cba22b02454aff8a2cdb636dbcd2f12a5
+	sha256sums = fb2ef8bdf29715d180575fb66657224311822e01ad2dfd512694756fa3d49921
+	sha256sums = 5225858bfd843b080fb9daa5b7370519130e5e49ac3eb0371e334bdc06c52dd7
 
 pkgname = ntp-refclock
