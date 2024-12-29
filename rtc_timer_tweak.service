@@ -1,0 +1,8 @@
+[Unit]
+Description=RTC Timer Tweak
+
+[Service]
+ExecStart=/usr/bin/max_rtc_timer.sh
+
+[Install]
+WantedBy=multi-user.target
