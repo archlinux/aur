@@ -1,6 +1,6 @@
 pkgbase = python-reverse-proxy
 	pkgdesc = Python reverse proxy.
-	pkgver = 0.0.9.3
+	pkgver = 0.0.9.4
 	pkgrel = 1
 	url = https://pypi.org/project/python-reverse-proxy
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-reverse-proxy
 	conflicts = python-reverse-proxy
 	options = !strip
 	options = !debug
-	source = python_reverse_proxy-0.0.9.3.tar.gz::https://files.pythonhosted.org/packages/source/p/python_reverse_proxy/python_reverse_proxy-0.0.9.3.tar.gz
-	sha256sums = d83c4ccadbcae06e25d7f64a4f290d357470a8b0dcec9e6f41dced854a0e3fb3
+	source = python_reverse_proxy-0.0.9.4.tar.gz::https://files.pythonhosted.org/packages/source/p/python_reverse_proxy/python_reverse_proxy-0.0.9.4.tar.gz
+	sha256sums = 9274c70ae023602390547265174dce39695892891c897591344b7a8aa06fa30a
 
 pkgname = python-reverse-proxy
