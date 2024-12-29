@@ -1,0 +1,12 @@
+pkgbase = sls
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/josebaezmedina/sls
+	arch = x86_64
+	license = MIT
+	depends = chicken>=5.4.0-1
+	depends = tar
+	source = sls-v1.0.0.tar.gz::https://github.com/josebaezmedina/sls/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = sls
