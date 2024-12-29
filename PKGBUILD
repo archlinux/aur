@@ -1,7 +1,7 @@
 # Maintainer: MYT1 <MYT1 @ QQ COM>
 pkgname=bilibili-linux-git
 _pkgname=bilibili-linux
-pkgver=r226.2c0514b
+pkgver=20241228.a5b5b6d
 _electronversion=33
 _nodeversion=23
 pkgrel=1
@@ -40,7 +40,9 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+
+    # Commit date + short rev
+    echo $(TZ=UTC git show -s --pretty=%cd --date=format-local:%Y%m%d HEAD).$(git rev-parse --short HEAD)
 }
 
 _ensure_local_nvm() {
@@ -55,34 +57,27 @@ build() {
         s/@appname@/${_pkgname}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@//g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${_pkgname}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${_pkgname}"
+    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
         echo -e '\n'
         #echo 'build_from_source=true'
-        echo 'hoist=true'
         echo 'link-workspace-packages=true'
         echo 'fetch-retry-maxtimeout=10000'
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
         echo "shamefully-hoist=true"
-        echo "shell-emulator=true"
         echo "virtual-store-dir-max-length=80"
-        echo "auto-install-peers=false"
-        echo "strict-peer-dependencies=false"
-        echo "color=auto"
-        echo "engine-strict=false"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
         echo 'registry=https://registry.npmmirror.com'
-        echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-        echo 'node-mirror=https://registry.npmmirror.com/-/binary/node/'
         echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
         echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc

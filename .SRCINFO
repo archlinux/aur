@@ -1,6 +1,6 @@
 pkgbase = bilibili-linux-git
 	pkgdesc = 这是哔哩哔哩 Linux版
-	pkgver = r226.2c0514b
+	pkgver = 20241228.a5b5b6d
 	pkgrel = 1
 	url = https://github.com/msojocs/bilibili-linux
 	arch = aarch64
