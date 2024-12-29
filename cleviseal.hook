@@ -1,7 +1,7 @@
 #!/usr/bin/ash
 
 PCR_PRIMARY=7
-PCR_IDS="0,4,5,${PCR_PRIMARY}"
+PCR_IDS="0,1,4,5,${PCR_PRIMARY}"
 PCR_BANK=sha256
 
 # "cleviseal" as a sha256
