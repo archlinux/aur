@@ -2,29 +2,25 @@
 
 pkgname=moon
 pkgdesc='Task runner and repo management tool for the web ecosystem'
-pkgver=1.30.5
+pkgver=1.30.6
 pkgrel=1
 license=('MIT')
-_gh_owner='moonrepo'
-_gh_repo='moon'
-url="https://github.com/${_gh_owner}/${_gh_repo}"
+url="https://github.com/moonrepo/moon"
 arch=('x86_64' 'aarch64')
 depends=('gcc-libs' 'xz')
 makedepends=('cargo')
 options=('!lto')
-_sha='e4babb9ca4814c924880fbfa6933a5e063ef38bd'
-_short_sha="${_sha::7}"
-source=("${pkgname}-${pkgver}-${_short_sha}.tar.gz::https://api.github.com/repos/${_gh_owner}/${_gh_repo}/tarball/${_sha}")
-sha256sums=('2e13b6f0338eca036ec0904aec77952f4e07e09bb0fc7dc17e9c8367a8f55396')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('7c834be9fe44233875749f704de06faff08dbc1abce7234bf127c6b1a004c8e4')
 
 prepare() {
-  cd "${_gh_owner}-${_gh_repo}-${_short_sha}"
+  cd "${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN="stable"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "${_gh_owner}-${_gh_repo}-${_short_sha}"
+  cd "${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN="stable"
   export CARGO_TARGET_DIR="target"
   cargo build --release --frozen
@@ -36,7 +32,7 @@ build() {
 }
 
 package() {
-  cd "${_gh_owner}-${_gh_repo}-${_short_sha}"
+  cd "${pkgname}-${pkgver}"
   install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
   install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
