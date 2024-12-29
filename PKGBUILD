@@ -16,6 +16,12 @@ source=(
 sha256sums=('473e3df4fb9334b7e1272841f3c198425c5c87dbeec81f7564163aad10ab99d8')
 options=(!lto !debug)
 
+prepare() {
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
   cd "$pkgname-$pkgver"
   # Build the application using cargo
