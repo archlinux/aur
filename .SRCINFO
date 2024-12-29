@@ -1,6 +1,6 @@
 pkgbase = wechat-bwrap
 	pkgdesc = Sandboxing for WeChat. 沙盒微信.
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Kraftland/portable
@@ -18,6 +18,6 @@ pkgbase = wechat-bwrap
 	options = !debug
 	options = !strip
 	source = portable-config
-	md5sums = SKIP
+	md5sums = 079a55fcd28b9a4f1efbc1a9e1d9279c
 
 pkgname = wechat-bwrap
