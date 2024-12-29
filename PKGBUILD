@@ -2,8 +2,8 @@
 # Contributor: Phillip Schichtel <phillip@schich.tel>
 pkgname=grayjay
 pkgver=3
-pkgrel=2
-pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
+pkgrel=3
+pkgdesc="Follow creators, not platforms (privacy- and freedom-respecting streaming client)"
 arch=('x86_64')
 provides=('grayjay')
 conflicts=('grayjay-bin')
@@ -13,7 +13,7 @@ _futo_videostreaming_base='https://gitlab.futo.org/videostreaming'
 url="${_futo_videostreaming_base}/Grayjay.Desktop"
 license=('Source First License 1.1')
 depends=('ffmpeg' 'libsodium')
-makedepends=('dotnet-sdk>=8' 'dotnet-sdk<9' 'git')
+makedepends=('dotnet-sdk>=8' 'dotnet-sdk<9' 'git' 'git-lfs' 'npm')
 source=("${pkgname}::git+${_futo_videostreaming_base}/Grayjay.Desktop.git#commit=3b3e83f94dd196f25ff1fea1214ebacce763ee4e"
         "${pkgname}.desktop"
         "${pkgname}.sh"
