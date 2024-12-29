@@ -1,5 +1,5 @@
 pkgname=scopehal-apps-git
-pkgver=0.0.19bc636a
+pkgver=0.0.e0dd8c5a
 pkgrel=1
 pkgdesc="glscopeclient and other client applications for libscopehal"
 arch=('x86_64')
