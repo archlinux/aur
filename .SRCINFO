@@ -1,6 +1,6 @@
 pkgbase = odoo-venv
 	pkgdesc = Open Source Apps To Grow Your Business
-	pkgver = 18.0.20241124
+	pkgver = 18.0.20241229
 	pkgrel = 1
 	url = https://odoo.com/
 	install = odoo.install
@@ -28,7 +28,7 @@ pkgbase = odoo-venv
 	source = odoo.sysusers
 	source = odoo.tmpfiles
 	b2sums = SKIP
-	b2sums = 69a96f6bdc83189cba45999789b3cfe4e00160623ceade2d7b69711ce20a471f182f083131099d2ac950c45a7a6ca93dfba95846a611a45fd8d82b140274a6cf
+	b2sums = 72c131dc68f82047c52347b909a82073356a95c6f8817dc4f2faab93b4c17e978414897b7b831b25ed6a2e2fe3cb16892f5176ae8ad5880255d7bb7fdaacd5d6
 	b2sums = 1ef682d87ba12dd8a185ba36701b737f8feb0c1e6eb4b23302a0dc5930ef63c990af65bc45a36313f879a29a23cbdb602e7fc34ba9cee2e46d9a3d8407d5751a
 	b2sums = 93d51bda841f970694afa21c5246fe81ae558bde5ae4b29e8343b641f6295d9433fa64da8c990f72f83d7aceb48c3d7a50fd46900d2cc916deebc1821796b45b
 	b2sums = 311757f40c9de2845482ebf22e36469cc1058396bba9edaa2265a2bd085e2bcdd22115b098af3aaa037f7dac3a81212ae8b249df0b268f6bf2d798ee01698aae
