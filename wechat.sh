@@ -12,8 +12,8 @@ if [ -f /usr/bin/portable ] && [ ! -f /usr/lib/wechat/portable-config ]; then # 
 	zenity --error --title "Sandbox non-functional" --icon=security-low-symbolic --text "Please install aur/wechat-bwrap"
 fi
 
-if [ -f /usr/bin/wechat-sandbox ]; then
-	/usr/bin/wechat-sandbox "$@"
+if [ -f /usr/bin/wechat-sandbox-provider ]; then
+	/usr/bin/wechat-sandbox-provider "$@"
 else
 	/opt/wechat/wechat $@
 fi
