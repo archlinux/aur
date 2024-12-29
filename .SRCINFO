@@ -1,7 +1,7 @@
 pkgbase = raylib-lua-sol-git
 	pkgdesc = A simple and easy-to-use raylib based Lua library to enjoy videogames programming.
 	pkgver = r60.dd02dd2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.raylib.com/
 	arch = i686
 	arch = x86_64

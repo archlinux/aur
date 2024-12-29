@@ -3,7 +3,7 @@
 _pkgname=raylib-lua-sol
 pkgname=${_pkgname}-git
 pkgver=r60.dd02dd2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and easy-to-use raylib based Lua library to enjoy videogames programming."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'riscv32' 'riscv64' 'powerpc' 'loong64' 'powerpc64le' 'powerpc64')
 url="http://www.raylib.com/"
@@ -44,7 +44,8 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	DESTDIR="${pkgdir}" cmake --install build
+#	DESTDIR="${pkgdir}" cmake --install build
+	install -Dm755 build/bin/raylib-lua-sol -t ${pkgdir}/usr/bin/
 	install -Dm644 LICENSE -t ${pkgdir}/usr/share/licenses/${_pkgname}/
 }
 
