@@ -1,14 +1,14 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 # https://github.com/adamperkowski/PKGBUILDs
 pkgname=jellyfin-tui
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='A TUI client for Jellyfin'
 arch=('x86_64')
 url="https://github.com/dhonus/$pkgname"
 license=('GPL-3.0-only')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('83c2e830751720415136754fc9d2502bdad0366e915809eeeecebe4c0cecfc78')
+sha256sums=('a1be737b6a0cb929a40c41c02d93997481d4b623b08e49d0419e2271933f419e')
 depends=('openssl' 'mpv' 'gcc-libs')
 makedepends=('cargo')
 
