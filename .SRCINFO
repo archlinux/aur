@@ -1,0 +1,14 @@
+pkgbase = agebox
+	pkgdesc = Git repository encryption tool
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/slok/agebox
+	arch = x86_64
+	arch = i386
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = agebox-0.7.2::https://github.com/slok/agebox/archive/v0.7.2.tar.gz
+	sha256sums = abecfad8737606e7f6e7b74461b26af20dcae3f6ab248d2ebc53977cf299b445
+
+pkgname = agebox
