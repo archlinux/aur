@@ -1,75 +1,72 @@
-# Maintainer: Yvaniak <Yvaniak 11 at gmail dot com>
+# Maintainer:
+# Contributor: Yvaniak <Yvaniak 11 at gmail dot com>
 # Contributor: Vladimir Svyatski <vsvyatski@yandex.ru>
-# Previous Maintainer: Edoardo Brogiolo <edoardo@brogiolo.eu>
-# Previous Maintainer: Dimitris Kiziridis <ragouel@outlook.com>
-# Contributor: gspu <bssbk2455@gmail.com>
-# Previous Maintainer: Uncle Hunto <unclehunto@yahoo.com>
-# Contributor: Limao Luo <luolimao+AUR@gmail.com>
-# Contributor: TuxSpirit <tuxspirit@archlinux.fr>
+# Contributor: Edoardo Brogiolo <edoardo@brogiolo.eu>
+# Contributor: Dimitris Kiziridis <ragouel@outlook.com>
 
-pkgname=peazip-gtk2-bin
-pkgver=9.9.1
-pkgrel=2
-pkgdesc='PeaZip file manager and archiver (GTK 2)'
-arch=('x86_64')
-url='https://peazip.github.io'
+_pkgname="peazip"
+pkgname="$_pkgname-gtk2-bin"
+pkgver=10.1.0
+pkgrel=1
+pkgdesc="Cross-platform file and archive manager (GTK2)"
+url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
-depends=('gtk2' 'pango' 'cairo' 'glib2' 'gdk-pixbuf2' 'libx11' 'at-spi2-core')
+arch=('x86_64')
+
+depends=(
+  '7zip'
+  'brotli'
+  'gtk2'
+  'zstd'
+)
 options=('!emptydirs')
-optdepends=('p7zip: Command-line file archiver with high compression ratio'
-            'quad: High-performance file compressor that utilizes an advanced LZ-based compression algorithm'
-            'arc: Arc file archiver and compressor'
-            'zpaq: Programmable file compressor, library and utilities'
-            'paq8o: PAQ8 series of archivers, resurrected by new maintainers'
-            'upx: Extendable, high-performance executable packer for several executable formats')
-provides=('peazip')
-conflicts=('peazip-qt-bin' 'peazip-qt5' 'peazip-qt5-bin')
-source=("https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip-${pkgver}.LINUX.GTK2-1.${CARCH}.rpm")
-sha256sums=('3c03cbf7557d6d0d9bb5bf67224ffe8312725598a0e72f178b1d21f42693241f')
-changelog=changelog.txt
+optdepends=(
+  'arc: Arc file archiver and compressor'
+  'paq8o: PAQ8 series of archivers, resurrected by new maintainers'
+  'quad: High-performance file compressor that utilizes an advanced LZ-based compression algorithm'
+  'upx: Extendable, high-performance executable packer for several executable formats'
+  'zpaq: Programmable file compressor, library and utilities'
+)
+
+options=('!emptydirs')
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+source=("$url/releases/download/$pkgver/peazip-$pkgver.LINUX.GTK2-1.$CARCH.rpm")
+sha256sums=('94a59f62b4936512971d3d7f83600649d0ed7933bc578876334d57538bfc016b')
 
 prepare() {
-  # Senior Giorgio Tani should definitely reconsider the way he builds his Linux packages: he adds a lot of
-  # unnecessary Windows-related files to them. Additionally, he sets wrong permissions on folders: the majority
-  # of them are set to 777, whereas it should be 755. So here I'm removing Windows files and setting the
-  # appropriate permissions before packaging.
-
-  rm -r usr/lib/.build-id
-  # 7z.sfx is a Windows executable
-  rm usr/lib/peazip/res/bin/7z/7z.sfx
-
-  local sharedUsr=usr/share
-  local sharedPeaZip="${sharedUsr}/peazip"
-  # Windows related stuff
-  rm -r "${sharedPeaZip}/batch/Windows"
-  rm -r "${sharedPeaZip}/batch/bat"
-
-  # macOS related stuff
-  rm -r "${sharedPeaZip}/batch/macOS service menus"
-
-  # KDE 3? You must be kidding.
-  rm -r "${sharedPeaZip}/batch/freedesktop_integration/KDE-servicemenus/KDE3-konqueror"
-  # KDE 4 is not supported on Arch since 2015-12-12 (https://archlinux.org/news/dropping-plasma-4/)
-  rm -r "${sharedPeaZip}/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin"
-
-  # setting correct permissions
-  chmod 755 usr && chmod 755 usr/bin
-  chmod 755 usr/lib && chmod 755 usr/lib/peazip
-  chmod 755 usr/lib/peazip/res && chmod -R 755 usr/lib/peazip/res/bin
-  chmod -x usr/lib/peazip/res/bin/7z/Codecs/*.so
-  chmod 755 "${sharedUsr}"
-  for subDir in "${sharedUsr}"/*; do chmod 755 "${subDir}"; done
-  chmod 755 "${sharedUsr}/doc/peazip"
-  for subDir in "${sharedPeaZip}"/*; do
-    if [ -d "${subDir}" ]; then
-      chmod 755 $(find "${subDir}" -type d)
-    fi
-  done
+  cd usr/share/peazip
+  rm -r lang-wincontext
+  rm -r batch/{Windows,'macOS service menus',bat}
+  rm -r batch/freedesktop_integration/KDE-servicemenus/{KDE3*,KDE4*}
+  rm icons/peazip_seven.icl
+  rm readme/readme_{Windows,macOS}.txt
+  cd "$srcdir/usr/lib/peazip/res/bin"
+  ln -sf /usr/bin/7z 7z/7z
+  ln -sf /usr/bin/brotli brotli/brotli
+  ln -sf /usr/bin/zstd zstd/zstd
+  rm 7z/7z.sfx
+  chmod -x 7z/Codecs/*.so
 }
 
 package() {
-  mkdir "${pkgdir}/usr"
-  cp -aR usr/bin/ "${pkgdir}/usr"
-  cp -aR usr/lib/ "${pkgdir}/usr"
-  cp -aR usr/share/ "${pkgdir}/usr"
+  mkdir -p "$pkgdir/usr/"{bin,lib/peazip,share/{doc/peazip,peazip,licenses/peazip,icons/hicolor/256x256/apps}}
+  cd usr
+  mv bin/peazip "$pkgdir/usr/bin"
+  install -Dm755 lib/peazip/{peazip,pea} "$pkgdir/usr/lib/peazip"
+  mv lib/peazip/res "$pkgdir/usr/lib/peazip"
+  cd share
+  mv applications "$pkgdir/usr/share"
+  mv pixmaps/* "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+  cd peazip
+  mv peazip_help.pdf "$pkgdir/usr/share/doc/peazip"
+  mv copying/* "$pkgdir/usr/share/licenses/peazip"
+  mv readme/readme_Linux.txt "$pkgdir/usr/share/doc/peazip/readme.txt"
+  rm -r readme
+  mv ../peazip "$pkgdir/usr/share"
+  ln -s /usr/lib/peazip/pea "$pkgdir/usr/bin"
+
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }

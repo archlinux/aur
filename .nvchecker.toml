@@ -1,0 +1,3 @@
+[peazip-gtk2-bin]
+source = "git"
+git = "https://github.com/peazip/PeaZip.git"

@@ -1,6 +1,4 @@
-pkg
-src
-*.rpm
-*.pkg.tar.*
-.fuse_*
-.idea
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
