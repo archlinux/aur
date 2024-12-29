@@ -1,7 +1,7 @@
 pkgbase = sunflower
 	pkgdesc = Small and highly customizable twin-panel file manager for Linux with support for plugins
 	pkgver = 0.5.63
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sunflower-fm.org
 	arch = any
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = sunflower
 	makedepends = libnotify
 	depends = gtk3
 	depends = vte3
+	depends = python
 	depends = python-gobject
 	depends = python-chardet
 	depends = python-cairo
