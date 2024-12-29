@@ -3,8 +3,8 @@
 # Contributors: Flemming Madsen (arch at themadsens dot dk), Sébastien Duquette <ekse.0x@gmail.com>
 pkgname=tclx
 pkgver=8.6.3
-_tclsrcver=8.6.14
-pkgrel=2
+_tclsrcver=8.6.16
+pkgrel=3
 pkgdesc="Provides OS primitives, file scanning, data records etc. for Tcl"
 url="https://github.com/flightaware/tclx"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/flightaware/tclx/archi
         "http://downloads.sourceforge.net/sourceforge/tcl/tcl${_tclsrcver}-src.tar.gz" \
         "interperrorline.patch")
 md5sums=('797dfa26789356e0d2010ea869889fe0'
-         'c30b57c6051be28fa928d09aca82841e'
+         'eaef5d0a27239fb840f04af8ec608242'
          '3254188674bfa4cdf58605d0d69586d0')
 
 #prepare() {
