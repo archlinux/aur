@@ -1,18 +1,18 @@
 pkgbase = ttf-maple-beta
         pkgdesc = Open source monospace font with round corner, ligatures and Nerd-Font for IDE and command line
-        pkgver = 7.0_beta32
+        pkgver = 7.0_beta33
         pkgrel = 1
         url = https://github.com/subframe7536/maple-font
         arch = any
         license = OFL
         conflicts = ttf-maple
-        source = ttf-maple-beta-7.0-beta32-MapleMono-TTF.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0-beta32/MapleMono-TTF.zip
-        source = ttf-maple-beta-7.0-beta32-MapleMono-NF.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0-beta32/MapleMono-NF.zip
-        source = ttf-maple-beta-7.0-beta32-MapleMono-NF-CN.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0-beta32/MapleMono-NF-CN.zip
+        source = ttf-maple-beta-7.0-beta33-MapleMono-TTF.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0-beta33/MapleMono-TTF.zip
+        source = ttf-maple-beta-7.0-beta33-MapleMono-NF.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0-beta33/MapleMono-NF.zip
+        source = ttf-maple-beta-7.0-beta33-MapleMono-NF-CN.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0-beta33/MapleMono-NF-CN.zip
         source = ttf-maple-beta-LICENSE::https://raw.githubusercontent.com/subframe7536/maple-font/main/OFL.txt
-        sha256sums = b37ca84c71b08d91ff7b9a2fdc42a61d5507efaec6ead2e864230c15ac20a335
-        sha256sums = afbf26ceedee6c5dd1f6de7af7885451e133ebb14a8f2ac7ae8fa2c459b03d37
-        sha256sums = 8db50b4756932ae1012f15bdc5898fe8cb889b111fffa667c720f66abf09f56a
+        sha256sums = ec7c8d9a6801a65782369e8655e1309e9546031053e934468b48bc6d46805f11
+        sha256sums = 8c235c4a46bc71034c546dfaaa30368c929ffb6f1a698394aecf3b4cdc22fbdb
+        sha256sums = 44f176454155bcb132ef756aa191930207a602ae7ba9046d0b260d1490f7bc58
         sha256sums = cdb01cb2c0ac2d618ad3fc082275cf3cbe6145a58d558709ec083ce69c702cf0
 
 pkgname = ttf-maple-beta
