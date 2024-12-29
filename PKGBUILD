@@ -13,6 +13,7 @@ pkgdesc="Fast and portable implementation of the ANS Forth language"
 arch=('i686' 'x86_64' 'armv6h')
 license=('GPL-3.0-or-later')
 depends=('libtool' 'texinfo')
+options=(!lto)
 #source=("https://git.savannah.gnu.org/cgit/gforth.git/snapshot/${pkgname}-${pkgver}.tar.gz" #official source
 source=("https://ftp.gnu.org/gnu/gforth/gforth-${pkgver}.tar.gz"
   #source=("$pkgname-$pkgver.tar.gz::https://github.com/forthy42/gforth/archive/refs/tags/${pkgver}.tar.gz" #this is just faster
