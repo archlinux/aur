@@ -67,17 +67,20 @@ order = [
 ## Example Output
 
 ```
+
 lysec@archlinux
 
-OS: Arch Linux
-Kernel: 6.12.1-2-cachyos
-CPU: AMD Ryzen 7 7800X3D 8-Core Processor
-WM: Hyprland
-PKGS: 1384
-FLAT: 0
-RAM: 5.05 GB / 30.51 GB
-Uptime: 1h 0m
-Age: 32 day(s)
+󰣇 ‣ os: Arch Linux
+󰍛 ‣ kernel: 6.12.7-2-cachyos
+󰍛 ‣ cpu: AMD Ryzen 7 7800X3D 8-Core Processor
+ ‣ wm: Hyprland
+ ‣ pkgs: 947
+󰓅 ‣ ram: 6.40 GB / 30.51 GB
+ ‣ uptime: 2h 29m
+ ‣ age: 10 day(s)
+ ‣ shell: fish
+ ‣ term: ghostty
+
 ```
 
 ## Contributing
