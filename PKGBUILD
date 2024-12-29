@@ -2,7 +2,7 @@
 # Maintainer: MYT <MYT @ QQ COM>
 pkgname=zyfun-git
 _pkgname=ZyFun
-pkgver=3.3.7.r66.gd796640
+pkgver=3.3.9.r69.g423f0a7
 _electronversion=33
 _nodeversion=23
 pkgrel=1
@@ -54,7 +54,7 @@ build() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="zyfun client" --categories="Audio;Video" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -85,6 +85,7 @@ build() {
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
+    sed -i '9i\StartupWMClass=zyfun' zyfun.desktop
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
