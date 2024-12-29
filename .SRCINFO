@@ -1,10 +1,10 @@
 pkgbase = grayjay
-	pkgdesc = Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)
+	pkgdesc = Follow creators, not platforms (privacy- and freedom-respecting streaming client)
 	pkgver = 3
 	pkgrel = 3
 	url = https://gitlab.futo.org/videostreaming/Grayjay.Desktop
 	arch = x86_64
-	license = Source First License 1.1
+	license = custom:Source-First-License-1.1
 	makedepends = dotnet-sdk>=8
 	makedepends = dotnet-sdk<9
 	makedepends = git
