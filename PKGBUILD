@@ -1,13 +1,16 @@
+# Maintainer: Adam Perkowski <adas1per@protonmail.com>
+# https://github.com/adamperkowski/PKGBUILDs
+
 pkgname=brlcad
 pkgver=7.36.0
 pkgrel=1
-pkgdesc='An extensive 3D solid modeling system.'
+pkgdesc='Extensive 3D solid modeling system'
 url='https://brlcad.org'
-license=('LGPL' 'BSD' 'custom:BDL')
+license=('LGPL-2.1-only' 'BSD-3-Clause' 'LicenseRef-BDL')
 arch=('i686' 'x86_64')
 depends=('gdal' 'libgl' 'libxft' 'libxi')
 makedepends=('cmake' 'ninja')
-install="${pkgname}.install"
+install="$pkgname.install"
 _tag_name="rel-${pkgver//./-}"
 source=(
     'build.patch'
@@ -74,3 +77,5 @@ package() {
         "--target-directory=${pkgdir}/etc/profile.d" \
         "${srcdir}/build/${pkgname}.sh"
 }
+
+# vim: ts=2 sw=2 et:
