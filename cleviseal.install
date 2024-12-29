@@ -2,8 +2,6 @@
 
 build() {
     add_binary "tpm2_pcrextend"
-    add_binary "tpm2_pcrread"
-    add_binary "jose"
 
     add_runscript
 }
