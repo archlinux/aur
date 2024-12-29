@@ -2,7 +2,7 @@
 _name=accesser
 pkgname=python-${_name}
 pkgver=0.10.0
-pkgrel=4
+pkgrel=5
 arch=('any')
 pkgdesc="A tool for solving SNI RST"
 url="https://github.com/URenko/Accesser"
@@ -35,7 +35,7 @@ source=(
     "accesser.service"
 )
 sha256sums=('b11965b1a52adf1fc55e313f08d6a38f224c21a4597833a04c3fe1f784cd4691'
-            'cb16c9771c4fbaf70b6b8f898475d8d024dd57ab385cfecfe364cb678dcbbabe')
+            '0ab7e33edd1b9294cb7f47224bae146846a0007d319c30000a564f02e7c16e4d')
 backup=(
     'etc/accesser/pac'
     'etc/accesser/config.toml'
