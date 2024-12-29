@@ -3,8 +3,8 @@
 # Make sure to put "cleviseal" right after "clevis" in /etc/mkinitcpio.conf
 
 pkgname=mkinitcpio-cleviseal-hook
-pkgver=1.0
-pkgrel=5
+pkgver=1.1
+pkgrel=1
 pkgdesc='An initcpio hook to extend PCRs after clevis to prevent unsealing the root volume key after initramfs'
 arch=('any')
 url='https://aur.archlinux.org/mkinitcpio-cleviseal-hook'
