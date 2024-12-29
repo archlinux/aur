@@ -8,7 +8,7 @@ After = network-online.target mariadb.service
 User = iyuuplus
 Group = iyuuplus
 Restart = on-failure
-ExecStart = /srv/iyuuplus/start.php start
+ExecStart = /usr/bin/iyuuplus start
 
 [Install]
 WantedBy = multi-user.target

@@ -16,7 +16,7 @@ source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
 sha256sums=('79e44599d06b2a270e2f8c9b03f015d858bda225848a82268990ed39cc3505f4'
-            '297b8392b19ef7f02a97a3d7032610bb7d509e4a48427b55ad35e2eb40ba8de2'
+            '2599c5f243b573a4db2ff925e2ad75337338dc61a293b1a1c17acf3681b3d3ff'
             'e64af1d0d088fa30e864897a43597026ee95f5e2590e79ac4055786795c60622'
             '4c0928194248ce56deab7a1eeec78d4a3827d7e8fbceba142b46d4f9c8eed387')
 options=(!strip !debug)
@@ -41,4 +41,7 @@ package() {
     find . \( -iname ".git*" -o -iname "README.md" \) | sort | while read line; do rm -rf "$line"; done
     find . -type f -exec install -Dm644 {} "${pkgdir}/srv/${pkgname}/"{} \;
     chmod 755 "${pkgdir}/srv/${pkgname}/start.php"
+
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "/srv/${pkgname}/start.php"    "${pkgdir}/usr/bin/${pkgname}"
 }
