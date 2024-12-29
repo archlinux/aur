@@ -1,7 +1,7 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=prosopopee
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc='A static website generator to make beautiful customizable pictures galleries that tell a story'
 arch=('any')
@@ -12,11 +12,11 @@ depends=('python-jinja'
          'python-path'
          'python-babel'
          'python-ruamel-yaml'
-         'python-future'
-         'python-pillow')
+         'python-pillow'
+         'python')
 makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/e2/29/6f79de8bf7a26572744658d66c0e047a46b53feaab52af66e0a1badd8496/prosopopee-1.1.4.tar.gz")
-sha256sums=('94fe17a6dcd173dfadf7ffb1ff4797348ee081f7b5e8f9b253fa0add7ab4a60b')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/d8/6f/ed9bcab7ce13396bb3ae8df8c4ae270539ee5ab9155feae2582c96aa2bcb/prosopopee-1.1.5.tar.gz")
+sha256sums=('f895bda53af9f9625c979942a513a726c9facaba2c65c8b379850d6b877eeb56')
 
 build() {
   cd "${pkgname}-${pkgver}"
