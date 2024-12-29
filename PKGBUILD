@@ -5,7 +5,7 @@
 
 pkgname=meshtastic-python
 _name=python
-pkgver=2.5.8
+pkgver=2.5.9
 pkgrel=1
 pkgdesc="Python CLI and API for talking to Meshtastic devices"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=('python-pytap2: TUN tunnel support'
             'python-print-color: Colored log output'
             'python-pyqrcode: Output of QR codes')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/meshtastic/python/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4dec87e9d0462feb4579efd07674a774101c0f076ccda42288c561d2b498e642')
+sha256sums=('4c207691e5feb990192733e2906be611082846f46c6dbfc08ff70e5494c65cdb')
 
 build() {
     cd "$_name-$pkgver"
