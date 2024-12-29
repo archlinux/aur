@@ -1,28 +1,18 @@
-# Maintainer: Denis Vadimov <me@bloody.pw>
+# Contributor: Denis Vadimov <me@bloody.pw>
 pkgname=python-bpylist2
-pkgver=3.0.3
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Parse and Generate binary plists and NSKeyedArchiver archives"
 arch=('any')
 url="https://github.com/parabolala/bpylist2"
 license=('MIT')
 depends=('python3')
-makedepends=('git')
-source=("python-bpylist2::git+$url.git")
-md5sums=('SKIP')
-
-
-pkgver() {
-	cd "${srcdir}/${pkgname}"
-	ver=$(git describe --tags --abbrev=0)
-	echo "${ver/v/}"
-}
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/ca/34/eb90ff6be953f6e4df08d4e8c0b761bea144242b6d711e922113411cc631/bpylist2-4.1.1.tar.gz")
+md5sums=('6f284eb91f997cfa0df3b4401aadf49e')
 
 
 package() {
-	cd "${srcdir}/${pkgname}"
-	bpylist_ver=$(git describe --tags --abbrev=0)
-	git checkout tags/$bpylist_ver
-
+	cd "${srcdir}/bpylist2-${pkgver}"
 	python setup.py install --root="$pkgdir"
 }
