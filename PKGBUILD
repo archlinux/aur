@@ -5,7 +5,7 @@
 
 _pkgname="debhelper"
 pkgname="$_pkgname"
-pkgver=13.22
+pkgver=13.23
 pkgrel=1
 pkgdesc="Programs to automate common tasks in debian/rules when building Debian packages"
 url="https://salsa.debian.org/debian/debhelper"
@@ -27,7 +27,7 @@ optdepends=(
 _source_main() {
   _pkgsrc="$_pkgname"
   source=("$_pkgsrc"::"git+$url.git#tag=debian/$pkgver")
-  sha256sums=('3f97ed69464ffa0161172c6a1b9a659cedeac37f1c507c10b50a8ca001277a8e')
+  sha256sums=('93d7e8dcb201c214ddda00aa83b11a69e2dbccc6084f9d051349bdc932ab03b0')
 }
 
 _source_dh_strip_nd() {
