@@ -1,4 +1,4 @@
-pkgbase = intel-npu-driver-bin
+pkgbase = intel-npu-driver
 	pkgdesc = Intel(R) NPU (Neural Processing Unit) Driver
 	pkgver = 1.10.1.20241220_12430270326
 	pkgrel = 1
@@ -28,4 +28,4 @@ pkgbase = intel-npu-driver-bin
 	sha256sums = 33b19c431c93d3e199208af633b4dcf90154e1986cab327959c7702df75b3660
 	sha256sums = 451963b6682694730dbe4889fff2ef1c20def68992e2594880c15a28e6c87be5
 
-pkgname = intel-npu-driver-bin
+pkgname = intel-npu-driver

@@ -2,7 +2,7 @@
 # Contributor: jinzhongjia <mail@nvimer.org>
 # Contributor: Melvin Redondo-Tanis <melvin@redondotanis.com>
 
-pkgname=intel-npu-driver-bin
+pkgname=intel-npu-driver
 pkgver=1.10.1.20241220_12430270326
 pkgrel=1
 _main_ver=$(echo $pkgver | cut -d'.' -f1-3)
