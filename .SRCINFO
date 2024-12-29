@@ -1,0 +1,12 @@
+pkgbase = slice99
+	pkgdesc = Full-featured interfaces for C99
+	pkgver = 0.7.7+r10+g63404eb
+	pkgrel = 1
+	url = https://github.com/hirrolot/slice99
+	arch = any
+	license = MIT
+	checkdepends = cmake>=3.16
+	source = slice99-63404eb62d93011a699d72e0e0713fef6867f90e.tar.gz::https://github.com/hirrolot/slice99/archive/63404eb62d93011a699d72e0e0713fef6867f90e.tar.gz
+	sha256sums = de1ddfc74bf6abb3fdfe57c25f661100c939378196be412aa1deab9567bd0f7e
+
+pkgname = slice99

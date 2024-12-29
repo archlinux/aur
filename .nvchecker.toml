@@ -1,0 +1,4 @@
+[slice99]
+source = "git"
+git = "https://github.com/hirrolot/slice99.git"
+prefix = "v"
