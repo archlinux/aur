@@ -1,7 +1,7 @@
 # Maintainer: Ivan Chebykin <ivan@chebykin.org>
 pkgname=typespec
 _pkgsubname=compiler
-pkgver=0.59.1
+pkgver=0.63.0
 pkgrel=1
 pkgdesc="Compiler CLI for TypeSpec"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('npm')
 makedepends=('jq')
 noextract=($_pkgsubname-$pkgver.tgz)
 source=("https://registry.npmjs.org/@$pkgname/$_pkgsubname/-/$_pkgsubname-$pkgver.tgz")
-sha256sums=('ad71672732e7ee5cc87b46322dcf1cc43a4a168619f2df08091ee3222e5709f8')
+sha256sums=('97c505ff9f63914f07b4fc484512a29143661896919d6e72cc4567fbb52a40d9')
 
 # For more info about this package see:
 # https://wiki.archlinux.org/index.php/Node.js_package_guidelines
