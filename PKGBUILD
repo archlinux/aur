@@ -3,14 +3,19 @@
 
 pkgname=play-emu
 pkgver=0.68
-pkgrel=1
+pkgrel=2
 pkgdesc="Play! is an experimental Playstation 2 emulator."
 arch=(x86_64)
 url="https://purei.org/"
 license=(MIT)
-depends=(qt6-base openal glew)
+depends=(qt6-base openal glew
+
+         # namcap implicit depends
+         hicolor-icon-theme sqlite libglvnd bzip2 curl openssl libevdev glibc icu zlib)
 makedepends=(git cmake ninja nlohmann-json)
 source=("${pkgname%-git}::git+https://github.com/jpd002/Play-.git#tag=${pkgver}"
+        0001-Add-missing-include-cstring-in-NamcoSys147-NANDReade.patch
+        play-emu_profiler_build_fix.patch::https://github.com/jpd002/Play-/commit/4403687dc8d505911980b8a96b13701a10f91b70.patch
         "git+https://github.com/jpd002/Play-Dependencies.git"
         "git+https://github.com/jpd002/Play--Framework.git"
         "git+https://github.com/jpd002/Play--CodeGen.git"
@@ -22,6 +27,8 @@ source=("${pkgname%-git}::git+https://github.com/jpd002/Play-.git#tag=${pkgver}"
         "git+https://github.com/facebook/zstd.git"
         "git+https://github.com/Cyan4973/xxHash.git")
 sha256sums=('09c8663ecc614cefcd88b37676ff32769660b6b7bf97b29f274c19375a0eb136'
+            '01460ec361c1a6a4329b8bdcfc544a3439fa062e515b055b06124ea521523643'
+            '470dda423c66f2d95c5d6e8977aba8ac27313649e47a0fb7f4490d62a0c38027'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -34,7 +41,10 @@ sha256sums=('09c8663ecc614cefcd88b37676ff32769660b6b7bf97b29f274c19375a0eb136'
             'SKIP')
 
 prepare () {
-  cd "${pkgname%-git}"
+  cd "play-emu"
+
+  patch -Np1 -i ../0001-Add-missing-include-cstring-in-NamcoSys147-NANDReade.patch
+  patch -Np1 -i ../play-emu_profiler_build_fix.patch
 
   git submodule init
   git config 'submodule.deps/Dependencies.url' "${srcdir}/Play-Dependencies"
@@ -45,10 +55,7 @@ prepare () {
   git config 'submodule.deps/AltKit.url' "${srcdir}/AltKit"
   git -c protocol.file.allow=always submodule update
 
-  install -d build
-
-  cd "${srcdir}/${pkgname%-git}"/deps/Dependencies
-
+  cd deps/Dependencies
   git submodule init
   git config 'submodule.SDWebImage.url' "${srcdir}/SDWebImage"
   git config 'submodule.ghc_filesystem.url' "${srcdir}/filesystem"
@@ -58,15 +65,19 @@ prepare () {
 }
 
 build() {
-  cd "${pkgname%-git}/build"
-  cmake .. -Wno-dev -G"Ninja"
-  cmake --build . --config Release
+  local _flags=(
+    -DWITH_SYSTEM_ZLIB=ON
+  )
+
+  cmake -B build -S "play-emu" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
+
+  cmake --build build
 }
 
 package() {
-  cd "${pkgname%-git}"
-  install -Dm755 build/Source/ui_qt/Play    "${pkgdir}"/usr/bin/play-emu
-  install -D icons/icon.svg                 "${pkgdir}"/usr/share/pixmaps/play.svg
-  install -D installer_unix/org.purei.Play.desktop -t "${pkgdir}"/usr/share/applications/
-  install -D License.txt                    "${pkgdir}/usr/share/licenses/${pkgname}"/License.txt
+  DESTDIR="${pkgdir}" cmake --install build
+  install -D play-emu/License.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
