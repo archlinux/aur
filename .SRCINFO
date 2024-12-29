@@ -1,7 +1,7 @@
 pkgbase = wechat
 	pkgdesc = 微信是一种生活方式. This is a repackage of the official WeChat which includes an optional sandbox support
 	pkgver = 4.0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://weixin.qq.com/
 	arch = x86_64
 	arch = aarch64
@@ -63,7 +63,7 @@ pkgbase = wechat
 	source = wechat.sh
 	source = wechat.desktop
 	source = wechat.svg
-	md5sums = 2cabcc465720117977304b61f32f03b0
+	md5sums = 289f5a646504a8ac5a9ab6a2dcff969a
 	md5sums = caa351d13a96f34bee10ed171e7d520d
 	md5sums = 468e0367346707c026e577e7bf3e3a82
 	source_x86_64 = wechat-x86-4.0.1.7.deb::https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_4.0.1.7_amd64.deb

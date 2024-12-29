@@ -3,7 +3,7 @@
 
 pkgname=wechat
 pkgver=4.0.1.7
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="微信是一种生活方式. This is a repackage of the official WeChat which includes an optional sandbox support"
 arch=('x86_64' 'aarch64' 'loong64')
