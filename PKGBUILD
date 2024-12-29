@@ -3,7 +3,7 @@
 
 pkgname=tosu
 pkgver=4.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Eponymous software for reading osu! memory"
 arch=(x86_64)
 url="https://github.com/tosuapp/tosu"
@@ -22,7 +22,7 @@ changelog=
 source=("https://github.com/tosuapp/${pkgname}/releases/download/v${pkgver}/${pkgname}-linux-v${pkgver}.zip"
 	"tosu-bin.sh"        
 )
-sha256sums=("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+sha256sums=("8134f7a593c037f5dff1dd05e2e0294d8333c16d182a77a7f1bb9a12f68d3c27"
 	"16e77f6a192094be77ce1ecc9322e7296b57532851672d15f07bc82132cdfc21"
 )
 validpgpkeys=()
