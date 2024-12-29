@@ -1,0 +1,4 @@
+[interface99]
+source = "git"
+git = "https://github.com/hirrolot/interface99.git"
+prefix = "v"

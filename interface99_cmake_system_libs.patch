@@ -1,0 +1,23 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,15 +6,11 @@
+     cmake_policy(SET CMP0135 NEW)
+ endif()
+ 
+-include(FetchContent)
+-
+-FetchContent_Declare(
+-    metalang99
+-    URL https://github.com/Hirrolot/metalang99/archive/refs/tags/v1.13.2.tar.gz
++find_path(METALANG99_INCLUDE_DIR
++    NAMES metalang99.h
++    HINTS /usr/include
++    PATH_SUFFIXES metalang99
+ )
+ 
+-FetchContent_MakeAvailable(metalang99)
+-
+ add_library(${PROJECT_NAME} INTERFACE)
+-target_include_directories(${PROJECT_NAME} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+-target_link_libraries(${PROJECT_NAME} INTERFACE metalang99)
++target_include_directories(${PROJECT_NAME} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR} ${METALANG99_INCLUDE_DIR})
