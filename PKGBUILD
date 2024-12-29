@@ -5,8 +5,8 @@
 pkgname=python-croniter
 _name=${pkgname#python-}
 # https://github.com/kiorky/croniter/blob/master/CHANGELOG.rst
-pkgver=5.0.1
-pkgrel=2
+pkgver=6.0.0
+pkgrel=1
 pkgdesc="A Python module to provide iteration for datetime object."
 arch=('any')
 url="https://github.com/kiorky/croniter"
@@ -15,7 +15,7 @@ depends=('python' 'python-dateutil' 'python-pytz')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 source=("https://github.com/kiorky/croniter/archive/refs/tags/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('74f1f740587a0b1deda05dfc536f3dd2457183849b0e52a79466ad5da1cc4a6b')
+sha256sums=('5b13012a70272e484f4644669ddae75e84a5597c41b44a5f628337e7c6acf329')
 
 build() {
   cd "$_name-$pkgver"
