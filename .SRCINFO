@@ -1,7 +1,7 @@
 pkgbase = python-sphinxcontrib-hdl-diagrams
 	pkgdesc = Generate diagrams from HDL in Sphinx.
-	pkgver = 0.0.post131
-	pkgrel = 3
+	pkgver = 0.0.post160
+	pkgrel = 1
 	url = https://github.com/SymbiFlow/sphinxcontrib-hdl-diagrams
 	arch = any
 	license = APACHE
@@ -9,10 +9,12 @@ pkgbase = python-sphinxcontrib-hdl-diagrams
 	depends = python-sphinx
 	depends = yosys
 	depends = python-nmigen
-	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib-hdl-diagrams/sphinxcontrib-hdl-diagrams-0.0.post131.tar.gz
-	sha256sums = f05f467d91c90b879090ef04f80481cca171d7a8cc909bfa6eef3ed2d6687cf1
+	depends = python-amaranth-git
+	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib-hdl-diagrams/sphinxcontrib-hdl-diagrams-0.0.post160.tar.gz
+	sha256sums = 7c05a7a0532247d06a21a121919ec902e9e7b8109b0da875c89311603ef4099d
 
 pkgname = python-sphinxcontrib-hdl-diagrams
 	depends = python-sphinx
 	depends = yosys
 	depends = python-nmigen
+	depends = python-amaranth-git
