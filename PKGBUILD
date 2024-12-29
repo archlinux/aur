@@ -10,7 +10,7 @@
 _pkgname="logseq-desktop"
 pkgname="$_pkgname"
 pkgver=0.10.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
 license=('AGPL-3.0-or-later')
@@ -54,12 +54,8 @@ install="$pkgname.install"
 
 _pkgsrc="logseq-${pkgver}"
 _pkgext="tar.gz"
-source=(
-  "$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/${pkgver}.$_pkgext"
-)
-sha256sums=(
-  '9fe98bbeb4355c1ad3ea5b3776f02455ee86b8157f74dd53bb9b3367df31403a'
-)
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/${pkgver}.$_pkgext")
+sha256sums=('9fe98bbeb4355c1ad3ea5b3776f02455ee86b8157f74dd53bb9b3367df31403a')
 
 _nvm_env() {
   # avoid cluttering user home, while allowing data to be cached
@@ -124,6 +120,8 @@ package() {
   install -dm755 "$pkgdir/$_install_path/$_pkgname"
   cp --reflink=auto -a -r -u "$_out_path"/* "$pkgdir/$_install_path/$_pkgname"
 
+  install -Dm644 "$_out_path"/resources/app/icon.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/logseq" << END
 #!/usr/bin/bash
 
@@ -146,16 +144,16 @@ export ELECTRON_IS_DEV
 : \${ELECTRON_FORCE_IS_PACKAGED:=true}
 export ELECTRON_FORCE_IS_PACKAGED
 
-exec "/$_install_path/$_pkgname/Logseq""\${flags[@]}" "\$@"
+exec "/$_install_path/$_pkgname/Logseq" "\${flags[@]}" "\$@"
 END
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
 Type=Application
-Name=Logseq
+Name=${_pkgname^}
 Comment=$pkgdesc
-Exec=logseq %u
-Icon=logseq
+Exec=$_pkgname %u
+Icon=$_pkgname
 Terminal=false
 StartupNotify=true
 Categories=Office;
