@@ -1,35 +1,41 @@
+# Maintainer:
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=dooble
-pkgver=2022.11.15
+pkgver=2024.11.23
 pkgrel=1
-pkgdesc="Web browser based on QtWebEngine"
-arch=(x86_64)
-url="https://textbrowser.github.io/dooble/"
-license=('BSD')
-depends=('qt5-webengine')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/textbrowser/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('1db1a65832b5bae8d35f691fdddbb72745b3cd3da5b51e8fa79f1fc83e5bdef3')
+pkgdesc="A minimal, scientific, and stable Web browser"
+arch=('x86_64')
+url="https://textbrowser.github.io/dooble"
+license=('BSD-3-Clause')
+depends=('bash' 'gcc-libs' 'glibc' 'gpgme' 'qt6-base' 'qt6-charts' 'qt6-declarative' 'qt6-webengine')
+makedepends=('git')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/textbrowser/dooble/archive/refs/tags/${pkgver}.tar.gz"
+        "git+https://github.com/textbrowser/dooble-dictionaries.git"
+        "${pkgname}.sh")
+sha256sums=('a2a687344181168383c43daeb44e0ebf50dd9ef206b73339a8f5e73a67edb3fc'
+            'SKIP'
+            '39705af759145ffa3cb670353e8fe459228f92d70ae98aa16212006f0c239c1b')
 
 prepare() {
-  cd $pkgname-$pkgver
-  sed -i 's|Categories=Web|Categories=Network;Qt;WebBrowser;|
-          s|Exec=.*|Exec=dooble|
-          s|Icon=.*|Icon=dooble|' dooble.desktop
-  sed -i 's|QString path(QDir::currentPath());|QString path("/usr/share/dooble");|' Source/dooble_settings.cc
+    cd "${pkgname}-${pkgver}"
+    sed 's|libexec/||g' -i dooble.pro
 }
 
 build() {
-  cd $pkgname-$pkgver
-  qmake dooble.pro
-  make
+    cd "${pkgname}-${pkgver}"
+    export DOOBLE_DICTIONARIES_DIRECTORY="${srcdir}/dooble-dictionaries/Dictionaries"
+    qmake6 dooble.pro
+    make
 }
 
 package() {
-  cd $pkgname-$pkgver
-  install -Dm755 Dooble "$pkgdir/usr/bin/dooble"
-  install -Dm644 Icons/Logo/dooble.png "$pkgdir/usr/share/pixmaps/dooble.png"
-  install -Dm644 dooble.desktop "$pkgdir/usr/share/applications/dooble.desktop"
-  install -Dm644 -t "$pkgdir/usr/share/dooble/Translations" Translations/dooble_*.qm
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/dooble/LICENSE"
+    cd "${pkgname}-${pkgver}"
+    install -Dm755 Dooble -t "${pkgdir}/usr/bin"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 Icons/Logo/dooble.png -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 Distributions/dooble.desktop -t "${pkgdir}/usr/share/applications"
+    install -Dm644 Translations/dooble_*.qm -t "${pkgdir}/usr/share/${pkgname}/translations"
+    install -Dm644 qtwebengine_dictionaries/* -t "${pkgdir}/usr/share/${pkgname}/qtwebengine_dictionaries"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

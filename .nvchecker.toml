@@ -1,0 +1,3 @@
+[dooble]
+source = "git"
+git = "https://github.com/textbrowser/dooble.git"
