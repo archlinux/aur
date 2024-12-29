@@ -1,7 +1,7 @@
 # Maintainer: Jo De Boeck <deboeck.jo@gmail.com>
 
 pkgname=big-launcher-git
-pkgver=ab7f562
+pkgver=f8935c0
 pkgrel=1
 makedepends=('cmake')
 depends=('sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'spdlog' 'fmt' 'libwebp' 'harfbuzz' 'libinih' 'libxml2')
@@ -12,7 +12,7 @@ pkgdesc="Launcher for the big screen"
 license=('MIT')
 source=('git+https://github.com/complexlogic/big-launcher' 'https://github.com/complexlogic/big-launcher/files/10326572/assets.zip')
 url='https://github.com/complexlogic/big-launcher'
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP' '86c72ff76831c1a458924f48cb1b7d43')
 
 pkgver() {
   cd "$srcdir/big-launcher"
@@ -22,7 +22,6 @@ pkgver() {
 build() {
   mkdir -p "$srcdir/big-launcher/build"
   cd "$srcdir/big-launcher/build"
-  sed -i 's/launcher/big-launcher/g' ../CMakeLists.txt
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 
