@@ -1,0 +1,15 @@
+pkgbase = sdl2-gamepad-mapper-git
+	pkgdesc = Generate SDL2 Controller mapping strings
+	pkgver = 0.0.9.r1.g957a15f
+	pkgrel = 1
+	url = https://gitlab.com/ryochan7/$base_name
+	arch = any
+	makedepends = cmake
+	makedepends = git
+	depends = sdl2
+	depends = qt6-base>=6.4
+	depends = qt6-declarative>=6.4
+	source = git+https://gitlab.com/ryochan7/sdl2-gamepad-mapper
+	sha256sums = SKIP
+
+pkgname = sdl2-gamepad-mapper-git
