@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fzf-make
-pkgver=0.52.0
+pkgver=0.53.0
 pkgrel=1
 pkgdesc="A command line tool that executes make target using fuzzy finder with preview window"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4cb9b8c0fbe2727b29269bb3db389b31814de2cbd15ed33de2ea9b5f3a4c7713')
+sha256sums=('7f2efbfadbf05cd92d09d64f296621757291b798b372f72335fae6c0dd9c156b')
 options=('!lto')
 
 prepare() {
