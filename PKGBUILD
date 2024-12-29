@@ -10,7 +10,7 @@
 ## basic info
 _pkgname="cudatext"
 pkgname="$_pkgname-git"
-pkgver=1.219.0.0.r0.gfea21f2
+pkgver=1.220.0.3.r13.g612b8d0
 pkgrel=1
 pkgdesc="Text editor written in Free Pascal with Lazarus (${_widgets^})"
 url="https://github.com/Alexey-T/CudaText"
@@ -25,6 +25,24 @@ makedepends=(
   'lazarus'
   'xmlstarlet'
   'imagemagick'
+)
+optdepends=(
+  'python-brotli'
+  'python-brotlicffi'
+  'python-certifi'
+  'python-chardet'
+  'python-charset-normalizer'
+  'python-cryptography'
+  'python-h2'
+  'python-idna'
+  'python-pyopenssl'
+  'python-pysocks'
+  'python-requests'
+  'python-simplejson'
+  'python-simpletools'
+  'python-typing_extensions'
+  'python-urllib3'
+  'python-zstandard'
 )
 
 case "${_widgets::1}" in
