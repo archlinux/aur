@@ -1,6 +1,6 @@
 pkgbase = phpdoc-phar
-	pkgdesc = “Dependency-less” Phar version of phpDocumentor2. Works with PHP 8.
-	pkgver = 3.5.3
+	pkgdesc = “Dependency-less” Phar version of phpDocumentor2.
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://www.phpdoc.org/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = phpdoc-phar
 	depends = php
 	optdepends = php-xsl: Needed for some of the rendering templates
 	conflicts = phpdocumentor2
-	source = https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.5.3/phpDocumentor.phar
-	sha256sums = 9760ac280a10041928a8743354f68692c22f14cd5d05135dfc15e11d3b3c25ea
+	source = https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.6.0/phpDocumentor.phar
+	sha256sums = 68e860b191799efdd7582b2b5fb738ea4dd743bb0476257608f0b22155d155f3
 
 pkgname = phpdoc-phar

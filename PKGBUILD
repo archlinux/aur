@@ -3,14 +3,14 @@
 # vim: ts=4:sw=4
 
 
-_releaseVersion='3.5.3'
-_sha256='9760ac280a10041928a8743354f68692c22f14cd5d05135dfc15e11d3b3c25ea'
+_releaseVersion='3.6.0'
+_sha256='68e860b191799efdd7582b2b5fb738ea4dd743bb0476257608f0b22155d155f3'
 
 
 pkgname=phpdoc-phar
 pkgver=${_releaseVersion}
 pkgrel=1
-pkgdesc='“Dependency-less” Phar version of phpDocumentor2. Works with PHP 8.'
+pkgdesc='“Dependency-less” Phar version of phpDocumentor2.'
 
 url='https://www.phpdoc.org/'
 arch=('any')
