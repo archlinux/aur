@@ -1,13 +1,13 @@
 #!/usr/bin/ash
 
-PCR_PRIMARY=7
-PCR_IDS="0,4,5,${PCR_PRIMARY}"
-PCR_BANK=sha256
-
-# "cleviseal" as a sha256
-SHA256_EXTEND=6110bc36fe2e56be352e4584d0a3c153c031b3e04cc45c8adb339c984cdf8127
-
 run_hook() {
+    PCR_PRIMARY=7
+    PCR_IDS="0,4,5,${PCR_PRIMARY}"
+    PCR_BANK=sha256
+
+    # "cleviseal" as a sha256
+    SHA256_EXTEND=6110bc36fe2e56be352e4584d0a3c153c031b3e04cc45c8adb339c984cdf8127
+
     echo "Clevis pin: {\"pcr_bank\":\"${PCR_BANK}\",\"pcr_ids\":\"${PCR_IDS}\",\"pcr_digest\":\"$(tpm2_pcrread -Q "${PCR_BANK}:${PCR_IDS}" -o /dev/stdout | jose b64 enc -I- -o-)\"}" > /dev/kmsg
     tpm2_pcrextend "${PCR_PRIMARY}:${PCR_BANK}=${SHA256_EXTEND}" || exit 1
 }
