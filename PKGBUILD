@@ -20,10 +20,10 @@ source=("${pkgname}::git+${_futo_videostreaming_base}/Grayjay.Desktop.git#commit
         "Grayjay.Desktop.CEF.csproj.user"
         "FUTO.MDNS.csproj.user")
 sha256sums=('837523d79a526822ae5b6bdf26edbcdeaf15a37c7622f977928f1af9556f81ce'
-            'a058a42827e66bebb74c5b19479612809a569fbe4aca6d1f90b50927a6b59f1c'
-            'e73c73564dd6d1e4fc99b2151a8c0511dee103969a85595564aa20a2d2ba854a'
-            '16012059237ee70057bcb78926729452f6922d14050f022e4c1b6826eb6f7185'
-            '866d23e27921778ea28111a261f10b1a1c5b7b9b62a204ec29125c72da59de45')
+            '3d37aacfe2c23495448da3d7202abfa2e28db5a10cb69453f9b00b1e80a70f5d'
+            'c6cf4ed075c0d41fb2166848e9c22f00512dfff5cac2fd060e87cddc517d960a'
+            'bc13ae396e2fcd2849e4564db67fad6e1461cedebb2abdafece81fc4c00f38dd'
+            'be103a98e070fd289a2e5bbd1ad1e8e45fd6d9e3c9c01e791c93cc89fe1a8936')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
