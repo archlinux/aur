@@ -1,13 +1,15 @@
 # Maintainer: Doridian <archlinux at doridian dot net>
 
+# Make sure to put "cleviseal" right after "clevis" in /etc/mkinitcpio.conf
+
 pkgname=mkinitcpio-cleviseal-hook
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='An initcpio hook to extend PCRs after clevis to prevent unsealing the root volume key after initramfs'
 arch=('any')
 url='https://aur.archlinux.org/mkinitcpio-cleviseal-hook'
 license=('MIT')
-depends=('clevis' 'tpm2-tools' 'mkinitcpio')
+depends=('clevis' 'tpm2-tools' 'mkinitcpio' 'mkinitcpio-clevis-hook')
 source=(
   'tpm-rebind.sh'
   'cleviseal.hook'
