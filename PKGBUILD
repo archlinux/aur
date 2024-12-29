@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=seer-gdb
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc="A gui frontend to gdb"
 arch=('x86_64' 'aarch64')
