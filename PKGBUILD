@@ -2,7 +2,7 @@
 
 pkgname=wechat-bwrap
 pkgver=4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Sandboxing for WeChat. 沙盒微信."
 arch=('any')
@@ -28,7 +28,7 @@ source=(
 )
 
 
-md5sums=('079a55fcd28b9a4f1efbc1a9e1d9279c')
+md5sums=('32a9d57f29a180cb2e92768f384eca78')
 
 function package() {
 	install -Dm644 portable-config \

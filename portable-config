@@ -10,7 +10,7 @@ friendlyName="WeChat"
 stateDirectory="WeChat_Data"
 
 # This is the target executable to launch
-launchTarget="/opt/apps/com.tencent.wechat/files/wechat/wechat"
+launchTarget="/opt/apps/com.tencent.wechat/files/wechat"
 
 # Takes boolean value. When enabled, do not process XAuth files and enable X access. Generally this should be always false.
 waylandOnly="false"
