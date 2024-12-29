@@ -1,7 +1,8 @@
-pkgbase = systemd
+pkgbase = nosystemd-boot-artix
+	pkgdesc = systemd-boot but without systemd, intended for Artix Linux users
 	pkgver = 257.1
 	pkgrel = 1
-	url = https://www.github.com/systemd/systemd
+	url = https://www.github.com/Demelza/nosystemd-boot-artix
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	makedepends = acl
