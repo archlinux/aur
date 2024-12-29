@@ -1,0 +1,19 @@
+pkgbase = ofxstatement-qif
+	pkgdesc = A plugin for ofxstatement to convert Quicken Interchange Format (QIF) formatted bank transaction files to OFX format.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/robvadai/ofxstatement-qif
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = ofxstatement
+	depends = python-numpy
+	depends = python-quiffen
+	depends = python-pydantic
+	source = ofxstatement-qif-0.6.0.tar.gz::https://github.com/robvadai/ofxstatement-qif/archive/v0.6.0.tar.gz
+	sha256sums = e1bace9ace1d048a4a6a38778406f295e0e1e3ed1ba56a950f4833eb5af5f5b9
+
+pkgname = ofxstatement-qif
