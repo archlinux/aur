@@ -2,7 +2,7 @@
 # Contributor: ELmoussaoui Bilal <bil dot elmoussaoui at gmail.com>
 pkgname=nemo-folder-icons
 pkgver=3.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Nemo extension that makes changing folders icons easy!"
 arch=('any')
 url="https://github.com/bilelmoussaoui/nautilus-folder-icons"
@@ -20,7 +20,8 @@ prepare() {
   cd "$srcdir/nautilus-folder-icons"
 
   # Fix for 'Function does not take positional arguments'
-  sed -e '3d' -i data/meson.build
+  # https://github.com/bilelmoussaoui/nautilus-folder-icons/issues/37
+  git cherry-pick -n b7bb22d139c0ed56a830fc556ff6cbbbb21561ff
 }
 
 build() {
