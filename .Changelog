@@ -1,5 +1,12 @@
 # burnoutsharp-bin .Changelog
 
+## 2024-12-28, burnoutsharp-bin 3.3.3-1
+
+* Bump to 3.3.3
+* `url` updated to reflect name change
+* Binary name changed to `ProtectionScan`; `_prgname` has been updated.  You will need to amend your scripts or symlink
+* Maybe I'll rename this to `binaryobjectscanner-bin`, but today is not that day
+
 ## 2024-06-21, burnoutsharp-bin 3.1.13-1
 
 * Bump to 3.1.13
