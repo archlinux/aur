@@ -22,21 +22,21 @@ md5sums=('797dfa26789356e0d2010ea869889fe0'
 #}
 
 build() {
-  cd $srcdir/${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
   ./configure
-  cp /usr/lib/tclConfig.sh $srcdir
+  cp /usr/lib/tclConfig.sh "$srcdir"
   echo "TCL_SRC_DIR=$startdir/tcl$_tclsrcver" >> ../tclConfig.sh
   [ "$NOEXTRACT" == 1 ] || ./configure --prefix=/usr --enable-share \
-                           --enable-gcc --with-tcl=$srcdir
-  _tclsrc="TCL_SRC_DIR=$srcdir/tcl$_tclsrcver \
-           TCL_TOP_DIR_NATIVE=$srcdir/tcl$_tclsrcver"
+                           --enable-gcc --with-tcl="$srcdir"
+  _tclsrc="TCL_SRC_DIR=\"$srcdir/tcl$_tclsrcver\" \
+           TCL_TOP_DIR_NATIVE=\"$srcdir/tcl$_tclsrcver\""
   CPPFLAGS+=" -I/usr/include/tirpc/"
   LDFLAGS+=" -ltirpc"
-  make $_tclsrc || return 1
+  make
 }
 
 package() {
-  cd $srcdir/${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
   make $_tclsrc DESTDIR="$pkgdir" mandir="/usr/share/man" install
   install -D -m644 license.terms "$pkgdir/usr/share/licenses/$pkgname/license.terms"
 }
