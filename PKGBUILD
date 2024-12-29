@@ -3,7 +3,7 @@
 pkgname=python-alist-proxy
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 epoch=
 pkgdesc="Python alist proxy and monitor."
@@ -39,7 +39,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('9546b0ed837d2c0cea9339187585845ab9cb413db3b10e8262a750d23f445721')
+sha256sums=('ae7a4c020402f9d47badd9c49fd295ed8989359b137227eb402617007e4c778e')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
