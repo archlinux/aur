@@ -1,0 +1,21 @@
+pkgbase = python-appstream-python
+	pkgdesc = A Python library for dealing with Freedesktop Appstream data
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://codeberg.org/JakobDev/appstream-python
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = make
+	depends = python
+	depends = python-requests
+	depends = python-lxml
+	source = python-appstream-python-0.8.1.tar.gz::https://codeberg.org/JakobDev/appstream-python/archive/0.8.1.tar.gz
+	sha256sums = 90e9f83b438b639faa40e53f24e8329fd1d59e1ba454fb45bdd6edf8d9a82c62
+
+pkgname = python-appstream-python
