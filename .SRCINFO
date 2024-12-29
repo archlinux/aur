@@ -1,0 +1,15 @@
+pkgbase = slice99-git
+	pkgdesc = Full-featured interfaces for C99
+	pkgver = 0.7.7.r10.g63404eb
+	pkgrel = 1
+	url = https://github.com/hirrolot/slice99
+	arch = any
+	license = MIT
+	checkdepends = cmake>=3.16
+	makedepends = git
+	provides = slice99=0.7.7
+	conflicts = slice99
+	source = slice99::git+https://github.com/hirrolot/slice99.git
+	sha256sums = SKIP
+
+pkgname = slice99-git
