@@ -4,8 +4,9 @@
 # Contributor: jskier <jay @jskier.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=keeper-commander
-pkgver=17.0.0
-pkgrel=3
+pkgver=16.11.22
+pkgrel=1
+epoch=1
 pkgdesc="CLI, SDK and interactive shell for Keeper® Password Manager."
 arch=('any')
 url="https://github.com/Keeper-Security/Commander"
@@ -34,10 +35,8 @@ makedepends=(
   'python-setuptools'
 )
 checkdepends=('python-ifaddr')
-provides+=('python-keeper-dag' 'python-discovery-common')
-conflicts+=('python-keeper-dag' 'python-discovery-common')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('e71e1c45d57495c38e3ff206fa87ff1d8c82e5488ef256032d84d6a9f359cc76b9c1fb500e1d08bad0ae88ecb6019911663d11b013f7974d8c876c3462564cb9')
+sha512sums=('462a3d4f155bb3bcc91cdbeda1c998bbea3fa5e8371d0e87a7be59a0185635918f7d276aa7e44636a0be340aabf26eee72002cdc6968427b07bcdf8d15644b9e')
 
 build() {
   cd "Commander-$pkgver"
@@ -46,27 +45,18 @@ build() {
 
 check() {
   cd "Commander-$pkgver"
-  rm -rf test-env
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  for whl in libs/*.whl; do
-    test-env/bin/python -m installer "$whl"
-  done
-  test-env/bin/python -m pytest -s -v \
-    --deselect=unit-tests/pam/test_private_tunnel.py::TestPrivateTunnelEntrance::test_forward_data_to_tunnel_generic_exception \
+  python -m pytest -s -v \
     --deselect=tests/test_enterprise_commands.py::TestEnterpriseCommands::test_add_enterprise_user \
     --deselect=tests/test_enterprise_commands.py::TestEnterpriseCommands::test_commands \
     --deselect=tests/test_enterprise_commands.py::TestEnterpriseCommands::test_report_commands \
     --deselect=tests/test_vault_commands.py::TestConnectedCommands::test_commands \
     --deselect=tests/test_vault_commands.py::TestConnectedCommands::test_quoting \
-    --deselect=tests/test_vault_commands.py::TestConnectedCommands::test_vault_reports
+    --deselect=tests/test_vault_commands.py::TestConnectedCommands::test_vault_reports \
+    --deselect=unit-tests/pam-tunnel/test_private_tunnel.py::TestPrivateTunnelEntrance::test_forward_data_to_tunnel_generic_exception
 }
 
 package() {
   cd "Commander-$pkgver"
-  for whl in libs/*.whl; do
-    python -m installer --destdir="$pkgdir" "$whl"
-  done
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
