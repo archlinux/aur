@@ -1,0 +1,18 @@
+pkgbase = mkinitcpio-cleviseal-hook
+	pkgdesc = An initcpio hook to extend PCRs after clevis to prevent unsealing the root volume key after initramfs
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/mkinitcpio-cleviseal-hook
+	arch = any
+	license = MIT
+	depends = clevis
+	depends = tpm2-tools
+	depends = mkinitcpio
+	source = tpm-rebind.sh
+	source = cleviseal.hook
+	source = cleviseal.install
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = mkinitcpio-cleviseal-hook

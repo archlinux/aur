@@ -1,0 +1,15 @@
+#!/bin/sh
+
+build() {
+    add_binary "tpm2_pcrextend"
+    add_binary "tpm2_pcrread"
+    add_binary "jose"
+
+    add_runscript
+}
+
+help() {
+    echo 'Seals after clevis to make sure we cannot decode the drive key after initrd'
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
