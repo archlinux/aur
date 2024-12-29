@@ -1,0 +1,24 @@
+post_install() {
+    echo "Running post-install script..."
+
+    # Define ModusToolbox location as the parent to resources_x.y.z folder
+    PRODUCT_HOME="/opt/ModusToolbox"
+    SHORT_VERSION="3.4"
+    cd ${PRODUCT_HOME}/resources_${SHORT_VERSION}.0
+    # Path to resources_x.y.z folder
+    SCRIPTS_DIR="."
+
+    # Find and install udev rules
+    # Comment out the line: "sudo service udev restart" in the scripts because
+    # udev does not need to be restarted for changes to take effect.
+    find "${PRODUCT_HOME}/tools_${SHORT_VERSION}" -type f -name "install_rules.sh" -not -path "*/sample_code/*" -executable -exec sed -i '/\bsudo service udev restart\b/s/^/# /' {} \; -exec bash {} \;
+
+    # Execute tools_x.y/modus-shell/postinstall
+    "${PRODUCT_HOME}/tools_${SHORT_VERSION}/modus-shell/postinstall"
+
+    # Create environment variable
+    if [ -d "/etc/profile.d" ]; then
+        echo "export CY_TOOLS_PATHS=${PRODUCT_HOME}/tools_${SHORT_VERSION}" > "${SCRIPTS_DIR}/set_env_var.sh"
+        install -Dm644 "${SCRIPTS_DIR}/set_env_var.sh" "/etc/profile.d/modustoolbox_${SHORT_VERSION}.sh"
+    fi
+}
