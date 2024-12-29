@@ -9,7 +9,7 @@ SHA256_EXTEND=6110bc36fe2e56be352e4584d0a3c153c031b3e04cc45c8adb339c984cdf8127
 
 run_hook() {
     echo "Clevis pin: {\"pcr_bank\":\"${PCR_BANK}\",\"pcr_ids\":\"${PCR_IDS}\",\"pcr_digest\":\"$(tpm2_pcrread -Q "${PCR_BANK}:${PCR_IDS}" -o /dev/stdout | jose b64 enc -I- -o-)\"}" > /dev/kmsg
-    tpm2_pcrextend "7:${PCR_BANK}=${SHA256_EXTEND}"
+    tpm2_pcrextend "7:${PCR_BANK}=${SHA256_EXTEND}" || exit 1
 }
 
 # vim: set ft=sh ts=4 sw=4 et:

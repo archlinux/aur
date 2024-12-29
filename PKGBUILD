@@ -2,7 +2,7 @@
 
 pkgname=mkinitcpio-cleviseal-hook
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='An initcpio hook to extend PCRs after clevis to prevent unsealing the root volume key after initramfs'
 arch=('any')
 url='https://aur.archlinux.org/mkinitcpio-cleviseal-hook'
