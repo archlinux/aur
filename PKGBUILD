@@ -3,7 +3,7 @@
 pkgname=aos-tools
 _name=$pkgname
 pkgver=1.1.43
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="aos-tools 是 AliOS Things 的命令行编译系统，支持组件管理、程序编译、烧录等功能。aos-tools 使用git 来获取组件的代码和维护代码的版本管理。"
 arch=('any')
@@ -20,7 +20,7 @@ _pydeps=(
     smmap
     urllib3
     pyserial
-    pyyaml)
+    yaml)
 depends=(
     bash
     git
