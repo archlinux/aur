@@ -146,17 +146,23 @@ build() {
   CXXFLAGS="${CXXFLAGS} -fvisibility=hidden"
 
   export USE_BAZEL_VERSION=8.0.0
-  BAZEL_COPTS=$(echo ${CPPFLAGS} ${CFLAGS} | xargs -n1 |grep -v _FORTIFY_SOURCE | xargs -n1 echo "--copt")
-  BAZEL_CXXOPTS=$(echo ${CPPFLAGS} ${CXXFLAGS} | xargs -n1 |grep -v _FORTIFY_SOURCE | xargs -n1 echo "--cxxopt")
   LDFLAGS="${LDFLAGS} -fuse-ld=mold"
-  BAZEL_LDOPTS=$(echo ${LDFLAGS} | xargs -n1 echo "--linkopt")
 
   # The bazel rules have changed, so the cache will be deleted.
   #bazel clean --expunge
 
   # fcitx4
   # unix/fcitx:fcitx-mozc.so server:mozc_server gui/tool:mozc_tool
-  ../scripts/build_fcitx_bazel --registry=file://${srcdir}/bcr --config release_build --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized $BAZEL_LDOPTS $BAZEL_COPTS $BAZEL_CXXOPTS
+  ../scripts/build_fcitx_bazel
+      --config release_build \
+      --registry="file://${srcdir}/bcr" \
+      $(echo "${CFLAGS}"|xargs -n1 echo "--copt") \
+      $(echo "${CXXFLAGS}"|xargs -n1 echo "--cxxopt") \
+      $(echo "${LDFLAGS}"|xargs -n1 echo "--linkopt") \
+      --copt="-Wno-uninitialized" \
+      --host_copt="-Wno-uninitialized" --verbose_failures \
+      #--nostart_end_lib \
+
   bazel shutdown
 }
 
