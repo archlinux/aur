@@ -2,7 +2,7 @@
 
 pkgname=coilgunrailgunutility-mono
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="一个计算电磁炮的软件 Coilgun Railgun Misaka Mikoto 你指尖跳动的电光,是我永恒不变的信仰。"
 arch=('any')
@@ -20,25 +20,24 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("${pkgname%-mono}::git+https://download.fastgit.org/kmakise/CoilgunRailgunUtility.git")
+source=("${pkgname%-mono}::git+${url}.git")
 noextract=()
 sha256sums=('SKIP')
 #validpgpkeys=()
 
-
 build() {
-    cd "${srcdir}/${pkgname%-mono}"
-    xbuild RailgunCalcWin.sln
+  cd "${srcdir}/${pkgname%-mono}"
+  xbuild RailgunCalcWin.sln
 }
 
 package() {
-    cd "${srcdir}/${pkgname%-mono}/bin/Debug/"
-    install -Dm0755 RailgunCalcWin.exe "${pkgdir}/opt/kmakise/${pkgname%-mono}/${pkgname%-mono}.exe"
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-mono}" << EOF
+  cd "${srcdir}/${pkgname%-mono}/bin/Debug/"
+  install -Dm0755 RailgunCalcWin.exe "${pkgdir}/opt/kmakise/${pkgname%-mono}/${pkgname%-mono}.exe"
+  install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-mono}" <<EOF
 #!/bin/bash
 mono /opt/kmakise/${pkgname%-mono}/${pkgname%-mono}.exe "\$@"
 EOF
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/io.github.kmakise.coilgunrailgunutility.desktop" << EOF
+  install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/io.github.kmakise.coilgunrailgunutility.desktop" <<EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -52,7 +51,7 @@ Exec=coilgunrailgunutility
 Terminal=false
 
 EOF
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/metainfo/io.github.kmakise.coilgunrailgunutility.metainfo.xml" << EOF
+  install -Dm0644 /dev/stdin "${pkgdir}/usr/share/metainfo/io.github.kmakise.coilgunrailgunutility.metainfo.xml" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>io.github.kmakise.coilgunrailgunutility</id>
