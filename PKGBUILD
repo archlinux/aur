@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd $_pkgname
-python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation
 }
 
 package() {
