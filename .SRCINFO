@@ -1,0 +1,18 @@
+pkgbase = interface99-git
+	pkgdesc = Full-featured interfaces for C99
+	pkgver = 1.0.1.r7.g1fecd8e
+	pkgrel = 1
+	url = https://github.com/hirrolot/interface99
+	arch = any
+	license = MIT
+	checkdepends = cmake>=3.16
+	makedepends = git
+	depends = metalang99
+	provides = interface99=1.0.1
+	conflicts = interface99
+	source = interface99::git+https://github.com/hirrolot/interface99.git
+	source = interface99_cmake_system_libs.patch
+	sha256sums = SKIP
+	sha256sums = ea01860c953b32ebd58cc92d6007a7f647a08f9899e3a55d8ad085c8f51932c6
+
+pkgname = interface99-git
