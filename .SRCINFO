@@ -1,12 +1,12 @@
 pkgbase = nextcloud-talk-desktop-bin
 	pkgdesc = Nextcloud Talk Desktop client based on Nextcloud Talk web application bundling
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nextcloud/talk-desktop
 	arch = x86_64
 	license = AGPL-3.0-only
 	provides = nextcloud-talk-desktop
-	source = https://github.com/nextcloud-releases/talk-desktop/releases/download/v1.0.1/Nextcloud.Talk-linux-x64.zip
+	source = Nextcloud.Talk-linux-x64-1.0.1-2.zip::https://github.com/nextcloud-releases/talk-desktop/releases/download/v1.0.1/Nextcloud.Talk-linux-x64.zip
 	source = nextcloud-talk.svg
 	source = nextcloud-talk.png
 	source = nextcloud-talk.desktop

@@ -4,7 +4,7 @@ pkgname=nextcloud-talk-desktop-bin
 _pkgname=nextcloud-talk-desktop
 pkgver=1.0.1
 _pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Nextcloud Talk Desktop client based on Nextcloud Talk web application bundling"
 arch=('x86_64')
 url="https://github.com/nextcloud/talk-desktop"
@@ -13,9 +13,7 @@ provides=('nextcloud-talk-desktop')
 
 depends=()
 optdepends=()
-# _archivename="${pkgname}-${pkgver}.zip"
-# source=(https://github.com/nextcloud-releases/talk-desktop/releases/download/v${_pkgver}/Nextcloud.Talk-linux-x64-${_pkgver}.zip
-source=(https://github.com/nextcloud-releases/talk-desktop/releases/download/v${_pkgver}/Nextcloud.Talk-linux-x64.zip
+source=(Nextcloud.Talk-linux-x64-${_pkgver}-${pkgrel}.zip::https://github.com/nextcloud-releases/talk-desktop/releases/download/v${_pkgver}/Nextcloud.Talk-linux-x64.zip
         'nextcloud-talk.svg'
         'nextcloud-talk.png'
         'nextcloud-talk.desktop')
