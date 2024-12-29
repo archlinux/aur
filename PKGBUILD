@@ -7,10 +7,10 @@ license=("MPL-2.0")
 arch=("x86_64" "aarch64")
 pkgver=2.0.0
 pkgrel=1
-makedepends=("rust" "cargo" "git")
-depends=(libadwaita gtk4 hicolor-icon-theme graphene dconf blueprint-compiler gcc-libs glib2 glibc)
+makedepends=("rust" "cargo" "git" "blueprint-compiler")
+depends=(libadwaita gtk4 hicolor-icon-theme graphene dconf gcc-libs glib2 glibc)
 source=("git+https://github.com/swsnr/turnon.git#tag=v${pkgver}")
-md5sums=("SKIP")
+md5sums=('583d84dab7fcd9f2e3e48f9517f389a1')
 provides=("turnon")
 
 #function pkgver() {
@@ -42,9 +42,10 @@ function package() {
 	cd "${srcdir}/turnon"
 	install -Dm755 "${srcdir}/turnon/target/release/turnon" "${pkgdir}/usr/bin/de.swsnr.turnon"
 	make LOCALEDIR="${pkgdir}/usr/share/locale" install-locale
-	install -Dm644 \
-		resources/icons/scalable/apps/de.swsnr.turnon.svg \
-		"${pkgdir}/usr/share/icons/hicolor/scalable/apps/de.swsnr.turnon.svg"
+	install -d "${pkgdir}/usr/share/icons/hicolor"
+	cp -r \
+		resources/icons/* \
+		"${pkgdir}/usr/share/icons/hicolor"
 	install -Dm644 \
 		de.swsnr.turnon.desktop \
 		"${pkgdir}/usr/share/applications/de.swsnr.turnon.desktop"

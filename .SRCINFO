@@ -9,17 +9,17 @@ pkgbase = turnon
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
+	makedepends = blueprint-compiler
 	depends = libadwaita
 	depends = gtk4
 	depends = hicolor-icon-theme
 	depends = graphene
 	depends = dconf
-	depends = blueprint-compiler
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
 	provides = turnon
 	source = git+https://github.com/swsnr/turnon.git#tag=v2.0.0
-	md5sums = SKIP
+	md5sums = 583d84dab7fcd9f2e3e48f9517f389a1
 
 pkgname = turnon
