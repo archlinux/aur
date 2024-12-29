@@ -26,7 +26,7 @@ depends=(
   'boost'
   'flex'
   'cgal'
-  'trilinos'
+  'zoltan' # provided separately from 'trilinos'
 )
 makedepends=('bash')
 provides=('openfoam')
@@ -74,13 +74,8 @@ build() {
   cd ${srcdir}/${_distpkgbase}-${_pkgver}
 
   # Build and clean up OpenFOAM
-  cat ${foamDotFile}
   bash -c """
   source ${foamDotFile}
-  export SCOTCH_TYPE=system
-  export METIS_TYPE=system
-  export PARMETIS_TYPE=system
-  export ZOLTAN_TYPE=system
   ./Allwmake
   wclean all
   wmakeLnIncludeAll
