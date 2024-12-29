@@ -11,14 +11,23 @@ pkgver=12.20240902
 _pkgver="${pkgver%.*}"
 _subver="${pkgver#*.}"
 [[ "$pkgver" = "$_subver" ]] && _subver="version-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="The open source CFD toolbox (www.openfoam.org)"
 _distpkgbase=OpenFOAM
 _gitname=$_distpkgbase-$_pkgver
 arch=('x86_64')
 url="http://www.openfoam.org"
 license=("GPL-3.0-or-later")
-depends=('bzip2' 'paraview' 'parmetis' 'scotch' 'boost' 'flex' 'cgal' 'trilinos')
+depends=(
+  'bzip2'
+  'paraview'
+  'parmetis-git' #git until parmetis is fixed
+  'scotch'
+  'boost'
+  'flex'
+  'cgal'
+  'trilinos'
+)
 makedepends=('bash')
 provides=('openfoam')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OpenFOAM/$_gitname/archive/refs/tags/$_subver.tar.gz")
