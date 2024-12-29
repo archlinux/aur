@@ -3,7 +3,7 @@
 
 pkgname=daed-git
 _pkgname=${pkgname%-git}
-pkgver=0.9.0.r0.g68d13a3
+pkgver=0.9.0.r1.g1750dbe
 pkgrel=2
 pkgdesc="A modern dashboard for dae, bundled with dae-wing (backend API server) and dae (core)."
 arch=('x86_64' 'aarch64')
@@ -49,10 +49,14 @@ prepare() {
 }
 
 build() {
-	export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
 	export CFLAGS="-fno-stack-protector"
-	cd "${_pkgname}/"
-	make VERSION="unstable-${pkgver}"
+	export CGO_ENABLED=1
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	make -C "${_pkgname}" VERSION="unstable-${pkgver}"
 }
 
 package() {
@@ -61,7 +65,7 @@ package() {
 	install -vDm755 "${_pkgname}" -t "${pkgdir}/usr/bin/"
 	install -vDm644 "install/${_pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system/"
 	install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-	install -d ${pkgdir}/{etc,usr/share}/${_pkgname}/
+	install -d ${pkgdir}/usr/share/${_pkgname}/
 	ln -vs "/usr/share/v2ray/geoip.dat" "${pkgdir}/usr/share/daed/geoip.dat"
 	ln -vs "/usr/share/v2ray/geosite.dat" "${pkgdir}/usr/share/daed/geosite.dat"
 }
