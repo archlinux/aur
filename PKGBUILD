@@ -1,10 +1,10 @@
 # Maintainer: blacktav <blacktav at gmail dot com>
 # Contributor: based on unknown abandoned pokerth-final from 2012-12-27
-# Patches: xx55tt, viktoracoric, Mailaender
+# Patches: xx55tt, viktoracoric, Mailaender, jiocash
 
 pkgname=pokerth
 pkgver=1.1.2
-pkgrel=46
+pkgrel=47
 
 pkgdesc="Client to online Poker game written in C++/Qt"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ md5sums=('8fd7d7fc7ece17315e58aa3240dd4586'
          '0ef5541fc6008dfb2521dcab47afb659'
          '50d427bd8afc57fb61e186de6c4e5601'
          '5bdcc1f2240c20f4b766b183d93836b3'
-         '64e1b4b08353c11370ea32dfc381ca97'
+         'a9b886e89d5c262c95c1d90e459d519c'
          'e61eae14e6394f4745245e2ef42d812c'
          '5a563f6b3b144b0e6c2eb4bacd4ca3d4')
 
@@ -60,6 +60,8 @@ prepare() {
   # change to explicitly link libabsl_log_internal_message.so and
   #                           libabsl_log_internal_check_op.so
   #                           patch revised by xx55tt
+  # change to explicitly link libabsl_log_internal_nullguard
+  #                           patch revised by jiocash 2024/12
   patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2023"
   # ----------------------------------------------------------------------------
   # change to use XDG_CONFIG_HOME if available
