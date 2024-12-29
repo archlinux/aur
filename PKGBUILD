@@ -1,5 +1,5 @@
 pkgname=paraview-qt6
-pkgver=5.13.1
+pkgver=5.13.2
 pkgrel=1
 pkgdesc="Parallel Visualization application using VTK (Qt6 version)"
 arch=(x86_64)
@@ -15,7 +15,7 @@ makedepends=(cmake boost mesa gcc-fortran ninja)
 conflicts=(paraview)
 provides=(paraview)
 source=(${url}/files/v${pkgver%.*}/ParaView-v${pkgver}.tar.xz)
-sha256sums=('a16503ce37b999c2967d84234596e7bf67ac98221851a288bb1399c7e1dc2004')
+sha256sums=('9f544ba1a400bcca36265f0c12186ed208102470fa1a3dbbdf09d8a940fb541b')
 
 prepare() {
   cd ParaView-v${pkgver}
