@@ -1,5 +1,5 @@
 pkgname=nvmesmart
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="a easy cli and maybe gui smart tool for linux"
 arch=('any')

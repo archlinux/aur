@@ -1,6 +1,6 @@
 pkgbase = nvmesmart
 	pkgdesc = a easy cli and maybe gui smart tool for linux
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/ingressy/nvmesmart/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nvmesmart
 	depends = python
 	depends = smartmontools
 	depends = python-setuptools
-	source = nvmesmart-0.1.4.tar.gz::https://github.com/ingressy/nvmesmart/archive/refs/tags/v0.1.4.tar.gz
+	source = nvmesmart-0.1.5.tar.gz::https://github.com/ingressy/nvmesmart/archive/refs/tags/v0.1.5.tar.gz
 	sha256sums = SKIP
 
 pkgname = nvmesmart
