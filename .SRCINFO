@@ -24,8 +24,6 @@ pkgbase = scopehal-apps-git
 	optdepends = liblxi
 	optdepends = linux-gpib
 	source = git+https://github.com/ngscopeclient/scopehal-apps.git
-	source = modules.patch
 	sha256sums = SKIP
-	sha256sums = 30f8bac9602eda284761339365d3c914c6fd661e70bb51c7675081e6aef5a27b
 
 pkgname = scopehal-apps-git

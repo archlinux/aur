@@ -10,10 +10,8 @@ depends=('gtkmm3' 'libsigc++' 'ffts-git' 'openmp' 'glfw' 'yaml-cpp' 'glew' 'libs
 # could be also built against 'libsigc++' (2.x version) instead of 'libsigc++-3.0', what should be our target?
 optdepends=('libvulkan.so'  'spirv-tools' 'shaderc' 'liblxi' 'linux-gpib' )
 makedepends=('cmake' 'git' 'vulkan-headers' 'catch2')
-source=("git+https://github.com/ngscopeclient/scopehal-apps.git"
-  "modules.patch")
-sha256sums=('SKIP'
-  '30f8bac9602eda284761339365d3c914c6fd661e70bb51c7675081e6aef5a27b')
+source=("git+https://github.com/ngscopeclient/scopehal-apps.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/scopehal-apps"
@@ -21,7 +19,7 @@ pkgver() {
 }
 
 prepare() {
-  patch "$srcdir/scopehal-apps/.gitmodules" modules.patch
+  sed -i 's%url = \.\./%url = https://github.com/ngscopeclient/%' "$srcdir/scopehal-apps/.gitmodules"
   cd "$srcdir/scopehal-apps"
   git submodule update --init --recursive
 }
