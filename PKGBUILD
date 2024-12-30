@@ -1,19 +1,20 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _binname="decoder"
-pkgname="qmc-${_binname}"
-pkgver=2.5
-pkgrel=2
-pkgdesc="Fastest & best convert qmc 2 mp3 | flac tools"
+pkgname="qmc-decoder"
+_commit_rel="097651da070f4b3cf871f56405a6759638ad173a" # 2.5
+_commit="fb1e04b03246db406e9fc15c4426b79ed321e4f5" # r24
+pkgver="2.5+r24+g${_commit::7}"
+pkgrel=1
+pkgdesc="Convert QMC3/QMC0/QMCFLAC files to MP3 or FLAC"
 arch=('x86_64')
 url="https://github.com/Presburger/${pkgname}"
 license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('ghc-filesystem')
-_pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('ae71b9192649f1fe5416a9c57cfd091daa03740079e94af71f3d2f5549b657ab')
-
+_pkgsrc="${pkgname}-${_commit}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/${_commit}.tar.gz")
+b2sums=('c99360886a3d817c899b00785a51ba9753beb7e21a5569dc46eee10cfcaaec5f18d84c397e58b833e733c48a1da608504f56fc936f9bd0217eddcadf9ef2829d')
 
 build() {
   cd "${srcdir}/${_pkgsrc}/src"
