@@ -2,8 +2,8 @@
 # Contributor: wszqkzqk
 
 pkgname=wechat
-pkgver=4.0.1.7
-pkgrel=2
+pkgver=4.0.1.11
+pkgrel=1
 epoch=
 pkgdesc="微信是一种生活方式. This is a repackage of the official WeChat which includes an optional sandbox support"
 arch=('x86_64' 'aarch64' 'loong64')
@@ -77,24 +77,24 @@ source=(
 )
 
 source_x86_64=(
-	wechat-x86-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_amd64.deb"
+	wechat-x86-${pkgver}.deb::"https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.deb"
 )
 
 source_aarch64=(
-	wechat-arm-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb"
+	wechat-arm-${pkgver}.deb::"https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_arm64.deb"
 )
 
 source_loong64=(
-	wechat-loong64-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb"
+	wechat-loong64-${pkgver}.deb::"https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_LoongArch.deb"
 )
 
 
 md5sums=('289f5a646504a8ac5a9ab6a2dcff969a'
          'caa351d13a96f34bee10ed171e7d520d'
          '468e0367346707c026e577e7bf3e3a82')
-md5sums_x86_64=('ed17e297694a869073a4880d7f820703')
-md5sums_aarch64=('15e9b016912a1f040ee5f818d3f21ba0')
-md5sums_loong64=('15e9b016912a1f040ee5f818d3f21ba0')
+md5sums_x86_64=('SKIP')
+md5sums_aarch64=('SKIP')
+md5sums_loong64=('SKIP')
 
 function pkgver() {
 	tar -xf control.tar.xz ./control
@@ -112,6 +112,10 @@ function package_wechat() {
 	install -Dm644 wechat.svg \
 		"${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat.svg"
 	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -d "${pkgdir}/opt/apps/com.tencent.wechat"
+	ln -sr \
+		"${pkgdir}/opt/wechat" \
+		"${pkgdir}/opt/apps/com.tencent.wechat/files"
 	echo "https://www.wechat.com/us/service_terms.html" \
 		>"${pkgdir}/usr/share/licenses/${pkgname}/ToS.txt"
 }
