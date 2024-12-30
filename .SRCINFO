@@ -1,16 +1,20 @@
 pkgbase = python-mkl-service
-	pkgdesc = Python hooks for Intel(R) Math Kernel Library runtime control settings.
-	pkgver = 2.4.1
+	pkgdesc = Python hooks for Intel(R) Math Kernel Library runtime control settings
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/IntelPython/mkl-service
 	arch = x86_64
-	license = custom
-	makedepends = cython
-	makedepends = git
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = cython
+	makedepends = procps-ng
 	depends = intel-oneapi-mkl
 	depends = python-numpy
-	source = git+https://github.com/IntelPython/mkl-service#tag=v2.4.1
-	md5sums = SKIP
+	source = mkl-service-2.4.2.tar.gz::https://github.com/IntelPython/mkl-service/archive/v2.4.2.tar.gz
+	sha512sums = ee770d84eefb4f5b68a85e7a62719c584bf0c09dd6cc0c20dd97f01b1b3f1b1796920d363c55ac87048caf5776639e7d28757242dbf1540383d6f7f7809bb7f2
 
 pkgname = python-mkl-service

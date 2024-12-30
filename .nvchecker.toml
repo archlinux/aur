@@ -1,0 +1,5 @@
+[python-mkl-service]
+source = "github"
+github = "IntelPython/mkl-service"
+use_max_tag = "true"
+prefix = "v"
