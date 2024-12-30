@@ -1,0 +1,14 @@
+pkgbase = craftrogue
+	pkgdesc = A terminal-based game where you kill monsters.
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/ural89/ConsoleCraftEngine
+	arch = x86_64
+	license = MIT
+	depends = gcc
+	depends = make
+	depends = cmake
+	source = craftrogue::git+https://github.com/ural89/ConsoleCraftEngine.git#branch=AUR
+	sha256sums = SKIP
+
+pkgname = craftrogue
