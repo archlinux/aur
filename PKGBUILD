@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton9-20
+_srctag=GE-Proton9-22
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
-_monover=9.3.0
-_xaliaver=0.4.4
+_monover=9.3.1
+_xaliaver=0.4.5
 pkgrel=1
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
@@ -261,15 +261,15 @@ package() {
         $(find "$_monodir" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
 }
 
-sha256sums=('b632e172e4acf7b09e4204b41470880c50c0b5eddb461a1c7aecba96598cb8c6'
+sha256sums=('1d9c82322083ba72de9ef0d6a2f9382c1ec922ba60601d582dcefd8eab7d2743'
             '2cfc8d5c948602e21eff8a78613e1826f2d033df9672cace87fed56e8310afb6'
             'fd88fc7e537d058d7a8abf0c1ebc90c574892a466de86706a26d254710a82814'
-            'c23deb9e3217a574f242b78d74cb94c4948a37d1f2715941b803a02e535854a6'
-            'a5cfd3090ebf7fb694bce573ef87b300b86f61204987ecbd068a2fe5079b7e6e'
-            'b562eed0b6d8e266c5869b8200576d7e1436500922e3735c08df02dde1955163'
-            '97ce2eecaf69d2427d78e89ef9f0b11349bcbfd2e19ea90c389636c9d13de5c6'
-            '138496278f804113e6332b0d5fa2879b01cf99187d8ee7fc74c5cd7db3034b0c'
-            'c043458466ed38da2ed46332f97bd4f5511e73cfca1b7775954ccabba33cc365'
-            'abebc9d3b43bfef12d150319c840a4a5196b67f0d6af421352a62505bc718be1'
-            '62984e2d9318f77b0eb9372e36fdc8feaa6e8efd8c6ef26c797e81ae5b1c033e'
-            '32528c9f7621f25a0cef4f7e96af4cbab74548b7c650b43dadcabb560bb7eb99')
+            '32eff652b96390f04fb52ee695fc3a6d197b1bb616ed2df7e25119fe5700c950'
+            '7e061783acf005c8dc90bd47fea1af9fc941f80c459477752fc32fbc2924ec65'
+            'b6d61c6c3703741d067672b55f1846c5ec6c76e1073ae1d1046cf634114b3372'
+            'ef9639de2be36e663dac6be396b0f7f25aa56d153374c5e03a4e4326cc35ee30'
+            '5323fef999c2b3e59c30d53b63812ee4aafb00a062272997b96f365e703549f4'
+            '55e372f75b7869f53ea78f551ab20d189fc5795050d33e748e0d3be888ca7bf2'
+            '8aec1a9e93a69a406242abdd7da8408df2c6a973c8052746fdadba14d99f0f99'
+            '863e1f5a744a9d20fd0df1835d92874d7cdf35ba5d7ffd2d0484447913aeff83'
+            '2e0523603be8a6ef19ae547cafd1b1fca4f2145dfaa6d008165041847c839708')
