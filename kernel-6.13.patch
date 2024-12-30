@@ -1,0 +1,53 @@
+Patch found here:
+https://gist.github.com/joanbm/d1f89391a4b20f4b56ba931ef6ca62da
+
+More details here:
+https://github.com/NVIDIA/open-gpu-kernel-modules/issues/747
+https://github.com/AOSC-Tracking/nvidia-open/commit/74962a62abfc350c26d1cf7cc066ef7113a30108
+
+diff --git a/nvidia/nvidia.Kbuild b/nvidia/nvidia.Kbuild
+index f0b1855..5704f14 100644
+--- a/nvidia/nvidia.Kbuild
++++ b/nvidia/nvidia.Kbuild
+@@ -40,13 +40,15 @@ NVIDIA_KO = nvidia/nvidia.ko
+ NVIDIA_BINARY_OBJECT := $(src)/nvidia/nv-kernel.o_binary
+ NVIDIA_BINARY_OBJECT_O := nvidia/nv-kernel.o
+ 
+-quiet_cmd_symlink = SYMLINK $@
+- cmd_symlink = ln -sf $< $@
++# Rel. commit 80f289101690 "kbuild: change working directory to external module directory with M=" (Masahiro Yamada, 10 Nov 2024)
++# Ensure `$<` is absolute, since the link target is resolved relative to its path, not from where `ln` is run from.
++quiet_cmd_symlinkabs = SYMLINK $@
++ cmd_symlinkabs = ln -sf $(abspath $<) $@
+ 
+ targets += $(NVIDIA_BINARY_OBJECT_O)
+ 
+ $(obj)/$(NVIDIA_BINARY_OBJECT_O): $(NVIDIA_BINARY_OBJECT) FORCE
+-	$(call if_changed,symlink)
++	$(call if_changed,symlinkabs)
+ 
+ nvidia-y += $(NVIDIA_BINARY_OBJECT_O)
+ 
+diff --git a/nvidia-modeset/nvidia-modeset.Kbuild b/nvidia-modeset/nvidia-modeset.Kbuild
+index ebf3f04..96941ed 100644
+--- a/nvidia-modeset/nvidia-modeset.Kbuild
++++ b/nvidia-modeset/nvidia-modeset.Kbuild
+@@ -40,13 +40,15 @@ NV_KERNEL_MODULE_TARGETS += $(NVIDIA_MODESET_KO)
+ NVIDIA_MODESET_BINARY_OBJECT := $(src)/nvidia-modeset/nv-modeset-kernel.o_binary
+ NVIDIA_MODESET_BINARY_OBJECT_O := nvidia-modeset/nv-modeset-kernel.o
+ 
+-quiet_cmd_symlink = SYMLINK $@
+-cmd_symlink = ln -sf $< $@
++# Rel. commit 80f289101690 "kbuild: change working directory to external module directory with M=" (Masahiro Yamada, 10 Nov 2024)
++# Ensure `$<` is absolute, since the link target is resolved relative to its path, not from where `ln` is run from.
++quiet_cmd_symlinkabs = SYMLINK $@
++ cmd_symlinkabs = ln -sf $(abspath $<) $@
+ 
+ targets += $(NVIDIA_MODESET_BINARY_OBJECT_O)
+ 
+ $(obj)/$(NVIDIA_MODESET_BINARY_OBJECT_O): $(NVIDIA_MODESET_BINARY_OBJECT) FORCE
+-	$(call if_changed,symlink)
++	$(call if_changed,symlinkabs)
+ 
+ nvidia-modeset-y += $(NVIDIA_MODESET_BINARY_OBJECT_O)
+ 
