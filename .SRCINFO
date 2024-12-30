@@ -27,6 +27,6 @@ pkgbase = ignis
 	optdepends = upower: required for UPower Service
 	optdepends = gnome-bluetooth-3.0: required for Bluetooth Service
 	source = ignis-0.4.tar.gz::https://github.com/linkfrg/ignis/releases/download/v0.4/ignis-v0.4.tar.gz
-	sha256sums = dc8a8d76b80bea19497f6029b8ab816e5eceb2f2ff9697675bd1ac87ada70513
+	sha256sums = aba02e6d970217137056134ba7cdb2fee88b1b14b8ae0939946ba1e9803709cb
 
 pkgname = ignis

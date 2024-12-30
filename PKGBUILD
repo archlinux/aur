@@ -17,7 +17,7 @@ optdepends=('gst-plugin-pipewire: required for recorder service'
             'gnome-bluetooth-3.0: required for Bluetooth Service')
             
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/ignis-v${pkgver}.tar.gz")
-sha256sums=('dc8a8d76b80bea19497f6029b8ab816e5eceb2f2ff9697675bd1ac87ada70513')
+sha256sums=('aba02e6d970217137056134ba7cdb2fee88b1b14b8ae0939946ba1e9803709cb')
 
 build() {
   cd $srcdir/$pkgname
