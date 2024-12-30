@@ -33,22 +33,19 @@ package() {
     cp -r libs/* "$pkgdir/opt/cultris2/libs/"
     cp -r settings/* "$pkgdir/opt/cultris2/settings/"
     cp cultris2.policy "$pkgdir/opt/cultris2/"
+
     # Apply permissions to all files in settings directory
     chmod -R 777 "$pkgdir/opt/cultris2/settings"
+    chmod -R 777 "$pkgdir/opt/cultris2"
 
     # Install startup scripts with executable permissions
-    install -Dm755 "cultris2.sh" "$pkgdir/opt/cultris2/cultris2.sh"
-    install -Dm755 "cultris2-settings.sh" "$pkgdir/opt/cultris2/cultris2-settings.sh"
-    install -Dm755 "cultris2-colorpicker.sh" "$pkgdir/opt/cultris2/cultris2-colorpicker.sh"
+    install -Dm777 "scripts/cultris2.sh" "$pkgdir/opt/cultris2/cultris2.sh"
+    install -Dm777 "scripts/cultris2-colorpicker.sh" "$pkgdir/opt/cultris2/cultris2-colorpicker.sh"
+    install -Dm777 "scripts/cultris2-settings.sh" "$pkgdir/opt/cultris2/cultris2-settings.sh"
     
-    # Install to $PATH
-    install -Dm755 "cultris2.sh" "$pkgdir/usr/bin/cultris2"
-    install -Dm755 "cultris2-settings.sh" "$pkgdir/usr/bin/cultris2-setiings"
-    install -Dm755 "cultris2-colorpicker.sh" "$pkgdir/usr/bin/cultris2-colorpicker"
-
     # Install icon and desktop entries
-    install -Dm644 "icon.png" "$pkgdir/opt/cultris2/icon.png"
-    install -Dm644 "cultris2.desktop" "$pkgdir/usr/share/applications/cultris2.desktop"
-    install -Dm644 "cultris2-settings.desktop" "$pkgdir/usr/share/applications/cultris2-settings.desktop"
-    install -Dm644 "cultris2-colorpicker.desktop" "$pkgdir/usr/share/applications/cultris2-colorpicker.desktop"
+    cp -r "desktop-files/icon.png" "$pkgdir/opt/cultris2/icon.png"
+    cp -r "desktop-files/cultris2.desktop" "$pkgdir/usr/share/applications/cultris2.desktop"
+    cp -r "desktop-files/cultris2-settings.desktop" "$pkgdir/usr/share/applications/cultris2-settings.desktop"
+    cp -r "desktop-files/cultris2-colorpicker.desktop" "$pkgdir/usr/share/applications/cultris2-colorpicker.desktop"
 }
