@@ -1,0 +1,19 @@
+pkgbase = domainuserstoxlsx-git
+	pkgdesc = Extract all users from an Active Directory domain to an Excel worksheet.
+	pkgver = 1.2.r7.gf161de4
+	pkgrel = 1
+	url = https://github.com/p0dalirius/domainuserstoxlsx
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python-setuptools
+	depends = impacket
+	depends = python
+	depends = python-xlsxwriter
+	provides = domainuserstoxlsx
+	conflicts = domainuserstoxlsx
+	conflicts = domainuserstoxlsx-git-bin
+	source = git+https://github.com/p0dalirius/domainuserstoxlsx
+	sha512sums = SKIP
+
+pkgname = domainuserstoxlsx-git
