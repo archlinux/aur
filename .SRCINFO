@@ -1,6 +1,6 @@
 pkgbase = fumble-git
 	pkgdesc = An application the manage your pictures,quickly delete it.(Use system-wide electron)
-	pkgver = 0.1.0.r9.g42ee6a0
+	pkgver = 0.2.5.r4.g5a58d6e
 	pkgrel = 1
 	url = https://github.com/bonniesimon/fumble
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = fumble-git
 	makedepends = gendesk
 	makedepends = yarn
 	depends = electron31
-	provides = fumble=0.1.0
+	provides = fumble=0.2.5
 	conflicts = fumble
 	source = fumble.git::git+https://github.com/bonniesimon/fumble.git
 	source = fumble.sh

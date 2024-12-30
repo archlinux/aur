@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fumble-git
 _pkgname=fumble
-pkgver=0.1.0.r9.g42ee6a0
+pkgver=0.2.5.r4.g5a58d6e
 _electronversion=31
 _nodeversion=20
 pkgrel=1
