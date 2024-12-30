@@ -125,7 +125,7 @@ else
   pkgname="emacs-igc-git"
 fi
 pkgver=31.0.50.175856
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU Emacs. Development branch, with PGTK and IGC enabled."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -190,12 +190,10 @@ if [[ $CLANG == "YES" ]]; then
   if [[ ! $MOLD == "YES" ]]; then
     makedepends+=('mold')
     export LD="lld"
-    export LDFLAGS+=" -L$MPS/lib"
     export CCFLAGS+=' -fuse-ld=lld'
     export CXXFLAGS+=' -fuse-ld=lld'
-    export CPPFLAGS+=" -I$MPS/include"
-    export CFLAGS+=" -I$MPS/include --ld-path=/usr/bin/mold"
-    export CXXFLAGS+=" --ld-path=/usr/bin/mold"
+    export CFLAGS+=" --ld-path=/usr/bin/lld"
+    export CXXFLAGS+=" --ld-path=/usr/bin/lld"
   else
     makedepends+=('lld')
     export LD="lld"
@@ -349,6 +347,13 @@ build() {
     _conf+=('--with-native-compilation')
   fi
 
+  if [[ $MPS ]]; then
+    _conf+=('--with-mps=yes')
+    export LDFLAGS+=" -L$MPS/lib"
+    export CPPFLAGS+=" -I$MPS/include"
+    export CFLAGS+=" -I$MPS/include"
+  fi
+
   if [[ $CLI == "YES" ]]; then
     _conf+=('--without-x' '--with-x-toolkit=no' '--without-xft' '--without-lcms2' '--without-rsvg' '--without-jpeg' '--without-gif' '--without-tiff' '--without-png')
   elif [[ $NOTKIT == "YES" ]]; then
@@ -356,7 +361,7 @@ build() {
   elif [[ $LUCID == "YES" ]]; then
     _conf+=('--with-x-toolkit=lucid' '--with-xft' '--with-xaw3d')
   elif [[ $GTK3 == "YES" ]]; then
-    _conf+=('--with-x-toolkit=gtk3' '--with-mps=yes' '--without-xaw3d')
+    _conf+=('--with-x-toolkit=gtk3' '--without-xaw3d')
   elif [[ $PGTK == "YES" ]]; then
     _conf+=('--with-pgtk' '--without-xaw3d')
   fi
