@@ -5,6 +5,7 @@ pkgname=(
   'pipewire-git'
   'libpipewire-git'
   'pipewire-docs-git'
+  'pipewire-libcamera-git'
   'pipewire-audio-git'
   'pipewire-alsa-git'
   'pipewire-jack-git'
@@ -16,7 +17,7 @@ pkgname=(
   'pipewire-x11-bell-git'
   'pipewire-zeroconf-git'
 )
-pkgver=1.2.0.123.g89bf8b856
+pkgver=1.3.0.r13136.90f8b0e40
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -63,6 +64,7 @@ makedepends=(
   'vulkan-icd-loader'
   'webrtc-audio-processing'
   'chrpath'
+  'libebur128'
 )
 checkdepends=(
   'desktop-file-utils'
@@ -74,7 +76,9 @@ options=('debug')
 
 pkgver() {
   cd pipewire
-  echo "$(git describe --long --tags | tr - .)"
+  #echo "$(git describe --long --tags | tr - .)"
+  _ver="$(cat meson.build | grep -m1 'version :' | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -131,7 +135,6 @@ package_pipewire-git() {
     "libpipewire-git=${pkgver}" "libpipewire-${_api_ver}.so"
     'gcc-libs' #libgcc_s.so libstdc++.so
     'glibc' # libc.so
-    'libcamera' 'libcamera-base.so' 'libcamera.so'
     'dbus' 'libdbus-1.so'
     'glib2' 'libglib-2.0.so'
     'ncurses' 'libncursesw.so'
@@ -146,6 +149,7 @@ package_pipewire-git() {
     'pipewire-docs-git: Documentation'
     'pipewire-jack-git: JACK support'
     'pipewire-jack-client-git: PipeWire as JACK client'
+    'pipewire-libcamera-git: Libcamera support'
     'pipewire-pulse-git: PulseAudio support'
     'pipewire-roc-git: ROC support'
     'pipewire-session-manager: Session manager'
@@ -182,7 +186,6 @@ package_pipewire-git() {
   _pick libs "usr/lib/pipewire-${_api_ver}/libpipewire-module-adapter.so"
   _pick libs "usr/lib/pipewire-${_api_ver}/libpipewire-module-session-manager.so"
   _pick libs "usr/lib/pipewire-${_api_ver}/libpipewire-module-rt.so"
-  _pick libs "usr/lib/spa-${_spa_ver}/audioconvert"
   _pick libs "usr/lib/spa-${_spa_ver}/support"
   _pick libs "usr/lib/pkgconfig/libpipewire-${_api_ver}.pc"
   _pick libs "usr/lib/pkgconfig/libspa-${_spa_ver}.pc"
@@ -217,8 +220,6 @@ package_pipewire-git() {
   _pick audio "usr/lib/pipewire-${_api_ver}/libpipewire-module-echo-cancel.so"
   _pick audio "usr/lib/pipewire-${_api_ver}/libpipewire-module-fallback-sink.so"
   _pick audio "usr/lib/pipewire-${_api_ver}/libpipewire-module-filter-chain.so"
-  _pick audio "usr/lib/pipewire-${_api_ver}/libpipewire-module-filter-chain-sofa.so"
-  _pick audio "usr/lib/pipewire-${_api_ver}/libpipewire-module-filter-chain-lv2.so"
   _pick audio "usr/lib/pipewire-${_api_ver}/libpipewire-module-loopback.so"
   _pick audio "usr/lib/pipewire-${_api_ver}/libpipewire-module-pipe-tunnel.so"
   _pick audio "usr/lib/pipewire-${_api_ver}/libpipewire-module-protocol-simple.so"
@@ -228,10 +229,12 @@ package_pipewire-git() {
   _pick audio "usr/lib/pipewire-${_api_ver}/libpipewire-module-vban-recv.so"
   _pick audio "usr/lib/pipewire-${_api_ver}/libpipewire-module-vban-send.so"
   _pick audio "usr/lib/spa-${_spa_ver}/aec"
+  _pick audio "usr/lib/spa-${_spa_ver}/audioconvert"
   _pick audio "usr/lib/spa-${_spa_ver}/audiomixer"
   _pick audio "usr/lib/spa-${_spa_ver}/audiotestsrc"
   _pick audio "usr/lib/spa-${_spa_ver}/avb"
   _pick audio "usr/lib/spa-${_spa_ver}/bluez5"
+  _pick audio "usr/lib/spa-${_spa_ver}/filter-graph"
   _pick audio "usr/lib/spa-${_spa_ver}/ffmpeg"
   _pick audio "usr/lib/spa-${_spa_ver}/volume"
   _pick audio usr/lib/systemd/user/filter-chain.service
@@ -263,6 +266,8 @@ package_pipewire-git() {
   _pick ffado usr/share/man/man7/libpipewire-module-ffado-driver.7
 
   _pick docs usr/share/doc
+
+  _pick libcamera "usr/lib/spa-${_spa_ver}/libcamera"
 
   _pick jack-client "usr/lib/pipewire-${_api_ver}/libpipewire-module-jack-tunnel.so"
   _pick jack-client "usr/lib/pipewire-${_api_ver}/libpipewire-module-jackdbus-detect.so"
@@ -426,6 +431,21 @@ package_pipewire-docs-git() {
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
 
+package_pipewire-libcamera-git() {
+  pkgdesc+=" - Libcamera support"
+  depends=(
+    'gcc-libs' # libgcc_s.so libstdc++.so
+    'glibc' # libc.so
+    'libcamera' 'libcamera-base.so' 'libcamera.so'
+    'pipewire-git'
+  )
+
+  mv libcamera/* "${pkgdir}"
+
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
+}
+
+
 package_pipewire-audio-git() {
 
   _api_ver="$(cat ${srcdir}/pipewire/meson.build | grep -m1 apiversion | grep -o "[[:digit:]]*" | paste -sd'.')"
@@ -453,6 +473,7 @@ package_pipewire-audio-git() {
     'libsndfile' 'libsndfile.so'
     'libusb' 'libusb-1.0.so'
     'webrtc-audio-processing' 'libwebrtc_audio_processing.so'
+    'libebur128' # libebur128.so
   )
   provides=("pipewire-audio=${pkgver}")
   conflicts=(
@@ -466,8 +487,6 @@ package_pipewire-audio-git() {
   chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-echo-cancel.so"
   chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-fallback-sink.so"
   chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-filter-chain.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-filter-chain-sofa.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-filter-chain-lv2.so"
   chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-loopback.so"
   chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-pipe-tunnel.so"
   chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-protocol-simple.so"
