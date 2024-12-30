@@ -1,4 +1,4 @@
-# Maintainer: Aleksi (Gaevsky) <aleksi.eesti@gmail.com>
+# Maintainer: Aleksi Gaevsky (ukrcherry) <aleksi.eesti@gmail.com>
 
 _pkgname=gnome-builder
 pkgname="${_pkgname}-git"
