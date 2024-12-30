@@ -1,4 +1,4 @@
 [python-mkl-service-bin]
 source = "regex"
 url = "https://repo.anaconda.com/pkgs/main/linux-64/"
-regex = "mkl-service-([\\d.]+)-py312h5eee18b_1.tar.bz2"
+regex = "mkl-service-([\\d.]+)-py313h5eee18b_1.tar.bz2"
