@@ -3,12 +3,12 @@ msg_blue() {
   printf "${BLUE}==>${BOLD} $1${ALL_OFF}\n"
 }
 
-note1() {
-  printf "${BLUE}==>${YELLOW} NOTE:${BOLD} $1${ALL_OFF}\n"
+warn1() {
+  printf "${BLUE}==>${YELLOW} WARNING:${BOLD}${WHITE} $1${ALL_OFF}\n"
 }
 
-note2() {
-  printf "${BLUE}==>      ${BOLD} $1${ALL_OFF}\n"
+warn2() {
+  printf "${BLUE}==>         ${BOLD}${WHITE} $1${ALL_OFF}\n"
 }
 
 ALL_OFF="$(tput sgr0)"
@@ -23,14 +23,15 @@ CYAN="${BOLD}$(tput setaf 6)"
 WHITE="${BOLD}$(tput setaf 7)"
 
 post_install() {
-  if grep -qE '\bpni\b' /proc/cpuinfo ; then
-    note1 "Custom flags may be put directly in: ~/.config/mercury-flags.conf"
-    note2 "The launcher is called: 'mercury-browser'"
-  else
-    note1 "Your processor does not support SSE3 instructions."
-    note2 "mercury-browser may not work on your computer."
-  fi
+  warn1 "mercury-browser has not yet been updated for CVE-2024-9680."
+  warn2 'There have been "reports of this vulnerability being exploited'
+  warn2 'in the wild."  Users are strongly advised to switch to another'
+  warn2 'browser.  For more information, see the following:'
+  warn2
+  warn2 '   https://www.mozilla.org/en-US/security/advisories/mfsa2024-51'
+  warn2 '   https://github.com/Alex313031/Mercury/issues/227'
 }
+
 
 post_upgrade() {
   post_install

@@ -1,22 +1,10 @@
 pkgbase = mercury-browser-bin
-	pkgdesc = Compiler optimized, private Firefox fork
-	pkgver = 129.0.2
+	pkgdesc = CVE-2024-9680 - switch to extra/firefox
+	pkgver = 999
 	pkgrel = 1
-	url = https://github.com/Alex313031/Mercury
+	url = https://www.mozilla.org/en-US/security/advisories/mfsa2024-51
 	install = mercury-browser.install
-	arch = x86_64
-	license = MPL-2.0
-	noextract = mercury-browser_129.0.2_SSE3.deb
-	options = !emptydirs
-	options = !strip
-	options = !debug
-	source = mercury-browser_129.0.2_SSE3.deb::https://github.com/Alex313031/Mercury/releases/download/v.129.0.2/mercury-browser_129.0.2_SSE3.deb
-	sha256sums = SKIP
+	arch = any
 
 pkgname = mercury-browser-bin
-	depends = alsa-lib
-	depends = dbus-glib
-	depends = gtk3
-	depends = libnotify
-	provides = mercury-browser=129.0.2
-	conflicts = mercury-browser
+	depends = firefox
