@@ -1,28 +1,34 @@
-# Maintainer: fanyujun <dlutfyj@outlook.com>
-# Contributor:
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: fanyujun <dlutfyj@outlook.com>
 
-pkgname="python-lap"
+pkgname=python-lap
 epoch=1
-pkgver=0.4.0
+pkgver=0.5.12
 pkgrel=1
-pkgdesc='lap is a linear assignment problem solver using Jonker-Volgenant algorithm for dense (LAPJV) or sparse (LAPMOD) matrices.'
-arch=(any)
-url="https://github.com/gatagat/lap"
+pkgdesc='Linear Assignment Problem solver using Jonker-Volgenant algorithm (LAPJV/LAPMOD)'
+arch=(x86_64)
+url='https://github.com/gatagat/lap'
 license=(BSD-2-Clause)
-depends=(python python-scipy python-pytest python-numpy)
-conflicts=()
-makedepends=(python-build python-installer python-setuptools python-wheel cython)
-source=(lap-0.4.0.tar.gz::"$url/archive/refs/tags/v0.4.0.tar.gz")
-sha256sums=('SKIP')
+depends=(python python-numpy)
+makedepends=(python-build python-installer python-wheel python-setuptools cython)
+checkdepends=(python-scipy python-pytest)
+source=("lap-${pkgver}.tar.gz"::"https://github.com/gatagat/lap/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('462186b414ab6bd9239744ae92242e03df9f31f8f2e346ab2c52ff797748ebec')
 
 build() {
-  cd "${srcdir}/lap-${pkgver}"
-  python -m build --wheel --skip-dependency-check --no-isolation
+  cd "lap-${pkgver}"
+  python -m build --wheel --no-isolation
 }
 
-package(){
-  depends+=()
-  cd "${srcdir}/lap-${pkgver}"
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+check() {
+  cd "lap-${pkgver}"
+  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+  # `--pyargs lap` forces pytest to look for tests in the installed package in $PYTHONPATH.
+  # Otherwise, it somehow ends up importing lap from $PWD even if `--import-mode importlib`.
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-${python_version}" pytest --pyargs lap
+}
+
+package() {
+  cd "lap-${pkgver}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
