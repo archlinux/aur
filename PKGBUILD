@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang-git
 _pkgname=Mustang
-pkgver=0.7.4.r1.g81d00c5
+pkgver=0.7.7.r1.gc33b80c
 _electronversion=32
 _nodeversion=20
 pkgrel=1
-pkgdesc="New full-featured desktop email, chat and video conference client"
+pkgdesc="New full-featured desktop email, chat and video conference client.(Use system-wide electron)"
 arch=('any')
 url="https://mustang.im/"
 _ghurl="https://github.com/mustang-im/mustang"
@@ -90,6 +90,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/e2/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/e2/dist/linux-"*/resources/app.asar.unpacked -t "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/e2/build/icon.png" -t "${pkgdir}/usr/lib/${pkgname%-git}/app.asar.unpacked/resources"
     install -Dm644 "${srcdir}/${pkgname//-/.}/e2/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
