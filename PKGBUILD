@@ -36,8 +36,10 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd $_pkgname
-  local _version=$(grep -oP "version=\"\K[^\"]+" setup.py)
-  printf %s.c%s.%s $_version $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  printf %s.c%s.%s \
+    $(grep -oP 'version=\"\K[^\"]+' setup.py) \
+    $(git rev-list --count HEAD) \
+    $(git rev-parse --short HEAD)
 }
 
 build() {
