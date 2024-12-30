@@ -1,0 +1,18 @@
+pkgbase = aya-bin
+	pkgdesc = A desktop application for easily controlling android devices, which can be considered as a GUI wrapper for ADB.(Prebuilt version.Use system-wide electron)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://aya.liriliri.io
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = asar
+	makedepends = fuse2
+	depends = electron33
+	provides = aya=0.1.1
+	conflicts = aya
+	source = aya-0.1.1.AppImage::https://github.com/liriliri/aya/releases/download/v0.1.1/AYA-0.1.1-linux-x86_64.AppImage
+	source = aya.sh
+	sha256sums = d84289bf08eccc96d6e3a590e571978f2e43e9e0d2919e06034e65c9fa0ce96d
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = aya-bin
