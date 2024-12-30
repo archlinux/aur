@@ -1,5 +1,5 @@
 pkgbase = wechat-callout-git
-	pkgdesc = 微信窗口快捷唤出/隐藏
+	pkgdesc = 微信窗口快捷键唤出/隐藏
 	pkgver = r1.a887387
 	pkgrel = 1
 	url = https://github.com/Keep-Silence/wechat-callout
