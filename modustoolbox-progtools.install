@@ -1,0 +1,9 @@
+post_install() {
+    echo "Running post-install script..."
+
+    # Define product location as the parent to resources folder
+    PRODUCT_HOME="/opt/ModusToolboxProgtools-1.3"
+
+    # Find and install udev rules scripts 
+    find "${PRODUCT_HOME}" -type f -name "install_rules.sh" -executable -exec sed -i '/\bsudo service udev restart\b/s/^/# /' {} \; -exec {} \;
+}
