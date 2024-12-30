@@ -1,63 +1,69 @@
-#!/usr/bin/env python3
-import os
-import sys
-from pathlib import Path
+#!/usr/bin/env bash
 
-import i3ipc
+CACHE_FILE="${HOME}/.cache/i3-lru-order"
 
-# Where we store the LRU order
-CACHE_FILE = Path.home() / ".cache" / "i3-lru-order"
+# 1) If the file doesn't exist, or is empty, bail.
+[ -f "${CACHE_FILE}" ] || exit 0
 
-# Global list that tracks windows in MRU order (front = most recently used)
-lru_list = []
+# Read the entire i3 tree JSON just once.
+i3_tree_json="$(i3-msg -t get_tree)"
 
+# Build a mapping of con_id (as a string) -> label.
+mapped_windows="$(
+	echo "$i3_tree_json" | jq -r '
+    def descend: recurse(.nodes[], .floating_nodes[]);
+    descend
+    | select(.window_properties? or .window?)
+    | [
+        (.id|tostring),
+        (
+          if .window_properties? and .window_properties.class? then
+            "\(.name) (\(.window_properties.class))"
+          else
+            .name // ""
+          end
+        )
+      ]
+      | @tsv
+  '
+)"
 
-def save_lru_list():
-    """Save the current LRU list to a file so the 'i3-lru' script can read it."""
-    with open(CACHE_FILE, "w", encoding="utf-8") as f:
-        for wid in lru_list:
-            f.write(f"{wid}\n")
+declare -A id_to_label
+while IFS=$'\t' read -r con_id con_label; do
+	id_to_label["$con_id"]="$con_label"
+done <<<"$mapped_windows"
 
+# Build a list of valid labels in LRU order
+declare -a valid_labels=()
 
-def load_lru_list():
-    """Load LRU list from file (if it exists) when daemon starts."""
-    global lru_list
-    if CACHE_FILE.is_file():
-        with open(CACHE_FILE, "r", encoding="utf-8") as f:
-            lru_list = [line.strip() for line in f if line.strip()]
+while IFS= read -r wid; do
+	[ -z "$wid" ] && continue
+	label="${id_to_label["$wid"]}"
+	[ -z "$label" ] && continue
+	valid_labels+=("$label")
+done <"$CACHE_FILE"
 
+# If no valid windows remain, exit silently.
+[ ${#valid_labels[@]} -eq 0 ] && exit 0
 
-def update_lru(window_id):
-    """Move window_id to front of the lru_list."""
-    # Remove if already present
-    try:
-        lru_list.remove(window_id)
-    except ValueError:
-        pass
-    # Insert at front
-    lru_list.insert(0, window_id)
-    save_lru_list()
+# Show them in rofi, with the second item (row index 1) selected by default.
+# If there's only 1 item, rofi will silently fall back to row 0.
+selection="$(
+	printf '%s\n' "${valid_labels[@]}" |
+		rofi -dmenu -i -p "Switch to" -selected-row 1
+)"
 
+# If the user canceled or made no selection, exit.
+[ -z "$selection" ] && exit 0
 
-def on_window_focus(i3, event):
-    # event.container is the newly-focused container
-    focused_id = str(event.container.id)
-    update_lru(focused_id)
+# Reverse lookup: label -> ID
+selected_id=""
+for con_id in "${!id_to_label[@]}"; do
+	if [[ "${id_to_label["$con_id"]}" == "$selection" ]]; then
+		selected_id="$con_id"
+		break
+	fi
+done
 
-
-def main():
-    # Start up i3 connection
-    i3 = i3ipc.Connection()
-
-    # Load any existing list from file
-    load_lru_list()
-
-    # Subscribe to focus events
-    i3.on("window::focus", on_window_focus)
-
-    # Main loop
-    i3.main()
-
-
-if __name__ == "__main__":
-    main()
+# Focus the chosen window
+[ -n "$selected_id" ] && i3-msg "[con_id=\"${selected_id}\"] focus" >/dev/null

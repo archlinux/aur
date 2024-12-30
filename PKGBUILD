@@ -8,8 +8,8 @@ arch=('any')
 url="https://github.com/gashon/i3-lru"
 license=('MIT')
 depends=('i3-wm' 'jq' 'rofi' 'bash')
-source=('i3-lru.py'
-	'i3-lru-daemon.sh'
+source=('i3-lru.sh'
+	'i3-lru-daemon.py'
 	'i3-lru-daemon.service')
 sha256sums=('SKIP' 'SKIP') # For local dev you can skip or fill real checksums
 
