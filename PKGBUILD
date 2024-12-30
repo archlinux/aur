@@ -5,8 +5,7 @@
 ################################################################################
 # First, you should install mps following the igc-readme here:
 # https://github.com/emacs-mirror/emacs/blob/scratch/igc/README-IGC
-# You should install the mps into the directory /opt/mps.
-# You can modify this location in the following options.
+# Or you could install the AUR package mps-git.
 ################################################################################
 
 ################################################################################
@@ -125,7 +124,7 @@ else
   pkgname="emacs-pgtk-igc-git"
 fi
 pkgver=31.0.50.175856
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU Emacs. Development branch, with PGTK and IGC enabled."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -138,7 +137,7 @@ conflicts=('emacs')
 replaces=('emacs')
 source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git#branch=scratch/igc")
 # If Savannah fails for reasons, use Github's mirror
-#source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git#commit=3f076a8e44b652691ffd4a2a07b04ab956ed4668")
+#source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git#branch=scratch/igc")
 
 options=(!strip)
 install=emacs-git.install
@@ -188,14 +187,12 @@ if [[ $CLANG == "YES" ]]; then
     makedepends+=('clang' 'llvm')
   fi
   if [[ ! $MOLD == "YES" ]]; then
-    makedepends+=('mold')
+    makedepends+=('lld')
     export LD="lld"
-    export LDFLAGS+=" -L$MPS/lib"
     export CCFLAGS+=' -fuse-ld=lld'
     export CXXFLAGS+=' -fuse-ld=lld'
-    export CPPFLAGS+=" -I$MPS/include"
-    export CFLAGS+=" -I$MPS/include --ld-path=/usr/bin/mold"
-    export CXXFLAGS+=" --ld-path=/usr/bin/mold"
+    export CFLAGS+=" --ld-path=/usr/bin/lld"
+    export CXXFLAGS+=" --ld-path=/usr/bin/lld"
   else
     makedepends+=('lld')
     export LD="lld"
@@ -217,6 +214,13 @@ if [[ $JIT == "YES" ]]; then
   else
     depends+=('libgccjit')
   fi
+fi
+
+if [[ $MPS ]]; then
+  _conf+=('--with-mps=yes')
+  export LDFLAGS+=" -L$MPS/lib"
+  export CPPFLAGS+=" -I$MPS/include"
+  export CFLAGS+=" -I$MPS/include"
 fi
 
 if [[ $CLI == "YES" ]]; then
