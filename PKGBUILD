@@ -1,18 +1,22 @@
-# Maintainer: Jonian Guveli <https://github.com/jonian/>
+# Maintainer: mapleafgo <mapleafgo at 163 dot com>
 pkgname=pnpm-bin
-pkgver=8.6.0
+_pkgname=pnpm
+pkgver=9.15.2
 pkgrel=1
-pkgdesc="Fast, disk space efficient package manager"
-arch=("x86_64")
+pkgdesc="Fast, disk space efficient package manager (No dependency on nodejs)"
+arch=('x86_64' 'aarch64')
 url="https://github.com/pnpm/pnpm"
-license=("MIT License")
-options=("!strip")
-provides=("pnpm")
-conflicts=("pnpm" "pnpm-git")
-source=("pnpm-$pkgver::$url/releases/download/v${pkgver}/pnpm-linux-x64")
-sha256sums=('65217461377e581c9f06feb2fe25bace001bb7d0fcecccc1642159095fad8a8e')
+license=('MIT')
+conflicts=(${_pkgname})
+provides=(${_pkgname})
+depends=('git')
+options=('!strip')
+source_x86_64=(${_pkgname}-${pkgver}-x86_64::https://github.com/pnpm/pnpm/releases/download/v${pkgver}/pnpm-linux-x64)
+source_aarch64=(${_pkgname}-${pkgver}-aarch64::https://github.com/pnpm/pnpm/releases/download/v${pkgver}/pnpm-linux-arm64)
+_app=${_pkgname}-${pkgver}-${CARCH}
 
 package() {
-  install -D "$srcdir/pnpm-$pkgver" "$pkgdir/usr/bin/pnpm"
-  chmod +x "$pkgdir/usr/bin/pnpm"
+	install -Dm755 "${srcdir}/${_app}" "${pkgdir}/usr/bin/pnpm"
 }
+sha256sums_x86_64=('3cea7ada6e703acba25179d80a660a1f18b397a55fb4d721a2a4d04406abe27a')
+sha256sums_aarch64=('e50ec75726fa008691ac138f19ef934ece70b6cf7d8991b8bfcb06c621cc587f')

@@ -1,15 +1,18 @@
 pkgbase = pnpm-bin
-	pkgdesc = Fast, disk space efficient package manager
-	pkgver = 8.6.0
+	pkgdesc = Fast, disk space efficient package manager (No dependency on nodejs)
+	pkgver = 9.15.2
 	pkgrel = 1
 	url = https://github.com/pnpm/pnpm
 	arch = x86_64
-	license = MIT License
+	arch = aarch64
+	license = MIT
+	depends = git
 	provides = pnpm
 	conflicts = pnpm
-	conflicts = pnpm-git
 	options = !strip
-	source = pnpm-8.6.0::https://github.com/pnpm/pnpm/releases/download/v8.6.0/pnpm-linux-x64
-	sha256sums = 65217461377e581c9f06feb2fe25bace001bb7d0fcecccc1642159095fad8a8e
+	source_x86_64 = pnpm-9.15.2-x86_64::https://github.com/pnpm/pnpm/releases/download/v9.15.2/pnpm-linux-x64
+	sha256sums_x86_64 = 3cea7ada6e703acba25179d80a660a1f18b397a55fb4d721a2a4d04406abe27a
+	source_aarch64 = pnpm-9.15.2-aarch64::https://github.com/pnpm/pnpm/releases/download/v9.15.2/pnpm-linux-arm64
+	sha256sums_aarch64 = e50ec75726fa008691ac138f19ef934ece70b6cf7d8991b8bfcb06c621cc587f
 
 pkgname = pnpm-bin
