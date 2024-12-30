@@ -1,0 +1,5 @@
+[gimp-plugin-gmic-git]
+source = "git"
+git = "https://github.com/GreycLab/gmic-qt.git"
+exclude_regex = 'v\.[0-9][0-9][0-9]'
+prefix = "v."
