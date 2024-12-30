@@ -1,6 +1,6 @@
 # Maintainer: Devon T. Bautista <devonb@lanl.gov>
 pkgname=ochami-git
-pkgver=v0.0.4.r2.7c017ee
+pkgver=v0.0.5.r0.g2a54540
 pkgrel=1
 pkgdesc="Command line interface for OpenCHAMI services"
 arch=('aarch64' 'x86_64')
@@ -8,7 +8,9 @@ url='https://github.com/OpenCHAMI/ochami'
 license=('MIT')
 groups=('openchami')
 makedepends=('git' 'go' 'make' 'scdoc')
-optdepends=('jq: for pretty-printing JSON')
+optdepends=('bash-completion: for bash completion support'
+            'jq: for pretty-printing JSON'
+            'zsh-completions: for zsh completion support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 backup=("etc/${pkgname}/config.yaml")
