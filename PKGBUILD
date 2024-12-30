@@ -1,7 +1,7 @@
 # AUR PACKAGE CREATED BY YGNT7777 It is not my app
 # Creator of the app dspinellis
 pkgname=ai-cli-lib
-pkgver=1.0.0
+pkgver=1.2
 pkgrel=1
 pkgdesc="ai-cli-lib: AI help for CLI programs"
 arch=('x86_64')
@@ -9,6 +9,7 @@ url="https://github.com/dspinellis/ai-cli-lib"
 license=('Zlib')
 depends=('curl' 'jansson' 'readline')
 makedepends=('base-devel' 'git')
+install=ai-cli-lib.install
 
 # Cloning the repository
 source=("git+https://github.com/dspinellis/ai-cli-lib.git#branch=main")
@@ -16,7 +17,7 @@ sha256sums=('SKIP')
 
 # Static version
 pkgver() {
-    echo "1.0.0"
+    echo "1.2"
 }
 
 # Building the package

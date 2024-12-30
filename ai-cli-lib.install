@@ -1,0 +1,35 @@
+post_install() {
+    echo "=================================================================="
+    echo "Thank you for installing ai-cli-lib!"
+    echo
+    echo "Perform one of the following:"
+    echo
+    echo "  1. Obtain your Anthropic API key or OpenAI API key and configure it"
+    echo "     in the .aicliconfig file in your home directory. Add:"
+    echo "        key={key}"
+    echo "     in the file's [anthropic] or [openai] section, and:"
+    echo "        api=anthropic or api=openai"
+    echo "     in the [general] section."
+    echo
+    echo "     See the ai-cli-config file for examples. Anthropic offers trial"
+    echo "     credits to new users. OpenAI API access requires a separate"
+    echo "     usage-based subscription from ChatGPT."
+    echo
+    echo "  2. Configure a llama.cpp server and add:"
+    echo "        endpoint=http://localhost:8080/completion"
+    echo "     in the configuration file's [llamacpp] section, and:"
+    echo "        api=llamacpp"
+    echo "     in the [general] section."
+    echo
+    echo "     Running a llama.cpp server involves:"
+    echo "       - Compiling llama.cpp (ideally with GPU support)."
+    echo "       - Downloading, converting, and quantizing model files."
+    echo "       - Running the server with a command like:"
+    echo "           server -m models/llama-2-13b-chat/ggml-model-q4_0.gguf \\"
+    echo "                  -c 2048 --n-gpu-layers 100."
+    echo
+    echo "Run interactive CLI programs (e.g., bash, mysql, psql) as usual."
+    echo
+    echo "Check the repository for more information: $https://github.com/dspinellis/ai-cli-lib"
+    echo "=================================================================="
+}
