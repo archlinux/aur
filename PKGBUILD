@@ -2,7 +2,7 @@
 _base=pyoxipng
 pkgname=python-${_base}
 pkgdesc="Python wrapper for multithreaded .png image file optimizer oxipng"
-pkgver=9.0.0
+pkgver=9.1.0
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/nfrasser/${_base}"
@@ -11,7 +11,7 @@ depends=(python oxipng)
 makedepends=(python-build python-installer python-maturin python-wheel)
 # checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('9c483b1886906157d2d8e3284fd90ccfd8bc0dbb5f24c9dee8db7fa7cd4ba8c2a878c2685e5fb50f3a3b57f9dda1eea9c9da1cff4d2ad7e8c739cfd0391fce3e')
+sha512sums=('7a704eb7d2f163d0ae3073d23f2f99641e0708b5fc830a7d0a7e50bfc4fa71e3958dcd46224639f6f0e3eada9ed9537d215b019234b3509857b13851bcae00df')
 
 build() {
   cd ${_base}-${pkgver}
