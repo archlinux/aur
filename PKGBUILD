@@ -62,7 +62,6 @@ depends=(
 makedepends=(
   cmake
   git
-  glaze
   hyprwayland-scanner-git
   #patch
   #pkgconf
@@ -73,6 +72,7 @@ optdepends=(
   'cmake: to build and install plugins using hyprpm'
   'cpio: to build and install plugins using hyprpm'
   'meson: to build and install plugins using hyprpm'
+  'glaze: to build and install plugins using hyprpm'
   'uwsm: the recommended way to start Hyprland'
 )
 provides=("hyprland=${pkgver%%.r*}")

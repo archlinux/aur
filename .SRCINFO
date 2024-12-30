@@ -12,7 +12,6 @@ pkgbase = hyprland-hidpi-xprop-git
 	license = BSD-3-Clause
 	makedepends = cmake
 	makedepends = git
-	makedepends = glaze
 	makedepends = hyprwayland-scanner-git
 	makedepends = python
 	makedepends = xorgproto
@@ -61,6 +60,7 @@ pkgbase = hyprland-hidpi-xprop-git
 	optdepends = cmake: to build and install plugins using hyprpm
 	optdepends = cpio: to build and install plugins using hyprpm
 	optdepends = meson: to build and install plugins using hyprpm
+	optdepends = glaze: to build and install plugins using hyprpm
 	optdepends = uwsm: the recommended way to start Hyprland
 	provides = hyprland=0.46.0
 	conflicts = hyprland
