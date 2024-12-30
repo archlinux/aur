@@ -56,8 +56,10 @@ build() {
   cmake \
     -S RBDOOM-3-BFG/neo \
     -B build \
-    -DCMAKE_BUILD_TYPE="None" \
+    -DCMAKE_BUILD_TYPE="Release" \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBINKDEC=OFF \
+    -DFFMPEG=ON \
     -DWINDOWS10=OFF \
     -DUSE_DX12=OFF \
     -DUSE_VULKAN=ON \
