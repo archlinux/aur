@@ -1,0 +1,8 @@
+
+[Desktop Entry]
+Name=Saturn Studio
+Comment=A cross-platform SFM-like video editor for Super Mario 64. Fork of Saturn by sm64rise.
+Exec=saturn-studio-launcher
+Icon=saturn-studio
+Terminal=false
+Categories=Game

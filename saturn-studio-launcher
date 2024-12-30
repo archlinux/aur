@@ -1,0 +1,11 @@
+#!/bin/bash
+
+V64SATURN=~/.local/share/v64saturn
+
+if [ ! -e $V64SATURN ]; then
+    mkdir -p $V64SATURN
+    cp -r /usr/share/v64saturn/* $V64SATURN
+fi
+
+cd $V64SATURN
+saturn-studio
