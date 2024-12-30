@@ -1,7 +1,7 @@
 # Maintainer: Kyle Manna <kyle(at)kylemanna(dot)com>
 
 pkgname=wavedrom-editor
-pkgver=2.9.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Timing diagram rendering engine"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('zip')
 # For some reason, stripping the nwjs binary breaks the app
 options=('!strip')
 
-sha256sums_x86_64=('b11fdbb6737f352787a6bdb161e7de6d1970123c3d00b857ea56bb66a5283d02'
+sha256sums_x86_64=('47cd8fd9259e22a097a997f8894a8563fbc2f2b0f5cde66b20a6b73093631e32'
                    'c8cf2a7f6626452bb10eef4f8b4b02bf1992e360e93857a90b2ed7212044f1e2')
 
 source_x86_64=("https://github.com/wavedrom/wavedrom.github.io/archive/v${pkgver}.tar.gz"
