@@ -1,7 +1,7 @@
 pkgbase = python-deadlib
-	pkgdesc = Python dead batteries. See PEP 594
+	pkgdesc = Python standard library redistribution, "dead batteries"
 	pkgver = 3.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/youknowone/python-deadlib
 	arch = any
 	license = PSF-2.0
@@ -10,6 +10,7 @@ pkgbase = python-deadlib
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
+	optdepends = python-audioop: used by aifc module
 	provides = python-aifc
 	provides = python-standard-aifc
 	provides = python-asynchat

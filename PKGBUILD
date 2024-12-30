@@ -2,9 +2,9 @@
 
 _pkgname="python-deadlib"
 pkgname="$_pkgname"
-pkgdesc="Python dead batteries. See PEP 594"
+pkgdesc='Python standard library redistribution, "dead batteries"'
 pkgver=3.13.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/youknowone/python-deadlib"
 license=('PSF-2.0')
 arch=('any')
@@ -18,15 +18,14 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
+optdepends=(
+  'python-audioop: used by aifc module' # AUR
+)
 
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
-source=(
-  "$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext"
-)
-sha256sums=(
-  'bde43692d5a1de2a33777ff99f4c4344f7cca3a49362b2484a13870706194613'
-)
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
+sha256sums=('bde43692d5a1de2a33777ff99f4c4344f7cca3a49362b2484a13870706194613')
 
 _modules=(
   aifc
@@ -61,14 +60,11 @@ done
 
 build() {
   for i in ${_modules[@]}; do
-    (
-      cd "$_pkgsrc/$i"
-      python -m build --wheel --no-isolation --skip-dependency-check
-      python -m installer --destdir="$srcdir/fakeinstall" dist/*.whl
-    )
+    pushd "$_pkgsrc/$i"
+    python -m build --wheel --no-isolation --skip-dependency-check
+    python -m installer --destdir="$srcdir/fakeinstall" dist/*.whl
+    popd
   done
-
-  find fakeinstall -type f
 }
 
 package() {
