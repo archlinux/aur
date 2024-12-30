@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jm-desktop-bin
-pkgver=1.10.3
+pkgver=1.11.2
 _electronversion=33
 pkgrel=1
 pkgdesc="A jm comic desktop app by react + electron.(Prebuilt version).一个禁漫的第三方客户端"
@@ -23,9 +23,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-Linux-${pkgver}.zip"
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/Dedicatus546/jm-desktop/v${pkgver}/public/png/512x512.png"
 )
-sha256sums=('f57acb29c8417c3a33b27a4d70e299e725161d1c759b33b9fa7dd97d3c1a5a2a'
+sha256sums=('4a446134ef7a2adad5712ee222c81eaf1de43479320532902515a3c4c4e40c97'
             'b09140b89c05bcf1bfa0f0db74aa55f83b4fdbc4cd6955efeb539631f57d4528')
-build() {
+prepare() {
     install -Dm755 -d "${srcdir}/usr/"{bin,lib/"${pkgname%-bin}"}
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
