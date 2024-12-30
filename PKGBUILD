@@ -6,7 +6,7 @@
 _pkgname="cpdf"
 pkgname="${_pkgname}-bin"
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Coherent PDF commandline tool to manipulate PDF files"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://community.coherentpdf.com"
@@ -30,7 +30,7 @@ sha256sums=('9b7e59d3b6574d31426abc8004f3445ab55495d48020f9c0eab9ca0234631f42'
             '7388f698fe65510673400c62716fa8ec9a7e411fbf31a1086614117e868a24ca'
             'faac74183c571371f9a2e15102db31064a3b53f101e38b8894cc4757f426e5ab'
             'b6f4d42627c094365103a5a8c750b0ae020b385fdd785f8deede3f472576ec09')
-sha256sums_x86_64=('efca6db7f6293021d653bc0d0ca20e11970701497bf70acdab3a3bac5d57b28f')
+sha256sums_x86_64=('4003a5333fed2007540cf1f30bb748e67d8c813ed949ec597816a3b350562ea2')
 sha256sums_aarch64=('efca6db7f6293021d653bc0d0ca20e11970701497bf70acdab3a3bac5d57b28f')
 sha256sums_i686=('1cb206f50e6f911e931baf4f8c0ada0b36fecca5199739af2c981c3ab9a96f2f')
 
