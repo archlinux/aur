@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.39.0.r538.gcd9fa6daf0
+pkgver=0.39.0.r557.g1dd0e49f83
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -60,6 +60,7 @@ depends=(
          'libpulse'
          'librabbitmq-c'
          'librsvg'
+         'libsixel'
          'libsoxr'
          'libssh'
          'libtheora'
@@ -176,7 +177,6 @@ _makeoptdepends=('cuda: mpv ffmpeg nvcc and libnpp support'
                  'davs2: Additional libdavs2 support for ffmpeg'
                  'intel-media-sdk: Intel QuickSync support for ffmpeg'
                  'libklvanc: Additional libklvanc support for ffmpeg'
-                 'libsixel: Allow mpv to implement sixel as a output device'
                  'nvidia-utils: for hardware accelerated video decoding with CUDA'
                  'onevpl: mpv ffmpeg intel graphic support'
                  'shine: Additional libshine support for ffmpeg'
@@ -198,9 +198,6 @@ if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
   fi
   if [ -f /usr/lib/libshine.so ]; then
     depends+=('shine')
-  fi
-  if [ -f /usr/lib/libsixel.so ]; then
-    depends+=('libsixel')
   fi
   if [ -f /usr/lib/libvpl.so ]; then
     depends+=('onevpl')
@@ -439,6 +436,7 @@ prepare() {
     '-Djpeg=enabled'
     '-Dsdl2-video=enabled'
     '-Dshaderc=disabled'
+    '-Dsixel=enabled'
     '-Dspirv-cross=disabled'
     '-Dplain-gl=enabled'
     '-Dvdpau=enabled'
@@ -502,9 +500,6 @@ prepare() {
     fi
     if [ -f /usr/lib/libshine.so ]; then
       _ffmpeg_options+=('--enable-libshine')
-    fi
-    if [ -f /usr/lib/libsixel.so ]; then
-      _mpv_options+=('-Dsixel=enabled')
     fi
     if [ -f /usr/lib/libvpl.so ]; then
       _ffmpeg_options+=('--enable-libvpl')
