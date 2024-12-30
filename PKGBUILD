@@ -1,9 +1,9 @@
 # Maintainer: Cristian Burneci <cburneci at gmail dot com>
 
 pkgname=tv-lite
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
-pkgdesc="IPTV viewer with Sopcast and Acestream handling capabilities.  It wants to be a replacement for the older TV-Maxe"
+pkgdesc="IPTV player with Sopcast and Acestream handling capabilities.  It wants to be a replacement for the older TV-Maxe"
 arch=('i686' 'x86_64')
 url="https://www.tv-lite.com"
 license=('GPL2')
@@ -19,14 +19,11 @@ options=()
 install=
 changelog=
 source=(https://gitlab.com/cburneci/tv-lite/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-
 noextract=()
-md5sums=('608759396137d4d10edce94f1c6e4230') #generate with 'makepkg -g'
+md5sums=('SKIP') #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/src"
-  sed -i 's/uint32_t/wxInt32/g' sopprotocol.h
-  sed -i 's/uint32_t/wxInt32/g' sopprotocol.cpp
   mkdir -p build
   cd build
   if [ -f '/usr/bin/wx-config-gtk3' ]
