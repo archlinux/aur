@@ -10,3 +10,4 @@ pkgbase = microfetch-arch-linux
 	sha256sums = SKIP
 
 pkgname = microfetch
+
