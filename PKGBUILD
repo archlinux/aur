@@ -24,7 +24,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/WindowsKonon1337/TrackPointSound.git")
+source=("https://github.com/WindowsKonon1337/TrackPointSound.git")
 
 noextract=()
 sha256sums=('SKIP')
