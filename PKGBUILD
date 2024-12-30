@@ -1,6 +1,6 @@
 # Maintainer: dandenkijin <denkijin at proton dot me>
 pkgname=yt-x
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=2
 pkgdesc="Browse youtube from your terminal"
 arch=(any)
