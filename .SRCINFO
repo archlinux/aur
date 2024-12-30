@@ -1,0 +1,21 @@
+pkgbase = beangulp
+	pkgdesc = Importers framework for Beancount
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/beancount/beangulp
+	arch = any
+	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = beancount>=3
+	depends = python-beautifulsoup4
+	depends = python-chardet
+	depends = python-click
+	depends = python-lxml
+	depends = python-magic
+	source = https://files.pythonhosted.org/packages/source/b/beangulp/beangulp-0.1.1.tar.gz
+	b2sums = b5e7015e3a22cd44e5c2b648cf3ba9bfb327f55d43a582d1dae8d7c03d293341f405952ff17b16464cda394ee5acf08aa518b3685e7470c0a630c8accf11ecbc
+
+pkgname = beangulp
