@@ -2,7 +2,7 @@
 
 pkgname=latexrun-git
 pkgver=r134.38ff6ec
-pkgrel=1
+pkgrel=2
 pkgdesc="A 21st century LaTeX wrapper"
 arch=('any')
 url="https://github.com/aclements/latexrun"
