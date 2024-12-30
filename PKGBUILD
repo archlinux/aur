@@ -14,8 +14,8 @@
 : ${KOBOLDCPP_NO_PORTABLE:=0}
 
 pkgname=koboldcpp-hipblas
-_pkgver=1.79.1
-pkgver=$_pkgver.yr1
+_pkgver=1.80.3
+pkgver=$_pkgver.yr0
 _git_pkgver=$pkgver-ROCm
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)"
@@ -41,7 +41,7 @@ source=(
   'koboldcpp.png'
 )
 sha256sums=(
-  'c09d4803b861ca5b6a7e9cee37378eca085028580199cf4c1f7c689f0fb3add1'
+  'e995b9db70e9409c8a206e864097839a3c41365989cf31f846919718788fad5d'
   'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
   'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
