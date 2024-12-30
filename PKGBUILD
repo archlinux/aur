@@ -8,7 +8,7 @@ url='https://github.com/pendulum-project/ntpd-rs'
 arch=('x86_64')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'git')
-license=('Apache')
+license=('Apache-2.0')
 changelog=CHANGELOG
 source=(
   "https://github.com/pendulum-project/ntpd-rs/archive/refs/tags/v$pkgver.tar.gz"
