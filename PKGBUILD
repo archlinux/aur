@@ -1,4 +1,5 @@
 # Maintainer: VitalyR <https://aur.archlinux.org/account/VitalyR>
+# Maintainer: JimMoen <https://aur.archlinux.org/account/JimMoen>
 # Maintainer of emacs-git: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
 # Maintainer of emacs-pgtk-native-comp: Andrew Whatson <https://aur.archlinux.org/account/flatwhatson>
 
@@ -124,7 +125,7 @@ else
   pkgname="emacs-igc-git"
 fi
 pkgver=31.0.50.175856
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Development branch, with PGTK and IGC enabled."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -137,7 +138,7 @@ conflicts=('emacs')
 replaces=('emacs')
 source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git#branch=scratch/igc")
 # If Savannah fails for reasons, use Github's mirror
-#source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git#commit=3f076a8e44b652691ffd4a2a07b04ab956ed4668")
+#source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git#branch=scratch/igc")
 
 options=(!strip)
 install=emacs-git.install
