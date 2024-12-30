@@ -1,4 +1,4 @@
 [python-scipy-mkl-bin]
 source = "regex"
 url = "https://repo.anaconda.com/pkgs/main/linux-64/"
-regex = "scipy-([\\d.]+)-py312h2809609_0.tar.bz2"
+regex = "scipy-([\\d.]+)-py313h3a69d60_0.tar.bz2"

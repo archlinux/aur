@@ -11,7 +11,7 @@ pkgbase = python-scipy-mkl-bin
 	optdepends = python-pillow: for image saving module
 	provides = python-scipy=1.14.1
 	conflicts = python-scipy
-	source = https://repo.anaconda.com/pkgs/main/linux-64/scipy-1.14.1-py312h2809609_0.tar.bz2
-	sha256sums = ed9f4241242023947d3ac5a803a0ed6deea08560c0f1830004dc6d9e7da6f235
+	source = https://repo.anaconda.com/pkgs/main/linux-64/scipy-1.14.1-py313h3a69d60_0.tar.bz2
+	sha256sums = 5f8d0a79df75b8058357b758c704118e82cbb816f5da4d8a9b2f06eb3375b72b
 
 pkgname = python-scipy-mkl-bin
