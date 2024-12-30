@@ -4,13 +4,13 @@
 pkgname='supermariowar-bin'
 _pkgname='supermariowar'
 pkgdesc="Super Mario War multiplayer game."
-pkgver='2024.07.16'
+pkgver='2024.10.17'
 _pkgver="${pkgver//./-}"
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/mmatyas/supermariowar'
 license=('GPL')
-depends=('sdl2_image' 'sdl2_mixer' 'sdl2' 'zlib')
+depends=('sdl2_image' 'sdl2_mixer' 'sdl2' 'zlib' 'hicolor-icon-theme' )
 makedepends=('zip' 'tar')
 provides=('smw' 'smw-server' 'smw-leveledit' 'smw-worldedit')
 conflicts=('smw-git')
@@ -20,7 +20,7 @@ source=(
 )
 install="${_pkgname}.install"
 noextract=( 'icons.tar.gz' )
-sha256sums=('0969058cac492f0003ecd712e686fe39719c8415f60a89a0e8fd0baab0d13e2b'
+sha256sums=('35b04f3461f28d7729f18653a130df976bb26554446cf07cadcb7b4019a6bb0f'
             'd92e0c1390e45a09f5c3a56d23d44cd6723cd4cb81fefac33a783acc79301bbc')
 
 package() {
