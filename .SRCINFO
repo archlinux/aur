@@ -1,6 +1,6 @@
 pkgbase = ignis
 	pkgdesc = Full-featured Python framework for building desktop shells using GTK4.
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/linkfrg/ignis
 	arch = x86_64
@@ -24,7 +24,9 @@ pkgbase = ignis
 	optdepends = gst-plugins-ugly: required for recorder service
 	optdepends = networkmanager: required for network service
 	optdepends = dart-sass: SASS/SCSS compilation support
-	source = ignis-0.3.tar.gz::https://github.com/linkfrg/ignis/releases/download/v0.3/ignis-v0.3.tar.gz
+	optdepends = upower: required for UPower Service
+	optdepends = gnome-bluetooth-3.0: required for Bluetooth Service
+	source = ignis-0.4.tar.gz::https://github.com/linkfrg/ignis/releases/download/v0.4/ignis-v0.4.tar.gz
 	sha256sums = dc8a8d76b80bea19497f6029b8ab816e5eceb2f2ff9697675bd1ac87ada70513
 
 pkgname = ignis
