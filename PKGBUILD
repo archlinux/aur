@@ -1,20 +1,33 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=duh
-pkgver=1.19.0
+pkgver=1.21.0
 pkgrel=1
 epoch=
 pkgdesc="DUH is a suite of tools for packaging reusable hardware components and designs."
-arch=('any')
+arch=($CARCH)
 url="https://github.com/sifive/duh"
-license=('Apache')
+license=('Apache-2.0')
 groups=()
-depends=()
-makedepends=('npm')
+depends=(
+    gcc-libs
+    glibc
+    sh
+    python
+    python-cffi
+    python-setuptools
+    python-platformdirs
+    nodejs
+    zlib
+)
+makedepends=(
+    npm
+    python-pip
+)
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=()
+provides=(${pkgname})
+conflicts=(${pkgname})
 replaces=()
 backup=()
 options=('!strip')
@@ -22,7 +35,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=()
-sha256sums=('a71998b54e23322a9c034fdd9c64b11881adb5658772ede9b4a6b7f4c4a88227')
+sha256sums=('54428b896f4ba667a01c4b53ced3051793c97fe1151310cd66b6c79a86b8c21d')
 #validpgpkeys=()
 
 package() {
