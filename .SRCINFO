@@ -1,6 +1,6 @@
 pkgbase = another-redis-desktop-manager-bin
 	pkgdesc = A faster, better and more stable Redis desktop manager [GUI client].Prebuilt version.Use system-wide electron.
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/qishibo/AnotherRedisDesktopManager
 	arch = aarch64
@@ -9,15 +9,15 @@ pkgbase = another-redis-desktop-manager-bin
 	makedepends = fuse2
 	depends = electron12
 	depends = java-runtime
-	provides = another-redis-desktop-manager=1.7.0
+	provides = another-redis-desktop-manager=1.7.1
 	conflicts = another-redis-desktop-manager
-	source = LICENSE-1.7.0::https://raw.githubusercontent.com/qishibo/AnotherRedisDesktopManager/v1.7.0/LICENSE
+	source = LICENSE-1.7.1::https://raw.githubusercontent.com/qishibo/AnotherRedisDesktopManager/v1.7.1/LICENSE
 	source = another-redis-desktop-manager.sh
 	sha256sums = c0bca7c1b149b2d86d21b24413a7fd05eaf0b4a8ae9ab361da095c9b287e6ae0
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = another-redis-desktop-manager-1.7.0-aarch64.AppImage::https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v1.7.0/Another-Redis-Desktop-Manager-linux-1.7.0-arm64.AppImage
-	sha256sums_aarch64 = 6946bfaad3808dbe591321f8b817ced5005ed081cfd0c375b8299ea0cc078ed7
-	source_x86_64 = another-redis-desktop-manager-1.7.0-x86_64.AppImage::https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v1.7.0/Another-Redis-Desktop-Manager-linux-1.7.0-x86_64.AppImage
-	sha256sums_x86_64 = 9614a8c2de870bdb7fb104e6662481e4830c7ddc1ac7e999d7a019f754a69a44
+	source_aarch64 = another-redis-desktop-manager-1.7.1-aarch64.AppImage::https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v1.7.1/Another-Redis-Desktop-Manager-linux-1.7.1-arm64.AppImage
+	sha256sums_aarch64 = d165d6974500401a8996fb7630da4d1eeaa610094896f63415f1d7bb82ca91c6
+	source_x86_64 = another-redis-desktop-manager-1.7.1-x86_64.AppImage::https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v1.7.1/Another-Redis-Desktop-Manager-linux-1.7.1-x86_64.AppImage
+	sha256sums_x86_64 = 5ee4b88ec6e1529ae8614136b67713e3747a12b601f564e0e9deecd7a38ec454
 
 pkgname = another-redis-desktop-manager-bin
