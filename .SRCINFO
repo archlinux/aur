@@ -1,0 +1,25 @@
+pkgbase = coercer-git
+	pkgdesc = Python script to automatically coerce a Windows server to authenticate on an arbitrary machine through 12 methods.
+	pkgver = 2.4.3.r16.g1fd071d
+	pkgrel = 1
+	url = https://github.com/p0dalirius/coercer
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = impacket
+	depends = python
+	depends = python-jinja
+	depends = python-sectools
+	depends = python-netifaces
+	depends = python-xlsxwriter
+	provides = coercer
+	conflicts = coercer
+	conflicts = coercer-git-bin
+	source = git+https://github.com/p0dalirius/coercer
+	sha512sums = SKIP
+
+pkgname = coercer-git
