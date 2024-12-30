@@ -1,0 +1,20 @@
+pkgbase = geowordlists-git
+	pkgdesc = Tool to generate wordlists of passwords containing cities at a defined distance around the client city.
+	pkgver = 1.0.1.r105.g798fe1d
+	pkgrel = 1
+	url = https://github.com/p0dalirius/geowordlists
+	arch = any
+	license = custom:unknown
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = geowordlists
+	conflicts = geowordlists
+	conflicts = geowordlists-bin
+	source = git+https://github.com/p0dalirius/geowordlists
+	sha512sums = SKIP
+
+pkgname = geowordlists-git
