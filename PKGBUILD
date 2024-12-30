@@ -28,9 +28,9 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${_pkgsrc}"
-	make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${_pkgsrc}"
+  make DESTDIR="${pkgdir}" install
 
-	install -vDm644 "AUTHORS" "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
-	install -vDm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm644 "AUTHORS" "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
+  install -vDm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
