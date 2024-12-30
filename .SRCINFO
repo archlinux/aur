@@ -1,7 +1,7 @@
 pkgbase = goldendict-ng
-	pkgdesc = The next generation GoldenDict (Supports Qt WebEngine & Qt6).
-	pkgver = 24.09.0
-	pkgrel = 4
+	pkgdesc = The Next Generation GoldenDict (supports Qt WebEngine & Qt6).
+	pkgver = 24.09.1
+	pkgrel = 1
 	url = https://github.com/xiaoyifang/goldendict-ng
 	arch = i686
 	arch = x86_64
@@ -38,9 +38,7 @@ pkgbase = goldendict-ng
 	replaces = goldendict-svn
 	replaces = goldendict-git-opt
 	replaces = goldendict-webengine-git
-	source = goldendict-ng-24.09.0.tar.gz::https://github.com/xiaoyifang/goldendict-ng/archive/refs/tags/v24.09.0-Release.316ec900.tar.gz
-	source = fix-qt6.8-build.patch
-	sha256sums = 528af2f7079a1cffad8b9451c722b3de80ecff6e33972f896c015058c88cd8be
-	sha256sums = 0f95aa8a90f6b23b8372e662158a7282858b2b46825f5eb3357a485d6d72bbe0
+	source = goldendict-ng-24.09.1.tar.gz::https://github.com/xiaoyifang/goldendict-ng/archive/refs/tags/v24.09.1-Release.ca9dd133.tar.gz
+	sha256sums = f5927e50d3b0674587feb6faaadd98777cb3309e133564a80bf72fa9bd2da372
 
 pkgname = goldendict-ng
