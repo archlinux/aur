@@ -1,12 +1,13 @@
 pkgbase = crosstypes
 	pkgdesc = Cross-platform library of PODT (plain old data types) in C/C++
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://crosstypes.sourceforge.net
 	arch = any
 	license = BSD-3-Clause
 	makedepends = cmake>=2.4.2
-	source = crosstypes-code-r10.zip::https://sourceforge.net/code-snapshots/svn/c/cr/crosstypes/code/crosstypes-code-r10.zip
-	sha256sums = 6068387fb2ac4b7208664dc68079fbba3eb4c4e781c359c566f265c77955c48d
+	makedepends = svn
+	source = crosstypes-0.1.0::svn+https://svn.code.sf.net/p/crosstypes/code#revision=r10
+	sha256sums = SKIP
 
 pkgname = crosstypes

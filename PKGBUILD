@@ -1,17 +1,17 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="crosstypes"
+_revision="r10" # 0.1.0
 pkgver=0.1.0
-_revision="r10"
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform library of PODT (plain old data types) in C/C++"
 arch=('any')
 url="https://${pkgname}.sourceforge.net"
 license=('BSD-3-Clause')
-makedepends=('cmake>=2.4.2')
-_pkgsrc="${pkgname}-code-${_revision}"
-source=("${_pkgsrc}.zip::https://sourceforge.net/code-snapshots/svn/${pkgname::1}/${pkgname::2}/${pkgname}/code/${pkgname}-code-${_revision}.zip")
-sha256sums=('6068387fb2ac4b7208664dc68079fbba3eb4c4e781c359c566f265c77955c48d')
+makedepends=('cmake>=2.4.2' 'svn')
+_pkgsrc="${pkgname}-${pkgver}"
+source=("${_pkgsrc}::svn+https://svn.code.sf.net/p/${pkgname}/code#revision=${_revision}")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgsrc}/work"
@@ -40,6 +40,6 @@ package() {
   DESTDIR="${pkgdir}" cmake --install "work/build"
 
   cd "work"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "AUTHORS" "${pkgdir}/usr/share/licenses/${pkgname}/AUTHORS"
+  install -vDm644 "AUTHORS" "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
