@@ -2,7 +2,7 @@
 
 _pkgname=babi
 pkgname=$_pkgname-git
-pkgver=v1.5.7.r7.g25cb43c
+pkgver=v1.6.0.r4.g5c92ecb
 pkgrel=1
 pkgdesc="A text editor, eventually..."
 arch=('any')
@@ -16,8 +16,8 @@ source=("${pkgname}"::git+https://github.com/asottile/babi.git)
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$pkgname"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
