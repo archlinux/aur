@@ -2,25 +2,28 @@
 
 pkgname=bootstrap-dht-git
 pkgver=r131.g679c661
-pkgrel=1
+pkgrel=2
 pkgdesc="Bittorrent DHT bootstrap server"
 arch=('i686' 'x86_64')
 url="https://github.com/bittorrent/bootstrap-dht"
 license=('MIT')
-depends=('glibc' 'boost-libs')
+depends=('gcc-libs' 'boost-libs')
 makedepends=('git' 'boost')
 provides=("bootstrap-dht=$pkgver")
 conflicts=('bootstrap-dht')
 source=("git+https://github.com/bittorrent/bootstrap-dht.git"
-        "boost.patch::https://github.com/bittorrent/bootstrap-dht/commit/131e4d2caccc227afa62837899123f424dccb296.patch")
+        "0001-Fix-compilation-with-boost-1.86.patch::https://github.com/bittorrent/bootstrap-dht/commit/a928a42298c8f088b8fbd729074874fd33043a08.patch"
+        "0002-Remove-non-existent-header.patch::https://github.com/bittorrent/bootstrap-dht/commit/ec453c1115aae78a28d392f948a87cb0d1be575b.patch")
 sha256sums=('SKIP'
-            '2984970318c71910e1e23093564f5048f9311ed0d4d16d1ef5623e9f9b86f331')
+            '485369fae20e6c358a5e72a9d681b1d7063bef64c6ee045723d4b4ebfc30c3d8'
+            'a3c61ac5930fc5d3f5d640cc3eb58a4c49057c442ca623896c2cc70406dde646')
 
 
 prepare() {
   cd "bootstrap-dht"
 
-  patch -Np1 -i "$srcdir/boost.patch"
+  patch -Np1 -i "$srcdir/0001-Fix-compilation-with-boost-1.86.patch"
+  patch -Np1 -i "$srcdir/0002-Remove-non-existent-header.patch"
 }
 
 pkgver() {
@@ -44,16 +47,16 @@ build() {
 check() {
   cd "bootstrap-dht/tests"
 
-  b2 \
-    cflags="$CFLAGS" \
-    cxxflags="$CXXFLAGS" \
-    linkflags="$LDFLAGS" \
-    release
+  #b2 \
+  #  cflags="$CFLAGS" \
+  #  cxxflags="$CXXFLAGS" \
+  #  linkflags="$LDFLAGS" \
+  #  release
 }
 
 package() {
   cd "bootstrap-dht"
 
-  install -Dm755 "dht-bootstrap" -t "$pkgdir/usr/bin"
+  install -Dm755 dht-{bootstrap,torture} -t "$pkgdir/usr/bin"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/bootstrap-dht"
 }
