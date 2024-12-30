@@ -1,6 +1,6 @@
 pkgbase = lib32-fluidsynth
 	pkgdesc = A real-time software synthesizer based on the SoundFont 2 specifications
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://www.fluidsynth.org/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = lib32-fluidsynth
 	makedepends = lib32-libpipewire
 	makedepends = lib32-libsndfile
 	makedepends = lib32-portaudio
-	depends = fluidsynth=2.4.1
+	depends = fluidsynth=2.4.2
 	depends = lib32-dbus
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
@@ -22,12 +22,12 @@ pkgbase = lib32-fluidsynth
 	depends = lib32-readline
 	depends = lib32-sdl2
 	depends = lib32-systemd
-	source = lib32-fluidsynth-2.4.1.tar.gz::https://github.com/fluidsynth/fluidsynth/archive/v2.4.1.tar.gz
-	sha512sums = d01d18c42ce98d0daa4e137118fc41f0a59047013870c09bacd9014baadf747e8e73571046781e34bc03eef454f2ef12ee59cf9b2c7f9517c586c08041ebe081
-	b2sums = 15ed3a808d0c0123226a087520564c2833d43c20fd8b6aa273a7467a74d92b8a67159fc960ad2f3a5d764b8e95ec25c1ec045c203058ceb83bfc276408d96b58
+	source = lib32-fluidsynth-2.4.2.tar.gz::https://github.com/fluidsynth/fluidsynth/archive/v2.4.2.tar.gz
+	sha512sums = 8c43e4e86f364f42115a51311231d9926325d7e519c2ddd087a9ed421c9a94cc0dfc5cfbfdfffe9401c634cce14c6e442523550114ac887096dde22ab0c63d98
+	b2sums = d514e595b6e902dc54ef94575701c8aa0b6b1d84d92f57874b163319076cb85c38b7c97bce70f66f55f3ef8e791608e7e29add6cb92c768e4f6ba2a4a89a1481
 
 pkgname = lib32-fluidsynth
-	depends = fluidsynth=2.4.1
+	depends = fluidsynth=2.4.2
 	depends = lib32-dbus
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
