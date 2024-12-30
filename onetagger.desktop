@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=One Tagger
+Comment=The ultimate cross-platform tagger for DJs
+Exec=/usr/bin/onetagger
+Icon=onetagger
+Terminal=false
+Type=Application
+Categories=Multimedia;
