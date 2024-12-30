@@ -8,7 +8,7 @@ pkgname="lib${_name}"
 _commit_rel="da28eefbc95d8bd5628e5f1c4cc12bc1b13fef4f" # 2.1.0
 _commit="61ee5c3d9bca98fd68af575e9704f5f02533ae26" # r25
 pkgver="2.1.0+r25+g${_commit::7}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Higher level programming library in C"
 arch=('x86_64')
 url="https://libcello.org"
@@ -27,7 +27,7 @@ build() {
 
 check() {
   cd "${srcdir}/${_pkgsrc}"
-  make check
+  make CFLAGS="${CFLAGS} -I./include -fPIC" LFLAGS="${LDFLAGS}" check
 }
 
 package() {
