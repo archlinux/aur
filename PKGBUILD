@@ -22,9 +22,7 @@ makedepends=(
     'git'
     'curl'
     'yarn'
-    'node-gyp'
     'gcc'
-    'cmake'
 )
 optdepends=(
     'libnotify: For sending desktop notifications'
@@ -48,7 +46,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -61,6 +59,7 @@ build() {
     cd "${srcdir}/${pkgname%-git}.git"
     electronDist="/usr/lib/electron${_electronversion}"
     #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export PUPPETEER_SKIP_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
@@ -77,8 +76,11 @@ build() {
 	fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    yarn install
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
     NODE_ENV=production     yarn run build
-    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist} --config electron-builder.json"
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder.json
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
