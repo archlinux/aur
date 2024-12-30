@@ -1,0 +1,5 @@
+jupyter_server_proxy*.tar.gz
+src/
+pkg/
+python-jupyter-server-proxy-*.pkg*
+*.log
