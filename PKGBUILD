@@ -8,11 +8,11 @@
 pkgname=jdk-openj9-bin
 _jdkver=23
 _jdkminor=0
-_jdkpatch=0
+_jdkpatch=1
 _jdksubpatch=0
 _jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch} #.${_jdksubpatch}
-_openj9ver=0.47.0
-_buildvershort=37
+_openj9ver=0.48.0
+_buildvershort=11
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_jdkfullver}b${_buildver//-/_}
 pkgrel=1
@@ -31,16 +31,16 @@ provides=(
 )
 conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
 options=(!strip)
-source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkver}%2B${_buildver}/ibm-semeru-open-jdk_x64_linux_${_jdkver}_${_buildver}.tar.gz")
+source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}_${_buildver}.tar.gz")
 
-sha256sums=('95e1116a38567fa5b1799045f05d95bd23f419ff5c0baa2100d88f113a2cb48b')
+sha256sums=('2aa3cc78feab5cf1c21a830797694c9b8b7898072a40c252f442b832117a3809')
 
-_jvmdir=usr/lib/jvm/java-${_jdkver}-j9
+_jvmdir=usr/lib/jvm/java-${_jdkver}-openj9
 
 package() {
   # Install
   install -d "${pkgdir}/${_jvmdir}"
-  cd jdk-${_jdkver}+${_buildvershort}
+  cd jdk-${_jdkfullver}+${_buildvershort}
   cp -a bin include jmods lib release "${pkgdir}/${_jvmdir}/"
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"

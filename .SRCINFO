@@ -1,6 +1,6 @@
 pkgbase = jdk-openj9-bin
 	pkgdesc = IBM Semeru OpenJ9 with openjdk23
-	pkgver = 23.0.0b37_openj9_0.47.0
+	pkgver = 23.0.1b11_openj9_0.48.0
 	pkgrel = 1
 	url = https://developer.ibm.com/languages/java/semeru-runtimes/downloads
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = jdk-openj9-bin
 	conflicts = jdk23-openj9-bin
 	conflicts = jdk23-openj9
 	options = !strip
-	source = https://github.com/ibmruntimes/semeru23-binaries/releases/download/jdk-23%2B37_openj9-0.47.0/ibm-semeru-open-jdk_x64_linux_23_37_openj9-0.47.0.tar.gz
-	sha256sums = 95e1116a38567fa5b1799045f05d95bd23f419ff5c0baa2100d88f113a2cb48b
+	source = https://github.com/ibmruntimes/semeru23-binaries/releases/download/jdk-23.0.1%2B11_openj9-0.48.0/ibm-semeru-open-jdk_x64_linux_23.0.1_11_openj9-0.48.0.tar.gz
+	sha256sums = 2aa3cc78feab5cf1c21a830797694c9b8b7898072a40c252f442b832117a3809
 
 pkgname = jdk-openj9-bin
