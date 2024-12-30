@@ -3,7 +3,7 @@
 
 pkgname=trang
 _pkgname=jing-trang
-pkgver=20220510
+pkgver=20241231
 pkgrel=1
 pkgdesc="Converts between different schema languages for XML"
 url="https://github.com/relaxng/jing-trang"
@@ -17,7 +17,7 @@ source=(
 )
 
 # Upstream provides sha1sums, so that's what we use.
-sha1sums=('386d43b5c141c27bcc3bd44ccb91fe209aedaa16'
+sha1sums=('48462bc93cdc5bb5ea1014d37244a6b603d6f6ba'
           'SKIP'
           '12e0dc12ff808162eb8bcedde3b55b3e5ea4119a')
 

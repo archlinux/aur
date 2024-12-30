@@ -1,17 +1,17 @@
 pkgbase = trang
 	pkgdesc = Converts between different schema languages for XML
-	pkgver = 20220510
+	pkgver = 20241231
 	pkgrel = 1
 	url = https://github.com/relaxng/jing-trang
 	arch = any
 	license = custom
 	depends = java-runtime
 	depends = bash
-	source = https://github.com/relaxng/jing-trang/releases/download/V20220510/trang-20220510.zip
-	source = https://github.com/relaxng/jing-trang/releases/download/V20220510/trang-20220510.zip.asc
+	source = https://github.com/relaxng/jing-trang/releases/download/V20241231/trang-20241231.zip
+	source = https://github.com/relaxng/jing-trang/releases/download/V20241231/trang-20241231.zip.asc
 	source = trang
 	validpgpkeys = D4875856415E63964D87445187D17477BC3A4B95
-	sha1sums = 386d43b5c141c27bcc3bd44ccb91fe209aedaa16
+	sha1sums = 48462bc93cdc5bb5ea1014d37244a6b603d6f6ba
 	sha1sums = SKIP
 	sha1sums = 12e0dc12ff808162eb8bcedde3b55b3e5ea4119a
 
