@@ -28,9 +28,9 @@ source=(
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8f59a43065320d2c500bf04c96072d10b4448616b265b83620b973de1f8d30c9'
+sha256sums=('507bf86e5dffe75fc9cdd8caea0e1b284dd10dfeba435e331040c305958df7a6'
             'ee4bf71493d9425c0270f59a72778d52b53a9bdcb981f462d1e699d347e9246e'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
