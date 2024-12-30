@@ -66,8 +66,7 @@ build() (
 
   cmake "${cmake_options[@]}"
 
-  printf "Using $(nproc) cores\n"
-  cmake --build $build_dir -j $(nproc)
+  cmake --build $build_dir
 )
 
 package() (
