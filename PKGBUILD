@@ -8,7 +8,7 @@
 _pkgname=easytag
 pkgname=easytag-opensuse-ogg-patch
 pkgver=2.4.3
-pkgrel=9
+pkgrel=10
 pkgdesc="Simple application for viewing and editing tags in audio files, using OpenSUSE patch"
 arch=('x86_64')
 url="https://wiki.gnome.org/Apps/EasyTAG"
