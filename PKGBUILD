@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Maintainer: Trevor Facer <trevordf@protonmail.com>
 pkgname=aliyun-cli-bin
-pkgver=3.0.242
+pkgver=3.0.243
 pkgrel=1
-pkgdesc="A tool to manage and use Alibaba Cloud resources through a command line interface.(Prebuilt version)"
-url="https://github.com/aliyun/aliyun-cli"
+pkgdesc='A tool to manage and use Alibaba Cloud resources through a command line interface.(Prebuilt version)'
+url='https://github.com/aliyun/aliyun-cli'
 arch=(
     'aarch64'
     'x86_64'
