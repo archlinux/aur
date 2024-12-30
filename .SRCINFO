@@ -1,0 +1,24 @@
+pkgbase = cangaroo-hpmicro-canfd-analyzer-git
+	pkgdesc = Four-channel CANFD analyzer based on hpmicro hpm5361
+	pkgver = r3.a87c6a7
+	pkgrel = 1
+	url = https://github.com/RCSN/cangaroo_hpmicro_canfd_analyzer
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = qt5-tools
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
+	depends = libnl
+	depends = qt5-charts
+	depends = qt5-base
+	depends = qt5-serialport
+	provides = cangaroo-hpmicro-canfd-analyzer-git
+	provides = cangaroo
+	conflicts = cangaroo-hpmicro-canfd-analyzer-git
+	conflicts = cangaroo
+	source = cangaroo-hpmicro-canfd-analyzer-git::git+https://github.com/RCSN/cangaroo_hpmicro_canfd_analyzer.git
+	sha256sums = SKIP
+
+pkgname = cangaroo-hpmicro-canfd-analyzer-git
