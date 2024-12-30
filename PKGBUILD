@@ -5,8 +5,8 @@
 pkgname=dooble-bin
 _pkgname=Dooble
 pkgver=2024.08.19
-pkgrel=1
-pkgdesc="Web browser based on QtWebEngine"
+pkgrel=2
+pkgdesc="Web browser based on QtWebEngine.(Prebuilt version)"
 arch=(
     'aarch64'
     'x86_64'
@@ -82,21 +82,23 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}_amd64.deb")
 sha256sums=('c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd'
-            '6b7934c7d560fb22f89b067bf31c3e6c897d767f45299fff244d923c036498af')
+            '29b1db96c081272e804e319cec3d35978ace6bbf5b930bfb5cdb11f35d8e9a6e')
 sha256sums_aarch64=('29f9283827b6458c9efdab4bdd9f4b5f5eb12bd5620388e647f53dae8dc71ebd')
 sha256sums_x86_64=('151b3103e3f14a5259227fa6b25d1d6784e1c8b174212ee6daf212292287ef3c')
-build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${_pkgname}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+prepare() {
+    sed -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${_pkgname}/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     cp "${srcdir}/opt/${pkgname%-bin}/Translations/${pkgname%-bin}_zh_CN_simple.qm" \
        "${srcdir}/opt/${pkgname%-bin}/Translations/${pkgname%-bin}_zh_CN.qm"
-    sed "s|/usr/bin/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/\/usr\/bin\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -r "${srcdir}/opt" "${pkgdir}"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
