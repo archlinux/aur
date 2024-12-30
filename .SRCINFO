@@ -1,5 +1,5 @@
 pkgbase = actual-bin
-	pkgdesc = a local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting.(Prebuilt version.Use system-wide electron)
+	pkgdesc = A local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting.(Prebuilt version.Use system-wide electron)
 	pkgver = 24.12.0
 	pkgrel = 1
 	url = https://actualbudget.org/
