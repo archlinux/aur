@@ -2,7 +2,7 @@
 
 pkgname=devicetree-overlay-generator
 pkgver=20.08.00.00
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="This is a python tool based on pydevicetree (GitHub/PyPI) which generates OpenOCD Configuration Files for Freedom Metal applications."
 arch=('any')
@@ -20,17 +20,17 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("${pkgname}-${pkgver}.tar.gz::https://download.fastgit.org/sifive/devicetree-overlay-generator/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
 sha256sums=('c25eb3de0d7606d6fc6025677cb2bc051e750c5a674b6e5cd57e35ce876fa357')
 #validpgpkeys=()
 
 package() {
     install -dm0755 "${pkgdir}/usr/share/sifive/${pkgname}" \
-                    "${pkgdir}/usr/bin"
+        "${pkgdir}/usr/bin"
 
     cd "${srcdir}/${pkgname}-${pkgver}"
-    cp -r `ls -d */` "${pkgdir}/usr/share/sifive/${pkgname}"
+    cp -r $(ls -d */) "${pkgdir}/usr/share/sifive/${pkgname}"
     cp -r generate_overlay.py "${pkgdir}/usr/share/sifive/${pkgname}"
     ln -sf "/usr/share/sifive/${pkgname}/generate_overlay.py" "${pkgdir}/usr/bin/${pkgname}"
 }
