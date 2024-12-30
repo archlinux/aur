@@ -1,6 +1,6 @@
 pkgbase = oblivion-desktop
 	pkgdesc = Unofficial Warp Client
-	pkgver = 2.5.0
+	pkgver = 2.25.1
 	pkgrel = 1
 	url = https://github.com/bepass-org/oblivion-desktop
 	arch = x86_64
@@ -9,11 +9,9 @@ pkgbase = oblivion-desktop
 	makedepends = npm
 	depends = bash
 	depends = electron33
-	source = oblivion-desktop-2.5.0.tar.gz::https://github.com/bepass-org/oblivion-desktop/archive/refs/tags/v2.5.0.tar.gz
+	source = oblivion-desktop-2.25.1.tar.gz::https://github.com/bepass-org/oblivion-desktop/archive/refs/tags/v2.25.1.tar.gz
 	source = oblivion-desktop.sh
-	source = tray-icon.patch
-	sha256sums = 410ee5ed8773292ef05176b52e9f98d9de73d8df01c3285f66641347deee375d
+	sha256sums = 501b6547496dc28da40c3a1abbc482013be0b9d68e80d45b0f50cbc821c26a8c
 	sha256sums = 31676f8268a42b7cc292e7e8d71e8dab3f41f9b4a5332471134428d821b4338f
-	sha256sums = d73fe075981f414a2cd3f821f102a9aeadc6b4b61fdeefeb7ba540a3c9150289
 
 pkgname = oblivion-desktop

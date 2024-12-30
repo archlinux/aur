@@ -1,7 +1,7 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=oblivion-desktop
-pkgver=2.5.0
+pkgver=2.25.1
 pkgrel=1
 pkgdesc="Unofficial Warp Client"
 arch=('x86_64')
@@ -11,15 +11,14 @@ _electron=electron33
 depends=('bash' "${_electron}")
 makedepends=('gendesk' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "${pkgname}.sh"
-        'tray-icon.patch')
-sha256sums=('410ee5ed8773292ef05176b52e9f98d9de73d8df01c3285f66641347deee375d'
-            '31676f8268a42b7cc292e7e8d71e8dab3f41f9b4a5332471134428d821b4338f'
-            'd73fe075981f414a2cd3f821f102a9aeadc6b4b61fdeefeb7ba540a3c9150289')
+        "${pkgname}.sh")
+sha256sums=('501b6547496dc28da40c3a1abbc482013be0b9d68e80d45b0f50cbc821c26a8c'
+            '31676f8268a42b7cc292e7e8d71e8dab3f41f9b4a5332471134428d821b4338f')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
-    patch -Np1 -i "${srcdir}/tray-icon.patch"
+    sed "s/process.resourcesPath/path.dirname(app.getAppPath())/" -i src/main/main.ts
+    sed "s/@ELECTRON@/${_electron}/" -i "${srcdir}/${pkgname}.sh"
 
     gendesk -f -n \
         --pkgname "${pkgname}" \
@@ -29,8 +28,6 @@ prepare() {
         --custom StartupWMClass='Oblivion Desktop'
 
     npm install
-
-    sed "s/@ELECTRON@/${_electron}/" -i "${srcdir}/${pkgname}.sh"
 }
 
 build() {
