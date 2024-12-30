@@ -1,0 +1,6 @@
+simpervisor-*.tar.gz
+github_pr50_testfix.patch
+src/
+pkg/
+python-simpervisor-*.pkg*
+*.log
