@@ -1,6 +1,6 @@
 pkgbase = ochami-git
 	pkgdesc = Command line interface for OpenCHAMI services
-	pkgver = v0.0.5.r0.g2a54540
+	pkgver = v0.0.6.r0.g64ccade
 	pkgrel = 1
 	url = https://github.com/OpenCHAMI/ochami
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = ochami-git
 	license = MIT
 	makedepends = git
 	makedepends = go
+	makedepends = inetutils
 	makedepends = make
 	makedepends = scdoc
 	optdepends = bash-completion: for bash completion support
