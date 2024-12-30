@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jet-pilot-bin
 _pkgname='JET Pilot'
-pkgver=1.31.0
+pkgver=1.31.1
 pkgrel=1
 pkgdesc="An open-source Kubernetes desktop client that focuses on less clutter, speed and good looks.(Prebuilt version)"
 arch=('x86_64')
@@ -20,9 +20,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/unxsist/jet-pilot/v${pkgver}/LICENSE"
 )
-sha256sums=('10c3cc7803839382a4a5956e093104329bf0535d176be76b85a042999860274f'
+sha256sums=('39ed053d81bad32f91e01cd1d1fc42aad1fe0e69bb3089a16f1cd07ba9e58c95'
             '508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1')
-build() {
+prepare() {
     bsdtar -xf "${srcdir}/data."*
 }
 package() {
