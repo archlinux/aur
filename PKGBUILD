@@ -1,14 +1,14 @@
 # Maintainer: René Wagner <rwa at clttr dot info>
 pkgname=art-rawconverter
-pkgver=1.24.2
+pkgver=1.24.5
 pkgrel=1
 pkgdesc="raw image converter ART (forked from RawTherapee with ease of use in mind)"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://art.pixls.us/"
 license=('GPL-3.0-only')
 options=(!debug !lto)
-depends=('opencolorio' 'lensfun' 'libraw' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'desktop-file-utils' 'mimalloc' 'openmp' 'openexr' 'ctl') 
-optdepends=('perl-image-exiftool: metadata support for CR3 images' 'art-rawconverter-imageio: add support for additional image formats' 'art-rawconverter-ctlscripts: CTL scripts for advanced color transformations' 'lcms2-ff: lcms2 with fast-float plugin for improved export speed' )
+depends=('opencolorio' 'perl-image-exiftool' 'lensfun' 'libraw' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'desktop-file-utils' 'mimalloc' 'openmp' 'openexr' 'ctl') 
+optdepends=('art-rawconverter-imageio: add support for additional image formats' 'art-rawconverter-ctlscripts: CTL scripts for advanced color transformations' 'lcms2-ff: lcms2 with fast-float plugin for improved export speed' )
 makedepends=('pkgconf' 'cmake' 'make' 'git' 'gcc' 'hicolor-icon-theme' 'fakeroot')
 conflicts=('art-rawconverter-git')
 source=("${pkgname}::git+https://github.com/artpixls/ART.git#tag=${pkgver}")
