@@ -1,9 +1,9 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Antony Lee <anntzer dot lee at gmail dot com>
 
 pkgname=python-logging_tree
-pkgver=1.9
-pkgrel=3
+pkgver=1.10
+pkgrel=1
 pkgdesc='Introspect and display the logger tree inside "logging"'
 url='https://github.com/brandon-rhodes/logging_tree'
 license=('BSD')
@@ -13,7 +13,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 provides=('python-logging-tree')
 replaces=('python-logging-tree')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/l/logging-tree/logging_tree-$pkgver.tar.gz")
-sha256sums=('fe78b28788c249b515d12a50417e4a96ba095582927b3601a0573886bffc1ff0')
+sha256sums=('cd78848fe0ee4aafcc64fa8a66f96f177186ff3d883619b1d7f3628564802095')
 
 prepare() {
 	cd "logging_tree-$pkgver"
