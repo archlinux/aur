@@ -1,7 +1,7 @@
 pkgbase = modustoolbox
 	pkgdesc = A set of multi-platform development tools and a comprehensive suite of GitHub-hosted firmware libraries. Together, they enable an immersive development experience for customers creating converged MCU and Wireless systems.
 	pkgver = 3.4.0.17114
-	pkgrel = 1
+	pkgrel = 2
 	url = https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolbox
 	install = modustoolbox.install
 	arch = x86_64
@@ -42,6 +42,8 @@ pkgbase = modustoolbox
 	depends = xcb-util-renderutil
 	depends = qt6-base
 	depends = gdk-pixbuf2
+	provides = modustoolbox
+	conflicts = modustoolbox-no-gcc
 	options = !strip
 	source = file://modustoolbox_3.4.0.17114_Linux_x64.deb
 	sha256sums = e07bfcfba414632171ca5757a83d9ff1e3aca906a045560cc625458944affc4d

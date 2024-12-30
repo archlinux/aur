@@ -7,7 +7,7 @@ _pkgname=ModusToolbox
 pkgname=modustoolbox
 _pkgver=3.4
 pkgver=${_pkgver}.0.17114
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of multi-platform development tools and a comprehensive suite of GitHub-hosted firmware libraries. \
     Together, they enable an immersive development experience for customers creating converged MCU and Wireless systems."
 arch=('x86_64')
@@ -16,6 +16,8 @@ depends=('diffutils' 'git' 'make' 'coreutils' 'perl' 'python3' 'libxcb' 'python-
     'xcb-util-keysyms' 'gtk3' 'libx11' 'libglvnd' 'libxkbcommon' 'libwebp' 'libxkbcommon-x11' 'pango' 'xcb-util-wm' 'glib2'     \
     'cairo' 'openssl-1.1' 'libice' 'wayland' 'fontconfig' 'dbus' 'libsm' 'glibc' 'libdrm' 'xcb-util-wm' 'xcb-util-image'        \
     'xcb-util-cursor' 'xcb-util-renderutil' 'qt6-base' 'gdk-pixbuf2')
+conflicts=("modustoolbox-no-gcc")
+provides=("modustoolbox")
 url="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolbox"
 _source="${pkgname}_${pkgver}_Linux_x64.deb"
 source=("file://${_source}")
@@ -39,7 +41,6 @@ package() {
     cd ${srcdir}
 
     _install_dir=${pkgdir}/opt/${_pkgname}
-    _tool_dir=tools_${_pkgver}
 
     install -d ${_install_dir}
     cp -ar ${srcdir}/opt/${_pkgname}/* ${_install_dir}
