@@ -2,25 +2,23 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Contributor: Eli Schwartz
 pkgname=smile
-pkgver=2.10.0
-pkgrel=2
+pkgver=2.10.1
+pkgrel=1
 pkgdesc="An emoji picker with custom tags support"
 arch=('any')
 url="https://smile.mijorus.it"
 license=('GPL-3.0-or-later')
 depends=('emoji-font' 'libadwaita' 'python-dbus' 'python-gobject')
-makedepends=('git' 'meson')
+makedepends=('meson')
 checkdepends=('appstream-glib')
 optdepends=('wl-clipboard: Automatically paste emojis (Wayland)'
             'xdotool: Automatically paste emojis (X11)')
 conflicts=("$pkgname-emoji-picker")
-#source=("$pkgname-$pkgver.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/$pkgver.tar.gz")
-_commit=fa7e57bdfd074032782ebf068a6be22c5f46b433  # 2.10.0
-source=("git+https://github.com/mijorus/smile.git#commit=${_commit}")
-sha256sums=('fbf78f14d8d584abf7467f1a6d80d410084edd049100c3932fed1ec9ffea5df4')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('055b8ce8104560bf7425cd4913cbbeaa6ae82abdb4f96f59cd1758f1115ce7ce')
 
 prepare() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   # This is not a Flatpak
   sed -i 's|flatpak run {self.application_id}|/usr/bin/smile|g' src/Settings.py
@@ -29,7 +27,7 @@ prepare() {
 }
 
 build() {
-  arch-meson "$pkgname" build
+  arch-meson "$pkgname-$pkgver" build
   meson compile -C build
 }
 
