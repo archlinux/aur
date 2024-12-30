@@ -1,4 +1,4 @@
-pkgbase = microfetch
+pkgbase = microfetch-arch-linux
 	pkgdesc = Minimalist system fetch tool for Arch Linux
 	pkgver = 1.0.0
 	pkgrel = 1

@@ -1,5 +1,6 @@
 # Maintainer: Atthun Seeran R.A. <idkatthun@gmail.com>
 pkgname=microfetch
+pkgbase=microfetch-arch-linux
 pkgver=1.0.0
 pkgrel=1
 pkgdesc='Minimalist system fetch tool for Arch Linux'
