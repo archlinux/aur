@@ -4,7 +4,7 @@
 
 pkgname=wit-git
 pkgver=3.05a.r10.fc1c0b8
-pkgrel=1
+pkgrel=2
 pkgdesc='Wiimms ISO Tools (git version)'
 arch=(x86_64)
 url=https://wit.wiimm.de
@@ -15,6 +15,7 @@ depends=(
   glibc
   libncursesw.so
   zlib
+  openssl
 )
 makedepends=(
   clang
@@ -24,6 +25,7 @@ optdepends=(
   'bash: Update titles lists'
   'wget: Update titles lists'
 )
+conflicts=(wit)
 provides=(wit)
 install=wit.install
 source=(
