@@ -1,0 +1,5 @@
+[python-tcolorpy]
+source = "github"
+github = "thombashi/tcolorpy"
+use_latest_release = "true"
+prefix = "v"
