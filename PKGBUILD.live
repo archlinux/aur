@@ -3,7 +3,7 @@
 # Based on the rbdoom3-bfg-git package by M0Rf30
 
 pkgname=rbdoom-3-bfg
-pkgver=1.5.1.r45.b04705c5
+pkgver=1.5.1.r462.482317fc
 pkgrel=1
 pkgdesc="Doom 3 BFG Edition with modern engine features like PBR, Baked Global Illumination, Soft Shadows"
 arch=('x86_64')
@@ -33,6 +33,7 @@ install=$pkgname.install
 options=(!lto)
 source=(
   git+https://github.com/RobertBeckebans/RBDOOM-3-BFG.git
+  rbdoom-3-bfg-extra-args.patch
   rbdoom-3-bfg.png
   rbdoom-3-bfg.desktop
   rbdoom-3-bfg-launcher
@@ -48,13 +49,13 @@ prepare() {
   cd RBDOOM-3-BFG
   git remote set-url origin https://github.com/RobertBeckebans/RBDOOM-3-BFG.git
   git submodule update --init --filter=tree:0 --recursive
+
+  patch -Np1 -i "$srcdir"/rbdoom-3-bfg-extra-args.patch
 }
 
 build() {
   export CC=clang
   export CXX=clang++
-  export CFLAGS="$CFLAGS -Wno-error=format-extra-args"
-  export CXXFLAGS="$CXXFLAGS -Wno-error=format-extra-args"
   cmake \
     -S RBDOOM-3-BFG/neo \
     -B build \
@@ -86,6 +87,7 @@ package() {
 }
 
 sha256sums=('SKIP'
+            '4856e442aae986a9aa94d93c4861636ae3a9fe8269cc49eec156cf6d0533ff7c'
             '0fb6a3bb9b47cad65d5012ba20dc9de3b1487f4ac1908ee847e6087511b7f09e'
             'f317d503d30ecc6e0a70e353cb020d2ea78ecb05d8d2e0250f39cfd8a4fe16a5'
             'a3c3006c254ce25ff890494acc8cfbfb88d406661f4468b56aaefc144227db21'

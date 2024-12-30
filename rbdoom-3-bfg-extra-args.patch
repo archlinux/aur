@@ -1,0 +1,20 @@
+diff --git a/neo/renderer/Image_intrinsic.cpp b/neo/renderer/Image_intrinsic.cpp
+index 9473659e..86ba4d99 100644
+--- a/neo/renderer/Image_intrinsic.cpp
++++ b/neo/renderer/Image_intrinsic.cpp
+@@ -1339,7 +1339,7 @@ CONSOLE_COMMAND( makePaletteHeader, "load a .pal palette, build an image from it
+ 		rgb = colors[ i ];
+ 		idLib::Printf( "\tRGB( %d, %d, %d ),\n", ( int )rgb[0], ( int )rgb[1], ( int )rgb[2] );
+ 	}
+-	idLib::Printf( "};\n\n", numColors );
++	idLib::Printf( "};\n\n");
+ 
+ 	// calc the median absolute deviation
+ 	idVec3 median = Median( colors );
+@@ -1448,4 +1448,4 @@ CONSOLE_COMMAND( makePaletteHeader, "load a .pal palette, build an image from it
+ 
+ 	Mem_Free( buffer );
+ 	*/
+-}
+\ No newline at end of file
++}
