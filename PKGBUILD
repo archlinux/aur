@@ -1,0 +1,23 @@
+# Maintainer: Zhuoyun Wei <wzyboy@wzyboy.org>
+
+pkgname=beanquery
+pkgdesc='A customizable light-weight SQL query tool that works on tabular data, including Beancount'
+pkgver=0.1.0
+pkgrel=1
+arch=("any")
+url="https://github.com/beancount/beanquery"
+license=('GPL')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+b2sums=('740590b554b484b73fabfdacd60e9d17e64628230d9949b131645b53adda5c3050739f9df694d251b67b3d611ede83604da10f6a616648795aec6d430dee99ae')
+depends=("python>=3.8" "beancount>=3" "python-click" "python-tatsu")
+makedepends=("python-build" "python-installer" "python-wheel")
+
+build() {
+  cd "${pkgname}-${pkgver}"
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  cd "${pkgname}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+}
