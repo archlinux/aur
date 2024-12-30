@@ -2,7 +2,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r5949.1712d1da
+pkgver=r6347.d2bf4f70
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64' 'aarch64')
@@ -49,9 +49,11 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/grumpycoders/nanovg.git'
         'git+https://github.com/grumpycoders/nanosvg.git'
         'git+https://github.com/lunarmodules/luafilesystem.git'
+        'git+https://github.com/uriparser/uriparser.git'
         'pcsx-redux.sh'
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -92,7 +94,6 @@ prepare() {
   git config submodule.third_party/uC-sdk.url "$srcdir/uC-sdk"
   git config submodule.third_party/googletest.url "$srcdir/googletest"
   git config submodule.third_party/fmt.url "$srcdir/fmt"
-  git config submodule.third_party/http-parser.url "$srcdir/http-parser"
   git config submodule.third_party/ELFIO.url "$srcdir/ELFIO"
   git config submodule.third_party/libcester.url "$srcdir/libcester"
   git config submodule.third_party/luajit.url "$srcdir/LuaJIT"
@@ -113,12 +114,12 @@ prepare() {
   git config submodule.third_party/nanovg.url "$srcdir/nanovg"
   git config submodule.third_party/nanosvg.url "$srcdir/nanosvg"
   git config submodule.third_party/luafilesystem.url "$srcdir/luafilesystem"
+  git config submodule.third_party/uriparser.url "$srcdir/uriparser"
 
   git -c protocol.file.allow=always submodule update third_party/imgui \
                        third_party/uC-sdk \
                        third_party/googletest \
                        third_party/fmt \
-                       third_party/http-parser \
                        third_party/ELFIO \
                        third_party/libcester \
                        third_party/luajit \
@@ -138,7 +139,8 @@ prepare() {
                        third_party/multipart-parser-c \
                        third_party/nanovg \
                        third_party/nanosvg \
-                       third_party/luafilesystem
+                       third_party/luafilesystem \
+                       third_party/uriparser
 
   cd third_party/luv
   git submodule init
