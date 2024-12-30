@@ -1,0 +1,5 @@
+certipy-*.tar.gz
+src/
+pkg/
+python-certipy-*.pkg*
+*.log
