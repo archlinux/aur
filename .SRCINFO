@@ -9,7 +9,6 @@ pkgbase = openlp-git
 	makedepends = git
 	makedepends = python-pip
 	depends = python>=3.10
-	depends = python<3.13
 	depends = python-flask
 	depends = python-flask-cors
 	depends = python-qrcode
