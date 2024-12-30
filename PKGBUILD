@@ -1,6 +1,6 @@
 # Maintainer: Hubert "hkk" Batkiewicz <hubert@batkiewi.cz>
 pkgname=gamma-launcher
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="S.T.A.L.K.E.R GAMMA launcher for Linux"
 arch=(x86_64)
