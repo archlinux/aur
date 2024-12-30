@@ -51,10 +51,6 @@ prepare() {
 }
 
 build() {
-  export CC=clang
-  export CXX=clang++
-  export CFLAGS="$CFLAGS -Wno-error=format-extra-args"
-  export CXXFLAGS="$CXXFLAGS -Wno-error=format-extra-args"
   cmake \
     -S RBDOOM-3-BFG/neo \
     -B build \
