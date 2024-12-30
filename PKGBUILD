@@ -27,7 +27,6 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/grumpycoders/uC-sdk.git'
         'git+https://github.com/google/googletest.git'
         'git+https://github.com/fmtlib/fmt.git'
-        'git+https://github.com/nodejs/http-parser.git'
         'git+https://github.com/serge1/ELFIO.git'
         'git+https://github.com/exoticlibraries/libcester.git'
         'git+https://github.com/grumpycoders/LuaJIT.git'
@@ -53,7 +52,6 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'pcsx-redux.sh'
         )
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
