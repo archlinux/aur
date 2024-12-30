@@ -2,7 +2,7 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-lms
-pkgver=24.0128
+pkgver=24.1215
 pkgrel=1
 pkgdesc="Additional Last Man Standing levels for RVGL."
 url='https://re-volt.io/online/tracks/battle'
