@@ -36,7 +36,6 @@ package() {
     install -Dm644 LICENSE-inih.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE-inih.txt"
     install -Dm644 src/ai_cli.5 "$pkgdir/usr/share/man/man5/ai_cli.5"
     install -Dm644 src/ai_cli.7 "$pkgdir/usr/share/man/man7/ai_cli.7"
-    install -Dm644 src/ai-cli.gif "$pkgdir/usr/share/pixmaps/ai-cli.gif"
 
     # Create the necessary directories before installing
     mkdir -p "$pkgdir/usr/share/$pkgname"
@@ -48,14 +47,4 @@ package() {
     install -Dm755 src/ai-cli-config "$pkgdir/usr/bin/ai-cli-config"
     install -Dm755 src/ai-cli-activate-bash.sh "$pkgdir/usr/bin/ai-cli-activate-bash.sh"
 
-    # Install shared libraries (if applicable)
-    install -Dm755 src/ai_cli.so "$pkgdir/usr/lib/$pkgname/ai_cli.so"
-
-    # Install any other executables (if they exist)
-    if [ -f src/all-tests ]; then
-        install -Dm755 src/all-tests "$pkgdir/usr/bin/all-tests"
-    fi
-    if [ -f src/rl_driver ]; then
-        install -Dm755 src/rl_driver "$pkgdir/usr/bin/rl_driver"
-    fi
 }
