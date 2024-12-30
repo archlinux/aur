@@ -1,0 +1,17 @@
+pkgbase = oniguruma-git
+	pkgdesc = Regular expressions library
+	pkgver = 6.9.9.r51.g4ef8920
+	pkgrel = 1
+	url = https://github.com/kkos/oniguruma
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = oniguruma=6.9.9.r51.g4ef8920
+	conflicts = oniguruma
+	source = git+https://github.com/kkos/oniguruma.git
+	sha256sums = SKIP
+
+pkgname = oniguruma-git
