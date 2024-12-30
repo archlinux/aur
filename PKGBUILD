@@ -5,6 +5,7 @@ pkgname="libaudclient"
 pkgver=3.5rc2
 _pkgver="${pkgver//rc/-rc}"
 pkgrel=1
+epoch=1
 pkgdesc="Legacy D-Bus client library for Audacious"
 arch=('x86_64')
 url="https://audacious-media-player.org"
