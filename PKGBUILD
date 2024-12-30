@@ -2,11 +2,11 @@
 
 pkgname=thor-flash-utility
 pkgver=1.0.4
-pkgrel=4
+pkgrel=5
 _pkgname="Thor-${pkgver}"
 _exe="TheAirBlow.Thor.Shell"
-pkgdesc="Thor Flash Utility (Developed with C#, based on dotnet 7.0)"
-arch=('any')
+pkgdesc="Utility for flashing firmware on Samsung devices, based on dotnet 7.0"
+arch=('x86_64' 'aarch64')
 url="https://github.com/Samsung-Loki/Thor"
 license=('MPL-2.0')
 depends=('dotnet-runtime-7.0' 'gcc-libs' 'glibc')
@@ -15,49 +15,48 @@ optdepends=('android-udev: Adds udev rules for non-root users (Group adbusers)')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Samsung-Loki/Thor/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('7c6a5482a2a6a0af2711849441f8a8227bca240e38ab56ba9a50ed6eb13ed78e')
 
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+
+  # Patch project files to add RuntimeIdentifiers for both x86_64 and aarch64
+  # This ensures the build process knows which runtimes to target
+  sed -i "/<TargetFramework>net7.0<\/TargetFramework>/a <RuntimeIdentifiers>linux-x64;linux-arm64<\/RuntimeIdentifiers>" \
+    "TheAirBlow.Thor.Library/TheAirBlow.Thor.Library.csproj"
+  sed -i "/<TargetFramework>net7.0<\/TargetFramework>/a <RuntimeIdentifiers>linux-x64;linux-arm64<\/RuntimeIdentifiers>" \
+    "TheAirBlow.Thor.Shell/TheAirBlow.Thor.Shell.csproj"
+
+  # Initialize non-nullable fields to avoid build warnings
+  sed -i "/public string Project { get; set; }/a public PitData() { Project = string.Empty; }" \
+    "TheAirBlow.Thor.Library/PIT/PitData.cs"
+  sed -i "/public Protocol Protocol { get; set; }/a public State() { Protocol = new Protocol(); }" \
+    "TheAirBlow.Thor.Shell/State.cs"
+  sed -i "/private string _description;/a public FailInfo() { _description = string.Empty; }" \
+    "TheAirBlow.Thor.Shell/FailInfo.cs"
+
+  dotnet restore "TheAirBlow.Thor.Library/TheAirBlow.Thor.Library.csproj" --packages "${srcdir}/nuget_packages"
+  dotnet restore "TheAirBlow.Thor.Shell/TheAirBlow.Thor.Shell.csproj" --packages "${srcdir}/nuget_packages"
+}
+
 build() {
-  # https://learn.microsoft.com/en-us/dotnet/core/tools/#cli-commands
-  # Add needed Nuget packages for building
-  _NuPkgs=(
-    "K4os.Compression.LZ4.Streams"
-    "Serilog"
-    "Serilog.Exceptions"
-    "Serilog.Sinks.Console"
-    "SharpCompress"
-    "Spectre.Console"
-  )
-  _NuVers=(
-    "1.3.5"
-    "3.0.0-dev-02022"
-    "8.4.0"
-    "4.1.1-dev-00910"
-    "0.33.0"
-    "0.47.1-preview.0.8"
-  )
+  cd "${srcdir}/${_pkgname}"
+  if [ "$CARCH" = "x86_64" ]; then
+    runtime="linux-x64"
+  elif [ "$CARCH" = "aarch64" ]; then
+    runtime="linux-arm64"
+  else
+    echo "Unsupported architecture: $CARCH"
+    exit 1
+  fi
 
-  for i in "${!_NuPkgs[@]}"; do
-    dotnet add "${_pkgname}/TheAirBlow.Thor.Library/TheAirBlow.Thor.Library.csproj" \
-      package "${_NuPkgs[$i]}" -v "${_NuVers[$i]}" \
-      --package-directory NuGet
-  done
-
-  # Build Visual Studio solution
-  dotnet build "${_pkgname}/Thor.sln" \
-    --source NuGet \
-    --configuration Release \
-    --output build
-
-  # https://learn.microsoft.com/en-us/nuget/consume-packages/managing-the-global-packages-and-cache-folders
-  # Cleanup NuGet global-packages (optional)
-  #dotnet nuget locals all --clear
+  dotnet publish "Thor.sln" --configuration Release --output "${srcdir}/publish" \
+    --runtime "$runtime" --no-self-contained
 }
 
 package() {
-  # Install package
-  install -d "${pkgdir}/usr/bin"
-  install -Dm644 ${srcdir}/build/*{.dll,.json} -t "${pkgdir}/opt/${pkgname}"
-  install -Dm755 ${srcdir}/build/*.Shell -t "${pkgdir}/opt/${pkgname}"
-  # Install executable shell file
+  cd "${srcdir}/publish"
+  install -Dm644 *.dll *.json -t "${pkgdir}/opt/${pkgname}"
+  install -Dm755 "${_exe}" -t "${pkgdir}/opt/${pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/${_exe}" "${pkgdir}/usr/bin/${pkgname}"
 }
 
