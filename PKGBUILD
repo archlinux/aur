@@ -3,7 +3,7 @@
 _pkgname=ITK
 pkgname=(itk python-itk)
 pkgver=5.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc='An open-source, cross-platform library that provides developers with an extensive suite of software tools for image analysis'
 arch=('x86_64')
 url='https://www.itk.org'
@@ -22,7 +22,7 @@ depends=(
   libjpeg-turbo
   libpng
   libtiff.so
-  vxl
+  # vxl
   zlib
 )
 makedepends=(
@@ -53,6 +53,7 @@ prepare() {
 build() {
 # we build the default modules by default
 # you could add additional modules by setting -DModule_<NAME>=ON
+# set ITK_USE_SYSTEM_VXL=OFF due to conflicting file: /usr/lib/libvpl.so (owned by libvpl)
   cmake_opts=(
     -DBUILD_SHARED_LIBS=ON
     -DBUILD_TESTING=OFF
@@ -80,7 +81,7 @@ build() {
     -DITK_USE_SYSTEM_PNG=ON
     -DITK_USE_SYSTEM_SWIG=ON
     -DITK_USE_SYSTEM_TIFF=ON
-    -DITK_USE_SYSTEM_VXL=ON
+    -DITK_USE_SYSTEM_VXL=OFF
     -DITK_USE_SYSTEM_ZLIB=ON
     -DITK_WRAP_IMAGE_DIMS="2;3;4"
     -DITK_WRAP_PYTHON=ON
