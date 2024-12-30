@@ -2,7 +2,7 @@
 
 pkgname=mps-git
 pkgver=r7826.9fd0577cf
-pkgrel=1
+pkgrel=2
 pkgdesc="Memory Pool System - an automatic memory management system"
 arch=('x86_64')
 url="https://github.com/Ravenbrook/mps"
