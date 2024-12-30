@@ -1,0 +1,25 @@
+diff --git a/TTS/tts/utils/text/phonemizers/espeak_wrapper.py b/TTS/tts/utils/text/phonemizers/espeak_wrapper.py
+index 328e52f3..b9972f50 100644
+--- a/TTS/tts/utils/text/phonemizers/espeak_wrapper.py
++++ b/TTS/tts/utils/text/phonemizers/espeak_wrapper.py
+@@ -223,12 +223,15 @@ class ESpeak(BasePhonemizer):
+         for line in _espeak_exe(_DEF_ESPEAK_LIB, args, sync=True):
+             line = line.decode("utf8").strip()
+             if count > 0:
+-                cols = line.split()
+-                lang_code = cols[1]
+-                lang_name = cols[3]
+-                langs[lang_code] = lang_name
+-            logging.debug("line: %s", repr(line))
++                try:
++                    cols = line.split()
++                    lang_code = cols[1]
++                    lang_name = cols[3]
++                    langs[lang_code] = lang_name
++                except Exception as exc:
++                    print(exc)
+             count += 1
++            logging.debug("line: %s", repr(line))
+         return langs
+ 
+     def version(self) -> str:

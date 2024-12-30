@@ -1,7 +1,7 @@
 pkgbase = python-tts-git
 	pkgdesc = Coqui deep learning toolkit for Text-to-Speech, battle-tested in research and production
 	pkgver = 0.22.0.r9.gdbf1a08a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/coqui-ai/TTS
 	arch = any
 	license = MPL2
@@ -49,6 +49,8 @@ pkgbase = python-tts-git
 	conflicts = python-tts
 	options = !strip
 	source = python-tts::git+https://github.com/coqui-ai/TTS/
+	source = headless.patch
 	b2sums = SKIP
+	b2sums = 41813f228115bbe34b868d0cdf7b069c3eef4d51a1d32f9cc3c2698c5007cc5a43c06e53cf5ea297631e577ba8c285f33a8e8c191f16ba0a1184006a0fbeadba
 
 pkgname = python-tts-git

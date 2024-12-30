@@ -5,7 +5,7 @@
 _pkgname="python-tts"
 pkgname="${_pkgname}-git"
 pkgver=0.22.0.r9.gdbf1a08a
-pkgrel=2
+pkgrel=3
 pkgdesc="Coqui deep learning toolkit for Text-to-Speech, battle-tested in research and production"
 url="https://github.com/coqui-ai/TTS"
 license=("MPL2")
@@ -39,7 +39,7 @@ depends=("cython"
          "python-bangla"
          "python-bnnumerizer"
          "python-bnunicodenormalizer"
-		 "python-mutagen"
+         "python-mutagen"
 )
 makedepends=("python-build" "python-installer" "python-wheel")
 optdepends=("python-umap-learn: for notebooks"
@@ -54,8 +54,12 @@ optdepends=("python-umap-learn: for notebooks"
             "python-transformers: for tortoise"
 )
 options=("!strip")
-source=("$_pkgname::git+https://github.com/coqui-ai/TTS/")
-b2sums=('SKIP')
+source=(
+    "$_pkgname::git+https://github.com/coqui-ai/TTS/"
+    headless.patch
+)
+b2sums=('SKIP'
+        '41813f228115bbe34b868d0cdf7b069c3eef4d51a1d32f9cc3c2698c5007cc5a43c06e53cf5ea297631e577ba8c285f33a8e8c191f16ba0a1184006a0fbeadba')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}" || exit 2
@@ -67,7 +71,7 @@ pkgver() {
 prepare(){
     cd "${srcdir}/${_pkgname}" || exit 2
     # remove hardcoded versions
-    git checkout -- pyproject.toml setup.py requirements.txt
+    git checkout -- '*'
     sed -i "setup.py" \
         -e "s|3.12|4.0|g"
     sed -i "requirements.txt" \
@@ -76,6 +80,8 @@ prepare(){
     sed -i "pyproject.toml" \
         -re 's|"cython.*",|"cython",|g' \
         -re "s|numpy==[0-9]+\.[0-9]+\.[0-9]+|numpy|g"
+    # apply patch for using the lib on headless server:
+    git apply "${srcdir}/headless.patch"
 }
 
 build(){
