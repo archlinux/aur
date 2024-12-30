@@ -2,7 +2,7 @@
 # Maintainer: Devon T. Bautista <devonb@lanl.gov>
 
 pkgname='ochami-bin'
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc='Command line interface for OpenCHAMI services'
 url='https://github.com/OpenCHAMI/ochami'
@@ -13,11 +13,11 @@ conflicts=('ochami-git')
 optdepends=('bash-completion: for bash completion support' 'jq: for pretty-printing JSON' 'zsh-completions: for zsh completion support')
 backup=('etc/ochami/config.yaml')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/OpenCHAMI/ochami/releases/download/v0.0.5/ochami_Linux_arm64.tar.gz")
-sha256sums_aarch64=('86944ab717728ede6292404ce021bdbc8272fff6533b98d942af3c2ccebd69c9')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/OpenCHAMI/ochami/releases/download/v0.0.6/ochami_Linux_arm64.tar.gz")
+sha256sums_aarch64=('b7510e4a804fb72f55d17f139a81c6c8705016c9c5b2378e679beb386a87d092')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/OpenCHAMI/ochami/releases/download/v0.0.5/ochami_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('ce0765f0e7890e9275884b1d8bdaaa046f72489561f74f48d9d72ed0c2507d6c')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/OpenCHAMI/ochami/releases/download/v0.0.6/ochami_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('93f6082cf74ccd0778e0e368e8c7cdbe83a7d5e4649574fcc99338ad94560e16')
 
 package() {
   # Binary
