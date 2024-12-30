@@ -1,90 +1,109 @@
 #! /bin/bash
+get_valid_users() {
+	_l="/etc/login.defs"
+	_p="/etc/passwd"
 
-pre_install()  {
-AppName=PenTablet
-pid=`ps -e|grep $AppName`
-appScript=$AppName".sh"
-if [ -n "$pid" ]; then
-	echo $pid
-	arr=()
-	while read -r line; do
-	   arr+=("$line")
-	done <<< "$pid"
-	for val in "${arr[@]}";
-	do
-		appid=`echo $val | awk '{print $1}'`
-	   	name=`echo $val | awk '{print $4}'`
-	   	echo "ID:"$appid 
-		echo "Name:"$name
-		if [ "$name" = "$appRunScript" ]; then
-			echo "close $appRunScript"
-			kill -15 $appid
-		elif [ "$name" = "$AppName" ]; then
-			echo "close $AppName"
-			kill -15 $appid
-		fi
+	## get min and max UID limit ##
+	l=$(grep "^UID_MIN" "$_l")
+	l1=$(grep "^UID_MAX" "$_l")
+
+	## use awk to print if UID >= $MIN and UID <= $MAX and shell is not /sbin/nologin ##
+	awk -F':' -v "min=${l##UID_MIN}" -v "max=${l1##UID_MAX}" '{
+        if ($3 >= min && $3 <= max && $7 != "/sbin/nologin") print $0
+    }' "$_p" | cut -d: -f1
+}
+
+disable_user_service() {
+	users=$(get_valid_users)
+	for i in $users; do
+		echo "Disabling xppentablet.service for user '$i'"
+		sudo systemctl --machine "$i"@ disable --now --user xppentablet.service
 	done
-fi
+}
+
+pre_install() {
+	AppName=PenTablet
+	pid=$(ps -e | grep $AppName)
+	appScript=$AppName".sh"
+	if [ -n "$pid" ]; then
+		echo $pid
+		arr=()
+		while read -r line; do
+			arr+=("$line")
+		done <<<"$pid"
+		for val in "${arr[@]}"; do
+			appid=$(echo $val | awk '{print $1}')
+			name=$(echo $val | awk '{print $4}')
+			echo "ID:"$appid
+			echo "Name:"$name
+			if [ "$name" = "$appRunScript" ]; then
+				echo "close $appRunScript"
+				kill -15 $appid
+			elif [ "$name" = "$AppName" ]; then
+				echo "close $AppName"
+				kill -15 $appid
+			fi
+		done
+	fi
 }
 
 post_install() {
-appDir=/usr/lib/pentablet
-confPath=$appDir/conf/xppen
-libPath=$appDir/lib
-platPath=$appDir/platforms
-RuleDir="/usr/lib/udev/rules.d"
-ruleName="10-xp-pen.rules"
+	appDir=/usr/lib/pentablet
+	confPath=$appDir/conf/xppen
+	libPath=$appDir/lib
+	platPath=$appDir/platforms
+	RuleDir="/usr/lib/udev/rules.d"
+	ruleName="10-xp-pen.rules"
 
-chmod +0755 /usr/share/applications/xppentablet.desktop
-chmod +0644 /usr/share/icons/hicolor/256x256/apps/xppentablet.png
+	chmod +0755 /usr/share/applications/xppentablet.desktop
+	chmod +0644 /usr/share/icons/hicolor/256x256/apps/xppentablet.png
 
-chmod +0755 $appDir/PenTablet
-chmod +0755 $appDir/PenTablet.sh
-#chmod +0666 $appDir/resource.rcc #not exist in this version
+	chmod +0755 $appDir/PenTablet
+	chmod +0755 $appDir/PenTablet.sh
+	#chmod +0666 $appDir/resource.rcc #not exist in this version
 
+	# chmod +0777 $confPath #Move to package()
+	# chmod +0777 $libPath
+	# chmod +0777 $platPath
 
-# chmod +0777 $confPath #Move to package()
-# chmod +0777 $libPath
-# chmod +0777 $platPath
+	chmod +0666 $confPath/config.xml
+	chmod +0666 $confPath/language.ini
+	chmod +0666 $confPath/name_config.ini
 
-chmod +0666 $confPath/config.xml
-chmod +0666 $confPath/language.ini
-chmod +0666 $confPath/name_config.ini
+	chmod +0666 $libPath/libicudata.so.56
+	chmod +0666 $libPath/libicui18n.so.56
+	chmod +0666 $libPath/libicuuc.so.56
+	chmod +0666 $libPath/libQt5Core.so.5
+	chmod +0666 $libPath/libQt5DBus.so.5
+	chmod +0666 $libPath/libQt5Gui.so.5
+	chmod +0666 $libPath/libQt5Network.so.5
+	chmod +0666 $libPath/libQt5Widgets.so.5
+	chmod +0666 $libPath/libQt5X11Extras.so.5
+	chmod +0666 $libPath/libQt5XcbQpa.so.5
+	chmod +0666 $libPath/libQt5Xml.so.5
 
-chmod +0666 $libPath/libicudata.so.56
-chmod +0666 $libPath/libicui18n.so.56
-chmod +0666 $libPath/libicuuc.so.56
-chmod +0666 $libPath/libQt5Core.so.5
-chmod +0666 $libPath/libQt5DBus.so.5
-chmod +0666 $libPath/libQt5Gui.so.5
-chmod +0666 $libPath/libQt5Network.so.5
-chmod +0666 $libPath/libQt5Widgets.so.5
-chmod +0666 $libPath/libQt5X11Extras.so.5
-chmod +0666 $libPath/libQt5XcbQpa.so.5
-chmod +0666 $libPath/libQt5Xml.so.5
+	chmod +0666 $platPath/libqxcb.so
 
-chmod +0666 $platPath/libqxcb.so
+	lockfile="/tmp/qtsingleapp-Pentab-9c9b-lockfile"
+	touch $lockfile
+	chmod +0666 $lockfile
 
-lockfile="/tmp/qtsingleapp-Pentab-9c9b-lockfile"
-touch $lockfile
-chmod +0666 $lockfile
+	# Checking and applying the udev rule
+	if [ -f "$RuleDir/$ruleName" ]; then
+		udevadm control --reload-rules && udevadm trigger
+	fi
 
-# Checking and applying the udev rule 
-if [ -f "$RuleDir/$ruleName" ]; then
-	udevadm control --reload-rules && udevadm trigger
-fi
+	#Removing autostart scripts as the systemd service is now used.
+	if [ -f "/etc/xdg/autostart/pentablet.desktop" ] || [ -f "/etc/xdg/autostart/xppentablet.desktop" ]; then
+		rm -f /etc/xdg/autostart/ugee-pentablet.desktop
+		rm -f /etc/xdg/autostart/pentablet.desktop
+		rm -f /etc/xdg/autostart/xppentablet.desktop
+	fi
 
-#Removing autostart scripts as the systemd service is now used.
-if [ -f "/etc/xdg/autostart/pentablet.desktop" ] || [ -f "/etc/xdg/autostart/xppentablet.desktop" ]; then
-	rm -f /etc/xdg/autostart/ugee-pentablet.desktop;
-	rm -f /etc/xdg/autostart/pentablet.desktop;
-	rm -f /etc/xdg/autostart/xppentablet.desktop
-fi
+	#Reload daemon
+	systemctl daemon-reload
 
-#Reload daemon
-systemctl daemon-reload 
-
-cat <<EOF
+	cat <<EOF
 
 ********************"
 installation successful!
@@ -101,18 +120,19 @@ EOF
 }
 
 pre_upgrade() {
-pre_install
+	pre_install
 }
 post_upgrade() {
-post_install
+	post_install
 }
-pre_remove () {
- pre_install
- lockfile="/tmp/qtsingleapp-Pentab-9c9b-lockfile"
- rm $lockfile
- #Remove service
- systemctl --global disable xppentablet.service
- }
- post_remove(){
- echo "Uninstall succeeded."
- }
+pre_remove() {
+	pre_install
+	lockfile="/tmp/qtsingleapp-Pentab-9c9b-lockfile"
+	rm $lockfile
+	#Remove service
+	disable_user_service
+}
+
+post_remove() {
+	echo "Uninstall succeeded."
+}
