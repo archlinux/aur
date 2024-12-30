@@ -1,0 +1,24 @@
+pkgbase = modustoolbox-eclipse
+	pkgdesc = Custom Eclipse IDE for ModusToolbox development.
+	pkgver = 3.4.0.290
+	pkgrel = 1
+	url = https://softwaretools.infineon.com/tools/com.ifx.tb.tool.mtbeclipse
+	arch = x86_64
+	license = LicenseRef-modustoolbox-eclipse
+	depends = alsa-lib
+	depends = python
+	depends = perl
+	depends = zlib
+	depends = libx11
+	depends = glibc
+	depends = libxtst
+	depends = libxi
+	depends = java-runtime
+	depends = freetype2
+	depends = libxext
+	depends = libxrender
+	options = strip
+	source = file://mtbeclipse_3.4.0.290_linux_x64.deb
+	sha256sums = 1baec6a0baeaf1de557d19a7c1719aa94d7213b691382181e93884a5d893686c
+
+pkgname = modustoolbox-eclipse
