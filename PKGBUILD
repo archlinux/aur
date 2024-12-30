@@ -1,15 +1,16 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 # https://github.com/adamperkowski/PKGBUILDs
+
 pkgname=hyprpolkitagent
 pkgver=0.1.1
-pkgrel=2
-pkgdesc="A simple polkit authentication agent for Hyprland, written in QT/QML"
+pkgrel=3
+pkgdesc='Simple polkit authentication agent for Hyprland, written in QT/QML'
 arch=('x86_64')
 url="https://github.com/hyprwm/$pkgname"
 license=('BSD-3-Clause')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('55bb1c6e51a1724d5f8914e787f7c37463b63ca55ea4dc09af30706eca648158')
-depends=('gcc-libs' 'qt6-base' 'polkit-qt6' 'qt6-declarative' 'glib2')
+depends=('gcc-libs' 'qt6-base' 'polkit-qt6' 'qt6-declarative' 'glibc')
 makedepends=('git' 'cmake' 'gcc' 'qqc2-desktop-style' 'hyprutils')
 
 build() {
