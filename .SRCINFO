@@ -1,0 +1,14 @@
+pkgbase = awtfdb
+	pkgdesc = Anime Woman's Tagged File Data Base
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/lun-4/awtfdb
+	arch = x86_64
+	license = MIT
+	makedepends = zig
+	makedepends = graphicsmagick
+	depends = glibc
+	source = awtfdb-0.4.0.tar.gz::https://github.com/lun-4/awtfdb/archive/0.4.0.tar.gz
+	sha256sums = 25c9fd70cb982ea6081257d47c936ce1fefd20929b271558ba2aed8cf41632fd
+
+pkgname = awtfdb
