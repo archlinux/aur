@@ -1,14 +1,14 @@
 # Maintainer: Lysec
 pkgname=swiftfetch
-pkgver=0.1.2
-pkgrel=5
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="A fast and efficient fetch utility written in Rust"
 arch=('x86_64')
 url="https://github.com/Ly-sec/swiftfetch"
 license=('MIT')
 depends=()
 makedepends=('rust' 'cargo' 'git')
-source=("$pkgname::git+https://github.com/Ly-sec/swiftfetch.git#tag=v0.1.2-5")
+source=("$pkgname::git+https://github.com/Ly-sec/swiftfetch.git#tag=v0.1.3")
 sha256sums=('SKIP')
 
 build() {
