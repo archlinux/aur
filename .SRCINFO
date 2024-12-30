@@ -1,0 +1,12 @@
+pkgbase = ghostty_wrapper
+	pkgdesc = Wrapper for using ghostty as the default terminal emulator in Gnome
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL-3.0-or-later
+	depends = ghostty
+	conflicts = gnome-terminal
+	source = ghostty_wrapper
+	sha256sums = 2bcc55bc8cd507cf3f4e6ddbc3802b145e20aad450fca5b258f558d0e9ae740f
+
+pkgname = ghostty_wrapper
