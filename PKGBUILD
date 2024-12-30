@@ -2,7 +2,7 @@
 # Contributer: Tim Liou <wheatdoge at gmail dot com>
 pkgname=i3-workspace-groups
 pkgver=0.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools for managing i3wm workspaces in groups.'
 url='https://github.com/infokiller/i3-workspace-groups'
 arch=('any')

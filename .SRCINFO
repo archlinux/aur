@@ -1,7 +1,7 @@
 pkgbase = i3-workspace-groups
 	pkgdesc = Tools for managing i3wm workspaces in groups.
 	pkgver = 0.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/infokiller/i3-workspace-groups
 	install = i3-workspace-groups.install
 	arch = any
