@@ -1,13 +1,13 @@
 # Maintainer: Devon T. Bautista <devonb@lanl.gov>
 pkgname=ochami-git
-pkgver=v0.0.5.r0.g2a54540
+pkgver=v0.0.6.r0.g64ccade
 pkgrel=1
 pkgdesc="Command line interface for OpenCHAMI services"
 arch=('aarch64' 'x86_64')
 url='https://github.com/OpenCHAMI/ochami'
 license=('MIT')
 groups=('openchami')
-makedepends=('git' 'go' 'make' 'scdoc')
+makedepends=('git' 'go' 'inetutils' 'make' 'scdoc')
 optdepends=('bash-completion: for bash completion support'
             'jq: for pretty-printing JSON'
             'zsh-completions: for zsh completion support')
@@ -29,5 +29,5 @@ build() {
 
 package() {
 	cd "${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/" prefix=/usr install
 }
