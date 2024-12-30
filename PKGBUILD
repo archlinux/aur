@@ -1,6 +1,6 @@
 _pkgname=roam-research
 pkgname=roam-research
-pkgver=0.0.21
+pkgver=0.0.24
 pkgrel=1
 pkgdesc="A note-taking tool for networked thought"
 arch=('any')
@@ -8,39 +8,39 @@ url="https://roamresearch.com/"
 license=('custom')
 depends=()
 source=(
-  "$_pkgname-$pkgver.tgz::https://roam-electron-deploy.s3.us-east-2.amazonaws.com/${_pkgname}_${pkgver}_amd64.deb"
-  "LICENSE"
+	"$_pkgname-$pkgver.tgz::https://roam-electron-deploy.s3.us-east-2.amazonaws.com/${_pkgname}_${pkgver}_amd64.deb"
+	"LICENSE"
 )
 md5sums=(
-  '9d56786b09663acf694062e30167c5bc'
-  '34234c4e196ceeaf00e4ee7f29b9fb63'
+	'8fd78e44795517e3700a07d45451a199'
+	'34234c4e196ceeaf00e4ee7f29b9fb63'
 )
 
 prepare() {
-  tar -xvf data.tar.xz
+	tar -xvf data.tar.xz
 }
 
 package() {
-  cd "$srcdir"
+	cd "$srcdir"
 
-  # Making paths work with a space is error-prone, so let's replace with a simpler kebab-case directory
-  sed -i "s/\/opt\/Roam Research/\/opt\/$_pkgname/" usr/share/applications/roam-research.desktop
+	# Making paths work with a space is error-prone, so let's replace with a simpler kebab-case directory
+	sed -i "s/\/opt\/Roam Research/\/opt\/$_pkgname/" usr/share/applications/roam-research.desktop
 
-  # Install all the things
-  install -d "$pkgdir"/{opt/$_pkgname,usr/share,usr/bin}
-  cp -r opt/Roam\ Research/* -t "$pkgdir"/opt/$_pkgname
-  cp -r usr/share/* -t "$pkgdir"/usr/share
+	# Install all the things
+	install -d "$pkgdir"/{opt/$_pkgname,usr/share,usr/bin}
+	cp -r opt/Roam\ Research/* -t "$pkgdir"/opt/$_pkgname
+	cp -r usr/share/* -t "$pkgdir"/usr/share
 
-  # Make the desktop icons available
-  # (not sure why they're under 0x0? Where is that used?)
-  install -d "$pkgdir"/usr/share/icons/hicolor/1024x1024
-  cp -r usr/share/icons/hicolor/0x0/* -t "$pkgdir"/usr/share/icons/hicolor/1024x1024
-  install -d "$pkgdir"/usr/share/pixmaps
-  install -D usr/share/icons/hicolor/0x0/apps/roam-research.png -t "$pkgdir"/usr/share/pixmaps
+	# Make the desktop icons available
+	# (not sure why they're under 0x0? Where is that used?)
+	install -d "$pkgdir"/usr/share/icons/hicolor/1024x1024
+	cp -r usr/share/icons/hicolor/256x256/* -t "$pkgdir"/usr/share/icons/hicolor/1024x1024
+	install -d "$pkgdir"/usr/share/pixmaps
+	install -D usr/share/icons/hicolor/256x256/apps/roam-research.png -t "$pkgdir"/usr/share/pixmaps
 
-  # Make the binary available in the $PATH
-  ln -s /opt/${_pkgname}/${_pkgname} "${pkgdir}"/usr/bin/${_pkgname}
+	# Make the binary available in the $PATH
+	ln -s /opt/${_pkgname}/${_pkgname} "${pkgdir}"/usr/bin/${_pkgname}
 
-  # Add a license that links to the Terms and Conditions and Privacy Policy from https://roamresearch.com
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	# Add a license that links to the Terms and Conditions and Privacy Policy from https://roamresearch.com
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
