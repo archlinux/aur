@@ -1,5 +1,5 @@
 pkgbase = jan-bin
-	pkgdesc = An open source alternative to ChatGPT that runs 100% offline on your computer. Multiple engine support (llama.cpp, TensorRT-LLM).(Prebuilt version.Use system-wide electron)
+	pkgdesc = An open source alternative to ChatGPT that runs 100% offline on your computer. Multiple engine support (llama.cpp, TensorRT-LLM).(Prebuilt version.Use system-wide electron.)
 	pkgver = 0.5.12
 	pkgrel = 1
 	url = https://jan.ai/
