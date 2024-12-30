@@ -1,17 +1,23 @@
 pkgbase = easyedit-bin
 	pkgdesc = An easy markdown editor that allows you to write MarkDown (MD) and preview it in real-time. You can save, load .md files and export to PDF.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.3.6
+	pkgver = 1.3.6b
 	pkgrel = 1
 	url = https://github.com/gcclinux/EasyEdit
+	arch = aarch64
+	arch = armv7h
 	arch = x86_64
 	license = MIT
 	depends = electron33
 	conflicts = easyedit
-	source = LICENSE-1.3.6::https://raw.githubusercontent.com/gcclinux/EasyEdit/1.3.6/LICENSE
+	source = LICENSE-1.3.6b::https://raw.githubusercontent.com/gcclinux/EasyEdit/1.3.6b/LICENSE
 	source = easyedit.sh
 	sha256sums = 71385eb5d7dd9bd556196b805ff27e72710a85f9c31c230eb503b6d68de91596
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_x86_64 = easyedit-1.3.6-x86_64.deb::https://github.com/gcclinux/EasyEdit/releases/download/1.3.6/EasyEdit-1.3.6-amd64.deb
-	sha256sums_x86_64 = 88bace2c9146de14079739b3bb866d32b7197923860a671820eec0623a9b79c0
+	source_aarch64 = easyedit-1.3.6b-aarch64.deb::https://github.com/gcclinux/EasyEdit/releases/download/1.3.6b/EasyEdit-1.3.6-arm64.deb
+	sha256sums_aarch64 = 189613c909a453d81df5dd81eb446e7af383ccef5bfe5587a52906b1185e8bc7
+	source_armv7h = easyedit-1.3.6b-armv7h.deb::https://github.com/gcclinux/EasyEdit/releases/download/1.3.6b/EasyEdit-1.3.6-armv7l.deb
+	sha256sums_armv7h = c21b2281eba07c750f1f85fd69117e8663f0477c755b55d763e3574228909a53
+	source_x86_64 = easyedit-1.3.6b-x86_64.deb::https://github.com/gcclinux/EasyEdit/releases/download/1.3.6b/EasyEdit-1.3.6-amd64.deb
+	sha256sums_x86_64 = 95770aa124a33e5d111b66197138715b18c70b71c59fd53ebcad89150d9f7661
 
 pkgname = easyedit-bin
