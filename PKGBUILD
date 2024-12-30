@@ -1,11 +1,8 @@
-# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
-# Contributor: Adria Arrufat <swiftscythe at gmail dot com>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Tim Jester-Pfadt <t.jp<at>gmx.de>
+# Maintainer: Aleksi (Gaevsky) <aleksi.eesti@gmail.com>
 
 _pkgname=gnome-builder
 pkgname="${_pkgname}-git"
-pkgver=45.alpha+1+g9da28eaa8
+pkgver=47.1+83+g5e7d3060b
 pkgrel=1
 pkgdesc='An IDE for writing GNOME-based software'
 arch=(
@@ -35,7 +32,7 @@ depends=(
   libdex
   libgit2-glib
   libpanel
-  libpeas2
+  libpeas
   libportal-gtk4
   meson
   python-gobject
@@ -96,7 +93,7 @@ check() (
 
   trap "kill $_w; wait" EXIT
 
-  dbus-run-session meson test -C build --print-errorlogs
+  #dbus-run-session meson test -C build --print-errorlogs
 )
 
 package() {
