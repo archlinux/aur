@@ -6,8 +6,8 @@
 # Contributor: AG_Caesar <caesar[at]drachenhain[dot]net>
 # Contributor: Jan Oliver Oelerich <janoliver[at]oelerich[dot]org>
 pkgname=ovito
-pkgver=3.11.2
-pkgrel=4
+pkgver=3.11.3
+pkgrel=1
 pkgdesc="Open Visualization Tool"
 url="https://www.${pkgname}.org"
 arch=(x86_64 aarch64)
@@ -20,11 +20,11 @@ source=(${pkgname}-${pkgver}::git+https://gitlab.com/stuko/${pkgname}.git#tag=v$
   github.com-src-3rdparty-zstd::git+https://github.com/facebook/zstd.git
   ${url}/wp-content/uploads/logo_rgb-768x737.png
   ${pkgname}.desktop)
-sha512sums=('fb00aa050176bfea0c6e2863b7906ef0ede0cee2c5c9abc9e9f8c5d701e5b581853f68e04daae86b17d14aa50aa2ca919d3994a4644180d799a326ef99c4aa49'
-  'SKIP'
-  'SKIP'
-  '1afe91e9634a6574ba58535cb9b636b63daa02d9157f50d9c5c959c9da151e9635ca73d0616fd8ccac2e7742f2289a6eba05e62b206baee4f738c53526ec4bb8'
-  'fdf21d1821855b1ea93c598ef062669c29c15975a288f72240c183b8f10e8b6d38f96b15fdf02949d66bd94f76df0daed87e9c4d2201db61d4c2750be574e8cd')
+sha512sums=('050ee3ec079e1e702443d8d20a7b2a469f3af60144bd013965fb441ce17ec7853ff2cb556730c85353a06fee5096250ad374df15348c239184233c76ab595515'
+            'SKIP'
+            'SKIP'
+            '1afe91e9634a6574ba58535cb9b636b63daa02d9157f50d9c5c959c9da151e9635ca73d0616fd8ccac2e7742f2289a6eba05e62b206baee4f738c53526ec4bb8'
+            'fdf21d1821855b1ea93c598ef062669c29c15975a288f72240c183b8f10e8b6d38f96b15fdf02949d66bd94f76df0daed87e9c4d2201db61d4c2750be574e8cd')
 
 prepare() {
   cd ${pkgname}-${pkgver}
