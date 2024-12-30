@@ -1,6 +1,6 @@
 pkgbase = qtile-bonsai
 	pkgdesc = A flexible layout for the qtile tiling window manager that allows arbitrarily nestable tabs/splits and rearrangements
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/aravinda0/qtile-bonsai
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = qtile-bonsai
 	makedepends = python-pdm-backend
 	depends = python-psutil
 	depends = python-strenum
-	source = https://github.com/aravinda0/qtile-bonsai/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = ca6bb034e0781b55047f55d14a51dddbdc3dca6d33ee2df1be31a53571972e14
+	source = https://github.com/aravinda0/qtile-bonsai/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 468c0b48264d9a43223eee98555e7fb71d73fb7550d8b3c9615b3cb60796bb4e
 
 pkgname = qtile-bonsai
