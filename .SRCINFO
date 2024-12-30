@@ -9,7 +9,7 @@ pkgbase = python-numpy-mkl-bin
 	depends = python-mkl-service
 	provides = python-numpy=2.1.3
 	conflicts = python-numpy
-	source = https://repo.anaconda.com/pkgs/main/linux-64/numpy-base-2.1.3-py312he1a6c75_0.tar.bz2
-	sha256sums = dc2dd109396fe9ef12223731bef66bff0aad9eb5a0644e4b7d8879e6c1cd68ec
+	source = https://repo.anaconda.com/pkgs/main/linux-64/numpy-base-2.1.3-py313habf87d0_0.tar.bz2
+	sha256sums = 360260997f18ad58c2c6693b619828e2f50401e4c1f082f37d3ab50b1853a188
 
 pkgname = python-numpy-mkl-bin

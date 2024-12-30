@@ -1,4 +1,4 @@
 [python-numpy-mkl-bin]
 source = "regex"
 url = "https://repo.anaconda.com/pkgs/main/linux-64/"
-regex = "numpy-([\\d.]+)-py312hc5e2394_0.tar.bz2"
+regex = "numpy-([\\d.]+)-py313habf87d0_0.tar.bz2"
