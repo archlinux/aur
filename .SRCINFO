@@ -1,13 +1,13 @@
 pkgbase = tcllib
-	pkgdesc = Set of pure-Tcl extensions.
-	pkgver = 1.21
+	pkgdesc = Set of pure-Tcl extensions
+	pkgver = 2.0
 	pkgrel = 1
 	url = http://core.tcl.tk/tcllib/
 	arch = any
 	license = TCL
 	depends = bash
 	depends = tcl
-	source = https://core.tcl-lang.org/tcllib/uv/tcllib-1.21.tar.gz
-	sha256sums = 46b2bb5ec8049363ae01645af11bda3bdb5db10629e807d81d1ad46cd1bead50
+	source = https://core.tcl-lang.org/tcllib/uv/tcllib-2.0.tar.gz
+	sha256sums = 590263de0832ac801255501d003441a85fb180b8ba96265d50c4a9f92fde2534
 
 pkgname = tcllib
