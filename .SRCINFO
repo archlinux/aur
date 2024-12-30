@@ -1,7 +1,7 @@
 pkgbase = ghostty_wrapper
 	pkgdesc = Wrapper for using ghostty as the default terminal emulator in Gnome
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL-3.0-or-later
 	depends = ghostty

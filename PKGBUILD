@@ -1,6 +1,6 @@
 pkgname=ghostty_wrapper
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Wrapper for using ghostty as the default terminal emulator in Gnome'
 arch=(any)
 depends=('ghostty')
@@ -18,7 +18,7 @@ package() {
 	chmod +x "${pkgdir}/usr/bin/ghostty_wrapper"
 
 	# Symlink the script to the gnome-terminal (used by Gnome as the default)
-	sudo ln -sf "${pkgdir}/usr/bin/ghostty_wrapper" "/usr/bin/gnome-terminal"
+	sudo ln -sf "/usr/bin/ghostty_wrapper" "/usr/bin/gnome-terminal"
 
 	# Try to set ghostty as the default terminal emulator (this apparently is deprecated, but who knows)
 	gsettings set org.gnome.desktop.default-applications.terminal exec ghostty
