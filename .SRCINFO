@@ -9,6 +9,7 @@ pkgbase = easytag-opensuse-ogg-patch
 	makedepends = atk
 	makedepends = flac
 	makedepends = glib2
+	makedepends = glib2-devel
 	makedepends = gtk3
 	makedepends = harfbuzz
 	makedepends = intltool

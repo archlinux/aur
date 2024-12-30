@@ -15,7 +15,7 @@ url="https://wiki.gnome.org/Apps/EasyTAG"
 license=('GPL2')
 depends=('cairo' 'gcc-libs' 'gdk-pixbuf2' 'glibc' 'id3lib' 'taglib' 'wavpack'
 'zlib')
-makedepends=('appstream-glib' 'atk' 'flac' 'glib2' 'gtk3' 'harfbuzz' 'intltool'
+makedepends=('appstream-glib' 'atk' 'flac' 'glib2' 'glib2-devel' 'gtk3' 'harfbuzz' 'intltool'
 'itstool' 'libid3tag' 'pango' 'python' 'yelp-tools')
 conflicts=(easytag)
 provides=("easytag=${pkgver}")
