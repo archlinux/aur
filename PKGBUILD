@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gotepad-bin
-pkgver=2.6.4
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="A simple text editor built with Wails.(Prebuilt version)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'webkit2gtk'
+    'webkit2gtk-4.1'
     'gdk-pixbuf2'
     'gtk3'
 )
@@ -21,10 +21,10 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Sammy-T/gotepad/v${pkgver}/LICENSE"
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/Sammy-T/gotepad/v${pkgver}/build/appicon.png"
 )
-sha256sums=('634487701d1c3ba56a4f79c4bae6629e1c2df75815d6158516f6eac736203c76'
+sha256sums=('e2a75d3c9e6b1d412f577a30ada005fe681dff9a127da2f964e8606dc35a35fe'
             'dca196dfc07025990b7613625b114fa8ae063e0fb5de6f29a81e42ffd1b5eaae'
             '6d3beef0cac0b65e2a25e326970302b7efdac1c66f8c4f4bfe469fe49df30763')
-build() {
+prepare() {
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
 }
 package() {
