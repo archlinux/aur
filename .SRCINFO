@@ -1,0 +1,14 @@
+pkgbase = lib32-libcello
+	pkgdesc = Higher level programming library in C (32-bit)
+	pkgver = 2.1.0+r25+g61ee5c3
+	pkgrel = 1
+	url = https://libcello.org
+	arch = x86_64
+	license = BSD-2-Clause
+	depends = lib32-glibc
+	depends = libcello
+	provides = libCello.so
+	source = Cello-61ee5c3d9bca98fd68af575e9704f5f02533ae26.tar.gz::https://github.com/orangeduck/Cello/archive/61ee5c3d9bca98fd68af575e9704f5f02533ae26.tar.gz
+	sha256sums = 89c928bf356b9dcb563ed9f287771be1279a4b5a2c5c266c0a6bc575ce1ec037
+
+pkgname = lib32-libcello

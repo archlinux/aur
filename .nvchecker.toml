@@ -1,0 +1,4 @@
+[lib32-libcello]
+source = "git"
+git = "https://github.com/orangeduck/Cello.git"
+prefix = "v"
