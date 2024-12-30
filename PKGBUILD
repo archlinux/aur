@@ -1,41 +1,29 @@
-# Maintainer: Omar Alkersh <oalkersh at protonmail dot com>
+# Contributor: Omar Alkersh <oalkersh at protonmail dot com>
+
 pkgname=shortcut-mapper-git
-pkgver=v0.1.2.r0.g7da8094
+pkgver=0.1.2.r0.g7da8094
 pkgrel=1
-epoch=
-pkgdesc=""
+pkgdesc='creates "key string" binding to execute commands'
 arch=(x86_64)
 url="https://github.com/OZoneGuy/shortcut-mapper.git"
-license=('GPL')
-groups=()
+license=('GPL-3.0-or-later')
 depends=(xorg-server)
-makedepends=(git)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+makedepends=(git cmake)
 source=("git+$url")
-noextract=()
 md5sums=('SKIP')
-validpgpkeys=()
 
 pkgver() {
   cd "shortcut-mapper"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "shortcut-mapper"
-  cmake . -B build
+  cmake -B build -S shortcut-mapper -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
 }
 
 package() {
-  cd "shortcut-mapper"
-  sudo cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
+  install -dm755 "$pkgdir/usr/"
+  mv -v "$pkgdir"/{bin,usr}/
 }
