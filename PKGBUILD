@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kando-bin
 _pkgname=Kando
-pkgver=1.6.0
+pkgver=1.7.0
 _electronversion=31
 pkgrel=1
 pkgdesc="A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions.(Prebuilt version.Use system-wide electron)"
@@ -32,10 +32,10 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kando-menu/kando/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('744cd03c06f7ff6f87d437305d5e574616057e745c77c602b9d1598fe6e8465a'
+sha256sums=('c92202106ec734e40e5e3dd40c7d1cc354dd0c98475e2321f010a5354290785c'
             'fd6cb731b549de5452efacb0833cda7a328eb5263537d29ca18de9d7938f7bab'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-bin}/
