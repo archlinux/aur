@@ -1,0 +1,10 @@
+post_install() {
+    echo ""
+    echo '==> 如果您要使用其他核心，请手动下载核心文件'
+    echo '==> 然后将其放置到 ~/.local/share/v2rayN/bin 中的相应位置'
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
