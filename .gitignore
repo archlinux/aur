@@ -1,3 +1,5 @@
 /pocket-cli/
 /python-pocket-cli-*.log
 /python-pocket-cli-*-any.pkg.tar.xz
+/python-pocket-cli-*-any.pkg.tar.zst
+/src/
