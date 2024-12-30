@@ -29,8 +29,7 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  cmake \
-    -B _build \
+  cmake -B _build \
     -DENABLE_TESTS=OFF \
     -DENABLE_DOCS=OFF \
     -DCONFIG_TUNE_VMAF=1 \
@@ -44,5 +43,5 @@ build() {
 package() {
   cd $_pkgname
   DESTDIR="$pkgdir" make -C _build install
-  install -Dm644 LICENSE PATENTS -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 LICENSE PATENTS -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
