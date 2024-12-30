@@ -1,0 +1,20 @@
+pkgbase = actual-bin
+	pkgdesc = a local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting.(Prebuilt version.Use system-wide electron)
+	pkgver = 24.12.0
+	pkgrel = 1
+	url = https://actualbudget.org/
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	makedepends = fuse2
+	depends = electron30
+	provides = actual=24.12.0
+	conflicts = actual
+	source = actual-24.12.0.AppImage::https://github.com/actualbudget/actual/releases/download/v24.12.0/Actual-linux.AppImage
+	source = LICENSE-24.12.0.txt::https://raw.githubusercontent.com/actualbudget/actual/v24.12.0/LICENSE.txt
+	source = actual.sh
+	sha256sums = f9be007f681f7feb6ad87a30f686fd2d39510ad03833c7c2be387e310afeda92
+	sha256sums = 71e4b3053e4622e1f5fc5d8aa5336350de32ead39247924c596d659b89b47b6f
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = actual-bin
