@@ -2,7 +2,7 @@
 
 pkgname=arrayfire
 pkgver=3.9.0
-pkgrel=11
+pkgrel=12
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 arch=('x86_64')
 url='https://arrayfire.com'
@@ -35,10 +35,6 @@ prepare() {
   patch -Np1 -i "${srcdir}/3521-fix-build-failure-with-cudnn.patch"
   patch -Np1 -i "${srcdir}/fmt-v11.patch"
   patch -Np1 -i "${srcdir}/${pkgname}-3588.patch"
-
-  # Workaround for Doxygen 1.13.0 segfaulting when building documentation, see:
-  # https://gitlab.archlinux.org/archlinux/packaging/packages/arrayfire/-/issues/2
-  sed -i '/^LAYOUT_FILE/d' docs/doxygen.mk
 }
 
 build() {
