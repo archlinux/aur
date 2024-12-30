@@ -27,7 +27,7 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-	DESTDIR="$pkgdir" cmake --install build
+    DESTDIR="$pkgdir" cmake --install build
 
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
