@@ -22,13 +22,13 @@ pkgver() {
 prepare() {
     cd mps
     # workaround: delete "-Werror" in code/gc.gmk for now
-    sed -i 's/-Werror//g' code/gc.gmk
+    sed -i '/-Werror/d' code/gc.gmk
 }
 
 build() {
     cd mps
     ./configure --prefix=/usr
-    make
+    make -j1
 }
 
 package() {
