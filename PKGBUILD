@@ -1,7 +1,7 @@
 # Maintainer: KorigamiK <korigamik@gmail.com>
 _pkgname=sioyek
 pkgname="${_pkgname}-devel"
-pkgver=r1902.ed14e38
+pkgver=r1906.cbd6809
 pkgrel=1
 pkgdesc="A PDF viewer designed for reading research papers and technical books."
 arch=("x86_64" "i686" "aarch64" "armv7h" "armv6h")
