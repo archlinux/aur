@@ -1,6 +1,6 @@
 pkgbase = unciv-bin
 	pkgdesc = Open-source remake of Civilization V
-	pkgver = 4.14.18
+	pkgver = 4.14.18_apk_minify
 	pkgrel = 0
 	url = https://github.com/yairm210/Unciv
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = unciv-bin
 	depends = xorg-xrandr
 	provides = unciv
 	conflicts = unciv
-	noextract = Unciv-4.14.18.jar
-	source = Unciv-4.14.18.jar::https://github.com/yairm210/Unciv/releases/download/4.14.18/Unciv.jar
-	source = Unciv-4.14.18.png::https://raw.githubusercontent.com/yairm210/Unciv/4.14.18/extraImages/Icons/Unciv%20icon%20v5.png
-	source = Unciv-4.14.18.zip::https://github.com/yairm210/Unciv/releases/download/4.14.18/linuxFilesForJar.zip
-	md5sums = 0053eb3e73c90689cea811ecc83e8c10
+	noextract = Unciv-4.14.18-apk-minify.jar
+	source = Unciv-4.14.18-apk-minify.jar::https://github.com/yairm210/Unciv/releases/download/4.14.18-apk-minify/Unciv.jar
+	source = Unciv-4.14.18-apk-minify.png::https://raw.githubusercontent.com/yairm210/Unciv/4.14.18-apk-minify/extraImages/Icons/Unciv%20icon%20v5.png
+	source = Unciv-4.14.18-apk-minify.zip::https://github.com/yairm210/Unciv/releases/download/4.14.18-apk-minify/linuxFilesForJar.zip
+	md5sums = 5441c84f703bb04056614083100610fa
 	md5sums = c3f79bbc7e80620b3cdc4f90f21f4d68
-	md5sums = 04d37824a88d2a5c0dc2f7ac822dfec8
+	md5sums = 59905888bb5ad828c5001959eee78dc9
 
 pkgname = unciv-bin
