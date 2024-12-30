@@ -1,6 +1,6 @@
 pkgbase = sudo-askpass-git
 	pkgdesc = A simple askpass program so sudo doesn't look so boring
-	pkgver = 1.0.r17.8f7d350
+	pkgver = 1.0.r22.a83978a
 	pkgrel = 1
 	url = https://github.com/Absolpega/sudo-askpass
 	arch = x86_64

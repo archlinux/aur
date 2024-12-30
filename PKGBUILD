@@ -1,7 +1,7 @@
-# Maintainer: Krafty Kactus <tkk13909@proton.me>
+# Contributor: Krafty Kactus <tkk13909@proton.me>
 
 pkgname=sudo-askpass-git
-pkgver=1.0.r17.8f7d350
+pkgver=1.0.r22.a83978a
 pkgrel=1
 pkgdesc="A simple askpass program so sudo doesn't look so boring"
 arch=(x86_64)
@@ -16,12 +16,21 @@ pkgver() {
 	printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	cd sudo-askpass
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
 	cd sudo-askpass
-	cargo build
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
 }
 
 package() {
 	cd sudo-askpass
-	sudo cp ./target/debug/sudo-askpass /usr/bin/
+	install -Dm755 ./target/release/sudo-askpass -t "$pkgdir/usr/bin/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
