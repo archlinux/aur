@@ -1,6 +1,6 @@
 pkgbase = ignis-git
 	pkgdesc = Full-featured Python framework for building desktop shells using GTK4.
-	pkgver = 0.3.r1.g24fd6ab
+	pkgver = 0.4.r0.g68793e0
 	pkgrel = 1
 	url = https://github.com/linkfrg/ignis
 	arch = x86_64
