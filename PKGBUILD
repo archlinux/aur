@@ -2,18 +2,24 @@
 
 _name=genson
 pkgname=python-$_name
-pkgver=1.2.2
-pkgrel=1
+pkgver=1.3.0
+pkgrel=11
 pkgdesc='GenSON is a powerful, user-friendly JSON Schema generator.'
 arch=(any)
 url="https://github.com/wolverdude/$_name"
 license=(MIT)
 depends=(python)
-makedepends=(python-setuptools)
+makedepends=(python-setuptools python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('8caf69aa10af7aee0e1a1351d1d06801f4696e005f06cedef438635384346a16')
+sha256sums=('e02db9ac2e3fd29e65b5286f7135762e2cd8a986537c075b06fc5f1517308e37')
+
+
+build() {
+    cd $_name-$pkgver
+    python -m build --wheel --no-isolation
+}
 
 package() {
-	cd "$srcdir/${_name//-/_}-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1
+    cd $_name-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
