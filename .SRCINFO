@@ -1,7 +1,7 @@
 pkgbase = python-tts-git
 	pkgdesc = Coqui deep learning toolkit for Text-to-Speech, battle-tested in research and production
 	pkgver = 0.22.0.r9.gdbf1a08a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coqui-ai/TTS
 	arch = any
 	license = MPL2
@@ -35,6 +35,7 @@ pkgbase = python-tts-git
 	depends = python-bangla
 	depends = python-bnnumerizer
 	depends = python-bnunicodenormalizer
+	depends = python-mutagen
 	optdepends = python-umap-learn: for notebooks
 	optdepends = python-pandas: for notebooks
 	optdepends = python-matplotlib: for training

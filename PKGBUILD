@@ -5,7 +5,7 @@
 _pkgname="python-tts"
 pkgname="${_pkgname}-git"
 pkgver=0.22.0.r9.gdbf1a08a
-pkgrel=1
+pkgrel=2
 pkgdesc="Coqui deep learning toolkit for Text-to-Speech, battle-tested in research and production"
 url="https://github.com/coqui-ai/TTS"
 license=("MPL2")
@@ -39,6 +39,7 @@ depends=("cython"
          "python-bangla"
          "python-bnnumerizer"
          "python-bnunicodenormalizer"
+		 "python-mutagen"
 )
 makedepends=("python-build" "python-installer" "python-wheel")
 optdepends=("python-umap-learn: for notebooks"
