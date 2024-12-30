@@ -2,7 +2,7 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-skins-bonus
-pkgver=24.0128
+pkgver=24.1215
 pkgrel=1
 pkgdesc="Additional skins for RVGL default and community cars."
 url='https://re-volt.io/online/cars'
