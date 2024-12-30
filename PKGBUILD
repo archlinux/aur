@@ -3,7 +3,7 @@
 pkgname=fava
 pkgdesc='Web interface for beancount'
 pkgver=1.30
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/beancount/fava'
 license=('MIT')
@@ -11,7 +11,7 @@ source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}
 noextract=("fava-${pkgver}-py3-none-any.whl")
 b2sums=('05eb4c68241aa3001bf77a98260e8ce8c772a9819681c0d1d8f9b03dfbb1e0deba541a06d141bf9f5c509607a887d3e4fc9bc0c6db0ec41d41f97bb359559e31')
 depends=('beancount' 'beanquery' 'beangulp' 'python-click' 'python-markdown2' 'python-flask' 'python-flask-babel' 'python-cheroot' 'python-ply' 'python-simplejson' 'python-watchfiles')
-makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools-scm")
+makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools-scm" "npm")
 
 build() {
   cd "${pkgname}-${pkgver}"
