@@ -1,6 +1,6 @@
 pkgbase = mootool-bin
 	pkgdesc = Handy tool set for developers.(Prebuilt version)开发者常备小工具
-	pkgver = 1.6.7
+	pkgver = 1.6.8
 	pkgrel = 1
 	url = https://github.com/rememberber/MooTool
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = mootool-bin
 	depends = alsa-lib
 	depends = libxtst
 	depends = libxrender
-	provides = mootool=1.6.7
+	provides = mootool=1.6.8
 	conflicts = mootool
-	source = mootool-1.6.7.rpm::https://github.com/rememberber/MooTool/releases/download/v1.6.7/MooTool_1.6.7.rpm
-	source = LICENSE-1.6.7.txt::https://raw.githubusercontent.com/rememberber/MooTool/v1.6.7/LICENSE.txt
+	source = mootool-1.6.8.rpm::https://github.com/rememberber/MooTool/releases/download/v1.6.8/MooTool_1.6.8.rpm
+	source = LICENSE-1.6.8.txt::https://raw.githubusercontent.com/rememberber/MooTool/v1.6.8/LICENSE.txt
 	source = mootool.sh
-	sha256sums = d0aa62af4410048276025ed4924773c2cad23690c15d435ae555fedfe67a3489
+	sha256sums = 6d1e973095af60c3b3c791c3e0de77eec7c243aa9aca705723d68ab874c76ea4
 	sha256sums = 91930d61ff6e2bd3ceaf0ac0de4431d4ede9a9a940ca327367820df54762e333
 	sha256sums = 74b5601e17710cdf781ec411f54075c2c477370fdc317ff75c18bdae0662b498
 
