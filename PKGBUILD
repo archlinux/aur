@@ -1,9 +1,9 @@
-# Maintainer: Letu Ren <fantasquex at gmail dot com>
+# Maintainer: qexat <contact@qexat.com>
 # Contributor: workonfire <kolucki62@gmail.com>
 
 pkgname=babi
-pkgver=1.5.7
-pkgrel=5
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="A text editor, eventually..."
 arch=('any')
 url="https://github.com/asottile/babi"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-build')
 provides=('babi')
 conflicts=('babi' 'babi-git')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('d1eecf63455c3c609436c8d0cecc0468d7c49c1a70f64adf2c3ca687eb80071b')
+sha256sums=('ae18d95e227a7f8a52613aac909522f0f0ea0fa217a944f9df1c3d09e6bc9a9d')
 
 build() {
 	cd "${pkgname}-${pkgver}"
@@ -26,4 +26,3 @@ package() {
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-

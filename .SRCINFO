@@ -1,7 +1,7 @@
 pkgbase = babi
 pkgdesc = A text editor, eventually...
-pkgver = 1.5.7
-pkgrel = 5
+pkgver = 1.6.0
+pkgrel = 1
 url = https://github.com/asottile/babi
 arch = any
 license = MIT
@@ -13,7 +13,7 @@ depends = python-identify
 provides = babi
 conflicts = babi
 conflicts = babi-git
-source = https://files.pythonhosted.org/packages/source/b/babi/babi-1.5.7.tar.gz
-sha256sums = d1eecf63455c3c609436c8d0cecc0468d7c49c1a70f64adf2c3ca687eb80071b
+source = https://files.pythonhosted.org/packages/source/b/babi/babi-1.6.0.tar.gz
+sha256sums = ae18d95e227a7f8a52613aac909522f0f0ea0fa217a944f9df1c3d09e6bc9a9d
 
 pkgname = babi
