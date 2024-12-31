@@ -1,6 +1,6 @@
 pkgbase = nodejs-concurrently
 	pkgdesc = Run multiple commands concurrently
-	pkgver = 9.1.0
+	pkgver = 9.1.2
 	pkgrel = 1
 	url = https://github.com/open-cli-tools/concurrently
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = nodejs-concurrently
 	depends = nodejs
 	provides = concurrently
 	provides = conc
-	noextract = concurrently-9.1.0.tgz
-	source = http://registry.npmjs.org/concurrently/-/concurrently-9.1.0.tgz
-	sha256sums = a1d84591095b8528ff74e7b47a4e85adc5164a06035b2ada78bdcda8051f441b
+	noextract = concurrently-9.1.2.tgz
+	source = http://registry.npmjs.org/concurrently/-/concurrently-9.1.2.tgz
+	sha256sums = 8945b1d4c4439b9d5aed78961f43f646a69aaf16b772159b27eabcad141431bf
 
 pkgname = nodejs-concurrently
