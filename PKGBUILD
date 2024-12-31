@@ -3,8 +3,8 @@ pkgname=animestream-bin
 pkgver=1.0.0
 _subver=alpha_3
 _electronversion=27
-pkgrel=5
-pkgdesc="A simple project designed for streaming and downloading your favorite anime!"
+pkgrel=6
+pkgdesc="A simple project designed for streaming and downloading your favorite anime!(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/frostnova721/animestream-electron"
 license=('AGPL-3.0-only')
@@ -18,14 +18,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('01c928a44d8574b448800ddecb460cfcc63e1409e0e5528070677dfa8382705d'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@//g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
 package() {
