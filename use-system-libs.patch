@@ -46,7 +46,7 @@ index ad01b58932..deb07ce5d5 100644
  fpng = declare_dependency(include_directories: 'fpng', link_with: libfpng)
  
 -json = declare_dependency(include_directories: 'json')
--httplib = declare_dependency(include_directories: 'httplib')
+-httplib = declare_dependency(include_directories: 'httplib', dependencies: targetos == 'windows' ? [crypt32] : [])
 +json = dependency('nlohmann_json')
 +httplib = dependency('httplib')
  
