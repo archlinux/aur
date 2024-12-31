@@ -12,14 +12,14 @@ pkgname=(
     chromium-extension-ruffle-nightly
 )
 pkgver="0.1.0+$_channel+${_date//-}"
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 pkgdesc="A Flash Player emulator written in Rust. (Nightly version)"
 url="https://ruffle.rs/"
 license=("MIT OR Apache-2.0")
 makedepends=("cargo" "cmake" "java-environment" "npm" "nodejs-lts-iron"
-             "wasm-bindgen" "binaryen" "gtk3" "alsa-lib" "libxcb" "systemd-libs"
-             "clang" "jq" "git" "chromium" "openssl")
+             "binaryen" "gtk3" "alsa-lib" "libxcb" "systemd-libs"
+             "clang" "jq" "git" "chromium" "openssl" "yq" "rust-wasm")
 source=("git+https://github.com/ruffle-rs/ruffle.git#tag=$_channel-$_date"
         "chromium-extension-ruffle.key")
 sha256sums=('3b18d0f94041c70dbaa832456dab610512fb1c30a6847d5e176edfd15acae9c2'
@@ -29,8 +29,11 @@ options=("!lto")
 _FIREFOX_EXTRNSION_ID="ruffle@ruffle.rs"
 
 prepare() {
-    cd "$srcdir/$pkgbase"
+    cd "$srcdir/ruffle"
     export RUSTUP_TOOLCHAIN=stable
+    local wasm_bindgen_version require_wasm_bindgen_version
+    require_wasm_bindgen_version="$(tomlq -r '.package[] | select(.name == "wasm-bindgen") | .version' Cargo.lock)"
+    cargo install wasm-bindgen-cli --version "$require_wasm_bindgen_version"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     cd web
     npm ci
@@ -49,7 +52,8 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/$pkgbase"
+    cd "$srcdir/ruffle"
+    export PATH="$PATH:$HOME/.cargo/bin"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features \
@@ -115,7 +119,7 @@ build() {
 }
 
 check() {
-    cd "$srcdir/$pkgbase"
+    cd "$srcdir/ruffle"
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features \
         --package=ruffle_desktop
@@ -133,7 +137,7 @@ package_ruffle-nightly() {
     provides=("ruffle")
     conflicts=("ruffle")
 
-    cd "$srcdir/$pkgbase"
+    cd "$srcdir/ruffle"
     local f
     find target/release -maxdepth 1 -executable -type f | while read -r f
     do
@@ -170,7 +174,7 @@ package_ruffle-demo-nightly() {
     provides=("ruffle-demo")
     conflicts=("ruffle-demo")
 
-    cd "$srcdir/$pkgbase"
+    cd "$srcdir/ruffle"
     mkdir -p "$pkgdir/usr/share/webapps"
     cp -a --no-preserve=ownership \
         web/packages/demo/dist \
@@ -189,7 +193,7 @@ package_ruffle-selfhosted-nightly() {
     provides=("ruffle-selfhosted")
     conflicts=("ruffle-selfhosted")
 
-    cd "$srcdir/$pkgbase"
+    cd "$srcdir/ruffle"
     mkdir -p \
         "$pkgdir/usr/lib/node_modules" \
         "$pkgdir/usr/share/licenses/$pkgname"
@@ -213,7 +217,7 @@ package_firefox-extension-ruffle-nightly() {
     provides=("firefox-extension-ruffle")
     conflicts=("firefox-extension-ruffle")
 
-    cd "$srcdir/$pkgbase"
+    cd "$srcdir/ruffle"
     install -Dm644 web/packages/extension/dist/firefox_unsigned.xpi \
         "$pkgdir/usr/lib/firefox/browser/extensions/$_FIREFOX_EXTRNSION_ID.xpi"
     install -Dm644 web/packages/extension/LICENSE_APACHE \
@@ -229,7 +233,7 @@ package_chromium-extension-ruffle-nightly() {
     provides=("chromium-extension-ruffle")
     conflicts=("chromium-extension-ruffle")
 
-    cd "$srcdir/$pkgbase"
+    cd "$srcdir/ruffle"
     local extension_id
     extension_id=$(<web/.chromium_extension_id)
     echo  "Installing chromium extension $extension_id..."
