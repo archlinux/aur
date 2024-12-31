@@ -1,7 +1,8 @@
 # Maintainer: envolution
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
-#
+# shellcheck shell=bash disable=SC2034,SC2154
+
 pkgname=(
   pyside2
   pyside2-tools
@@ -15,7 +16,7 @@ pkgdesc="CPython bindings generator for C++ libraries - with Debian backport pat
 arch=(x86_64)
 url="https://wiki.qt.io/Qt_for_Python"
 license=('LGPL-3.0-or-later')
-depends=(cmake python-setuptools python-wheel llvm clang
+depends=(cmake python-setuptools python-wheel python-numpy llvm clang
   qt5-multimedia qt5-tools qt5-sensors qt5-charts qt5-webengine qt5-datavis3d
   qt5-websockets qt5-speech qt5-3d qt5-svg qt5-script qt5-scxml qt5-x11extras
   qt5-quickcontrols2 qt5-serialport qt5-remoteobjects qt5-xmlpatterns)
@@ -183,3 +184,4 @@ package_pyside2-tools() {
   # Remove files provided by qt5-base
   rm "${pkgdir}/usr/bin/"{rcc,uic,designer,pyside_tool.py}
 }
+# vim:set ts=2 sw=2 et:

@@ -8,6 +8,7 @@ pkgbase = pyside2
 	depends = cmake
 	depends = python-setuptools
 	depends = python-wheel
+	depends = python-numpy
 	depends = llvm
 	depends = clang
 	depends = qt5-multimedia
