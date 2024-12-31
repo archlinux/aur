@@ -1,0 +1,11 @@
+pkgbase = clofn
+	pkgdesc = Closure function implementation for C
+	pkgver = r5+g6a159aa
+	pkgrel = 1
+	url = https://github.com/yulon/clofn
+	arch = any
+	license = custom:None
+	source = clofn-6a159aa70586c813b71404328aec0bb97abd174f.tar.gz::https://github.com/yulon/clofn/archive/6a159aa70586c813b71404328aec0bb97abd174f.tar.gz
+	b2sums = fcea33f6a0c2a7ba660c07750a58acd3253dd4a051ff92c9013282e68c40d3d7c41f4b430e8eb8f7db0168c8ad2c8aa7fce68325734aa3f2fd5d2382b47e3980
+
+pkgname = clofn
