@@ -1,7 +1,7 @@
 # Maintainer: Dinamyc <dinamycdinamyc at gmail dot com>
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=oblivion-desktop-bin
-pkgver=2.25.1
+pkgver=2.29.0
 pkgrel=1
 pkgdesc="Unofficial Warp Client for Windows/Mac/Linux (Pre-compiled version)"
 arch=('x86_64' 'aarch64')
@@ -27,15 +27,11 @@ source=(
 
 # Initialize the sha256sums array
 if [[ "$CARCH" == "x86_64" ]]; then
-    sha256sums=(
-        'a1f0320bd88545faeba327a23a31a7fc5a2dbe85c1b485a655d7211bc6cf349b'  # Checksum for x86_64 .deb
-        '1c13293911a8d0cf50858ed9e2c4f9d0eb8df7ae5f1760f192604cb0f1abd6e8'  # Checksum for LICENSE.md
-    )
+    sha256sums=('10a337d7b5e1499923ab65de1a3760ee517438af2d56c7a5450271674d0fd2c2'
+                '1c13293911a8d0cf50858ed9e2c4f9d0eb8df7ae5f1760f192604cb0f1abd6e8')
 elif [[ "$CARCH" == "aarch64" ]]; then
-    sha256sums=(
-        'af28c49fb7a83b9ea75268ec14e8d91262767f679beda02115d5381726bb707c'  # Checksum for aarch64 .deb
-        '1c13293911a8d0cf50858ed9e2c4f9d0eb8df7ae5f1760f192604cb0f1abd6e8'  # Checksum for LICENSE.md
-    )
+    sha256sums=('25b3d7b8a5a36ccdd0e378e87320ac3ece3ef66a79a9c1b23fb931a32c8fa6a0'
+                '1c13293911a8d0cf50858ed9e2c4f9d0eb8df7ae5f1760f192604cb0f1abd6e8')
 else
     echo "Unsupported architecture: $CARCH"
     exit 1
