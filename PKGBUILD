@@ -1,13 +1,13 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-geocoder
 pkgver=1.38.1
-pkgrel=6
+pkgrel=7
 pkgdesc="A simple and consistent geocoding library"
 url="https://github.com/DenisCarriere/geocoder"
 license=('MIT')
 arch=('any')
-depends=('python-requests' 'python-ratelim' 'python-click' 'python-six' 'python-future')
+depends=('python-requests' 'python-ratelim' 'python-click' 'python-six' 'python')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-requests-mock')
 source=("https://pypi.io/packages/source/g/geocoder/geocoder-$pkgver.tar.gz")
