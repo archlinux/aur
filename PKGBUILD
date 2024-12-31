@@ -1,7 +1,7 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=atopile
-pkgver=0.2.47
+pkgver=0.2.69
 pkgrel=1
 pkgdesc="A tool to build electronic circuit boards with code"
 arch=(any)
@@ -16,18 +16,24 @@ depends=(
   python-click
   python-deepdiff
   python-eseries
-  python-flask
-  python-flask-cors
   python-gitpython
   python-jinja
   python-natsort
+  python-networkx
   python-pint
+  python-pydantic
+  python-quart
+  python-quart-cors
+  python-quart-schema
   python-requests
   python-rich
   python-ruamel-yaml
+  python-scipy
   python-semver
   python-toolz
-  python-waitress
+  python-urllib3
+  python-watchfiles
+  python-yaml
 )
 makedepends=(
   python-build
@@ -37,30 +43,23 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('97f6902b061b01e5268c37fa58c725fb3237f48287d6e6822b6517c8b22a7798')
-
-_archive="$pkgname-$pkgver"
+sha256sums=('d10215b07bb99e90ce05dbb9892e1461bd22c27de3588c7bfcbb0080e17de547')
 
 build() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_archive"
-
-  rm -rf tmp_install
-  python -m installer --destdir=tmp_install dist/*.whl
-
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  export PYTHONPATH="$PWD/tmp_install/$site_packages"
-  pytest --override-ini="addopts="
+  cd $pkgname-$pkgver
+  rm -rf test-env
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest --override-ini="addopts="
 }
 
 package() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
