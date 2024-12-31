@@ -1,6 +1,6 @@
 # Maintainer: Michał Szmidt  <michal.sz@disroot.org>
 pkgname=hctl
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="CLI Tool to transform, merge, remove duplicates, validate hostlists for dns adblocker"
 # hctl is known to build on many architectures, those below are just known to build on other build systems like Alpine Linux and SUSE OBS, feel free to add
@@ -10,7 +10,7 @@ license=(BSD-3-Clause)
 depends=(openssl)
 makedepends=( openssl rust cargo-auditable base-devel )
 source=("https://github.com/michalszmidt/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('852f8e8eb0133f21d2f2183ab31ecda07e907480dde805d1891dc8c0215185ef')
+sha256sums=('852949ce6d4599e7c45f6cb65b1f92ef250ddf3bcf639eabd5381aee3db99cda')
 
 build() {
 	cd "$pkgname-$pkgver"
