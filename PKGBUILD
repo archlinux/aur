@@ -5,7 +5,7 @@
 
 # Maintainer: Nnisarg Gada <contact@nnisarg.in>
 pkgname=cpig-git
-pkgver=r14.fd38047
+pkgver=1.0.r14.fd38047
 pkgrel=1
 pkgdesc="CPIG: Color Palette Inference Generator is a simple C-based program that generates a color palette from an image file using K-means clustering."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/cpig"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
