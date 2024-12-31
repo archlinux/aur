@@ -1,13 +1,13 @@
 # Maintainer: robertfoster
 
 pkgname=whisper.cpp
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Port of OpenAI's Whisper model in C/C++ (with OPENBlas CPU optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
 license=("MIT")
-depends=('blas-openblas' 'glibc' 'gcc-libs' 'openmp')
+depends=('blas-openblas')
 makedepends=(
   'cmake'
   'git'
@@ -45,4 +45,4 @@ package() {
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-sha256sums=('d48e1b5b6ee18b931e98ac791eba838f83eb3b81bb8917db37fe9a79fa5e3ccb')
+sha256sums=('a36faa04885b45e4dd27751a37cb54300617717dbd3b7e5ec336f830e051a28c')
