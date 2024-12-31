@@ -1,7 +1,7 @@
 pkgbase = huaweicloudmeeting-bin
 	pkgdesc = HuaWei Cloud Meeting.Prebuilt version.Use system-wide electron."云端"协同的会议解决方案，全平台接入，全球覆盖，提供高清、稳定、安全、高效的极简会议体验
 	pkgver = 9.12.5
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.huaweicloud.com/product/meeting
 	arch = x86_64
 	license = LicenseRef-unknown
@@ -10,7 +10,7 @@ pkgbase = huaweicloudmeeting-bin
 	conflicts = huaweicloudmeeting
 	conflicts = welink
 	conflicts = deepin-wine-welink
-	source = huaweicloudmeeting-9.12.5.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store//office/huaweicloudmeeting/huaweicloudmeeting_9.12.5_amd64.deb
+	source = huaweicloudmeeting-9.12.5.deb::https://mirrors.sdu.edu.cn/spark-store/amd64-store/office/huaweicloudmeeting/huaweicloudmeeting_9.12.5_amd64.deb
 	source = huaweicloudmeeting.sh
 	sha256sums = 60e15e2a93c0529c4573a6c616e76b3e74f61f4f160e7d3279fde28993982f1f
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980

@@ -4,11 +4,11 @@ _pkgname=HuaWeiCloudMeeting
 _zhsname="华为云会议"
 pkgver=9.12.5
 _electronversion=22
-pkgrel=5
+pkgrel=6
 pkgdesc='HuaWei Cloud Meeting.Prebuilt version.Use system-wide electron."云端"协同的会议解决方案，全平台接入，全球覆盖，提供高清、稳定、安全、高效的极简会议体验'
 arch=('x86_64')
 url="https://www.huaweicloud.com/product/meeting"
-_downurl="https://mirrors.sdu.edu.cn/spark-store-repository/store"
+_dlurl="https://mirrors.sdu.edu.cn/spark-store/amd64-store"
 license=('LicenseRef-unknown')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=(
@@ -21,18 +21,18 @@ depends=(
 )
 source=(
     #"${pkgname%-bin}-${pkgver}.deb::https://softclient.meeting.huaweicloud.com/HUAWEICLOUDMeeting_DomesticOS.deb"
-    "${pkgname%-bin}-${pkgver}.deb::${_downurl}//office/huaweicloudmeeting/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_dlurl}/office/${pkgname%-bin}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('60e15e2a93c0529c4573a6c616e76b3e74f61f4f160e7d3279fde28993982f1f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+        s/@options@//g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -e "
