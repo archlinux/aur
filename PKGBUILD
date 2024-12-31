@@ -2,8 +2,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tvtower-bin
 _pkgname=TVTower
-pkgver=0.8.3
-_subver=20241223
+pkgver=0.8.3.1
+_subver=20241231
 pkgrel=1
 pkgdesc="A tribute to Mad TV. Written in BlitzMax, Lua and a bit of C.(Prebuilt version)"
 arch=(
@@ -29,7 +29,7 @@ source=(
 	"${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_${_subver}.zip"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('b06a50e3ba7c6620b470bac563006dd8158679fbe86fd9e864b62c502db812b6'
+sha256sums=('08b780bce4911e28ed06345080956defbe97038ca2bdc17749e5782d7f3f7155'
             '66ba0a42698a2815cfec1c2a5a2b459e4ea9c054481c859acf5dd4aa84d49ce8')
 prepare() {
 	case "${CARCH}" in
