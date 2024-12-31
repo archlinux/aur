@@ -1,6 +1,6 @@
 pkgbase = python-pyelf2rel
 	pkgdesc = Python tools for creating Nintendo REL files
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/SeekyCt/pyelf2rel
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-pyelf2rel
 	makedepends = python-hatchling
 	makedepends = python-hatch-vcs
 	depends = python-pyelftools
-	source = https://files.pythonhosted.org/packages/source/p/pyelf2rel/pyelf2rel-1.0.4.tar.gz
-	sha256sums = 7e57d2a5edc31feb7a4b611f15c65d302dd91d82aa02a3689d5d57f00b511a98
+	source = https://files.pythonhosted.org/packages/source/p/pyelf2rel/pyelf2rel-1.0.5.tar.gz
+	sha256sums = a438264517a704eae84e2508847889a689189c3cb1d70bdaebbb6f7b05ca35e1
 
 pkgname = python-pyelf2rel
