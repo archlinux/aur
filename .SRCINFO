@@ -1,7 +1,7 @@
 pkgbase = localbooru
-	pkgdesc = LocalBooru is a cross-platform local booru collection that works exclusively on local storage.
+	pkgdesc = A cross-platform local booru collection that works exclusively on local storage.
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/resucutie/localbooru
 	arch = x86_64
 	license = GPL-3.0
