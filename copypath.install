@@ -1,0 +1,3 @@
+post_install() {
+	echo "Please close all nemo instances and reopen to apply."
+}
