@@ -1,10 +1,12 @@
 pkgbase = js-design-electron-bin
 	pkgdesc = 即时设计 A professional UI design software tailored for Chinese designers.Use system-wide electron.
 	pkgver = 1.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://js.design
 	arch = x86_64
 	license = LicenseRef-custom
+	makedepends = asar
+	makedepends = fuse2
 	depends = electron15
 	conflicts = js-design
 	source = js-design-electron-1.0.7.AppImage::https://img.js.design/assets/download/%E5%8D%B3%E6%97%B6%E8%AE%BE%E8%AE%A1%20Linux%E7%89%88.AppImage
