@@ -1,5 +1,6 @@
 # Maintainer: raininja < dandenkijin 'at' gmail 'dot' com >
 pkgname=daytona-new
+pkgbasename=daytona
 pkgver=0.50.0
 pkgrel=1
 pkgdesc="The Open Source Dev Environment Manager."
@@ -9,7 +10,7 @@ license=('Apache')
 optdepends=('docker')
 makedepends=('go')
 provides=('daytona')
-source=("daytona-v${pkgver}.zip::https://github.com/daytonaio/${pkgname}/archive/refs/tags/v${pkgver}.zip")
+source=("daytona-v${pkgver}.zip::https://github.com/daytonaio/${pkgbasename}/archive/refs/tags/v${pkgver}.zip")
 sha256sums=('f2459c43e020c879cda6d9a287e4bd8fc3a3080c39d0586de497f5d2a34ffa7c')
 
 prepare() {
