@@ -10,7 +10,7 @@ pkgname='dmarc_report'
 pkgdesc='"Generate human readable DMARC and TLS reports from standard email reports.'
 _gitname='dmarc_report'
 
-pkgver=4.12.1
+pkgver=4.12.3
 pkgrel=1
 url="https://github.com/gene-git/dmarc_report"
 
@@ -29,6 +29,7 @@ _mkpkg_depends=('python>minor')
 #   Key available via WKD or dowload from https://www.sapience.com/tech
 #   Note that upstream release procedure requires every tagged release have new tag
 #
+validpgpkeys=( '7CCA1BA66669F3273DB52678E5B81343AB9809E1')   # Gene C
 
 #source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}?signed")
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
