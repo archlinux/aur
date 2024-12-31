@@ -1,23 +1,13 @@
 pkgbase = wechat-bwrap
-	pkgdesc = Sandboxing for WeChat. 沙盒微信.
-	pkgver = 4
-	pkgrel = 2
-	epoch = 1
+	pkgdesc = Empty meta package for migration purpose.
+	pkgver = 1
+	pkgrel = 1
+	epoch = 2
 	url = https://github.com/Kraftland/portable
 	arch = any
 	license = GPL3
 	depends = wechat
-	depends = portable
-	provides = wechat-uos-bwrap
-	provides = wechat-uos-qt
-	provides = wechat-universal-bwrap
-	provides = wechat-bwrap
-	provides = wechat-portable
-	provides = wechat-beta-bwrap
-	provides = wechat-sandbox-provider
 	options = !debug
 	options = !strip
-	source = portable-config
-	md5sums = 32a9d57f29a180cb2e92768f384eca78
 
 pkgname = wechat-bwrap
