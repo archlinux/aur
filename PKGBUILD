@@ -1,4 +1,4 @@
-# Maintainer: peippo <christoph.fink@gmail.com>
+# Contributor: peippo <christoph.fink@gmail.com>
 
 pkgname=python-fasttext-git
 pkgdesc="Library for fast text representation and classification – Python bindings"
@@ -7,14 +7,14 @@ url="https://github.com/facebookresearch/fastText"
 provides=("python-fasttext")
 conflicts=("python-fasttext")
 
-pkgver=v0.9.2.r9.g0622aad
-pkgrel=2
+pkgver=v0.9.2.r18.g1142dc4
+pkgrel=1
 
 arch=("any")
 license=("BSD")
 
-makedepends=("python-setuptools" "git")
-depends=("pybind11" "python-future" "python-numpy" "python-scipy" "python-pytorch")
+makedepends=("python-setuptools" "git" "pybind11")
+depends=("python-numpy" "glibc" "gcc-libs" "python")
 
 source=(
     "${pkgname}::git+https://github.com/facebookresearch/fastText.git"
