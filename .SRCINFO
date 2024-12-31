@@ -1,6 +1,6 @@
 pkgbase = gst-plugins-rs-git
 	pkgdesc = GStreamer plugins written in Rust
-	pkgver = r2644.6346d560
+	pkgver = r3748.3aa1fa81
 	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = gst-plugins-rs-git
 	makedepends = clang
 	makedepends = git
 	makedepends = meson
+	makedepends = nasm
 	makedepends = rust
 	depends = dav1d
 	depends = gstreamer
@@ -20,6 +21,7 @@ pkgbase = gst-plugins-rs-git
 	depends = libwebp
 	provides = gst-plugins-rs
 	conflicts = gst-plugins-rs
+	options = !lto
 	source = gst-plugins-rs::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git
 	sha256sums = SKIP
 
