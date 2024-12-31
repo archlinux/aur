@@ -1,9 +1,9 @@
 # Maintainer: epitron <chris AT ill-logic.com>
 
 pkgname=ansilove
-pkgver=4.1.6
+pkgver=4.2.0
 pkgrel=1
-libver=1.3.1
+libver=1.4.1
 pkgdesc='A program to convert ANSI and artscene related file formats into PNG images'
 url='https://ansilove.org/'
 license=('BSD')
@@ -13,8 +13,8 @@ source=(
   "https://github.com/ansilove/ansilove/releases/download/${pkgver}/ansilove-${pkgver}.tar.gz"
   "https://github.com/ansilove/libansilove/releases/download/${libver}/libansilove-${libver}.tar.gz"
 )
-sha256sums=('acc3d6431cdb53e275e5ddfc71de5f27df2f2c5ecc46dc8bb62be9e6f15a1cd0'
-            '4919d9a1243df7b23de677ea595f56aa7f6be7187fb0835f1915a06865c11f85')
+sha256sums=('a2f24918ffe01332ea18b2ffab2da4ccad55c7e4a4edcf1c64a1c017d2e4e930'
+            'c6aa32bcef54b05b9af535c621f7044156295a49cea3cfaf1c868e359be59203')
 arch=('x86_64' 'i686')
 
 build() {
