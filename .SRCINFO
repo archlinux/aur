@@ -1,0 +1,11 @@
+pkgbase = zlang
+	pkgdesc = Plugin framework for namespace macros in C/C++
+	pkgver = r10+g5bea72b
+	pkgrel = 1
+	url = https://github.com/pfultz2/ZLang
+	arch = any
+	license = BSL-1.0
+	source = ZLang-5bea72bf13def83f000b9f0398576a6102f78df6.tar.gz::https://github.com/pfultz2/ZLang/archive/5bea72bf13def83f000b9f0398576a6102f78df6.tar.gz
+	sha256sums = dd7d6c590caa9670bd8ded21e391a02b03ad30dd0cc627a401c003d063c4bbda
+
+pkgname = zlang
