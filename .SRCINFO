@@ -1,7 +1,7 @@
 pkgbase = python-blue-loader
 	pkgdesc = Python tools to communicate with Ledger Blue, Nano S and Nano X
 	pkgver = 0.1.54
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/LedgerHQ/blue-loader-python
 	arch = any
 	license = Apache
@@ -13,8 +13,6 @@ pkgbase = python-blue-loader
 	depends = python-hidapi
 	depends = python-protobuf
 	depends = python-pycryptodomex
-	depends = python-future
-	depends = python-pillow
 	depends = python-websocket-client
 	depends = python-u2flib-host
 	depends = python-ecpy
