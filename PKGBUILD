@@ -4,8 +4,8 @@ _pkgname=Alpha-Badger
 pkgver=0.4.1
 _electronversion=19
 _nodeversion=16
-pkgrel=10
-pkgdesc="UI wrapper around FFmpeg.Use system-wide electron."
+pkgrel=11
+pkgdesc="UI wrapper around FFmpeg.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/NoamRa/alpha-badger"
 license=('MIT')
@@ -36,7 +36,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -65,6 +65,9 @@ build() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     npm run package
 }
 package() {

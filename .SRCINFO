@@ -1,7 +1,7 @@
 pkgbase = alpha-badger
-	pkgdesc = UI wrapper around FFmpeg.Use system-wide electron.
+	pkgdesc = UI wrapper around FFmpeg.(Use system-wide electron)
 	pkgver = 0.4.1
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/NoamRa/alpha-badger
 	arch = any
 	license = MIT
