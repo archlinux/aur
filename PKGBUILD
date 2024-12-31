@@ -2,7 +2,7 @@
 
 pkgname=proto
 pkgdesc='Pluggable multi-language version manager'
-pkgver=0.44.1
+pkgver=0.44.2
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/moonrepo/proto'
@@ -11,7 +11,7 @@ depends=('git' 'gcc-libs' 'xz')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ba9821f58bc4326340258122905a7c7946db1dcf3056a51bb88fc64d812c5bba')
+sha256sums=('1de5f781f79d02ac4f17a56a9ee6783a15d0cda77b2b1bcd80bab9e5bac9285b')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
