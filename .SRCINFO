@@ -1,0 +1,12 @@
+pkgbase = obj.h
+	pkgdesc = OOP in pure C with a single-header
+	pkgver = r204+gc9f00cf
+	pkgrel = 1
+	url = https://github.com/small-c/obj.h
+	arch = any
+	license = MIT
+	checkdepends = xmake
+	source = obj.h-c9f00cf063fb1f54a5e5c87a60af69564e719a8f.tar.gz::https://github.com/small-c/obj.h/archive/c9f00cf063fb1f54a5e5c87a60af69564e719a8f.tar.gz
+	b2sums = 33d6aec1cf0f2afc74fa233a73a12fccef2afecbc030a4205c23f4063756d59a08c9bed99a78c9bd1e20eaecabedc64af6a35b47ba4aeaccbe9413f3805f74b7
+
+pkgname = obj.h
