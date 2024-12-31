@@ -25,38 +25,31 @@ prepare() {
     tar -xvf ./hledger-linux-x64.tar
 }
 
-package_hledger-bin() {
-    pkgdesc='Command-line interface for the hledger accounting system'
-    provides=(hledger="$pkgver")
-    conflicts=(hledger)
-    _pkgname="${pkgname%-bin}"
-
+_common_package() {
+    _pkgname="$1"
     install -Dm 755 "$_pkgname" -t "$pkgdir/usr/bin/"
     install -Dm 644 hledger-completion.bash \
         "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
     install -Dm 644 "$_pkgname".1 -t "$pkgdir/usr/share/man/man1/"
+}
+
+package_hledger-bin() {
+    pkgdesc='Command-line interface for the hledger accounting system'
+    provides=(hledger="$pkgver")
+    conflicts=(hledger)
+    _common_package hledger
 }
 
 package_hledger-ui-bin() {
     pkgdesc='Curses-style terminal interface for the hledger accounting system'
     provides=(hledger-ui="$pkgver")
     conflicts=(hledger-ui)
-    _pkgname="${pkgname%-bin}"
-
-    install -Dm 755 "$_pkgname" -t "$pkgdir/usr/bin/"
-    install -Dm 644 hledger-completion.bash \
-        "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
-    install -Dm 644 "$_pkgname".1 -t "$pkgdir/usr/share/man/man1/"
+    _common_package hledger-ui
 }
 
 package_hledger-web-bin() {
     pkgdesc='Web-based user interface for the hledger accounting system'
     provides=(hledger-web="$pkgver")
     conflicts=(hledger-web)
-    _pkgname="${pkgname%-bin}"
-
-    install -Dm 755 "$_pkgname" -t "$pkgdir/usr/bin/"
-    install -Dm 644 hledger-completion.bash \
-        "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
-    install -Dm 644 "$_pkgname".1 -t "$pkgdir/usr/share/man/man1/"
+    _common_package hledger-web
 }
