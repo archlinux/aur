@@ -1,0 +1,13 @@
+pkgbase = libpp
+	pkgdesc = Functional-programming macros for the C preprocessor.
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/mcinglis/libpp
+	arch = any
+	license = MIT
+	checkdepends = bash
+	makedepends = python
+	source = libpp-2.4.1.tar.gz::https://github.com/mcinglis/libpp/archive/refs/tags/v2.4.1.tar.gz
+	b2sums = 7a3e9d1431c226c956b38eee01ad3a8462b20778c3168eeed7869fb6abaa3796545834da99a2f42ce88d0d85c8e1388dc090828984cf4a0864ea8253429ecadb
+
+pkgname = libpp

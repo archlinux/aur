@@ -1,0 +1,4 @@
+[libpp]
+source = "git"
+git = "https://github.com/mcinglis/libpp.git"
+prefix = "v"
