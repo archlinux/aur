@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 
 pkgname=agebox
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Git repository encryption tool'
 arch=('x86_64' 'i386')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver::$url/archive/v$pkgver.tar.gz")
-sha256sums=('abecfad8737606e7f6e7b74461b26af20dcae3f6ab248d2ebc53977cf299b445')
+sha256sums=('35284710da7874452f4107ca0dd7c8b0dd1ae337f63ddc0677fb7ce84777f5a9')
 
 prepare(){
   cd "$pkgname-$pkgver"
