@@ -1,0 +1,12 @@
+pkgbase = macrofun
+	pkgdesc = Standards-defying functional-programming macros for the C preprocessor
+	pkgver = r6+g5432623
+	pkgrel = 1
+	url = https://github.com/mcinglis/macrofun
+	arch = any
+	license = MIT
+	checkdepends = bash
+	source = macrofun-543262399b06d08f4fc6f41eebdc4df88c41eb76.tar.gz::https://github.com/mcinglis/macrofun/archive/543262399b06d08f4fc6f41eebdc4df88c41eb76.tar.gz
+	b2sums = 61bcdf696e3accf8add95de7be6a5bd2d0f6444707796bb527dc72f658280157b43648bfcf96ff11f59c98646e42eaa6bf8e5b14ee17676aef83635252ffb21f
+
+pkgname = macrofun
