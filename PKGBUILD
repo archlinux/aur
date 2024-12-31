@@ -4,7 +4,7 @@
 
 pkgname=python-orange-canvas-core
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Orange Canvas core workflow editor."
 arch=('x86_64')
 url="https://orangedatamining.com"

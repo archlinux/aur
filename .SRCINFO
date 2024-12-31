@@ -1,7 +1,7 @@
 pkgbase = python-orange-canvas-core
 	pkgdesc = Orange Canvas core workflow editor.
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://orangedatamining.com
 	arch = x86_64
 	license = GPL3
