@@ -1,0 +1,27 @@
+pkgbase = wechat
+	pkgdesc = Fixes and optional sandbox for WeChat.
+	pkgver = 4
+	pkgrel = 2
+	epoch = 1
+	url = https://github.com/Kraftland/portable
+	arch = any
+	license = GPL3
+	depends = wechat-bin
+	depends = portable
+	provides = wechat-uos-bwrap
+	provides = wechat-uos-qt
+	provides = wechat-universal-bwrap
+	provides = wechat-bwrap
+	provides = wechat-portable
+	provides = wechat-beta-bwrap
+	provides = wechat-sandbox-provider
+	provides = wechat-bwrap
+	replaces = wechat-bwrap
+	options = !debug
+	options = !strip
+	source = portable-config
+	source = wechat.desktop
+	md5sums = d040d6a8dc61703ab42c2cb3a79eb396
+	md5sums = 6aba5c58fb93a819299130694b86665f
+
+pkgname = wechat
