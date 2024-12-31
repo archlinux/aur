@@ -1,14 +1,14 @@
 pkgbase = localbooru
 	pkgdesc = A cross-platform local booru collection that works exclusively on local storage.
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/resucutie/localbooru
 	arch = x86_64
 	license = GPL-3.0
 	depends = bash
 	source = localbooru-1.6.0.zip::https://github.com/resucutie/localbooru/releases/download/1.6.0/localbooru-linux-binaries.zip
 	source = icon.png
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 520951150e1a0a28edfb7eb1faad2b591f8b1c58f5bc05d5ca2661e61470dbf7
+	sha256sums = 7258c7fca495ae03bcb8117bcb9f5d851f970ac39538aa6f09544acb612cc724
 
 pkgname = localbooru
