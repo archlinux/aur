@@ -1,0 +1,11 @@
+pkgbase = pplisp
+	pkgdesc = C pre-processor LISP
+	pkgver = r8+gdf06b8a
+	pkgrel = 1
+	url = https://github.com/cospplredman/PPLISP
+	arch = any
+	license = MIT
+	source = PPLISP-df06b8ac47623b6b2771e9481cff482b741d2c4d.tar.gz::https://github.com/cospplredman/PPLISP/archive/df06b8ac47623b6b2771e9481cff482b741d2c4d.tar.gz
+	b2sums = c0c81f5a7f7f310066ba34b1d5c9242ebbac0c389710c392498078b5e5ce992e764aeb84bc20c32402bd93a1100942bb483a6801540b908a4ac3240a98b6bd2a
+
+pkgname = pplisp
