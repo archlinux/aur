@@ -1,6 +1,6 @@
 pkgbase = python-bravado-core
 	pkgdesc = Python library client-side and server-side support for the OpenAPI Specification v2.0
-	pkgver = 5.17.1
+	pkgver = 6.1.1
 	pkgrel = 1
 	url = https://github.com/Yelp/bravado-core
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-bravado-core
 	depends = python-pytz
 	depends = python-msgpack
 	depends = python-requests
-	source = python-bravado-core-5.17.1.tar.gz::https://github.com/Yelp/bravado-core/archive/refs/tags/v5.17.1.tar.gz
-	md5sums = 5923ba2e359e32bffe12d180ee79f808
+	source = python-bravado-core-6.1.1.tar.gz::https://github.com/Yelp/bravado-core/archive/refs/tags/v6.6.1.tar.gz
+	md5sums = 47432f4e80688bf8803a74bf1a855a51
 
 pkgname = python-bravado-core
