@@ -3,8 +3,8 @@ pkgname=apk-installer
 pkgver=1.6.0
 _electronversion=10
 _nodeversion=16
-pkgrel=10
-pkgdesc="Apk installer software, quickly install Apk to mobile phones.一款Apk安装器软件,快速安装Apk至手机。"
+pkgrel=11
+pkgdesc="Apk installer software, quickly install Apk to mobile phones.(Use system-wide electron)一款Apk安装器软件,快速安装Apk至手机。"
 arch=('any')
 url="https://github.com/zhujiaming/apk-installer"
 license=('MIT')
@@ -31,7 +31,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -71,6 +71,9 @@ build() {
     sed -i "s/\/\/ icon/icon/g;s/icon\.icns/icon\.png/g" build.config.js
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config build.config.js"
 }
 package() {

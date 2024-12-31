@@ -1,7 +1,7 @@
 pkgbase = apk-installer
-	pkgdesc = Apk installer software, quickly install Apk to mobile phones.一款Apk安装器软件,快速安装Apk至手机。
+	pkgdesc = Apk installer software, quickly install Apk to mobile phones.(Use system-wide electron)一款Apk安装器软件,快速安装Apk至手机。
 	pkgver = 1.6.0
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/zhujiaming/apk-installer
 	arch = any
 	license = MIT
