@@ -1,6 +1,6 @@
 pkgbase = restic-browser
 	pkgdesc = A GUI to browse and restore restic backup repositories.
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/emuell/restic-browser
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = restic-browser
 	makedepends = appmenu-gtk-module
 	makedepends = cargo
 	makedepends = gtk3
+	makedepends = jq
 	makedepends = libappindicator-gtk3
 	makedepends = librsvg
 	makedepends = libvips
@@ -26,9 +27,9 @@ pkgbase = restic-browser
 	depends = webkit2gtk
 	provides = restic-browser
 	conflicts = restic-browser
-	source = restic-browser-0.3.1.tar.gz::https://github.com/emuell/restic-browser/archive/refs/tags/v0.3.1.tar.gz
+	source = restic-browser-0.3.2.tar.gz::https://github.com/emuell/restic-browser/archive/refs/tags/v0.3.2.tar.gz
 	source = restic-browser.desktop
-	sha256sums = bbad8cf99e11a32f30491625b956ef1f22f39d1973ada4988c9202f2e194870a
+	sha256sums = 2f6e540e605ac46fdc7e890b1950c2b4c07445fef23f3d2e87d50b8c8a998f58
 	sha256sums = 74e63083d076cdd3f5de3917e5c242b40e61119fbc3aaac013607b63824a8f71
 
 pkgname = restic-browser
