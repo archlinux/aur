@@ -1,6 +1,6 @@
 pkgbase = nasm-segelf-git
 	pkgdesc = 80x86 assembler designed for portability and modularity. 'elf16' branch.
-	pkgver = 2.16.01+30.r4913.20231207.g13292aec
+	pkgver = 2.16.01+2+17.r4913.20231207.g13292aec
 	pkgrel = 2
 	epoch = 1
 	url = https://github.com/stsp/nasm/tree/elf16
@@ -20,7 +20,7 @@ pkgbase = nasm-segelf-git
 	makedepends = xmlto
 	depends = gcc-libs
 	depends = glibc
-	provides = nasm-segelf=2.16.01+30
+	provides = nasm-segelf=2.16.01+2+17
 	conflicts = nasm-segelf
 	source = nasm-segelf::git+https://github.com/stsp/nasm.git#branch=elf16
 	b2sums = SKIP

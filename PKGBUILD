@@ -4,7 +4,7 @@
 
 _pkgname="nasm-segelf"
 pkgname="${_pkgname}-git"
-pkgver=2.16.01+30.r4913.20231207.g13292aec
+pkgver=2.16.01+2+17.r4913.20231207.g13292aec
 pkgrel=2
 epoch=1
 pkgdesc="80x86 assembler designed for portability and modularity. 'elf16' branch."
@@ -57,7 +57,7 @@ prepare() {
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  _ver="$(git describe --tags | sed -E  -e 's|^nasm\-||' -e 's|^[vV]||' | sed -E 's|\-g[0-9a-f]+$||' | tr '-' '+')"
+  _ver="$(git describe --tags | sed -E  -e 's|^nasm\-||' -e 's|^segelf\-||' -e 's|^[vV]||' | sed -E 's|\-g[0-9a-f]+$||' | tr '-' '+')"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -n 1 --format=tformat:%ci | awk '{print $1}' | tr -d '-')"
   _hash="$(git rev-parse --short HEAD)"
