@@ -1,0 +1,12 @@
+--- /src/tfpython.c	2024-12-31 15:13:23.978701322 -0500
++++ /src/tfpython.c	2024-12-31 15:13:28.002094876 -0500
+@@ -401,8 +401,7 @@
+ 	// Okay, so now it's callable, give it the string.
+ 	// We go through all this because otherwise the quoting problem is insane.
+ 	arglist = Py_BuildValue( "(s)", argstr );
+-	pRc = PyEval_CallObject( function, arglist );
+-
++	pRc = PyObject_CallObject( function, arglist );
+ bail:
+ 	Py_XDECREF( function );
+ 	Py_XDECREF( arglist );
