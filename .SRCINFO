@@ -1,0 +1,15 @@
+pkgbase = ogw
+	pkgdesc = Compiler for CNoEvil, a C superset using macros to simulate higher-level features
+	pkgver = r34+gebb1249
+	pkgrel = 1
+	url = https://git.sr.ht/~shakna/ogw
+	arch = x86_64
+	license = custom:BSD-3-Clause-like
+	makedepends = klib
+	makedepends = xxd
+	depends = glibc
+	depends = tcc
+	source = ogw-ebb12498e9e5a3f1e53dc93ded233afd683b07b4.tar.gz::https://git.sr.ht/~shakna/ogw/archive/ebb12498e9e5a3f1e53dc93ded233afd683b07b4.tar.gz
+	b2sums = 739ed75aff25e311ba8cd9ff0860ed0b6d1c1b14d94ae4e73613dc1942991cd5110d631e14e534dd0a53433e82109c95a18e658f61ea72eb765c8abcf339013a
+
+pkgname = ogw
