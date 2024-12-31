@@ -1,7 +1,7 @@
 # Maintainer: Jaël Champagne Gareau <gareau_jael@hotmail.com>
 # Contributor:
 pkgname=clustertool-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Tool to help bootstrap a Kubernetes cluster"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BUSL-1.1')
 options=("!debug")
 source=("https://github.com/truecharts/public/releases/download/v${pkgver}/clustertool_${pkgver}_linux_amd64.pkg.tar.zst"
         "https://raw.githubusercontent.com/truecharts/public/refs/heads/master/clustertool.LICENSE")
-sha256sums=('5fc03c4a4b977717b493797e382935b1d25dac3b7ec9a0279c533d379c12458d'
+sha256sums=('6da66512d869252ad3d5b3d023f50dd0b69f564566ba03827b81dc66bf58a8cb'
             '90b97d8e350b71ab689daaa3dbcb9fe752da2d821caba1952caf8ce614d6c72e')
 
 package() {
