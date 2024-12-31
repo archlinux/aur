@@ -1,24 +1,32 @@
 pkgbase = ares-emu-avx-git
 	pkgdesc = Multi-system emulator focused on accuracy and preservation
-	pkgver = 138.r54.gfc7cdb5
+	pkgver = 141.r46.g8433666
 	pkgrel = 1
 	url = https://github.com/ares-emulator/ares
 	arch = x86_64
 	license = ISC
 	makedepends = clang
+	makedepends = cmake
 	makedepends = git
 	makedepends = lld
 	makedepends = mesa
+	makedepends = ninja
 	depends = gtk3
 	depends = libao
 	depends = libgl
 	depends = libpulse
+	depends = librashader
+	depends = libretro-shaders
 	depends = libudev.so
 	depends = openal
 	depends = sdl2
-	provides = ares-emu=138
+	provides = ares-emu=141
 	conflicts = ares-emu
 	source = ares-emu::git+https://github.com/ares-emulator/ares.git
+	source = PKGBUILD.git
+	source = PKGBUILD.stable
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = ares-emu-avx-git
@@ -26,9 +34,10 @@ pkgname = ares-emu-avx-git
 	depends = libao
 	depends = libgl
 	depends = libpulse
+	depends = librashader
+	depends = libretro-shaders
 	depends = libudev.so
 	depends = openal
 	depends = sdl2
-	depends = librashader
 	depends = vulkan-driver
 	depends = vulkan-icd-loader

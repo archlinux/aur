@@ -1,6 +1,6 @@
 # Maintainer:
 
-## useful links
+## links
 # https://ares-emu.net/
 # https://github.com/ares-emulator/ares
 
@@ -15,101 +15,24 @@ unset _pkgtype
 # basic info
 _pkgname="ares-emu"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=138.r54.gfc7cdb5
+pkgver=141.r46.g8433666
 pkgrel=1
 pkgdesc="Multi-system emulator focused on accuracy and preservation"
 url="https://github.com/ares-emulator/ares"
 license=("ISC")
 arch=('x86_64')
 
-depends=(
-  'gtk3'
-  'libao'
-  'libgl'
-  'libpulse'
-  'libudev.so' # systemd-libs
-  'openal'
-  'sdl2'
-)
-makedepends=(
-  'clang'
-  'git'
-  'lld'
-  'mesa'
-)
-
 if [ "${_build_git::1}" != "t" ]; then
-  _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git")
-  sha256sums=("SKIP")
-
-  prepare() {
-    cd "$_pkgsrc"
-    _tag=$(git tag | grep -Ev '[A-Za-z]{2}' | sort -rV | head -1)
-    git checkout -f "$_tag"
-  }
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --tag | sed -E 's/^[^0-9]+//'
-  }
+  source "PKGBUILD.stable"
 else
-  provides=("$_pkgname=${pkgver%%.r*}")
-  conflicts=("$_pkgname")
-
-  _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git")
-  sha256sums=("SKIP")
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
-  }
+  source "PKGBUILD.git"
 fi
 
-build() {
-  export CC CXX CFLAGS CXXFLAGS LDFLAGS
-  CC=clang
-  CXX=clang++
-  LDFLAGS+=" -fuse-ld=lld"
-
-  if [[ "${_build_avx::1}" == "t" ]]; then
-    CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-    CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-  fi
-
-  # respect compiler flags
-  find "$_pkgsrc" -name "GNUmakefile" -exec sed -E -e 's@^(\s*)\b(flags \+=) -march=.*$@\1\2 -Qunused-arguments '"${CXXFLAGS}"'@' -i {} \;
-
-  # respect linker flags
-  find "$_pkgsrc" -name "GNUmakefile" -exec sed -E -e 's&(\+@\$\(compiler\))&\1 -Qunused-arguments '"${LDFLAGS}"' &' -i {} \;
-
-  make -C "$_pkgsrc/desktop-ui" hiro=gtk3 compiler=clang++ build=optimized
-}
-
-package() {
-  depends+=(
-    'librashader'
-    'vulkan-driver'
-    'vulkan-icd-loader'
-  )
-
-  # exec
-  install -Dm755 "$_pkgsrc/desktop-ui/out/ares" -t "$pkgdir/usr/bin/"
-
-  # icon, launcher
-  install -Dm644 "$_pkgsrc/desktop-ui/resource/ares.png" -t "$pkgdir/usr/share/pixmaps/"
-  install -Dm644 "$_pkgsrc/desktop-ui/resource/ares.desktop" -t "$pkgdir/usr/share/applications/"
-
-  # shaders and databases
-  install -dm755 "$pkgdir/usr/share/ares"
-  cp --reflink=auto -a "$_pkgsrc/thirdparty/slang-shaders/" "$pkgdir/usr/share/ares/Shaders/"
-  cp --reflink=auto -a "$_pkgsrc/mia/Database/" "$pkgdir/usr/share/ares/Database/"
-
-  # license
-  install -Dm644 "$_pkgsrc/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # permissions
-  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
-}
+source+=(
+  'PKGBUILD.git'
+  'PKGBUILD.stable'
+)
+sha256sums+=(
+  'SKIP'
+  'SKIP'
+)

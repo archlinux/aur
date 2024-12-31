@@ -1,0 +1,69 @@
+depends=(
+  'gtk3'
+  'libao'
+  'libgl'
+  'libpulse'
+  'librashader' # AUR
+  'libretro-shaders'
+  'libudev.so' # systemd-libs
+  'openal'
+  'sdl2'
+)
+makedepends=(
+  'clang'
+  'cmake'
+  'git'
+  'lld'
+  'mesa'
+  'ninja'
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=("SKIP")
+
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+build() {
+  export CC CXX CFLAGS CXXFLAGS LDFLAGS
+  CC=clang
+  CXX=clang++
+  LDFLAGS+=" -fuse-ld=lld"
+
+  if [[ "${_build_avx::1}" == "t" ]]; then
+    CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+  fi
+
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DARES_BUNDLE_SHADERS=OFF
+    -DARES_SKIP_DEPS=ON
+    -DBUILD_TESTING=OFF
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
+}
+
+package() {
+  depends+=(
+    'vulkan-driver'
+    'vulkan-icd-loader'
+  )
+
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

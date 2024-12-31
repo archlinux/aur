@@ -1,0 +1,4 @@
+[ares-emu-avx-git]
+source = "git"
+git = "https://github.com/ares-emulator/ares.git"
+prefix = "v"
