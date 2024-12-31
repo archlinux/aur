@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=TagSpaces
-Exec=tagspaces
-Terminal=false
-Type=Application
-Icon=tagspaces
-StartupWMClass=TagSpaces
-Comment=Offline file organizer and browser with tagging support.
-Categories=Office;

@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/usr/bin/bash
 
-exec @ELECTRONVERSION@ /usr/lib/tagspaces/app.asar --no-sandbox "$@"
+exec @ELECTRON@ /usr/lib/tagspaces/app.asar --no-sandbox "$@"

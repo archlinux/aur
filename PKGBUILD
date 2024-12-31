@@ -1,85 +1,59 @@
-# Maintainer: 
+# Maintainer:
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: syntheit <daniel@matv.io>
+
 pkgname=tagspaces
-pkgver=6.0.2
-pkgrel=2
-_nodeversion=20
-_electronversion=32
-pkgdesc="An offline, open source, document manager with tagging support"
+pkgver=6.1.1
+pkgrel=1
+pkgdesc="Offline file organizer and browser with tagging support"
 arch=('x86_64')
 url="https://www.tagspaces.org"
 license=('AGPL-3.0-or-later')
-depends=("electron${_electronversion}" 'libnotify' 'libsecret' 'xdg-utils')
-makedepends=('git' 'libxcrypt-compat' 'nvm')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tagspaces/tagspaces/archive/refs/tags/v$pkgver.tar.gz"
-        "$pkgname.desktop"
-        "$pkgname.sh")
-sha256sums=('3107087d5dbf70a957bd27a75ce7bf4550423bec6df6c3503c305155fef5a7d0'
-            'a548e2b62a61a93d80482ebe43ef11e33e2c2bfef9db641fc583bd5539ac6948'
-            '6a0d3ca0f31afdd7587b3dc0ed819f252c350eaeafb17472fe4b7031d4130118')
-
-_ensure_local_nvm() {
-  # let's be sure we are starting clean
-  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-  export NVM_DIR="$srcdir/.nvm"
-
-  # The init script returns 3 if version specified
-  # in ./.nvrc is not (yet) installed in $NVM_DIR
-  # but nvm itself still gets loaded ok
-  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
+_electron=electron33
+depends=('bash' "${_electron}" 'gcc-libs' 'glibc' 'nodejs')
+makedepends=('gendesk' 'git' 'npm')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tagspaces/tagspaces/archive/refs/tags/v${pkgver}.tar.gz"
+        "${pkgname}.sh")
+sha256sums=('ef26f5c6a1f90bf00a0f1cfa749d95b349db46524c875b601e0b138f03caaca9'
+            '3ece307810a9e0acedb73bb422a58233b9d0933ebfd125db6064b5ea4723a60f')
 
 prepare() {
-  cd "$pkgname-$pkgver"
-  export npm_config_cache="$srcdir/npm_cache"
-  _ensure_local_nvm
-  nvm install "${_nodeversion}"
+    cd "${pkgname}-${pkgver}"
+    gendesk -f -n \
+        --pkgname "${pkgname}" \
+        --pkgdesc "${pkgdesc}" \
+        --name 'TagSpaces' \
+        --categories 'Office' \
+        --custom StartupWMClass='TagSpaces'
 
-  # Modify build target
-  sed -i 's/"deb", "tar.gz", "appImage"/"deb"/g' resources/builder.json
+    sed "s/@ELECTRON@/${_electron}/" -i "${srcdir}/${pkgname}.sh"
 
-  # Skip husky
-  mkdir -p .git
-  npm run skip:husky:pre-commit
+    # Skip husky
+    mkdir -p .git
+    npm run skip:husky:pre-commit
 
-  npm install
-  npm run install-ext-node
+    # A key is required in order for the main application to communicate with the web server
+    echo "KEY=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 128)" > release/app/.env
 
-  # A key is required in order for the main application to communicate with the web server
-  cd release/app
-  touch .env
-  generated_key=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 128)
-  echo "KEY=${generated_key}" > .env
-
-  sed -i "s|@ELECTRONVERSION@|electron${_electronversion}|" "$srcdir/$pkgname.sh"
+    npm install
+    npm run install-ext-node-linux
 }
 
 build() {
-  cd "$pkgname-$pkgver"
-  export npm_config_cache="$srcdir/npm_cache"
-  electronDist="/usr/lib/electron${_electronversion}"
-  electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
-  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-   _ensure_local_nvm
-  npm run install-ext-node-linux
-  npm exec -c "ts-node ./.erb/scripts/clean.js"
-  npm run build
-  npm exec -c "electron-builder --linux --config resources/builder.json \
-    ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer}"
+    cd "${pkgname}-${pkgver}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    npx ts-node ./.erb/scripts/clean.js
+    npm run build
+    npx electron-builder --linux --dir --config resources/builder.json \
+        -c.electronDist="/usr/lib/${_electron}" \
+        -c.electronVersion="$(cat /usr/lib/${_electron}/version)"
 }
 
 package() {
-  install -Dm644 builds/linux-unpacked/resources/app.asar -t \
-    "$pkgdir/usr/lib/$pkgname/"
-  cp -r builds/linux-unpacked/resources/app.asar.unpacked -t \
-    "$pkgdir/usr/lib/$pkgname/"
-  install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
-
-  cd "$pkgname-$pkgver"
-  install -Dm644 assets/icons/256x256.png \
-    "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
-  install -Dm644 assets/icon.png \
-    "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+    cd "${pkgname}-${pkgver}"
+    install -Dm644 ../builds/linux-unpacked/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r ../builds/linux-unpacked/resources/{app.asar.unpacked,assets} "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 assets/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
