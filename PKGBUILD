@@ -3,7 +3,7 @@
 # PKGBUILD for Cultris II
 
 pkgname=cultris2-git
-pkgver=1.0.16
+pkgver=1.0.17
 pkgrel=1
 pkgdesc="Cultris II is one of the fastest Tetris®-clones ever! Train your reflexes in single-player challenges, enjoy split-screen matches with friends, or compete online with the best."
 arch=('x86_64')
@@ -43,8 +43,11 @@ package() {
     install -Dm777 "scripts/cultris2-colorpicker.sh" "$pkgdir/opt/cultris2/cultris2-colorpicker.sh"
     install -Dm777 "scripts/cultris2-settings.sh" "$pkgdir/opt/cultris2/cultris2-settings.sh"
     
-    # Install icon and desktop entries
-    cp -r "desktop-files/icon.png" "$pkgdir/opt/cultris2/icon.png"
+    # Install icons and desktop entries
+    cp -r "desktop-files/cultris2-icon.png" "$pkgdir/opt/cultris2/cultris2-icon.png"
+    cp -r "desktop-files/colorpicker.png" "$pkgdir/opt/cultris2/colorpicker.png"
+    cp -r "desktop-files/settings.png" "$pkgdir/opt/cultris2/settings.png"
+
     cp -r "desktop-files/cultris2.desktop" "$pkgdir/usr/share/applications/cultris2.desktop"
     cp -r "desktop-files/cultris2-settings.desktop" "$pkgdir/usr/share/applications/cultris2-settings.desktop"
     cp -r "desktop-files/cultris2-colorpicker.desktop" "$pkgdir/usr/share/applications/cultris2-colorpicker.desktop"
