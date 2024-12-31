@@ -1,16 +1,16 @@
 pkgname=mingw-w64-opencl-icd
-pkgver=2022.01.04
+pkgver=2024.10.24
 pkgrel=1
 pkgdesc="The OpenCL ICD Loader (mingw-w64)"
 arch=(any)
 url="https://github.com/KhronosGroup/OpenCL-ICD-Loader"
 groups=("mingw-w64-vulkan-devel")
-license=('APACHE')
+license=('Apache-2.0')
 makedepends=(mingw-w64-cmake mingw-w64-opencl-headers)
 depends=(mingw-w64-crt)
-options=(!buildflags staticlibs !strip)
+options=(!buildflags !debug staticlibs !strip)
 source=("https://github.com/KhronosGroup/OpenCL-ICD-Loader/archive/v${pkgver}.tar.gz")
-sha256sums=('9f21d958af68c1b625a03c2befddd79da95d610614ddab6c291f26f01a947dd8')
+sha256sums=('95f2f0cda375b13d2760290df044ebea9c6ff954a7d7faa0867422442c9174dc')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
