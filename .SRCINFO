@@ -1,21 +1,19 @@
-pkgbase = espeak-ng
-	pkgdesc = Multi-lingual software speech synthesizer
+pkgbase = espeak-ng-mbrola
+	pkgdesc = Connection layer between Espeak-NG and Mbrola
 	pkgver = 1.52.0
 	pkgrel = 1
 	url = https://github.com/espeak-ng/espeak-ng
 	arch = x86_64
 	license = GPL-3.0-or-later
-	checkdepends = python
-	makedepends = cmake
-	makedepends = git
-	makedepends = ruby-ronn-ng
-	depends = pcaudiolib
-	depends = libsonic
-	provides = espeak-ng-espeak
-	conflicts = espeak-ng-espeak
-	conflicts = espeak
-	replaces = espeak-ng-espeak
+	depends = espeak-ng
+	depends = mbrola
+	optdepends = mbrola-voices-en1
+	optdepends = mbrola-voices-jp3
+	optdepends = mbrola-voices-us1
+	optdepends = mbrola-voices-us2
+	optdepends = mbrola-voices-us3
+	conflicts = espeak-ng-mbrola-git
 	source = git+https://github.com/espeak-ng/espeak-ng.git#tag=1.52.0
 	b2sums = f934eb948035222de2c6b5c7d8c9e104e0326ceb1052859598ed6f0010fd975bc3e1ef26ac60f77c3b6d1a4aa567b4b7d3c75639dca89eef2508be2a680f7c2b
 
-pkgname = espeak-ng
+pkgname = espeak-ng-mbrola
