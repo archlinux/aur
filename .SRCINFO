@@ -1,5 +1,5 @@
 pkgbase = nodejs-chokidar-cli
-	pkgdesc = Run multiple commands concurrently
+	pkgdesc = Fast cross-platform cli utility to watch file system changes
 	pkgver = 3.0.0
 	pkgrel = 3
 	url = https://github.com/open-cli-tools/chokidar-cli
