@@ -1,7 +1,7 @@
 # Maintainer: OGrigorios <aur@giotas.io>
 
 pkgname=lazysql
-pkgver=0.2.9
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A cross-platform TUI database management tool written in Go"
 arch=('x86_64' 'i386' 'aarch64')
@@ -43,4 +43,4 @@ package() {
 	cd "$pkgname-$pkgver"
 	install -Dm755 build/"$pkgname" "$pkgdir"/usr/bin/"$pkgname"
 }
-sha256sums=('3af2fbdc9174677d9a4828447a17b24b8713b475e359bedc80d2de556597f866')
+sha256sums=('56ad352ae537c8836a2b4a236d36e23c06395d357335e4e4b225147a4773f3f0')
