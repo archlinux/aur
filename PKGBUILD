@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.7.141.r0.g8184d5ee29
+pkgver=0.8.1.r0.g8f478e017a
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -11,6 +11,7 @@ depends=(
 	'dtc'
 	'gcc-libs'
 	'glibc'
+	'glslang'
 	'hicolor-icon-theme'
 	'libcpp-httplib.so'
 	'sdl2'
@@ -33,6 +34,8 @@ makedepends=(
 	'pixman'
 	'python-yaml'
 	'tomlplusplus>=3.1'
+	'vulkan-headers'
+	'vulkan-icd-loader'
 	'xxhash>=0.8'
 )
 provides=("$_pkgname")
@@ -58,7 +61,7 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'475b8881ab74a9d8ef3ceba5e7c347338a1dea67504a6ab3d207c771d3b95516c221c8c6c74e824985943a74ccd11801a0eaffe1fad270727a0600a9f32b9386'
+	'1f902d49be48381ba41c033d1e0dfea9783056da8f365c5101729f699ed7921fb2f09d413c00ae417bf1ed97a6722e179ab139b5e5f8b560dc461dba67ceb6cb'
 )
 
 pkgver() {
@@ -69,7 +72,7 @@ pkgver() {
 prepare() {
 	cd $_pkgname
 	git config submodule.genconfig.url ../genconfig
-	git config submodule.hw/xbox/nv2a/thirdparty/nv2a_vsh_cpu.url ../nv2a_vsh_cpu
+	git config submodule.hw/xbox/nv2a/pgraph/thirdparty/nv2a_vsh_cpu.url ../nv2a_vsh_cpu
 	git config submodule.tests/fp/berkeley-softfloat-3.url ../berkeley-softfloat-3
 	git config submodule.tests/fp/berkeley-testfloat-3.url ../berkeley-testfloat-3
 	git config submodule.ui/keycodemapdb.url ../keycodemapdb

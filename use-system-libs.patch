@@ -1,5 +1,5 @@
 diff --git a/configure b/configure
-index 11471698b6..02dd92ec9e 100755
+index 90744ca8ce..30c19d8e88 100755
 --- a/configure
 +++ b/configure
 @@ -574,7 +574,7 @@ case "$cpu" in
@@ -21,10 +21,18 @@ index 11471698b6..02dd92ec9e 100755
    meson_options="$meson_options $(quote_sh "$1")"
  }
 diff --git a/meson.build b/meson.build
-index 8980f55a13..99252fcaa3 100644
+index 2d4a8af56a..b708cafc3c 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -1187,11 +1187,7 @@ if (have_system or have_tools) and (virgl.found() or opengl.found())
+@@ -1195,6 +1195,7 @@ if targetos == 'windows'
+       ])
+ elif targetos == 'linux'
+   vulkan = dependency('vulkan')
++  libglslang = dependency('glslang')
+ endif
+ 
+ if vulkan.found()
+@@ -1243,11 +1244,7 @@ if (have_system or have_tools) and (virgl.found() or opengl.found())
  endif
  have_vhost_user_gpu = have_vhost_user_gpu and virgl.found() and opengl.found() and gbm.found()
  

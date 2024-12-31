@@ -1,6 +1,6 @@
 pkgbase = xemu-git
 	pkgdesc = Original Xbox emulator (fork of XQEMU)
-	pkgver = 0.7.141.r0.g8184d5ee29
+	pkgver = 0.8.1.r0.g8f478e017a
 	pkgrel = 1
 	url = https://xemu.app/
 	install = xemu.install
@@ -22,10 +22,13 @@ pkgbase = xemu-git
 	makedepends = pixman
 	makedepends = python-yaml
 	makedepends = tomlplusplus>=3.1
+	makedepends = vulkan-headers
+	makedepends = vulkan-icd-loader
 	makedepends = xxhash>=0.8
 	depends = dtc
 	depends = gcc-libs
 	depends = glibc
+	depends = glslang
 	depends = hicolor-icon-theme
 	depends = libcpp-httplib.so
 	depends = sdl2
@@ -49,12 +52,13 @@ pkgbase = xemu-git
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 475b8881ab74a9d8ef3ceba5e7c347338a1dea67504a6ab3d207c771d3b95516c221c8c6c74e824985943a74ccd11801a0eaffe1fad270727a0600a9f32b9386
+	b2sums = 1f902d49be48381ba41c033d1e0dfea9783056da8f365c5101729f699ed7921fb2f09d413c00ae417bf1ed97a6722e179ab139b5e5f8b560dc461dba67ceb6cb
 
 pkgname = xemu-git
 	depends = dtc
 	depends = gcc-libs
 	depends = glibc
+	depends = glslang
 	depends = hicolor-icon-theme
 	depends = libcpp-httplib.so
 	depends = sdl2
