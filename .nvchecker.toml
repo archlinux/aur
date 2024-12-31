@@ -1,0 +1,4 @@
+[python-pytest-docker]
+source = "git"
+git = "https://github.com/avast/pytest-docker.git"
+prefix = "v"
