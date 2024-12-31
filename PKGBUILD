@@ -2,7 +2,7 @@
 # Maintainer: Roy Williams <fang64@gmail.com>
 
 pkgname=hamclock
-pkgver=4.10
+pkgver=4.11
 pkgrel=3
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (800x480 version)"
@@ -27,7 +27,7 @@ source=(
   "no-libgpio.patch"
 )
 noextract=()
-sha256sums=('71a85120b1c565c22e57ce13f38881ffc890605b35dcc374c321a6da42ad2fb6'
+sha256sums=('a1f62e092df338ce044173aa62e09a7283687d1cf0173f6bc972af2bcffbff7c'
             'df56e16e9bfab4a6259fd8e9fdffbe8f8d24ff395d2d27434dfd4bfe4adfa85d'
             '2fee906da830600a480e7ba1a83318a2485b241689b3d186ee04e56887da2dd3')
 validpgpkeys=()
