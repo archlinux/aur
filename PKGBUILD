@@ -1,23 +1,24 @@
-# Maintainer: piernov <piernov@piernov.org>
+# Contributor: piernov <piernov@piernov.org>
 
 pkgname=python-neptune-client
-pkgver=0.11.0
+pkgver=1.14.0rc0
 pkgrel=1
 pkgdesc="Neptune Client"
 arch=('x86_64')
 url="https://github.com/neptune-ai/neptune-client"
 license=('APACHE')
-depends=('python-bravado' 'python-click' 'python-future' 'python-oauthlib' 'python-pandas' 'python-pillow' 'python-pyjwt' 'python-requests' 'python-requests-oauthlib' 'python-six' 'python-websocket-client' 'python-gitpython' 'python-boto3' 'python-urllib3' 'python-psutil')
-makedepends=('python-setuptools')
+depends=('python-bravado' 'python-click' 'python-oauthlib' 'python-pandas' 'python-pyjwt' 'python-requests' 'python-requests-oauthlib' 'python-websocket-client' 'python-urllib3' 'python-psutil')
+makedepends=('python-build' 'python-installer' 'python-poetry-dynamic-versioning')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/neptune-ai/neptune-client/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('55d59cf443dc5c87240a73c30d0bcab7')
+md5sums=('76e6f38756b5fccf230a43f2eff4104b')
 
 build() {
   cd "$srcdir"/neptune-client-$pkgver
-  python setup.py build
+  export POETRY_DYNAMIC_VERSIONING_BYPASS=$pkgver
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir"/neptune-client-$pkgver
-  python setup.py install --root="$pkgdir"/ --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
