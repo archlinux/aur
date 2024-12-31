@@ -1,0 +1,3 @@
+[python-quart-schema]
+source = "pypi"
+pypi = "quart-schema"
