@@ -45,12 +45,12 @@ portable $@
 	chmod 755 "${pkgdir}/usr/bin/wechat"
 	install -Dm644 \
 		"${srcdir}/wechat.desktop" \
-		"${pkgdir}/usr/lib/wechat/alt.desktop"
+		"${pkgdir}/usr/share/applications/com.qq.weixin.desktop"
 	install -d "${pkgdir}/usr/share/libalpm/hooks"
 	
 	echo '''[Action]
 When = PostTransaction
-Exec = /usr/bin/ln "-sfr" "/usr/lib/wechat/alt.desktop" "/usr/share/applications/wechat.desktop"
+Exec = /usr/bin/ln "-sfr" "/dev/null" "/usr/share/applications/wechat.desktop"
 Depends = wechat
 Description = Configuring WeChat
 
