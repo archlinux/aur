@@ -1,6 +1,6 @@
 pkgbase = focusclock-git
 	pkgdesc = A clock that sits on top of all windows to help you focus.
-	pkgver = r6.eece4cb
+	pkgver = r7.82fc878
 	pkgrel = 1
 	url = https://github.com/KorigamiK/focusclock
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: KorigamiK <korigamik@gmail.com>
 _pkgname=focusclock
 pkgname="${_pkgname}-git"
-pkgver=r6.eece4cb
+pkgver=r7.82fc878
 pkgrel=1
 pkgdesc="A clock that sits on top of all windows to help you focus."
 arch=("x86_64" "i686" "aarch64" "armv7h" "armv6h")
