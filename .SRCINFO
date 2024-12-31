@@ -1,6 +1,6 @@
 pkgbase = rsyslog-nosystemd-git
 	pkgdesc = An enhanced multi-threaded syslogd with a focus on security and reliability. Without systemd dependencies and supprt, latest git checkout.
-	pkgver = 8.2412.0+7.r15619.20241206.1091efb6b
+	pkgver = 8.2412.0+12.r15624.20241231.9135db7f0
 	pkgrel = 1
 	url = http://www.rsyslog.com/
 	arch = x86_64
@@ -46,9 +46,9 @@ pkgbase = rsyslog-nosystemd-git
 	optdepends = net-snmp
 	optdepends = openssl
 	optdepends = postgresql-libs: PostgreSQL Database Support
-	provides = rsyslog=8.2412.0+7.r15619.20241206.1091efb6b
-	provides = rsyslog-git=8.2412.0+7.r15619.20241206.1091efb6b
-	provides = rsyslog-nosystemd=8.2412.0+7.r15619.20241206.1091efb6b
+	provides = rsyslog=8.2412.0+12.r15624.20241231.9135db7f0
+	provides = rsyslog-git=8.2412.0+12.r15624.20241231.9135db7f0
+	provides = rsyslog-nosystemd=8.2412.0+12.r15624.20241231.9135db7f0
 	conflicts = rsyslog
 	options = strip
 	options = zipman
