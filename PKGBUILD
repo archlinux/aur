@@ -1,7 +1,7 @@
 # Maintainer: MithicSpirit <rpc01234 at gmail dot com>
 
 pkgname=samarium
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 epoch=
 pkgdesc='A dynamic, interpreted language that is transpiled to Python'
@@ -13,7 +13,7 @@ makedepends=('python-build' 'python-installer' 'python-poetry-core' 'git')
 checkdepends=()
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('c1b3e40f162ac0e70316a3a0b7cfe588756e36098a0a851b7ceb29d5cf3fe2ce8e447804d398390655a7866b5b7741a468fa005a26f6ab355fd3f3059bda7b06')
+sha512sums=('e3d176db33cb4f9821afdc031c96524f0e1e0e018469d8f5d979596430800f7b6cf82107e9df5dd53747419f7fbbfaf9463029181785d63a8ac55d64a05059ce')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
