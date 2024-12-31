@@ -1,0 +1,11 @@
+pkgbase = c99-meta
+	pkgdesc = Abusing the C99 preprocessor for meta-programming
+	pkgver = r66+gee55755
+	pkgrel = 1
+	url = https://github.com/twhitehead/c99-meta
+	arch = any
+	license = LGPL-3.0-or-later
+	source = c99-meta-ee5575511395f270b5a1341d38f84f4c56ba74d4.tar.gz::https://github.com/twhitehead/c99-meta/archive/ee5575511395f270b5a1341d38f84f4c56ba74d4.tar.gz
+	b2sums = 90e27bb17b40402d1340c6b2ff5d96b7c8fda96f02845da273fb216dd5ed665f53f177ea50e86fcbe81cfdc08a1ac75a1fb424ce1cbbb6622b088e9420c52a45
+
+pkgname = c99-meta
