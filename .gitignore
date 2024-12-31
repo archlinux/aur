@@ -1,6 +1,4 @@
-/pkg
-/src
-/geninfo.sh
+src/
+pkg/
 *.deb
-*.html
-*.pkg.tar.*
+*.pkg.tar.zst
