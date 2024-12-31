@@ -10,19 +10,28 @@ pkgname='dns_tools'
 pkgdesc='DNS Tools for managing DNSSEC aka easy dnssec'
 _gitname='dns_tools'
 
-pkgver=3.4.2
+pkgver=3.4.4
 pkgrel=1
 url="https://github.com/gene-git/dns_tools"
 
 arch=(any)
 license=(MIT)
-# python-tomli needed for python < 3.11
-depends=('python>3.10' 'ldns')
+depends=('python>=3.13' 'ldns')
 # To build docs uncommont sphinx/texlive
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatch' 'rsync'
             #'python-sphinx' 'texlive-latexextra' # Docs
             )
 _mkpkg_depends=('python>minor')
+
+#
+# Verifying Signed Tag
+#   Add arch@sapience.com key to keyring then use the source line with "?signed"
+#   Key available via WKD or dowload from https://www.sapience.com/tech
+#   Note that upstream release procedure requires every tagged release have new tag
+#
+validpgpkeys=( '7CCA1BA66669F3273DB52678E5B81343AB9809E1')   # Gene C
+
+#source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}?signed")
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
 
