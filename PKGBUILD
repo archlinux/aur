@@ -2,11 +2,12 @@
 # Contributor: Matthew Sexton <wsdmatty@gmail.com>
 # Contributor: American_Jesus <american.jesus.pt AT gmail DOT com>
 pkgname=nano-syntax-highlighting-git
-pkgver=2022.11.02.r2.ga9c6844
+pkgver=2022.11.02.r112.ge7380a8
 pkgrel=1
 pkgdesc="Improved nano syntax highlighting files"
 arch=('any')
 depends=('nano')
+makedepends=('git')
 url="https://github.com/galenguyer/nano-syntax-highlighting"
 license=('GPL3')
 install=nano-syntax-highlighting.install
