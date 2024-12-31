@@ -4,9 +4,9 @@ _pkgname=Android-Toolkit
 pkgver=1.5.23
 _electronversion=25
 _nodeversion=20
-pkgrel=4
+pkgrel=5
 pkgdesc="A cross platform desktop app written in Typescript/Node using React and Electron.A GUI for adb and can be used to modify android devices such as firesticks and google TVs.Use system-wide electron."
-arch=('x86_64')
+arch=('any')
 url="https://github.com/AnthonyGress/Android-Toolkit"
 license=("MIT")
 conflicts=("${pkgname}")
@@ -35,7 +35,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -59,7 +59,6 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
@@ -68,6 +67,9 @@ build() {
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     NODE_ENV=production     npx ts-node ./.erb/scripts/clean.js dist
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder build --linux dir -c.electronDist=${electronDist}"
