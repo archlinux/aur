@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SeqArray
-_pkgver=1.46.0
+_pkgver=1.46.1
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.46.1
 pkgrel=1
 pkgdesc='Data management of large-scale whole-genome sequence variant calls'
 arch=('x86_64')
@@ -34,7 +34,7 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f2adbd8c91cb9f4e31b0f7a3af1467bae787142ff6ccac96f41f2e91e7943ba8')
+sha256sums=('119e3400543a7dacb8da71268148a5809c4aad266f3430211ead11a4666fbab7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
