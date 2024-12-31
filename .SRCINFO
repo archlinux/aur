@@ -1,6 +1,6 @@
 pkgbase = mop
 	pkgdesc = Stock market tracker for hackers
-	pkgver = 2024.01.14
+	pkgver = 2024.12.30
 	pkgrel = 1
 	url = https://github.com/mop-tracker/mop
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = mop
 	conflicts = mop-git
 	options = !emptydirs
 	options = !lto
-	source = mop-2024.01.14.tar.gz::https://github.com/mop-tracker/mop/archive/2cee51a1c03cfdf2131e6b9fdb1f8ac814f452e6.tar.gz
-	b2sums = 783bacaea79c4972b90663445f6423f44fd2c9a27b86d2727522aa838931c53d461508939c9b2186ab6ca66fb5bfb8720fc667511ce1bc6fdb012060e1f52845
+	source = mop-2024.12.30.tar.gz::https://github.com/mop-tracker/mop/archive/298ed9b8ed396bdec0b046f88cd2d7a29db2a6ce.tar.gz
+	b2sums = 3fb0e7bfe6854b9140afbf3e108f8a22de8b0310a836ddbd9563995ffa993b83aa6f7cd51f05de34508e189dfaa4a89cd48ce92dc9f61923a5eadc4304a3c303
 
 pkgname = mop
