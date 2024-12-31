@@ -1,23 +1,22 @@
 pkgbase = zluda
-	pkgdesc = A drop-in replacement for CUDA on Intel Skylake/Gen9 or newer GPUs
-	pkgver = 2
-	pkgrel = 3
+	pkgdesc = A drop-in replacement for CUDA on non-NVIDIA GPUs
+	pkgver = 4
+	pkgrel = 1
 	url = https://github.com/vosen/ZLUDA/
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	license = MIT
 	makedepends = git
-	makedepends = rust
-	makedepends = opencl-headers
-	makedepends = level-zero-headers
-	depends = opencl-icd-loader
-	depends = level-zero-loader
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	depends = cargo
+	depends = comgr
+	depends = hip-runtime-amd
 	conflicts = nvidia-utils
-	source = git+https://github.com/vosen/ZLUDA.git#tag=v2
-	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git
-	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = git+https://github.com/vosen/ZLUDA.git#tag=v4
+	source = git+https://github.com/llvm/llvm-project.git
+	sha256sums = 52bddb538ec282f3ba3e20986cb9afc780ea6d9c8bcdbd540814b1efad6a8d66
 	sha256sums = SKIP
 
 pkgname = zluda
