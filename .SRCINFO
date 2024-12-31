@@ -1,0 +1,14 @@
+pkgbase = looktxt
+	pkgdesc = Search and export numerics from any text/ascii file
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/bendikMichal/termtree
+	arch = x86_64
+	license = MIT
+	makedepends = libnexus
+	makedepends = make
+	depends = libnexus
+	source = https://gitlab.com/soleil-data-treatment/soleil-software-projects/looktxt
+	md5sums = SKIP
+
+pkgname = looktxt
