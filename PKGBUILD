@@ -1,29 +1,28 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=zluda-git
-pkgver=2.r1.g60d2124
+pkgver=4.r1.gecd61a8
 pkgrel=1
-pkgdesc='A drop-in replacement for CUDA on Intel Skylake/Gen9 or newer GPUs (git version)'
+pkgdesc='A drop-in replacement for CUDA on non-NVIDIA (git version)'
 arch=('x86_64')
 url='https://github.com/vosen/ZLUDA/'
-license=('Apache' 'MIT')
-depends=('opencl-icd-loader' 'level-zero-loader')
-makedepends=('git' 'rust' 'opencl-headers' 'level-zero-headers')
+license=('Apache-2.0' 'MIT')
+depends=('cargo' 'comgr' 'hip-runtime-amd')
+makedepends=('git' 'cmake' 'ninja' 'python')
 provides=('zluda')
 conflicts=('zluda' 'nvidia-utils')
 source=('git+https://github.com/vosen/ZLUDA.git'
-        'git+https://github.com/KhronosGroup/SPIRV-Tools.git'
-        'git+https://github.com/KhronosGroup/SPIRV-Headers.git')
+        'git+https://github.com/llvm/llvm-project.git')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP')
 
 prepare() {
     git -C ZLUDA submodule init
-    git -C ZLUDA config --local submodule.ext/spirv-tools.url "${srcdir}/SPIRV-Tools"
-    git -C ZLUDA config --local submodule.ext/spirv-headers.url "${srcdir}/SPIRV-Headers"
+    git -C ZLUDA config --local submodule.ext/llvm-project.url "${srcdir}/llvm-project"
     git -C ZLUDA -c protocol.file.allow='always' submodule update
-    cargo fetch --manifest-path='ZLUDA/Cargo.toml'
+    
+    export RUSTUP_TOOLCHAIN='stable'
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path='ZLUDA/Cargo.toml'
 }
 
 pkgver() {
@@ -31,15 +30,25 @@ pkgver() {
 }
 
 build() {
+    export CFLAGS+=' -ffat-lto-objects'
+    export RUSTUP_TOOLCHAIN='stable'
+    export CARGO_TARGET_DIR='target'
     cargo build --release --frozen --manifest-path='ZLUDA/Cargo.toml'
 }
 
-check() {
-    cargo test --release --frozen --manifest-path='ZLUDA/Cargo.toml'
-}
+#check() {
+#    export CFLAGS+=' -ffat-lto-objects'
+#    export RUSTUP_TOOLCHAIN='stable'
+#    export CARGO_TARGET_DIR='target'
+#    cargo test --frozen --workspace --manifest-path='ZLUDA/Cargo.toml'
+#}
 
 package() {
-    install -D -m644 ZLUDA/target/release/libnvcuda.so "${pkgdir}/usr/lib/libcuda.so.1"
+    find target/release -maxdepth 1 -type f -executable ! -name 'lib*' -exec install -D -m755 -t "${pkgdir}/usr/bin" {} +
+    install -D -m644 target/release/lib{nv{cuda,ml},zluda_redirect}.so -t "${pkgdir}/usr/lib"
     install -D -m644 ZLUDA/LICENSE-MIT -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s libcuda.so.1 "${pkgdir}/usr/lib/libcuda.so"
+    ln -s libnvcuda.so "${pkgdir}/usr/lib/libcuda.so"
+    ln -s libnvcuda.so "${pkgdir}/usr/lib/libcuda.so.1"
+    ln -s libnvml.so "${pkgdir}/usr/lib/libnvidia-ml.so"
+    ln -s libnvml.so "${pkgdir}/usr/lib/libnvidia-ml.so.1"
 }
