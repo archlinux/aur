@@ -3,7 +3,7 @@
 
 pkgname=alist-bin
 _pkgname=${pkgname%-bin}
-pkgver=3.40.0
+pkgver=3.41.0
 pkgrel=1
 pkgdesc="Another file list program that supports multiple storage"
 arch=("aarch64" "x86_64")
@@ -21,8 +21,8 @@ sha256sums=('5712b21aebf669fe9fb5d47dd685809d4d9670b1bb1d5e6fef962b9d11ba9d72'
             'b72f194a7b8855e97eeb76e63e179f38132cc9e6be9daa5b396699c9c11611de'
             '3658370660806f73c3d9bc5f1b6e2a013c9520d34ffc4462df99f7692473613d'
             'c6b62c4a750ab921c2e8f965e4baeee28855c9a969b00eddd346670f2fdf12de')
-sha256sums_aarch64=('48212ce771a1389a1d7f73edf6400318eab2c5ee9bd70a13da9067efd9af1112')
-sha256sums_x86_64=('cba08e0c62c0bec1970529aa6805c3ce05e6041074038b1f8c0cc37fa0658875')
+sha256sums_aarch64=('753682e01854d8fbfadb979b093cf8a730fa3f69b8ca8f1949dc73bd126058e7')
+sha256sums_x86_64=('200b5d2d1f315271ab2e980fd3a40b25b1246e11412db0cb5606726e9e6c265b')
 
 package() {
     install -Dm755 alist ${pkgdir}/usr/bin/alist
