@@ -1,15 +1,26 @@
 # Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
 
 pkgname=jupyterlab-pytutor
-pkgdesc="Python Tutor extension for JupyterLab"
-url="https://github.com/jupyterlab-contrib/jupyterlab-pytutor"
 pkgver=0.2.0
-pkgrel=4
-license=(BSD-3-Clause)
+pkgrel=5
+pkgdesc="Python Tutor extension for JupyterLab"
 arch=(any)
-depends=(jupyterlab python-hatchling python-hatch-nodejs-version)
-makedepends=(python-build python-installer python-setuptools python-wheel
-             python-jupyter-packaging python-hatch-jupyter-builder npm)
+url="https://github.com/jupyterlab-contrib/jupyterlab-pytutor"
+license=(BSD-3-Clause)
+depends=(
+  jupyterlab
+)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+  python-jupyter-packaging
+  python-hatch-jupyter-builder
+  python-hatch-nodejs-version
+  python-hatchling
+  npm
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'install.json')
 sha256sums=('f21f24217649b6d9f848f6fb4d4928f64413eb01a6717a6697961805f2e63e1b'
