@@ -1,121 +1,65 @@
 # Maintainer: Kimiblock Moe
-# Contributor: wszqkzqk
 
 pkgname=wechat
-pkgver=4.0.1.11
-pkgrel=1
-epoch=
-pkgdesc="微信是一种生活方式. This is a repackage of the official WeChat which includes an optional sandbox support"
-arch=('x86_64' 'aarch64' 'loong64')
-url="https://weixin.qq.com/"
-license=('LicenseRef-proprietary')
+pkgver=4
+pkgrel=2
+epoch=1
+pkgdesc="Fixes and optional sandbox for WeChat."
+arch=('any')
+url="https://github.com/Kraftland/portable"
+license=('GPL3')
 groups=()
 options=(!debug !strip)
 
 makedepends+=()
 
-provides+=(wechat-uos wechat-bin wechat-universal)
-conflicts+=(wechat-uos wechat-bin wechat-universal)
+provides+=(wechat-uos-bwrap wechat-uos-qt wechat-universal-bwrap wechat-bwrap wechat-portable wechat-beta-bwrap wechat-sandbox-provider wechat-bwrap)
 
-replaces+=("wechat-bin")
+replaces+=(wechat-bwrap)
 
-depends=(
-	"nss"
-	"xcb-util-renderutil"
-	"xcb-util-keysyms"
-	"xcb-util-image"
-	"xcb-util-wm"
-	"libxkbcommon-x11"
-	"libxkbcommon"
-	"libxcb"
-	"gcc-libs"
-	"nspr"
-	"glibc"
-	"zlib"
-	"libxcomposite"
-	"glib2"
-	"libxrender"
-	"libxext"
-	"alsa-lib"
-	"dbus"
-	"libxrandr"
-	"fontconfig"
-	"pango"
-	"freetype2"
-	"libxfixes"
-	"cairo"
-	"libx11"
-	"expat"
-	"libvlc"
-	"libjack.so"
-	"libxdamage"
-	"libdrm"
-	"mesa"
-	"bash"
-	"libglvnd"
-)
+depends=("wechat-bin" "portable")
 
-optdepends=(
-	"wechat-sandbox-provider: Sandbox support"
-	'ttf-twemoji: An emoji font that will work with WeChat'
-	'at-spi2-core: accessibility'
-	'orca: screen reader'
-	'libpulse'
-	"hicolor-icon-theme"
-)
+optdepends=()
 
-makedepends+=(
-	"libarchive"
-)
+makedepends+=()
 
 checkdepends=()
 
 source=(
-	wechat.sh
+	portable-config
 	wechat.desktop
-	wechat.svg
-)
-
-source_x86_64=(
-	wechat-x86-${pkgver}.deb::"https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.deb"
-)
-
-source_aarch64=(
-	wechat-arm-${pkgver}.deb::"https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_arm64.deb"
-)
-
-source_loong64=(
-	wechat-loong64-${pkgver}.deb::"https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_LoongArch.deb"
 )
 
 
-md5sums=('289f5a646504a8ac5a9ab6a2dcff969a'
-         'caa351d13a96f34bee10ed171e7d520d'
-         '468e0367346707c026e577e7bf3e3a82')
-md5sums_x86_64=('SKIP')
-md5sums_aarch64=('SKIP')
-md5sums_loong64=('SKIP')
+md5sums=('d040d6a8dc61703ab42c2cb3a79eb396'
+         '6aba5c58fb93a819299130694b86665f')
 
-function pkgver() {
-	tar -xf control.tar.xz ./control
-	cat control | grep 'Version: ' | cut -c '10-'
+function package() {
+	install -Dm644 portable-config \
+		"${pkgdir}/usr/lib/wechat/portable-config"
+	install -d "${pkgdir}/usr/bin"
+	echo '''#!/usr/bin/bash
+export _portalConfig=/usr/lib/wechat/portable-config
+portable $@
+''' >"${pkgdir}/usr/bin/wechat"
+	chmod 755 "${pkgdir}/usr/bin/wechat"
+	install -Dm644 \
+		"${srcdir}/wechat.desktop" \
+		"${pkgdir}/usr/lib/wechat/alt.desktop"
+	install -d "${pkgdir}/usr/share/libalpm/hooks"
+	
+	echo '''[Action]
+When = PostTransaction
+Exec = /usr/bin/ln "-sfr" "/usr/lib/wechat/alt.desktop" "/usr/share/applications/wechat.desktop"
+Depends = wechat
+Description = Configuring WeChat
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/bin/wechat
+Target = usr/share/applications/wechat.desktop''' >"${pkgdir}/usr/share/libalpm/hooks/wechat.hook"
+
 }
 
-function package_wechat() {
-	tar -xf data.tar.xz ./opt
-	cp -r opt \
-		"${pkgdir}/"
-	install -Dm644 wechat.desktop \
-		"${pkgdir}/usr/share/applications/com.qq.weixin.desktop"
-	install -Dm755 wechat.sh \
-		"${pkgdir}/usr/bin/wechat.sh"
-	install -Dm644 wechat.svg \
-		"${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat.svg"
-	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -d "${pkgdir}/opt/apps/com.tencent.wechat"
-	ln -sr \
-		"${pkgdir}/opt/wechat" \
-		"${pkgdir}/opt/apps/com.tencent.wechat/files"
-	echo "https://www.wechat.com/us/service_terms.html" \
-		>"${pkgdir}/usr/share/licenses/${pkgname}/ToS.txt"
-}
