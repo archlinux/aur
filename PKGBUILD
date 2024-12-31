@@ -1,7 +1,7 @@
 base_name=sdl2-gamepad-mapper
 pkgname=$base_name-git
 pkgver=0.0.9.r1.g957a15f
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate SDL2 Controller mapping strings"
 arch=('any')
 url="https://gitlab.com/ryochan7/$base_name"
@@ -28,5 +28,5 @@ package() {
   install -Dm755 sdl2-gamepad-mapper "${pkgdir}/usr/bin/sdl2-gamepad-mapper"
   install -D sdl2-gamepad-mapper.desktop "${pkgdir}/usr/share/applications/sdl2-gamepad-mapper.desktop"
   install -D sdl2-gamepad-mapper.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/sdl2-gamepad-mapper.png"
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${base_name}/COPYING"
 }
