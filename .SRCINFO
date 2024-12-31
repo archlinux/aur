@@ -1,6 +1,6 @@
 pkgbase = pa-dlna-git
 	pkgdesc = Forwards audio streams to DLNA devices. For PulseAudio or PipeWira (via 'python-libpulse'). Latest git checkout.
-	pkgver = 0.14+16.r405.20241214.abae618
+	pkgver = 0.14+20.r409.20241222.9bb9b38
 	pkgrel = 1
 	url = https://gitlab.com/xdegaye/pa-dlna
 	arch = any
@@ -22,20 +22,20 @@ pkgbase = pa-dlna-git
 	optdepends = lame: mp3 transcoding support
 	optdepends = pulse-native-provider: To be used by a local pulseaudio implementation
 	optdepends = pipewire-pulse: To be used by a local pipewire implementation
-	provides = pa-dlna=0.14+16.r405.20241214.abae618
-	provides = upnp-cmd=0.14+16.r405.20241214.abae618
-	provides = upnp-cmd-git=0.14+16.r405.20241214.abae618
-	provides = pa-dlna-doc=0.14+16.r405.20241214.abae618
-	provides = pa-dlna-doc-git=0.14+16.r405.20241214.abae618
-	provides = python-pa_dlna=0.14+16.r405.20241214.abae618
-	provides = python-pa_dlna-git=0.14+16.r405.20241214.abae618
+	provides = pa-dlna=0.14+20.r409.20241222.9bb9b38
+	provides = upnp-cmd=0.14+20.r409.20241222.9bb9b38
+	provides = upnp-cmd-git=0.14+20.r409.20241222.9bb9b38
+	provides = pa-dlna-doc=0.14+20.r409.20241222.9bb9b38
+	provides = pa-dlna-doc-git=0.14+20.r409.20241222.9bb9b38
+	provides = python-pa_dlna=0.14+20.r409.20241222.9bb9b38
+	provides = python-pa_dlna-git=0.14+20.r409.20241222.9bb9b38
 	provides = PULSEAUDIO-DLNA-SINK
 	conflicts = pa-dlna
 	conflicts = upnp-cmd
 	conflicts = python-pa_dlna
 	conflicts = pa-dlna-doc
 	source = pa-dlna::git+https://gitlab.com/xdegaye/pa-dlna.git
-	source = pa-dlna-0.14+16.r405.20241214.abae618.pdf::https://pa-dlna.readthedocs.io/_/downloads/en/latest/pdf/
+	source = pa-dlna-0.14+20.r409.20241222.9bb9b38.pdf::https://pa-dlna.readthedocs.io/_/downloads/en/latest/pdf/
 	sha256sums = SKIP
 	sha256sums = SKIP
 
