@@ -1,7 +1,8 @@
 pkgbase = delta-plugin-git
-	pkgdesc = Transcoder for managing a form of markup-based minimal Elder Scrolls Plugin files and OMWAddon files
-	pkgver = 0.22.0.r5.g1d51d01
+	pkgdesc = A multi-purpose OMWAddon/ESP tool. Its primary features include a yaml transcoder, minimal diffing functionality, and using the minimal diffing functionality to produce merged plugins
+	pkgver = 0.22.1.r0.gf1fb214
 	pkgrel = 1
+	url = https://gitlab.com/bmwinger/delta-plugin
 	arch = i686
 	arch = x86_64
 	arch = armv6h
