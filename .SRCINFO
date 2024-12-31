@@ -1,18 +1,18 @@
 pkgbase = dual-root
 	pkgdesc = Dual Root Tools for Managing dual esp systems
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/gene-git/dual-root
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = python>3.13
+	depends = python>=3.13
 	depends = efibootmgr
 	depends = util-linux
 	depends = rsync
 	depends = inotify-tools
 	depends = python-psutil
-	source = git+https://github.com/gene-git/dual-root#tag=3.1.0
+	source = git+https://github.com/gene-git/dual-root#tag=3.1.1
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 
