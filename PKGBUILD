@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=dotbot
-pkgver=1.20.4
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="A tool that bootstraps your dotfiles"
 arch=(any)
@@ -14,13 +14,13 @@ depends=(
 makedepends=(
   git
   python-build
+  python-hatchling
   python-installer
-  python-setuptools
   python-wheel
 )
 checkdepends=(python-pytest)
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('9cb8ff0227c0122fea2e3d2c85481f38c70eb9c089fe659e317d85c995ba43a8')
+sha256sums=('57a6a11098f2303e0142d3acf7bb344d1efedee61c20cf229f34ddf05a9b1265')
 
 build() {
   cd "$pkgname"
@@ -29,11 +29,10 @@ build() {
 
 check() {
   cd "$pkgname"
-  rm -rf tmp_install
-  python -m installer --destdir=tmp_install dist/*.whl
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  PYTHONPATH="$PWD/tmp_install/$site_packages" pytest \
-    --deselect tests/test_noop.py::test_failure
+  rm -rf test-env
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest
 }
 
 package() {
