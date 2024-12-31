@@ -1,5 +1,6 @@
 # Maintainer: Emmanuel Farhi <emmanuel.farhi.1@gmail.com>
 # create Arch package with: makepkg -si
+# create .SRCINFO with:     makepkg --printsrcinfo > .SRCINFO
 pkgname='looktxt'
 pkgver=1.4.1
 pkgrel=1
