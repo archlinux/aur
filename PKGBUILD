@@ -14,10 +14,12 @@ makedepends=(
   cmake
   perl
   yasm
+  vmaf
 )
 optdepends=(aom-docs)
 provides=(aom)
 conflicts=(aom)
+replaces=(${_pkgname}-vmaf-git)
 source=($_pkgname::git+$url.git)
 sha256sums=(SKIP)
 
@@ -30,6 +32,7 @@ build() {
   cmake -S $_pkgname -B build \
     -DENABLE_TESTS=OFF \
     -DENABLE_DOCS=OFF \
+    -DCONFIG_TUNE_VMAF=1 \
     -DCMAKE_C_FLAGS="$CFLAGS" \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
     -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \

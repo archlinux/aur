@@ -10,10 +10,12 @@ pkgbase = aom-psy101-git
 	makedepends = cmake
 	makedepends = perl
 	makedepends = yasm
+	makedepends = vmaf
 	depends = gcc-libs
 	optdepends = aom-docs
 	provides = aom
 	conflicts = aom
+	replaces = aom-psy101-vmaf-git
 	source = aom-psy101::git+https://gitlab.com/damian101/aom-psy101.git
 	sha256sums = SKIP
 
