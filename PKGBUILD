@@ -1,12 +1,12 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=alist
-pkgver=3.40.0
-_web_pkgver=3.39.2
+pkgver=3.41.0
+_web_pkgver=3.41.0
 pkgrel=1
 pkgdesc="File list program that supports multiple storage"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'arm7vh' 'aarch64' 'riscv64' 'loong64')
-url="https://github.com/alist-org/alist"
+url="https://github.com/AlistGo/alist"
 license=('AGPL-3.0-only')
 depends=('glibc')
 makedepends=('go')
@@ -18,8 +18,8 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
     'alist.tmpfiles'
     'alist.sysusers'
     'config.json')
-sha256sums=('350f6d0610cebb70c645e52a87aaf0e8cb5bb275593ee22778ed8348da48b005'
-            'd998315aff5544e7d7248214d02a3b04a92366bf0ac50fb4791b23833e8b543a'
+sha256sums=('0336a1c0089d558e7e3efd0337e51e9c45bc80f22ee8a71103e12417a7d647a2'
+            '7fbc3e83874fca15eb6590aad2c09cd6eb4f15aa7febe2b25a961ea56ba5265b'
             '5712b21aebf669fe9fb5d47dd685809d4d9670b1bb1d5e6fef962b9d11ba9d72'
             'c6b62c4a750ab921c2e8f965e4baeee28855c9a969b00eddd346670f2fdf12de'
             '3658370660806f73c3d9bc5f1b6e2a013c9520d34ffc4462df99f7692473613d'
