@@ -1,14 +1,18 @@
 pkgbase = python-mplcursors
 	pkgdesc = Provides interactive data selection cursors for Matplotlib. It is inspired from mpldatacursor, with a much simplified API.
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anntzer/mplcursors
 	arch = any
-	license = ZLIB
+	license = Zlib
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-matplotlib
-	source = https://github.com/anntzer/mplcursors/archive/refs/tags/v0.6.tar.gz
+	source = python-mplcursors-0.6.tar.gz::https://github.com/anntzer/mplcursors/archive/refs/tags/v0.6.tar.gz
 	sha512sums = 4bcee5e01492deb4fed851daf0e6b01e217da257389af768b61a8c69bf7115727c9faef17f5f9455de1c718c52a18aab24ce5eeb625e1207810fd8b3d93ec503
 
 pkgname = python-mplcursors
