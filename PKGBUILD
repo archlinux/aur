@@ -3,28 +3,49 @@
 pkgname=python-plyfile
 pkgdesc="Read and write ASCII and binary PLY files"
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 url='https://github.com/dranjan/python-plyfile'
 arch=('any')
 license=('GPL-3.0-or-later')
 
-depends=('python-numpy')
-makedepends=('python-build' 'python-installer' 'python-pdm-pep517' 'python-wheel')
+depends=(
+  'python-numpy'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-pdm-backend'
+)
+checkdepends=(
+  'python-pytest'
+)
 
-_pypi=plyfile
 source=(
-  "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
+  "git+https://github.com/dranjan/python-plyfile.git#tag=v$pkgver"
+  'update_build_system.patch'
 )
 sha256sums=(
-  'a49bdf5285c95b6f7d4b9f2954b7867c44f8e13348606d886d8e0a561f6f4671'
+  '354e26372bbdd683f586ff97b60e11446b7f4b52e7eaaef385ec6f45faec6cc2'
+  '72bd6d21c0e88da2f76e767d5cc3b4e4b5c0e0143a44b0107832b6c131d3d93a'
 )
 
+prepare() {
+  cd python-plyfile
+  patch -p0 -i "$srcdir/update_build_system.patch"
+}
+
 build() {
-  cd $_pypi-$pkgver
+  cd python-plyfile
   python -m build --no-isolation --wheel
 }
 
+check() {
+  cd python-plyfile
+  python -m pytest
+}
+
 package() {
-  cd $_pypi-$pkgver
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd python-plyfile
+  python -m installer --destdir="$pkgdir" "dist/plyfile-$pkgver-"*.whl
 }

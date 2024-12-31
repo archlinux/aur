@@ -1,0 +1,13 @@
+--- pyproject.toml
++++ pyproject.toml
+@@ -46,8 +46,8 @@
+ Repository = "https://github.com/dranjan/python-plyfile"
+ 
+ [build-system]
+-requires = ["pdm-pep517>=1.0.0"]
+-build-backend = "pdm.pep517.api"
++requires = ["pdm-backend"]
++build-backend = "pdm.backend"
+ 
+ [tool.pdm.scripts]
+ test-quick = "pytest test -v"

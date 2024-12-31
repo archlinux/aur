@@ -1,4 +1,4 @@
-plyfile-*.tar.gz
+python-plyfile/
 python-plyfile-*-any.pkg.tar*
 src/
 pkg/
