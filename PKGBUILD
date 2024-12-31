@@ -2,7 +2,7 @@
 pkgname=ifind-bin
 _pkgname=iFinD
 _appname="com.51${pkgname%-bin}"
-pkgver=1.10.12.389.002
+pkgver=1.10.12.391.001
 pkgrel=1
 pkgdesc="同花顺iFinD PC版提供资讯、行情、深度资料、数据浏览器、企业库等功能,满足用户多方面的使用需求。"
 arch=(
@@ -37,9 +37,9 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_dlurl}/${_appname}_uos_${pkgver}_arm64_signed.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_dlurl}/${_appname}_uos_${pkgver}_amd64_signed.deb")
 sha256sums=('936d2d4299699da4e66d836e9001e1ff43fef95c53aef61569a1c3f667283fcd')
-sha256sums_aarch64=('b0ea410ad19a827235a88a4075846b30831644d6fbe1d480b39754a4893d2a11')
-sha256sums_x86_64=('dd9a36250dd443e17712fc0a2511f3779f7c922c3fdf779d920649cf5ac650f3')
-build() {
+sha256sums_aarch64=('1b8aa0899f571e43aa1a18476c5f366e66000be187bd4e098197875d9a3c33fc')
+sha256sums_x86_64=('07341e82abb4ca4ee01081439deb4c4fe335f2684c4024c5e5daa8eb0134bded')
+prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
