@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.7.139
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=(x86_64)
@@ -51,7 +51,7 @@ source=(
 	'nv2a_vsh_cpu::git+https://github.com/abaire/nv2a_vsh_cpu.git'
 	'use-system-libs.patch'
 )
-b2sums=('6c28bc4b52a7c9721db6622323d29ad98fa8d9b7812e1b4b7ce7641da1d2c90178dca8533b14994bc584e65f0119a52a7eeab486bd0f3ef4f31df5e371a75af2'
+b2sums=('f3823e7c43f94845d1bfb8927448919d8ea33dbdd0bae5c35f2e50ce34c39000aa8967ff99064b19ed0adba4227f02c4f3308d88a9ec5f4dfd40f156b32553a4'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -64,7 +64,7 @@ b2sums=('6c28bc4b52a7c9721db6622323d29ad98fa8d9b7812e1b4b7ce7641da1d2c90178dca85
 prepare() {
 	cd $pkgname
 	git config submodule.genconfig.url ../genconfig
-	git config submodule.hw/xbox/nv2a/thirdparty/nv2a_vsh_cpu.url ../nv2a_vsh_cpu
+	git config submodule.hw/xbox/nv2a/pgraph/thirdparty/nv2a_vsh_cpu.url ../nv2a_vsh_cpu
 	git config submodule.tests/fp/berkeley-softfloat-3.url ../berkeley-softfloat-3
 	git config submodule.tests/fp/berkeley-testfloat-3.url ../berkeley-testfloat-3
 	git config submodule.ui/keycodemapdb.url ../keycodemapdb
