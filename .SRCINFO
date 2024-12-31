@@ -1,6 +1,6 @@
 pkgbase = python-trame-jupyter-extension
 	pkgdesc = Jupyter extension for trame client/server communication
-	pkgver = 2.1.3
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://github.com/Kitware/trame-jupyter-extension
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-trame-jupyter-extension
 	depends = python-trame
 	depends = jupyterlab
 	depends = jupyter-server
-	source = https://pypi.org/packages/source/t/trame-jupyter-extension/trame_jupyter_extension-2.1.3.tar.gz
-	sha512sums = eb55d416c683755314a34db1c844055150321cad7b6719a64e6f9cb2ecc93d4334f05cb38e7482c65eb5c2b0665b0a115498db3d1a13af0db18d3fa41f2a6a5e
+	source = https://pypi.org/packages/source/t/trame-jupyter-extension/trame_jupyter_extension-2.1.4.tar.gz
+	sha512sums = ea078498c6fdc9f67cf50c5450e40432eb893837ef1054ecd903b1b7e1ec2931211b1507ce4061d4c8eac8e4fa26e9f4b2c6b5e856167c34e8b03cbbecb2bf5a
 
 pkgname = python-trame-jupyter-extension
