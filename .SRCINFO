@@ -1,6 +1,6 @@
 pkgbase = fish-git
 	pkgdesc = User friendly shell intended mostly for interactive use.
-	pkgver = 4.0b1.r45.gc473aa60a
+	pkgver = 4.0b1.r101.gd5efef1cc
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/fish-shell/fish-shell
@@ -14,7 +14,9 @@ pkgbase = fish-git
 	makedepends = cargo
 	makedepends = cmake
 	makedepends = git
+	makedepends = jq
 	makedepends = python-sphinx
+	depends = gcc-libs
 	depends = glibc
 	depends = ncurses
 	depends = pcre2

@@ -7,7 +7,7 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=4.0b1.r45.gc473aa60a
+pkgver=4.0b1.r101.gd5efef1cc
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
@@ -15,6 +15,7 @@ arch=('i686' 'x86_64' 'arm')
 url="https://github.com/fish-shell/fish-shell"
 license=('GPL-2.0-only AND BSD-3-Clause AND ISC AND MIT AND PSF-2.0')
 depends=(
+  'gcc-libs'
   'glibc'
   'ncurses'
   'pcre2'
@@ -27,6 +28,7 @@ makedepends=(
   'cargo'
   'cmake'
   'git'
+  'jq'
   'python-sphinx'
 )
 checkdepends=(
