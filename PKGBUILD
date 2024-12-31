@@ -2,8 +2,8 @@
 pkgname=aniflix-bin
 pkgver=0.0.1
 _electronversion=23
-pkgrel=11
-pkgdesc="Anime Streaming Desktop App"
+pkgrel=12
+pkgdesc="Anime Streaming Desktop App.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://aniflix.lamaau.space/"
 _ghurl="https://github.com/rizkhal/aniflix"
@@ -20,14 +20,15 @@ source=(
 )
 sha256sums=('db3c22d7f9d359852125fd5f3dc570fe540d3e10b2a172472cbf0c9df2b986da'
             'c3cc74287725f86a3a56a0e4d88895716ff81ff3c576ae69221feaa2539c0f86'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@//g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -e "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g" \
         -e "s|Categories=Video;|Categories=AudioVideo;|g" \
