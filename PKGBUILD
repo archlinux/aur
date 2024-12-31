@@ -2,7 +2,7 @@
 pkgname=localbooru
 pkgver=1.6.0
 pkgrel=3
-pkgdesc="A cross-platform local booru collection that works exclusively on local storage."
+pkgdesc="A cross-platform local booru collection that works exclusively on local storage, without selfhosting"
 arch=('x86_64')
 url="https://github.com/resucutie/localbooru"
 license=('GPL-3.0')
@@ -40,6 +40,6 @@ Exec=/usr/bin/localbooru
 Icon=localbooru
 Terminal=false
 Categories=Graphics;Viewer;
-Comment=Cross-platform local booru collection manager that works exclusively on local storage
+Comment=Cross-platform local booru collection manager that works exclusively on local storage, without selfhosting
 EOF
 }
