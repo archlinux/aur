@@ -1,0 +1,31 @@
+pkgbase = ghostty-x86_64-v3-git
+	pkgdesc = Fast, native, feature-rich terminal emulator with modern x86_64-v3 optimizations
+	pkgver = r8683.ecfca17a
+	pkgrel = 1
+	url = https://github.com/ghostty-org/ghostty
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = zig>=0.13.0
+	makedepends = zig<0.14.0
+	makedepends = pandoc-cli
+	depends = bzip2
+	depends = fontconfig
+	depends = freetype2
+	depends = gtk4
+	depends = harfbuzz
+	depends = libadwaita
+	depends = libpng
+	depends = oniguruma
+	depends = pixman
+	depends = zlib
+	provides = ghostty
+	conflicts = ghostty
+	conflicts = ghostty-git
+	conflicts = ghostty-git-zen3
+	source = git+https://github.com/ghostty-org/ghostty
+	sha256sums = SKIP
+
+pkgname = ghostty-x86_64-v3-git
