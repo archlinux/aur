@@ -1,6 +1,6 @@
 pkgbase = pineflash-git
 	pkgdesc = A GUI tool to flash IronOS to the Pinecil V1, V2 and future other pine64 products.
-	pkgver = 0.5.5.r307.20240414.a823625
+	pkgver = 0.5.5+2.r309.20241230.1cbe554
 	pkgrel = 1
 	url = https://github.com/Spagett1/PineFlash
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = pineflash-git
 	depends = libusb
 	depends = polkit
 	optdepends = blisp: For pinecil V2 support.
-	provides = pineflash=0.5.5.r307.20240414.a823625
+	provides = pineflash=0.5.5+2.r309.20241230.1cbe554
 	conflicts = pineflash
 	options = !lto
 	source = pineflash::git+https://github.com/Spagett1/PineFlash.git
