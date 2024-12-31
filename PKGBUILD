@@ -14,7 +14,7 @@ source=("daytona-v${pkgver}.zip::https://github.com/daytonaio/${pkgbasename}/arc
 sha256sums=('f2459c43e020c879cda6d9a287e4bd8fc3a3080c39d0586de497f5d2a34ffa7c')
 
 prepare() {
-  cd "${pkgname}-${pkgver}/"
+  cd "${pkgbasename}-${pkgver}/"
   mkdir build
   # cd build
   # go mod download -x
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   echo "Building Daytona!"
-  cd "${pkgname}-${pkgver}/build/"
+  cd "${pkgbasename}-${pkgver}/build/"
   # NOTE: the BUILDTAGS may change over time
   export BUILDTAGS='seccomp systemd'
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -38,6 +38,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbasename}-${pkgver}"
   install -Dm755 build/daytona "${pkgdir}/usr/bin/daytona"
 }
