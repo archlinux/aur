@@ -1,7 +1,7 @@
 pkgbase = apk-editor-studio-bin
-	pkgdesc = A powerful yet easy to use APK reverse-engineering tool
+	pkgdesc = A powerful yet easy to use APK reverse-engineering tool.(Prebuilt version)
 	pkgver = 1.7.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://qwertycube.com/apk-editor-studio/
 	arch = x86_64
 	license = GPL-3.0-only
