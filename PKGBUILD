@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=eshelper
 pkgname="eusoft-${_pkgname}-bin"
-pkgver=2024.08.20
+pkgver=2024.11.19
 pkgrel=1
-pkgdesc="西班牙语助手,权威的西班牙语词典软件,西班牙语学习者必备的工具.支持学习笔记、生词本多平台同步，让你随时随地学西班牙语."
+pkgdesc="Authoritative Spanish dictionary software, an essential tool for Spanish language learners.(Prebuilt version)西班牙语助手,权威的西班牙语词典软件,西班牙语学习者必备的工具."
 arch=('x86_64')
 url="https://www.esdict.cn/"
 license=('LicenseRef-custom')
@@ -52,20 +52,23 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('59af3b48c1cda58220e303c479d8244257fb2d7c7be7d229b83f3e8dc23ee358'
-            '89862f4074e530896863738bf9d49c03c8d0cd0f6a543d4ccc1cdc53e8f83a24'
-            'ad3e35428234bc137bb85f2364bba92e7057a6074f08c17a775274995aaa44d4')
-build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@appasar@|${_pkgname}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            'ae4e45894d923e67462ab1361be0fac4518d5c1ea361304e34482b99c30e65ba'
+            '99459e293a8aa12658616ee9bdb4cbfb186265b8bfd3e0f4d57ccb5fac5b2d41')
+prepare() {
+    sed -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@appasar@/${_pkgname}/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/usr/share/${pkgname%-bin}/AppRun|${pkgname%-bin}|g;s|com.eusoft.${_pkgname}|${pkgname%-bin}|g" \
-        -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -e "
+        s/\/usr\/share\/${pkgname%-bin}\/AppRun/${pkgname%-bin}/g
+        s/com.eusoft.${_pkgname}/${pkgname%-bin}/g
+    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt"
-    cp -r "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/opt"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/pixmaps/com.eusoft.${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"

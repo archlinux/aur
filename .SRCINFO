@@ -1,6 +1,6 @@
 pkgbase = eusoft-eshelper-bin
-	pkgdesc = 西班牙语助手,权威的西班牙语词典软件,西班牙语学习者必备的工具.支持学习笔记、生词本多平台同步，让你随时随地学西班牙语.
-	pkgver = 2024.08.20
+	pkgdesc = Authoritative Spanish dictionary software, an essential tool for Spanish language learners.(Prebuilt version)西班牙语助手,权威的西班牙语词典软件,西班牙语学习者必备的工具.
+	pkgver = 2024.11.19
 	pkgrel = 1
 	url = https://www.esdict.cn/
 	arch = x86_64
@@ -40,11 +40,11 @@ pkgbase = eusoft-eshelper-bin
 	conflicts = eusoft-eshelper
 	conflicts = eshelper
 	options = !strip
-	source = eusoft-eshelper-2024.08.20.deb::https://www.eudic.net/download/eshelper.deb?v=2024-08-20
+	source = eusoft-eshelper-2024.11.19.deb::https://www.eudic.net/download/eshelper.deb?v=2024-11-19
 	source = LICENSE.html::https://dict.eudic.net/home/privacy
 	source = eusoft-eshelper.sh
 	sha256sums = 59af3b48c1cda58220e303c479d8244257fb2d7c7be7d229b83f3e8dc23ee358
-	sha256sums = 89862f4074e530896863738bf9d49c03c8d0cd0f6a543d4ccc1cdc53e8f83a24
-	sha256sums = ad3e35428234bc137bb85f2364bba92e7057a6074f08c17a775274995aaa44d4
+	sha256sums = ae4e45894d923e67462ab1361be0fac4518d5c1ea361304e34482b99c30e65ba
+	sha256sums = 99459e293a8aa12658616ee9bdb4cbfb186265b8bfd3e0f4d57ccb5fac5b2d41
 
 pkgname = eusoft-eshelper-bin
