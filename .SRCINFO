@@ -1,7 +1,7 @@
 pkgbase = pulledpork
 	pkgdesc = Tool to automatically update rules for snort
 	pkgver = 3.0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shirkdog/pulledpork3
 	install = pulledpork.install
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = pulledpork
 	sha256sums = f0149eb6f723b622024295e0ee00e1acade93fae464b9fdc323fdf15e99c388c
 	sha256sums = 35ff3fb6a572a38c424b1ab3e9748ad090e3c6064faddbe06c3a65646889f609
 	sha256sums = 07e937f3fa0d4eefd7aee5c2ea5502b8b8060ecb06fda5f830ce74af65c33493
-	sha256sums = 19117d6407ba5cea93cff40c460c1e64a9c2ae68d80ca15d7f3a7586708d5302
+	sha256sums = 6db6a4084e2e0d9528a876b7db6e9269cefc8d5a00185f19bbe7bcd187a24418
 	sha256sums = d2988ea005afb4f8a84baf20a59b616e6350fef140572794afe82cb44776ca1f
 	sha256sums = 629f7f8a5e274a0615f49d81cbc90e5d3697fa3e85af3ca231000761c73554c3
 	sha256sums = 2ac59ce33d8c7baefc809030c1a393d2951e936f1a9fb7d72ab392a69f6eb949
