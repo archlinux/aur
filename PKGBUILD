@@ -10,7 +10,7 @@ pkgname='mkpkg'
 pkgdesc='Tool to rebuild packages based on dependency triggers'
 _gitname='Arch-mkpkg'
 
-pkgver=6.2.3
+pkgver=6.2.4
 pkgrel=1
 url="https://github.com/gene-git/Arch-mkpkg"
 
@@ -27,7 +27,7 @@ _mkpkg_depends=('python>minor')
 #
 # Verifying Signed Tag
 #   Add arch@sapience.com key to keyring then use the source line with "?signed"
-#   Pub key available WKD or dowload from https://www.sapience.com/tech
+#   Pub key available keys/pgp, WKD or dowload from https://www.sapience.com/tech
 #   Note that upstream release procedure requires every tagged release have new tag
 #
 
