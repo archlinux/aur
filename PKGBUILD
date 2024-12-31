@@ -8,8 +8,8 @@ _pkgname=uksmd
 _downloadname="${_pkgname}-natalenko"
 pkgname="${_pkgname}-nosystemd-git"
 epoch=0
-pkgver=6.11.1.r74.20241107.6dbb897
-pkgrel=2
+pkgver=6.12.2.r80.20241224.ba1086b
+pkgrel=1
 pkgdesc="Userspace KSM helper daemon. Without systemd dependency, latest git checkout."
 url=https://codeberg.org/pf-kernel/uksmd
 license=('GPL-3.0-only')
@@ -32,7 +32,7 @@ optdepends=(
 )
 makedepends=(
   'git'
-  'meson'
+  'meson>=1.1'
 )
 provides=(
   "${_pkgname}=${pkgver}"
@@ -60,7 +60,7 @@ prepare() {
 pkgver() {
   cd "${srcdir}/${_downloadname}"
 
-  _ver="$(sed -E 's|#.*$||' meson.build | tr '\n' ' ' | sed -E -e 's|project[[:space:]]*\(([^\)]*)\).*$|\1|' -e 's|.*version:[[:space:]]*([^,]*)[[:space:]]*,.*|\1|' | tr -d \'\")" # Can also be parsed from `git describe --tags`.
+  _ver="$(sed -E 's|#.*$||' meson.build | tr '\n' ' ' | sed -E -e 's|project[[:space:]]*\(([^\)]*)\).*$|\1|' -e 's|.*[[:space:]]+version:[[:space:]]*([^,]*)[[:space:]]*,.*|\1|' | tr -d \'\")" # Can also be parsed from `git describe --tags`.
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
