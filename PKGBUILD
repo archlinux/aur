@@ -3,7 +3,7 @@
 # Maintainer: ApertureUA <alekseipesorin@outlook.com>
 
 pkgname=f-client-git
-pkgver=0.7.5.6245.339b65c6b
+pkgver=0.7.5_3.4.1.5939.998535a4
 pkgrel=1
 pkgdesc='A QoL mod for TeeWorlds: a fast-paced multiplayer 2D shooter game'
 arch=('x86_64' 'pentium4' 'riscv64' 'ppc64') # ALARM is dead :(
@@ -12,8 +12,8 @@ url="https://github.com/fokkonaut/F-Client"
 license=('custom' 'CCPL:by-nc-sa')
 depends=('alsa-lib' 'glu' 'sdl2' 'freetype2' 'pnglite' 'wavpack' 'openssl')
 makedepends=('python' 'git' 'cmake' 'ninja' 'imagemagick' 'gtest')
-provides=('teeworlds', 'teeworlds-git')
-conflicts=('teeworlds', 'teeworlds-git') # same server executable, data dir conflict
+provides=('teeworlds' 'teeworlds-git')
+conflicts=('teeworlds' 'teeworlds-git') # same server executable, data dir conflict
 source=('git+https://github.com/fokkonaut/F-Client/'
 		'git+https://github.com/teeworlds/teeworlds-translation.git'
 		'git+https://github.com/teeworlds/teeworlds-maps.git')
@@ -21,12 +21,13 @@ md5sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd F-Client
-	v=$(grep "GAME_VERSION " src/game/version.h | cut -d\" -f2)
-	printf "$v.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	base_ver=$(grep "GAME_VERSION " src/game/version.h | cut -d\" -f2 | cut -d',' -f1 | tr -d ' ')
+	mod_ver=$(grep "GAME_VERSION " src/game/version.h | cut -d\" -f2 | cut -d',' -f2 | tr -d ' ')
+	printf "%s_%s.%s.%s" "$base_ver" "$mod_ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	convert "teeworlds/other/icons/teeworlds.ico" "$srcdir/teeworlds.png"
+	magick convert "F-Client/other/icons/teeworlds.ico" "$srcdir/teeworlds.png"
 
 	cd F-Client
 	git submodule init
@@ -62,9 +63,10 @@ package() {
 		[[ $_s =~ ([0-9])+x([0-9])+ ]] || ( echo "Not a NUMxNUM: '$_s'"; exit 1; )
 		install -Dm644 "$_icon" "$pkgdir/usr/share/icons/hicolor/$_s/apps/teeworlds.png"
 	done
+	# > Well, that was idiotic...
 
-	# Comply with the "provides" line
+	
 	cd "$pkgdir/usr/bin"
-	ln -sr teeworld F-Client
+	ln -sr F-Client teeworlds # Comply with the "provides" line
 	cd -
 }
