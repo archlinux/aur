@@ -3,7 +3,7 @@
 # Maintainer: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.56.0
+pkgver=1.57.1
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
@@ -15,7 +15,7 @@ makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
 optdepends=('git: git support' 'libsecret: keytar support')
 options=(!debug !strip)
 
-_tools_commit=3a60f68f4fde1675c0860923e752f73f5664eb68
+_tools_commit=3adcf452741902eb92575d78b25bf94013be2fd5
 source=(
   "theia-electron.sh"
   "https://gitlab.com/ccorn/theia-packaging-tools/-/raw/$_tools_commit/make-package-json.sh"
@@ -28,8 +28,8 @@ source=(
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE-vscode.txt"
 )
 sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
-            '201f033b3e445dca08066f5d636b961d45d2ffadd589908f3cc76bf2c2bd601a'
-            'd065a9ee3a1a98259baa78564726579de6d9ebd30bb36835d2b354c56752806b'
+            '33ec731369dd6ff428174e1b69f3fcc4a9aec35338dada1a953844e09d42d088'
+            'd0c29b855b8a3dbe0a12670fd32189d4a5d4c2b8ebb395932869ed73b15b271e'
             'f43cc8aaf4738166acdf4e54817ad7e9c031c4dacf23eb8496f9edae33b3f1d0'
             '76f48bbc421d298113c73cee628c9d0fd8b14381590d871928f4f0bd87e812ce'
             'd9712e3b79a98d7b1d5fd64d709daa806be6944c3f0cebf22879cd0e3c08ce06'
@@ -45,15 +45,8 @@ prepare() {
   # Note: As of 1.41.0, those get pulled in anyway. Sigh.
   # 1.50.0: @theia/git removed from electron version
   # (presumably in favor of vscode.git{,-base})
-  # @theia/ai-hugging-face: Not published
-  # Add upstream resolutions.
   bash make-package-json.sh "${pkgver/.next./-next.}" | \
-  grep -vE "@theia/(ai-hugging-face|git|notebook|preview|test)\b" | \
-  sed '/^  }$/i\
-  },\
-  "resolutions": {\
-    "**/@types/node": "18",\
-    "**/nan": "2.20.0"' >package.json
+  grep -vE "@theia/(git|notebook|preview|test)\b" >package.json
 }
 
 build() {
