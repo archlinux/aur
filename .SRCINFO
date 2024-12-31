@@ -1,17 +1,17 @@
 pkgbase = gameclock-bin
 	pkgdesc = Track your Game time with your friends!(Prebuilt version.Use system-wide electron)
-	pkgver = 1.10.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Didiloy/GameClock
 	arch = any
 	license = GPL-3.0-only
 	makedepends = fuse2
 	depends = electron29
-	provides = gameclock=1.10.1
+	provides = gameclock=2.0.0
 	conflicts = gameclock
-	source = gameclock-1.10.1.AppImage::https://github.com/Didiloy/GameClock/releases/download/v1.10.1/GameClock-1.10.1.AppImage
+	source = gameclock-2.0.0.AppImage::https://github.com/Didiloy/GameClock/releases/download/v2.0.0/GameClock-2.0.0.AppImage
 	source = gameclock.sh
-	sha256sums = b93e654b8e058867598b015b0f1affb113fe579ff637f2ea3ec17ec3e042d6b7
+	sha256sums = 51b4aedf557d8011b2801e02cd6dcae92d2f31c64f169787995d23247b72c18c
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = gameclock-bin
