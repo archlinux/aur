@@ -1,0 +1,15 @@
+pkgbase = cos
+	pkgdesc = Framework that brings C to the level of other high level programming languages and beyond
+	pkgver = 0.9+r116+gfc2f3ed
+	pkgrel = 1
+	url = https://github.com/CObjectSystem/COS
+	arch = x86_64
+	license = Apache-2.0
+	depends = sh
+	depends = glibc
+	source = COS-fc2f3ed275d2291d3fb2499fa3572dcfe3dd9db2.tar.gz::https://github.com/CObjectSystem/COS/archive/fc2f3ed275d2291d3fb2499fa3572dcfe3dd9db2.tar.gz
+	source = cos_include_stdint.patch
+	b2sums = e44db545e54fd4496f7793edf4e69a20888373907a07ab3025796fad536e22ccef563476ce88654d1df6167d753f6bdb96a57103b8850b2484c3acf6a3163c51
+	b2sums = 256eafd045d0921106ccd31d7f8ef44bf54f182803315e1dd8d4ee00d79f48608ed9bbc501ed185c2e5060a070f7cf05fa4502129de242d4dee1e20c5052890e
+
+pkgname = cos

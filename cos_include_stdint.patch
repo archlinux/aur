@@ -1,0 +1,10 @@
+--- a/CosBase/src/cos_memory.c
++++ b/CosBase/src/cos_memory.c
+@@ -26,6 +26,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <assert.h>
++#include <stdint.h>
+ 
+ #define COS_MEM_UTEST 0 // 1 -> run standalone unit tests in main().
+ #define DBGMEM(P)  // P // uncomment for verbose debugging output
