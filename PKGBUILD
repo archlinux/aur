@@ -5,7 +5,7 @@
 # https://www.kernel.org/category/releases.html
 # 6.6 Greg Kroah-Hartman & Sasha Levin 2023-10-29 Dec, 2026
 _LLL_VER=6.6
-_LLL_SUBVER=41
+_LLL_SUBVER=66
 
 #PKGEXT='.pkg.tar'
 
@@ -113,7 +113,7 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('d926a06c63dd8ac7df3f86ee1ffc2ce2a3b81a2d168484e76b5b389aba8e56d0'
             'SKIP'
-            '89bff68ae80cb47ee7b1d9c8306226a1501b8e8e4e86bdb6765141ab8b4b5922'
+            'eabfbe9e3b02f61f687835a3f76876e543447f83c6fd3e5d5915db6ef5ec9af0'
             '47a008c8b3b684330f2b80beeaca20105ab3afcded9530b28b078821bd062ba6'
             'a8162641380b2681622d0f3c40ce130c9fd1cf6e176b5db18b95ba83609fbcf8')
 
