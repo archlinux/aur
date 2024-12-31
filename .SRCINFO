@@ -1,6 +1,6 @@
 pkgbase = gcc-snapshot
 	pkgdesc = The GNU Compiler Collection (snapshot)
-	pkgver = 15.1.0.snapshot20241222
+	pkgver = 15.1.0.snapshot20241229
 	pkgrel = 1
 	url = https://gcc.gnu.org
 	arch = x86_64
@@ -22,14 +22,13 @@ pkgbase = gcc-snapshot
 	makedepends = zstd
 	options = !emptydirs
 	options = !lto
-	source = https://ftp.fu-berlin.de/unix/languages/gcc/snapshots/15-20241222/gcc-15-20241222.tar.xz
+	source = https://ftp.fu-berlin.de/unix/languages/gcc/snapshots/15-20241229/gcc-15-20241229.tar.xz
 	source = git+https://repo.or.cz/isl.git#branch=maint
 	source = https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz
 	source = https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz.sig
 	source = https://ftp.gnu.org/gnu/mpc/mpc-1.3.1.tar.gz
 	source = https://www.mpfr.org/mpfr-4.2.1/mpfr-4.2.1.tar.xz
 	source = https://www.mpfr.org/mpfr-4.2.1/mpfr-4.2.1.tar.xz.asc
-	source = 0001-gm2-fix-bad-programming-practice-warning.patch
 	source = 0002-libgccjit-Remove-obsolete-texinfo-statements.patch
 	source = c89
 	source = c99
@@ -40,14 +39,13 @@ pkgbase = gcc-snapshot
 	validpgpkeys = D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
 	validpgpkeys = 343C2FF0FBEE5EC2EDBEF399F3599FF828C67298
 	validpgpkeys = A534BE3F83E241D918280AEB5831D11A0D4DB02A
-	sha256sums = d36c3b94bebb6b2a643da5659d7cf0524e9ad41a7a0f39341a47929f57b1cf9e
+	sha256sums = 624efc1c2b1e140d95c22ee98d2fad94a560d5922fedc2d1466fd5234270ecc4
 	sha256sums = SKIP
 	sha256sums = a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898
 	sha256sums = SKIP
 	sha256sums = ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8
 	sha256sums = 277807353a6726978996945af13e52829e3abd7a9a5b7fb2793894e18f1fcbb2
 	sha256sums = SKIP
-	sha256sums = 20c0af49ad44b7193f24560002e81cd8b8ac248a98649324ad6ca1da4c4db6ff
 	sha256sums = 08ee6d267261aeaeadc117b7fc1cdfcbb60ffb9ae76728f33d6fcc60b0e8f240
 	sha256sums = de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931
 	sha256sums = 2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a
@@ -55,7 +53,7 @@ pkgbase = gcc-snapshot
 
 pkgname = gcc-snapshot
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (snapshot)
-	depends = gcc-libs-snapshot=15.1.0.snapshot20241222-1
+	depends = gcc-libs-snapshot=15.1.0.snapshot20241229-1
 	depends = binutils>=2.40
 	depends = zstd
 	optdepends = lib32-gcc-libs-snapshot: for generating code for 32-bit ABI
@@ -77,7 +75,7 @@ pkgname = gcc-libs-snapshot
 	depends = glibc>=2.36
 	provides = gcc-libs-snapshot-multilib
 	provides = gcc-libs-multilib
-	provides = gcc-libs=15.1.0.snapshot20241222-1
+	provides = gcc-libs=15.1.0.snapshot20241229-1
 	provides = libgo.so
 	provides = libgfortran.so
 	provides = libgphobos.so
@@ -111,7 +109,7 @@ pkgname = lib32-gcc-libs-snapshot
 
 pkgname = gcc-ada-snapshot
 	pkgdesc = Ada front-end for GCC (snapshot)
-	depends = gcc-snapshot=15.1.0.snapshot20241222-1
+	depends = gcc-snapshot=15.1.0.snapshot20241229-1
 	provides = gcc-ada-snapshot-multilib
 	provides = gcc-ada-multilib
 	provides = gcc-ada
@@ -127,7 +125,7 @@ pkgname = gcc-ada-snapshot
 
 pkgname = gcc-d-snapshot
 	pkgdesc = D frontend for GCC (snapshot)
-	depends = gcc-snapshot=15.1.0.snapshot20241222-1
+	depends = gcc-snapshot=15.1.0.snapshot20241229-1
 	provides = gcc-d
 	provides = gdc
 	conflicts = gcc-d
@@ -140,7 +138,7 @@ pkgname = gcc-d-snapshot
 
 pkgname = gcc-fortran-snapshot
 	pkgdesc = Fortran front-end for GCC (snapshot)
-	depends = gcc-snapshot=15.1.0.snapshot20241222-1
+	depends = gcc-snapshot=15.1.0.snapshot20241229-1
 	provides = gcc-fortran-snapshot-multilib
 	provides = gcc-fortran-multilib
 	provides = gcc-fortran
@@ -155,7 +153,7 @@ pkgname = gcc-fortran-snapshot
 
 pkgname = gcc-go-snapshot
 	pkgdesc = Go front-end for GCC (snapshot)
-	depends = gcc-snapshot=15.1.0.snapshot20241222-1
+	depends = gcc-snapshot=15.1.0.snapshot20241229-1
 	provides = go=1.18
 	provides = gcc-go-snapshot-multilib
 	provides = gcc-go-multilib
@@ -170,7 +168,7 @@ pkgname = gcc-go-snapshot
 
 pkgname = gcc-m2-snapshot
 	pkgdesc = Modula-2 frontend for GCC (snapshot)
-	depends = gcc-snapshot=15.1.0.snapshot20241222-1
+	depends = gcc-snapshot=15.1.0.snapshot20241229-1
 	provides = gcc-m2-snapshot-multilib
 	provides = gcc-m2-multilib
 	provides = gcc-m2
@@ -185,7 +183,7 @@ pkgname = gcc-m2-snapshot
 
 pkgname = gcc-objc-snapshot
 	pkgdesc = Objective-C front-end for GCC (snapshot)
-	depends = gcc-snapshot=15.1.0.snapshot20241222-1
+	depends = gcc-snapshot=15.1.0.snapshot20241229-1
 	provides = gcc-objc-snapshot-multilib
 	provides = gcc-objc-multilib
 	provides = gcc-objc
@@ -200,7 +198,7 @@ pkgname = gcc-objc-snapshot
 
 pkgname = gcc-rust-snapshot
 	pkgdesc = Rust frontend for GCC (snapshot)
-	depends = gcc-snapshot=15.1.0.snapshot20241222-1
+	depends = gcc-snapshot=15.1.0.snapshot20241229-1
 	provides = gcc-rust-snapshot-multilib
 	provides = gcc-rust-multilib
 	provides = gcc-rust
@@ -215,7 +213,7 @@ pkgname = gcc-rust-snapshot
 
 pkgname = lto-dump-snapshot
 	pkgdesc = Dump link time optimization object files (snapshot)
-	depends = gcc-snapshot=15.1.0.snapshot20241222-1
+	depends = gcc-snapshot=15.1.0.snapshot20241229-1
 	provides = lto-dump
 	conflicts = lto-dump
 	replaces = lto-dump
@@ -225,7 +223,7 @@ pkgname = lto-dump-snapshot
 
 pkgname = libgccjit-snapshot
 	pkgdesc = Just-In-Time Compilation with GCC backend (snapshot)
-	depends = gcc-snapshot=15.1.0.snapshot20241222-1
+	depends = gcc-snapshot=15.1.0.snapshot20241229-1
 	provides = libgccjit
 	conflicts = libgccjit
 	replaces = libgccjit

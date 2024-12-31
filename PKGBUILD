@@ -2,8 +2,8 @@
 
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-ada,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
-pkgver=15.1.0.snapshot20241222
-_pkgver=15-20241222
+pkgver=15.1.0.snapshot20241229
+_pkgver=15-20241229
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -24,7 +24,6 @@ source=(https://ftp.fu-berlin.de/unix/languages/gcc/snapshots/${_pkgver}/gcc-${_
         https://gmplib.org/download/gmp/gmp-${_gmpver}.tar.xz{,.sig}
         https://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz
         https://www.mpfr.org/mpfr-${_mpfrver}/mpfr-${_mpfrver}.tar.xz{,.asc}
-        0001-gm2-fix-bad-programming-practice-warning.patch
         0002-libgccjit-Remove-obsolete-texinfo-statements.patch
         c89
         c99
@@ -35,14 +34,13 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # nisse@lysator.liu.se
               A534BE3F83E241D918280AEB5831D11A0D4DB02A) # vincent@vinc17.net
-sha256sums=('d36c3b94bebb6b2a643da5659d7cf0524e9ad41a7a0f39341a47929f57b1cf9e'
+sha256sums=('624efc1c2b1e140d95c22ee98d2fad94a560d5922fedc2d1466fd5234270ecc4'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
             'ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8'
             '277807353a6726978996945af13e52829e3abd7a9a5b7fb2793894e18f1fcbb2'
             'SKIP'
-            '20c0af49ad44b7193f24560002e81cd8b8ac248a98649324ad6ca1da4c4db6ff'
             '08ee6d267261aeaeadc117b7fc1cdfcbb60ffb9ae76728f33d6fcc60b0e8f240'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
@@ -64,7 +62,6 @@ prepare() {
   sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 
   patch -Np0 -i ${srcdir}/gcc-ada-repro.patch
-  patch -Np1 -i ${srcdir}/0001-gm2-fix-bad-programming-practice-warning.patch
   patch -Np1 -i ${srcdir}/0002-libgccjit-Remove-obsolete-texinfo-statements.patch
 
   mkdir -p ${srcdir}/gcc-build ${srcdir}/libgccjit-build
