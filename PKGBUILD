@@ -10,18 +10,27 @@ pkgname='dmarc_report'
 pkgdesc='"Generate human readable DMARC and TLS reports from standard email reports.'
 _gitname='dmarc_report'
 
-pkgver=4.12.0
+pkgver=4.12.1
 pkgrel=1
 url="https://github.com/gene-git/dmarc_report"
 
 arch=(any)
 license=(MIT)
-depends=('python>=3.11' 'python-dateutil' 'python-lxml')
+depends=('python>=3.13' 'python-dateutil' 'python-lxml')
 # To build docs uncommont sphinx/texlive
 makedepends=('git' 'python-installer' 'python-build' 'python-wheel' 'python-hatch' 'rsync'
             #'python-sphinx' 'texlive-latexextra'
             )
 _mkpkg_depends=('python>minor')
+
+#
+# Verifying Signed Tag
+#   Add arch@sapience.com key to keyring then use the source line with "?signed"
+#   Key available via WKD or dowload from https://www.sapience.com/tech
+#   Note that upstream release procedure requires every tagged release have new tag
+#
+
+#source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}?signed")
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
 
