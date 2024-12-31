@@ -3,7 +3,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-flac
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="OCaml bindings to libFLAC"
 arch=('i686' 'x86_64')
@@ -29,4 +29,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('0a3751140a3d107bf7b7e86088f0f1a6d4861762bd73bb7ceb990c9599e26fc4')
+sha256sums=('4911b2e4d85b452ad31042dbebfcbbd0f47403451a08d76416cd2e1469b76406')
