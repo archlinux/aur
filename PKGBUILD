@@ -2,7 +2,7 @@
 
 pkgname=wechat
 pkgver=4
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Fixes and optional sandbox for WeChat."
 arch=('any')
@@ -41,8 +41,8 @@ function package() {
 	echo '''#!/usr/bin/bash
 export _portalConfig=/usr/lib/wechat/portable-config
 portable $@
-''' >"${pkgdir}/usr/bin/wechat"
-	chmod 755 "${pkgdir}/usr/bin/wechat"
+''' >"${pkgdir}/usr/bin/wechat.sh"
+	chmod 755 "${pkgdir}/usr/bin/wechat.sh"
 	install -Dm644 \
 		"${srcdir}/wechat.desktop" \
 		"${pkgdir}/usr/share/applications/com.qq.weixin.desktop"
