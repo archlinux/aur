@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Emu80-qt5
+Comment=Emulator for bunch of Soviet PCs. Built against QT5.
+GenericName=Emulator
+Exec=/usr/bin/emu80-qt5
+Type=Application
+Icon=emu80
+Categories=Utility;Development;Emulator;
+Keywords=emu80;qt5
