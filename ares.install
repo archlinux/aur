@@ -1,13 +1,12 @@
 post_upgrade() {
-	if [ $(vercmp $2 132.r129.g5f9804fb6-1) -lt 0 ]; then cat << EOF
+	if [ $(vercmp $2 141.r46.g8433666dc-5) -lt 0 ]; then cat << EOF
 ********************************************************************************
-* Wanting to be as close as possible to Ares vanilla, the location             *
-* of settings files has been changed from                                      *
-* $XDG_CONFIG_HOME/ares/
-* to the default                                                               *
-* $XDG_DATA_HOME/ares/
-* Should you read this message, please move the file settings.bml to the new   *
-* location. Once done, only then ares can start with your customized settings. *
+* With v142 release, Ares has changed its build system from GNU Make to CMake. *
+* For the occasion, the PKGBUILD has been updated to support CFLAGS, CXXFLAGS, *
+* LDFLAGS, and MAKEFLAGS variables that are defined in makepkg.conf.           *
+* Furthermore the Retro shaders, which were recently included in Ares upstream,*
+* are now bundled off to 'libretro-shaders' package, making it a dependency.   *
+* This allows 70%-75% reduction of Ares package's size compared to v141.       *
 ********************************************************************************
 EOF
 fi

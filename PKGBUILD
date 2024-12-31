@@ -1,14 +1,17 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu-git
-pkgver=141.r17.g36290b970
+pkgver=141.r46.g8433666dc
 pkgrel=1
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation. (git version)"
 arch=("x86_64" "i686" "aarch64")
 url="https://ares-emu.net/"
 license=("ISC")
-depends=("gtk3" "libao" "libgl" "libpulse" "librashader>=0.5.1-1" "libudev.so=1-64" "libxv" "openal" "sdl2" "vulkan-driver" "vulkan-icd-loader")
-makedepends=("mesa" "git" "clang" "lld")
+depends=("alsa-lib" "gcc-libs" "libao" "libgl" "libpulse" "librashader>=0.5.1-1"
+  "libretro-shaders" "libudev.so=1-64" "libx11" "libxrandr" "openal" "sdl2"
+  "vulkan-driver" "vulkan-icd-loader" "zlib" "cairo" "gdk-pixbuf2" "glib2"
+  "glibc" "gtk3" "hicolor-icon-theme" "pango")
+makedepends=("ccache" "clang" "cmake" "git" "lld" "mesa" "ninja" "pkgconf")
 provides=("ares-emu")
 conflicts=("ares-emu")
 install=ares.install
@@ -16,23 +19,26 @@ source=("git+https://github.com/ares-emulator/ares.git")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "${srcdir}/ares"
+  cd "ares"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  # If you want to build with gcc, edit to use g++ instead of clang++
-  make ${MAKEFLAGS} -C "${srcdir}/ares/desktop-ui" hiro=gtk3 compiler=clang++ prefix="/usr"
+  cmake -B "build" -S "ares" \
+    -DCMAKE_BUILD_TYPE="RelWithDebInfo" \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_C_COMPILER="clang" \
+    -DCMAKE_CXX_COMPILER="clang++" \
+    -DCMAKE_C_FLAGS="${CFLAGS}"\
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS}"\
+    -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS}" \
+    -DARES_BUNDLE_SHADERS=OFF \
+    -DARES_SKIP_DEPS=ON \
+    -Wno-dev -G Ninja
+  cmake --build "build" -- ${MAKEFLAGS}
 }
 
 package() {
-  install -Dm 644 "${srcdir}/ares/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 755 "${srcdir}/ares/desktop-ui/out/ares" -t "${pkgdir}/usr/bin/"
-  install -Dm 644 "${srcdir}/ares/desktop-ui/resource/ares.png" -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
-  install -Dm 644 "${srcdir}/ares/desktop-ui/resource/ares.desktop" -t "${pkgdir}/usr/share/applications/"
-
-  # Also install shaders and databases in Ares' shared data directory
-  install -dm 755 "${pkgdir}/usr/share/ares"
-  cp -dr --no-preserve=ownership "${srcdir}/ares/thirdparty/slang-shaders/" "${pkgdir}/usr/share/ares/Shaders/"
-  cp -dr --no-preserve=ownership "${srcdir}/ares/mia/Database/" "${pkgdir}/usr/share/ares/Database/"
+  DESTDIR="${pkgdir}" cmake --install build
+  install -Dm 644 "ares/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
