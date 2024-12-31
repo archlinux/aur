@@ -1,7 +1,7 @@
 # Maintainer: bbaa <bbaa@bbaa.fun>
 
 pkgname=i915-sriov-dkms
-pkgver=2024.12.28
+pkgver=2024.12.30
 pkgrel=1
 pkgdesc="Linux i915 module patched with SR-IOV support"
 arch=('x86_64')
@@ -13,8 +13,8 @@ conflicts=("${pkgname}-git")
 replace=("${pkgname}-bbaa-git")
 backup=("etc/tmpfiles.d/i915-set-sriov-numvfs.conf")
 install=${pkgname}.install
-source=("git+https://github.com/strongtz/i915-sriov-dkms.git#commit=f68199f72ee35b4fb7d1ac0717cc90e63e8d93c2" "i915-set-sriov-numvfs.conf")
-sha256sums=('a543dd83abdaa893d2a5fbe69f1a8192425530dee6ccdab69a8c407ec16f96ac'
+source=("git+https://github.com/strongtz/i915-sriov-dkms.git#commit=fb229bbfe9e7a9e5d4e61fdedf54d91b2661b09b" "i915-set-sriov-numvfs.conf")
+sha256sums=('8ec06bccb1ee48f549db6d21618c546ff4b05e9c786667c3ba8d2bcea9207b00'
             'e85e4d4c97cb1f6e825c47ea5e3a9c18f10761714307985f67b58c8e55a1e2c2')
 
 package() {
