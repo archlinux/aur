@@ -1,8 +1,7 @@
 #!/bin/bash
 set -o pipefail
-XDG_DATA_HOME="/var/tmp"
-_APPNAME=@appname@
-_APPDIR="/opt/${_APPNAME}"
+Languge="zh-cn"
+_APPDIR="/usr/lib/@appname@"
 _RUNNAME="${_APPDIR}/@runname@"
 _env_user_data="${XDG_DATA_HOME}"
 if [ -z "${_env_user_data}" ] ; then
@@ -11,7 +10,7 @@ fi
 if [ -z "${_env_user_data}" ] ; then
     _env_user_data="/var/tmp"             
 fi
-export _env_user_data="${_env_user_data}/${_APPNAME}"
+export _env_user_data="${_env_user_data}/@appname@"
 _input_method_framework=fcitx
 is_exist_fcitx=`ps -ef | grep [f]citx`
 if [ -z "${is_exist_fcitx}" ] ; then
@@ -33,5 +32,5 @@ _display_server_type=`echo ${WAYLAND_DISPLAY}`
 if [ "${_display_server_type}" = "*wayland*" ]; then
 	export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${_APPDIR}/systemlibs/wayland"
 fi
-cd "${_APPDIR}"
+cd "${_APPDIR}" || { echo "Failed to change directory to ${_APPDIR}"; exit 1; }
 exec "${_RUNNAME}" "$@" || exit $?
