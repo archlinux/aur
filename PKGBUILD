@@ -2,10 +2,10 @@
 pkgname=flomo-bin
 _pkgname=Flomo
 _zhsname="浮墨笔记"
-pkgver=5.24.101
+pkgver=5.24.121
 _electronversion=20
 pkgrel=1
-pkgdesc="A new generation of cloud knowledge base for personal note-taking and knowledge creation, team collaboration and knowledge accumulation.新一代云端知识库，用于个人笔记与知识创作，团队协同与知识沉淀"
+pkgdesc="A new generation of cloud knowledge base for personal note-taking and knowledge creation, team collaboration and knowledge accumulation.(Prebuilt version.Use system-wide electron)新一代云端知识库，用于个人笔记与知识创作，团队协同与知识沉淀"
 arch=('x86_64')
 url="https://flomoapp.com/"
 _dlurl="https://github.com/zxp19821005/My_AUR_Files"
@@ -19,17 +19,17 @@ makedepends=(
     'gendesk'
     'asar'
     'icoutils'
-    'p7zip'
+    '7zip'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.exe::${_dlurl}/releases/download/${pkgname%-bin}${pkgver}/${pkgname%-bin}-${pkgver}-x64.exe"
     "LICENSE.html::https://help.flomoapp.com/legal/"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('875419e8ace761208cae5bb88c945b8ff5ac6e56f08beaf1e845a5c9d5f8a472'
-            '3a9173706f0fff2008d1924097aea63ff128913c44de13811a8035ccdcb32db9'
+sha256sums=('1dc948f1f0235042182489d26de492959f5bfe457f9bc05d37a004be6aaa5cff'
+            'be2af81830e646db7c7621ca8d7d989136490af73329bbd3c64b7dca232ec8b4'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
