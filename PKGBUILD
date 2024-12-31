@@ -1,13 +1,13 @@
 # Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 pkgname=gofish-bin
-pkgver=0.14.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Crossplatform package manager"
 arch=(x86_64)
 url="https://gofi.sh/index.html"
 license=('Apache')
-source_x86_64=("https://gofi.sh/releases/gofish-v$pkgver-linux-amd64.tar.gz")
-sha256sums_x86_64=('d49ea94fb663386cdefa236f52deae9126254ab41afc614a9ddfdf9650108e2f')
+source_x86_64=("https://github.com/tinned-fish/gofish/releases/download/v$pkgver/gofish-$pkgver-linux-amd64.tar.gz")
+sha256sums_x86_64=('02f874ce3ddc34e6a63c3f9632261733b65f15c8f6b3afa18c4f06d1a53121f2')
 
 package() {
     cd "$srcdir/"
