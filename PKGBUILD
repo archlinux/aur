@@ -1,66 +1,61 @@
 # Maintainer: dude <brrtsm@gmail.com>
 
-pkgver=1.40
+pkgver=1.41
 pkgname=(hledger-bin hledger-ui-bin hledger-web-bin)
-pkgrel=5
-pkgdesc="Easy-to-use command-line/curses/web plaintext accounting tool"
+pkgrel=1
+pkgdesc='Easy-to-use command-line/curses/web plaintext accounting tool'
 arch=(x86_64)
-url="http://hledger.org"
-license=('GPL')
-depends=('gmp' 'ncurses5-compat-libs')
-makedepends=('coreutils')
+url='http://hledger.org'
+license=('GPL-3.0-or-later')
 optdepends=('asciinema: hledger demo support')
 source=(
-    hledger-${pkgver}.tar.gz::https://github.com/simonmichael/hledger/releases/download/${pkgver}/hledger-linux-x64.tar.gz
-    https://raw.githubusercontent.com/simonmichael/hledger/hledger-${pkgver}/hledger/shell-completion/hledger-completion.bash
+    hledger-${pkgver}.tar.zip::https://github.com/simonmichael/hledger/releases/download/${pkgver}/hledger-linux-x64.zip
     https://raw.githubusercontent.com/simonmichael/hledger/hledger-${pkgver}/hledger/hledger.1
     https://raw.githubusercontent.com/simonmichael/hledger/hledger-${pkgver}/hledger-ui/hledger-ui.1
     https://raw.githubusercontent.com/simonmichael/hledger/hledger-${pkgver}/hledger-web/hledger-web.1
 )
-sha256sums=(
-    8f41679941ee6e68d77b9a6f9c0d155d9e6e27265da297f92d0a5bcf5658679e
-    662abb7f39b9582315a6d014012fdff56664e8cf6b2665f1d96ae3285930d4ce
-    cb37c183da683bd6031c881272998f994a60ead08b25e61c4698d6cbc3269968
-    7a789e1a2b82f0e250efb5ec0d1b630a6053cabb2912bccddee7f65fc08fe992
-    cfd949b03ce0a0ce20d7ab1e99173456465d02716cc3ad472a4be7bc2e31d325
-)
+sha256sums=('97b28749dbd673f093f0f0784b0cd938f41f0729bb4a73daf3aa56d7994c3353'
+            'd8608500460bddd820429a1b6a46e1a6f4f2955666c0ddf33969f2eb2d6886cc'
+            '8f4aa0bc4b0474596a06b48e9227fa6c18ecb58b123c078f81776ef4d2eb85ee'
+            'b49e60026438567f9ed98c80930ac9c2d60e637e2518a2ae4eaed606f16c46cb')
 
 prepare() {
-    cd $srcdir
-    tar -xvf ./hledger-${pkgver}.tar.gz
+    cd "$srcdir"
+    tar -xvf ./hledger-linux-x64.tar
 }
 
 package_hledger-bin() {
-    pkgdesc="Command-line interface for the hledger accounting system"
-	provides=(hledger)
-	conflicts=(hledger)
-    depends+=(glibc)
+    pkgdesc='Command-line interface for the hledger accounting system'
+    provides=(hledger)
+    conflicts=(hledger)
+    _pkgname="${pkgname%-bin}"
 
-    install -Dm 755 ./hledger "$pkgdir/usr/bin/hledger"
-    install -Dm 644 hledger-completion.bash "$pkgdir/usr/share/bash-completion/completions/hledger"
-    install -Dm 644 hledger.1 -t "$pkgdir/usr/share/man/man1/"
+    install -Dm 755 "$_pkgname" -t "$pkgdir/usr/bin/"
+    install -Dm 644 hledger-completion.bash \
+        "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+    install -Dm 644 "$_pkgname".1 -t "$pkgdir/usr/share/man/man1/"
 }
 
 package_hledger-ui-bin() {
-    pkgdesc="Curses-style terminal interface for the hledger accounting system"
-	provides=(hledger-ui)
-	conflicts=(hledger-ui)
-    depends+=(zlib)
+    pkgdesc='Curses-style terminal interface for the hledger accounting system'
+    provides=(hledger-ui)
+    conflicts=(hledger-ui)
+    _pkgname="${pkgname%-bin}"
 
-    install -Dm 755 ./hledger-ui "$pkgdir/usr/bin/hledger-ui"
-    mkdir -p "$pkgdir/usr/share/bash-completion/completions/"
-    ln -sr "$pkgdir/usr/share/bash-completion/completions/hledger"{,-ui}
-    install -Dm 644 hledger-ui.1 -t "$pkgdir/usr/share/man/man1/"
+    install -Dm 755 "$_pkgname" -t "$pkgdir/usr/bin/"
+    install -Dm 644 hledger-completion.bash \
+        "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+    install -Dm 644 "$_pkgname".1 -t "$pkgdir/usr/share/man/man1/"
 }
 
 package_hledger-web-bin() {
-    pkgdesc="Web-based user interface for the hledger accounting system"
-	provides=(hledger-web)
-	conflicts=(hledger-web)
-    depends+=(zlib)
+    pkgdesc='Web-based user interface for the hledger accounting system'
+    provides=(hledger-web)
+    conflicts=(hledger-web)
+    _pkgname="${pkgname%-bin}"
 
-    install -Dm 755 ./hledger-web "$pkgdir/usr/bin/hledger-web"
-    mkdir -p "$pkgdir/usr/share/bash-completion/completions/"
-    ln -sr "$pkgdir/usr/share/bash-completion/completions/hledger"{,-web}
-    install -Dm 644 hledger-web.1 -t "$pkgdir/usr/share/man/man1/"
+    install -Dm 755 "$_pkgname" -t "$pkgdir/usr/bin/"
+    install -Dm 644 hledger-completion.bash \
+        "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+    install -Dm 644 "$_pkgname".1 -t "$pkgdir/usr/share/man/man1/"
 }
