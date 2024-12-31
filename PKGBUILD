@@ -22,7 +22,7 @@ conflicts=('v2rayn-bin')
 install=${pkgname}.install
 
 build() {
-	cd "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}"
+    cd "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}"
     dotnet publish ./v2rayN.Desktop/v2rayN.Desktop.csproj \
         -p:DebugType=None \
         --framework net8.0 \
@@ -35,7 +35,7 @@ build() {
 package() {
     mkdir -pv "${pkgdir}/opt/${_pkgname}"
     cd "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}"
-	cp -r output/* "${pkgdir}/opt/${_pkgname}"
+    cp -r output/* "${pkgdir}/opt/${_pkgname}"
     install -Dvm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/v2rayn"
     install -Dvm644 "v2rayN.Desktop/v2rayN.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/v2rayN.png"
     install -Dvm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/v2rayN.desktop"
