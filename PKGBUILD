@@ -5,7 +5,7 @@
 _pkgname="python-tts"
 pkgname="${_pkgname}-git"
 pkgver=0.22.0.r9.gdbf1a08a
-pkgrel=3
+pkgrel=4
 pkgdesc="Coqui deep learning toolkit for Text-to-Speech, battle-tested in research and production"
 url="https://github.com/coqui-ai/TTS"
 license=("MPL2")
@@ -59,7 +59,7 @@ source=(
     headless.patch
 )
 b2sums=('SKIP'
-        '41813f228115bbe34b868d0cdf7b069c3eef4d51a1d32f9cc3c2698c5007cc5a43c06e53cf5ea297631e577ba8c285f33a8e8c191f16ba0a1184006a0fbeadba')
+        '1dfef5cde2f801f3b6db4b15a8f636767f32b5a0ef8bb5fe74f81fb739c5b47397226fd35dbc661ab6d57928ea9cc9fac67feeca86b473b79575696f53db4bb0')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}" || exit 2
