@@ -1,5 +1,5 @@
 # Maintainer: raininja < dandenkijin 'at' gmail 'dot' com >
-pkgname=daytona
+pkgname=daytona-new
 pkgver=0.50.0
 pkgrel=1
 pkgdesc="The Open Source Dev Environment Manager."
