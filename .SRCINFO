@@ -1,7 +1,7 @@
 pkgbase = wechat-bin
 	pkgdesc = WeChat from Tencent | 微信官方版
 	pkgver = 4.0.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://linux.weixin.qq.com
 	arch = x86_64
 	arch = aarch64
