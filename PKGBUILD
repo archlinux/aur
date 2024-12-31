@@ -3,8 +3,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=slade-git
-pkgver=3.2.7+r3090+g1d1d746d9
-pkgrel=1
+pkgver=3.2.7+r3091+gbf00e9f8f
+pkgrel=2
 pkgdesc='SLADE3 Doom editor (git version)'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
@@ -43,6 +43,7 @@ build() {
   export CCACHE_SLOPPINESS=pch_defines,time_macros
   cmake -D CMAKE_BUILD_TYPE=None \
     -D CMAKE_INSTALL_PREFIX=/usr \
+    -D wxUSE_GLCANVAS_EGL=OFF \
     .
   make
 }
