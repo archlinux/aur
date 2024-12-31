@@ -1,6 +1,6 @@
 pkgbase = nfs-browser-bin
 	pkgdesc = 方德安全浏览器
-	pkgver = 6.0.0
+	pkgver = 6.0.0_m26_1nfs5
 	pkgrel = 1
 	url = https://browser.nfschina.com/se.html
 	arch = aarch64
@@ -9,12 +9,12 @@ pkgbase = nfs-browser-bin
 	depends = alsa-lib
 	depends = gtk3
 	depends = nss
-	provides = nfs-browser=6.0.0
+	provides = nfs-browser=6.0.0_m26_1nfs5
 	conflicts = nfs-browser
 	options = !emptydirs
-	source_aarch64 = nfs-browser-6.0.0-aarch64.deb::https://browser.nfschina.com/download/flavor/aarch64/latest/linux_64
-	sha256sums_aarch64 = 113890de65442f53336b38abf37ac7980cecef4e89093ee0e46468ed6646d774
-	source_x86_64 = nfs-browser-6.0.0-x86_64.deb::https://browser.nfschina.com/download/flavor/x86_64/latest/linux_64
-	sha256sums_x86_64 = 171c1ff9bd0ba985e6a4e1eeb3749602bf83386b7ea952d5b269513b138d30b1
+	source_aarch64 = nfs-browser-6.0.0_m26_1nfs5-aarch64.deb::https://browser.nfschina.com/download/flavor/aarch64/latest/linux_64
+	sha256sums_aarch64 = fdd88d82bc0593d6cb1bf43852f2ee9ca11ddf460058f7d417de725b32da5aaf
+	source_x86_64 = nfs-browser-6.0.0_m26_1nfs5-x86_64.deb::https://browser.nfschina.com/download/flavor/x86_64/latest/linux_64
+	sha256sums_x86_64 = f21d96be6346b594d1fd9121bb20d2b4e235d62100a2281c6f5611a1f9ab950e
 
 pkgname = nfs-browser-bin
