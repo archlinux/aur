@@ -1,0 +1,11 @@
+pkgbase = klib
+	pkgdesc = Standalone and lightweight C library
+	pkgver = r394+g2944549
+	pkgrel = 1
+	url = https://attractivechaos.github.io/klib
+	arch = any
+	license = MIT
+	source = klib-29445495262cf34f4c3b82d3917ac83f3e1f3f58.tar.gz::https://github.com/attractivechaos/klib/archive/29445495262cf34f4c3b82d3917ac83f3e1f3f58.tar.gz
+	b2sums = 3d07fb2dbc02124bae408623fbd1b4a80c02c30599452a57e9fad044f113f43922f6abf9c3996653fa8b2df82ea7f52cc37e98f204b69cb75677e136b84e7b35
+
+pkgname = klib
