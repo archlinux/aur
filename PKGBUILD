@@ -2,8 +2,8 @@
 pkgname=aniship-bin
 pkgver=0.0.4.2
 _electronversion=16
-pkgrel=9
-pkgdesc="A convenient and functional unofficial client that allows for easy viewing of anime on PCs and laptops."
+pkgrel=10
+pkgdesc="A convenient and functional unofficial client that allows for easy viewing of anime on PCs and laptops.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://t.me/aniship"
 _ghurl="https://github.com/progzone122/AniShip"
@@ -22,28 +22,30 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1fbe0e6388982d71268c4f4f04bf7c3f82ac0a6dee8310f8599d93be565525d2'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}-night|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}-night/g
+        s/@options@//g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "s|AppRun --no-sandbox|${pkgname%-bin}|g" \
-        -e "s|Icon=${pkgname%-bin}-night|Icon=${pkgname%-bin}|g" \
-        -i "${srcdir}/squashfs-root/${pkgname%-bin}-night.desktop"
+    sed -e "
+        s/AppRun --no-sandbox/${pkgname%-bin}/g
+        s/Icon=${pkgname%-bin}-night/Icon=${pkgname%-bin}/g
+    " -i "${srcdir}/squashfs-root/${pkgname%-bin}-night.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -perm 700 -exec chmod 755 {} \;
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" -i "${srcdir}/app.asar.unpacked/dist/main/index.js"
+    find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/resources/"{app.asar.unpacked,sources} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/"{app.asar.unpacked,sources} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/opt/${pkgname%-bin}/lib"
     install -Dm644 "${srcdir}/squashfs-root/swiftshader/"* -t "${pkgdir}/opt/${pkgname%-bin}/swiftshader"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}-night.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
