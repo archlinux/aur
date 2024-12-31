@@ -1,8 +1,10 @@
-# Maintainer: a821
+# Maintainer: redponike <proton (dot) me>
+# Contributor: a821
 # Contributor: Alexandr Parkhomenko <it@52tour.ru>
 
 pkgname=python-orange-widget-base
-pkgver=4.19.0
+_pkgname=orange_widget_base
+pkgver=4.25.1
 pkgrel=1
 pkgdesc="Base widget and workflow definitions for Orange."
 arch=('any')
@@ -13,17 +15,17 @@ depends=('python-matplotlib'
          'python-pyqtgraph'
          'python-anyqt'
          'python-typing_extensions'
-         'python-orange-canvas-core')
-source=("https://files.pythonhosted.org/packages/source/o/${pkgname/python-}/${pkgname/python-}-${pkgver}.tar.gz")
-sha256sums=('193055dbee8701ad62d5471c5287b092ce53bb77f7f810ec68bf96816f6acaa2')
+         'python-orange-canvas-core'
+         'python-trubar')
+source=("https://files.pythonhosted.org/packages/source/o/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('f1f78d5884c4c1fb957d9c0b9c704461b01b4106ad8361d52add3693dc32baee')
 
 build() {
-  cd "${srcdir}/orange-widget-base-$pkgver"
-  SETUPTOOLS_USE_DISTUTILS=stdlib python setup.py build
+  cd "${srcdir}/$_pkgname-$pkgver"
+  python setup.py build
 }
 
 package() {
-  cd "${srcdir}/orange-widget-base-$pkgver"
-  SETUPTOOLS_USE_DISTUTILS=stdlib python setup.py install --root="${pkgdir}" --optimize=1
+  cd "${srcdir}/$_pkgname-$pkgver"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
-
