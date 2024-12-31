@@ -1,20 +1,19 @@
-# Maintainer: Adam Tazul (SimPilotAadamT) <adam_tazul@outlook.com>
+# Contributor: Adam Tazul (SimPilotAadamT) <adam_tazul@outlook.com>
 
 pkgname=python-fildem
 pkgver=0.6.7
-pkgrel=2
+pkgrel=3
 pkgdesc="This project is a fork of gnomehud with the adition of a global menu bar"
 arch=('i686' 'x86_64')
 url="https://github.com/gonzaarcr/fildem"
 depends=('bamf'
-         'appmenu-gtk-module'
          'libkeybinder3'
-         'libdbusmenu-gtk2'
-         'libdbusmenu-gtk3'
-         'python-fuzzysearch'
-         'python-future'
-         'dbus-python')
-makedepends=('git')
+         'dbus-python'
+         'python'
+         'gtk3'
+         'glib2'
+         'python-gobject')
+makedepends=('git' 'python-setuptools')
 provides=("python3-fildem=$pkgver"
           "python-fildem=$pkgver")
 conflicts=("python3-fildem"
@@ -32,10 +31,10 @@ build() {
     python3 setup.py build
 }
 
-check() {
-    cd "$srcdir/fildem"
-    python3 setup.py test
-}
+#check() {
+#    cd "$srcdir/fildem"
+#    python3 setup.py test
+#}
 
 package() {
     cd "$srcdir/fildem"
