@@ -2,4 +2,4 @@
 /src
 /*.png
 *.zip
-*.pkg.tar.zst
+*.pkg.tar.*
