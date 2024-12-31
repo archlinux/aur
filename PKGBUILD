@@ -1,6 +1,6 @@
 # Maintainer: Jesus Alonso: <doragasu at hotmail dot com>
 pkgname=python-mplcursors
-pkgver=0.5.3
+pkgver=0.6
 pkgrel=2
 pkgdesc="Provides interactive data selection cursors for Matplotlib. It is inspired from mpldatacursor, with a much simplified API."
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python'
 makedepends=('python-setuptools' )
 
 source=(${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha512sums=('fea3be519051732d09e669b77cba57e9a054ad82c19b7ab2a009aa43c0c63dabf2f911346da3351adf45acea0b2cda2773f3a60b9fe5f4264157cbb1c472835d')
+sha512sums=('4bcee5e01492deb4fed851daf0e6b01e217da257389af768b61a8c69bf7115727c9faef17f5f9455de1c718c52a18aab24ce5eeb625e1207810fd8b3d93ec503')
 
 package() {
   cd "$srcdir/mplcursors-$pkgver"
