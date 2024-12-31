@@ -12,7 +12,6 @@ pkgbase = uiua
 	license = MIT
 	makedepends = cargo
 	makedepends = clang
-	makedepends = git
 	depends = alsa-lib
 	depends = gcc-libs
 	depends = glibc
