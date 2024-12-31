@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="cxcli"
-pkgver=1.236.3
+pkgver=1.236.4
 pkgrel=1
 pkgdesc="The missing CLI for your Dialogflow CX projects"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -14,7 +14,7 @@ provides=('dialogflow-cx-cli')
 conflicts=('dialogflow-cx-cli')
 _pkgsrc="dialogflow-cx-cli-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('be6326b90bf445118a494accf460b7d70f3b2ef7745c1dbe43d38497c872cbd7c620b40e19e38fa0574d5f7cc41a0c462485801b664351e868374dd82d9dbe19')
+b2sums=('2699ba64e66660f8559bf605533f12a8b7b363656102b499678b20175b8ed084787b880f9e9d332cc2049c46d98fe529c204871cb1af3189aa553407f09f5454')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
