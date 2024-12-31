@@ -1,0 +1,17 @@
+pkgbase = s3lightfixes-git
+	pkgdesc = Application for OpenMW modlists designed to make ESP files which adjust the lighting values from all mods listed in openmw.cfg
+	pkgver = 0.1.3.r2.g471b6b3
+	pkgrel = 1
+	url = https://modding-openmw.com/mods/s3lightfixes/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	makedepends = git
+	makedepends = cargo
+	provides = s3lightfixes
+	source = git+https://github.com/magicaldave/S3LightFixes
+	sha1sums = SKIP
+
+pkgname = s3lightfixes-git
