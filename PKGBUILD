@@ -10,20 +10,30 @@ pkgname='mkpkg'
 pkgdesc='Tool to rebuild packages based on dependency triggers'
 _gitname='Arch-mkpkg'
 
-pkgver=6.2.0
+pkgver=6.2.3
 pkgrel=1
 url="https://github.com/gene-git/Arch-mkpkg"
 
 arch=(any)
 license=(MIT)
-depends=('python>=3.11' 'pyalpm' 'python-pydantic' 'python-tomli-w' 'python-pyelftools')
+depends=('python>=3.13' 'pyalpm' 'python-pydantic' 'python-tomli-w' 'python-pyelftools')
 
 # To build docs uncommont sphinx/texlive
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatch' 'rsync'
             #'python-sphinx' 'texlive-latexextra'
             )
 _mkpkg_depends=('python>minor')
+
+#
+# Verifying Signed Tag
+#   Add arch@sapience.com key to keyring then use the source line with "?signed"
+#   Pub key available WKD or dowload from https://www.sapience.com/tech
+#   Note that upstream release procedure requires every tagged release have new tag
+#
+
+#source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}?signed")
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
+validpgpkeys=( '7CCA1BA66669F3273DB52678E5B81343AB9809E1')   # Gene C)
 sha512sums=('SKIP')
 
 build() {
