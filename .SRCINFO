@@ -6,7 +6,7 @@ pkgbase = emu80-base
 	arch = x86_64
 	license = GPL3
 	conflicts = emu80-qt<4.0.498
-	source = emu80v4-4.0.498.tar.gz
+	source = https://github.com/vpyk/emu80v4/archive/refs/tags/v4.0.498.tar.gz
 	sha256sums = dc9eb0ba994be04d85ec7fb3f4bdc37569437762c3757ee3a6b3fcaad1df91b7
 
 pkgname = emu80-base
