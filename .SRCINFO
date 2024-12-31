@@ -11,4 +11,4 @@ pkgbase = daytona-new
 	source = daytona-v0.50.0.zip::https://github.com/daytonaio/daytona/archive/refs/tags/v0.50.0.zip
 	sha256sums = f2459c43e020c879cda6d9a287e4bd8fc3a3080c39d0586de497f5d2a34ffa7c
 
-pkgname = daytona-new
+pkgname = daytona
