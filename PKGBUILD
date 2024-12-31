@@ -2,7 +2,7 @@
 
 pkgname=openvpn
 pkgver=2.6.12
-pkgrel=2
+pkgrel=3
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('x86_64')
 url='https://openvpn.net/index.php/open-source.html'
@@ -26,7 +26,7 @@ source=("git+https://github.com/OpenVPN/openvpn.git#tag=v${pkgver}?signed"
         'tmpfiles.conf')
 sha256sums=('0d91a85307b2d7da104bc1fa45be47fb0a20f346b2b25050747423130ba9a8c8'
             'a081d40a1785db94378aee6223240f2d01550507b69ca401838477bcf764088e'
-            '3646b865ac67783fafc6652589cfe2a3105ecef06f3907f33de5135815f6a621'
+            '15669f82ac8b412eb3840ba9b39de20ca9b04bf082516c229577a5cb4e1a9610'
             'b1436f953a4f1be7083711d11928a9924993f940ff56ff92d288d6100df673fc')
 
 prepare() {
