@@ -1,7 +1,7 @@
 pkgbase = beanquery
 	pkgdesc = A customizable light-weight SQL query tool that works on tabular data, including Beancount
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/beancount/beanquery
 	arch = any
 	license = GPL
