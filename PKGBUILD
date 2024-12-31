@@ -6,44 +6,46 @@
 # Contributor: Jesse Juhani Jaara <jesse.jaara@gmail.com>
 
 pkgname=lib32-libmikmod
-pkgver=3.3.11.1
-pkgrel=7
+pkgver=3.3.12
+pkgrel=1
 pkgdesc="Module player library supporting many formats, including MOD, S3M, IT and XM (32-bit)"
-url="http://mikmod.sourceforge.net"
-license=(
-  GPL2
-  LGPL2.1
-)
+url="https://mikmod.sourceforge.net"
+license=(LGPL-2.0-or-later)
 arch=(x86_64)
 depends=(
   lib32-glibc
-  lib32-libpulse
   libmikmod
 )
 makedepends=(
-  lib32-alsa-lib
   cmake
+  git
+  lib32-alsa-lib
+  lib32-libpulse
   ninja
 )
 provides=(libmikmod.so)
-source=(https://downloads.sourceforge.net/mikmod/libmikmod-$pkgver.tar.gz)
-md5sums=('f69d7dd06d307e888f466fc27f4f680b')
-sha256sums=('ad9d64dfc8f83684876419ea7cd4ff4a41d8bcd8c23ef37ecb3a200a16b46d19')
+source=(
+  "git+https://git.code.sf.net/p/mikmod/mikmod#tag=libmikmod-$pkgver"
+)
+b2sums=('5bbade5a17ea7fdb79c27936575cc5ccc70a0581a1a3a88479cc60ca7640dfe6f83d84687024a60a1e79f20fd9d0acab9fef82ee6d9d089017f7dafab6ef27e0')
 
 prepare() {
-  cd libmikmod-$pkgver
+  cd mikmod
 }
 
 build() {
+  local cmake_options=(
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_LIBDIR=lib32
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D ENABLE_DL=1
+  )
+
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
 
-  cmake -S libmikmod-$pkgver -B build -G Ninja \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=None \
-    -DLIB_SUFFIX=32 \
-    -DENABLE_DL=1
+  cmake -S mikmod/libmikmod -B build -G Ninja "${cmake_options[@]}"
   cmake --build build
 }
 

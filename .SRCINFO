@@ -1,20 +1,19 @@
 pkgbase = lib32-libmikmod
 	pkgdesc = Module player library supporting many formats, including MOD, S3M, IT and XM (32-bit)
-	pkgver = 3.3.11.1
-	pkgrel = 7
-	url = http://mikmod.sourceforge.net
+	pkgver = 3.3.12
+	pkgrel = 1
+	url = https://mikmod.sourceforge.net
 	arch = x86_64
-	license = GPL2
-	license = LGPL2.1
-	makedepends = lib32-alsa-lib
+	license = LGPL-2.0-or-later
 	makedepends = cmake
+	makedepends = git
+	makedepends = lib32-alsa-lib
+	makedepends = lib32-libpulse
 	makedepends = ninja
 	depends = lib32-glibc
-	depends = lib32-libpulse
 	depends = libmikmod
 	provides = libmikmod.so
-	source = https://downloads.sourceforge.net/mikmod/libmikmod-3.3.11.1.tar.gz
-	md5sums = f69d7dd06d307e888f466fc27f4f680b
-	sha256sums = ad9d64dfc8f83684876419ea7cd4ff4a41d8bcd8c23ef37ecb3a200a16b46d19
+	source = git+https://git.code.sf.net/p/mikmod/mikmod#tag=libmikmod-3.3.12
+	b2sums = 5bbade5a17ea7fdb79c27936575cc5ccc70a0581a1a3a88479cc60ca7640dfe6f83d84687024a60a1e79f20fd9d0acab9fef82ee6d9d089017f7dafab6ef27e0
 
 pkgname = lib32-libmikmod
