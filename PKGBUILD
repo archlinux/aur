@@ -10,16 +10,15 @@ pkgname='dual-root'
 pkgdesc='Dual Root Tools for Managing dual esp systems'
 _gitname='dual-root'
 
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 url="https://github.com/gene-git/dual-root"
 
 arch=(any)
 license=(MIT)
 
-# tomli only needed for python < 3.11
 # To build docs uncomment sphinx/texlive
-depends=('python>3.10' 'efibootmgr' 'util-linux' 'rsync' 'inotify-tools' 'python-tomli'
+depends=('python>3.13' 'efibootmgr' 'util-linux' 'rsync' 'inotify-tools' 
          'python-psutil'
         #'python-sphinx' 'texlive-latexextra' # Docs
         )
@@ -27,6 +26,16 @@ makedepends=('git')
 
 # See mkpkg https://github.com/gene-git/Arch-mkpkg
 _mkpkg_depends=('python>minor')
+
+#
+# Verifying Signed Tag
+#   Add arch@sapience.com key to keyring then use the source line with "?signed"
+#   Key available via WKD or dowload from https://www.sapience.com/tech
+#   Note that upstream release procedure requires every tagged release have new tag
+#
+validpgpkeys=( '7CCA1BA66669F3273DB52678E5B81343AB9809E1')   # Gene C
+
+#source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}?signed")
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
 
