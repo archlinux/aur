@@ -1,0 +1,18 @@
+pkgbase = cpig-git
+	pkgdesc = CPIG: Color Palette Inference Generator is a simple C-based program that generates a color palette from an image file using K-means clustering.
+	pkgver = r14.fd38047
+	pkgrel = 1
+	url = https://github.com/nnisarggada/cpig
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	depends = gcc
+	provides = cpig
+	conflicts = cpig
+	source = git+https://github.com/nnisarggada/cpig
+	sha256sums = SKIP
+
+pkgname = cpig-git
