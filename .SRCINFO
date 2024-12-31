@@ -1,0 +1,14 @@
+pkgbase = localbooru
+	pkgdesc = LocalBooru is a cross-platform local booru collection that works exclusively on local storage.
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/resucutie/localbooru
+	arch = x86_64
+	license = GPL-3.0
+	depends = bash
+	source = localbooru-1.6.0.zip::https://github.com/resucutie/localbooru/releases/download/1.6.0/localbooru-linux-binaries.zip
+	source = icon.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = localbooru
