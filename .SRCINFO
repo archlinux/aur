@@ -1,0 +1,21 @@
+pkgbase = umo-git
+	pkgdesc = An automatic modlist downloader for Modding-OpenMW.com modlists
+	pkgver = 0.8.1.r0.geb55ddb
+	pkgrel = 1
+	url = https://modding-openmw.gitlab.io/umo/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python
+	makedepends = gcc
+	makedepends = patchelf
+	makedepends = binutils
+	provides = umo
+	conflicts = umo-dev-bin
+	options = !lto
+	options = !strip
+	source = git+https://gitlab.com/modding-openmw/umo
+	sha1sums = SKIP
+
+pkgname = umo-git
