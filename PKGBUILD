@@ -15,7 +15,7 @@ optdepends=('timidity++: midi support' 'freedoom: free IWAD' 'gtk2: for a GUI se
 _pkgname=q-zandronum
 install=q-zandronum.install
 
-source_x86_64=("https://github.com/IgeNiaI/Q-Zandronum/releases/download/${pkgver}/Q-Zandronum_${pkgver}_Linux_amd64.tar.gz")
+source_x86_64=("Q-Zandronum_${pkgver}_Linux_amd64.tar.gz::https://github.com/IgeNiaI/Q-Zandronum/releases/download/${pkgver}/Q-Zandronum_${pkgver}_Linux_amd64.gz")
 #latest=https://github.com/IgeNiaI/Q-Zandronum/releases/download/1.4.11/Q-Zandronum_1.4.11_Linux_amd64.tar.gz
 source=(
 	'LICENSE.txt'
