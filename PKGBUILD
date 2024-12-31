@@ -1,10 +1,10 @@
 # Maintainer: MithicSpirit <rpc01234 at gmail dot com>
 
 pkgname=greenclip
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.2.0
+pkgrel=1
 pkgdesc='[Unofficial Package] Simple clipboard manager to be integrated with rofi'
-url='https://github.com/erebe/greenclip#readme'
+url='https://github.com/erebe/greenclip'
 license=('BSD')
 arch=('x86_64')
 depends=('ghc-libs' 'haskell-x11' 'haskell-hashable' 'haskell-microlens' 'haskell-microlens-mtl' 'haskell-protolude' 'haskell-tomland' 'haskell-vector' 'haskell-wordexp')
@@ -12,7 +12,7 @@ conflicts=('rofi-greenclip')
 provides=('rofi-greenclip')
 makedepends=('ghc')
 source=("$pkgname-$pkgver.tar.gz::https://hackage.haskell.org/packages/archive/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('c41a4b6f17d250ec9bfe811d233701490d4efefd9cca3534a52e02379673a2fc')
+sha512sums=('bf637fec55af96a19c3506c02c75bbc5d20a9623ff10ce01611368510815d4bf3c8f5258c38df8d4658be247f5e6a530b59ed931012a4c1f5f482cab891e4eb8')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
