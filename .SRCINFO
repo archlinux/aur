@@ -1,7 +1,7 @@
 pkgbase = tparted-bin
 	pkgdesc = Text-based user interface (TUI) frontend for parted, based on Free Vision application framework.
 	pkgver = 2024.12.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kagamma/tparted
 	arch = x86_64
 	license = GPL-3.0
@@ -15,7 +15,7 @@ pkgbase = tparted-bin
 	optdepends = xfsprogs: for xfs operations
 	optdepends = jfsutils: for jfs operations
 	optdepends = f2fs-tools: for f2fs operations
-	source = https://github.com/Kagamma/tparted/releases/download/2024-12-31/linux_x86-64_tparted_2024-12-31.tar.gz
-	md5sums = b4722d2a8fa1808c89137697a31409b1
+	source = https://github.com/Kagamma/tparted/releases/download/2024-12-31_2/linux_x86-64_tparted_2024-12-31_2.tar.gz
+	md5sums = 0a61bb58344ab6177f5e192aee12894d
 
 pkgname = tparted-bin
