@@ -2,13 +2,13 @@
 # Contributor: Benjamin Hodgetts <ben@xnode.org>
 
 pkgname=vice-svn
-pkgver=r45384
+pkgver=r45439
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - Development version"
 arch=('i686' 'x86_64')
 url="http://vice-emu.sourceforge.net"
-license=('GPL')
-depends=(libevdev glew gtk3 portaudio libpulse pciutils ffmpeg4.4 curl)
+license=('GPL-2.0-or-later')
+depends=(libevdev glew gtk3 portaudio libpulse pciutils curl)
 makedepends=(dos2unix libpcap libxaw xa texlive-basic texlive-bin texlive-plaingeneric xorg-bdftopcf xorg-mkfontdir svn glib2-devel)  
 provides=('vice')
 replaces=('vice')
@@ -36,7 +36,7 @@ SID_1024.svg
 VIC20_1024.svg
 )
 sha256sums=('SKIP'
-            'd124e0033f7ffb45ea3582c01971f8b51c429cd18df36abd75e21847da728a6a'
+            '6afa46e878bfffbf3c53210a12a1e90f3646d79efb0a376733c5b8fe43333865'
             '2bf07e60c6bdf332f7d31c9ef1572953f96d5b540cd76c7d07be72769eb052c3'
             'dd58d7ab618a7d70ac336b8c44f38438305ba9b94a54635b393c7c281e91824d'
             '8c0a385123ddd7b968be4edda9a079c995d279c30b0ec90bbb5a0171f72ea7b9'
@@ -65,8 +65,7 @@ pkgver() {
 build() {
 	cd "${pkgname}/vice"
 	./autogen.sh 
-    	# Forcing use of ffmpeg 4.4.
-    	PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./configure --prefix=/usr --libdir=/usr/lib --enable-ffmpeg --enable-gtk3ui --enable-pdf-docs --enable-ethernet --with-libcurl --with-evdev
+    	./configure --prefix=/usr --libdir=/usr/lib --enable-gtk3ui --enable-pdf-docs --enable-ethernet --with-libcurl --with-evdev
 	make
 }
 
