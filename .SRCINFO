@@ -1,6 +1,6 @@
 pkgbase = gpu-screen-recorder-ui
 	pkgdesc = A fullscreen overlay UI for GPU Screen Recorder in the style of ShadowPlay
-	pkgver = r182.6dfa330
+	pkgver = r183.b6d1f32
 	pkgrel = 1
 	url = https://git.dec05eba.com/gpu-screen-recorder-ui
 	install = gpu-screen-recorder-ui.install
@@ -17,7 +17,7 @@ pkgbase = gpu-screen-recorder-ui
 	depends = libxfixes
 	depends = libxi
 	depends = linux-api-headers
-	source = gpu-screen-recorder-ui-r182.6dfa330.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder-ui.git.r182.6dfa330.tar.gz
-	sha512sums = 669f157f8445d4e08a205328f7642a87dff972f2634a3763785e435766cf3b87c806df3ec132cc1254242400b32f062ef49490fc872b060274930ca0c4c357b5
+	source = gpu-screen-recorder-ui-r183.b6d1f32.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder-ui.git.r183.b6d1f32.tar.gz
+	sha512sums = ea3383a93a09a8794d940408f619419dea8362cc946a10151ed6527d9f6fac62c45f04579934a99186341f38c6ec390f799b2619fdcbc0625c61c1282c4c90ba
 
 pkgname = gpu-screen-recorder-ui
