@@ -3,7 +3,7 @@
 
 pkgname=uiua
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A stack-based array programming language'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://www.uiua.org/'

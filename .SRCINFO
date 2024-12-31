@@ -1,7 +1,7 @@
 pkgbase = uiua
 	pkgdesc = A stack-based array programming language
 	pkgver = 0.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.uiua.org/
 	arch = aarch64
 	arch = arm
