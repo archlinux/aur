@@ -24,23 +24,25 @@ source=($_pkgname::git+$url.git)
 sha256sums=(SKIP)
 
 pkgver() {
-  cd $_pkgname
-  git describe --long --tags | sed -E 's/^v//; s/-([^-]*)-g([^-]*)$/-r\1.\2/; s/-/./g'
+  git -C $_pkgname describe --long --tags | \
+    sed -E 's/^v//; s/-([^-]*)-g([^-]*)$/-r\1.\2/; s/-/./g'
 }
 
 build() {
-  cmake -S $_pkgname -B build \
+  cmake -S $_pkgname -B aom_build \
     -DENABLE_TESTS=OFF \
     -DENABLE_DOCS=OFF \
     -DCONFIG_TUNE_VMAF=1 \
     -DCMAKE_C_FLAGS="$CFLAGS" \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
     -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  make -C build "$MAKEFLAGS"
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_SHARED_LIBS=ON
+  make -C aom_build "$MAKEFLAGS"
 }
 
 package() {
-  DESTDIR="$pkgdir" make -C build install
-  install -Dm644 $_pkgname/{LICENSE,PATENTS} -t "$pkgdir/usr/share/licenses/$_pkgname/"
+  DESTDIR="$pkgdir" make -C aom_build install
+  install -Dm644 $_pkgname/{LICENSE,PATENTS} \
+    -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
