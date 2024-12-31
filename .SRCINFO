@@ -1,6 +1,6 @@
 pkgbase = whisper.cpp-openvino
 	pkgdesc = Port of OpenAI's Whisper model in C/C++ (with OpenVINO run-time)
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/ggerganov/whisper.cpp
 	arch = armv7h
@@ -9,14 +9,10 @@ pkgbase = whisper.cpp-openvino
 	license = MIT
 	makedepends = cmake
 	makedepends = git
-	depends = glibc
-	depends = gcc-libs
-	depends = openmp
 	depends = openvino
-	depends = pugixml
 	provides = whisper.cpp
 	conflicts = whisper.cpp
-	source = whisper.cpp-1.7.2.tar.gz::https://github.com/ggerganov/whisper.cpp/archive/v1.7.2.tar.gz
-	sha256sums = d48e1b5b6ee18b931e98ac791eba838f83eb3b81bb8917db37fe9a79fa5e3ccb
+	source = whisper.cpp-1.7.3.tar.gz::https://github.com/ggerganov/whisper.cpp/archive/v1.7.3.tar.gz
+	sha256sums = a36faa04885b45e4dd27751a37cb54300617717dbd3b7e5ec336f830e051a28c
 
 pkgname = whisper.cpp-openvino
