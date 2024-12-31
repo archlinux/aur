@@ -1,36 +1,31 @@
 # Maintainer: Alexander Aleschenko <alex.aleschenko@gmail.com>
 
 pkgname=emu80-qt
-pkgver=4.0.480
-pkgrel=2
+_pkgname=emu80
+pkgver=4.0.498
+pkgrel=1
 pkgdesc="Emulator for bunch of Soviet PCs"
 arch=('x86_64')
 url="https://emu80.org/"
 license=("GPL3")
-depends=("qt5-base" "qt5-multimedia")
-options=(!debug)
+depends=("emu80-base" "qt6-base" "qt6-multimedia")
 source=("https://github.com/vpyk/emu80v4/archive/refs/tags/v${pkgver}.tar.gz" "shortcut.desktop")
-sha256sums=("b677ffa674da60cced0cab2aae158844bef88c3053805e5eb0c5dfa32c38afff" "bd817f4c7a0183e322fb25fa27160f5279ac0310ea8445a86edd9c944b43e839")
+sha256sums=("dc9eb0ba994be04d85ec7fb3f4bdc37569437762c3757ee3a6b3fcaad1df91b7" "049f824a4049d5a7b5d678aab9558180506e43138e5065ec0a114465edbe6d0e")
 
 build() {
 	cd "emu80v4-${pkgver}"
-	qmake src/Emu80qt.pro
+	qmake6 src/Emu80qt.pro
 	make
 }
 
 package() {
 	cd "emu80v4-${pkgver}"
-	destination=${pkgdir}/opt/${pkgname}
+	destination=${pkgdir}/opt/${_pkgname}
 
 	install -d -m755 ${destination}
-	cp -r dist/* ${destination}
-	cp COPYING.txt ${destination}
-	cp whatsnew.txt ${destination}
-	cp doc/* ${destination}
 	install -m0755 Emu80qt ${destination}/${pkgname}
 
 	install -d -m755 ${pkgdir}/usr/bin
-	ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-	install -D -m644 "${srcdir}/shortcut.desktop" "${pkgdir}/usr/share/applications/emu80-qt.desktop"
-	install -D -m644 "src/qt/icons/emu80.png" "${pkgdir}/usr/share/pixmaps/emu80.png"
+	ln -s "/opt/${_pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -D -m644 "${srcdir}/shortcut.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }

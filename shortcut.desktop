@@ -6,4 +6,4 @@ Exec=/usr/bin/emu80-qt
 Type=Application
 Icon=emu80
 Categories=Utility;Development;Emulator;
-Keywords=emu80;
+Keywords=emu80;qt6
