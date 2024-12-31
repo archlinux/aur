@@ -1,6 +1,6 @@
 # Maintainer: decipher3114 <decipher3114@gmail.com>
 pkgname=capter
-pkgver=2.2.3
+pkgver=2.4.0
 pkgrel=1
 epoch=
 pkgdesc="A simple cross-platform screenshot tool"

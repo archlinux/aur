@@ -1,6 +1,6 @@
 pkgbase = capter
 	pkgdesc = A simple cross-platform screenshot tool
-	pkgver = 2.2.3
+	pkgver = 2.4.0
 	pkgrel = 1
 	arch = x86_64
 	depends = gtk3
@@ -10,7 +10,7 @@ pkgbase = capter
 	depends = libxrandr
 	depends = dbus
 	options = !lto
-	source = capter-2.2.3.tar.gz::https://github.com/decipher3114/Capter/releases/latest/download/capter_2.2.3_x86_64.tar.gz
+	source = capter-2.4.0.tar.gz::https://github.com/decipher3114/Capter/releases/latest/download/capter_2.4.0_x86_64.tar.gz
 	sha512sums = f2789dc8ebe9056a6efcd6fbfa2e604377312323b71b8dbbab697b3d82c63a3514e864bec90dfc31d45e618f16493fa5be25fe25187dcdce098e39deb93ba61f
 
 pkgname = capter
