@@ -1,7 +1,7 @@
 pkgbase = any-sync-gui
-	pkgdesc = Cross-platform local area network synchronization tool.Use system-wide electron.一款支持在pc与pc或移动设备之间同步文本信息或文件的应用
+	pkgdesc = Cross-platform local area network synchronization tool.(Use system-wide electron)一款支持在pc与pc或移动设备之间同步文本信息或文件的应用
 	pkgver = 1.6.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/easyhutu/any-sync-gui
 	arch = any
 	license = ISC

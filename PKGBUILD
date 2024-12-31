@@ -4,8 +4,8 @@ _pkgname="Lan同步"
 pkgver=1.6.0
 _electronversion=25
 _nodeversion=18
-pkgrel=7
-pkgdesc="Cross-platform local area network synchronization tool.Use system-wide electron.一款支持在pc与pc或移动设备之间同步文本信息或文件的应用"
+pkgrel=8
+pkgdesc="Cross-platform local area network synchronization tool.(Use system-wide electron)一款支持在pc与pc或移动设备之间同步文本信息或文件的应用"
 arch=('any')
 url="https://github.com/easyhutu/any-sync-gui"
 license=('ISC')
@@ -31,7 +31,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -61,6 +61,9 @@ build() {
     fi
     cd "${srcdir}/${pkgname}-${pkgver}/fe"
     NODE_ENV=development    npm install --force
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}/fe"
     NODE_ENV=production     npm run build
     cd "${srcdir}/${pkgname}-${pkgver}/electron_gui"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g;s/${_pkgname}/${pkgname%-bin}/g" package.json
