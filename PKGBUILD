@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xuanxuan-bin
-pkgver=9.1
+pkgver=9.1.2
 _electronversion=31
 pkgrel=1
-pkgdesc="A self-hosted enterprise IM solution.Prebuilt version.Use system-wide electron.一款功能齐全的企业聊天软件"
+pkgdesc="A self-hosted enterprise IM solution.(Prebuilt version.Use system-wide electron)一款功能齐全的企业聊天软件"
 arch=('x86_64')
 url="https://xuanim.com/index.html"
 license=('LicenseRef-custom')
@@ -19,9 +19,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::https://xuanim.com/dl/${pkgname%-bin}/${pkgver}/${pkgname%-bin}.${pkgver}.linux.amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e7695dd2747fea5ee48bb88b41fc125ab17119b094b144d76a06125cf0ffa57c'
+sha256sums=('00b11d866205afeae5d1a9467c2602e5c8b5939cc3ed354cb04f8bb3d022a023'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
