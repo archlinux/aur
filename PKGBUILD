@@ -2,12 +2,12 @@
 
 _pyname=jupyterlab_autosave_on_focus_change
 pkgname=jupyterlab-autosave-on-focus-change
-pkgdesc="JupyterLab extension to autosave files on focus change"
-url="https://github.com/s-weigand/jupyterlab_autosave_on_focus_change"
 pkgver=0.4.1
 pkgrel=2
-license=(BSD-3-Clause)
+pkgdesc="JupyterLab extension to autosave files on focus change"
 arch=(any)
+url="https://github.com/s-weigand/jupyterlab_autosave_on_focus_change"
+license=(BSD-3-Clause)
 depends=(
   jupyterlab
 )
