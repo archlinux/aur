@@ -34,7 +34,7 @@ build() {
         cd "${srcdir}/${_pkgbasename}"
 
 	ZIG_GLOBAL_CACHE_DIR="${srcdir}/tmp" ./nix/build-support/fetch-zig-cache.sh
-	zig build --system "${srcdir}/tmp/p" -Doptimize=ReleaseFast -Demit-docs
+	zig build --system "${srcdir}/tmp/p" -Dcpu=x86_64_v3 -Doptimize=ReleaseFast -Demit-docs
 }
 
 package() {
