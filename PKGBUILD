@@ -1,7 +1,7 @@
 
 # Maintainer: Ling Wang <lingwang@wcysite.com>
 pkgname=ruyi-bin
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="The package manager for RuyiSDK."
 arch=("x86_64" "arm64" "riscv64")
@@ -18,6 +18,6 @@ package() {
     install -d "${pkgdir}/usr/bin"
     install -m755 "${srcdir}/ruyi-$pkgver-bin-$CARCH" "${pkgdir}/usr/bin/ruyi"
 }
-sha256sums_x86_64=('a10ea31e06a162a678a22e3af6a924e8fd3320657c0eed4a8cfa350b6cef9cf9')
-sha256sums_arm64=('89de304a77c52f87c0d2530a3b8e7b2f782b2de3932bf53cd2e7ba67314f717d')
-sha256sums_riscv64=('a9e2e5afd84c0810f26848da0fed96ea661c54ba8f0ae5e7dfc4ded745c9173b')
+sha256sums_x86_64=('3ecde4a7af3dbbf79df5ac4dbaf8fba5cfee557d1b559ab5bf1396a139e3073f')
+sha256sums_arm64=('a363b2ae83a9df584c166e805c8307cf0b29d8c032092e2dcc35294e53f6caee')
+sha256sums_riscv64=('a57cc76aba17a357fdb8672ae21f3e8a7f2061791dd07c353ace53f4eebcefc4')
