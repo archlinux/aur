@@ -4,7 +4,7 @@
 
 pkgname=trac
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Enhanced wiki and issue tracking system for software development projects'
 arch=('any')
 url="http://trac.edgewall.org/"
