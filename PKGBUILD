@@ -1,9 +1,9 @@
-# Maintainer: Letu Ren <fantasquex at gmail dot com>
+# Contributor: Letu Ren <fantasquex at gmail dot com>
 # Contributor: Peter Mattern <pmattern at arcor dot de>
 pkgname='python-pyjwkest'
 _name=${pkgname#python-}
 pkgver=1.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Implementation of JWT, JWS, JWE and JWK'
 arch=('any')
 url="https://github.com/rohe/${_name}"
@@ -13,7 +13,6 @@ depends=(
   'python-pycryptodomex'
   'python-requests'
   'python-six'
-  'python-future'
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
