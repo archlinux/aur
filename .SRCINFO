@@ -1,6 +1,6 @@
 pkgbase = hoppscotch-bin
 	pkgdesc = Hoppscotch. Open source API development ecosystem
-	pkgver = 24.11.0
+	pkgver = 24.12.0
 	pkgrel = 0
 	url = https://hoppscotch.io/
 	install = hoppscotch-bin.install
@@ -18,7 +18,7 @@ pkgbase = hoppscotch-bin
 	depends = webkit2gtk
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = hoppscotch-bin-24.11.0-0.deb::https://github.com/hoppscotch/releases/releases/download/v24.11.0-0/Hoppscotch_linux_x64.deb
-	sha512sums_x86_64 = 9ac4cc65a1371b6480cffabf86ce2e68e950e186fe7162e15b1620810d30c54feea1ae66848dd2876243da7cfc52ff959a3c89d0311c1c6efb78a09a59137b5b
+	source_x86_64 = hoppscotch-bin-24.12.0-0.deb::https://github.com/hoppscotch/releases/releases/download/v24.12.0-0/Hoppscotch_linux_x64.deb
+	sha512sums_x86_64 = cfd23e7362fc3cef5fb69274c33508e336c20ad833086ee13286cf20576007d9513f96b7a77f9776382fd56f2ce105cbcf000f41478c0a9ec3c3e95c31848d47
 
 pkgname = hoppscotch-bin
