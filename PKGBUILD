@@ -61,7 +61,6 @@ depends=(
 	"flatpak-xdg-utils"
 	"xdg-desktop-portal"
 	"xdg-desktop-portal-gtk"
-	"geoclue"
 )
 
 optdepends=(

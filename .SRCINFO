@@ -53,7 +53,6 @@ pkgbase = portable-git
 	depends = flatpak-xdg-utils
 	depends = xdg-desktop-portal
 	depends = xdg-desktop-portal-gtk
-	depends = geoclue
 	optdepends = at-spi2-core: accessibility
 	optdepends = orca: screen reader
 	provides = portable
