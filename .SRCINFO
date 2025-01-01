@@ -1,15 +1,12 @@
 pkgbase = python-nipype
 	pkgdesc = Neuroimaging in python pipelines and interfaces
-	pkgver = 1.8.4
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://github.com/nipy/nipype
 	arch = any
 	license = Apache
 	makedepends = python-numpydoc
 	makedepends = python-sphinx
-	makedepends = python-sphinxcontrib-napoleon
-	makedepends = python-future
-	makedepends = python-funcsigs
 	makedepends = python-pytest
 	makedepends = python-mock
 	depends = python-click
@@ -18,9 +15,7 @@ pkgbase = python-nipype
 	depends = python-numpy
 	depends = python-packaging
 	depends = python-prov
-	depends = python-pydot
 	depends = python-dateutil
-	depends = python-rdflib>=5.0.0
 	depends = python-scipy
 	depends = python-simplejson
 	depends = python-traits
@@ -28,6 +23,9 @@ pkgbase = python-nipype
 	depends = python-etelemetry>=0.2.0
 	depends = python-matplotlib
 	depends = python-looseversion
+	depends = python
+	depends = python-setuptools
+	depends = python-pandas
 	optdepends = python-pybids
 	optdepends = python-dipy
 	optdepends = ants
@@ -36,7 +34,7 @@ pkgbase = python-nipype
 	optdepends = freesurfer
 	optdepends = fsl
 	optdepends = spm12
-	source = nipype-1.8.4.tar.gz::https://github.com/nipy/nipype/archive/1.8.4.tar.gz
-	sha256sums = c8bfc43c651b31958b763b1b46b0a7033c236c9dbcf6ba66d3f78eb5cb31fd00
+	source = nipype-1.9.2.tar.gz::https://github.com/nipy/nipype/archive/1.9.2.tar.gz
+	sha256sums = c484d6d1ba99d8c2e641bcd611614ed57c33c6cb33ff78bfbe3b2be4474a16fd
 
 pkgname = python-nipype
