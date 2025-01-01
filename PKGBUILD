@@ -61,5 +61,8 @@ package() {
 check() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
+	# Warning about static-mut-refs on new compilers
+	export XFAIL_TESTS="cargo-tests.sh clippy.sh"
+
 	make check
 }
