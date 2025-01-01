@@ -3,7 +3,7 @@
 # Maintainer: Vova-K <v1mkss.m@gmail.com>
 
 pkgname=xmcl-launcher
-pkgver=0.48.1
+pkgver=0.48.2
 pkgrel=1
 pkgdesc="X Minecraft Launcher - A modern Minecraft launcher"
 arch=('x86_64' 'aarch64')
