@@ -1,6 +1,6 @@
 pkgbase = odio
 	pkgdesc = Audio compression tool for FLAC and Nero AAC
-	pkgver = 24.9.1
+	pkgver = 25.1.1
 	pkgrel = 1
 	url = https://tari.in/www/software/odio
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = odio
 	depends = dconf
 	depends = python
 	options = !emptydirs
-	source = odio-24.9.1.tar.gz::https://github.com/tari01/odio/archive/24.9.1.tar.gz
-	md5sums = 81c23be78d234b30122d863c525f144f
+	source = odio-25.1.1.tar.gz::https://github.com/tari01/odio/archive/25.1.1.tar.gz
+	md5sums = b4fe78312e7785ebbe5dce10484639fd
 
 pkgname = odio
