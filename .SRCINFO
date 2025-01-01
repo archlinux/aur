@@ -1,6 +1,6 @@
 pkgbase = teams-for-linux
 	pkgdesc = Unofficial Microsoft Teams client for Linux using Electron.
-	pkgver = 1.12.3
+	pkgver = 1.12.5
 	pkgrel = 1
 	url = https://github.com/IsmaelMartinez/teams-for-linux
 	arch = aarch64
@@ -14,9 +14,9 @@ pkgbase = teams-for-linux
 	depends = gtk3
 	depends = libxss
 	depends = nss
-	source = teams-for-linux-1.12.3.tar.gz::https://github.com/IsmaelMartinez/teams-for-linux/archive/v1.12.3.tar.gz
+	source = teams-for-linux-1.12.5.tar.gz::https://github.com/IsmaelMartinez/teams-for-linux/archive/v1.12.5.tar.gz
 	source = teams-for-linux.desktop
-	sha256sums = b1c57270be9e4adbd52aa591989d0c05e431432bd934a9052ccd8f468bcf91e9
+	sha256sums = 1e7ea7241402b3c460295dcab13a78f4d662f23d20abed7258698519a52bc81b
 	sha256sums = 4aa7c4aa178ba4e0f97f9ff4a514764a03b332978495d5e7f2dc1ce3f74db615
 
 pkgname = teams-for-linux
