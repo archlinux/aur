@@ -35,6 +35,7 @@ prepare() {
   cd "${_pkgname}"
   sed -i 's/aclocal-[^ ]*/aclocal/g; s/automake-[^ ]*/automake/g' autogen.sh #strip version suffixes since we don't need them
   ./autogen.sh
+  echo 'CHECK_MACRO_VERSION = true' >> po/Makefile.in.in
 }
 
 build() {
