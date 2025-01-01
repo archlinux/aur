@@ -9,8 +9,8 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=67cfe8d7283aa70969f23d63eca37ea9ede422ba
-_bcr_commit=4638378ee39f07c2c6e797cf2969b6355ca0ed8b
+_mozc_commit=2556b6d732a4d0a4a4c280ed45fcad5804e362e5
+_bcr_commit=adb3416c28c583b40e7710c59e48e7ec703249a0
 _branch=fcitx
 
 ## follow the submodule commits in https://github.com/fcitx/mozc/tree/fcitx/src/third_party
@@ -42,8 +42,8 @@ source=("git+$url.git#commit=${_mozc_commit}"
         "git+https://github.com/microsoft/wil.git#commit=${_wil_commit}"
 )
 
-sha512sums=('ba7ba6f1a707797a4fa4121c110f4f7737ec60bb89d95e93871e33bd602828586d2e6d4dfac08360948272a4d04f17ccba9be92104950f1b54d1402e72069ba4'
-            '194652c5fae5762082a9a80322e1eef10fb4b771f25732bc7f91f94657f943925dd41e0aad758983fa04c2b9d240e7dc23f16191128711f851f511d4fd3ce32e'
+sha512sums=('9f0a14a8f1b175b0cd5146c846843ab3ff3b5795ccbf90f8a1a63c1df4b48121e63018c232953c795a90e8f1e7a5e3b1459a0dc3e45dae6486587931722bc77e'
+            '834d991962b2eea6da7c0f60fc119e520029ff31ddf61d6917c4658dfe3ecb27223d9e1185c34b13d3c514cd6d285acaebae68c3259e120ade4f5f666f4d9b4b'
             '83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68'
             'f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d'
             '44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b'
