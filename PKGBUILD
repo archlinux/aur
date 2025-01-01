@@ -10,7 +10,7 @@ pkgname='iwinfo'
 pkgdesc='Provide wifi information about capabilities and network(s)'
 _gitname='iwinfo'
 
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 url="https://github.com/gene-git/iwinfo"
 
@@ -21,12 +21,21 @@ install='iwinfo.install'
 
 # To build docs uncomment sphinx/texlive
 # Note libcap_ng >= 0.6 provides python bindings
-depends=('python>3.10' 'libcap-ng>=0.6' 'python-capng')
+depends=('python>=3.13' 'libcap-ng>=0.6' 'python-capng')
 makedepends=('git' 'python-build' 'python-wheel' 'python-installer' 'python-hatch' 'rsync'
              'python-sphinx' 'python-myst-parser' 'texlive-latexextra'
             )
 _mkpkg_depends=('python>minor' 'libcap-ng>minor')
 
+#
+# Verifying Signed Tag
+#   Add arch@sapience.com key to keyring then use the source line with "?signed"
+#   Key available via keys/pgp, WKD or dowload from https://www.sapience.com/tech
+#   Note that upstream release procedure requires every tagged release have new tag
+#
+validpgpkeys=( '7CCA1BA66669F3273DB52678E5B81343AB9809E1')   # Gene C
+
+#source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}?signed")
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
 
