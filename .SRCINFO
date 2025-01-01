@@ -1,0 +1,24 @@
+pkgbase = brename-bin
+	pkgdesc = A practical cross-platform command-line tool for safely batch renaming files/directories via regular expression
+	pkgver = 2.14.0
+	pkgrel = 1
+	url = https://github.com/shenwei356/brename
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = brename
+	conflicts = brename
+	source = LICENSE-2.14.0::https://raw.githubusercontent.com/shenwei356/brename/v2.14.0/LICENSE
+	source = README-2.14.0.md::https://raw.githubusercontent.com/shenwei356/brename/v2.14.0/README.md
+	sha256sums = f9e68922f8df986308a5b2ca519f58be740bc885bbd1fc71dc53c348d20f7f5b
+	sha256sums = f3c7db2e48e9bde683be6e7c0969b1a012e09af0751ec96c5d8be476cba885b9
+	source_x86_64 = https://github.com/shenwei356/brename/releases/download/v2.14.0/brename_linux_amd64.tar.gz
+	sha256sums_x86_64 = 969635a953727c4009728b24deee3b488b002694ff8298b0228489b34ad10e5c
+	source_i686 = https://github.com/shenwei356/brename/releases/download/v2.14.0/brename_linux_386.tar.gz
+	sha256sums_i686 = 203939277429887d4fc14444cc3776095ca920cef3440119be52dc23436d21f4
+	source_aarch64 = https://github.com/shenwei356/brename/releases/download/v2.14.0/brename_linux_arm64.tar.gz
+	sha256sums_aarch64 = 91b96b99b42e4574950b753c9b1585b47ef4ca6c1c4dc4112c54ceaa1719ffd6
+
+pkgname = brename-bin
