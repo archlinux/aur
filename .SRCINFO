@@ -1,0 +1,26 @@
+pkgbase = ash-git
+	pkgdesc = An immutable tree-shaped meta-distribution using snapshots.
+	pkgver = r470.9953135
+	pkgrel = 1
+	url = https://github.com/ochibani/ash
+	arch = x86_64
+	license = AGPL
+	makedepends = cargo
+	makedepends = git
+	depends = btrfs-progs
+	depends = coreutils
+	depends = curl
+	depends = efibootmgr
+	depends = pacman
+	depends = paru
+	depends = python
+	depends = sed
+	depends = rc-local
+	optdepends = grub
+	optdepends = systemd
+	provides = ash
+	conflicts = ash
+	source = ash-git::git+https://github.com/ochibani/ash.git
+	sha512sums = SKIP
+
+pkgname = ash-git
