@@ -1,7 +1,7 @@
 post_install() {
 	printf ">>> WARNING\n"
 	printf ">>> This software is dead. Works, but no new features will be added\n"
-	printf ">>> or no bugs will be repaired, and will detioriate over time.\n"
+	printf ">>> or no bugs will be repaired, and will detoriate over time.\n"
 	printf ">>> Start looking for alternatives.\n"
 	[[ -x usr/bin/kbuildsycoca5 ]] && kbuildsycoca5 &> /dev/null || true
 	[[ -x usr/bin/kbuildsycoca6 ]] && kbuildsycoca6 &> /dev/null || true

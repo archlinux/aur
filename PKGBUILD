@@ -10,12 +10,12 @@
 
 pkgname=p7zip-gui
 pkgver=16.02
-pkgrel=10
-pkgdesc='Graphic user interface (alpha quality) for the 7zip file archiver'
+pkgrel=11
+pkgdesc='Graphic user interface (alpha quality) for the p7zip file archiver'
 url='http://p7zip.sourceforge.net'
 license=('custom:unRAR' ' LGPL-2.1-or-later')
 arch=('i686' 'x86_64')
-depends=('p7zip' 'wxwidgets-gtk3')
+depends=('wxwidgets-gtk3')
 optdepends=('desktop-file-utils: desktop entries'
             'kservice: entries in kde context menu')
 makedepends=('python')
@@ -51,7 +51,7 @@ prepare() {
 	patch -p1 -i ${srcdir}/gcc10-conversion.patch
 	patch -p1 -i ${srcdir}/${pkgname}-Implement-exit-P7ZIP-Desktop-from-file-menu.patch
 
-	if [[ ${CARCH} = x86_64 ]]; then
+	if [ ${CARCH} = x86_64 ]; then
 		cp makefile.linux_amd64_asm makefile.machine
 	else
 		cp makefile.linux_x86_asm_gcc_4.X makefile.machine
