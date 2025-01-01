@@ -3,15 +3,15 @@
 
 _modname="nginx-module-vts"
 pkgname=nginx-mod-vts
-pkgver=0.2.2
-pkgrel=6
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="Nginx virtual host traffic status module"
 arch=('x86_64')
 makedepends=('nginx' 'nginx-src')
 url="https://github.com/vozlt/nginx-module-vts"
 license=('BSD-2-Clause')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/vozlt/$_modname/archive/v$pkgver.tar.gz)
-sha256sums=('9353035331cfc5eec6c129eb8b348dab77f525329d4d60680a76e0c13c085f41')
+sha256sums=('828dc1e6ef46f3d329f4857de12d302cd11c8a4d5dc4b0948326b1c00a54b12f')
 
 build() {
     cp -r /usr/src/nginx .
