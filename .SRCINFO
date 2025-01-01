@@ -8,6 +8,7 @@ pkgbase = defold-bin
 	depends = glu
 	provides = defold
 	conflicts = defold
+	replaces = defold
 	options = !strip
 	source = defold-bin-1.9.6.83536c6-1.tar.gz::https://d.defold.com/archive/editor-alpha/83536c65275c04366b704b2fd3f3d681c88b8267/editor-alpha/editor2/Defold-x86_64-linux.tar.gz
 	source = https://github.com/defold/defold/raw/refs/heads/dev/LICENSE.txt
