@@ -2,8 +2,8 @@
 
 pkgdesc='A cross platform utility to dump and modify audio metadata for a wide variety of formats.'
 pkgname=('tone-bin')
-pkgver=0.1.5
-pkgrel=3
+pkgver=0.2.4
+pkgrel=0
 arch=('x86_64' 'aarch64')
 license=('APACHE')
 url="https://github.com/sandreas/tone"
@@ -21,5 +21,5 @@ package() {
     install -Dm 755 tone*/tone "${pkgdir}/usr/bin/tone"
 }
 
-sha256sums_x86_64=('29c197b21c6e36a3b889ebd6bb1fbdd2c95e489ac6508d010adcf6f69ab8ceba')
-sha256sums_aarch64=('0749b33e20c30607e73d654e6382fc8c56147eab81086131f95915eb58500bad')
+sha256sums_x86_64=('fca0bace134b4f3d417dfdfae6ad1139bc6be6c489fc4f40e43174837788ad94')
+sha256sums_aarch64=('ea5de8121860561f00c3a563880bad44e04dc2dfc56423c443bb378e47464670')
