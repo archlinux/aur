@@ -1,7 +1,7 @@
 pkgbase = readest
 	pkgdesc = Readest is a modern, feature-rich ebook reader designed for avid readers offering seamless cross-platform access, powerful tools, and an intuitive interface to elevate your reading experience.
 	pkgver = 0.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/readest/readest
 	install = readest.install
 	arch = x86_64
