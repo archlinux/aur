@@ -1,7 +1,7 @@
 # Maintainer: OGIOS <ogios@foxmail.com>
 _pkgname=way-edges
 pkgname=way-edges-bin
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 
 pkgdesc="Hidden widget on screen edges"
@@ -12,7 +12,7 @@ license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname"-git)
 
-depends=('gtk4' 'gtk4-layer-shell' 'cairo' 'pango' 'wayland' 'glib2' 'pipewire-pulse' 'libpulse')
+depends=('gtk4' 'gtk4-layer-shell' 'cairo' 'pango-git' 'wayland' 'glib2' 'pipewire-pulse' 'libpulse')
 
 _repo=way-edges/way-edges
 _tar_name="$_pkgname"_linux-x86_64.tar.gz
