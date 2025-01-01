@@ -1,52 +1,39 @@
-# Maintainer: Anders Blenstrup-Pedersen <abp at ryuu dot technology>
 pkgname=creality-print
-pkgver=4.3.7.6627
+pkgver=5.1.7.10514
 pkgrel=1
-pkgdesc="Creality Print is a slicer dedicated to FDM printers."
+pkgdesc='3D slicer for Creality printers'
 arch=('x86_64')
-url="https://www.creality.com/pages/download"
+url='https://github.com/CrealityOfficial/CrealityPrint'
 license=('unknown')
 depends=('fuse2')
 provides=('creality-print')
-conflicts=('creality-print')
-options=(!strip) # necessary otherwise the AppImage file in the package is truncated
+options=(!strip)
 
-_filename="Creality-Print-v${pkgver}-${arch[0]}.AppImage"
-_appimage_name="Creality-Print.AppImage"
-_install_path="/opt/appimages/${_appimage_name}"
+_ver=$(echo ${pkgver} | cut -d'.' -f 1,2,3)
+_file="Creality-Print-v${pkgver}-${arch[0]}.AppImage"
 
-noextract=("${_filename}")
-md5sums_x86_64=(
-  "05a4538e0c7222ce547eb8d58ef0251e"
-  "eba3c0e5365cc454862becb642e113a9"
-)
 sha512sums_x86_64=(
-  "7eccdbfeaf5696014dcde34a9faefa282a3954023315e8383afbde12dd5552f1a606df2c4cebcb11f10fcca1dbd344821b665f5dcf1d8aadda7ca72548d11d9f"
-  "5c0982b7475dae73cbc0ce5b96771b969ff7779daae452cf2e0d5d26fb43981c3e614485593f5306dfda9b3d3a6a2a8f319ef62b07d668479c60d82c8c1631b0"
+  '35e9bdaa2b39de036f73b0135e8286ae0eef8e6fc4b147a59449587959def27396eb00afa328d40c5578d9f658169067028a92c563e27d0d4991572091b71e0a'
 )
 source_x86_64=(
-  "${_filename}::https://file2-cdn.creality.com/file/${md5sums_x86_64[0]}/Creality_Print-v${pkgver}-${arch[0]}-Release.AppImage"
-  "default.desktop.patch"
+  "${_file}::https://github.com/CrealityOfficial/CrealityPrint/releases/download/v${_ver}/Creality_Print-v${pkgver}-${arch[0]}-Release.AppImage"
 )
 
 prepare() {
-  cd "${srcdir}"
-
-  # Extract desktop file and application icon from AppImage
-  chmod +x "./${_filename}"
-  ./${_filename} --appimage-extract "default.*"
-  patch -Np0 < ./default.desktop.patch
+  cd ${srcdir}
+  chmod +x ${_file}
+  ./${_file} --appimage-extract >&/dev/null
+  cd squashfs-root
+  rm AppRun
+  sed -i 's/Exec=AppRun %F/Exec=\/opt\/creality-print\/CrealityPrint %F/g' default.desktop
+  sed -i 's/Icon=default/Icon=\/opt\/creality-print\/default.png/g' default.desktop
+  echo 'Path=/opt/creality-print' >> default.desktop
+  mv default.desktop creality-print.desktop
 }
 
 package() {
-  cd "${srcdir}"
-
-  # Install AppImage and symlink it
-  install -Dm755 "${_filename}" "${pkgdir}/${_install_path}"
-  install -dm755 "${pkgdir}/usr/bin/"
-  ln -s "${_install_path}" "${pkgdir}/usr/bin/${provides[0]}"
-
-  # Install desktop file and application icon
-  install -Dm644 "${srcdir}/squashfs-root/default.desktop" "${pkgdir}/usr/share/applications/${provides[0]}.desktop"
-  install -Dm644 "${srcdir}/squashfs-root/default.png" "${pkgdir}/usr/share/icons/${provides[0]}.png"
+  install -dm755 ${pkgdir}/usr/share/applications
+  install -dm755 ${pkgdir}/opt/creality-print
+  cp -R ${srcdir}/squashfs-root/* ${pkgdir}/opt/creality-print
+  mv ${pkgdir}/opt/creality-print/creality-print.desktop ${pkgdir}/usr/share/applications
 }
