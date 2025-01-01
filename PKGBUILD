@@ -1,7 +1,7 @@
 pkgname=readest
-pkgver=0.8.6
+pkgver=0.8.8
 pkgrel=1
-pkgdesc="Description of your app"
+pkgdesc="Readest is a modern, feature-rich ebook reader designed for avid readers offering seamless cross-platform access, powerful tools, and an intuitive interface to elevate your reading experience." 
 arch=('x86_64' 'aarch64')
 url="https://github.com/readest/readest"
 license=('AGPL-3.0')
@@ -9,10 +9,10 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/readest/readest/releases/download/v$pkgver/Readest_"$pkgver"_amd64.deb")
+sha256sums_x86_64=('SKIP')
 package() {
 
   # Extract package data
   tar -xz -f data.tar.gz -C "${pkgdir}"
 
 }
-sha256sums_x86_64=('fe2f8aac397749d05730600c99d10cf44b13c641084ac0f3c88bbea37537cdfd')
