@@ -1,17 +1,16 @@
 pkgbase = golangci-lint
 	pkgdesc = Fast linters runner for Go.
 	pkgver = 1.63.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://golangci.com
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = go
 	makedepends = git
-	conflicts = golangci-lint
 	provides = golangci-lint
-	
-	source = https://github.com/golangci/golangci-lint/releases/download/v1.63.0/golangci-lint-1.63.0-source.tar.gz
+	conflicts = golangci-lint
+	source = golangci-lint_1.63.0.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v1.63.0/golangci-lint-1.63.0-source.tar.gz
 	sha256sums = 7560b7380a47f60cd153afb08cfea42957f1725a34e4b20928ac578e4ece8156
-	
+
 pkgname = golangci-lint

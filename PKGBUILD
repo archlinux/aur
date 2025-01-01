@@ -3,7 +3,7 @@
 
 pkgname='golangci-lint'
 pkgver=1.63.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast linters runner for Go.'
 url='https://golangci.com'
 arch=('aarch64' 'x86_64')
@@ -12,14 +12,16 @@ provides=('golangci-lint')
 conflicts=('golangci-lint')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v1.63.0/golangci-lint-1.63.0-source.tar.gz")
-sha256sums=('7560b7380a47f60cd153afb08cfea42957f1725a34e4b20928ac578e4ece8156')build() {
+sha256sums=('7560b7380a47f60cd153afb08cfea42957f1725a34e4b20928ac578e4ece8156')
+
+build() {
   local _commit _flags
   _commit=$(bsdcat "${pkgname}-${pkgver}.tar.gz" | git get-tar-commit-id)
   _flags=(
-  -X=main.version="$pkgver"
-  -X=main.commit="${_commit::7}"
-  -X=main.date="$(date -u -d "@${SOURCE_DATE_EPOCH}" +'%FT%TZ')"
-  -linkmode=external
+    -X=main.version="$pkgver"
+    -X=main.commit="${_commit::7}"
+    -X=main.date="$(date -u -d "@${SOURCE_DATE_EPOCH}" +'%FT%TZ')"
+    -linkmode=external
   )
   export CGO_ENABLED=1
   export CGO_CFLAGS="${CFLAGS}"
@@ -35,6 +37,7 @@ sha256sums=('7560b7380a47f60cd153afb08cfea42957f1725a34e4b20928ac578e4ece8156')b
   ./"$pkgname" completion zsh > completion.zsh
   ./"$pkgname" completion fish > completion.fish
 }
+
 package() {
   cd "${pkgname}-${pkgver}"
   install -Dm755 "$pkgname" -t "$pkgdir"/usr/bin
