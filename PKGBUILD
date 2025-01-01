@@ -9,7 +9,7 @@ pkgname=(
   ppsspp
   ppsspp-assets
 )
-pkgver=1.17.1
+pkgver=1.18.1
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
@@ -24,7 +24,9 @@ makedepends=(
   libglvnd
   libpng
   libzip
+  miniupnpc
   ninja
+  openxr
   python
   qt5-base
   qt5-multimedia
@@ -34,7 +36,7 @@ makedepends=(
   snappy
   zlib
 )
-_tag=084ce0fc1ffdc6c0d666ddde2fd7904edd29a4dc
+_tag=98a8583b1783af766423ec799e82d5829a7f496d
 source=(
   git+https://github.com/hrydgard/ppsspp.git#tag=${_tag}
   git+https://github.com/Kingcom/armips.git
@@ -45,15 +47,13 @@ source=(
   git+https://github.com/KhronosGroup/glslang.git
   git+https://github.com/hrydgard/ppsspp-lang.git
   git+https://github.com/rtissera/libchdr.git
-  ppsspp-miniupnp::git+https://github.com/hrydgard/miniupnp.git
   git+https://github.com/Tencent/rapidjson.git
   git+https://github.com/RetroAchievements/rcheevos.git
   git+https://github.com/KhronosGroup/SPIRV-Cross.git
   ppsspp-sdl.desktop
   ppsspp-qt.desktop
 )
-b2sums=('SKIP'
-        'SKIP'
+b2sums=('2cb74ec040e68c84701d48c2cdad7926d0a6660be3e8a7e9cc265788bdcc050375ad04d13c7750fa06a4e2f201c58fcb4886f849780f4b194c494afe3e5821e3'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -75,7 +75,8 @@ pkgver() {
 
 prepare() {
   cd ppsspp
-  for submodule in assets/lang ext/miniupnp ffmpeg; do
+  sed 's|miniupnpc/include/|miniupnpc/|g' -i Core/Util/PortManager.h
+  for submodule in assets/lang ffmpeg; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
@@ -102,6 +103,7 @@ build() {
     -DHEADLESS=ON \
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DUSE_SYSTEM_LIBZIP=ON \
+    -DUSE_SYSTEM_MINIUPNPC=ON \
     -DUSE_SYSTEM_SNAPPY=ON \
     -DUSE_SYSTEM_ZSTD=ON \
     -DUSING_QT_UI=OFF \
@@ -113,6 +115,7 @@ build() {
     -DHEADLESS=OFF \
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DUSE_SYSTEM_LIBZIP=ON \
+    -DUSE_SYSTEM_MINIUPNPC=ON \
     -DUSE_SYSTEM_SNAPPY=ON \
     -DUSE_SYSTEM_ZSTD=ON \
     -DUSING_QT_UI=ON \
@@ -130,6 +133,8 @@ package_ppsspp() {
     libgl
     libpng
     libzip
+    miniupnpc
+    openxr
     ppsspp-assets
     qt5-base
     qt5-multimedia
