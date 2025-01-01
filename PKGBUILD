@@ -2,12 +2,12 @@
 
 ## options
 : ${_widgets=qt6}
-: ${_commit=c68f4cda022fed633c1b51cbe7718d60c58da2ba} # 10.1.0
+: ${_commit=1e590b9714571a43c6f39d13720688036f500742}
 
 _pkgname="peazip"
 pkgname="$_pkgname"
-pkgver=10.1.0
-pkgrel=2
+pkgver=10.2.0
+pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
@@ -46,7 +46,7 @@ _packets=(
 
 prepare() {
   # support qt6
-  sed -E -e 's&IFDEF LCLQT5&IF DEFINED(LCLQT5) OR DEFINED(LCLQT6)&g' -i "$_pkgsrc/peazip-sources/dev/peach.pas"
+  #sed -E -e 's&IFDEF LCLQT5&IF DEFINED(LCLQT5) OR DEFINED(LCLQT6)&g' -i "$_pkgsrc/peazip-sources/dev/peach.pas"
 
   # use system binaries
   sed -E -e 's&(\bHSYSBIN\b\s*)=\s*[0-9];&\1= 2;&' \
@@ -58,10 +58,10 @@ prepare() {
     -e 's&(\bHSHAREPATH\b\s*)=\s*'\'\'';&\1= '\'"/usr/share/$_pkgname/"\'';&' \
     -i "$_pkgsrc/peazip-sources/dev/peach.pas"
 
-  # modify compiler options
+  # compiler/linker options
   for i in ${_packets[@]}; do
     xmlstarlet edit --inplace --delete '//Other' "$i"
-    sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value='\''-O3 -Sa -CX -XX -k"--sort-common --as-needed -z relro -z now"'\''/></Other>\n\1&' \
+    sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value='\''-O3 -Sa -CX -XX -k"--sort-common --as-needed -z relro -z now -z ibt -z shstk"'\''/></Other>\n\1&' \
       -i "$i"
   done
 }
