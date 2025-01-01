@@ -1,6 +1,6 @@
 pkgname=groundcoverify-git
 pkgver=0.2.1.r2.g9d6e2b4
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple python script which uses DeltaPlugin to turn regular groundcover in morrowind plugins into openmw-style groundcover."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/bmwinger/groundcoverify"
@@ -22,4 +22,5 @@ pkgver() {
 package() {
 	cd "${srcdir}/groundcoverify"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "groundcoverify.py"
+	install -Dm0755 -t "$pkgdir/usr/share/groundcoverify/" "groundcoverify.toml"
 }
