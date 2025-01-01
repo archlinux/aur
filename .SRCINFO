@@ -1,12 +1,10 @@
 pkgbase = python-pyoidc
 	pkgdesc = A complete OpenID Connect implementation in Python
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CZ-NIC/pyoidc
 	arch = any
 	license = Apache
-	checkdepends = python-pytest
-	checkdepends = python-pytest-runner
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -14,11 +12,11 @@ pkgbase = python-pyoidc
 	depends = python
 	depends = python-requests
 	depends = python-pycryptodomex
-	depends = python-pydantic
+	depends = python-pydantic-settings
 	depends = python-pyjwkest
-	depends = python-mako
 	depends = python-cryptography
 	depends = python-defusedxml
+	depends = python-typing_extensions
 	source = pyoidc-1.7.0.tar.gz::https://github.com/CZ-NIC/pyoidc/archive/refs/tags/1.7.0.tar.gz
 	sha256sums = a03c7717ef30bd8490b1848922bd08b4557177696ed0e7eab7fec73fc784e3d1
 
