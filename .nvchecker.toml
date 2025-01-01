@@ -1,0 +1,4 @@
+[overlayfs-tools-git]
+source = "git"
+git = "https://github.com/kmxz/overlayfs-tools.git"
+prefix = "v"

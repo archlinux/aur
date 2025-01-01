@@ -1,45 +1,40 @@
-# Maintainer: Alad Wenter <alad@archlinux.org>
-pkgname=overlayfs-tools-git
-_pkgname=overlayfs-tools
-pkgver=r31.291c7f4
-pkgrel=2
-pkgdesc="maintenance tools for overlay filesystem"
-arch=('x86_64')
-url="https://github.com/kmxz/overlayfs-tools"
-license=('custom')
-depends=('glibc')
-makedepends=('attr' 'git')
-source=("git+https://github.com/kmxz/overlayfs-tools.git"
-        "xattr_include_paths.patch"
-        "ldflags.patch")
-md5sums=('SKIP'
-         'e277d33cf8506ff96563f3aee2639564'
-         'de8fd91f1c4e12e6a27e1b53413a039c')
+# Maintainer:
+# Contributor: Alad Wenter <alad@archlinux.org>
 
-prepare() {
-    cd "$_pkgname"
-    patch -p1 < "$srcdir"/xattr_include_paths.patch
-    patch -p1 < "$srcdir"/ldflags.patch
-}
+_pkgname="overlayfs-tools"
+pkgname="$_pkgname-git"
+pkgver=2024.07.r7.gd1636eb
+pkgrel=1
+pkgdesc="Tools for overlay filesystem"
+url="https://github.com/kmxz/overlayfs-tools"
+license=('WTFPL')
+arch=('x86_64')
+
+depends=(
+  'glibc'
+)
+makedepends=(
+  'attr'
+  'git'
+  'meson'
+)
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$_pkgname"
-    make
-}
-
-check() {
-    cd "$_pkgname"
-    # XXX: tests require sudo, so they can't be run in the PKGBUILD
-    #make tests
+  arch-meson "$_pkgsrc" build
+  meson compile -C build
 }
 
 package() {
-    cd "$_pkgname"
-    install -Dm755 overlay "$pkgdir"/usr/bin/overlay
-    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  meson install -C build --destdir "$pkgdir"
+  mv "$pkgdir/usr/bin/overlay" "$pkgdir/usr/bin/overlayfs"
 }
