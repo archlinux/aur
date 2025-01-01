@@ -10,13 +10,13 @@ pkgname='kea_config'
 pkgdesc='Manage kea dhcp4 configs from single source config'
 _gitname='kea_config'
 
-pkgver=4.12.0
+pkgver=4.13.0
 pkgrel=1
 url="https://github.com/gene-git/kea_config"
 
 arch=(any)
 license=(MIT)
-depends=('python>=3.11' 'python-dnspython')
+depends=('python>=3.13' 'python-dnspython')
 
 # To build docs uncommont sphinx/texlive
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatch' 'rsync'
@@ -24,6 +24,16 @@ makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatc
             )
 # See mkpkg https://github.com/gene-git/Arch-mkpkg
 _mkpkg_depends=('python>minor')
+
+#
+# Verifying Signed Tag
+#   Add arch@sapience.com key to keyring then use the source line with "?signed"
+#   Key available via keys/pgp, WKD or dowload from https://www.sapience.com/tech
+#   Note that upstream release procedure requires every tagged release have new tag
+#
+validpgpkeys=( '7CCA1BA66669F3273DB52678E5B81343AB9809E1')   # Gene C
+
+#source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}?signed")
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
 
