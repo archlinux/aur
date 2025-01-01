@@ -1,6 +1,6 @@
 pkgbase = ciel
 	pkgdesc = A tool for controlling multi-layer file systems and containers.
-	pkgver = 3.8.5
+	pkgver = 3.8.6
 	pkgrel = 1
 	url = https://github.com/AOSC-Dev/ciel-rs
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = ciel
 	depends = glibc
 	depends = systemd-libs
 	conflicts = ciel-git
-	source = ciel-3.8.5.tar.gz::https://github.com/AOSC-Dev/ciel-rs/archive/v3.8.5.tar.gz
-	sha256sums = 7d59493233d5a8143d0601b1780157e391f4a95de4d2df35fdde5aec706b2901
+	source = ciel-3.8.6.tar.gz::https://github.com/AOSC-Dev/ciel-rs/archive/v3.8.6.tar.gz
+	sha256sums = 7abab0d5a8e825baee6e7bc8f6faef29240b3c2feec6b3edcf8656c0c6b0b8ae
 
 pkgname = ciel
