@@ -1,6 +1,6 @@
 pkgbase = fennel-ls
 	pkgdesc = Language Server for Fennel
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://sr.ht/~xerool/fennel-ls
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = fennel-ls
 	makedepends = git
 	depends = lua
 	conflicts = fennel-ls-git
-	source = https://git.sr.ht/~xerool/fennel-ls/archive/0.1.2.tar.gz
-	b2sums = 3401b76f230868d43c0d48e53b0f91eb6858dd2adb750c64c4190f3f8d01d3ea53ae6da2af2d7469e096e23534bbba308c945a2d2c8a812f03670291d479a577
+	source = https://git.sr.ht/~xerool/fennel-ls/archive/0.1.3.tar.gz
+	b2sums = 983cffedb7cec3f44c20ee7d5686901189eb7beb2302bc285f9f82143fd354bf3c65645548dbd58364f3c2c57d7bef305679baa6f344f819f6c0cfd45ab0cb6d
 
 pkgname = fennel-ls
