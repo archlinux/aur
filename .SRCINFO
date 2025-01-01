@@ -17,7 +17,6 @@ pkgbase = readest
 	depends = pango
 	depends = webkit2gtk
 	depends = webkit2gtk-4.1
-	options = !strip
 	options = !emptydirs
 	source_x86_64 = https://github.com/readest/readest/releases/download/v0.8.8/Readest_0.8.8_amd64.deb
 	sha256sums_x86_64 = SKIP
