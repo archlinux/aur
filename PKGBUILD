@@ -1,8 +1,8 @@
 # Maintainer: oscarcl <oscar.cowderylack@gmail.com>
 # Contributor: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
-pkgver=1.39.12
-pkgrel=2
+pkgver=1.39.13
+pkgrel=1
 pkgdesc="OmniSharp server (STDIO) based on Roslyn workspaces"
 arch=('x86_64')
 url="https://github.com/OmniSharp/omnisharp-roslyn"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('dotnet-sdk')
 makedepends=('git')
 source=("git+$url#tag=v$pkgver")
-sha256sums=('aa68a8d7fa21f3fb2b50f249ec9ebe5ba2cf79b585a3ab7cb65bd977adbd0083')
+sha256sums=('b023c314b920647567dd113afc170b940fa4fb94f8357857600c7dc2de25c354')
 
 prepare() {
     cd "$srcdir/$pkgname"
@@ -37,13 +37,6 @@ prepare() {
 
     # use absolute path to global dotnet exe
     sed -i "s|? \"dotnet\"|? \"$(command -v dotnet)\"|" scripts/common.cake
-
-    # https://github.com/advisories/GHSA-qj66-m88j-hmgj
-    sed -i '/"Microsoft.Extensions.Caching.Memory"/s/$(MicrosoftExtensionPackageVersion)/8.0.1/' Directory.Packages.props
-    sed -i '/"Microsoft.Extensions.Options"/s/$(MicrosoftExtensionPackageVersion)/8.0.2/' Directory.Packages.props
-
-    # https://github.com/advisories/GHSA-8g4q-xg66-9fp4
-    sed -i '/"System.Text.Json"/s/8.0.4/8.0.5/' Directory.Packages.props
 
     export DOTNET_NOLOGO=1
 
