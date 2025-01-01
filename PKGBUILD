@@ -1,21 +1,35 @@
-# Maintainer: Edgar Fournival <contact at edgar-fournival dot fr>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Contributor: Edgar Fournival <contact at edgar-fournival dot fr>
 
+_pkgauthor=shenwei356
 pkgname=brename
-pkgver=2.3.0
+pkgver=2.14.0
 pkgrel=1
 pkgdesc='A practical cross-platform command-line tool for safely batch renaming files/directories via regular expression'
-arch=('i686' 'x86_64')
-url='https://github.com/shenwei356/brename'
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
+arch=('x86_64' 'i686' 'aarch64')
 license=('MIT')
-depends=('glibc')
-source=('LICENSE')
-source_i686=('https://github.com/shenwei356/brename/releases/download/v2.3.0/brename_linux_386.tar.gz')
-source_x86_64=('https://github.com/shenwei356/brename/releases/download/v2.3.0/brename_linux_amd64.tar.gz')
-md5sums=('7b154f12b0ed68bac7ead79434b6d929')
-md5sums_i686=('4e96be8ed13895659309b1e5af063077')
-md5sums_x86_64=('1df4c84ce027191bed4bf5eb915d7bde')
+
+provides=("${pkgname}")
+makedepends=('go')
+
+source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('a16bceb25a75afa14c5dae2248c1244f1083b80b62783ce5dbf3e46ff68867d5')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
+
+  GOPATH="${srcdir}" CGO_ENABLED=0 go build -tags netgo -ldflags '-w -s'
+}
 
 package() {
-	install -Dm755 brename "$pkgdir/usr/bin/brename"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
+
+  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -Dm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
