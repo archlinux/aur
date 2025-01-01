@@ -3,12 +3,12 @@
 pkgname=dosbox-x-sdl2
 _pkgname=dosbox-x
 pkgver=2025.01.01
-pkgrel=1
+pkgrel=2
 pkgdesc="x86 emulator with builtin DOS, with patches and more features"
 arch=(i686 x86_64 aarch64)
 url="http://dosbox-x.com"
 license=(GPL)
-depends=(fluidsynth libxkbfile libxrandr sdl2_net libslirp)
+depends=(fluidsynth libxkbfile libxrandr sdl2_net libslirp libpng)
 makedepends=(glu)
 optdepends=()
 conflicts=('dosbox-x-git' 'dosbox-x' 'dosbox-x-sdl2-git')
