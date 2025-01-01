@@ -19,6 +19,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/neoapps-dev/buildit/archive
 noextract=()
 sha256sums=('SKIP')
 
+pkgver() {
+	cd "buildit-main"
+	printf "1.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
 	cd "buildit-main"
 	cargo build --release
