@@ -1,0 +1,14 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: csslayer <wengxt AT gmail com>
+
+_pkgbase=fcitx5
+pkgname=fcitx5-kde-kwin-settings
+pkgver=5.1.12
+pkgrel=1
+pkgdesc="Setup KDE KWin for Next generation of fcitx"
+arch=('x86_64')
+url="https://github.com/fcitx/fcitx5"
+license=('CC-PDM-1.0')
+groups=('fcitx5-im')
+install=fcitx5-kde-kwin-settings.install
+

@@ -1,0 +1,44 @@
+setup_for_kde() {
+    if [ $(pgrep plasmashell) ]; then
+        echo "Setting up fcitx5 for KDE"
+        [ -z $SUDO_USER ] && SUDO_USER=$(who|head -n1|cut -f1 -d" ")
+        [ -z $SUDO_HOME ] && SUDO_HOME=$(eval echo ~$SUDO_USER)
+        sudo -u $SUDO_USER mkdir -p $SUDO_HOME/.config/
+        mkdir -p /etc/skel/.config/
+        sudo -u $SUDO_USER kwriteconfig6 --file $SUDO_HOME/.config/kwinrc --group Wayland --type string --key InputMethod /usr/share/applications/fcitx5-wayland-launcher.desktop \
+        || sudo -u $SUDO_USER kwriteconfig5 --file $SUDO_HOME/.config/kwinrc --group Wayland --type string --key InputMethod /usr/share/applications/fcitx5-wayland-launcher.desktop
+        sudo -u $SUDO_USER sed -i 's/InputMethod/InputMethod[$e]/' $SUDO_HOME/.config/kwinrc
+        if [ ! -e /etc/skel/.config/kwinrc ]; then
+            touch /etc/skel/.config/kwinrc
+        fi
+        kwriteconfig6 --file /etc/skel/.config/kwinrc --group Wayland --type string --key InputMethod /usr/share/applications/fcitx5-wayland-launcher.desktop \
+        || kwriteconfig5 --file /etc/skel/.config/kwinrc --group Wayland --type string --key InputMethod /usr/share/applications/fcitx5-wayland-launcher.desktop
+        sed -i 's/InputMethod/InputMethod[$e]/' /etc/skel/.config/kwinrc
+    fi
+}
+
+post_install() {
+    setup_for_kde
+    if [ $(pgrep plasmashell) ]; then
+        echo
+        echo 'Re-login or reboot to apply modify'
+        echo
+    fi
+}
+
+post_upgrade() {
+    setup_for_kde
+}
+
+post_remove() {
+    if [ $(pgrep plasmashell) ]; then
+        [ -z $SUDO_USER ] && SUDO_USER=$(who|head -n1|cut -f1 -d" ")
+        [ -z $SUDO_HOME ] && SUDO_HOME=$(eval echo ~$SUDO_USER)
+        sudo -u $SUDO_USER kwriteconfig6 --delete --file $SUDO_HOME/.config/kwinrc --group 'Wayland' --key 'InputMethod' \
+        || sudo -u $SUDO_USER kwriteconfig5 --delete --file $SUDO_HOME/.config/kwinrc --group 'Wayland' --key 'InputMethod'
+        kwriteconfig6 --delete --file /etc/skel/.config/kwinrc --group 'Wayland' --key 'InputMethod' \
+        || kwriteconfig5 --delete --file /etc/skel/.config/kwinrc --group 'Wayland' --key 'InputMethod'
+        pgrep fcitx5 && pkill fcitx5 || true
+    fi
+}
+
