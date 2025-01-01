@@ -1,8 +1,6 @@
 post_install() {
 	echo
-	echo "To make the environmental variables set automatically, \
-it's not recommended to use fish as your login shell."
-	echo 'Re-login or reboot to apply modify.'
+	echo 'Re-login or reboot to apply modify'
 	echo
 }
 
@@ -10,6 +8,7 @@ post_upgrade() {
 	post_install
 }
 
-# post_remove() {
-# 	post_install
-# }
+post_remove() {
+	post_install
+}
+
