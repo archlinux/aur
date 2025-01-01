@@ -3,14 +3,14 @@
 # Contributor: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
 license=('GPL-3.0-only' 'MIT')
 makedepends=('git' 'cmake' 'ninja' 'clang' 'qt6-tools')
 depends=('qt6-base' 'qt6-webengine' 'qt6-declarative' 'qt6-svg' 'libzip' 'protobuf' 'libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'mcpelauncher-linux' 'zlib' 'curl' 'glibc' 'qt6-webchannel' 'gcc-libs' 'openssl'
-	 'hicolor-icon-theme')
+	 'hicolor-icon-theme' 'abseil-cpp')
 optdepends=('mcpelauncher-msa-ui-qt: Microsoft authentication for version before 1.16.1X')
 source=(
   "git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#tag=v${pkgver}-qt6"
@@ -22,6 +22,7 @@ source=(
   'git+https://github.com/minecraft-linux/mcpelauncher-common.git'
   'git+https://github.com/minecraft-linux/mcpelauncher-ui-qt.git'
   'git+https://github.com/minecraft-linux/playdl-signin-ui-qt.git'
+  'abseil.patch::https://patch-diff.githubusercontent.com/raw/minecraft-linux/Google-Play-API/pull/2.diff'
 )
 sha256sums=('00321edd07b62e36e2e7dcba06981839f725d475dd0142dfc3323536fae3dd3a'
             'SKIP'
@@ -31,7 +32,8 @@ sha256sums=('00321edd07b62e36e2e7dcba06981839f725d475dd0142dfc3323536fae3dd3a'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '30570533eeeaa13765eabde9041a742b8815a65f4cb8b843d8c82220a3b0648d')
 
 prepare() {
   cd "$srcdir/$pkgname-manifest"
@@ -41,6 +43,8 @@ prepare() {
 	git config submodule.$submodule.url "$srcdir/$submodule"
   done
   git -c protocol.file.allow=always submodule update
+  cd "$srcdir/$pkgname-manifest/google-play-api"
+  patch -p1 < "$srcdir/abseil.patch"
 }
 build() {
   cd "$srcdir"
@@ -49,9 +53,8 @@ build() {
   -G Ninja \
   -DCMAKE_C_COMPILER=clang \
   -DCMAKE_CXX_COMPILER=clang++ \
-  -DCMAKE_C_FLAGS="$CFLAGS -flto=thin" \
-  -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=thin" \
-  -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -Wl,--copy-dt-needed-entries" \
+  -DCMAKE_C_FLAGS="$CFLAGS -flto=thin -fclang-abi-compat=17" \
+  -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=thin -fclang-abi-compat=17" \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DCMAKE_BUILD_TYPE=None \
   -Wno-dev
