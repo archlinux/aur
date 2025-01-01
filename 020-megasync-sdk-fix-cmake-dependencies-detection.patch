@@ -1,5 +1,5 @@
---- a/contrib/cmake/modules/sdklib_libraries.cmake
-+++ b/contrib/cmake/modules/sdklib_libraries.cmake
+--- a/cmake/modules/sdklib_libraries.cmake
++++ b/cmake/modules/sdklib_libraries.cmake
 @@ -95,7 +95,7 @@ macro(load_sdklib_libraries)
  
          find_package(PkgConfig REQUIRED) # For libraries loaded using pkg-config

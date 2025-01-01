@@ -7,7 +7,7 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync
-pkgver=5.6.1.0
+pkgver=5.7.0.0
 pkgrel=1
 pkgdesc='Official MEGA desktop application for syncing with MEGA Cloud Drive'
 arch=('x86_64')
@@ -38,15 +38,15 @@ depends=('c-ares'
          'zlib'
 )
 makedepends=('git' 'cmake' 'qt5-tools')
-source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_Linux"
+source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_OSX"
         'meganz-sdk'::'git+https://github.com/meganz/sdk.git'
         '010-megasync-freeimage-remove-obsolete-ffmpeg-macros.patch'
         '020-megasync-sdk-fix-cmake-dependencies-detection.patch'
         '030-megasync-app-fix-cmake-dependencies-detection.patch')
-sha256sums=('0a25283efac4088acd2eb1ba2ec60dcd7064ca81d3cae2e1a816b56e94477a11'
+sha256sums=('a9741ea6051c69e1d62359d06f4d0025401002d44f1edcc43e5793a2b2418abe'
             'SKIP'
-            'bbb7483b2257ff3c1bea4f771b424d2976c5884930d8ebd71101306ff89429c0'
-            '2da83bb6a20aa19b58b4115646bacb9d76e2504b45b5094abeba94beac2301fb'
+            'ed191eba0bf731827d546fd93383267429a8e911faf30b98bf022ad1f9ce0bcb'
+            'a2d4c9040282f51e81a9d37d9875d4a9febb1ff1f6af452210be581f0eaa63a7'
             'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171')
 
 prepare() {
@@ -55,11 +55,9 @@ prepare() {
     #git -C MEGAsync -c protocol.file.allow='always' submodule update
     
     # https://github.com/meganz/MEGAsync/issues/1010
-    # https://github.com/meganz/MEGAsync/blob/v5.6.1.0_Linux/src/MEGASync/control/Version.h
-    # https://github.com/meganz/MEGAsync/commit/8bc07bd1762c483a5626895ef5614c624cb527f4
-    # besides upstream issue #1010, there is no public commit ecc873026fcc0355f6d490b8529c9f22d5a4fd8c in the sdk git repository, using nearest tag
+    # https://github.com/meganz/MEGAsync/blob/v5.7.0.0_OSX/src/MEGASync/control/Version.h#L20-L21
     git -C meganz-sdk config advice.detachedHead false
-    git -C meganz-sdk checkout v7.12.0
+    git -C meganz-sdk checkout 81f2d1cde975859ff264c66b808cfa855f79ae82
     rm -r MEGAsync/src/MEGASync/mega
     ln -sf ../../../meganz-sdk MEGAsync/src/MEGASync/mega
     
@@ -69,11 +67,11 @@ prepare() {
 }
 
 build() {
-    export CXXFLAGS+=' -DNDEBUG'
+    export CXXFLAGS+=' -DNDEBUG -isystem/usr/include/pdfium'
     cmake -B build -S MEGAsync \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
-        -DCMAKE_MODULE_PATH:PATH="${srcdir}/MEGAsync/src/MEGASync/mega/contrib/cmake/modules/packages" \
+        -DCMAKE_MODULE_PATH:PATH="${srcdir}/MEGAsync/src/MEGASync/mega/cmake/modules/packages" \
         -DCMAKE_SKIP_INSTALL_RPATH:BOOL='YES' \
         -DENABLE_DESIGN_TOKENS_IMPORTER:BOOL='OFF' \
         -Wno-dev
