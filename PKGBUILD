@@ -2,7 +2,7 @@
 
 pkgname=python-pymobiledevice3
 _pkgname=pymobiledevice3
-pkgver=4.17.1
+pkgver=4.17.3
 pkgrel=1
 pkgdesc='Pure python3 implementation for working with iDevices'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/doronz88/pymobiledevice3'
 license=('GPL3')
 depends=(
   'openssl' 'libusb' 'python' 'python-construct' 'python-asn1'
-  'python-click' 'python-coloredlogs' 'ipython' 'python-bpylist2-git' 'python-pygments'
+  'python-click' 'python-coloredlogs' 'ipython' 'python-bpylist2' 'python-pygments'
   'python-hexdump' 'python-arrow' 'python-daemonize' 'python-gpxpy' 'python-pykdebugparser'
   'python-pyusb' 'python-tqdm' 'python-requests' 'xonsh' 'python-parameter-decorators'
   'python-packaging' 'python-pygnuutils' 'python-cryptography' 'python-pycrashreport' 'python-fastapi'
@@ -23,7 +23,7 @@ depends=(
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools' 'python-setuptools-scm')
 checkdepends=('python-pytest' 'python-pytest-asyncio')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f862cee83c07acc0b15a40e585061ae795921df403f464e81a442091fe967340')
+sha256sums=('0edeaa00943e320cfb8304086da08df11576b46abe3b1c96cee93f2b952617f6')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
