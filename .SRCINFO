@@ -1,0 +1,19 @@
+pkgbase = ntirpc
+	pkgdesc = New Transport Independent RPC Library
+	pkgver = 6.3
+	pkgrel = 1
+	url = https://github.com/nfs-ganesha/ntirpc
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = cmake>=2.6.3
+	makedepends = git
+	depends = glibc
+	depends = krb5
+	depends = rdma-core
+	depends = liburcu
+	provides = libntirpc.so
+	source = ntirpc-6.3::git+https://github.com/nfs-ganesha/ntirpc.git#commit=d2b7209f82fac44fe95731ce98740f793e9e98a0
+	b2sums = da2ae91f66a66bd8fc4aec57a538970ac27fc88a4e033aa84863c71b99d7e9967e0c3de5f3f2defb0a578a24202d314af6a1bd9678894521cf176e0700af7ab6
+
+pkgname = ntirpc

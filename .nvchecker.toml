@@ -1,0 +1,4 @@
+[ntirpc]
+source = "git"
+git = "https://github.com/nfs-ganesha/ntirpc.git"
+prefix = "v"
