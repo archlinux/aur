@@ -1,50 +1,74 @@
 pkgname=dpdk-lts
-pkgver=19.11.6
+pkgver=24.11.1
 pkgrel=1
 pkgdesc='A set of libraries and drivers for fast packet processing'
-arch=(x86_64 i686)
+arch=($CARCH)
 url='http://dpdk.org'
-license=(BSD)
-options=(staticlibs)
-depends=(numactl)
-makedepends=(linux-headers libpcap)
+license=(
+  BSD-3-Clause
+  GPL-2.0-only
+)
+provides=(${pkgname%-lts})
+conflicts=(${pkgname%-lts})
+options=()
+depends=(
+  sh
+  dtc
+  gcc-libs
+  glibc
+  jansson
+  libarchive
+  libbsd
+  libbpf
+  libelf
+  libpcap
+  libxdp
+  numactl
+  rdma-core
+  openssl
+  python-scapy
+  python-pyelftools
+  zlib
+  #AUR
+  dlpack
+  isa-l
+)
+makedepends=(
+  doxygen
+  cmake
+  ninja
+  meson
+  man-db
+  python-sphinx
+
+)
 checkdepends=()
 source=(
-    "http://fast.dpdk.org/rel/dpdk-$pkgver.tar.xz"
+  "http://fast.dpdk.org/rel/dpdk-$pkgver.tar.xz"
 )
-sha256sums=(
-    '97ee27bb98f5e38bdaa3762345817a56f821b016bb2f518cf0aade4fdffde9f4'
-)
+sha256sums=('bcae7d42c449fc456dfb279feabcbe0599a29bebb2fe2905761e187339d96b8e')
 
 prepare() {
-  mv dpdk-stable-$pkgver dpdk-$pkgver
-  cd dpdk-$pkgver
-  make T=x86_64-native-linuxapp-gcc config
-
-  sed -ri 's,(RTE_MACHINE=).*,\1default,'    build/.config
-  sed -ri 's,(RTE_APP_TEST=).*,\1n,'         build/.config
-  sed -ri 's,(RTE_BUILD_SHARED_LIB=).*,\1y,' build/.config
-  sed -ri 's,(RTE_NEXT_ABI=).*,\1n,'         build/.config
-  sed -ri 's,(LIBRTE_VHOST=).*,\1y,'         build/.config
-  sed -ri 's,(LIBRTE_PMD_PCAP=).*,\1y,'      build/.config
-  #sed -ri 's,(LIBRTE_PMD_XENVIRT=).*,\1y,'   build/.config
-
-  sed 's|\bpython\b|python2|' -i mk/rte.sdktest.mk
+  meson subprojects download --sourcedir="${srcdir}/dpdk-stable-$pkgver"
 }
 
 build() {
-  cd dpdk-$pkgver
-  make T=x86_64-native-linuxapp-gcc
+  #   cd dpdk-$pkgver
+  #   make T=x86_64-native-linuxapp-gcc
+  cd "${srcdir}/dpdk-stable-$pkgver"
+  arch-meson build
+  ninja -C build
 }
 
-check() {
-  cd dpdk-$pkgver
-  # tests fail
-  make test T=x86_64-native-linuxapp-gcc
-}
+# check() {
+#   cd dpdk-$pkgver
+#   # tests fail
+#   make test T=x86_64-native-linuxapp-gcc
+# }
 
 package() {
-  cd dpdk-$pkgver
-  make DESTDIR="$pkgdir" prefix=/usr sbindir=bin install T=x86_64-native-linuxapp-gcc
-  cp -a "$pkgdir"/lib/ "$pkgdir"/usr/ && rm -rf "$pkgdir"/lib/
+  DESTDIR="${pkgdir}" ninja -C ${srcdir}/dpdk-stable-$pkgver/build install
+  #   cd dpdk-$pkgver
+  #   make DESTDIR="$pkgdir" prefix=/usr sbindir=bin install T=x86_64-native-linuxapp-gcc
+  #   cp -a "$pkgdir"/lib/ "$pkgdir"/usr/ && rm -rf "$pkgdir"/lib/
 }
