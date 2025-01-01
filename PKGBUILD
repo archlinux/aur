@@ -5,9 +5,10 @@
 _pkgname=llama-cpp-python
 pkgname=python-llama-cpp
 pkgver=0.3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Python bindings for llama.cpp"
 arch=(any)
+options=(!debug)
 url=https://github.com/abetlen/llama-cpp-python
 license=(GPL-3.0-or-later)
 depends=(
@@ -45,14 +46,20 @@ sha256sums=('f5ce47499d53d3973e28ca5bdaf2dfe820163fa3fb67e3050f98e2e9b58d2cf6')
 _srcdir="llama_cpp_python-${pkgver}"
 build() {
   cd $_srcdir
+  export PREFIX=/usr
   python -m build --wheel --no-isolation
 }
+
 check() {
   cd $_srcdir
   python -m pytest
 } 
+
 package() {
+  local _sys_site=$(python -c "import sysconfig; print(sysconfig.get_paths()['purelib'])")
   cd $_srcdir
   python -m installer --destdir="$pkgdir" dist/*.whl
+  rm -r "$pkgdir/$_sys_site"/{lib,bin,include}
 }
+
 # vim:set ts=2 sw=2 et:
