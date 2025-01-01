@@ -1,0 +1,14 @@
+pkgbase = comms
+	pkgdesc = COMMS is the C++(11) headers only library, for creating communication protocols.
+	pkgver = 5.2.7
+	pkgrel = 1
+	url = https://github.com/commschamp/comms
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	source = comms-5.2.7.tar.gz::https://github.com/commschamp/comms/archive/refs/tags/v5.2.7.tar.gz
+	sha512sums = 838b4c90a2c9c6374f0755a694057f60b53898dfdd100d16b0e81d308f6a62f3af9e680307b1782290d71c7c0d067fdf5af364e58f30907246b0fcad962e4ce8
+	b2sums = 2029251151ac78c086a740c5631bebe6dee557348a7f3bdd088d7a7c30fd7da9ad386de9d58ef8903630e5efae69a201ced4a60e5cb87754c42e564fcd1be400
+
+pkgname = comms
