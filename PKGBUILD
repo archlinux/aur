@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.5.0.r22.g333f35ef2
+pkgver=0.5.0.r78.g4e0757ed5
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -19,7 +19,6 @@ depends=(
 makedepends=(
 	'boost>=1.84'
 	'cmake>=3.16.3'
-	'cubeb'
 	'ffmpeg>=2:5.1.2'
 	'fmt>=10.2'
 	'git'
@@ -81,6 +80,8 @@ prepare() {
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
+	# https://github.com/shadps4-emu/shadPS4/issues/1994
+	git cherry-pick -n 8de48954148efa64a5b7b4f004d068dd40bf1463
 }
 
 build() {
@@ -102,7 +103,6 @@ package() {
 		'libavcodec.so'
 		'libavformat.so'
 		'libavutil.so'
-		'libcubeb.so'
 		'libfmt.so'
 		'libpng16.so'
 		'libswresample.so'
