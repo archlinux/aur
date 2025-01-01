@@ -5,14 +5,14 @@
 
 pkgname=obs-studio-with-websockets
 pkgver=31.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
 url="https://obsproject.com"
 license=('GPL2')
 depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls' 'rnnoise' 'pciutils'
          'qt6-svg' 'curl' 'jack' 'gtk-update-icon-cache' 'pipewire' 'libxcomposite'
-         'libdatachannel' 'uthash')
+         'libdatachannel' 'uthash' 'ffnvcodec-headers' 'qrcodegencpp-cmake' 'websocketpp' 'asio')
 makedepends=('cmake' 'libfdk-aac' 'x264' 'swig' 'python' 'luajit' 'sndio' 'nlohmann-json')
 optdepends=('libfdk-aac: FDK AAC codec support'
             'libva-intel-driver: hardware encoding'
@@ -21,6 +21,7 @@ optdepends=('libfdk-aac: FDK AAC codec support'
             'python: scripting support'
             'sndio: Sndio input client'
             'v4l2loopback-dkms: virtual camera support')
+options=("!debug")
 source=($pkgname-$pkgver.tar.gz::https://github.com/tbocek/obs-source-all/releases/download/$pkgver/obs-studio-$pkgver.tar.gz)
 sha256sums=('b135a0e6dafab853ff3749d67003bd847316aec36646cbdb41218cbfab03c709')
 
@@ -45,7 +46,7 @@ build() {
     -DCALM_DEPRECATION=ON \
     -DENABLE_WEBSOCKET=ON \
     -Wno-dev
-  cmake --build build
+  cmake --build build --parallel
 }
 
 package() {
