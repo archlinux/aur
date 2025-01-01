@@ -10,4 +10,8 @@ pkgbase = kwin-effects-burn-my-windows
 	sha256sums = d3c4107d5fbc14aa8ef898287e685b15e1cfb0f740ce743a48a65831c61e0fc2
 	b2sums = 8a53408807cd1650047cdc9b76a48183c9ad4d0cbb4d26eba16e2ebae2307826a0ee9e72e7027517bbb9cc845cf23d10ff772b6ee01b4d42693b517305a81231
 
-pkgname = kwin-effects-burn-my-windows
+pkgname = kwin5-effects-burn-my-windows
+
+pkgname = kwin6-effects-burn-my-windows
+	conflicts = kwin-effects-burn-my-windows
+	replaces = kwin-effects-burn-my-windows

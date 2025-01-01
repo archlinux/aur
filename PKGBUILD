@@ -1,6 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
-pkgname=kwin-effects-burn-my-windows
+pkgbase=kwin-effects-burn-my-windows
+pkgname=(kwin5-effects-burn-my-windows kwin6-effects-burn-my-windows)
 pkgver=44
 pkgrel=1
 pkgdesc='Disintegrate your windows with style.'
@@ -8,7 +9,7 @@ arch=('any')
 url='https://github.com/Schneegans/Burn-My-Windows'
 license=('GPL-3.0-or-later')
 depends=('kwin')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Schneegans/Burn-My-Windows/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/Schneegans/Burn-My-Windows/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('d3c4107d5fbc14aa8ef898287e685b15e1cfb0f740ce743a48a65831c61e0fc2')
 b2sums=('8a53408807cd1650047cdc9b76a48183c9ad4d0cbb4d26eba16e2ebae2307826a0ee9e72e7027517bbb9cc845cf23d10ff772b6ee01b4d42693b517305a81231')
 
@@ -18,11 +19,23 @@ build() {
   ./build.sh
 }
 
-package() {
+package_kwin5-effects-burn-my-windows() {
   cd "Burn-My-Windows-$pkgver"
 
-  install -dm0755 "$pkgdir/usr/share/kwin"
-  cp -r "kwin/_build" "$pkgdir/usr/share/kwin/effects"
+  install -dm0755 "$pkgdir/usr/share/kwin/effects"
+  cp -r -t "$pkgdir/usr/share/kwin/effects" "kwin/_build"/kwin5_*
+
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+}
+
+package_kwin6-effects-burn-my-windows() {
+  conflicts=('kwin-effects-burn-my-windows')
+  replaces=('kwin-effects-burn-my-windows')
+
+  cd "Burn-My-Windows-$pkgver"
+
+  install -dm0755 "$pkgdir/usr/share/kwin/effects"
+  cp -r -t "$pkgdir/usr/share/kwin/effects" "kwin/_build"/kwin6_*
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
