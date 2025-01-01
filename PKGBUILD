@@ -47,15 +47,16 @@ depends=(
 	"libxdamage"
 	"libdrm"
 	"mesa"
-	"bash"
 	"libglvnd"
 	"libpulse"
 	"hicolor-icon-theme"
 )
 
 optdepends=(
-	"wechat: Sandbox support"
+	"wechat: Sandbox support and enhancements"
 	'ttf-twemoji: An emoji font that will work with WeChat'
+	'libjack.so: libjack_plugin.so'
+	'at-spi2-core: Accessibility in the browser part'
 )
 
 makedepends+=(
