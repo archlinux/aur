@@ -1,35 +1,37 @@
-# Maintainer: Nathanael Demacon <nathanael.dmc[at]outlook[dot]fr>
-
+# Maintainer: Hossam Mostafa <hossamdash2@gmail.com>
 pkgname=sshs
-pkgver="3.4.0"
-pkgrel="1"
+pkgver=4.5.1
+pkgrel=1
 pkgdesc="Terminal user interface for SSH"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/quantumsheep/sshs"
 license=('MIT')
+provides=("$pkgname")
+conflicts=("$pkgname" "${pkgname}-git" "${pkgname}-bin")
+
 depends=('openssh')
-makedepends=('go')
-source=("https://github.com/quantumsheep/sshs/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('f46f9185f97e35cf3b02286631df715027c3b0d374959c7e402a21bd30208f74')
+makedepends=('cargo')
+
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('c5383138114262fd49ac91c77830f9c6a09f02c5650e5e5cfa8ede1fa3383d96')
 
 prepare() {
-    cd "$pkgname-$pkgver"
-    sed -i "s|go build |go build -trimpath -mod=readonly -modcacherw -buildmode=pie |" Makefile
+    cd "${srcdir}/${pkgname}-${pkgver}"
+
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    export GOPATH="$srcdir"/gopath
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export CGO_ENABLED=1
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
 
-    cd "$pkgname-$pkgver"
-    make VERSION="$pkgver"
+    cargo build --frozen --release
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" PREFIX="/usr" install
+    cd "${srcdir}/${pkgname}-${pkgver}"
+
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
