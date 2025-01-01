@@ -2,7 +2,7 @@
 # Maintainer: Antti <antti@antti.codes>
 
 pkgname=modrinth-app-beta-bin
-pkgver=0.8.3
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='A unique, open-source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('GPL3')
 depends=(
     # tauri deps
-    'openssl-1.1' 'dbus' 'freetype2' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libsoup' 'webkit2gtk'
+    'openssl-1.1' 'dbus' 'freetype2' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libsoup' 'webkit2gtk-4.1'
     # minecraft deps
     'libgl' 'libpulse' 'libx11' 'libxcursor' 'libxext' 'libxxf86vm'
 )
@@ -20,11 +20,11 @@ optdepends=(
 provides=('modrinth-app')
 conflicts=('modrinth-app')
 source=(
-    "https://modrinth-betas.flawcra.cc/versions/${pkgver}-${pkgrel}/linux/modrinth-app_${pkgver}-${pkgrel}_amd64.deb"
-    "modrinth-app"
+    "https://launcher-files.modrinth.com/versions/${pkgver}/linux/Modrinth%20App_${pkgver}_amd64.deb"
+    "ModrinthApp"
 )
-sha256sums=('4740a5b5e21627c44998c900d8744ae9cdb4512badc06421a2f81b3ef63eccee'
-            '3a122138375fa8c8e38be9e11e33f39e784fe895e0490d00967c9a6173145508')
+sha256sums=('ea5bd011f8741c63952e37699392cff7ded5673bbc16c991456c9616652d34de'
+            'c2941be4fc9c33c5d099b7178a164e900ac86569c3fb5ddee9e364c27680fbb7')
 
 build() {
     cd "$srcdir/"
@@ -34,7 +34,6 @@ build() {
 package() {
     cp -r "${srcdir}/usr/" "${pkgdir}"
     mkdir -p "${pkgdir}/opt/modrinth-app"
-    mv "${pkgdir}/usr/bin/theseus_gui" "${pkgdir}/opt/modrinth-app/"
-    install -Dm755 "${srcdir}/modrinth-app" "${pkgdir}/usr/bin/"
-    install -Dm755 "${srcdir}/modrinth-app" "${pkgdir}/usr/bin/theseus_gui"
+    mv "${pkgdir}/usr/bin/ModrinthApp" "${pkgdir}/opt/modrinth-app/"
+    install -Dm755 "${srcdir}/ModrinthApp" "${pkgdir}/usr/bin/ModrinthApp"
 }
