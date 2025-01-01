@@ -1,0 +1,4 @@
+[docker-compose-cli]
+source = "github"
+github = "docker/compose-cli"
+use_latest_release = true
