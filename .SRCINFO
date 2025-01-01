@@ -1,11 +1,13 @@
 pkgbase = python-pymkv
 	pkgdesc = A Python wrapper for mkvmerge that provides support for muxing, splitting, linking, chapters, tags, and attachments.
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sheldonkwoodward/pymkv
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
 	depends = python
 	depends = mkvtoolnix-cli
 	depends = python-iso639
@@ -18,4 +20,3 @@ pkgname = python-pymkv
 	depends = mkvtoolnix-cli
 	depends = python-iso639
 	depends = python-bitmath
-
