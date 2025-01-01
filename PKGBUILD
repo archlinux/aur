@@ -2,7 +2,7 @@
 
 pkgname=comms-ublox
 pkgver=2.9
-pkgrel=2
+pkgrel=3
 pkgdesc='UBLOX (UBX) protocol definition, generated out of cc.ublox.commsdsl'
 arch=('any')
 url='https://github.com/commschamp/cc.ublox.commsdsl'
@@ -26,6 +26,11 @@ build() {
 }
 
 package() {
+    # create target directories
+    install -d $pkgdir/usr/include
+    install -d $pkgdir/usr/lib/cmake/cc_ublox
+
     # The ublox repo build the project as external project and has no install.
-    cp -r usr $pkgdir/usr
+    cp -r usr/include/cc_ublox $pkgdir/usr/include
+    cp -r usr/lib/cc_ublox/cmake/* $pkgdir/usr/lib/cmake/cc_ublox
 }
