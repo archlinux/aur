@@ -3,7 +3,7 @@
 
 pkgname=bio-tbtools
 _pkgname=tbtools
-pkgver=2.138
+pkgver=2.148
 pkgrel=1
 epoch=1
 pkgdesc='GUI/CommandLine Tool Box for biologistists to utilize NGS data. \
@@ -24,7 +24,7 @@ optdepends=('blast+: BLAST support'
             'iqtree: maximum likelihood phylogenomic tree support'
             'kaks_calculator: kaks calculate support')
 source=("https://github.com/CJ-Chen/TBtools-II/releases/download/${pkgver}/TBtools_JRE1.6.jar")
-sha256sums=('b8e5161d1ba83d5378722dcadfa6d7cbaeadde4de0536a1f55425e35a86340e3')
+sha256sums=('0b8c8ec94187b6e03754ad72cafe3bff461ac8d1b9d115663c6e57fa8f31f34d')
 
 prepare() {
     # generate /usr/bin file
