@@ -15,12 +15,17 @@ makedepends=(git wget)
 optdepends=('ruby: for running some scripts' 'coffee-script: for running some scripts')
 provides=(howl)
 conflicts=(howl)
-source=(git+https://github.com/howl-editor/howl.git)
-md5sums=(SKIP)
+source=(git+https://github.com/howl-editor/howl.git luajit-rolling-release.patch)
+md5sums=(SKIP e60f84c5452d87db0d0bbf648b74ba0f)
 
 pkgver() {
   cd howl
   git describe --tags | sed "s+-+.r+" | tr - .
+}
+
+prepare() {
+  cd howl
+  git apply ../luajit-rolling-release.patch
 }
 
 build() {

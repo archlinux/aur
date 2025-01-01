@@ -1,6 +1,6 @@
 pkgbase = howl-git
 	pkgdesc = General purpose, light-weight customizable editor
-	pkgver = 0.6.r2.g9fe141e5
+	pkgver = 0.6
 	pkgrel = 1
 	url = http://howl.io/
 	arch = i686
@@ -15,7 +15,8 @@ pkgbase = howl-git
 	provides = howl
 	conflicts = howl
 	source = git+https://github.com/howl-editor/howl.git
+	source = luajit-rolling-release.patch
 	md5sums = SKIP
+	md5sums = e60f84c5452d87db0d0bbf648b74ba0f
 
 pkgname = howl-git
-

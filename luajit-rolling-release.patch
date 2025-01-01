@@ -1,0 +1,30 @@
+diff --git a/src/Makefile b/src/Makefile
+index a9e21430..65e9c27f 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -7,13 +7,12 @@ GTK_LIBS = $(shell pkg-config --libs $(GTK) gmodule-2.0 gio-unix-2.0)
+ 
+ # If you change the versions and checksums, make sure to also update io.howl.Editor.yaml.
+ 
+-LUAJIT_VER = LuaJIT-2.1.0-beta3
+-LUAJIT_CHECKSUM = 1ad2e34b111c802f9d0cdf019e986909123237a28c746b21295b63c9e785d9c3
+-LUAJIT = deps/${LUAJIT_VER}
++LUAJIT_VER = 2.1
++LUAJIT = deps/LuaJIT-${LUAJIT_VER}
+ LUAJIT_SRC_DIR = $(realpath $(LUAJIT)/src)
+ LUAJIT_CFLAGS = -I$(LUAJIT_SRC_DIR)
+ LUAJIT_ARCHIVE = $(LUAJIT)/src/libluajit.a
+-LUAJIT_URL = http://luajit.org/download/$(LUAJIT_VER).tar.gz
++LUAJIT_URL = https://github.com/LuaJIT/LuaJIT.git
+ 
+ LPEG_VER = lpeg-0.10.2
+ LPEG_CHECKSUM = d1a7698e4bcd0ac305633774062d22b27300a41673c3d733ea9993244a64ea6f
+@@ -53,7 +52,7 @@ $(LPEG_OBJECT): $(LPEG) $(LUAJIT)
+ 	cd ${LPEG} && $(MAKE) lpeg.o LUADIR=../../$(LUAJIT)/src
+ 
+ $(LUAJIT):
+-	@tools/download $(LUAJIT_URL) $(LUAJIT_CHECKSUM) tar xzf {file} -C deps
++	@git clone --depth=1 --branch=v${LUAJIT_VER} $(LUAJIT_URL) $(LUAJIT)
+ 	@perl -piorig -e 's/LUA_IDSIZE\s*\d+/LUA_IDSIZE 120/' $(LUAJIT)/src/luaconf.h
+ 
+ $(LUAJIT_ARCHIVE): $(LUAJIT)
