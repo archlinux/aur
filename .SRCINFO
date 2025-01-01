@@ -1,6 +1,6 @@
 pkgbase = untitled-dbus-utils
 	pkgdesc = C++ utilities for dealing with the low level DBus C API
-	pkgver = 1.2.0.0
+	pkgver = 1.4.0.0
 	pkgrel = 1
 	url = https://github.com/MadLadSquad/UntitledDBusUtils
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = untitled-dbus-utils
 	depends = pkgconf
 	depends = dbus
 	provides = libUntitledDBusUtils.so
-	source = https://github.com/MadLadSquad/UntitledDBusUtils/releases/download/v1.2.0.0/untitled-dbus-utils.tar.xz
-	sha256sums = 16836a3c18a89289ff7724615f1e287eef4ff2d809fb8849bee65abfc55109b7
+	source = https://github.com/MadLadSquad/UntitledDBusUtils/releases/download/v1.4.0.0/untitled-dbus-utils.tar.xz
+	sha256sums = 43ef997c5f936c0d2647cba58996c07d1c5a34288f289d4283effdb0545c5423
 
 pkgname = untitled-dbus-utils
