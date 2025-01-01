@@ -1,4 +1,7 @@
-/pkg
-/src
-/abstreet
-*.pkg.tar.xz
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!abstreet.desktop
+!abstreet.sh
+
