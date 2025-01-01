@@ -1,6 +1,6 @@
 # Maintainer: Penguin <penguin@pcland.co.in>
 pkgname=wikilynx
-pkgver=1.5.0
+pkgver=1.5.5
 pkgrel=1
 #epoch=2
 pkgdesc="A simple Qt C++ app to play Wikipedia Speedruns the right way"
@@ -23,7 +23,7 @@ makedepends=(
 conflicts=("${pkgname}")
 provides=("${pkgname}")
 #changelog=
-source=("https://github.com/flamboyantpenguin/wikilynx/archive/refs/tags/v1.5.0.zip")
+source=("https://github.com/flamboyantpenguin/wikilynx/archive/refs/tags/v1.5.5.zip")
 sha256sums=('SKIP')
 validpgpkeys=()
 
@@ -42,7 +42,7 @@ package() {
 	install -Dm644 "./assets/images/wikiLYNX_logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/wikiLYNX_logo.svg"
 
 	install -Dm644  "../docs/desktop/wikilynx.desktop" "${pkgdir}/usr/share/applications/wikilynx.desktop"
-	install -Dm644  "../docs/desktop/org.dawn.wikilynx.appdata.xml" "${pkgdir}/usr/share/metainfo/org.dawn.wikilynx.appdata.xml"
+	install -Dm644  "../docs/desktop/wikilynx.appdata.xml" "${pkgdir}/usr/share/metainfo/wikilynx.appdata.xml"
 	install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/wikilynx/LICENSE"
 	install -Dm644 "../COPYING" "${pkgdir}/usr/share/licenses/wikilynx/COPYING"
 	install -Dm644 "../COPYING.QtWebEngine" "${pkgdir}/usr/share/licenses/wikilynx/COPYING.QtWebEngine"
