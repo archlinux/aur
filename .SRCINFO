@@ -1,12 +1,11 @@
 pkgbase = espeak-ng-mbrola
-	pkgdesc = Connection layer between Espeak-NG and Mbrola
+	pkgdesc = Support files to use Mbrola voices in Espeak-NG
 	pkgver = 1.52.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/espeak-ng/espeak-ng
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = espeak-ng
-	depends = mbrola
 	optdepends = mbrola-voices-en1
 	optdepends = mbrola-voices-jp3
 	optdepends = mbrola-voices-us1

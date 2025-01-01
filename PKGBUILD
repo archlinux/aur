@@ -5,14 +5,13 @@
 
 pkgname=espeak-ng-mbrola
 pkgver=1.52.0
-pkgrel=1
-pkgdesc='Connection layer between Espeak-NG and Mbrola'
+pkgrel=2
+pkgdesc='Support files to use Mbrola voices in Espeak-NG'
 url=https://github.com/espeak-ng/espeak-ng
 arch=(x86_64)
 license=(GPL-3.0-or-later)
 depends=(
   espeak-ng
-  mbrola
 )
 checkdepends=()
 makedepends=()
