@@ -3,7 +3,7 @@
 
 pkgname=wechat-bin
 pkgver=4.0.1.11
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="微信是一种生活方式. This is a repackage of WeChat."
 arch=('x86_64' 'aarch64' 'loong64')
@@ -102,4 +102,6 @@ function package() {
 	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
 	echo "https://www.wechat.com/us/service_terms.html" \
 		>"${pkgdir}/usr/share/licenses/${pkgname}/ToS.txt"
+	sed -i 's|/usr/bin/wechat|/opt/wechat/wechat|g' \
+		"${pkgdir}/usr/share/applications"/*.desktop
 }

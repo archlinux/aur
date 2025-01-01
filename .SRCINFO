@@ -1,7 +1,7 @@
 pkgbase = wechat-bin
 	pkgdesc = 微信是一种生活方式. This is a repackage of WeChat.
 	pkgver = 4.0.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://weixin.qq.com/
 	arch = x86_64
 	arch = aarch64
