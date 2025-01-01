@@ -3,7 +3,7 @@
 
 pkgname=xemu
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=(x86_64)
 url=https://xemu.app/
@@ -12,6 +12,7 @@ depends=(
 	dtc
 	gcc-libs
 	glibc
+	glslang
 	hicolor-icon-theme
 	libcpp-httplib.so
 	sdl2
@@ -34,6 +35,8 @@ makedepends=(
 	pixman
 	python-yaml
 	'tomlplusplus>=3.1'
+	vulkan-headers
+	vulkan-icd-loader
 	'xxhash>=0.8'
 )
 optdepends=(
@@ -59,7 +62,7 @@ b2sums=('f3823e7c43f94845d1bfb8927448919d8ea33dbdd0bae5c35f2e50ce34c39000aa8967f
         'SKIP'
         'SKIP'
         'SKIP'
-        '6b072b31fe7fb5b81f0e681104ab7351e81e7b2e02f91c5926b32af4e260c636ad2834bafd8818528b5ebe2cb9912012c1c18f3c87b4312507544a6a17c728d3')
+        '1f902d49be48381ba41c033d1e0dfea9783056da8f365c5101729f699ed7921fb2f09d413c00ae417bf1ed97a6722e179ab139b5e5f8b560dc461dba67ceb6cb')
 
 prepare() {
 	cd $pkgname
