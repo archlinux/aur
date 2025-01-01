@@ -3,12 +3,12 @@
 # Contributor: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
 license=('GPL-3.0-only' 'MIT')
-makedepends=('git' 'cmake' 'ninja' 'clang' 'qt6-tools')
+makedepends=('git' 'cmake' 'ninja' 'qt6-tools')
 depends=('qt6-base' 'qt6-webengine' 'qt6-declarative' 'qt6-svg' 'libzip' 'protobuf' 'libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'mcpelauncher-linux' 'zlib' 'curl' 'glibc' 'qt6-webchannel' 'gcc-libs' 'openssl'
 	 'hicolor-icon-theme' 'abseil-cpp')
 optdepends=('mcpelauncher-msa-ui-qt: Microsoft authentication for version before 1.16.1X')
@@ -51,10 +51,6 @@ build() {
 
   cmake -B build -S "$pkgname-manifest" \
   -G Ninja \
-  -DCMAKE_C_COMPILER=clang \
-  -DCMAKE_CXX_COMPILER=clang++ \
-  -DCMAKE_C_FLAGS="$CFLAGS -flto=thin -fclang-abi-compat=17" \
-  -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=thin -fclang-abi-compat=17" \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DCMAKE_BUILD_TYPE=None \
   -Wno-dev
