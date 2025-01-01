@@ -2,7 +2,7 @@
 
 _themename=urbanlifestyle
 pkgname=${_themename}-sddm-theme
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='A simple and colorful SDDM theme'
 arch=('any')
@@ -21,7 +21,7 @@ source=(
 )
 
 sha512sums=(
-	'4be8cf3bf95f531e0975eeb765748e0824cb4064b391283b5d50e850d0be9e6a56a19cf188646962bee58e078c5a24fa9315d20a915c3bbd889e7137d20c105c'
+	'c4eae4d9694647da6cfdce97696526f3c0d09b97dd52d03475426567d86aaf59b83d203d54d4f056335bd2555ada97280ef3c177199a25c15f1bfdb041b6bd61'
 )
 
 package() {
