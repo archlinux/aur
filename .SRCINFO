@@ -1,6 +1,6 @@
 pkgbase = kelvpn
-	pkgdesc = KelVPN is a decentralized quantum-secure VPN service. It provides the highest level of protection for your network connection, including quantum threat protection.
-	pkgver = 7.7.73
+	pkgdesc = Decentralized quantum-secure VPN service. It provides the highest level of protection for your network connection, including quantum threat protection.
+	pkgver = 7.7.77
 	pkgrel = 1
 	url = https://kelvpn.com/
 	install = kelvpn.install
@@ -22,7 +22,7 @@ pkgbase = kelvpn
 	depends = net-tools
 	provides = kelvpn
 	options = !debug
-	source = https://pub.kelvpn.com/linux/master/KelVPN-7.7-73-amd64.deb
+	source = https://pub.kelvpn.com/linux/master/KelVPN-7.7-77-amd64.deb
 	sha256sums = b719b5a6db926d15038693d060bd1373154982176be11e5062fc71b98a9df24e
 
 pkgname = kelvpn

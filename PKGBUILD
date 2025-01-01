@@ -1,13 +1,13 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=kelvpn
-pkgver=7.7.73
+pkgver=7.7.77
 pkgrel=1
-pkgdesc="KelVPN is a decentralized quantum-secure VPN service. It provides the highest level of protection for your network connection, including quantum threat protection."
+pkgdesc="Decentralized quantum-secure VPN service. It provides the highest level of protection for your network connection, including quantum threat protection."
 arch=('x86_64')
 url="https://kelvpn.com/"
 license=('custom')
 provides=("kelvpn")
-source=(https://pub.kelvpn.com/linux/master/KelVPN-7.7-73-amd64.deb)
+source=(https://pub.kelvpn.com/linux/master/KelVPN-7.7-77-amd64.deb)
 sha256sums=('b719b5a6db926d15038693d060bd1373154982176be11e5062fc71b98a9df24e')
 install=$pkgname.install
 options=(!debug)
