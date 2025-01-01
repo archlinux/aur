@@ -1,9 +1,8 @@
 pkgbase = lv2-git
 	pkgdesc = Plugin standard for audio systems (git version)
-	pkgver = 1.18.8.r1419.bd69ed7
+	pkgver = 1.18.11.r1503.79c318c
 	pkgrel = 1
-	url = http://lv2plug.in/
-	arch = i686
+	url = https://lv2plug.in/
 	arch = x86_64
 	license = ISC
 	makedepends = asciidoc
@@ -11,6 +10,8 @@ pkgbase = lv2-git
 	makedepends = doxygen
 	makedepends = flake8
 	makedepends = git
+	makedepends = gtk2
+	makedepends = libsamplerate
 	makedepends = libsndfile
 	makedepends = meson
 	makedepends = pygmentize
@@ -22,16 +23,33 @@ pkgbase = lv2-git
 	makedepends = python-rdflib
 	makedepends = serd
 	makedepends = sord
-	optdepends = sord: for lv2_validate
-	optdepends = libsndfile: for eg-sampler.lv2
-	optdepends = python-lxml: for lv2specgen.py
-	optdepends = python-markdown: for lv2specgen.py
-	optdepends = python-pygments: for lv2specgen.py
-	optdepends = python-rdflib: for lv2specgen.py
-	provides = lv2
-	provides = lv2=1.18.8
-	conflicts = lv2
 	source = lv2::git+https://gitlab.com/lv2/lv2.git
 	sha256sums = SKIP
 
 pkgname = lv2-git
+	optdepends = lv2-docs: for developer documentation
+	optdepends = lv2-example-plugins: for example plugins
+	optdepends = python-lxml: for lv2specgen.py
+	optdepends = python-markdown: for lv2specgen.py
+	optdepends = python-pygments: for lv2specgen.py
+	optdepends = python-rdflib: for lv2specgen.py
+	optdepends = sord: for lv2_validate
+	provides = lv2
+	provides = lv2=1.18.11
+	conflicts = lv2
+
+pkgname = lv2-docs-git
+	pkgdesc = Plugin standard for audio systems (git version) - documentation
+	provides = lv2-docs
+	conflicts = lv2-docs
+
+pkgname = lv2-example-plugins-git
+	pkgdesc = Plugin standard for audio systems (git version) - example plugins
+	groups = lv2-plugins
+	groups = pro-audio
+	depends = libsamplerate
+	depends = libsndfile
+	optdepends = gtk2: for eg-sampler.lv2 and eg-scope.lv2
+	optdepends = lv2-host: for loading the LV2 plugins
+	provides = lv2-example-plugins
+	conflicts = lv2-example-plugins

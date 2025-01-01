@@ -1,9 +1,6 @@
-autowaf/
 lv2/
 src/
 pkg/
-lv2-git-*.pkg.tar.xz
-lv2-git-*.pkg.tar.zst
-lv2-git-*.src.tar.gz
+lv2*-git-*.pkg.tar.*
 .AURINFO
 
