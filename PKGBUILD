@@ -1,14 +1,15 @@
 # Maintainer: marzeq <marzeqmarzeq at gmail dot com>
 
 pkgname=mconf
-pkgver=1.1.0
-pkgrel=2
+pkgver=24.1_1
+local gittag="${pkgver//_/-}"
+pkgrel=1
 pkgdesc="Parser for the mconf configuration language"
 arch=("x86_64" "aarch64")
 url="https://github.com/marzeq/mconf"
 license=("WTFPL")
 depends=("go" "git")
-source=("git+https://github.com/marzeq/mconf.git#tag=v$pkgver")
+source=("git+https://github.com/marzeq/mconf.git#tag=v$gittag")
 md5sums=("SKIP")
 provides=("mconf")
 conflicts=("mconf-bin")

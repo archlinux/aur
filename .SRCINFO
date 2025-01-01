@@ -1,7 +1,7 @@
 pkgbase = mconf
 	pkgdesc = Parser for the mconf configuration language
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 24.1_1
+	pkgrel = 1
 	url = https://github.com/marzeq/mconf
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = mconf
 	depends = git
 	provides = mconf
 	conflicts = mconf-bin
-	source = git+https://github.com/marzeq/mconf.git#tag=v1.1.0
+	source = git+https://github.com/marzeq/mconf.git#tag=v24.1-1
 	md5sums = SKIP
 
 pkgname = mconf
