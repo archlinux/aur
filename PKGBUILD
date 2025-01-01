@@ -23,7 +23,7 @@
 # -b release", as documented in btdu's README.
 
 pkgname=btdu
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='sampling disk usage profiler for btrfs'
 arch=('aarch64' 'i686' 'x86_64')
@@ -34,8 +34,8 @@ _d_compiler_spec='d-compiler>=2.97.0'
 makedepends=("$_d_compiler_spec" 'dub' 'dtools')
 
 # These should match dub.selections.json from the btdu repository:
-_d_ae_ver=0.0.3236
-_d_btrfs_ver=0.0.18
+_d_ae_ver=0.0.3461
+_d_btrfs_ver=0.0.21
 _d_ncurses_ver=1.0.0
 _d_emsi_containers_ver=0.9.0
 
@@ -45,9 +45,9 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/CyberShadow/${pkgname}/a
 		ncurses-${_d_ncurses_ver}.tar.gz::https://github.com/D-Programming-Deimos/ncurses/archive/v${_d_ncurses_ver}.tar.gz
 		emsi_containers-${_d_emsi_containers_ver}.tar.gz::https://github.com/dlang-community/containers/archive/v${_d_emsi_containers_ver}.tar.gz
 	   )
-sha256sums=('566269f365811f6db53280fc5476a7fcf34791396ee4e090c150af4280b35ba5'
-            '5ea3f0d9d2d13012ce6a1ee1b52d9fdff9dfb1d5cc7ee5d1b04cab1947ed4d36'
-            '32af4891d93c7898b0596eefb8297b88d3ed5c14c84a5951943b7b54c7599dbd'
+sha256sums=('cbab7a250c8ba8d3ec6c49062ee7de4d0888e88e4959df349bc991aa9948e326'
+            '8141af9830c30ad58933a022c4b8b84e3c1f476343abaa552cb2ce0fa72b537a'
+            '343bef0cd60f4708fdab721a2aff003d0921267cc99ebfb778e93793433e3970'
             'b5db677b75ebef7a1365ca4ef768f7344a2bc8d07ec223a2ada162f185d0d9c6'
             '5e256b84bbdbd2bd625cba0472ea27a1fde6d673d37a85fe971a20d52874acaa')
 
