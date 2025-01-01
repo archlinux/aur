@@ -5,9 +5,9 @@
 # - patches to fix compilation issues and crashes
 _pkgname=rtorrent
 pkgname=rtorrent-ps
-_pkgver=0.15.0
+_pkgver=0.15.1
 pkgver=1.1.r71.gee296b1
-pkgrel=3
+pkgrel=4
 pkgdesc='Extended rTorrent distribution with UI enhancements, colorization, and some added features'
 url='https://github.com/pyroscope/rtorrent-ps'
 license=('GPL-2.0-only')
@@ -33,7 +33,7 @@ source=("$_pkgname-$_pkgver.tar.gz::https://github.com/rakshasa/$_pkgname/archiv
         'ui_pyroscope.cc'
         'ui_pyroscope.h'
         'ui_pyroscope.patch')
-sha256sums=('9a47f284616c4b3867c787b78f98de25730e7506909824a951399b612d17314a'
+sha256sums=('13a179a6d817951055ebc12d7335ae2a5500ce6939c0bfcfb8cd54174eaf73e7'
             '6099613267893a66ef7d933bb284f011156823a12c2c7003968090e4458675d9'
             'bad5ef67100e18866cf80bd7dbd4e36a19468c7825129eb494e156fbc2e82c7f'
             '6984b56fa923edb5226b03f49eb6849d8c046e5221e7a1a86b2d68e9b1186ce5'
