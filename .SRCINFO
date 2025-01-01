@@ -1,6 +1,6 @@
-pkgbase = counter-strike-2d
+pkgbase = counter-strike-2d-wine
 	pkgdesc = More than just a freeware clone of the well known game Counter-Strike
-	pkgver = 1.0.1.3
+	pkgver = 1.0.1.4
 	pkgrel = 1
 	url = https://www.unrealsoftware.de
 	install = cs2d.install
@@ -8,10 +8,10 @@ pkgbase = counter-strike-2d
 	arch = x86_64
 	license = custom
 	makedepends = curl
-	depends = lib32-freetype2
-	depends = lib32-libtxc_dxtn
-	depends = lib32-glu
-	optdepends = lib32-openal: audio output
+	depends = wine
+	optdepends = lib32-nvidia-utils: video acceleration for NVIDIA GPUs
+	optdepends = lib32-mesa: video acceleration
+	conflicts = counter-strike-2d
 	options = emptydirs
 	backup = opt/cs2d/sys/autobuy.cfg
 	backup = opt/cs2d/sys/autoexec.cfg
@@ -29,11 +29,11 @@ pkgbase = counter-strike-2d
 	backup = opt/cs2d/sys/bans.lst
 	backup = opt/cs2d/sys/serverinfo.txt
 	backup = opt/cs2d/sys/servertransfer.lst
-	source = cs2d_1013_linux.zip::http://www.unrealsoftware.de/get.php?get=cs2d_1013_linux.zip&p=1&cid=12675
+	source = cs2d_1014_win.zip::https://www.unrealsoftware.de/get.php?get=cs2d_1014_win.zip&p=1&cid=1232
 	source = cs2d.desktop
 	source = cs2d.png
-	sha512sums = 113c0b890df01c14934db8bc860c0c3c0f040ce88fc27b88766c0c89d1d6a1a410f46e81a5ff1c7d71d08da8b2dd0e865e51ca110dcf3f954ca2cd7fd528a219
-	sha512sums = d7d452fa4a2310ec2ac68c2c500e2a66f3a6df2291ad6615f9a957cbc6cb4ccd7f00f9578ccebeb1367aa21205e3743b16463d841c63c73f9b0bfbbf37bd6992
-	sha512sums = dfe79598af30797195fad38461119f7d611021577a1e1e624567adeceade8f9bc4c97cd110515e492d612d09b740f78faf7dce55448f64a9a698e7748f121a80
+	sha512sums = c89b74392a5da2a007509c0a72a0c6a47a6e79d6819fb62ec04e597d6abc03d7146900c149dc6b4e0b535f2d28e400371331cdbaad4c7b1d80f013660c0c8547
+	sha512sums = b31b14cb97fcfef718dd2e15fe3d50cecbf875d1d71c794f0568491e497ddc7efad56749d5d4fc34ec1c645e670b9a6a72e4f893b50f0b5e01d5e3baeb0803db
+	sha512sums = 0c7c91ad4050543635e56ce0ecd9b55e5dc917c87655c69e0dc7e4252655223b7346106f54f2a550e09952cb0ec8afaedfab8dd3b18324b545485ba4fd4b07a4
 
-pkgname = counter-strike-2d
+pkgname = counter-strike-2d-wine
