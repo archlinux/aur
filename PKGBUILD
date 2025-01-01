@@ -4,7 +4,7 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 
 pkgname=howl-git
-pkgver=0.6.r2.g9fe141e5
+pkgver=0.6
 pkgrel=1
 pkgdesc='General purpose, light-weight customizable editor'
 arch=(i686 x86_64)
