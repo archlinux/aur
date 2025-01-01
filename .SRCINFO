@@ -11,7 +11,7 @@ pkgbase = python-vllm-cuda
 	makedepends = cuda-tools
 	depends = python-installer
 	depends = python
-	depends = pytorch
+	depends = python-pytorch
 	provides = python-vllm
 	conflicts = python-vllm
 	source = git+https://github.com/vllm-project/vllm.git#tag=v0.6.5

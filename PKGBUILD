@@ -10,7 +10,7 @@ url='https://github.com/vllm-project/vllm'
 provides=(python-vllm)
 conflicts=(python-vllm)
 license=(Apache-2.0)
-depends=(python-installer python pytorch)
+depends=(python-installer python python-pytorch)
 makedepends=(git gcc13 cuda cuda-tools) #won't build without detecting cuda - need to investiogate further
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
 sha256sums=('5c8228773ae38ddda2d38f5fc68a259856cab4891766792d859cdaf225e63bc5')
