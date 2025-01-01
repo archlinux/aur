@@ -2,11 +2,11 @@
 
 pkgname=comms
 pkgver=5.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc='COMMS is the C++(11) headers only library, for creating communication protocols.'
 arch=('any')
 url='https://github.com/commschamp/comms'
-license=('MIT')
+license=('MPL-2.0')
 makedepends=('cmake' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/commschamp/comms/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('838b4c90a2c9c6374f0755a694057f60b53898dfdd100d16b0e81d308f6a62f3af9e680307b1782290d71c7c0d067fdf5af364e58f30907246b0fcad962e4ce8')
@@ -30,5 +30,5 @@ build() {
 package() {
   make -C build DESTDIR="$pkgdir" install
   # license
-  # install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" "KDBindings-$pkgver/LICENSES/MIT.txt"
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" "comms-$pkgver/LICENSE"
 }
