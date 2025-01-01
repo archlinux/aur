@@ -1,11 +1,11 @@
 # Maintainer: DeltaCopy <7x0bb03yq@mozmail.com>
-# Description: Uses the precompiled Archlinux build asset from https://github.com/Bali10050/Darkly/releases
+# Description: Uses the precompiled Archlinux release asset from https://github.com/Bali10050/Darkly/releases
 
 # basic info
 pkgname="darkly-bin"
-pkgver=0.5.13
+pkgver=0.5.14
 pkgrel=1
-pkgdesc="Bali10050's fork of Lightly (A modern style for qt applications)"
+pkgdesc="Fork of Lightly (A modern style for Qt applications)"
 url="https://github.com/Bali10050/darkly"
 arch=('x86_64' 'aarch64')
 license=("GPL-2.0-or-later")
@@ -18,7 +18,7 @@ source=(
 )
 
 sha256sums=(
-  'ee3eac7b65668f0b09ead51f9f0ef4f9a7661bcccf8652949f28ef121adbd40b'
+  '63479bb39fde87bc8d458af3a0edb00eae04309dff6a5dbbe5ba39f89992eab4'
 )
 
 # KF6/Qt6

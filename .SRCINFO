@@ -1,6 +1,6 @@
 pkgbase = darkly-bin
-	pkgdesc = Bali10050's fork of Lightly (A modern style for qt applications)
-	pkgver = 0.5.13
+	pkgdesc = Fork of Lightly (A modern style for Qt applications)
+	pkgver = 0.5.14
 	pkgrel = 1
 	url = https://github.com/Bali10050/darkly
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = darkly-bin
 	conflicts = darkly
 	options = !emptydirs
 	options = !debug
-	source = https://github.com/Bali10050/darkly/releases/download/v0.5.13/darkly-0.5.13-x86_64.pkg.zst
-	sha256sums = ee3eac7b65668f0b09ead51f9f0ef4f9a7661bcccf8652949f28ef121adbd40b
+	source = https://github.com/Bali10050/darkly/releases/download/v0.5.14/darkly-0.5.14-x86_64.pkg.zst
+	sha256sums = 63479bb39fde87bc8d458af3a0edb00eae04309dff6a5dbbe5ba39f89992eab4
 
 pkgname = darkly-bin
