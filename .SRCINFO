@@ -1,6 +1,6 @@
 pkgbase = jan-appimage
 	pkgdesc = Turn your computer into an AI computer
-	pkgver = 0.5.11
+	pkgver = 0.5.12
 	pkgrel = 1
 	url = https://jan.ai/
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = jan-appimage
 	depends = hicolor-icon-theme
 	depends = fuse2
 	provides = jan
-	noextract = jan-appimage-0.5.11.AppImage
+	noextract = jan-appimage-0.5.12.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = jan-appimage-0.5.11.AppImage::https://github.com/janhq/jan/releases/download/v0.5.11/jan-linux-x86_64-0.5.11.AppImage
-	sha512sums_x86_64 = 177c197ed081f33b5a3a0e981eead76b8920eec4c9f61c520cc5fbbb32032173342ed00fff4cd2d4d250cb3ae7eef3cae46a805ab4048ccc1a17ed5f4951459a
+	source_x86_64 = jan-appimage-0.5.12.AppImage::https://github.com/janhq/jan/releases/download/v0.5.12/jan-linux-x86_64-0.5.12.AppImage
+	sha512sums_x86_64 = bd9f9e5a6b30e36e32d1a92f972a9b4ef9dcf1735ba8ada09299e97dbf42b5b45a2a6d32f68faee44a5df243d1552a581e9b40104570f55f7173f63844380b4a
 
 pkgname = jan-appimage
