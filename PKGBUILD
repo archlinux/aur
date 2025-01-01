@@ -1,17 +1,17 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 # Contributor: Max Niederman <max@maxniederman.com>
 
 _pkgname="ttyper"
 pkgname="${_pkgname}-git"
-pkgver=1.5.0.r6.ga67b9f9
+pkgver=1.6.0.r2.g6d34398
 pkgrel=1
-pkgdesc="Terminal-based typing test."
-arch=('any')
+pkgdesc="Terminal-based typing test"
+arch=('x86_64' 'aarch64' 'i686' 'armv7h')
 url="https://github.com/max-niederman/${_pkgname}"
 license=("MIT")
-depends=('glibc' 'gcc-libs')
-makedepends=('git' 'cargo')
+depends=('gcc-libs' 'glibc')
+makedepends=('cargo' 'git')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
@@ -19,7 +19,7 @@ source=("${_pkgsrc}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgsrc}"
+  cd "${srcdir}/${_pkgsrc}"
   git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -44,7 +44,7 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
+  install -vDm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
 }
