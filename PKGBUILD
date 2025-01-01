@@ -12,14 +12,13 @@ pkgname='ssl-mgr'
 pkgdesc='Manage (re)new certificates and handle DANE TLSA key rollover'
 _gitname='ssl-mgr'
 
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
 url="https://github.com/gene-git/ssl-mgr"
 
 arch=(any)
 license=(MIT)
-# tomli only needed for python < 3.11
-depends=('python>3.10' 'python-dnspython' 'python-tomli-w' 'python-cryptography' 
+depends=('python>=3.13' 'python-dnspython' 'python-tomli-w' 'python-cryptography' 
         'python-dateutil' 'lockmgr' 'certbot')
 optdepends=('dns_tools: dnssec and dns server manager')
 
@@ -29,6 +28,16 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatch' 'rs
             )
 
 _mkpkg_depends=('python>minor')
+
+#
+# Verifying Signed Tag
+#   Add arch@sapience.com key to keyring then use the source line with "?signed"
+#   Key available via keys/pgp, WKD or dowload from https://www.sapience.com/tech
+#   Note that upstream release procedure requires every tagged release have new tag
+#
+validpgpkeys=( '7CCA1BA66669F3273DB52678E5B81343AB9809E1')   # Gene C
+
+#source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}?signed")
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
 
