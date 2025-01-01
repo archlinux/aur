@@ -22,11 +22,15 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo build --frozen --release
 }
 
 check() {
   cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo test --frozen --release
 }
 
