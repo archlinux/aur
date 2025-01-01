@@ -1,6 +1,6 @@
 pkgbase = unciv-bin
 	pkgdesc = Open-source remake of Civilization V
-	pkgver = 4.14.18_apk_regular
+	pkgver = 4.14.19
 	pkgrel = 0
 	url = https://github.com/yairm210/Unciv
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = unciv-bin
 	depends = xorg-xrandr
 	provides = unciv
 	conflicts = unciv
-	noextract = Unciv-4.14.18-apk-regular.jar
-	source = Unciv-4.14.18-apk-regular.jar::https://github.com/yairm210/Unciv/releases/download/4.14.18-apk-regular/Unciv.jar
-	source = Unciv-4.14.18-apk-regular.png::https://raw.githubusercontent.com/yairm210/Unciv/4.14.18-apk-regular/extraImages/Icons/Unciv%20icon%20v5.png
-	source = Unciv-4.14.18-apk-regular.zip::https://github.com/yairm210/Unciv/releases/download/4.14.18-apk-regular/linuxFilesForJar.zip
-	md5sums = 9bd1db06b134dbb3e3c934b8c84ec776
+	noextract = Unciv-4.14.19.jar
+	source = Unciv-4.14.19.jar::https://github.com/yairm210/Unciv/releases/download/4.14.19/Unciv.jar
+	source = Unciv-4.14.19.png::https://raw.githubusercontent.com/yairm210/Unciv/4.14.19/extraImages/Icons/Unciv%20icon%20v5.png
+	source = Unciv-4.14.19.zip::https://github.com/yairm210/Unciv/releases/download/4.14.19/linuxFilesForJar.zip
+	md5sums = b4346b0af6f65bde3a31090d840cbc68
 	md5sums = c3f79bbc7e80620b3cdc4f90f21f4d68
-	md5sums = 94d7be51244baabcb233be53b11bc644
+	md5sums = b429424b258ec436381f391c45cc8eba
 
 pkgname = unciv-bin
