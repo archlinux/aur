@@ -33,18 +33,9 @@ validpgpkeys=('F7774FB1AD074A7E8C8767EA91738F73E1B768A0' '71C2CC22B1C4602927D2F3
 _dldir="${pkgver%.*}"
 source=("http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz"
 	"http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz.sig"
-	broken-file.patch
 )
 sha256sums=('846a1cdf817b780bc78dd407c5caae349869c292f908b7efd830592959a9729c'
-            'SKIP'
-            '7150a8b5849ef48c7e60a93cd461ee658df02a4184c182df305b2cd16371473e')
-
-prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-
-	# https://github.com/file/file/pull/137
-	patch -p1 < "${srcdir}/broken-file.patch"
-}
+            'SKIP')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

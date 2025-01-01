@@ -23,11 +23,9 @@ pkgbase = nbdkit
 	optdepends = libselinux
 	source = http://download.libguestfs.org/nbdkit/1.40-stable/nbdkit-1.40.4.tar.gz
 	source = http://download.libguestfs.org/nbdkit/1.40-stable/nbdkit-1.40.4.tar.gz.sig
-	source = broken-file.patch
 	validpgpkeys = F7774FB1AD074A7E8C8767EA91738F73E1B768A0
 	validpgpkeys = 71C2CC22B1C4602927D2F3AAA7A16B4A2527436A
 	sha256sums = 846a1cdf817b780bc78dd407c5caae349869c292f908b7efd830592959a9729c
 	sha256sums = SKIP
-	sha256sums = 7150a8b5849ef48c7e60a93cd461ee658df02a4184c182df305b2cd16371473e
 
 pkgname = nbdkit
