@@ -2,11 +2,11 @@
 
 pkgname=python-hnswlib
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Header-only C++/python library for fast approximate nearest neighbors"
 url="https://github.com/nmslib/hnswlib"
 arch=('x86_64')
-license=('Apache')
+license=('Apache-2.0')
 depends=('python-numpy')
 makedepends=('python-setuptools' 'pybind11'
              'python-build' 'python-installer' 'python-wheel')
