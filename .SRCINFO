@@ -1,6 +1,6 @@
 pkgbase = hydownloader-systray-git
 	pkgdesc = Remote management GUI for hydownloader
-	pkgver = r136.b750130
+	pkgver = r140.a350429
 	pkgrel = 1
 	url = https://gitgud.io/thatfuckingbird/hydownloader-systray
 	arch = i686

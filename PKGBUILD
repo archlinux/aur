@@ -1,7 +1,7 @@
 # Maintainer: jakka <jakkadoujin at gmail dot com>
 
 pkgname=hydownloader-systray-git
-pkgver=r136.b750130
+pkgver=r140.a350429
 pkgrel=1
 pkgdesc="Remote management GUI for hydownloader"
 arch=('i686' 'x86_64')
