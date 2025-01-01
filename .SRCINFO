@@ -1,0 +1,14 @@
+pkgbase = fireworkrs
+	pkgdesc = Fireworks in your terminal!
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/crisidev/fireworkrs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = fireworkrs-0.2.1.tar.gz::https://github.com/crisidev/fireworkrs/archive/v0.2.1.tar.gz
+	sha256sums = bfca83278ba266d685c6fc3900fed0e847731a95c9c083d253dc3df4b475d8ac
+
+pkgname = fireworkrs
