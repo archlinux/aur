@@ -1,6 +1,6 @@
 pkgbase = mconf-bin
 	pkgdesc = Parser for the mconf configuration language
-	pkgver = 1.1.0
+	pkgver = 24.1_1
 	pkgrel = 2
 	url = https://github.com/marzeq/mconf
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = mconf-bin
 	depends = glibc
 	provides = mconf
 	conflicts = mconf
-	source_x86_64 = https://github.com/marzeq/mconf/releases/download/v1.1.0/mconf-linux-amd64
-	md5sums_x86_64 = 0877aa88ab42b75a5463760c1ea93d55
-	source_aarch64 = https://github.com/marzeq/mconf/releases/download/v1.1.0/mconf-linux-arm64
-	md5sums_aarch64 = 0374e2491b9cf3a4c2ecd5b93fd8af8a
+	source_x86_64 = https://github.com/marzeq/mconf/releases/download/v24.1-1/mconf-linux-amd64
+	md5sums_x86_64 = 45661c2244de0249732c87bfe0784840
+	source_aarch64 = https://github.com/marzeq/mconf/releases/download/v24.1-1/mconf-linux-arm64
+	md5sums_aarch64 = f0953a518a3b736ce5512546f65e1daa
 
 pkgname = mconf-bin
