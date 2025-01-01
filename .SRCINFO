@@ -15,6 +15,7 @@ pkgbase = pay-respects-git
 	makedepends = pkg-config
 	optdepends = curl: AI requests
 	provides = pay-respects
+	conflicts = pay-respects
 	source = pay-respects-git::git+https://github.com/iffse/pay-respects
 	sha1sums = SKIP
 

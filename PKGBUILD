@@ -9,6 +9,7 @@ url="https://github.com/iffse/pay-respects"
 license=('AGPL-3.0-or-later')
 provides=('pay-respects')
 install="$_pkgname.install"
+conflicts=('pay-respects')
 makedepends=('cargo' 'git' 'openssl' 'pkg-config')
 optdepends=(
 	'curl: AI requests'
