@@ -1,6 +1,6 @@
 pkgbase = hydownloader-git
 	pkgdesc = Alternative download system for Hydrus
-	pkgver = r559.d59967b
+	pkgver = r619.0f91dbc
 	pkgrel = 1
 	url = https://gitgud.io/thatfuckingbird/hydownloader
 	arch = x86_64
@@ -13,15 +13,13 @@ pkgbase = hydownloader-git
 	depends = yt-dlp
 	depends = python-hydrus
 	depends = python-dateutil
+	depends = python-requests
 	depends = python-brotli
-	depends = python-saucenao
 	depends = gallery-dl
-	depends = python-opencv
-	depends = python-numpy
 	depends = python-pillow
 	optdepends = hydownloader-systray-git: Remote management GUI for hydownloader
 	optdepends = hydrus: Danbooru-like image tagging and searching system for the desktop
-	provides = hydownloader=r559.d59967b
+	provides = hydownloader=r619.0f91dbc
 	source = git+https://gitgud.io/thatfuckingbird/hydownloader.git
 	sha512sums = SKIP
 

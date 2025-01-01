@@ -2,7 +2,7 @@
 
 pkgname=hydownloader-git
 _name=hydownloader
-pkgver=r559.d59967b
+pkgver=r619.0f91dbc
 pkgrel=1
 pkgdesc="Alternative download system for Hydrus"
 arch=(x86_64 aarch64)
@@ -15,11 +15,9 @@ depends=(
   yt-dlp
   python-hydrus
   python-dateutil
+  python-requests
   python-brotli
-  python-saucenao
   gallery-dl
-  python-opencv
-  python-numpy
   python-pillow
 )
 makedepends=(python-poetry)
