@@ -1,6 +1,4 @@
-/pkg
-/src
-*.AppImage
-*.tar.*
-/squashfs-root
-.venv
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
