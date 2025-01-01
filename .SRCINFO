@@ -1,7 +1,7 @@
 pkgbase = devpod-bin
 	pkgdesc = Codespaces but open-source, client-only, and unopinionated - unofficial package
-	pkgver = 0.6.1
-	pkgrel = 2
+	pkgver = 0.6.6
+	pkgrel = 1
 	url = https://github.com/loft-sh/devpod
 	arch = x86_64
 	license = MPL-2.0
@@ -13,13 +13,14 @@ pkgbase = devpod-bin
 	depends = pango
 	depends = hicolor-icon-theme
 	depends = gcc-libs
-	depends = libsoup
+	depends = libsoup3
 	depends = glibc
+	depends = libayatana-appindicator
 	provides = devpod
 	provides = devpod-cli
 	conflicts = devpod
 	options = !strip
-	source = devpod-bin-0.6.1.tar.gz::https://github.com/loft-sh/devpod/releases/download/v0.6.1/DevPod_linux_x86_64.tar.gz
-	sha256sums = 0d4bea15f142aad8e7b89263d1d399785bf811a96dbf4a6324b6900a620328f9
+	source = devpod-bin-0.6.6.tar.gz::https://github.com/loft-sh/devpod/releases/download/v0.6.6/DevPod_linux_x86_64.tar.gz
+	sha256sums = f1eeba0d600630f17ed606e7d276f9e654b39d2cd8af3716e3983a3734734ef5
 
 pkgname = devpod-bin
