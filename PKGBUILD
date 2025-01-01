@@ -1,6 +1,7 @@
+# Maintainer: TwoFinger
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
 
 pkgname=howl-git
 pkgver=0.6.r2.g9fe141e5
