@@ -1,6 +1,6 @@
 pkgbase = linux-pf
 	pkgdesc = pf-kernel
-	pkgver = 6.12.pf2
+	pkgver = 6.12.pf3
 	pkgrel = 1
 	url = https://pfkernel.natalenko.name
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = linux-pf
 	makedepends = xz
 	options = !debug
 	options = !strip
-	source = https://codeberg.org/pf-kernel/linux/archive/66564e8d72e54aea5e06bcb57369744673cb34a2.tar.gz
+	source = https://codeberg.org/pf-kernel/linux/archive/d079a58f9b0cfe17b3defcd25cb7d2da3023b148.tar.gz
 	source = config
 	b2sums = SKIP
-	b2sums = 7dc8c12ac62b1d574c522ac1f905cdecad7b6a91284bfa526775f1388f356e93266670c96561008fd0246a56e3c76b00832b1ab8b4f25a42828dfa485d9011a8
+	b2sums = b78491ffe23281fb08e2c4ba4444c6b11f5b52e045ee0a6787ab8c0208d69990c837d336dcf128fe9e954c3ee332f576ef128bd43d0ae90d493543edb093baa1
 
 pkgname = linux-pf
 	pkgdesc = The pf-kernel and modules
