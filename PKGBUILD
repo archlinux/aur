@@ -10,7 +10,7 @@ pkgname='wg-client'
 pkgdesc='Wireguard linux client (command line and gui)'
 _gitname='wg-client'
 
-pkgver=6.4.0
+pkgver=6.5.0
 pkgrel=1
 url="https://github.com/gene-git/wg-client"
 
@@ -20,13 +20,22 @@ license=(MIT)
 install='wg-client.install'
 
 # To build docs uncommont sphinx/texlive
-depends=('python>3.10' 'python-pyqt6' 'hicolor-icon-theme' 'python-psutil' 
+depends=('python>=3.13' 'python-pyqt6' 'hicolor-icon-theme' 'python-psutil' 
          'python-netifaces' 'libcap' 'python-pynotify' 'openssl>=3.0')
 makedepends=('git' 'python-build' 'python-wheel'  'python-installer' 'python-hatch' 'rsync'
              #'python-sphinx' 'python-myst-parser' 'texlive-latexextra'
             )
 
 _mkpkg_depends=('python>minor')
+#
+# Verifying Signed Tag
+#   Add arch@sapience.com key to keyring then use the source line with "?signed"
+#   Key available via keys/pgp, WKD or dowload from https://www.sapience.com/tech
+#   Note that upstream release procedure requires every tagged release have new tag
+#
+validpgpkeys=( '7CCA1BA66669F3273DB52678E5B81343AB9809E1')   # Gene C
+
+#source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}?signed")
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
 
