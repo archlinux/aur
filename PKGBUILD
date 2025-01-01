@@ -3,7 +3,7 @@
 
 pkgname='golangci-lint'
 pkgver=1.63.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast linters runner for Go.'
 url='https://golangci.com'
 arch=('aarch64' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL-3.0')
 provides=('golangci-lint')
 conflicts=('golangci-lint')
 makedepends=('go' 'git')
-source=("${pkgname}_${pkgver}.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v1.63.0/golangci-lint-1.63.0-source.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v1.63.0/golangci-lint-1.63.0-source.tar.gz")
 sha256sums=('7560b7380a47f60cd153afb08cfea42957f1725a34e4b20928ac578e4ece8156')
 
 build() {
@@ -30,8 +30,6 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
 
-  cd "$pkgname-$pkgver"
-
   go build -o "$pkgname" -ldflags="${_flags[*]}" ./cmd/"$pkgname"
   ./"$pkgname" completion bash > completion.bash
   ./"$pkgname" completion zsh > completion.zsh
@@ -39,7 +37,6 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
   install -Dm755 "$pkgname" -t "$pkgdir"/usr/bin
   install -Dm644 completion.bash "$pkgdir"/usr/share/bash-completion/completions/"$pkgname"
   install -Dm644 completion.zsh "$pkgdir"/usr/share/zsh/site-functions/_"$pkgname"
