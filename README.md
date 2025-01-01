@@ -22,7 +22,6 @@ sudo pacman -U obs-studio-31.0.0-2-x86_64.pkg.tar.zst
 ## Installation with yay
 
 ```
-#yay -S qrcodegencpp-cmake
 yay -S obs-studio-with-websockets
 ```
 
