@@ -9,7 +9,7 @@ pkgdesc='Enhanced wiki and issue tracking system for software development projec
 arch=('any')
 url="http://trac.edgewall.org/"
 license=('BSD-3-Clause')
-depends=(python python-jinja python-setuptools)
+depends=(python python-jinja python-multipart python-setuptools)
 makedepends=(python-babel)
 optdepends=('python-psycopg2: PostgreSQL database support'
             'python-pygments: Syntax highlighting'
