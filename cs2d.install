@@ -1,0 +1,17 @@
+
+post_install() {
+  lang=$(echo $LANG | cut -d_ -f1)
+
+  case "$lang" in
+    zh)
+      echo "您可以在 /opt/cs2d/sys/*.cfg 中更改所有设置。"
+      echo "您需要加入 games 组才能拥有写入权限。"
+      echo "例如执行 “sudo usermod -aG games 你的用户名”"
+      ;;
+    *)
+      echo "You can change all settings in '/opt/cs2d/sys/*.cfg'."
+      echo "And you have to be in the 'games' group to gain write access."
+      echo "For example, runs 'sudo usermod -aG games YourUserName'"
+      ;;
+  esac
+}

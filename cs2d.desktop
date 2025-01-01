@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Icon=cs2d.png
+Exec=cs2d
+Name=Counter-Strike 2D
+Name[zh_CN]=反恐精英 2D
+Comment=Multiplayer 2D FPS shooter
+Comment[zh_CN]=上帝视角的 2D 多人射击游戏
+Categories=Game;ArcadeGame;
+Terminal=false
+StartupNotify=false
