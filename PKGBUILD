@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc="A very simple kdump setup for Archlinux"
 url="https://github.com/adam900710/simple-kdump"
 source=("git+$url.git#tag=v${pkgver}?signed")
+depends=('systemd' 'makedumpfile')
 arch=('any')
 license=('MIT')
 provides=('simple-kdump')

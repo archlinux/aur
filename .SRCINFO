@@ -5,6 +5,8 @@ pkgbase = simple-kdump
 	url = https://github.com/adam900710/simple-kdump
 	arch = any
 	license = MIT
+	depends = systemd
+	depends = makedumpfile
 	provides = simple-kdump
 	source = git+https://github.com/adam900710/simple-kdump.git#tag=v0.5?signed
 	sha256sums = SKIP
