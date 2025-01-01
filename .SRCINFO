@@ -1,6 +1,6 @@
 pkgbase = alcom-beta-bin
 	pkgdesc = A fast open-source alternative of VRChat Creator Companion
-	pkgver = 1.0.0_rc.2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/vrc-get/vrc-get/tree/master/vrc-get-gui
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = alcom-beta-bin
 	depends = gtk3
 	provides = alcom
 	conflicts = alcom
-	source = https://github.com/vrc-get/vrc-get/releases/download/gui-v1.0.0-rc.2/alcom_1.0.0-rc.2_amd64.deb
+	source = https://github.com/vrc-get/vrc-get/releases/download/gui-v1.0.0/alcom_1.0.0_amd64.deb
 	source = alcom-url-handler.desktop
-	sha256sums = dfc15add5bce031457510d9616f1105a020920f131967beb22db7c582593e608
+	sha256sums = 3d113943b4c8140826ba6c5435ae13fca6f7a4d3b7a501567bd9c29cb5769f3c
 	sha256sums = fd04fca52cba5afce59f0d9b7d1f4318af99b433b635ee95dac8dd8054f3d74d
 
 pkgname = alcom-beta-bin
