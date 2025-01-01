@@ -4,10 +4,10 @@ pkgbase = docker-compose-cli
 	pkgrel = 1
 	url = https://github.com/docker/compose-cli
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = go
 	depends = docker
-	source = https://github.com/docker/compose-cli/archive/refs/tags/v1.0.32.tar.gz
+	source = docker-compose-cli-1.0.32.tar.gz::https://github.com/docker/compose-cli/archive/refs/tags/v1.0.32.tar.gz
 	sha256sums = 02d84445cbff3304e020c7672580f1607dd8c0c06e06ab1974ad6e5ce7557fe5
 
 pkgname = docker-compose-cli

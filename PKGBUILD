@@ -6,8 +6,8 @@ pkgrel=1
 pkgdesc="Easily run your Compose application to the cloud with compose-cli"
 arch=('x86_64')
 url="https://github.com/docker/compose-cli"
-license=(Apache)
-source=("https://github.com/docker/compose-cli/archive/refs/tags/v${pkgver}.tar.gz")
+license=(Apache-2.0)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/docker/compose-cli/archive/refs/tags/v${pkgver}.tar.gz")
 depends=('docker')
 makedepends=('go')
 sha256sums=('02d84445cbff3304e020c7672580f1607dd8c0c06e06ab1974ad6e5ce7557fe5')
@@ -34,12 +34,6 @@ build() {
 		-o build \
 		-ldflags="-X github.com/docker/compose-cli/internal.Version=${pkgver}" \
 		./cli/...
-}
-
-check() {
-	cd "compose-cli-$pkgver"
-
-#	go test ./...
 }
 
 package() {
