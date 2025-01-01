@@ -1,14 +1,14 @@
 # Maintainer: TabulateJarl8 <tabulatejarl8 at gmail.com>
 pkgname=squiid
-pkgver=1.1.3
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Advanced calculator written in Rust, featuring a terminal user interface supporting both RPN and algebraic input."
 arch=('any')
 url="https://gitlab.com/ImaginaryInfinity/squiid-calculator/squiid"
 license=('GPLv3')
-makedepends=('cargo' 'cmake')
+makedepends=('cargo')
 source=("https://gitlab.com/ImaginaryInfinity/squiid-calculator/squiid/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('ae03e3e483e2eaa33a656519e488332e0aac67c71444f49d95b158303bbae9f030b58b894724eeb30569340dbb0f87c93f9553b8af10406992cf01b48f4ac665')
+sha512sums=('1a2a1c1580a21bf497bc240c73b113e8e1624fa501cf5578d1c980555e6f8e30788488aa4f6cc438a94e9630edd26f668f64fb07a0c48fa3fe6fa04b34927686')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -20,13 +20,13 @@ build() {
 	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --all-features
+	cargo build --frozen --release
 }
 
 check() {
 	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen --all-features -p squiid -p squiid-engine -p squiid-parser
+	cargo test --frozen -p squiid -p squiid-engine -p squiid-parser
 }
 
 package() {
