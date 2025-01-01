@@ -8,7 +8,8 @@ url="https://gitlab.com/ImaginaryInfinity/squiid-calculator/squiid"
 license=('GPLv3')
 makedepends=('cargo')
 source=("https://gitlab.com/ImaginaryInfinity/squiid-calculator/squiid/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('1a2a1c1580a21bf497bc240c73b113e8e1624fa501cf5578d1c980555e6f8e30788488aa4f6cc438a94e9630edd26f668f64fb07a0c48fa3fe6fa04b34927686')
+sha512sums=('ba7477b8592c036d04b2487b49603fa9dd109a9175e801609dee557ddf39a6d3647ee4b47552665a2cca1b9b1b46c83e2a3d8f993d8306164c8d45c4ac19093c')
+options=(strip !debug)
 
 prepare() {
 	cd "$pkgname-$pkgver"
