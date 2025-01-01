@@ -97,11 +97,6 @@
 #   'n' - do not apply this patch
 #   'y' - apply this patch
 #
-# Allow specifying what headers are always included via "" or <> (PR: 67749)
-# CLANGD_CONFIG_INCLUDE_STYLE:
-#   'n' - do not apply this patch
-#   'y' - apply this patch
-#
 # Add tweak for implementing abstract class (D94942)
 # CLANGD_IMPL_ABSTRACT_CLASS:
 #   'n' - do not apply this patch
@@ -135,13 +130,12 @@
 : ${CLANGD_RESOLVEINCHEADERS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_LSPREMOVEFROMCDB:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERRECORDPAD:=$CLANGD_DEFAULT_PATCH_STATE}
-: ${CLANGD_CONFIG_INCLUDE_STYLE:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_IMPL_ABSTRACT_CLASS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERFIELDIDX:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_INLAYHINTSIGNOREEVIDENT:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt-git
-pkgver=20.r15778.g4c6e13f64462
+pkgver=20.r16541.g2a90efd854f5
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -173,7 +167,6 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=main"
     'resolve-incomplete-header-includes.patch'
     'lsp-remove-files-from-cdb.patch'
     'hover-record-paddings.patch'
-    'config-include-style.patch'
     'implement-abstract-class.patch'
     'hover-field-idx.patch'
     'inlay-hints-hide-deduced-types-ignore-evident.patch')
@@ -183,7 +176,7 @@ sha256sums=('SKIP'
     'cf8c80466e6a264e0dfb3750ea7353aa2bb1044bffff381630cb008b95ef2ceb'  # doxygen-more-fields
     '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
     '85cec3889f7a818fcc998c3564cdd9b01fbeb95855d64ea999d6df5af9ebe817'  # lsp-codelens
-    '7eef87c878abf154548ed635cdc801004efff41facb7c0320ba31ebe50471316'  # postfix-completion-trunk
+    '611c634082a70f120920d33bc0aaca79c7f3b74dadcda750de7b0a98766e1be5'  # postfix-completion-trunk
     'fd1f752f7a5a29bc18432ba60b0a9faa0381b3fee49febc53fc8f8f177d61f5d'  # refactor-extract-function
     '2db1f319f850858ecebdcda1c1600d6dd523f171c5b019740298d43607d5fa00'  # inlay-hints-paddings
     'ba47bb7ac05487a5a083094247eaa369f89404924172a4af40147507b15b90aa'  # hover-hex-formats
@@ -196,7 +189,6 @@ sha256sums=('SKIP'
     '991fac650864bbf16832a8c8a0689ee44ef2959a79c9b950ff6200cb4c51beff'  # resolve-incomplete-header-includes
     '63e951edbafca684984c6878a7650570dc20021198622e627d374692b1b6e8eb'  # lsp-remove-files-from-cdb
     '0f5f7cc7f984988824bca66a2d08b0fa2b1b6ccdfcc1917e5cb0ed810036cfe7'  # hover-record-paddings
-    '87f2550596309a893fdb7774be16bd0189ad041ba9a7d8050ee467f89f488373'  # config-include-style
     '9dceaa36e551e13c4145b45baf694b04369ed525e34baa3b7f14c15f3e248e5f'  # implement-abstract-class
     '4531b804507d11e1918858551575fee81605dbac0617d7b22f335b10642e782d'  # hover-field-idx
     'ab61be8aae9e2e2f5bb090926912154fe14a77245dcd25aec5c0c447ee7a67ea') # inlay-hints-hide-deduced-types-ignore-evident
@@ -285,11 +277,6 @@ prepare() {
     fi
     if [ "$CLANGD_RESOLVEINCHEADERS" != "n" ]; then
         apply_patch resolve-incomplete-header-includes
-    fi
-
-    # Config patches
-    if [ "$CLANGD_CONFIG_INCLUDE_STYLE" != "n" ]; then
-        apply_patch config-include-style
     fi
 
     # User patches
