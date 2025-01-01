@@ -1,22 +1,22 @@
 # Maintainer: Farzin Monsef <farzin [at] inphraz [dot] ir>
 
 pkgname=lib60870
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="lib60870 library for IEC 60870-5 based protocols in C"
 arch=('x86_64' 'i686')
 url="https://www.mz-automation.de"
 license=('GPLv3')
 makedepends=('mbedtls')
-_mbedtls_pkgver=2.28.3
-_mbedtls_shortver=2.28
+_mbedtls_pkgver=3.6.2
+_mbedtls_shortver=3.6
 _mbedtls=mbedtls-${_mbedtls_pkgver}
 _srcname=${pkgname}-${pkgver}/lib60870-C
-source=("https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/v$_mbedtls_pkgver.tar.gz"
+source=("https://github.com/Mbed-TLS/mbedtls/releases/download/$_mbedtls/$_mbedtls.tar.bz2"
         "https://github.com/mz-automation/lib60870/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('bdf7c5bbdc338da3edad89b2885d4f8668f9a6fffeba6ec17a60333e36dade6f'
-            'c63f170dc2dd25f7ec85d873be522f23d46838a84b072c8afda4118dfd5fc94d')
+sha256sums=('8b54fb9bcf4d5a7078028e0520acddefb7900b3e66fec7f7175bb5b7d85ccdca'
+            '04ffbd0405c34ef99667f048ebeab4626ecece95c9cb36abbc08e4a47534373f')
 
 prepare()
 {
