@@ -8,7 +8,7 @@
 
 pkgname=exaile
 pkgver=4.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A full-featured Amarok-style media player for GTK+"
 arch=('any')
 url="https://www.exaile.org/"
@@ -24,7 +24,9 @@ depends=('python>=3.8'
 	'python-cairo'
 	'python-gobject>=3.24.0')
 makedepends=('pygobject-devel>=3.24.0' 'help2man')
-checkdepends=('python-pytest')
+checkdepends=('python-pytest'
+	'python-sunau'
+	'python-pipes')
 optdepends=('udisks2: device detection'
 	'python-discid: CD info'
 	'python-musicbrainzngs: CD info / Musicbrainz covers'
