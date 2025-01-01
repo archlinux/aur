@@ -1,6 +1,6 @@
 pkgname=readest
 pkgver=0.8.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Readest is a modern, feature-rich ebook reader designed for avid readers offering seamless cross-platform access, powerful tools, and an intuitive interface to elevate your reading experience." 
 arch=('x86_64' 'aarch64')
 url="https://github.com/readest/readest"
