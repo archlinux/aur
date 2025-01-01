@@ -1,7 +1,7 @@
 # Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
 pkgname=lith-git
-pkgver=1.7.25.r7.gb6aa6a4
-pkgrel=3
+pkgver=1.7.29.r0.g53841b6
+pkgrel=1
 pkgdesc='A multiplatform WeeChat relay client'
 arch=('x86_64')
 url='https://github.com/LithApp/Lith'
@@ -11,19 +11,12 @@ makedepends=('cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 # The project name is "Lith", but I want a lowercase l.
-source=('lith::git+https://github.com/LithApp/Lith.git'
-    cmake-prefix-variables.patch)
-md5sums=('SKIP'
-    '607f93a5109e63b1840935d61832b9a7')
+source=('lith::git+https://github.com/LithApp/Lith.git')
+md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
-}
-
-prepare() {
-    cd "$srcdir/${pkgname%-git}"
-    patch -Np1 < ../cmake-prefix-variables.patch
 }
 
 build() {
