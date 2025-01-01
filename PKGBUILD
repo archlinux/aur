@@ -3,9 +3,9 @@
 
 # basic info
 pkgname="darkly"
-pkgver=0.5.13
+pkgver=0.5.14
 pkgrel=1
-pkgdesc="Bali10050's fork of Lightly (A modern style for qt applications)"
+pkgdesc="Fork of Lightly (A modern style for Qt applications)"
 url="https://github.com/Bali10050/darkly"
 arch=('x86_64' 'aarch64')
 license=("GPL-2.0-or-later")
@@ -25,7 +25,7 @@ source=(
 )
 
 sha256sums=(
-  'e978bec25a11e94dfa62e9316929049f5006b61cf1de6633cc53db37ae8d0f4b'
+  '279ec30c540be2ff115fde512cff5dcb78660907201fe9aac3290c65fbd90af5'
 )
 
 # KF6/Qt6
