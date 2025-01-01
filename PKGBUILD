@@ -4,12 +4,11 @@
 
 pkgname=python-asn1
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='ASN.1 encoder/decoder'
 arch=('any')
 url='https://github.com/andrivet/python-asn1'
 license=('MIT')
-depends=('python-future')
 makedepends=(
   'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-sphinx'
   'python-sphinx_rtd_theme'
