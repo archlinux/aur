@@ -3,7 +3,7 @@
 
 pkgname=mprime-bin
 _pkgname=mprime
-pkgver=30.19.2
+pkgver=30.19.20
 _pkgver=3019b20
 epoch=1
 pkgrel=1
