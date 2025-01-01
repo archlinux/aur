@@ -1,11 +1,8 @@
-# Author: ChatGPT
-
 import base64
 import re
 import requests
 import yaml
 
-# Constants for URLs and filenames
 GITHUB_API_URL = 'https://api.github.com/repos/janhq/jan/releases/latest'
 YML_URL_TEMPLATE = 'https://github.com/janhq/jan/releases/download/v{}/latest-linux.yml'
 
@@ -25,7 +22,6 @@ def download_yml(version):
 
 # Extract the SHA512 checksum from the yml data
 def get_sha512_from_yml(yml_data, version):
-    # Find the entry for the AppImage file
     for file_info in yml_data['files']:
         if file_info['url'] == f"jan-linux-x86_64-{version}.AppImage":
             return file_info['sha512']
@@ -33,12 +29,10 @@ def get_sha512_from_yml(yml_data, version):
 
 # Convert base64 to hexadecimal
 def base64_to_hex(base64_string):
-    # Decode base64 to bytes
     decoded_bytes = base64.b64decode(base64_string)
-    # Convert bytes to hex
     return decoded_bytes.hex()
 
-# Update the PKGBUILD file
+# Update the PKGBUILD
 def update_pkgbuild(version, sha512_hex):
     with open('PKGBUILD', 'r') as file:
         pkgbuild = file.read()
@@ -49,7 +43,6 @@ def update_pkgbuild(version, sha512_hex):
     # Update sha512sums_x86_64 variable
     pkgbuild = re.sub(r'sha512sums_x86_64=\((.*?)\)', f'sha512sums_x86_64=(\'{sha512_hex}\')', pkgbuild)
 
-    # Write the updated PKGBUILD back to the file
     with open('PKGBUILD', 'w') as file:
         file.write(pkgbuild)
 
