@@ -1,13 +1,13 @@
 pkgbase = tod-bin
 	pkgdesc = A tiny unofficial Todoist client
-	pkgver = 0.6.24
+	pkgver = 0.6.25
 	pkgrel = 1
 	url = https://github.com/alanvardy/tod
 	arch = x86_64
 	license = MIT
 	provides = tod
 	conflicts = tod
-	source = https://github.com/alanvardy/tod/releases/download/v0.6.24/tod-0.6.24-x86_64.tar.gz
-	sha256sums = 426eb694bb140cbcbdde6a55ec8c6de4e915138cdcabd08daf3a5c00c444617b
+	source = https://github.com/alanvardy/tod/releases/download/v0.6.25/tod-0.6.25-x86_64.tar.gz
+	sha256sums = 318f71bf8993ac9ef25d5d807e3b29c93bb837c96c61ee6cffa28706aceab147
 
 pkgname = tod-bin
