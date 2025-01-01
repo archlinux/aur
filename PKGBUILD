@@ -3,7 +3,7 @@
 pkgbase=dmlc-core-git
 pkgname=dmlc-core-git
 pkgver=0.5.r27.g1334185
-pkgrel=1
+pkgrel=2
 pkgdesc="A common bricks library for building scalable and portable distributed machine learning."
 arch=($CARCH)
 url="https://github.com/dmlc/dmlc-core"
@@ -45,10 +45,10 @@ pkgver() {
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
+
 build() {
     cd "${srcdir}/${pkgname}/"
 
-    # see：https://wiki.archlinux.org/title/CMake_package_guidelines
     cmake -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -Wno-dev \
