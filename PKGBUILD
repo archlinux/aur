@@ -2,7 +2,7 @@
 
 pkgname=fantascene-dynamic-wallpaper-git
 srcname=fantascene-dynamic-wallpaper-git
-pkgver=1.9.7.r5.g12012fa
+pkgver=1.9.9.r10.g4080ccc
 pkgrel=1
 pkgdesc=" dynamic wallpaper. A very nice animated wallpaper on X11 systems.Support Movie and Web animated wallpaper."
 arch=($CARCH)
@@ -10,11 +10,15 @@ url="https://github.com/dependon/fantascene-dynamic-wallpaper"
 license=('GPL-3.0-only')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname%-git})
-depends=(mpv
-    qt5-tools
+depends=(
+    mpv
+    qt5-base
+    qt5-multimedia
     qt5-x11extras
     qt5-webengine)
-makedepends=(git
+makedepends=(
+    git
+    qt5-tools
     pkgconfig
     make)
 source=("${pkgname%-git}::git+${url}.git")
