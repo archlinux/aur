@@ -15,3 +15,72 @@ post_install() {
       ;;
   esac
 }
+
+# pre_remove() {
+#   lang=$(echo $LANG | cut -d_ -f1)
+#
+#   while true; do
+#     case "$lang" in
+#       zh)
+#         echo "是否要彻底移除所有玩家数据？(N/y)"
+#         ;;
+#       *)
+#         echo "Remove all player data for this game? (N/y)"
+#         ;;
+#     esac
+#
+#     read -r user_input
+#
+#     if [[ -z "$user_input" ]]; then
+#         user_input="N"
+#     fi
+#
+#     case $user_input in
+#         [Yy])
+#             rm -r /opt/cs2d
+#             break
+#             ;;
+#         [Nn])
+#             break
+#             ;;
+#         *)
+#             ;;
+#     esac
+#   done
+# }
+#
+# post_upgrade() {
+#   lang=$(echo $LANG | cut -d_ -f1)
+#
+#   while true; do
+#     case "$lang" in
+#       zh)
+#         echo "是否要恢复之前的玩家数据？(Y/n)"
+#         ;;
+#       *)
+#         echo "Remove all player data for this game? (Y/n)"
+#         ;;
+#     esac
+#
+#     read -r user_input
+#
+#     if [[ -z "$user_input" ]]; then
+#         user_input="Y"
+#     fi
+#
+#     case $user_input in
+#         [Yy])
+#             find "/opt/cs2d" -type f -name "*.pacnew" | while read -r pacnew_file; do
+#                 original_file="${pacnew_file%.pacnew}"
+#                 mv -f "$pacnew_file" "$original_file"
+#               done
+#             break
+#             ;;
+#         [Nn])
+#             break
+#             ;;
+#         *)
+#             ;;
+#     esac
+#   done
+# }

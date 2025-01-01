@@ -1,7 +1,7 @@
 pkgbase = counter-strike-2d-wine
 	pkgdesc = More than just a freeware clone of the well known game Counter-Strike
 	pkgver = 1.0.1.4
-	pkgrel = 1
+	pkgrel = 4
 	url = https://www.unrealsoftware.de
 	install = cs2d.install
 	arch = i686
@@ -29,6 +29,8 @@ pkgbase = counter-strike-2d-wine
 	backup = opt/cs2d/sys/bans.lst
 	backup = opt/cs2d/sys/serverinfo.txt
 	backup = opt/cs2d/sys/servertransfer.lst
+	backup = opt/cs2d/sys/usgn_upw
+	backup = opt/cs2d/sys/core/dls.cache
 	source = cs2d_1014_win.zip::https://www.unrealsoftware.de/get.php?get=cs2d_1014_win.zip&p=1&cid=1232
 	source = cs2d.desktop
 	source = cs2d.png
