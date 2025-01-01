@@ -1,7 +1,7 @@
 pkgbase = dsnote
 	pkgdesc = Note taking, reading and translating with offline Speech to Text, Text to Speech and Machine Translation
 	pkgver = 4.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mkiol/dsnote
 	install = dsnote.install
 	arch = x86_64
@@ -47,7 +47,7 @@ pkgbase = dsnote
 	conflicts = dsnote-git
 	options = !debug
 	source = https://github.com/mkiol/dsnote/archive/refs/tags/v4.7.0.tar.gz
-	sha256sums = 8ca35e5fb082352838e5b883b45a5672c0d3aae958e1e765f0af37ce29d27739
+	sha256sums = 7beb6a5e3d55ac6487bc41101c68b4fd2279db7fcab58990df99f513cdd266f4
 	optdepends_x86_64 = amdvlk: Vulkan support for AMD GPU (AMDVLK Open)
 	optdepends_x86_64 = cuda: Support for GPU acceleration on NVidia graphic cards
 	optdepends_x86_64 = cudnn: Support for GPU acceleration on NVidia graphic cards
