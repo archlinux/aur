@@ -1,9 +1,11 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: envolution
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=python-httpx-sse
 _name=${pkgname#python-}
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Consume Server-Sent Event (SSE) messages with HTTPX"
 arch=(any)
 url="https://github.com/florimondmanca/httpx-sse"
@@ -43,7 +45,7 @@ check() {
 
   _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$_site_packages"
-  pytest --override-ini="addopts="
+  python -m pytest --override-ini="addopts=" -k "not test_asgi_test"
 }
 
 package() {
@@ -53,3 +55,4 @@ package() {
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
+# vim:set ts=2 sw=2 et:

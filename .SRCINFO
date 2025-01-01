@@ -1,7 +1,7 @@
 pkgbase = python-httpx-sse
 	pkgdesc = Consume Server-Sent Event (SSE) messages with HTTPX
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/florimondmanca/httpx-sse
 	arch = any
 	license = MIT
