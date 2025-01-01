@@ -2,7 +2,7 @@
 
 pkgname=python-pytun-pmd3
 _pkgname="${pkgname#python-}"
-pkgver=2.0.9
+pkgver=2.0.10
 pkgrel=1
 pkgdesc='A fork of https://github.com/montag451/pytun with partial Darwin support'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools' 'python-setuptools-scm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c65bfbc31734d3b6c9b2cfc191fa546db6d867eb383ad431d10de2fca705cf0f')
+sha256sums=('bf1b1a0ea605389677d0488d33d2521be83595cda13a5a5fda6af329dbcbf8bc')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
