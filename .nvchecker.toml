@@ -1,0 +1,4 @@
+[lilypond-docs]
+source = "regex"
+url = "https://lilypond.org/source.html"
+regex = "lilypond-(\\d+\\.\\d+\\.\\d+)\\.tar\\.gz"
