@@ -10,13 +10,13 @@ pkgname='wg_tool'
 pkgdesc='Tool to administer wireguard VPN (server and user configs)'
 _gitname='wg_tool'
 
-pkgver=7.2.0
+pkgver=7.3.0
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
 arch=(any)
 license=(MIT)
-depends=('python>=3.11' 'python-cryptography' 
+depends=('python>=3.13' 'python-cryptography' 
          'python-tomli-w' 'python-qrcode' 'wireguard-tools'
          'nftables'
         )
@@ -26,8 +26,20 @@ makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatc
             )
 
 _mkpkg_depends=('python>minor')
+
+#
+# Verifying Signed Tag
+#   Add arch@sapience.com key to keyring then use the source line with "?signed"
+#   Key available via keys/pgp, WKD or dowload from https://www.sapience.com/tech
+#   Note that upstream release procedure requires every tagged release have new tag
+#
+validpgpkeys=( '7CCA1BA66669F3273DB52678E5B81343AB9809E1')   # Gene C
+
+#source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}?signed")
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
+
+changelog="Changelog.rst"
 
 build() {
     cd "${_gitname}"
