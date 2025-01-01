@@ -1,0 +1,19 @@
+pkgbase = defold-bin
+	pkgdesc = Defold is a completely free to use game engine for development of desktop, mobile and web games.
+	pkgver = 1.9.6.83536c6
+	pkgrel = 1
+	url = https://defold.com/
+	arch = x86_64
+	license = custom
+	depends = glu
+	provides = defold
+	conflicts = defold
+	options = !strip
+	source = defold-bin-1.9.6.83536c6-1.tar.gz::https://d.defold.com/archive/editor-alpha/83536c65275c04366b704b2fd3f3d681c88b8267/editor-alpha/editor2/Defold-x86_64-linux.tar.gz
+	source = https://github.com/defold/defold/raw/refs/heads/dev/LICENSE.txt
+	source = Defold.desktop
+	sha256sums = 818f9abc6ce7cf7b14a286e02deeb03493c56d4971e3665715f1b284f4c31299
+	sha256sums = be6e9921ba01445d200ba3dc09b5cab149a58d57a76ca98376b52af87d817a7a
+	sha256sums = 5c92dc2b1cf4acc81f26b6848c3bb3ee812158e80a15fb1e7f5585362acb20f2
+
+pkgname = defold-bin
