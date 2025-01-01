@@ -4,8 +4,8 @@
 pkgname='python-qh3-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.2.1.r2.gd71b435
-pkgrel=2
+pkgver=1.3.0.r0.g316387e
+pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (latest git commit)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/qh3'
