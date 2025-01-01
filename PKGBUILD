@@ -5,9 +5,9 @@
 # - patches to fix compilation issues and crashes
 _pkgname=libtorrent
 pkgname=libtorrent-ps
-_pkgver=0.15.0
+_pkgver=0.15.1
 pkgver=1.1.r71.gee296b1
-pkgrel=3
+pkgrel=4
 pkgdesc='BitTorrent library written in C++ for use with rtorrent-ps'
 url='https://github.com/rakshasa/libtorrent'
 license=('GPL-2.0-only')
@@ -18,7 +18,7 @@ conflicts=('libtorrent')
 source=("$_pkgname-$_pkgver.tar.gz::https://github.com/rakshasa/$_pkgname/archive/v$_pkgver.tar.gz"
         'lt-ps-better-bencode-errors_all.patch'
         'lt-ps-honor_system_file_allocate_all.patch')
-sha256sums=('f55fb872282a2964049dadb89c4d1fb580a1cef981b9a421991efd5282ca90b7'
+sha256sums=('27bdd00949ef0b43161002a475f5eeb777929ad96dddd6c9b2f76f14c9be3a69'
             '3c0f802deecb15b93d8b569f00fdefe9e614f9688cfaabfbe567b8da70d2e93d'
             '5219bba547aff9ff3b2b6bd937284c3fed7c324473db20ff479e38302bdbda52')
 prepare() {
