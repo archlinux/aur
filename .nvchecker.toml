@@ -1,0 +1,4 @@
+[mpdris2]
+source = "github"
+github = "eonpatapon/mpDris2"
+use_max_tag = true

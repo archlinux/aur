@@ -4,7 +4,7 @@ pkgbase = mpdris2
 	pkgrel = 1
 	url = https://github.com/eonpatapon/mpDris2
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = intltool
 	depends = python-dbus
 	depends = python-gobject
@@ -15,4 +15,3 @@ pkgbase = mpdris2
 	sha256sums = d0f0467841e7866310cff44a1063334a9c776a64fd594815d926670b765fbee6
 
 pkgname = mpdris2
-
