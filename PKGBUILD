@@ -14,7 +14,7 @@ depends=('glu')
 optdepends=()
 provides=('defold')
 conflicts=('defold')
-replaces=()
+replaces=('defold')
 options=('!strip')
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://d.defold.com/archive/${_channel}/${_sha1}/${_channel}/editor2/Defold-x86_64-linux.tar.gz"
         'https://github.com/defold/defold/raw/refs/heads/dev/LICENSE.txt'
