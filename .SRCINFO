@@ -1,0 +1,21 @@
+pkgbase = mangoverlay
+	pkgdesc = GUI app for managing your MangoHud configuration.
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/loissascha/MangOverlay
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = npm
+	makedepends = gcc
+	makedepends = gtk3
+	makedepends = webkit2gtk
+	makedepends = pkgconf
+	depends = webkit2gtk-4.1
+	depends = vulkan-tools
+	depends = mangohud
+	source = https://github.com/loissascha/MangOverlay/archive/refs/tags/v0.3.6.tar.gz
+	sha256sums = 1109b5f826800c355c851999f9d3fe52c13d351030ee4f71beed003358fa7350
+
+pkgname = mangoverlay
