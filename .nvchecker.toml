@@ -1,0 +1,4 @@
+[libusbgx]
+source = "github"
+github = "linux-usb-gadgets/libusbgx"
+use_latest_release = true
