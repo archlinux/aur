@@ -1,0 +1,14 @@
+pkgbase = buildit-git
+	pkgdesc = A user-friendly, fast Make alternative for All Programming Languages written in Rust
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/neoapps-dev
+	arch = any
+	license = GPL
+	makedepends = cargo
+	depends = gcc-libs
+	options = !lto
+	source = buildit-git-1.0.0.tar.gz::https://github.com/neoapps-dev/buildit/archive/refs/heads/main.tar.gz
+	sha256sums = SKIP
+
+pkgname = buildit-git
