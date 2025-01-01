@@ -1,0 +1,12 @@
+pkgbase = simple-kdump
+	pkgdesc = A very simple kdump setup for Archlinux
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/adam900710/simple-kdump
+	arch = any
+	license = MIT
+	provides = simple-kdump
+	source = git+https://github.com/adam900710/simple-kdump.git#tag=v0.5?signed
+	sha256sums = SKIP
+
+pkgname = simple-kdump
