@@ -1,7 +1,7 @@
 # Maintainer: Daniel Chesters <archlinux@coin-coin.xyz>
 
 pkgname=python-ollama
-pkgver=0.3.3
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Ollama Python library"
 arch=('any')
@@ -26,4 +26,4 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
-b2sums=('24858cda01ecd8aeab8d34e2b5dff6013edfa7c8e245da79ac67d0d13c5ae5b9c1601775569e82f15360e4e7a8e6a5e5098ebd25ab600831988f37252f09bd7c')
+b2sums=('48af2cf1faf98235dee402b09501ed23162bfab651134b20e3543a2130b6e6604b5d2cf831fccb06d12d61bb502a0be4e3fbe6eb4971c65dfe6cc98dc04253b5')
