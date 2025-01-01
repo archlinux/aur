@@ -1,10 +1,11 @@
+# Maintainer: Dogwen <lyw182 at outlook dot com>
 # Maintainer: Lukas Zimmermann <luk.zim91 at gmail dot com> 
 # Contributor: Benjamin Wilhelm <aur@hedgehogcode.de>
 # Package creator: Fabien Dubosson <fabien.dubosson@gmail.com>
 
 pkgname=knime-desktop
 _upstream_name="knime"
-pkgver=4.7.2
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="A user-friendly graphical workbench for the entire data analysis process"
 url="http://www.knime.org/"
@@ -17,13 +18,12 @@ optdepends=('bash: Required for bash-scriptable nodes'
             'webkit2gtk: Required for displaying HTML content')
 options=('!emptydirs')
 changelog=ChangeLog
-_CARCH="x86_64"
 
-source=("https://download.knime.org/analytics-platform/linux/${_upstream_name}_${pkgver}.linux.gtk.${_CARCH}.tar.gz"
+source=("https://download.knime.org/analytics-platform/linux/${_upstream_name}_${pkgver}.linux.gtk.${arch}.tar.gz"
         'knime.sh'
         'knime-desktop.desktop'
         'LICENSE')
-sha256sums=('b710ca97b03ffdf5846880e9941db69aeb235ae4dd21608e0d6240f05f0b58a1'
+sha256sums=('1975f70190930e8b02c4520aad34d315811c964f860a92298da9902e8e51d383'
             '834238a61eb6018de8957935bf98ab6f31d3767bd2ccf87402ec3ea3096ce955'
             '33f9d9c921e7e89c24f4b9d73b694300bdc995e9705b10ee668f8e6a7b760634'
             'ecd59cb1a79d96474e732361fcd40417fd3352b3974be66add43f8f00c7e016a')
