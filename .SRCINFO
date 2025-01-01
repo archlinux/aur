@@ -1,20 +1,19 @@
 pkgbase = python-pytest-filedata
 	pkgdesc = Easily load test data from files
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/20c/pytest-filedata
 	changelog = CHANGELOG.md
 	arch = any
 	license = Apache
 	checkdepends = python-pytest
-	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
+	makedepends = python-poetry-core
 	depends = python-decorator
-	depends = python-future
 	depends = python-requests-mock
-	source = python-pytest-filedata-0.4.0.tar.gz::https://github.com/20c/pytest-filedata/archive/0.4.0.tar.gz
-	sha256sums = 7c3cc9280df9f2015d9671d517884781ba75871c4775ae77863da8d8937fd127
+	depends = python
+	source = python-pytest-filedata-1.0.0.tar.gz::https://github.com/20c/pytest-filedata/archive/1.0.0.tar.gz
+	sha256sums = 91a06a60b0d6e8aaeea807b6f6e940cba2b82a456d18bd49e1513dd23d2d47a9
 
 pkgname = python-pytest-filedata
