@@ -1,30 +1,17 @@
 # Maintainer: Kino <cybao292261@163.com>
-# Maintainer: Kartik Mohta <kartikmohta@gmail.com>
+# Contributor: Kartik Mohta <kartikmohta@gmail.com>
 pkgname=g2o
-pkgver=20230806
-pkgrel=2
+pkgver=20241228
+pkgrel=1
 pkgdesc="A General Framework for Graph Optimization"
 arch=('i686' 'x86_64' 'armv7' 'aarch64')
 url="https://github.com/RainerKuemmerle/g2o"
 license=('BSD-3-Clause' 'GPL-3.0-or-later' 'LGPL-2.1-or-later')
 makedepends=('cmake')
-depends=('eigen' 'fmt' 'glu' 'spdlog' 'suitesparse' 'libqglviewer-qt5')
+depends=('eigen' 'fmt' 'glu' 'openblas' 'spdlog' 'suitesparse' 'libqglviewer-qt5')
 conflicts=('g2o-git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/RainerKuemmerle/g2o/archive/${pkgver}_git.tar.gz"
-        "https://github.com/RainerKuemmerle/g2o/pull/808.patch"
-        "https://github.com/RainerKuemmerle/g2o/pull/826.patch")
-sha256sums=('e717d3b96cc6d00fcbbaf637aae648c9823599e6aa8fcf4546fc9ad4034dcde5'
-            'b952cd113ed1f9803ed7b618f37c0aecd3b0945e2e70a7b5dd355413ecccd363'
-            'b76a9dc4fe80036a23c60fae1e050ff267bf9b255e53b2dde7fa073aec7f2b69')
-
-prepare() {
-  cd "$pkgname-$pkgver"_git
-  patch -Np1 < ../808.patch
-  patch -Np1 < ../826.patch || true
-
-  sed -i "29a\#include <algorithm>\\n#include <iterator>" $srcdir/$pkgname-${pkgver}_git/g2o/stuff/string_tools.h
-  sed -i "s|fmt::join(ids, \" \")|strJoin(ids.begin(), ids.end(), \" \")|g" $srcdir/$pkgname-${pkgver}_git/g2o/core/optimizable_graph.cpp
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/RainerKuemmerle/g2o/archive/${pkgver}_git.tar.gz")
+sha256sums=('d691ead69184ebbb8256c9cd9f4121d1a880b169370efc0554dd31a64802a452')
 
 build() {
   cmake -B build -S $pkgname-${pkgver}_git \
