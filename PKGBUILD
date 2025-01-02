@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=nature-sounds
-pkgver=0.2.3
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="A lightweight, nature sounds player for the command-line."
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url="https://github.com/jmelahman/nature-sounds"
 license=('MIT')
 depends=('alsa-utils')
 makedepends=('gcc' 'git' 'go')
-_commit='e5c3d59c045b3b0cfe62bb535f55b32312213ade'
+_commit='5412413ee19d632dd60fc05715bdbef9c00fa7fd'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
