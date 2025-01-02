@@ -8,13 +8,13 @@
 
 pkgname="rtorrent-vi-color"
 _pkgname="rtorrent"
-pkgver=0.10.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc='Ncurses BitTorrent client based on libTorrent with vi like keybindings and color patch.'
 url="http://libtorrent.rakshasa.no"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=("curl" "libtorrent>=0.14.0" "xmlrpc-c" "libsigc++" "autoconf-archive")
+depends=("curl" "libtorrent>=0.15.1" "xmlrpc-c" "libsigc++" "autoconf-archive" "libtool")
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 install="${pkgname}.install"
@@ -22,8 +22,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rakshasa/${_pkgname}/ar
         "${_pkgname}-${pkgver}_vi_keybinding_tjwoosta.patch"
         "${_pkgname}-${pkgver}_color.patch"
         "${_pkgname}-${pkgver}_compact_display.patch")
-sha1sums=('bf7660880b322c87fd8567e19ff8823ee4b8b5e4'
-          '732f4b6b9d0a699018fe5e5a974c430c0d09d061'
+sha1sums=('cbcd2ea27aed025bc7a000fcf86cb37dbd4bf0a2'
+          '2d8db5148af372b93ddbf7a2a5d410adc049612b'
           'db94e94d78c006179124199bc0728fcfb786aaa1'
           'fee2ca15f4e802672d82b1203a0783146c9fb344')
 
@@ -33,6 +33,8 @@ build() {
   patch -uNp1 -i "${srcdir}/${_pkgname}-${pkgver}_vi_keybinding_tjwoosta.patch"
   patch -uNp1 -i "${srcdir}/${_pkgname}-${pkgver}_color.patch"
   patch -uNp1 -i "${srcdir}/${_pkgname}-${pkgver}_compact_display.patch"
+
+  libtoolize
 
   # generate the configure scripts
   aclocal -I scripts && autoconf -i && autoheader && automake --add-missing
