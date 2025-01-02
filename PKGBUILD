@@ -4,7 +4,7 @@
 
 
 pkgname=supercell-wx-bin
-pkgver=0.4.5
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="A NEXRAD Level 2 and Level 3 radar viewing application (Stable Build)"
 arch=('x86_64')
@@ -17,9 +17,10 @@ conflicts=('supercell-wx')
 source=("https://github.com/dpaulat/supercell-wx/releases/download/v${pkgver}-release/supercell-wx-v${pkgver}-linux-x64.tar.gz")
 md5sums=('SKIP')
 
-pkgver() {
-    echo "$(curl -s "https://api.github.com/repos/dpaulat/supercell-wx/releases/latest" | jq -r '.tag_name' | sed 's/v//; s/-release//')"
-}
+#Commented out because this is a binary file and I do not think the pkgver function was needed. Please comment on AUR if i've gotten this wrong.
+#pkgver() {
+#    echo "$(curl -s "https://api.github.com/repos/dpaulat/supercell-wx/releases/latest" | jq -r '.tag_name' | sed 's/v//; s/-release//')"
+#}
 
 package() {
     # Extract the tar.gz file
