@@ -3,18 +3,19 @@
 
 pkgname=lip
 pkgver=0.24.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A general package installer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/futrime/lip"
 license=('GPL3')
 conflicts=(lip-git)
+
 source_x86_64=(
-    "${pkgname}-${arch}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-linux-amd64.tar.gz"
+    "${pkgname}-${arch}.tar.gz::${url}/releases/v${pkgver}/download/${pkgname}-linux-amd64.tar.gz"
     "lip.1"
 )
 source_aarch64=(
-    "${pkgname}-${arch}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-linux-arm64.tar.gz"
+    "${pkgname}-${arch}.tar.gz::${url}/releases/v${pkgver}/download/${pkgname}-linux-arm64.tar.gz"
     "lip.1"
 )
 
