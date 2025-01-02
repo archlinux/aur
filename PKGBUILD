@@ -1,7 +1,7 @@
 # Maintainer: Artem Stasyuk <stasyukartem2@gmail.com>
 pkgname=onetagger-bin
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The ultimate cross-platform tagger for DJs"
 arch=('x86_64')
 url="https://onetagger.github.io/"
@@ -49,7 +49,7 @@ source=("https://github.com/Marekkon5/onetagger/releases/download/1.7.0/OneTagge
         "onetagger.desktop")
 sha256sums=('dc0ddfa604c24fdceeb533adcff2a559f060d68d985236c3270408a541753bd6'
             '6a0ecc9b2f8d4f2ebb7f168c3158feadaa0a391837034df8856a0c0bde3219aa'
-            'd04a2954ab7b52693a38a5f50979bd9724a948ec1232ce7f71d37a439f0d4567')
+            '308891e4556f602afedfbc5bd9c0ef35b49ff56329cb53ffeb870017b52cbf3d')
 
 package() {
     mkdir -p "$pkgdir/usr/bin"
