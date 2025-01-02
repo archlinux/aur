@@ -11,6 +11,7 @@ license=('LGPL-2.1-or-later')
 depends=(
 	'glibc'
 	'systemd-libs'
+	'python'
 )
 optdepends=(
 	'python-jinja: for code generator'

@@ -10,6 +10,7 @@ pkgbase = python-sdbus
 	makedepends = python-setuptools
 	depends = glibc
 	depends = systemd-libs
+	depends = python
 	optdepends = python-jinja: for code generator
 	optdepends = python-sphinx: for autodoc
 	source = https://pypi.org/packages/source/s/sdbus/sdbus-0.13.0.tar.gz
