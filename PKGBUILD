@@ -3,7 +3,7 @@
 pkgname=zashboard-bin
 _pkgname=zashboard
 pkgver=1.42.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A dashboard using clash api'
 arch=('any')
 url="https://github.com/Zephyruso/zashboard"
@@ -22,6 +22,6 @@ sha256sums=('0e98ce9d41de9b90df9678966ad44fd5cf764a663335ebee1c91611c26da8b2a'
 package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
-    cd "${srcdir}"
+    cd "${srcdir}/dist/"
     find . -type f -exec install -Dm 644 {} "${pkgdir}/usr/share/${_pkgname}/"{} \;
 }
