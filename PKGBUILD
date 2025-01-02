@@ -4,7 +4,7 @@
 
 pkgname=bfgminer-git
 pkgver=5.5.0.r34.g866fd36f
-pkgrel=5
+pkgrel=6
 pkgdesc="Bitcoin miner featuring overclocking, monitoring, fan speed control and remote management. For FPGA/GPU/CPU Bitcoin mining."
 arch=('x86_64' 'aarch64')
 depends=('curl' 'gcc-libs' 'glibc' 'hidapi' 'jansson' 'libbase58' 'libblkmaker' 'libevent' 'libmicrohttpd' 'libusb' 
@@ -16,8 +16,8 @@ optdepends=('opencl-driver: OpenCL implementation for your GPU'
             'python: for running api-example.py')
 url='https://bitcointalk.org/?topic=877081'
 license=('GPL-3.0-or-later')
-provides=('bfgminer' 'libbase58' 'libblkchecker')
-conflicts=('bfgminer' 'libbase58' 'libblkchecker')
+provides=('bfgminer')
+conflicts=('bfgminer')
 source=("git+https://github.com/luke-jr/bfgminer"
         "git+https://github.com/bitcoin/libblkmaker.git"
         #"git+https://git.ozlabs.org/~ccan/ccan" Missing commit required?
