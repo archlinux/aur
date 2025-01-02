@@ -9,7 +9,7 @@ __pkgname=libxpm
 _pkgname=libXpm
 pkgname="lib32-$__pkgname"
 pkgver=3.5.17
-pkgrel=2
+pkgrel=3
 pkgdesc="X11 pixmap library (32-bit)"
 arch=('x86_64')
 license=('MIT' 'X11-distribute-modifications-variant')
@@ -42,7 +42,7 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  rm -rf "$pkgdir/usr/{include,bin}"
+  rm -rf "$pkgdir/usr/{include,share,bin}"
 
   install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
 }
