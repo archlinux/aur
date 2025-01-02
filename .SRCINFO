@@ -1,0 +1,13 @@
+pkgbase = libbase58
+	pkgdesc = C library for Bitcoin's base58 encoding
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/luke-jr/libbase58
+	arch = x86_64
+	license = MIT
+	depends = libgcrypt
+	depends = glibc
+	source = libbase58-0.1.4.tar.gz::https://github.com/luke-jr/libbase58/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 97e8c3387fd4ed90208a8101e658743efbb6e21714e594f0828e6414f92c0b1d
+
+pkgname = libbase58
