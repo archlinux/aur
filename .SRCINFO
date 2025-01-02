@@ -12,6 +12,7 @@ pkgbase = nunicode
 	arch = riscv64
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	makedepends = sqlite3
 	source = nunicode::git+https://bitbucket.org/alekseyt/nunicode.git#tag=1.11
 	sha256sums = bfc9fccea72b52bf98d3f5cae52c0763360a70c589333f441c97a9e722ae6abd

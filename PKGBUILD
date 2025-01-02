@@ -7,7 +7,7 @@ pkgrel=1
 url="https://bitbucket.org/alekseyt/${pkgbase}"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 license=('MIT')
-makedepends=('cmake' 'sqlite3')
+makedepends=('cmake' 'git' 'sqlite3')
 source=("${pkgbase}::git+${url}.git#tag=${pkgver}")
 sha256sums=('bfc9fccea72b52bf98d3f5cae52c0763360a70c589333f441c97a9e722ae6abd')
 
