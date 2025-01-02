@@ -2,7 +2,7 @@
 # Adapted from durdraw-git by: Kyle Keen <keenerd@gmail.com>
 pkgname=durdraw
 pkgver=0.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Frame based ASCII and ANSI drawing and playback program"
 url="http://cmang.org/durdraw/"
 license=('BSD-3-Clause')
