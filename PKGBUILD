@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pixelflasher
 pkgver=7.8.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pixel phone flashing GUI utility with features."
 arch=('any')
 url="https://github.com/badabing2005/PixelFlasher"
@@ -23,7 +23,6 @@ depends=(
   'python-pyperclip'
   'python-requests'
   'python-rsa'
-  'python-six'
   'python-wxpython'
   'xdg-utils'
 )
