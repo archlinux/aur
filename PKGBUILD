@@ -1,18 +1,18 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=savedesktop
 _app_id=io.github.vikdevelop.SaveDesktop
-pkgver=3.5
-pkgrel=5
+pkgver=3.5.1
+pkgrel=1
 pkgdesc="Save and load KDE Plasma, Xfce and GNOME-based DE configuration"
 arch=('any')
 url="https://github.com/vikdevelop/SaveDesktop"
 license=('GPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'libadwaita' 'python-dbus' 'python-gobject')
 makedepends=('git')
-_commit=f22045cc3da8a11b32f39f7770427d3aab4a160a  # tags/3.5^0
+_commit=8d4cfb8956004fce6a46f662c90f2ce136d73015  # tags/3.5.1^0
 source=("git+https://github.com/vikdevelop/SaveDesktop.git#commit=${_commit}"
         "$pkgname.sh")
-sha256sums=('236d68951d395e65e1e705ce5e45bed4b2e5eff7e8b35c555cb609e99d3b4431'
+sha256sums=('9a2fe81ca6748f8231ca65a2b41b201cd8f75c2f25efaaddda0fc95070246d8f'
             '69571f87e5eb4754c9b35c62d0311b1bf0e040cf79d5478a050d46efb1a4809a')
 
 prepare() {
