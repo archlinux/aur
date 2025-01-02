@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ffbox-git
 _pkgname=FFBox
-pkgver=4.2.r0.ge332a2e
+pkgver=4.3.r0.gea6016f
 _electronversion=24
 _nodeversion=18
 pkgrel=1
-pkgdesc="An user-friendly ffmpeg GUI.Use system-wide electron.一个多媒体转码百宝箱/一个 FFmpeg 的套壳"
+pkgdesc="An user-friendly ffmpeg GUI.(Use system-wide electron)一个多媒体转码百宝箱/一个 FFmpeg 的套壳"
 arch=('x86_64')
 url="https://github.com/ttqftech/FFBox"
 license=('LicenseRef-custom')
@@ -42,7 +42,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -65,15 +65,13 @@ build() {
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
         echo "shamefully-hoist=true"
-        echo "shell-emulator=true"
         echo "virtual-store-dir-max-length=80"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
+        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
@@ -81,6 +79,9 @@ build() {
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g;s/process.execPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     NODE_ENV=development    pnpm install
     NODE_ENV=development    pnpm add -D pkg
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     pnpm run build:frontend
     NODE_ENV=production     pnpm run build:backend
     NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
