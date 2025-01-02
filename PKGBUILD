@@ -3,7 +3,7 @@
 
 pkgname='comic-dl'
 pkgver=2024.02.10
-pkgrel=2
+pkgrel=3
 pkgdesc='Command line tool to download Comics and Manga from various Manga and Comic sites easily.'
 arch=(any)
 url="https://github.com/Xonshiz/${pkgname}"
@@ -27,7 +27,7 @@ prepare() {
 
 package() {
 	depends+=('python-tqdm' 'python-requests'
-		'python-clint' 'img2pdf' 'python-colorama' 'python-future'
+		'python-clint' 'img2pdf' 'python-colorama'
 		'python-beautifulsoup4' 'python-cloudscraper'
 		'nodejs' 'python-jsbeautifier')
 	cd "$_srcdir"

@@ -1,7 +1,7 @@
 pkgbase = comic-dl
 	pkgdesc = Command line tool to download Comics and Manga from various Manga and Comic sites easily.
 	pkgver = 2024.02.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Xonshiz/comic-dl
 	arch = any
 	license = MIT
@@ -20,7 +20,6 @@ pkgname = comic-dl
 	depends = python-clint
 	depends = img2pdf
 	depends = python-colorama
-	depends = python-future
 	depends = python-beautifulsoup4
 	depends = python-cloudscraper
 	depends = nodejs
