@@ -10,8 +10,24 @@ arch=('any')
 license=('GPL-3.0-or-later')
 source=("git+https://github.com/polychromatic/polychromatic.git")
 url='https://github.com/polychromatic/polychromatic'
-makedepends=('git' 'meson' 'ninja' 'sassc')
-depends=('python' 'python-colorama' 'python-colour' 'python-setproctitle' 'python-requests' 'python-pyqt6' 'python-pyqt6-webengine' 'qt6-svg' 'libappindicator-gtk3' 'python-gobject' 'python-openrazer')
+depends=(
+  libappindicator-gtk3
+  python
+  python-colorama
+  python-colour
+  python-gobject
+  python-openrazer
+  python-pyqt6
+  python-pyqt6-webengine
+  python-requests
+  python-setproctitle
+  qt6-svg
+)
+makedepends=(
+  meson
+  ninja
+  sassc
+)
 provides=('polychromatic')
 conflicts=('polychromatic')
 sha512sums=('SKIP')
