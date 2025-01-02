@@ -1,4 +1,9 @@
 pkg
 src
 bfgminer
+ccan
+knc-asic
+libbase58
+libblkmaker
 *.pkg.tar.*
+*.log
