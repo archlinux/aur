@@ -1,0 +1,14 @@
+pkgbase = vital-synth-desktop-file
+	pkgdesc = a deskotp file for the Vital wavetable synth software
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/calacuda/vital-desktop-aur
+	arch = x86
+	arch = x86_64
+	license = MIT
+	depends = vital-synth
+	provides = vital-synth-desktop-file
+	source = git+https://github.com/calacuda/vital-desktop-aur
+	sha256sums = SKIP
+
+pkgname = vital-synth-desktop-file
