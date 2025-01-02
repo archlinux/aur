@@ -1,12 +1,12 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=scu-bin
-pkgver=1.4.0
+pkgver=1.6.1
 pkgrel=3
 _build=6560963780
 pkgdesc="System fetch utility is aimed at informativeness"
 arch=(x86_64)
-url="https://gitlab.com/omnitix/${pkgname%-bin}"
+url="https://gitlab.com/omnid/scu"
 license=(GPL-3.0-or-later)
 depends=(
   gcc-libs
@@ -15,9 +15,9 @@ depends=(
 provides=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
 options=(!debug)
-source=($url/-/jobs/$_build/artifacts/raw/scu{,.md5sum})
+source=(https://github.com/srtnnm/scu/releases/download/1.6.1/scu{,.md5sum})
 b2sums=(
-  '43b3ec558bf6b853aba3363aa978bd4e2e48706994f8e91a0ea143680954b97a71171e050ad665e7538af69314cd6887c787abe674783b651add2084f67ea6c9'
+  '6d14f133122f1e77b6dabdd4bbfc0b02b8a940a0bcddc6d178dc23560f7594e6a4518d78ddf07920856756c4c71a7e39e4d9103616b1a9f02774178647b0decd'
   'SKIP'
 )
 
