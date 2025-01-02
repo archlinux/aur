@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ffbox
 _pkgname=FFBox
-pkgver=4.2
+pkgver=4.3
 _electronversion=24
 _nodeversion=18
-pkgrel=3
-pkgdesc="An user-friendly ffmpeg GUI.Use system-wide electron.一个多媒体转码百宝箱/一个 FFmpeg 的套壳"
+pkgrel=1
+pkgdesc="An user-friendly ffmpeg GUI.(Use system-wide electron)一个多媒体转码百宝箱/一个 FFmpeg 的套壳"
 arch=('x86_64')
 url="https://github.com/ttqftech/FFBox"
 license=('LicenseRef-custom')
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('5a11202652e5aaf62dbe0872604630703c5015b5d8f4aa02bd1b4abb2083baa6'
+sha256sums=('381d0eed393178c37fce76ce15a00e3e0e1f72564f3e322c41370741dc21f41c'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -33,7 +33,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -61,7 +61,6 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
         echo 'registry=https://registry.npmmirror.com'
-        echo 'node-mirror=https://registry.npmmirror.com/-/binary/node/'
         echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
         echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
@@ -71,6 +70,9 @@ build() {
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g;s/process.execPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     NODE_ENV=development    pnpm install
     NODE_ENV=development    pnpm add -D pkg
+}
+build() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     NODE_ENV=production     pnpm run build:frontend
     NODE_ENV=production     pnpm run build:backend
     NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
