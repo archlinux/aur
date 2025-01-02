@@ -1,6 +1,6 @@
 pkgbase = buckets-beta-bin
 	pkgdesc = Private budgeting with the envelope budgeting method
-	pkgver = 0.77.0
+	pkgver = 0.78.0
 	pkgrel = 1
 	url = https://www.budgetwithbuckets.com/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = buckets-beta-bin
 	depends = libxtst
 	depends = nss
 	depends = glibc>=2.28-4
-	noextract = Buckets-Beta-linux-latest-amd64-0.77.0.deb
-	source = https://github.com/buckets/desktop-beta/releases/download/v0.77.0/Buckets-Beta-linux-latest-amd64-0.77.0.deb
-	b2sums = 8be0efa8905c168e55718d9c30653314587ad8387b7c41cffb408eb43fcf4f5574fd72fe0361ea8991b35947e3c99ade0e2c94468a8cebbd10435061f2296517
+	noextract = Buckets-Beta-linux-latest-amd64-0.78.0.deb
+	source = https://github.com/buckets/desktop-beta/releases/download/v0.78.0/Buckets-Beta-linux-latest-amd64-0.78.0.deb
+	b2sums = 6ce26e8b56a0cfe356895d794a0690483bd7250dfe85645556dd0c0ca57d990327dbcacc7b2f04ca0271a3aa134e330d64a5bab6fbdd62d6eae43691b24fd7f1
 
 pkgname = buckets-beta-bin
