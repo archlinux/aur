@@ -1,11 +1,11 @@
 # -*- sh -*-
 
-# Maintainer: Klaus Alexander Seistrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.)>
+# Maintainer: Klaus Alexander Seistrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 _pkgname='dstask'
 pkgname="$_pkgname-git"
 pkgver=0.27.r0.g48999d7
-pkgrel=2
+pkgrel=3
 pkgdesc='Git-powered terminal-based todo/note manager with full markdown note for each task (latest commit)'
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64' )
 url='https://github.com/naggie/dstask'
