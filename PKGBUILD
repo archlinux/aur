@@ -4,7 +4,7 @@
 
 pkgname=vvvvvv
 _pkgname=VVVVVV
-pkgver=2.4
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='A retro-styled 2D platformer'
 arch=('i686' 'x86_64')
@@ -12,17 +12,42 @@ url='https://thelettervsixtim.es/'
 groups=('humblebundle3' 'humblebundle4' 'humblebundles')
 license=('custom')
 depends=('sdl2')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 _datafile=data20221117.zip
-source=("https://github.com/TerryCavanagh/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.zip"
+# The 2.4.2 release failed to have a release zip.
+# https://github.com/TerryCavanagh/VVVVVV/issues/1189
+# "https://github.com/TerryCavanagh/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.zip"
+source=("git+https://github.com/TerryCavanagh/VVVVVV.git#tag=${pkgver}"
+        "git+https://github.com/lvandeve/lodepng"
+        "git+https://github.com/icculus/physfs/"
+        "git+https://github.com/leethomason/tinyxml2/"
+        "git+https://github.com/FNA-XNA/FAudio"
+        "git+https://github.com/Mashpoe/c-hashmap"
+        "git+https://github.com/Tehreer/SheenBidi"
         "${_datafile}::https://thelettervsixtim.es/makeandplay/data.zip"
         "${pkgname}.desktop")
-sha256sums=('e470599e0e46f7a5e0df224eefb1fa7ea8e36af80f8dd2f453e4a404ab547a8c'
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'c767809594f6472da9f56136e76657e38640d584164a46112250ac6293ecc0ea'
             '8c704e92e6abc8172d7d9fe726f1a0bba4b8630682745d6daf1f34ce12e0e3e4')
 noextract=("${_datafile}")
 
 prepare() {
+  cd "${srcdir}/${_pkgname}"
+  git submodule init
+  git config submodule.third_party/lodepng.url "$srcdir/lodepng"
+  git config submodule.third_party/physfs.url "$srcdir/physfs"
+  git config submodule.third_party/tinyxml2.url "$srcdir/tinyxml2"
+  git config submodule.third_party/FAudio.url "$srcdir/FAudio"
+  git config submodule.third_party/c-hashmap.url "$srcdir/c-hashmap"
+  git config submodule.third_party/SheenBidi.url "$srcdir/SheenBidi"
+  git -c protocol.file.allow=always submodule update
+
   cd "${srcdir}"
 
   mkdir -p data

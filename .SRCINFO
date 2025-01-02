@@ -1,6 +1,6 @@
 pkgbase = vvvvvv
 	pkgdesc = A retro-styled 2D platformer
-	pkgver = 2.4
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://thelettervsixtim.es/
 	arch = i686
@@ -10,12 +10,25 @@ pkgbase = vvvvvv
 	groups = humblebundles
 	license = custom
 	makedepends = cmake
+	makedepends = git
 	depends = sdl2
 	noextract = data20221117.zip
-	source = https://github.com/TerryCavanagh/VVVVVV/releases/download/2.4/VVVVVV-2.4.zip
+	source = git+https://github.com/TerryCavanagh/VVVVVV.git#tag=2.4.2
+	source = git+https://github.com/lvandeve/lodepng
+	source = git+https://github.com/icculus/physfs/
+	source = git+https://github.com/leethomason/tinyxml2/
+	source = git+https://github.com/FNA-XNA/FAudio
+	source = git+https://github.com/Mashpoe/c-hashmap
+	source = git+https://github.com/Tehreer/SheenBidi
 	source = data20221117.zip::https://thelettervsixtim.es/makeandplay/data.zip
 	source = vvvvvv.desktop
-	sha256sums = e470599e0e46f7a5e0df224eefb1fa7ea8e36af80f8dd2f453e4a404ab547a8c
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = c767809594f6472da9f56136e76657e38640d584164a46112250ac6293ecc0ea
 	sha256sums = 8c704e92e6abc8172d7d9fe726f1a0bba4b8630682745d6daf1f34ce12e0e3e4
 
