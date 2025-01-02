@@ -12,9 +12,7 @@ license=('Commercial')
 provides=(${pkgname})
 conflicts=()
 replaces=()
-depends=(
-  bash
-  dbus
+depends=(bash
   gcc-libs
   glib2
   glibc

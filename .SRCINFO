@@ -8,7 +8,6 @@ pkgbase = at32-new-clock-configuration-bin
 	makedepends = libarchive
 	makedepends = sed
 	depends = bash
-	depends = dbus
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
