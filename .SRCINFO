@@ -1,0 +1,22 @@
+pkgbase = pihead-gui-git
+	pkgdesc = A modern, feature-rich vehicle head unit interface built with Electron 和 React.(Use system-wide electron)
+	pkgver = r18.9112317
+	pkgrel = 1
+	url = https://github.com/jaredthejellyfish/pihead-gui
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gcc
+	depends = electron30
+	provides = pihead-gui=r18.9112317
+	conflicts = pihead-gui
+	source = pihead-gui.git::git+https://github.com/jaredthejellyfish/pihead-gui
+	source = pihead-gui.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = pihead-gui-git
