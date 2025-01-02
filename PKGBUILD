@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Cebula <tomasz.cebula@gmail.com>
 
 pkgname=nft-blackhole
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Script / Daemon to blocking IP in nftables by country and black lists'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nftables' 'python-yaml')
 backup=('etc/nft-blackhole.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tomasz-c/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('b3c90723e2e2249dccb52a699d6c9def5519a331a473bceb8373161924a8bf4e')
+sha256sums=('42fcc3b8050c865ed00b1da98e4a0ae2654b9b64139102be3b162bfc98b5d146')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
