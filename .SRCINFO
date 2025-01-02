@@ -1,6 +1,6 @@
 pkgbase = kgamma
 	pkgdesc = Adjust your monitor gamma settings
-	pkgver = 6.2.4
+	pkgver = 6.2.5
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -19,13 +19,13 @@ pkgbase = kgamma
 	depends = qt6-base
 	conflicts = kgamma5
 	replaces = kgamma5
-	source = https://download.kde.org/stable/plasma/6.2.4/kgamma-6.2.4.tar.xz
-	source = https://download.kde.org/stable/plasma/6.2.4/kgamma-6.2.4.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/6.2.5/kgamma-6.2.5.tar.xz
+	source = https://download.kde.org/stable/plasma/6.2.5/kgamma-6.2.5.tar.xz.sig
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 73a745fc66cd14eaa6e13350c38683a5045125887a18f461eb2b64e50e6a1922
+	sha256sums = 3df75cdcb020acfd216e9a722404d381c8a4d97262be85f6704b189e665610ce
 	sha256sums = SKIP
 
 pkgname = kgamma
