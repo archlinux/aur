@@ -1,0 +1,16 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[user]
+	mail = libertyraptor@protonmail.com
+	author = libertyraptor@protonmail.com
+	email = libertyraptor@protonmail.com
+	name = Liberty Raptor
+[remote "origin"]
+	url = ssh://aur@aur.archlinux.org/flycast-stable-bin.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
