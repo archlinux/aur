@@ -1,16 +1,16 @@
 diff --git CodeLite/CMakeLists.txt CodeLite/CMakeLists.txt
-index 537fea7fc..5761b62bd 100644
+index 33243ea84..6fdb06be9 100644
 --- CodeLite/CMakeLists.txt
 +++ CodeLite/CMakeLists.txt
-@@ -34,6 +34,8 @@ target_include_directories(libcodelite
-     "${CL_SRC_ROOT}/CodeLite"
-     "${CL_SRC_ROOT}/CodeLite/ssh"
-     "${CL_SRC_ROOT}/PCH"
-+    "${CL_SRC_ROOT}/Interfaces"
-+    "${CL_SRC_ROOT}/Plugin"
-     PRIVATE
-     "${CL_SRC_ROOT}/submodules/asio/asio/include"
-     "${CL_SRC_ROOT}/submodules/websocketpp"
+@@ -33,6 +33,8 @@ target_include_directories(
+     libcodelite
+     PUBLIC "${CL_SRC_ROOT}/sdk/wxsqlite3/include" "${CL_SRC_ROOT}/CodeLite" "${CL_SRC_ROOT}/CodeLite/ssh"
+            "${CL_SRC_ROOT}/PCH"
++           "${CL_SRC_ROOT}/Interfaces"
++           "${CL_SRC_ROOT}/Plugin"
+     PRIVATE "${CL_SRC_ROOT}/submodules/asio/asio/include" "${CL_SRC_ROOT}/submodules/websocketpp")
+ # Macros
+ if(WIN32)
 diff --git CodeLite/clFilesCollector.cpp CodeLite/clFilesCollector.cpp
 index 9ac968545..bdaa006f4 100644
 --- CodeLite/clFilesCollector.cpp
@@ -93,10 +93,10 @@ index 9ac968545..bdaa006f4 100644
                          Q.push_back(fullpath);
                      }
 diff --git LiteEditor/mainbook.cpp LiteEditor/mainbook.cpp
-index b3ced91bf..0a2515538 100644
+index 844c970ac..a00c2b452 100644
 --- LiteEditor/mainbook.cpp
 +++ LiteEditor/mainbook.cpp
-@@ -454,7 +454,7 @@ int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
+@@ -455,7 +455,7 @@ int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
  {
  #ifdef __WXGTK__
      // On gtk either fileName or the editor filepath (or both) may be (or their paths contain) symlinks
@@ -105,7 +105,7 @@ index b3ced91bf..0a2515538 100644
  #endif
  
      for (size_t i = 0; i < m_book->GetPageCount(); ++i) {
-@@ -488,7 +488,7 @@ int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
+@@ -489,7 +489,7 @@ int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
  
  #if defined(__WXGTK__)
                  // Try again, dereferencing the editor fpath
@@ -114,7 +114,7 @@ index b3ced91bf..0a2515538 100644
                  if (editorDest.Cmp(fullpath) == 0 || editorDest.Cmp(fileNameDest) == 0) {
                      return i;
                  }
-@@ -516,8 +516,9 @@ wxWindow* MainBook::FindPage(const wxString& text)
+@@ -517,8 +517,9 @@ wxWindow* MainBook::FindPage(const wxString& text)
              return editor;
          }
  
@@ -125,8 +125,8 @@ index b3ced91bf..0a2515538 100644
      }
      return NULL;
  }
-@@ -617,6 +618,13 @@ clEditor* MainBook::OpenFile(const wxString& file_name, const wxString& projectN
-                              int bmp /*= wxNullBitmap*/, const wxString& tooltip /* wxEmptyString */)
+@@ -625,6 +626,13 @@ clEditor* MainBook::OpenFile(const wxString& file_name,
+                              const wxString& tooltip /* wxEmptyString */)
  {
      wxFileName fileName(CLRealPath(file_name));
 +
@@ -139,7 +139,7 @@ index b3ced91bf..0a2515538 100644
      fileName.MakeAbsolute();
  
  #ifdef __WXMSW__
-@@ -1739,7 +1747,7 @@ WelcomePage* MainBook::GetWelcomePage(bool createIfMissing)
+@@ -1741,7 +1749,7 @@ WelcomePage* MainBook::GetWelcomePage(bool createIfMissing)
  
  clEditor* MainBook::OpenFileAsync(const wxString& file_name, std::function<void(IEditor*)>&& callback)
  {
@@ -148,7 +148,7 @@ index b3ced91bf..0a2515538 100644
      auto editor = FindEditor(real_path);
      if (editor) {
          push_callback(std::move(callback), real_path);
-@@ -1750,7 +1758,7 @@ clEditor* MainBook::OpenFileAsync(const wxString& file_name, std::function<void(
+@@ -1752,7 +1760,7 @@ clEditor* MainBook::OpenFileAsync(const wxString& file_name, std::function<void(
              m_book->SetSelection(index);
          }
      } else {
@@ -157,7 +157,7 @@ index b3ced91bf..0a2515538 100644
          if (editor) {
              push_callback(std::move(callback), real_path);
          }
-@@ -1815,11 +1823,12 @@ void MainBook::OnIdle(wxIdleEvent& event)
+@@ -1817,11 +1825,12 @@ void MainBook::OnIdle(wxIdleEvent& event)
      auto editor = GetActiveEditor();
      CHECK_PTR_RET(editor);
  
@@ -174,7 +174,7 @@ index b3ced91bf..0a2515538 100644
 +void MainBook::OnSessionLoaded(clCommandEvent& event) { event.Skip(); }
 +
 diff --git Plugin/globals.cpp Plugin/globals.cpp
-index 1fa41f8db..ae9661351 100644
+index 100970911..6e336cb94 100644
 --- Plugin/globals.cpp
 +++ Plugin/globals.cpp
 @@ -104,6 +104,8 @@
@@ -186,16 +186,16 @@ index 1fa41f8db..ae9661351 100644
  const wxEventType wxEVT_COMMAND_CL_INTERNAL_0_ARGS = ::wxNewEventType();
  const wxEventType wxEVT_COMMAND_CL_INTERNAL_1_ARGS = ::wxNewEventType();
  
-@@ -917,7 +919,7 @@ wxFileName wxReadLink(const wxFileName& filename)
+@@ -928,7 +930,7 @@ wxFileName wxReadLink(const wxFileName& filename)
      if (wxIsFileSymlink(filename)) {
  #if defined(__WXGTK__)
          // Use 'realpath' on Linux, otherwise this breaks on relative symlinks, and (untested) on symlinks-to-symlinks
 -        return wxFileName(CLRealPath(filename.GetFullPath()));
-+        return wxFileName(FileUtils::RealPath(filename.GetFullPath()));
++        return wxFileName(CLRealPath(filename.GetFullPath(), true));
  
  #else  // OSX
          wxFileName realFileName;
-@@ -937,10 +939,14 @@ wxFileName wxReadLink(const wxFileName& filename)
+@@ -948,10 +950,14 @@ wxFileName wxReadLink(const wxFileName& filename)
  #endif
  }
  
@@ -213,7 +213,7 @@ index 1fa41f8db..ae9661351 100644
  
  int wxStringToInt(const wxString& str, int defval, int minval, int maxval)
 diff --git Plugin/globals.h Plugin/globals.h
-index f7c321051..3aecc7b5a 100644
+index 3748406c9..19383391d 100644
 --- Plugin/globals.h
 +++ Plugin/globals.h
 @@ -336,7 +336,7 @@ WXDLLIMPEXP_SDK wxFileName wxReadLink(const wxFileName& filename);

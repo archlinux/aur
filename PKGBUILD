@@ -13,7 +13,7 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=17.12.1.r103.g143ad4724
+pkgver=18.0.0.r0.g3f8fdba59
 pkgrel=1
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
