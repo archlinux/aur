@@ -1,26 +1,103 @@
 # Maintainer: Markus Näther <naether.markus@gmail.com>
 
-# Configuration.
-_fragment=${FRAGMENT:-#branch=master}
-[[ -v CUDA_ARCH ]] && _CUDA_ARCH=(${CUDA_ARCH})
-
-#some extra, unofficially supported stuff goes here:
-_CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
-
 pkgname=bforartists
-pkgver=2.8.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
 url="https://bforartists.de/"
-depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2'
-         'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
-         'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
-optdepends=('cuda: CUDA support in Cycles'
-            'optix: OptiX support in Cycles'
-            'usd=20.05: USD export Scene'
-            'openimagedenoise: Intel Open Image Denoise support in compositing')
-makedepends=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm')
+depends=(
+  'alembic'
+  'bash'
+  'boost-libs'
+  'draco'  # seems to use static lib and should probably only be makedepends
+  'embree'
+  'expat'
+  'ffmpeg'
+  'fftw'
+  'freetype2'
+  'gcc-libs'
+  'glew'
+  'glibc'
+  'gmp'
+  'hicolor-icon-theme'
+  'imath'
+  'intel-oneapi-compiler-dpcpp-cpp-runtime-libs'
+  'intel-oneapi-compiler-shared-runtime-libs'
+  'jack'  # dlopen'ed
+  'jemalloc'
+  'level-zero-loader'  # dlopen'ed
+  'libepoxy'
+  'libharu'
+  'libjpeg-turbo'
+  'libpng'
+  'libsndfile'
+  'libspnav'
+  'libtiff'
+  'libwebp'
+  'libx11'
+  'libxfixes'
+  'libxi'
+  'libxkbcommon'
+  'libxml2'
+  'libxrender'
+  'libxxf86vm'
+  'llvm-libs'
+  'materialx'
+  'onetbb'
+  'openal'
+  'opencolorio'
+  'openexr'
+  'openimagedenoise'
+  'openimageio'
+  'openjpeg2'
+  'openpgl'
+  'openshadinglanguage'
+  'opensubdiv'
+  'openvdb'
+  'openxr'
+  'potrace'
+  'pugixml'
+  'pystring'
+  'python'
+  'python-numpy'
+  'python-requests'
+  'sdl2'  # dlopen'ed
+  'shared-mime-info'
+  'usd'
+  'xdg-utils'
+  'yaml-cpp'
+  'zlib'
+  'zstd'
+)
+makedepends=(
+  'boost'
+  'cmake'
+  'cuda'
+  'git'
+  'git-lfs'
+  'hip-runtime-amd'
+  'hiprt'
+  'intel-oneapi-compiler-shared-runtime'
+  'intel-oneapi-dpcpp-cpp'
+  'intel-compute-runtime'
+  'level-zero-headers'
+  'libdecor'
+  'mold'
+  'llvm'
+  'mesa'
+  'ninja'
+  'subversion'
+  'wayland-protocols'
+)
+optdepends=('cuda: Cycles renderer CUDA support'
+            'intel-compute-runtime: Cycles renderer Intel OneAPI support'
+            'hip-runtime-amd: Cycles renderer AMD ROCm support'
+            'hiprt: Ray tracing AMD ROCm support'
+            'libdecor: wayland support')
+# We're using !lto here as otherwise we get stuff such as FS#77557
+options=('!lto')
+
 provides=('bforartists')
 conflicts=('bforartists')
 license=('GPL')
@@ -30,80 +107,89 @@ license=('GPL')
 # More info:
 #   http://wiki.blender.org/index.php/Dev:Doc/Tools/Git
 source=("https://github.com/Bforartists/Bforartists/archive/v$pkgver.tar.gz"
-        usd_python.patch #add missing python headers when building against python enabled usd.
-        embree.patch #add missing embree link.
+        https://developer.download.nvidia.com/redist/optix/v8.0/OptiX-8.0-Include.zip
+        force-draco1.patch
+        force-draco2.patch
+        ffmpeg-7-1.patch
+        hiprt-lib-path.patch
         )
-sha256sums=('39ccc4f7d2086b6e4433c9d3ed8c2b8ed633f139903b71c0b795baaa13d0bae0'
-            '12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a'
-            'dd04c10b6a9c78849608eebfd1f2a5f2a280b7413a24a7f0337d67bceab90cb4')
 
-#pkgver() {
-  #blender_version=$(grep -Po "BFORARTISTS_VERSION \K[0-9]{3}" "$srcdir"/Bforartists-2.8.0/source/blender/blenkernel/BKE_blender_version.h)
-  #printf "%d.%d.r%s.g%s" \
-  #  $((blender_version/100)) \
-  #  $((blender_version%100)) \
-  #  "$(git -C "$srcdir/Bforartists-2.8.0" rev-list --count HEAD)" \
-  #  "$(git -C "$srcdir/Bforartists-2.8.0" rev-parse --short HEAD)"
-#}
+sha512sums=('c9d864fbfbc528a722c7c60b0a00050671eb5c903cce3aa722bda9cdb08c7886a3f7ff38e663ffab9ea8cfacdaaf4fa6b56657c6f9d6b68a4fbf067e7e7a0937'
+            '5502d9df847de12badc702c0444bd4f1f7620460b2235026df2c3133da1e04c148af0f1fc7f345e9a0c009c32f905f66c8d427743445e8864d3a797cdce6a483'
+            '96098190ac8d7665047fa1d08a116740cee6669e84780876ea06afd7e505bbcb17820533c2f666a368fb2e2b45dc1ab9cc2d08684649a283fde5b3eb66a8a93b'
+            'a3cc13d7fedc4421e9edfa37a29c237c55c74ca29f05d72480369d6bcde4a276f061de0398962d0529decffe69ff3e797b4b2d38e43d7cf73b9d72d1a9d01236'
+            '7ae38743a6ae9d1049c5384d7f0dbd0a2884638e926be7225b280fdc6f232d26aac5cf1529765f7462271c0e5554085930cc374c5fcb2fc298d607ef43e9e283'
+            '52dd6c4496af38505761e559adee556176aa2ad023f073618af77f6c9bc5e3a8faa59c8f259dc92302f7e650740afd2060951129408f1939d29c0901e8ccccae'
+)
 
 prepare() {
   cd "$srcdir/Bforartists-$pkgver"
   # update the submodules
   git submodule update --init --recursive --remote
-  git apply -v "${srcdir}"/{embree,usd_python}.patch
+  # fix draco
+  patch -p1 -i "$srcdir"/force-draco1.patch
+  patch -p1 -i "$srcdir"/force-draco2.patch
+
+  # fix build with ffmpeg 7
+  patch -p1 -i "$srcdir"/ffmpeg-7-1.patch
+
+  patch -p1 -i "$srcdir"/hiprt-lib-path.patch
 }
 
+_get_pyver() {
+  python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
+}
+
+
 build() {
-  _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
+  export CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS/}
 
-  # determine whether we can precompile CUDA kernels
-  _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
-  if [ "$_CUDA_PKG" != "" ]; then
-    _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
-                  -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
-    if [[ -v _CUDA_ARCH ]]; then
-      _CMAKE_FLAGS+=( -DCYCLES_CUDA_BINARIES_ARCH="$(IFS=';'; echo "${_CUDA_ARCH[*]}";)" )
-    fi
-  fi
+  local cmake_options=(
+    -B build
+    -C "Bforartists-$pkgver/build_files/cmake/config/blender_release.cmake"
+    -C "$srcdir/precache"
+    -D CMAKE_BUILD_TYPE=Release
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D WITH_LINKER_MOLD=ON
+    -D CUDA_HOST_COMPILER="$NVCC_CCBIN"
+    -D HIP_ROOT_DIR=/opt/rocm
+    -D WITH_CYCLES_HIP_BIANRIES=ON
+    -D WITH_CYCLES_DEVICE_HIPRT=ON
+    -D HIPRT_INCLUDE_DIR=/opt/rocm/include
+    -D HIP_LINKER_EXECUTABLE=/opt/rocm/lib/llvm/bin/clang++
+    -D OCLOC_INSTALL_DIR=/usr
+    -D OPTIX_ROOT_DIR="$srcdir"
+    -D PYTHON_VERSION="$(_get_pyver)"
+    # -D SYCL_CPP_FLAGS=--verbose  # for debugging
+    -D SYCL_ROOT_DIR=/opt/intel/oneapi/compiler/latest
+    -D SYCL_OFFLINE_COMPILER_PARALLEL_JOBS=8
+    -D USD_ROOT_DIR=/usr
+    -D WITH_CYCLES_OSL=ON
+    -D WITH_INSTALL_PORTABLE=OFF
+    -D WITH_PYTHON_INSTALL=OFF
+    -G Ninja
+    -S "Bforartists-$pkgver"
+    -W no-dev
+  )
 
-  # check for optix
-  _OPTIX_PKG=`pacman -Qq optix 2>/dev/null` || true
-  if [ "$_OPTIX_PKG" != "" ]; then
-      _CMAKE_FLAGS+=( -DWITH_CYCLES_DEVICE_OPTIX=ON
-                      -DOPTIX_ROOT_DIR=/opt/optix )
-  fi
+  # CUDA arch 90 is unsupported
+  echo 'set(CYCLES_CUDA_BINARIES_ARCH sm_52 sm_53 sm_60 sm_61 sm_62 sm_70 sm_72 sm_75 sm_80 sm_86 sm_87 sm_89 compute_89 CACHE STRING "CUDA architectures to build binaries for" FORCE)' > precache
+  echo 'mark_as_advanced(CYCLES_CUDA_BINARIES_ARCH)' >> precache
 
-  # check for open image denoise
-  _OIDN_PKG=`pacman -Qq openimagedenoise 2>/dev/null` || true
-  if [ "$_OIDN_PKG" != "" ]; then
-      _CMAKE_FLAGS+=( -DWITH_OPENIMAGEDENOISE=ON )
-  fi
-
-  # check for universal scene descriptor
-  _USD_PKG=`pacman -Qq usd=20.05 2>/dev/null` || true
-  if [ "$_USD_PKG" != "" ]; then
-    _CMAKE_FLAGS+=( -DWITH_USD=ON
-                    -DUSD_ROOT=/usr )
-  fi
-
-  cmake -G Ninja -S "$srcdir/Bforartists-$pkgver" -B build \
-        -C "${srcdir}/Bforartists-$pkgver/build_files/cmake/config/blender_release.cmake" \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DWITH_INSTALL_PORTABLE=OFF \
-        -DWITH_SYSTEM_GLEW=ON \
-        -DWITH_PYTHON_INSTALL=OFF \
-        -DPYTHON_VERSION="${_pyver}" \
-        "${_CMAKE_FLAGS[@]}"
-  ninja -C "$srcdir/build" ${MAKEFLAGS:--j $(nproc)}
+  cmake "${cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  _suffix=${pkgver%%.r*}
-  DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
+  DESTDIR="${pkgdir}" cmake --install build
+  #cd "$pkgname"
 
-  if [[ -e "$pkgdir/usr/share/bforartists/${_suffix}/scripts/addons/cycles/lib/" ]] ; then
-    # make sure the cuda kernels are not stripped
-    chmod 444 "$pkgdir"/usr/share/bforartists/${_suffix}/scripts/addons/cycles/lib/*
-  fi
+  # Manually install draco bindings (See FS#73415)
+  mkdir -p "${pkgdir}"/usr/lib
+  mkdir -p "${pkgdir}/usr/lib/python$(_get_pyver)"/
+  mv "${pkgdir}"/usr/share/bforartists/4*/python/lib/* "${pkgdir}"/usr/lib/
+  rm -r "${pkgdir}"/usr/share/bforartists/4*/python
+
+  # Move OneAPI AOT lib to proper place
+  mv "${pkgdir}"/usr/share/bforartists/lib/libcycles_kernel_oneapi_aot.so "${pkgdir}"/usr/lib/
 }
