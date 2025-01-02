@@ -1,12 +1,14 @@
 pkgbase = proxsuite
 	pkgdesc = The Advanced Proximal Optimization Toolbox
 	pkgver = 0.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Simple-Robotics/proxsuite
 	arch = any
 	license = BSD-2-Clause
 	checkdepends = libmatio
 	makedepends = cmake
+	makedepends = graphviz
+	makedepends = git
 	depends = eigen
 	depends = simde
 	source = https://github.com/Simple-Robotics/proxsuite/releases/download/v0.6.7/proxsuite-0.6.7.tar.gz

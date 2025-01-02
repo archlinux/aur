@@ -4,14 +4,14 @@ _org='Simple-Robotics'
 _pkgname='proxsuite'
 pkgname=("$_pkgname" "$_pkgname-docs")
 pkgver=0.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The Advanced Proximal Optimization Toolbox"
 arch=('any')
 url="https://github.com/$_org/$_pkgname"
 license=('BSD-2-Clause')
 depends=('eigen' 'simde')
 optdepends=()
-makedepends=('cmake' 'graphviz')
+makedepends=('cmake' 'graphviz' 'git')
 checkdepends=('libmatio')
 source=(
         $url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz{,.sig}
