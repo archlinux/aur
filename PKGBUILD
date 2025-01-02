@@ -3,7 +3,7 @@
 pkgname=openmv-ide-bin
 _pkgname=${pkgname%-bin}
 pkgver=4.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="QtCreator based OpenMV IDE."
 arch=('x86_64')
 url="https://github.com/openmv/openmv-ide"
@@ -60,7 +60,7 @@ package() {
 
   # soft link
   install -dm755 ${pkgdir}/usr/bin
-  ln -s /opt/${_pkgname}/bin/${_pkgname/-}.sh ${pkgdir}/usr/bin/${_pkgname/-}
+  ln -s /opt/${_pkgname}/bin/${_pkgname/-} ${pkgdir}/usr/bin/${_pkgname/-}
 
   # udev rule
   install -Dm644 share/qtcreator/pydfu/{99-openmv,99-openmv-arduino,99-openmv-nxp}.rules -t\

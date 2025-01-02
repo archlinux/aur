@@ -1,7 +1,7 @@
 pkgbase = openmv-ide-bin
 	pkgdesc = QtCreator based OpenMV IDE.
 	pkgver = 4.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openmv/openmv-ide
 	arch = x86_64
 	license = MIT
