@@ -93,9 +93,6 @@ prepare() {
 
 build() {
   # Using clang and lld as suggested by the repo
-  export CC=clang CXX=clang++
-  export CFLAGS+=' -flto=thin' CXXFLAGS+=' -flto=thin'
-  export LDFLAGS+=' -fuse-ld=lld -Wl,--thinlto-jobs=all'
   cmake -S $_pkgname -B build \
     -DBUILD_TESTING=0 \
     -DJPEGXL_ENABLE_DEVTOOLS=ON \
@@ -107,16 +104,18 @@ build() {
     -DJPEGXL_FORCE_SYSTEM_LCMS2=TRUE \
     -DJPEGXL_FORCE_SYSTEM_GTEST=TRUE \
     -DJPEGXL_FORCE_SYSTEM_HWY=TRUE \
-    -DCMAKE_C_FLAGS="$CFLAGS" \
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
-    -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
+    -DCMAKE_C_COMPILER=clang \
+    -DCMAKE_C_FLAGS="$CFLAGS -flto=thin" \
+    -DCMAKE_CXX_COMPILER=clang++ \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=thin" \
+    -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -fuse-ld=lld -Wl,--thinlto-jobs=all" \
     -DCMAKE_INSTALL_PREFIX=/usr
   make -C build "$MAKEFLAGS"
 }
 
 package() {
   DESTDIR="$pkgdir" make -C build install
-  install -D -m644 $_pkgname/{LICENSE,PATENTS} -t "$pkgdir/usr/share/licenses/$_pkgname"
+  install -Dm644 $_pkgname/{LICENSE,PATENTS} -t "$pkgdir/usr/share/licenses/$_pkgname"
   ln -s /usr/bin/butteraugli_main "$pkgdir/usr/bin/butteraugli"
   ln -s /usr/bin/ssimulacra_main "$pkgdir/usr/bin/ssimulacra"
 }
