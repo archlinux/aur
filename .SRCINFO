@@ -1,6 +1,6 @@
 pkgbase = cmake-language-server-git
 	pkgdesc = Python based cmake language server
-	pkgver = v0.1.7.r1.gcd7ba40
+	pkgver = v0.1.10.r4.g3e5e867
 	pkgrel = 1
 	url = https://github.com/regen100/cmake-language-server
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = cmake-language-server-git
 	makedepends = git
 	makedepends = python-pdm
 	makedepends = python-pdm-pep517
+	makedepends = python-pdm-backend
 	depends = python-pygls
 	depends = python-pyparsing
 	depends = cmake
