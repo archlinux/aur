@@ -1,7 +1,7 @@
 pkgbase = linrad
 	pkgdesc = Software defined radio receiver for x11
 	pkgver = 05.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sm5bsz.com/linuxdsp/linrad.htm
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = linrad
 	depends = bash
 	depends = libx11
 	optdepends = hamradio-menus: XDG menus for ham radio software
+	provides = xlinrad=05.02
+	conflicts = xlinrad
 	source = linrad-05.02.tbz::https://www.sm5bsz.com/linuxdsp/archive/lir05-02.tbz
 	source = linrad.desktop
 	source = linrad-wrapper.sh

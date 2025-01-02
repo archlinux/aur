@@ -4,7 +4,7 @@
 
 pkgname=linrad
 pkgver=05.02
-pkgrel=1
+pkgrel=2
 pkgdesc="Software defined radio receiver for x11"
 arch=('i686' 'x86_64')
 url="https://www.sm5bsz.com/linuxdsp/linrad.htm"
@@ -20,6 +20,8 @@ sha512sums=('c3ead1c91c6224ac63978f14d1f03979fcf825b89f33583805981dfc8200ff91f44
             '7b4d462d422b15c7c9249544d0792cd9f9902ceb10708770b8594f7cfa226b8aca2617168bcfb88861d6db76e7d573ea86812c3ab20d1ae4c8a2e92ee832e3e7'
             '1c661e4bea550ae496af121fc1c658cccc1fbe15c4aecb783641064729d5593f501fb977dff310739c9e303d4869ddafb36df3290c242df139560e6cbd4c661a'
             '03a79d0d28ee0685c452cc8239c85a6d389dfb2ad95d731ed5b3db71f588027a1d0e507a2108d9b2c0ab6d524239bdbfcb37f88cccee2e34163d4a91447cc1ac')
+provides=("xlinrad=$pkgver")
+conflicts=('xlinrad')
 
 prepare() {
   cd "$pkgname-$pkgver"
