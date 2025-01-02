@@ -1,0 +1,4 @@
+[aescrypt]
+source = "git"
+git = "https://github.com/terrapane/aescrypt_cli.git"
+prefix = "v"

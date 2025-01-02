@@ -1,3 +1,5 @@
-/pkg
-/src
-/*.pkg.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
