@@ -1,4 +1,5 @@
 # Maintainer: Vojtěch Sajdl <vojtech@sajdl.com>
+# Contributor: liolok <aur@liolok.com>
 _name="middleclickclose"
 _uuid="middleclickclose@paolo.tranquilli.gmail.com"
 
@@ -12,6 +13,7 @@ license=('GPL2')
 depends=("gnome-shell")
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('281cb86e55bdcf63c9cae5442c1d9ed73a86ae2a1144efaf595c61e5658f4212')
+conflicts=('gnome-shell-extension-middleclickclose-git')
 
 package() {
     local _source="${_name}-${pkgver}/src"
