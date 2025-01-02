@@ -2,14 +2,14 @@
 
 pkgname="cunicu"
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A zeroconf peer-to-peer mesh VPN using Wireguard® and Interactive Connectivity Establishment (ICE)"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
 url="https://cunicu.li"
 # _url="https://github.com/${pkgname}/${pkgname}"
 _url="https://codeberg.org/${pkgname}/${pkgname}"
 license=('Apache-2.0')
-depends=('gcc-libs' 'glibc')
+depends=('glibc')
 makedepends=('git' 'go' 'protoc-gen-go' 'protoc-gen-go-grpc')
 optdepends=('wireguard-tools: for controlling WireGuard interfaces')
 _pkgsrc="${pkgname}-${pkgver}"
@@ -67,4 +67,5 @@ package() {
 
   cd "${srcdir}/${_pkgsrc}/etc/systemd"
   install -vDm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/${pkgname}.service"
+  install -vDm644 "${pkgname}.socket"  "${pkgdir}/usr/lib/systemd/${pkgname}.socket"
 }
