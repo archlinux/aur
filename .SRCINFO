@@ -1,7 +1,7 @@
 pkgbase = nature-sounds
 	pkgdesc = A lightweight, nature sounds player for the command-line.
-	pkgver = 0.2.1
-	pkgrel = 2
+	pkgver = 0.2.3
+	pkgrel = 1
 	url = https://github.com/jmelahman/nature-sounds
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = nature-sounds
 	makedepends = git
 	makedepends = go
 	depends = alsa-utils
-	source = nature-sounds::git+https://github.com/jmelahman/nature-sounds.git#commit=9eb12bb0f77fd90341c5f4d66dd1520aa816bee1
+	source = nature-sounds::git+https://github.com/jmelahman/nature-sounds.git#commit=e5c3d59c045b3b0cfe62bb535f55b32312213ade
 	md5sums = SKIP
 
 pkgname = nature-sounds
