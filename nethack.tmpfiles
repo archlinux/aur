@@ -1,0 +1,5 @@
+d /var/games 0775 root games
+d /var/games/nethack 0775 root games
+z /var/games/nethack/* 0775 root games
+z /usr/lib/nethack/nethack 2755 root games
+z /var/games/nethack/save 2775 root games
