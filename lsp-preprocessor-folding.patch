@@ -1,14 +1,14 @@
 diff --git a/clang-tools-extra/clangd/SemanticSelection.cpp b/clang-tools-extra/clangd/SemanticSelection.cpp
-index 3d687173b2be99..d2aefb51fd49ac 100644
+index dd7116e619e6..57e7ff8b97c6 100644
 --- a/clang-tools-extra/clangd/SemanticSelection.cpp
 +++ b/clang-tools-extra/clangd/SemanticSelection.cpp
 @@ -220,6 +220,24 @@ getFoldingRanges(const std::string &Code, bool LineFoldingOnly) {
-   auto EndPosition = [&](const pseudo::Token &T) {
+   auto EndPosition = [&](const Token &T) {
      return offsetToPosition(Code, EndOffset(T));
    };
 +
 +  // Preprocessor directives
-+  auto PPRanges = pseudo::pairDirectiveRanges(DirectiveStructure, OrigStream);
++  auto PPRanges = pairDirectiveRanges(DirectiveStructure, OrigStream);
 +  for (const auto &R : PPRanges) {
 +    auto BTok = OrigStream.tokens()[R.Begin];
 +    auto ETok = OrigStream.tokens()[R.End];
@@ -27,28 +27,14 @@ index 3d687173b2be99..d2aefb51fd49ac 100644
    auto Tokens = ParseableStream.tokens();
    // Brackets.
    for (const auto &Tok : Tokens) {
-diff --git a/clang-tools-extra/pseudo/include/clang-pseudo/DirectiveTree.h b/clang-tools-extra/pseudo/include/clang-pseudo/DirectiveTree.h
-index 2b6cb63297915d..2e5f007f94a764 100644
---- a/clang-tools-extra/pseudo/include/clang-pseudo/DirectiveTree.h
-+++ b/clang-tools-extra/pseudo/include/clang-pseudo/DirectiveTree.h
-@@ -124,6 +124,9 @@ llvm::raw_ostream &operator<<(llvm::raw_ostream &,
- /// The choices are stored in Conditional::Taken nodes.
- void chooseConditionalBranches(DirectiveTree &, const TokenStream &Code);
-
-+std::vector<Token::Range> pairDirectiveRanges(const DirectiveTree &Tree,
-+                                              const TokenStream &Code);
-+
- } // namespace pseudo
- } // namespace clang
-
-diff --git a/clang-tools-extra/pseudo/lib/DirectiveTree.cpp b/clang-tools-extra/pseudo/lib/DirectiveTree.cpp
-index 9e853e46edc232..4882f018906548 100644
---- a/clang-tools-extra/pseudo/lib/DirectiveTree.cpp
-+++ b/clang-tools-extra/pseudo/lib/DirectiveTree.cpp
-@@ -353,5 +353,59 @@ TokenStream DirectiveTree::stripDirectives(const TokenStream &In) const {
+diff --git a/clang-tools-extra/clangd/support/DirectiveTree.cpp b/clang-tools-extra/clangd/support/DirectiveTree.cpp
+index 7ea08add7a10..2a4448902df5 100644
+--- a/clang-tools-extra/clangd/support/DirectiveTree.cpp
++++ b/clang-tools-extra/clangd/support/DirectiveTree.cpp
+@@ -356,5 +356,59 @@ TokenStream DirectiveTree::stripDirectives(const TokenStream &In) const {
    return Out;
  }
-
+ 
 +namespace {
 +class RangePairer {
 +  std::vector<Token::Range> &Ranges;
@@ -103,5 +89,19 @@ index 9e853e46edc232..4882f018906548 100644
 +  return std::move(Ranges);
 +}
 +
- } // namespace pseudo
+ } // namespace clangd
  } // namespace clang
+diff --git a/clang-tools-extra/clangd/support/DirectiveTree.h b/clang-tools-extra/clangd/support/DirectiveTree.h
+index 34f5a888863f..1a377f5e0640 100644
+--- a/clang-tools-extra/clangd/support/DirectiveTree.h
++++ b/clang-tools-extra/clangd/support/DirectiveTree.h
+@@ -124,6 +124,9 @@ llvm::raw_ostream &operator<<(llvm::raw_ostream &,
+ /// The choices are stored in Conditional::Taken nodes.
+ void chooseConditionalBranches(DirectiveTree &, const TokenStream &Code);
+ 
++std::vector<Token::Range> pairDirectiveRanges(const DirectiveTree &Tree,
++                                              const TokenStream &Code);
++
+ } // namespace clangd
+ } // namespace clang
+ 

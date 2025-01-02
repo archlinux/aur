@@ -111,6 +111,11 @@
 # CLANGD_INLAYHINTSIGNOREEVIDENT:
 #   'n' - do not apply this patch
 #   'y' - apply this patch
+#
+# Implement simple folding of preprocessor branches (PR: 80592)
+# CLANGD_PREPROCESSOR_FOLDING:
+#   'n' - do not apply this patch
+#   'y' - apply this patch
 
 : ${CLANGD_DEFAULT_PATCH_STATE:=n}
 : ${CLANGD_USER_PATCHES:=y}
@@ -133,9 +138,10 @@
 : ${CLANGD_IMPL_ABSTRACT_CLASS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERFIELDIDX:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_INLAYHINTSIGNOREEVIDENT:=$CLANGD_DEFAULT_PATCH_STATE}
+: ${CLANGD_PREPROCESSOR_FOLDING:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt-git
-pkgver=20.r16541.g2a90efd854f5
+pkgver=20.r16552.g1a0d0ae23454
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -169,7 +175,8 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=main"
     'hover-record-paddings.patch'
     'implement-abstract-class.patch'
     'hover-field-idx.patch'
-    'inlay-hints-hide-deduced-types-ignore-evident.patch')
+    'inlay-hints-hide-deduced-types-ignore-evident.patch'
+    'lsp-preprocessor-folding.patch')
 sha256sums=('SKIP'
     '56ce56294fe225c9b6a57a2da016115ed1cd9234c1d149ac205e43d945c8f4f9'  # hover-doxygen-trunk
     '614dd012009facb502a7d44e07fc819aa95383c8917537c57968f76ba7881a94'  # doxygen-extra-render-trunk
@@ -191,7 +198,8 @@ sha256sums=('SKIP'
     '0f5f7cc7f984988824bca66a2d08b0fa2b1b6ccdfcc1917e5cb0ed810036cfe7'  # hover-record-paddings
     '9dceaa36e551e13c4145b45baf694b04369ed525e34baa3b7f14c15f3e248e5f'  # implement-abstract-class
     '4531b804507d11e1918858551575fee81605dbac0617d7b22f335b10642e782d'  # hover-field-idx
-    'ab61be8aae9e2e2f5bb090926912154fe14a77245dcd25aec5c0c447ee7a67ea') # inlay-hints-hide-deduced-types-ignore-evident
+    'ab61be8aae9e2e2f5bb090926912154fe14a77245dcd25aec5c0c447ee7a67ea'  # inlay-hints-hide-deduced-types-ignore-evident
+    'f943364e9813eb65371f0bfb02251dbc4e5a293575dc5c4b7630dacbf0ded74b') # lsp-preprocessor-folding
 
 pkgver() {
     cd llvm-project
@@ -245,6 +253,9 @@ prepare() {
     fi
     if [ "$CLANGD_LSPREMOVEFROMCDB" != "n" ]; then
         apply_patch lsp-remove-files-from-cdb
+    fi
+    if [ "$CLANGD_PREPROCESSOR_FOLDING" != "n" ]; then
+        apply_patch lsp-preprocessor-folding
     fi
 
     # Code-completion patches
