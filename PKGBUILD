@@ -1,18 +1,40 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgsubn=vimium
-pkgname=chromium-vimium
-pkgver=2.1.2
+# Maintainer: Devilish Crow <devilishcrow@mail14.serv00.net>
+pkgname=openscap-git
+pkgver=1.4
 pkgrel=1
-pkgdesc="Browser extension that provides keyboard-based navigation (unpacked)"
-arch=('any')
-url="https://github.com/philc/vimium"
-license=('MIT')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+pkgdesc="NIST Certified SCAP 1.2 toolkit"
+arch=('x86_64')
+url="https://www.open-scap.org/tools/openscap-base/"
+license=('LGPL-2.1-only')
+depends=('dbus' 'acl' 'util-linux' 'libcap' 'curl' 'libgcrypt' 'libxml2' 'libxslt' 
+	'attr' 'openldap' 'pcre2' 'perl' 'python3' 'rpm' 'swig' 'bzip2' 'yaml-cpp' 'xmlsec')
+makedepends=('git' 'cmake' 'gcc')
+provides=('openscap')
+conflicts=('openscap')
+source=("git+https://github.com/OpenSCAP/openscap.git")
 sha256sums=('SKIP')
 
-package() {
-    mkdir -p "$pkgdir/usr/share/"
+pkgver() {
+    cd openscap
+    git describe --long --tags | sed 's/-/./g' | sed 's/^v//'
+}
 
-    cd "$pkgsubn-$pkgver"
-    cp -r --no-preserve=ownership . "$pkgdir/usr/share/$pkgname-$pkgver"
+build() {
+  local cmake_options=(
+    -B build
+    -S openscap
+    -W no-dev
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build
+ 
+  cd build
+  make
+}
+
+package() {
+    cd build
+    make DESTDIR="$pkgdir" install
 }
