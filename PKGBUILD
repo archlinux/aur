@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=spotx-git
-pkgver=r153+gfa0ea870b
+pkgver=r154+ge0fd4704b
 pkgrel=2
 pkgdesc="SpotX Bash Script | Block all audio, banner & video ads | Block logging"
 arch=('any')
