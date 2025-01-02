@@ -4,7 +4,7 @@
 
 _pkgname=dbeaver
 pkgname=${_pkgname}-git
-pkgver=24.2.3.214.geb7896317b
+pkgver=24.2.3.265.g5c0cd0c580
 pkgrel=1
 pkgdesc='Free universal SQL Client for developers and database administrators. Community Edition. Git version.'
 arch=('x86_64')
@@ -56,9 +56,6 @@ prepare() {
 		gzip -9 >"${srcdir}/${pkgname}.profile.gz"
 
 	cd "${srcdir}/${_pkgname}"
-
-	# Skip broken test.platform
-	sed -i '/org.jkiss.dbeaver.test.platform/d' test/pom.xml
 
 	export MAVEN_OPTS="-Xmx2048m"
 	mvn --batch-mode validate

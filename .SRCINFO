@@ -1,6 +1,6 @@
 pkgbase = dbeaver-git
 	pkgdesc = Free universal SQL Client for developers and database administrators. Community Edition. Git version.
-	pkgver = 24.2.3.214.geb7896317b
+	pkgver = 24.2.3.265.g5c0cd0c580
 	pkgrel = 1
 	url = https://dbeaver.io
 	install = dbeaver.install
@@ -16,7 +16,7 @@ pkgbase = dbeaver-git
 	optdepends = dbeaver-plugin-office: To export data in Microsoft Office Excel format
 	optdepends = dbeaver-plugin-svg-format: To save diagrams in SVG format
 	optdepends = webkit2gtk: To preview spatial data
-	provides = dbeaver=24.2.3.214.geb7896317b
+	provides = dbeaver=24.2.3.265.g5c0cd0c580
 	conflicts = dbeaver
 	source = git+https://github.com/dbeaver/dbeaver.git
 	source = git+https://github.com/dbeaver/dbeaver-common.git
