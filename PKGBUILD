@@ -5,14 +5,14 @@ pkgrel=1
 pkgdesc="A waveform viewer with a focus on a snappy usable interface, and extensibility."
 arch=('x86_64')
 url="https://gitlab.com/surfer-project/surfer"
-license=('EUPL')
+license=('EUPL-1.2')
 groups=()
 depends=('openssl' 'python')
 makedepends=('rust' 'cargo' 'git' 'desktop-file-utils' 'gcc' 'binutils')
 checkdepends=('fontconfig' 'freetype2')
 optdepends=()
 provides=('surfer-waveform')
-conflicts=()
+conflicts=('surfer-waveform')
 replaces=()
 backup=()
 options=(!lto)
@@ -22,11 +22,11 @@ source=('surfer-waveform-git::git+https://gitlab.com/surfer-project/surfer#branc
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
-pkgver=v0.2.0.r156.gc008d28
+pkgver=0.3.0.r13.gdcee591
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -40,6 +40,7 @@ build() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
     cargo build --frozen --release --all-features
 }
 
