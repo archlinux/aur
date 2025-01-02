@@ -1,0 +1,25 @@
+pkgbase = zimtohrli-git
+	pkgdesc = A psychoacoustic perceptual metric for audio compression
+	pkgver = 0.1.10.r65.8b64aaf
+	pkgrel = 1
+	url = https://github.com/google/zimtohrli
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = python
+	makedepends = ninja
+	makedepends = clang
+	makedepends = llvm
+	depends = glfw
+	depends = alsa-lib
+	optdepends = flac
+	optdepends = libvorbis
+	optdepends = opus
+	optdepends = mpg123
+	provides = zimtohrli
+	conflicts = zimtohrli
+	source = zimtohrli::git+https://github.com/google/zimtohrli.git
+	sha256sums = SKIP
+
+pkgname = zimtohrli-git
