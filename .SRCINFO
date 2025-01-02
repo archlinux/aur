@@ -1,8 +1,9 @@
 pkgbase = python-future
 	pkgdesc = Clean single-source support for Python 3 and 2
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://python-future.org/
+	install = future.install
 	arch = any
 	license = MIT
 	makedepends = python-build
