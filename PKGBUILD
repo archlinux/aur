@@ -2,7 +2,7 @@
 _pkgname=aliae
 _repo="JanDeDobbeleer/$_pkgname"
 pkgname="$_pkgname-bin"
-pkgver=0.26.0
+pkgver=0.26.3
 pkgrel=1
 _filename="$_pkgname-$pkgver-$pkgrel"
 pkgdesc="Cross shell and platform alias management"
@@ -28,9 +28,9 @@ source_armv7h=("$_filename::https://github.com/$_repo/releases/download/v$pkgver
 source_aarch64=("$_filename::https://github.com/$_repo/releases/download/v$pkgver/$_pkgname-linux-arm64")
 noextract=()
 sha256sums=('df419cb226a6174d115f4306653312cb924e47c8e87209243ecb76a4031355cf')
-sha256sums_x86_64=('61e7bbadf73ac3c0d9479d5de01a79087a78569a867211ab248f10a1073af827')
-sha256sums_armv7h=('61e7bbadf73ac3c0d9479d5de01a79087a78569a867211ab248f10a1073af827')
-sha256sums_aarch64=('61e7bbadf73ac3c0d9479d5de01a79087a78569a867211ab248f10a1073af827')
+sha256sums_x86_64=('1ab228e91fb16ed3e7f7d0766b460c15c3cbf9baa5a2233a8eb3e2804d26d6c8')
+sha256sums_armv7h=('1ab228e91fb16ed3e7f7d0766b460c15c3cbf9baa5a2233a8eb3e2804d26d6c8')
+sha256sums_aarch64=('1ab228e91fb16ed3e7f7d0766b460c15c3cbf9baa5a2233a8eb3e2804d26d6c8')
 
 pkgver() {
     curl --silent -L "https://api.github.com/repos/$_repo/releases/latest" | # Get latest release from GitHub api
