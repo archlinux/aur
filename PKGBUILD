@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=swarm-desktop
 _pkgname="Swarm Desktop"
-pkgver=0.46.0
+pkgver=0.47.0
 _electronversion=18
 _nodeversion=18
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('733b46089c15db185285bcb8cf4f527fa66efc8fca71c847a6b0686a7f261cf3'
+sha256sums=('44de97034d0ed53d3c2b36fdae1158a02896777ee7b9894aea620a8d5e0a57da'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -37,7 +37,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -75,6 +75,8 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}/ui"
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build
+}
+build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     npm run package
 }
