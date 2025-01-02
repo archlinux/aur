@@ -2,12 +2,11 @@
 # Contributor: Darvin Delgado <dnmodder@gmail.com>
 # Contributor: Mesmer <mesmer@fisica.if.uff.br>
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
-# Contributor: aldelaro5 <aldelaro5@gmail.com>
 
 _pkgname="decaf-emu"
 pkgname="$_pkgname-git"
 pkgver=r5222.e6c528a
-pkgrel=2
+pkgrel=3
 pkgdesc="An experimental open-source Nintendo Wii U emulator"
 url="https://github.com/decaf-emu/decaf-emu"
 license=('GPL-3.0-or-later')
@@ -140,8 +139,12 @@ prepare() {
   done
 
   cd "$srcdir/$_pkgname"
-  sed -E -e 's&vk::resultCheck&vk::detail::resultCheck&' \
-    -i src/libgpu/src/vulkan/vulkan_driver.h
+  sed -E \
+    -e 's&vk::resultCheck&vk::detail::resultCheck&' \
+    -e 's&vk::DispatchLoaderDynamic&vk::detail::DispatchLoaderDynamic&' \
+    -i src/libgpu/src/vulkan/vulkan_driver.h \
+    src/libgpu/src/vulkan/vulkan_debug.cpp \
+    src/libgpu/src/vulkan/vulkan_display.cpp
 }
 
 build() {
