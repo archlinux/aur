@@ -1,0 +1,15 @@
+pkgbase = libblkmaker
+	pkgdesc = MIT-licensed C implementation of getblocktemplate
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/bitcoin/libblkmaker
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcrypt
+	depends = jansson
+	depends = libbase58
+	source = libblkmaker-0.6.0.tar.gz::https://github.com/bitcoin/libblkmaker/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 8367852bbcb0e37cfd02cc882448b6bbf816c3a3c284624b435e3e07c79d5ef2
+
+pkgname = libblkmaker
