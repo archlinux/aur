@@ -1,6 +1,6 @@
 pkgbase = gh-skyline
 	pkgdesc = Generate 3D models of your GitHub contribution history
-	pkgver = 0.0.4
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/github/gh-skyline
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = gh-skyline
 	depends = openssl
 	depends = glibc
 	depends = ttf-mona-sans
-	source = gh-skyline-0.0.4.tar.gz::https://github.com/github/gh-skyline/archive/v0.0.4.tar.gz
-	sha256sums = 14e3e85b40626801303ec45e9c743b848caca097f75ac27ab87fa91ff1a7b676
+	source = gh-skyline-0.1.0.tar.gz::https://github.com/github/gh-skyline/archive/v0.1.0.tar.gz
+	sha256sums = d675902202fe6e95afcdb08ec21b0568f0e978ccda403f09d71e8b0011c47912
 
 pkgname = gh-skyline
