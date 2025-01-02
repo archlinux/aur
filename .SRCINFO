@@ -1,0 +1,19 @@
+pkgbase = ttf-openttd
+	pkgdesc = OpenTTD TrueType typefaces
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/zephyris/openttd-ttf
+	arch = any
+	license = GPL-2.0-only
+	source = https://github.com/zephyris/openttd-ttf/releases/download/0.6/OpenTTD-Mono.ttf
+	source = https://github.com/zephyris/openttd-ttf/releases/download/0.6/OpenTTD-Sans.ttf
+	source = https://github.com/zephyris/openttd-ttf/releases/download/0.6/OpenTTD-Serif.ttf
+	source = https://github.com/zephyris/openttd-ttf/releases/download/0.6/OpenTTD-Small.ttf
+	source = https://github.com/zephyris/openttd-ttf/releases/download/0.6/OpenTTD-SmallCaps.ttf
+	sha256sums = 71d08887a117f96eea08b39467eeae5ea6ea2e897b955f79de5e05485e0c0405
+	sha256sums = 61b4fd45d9693f175667a1f366d3b7c5c90edd079227fb5072b33c54d8def17b
+	sha256sums = 05f26a3e563846eafb908d5c8f05d350449a001bf96bab912fa77c97863e4704
+	sha256sums = a66353b153520f1a45bc6ce9738fd4cad7f0a50c2cefec12b5293885932f850a
+	sha256sums = e7df00771fd6e0b9dd35d406b7a40fbf1f193722248cafae16684d3bc8fd0b5a
+
+pkgname = ttf-openttd
