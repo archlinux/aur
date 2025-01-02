@@ -2,7 +2,7 @@
 pkgname=aylurs-gtk-shell
 _pkgname=ags
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system."
 arch=('x86_64')
 url="https://github.com/Aylur/ags"
@@ -26,6 +26,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOPATH="$srcdir"
   go build -o ${_pkgname}
 }
 
