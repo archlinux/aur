@@ -7,7 +7,7 @@ pkgdesc="Open Type Antiqua Półtawskiego, a typeface designed by Adam Połtawsk
 arch=('any')
 url="http://jmn.pl/en/antykwa-poltawskiego"
 license=('CUSTOM')
-depends=('fontconfig' 'xorg-font-utils')
+depends=()
 source=("ap1.101otf.zip::http://jmn.pl/download/ap1.101otf.zip")
 sha256sums=('0e13bd202a95da792fc9147c53b69b57b6d67fcd02d9412a74e87360b4f669c9')
 
