@@ -1,0 +1,15 @@
+pkgbase = python-urwidgets
+	pkgdesc = A collection of widgets for urwid
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/AnonymouX47/urwidgets
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-urwid
+	source = https://files.pythonhosted.org/packages/source/u/urwidgets/urwidgets-0.2.1.tar.gz
+	sha256sums = f9f2bcd2949da1105c287806dab773aa7bdf5852226cdb128aaf3004136f3eef
+
+pkgname = python-urwidgets
