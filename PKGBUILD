@@ -2,7 +2,7 @@
 # Maintainer: Liberty Raptor <libertyraptor@protonmail.com>
 
 pkgname=flycast-stable-bin
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Fycast Dreamcast Emulator"
 arch=('x86_64')
@@ -13,8 +13,8 @@ conflicts=('flycast' 'flycast-git' 'flycast-bin')
 options=('!strip')
 makedepends=('gendesk')
 noextract=("${pkgname%-stable-bin}-${pkgver}.AppImage")
-source=("${pkgname%-stable-bin}-${pkgver}.AppImage::https://github.com/flyinghead/flycast/releases/download/V2.1/flycast-x86_64.AppImage")
-sha256sums=('582184502f4f627528b959262a239c821c4e43280eeba13e9f08b6a4e489340e')
+source=("${pkgname%-stable-bin}-${pkgver}.AppImage::https://github.com/flyinghead/flycast/releases/download/v2.2/flycast-x86_64.AppImage")
+sha256sums=('954efda76428eb490c61ad85b1ed29e3dd09cb1a5771822c35bb0f80bafec56f')
 
 package() {
   chmod 755 ./${pkgname%-stable-bin}-${pkgver}.AppImage
