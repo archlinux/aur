@@ -1,7 +1,7 @@
 pkgbase = dosbox-x-sdl2-git
 	pkgdesc = x86 emulator with builtin DOS, with patches with more features - sdl2 git version
 	pkgver = 2025.01.01.r0.g895fca367
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 3
 	url = https://dosbox-x.com/
 	install = dosbox-x.install
@@ -17,6 +17,8 @@ pkgbase = dosbox-x-sdl2-git
 	depends = sdl2_net
 	depends = libslirp
 	depends = libpng
+	depends = libpcap
+	optdepends = openglide-git: Third-party 3dfx Glide API support
 	conflicts = dosbox-x-sdl2
 	conflicts = dosbox-x-git
 	conflicts = dosbox-x
