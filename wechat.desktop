@@ -12,7 +12,7 @@ Keywords=wechat;weixin;we;w;
 Keywords[zh_CN]=微;微信;wechat;weixin;we;w;
 X-GNOME-SingleWindow=true
 SingleMainWindow=true
-Actions=nosandbox;opendir;
+Actions=nosandbox;opendir;quit;share;
 StartupWMClass=wechat
 StartupNotify=true
 X-Flatpak-RenamedFrom=wechat.desktop;
@@ -29,4 +29,16 @@ Icon=security-low-symbolic
 Name=Open WeChat Home
 Name[zh_CN]=打开数据目录
 Exec=/usr/bin/wechat.sh --actions opendir
+Icon=go-home-symbolic
+
+[Desktop Action share]
+Name=Share files with WeChat
+Name[zh_CN]=向微信传输文件
+Exec=/usr/bin/wechat.sh --actions share-files
 Icon=insert-image-symbolic
+
+[Desktop Action quit]
+Name=Quit WeChat
+Name[zh_CN]=退出微信
+Exec=/usr/bin/wechat.sh --actions quit
+Icon=system-log-out-symbolic
