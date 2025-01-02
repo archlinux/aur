@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=girens
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Plex GTK client for playing movies, TV shows and music from your Plex library."
 arch=('any')
 url="https://gitlab.gnome.org/tijder/girens"
@@ -24,7 +24,6 @@ depends=(
   'python-mpv'
   'python-opengl'
   'python-requests'
-  'python-six'
   'python-tqdm'
   'python-urllib3'
   'python-websocket-client'
