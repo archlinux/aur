@@ -1,0 +1,3 @@
+[python-sdbus]
+source = "pypi"
+pypi = "sdbus"
