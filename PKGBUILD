@@ -3,7 +3,7 @@
 
 _pkgname=btdu
 pkgname="$_pkgname-bin"
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=2
 pkgdesc="Sampling disk usage profiler for btrfs"
 arch=('x86_64' 'aarch64')
@@ -14,9 +14,9 @@ conflicts=("$_pkgname")
 source=("$pkgname-$pkgver.man1::$url/raw/v$pkgver/btdu.1")
 source_x86_64=("$pkgname-$pkgver-x86_64::$url/releases/download/v$pkgver/btdu-static-x86_64")
 source_aarch64=("$pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/btdu-glibc-aarch64")
-sha256sums=('835e9a817b9ab11e2802cbf07e73aa0c8caf85c249fc211b4c03790c45cb91e0')
-sha256sums_x86_64=('aea4b88e59990e37bf7fb3568919e6c41e510840375ca1adfd981ebbcbea608d')
-sha256sums_aarch64=('cd9ae768a305514e80b9f64723f0ee8dc690e8a92f50b5826fbb7fa3a05e9ae0')
+sha256sums=('2474991807ccb9bb577953e290f3c79c6032170305c535016b77b3e1107c3d1f')
+sha256sums_x86_64=('35b9bb752e6aa902b8281e92a5411b2f1cfb9fa251089adf909dc95efc011c48')
+sha256sums_aarch64=('6a3bc73af7756f116ff99cfe20e8e728e2eb16c7da87d53f20e17e55c5b5b073')
 
 package() {
 	install -D -m+x $pkgname-$pkgver-$CARCH "$pkgdir/usr/bin/$_pkgname"
