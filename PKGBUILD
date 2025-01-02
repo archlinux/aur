@@ -1,9 +1,10 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer: Fijxu <fijxu [at] nadeko [dot] net>
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: Matt Kasun <matt at netmaker.io>
 
 _pkgname="netclient"
 pkgname="${_pkgname}-bin"
-pkgver=0.25.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="Platform for modern, blazing fast wireguard virtual networks"
 arch=('x86_64' 'aarch64' 'armv5h' 'armv6h' 'armv7h' 'mips' 'mipsel')
@@ -24,16 +25,16 @@ source_armv7h=("${_pkgsrc}-armv7h::${_url}/releases/download/v${pkgver}/netclien
 # Change 'hardfloat' to 'softfloat' if necessary
 source_mips=("${_pkgsrc}-mips::${_url}/releases/download/v${pkgver}/netclient-linux-mips-hardfloat")
 source_mipsel=("${_pkgsrc}-mipsel::${_url}/releases/download/v${pkgver}/netclient-linux-mipsle-hardfloat")
-sha256sums=('815958cde7b1368d6a8b021a0b9aea5a8b1d0972252b9af5c17f5b6e1dfee786'
+sha256sums=('e8eb274cbb1d0a59d88489ffb6f8b9231b00553d8d56bebcf83cb1bb9b3d3334'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
             'cc1f897a4c6055ceaa65452817641fc14a5b061848f95772363c54d1d42f7a46')
-sha256sums_x86_64=('89b2fb0e963a84da87f4cd13621563c97bcb714617b761c534c521255fa9952e')
-sha256sums_aarch64=('575a8ee7dbb57eb3a944cfed0ee6547250508226d502b13e814df8fbc21774e0')
-sha256sums_armv5h=('5c518413435cb87b30191eb11035f14abde2883f51c94443414ad8caa1fd0d92')
-sha256sums_armv6h=('79380d14369f04fc2bde47fba46957277bdeaf10ae2ca8402f1236efc09170a6')
-sha256sums_armv7h=('d595096c90edad20fb3a33ccb61b59c9f00aa6bcd6a98e2edd4291aabdc97f22')
-sha256sums_mips=('a3e906cf644a8ab69235efddf9abc7431ab3f150ecbdd1989e99505083568f30')
-sha256sums_mipsel=('fd7e9253b78fa7fb9b52f885fae0698c72000e446504351414b2e147d40cf5e6')
+sha256sums_x86_64=('2a8be0246738ecf52211e1bf71cae00ee062f642c1f0517f814cc9a7de879405')
+sha256sums_aarch64=('e89ab3bd6578633a150208243fa342e37db46af18a0645b18719ad832b0f5379')
+sha256sums_armv5h=('c638130fd8b6c2925821db5ae83c06a2f59a04664cdb28d2541795bad3e76e31')
+sha256sums_armv6h=('042c3c4880a05419fd6c46f110777e33c87f6ae49b02509a4676c372377a1cc6')
+sha256sums_armv7h=('d811fd190e8baf8ab426edb549c9e51e9c12c9a725b0f99db3d8bc7d0c22530f')
+sha256sums_mips=('e6fd4a6ecbc5f7d8e067606c306fc1b829cb8cec8e40ea56b6c94cc0e21bcb2e')
+sha256sums_mipsel=('107468bd6c5a87d37db1ca08a7250eaaed7e946e9b4ebaa5f55f3c4c0d797f37')
 
 package() {
   cd "${srcdir}"
