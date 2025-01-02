@@ -4,28 +4,23 @@
 
 pkgname=('teleport' 'teleport-client')
 _pkgname=teleport
-pkgver=16.4.2
+pkgver=17.1.2
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
 license=('AGPLv3')
 depends=('glibc' 'libbpf')
-makedepends=('go>=1.17.0' 'rustup' 'yarn' 'libbpf-static>=1.2.0' 'wasm-pack' 'pnpm'
+makedepends=('go>=1.17.0' 'rustup' 'yarn' 'libbpf-static>=1.2.0' 'pnpm'
              'python' 'python-setuptools' 'libfido2')
 provides=('tctl' 'tsh')
-
-_rust_version=1.78
-_webassets_ref=f48049a453348e0ee1ce2b998dffe5659455b398
 
 _go_srcpath="go/src/github.com/gravitational"
 
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/gravitational/teleport/archive/refs/tags/v${pkgver}.tar.gz"
-        "${_pkgname}-webassets-${_webassets_ref}.tar.gz::https://github.com/gravitational/webassets/archive/${_webassets_ref}.tar.gz"
         "teleport.service"
         "teleport@.service"
-        "teleport.install"
-        "parquet-go-v0.2.3-upgrade.patch")
+        "teleport.install")
 
 
 prepare() {
@@ -39,11 +34,6 @@ prepare() {
         mv "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/${_go_srcpath}"
     fi
 
-    if [ -d "${srcdir}/webassets-${_webassets_ref}" ]; then
-        rm -Rf "${srcdir}/${_go_srcpath}/webassets"
-        mv "${srcdir}/webassets-${_webassets_ref}" "${srcdir}/${_go_srcpath}/webassets"
-    fi
-
     cd "${srcdir}/${_go_srcpath}"
     for f in "${source[@]}"; do
         if [ "${f##*.}" = "patch" ]; then
@@ -52,7 +42,9 @@ prepare() {
         fi
     done
 
-    rustup default $_rust_version
+    RUST_VERSION="$(grep -oP 'RUST_VERSION .= \K[0-9\.]+$' build.assets/versions.mk)"
+
+    rustup install $RUST_VERSION
 
     mkdir -p "${srcdir}/${_go_srcpath}/build"
 }
@@ -71,8 +63,14 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export ADDFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
+    RUST_VERSION="$(grep -oP 'RUST_VERSION .= \K[0-9\.]+$' build.assets/versions.mk)"
+    WASM_PACK_VERSION="$(grep -oP 'WASM_PACK_VERSION .= \K[0-9\.]+$' build.assets/versions.mk)"
+
+    # Install wasm-pack
+    rustup run $RUST_VERSION cargo install wasm-pack@$WASM_PACK_VERSION
+
     # Build
-    rustup run ${_rust_version} \
+    rustup run $RUST_VERSION \
         env PATH="${PATH}:${CARGO_HOME}/bin" \
         make full
 
@@ -106,9 +104,7 @@ package_teleport-client() {
     install -Dm755 build/tbot "${pkgdir}/usr/bin/tbot"
     install -Dm755 build/fdpass-teleport "${pkgdir}/usr/lib/teleport/fdpass-teleport"
 }
-sha512sums=('30fcd9d8ecec31b011a5502de5cfcb7125a27cdcfb82b45cda443c5f4024ec7ca03225b13e36ba4877470507eb01ee4c4aa22d7e06eeb8bc30ccf1e14a7b8bb7'
-            'bf13a77d1cdaa0c3e09034ede9acdf6834a7e21dbb18b0f9d8f46917be9772416edba7f0001cd38f6124564c0c31549f8d7048dd7a9f5ad76ff8e02f4451f044'
+sha512sums=('9ba10f8a20b839667644cbb59637be66ac30c24a62655e3e1088ab4f56b1888e272deee00b2652ebe1707dc9e7fbe6a8c236278f7a4d8c4a843c7d8cec29456a'
             '409116e201c40b7e0a379b316123500ab7691cbf441ecee048811885f97cd1185671676bb61bf36cb288399e8c0355a0a9f963ce7f94e44ba49e061187c9249e'
             '469249bebaa974e5e205c66c0459ed071b06a35aa9b94a3f34d3cbc5e75aa0f290d70ba8e5c63b49a6319a0f524a846ded459e07e3dde4c260e7668959821b96'
-            '8e7092082e0ba074c1f055d895229d8554a3b0f308447ddef9355b18502425ce28392420d22479c1b7d1001a9d0673645a1b4a66ac57c8d1d60df1c2b59bb73d'
-            '9e3b98d028c81b64a32c52c266d624fa88127b3dcdb57b8c94757f1a199a10cc863973869a172b744070c2572d047be0a7b1518dd53e6b68461372ddbfa93c0d')
+            '8e7092082e0ba074c1f055d895229d8554a3b0f308447ddef9355b18502425ce28392420d22479c1b7d1001a9d0673645a1b4a66ac57c8d1d60df1c2b59bb73d')
