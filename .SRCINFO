@@ -1,7 +1,7 @@
 pkgbase = linux-mainline-um5606
 	pkgdesc = Linux Mainline with patches for the Asus UM5606(WA) laptop
-	pkgver = 6.13rc4
-	pkgrel = 2
+	pkgver = 6.13rc5
+	pkgrel = 1
 	epoch = 1
 	url = https://kernel.org/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = linux-mainline-um5606
 	makedepends = xz
 	options = !debug
 	options = !strip
-	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v6.13-rc4
+	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v6.13-rc5
 	source = config
 	source = npu.patch
 	source = https://gitlab.freedesktop.org/-/project/4522/uploads/4604ac254dab0ced331911eaab900bde/ENGG-drm-amd-display-Add-check-for-granularity-in-dml-cei.patch
