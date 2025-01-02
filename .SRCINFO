@@ -1,0 +1,22 @@
+pkgbase = hdiff
+	pkgdesc = C/C++ library and CLI tool for Diff & Patch between binary files or directories
+	pkgver = 4.8.0
+	pkgrel = 1
+	url = https://github.com/sisong/HDiffPatch
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	arch = armv7h
+	license = MIT
+	makedepends = zlib
+	makedepends = bzip2
+	makedepends = zstd
+	depends = zlib
+	depends = bzip2
+	depends = zstd
+	provides = hdiffpatch
+	conflicts = hdiffpatch-bin
+	source = hdiff-4.8.0.tar.gz::https://github.com/sisong/HDiffPatch/archive/refs/tags/v4.8.0.tar.gz
+	sha256sums = 01c526132a183e31b62b435cf80e769e44be6ac1e827e0ee405786e6cf48f013
+
+pkgname = hdiff
