@@ -1,0 +1,4 @@
+[aescrypt-gui]
+source = "regex"
+url = "https://www.aescrypt.com/download/"
+regex = "aescrypt_gui-([\\d.]+)-Linux-x86_64\\.tar\\.gz"
