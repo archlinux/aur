@@ -2,7 +2,7 @@
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 pkgname=python-pybedtools
 _base=${pkgname#python-}
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="python wrapper for BEDTools bioinformatics suite"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
 provides=('python-pyvcf')
 conflicts=('python-pyvcf')
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('f5d164be1499b34417e5e6d29a0300c105b885504a6198d3ba3313f6a0d8777161d0f7dcac887518c5828c013b8dbf5a2b7fd244e49ed39f1c4edbcbf9e2024d')
+sha512sums=('aa04ee8dbd309fe4a165e123bafb7d4c8bbdc69466b073d016c1d05749ab02888bebdbfafbb87b314b2a5ebff1337086b1780d3141aec7d6251819218db28882')
 
 prepare() {
   cd "${_base}-${pkgver}"
