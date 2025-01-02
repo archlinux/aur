@@ -1,7 +1,7 @@
 # Maintainer: Hari Chalise <harilvfs@chalisehari.com.np>
 pkgname=carch-git
 _pkgname=carch
-pkgver=4.1.1.r0.g45a2a0c
+pkgver=4.1.1.r57.g7ec5299
 pkgrel=1
 pkgdesc="An automated script for quick & easy Arch Linux system setup"
 arch=(any)
@@ -26,18 +26,22 @@ depends=(
     'ttf-joypixels'
     'curl'
     'tar'
+    'tree-sitter'
+    'tree-sitter-bash'
+    'gcc-libs'
 )
 optdepends=(
     'bash-completion: for Bash completion support'
     'zsh: for Zsh completion support'
     'fish: for Fish completion support'
+    'ttf-nerd-fonts-symbols: symbols and icons'
 )
 
 source=("${pkgname}::git+https://github.com/harilvfs/$_pkgname.git")
 md5sums=('SKIP')
 
 conflicts=($_pkgname)
-makedepends=(git)
+makedepends=('git' 'cargo')
 
 pkgver() {
     cd "$pkgname"
@@ -45,14 +49,23 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/$pkgname"
-    git clean -fdx
+    cd "$pkgname"
+    echo "Version=$pkgver" >> "$_pkgname.desktop"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    export CARGO_TARGET_DIR=target
+    export RUSTFLAGS="-C link-arg=/usr/lib/libtree-sitter.so -C link-arg=/usr/lib/libtree-sitter-bash.so"
+    cd "$pkgname"
+    cargo build --frozen --release --all-features
 }
 
 package() {
 
     install -Dm 755 ${srcdir}/${pkgname}/build/${_pkgname} -t ${pkgdir}/usr/bin/
     install -Dm 755 ${srcdir}/${pkgname}/gtk/${_pkgname}-gtk.py -t ${pkgdir}/usr/bin/
+    install -Dm 755 ${srcdir}/${pkgname}/target/release/${_pkgname}-tui -t ${pkgdir}/usr/bin/
 
     install -d "$pkgdir/usr/bin/scripts"
     install -Dm 755 ${srcdir}/${pkgname}/scripts/*.sh -t ${pkgdir}/usr/bin/scripts/
