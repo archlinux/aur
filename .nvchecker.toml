@@ -1,0 +1,3 @@
+[python-sdbus-notifications]
+source = "pypi"
+pypi = "sdbus-notifications"
