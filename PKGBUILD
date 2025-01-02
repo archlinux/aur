@@ -1,27 +1,38 @@
-# Maintainer: Sematre <sematre at gmx dot de>
-pkgname=discimagecreator
-pkgver=20240401
+# Maintainer:
+# Contributor: Sematre <sematre at gmx dot de>
+
+_pkgname="discimagecreator"
+pkgname="$_pkgname"
+pkgver=20250101
 pkgrel=1
-
-pkgdesc="This is the disc (CD, GD, DVD, HD-DVD, BD, GC/Wii, XBOX, XBOX 360) and disk (Floppy, MO, USB etc) image creation tool."
-arch=('x86_64')
+pkgdesc="A disk image creation tool supporting CD, GD, DVD, BD, GC/Wii, Xbox, floppy, MO, USB, etc"
 url="https://github.com/saramibreak/DiscImageCreator"
-license=('Apache')
+license=('Apache-2.0')
+arch=('x86_64')
 
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b0c992d4f2e01c92ef9352baa56dcfd3c23e1a115f9841b46ecfe066759a205c')
+depends=(
+  'gcc-libs'
+  'glibc'
+)
+makedepends=(
+  'git'
+  'meson'
+  'ninja'
+)
+optdepends=(
+  'unscrambler: Unscramble GC/Wii optical disks'
+)
+
+_pkgsrc="DiscImageCreator-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/refs/tags/$pkgver.$_pkgext")
+sha256sums=('5cc3688557cd9a3d9f99d7bc770ee2750cf81c5eebd1e8493f9acea960465601')
 
 build() {
-	cd "DiscImageCreator-${pkgver}"
-
-	make -C DiscImageCreator/
+  arch-meson build "$_pkgsrc"
+  meson compile -C build
 }
 
 package() {
-	cd "DiscImageCreator-${pkgver}"
-
-	make -C DiscImageCreator/ DESTDIR="${pkgdir}" PREFIX="/usr" install
-	ln -s "DiscImageCreator" "${pkgdir}/usr/bin/${pkgname}"
-
-	install -Dm 644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  meson install -C build --destdir "$pkgdir"
 }
