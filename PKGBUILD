@@ -4,11 +4,11 @@
 
 pkgname=bfgminer-git
 pkgver=5.5.0.r34.g866fd36f
-pkgrel=6
+pkgrel=7
 pkgdesc="Bitcoin miner featuring overclocking, monitoring, fan speed control and remote management. For FPGA/GPU/CPU Bitcoin mining."
 arch=('x86_64' 'aarch64')
 depends=('curl' 'gcc-libs' 'glibc' 'hidapi' 'jansson' 'libbase58' 'libblkmaker' 'libevent' 'libmicrohttpd' 'libusb' 
-         'lm_sensors' 'libxcrypt' 'mesa' 'ncurses' 'systemd-libs')
+         'lm_sensors' 'libxcrypt' 'ncurses' 'systemd-libs')
 makedepends=('uthash' 'yasm' 'git')
 optdepends=('opencl-driver: OpenCL implementation for your GPU'
             'sh: for running /usr/bin/start-bfgminer.sh' 
