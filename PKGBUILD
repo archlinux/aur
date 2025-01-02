@@ -5,14 +5,14 @@
 
 _repository='LibreCAD'
 pkgname=librecad-git
-pkgver=2.2.0.rc1.r91.g8604f171
-pkgrel=2
+pkgver=2.2.2_alpha.latest.r229.g7528d8184
+pkgrel=1
 pkgdesc="A 2D CAD drawing tool based on the community edition of QCad."
 arch=('x86_64')
 url="https://librecad.org"
 license=('GPL')
 
-depends=('muparser' 'qt5-svg' 'boost' 'freetype2')
+depends=('qt6-base' 'qt6-tools' 'qt6-svg' 'boost' 'muparser' 'freetype2')
 makedepends=('git')
 provides=('librecad')
 conflicts=('librecad')
@@ -31,7 +31,7 @@ function build
 {
     cd "$_repository"
 
-    qmake -recursive librecad.pro \
+    qmake6 -recursive librecad.pro \
         QMAKE_CPPFLAGS="$CPPFLAGS" \
         QMAKE_CFLAGS="$CFLAGS" \
         QMAKE_CXXFLAGS="$CXXFLAGS" \
