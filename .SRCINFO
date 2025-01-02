@@ -1,0 +1,13 @@
+pkgbase = huawei-unlockboot
+	pkgdesc = A tool to unlock the bootloader of Huawei or Honor devices even if the code can't be found.
+	pkgver = 0.1
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/Martazza/Huawei-Bootloader-Unlocker
+	arch = x86_64
+	groups = base-devel
+	license = MIT
+	depends = gcc
+	depends = android-tools
+
+pkgname = huawei-unlockboot
