@@ -16,7 +16,7 @@
 #
 _pkg_user="eranif"
 _pkg_name="codelite"
-_pkg_ver="17.12.0"
+_pkg_ver="18.0.0"
 #_commit="16470d74c038b5c5c17756e78bd04ae6e00c2007"
 
 # pkg
@@ -25,57 +25,6 @@ pkgname="${_pkg_name}-unstable"
 #pkgver="${_pkg_ver//_/-}"
 pkgver="${_pkg_ver/-*/}"
 pkgrel=1
-
-# NOTE: submodules/libssh + submodules/zlib are currenly only used by macos builds - ignore them for now
-
-# ccwrap submodule: https://github.com/eranif/cc-wrapper
-_ccwrap_pkg_user="${_pkg_user}"
-_ccwrap_pkg_name="cc-wrapper"
-_ccwrap_pkg_ident="67713440e867493e74ce5c7ce0352b81eb4b726b"
-_ccwrap_pkg_name_ident="${_ccwrap_pkg_user}-${_ccwrap_pkg_name}-${_ccwrap_pkg_ident:0:7}"
-
-# ctags submodule: https://github.com/eranif/ctags
-_ctags_pkg_user="${_pkg_user}"
-_ctags_pkg_name="ctags"
-_ctags_pkg_ident="3e173d8d82fd2d3534feff0d822d6de36ca3d74e"
-_ctags_pkg_name_ident="${_ctags_pkg_user}-${_ctags_pkg_name}-${_ctags_pkg_ident:0:7}"
-
-# dtl submodule: https://github.com/cubicdaiya/dtl
-_dtl_pkg_user="cubicdaiya"
-_dtl_pkg_name="dtl"
-_dtl_pkg_ident="cd45dd48089c6e9f7a595d920ddfb82c08d59150"
-_dtl_pkg_name_ident="${_dtl_pkg_user}-${_dtl_pkg_name}-${_dtl_pkg_ident:0:7}"
-
-# wxcfg/wx-config-msys2s submodule: https://github.com/eranif/wx-config-msys2.git
-_wxcfg_pkg_user="${_pkg_user}"
-_wxcfg_pkg_name="wx-config-msys2"
-_wxcfg_pkg_ident="fe65daf2a49e2a1f218ea3106a26d5ae7c4235fb"
-_wxcfg_pkg_name_ident="${_wxcfg_pkg_user}-${_wxcfg_pkg_name}-${_wxcfg_pkg_ident:0:7}"
-
-# wxdap/wxdap submodule: https://github.com/eranif/wxdap
-_wxdap_pkg_user="${_pkg_user}"
-_wxdap_pkg_name="wxdap"
-_wxdap_pkg_ident="10f57bbd9a4d52888b24ee79e8f02f9f5785eed4"
-_wxdap_pkg_name_ident="${_wxdap_pkg_user}-${_wxdap_pkg_name}-${_wxdap_pkg_ident:0:7}"
-
-# yaml-cpp submodule: https://github.com/jbeder/yaml-cpp
-_yaml_pkg_user="jbeder"
-_yaml_pkg_name="yaml-cpp"
-_yaml_pkg_ident="1b50109f7bea60bd382d8ea7befce3d2bd67da5f"
-_yaml_pkg_name_ident="${_yaml_pkg_user}-${_yaml_pkg_name}-${_yaml_pkg_ident:0:7}"
-
-# llama.cpp submodule: https://github.com/ggerganov/llama.cpp.git
-_llama_pkg_user="ggerganov"
-_llama_pkg_name="llama.cpp"
-_llama_pkg_ident="c3776cacabce2ee35f172fb72be7a519752125fa"
-_llama_pkg_name_ident="${_llama_pkg_user}-${_llama_pkg_name}-${_llama_pkg_ident:0:7}"
-
-# tinyjson (cc-wrapper) sub-submodule: https://github.com/eranif/tinyjson
-_json_pkg_user="${_pkg_user}"
-_json_pkg_name="tinyjson"
-_json_pkg_ident="a6b0d0d31a05a9f55b4944b3b20f769305eb583a"
-_json_pkg_name_ident="${_json_pkg_user}-${_json_pkg_name}-${_json_pkg_ident:0:7}"
-
 
 # generic: pre
 _pkg_ver="${pkgver}"
@@ -89,6 +38,102 @@ _pkg_ident="${pkgver}"
 # generic: post
 _pkg_name_ver="${_pkg_name}-${_pkg_ident}"
 _pkg_name_ident="${_pkg_name}-${_pkg_ident}"
+
+
+_pkg_src_res="${_pkg_name_ident}.tar.gz::https://github.com/${_pkg_user}/${_pkg_name}/archive/${_pkg_ident}.tar.gz"
+
+# NOTE: submodules/libssh + submodules/zlib are currenly only used by macos builds - ignore them for now
+
+# asio submodule: https://github.com/chriskohlhoff/asio.git
+_asio_pkg_user="chriskohlhoff"
+_asio_pkg_name="asio"
+_asio_pkg_ident="b73dc1d2c0ecb9452a87c26544d7f71e24342df6"
+_asio_pkg_name_ident="${_asio_pkg_user}-${_asio_pkg_name}-${_asio_pkg_ident:0:7}"
+_asio_pkg_src_res="${_asio_pkg_name_ident}.tar.gz::https://github.com/${_asio_pkg_user}/${_asio_pkg_name}/tarball/${_asio_pkg_ident}"
+
+# ccwrap submodule: https://github.com/eranif/cc-wrapper
+_ccwrap_pkg_user="${_pkg_user}"
+_ccwrap_pkg_name="cc-wrapper"
+_ccwrap_pkg_ident="67713440e867493e74ce5c7ce0352b81eb4b726b"
+_ccwrap_pkg_name_ident="${_ccwrap_pkg_user}-${_ccwrap_pkg_name}-${_ccwrap_pkg_ident:0:7}"
+_ccwrap_pkg_src_res="${_ccwrap_pkg_name_ident}.tar.gz::https://github.com/${_ccwrap_pkg_user}/${_ccwrap_pkg_name}/tarball/${_ccwrap_pkg_ident}"
+
+# cjson submodule: https://github.com/DaveGamble/cJSON
+_cjson_pkg_user="DaveGamble"
+_cjson_pkg_name="cJSON"
+_cjson_pkg_ident="fd1ac4f1791b403af1f7350b1195ac114f9b792b"
+_cjson_pkg_name_ident="${_cjson_pkg_user}-${_cjson_pkg_name}-${_cjson_pkg_ident:0:7}"
+_cjson_pkg_src_res="${_cjson_pkg_name_ident}.tar.gz::https://github.com/${_cjson_pkg_user}/${_cjson_pkg_name}/tarball/${_cjson_pkg_ident}"
+
+# ctags submodule: https://github.com/eranif/ctags
+_ctags_pkg_user="${_pkg_user}"
+_ctags_pkg_name="ctags"
+_ctags_pkg_ident="930be27ea34f28bea45a2af76b974734de8fbcc5"
+_ctags_pkg_name_ident="${_ctags_pkg_user}-${_ctags_pkg_name}-${_ctags_pkg_ident:0:7}"
+_ctags_pkg_src_res="${_ctags_pkg_name_ident}.tar.gz::https://github.com/${_ctags_pkg_user}/${_ctags_pkg_name}/tarball/${_ctags_pkg_ident}"
+
+# dtl submodule: https://github.com/cubicdaiya/dtl
+_dtl_pkg_user="cubicdaiya"
+_dtl_pkg_name="dtl"
+_dtl_pkg_ident="f2651ff29d42abd036980e42d6ee26e598720508"
+_dtl_pkg_name_ident="${_dtl_pkg_user}-${_dtl_pkg_name}-${_dtl_pkg_ident:0:7}"
+_dtl_pkg_src_res="${_dtl_pkg_name_ident}.tar.gz::https://github.com/${_dtl_pkg_user}/${_dtl_pkg_name}/tarball/${_dtl_pkg_ident}"
+
+# lexilla submodule: https://github.com/eranif/lexilla.git
+_lexilla_pkg_user="eranif"
+_lexilla_pkg_name="lexilla"
+_lexilla_pkg_ident="0bf9a408cbe9fc484afd8ff68c4f57726d81a46a"
+_lexilla_pkg_name_ident="${_lexilla_pkg_user}-${_lexilla_pkg_name}-${_lexilla_pkg_ident:0:7}"
+_lexilla_pkg_src_res="${_lexilla_pkg_name_ident}.tar.gz::https://github.com/${_lexilla_pkg_user}/${_lexilla_pkg_name}/tarball/${_lexilla_pkg_ident}"
+
+# llama.cpp submodule: https://github.com/ggerganov/llama.cpp.git
+_llama_pkg_user="ggerganov"
+_llama_pkg_name="llama.cpp"
+_llama_pkg_ident="c3776cacabce2ee35f172fb72be7a519752125fa"
+_llama_pkg_name_ident="${_llama_pkg_user}-${_llama_pkg_name}-${_llama_pkg_ident:0:7}"
+_llama_pkg_src_res="${_llama_pkg_name_ident}.tar.gz::https://github.com/${_llama_pkg_user}/${_llama_pkg_name}/tarball/${_llama_pkg_ident}"
+
+# websocket submodule: https://github.com/zaphoyd/websocketpp.git
+_wspp_pkg_user="zaphoyd"
+_wspp_pkg_name="websocketpp"
+_wspp_pkg_ident="c6d7e295bf5a0ab9b5f896720cc1a0e0fdc397a7"
+_wspp_pkg_name_ident="${_wspp_pkg_user}-${_wspp_pkg_name}-${_wspp_pkg_ident:0:7}"
+_wspp_pkg_src_res="${_wspp_pkg_name_ident}.tar.gz::https://github.com/${_wspp_pkg_user}/${_wspp_pkg_name}/tarball/${_wspp_pkg_ident}"
+
+# wxcfg/wx-config-msys2s submodule: https://github.com/eranif/wx-config-msys2.git
+_wxcfg_pkg_user="${_pkg_user}"
+_wxcfg_pkg_name="wx-config-msys2"
+_wxcfg_pkg_ident="fe65daf2a49e2a1f218ea3106a26d5ae7c4235fb"
+_wxcfg_pkg_name_ident="${_wxcfg_pkg_user}-${_wxcfg_pkg_name}-${_wxcfg_pkg_ident:0:7}"
+_wxcfg_pkg_pkg_res="${_wxcfg_pkg_name_ident}.tar.gz::https://github.com/${_wxcfg_pkg_user}/${_wxcfg_pkg_name}/tarball/${_wxcfg_pkg_ident}"
+
+# wxdap/wxdap submodule: https://github.com/eranif/wxdap
+_wxdap_pkg_user="${_pkg_user}"
+_wxdap_pkg_name="wxdap"
+_wxdap_pkg_ident="c5ee34742728f97fa30d0877b925b260466057ba"
+_wxdap_pkg_name_ident="${_wxdap_pkg_user}-${_wxdap_pkg_name}-${_wxdap_pkg_ident:0:7}"
+_wxdap_pkg_src_res="${_wxdap_pkg_name_ident}.tar.gz::https://github.com/${_wxdap_pkg_user}/${_wxdap_pkg_name}/tarball/${_wxdap_pkg_ident}"
+
+# wxshapeframework submodule: https://github.com/wxShaper/wxsf-code.git
+_wxsf_pkg_user="wxShaper"
+_wxsf_pkg_name="wxsf-code"
+_wxsf_pkg_ident="b5dc09a9b94b9955ef98111d0f311cb43f32f649"
+_wxsf_pkg_name_ident="${_wxsf_pkg_user}-${_wxsf_pkg_name}-${_wxsf_pkg_ident:0:7}"
+_wxsf_pkg_src_res="${_wxsf_pkg_name_ident}.tar.gz::https://github.com/${_wxsf_pkg_user}/${_wxsf_pkg_name}/tarball/${_wxsf_pkg_ident}"
+
+# yaml-cpp submodule: https://github.com/jbeder/yaml-cpp
+_yaml_pkg_user="jbeder"
+_yaml_pkg_name="yaml-cpp"
+_yaml_pkg_ident="1b50109f7bea60bd382d8ea7befce3d2bd67da5f"
+_yaml_pkg_name_ident="${_yaml_pkg_user}-${_yaml_pkg_name}-${_yaml_pkg_ident:0:7}"
+_yaml_pkg_src_res="${_yaml_pkg_name_ident}.tar.gz::https://github.com/${_yaml_pkg_user}/${_yaml_pkg_name}/tarball/${_yaml_pkg_ident}"
+
+# tinyjson (cc-wrapper) sub-submodule: https://github.com/eranif/tinyjson
+_json_pkg_user="${_pkg_user}"
+_json_pkg_name="tinyjson"
+_json_pkg_ident="a6b0d0d31a05a9f55b4944b3b20f769305eb583a"
+_json_pkg_name_ident="${_json_pkg_user}-${_json_pkg_name}-${_json_pkg_ident:0:7}"
+_json_pkg_src_res="${_json_pkg_name_ident}.tar.gz::https://github.com/${_json_pkg_user}/${_json_pkg_name}/tarball/${_json_pkg_ident}"
 
 
 #
@@ -112,7 +157,6 @@ depends=(
     #'wget'
     #'curl'
     #'python'
-    #'python2'
 )
 
 optdepends=(
@@ -132,27 +176,37 @@ provides=('codelite')
 conflicts=('codelite')
 
 source=(
-    "${_pkg_name_ident}.tar.gz::https://github.com/${_pkg_user}/${_pkg_name}/archive/${_pkg_ident}.tar.gz"
-    "${_dtl_pkg_name_ident}.tar.gz::https://github.com/${_dtl_pkg_user}/${_dtl_pkg_name}/tarball/${_dtl_pkg_ident}"
-    "${_ccwrap_pkg_name_ident}.tar.gz::https://github.com/${_ccwrap_pkg_user}/${_ccwrap_pkg_name}/tarball/${_ccwrap_pkg_ident}"
-    "${_json_pkg_name_ident}.tar.gz::https://github.com/${_json_pkg_user}/${_json_pkg_name}/tarball/${_json_pkg_ident}"
-    "${_ctags_pkg_name_ident}.tar.gz::https://github.com/${_ctags_pkg_user}/${_ctags_pkg_name}/tarball/${_ctags_pkg_ident}"
-    "${_wxcfg_pkg_name_ident}.tar.gz::https://github.com/${_wxcfg_pkg_user}/${_wxcfg_pkg_name}/tarball/${_wxcfg_pkg_ident}"
-    "${_wxdap_pkg_name_ident}.tar.gz::https://github.com/${_wxdap_pkg_user}/${_wxdap_pkg_name}/tarball/${_wxdap_pkg_ident}"
-    "${_yaml_pkg_name_ident}.tar.gz::https://github.com/${_yaml_pkg_user}/${_yaml_pkg_name}/tarball/${_yaml_pkg_ident}"
-    "${_llama_pkg_name_ident}.tar.gz::https://github.com/${_llama_pkg_user}/${_llama_pkg_name}/tarball/${_llama_pkg_ident}"
+    "${_pkg_src_res}"
+    "${_asio_pkg_src_res}"
+    "${_ccwrap_pkg_src_res}"
+    "${_cjson_pkg_src_res}"
+    "${_ctags_pkg_src_res}"
+    "${_dtl_pkg_src_res}"
+    "${_lexilla_pkg_src_res}"
+    "${_llama_pkg_src_res}"
+    "${_wspp_pkg_src_res}"
+    "${_wxcfg_pkg_pkg_res}"
+    "${_wxdap_pkg_src_res}"
+    "${_wxsf_pkg_src_res}"
+    "${_yaml_pkg_src_res}"
+    "${_json_pkg_src_res}"
     "http://repos.codelite.org/wxCrafterLibs/wxgui.zip"
   )
 
-sha256sums=('2adcdab290413feef0d734a7a4aa91d7c2542ea89790d395b5b557a37b4a9429'
-            '507adbaf9776f9f99f39e563876a6a5633eaa0c512f6b9b55c711037165413e4'
+sha256sums=('6d951bd7b2400671806c1647db8d13f523ff27d6fac012a563247e68d14d0d4f'
+            '31103eceeeee2a8119b0a4c9a5e5752ea94329941b9e9beaf67595c985aa3794'
             '9343c1f05956308c7f3c4b6ad33d68c08d95ef0ffcdce0ec6c883ccd21bd5f71'
-            'ff539f3e2ee4c52073e8b73fd8046163d68b0db567ce7ea5b9438424dc3a2253'
-            'aa48f2744a85c34fbaae845eecbc8862e453b8b754fec63938fc5ceef6c26189'
-            '70aca36b95e2245740c17fc9a164fd6edabfd9c631184ea66cc5ee03ff54c028'
-            '2ad154649fb318dd3129fb9c82cefce117adc1bd5c111b9e4b0c5d049c66cec6'
-            '57f06c89f41cc2cd250b8b1db582fe27a0da67eb7a480cd8eb3d35cde64b58cd'
+            '70518c1b8203359c19b0313e05639568d8089cf9ffa9c9784970fdd69ab6eaad'
+            '43b3fae85b398ccca8b4a1ce3308fdec64e9ee2f5ee8a2c4524f6c18f80ca911'
+            'bfdcec8f15e3d7aa4206c14baa8132f5f77c9198f5993114666404f97bd5075c'
+            'f5faddf6ce981b7082e35df14e57f54dcf784cd9f1311315110b799463a7d593'
             'd32b6dc3dcff3c7b8aac93989ba439ed9483bc69f97ca8449740dfde98722200'
+            'd5e2d3c9091dc3db660aaa1fb0c0c10dec95dabbeb42066d9bddc78491606e10'
+            '70aca36b95e2245740c17fc9a164fd6edabfd9c631184ea66cc5ee03ff54c028'
+            'f73110098732aecbfa160994261203be9bdacf16651df7a988911a9ef8199449'
+            'bbc2c89cef2daba4aa15340ae73189c16dac5d20b8e2f98e9b120d4b6507d2a7'
+            '57f06c89f41cc2cd250b8b1db582fe27a0da67eb7a480cd8eb3d35cde64b58cd'
+            'ff539f3e2ee4c52073e8b73fd8046163d68b0db567ce7ea5b9438424dc3a2253'
             '498c39ad3cc46eab8232d5fa37627c27a27f843cbe9521f05f29b19def436e12')
 
 noextract=('wxgui.zip')
@@ -180,13 +234,33 @@ prepare()
   # submodules
   cd "${srcdir}/${_pkg_name_ident}/submodules"
 
-  # submodule dtl
-  test -d dtl && rmdir dtl
-  ln -s -fn ../../${_dtl_pkg_name_ident} dtl
+  # submodule cc-wrapper
+  test -d asio && rmdir asio
+  ln -s -fn ../../${_asio_pkg_name_ident} asio
 
   # submodule cc-wrapper
   test -d cc-wrapper && rmdir cc-wrapper
   ln -s -fn ../../${_ccwrap_pkg_name_ident} cc-wrapper
+
+  # submodule cjson
+  test -d cJSON && rmdir cJSON
+  ln -s -fn ../../${_cjson_pkg_name_ident} cJSON
+
+  # submodule ctags
+  test -d ctags && rmdir ctags
+  ln -s -fn ../../${_ctags_pkg_name_ident} ctags
+
+  # submodule dtl
+  test -d dtl && rmdir dtl
+  ln -s -fn ../../${_dtl_pkg_name_ident} dtl
+
+  # submodule lexilla
+  test -d lexilla && rmdir lexilla
+  ln -s -fn ../../${_lexilla_pkg_name_ident} lexilla
+
+  # submodule llama.cpp
+  test -d llama.cpp && rmdir llama.cpp
+  ln -s -fn ../../${_llama_pkg_name_ident} llama.cpp
 
   # submodule tinyjson
   test -h tinyjson && rm -f tinyjson
@@ -197,9 +271,9 @@ prepare()
   #ln -s ../tinyjson cc-wrapper/tinyjson
   ln -s -fn ../${_json_pkg_name_ident} cc-wrapper/tinyjson
 
-  # submodule ctags
-  test -d ctags && rmdir ctags
-  ln -s -fn ../../${_ctags_pkg_name_ident} ctags
+  # submodule websocketpp
+  test -d websocketpp && rmdir websocketpp
+  ln -s -fn ../../${_wspp_pkg_name_ident} websocketpp
 
   # submodule wxdap
   test -d wxdap && rmdir wxdap
@@ -209,14 +283,15 @@ prepare()
   test -d wx-config-msys2 && rmdir wx-config-msys2
   ln -s -fn ../../${_wxcfg_pkg_name_ident} wx-config-msys2
 
+  # submodule wxsf
+  test -d wxsf-code && rmdir wxsf-code
+  ln -s -fn ../../${_wxsf_pkg_name_ident} wxsf-code
+
   # submodule yaml-cpp
   test -d yaml-cpp && rmdir yaml-cpp
   ln -s -fn ../../${_yaml_pkg_name_ident} yaml-cpp
 
 
-  # submodule llama.cpp
-  test -d llama.cpp && rmdir llama.cpp
-  ln -s -fn ../../${_llama_pkg_name_ident} llama.cpp
 
 
   #
@@ -231,7 +306,7 @@ prepare()
   #patch -p0 < "${startdir}/cmake.patch"  # wx-config patch
 
   # dtl-v1.20 cannot compile on gcc >= 14.1.1 and clang >= 17.0.6
-  ( cd submodules/dtl && patch -p0 < "${startdir}/dtl-dtl_Diff_hpp.patch" )
+  #( cd submodules/dtl && patch -p0 < "${startdir}/dtl-dtl_Diff_hpp.patch" )
 
   # temporary disable wxcrafter build: cl-16.1.0/wxcrafter subdir build fails with wx-3.1.7 - is this still a problem - re-test !!!
   #mv wxcrafter wxcrafter.disable
