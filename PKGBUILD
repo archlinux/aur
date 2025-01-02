@@ -2,7 +2,7 @@
 
 _pkgname=wechat-callout
 pkgname="${_pkgname}-git"
-pkgver=r1.a887387
+pkgver=r4.94f9e6c
 pkgrel=1
 pkgdesc="微信窗口快捷键唤出/隐藏"
 arch=('x86_64')
