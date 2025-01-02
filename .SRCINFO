@@ -1,7 +1,7 @@
 pkgbase = zashboard-bin
 	pkgdesc = A dashboard using clash api
 	pkgver = 1.42.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zephyruso/zashboard
 	arch = any
 	license = MIT
