@@ -1,5 +1,6 @@
-*
-!PKGBUILD
-!.SRCINFO
-!.gitignore
-!*.desktop
+pkg
+src
+*.pkg.*
+*.tbz
+*.log
+*.part

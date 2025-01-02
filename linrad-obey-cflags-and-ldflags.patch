@@ -1,7 +1,6 @@
-Index: Makefile.in
-===================================================================
---- Makefile.in	(revision 993)
-+++ Makefile.in	(working copy)
+diff --unified --recursive --text ./linrad-05.02.orig/Makefile.in linrad-05.02.new/Makefile.in
+--- ./linrad-05.02.orig/Makefile.in	2023-02-27 22:18:59.000000000 +0000
++++ linrad-05.02.new/Makefile.in	2025-01-02 16:22:59.058246916 +0000
 @@ -51,7 +51,7 @@
      LIBMACOSX = -framework IOKit -framework CoreFoundation
  endif
@@ -38,7 +37,7 @@ Index: Makefile.in
  -DCPU=CPU_INTEL -DSERVER=@MAKE_SERVER@ -DHAVE_OSS=0 -DOPENCL_PRESENT=0 \
  @M32@ -Wreturn-type -Wformat -Wunused -Wcomment -Wchar-subscripts \
  -Wshadow -Wuninitialized -Wparentheses -Wstrict-prototypes -Werror \
-@@ -86,7 +86,7 @@
+@@ -86,20 +86,20 @@
  
  # -fsyntax-only -pedantic -pedantic-errors -w -Wextra -Wall -Waddress -Waggrega
  
@@ -47,7 +46,6 @@ Index: Makefile.in
  -DCPU=CPU_INTEL -DSERVER=@MAKE_SERVER@ -DHAVE_OSS=0 -DOPENCL_PRESENT=0 \
  @M32@ -Wreturn-type -Wformat -Wunused -Wcomment -Wchar-subscripts \
  -Wconversion \
-@@ -93,13 +93,13 @@
  -Wshadow -Wuninitialized -Wparentheses -Wstrict-prototypes -Werror \
  -ffast-math -Wundef -fomit-frame-pointer -c -o
  
@@ -81,18 +79,18 @@ Index: Makefile.in
  -DCPU=@CPU@ -DHAVE_SHM=@LIBXEXT64_OK@ -DHAVE_X11=@X11_64_ALL_OK@ \
  -DIA64=1 @DARWIN@ -DSERVER=@MAKE_SERVER@ -DHAVE_SVGALIB=@CONSOLE64_OK@ \
  @OCLPROGS64@ -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DHAVE_CUFFT=@CUFFT64_OK@ \
-@@ -1707,7 +1707,7 @@
- bladerf.ol mirics.ol sdrplay2.ol openhpsdr.ol oclprogs.ol loadalsa.ol \
- cloudiq.ol lfxsys.ol airspyhf.ol siganal_graph.ol
+@@ -1717,7 +1717,7 @@
+ bladerf.ol mirics.ol sdrplay2.ol sdrplay3.ol openhpsdr.ol oclprogs.ol \
+ loadalsa.ol cloudiq.ol lfxsys.ol airspyhf.ol siganal_graph.ol
  
 -	${CC} @M32@ -o xlinrad @ST@ \
 +	${CC} $(LDFLAGS) @M32@ -o xlinrad @ST@ \
  xmain.ol xvar.ol ui.ol lsetad.ol fft1.ol buf.ol lvar.ol radar.ol \
  mouse.ol wide_graph.ol fft0.ol adtest.ol hires_graph.ol elad.ol \
  baseb_graph.ol mix2.ol afc_graph.ol hwaredriver.ol affinity.ol \
-@@ -2057,7 +2057,7 @@
- oclprogs.om loadalsa.om cloudiq.om lfxsys.om loadusb.om airspyhf.om \
- siganal_graph.om
+@@ -2064,7 +2064,7 @@
+ soundcard.om oclprogs.om loadalsa.om cloudiq.om lfxsys.om loadusb.om \
+ airspyhf.om siganal_graph.om
  
 -	${CC} @M64@ -o xlinrad64 @ST@ \
 +	${CC} $(LDFLAGS) @M64@ -o xlinrad64 @ST@ \

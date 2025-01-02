@@ -3,8 +3,8 @@
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=linrad
-pkgver=05.01
-pkgrel=3
+pkgver=05.02
+pkgrel=1
 pkgdesc="Software defined radio receiver for x11"
 arch=('i686' 'x86_64')
 url="https://www.sm5bsz.com/linuxdsp/linrad.htm"
@@ -15,18 +15,15 @@ makedepends=('nasm' 'icoutils')
 source=("$pkgname-$pkgver.tbz::https://www.sm5bsz.com/linuxdsp/archive/lir${pkgver/./-}.tbz"
         "$pkgname.desktop"
         "$pkgname-wrapper.sh"
-        "$pkgname-obey-cflags-and-ldflags.patch"
-        "$pkgname-gcc_11_1_0.patch")
-sha512sums=('7b673c2c76122104dfe5a038f95e6a47a424796114ae4e8d3845987b486539803d63c1b9eeec00360fb5fa160304584644352d5853e6f74eeae81204ecf1afca'
+        "$pkgname-obey-cflags-and-ldflags.patch")
+sha512sums=('c3ead1c91c6224ac63978f14d1f03979fcf825b89f33583805981dfc8200ff91f4469a70c7286058583efca4b1641211dcfaaf7087b12bfe50adca69a257571c'
             '7b4d462d422b15c7c9249544d0792cd9f9902ceb10708770b8594f7cfa226b8aca2617168bcfb88861d6db76e7d573ea86812c3ab20d1ae4c8a2e92ee832e3e7'
             '1c661e4bea550ae496af121fc1c658cccc1fbe15c4aecb783641064729d5593f501fb977dff310739c9e303d4869ddafb36df3290c242df139560e6cbd4c661a'
-            'f147f48c7a8e7d90878d196ff01ec920fb823c753fe5db21efb1c442b2bed69c7c88e89ccf5ac0bc8d4e14ebfa33662d133e81a2b40c8238d7c3b4b1f06c1c67'
-            'fca3e6e8b70472d89d8100ce6d8d238898ee599053b97d967cb017532462c78aaeec3cbfbb7bbcb8cf21f8f05533de8515ff31a524275dee113c992c167aeec4')
+            '03a79d0d28ee0685c452cc8239c85a6d389dfb2ad95d731ed5b3db71f588027a1d0e507a2108d9b2c0ab6d524239bdbfcb37f88cccee2e34163d4a91447cc1ac')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  patch -N -i "$srcdir/$pkgname-obey-cflags-and-ldflags.patch"
-  patch -N -i "$srcdir/$pkgname-gcc_11_1_0.patch"
+  patch -Np1 -i "$srcdir/$pkgname-obey-cflags-and-ldflags.patch"
 
   # Fix path for help and error files
   sed -i "s|help.lir|/usr/share/$pkgname/help.lir|g" menu.c help.c
