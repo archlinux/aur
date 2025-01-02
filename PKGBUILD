@@ -1,7 +1,8 @@
-# Maintainer: Funami
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Contributor: Funami
 pkgname=rpi-imager-bin
 pkgver=1.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Raspberry Pi Imaging Utility"
 arch=('x86_64')
 url="https://github.com/raspberrypi/rpi-imager"
@@ -12,8 +13,8 @@ provides=('rpi-imager')
 conflicts=('rpi-imager')
 _filename="Raspberry_Pi_Imager-${pkgver}-${arch}.AppImage"
 source=("https://github.com/raspberrypi/rpi-imager/releases/download/v$pkgver/${_filename}"
-    "https://github.com/raspberrypi/rpi-imager/raw/qml/doc/man/rpi-imager.1"
-    "https://github.com/raspberrypi/rpi-imager/raw/qml/debian/changelog")
+    "https://raw.githubusercontent.com/raspberrypi/rpi-imager/refs/tags/v$pkgver/doc/man/rpi-imager.1"
+    "https://raw.githubusercontent.com/raspberrypi/rpi-imager/refs/tags/v$pkgver/debian/changelog")
 sha256sums=('26e837a758776d8a6cec7b92262d73188bcecee20c48cff066d05adef2dc555f'
             '69bc1528af1d369795d7a6fa1726084ffe62b47b19378de4fdf9022c91760e99'
             'c2f70b370a6bbe535811ddcec1f3bcdb183c461a8b5c1f0d0ce250f98c17e9ba')

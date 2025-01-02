@@ -1,0 +1,4 @@
+[rpi-imager-bin]
+source = "git"
+git = "https://github.com/raspberrypi/rpi-imager.git"
+prefix = "v"
