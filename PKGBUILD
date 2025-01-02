@@ -2,8 +2,9 @@
 # Contributor: futrime <https://github.com/futrime>
 
 pkgname=lip-git
+_pkgname=lip
 pkgver=0.24.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A general package installer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/futrime/lip"
@@ -26,7 +27,7 @@ sha512sums=(
 prepare() {
     cd lip
     if [[ -z "$(git config --get user.name)" ]]; then
-    git config user.name local && git config user.email '<>' && git config commit.gpgsign false
+        git config user.name local && git config user.email '<>' && git config commit.gpgsign false
     fi
 }
 
@@ -42,7 +43,7 @@ build() {
 }
 
 package() {
-    install -Dm 644 ${pkgname}.1 ${pkgdir}/usr/share/man/man1/${pkgname}.1
+    install -Dm 644 ${_pkgname}.1 ${pkgdir}/usr/share/man/man1/${_pkgname}.1
     cd lip
     install -Dm 755 bin/lip ${pkgdir}/usr/bin/lip
     install -Dm 644 COPYING ${pkgdir}/usr/share/licenses/lip/LICENSE

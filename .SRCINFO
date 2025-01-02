@@ -1,7 +1,7 @@
 pkgbase = lip-git
 	pkgdesc = A general package installer
 	pkgver = 0.24.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/futrime/lip
 	arch = x86_64
 	arch = aarch64
