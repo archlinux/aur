@@ -1,8 +1,7 @@
 pkgbase = python-sphinx-needs
 	pkgdesc = Sphinx needs extension for managing needs/requirements and specifications
-	pkgver = 3.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
-	url = https://www.sphinx-needs.com/
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -11,11 +10,14 @@ pkgbase = python-sphinx-needs
 	makedepends = python-wheel
 	depends = python-jsonschema
 	depends = python-matplotlib
+	depends = python-requests
 	depends = python-requests-file
 	depends = python-sphinx
-	depends = python-sphinxcontrib-plantuml
+	depends = python-sphinx-data-viewer
+	depends = python-sphinxcontrib-jquery
+	depends = python-tomli
 	depends = python-typing_extensions
-	source = https://files.pythonhosted.org/packages/source/s/sphinx_needs/sphinx_needs-3.0.0.tar.gz
-	sha256sums = 2c8892468d0bad131d94f221ac6e8595c30a07ef54b532511250e79816b08d96
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_needs/sphinx_needs-4.1.0.tar.gz
+	sha256sums = 7d40e9c29353d9784f469b2093412846060cda4f3b55127ac58a2692c3381ef9
 
 pkgname = python-sphinx-needs
