@@ -1,0 +1,13 @@
+pkgbase = audio-files-thumbnailer-git
+	pkgdesc = Adds thumbnailer config for some audio files
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/jensenr30/audio-files-thumbnailer
+	arch = any
+	license = 0BSD
+	makedepends = git
+	depends = ffmpeg
+	source = https://raw.githubusercontent.com/jensenr30/audio-files-thumbnailer/refs/heads/main/audio-files.thumbnailer
+	md5sums = SKIP
+
+pkgname = audio-files-thumbnailer-git
