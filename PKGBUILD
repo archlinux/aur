@@ -2,7 +2,7 @@
 _pkgname=eudic
 pkgname="eusoft-${_pkgname}-bin"
 pkgver=2024.11.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Authoritative English dictionary software, an essential tool for English learners.(Prebuilt version)权威的英语词典软件,英语学习者必备的工具."
 arch=('x86_64')
 url="https://www.eudic.net/v4/en/app/eudic"
@@ -44,7 +44,7 @@ build() {
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     rm -f  "${srcdir}"*.AppImage
     sed -e "
-        s/\/usr\/share\/${_pkgname}\/AppRun/${pkgname%-bin}/g
+        s/\/usr\/share\/${_pkgname}\/AppRun/env QT_AUTO_SCREEN_SCALE_FACTOR=1 QT_IM_MODULE=fcitx QT_QPA_PLATFORM=\"xcb\" ${pkgname%-bin}/g
         s/Icon=com.eusoft.${_pkgname}/Icon=${pkgname%-bin}/g
     " -i "${srcdir}/squashfs-root/default.desktop"
     ln -sf "/usr/lib/qt/plugins/platforminputcontexts/libfcitx"*.so "${srcdir}/squashfs-root/plugins/platforminputcontexts/"
