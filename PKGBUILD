@@ -12,8 +12,6 @@ source=("https://raw.githubusercontent.com/jensenr30/audio-files-thumbnailer/ref
 md5sums=("SKIP")
 
 package() {
-	pwd
-	ls -la
 	file='audio-files.thumbnailer'
 	install -Dm644 "$srcdir/$file" "$pkgdir/usr/share/thumbnailers/$file"
 }
