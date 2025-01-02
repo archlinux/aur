@@ -12,12 +12,12 @@ license=('LGPL3')
 conflicts=(allay-launcher-git)
 
 source_x86_64=(
-    "${pkgname}-${arch}::${url}/releases/${pkgver}/download/${pkgname}-linux-x64-release"
+    "${pkgname}-${arch}::${url}/releases/download/${pkgver}/${pkgname}-linux-x64-release"
     "LICENSE"::"${url}/blob/main/LICENSE"
     "allay.1"
 )
 source_aarch64=(
-    "${pkgname}-${arch}::${url}/releases/${pkgver}/download/${pkgname}-linux-arm64-v8a-release"
+    "${pkgname}-${arch}::${url}/releases/download/${pkgver}/${pkgname}-linux-arm64-v8a-release"
     "LICENSE"::"${url}/blob/main/LICENSE"
     "allay.1"
 )
