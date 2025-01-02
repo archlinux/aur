@@ -1,6 +1,6 @@
 pkgbase = waypipe-git
 	pkgdesc = A proxy for Wayland protocol applications; like ssh -X
-	pkgver = 0.9.2.r61.g845ff97
+	pkgver = 0.10.0.rc1.r24.g4a5104c
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mstoeckl/waypipe
 	arch = i686
@@ -24,6 +24,7 @@ pkgbase = waypipe-git
 	depends = lz4
 	depends = zstd
 	depends = vulkan-icd-loader
+	depends = mesa
 	depends = ffmpeg
 	optdepends = openssh: recommended transport
 	provides = waypipe

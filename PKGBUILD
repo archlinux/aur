@@ -1,11 +1,11 @@
 # Maintainer: Manuel Stoeckl <com dоt mstoeckl аt wppkgb>
 pkgname=waypipe-git
-pkgver=0.9.2.r61.g845ff97
+pkgver=0.10.0.rc1.r24.g4a5104c
 pkgrel=1
 pkgdesc='A proxy for Wayland protocol applications; like ssh -X'
 license=('GPL-3.0-or-later')
 makedepends=('git' 'meson' 'ninja' 'scdoc' 'shaderc' 'pkgconf' 'cargo' 'rust-bindgen' 'clang' 'vulkan-headers')
-depends=('lz4' 'zstd' 'vulkan-icd-loader' 'ffmpeg')
+depends=('lz4' 'zstd' 'vulkan-icd-loader' 'mesa' 'ffmpeg')
 checkdepends=('vulkan-validation-layers')
 optdepends=(
 	'openssh: recommended transport'
