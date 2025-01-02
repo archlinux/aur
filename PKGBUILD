@@ -1,21 +1,26 @@
 name=ultimatevocalremovergui
 pkgname=${name}-git
 pkgver=5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="This application uses state-of-the-art source separation models to remove vocals from audio files. UVR's core developers trained all of the models provided in this package (except for the Demucs v3 and v4 4-stem models)."
 arch=('any')
 url=https://github.com/Anjok07/ultimatevocalremovergui
 license=('custom:MIT License')
-depends=('python-statsmodels' 'python-onnx2pytorch' 'python-soundfile' 'python-numpy' 'python-numpy' 'python-ml-collections' 'python-matchering' 'python-natsort' 'python-llvmlite' 'python-scipy' 'python-pytorch' 'python-wget' 'python-librosa' 'python-kthread' 'python-samplerate' 'python-urllib3' 'python-screeninfo' 'python-yaml' 'python-pyperclip' 'python-playsound' 'python-cryptography' 'python-diffq' 'python-audioread' 'python-certifi' 'python-einops' 'python-pydub' 'python-psutil' 'python-pyglet' 'python-omegaconf' 'python-pillow' 'python-julius-git' 'python-future' 'python-altgraph' 'python-opencv' 'python-pytorch-lightning' 'python-resampy' 'python-onnxruntime' 'soundtouch' 'tk')
+depends=('python-statsmodels' 'python-onnx2pytorch' 'python-soundfile' 'python-numpy' 'python-numpy' 'python-ml-collections' 'python-matchering' 'python-natsort' 'python-llvmlite' 'python-scipy' 'python-pytorch' 'python-wget' 'python-librosa' 'python-kthread' 'python-samplerate' 'python-urllib3' 'python-screeninfo' 'python-yaml' 'python-pyperclip' 'python-playsound' 'python-cryptography' 'python-diffq' 'python-audioread' 'python-certifi' 'python-einops' 'python-pydub' 'python-psutil' 'python-pyglet' 'python-omegaconf' 'python-pillow' 'python-julius-git' 'python-future' 'python-altgraph' 'python-opencv' 'python-pytorch-lightning' 'python-resampy' 'python-onnxruntime' 'soundtouch' 'python-audioop-lts' 'tk')
 makedepends=('git')
+tkdnd2=tkinterdnd2
 source=("${name}::git+https://github.com/Anjok07/ultimatevocalremovergui.git"
+    "${tkdnd2}::git+https://github.com/Eliav2/tkinterdnd2.git"
 	"UVR.sh"
 	"UVR.diff")
 sha256sums=("SKIP"
+    "SKIP"
 	"SKIP"
 	"SKIP")
 
 prepare() {
+  rm -rf "${srcdir}/${name}/gui_data/${tkdnd2}"
+  cp -r "${srcdir}/${tkdnd2}/${tkdnd2}" "${srcdir}/${name}/gui_data/"
   cd "${srcdir}/${name}"
   git apply ../UVR.diff
 }
