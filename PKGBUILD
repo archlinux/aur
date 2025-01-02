@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -30,8 +30,6 @@ depends=(
 	"xcb-util-keysyms"
 	"xcb-util-image"
 	"xcb-util-wm"
-	"libxkbcommon-x11"
-	"libxkbcommon"
 	"libxcb"
 	"util-linux"
 	"openssl"
@@ -46,7 +44,6 @@ depends=(
 	"wayland"
 	"libxrender"
 	"libxext"
-	"alsa-lib"
 	"dbus"
 	"libxrandr"
 	"fontconfig"
@@ -54,17 +51,12 @@ depends=(
 	"freetype2"
 	"libxfixes"
 	"cairo"
-	"libx11"
 	"expat"
-	"at-spi2-core"
 	"libxdamage"
 	"libdrm"
-	"mesa"
-	"hicolor-icon-theme"
 	"bash"
 	"lsb-release"
 	"psmisc"
-	"wmctrl"
 	"flatpak-xdg-utils"
 	"xdg-desktop-portal"
 	"xdg-desktop-portal-gtk"
