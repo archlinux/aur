@@ -1,0 +1,4 @@
+[raidrivecli]
+source = "regex"
+url = "https://www.raidrive.com/download"
+regex = "raidrive_([^-]+)-linux_amd64\\.deb"
