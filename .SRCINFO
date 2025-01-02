@@ -1,7 +1,7 @@
 pkgbase = dosbox-staging-bin
-	pkgdesc = A modern continuation of DOSBox with advanced features and current development practices.Prebuilt version.
+	pkgdesc = A modern continuation of DOSBox with advanced features and current development practices.(Prebuilt version)
 	pkgver = 0.82.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dosbox-staging/dosbox-staging
 	arch = x86_64
 	license = GPL-2.0-or-later

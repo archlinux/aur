@@ -3,8 +3,8 @@ _pkgname=dosbox
 pkgname="${_pkgname}-staging-bin"
 _appname="org.${pkgname%-bin}.${pkgname%-bin}"
 pkgver=0.82.0
-pkgrel=1
-pkgdesc="A modern continuation of DOSBox with advanced features and current development practices.Prebuilt version."
+pkgrel=2
+pkgdesc="A modern continuation of DOSBox with advanced features and current development practices.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/dosbox-staging/dosbox-staging"
 license=('GPL-2.0-or-later')
@@ -29,24 +29,24 @@ source=(
 )
 sha256sums=('fd491de6e989da2b34be743fd419735befc80e6f507ec15b9b3ea6164624dabf'
             '5e664ddfd6f8016b079a4244fdc5746a253658554324f73dc5e406bf7d354456')
-build() {
+prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/${pkgname%-bin}-linux"*/* "${srcdir}/usr/lib/${pkgname%-bin}"
-    sed -i "s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g" "${srcdir}/usr/lib/${pkgname%-bin}/desktop/${_appname}.desktop"
+    sed -i "s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g" "${srcdir}/${pkgname%-bin}-linux"*/desktop/"${_appname}".desktop
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib" "${pkgdir}/usr"
-    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/desktop/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/doc/manual.txt" -t "${pkgdir}/usr/share/doc/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/man/${_pkgname}".1 -t "${pkgdir}/usr/share/man/man1"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-bin}-linux"*/* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-linux"*/desktop/"${_appname}".desktop "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-linux"*/doc/manual.txt -t "${pkgdir}/usr/share/doc/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-linux"*/man/"${_pkgname}".1 -t "${pkgdir}/usr/share/man/man1"
     _icon_sizes=(16x16 22x22 24x24 32x32 48x48 96x96 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/icons/hicolor/${_icons}/apps/${_appname}.png" \
+        install -Dm644 "${srcdir}/${pkgname%-bin}-linux"*/icons/hicolor/"${_icons}"/apps/"${_appname}".png \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
 }
