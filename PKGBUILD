@@ -1,7 +1,7 @@
 # Maintainer: John Dovern <92282293+johndovern@users.noreply.github.com>
 pkgname=comicthumb
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python3 reimplementation of comix's comicthumb for generating comic thumbnails"
 arch=('any')
 url="https://codeberg.org/johndovern/comicthumb"
