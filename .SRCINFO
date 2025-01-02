@@ -1,7 +1,7 @@
 pkgbase = dooble-bin
 	pkgdesc = Web browser based on QtWebEngine.(Prebuilt version)
-	pkgver = 2024.08.19
-	pkgrel = 2
+	pkgver = 2024.12.31
+	pkgrel = 1
 	url = https://textbrowser.github.io/dooble
 	arch = aarch64
 	arch = x86_64
@@ -12,8 +12,6 @@ pkgbase = dooble-bin
 	depends = freetype2
 	depends = gdk-pixbuf2
 	depends = gpgme
-	depends = gst-plugins-base-libs
-	depends = gstreamer
 	depends = gtk3
 	depends = libcups
 	depends = libdrm
@@ -59,15 +57,15 @@ pkgbase = dooble-bin
 	depends = libxkbfile
 	depends = nss
 	optdepends = bzip2: needed in plugins/multimedia/libffmpegmediaplugin.so
-	provides = dooble=2024.08.19
+	provides = dooble=2024.12.31
 	conflicts = dooble
-	source = LICENSE-2024.08.19::https://raw.githubusercontent.com/textbrowser/dooble/2024.08.19/LICENSE
+	source = LICENSE-2024.12.31::https://raw.githubusercontent.com/textbrowser/dooble/2024.12.31/LICENSE
 	source = dooble.sh
 	sha256sums = c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd
 	sha256sums = 29b1db96c081272e804e319cec3d35978ace6bbf5b930bfb5cdb11f35d8e9a6e
-	source_aarch64 = dooble-2024.08.19-aarch64.deb::https://github.com/textbrowser/dooble/releases/download/2024.08.19/Dooble-2024.08.19_arm64.deb
-	sha256sums_aarch64 = 29f9283827b6458c9efdab4bdd9f4b5f5eb12bd5620388e647f53dae8dc71ebd
-	source_x86_64 = dooble-2024.08.19-x86_64.deb::https://github.com/textbrowser/dooble/releases/download/2024.08.19/Dooble-2024.08.19_amd64.deb
-	sha256sums_x86_64 = 151b3103e3f14a5259227fa6b25d1d6784e1c8b174212ee6daf212292287ef3c
+	source_aarch64 = dooble-2024.12.31-aarch64.deb::https://github.com/textbrowser/dooble/releases/download/2024.12.31/Dooble-2024.12.31_arm64.deb
+	sha256sums_aarch64 = 4c14ddba9390d462473dfbed19746cc5c3dc97a56ba1ae360f716c37cf17e1aa
+	source_x86_64 = dooble-2024.12.31-x86_64.deb::https://github.com/textbrowser/dooble/releases/download/2024.12.31/Dooble-2024.12.31_amd64.deb
+	sha256sums_x86_64 = d078fb98bc59af988a3d97ef68cabc6eae366278045a188ba25718027f09f008
 
 pkgname = dooble-bin

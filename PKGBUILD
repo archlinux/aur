@@ -4,8 +4,8 @@
 # Contributor: zhangkaizhao <zhangkaizhao at gmail dot com>
 pkgname=dooble-bin
 _pkgname=Dooble
-pkgver=2024.08.19
-pkgrel=2
+pkgver=2024.12.31
+pkgrel=1
 pkgdesc="Web browser based on QtWebEngine.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -22,8 +22,6 @@ depends=(
     'freetype2'
     'gdk-pixbuf2'
     'gpgme'
-    'gst-plugins-base-libs'
-    'gstreamer'
     'gtk3'
     'libcups'
     'libdrm'
@@ -83,8 +81,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}_amd64.deb")
 sha256sums=('c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd'
             '29b1db96c081272e804e319cec3d35978ace6bbf5b930bfb5cdb11f35d8e9a6e')
-sha256sums_aarch64=('29f9283827b6458c9efdab4bdd9f4b5f5eb12bd5620388e647f53dae8dc71ebd')
-sha256sums_x86_64=('151b3103e3f14a5259227fa6b25d1d6784e1c8b174212ee6daf212292287ef3c')
+sha256sums_aarch64=('4c14ddba9390d462473dfbed19746cc5c3dc97a56ba1ae360f716c37cf17e1aa')
+sha256sums_x86_64=('d078fb98bc59af988a3d97ef68cabc6eae366278045a188ba25718027f09f008')
 prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
