@@ -1,15 +1,15 @@
 # Maintainer: Alex Moening <alexandermoening@gmail.com>
 
 pkgname=mpris-miniplayer
-pkgver=1.0.2
+pkgver=1.1
 pkgrel=2
 pkgdesc='MPRIS Miniplayer'
 arch=(x86_64)
 url='https://git.dummkopf.live/InventorX/mpris-miniplayer'
 license=(ZLIB)
 depends=(playerctl raylib sdbus-cpp imgui curl)
-source=("https://git.dummkopf.live/InventorX/mpris-miniplayer/archive/1.0.2.tar.gz")
-md5sums=('24748ed6fe7a39022b940a0e14a1c2d2')
+source=("https://git.dummkopf.live/InventorX/mpris-miniplayer/archive/1.1.zip")
+md5sums=('264e95b21ae99b8f5b71276b4c1bb436')
 
 build() {
   cd mpris-miniplayer
