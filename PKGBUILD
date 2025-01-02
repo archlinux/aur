@@ -1,7 +1,7 @@
 # Maintainer: FTS427 <FTS427@outlook.com>
 # Contributor: futrime <https://github.com/futrime>
 
-pkgname=lip
+pkgname=lip-git
 pkgver=0.24.0
 pkgrel=1
 pkgdesc="A general package installer"
@@ -36,6 +36,6 @@ build() {
 
 package() {
     cd lip
-    install -Dm 755 bin/${pkgname} ${pkgdir}/usr/bin/${pkgname}
-    install -Dm 644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm 755 bin/lip ${pkgdir}/usr/bin/lip
+    install -Dm 644 COPYING ${pkgdir}/usr/share/licenses/lip/LICENSE
 }

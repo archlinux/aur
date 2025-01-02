@@ -1,4 +1,4 @@
-pkgbase = lip
+pkgbase = lip-git
 	pkgdesc = A general package installer
 	pkgver = 0.24.0
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = lip
 	source = git+https://github.com/futrime/lip.git
 	sha512sums = SKIP
 
-pkgname = lip
+pkgname = lip-git
