@@ -1,7 +1,7 @@
 # Maintainer: czyt<czytcn@gmail.com>
 
 pkgname=readest-bin
-pkgver=0.8.3
+pkgver=0.8.8
 pkgrel=1
 pkgdesc="A reader application for EPUB files (AppImage version)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ provides=('readest')
 conflicts=('readest')
 options=('!strip')
 source=("https://github.com/chrox/readest/releases/download/v${pkgver}/Readest_${pkgver}_amd64.AppImage")
-sha256sums=('0e33d25af3bd0d290a5d1d44ea27ffc6162f37c6360d464b0b761aa71a1a6f87')  
+sha256sums=('8b125e02ae90ef2f65edffc7a73c25f021f47ee6cf1fcc1730c7f044bd6afb55')  
 
 prepare() {
     cd "${srcdir}"
@@ -69,4 +69,6 @@ Categories=Office;Viewer;
 Terminal=false
 MimeType=application/epub+zip;
 EOF
+
+rm -rf "${srcdir}/squashfs-root"
 }
