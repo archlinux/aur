@@ -2,17 +2,20 @@
 
 pkgbase=rmqtt-git
 pkgname=rmqtt-git
-pkgver=0.2.18.r0.g45cf7e4
+pkgver=0.11.0.r0.g0ec9c19
 pkgrel=1
 pkgdesc="MQTT Server/MQTT Broker - Scalable Distributed MQTT Message Broker for IoT in the 5G Era"
-arch=('any')
+arch=($CARCH)
 url="https://github.com/rmqtt/rmqtt"
 license=('MIT')
 provides=(${pkgname%-git} librmqtt_macros.so)
 conflicts=(${pkgname%-git} librmqtt_macros.so)
 replaces=()
-depends=('cargo')
-makedepends=('git' 'rust')
+depends=('cargo'
+    protobuf-c)
+makedepends=('git' 'rust'
+    cmake
+)
 backup=()
 options=('!strip' '!lto')
 install=
@@ -46,5 +49,5 @@ package() {
     install -Dm0755 target/release/librmqtt*.so -t "$pkgdir/usr/lib/"
     install -Dm0644 LICENSE* -t "$pkgdir/usr/share/licenses/${pkgname}/"
     install -Dm0644 README* -t "$pkgdir/usr/share/doc/${pkgname}/"
-    cp -rv docs  "$pkgdir/usr/share/doc/${pkgname}/"
+    cp -rv docs "$pkgdir/usr/share/doc/${pkgname}/"
 }
