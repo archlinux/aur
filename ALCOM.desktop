@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ALCOM
+Comment=A fast open-source alternative of VRChat Creator Companion (VCC)
+Exec=/usr/bin/alcom link %u
+Icon=ALCOM
+Terminal=false
+MimeType=x-scheme-handler/vcc
+Categories=Utility;

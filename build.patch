@@ -1,0 +1,64 @@
+diff '--color=auto' --unified --recursive --text vrc-get-gui-v1.0.0/vrc-get-gui/app/(main)/settings/page.tsx vrc-get-gui-v1.0.0-patch/vrc-get-gui/app/(main)/settings/page.tsx
+--- vrc-get-gui-v1.0.0/vrc-get-gui/app/(main)/settings/page.tsx	2025-01-01 13:16:19.000000000 +0900
++++ vrc-get-gui-v1.0.0-patch/vrc-get-gui/app/(main)/settings/page.tsx	2025-01-02 03:07:14.625581119 +0900
+@@ -666,7 +666,7 @@
+ 					</p>
+ 				</div>
+ 			)}
+-			{!isMac && (
++			{false && (
+ 				<div>
+ 					<label className={"flex items-center gap-2"}>
+ 						<Checkbox
+diff '--color=auto' --unified --recursive --text vrc-get-gui-v1.0.0/vrc-get-gui/app/(setup)/setup/backups/page.tsx vrc-get-gui-v1.0.0-patch/vrc-get-gui/app/(setup)/setup/backups/page.tsx
+--- vrc-get-gui-v1.0.0/vrc-get-gui/app/(setup)/setup/backups/page.tsx	2025-01-01 13:16:19.000000000 +0900
++++ vrc-get-gui-v1.0.0-patch/vrc-get-gui/app/(setup)/setup/backups/page.tsx	2025-01-02 03:07:29.655587939 +0900
+@@ -19,7 +19,7 @@
+ 		<SetupPageBase
+ 			heading={tc("setup:backups:heading")}
+ 			Body={Body}
+-			nextPage={isMac ? "/setup/finish" : "/setup/system-setting"}
++			nextPage={"/setup/finish"}
+ 			prevPage={"/setup/project-path"}
+ 			pageId={"Backups"}
+ 		/>
+diff '--color=auto' --unified --recursive --text vrc-get-gui-v1.0.0/vrc-get-gui/app/(setup)/setup/finish/page.tsx vrc-get-gui-v1.0.0-patch/vrc-get-gui/app/(setup)/setup/finish/page.tsx
+--- vrc-get-gui-v1.0.0/vrc-get-gui/app/(setup)/setup/finish/page.tsx	2025-01-01 13:16:19.000000000 +0900
++++ vrc-get-gui-v1.0.0-patch/vrc-get-gui/app/(setup)/setup/finish/page.tsx	2025-01-02 03:07:23.955585880 +0900
+@@ -13,7 +13,7 @@
+ 			heading={tc("setup:finish:heading")}
+ 			Body={Body}
+ 			nextPage={"/projects"}
+-			prevPage={isMac ? "/setup/backups" : "/setup/system-setting"}
++			prevPage={"/setup/backups"}
+ 			nextContent={tc("setup:finish:next")}
+ 			pageId={null}
+ 		/>
+diff '--color=auto' --unified --recursive --text vrc-get-gui-v1.0.0/vrc-get-gui/app/(setup)/setup/setup-page-base.tsx vrc-get-gui-v1.0.0-patch/vrc-get-gui/app/(setup)/setup/setup-page-base.tsx
+--- vrc-get-gui-v1.0.0/vrc-get-gui/app/(setup)/setup/setup-page-base.tsx	2025-01-01 13:16:19.000000000 +0900
++++ vrc-get-gui-v1.0.0-patch/vrc-get-gui/app/(setup)/setup/setup-page-base.tsx	2025-01-02 03:02:35.360628904 +0900
+@@ -121,13 +121,6 @@
+ 					finisheds={finisheds}
+ 					pageId={"Backups"}
+ 				/>
+-				{!isMac && (
+-					<StepElement
+-						current={current}
+-						finisheds={finisheds}
+-						pageId={"SystemSetting"}
+-					/>
+-				)}
+ 			</ol>
+ 		</Card>
+ 	);
+diff '--color=auto' --unified --recursive --text --color vrc-get-gui-v1.0.0/vrc-get-gui/src/commands/environment/config.rs vrc-get-gui-v1.0.0-patch/vrc-get-gui/src/commands/environment/config.rs
+--- vrc-get-gui-v1.0.0/vrc-get-gui/src/commands/environment/config.rs   2025-01-01 13:16:19.000000000 +0900
++++ vrc-get-gui-v1.0.0-patch/vrc-get-gui/src/commands/environment/config.rs     2025-01-02 04:12:00.792499205 +0900
+@@ -98,7 +98,6 @@
+                 SetupPages::UnityHub,
+                 SetupPages::ProjectPath,
+                 SetupPages::Backups,
+-                SetupPages::SystemSetting,
+             ]
+         }
+     }
