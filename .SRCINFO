@@ -1,7 +1,7 @@
 pkgbase = python-reqif
 	pkgdesc = Python library for ReqIF format. ReqIF parsing and unparsing.
 	pkgver = 0.0.42
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/strictdoc-project/reqif
 	arch = any
 	license = Apache-2.0

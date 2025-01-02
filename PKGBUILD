@@ -3,7 +3,7 @@
 pkgname='python-reqif'
 _name=${pkgname#python-}
 pkgver='0.0.42'
-pkgrel=2
+pkgrel=3
 pkgdesc="Python library for ReqIF format. ReqIF parsing and unparsing."
 url="https://github.com/strictdoc-project/reqif"
 depends=('python' 'python-jinja' 'python-lxml' 'python-xmlschema')
@@ -24,7 +24,10 @@ package() {
 	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
 
 	# not sure why these end up in the wrong spot...
-	mv "${pkgdir}/usr/lib/python3.12/site-packages/LICENSE" "${pkgdir}/usr/lib/python3.12/site-packages/reqif"
-	mv "${pkgdir}/usr/lib/python3.12/site-packages/README.md" "${pkgdir}/usr/lib/python3.12/site-packages/reqif"
-	mv "${pkgdir}/usr/lib/python3.12/site-packages/pyproject.toml" "${pkgdir}/usr/lib/python3.12/site-packages/reqif"
+	local _site=$(python -c "import site; print(site.getsitepackages()[0])")
+	mv \
+		"${pkgdir}${_site}/LICENSE" \
+		"${pkgdir}${_site}/README.md" \
+		"${pkgdir}${_site}/pyproject.toml" \
+			"${pkgdir}${_site}/${_name}"
 }
