@@ -1,6 +1,6 @@
 pkgbase = otf-antykwa-poltawskiego
 	pkgdesc = Open Type Antiqua Półtawskiego, a typeface designed by Adam Połtawski
-	pkgver = 1.02
+	pkgver = 1.03
 	pkgrel = 1
 	url = http://jmn.pl/en/antykwa-poltawskiego
 	arch = any
