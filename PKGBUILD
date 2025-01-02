@@ -3,13 +3,13 @@
 # Contributor: pfm <vorticity at mail dot ru>
 
 pkgname=python-eliot
-pkgver=1.15.0
-pkgrel=3
+pkgver=1.16.0
+pkgrel=1
 pkgdesc='Logging that tells you why it happened'
 arch=('any')
 url='https://github.com/itamarst/eliot'
 license=('Apache-2.0')
-depends=('python' 'python-six' 'python-zope-interface' 'python-pyrsistent' 'python-boltons')
+depends=('python' 'python-zope-interface' 'python-pyrsistent' 'python-boltons')
 makedepends=(
 	'python-setuptools'
 	'python-build'
@@ -20,7 +20,7 @@ checkdepends=('python-pytest' 'python-hypothesis' 'python-testtools')
 #source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/e/eliot/eliot-$pkgver.tar.gz")
 # 1.15.0 has no sdist on pypi
 source=("$pkgname-$pkgver.tar.gz::https://github.com/itamarst/eliot/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('9ffd025a6ce6afb857b2b4f0c76153c28eb5e13c747af549854044ab325409d9')
+sha256sums=('b9a66d7e9531b0ee76008a7fe2138b64ba212fcb4d4fa7d95fbd192ff62550ab')
 
 prepare() {
 	cd "eliot-$pkgver"
