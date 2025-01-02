@@ -6,13 +6,13 @@
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=xray
-pkgver=24.12.18
+pkgver=24.12.31
 pkgrel=1
 pkgdesc="The best v2ray-core, with XTLS support"
 arch=('x86_64')
 url="https://github.com/XTLS/Xray-core"
 license=('MPL-2.0')
-depends=('glibc' 'xray-domain-list-community' 'xray-geoip')
+depends=('glibc' 'v2ray-domain-list-community' 'v2ray-geoip')
 makedepends=('go')
 provides=('v2ray')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "xray.tmpfiles"
         "xray.service"
         "xray@.service")
-sha256sums=('3d8b4a161a263e7af7bb1a2690961da075d13f980acd806f5cd4e5c8338d7534'
+sha256sums=('e3c24b561ab422785ee8b7d4a15e44db159d9aa249eb29a36ad1519c15267be0'
             '801131bf2eb079750f17d3e703e414eab8494db0d512164cdef3cc68cef308b8'
             '2d301e9f2fae728da55f33a15b2c36e90cdb657deafb5d6ab7d74375ce9fdf38'
             '66a8a3280aa5b3ed41b9855ba3de3f884bd2113b4a965cf097fcb31c3a6066ed'
@@ -43,8 +43,9 @@ check() {
 
 package() {
     cd "Xray-core-${pkgver}"
-    install -d "${pkgdir}/etc/xray"
     install -Dm755 xray -t "${pkgdir}/usr/bin"
+    install -d "${pkgdir}/etc/xray" "${pkgdir}/usr/share/xray"
+    ln -s /usr/share/v2ray/geo{ip,site}.dat -t "${pkgdir}/usr/share/xray"
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${srcdir}/xray.sysusers" "${pkgdir}/usr/lib/sysusers.d/xray.conf"
     install -Dm644 "${srcdir}/xray.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/xray.conf"
