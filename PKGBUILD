@@ -23,7 +23,6 @@ depends=(
     libadwaita
     glib2
     libgee
-    vala
     cairo
 )
 
