@@ -2,14 +2,14 @@
 
 pkgname=mconf-bin
 pkgver=1.1.0
-pkgver=24.1_1
+pkgver=25.1_2
 local gittag="${pkgver//_/-}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Parser for the mconf configuration language"
 arch=("x86_64" "aarch64")
 url="https://github.com/marzeq/mconf"
 license=("WTFPL")
-depends=("glibc")
+depends=()
 provides=("mconf")
 conflicts=("mconf")
 

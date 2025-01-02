@@ -1,17 +1,16 @@
 pkgbase = mconf-bin
 	pkgdesc = Parser for the mconf configuration language
-	pkgver = 24.1_1
-	pkgrel = 2
+	pkgver = 25.1_2
+	pkgrel = 1
 	url = https://github.com/marzeq/mconf
 	arch = x86_64
 	arch = aarch64
 	license = WTFPL
-	depends = glibc
 	provides = mconf
 	conflicts = mconf
-	source_x86_64 = https://github.com/marzeq/mconf/releases/download/v24.1-1/mconf-linux-amd64
+	source_x86_64 = https://github.com/marzeq/mconf/releases/download/v25.1-2/mconf-linux-amd64
 	md5sums_x86_64 = 45661c2244de0249732c87bfe0784840
-	source_aarch64 = https://github.com/marzeq/mconf/releases/download/v24.1-1/mconf-linux-arm64
+	source_aarch64 = https://github.com/marzeq/mconf/releases/download/v25.1-2/mconf-linux-arm64
 	md5sums_aarch64 = f0953a518a3b736ce5512546f65e1daa
 
 pkgname = mconf-bin
