@@ -2,7 +2,7 @@
 
 pkgname='pepecoin'
 pkgver='1.1.0'
-pkgrel=2
+pkgrel=3
 pkgdesc="The world's first fully decentralized and secure blockchain for Pepe."
 arch=('x86_64')
 url='https://github.com/pepecoinppc/pepecoin'
@@ -21,9 +21,9 @@ depends=(
   'hicolor-icon-theme'
   'libevent'
   'libminiupnpc.so'
+  'libprotobuf.so'
   'libzmq.so'
   'openssl'
-  'protobuf'
   'qrencode'
   'qt5-base'
 )
