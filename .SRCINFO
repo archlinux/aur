@@ -1,6 +1,6 @@
 pkgbase = xremap-kde
 	pkgdesc = Key remapper for X11 and Wayland - KDE Edition
-	pkgver = 0.10.0
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/xremap/xremap
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = xremap-kde
 	license = MIT
 	makedepends = cargo
 	provides = xremap
-	source = xremap-0.10.0.tar.gz::https://static.crates.io/crates/xremap/xremap-0.10.0.crate
-	sha256sums = 56278615ad9e8f9ed920dc7e6d198e0c23564c174383a16a6247c10f08a3fb8e
+	source = xremap-0.10.3.tar.gz::https://static.crates.io/crates/xremap/xremap-0.10.3.crate
+	sha256sums = 029b942ad160cd93bc0c3875e6ccd34a4625e4c4b1083096fdc5c9b756e21b72
 
 pkgname = xremap-kde
