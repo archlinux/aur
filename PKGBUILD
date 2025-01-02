@@ -61,4 +61,7 @@ package() {
   mv ${pkgdir}${pkgdir}/* "${pkgdir}${site_packages}"
   # install libsrc/ needed by some packages (e.g. FreeCAD)
   cp -R ${_base}-${pkgver}/libsrc/ "${pkgdir}/usr/share/${_base}"
+
+  # remove reference to srcdir
+  sed -i "s;${srcdir}/;;g" ${pkgdir}/usr/lib/cmake/netgen/NetgenConfig.cmake
 }
