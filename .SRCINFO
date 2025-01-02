@@ -1,0 +1,15 @@
+pkgbase = lip
+	pkgdesc = A general package installer
+	pkgver = 0.24.0
+	pkgrel = 1
+	url = https://github.com/futrime/lip
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	conflicts = lip
+	source = git+https://github.com/futrime/lip.git
+	sha512sums = SKIP
+
+pkgname = lip
