@@ -1,6 +1,6 @@
 pkgbase = cosmic-session-git
 	pkgdesc = Session manager for the COSMIC desktop environment
-	pkgver = 1.0.0.alpha.4.r2.g0a3b9f5
+	pkgver = 1.0.0.alpha.4.r6.g998cf3f
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-session
 	arch = x86_64
@@ -33,6 +33,7 @@ pkgbase = cosmic-session-git
 	depends = xdg-desktop-portal-cosmic-git
 	depends = xorg-xwayland
 	optdepends = cosmic-edit-git: COSMIC text editor
+	optdepends = cosmic-player-git: COSMIC media player
 	optdepends = cosmic-store-git: COSMIC store
 	optdepends = cosmic-term-git: COSMIC terminal
 	optdepends = cosmic-wallpapers-git: COSMIC wallpapers
