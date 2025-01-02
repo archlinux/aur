@@ -2,8 +2,8 @@
 
 pkgbase=at32-bootloader-doc
 pkgname=at32-bootloader-doc-zh
-pkgver=2.0.4
-pkgrel=0
+pkgver=2.0.5
+pkgrel=1
 pkgdesc="Artery AT MCU Bootloader ISP 协议文档"
 arch=(any)
 url="https://www.arterytek.com/cn/support/index.jsp?index=5"
@@ -25,7 +25,7 @@ options=()
 install=
 _pkg_file_name=Bootloader_CH_V${pkgver}.zip
 source=("${_pkg_file_name}::https://www.arterytek.com/download/TOOL/Bootloader_CH_V${pkgver}.zip")
-sha256sums=('c1190802af376a6636ede517c36200044db308be2032ea2535cdc0b4e1823436')
+sha256sums=('47357f6e0c2ebededd8a156780f62a5c31820b1f95d2f5916e6a72f608023706')
 noextract=(${_pkg_file_name})
 
 package() {
