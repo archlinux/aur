@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname='Yank Note'
-pkgver=3.78.2
+pkgver=3.79.1
 _electronversion=30
 _nodeversion=18
 pkgrel=1
