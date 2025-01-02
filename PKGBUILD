@@ -1,13 +1,13 @@
 # Mantainer: Franco Tortoriello
 
 pkgname=dosbox-x-sdl2-git
-pkgver=2025.01.01.r0.g895fca367
-pkgrel=2
+pkgver=2025.01.01.r14.g9db05690e
+pkgrel=1
 epoch=3
 pkgdesc="x86 emulator with builtin DOS, with patches with more features - sdl2 git version"
 arch=(i686 x86_64)
 url="https://dosbox-x.com/"
-license=(GPL)
+license=(GPL-2.0-or-later)
 depends=(fluidsynth libxkbfile libxrandr ffmpeg sdl2_net libslirp libpng libpcap)
 makedepends=(git glu)
 optdepends=('openglide-git: Third-party 3dfx Glide API support')

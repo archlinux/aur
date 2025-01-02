@@ -1,13 +1,13 @@
 pkgbase = dosbox-x-sdl2-git
 	pkgdesc = x86 emulator with builtin DOS, with patches with more features - sdl2 git version
-	pkgver = 2025.01.01.r0.g895fca367
-	pkgrel = 2
+	pkgver = 2025.01.01.r14.g9db05690e
+	pkgrel = 1
 	epoch = 3
 	url = https://dosbox-x.com/
 	install = dosbox-x.install
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = glu
 	depends = fluidsynth
