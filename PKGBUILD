@@ -9,7 +9,7 @@
 #
 
 pkgname=nethack-git
-pkgver=NetHack.3.6.7_Released+r9120+g55561da63
+pkgver=3.6.7_Released+r9120+g55561da63
 pkgrel=1
 pkgdesc='A single player dungeon exploration game'
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ pkgver() {
   _version=$(git describe --tags --abbrev=0 | tr - .)
   _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
-  echo "${_version}+r${_commits}+g${_short_commit_hash}"
+  echo "${_version#'NetHack.'}+r${_commits}+g${_short_commit_hash}"
 }
 
 prepare() {
