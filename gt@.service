@@ -1,0 +1,17 @@
+#  SPDX-License-Identifier: MIT or LGPL-2.1+
+#
+# Copyright 2019 Collabora Ltd
+#
+[Unit]
+Description=Load USB gadget scheme
+Requires=sys-kernel-config.mount
+After=sys-kernel-config.mount
+
+[Service]
+ExecStart=gt load %i.scheme %i
+RemainAfterExit=yes
+ExecStop=gt rm -rf %i
+Type=simple
+
+[Install]
+WantedBy=usb-gadget.target

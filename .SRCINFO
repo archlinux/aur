@@ -1,0 +1,18 @@
+pkgbase = gt-git
+	pkgdesc = Gadget Tool: Linux command line tool for setting USB gadget using configFS
+	pkgver = r146.a2aa973
+	pkgrel = 1
+	url = https://github.com/linux-usb-gadgets/gt
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = asciidoc
+	makedepends = cmake
+	makedepends = git
+	depends = libusbgx
+	source = git+https://github.com/linux-usb-gadgets/gt.git
+	source = gt@.service
+	sha256sums = SKIP
+	sha256sums = dc636c51547e83027ab42c15a37afb2133a3edc06c60931b3198fc4ba919615a
+
+pkgname = gt-git
