@@ -1,0 +1,21 @@
+pkgbase = seriot-git
+	pkgdesc = A Gtk4 serial monitor and plotter
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://github.com/ak1932/seriot
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = vala
+	depends = gtk4
+	depends = libadwaita
+	depends = glib2
+	depends = libgee
+	depends = vala
+	depends = cairo
+	source = seriot-beta.tar.gz::https://github.com/ak1932/seriot/archive/refs/tags/beta.tar.gz
+	sha256sums = 79ad83b1db3bddaad93869005a1665c5849a6590e423ea61b1f02ea580f70ad2
+
+pkgname = seriot-git
