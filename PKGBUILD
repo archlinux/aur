@@ -2,7 +2,7 @@
 
 pkgdesc='Custom CSS support for Nextcloud servers'
 pkgname=('nextcloud-app-theming-customcss')
-pkgver=1.14.0
+pkgver=1.17.0
 pkgrel=1
 arch=('any')
 license=('AGPL')
@@ -17,4 +17,4 @@ package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
 	cp -a "${srcdir}/theming_customcss" "${pkgdir}/usr/share/webapps/nextcloud/apps/theming_customcss"
 }
-sha256sums=('64be77b4c109811f790d5a2890a036a218412073ff805252e753a5924cd7a243')
+sha256sums=('8949ecda523b48e14cb3b6867b1210e191aa8112bb4b8575f48fb969916284ea')
