@@ -1,0 +1,12 @@
+pkgbase = mobilesheets-companion
+	pkgdesc = Companion app for MobileSheets to remotely manage sheet libraries.
+	pkgver = 4.1.2
+	pkgrel = 1
+	url = https://www.zubersoft.com/mobilesheets/companion/
+	arch = x86_64
+	makedepends = dpkg
+	depends = glibc
+	source = https://www.zubersoft.download/MobileSheetsCompanion.deb
+	sha512sums = SKIP
+
+pkgname = mobilesheets-companion
