@@ -1,6 +1,6 @@
 pkgbase = python-lightning-utilities
 	pkgdesc = Common Python utilities and GitHub Actions in Lightning Ecosystem
-	pkgver = 0.11.2
+	pkgver = 0.11.9
 	pkgrel = 1
 	url = https://github.com/Lightning-AI/utilities
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-lightning-utilities
 	depends = python-requests
 	depends = python-setuptools
 	depends = python-typing_extensions
-	source = https://files.pythonhosted.org/packages/source/l/lightning-utilities/lightning-utilities-0.11.2.tar.gz
-	sha512sums = a24adb51b4d3442009034ff8ac6c07b994791a2d29a9d90f21296c938d4d019423b675abda8a09e55354cf754a15170685ba70a92046c434aa411f55987bb053
+	source = https://files.pythonhosted.org/packages/source/l/lightning_utilities/lightning_utilities-0.11.9.tar.gz
+	sha512sums = 81343f37cc010be5d217a3b42c0357487539ef0a01c276a9ff7767dea7e40c006fc62eea2a6ffb0e389c846258d596b257197512cb25375be2c06578a953f569
 
 pkgname = python-lightning-utilities
