@@ -9,7 +9,7 @@ _vc_commit_sha=27942c7ab5a12b9253eb69eaf3a58699bcdd5189
 
 pkgname=vlang
 pkgver=0.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64' 'aarch64')
 url='https://vlang.io'
@@ -18,7 +18,7 @@ depends=('glibc')
 optdepends=('glfw: Needed for graphics support'
             'freetype2: Needed for graphics support'
             'openssl: Needed for http support')
-makedepends=('git')
+makedepends=('git' 'libx11')
 conflicts=('v')
 source=("v-${pkgver}.zip::https://github.com/vlang/v/archive/${_v_commit_sha}.zip"
         "vc-${pkgver}.zip::https://github.com/vlang/vc/archive/${_vc_commit_sha}.zip")
