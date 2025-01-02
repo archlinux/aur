@@ -1,84 +1,83 @@
 diff --unified --recursive --text ./linrad-05.02.orig/Makefile.in linrad-05.02.new/Makefile.in
 --- ./linrad-05.02.orig/Makefile.in	2023-02-27 22:18:59.000000000 +0000
-+++ linrad-05.02.new/Makefile.in	2025-01-02 16:22:59.058246916 +0000
-@@ -51,7 +51,7 @@
-     LIBMACOSX = -framework IOKit -framework CoreFoundation
- endif
- 
--CFL	= -O2 -DOSNUM=1 @X11_32_INC@ -W -Wall -DCPU=@CPU@ @OSSINC32@ \
-+CFL	= $(CFLAGS) -O2 -DOSNUM=1 @X11_32_INC@ -W -Wall -DCPU=@CPU@ @OSSINC32@ \
- -DHAVE_SHM=@LIBXEXT32_OK@ -Wimplicit -Wbad-function-cast -DOSSD=@OSSHDR32@ \
- -DHAVE_X11=@X11_32_ALL_OK@ -DIA64=0 -Wnested-externs -DHAVE_OSS=@OSS32_H@ \
- @DARWIN@ @OCLPROGS32@ -DSERVER=@MAKE_SERVER@ -DHAVE_SVGALIB=@CONSOLE32_OK@ \
-@@ -60,7 +60,7 @@
++++ linrad-05.02.new/Makefile.in	2025-01-02 18:42:13.212082151 +0000
+@@ -58,7 +58,7 @@
+ -DHAVE_CUFFT=@CUFFT32_OK@ \
+ -Wreturn-type -Wformat @M32@ -Wunused -Wcomment -Wchar-subscripts -Wshadow \
  -Wuninitialized -Wparentheses -Wstrict-prototypes -Werror -ffast-math \
- -Wundef -fomit-frame-pointer -c -o
+--Wundef -fomit-frame-pointer -c -o
++-Wundef -fomit-frame-pointer $(CFLAGS) -c -o
  
--CFLN	= -O2 -DOSNUM=1 @X11_32_INC@ -W -Wall -DCPU=@CPU@ @OSSINC32@ \
-+CFLN	= $(CFLAGS) -O2 -DOSNUM=1 @X11_32_INC@ -W -Wall -DCPU=@CPU@ @OSSINC32@ \
+ CFLN	= -O2 -DOSNUM=1 @X11_32_INC@ -W -Wall -DCPU=@CPU@ @OSSINC32@ \
  -DHAVE_SHM=@LIBXEXT32_OK@ -DHAVE_SVGALIB=@CONSOLE32_OK@ -Wimplicit \
- -DHAVE_X11=@X11_32_ALL_OK@ -DIA64=0 -DHAVE_OSS=@OSS32_H@ -DOSSD=@OSSHDR32@ \
- @DARWIN@ @OCLPROGS32@ -DSERVER=@MAKE_SERVER@ -DHAVE_CUFFT=@CUFFT32_OK@ \
-@@ -69,7 +69,7 @@
+@@ -67,7 +67,7 @@
+ -Wconversion \
+ -Wreturn-type -Wformat @M32@ -Wunused -Wcomment -Wchar-subscripts -Wshadow \
  -Wuninitialized -Wparentheses -Wstrict-prototypes -Werror -ffast-math \
- -Wundef -fomit-frame-pointer -c -o
+--Wundef -fomit-frame-pointer -c -o
++-Wundef -fomit-frame-pointer $(CFLAGS) -c -o
  
--CFLOCL	= -O2 -DOSNUM=1 @X11_32_INC@ -W -Wall -DCPU=@CPU@ @OSSINC32@ \
-+CFLOCL	= $(CFLAGS) -O2 -DOSNUM=1 @X11_32_INC@ -W -Wall -DCPU=@CPU@ @OSSINC32@ \
+ CFLOCL	= -O2 -DOSNUM=1 @X11_32_INC@ -W -Wall -DCPU=@CPU@ @OSSINC32@ \
  -DHAVE_SHM=@LIBXEXT32_OK@ -Wimplicit -Wbad-function-cast -DOSSD=@OSSHDR32@ \
- -DHAVE_X11=@X11_32_ALL_OK@ -DIA64=0 -Wnested-externs -DHAVE_OSS=@OSS32_H@ \
- @DARWIN@ -DSERVER=@MAKE_SERVER@ -DHAVE_SVGALIB=@CONSOLE32_OK@ \
-@@ -78,7 +78,7 @@
+@@ -76,13 +76,13 @@
+ @OCLPROGS32@ -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DHAVE_CUFFT=@CUFFT32_OK@ \
+ -Wreturn-type -Wformat @M32@ -Wunused -Wcomment -Wchar-subscripts -Wshadow \
  -Wuninitialized -Wparentheses -Werror -ffast-math \
- -Wundef -fomit-frame-pointer -c -o
+--Wundef -fomit-frame-pointer -c -o
++-Wundef -fomit-frame-pointer $(CFLAGS) -c -o
  
--CFW	= -O2 -DOSNUM=2 -W -Wall -Wimplicit -DIA64=0 -DHAVE_CUFFT=0 \
-+CFW	= $(CFLAGS) -O2 -DOSNUM=2 -W -Wall -Wimplicit -DIA64=0 -DHAVE_CUFFT=0 \
+ CFW	= -O2 -DOSNUM=2 -W -Wall -Wimplicit -DIA64=0 -DHAVE_CUFFT=0 \
  -DCPU=CPU_INTEL -DSERVER=@MAKE_SERVER@ -DHAVE_OSS=0 -DOPENCL_PRESENT=0 \
  @M32@ -Wreturn-type -Wformat -Wunused -Wcomment -Wchar-subscripts \
  -Wshadow -Wuninitialized -Wparentheses -Wstrict-prototypes -Werror \
-@@ -86,20 +86,20 @@
+--ffast-math -Wundef -fomit-frame-pointer -c -o
++-ffast-math -Wundef -fomit-frame-pointer $(CFLAGS) -c -o
  
  # -fsyntax-only -pedantic -pedantic-errors -w -Wextra -Wall -Waddress -Waggrega
  
--CFWN	= -O2 -DOSNUM=2 -W -Wall -Wimplicit -DIA64=0 -DHAVE_CUFFT=0 \
-+CFWN	= $(CFLAGS) -O2 -DOSNUM=2 -W -Wall -Wimplicit -DIA64=0 -DHAVE_CUFFT=0 \
- -DCPU=CPU_INTEL -DSERVER=@MAKE_SERVER@ -DHAVE_OSS=0 -DOPENCL_PRESENT=0 \
+@@ -91,13 +91,13 @@
  @M32@ -Wreturn-type -Wformat -Wunused -Wcomment -Wchar-subscripts \
  -Wconversion \
  -Wshadow -Wuninitialized -Wparentheses -Wstrict-prototypes -Werror \
- -ffast-math -Wundef -fomit-frame-pointer -c -o
+--ffast-math -Wundef -fomit-frame-pointer -c -o
++-ffast-math -Wundef -fomit-frame-pointer $(CFLAGS) -c -o
  
--CFW64	= -O2 -DOSNUM=2 -W -Wall -Wimplicit -DIA64=1 -DHAVE_CUFFT=0 \
-+CFW64	= $(CFLAGS) -O2 -DOSNUM=2 -W -Wall -Wimplicit -DIA64=1 -DHAVE_CUFFT=0 \
+ CFW64	= -O2 -DOSNUM=2 -W -Wall -Wimplicit -DIA64=1 -DHAVE_CUFFT=0 \
  -DCPU=CPU_INTEL -DSERVER=@MAKE_SERVER@ -DHAVE_OSS=0 -DOPENCL_PRESENT=0 \
  @M64@ -Wreturn-type -Wformat -Wunused -Wcomment -Wchar-subscripts \
  -Wshadow -Wuninitialized -Wparentheses -Wstrict-prototypes -Werror \
- -ffast-math -Wundef -fomit-frame-pointer -c -o
+--ffast-math -Wundef -fomit-frame-pointer -c -o
++-ffast-math -Wundef -fomit-frame-pointer $(CFLAGS) -c -o
  
--CFL64	= -O2 -DOSNUM=1 @X11_64_INC@ -W -Wall -DHAVE_OSS=@OSS64_H@ \
-+CFL64	= $(CFLAGS) -O2 -DOSNUM=1 @X11_64_INC@ -W -Wall -DHAVE_OSS=@OSS64_H@ \
+ CFL64	= -O2 -DOSNUM=1 @X11_64_INC@ -W -Wall -DHAVE_OSS=@OSS64_H@ \
  -DCPU=@CPU@ -DHAVE_SHM=@LIBXEXT64_OK@ -DHAVE_X11=@X11_64_ALL_OK@ \
- -DIA64=1 @DARWIN@ -DSERVER=@MAKE_SERVER@ -DHAVE_SVGALIB=@CONSOLE64_OK@ \
- @OCLPROGS64@ -DHAVE_CUFFT=@CUFFT64_OK@ \
-@@ -108,7 +108,7 @@
+@@ -106,7 +106,7 @@
+ -Wimplicit -Wreturn-type -Wformat @M64@ -Wunused -Wcomment -DOSSD=@OSSHDR64@ \
+ -Wchar-subscripts -Wshadow -Wuninitialized -Wparentheses @OSSINC64@ \
  -Wstrict-prototypes -Werror -ffast-math -Wundef -fomit-frame-pointer \
- -c -o
+--c -o
++$(CFLAGS) -c -o
  
--CFLN64	= -O2 -DOSNUM=1 @X11_64_INC@ -W -Wall -DHAVE_OSS=@OSS64_H@ \
-+CFLN64	= $(CFLAGS) -O2 -DOSNUM=1 @X11_64_INC@ -W -Wall -DHAVE_OSS=@OSS64_H@ \
+ CFLN64	= -O2 -DOSNUM=1 @X11_64_INC@ -W -Wall -DHAVE_OSS=@OSS64_H@ \
  -DCPU=@CPU@ -DHAVE_SHM=@LIBXEXT64_OK@ -DHAVE_SVGALIB=@CONSOLE64_OK@ \
- -DIA64=1 @DARWIN@ -DSERVER=@MAKE_SERVER@ -DHAVE_X11=@X11_64_ALL_OK@ \
- -DHAVE_CUFFT=@CUFFT64_OK@ -DOSSD=@OSSHDR64@ @OSSINC64@ @OCLPROGS64@ \
-@@ -117,7 +117,7 @@
+@@ -115,7 +115,7 @@
+ -Wconversion -Wimplicit -Wreturn-type -Wformat @M64@ -Wunused -Wcomment \
+ -Wchar-subscripts -Wshadow -Wuninitialized -Wparentheses \
  -Wstrict-prototypes -Werror -ffast-math -Wundef -fomit-frame-pointer \
+--c -o
++$(CFLAGS) -c -o
+ 
+ CFLOCL64	= -O2 -DOSNUM=1 @X11_64_INC@ -W -Wall -DHAVE_OSS=@OSS64_H@ \
+ -DCPU=@CPU@ -DHAVE_SHM=@LIBXEXT64_OK@ -DHAVE_X11=@X11_64_ALL_OK@ \
+@@ -123,7 +123,7 @@
+ @OCLPROGS64@ -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DHAVE_CUFFT=@CUFFT64_OK@ \
+ -Wimplicit -Wreturn-type -Wformat @M64@ -Wunused -Wcomment -DOSSD=@OSSHDR64@ \
+ -Wchar-subscripts -Wshadow -Wuninitialized -Wparentheses @OSSINC64@ \
+--Werror -ffast-math -Wundef -fomit-frame-pointer \
++-Werror -ffast-math -Wundef -fomit-frame-pointer $(CFLAGS) \
  -c -o
  
--CFLOCL64	= -O2 -DOSNUM=1 @X11_64_INC@ -W -Wall -DHAVE_OSS=@OSS64_H@ \
-+CFLOCL64	= $(CFLAGS) -O2 -DOSNUM=1 @X11_64_INC@ -W -Wall -DHAVE_OSS=@OSS64_H@ \
- -DCPU=@CPU@ -DHAVE_SHM=@LIBXEXT64_OK@ -DHAVE_X11=@X11_64_ALL_OK@ \
- -DIA64=1 @DARWIN@ -DSERVER=@MAKE_SERVER@ -DHAVE_SVGALIB=@CONSOLE64_OK@ \
- @OCLPROGS64@ -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DHAVE_CUFFT=@CUFFT64_OK@ \
+ # Define dependencies for routines used both in Linux and Windows
 @@ -1717,7 +1717,7 @@
  bladerf.ol mirics.ol sdrplay2.ol sdrplay3.ol openhpsdr.ol oclprogs.ol \
  loadalsa.ol cloudiq.ol lfxsys.ol airspyhf.ol siganal_graph.ol
