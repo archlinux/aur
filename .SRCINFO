@@ -1,18 +1,23 @@
 pkgbase = python-mpl-scatter-density
 	pkgdesc = Fast scatter density plots for Matplotlib
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://github.com/astrofrog/mpl-scatter-density
-	arch = i386
-	arch = x86_64
-	license = CUSTOM
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-mpl
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
-	depends = python-numpy
-	depends = python-matplotlib
+	depends = python-astropy
 	depends = python-fast-histogram
-	source = https://files.pythonhosted.org/packages/97/e0/98dd3223d6306a35d3fbd67ebf9473be6341d6e733a57768825205786021/mpl-scatter-density-0.7.tar.gz
-	sha256sums = cace750887916d3881b3a42ab5805769cc8d7eb70ef610938cbb57c967277620
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-pyqt5
+	depends = python-pytest
+	source = https://files.pythonhosted.org/packages/f1/8c/f5c1ddc7d35f0337b2698b52e60f558db3bf03e80ec0b13b8f8b9e2cf2e8/mpl_scatter_density-0.8.tar.gz
+	sha512sums = 49bf2ac511fbf2a1f824e667b011246ebbbd272d3be9d14c4be5221a75b34568e71142b9a0cd11d956b2519b1326fa65b33eb77458c411af0f4a8e2873c9f81a
 
 pkgname = python-mpl-scatter-density
-
