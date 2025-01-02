@@ -10,11 +10,11 @@ pkgname=(
   ppsspp-assets
 )
 pkgver=1.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
 url=https://www.ppsspp.org/
-license=(GPL2)
+license=(GPL-2.0-or-later)
 makedepends=(
   clang
   cmake
