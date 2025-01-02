@@ -5,14 +5,14 @@
 pkgbase=webkit2gtk-hvml
 pkgname=(webkit2gtk-{3,4}.0-hvml webkit2hbd)
 pkgver=2.34.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Web content engine for GTK (HVML)"
 url="https://hvml.fmsoft.cn/"
 arch=(x86_64)
 license=(custom)
-provides=(${pkgname}  'webkithbd')
+provides=(${pkgname} 'webkithbd')
 conflicts=(webkit2gtk 'webkithbd')
-depends=(cairo fontconfig freetype2 libgcrypt glib2 gtk3 gtk4  harfbuzz harfbuzz-icu
+depends=(cairo fontconfig freetype2 libgcrypt glib2 gtk3 gtk4 harfbuzz harfbuzz-icu
   icu libjpeg libsoup libsoup3 libxml2 zlib libpng sqlite atk libwebp at-spi2-core
   libegl libgl libgles libwpe wpebackend-fdo libxslt libsecret libtasn1
   enchant libx11 libxext libice libxt wayland libnotify hyphen openjpeg2
@@ -28,19 +28,24 @@ optdepends=('geoclue: Geolocation support'
   'purc-midnight-commander: A generic HVML renderer in text mode for development and debugging.'
   'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
 # options=(debug)
-options=(!strip !lto )
+options=(!strip !lto)
 _date=20231116
 _time=015630
 _name=WebKitHBD-${pkgver}-${_date}-${_time}-Source
 source=("https://files.fmsoft.cn/sources/${_name}.tar.xz")
 sha256sums=('522aa2bd80db6c24bd8d7f9da424aed7243acede048ed2fbcd321c256f3a77f9')
 
-
 # prepare() {
 #   cd webkitgtk-$pkgver
 # }
 
 build() {
+  export LDFLAGS="-L/lib64"
+  if test -n "$LD_LIBRARY_PATH"; then
+    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/lib64"
+  else
+    export LD_LIBRARY_PATH=/lib64
+  fi
   # Produce minimal debug info: 4.3 GB of debug data makes the
   # build too slow and is too much to package for debuginfod
   CFLAGS+=' -g1'
@@ -82,7 +87,6 @@ build() {
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations -Wno-dangling-reference"
 
-
   ninja -C build-gtk4
 
   # WebKit2HBD Using  Minigui and Soup2
@@ -106,7 +110,7 @@ build() {
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations -Wno-dangling-reference"
 
-    ninja -C build-hbd
+  ninja -C build-hbd
 }
 
 package_webkit2gtk-3.0-hvml() {
