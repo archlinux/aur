@@ -3,7 +3,7 @@ url="https://www.intelrealsense.com/"
 
 pkgname=librealsense2
 pkgver='2.54.2'
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=("Apache-2.0")
 
@@ -35,9 +35,9 @@ prepare() {
     # there is no group called plugdev in archlinux
     sed -i 's|, GROUP:="plugdev"||g' "config/99-realsense-libusb.rules"
     sed -i 's|, GROUP="plugdev"||g' "config/99-realsense-libusb.rules"
-    # patch for g++13
-    # check if g++13 is installed
-    gnu13_installed=$(g++ --version | grep 13)
+    # patch for g++>=13
+    # check if g++>=13 is installed
+    gnu13_installed=$(g++ --version | head -n1 | awk '/g++/ && ($3+0)>=13')
     if [ -n "${gnu13_installed}" ]; then
         patch -p1 -i ${srcdir}/g++13.patch
     fi

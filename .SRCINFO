@@ -1,7 +1,7 @@
 pkgbase = librealsense2
 	pkgdesc = Intel® RealSense™ Cross Platform
 	pkgver = 2.54.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.intelrealsense.com/
 	arch = x86_64
 	license = Apache-2.0
