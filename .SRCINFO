@@ -1,6 +1,6 @@
 pkgbase = triton-git
 	pkgdesc = Dynamic binary analysis framework
-	pkgver = 0.8.1.r266.g6b929c39
+	pkgver = 0.9.r652.gb022f317
 	pkgrel = 1
 	url = https://triton.quarkslab.com/
 	arch = x86_64

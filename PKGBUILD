@@ -5,7 +5,7 @@
 
 _pkgname=triton
 pkgname=${_pkgname}-git
-pkgver=0.8.1.r266.g6b929c39
+pkgver=0.9.r652.gb022f317
 pkgrel=1
 pkgdesc='Dynamic binary analysis framework'
 url='https://triton.quarkslab.com/'
@@ -26,10 +26,10 @@ pkgver() {
 build() {
   cd $pkgname
   cmake ./ -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cmake --build .
 }
 
 package() {
   cd $pkgname
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install .
 }
