@@ -37,7 +37,6 @@ pkgbase = ultimatevocalremovergui-git
 	depends = python-omegaconf
 	depends = python-pillow
 	depends = python-julius-git
-	depends = python-future
 	depends = python-altgraph
 	depends = python-opencv
 	depends = python-pytorch-lightning
