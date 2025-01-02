@@ -57,9 +57,8 @@ package() {
   PYTHONPATH="${srcdir}" DESTDIR="${pkgdir}" cmake --build build --target install
   install -Dm 644 ${_base}-${pkgver}/LICENSE -t "${pkgdir}/usr/share/licenses/${_base}"
   install -Dm644 ${_base}-${pkgver}/doc/ng4.pdf -t "${pkgdir}/usr/share/doc/${_base}"
-  echo ${pkgdir} # /tmp/makepkg/netgen-nogui/pkg/netgen-nogui
   install -d ${pkgdir}${site_packages}
-  mv "${pkgdir}${pkgdir}" "${pkgdir}${site_packages}"
+  mv ${pkgdir}${pkgdir}/* "${pkgdir}${site_packages}"
   # install libsrc/ needed by some packages (e.g. FreeCAD)
   cp -R ${_base}-${pkgver}/libsrc/ "${pkgdir}/usr/share/${_base}"
 }
