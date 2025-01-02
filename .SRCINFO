@@ -1,6 +1,6 @@
 pkgbase = python-willow
 	pkgdesc = A Python image library that sits on top of Pillow, Wand and OpenCV
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://www.sphinx-needs.com/
 	arch = any
@@ -13,8 +13,10 @@ pkgbase = python-willow
 	depends = python-django
 	depends = python-filetype
 	depends = python-numpy
+	depends = python-opencv
 	depends = python-pillow
-	source = https://files.pythonhosted.org/packages/source/w/willow/willow-1.8.0.tar.gz
-	sha256sums = ef3df6cde80d4914e719188147bef1d71c240edb118340e0c5957ecc8fe08315
+	depends = python-wand
+	source = https://files.pythonhosted.org/packages/source/w/willow/willow-1.9.0.tar.gz
+	sha256sums = ffac1406275ae30b60e7c6cbd1245f0bc359d1b5731002b18a712aaf424a5102
 
 pkgname = python-willow
