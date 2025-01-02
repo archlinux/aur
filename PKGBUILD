@@ -6,14 +6,14 @@
 
 pkgname=python-future
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Clean single-source support for Python 3 and 2"
 url="https://python-future.org/"
 arch=('any')
 license=('MIT')
 depends=('python')
 provides=('futurize' 'pasteurize')
-#checkdepends=('python-requests' 'python-pytest')
+checkdepends=('python-requests' 'python-pytest')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('python-setuptools: futurize and pasteurize scripts')
 options=('!emptydirs')
