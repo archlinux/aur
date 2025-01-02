@@ -1,7 +1,7 @@
 pkgbase = nrf5x-command-line-tools
 	pkgdesc = Tools for programming Nordic nRF51, nRF52, nRF53 and nRF91 Series devices
 	pkgver = 10.24.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools
 	arch = x86_64
 	license = custom

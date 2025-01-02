@@ -8,7 +8,7 @@
 pkgname=nrf5x-command-line-tools
 _pkgname=nrf-command-line-tools
 pkgver=10.24.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Tools for programming Nordic nRF51, nRF52, nRF53 and nRF91 Series devices"
 arch=('x86_64')
 url="https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools"
