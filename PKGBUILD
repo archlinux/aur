@@ -1,14 +1,15 @@
-# Maintainer: 0b100100 <0b100100 at protonmail dot ch>
+# Maintainer: Laura Demkowicz-Duffy <dev at demkowiczduffy dot co dot uk>
+# Contributor: 0b100100 <0b100100 at protonmail dot ch>
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=linrad
 pkgver=05.01
-pkgrel=2
+pkgrel=3
 pkgdesc="Software defined radio receiver for x11"
 arch=('i686' 'x86_64')
 url="https://www.sm5bsz.com/linuxdsp/linrad.htm"
 license=('MIT')
-depends=('portaudio' 'libxext' 'libusb-compat')
+depends=('portaudio' 'libxext' 'libusb-compat' 'glibc' 'bash' 'libx11')
 optdepends=('hamradio-menus: XDG menus for ham radio software')
 makedepends=('nasm' 'icoutils')
 source=("$pkgname-$pkgver.tbz::https://www.sm5bsz.com/linuxdsp/archive/lir${pkgver/./-}.tbz"
