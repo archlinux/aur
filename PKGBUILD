@@ -1,7 +1,7 @@
-#Maintainer: SadaoMaou <luxrayguy@gmail.com>
+#Maintainer: Luckyluke <NR2WG23@proton.me>
+#Contributor: SadaoMaou <luxrayguy@gmail.com>
 #Contributor: Satiricon <david.satiricon@gmail.com>
 #Contributor: Alexbrenvero <alexandre@lempire.xyz>
-#Contributor: Luckyluke <NR2WG23@proton.me>
 pkgname=lanraragi
 pkgver=v.0.9.30
 pkgrel=1
