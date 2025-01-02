@@ -4,7 +4,7 @@
 _pkgname=vlang
 pkgname=vlang-bin
 pkgver=0.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software (binary release)'
 arch=('x86_64')
 url='https://vlang.io'
@@ -12,6 +12,7 @@ license=('MIT')
 conflicts=('v' 'vlang' 'vlang-git')
 provides=('vlang')
 depends=('glibc')
+makedepends=('libx11')
 optdepends=('glfw: Needed for graphics support'
             'freetype2: Needed for graphics support'
             'openssl: Needed for http support')
