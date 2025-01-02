@@ -1,7 +1,7 @@
 # Maintainer: Georg Nagel <g.schlmm at gmail dot com>
 # Contributor: Leonardo Eugênio <lelgenio@disroot.org>
 pkgname=blade-formatter
-pkgver=1.41.1
+pkgver=1.42.0
 pkgrel=1
 pkgdesc="An opinionated blade template formatter for Laravel that respects readability"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=('npm')
 optdepends=()
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-sha256sums=('62aa42cb6414718e6847d327eef6fb35d26993c42fb1baf6a56f05b99c2a6eec')
+sha256sums=('c6ec55764d14217bf13c3b831da2b8eefc760e5b972c09130d41587c671f1d40')
 
 package() {
     local _npmdir="$pkgdir/usr/lib/node_modules/"
