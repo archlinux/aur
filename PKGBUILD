@@ -2,7 +2,7 @@
 
 pkgname=mgccli
 pkgver=0.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Magalu Cloud CLI"
 arch=("x86_64")
 url="https://github.com/MagaluCloud/mgccli"
