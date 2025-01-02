@@ -1,19 +1,23 @@
 pkgbase = nessus-agent
 	pkgdesc = Nessus vulnerability scanner agent
 	pkgver = 10.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tenable.com/downloads/nessus-agents
 	install = nessus-agent.install
 	arch = x86_64
 	license = custom
 	makedepends = inetutils
+	makedepends = ruby
+	makedepends = ruby-nokogiri
 	depends = gnupg
 	conflicts = nessus
 	options = !strip
 	options = debug
 	source = NessusAgent-10.7.3-fc38.x86_64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus-agents/downloads/24288/download?i_agree_to_tenable_license_agreement=true
 	source = LICENSE
-	b2sums = e28c6c1c3deb0fe63cd3a73fff2bdbc94ac3e0cfc0ac40fe9b31635d7ce81135beb0bd5819351dd5ed07cad63a35cd66b68a2b4b8e0501096403b38a894f6707
-	b2sums = 2c68d4f30686a711fbf5c77b70d9b307f9fdcc8095cea79d8c310edfeea87563d94b9106fce35fc53685e6703afb729b9d81f504a1983c367621605690ea03e1
+	source = get_nessus_link.rb
+	sha256sums = 3da6b05b4aa5ce779bc41eaef3abc80d1e349b66503ab0734acbc87e646d8822
+	sha256sums = d647aedd39d571faa3f1a9906db561eecbd9c41605ba7f562261ffb04877ba26
+	sha256sums = 191603f44668b2f7dbafde4faef75ace91590d5c07a7a146601834ebe65a4734
 
 pkgname = nessus-agent

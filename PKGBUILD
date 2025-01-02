@@ -4,20 +4,30 @@
 pkgname=nessus-agent
 _pkgname=nessus_agent
 pkgver=10.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Nessus vulnerability scanner agent"
 arch=('x86_64')
 depends=('gnupg')
-makedepends=('inetutils')
+makedepends=('inetutils' 'ruby' 'ruby-nokogiri')
 license=('custom')
 options=(!strip debug)
 url="https://www.tenable.com/downloads/nessus-agents"
 install="$pkgname.install"
-source=("NessusAgent-$pkgver-fc38.$arch.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus-agents/downloads/24288/download?i_agree_to_tenable_license_agreement=true"
-        LICENSE)
-b2sums=('e28c6c1c3deb0fe63cd3a73fff2bdbc94ac3e0cfc0ac40fe9b31635d7ce81135beb0bd5819351dd5ed07cad63a35cd66b68a2b4b8e0501096403b38a894f6707'
-        '2c68d4f30686a711fbf5c77b70d9b307f9fdcc8095cea79d8c310edfeea87563d94b9106fce35fc53685e6703afb729b9d81f504a1983c367621605690ea03e1')
+# If wish there was a cleaner way to dynamically update $source and $sha256sums as pkgver() does for $pkgver
+# Also the read -r mass variable assignment allows to run the script only once instead of running it 3 times with individual $(ruby get_nessus_link.rb <arg>)
+read -r _filename _url _version _dl_id _sha256 <<<$(ruby get_nessus_link.rb all)
+source=("NessusAgent-$pkgver-fc38.$arch.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus-agents/downloads/$_dl_id/download?i_agree_to_tenable_license_agreement=true"
+        'LICENSE'
+        'get_nessus_link.rb')
+sha256sums=('3da6b05b4aa5ce779bc41eaef3abc80d1e349b66503ab0734acbc87e646d8822'
+            'd647aedd39d571faa3f1a9906db561eecbd9c41605ba7f562261ffb04877ba26'
+            '191603f44668b2f7dbafde4faef75ace91590d5c07a7a146601834ebe65a4734')
 conflicts=('nessus') # due to /etc/ld.so.conf.d/nessus.conf
+
+pkgver() {
+  # ruby get_nessus_link.rb version
+  echo $_version
+}
 
 package() {
   mkdir -p "$pkgdir/etc/ld.so.conf.d" "$pkgdir/usr/share" "$pkgdir/opt/$pkgname" \

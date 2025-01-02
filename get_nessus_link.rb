@@ -17,19 +17,28 @@ end
 
 def get_link
   data = get_json
-  url, filename = nil
+  url, filename, version, dl_id, sha256 = nil
   downloads = data['props']['pageProps']['page']['downloads']
   downloads.each do |download|
     filename = download['file']
     if filename.end_with?('-fc38.x86_64.rpm')
       url = "https://www.tenable.com/downloads/api/v1/public/pages/nessus-agents/downloads/#{download['id']}/download?i_agree_to_tenable_license_agreement=true"
+      dl_id = download['id']
+      version = download['meta_data']['version']
+      sha256 = download['meta_data']['sha256']
       break
     end
   end
   raise 'Cannot find a download link!' if url.nil?
 
-  puts filename
-  puts url
+  {filename: filename, url: url, version: version, dl_id: dl_id, sha256: sha256}
 end
 
-get_link if __FILE__ == $PROGRAM_NAME
+if __FILE__ == $PROGRAM_NAME
+  arg = ARGV.first
+  if %w[filename url version dl_id sha256].include?(arg)
+    puts get_link[arg.to_sym]
+  elsif arg == 'all'
+    puts get_link.values.join(' ')
+  end
+end
