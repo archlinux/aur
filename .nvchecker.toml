@@ -1,0 +1,5 @@
+[python-pydub]
+source = "github"
+github = "jiaaro/pydub"
+use_max_tag = "true"
+prefix = "v"
