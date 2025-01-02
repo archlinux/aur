@@ -1,45 +1,56 @@
+# Maintainer: Fethbita <aur AT fethbita DOT com>
 # Former maintainer: Adrien Jussak <adrien.jussak@wascardev.com>
-# Maintainer: Prem Buczkowski <prem@prem.moe>
-# Contributor: Rein Fernhout <me@levitati.ng>
+# Former maintainer: Prem Buczkowski <prem@prem.moe>
+# Former maintainer: Rein Fernhout <me@levitati.ng>
+
 pkgname=visual-paradigm
-pkgver=17.1
+_pkgver=17.2
+pkgver=${_pkgver}.20241205
 pkgrel=0
 pkgdesc="UML design application (Free 30-day trial)"
-arch=('x86_64')
 url='https://www.visual-paradigm.com/download/'
-depends=('java-environment-common' 'java-runtime-common')
+arch=('x86_64')
+depends=('java-environment-common' 'java-runtime-common' 'jdk11-openjdk')
 license=('custom')
-install=visual-paradigm-community.install
-conflicts=('visual-paradigm-community')
 
 # Possible values: ca1 usa10 usa11 usa13 usa14 uk3 uk5 germany4 germany5 germany6 france3
 _server=germany4
-_ver=${pkgver/./_}
 
-#https://www.visual-paradigm.com/downloads/germany6/vp/Visual_Paradigm_Linux64.sh
 source=("https://www.visual-paradigm.com/downloads/${_server}/vp/Visual_Paradigm_Linux64_InstallFree.tar.gz"
-  'visual-paradigm-community.install'
   'visual-paradigm.desktop'
   'visual-paradigm.png'
+  'LICENSE.txt'
   'x-visual-paradigm.xml')
 
-sha256sums=('8ea96ae601e8a0acb5986e0167432361251ef6998ef6f34ef7be866c0602ea3f'
-            'd49752a05bc69e7e5f7b23875b6ac7d7d242d761ee00030b57e9ca057babb43e'
+sha256sums=('a6f092630d05a683f6e623b5948a68c18e8a4188bd61d8219e27353d43bfefa9'
             'fff88b05529a391dad757b380d7acf08703e11d441e04c3886e4db7f5bcd1729'
             '41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15'
+            'd2201888fc79de759b34c2d4c16610151b9fb2eae00990fe729a8588ec1e1727'
             'a3b898bc9c43cf54baa1c643c619ee172a8103cd15031d574380ca463eb1ec1c')
 
+prepare() {
+  cd ${srcdir}/Visual_Paradigm_${_pkgver}/Application/bin
+  sed -i 's|# INSTALL4J_JAVA_HOME_OVERRIDE=|INSTALL4J_JAVA_HOME_OVERRIDE=/usr/lib/jvm/java-11-openjdk|' Visual_Paradigm
+  sed -i 's|app_home=../../|app_home=/usr/share/visual-paradigm|' Visual_Paradigm
+  cd ${srcdir}/Visual_Paradigm_${_pkgver}/Application/scripts
+  sed -i 's|JAVA="../jre/bin/java"|JAVA="/usr/lib/jvm/java-11-openjdk/bin/java"|' *.sh
+}
+
 package() {
-    mkdir -p "${pkgdir}/opt/${pkgname}"
-    mkdir -p "${pkgdir}/usr/share/applications/"
-    mkdir -p "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-    mkdir -p "${pkgdir}/usr/bin/"
-    cp -r "${srcdir}/Visual_Paradigm_${pkgver}/Application/" "${pkgdir}/opt/${pkgname}"
-    cp -r "${srcdir}/Visual_Paradigm_${pkgver}/.install4j/" "${pkgdir}/opt/${pkgname}"
-    cp "${srcdir}/Visual_Paradigm_${pkgver}/Visual_Paradigm" "${pkgdir}/opt/${pkgname}"
-    ln -sr "${pkgdir}/opt/${pkgname}/Visual_Paradigm" "${pkgdir}/usr/bin/${pkgname}"
-    cp "visual-paradigm.desktop" "${pkgdir}/usr/share/applications/visual-paradigm.desktop"
-    cp "visual-paradigm.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/visual-paradigm.png"
-    mkdir -p ${pkgdir}/usr/share/mime/packages
-    cp "x-visual-paradigm.xml" "${pkgdir}/usr/share/mime/packages/x-visual-paradigm.xml"
+  mkdir -p "${pkgdir}/usr/share/applications"
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
+  mkdir -p "${pkgdir}/usr/share/${pkgname}/Application"
+  cp -r "${srcdir}/Visual_Paradigm_${_pkgver}/Application/" "${pkgdir}/usr/share/${pkgname}/"
+  cp -r "${srcdir}/Visual_Paradigm_${_pkgver}/.install4j/" "${pkgdir}/usr/share/${pkgname}/.install4j/"
+  cp "visual-paradigm.desktop" "${pkgdir}/usr/share/applications/visual-paradigm.desktop"
+  cp "visual-paradigm.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/visual-paradigm.png"
+  install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -sr "${pkgdir}/usr/share/${pkgname}/Application/bin/Visual_Paradigm" "${pkgdir}/usr/bin/${pkgname}"
+  mkdir -p ${pkgdir}/usr/share/mime/packages
+  cp "x-visual-paradigm.xml" "${pkgdir}/usr/share/mime/packages/x-visual-paradigm.xml"
+
+  # Fix permissions
+  cd "${pkgdir}/usr/share/${pkgname}/Application/scripts"
+  chmod +x *.sh
 }
