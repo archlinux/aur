@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=cvm
-pkgver=1.0.6
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='Stack-based virtual machine'
 arch=('x86_64')
 url="https://github.com/number571/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5b0eee0f355f120db3f9428755ff4642157fe31dccc8f84f9f7968b7ec83c13c')
+sha256sums=('27780e26164dceaa8dfdab23bf1db530ed59e0f69e1831f8480616fabbb833f6')
 makedepends=('gcc')
 depends=('glibc')
 
