@@ -1,0 +1,17 @@
+pkgbase = ctf-ynetd
+	pkgdesc = A fork of ynetd hardened for CTFs. Supports isolation using PID namespaces, minimal overhead proof-of-work checking, and strict resource limits via cgroups.
+	pkgver = 2024.12.31
+	pkgrel = 1
+	url = https://hxp.io/code/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	provides = ynetd
+	conflicts = ynetd
+	source = https://hxp.io/assets/data/code/ctf-ynetd-2024.12.31.tar.xz
+	sha512sums = 03e761752c0cf5a3b4e4287b78590307d58ca11f1ba1d8343eca0a363862372685c85c726f9c8e771aea587f3fb4083aeaf18e81b0bbf14e33601c2968d0a980
+
+pkgname = ctf-ynetd
