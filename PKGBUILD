@@ -3,7 +3,7 @@
 
 _pkgname=polychromatic
 pkgname=$_pkgname-git
-pkgver=0.9.0.r0.gd006b85
+pkgver=0.9.3.r8.g54590f8
 pkgrel=1
 pkgdesc='RGB lighting management front-end application for OpenRazer'
 arch=('any')
@@ -26,7 +26,6 @@ depends=(
 makedepends=(
   meson
   ninja
-  sassc
 )
 provides=('polychromatic')
 conflicts=('polychromatic')
