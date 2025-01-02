@@ -1,6 +1,6 @@
 pkgbase = tg-notify
-	pkgdesc = Command line interface to send notifications through Telegram Bot.
-	pkgver = 0.1.1
+	pkgdesc = Simple command line interface to send notifications through Telegram Bot.
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/liljaylj/tg-notify
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = tg-notify
 	depends = sed
 	depends = curl
 	depends = jq
-	source = tg-notify-0.1.1-1.tar.gz::https://github.com/liljaylj/tg-notify/archive/refs/tags/v0.1.1.tar.gz
-	b2sums = 306a6217be44e050ae116a9f212215e4d87fe22531f617c68efcf73ffdd727c2d293d79b35c1612c93837a2d032fe2972426f126c463b72099d0c56cc2b909f0
+	source = tg-notify-0.2.0-1.tar.gz::https://github.com/liljaylj/tg-notify/archive/refs/tags/v0.2.0.tar.gz
+	b2sums = bc408224038672f6624524927c7749510c9bc5805da8cfc68a9536c3df72729e8f69db57d1e54ac0a790d5329fb175adb45e54093c98e2d927341d5421003a4b
 
 pkgname = tg-notify
