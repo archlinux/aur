@@ -1,0 +1,16 @@
+pkgbase = python-sphinx-data-viewer
+	pkgdesc = Sphinx extension to show data in an interactive list view
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/useblocks/sphinx-data-viewer
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-wheel
+	depends = python-sphinx
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_data_viewer/sphinx_data_viewer-0.1.5.tar.gz
+	sha256sums = a7d5e58613562bb745380bfe61ca8b69997998167fd6fa9aea55606c9a4b17e4
+
+pkgname = python-sphinx-data-viewer
