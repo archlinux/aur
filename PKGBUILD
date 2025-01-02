@@ -2,21 +2,23 @@
 
 pkgname=libdft-git
 pkgver=r80.066c9d8
-pkgrel=2
+pkgrel=3
 pkgdesc="libdft: Practical Dynamic Data Flow Tracking"
-arch=(x86_64)
+arch=($CARCH)
 url="https://github.com/AngoraFuzzer/libdft64"
 license=('BSD-3-Clause AND custom')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 depends=(
-    glibc
-    gcc-libs
+    #     glibc
+    #     gcc-libs
     libdwarf
-    pin)
+)
 makedepends=(
-    git)
+    git
+    pin
+)
 backup=()
 options=('!strip')
 install=
@@ -29,9 +31,10 @@ prepare() {
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^[vV]//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
@@ -40,15 +43,17 @@ build() {
 
     cd "${srcdir}/${pkgname}/"
     sed -i 's|track|track nullpin libdft libdft-dta|g' tools/makefile.rules
-    make
+    make V=1
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
+
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     cd "${srcdir}/${pkgname}/tools/obj-intel64"
     install -Dm755 track.so -t "${pkgdir}/usr/lib/"
     install -Dm755 nullpin.so -t "${pkgdir}/usr/lib/"
     install -Dm755 libdft.so -t "${pkgdir}/usr/lib/"
     install -Dm755 libdft-dta.so -t "${pkgdir}/usr/lib/"
+
 }
