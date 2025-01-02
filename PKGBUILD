@@ -1,22 +1,17 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=vy
 pkgver=4.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Vim-like text editor in Python'
 arch=('any')
 url="https://github.com/vyapp/vy"
 license=('MIT')
-depends=('python' 'tk')
+depends=('python' 'python-untwisted' 'python-jedi' 'python-rope' 'python-pygments' 'tk')
 optdepends=(
 	'mypy'
-	'python-future'
-	'python-jedi'
 	'python-pyflakes'
-	'python-pygments'
-	'python-rope'
-	'python-untwisted'
 	'vulture')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/v/vy/vy-$pkgver.tar.gz"
