@@ -6,14 +6,14 @@
 # Contributor: Christoph Fink <christoph.fink@gmail.com>
 
 pkgname=geoserver-bin
-pkgver=2.23.1
+pkgver=2.26.1
 pkgrel=1
 pkgdesc="Server written in Java that allows users to share and edit geospatial data"
 arch=("any")
-url="http://geoserver.org"
-license=("GPL2+")
+url="https://geoserver.org"
+license=("GPL-2.0-or-later")
 java_ver=17
-depends=("jre${java_ver}-openjdk-headless")
+depends=("java-runtime" "jre${java_ver}-openjdk-headless")
 
 
 source=(
@@ -22,7 +22,7 @@ source=(
     "geoserver.service"
     "geoserver.sysusers"
 )
-sha256sums=('d197079c3570e5ab7075ea987905df4538a8d3fa6544b4c396348c6fcd54f9fe'
+sha256sums=('a8a957570cc2352f9d8ae3a8e37ab49dfc0f94832e50f398d4e6a82adf662fe8'
             '576c36670c418aa25730986e592c8b0f4a0657d3129aafbe7c783ff3ed527abe'
             '8a785d95da48d4a97d9f3620256b2a7fe607680dc932b5ee2dbcd6473352d126'
             'edd692b53b71a684b20e0e7a87b0047aaefc2286574355fb5c08770af2652d08')
@@ -37,10 +37,10 @@ package() {
     # to /usr/share/licenses
     rm bin/{startup,shutdown}.bat
     licenses=(license/*)
-    for license in "${licenses[@]}"
+    for lic in "${licenses[@]}"
     do
-        install -Dm644 $license "${pkgdir}/usr/share/licenses/${pkgname}/${license}"
-        rm $license
+        install -Dm644 $lic "${pkgdir}/usr/share/licenses/${pkgname}/${lic}"
+        rm $lic
     done
 
     # install geoserver to /opt/geoserver/${pkgver}
@@ -68,6 +68,12 @@ package() {
     chmod +x "${pkgdir}/etc/profile.d/geoserver.sh"
 
     # Fix marlin
-    # https://docs.geoserver.org/latest/en/user/production/java.html#running-on-java-17 
-    rm "${pkgdir}/opt/geoserver/${pkgver}/webapps/geoserver/WEB-INF/lib/marlin-0.9.3.jar"
+    # https://docs.geoserver.org/latest/en/user/production/java.html#running-on-java-17
+    rm "${pkgdir}/opt/geoserver/${pkgver}/webapps/geoserver/WEB-INF/lib/marlin-0.9.4.8.jar"
+
+    # remove dead symlinks
+	rm "${pkgdir}/opt/geoserver/2.26.1/geoserver-2.26.1-bin.zip"
+	rm "${pkgdir}/opt/geoserver/2.26.1/geoserver.install"
+	rm "${pkgdir}/opt/geoserver/2.26.1/geoserver.service"
+	rm "${pkgdir}/opt/geoserver/2.26.1/geoserver.sysusers"
 }
