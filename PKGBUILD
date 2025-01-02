@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=markflowy-bin
 _pkgname=MarkFlowy
-pkgver=0.17.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="Modern markdown editor application, Build fast and efficient workflows.(Prebuilt version)"
 arch=("x86_64")
@@ -17,8 +17,8 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${CARCH}.deb"
 )
-sha256sums=('11f9a2b157d89a2e8486921a5da75f73a4b12083c3046494089f78c5240fd4f0')
-build() {
+sha256sums=('3a9bab518b2e08f55e5daeb7b18fcbfb7dbdf89aab110a4bd28078277bbbe7f8')
+prepare() {
     bsdtar -xf "${srcdir}/data."*
 }
 package() {
