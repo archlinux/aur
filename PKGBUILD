@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://yandex.com/support/messenger/install.html"
 license=('custom')
 
-source=("${pkgname}_${pkgver}_amd64.deb::https://downloader.disk.yandex.ru/disk/5d469dbb416300a149e5b181717ca3f546f5385ecadc21f1398abda5e1af6bcb/67773692/fKqInKw3d7bLFOeFnMGnhNWxCpe349obSYmly8cW7zZJ_fniSbaCrlwjQTbvB92IUPUnXitKQ2ltyzIVVtHF0RfdGUpZH039231ae3iQvySr8npumZHI4midPdWhecNq?uid=0&filename=Yandex_Messenger_2.155.0_amd64.deb&disposition=attachment&hash=7bGpeID6q904ZsjE4/ehCmxnCtN1OkUIf5Iszu%2B0hU8Gu1h8chTxFpPyI2je%2BlPrlsg4VIaLrfRKbQetv4dueQ%3D%3D%3A&limit=0&content_type=application%2Fvnd.debian.binary-package&owner_uid=1130000063429726&fsize=73548980&hid=d833151ad80ffb273b072a7a34c673d9&media_type=compressed&tknv=v2")
+source=("${pkgname}_${pkgver}_amd64.deb::https://downloader.disk.yandex.ru/disk/263f6ab79888d53349b58eca496d7e7e763141a14a15b9e8c1dc05207412b6b7/677752b2/fKqInKw3d7bLFOeFnMGnhNWxCpe349obSYmly8cW7zZJ_fniSbaCrlwjQTbvB92IUPUnXitKQ2ltyzIVVtHF0RfdGUpZH039231ae3iQvySr8npumZHI4midPdWhecNq?uid=0&filename=Yandex_Messenger_2.155.0_amd64.deb&disposition=attachment&hash=7bGpeID6q904ZsjE4/ehCmxnCtN1OkUIf5Iszu%2B0hU8Gu1h8chTxFpPyI2je%2BlPrlsg4VIaLrfRKbQetv4dueQ%3D%3D%3A&limit=0&content_type=application%2Fvnd.debian.binary-package&owner_uid=1130000063429726&fsize=73548980&hid=d833151ad80ffb273b072a7a34c673d9&media_type=compressed&tknv=v2")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
 
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libappindicator-gtk3' 'libsecret')
