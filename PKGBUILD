@@ -1,5 +1,5 @@
 pkgname=svix-cli
-pkgver=1.45.0
+pkgver=1.45.1
 pkgrel=1
 pkgdesc='The Svix CLI (webhooks as a service)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,7 +9,7 @@ makedepends=(cargo)
 # Disabling LTO due to https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20
 options=(!lto)
 source=("https://github.com/svix/svix-webhooks/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5c73f0717a2ae2a5df015a0ee796656eb4a5965b30a715c5a3173deac671b214')
+sha256sums=('4783718e6c4a8b0db4c7fa296a4f36a103ec1a19d6dddeaf313767144b4b88f2')
 
 srcpkgdir="svix-webhooks-$pkgver/$pkgname"
 
@@ -34,10 +34,7 @@ check() {
 
 package() {
   cd $srcpkgdir
-  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/svix-cli"
-
-  # Add symlink for compatibility with previous versions
-  ln -s svix-cli "$pkgdir/usr/bin/svix"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/svix"
 
   # Syntax highlighting
   "$pkgdir"/usr/bin/svix completion bash > bash-svix
