@@ -2,7 +2,7 @@
 
 _pkgname=fastcrc
 pkgname=python-$_pkgname
-pkgver=0.3.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A hyper-fast Python module for computing CRC(8, 16, 32, 64) checksum"
 arch=(x86_64)
@@ -15,7 +15,7 @@ makedepends=(
   rust
 )
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('4e2a75359d97a59469bbcbd77513e801d3f3666a9169629578f88012c0f2d7fe')
+sha256sums=('22362bb54e1bafc4f3e35544e40162481b2822c48ede1f5c2784820afad2c561')
 
 build() {
   cd $_pkgname-$pkgver
