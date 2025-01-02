@@ -1,6 +1,6 @@
 pkgbase = python-kornia-rs
 	pkgdesc = A low level computer vision library in Rust
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 5
 	url = https://github.com/kornia/kornia-rs
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = python-kornia-rs
 	depends = gst-plugins-base-libs
 	depends = python-pytorch
 	options = !lto
-	source = kornia-rs-0.1.7.tar.gz::https://github.com/kornia/kornia-rs/archive/refs/tags/v0.1.7.tar.gz
-	sha256sums = 547a01735791de4afcfcd6e01de8a72bca5539c3b88857770edaa9d45b7bd728
+	source = kornia-rs-0.1.8.tar.gz::https://github.com/kornia/kornia-rs/archive/refs/tags/v0.1.8.tar.gz
+	sha256sums = ba43197106ca3d0bf13b5879f70966455369e22499795421cc5cb880fd39cccb
 
 pkgname = python-kornia-rs
