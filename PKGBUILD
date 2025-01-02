@@ -1,11 +1,11 @@
 # Maintainer: VCalV
 pkgname=qlipmon
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="clipboard manager with rofi plugin and dbus interface"
 arch=('x86_64')
 url="https://github.com/vcalv/qlipmon"
-license=('GPL3')
+license=('GPL-3.0-only')
 groups=()
 depends=(qt5-base)
 makedepends=()
@@ -21,7 +21,7 @@ backup=()
 options=()
 install="$pkgname".install
 changelog=
-source=("https://github.com/vcalv/qlipmon/archive/refs/tags/${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vcalv/qlipmon/archive/refs/tags/${pkgver}.tar.gz")
 noextract=()
 sha512sums=(944dae7605510ab81db63b526f18227d995638c52185a0a07ef19eb834a598140ed8b58ae8eaab64246675a482ee7183b76658aa1655abeb3822b279f07948f4)
 validpgpkeys=()
