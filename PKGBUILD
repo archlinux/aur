@@ -8,7 +8,7 @@
 
 pkgname=minicom-git
 _pkgname=minicom
-pkgver=2.9+r376+g40609fae2
+pkgver=2.9+r378+ga7ee7dc3d
 pkgrel=1
 pkgdesc='A serial communication program'
 arch=('x86_64')
