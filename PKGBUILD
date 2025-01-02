@@ -13,7 +13,7 @@ pkgname=(
   networkmanager-docs
 )
 pkgver=1.50.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Network connection manager and user applications"
 url="https://networkmanager.dev/"
 arch=(x86_64)
