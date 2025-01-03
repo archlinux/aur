@@ -1,32 +1,33 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mullvad-vpn-beta-bin
-_pkgver=2024.9
-_channel=beta
+_pkgver=2025.1
+_channel=stable
 _rel=1
-pkgver=${_pkgver}.${_channel}${_rel}  # beta
-#pkgver=${_pkgver}.${_channel}  # stable
+#pkgver=${_pkgver}.${_channel}${_rel}  # beta
+pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
 license=('GPL-3.0-or-later')
 depends=('alsa-lib' 'gtk3' 'iputils' 'libnftnl' 'libnotify' 'nss')
+optdepends=('libappindicator-gtk3: tray icon')
 provides=('mullvad-vpn')
 conflicts=('mullvad-vpn')
 install='mullvad-vpn.install'
 source=('mullvad-vpn.sh')
 source_x86_64=(
-  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-beta${_rel}/MullvadVPN-${_pkgver}-beta${_rel}_amd64.deb"{,.asc}  # beta
-#  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_amd64.deb"{,.asc}  # stable
+#  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-beta${_rel}/MullvadVPN-${_pkgver}-beta${_rel}_amd64.deb"{,.asc}  # beta
+  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_amd64.deb"{,.asc}  # stable
   )
 source_aarch64=(
-  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-beta${_rel}/MullvadVPN-${_pkgver}-beta${_rel}_arm64.deb"{,.asc}  # beta
-#  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_arm64.deb"{,.asc}  # stable
+#  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-beta${_rel}/MullvadVPN-${_pkgver}-beta${_rel}_arm64.deb"{,.asc}  # beta
+  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_arm64.deb"{,.asc}  # stable
   )
 sha256sums=('a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
-sha256sums_x86_64=('449447d079a88a8b471e14bdbc65826aa2223f04e8b85f7a8826a313f01e69f8'
+sha256sums_x86_64=('25aec5c13a09db30670fc9ee5ae357d8b6a35f0a7e3e3eac6dd8c06adcabe3ac'
                    'SKIP')
-sha256sums_aarch64=('32766eb207b874e8e033e00d124753dcfa130f735559926a289fea2cfd39f104'
+sha256sums_aarch64=('d626d6219b341a33b7f08bdd829e630747b48c9a6d0020c143338a20153e9197'
                     'SKIP')
 validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin@mullvad.net>
 
@@ -36,6 +37,9 @@ package() {
 
   # Link to the GUI binary
   install -m755 "$srcdir/mullvad-vpn.sh" "$pkgdir/usr/bin/mullvad-vpn"
+
+  # Symlink apparmor profile to allow Electron sandbox to work
+  ln -s /opt/Mullvad VPN/resources/apparmor_mullvad "$pkgdir/etc/apparmor.d/mullvad"
 
   # Move ZSH completions to correct directory
   mv "$pkgdir/usr/local/share/zsh" "$pkgdir/usr/share/"
