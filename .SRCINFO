@@ -1,0 +1,16 @@
+pkgbase = pypy3-pyproject-metadata
+	pkgdesc = PEP 621 metadata parsing
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/pypa/python-pyproject-metadata
+	arch = any
+	license = MIT
+	makedepends = pypy3-build
+	makedepends = pypy3-installer
+	makedepends = pypy3-flit-core
+	depends = pypy3
+	depends = pypy3-packaging
+	source = https://github.com/pypa/python-pyproject-metadata/archive/0.9.0/pypy3-pyproject-metadata-0.9.0.tar.gz
+	sha512sums = ef79e6549c9aeb644a188910ecaac56bf1cf7c4326f4bb1f1e07514eef0f56966e8eaabfe791f82f488810428a4840a7970a1ddf7a80056c630d5f91e85911a1
+
+pkgname = pypy3-pyproject-metadata
