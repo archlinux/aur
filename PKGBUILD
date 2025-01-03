@@ -1,6 +1,6 @@
 # Maintainer: Fabrix Xm <fabrix.xm@gmail.com>
 pkgname=confy
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Conferences schedule viewer for GNOME"
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,10 @@ depends=('python' 'gtk4' 'libadwaita' 'python-gobject' 'python-icalendar' 'libno
 makedepends=('meson' 'ninja' 'blueprint-compiler' 'gobject-introspection' 'git')
 provides=(confy)
 source=("https://git.sr.ht/~fabrixxm/confy/archive/$pkgver.tar.gz")
-md5sums=('15e635412e4e5a203de6fe8edf82c75b')
+sha256sums=('ee7717be1e7cd5ea1c8db282d49d87820db305d282bb334cbba1f3e50a319cbc')
 
 build() {
-  arch-meson build "$pkgname-$pkgver"
+  arch-meson --reconfigure build "$pkgname-$pkgver"
   ninja -C build
 }
 
