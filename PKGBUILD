@@ -1,14 +1,12 @@
 # Maintainer: crimist <aur at crim dot ist>
 
 pkgname=freetype2-qdoled
-pkgver=2.13.2
-pkgrel=3
+pkgver=2.13.3
+pkgrel=1
 pkgdesc="freetype optimized for QD-OLED subpixel layout"
 url="https://www.freetype.org/"
-arch=(
-  x86_64
-)
-license=(GPL)
+arch=(x86_64)
+license=('FTL OR GPL-2.0-or-later')
 depends=(
   brotli
   bzip2
@@ -16,8 +14,7 @@ depends=(
   sh
   zlib
 
-  # adding harfbuzz for improved OpenType features auto-hinting
-  # introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
+  # creates a dependency cycle harfbuzz <-> freetype, wanted by upstream
   harfbuzz
 )
 makedepends=(
@@ -33,9 +30,9 @@ source=(
   0004-QD-OLED-subpixel.patch
   freetype2.sh
 )
-b2sums=('cebc82180d9afaeb112a65ba78903d7bf7a9295a803166a033585ad2325add6023f05066852240c4665e56285345ba503b01ecd461d48f0478a8f3f56136988e'
-        '2c148694e150b3faae9dc46ead824ae6d94cfe34f2918bc9066f45bab7e6b6f77b4d4b2fee00c3d466d866e1985132cea4a774dcf1bab95409b7cf55efff01e1'
-        '66deb179d1f1f4e2e35f6d50acfbacce80595d5128f5fed8c1871838c210dbf1a7173a87dd937d64997844c8f478c8f81120f71e33b9d59d980e179d103ff31c'
+b2sums=('f9591c6998df02b072adaf38a968e91deae8ed4d53ea0cb74d08982c4f0e48b1a98c1378a698164e4f730f07a3b0bea308a94fcc2e2b8ce9967dbf9478b599bd'
+        'b7e3b72e2d6aed548c1762a16ee08ac47a05caf29c5d37ef03c6791e6dbd109fdfef0b246540c35e968d54f2103b70e80eccff72ac54d34224c6d064aa53d720'
+        'b83a599da8eef1c39a268482db8e82f03a2c9b68850a0ec782e9839e7b45a3b0f989d997647eb55e5b18f2fe0c988e73f0ec6c4eb4c0787689f9e0213faa4320'
         '374f8cbd415cbe020f6ff581bc5fdb7d119d814f29a7b6b370668b1a8580151a95b99be858e467e5414144a91a966df233907ffe136d135b460339036e1d11b8'
         'a964f46886b5017a5c180f29408f72ae8aba29f37404c48b4681ff12ca0a2cfa2a8e219480e98d63d45fb5c266a6e5826df170c9a0d701cd866e395c5ac6e87d')
 
@@ -76,7 +73,9 @@ package() {
   backup=(etc/profile.d/freetype2.sh)
 
   meson install -C build --destdir="$pkgdir"
-  install -Dt "$pkgdir/etc/profile.d" -m644 freetype2.sh
-  install -Dt "$pkgdir/usr/share/aclocal" -m644 \
-    freetype-$pkgver/builds/unix/freetype2.m4
+
+  install -Dm644 freetype2.sh -t "$pkgdir/etc/profile.d"
+
+  install -Dm644 freetype-$pkgver/docs/FTL.TXT \
+    -t "$pkgdir/usr/share/licenses/$pkgname"
 }
