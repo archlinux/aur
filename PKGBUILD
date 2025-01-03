@@ -7,7 +7,7 @@ _channel=stable
 _rel=1
 #pkgver=${_pkgver}.${_channel}${_rel}  # beta
 pkgver=${_pkgver}.${_channel}  # stable
-pkgrel=1
+pkgrel=2
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
@@ -204,5 +204,6 @@ package() {
   done
 
   # Symlink apparmor profile to allow Electron sandbox to work
+  install -d "$pkgdir/etc/apparmor.d"
   ln -s /opt/Mullvad VPN/resources/apparmor_mullvad "$pkgdir/etc/apparmor.d/mullvad"
 }
