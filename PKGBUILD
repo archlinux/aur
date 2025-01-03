@@ -1,7 +1,7 @@
 # Maintainer: r4v3n6101
 
 pkgname=xash3d-fwgs-git
-pkgver=r2278.ca3b0e62
+pkgver=r5065.b7150c32
 pkgrel=1
 pkgdesc="A custom GoldSrc engine implementation"
 arch=('x86_64')
@@ -25,7 +25,7 @@ pkgver() {
 prepare() {
     cd $srcdir/$pkgname
     git submodule update --init --recursive
-    ./waf configure -T release --enable-lto --enable-poly-opt
+    ./waf configure -T release --enable-lto --enable-poly-opt --enable-bundled-deps
 }
 
 build() {
