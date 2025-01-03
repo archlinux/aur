@@ -1,0 +1,16 @@
+pkgbase = ginx-bin
+	pkgdesc = Ginx is a cli tool that watch a remote repository and run an arbitrary command on changes/updates.
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/didactiklabs/ginx
+	license = MIT
+	conflicts = ginx
+	provides = ginx
+	arch = aarch64
+	source_aarch64 = https://github.com/didactiklabs/ginx/releases/download/v0.0.5/ginx_v0.0.5_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 893509aea199cc9bcf84a12ee29415dd9136f3fa8ccebb97241d6fda0dc3c53d
+	arch = x86_64
+	source_x86_64 = https://github.com/didactiklabs/ginx/releases/download/v0.0.5/ginx_v0.0.5_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = cff6058cc45839f9c3519830bc8f2a2ca3fc46bd7dbc36bace4ee1630613ab7a
+	
+pkgname = ginx-bin
