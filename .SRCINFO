@@ -1,0 +1,20 @@
+pkgbase = mcfetch-git
+	pkgdesc = Lightweight fetching program with color options.
+	pkgver = v0.1.0.r18.gecd4d11
+	pkgrel = 1
+	url = https://github.com/dybdeskarphet/mcfetch
+	arch = any
+	license = GPL
+	makedepends = cargo
+	depends = git
+	depends = pacman
+	depends = tree-sitter
+	depends = tree-sitter-bash
+	depends = gcc-libs
+	optdepends = ttf-nerd-fonts-symbols: symbols and icons
+	provides = mcfetch
+	conflicts = mcfetch
+	source = git+https://github.com/dybdeskarphet/mcfetch
+	sha256sums = SKIP
+
+pkgname = mcfetch-git
