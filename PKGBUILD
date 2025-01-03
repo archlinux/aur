@@ -4,7 +4,7 @@
 # Contributor: Martin Lüthi <mluethi@tnoo.net>
 pkgname=survex
 pkgver=1.4.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Cave survey software"
 arch=('i686' 'x86_64')
 url="http://survex.com/"
@@ -16,7 +16,7 @@ source=(http://survex.com/software/$pkgver/$pkgname-$pkgver.tar.gz
 	http://survex.com/software/sample.tar.gz
 )
 sha512sums=('bb66b40ca7e246508b3064a4bcf1b72e45a7702f2d3bfa91ab33425d020f2098be6a44f79cf6029804627e993bd32748471cc47ec3d0e723a677a657c5e861e0'
-            'af915b8fcd3949160049946b6a195750f4d16689eb7a341dbad1c2c4cfd36d85c955abbf9e6ecb0f26db0ae073ff76e0d9c1cb0591d6d5d9c1b7a8cd80a74da9')
+            'b10901edf583ec9c3fa04eaee9c264adfe098e063d6b97109387736b991b69fb7ad84d8687299e5ee3f2cc1a67e59c07dab7f9b05991b507e7a76dbd253de374')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
