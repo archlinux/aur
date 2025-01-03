@@ -2,7 +2,7 @@
 
 pkgname=lightlyshaders-plasma6-git
 pkgver=2.0.0.r29.gb159684
-pkgrel=3
+pkgrel=4
 _branch=plasma6
 pkgdesc="Round corners and outline effect for KWin"
 arch=(x86_64)
