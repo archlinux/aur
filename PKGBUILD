@@ -3,7 +3,7 @@
 
 pkgname=slade
 pkgver=3.2.7
-pkgrel=4
+pkgrel=5
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
@@ -19,7 +19,7 @@ depends=('bzip2'
   'mpg123'
   'sfml>=2.6'
   'webkit2gtk-4.1'
-  'wxwidgets-gtk3>=3.2'
+  'wxwidgets-gtk3-noegl' # wxwidgets-gtk3>=3.2' due a bug we have to ensure glcanvas_egl is disabled https://github.com/sirjuddington/SLADE/issues/1672
   'zlib')
 makedepends=('cmake'
   'p7zip')
@@ -32,7 +32,6 @@ build() {
   export CCACHE_SLOPPINESS=pch_defines,time_macros
   cmake -D CMAKE_BUILD_TYPE=None \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -D wxUSE_GLCANVAS_EGL=OFF \
     .
   make
 }
