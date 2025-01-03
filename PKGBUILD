@@ -1,4 +1,5 @@
 # Maintainer: Dane Johnson <dane@danejohnson.org>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Kevin Piche <kevin@archlinux.org>
 
