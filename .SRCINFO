@@ -1,6 +1,6 @@
 pkgbase = python-alist
 	pkgdesc = Python wrapper for alist.
-	pkgver = 0.0.13.6
+	pkgver = 0.0.13.7
 	pkgrel = 1
 	url = https://pypi.org/project/python_alist
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = python-alist
 	conflicts = python-alist
 	options = !strip
 	options = !debug
-	source = python_alist-0.0.13.6.tar.gz::https://files.pythonhosted.org/packages/source/p/python_alist/python_alist-0.0.13.6.tar.gz
-	sha256sums = c3d49779330e0902199215e265f0bcf3752dfeaf28cd365599eb6d4e281c4e67
+	source = python_alist-0.0.13.7.tar.gz::https://files.pythonhosted.org/packages/source/p/python_alist/python_alist-0.0.13.7.tar.gz
+	sha256sums = 6251d313311ae7dd7908dd7460229adad9443e4d0a8284b69955caa9bca133b1
 
 pkgname = python-alist
