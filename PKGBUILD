@@ -11,13 +11,8 @@ source=("cargo-licenses-v$pkgver-x86_64-linux.tar.gz::https://github.com/jhenriq
 sha256sums=('b465762f00001a9faffffeaf66ff9dc80868a0f7a6109e8432f239cc01a7088b')
 
 package() {
-  # Extrai o binário
-  tar -xvzf "cargo-licenses-v$pkgver-x86_64-linux.tar.gz"
+  install -Dm755 "target/release/cargo-licenses" "$pkgdir/usr/bin/cargo-licenses"
 
-  # Move o binário para o sistema
-  install -Dm755 "cargo-licenses" "$pkgdir/usr/bin/cargo-licenses"
-
-  # Documentação
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
   install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
