@@ -1,0 +1,19 @@
+pkgbase = libpeci-git
+	pkgdesc = libpeci is a library that provides various APIs to interface with the IOCTLs provided by the PECI driver in the OpenBMC kernel.
+	pkgver = r55.e836d46
+	pkgrel = 1
+	url = https://github.com/openbmc/libpeci
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = meson
+	makedepends = pkgconf
+	depends = glibc
+	provides = libpeci
+	conflicts = libpeci
+	source = libpeci-git::git+https://github.com/openbmc/libpeci.git
+	sha256sums = SKIP
+
+pkgname = libpeci-git
