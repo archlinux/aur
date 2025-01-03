@@ -5,7 +5,7 @@ _channel=stable
 _rel=1
 #pkgver=${_pkgver}.${_channel}${_rel}  # beta
 pkgver=${_pkgver}.${_channel}  # stable
-pkgrel=2
+pkgrel=3
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
@@ -40,7 +40,7 @@ package() {
 
   # Symlink apparmor profile to allow Electron sandbox to work
   install -d "$pkgdir/etc/apparmor.d"
-  ln -s /opt/Mullvad VPN/resources/apparmor_mullvad "$pkgdir/etc/apparmor.d/mullvad"
+  ln -s /opt/Mullvad\ VPN/resources/apparmor_mullvad "$pkgdir/etc/apparmor.d/mullvad"
 
   # Move ZSH completions to correct directory
   mv "$pkgdir/usr/local/share/zsh" "$pkgdir/usr/share/"
