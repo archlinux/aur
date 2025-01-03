@@ -1,7 +1,7 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 _basename=xfce-winxp-tc
 pkgname=('xfce-winxp-tc-git' 'libwintc-git')
-pkgver=r330.156d592
+pkgver=r362.1cc1d28
 pkgrel=1
 pkgdesc="Windows XP Total Conversion for XFCE"
 arch=('x86_64' 'aarch64')
@@ -24,6 +24,8 @@ makedepends=(
 	'libcanberra'
 	'webkit2gtk-4.1'
 	'libzip'
+	'upower'
+	'networkmanager'
 )
 optdepends=(
 	'lightdm: LightDM theme'
@@ -32,6 +34,7 @@ optdepends=(
 	'upower: Battery indicator in tray'
 	'webkit2gtk-4.1: Internet Explorer'
 	'libzip: Browsing ZIP files in Windows Explorer'
+	'networkmanager: Network status in tray'
 )
 source=("${_basename}"::"git+https://github.com/rozniak/xfce-winxp-tc.git")
 md5sums=('SKIP')
