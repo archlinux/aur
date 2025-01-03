@@ -1,0 +1,3 @@
+[bat-asus-battery-bin]
+source = "git"
+git = "https://github.com/tshakalekholoane/bat.git"

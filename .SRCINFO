@@ -1,12 +1,16 @@
 pkgbase = bat-asus-battery-bin
 	pkgdesc = Replicate the functionality of the ASUS Battery Health Charging on Windows which aims prolong the battery's life-span
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/tshakalekholoane/bat
 	arch = x86_64
 	license = MIT
 	provides = bat-asus-battery
-	source = bat_1.1::https://github.com/tshakalekholoane/bat/releases/download/1.1/bat
-	sha256sums = 0f6292d619cc485025b004d6ee3e1cb259b7917d074bdaaa4362deb8192d438d
+	source = bat-asus-battery::https://github.com/tshakalekholoane/bat/releases/download/1.2/bat
+	source = bat-asus-battery.1::https://raw.githubusercontent.com/tshakalekholoane/bat/1.2/bat.1
+	source = https://github.com/tshakalekholoane/bat/raw/refs/tags/1.2/LICENSE
+	sha256sums = 7f209814f7e8da71d0aa7699ec0bb7a5f589a8af006756b24accab6a4c8c4d4b
+	sha256sums = 269d367998d72a0b5d75ab6700ef5ceba3beadfc36ccf52aaf61108b81c7668e
+	sha256sums = 3db949f65e37956d9e070b785231b16eafc97453760bf6408c7fc5dbe3d816f4
 
 pkgname = bat-asus-battery-bin
