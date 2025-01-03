@@ -1,6 +1,7 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
+
 pkgname=neper
-pkgver=4.9.0
+pkgver=4.10.1
 pkgrel=1
 pkgdesc='Polycrystal generation and meshing'
 arch=('x86_64')
@@ -11,18 +12,16 @@ depends=('nlopt'
          'scotch'
          'gsl')
 makedepends=('cmake')
-source=(neper-${pkgver}.tar.gz::https://github.com/neperfepx/neper/archive/refs/tags/v${pkgver}.tar.gz)
-
-sha512sums=('b4ece5a7f8608823e971164bcac16b434c56b0f9d28bae2bd0ff59828de2d42e66aa652ec9fc6de215984d1cc082c2efbe43589348381d0890eeeeac6137d285')
+source=("https://github.com/neperfepx/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('48e21f908702550aaf20b5cf8598fdd810fc4103f7725a8d07276cdda98c72a73d972dc16f87fd42cb24992b897fa5ee987342129b28f28f6f758609c32809a3')
 
 build() {
-  cmake -S ${pkgname}-${pkgver}/src \
+  cmake -S "${pkgname}-${pkgver}"/src \
         -B build \
         -D CMAKE_INSTALL_PREFIX:PATH=/usr
   make -C build
 }
 
-
 package() {
-  DESTDIR=${pkgdir} cmake --install build
+  DESTDIR="${pkgdir}" cmake --install build
 }
