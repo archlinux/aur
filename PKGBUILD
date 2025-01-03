@@ -3,7 +3,7 @@
 # Contributor: alicewww <almw at protonmail dot com>
 pkgname=mullvad-vpn-bin
 pkgver=2025.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
@@ -31,6 +31,7 @@ package() {
   install -m755 "$srcdir/mullvad-vpn.sh" "$pkgdir/usr/bin/mullvad-vpn"
 
   # Symlink apparmor profile to allow Electron sandbox to work
+  install -d "$pkgdir/etc/apparmor.d"
   ln -s /opt/Mullvad VPN/resources/apparmor_mullvad "$pkgdir/etc/apparmor.d/mullvad"
 
   # Move ZSH completions to correct directory
