@@ -1,9 +1,9 @@
 # Maintainer: Raja Mukherji <rajamukherji@gmail.com>
 pkgname=minilang
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="Generic imperative build system"
+pkgdesc="Mini programming language"
 arch=('x86_64' 'i686')
 url=""
 license=('MIT')
