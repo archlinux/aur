@@ -6,7 +6,7 @@ _shellextension='gnome-shell-extension'
 _uuid='gtk4-ding@smedius.gitlab.com'
 
 pkgname="${_shellextension}-${_extname}"
-pkgver=88
+pkgver=89
 pkgrel=1
 _pkgver="Gtk4-${pkgver}"
 pkgdesc="A Gtk4/libAdwaita fork from the desktop icons project, with several enhancements, better multimonitor support, GSConnect integration. For Gnome Shell 45, 46."
@@ -18,7 +18,7 @@ makedepends=('git' 'meson' 'glib2')
 conflicts=("${_shellextension}-${_basename}" "${_shellextension}-${_basename}-git" "${_shellextension}-desktop-icons")
 provides=("${_shellextension}-${_basename}" "${_shellextension}-${_basename}-git" "${_shellextension}-desktop-icons")
 
-_commit=3f3a83a453a9ac691c3d088095cb85ad08e732b8 # tags/Gtk4-87
+_commit=73c4245bffe3d93a1801f8d790a9ac1c259a0281 # tags/Gtk4-89
 source=("git+https://gitlab.com/smedius/desktop-icons-ng.git#commit=$_commit")
 sha256sums=('SKIP')
 
