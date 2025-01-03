@@ -1,6 +1,6 @@
 pkgbase = hatsu
 	pkgdesc = Self-hosted & Fully-automated ActivityPub Bridge for Static Sites.
-	pkgver = 0.3.0
+	pkgver = 0.3.2
 	pkgrel = 1.0
 	url = https://github.com/importantimport/hatsu
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = hatsu
 	makedepends = rust
 	depends = sqlite
 	options = !lto
-	source = hatsu-v0.3.0.tar.gz::https://github.com/importantimport/hatsu/archive/refs/tags/v0.3.0.tar.gz
+	source = hatsu-v0.3.2.tar.gz::https://github.com/importantimport/hatsu/archive/refs/tags/v0.3.2.tar.gz
 	source = hatsu.sysusers
 	source = hatsu.tmpfiles
 	source = hatsu.service

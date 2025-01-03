@@ -1,6 +1,6 @@
 pkgname=hatsu
-_pkgver=0.3.0
-pkgver=0.3.0
+_pkgver=0.3.2
+pkgver=0.3.2
 pkgrel=1.0
 pkgdesc='Self-hosted & Fully-automated ActivityPub Bridge for Static Sites.'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/importantimport/hatsu/
         "$pkgname.service"
         "$pkgname.env")
 options+=(!lto)
-sha256sums=('4d73dc2a1152dca0aaf49811cdbd7a984d853d23b084c97ba8f9162d0c939bb4'
+sha256sums=('87b1d484b52def1396058353901b514f679527aeb9c890a1d48c151504036910'
             '80e8a450ddd50a77e3c6aae1ce3d1efe1a5ef83a1eff2466a5b8be9002d3627b'
             '257fe7e172293e96f0ba725dea88ef033837260ce65949420e7798d40e63ac9c'
             '3543f60491638d5c44c1332ca3d4de3f7cba698c8237abf2d0d48a5d7d9ac9c4'
