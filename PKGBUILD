@@ -34,10 +34,10 @@ build() {
 
 package() {
   install -D -m755 "${pkgname}-${pkgver}"/go2rtc "${pkgdir}/usr/bin/go2rtc"
-  install -D -m755 "${pkgname}-${pkgver}"/README.md "${pkgdir}/usr/doc/go2rtc/README.md"
-  install -D -m755 "${pkgname}-${pkgver}"/LICENSE "${pkgdir}/usr/share/licenses/LICENSE"
-  install -D -m755 "${srcdir}"/sysuser "${pkgdir}/usr/lib/sysusers.d/go2rtc.conf"
-  install -D -m755 "${srcdir}"/tmpfile "${pkgdir}/usr/lib/tmpfiles.d/go2rtc.conf"
-  install -D -m755 "${srcdir}"/service "${pkgdir}/usr/lib/systemd/system/go2rtc.service"
-  install -D -m755 "${srcdir}"/config "${pkgdir}/etc/go2rtc.yaml"
+  install -D -m644 "${pkgname}-${pkgver}"/README.md "${pkgdir}/usr/doc/go2rtc/README.md"
+  install -D -m644 "${pkgname}-${pkgver}"/LICENSE "${pkgdir}/usr/share/licenses/LICENSE"
+  install -D -m644 "${srcdir}"/sysuser "${pkgdir}/usr/lib/sysusers.d/go2rtc.conf"
+  install -D -m644 "${srcdir}"/tmpfile "${pkgdir}/usr/lib/tmpfiles.d/go2rtc.conf"
+  install -D -m644 "${srcdir}"/service "${pkgdir}/usr/lib/systemd/system/go2rtc.service"
+  install -D -m600 "${srcdir}"/config "${pkgdir}/etc/go2rtc.yaml"
 }
