@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=phoenix-arch
-pkgver=20241229
+pkgver=20250103
 pkgrel=1
 pkgdesc="Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL3')
 url="https://phoenix.celenity.dev"
-source=("https://codeberg.org/celenity/Phoenix/raw/commit/7645ec4494c60f1894736acacaaa026445d234bf/archives/phoenix.zip")
-sha512sums=('17a7f45e44222d713ee69fde25bd03fbaab7eaca579dd17aa77eaa368c94f6a67b9f653b25abbe8cfc53b13b68c2a2d7dc3330d99d27fffb648a45542de3cd22')
+source=("https://codeberg.org/celenity/Phoenix/raw/commit/e9b78e0b78c2ece59f1c661b6e6a9353290fcc5d/archives/phoenix.zip")
+sha512sums=('db5d583cbcac5d2ae9a2e14be9befa33bdf6f0cbe88d6686da846b8573a1c260090985f24691b2d327a66ae7926e9228c852e142627bb5fe4bed438c3b9a1755')
 
 pkgver() {
     echo "$pkgver"
@@ -21,18 +21,20 @@ package() {
     install -Dm644 "$tmpdir/filter.pac" "$pkgdir/etc/firefox/phoenix/resources/filter.pac"
     install -Dm644 "$tmpdir/configs/dev.cfg" "$pkgdir/etc/firefox/phoenix/configs/dev.cfg"
     install -Dm644 "$tmpdir/configs/discord.cfg" "$pkgdir/etc/firefox/phoenix/configs/discord.cfg"
-    install -Dm644 "$tmpdir/configs/ui-fix/dev.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/dev.cfg"
-    install -Dm644 "$tmpdir/configs/ui-fix/discord.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/discord.cfg"
-    install -Dm644 "$tmpdir/configs/ui-fix/hardened.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/hardened.cfg"
-    install -Dm644 "$tmpdir/configs/ui-fix/hardened-no-sync.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/hardened-no-sync.cfg"
-    install -Dm644 "$tmpdir/configs/ui-fix/no-sync.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/no-sync.cfg"
-    install -Dm644 "$tmpdir/configs/ui-fix/twitter.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/twitter.cfg"
-    install -Dm644 "$tmpdir/configs/ui-fix/youtube.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/youtube.cfg"
+    install -Dm644 "$tmpdir/configs/element.cfg" "$pkgdir/etc/firefox/phoenix/configs/element.cfg"
     install -Dm644 "$tmpdir/configs/hardened.cfg" "$pkgdir/etc/firefox/phoenix/configs/hardened.cfg"
     install -Dm644 "$tmpdir/configs/hardened-no-sync.cfg" "$pkgdir/etc/firefox/phoenix/configs/hardened-no-sync.cfg"
     install -Dm644 "$tmpdir/configs/no-sync.cfg" "$pkgdir/etc/firefox/phoenix/configs/no-sync.cfg"
     install -Dm644 "$tmpdir/configs/twitter.cfg" "$pkgdir/etc/firefox/phoenix/configs/twitter.cfg"
     install -Dm644 "$tmpdir/configs/ui-fix.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix.cfg"
+    install -Dm644 "$tmpdir/configs/ui-fix/dev.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/dev.cfg"
+    install -Dm644 "$tmpdir/configs/ui-fix/discord.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/discord.cfg"
+    install -Dm644 "$tmpdir/configs/ui-fix/element.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/element.cfg"
+    install -Dm644 "$tmpdir/configs/ui-fix/hardened.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/hardened.cfg"
+    install -Dm644 "$tmpdir/configs/ui-fix/hardened-no-sync.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/hardened-no-sync.cfg"
+    install -Dm644 "$tmpdir/configs/ui-fix/no-sync.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/no-sync.cfg"
+    install -Dm644 "$tmpdir/configs/ui-fix/twitter.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/twitter.cfg"
+    install -Dm644 "$tmpdir/configs/ui-fix/youtube.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/youtube.cfg"
     install -Dm644 "$tmpdir/configs/youtube.cfg" "$pkgdir/etc/firefox/phoenix/configs/youtube.cfg"
     install -Dm644 "$tmpdir/defaults/pref/phoenix.js" "$pkgdir/etc/firefox/defaults/pref/phoenix.js"
     install -Dm644 "$tmpdir/etc/profile.d/phoenix-env-overrides.sh" "$pkgdir/etc/profile.d/phoenix-env-overrides.sh"
@@ -40,12 +42,14 @@ package() {
     install -Dm644 "$tmpdir/policies.json" "$pkgdir/etc/firefox/policies/policies.json"
     install -Dm644 "$tmpdir/userjs/linux/dev/user.js" "$pkgdir/etc/firefox/phoenix/userjs/dev/user.js"
     install -Dm644 "$tmpdir/userjs/linux/discord/user.js" "$pkgdir/etc/firefox/phoenix/userjs/discord/user.js"
+    install -Dm644 "$tmpdir/userjs/linux/element/user.js" "$pkgdir/etc/firefox/phoenix/userjs/element/user.js"
     install -Dm644 "$tmpdir/userjs/linux/hardened/user.js" "$pkgdir/etc/firefox/phoenix/userjs/hardened/user.js"
     install -Dm644 "$tmpdir/userjs/linux/hardened-no-sync/user.js" "$pkgdir/etc/firefox/phoenix/userjs/hardened-no-sync/user.js"
     install -Dm644 "$tmpdir/userjs/linux/no-sync/user.js" "$pkgdir/etc/firefox/phoenix/userjs/no-sync/user.js"
     install -Dm644 "$tmpdir/userjs/linux/twitter/user.js" "$pkgdir/etc/firefox/phoenix/userjs/twitter/user.js"
     install -Dm644 "$tmpdir/userjs/linux/ui-fix/dev/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/dev/user.js"
     install -Dm644 "$tmpdir/userjs/linux/ui-fix/discord/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/discord/user.js"
+    install -Dm644 "$tmpdir/userjs/linux/ui-fix/element/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/element/user.js"
     install -Dm644 "$tmpdir/userjs/linux/ui-fix/hardened/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/hardened/user.js"
     install -Dm644 "$tmpdir/userjs/linux/ui-fix/hardened-no-sync/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/hardened-no-sync/user.js"
     install -Dm644 "$tmpdir/userjs/linux/ui-fix/no-sync/user.js" "$pkgdir/etc/firefox/phoenix/userjs/ui-fix/no-sync/user.js"
