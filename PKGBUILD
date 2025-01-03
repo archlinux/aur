@@ -1,7 +1,7 @@
 pkgname=python-flask-paginate
 _name=${pkgname#python-}
 pkgver=2024.4.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple paginate extension for flask"
 arch=('any')
 license=('BSD')
