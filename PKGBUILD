@@ -1,7 +1,7 @@
 # Maintainer: Blair Noctis <ncts@nightsail.net>
 pkgname=heretek
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Yet Another GDB TUI Frontend'
 arch=('x86_64')
 url='https://github.com/wcampbell0x2a/heretek'
