@@ -1,0 +1,157 @@
+#!/bin/bash
+ABL_TARGET_LD_SO_PATH=/lib64/ld-linux-x86-64.so.2
+ABL_DIR_PREFIX=lib
+# some content, such as ABL_DIR_PREFIX, ABL_TARGET_LD_SO_PATH, is generated when building the package
+
+if [ "$*" = "" ]
+then
+    echo "usage: $0 [command [arguments ...]]"
+    echo "    The script is part of additional-base-lib. The package provides a"
+    echo "    simple way to solve the compatible problem between application and"
+    echo "    glibc, powered by bubblewrap."
+    echo
+    echo "    All the library files, which packed with additional-base-lib,"
+    echo "    are taken from one GNU/Linux distribution. You may found message"
+    echo "    from package information. The script ablrun was created by"
+    echo "    CongTianKong <https://gitee.com/CongTianKong>. There's no lisence"
+    echo "    nor copyright restriction with The script. Feel free to deal with."
+    exit
+fi
+
+if [ "$LD_LIBRARY_PATH" = "" ]
+then
+    ABL_LIBRARY_PATH="/usr/${ABL_DIR_PREFIX}/additional-base-lib/"
+else
+    ABL_LIBRARY_PATH="$LD_LIBRARY_PATH;/usr/${ABL_DIR_PREFIX}/additional-base-lib"
+fi
+
+unset LD_LIBRARY_PATH
+
+ABL_LD_SO_PATH=`readlink -e $ABL_TARGET_LD_SO_PATH`
+ABL_LIBC_SO_PATH=`readlink -e /${ABL_DIR_PREFIX}/libc.so.6`
+
+ABL_BWRAP_SETUID=`which bwrap`
+ABL_BWRAP_SETUID=`readlink -e "$ABL_BWRAP_SETUID"`
+ABL_BWRAP_SETUID=`ls -l "$ABL_BWRAP_SETUID"`
+ABL_BWRAP_SETUID="${ABL_BWRAP_SETUID:3:1}"
+
+ABL_MAX_USER_NS=`cat /proc/sys/user/max_user_namespaces`
+
+ablrun_normal() {
+    exec bwrap \
+    --dev-bind / / \
+    --bind /usr/${ABL_DIR_PREFIX}/additional-base-lib/"$ABL_TARGET_LD_SO_PATH" "$ABL_LD_SO_PATH" \
+    --bind /usr/${ABL_DIR_PREFIX}/additional-base-lib/libc.so.6 "$ABL_LIBC_SO_PATH" \
+    --bind /usr/${ABL_DIR_PREFIX}/additional-base-lib/ldd /usr/bin/ldd \
+    --setenv LD_LIBRARY_PATH "$ABL_LIBRARY_PATH" \
+    --cap-add CAP_SYS_ADMIN \
+    -- "$@"
+    # Bwrap not installed setuid for most modern GNU/Linux system, use this easiest method.
+}
+
+ablrun_setuid() {
+    exec bwrap --dev-bind / / bwrap \
+    --dev-bind / / \
+    --bind /usr/${ABL_DIR_PREFIX}/additional-base-lib/"$ABL_TARGET_LD_SO_PATH" "$ABL_LD_SO_PATH" \
+    --bind /usr/${ABL_DIR_PREFIX}/additional-base-lib/libc.so.6 "$ABL_LIBC_SO_PATH" \
+    --bind /usr/${ABL_DIR_PREFIX}/additional-base-lib/ldd /usr/bin/ldd \
+    --setenv LD_LIBRARY_PATH "$ABL_LIBRARY_PATH" \
+    --cap-add CAP_SYS_ADMIN \
+    -- "$@"
+    # Bwrap installed setuid is for older kernel which does not allow user namespace.
+    # But in some GNU/Linux system there will still be setuid bwrap with updated kernel.
+    # Here is a simple trick to make a setuid bwrap not setuid, by nest it with another bwrap.
+}
+
+ablrun_nocap() {
+    exec bwrap  \
+    --dev-bind / / \
+    --bind /usr/${ABL_DIR_PREFIX}/additional-base-lib/"$ABL_TARGET_LD_SO_PATH" "$ABL_LD_SO_PATH" \
+    --bind /usr/${ABL_DIR_PREFIX}/additional-base-lib/libc.so.6 "$ABL_LIBC_SO_PATH" \
+    --bind /usr/${ABL_DIR_PREFIX}/additional-base-lib/ldd /usr/bin/ldd \
+    --setenv LD_LIBRARY_PATH "$ABL_LIBRARY_PATH" \
+    "$@"
+    # For some system like CentOS/Red Hat Enterprise Linux 7 or Debian Jessie, for some reasons,
+    # user namespace is not allowed. So bwrap is installed setuid to provide function to
+    # unprivileged users, but it also forbid capabilities feature to unprivileged user.
+
+    # You can solve it by this command: (you can also use a larger number)
+    #   sudo bash -c "echo 1 > /proc/sys/user/max_user_namespaces"
+
+    # If you don't do that, ablrun will still try it best to run as many applications as it can,
+    # but you will know there will be some applications, especially those use it own sandbox
+    # inside (for example, those based on electron) can not run.
+
+    # For appimages, I designed a special method to make them run, see it below.
+
+    # This method also use for root user.
+}
+
+ablrun_nocap_noreplace() {
+    bwrap  \
+    --dev-bind / / \
+    --bind /usr/${ABL_DIR_PREFIX}/additional-base-lib/"$ABL_TARGET_LD_SO_PATH" "$ABL_LD_SO_PATH" \
+    --bind /usr/${ABL_DIR_PREFIX}/additional-base-lib/libc.so.6 "$ABL_LIBC_SO_PATH" \
+    --bind /usr/${ABL_DIR_PREFIX}/additional-base-lib/ldd /usr/bin/ldd \
+    --setenv LD_LIBRARY_PATH "$ABL_LIBRARY_PATH" \
+    "$@"
+}
+
+if [ `whoami` = "root" ]
+then
+    ablrun_nocap "$@"
+fi
+
+if [ "$ABL_MAX_USER_NS" -gt 0 ]
+then
+    if [ "$ABL_BWRAP_SETUID" = "s" ]
+    then
+        ablrun_setuid "$@"
+    else
+        ablrun_normal "$@"
+    fi
+fi
+
+
+# The special designed method for appimage
+ABL_FILENAME=`which "$1"`
+if [ "$?" = 0 ]
+then
+    which xdg-mime > /dev/null
+    if [ "$?" = 0  ]
+    then
+        ABL_FILETYPE=`xdg-mime query filetype "$ABL_FILENAME"`
+        if [ "$ABL_FILETYPE" = "application/vnd.appimage" ] || [ "$ABL_FILETYPE" = "application/x-iso9660-appimage" ]
+        then
+            ABLIMAGE_PARAMETERS=("$@")
+            coproc "$1" --appimage-mount
+            ABLIMAGE_PID=$!
+
+            cleanup() {
+                kill "$ABLIMAGE_PID"
+                exit 1
+               }
+
+            trap cleanup SIGHUP
+            trap cleanup SIGINT
+            trap cleanup SIGTERM
+
+            if [ ! -e /proc/$ABLIMAGE_PID ]
+            then
+                echo "Child process failed."
+                exit 1
+            fi
+
+            read -u ${COPROC[0]} ABLIMAGE_DIR
+
+            ablrun_nocap_noreplace "$ABLIMAGE_DIR/AppRun" "${ABLIMAGE_PARAMETERS[@]:1}"
+            # Use coproc, so no exec here.
+            kill "$ABLIMAGE_PID"
+            exit
+        fi
+    fi
+fi
+
+# Fallback
+ablrun_nocap "$@"
+
