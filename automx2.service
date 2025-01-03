@@ -8,7 +8,9 @@ Documentation=https://rseichter.github.io/automx2/ file:/usr/share/doc/automx2/R
 Environment=FLASK_APP=automx2.server:app
 Environment=FLASK_CONFIG=production
 ExecStart=/usr/bin/flask run --host=127.0.0.1 --port=4243
+NotifyAccess=exec
 Restart=always
+Type=notify
 UMask=0027
 User=automx2
 WorkingDirectory=/var/lib/automx2

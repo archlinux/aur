@@ -1,10 +1,10 @@
 # Maintainer: Morbius <archlinux@seichter.de>
-# vim: ts=4 sw=4 noet
+# vim: noet
 # shellcheck shell=bash disable=2034
 
 pkgname="automx2"
-pkgver="2024.2"
-pkgrel=2
+pkgver="2025.1.dev4"
+pkgrel=1
 pkgdesc="Mail User Agent (email client) configuration made easy"
 backup=("etc/automx2/automx2.conf")
 install="install.sh"
@@ -18,9 +18,9 @@ makedepends=("python-build" "python-installer" "python-wheel")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
 	"automx2.conf"
 	"automx2.service")
-b2sums=('cc24c47edb31381c30668f0252450a2224adf46a104572526fdd3a6c0bb2748cbcf93da566fe1e347da2eb983ddb8d2e684e9a39e36ed5f6f0899e98a4f532a2'
+b2sums=('776a7f16520543e4a3843129849bd60cb923701ebb66b2a979f1d241f3fdc9898c8211959f4480fbe7fa8a8d8b73b7d4fd70056f1993aee034cecc87f615aa6f'
 	'e7afbacc9166556323f1c46f7bf65a906725cfce31f774f5bd47a5ab32102dacfd318c65c8524cf963918178097f8643b597c72db9514e131ee35d21e05240ce'
-	'd3e760a538be4b8a87c0b00161d8e45e11331280badeae1f0a8bf26cc40f3a4b50237e9851cd73ab82b712a9bf7388c9ce8c71ddb64dc971c7d3dd0aa0612240')
+	'b542063ed441dbcfb6c23a8bec997177176d102f9e97bb1d6f97ad84b8f9336ee14556138fc24b24d9ee4a21700b7e4cceb99e53f3cb0201590f489d718f8163')
 arch=("any")
 license=("GPL3")
 url="https://github.com/rseichter/automx2"
@@ -28,13 +28,13 @@ documentation="https://rseichter.github.io/automx2/"
 
 build() {
 	pushd >/dev/null "${pkgname}-${pkgver}" || exit 1
-	python -m build --wheel --no-isolation
+	python -m build --wheel
 	popd >/dev/null || exit 1
 }
 
 check() {
 	pushd >/dev/null "${pkgname}-${pkgver}" || exit 1
-	AUTOMX2_CONF=tests/unittest.conf python -m unittest discover -v tests/
+	AUTOMX2_CONF=tests/unittest.conf PYTHONPATH=src python -m unittest discover -v tests/
 	popd >/dev/null || exit 1
 }
 
