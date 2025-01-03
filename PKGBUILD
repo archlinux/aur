@@ -10,7 +10,7 @@
 _pkgname="logseq-desktop"
 pkgname="$_pkgname"
 pkgver=0.10.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
 license=('AGPL-3.0-or-later')
@@ -150,10 +150,10 @@ END
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
 Type=Application
-Name=${_pkgname^}
+Name=Logseq
 Comment=$pkgdesc
-Exec=$_pkgname %u
-Icon=$_pkgname
+Exec=logseq %u
+Icon=logseq
 Terminal=false
 StartupNotify=true
 Categories=Office;

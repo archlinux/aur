@@ -1,7 +1,7 @@
 pkgbase = logseq-desktop
 	pkgdesc = Privacy-first, open-source platform for knowledge sharing and management
 	pkgver = 0.10.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/logseq/logseq
 	install = logseq-desktop.install
 	arch = x86_64
