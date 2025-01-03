@@ -1,13 +1,13 @@
 # Maintainer: Eldred Habert <arch@eldred.fr>
 pkgname=mesen2-git
-pkgver=r2971.31a13cfa
-pkgrel=2
+pkgver=r3251.18269da4
+pkgrel=1
 pkgdesc="Multi-system emulator (NES, SNES, Game Boy and PC Engine)"
 arch=('x86_64')
 url="https://www.mesen.ca"
 license=('GPL3')
-depends=('dotnet-runtime-8.0' 'libevdev' 'sdl2')
-makedepends=('dotnet-sdk-8.0' 'git' 'zip')
+depends=(libevdev sdl2)
+makedepends=(dotnet-sdk-8.0 git zip clang)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!strip !debug) # Reportedly, these break with C#..?
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	make LTO=true SYSTEM_LIBEVDEV=true STATICLINK=false USE_AOT=true USE_GCC=true # GCC is part of `base-devel`, `clang` is not.
+	make LTO=true SYSTEM_LIBEVDEV=true STATICLINK=false USE_AOT=true # Uses Clang by default, which speeds up emulation by about 40%.
 }
 
 package() {
