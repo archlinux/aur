@@ -19,5 +19,8 @@ function pkgver() {
 }
 
 function package() {
-	install -Dm644 "${srcdir}/rime-dict/project_trans.dict.yaml" "${pkgdir}/usr/share/rime-data/project_trans.dict.yaml"
+	install -Dm644 "${srcdir}/rime-dict/project_trans.dict.yaml" \
+		"${pkgdir}/usr/share/rime-data/project_trans.dict.yaml"
+	install -Dm644 "${srcdir}/rime-dict/project_trans_pinyin.dict.yaml" \
+		"${pkgdir}/usr/share/rime-data/project_trans_pinyin.dict.yaml"
 }
