@@ -1,7 +1,6 @@
-pkgbase=cartesi-machine
-pkgname=(cartesi-machine-emulator cartesi-machine-guest-linux cartesi-machine-guest-rootfs)
+pkgname=(cartesi-machine cartesi-machine-emulator cartesi-machine-guest-linux cartesi-machine-guest-rootfs)
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://github.com/cartesi/machine-emulator'
 license=(LGPL-3.0)
@@ -50,4 +49,9 @@ package_cartesi-machine-guest-linux() {
 
   install -Dm644 linux-${_pkgver_linux_kernel}.bin "${pkgdir}/usr/share/cartesi-machine/images/linux-${_pkgver_linux_kernel}.bin"
   ln -s linux-${_pkgver_linux_kernel}.bin "${pkgdir}/usr/share/cartesi-machine/images/linux.bin"
+}
+
+package_cartesi-machine() {
+  pkgdesc="Cartesi Machine metapackage providing its emulator and its standard guest operating system"
+  depends=(cartesi-machine-emulator cartesi-machine-guest-linux cartesi-machine-guest-rootfs)
 }

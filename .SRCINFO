@@ -1,6 +1,6 @@
 pkgbase = cartesi-machine
 	pkgver = 0.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cartesi/machine-emulator
 	arch = any
 	license = LGPL-3.0
@@ -20,6 +20,12 @@ pkgbase = cartesi-machine
 	sha256sums = 8f513f065e94e6ab969cd27186421e28db0091b3a563cd87280c3bb51671669e
 	sha256sums = 65dd100ff6204346ac2f50f772721358b5c1451450ceb39a154542ee27b4c947
 	sha256sums = 4db885fdb4f013922d8ea8474768148ac4d45460a4ef30aea823836ea72ffed9
+
+pkgname = cartesi-machine
+	pkgdesc = Cartesi Machine metapackage providing its emulator and its standard guest operating system
+	depends = cartesi-machine-emulator
+	depends = cartesi-machine-guest-linux
+	depends = cartesi-machine-guest-rootfs
 
 pkgname = cartesi-machine-emulator
 	pkgdesc = Cartesi Machine RISC-V system emulator
