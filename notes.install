@@ -1,0 +1,13 @@
+post_install() {
+    echo "NOTES!!!"
+    echo "1. Add user to the input group by the following command:"
+    echo "      sudo usermod -a -G input <your_username>"
+    echo "2. Reboot or Logout and Login for the changes to take effect."
+    echo "3. Run the application:"
+    echo "      wayvibes <soundpack_path> -v <volume(0.0-10.0)>"
+    echo "Example sound pack can be found at https://github.com/sahaj-b/wayvibes"
+    echo "4. You might have to select right keyboard input device to make it work,"
+    echo "to reset and prompt for input device selection again, use:"
+    echo "      wayvibes --prompt"
+    echo "For more information, check at https://github.com/sahaj-b/wayvibes"
+}
