@@ -1,14 +1,14 @@
 pkgbase = python-sphinx-substitution-extensions
 	pkgdesc = Extensions for Sphinx which allow for substitutions
-	pkgver = 2024.02.25
+	pkgver = 2025.01.02
 	pkgrel = 1
 	url = https://github.com/adamtheturtle/sphinx-substitution-extensions
 	arch = any
-	license = APACHE
+	license = Apache-2.0
 	makedepends = python-setuptools
 	makedepends = python-pip
 	depends = python-sphinx
-	source = https://github.com/adamtheturtle/sphinx-substitution-extensions/archive/refs/tags/2024.02.25.tar.gz
-	sha512sums = 678dce24e835f3fdbfce578ca644ffda248334cef3bbea84b9a3ccde78ec6b0bb5ba8ceb145abbf05346bb448bbad729060b314ed8b141f383efed7db7890732
+	source = https://github.com/adamtheturtle/sphinx-substitution-extensions/archive/2025.01.02/sphinx-substitution-extensions-2025.01.02.tar.gz
+	sha512sums = 5baae0bb4c049a2e3905040bb6b1ea3f0b984b9e9fe0f0fa917b1bfa9ad1db1c0c85a1ba5e6be272612917aedec36802db9f8c1ad38c34e9672750203ddb3a24
 
 pkgname = python-sphinx-substitution-extensions
