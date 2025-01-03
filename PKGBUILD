@@ -2,11 +2,11 @@
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn-beta
-_pkgver=2024.9
-_channel=beta
+_pkgver=2025.1
+_channel=stable
 _rel=1
-pkgver=${_pkgver}.${_channel}${_rel}  # beta
-#pkgver=${_pkgver}.${_channel}  # stable
+#pkgver=${_pkgver}.${_channel}${_rel}  # beta
+pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
@@ -15,6 +15,7 @@ url="https://www.mullvad.net"
 license=('GPL-3.0-or-later')
 depends=('alsa-lib' 'gtk3' 'iputils' 'libnftnl' 'libnotify' 'nss')
 makedepends=('cargo' 'git' 'go' 'libxcrypt-compat' 'nvm' 'protobuf')
+optdepends=('libappindicator-gtk3: tray icon')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
@@ -22,8 +23,8 @@ _ab_commit=049d5d3bc0c86c29c20f2073460186a83c1d7094
 _wg_commit=3957ef94034a9cbb47f323b3290620bb849d58e3
 _mn_commit=d40056adfa854d86e1d515d56e9a703090e2473c
 source=(
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
-#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
+#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
   "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_ab_commit}?signed"
   "git+https://github.com/mullvad/wireguard-go.git#commit=${_wg_commit}?signed"
   "git+https://github.com/mullvad/maybenot.git#commit=${_mn_commit}"
@@ -31,7 +32,7 @@ source=(
   'no-publish.diff'
   "${pkgname%-beta}.sh"
 )
-sha256sums=('0e5d91382f02363b8490c8049898028659ca01849c8c4a7e947630994dfad6d2'
+sha256sums=('059cbe68167927d6bf6c5a53eb00db28194fc84ec515e80917de7122acedca3c'
             '2f7ff0d5c2c5bab63b9babc6c91d921ef9965413b0b92996be8c9fd5a9c0d862'
             '6e0f55d43fbf016d989ff5571de9c3b8c2f3611e957e807f5ffcbda2c4d274c6'
             '6547c6d7c1d3ffd0b65a025ac5e6f76cd3046059cb10da7f1e99f5e436378bd2'
@@ -41,6 +42,7 @@ sha256sums=('0e5d91382f02363b8490c8049898028659ca01849c8c4a7e947630994dfad6d2'
 validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <linus@mullvad.net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
               '1D0026CBD1F1858DF8DB54DFCB87E2B919A6454C' # Oskar Nyberg <oskar@mullvad.net>
+              '049F58CC80D9C78452151EE6EF0CCD68D0E5B9B1' # Emīls Piņķis <emils@mullvad.net>
               )
 
 _ensure_local_nvm() {
@@ -200,4 +202,7 @@ package() {
     icons_dir="usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
     install -Dm644 "${icons_dir}/${pkgname%-beta}.png" -t "$pkgdir/${icons_dir}/"
   done
+
+  # Symlink apparmor profile to allow Electron sandbox to work
+  ln -s /opt/Mullvad VPN/resources/apparmor_mullvad "$pkgdir/etc/apparmor.d/mullvad"
 }
