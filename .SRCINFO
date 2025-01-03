@@ -1,12 +1,12 @@
 pkgbase = petsc
 	pkgdesc = Portable, extensible toolkit for scientific computation
 	pkgver = 3.22.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://petsc.org
 	install = petsc.install
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = gcc
 	makedepends = gcc-fortran
 	makedepends = cmake
