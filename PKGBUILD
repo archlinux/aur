@@ -2,8 +2,8 @@ mkdir -p "$HOME/.cache/pacman/pkg"
 PKGDEST="$HOME/.cache/pacman/pkg/$pkgname"
 
 pkgname=vnrez
-pkgver=2.0
-pkgrel=3
+pkgver=2.1
+pkgrel=1
 pkgdesc="All-in-one Linux tool for recording, screenshots to share your files online."
 arch=('any')
 url="https://github.com/verysillycat/vnrez"
@@ -14,6 +14,8 @@ install=vnrez.install
 
 depends=('jq' 'ffmpeg')
 optdepends=(
+    'grim: Alternative Screenshot manager (required for wlr-roots)'
+    'flameshot: Screenshot manager'
     'kooha: [WAYLAND] GNOME, COSMIC, KDE & Cinnamon support'
     'wl-clipboard: Wayland Clipboard support'
     'slurp: Wayland wlroots based support'

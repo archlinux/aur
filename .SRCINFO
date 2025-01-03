@@ -1,7 +1,7 @@
 pkgbase = vnrez
 pkgdesc = All-in-one Linux tool for recording, screenshots to share your files online.
-pkgver = 2.0
-pkgrel = 3
+pkgver = 2.1
+pkgrel = 1
 url = https://github.com/verysillycat/vnrez
 arch = any
 license = AGPL-3.0
@@ -15,7 +15,7 @@ optdepends = wf-recorder: Wayland wlroots based support
 optdepends = wl-screenrec: Alternative for Wayland wlroots based support
 optdepends = xclip: X11 Clipboard support
 optdepends = slop: X11 Support
-source = https://github.com/verysillycat/vnrez/archive/refs/tags/v2.0.tar.gz
+source = https://github.com/verysillycat/vnrez/archive/refs/tags/v2.1.tar.gz
 sha256sums = SKIP
 
 pkgname = vnrez
