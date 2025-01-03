@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=upscayl-git
 _pkgname=Upscayl
-pkgver=2.15.1.r3.g04db044
+pkgver=2.15.1.r8.gab3bf62
 pkgrel=1
-_electronversion=27
-_nodeversion=18.20.5
+_electronversion=33
+_nodeversion=20
 pkgdesc="Free and Open Source AI Image Upscaler.(Use system-wide electron)"
 arch=('x86_64')
 url='https://upscayl.org/'
@@ -15,7 +15,6 @@ provides=("${pkgname%-git}")
 depends=(
     "electron${_electronversion}"
     'vulkan-icd-loader'
-    'nodejs'
 )
 makedepends=(
     'git'
@@ -25,6 +24,11 @@ makedepends=(
     'curl'
     'gcc'
     'gendesk'
+)
+optdepends=(
+    'vulkan-intel: Open-source Vulkan driver for Intel GPUs'
+    'vulkan-radeon: Open-source Vulkan driver for AMD GPUs'
+    'vulkan-nouveau: Open-source Vulkan driver for Nvidia GPUs'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -74,11 +78,10 @@ prepare() {
     fi
     sed -i "s/org.${pkgname%-git}.${_pkgname}/${pkgname%-git}/g" flatpak/"org.${pkgname%-git}.${_pkgname}".metainfo.xml
     NODE_ENV=development    npm install
-    rm -rf node_modules/sharp
-    NODE_ENV=development SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install --arch=x64 --platform=linux --libc=glibc --build-from-source sharp
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    NODE_ENV=production     npm run tsc
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
