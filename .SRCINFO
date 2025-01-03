@@ -1,7 +1,7 @@
 pkgbase = fastgithub-bin
 	pkgdesc = Speedup github access in China
 	pkgver = 2.1.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/WangGithubUser/FastGitHub
 	install = fastgithub-bin.install
 	arch = x86_64
