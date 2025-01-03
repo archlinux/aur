@@ -1,6 +1,6 @@
 pkgbase = postpilot-bin
 	pkgdesc = Email and SMTP testing GUI for developers
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/watzon/postpilot
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = postpilot-bin
 	depends = webkit2gtk
 	provides = postpilot
 	conflicts = postpilot
-	source_x86_64 = postpilot-bin-0.1.3-x86_64.pkg.tar.zst::https://github.com/watzon/postpilot/releases/download/v0.1.3/postpilot_0.1.3_linux_amd64.pkg.tar.zst
+	source_x86_64 = postpilot-bin-0.1.4-x86_64.pkg.tar.zst::https://github.com/watzon/postpilot/releases/download/v0.1.4/postpilot_0.1.4_linux_amd64.pkg.tar.zst
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = postpilot-bin-0.1.3-aarch64.pkg.tar.zst::https://github.com/watzon/postpilot/releases/download/v0.1.3/postpilot_0.1.3_linux_arm64.pkg.tar.zst
+	source_aarch64 = postpilot-bin-0.1.4-aarch64.pkg.tar.zst::https://github.com/watzon/postpilot/releases/download/v0.1.4/postpilot_0.1.4_linux_arm64.pkg.tar.zst
 	sha256sums_aarch64 = SKIP
 
 pkgname = postpilot-bin
