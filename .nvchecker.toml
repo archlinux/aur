@@ -1,0 +1,5 @@
+[lightnovel-crawler-bin]
+source = "github"
+github = "dipu-bd/lightnovel-crawler"
+use_latest_release = true
+prefix = "v"
