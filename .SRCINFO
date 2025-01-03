@@ -22,6 +22,6 @@ pkgbase = wechat
 	source = portable-config
 	source = wechat.desktop
 	md5sums = d040d6a8dc61703ab42c2cb3a79eb396
-	md5sums = 6aba5c58fb93a819299130694b86665f
+	md5sums = cbefeb42addf418f0a7164391d308ebf
 
 pkgname = wechat
