@@ -1,0 +1,18 @@
+pkgbase = certbot-dns-bookmyname
+	pkgdesc = BookMyName DNS Authenticator plugin for Certbot
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Joffr3y/certbot-dns-bookmyname
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = certbot
+	depends = python-requests
+	source = certbot-dns-bookmyname-1.0.0.tar.gz::https://github.com/Joffr3y/certbot-dns-bookmyname/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 64199966e9b1ac2ff21b79cc8151b9a486ad261a6b460dc64ffb4ac8ec05f0e4
+
+pkgname = certbot-dns-bookmyname
