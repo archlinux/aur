@@ -10,6 +10,7 @@ arch=('any')
 license=('MIT')
 provides=('simple-kdump')
 sha256sums=('SKIP')
+validpgpkeys=('2DDF72E5A5A55BA89DAA42E1C23D91F3A125FEA8')
 
 package()
 {
