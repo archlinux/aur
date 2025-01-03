@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=nsv
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='No-config semantic versioning'
 arch=('x86_64')
 url="https://github.com/purpleclay/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('cfb17f3b9bf7776ed709ebb69d9005304a9245aead9bbe5e38306b25996b42f3')
+sha256sums=('a71f822ef0144581c10c6a95c9bdb9cdd7b2a56755afea8404872d59e8384a63')
 makedepends=('go')
 depends=('glibc')
 

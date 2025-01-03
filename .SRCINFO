@@ -1,13 +1,13 @@
 pkgbase = nsv
 	pkgdesc = No-config semantic versioning
-	pkgver = 0.11.1
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/purpleclay/nsv
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = nsv-0.11.1.tar.gz::https://github.com/purpleclay/nsv/archive/v0.11.1.tar.gz
-	sha256sums = cfb17f3b9bf7776ed709ebb69d9005304a9245aead9bbe5e38306b25996b42f3
+	source = nsv-0.12.0.tar.gz::https://github.com/purpleclay/nsv/archive/v0.12.0.tar.gz
+	sha256sums = a71f822ef0144581c10c6a95c9bdb9cdd7b2a56755afea8404872d59e8384a63
 
 pkgname = nsv
