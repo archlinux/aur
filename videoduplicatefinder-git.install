@@ -1,6 +1,6 @@
 post_install() {
     echo
-    echo "==> videoduplicatefinder will be extracted to ~/.local/share/videoduplicatefinder on the first run."
+    echo "==> videoduplicatefinder will be copy to ~/.local/share/videoduplicatefinder on the first run."
     echo
 }
 

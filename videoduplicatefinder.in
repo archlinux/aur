@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 
 VDF_VERSION='@PACKAGE_VERSION@'
 
@@ -22,23 +22,23 @@ fi
 cd "${VDF_USER_DIR}"
 
 # Get installed version
-while read VDF_VER_LINE_; do
+while read -r VDF_VER_LINE_; do
     VDF_INSTALLED_VERSION="${VDF_VER_LINE_}"
 done < "${VDF_VERSION_FILE}"
 
 # Check if file need update
-if [ "${VDF_INSTALLED_VERSION}" != "${VDF_VERSION}" ] || [ "${VDF_INSTALLED_VERSION}" == 0 ]; then
+if [ "${VDF_INSTALLED_VERSION}" != "${VDF_VERSION}" ] || [ "${VDF_INSTALLED_VERSION}" = 0 ]; then
     # Delete old files
     if [ -f "${VDF_INSTALLED_FILES_LIST}" ]; then
-        while read VDF_OLD_FILE; do
-            rm -rf "${VDF_USER_DIR}/${VDF_OLD_FILE}"
+        while read -r VDF_OLD_FILE; do
+            rm -rf "${VDF_USER_DIR:?}/${VDF_OLD_FILE}"
         done < "${VDF_INSTALLED_FILES_LIST}"
     fi
 
     rm -f "${VDF_USER_DIR}/log.txt"
 
     # Copy files
-    cp "${VDF_INSTALL_DIR}"/* "${VDF_USER_DIR}"
+    cp -r "${VDF_INSTALL_DIR}"/* "${VDF_USER_DIR}"
 
     # Make new installed files list
     ls "${VDF_INSTALL_DIR}" > "${VDF_INSTALLED_FILES_LIST}"
@@ -48,4 +48,4 @@ if [ "${VDF_INSTALLED_VERSION}" != "${VDF_VERSION}" ] || [ "${VDF_INSTALLED_VERS
 fi
 
 echo "Starting Video Duplicate Finder for user ${USER}..."
-"${VDF_USER_DIR}/VDF.GUI" "${args[@]}"
+"${VDF_USER_DIR}/VDF.GUI" "$@"
