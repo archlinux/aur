@@ -1,6 +1,6 @@
 # Maintainer: kirik
 pkgname=varchiver
-pkgver=0.1.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Advanced Archive Management Tool with modern UI"
 arch=('any')
