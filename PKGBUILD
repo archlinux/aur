@@ -1,12 +1,7 @@
 # Maintainer: envolution
+# Contributor: Joshua Ward <joshuaward@myoffice.net.au>
+# Contributor: Eric Biggers <ebiggers3@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
-#
-# PKGBUILD for the development version of NetHack
-#    Maintainer: Joshua Ward <joshuaward@myoffice.net.au>
-#    Contributer: Eric Biggers <ebiggers3@gmail.com>
-#
-# Based on the PKGBUILD for nethack 3.6.0
-#
 
 pkgname=nethack-git
 pkgver=3.6.7_Released+r9120+g55561da63
