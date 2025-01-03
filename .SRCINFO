@@ -1,0 +1,21 @@
+pkgbase = currency-converter-git
+	pkgdesc = A simple and intuitive Currency Converter built with Electron.(Use system-wide electron)
+	pkgver = 1.0.0.r7.g3fd187e
+	pkgrel = 1
+	url = https://github.com/manxlr/currency-converter
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron33
+	provides = currency-converter=1.0.0
+	conflicts = currency-converter
+	source = currency-converter.git::git+https://github.com/manxlr/currency-converter
+	source = currency-converter.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = currency-converter-git
