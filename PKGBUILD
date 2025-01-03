@@ -1,7 +1,7 @@
 # Maintainer: helllamer <helllamer#gmail.com>
 
 pkgname=sing-box-db-ruleset-ru-antizapret
-pkgver=20250103000038
+pkgver=latest
 pkgrel=1
 pkgdesc="Geosite Database and Rule Sets for sing-box (RUSSIA antizapret)"
 arch=(any)
