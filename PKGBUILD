@@ -3,7 +3,7 @@
 
 pkgname=mcfetch-git
 _pkgname=mcfetch
-pkgver=v0.1.0.r18.gecd4d11
+pkgver=0.1.0.r18.gecd4d11
 pkgrel=1
 pkgdesc="Lightweight fetching program with color options."
 arch=(any)

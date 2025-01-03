@@ -1,6 +1,6 @@
 pkgbase = mcfetch-git
 	pkgdesc = Lightweight fetching program with color options.
-	pkgver = v0.1.0.r18.gecd4d11
+	pkgver = 0.1.0.r18.gecd4d11
 	pkgrel = 1
 	url = https://github.com/dybdeskarphet/mcfetch
 	arch = any
