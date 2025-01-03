@@ -7,23 +7,17 @@ arch=('x86_64')
 url="https://github.com/jhenrique04/cargo-licenses"
 license=('MIT' 'Apache')
 depends=('rust' 'cargo')
-makedepends=('git')
-source=("https://github.com/jhenrique04/cargo-licenses/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
-
-build() {
-  cd "$pkgname-$pkgver"
-  cargo build --release
-}
+source=("https://github.com/jhenrique04/cargo-licenses/releases/download/$pkgver/cargo-licenses-v$pkgver-x86_64-linux.tar.gz")
+sha256sums=('b465762f00001a9faffffeaf66ff9dc80868a0f7a6109e8432f239cc01a7088b')
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 "target/release/cargo-licenses" "$pkgdir/usr/bin/cargo-licenses"
+  tar -xvzf "cargo-licenses-v$pkgver-x86_64-linux.tar.gz"
+  install -Dm755 "cargo-licenses" "$pkgdir/usr/bin/cargo-licenses"
+
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
   install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
 }
 
-# Generate .SRCINFO with:
+# Gere o .SRCINFO com:
 # makepkg --printsrcinfo > .SRCINFO
-
