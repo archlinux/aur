@@ -1,7 +1,7 @@
 # Maintainer: Sieve Lau <sievelau@gmail.com>
 
 pkgname=bililiverecorder-git
-pkgver=r916.2dd898e
+pkgver=r919.fbd1f29
 pkgrel=1
 pkgdesc='BiliBili Stream Recorder. Git version.'
 url="https://github.com/BililiveRecorder/BililiveRecorder"
