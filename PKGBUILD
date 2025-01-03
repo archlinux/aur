@@ -5,7 +5,7 @@
 
 pkgname='studio-one-7'
 pkgver='7.0.2.103351'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
 arch=('x86_64')
 url='https://www.presonus.com/'
@@ -25,6 +25,11 @@ package() {
   bsdtar -xf ${srcdir}/data.tar.gz -C ${pkgdir}/
 
   # Fix permissions
-  chmod g-w ${pkgdir}/opt
+  chmod -R g-w ${pkgdir}/opt
   chmod -R g-w ${pkgdir}/usr
+
+  # Create our shared extensions location (based on deb pkg postinst script)
+  mkdir -p ${pkgdir}/var/opt/PreSonus/Extensions
+  chmod 777 ${pkgdir}/var/opt/PreSonus
+  chmod 777 ${pkgdir}/var/opt/PreSonus/Extensions
 }
