@@ -1,6 +1,6 @@
 pkgbase = python-libmamba
 	pkgdesc = The fast cross-platform package manager
-	pkgver = 2.0.1
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://github.com/mamba-org/mamba
 	arch = x86_64
@@ -25,10 +25,10 @@ pkgbase = python-libmamba
 	depends = reproc
 	depends = yaml-cpp>=0.8.0
 	depends = simdjson
-	provides = libmamba=2.0.1
-	provides = python-libmambapy=2.0.1
+	provides = libmamba=2.0.5
+	provides = python-libmambapy=2.0.5
 	conflicts = micromamba
-	source = mamba-2024.09.30-2.0.1.tar.gz::https://github.com/mamba-org/mamba/archive/refs/tags/2024.09.30.tar.gz
-	sha512sums = ee56b6b7f4c80c29babe22b40fa2d1c8a7e1a9bfe463ff159055aa795faa10ea2703ba41fe4dd859ee9cf5b05a2ece06448e74bebe990ce374e1c88c3273f71a
+	source = mamba-2024.12.12-2.0.5.tar.gz::https://github.com/mamba-org/mamba/archive/refs/tags/2024.12.12.tar.gz
+	sha512sums = 57c139f40e0b769d3d6028c4690f66ac7eda74fbdab1683fe8396eb94301c140858096a7511b792a360dd07dd984847734561e37a21c198c9c896d849fcad6e7
 
 pkgname = python-libmamba
