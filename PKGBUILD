@@ -2,7 +2,7 @@
 
 pkgname=dbcsr
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed Block Compressed Sparse Row matrix library"
 arch=(x86_64)
 url="https://github.com/cp2k/dbcsr"
@@ -13,6 +13,7 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/cp2k/$pkgname/archive/refs/t
         cmake.patch)
 sha256sums=('470470338fb840776fbe6991e718699d879936d2f7a3f60af4df0aaaa99ca258'
             'af12e55b6cbdd504379349a88c499e4ceac53bd8eb907133aaa95b8a97da85be')
+options=(!lto)
 
 prepare() {
   # Patching CMakeLists.txt
