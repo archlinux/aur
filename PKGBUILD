@@ -29,15 +29,16 @@ build() {
 package_libepc() {
   depends=('avahi>=0.6' 'glib2>=2.36' 'glibc' 'gnutls>=1.4' 'gtk3'
            'libsoup>=2.2' 'util-linux-libs')
+  provides=("${pkgname}-1.0.so" "${pkgname}-ui-1.0.so")
 
   cd "${srcdir}/${_pkgsrc}"
   make DESTDIR="${pkgdir}" install
 
-  install -Dm644 "README"    "${pkgdir}/usr/share/doc/${pkgbase}/README"
-  install -Dm644 "NEWS"      "${pkgdir}/usr/share/doc/${pkgbase}/NEWS"
-  install -Dm644 "ChangeLog" "${pkgdir}/usr/share/doc/${pkgbase}/CHANGELOG"
-  install -Dm644 "AUTHORS"   "${pkgdir}/usr/share/doc/${pkgbase}/AUTHORS"
-  install -Dm644 "COPYING"   "${pkgdir}/usr/share/licenses/${pkgbase}/COPYING"
+  install -vDm644 "README"    "${pkgdir}/usr/share/doc/${pkgbase}/README"
+  install -vDm644 "NEWS"      "${pkgdir}/usr/share/doc/${pkgbase}/NEWS"
+  install -vDm644 "ChangeLog" "${pkgdir}/usr/share/doc/${pkgbase}/CHANGELOG"
+  install -vDm644 "AUTHORS"   "${pkgdir}/usr/share/doc/${pkgbase}/AUTHORS"
+  install -vDm644 "COPYING"   "${pkgdir}/usr/share/licenses/${pkgbase}/COPYING"
   
   cd "${pkgdir}/usr/share"
   rm -rf "gtk-doc"

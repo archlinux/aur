@@ -26,6 +26,8 @@ pkgname = libepc
 	depends = gtk3
 	depends = libsoup>=2.2
 	depends = util-linux-libs
+	provides = libepc-1.0.so
+	provides = libepc-ui-1.0.so
 
 pkgname = libepc-docs
 	pkgdesc = Easy Publish and Consume Library (documentation)
