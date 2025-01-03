@@ -1,7 +1,7 @@
 pkgbase = itk
 	pkgdesc = An open-source, cross-platform library that provides developers with an extensive suite of software tools for image analysis
-	pkgver = 5.4.1
-	pkgrel = 5
+	pkgver = 5.4.2
+	pkgrel = 1
 	url = https://www.itk.org
 	arch = x86_64
 	license = Apache-2.0
@@ -27,8 +27,8 @@ pkgbase = itk
 	depends = libtiff.so
 	depends = zlib
 	options = !emptydirs
-	source = ITK-5.4.1.tar.gz::https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v5.4.1.tar.gz
-	sha512sums = 3b5ee32e75b6c13e94e97344affb085da459bd7157cc9dbd42cf9d156fb6d406cb047238309770a4aec6c02360e6660108988279f360994cc237f754ff058c42
+	source = ITK-5.4.2.tar.gz::https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v5.4.2.tar.gz
+	sha512sums = 4d7626f4ea694a7276ce5588c0aa69cac4e9c87697beb257942c18031c439ab88e4846d8950f5ab5b8c554dc621782a3ed48a36c8a27e4253f6a22947e2c9154
 
 pkgname = itk
 
