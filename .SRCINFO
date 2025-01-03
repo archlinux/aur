@@ -1,6 +1,6 @@
 pkgbase = psi-plus
 	pkgdesc = Psi+ is a powerful XMPP client (Qt, C++) designed for the XMPP power users (with all plugins)
-	pkgver = 1.5.2052
+	pkgver = 1.5.2069
 	pkgrel = 1
 	url = https://psi-plus.com
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = psi-plus
 	depends = libusrsctp
 	depends = libomemo-c
 	depends = libb2
-	source = https://github.com/psi-plus/psi-plus-snapshots/archive/1.5.2052.tar.gz
-	sha256sums = 325b5eaaacf501ad136db3d5ae6d8d356e70a9ab68294232343a322476cfa2db
+	source = https://github.com/psi-plus/psi-plus-snapshots/archive/1.5.2069.tar.gz
+	sha256sums = 8ab7ca846ea9709d1caca92fadc91f499f98a8bfd293105e51bd676d755745bc
 
 pkgname = psi-plus
