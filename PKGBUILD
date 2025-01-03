@@ -5,8 +5,8 @@
 # Contributor: dalto <dalto at fastmail dot com>
 pkgname=slimjet
 _pkgname="flashpeak-${pkgname}"
-_libffmpegver=0.93.0
-pkgver=44.0.5.0
+_libffmpegver=0.94.0
+pkgver=45.0.1.0
 pkgrel=1
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('x86_64')
@@ -22,6 +22,12 @@ depends=(
     'libxrandr'
     'libxcomposite'
     'libxdamage'
+    'pango'
+    'cairo'
+    'mesa'
+    'libxkbcommon'
+    'libdrm'
+    'libcups'
 )
 optdepends=(
     'kdialog: needed for file dialogs in KDE'
@@ -38,12 +44,13 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname}-${pkgver}_amd64.deb::${_dlurl}/release/${pkgname}_amd64.deb"
+    "${pkgname}-${pkgver}.deb::${_dlurl}/release/${pkgname}_amd64.deb"
+    #"${pkgname}-${pkgver}.deb::${url}/release/${pkgname}_amd64.deb"
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
 )
-sha256sums=('bf4f816dd91e41bd3e834c2b7a7a108c0b8867dc71dfc03562713ff1b81dfbb0'
-            'f0572867da4dfc52ae9f742ea0548a2ab78a09f8fcb69d888244620da8d3e66b')
-build() {
+sha256sums=('c33279dcd9740e09bba609088ec3e608ca6ad68f9f84706ad3eeb7f770577c35'
+            '95ea6caf6fec08452babe6a7ff3da0e00ba3ecc65c0d3e48f4f00a94521b9294')
+prepare() {
     bsdtar -xf "${srcdir}/data."*
     bsdtar -xf "${srcdir}/control."*
     sed -e "
@@ -52,12 +59,14 @@ build() {
     " -i "${srcdir}/usr/share/applications/${pkgname}.desktop"
     find "${srcdir}" -type d -exec chmod 755 {} +
     chmod 0755 "${srcdir}/opt/${pkgname}/${pkgname}-sandbox"
+    sed -i "s/opt\/${pkgname}/usr\/lib\/${pkgname}/g" "${srcdir}/usr/share/gnome-control-center/default-apps/${pkgname}.xml"
+    sed -i "s/opt\/${pkgname}/usr\/lib\/${pkgname}/g" "${srcdir}/usr/share/menu/${pkgname}.menu"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt,/usr/bin}
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname}" "${pkgdir}/opt"
-    ln -sf "/opt/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "${srcdir}/libffmpeg.so" -t "${pkgdir}/opt/${pkgname}"
+    install -Dm755 -d "${pkgdir}/usr/"{bin,lib}
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname}" "${pkgdir}/usr/lib"
+    ln -sf "/usr/lib/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 "${srcdir}/libffmpeg.so" -t "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     _icon_sizes=(16 22 24 32 48 64 128 256)
