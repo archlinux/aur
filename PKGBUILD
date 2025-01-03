@@ -2,10 +2,12 @@
 
 pkgname=stdplus-git
 pkgver=r272.c6262a4
-pkgrel=1
+pkgrel=2
 pkgdesc="stdplus is a c++ project containing commonly used classes and functions for the Linux platform."
 url="https://github.com/openbmc/stdplus"
 arch=($CARCH)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 license=('Apache-2.0')
 depends=(
     sh

@@ -1,7 +1,7 @@
 pkgbase = stdplus-git
 	pkgdesc = stdplus is a c++ project containing commonly used classes and functions for the Linux platform.
 	pkgver = r272.c6262a4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openbmc/stdplus
 	arch = x86_64
 	license = Apache-2.0
@@ -17,6 +17,8 @@ pkgbase = stdplus-git
 	depends = gtest
 	depends = fmt
 	depends = liburing
+	provides = stdplus
+	conflicts = stdplus
 	source = stdplus-git::git+https://github.com/openbmc/stdplus.git
 	sha256sums = SKIP
 
