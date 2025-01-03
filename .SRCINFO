@@ -1,14 +1,12 @@
 pkgbase = zile
 	pkgdesc = A small, fast, and powerful Emacs clone
 	pkgver = 2.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/zile/
 	arch = x86_64
 	license = GPL3
 	makedepends = help2man
 	makedepends = vala
-	depends = acl
-	depends = gc
 	depends = ncurses
 	depends = glib2
 	depends = libgee
