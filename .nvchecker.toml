@@ -1,0 +1,5 @@
+[hiddify]
+source = "github"
+github = "hiddify/hiddify-app"
+use_latest_release = true
+prefix = "v"
