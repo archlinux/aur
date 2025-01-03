@@ -1,5 +1,5 @@
 pkgbase = ipv6prefixfilter-bin
-	pkgdesc = A router advertisement (RA) filter compatible with Linux and Windows that filters RA attempting to set unspecified IPv6 prefixes. Occasionally, misconfigured routers may send RAs with incorrect prefix settings, or someone may intentionally send false RAs to disrupt your network.(Prebuilt version)
+	pkgdesc = A router advertisement (RA) filter compatible with Linux and Windows that filters RA attempting to set unspecified IPv6 prefixes.(Prebuilt version)
 	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/misaka19683/IPv6PrefixFilter
