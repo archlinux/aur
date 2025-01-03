@@ -2,13 +2,13 @@
 
 pkgname=python-gspread
 _pkgname=gspread
-pkgver=6.1.2
+pkgver=6.1.4
 pkgrel=1
 pkgdesc="Google Spreadsheets Python API"
 arch=('any')
 url="https://github.com/burnash/gspread"
-license=('Custom:MIT')
-depends=('python-google-auth' 'python-google-auth-oauthlib' 'python-strenum')
+license=('MIT')
+depends=('python-google-auth' 'python-google-auth-oauthlib')
 checkdepends=('python-pytest-asyncio' 'python-pytest-vcr')
 makedepends=('python-build' 'python-flit' 'python-installer' 'python-wheel')
 source=("https://github.com/burnash/$_pkgname/archive/v$pkgver.tar.gz")
@@ -29,4 +29,4 @@ package() {
   install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha512sums=('7e6c8f05c25c008b823051c2164849ae428cdf3310da7b50c9ad1a089d04ed6f8de75a6bcd20ea6767a81b2b20b36bfcb0291ec79ec72149548e514623dddb68')
+sha512sums=('babe83c0cfdfe1a57b484d22a6abed2f1b603657513243234fccdc7dd3191bd58f730111e0c645a8d37ff927923e4da8e3167cc99ee0952d909eb80c25c20db8')
