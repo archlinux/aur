@@ -1,0 +1,17 @@
+pkgbase = eontimer-bin
+	pkgdesc = Pokémon RNG Timer
+	pkgver = 3.0.0rc.6
+	pkgrel = 1
+	url = https://github.com/DasAmpharos/EonTimer
+	arch = x86_64
+	license = MIT
+	conflicts = eontimer-git
+	options = !debug
+	source = eontimer-bin-3.0.0rc.6.zip::https://github.com/DasAmpharos/EonTimer/releases/download/3.0.0-rc.6/EonTimer-ubuntu.zip
+	source = eontimer-bin-3.0.0rc.6.png::https://raw.githubusercontent.com/DasAmpharos/EonTimer/9449e6158f0aa6eaa24b3b1d0a427aa198b5c0e4/eon_timer/resources/icon-512.png
+	source = eontimer-bin-3.0.0rc.6-LICENSE.md::https://raw.githubusercontent.com/DasAmpharos/EonTimer/9449e6158f0aa6eaa24b3b1d0a427aa198b5c0e4/LICENSE.md
+	sha256sums = cf4b3bccd0cc1f8d1b7a64f7e4b2e148a8507e3a5e6009dfa3dfe1da224bb193
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = eontimer-bin
