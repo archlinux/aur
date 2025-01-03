@@ -1,11 +1,62 @@
 Index: libmad-0.15.1b/configure.ac
 ===================================================================
---- libmad-0.15.1b.orig/configure.ac	2008-03-07 20:31:23.000000000 +0000
-+++ libmad-0.15.1b/configure.ac	2008-03-07 20:34:26.000000000 +0000
-@@ -124,71 +124,7 @@
+--- libmad-0.15.1b.orig/configure.ac
++++ libmad-0.15.1b/configure.ac
+@@ -73,124 +73,6 @@ debug=""
+ optimize=""
+ profile=""
  
- if test "$GCC" = yes
- then
+-set -- $CFLAGS
+-CFLAGS=""
+-
+-if test "$GCC" = yes
+-then
+-    CFLAGS="-Wall"
+-fi
+-
+-while test $# -gt 0
+-do
+-    case "$1" in
+-	-Wall)
+-	    if test "$GCC" = yes
+-	    then
+-		:
+-	    else
+-		CFLAGS="$CFLAGS $1"
+-	    fi
+-	    shift
+-	    ;;
+-	-g)
+-	    debug="-g"
+-	    shift
+-	    ;;
+-	-mno-cygwin)
+-	    shift
+-	    ;;
+-	-m*)
+-	    arch="$arch $1"
+-	    shift
+-	    ;;
+-	-O2)
+-	    optimize="-O"
+-	    shift
+-	    ;;
+-	-fomit-frame-pointer)
+-	    shift
+-	    ;;
+-	-O*|-f*)
+-	    optimize="$optimize $1"
+-	    shift
+-	    ;;
+-	*)
+-	    CFLAGS="$CFLAGS $1"
+-	    shift
+-	    ;;
+-    esac
+-done
+-
+-if test "$GCC" = yes
+-then
 -    if test -z "$arch"
 -    then
 -	case "$host" in
@@ -71,7 +122,9 @@ Index: libmad-0.15.1b/configure.ac
 -	    esac
 -	    ;;
 -    esac
-+    optimize="-O2"
- fi
- 
+-fi
+-
  case "$host" in
+     mips*-agenda-*)
+ 	AC_DEFINE(HAVE_MADD16_ASM, 1,
+
