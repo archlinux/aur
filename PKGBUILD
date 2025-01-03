@@ -3,7 +3,7 @@
 pkgname=python-exspy
 pkgshort=exspy
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Analysis of EDS and EELS data with HyperSpy"
 arch=('any')
 url="http://hyperspy.org/exspy"
@@ -25,16 +25,6 @@ depends=('python'
 
 optdepends=('python-hyperspy-gui-ipywidgets>=2.0: GUI components for Jupyter' # AUR
             'python-hyperspy-gui-traitsui>=2.0: GUI components for desktop'  # AUR
-            'python-matplotlib-scalebar: scalebar in images'
-            'python-numpydoc: build documentation'
-            'python-pydata-sphinx-theme: build documentation'
-            'python-sphinx-copybutton: build documentation'
-            'python-sphinx_design: build documentation'
-            'python-sphinx-favicon: build documentation'
-            'python-sphinx-gallery: build documentation'
-            'python-sphinx>=1.7: build documentation'
-            'python-sphinxcontrib-mermaid: build documentation'
-            'python-sphinxcontrib-towncrier'
              )
 
 
