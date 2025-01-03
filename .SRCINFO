@@ -1,21 +1,34 @@
 pkgbase = cartesi-machine
-	pkgdesc = Cartesi Machine
-	pkgver = 0.18.1
-	pkgrel = 2
-	url = https://cartesi.io/
+	pkgver = 0.19.0
+	pkgrel = 1
+	url = https://github.com/cartesi/machine-emulator
 	arch = any
-	license = LGPL
+	license = LGPL-3.0
+	makedepends = gcc
+	makedepends = make
+	makedepends = patch
 	makedepends = boost
-	depends = lua
-	optdepends = lua-socket: GDB plugin support
+	makedepends = lua
+	makedepends = libslirp
 	options = !lto
-	source = machine-emulator-0.18.1.tar.gz::https://github.com/cartesi/machine-emulator/archive/refs/tags/v0.18.1.tar.gz
-	source = https://github.com/cartesi/machine-emulator/releases/download/v0.18.1/add-generated-files.diff
+	options = staticlibs
+	source = machine-emulator-407fa8716f5a75e7f0519b66913b888200ce57b7.tar.gz::https://github.com/cartesi/machine-emulator/archive/407fa8716f5a75e7f0519b66913b888200ce57b7.tar.gz
+	source = https://github.com/cartesi/machine-emulator/releases/download/v0.18.2-test1/add-generated-files.diff
 	source = https://github.com/cartesi/image-kernel/releases/download/v0.20.0/linux-6.5.13-ctsi-1-v0.20.0.bin
 	source = https://github.com/cartesi/machine-emulator-tools/releases/download/v0.16.1/rootfs-tools-v0.16.1.ext2
-	sha256sums = 2d6ca78881b0a218aa9460d5cc7af7be51f9971b163305d6191039719568b5c3
-	sha256sums = 5e239448f47fe33b9c13e6c4c9c605ac16b8663f396909cd57abd6e4b447f1c4
+	sha256sums = 659ac2162382c0bd8c8f15c27bcc4cdeee1a61772cfb44f7ae7583a90636edce
+	sha256sums = 8f513f065e94e6ab969cd27186421e28db0091b3a563cd87280c3bb51671669e
 	sha256sums = 65dd100ff6204346ac2f50f772721358b5c1451450ceb39a154542ee27b4c947
 	sha256sums = 4db885fdb4f013922d8ea8474768148ac4d45460a4ef30aea823836ea72ffed9
 
-pkgname = cartesi-machine
+pkgname = cartesi-machine-emulator
+	pkgdesc = Cartesi Machine RISC-V system emulator
+	depends = lua
+	depends = libslirp
+	optdepends = lua-socket: GDB plugin support
+
+pkgname = cartesi-machine-guest-linux
+	pkgdesc = Cartesi Machine guest Linux kernel
+
+pkgname = cartesi-machine-guest-rootfs
+	pkgdesc = Cartesi Machine guest root file system
