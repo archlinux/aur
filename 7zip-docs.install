@@ -1,0 +1,3 @@
+post_install() {
+    echo '>> Docs have been installed into: /usr/share/doc/7zip/'
+}

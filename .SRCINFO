@@ -1,0 +1,16 @@
+pkgbase = 7zip-docs
+	pkgdesc = HTML documentation for the 7-Zip file archiver
+	pkgver = 24.09
+	pkgrel = 1
+	url = https://7-zip.org/
+	install = 7zip-docs.install
+	arch = any
+	license = LGPL-2.1-or-later
+	license = BSD-3-Clause
+	license = LicenseRef-UnRAR
+	depends = 7zip
+	options = docs
+	source = https://7-zip.org/a/7z2409-linux-x64.tar.xz
+	sha256sums = 914c7e20ad5ef8e4d3cf08620ff8894b28fe11b7eb99809d6930870fbe48a281
+
+pkgname = 7zip-docs
