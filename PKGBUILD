@@ -4,8 +4,8 @@
 
 pkgname=scalapack
 pkgver=2.2.0
-pkgrel=4
-arch=('i686' 'x86_64')
+pkgrel=5
+arch=('i686' 'x86_64' 'aarch64')
 pkgdesc="Subset of scalable LAPACK routines redesigned for distributed memory computers."
 url="http://www.netlib.org/scalapack/"
 license=('BSD-3-Clause')
