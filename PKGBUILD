@@ -15,13 +15,13 @@ sha256sums=('1926c46d284f65d5d41f990524b21c9754a6320a4f43c6c47e20f5a2f7dd326a')
 b2sums=('59d7d773803b8535520ffcc6140f6c97dafc607e562507f04b8e30b1ec001a6b12e90447e8b30477ee7781376e9a093576f303d564b356bd88e852a4e29d54af')
 
 build() {
-  cd ${pkgname}-${pkgver}/cmd
+  cd ${pkgname}-${pkgver}
 
   go build -x -o wpka
 }
 
 package() {
-  cd ${pkgname}-${pkgver}/cmd
+  cd ${pkgname}-${pkgver}
   install -Dm 755 wpka -t "${pkgdir}/usr/bin"
   install -Dm 644 dev.benz.wpka.PolicyKit1.AuthenticationAgent.conf -t "${pkdir}/usr/share/dbus-1/system.d/"
 
