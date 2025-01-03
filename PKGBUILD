@@ -36,8 +36,7 @@ makedepends+=(cmake
   gst-plugins-base
   nanosvg
   qt5-base
-  webkit2gtk-4.1
-  patchelf)
+  webkit2gtk-4.1)
 depends+=(bash
   cairo
   fontconfig
@@ -97,6 +96,7 @@ build() {
   export CCACHE_SLOPPINESS=pch_defines,time_macros
   cmake -D CMAKE_BUILD_TYPE=None \
     -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_INSTALL_RPATH=/usr/share/slade3/lib \
     .
   make
   #</slade>
@@ -111,7 +111,6 @@ package() {
   cd $srcdir
   DESTDIR="$pkgdir" cmake --install build-gtk3
   rm -r "$pkgdir"/usr/share/slade3/{include,lib/libwx_base*,bin/wxrc*}
-  patchelf --set-rpath /usr/share/slade3/lib "$pkgdir"/usr/bin/slade
 }
 
 # vim: ts=2 sw=2 et:

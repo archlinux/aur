@@ -15,7 +15,6 @@ pkgbase = slade
 	makedepends = nanosvg
 	makedepends = qt5-base
 	makedepends = webkit2gtk-4.1
-	makedepends = patchelf
 	depends = bzip2
 	depends = fluidsynth
 	depends = freeimage
