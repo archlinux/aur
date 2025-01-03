@@ -2,7 +2,7 @@ pkgbase = switchhosts-git
 	pkgdesc = An app for managing hosts file,and switch hosts quickly ! (Use system-wide electron)
 	pkgver = 4.2.0.r13.ge59d97e
 	pkgrel = 1
-	url = https://github.com/oldj/SwitchHosts
+	url = https://switchhosts.vercel.app
 	arch = any
 	license = Apache-2.0
 	makedepends = gendesk
@@ -11,7 +11,7 @@ pkgbase = switchhosts-git
 	makedepends = npm
 	makedepends = curl
 	depends = electron30
-	provides = switchhosts
+	provides = switchhosts=4.2.0
 	conflicts = switchhosts
 	source = switchhosts.git::git+https://github.com/oldj/SwitchHosts.git
 	source = switchhosts.sh

@@ -7,10 +7,11 @@ _nodeversion=22
 pkgrel=1
 pkgdesc="An app for managing hosts file,and switch hosts quickly ! (Use system-wide electron)"
 arch=('any')
-url="https://github.com/oldj/SwitchHosts"
+url="https://switchhosts.vercel.app"
+_ghurl="https://github.com/oldj/SwitchHosts"
 license=('Apache-2.0')
 conflicts=("${pkgname%-git}")
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
 )
@@ -22,7 +23,7 @@ makedepends=(
     'curl'
 )
 source=(
-    "${pkgname//-/.}::git+${url}.git"
+    "${pkgname//-/.}::git+${_ghurl}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
@@ -39,7 +40,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -67,9 +68,16 @@ build() {
         } >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
-    sed -i "s/app\.icns/app\.png/g;s/'AppImage:x64', 'AppImage:arm64', 'deb:x64', 'deb:arm64'/'dir'/g" scripts/make.js
+    sed -e "
+        s/app\.icns/app\.png/g
+        s/'AppImage:x64', 'AppImage:arm64', 'deb:x64', 'deb:arm64'/'dir'/g
+    " -i scripts/make.js
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install --force
+    NODE_ENV=development    npm install --legacy-peer-deps
+    NODE_ENV=development    npm add -D framer-motion@11.13.1 --legacy-peer-deps
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm run make:linux
 }
