@@ -1,5 +1,5 @@
 pkgbase = lib32-libguess
-	pkgdesc = High-speed character set detection library
+	pkgdesc = High-speed character set detection library (32-bit)
 	pkgver = 1.2+r13+gb44a240
 	pkgrel = 1
 	url = https://github.com/kaniini/libguess
