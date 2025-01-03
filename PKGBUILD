@@ -18,7 +18,7 @@ source=("$url/archive/refs/tags/${pkgver}.tar.gz"
 	"portable-config"
 	"start.sh")
 sha256sums=('e1a69cc1fd8a4fc7ec087ab705496245890138ec15015689b88d20e5ec74bd82'
-            '196009781c6f1d659f92d148b44a6e5edbfdd23f6319a790805132b898695090'
+            '36dfa9fef68f90e2baf6361cf42c99880d985a3bc8249c15ef14ca87adde0dee'
             '4895bf6a6bd4297cfb8a51e01ed39cd0e7a6e17fd96a83a06b581138c4443e4b')
 
 prepare() {

@@ -21,4 +21,6 @@ bindInputDevices="true"
 # Expose all GPUs. Takes boolean value, usually used in games.
 gameMode="true"
 
+VK_LOADER_DRIVERS_SELECT=""
+
 # Below you can set envs that will be imported into the application sandbox
