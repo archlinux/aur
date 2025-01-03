@@ -4,7 +4,7 @@ pkgname="${_pkgname}-desktop-bin"
 _appname=TidGi
 pkgver=0.11.3
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="An privatcy-in-mind, automated, auto-git-backup, freely-deployed Tiddlywiki knowledge management Desktop note app, with local REST API.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -23,7 +23,6 @@ provides=(
 depends=(
     "electron${_electronversion}"
     'perl'
-    'java-runtime'
     'nodejs'
 )
 makedepends=(
