@@ -7,7 +7,7 @@ arch=('x86_64')
 url='https://github.com/wcampbell0x2a/heretek'
 license=('Apache-2.0 OR MIT')
 depends=('gdb')
-makedepends=('rust' 'openssl')
+makedepends=('rust' 'mold' 'openssl')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wcampbell0x2a/heretek/archive/refs/tags/v${pkgver}.tar.gz"
         heretek.fish)
 sha256sums=('e60a85d64e447682455d028c7d857415cf56def8d6320f5853e986af8474ca25'
@@ -15,10 +15,14 @@ sha256sums=('e60a85d64e447682455d028c7d857415cf56def8d6320f5853e986af8474ca25'
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	cargo build --release --locked
+	RUSTFLAGS='-Clink-arg=-fuse-ld=mold' cargo build --release --locked
 }
 
-# TODO check: ring fails weirdly in cargo test --release
+check() {
+	cd "$srcdir/$pkgname-$pkgver"
+	patch -p1 < $srcdir/test-render-app-update-version.patch
+	RUSTFLAGS='-Clink-arg=-fuse-ld=mold' cargo test --release --locked
+}
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
