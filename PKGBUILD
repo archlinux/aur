@@ -1,15 +1,13 @@
 # Maintainer: Mahid Sheikh <mahid@standingpad.org>
-#
-# shellcheck disable=all
 pkgname=nom-bin
-pkgver=2.6.1
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="RSS reader for the terminal"
 arch=(x86_64)
 url="https://github.com/guyfedwards/nom"
 license=('GPL')
-source=('https://github.com/guyfedwards/nom/releases/download/v2.6.1/nom_2.6.1_linux_amd64.tar.gz')
-sha256sums=('7406279b62b52057032e7a0f6a9926ee057b9b71e5deeaa5af11b6466539e80f')
+source=("https://github.com/guyfedwards/nom/releases/download/v${pkgver}/nom_${pkgver}_linux_amd64.tar.gz")
+sha256sums=('e80fddcb2de15d4820cf30f0245c93b17c89de577424130c42791ece37a0a066')
 
 package() {
 	cd "$srcdir/"
