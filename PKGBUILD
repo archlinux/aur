@@ -5,7 +5,7 @@
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn
 pkgver=2025.1
-pkgrel=2
+pkgrel=3
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64')
@@ -198,5 +198,5 @@ package() {
 
   # Symlink apparmor profile to allow Electron sandbox to work
   install -d "$pkgdir/etc/apparmor.d"
-  ln -s /opt/Mullvad VPN/resources/apparmor_mullvad "$pkgdir/etc/apparmor.d/mullvad"
+  ln -s /opt/Mullvad\ VPN/resources/apparmor_mullvad "$pkgdir/etc/apparmor.d/mullvad"
 }
