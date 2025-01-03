@@ -1,7 +1,7 @@
 pkgbase = mrv2-bin
 	pkgdesc = mrv2 is an open source professional player and review tool for VFX, animation and computer graphics (binaries)
 	pkgver = 1.3.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/ggarra13/mrv2
 	arch = x86_64
 	license = BSD-3-Clause
