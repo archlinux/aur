@@ -1,7 +1,7 @@
 pkgbase = python-pycifrw
 	pkgdesc = CIF/STAR file support for Python
 	pkgver = 4.4.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jamesrhester/pycifrw
 	arch = any
 	license = Python-2.0
