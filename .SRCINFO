@@ -1,22 +1,22 @@
 pkgbase = lib32-glibmm
-	pkgdesc = C++ bindings for GLib (32 bit, library only)
-	pkgver = 2.56.0
+	pkgdesc = C++ bindings for GLib (32-bit)
+	pkgver = 2.66.7
 	pkgrel = 1
-	url = http://www.gtkmm.org/
+	url = https://www.gtkmm.org
 	arch = x86_64
-	license = LGPL
-	makedepends = pkgconfig
-	makedepends = gcc-multilib
-	makedepends = git
+	license = LGPL-2.1-or-later
+	checkdepends = lib32-glib-networking
+	makedepends = meson>=0.55
 	makedepends = mm-common
-	makedepends = perl-xml-parser
-	makedepends = clang
-	depends = lib32-glib2
-	depends = lib32-libsigc++
 	depends = glibmm
-	options = !libtool
-	source = git+https://git.gnome.org/browse/glibmm#commit=8236b0f457e6ede0511f5e197017baa31eb953b4
-	sha256sums = SKIP
+	depends = lib32-gcc-libs
+	depends = lib32-glib2
+	depends = lib32-glibc
+	depends = lib32-libsigc++
+	provides = libgiomm-2.4.so
+	provides = libglibmm-2.4.so
+	provides = libglibmm_generate_extra_defs-2.4.so
+	source = glibmm-2.66.7.tar.gz::https://download.gnome.org/sources/glibmm/2.66/glibmm-2.66.7.tar.xz
+	sha256sums = fe02c1e5f5825940d82b56b6ec31a12c06c05c1583cfe62f934d0763e1e542b3
 
 pkgname = lib32-glibmm
-

@@ -1,47 +1,49 @@
-# Maintainer: Gicu Gorodenco <cyclopsihus 'at' gmail 'dot' com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Gicu Gorodenco <cyclopsihus 'at' gmail 'dot' com>
 # Contributor: josephgbr <rafael.f.f1 'at' gmail 'dot' com> 
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
-_pkgbasename=glibmm
-pkgname=lib32-$_pkgbasename
-pkgver=2.56.0
+_name="glibmm"
+pkgname="lib32-${_name}"
+pkgver=2.66.7
 pkgrel=1
-pkgdesc="C++ bindings for GLib (32 bit, library only)"
-url="http://www.gtkmm.org/"
-arch=(x86_64)
-license=(LGPL)
-depends=(lib32-glib2 lib32-libsigc++ "${_pkgbasename}")
-makedepends=(pkgconfig gcc-multilib git mm-common perl-xml-parser clang)
-_commit=8236b0f457e6ede0511f5e197017baa31eb953b4  # tags/2.56.0^0
-source=("git+https://git.gnome.org/browse/glibmm#commit=$_commit")
-sha256sums=('SKIP')
-options=('!libtool')
-
-pkgver() {
-  cd ${_pkgbasename}
-  git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd ${_pkgbasename}
-  NOCONFIGURE=1 ./autogen.sh
-}
+pkgdesc="C++ bindings for GLib (32-bit)"
+url="https://www.gtkmm.org"
+arch=('x86_64')
+license=(LGPL-2.1-or-later)
+depends=("${_name}" 'lib32-gcc-libs' 'lib32-glib2' 'lib32-glibc' 'lib32-libsigc++')
+makedepends=('meson>=0.55' 'mm-common')
+checkdepends=('lib32-glib-networking')
+provides=('libgiomm-2.4.so' 'libglibmm-2.4.so' 'libglibmm_generate_extra_defs-2.4.so')
+_pkgsrc="${_name}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::https://download.gnome.org/sources/${_name}/${pkgver%.*}/${_pkgsrc}.tar.xz")
+sha256sums=('fe02c1e5f5825940d82b56b6ec31a12c06c05c1583cfe62f934d0763e1e542b3')
 
 build() {
-  cd ${_pkgbasename}
-  ./configure --prefix=/usr --enable-maintainer-mode --libdir=/usr/lib32 CC='gcc' CFLAGS='-m32' CXXFLAGS='-m32 -w -fpermissive' PKG_CONFIG_PATH='/usr/lib32/pkgconfig/'
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  export CFLAGS+=" -m32"
+  export CXXFLAGS+=" -m32"
+  export LDFLAGS+=" -m32"
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+
+  cd "${srcdir}"
+  arch-meson "${_pkgsrc}" build \
+    --cross-file lib32 \
+    -D maintainer-mode=true \
+    -D build-documentation=false \
+    -D build-examples=false
+  meson compile -C build
+}
+
+check() {
+  cd "${srcdir}"
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd ${_pkgbasename}
-  sed -i -e '/^doc_subdirs/s/^/#/' Makefile
-  make DESTDIR="${pkgdir}" install
-  # Workarround for lib32-atkmm not to break 
-  sed -i 's#${libdir}/glibmm#/usr/lib/glibmm#' \
-    "${pkgdir}"/usr/lib32/pkgconfig/glibmm-2.4.pc
-  # Cleanup for a lib32 package
-  rm -rf ${pkgdir}/usr/{include,lib32/giomm*,lib32/glibmm*,share}
+  cd "${srcdir}"
+  meson install -C build --destdir "${pkgdir}"
+
+  cd "${pkgdir}/usr"
+  rm -rf "include"
 }
