@@ -3,7 +3,7 @@
 pkgname=xunlei-bin
 _debname="com.${pkgname%-bin}.download"
 pkgver=1.0.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Xunlei download, 迅雷"
 arch=(
     'aarch64'
@@ -45,8 +45,9 @@ prepare() {
     sed -e "
         s/\/opt\/apps\/${_debname}\/files\/start.sh/${pkgname%-bin}/g
         s/\/opt\/apps\/${_debname}\/entries\/icons\/hicolor\/256x256\/apps\/${_debname}.png/${pkgname%-bin}/g
-        s/Categories=net/Categories=NetWork/g
+        s/Categories=net/Categories=Network;/g
     " -i "${srcdir}/opt/apps/${_debname}/entries/applications/${_debname}.desktop"
+    sed -i "s/thunderx.ico/thunder_32.png/g" "${srcdir}/opt/apps/${_debname}/files/resources/app/out/main.js"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
