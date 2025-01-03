@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=musicat-git
 _pkgname=Musicat
-pkgver=0.10.0.r0.g4f95cc1
+pkgver=0.11.0.r0.g27a601f
 _nodeversion=18
 pkgrel=1
 pkgdesc="A sleek desktop music player and tagger for offline music 🪕 With experimental features like map view, GPT analysis, artist toolkit."
@@ -43,7 +43,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     _ensure_local_nvm
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
@@ -61,23 +61,22 @@ build() {
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
         sed "s/github.com/github.moeyy.xyz\/https:\/\/github.com/" -i src-tauri/Cargo.toml
     fi
-    sed -e "
-        s/\"app\"/\"${pkgname%-git}\"/g
-        s/\"A Tauri App\"/\"${pkgdesc}\"/g
-    " -i src-tauri/Cargo.toml
     sed "/cli-win32-x64-msvc/d" -i package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     npx tauri build -b deb
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_"*/data/usr/bin/"${pkgname%-git}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_"*/data/usr/bin/"${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-git}"
     for _icons in 32x32 128x128 256x256@2;do
         install -Dm644 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_"*/data/usr/share/icons/hicolor/"${_icons}"/apps/"${pkgname%-git}".png \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
     install -Dm644 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_"*/data/usr/share/applications/"${_pkgname}".desktop \
         "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_"*/data/usr/lib/"${_pkgname}"/resources/log4rs.yml \
+    install -Dm644 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_"*/data/usr/lib/"${_pkgname}"/resources/*.yml \
         -t "${pkgdir}/usr/lib/${_pkgname}/resources"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
