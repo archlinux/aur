@@ -2,7 +2,7 @@
 # Maintainer: Xiang Chen <iflygo@outlook.com>
 
 pkgname=zigup
-pkgver=2024.05.05.r8.g67643d6
+pkgver=2025.01.02
 pkgrel=1
 pkgdesc='Download and manage Zig compilers'
 arch=('x86_64')
@@ -11,9 +11,9 @@ license=('MIT-0')
 depends=('tar')
 makedepends=('git' 'zig')
 options=('!debug')
-_commit='67643d63359502d8dab9628ad071c61837a55b02'
+_commit='570255f54b42a5305703d193274a9e7702f4f194'
 source=("$pkgname::git+$url#commit=$_commit")
-b2sums=('SKIP')
+b2sums=('53985104436ae87c2c5da421d377a2ca92c62bcfa9d5aaeeba5c159a0e6d1167519f5f7129cc3e2f69e557cb3078f98fe01277f3ee29c06fe3974ac45a7fd9a9')
 
 pkgver() {
   cd "$pkgname"
