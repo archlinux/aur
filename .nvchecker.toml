@@ -1,0 +1,6 @@
+[gpodder-git]
+source="github-graphql"
+github="gpodder/gpodder"
+use_latest_release = true
+use_commit_hash=true
+use_commit_number=true
