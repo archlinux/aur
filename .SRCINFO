@@ -1,13 +1,15 @@
 pkgbase = python-cherrypy-cors
 	pkgdesc = CORS support for CherryPy
 	pkgver = 1.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/cherrypy-cors/
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-cherrypy
 	depends = python-httpagentparser
