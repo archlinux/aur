@@ -1,0 +1,6 @@
+[python-fastecdsa]
+source = "github"
+github = "antonkueltz/fastecdsa"
+use_latest_release = "true"
+prefix = "v"
+
