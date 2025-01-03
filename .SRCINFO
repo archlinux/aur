@@ -12,6 +12,7 @@ pkgbase = void-git
 	makedepends = libxkbfile
 	makedepends = libsecret
 	makedepends = npm
+	makedepends = nodejs
 	makedepends = pkg-config
 	depends = libx11
 	depends = libxkbfile

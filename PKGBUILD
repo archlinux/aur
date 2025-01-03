@@ -47,6 +47,7 @@ makedepends=(
 	'libxkbfile'
 	'libsecret'
 	'npm'
+	'nodejs'
 	'pkg-config'
 )
 source=(
