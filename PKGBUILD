@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mailspring-git
 _pkgname=Mailspring
-pkgver=1.14.0.r1.gae21191
-_electronversion=30
-_nodeversion=16
+pkgver=1.15.0.r1.gbe22f19
+_electronversion=33
+_nodeversion=20
 pkgrel=1
-pkgdesc="A beautiful, fast and fully open source mail client.Use system-wide electron."
+pkgdesc="A beautiful, fast and fully open source mail client.(Use system-wide electron)"
 arch=('x86_64')
 url="https://getmailspring.com/"
 _ghurl="https://github.com/Foundry376/Mailspring"
@@ -21,9 +21,9 @@ makedepends=(
     'npm'
     'git'
     'nvm'
-    'cmake'
     'gcc'
     'dpkg'
+    'gendesk'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -43,7 +43,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -74,6 +74,9 @@ build() {
     sed -i "s/execstack --clear-execstack//g" app/script/mkdeb
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     npm run build
     sed "s/${_pkgname}.desktop/${pkgname%-git}.desktop/g" -i app/dist/"${pkgname%-git}".appdata.xml
 }
