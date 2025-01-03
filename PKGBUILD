@@ -111,6 +111,13 @@ package() {
   cd $srcdir
   DESTDIR="$pkgdir" cmake --install build-gtk3
   rm -r "$pkgdir"/usr/share/slade3/{include,lib/libwx_base*,bin/wxrc*}
+
+  mv "$pkgdir"/usr/bin/slade "$pkgdir"/usr/bin/slade3
+  cat >"$pkgdir"/usr/bin/slade <<'EOF'
+#!/bin/sh
+GDK_BACKEND=x11 exec /usr/bin/slade3 "$@"
+EOF
+  chmod 755 "$pkgdir"/usr/bin/slade
 }
 
 # vim: ts=2 sw=2 et:
