@@ -2,8 +2,8 @@
 # Maintainer: Liberty Raptor <libertyraptor@protonmail.com>
 
 pkgname=flycast-bin
-pkgver=2.2
-pkgrel=2
+pkgver=2.3
+pkgrel=1
 pkgdesc="Sega Dreamcast, NAOMI, NAOMI 2, Atomiswave and System SP Emulator"
 arch=('x86_64')
 url='https://github.com/flyinghead/flycast'
@@ -13,8 +13,8 @@ conflicts=('flycast' 'flycast-git' 'flycast-bin')
 options=('!strip')
 makedepends=('gendesk')
 noextract=("${pkgname%-bin}-${pkgver}.AppImage")
-source=("${pkgname%-bin}-${pkgver}.AppImage::https://github.com/flyinghead/flycast/releases/download/v2.2/flycast-x86_64.AppImage")
-sha256sums=('954efda76428eb490c61ad85b1ed29e3dd09cb1a5771822c35bb0f80bafec56f')
+source=("${pkgname%-bin}-${pkgver}.AppImage::https://github.com/flyinghead/flycast/releases/download/v2.3/flycast-x86_64.AppImage")
+sha256sums=('f1d56d9d4873e1c70ed83556ac7dd0bedf6c88823e92db712954dba7deb3af99')
 
 package() {
   chmod 755 ./${pkgname%-bin}-${pkgver}.AppImage
