@@ -1,0 +1,14 @@
+pkgbase = ipv6prefixfilter-bin
+	pkgdesc = A router advertisement (RA) filter compatible with Linux and Windows that filters RA attempting to set unspecified IPv6 prefixes. Occasionally, misconfigured routers may send RAs with incorrect prefix settings, or someone may intentionally send false RAs to disrupt your network.(Prebuilt version)
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/misaka19683/IPv6PrefixFilter
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = nftables
+	provides = ipv6prefixfilter
+	conflicts = ipv6prefixfilter
+	source = ipv6prefixfilter-0.9.0.zip::https://github.com/misaka19683/IPv6PrefixFilter/releases/download/v0.9.0/IPv6PrefixFilter-linux-build.zip
+	sha256sums = 5ef772e309f9efde8b665de0ee4e7007d8a8ddf71fb90f03817516398f29ff1e
+
+pkgname = ipv6prefixfilter-bin
