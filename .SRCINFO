@@ -1,0 +1,22 @@
+pkgbase = python-epub3
+	pkgdesc = An awsome epub3 library.
+	pkgver = 0.0.1.15
+	pkgrel = 1
+	url = https://pypi.org/project/python-epub3
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-lxml
+	provides = python-epub3
+	conflicts = python-epub3
+	options = !strip
+	options = !debug
+	source = python_epub3-0.0.1.15.tar.gz::https://files.pythonhosted.org/packages/source/p/python_epub3/python_epub3-0.0.1.15.tar.gz
+	sha256sums = 409ec7543864f90e166dba0de6ebfd6ef0882af31040056a63166c8b6e0fbffb
+
+pkgname = python-epub3
