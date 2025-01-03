@@ -1,7 +1,7 @@
 pkgbase = additional-base-lib-bin
 	pkgdesc = 网易邮箱additional-base-lib-bin依赖打包
-	pkgver = 1.1.16
-	pkgrel = 1
+	pkgver = 2.40
+	pkgrel = 2
 	url = https://gitee.com/deepin-community-store/additional-base-lib
 	arch = x86_64
 	license = custom

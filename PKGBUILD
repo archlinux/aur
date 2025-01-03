@@ -1,8 +1,8 @@
 # Maintainer: MYT1 <MYT1 @ QQ .com>
 pkgname=additional-base-lib-bin
 _pkgname=$pkgname%-bin
-pkgver=1.1.16
-pkgrel=1
+pkgver=2.40
+pkgrel=2
 pkgdesc='网易邮箱additional-base-lib-bin依赖打包'
 arch=('x86_64')
 url="https://gitee.com/deepin-community-store/additional-base-lib"
