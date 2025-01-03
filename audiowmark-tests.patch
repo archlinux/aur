@@ -1,0 +1,81 @@
+From 2b29f3fd90c7ce0c51df1925d47682156f47daf5 Mon Sep 17 00:00:00 2001
+From: Stefan Westerfeld <stefan@space.twc.de>
+Date: Sun, 29 Dec 2024 12:53:52 +0100
+Subject: [PATCH 4/5] Abort on error for test scripts (test-common.sh set -eo
+ pipefail).
+
+Signed-off-by: Stefan Westerfeld <stefan@space.twc.de>
+---
+ tests/hls-test.sh        | 2 --
+ tests/raw-format-test.sh | 2 --
+ tests/test-common.sh.in  | 4 ++++
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tests/hls-test.sh b/tests/hls-test.sh
+index 1c723b2..c22117d 100755
+--- a/tests/hls-test.sh
++++ b/tests/hls-test.sh
+@@ -6,8 +6,6 @@ if [ "x$Q" == "x1" ] && [ -z "$V" ]; then
+   FFMPEG_Q="-v quiet"
+ fi
+ 
+-set -e
+-
+ HLS_DIR=hls-test-dir.$$
+ mkdir -p $HLS_DIR
+ 
+diff --git a/tests/raw-format-test.sh b/tests/raw-format-test.sh
+index 12b7a64..e0050b8 100755
+--- a/tests/raw-format-test.sh
++++ b/tests/raw-format-test.sh
+@@ -2,8 +2,6 @@
+ 
+ source test-common.sh
+ 
+-set -e
+-
+ IN_WAV=test-raw-format.wav
+ OUT_WAV=test-raw-format-out.wav
+ OUT2_WAV=test-raw-format-out2.wav
+diff --git a/tests/test-common.sh.in b/tests/test-common.sh.in
+index 096cba0..ce5ebcd 100644
+--- a/tests/test-common.sh.in
++++ b/tests/test-common.sh.in
+@@ -4,6 +4,10 @@ AUDIOWMARK=@top_builddir@/src/audiowmark
+ TEST_MSG=f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0
+ TOP_BUILDDIR=@top_builddir@
+ 
++## abort on error
++
++set -eo pipefail
++
+ # common shell functions
+ 
+ die()
+
+From c9199aec6e772b2a2669d329081ca8806e208897 Mon Sep 17 00:00:00 2001
+From: Stefan Westerfeld <stefan@space.twc.de>
+Date: Sun, 29 Dec 2024 13:08:40 +0100
+Subject: [PATCH 5/5] Fix testrawconverter vector out-of-bounds access (see
+ #72).
+
+Signed-off-by: Stefan Westerfeld <stefan@space.twc.de>
+---
+ src/testrawconverter.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/testrawconverter.cc b/src/testrawconverter.cc
+index c029dd0..0f6528c 100644
+--- a/src/testrawconverter.cc
++++ b/src/testrawconverter.cc
+@@ -83,8 +83,8 @@ main (int argc, char **argv)
+   uint64_t K = 33452759; // prime
+   vector<float> in_samples (K), out_samples (K);
+   vector<unsigned char> bytes (K * 4);
+-  for (uint64_t k = 0; k <= K; k++)
+-    in_samples[k] = (-1 + double (2 * k) / K);
++  for (uint64_t k = 0; k < K; k++)
++    in_samples[k] = (-1 + double (2 * k) / (K - 1));
+ 
+   test_int16 ("int16", in_samples, Encoding::SIGNED);
+   test_int16 ("uint16", in_samples, Encoding::UNSIGNED);
