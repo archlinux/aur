@@ -1,0 +1,11 @@
+pkgbase = noto-cjk-fontconfig
+	pkgdesc = Append noto-fonts-cjk to noto-fonts according to the locale
+	pkgver = 1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/noto-cjk-fontconfig
+	arch = any
+	license = GPL-3.0-or-later
+	source = 53-cjk.conf
+	sha256sums = de396ba9e7e803751f6ddee133e7697c177861926bd044391fb68b2b94ec26d4
+
+pkgname = noto-cjk-fontconfig
