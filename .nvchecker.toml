@@ -1,0 +1,4 @@
+[python-primp-bin]
+source = "git"
+git = "https://github.com/deedy5/primp.git"
+prefix = "v"

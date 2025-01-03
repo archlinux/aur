@@ -4,7 +4,7 @@
 
 pkgname=python-primp-bin
 _name=primp
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='HTTP client that can impersonate web browsers, mimicking their headers and `TLS/JA3/JA4/HTTP2` fingerprints'
 arch=('x86_64' 'aarch64')
