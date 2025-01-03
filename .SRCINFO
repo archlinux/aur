@@ -1,8 +1,8 @@
 pkgbase = scalapack
-	pkgdesc = Subset of scalable LAPACK routines redesigned for distributed memory computers.
+	pkgdesc = Subset of scalable LAPACK routines redesigned for distributed memory computers
 	pkgver = 2.2.0
-	pkgrel = 5
-	url = http://www.netlib.org/scalapack/
+	pkgrel = 6
+	url = http://www.netlib.org/scalapack
 	arch = i686
 	arch = x86_64
 	arch = aarch64
