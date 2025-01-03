@@ -1,7 +1,7 @@
 # -*- mode: Shell-script; eval: (setq indent-tabs-mode 't); eval: (setq tab-width 4) -*-
 # Maintainer: LuckyTurtleDev [aur at lukas1818 dot de]
 
-_pkgtag=2.2.0 #auto updated by CI
+_pkgtag=2.2.1 #auto updated by CI
 _crate="tauri-cli"
 pkgname="tauri-cli"
 pkgver=$_pkgtag
@@ -14,7 +14,7 @@ depends=('gcc-libs' 'cargo' 'gcc' 'webkit2gtk-4.1' 'curl' 'wget' 'file' 'openssl
 makedepends=('cargo')
 
 source=("$_crate-$_pkgtag.tar.gz::https://crates.io/api/v1/crates/tauri-cli/$_pkgtag/download")
-sha512sums=('52c1875afb7627c271e885455ce8e0889004a838e1573f72ea264cccaeba33bfc907fa4a4c75ab0fb95f9f438e79989f8bb75a51e51c737abbe651fbbcaa0f63')
+sha512sums=('7bb38d539d3568010dda698b343e5fdb89facd37c6ad1bf735ca2a15e0d117c0d1d0fed935c496bebf7edc2ba1b6e6cc060db14243bf237a1e0b4edebaf6e665')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
