@@ -22,6 +22,3 @@ package() {
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
   install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
 }
-
-# Gere o .SRCINFO com:
-# makepkg --printsrcinfo > .SRCINFO
