@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=tailchat
 pkgname="${_pkgname}-desktop"
-pkgver=1.11.9
+pkgver=1.11.10
 _electronversion=18
 _nodeversion=16
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('2a8b1ad6c909e257b8e9538e1f1f0845f926c126f52f50d18fe13e41566c6f44'
+sha256sums=('6d8303efa033d6fe720746c47b54b04bfcfbf47c4aa121d9719c9b1b501c6331'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -35,7 +35,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -74,6 +74,9 @@ build() {
     sed -i "s/\/build//g" -i electron-builder.yml
     NODE_ENV=development    yarn install
     NODE_ENV=development    yarn add -D ts-node source-map-support
+}
+build() {
+    cd "${srcdir}/${_pkgname}-${pkgver}/client/desktop"
     NODE_ENV=production     yarn ts-node ./.erb/scripts/clean.js dist
     NODE_ENV=production     yarn run build
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config.asar=false
