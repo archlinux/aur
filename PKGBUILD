@@ -1,11 +1,11 @@
 # Maintainer: Qu Wenruo <wqu@suse.com>
 pkgname=simple-kdump
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A very simple kdump setup for Archlinux"
 url="https://github.com/adam900710/simple-kdump"
 source=("git+$url.git#tag=v${pkgver}?signed")
-depends=('systemd' 'makedumpfile')
+depends=('systemd' 'makedumpfile' 'kexec-tools')
 arch=('any')
 license=('MIT')
 provides=('simple-kdump')
