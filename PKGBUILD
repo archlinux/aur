@@ -3,8 +3,8 @@
 
 _pkgname=ebumcli
 pkgname="${_pkgname}-git"
-pkgver=0.0.0.r13.5f707a6
-pkgrel=2
+pkgver=0.0.0.r15.bec98d7
+pkgrel=1
 pkgdesc="(EBU Meter CLI / EBU Mini CLI) - extremely minimalistic EBU R 128 LUFS and TruePeak meter CLI (using libebur128)"
 arch=('any')
 url="https://github.com/actionless/${_pkgname}"
@@ -14,7 +14,8 @@ source=(
 )
 b2sums=('SKIP')
 depends=(
-	'libebur128'
+	libebur128
+	libsndfile
 )
 makedepends=(
 )

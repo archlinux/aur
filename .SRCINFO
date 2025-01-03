@@ -1,11 +1,12 @@
 pkgbase = ebumcli-git
 	pkgdesc = (EBU Meter CLI / EBU Mini CLI) - extremely minimalistic EBU R 128 LUFS and TruePeak meter CLI (using libebur128)
-	pkgver = 0.0.0.r11.3cf0ee7
+	pkgver = 0.0.0.r15.bec98d7
 	pkgrel = 1
 	url = https://github.com/actionless/ebumcli
 	arch = any
 	license = GPL-3.0-only
 	depends = libebur128
+	depends = libsndfile
 	provides = ebumcli
 	conflicts = ebumcli
 	source = ebumcli-git::git+https://github.com/actionless/ebumcli#branch=master
