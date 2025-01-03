@@ -1,6 +1,6 @@
 # Maintainer: erdii <me at erdii dot engineering>
 pkgname=ocm-addons
-pkgver=0.7.17
+pkgver=0.7.18
 pkgrel=1
 pkgdesc="A plug-in for the ocm-cli which provides commands for working with add-ons for managed OpenShift."
 arch=("any")
@@ -11,7 +11,7 @@ license=("Apache")
 depends=()
 makedepends=("go" "goreleaser" "go-yq")
 source=("ocm-addons-${pkgver}::git+https://github.com/mt-sre/ocm-addons#tag=v${pkgver}")
-sha256sums=('86e8da5ca4258a80a191aeee703f3ac0aa245679e9b18b5864a0d07afedbf83b')
+sha256sums=('6e8074e55f79c4310dc0881cc84385a4a2d8635aaa4e5e2075a7e65ba1397487')
 
 build() {
   cd "${srcdir}/ocm-addons-${pkgver}"
