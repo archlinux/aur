@@ -1,7 +1,7 @@
 pkgbase = firefly-luciferin-git
 	pkgdesc = Screen capture software for ambient and bias lighting
 	pkgver = 2.18.9r4.g750f60c0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sblantipodi/firefly_luciferin
 	arch = any
 	license = GPL-3.0-or-later
@@ -9,6 +9,8 @@ pkgbase = firefly-luciferin-git
 	makedepends = maven
 	depends = java-runtime=23
 	depends = hicolor-icon-theme
+	optdepends = xdg-desktop-portal-wlr: For Wayland screen capture support
+	optdepends = gst-plugin-pipewire: For Wayland screen capture support
 	provides = firefly-luciferin
 	conflicts = firefly-luciferin
 	source = git+https://github.com/sblantipodi/firefly_luciferin.git

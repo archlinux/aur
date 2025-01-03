@@ -3,13 +3,17 @@
 _pkgname=firefly-luciferin
 pkgname=${_pkgname}-git
 pkgver=2.18.9r4.g750f60c0
-pkgrel=1
+pkgrel=2
 pkgdesc="Screen capture software for ambient and bias lighting"
 arch=('any')
 url="https://github.com/sblantipodi/firefly_luciferin"
 license=('GPL-3.0-or-later')
 depends=('java-runtime=23' 'hicolor-icon-theme')
 makedepends=('git' 'maven')
+optdepends=(
+  'xdg-desktop-portal-wlr: For Wayland screen capture support'
+  'gst-plugin-pipewire: For Wayland screen capture support'
+)
 provides=('firefly-luciferin')
 conflicts=('firefly-luciferin')
 source=("git+$url.git" "firefly-luciferin")
