@@ -18,4 +18,7 @@ waylandOnly="false"
 # Takes boolean value.
 bindInputDevices="true"
 
+# Expose all GPUs. Takes boolean value, usually used in games.
+gameMode="true"
+
 # Below you can set envs that will be imported into the application sandbox
