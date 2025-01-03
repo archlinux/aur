@@ -1,0 +1,22 @@
+pkgbase = meson-pypy3
+	pkgdesc = Meson PEP 517 Python build backend
+	pkgver = 0.17.1
+	pkgrel = 1
+	url = https://github.com/mesonbuild/meson-python
+	arch = any
+	groups = python-build-backend
+	license = MIT
+	makedepends = git
+	makedepends = ninja
+	makedepends = pypy3-build
+	makedepends = pypy3-installer
+	depends = meson
+	depends = patchelf
+	depends = pypy3
+	depends = pypy3-packaging
+	depends = pypy3-pyproject-metadata
+	optdepends = python-colorama: colored output
+	source = git+https://github.com/mesonbuild/meson-python#tag=0.17.1
+	sha256sums = aa4b6f8f90c6e5bdcb6991efdb4e1eed4b9bcc50583c9611375ee589696b5854
+
+pkgname = meson-pypy3
