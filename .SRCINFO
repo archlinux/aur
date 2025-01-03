@@ -1,7 +1,7 @@
-pkgbase = rasaeroii
+pkgbase = rasaeroii-bin
 	pkgdesc = Rogers Aeroscience RASAero Aerodynamic Analysis and Flight Simulation Software
 	pkgver = 1.0.2.0
-	pkgrel = 3
+	pkgrel = 1
 	url = https://rasaero.com/
 	arch = any
 	license = LicenseRef-unknown
@@ -9,6 +9,8 @@ pkgbase = rasaeroii
 	makedepends = icoutils
 	depends = wine
 	depends = bash
+	provides = rasaeroii
+	conflicts = rasaeroii
 	source = https://rasaero.com/dloads/RASAero_II_Setup_Version_1.0.2.0.zip
 	source = user_manual.pdf::https://rasaero.com/dloads/RASAero%20II%20Users%20Manual.pdf
 	source = RASAeroII.desktop
@@ -18,4 +20,4 @@ pkgbase = rasaeroii
 	sha256sums = 9efc9608bc22f9242e7f027ce7c85e0a407f2e152dfb882c29b0ef9151e32463
 	sha256sums = 9d7d3378536dd87b6346fc00cb602e68a045fdf33479cf9e2f735905c6b2fd12
 
-pkgname = rasaeroii
+pkgname = rasaeroii-bin
