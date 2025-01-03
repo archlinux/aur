@@ -1,0 +1,21 @@
+pkgbase = lib32-atkmm
+	pkgdesc = C++ bindings for ATK (32-bit)
+	pkgver = 2.28.4
+	pkgrel = 1
+	url = https://www.gtkmm.org
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = meson>=0.55
+	makedepends = mm-common
+	depends = atkmm
+	depends = lib32-at-spi2-core
+	depends = lib32-glib2
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-glibmm
+	depends = lib32-libsigc++
+	provides = libatkmm-1.6.so
+	source = atkmm-2.28.4.tar.gz::https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.4.tar.xz
+	sha256sums = 0a142a8128f83c001efb8014ee463e9a766054ef84686af953135e04d28fdab3
+
+pkgname = lib32-atkmm
