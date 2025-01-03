@@ -1,0 +1,16 @@
+pkgbase = python-libloader
+	pkgdesc = Quickly and easily load shared libraries from various platforms. Also includes a libloader.com module for loading com modules on Windows.
+	pkgver = 0.21
+	pkgrel = 1
+	url = https://pypi.org/project/libloader/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/l/libloader/libloader-0.21.tar.gz
+	sha512sums = 75bef8eaaa4513272f9c1b1435089239866040f269f0d576914ec740018f519539b0bfa75f2807d6293c8518e4c1d69a5210cbe93a7be0d1b096b332e1e2cc1f
+
+pkgname = python-libloader
