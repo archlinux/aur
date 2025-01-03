@@ -2,7 +2,7 @@
 
 pkgname=wpka
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='wayland polkit-agent that lets you use any input'
 url='https://github.com/abenz1267/wpka'
 arch=('x86_64')
@@ -22,8 +22,8 @@ build() {
 
 package() {
   cd ${pkgname}-${pkgver}
+
   install -Dm 755 wpka -t "${pkgdir}/usr/bin"
   install -Dm 644 dev.benz.wpka.PolicyKit1.AuthenticationAgent.conf -t "${pkgdir}/usr/share/dbus-1/system.d/"
-
-  #install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
