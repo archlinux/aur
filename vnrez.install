@@ -2,8 +2,7 @@ post_install() {
     sleep 1
     printf "\e[1;32m[!] - - - - - - - - - - - - - - - - - - - -  | IMPORTANT | - - - - - - - - - - - - - - - - - - - - [!]\e[0m\n"
     printf "\e[1;32mCheck the Optional Dependencies section to install the required Dependencies based on your DE / WM :\e[0m\n"
-    printf "• \e[30m\e[46m Hyprland \e[0m: wl-clipboard, slurp, grim and hyprpicker (optional) & wf-recorder or wl-screenrec\n"
-    printf "• \e[30m\e[46m Other Wayland wlroots based \e[0m: wl-clipboard, slurp & wf-recorder or wl-screenrec\n"
+    printf "• \e[30m\e[46m Wayland wlroots based \e[0m: wl-clipboard, slurp & wf-recorder or wl-screenrec\n"
     printf "• \e[30m\e[46m COSMIC & GNOME / KDE Wayland \e[0m: wl-clipboard & kooha\n"
     printf "• \e[30m\e[46m Any X11 \e[0m: xclip & slop\n"
     echo ""
