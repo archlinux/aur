@@ -1,7 +1,7 @@
 # Maintainer: Lysec
 pkgname=swiftfetch
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and efficient fetch utility written in Rust"
 arch=('x86_64')
 url="https://github.com/Ly-sec/swiftfetch"
@@ -34,7 +34,7 @@ package() {
 post_install() {
   echo "Setting up configuration for swiftfetch..."
 
-  config_dir="$HOME/.config/swiftfetch"
+  config_dir="~/.config/swiftfetch"
   config_file="$config_dir/config.toml"
   default_config="/usr/share/$pkgname/config.toml"
 
