@@ -1,0 +1,31 @@
+# Maintainer: Blair Noctis <ncts@nightsail.net>
+pkgname=heretek
+pkgver=0.2.0
+pkgrel=1
+pkgdesc='Yet Another GDB TUI Frontend'
+arch=('x86_64')
+url='https://github.com/wcampbell0x2a/heretek'
+license=('Apache-2.0 OR MIT')
+depends=('gdb')
+makedepends=('rust' 'openssl')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wcampbell0x2a/heretek/archive/refs/tags/v${pkgver}.tar.gz"
+        heretek.fish)
+sha256sums=('e60a85d64e447682455d028c7d857415cf56def8d6320f5853e986af8474ca25'
+            'f96f17efd5fa2bcbc585661001426c367cf3d2a4e52f8cf6ac1e53ee21c2d1f4')
+
+build() {
+	cd "$srcdir/$pkgname-$pkgver"
+	cargo build --release --locked
+}
+
+# TODO check: ring fails weirdly in cargo test --release
+
+package() {
+	cd "$srcdir/$pkgname-$pkgver"
+	bin="$pkgdir/usr/bin"
+	fish_comp="$pkgdir/usr/share/fish/vendor_completions.d/"
+	mkdir -p "$bin" "$fish_comp"
+	# cargo install seems to install some unwanted hidden files.
+	install -m755 target/release/heretek "$bin/"
+	install -m755 ../heretek.fish "$fish_comp/"
+}

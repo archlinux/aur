@@ -1,0 +1,5 @@
+complete -c heretek -s r -l remote -d 'Connect to nc session'
+complete -c heretek -l 32 -d 'Switch to 32-bit mode'
+complete -c heretek -s c -l cmd -d 'Execute GDB commands'
+complete -c heretek -s h -l help -d 'Print help'
+complete -c heretek -s V -l version -d 'Print version'
