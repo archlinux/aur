@@ -1,5 +1,5 @@
 # AUR Package Maintainer: Alan <github dot com slash alan-ar1>
-# Upstream Author / Project Maintainer: seatedro <seatedro at seated dot ro>
+# Upstream Author / Project Maintainer: seatedro <me at seated dot ro>
 
 _pkgbasename=glimpse
 pkgname="$_pkgbasename-rust-git"
