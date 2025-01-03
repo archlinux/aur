@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=mecab-ipadic
 pkgver=2.7.0_20070801
-pkgrel=4
+pkgrel=5
 pkgdesc="IPA dictionary for mecab"
 arch=('any')
 url="https://taku910.github.io/mecab"
@@ -18,7 +18,7 @@ build() {
   cd "$pkgname/$pkgname"
   ./configure --prefix=/usr --with-charset=utf-8
   # change hardcoded mecab installation path
-  sed -i 's!libexec/mecab!lib/mecab!g' config.status
+  sed -i 's/libexec/lib/g' config.status
   make
 }
 
