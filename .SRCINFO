@@ -1,7 +1,7 @@
 pkgbase = simple-kdump
 	pkgdesc = A very simple kdump setup for Archlinux
 	pkgver = 0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/adam900710/simple-kdump
 	arch = any
 	license = MIT
