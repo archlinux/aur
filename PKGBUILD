@@ -3,8 +3,8 @@
 
 _pkgname=ebumcli
 pkgname="${_pkgname}-git"
-pkgver=0.0.0.r11.3cf0ee7
-pkgrel=1
+pkgver=0.0.0.r13.5f707a6
+pkgrel=2
 pkgdesc="(EBU Meter CLI / EBU Mini CLI) - extremely minimalistic EBU R 128 LUFS and TruePeak meter CLI (using libebur128)"
 arch=('any')
 url="https://github.com/actionless/${_pkgname}"
@@ -39,7 +39,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}" || exit 2
-	install -Dm644 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 	#install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	#install -Dm644 shellcheck_makefile.1 "$pkgdir/usr/share/man/man1/shellcheck_makefile.1"
 }
