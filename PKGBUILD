@@ -1,44 +1,49 @@
-
-# Maintainer: Gicu Gorodenco <cyclopsihus 'at' gmail 'dot' com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Gicu Gorodenco <cyclopsihus 'at' gmail 'dot' com>
 # Contributor: Kevin <kevin 'at' archlinux 'dot' org>
 # Contributor: criminy <criminy 'at' gmail 'dot' com>
 
-_pkgbasename=cairomm
-pkgname=lib32-$_pkgbasename
-pkgver=1.12.2
+_name="cairomm"
+pkgname="lib32-${_name}"
+pkgver=1.14.5
 pkgrel=1
-pkgdesc="C++ bindings to Cairo vector graphics library (32 bit)"
-arch=(x86_64)
-url="http://www.cairographics.org"
-license=(LGPL MPL)
-depends=(lib32-cairo lib32-libsigc++ "$_pkgbasename")
-makedepends=(pkgconfig gcc-multilib git mm-common)
-options=('!libtool' '!emptydirs')
-_commit=e9ef515b7b8db5b4f024ddfefe5dfc03f2b8ccea  # tags/v1.12.2^0
-source=("git+https://anongit.freedesktop.org/git/cairomm#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd ${_pkgbasename}
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
-
-prepare() {
-  cd ${_pkgbasename}
-  NOCONFIGURE=1 ./autogen.sh
-}
+pkgdesc="C++ bindings for Cairo (32-bit)"
+url="https://www.cairographics.org/cairomm"
+_url="https://gitlab.freedesktop.org/cairo/${_name}"
+arch=('x86_64')
+license=('LGPL-2.0-or-later AND MPL-1.1')
+depends=("${_name}" 'lib32-cairo' 'lib32-gcc-libs' 'lib32-glibc' 'lib32-libsigc++')
+makedepends=('meson>=0.55' 'mm-common')
+provides=('libcairomm-1.0.so')
+_pkgsrc="${_name}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${_url}/-/archive/${pkgver}/${_pkgsrc}.gz")
+sha256sums=('80c10611888e84c3a660eea0dafc81b6a9faf3e1d1cc31f950c51b3f7d384fc2')
 
 build() {
-  cd ${_pkgbasename}
-  ./configure --prefix=/usr --enable-maintainer-mode --libdir=/usr/lib32 CC='gcc -m32' CXX='g++ -m32'
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  export CFLAGS+=" -m32"
+  export CXXFLAGS+=" -m32"
+  export LDFLAGS+=" -m32"
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+
+  cd "${srcdir}"
+  arch-meson "${_pkgsrc}" build \
+    --cross-file lib32 \
+    -D maintainer-mode=true \
+    -D build-documentation=false \
+    -D build-examples=false \
+    -D build-tests=false
+  meson compile -C build
 }
 
+# check() {
+#   cd "${srcdir}"
+#   meson test -C build --print-errorlogs
+# }
+
 package() {
-  cd ${_pkgbasename}
-  sed -i -e 's/^doc_subdirs/#doc_subdirs/' Makefile
-  make DESTDIR="${pkgdir}" install
-  # Cleanup for a lib32 package
-  rm -rf ${pkgdir}/usr/{include,lib32/cairomm*,share}
+  cd "${srcdir}"
+  meson install -C build --destdir "${pkgdir}"
+
+  cd "${pkgdir}/usr"
+  rm -rf "include"
 }
