@@ -1,0 +1,18 @@
+pkgbase = python-accessible-output2
+	pkgdesc = Cross-platform, text-to-speech and Braille library for Python
+	pkgver = 0.17
+	pkgrel = 1
+	url = https://pypi.org/project/accessible_output2/
+	arch = any
+	license = LGPL3
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-libloader
+	depends = python-platform_utils
+	source = https://files.pythonhosted.org/packages/source/a/accessible_output2/accessible_output2-0.17.tar.gz
+	sha512sums = 4386fbf030464fb97736db41aa6d5632a0a3157b258af884fa36072d9745c6b17bcbcfd33421c0b0bd20a683bb2db722586e43484263d7a010356cef54fbf688
+
+pkgname = python-accessible-output2
