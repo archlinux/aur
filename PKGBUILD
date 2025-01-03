@@ -1,6 +1,6 @@
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Swift Geek <swiftgeek ɐt gmail døt com>
-# Maintainer: Sving1024 <piano5432@outlook.com>
+# Maintainer: Sving1024 <sving1024@outlook.com>
 
 pkgrel=1
 arch=('any')
@@ -9,7 +9,7 @@ url="https://www.mozilla.org/firefox/"
 _url=https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi
 
 _version=135.0a1
-pkgver=135.0a1.20241207.213501
+pkgver=135.0a1.20250103.094820
 
 depends=("firefox-nightly")
 
@@ -25,7 +25,7 @@ source=("${_pkgname_base}-${_language_short}-${pkgver}.xpi::$_url/firefox-${_ver
 # Don't extract anything
 noextract=("${_pkgname_base}-${_language_short}-${pkgver}.xpi")
 
-sha256sums=('58c0d1e168d3152b3b029cfa0678c493eac03708f010efee52826f9fc0acb8f8')
+sha256sums=('1326f251a9a5631944b269452f24cfc022261d1b1aca974a315cd83a9b721623')
 
 package() {
   install -Dm644 "${_pkgname_base}-${_language_short}-${pkgver}.xpi" \
