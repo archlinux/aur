@@ -2,23 +2,23 @@
 
 pkgname=python-sphinx-substitution-extensions
 pkgver=2025.01.02
-pkgrel=1
+pkgrel=2
 pkgdesc='Extensions for Sphinx which allow for substitutions'
 arch=(any)
-url='https://github.com/adamtheturtle/sphinx-substitution-extensions'
-license=('Apache-2.0')
-depends=('python-sphinx')
-makedepends=('python-setuptools' 'python-pip')
+url=https://github.com/adamtheturtle/sphinx-substitution-extensions
+license=(Apache-2.0)
+depends=(python-sphinx)
+makedepends=(python-setuptools python-pip)
 _name=${pkgname#python-}
-source=("https://github.com/adamtheturtle/${_name}/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
-sha512sums=('5baae0bb4c049a2e3905040bb6b1ea3f0b984b9e9fe0f0fa917b1bfa9ad1db1c0c85a1ba5e6be272612917aedec36802db9f8c1ad38c34e9672750203ddb3a24')
+source=(https://github.com/adamtheturtle/${_name}/archive/${pkgver}/${_name}-${pkgver}.tar.gz)
+sha512sums=('412de63bba651d69fc2c9d38c9381621b7b5bb389ffe5ac5b517fc71d09bab16187872846e8f7c10a2d53970c887b6877541e2ca9d8ed0e9d7bd2ff9e9b0ef02')
 
 build() {
-    cd "$_name-$pkgver"
+    cd ${_name}-${pkgver}
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_name-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    cd ${_name}-${pkgver}
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
