@@ -1,0 +1,18 @@
+pkgbase = dpw
+	pkgdesc = Declarative Pacman Wrapper
+	pkgver = 1.1.0
+	pkgrel = 1
+	arch = any
+	license = GPL-3.0-or-later
+	optdepends = paru: recommended pacman wrapper
+	optdepends = aura: pacman wrapper
+	optdepends = aurman: pacman wrapper
+	optdepends = pacaur: pacman wrapper
+	optdepends = pikaur: pacman wrapper
+	optdepends = yay: pacman wrapper
+	source = dpw
+	source = dpw.fish
+	sha256sums = 4ad6164db071db5284677a40b896a50a7c7799ca4c5188366ffe210ed3423024
+	sha256sums = c2b828519653d3f2280d4904d7ad8924d2671986c9ad33af17ff60fba83522a1
+
+pkgname = dpw
