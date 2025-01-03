@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-ffmpeg
 pkgver=7.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
@@ -84,6 +84,9 @@ prepare() {
   patch -Np1 -i "${srcdir}/configure.patch"
 
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
+
+  # Add library path for glslang static libs
+  sed -i "${srcdir}"/ffmpeg/configure -e 's|-lglslang|-L${prefix}/static/lib -lglslang|'
 
   # VAAPI HEVC encode alignment fix
   git cherry-pick -n bcfbf2bac8f9eeeedc407b40596f5c7aaa0d5b47
