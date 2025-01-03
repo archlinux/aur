@@ -2,7 +2,7 @@
 
 pkgname=wpka
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='wayland polkit-agent that lets you use any input'
 url='https://github.com/abenz1267/wpka'
 arch=('x86_64')
