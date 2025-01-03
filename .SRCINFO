@@ -1,0 +1,25 @@
+pkgbase = allay-launcher-git
+	pkgdesc = The launcher for Allay that aims to be small, fast and ready out of the box⚡
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/AllayMC/AllayLauncher
+	arch = x86_64
+	arch = aarch64
+	license = LGPL3
+	makedepends = git
+	makedepends = xmake
+	makedepends = zig
+	makedepends = gcc
+	makedepends = gzip
+	makedepends = tar
+	makedepends = cmake
+	makedepends = curl
+	makedepends = nim
+	optdepends = jre-openjdk: for Java enviroment
+	conflicts = allay-launcher
+	source = git+https://github.com/AllayMC/AllayLauncher.git
+	source = allay.1
+	sha512sums = SKIP
+	sha512sums = d6d3bab6578ef9677e0cfb31446ba0f82fee8c5473a3a77b144cd716f95fcf8ce46d0ad05d4f8e0bebc21897a406f6aaad68422e299d3d354404193b367f810c
+
+pkgname = allay-launcher-git

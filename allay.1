@@ -1,0 +1,55 @@
+.TH allay 1 "2025-01-03" "allay 1.0.1" "allay User Manual"
+.SH NAME
+allay \- The launcher for Allay that aims to be small, fast and ready out of the box
+.SH SYNOPSIS
+.B allay
+[\fIOptional arguments\fR]
+.SH DESCRIPTION
+The launcher for allay that aims to be small, fast and ready out of the box
+.SH Optional arguments
+.TP
+\fB--help, -h\fP
+Shows help message and exits.
+.TP
+\fB--version, -v\fP
+Prints version information and exits.
+.TP   
+\fB--update, -u\fP
+Update allay.
+.TP   
+\fB--nightly, -n\fP
+Use nightly build.
+.TP
+\fB--run, -r\fP
+Run allay server.
+.TP
+\fB--deamon, -d\fP
+Use deamon mode, which the launcher will restart the server after server stopped.
+.TP
+\fB--args JVM_PARAMETER, -a\fP
+Pass arguments to Java [JVM_PARAMETER: 1 or more].
+.SS Important
+.TP
+Use \fB--args\fP at the end of the command.\fP
+.TP
+And The "\fB\-\fR" before the parameter will be automatically added.\fP
+.SS EXAMPLE
+.TP
+\fBallay --run --args Xmx2G Xms1G\fP
+.TP
+This will pass \fIXmx2G\fP and \fIXms1G\fP to limit memory usage to 2GB and 1GB respectively and run allay server.\fP
+.SH BUGS
+.TP
+Submit bug reports and request features online at:\fP
+<\fIhttps://github.com/AllayMC/AllayLauncher/issues\fR>
+.SH SEE ALSO
+.TP
+Source at:\fP
+<\fIhttps://github.com/AllayMC/AllayLauncher\fR>
+.TP
+Online documentation at:\fP
+<\fIhttps://docs.allaymc.org/\fR>
+.SH COPYRIGHT
+Copyright 2024 AllayMC <\fIhttps://github.com/AllayMC\fR>.
+.SH AUTHOR
+Written by Huang FTS427 <\fIhttps://github.com/FTS427\fR>.
