@@ -1,0 +1,22 @@
+pkgbase = lib32-libepc
+	pkgdesc = Easy Publish and Consume Library (32-bit)
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://gitlab.gnome.org/Archive/libepc
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = gnome-common
+	makedepends = intltool>=0.35
+	depends = lib32-avahi>=0.6
+	depends = lib32-glib2>=2.36
+	depends = lib32-glibc
+	depends = lib32-gnutls>=1.4
+	depends = lib32-gtk3
+	depends = lib32-libsoup>=2.2
+	depends = lib32-util-linux
+	provides = libepc-1.0.so
+	provides = libepc-ui-1.0.so
+	source = libepc-0.4.6.tar.xz::https://download.gnome.org/sources/libepc/0.4/libepc-0.4.6.tar.xz
+	sha256sums = 215990847a8526c85774cb74fbcaea4c46866df58281b21dce5a62aac5da7ae8
+
+pkgname = lib32-libepc
