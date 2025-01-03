@@ -1,6 +1,6 @@
 pkgbase = python-alist-proxy
 	pkgdesc = Python alist proxy and monitor.
-	pkgver = 0.1.3.1
+	pkgver = 0.1.3.2
 	pkgrel = 1
 	url = https://pypi.org/project/alist_proxy
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = python-alist-proxy
 	conflicts = python-alist-proxy
 	options = !strip
 	options = !debug
-	source = alist_proxy-0.1.3.1.tar.gz::https://files.pythonhosted.org/packages/source/a/alist_proxy/alist_proxy-0.1.3.1.tar.gz
-	sha256sums = af163c3138197063216b10420d98600eea2e90f306291ab42c1889298dbc7174
+	source = alist_proxy-0.1.3.2.tar.gz::https://files.pythonhosted.org/packages/source/a/alist_proxy/alist_proxy-0.1.3.2.tar.gz
+	sha256sums = 5c99d68cfd1342f98d962827153fb9ffc3be2932ce418429fd689b0fd50414fc
 
 pkgname = python-alist-proxy
