@@ -25,7 +25,7 @@ optdepends=(
   'imgcat'
 )
 
-conflicts=(_pkgname)
+conflicts=($_pkgname)
 source=("${pkgname}::git+https://github.com/Benexl/$_pkgname.git")
 md5sums=('SKIP')
 
