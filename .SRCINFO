@@ -1,13 +1,14 @@
 pkgbase = xdg-desktop-portal-phosh-git
 	pkgdesc = xdg-desktop-portal implementation using GTK/GNOME/Phosh
-	pkgver = v0.42.0.r0.gd53d18b
-	pkgrel = 2
+	pkgver = v0.44.0.r0.g541ad66
+	pkgrel = 3
 	url = https://gitlab.gnome.org/guidog/xdg-desktop-portal-phosh
 	arch = x86_64
 	arch = aarch64
 	arch = riscv64
 	license = GPL-3.0-or-later
 	makedepends = meson
+	makedepends = cargo
 	depends = gsettings-desktop-schemas
 	depends = xdg-desktop-portal
 	depends = gnome-desktop-4

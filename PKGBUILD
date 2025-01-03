@@ -2,14 +2,14 @@
 # Contributor: fossdd <fossdd@pwned.life>
 
 pkgname=xdg-desktop-portal-phosh-git
-pkgver=v0.42.0.r0.gd53d18b
-pkgrel=2
+pkgver=v0.44.0.r0.g541ad66
+pkgrel=3
 pkgdesc='xdg-desktop-portal implementation using GTK/GNOME/Phosh'
 arch=(x86_64 aarch64 riscv64)
 url='https://gitlab.gnome.org/guidog/xdg-desktop-portal-phosh'
 license=(GPL-3.0-or-later)
 depends=(gsettings-desktop-schemas xdg-desktop-portal gnome-desktop-4 libadwaita)
-makedepends=(meson)
+makedepends=(meson cargo)
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -19,7 +19,10 @@ pkgver() {
 }
 
 build() {
-	arch-meson xdg-desktop-portal-phosh build
+	RUSTUP_TOOLCHAIN=stable \
+	arch-meson \
+		--wrap-mode=default \
+		xdg-desktop-portal-phosh build
 	meson compile -C build
 }
 
