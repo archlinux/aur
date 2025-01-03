@@ -2,8 +2,8 @@
 # Contributor: Michael Krauss <hippodriver@gmx.net>
 
 pkgname=dma
-pkgver=0.13
-pkgrel=4
+pkgver=0.14
+pkgrel=1
 pkgdesc="DragonFly BSD mail transport agent"
 url="https://github.com/corecode/dma"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('smtp-forwarder')
 backup=('etc/dma/auth.conf' 'etc/dma/dma.conf')
 options=('emptydirs')
 source=("git+https://github.com/corecode/dma.git#tag=v${pkgver}")
-sha256sums=('4eccad979152677ca27cd9de40272578a8fffa3d52c1ea2f12d22a619b4c083f')
+sha256sums=('82789c2c161c3ba016f62008bfdfe2cd591f88dd4c2797d2684c1582bb3c085b')
 
 build() {
   cd dma
