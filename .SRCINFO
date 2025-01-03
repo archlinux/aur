@@ -1,7 +1,7 @@
 pkgbase = pymusiclooper
 	pkgdesc = A program for repeating music endlessly and creating seamless music loops, with play/export/tagging support
-	pkgver = 3.4.1
-	pkgrel = 2
+	pkgver = 3.4.2
+	pkgrel = 1
 	url = https://github.com/arkrow/PyMusicLooper
 	arch = any
 	license = MIT
@@ -11,11 +11,11 @@ pkgbase = pymusiclooper
 	makedepends = python-poetry-core>=1.0.0
 	makedepends = python-setuptools>=67.0.0
 	depends = python>=3.9
-	depends = python-librosa>=0.10.0
+	depends = python-librosa>=0.10.2
 	depends = python-numpy>=1.25.0
 	depends = python-soundfile>=0.12.1
 	depends = python-sounddevice>=0.4.6
-	depends = yt-dlp>=2024.4.9
+	depends = yt-dlp>=2024.8.6
 	depends = python-rich-click>=1.8.0
 	depends = python-rich>=13.4.2
 	depends = python-pytaglib>=3.0.0
@@ -24,7 +24,7 @@ pkgbase = pymusiclooper
 	depends = python-click-option-group>=0.5.6
 	depends = python-lazy-loader>=0.3
 	optdepends = ffmpeg: for supporting additional audio formats
-	source = pymusiclooper.tar.gz::https://github.com/arkrow/PyMusicLooper/archive/refs/tags/v3.4.1.tar.gz
-	sha256sums = 370202ed977560e7c4929d7550e2851c2ba2f18354e6eec444e41cce22241cab
+	source = pymusiclooper-3.4.2.tar.gz::https://github.com/arkrow/PyMusicLooper/archive/refs/tags/v3.4.2.tar.gz
+	sha256sums = 1c741d9092091def30b9b751b1a9bd94e4269bf453b99a4614eee8b824a8686d
 
 pkgname = pymusiclooper
