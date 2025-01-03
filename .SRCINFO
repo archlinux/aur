@@ -1,0 +1,26 @@
+pkgbase = peci-pcie-git
+	pkgdesc = The peci-pcie application uses the CPU PECI interface to get PCIe Device information for the system and shares it on D-Bus.
+	pkgver = r48.264ae8e
+	pkgrel = 1
+	url = https://github.com/openbmc/peci-pcie
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	makedepends = function2
+	makedepends = nlohmann-json
+	makedepends = ninja
+	makedepends = meson
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	depends = systemd-libs
+	depends = libpeci-git
+	depends = sdbusplus-git
+	provides = peci-pcie
+	conflicts = peci-pcie
+	source = peci-pcie-git::git+https://github.com/openbmc/peci-pcie.git
+	sha256sums = SKIP
+
+pkgname = peci-pcie-git
