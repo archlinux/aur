@@ -1,0 +1,25 @@
+pkgbase = sdeventplus-git
+	pkgdesc = sdeventplus is a c++ wrapper around the systemd sd_event apis meant to provide c++ ergonomics to their usage.
+	pkgver = r155.b111364
+	pkgrel = 1
+	url = https://github.com/openbmc/sdeventplus
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = function2
+	makedepends = nlohmann-json
+	makedepends = ninja
+	makedepends = meson
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	depends = systemd-libs
+	depends = sdbusplus-git
+	depends = stdplus-git
+	provides = sdeventplus
+	conflicts = sdeventplus
+	source = sdeventplus-git::git+https://github.com/openbmc/sdeventplus.git
+	sha256sums = SKIP
+
+pkgname = sdeventplus-git
