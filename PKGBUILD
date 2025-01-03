@@ -1,7 +1,7 @@
 pkgname='python-flask-expects-json'
 _name=${pkgname#python-}
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Decorator for REST endpoints in flask. Validate JSON request data."
 arch=('any')
 url="https://github.com/fischerfredl/flask-expects-json"
