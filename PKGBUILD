@@ -9,7 +9,7 @@ license=('custom:proprietary')
 depends=(
     'python'
     'python-pyqt6'
-    'python-poetry'
+    # 'python-poetry'
     'python-psutil'
     'p7zip'
     'rar'
@@ -24,13 +24,13 @@ sha256sums=('e57d680c9bf394be4487d7ae5312593a690b3c78470f3f0f925e614aa48b4e0c')
 
 build() {
     cd "$pkgname-$pkgver"
-    poetry config virtualenvs.create false
-    poetry install --no-dev
+    uv config virtualenvs.create false
+    uv install --no-dev
 }
 
 package() {
     cd "$pkgname-$pkgver"
-    poetry build
+    uv build
     python -m installer --destdir="$pkgdir" dist/*.whl
     
     # Install desktop file

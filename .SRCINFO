@@ -10,7 +10,6 @@ pkgbase = varchiver
 	makedepends = python-wheel
 	depends = python
 	depends = python-pyqt6
-	depends = python-poetry
 	depends = python-psutil
 	depends = p7zip
 	depends = rar
