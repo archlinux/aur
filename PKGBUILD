@@ -1,17 +1,17 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 
-pkgver=0.10.0
-pkgrel=2
 pkgname=python-scooby
-_name=${pkgname#python-}
+pkgver=0.10.0
+pkgrel=3
 pkgdesc='A Great Dane turned Python environment detective'
-arch=('any')
+arch=(any)
 url='https://github.com/banesullivan/scooby'
 license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('c4c7def08dd95697f7ba0c0ea0020cb568fed0c5c359d1f67f71af09d7d05881c7fee9e5e3126e6a5dee98d108f33c8eb685ccb11ed6d93e1c7d85a082a9dd11')
+_name=${pkgname#python-}
+source=("https://github.com/banesullivan/${_name}/archive/v${pkgver}/${_name}-${pkgver}.tar.gz")
+sha512sums=('1f47f90ec0061e411fd5808868307d20aabd82cee1afd0036e9dc8f41d7014d4b3032c0c9da4ec35b76d9420203cb24377bea0cff7d19a822208197d9f8550d3')
 
 build() {
     cd "$_name-$pkgver"
