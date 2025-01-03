@@ -2,7 +2,7 @@
 
 _basename=ab-download-manager
 pkgname=${_basename}
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A Download Manager that speeds up your downloads"
 arch=('any')
