@@ -16,7 +16,7 @@ pkgbase = lib32-pangomm
 	depends = lib32-pango
 	depends = pangomm
 	provides = libpangomm-1.4.so
-	source = pangomm-2.46.4.tar.gz::https://download.gnome.org/sources/pangomm/2.46/pangomm-2.46.4.tar.xz
+	source = pangomm-2.46.4.tar.xz::https://download.gnome.org/sources/pangomm/2.46/pangomm-2.46.4.tar.xz
 	sha256sums = b92016661526424de4b9377f1512f59781f41fb16c9c0267d6133ba1cd68db22
 
 pkgname = lib32-pangomm

@@ -15,7 +15,7 @@ depends=('lib32-cairomm' 'lib32-gcc-libs' 'lib32-glib2' 'lib32-glibc'
 makedepends=('meson>=0.55' 'mm-common')
 provides=('libpangomm-1.4.so')
 _pkgsrc="${_name}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::https://download.gnome.org/sources/${_name}/${pkgver%.*}/${_pkgsrc}.tar.xz")
+source=("${_pkgsrc}.tar.xz::https://download.gnome.org/sources/${_name}/${pkgver%.*}/${_pkgsrc}.tar.xz")
 sha256sums=('b92016661526424de4b9377f1512f59781f41fb16c9c0267d6133ba1cd68db22')
 
 build() {
