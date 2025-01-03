@@ -13,8 +13,8 @@ pkgbase = wonderlab-appimage-feature
 	conflicts = wonderlab-appimage
 	options = !strip
 	source_x86_64 = wonderlab-x86_64.AppImage::https://github.com/Blessing-Studio/WonderLab.Override/releases/download/AutoBuild_feature/wonderlab.2.0.1.linux-x64.AppImage
-	sha512sums_x86_64 = f0909642a1f87ec2ea8d0117b54c722e7d5c4b6c250865d78c8278e426c2d01e6f4c47cd2c23fece47b1c64369116cc1fa30b7e7759ccade01441e6f0f2b0fe6
+	sha512sums_x86_64 = SKIP
 	source_aarch64 = wonderlab-x86_64.AppImage::https://github.com/Blessing-Studio/WonderLab.Override/releases/download/AutoBuild_feature/wonderlab.2.0.1.linux-arm64.AppImage
-	sha512sums_aarch64 = f0909642a1f87ec2ea8d0117b54c722e7d5c4b6c250865d78c8278e426c2d01e6f4c47cd2c23fece47b1c64369116cc1fa30b7e7759ccade01441e6f0f2b0fe6
+	sha512sums_aarch64 = SKIP
 
 pkgname = wonderlab-appimage-feature
