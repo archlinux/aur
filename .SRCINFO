@@ -1,6 +1,6 @@
 pkgbase = emacs-lsp-booster-git
 	pkgdesc = Emacs LSP performance booster
-	pkgver = r42.b98b873
+	pkgver = r53.59f42ab
 	pkgrel = 1
 	url = https://github.com/blahgeek/emacs-lsp-booster
 	changelog = changelog.txt

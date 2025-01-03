@@ -1,6 +1,5 @@
-/pkg
-/src
-/*.zst
-/*.proto
-/*.deb
-/emacs-lsp-booster
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!Makefile
