@@ -1,12 +1,12 @@
 pkgbase = waybar-issues
 	pkgdesc = Get your open issues and merge/pull requests into waybar.
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/andresterba/waybar-issues
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = waybar-issues-0.3.3.tar.gz::https://github.com/andresterba/waybar-issues/archive/v0.3.3.tar.gz
-	sha256sums = bfbbda44b51006b9b629e877bf4c66ae751b7d7b1c8be732463494e918012261
+	source = waybar-issues-0.3.4.tar.gz::https://github.com/andresterba/waybar-issues/archive/v0.3.4.tar.gz
+	sha256sums = 12033c6d382fb84b3ac7b1c84d91b867e592a9183f36524730898f218f4c0656
 
 pkgname = waybar-issues
