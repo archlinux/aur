@@ -1,6 +1,6 @@
 pkgbase = tuistash
 	pkgdesc = A terminal user interface for Logstash
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/edmocosta/tuistash
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tuistash
 	makedepends = logstash
 	depends = gcc-libs
 	options = !lto
-	source = tuistash-0.5.0.tar.gz::https://github.com/edmocosta/tuistash/archive/v0.5.0.tar.gz
-	sha256sums = 6dd0be4418c2025f48bcc28d1a467f9f2431551d6d65245f50d9f0c1c9c44145
+	source = tuistash-0.6.0.tar.gz::https://github.com/edmocosta/tuistash/archive/v0.6.0.tar.gz
+	sha256sums = 5eafa8ad4d1eaab861f88550fcee390abd924b457c7494ba65e4d5a6cf9a58a2
 
 pkgname = tuistash

@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=tuistash
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A terminal user interface for Logstash'
 arch=('x86_64')
 url="https://github.com/edmocosta/$pkgname"
 license=('Apache-2.0')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6dd0be4418c2025f48bcc28d1a467f9f2431551d6d65245f50d9f0c1c9c44145')
+sha256sums=('5eafa8ad4d1eaab861f88550fcee390abd924b457c7494ba65e4d5a6cf9a58a2')
 makedepends=('cargo' 'openssl' 'logstash')
 depends=('gcc-libs')
 options=('!lto')
