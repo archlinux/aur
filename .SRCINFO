@@ -1,16 +1,20 @@
 pkgbase = unoconv
 	pkgdesc = Libreoffice-based document converter
-	pkgver = 0.9
-	pkgrel = 3
-	url = http://dag.wiee.rs/home-made/unoconv
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/unoconv/unoconv
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = asciidoc
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = xmlto
+	depends = libreoffice
 	depends = python
 	depends = python-setuptools
-	depends = libreoffice
-	source = git+https://github.com/dagwieers/unoconv#commit=4cf0e54460bf27db8153951a78b3860d4f810fea
-	sha256sums = SKIP
+	source = git+https://github.com/unoconv/unoconv#tag=0.9.0
+	b2sums = 02251042d3e7e79f50f6bb8b22178a070afb2e6c81b5e9d6f9553e2ff505b3b124c891cd227238703f550e4f321af89de069725ab73bd643fe6c5e6c9cad5948
 
 pkgname = unoconv
