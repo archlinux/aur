@@ -1,13 +1,13 @@
 pkgbase = cvm
 	pkgdesc = Stack-based virtual machine
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/number571/cvm
 	arch = x86_64
 	license = MIT
 	makedepends = gcc
 	depends = glibc
-	source = cvm-1.0.9.tar.gz::https://github.com/number571/cvm/archive/v1.0.9.tar.gz
-	sha256sums = 27780e26164dceaa8dfdab23bf1db530ed59e0f69e1831f8480616fabbb833f6
+	source = cvm-1.0.10.tar.gz::https://github.com/number571/cvm/archive/v1.0.10.tar.gz
+	sha256sums = 1c4adfa3334cf012c8000cbf284866d687253c13d1a4c1d02e8ef9865c1066dd
 
 pkgname = cvm
