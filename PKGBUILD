@@ -1,0 +1,112 @@
+# Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
+
+_pyname="sandwine"
+_pkgname="${_pyname}"
+pkgname="${_pkgname}-git"
+pkgver=4.3.0+22.r218.20241230.d272719
+pkgrel=1
+pkgdesc="A command-line tool to run Windows applications on GNU/Linux that offers more isolation than raw Wine and more convenience than raw bubblewrap. (Uses bubblewrap.)"
+arch=(
+  'any'
+)
+_githost='github.com'
+_gituser='hartwork'
+#url="https://${_githost}/${_gituser}/${_pyname}"
+url="https://pypi.org/project/${_pyname}/"
+license=("GPL-3.0-or-later")
+depends=(
+  'bubblewrap>=0.8.0'
+  'python>=3.9'
+  'wine'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools>=61.0.0'
+  'python-wheel'
+)
+optdepends=(
+  'python-coloredlogs>=15.0.1'
+)
+checkdepends=()
+provides=(
+  "${_pkgname}=${pkgver}"
+  "python-${_pkgname}=${pkgver}"
+  "python-${_pkgname}-git=${pkgver}"
+)
+conflicts=(
+  "${_pkgname}"
+  "python-${_pkgname}"
+)
+
+source=(
+  "${_pkgname}::git+https://${_githost}/${_gituser}/${_pyname}.git"
+)
+sha256sums=(
+  'SKIP'
+)
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  git log > "${srcdir}/git.log"
+}
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+
+  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
+
+  if [ -z "${_ver}" ]; then
+    error "Version could not be determined."
+    return 1
+  else
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+  fi
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+  printf '%s\n' " --> building ..."
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}"
+  printf '%s\n' " --> installing ..."
+  python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
+
+  _docfiles=(
+    "${srcdir}/git.log"
+    README.md
+    sandwine_threat_model.png
+  )
+  _docdirs=()
+  _manfiles=()
+  _infofiles=()
+  _licensefiles=(
+    COPYING
+  )
+  printf '%s\n' " --> installing documentation ..."
+  for _docfile in "${_docfiles[@]}"; do
+    install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_docfile}")"
+  done
+  for _docdir in "${_docdirs[@]}"; do
+    cp -rv "${_docdir}" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_docdir}")"
+  done
+  for _manfile in "${_manfiles[@]}"; do
+    _section="$(basename "${_manfile}" .gz | sed -E -e 's|^.*\.([^.]*)$|\1|')"
+    install -D -v -m644 "docs/build/man/${_manfile}" "${pkgdir}/usr/share/man/man${_section}/$(basename "${_manfile}")"
+  done
+  for _infofile in "${_infofiles[@]}"; do
+    install -D -v -m644 "${_infofile}" "${pkgdir}/usr/share/info/$(basename "${_infofile}")"
+  done
+  printf '%s\n' " --> installing license ..."
+  for _licensefile in "${_licensefiles[@]}"; do
+    install -D -v -m644 "${_licensefile}" "${pkgdir}/usr/share/licenses/${pkgname}/$(basename "${_licensefile}")"
+    ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/$(basename "${_licensefile}")" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_licensefile}")"
+  done
+}
