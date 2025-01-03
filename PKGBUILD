@@ -5,7 +5,7 @@
 
 pkgname='studio-one-7'
 pkgver='7.0.2.103351'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
 arch=('x86_64')
 url='https://www.presonus.com/'
@@ -25,6 +25,6 @@ package() {
   bsdtar -xf ${srcdir}/data.tar.gz -C ${pkgdir}/
 
   # Fix permissions
-  chmod -R g-w ${pkgdir}/opt
+  chmod g-w ${pkgdir}/opt
   chmod -R g-w ${pkgdir}/usr
 }
