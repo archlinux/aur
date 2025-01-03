@@ -245,8 +245,8 @@ package() {
   install -m644 "${srcdir}/${_pkgname}-workspace.xml" "${pkgdir}/usr/share/mime/packages/${_pkgname}-workspace.xml"
 
 	# Install bash and zsh completions
-  install -Dm 644 "${srcdir}/$(_pkg)/resources/completions/bash/code-oss" "${pkgdir}/usr/share/bash-completion/completions/code-oss"
-  install -Dm 644 "${srcdir}/$(_pkg)/resources/completions/zsh/_code-oss" "${pkgdir}/usr/share/zsh/site-functions/_code-oss"
+  install -Dm 644 "${srcdir}/$(_pkg)/resources/completions/bash/${_pkgname}" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+  install -Dm 644 "${srcdir}/$(_pkg)/resources/completions/zsh/_${_pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
 
 	# Install app files and binaries
   cp -r "${srcdir}/$(_pkg)/"* "${pkgdir}/opt/${_pkgname}"
