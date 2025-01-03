@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=musicat
 _pkgname=Musicat
-pkgver=0.10.0
+pkgver=0.11.0
 _nodeversion=18
 pkgrel=1
 pkgdesc="A sleek desktop music player and tagger for offline music 🪕 With experimental features like map view, GPT analysis, artist toolkit."
@@ -20,7 +20,6 @@ depends=(
 makedepends=(
     'npm'
     'gendesk'
-    'cmake'
     'gcc'
     'rust'
     'curl'
@@ -28,14 +27,14 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('a2d4defc04e55b17b57e55148d5d0f15d1744a59af2ad802959b18e02fbe28b0')
+sha256sums=('34d7982d74d4af6e34c5aafb57b21fcb17a74fc976d17571be9ec879067f1836')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     _ensure_local_nvm
     cd "${srcdir}/${pkgname}-${pkgver}"
     export npm_config_build_from_source=true
@@ -53,23 +52,21 @@ build() {
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
         sed "s/github.com/github.moeyy.xyz\/https:\/\/github.com/" -i src-tauri/Cargo.toml
     fi
-    sed -e "
-        s/\"app\"/\"${pkgname%-git}\"/g
-        s/\"A Tauri App\"/\"${pkgdesc}\"/g
-    " -i src-tauri/Cargo.toml
-    sed "/cli-win32-x64-msvc/d" -i package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     npx tauri build -b deb
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver}_"*/data/usr/bin/"${pkgname%-git}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver}_"*/data/usr/bin/"${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     for _icons in 32x32 128x128 256x256@2;do
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver}_"*/data/usr/share/icons/hicolor/"${_icons}"/apps/"${pkgname%-git}".png \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver}_"*/data/usr/share/icons/hicolor/"${_icons}"/apps/"${_pkgname}".png \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver}_"*/data/usr/share/applications/"${_pkgname}".desktop \
-        "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver}_"*/data/usr/lib/"${_pkgname}"/resources/log4rs.yml \
+        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver}_"*/data/usr/lib/"${_pkgname}"/resources/*.yml \
         -t "${pkgdir}/usr/lib/${_pkgname}/resources"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
