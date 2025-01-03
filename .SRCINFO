@@ -2,14 +2,14 @@ pkgbase = wayvibes-git
 	pkgdesc = Play mechanical keyboard sounds as you type - wayland alternative for mechvibes/rustyvibes
 	pkgver = r34.de92ff9
 	pkgrel = 1
-	url = https://github.com/justanoobcoder/wayvibes
+	url = https://github.com/sahaj-b/wayvibes
 	arch = x86_64
 	makedepends = git
 	makedepends = make
 	depends = nlohmann-json
 	depends = libevdev
 	options = !strip
-	source = git+https://github.com/justanoobcoder/wayvibes.git
+	source = git+https://github.com/sahaj-b/wayvibes.git
 	sha256sums = SKIP
 
 pkgname = wayvibes-git
