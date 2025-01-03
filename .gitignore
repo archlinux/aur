@@ -1,0 +1,7 @@
+/cp
+/src
+/pkg
+*.deb
+*.src.*
+*.pkg.*
+*.tar.gz
