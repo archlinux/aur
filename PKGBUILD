@@ -1,62 +1,53 @@
-# Maintainer: Gicu Gorodenco <cyclopsihus 'at' gmail 'dot' com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Gicu Gorodenco <cyclopsihus 'at' gmail 'dot' com>
 # Contributor: rafael ff1 (aka josephgbr)
 
-_pkgbase=libsigc++
-pkgbase=lib32-libsigc++
-pkgname=${pkgbase}
-pkgver=2.10.3
+_name="libsigc++"
+pkgname="lib32-${_name}"
+_commit="6bef4e0005f00f0844d917866aec7e3b2d829fdf" # 2.12.1
+pkgver=2.12.1
 pkgrel=1
-pkgdesc="Callback Framework for C++ (lib32)"
-url="https://libsigcplusplus.github.io/libsigcplusplus/"
+pkgdesc="Callback Framework for C++ (32-bit)"
+url="https://libsigcplusplus.github.io/libsigcplusplus"
+_url="https://github.com/libsigcplusplus/libsigcplusplus"
 arch=('x86_64')
-license=('LGPL')
-depends=(lib32-gcc-libs)
-makedepends=(git mm-common meson)
-options=('!emptydirs')
-_commit=88fdb3a14ec67de233fed22646fc9b14c24367f5  # tags/2.10.3^0
-source=("git+https://github.com/libsigcplusplus/libsigcplusplus#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd libsigcplusplus
-  git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd libsigcplusplus
-}
+license=('LGPL-3.0-or-later')
+depends=('lib32-gcc-libs' 'lib32-glibc' "${_name}")
+makedepends=('meson>=0.55' 'mm-common')
+provides=('lib32-libsigc++2.0' 'libsigc-2.0.so')
+conflicts=('lib32-libsigc++2.0')
+replaces=('lib32-libsigc++2.0')
+_pkgsrc="libsigcplusplus-${_commit}"
+source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz")
+sha256sums=('8ab92f83a6f396a748d1eb908837c28d99e2647194a0867a25f7b3f09678f02d')
 
 build() {
-  export CC="gcc -m32"
-  export CXX="g++ -m32"
-  export PKG_CONFIG=/usr/bin/i686-pc-linux-gnu-pkg-config
-  export ENABLE_DOCUMENTATION=false
+  export CFLAGS+=" -m32"
+  export CXXFLAGS+=" -m32"
+  export LDFLAGS+=" -m32"
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  arch-meson libsigcplusplus build \
-    --prefix=/usr \
-    --libdir=/usr/lib32 \
+  cd "${srcdir}"
+  arch-meson "${_pkgsrc}" build \
+    --cross-file lib32 \
     -D maintainer-mode=true \
     -D benchmark=false \
     -D build-examples=false \
     -D build-documentation=false \
     -D build-pdf=false \
     -D validation=false
-
-  ninja -C build
+  meson compile -C build
 }
 
 check() {
+  cd "${srcdir}"
   meson test -C build --print-errorlogs
 }
 
 package() {
-  provides=("lib32-libsigc++2.0=${pkgver}")
-  replaces=('lib32-libsigc++2.0')
-  conflicts=('lib32-libsigc++2.0')
+  cd "${srcdir}"
+  meson install -C build --destdir "${pkgdir}"
 
-  DESTDIR="$pkgdir" meson install -C build
-
-
-  # Removing files included in base libsigc++ package
-  rm -fR ${pkgdir}/usr/include
+  cd "${pkgdir}/usr"
+  rm -rf "include"
 }

@@ -1,20 +1,20 @@
 pkgbase = lib32-libsigc++
-	pkgdesc = Callback Framework for C++ (lib32)
-	pkgver = 2.10.3
+	pkgdesc = Callback Framework for C++ (32-bit)
+	pkgver = 2.12.1
 	pkgrel = 1
-	url = https://libsigcplusplus.github.io/libsigcplusplus/
+	url = https://libsigcplusplus.github.io/libsigcplusplus
 	arch = x86_64
-	license = LGPL
-	makedepends = git
+	license = LGPL-3.0-or-later
+	makedepends = meson>=0.55
 	makedepends = mm-common
-	makedepends = meson
 	depends = lib32-gcc-libs
-	options = !emptydirs
-	source = git+https://github.com/libsigcplusplus/libsigcplusplus#commit=88fdb3a14ec67de233fed22646fc9b14c24367f5
-	sha256sums = SKIP
-
-pkgname = lib32-libsigc++
-	provides = lib32-libsigc++2.0=2.10.3
+	depends = lib32-glibc
+	depends = libsigc++
+	provides = lib32-libsigc++2.0
+	provides = libsigc-2.0.so
 	conflicts = lib32-libsigc++2.0
 	replaces = lib32-libsigc++2.0
+	source = libsigcplusplus-6bef4e0005f00f0844d917866aec7e3b2d829fdf.tar.gz::https://github.com/libsigcplusplus/libsigcplusplus/archive/6bef4e0005f00f0844d917866aec7e3b2d829fdf.tar.gz
+	sha256sums = 8ab92f83a6f396a748d1eb908837c28d99e2647194a0867a25f7b3f09678f02d
 
+pkgname = lib32-libsigc++
