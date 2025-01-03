@@ -10,8 +10,6 @@ arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/seatedro/$_pkgbasename"
 license=('MIT')
 makedepends=('git' 'cargo')
-provides=("$_pkgbasename")
-conflicts=("$_pkgbasename")
 options=('!lto')
 source=("git+$url")
 sha256sums=('SKIP')
@@ -34,3 +32,4 @@ package() {
     install -Dm755 "target/release/$_pkgbasename" -t "$pkgdir/usr/bin/"
     install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgbasename"
 }
+
