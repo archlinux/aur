@@ -1,11 +1,12 @@
 pkgbase = dstask-bin
 	pkgdesc = A terminal-based TODO manager with git-based sync + markdown notes per task
 	pkgver = 0.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://calbryant.uk/blog/dstask-a-taskwarrior-alternative
 	arch = x86_64
 	arch = armv5h
 	license = MIT
+	depends = git
 	provides = dstask
 	conflicts = dstask
 	source = README-0.27.md::https://github.com/naggie/dstask/raw/refs/tags/0.27/README.md

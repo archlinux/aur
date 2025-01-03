@@ -3,12 +3,13 @@
 _pkgname="dstask"
 pkgname="${_pkgname}-bin"
 pkgver=0.27
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal-based TODO manager with git-based sync + markdown notes per task"
 arch=('x86_64' 'armv5h')
 url="https://calbryant.uk/blog/dstask-a-taskwarrior-alternative"
 _url="https://github.com/naggie/${_pkgname}"
 license=('MIT')
+depends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
