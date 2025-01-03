@@ -42,7 +42,7 @@ package() {
     install -Dm644 "$srcdir"/assets/mm-clipped.svg "$pkgdir"/usr/share/pixmaps/"${_pkgname}".svg
 
     echo "#!/usr/bin/env bash
-    cd ${pkgdir}/${installdir}/${_pkgname}
+    cd /${installdir}/${_pkgname}
     ./${_pkgname}" >"$_pkgname".sh
     install -Dm755 "$_pkgname".sh "$pkgdir"/usr/bin/"${_pkgname}"
 }
