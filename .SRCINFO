@@ -1,7 +1,7 @@
 pkgbase = ddns-updater
 	pkgdesc = Dynamic DNS updater daemon (multiple providers)
 	pkgver = 2.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qdm12/ddns-updater
 	arch = x86_64
 	license = MIT
@@ -9,12 +9,15 @@ pkgbase = ddns-updater
 	makedepends = go
 	depends = gcc-libs
 	depends = glibc
+	backup = etc/default/ddns-updater
 	source = ddns-updater-2.8.1.tar.gz::https://github.com/qdm12/ddns-updater/archive/v2.8.1.tar.gz
+	source = ddns-updater.env
 	source = ddns-updater.service
 	source = ddns-updater.sysusers
 	source = ddns-updater.tmpfiles
 	sha256sums = 6a86942113b47cc035f649e20ea3a52ecc31512da723604c697e8b13f809b989
-	sha256sums = 9c2e723dd7daef50b8c22a52c5a60235daf84d41466d55f3f5b54e7e5d72b52d
+	sha256sums = e36eeec5c040a8cda0bb3a50462bf13dd4050bca93dc730c9770384923a2217b
+	sha256sums = 07363c1e31b1255350ee715da96ff1ab1b61d814d0305b1e80ef43b87b9bd84f
 	sha256sums = 309f261d420190eb08846e133a7bcc039b26ee99b5b96f6645532d9ad31ef741
 	sha256sums = d33a34bbb658b9b48d77dc16e8eaa3b07003a9535fc0394e437e9e2ea01815f8
 
