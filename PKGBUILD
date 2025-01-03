@@ -3,13 +3,13 @@
 
 pkgname=slade
 pkgver=3.2.7
-pkgrel=5
+pkgrel=6
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
 license=('GPL')
 depends=('bzip2'
-  'fluidsynth>=2.3'
+  'fluidsynth'
   'freeimage'
   'ftgl'
   'glu'
@@ -17,12 +17,14 @@ depends=('bzip2'
   'libgl'
   'lua'
   'mpg123'
-  'sfml>=2.6'
+  'sfml'
   'webkit2gtk-4.1'
-  'wxwidgets-gtk3-noegl' # wxwidgets-gtk3>=3.2' due a bug we have to ensure glcanvas_egl is disabled https://github.com/sirjuddington/SLADE/issues/1672
+  'wxwidgets-gtk3' #this version is buggy https://github.com/sirjuddington/SLADE/issues/1672
   'zlib')
 makedepends=('cmake'
   'p7zip')
+optdepends=('wxwidgets-gtk3-noegl: bug workaround - ensure glcanvas_egl is disabled https://github.com/sirjuddington/SLADE/issues/1672'
+)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sirjuddington/SLADE/archive/${pkgver}.tar.gz")
 sha256sums=('842aa562dc0aa39627866babe0ea3bb033aac3a2be2c2aaa71d8be3664f617ad')
 

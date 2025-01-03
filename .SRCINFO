@@ -1,7 +1,7 @@
 pkgbase = slade
 	pkgdesc = SLADE3 Doom editor
 	pkgver = 3.2.7
-	pkgrel = 5
+	pkgrel = 6
 	url = http://slade.mancubus.net/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = slade
 	makedepends = cmake
 	makedepends = p7zip
 	depends = bzip2
-	depends = fluidsynth>=2.3
+	depends = fluidsynth
 	depends = freeimage
 	depends = ftgl
 	depends = glu
@@ -17,10 +17,11 @@ pkgbase = slade
 	depends = libgl
 	depends = lua
 	depends = mpg123
-	depends = sfml>=2.6
+	depends = sfml
 	depends = webkit2gtk-4.1
-	depends = wxwidgets-gtk3-noegl
+	depends = wxwidgets-gtk3
 	depends = zlib
+	optdepends = wxwidgets-gtk3-noegl: bug workaround - ensure glcanvas_egl is disabled https://github.com/sirjuddington/SLADE/issues/1672
 	source = slade-3.2.7.tar.gz::https://github.com/sirjuddington/SLADE/archive/3.2.7.tar.gz
 	sha256sums = 842aa562dc0aa39627866babe0ea3bb033aac3a2be2c2aaa71d8be3664f617ad
 
