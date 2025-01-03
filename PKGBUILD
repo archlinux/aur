@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.8.1.r0.g8f478e017a
+pkgver=0.8.4.r0.g4571967472
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -49,7 +49,6 @@ source=(
 	'genconfig::git+https://github.com/mborgerson/genconfig.git'
 	'implot::git+https://github.com/epezent/implot.git'
 	'keycodemapdb::git+https://gitlab.com/qemu-project/keycodemapdb.git'
-	'nv2a_vsh_cpu::git+https://github.com/abaire/nv2a_vsh_cpu.git'
 	'use-system-libs.patch'
 )
 b2sums=(
@@ -60,8 +59,7 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'SKIP'
-	'1f902d49be48381ba41c033d1e0dfea9783056da8f365c5101729f699ed7921fb2f09d413c00ae417bf1ed97a6722e179ab139b5e5f8b560dc461dba67ceb6cb'
+	'd1d5dc956b31f2c82a0a242a450b3692786a5f4a8e86bc9d670301983762044672bbbe246826227f03b3a86d175e4f4f77b546f8e88b2a84bc67682c88f8cfe8'
 )
 
 pkgver() {
@@ -72,7 +70,6 @@ pkgver() {
 prepare() {
 	cd $_pkgname
 	git config submodule.genconfig.url ../genconfig
-	git config submodule.hw/xbox/nv2a/pgraph/thirdparty/nv2a_vsh_cpu.url ../nv2a_vsh_cpu
 	git config submodule.tests/fp/berkeley-softfloat-3.url ../berkeley-softfloat-3
 	git config submodule.tests/fp/berkeley-testfloat-3.url ../berkeley-testfloat-3
 	git config submodule.ui/keycodemapdb.url ../keycodemapdb
@@ -109,6 +106,7 @@ package() {
 		'libsamplerate.so'
 		'libslirp.so'
 		'libtomlplusplus.so'
+		'libxxhash.so'
 	)
 	cd $_pkgname
 	# shellcheck disable=SC2154
