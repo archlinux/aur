@@ -1,7 +1,7 @@
 pkgbase = mved
 	pkgdesc = Bulk-move, copy and delete files safely using a text editor
 	pkgver = 0.7.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/ferreum/mved
 	arch = any
 	license = GPL3

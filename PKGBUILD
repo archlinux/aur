@@ -1,7 +1,7 @@
 # Maintainer: ferreum <code at ferreum dot de>
 pkgname=mved
 pkgver=0.7.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Bulk-move, copy and delete files safely using a text editor"
 arch=('any')
 url="https://gitlab.com/ferreum/mved"
