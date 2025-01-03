@@ -1,7 +1,7 @@
 pkgbase = python-pyvista
 	pkgdesc = 3D plotting and mesh analysis through a streamlined interface for VTK
 	pkgver = 0.44.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.pyvista.org
 	arch = any
 	license = MIT
@@ -19,6 +19,6 @@ pkgbase = python-pyvista
 	optdepends = xorg-server-xvfb
 	optdepends = python-imageio
 	source = https://github.com/pyvista/pyvista/archive/v0.44.2/pyvista-0.44.2.tar.gz
-	sha512sums = a3e8a602083fc87f460387d577a33916399602bc06f0fff6f7268e683e678f319a5d9b38c16e1d56f00304b4175cbbaca18c1975f7b6911279eeb159453c57be
+	sha512sums = 82a10149dcb47981eb66fa19ccb202a11b5999488b8e69e20913e0e1f11a35bc27e96cd8b983bca49edeaf443d497713a30a2b72f1f82bbb62374d79855a877f
 
 pkgname = python-pyvista
