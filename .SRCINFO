@@ -1,6 +1,6 @@
 pkgbase = flycast-bin
 	pkgdesc = Sega Dreamcast, NAOMI, NAOMI 2, Atomiswave and System SP Emulator
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://github.com/flyinghead/flycast
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = flycast-bin
 	conflicts = flycast
 	conflicts = flycast-git
 	conflicts = flycast-bin
-	noextract = flycast-2.3.AppImage
+	noextract = flycast-2.4.AppImage
 	options = !strip
-	source = flycast-2.3.AppImage::https://github.com/flyinghead/flycast/releases/download/v2.3/flycast-x86_64.AppImage
-	sha256sums = f1d56d9d4873e1c70ed83556ac7dd0bedf6c88823e92db712954dba7deb3af99
+	source = flycast-2.4.AppImage::https://github.com/flyinghead/flycast/releases/download/v2.4/flycast-x86_64.AppImage
+	sha256sums = 35be06ecbdea633a6985ebd9a05926a31974036e3a14d78c3b7810639e81db5f
 
 pkgname = flycast-bin
