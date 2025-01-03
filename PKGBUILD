@@ -1,11 +1,11 @@
 # Maintainer: Raja Mukherji <rajamukherji@gmail.com>
 pkgname=minilang
 pkgver=2.11.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Mini programming language"
 arch=('x86_64' 'i686')
-url=""
+url="https://minilang.readthedocs.io"
 license=('MIT')
 groups=()
 depends=()
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
 	cd "$pkgname"
-	make
+	rabs -p$(nproc)
 }
 
 check() {
