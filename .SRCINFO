@@ -1,12 +1,11 @@
 pkgbase = scalapack
 	pkgdesc = Subset of scalable LAPACK routines redesigned for distributed memory computers.
 	pkgver = 2.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.netlib.org/scalapack/
-	install = scalapack.install
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = BSD-3-Clause
 	makedepends = cmake
 	makedepends = gcc-fortran
 	depends = glibc
