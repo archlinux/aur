@@ -1,0 +1,20 @@
+pkgbase = bastyon-bin
+	pkgdesc = Decentralized social network based on the blockchain
+	pkgver = 0.9.107
+	pkgrel = 1
+	url = https://github.com/pocketnetteam/pocketnet.gui
+	arch = x86_64
+	license = Apache-2.0
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libutil-linux
+	depends = libsecret
+	source = https://github.com/pocketnetteam/pocketnet.gui/releases/download/v0.9.107/BastyonSetup.deb
+	sha256sums = b23c3fe6d5a3bf7d9e34f446ec31104f500cc7222a309c4b5ababbe51dd2c900
+
+pkgname = bastyon-bin
