@@ -1,0 +1,13 @@
+pkgbase = minilang
+	pkgdesc = Generic imperative build system
+	pkgver = 2.11.0
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = rabs
+	provides = minilang
+	source = git+https://github.com/wrapl/minilang#tag=v2.11.0
+	md5sums = SKIP
+
+pkgname = minilang
