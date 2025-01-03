@@ -1,7 +1,7 @@
 pkgname='python-inscriptis'
 _name=${pkgname#python-}
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="HTML to text conversion library"
 arch=('any')
 url="https://github.com/weblyzard/inscriptis"
