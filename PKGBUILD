@@ -1,7 +1,7 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu-git
-pkgver=141.r50.ga2400ad43
+pkgver=141.r53.gc19a2ac1b
 pkgrel=1
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation. (git version)"
 arch=("x86_64" "i686" "aarch64")
@@ -28,20 +28,16 @@ build() {
     -B "build"
     -S "ares"
     -Wno-dev
-    -DCMAKE_BUILD_TYPE="RelWithDebInfo"
+    -DCMAKE_BUILD_TYPE="None"
     -DCMAKE_INSTALL_PREFIX="/usr"
     -DCMAKE_C_COMPILER="clang"
     -DCMAKE_CXX_COMPILER="clang++"
-    -DCMAKE_C_FLAGS="${CFLAGS}"
-    -DCMAKE_CXX_FLAGS="${CXXFLAGS}"
-    -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS}"
-    -DENABLE_CCACHE=OFF
     -DARES_BUNDLE_SHADERS=OFF
     -DARES_SKIP_DEPS=ON
     -G Ninja
     )
   cmake "${cmake_options[@]}"
-  cmake --build "build" -- $(echo ${MAKEFLAGS} | grep -oE -- '-j[0-9]+')
+  cmake --build "build"
 }
 
 package() {
