@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=retroarch-assets
 pkgname=$_pkgname-git
-pkgver=1.17.0.r4.g912f65274
+pkgver=1.19.0.r13.gc4f1ec8bd
 pkgrel=1
 pkgdesc="Assets needed for RetroArch"
 arch=('any')
@@ -29,7 +29,6 @@ package() {
 		branding \
 		ctr \
 		glui \
-		menu_widgets \
 		nxrgui \
 		ozone \
 		pkg \

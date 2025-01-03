@@ -1,6 +1,6 @@
 pkgbase = retroarch-assets-git
 	pkgdesc = Assets needed for RetroArch
-	pkgver = 1.17.0.r4.g912f65274
+	pkgver = 1.19.0.r13.gc4f1ec8bd
 	pkgrel = 1
 	url = https://github.com/libretro/retroarch-assets
 	arch = any
