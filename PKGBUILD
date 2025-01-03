@@ -1,9 +1,9 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=papermc
-# curl -X GET "https://papermc.io/api/v2/projects/paper" -H  "accept: application/json"
+# curl -X GET "https://api.papermc.io/v2/projects/paper" -H  "accept: application/json"
 _pkgver=1.21.4
-# curl -X GET "https://papermc.io/api/v2/projects/paper/versions/${_pkgver}" -H  "accept: application/json"
+# curl -X GET "https://api.papermc.io/v2/projects/paper/versions/${_pkgver}" -H  "accept: application/json"
 _build=67
 _license_commit=c6233d8
 pkgver="${_pkgver}+b${_build}"
@@ -19,7 +19,7 @@ optdepends=("tar: needed in order to create world backups"
 conflicts=('papermc-git')
 backup=('etc/conf.d/papermc')
 install="${pkgname}.install"
-source=("papermc.${pkgver}.jar"::"https://papermc.io/api/v2/projects/paper/versions/${_pkgver}/builds/${_build}/downloads/paper-${_pkgver}-${_build}.jar"
+source=("papermc.${pkgver}.jar"::"https://api.papermc.io/v2/projects/paper/versions/${_pkgver}/builds/${_build}/downloads/paper-${_pkgver}-${_build}.jar"
 	"LICENSE_${pkgver}.md"::"https://raw.githubusercontent.com/PaperMC/Paper/${_license_commit}/LICENSE.md"
 	"minecraft-server-${_mng_ver}.tar.gz"::"https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v${_mng_ver}.tar.gz")
 noextract=("papermc.${pkgver}.jar")
