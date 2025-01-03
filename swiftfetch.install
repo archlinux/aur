@@ -1,0 +1,8 @@
+post_install() {
+  echo "Please copy the default configuration into your home:"
+  echo "mkdir ~/.config/swiftfetch"
+  echo "cp /usr/share/swiftfetch/config.toml ~/.config/swiftfetch/config.toml"
+}
+post_upgrade() {
+  post_install
+}
