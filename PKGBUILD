@@ -4,18 +4,18 @@
 _srcname=polyglot
 _pkgname=polyglot-winboard
 pkgname=polyglot-winboard-git
-pkgver=r44.5904a29
-pkgrel=4
+pkgver=r93.433d26d
+pkgrel=1
 epoch=1
 pkgdesc="UCI/USI/UCCI to XBoard adapter (WinBoard fork)"
 arch=('i686' 'x86_64')
-url="http://winboard.nl/cgi-bin?p=polyglot.git;a=summary"
+url="https://github.com/ulthiel/polyglot"
 license=('GPL-2.0-only')
 makedepends=('git')
 depends=('glibc')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("git+http://winboard.nl/git/${_srcname}.git")
+source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
