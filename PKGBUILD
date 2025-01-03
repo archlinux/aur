@@ -2,7 +2,7 @@
 # Contributor: John Andrews <theunderdog09 at gmail dot com>
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
-pkgver=2024.8
+pkgver=2025.1
 pkgrel=1
 pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64')
@@ -14,20 +14,20 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 install="${pkgname%-*}.install"
 _ab_commit=049d5d3bc0c86c29c20f2073460186a83c1d7094
-_wg_commit=b1cf09a982bba6f6c63fadc956d88e8c2326d05e
-#_mn_commit=7254d70ea92e59778a99611999e4ed88a4aa821b  ## commit does not exist
-_mn_commit=b06094e81701782d28cd2312f58e0654109d04ce
+_wg_commit=3957ef94034a9cbb47f323b3290620bb849d58e3
+_mn_commit=d40056adfa854d86e1d515d56e9a703090e2473c
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_ab_commit}?signed"
         "git+https://github.com/mullvad/wireguard-go.git#commit=${_wg_commit}?signed"
         "git+https://github.com/mullvad/maybenot.git#commit=${_mn_commit}")
-sha256sums=('986834188991afa94a2ca95863c482eeed653d56f725af3628d05840e39c671c'
+sha256sums=('059cbe68167927d6bf6c5a53eb00db28194fc84ec515e80917de7122acedca3c'
             '2f7ff0d5c2c5bab63b9babc6c91d921ef9965413b0b92996be8c9fd5a9c0d862'
-            'a65a9a650066e653f50871c17758ddc8a4ecfa6fbb9684035855d6f0d8a655a4'
-            '905d2c0b697cb594babdf4e84066f3bdf666ab5d889642b002a1390f52fc7cf8')
+            '6e0f55d43fbf016d989ff5571de9c3b8c2f3611e957e807f5ffcbda2c4d274c6'
+            '6547c6d7c1d3ffd0b65a025ac5e6f76cd3046059cb10da7f1e99f5e436378bd2')
 validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <linus@mullvad.net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
               '1D0026CBD1F1858DF8DB54DFCB87E2B919A6454C' # Oskar Nyberg <oskar@mullvad.net>
+              '049F58CC80D9C78452151EE6EF0CCD68D0E5B9B1' # Emīls Piņķis <emils@mullvad.net>
               )
 
 prepare() {
@@ -37,22 +37,20 @@ prepare() {
   git config submodule.wireguard-go-rs/libwg/wireguard-go.url "$srcdir/wireguard-go"
   git -c protocol.file.allow=always submodule update
 
-#  pushd wireguard-go-rs/libwg/wireguard-go
-#  git submodule init
-#  git config submodule.maybenot.url "$srcdir/maybenot"
-#  git -c protocol.file.allow=always submodule update
-#  popd
+  pushd wireguard-go-rs/libwg/wireguard-go
+  git submodule init
+  git config submodule.maybenot.url "$srcdir/maybenot"
+  git -c protocol.file.allow=always submodule update
+  popd
 
-  cp -rf "$srcdir/maybenot" wireguard-go-rs/libwg/wireguard-go/
+  # Create wireguard-go build directory
+  mkdir -p "build/lib/$CARCH-unknown-linux-gnu"
 
   # Create shell-completions output directory
   mkdir -p build/shell-completions
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-
-  # Create wireguard-go build directory
-  mkdir -p "build/lib/$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -94,7 +92,7 @@ build() {
   echo "Preparing for packaging Mullvad VPN ${PRODUCT_VERSION}..."
   for sh in bash zsh fish; do
     echo "Generating shell completion script for ${sh}..."
-    cargo run --bin mullvad --frozen --release -- shell-completions ${sh} \
+    cargo run --bin mullvad --frozen --release -- shell-completions "${sh}" \
       build/shell-completions/
   done
 
