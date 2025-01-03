@@ -1,7 +1,7 @@
 pkgbase = python-scooby
 	pkgdesc = A Great Dane turned Python environment detective
 	pkgver = 0.10.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/banesullivan/scooby
 	arch = any
 	license = MIT
