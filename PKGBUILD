@@ -2,7 +2,7 @@
 
 pkgname=python-wannacri-git
 pkgver=r29.3cea5e9
-pkgrel=1
+pkgrel=2
 pkgdesc="Criware media formats library."
 arch=('x86_64')
 url="https://github.com/donmai-me/WannaCRI"
@@ -10,11 +10,10 @@ license=('MIT')
 provides=('wannacri')
 conflicts=('python-wannacri')
 depends=(
-  'python-future'
-  'python-python-ffmpeg'
+  'python-ffmpeg-python'
+  'python-json-logger'
 )
-makedepends=('git')
-
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
 source=("git+https://github.com/donmai-me/WannaCRI.git")
 md5sums=('SKIP')
 
@@ -26,6 +25,6 @@ pkgver() {
 package() {
   cd WannaCRI
   python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
-  install -Dm 644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -Dm0644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
