@@ -3,7 +3,7 @@
 _pkgauthor=jmelahman
 _pkgname=work
 pkgname=${_pkgname}-bin
-pkgver=1.0.10
+pkgver=1.0.12
 pkgrel=1
 pkgdesc='A stupid simple time tracker.'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -16,9 +16,9 @@ provides=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_386.tar.gz")
-sha256sums_x86_64=('292714226399bd2bf0270712f56152d1bfedd5620b9bada4204a9e06917f00cc')
-sha256sums_i686=('94c5e2d09793d715dd4604b737c2df9c06b9bdf61033f895ba69c41944eface1')
-sha256sums_aarch64=('01e2c89ba7beabbb277ff25c413f93658b80d23db5cceb6b9f4d71adcff979aa')
+sha256sums_x86_64=('9815f85f34f804e3d425d09b8e4c2fb9e59955d0fe3b53021cfcce4cdf9e9789')
+sha256sums_i686=('d26687bb96803a72a67c7af04b252937c553a2f68aa33176ba3643a3c0cdae08')
+sha256sums_aarch64=('94b3ac7a86fad6be9e66b61b6a5b12a95c4244e9b25be94f3a505ac42b38edf1')
 
 
 package() {
