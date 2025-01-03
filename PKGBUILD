@@ -8,14 +8,13 @@
 _name=Rack
 pkgname=vcvrack
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(LicenseRef-custom GPL-3.0-or-later)
 arch=(aarch64 x86_64)
-install=.install
 _plugin_name=Fundamental
-_plugin_ver=2.6.0
+_plugin_ver=2.6.1
 _plugin_pkg=$pkgname-${_plugin_name,,}
 depends=(glfw jansson)
 makedepends=(alsa-lib cmake curl gendesk git glew jack jq libarchive libpulse libxrandr openssl
@@ -36,6 +35,7 @@ source=(
   'tinyexpr.git::git+https://github.com/codeplea/tinyexpr'
   "$_plugin_pkg-$_plugin_ver.tar.gz::https://github.com/VCVRack/$_plugin_name/archive/v$_plugin_ver.tar.gz"
   'plugins.patch'
+  'wayland.patch'
   'wmclass.patch'
   'vcvrack.sh'
   'profile.sh'
@@ -51,10 +51,11 @@ sha256sums=('8edf15caed42cc69037e0424bfb574bb9e12aa28c2887be9022fb6c91d571848'
             'SKIP'
             'SKIP'
             'SKIP'
-            '1e3662c1f5cf57e484e7f605028fbe032e1eab541b73e10453d36df400e68ae0'
+            '4ca39ba45cd1a365ccc081f479a040178eac16d7d8b51f6fa49ff64b790c1d50'
             '3ad0ea63ce2d5bf62b27e7b51a6d098040435636939d36a584a9b609578a9c9e'
+            '22dd80c4d3a95d1ecd409c81c58682a8c7071ea0f74ca9ad0c90c95b9f7714fe'
             'f1abd73a4de8a97328ff0111fb59ab9f0bde42b2b8f0d2a2ee7fb964e47dbe5e'
-            '21ac35c6ad4e5a29c32939b17baaf7ac1936077eda2214e28675eefcf2021db8'
+            '5d30bfcce54219d5b95f1cafebae64503fbf4a46d10432c1e9a3c5cd78977096'
             'e1da6ccf04bae3a2101151fec7ddd32e48ff92b0a1146b559fd3221c778d521f'
             '1159629aa90abb7c972c0f630d55d018b88a6b3bc3ff0bb9466cc06982f38641')
 
@@ -76,6 +77,8 @@ prepare() {
   patch -p1 -i ../plugins.patch
   # set proper window manager class
   patch -p1 -i ../wmclass.patch
+  # fix for wayland
+  patch -p1 -i ../wayland.patch
 
   gendesk -f -n \
     --pkgname $pkgname \
