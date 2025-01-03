@@ -1,0 +1,18 @@
+pkgbase = glimpse-rust-git
+	pkgdesc = A blazingly fast tool for peeking at codebases.
+	pkgver = r40.4208ee8
+	pkgrel = 1
+	url = https://github.com/seatedro/glimpse
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = glimpse
+	conflicts = glimpse
+	options = !lto
+	source = git+https://github.com/seatedro/glimpse
+	sha256sums = SKIP
+
+pkgname = glimpse-rust-git
