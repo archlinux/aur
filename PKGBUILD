@@ -2,7 +2,7 @@
 
 pkgname=swiftfetch
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and efficient fetch utility written in Rust"
 arch=('x86_64')
 url="https://github.com/Ly-sec/swiftfetch"
