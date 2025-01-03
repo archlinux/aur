@@ -1,0 +1,24 @@
+pkgbase = lib32-gamin
+	pkgdesc = File and directory monitoring system defined to be a subset of the FAM (File Alteration Monitor) (32-bit)
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://gitlab.gnome.org/Archive/gamin
+	arch = x86_64
+	license = LGPL-2.0-only
+	depends = gamin
+	depends = lib32-glib2
+	depends = lib32-glibc
+	provides = lib32-fam
+	provides = libgamin-1.so
+	provides = libfam.so
+	conflicts = lib32-fam
+	source = gamin-0.1.10.tar.gz::https://download.gnome.org/sources/gamin/0.1/gamin-0.1.10.tar.gz
+	source = gamin_poll_files_on_ntfs4.patch::https://gitlab.gnome.org/Archive/gamin/-/commit/b92b17ecced6df463da73d6de566740cf5cd00d4.patch
+	source = gamin_deprecated_g_const_return.patch::https://gitlab.gnome.org/Archive/gamin/-/commit/77fe68f43ce75e920b0a94b0bc572cf3a21714f2.patch
+	source = gamin_server_deadlock_ih_sub_cancel.patch::https://gitlab.gnome.org/Archive/gamin/-/commit/f9c67a13af33f389429e4e760f2023a23a9ac19f.patch
+	sha512sums = 21bfe6fcf8fb3117cd5a08c8ce3b8d0d1dd23e478e60a95b76c20d02cc29b050dde086578d81037990484ff891c3e104d2cbbf3d294b4a79346b14a0cae075bb
+	sha512sums = 59b78ca12c31661ea85a213cb7dc79c1bf35a53639f073fdc7618200e0d5c0c15c50b3670f1f31c156640a85a2bad8eba5e7622c7eab9dff5124a9c5c8d1775f
+	sha512sums = 4c339bb91ea8b930b95bbfb4cbb71bb1e1a9e7d41f22639e8eca3719089a9110d8538087751c16f8259f1834e84b07a968f95b1a79c06b6bb5516c5638722c18
+	sha512sums = 69e6a0cbaffacde809d7be6839269d61d29fa8fcec4b7fa8c4c69cf41eb612c5f03cba5cb3e6b58fc25b63158a3d71f8895be96213edbb5a9d9150057a6d58c2
+
+pkgname = lib32-gamin
