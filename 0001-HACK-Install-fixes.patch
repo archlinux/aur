@@ -1,0 +1,55 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Thu, 8 Jun 2023 21:05:22 +0200
+Subject: [PATCH] HACK: Install fixes
+
+- Move example services to docs, see
+  https://bugs.archlinux.org/task/47822
+- Don't mkdir rundir
+- Install header symlink for compat with mdnsresponder
+---
+ avahi-compat-libdns_sd/Makefile.am | 3 +++
+ avahi-daemon/Makefile.am           | 5 +++--
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/avahi-compat-libdns_sd/Makefile.am b/avahi-compat-libdns_sd/Makefile.am
+index ecca1e97a6e4..a53bc4202cd0 100644
+--- a/avahi-compat-libdns_sd/Makefile.am
++++ b/avahi-compat-libdns_sd/Makefile.am
+@@ -27,6 +27,9 @@ avahi_compat_libdns_sddir=$(includedir)/avahi-compat-libdns_sd
+ 
+ avahi_compat_libdns_sd_HEADERS = dns_sd.h
+ 
++install-data-local:
++	$(LN_S) avahi-compat-libdns_sd/dns_sd.h "$(DESTDIR)$(includedir)/dns_sd.h"
++
+ lib_LTLIBRARIES = libdns_sd.la
+ 
+ if ENABLE_TESTS
+diff --git a/avahi-daemon/Makefile.am b/avahi-daemon/Makefile.am
+index d352d5e52e5d..1f8b6d80ddb9 100644
+--- a/avahi-daemon/Makefile.am
++++ b/avahi-daemon/Makefile.am
+@@ -27,6 +27,7 @@ pkgsysconfdir=$(sysconfdir)/avahi
+ servicedir=$(pkgsysconfdir)/services
+ introspectiondir=$(datadir)/dbus-1/interfaces
+ dbussystemservicesdir=$(datadir)/dbus-1/system-services
++pkgdocdir=$(datadir)/doc/avahi
+ 
+ AM_CFLAGS+= \
+ 	-DAVAHI_DAEMON_RUNTIME_DIR=\"$(runstatedir)/avahi-daemon/\" \
+@@ -68,7 +69,7 @@ pkgsysconf_DATA = \
+ 	avahi-daemon.conf \
+ 	hosts
+ 
+-dist_service_DATA = \
++dist_pkgdoc_DATA = \
+ 	ssh.service \
+ 	sftp-ssh.service
+ 
+@@ -168,4 +169,4 @@ xmllint:
+ 	done
+ 
+ install-data-local:
+-	test -z "$(runstatedir)" || $(MKDIR_P) "$(DESTDIR)$(runstatedir)"
++	$(MKDIR_P) "$(DESTDIR)$(servicedir)"

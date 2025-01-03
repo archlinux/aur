@@ -1,82 +1,72 @@
-# Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens at gmail dot com>
 # Contributor: Gaetan Bisson <bisson at archlinux dot org>
 # Contributor: Douglas Soares de Andrade <douglas at archlinux dot org>
 
-pkgname=lib32-avahi
-pkgver=0.8+22+gfd482a7
+_name="avahi"
+pkgname="lib32-${_name}"
+_commit_rel="f060abee2807c943821d88839c013ce15db17b58" # 0.8
+_commit="3f79789c484518f82c36ff59c0f45abe7e6580a2" # r194
+pkgver="0.8+r194+g${_commit::7}"
 pkgrel=1
-pkgdesc='Service Discovery for Linux using mDNS/DNS-SD -- compatible with Bonjour (32-bit)'
+pkgdesc="Service Discovery for Linux using mDNS/DNS-SD (compatible with Bonjour) (32-bit)"
 arch=('x86_64')
-url='https://github.com/lathiat/avahi'
-license=('LGPL')
-depends=("${pkgname#lib32-}" 'expat' 'lib32-dbus' 'lib32-gdbm' 'lib32-glib2' 'lib32-libcap' 'lib32-libdaemon')
-makedepends=('git' 'gobject-introspection' 'libevent' 'lib32-libevent'
-             'lib32-gtk3' 'python-dbus' 'python-gobject' 'xmltoman')
-optdepends=('lib32-gtk3: gtk3 bindings'
+url="https://github.com/avahi/${_name}"
+license=('LGPL-2.1-or-later')
+depends=('lib32-dbus' 'lib32-expat' 'lib32-gdbm' 'lib32-glib2' 'lib32-glibc'
+         'lib32-libcap' 'lib32-libdaemon' 'lib32-systemd' "${_name}")
+makedepends=('glib2-devel' 'gobject-introspection' 'lib32-gtk3'
+             'lib32-libevent' 'python-dbus' 'python-gobject' 'xmltoman') # 'lib32-qt5-base'
+optdepends=('lib32-gtk3: avahi-discover, avahi-discover-standalone, bshell, bssh, bvnc'
             'lib32-libevent: libevent bindings')
-options=(!emptydirs)
-_commit=fd482a74625b8db8547b8cfca3ee3d3c6c721423  # master
-source=("git+$url#tag=$_commit"
-        282.patch
-        0001-Fix-avahi-browse-Invalid-service-type.patch)
-sha512sums=('SKIP'
-            '26b1e74450944f5c4385d2f5df18523cfb953e4138f6d9e81061a626453e40d8ed2dee44535cfbb547848eefb3cdca408009d5f0e0c465f144a8803db8593b46'
-            'e39c17d9a5d534784a3c7b6947da994d0ab5fa354aac5cecde6d3baaa2bb3d57f02f91cc6fb68885a4e98f44efe615b01631a4c7af752aa26f35082cfcc0ddd7')
+provides=("lib${_name}-"{client,common,core,glib,gobject,libevent,ui-gtk3}".so" # ,qt5
+          'libdns_sd.so')
+backup=("usr/lib32/${_name}/service-types.db")
+_pkgsrc="${_name}-${_commit}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/${_commit}.tar.gz"
+        "0001-HACK-Install-fixes.patch")
+sha512sums=('e81d7a2844ab539a348a074f8dbcb90bdde81876f918c6ec6f98bd54d33ccbe32b51d345e60680ecdd7801d473254d150a42abc392bec4672321d85a576c48bc'
+            '0cbea74889b2f9d767ff6d8df93f020112eac5ca64a6b9f9ecf3dda1d1b5423a5fe0c46f3845351502ec6d990c51d58434c394182f159bccd38c38c2ddc65f6d')
 
 prepare() {
-  cd ${pkgname#lib32-}
-
-  # https://bugs.archlinux.org/task/68518
-  # https://github.com/lathiat/avahi/pull/282
-  git apply -3 ../282.patch
-
-  # https://bugs.archlinux.org/task/71781
-  # https://github.com/lathiat/avahi/issues/212
-  git apply -3 ../0001-Fix-avahi-browse-Invalid-service-type.patch
+  cd "${srcdir}/${_pkgsrc}"
+  patch -Np1 -i "${srcdir}/0001-HACK-Install-fixes.patch"
 
   NOCONFIGURE=1 ./autogen.sh
 }
 
-pkgver() {
-  cd ${pkgname#lib32-}
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
-
 build() {
-  # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
-  export CFLAGS="-m32 ${CFLAGS}"
-  export CXXFLAGS="-m32 ${CXXFLAGS}"
-  export LDFLAGS="-m32 ${LDFLAGS}"
+  export CFLAGS+=" -m32"
+  export CXXFLAGS+=" -m32"
+  export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-#  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
 
-  cd ${pkgname#lib32-}
+  cd "${srcdir}/${_pkgsrc}"
   ./configure \
+    --prefix='/usr' \
+    --program-suffix="-32" \
+    --lib{exec,}dir='/usr/lib32' \
     --build=i686-pc-linux-gnu \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --sbindir=/usr/bin \
-    --libdir=/usr/lib32 \
     --disable-mono \
     --disable-qt5 \
     --enable-compat-libdns_sd \
-    --with-distro=archlinux \
-    --with-avahi-priv-access-group=network \
-    --with-autoipd-user=avahi \
-    --with-autoipd-group=avahi \
-    --with-dbus-sys=/usr/share/dbus-1/system.d \
-    --with-systemdsystemunitdir=/usr/lib/systemd/system 
+    --with-autoipd-group="${_name}" \
+    --with-autoipd-user="${_name}" \
+    --with-avahi-priv-access-group='network' \
+    --with-distro='archlinux' \
+    --with-dbus-sys='/usr/share/dbus-1/system.d' \
+    --with-systemdsystemunitdir='/usr/lib/systemd/system'
+    # --sbindir='/usr/bin' 
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  
   make
 }
 
 package() {
-  cd ${pkgname#lib32-}
+  cd "${srcdir}/${_pkgsrc}"
   make DESTDIR="${pkgdir}" install
 
-  # Remove conflicting files.
-  rm -rf "${pkgdir}"/{etc,usr/{share,lib,include,bin}}
+  cd "${pkgdir}/usr"
+  rm -rf "bin" "etc" "include" "lib" "share"
+  mv -f "sbin" "bin"
 }
