@@ -4,12 +4,9 @@ After=network.target
 
 [Service]
 Type=simple
-User=open-webui
-Group=open-webui
-WorkingDirectory=/opt/open-webui
 Environment=PYTHONUNBUFFERED=1
-EnvironmentFile=/etc/open-webui.conf
-ExecStart=/bin/bash -c "cd /opt/open-webui/backend && source ./venv/bin/activate && bash start.sh"
+EnvironmentFile=/usr/share/open-webui/open-webui.conf
+ExecStart=/bin/open-webui serve
 
 Restart=on-failure
 

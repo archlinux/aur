@@ -1,52 +1,67 @@
 #!/bin/bash
 
-_appname="open-webui"
-_appuser="open-webui"
-_appprefix="/opt"
-_appdataprefix="/var/opt"
-_apphome="${_appprefix}/${_appname}"
-_appdata="${_appdataprefix}/${_appname}"
-
-pre_install() {
-    echo "Creaing user open-webui..."
-    getent passwd $_appuser >/dev/null || useradd -r -s /bin/false -d "$_apphome" "$_appuser"
-}
-
-_install() {
-    # Ensure appropriate permissions
-    chown -R "$_appuser:$_appuser" "${_apphome}" || return 1
-    chown -R "$_appuser:$_appuser" "${_appdata}" || return 1
-    chmod -R g+w "${_appdata}" || return 1
-
-    if [ ! -d "./venv" ]; then
-        echo "Setting up virtual environment for $_appname..."
-        su "$_appuser" -s /bin/bash -c "python3.12 -m venv ${_apphome}/backend/venv" || return 1
-    fi
-    echo "Updating python virtual environment..."
-    su "$_appuser" -s /bin/bash -c "cd ${_apphome}/backend && ./venv/bin/pip install -r requirements.txt" || return 1
-
-
-    # Install default config if needed
-    if [ ! -f "/etc/${_appname}.conf" ]; then
-        # Generate the secret key if needed
-        echo "Installing default config file..."
-        install -Dm644 "/usr/share/${_appname}/${_appname}.conf" "/etc/${_appname}.conf"
-
-        echo "Generating random WEBUI_SECRET_KEY..."
-        secret_key="$(head -c 12 /dev/random | base64)"
-        sed -i "s/{{GENERATED_KEY}}/${secret_key}/" "/etc/${_appname}.conf"
-    fi
+_message() {
+    cat << EOF
+    >>>
+    >>>
+    >>>
+    >>>  The preferred way to start OpenWebUI is through the systemd service like so:
+    >>>   $ sudo systemctl start open-webui
+    >>>
+    >>>
+    >>>  Doing so is preferred because OpenWebUI requires the setup of specific environment variables
+    >>>   in a specific manner, which can be seen in the file /usr/share/open-webui/open-webui.conf, which
+    >>>   itself is required, because we need to set up OpenWebUI differently in order to run OpenWebUI properly
+    >>>   outside of a docker container, which is what upstream recommends and what upstream sets the defaults to
+    >>>   cater to.
+    >>
+    >>>  It becomes easier to consistently set these environment variables through a systemd service, hence
+    >>>  it is being used here.
+    >>>
+    >>>  Also, backwards compatibility with how the package was set up initially using a virtual environment
+    >>>  is kept intact with the use of the systemd service.
+    >>>
+    >>>
+    >>>  However, it is possible to launch open-webui using the commandline, provided certain steps are taken beforehand,
+    >>>   as detailed below:
+    >>>
+    >>>  Step 1: Copy the config file and paste it into .config/open-webui/ folder (folder may need to be created manually),
+    >>>            like so:
+    >>>             $ mkdir ~/.config/open-webui
+    >>>             $ cp /usr/share/open-webui/open-webui.conf ~/.config/open-webui
+    >>>
+    >>>  Step 2: Edit the configuration file and add 'export ' at the start of each line having a variable, so that each variable
+    >>>          that looks like so initially:
+    >>>                   OLLAMA_BASE_URL=http://localhost:11434
+    >>>          becomes:
+    >>>                   export OLLAMA_BASE_URL=http://localhost:11434
+    >>>
+    >>>  Step 3: With each launch of OpenWebUI using the 'open-webui serve' command, prepend the command like so:
+    >>>             $ source ~/.config/open-webui/open-webui.conf && open-webui serve
+    >>>
+    >>>          Alternatives to sourcing the configuration file each time may be to create an alias for this command,
+    >>>            or putting the environment variables directly into your .bashrc or .zshrc
+    >>>
+EOF
 }
 
 post_install() {
-    _install || echo -e "\nERROR: Failed to install dependencies\n"
+    echo "Generating random WEBUI_SECRET_KEY..."
+    secret_key="$(head -c 12 /dev/random | base64)"
+    sed -i "s/t0p-s3cr3t/${secret_key}/" "/usr/share/open-webui/open-webui.conf"
+
+    _message
+}
+
+pre_upgrade() {
+    rm -rf "/opt/open-webui"
+    rm /usr/share/open-webui/open-webui.conf
 }
 
 post_upgrade() {
-    _install || echo -e "\nERROR: Failed to install dependencies\n"
-}
+    echo "Generating a new random WEBUI_SECRET_KEY..."
+    secret_key="$(head -c 12 /dev/random | base64)"
+    sed -i "s/t0p-s3cr3t/${secret_key}/" "/usr/share/open-webui/open-webui.conf"
 
-post_remove() {
-    echo "Cleaning up virtual environment for $_appname..."
-    rm -rf "${_apphome}/venv"
+    _message
 }
