@@ -5,10 +5,11 @@ _pkgname=SwitchHosts
 pkgver=4.2.0
 _electronversion=30
 _nodeversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="An app for managing hosts file,and switch hosts quickly ! (Use system-wide electron)"
 arch=('any')
-url="https://github.com/oldj/SwitchHosts"
+url="https://switchhosts.vercel.app/"
+_ghurl="https://github.com/oldj/SwitchHosts"
 license=('Apache-2.0')
 conflicts=("${pkgname}")
 depends=(
@@ -16,13 +17,12 @@ depends=(
 )
 makedepends=(
     'gendesk'
-    'git'
     'nvm'
     'npm'
     'curl'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
 sha256sums=('b497623f7a6559610740165d7f8928ace969e527c082a05a31a000fc70cbc3e2'
@@ -33,7 +33,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -65,6 +65,9 @@ build() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install --legacy-peer-deps
     NODE_ENV=development    npm add -D framer-motion@11.13.1 --legacy-peer-deps
+}
+build() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm run make:linux
 }
