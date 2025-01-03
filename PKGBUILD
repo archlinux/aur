@@ -2,7 +2,7 @@
 
 pkgname=changedetection.io
 pkgver=0.48.05
-pkgrel=1
+pkgrel=3
 pkgdesc='change monitoring of web pages'
 arch=(any)
 url='https://github.com/dgtlmoon/changedetection.io'
@@ -34,7 +34,7 @@ depends=(# ordered per https://github.com/dgtlmoon/changedetection.io/blob/maste
          apprise
          python-paho-mqtt
          python-cryptography
-         python-bs4
+         python-beautifulsoup4 
          python-lxml
          python-elementpath
 #         python-selenium
@@ -43,7 +43,7 @@ depends=(# ordered per https://github.com/dgtlmoon/changedetection.io/blob/maste
          python-types-python-dateutil # required by jinja-time
          python-openpyxl
          python-pillow
-         python-pytest-flask
+#         python-pytest-flask
          python-loguru
          python-pysocks)
 optdepends=('python-playwright: for fetching pages with javascript')
