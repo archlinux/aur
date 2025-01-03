@@ -1,5 +1,4 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Contributor: csslayer <wengxt AT gmail com>
+# Maintainer: Masato TOYOSHIMA <phoepsilonix@gmail.com>
 
 _pkgbase=fcitx5
 pkgname=fcitx5-kde-kwin-settings
