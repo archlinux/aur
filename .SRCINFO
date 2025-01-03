@@ -1,22 +1,19 @@
 pkgbase = lib32-cairomm
-	pkgdesc = C++ bindings to Cairo vector graphics library (32 bit)
-	pkgver = 1.12.2
+	pkgdesc = C++ bindings for Cairo (32-bit)
+	pkgver = 1.14.5
 	pkgrel = 1
-	url = http://www.cairographics.org
+	url = https://www.cairographics.org/cairomm
 	arch = x86_64
-	license = LGPL
-	license = MPL
-	makedepends = pkgconfig
-	makedepends = gcc-multilib
-	makedepends = git
+	license = LGPL-2.0-or-later AND MPL-1.1
+	makedepends = meson>=0.55
 	makedepends = mm-common
-	depends = lib32-cairo
-	depends = lib32-libsigc++
 	depends = cairomm
-	options = !libtool
-	options = !emptydirs
-	source = git+https://anongit.freedesktop.org/git/cairomm#commit=e9ef515b7b8db5b4f024ddfefe5dfc03f2b8ccea
-	sha256sums = SKIP
+	depends = lib32-cairo
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-libsigc++
+	provides = libcairomm-1.0.so
+	source = cairomm-1.14.5.tar.gz::https://gitlab.freedesktop.org/cairo/cairomm/-/archive/1.14.5/cairomm-1.14.5.gz
+	sha256sums = 80c10611888e84c3a660eea0dafc81b6a9faf3e1d1cc31f950c51b3f7d384fc2
 
 pkgname = lib32-cairomm
-
