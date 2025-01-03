@@ -16,7 +16,7 @@ pkgbase = lib32-glibmm
 	provides = libgiomm-2.4.so
 	provides = libglibmm-2.4.so
 	provides = libglibmm_generate_extra_defs-2.4.so
-	source = glibmm-2.66.7.tar.gz::https://download.gnome.org/sources/glibmm/2.66/glibmm-2.66.7.tar.xz
+	source = glibmm-2.66.7.tar.xz::https://download.gnome.org/sources/glibmm/2.66/glibmm-2.66.7.tar.xz
 	sha256sums = fe02c1e5f5825940d82b56b6ec31a12c06c05c1583cfe62f934d0763e1e542b3
 
 pkgname = lib32-glibmm

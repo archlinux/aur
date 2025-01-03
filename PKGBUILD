@@ -17,7 +17,7 @@ makedepends=('meson>=0.55' 'mm-common')
 checkdepends=('lib32-glib-networking')
 provides=('libgiomm-2.4.so' 'libglibmm-2.4.so' 'libglibmm_generate_extra_defs-2.4.so')
 _pkgsrc="${_name}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::https://download.gnome.org/sources/${_name}/${pkgver%.*}/${_pkgsrc}.tar.xz")
+source=("${_pkgsrc}.tar.xz::https://download.gnome.org/sources/${_name}/${pkgver%.*}/${_pkgsrc}.tar.xz")
 sha256sums=('fe02c1e5f5825940d82b56b6ec31a12c06c05c1583cfe62f934d0763e1e542b3')
 
 build() {
