@@ -1,7 +1,7 @@
 # Maintainer: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
 pkgname=l5p-keyboard-rgb-bin
-pkgver=0.19.6
-pkgrel=3
+pkgver=0.20.0
+pkgrel=1
 pkgdesc="RGB Keyboard control for Legion 5 (Pro) 2020-2022 and Ideapad Gaming 3 2021"
 arch=('x86_64')
 url="https://github.com/4JX/L5P-Keyboard-RGB"
@@ -14,7 +14,7 @@ source=(
   'legion-kb-rgb.desktop'
 )
 sha256sums=(
-  '450f74ef252a58a84bc98eeb91f768a1b7bbbbc93d67230fec7a071281d56b47'
+  'a5c397c4323fa962c27827be2a124c9d427f0c45ad678e9a8103bf55a744e401'
   '22946423fd8e0bf7b7fe7e98fc1331f0000064f9fe3c96cd31f52348d3174f16'
   'da03140754276cd23d848cf7b9ef517a6a13d642e333db086b00586bcdd884e6'
   '77f41134bac057148ab92c2bfe3ef40f065d6cb6bde52ee38e301fe6b8b5f307'
