@@ -1,7 +1,7 @@
 # Maintainer: invverse <cheery DOT art2642 AT fastmail DOT com>
 pkgname=gridtracker2-bin
 _pkgname=GridTracker2
-pkgver=2.241206.1
+pkgver=2.250101.1
 pkgrel=2
 pkgdesc='An Amateur Radio Companion (unofficial)'
 url='https://gridtracker.org'
@@ -17,9 +17,9 @@ provides=('gridtracker2')
 sha256sums=('f56a8857e15f87cbd6a8cd16eff0a2e588164561bd758a5cc1332158cef9d580'
             '9a81eb3ef1fb8e2e227e5d8632f53c0ce2474d17b44862843262449cff00c8f2'
             '98687391350dab02ef22f6782c5800292f8db24112a110763ef2a14137adafd1')
-sha256sums_x86_64=('e4a6b9cc62ff379dc85c27ac87ee046206d77c56f7e83b7404adddc326035a11')
-sha256sums_aarch64=('c2dea5f7523b28adb8fdeb24d781cda7e3d2bf4dac89a65097023d6b9a9b72c0')
-sha256sums_armv7h=('debd2a66bcccca689472b76d808921f6d48d26b104ff9b27cb81b6dcea5037c6')
+sha256sums_x86_64=('9697f8658a00d196ba9d98932040a4a4f1e42b970b6a459c5e5ce05d009cb73f')
+sha256sums_aarch64=('4ea8382e50ffb2180f2df1209fb9ae4be5bc03fb3ccaeeadceaa3a48eeab4916')
+sha256sums_armv7h=('db581f0a64bf2ce300a994475a8211f3a6001242fa5b9127ec0c18a40a83e5d6')
             
 package() {
   # Determine architecture
