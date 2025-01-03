@@ -1,0 +1,16 @@
+pkgbase = lib32-libguess
+	pkgdesc = High-speed character set detection library
+	pkgver = 1.2+r13+gb44a240
+	pkgrel = 1
+	url = https://github.com/kaniini/libguess
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = lib32-glibc
+	depends = libguess
+	provides = libguess.so
+	source = libguess-b44a240c57ddce98f772ae7d9f2cf11a5972d8c2.tar.gz::https://github.com/kaniini/libguess/archive/b44a240c57ddce98f772ae7d9f2cf11a5972d8c2.tar.gz
+	source = libguess_autoconf271_ac_prog_cpp.patch::https://sources.debian.org/data/main/libg/libguess/1.2-5/debian/patches/autoconf2.71.patch
+	sha256sums = ae110f2fe4f93837720f04232348498d8c84af32db352d01a02e50609c643e22
+	sha256sums = ab16213c64bc6b4107b36993b55f2650e360bfa066fa6a3482c00e7e4a8de4f1
+
+pkgname = lib32-libguess
