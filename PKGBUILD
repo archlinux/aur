@@ -5,7 +5,7 @@
 
 pkgname=seahub
 pkgver=11.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc='The web frontend for seafile server'
 arch=('any')
 url='https://github.com/haiwen/seahub'
@@ -25,7 +25,6 @@ depends=(
     'python-pycryptodome'
     'python-requests'
     'python-requests-oauthlib'
-    'python-future'
     'gunicorn'
     'python-mysqlclient'
     'python-qrcode'
