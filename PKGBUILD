@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc="File transfer between Android, iOS, Linux, macOS, and Windows over ad hoc WiFi"
 arch=('x86_64' 'aarch64')
 url="https://github.com/spieglt/FlyingCarpet"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=('cairo' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
          'hicolor-icon-theme' 'libsoup' 'webkit2gtk')
 provides=("${_pkgname}") 
