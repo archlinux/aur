@@ -1,13 +1,14 @@
 pkgbase = soft-shutdown
 	pkgdesc = Gracefully shutdown userspace GUI applications before system shutdown
-	pkgver = 1.0
+	pkgver = r2.49fa83c
 	pkgrel = 1
 	url = https://github.com/littleblack111/soft-shutdown
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
+	makedepends = git
 	depends = wmctrl
 	depends = xorg-xprop
-	source = https://github.com/littleblack111/soft-shutdown
-	sha256sums = skip
+	source = git+https://github.com/littleblack111/soft-shutdown
+	sha256sums = SKIP
 
 pkgname = soft-shutdown
