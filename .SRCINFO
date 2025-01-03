@@ -1,0 +1,12 @@
+pkgbase = libnss-wrapper-bin
+	pkgdesc = 网易邮箱libnss-wrapper-bin依赖打包
+	pkgver = 1.1.16
+	pkgrel = 1
+	url = http://cwrap.org/nss_wrapper.html
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = http://ftp.us.debian.org/debian/pool/main/n/nss-wrapper/libnss-wrapper_1.1.16-1_amd64.deb
+	sha256sums = 7f1c57d82bf64e31cc5bbd2e254a460c1236ce19f847fd0079839f28ae390ad9
+
+pkgname = libnss-wrapper-bin
