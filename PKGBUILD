@@ -4,7 +4,7 @@
 pkgname=python-hyperspy
 pkgshort=hyperspy
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
 url="http://hyperspy.org"
@@ -29,7 +29,7 @@ depends=('python'
          'python-scipy>=1.6.0'
          'python-sympy>=1.6'
          'python-tqdm>=4.9.0'
-         'python-traits>=4.5.0'
+         'python-traits>=4.9.0'
          'python-scikit-image>=0.18'  # AUR
          )
 
@@ -41,17 +41,6 @@ optdepends=('python-numba: speed'  # AUR
             'python-hyperspy-gui-ipywidgets: GUI components for Jupyter' # AUR
             'python-ipympl: GUI components for Jupyter'
             'python-hyperspy-gui-traitsui: GUI components for desktop'  # AUR
-            'python-matplotlib-scalebar: scalebar in images'
-            'python-numpydoc: build documentation'
-            'python-pydata-sphinx-theme: build documentation'
-            'python-setuptools-scm: build documentation'            
-            'python-sphinx-copybutton: build documentation'
-            'python-sphinx_design: build documentation'
-            'python-sphinx-favicon: build documentation'
-            'python-sphinx-gallery: build documentation'
-            'python-sphinx>=1.7: build documentation'
-            'python-sphinxcontrib-mermaid: build documentation'
-            'python-sphinxcontrib-towncrier: build documentation'
              )
 
 makedepends=('python-setuptools'

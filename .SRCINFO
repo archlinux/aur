@@ -1,7 +1,7 @@
 pkgbase = python-hyperspy
 	pkgdesc = Hyperspectral data analysis
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hyperspy.org
 	arch = any
 	license = GPL3
@@ -32,7 +32,7 @@ pkgbase = python-hyperspy
 	depends = python-scipy>=1.6.0
 	depends = python-sympy>=1.6
 	depends = python-tqdm>=4.9.0
-	depends = python-traits>=4.5.0
+	depends = python-traits>=4.9.0
 	depends = python-scikit-image>=0.18
 	optdepends = python-numba: speed
 	optdepends = python-numexpr: speed
@@ -42,17 +42,6 @@ pkgbase = python-hyperspy
 	optdepends = python-hyperspy-gui-ipywidgets: GUI components for Jupyter
 	optdepends = python-ipympl: GUI components for Jupyter
 	optdepends = python-hyperspy-gui-traitsui: GUI components for desktop
-	optdepends = python-matplotlib-scalebar: scalebar in images
-	optdepends = python-numpydoc: build documentation
-	optdepends = python-pydata-sphinx-theme: build documentation
-	optdepends = python-setuptools-scm: build documentation
-	optdepends = python-sphinx-copybutton: build documentation
-	optdepends = python-sphinx_design: build documentation
-	optdepends = python-sphinx-favicon: build documentation
-	optdepends = python-sphinx-gallery: build documentation
-	optdepends = python-sphinx>=1.7: build documentation
-	optdepends = python-sphinxcontrib-mermaid: build documentation
-	optdepends = python-sphinxcontrib-towncrier: build documentation
 	provides = hyperspy
 	conflicts = hyperspy
 	replaces = hyperspy
