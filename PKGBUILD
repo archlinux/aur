@@ -2,7 +2,7 @@
 # Contributor: Valerio Pizzi (pival81) <pival81@yahoo.com>
 pkgname=museeks
 _pkgname=Museeks
-pkgver=0.20.0
+pkgver=0.20.1
 _nodeversion=22
 pkgrel=1
 pkgdesc="🎵 A simple, clean and cross-platform music player."
@@ -23,7 +23,7 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('c8b1bb43c6e0f41f537d1dd13ef01fa90fcbfcea9c41db2b8e1dfff67d4bbe00')
+sha256sums=('60b41734db9b682aeddea1966cef644d90cd8b63d89b9adbde8e7b4fde327e96')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
