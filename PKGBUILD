@@ -18,7 +18,7 @@ makedepends=(
 )
 install="$pkgname.install"
 source=("git+https://github.com/Ly-sec/swiftfetch.git#tag=v${pkgver}")
-sha256sums=('92bb68dac7aa333e5c3c11f92c1c4673805506ec0656a7b265d283ca0fd27f12')
+sha256sums=('2dc17f88851a688c1021dd4b2bf21cf31da71f21ea4951f372f1c4c3ed64d90a')
 
 build() {
   cd "$pkgname"
