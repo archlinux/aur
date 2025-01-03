@@ -1,7 +1,7 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 # Contributor: dadav <33197631+dadav@users.noreply.github.com>
 pkgname=go2rtc
-pkgver=1.9.7
+pkgver=1.9.8
 pkgrel=1
 pkgdesc="Ultimate camera streaming application with support RTSP, RTMP, HTTP-FLV, WebRTC, MSE, HLS, MP4, MJPEG, HomeKit, FFmpeg, etc."
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "tmpfile"
         "service"
         "config")
-sha512sums=('ee6814fef97f2cde8130dff3aa2575227035d68276254b6009e91ca925da99e498230372d6dd993019648234d1036ab648824c79f3af4cca3679e3c0caf6fa42'
+sha512sums=('29f52b04e18107552175595bf6782bbb24afb7afdd7dd125142fc0e57bbfa18da0ed212e7ebd0c6f104444808be8ebcef2ab7200cea532ba38970f0f79fa127c'
             'eaaf6f9b0840ce88e5a6a12c47d3f969a2cbec0a62e234e16a7d21b58a1064b3f20871fb11c15b248f4f31f7da853bc48d5a621b27aeddeed56c3818707a7d32'
             '45f2adc4a17f6cb0252c9cb25adaa8a32d4f198a4d8bc143e00ba185e4a7afd8e45fbb3ce5dbb9238a2f3a84721e1067b641cc6eb2b3a10db72b2f748a1e875f'
             '3d2dead86d903cc37f29d74dc263b760ba52a838b0974fc1cfd46c4a8e4a4eff7afc893fd00774a0fcff734ca2a30b2e58bfe066a38e1eb6baa6c35c4470595f'
