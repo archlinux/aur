@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=RASAeroII
+GenericName=Rocket Simulator
+Comment=Aerodynamic Analysis and Flight Simulation Software
+Exec=rasaeroii
+Icon=rasaeroii
+Categories=Science;Education;Engineering
