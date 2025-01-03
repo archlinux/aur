@@ -4,12 +4,13 @@
 pkgname=allay-launcher
 _pkgname=allay
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The launcher for Allay that aims to be small, fast and ready out of the box⚡"
 arch=('x86_64' 'aarch64')
 url="https://github.com/AllayMC/AllayLauncher"
 license=('LGPL3')
 conflicts=(allay-launcher-git)
+optdepends=('jre-openjdk: for Java enviroment')
 
 source_x86_64=(
     "${pkgname}-${arch}::${url}/releases/download/${pkgver}/${pkgname}-linux-x64-release"
