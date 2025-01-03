@@ -2,14 +2,14 @@
 # Co-Maintainer: Typology <mohammedkaabi64@gmail.com>
 
 pkgname=twitch-downloader-bin
-pkgver=1.54.7
+pkgver=1.55.1
 pkgrel=1
 pkgdesc="Twitch VOD/Clip Downloader - Chat Download/Render/Replay"
 arch=("x86_64")
 url="https://github.com/lay295/TwitchDownloader"
 license=("MIT")
 source=("https://github.com/lay295/TwitchDownloader/releases/download/${pkgver}/TwitchDownloaderCLI-${pkgver}-Linux-x64.zip")
-sha512sums=('92ee6ac878438a5c2dd201d3f7eec88329ca3f124166eab8583656b9db97333620936e43740c8f94c38524aa0a075f78e99d7dcf960dcbc6c9862c0b50f1e675')
+sha512sums=('9038dfa87bfedb4f960d5c05d406d40fd6033bdadf6bfcaa48dc8e2dd2ac9270a0c513c883386c38a9a6d2434f3e8445710589e29970a00333d087c245fee727')
 optdepends=("ffmpeg: rendering videos")
 options=(!strip)
 
