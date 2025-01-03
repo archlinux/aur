@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/jhenrique04/cargo-licenses"
 license=('MIT' 'Apache')
 depends=('rust' 'cargo')
-source=("https://github.com/jhenrique04/cargo-licenses/releases/download/$pkgver/cargo-licenses-v$pkgver-x86_64-linux.tar.gz")
+source=("cargo-licenses-v$pkgver-x86_64-linux.tar.gz::https://github.com/jhenrique04/cargo-licenses/releases/download/$pkgver/cargo-licenses-v$pkgver-x86_64-linux.tar.gz")
 sha256sums=('b465762f00001a9faffffeaf66ff9dc80868a0f7a6109e8432f239cc01a7088b')
 
 package() {

@@ -8,7 +8,7 @@ pkgbase = cargo-licenses
 	license = Apache
 	depends = rust
 	depends = cargo
-	source = https://github.com/jhenrique04/cargo-licenses/releases/download/0.2.0/cargo-licenses-v0.2.0-x86_64-linux.tar.gz
+	source = cargo-licenses-v0.2.0-x86_64-linux.tar.gz::https://github.com/jhenrique04/cargo-licenses/releases/download/0.2.0/cargo-licenses-v0.2.0-x86_64-linux.tar.gz
 	sha256sums = b465762f00001a9faffffeaf66ff9dc80868a0f7a6109e8432f239cc01a7088b
 
 pkgname = cargo-licenses
