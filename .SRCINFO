@@ -1,0 +1,19 @@
+pkgbase = valhalla-app-bin
+	pkgdesc = A productivity app that helps you manage your tasks and projects.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.1.1_b
+	pkgrel = 1
+	url = https://akrck02.github.io/#/software/valhalla
+	arch = x86_64
+	license = MIT
+	makedepends = fuse2
+	depends = electron18
+	provides = valhalla-app=1.1.1_b
+	conflicts = valhalla-app
+	source = valhalla-app-1.1.1_b.AppImage::https://github.com/akrck02/valhalla/releases/download/1.1.1b-ubuntu-latest/valhalla-1.1.1-b.AppImage
+	source = LICENSE-1.1.1_b::https://raw.githubusercontent.com/akrck02/valhalla/1.1.1b-ubuntu-latest/LICENSE
+	source = valhalla-app.sh
+	sha256sums = c5e0ebc37c7508920043b3e099d10b10353e80404b37b91b46479070fef7bfe2
+	sha256sums = 94498661dd39a1b98f9de887a8566146b200bbf7a644b08a5beacbbac927134f
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = valhalla-app-bin
