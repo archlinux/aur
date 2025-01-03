@@ -1,0 +1,14 @@
+pkgbase = lib32-shine
+	pkgdesc = Super fast fixed-point MP3 encoder (32-bit)
+	pkgver = 3.1.1+r59+gab5e352
+	pkgrel = 1
+	url = https://github.com/savonet/shine
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = lib32-glibc
+	depends = shine
+	provides = libshine.so
+	source = shine-ab5e3526b64af1a2eaa43aa6f441a7312e013519.tar.gz::https://github.com/savonet/shine/archive/ab5e3526b64af1a2eaa43aa6f441a7312e013519.tar.gz
+	sha256sums = 2c2f7e41c7c0f67079eb3882233cdc97e3d583e1985b558d4e847bd46285fbde
+
+pkgname = lib32-shine
