@@ -1,4 +1,4 @@
-# Maintainer: Alexandar <alex.goranov8@gmail.com>
+# Maintainer: Alexsandar <alex.goranov8@gmail.com>
 pkgname=rosepad
 pkgver=0.0.6
 pkgrel=1
