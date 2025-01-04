@@ -2,7 +2,7 @@
 pkgname=python-ble-serial
 _name=${pkgname#python-}
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to connect Bluetooth 4.0+ Low Energy to UART modules and normal PCs/laptops/RaspberryPi."
 arch=('any')
 url="https://github.com/Jakeler/ble-serial"
