@@ -1,5 +1,6 @@
 cl-linux
 src
+pkg
 *.sign
 *.xz
 *.gz
