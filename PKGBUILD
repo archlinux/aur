@@ -1,6 +1,6 @@
 pkgname=('flang-classic')
-pkgver=20221103
-_llvmver=15.0.3
+pkgver=20240723
+_llvmver=18.1.1-20240813
 pkgrel=1
 pkgdesc="out-of-tree Fortran compiler targeting LLVM"
 arch=('x86_64')
@@ -9,22 +9,14 @@ license=('custom:Apache 2.0 with LLVM Exception')
 depends=('libxml2' 'libffi' 'libedit')
 makedepends=('cmake' 'python')
 options=('staticlibs' '!lto')
-source=("https://github.com/flang-compiler/classic-flang-llvm-project/archive/refs/tags/flang-${_llvmver}-${pkgver}.tar.gz"
+source=("https://github.com/flang-compiler/classic-flang-llvm-project/archive/refs/tags/flang-${_llvmver}.tar.gz"
         "https://github.com/flang-compiler/flang/archive/refs/tags/flang_${pkgver}.tar.gz")
-sha256sums=('20fd35b3408c38a6dd1d60335f30c86d362cf72f2bc53e45d45ae44122662032'
-            '8971e5a48fa47e2193f6b77ff2425430b14f04f4f586ba262aadd43e80ccd0f2')
-
-prepare () {
-  # include string.h for getenv & atoi
-  curl -L https://github.com/llvm/llvm-project/commit/1b4fdf18.patch | patch -p1 -d classic-flang-llvm-project-flang-${_llvmver}-${pkgver}
-
-  # install flang2 in /bin
-  curl -L https://github.com/flang-compiler/flang/commit/1e75c4c5.patch | patch -p1 -d flang-flang_${pkgver}
-}
+sha256sums=('489a29f180f5394c7d5d28969326cd34e1fa1ca30f742b2b2f19dcbe7a52f519'
+            '9cc25b83c4261d7ba41fc44f9ef26f046384330816d18fd28b02db86c9fa3bb8')
 
 build() {
   # unset LIBOMP_USE_VERSION_SYMBOLS because of: /usr/bin/ld: ../../../../lib/libomp.so: version node not found for symbol omp_capture_affinity_@OMP_5.0
-  cmake -S classic-flang-llvm-project-flang-${_llvmver}-${pkgver}/llvm -B build_llvm -DCMAKE_INSTALL_PREFIX=/usr/lib/llvmcf -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_CLASSIC_FLANG=ON -DLLVM_ENABLE_PROJECTS="clang;openmp" -DLLVM_TARGETS_TO_BUILD=X86 -DLLVM_INCLUDE_BENCHMARKS=OFF -DLIBOMP_USE_VERSION_SYMBOLS=OFF -DLLVM_HOST_TRIPLE=$CHOST
+  cmake -S classic-flang-llvm-project-flang-${_llvmver}/llvm -B build_llvm -DCMAKE_INSTALL_PREFIX=/usr/lib/llvmcf -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_CLASSIC_FLANG=ON -DLLVM_ENABLE_PROJECTS="clang;openmp" -DLLVM_TARGETS_TO_BUILD=X86 -DLLVM_INCLUDE_BENCHMARKS=OFF -DLIBOMP_USE_VERSION_SYMBOLS=OFF -DLLVM_HOST_TRIPLE=$CHOST
   make -C build_llvm
 
   # for llvm-config
@@ -34,7 +26,8 @@ build() {
   make -C build_pgmath
 
   # https://github.com/flang-compiler/flang/issues/1204
-  export CXXFLAGS="${CXXFLAGS} -Wno-error=format-security"
+  export CFLAGS="${CFLAGS} -fpermissive"
+  export CXXFLAGS="${CXXFLAGS} -Wno-error=format-security -Wp,-U_FORTIFY_SOURCE"
 
   cmake -S flang-flang_${pkgver} -B build -DCMAKE_INSTALL_PREFIX=/usr/lib/llvmcf -DCMAKE_BUILD_TYPE=Release -DWITH_WERROR=OFF -DCMAKE_Fortran_COMPILER=$PWD/build_llvm/bin/flang -DCMAKE_Fortran_COMPILER_ID=Flang -DLLVM_TARGETS_TO_BUILD=X86 -DLIBPGMATH=$PWD/build_pgmath/lib/libpgmath.so -DFLANG_LIBOMP=$PWD/build_llvm/lib/libomp.so -DCMAKE_INSTALL_RPATH=/usr/lib/llvmcf/lib
   make -C build

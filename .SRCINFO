@@ -1,6 +1,6 @@
 pkgbase = flang-classic
 	pkgdesc = out-of-tree Fortran compiler targeting LLVM
-	pkgver = 20221103
+	pkgver = 20240723
 	pkgrel = 1
 	url = https://github.com/flang-compiler/flang
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = flang-classic
 	depends = libedit
 	options = staticlibs
 	options = !lto
-	source = https://github.com/flang-compiler/classic-flang-llvm-project/archive/refs/tags/flang-15.0.3-20221103.tar.gz
-	source = https://github.com/flang-compiler/flang/archive/refs/tags/flang_20221103.tar.gz
-	sha256sums = 20fd35b3408c38a6dd1d60335f30c86d362cf72f2bc53e45d45ae44122662032
-	sha256sums = 8971e5a48fa47e2193f6b77ff2425430b14f04f4f586ba262aadd43e80ccd0f2
+	source = https://github.com/flang-compiler/classic-flang-llvm-project/archive/refs/tags/flang-18.1.1-20240813.tar.gz
+	source = https://github.com/flang-compiler/flang/archive/refs/tags/flang_20240723.tar.gz
+	sha256sums = 489a29f180f5394c7d5d28969326cd34e1fa1ca30f742b2b2f19dcbe7a52f519
+	sha256sums = 9cc25b83c4261d7ba41fc44f9ef26f046384330816d18fd28b02db86c9fa3bb8
 
 pkgname = flang-classic
