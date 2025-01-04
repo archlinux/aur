@@ -3,7 +3,7 @@
 
 pkgname=yuki-iptv
 pkgver=0.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="IPTV player with EPG support"
 arch=('any')
 url="https://codeberg.org/liya/yuki-iptv"
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('make')
 depends=('python' 'qt6-base' 'mpv' 'python-pyqt6' 'python-pillow' 'ffmpeg'
          'python-gobject' 'python-unidecode'
-         'python-requests' 'python-chardet' 'python-setproctitle' 'python-wand')
+         'python-requests' 'python-chardet' 'python-setproctitle')
 optdepends=('yt-dlp: YouTube channel support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('e60a72d541496dabff3554d3f39463ef7ad1b119e94780ae4078e711d63f9715')
