@@ -1,16 +1,14 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=xrock-git
-pkgver=1.1.2.r5.g95089f5
-pkgrel=3
+pkgver=1.1.2.r6.gee72e88
+pkgrel=1
 epoch=
 pkgdesc="The low level tools for rockchip SOC with maskrom and loader mode support."
-arch=($CARCH)
+arch=('x86_64')
 url="https://github.com/xboot/xrock"
 license=('MIT')
-depends=(
-    'glibc'
-    'libusb')
+depends=('libusb')
 makedepends=('git' 'gcc')
 optdepends=()
 provides=(${pkgname%-git})
@@ -21,10 +19,6 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags | sed 's/^v//g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    git -C "${srcdir}/${pkgname%-git}" clean -dfx
 }
 
 build() {
