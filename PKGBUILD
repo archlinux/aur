@@ -7,11 +7,11 @@ arch=('x86_64')
 pkgdesc="DiscImageCreator, official release with supplemental binaries and text files for full functionality."
 provides=('discimagecreator')
 conflicts=('discimagecreator')
-pkgver=20241001
+pkgver=20250101
 pkgrel=1
 license=('Apache')
-source=("https://github.com/user-attachments/files/17211438/DiscImageCreator_20241001.tar.gz")
-sha256sums=('0880373bf8fb302e8d51773ca5ed1eeaacfd70a34293b345f6db638e179e4d96')
+source=("https://github.com/user-attachments/files/18285720/DiscImageCreator_20250101.tar.gz")
+sha256sums=('eb8ea72d7939e9e683f6633ff9b4d6db269e40ef4e70b89e584989b4c0167640')
 
 package() {
 
@@ -22,8 +22,8 @@ package() {
 	install -Dm 755 ${srcdir}/${_pkgname}/EccEdc.out ${pkgdir}/usr/bin/EccEdc.out
 	install -Dm 755 ${srcdir}/${_pkgname}/unscrambler.out ${pkgdir}/usr/bin/unscrambler.out
 
-	# create symlinks for to deal with stupid idiot filenames for convenience; no, you can't just rename these,
-	# `DiscImageCreator` calls them during execution and the `_linux.out` suffix is hardcoded into the source.
+	# create symlinks to deal with stupid idiot filenames for convenience; no, you can't just rename these,
+	# `DiscImageCreator` calls them during execution and the `.out` suffix is hardcoded into the source.
 	# no, i'm not going to patch this trash.
 	ln -s DiscImageCreator.out ${pkgdir}/usr/bin/DiscImageCreator
 	ln -s DVDAuth.out ${pkgdir}/usr/bin/DVDAuth

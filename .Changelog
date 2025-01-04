@@ -1,5 +1,10 @@
 # discimagecreator-bin .Changelog
 
+## 2025-01-01, discimagecreator-bin 20250101
+
+ * Bump to 20250101
+ * Fixed notes about the stupid symlink nonsense in the PKGBUILD
+
 ## 2024-10-01, discimagecreator-bin 20241001
 
  * Bump to 20241001
@@ -26,12 +31,8 @@
 * Bump to 20231201
 * Fix: Escaped the ampersand in 'Firmware&Tool.md' correctly.
 
-# FAQ
+# NAQ (never asked questions)
 
 ## Why consume the release binary rather than compile from source?
 
 I can't be bothered at the moment.
-
-## This version is known to be broken!!  RAAAHHHGH
-
-ohh shit no way for real
