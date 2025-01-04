@@ -1,0 +1,12 @@
+pkgbase = otf-chillduansans
+	pkgdesc = A CJK sans-serif font with more variety based on Source Han Sans
+	pkgver = 1.30
+	pkgrel = 1
+	url = https://github.com/Warren2060/ChillDuanSans
+	arch = any
+	license = OFL-1.1-RFN
+	depends = fontconfig
+	source = https://github.com/Warren2060/ChillDuanSans/releases/download/v1.30/ChillDuanSans.v1.30.zip
+	sha256sums = 68471063e71f1ffa4d676bfc283ae2e60e328aa29c2bcb52f7da78f52f2adddd
+
+pkgname = otf-chillduansans
