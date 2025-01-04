@@ -4,7 +4,7 @@
 
 pkgname=sddm
 pkgver=0.21.0
-pkgrel=4
+pkgrel=5
 pkgdesc='QML based X11 and Wayland display manager'
 arch=(x86_64)
 url='https://github.com/sddm/sddm'
