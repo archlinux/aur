@@ -1,16 +1,15 @@
-# Maintainer: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
+# Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname='procpath'
-_commit='491eba08366067f7a3c904dda17c5c058e09fec5' # taken from https://heptapod.host/saajns/procpath/-/blob/branch/default/.hgtags
-pkgver=1.6.1
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="A process tree analysis workbench"
 arch=('any')
 url="https://heptapod.host/saajns/procpath"
 license=('LGPL3')
 depends=('python' 'python-jsonpyth' 'python-pygal')
-makedepends=('mercurial' 'python-setuptools')
-source=("${pkgname}-${pkgver}::hg+${url}#revision=${_commit}")
+makedepends=('python-setuptools')
+source=("${pkgname}-${pkgver}::hg+${url}#revision=${pkgver}")
 sha512sums=('SKIP')
 
 build() {
@@ -29,5 +28,11 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
 
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
