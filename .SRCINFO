@@ -134,7 +134,7 @@ pkgbase = sagemath-git
 	source = python-3.13.patch
 	sha256sums = SKIP
 	sha256sums = f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09
-	sha256sums = 9430cece999863878dfaf7f7ca12dcc8d7f5d2df268ceb767ac0fae2226362d8
+	sha256sums = 1ab09f100355fbb86295ddac0a1cbafc06b651f724ea6e44913d8392de691fa5
 	sha256sums = 702ef91be4049f7f533fae9d6799837114aacdee677f2d4889e4c7c415b5bd28
 	sha256sums = 054b4f399e8dd9229b894aea3dc60ddc5e40f671ecc1ffaf253b87336b767b10
 
