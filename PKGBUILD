@@ -1,7 +1,7 @@
 # Maintainer: Raja Mukherji <rajamukherji@gmail.com>
 pkgname=minilang
-pkgver=2.11.0
-pkgrel=3
+pkgver=2.11.1
+pkgrel=1
 epoch=
 pkgdesc="Mini programming language"
 arch=('x86_64' 'i686')
