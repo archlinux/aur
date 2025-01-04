@@ -1,13 +1,16 @@
 pkgbase = python-mplhep_data
 	pkgdesc = Sub-package to hold data (fonts) for mplhep.
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scikit-hep/mplhep_data
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-importlib-metadata
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	depends = python
