@@ -221,7 +221,7 @@ modify_defconfig() {
 
 # Copies the kernel config
 copy_defconfig() {
-    local "_cur_major_ver=$(zcat /proc/config.gz | grep Linux | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
+    local _cur_major_ver="$(uname -r | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
     [[ "${_cur_major_ver}" != "${_kernel_major}" ]] &&
         warning "Major version was updated, you should regen the defconfig"
 
