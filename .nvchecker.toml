@@ -1,0 +1,5 @@
+[flatpak-builder-tools-git]
+source = "manual"
+#source = "git"
+#git = "https://github.com/flatpak/flatpak-builder-tools.git"
+#prefix = "v"

@@ -1,26 +1,22 @@
 pkgbase = flatpak-builder-tools-git
 	pkgdesc = Various helper tools for flatpak-builder
-	pkgver = r275.1cc5c30
-	pkgrel = 2
+	pkgver = r457.a1eb29c
+	pkgrel = 1
 	url = https://github.com/flatpak/flatpak-builder-tools
 	arch = any
 	license = MIT
 	license = unknown
 	makedepends = git
-	depends = flatpak-builder
-	depends = python>=3.6
+	depends = python
 	depends = python-toml
 	depends = python-aiohttp
+	depends = python-requests
 	depends = python-requirements-parser
+	depends = python-yaml
 	depends = perl
-	depends = cpanminus
-	depends = perl-json-maybexs
-	depends = perl-lwp-protocol-https
-	depends = perl-capture-tiny
-	depends = ruby
 	provides = flatpak-builder-tools
 	conflicts = flatpak-builder-tools
 	source = flatpak-builder-tools::git+https://github.com/flatpak/flatpak-builder-tools.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = flatpak-builder-tools-git

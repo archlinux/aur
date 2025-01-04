@@ -1,28 +1,33 @@
-# Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+# Previous Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=flatpak-builder-tools-git
-pkgver=r275.1cc5c30
-pkgrel=2
+pkgver=r457.a1eb29c
+pkgrel=1
 pkgdesc="Various helper tools for flatpak-builder"
 arch=(any)
 url=https://github.com/flatpak/flatpak-builder-tools
 license=(MIT unknown)
-depends=('flatpak-builder'
-         'python>=3.6'
-         'python-toml'
-         'python-aiohttp'
-         'python-requirements-parser'
-         'perl'
-         'cpanminus'
-         'perl-json-maybexs'
-         'perl-lwp-protocol-https'
-         'perl-capture-tiny'
-         'ruby')
+depends=(
+	'python'
+	'python-toml'
+	'python-aiohttp'
+	'python-requests'
+	'python-requirements-parser'
+	'python-yaml'
+	'perl'
+	#'cpanminus'
+	#'flatpak-builder'
+	#'perl-json-maybexs'
+	#'perl-lwp-protocol-https'
+	#'perl-capture-tiny'
+	#'ruby'
+	)
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+$url.git")
-md5sums=(SKIP)
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
