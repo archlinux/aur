@@ -17,6 +17,6 @@ pkgbase = firefly-luciferin-git
 	source = git+https://github.com/sblantipodi/firefly_luciferin.git
 	source = firefly-luciferin
 	sha256sums = SKIP
-	sha256sums = 485478e0376e3d11fd9144c4fafc53b3b7ebc9858ef3b69165edb8e3c6a02717
+	sha256sums = fb1159e5058fe1e02acd6500418668525ca107881a48bb1099fadcb0d73a5cdd
 
 pkgname = firefly-luciferin-git

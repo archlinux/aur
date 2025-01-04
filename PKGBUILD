@@ -18,7 +18,7 @@ provides=('firefly-luciferin')
 conflicts=('firefly-luciferin')
 source=("git+$url.git" "firefly-luciferin")
 sha256sums=('SKIP'
-            '485478e0376e3d11fd9144c4fafc53b3b7ebc9858ef3b69165edb8e3c6a02717')
+            'fb1159e5058fe1e02acd6500418668525ca107881a48bb1099fadcb0d73a5cdd')
 
 pkgver() {
   cd "$srcdir/firefly_luciferin"
@@ -33,19 +33,18 @@ build() {
 package() {
   cd "$srcdir/firefly_luciferin"
 
-  mkdir -p "$pkgdir/usr/share/$pkgname/"
-
+  mkdir -p "$pkgdir/usr/share/${_pkgname}/"
   install -Dm755 $srcdir/"${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
-  install -Dm755 target/fireflyluciferin-*.jar "$pkgdir/usr/share/$pkgname/"
-  install -Dm755 "target/FireflyLuciferin-jar-with-dependencies.jar" "$pkgdir/usr/share/$pkgname/FireflyLuciferin-jar-with-dependencies.jar"
+  install -Dm755 target/fireflyluciferin-*.jar "$pkgdir/usr/share/${_pkgname}/"
+  install -Dm755 "target/FireflyLuciferin-jar-with-dependencies.jar" "$pkgdir/usr/share/${_pkgname}/FireflyLuciferin-jar-with-dependencies.jar"
 
   sed -i 's/^Exec=FireflyLuciferin$/Exec=firefly-luciferin/' "target/classes/build_assets/org.dpsoftware.FireflyLuciferin.desktop"
   install -Dm644 "target/classes/build_assets/org.dpsoftware.FireflyLuciferin.desktop" "$pkgdir/usr/share/applications/org.dpsoftware.FireflyLuciferin.desktop"
   install -Dm644 "target/classes/build_assets/org.dpsoftware.FireflyLuciferin.appdata.xml" "$pkgdir/usr/share/metainfo/org.dpsoftware.FireflyLuciferin.appdata.xml"
   install -Dm644 "target/classes/build_assets/org.dpsoftware.FireflyLuciferin.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.dpsoftware.FireflyLuciferin.svg"
 
-  mkdir -p "$pkgdir/usr/share/$pkgname/classes/"
-  cp -r "target/classes/org" "$pkgdir/usr/share/$pkgname/classes/"
-  find "$pkgdir/usr/share/$pkgname/classes/org" -type f -name '*.class' -delete
-  find "$pkgdir/usr/share/$pkgname/classes/org" -type d -empty -delete
+  mkdir -p "$pkgdir/usr/share/${_pkgname}/classes/"
+  cp -r "target/classes/org" "$pkgdir/usr/share/${_pkgname}/classes/"
+  find "$pkgdir/usr/share/${_pkgname}/classes/org" -type f -name '*.class' -delete
+  find "$pkgdir/usr/share/${_pkgname}/classes/org" -type d -empty -delete
 }

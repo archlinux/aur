@@ -4,5 +4,5 @@ JAVA_HOME=/usr/lib/jvm/java-23-openjdk exec \
   -XX:+UseZGC -XX:+UseStringDeduplication -Xms64m -Xmx1024m \
   --add-modules jdk.incubator.vector \
   --enable-native-access=ALL-UNNAMED \
-  -jar /usr/share/firefly-luciferin-git/FireflyLuciferin-jar-with-dependencies.jar \
+  -jar /usr/share/firefly-luciferin/FireflyLuciferin-jar-with-dependencies.jar \
   "$@"
