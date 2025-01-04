@@ -1,6 +1,6 @@
 pkgbase = dupeguru-git
 	pkgdesc = Find duplicate files on your system
-	pkgver = 4.3.1.r40.g9ad84ade
+	pkgver = 4.3.1.r63.g8f197ea7
 	pkgrel = 1
 	url = https://dupeguru.voltaicideas.net/
 	arch = x86_64

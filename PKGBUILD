@@ -1,7 +1,7 @@
 # Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 _pkgname=dupeguru
 pkgname="${_pkgname}-git"
-pkgver=4.3.1.r40.g9ad84ade
+pkgver=4.3.1.r63.g8f197ea7
 pkgrel=1
 pkgdesc='Find duplicate files on your system'
 arch=('x86_64')
@@ -28,7 +28,7 @@ prepare() {
   sed -i '/black --check/d' tox.ini
 
   # Update sphinx requirement
-  sed -i 's/^\(sphinx>=5\.3\.0,<\)7\.0\.0$/\18.0.0/' requirements.txt
+  sed -i 's/^\(sphinx>=5\.3\.0,<\)8\.0\.0$/\19.0.0/' requirements.txt
 
   # Fix tox python versions
   sed -i 's/^envlist = py36,py37,py38,py39,py310$/envlist = py37,py38,py39,py310,py311/' tox.ini
