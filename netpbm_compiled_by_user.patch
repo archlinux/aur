@@ -1,0 +1,12 @@
+From: Vagrant Cascadian <vagrant@reproducible-builds.org>
+Date: Sat, 24 Sep 2022 21:25:21 +0000
+Bug-Debian: https://bugs.debian.org/1020658
+Subject: buildtools/stamp-date: Remove COMPILED_BY.
+
+--- netpbm-free-10.97.00.orig/buildtools/stamp-date
++++ netpbm-free-10.97.00/buildtools/stamp-date
+@@ -36,4 +36,3 @@ if [ "$SOURCE_DATE_OR_NONE" != "NONE" ];
+   echo "#define SOURCE_DATETIME $SOURCE_DATE_OR_NONE"
+ fi
+ echo "#define BUILD_DATETIME $BUILD_DATETIME"
+-echo "#define COMPILED_BY \"$USER\""
