@@ -1,13 +1,13 @@
 pkgbase = blepfx-crunchrr-clap-bin
 	pkgdesc = a digital degrader
-	pkgver = release_66
-	pkgrel = 1
+	pkgver = release_67
+	pkgrel = 2
 	url = https://fx.amee.ee/plugin/crunchrr
 	arch = x86_64
 	license = custom:Potion Seller Public License
 	options = strip
 	options = !debug
-	source = https://github.com/blepfx/dist/releases/download/release-66/crunchrr-x86_64-unknown-linux-gnu.zip
+	source = https://github.com/blepfx/dist/releases/download/release-67/crunchrr-x86_64-unknown-linux-gnu.zip
 	source = LICENSE::https://raw.githubusercontent.com/blepfx/dist/refs/heads/main/LICENSE.txt
 	sha256sums = bf5102122597b4f7638115d41f823f5f7b374b52be8394e0dbf6ac8781ccb06c
 	sha256sums = 1cba06d144eb15023d17c4f41ff04ec404bb19550cec408f72373effdb6463ed
