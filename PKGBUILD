@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=cloudip
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='CLI tool for identifying cloud providers'
 arch=('x86_64')
 url="https://github.com/jongwoo328/$pkgname"
 license=('Apache-2.0')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5224e41315140ebf2db1d72817b0506f42531868589a4a495b1bdea2425f4192')
+sha256sums=('80f7714ea8a52fd7c993cf09c303100d3215f0342c288177f7964aabe9b59f4a')
 makedepends=('go')
 depends=('glibc')
 
