@@ -4,19 +4,20 @@
 
 _appname=lm-studio
 pkgname=lmstudio
-pkgver=0.3.5.2
+pkgver=0.3.6.7
 pkgrel=1
 pkgdesc="Discover, download, and run local LLMs"
 arch=('x86_64')
 url="https://lmstudio.ai/"
 license=('custom')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2' 'clblast')
+makedepends=('graphicsmagick')
 options=(!strip !debug)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://releases.lmstudio.ai/linux/x86/${pkgver%.*}/${pkgver##*.}/LM_Studio-${pkgver%.*}.AppImage")
+source_x86_64=("${_appimage}::https://installers.lmstudio.ai/linux/x64/${pkgver%.*}-${pkgver##*.}/LM-Studio-${pkgver%.*}-${pkgver##*.}-x64.AppImage")
 conflicts=(lmstudio-appimage)
 noextract=("${_appimage}")
-sha256sums_x86_64=('ca5512e96ac66af356d566eba019c22de78c05e057e35a27b7029e40bba0ebfb')
+sha256sums_x86_64=('f74862e754f88ade3a1b5a256bfad22f41d4e5a980d06add6efcccc176f06688')
 
 prepare() {
   chmod +x "${_appimage}"
@@ -34,15 +35,21 @@ build() {
 package() {
   # AppImage
   install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-  install -Dm644 "${srcdir}/squashfs-root/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/squashfs-root/LICENSE"* -t "${pkgdir}/opt/${pkgname}"
 
   # Desktop file
   install -Dm644 "${srcdir}/squashfs-root/${_appname}.desktop" \
     "${pkgdir}/usr/share/applications/${_appname}.desktop"
 
-  # Icon images
-  install -dm755 "${pkgdir}/usr/share/"
-  cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+  #source icon from squashfs
+  src_icon="$srcdir/squashfs-root/usr/share/icons/hicolor/0x0/apps/lm-studio.png"
+  sizes=("16x16" "32x32" "48x48" "64x64" "128x128" "256x256")
+
+  # Loop through each size and create resized icons
+  for size in "${sizes[@]}"; do
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/$size/apps"
+    gm convert "$src_icon" -resize "$size" "$pkgdir/usr/share/icons/hicolor/$size/apps/lm-studio.png"
+  done
 
   # Symlink executable
   install -dm755 "${pkgdir}/usr/bin"
