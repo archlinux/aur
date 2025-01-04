@@ -1,6 +1,6 @@
 pkgbase = carch-git
 	pkgdesc = An automated script for quick & easy Arch Linux system setup
-	pkgver = 4.1.1.r57.g7ec5299
+	pkgver = v4.1.1.r68.gc24dc70
 	pkgrel = 1
 	url = https://github.com/harilvfs/carch
 	arch = any
@@ -31,9 +31,10 @@ pkgbase = carch-git
 	optdepends = zsh: for Zsh completion support
 	optdepends = fish: for Fish completion support
 	optdepends = ttf-nerd-fonts-symbols: symbols and icons
+	provides = carch
 	conflicts = carch
 	options = !strip
-	source = carch-git::git+https://github.com/harilvfs/carch.git
+	source = carch::git+https://github.com/harilvfs/carch.git
 	md5sums = SKIP
 
 pkgname = carch-git
