@@ -2,7 +2,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=you-get
-pkgver=0.4.1730
+pkgver=0.4.1743
 pkgrel=1
 pkgdesc="A YouTube/Youku/Niconico video downloader written in Python 3."
 url="https://www.soimort.org/you-get/"
@@ -14,7 +14,7 @@ checkdepends=('python-dukpy')
 optdepends=('python-dukpy: extract videos from YouTube'
             'python-pysocks: for socks proxy support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/soimort/you-get/archive/v$pkgver.tar.gz")
-b2sums=('c372126c9bdce61b65909753347b6c206e3799bb793e656824256c26a55a88dd2b11c70343cd82e48f1aae882b004b9b87ccfacada7974c366516f6ace86552f')
+b2sums=('d8151c7288565fe7f73d8f581dd5ea6ab0970f2d89f0b7cfc615d469ca93efbcf8a52eb166275ff1d5c4188a8c94306f651748464eb8857df4540e99a5f99ecd')
 
 build() {
   cd you-get-$pkgver
