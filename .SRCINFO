@@ -1,6 +1,6 @@
 pkgbase = crapto1
 	pkgdesc = Utilities extract keys from nonces collected during the authentication process
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 3
 	url = https://github.com/li0ard/crapto1/
 	arch = i686
