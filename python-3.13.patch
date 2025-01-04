@@ -160,205 +160,70 @@ index fc389b32a72..1cce2fa6f14 100644
      return newcommand + defn
  
  
-diff --git a/src/doc/de/tutorial/tour_linalg.rst b/src/doc/de/tutorial/tour_linalg.rst
-index 1be6540c89e..abd47d2c488 100644
---- a/src/doc/de/tutorial/tour_linalg.rst
-+++ b/src/doc/de/tutorial/tour_linalg.rst
-@@ -245,4 +245,4 @@ Beachten Sie, dass Python zwischen Klein- und Großschreibung unterscheidet:
-     sage: M = MatrixSpace(QQ, 10,10, Sparse=True)
-     Traceback (most recent call last):
-     ...
--    TypeError: ...__init__() got an unexpected keyword argument 'Sparse'
-+    TypeError: ...__init__() got an unexpected keyword argument 'Sparse'...
-diff --git a/src/doc/en/tutorial/tour_linalg.rst b/src/doc/en/tutorial/tour_linalg.rst
-index 84a45f4931b..d1dde6a485e 100644
---- a/src/doc/en/tutorial/tour_linalg.rst
-+++ b/src/doc/en/tutorial/tour_linalg.rst
-@@ -239,4 +239,4 @@ Note that Python is case sensitive:
-     sage: M = MatrixSpace(QQ, 10,10, Sparse=True)
-     Traceback (most recent call last):
-     ...
--    TypeError: ...__init__() got an unexpected keyword argument 'Sparse'
-+    TypeError: ...__init__() got an unexpected keyword argument 'Sparse'...
-diff --git a/src/doc/fr/tutorial/tour_linalg.rst b/src/doc/fr/tutorial/tour_linalg.rst
-index 582a915edef..0dcdf044453 100644
---- a/src/doc/fr/tutorial/tour_linalg.rst
-+++ b/src/doc/fr/tutorial/tour_linalg.rst
-@@ -241,4 +241,4 @@ Notez que Python distingue les majuscules des minuscules :
-     sage: M = MatrixSpace(QQ, 10,10, Sparse=True)
-     Traceback (most recent call last):
-     ...
--    TypeError: ...__init__() got an unexpected keyword argument 'Sparse'
-+    TypeError: ...__init__() got an unexpected keyword argument 'Sparse'...
-diff --git a/src/doc/ja/tutorial/tour_linalg.rst b/src/doc/ja/tutorial/tour_linalg.rst
-index 227f879136e..263c5d7943a 100644
---- a/src/doc/ja/tutorial/tour_linalg.rst
-+++ b/src/doc/ja/tutorial/tour_linalg.rst
-@@ -252,4 +252,4 @@ Pythonでは，大文字小文字が区別されることに注意:
-     sage: M = MatrixSpace(QQ, 10,10, Sparse=True)
-     Traceback (most recent call last):
-     ...
--    TypeError: ...__init__() got an unexpected keyword argument 'Sparse'
-+    TypeError: ...__init__() got an unexpected keyword argument 'Sparse'...
-diff --git a/src/doc/pt/tutorial/tour_linalg.rst b/src/doc/pt/tutorial/tour_linalg.rst
-index 806a36c6446..79eb3ac7a9c 100644
---- a/src/doc/pt/tutorial/tour_linalg.rst
-+++ b/src/doc/pt/tutorial/tour_linalg.rst
-@@ -220,4 +220,4 @@ Note que o Python é sensível a maiúsculas e minúsculas:
-     sage: M = MatrixSpace(QQ, 10,10, Sparse=True)
-     Traceback (most recent call last):
-     ...
--    TypeError: ...__init__() got an unexpected keyword argument 'Sparse'
-+    TypeError: ...__init__() got an unexpected keyword argument 'Sparse'...
-diff --git a/src/doc/ru/tutorial/tour_linalg.rst b/src/doc/ru/tutorial/tour_linalg.rst
-index bf2a1084544..6ed95084d90 100644
---- a/src/doc/ru/tutorial/tour_linalg.rst
-+++ b/src/doc/ru/tutorial/tour_linalg.rst
-@@ -214,4 +214,4 @@ Sage поддерживает разреженную линейную алгеб
-     sage: M = MatrixSpace(QQ, 10,10, Sparse=True)
-     Traceback (most recent call last):
-     ...
--    TypeError: ...__init__() got an unexpected keyword argument 'Sparse'
-+    TypeError: ...__init__() got an unexpected keyword argument 'Sparse'...
-diff --git a/src/sage/categories/map.pyx b/src/sage/categories/map.pyx
-index 43e476847d0..0007555326a 100644
---- a/src/sage/categories/map.pyx
-+++ b/src/sage/categories/map.pyx
-@@ -275,7 +275,7 @@ cdef class Map(Element):
-         maps::
+diff --git a/pyproject.toml b/pyproject.toml
+index da06db03649..ca2d483197a 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -74,11 +74,12 @@ classifiers = [
+     "Programming Language :: Python :: 3.10",
+     "Programming Language :: Python :: 3.11",
+     "Programming Language :: Python :: 3.12",
++    "Programming Language :: Python :: 3.13",
+     "Programming Language :: Python :: Implementation :: CPython",
+     "Topic :: Scientific/Engineering :: Mathematics",
+ ]
+ urls = {Homepage = "https://www.sagemath.org"}
+-requires-python = ">=3.9, <3.13"
++requires-python = ">=3.9, <3.14"
  
-             sage: phi.domain                                                            # needs sage.rings.number_field
--            <weakref at ...; to 'NumberField_quadratic_with_category' at ...>
-+            <weakref at ...; to '...NumberField_quadratic_with_category' at ...>
-             sage: phi._make_strong_references()                                         # needs sage.rings.number_field
-             sage: print(phi.domain)                                                     # needs sage.rings.number_field
-             The constant function (...) -> Number Field in a
-@@ -343,7 +343,7 @@ cdef class Map(Element):
-         maps::
+ [project.optional-dependencies]
+ R = [
+diff --git a/src/setup.cfg.m4 b/src/setup.cfg.m4
+index 969793209c8..3a4ec930b8f 100644
+--- a/src/setup.cfg.m4
++++ b/src/setup.cfg.m4
+@@ -9,7 +9,7 @@ license_files = LICENSE.txt
+ include(`setup_cfg_metadata.m4')dnl'
  
-             sage: phi.domain                                                            # needs sage.rings.number_field
--            <weakref at ...; to 'NumberField_quadratic_with_category' at ...>
-+            <weakref at ...; to '...NumberField_quadratic_with_category' at ...>
-             sage: phi._make_strong_references()                                         # needs sage.rings.number_field
-             sage: print(phi.domain)                                                     # needs sage.rings.number_field
-             The constant function (...) -> Number Field in a
-diff --git a/src/sage/misc/bindable_class.py b/src/sage/misc/bindable_class.py
-index 743b5a19da6..c23ba0c2c43 100644
---- a/src/sage/misc/bindable_class.py
-+++ b/src/sage/misc/bindable_class.py
-@@ -113,7 +113,7 @@ class BindableClass(metaclass=ClasscallMetaclass):
-         Still, documentation works as usual::
+ [options]
+-python_requires = >=3.9, <3.13
++python_requires = >=3.9, <3.14
+ install_requires =
+     SPKG_INSTALL_REQUIRES_six
+ dnl From build/pkgs/sagelib/dependencies
+diff --git a/src/sage/misc/temporary_file.py b/src/sage/misc/temporary_file.py
+index 998260be8eb..de872802805 100644
+--- a/src/sage/misc/temporary_file.py
++++ b/src/sage/misc/temporary_file.py
+@@ -32,7 +32,9 @@
+ # as the parent for all temporary files & directories created by them.
+ # This lets us clean up after those two functions when sage exits normally
+ # using an atexit hook
+-TMP_DIR_FILENAME_BASE = tempfile.TemporaryDirectory()
++# Note that `TemporaryDirectory()` will cleanup on program exit;
++# we keep the atexit hook to be redundant, in case that fails.
++TMP_DIR_FILENAME_BASE = tempfile.TemporaryDirectory(prefix='sage_')
+ atexit.register(lambda: TMP_DIR_FILENAME_BASE.cleanup())
  
-             sage: outer.Inner.__doc__
--            ' some documentation '
-+            '...some documentation '
  
-     TESTS::
- 
-diff --git a/src/sage/misc/sagedoc.py b/src/sage/misc/sagedoc.py
-index 0505f6039a9..6147ec4983b 100644
---- a/src/sage/misc/sagedoc.py
-+++ b/src/sage/misc/sagedoc.py
-@@ -694,7 +694,7 @@ def format(s, embedded=False):
-     We check that the todo Sphinx extension is correctly activated::
- 
-         sage: sage.misc.sagedoc.format(sage.combinat.ranker.on_fly.__doc__)             # needs sphinx
--        "   Return ...  Todo: add tests as in combinat::rankers\n"
-+        "...Return ...Todo: add tests as in combinat::rankers\n"
- 
-     In the following use case, the ``nodetex`` directive would have been ignored prior
-     to :issue:`11815`::
-@@ -1135,10 +1135,11 @@ def search_src(string, extra1='', extra2='', extra3='', extra4='',
-     The following produces an error because the string 'fetch(' is a
-     malformed regular expression::
- 
--        sage: print(search_src(" fetch(", "def", interact=False))
--        Traceback (most recent call last):
--        ...
--        error: missing ), unterminated subpattern at position 6
-+        sage: try:
-+        ....:     print(search_src(" fetch(", "def", interact=False))
-+        ....: except Exception as e:
-+        ....:     print(e)
-+        missing ), unterminated subpattern at position 6
- 
-     To fix this, *escape* the parenthesis with a backslash::
- 
-@@ -1186,7 +1187,6 @@ def search_src(string, extra1='', extra2='', extra3='', extra4='',
-         misc/sagedoc.py:... len(search_src("matrix", interact=False).splitlines())...
-         misc/sagedoc.py:... len(search_src("matrix", module="sage.calculus", interact=False).splitlines())...
-         misc/sagedoc.py:... len(search_src("matrix", path_re="calc"...
--        misc/sagedoc.py:... print(search_src(" fetch(", "def", interact=False))...
-         misc/sagedoc.py:... print(search_src(r" fetch\(", "def", interact=False))...
-         misc/sagedoc.py:... print(search_src(r" fetch\(", "def", "pyx", interact=False))...
-         misc/sagedoc.py:... s = search_src('Matrix', path_re='matrix', interact=False); s.find('x') > 0...
-@@ -1456,7 +1456,7 @@ class _sage_doc:
-         sage: browse_sage_doc._open("reference", testing=True)[0]                       # needs sagemath_doc_html
-         'http://localhost:8000/doc/live/reference/index.html'
-         sage: browse_sage_doc(identity_matrix, 'rst')[-107:-47]                         # needs sage.modules
--        'Full MatrixSpace of 3 by 3 sparse matrices over Integer Ring'
-+        '...Full MatrixSpace of 3 by 3 sparse matrices...'
+@@ -533,14 +533,15 @@ def spyx_tmp() -> str:
+     We cache the result of this function "by hand" so that the same
+     temporary directory will always be returned. A function is used to
+     delay creating a directory until (if) it is needed. The temporary
+-    directory is removed when sage terminates by way of an atexit
+-    hook.
++    directory is automatically removed when sage terminates.
      """
-     def __init__(self):
-         """
-diff --git a/src/sage/misc/sageinspect.py b/src/sage/misc/sageinspect.py
-index 585112b5061..12f319fc8e3 100644
---- a/src/sage/misc/sageinspect.py
-+++ b/src/sage/misc/sageinspect.py
-@@ -1986,7 +1986,7 @@ def sage_getdoc(obj, obj_name='', embedded=False):
+     global _spyx_tmp
+     if _spyx_tmp:
+         return _spyx_tmp
  
-         sage: from sage.misc.sageinspect import sage_getdoc
-         sage: sage_getdoc(identity_matrix)[87:124]                                      # needs sage.modules
--        'Return the n x n identity matrix over'
-+        '...the n x n identity matrix...'
-         sage: def f(a, b, c, d=1): return a+b+c+d
-         ...
-         sage: import functools
-diff --git a/src/sage/modular/modsym/modsym.py b/src/sage/modular/modsym/modsym.py
-index fb46d0edafa..ed7c9285169 100644
---- a/src/sage/modular/modsym/modsym.py
-+++ b/src/sage/modular/modsym/modsym.py
-@@ -369,7 +369,7 @@ def ModularSymbols(group=1,
-         {}
-         sage: M = ModularSymbols(11,use_cache=True)
-         sage: sage.modular.modsym.modsym._cache
--        {(Congruence Subgroup Gamma0(11), 2, 0, Rational Field): <weakref at ...; to 'ModularSymbolsAmbient_wt2_g0_with_category' at ...>}
-+        {(Congruence Subgroup Gamma0(11), 2, 0, Rational Field): <weakref at ...; to '...ModularSymbolsAmbient_wt2_g0_with_category' at ...>}
-         sage: M is ModularSymbols(11,use_cache=True)
-         True
-         sage: M is ModularSymbols(11,use_cache=False)
-diff --git a/src/sage/repl/attach.py b/src/sage/repl/attach.py
-index b3e20fe61d8..b9997d8f2df 100644
---- a/src/sage/repl/attach.py
-+++ b/src/sage/repl/attach.py
-@@ -40,7 +40,7 @@ character-by-character::
-     ....:     traceback.print_exc(file=sys.stdout)
-     Traceback (most recent call last):
-     ...
--        exec(preparse_file(f.read()) + "\n", globals)
-+        exec(preparse_file(f.read()) + "\n", globals)...
-       File "<string>", line 3, in <module>
-     ValueError: third
-     sage: detach(src)
-@@ -52,7 +52,7 @@ character-by-character::
-     ....:     traceback.print_exc(file=sys.stdout)
-     Traceback (most recent call last):
-     ...
--        exec(code, globals)
-+        exec(code, globals)...
-       File ".../foobar...sage.py", line ..., in <module>
-         raise ValueError("third")   # this should appear in the source snippet...
-     ValueError: third
-diff --git a/src/sage/repl/rich_output/pretty_print.py b/src/sage/repl/rich_output/pretty_print.py
-index 93833e01cd8..8e00e3d70e4 100644
---- a/src/sage/repl/rich_output/pretty_print.py
-+++ b/src/sage/repl/rich_output/pretty_print.py
-@@ -160,7 +160,7 @@ class SequencePrettyPrinter(SageObject):
-             sage: seq._concatenate_graphs().show(edge_labels=True)                      # needs sage.graphs sage.plot
-             Traceback (most recent call last):
-             ...
--            TypeError: ...matplotlib() got an unexpected keyword argument 'edge_labels'
-+            TypeError: ...matplotlib() got an unexpected keyword argument 'edge_labels'...
-         """
-         try:
-             from sage.plot.plot import Graphics
+-    d = tempfile.TemporaryDirectory()
+-    _spyx_tmp = os.path.join(d.name, 'spyx')
+-    atexit.register(lambda: d.cleanup())
++    # We don't use `tempfile.TemporaryDirectory()` here because it
++    # will be cleaned up on child exit (e.g. for parallel testing)
++    # For some reason this doesn't affect the `TemporaryDirectory`
++    # stored in the global `TMP_DIR_FILENAME_BASE`.
++    _spyx_tmp = tmp_dir(name='spyx_')
+     return _spyx_tmp

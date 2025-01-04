@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.6.beta2.r0.gc9dd1e85118
+pkgver=10.6.beta3.r0.g1be0a589260
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -116,7 +116,6 @@ optdepends=('benzene: for generating fusenes and benzenoids'
             'python-pyscipopt: SCIP mixed integer linear programming backend'
             'rubiks: Rubiks cube algorithms'
             'sage-data-cunningham_tables: list of prime numbers in the Cunningham table'
-            'sage-notebook-exporter: convert flask notebooks to Jupyter'
             'sagemath-doc: HTML documentation'
             'shared_meataxe: faster matrix arithmetic over finite fields'
             'sirocco: for computing the fundamental group of the complement of a plane curve'
@@ -142,9 +141,9 @@ source=(git+https://github.com/sagemath/sage#branch=develop
         python-3.13.patch)
 sha256sums=('SKIP'
             'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09'
-            '69766672b6d836e013a4c9885594e8219ceefc3350255ed1f528ff4847a813ec'
+            '1ab09f100355fbb86295ddac0a1cbafc06b651f724ea6e44913d8392de691fa5'
             '702ef91be4049f7f533fae9d6799837114aacdee677f2d4889e4c7c415b5bd28'
-            'dfeabde2a25c4c55391e453b9f2cbd171ab585f2c3e17a2a7206c539ac5d16eb')
+            '054b4f399e8dd9229b894aea3dc60ddc5e40f671ecc1ffaf253b87336b767b10')
 _pkgs=(standard
        bliss
        coxeter3

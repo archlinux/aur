@@ -1,6 +1,6 @@
 pkgbase = sagemath-git
 	pkgdesc = Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab
-	pkgver = 10.6.beta2.r0.gc9dd1e85118
+	pkgver = 10.6.beta3.r0.g1be0a589260
 	pkgrel = 1
 	url = http://www.sagemath.org
 	arch = x86_64
@@ -121,7 +121,6 @@ pkgbase = sagemath-git
 	optdepends = python-pyscipopt: SCIP mixed integer linear programming backend
 	optdepends = rubiks: Rubiks cube algorithms
 	optdepends = sage-data-cunningham_tables: list of prime numbers in the Cunningham table
-	optdepends = sage-notebook-exporter: convert flask notebooks to Jupyter
 	optdepends = sagemath-doc: HTML documentation
 	optdepends = shared_meataxe: faster matrix arithmetic over finite fields
 	optdepends = sirocco: for computing the fundamental group of the complement of a plane curve
@@ -135,8 +134,8 @@ pkgbase = sagemath-git
 	source = python-3.13.patch
 	sha256sums = SKIP
 	sha256sums = f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09
-	sha256sums = 69766672b6d836e013a4c9885594e8219ceefc3350255ed1f528ff4847a813ec
+	sha256sums = 9430cece999863878dfaf7f7ca12dcc8d7f5d2df268ceb767ac0fae2226362d8
 	sha256sums = 702ef91be4049f7f533fae9d6799837114aacdee677f2d4889e4c7c415b5bd28
-	sha256sums = dfeabde2a25c4c55391e453b9f2cbd171ab585f2c3e17a2a7206c539ac5d16eb
+	sha256sums = 054b4f399e8dd9229b894aea3dc60ddc5e40f671ecc1ffaf253b87336b767b10
 
 pkgname = sagemath-git

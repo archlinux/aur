@@ -1,8 +1,8 @@
 diff --git a/src/sage/arith/misc.py b/src/sage/arith/misc.py
-index 745d5fcbbe7..86409ab3243 100644
+index 637ed9192bd..12f1760b67f 100644
 --- a/src/sage/arith/misc.py
 +++ b/src/sage/arith/misc.py
-@@ -2691,9 +2691,14 @@ def factor(n, proof=None, int_=False, algorithm='pari', verbose=0, **kwds):
+@@ -2691,9 +2691,10 @@ def factor(n, proof=None, int_=False, algorithm='pari', verbose=0, **kwds):
  
      Any object which has a factor method can be factored like this::
  
@@ -11,42 +11,34 @@ index 745d5fcbbe7..86409ab3243 100644
 -        (-i) * (-i - 2)^3 * (i + 1)^3 * (-2*i + 3) * (i + 4)
 +        sage: # needs sage.rings.number_field
 +        sage: K.<i> = QuadraticField(-1)
-+        sage: f = factor(122 - 454*i); f                                                # random
-+        (i) * (i - 1)^3 * (i + 2)^3 * (3*i + 2) * (i + 4)
-+        sage: len(f)
-+        4
-+        sage: product(p[0]^p[1] for p in f) * f.unit()
-+        -454*i + 122
++        sage: f = factor(122 - 454*i); f
++        (-1) * (i - 1)^3 * (2*i - 1)^3 * (3*i + 2) * (i + 4)
  
      To access the data in a factorization::
  
-@@ -2775,8 +2780,10 @@ def radical(n, *args, **kwds):
-         ...
+@@ -2776,7 +2777,7 @@ def radical(n, *args, **kwds):
          ArithmeticError: radical of 0 is not defined
          sage: K.<i> = QuadraticField(-1)                                                # needs sage.rings.number_field
--        sage: radical(K(2))                                                             # needs sage.rings.number_field
+         sage: radical(K(2))                                                             # needs sage.rings.number_field
 -        i + 1
-+        sage: r = radical(K(2)); r                                                      # random, needs sage.rings.number_field
 +        i - 1
-+        sage: r.norm()                                                                  # needs sage.rings.number_field
-+        2
  
      Tests with numpy and gmpy2 numbers::
  
-@@ -3031,7 +3038,7 @@ def is_squarefree(n):
+@@ -3031,7 +3032,7 @@ def is_squarefree(n):
          sage: is_squarefree(O(2))
          False
          sage: O(2).factor()
 -        (-I) * (I + 1)^2
-+        (...) * (...)^2
++        (I) * (I - 1)^2
  
      This method fails on domains which are not Unique Factorization Domains::
  
 diff --git a/src/sage/calculus/calculus.py b/src/sage/calculus/calculus.py
-index ef4854db676..fc4e92396f0 100644
+index 64881aba812..cae93ef8bcd 100644
 --- a/src/sage/calculus/calculus.py
 +++ b/src/sage/calculus/calculus.py
-@@ -793,8 +793,7 @@ def nintegral(ex, x, a, b,
+@@ -794,8 +794,7 @@ def nintegral(ex, x, a, b,
      to high precision::
  
          sage: gp.eval('intnum(x=17,42,exp(-x^2)*log(x))')
@@ -70,7 +62,7 @@ index 76f0570a819..0e4d13ef889 100644
                  sage: gcd(t, i)
                  Traceback (most recent call last):
 diff --git a/src/sage/doctest/sources.py b/src/sage/doctest/sources.py
-index 78c45195970..adb5f638395 100644
+index 7589f62922b..9807c1d5e12 100644
 --- a/src/sage/doctest/sources.py
 +++ b/src/sage/doctest/sources.py
 @@ -766,11 +766,11 @@ class FileDocTestSource(DocTestSource):
@@ -88,7 +80,7 @@ index 78c45195970..adb5f638395 100644
              True
  
 diff --git a/src/sage/dynamics/arithmetic_dynamics/berkovich_ds.py b/src/sage/dynamics/arithmetic_dynamics/berkovich_ds.py
-index f84ab7e94ed..822845a69be 100644
+index 9734b3767ac..4de0e8f6158 100644
 --- a/src/sage/dynamics/arithmetic_dynamics/berkovich_ds.py
 +++ b/src/sage/dynamics/arithmetic_dynamics/berkovich_ds.py
 @@ -690,10 +690,10 @@ class DynamicalSystem_Berkovich_projective(DynamicalSystem_Berkovich):
@@ -96,19 +88,19 @@ index f84ab7e94ed..822845a69be 100644
              sage: # needs sage.rings.number_field
              sage: ideal = A.ideal(5).factor()[1][0]; ideal
 -            Fractional ideal (2*a + 1)
-+            Fractional ideal (-a + 2)
++            Fractional ideal (-2*a - 1)
              sage: g = f.conjugate(conj, new_ideal=ideal)
              sage: g.domain().ideal()
 -            Fractional ideal (2*a + 1)
-+            Fractional ideal (-a + 2)
++            Fractional ideal (-2*a - 1)
          """
          if self.domain().is_padic_base():
              return DynamicalSystem_Berkovich(self._system.conjugate(M, adjugate=adjugate))
 diff --git a/src/sage/dynamics/arithmetic_dynamics/projective_ds.py b/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
-index 8cd24f6611d..90b87f53ada 100644
+index 591693e5af8..fa9d808fd33 100644
 --- a/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
 +++ b/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
-@@ -1790,7 +1790,7 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
+@@ -1791,7 +1791,7 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
              sage: P.<x,y> = ProjectiveSpace(K,1)
              sage: f = DynamicalSystem_projective([1/3*x^2+1/a*y^2, y^2])
              sage: f.primes_of_bad_reduction()                                           # needs sage.rings.function_field
@@ -240,7 +232,7 @@ index b98c050d889..712a37a6dc6 100644
      The two elliptic curves look the same, but internally the floating
      point numbers are slightly different.
 diff --git a/src/sage/interfaces/interface.py b/src/sage/interfaces/interface.py
-index 6f2fb118968..4a1884fad02 100644
+index bd1095e8c70..2656b56e7f6 100644
 --- a/src/sage/interfaces/interface.py
 +++ b/src/sage/interfaces/interface.py
 @@ -1045,8 +1045,7 @@ class InterfaceElement(Element):
@@ -254,7 +246,7 @@ index 6f2fb118968..4a1884fad02 100644
              '1.e80'
  
 diff --git a/src/sage/interfaces/mathematica.py b/src/sage/interfaces/mathematica.py
-index 71f233746e7..bee91601ae0 100644
+index 488a1fb1af5..fb8eebd8118 100644
 --- a/src/sage/interfaces/mathematica.py
 +++ b/src/sage/interfaces/mathematica.py
 @@ -187,8 +187,7 @@ We find the `x` such that `e^x - 3x = 0`.
@@ -268,7 +260,7 @@ index 71f233746e7..bee91601ae0 100644
  Next we find the minimum of a polynomial using the two different
  ways of accessing Mathematica::
 diff --git a/src/sage/interfaces/mathics.py b/src/sage/interfaces/mathics.py
-index 3104fefe665..504ae9056cd 100644
+index 3ca4bee83ef..6bed0895729 100644
 --- a/src/sage/interfaces/mathics.py
 +++ b/src/sage/interfaces/mathics.py
 @@ -196,8 +196,7 @@ We find the `x` such that `e^x - 3x = 0`.
@@ -296,7 +288,7 @@ index b8df280857c..234e9373fca 100644
              sage: gp('intnum(x=0,1,exp(-sqrt(x)))')
              0.52848223531423071361790491935415653021675547587292866196865279321015401702040079
 diff --git a/src/sage/libs/pari/__init__.py b/src/sage/libs/pari/__init__.py
-index ccb18792918..c0f6515685a 100644
+index b5bc281db4d..2c4f8fa4b24 100644
 --- a/src/sage/libs/pari/__init__.py
 +++ b/src/sage/libs/pari/__init__.py
 @@ -165,12 +165,11 @@ call individually::
@@ -313,7 +305,7 @@ index ccb18792918..c0f6515685a 100644
 +    3.605463601432652085915820564207726774810268996598024745444380641430          # 32-bit
  """
  
- def _get_pari_instance():
+ 
 diff --git a/src/sage/libs/pari/convert_sage.pyx b/src/sage/libs/pari/convert_sage.pyx
 index e26238d7c38..48338e0279c 100644
 --- a/src/sage/libs/pari/convert_sage.pyx
@@ -431,10 +423,10 @@ index 1ed571cd4b9..38fee89202b 100644
      sage: pari = Pari()
  
 diff --git a/src/sage/matrix/matrix2.pyx b/src/sage/matrix/matrix2.pyx
-index 3682c2be14e..1a6580f8fc3 100644
+index 92599206166..aee825cb531 100644
 --- a/src/sage/matrix/matrix2.pyx
 +++ b/src/sage/matrix/matrix2.pyx
-@@ -16584,7 +16584,7 @@ cdef class Matrix(Matrix1):
+@@ -16575,7 +16575,7 @@ cdef class Matrix(Matrix1):
              ....:   -2*a^2 + 4*a - 2, -2*a^2 + 1, 2*a, a^2 - 6, 3*a^2 - a ])
              sage: r,s,p = m._echelon_form_PID()
              sage: s[2]
@@ -470,10 +462,10 @@ index 4d120c075da..f3a3ff7e65b 100644
  
      ::
 diff --git a/src/sage/modular/dirichlet.py b/src/sage/modular/dirichlet.py
-index c261a84e8de..8ca797b5f16 100644
+index f3a778b6766..d6ce5e32f63 100644
 --- a/src/sage/modular/dirichlet.py
 +++ b/src/sage/modular/dirichlet.py
-@@ -2398,13 +2398,13 @@ class DirichletGroupFactory(UniqueFactory):
+@@ -2396,13 +2396,13 @@ class DirichletGroupFactory(UniqueFactory):
          sage: parent(val)
          Gaussian Integers generated by zeta4 in Cyclotomic Field of order 4 and degree 2
          sage: r4_29_0 = r4.residue_field(K(29).factor()[0][0]); r4_29_0(val)
@@ -528,7 +520,7 @@ index 86d33071974..00bb0979ea4 100644
      k = N.number_field()
      # check the input
 diff --git a/src/sage/quadratic_forms/binary_qf.py b/src/sage/quadratic_forms/binary_qf.py
-index 1a75f415b64..c89759288b9 100755
+index 202da0652ff..083bdee237d 100644
 --- a/src/sage/quadratic_forms/binary_qf.py
 +++ b/src/sage/quadratic_forms/binary_qf.py
 @@ -1646,7 +1646,7 @@ class BinaryQF(SageObject):
@@ -581,7 +573,7 @@ index d94b0a4335a..0978c7328fe 100644
          Check that :issue:`19573` is resolved::
  
 diff --git a/src/sage/rings/finite_rings/residue_field.pyx b/src/sage/rings/finite_rings/residue_field.pyx
-index 3146f7fd764..a8e77e48b76 100644
+index f6f8c08666f..5c6f41b63c5 100644
 --- a/src/sage/rings/finite_rings/residue_field.pyx
 +++ b/src/sage/rings/finite_rings/residue_field.pyx
 @@ -22,14 +22,13 @@ monogenic (i.e., 2 is an essential discriminant divisor)::
@@ -621,10 +613,10 @@ index 3146f7fd764..a8e77e48b76 100644
          sage: # needs sage.rings.number_field
          sage: I = QQ[i].factor(2)[0][0]; I
 -        Fractional ideal (I + 1)
-+        Fractional ideal (-I - 1)
++        Fractional ideal (I - 1)
          sage: k = I.residue_field(); k
 -        Residue field of Fractional ideal (I + 1)
-+        Residue field of Fractional ideal (-I - 1)
++        Residue field of Fractional ideal (I - 1)
          sage: type(k)
          <class 'sage.rings.finite_rings.residue_field.ResidueFiniteField_prime_modn_with_category'>
  
@@ -633,7 +625,7 @@ index 3146f7fd764..a8e77e48b76 100644
              Partially defined reduction map:
                From: Number Field in a with defining polynomial x^2 + 1
 -              To:   Residue field of Fractional ideal (a + 1)
-+              To:   Residue field of Fractional ideal (-a + 1)
++              To:   Residue field of Fractional ideal (a - 1)
              sage: cr == r                       # not implemented
              True
              sage: r(2 + a) == cr(2 + a)
@@ -642,7 +634,7 @@ index 3146f7fd764..a8e77e48b76 100644
              Partially defined reduction map:
                From: Number Field in a with defining polynomial x^2 + 1
 -              To:   Residue field of Fractional ideal (a + 1)
-+              To:   Residue field of Fractional ideal (-a + 1)
++              To:   Residue field of Fractional ideal (a - 1)
              sage: cr == r                       # not implemented
              True
              sage: r(2 + a) == cr(2 + a)
@@ -651,7 +643,7 @@ index 3146f7fd764..a8e77e48b76 100644
              Partially defined reduction map:
                From: Number Field in a with defining polynomial x^2 + 1
 -              To:   Residue field of Fractional ideal (a + 1)
-+              To:   Residue field of Fractional ideal (-a + 1)
++              To:   Residue field of Fractional ideal (a - 1)
  
          We test that calling the function also works after copying::
  
@@ -660,7 +652,7 @@ index 3146f7fd764..a8e77e48b76 100644
              ...
              ZeroDivisionError: Cannot reduce field element 1/2*a
 -            modulo Fractional ideal (a + 1): it has negative valuation
-+            modulo Fractional ideal (-a + 1): it has negative valuation
++            modulo Fractional ideal (a - 1): it has negative valuation
  
              sage: # needs sage.rings.finite_rings
              sage: R.<t> = GF(2)[]; h = t^5 + t^2 + 1
@@ -730,21 +722,8 @@ index e9962c3ccde..90a68c619f6 100644
              sage: type(ff)
              <class 'sage.rings.finite_rings.residue_field_pari_ffelt.ResidueFiniteField_pari_ffelt_with_category'>
              sage: ff(alpha^2 + 1)
-diff --git a/src/sage/rings/integer.pyx b/src/sage/rings/integer.pyx
-index 9616e7946bc..bcc45e703a2 100644
---- a/src/sage/rings/integer.pyx
-+++ b/src/sage/rings/integer.pyx
-@@ -5585,7 +5585,7 @@ cdef class Integer(sage.structure.element.EuclideanDomainElement):
-             sage: 5.is_norm(K)
-             False
-             sage: n.is_norm(K, element=True)
--            (True, -4*beta + 6)
-+            (True, 4*beta + 6)
-             sage: n.is_norm(K, element=True)[1].norm()
-             4
-             sage: n = 5
 diff --git a/src/sage/rings/number_field/S_unit_solver.py b/src/sage/rings/number_field/S_unit_solver.py
-index 0ffac369720..1260650ef77 100644
+index 0ffac369720..836edae5464 100644
 --- a/src/sage/rings/number_field/S_unit_solver.py
 +++ b/src/sage/rings/number_field/S_unit_solver.py
 @@ -12,10 +12,10 @@ EXAMPLES::
@@ -761,6 +740,15 @@ index 0ffac369720..1260650ef77 100644
      sage: sols = solve_S_unit_equation(K, S, 200)
      sage: eq_up_to_order(sols, expected)
      True
+@@ -1381,7 +1381,7 @@ def defining_polynomial_for_Kp(prime, prec=106):
+         sage: from sage.rings.number_field.S_unit_solver import defining_polynomial_for_Kp
+         sage: K.<a> = QuadraticField(2)
+         sage: p2 = K.prime_above(7); p2
+-        Fractional ideal (-2*a + 1)
++        Fractional ideal (2*a - 1)
+         sage: defining_polynomial_for_Kp(p2, 10)
+         x + 266983762
+ 
 @@ -1448,7 +1448,7 @@ def embedding_to_Kp(a, prime, prec):
          sage: from sage.rings.number_field.S_unit_solver import embedding_to_Kp
          sage: K.<a> = QuadraticField(17)
@@ -790,33 +778,34 @@ index 0ffac369720..1260650ef77 100644
 -        sage: expected = {3: {(0, 1, 0): [(1, 0, 0), (0, 1, 0)],
 -        ....:                 (1, 0, 0): [(1, 0, 0), (0, 1, 0)]},
 -        ....:             7: {(0, 1, 0): [(1, 0, 0), (1, 4, 4), (1, 2, 2)],
--        ....:                 (0, 1, 2): [(0, 1, 2), (0, 3, 4), (0, 5, 0)],
++        sage: expected = {3: {(0, 1, 0): [(0, 1, 0), (1, 0, 0)],
++        ....:                 (1, 0, 0): [(0, 1, 0), (1, 0, 0)]},
++        ....:             7: {(0, 1, 0): [(1, 0, 0), (1, 2, 2), (1, 4, 4)],
+         ....:                 (0, 1, 2): [(0, 1, 2), (0, 3, 4), (0, 5, 0)],
 -        ....:                 (0, 3, 2): [(1, 0, 0), (1, 4, 4), (1, 2, 2)],
--        ....:                 (0, 3, 4): [(0, 1, 2), (0, 3, 4), (0, 5, 0)],
--        ....:                 (0, 5, 0): [(0, 1, 2), (0, 3, 4), (0, 5, 0)],
++        ....:                 (0, 3, 2): [(1, 0, 0), (1, 2, 2), (1, 4, 4)],
+         ....:                 (0, 3, 4): [(0, 1, 2), (0, 3, 4), (0, 5, 0)],
+         ....:                 (0, 5, 0): [(0, 1, 2), (0, 3, 4), (0, 5, 0)],
 -        ....:                 (0, 5, 4): [(1, 0, 0), (1, 4, 4), (1, 2, 2)],
 -        ....:                 (1, 0, 0): [(0, 5, 4), (0, 3, 2), (0, 1, 0)],
 -        ....:                 (1, 0, 2): [(1, 0, 4), (1, 4, 2), (1, 2, 0)],
-+        sage: expected = {3: {(1, 1, 0): [(1, 0, 0), (1, 1, 0)],
-+        ....:                 (1, 0, 0): [(1, 0, 0), (1, 1, 0)]},
-+        ....:             7: {(1, 1, 0): [(1, 0, 0), (1, 4, 4), (1, 2, 2)],
-+        ....:                 (1, 3, 2): [(1, 0, 0), (1, 4, 4), (1, 2, 2)],
-+        ....:                 (1, 5, 4): [(1, 0, 0), (1, 4, 4), (1, 2, 2)],
-         ....:                 (1, 0, 4): [(1, 2, 4), (1, 4, 0), (1, 0, 2)],
-         ....:                 (1, 2, 0): [(1, 2, 4), (1, 4, 0), (1, 0, 2)],
+-        ....:                 (1, 0, 4): [(1, 2, 4), (1, 4, 0), (1, 0, 2)],
+-        ....:                 (1, 2, 0): [(1, 2, 4), (1, 4, 0), (1, 0, 2)],
 -        ....:                 (1, 2, 2): [(0, 5, 4), (0, 3, 2), (0, 1, 0)],
-+        ....:                 (1, 4, 2): [(1, 2, 4), (1, 4, 0), (1, 0, 2)],
-+        ....:                 (1, 1, 2): [(1, 1, 2), (1, 3, 4), (1, 5, 0)],
-+        ....:                 (1, 3, 4): [(1, 1, 2), (1, 3, 4), (1, 5, 0)],
-+        ....:                 (1, 5, 0): [(1, 1, 2), (1, 3, 4), (1, 5, 0)],
-+        ....:                 (1, 0, 2): [(1, 0, 4), (1, 4, 2), (1, 2, 0)],
-         ....:                 (1, 2, 4): [(1, 0, 4), (1, 4, 2), (1, 2, 0)],
-         ....:                 (1, 4, 0): [(1, 0, 4), (1, 4, 2), (1, 2, 0)],
+-        ....:                 (1, 2, 4): [(1, 0, 4), (1, 4, 2), (1, 2, 0)],
+-        ....:                 (1, 4, 0): [(1, 0, 4), (1, 4, 2), (1, 2, 0)],
 -        ....:                 (1, 4, 2): [(1, 2, 4), (1, 4, 0), (1, 0, 2)],
 -        ....:                 (1, 4, 4): [(0, 5, 4), (0, 3, 2), (0, 1, 0)]}}
-+        ....:                 (1, 0, 0): [(1, 5, 4), (1, 3, 2), (1, 1, 0)],
-+        ....:                 (1, 2, 2): [(1, 5, 4), (1, 3, 2), (1, 1, 0)],
-+        ....:                 (1, 4, 4): [(1, 5, 4), (1, 3, 2), (1, 1, 0)]}}
++        ....:                 (0, 5, 4): [(1, 0, 0), (1, 2, 2), (1, 4, 4)],
++        ....:                 (1, 0, 0): [(0, 1, 0), (0, 3, 2), (0, 5, 4)],
++        ....:                 (1, 0, 2): [(1, 0, 4), (1, 2, 0), (1, 4, 2)],
++        ....:                 (1, 0, 4): [(1, 0, 2), (1, 2, 4), (1, 4, 0)],
++        ....:                 (1, 2, 0): [(1, 0, 2), (1, 2, 4), (1, 4, 0)],
++        ....:                 (1, 2, 2): [(0, 1, 0), (0, 3, 2), (0, 5, 4)],
++        ....:                 (1, 2, 4): [(1, 0, 4), (1, 2, 0), (1, 4, 2)],
++        ....:                 (1, 4, 0): [(1, 0, 4), (1, 2, 0), (1, 4, 2)],
++        ....:                 (1, 4, 2): [(1, 0, 2), (1, 2, 4), (1, 4, 0)],
++        ....:                 (1, 4, 4): [(0, 1, 0), (0, 3, 2), (0, 5, 4)]}}
          sage: all(set(actual[p][vec]) == set(expected[p][vec])
          ....:     for p in [3, 7] for vec in expected[p])
          True
@@ -856,26 +845,60 @@ index 0ffac369720..1260650ef77 100644
  
      You can omit the exponent vectors::
  
+diff --git a/src/sage/rings/number_field/bdd_height.py b/src/sage/rings/number_field/bdd_height.py
+index 45f08aa4711..b88b315fd01 100644
+--- a/src/sage/rings/number_field/bdd_height.py
++++ b/src/sage/rings/number_field/bdd_height.py
+@@ -236,7 +236,8 @@ def bdd_norm_pr_ideal_gens(K, norm_list):
+         sage: from sage.rings.number_field.bdd_height import bdd_norm_pr_ideal_gens
+         sage: K.<g> = QuadraticField(123)
+         sage: bdd_norm_pr_ideal_gens(K, range(5))
+-        {0: [0], 1: [1], 2: [g + 11], 3: [], 4: [2]}
++        {0: [0], 1: [1], 2: [g + 11], 3: [], 4: [2]}  # 64-bit
++        {0: [0], 1: [1], 2: [g - 11], 3: [], 4: [2]}  # 32-bit
+ 
+     ::
+ 
+diff --git a/src/sage/rings/number_field/class_group.py b/src/sage/rings/number_field/class_group.py
+index 34a48931f8e..046209ad314 100644
+--- a/src/sage/rings/number_field/class_group.py
++++ b/src/sage/rings/number_field/class_group.py
+@@ -524,9 +524,9 @@ class ClassGroup(AbelianGroupWithValues_class):
+             Class group of order 68 with structure C34 x C2 of Number Field
+             in a with defining polynomial x^2 + x + 23899
+             sage: C.gens()
+-            (Fractional ideal class (7, a + 5), Fractional ideal class (5, a + 3))
++            (Fractional ideal class (83, a + 21), Fractional ideal class (15, a + 8))
+             sage: C.gens_ideals()
+-            (Fractional ideal (7, a + 5), Fractional ideal (5, a + 3))
++            (Fractional ideal (83, a + 21), Fractional ideal (15, a + 8))
+         """
+         return self.gens_values()
+ 
 diff --git a/src/sage/rings/number_field/galois_group.py b/src/sage/rings/number_field/galois_group.py
-index c974c3df6ff..ee53ca6d674 100644
+index bb4e453c650..ac7f14da21d 100644
 --- a/src/sage/rings/number_field/galois_group.py
 +++ b/src/sage/rings/number_field/galois_group.py
-@@ -995,8 +995,8 @@ class GaloisGroup_v2(GaloisGroup_perm):
+@@ -994,9 +994,11 @@ class GaloisGroup_v2(GaloisGroup_perm):
+             sage: x = polygen(ZZ, 'x')
              sage: K.<b> = NumberField(x^4 - 2*x^2 + 2, 'a').galois_closure()
              sage: G = K.galois_group()
-             sage: [G.artin_symbol(P) for P in K.primes_above(7)]
+-            sage: [G.artin_symbol(P) for P in K.primes_above(7)]  # random (see remark in primes_above)
 -            [(1,4)(2,3)(5,8)(6,7), (1,4)(2,3)(5,8)(6,7),
 -             (1,5)(2,6)(3,7)(4,8), (1,5)(2,6)(3,7)(4,8)]
-+            [(1,5)(2,6)(3,7)(4,8), (1,5)(2,6)(3,7)(4,8),
-+             (1,4)(2,3)(5,8)(6,7), (1,4)(2,3)(5,8)(6,7)]
++            sage: sorted([G.artin_symbol(P) for P in K.primes_above(7)])  # random (see remark in primes_above)
++            [(1,4)(2,3)(5,8)(6,7),
++             (1,4)(2,3)(5,8)(6,7),
++             (1,5)(2,6)(3,7)(4,8),
++             (1,5)(2,6)(3,7)(4,8)]
              sage: G.artin_symbol(17)
              Traceback (most recent call last):
              ...
 diff --git a/src/sage/rings/number_field/number_field.py b/src/sage/rings/number_field/number_field.py
-index 315e31cf42f..da11ef483a1 100644
+index 5d3d38449ff..43dbb3b2ab5 100644
 --- a/src/sage/rings/number_field/number_field.py
 +++ b/src/sage/rings/number_field/number_field.py
-@@ -3628,7 +3628,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -3621,7 +3621,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: L.<b> = K.extension(x^2 - 3, x^2 + 1)
              sage: M.<c> = L.extension(x^2 + 1)
              sage: L.ideal(K.ideal(2, a))
@@ -884,15 +907,10 @@ index 315e31cf42f..da11ef483a1 100644
              sage: M.ideal(K.ideal(2, a)) == M.ideal(a*(b - c)/2)
              True
  
-@@ -3666,40 +3666,29 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
- 
-             sage: x = polygen(QQ, 'x')
-             sage: K.<a> = NumberField(x^2 + 23)
--            sage: d = K.ideals_of_bdd_norm(10)
--            sage: for n in d:
--            ....:     print(n)
--            ....:     for I in sorted(d[n]):
--            ....:         print(I)
+@@ -3664,35 +3664,37 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+             ....:     print(n)
+             ....:     for I in sorted(d[n]):
+             ....:         print(I)
 -            1
 -            Fractional ideal (1)
 -            2
@@ -922,50 +940,54 @@ index 315e31cf42f..da11ef483a1 100644
 -            Fractional ideal (9, 1/2*a + 7/2)
 -            Fractional ideal (9, 1/2*a + 11/2)
 -            10
-+            sage: d = K.ideals_of_bdd_norm(10); d # random
-+                {1: [Fractional ideal (1)],
-+                2: [Fractional ideal (2, 1/2*a - 1/2), Fractional ideal (2, 1/2*a + 1/2)],
-+                3: [Fractional ideal (3, 1/2*a + 1/2), Fractional ideal (3, 1/2*a - 1/2)],
-+                4: [Fractional ideal (4, 1/2*a + 3/2),
-+                 Fractional ideal (2),
-+                 Fractional ideal (4, 1/2*a + 5/2)],
-+                5: [],
-+                6: [Fractional ideal (6, 1/2*a + 7/2),
-+                 Fractional ideal (-1/2*a - 1/2),
-+                 Fractional ideal (-1/2*a + 1/2),
-+                 Fractional ideal (6, 1/2*a + 5/2)],
-+                7: [],
-+                8: [Fractional ideal (1/2*a + 3/2),
-+                 Fractional ideal (4, a - 1),
-+                 Fractional ideal (4, a + 1),
-+                 Fractional ideal (-1/2*a + 3/2)],
-+                9: [Fractional ideal (9, 1/2*a + 7/2),
-+                 Fractional ideal (3),
-+                 Fractional ideal (9, 1/2*a + 11/2)],
-+                10: []}
++                1
++                Fractional ideal (1)
++                2
++                Fractional ideal (2, 1/2*a - 1/2)
++                Fractional ideal (2, 1/2*a + 1/2)
++                3
++                Fractional ideal (3, 1/2*a - 1/2)
++                Fractional ideal (3, 1/2*a + 1/2)
++                4
++                Fractional ideal (2)
++                Fractional ideal (4, 1/2*a + 3/2)
++                Fractional ideal (4, 1/2*a + 5/2)
++                5
++                6
++                Fractional ideal (-1/2*a + 1/2)
++                Fractional ideal (1/2*a + 1/2)
++                Fractional ideal (6, 1/2*a + 5/2)
++                Fractional ideal (6, 1/2*a + 7/2)
++                7
++                8
++                Fractional ideal (4, a - 1)
++                Fractional ideal (4, a + 1)
++                Fractional ideal (-1/2*a - 3/2)
++                Fractional ideal (1/2*a - 3/2)
++                9
++                Fractional ideal (3)
++                Fractional ideal (9, 1/2*a + 7/2)
++                Fractional ideal (9, 1/2*a + 11/2)
++                10
 +            sage: [[I.norm() for I in sorted(d[n])] for n in d]
 +                [[1], [2, 2], [3, 3], [4, 4, 4], [], [6, 6, 6, 6], [], [8, 8, 8, 8], [9, 9, 9], []]
          """
          hnf_ideals = self.pari_nf().ideallist(bound)
          d = {}
-@@ -3926,9 +3915,13 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
-         EXAMPLES::
+@@ -3923,8 +3925,10 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
  
              sage: K.<i> = QuadraticField(-1)
--            sage: K.primes_of_bounded_norm(10)
+             sage: K.primes_of_bounded_norm(10)
 -            [Fractional ideal (i + 1), Fractional ideal (-i - 2),
 -             Fractional ideal (2*i + 1), Fractional ideal (3)]
-+            sage: P = K.primes_of_bounded_norm(10); P # random
-+            [Fractional ideal (i + 1),
-+             Fractional ideal (i + 2),
-+             Fractional ideal (-i + 2),
++            [Fractional ideal (i - 1),
++             Fractional ideal (2*i - 1),
++             Fractional ideal (-2*i - 1),
 +             Fractional ideal (3)]
-+            sage: [p.norm() for p in P]
-+            [2, 5, 5, 9]
              sage: K.primes_of_bounded_norm(1)
              []
              sage: x = polygen(QQ, 'x')
-@@ -3937,10 +3930,10 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -3933,10 +3937,10 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: P
              [Fractional ideal (a),
               Fractional ideal (a + 1),
@@ -978,24 +1000,21 @@ index 315e31cf42f..da11ef483a1 100644
               Fractional ideal (a^2 - 2*a - 1),
               Fractional ideal (a + 3)]
              sage: [p.norm() for p in P]
-@@ -3989,11 +3982,13 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
- 
+@@ -3986,10 +3990,10 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: K.<i> = QuadraticField(-1)
              sage: it = K.primes_of_bounded_norm_iter(10)
--            sage: list(it)
-+            sage: l = list(it); l # random
-             [Fractional ideal (i + 1),
+             sage: list(it)
+-            [Fractional ideal (i + 1),
++            [Fractional ideal (i - 1),
               Fractional ideal (3),
 -             Fractional ideal (-i - 2),
 -             Fractional ideal (2*i + 1)]
-+             Fractional ideal (i + 2),
-+             Fractional ideal (-i + 2)]
-+            sage: [I.norm() for I in l]
-+            [2, 9, 5, 5]
++             Fractional ideal (2*i - 1),
++             Fractional ideal (-2*i - 1)]
              sage: list(K.primes_of_bounded_norm_iter(1))
              []
          """
-@@ -4318,7 +4313,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -4314,7 +4318,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: k.<a> = NumberField(x^4 - 3/2*x + 5/3); k
              Number Field in a with defining polynomial x^4 - 3/2*x + 5/3
              sage: k.pari_nf()
@@ -1004,7 +1023,22 @@ index 315e31cf42f..da11ef483a1 100644
              sage: pari(k)
              [y^4 - 324*y + 2160, [0, 2], 48918708, 216, ...]
              sage: gp(k)
-@@ -4808,7 +4803,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -4441,10 +4445,14 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+             bnf = self._pari_bnf
+         except AttributeError:
+             f = self.pari_polynomial("y")
++            _saved_rand = pari.getrand()
++            # make this deterministic, it affects printing of ideals
++            pari.setrand(1)
+             if units:
+                 self._pari_bnf = f.bnfinit(1)
+             else:
+                 self._pari_bnf = f.bnfinit()
++            pari.setrand(_saved_rand)
+             bnf = self._pari_bnf
+         # Certify if needed
+         if proof and not getattr(self, "_pari_bnf_certified", False):
+@@ -4804,7 +4812,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
               1/13*a^2 + 7/13*a - 332/13,
               -1/13*a^2 + 6/13*a + 345/13,
               -1,
@@ -1013,16 +1047,17 @@ index 315e31cf42f..da11ef483a1 100644
              sage: units[5] in (1/13*a^2 - 19/13*a - 7/13, 1/13*a^2 + 20/13*a - 7/13)
              True
              sage: len(units) == 6
-@@ -4819,7 +4814,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -4815,7 +4823,8 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
  
              sage: K.<a> = NumberField(2*x^2 - 1/3)
              sage: K._S_class_group_and_units(tuple(K.primes_above(2) + K.primes_above(3)))
 -            ([6*a + 2, 6*a + 3, -1, -12*a + 5], [])
-+            ([...6*a...2, ...6*a...3, -1, ...12*a...5], [])
++            ([6*a + 2, -6*a + 3, -1, -12*a - 5], [])  # 64-bit
++            ([6*a + 2, -6*a - 3, -1, -12*a - 5], [])  # 32-bit
          """
          K_pari = self.pari_bnf(proof=proof)
          S_pari = [p.pari_prime() for p in sorted(set(S))]
-@@ -4997,7 +4992,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -4993,7 +5002,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
               1/13*a^2 + 7/13*a - 332/13,
               -1/13*a^2 + 6/13*a + 345/13,
               -1,
@@ -1031,44 +1066,18 @@ index 315e31cf42f..da11ef483a1 100644
              sage: gens[5] in (1/13*a^2 - 19/13*a - 7/13, 1/13*a^2 + 20/13*a - 7/13)
              True
              sage: gens[6] in (-1/13*a^2 + 45/13*a - 97/13, 1/13*a^2 - 45/13*a + 97/13)
-@@ -5154,16 +5149,20 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
-             sage: KS2, gens, fromKS2, toKS2 = K.selmer_space([P2, P3, P5], 2)
-             sage: KS2
-             Vector space of dimension 4 over Finite Field of size 2
--            sage: gens
--            [a + 1, a, 2, -1]
-+            sage: gens  # random
-+            [-a - 1, a, 2, -1]
-+            sage: gens in ([-a - 1, a, 2, -1], [a + 1, a, 2, -1])
-+            True
+@@ -5157,9 +5166,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
  
-         Each generator must have even valuation at primes not in `S`::
- 
--            sage: [K.ideal(g).factor() for g in gens]
-+            sage: facgens = [K.ideal(g).factor() for g in gens]; facgens # random
+             sage: [K.ideal(g).factor() for g in gens]
              [(Fractional ideal (2, a + 1)) * (Fractional ideal (3, a + 1)),
-              Fractional ideal (a),
-              (Fractional ideal (2, a + 1))^2,
-              1]
-+            sage: facgens[2][0][1]
-+            2
+-             Fractional ideal (a),
+-             (Fractional ideal (2, a + 1))^2,
+-             1]
++             Fractional ideal (-a), (Fractional ideal (2, a + 1))^2, 1]
  
              sage: toKS2(10)
              (0, 0, 1, 1)
-@@ -5175,8 +5174,10 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
-             sage: KS3, gens, fromKS3, toKS3 = K.selmer_space([P2, P3, P5], 3)
-             sage: KS3
-             Vector space of dimension 3 over Finite Field of size 3
--            sage: gens
--            [1/2, 1/4*a + 1/4, a]
-+            sage: gens # random
-+            [1/2, -1/4*a - 1/4, a]
-+            sage: gens in ([1/2, -1/4*a - 1/4, a], [1/2, 1/4*a + 1/4, a])
-+            True
- 
-         An example to show that the group `K(S,2)` may be strictly
-         larger than the group of elements giving extensions unramified
-@@ -5641,7 +5642,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -5637,7 +5644,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: k.<a> = NumberField(x^2 + 23)
              sage: d = k.different()
              sage: d
@@ -1077,7 +1086,7 @@ index 315e31cf42f..da11ef483a1 100644
              sage: d.norm()
              23
              sage: k.disc()
-@@ -5761,7 +5762,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -5757,7 +5764,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: K.elements_of_norm(3)
              []
              sage: K.elements_of_norm(50)
@@ -1086,29 +1095,20 @@ index 315e31cf42f..da11ef483a1 100644
  
          TESTS:
  
-@@ -5872,11 +5873,16 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
-             sage: K.<a> = NumberField(x^2 + 1)
+@@ -5869,10 +5876,9 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: K.factor(1/3)
              (Fractional ideal (3))^-1
--            sage: K.factor(1+a)
+             sage: K.factor(1+a)
 -            Fractional ideal (a + 1)
--            sage: K.factor(1+a/5)
++            Fractional ideal (a - 1)
+             sage: K.factor(1+a/5)
 -            (Fractional ideal (a + 1)) * (Fractional ideal (-a - 2))^-1
 -              * (Fractional ideal (2*a + 1))^-1 * (Fractional ideal (-2*a + 3))
-+            sage: fac = K.factor(1+a); fac # random
-+            Fractional ideal (-a - 1)
-+            sage: len(fac)
-+            1
-+            sage: fac = K.factor(1+a/5); fac # random
-+            (Fractional ideal (-a - 1)) * (Fractional ideal (2*a - 1))^-1 * (Fractional ideal (-2*a - 1))^-1 * (Fractional ideal (3*a + 2))
-+            sage: len(fac)
-+            4
-+            sage: product(I[0]^I[1] for I in list(fac))
-+            Fractional ideal (1/5*a + 1)
++            (Fractional ideal (a - 1)) * (Fractional ideal (2*a - 1))^-1 * (Fractional ideal (-2*a - 1))^-1 * (Fractional ideal (3*a + 2))
  
          An example over a relative number field::
  
-@@ -5909,9 +5915,9 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -5905,9 +5911,9 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: (fi, fj) = f[::]
              sage: (fi[1], fj[1])
              (1, 1)
@@ -1120,26 +1120,25 @@ index 315e31cf42f..da11ef483a1 100644
              True
          """
          return self.ideal(n).factor()
-@@ -6508,12 +6514,12 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
-             sage: k.<a> = NumberField(x^6 + 2218926655879913714112*x^4 - 32507675650290949030789018433536*x^3 + 4923635504174417014460581055002374467948544*x^2 - 36066074010564497464129951249279114076897746988630016*x + 264187244046129768986806800244258952598300346857154900812365824)
-             sage: new_basis = k.reduced_basis(prec=120)
-             sage: [c.minpoly() for c in new_basis]
--            [x - 1,
--             x^2 + x + 1,
--             x^6 + 3*x^5 - 102*x^4 - 103*x^3 + 10572*x^2 - 59919*x + 127657,
--             x^6 + 3*x^5 - 102*x^4 - 103*x^3 + 10572*x^2 - 59919*x + 127657,
--             x^3 - 171*x + 848,
--             x^6 + 171*x^4 + 1696*x^3 + 29241*x^2 + 145008*x + 719104]
-+            [x^2 + x + 1,
-+             x - 1,
-+             x^6 + 3*x^5 - 102*x^4 - 315*x^3 + 10254*x^2 + 80955*x + 198147,
-+             x^6 + 213*x^4 + 12567*x^2 + 198147,
-+             x^6 + 171*x^4 - 1696*x^3 + 29241*x^2 - 145008*x + 719104,
-+             x^6 + 171*x^4 - 1696*x^3 + 29241*x^2 - 145008*x + 719104]
-             sage: R = k.order(new_basis)
-             sage: R.discriminant()==k.discriminant()
-             True
-@@ -7108,14 +7114,14 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -6519,13 +6525,15 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+         # the inner product on the Minkowski embedding, which is
+         # faster than computing all the conjugates, etc ...
+ 
++        # flag to disable FLATTER, which is much more unstable than fplll
++        flag = 1 if pari.version() >= (2,17) else 0
+         if self.is_totally_real():
+             from sage.matrix.constructor import matrix
+             M = matrix(ZZ, d, d, [[(x*y).trace() for x in ZK] for y in ZK])
+-            T = pari(M).qflllgram()
++            T = pari(M).qflllgram(flag=flag)
+         else:
+             M = self.minkowski_embedding(ZK, prec=prec)
+-            T = pari(M).qflll()
++            T = pari(M).qflll(flag=flag)
+ 
+         return [sum([ZZ(T[i][j]) * ZK[j] for j in range(d)]) for i in range(d)]
+ 
+@@ -7102,14 +7110,14 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: K.units(proof=True)  # takes forever, not tested
              ...
              sage: K.units(proof=False)  # result not independently verified
@@ -1161,16 +1160,16 @@ index 315e31cf42f..da11ef483a1 100644
  
          TESTS:
  
-@@ -7124,7 +7130,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -7118,7 +7126,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
  
              sage: K.<a> = NumberField(1/2*x^2 - 1/6)
              sage: K.units()
 -            (3*a - 2,)
-+            (-3*a + 2,)
++            (3*a + 2,)
          """
          proof = proof_flag(proof)
  
-@@ -7206,14 +7212,14 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -7200,14 +7208,14 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              (u0, u1, u2, u3, u4, u5, u6, u7, u8)
              sage: U.gens_values()  # result not independently verified
              [-1,
@@ -1192,7 +1191,7 @@ index 315e31cf42f..da11ef483a1 100644
          """
          proof = proof_flag(proof)
  
-@@ -7262,8 +7268,8 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -7256,8 +7264,8 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: U = K.S_unit_group(S=a); U
              S-unit group with structure C10 x Z x Z x Z of
               Number Field in a with defining polynomial x^4 - 10*x^3 + 100*x^2 - 375*x + 1375
@@ -1203,7 +1202,7 @@ index 315e31cf42f..da11ef483a1 100644
              sage: U.gens()
              (u0, u1, u2, u3)
              sage: U.gens_values()  # random
-@@ -7274,8 +7280,8 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -7268,8 +7276,8 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: [u.multiplicative_order() for u in U.gens()]
              [10, +Infinity, +Infinity, +Infinity]
              sage: U.primes()
@@ -1214,70 +1213,80 @@ index 315e31cf42f..da11ef483a1 100644
  
          With the default value of `S`, the S-unit group is the same as
          the global unit group::
-@@ -7427,8 +7433,8 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
- 
+@@ -7422,7 +7430,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: # needs sage.rings.padics
              sage: solutions, bound = K.S_unit_solutions(S, prec=100, include_bound=True)
--            sage: bound
+             sage: bound
 -            7
-+            sage: bound in (6, 7)
-+            True
++            6
          """
          from .S_unit_solver import solve_S_unit_equation
          return solve_S_unit_equation(self, S, prec, include_exponents, include_bound, proof)
-@@ -8783,7 +8789,7 @@ class NumberField_absolute(NumberField_generic):
-             (Number Field in a1 with defining polynomial x^2 - 2, Ring morphism:
-               From: Number Field in a1 with defining polynomial x^2 - 2
-               To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
--              Defn: a1 |--> a^2 + 3/2, None),
+@@ -8781,39 +8789,29 @@ class NumberField_absolute(NumberField_generic):
+ 
+             sage: K.<a> = NumberField(2*x^4 + 6*x^2 + 1/2)
+             sage: K.subfields()
+-            [(Number Field in a0 with defining polynomial x,
+-              Ring morphism:
+-                From: Number Field in a0 with defining polynomial x
+-                To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
+-                Defn: 0 |--> 0,
+-              None),
+-             (Number Field in a1 with defining polynomial x^2 - 2,
+-              Ring morphism:
+-                From: Number Field in a1 with defining polynomial x^2 - 2
+-                To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
+-                Defn: a1 |--> a^2 + 3/2,
+-              None),
+-             (Number Field in a2 with defining polynomial x^2 + 4,
+-              Ring morphism:
+-                From: Number Field in a2 with defining polynomial x^2 + 4
+-                To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
+-                Defn: a2 |--> 2*a^3 + 7*a,
+-              None),
+-             (Number Field in a3 with defining polynomial x^2 + 2,
+-              Ring morphism:
+-                From: Number Field in a3 with defining polynomial x^2 + 2
+-                To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
+-                Defn: a3 |--> 2*a^3 + 5*a,
+-              None),
+-             (Number Field in a4 with defining polynomial x^4 + 1,
+-              Ring morphism:
+-                From: Number Field in a4 with defining polynomial x^4 + 1
+-                To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
+-                Defn: a4 |--> a^3 + 1/2*a^2 + 5/2*a + 3/4,
+-              Ring morphism:
+-                From: Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
+-                To:   Number Field in a4 with defining polynomial x^4 + 1
+-                Defn: a |--> -1/2*a4^3 + a4^2 - 1/2*a4)]
++            [(Number Field in a0 with defining polynomial x, Ring morphism:
++              From: Number Field in a0 with defining polynomial x
++              To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
++              Defn: 0 |--> 0, None),
++            (Number Field in a1 with defining polynomial x^2 - 2, Ring morphism:
++              From: Number Field in a1 with defining polynomial x^2 - 2
++              To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
 +              Defn: a1 |--> -a^2 - 3/2, None),
-             (Number Field in a2 with defining polynomial x^2 + 4, Ring morphism:
-               From: Number Field in a2 with defining polynomial x^2 + 4
-               To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
-@@ -8791,14 +8797,14 @@ class NumberField_absolute(NumberField_generic):
-             (Number Field in a3 with defining polynomial x^2 + 2, Ring morphism:
-               From: Number Field in a3 with defining polynomial x^2 + 2
-               To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
--              Defn: a3 |--> 2*a^3 + 5*a, None),
++            (Number Field in a2 with defining polynomial x^2 + 4, Ring morphism:
++              From: Number Field in a2 with defining polynomial x^2 + 4
++              To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
++              Defn: a2 |--> 2*a^3 + 7*a, None),
++            (Number Field in a3 with defining polynomial x^2 + 2, Ring morphism:
++              From: Number Field in a3 with defining polynomial x^2 + 2
++              To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
 +              Defn: a3 |--> -2*a^3 - 5*a, None),
-             (Number Field in a4 with defining polynomial x^4 + 1, Ring morphism:
-               From: Number Field in a4 with defining polynomial x^4 + 1
-               To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
--              Defn: a4 |--> a^3 + 1/2*a^2 + 5/2*a + 3/4, Ring morphism:
++            (Number Field in a4 with defining polynomial x^4 + 1, Ring morphism:
++              From: Number Field in a4 with defining polynomial x^4 + 1
++              To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
 +              Defn: a4 |--> -a^3 - 1/2*a^2 - 5/2*a - 3/4, Ring morphism:
-               From: Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
-               To:   Number Field in a4 with defining polynomial x^4 + 1
--              Defn: a |--> -1/2*a4^3 + a4^2 - 1/2*a4)
-+              Defn: a |--> 1/2*a4^3 + a4^2 + 1/2*a4)
-             ]
++              From: Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
++              To:   Number Field in a4 with defining polynomial x^4 + 1
++              Defn: a |--> 1/2*a4^3 + a4^2 + 1/2*a4)]
          """
          return self._subfields_helper(degree=degree, name=name,
-@@ -12730,12 +12736,12 @@ def _splitting_classes_gens_(K, m, d):
-         sage: L = K.subfields(20)[0][0]
-         sage: L.conductor()                                                             # needs sage.groups
-         101
--        sage: _splitting_classes_gens_(L,101,20)                                        # needs sage.libs.gap  # optional - gap_package_polycyclic
-+        sage: _splitting_classes_gens_(L,101,20)        # optional - gap_package_polycyclic, needs sage.libs.gap
-         [95]
- 
-         sage: K = CyclotomicField(44)
-         sage: L = K.subfields(4)[0][0]
--        sage: _splitting_classes_gens_(L,44,4)                                          # needs sage.libs.gap  # optional - gap_package_polycyclic
-+        sage: _splitting_classes_gens_(L,44,4)  # optional - gap_package_polycyclic, needs sage.libs.gap
-         [37]
- 
-         sage: K = CyclotomicField(44)
-@@ -12747,7 +12753,7 @@ def _splitting_classes_gens_(K, m, d):
-          with zeta44_0 = 3.837971894457990?
-         sage: L.conductor()                                                             # needs sage.groups
-         11
--        sage: _splitting_classes_gens_(L,11,5)                                          # needs sage.libs.gap  # optional - gap_package_polycyclic
-+        sage: _splitting_classes_gens_(L,11,5)  # optional - gap_package_polycyclic, needs sage.libs.gap
-         [10]
-     """
-     from sage.groups.abelian_gps.abelian_group import AbelianGroup
+                                       both_maps=True, optimize=False)
 diff --git a/src/sage/rings/number_field/number_field_element.pyx b/src/sage/rings/number_field/number_field_element.pyx
-index 27432813b2b..1a676ee087b 100644
+index 27432813b2b..a22b68e6093 100644
 --- a/src/sage/rings/number_field/number_field_element.pyx
 +++ b/src/sage/rings/number_field/number_field_element.pyx
 @@ -1954,14 +1954,14 @@ cdef class NumberFieldElement(NumberFieldElement_base):
@@ -1285,7 +1294,7 @@ index 27432813b2b..1a676ee087b 100644
              sage: K.<i> = NumberField(x^2 + 1)
              sage: (6*i + 6).factor()
 -            (-i) * (i + 1)^3 * 3
-+            (i) * (-i - 1)^3 * 3
++            (i - 1)^3 * 3
  
          In the following example, the class number is 2.  If a factorization
          in prime elements exists, we will find it::
@@ -1297,6 +1306,15 @@ index 27432813b2b..1a676ee087b 100644
              sage: factor(K(3))
              Traceback (most recent call last):
              ...
+@@ -2043,7 +2043,7 @@ cdef class NumberFieldElement(NumberFieldElement_base):
+             0
+             sage: R = K.maximal_order()
+             sage: R(i+1).gcd(2)
+-            i + 1
++            i - 1
+             sage: R = K.order(2*i)
+             sage: R(1).gcd(R(4*i))
+             1
 @@ -4238,7 +4238,7 @@ cdef class NumberFieldElement(NumberFieldElement_base):
  
              sage: P5s = F(5).support()
@@ -1316,7 +1334,7 @@ index 27432813b2b..1a676ee087b 100644
          An absolute example::
  
 diff --git a/src/sage/rings/number_field/number_field_ideal.py b/src/sage/rings/number_field/number_field_ideal.py
-index 3686840ccba..b269045cf96 100644
+index 71374297177..49810bab831 100644
 --- a/src/sage/rings/number_field/number_field_ideal.py
 +++ b/src/sage/rings/number_field/number_field_ideal.py
 @@ -75,7 +75,7 @@ class NumberFieldIdeal(Ideal_generic):
@@ -1328,16 +1346,16 @@ index 3686840ccba..b269045cf96 100644
  
      TESTS:
  
-@@ -236,7 +236,7 @@ class NumberFieldIdeal(Ideal_generic):
+@@ -241,7 +241,7 @@ class NumberFieldIdeal(Ideal_generic):
              sage: K.<a> = NumberField(x^2 + 3); K
              Number Field in a with defining polynomial x^2 + 3
              sage: f = K.factor(15); f
 -            (Fractional ideal (1/2*a + 3/2))^2 * (Fractional ideal (5))
 +            (Fractional ideal (-a))^2 * (Fractional ideal (5))
-             sage: (f[0][0] < f[1][0])
+             sage: (f[0][0] < f[1][0])  # potentially random
              True
              sage: (f[0][0] == f[0][0])
-@@ -273,7 +273,7 @@ class NumberFieldIdeal(Ideal_generic):
+@@ -278,7 +278,7 @@ class NumberFieldIdeal(Ideal_generic):
              sage: A = K.ideal([5, 2 + I])
              sage: B = K.ideal([13, 5 + 12*I])
              sage: A*B
@@ -1346,7 +1364,7 @@ index 3686840ccba..b269045cf96 100644
              sage: (K.ideal(3 + I) * K.ideal(7 + I)).gens()
              (10*I + 20,)
  
-@@ -683,17 +683,17 @@ class NumberFieldIdeal(Ideal_generic):
+@@ -688,17 +688,17 @@ class NumberFieldIdeal(Ideal_generic):
              sage: I.free_module()
              Free module of degree 4 and rank 4 over Integer Ring
              User basis matrix:
@@ -1370,7 +1388,7 @@ index 3686840ccba..b269045cf96 100644
  
          An example of intersecting ideals by intersecting free modules.::
  
-@@ -790,7 +790,7 @@ class NumberFieldIdeal(Ideal_generic):
+@@ -795,7 +795,7 @@ class NumberFieldIdeal(Ideal_generic):
              sage: J.is_principal()
              False
              sage: J.gens_reduced()
@@ -1379,16 +1397,7 @@ index 3686840ccba..b269045cf96 100644
              sage: all(j.parent() is K for j in J.gens())
              True
              sage: all(j.parent() is K for j in J.gens_reduced())
-@@ -2069,7 +2069,7 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal, I
-             sage: K.<a> = NumberField(x^2 + 2); K
-             Number Field in a with defining polynomial x^2 + 2
-             sage: f = K.factor(2); f
--            (Fractional ideal (a))^2
-+            (Fractional ideal (...a))^2
-             sage: f[0][0].ramification_index()
-             2
-             sage: K.ideal(13).ramification_index()
-@@ -2416,9 +2416,9 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal, I
+@@ -2422,9 +2422,9 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal, I
              sage: I = K.ideal((3+4*i)/5); I
              Fractional ideal (4/5*i + 3/5)
              sage: I.denominator()
@@ -1400,7 +1409,7 @@ index 3686840ccba..b269045cf96 100644
              sage: I.numerator().is_integral() and I.denominator().is_integral()
              True
              sage: I.numerator() + I.denominator() == K.unit_ideal()
-@@ -2447,9 +2447,9 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal, I
+@@ -2453,9 +2453,9 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal, I
              sage: I = K.ideal((3+4*i)/5); I
              Fractional ideal (4/5*i + 3/5)
              sage: I.denominator()
@@ -1412,7 +1421,7 @@ index 3686840ccba..b269045cf96 100644
              sage: I.numerator().is_integral() and I.denominator().is_integral()
              True
              sage: I.numerator() + I.denominator() == K.unit_ideal()
-@@ -3164,11 +3164,11 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal, I
+@@ -3170,11 +3170,11 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal, I
              Partially defined quotient map
               from Number Field in i with defining polynomial x^2 + 1
                 to an explicit vector space representation for the quotient of
@@ -1426,7 +1435,7 @@ index 3686840ccba..b269045cf96 100644
          """
          return quotient_char_p(self, p)
  
-@@ -3213,11 +3213,11 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal, I
+@@ -3219,11 +3219,11 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal, I
  
              sage: K.<i> = NumberField(x^2 + 1)
              sage: P1, P2 = [g[0] for g in K.factor(5)]; P1, P2
@@ -1441,7 +1450,7 @@ index 3686840ccba..b269045cf96 100644
              sage: a.valuation(P1)
              0
              sage: F1(i/7)
-@@ -3230,7 +3230,7 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal, I
+@@ -3236,7 +3236,7 @@ class NumberFieldFractionalIdeal(MultiplicativeGroupElement, NumberFieldIdeal, I
              Traceback (most recent call last):
              ...
              ZeroDivisionError: Cannot reduce field element -2/5*i + 1/5
@@ -1450,7 +1459,7 @@ index 3686840ccba..b269045cf96 100644
  
          An example with a relative number field::
  
-@@ -3491,7 +3491,7 @@ def quotient_char_p(I, p):
+@@ -3497,7 +3497,7 @@ def quotient_char_p(I, p):
          []
  
          sage: I = K.factor(13)[0][0]; I
@@ -1460,7 +1469,7 @@ index 3686840ccba..b269045cf96 100644
          1
          sage: quotient_char_p(I, 13)[0]
 diff --git a/src/sage/rings/number_field/number_field_ideal_rel.py b/src/sage/rings/number_field/number_field_ideal_rel.py
-index 7f6cfd9b1b7..eb39f6f4d12 100644
+index 7f6cfd9b1b7..129d0288024 100644
 --- a/src/sage/rings/number_field/number_field_ideal_rel.py
 +++ b/src/sage/rings/number_field/number_field_ideal_rel.py
 @@ -11,7 +11,7 @@ EXAMPLES::
@@ -1472,6 +1481,15 @@ index 7f6cfd9b1b7..eb39f6f4d12 100644
      sage: K.fractional_ideal(G).absolute_norm().factor()
      7^2
  
+@@ -189,7 +189,7 @@ class NumberFieldFractionalIdeal_rel(NumberFieldFractionalIdeal):
+             sage: J.absolute_norm()
+             2
+             sage: J.ideal_below()
+-            Fractional ideal (b)
++            Fractional ideal (-b)
+             sage: J.ideal_below().norm()
+             2
+         """
 @@ -277,7 +277,7 @@ class NumberFieldFractionalIdeal_rel(NumberFieldFractionalIdeal):
              sage: L.<b> = K.extension(5*x^2 + 1)
              sage: P = L.primes_above(2)[0]
@@ -1481,42 +1499,7 @@ index 7f6cfd9b1b7..eb39f6f4d12 100644
          """
          try:
              # Compute the single generator, if it exists
-@@ -385,7 +385,7 @@ class NumberFieldFractionalIdeal_rel(NumberFieldFractionalIdeal):
-             sage: K.<a> = NumberField(x^2 + 6)
-             sage: L.<b> = K.extension(K['x'].gen()^4 + a)
-             sage: N = L.ideal(b).relative_norm(); N
--            Fractional ideal (-a)
-+            Fractional ideal (a)
-             sage: N.parent()
-             Monoid of ideals of Number Field in a with defining polynomial x^2 + 6
-             sage: N.ring()
-@@ -409,8 +409,10 @@ class NumberFieldFractionalIdeal_rel(NumberFieldFractionalIdeal):
-             sage: K.<a> = NumberField(2*x^2 - 1/3)
-             sage: L.<b> = K.extension(5*x^2 + 1)
-             sage: P = L.primes_above(2)[0]
--            sage: P.relative_norm()
--            Fractional ideal (6*a + 2)
-+            sage: rn = P.relative_norm(); rn # random
-+            Fractional ideal (6*a - 2)
-+            sage: rn in [K.ideal(6*a - 2), K.ideal(-6*a -2)]
-+            True
-         """
-         L = self.number_field()
-         K = L.base_field()
-@@ -528,8 +530,10 @@ class NumberFieldFractionalIdeal_rel(NumberFieldFractionalIdeal):
-             sage: K.<a> = NumberField(2*x^2 - 1/3)
-             sage: L.<b> = K.extension(5*x^2 + 1)
-             sage: P = L.primes_above(2)[0]
--            sage: P.ideal_below()
--            Fractional ideal (6*a + 2)
-+            sage: ib = P.ideal_below(); ib # random
-+            Fractional ideal (6*a - 2)
-+            sage: ib in [K.ideal(6*a - 2), K.ideal(-6*a -2)]
-+            True
-         """
-         L = self.number_field()
-         K = L.base_field()
-@@ -548,14 +552,12 @@ class NumberFieldFractionalIdeal_rel(NumberFieldFractionalIdeal):
+@@ -548,14 +548,12 @@ class NumberFieldFractionalIdeal_rel(NumberFieldFractionalIdeal):
              sage: x = polygen(ZZ, 'x')
              sage: K.<a, b> = QQ.extension([x^2 + 11, x^2 - 5])
              sage: K.factor(5)
@@ -1535,17 +1518,8 @@ index 7f6cfd9b1b7..eb39f6f4d12 100644
  
              sage: PQ.<X> = QQ[]
              sage: F.<a, b> = NumberFieldTower([X^2 - 2, X^2 - 3])
-@@ -914,7 +916,7 @@ def is_NumberFieldFractionalIdeal_rel(x):
-         sage: is_NumberFieldFractionalIdeal_rel(I)
-         True
-         sage: N = I.relative_norm(); N
--        Fractional ideal (-a)
-+        Fractional ideal (a)
-         sage: is_NumberFieldFractionalIdeal_rel(N)
-         False
-     """
 diff --git a/src/sage/rings/number_field/number_field_rel.py b/src/sage/rings/number_field/number_field_rel.py
-index 7ea070b113e..a1d5ab38176 100644
+index 861375b0fb7..f3f12983992 100644
 --- a/src/sage/rings/number_field/number_field_rel.py
 +++ b/src/sage/rings/number_field/number_field_rel.py
 @@ -233,21 +233,21 @@ class NumberField_relative(NumberField_generic):
@@ -1573,7 +1547,7 @@ index 7ea070b113e..a1d5ab38176 100644
              sage: b
              -1/2*a0
  
-@@ -1635,9 +1635,9 @@ class NumberField_relative(NumberField_generic):
+@@ -1624,9 +1624,9 @@ class NumberField_relative(NumberField_generic):
              sage: K.<a> = NumberField(x^2 + 1)
              sage: L.<b> = K.extension(x^2 - 1/2)
              sage: L._pari_relative_structure()
@@ -1586,7 +1560,7 @@ index 7ea070b113e..a1d5ab38176 100644
  
          An example where both fields are defined by non-integral or
          non-monic polynomials::
-@@ -1937,7 +1937,7 @@ class NumberField_relative(NumberField_generic):
+@@ -1926,7 +1926,7 @@ class NumberField_relative(NumberField_generic):
              sage: k.relative_polynomial()
              x^2 + 1/3
              sage: k.pari_relative_polynomial()
@@ -1595,7 +1569,7 @@ index 7ea070b113e..a1d5ab38176 100644
          """
          return QQ['x'](self._pari_rnfeq()[0])
  
-@@ -2724,7 +2724,7 @@ class NumberField_relative(NumberField_generic):
+@@ -2699,7 +2699,7 @@ class NumberField_relative(NumberField_generic):
              sage: x = polygen(ZZ, 'x')
              sage: K.<a, b> = NumberField([x^2 + 23, x^2 - 3])
              sage: P = K.prime_factors(5)[0]; P
@@ -1605,47 +1579,29 @@ index 7ea070b113e..a1d5ab38176 100644
              sage: u.valuation(P)
              1
 diff --git a/src/sage/rings/number_field/order.py b/src/sage/rings/number_field/order.py
-index 9dee6a8a481..3c2809f4201 100644
+index fd5662048df..d1c055bf549 100644
 --- a/src/sage/rings/number_field/order.py
 +++ b/src/sage/rings/number_field/order.py
-@@ -496,7 +496,7 @@ class Order(Parent, sage.rings.abc.Order):
-             sage: K.<a> = NumberField(x^2 + 2)
-             sage: R = K.maximal_order()
-             sage: R.fractional_ideal(2/3 + 7*a, a)
--            Fractional ideal (1/3*a)
-+            Fractional ideal (-1/3*a)
-         """
-         return self.number_field().fractional_ideal(*args, **kwds)
- 
-@@ -570,7 +570,7 @@ class Order(Parent, sage.rings.abc.Order):
-             sage: k.<a> = NumberField(x^2 + 5077); G = k.class_group(); G
-             Class group of order 22 with structure C22 of Number Field in a with defining polynomial x^2 + 5077
-             sage: G.0 ^ -9
--            Fractional ideal class (43, a + 13)
-+            Fractional ideal class (67, a + 45)
-             sage: Ok = k.maximal_order(); Ok
-             Maximal Order generated by a in Number Field in a with defining polynomial x^2 + 5077
-             sage: Ok * (11, a + 7)
-@@ -2933,7 +2933,7 @@ def GaussianIntegers(names='I', latex_name='i'):
+@@ -2935,7 +2935,7 @@ def GaussianIntegers(names='I', latex_name='i'):
          sage: ZZI
          Gaussian Integers generated by I in Number Field in I with defining polynomial x^2 + 1 with I = 1*I
          sage: factor(3 + I)
 -        (-I) * (I + 1) * (2*I + 1)
-+        (-I) * (I - 2) * (-I + 1)
++        (-2*I - 1) * (I - 1)
          sage: CC(I)
          1.00000000000000*I
          sage: I.minpoly()
-@@ -2964,7 +2964,7 @@ def EisensteinIntegers(names='omega'):
+@@ -2966,7 +2966,7 @@ def EisensteinIntegers(names='omega'):
           with defining polynomial x^2 + x + 1
           with omega = -0.50000000000000000? + 0.866025403784439?*I
          sage: factor(3 + omega)
 -        (-1) * (-omega - 3)
-+        (omega + 1) * (-2*omega + 1)
++        (omega) * (-3*omega - 2)
          sage: CC(omega)
          -0.500000000000000 + 0.866025403784439*I
          sage: omega.minpoly()
 diff --git a/src/sage/rings/number_field/selmer_group.py b/src/sage/rings/number_field/selmer_group.py
-index 5204cfc80b6..33f23ff8f2c 100644
+index 283db17c84e..a940c95731d 100644
 --- a/src/sage/rings/number_field/selmer_group.py
 +++ b/src/sage/rings/number_field/selmer_group.py
 @@ -71,7 +71,7 @@ def _ideal_generator(I):
@@ -1657,8 +1613,21 @@ index 5204cfc80b6..33f23ff8f2c 100644
      """
      try:
          return I.gens_reduced()[0]
+@@ -489,9 +489,9 @@ def pSelmerGroup(K, S, p, proof=None, debug=False):
+ 
+         sage: [K.ideal(g).factor() for g in gens]
+         [(Fractional ideal (2, a + 1)) * (Fractional ideal (3, a + 1)),
+-        Fractional ideal (a),
+-        (Fractional ideal (2, a + 1))^2,
+-        1]
++         Fractional ideal (-a),
++         (Fractional ideal (2, a + 1))^2,
++         1]
+ 
+         sage: toKS2(10)
+         (0, 0, 1, 1)
 diff --git a/src/sage/rings/polynomial/polynomial_quotient_ring.py b/src/sage/rings/polynomial/polynomial_quotient_ring.py
-index 027a8997067..cf1448f9d28 100644
+index 115647adadf..edd6a957363 100644
 --- a/src/sage/rings/polynomial/polynomial_quotient_ring.py
 +++ b/src/sage/rings/polynomial/polynomial_quotient_ring.py
 @@ -1430,13 +1430,13 @@ class PolynomialQuotientRing_generic(QuotientRing_generic):
@@ -1771,11 +1740,20 @@ index 027a8997067..cf1448f9d28 100644
  
          Note that all the returned values live where we expect them to::
  
+@@ -1877,7 +1877,7 @@ class PolynomialQuotientRing_generic(QuotientRing_generic):
+             sage: D.selmer_generators([K.ideal(2, -a + 1),
+             ....:                      K.ideal(3, a + 1),
+             ....:                      K.ideal(a)], 3)
+-            [2, a + 1, -a]
++            [2, a + 1, a]
+         """
+         fields, isos, iso_classes = self._S_decomposition(tuple(S))
+         n = len(fields)
 diff --git a/src/sage/rings/qqbar.py b/src/sage/rings/qqbar.py
-index 300d64b8279..08c04e6e234 100644
+index 3806663eaf0..b7dbede3f97 100644
 --- a/src/sage/rings/qqbar.py
 +++ b/src/sage/rings/qqbar.py
-@@ -2776,11 +2776,12 @@ def number_field_elements_from_algebraics(numbers, minimal=False,
+@@ -2777,11 +2777,12 @@ def number_field_elements_from_algebraics(numbers, minimal=False,
              To:   Algebraic Real Field
              Defn: a |--> 1.732050807568878?)
          sage: number_field_elements_from_algebraics((rt2,qqI))                          # needs sage.symbolic
@@ -1792,7 +1770,7 @@ index 300d64b8279..08c04e6e234 100644
  
      Note that for the first example, where \sage does not realize that
      the number is real, we get a homomorphism to ``QQbar``::
-@@ -4590,8 +4591,7 @@ class AlgebraicNumber_base(sage.structure.element.FieldElement):
+@@ -4660,8 +4661,7 @@ class AlgebraicNumber_base(sage.structure.element.FieldElement):
              Number Field in a with defining polynomial y^4 - 20*y^2 + 81
               with a in -3.789313782671036?
              sage: (QQbar(7)^(3/5))._exact_field()
@@ -1802,7 +1780,7 @@ index 300d64b8279..08c04e6e234 100644
          """
          sd = self._descr
          if isinstance(sd, (ANRational, ANExtensionElement)):
-@@ -4611,7 +4611,7 @@ class AlgebraicNumber_base(sage.structure.element.FieldElement):
+@@ -4681,7 +4681,7 @@ class AlgebraicNumber_base(sage.structure.element.FieldElement):
              sage: (sqrt(QQbar(2)) + sqrt(QQbar(19)))._exact_value()
              -1/9*a^3 + a^2 + 11/9*a - 10 where a^4 - 20*a^2 + 81 = 0 and a in -3.789313782671036?
              sage: (QQbar(7)^(3/5))._exact_value()
@@ -1811,7 +1789,7 @@ index 300d64b8279..08c04e6e234 100644
          """
          sd = self._descr
          if isinstance(sd, (ANRational, ANExtensionElement)):
-@@ -7839,8 +7839,8 @@ class ANExtensionElement(ANDescr):
+@@ -7925,8 +7925,8 @@ class ANExtensionElement(ANDescr):
              sage: sage_input(v, verify=True)
              # Verified
              R.<y> = QQ[]
@@ -1823,29 +1801,20 @@ index 300d64b8279..08c04e6e234 100644
              sage: v.exactify()
              sage: sage_input(v, verify=True)
 diff --git a/src/sage/rings/rational.pyx b/src/sage/rings/rational.pyx
-index 272650abeef..0dbe3453dd2 100644
+index 68ee004a251..d1def05ac18 100644
 --- a/src/sage/rings/rational.pyx
 +++ b/src/sage/rings/rational.pyx
-@@ -1446,7 +1446,7 @@ cdef class Rational(sage.structure.element.FieldElement):
-             sage: 0.is_norm(K)
-             True
-             sage: (1/7).is_norm(K, element=True)
--            (True, 1/7*beta + 3/7)
-+            (True, -3/7*beta + 5/7)
-             sage: (1/10).is_norm(K, element=True)
-             (False, None)
-             sage: (1/691).is_norm(QQ, element=True)
 @@ -1558,7 +1558,7 @@ cdef class Rational(sage.structure.element.FieldElement):
          EXAMPLES::
  
              sage: QQ(2)._bnfisnorm(QuadraticField(-1, 'i'))                             # needs sage.rings.number_field
 -            (i + 1, 1)
-+            (-i + 1, 1)
++            (i - 1, 1)
              sage: x = polygen(QQ, 'x')
              sage: 7._bnfisnorm(NumberField(x^3 - 2, 'b'))                               # needs sage.rings.number_field
              (1, 7)
 diff --git a/src/sage/schemes/affine/affine_morphism.py b/src/sage/schemes/affine/affine_morphism.py
-index 0eba4c662ec..2208cefca1d 100755
+index 0eba4c662ec..2208cefca1d 100644
 --- a/src/sage/schemes/affine/affine_morphism.py
 +++ b/src/sage/schemes/affine/affine_morphism.py
 @@ -1158,13 +1158,11 @@ class SchemeMorphism_polynomial_affine_space_field(SchemeMorphism_polynomial_aff
@@ -1865,8 +1834,21 @@ index 0eba4c662ec..2208cefca1d 100755
  
          ::
  
+diff --git a/src/sage/schemes/berkovich/berkovich_space.py b/src/sage/schemes/berkovich/berkovich_space.py
+index f5455937b43..1330c408f4a 100644
+--- a/src/sage/schemes/berkovich/berkovich_space.py
++++ b/src/sage/schemes/berkovich/berkovich_space.py
+@@ -201,7 +201,7 @@ class Berkovich_Cp(Berkovich):
+             sage: ideal = A.prime_above(5)
+             sage: B = Berkovich_Cp_Projective(A, ideal)
+             sage: B.ideal()
+-            Fractional ideal (-a - 2)
++            Fractional ideal (2*a - 1)
+ 
+         ::
+ 
 diff --git a/src/sage/schemes/elliptic_curves/ell_field.py b/src/sage/schemes/elliptic_curves/ell_field.py
-index 4f694e0f252..bfcbf5e9020 100755
+index 920fd99dfed..4fb8fc7523e 100644
 --- a/src/sage/schemes/elliptic_curves/ell_field.py
 +++ b/src/sage/schemes/elliptic_curves/ell_field.py
 @@ -902,7 +902,7 @@ class EllipticCurve_field(ell_generic.EllipticCurve_generic, ProjectivePlaneCurv
@@ -1879,7 +1861,7 @@ index 4f694e0f252..bfcbf5e9020 100755
          Some higher-degree examples::
  
 diff --git a/src/sage/schemes/elliptic_curves/ell_local_data.py b/src/sage/schemes/elliptic_curves/ell_local_data.py
-index 7434659b5a2..df076ed62b6 100755
+index 7434659b5a2..df076ed62b6 100644
 --- a/src/sage/schemes/elliptic_curves/ell_local_data.py
 +++ b/src/sage/schemes/elliptic_curves/ell_local_data.py
 @@ -1161,7 +1161,7 @@ def check_prime(K, P):
@@ -1892,7 +1874,7 @@ index 7434659b5a2..df076ed62b6 100755
          sage: check_prime(K, L.ideal(5))
          Traceback (most recent call last):
 diff --git a/src/sage/schemes/elliptic_curves/ell_number_field.py b/src/sage/schemes/elliptic_curves/ell_number_field.py
-index eea2e5cc243..cceab500959 100755
+index 8af221880b6..62bbd71e809 100644
 --- a/src/sage/schemes/elliptic_curves/ell_number_field.py
 +++ b/src/sage/schemes/elliptic_curves/ell_number_field.py
 @@ -229,9 +229,9 @@ class EllipticCurve_number_field(EllipticCurve_field):
@@ -1956,23 +1938,20 @@ index eea2e5cc243..cceab500959 100755
              sage: [E.kodaira_symbol(P) for P in bad_primes]
              [I0, I1, I1, II]
              sage: K.<a> = QuadraticField(-11)
-@@ -1483,10 +1485,12 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -1483,10 +1485,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
  
              sage: K.<i> = NumberField(x^2 + 1)
              sage: EllipticCurve([i, i - 1, i + 1, 24*i + 15, 14*i + 35]).conductor()
 -            Fractional ideal (21*i - 3)
 +            Fractional ideal (3*i + 21)
              sage: K.<a> = NumberField(x^2 - x + 3)
--            sage: EllipticCurve([1 + a, -1 + a, 1 + a, -11 + a, 5 - 9*a]).conductor()
+             sage: EllipticCurve([1 + a, -1 + a, 1 + a, -11 + a, 5 - 9*a]).conductor()
 -            Fractional ideal (-6*a)
-+            sage: cond = EllipticCurve([1 + a, -1 + a, 1 + a, -11 + a, 5 - 9*a]).conductor(); cond # random
 +            Fractional ideal (6*a)
-+            sage: cond == K.ideal(6*a)
-+            True
  
          A not so well known curve with everywhere good reduction::
  
-@@ -2584,8 +2588,8 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -2584,8 +2586,8 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: [E1.ainvs() for E1 in C]
              [(0, 0, 0, 0, -27),
              (0, 0, 0, 0, 1),
@@ -1983,7 +1962,7 @@ index eea2e5cc243..cceab500959 100755
  
          The matrix of degrees of cyclic isogenies between curves::
  
-@@ -2616,13 +2620,13 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -2616,13 +2618,13 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: [((i,j), isogs[i][j].x_rational_map())
              ....:  for i in range(4) for j in range(4) if isogs[i][j] != 0]
              [((0, 1), (1/9*x^3 - 12)/x^2),
@@ -2003,7 +1982,7 @@ index eea2e5cc243..cceab500959 100755
  
          The isogeny class may be visualized by obtaining its graph and
          plotting it::
-@@ -3103,10 +3107,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -3103,10 +3105,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: K.<i> = QuadraticField(-1)
              sage: E1 = EllipticCurve([i + 1, 0, 1, -240*i - 400, -2869*i - 2627])
              sage: E1.conductor()
@@ -2016,7 +1995,7 @@ index eea2e5cc243..cceab500959 100755
              sage: E1.is_isogenous(E2) # long time
              True
              sage: E1.is_isogenous(E2, proof=False) # faster  (~170ms)
-@@ -3433,8 +3437,8 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -3433,8 +3435,8 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: Q = E(0,-1)
              sage: E.lll_reduce([P,Q])
              (
@@ -2027,7 +2006,7 @@ index eea2e5cc243..cceab500959 100755
              )
  
          ::
-@@ -3445,9 +3449,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -3445,9 +3447,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
              ....:           E.point([-17/18*a - 1/9, -109/108*a - 277/108])]
              sage: E.lll_reduce(points)
              (
@@ -2042,29 +2021,27 @@ index eea2e5cc243..cceab500959 100755
          """
          r = len(points)
 diff --git a/src/sage/schemes/elliptic_curves/ell_point.py b/src/sage/schemes/elliptic_curves/ell_point.py
-index 507930474c1..716469af6cb 100755
+index d05196240a1..5b4cdab67e9 100644
 --- a/src/sage/schemes/elliptic_curves/ell_point.py
 +++ b/src/sage/schemes/elliptic_curves/ell_point.py
-@@ -2774,10 +2773,10 @@ class EllipticCurvePoint_number_field(EllipticCurvePoint_field):
-             sage: K.<i> = NumberField(x^2 + 1)
+@@ -3054,9 +3054,9 @@ class EllipticCurvePoint_number_field(EllipticCurvePoint_field):
              sage: E = EllipticCurve(K, [0,1,0,-160,308])
              sage: P = E(26, -120)
--            sage: E.discriminant().support()
+             sage: E.discriminant().support()
 -            [Fractional ideal (i + 1),
 -             Fractional ideal (-i - 2),
 -             Fractional ideal (2*i + 1),
-+            sage: E.discriminant().support() # random
-+            [Fractional ideal (-i - 1),
++            [Fractional ideal (i - 1),
 +             Fractional ideal (2*i - 1),
 +             Fractional ideal (-2*i - 1),
               Fractional ideal (3)]
              sage: [E.tamagawa_exponent(p) for p in E.discriminant().support()]
              [1, 4, 4, 4]
 diff --git a/src/sage/schemes/elliptic_curves/ell_rational_field.py b/src/sage/schemes/elliptic_curves/ell_rational_field.py
-index d00187d49a2..fd8980f8b0d 100755
+index 134531ad1a5..27b33b46e67 100644
 --- a/src/sage/schemes/elliptic_curves/ell_rational_field.py
 +++ b/src/sage/schemes/elliptic_curves/ell_rational_field.py
-@@ -1848,7 +1848,7 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
+@@ -1863,7 +1863,7 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
              sage: E = EllipticCurve('389a1')
              sage: E._known_points = []  # clear cached points
              sage: E.simon_two_descent()
@@ -2074,7 +2051,7 @@ index d00187d49a2..fd8980f8b0d 100755
              sage: E.simon_two_descent()
              (3, 3, [(1 : 0 : 1), (2 : 0 : 1), (0 : 2 : 1)])
 diff --git a/src/sage/schemes/elliptic_curves/gal_reps_number_field.py b/src/sage/schemes/elliptic_curves/gal_reps_number_field.py
-index a4eb66a6df7..8b597e41595 100755
+index 7824893b05f..609aab5f4bf 100644
 --- a/src/sage/schemes/elliptic_curves/gal_reps_number_field.py
 +++ b/src/sage/schemes/elliptic_curves/gal_reps_number_field.py
 @@ -800,17 +800,17 @@ def deg_one_primes_iter(K, principal_only=False):
@@ -2114,7 +2091,7 @@ index 6be377e2f74..4134ae1b7a6 100644
      TESTS::
  
 diff --git a/src/sage/schemes/elliptic_curves/isogeny_class.py b/src/sage/schemes/elliptic_curves/isogeny_class.py
-index 13edc68a022..a83fd8705ac 100755
+index 13edc68a022..a83fd8705ac 100644
 --- a/src/sage/schemes/elliptic_curves/isogeny_class.py
 +++ b/src/sage/schemes/elliptic_curves/isogeny_class.py
 @@ -223,8 +223,8 @@ class IsogenyClass_EC(SageObject):
@@ -2160,7 +2137,7 @@ index 13edc68a022..a83fd8705ac 100755
              sage: K.<i> = QuadraticField(-1)
              sage: E = EllipticCurve([1+i, -i, i, 1, 0])
 diff --git a/src/sage/schemes/elliptic_curves/isogeny_small_degree.py b/src/sage/schemes/elliptic_curves/isogeny_small_degree.py
-index 6a0194fb0f9..90f7382a94e 100755
+index 6a0194fb0f9..90f7382a94e 100644
 --- a/src/sage/schemes/elliptic_curves/isogeny_small_degree.py
 +++ b/src/sage/schemes/elliptic_curves/isogeny_small_degree.py
 @@ -886,15 +886,15 @@ def isogenies_5_0(E, minimal_models=True):
@@ -2184,7 +2161,7 @@ index 6a0194fb0f9..90f7382a94e 100755
      """
      F = E.base_field()
 diff --git a/src/sage/schemes/plane_conics/con_number_field.py b/src/sage/schemes/plane_conics/con_number_field.py
-index e09a1f60262..69fe9960c3d 100755
+index e09a1f60262..2b084b57dc6 100644
 --- a/src/sage/schemes/plane_conics/con_number_field.py
 +++ b/src/sage/schemes/plane_conics/con_number_field.py
 @@ -121,7 +121,7 @@ class ProjectiveConic_number_field(ProjectiveConic_field):
@@ -2192,7 +2169,7 @@ index e09a1f60262..69fe9960c3d 100755
              sage: C = Conic(K, [1, 3, -5])
              sage: C.has_rational_point(point=True, obstruction=True)
 -            (False, Fractional ideal (-i - 2))
-+            (False, Fractional ideal (i + 2))
++            (False, Fractional ideal (2*i - 1))
              sage: C.has_rational_point(algorithm='rnfisnorm')
              False
              sage: C.has_rational_point(algorithm='rnfisnorm', obstruction=True,
@@ -2206,7 +2183,7 @@ index e09a1f60262..69fe9960c3d 100755
              sage: K.<a> = NumberField(x^4+2)
              sage: Conic(QQ, [4,5,6]).has_rational_point()
 diff --git a/src/sage/schemes/projective/projective_morphism.py b/src/sage/schemes/projective/projective_morphism.py
-index 20031e81a41..fcbb0c01e82 100755
+index 20031e81a41..fcbb0c01e82 100644
 --- a/src/sage/schemes/projective/projective_morphism.py
 +++ b/src/sage/schemes/projective/projective_morphism.py
 @@ -928,7 +928,7 @@ class SchemeMorphism_polynomial_projective_space(SchemeMorphism_polynomial):
@@ -2250,10 +2227,10 @@ index 20031e81a41..fcbb0c01e82 100755
          The following was fixed in :issue:`23808`::
  
 diff --git a/src/sage/schemes/projective/projective_point.py b/src/sage/schemes/projective/projective_point.py
-index 7f941ec6726..b0f443acb4e 100755
+index 88ab4eadcfc..95ee97a7d19 100644
 --- a/src/sage/schemes/projective/projective_point.py
 +++ b/src/sage/schemes/projective/projective_point.py
-@@ -1238,10 +1238,10 @@ class SchemeMorphism_point_projective_field(SchemeMorphism_point_projective_ring
+@@ -1246,10 +1246,10 @@ class SchemeMorphism_point_projective_field(SchemeMorphism_point_projective_ring
              sage: P.<x,y> = ProjectiveSpace(QQbar, 1)
              sage: Q = P([-1/2*QQbar(sqrt(2)) + QQbar(I), 1])
              sage: S = Q._number_field_from_algebraics(); S
@@ -2266,7 +2243,7 @@ index 7f941ec6726..b0f443acb4e 100755
  
          The following was fixed in :issue:`23808`::
  
-@@ -1251,7 +1251,7 @@ class SchemeMorphism_point_projective_field(SchemeMorphism_point_projective_ring
+@@ -1259,7 +1259,7 @@ class SchemeMorphism_point_projective_field(SchemeMorphism_point_projective_ring
              sage: Q = P([-1/2*QQbar(sqrt(2)) + QQbar(I), 1]);Q
              (-0.7071067811865475? + 1*I : 1)
              sage: S = Q._number_field_from_algebraics(); S
@@ -2336,10 +2313,10 @@ index 20a293fbb7b..dac8c4bc833 100644
          0.69314718055994530941723212145817656807550013
      """
 diff --git a/src/sage/symbolic/expression.pyx b/src/sage/symbolic/expression.pyx
-index f221fd64de0..ba947f215ae 100644
+index da4d5db908f..3c2f93e3355 100644
 --- a/src/sage/symbolic/expression.pyx
 +++ b/src/sage/symbolic/expression.pyx
-@@ -9798,8 +9798,7 @@ cdef class Expression(Expression_abc):
+@@ -9799,8 +9799,7 @@ cdef class Expression(Expression_abc):
          ::
  
              sage: gp('gamma(1+I)')
