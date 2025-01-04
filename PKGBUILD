@@ -14,7 +14,7 @@ license=('GPL3')
 provides=("$_pkgname")
 depends=()
 source=($pkgname-$pkgver.zip::https://github.com/Bililive/BililiveRecorder/releases/download/v$pkgver/BililiveRecorder-CLI-linux-x64.zip)
-sha256sums=('8e0cec3ae06722ef636ae6637273ace579a4723cb6a92c89727fb349dcb22c2f')
+sha256sums=('737b37b855c9eafd2794e892af923ca935bd926037f026b1757f24f681825e19')
 
 package() {
 	cd $srcdir
