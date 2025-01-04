@@ -3,10 +3,11 @@
 # Contributor: Xuanrui Qi <me@xuanruiqi.com>
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
+# shellcheck shell=bash disable=SC2034,SC2154
 
-pkgname=libmagick6
 pkgbase=imagemagick6
-pkgver=6.9.13.18
+pkgname=libmagick6
+pkgver=6.9.13.21
 _pkgver="${pkgver%.*}-${pkgver##*.}"
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (legacy 6.9.13-* series)"
@@ -33,7 +34,6 @@ makedepends=(
   'jbigkit'
   'libheif'
   'libjxl'
-  'libraqm'
   'libraw'
   'librsvg'
   'libwebp'
@@ -49,8 +49,8 @@ checkdepends=(
   'ttf-dejavu'
 )
 source=("https://legacy.imagemagick.org/archive/releases/ImageMagick-${_pkgver}.tar.gz"{,.asc}
-        'arch-fonts.diff')
-sha256sums=('45c3e3ae255668390022f97d8a0c67f4fa7a1ed3f2d3be942f1e73732b516b75'
+  'arch-fonts.diff')
+sha256sums=('dab32cffafc46b4052a71e1b41ac1466f81e3e920b7762964fc1110f72df132d'
             'SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A') # Lexie Parsimoniae (ImageMagick code signing key) <lexie.parsimoniae@imagemagick.org>
@@ -115,18 +115,18 @@ check() (
 package_libmagick6() {
   pkgdesc="${pkgdesc/)/; library)}"
   optdepends=('ghostscript: PS/PDF support'
-              'libheif: HEIF support'
-              'libjxl: JPEG XL support'
-              'libraw: DNG support'
-              'librsvg: SVG support'
-              'libwebp: WEBP support'
-              'libwmf: WMF support'
-              'libxml2: Magick Scripting Language'
-              'ocl-icd: OpenCL support'
-              'openexr: OpenEXR support'
-              'openjpeg2: JPEG2000 support'
-              'djvulibre: DJVU support'
-              'pango: Text rendering')
+    'libheif: HEIF support'
+    'libjxl: JPEG XL support'
+    'libraw: DNG support'
+    'librsvg: SVG support'
+    'libwebp: WEBP support'
+    'libwmf: WMF support'
+    'libxml2: Magick Scripting Language'
+    'ocl-icd: OpenCL support'
+    'openexr: OpenEXR support'
+    'openjpeg2: JPEG2000 support'
+    'djvulibre: DJVU support'
+    'pango: Text rendering')
   options=('!emptydirs' 'libtool')
   backup=(etc/ImageMagick-6/{coder,colors,delegates,log,magic,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
 
@@ -148,3 +148,4 @@ package_libmagick6() {
   sed -e '/<\/policymap>/i \ \ <policy domain="delegate" rights="none" pattern="gs" \/>' -i \
     "$pkgdir"/etc/ImageMagick-6/policy.xml
 }
+# vim:set ts=2 sw=2 et:
