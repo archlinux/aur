@@ -11,8 +11,10 @@ provides=('slopr')
 conflicts=('slopr')
 
 source=("$pkgname-$pkgver.tar.gz::GITHUB_RELEASE_URL")
+source=("https://github.com/keirim/slopr/releases/download/v$pkgver/slopr-$pkgver.tar.gz")
+
 sha256sums=('SKIP')
 
 package() {
-    install -Dm755 "slop" "$pkgdir/usr/bin/slop"
+    install -Dm755 "slopr" "$pkgdir/usr/bin/slopr"
 }
