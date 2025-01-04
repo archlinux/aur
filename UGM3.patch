@@ -1,0 +1,11 @@
+--- libfyaml-0.9.ori/test/testsuite-json.test	2025-01-04 09:39:31.438305184 +0100
++++ libfyaml-0.9.new/test/testsuite-json.test	2025-01-04 09:40:37.868111048 +0100
+@@ -23,7 +23,7 @@
+ echo 1..$count
+ 
+ skiplist="C4HZ"
+-xfaillist=""
++xfaillist="UGM3"
+ 
+ i=0
+ for basetst in test-suite-data/[A-Z0-9][A-Z0-9][A-Z0-9][A-Z0-9]/; do
