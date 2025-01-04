@@ -1,0 +1,4 @@
+[flying-carpet]
+source = "git"
+git = "https://github.com/spieglt/FlyingCarpet.git"
+prefix = "v"
