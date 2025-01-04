@@ -1,0 +1,16 @@
+pkgbase = lib32-gts
+	pkgdesc = Provides useful functions to deal with 3D surfaces meshed with interconnected triangles (32-bit)
+	pkgver = 0.7.6.121130
+	pkgrel = 1
+	url = https://gts.sourceforge.net
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	depends = gts
+	depends = lib32-glib2
+	depends = lib32-glibc
+	depends = lib32-netpbm
+	provides = libgts.so
+	source = gts-snapshot-121130.tar.gz::https://gts.sourceforge.net/tarballs/gts-snapshot-121130.tar.gz
+	sha256sums = c23f72ab74bbf65599f8c0b599d6336fabe1ec2a09c19b70544eeefdc069b73b
+
+pkgname = lib32-gts
