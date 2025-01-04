@@ -1,6 +1,6 @@
 pkgbase = fastanime
 	pkgdesc = FastAnime, anime site experience from the terminal.
-	pkgver = 2.8.6
+	pkgver = 2.8.7
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Benex254/FastAnime
@@ -36,7 +36,7 @@ pkgbase = fastanime
 	optdepends = syncplay: watch with friends
 	optdepends = feh: image viewer (for manga mode)
 	provides = fastanime
-	source = fastanime-v2.8.6.tar.gz::https://github.com/Benex254/FastAnime/archive/refs/tags/v2.8.6.tar.gz
+	source = fastanime-v2.8.7.tar.gz::https://github.com/Benex254/FastAnime/archive/refs/tags/v2.8.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = fastanime
