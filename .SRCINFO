@@ -6,6 +6,7 @@ pkgbase = i18nspector
 	arch = any
 	license = MIT
 	checkdepends = python-nose
+	checkdepends = python-rply
 	makedepends = python-docutils
 	depends = python
 	depends = python-polib
