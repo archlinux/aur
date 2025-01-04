@@ -1,7 +1,7 @@
 pkgbase = groundcoverify-git
 	pkgdesc = A simple python script which uses DeltaPlugin to turn regular groundcover in morrowind plugins into openmw-style groundcover.
 	pkgver = 0.2.1.r2.g9d6e2b4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/bmwinger/groundcoverify
 	arch = i686
 	arch = x86_64
@@ -11,6 +11,8 @@ pkgbase = groundcoverify-git
 	depends = python
 	provides = groundcoverify
 	source = git+https://gitlab.com/bmwinger/groundcoverify
+	source = default_config_location.patch
 	sha1sums = SKIP
+	sha1sums = 1e4d5e061e9e20e25b4abc1a60dc1be9c11d8d5f
 
 pkgname = groundcoverify-git
