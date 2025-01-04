@@ -1,16 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ente-auth
 pkgdesc="Open source 2FA authenticator, with end-to-end encrypted backups"
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://ente.io/auth"
 license=('AGPL-3.0-or-later')
 depends=(
   'gtk3'
-  'libappindicator-gtk3'
+  'libayatana-appindicator'
   'libsecret'
-  'libsodium'
+  'libsodium-1.0.18'
   'sqlite'
 )
 makedepends=(
@@ -28,7 +28,7 @@ source=("git+https://github.com/ente-io/ente.git#tag=auth-v$pkgver"
         'git+https://github.com/ente-io/PhotoSwipe.git'
         'git+https://github.com/prateekmedia/flutter_distributor.git#branch=develop'
         'enteauth.desktop')
-sha256sums=('d221b537accc52415f5876fabf39afb005826acb39e491e8f809254236f6dd5e'
+sha256sums=('b6e3603f562e563eb8635384cd47aa3ebdf29ccec3a176e09eddce1cf7f4d98e'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -67,10 +67,9 @@ build() {
   export PATH="${FLUTTER_HOME}/bin:${PATH}"
   export PATH="$PATH":"$HOME/.pub-cache/bin"
   export LIBSODIUM_USE_PKGCONFIG=1
-#  flutter build linux --dart-define FLUTTER_BUILD_NAME="$pkgver" \
-#    --dart-define FLUTTER_BUILD_NUMBER="${pkgver//./}"
-  dart --disable-analytics
-#  dart pub global activate flutter_distributor
+  export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/lib/sodium-1.0.18/pkgconfig/"
+  export LIBRARY_PATH="${LIBRARY_PATH}:/usr/lib/sodium-1.0.18/"
+  flutter config --no-analytics
   dart pub global activate \
     --source git https://github.com/prateekmedia/flutter_distributor \
     --git-ref develop \
@@ -88,7 +87,7 @@ check() {
 package() {
   cd ente/auth
 
-  if [ $CARCH == "aarch64" ]; then
+  if [ "$CARCH" == "aarch64" ]; then
     FLUTTER_ARCH=arm64
   else
     FLUTTER_ARCH=x64
