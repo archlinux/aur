@@ -3,7 +3,7 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=3.0.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=(x86_64 aarch64)
@@ -16,13 +16,13 @@ depends=(
     python-aiohttp
     python-aiosqlite
     python-alembic
-    python-async-timeout
     python-bcrypt
     python-distro
     python-email-validator
     python-fastapi
+    python-greenlet
     python-jinja
-    python-jose
+    python-joserfc
     python-platformdirs
     python-py-cpuinfo
     python-pydantic
@@ -31,7 +31,7 @@ depends=(
     python-sentry_sdk
     python-sqlalchemy
     python-truststore
-    python-watchfiles
+    python-watchdog
     python-websockets
     python-zstandard
     uvicorn
@@ -53,9 +53,9 @@ install="$pkgname".install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname@.service"
         fix_requirements_for_Arch.diff)
-sha256sums=('86c991372b129a8a951053994fcb3d3d8514dfa57d48c2a7ec8f3b280c1e1447'
+sha256sums=('2ec65b82e6f944ba8d291a469faca630121ed4e1fba976236f9baede5499d729'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f'
-            'ef43e75cb1fad18c4980b9bf6022d51a2f05dbec1ca99ce91265408b193516d8')
+            '81ad6359f50d1b1e83ee89df497b31269dcb3472f87b3cf00e7999c787fc7e1d')
 
 prepare() {
     cd "$pkgname-$pkgver"
