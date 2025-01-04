@@ -1,4 +1,4 @@
-url := "https://github.com/usagi-flow/evil-helix/releases/latest/download/helix-amd64-linux.tar.gz"
+url := "https://github.com/usagi-flow/evil-helix/releases/latest/download/evil-helix-amd64-linux.tar.gz"
 
 generate-srcinfo:
 	makepkg --printsrcinfo > .SRCINFO
