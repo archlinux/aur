@@ -1,8 +1,5 @@
 post_install() {
-adduser --disabled-password  --quiet --system \
-            --home /run/rtpmidid --no-create-home \
-            --gecos "rtpmidid daemon" rtpmidid
-adduser --quiet rtpmidid audio
+sudo useradd --system --home /run/rtpmidid --no-create-home  rtpmidid -G audio
 }
 
 post_remove() {
