@@ -5,10 +5,10 @@ pkgver() {
     cd "$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
-pkgrel=2
+pkgrel=3
 pkgdesc='bezier-eased terminal animations'
 arch=(any)
-url="https://github.com/flick0/sttt"
+url="https://github.com/flickowoa/sttt"
 license=('MIT')
 provides=("sttt")
 depends=('python3' 'ncurses')

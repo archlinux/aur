@@ -1,15 +1,15 @@
 pkgbase = sttt-git
 	pkgdesc = bezier-eased terminal animations
 	pkgver = r29.ef96d8c
-	pkgrel = 2
-	url = https://github.com/flick0/sttt
+	pkgrel = 3
+	url = https://github.com/flickowoa/sttt
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = python3
 	depends = ncurses
 	provides = sttt
-	source = sttt-git::git+https://github.com/flick0/sttt.git
+	source = sttt-git::git+https://github.com/flickowoa/sttt.git
 	sha256sums = SKIP
 
 pkgname = sttt-git
