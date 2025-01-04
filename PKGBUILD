@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=gog-drova-forsaken-kin
-pkgver=1.1.5.78258
+pkgver=1.2.1.2.78694
 pkgrel=1
 pkgdesc='Pixel art action RPG inspired by Celtic mythology and Gothic. GOG version.'
 _shortname="${pkgname#gog-}"
@@ -29,7 +29,7 @@ source=(
 )
 
 sha512sums=(
-  '06e4237630b79d391f94b792b5423dd82db8695af9d93648508c0fc44470fa802a8ed33f3d70debb73ca76eb74eda545f03b92e8b5a4ef1b80ac9a5df963846f'
+  '933f3aec57b291bea54c5ca20f78051ee629f205d367b28ec622a635dffd1632ce5e31098954233e276a57eec8f66a9fb7eb8c376ff2dc376241a8214a82e777'
   '24307f395b6c472264a9e04b043de8d42eb9fb8916f1a165b6ec3836c1ccf8065be1e6ed06197489c79ffcd5c3e74fe099f78d876fb21f07f25d1993d508a8c5'
   '403cf1f0ebaf960e635b54b8c5650493612d41f5bd48fb05bbde1db192cc2e1476449283e764139e2704d7cb7e35e0c272a9d378a0a5b8311ba7207310dcafde'
 )
