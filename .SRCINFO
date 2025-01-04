@@ -1,6 +1,6 @@
 pkgbase = python-textx
 	pkgdesc = Python library for building Domain-Specific Languages and parsers
-	pkgver = 4.0.1
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://textx.github.io/textX/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-textx
 	depends = python-setuptools
 	depends = python-arpeggio
 	optdepends = python-click: textX CLI support
-	source = python-textx-4.0.1.tar.gz::https://github.com/textX/textX/archive/4.0.1.tar.gz
-	sha256sums = 4e87ea428c22363d6d966042d2f421b3bc8bc8ae9dc1c3d0c4844bf0212b9061
+	source = python-textx-4.1.0.tar.gz::https://github.com/textX/textX/archive/4.1.0.tar.gz
+	sha256sums = 3d4c691880d0c03553ce4a69db40668d099c7272c08e933472a3503b08bd1632
 
 pkgname = python-textx
