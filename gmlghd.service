@@ -1,0 +1,18 @@
+[Unit]
+Description=The gemlog http daemon
+
+[Service]
+User=gmlgcd
+ExecStart=/usr/bin/gmlghd
+Restart=on-failure
+
+ProtectSystem=strict
+
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+NoNewPrivileges=yes
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target
