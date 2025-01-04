@@ -1,0 +1,14 @@
+pkgbase = slopr
+	pkgdesc = CLI client to the slop.sh api
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/keirim/slopr
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = slopr
+	conflicts = slopr
+	source = slopr-1.0.0.tar.gz::GITHUB_RELEASE_URL
+	sha256sums = SKIP
+
+pkgname = slopr
