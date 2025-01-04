@@ -14,7 +14,7 @@ conflicts=('lib32-fam')
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://download.gnome.org/sources/${_name}/${pkgver%.*}/${_pkgsrc}.tar.gz"
         # "${_name}_linux-specific_armel-gnueabi.patch::${url}/-/commit/05dcfcd69848e119c6a30d363bc41e896029f8af.patch"
-        "${_name}_poll_files_on_ntfs4.patch::${url}/-/commit/b92b17ecced6df463da73d6de566740cf5cd00d4.patch"
+        "${_name}_poll_files_on_nfs4.patch::${url}/-/commit/b92b17ecced6df463da73d6de566740cf5cd00d4.patch"
         "${_name}_deprecated_g_const_return.patch::${url}/-/commit/77fe68f43ce75e920b0a94b0bc572cf3a21714f2.patch"
         "${_name}_server_deadlock_ih_sub_cancel.patch::${url}/-/commit/f9c67a13af33f389429e4e760f2023a23a9ac19f.patch")
 sha512sums=('21bfe6fcf8fb3117cd5a08c8ce3b8d0d1dd23e478e60a95b76c20d02cc29b050dde086578d81037990484ff891c3e104d2cbbf3d294b4a79346b14a0cae075bb'
@@ -27,14 +27,14 @@ prepare() {
   # https://bugzilla.gnome.org/show_bug.cgi?id=588338
   # patch -Np1 -i "${srcdir}/${_name}_linux-specific_armel-gnueabi.patch"
   # https://bugzilla.gnome.org/show_bug.cgi?id=693006
-  patch -Np1 -i "${srcdir}/${_name}_poll_files_on_ntfs4.patch"
+  patch -Np1 -i "${srcdir}/${_name}_poll_files_on_nfs4.patch"
   # https://bugzilla.gnome.org/show_bug.cgi?id=658884
   patch -Np1 -i "${srcdir}/${_name}_deprecated_g_const_return.patch"
   # https://bugzilla.gnome.org/show_bug.cgi?id=667230, https://bugs.archlinux.org/task/33642
   patch -Np1 -i "${srcdir}/${_name}_server_deadlock_ih_sub_cancel.patch"
 
-  cd "python"
-  sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' "${_name}.py"
+  # cd "python"
+  # sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' "${_name}.py"
 }
 
 build() {
