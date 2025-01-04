@@ -2,12 +2,10 @@
 
 pkgbase=rkflashtool-git
 pkgname=rkflashtool-git
-pkgver=r210.5bc3cbf
-pkgrel=13
+pkgver=r216.6022dd7
+pkgrel=1
 pkgdesc="Tools for flashing Rockchip devices"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/linux-rockchip/rkflashtool"
 license=('BSD-2-Clause')
 groups=()
@@ -24,7 +22,7 @@ optdepends=('rkbin'
 source=("${pkgname}::git+${url}.git"
     "51-rockchip.rules")
 sha256sums=('SKIP'
-            '832ac47a3fe6a397822697099c1780ed223273fc43c23b933e89f05b5d68c63c')
+    '832ac47a3fe6a397822697099c1780ed223273fc43c23b933e89f05b5d68c63c')
 install="${pkgname}.install"
 options=()
 
@@ -34,8 +32,7 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
@@ -43,7 +40,7 @@ package() {
     cd "${srcdir}/${pkgname}"
     make DESTDIR=${pkgdir} PREFIX=/usr install
     mkdir -p "${pkgdir}/etc/udev/rules.d/"
-    head -n 26 rkflashtool.c > LICENSE
+    head -n 26 rkflashtool.c >LICENSE
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     install -Dm 644 ${srcdir}/51-rockchip.rules "${pkgdir}/etc/udev/rules.d/51-rockchip.rules"
