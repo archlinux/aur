@@ -1,7 +1,7 @@
 # Maintainer: MYT1 <MYT1 at QQ com>
 pkgname=mailmaster
 pkgver=5.0.2.1011
-pkgrel=1
+pkgrel=2
 pkgdesc="专业的全平台邮箱客户端。一封邮件，多端同步。手机、Windows、Mac、Linux、网页端，
 所有平台都能给你出色的体验。"
 arch=('x86_64')
@@ -31,7 +31,8 @@ sha256sums=('d7c272d50798b4f0dc5279efba383e8f12decef19e434b144e07c3c26c25c58a'
 
 package() {
     bsdtar -xf "${srcdir}/data."* -C "$pkgdir/"
-    install -Dm755 "${pkgdir}/opt/mailmaster/launch.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${pkgdir}/opt/mailmaster/launch.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${pkgdir}/opt/mailmaster/logo.ico" "${pkgdir}/usr/share/pixmaps/${pkgname}.ico"
     sed '9s/.*/Exec=env QT_SCALE_FACTOR=1.15 mailmaster %U/g' -i "${pkgdir}/usr/share/applications/mailmaster.desktop"
     sed '6s/.*/Icon=mailmaster/g' -i "${pkgdir}/usr/share/applications/mailmaster.desktop"
     sed '6s/.*/Icon=mailmaster/g' -i "${pkgdir}/usr/share/applications/mailmaster.desktop"
