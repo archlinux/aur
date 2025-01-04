@@ -1,32 +1,32 @@
 # Maintainer: SuicideCatt <random.cat.from.internet@gmail.com>
 
 pkgname=sct_argsp
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="C++ Arguments parser"
+pkgdesc="Simple arguments parser for C++20."
 url="https://github.com/SuicideCatt/ArgsP"
 
 arch=(any)
 depends=(gcc)
 makedepends=(git cmake make)
 
-source=("git+https://github.com/SuicideCatt/ArgsP.git")
+source=("${pkgname}-${pkgver}.tag.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 prepare()
 {
-	cd ArgsP
+	cd "ArgsP-${pkgver}"
 	mkdir -p build
 }
 
 build()
 {
-	cd ArgsP/build
+	cd "ArgsP-${pkgver}/build"
 	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles"
 }
 
 package()
 {
-	cd ArgsP/build
+	cd "ArgsP-${pkgver}/build"
 	make DESTDIR="${pkgdir}" install
 }
