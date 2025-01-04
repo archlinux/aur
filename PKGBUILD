@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=pacman-offline-git
-pkgver=0.3.2.r0.gee3cfd3
+pkgver=0.3.3.r3.g15ea02b
 pkgrel=1
 pkgdesc='offline system update with pacman - git checkout'
 arch=('any')
@@ -12,7 +12,8 @@ optdepends=('polkit: elevate privileges')
 makedepends=('git' 'discount')
 conflicts=('pacman-offline')
 provides=('pacman-offline')
-backup=('etc/pacman.d/offline.conf')
+backup=('etc/pacman.d/offline.conf'
+        'etc/pacman.d/offline-include.conf')
 source=('git+https://github.com/eworm-de/pacman-offline.git')
 sha256sums=('SKIP')
 
