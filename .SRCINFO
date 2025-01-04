@@ -1,7 +1,7 @@
 pkgbase = lpac
 	pkgdesc = C-based eUICC LPA
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/estkme-group/lpac
 	arch = x86_64
 	makedepends = cmake
@@ -11,8 +11,8 @@ pkgbase = lpac
 	makedepends = libcurl.so
 	makedepends = libpcsclite.so
 	depends = glibc
-	source = git+https://github.com/estkme-group/lpac.git#tag=v2.1.0
-	sha256sums = fe10ed77b18f0d5582cf2c38ef1bae2a43468826feb87cbc5689ec9186db2508
+	source = git+https://github.com/estkme-group/lpac.git#tag=v2.2.0
+	sha256sums = 0c4776739fbabc2b67ace81cd7200219749cc3fd2f52a4e603d824b92f56817f
 
 pkgname = lpac
 	license = AGPL-3.0-only

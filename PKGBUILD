@@ -2,8 +2,8 @@
 # Contributor: 1ridic <i at 8f dot al>
 pkgbase=lpac
 pkgname=(lpac libeuicc)
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="C-based eUICC LPA"
 arch=('x86_64')
 url=https://github.com/estkme-group/lpac
@@ -12,7 +12,7 @@ makedepends=('cmake' 'gcc' 'git' 'pcsclite' 'libcurl.so' 'libpcsclite.so')
 depends=('glibc')
 #source=("$url/archive/v$pkgver/$pkgbase-$pkgver.tar.gz")
 source=(git+"$url".git#tag=v"$pkgver")
-sha256sums=('fe10ed77b18f0d5582cf2c38ef1bae2a43468826feb87cbc5689ec9186db2508')
+sha256sums=('0c4776739fbabc2b67ace81cd7200219749cc3fd2f52a4e603d824b92f56817f')
 
 build() {
     cmake -G 'Unix Makefiles' \
