@@ -4,7 +4,7 @@
 
 _name=ConvertWithMoss
 pkgname=${_name,,}
-pkgver=11.6.0
+pkgver=11.7.0
 pkgrel=1
 pkgdesc='A tool for converting multi-samples from one format to another'
 url='https://mossgrabers.de/Software/ConvertWithMoss/ConvertWithMoss.html'
@@ -14,7 +14,7 @@ depends=('java-runtime>=16' sh)
 makedepends=(maven)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/git-moss/ConvertWithMoss/archive/refs/tags/$pkgver.tar.gz"
         convertwithmoss.sh)
-sha256sums=('ab91696c1097cecf48da4d09f3200bb3e6fe7e83c12949702a8f466b7bb56d94'
+sha256sums=('23b8c4e3df03504e68a56a8efd211f0e7f7c28da65e6655ef5705bef5a3e3c33'
             '119c190f92a96c3556b770d504ada91fc89d522e837bf490dd3c6b4577d7ca3d')
 
 build() {
@@ -23,13 +23,14 @@ build() {
 }
 
 package() {
-  install -Dm755 $pkgname.sh "$pkgdir"/usr/bin/$pkgname
+  install -vDm 755 $pkgname.sh "$pkgdir"/usr/bin/$pkgname
   cd $_name-$pkgver
-  install -Dm644 target/lib/*.jar -t "$pkgdir"/usr/share/java/$pkgname
+  install -vDm 644 target/lib/*.jar -t "$pkgdir"/usr/share/java/$pkgname
   ln -sf $pkgname-$pkgver.jar "$pkgdir"/usr/share/java/$pkgname/$pkgname.jar
-  install -Dm644 linux/de.mossgrabers.$_name.desktop \
+  install -vDm 644 linux/de.mossgrabers.$_name.desktop \
     -t "$pkgdir"/usr/share/applications
-  install -Dm644 linux/de.mossgrabers.$_name.appdata.xml \
+  install -vDm 644 linux/de.mossgrabers.$_name.appdata.xml \
     -t "$pkgdir"/usr/share/metainfo
-  install -Dm644 icons/$pkgname.png -t "$pkgdir"/usr/share/pixmaps
+  install -vDm 644 icons/$pkgname.png -t "$pkgdir"/usr/share/pixmaps
+  install -vDm 644 README*.md CHANGELOG.md -t "$pkgdir"/usr/share/doc/$pkgname
 }
