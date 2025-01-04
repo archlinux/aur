@@ -1,8 +1,9 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
+# Contributor: alerque
 
 _pkgname=tdf
 pkgname=${_pkgname}-git
-pkgver=20240605.r26.f893ecb
+pkgver=20250101.r56.490b66b
 pkgrel=1
 pkgdesc='A terminal-based PDF viewer'
 url='https://github.com/itsjunetime/tdf'
@@ -22,6 +23,7 @@ pkgver() {
 
 build() {
   cd $_pkgname
+  CFLAGS+=' -ffat-lto-objects'
   cargo build --release
 }
 
