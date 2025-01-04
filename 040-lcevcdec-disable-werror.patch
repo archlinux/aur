@@ -1,0 +1,33 @@
+--- a/cmake/modules/Compiler/ClangApple.cmake
++++ b/cmake/modules/Compiler/ClangApple.cmake
+@@ -15,7 +15,7 @@ endif()
+ 
+ target_compile_options(
+     lcevc_dec::compiler
+-    INTERFACE -Werror
++    INTERFACE #-Werror
+               -Wall
+               -Wshadow
+               -Wstrict-prototypes
+--- a/cmake/modules/Compiler/ClangGNU.cmake
++++ b/cmake/modules/Compiler/ClangGNU.cmake
+@@ -19,7 +19,7 @@ endif()
+ 
+ target_compile_options(
+     lcevc_dec::compiler
+-    INTERFACE -Werror
++    INTERFACE #-Werror
+               -Wall
+               -Wshadow
+               -Wstrict-prototypes
+--- a/cmake/modules/Compiler/GNU.cmake
++++ b/cmake/modules/Compiler/GNU.cmake
+@@ -20,7 +20,7 @@ endif()
+ 
+ target_compile_options(
+     lcevc_dec::compiler
+-    INTERFACE -Werror
++    INTERFACE #-Werror
+               -Wall
+               # -Wshadow
+               -Wwrite-strings

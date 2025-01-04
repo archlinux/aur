@@ -2,7 +2,7 @@
 
 pkgname=lcevcdec
 pkgver=3.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC)'
 arch=('x86_64')
 url='https://github.com/v-novaltd/LCEVCdec/'
@@ -11,14 +11,20 @@ depends=('fmt')
 makedepends=('git' 'cmake' 'python' 'range-v3' 'rapidjson')
 source=("git+https://github.com/v-novaltd/LCEVCdec.git#tag=${pkgver}"
         '010-lcevcdec-fix-pkgconfig-prefix.patch'
-        '020-lcevcdec-fix__builtin_clzg-arguments.patch'::'https://github.com/v-novaltd/LCEVCdec/commit/43ef5a17ec1ced77f834136945b3cbfe2e46b9b4.patch')
+        '020-lcevcdec-fix__builtin_clzg-arguments.patch'::'https://github.com/v-novaltd/LCEVCdec/commit/43ef5a17ec1ced77f834136945b3cbfe2e46b9b4.patch'
+        '030-lcevcdec-disable-avx.patch'
+        '040-lcevcdec-disable-werror.patch')
 sha256sums=('1e6b110e235ddcbc124f3fd1c8a7c7fa1603ec08dbc8b58c59c8f1a8995c9c0b'
             '8d4ed24ba3407f9ebb8397960bfebeebcd973f3f3febad6b52768530451d5b73'
-            '940faa1bdd443841113f0b3e35200bee3a6f088d6353cc31d49ac5e598343856')
+            '940faa1bdd443841113f0b3e35200bee3a6f088d6353cc31d49ac5e598343856'
+            '04e309de2925c2e9a0a57fe138f7b6a1fcfd0a863c350b0391553302681ea681'
+            'd1204a15a9a4faef3fdc41ec0a73296b0504e285b6b335a71ad22186719e49f2')
 
 prepare() {
     patch -d LCEVCdec -Np1 -i "${srcdir}/010-lcevcdec-fix-pkgconfig-prefix.patch"
     patch -d LCEVCdec -Np1 -i "${srcdir}/020-lcevcdec-fix__builtin_clzg-arguments.patch"
+    patch -d LCEVCdec -Np1 -i "${srcdir}/030-lcevcdec-disable-avx.patch"
+    patch -d LCEVCdec -Np1 -i "${srcdir}/040-lcevcdec-disable-werror.patch"
 }
 
 build() {
