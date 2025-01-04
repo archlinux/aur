@@ -5,15 +5,15 @@
 
 pkgname='perl-lingua-stem-ru'
 pkgver='0.04'
-pkgrel='1'
-pkgdesc="Perl/CPAN Module Lemgua::Stem::Ru: Porter's stemming algorithm for Russian (KOI8-R only)"
+pkgrel='2'
+pkgdesc="Perl/CPAN Module Lingua::Stem::Ru: Porter's stemming algorithm for Russian (KOI8-R only)"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='https://search.cpan.org/dist/Lingua-Stem-Ru'
-source=("'http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Lingua-Stem-Ru-${pkgver}.tar.gz")
+source=("http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Lingua-Stem-Ru-${pkgver}.tar.gz")
 md5sums=('5402a0b56336b232250b112f8d0b65f1')
 sha512sums=('30ad7e74cbc065d3a9534f099a7c08b7aef5ec2290609e72704d1ae4ae0ea1a3622dfd0a4012fb169903fe7ef959d24d38e51cd330bc1c38ac09a1d50a76962e')
 _distdir="Lingua-Stem-Ru-${pkgver}"
