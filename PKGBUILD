@@ -3,7 +3,7 @@
 _pkgname=firefly-luciferin
 pkgname=${_pkgname}-git
 pkgver=2.18.9r5.g8abf51a1
-pkgrel=1
+pkgrel=2
 pkgdesc="Screen capture software for ambient and bias lighting"
 arch=('any')
 url="https://github.com/sblantipodi/firefly_luciferin"
@@ -43,8 +43,6 @@ package() {
   install -Dm644 "target/classes/build_assets/org.dpsoftware.FireflyLuciferin.appdata.xml" "$pkgdir/usr/share/metainfo/org.dpsoftware.FireflyLuciferin.appdata.xml"
   install -Dm644 "target/classes/build_assets/org.dpsoftware.FireflyLuciferin.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.dpsoftware.FireflyLuciferin.svg"
 
-  mkdir -p "$pkgdir/usr/share/${_pkgname}/classes/"
-  cp -r "target/classes/org" "$pkgdir/usr/share/${_pkgname}/classes/"
-  find "$pkgdir/usr/share/${_pkgname}/classes/org" -type f -name '*.class' -delete
-  find "$pkgdir/usr/share/${_pkgname}/classes/org" -type d -empty -delete
+  mkdir -p "$pkgdir/usr/share/${_pkgname}/classes/org/dpsoftware/gui/img"
+  install -Dm644 target/classes/org/dpsoftware/gui/img/*.png "$pkgdir/usr/share/${_pkgname}/classes/org/dpsoftware/gui/img/"
 }
