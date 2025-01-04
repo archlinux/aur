@@ -1,19 +1,19 @@
 # Maintainer: Vladimir Demenev <vademenev [at] gmail [dot] com>
 
 # *********************************************
-# 1) For compile package to run:
-#    updpkgsums && makepkg -fs
+# 1) For compile the package to run:
+#    makepkg -fs
 #
-# 2) For install/upgrade package to run: 
-#    sudo pacman -U package.pkg.tar.xz
+# 2) For install/upgrade package to run:
+#    sudo pacman -U bastyon-bin-0.9.107-1-x86_64.pkg.tar.xz
 #
-# 3) For delete package tu run:
-#    sudo pacman -Rsn package.pkg.tar.xz
+# 3) For delete package run:
+#    sudo pacman -Rsn bastyon-bin
 # 
 # *********************************************
 
 pkgname=bastyon-bin
-pkgrel=1
+pkgrel=2
 pkgdesc="Decentralized social network based on the blockchain"
 arch=(x86_64)
 url="https://github.com/pocketnetteam/pocketnet.gui"
@@ -27,7 +27,7 @@ _get_latest_version() {
 
 pkgver=$(_get_latest_version)
 source=("https://github.com/pocketnetteam/pocketnet.gui/releases/download/v${pkgver}/BastyonSetup.deb")
-sha256sums=('b23c3fe6d5a3bf7d9e34f446ec31104f500cc7222a309c4b5ababbe51dd2c900')
+sha256sums=('SKIP')
 
 prepare() {
   bsdtar -xf "${srcdir}/BastyonSetup.deb" -C "${srcdir}"
