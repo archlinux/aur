@@ -1,14 +1,16 @@
 pkgbase = aliyunpan-go
 	pkgdesc = 阿里云盘命令行客户端，支持webdav文件服务，支持JavaScript插件，支持同步备份功能。
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/tickstep/aliyunpan
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	makedepends = go
-	source = https://github.com/tickstep/aliyunpan/archive/refs/tags/v0.3.3.tar.gz
-	source = https://github.com/tickstep/aliyunpan/commit/7132342ed3ea6a5d4c9ffabdfe89849738525cdb.patch
-	sha256sums = 390a298c7f429a7c47f82be9b666d8a4231b4d74724cb671de6cad25963cb6b9
-	sha256sums = 06b9bc6d9eb69963c1ecc76c0d83798cf06a94a43a3795eee70b047f71e0184c
+	depends = glibc
+	conflicts = aliyunpan-go-bin
+	conflicts = aliyunpan-go-git
+	source = aliyunpan-go-0.3.4.tar.gz::https://github.com/tickstep/aliyunpan/archive/refs/tags/v0.3.4.tar.gz
+	sha256sums = fc657cc752c6818f6658ce46cb3931004f55b7bb536de25be56f80a756ecd911
 
 pkgname = aliyunpan-go
