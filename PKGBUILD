@@ -3,13 +3,12 @@
 # Contributor: Maurício CA <mauricio.antunes@gmail.com>
 pkgname=xkbset
 pkgver=0.8
-pkgrel=4
+pkgrel=5
 pkgdesc="Manage most of the options of XKB extensions from X window interface."
 arch=(i686 x86_64)
 url="https://github.com/stephenmontgomerysmith/xkbset"
 license=('custom:BSD')
 depends=('libx11')
-makedepends=('git')
 optdepends=('perl-tk: to use the xkbset-gui program')
 provides=('xkbset')
 conflicts=('xkbset-git')
