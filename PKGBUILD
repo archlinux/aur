@@ -3,7 +3,7 @@
 pkgname=refine
 pkgver=0.2.0
 pkgrel=1
-pkgdesc='A simple and extensible webmail'
+pkgdesc='Tweak advanced settings in GNOME'
 arch=('any')
 url='https://tesk.page/refine/'
 license=('GPL-3.0-or-later')

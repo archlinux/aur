@@ -1,5 +1,5 @@
 pkgbase = refine
-	pkgdesc = A simple and extensible webmail
+	pkgdesc = Tweak advanced settings in GNOME
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://tesk.page/refine/
