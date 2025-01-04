@@ -1,11 +1,14 @@
 pkgbase = neohtop-bin
 	pkgdesc = htop on steroids
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Abdenasser/neohtop
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = tar
+	makedepends = sed
+	makedepends = coreutils
 	depends = gtk3
 	depends = webkit2gtk
 	provides = neohtop

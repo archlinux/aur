@@ -5,13 +5,14 @@ _pkgauthor=Abdenasser
 _pkgname=neohtop
 pkgname=${_pkgname}-bin
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="htop on steroids"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 license=('MIT')
 depends=('gtk3' 'webkit2gtk')
+makedepends=('tar' 'sed' 'coreutils')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
@@ -30,6 +31,9 @@ package() {
 
     # this extracts all into the pkgdir
     tar xf "${srcdir}/data.tar.gz"
+
+    # add categories
+    sed -e '$aCategories=System;Utilites;' -i "${pkgdir}/usr/share/applications/NeoHtop.desktop"
 
     # install LICENSE and README.md
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "./usr/share/licenses/${pkgname}/LICENSE"
