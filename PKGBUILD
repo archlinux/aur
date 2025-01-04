@@ -257,7 +257,7 @@ package() {
 
 	# Premissions for executable files
 	chmod +x "${pkgdir}/usr/bin/${_pkgname}"
-	chmod +x "${pkgdir}/opt/${_pkgname}/bin/code-oss"
+	chmod +x "${pkgdir}/opt/${_pkgname}/bin/${_pkgname}"
 }
 
 
