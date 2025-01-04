@@ -1,0 +1,4 @@
+[jbigkit]
+source = "git"
+git = "https://www.cl.cam.ac.uk/~mgk25/git/jbigkit"
+prefix = "v"
