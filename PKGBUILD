@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=fotocx
-pkgver=24.70
+pkgver=25.0
 pkgrel=1
 pkgdesc='Image editing and collection management program'
 url=https://www.kornelix.net/fotocx/fotocx.html
@@ -20,7 +20,7 @@ optdepends=(
   'vlc: for viewing video')
 replaces=(fotoxx)
 source=("https://www.kornelix.net/downloads/downloads/$pkgname-$pkgver-source.tar.gz")
-sha256sums=('c06dbf9832ffddaec1f64c3b2ff9b1828425091b39390495276df27103b9945b')
+sha256sums=('1d78106e91fcabfb07343f2d00201a745cb114935fee273b0547e68c794a5f7e')
 
 build() {
   make -C $pkgname PREFIX=/usr
