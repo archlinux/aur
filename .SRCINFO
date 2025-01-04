@@ -1,0 +1,22 @@
+pkgbase = mozillavpn-bin
+	pkgdesc = Fast, secure, and easy to use VPN from the makers of Firefox (Ubuntu PPA binary)
+	pkgver = 2.24.3
+	pkgrel = 1
+	url = https://vpn.mozilla.org
+	arch = x86_64
+	license = MPL-2.0 AND MIT AND Apache-2.0 AND LGPL-3.0
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = libcap
+	depends = libsecret
+	depends = openssl
+	depends = qt6-5compat
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-networkauth
+	depends = qt6-websockets
+	provides = mozillavpn
+	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+files/mozillavpn_2.24.3-oracular1_amd64.deb
+	sha256sums = 7239dd77d56250b72c90cf9da8b399a284a24481e1cfd1e51afc7a58ecdd899f
+
+pkgname = mozillavpn-bin

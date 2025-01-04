@@ -1,0 +1,6 @@
+pkg/
+src/
+*.tar.*
+debian/
+debian-binary
+*.deb
