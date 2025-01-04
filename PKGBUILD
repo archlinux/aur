@@ -2,7 +2,7 @@
 # https://github.com/harilvfs
 pkgname=yt-x-git
 _pkgname=yt-x
-pkgver=v0.4.0.r46.g48a48d1
+pkgver=v0.4.0.r47.g6169a48
 pkgrel=1
 pkgdesc="Browse youtube from your terminal"
 arch=(any)
@@ -25,9 +25,11 @@ optdepends=(
   'imgcat'
 )
 
-conflicts=($_pkgname)
 source=("${pkgname}::git+https://github.com/Benexl/$_pkgname.git")
 md5sums=('SKIP')
+
+conflicts=($_pkgname)
+provides=($_pkgname)
 
 makedepends=('git')
 
@@ -40,8 +42,8 @@ package() {
 
   install -Dm 755 ${srcdir}/${pkgname}/${_pkgname} -t ${pkgdir}/usr/bin/
 
-  install -Dm 644 ${srcdir}/${pkgname}/LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
+  install -Dm 644 ${srcdir}/${pkgname}/LICENSE -t ${pkgdir}/usr/share/licenses/${_pkgname}/
 
-  install -Dm 644 ${srcdir}/${pkgname}/README.md -t ${pkgdir}/usr/share/doc/${pkgname}/
+  install -Dm 644 ${srcdir}/${pkgname}/README.md -t ${pkgdir}/usr/share/doc/${_pkgname}/
 
 }
