@@ -8,7 +8,7 @@
 
 pkgname=perl-pdl
 _dist=PDL
-pkgver=2.095
+pkgver=2.098
 pkgrel=1
 pkgdesc='The Perl Data Language'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
@@ -16,7 +16,7 @@ license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 url="https://metacpan.org/release/$_dist"
 source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz"
         perldl.conf)
-sha256sums=('b5bea7b1e1c4a05715531129243ab3577c0360a74ad1de656097eb71a8008c2f'
+sha256sums=('3354c98d53a8f5a7653d9565ee33bd1b46bb137a2d90dcba787a6a1d7fdadc6b'
             'SKIP')
 
 arch=(i686 x86_64)
@@ -34,7 +34,7 @@ depends=(
   # They must be included here as they affect which modules are built.
   # The related modules will not be very useful without these dependencies.
   #
-  # See https://metacpan.org/release/ETJ/PDL-2.094/source/DEPENDENCIES
+  # See https://metacpan.org/release/ETJ/PDL-2.095/source/DEPENDENCIES
   # for more information
 
   #-- Uncategorised
@@ -49,58 +49,25 @@ depends=(
   perl-term-readline-gnu # XS performance for perldl
   perl-sys-sigaction
 
-  #--- PDL::GIS::Proj, PDL::Transform::Proj
-  # WARN: if this is commented, also comment PROJ_* in perldl.conf
-  perl-alien-proj
-
-  #--- PDL::Graphics::TriD
-  perl-opengl
-  perl-opengl-glut
-
   #--- PDL::Graphics::PGPLOT
   pgplot
   perl-pgplot
 
-  #--- PDL::GSL
-  gsl
-
   #--- PDL::IO::FITS
   perl-astro-fits-header
-
-  #--- PDL::IO::GD
-  gd
-
-  #--- PDL::IO::HDF
-  # WARN: if this is commented, also comment HDF_* in perldl.conf
-  perl-alien-hdf4
 
   #--- PDL::IO::Pic
   netpbm
   ffmpeg
-
-  #--- PDL::Slatec (used by other modules)
-  #--- PDL::Minuit
-  perl-extutils-f77
 )
 makedepends=(
   perl-devel-checklib
   perl-extutils-depends
-
-  # NOTE: the following dependencies are optional, you may comment any
-  # section - BEFORE RUNNING MAKEPKG - that you'd like to do without
-
-  #--- PDL::Slatec (used by other modules)
-  #--- PDL::Minuit
-  gcc-fortran
 )
 checkdepends=(
   perl-test-deep
   perl-test-exception
   perl-test-warn
-)
-optdepends=(
-  #--- PDL::Graphics::IIS
-  'ds9: PDL::Graphics::IIS' # and ds9-bin
 )
 options=('!emptydirs')
 
