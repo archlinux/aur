@@ -1,7 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
-pkgname="sigrok-slogic-git"
-pkgver=r5829.0cc6bef
+pkgbase=sigrok-slogic-git
+pkgname=(sigrok-slogic-git)
+pkgver=0.2.1.r4402.gac52ec30
 pkgrel=1
 pkgdesc="sigrok_slogic"
 arch=($CARCH)
@@ -11,53 +12,67 @@ depends=(
   glib2
   glibc
   bluez-libs
+  fuse2
+  fuse3
   hicolor-icon-theme
   hidapi
   libftdi
   libieee1284
-  libserialport
   libtirpc
   libusb
   libzip
   nettle
   zlib
-  #   glibmm
-  #   libsigc++
-  #   swig
-  #   python
+  glibmm
+  libsigc++
+  swig
+  python
+  #AUR
+  libserialport-git
 )
 makedepends=(
   check
   git
   doxygen
-  #   python-gobject
-  #   python-numpy
-  #   python-setuptools
+  python-gobject
+  python-numpy
+  python-setuptools
 )
 conflicts=("${pkgname%-git}" libsigrok libsigrok-git)
 provides=("${pkgname%-git}" libsigrok libsigrok-git)
-source=("${pkgname}::git+https://github.com/sipeed/sigrok_slogic.git")
+# source=("${pkgbase}::git+https://github.com/sipeed/sigrok_slogic.git")
+source=("${pkgbase}::git+https://github.com/sigrokproject/libsigrok.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgbase}"
   (
     set -o pipefail
-    git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --exclude 'libsigrok-unreleased' --long | sed 's/^libsigrok-//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
 
 prepare() {
-  git -C "${srcdir}/${pkgname}" clean -dfx
+  git -C "${srcdir}/${pkgbase}" clean -dfx
+  cd "${srcdir}/${pkgbase}"
+  git config --global user.email "admin@taotieren.com"
+  git config --global user.name "taotieren"
+  git remote add sigrok_slogic https://github.com/sipeed/sigrok_slogic.git
+  git fetch --all
+  git merge sigrok_slogic/hardware-sipeed-slogic-analyzer-support
+  #   hardware-sipeed-slogic-analyzer-support
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgbase}"
   chmod +x autogen.sh
   ./autogen.sh
   ./configure \
     --prefix=/usr \
+    --enable-cxx \
+    --enable-shared \
+    --disable-static \
     --disable-java \
     --disable-ruby
   #     --disable-python
@@ -66,7 +81,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgbase}"
 
   make DESTDIR="${pkgdir}" install
   install -Dvm644 'contrib/60-libsigrok.rules' "${pkgdir}/usr/lib/udev/rules.d/60-libsigrok.rules"
