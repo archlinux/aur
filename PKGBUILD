@@ -3,7 +3,7 @@
 # Contributor: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui
 pkgver=1.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
@@ -22,7 +22,7 @@ source=(
   'git+https://github.com/minecraft-linux/mcpelauncher-common.git'
   'git+https://github.com/minecraft-linux/mcpelauncher-ui-qt.git'
   'git+https://github.com/minecraft-linux/playdl-signin-ui-qt.git'
-  'abseil.patch::https://patch-diff.githubusercontent.com/raw/minecraft-linux/Google-Play-API/pull/2.diff'
+  'abseil.patch::https://github.com/minecraft-linux/Google-Play-API/commit/957d75970e2e25ddc10388417dce1645ad0f30c9.diff'
 )
 sha256sums=('00321edd07b62e36e2e7dcba06981839f725d475dd0142dfc3323536fae3dd3a'
             'SKIP'
