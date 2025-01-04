@@ -12,6 +12,7 @@ pkgbase = python-ble-serial
 	depends = python
 	depends = python-bleak
 	depends = python-coloredlogs
+	depends = python-hatchling
 	source = ble-serial-3.0.0.tar.gz::https://github.com/Jakeler/ble-serial/archive/refs/tags/v3.0.0.tar.gz
 	sha256sums = 51942deedde01ffc864f128cdf87eec76988ea38f100ecd6100e610140155cdb
 

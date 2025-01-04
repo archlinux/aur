@@ -7,7 +7,7 @@ pkgdesc="A tool to connect Bluetooth 4.0+ Low Energy to UART modules and normal 
 arch=('any')
 url="https://github.com/Jakeler/ble-serial"
 license=('MIT')
-depends=('python' 'python-bleak' 'python-coloredlogs')
+depends=('python' 'python-bleak' 'python-coloredlogs' 'python-hatchling')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 
 source=("${_name}-$pkgver.tar.gz::https://github.com/Jakeler/ble-serial/archive/refs/tags/v$pkgver.tar.gz")
