@@ -1,0 +1,15 @@
+pkgbase = weblink
+	pkgdesc = Web browser gateway
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/soylent/weblink
+	arch = any
+	depends = ruby
+	depends = ruby-em-websocket
+	depends = ruby-webrick
+	provides = ruby-weblink
+	options = !emptydirs
+	source = weblink-1.2.0.tar.gz::https://github.com/soylent/weblink/archive/v1.2.0.tar.gz
+	sha256sums = 7c2ee7b1135f086689ddcf7b8a6d311d6b7ca69c212918ffd8086d1f8724bdc1
+
+pkgname = weblink
