@@ -3,7 +3,6 @@
 
 pkgname=python-anitopy-git
 _pkgname=${pkgname%-git}
-_name=${_pkgname#python-}
 pkgver=2.1.1.r18.1a15190
 pkgrel=3
 pkgdesc="Anime video filename parser in Python, based on Anitomy"
@@ -15,20 +14,20 @@ makedepends=(python-build python-installer python-wheel python-setuptools git)
 provides=($_pkgname)
 conflicts=($_pkgname)
 replaces=(anitopy-git)
-source=("git+${url}.git")
+source=("${_pkgname}::git+${url}.git")
 b2sums=(SKIP)
 
 pkgver() {
-	cd $_name
+	cd $_pkgname
 	git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-	cd $_name
+	cd $_pkgname
 	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd $_name
+	cd $_pkgname
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
