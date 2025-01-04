@@ -3,21 +3,17 @@
 # Contributor: robb_force <robb_force@holybuffalo.net>
 
 pkgname=raine
-pkgver=0.91.15b
+pkgver=0.97.1
 pkgrel=1
 pkgdesc="A multiple arcade emulator focused on 680x0/z80 machines like NeoCD and Neo Geo, C version"
 url="http://raine.1emulation.com/"
 license=('custom')
-arch=('i686' 'x86_64')
+arch=('any')
 replaces=('neoraine' 'raine64')
-depends_i686=('sdl_ttf' 'sdl_image' 'sdl_sound' 'muparser' 'glu')
-depends_x86_64=('sdl_ttf' 'sdl_image' 'sdl_sound' 'muparser' 'glu')
+depends=('sdl2_ttf' 'sdl2_image' 'sdl2_sound' 'muparser' 'glu')
 makedepends=('mesa')
-optdepends=('raine-emudx: improved graphic and sound files for some classic games'
-            'arcade-history-dat: database with various information about the loaded rom'
-            'arcade-command-dat: database with button combinations for special moves in (mostly fighting) games')
 source=(raine-$pkgver.tar.gz::"https://github.com/zelurker/raine/archive/$pkgver.tar.gz")
-sha256sums=('4202004ad6dbd13995bf8e879c961ab4932990393443b2beccf87e911ddfe3e9')
+sha256sums=('aa149f0886196b5f1229929ee45bc1bf9b62c536e87bac4e64e8826258a475ee')
 options=('emptydirs')
 
 prepare() {
