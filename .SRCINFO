@@ -1,5 +1,5 @@
 pkgbase = python-vllm
-	pkgdesc = faster implementation for TTS models, to be used in highly async environment - cpu version
+	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs
 	pkgver = 0.6.6.post1
 	pkgrel = 1
 	url = https://github.com/vllm-project/vllm
