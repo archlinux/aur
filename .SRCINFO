@@ -1,0 +1,17 @@
+pkgbase = refine
+	pkgdesc = A simple and extensible webmail
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://tesk.page/refine/
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = blueprint-compiler
+	makedepends = git
+	makedepends = meson
+	depends = libadwaita
+	depends = python
+	depends = python-gobject
+	source = refine::git+https://gitlab.gnome.org/TheEvilSkeleton/Refine.git#tag=0.2.0
+	b2sums = 806939413ce86a9b0188f6fe3311e76bc11bdaa950ac670c1313277941e560e5d4d346461108ecb0335471a4e7bf0b4b76845458914491a0f9a0a090aab1499d
+
+pkgname = refine
