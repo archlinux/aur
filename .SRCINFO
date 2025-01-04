@@ -1,0 +1,27 @@
+pkgbase = lib32-gtkmm3
+	pkgdesc = C++ bindings for GTK+ 3 (32-bit)
+	pkgver = 3.24.9
+	pkgrel = 1
+	url = https://www.gtkmm.org
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	checkdepends = xorg-server-xvfb
+	makedepends = meson>=0.56
+	makedepends = mm-common
+	depends = gtkmm3
+	depends = lib32-atkmm>=2.24.2
+	depends = lib32-cairomm>=1.12
+	depends = lib32-gcc-libs
+	depends = lib32-gdk-pixbuf2>=2.35.5
+	depends = lib32-glib2
+	depends = lib32-glibc
+	depends = lib32-glibmm>=2.54
+	depends = lib32-gtk3>=3.24
+	depends = lib32-libsigc++
+	depends = lib32-pangomm>=2.38.2
+	provides = libgdkmm-3.0.so
+	provides = libgtkmm-3.0.so
+	source = gtkmm-3.24.9.tar.xz::https://download.gnome.org/sources/gtkmm/3.24/gtkmm-3.24.9.tar.xz
+	sha256sums = 30d5bfe404571ce566a8e938c8bac17576420eb508f1e257837da63f14ad44ce
+
+pkgname = lib32-gtkmm3
