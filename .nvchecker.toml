@@ -1,0 +1,4 @@
+[dolphin-emu-debugfast-git]
+source = "git"
+git = "https://github.com/dolphin-emu/dolphin.git"
+prefix = "v"
