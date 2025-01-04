@@ -34,8 +34,14 @@ backup=('usr/share/sddm/scripts/Xsetup'
         'etc/pam.d/sddm-autologin'
         'etc/pam.d/sddm-greeter')
 provides=(display-manager)
-source=(https://github.com/$pkgname/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('f895de2683627e969e4849dbfbbb2b500787481ca5ba0de6d6dfdae5f1549abf')
+source=(https://github.com/$pkgname/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz
+        sysusers-fully-locked.patch)
+sha256sums=('f895de2683627e969e4849dbfbbb2b500787481ca5ba0de6d6dfdae5f1549abf'
+            '810a645fcd966c21f5dce28230a6e6924bd6f4835158718f7f3fbab867a0278a')
+
+prepare() {
+  patch -d $pkgname-$pkgver -p1 < sysusers-fully-locked.patch
+}
 
 build() {
   cmake -B build -S $pkgname-$pkgver \

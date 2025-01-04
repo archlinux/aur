@@ -1,0 +1,25 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 690ee70..76a9ad1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -106,6 +106,12 @@ if(SYSTEMD_FOUND)
+         pkg_check_modules(JOURNALD "libsystemd")
+     endif()
+ 
++    if(${SYSTEMD_VERSION} VERSION_LESS 257)
++        set(SYSTEMD_SYSUSERS_FULLY_LOCKED " ")
++    else()
++        set(SYSTEMD_SYSUSERS_FULLY_LOCKED "!")
++    endif()
++
+     if(ENABLE_JOURNALD)
+         if(JOURNALD_FOUND)
+             add_definitions(-DHAVE_JOURNALD)
+diff --git a/services/sddm-sysuser.conf.in b/services/sddm-sysuser.conf.in
+index d35500a..813937a 100644
+--- a/services/sddm-sysuser.conf.in
++++ b/services/sddm-sysuser.conf.in
+@@ -1,2 +1,2 @@
+ #Type Name ID GECOS                  Home directory Shell
+-u     sddm -  "SDDM Greeter Account" ${STATE_DIR}   -
++u${SYSTEMD_SYSUSERS_FULLY_LOCKED}    sddm -  "SDDM Greeter Account" ${STATE_DIR}   -
