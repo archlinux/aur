@@ -2,7 +2,7 @@
 # Huge thanks to github.com/nebulosa2007 for this version of the PKGBUILD.
 
 pkgname=yabsnap
-pkgver=2.1.7
+pkgver=2.1.9
 pkgrel=1
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
@@ -15,7 +15,7 @@ license=('Apache')
 depends=('bash' 'btrfs-progs' 'python')
 makedepends=('tar')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('5d40344fd2fa5febe746246552bc14de')
+md5sums=('5095fd782a8609d74655f40893734e6c')
 install="$pkgname".install
 
 check() {
