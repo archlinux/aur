@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-pip' 'rust')
 
 source=("blake3-py-${pkgver}.tar.gz"::"https://github.com/oconnor663/blake3-py/archive/${pkgver}.tar.gz")
-sha512sums=('7d5dcc8a643211d7014afd7ab9d9c323f97d681582090a872daf12c0dd690891292cc9d29780eab3c1d2cfa337d721c145cc35a0e2dd9edeed10282aa87890f7')
+sha512sums=('54d2b0b3aef48dfde6f15d3cfb7a4ebd4549ca8bedbb8b4a95fc882e4a08ed1beb1ad53f62042f0de3792fa1a9177f287e6c8f6c65aa4e7414210549bc67ec77')
 
 # NEON support on ARMv7 isn't universal and there's no runtime detection,
 # so it should only be turned on when the hardware supports it.
