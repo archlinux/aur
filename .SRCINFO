@@ -1,6 +1,6 @@
 pkgbase = libclc
 	pkgdesc = Library requirements of the OpenCL C programming language
-	pkgver = 18.1.8
+	pkgver = 19.1.6
 	pkgrel = 1
 	url = https://libclc.llvm.org/
 	arch = any
@@ -11,10 +11,11 @@ pkgbase = libclc
 	makedepends = ninja
 	makedepends = python
 	makedepends = spirv-llvm-translator
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/libclc-18.1.8.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/libclc-18.1.8.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/libclc-19.1.6.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/libclc-19.1.6.src.tar.xz.sig
 	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
-	sha256sums = 905bd59e9f810d6bd0ae6874725a8f8a3c91cb416199c03f2b98b57437cfb32e
+	validpgpkeys = D574BD5D1D0E98895E3BF90044F2485E45D59042
+	sha256sums = 9fb7807c245b265cc1158105a52abaf8199a13834e2d2e94d742ce436a1e82d7
 	sha256sums = SKIP
 
 pkgname = libclc
