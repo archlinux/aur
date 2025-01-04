@@ -1,5 +1,5 @@
 pkgbase = ttf-chillduansans
-	pkgdesc = A CJK sans-serif font with more variety based on Source Han Sans, with
+	pkgdesc = A CJK sans-serif font with more variety based on Source Han Sans
 	pkgver = 1.30
 	pkgrel = 1
 	url = https://github.com/Warren2060/ChillDuanSans
