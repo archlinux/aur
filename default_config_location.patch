@@ -7,7 +7,7 @@ index 48b74a8..9ba5977 100755
          help="groundcoverify config file path",
          nargs="?",
 -        default=os.path.join(os.path.dirname(__file__), "groundcoverify.toml"),
-+        default="/usr/share/groundcoverify/groundcoverify.toml"),
++        default="/usr/share/groundcoverify/groundcoverify.toml",
      )
      parser.add_argument("--openmw-config", help="OpenMW config file path")
      parser.add_argument(
