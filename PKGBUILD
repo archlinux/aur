@@ -2,7 +2,7 @@
 
 pkgname=phira-bin
 pkgver=0.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A clone of the music game Phigros that supports custom beatmaps, multiplayer etc."
 arch=('x86_64')
 url="https://github.com/TeamFlos/phira"
@@ -11,6 +11,17 @@ depends=(
     'gcc-libs'
     'bubblewrap'
     'snapd-xdg-open-git'
+    'alsa-lib'
+    'at-spi2-core'
+    'bzip2'
+    'cairo'
+    'gdk-pixbuf2'
+    'glib2'
+    'gtk3'
+    'harfbuzz'
+    'pango'
+    'wayland'
+    'zlib'
 )
 conflicts=(
     "${pkgname%-bin}"
@@ -26,7 +37,6 @@ provides=(
 # so I used a dirty hack™: use bwrap to redirect the config dirs to user dirs.
 
 makedepends=(
-    'cargo'
     'git'
 )
 source=(
