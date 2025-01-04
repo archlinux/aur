@@ -8,7 +8,6 @@ pkgbase = lib32-gts
 	depends = gts
 	depends = lib32-glib2
 	depends = lib32-glibc
-	depends = lib32-netpbm
 	provides = libgts.so
 	source = gts-snapshot-121130.tar.gz::https://gts.sourceforge.net/tarballs/gts-snapshot-121130.tar.gz
 	sha256sums = c23f72ab74bbf65599f8c0b599d6336fabe1ec2a09c19b70544eeefdc069b73b
