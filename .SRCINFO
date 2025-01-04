@@ -1,7 +1,7 @@
 pkgbase = amitools
 	pkgdesc = Various tools for using AmigaOS programs on other platforms
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cnvogelg/amitools
 	arch = any
 	license = GPL-2.0-only

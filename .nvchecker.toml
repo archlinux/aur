@@ -1,0 +1,4 @@
+[amitools]
+source = "git"
+git = "https://github.com/cnvogelg/amitools.git"
+prefix = "v"

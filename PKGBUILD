@@ -8,7 +8,7 @@
 _pkgname="amitools"
 pkgname="$_pkgname"
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Various tools for using AmigaOS programs on other platforms"
 url="https://github.com/cnvogelg/amitools"
 license=('GPL-2.0-only')
