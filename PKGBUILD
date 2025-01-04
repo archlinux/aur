@@ -20,3 +20,7 @@ package() {
   install -m 755 $srcdir/vectors--* $pkgdir$(pg_config --sharedir)/extension/
   install -Dm 755 $srcdir/vectors.control $pkgdir$(pg_config --sharedir)/extension/vectors.control
 }
+
+# upgrading docs
+# https://docs.vectorchord.ai/admin/migration.html
+# https://immich.app/docs/administration/postgres-standalone/
