@@ -1,6 +1,6 @@
 pkgbase = otr
 	pkgdesc = Decode and cut video files from Online TV Recorder (OTR)
-	pkgver = 0.11.5
+	pkgver = 0.11.7
 	pkgrel = 1
 	url = https://gitlab.com/mipimipi/otr
 	arch = aarch64
@@ -14,8 +14,8 @@ pkgbase = otr
 	depends = ffms2
 	conflicts = otr-git
 	options = !debug
-	source = https://gitlab.com/mipimipi/otr/-/archive/0.11.5/otr-0.11.5.tar.gz
+	source = https://gitlab.com/mipimipi/otr/-/archive/0.11.7/otr-0.11.7.tar.gz
 	validpgpkeys = 11ECD6695134183B3E7AF1C2223AAA374A1D59CE
-	sha256sums = de296e20753465ea1d68f04812b976a7664577850a5a6ea0ee3b680d11989c94
+	sha256sums = 0ab970bd477170159bc48eadd1a8d5a2ac8a97983f111cb60ce1787c027a42ca
 
 pkgname = otr
