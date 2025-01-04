@@ -1,7 +1,7 @@
 pkgbase = lcevcdec-git
 	pkgdesc = Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC) (git version)
 	pkgver = 3.2.1.r12.g364ae4f
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/v-novaltd/LCEVCdec/
 	arch = x86_64
 	license = BSD-3-Clause-Clear
@@ -16,7 +16,11 @@ pkgbase = lcevcdec-git
 	options = !emptydirs
 	source = git+https://github.com/v-novaltd/LCEVCdec.git
 	source = 010-lcevcdec-fix-pkgconfig-prefix.patch
+	source = 020-lcevcdec-disable-avx.patch
+	source = 030-lcevcdec-disable-werror.patch
 	sha256sums = SKIP
 	sha256sums = 8a51231cf8d8c61db90295ed8ea92cc559869df3a9ecfa32ccf9fefcab619d36
+	sha256sums = 04e309de2925c2e9a0a57fe138f7b6a1fcfd0a863c350b0391553302681ea681
+	sha256sums = d1204a15a9a4faef3fdc41ec0a73296b0504e285b6b335a71ad22186719e49f2
 
 pkgname = lcevcdec-git

@@ -2,7 +2,7 @@
 
 pkgname=lcevcdec-git
 pkgver=3.2.1.r12.g364ae4f
-pkgrel=3
+pkgrel=4
 pkgdesc='Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC) (git version)'
 arch=('x86_64')
 url='https://github.com/v-novaltd/LCEVCdec/'
@@ -13,12 +13,18 @@ provides=('lcevcdec')
 conflicts=('lcevcdec')
 options=('!emptydirs')
 source=('git+https://github.com/v-novaltd/LCEVCdec.git'
-        '010-lcevcdec-fix-pkgconfig-prefix.patch')
+        '010-lcevcdec-fix-pkgconfig-prefix.patch'
+        '020-lcevcdec-disable-avx.patch'
+        '030-lcevcdec-disable-werror.patch')
 sha256sums=('SKIP'
-            '8a51231cf8d8c61db90295ed8ea92cc559869df3a9ecfa32ccf9fefcab619d36')
+            '8a51231cf8d8c61db90295ed8ea92cc559869df3a9ecfa32ccf9fefcab619d36'
+            '04e309de2925c2e9a0a57fe138f7b6a1fcfd0a863c350b0391553302681ea681'
+            'd1204a15a9a4faef3fdc41ec0a73296b0504e285b6b335a71ad22186719e49f2')
 
 prepare() {
     patch -d LCEVCdec -Np1 -i "${srcdir}/010-lcevcdec-fix-pkgconfig-prefix.patch"
+    patch -d LCEVCdec -Np1 -i "${srcdir}/020-lcevcdec-disable-avx.patch"
+    patch -d LCEVCdec -Np1 -i "${srcdir}/030-lcevcdec-disable-werror.patch"
 }
 
 pkgver() {
