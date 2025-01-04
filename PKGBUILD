@@ -1,10 +1,14 @@
 # Maintainer: Mark Collins <tera_1225 ɑʈ hotmail ɗɵʈ com>
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 pkgname=ddns-updater
-pkgver=2.8.1
-pkgrel=2
+pkgver=2.9.0
+pkgrel=1
 pkgdesc="Dynamic DNS updater daemon (multiple providers)"
-arch=('x86_64')
+arch=(
+  'x86_64'
+  'armv7h'  # because the release binary exists
+  'aarch64' # because the release binary exists
+)
 url="https://github.com/qdm12/ddns-updater"
 license=('MIT')
 makedepends=(
@@ -22,7 +26,7 @@ source=(
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
 )
-sha256sums=('6a86942113b47cc035f649e20ea3a52ecc31512da723604c697e8b13f809b989'
+sha256sums=('8115ec4e2debbe92414f067eb2963c0329494489c58f8758296783d74f83608b'
             'e36eeec5c040a8cda0bb3a50462bf13dd4050bca93dc730c9770384923a2217b'
             '07363c1e31b1255350ee715da96ff1ab1b61d814d0305b1e80ef43b87b9bd84f'
             '309f261d420190eb08846e133a7bcc039b26ee99b5b96f6645532d9ad31ef741'
