@@ -2,7 +2,7 @@
 
 _pkgname=koboldcpp
 pkgname=koboldcpp-bin
-pkgver=1.80.3
+pkgver=1.81
 pkgrel=1
 pkgdesc="A simple one-file way to run various GGML and GGUF models with KoboldAI's UI"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   "koboldcpp.png"
 )
 sha256sums=(
-  '0b042f79c6b47651930352cc3b9fa1c129a37f2f9f49e9e03ab21afbf86f9e12'
+  '9e5e22cf04009e3d9e276f7376a5f96efe92278a91891c84a5d690468e708286'
   'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
   'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
