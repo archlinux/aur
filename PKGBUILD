@@ -1,7 +1,7 @@
 # Maintainer: Hari Chalise <harilvfs@chalisehari.com.np>
 pkgname=carch-git
 _pkgname=carch
-pkgver=v4.1.1.r68.gc24dc70
+pkgver=v4.1.1.r69.g10741d0
 pkgrel=1
 pkgdesc="An automated script for quick & easy Arch Linux system setup"
 arch=(any)
@@ -65,7 +65,7 @@ build() {
 package() {
 
     install -Dm 755 ${srcdir}/${_pkgname}/build/${_pkgname} -t ${pkgdir}/usr/bin/
-    install -Dm 755 ${srcdir}/${_pkgname}/gtk/${_pkgname}-gtk.py -t ${pkgdir}/usr/bin/
+
     install -Dm 755 ${srcdir}/${_pkgname}/target/release/${_pkgname}-tui -t ${pkgdir}/usr/bin/
 
     install -d "$pkgdir/usr/bin/scripts"
