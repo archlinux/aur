@@ -1,0 +1,16 @@
+pkgbase = vapoursynth-plugin-vszip-git
+	pkgdesc = Plugin for VapourSynth: vszip (GIT version)
+	pkgver = r72.6968f2b
+	pkgrel = 1
+	url = https://github.com/dnjulek/vapoursynth-zip
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = zig-nightly-bin
+	depends = vapoursynth
+	provides = vapoursynth-plugin-vszip
+	conflicts = vapoursynth-plugin-vszip
+	source = vszip::git+https://github.com/dnjulek/vapoursynth-zip.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-vszip-git
