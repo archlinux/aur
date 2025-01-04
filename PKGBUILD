@@ -188,7 +188,7 @@ if [[ -f $XDG_CONFIG_HOME/void-flags.conf ]]; then
 fi
 
 # Launch
-exec /opt/void/bin/code-oss "$@" $CODE_USER_FLAGS' | tee "${srcdir}/${_pkgname}/${_pkgname}"
+exec /opt/void/bin/void "$@" $CODE_USER_FLAGS' | tee "${srcdir}/${_pkgname}/${_pkgname}"
 
 }
 
@@ -255,7 +255,7 @@ package() {
   cp "${srcdir}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 	# ln -sf "${pkgdir}/opt/${_pkgname}/bin/code-oss" "${pkgdir}/usr/bin/${_pkgname}"
 
-	# Premissions for executable files
+	# Permissions for executable files
 	chmod +x "${pkgdir}/usr/bin/${_pkgname}"
 	chmod +x "${pkgdir}/opt/${_pkgname}/bin/${_pkgname}"
 }
