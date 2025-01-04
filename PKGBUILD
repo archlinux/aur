@@ -1,4 +1,5 @@
-# Maintainer: Sam Guymer <sam at guymer dot me>
+# Maintainer: Hendrik Schick <hendrik at hndrkk dot me>
+# Contributor: Sam Guymer <sam at guymer dot me>
 
 _jdkname=zulu-11
 pkgname="${_jdkname}-bin"
