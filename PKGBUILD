@@ -2,7 +2,7 @@
 
 pkgname=bouffalolab-devcude-bin
 pkgver=1.9.0
-pkgrel=7
+pkgrel=9
 pkgdesc="Dev Cube 是博流提供的芯片集成开发工具，包含 IOT 程序下载、MCU 程序下载和RF性能测试三大功能。工具提供程序固件启动时的时钟，电源，Flash 参数等配置，并可根据用户需求对程序进行加密和签名，生成应用程序启动信息文件。工具还可烧写用户资源文件，分区表文件以及 EFUSE 配置文件等。工具可对 Flash 进行擦、改、写"
 arch=('x86_64')
 url="https://dev.bouffalolab.com/download"
@@ -37,6 +37,10 @@ package() {
     rm -rf "${pkgdir}"/opt/bouffalolab/${pkgname%-bin}/utils/jlink
 
     ln -sf /opt/SEGGER/JLink/ "${pkgdir}"/opt/bouffalolab/${pkgname%-bin}/utils/jlink
+
+    chmod +x "${pkgdir}/opt/bouffalolab/bouffalolab-devcude/BLDevCube-ubuntu"
+    chmod +x "${pkgdir}/opt/bouffalolab/bouffalolab-devcude/bflb_iot_tool-ubuntu"
+    find "${pkgdir}/opt/bouffalolab/bouffalolab-devcude/utils/genromfs/" -type f -exec chmod +x {} \;
 
     # desktop entry
     install -Dm0644 /dev/stdin ${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop <<EOF
