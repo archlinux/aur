@@ -20,7 +20,7 @@ depends=('bzip2'
   'mpg123'
   'sfml'
   'webkit2gtk-4.1'
-  'wxwidgets-gtk3' #we still compile against upstream wxwidgets since PKGBUILD can't (legally) compile and install wxwidgets before we configure slade
+  'wxwidgets-gtk3'
   'zlib')
 makedepends=('cmake'
   'p7zip')
