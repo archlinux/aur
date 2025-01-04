@@ -1,0 +1,23 @@
+pkgbase = lib32-gdlmm
+	pkgdesc = C++ bindings for the gdl library (32-bit)
+	pkgver = 3.7.3
+	pkgrel = 1
+	url = https://gitlab.gnome.org/Archive/gdlmm
+	arch = x86_64
+	license = LGPL-2.0-or-later
+	makedepends = mm-common
+	depends = gdlmm
+	depends = lib32-atkmm
+	depends = lib32-gcc-libs
+	depends = lib32-gdl
+	depends = lib32-glib2
+	depends = lib32-glibc
+	depends = lib32-glibmm
+	depends = lib32-gtk3
+	depends = lib32-gtkmm3
+	depends = lib32-libsigc++
+	provides = libgdlmm-3.0.so
+	source = gdlmm-3.7.3.tar.xz::https://download.gnome.org/sources/gdlmm/3.7/gdlmm-3.7.3.tar.xz
+	sha256sums = e280ed9233877b63ad0a0c8fb04d2c35dc6a29b3312151ee21a15b5932fef79b
+
+pkgname = lib32-gdlmm
