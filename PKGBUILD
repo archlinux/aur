@@ -1,7 +1,7 @@
 # Maintainer: Ujhhgtg <feyxiexzf@gmail.com>
 
 pkgname=phira-bin
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="A clone of the music game Phigros that supports custom beatmaps, multiplayer etc."
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
     "run.sh"
     "${pkgname%-bin}.desktop"
 )
-b2sums=('b92fb2e2440dff5371891b214c43d7a1807c1ac9307278d69d0fd7c8314f153173efd121b4a763be221fe99f88cc275a0b3da6fda5b4b4fedb27c1773df6e33b'
+b2sums=('48985b98078b529664c2062ae44c646b358f8a22c64de19d5ff99ab1b3dbe1addf9f56e8296e0f62d28c16672d22a22edf057d37b6c96e9306c5e1d132587ba5'
         '4fb82fe12455f20e556ee34d225978aaef738c77d1eb6f10c022a1f86a74dc0db6cb43aaa55753a41b92d62fd949de58667fac561e8a725f70e810d01abe1693'
         '6be953d4402faf3dda9bd2cfb8bff31b1cb1bfce81bad2f3f0d1af034f3b0a33e0a88026f5cb030ae737b90e3fc3c72da3938d153e3e930beefaf2910b356224')
 
