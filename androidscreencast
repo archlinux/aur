@@ -1,4 +1,19 @@
 #!/bin/sh
-exec /usr/bin/java -jar  \
-     "/usr/share/java/androidscreencast/androidscreencast.jar" \
-     "$@"
+
+# ADB reset
+adb kill-server
+adb wait-for-device
+
+# Launch
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    # Wayland
+    exec /usr/bin/java -jar \
+         "/usr/share/java/androidscreencast/androidscreencast.jar" \
+         "$@" \
+         2>&1 | grep --color=always "GDK_BACKEND=x11"
+else
+    # X11
+    exec /usr/bin/java -jar \
+         "/usr/share/java/androidscreencast/androidscreencast.jar" \
+         "$@"
+fi

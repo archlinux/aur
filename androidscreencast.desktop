@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Android Screencast
+Exec=/usr/bin/androidscreencast
+TryExec=/usr/bin/adb
+Icon=android-sdk
+Terminal=false
