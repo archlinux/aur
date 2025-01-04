@@ -4,7 +4,7 @@
 # Contributor: whriedplanck
 
 pkgname=powdertoy-bin
-_pkgver=90.0
+_pkgver=99.0
 _pkgbuild=377
 pkgver="${_pkgver}.${_pkgbuild}"
 pkgrel=1
