@@ -1,0 +1,16 @@
+pkgbase = s3share-cli-git
+	pkgdesc = CLI for s3share, an end-to-end-encrypted file-sharing platform built on an S3-compatible object storage.
+	pkgver = 13.05a3f5c
+	pkgrel = 1
+	url = https://github.com/Maxr1998/s3share-cli
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = go>=1.22
+	provides = s3share-cli
+	conflicts = s3share-cli
+	source = s3share-cli::git+https://github.com/Maxr1998/s3share-cli.git
+	b2sums = SKIP
+
+pkgname = s3share-cli-git
