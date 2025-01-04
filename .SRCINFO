@@ -1,6 +1,6 @@
 pkgbase = keyguard
 	pkgdesc = Alternative client for the Bitwarden platform, created to provide the best user experience possible.
-	pkgver = 20241102
+	pkgver = 20241223
 	pkgrel = 1
 	url = https://github.com/AChep/keyguard-app.git
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = keyguard
 	makedepends = dpkg
 	options = !strip
 	options = !debug
-	source = https://github.com/AChep/keyguard-app/archive/refs/tags/r20241102.tar.gz
-	sha256sums = 551f5dfe991695253329984925c404558ec7389bf443584b936ff3fc9a99c3cd
+	source = https://github.com/AChep/keyguard-app/archive/refs/tags/r20241223.tar.gz
+	sha256sums = e52fa9f8304b8ddfd6ce33d59ed949f45ac0c0a21c06694720f76dd73cadbc30
 
 pkgname = keyguard

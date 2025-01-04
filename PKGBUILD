@@ -1,7 +1,7 @@
 # Maintainer: Adrian Baumgart <adrian at abmgrt dot dev>
 
 pkgname=keyguard
-pkgver=20241102
+pkgver=20241223
 pkgrel=1
 pkgdesc="Alternative client for the Bitwarden platform, created to provide the best user experience possible."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=()
 makedepends=('jdk17-openjdk' 'dpkg')
 source=("https://github.com/AChep/keyguard-app/archive/refs/tags/r${pkgver}.tar.gz")
-sha256sums=('551f5dfe991695253329984925c404558ec7389bf443584b936ff3fc9a99c3cd')
+sha256sums=('e52fa9f8304b8ddfd6ce33d59ed949f45ac0c0a21c06694720f76dd73cadbc30')
 options=('!strip' '!debug')
 
 
@@ -48,16 +48,15 @@ package() {
 
     # create .desktop file and install
     cat > "${srcdir}/keyguard.desktop" << EOL
-    [Desktop Entry]
-    Type=Application
-    Name=Keyguard
-    Comment=Alternative client for the Bitwarden platform
-    Path=/opt/keyguard/bin
-    Exec=/opt/keyguard/bin/Keyguard
-    Icon=keyguard
-    Terminal=false
-    Cateogories=Utility
-
+[Desktop Entry]
+Type=Application
+Name=Keyguard
+Comment=Alternative client for the Bitwarden platform
+Path=/opt/keyguard/bin
+Exec=/opt/keyguard/bin/Keyguard
+Icon=keyguard
+Terminal=false
+Categories=Utility
 EOL
 
     mkdir -p "${pkgdir}/usr/share/pixmaps"
