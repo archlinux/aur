@@ -1,7 +1,7 @@
 # private key to sign chromium extension is generated with `openssl genrsa 2048 | openssl pkcs8 -topk8 -nocrypt -traditional`
 
 _channel=nightly
-_date=2024-01-02
+_date=2024-01-04
 
 pkgbase=ruffle-nightly
 pkgname=(
@@ -12,7 +12,7 @@ pkgname=(
     chromium-extension-ruffle-nightly
 )
 pkgver="0.1.0+$_channel+${_date//-}"
-pkgrel=2
+pkgrel=1
 arch=("x86_64")
 pkgdesc="A Flash Player emulator written in Rust. (Nightly version)"
 url="https://ruffle.rs/"
@@ -22,7 +22,7 @@ makedepends=("cargo" "cmake" "java-environment" "npm" "nodejs-lts-iron"
              "clang" "jq" "git" "chromium" "openssl" "yq" "rust-wasm")
 source=("git+https://github.com/ruffle-rs/ruffle.git#tag=$_channel-$_date"
         "chromium-extension-ruffle.key")
-sha256sums=('4c5f2d8044631f9999a92264219e7132c8bb86cbf73ff5d7cf68dfdccae9171f'
+sha256sums=('606cfc007139261526b7449dd529fbf7ae3badb28407533443cdb06b01a49a91'
             'dac5c0e9661e41834b76d6d047dc94e41dd7a80d98e1c39cb4f2c95b1a7c7a46')
 options=("!lto")
 
