@@ -4,7 +4,7 @@
 
 _pkgbase=shub
 pkgname=shub-bin
-pkgver=2.14.5
+pkgver=2.15.2
 pkgrel=1
 pkgdesc="Scrapinghub Command Line Client"
 arch=("x86_64")
@@ -13,9 +13,9 @@ url="https://github.com/scrapinghub/shub/"
 license=("BSD")
 provides=("shub=${pkgver}")
 
-source=("https://github.com/scrapinghub/shub/releases/download/v2.14.5/shub-Linux.tar.gz"
+source=("https://github.com/scrapinghub/shub/releases/download/v2.15.2/shub-Linux.tar.gz"
         "https://raw.githubusercontent.com/scrapinghub/shub/master/LICENSE")
-sha256sums=('6858c22a2b8750f6392ff24a7b484b4da318ebba41cc28eb260ad5be1aab771c'
+sha256sums=('5e5105a5e4d599f11726dc5e2a9e6e83a7e922303b58896d15e7e8efccff6637'
             '49ea6190a7f081686a8c71faba2f915c9dbdbee99572e7b26612f30098a130a1')
 
 package() {
