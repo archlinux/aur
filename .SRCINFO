@@ -1,0 +1,24 @@
+pkgbase = mailmaster
+	pkgdesc = 专业的全平台邮箱客户端。一封邮件，多端同步。手机、Windows、Mac、Linux、网页端， 所有平台都能给你出色的体验。
+	pkgver = 5.0.2.1011
+	pkgrel = 1
+	url = https://dashi.163.com
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = libsasl
+	depends = gconf
+	depends = libxcb
+	depends = nss
+	depends = glibc
+	depends = libxinerama
+	depends = libnss-wrapper-bin
+	depends = additional-base-lib
+	conflicts = mailmaster-bin
+	options = !strip
+	options = !debug
+	source = https://mirrors.sdu.edu.cn/spark-store-repository/store//network/mailmaster/mailmaster_5.0.2.1011_amd64.deb
+	source = LICENSE.html::https://mail.163.com/html/agreement/doc.html
+	sha256sums = d7c272d50798b4f0dc5279efba383e8f12decef19e434b144e07c3c26c25c58a
+	sha256sums = d3dc6df916c1600e66a673b63f2346777421d6cbcdbaf4a9eb0d182054c8b6a5
+
+pkgname = mailmaster
