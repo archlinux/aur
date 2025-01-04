@@ -1,0 +1,22 @@
+pkgbase = lib32-gdl
+	pkgdesc = GNOME Docking Library (32-bit)
+	pkgver = 3.40.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/Archive/gdl
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = intltool>=0.40.4
+	depends = gdl
+	depends = lib32-cairo
+	depends = lib32-gdk-pixbuf2
+	depends = lib32-glib2>=2.10
+	depends = lib32-glibc
+	depends = lib32-gtk3
+	depends = lib32-libxml2>=2.2.8
+	provides = libgdl-3.so
+	source = gdl-3.40.0.tar.xz::https://download.gnome.org/sources/gdl/3.40/gdl-3.40.0.tar.xz
+	sha256sums = 3641d4fd669d1e1818aeff3cf9ffb7887fc5c367850b78c28c775eba4ab6a555
+
+pkgname = lib32-gdl
