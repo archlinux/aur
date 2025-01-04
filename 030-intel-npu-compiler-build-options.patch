@@ -1,0 +1,32 @@
+--- a/CMakePresets.json
++++ b/CMakePresets.json
+@@ -4,18 +4,7 @@
+         {
+             "name": "BuildOptimization",
+             "hidden": true,
+-            "generator": "Ninja",
+-            "cacheVariables": {
+-                "CMAKE_C_COMPILER_LAUNCHER": {
+-                    "type": "STRING",
+-                    "value": "ccache"
+-                },
+-                "CMAKE_CXX_COMPILER_LAUNCHER": {
+-                    "type": "STRING",
+-                    "value": "ccache"
+-                },
+-                "ENABLE_FASTER_BUILD": true
+-            }
++            "generator": "Ninja"
+         },
+         {
+             "name": "EnableClang",
+@@ -265,7 +254,8 @@
+                 "ENABLE_OV_TF_LITE_FRONTEND": false,
+                 "ENABLE_OV_JAX_FRONTEND": false,
+ 
+-                "ENABLE_SYSTEM_TBB": false,
++                "ENABLE_SYSTEM_PUGIXML": true,
++                "ENABLE_SYSTEM_TBB": true,
+                 "ENABLE_TBB_RELEASE_ONLY": false,
+                 "ENABLE_OPENCV": false,
+ 

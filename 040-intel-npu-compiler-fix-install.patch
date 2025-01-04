@@ -1,0 +1,110 @@
+--- a/src/vpux_driver_compiler/CMakeLists.txt
++++ b/src/vpux_driver_compiler/CMakeLists.txt
+@@ -11,7 +11,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+ add_subdirectory(src)
+ add_subdirectory(test)
+ 
+-install(
++#[[install(
+     FILES
+         "${InferenceEngineVPUXPlugin_SOURCE_DIR}/src/vpux_driver_compiler/CHANGES.txt"
+     DESTINATION cid
+@@ -21,4 +21,4 @@ install(
+     FILES
+         "${InferenceEngineVPUXPlugin_SOURCE_DIR}/src/vpux_driver_compiler/README.md"
+     DESTINATION cid
+-    COMPONENT ${CID_COMPONENT})
++    COMPONENT ${CID_COMPONENT})]]
+--- a/src/vpux_driver_compiler/src/loader/CMakeLists.txt
++++ b/src/vpux_driver_compiler/src/loader/CMakeLists.txt
+@@ -75,7 +75,7 @@ ov_add_api_validator_post_build_step(TARGET ${TARGET_NAME})
+ # loader folder | -> include/ | -> vpux_headers/ -> 1 hpp
+ #               |             | -> vpux_loader/  -> 1 hpp
+ 
+-install(DIRECTORY "${LOADER_DIR_INC}/vpux_headers"
++#[[install(DIRECTORY "${LOADER_DIR_INC}/vpux_headers"
+         DESTINATION cid/vpux_elf/loader/include/
+         COMPONENT ${CID_COMPONENT})
+ 
+@@ -207,4 +207,4 @@ install(TARGETS npu_elf
+         CONFIGURATIONS RelWithDebInfo
+         LIBRARY DESTINATION cid/vpux_elf/lib/RelWithDebInfo COMPONENT ${CID_COMPONENT}
+         ARCHIVE DESTINATION cid/vpux_elf/lib/RelWithDebInfo COMPONENT ${CID_COMPONENT}
+-        RUNTIME DESTINATION cid/vpux_elf/lib/RelWithDebInfo COMPONENT ${CID_COMPONENT})
++        RUNTIME DESTINATION cid/vpux_elf/lib/RelWithDebInfo COMPONENT ${CID_COMPONENT})]]
+--- a/src/vpux_driver_compiler/src/vpux_compiler_l0/CMakeLists.txt
++++ b/src/vpux_driver_compiler/src/vpux_compiler_l0/CMakeLists.txt
+@@ -77,12 +77,12 @@ if(WIN32)
+             COMPONENT ${CID_COMPONENT})
+ else()
+     install(TARGETS ${TARGET_NAME}
+-            LIBRARY DESTINATION cid/lib
++            LIBRARY DESTINATION lib
+             COMPONENT ${CID_COMPONENT})
+ endif()
+ 
+ install(
+         FILES
+             "${InferenceEngineVPUXPlugin_SOURCE_DIR}/src/vpux_driver_compiler/include/npu_driver_compiler.h"
+-        DESTINATION cid
++        DESTINATION include
+         COMPONENT ${CID_COMPONENT})
+--- a/src/vpux_driver_compiler/test/CMakeLists.txt
++++ b/src/vpux_driver_compiler/test/CMakeLists.txt
+@@ -11,30 +11,33 @@ endif()
+ 
+ # compilerTest as somke test
+ add_executable(compilerTest compilerTest.c)
++set_target_properties(compilerTest PROPERTIES OUTPUT_NAME intel-npu-compilerTest)
+ target_link_libraries(compilerTest PUBLIC npu_driver_compiler)
+ ov_add_api_validator_post_build_step(TARGET compilerTest)
+ 
+ # profilingTest to check profiling API
+ add_executable(profilingTest profilingTest.c)
++set_target_properties(profilingTest PROPERTIES OUTPUT_NAME intel-npu-profilingTest)
+ target_link_libraries(profilingTest PUBLIC npu_driver_compiler)
+ ov_add_api_validator_post_build_step(TARGET profilingTest)
+ 
+ # loaderTest to check npu_elf
+ add_executable(loaderTest loaderTest.cpp)
++set_target_properties(loaderTest PROPERTIES OUTPUT_NAME intel-npu-loaderTest)
+ target_link_libraries(loaderTest PUBLIC npu_elf npu_llvm_utils npu_ov_utils LLVMSupport)
+ ov_add_api_validator_post_build_step(TARGET loaderTest)
+ 
+ # install tests to CiD component
+ install(TARGETS compilerTest
+-        RUNTIME DESTINATION cid
++        RUNTIME DESTINATION bin
+         COMPONENT ${CID_COMPONENT})
+ 
+ install(TARGETS profilingTest
+-        RUNTIME DESTINATION cid
++        RUNTIME DESTINATION bin
+         COMPONENT ${CID_COMPONENT})
+ 
+ install(TARGETS loaderTest
+-        RUNTIME DESTINATION cid
++        RUNTIME DESTINATION bin
+         COMPONENT ${CID_COMPONENT})
+ 
+ if(WIN32)
+--- a/src/vpux_driver_compiler/test/functional/CMakeLists.txt
++++ b/src/vpux_driver_compiler/test/functional/CMakeLists.txt
+@@ -46,7 +46,7 @@ endif()
+ if(ENABLE_PREBUILT_LLVM_MLIR_LIBS)
+     find_package(MLIR REQUIRED CONFIG)
+ endif()
+-
++set_target_properties(${FUNCTIONAL_TARGET} PROPERTIES OUTPUT_NAME intel-npu-${FUNCTIONAL_TARGET})
+ target_include_directories(${FUNCTIONAL_TARGET}
+     SYSTEM PRIVATE
+         $<BUILD_INTERFACE:${LLVM_SOURCE_DIR}/include>
+@@ -68,7 +68,7 @@ ov_link_system_libraries(${FUNCTIONAL_TARGET}
+ ov_add_api_validator_post_build_step(TARGET vpuxCompilerL0Test)
+ 
+ install(TARGETS vpuxCompilerL0Test
+-        RUNTIME DESTINATION cid
++        RUNTIME DESTINATION bin
+         COMPONENT ${CID_COMPONENT})
+ 
+ if(WIN32)
