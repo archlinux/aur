@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=sisyphus
-pkgver=0.3.8
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Convert gemtext to html or markdown'
 arch=('x86_64')
 url="https://github.com/hachiya-kurisu/$pkgname"
 license=('BSD-2-Clause')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('21c5d4808cda37bcc27f9ed67608303dafc736b1303ba717174d2d1949793ae9')
+sha256sums=('78d49af996566f1eeef6d19327f38fa59ba0c94f98485d3a36ccc2b02faac931')
 makedepends=('go')
 
 prepare() {
