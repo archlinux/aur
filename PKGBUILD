@@ -1,20 +1,20 @@
 # MAINTAINER: ramen <hendrikjschick@gmail.com>
 # CONTRIBUTOR: aksr <aksr at t-com dot me>
 pkgname=bino-git
-pkgver=1.6.8
-pkgrel=2
+pkgver=2.3.r4.g30e7eb4
+pkgrel=1
 pkgdesc="Stereoscopic 3D video player with multi-display support."
 arch=('i686' 'x86_64')
 url="http://bino3d.org/"
 license=('GPLv3')
-depends=('ffmpeg4.4' 'freealut' 'freeglut' 'glew' 'libass' 'qt5-base')
+depends=('freealut' 'freeglut' 'glew' 'libass' 'qt6-base' 'qt6-multimedia' 'qt6-tools')
 makedepends=('git')
 optdepends=('lirc: for infrared remote control')
 provides=('bino')
 conflicts=('bino')
-source=("$pkgname::git+https://git.marlam.de/git/bino.git" ffmpeg4.4.patch)
+source=("$pkgname::git+https://git.marlam.de/git/bino.git")
 noextract=()
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP')
 
 
 pkgver() {
@@ -24,9 +24,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  autoreconf -i
-  patch -Np1 -i ${srcdir}/ffmpeg4.4.patch
-  ./configure --prefix=/usr --with-qt-version=5
+  cmake .
   make
 }
 
