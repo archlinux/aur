@@ -30,5 +30,5 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
     install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
-    install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname"
+    install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
