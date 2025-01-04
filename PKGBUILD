@@ -1,7 +1,7 @@
 # Maintainer: crl <crl18039102576@126.com>
 pkgname=python-scipy-mkl-tbb
-pkgver=1.14.1
-pkgrel=2
+pkgver=1.15.0
+pkgrel=1
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering."
 arch=('x86_64')
 url="http://www.scipy.org/"
@@ -13,7 +13,8 @@ makedepends=('cython' 'gcc-fortran' 'meson-python' 'procps-ng' 'pybind11' 'pytho
 checkdepends=('python-pytest' 'python-hypothesis')
 optdepends=('python-pillow: for image saving module')
 source=("https://pypi.python.org/packages/source/s/scipy/scipy-$pkgver.tar.gz")
-sha256sums=('5a275584e726026a5699459aa72f828a610821006228e841b94275c4a7c08417')
+sha256sums=('300742e2cc94e36a2880ebe464a1c8b4352a7b0f3e36ec3d2ac006cdbe0219ac')
+options=(!debug)
 
 build() {
 	source /opt/intel/oneapi/setvars.sh
