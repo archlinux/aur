@@ -4,7 +4,7 @@
 _pkgname=sile
 pkgname=$_pkgname-git
 pkgdesc='a modern typesetting engine inspired by LaTeX, fully customizable in Lua'
-pkgver=0.15.6.r59.g960c748
+pkgver=0.15.9.r0.g4ff5c60
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
@@ -84,6 +84,7 @@ build () {
 		--prefix /usr \
 		--docdir /usr/share/doc/$pkgname \
 		--disable-embeded-resources \
+		--disable-static \
 		--with-system-lua-sources \
 		--with-system-luarocks
 	make all
