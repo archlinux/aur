@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-kicadmodtree
-pkgver=1.1.2.r2427.gfc887ab
+pkgver=1.1.2.r2429.g56c2111
 pkgrel=1
 epoch=
 pkgdesc="This repository contains scripts to generate custom KiCAD footprints using python, and a framework which allows us to create custom KiCAD footprint. A big bunch of footprints of the KiCad library was developed using this framework."
@@ -18,13 +18,15 @@ depends=(
     python
     "${_pydeps[@]/#/python-}")
 _pymakedeps=(
-    asteval
     future
     pycodestyle
     build
     installer
     wheel
-    setuptools)
+    setuptools
+    # AUR
+    asteval-git
+)
 makedepends=(git
     "${_pymakedeps[@]/#/python-}")
 checkdepends=(python-pytest)
@@ -35,14 +37,14 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
