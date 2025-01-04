@@ -1,0 +1,55 @@
+--- a/linux/include/uapi/drm/ivpu_accel.h
++++ b/linux/include/uapi/drm/ivpu_accel.h
+@@ -7,7 +7,7 @@
+ #define __UAPI_IVPU_DRM_H__
+ 
+ /* UPSTREAM: replace <drm/drm.h> with "drm.h" */
+-#include <drm/drm.h>
++#include <libdrm/drm.h>
+ 
+ #if defined(__cplusplus)
+ extern "C" {
+--- a/umd/vpu_driver/source/os_interface/null_interface_imp.cpp
++++ b/umd/vpu_driver/source/os_interface/null_interface_imp.cpp
+@@ -13,7 +13,7 @@
+ #include "vpu_driver/source/utilities/log.hpp"
+ 
+ #include <cstring>
+-#include <drm/drm.h>
++#include <libdrm/drm.h>
+ #include <errno.h>
+ #include <exception>
+ #include <fcntl.h>
+--- a/umd/vpu_driver/source/os_interface/vpu_driver_api.cpp
++++ b/umd/vpu_driver/source/os_interface/vpu_driver_api.cpp
+@@ -9,7 +9,7 @@
+ 
+ #include "vpu_driver/source/os_interface/os_interface.hpp"
+ 
+-#include <drm/drm.h>
++#include <libdrm/drm.h>
+ #include <exception>
+ #include <fcntl.h>
+ #include <memory>
+--- a/umd/vpu_driver/unit_tests/mocks/mock_os_interface_imp.cpp
++++ b/umd/vpu_driver/unit_tests/mocks/mock_os_interface_imp.cpp
+@@ -17,7 +17,7 @@
+ #include <api/vpu_jsm_api.h>
+ #include <cstdlib>
+ #include <cstring>
+-#include <drm/drm.h>
++#include <libdrm/drm.h>
+ #include <errno.h>
+ #include <uapi/drm/ivpu_accel.h>
+ 
+--- a/validation/umd-test/test_graph_cid.cpp
++++ b/validation/umd-test/test_graph_cid.cpp
+@@ -9,7 +9,7 @@
+ #include "umd_dma_heap_system.hpp"
+ 
+ #include <chrono>
+-#include <drm/drm.h>
++#include <libdrm/drm.h>
+ #include <future>
+ #include <level_zero/ze_api.h>
+ #include <stdexcept>

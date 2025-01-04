@@ -1,65 +1,70 @@
-# Maintainer: Jichi Zhang <jichi@1435.es>
-# Contributor: jinzhongjia <mail@nvimer.org>
-# Contributor: Melvin Redondo-Tanis <melvin@redondotanis.com>
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 
 pkgname=intel-npu-driver
-pkgver=1.10.1.20241220_12430270326
-pkgrel=2
-_main_ver=$(echo $pkgver | cut -d'.' -f1-3)
-pkgdesc="Intel(R) NPU (Neural Processing Unit) Driver"
+pkgver=1.10.1
+pkgrel=1
+pkgdesc='Intel Neural Processing Unit (NPU) driver'
 arch=('x86_64')
-url="https://github.com/intel/linux-npu-driver"
-license=('MIT')
-depends=('glibc' 'gcc-libs' 'openssl' 'onetbb')
-makedepends=('chrpath')
-optdepends=('level-zero-headers' 'level-zero-loader')
-provides=('intel-driver-compiler-npu' 'intel-fw-npu' 'intel-level-zero-npu')
-source=(
-  "intel-driver-compiler-npu.deb::https://github.com/intel/linux-npu-driver/releases/download/v${_main_ver}/intel-driver-compiler-npu_${pkgver//_/-}_ubuntu24.04_amd64.deb"
-	"intel-fw-npu.deb::https://github.com/intel/linux-npu-driver/releases/download/v${_main_ver}/intel-fw-npu_${pkgver//_/-}_ubuntu24.04_amd64.deb"
-	"intel-level-zero-npu.deb::https://github.com/intel/linux-npu-driver/releases/download/v${_main_ver}/intel-level-zero-npu_${pkgver//_/-}_ubuntu24.04_amd64.deb"
-	"LICENSE::https://raw.githubusercontent.com/intel/linux-npu-driver/main/LICENSE.md"
-)
-noextract=("${source[@]%%::*}")
-sha256sums=('d75b8bab718e97bb201ff3d09e0d660ae89bab411700dff45a2743cc94d47ad0'
-            '81bde738f384ca93ecad9ce0b8d612388426241820a72412fe7317413ba93217'
-            '33b19c431c93d3e199208af633b4dcf90154e1986cab327959c7702df75b3660'
-            '9cd7b75cc0af6941de80c7fccd3f63217de5c0691b63fb1319b73d1e033c9c4f')
+url='https://github.com/intel/linux-npu-driver/'
+license=('MIT' 'BSD-3-Clause')
+depends=('gtest' 'openssl' 'level-zero-loader' 'opencv' 'systemd-libs' 'yaml-cpp')
+makedepends=('cmake' 'git' 'level-zero-headers' 'libdrm')
+install=intel-npu-driver.install
+source=("git+https://github.com/intel/linux-npu-driver.git#tag=v${pkgver}"
+        'git+https://github.com/intel/level-zero-vpu-extensions.git'
+        'git+https://github.com/openvinotoolkit/vpux_plugin_elf.git'
+        'git+https://github.com/xanderlent/intel-npu-driver-rpm.git'
+        '10-intel-npu-driver.rules'
+        '010-intel-npu-driver-fix-libdrm-header.patch')
+sha256sums=('3c2287b2d545ea51413937ea4452ec80345e748773b63638a7ef976c50593b85'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '592a2f5575ecce93a03c66987573fe675d41a63b49cee11d2553645d9e5624fe'
+            '4dad75ab65bd244d1be9a3bc62ff81da357c3a181693761081acaa82be3fe6b3')
 
 prepare() {
-  cd "$srcdir"
-  mkdir -p intel-driver-compiler-npu intel-fw-npu intel-level-zero-npu
-  bsdtar -xf intel-driver-compiler-npu.deb -C intel-driver-compiler-npu
-  bsdtar -xf intel-fw-npu.deb -C intel-fw-npu
-  chmod 755 -R intel-fw-npu
-  bsdtar -xf intel-level-zero-npu.deb -C intel-level-zero-npu
+    git -C linux-npu-driver submodule init
+    git -C linux-npu-driver config --local submodule.third_party/level-zero.update none
+    git -C linux-npu-driver config --local submodule.third_party/level-zero-npu-extensions.url "${srcdir}/level-zero-vpu-extensions"
+    git -C linux-npu-driver config --local submodule.third_party/vpux_elf.url "${srcdir}/vpux_plugin_elf"
+    git -C linux-npu-driver config --local submodule.third_party/googletest.update none
+    git -C linux-npu-driver config --local submodule.third_party/yaml-cpp.update none
+    git -C linux-npu-driver -c protocol.file.allow='always' submodule update
+    
+    # fix build with level-zero 1.18
+    # https://github.com/intel/level-zero-npu-extensions/commit/110f48ee8eda22d8b40daeeecdbbed0fc3b08f8b
+    git -C linux-npu-driver/third_party/level-zero-npu-extensions config --local advice.detachedHead false
+    git -C linux-npu-driver/third_party/level-zero-npu-extensions checkout 110f48ee8eda22d8b40daeeecdbbed0fc3b08f8b
+    
+    patch -d linux-npu-driver -Np1 -i "${srcdir}/010-intel-npu-driver-fix-libdrm-header.patch"
+    
+    patch -d linux-npu-driver -Np1 -i "${srcdir}/intel-npu-driver-rpm/0001-Disable-third-party-googletest-and-yaml-cpp.patch"
+    patch -d linux-npu-driver -Np1 -i "${srcdir}/intel-npu-driver-rpm/0002-Make-firmware-install-respect-CMAKE_INSTALL_PATH.patch"
+    patch -d linux-npu-driver -Np1 -i "${srcdir}/intel-npu-driver-rpm/0004-Fix-usage-of-upstreamed-extension.patch"
+}
+
+build() {
+    # fix error: "_FORTIFY_SOURCE" redefined
+    # note: upstream forces _FORTIFY_SOURCE=2
+    export CFLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
+    export CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
+    
+    cmake -B build -S linux-npu-driver \
+        -G 'Unix Makefiles' \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DENABLE_NPU_COMPILER_BUILD:BOOL='OFF' \
+        -DLevelZero_INCLUDE_DIR:PATH='/usr/include' \
+        -Wno-dev
+    cmake --build build
 }
 
 package() {
-  cd "$srcdir"
-  # The location of fw-npu is wrong, it should not be placed in /lib, it should be placed in /usr/lib
-  bsdtar -xf intel-fw-npu/data.tar.gz -C "${pkgdir}/"
-  mv "${pkgdir}/lib" "${pkgdir}/usr/"
-  rm -rf "${pkgdir}/lib"
-
-  bsdtar -xf intel-driver-compiler-npu/data.tar.gz -C "${pkgdir}/"
-  bsdtar -xf intel-level-zero-npu/data.tar.gz -C "${pkgdir}/"
-
-  # install LICENSE
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  
-  # For user access to the device
-  mkdir -p "${pkgdir}/usr/lib/udev/rules.d"
-  # TAG+="uaccess", This special tag makes udev apply a dynamic user ACL to the device node,
-  # which coordinates with systemd-logind(8) to make the device usable to logged-in users.
-  # The offical installation instruction is 10-intel-npu.rules
-  # we use 99-intel-npu.rules, which is to prevent permissions from being overridden by systemd’s default rules.
-  # systemd default rule is /lib/udev/rules.d/50-udev-default.rules
-  echo 'SUBSYSTEM=="accel", KERNEL=="accel*", GROUP="render", MODE="0660", TAG+="uaccess"' > "${pkgdir}/usr/lib/udev/rules.d/99-intel-npu.rules"
-
-  # Set global readability
-  chmod -R a+r "${pkgdir}/usr/lib/firmware/updates/intel/vpu"
-  # remove insecure RUNAPTH 
-  chrpath --delete "$pkgdir/usr/lib/${CARCH}-linux-gnu/libnpu_driver_compiler.so"
+    DESTDIR="$pkgdir" cmake --install build
+    chmod 644 "${pkgdir}/usr/lib/firmware/updates/intel/vpu"/vpu_*.bin
+    install -D -m644 10-intel-npu-driver.rules -t "${pkgdir}/usr/lib/udev/rules.d"
+    install -D linux-npu-driver/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D linux-npu-driver/firmware/bin/COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-firmware"
 }
-

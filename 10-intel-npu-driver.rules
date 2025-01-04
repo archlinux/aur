@@ -1,0 +1,1 @@
+SUBSYSTEM=="accel", KERNEL=="accel*", GROUP="render", MODE="0660"
