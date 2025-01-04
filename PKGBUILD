@@ -13,7 +13,6 @@ depends=('cairo' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
 makedepends=('cargo' 'cargo-tauri' 'git')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
-replaces=('flyingcarpet-cli')
 _pkgsrc="FlyingCarpet"
 source=("${_pkgsrc}::git+${url}.git")
 b2sums=('SKIP')

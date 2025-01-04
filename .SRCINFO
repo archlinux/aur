@@ -20,7 +20,6 @@ pkgbase = flying-carpet-git
 	depends = webkit2gtk
 	provides = flying-carpet=8.0.2
 	conflicts = flying-carpet
-	replaces = flyingcarpet-cli
 	source = FlyingCarpet::git+https://github.com/spieglt/FlyingCarpet.git
 	b2sums = SKIP
 
