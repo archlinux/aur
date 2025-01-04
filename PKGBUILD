@@ -66,9 +66,10 @@
 # Set to anything but null to activate.
 : "${_localmodcfg:=""}"
 
-# Optionally select a sub architecture by number or
-# leave blank, which will require user interaction during the build.
-# Note that the default option is 41.
+# Optionally select a sub architecture by number or its Kconfig name,
+# for example MCORE2 or MZEN4.
+# Leaving it blank will require user interaction during the build.
+# Note that the default option is empty.
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
@@ -326,18 +327,27 @@ update_defconfig() {
 
     # Here we slightly break the config by removing one of the
     # members of the 'Processor family' selection.
-    # This causes oldconfig to invoke that selection always.
+    # This causes oldconfig to always invoke that selection.
     sed -i '/CONFIG_GENERIC_CPU/d' .config || :
     # For a slim chance that someone is building X86_32
     sed -i '/CONFIG_M686/d' .config || :
 
-    # Set subarch automatically
     if [ -n "${_subarch}" ]; then
-        if [ "${_subarch}" == "41" ]; then
-            yes "${_subarch}
+        # check if subarch is a number
+        if [[ ${_subarch} =~ ^[0-9]+$ ]] && ((_subarch>=1)); then
+            if [ "${_subarch}" == "41" ]; then
+                yes "${_subarch}
 ${_subarch_microarch}" | make ${BUILD_FLAGS[*]} oldconfig
+            else
+                yes "${_subarch}" | make ${BUILD_FLAGS[*]} oldconfig
+            fi
+        # check that this option is present in the .config
+        elif [[ $(grep -c "${_subarch}" .config) -eq 1 ]]; then
+            scripts/config -e "${_subarch}"
+            make ${BUILD_FLAGS[*]} olddefconfig
         else
-            yes "${_subarch}" | make ${BUILD_FLAGS[*]} oldconfig
+            warning "Unrecognized subarch value: ${_subarch}"
+            exit 1
         fi
     else
         # Ask for subarch
