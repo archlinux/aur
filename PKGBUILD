@@ -8,7 +8,7 @@ _module="machine68k"
 _pkgname="python-$_module"
 pkgname="$_pkgname"
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cython binding for a m68k system emulator"
 url="https://github.com/cnvogelg/machine68k"
 license=('GPL-2.0-only')
@@ -33,7 +33,7 @@ sha256sums=('40bf621b208ae402317c3bd0abb7b6ae36124a2fc416d33599f35ee337028deb')
 
 build() {
   cd "$_pkgsrc"
-  python -m build --no-isolation --wheel
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {

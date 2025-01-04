@@ -1,0 +1,4 @@
+[python-machine68k]
+source = "git"
+git = "https://github.com/cnvogelg/machine68k.git"
+prefix = "v"

@@ -1,7 +1,7 @@
 pkgbase = python-machine68k
 	pkgdesc = Cython binding for a m68k system emulator
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cnvogelg/machine68k
 	arch = x86_64
 	license = GPL-2.0-only
