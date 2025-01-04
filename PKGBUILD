@@ -20,8 +20,6 @@ depends=(
     'figlet'
     'pacman'
     'unzip'
-    'python'
-    'gtk3'
     'noto-fonts-emoji'
     'ttf-joypixels'
     'curl'
