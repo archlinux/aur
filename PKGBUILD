@@ -4,7 +4,7 @@
 _name="netpbm"
 pkgname="lib32-${_name}"
 pkgver=10.86.44
-pkgrel=1
+pkgrel=2
 pkgdesc="A toolkit for manipulation of graphic images (32-bit)"
 arch=('x86_64')
 license=('Artistic-1.0' 'GPL-2.0-only' 'LGPL-2.0-only' 'MIT')
@@ -12,6 +12,7 @@ url="https://${_name}.sourceforge.net"
 depends=('lib32-glibc')
 makedepends=('lib32-gcc-libs' 'lib32-jbigkit' 'lib32-libjpeg-turbo'
              'lib32-libpng' 'lib32-libtiff' 'lib32-libxml2' 'lib32-zlib')
+provides=('libnetpbm.so.11.86')
 # options=(!makeflags)
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://downloads.sourceforge.net/project/${_name}/super_stable/${pkgver}/${_pkgsrc}.tgz"
@@ -67,8 +68,13 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  make pkgdir="${pkgdir}/usr" install.lib install.sharedlibstub
+  make pkgdir="${pkgdir}/usr" install.lib
 
   cd "${pkgdir}/usr"
   rm -rf "bin" "include" "share"
+  mv -f "lib" "lib32"
+
+  cd "lib32"
+  rm -f "libnetpbm.so.11"
+  ln -s "libnetpbm.so.11.86" "libnetpbm.so.11"
 }

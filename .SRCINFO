@@ -1,7 +1,7 @@
 pkgbase = lib32-netpbm
 	pkgdesc = A toolkit for manipulation of graphic images (32-bit)
 	pkgver = 10.86.44
-	pkgrel = 1
+	pkgrel = 2
 	url = https://netpbm.sourceforge.net
 	arch = x86_64
 	license = Artistic-1.0
@@ -16,6 +16,7 @@ pkgbase = lib32-netpbm
 	makedepends = lib32-libxml2
 	makedepends = lib32-zlib
 	depends = lib32-glibc
+	provides = libnetpbm.so.11.86
 	source = netpbm-10.86.44.tar.gz::https://downloads.sourceforge.net/project/netpbm/super_stable/10.86.44/netpbm-10.86.44.tgz
 	source = netpbm-security-code.patch
 	source = netpbm-CVE-2017-2587.patch
