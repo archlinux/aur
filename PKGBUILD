@@ -3,10 +3,10 @@
 pkgname=8bloat-git
 _pkgname=8bloat
 pkgver=v0.0.2.r26.gd27ae17
-pkgrel=1
+pkgrel=2
 pkgdesc="minimalist client for pleroma/mastodon network"
 arch=('x86_64')
-url="https://git.sr.ht/~webb/8bloat/refs"
+url="https://sr.ht/~webb/8bloat/"
 conflicts=('8bloat')
 license=('AGPL-3.0-only')
 makedepends=('go' 'git')

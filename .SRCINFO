@@ -1,8 +1,8 @@
 pkgbase = 8bloat-git
 	pkgdesc = minimalist client for pleroma/mastodon network
 	pkgver = v0.0.2.r26.gd27ae17
-	pkgrel = 1
-	url = https://git.sr.ht/~webb/8bloat/refs
+	pkgrel = 2
+	url = https://sr.ht/~webb/8bloat/
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = go
