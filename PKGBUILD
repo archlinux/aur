@@ -4,7 +4,7 @@
 # Contributor: jskier <jay @jskier.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=keeper-commander
-pkgver=16.11.22
+pkgver=17.0.2
 pkgrel=1
 epoch=1
 pkgdesc="CLI, SDK and interactive shell for Keeper® Password Manager."
@@ -22,12 +22,13 @@ depends=('python'
   'python-tabulate'
   'python-websockets'
   'python-fido2'
-  'python-requests>=2.30.0'
+  'python-requests'
   'keeper-secrets-manager-core>=16.6.0'
   'python-aiortc'
-  'python-protobuf>=3.19.0'
-  'python-cryptography>=39.0.1'
+  'python-protobuf'
+  'python-cryptography'
   'python-pykeepass'
+  'python-pydantic'
 )
 makedepends=(
   'python-installer'
@@ -36,7 +37,7 @@ makedepends=(
 )
 checkdepends=('python-ifaddr')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('462a3d4f155bb3bcc91cdbeda1c998bbea3fa5e8371d0e87a7be59a0185635918f7d276aa7e44636a0be340aabf26eee72002cdc6968427b07bcdf8d15644b9e')
+sha512sums=('84d88ac67141247cdd83f20984220651af3e32d1f50fbd32fc6538f12825d2c309f986e4c0f7050dc1b753d1995af3dc48277300920b316b7d12282e6971ddc1')
 
 build() {
   cd "Commander-$pkgver"
@@ -45,14 +46,13 @@ build() {
 
 check() {
   cd "Commander-$pkgver"
-  python -m pytest -s -v \
-    --deselect=tests/test_enterprise_commands.py::TestEnterpriseCommands::test_add_enterprise_user \
-    --deselect=tests/test_enterprise_commands.py::TestEnterpriseCommands::test_commands \
-    --deselect=tests/test_enterprise_commands.py::TestEnterpriseCommands::test_report_commands \
-    --deselect=tests/test_vault_commands.py::TestConnectedCommands::test_commands \
-    --deselect=tests/test_vault_commands.py::TestConnectedCommands::test_quoting \
-    --deselect=tests/test_vault_commands.py::TestConnectedCommands::test_vault_reports \
-    --deselect=unit-tests/pam-tunnel/test_private_tunnel.py::TestPrivateTunnelEntrance::test_forward_data_to_tunnel_generic_exception
+  python -m pytest -s -v -k \
+    "not test_forward_data_to_tunnel_generic_exception and \
+     not test_add_enterprise_user and \
+     not test_commands and \
+     not test_report_commands and \
+     not test_quoting and \
+     not test_vault_reports"
 }
 
 package() {
