@@ -25,20 +25,20 @@ md5sums=(SKIP)
 validpgpkeys=()
 
 prepare() {
-	cd "$pkgname"
+	cd minilang-libs
 	git submodule update --init --recursive
 }
 
 build() {
-	cd "$pkgname"
+	cd minilang-libs
 	rabs -p$(nproc) standard
 }
 
 check() {
-	cd "$pkgname"
+	cd minilang-libs
 }
 
 package() {
-	cd "$pkgname"
+	cd minilang-libs
 	rabs standard -DPREFIX="$pkgdir/usr" -DINSTALL
 }
