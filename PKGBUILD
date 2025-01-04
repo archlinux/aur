@@ -15,7 +15,7 @@ depends=(qt6-base openal glew
 makedepends=(git cmake ninja nlohmann-json)
 provides=(play-emu)
 conflicts=(play-emu)
-source=("play-emu::git+https://github.com/jpd002/Play-.git#branch=profiler_build_fix"
+source=("play-emu::git+https://github.com/jpd002/Play-.git"
         "git+https://github.com/jpd002/Play-Dependencies.git"
         "git+https://github.com/jpd002/Play--Framework.git"
         "git+https://github.com/jpd002/Play--CodeGen.git"

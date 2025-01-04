@@ -24,7 +24,7 @@ pkgbase = play-emu-git
 	depends = zlib
 	provides = play-emu
 	conflicts = play-emu
-	source = play-emu::git+https://github.com/jpd002/Play-.git#branch=profiler_build_fix
+	source = play-emu::git+https://github.com/jpd002/Play-.git
 	source = git+https://github.com/jpd002/Play-Dependencies.git
 	source = git+https://github.com/jpd002/Play--Framework.git
 	source = git+https://github.com/jpd002/Play--CodeGen.git
