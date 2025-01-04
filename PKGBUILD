@@ -5,7 +5,7 @@
 # - JeremyStarTM <jeremystartm@staropensource.de>
 # - yarost12 <yaro330@gmail.com>
 # - Josip Ponjavic <josipponjavic at gmail dot com>
-# 
+#
 # For a list of maintainers see MAINTAINERS.md
 
 ### BUILD OPTIONS
@@ -14,17 +14,17 @@
 # env _makemenuconfig=y _copyfinalconfig=y _subarch=30 makepkg
 
 # Tweak kernel options prior to a build via menuconfig.
-# 
+#
 # Set to anything but null to activate.
 : "${_makemenuconfig:=""}"
 
 # Tweak kernel options prior to a build via nconfig.
-# 
+#
 # Set to anything but null to activate.
 : "${_makenconfig:=""}"
 
 # Tweak kernel options prior to a build via xconfig.
-# 
+#
 # Set to anything but null to activate.
 : "${_makexconfig:=""}"
 
@@ -52,16 +52,16 @@
 
 # Determines whether the kernel configuration should be
 # copied into the source tree before compilation starts.
-# 
+#
 # Set to anything but null to activate.
 : "${_copyfinalconfig:=""}"
 
 # Only compile active modules to VASTLY reduce the number
 # of modules built and the build time.
-# 
+#
 # To keep track of which modules are needed for your specific system/hardware,
 # give modprobed-db a try: https://aur.archlinux.org/packages/modprobed-db
-# 
+#
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 # Set to anything but null to activate.
 : "${_localmodcfg:=""}"
@@ -119,7 +119,7 @@
 # This value is only used by the GENERIC_CPU
 # subarchitecture and is required.
 # Can be either '1', '2', '3' or '4'
-# 
+#
 # Set to '1' by default
 #
 # For more information see:
@@ -130,7 +130,7 @@
 # Enable compilation with LLVM
 # Be warned, this is largely untested by me (JeremyStarTM). It *should* work,
 # but if it doesn't, write a comment and I'll fix it.
-# 
+#
 # Set to anything but null to activate.
 : "${_use_llvm_lto:=""}"
 
@@ -139,7 +139,7 @@
 # Set to 'y' to force enable, 'n' to force disable or '' to ignore debug options.
 # Leaving the setting empty will use the kernel configuration setting to determine
 # if debug options shall be enabled/disabled.
-# 
+#
 # Set to anything but null to activate.
 : "${_debug:=""}"
 
@@ -186,11 +186,11 @@ export "KBUILD_BUILD_TIMESTAMP=$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 apply_patches() {
     # Patch with kernel version patches
     patch -Np1 -i ../patch-${_kernel_major}.${_kernel_minor} || true
-    
+
     # Set version
     echo "-${pkgrel}" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
-    
+
     # Patch with Clear Linux patches
     for i in $(grep '^Patch' "${srcdir}"/cl-linux/linux.spec|grep -Ev '^Patch0132|^Patch0109|^Patch0118|^Patch0113|^Patch0138|^Patch0139|^Patch0147' | sed -n 's/.*: //p'); do
         if [ -n "${_use_llvm_lto}" ]; then
@@ -198,9 +198,14 @@ apply_patches() {
                 continue
             fi
         fi
-        
+
         patch -Np1 -i "${srcdir}/cl-linux/${i}" || true
     done
+
+    # Patch with kernel_compiler_patch patches.
+    # Do this before any defconfig invocations so we
+    # have all of the extra selectable uarches ready and selectable
+    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_kernelcompilerpatch/more-ISA-levels-and-uarches-for-kernel-6.1.79+.patch"
 }
 
 # Allows user to modify the kernel config
@@ -240,7 +245,7 @@ update_defconfig() {
         echo ":: Using configuration file \"${srcdir}/${pkgbase}/config\""
         cp -Tf $srcdir/cl-linux/config ./.config
     fi
-    
+
     # Extra configuration
     # General setup
     scripts/config --set-str DEFAULT_HOSTNAME archlinux \
@@ -292,7 +297,7 @@ update_defconfig() {
     scripts/config -e SECURITY_LANDLOCK
     # Library routines
     scripts/config -k -e FONT_TER16x32
-    
+
     # Enable LLVM compilation
     [[ -n "${_use_llvm_lto}" ]] && scripts/config -d LTO_NONE \
                                                 -e LTO \
@@ -302,7 +307,7 @@ update_defconfig() {
                                                 -e HAS_LTO_CLANG \
                                                 -e LTO_CLANG_THIN \
                                                 -e HAVE_GCC_PLUGINS
-    
+
     # Enable or disable debug settings
     [[ "${_debug}" == "y" ]] && scripts/config -e DEBUG_INFO \
                                             -e DEBUG_INFO_BTF \
@@ -314,16 +319,18 @@ update_defconfig() {
                                             -d DEBUG_INFO_DWARF4 \
                                             -d PAHOLE_HAS_SPLIT_BTF \
                                             -d DEBUG_INFO_BTF_MODULES
-    
+
     # Run olddefconfig
     make ${BUILD_FLAGS[*]} olddefconfig
     diff -u $srcdir/cl-linux/config .config || :
 
-    # Patch with kernel_compiler_patch patches
-    # This must be executed after olddefconfig
-    # to allow for the next section to run.
-    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_kernelcompilerpatch/more-ISA-levels-and-uarches-for-kernel-6.1.79+.patch"
-    
+    # Here we slightly break the config by removing one of the
+    # members of the 'Processor family' selection.
+    # This causes oldconfig to invoke that selection always.
+    sed -i '/CONFIG_GENERIC_CPU/d' .config || :
+    # For a slim chance that someone is building X86_32
+    sed -i '/CONFIG_M686/d' .config || :
+
     # Set subarch automatically
     if [ -n "${_subarch}" ]; then
         if [ "${_subarch}" == "41" ]; then
@@ -381,22 +388,22 @@ _package() {
                 "linux-firmware: firmware images needed for some devices")
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
     install=linux.install
-    
+
     cd "${_src_linux}" || exit 1
     local "modulesdir=${pkgdir}/usr/lib/modules/$(<version)"
-    
+
     # Create boot image
     # systemd expects to find the kernel there to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
     install -Dm644 "$(make -s image_name)" "${modulesdir}/vmlinuz"
-    
+
     # Used by mkinitcpio to name the kernel
     echo "${pkgbase}" | install -Dm644 /dev/stdin "${modulesdir}/pkgbase"
-    
+
     # Install modules
     ZSTD_CLEVEL=19 make ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}/usr" INSTALL_MOD_STRIP=1 \
         DEPMOD=/doesnt/exist modules_install  # Suppress depmod
-    
+
     # Remove build directory
     rm "${modulesdir}"/build
 }
@@ -405,42 +412,42 @@ _package() {
 _package-headers() {
     pkgdesc="${pkgdesc} This package includes header files and scripts for building kernel modules."
     depends=("pahole")
-    
+
     cd "${_src_linux}" || exit 1
     local "builddir=${pkgdir}/usr/lib/modules/$(<version)/build"
-    
+
     install -Dt "${builddir}" -m644 .config Makefile Module.symvers System.map \
         localversion.* version vmlinux
     install -Dt "${builddir}/kernel" -m644 kernel/Makefile
     install -Dt "${builddir}/arch/x86" -m644 arch/x86/Makefile
     cp -t "${builddir}" -a scripts
-    
+
     # Required when STACK_VALIDATION is enabled
     install -Dt "${builddir}/tools/objtool" tools/objtool/objtool
-    
+
     # Required when DEBUG_INFO_BTF_MODULES is enabled
     [[ -f tools/bpf/resolve_btfids/resolve_btfids ]] && install -Dt "${builddir}/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
-    
+
     cp -t "${builddir}" -a include
     cp -t "${builddir}/arch/x86" -a arch/x86/include
     install -Dt "${builddir}/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
-    
+
     install -Dt "${builddir}/drivers/md" -m644 drivers/md/*.h
     install -Dt "${builddir}/net/mac80211" -m644 net/mac80211/*.h
-    
+
     # https://bugs.archlinux.org/task/13146
     install -Dt "${builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
-    
+
     # https://bugs.archlinux.org/task/20402
     install -Dt "${builddir}/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
     install -Dt "${builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
     install -Dt "${builddir}/drivers/media/tuners" -m644 drivers/media/tuners/*.h
-    
+
     # https://bugs.archlinux.org/task/71392
     install -Dt "${builddir}/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
-    
+
     find . -name 'Kconfig*' -exec install -Dm644 {} "${builddir}/{}" \;
-    
+
     # Remove redundant architectures
     local arch
     for arch in "${builddir}"/arch/*/; do
@@ -448,16 +455,16 @@ _package-headers() {
         echo "Removing $(basename "${arch}")"
         rm -r "${arch}"
     done
-    
+
     # Remove documentation
     rm -r "${builddir}/Documentation"
-    
+
     # Remove broken symlinks
     find -L "${builddir}" -type l -printf "Removing %P\n" -delete
-    
+
     # Remove loose objects
     find "${builddir}" -type f -name '*.o' -printf "Removing %P\n" -delete
-    
+
     # Strip build tools
     local file
     while read -rd "" file; do
@@ -472,10 +479,10 @@ _package-headers() {
                 strip -v $STRIP_SHARED "$file" ;;
         esac
     done < <(find "${builddir}" -type f -perm -u+x ! -name vmlinux -print0)
-    
+
     # Strip vmlinux
     strip -v $STRIP_STATIC "${builddir}/vmlinux"
-    
+
     # Add symlink to build directory
     mkdir -p "$pkgdir/usr/src"
     ln -sr "${builddir}" "$pkgdir/usr/src/$pkgbase"
