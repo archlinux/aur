@@ -16,6 +16,7 @@ pkgbase = lib32-netpbm
 	makedepends = lib32-libxml2
 	makedepends = lib32-zlib
 	depends = lib32-glibc
+	depends = netpbm
 	provides = libnetpbm.so
 	source = netpbm-10.86.44.tar.gz::https://downloads.sourceforge.net/project/netpbm/super_stable/10.86.44/netpbm-10.86.44.tgz
 	source = netpbm-security-code.patch

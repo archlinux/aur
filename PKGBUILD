@@ -9,7 +9,7 @@ pkgdesc="A toolkit for manipulation of graphic images (32-bit)"
 arch=('x86_64')
 license=('Artistic-1.0' 'GPL-2.0-only' 'LGPL-2.0-only' 'MIT')
 url="https://${_name}.sourceforge.net"
-depends=('lib32-glibc')
+depends=('lib32-glibc' "${_name}")
 makedepends=('lib32-gcc-libs' 'lib32-jbigkit' 'lib32-libjpeg-turbo'
              'lib32-libpng' 'lib32-libtiff' 'lib32-libxml2' 'lib32-zlib')
 provides=("lib${_name}.so")
