@@ -2,7 +2,7 @@
 
 pkgbase=rmqtt-git
 pkgname=rmqtt-git
-pkgver=0.11.0.r0.g0ec9c19
+pkgver=0.11.0.r2.g38ae1fb
 pkgrel=1
 pkgdesc="MQTT Server/MQTT Broker - Scalable Distributed MQTT Message Broker for IoT in the 5G Era"
 arch=($CARCH)
@@ -11,9 +11,14 @@ license=('MIT')
 provides=(${pkgname%-git} librmqtt_macros.so)
 conflicts=(${pkgname%-git} librmqtt_macros.so)
 replaces=()
-depends=('cargo'
+depends=(
+    gcc-libs
+    glibc
+    openssl
     protobuf-c)
-makedepends=('git' 'rust'
+makedepends=(
+    git
+    rust
     cmake
 )
 backup=()
