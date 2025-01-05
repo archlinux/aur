@@ -3,13 +3,13 @@
 
 _pkgname=pantalaimon
 pkgname="${_pkgname}"-git
-pkgver=0.10.5.28.g21fb28d
+pkgver=0.10.5.32.g257ef6a
 pkgrel=1
 pkgdesc="Pantalaimon is an end-to-end encryption aware Matrix reverse proxy daemon."
 arch=('x86_64')
 url="https://github.com/matrix-org/pantalaimon"
 license=('Apache')
-depends=('python' 'libolm' 'python-matrix-nio' 'python-prompt_toolkit' 'python-janus' 'python-peewee' 'python-logbook' 'python-aiohttp' 'python-cachetools' 'python-pycryptodome' 'python-unpaddedbase64' 'python-h2' 'python-h11' 'python-notify2' 'python-pydbus' 'python-olm' 'python-jsonschema' 'python-atomicwrites' 'python-click' 'python-appdirs' 'python-keyring>=21.2.1' 'python-future')
+depends=('python' 'libolm' 'python-matrix-nio' 'python-prompt_toolkit' 'python-janus' 'python-peewee' 'python-logbook' 'python-aiohttp' 'python-cachetools' 'python-pycryptodome' 'python-unpaddedbase64' 'python-h2' 'python-h11' 'python-notify2' 'python-pydbus' 'python-olm' 'python-jsonschema' 'python-atomicwrites' 'python-click' 'python-appdirs' 'python-keyring>=21.2.1')
 makedepends=('git' 'python-setuptools')
 provides=($_pkgname)
 conflicts=($_pkgname)
