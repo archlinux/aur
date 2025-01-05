@@ -2,9 +2,9 @@
 pkgname=benben
 pkgdesc='Multi-format, fast and efficient command line audio player and audio converter'
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
-license=()
+license=(AGPL-3.0-or-later)
 depends=(libsidplayfp slang libxmp wavpack libvorbis opus mpg123 libpulse libao portaudio)
 makedepends=(ruby crystal fossil shards tcl)
 url=https://chiselapp.com/user/MistressRemilia/repository/benben
