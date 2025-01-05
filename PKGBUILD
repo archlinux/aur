@@ -1,13 +1,11 @@
 # Maintainer: Nick Syntychakis <nsyntych@punkops.dev>
-# Contributor: Steve Engledow <steve@engledow.me>
-# Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 
-pkgname=aws-cli-v2-bin
+pkgname=aws-cli-bin
 # https://github.com/aws/aws-cli/raw/v2/CHANGELOG.rst
 pkgver=2.22.28
 pkgrel=1
-epoch=2
-pkgdesc='Unified command line interface for Amazon Web Services (version 2) (binary release)'
+epoch=1
+pkgdesc='Unified command line interface for Amazon Web Services (Amazon provided v2 binary release)'
 arch=(x86_64 aarch64)
 url='https://github.com/aws/aws-cli/tree/v2'
 license=('Apache')
@@ -16,7 +14,7 @@ makedepends=('unzip')
 depends=('less')
 optdepends=()
 provides=(aws-cli)
-conflicts=(aws-cli aws-cli-v2)
+conflicts=(aws-cli aws-cli-v2 aws-cli-v2-bin aws-cli-git)
 install=aws-cli-v2-bin.install
 
 source=("aws_bash_completer::https://raw.githubusercontent.com/aws/aws-cli/${pkgver}/bin/aws_bash_completer"
