@@ -1,6 +1,6 @@
 pkgbase = mipsel-none-elf-gcc-git
 	pkgdesc = up-to-date GCC (C, C++) for baremetal MIPS
-	pkgver = 15.r5740.066f309db6
+	pkgver = 15.r6562.f5351b38a8
 	pkgrel = 1
 	url = https://www.gnu.org/software/gcc/
 	arch = x86_64

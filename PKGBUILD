@@ -87,6 +87,10 @@ package() {
 		-type f -and \( -name \*.a -or -name \*.o \) \
 		-exec "${target_}"-strip '{}' \;
 
+	find "$pkgdir/usr/lib/gcc/$target_/" \
+		-type f -and \( -name \*.a \) \
+		-exec "${target_}"-ranlib '{}' \;
+
 	find "$pkgdir/usr/bin/" "$pkgdir/usr/lib/gcc/$target_/" \
 		-type f -and \( -executable \) -exec strip '{}' \;
 
