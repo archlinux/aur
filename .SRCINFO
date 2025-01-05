@@ -8,6 +8,7 @@ pkgbase = dxreminders
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
+	makedepends = ninja
 	depends = wxwidgets-gtk3
 	source = https://files.dxsolutions.org/dxreminders-1.21.3.tar.gz
 	md5sums = 289da9f1dbc9fc5dda1cabb6a1862462

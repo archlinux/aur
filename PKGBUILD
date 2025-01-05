@@ -8,20 +8,16 @@ arch=('i686' 'x86_64')
 url="https://dxreminders.dxsolutions.org"
 license=('GPL')
 depends=('wxwidgets-gtk3')
-makedepends=('cmake')
+makedepends=('cmake' 'ninja')
 install=${pkgname}.install
 source=(https://files.dxsolutions.org/$pkgname-$pkgver.tar.gz)
 md5sums=('289da9f1dbc9fc5dda1cabb6a1862462')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  mkdir build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-  make
+  cmake -S $pkgname-$pkgver -B build -G Ninja -DCMAKE_INSTALL_PREFIX='/usr'
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
