@@ -1,0 +1,5 @@
+[phalanx]
+source='debianpkg'
+debianpkg='phalanx'
+from_pattern='-'
+to_pattern='.'
