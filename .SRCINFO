@@ -10,4 +10,4 @@ pkgbase = xclock-git
         source = git+https://github.com/devHeadset/xClock.git
         md5sums = SKIP
 
-pkgname = xClock-git
+pkgname = xclock-git
