@@ -1,9 +1,10 @@
 pkgbase = syndical
 	pkgdesc = A cleaner, more understandable, and faster firmware downloader and decrypter for Samsung devices
 	pkgver = 1.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Samsung-Loki/Syndical
 	arch = x86_64
+	arch = aarch64
 	license = MPL-2.0
 	makedepends = dotnet-sdk-7.0
 	makedepends = patch
