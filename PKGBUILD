@@ -4,11 +4,11 @@
 
 pkgbase=linux-fsync-nobara-bin
 pkgname=${pkgbase}
-pkgver=6.11.9
+pkgver=6.12.8
 pkgrel=1
-build_id=8274422
-fedora=40
-extras=200.fsync.fc${fedora}
+build_id=8471040
+fedora=41
+extras=201.fsync.fc${fedora}
 printf -v l_build_id %08d%s ${build_id}
 pkgdesc='The Linux kernel and modules of Nobara Project - Prebuilt version'
 url="https://nobaraproject.org"
@@ -22,24 +22,24 @@ provides=(VIRTUALBOX-GUEST-MODULES
           WIREGUARD-MODULE
           KSMBD-MODULE
           NTFS3-MODULE)
-source=("https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-40/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-core-${pkgver}-${extras}.x86_64.rpm"
-        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-40/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-${pkgver}-${extras}.x86_64.rpm"
-        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-40/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-core-${pkgver}-${extras}.x86_64.rpm"
-        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-40/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-extra-${pkgver}-${extras}.x86_64.rpm"
-        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-40/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-internal-${pkgver}-${extras}.x86_64.rpm"
-        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-40/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-devel-${pkgver}-${extras}.x86_64.rpm")
-#        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-40/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-uki-virt-${pkgver}-${extras}.x86_64.rpm")
+source=("https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-41/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-core-${pkgver}-${extras}.x86_64.rpm"
+        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-41/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-${pkgver}-${extras}.x86_64.rpm"
+        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-41/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-core-${pkgver}-${extras}.x86_64.rpm"
+        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-41/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-extra-${pkgver}-${extras}.x86_64.rpm"
+        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-41/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-internal-${pkgver}-${extras}.x86_64.rpm"
+        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-41/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-devel-${pkgver}-${extras}.x86_64.rpm")
+#        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-41/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-uki-virt-${pkgver}-${extras}.x86_64.rpm")
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
-sha256sums=('82c4e2d9607adc482d01def4b33c2b39fbe84f68bee08e4fbc2794df42634705'
-            'eaaafc17dbf2e2423bbebcd9fc150ea08a7a655bdd7498e61fb7f8c906c45881'
-            'c152374dbdef6bdcb3da3eda4db2ec706576ee43b29bb0e9a2d541728f5e21ac'
-            'd11956b63d23470cb38e31afa5ff51e98b4367ccd4572947936a87562bf6ce28'
-            '6e2f3a14f85934e70de18c6d46964a264183993f77d90aa92b9894a5c4212a5c'
-            'd3451bf88d0a7bd28ccc3112e56ae57d82774a9bba3505223661f2d4a7552e56')
+sha256sums=('6f647b92a5bf34fee3f8a94b9e26544740897f5a8644efcd6d04860debdccf91'
+            '13d24b190ec5c0dae2288d1856b74ea858a6f3d1dcdd1b2eac2232e6ddd36cb8'
+            '65f8485251d2c7d4766e2a3614af2f7c9dcfb6b7e2cf9261f003576ecdd27c84'
+            '47857e23521614722e1ffce2cad3090869577a1a79a7ef505c4efbc2b2bc6904'
+            'e0eb41ba286d504c9f3ff27b1ab221f1a0ffce8e0969fcb9ab0ceefe5ab651ed'
+            'a3e449a160a07c82471900d58fdc9d77a1d4bda2c6a9ff4395e03f5d7382bdf1')
 
 package() {
 
