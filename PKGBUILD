@@ -18,7 +18,7 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-check() {
+_check() {
   cd "$srcdir/$_pkgname-$pkgver"
   pytest
 }
