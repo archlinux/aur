@@ -1,20 +1,32 @@
 # Maintainer: Harish Rajagopal <harish dot rajagopals at gmail dot com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
-_pkgname=regreet
-pkgname="greetd-$_pkgname-git"
-pkgver=0.1.1.r0.0fb4245
+_pkgname=ReGreet
+pkgname=greetd-${_pkgname,,}-git
+pkgver=0.1.3.r10.9118383
 pkgrel=1
-pkgdesc="Clean and customizable greeter for greetd"
-arch=('x86_64')
-url="https://github.com/rharish101/ReGreet"
-license=(GPL3)
-install="$pkgname.install"
-source=("$_pkgname::git+$url.git")
-sha256sums=('SKIP')
-makedepends=(cargo git)
-depends=(cairo gcc-libs gdk-pixbuf2 glib2 glibc greetd gtk4 pango wayland-compositor)
+pkgdesc='Clean and customizable greeter for greetd'
+url="https://github.com/rharish101/$_pkgname"
+license=(GPL-3.0-or-later)
+arch=(x86_64)
+depends=(wayland-compositor
+         greetd
+         cairo
+         gcc-libs
+         gdk-pixbuf2
+         glib2
+         glibc
+         gtk4
+         pango)
 provides=(greetd-greeter)
-conflicts=("greetd-$_pkgname")
+backup=("etc/greetd/${_pkgname,,}.toml")
+makedepends=(cargo git)
+install=$pkgname.install
+source=("$_pkgname::git+$url.git"
+        "${_pkgname,,}.toml")
+sha256sums=('SKIP'
+            'b80b3eb31f8cc463d512c9db0eef899bdbe232d977429a8a12e95a3b6df2e387')
+conflicts=("greetd-${_pkgname,,}")
 replaces=(regreet-git)
 
 pkgver() {
@@ -29,18 +41,18 @@ prepare() {
 
 build() {
     cd "$_pkgname"
+    cargo build --frozen --release --all-features
+}
 
-    export RUSTUP_TOOLCHAIN=stable
-    export GREETD_CONFIG_DIR="/etc/greetd"
-    export CACHE_DIR="/var/cache/${_pkgname}"
-    export LOG_DIR="/var/log/${_pkgname}"
-    export SESSION_DIRS="/usr/share/xsessions:/usr/share/wayland-sessions"
-    cargo build --frozen --release --all-features --target-dir=target
+check() {
+    cd "$_pkgname"
+    cargo test --frozen --all-features
 }
 
 package() {
     cd "$_pkgname"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
-    install -Dm0644 -t "$pkgdir/usr/share/doc/$_pkgname/" "$_pkgname.sample.toml"
-    install -Dm0644 "systemd-tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${_pkgname,,}"
+    install -Dm0644 -t "$pkgdir/etc/greetd/" ../"${_pkgname,,}.toml"
+    install -Dm0644 -t "$pkgdir/usr/share/doc/greetd-${_pkgname,,}/" "${_pkgname,,}.sample.toml"
+    install -Dm0644 systemd-tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/${_pkgname,,}.conf"
 }
