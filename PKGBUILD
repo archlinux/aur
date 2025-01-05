@@ -1,25 +1,29 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
-_name=azure-monitor-ingestion
-pkgname=python-$_name
-pkgver=1.0.3
-pkgrel=1
-pkgdesc="Microsoft Azure Monitor Ingestion Client Library for Python"
-arch=(any)
-url="https://pypi.org/project/azure-monitor-ingestion/"
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
+_projectname='azure-monitor-ingestion'
+pkgname="python-$_projectname"
+pkgver='1.0.4'
+pkgrel='1'
+pkgdesc='Microsoft Azure Monitor Ingestion Client Library for Python'
+arch=('any')
+url='https://github.com/Azure/azure-sdk-for-python'
 license=('MIT')
-depends=('python-azure-core'
-         'python-isodate'
-         'python-typing-extensions')
+depends=('python>=3.8.0' 'python-azure-core>=1.28.0' 'python-isodate>=0.6.0' 'python-typing_extensions>=4.0.1')
 makedepends=('python-setuptools')
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-$pkgver.tar.gz")
-md5sums=('d87b3bc8c7b947f4d7294bd72d04f0da')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/${_projectname}_$pkgver.tar.gz")
+b2sums=('85513b1f2620321b3fce8d38c92065f4de155599592faf589d958e81be549c68b5e4714ce0a1a5b33740c6322d76d6ebc8972b6810727e42b310bccb56f3fd57')
+
+_sourcedirectory="azure-sdk-for-python-${_projectname}_$pkgver/sdk/monitor/$_projectname"
 
 build() {
-  cd "$srcdir/${_name}-${pkgver}"
-  python setup.py build
+	cd "$srcdir/$_sourcedirectory/"
+	python setup.py build
 }
 
+# Tests ignored, as the devtools_testutils package is not supposed to be released/published (see https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=261305)
+
 package() {
-  cd "$srcdir/${_name}-${pkgver}"
-  python setup.py install --root="$pkgdir" --optimize=1
+	cd "$srcdir/$_sourcedirectory/"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
