@@ -1,21 +1,30 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Gerard Ribugent <ribugent <at> gmail <dot> com>
-pkgname='python-azure-core'
-_name='azure-core'
-pkgver='1.30.1'
-pkgrel=1
-pkgdesc="Microsoft Azure Core Library for Python"
-url="https://pypi.org/project/azure-core/"
-depends=('python-requests' 'python-six' 'python-typing_extensions')
-makedepends=('python-setuptools')
-optdepends=('python-aiohttp')
-license=('MIT')
+_projectname='azure-core'
+pkgname="python-$_projectname"
+pkgver='1.32.0'
+pkgrel='1'
+pkgdesc='Microsoft Azure Core Shared Client Library for Python'
 arch=('any')
-source=("https://pypi.io/packages/source/a/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('26273a254131f84269e8ea4464f3560c731f29c0c1f69ac99010845f239c1a8f')
+url='https://github.com/Azure/azure-sdk-for-python'
+license=('MIT')
+depends=('python>=3.8.0' 'python-aiohttp>=3.0.0' 'python-requests>=2.21.0' 'python-six>=1.11.0' 'python-typing_extensions>=4.6.0')
+makedepends=('python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/${_projectname}_$pkgver.tar.gz")
+b2sums=('b8405451072bc578e0861640eb5a3c07ccebaa8d583cf2b11d1c688e4e1f81d5c032ef288ded9deb297c4a0838cd75d9d7cf8f15750796116db4b3e17e6064d3')
+
+_sourcedirectory="azure-sdk-for-python-${_projectname}_$pkgver/sdk/core/$_projectname"
+
+build() {
+	cd "$srcdir/$_sourcedirectory/"
+	python setup.py build
+}
+
+# Tests ignored, as the devtools_testutils package is not supposed to be released/published (see https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=261305)
 
 package() {
-  cd "$srcdir/${_name}-${pkgver}/"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$srcdir/$_sourcedirectory/"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
