@@ -1,32 +1,37 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Dario Pellegrini <pellegrini.dario at gmail dd0f5c4e.diffot com>
-
-pkgname=python-imapclient
-_pkgname=IMAPClient
-_pkg="${pkgname#python-}"
-pkgver=3.0.1
-_commit=9a6a0df2d8d44c1f3d57c222d234740f8d381395
-_com="${_commit::7}"
-pkgrel=1
-pkgdesc="Easy-to-use, Pythonic and complete IMAP client library"
+_projectname='imapclient'
+pkgname="python-$_projectname"
+pkgver='3.0.1'
+pkgrel='2'
+pkgdesc='Easy-to-use, Pythonic and complete IMAP client library'
 arch=('any')
-url="https://github.com/mjs/imapclient"
-license=('BSD')
-depends=('python')
+url="https://github.com/mjs/$_projectname"
+license=('BSD-3-Clause')
+depends=('python>=3.7.0')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$_com.tar.gz")
-sha256sums=('ef38b9fe03c1a1099b132e11da04868e217dde343686dfa5af5f6ccb7b85db3d')
+checkdepends=('python-pytest')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('aff08b392cb15d00d66833c7fba1147202ef37ff5f0ad9fb2c6e79daf67126cea00caaacfa6945b53f2e31b7d1525f4043aaacc94b34e695e26cf35b90f25259')
+
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-	cd "$_pkg-$_commit"
+	cd "$srcdir/$_sourcedirectory/"
 	python -m build --wheel --no-isolation
 }
 
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+	pytest
+}
+
 package() {
-	cd "$_pkg-$_commit"
-	python -m installer --destdir "$pkgdir" dist/*.whl
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -sv "$_site/$_pkgname-$pkgver.dist-info/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$srcdir/$_sourcedirectory/"
+	python -m installer --destdir="$pkgdir" 'dist/'*'.whl'
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 'COPYING' "$pkgdir/usr/share/licenses/$pkgname/BSD-3-Clause"
 }
