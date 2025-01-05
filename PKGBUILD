@@ -4,8 +4,8 @@ pkgname=openlinkhub-git
 _upstreamname=OpenLinkHub
 _binlocation=/usr/bin/"${pkgname%-*}"
 _applocation=/opt/"${pkgname%-*}"
-pkgver=0.4.2.r4.g8e48677
-pkgrel=3
+pkgver=0.4.5.r2.g4937d66
+pkgrel=1
 pkgdesc="Open source Linux interface for iCUE LINK Hub and other Corsair AIOs, Hubs. [Latest Commit - source]"
 arch=('x86_64')
 url="https://github.com/jurkovic-nikola/OpenLinkHub"
@@ -16,7 +16,9 @@ makedepends=('go' 'git' 'base-devel' 'systemd')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 replaces=()
-backup=()
+backup=(
+	"etc/udev/rules.d/99-openlinkhub.rules"
+	)
 options=()
 install="${pkgname%-*}".install
 source=(
@@ -36,20 +38,6 @@ pkgver() {
 	printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
 }	
 
-prepare() {
-	cd "${pkgname%-*}"
-
-	## Look for CORSAIR Controller Device and create UDEV rule file
-
-	lsusb -d 1b1c: | while read -r line; do
-		ids=$(echo "$line" | awk '{print $6}')
-		vendor_id=$(echo "$ids" | cut -d':' -f1)
-		device_id=$(echo "$ids" | cut -d':' -f2)
-		cat > "${pkgname%-*}.rules" <<- EOM
-		KERNEL=="hidraw*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="$vendor_id", ATTRS{idProduct}=="$device_id", MODE="0666"
-		EOM
-	done
-}
 
 build() {
 	cd "${pkgname%-*}"
@@ -67,7 +55,7 @@ package() {
 	install -Dm 644 "${pkgname%-*}.service" "$pkgdir/usr/lib/systemd/system/${pkgname%-*}.service"
 
 	## Install udev rules
-	install -Dm 644 "${pkgname%-*}/${pkgname%-*}.rules" "$pkgdir/etc/udev/rules.d/${pkgname%-*}.rules"
+	install -bDm 644 "${pkgname%-*}/99-${pkgname%-*}.rules" "$pkgdir/etc/udev/rules.d/99-${pkgname%-*}.rules"
 
 	## Install package executable
 	install -Dm 755 "${pkgname%-*}/$_upstreamname" "$pkgdir$_binlocation"
