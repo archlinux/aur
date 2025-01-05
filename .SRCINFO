@@ -1,6 +1,6 @@
 pkgbase = davinci-resolve
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design
-	pkgver = 19.0.3
+	pkgver = 19.1.2
 	pkgrel = 1
 	url = https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
 	install = davinci-resolve.install
@@ -34,7 +34,7 @@ pkgbase = davinci-resolve
 	conflicts = davinci-resolve-beta
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = DaVinci_Resolve_19.0.3_Linux.zip::https://swr.cloud.blackmagicdesign.com/DaVinciResolve/v19.0.3/DaVinci_Resolve_19.0.3_Linux.zip?verify=1729629412-z8UGB09IqirpDiouBz01aSWDAxn1eMJNkVeOPiUBwfY%3D
-	sha256sums = ebfd232ba56bf8ef484dcab612a8ff53880aae8c6994f73c28bafeba65c2b125
+	source = DaVinci_Resolve_19.1.2_Linux.zip::https://swr.cloud.blackmagicdesign.com/DaVinciResolve/v19.1.2/DaVinci_Resolve_19.1.2_Linux.zip?verify=1736100691-%2BM5biZ%2BaQ6pIFc5mXhPqCudwisFeP%2FAasX2Ij%2BZKUiM%3D
+	sha256sums = 74c1fbab2eebdd5458ab7147e74527346504a7b208912a6c74cc5ec489378ce0
 
 pkgname = davinci-resolve
