@@ -6,7 +6,6 @@ pkgbase = stardust-xr-armillary
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = rust-musl
 	makedepends = cargo
 	makedepends = git
 	source = git+https://github.com/StardustXR/armillary.git
