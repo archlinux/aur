@@ -1,41 +1,24 @@
-# Maintainer: Jaco Malan <jacom@codelog.co.za>
+# Maintainer: Kainoa Kanter <kainoa@t1c.dev>
+
 pkgname=unstoppableswap-gui-bin
-pkgver=0.6.3
+_pkgver=1.0.0-rc.11
+pkgver=${_pkgver/-/.}
 pkgrel=1
 epoch=
 pkgdesc="Graphical User Interface for trustless cross-chain XMR<>BTC Atomic Swaps."
 arch=('x86_64')
 url="https://unstoppableswap.net/"
-license=('MIT')
+license=('GPL-3.0')
 groups=()
-depends=('gtk3' 'nss' 'at-spi2-core' 'pango' 'glibc' 'expat' 'libxfixes' 'libxkbcommon' 'glib2' 'bash' 'cairo' 'libxext' 
-  'dbus' 'python' 'alsa-lib' 'libxrandr' 'lib32-glibc' 'java-runtime' 'lib32-openssl-1.1' 'gcc-libs' 'nspr' 'make' 
-  'gdk-pixbuf2' 'libxcomposite' 'libcups' 'hicolor-icon-theme' 'lib32-gcc-libs' 'libxdamage' 'libx11' 'libxcb' 'libdrm' 
-  'mesa' 'lib32-zlib')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
+depends=(glib2 hicolor-icon-theme gtk3 webkit2gtk)
+provides=(unstoppableswap-gui)
+conflicts=(unstoppableswap-gui)
 backup=()
 options=()
-install=
-changelog=
-source=("https://github.com/UnstoppableSwap/unstoppableswap-gui/releases/download/v${pkgver}/unstoppableswap-gui_${pkgver}_amd64.deb")
-noextract=("unstoppableswap-gui_${pkgver}_amd64.deb")
-sha256sums=('90ee89be416b758afc5a2802368cdc06d58d56891b095431d6c5abab0058f6c0')
+source=("https://github.com/UnstoppableSwap/core/releases/download/${_pkgver}/UnstoppableSwap_${_pkgver}_amd64.deb")
+sha256sums=('d104ee8f3dbf15a6fe9aac69b338c04e27813a5e768feb52d8b470912075774c')
 validpgpkeys=()
 
-prepare() {
-  cd "$srcdir"
-  ar p unstoppableswap-gui_${pkgver}_amd64.deb data.tar.xz | tar Jx
-}
-
 package() {
-  cp -r "$srcdir/opt" "$pkgdir"
-  cp -r "$srcdir/usr" "$pkgdir"
-  mkdir -p "$pkgdir/usr/bin"
-  ln -sf "/opt/UnstoppableSwap/unstoppableswap-gui" "$pkgdir/usr/bin/unstoppableswap-gui"
-  chmod 4755 "$pkgdir/opt/UnstoppableSwap/chrome-sandbox"
+  bsdtar -xf data.tar.gz -C "$pkgdir/"
 }
