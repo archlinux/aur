@@ -2,8 +2,8 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.8.5
+pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=(x86_64)
 url=https://xemu.app/
@@ -51,23 +51,20 @@ source=(
 	'genconfig::git+https://github.com/mborgerson/genconfig.git'
 	'implot::git+https://github.com/epezent/implot.git'
 	'keycodemapdb::git+https://gitlab.com/qemu-project/keycodemapdb.git'
-	'nv2a_vsh_cpu::git+https://github.com/abaire/nv2a_vsh_cpu.git'
 	'use-system-libs.patch'
 )
-b2sums=('f3823e7c43f94845d1bfb8927448919d8ea33dbdd0bae5c35f2e50ce34c39000aa8967ff99064b19ed0adba4227f02c4f3308d88a9ec5f4dfd40f156b32553a4'
+b2sums=('969c15ce4a1cfbc32aa55e4126c5a29d0b187cf27ad220625f82c4167ba150c80a91e9f84f3c16c5e0d56b0ff4b4f67bb19ad9026105b7a636e7c7c264a556a3'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'SKIP'
-        '1f902d49be48381ba41c033d1e0dfea9783056da8f365c5101729f699ed7921fb2f09d413c00ae417bf1ed97a6722e179ab139b5e5f8b560dc461dba67ceb6cb')
+        'edb812cf4c5162d71fa4d53828c12667bb12526b5b23cf97e244a5f107599a797fdcb8e53e27b10b95caf101ad324bb4679d7f309c9437fe0c227c2602fc3b56')
 
 prepare() {
 	cd $pkgname
 	git config submodule.genconfig.url ../genconfig
-	git config submodule.hw/xbox/nv2a/pgraph/thirdparty/nv2a_vsh_cpu.url ../nv2a_vsh_cpu
 	git config submodule.tests/fp/berkeley-softfloat-3.url ../berkeley-softfloat-3
 	git config submodule.tests/fp/berkeley-testfloat-3.url ../berkeley-testfloat-3
 	git config submodule.ui/keycodemapdb.url ../keycodemapdb
@@ -105,6 +102,7 @@ package() {
 		'libsamplerate.so'
 		'libslirp.so'
 		'libtomlplusplus.so'
+		'libxxhash.so'
 	)
 	cd $pkgname
 	# shellcheck disable=SC2154
