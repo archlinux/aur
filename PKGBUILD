@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=clang17-bin
 pkgver=17.0.6.20
-pkgrel=1
+pkgrel=2
 pkgdesc="C, C++ and Objective-C compiler - sourced from Debian sid"
 arch=(x86_64)
 options=(!strip)
@@ -21,9 +21,9 @@ _packages=(
 )
 
 _debver="${pkgver%.*}-${pkgver##*.}"
+
 source=()
 noextract=()
-
 for _package in "${_packages[@]}"; do
   source+=("${_package}-${_debver}.deb::http://deb.debian.org/debian/pool/main/l/llvm-toolchain-17/${_package}_${_debver}_amd64.deb")
   noextract+=("${_package}-${_debver}.deb")
@@ -42,9 +42,8 @@ package() {
   done
   mv "${pkgdir}"/usr/lib/x86_64-linux-gnu/* "${pkgdir}"/usr/lib/
   rmdir "${pkgdir}"/usr/lib/x86_64-linux-gnu
-  patchelf --add-rpath /usr/lib/llvm-17/lib "${pkgdir}/usr/bin/clang"*
-  ln -s /usr/lib/libz3.so "${pkgdir}"/usr/lib/llvm-17/lib/libz3.so.4
-  ln -s /usr/lib/libedit.so "${pkgdir}"/usr/lib/llvm-17/lib/libedit.so.2
+  find ${pkgdir} -type f \( -name "*.so" -o -name "*.so.*" \) -exec chmod 0755 {} \;
+  patchelf --replace-needed libedit.so.2 libedit.so.0 "${pkgdir}"/usr/lib/libLLVM-17.so.1
   install -Dm644 ${pkgdir}/usr/share/doc/${_packages[0]}/copyright "${pkgdir}"/usr/share/licenses/${_packages[0]}/LICENSE
 }
 # vim:set ts=2 sw=2 et:
