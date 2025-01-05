@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your@email.com>
+# Maintainer: Voislav Vasiljevski <voyo@thelazysre.com>
 pkgname=observer
 pkgver=0.1.0
 pkgrel=1
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 backup=('etc/observer/config.toml')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-linux-amd64.tar.gz")
-sha256sums=('SKIP')  # Will be updated by the workflow
+sha256sums=('88a7d6d675dd36ce21b2704979bafb9a7e9d319a373df0cab9eff6e82310d6d1')  # Will be updated by the workflow
 
 package() {
     cd "$srcdir"

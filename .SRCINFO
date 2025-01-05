@@ -10,6 +10,6 @@ pkgbase = observer
 	depends = gcc-libs
 	backup = etc/observer/config.toml
 	source = observer-0.1.0.tar.gz::https://github.com/voioo/observer/releases/download/v0.1.0/observer-linux-amd64.tar.gz
-	sha256sums = SKIP
+	sha256sums = 88a7d6d675dd36ce21b2704979bafb9a7e9d319a373df0cab9eff6e82310d6d1
 
 pkgname = observer
