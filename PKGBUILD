@@ -1,7 +1,7 @@
 # Maintainer: tyrolyean <tyrolyean@tyrolyean.net>
 
 _pkgname="MagiTerm"
-pkgname=${_pkgname}-git
+pkgname=$(echo ${_pkgname} | tr '[:upper:]' '[:lower:]')-git
 pkgver=0
 pkgrel=0
 pkgdesc="MagiTerm is a simple SSH & telnet terminal for accessing bulletin board systems. It is built on libssh and SDL2."
