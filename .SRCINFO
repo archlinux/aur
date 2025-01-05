@@ -10,6 +10,6 @@ pkgbase = objdiff
 	depends = freetype2
 	conflicts = objdiff
 	source = objdiff-2.6.0.tar.gz::https://github.com/encounter/objdiff/archive/refs/tags/v2.6.0.tar.gz
-	b2sums = 53bbd8749ccca642f02c725c1c19fbe5c22a869202b064e4bdcb9be8ed98bc52d9c188800472639ff0aabc8875e8d3a4f8e2b9aaf5bff687a31eaf5b86d278f5
+	b2sums = 6af361231bc2760a94c31f58d7e102d4276d77fde6f4fdf687c53ee7335e2b7ee54af1be6d92c37767cc602d85c4f795bb51a30acbcec7959674e533e045ea09
 
 pkgname = objdiff
