@@ -1,0 +1,4 @@
+[lib32-leptonica]
+source = "github"
+github = "DanBloomberg/leptonica"
+use_max_tag = true

@@ -1,15 +1,21 @@
 pkgbase = lib32-leptonica
 	pkgdesc = Software that is broadly useful for image processing and image analysis applications (32 bit)
-	pkgver = 1.83.1
+	pkgver = 1.85.0
 	pkgrel = 1
-	url = http://www.leptonica.com/
+	url = https://www.leptonica.com
 	arch = x86_64
-	license = custom
-	depends = lib32-giflib
-	depends = lib32-libwebp
-	depends = lib32-openjpeg2
+	license = custom:BSD-2-Clause-like
 	depends = leptonica
-	source = https://github.com/DanBloomberg/leptonica/archive/1.83.1/leptonica-1.83.1.tar.gz
-	sha256sums = 4289d0a4224b614010072253531c0455a33a4d7c7a0017fe7825ed382290c0da
+	depends = lib32-giflib>=5.1
+	depends = lib32-glibc
+	depends = lib32-libjpeg-turbo
+	depends = lib32-libpng
+	depends = lib32-libtiff
+	depends = lib32-libwebp>=0.5
+	depends = lib32-openjpeg2
+	depends = lib32-zlib
+	provides = libleptonica.so
+	source = leptonica-1.85.0.tar.gz::https://github.com/DanBloomberg/leptonica/archive/refs/tags/1.85.0/leptonica-1.85.0.tar.gz
+	sha256sums = c01376bce0379d4ea4bc2ec5d5cbddaa49e2f06f88242619ab8c059e21adf233
 
 pkgname = lib32-leptonica
