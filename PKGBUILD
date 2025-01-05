@@ -27,6 +27,6 @@ package() {
 	cd "$srcdir/$_sourcedirectory/"
 	python -m installer --destdir="$pkgdir" 'dist/'*'.whl'
 
-	install -dm755 "$pkgdir/usr/share/doc/"
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname/"
 	install -Dm644 'README.md' "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
