@@ -1,7 +1,7 @@
 pkgbase = luckey-games-meta
 	pkgdesc = Meta package for LucKey games
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://luckey.games/
 	arch = any
 	license = None
@@ -11,5 +11,6 @@ pkgbase = luckey-games-meta
 	depends = tux
 	depends = quatter
 	depends = luckeypark
+	depends = blipnblup
 
 pkgname = luckey-games-meta
