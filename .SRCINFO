@@ -1,7 +1,7 @@
 pkgbase = katawa-shoujo-reengineered-bin
 	pkgdesc = A fan-made modernization of the classic visual novel (uses bundled Ren'Py)
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.fhs.sh/projects
 	arch = x86_64
 	license = MPL-2.0
@@ -12,7 +12,7 @@ pkgbase = katawa-shoujo-reengineered-bin
 	source = katawa-shoujo-reengineered
 	source = katawa-shoujo-reengineered.png
 	source = katawa-shoujo-reengineered.desktop
-	sha512sums = 29365ee177e31c7dd1779f63474ccc0dc0a9a97a90e88ec924401b5d7ff0dc903c3afc718088abf0ce88944e050dccacc3c4eb0dae57dda81b21e9edd489a369
+	sha512sums = cb9f857d71c099e042768c863b57fc8e76fc0c531b6cbda0cdc0588482a60d5c196f7b301a21c234e71bd8dfe5cbe841de64c9aa35870c35ecf4c9e39a844612
 	sha512sums = cef74391b6691e8f480fe4527265af96cba5c4b9c87418fe2665bc5e5965e26f225545704b4aba85ddff1609ba96a1f43314dd713abfda8d4fca449993811725
 	sha512sums = a1e5d6f0662955fe5abd48b5d0e3f3d82faa3c6f6f845fefe5facad93a7ba42f2b682dd52845189432f4328ccef437d786ed942aaaee44d97df86acd47a9bc03
 	sha512sums = e4c4413fd9418adf91b97b5d23f3f30008fff909a7b0e3190be5d56b2b163d81cfefe78981dbad42562b749de0f5666596b582a0476c649d138f512068e1bbe6
