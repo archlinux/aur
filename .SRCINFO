@@ -1,6 +1,6 @@
 pkgbase = xclock-git
         pkgdesc = simple tui clock
-        pkgver = r4.6513f4e
+        pkgver = 0.4
         pkgrel = 1
         url = https://github.com/devHeadset/xClock
         arch = any
