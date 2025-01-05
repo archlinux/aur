@@ -1,0 +1,13 @@
+pkgbase = server-mono
+	pkgdesc = typeface inspired by typewriters, ASCII art, and CLI/programming tools
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://servermono.com
+	arch = any
+	license = OFL-1.1
+	source = server-mono-0.0.6.tar.gz::https://github.com/internet-development/www-server-mono/archive/refs/tags/0.0.6.tar.gz
+	sha256sums = 07d2eff6a11b9939b0d397198bec9258da6b43660d6f0fa8814e543f617d2b82
+
+pkgname = otf-server-mono
+
+pkgname = woff2-server-mono
