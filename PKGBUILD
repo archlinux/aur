@@ -2,7 +2,7 @@
 
 pkgname=imibrowser
 pkgver=15.0.5012
-pkgrel=2
+pkgrel=3
 pkgdesc="Freeware MIB browser tool for SNMP API (requires SLA acceptance)"
 
 url="https://www.ireasoning.com/mibbrowser.shtml"
@@ -13,7 +13,7 @@ makedepends=('imagemagick')
 source=("${pkgname}-${pkgver}.zip::https://www.ireasoning.com/download/mibfree/mibbrowser.zip"
         "iMIBrowser.desktop"
         "SLA")
-sha256sums=('84cf060bd970c9859653a30c9947696d9820af052e62ba3cae71cb7a2e7578f0'
+sha256sums=('87d328c2fcf81e19a41ed9bd4545f4b087de7ee992f0fc73e9a1bbe14610c32b'
             'ecfc557a66cb3e11f50c0034019fff55960d4b9551ba0639754ed14647cb6446'
             'f15a61ab9c02cdab41460763608bfd5b5f0624826724e0f80120ecef3285acfa')
 
