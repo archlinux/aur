@@ -13,7 +13,7 @@ pkgname=aseprite
 pkgver=1.3.10.1
 _skiaver=m102
 _skiahash=861e4743af
-pkgrel=6
+pkgrel=7
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -186,7 +186,7 @@ package() {
 	install -vm 644 aseprite/data/fonts/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/font.txt"
 	# Copy translations
 	mkdir -p "$pkgdir/usr/share/$pkgname/data/strings/"
-	cp -vt aseprite-strings/*.ini "$pkgdir/usr/share/$pkgname/data/strings/"
+	cp -vt "$pkgdir/usr/share/$pkgname/data/strings/" aseprite-strings/*.ini
 	# Copy translations' license
 	install -vm 644 aseprite-strings/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/translations.txt"
 }
