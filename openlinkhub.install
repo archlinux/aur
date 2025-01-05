@@ -1,3 +1,4 @@
+
 post_install() {
 	echo -e "\e[1;7m[OpenLinkHub]\e[0m: \e[92mInstall Complete\e[0m -- Enable and start the openlinkhub service:"
 	echo -e "\e[1;7m[OpenLinkHub]\e[0m: \e[3msudo systemctl enable --now openlinkhub\e[0m"

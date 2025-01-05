@@ -4,9 +4,9 @@ pkgname=openlinkhub
 _upstreamname=OpenLinkHub
 _binlocation=/usr/bin/"${pkgname%-*}"
 _applocation=/opt/"${pkgname%-*}"
-_tag=0.4.2
-pkgver=0.4.2
-pkgrel=4
+_tag=0.4.5
+pkgver=0.4.5
+pkgrel=5
 pkgdesc="Open source Linux interface for iCUE LINK Hub and other Corsair AIOs, Hubs. [Latest Release - source]"
 arch=('x86_64')
 url="https://github.com/jurkovic-nikola/OpenLinkHub"
@@ -17,7 +17,9 @@ makedepends=('go' 'git' 'base-devel' 'systemd')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 replaces=()
-backup=()
+backup=(
+	"etc/udev/rules.d/99-openlinkhub.rules"
+	)
 options=()
 install="${pkgname%-*}".install
 source=(
@@ -26,31 +28,16 @@ source=(
 	"${pkgname%-*}".sysusers
 	"${pkgname%-*}".service
 )
-noextract=()
-sha256sums=('c8258f6c46814ef6937772e9c534dcd525c8ff1aba9a7b5aad30add4df51cecf'
-            'eb4d6d32e69feeb6892ea2f5c0beb12a5abec06383d79fbe308c19c7c9287c85'
+noextract=()			
+sha256sums=('74e1f297542c7dbd224f71ae94651e40420fb4ce4a037cda888ec2441ed8599a'
+            '1a023584de46d7c8c7bb353ceec762f837ae96fe7c41fac4e49f7da86e1e1d1c'
             '5aab700df0d7791722c2723ece369df916e07184407e4778d25a2dd934f12681'
             '430d8196074127257b6b823d7ae72eaa9fedf90f55c70bc121a9467e7648dcc5')
-			
+
 pkgver() {
 	cd "${pkgname%-*}"
 	printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/[-].*$//g')"
 }	
-
-prepare() {
-	cd "${pkgname%-*}"
-
-	## Look for CORSAIR Controller Device and create UDEV rule file
-
-	lsusb -d 1b1c: | while read -r line; do
-		ids=$(echo "$line" | awk '{print $6}')
-		vendor_id=$(echo "$ids" | cut -d':' -f1)
-		device_id=$(echo "$ids" | cut -d':' -f2)
-		cat > "${pkgname%-*}.rules" <<- EOM
-		KERNEL=="hidraw*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="$vendor_id", ATTRS{idProduct}=="$device_id", MODE="0666"
-		EOM
-	done
-}
 
 build() {
 	cd "${pkgname%-*}"
@@ -59,19 +46,19 @@ build() {
 
 package() {
 	## Install users
-	install -Dm 644 "${pkgname%-*}.sysusers" "$pkgdir/usr/lib/sysusers.d/${pkgname%-*}.conf"
+	install -bDm 644 "${pkgname%-*}.sysusers" "$pkgdir/usr/lib/sysusers.d/${pkgname%-*}.conf"
 
 	## Install folders
 	install -d -m 755 "${pkgdir}$_applocation/"{database,static,web}
 
 	## Install systemd service unit
-	install -Dm 644 "${pkgname%-*}.service" "$pkgdir/usr/lib/systemd/system/${pkgname%-*}.service"
+	install -bDm 644 "${pkgname%-*}.service" "$pkgdir/usr/lib/systemd/system/${pkgname%-*}.service"
 
 	## Install udev rules
-	install -Dm 644 "${pkgname%-*}/${pkgname%-*}.rules" "$pkgdir/etc/udev/rules.d/${pkgname%-*}.rules"
+	install -bDm 644 "${pkgname%-*}/99-${pkgname%-*}.rules" "$pkgdir/etc/udev/rules.d/99-${pkgname%-*}.rules"
 
 	## Install package executable
-	install -Dm 755 "${pkgname%-*}/$_upstreamname" "$pkgdir$_binlocation"
+	install -bDm 755 "${pkgname%-*}/$_upstreamname" "$pkgdir$_binlocation"
 
 	## Install package data
 	cp -r "${pkgname%-*}"/database/* "${pkgdir}"$_applocation/database/
