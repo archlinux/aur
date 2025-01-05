@@ -1,0 +1,25 @@
+pkgbase = benben
+	pkgdesc = Multi-format, fast and efficient command line audio player and audio converter
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://chiselapp.com/user/MistressRemilia/repository/benben
+	arch = x86_64
+	makedepends = ruby
+	makedepends = crystal
+	makedepends = fossil
+	makedepends = shards
+	makedepends = tcl
+	depends = libsidplayfp
+	depends = slang
+	depends = libxmp
+	depends = wavpack
+	depends = libvorbis
+	depends = opus
+	depends = mpg123
+	depends = libpulse
+	depends = libao
+	depends = portaudio
+	source = benben-0.6.1::fossil+https://chiselapp.com/user/MistressRemilia/repository/benben#tag=v0.6.1
+	b2sums = SKIP
+
+pkgname = benben
