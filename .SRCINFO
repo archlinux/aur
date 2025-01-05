@@ -1,0 +1,23 @@
+pkgbase = swaylock-clock
+	pkgdesc = Screen locker for Wayland, with extra clock functionality
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://git.sr.ht/~mvforell/swaylock
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = scdoc
+	makedepends = wayland-protocols
+	makedepends = git
+	depends = cairo
+	depends = libxkbcommon
+	depends = pam
+	depends = wayland
+	depends = gdk-pixbuf2
+	provides = swaylock
+	conflicts = swaylock
+	backup = etc/pam.d/swaylock
+	source = https://git.sr.ht/~mvforell/swaylock/archive/1.8.0.tar.gz
+	sha256sums = b7438de0859902f7a13bedd26dd8b7faf66960c80bf25af119ea3073db9b813f
+
+pkgname = swaylock-clock
