@@ -1,5 +1,5 @@
 pkgbase = lib32-leptonica
-	pkgdesc = Software that is broadly useful for image processing and image analysis applications (32 bit)
+	pkgdesc = Software that is broadly useful for image processing and image analysis applications (32-bit)
 	pkgver = 1.85.0
 	pkgrel = 1
 	url = https://www.leptonica.com
