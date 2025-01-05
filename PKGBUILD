@@ -5,7 +5,7 @@
 target_="mipsel-none-elf"
 
 pkgname=${target_}-gcc-git
-pkgver=15.r5740.066f309db6
+pkgver=15.r6562.f5351b38a8
 pkgrel=1
 pkgdesc="up-to-date GCC (C, C++) for baremetal MIPS"
 arch=('x86_64')
@@ -52,14 +52,16 @@ build() {
 	cd "$srcdir/${pkgname%-git}"
 	CFLAGS=${CFLAGS/-Werror=format-security/}
 	CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+	rm -rf gcc-build
 	mkdir -p gcc-build && cd gcc-build
 	../configure \
 		--prefix=/usr --libexecdir=/usr/lib \
 		--target="${target_}" \
 		--with-newlib \
 		--enable-fixed-point \
-		--with-gnu-as --with-gnu-ld \
+		--with-gnu-as --with-gnu-ld --with-as="/usr/bin/${target_}-as"\
 		--disable-nls \
+		--disable-gcov \
 		--disable-decimal-float \
 		--disable-threads \
 		--disable-libatomic \
@@ -67,7 +69,7 @@ build() {
 		--disable-libquadmath \
 		--disable-libssp \
 		--disable-libvtv \
-		--disable-libstdcxx \
+		--disable-hosted-libstdcxx \
 		--enable-languages=c,c++ \
 		--disable-multilib --disable-libgcj \
 		--enable-lto --disable-werror \
