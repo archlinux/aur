@@ -1,20 +1,25 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=avm
-pkgver=7.0.1
+pkgver=8.1.0
 pkgrel=1
 pkgdesc='AOM Video Model - the reference software for next codec from Alliance for Open Media'
 arch=('x86_64')
 url='https://gitlab.com/AOMediaCodec/avm/'
 license=('BSD-3-Clause')
 depends=('gcc-libs')
-makedepends=('git' 'cmake' 'yasm' 'perl')
+makedepends=(
+    'git'
+    'cmake'
+    'yasm'
+    'perl'
+    #'python' # for tests
+)
 provides=('libaom.so')
 conflicts=('aom')
-BUILDENV+=('!check')
 source=("git+https://gitlab.com/AOMediaCodec/avm.git#tag=research-v${pkgver}"
         'git+https://github.com/abseil/abseil-cpp.git')
-sha256sums=('59b2e7bb837bf159ad2734be530a1b075197871e10ddab4d3f2bfd23dcfd2350'
+sha256sums=('91727d5a2b82785448b1993e8eb231968109da562c2f087165bd815a16c10b41'
             'SKIP')
 
 prepare() {
@@ -24,12 +29,14 @@ prepare() {
 }
 
 build() {
+    # set ENABLE_TESTS to ON for tests
     cmake -B build -S avm \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DBUILD_SHARED_LIBS:BOOL='ON' \
         -DENABLE_DOCS:BOOL='OFF' \
+        -DENABLE_EXAMPLES:BOOL='OFF' \
         -DENABLE_TESTS:BOOL='OFF' \
         -DENABLE_AVX:BOOL='OFF' \
         -DENABLE_AVX2:BOOL='OFF' \
@@ -44,9 +51,11 @@ build() {
     cmake --build build
 }
 
-check() {
-    LIBAOM_TEST_DATA_PATH="$(pwd)/testdata" make -C build runtests
-}
+# uncomment for tests (takes an extraordinary long time to run)
+#check() {
+#    export LIBAOM_TEST_DATA_PATH="${srcdir}/testdata"
+#    cmake --build build --target testdata runtests
+#}
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
