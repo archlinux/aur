@@ -1,11 +1,9 @@
-#!/bin/bash
-
 # Maintainer: Paulo Fino <somepaulo@duck.com>
 # Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=morewaita-icon-theme-git
 _reponame=MoreWaita
-pkgver=47.2.r74.g91be034
+pkgver=47.2.r125.g5a901f9
 pkgrel=1
 pkgdesc="An expanded Adwaita-styled companion icon theme with extra icons for popular apps to complement Gnome Shell's original icons. AUR package maintained by upstream developer."
 arch=(any)
@@ -28,9 +26,9 @@ package() {
 	local themedir="$pkgdir/usr/share/icons/MoreWaita"
 	install -d "$themedir"
 
+	find "$_reponame" -name 'meson.build' -type f | xargs rm
 	cp -r "$_reponame/scalable" "$themedir/scalable"
 	cp -r "$_reponame/symbolic" "$themedir/symbolic"
-	find "$themedir" -name 'meson.build' -type f | xargs rm
 	cp "$_reponame/index.theme" "$themedir/index.theme"
 	cp "$_reponame/LICENSE" "$themedir/LICENSE"
 }
