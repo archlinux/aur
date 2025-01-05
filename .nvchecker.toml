@@ -1,4 +1,4 @@
 [opl-synth]
-source = "git"
-git = "https://github.com/reales/OPL.git"
-prefix = "v"
+source = "regex"
+url = "https://raw.githubusercontent.com/reales/OPL/refs/heads/master/OPL.jucer"
+regex = 'name="OPL" projectType="audioplug" version="(\d+\.\d+\.\d+)"'
