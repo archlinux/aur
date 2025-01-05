@@ -13,7 +13,7 @@ depends=(
     "libxrender" "libxi" "libx11" "libglvnd" "libxinerama" "zlib" "libxrandr"
     "libxext" "glibc" "libxcursor" "fontconfig" "gcc-libs"
 )
-makedepends=("git" "git-lfs" "dotnet-sdk-9.0" "cmake" "clang" "lld" "ninja" "jq")
+makedepends=("git" "git-lfs" "dotnet-sdk-9.0" "cmake" "clang" "lld" "ninja" "jq" "python")
 source=(
     "git+https://github.com/Revolutionary-Games/Thrive.git#tag=v$pkgver"
     "git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git"
