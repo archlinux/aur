@@ -1,20 +1,22 @@
 pkgbase = python-mailsuite
-	pkgdesc = Python package to make receiving, parsing, and sending email easier
-	pkgver = 1.9.15
-	pkgrel = 2
-	url = https://seanthegeek.github.io/mailsuite/
+	pkgdesc = A Python package to make receiving, parsing, and sending email easier
+	pkgver = 1.9.18
+	pkgrel = 1
+	url = https://github.com/seanthegeek/mailsuite
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-hatchling
 	makedepends = python-installer
-	depends = python-dnspython
-	depends = python-expiringdict
-	depends = python-html2text
-	depends = python-imapclient
-	depends = mailparser
-	depends = python-publicsuffix2
-	source = https://files.pythonhosted.org/packages/source/m/mailsuite/mailsuite-1.9.15.tar.gz
-	sha512sums = c495b13f444e3bbaddd4a2f48c6383ac4cef631cafaaf3f9c63d067d25df2af1ca9b60697dd6ed9a1a4fec8758d1b0c8cc83620c3f2617da2e7e4db9b8934da4
+	makedepends = python-wheel
+	depends = python>=3.7.0
+	depends = python-dnspython>=2.0.0
+	depends = python-expiringdict>=1.2.2
+	depends = python-html2text>=2020.1.16
+	depends = python-imapclient>=2.1.0
+	depends = mailparser>=4.1.0
+	depends = python-publicsuffix2>=2.20190812
+	source = python-mailsuite-1.9.18.tar.gz::https://github.com/seanthegeek/mailsuite/archive/7ace5e65c5524aee715c5deb50cd1e9dd92f8187.tar.gz
+	b2sums = 700b994beb57836d9dd3c05521e3d8ae906b8687dc244e0cec242233fbabcd9580c5c558f94c5d9bbb726a1d7523fc04e3e7ca72b7f13142131fa30fcf4a5ebc
 
 pkgname = python-mailsuite
