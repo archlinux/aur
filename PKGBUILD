@@ -14,14 +14,14 @@
 # PERFORMANCE OF THIS SOFTWARE.
 
 pkgname=networkmanager-defaults-privacy
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Privacy-oriented defaults for Network Manager"
 arch=('any')
 license=('0BSD')
 depends=('networkmanager')
 source=(50-networkmanager-defaults-privacy.conf)
-sha256sums=('c2245e1539c0152133b3d308bf45d91b8fcb6cd602ed7d8362ec447edec847f7')
+sha256sums=('af00bac1330e06d9b11ca1b2fcabb2bd23cf1d9fff4b57b3893e1ea65af42af7')
 
 package() {
     install -Dm0644 -t "${pkgdir}/usr/lib/NetworkManager/conf.d/" "50-${pkgname}.conf"
