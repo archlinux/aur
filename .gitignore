@@ -1,2 +1,3 @@
 .idea
 obs-studio-with-websockets-*tar*
+*.patch

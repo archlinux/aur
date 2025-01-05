@@ -5,7 +5,7 @@
 
 pkgname=obs-studio-with-websockets
 pkgver=31.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
 url="https://obsproject.com"
@@ -22,11 +22,14 @@ optdepends=('libfdk-aac: FDK AAC codec support'
             'sndio: Sndio input client'
             'v4l2loopback-dkms: virtual camera support')
 options=("!debug")
-source=($pkgname-$pkgver.tar.gz::https://github.com/tbocek/obs-source-all/releases/download/$pkgver/obs-studio-$pkgver.tar.gz)
-sha256sums=('b135a0e6dafab853ff3749d67003bd847316aec36646cbdb41218cbfab03c709')
+source=($pkgname-$pkgver.tar.gz::https://github.com/tbocek/obs-source-all/releases/download/$pkgver/obs-studio-$pkgver.tar.gz
+        obs-studio-11618.patch::https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/11618.patch)
+sha256sums=('b135a0e6dafab853ff3749d67003bd847316aec36646cbdb41218cbfab03c709'
+            '81680e20c3b517d051f738043079a58c8e8be516afaa7f4c5f9c5ec5f80bf026')
 
 prepare() {
   cd obs-studio-$pkgver
+  patch -Np1 -i "$srcdir"/obs-studio-11618.patch
 }
 
 build() {
