@@ -2,8 +2,8 @@
 # Contributor: Alexander Sulfrian <asulfrian at zedat dot fu-berlin dot de>
 
 pkgname=printer-driver-ptouch
-pkgver=1.7
-pkgrel=1
+pkgver=1.6
+pkgrel=3
 pkgdesc='P-Touch PT-series and QL-series printer driver for Linux (under CUPS)'
 arch=('i686' 'x86_64')
 url='https://github.com/philpem/printer-driver-ptouch'
@@ -13,7 +13,7 @@ depends=('ghostscript')
 makedepends=('autoconf' 'libcups' 'foomatic-db-engine')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/philpem/printer-driver-ptouch/archive/v$pkgver.tar.gz")
-sha256sums=('78835f354185421af3ba1fba3375cd475e54f10f10c44a5cccdc932ccbc5f75b')
+sha256sums=('ee1b53cf89b63a065683456a58ba20c28c5d4c966c4ff8e0883601dbf35caa82')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
