@@ -5,12 +5,13 @@
 
 : ${_pkgtype:=-tabopts}
 
-[[ "${_autoupdate::1}" == "t" ]] && : ${_pkgver:=$(LANG=C LC_ALL=C pacman -Si extra/dolphin | sed -nE 's@^Version\s+: (.*)-.*$@\1@p' | head -1)}
+: ${_commit:=0fe6544079a23769e8f19ee2f09b5c149f404d5a} # 24.12.0.1
+: ${_commit_patch:=7cce4b12e43b046104bbfc9a6da481e97f4f2f3c}
 
 # basic info
 _pkgname="dolphin"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=24.12.0
+pkgver=24.12.0.1
 pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
@@ -40,16 +41,21 @@ optdepends=(
   'purpose: share context menu'
 )
 
+if [[ "${_autoupdate::1}" == "t" ]]; then
+  : ${_pkgver:=$(LANG=C LC_ALL=C pacman -Si extra/dolphin | sed -nE 's@^Version\s+: (.*)-.*$@\1@p' | head -1)}
+  _dl_url="https://invent.kde.org/system/dolphin.git#tag=v$_pkgver"
+else
+  : ${_pkgver:=${pkgver%%.r*}}
+  _dl_url="https://invent.kde.org/system/dolphin.git#commit=$_commit"
+fi
+
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
-: ${_pkgver:=${pkgver%%.r*}}
-: ${_patch_commit:=7cce4b12e43b046104bbfc9a6da481e97f4f2f3c}
-
 _pkgsrc="$_pkgname"
 source=(
-  "$_pkgsrc"::"git+https://invent.kde.org/system/dolphin.git#tag=v$_pkgver"
-  "dolphin-tabopts-${_patch_commit::7}.patch"::"https://invent.kde.org/xiota/dolphin/-/commit/${_patch_commit}.patch"
+  "$_pkgsrc"::"git+$_dl_url"
+  "dolphin-tabopts-${_commit_patch::7}.patch"::"https://invent.kde.org/xiota/dolphin/-/commit/${_commit_patch}.patch"
 )
 sha256sums=(
   'SKIP'
