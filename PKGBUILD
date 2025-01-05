@@ -2,7 +2,7 @@
 # https://github.com/harilvfs
 pkgname=yt-x-git
 _pkgname=yt-x
-pkgver=v0.4.5.r47.g6169a48
+pkgver=v0.4.5.r1.g75028b6
 pkgrel=1
 pkgdesc="Browse youtube from your terminal"
 arch=(any)
