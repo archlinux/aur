@@ -1,0 +1,5 @@
+[lib32-ijs]
+source = "github"
+github = "ArtifexSoftware/ijs"
+use_latest_release = true
+prefix = "v"
