@@ -1,30 +1,32 @@
-# Maintainer: Letu Ren <fantasquex@gmail.com>
+# Maintainer: Harriet O'Brien <harrietobrien@protonmail.com>
+# Contributor: Letu Ren <fantasquex@gmail.com>
 
 pkgname=python-logical-unification
 _pkgname=logical-unification
-pkgver=0.4.5
+_name=unification
+pkgver=0.4.6
 pkgrel=1
-pkgdesc="Straightforward unification in Python that's extensible via generic functions."
+pkgdesc="Straightforward unification in Python; extensible via generic functions."
 arch=('any')
 url="https://github.com/pythological/unification/"
 license=('custom')
 depends=(
     'python-toolz'
-    'python-multipledispatch'
 )
 makedepends=(
     'python-setuptools'
 )
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('7c6a6c1b7c6baa0f5b9af93f06cfc8d2419b6b793346b678ed1367c05ce74558')
+
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('dab8da68a5753232416637913af5b914e293d2187b5b4fe43a11331ffe15d776')
 
 build() {
-    cd "${_pkgname}-${pkgver}"
+    cd "${_name}-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd "${_pkgname}-${pkgver}"
+    cd "${_name}-${pkgver}"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
     install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
