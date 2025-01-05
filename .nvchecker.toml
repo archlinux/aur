@@ -1,0 +1,4 @@
+[gocloc-bin]
+source = "git"
+git = "https://github.com/hhatto/gocloc.git"
+prefix = "v"
