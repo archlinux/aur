@@ -3,12 +3,12 @@
 _pkgname=rism
 pkgname=$_pkgname-bin
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Application-specific browser based on tauri"
 arch=("x86_64")
 url="https://github.com/thorio/rism"
 license=("GPL3")
-depends=("libappindicator-gtk3" "gtk3" "librsvg" "webkit2gtk" "libsoup")
+depends=("appmenu-gtk-module" "libappindicator-gtk3" "librsvg" "webkit2gtk-4.1")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip')
