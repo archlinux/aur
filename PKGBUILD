@@ -1,12 +1,12 @@
 # Maintainer: raininja < dandenkijin 'at' gmail 'dot' com >
 pkgname=daytona
 pkgver=0.50.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Source Dev Environment Manager."
 arch=('x86_64')
 url="https://www.daytona.io/"
 license=('Apache')
-depends=('docker')
+optdepends=('docker')
 makedepends=('go')
 provides=('daytona')
 source=("daytona-v${pkgver}.zip::https://github.com/daytonaio/${pkgname}/archive/refs/tags/v${pkgver}.zip")
