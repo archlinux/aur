@@ -1,4 +1,4 @@
-# Maintainer: Alfredo Ramos <alfredo.ramos@skiff.com>
+# Maintainer: Alfredo Ramos <alfredo.ramos@proton.me>
 # Contributor: Alison Watson <marrub@greyserv.net>
 # Contributor: Antonio Rojas <arojas@archlinux,org>
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
@@ -8,31 +8,31 @@
 
 _pkgname=krita
 pkgname=${_pkgname}-git
-pkgver=5.3.0.prealpha.279.g8697e4bffc
-pkgrel=2
+pkgver=5.3.0.prealpha.2258.g83bdc0dc5f
+pkgrel=1
 pkgdesc='A full-featured free digital painting studio. Git version.'
 arch=('x86_64')
 url='https://krita.org'
 license=('GPL3')
 
 depends=(
-	kitemviews kitemmodels ki18n kcompletion kguiaddons kcrash
-	qt5-svg qt5-multimedia quazip gsl libraw exiv2 openexr fftw
-	openjpeg2 opencolorio libwebp mlt sdl2 libraqm libunibreak
-	ffmpeg hicolor-icon-theme
+	exiv2 ffmpeg fftw fontconfig freetype2 fribidi gcc-libs giflib glibc gsl
+	harfbuzz imath kcompletion5 kconfig5 kcoreaddons5 kcrash5 kguiaddons5 ki18n5
+	kitemviews5 kitemmodels5 kwidgetsaddons5 kwindowsystem5 lcms2 libjpeg-turbo
+	libkdcraw5 libpng libtiff libunibreak libwebp libx11 mlt opencolorio openexr
+	openjpeg2 qt5-base qt5-svg qt5-x11extras quazip-qt5 zlib
 )
 makedepends=(
-	git extra-cmake-modules kdoctools boost eigen poppler-qt5
-	python-pyqt5 libheif qt5-tools sip kseexpr libmypaint libjxl
-	xsimd immer zug lager
+	git boost eigen extra-cmake-modules immer kdoctools5 kseexpr lager libheif
+	libjxl libmypaint poppler-qt5 python-pyqt5 qt5-tools sip xsimd zug
 )
 optdepends=(
 	'poppler-qt5: PDF filter'
-	'ffmpeg: to save animations'
 	'python-pyqt5: for the Python plugins'
+	'python-legacy-cgi: for the Python plugins'
 	'libheif: HEIF filter'
 	'kseexpr: SeExpr generator layer'
-	'kimageformats: PSD support'
+	'kimageformats5: PSD support'
 	'libmypaint: support for MyPaint brushes'
 	'krita-plugin-gmic: GMic plugin'
 	'libjxl: JPEG-XL filter'
