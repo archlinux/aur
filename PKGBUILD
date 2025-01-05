@@ -4,7 +4,7 @@ _projectname='elasticsearch-py'
 _pkgname='python-elasticsearch'
 pkgname="${_pkgname}7.13"
 pkgver='7.13.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Python client for Elasticsearch (legacy 7.13.* version - before the UnsupportedProductError check)"
 arch=('any')
 url="https://github.com/elastic/$_projectname"
@@ -17,15 +17,22 @@ checkdepends=('python-numpy' 'python-pandas' 'python-pytest' 'python-pytest-asyn
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	'fix-deprecations.diff'
+	'remove-simplejson-dep.diff'
 )
 b2sums=('442190229084c39fcfdb20218cd8e2beb63789050fdf64da568c39b34779ee1c95ba7d90da7bd4a5795aa708e9d940f9e202dc8fb52eaef0d8c04b0a16aa754b'
-        'ed42045499adb04a155dcddf3f164ec1696d92f8ca0b9b12f9ff68a3415ab0ef0475aa87a64e97c8dfd25e55e8dc3c0698a54e8ccb7c44de34d3dc39b3fe9562')
+        'ed42045499adb04a155dcddf3f164ec1696d92f8ca0b9b12f9ff68a3415ab0ef0475aa87a64e97c8dfd25e55e8dc3c0698a54e8ccb7c44de34d3dc39b3fe9562'
+        'cd23bf99eb188c92981c686d55d82feaf710e17905682b8d1bae6393298b3f881a7c9b15ae2d551ec80a07ba9e89051b4cd6a9af9733c9295bc9b682b45545d6')
 
 _sourcedirectory="$_projectname-$pkgver"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
+
+	# Get rid of deprecated stuff
 	patch --forward -p1 < "$srcdir/fix-deprecations.diff"
+
+	# Get rid of simplejson, as it doesn't pass tests
+	patch --forward -p1 < "$srcdir/remove-simplejson-dep.diff"
 }
 
 build() {

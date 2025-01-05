@@ -1,0 +1,32 @@
+diff --git a/elasticsearch/connection/base.py b/elasticsearch/connection/base.py
+index 8fb19267..bb4e137e 100644
+--- a/elasticsearch/connection/base.py
++++ b/elasticsearch/connection/base.py
+@@ -24,10 +24,7 @@ import re
+ import warnings
+ from platform import python_version
+ 
+-try:
+-    import simplejson as json
+-except ImportError:
+-    import json
++import json
+ 
+ from .. import __version__, __versionstr__
+ from ..exceptions import (
+diff --git a/elasticsearch/serializer.py b/elasticsearch/serializer.py
+index afb0cba2..7d2cd9f4 100644
+--- a/elasticsearch/serializer.py
++++ b/elasticsearch/serializer.py
+@@ -15,10 +15,7 @@
+ #  specific language governing permissions and limitations
+ #  under the License.
+ 
+-try:
+-    import simplejson as json
+-except ImportError:
+-    import json
++import json
+ 
+ import uuid
+ from datetime import date, datetime
