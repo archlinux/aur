@@ -1,0 +1,19 @@
+pkgbase = dxirc-fox
+	pkgdesc = A simple IRC client with FOX toolkit GUI only
+	pkgver = 1.40.1
+	pkgrel = 1
+	url = https://dxirc.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = ninja
+	depends = fox
+	depends = lua
+	depends = openssl
+	conflicts = dxirc
+	conflicts = dxirc-qt
+	source = http://downloads.sourceforge.net/sourceforge/dxirc/dxirc-1.40.1.tar.gz
+	md5sums = e5b46ffcc913de2cfa63721768c5a102
+
+pkgname = dxirc-fox
