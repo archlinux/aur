@@ -19,6 +19,7 @@ depends=(
   'glibc'
   'hicolor-icon-theme'
   'dotnet-runtime-6.0'
+  'fuse2'
 )
 conflicts=(
 )

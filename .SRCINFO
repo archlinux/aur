@@ -11,6 +11,7 @@ pkgbase = fs2-knossos-dotnet
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = dotnet-runtime-6.0
+	depends = fuse2
 	options = !strip
 	source = git+https://github.com/KnossosNET/Knossos.NET.git#commit=10768622a1da1176df701662a98646dabe2af2ca?signed
 	source = Knossos.NET.desktop
