@@ -13,7 +13,7 @@ pkgname=aseprite
 pkgver=1.3.10.1
 _skiaver=m102
 _skiahash=861e4743af
-pkgrel=5
+pkgrel=6
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -43,6 +43,7 @@ makedepends=(# "Meta" dependencies
 source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
         "skia-$_skiaver.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/$_skiaver-$_skiahash.tar.gz"
+        aseprite-strings::git+https://github.com/aseprite/strings.git#commit=f9cf9f95f46d78dcdfc4c9b8835306bd9728c8be
         desktop.patch
         shared-fmt.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2535.patch
@@ -57,6 +58,7 @@ noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
 sha256sums=('8eea1db7f3465c5d1442c19599de53ab6d69431767ffa320459f5c3ff8cc80b4'
             '8d76c1ad3693e1fc019eb14d806082148eb4ed7d601474aeeaae601b05a9b3ad'
+            'a0090d46824bdbd79a83ec9ad83e4d09680471e442569ab16f753c62ef0d0e3c'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'c3591d376180d99ff8001c3d549c0bd18ef5e4d95f1755ccaa8e2fd65dd5d2b3'
             '89cd28a5a90ee9dd42e85866b6f954bde526068d94311b0730a62f00f9cfffdb'
@@ -92,8 +94,8 @@ prepare() {
 	# TinyEXIF cannot find tinyxml2 otherwise
 	[[ -n $_debug ]] && echo fix-shared-tinyxml2.patch
 	env -C aseprite/third_party/TinyEXIF patch -tp1 <fix-shared-tinyxml2.patch
-        [[ -n $_debug ]] && echo shared-libwebp-found.patch
-        env -C aseprite patch -tp1 <shared-libwebp-found.patch
+	[[ -n $_debug ]] && echo shared-libwebp-found.patch
+	env -C aseprite patch -tp1 <shared-libwebp-found.patch
 }
 
 build() {
@@ -182,4 +184,9 @@ package() {
 	install -vDm 644 -t "$pkgdir/usr/share/licenses/$pkgname" aseprite/{EULA.txt,docs/LICENSES.md}
 	# Copy the font's license, but leave it in the font directory as well (probably doesn't hurt)
 	install -vm 644 aseprite/data/fonts/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/font.txt"
+	# Copy translations
+	mkdir -p "$pkgdir/usr/share/$pkgname/data/strings/"
+	cp -vt aseprite-strings/*.ini "$pkgdir/usr/share/$pkgname/data/strings/"
+	# Copy translations' license
+	install -vm 644 aseprite-strings/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/translations.txt"
 }
