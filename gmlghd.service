@@ -2,7 +2,7 @@
 Description=The gemlog http daemon
 
 [Service]
-User=gmlgcd
+User=gmlghd
 ExecStart=/usr/bin/gmlghd
 Restart=on-failure
 
