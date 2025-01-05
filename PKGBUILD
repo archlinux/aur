@@ -3,8 +3,9 @@
 # NOTE:
 # Upstream recommends a minimum of 32GB of RAM for building.
 # If you get the error "c++: fatal error: Killed signal terminated program cc1plus",
-# upstream recommends to decrease the number of building threads. Modify MAKEFLAGS
-# in 'makepkg.conf' in order to configure it (for example: MAKEFLAGS='-j8').
+# upstream recommends to decrease the number of building threads. You will need to
+# manually modify the PKGBUILD for this, and add a '--parallel <n>' option at the
+# end of the cmake build command.
 
 pkgname=intel-npu-compiler-git
 pkgver=2024.44rc2.r0.g150e202
