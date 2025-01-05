@@ -90,6 +90,7 @@ b2sums=(
 options=(debug)
 
 pick_mr() {
+  cd Hyprland
   git pull origin pull/$1/head --no-ff --no-commit
 }
 
@@ -109,7 +110,9 @@ prepare() {
 }
 
 pkgver() {
-  git -C Hyprland describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+	cd Hyprland
+  git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
