@@ -1,6 +1,6 @@
 # Maintainer: Mark Collins <tera_1225 hatt hotmail.com>
 pkgname=borgwarehouse
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc="WebUI for a BorgBackup central repository server"
 arch=("x86_64")
@@ -35,7 +35,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "sysusers-${pkgname}.conf"
         "${pkgname}.tmpfiles"
         "fix-env-nodocker.patch")
-sha256sums=('3537cbf45a2ff7af9346d00ea00cf5a218b8d080b8f0f3a9647ea8b0650e44fb'
+sha256sums=('f6be3c77679d7ea56319f289847986fbc6a45497033909a4f55a21ed20660307'
             '4e5b300b524cd43fb6ad823168375c0d1893e993d5e60a6724dac70272d3e308'
             '682c914d59473fdf7bcee65b0ace23a3cb43a5f73464f76a9a677093d29d27b2'
             '5668cbdd26b701514a89ff17175bcc058bfdb0ac0b5c665cf2d8b555179c5446'
@@ -79,6 +79,8 @@ package() {
   ln -s "/etc/webapps/${pkgname}/${pkgname}.env" "${pkgdir}/usr/share/webapps/${pkgname}/.env"
   mv "${pkgdir}/usr/share/webapps/${pkgname}/config" "${pkgdir}/etc/webapps/${pkgname}/"
   ln -s "/etc/webapps/${pkgname}/config" "${pkgdir}/usr/share/webapps/${pkgname}/config"
+  touch "${pkgdir}/etc/webapps/${pkgname}/config/repo.json"
+  touch "${pkgdir}/etc/webapps/${pkgname}/config/users.json"
   install -Dm644 "${srcdir}/sysusers-${pkgname}.conf" "$pkgdir/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/${pkgname}.conf"
   install -Dm644 "${srcdir}/${pkgname}.service" "$pkgdir/usr/lib/systemd/system/${pkgname}.service"
