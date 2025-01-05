@@ -7,6 +7,7 @@ pkgbase = dxirc
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
+	makedepends = ninja
 	depends = fox
 	depends = lua
 	depends = qt5-base
