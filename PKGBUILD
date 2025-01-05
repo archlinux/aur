@@ -1,6 +1,8 @@
+# Maintainer: Marco Wahls <marco.wahls@gmx.net>
+# Contributor: Mr.Smith1974
 _pkgname=lpub3d
-_pkgver=2.4.7
-_appimage="LPub3D-${_pkgver}.0.3476_20230621-x86_64.AppImage"
+_pkgver=2.4.8
+_appimage="LPub3D-${_pkgver}.0.3723_20241019-x86_64.AppImage"
 _desktopfile="${_pkgname}"
 
 pkgname=lpub3d-appimage
@@ -16,8 +18,8 @@ optdepends=('ldraw-parts-library: LEGO parts library'
 	    'leocad: A CAD program for creating virtual LEGO models')
 conflicts=()
 options=(!strip)
-source=("${_appimage}::https://sourceforge.net/projects/${_pkgname}/files/${_pkgver}/${_appimage}/download")
-sha256sums=('a2cc008c08e5b26be4c321a08bac46cdde0582c6764108823652bd4690ba8081')
+source=("${_appimage}::https://github.com/trevorsandy/lpub3d/releases/download/v${_pkgver}/${_appimage}")
+sha256sums=('f454fb6011dc0b97127d38d56af78a49d29d7fdca88570a38dd1c5a7c4d39aba')
 
 
 prepare() {
