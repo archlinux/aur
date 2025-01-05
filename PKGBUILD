@@ -2,7 +2,7 @@
 
 _pkgname=qBittorrent-ClientBlocker
 pkgname="${_pkgname,,}"
-pkgver=3.5
+pkgver=3.6
 pkgrel=1
 pkgdesc="A client blocker compatible with qBittorrent/Transmission (Beta)/BitComet (Beta, Partial) which is prohibited to include but not limited to clients such as Xunlei."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -22,7 +22,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}.user.service")
-sha256sums=('2cc22b81ca20caa2df1d778802cec27e66ad2132b5b2763850be027efee362f7'
+sha256sums=('ba758881daf1eddea21acac45b33579a8b79ee750471f7402df74d595dbe31aa'
             'c30c581577715838254ae7a5a07cd29df2fd75b9b59aefdb834906c5556f444e'
             'b419f001a0e45fa19776cd255170fd12ac19dc878683a98006ff53a6984bf417'
             '57f5a17c4a36b8fed9503e2ed1b6b60b43cd9f10fa249807a084de5744d7aed2'
