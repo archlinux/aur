@@ -1,6 +1,6 @@
 pkgbase = mechvibes
 	pkgdesc = Play mechanical keyboard sounds as you type.
-	pkgver = 2.3.4
+	pkgver = 2.3.6
 	pkgrel = 1
 	url = https://mechvibes.com
 	install = mechvibes.install
@@ -41,7 +41,7 @@ pkgbase = mechvibes
 	depends = xdg-utils
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/hainguyents13/mechvibes/releases/download/v2.3.4/mechvibes_2.3.4_amd64.deb
-	md5sums = 470f65983c996aac5b48beaaf0cd4ae8
+	source = https://github.com/hainguyents13/mechvibes/releases/download/v2.3.6/mechvibes_2.3.6_hotfix_amd64.deb
+	md5sums = 015bc37bffc02b1d5d72ff337962de39
 
 pkgname = mechvibes
