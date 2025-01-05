@@ -5,7 +5,7 @@
 _pkgname=dbeaver
 pkgname=dbeaver-ce-bin
 pkgver=24.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64')
 url="https://dbeaver.io/"
@@ -15,7 +15,7 @@ optdepends=('dbeaver-plugin-office: export data in Microsoft Office Excel format
             'dbeaver-plugin-svg-format: save diagrams in SVG format')
 conflicts=('dbeaver')
 provides=('dbeaver')
-source=("${pkgname}-${pkgver}.linux.gtk.${arch}-nojdk.tar.gz"::"https://github.com/dbeaver/dbeaver/releases/download/${pkgver}/dbeaver-ce-${pkgver}-linux.gtk.${arch}-nojdk.tar.gz"
+source=("${_pkgname}-${pkgver}.linux.gtk.${arch}-nojdk.tar.gz"::"https://github.com/dbeaver/dbeaver/releases/download/${pkgver}/dbeaver-ce-${pkgver}-linux.gtk.${arch}-nojdk.tar.gz"
         "io.dbeaver.DBeaver.desktop"
         "${pkgname}.sh"
         "${pkgname}.hook"
