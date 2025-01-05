@@ -1,0 +1,45 @@
+# Maintainer: Adam Perkowski <adas1per@protonmail.com>
+# https://github.com/adamperkowski/PKGBUILDs
+
+pkgname=katharsis
+pkgver=1.0.0.23
+_pkgver=1.0.0-canary.23
+pkgrel=1
+pkgdesc='CLI tool for generating RSS feeds'
+arch=('x86_64')
+url="https://github.com/kurosakishigure/$pkgname"
+license=('MIT')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz")
+sha256sums=('bcd2fd91424e758e0df3c87abe2f5b46340691f0e99b2a38a201f9b2e425d322')
+makedepends=('cargo')
+#depends=('')
+
+prepare() {
+  cd "$pkgname-$_pkgver"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cd "$pkgname-$_pkgver"
+  cargo build --frozen --release
+}
+
+check() {
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cd "$pkgname-$_pkgver"
+  cargo test --frozen --release
+}
+
+package() {
+  cd "$pkgname-$_pkgver"
+  install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 docs/FAQ.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 docs/USE.md -t "$pkgdir/usr/share/doc/$pkgname"
+}
+
+# vim: ts=2 sw=2 et:
