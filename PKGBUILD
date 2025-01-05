@@ -3,7 +3,7 @@
 # Contributor: lsf
 # Contributor: Adam Hose <adis@blad.is>
 pkgname=opensnitch-git
-pkgver=1.6.3.r152.1984fb99
+pkgver=1.6.3.r231.23571860
 pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -122,7 +122,7 @@ build() {
   # not seeing the files to be fixed with this in the tree _before_ building
   # made me assume they were just not there anymore (and thus no need for the fix).
   # I was wrong.
-  sed -i 's/^import ui_pb2/from . import ui_pb2/' opensnitch/ui_pb2*
+  find opensnitch/proto/ -name 'ui_pb2_grpc.py' -exec sed -i 's/^import ui_pb2/from . import ui_pb2/' {} \;
   python -m build --wheel --no-isolation
   # python setup.py build
   popd
