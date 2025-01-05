@@ -1,6 +1,6 @@
 # Maintainer: Voislav Vasiljevski <voyo@thelazysre.com>
 pkgname=observer
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Dynamic CPU core manager for power saving"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 backup=('etc/observer/config.toml')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-linux-amd64.tar.gz")
-sha256sums=('e0f1ab04087219719bca4f3743b92da4ace6bc8e030afc5f4f0ae61406ef1831') 
+sha256sums=('47f1b6bfbb0124c07e0ceedb02d7db2d03d9105a056c7d0795ce0c8c0f5398da') 
 
 package() {
     cd "$srcdir"
