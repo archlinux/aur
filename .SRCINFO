@@ -1,0 +1,16 @@
+pkgbase = adspower-antidetect
+	pkgdesc = AdsPower Antidetect Browser - Proteja suas contas e gerencie múltiplas identidades
+	pkgver = 6.12.6
+	pkgrel = 1
+	url = https://www.adspower.com
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = glibc
+	depends = bash
+	depends = electron
+	depends = hicolor-icon-theme
+	source = https://version.adspower.net/software/linux-x64-global/AdsPower-Global-6.12.6-x64.deb
+	sha256sums = ca064003d62a9dba30eddf322b0738ade3a5cf5fd9bccfb3a0cb1817681593b7
+
+pkgname = adspower-antidetect
