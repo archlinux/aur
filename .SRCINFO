@@ -1,0 +1,23 @@
+pkgbase = MagiTerm-git
+	pkgdesc = MagiTerm is a simple SSH & telnet terminal for accessing bulletin board systems. It is built on libssh and SDL2.
+	pkgver = 0
+	pkgrel = 0
+	url = https://talismanbbs.org/other/
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = libssh
+	makedepends = sdl2
+	makedepends = sdl2_image
+	makedepends = libsecret
+	depends = libssh
+	depends = sdl2
+	depends = sdl2_image
+	depends = libsecret
+	optdepends = gnome-keyring: Password Saving Feature
+	source = git+https://gitlab.com/magickabbs/MagiTerm.git
+	sha256sums = SKIP
+
+pkgname = MagiTerm-git
