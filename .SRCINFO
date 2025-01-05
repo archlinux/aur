@@ -1,5 +1,5 @@
 pkgbase = adspower-antidetect
-	pkgdesc = AdsPower Antidetect Browser - Proteja suas contas e gerencie múltiplas identidades
+	pkgdesc = AdsPower - Most Secure Antidetect Browser for Multi-Accounts
 	pkgver = 6.12.6
 	pkgrel = 1
 	url = https://www.adspower.com

@@ -1,10 +1,11 @@
-# Maintainer: Daniel S. Palma <seu-email-aqui>
-# Pacote baseado no AdsPower Global, renomeado para evitar conflitos
+# Contributor: Asuka Minato <i at asukaminato dot eu dot org>
+# Maintainer: Daniel S. Palma <your-email-here>
+# Package based on AdsPower Global, renamed to avoid conflicts.
 
 pkgname=adspower-antidetect
 pkgver=6.12.6
 pkgrel=1
-pkgdesc="AdsPower Antidetect Browser - Proteja suas contas e gerencie múltiplas identidades"
+pkgdesc="AdsPower - Most Secure Antidetect Browser for Multi-Accounts"
 arch=(x86_64)
 url="https://www.adspower.com"
 license=('custom')
@@ -28,17 +29,17 @@ package() {
         find "$pkgdir" -name "*armv8*" -delete -print
         find "$pkgdir" -type d -empty -delete
 
-        # Criar o launcher com novo nome
+        # Create the launcher with the new name
         printf "#!/bin/sh
 exec electron /opt/AdsPower\\ Global/resources/app.asar \"\$@\"
 " | install -Dm755 /dev/stdin "$pkgdir/usr/bin/adspower-antidetect"
 
-        # Copiar ícones renomeados
+        # Copy renamed icons
         for size in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024; do
             install -Dm644 "$pkgdir/usr/share/icons/hicolor/${size}/apps/adspower_global.png" "$pkgdir/usr/share/icons/hicolor/${size}/apps/adspower-antidetect.png"
         done
 
-        # Criar atalho no menu de aplicativos
+        # Create application shortcut
         mkdir -p "$pkgdir/usr/share/applications"
         printf "[Desktop Entry]
 Name=AdsPower Antidetect
