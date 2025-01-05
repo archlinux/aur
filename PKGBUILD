@@ -1,13 +1,17 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=clipboard-manager-git
-pkgver=r105.d87bd4b
+pkgver=0.1.0.r13.g18bab53
 pkgrel=1
 pkgdesc="Clipboard manager for COSMIC™"
 arch=('x86_64')
 url="https://github.com/cosmic-utils/clipboard-manager"
-license=('GPL3-or-later')
+license=('GPL-3.0-or-later')
 depends=('cosmic-applets')
-makedepends=('cargo' 'git' 'just')
+makedepends=(
+  'cargo'
+  'git'
+  'just'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'cosmic-clipboard-manager-git')
 options=('!lto')  # sqlx crate fails with LTO enabled
@@ -16,19 +20,19 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  just build-release
+  just build-release --frozen
 }
 
 package() {
