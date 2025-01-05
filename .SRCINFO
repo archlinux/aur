@@ -1,6 +1,6 @@
 pkgbase = lesspass-client
 	pkgdesc = LessPass API server client library and CLI written in Rust
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://gitlab.com/ogarcia/lesspass-client
 	arch = arm
@@ -9,11 +9,11 @@ pkgbase = lesspass-client
 	arch = aarch64
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = rust
 	depends = gcc-libs
 	depends = openssl
-	source = https://gitlab.com/ogarcia/lesspass-client/-/archive/0.7.0/lesspass-client-0.7.0.tar.bz2
-	b2sums = b494b3f3785762aabd12c093db17609bcd0a86e02536382f2d84f1ecc0e9bb48b069167f8be95b46b59f9ba9860dd8ce4ff7f273b5b6568a4b0591c5820d464d
+	source = https://gitlab.com/ogarcia/lesspass-client/-/archive/0.8.0/lesspass-client-0.8.0.tar.bz2
+	b2sums = 916a67bdcd149575306c881b525ddf7075de812a407dd482b5762d4db37077a24318344c09e1fa62e963adfefd1726b2ab17af13325cc3e66fdad7ac367f3a11
 
 pkgname = lesspass-client
