@@ -3,7 +3,7 @@
 # Contributor: carstene1ns <arch carsten-teibes de>
 
 pkgname=lib32-sdl2_ttf
-pkgver=2.22.0
+pkgver=2.24.0
 pkgrel=1
 pkgdesc='Library that allows you to use TrueType fonts in your SDL applications (Version 2) (32-bit)'
 url='https://www.libsdl.org/projects/SDL_ttf'
@@ -11,7 +11,7 @@ arch=('x86_64')
 license=('MIT')
 depends=('lib32-sdl2' 'lib32-freetype2')
 source=("https://github.com/libsdl-org/SDL_ttf/releases/download/release-${pkgver}/SDL2_ttf-${pkgver}.tar.gz"{,.sig})
-sha512sums=('34a1d210d8f1b1e802139d65ba47e36033bb7881e75a8862c1b1c515565bef85e3d81ee42e952aa664de043debef387ba60088a9cf3ba3297413db39a13af912'
+sha512sums=('a0f94e26f0387385f13ec1eb08ddca677d4181969073a50af387a0dce9c7bdddf393c028c8084538e01f875e19790ef7ae9a00c5106bf7ca9d21f3fcf9eee885'
             'SKIP')
 validpgpkeys=('1528635D8053A57F77D1E08630A59377A7763BE6')
 
