@@ -1,5 +1,5 @@
 pkgbase = lib32-tesseract
-	pkgdesc = An OCR program (32 bit)
+	pkgdesc = An OCR program (32-bit)
 	pkgver = 5.5.0
 	pkgrel = 1
 	url = https://tesseract-ocr.github.io
