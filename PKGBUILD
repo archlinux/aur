@@ -13,7 +13,7 @@ pkgrel=1
 pkgdesc='A full-featured free digital painting studio. Git version.'
 arch=('x86_64')
 url='https://krita.org'
-license=('GPL3')
+license=('GPL-3.0-only')
 
 depends=(
 	exiv2 ffmpeg fftw fontconfig freetype2 fribidi gcc-libs giflib glibc gsl
