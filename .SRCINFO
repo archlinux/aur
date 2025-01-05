@@ -6,7 +6,6 @@ pkgbase = stardust-xr-black-hole
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = rust-musl
 	makedepends = cargo
 	makedepends = git
 	source = git+https://github.com/StardustXR/black-hole.git
