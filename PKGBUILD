@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 backup=('etc/observer/config.toml')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-linux-amd64.tar.gz")
-sha256sums=('09c47fcb5f35a1d1bf703f6e078294f0e14d6eaa2b74031996bda8ddad5a6c55')  # Will be updated by the workflow
+sha256sums=('d03398805e54f5d9ab45c96d700200f7e6d6c6eb314f17e61c8430ef6bb05462')  # Will be updated by the workflow
 
 package() {
     cd "$srcdir"
