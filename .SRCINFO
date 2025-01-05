@@ -1,7 +1,7 @@
 pkgbase = intel-npu-driver-git
 	pkgdesc = Intel Neural Processing Unit (NPU) driver (git version)
 	pkgver = 1.10.1.r0.g93fb54b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/intel/linux-npu-driver/
 	install = intel-npu-driver.install
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = intel-npu-driver-git
 	source = git+https://github.com/intel/level-zero-vpu-extensions.git
 	source = git+https://github.com/openvinotoolkit/vpux_plugin_elf.git
 	source = git+https://github.com/xanderlent/intel-npu-driver-rpm.git
-	source = 10-intel-npu-driver.rules
+	source = 10-intel-npu.rules
 	source = 010-intel-npu-driver-fix-libdrm-header.patch
 	source = 020-intel-npu-driver-rename-installed-binaries.patch
 	sha256sums = SKIP

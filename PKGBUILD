@@ -3,7 +3,7 @@
 
 pkgname=intel-npu-driver-git
 pkgver=1.10.1.r0.g93fb54b
-pkgrel=2
+pkgrel=3
 pkgdesc='Intel Neural Processing Unit (NPU) driver (git version)'
 arch=('x86_64')
 url='https://github.com/intel/linux-npu-driver/'
@@ -28,7 +28,7 @@ source=('git+https://github.com/intel/linux-npu-driver.git'
         'git+https://github.com/intel/level-zero-vpu-extensions.git'
         'git+https://github.com/openvinotoolkit/vpux_plugin_elf.git'
         'git+https://github.com/xanderlent/intel-npu-driver-rpm.git'
-        '10-intel-npu-driver.rules'
+        '10-intel-npu.rules'
         '010-intel-npu-driver-fix-libdrm-header.patch'
         '020-intel-npu-driver-rename-installed-binaries.patch')
 sha256sums=('SKIP'
@@ -84,7 +84,7 @@ build() {
 package() {
     DESTDIR="$pkgdir" cmake --install build
     chmod 644 "${pkgdir}/usr/lib/firmware/updates/intel/vpu"/vpu_*.bin
-    install -D -m644 10-intel-npu-driver.rules -t "${pkgdir}/usr/lib/udev/rules.d"
+    install -D -m644 10-intel-npu.rules -t "${pkgdir}/usr/lib/udev/rules.d"
     install -D linux-npu-driver/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D linux-npu-driver/firmware/bin/COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-firmware"
 }
