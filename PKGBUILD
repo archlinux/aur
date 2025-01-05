@@ -1,7 +1,7 @@
 # Maintainer: Ignacio Gonsalves <inscientebberman at tutanota dot com>
 pkgname=gnu-slash-grub-git
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fix GRUB boot menu nonsense'
 arch=('any')
 url='https://github.com/themidnightmaniac/gnu-slash-grub'
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('bash')
 makedepends=('git')
 provides=("gnu-slash-grub=${pkgver}")
-source=("${pkgname%-git}::git+https://github.com/themidnightmaniac/gnu-slash-grub.git#tag=v${pkgver}")
+source=("${pkgname%-git}::git+https://codeberg.org/midnightmaniac/gnu-slash-grub.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 package() {
     cd "${pkgname%-git}"
