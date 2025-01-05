@@ -1,8 +1,9 @@
+# Maintainer: Harriet O'Brien <harrietobrien@protonmail.com>
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=python-pytest-check
 _pkgname="${pkgname#python-}"
-pkgver=2.1.4
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='Pytest plugin that allows multiple failures per test'
 arch=('any')
@@ -18,19 +19,17 @@ makedepends=(
   'python-installer'
   'python-flit-core'
 )
-_commit='badf3684b0fb0e5741fa61a62c536c49b9e37064'
+_commit='54a7f39546eecfd58aa1f97275177a714770e0ba'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-
   git describe --tags | sed 's/^v//'
 }
 
 prepare() {
   cd "$pkgname"
-
   # remove flit-core version constraint
   sed \
     -i pyproject.toml \
@@ -39,14 +38,11 @@ prepare() {
 
 build() {
   cd "$pkgname"
-
   python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$pkgname"
-
   python -m installer --destdir="$pkgdir" dist/*.whl
-
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
