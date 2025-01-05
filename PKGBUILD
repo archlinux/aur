@@ -16,7 +16,7 @@ unset _pkgtype
 # basic info
 _pkgname="dolphin-emu-primehack"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.2.1.r10.g6f42403
+pkgver=1.2.2.r10.gab7c037
 pkgrel=1
 pkgdesc='A Gamecube and Wii emulator with mouselook controls'
 url="https://github.com/xiota/dolphin-primehack"
@@ -44,7 +44,6 @@ depends=(
   bzip2
   cubeb # AUR
   curl
-  fmt
   hidapi
   libiconv
   liblzma.so
@@ -107,7 +106,7 @@ _source_dolphin_emu() {
     #'dolphin-emu.ext-win-ffmpeg'::'git+https://github.com/dolphin-emu/ext-win-ffmpeg.git'
     #'dolphin-emu.ext-win-qt'::'git+https://github.com/dolphin-emu/ext-win-qt.git'
     'epezent.implot'::'git+https://github.com/epezent/implot.git'
-    #'fmtlib.fmt'::'git+https://github.com/fmtlib/fmt.git'
+    'fmtlib.fmt'::'git+https://github.com/fmtlib/fmt.git'
     #'google.googletest'::'git+https://github.com/google/googletest.git'
     'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
     #'khronosgroup.spirv-cross'::'git+https://github.com/KhronosGroup/SPIRV-Cross.git'
@@ -136,6 +135,7 @@ _source_dolphin_emu() {
     'SKIP'
     'SKIP'
     'SKIP'
+    'SKIP'
   )
 }
 
@@ -148,7 +148,7 @@ _prepare_dolphin_emu() (
     #'dolphin-emu.ext-win-ffmpeg'::'Externals/FFmpeg-bin'
     #'dolphin-emu.ext-win-qt'::'Externals/Qt'
     'epezent.implot'::'Externals/implot/implot'
-    #'fmtlib.fmt'::'Externals/fmt/fmt'
+    'fmtlib.fmt'::'Externals/fmt/fmt'
     #'google.googletest'::'Externals/gtest'
     'gpuopen-librariesandsdks.vulkanmemoryallocator'::'Externals/VulkanMemoryAllocator'
     #'khronosgroup.spirv-cross'::'Externals/spirv_cross/SPIRV-Cross'
@@ -212,6 +212,7 @@ END
     # -DUSE_SYSTEM_LIBS=ON # default:AUTO
 
     -DUSE_SYSTEM_ENET=OFF
+    -DUSE_SYSTEM_FMT=OFF
     -DUSE_SYSTEM_LIBMGBA=OFF
     -DUSE_SYSTEM_MINIZIP=OFF
     -DUSE_SYSTEM_XXHASH=OFF
