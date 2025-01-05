@@ -2,7 +2,7 @@
 
 _projectname=kqueue
 pkgname=ocaml-$_projectname
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=2
 license=('BSD-3-Clause')
 arch=('x86_64')
@@ -14,9 +14,7 @@ source=(
   "$pkgname-$pkgver.tbz::https://github.com/anuragsoni/$_projectname-ml/releases/download/$pkgver/$_projectname-$pkgver.tbz"
 )
 options=('!strip')
-sha512sums=(
-  "0e88e62c411b803e80955547a6c3a7035104a59d0dff9b105d278a13480fd8b0eab64901d6f648656b2849b078dcbd3dd6726782f18b7f1fea85d30caa28096a"
-)
+sha512sums=('e3ddea1744713aebb980745381b0cbc86365ba0ae022ba38714199928cb6df06ee2cdb1bb928bf0100b6aaf8839b0ffce71f284962e4275cabc5cd645b5324bc')
 
 build() {
   cd "${srcdir}/$_projectname-${pkgver}"
