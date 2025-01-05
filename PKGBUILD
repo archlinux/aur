@@ -10,13 +10,13 @@ depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 backup=('etc/observer/config.toml')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-linux-amd64.tar.gz")
-sha256sums=('d03398805e54f5d9ab45c96d700200f7e6d6c6eb314f17e61c8430ef6bb05462')  # Will be updated by the workflow
+sha256sums=('a81097dad66ea5e0bada2bbbe9c99ce876cc0348405f1c333850f1e2d9060e64') 
 
 package() {
     cd "$srcdir"
 
     # Install binary
-    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$pkgname" "$pkgdir/usr/local/bin/$pkgname"
 
     # Install systemd service
     install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
