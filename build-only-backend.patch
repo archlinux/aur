@@ -1,0 +1,20 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index de14a9f..55a4a6d 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -135,7 +135,7 @@ allow-direct-references = true
+ path = "package.json"
+ pattern = '"version":\s*"(?P<version>[^"]+)"'
+
+-[tool.hatch.build.hooks.custom]  # keep this for reading hooks from `hatch_build.py`
++#[tool.hatch.build.hooks.custom]  # keep this for reading hooks from `hatch_build.py`
+
+ [tool.hatch.build.targets.wheel]
+ sources = ["backend"]
+@@ -150,4 +150,5 @@ exclude = [
+     "webui.db",
+     "chroma.sqlite3",
+ ]
+-force-include = { "CHANGELOG.md" = "open_webui/CHANGELOG.md", build = "open_webui/frontend" }
++#force-include = { "CHANGELOG.md" = "open_webui/CHANGELOG.md", build = "open_webui/frontend" }
++force-include = { "CHANGELOG.md" = "open_webui/CHANGELOG.md"}

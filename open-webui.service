@@ -1,0 +1,14 @@
+[Unit]
+Description=Open Web UI for LLMs
+After=network.target
+
+[Service]
+Type=simple
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=/usr/share/open-webui/open-webui.conf
+ExecStart=/bin/open-webui serve
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
