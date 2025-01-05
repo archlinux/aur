@@ -43,6 +43,6 @@ package() {
   install -Dm644 "target/classes/build_assets/org.dpsoftware.FireflyLuciferin.appdata.xml" "$pkgdir/usr/share/metainfo/org.dpsoftware.FireflyLuciferin.appdata.xml"
   install -Dm644 "target/classes/build_assets/org.dpsoftware.FireflyLuciferin.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.dpsoftware.FireflyLuciferin.svg"
 
-  mkdir -p "$pkgdir/usr/share/${_pkgname}/classes/org/dpsoftware/gui/img"
-  install -Dm644 target/classes/org/dpsoftware/gui/img/*.png "$pkgdir/usr/share/${_pkgname}/classes/org/dpsoftware/gui/img/"
+  mkdir -p "$pkgdir/usr/share/${_pkgname}/classes/org/dpsoftware/gui"
+  cp -r "target/classes/org/dpsoftware/gui/img" "$pkgdir/usr/share/${_pkgname}/classes/org/dpsoftware/gui/"
 }
