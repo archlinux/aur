@@ -2,7 +2,7 @@
 
 _pkgname=blender-breezedark-theme
 pkgname=${_pkgname}-git
-pkgver=r18.5fdc2d6
+pkgver=r19.0e49f3d
 pkgrel=1
 pkgdesc='A Blender theme that mimics the color scheme of the Breeze Dark KDE theme'
 arch=('any')
@@ -22,9 +22,16 @@ pkgver() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  Directories=`ls -d /usr/share/blender/*/`
-  while IFS= read -r Directory; do
-    mkdir -p ${pkgdir}$Directory/scripts/presets/interface_theme
-    install -Dm 644 ./breeze_dark.xml ${pkgdir}$Directory/scripts/presets/interface_theme/Breeze_Dark.xml
-  done <<< "$Directories"
+
+  for Location in "/usr/share/blender/" "/opt/upbge/"; do
+    if [ -d $Location ]; then
+      Directories=`ls -d $Location*/`
+      while IFS= read -r Directory; do
+        if [[ $Directory =~ [0-9] ]]; then
+          mkdir -p ${pkgdir}$Directory/scripts/presets/interface_theme
+          install -Dm 644 ./breeze_dark.xml ${pkgdir}$Directory/scripts/presets/interface_theme/Breeze_Dark.xml
+        fi
+      done <<< "$Directories"
+    fi
+  done
 }

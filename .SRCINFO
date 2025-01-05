@@ -1,6 +1,6 @@
 pkgbase = blender-breezedark-theme-git
 	pkgdesc = A Blender theme that mimics the color scheme of the Breeze Dark KDE theme
-	pkgver = r18.5fdc2d6
+	pkgver = r19.0e49f3d
 	pkgrel = 1
 	url = https://codeberg.org/Nesakko/blender-breezedark-theme
 	arch = any
