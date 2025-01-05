@@ -1,5 +1,5 @@
 pkgbase = unrealtournament-bonuspacks
-	pkgver = 20240724
+	pkgver = 20250105
 	pkgrel = 1
 	url = http://www.unrealtournament2004.com/utgoty/
 	arch = i686

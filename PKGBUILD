@@ -3,7 +3,7 @@
 
 pkgbase="unrealtournament-bonuspacks"
 pkgname=("unrealtournament-bonuspack1" "unrealtournament-bonuspack2" "unrealtournament-bonuspack3" "unrealtournament-bonuspack4")
-pkgver=20240724
+pkgver=20250105
 pkgrel=1
 arch=("i686" "x86_64")
 url="http://www.unrealtournament2004.com/utgoty/"
@@ -77,5 +77,7 @@ package_unrealtournament-bonuspack4() {
     mv -f -t ${pkgdir}/opt/ut/System -- ${pkgdir}/opt/ut/system/*
     mv -f -t ${pkgdir}/opt/ut/Textures -- ${pkgdir}/opt/ut/textures/*
     rm -rf -- ${pkgdir}/opt/ut/{system,textures}
+    # OldUnreal patch already includes this file
+    rm -rf ${pkgdir}/opt/ut/System/SkeletalChars.u
 }
 
