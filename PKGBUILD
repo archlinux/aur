@@ -14,7 +14,7 @@
 : ${KOBOLDCPP_NO_PORTABLE:=0}
 
 pkgname=koboldcpp-cuda
-pkgver=1.80.3
+pkgver=1.81
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with CUDA)"
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=(
   'koboldcpp.png'
 )
 sha256sums=(
-  'adaeb8e47225dbc1b778840a3523a53765310916be883957784cd37165ac262f'
+  '5d84989ed34b5558309aa3ca3814a7d8c19121dd8c17b1d8cc08226277b3341a'
   'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
   'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
