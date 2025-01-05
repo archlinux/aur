@@ -1,7 +1,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=fancy-mouse-boot-rom
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="MCPX boot ROM implementation"
 arch=('any')
