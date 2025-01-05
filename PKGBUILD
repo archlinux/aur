@@ -49,7 +49,7 @@ EOF
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-bin}" <<EOF
 #!/bin/env bash
-export PATH=/opt/t-head/${pkgname%-bin}:\$PATH
+export PATH=/opt/t-head/${pkgname%-bin}
 exec DebugServerConsole.elf "\$@"
 EOF
 }
