@@ -1,7 +1,7 @@
 # Maintainer: shtrophic <aur at shtrophic dot net>
 
 pkgname=gmlghd
-pkgver=0.11
+pkgver=0.12
 pkgrel=1
 pkgdesc='The gemlog http daemon'
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ source=(
 	"$pkgname.service"
 )
 validpgpkeys=(10F1CC925057D456798EBF9C1B3EB6FE2D338B4A)
-sha256sums=('78e7d9842c78ce1f2f73e488ab8812ad534292b15e969a39522f74154d4e577e'
+sha256sums=('7f28bfd088af131aa35c7c910428484815b99b3655c18117e29798562bd72349'
             'SKIP'
             'a73c3d9a9798c307b70be4e764cb7023dd7a0ab4a21c906e72663a7cb45ebaf2'
             '99fe77ece238d533bba8e849c4b830d534e8ccc193cf9e291af257f60180823d'
