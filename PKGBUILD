@@ -7,7 +7,7 @@ _desktopfile="${_pkgname}"
 
 pkgname=lpub3d-appimage
 pkgver="${_pkgver}"
-pkgrel=3
+pkgrel=1
 pkgdesc="LDraw™ editor for LEGO® style digital building instructions"
 arch=('x86_64')
 license=('GPL3')
