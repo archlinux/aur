@@ -1,6 +1,6 @@
 pkgbase = arnis
 	pkgdesc = Generate any location from the real world in Minecraft
-	pkgver = 2.1.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/louis-e/arnis
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = arnis
 	depends = openssl
 	depends = glib2
 	depends = gdk-pixbuf2
-	source = arnis-2.1.1.1.tar.gz::https://github.com/louis-e/arnis/archive/refs/tags/v2.1.1-tweak_uno.tar.gz
-	md5sums = 4287e5eca22b8f57bfb859c6dd3785e1
+	source = arnis-2.1.2.tar.gz::https://github.com/louis-e/arnis/archive/refs/tags/v2.1.2.tar.gz
+	md5sums = 91eb8e267b09c6f740debcca1a807c90
 
 pkgname = arnis
