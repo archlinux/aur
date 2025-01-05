@@ -1,97 +1,112 @@
-# Maintainer: éclairevoyant
+# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
+# Contributor: éclairevoyant
 # Contributor: Sefa Eyeoglu <contact at scrumplex dot net>
 # Contributor: Alexandros Theodotou <alex at zrythm dot org>
 
 pkgname=zrythm
-_pkgver=1.0.0-rc.0
-pkgver="${_pkgver/-/.}"
+pkgver=1.0.0
 pkgrel=1
-pkgdesc='Highly automated and intuitive digital audio workstation'
-arch=(x86_64 i686)
-url="https://www.zrythm.org"
-license=(AGPL3)
+pkgdesc="A feature-rich digital audio workstation with support for various plugin formats and advanced audio processing capabilities"
+arch=('x86_64' 'aarch64')
+url="https://www.zrythm.org/"
+license=('LicenseRef-ZrythmLicense')
 depends=(
-	appstream
-	boost
-	breeze-icons
-	carla-git
-	chromaprint
-	dconf
-	fftw
-	fluidsynth
-	graphene
-	graphviz
-	gtk4
-	gtksourceview5
-	guile
-	json-glib
-	libadwaita
-	libaudec
-	libbacktrace
-	libcyaml
-	libepoxy
-	libpanel
-	lilv
-	libxinerama
-	libxrandr
-	lsp-dsp-lib
-	pcre
-	portaudio
-	qt5-base
-	reproc
-	rtaudio
-	rtmidi
-	rubberband
-	sdl2
-	serd
-	sratom
-	vamp-plugin-sdk
-	xxhash
-	yyjson
-	zix
+  'bash'
+  'carla-git'
+  'cairo'
+  'curl'
+  'dconf'
+  'fftw'
+  'file'
+  'fluidsynth'
+  'fontconfig'
+  'gcc-libs'
+  'gdk-pixbuf2'
+  'glib2'
+  'glibc'
+  'graphene'
+  'gtk4'
+  'gtksourceview5'
+  'hicolor-icon-theme'
+  'libadwaita'
+  'libbacktrace'
+  'libcyaml'
+  'libglvnd'
+  'liblo'
+  'libpanel'
+  'libpulse'
+  'libsndfile'
+  'libsoxr'
+  'libx11'
+  'libxcursor'
+  'libxext'
+  'libxrandr'
+  'lsp-dsp-lib'
+  'pango'
+  'pcre2'
+  'pipewire-jack'
+  'qt5-base'
+  'rubberband'
+  'rtaudio'
+  'rtmidi'
+  'sdl2'
+  'vamp-plugin-sdk'
+  'xxhash'
+  'yyjson'
+  'zix'
+  'zstd'
 )
-makedepends=(git meson cmake ruby-sass help2man sassc)
-optdepends=('realtime-privileges: allow memory locking')
-options=('debug')
-source=("https://www.zrythm.org/releases/$pkgname-$_pkgver.tar.xz"{,.asc}
-        "git+https://github.com/drobilla/zix.git"
-        0001-gcc13-fixes.patch)
-sha256sums=('23fbfb74ed249164a58fa1afbe2dbaeae0f937197dbb719768d0479d8938fbe9'
-            'SKIP'
-            'SKIP'
-            'bb93eea519020e491f85c38ab3901ac530bbf747c4e7acc3aaea39f402091653')
+makedepends=(
+  'blueprint-compiler'
+  'guile'
+  'help2man'
+  'lilv'
+  'meson'
+  'sassc'
+)
+optdepends=(
+  'graphviz: for process graph export (only used for debugging)'
+  'jack: low latency audio/MIDI backend'
+  'libsoundio: alternative audio backend'
+  'portaudio: alternative audio backend'
+  'realtime-privileges: for real-time scheduling privileges'
+)
+source=("https://www.zrythm.org/releases/${pkgname}-${pkgver}.tar.xz"{,.asc})
+sha256sums=('d143a0a17066b50db8a6db875d2699c9e5b70f1bbe18db00fee034840144fede'
+            'SKIP')
 validpgpkeys=('48132384AD3DF7D86E254B83022EAE42313D70F3') # Alexandros Theodotou <alex@zrythm.org>
 
-prepare() {
-	cd $pkgname-$_pkgver
-
-	patch -Np1 -i ../0001-gcc13-fixes.patch
-	# use our local clones
-	sed -i "s|https://github.com/drobilla/zix|$srcdir/zix|" "subprojects/zix.wrap"
-	meson subprojects download zix
-}
-
 build() {
-	cd $pkgname-$_pkgver
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-	meson build --prefix=/usr \
-		--wrap-mode nofallback \
-		--force-fallback-for=zix-0 \
-		-Ddebug=true \
-		-Dmanpage=true \
-		-Dcheck_updates=false \
-		-Dcarla_binaries_dir=/usr/lib/carla \
-		-Dportaudio=enabled -Drtmidi=enabled -Drtaudio=enabled -Dsdl=enabled
-	ninja -C build
+  local meson_options=(
+    -Dcarla=enabled
+    -Dopus=true
+    -Drtaudio=enabled
+    -Drtmidi=enabled
+    -Dsdl=enabled
+    -Dcheck_updates=false
+    -Dgraphviz=disabled  # Enable/Disable Graphviz support
+    -Dportaudio=disabled # Enable/Disable PortAudio support
+    -Dsoundio=disabled   # Enable/Disable libsoundio support
+  )
+
+  arch-meson build "${meson_options[@]}"
+  ninja -C build
 }
 
 package() {
-	cd $pkgname-$_pkgver
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-	install -vDm644 AUTHORS CONTRIBUTING.md \
-		CHANGELOG.md README.md THANKS TRANSLATORS \
-		-t "$pkgdir/usr/share/doc/$pkgname/"
-	meson install -C build --destdir="$pkgdir"
+  # Install the package
+  DESTDIR="${pkgdir}" ninja -C build install
 
-	rm -rf "$pkgdir"{/usr/include/zix-0/,/usr/lib/pkgconfig/zix-0.pc}
+  # Install the custom license file
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSES/LicenseRef-ZrythmLicense.txt" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LicenseRef-ZrythmLicense.txt"
+
+  # Clean up any paths referencing ${srcdir}
+  find "${pkgdir}" -type f -exec sed -i "s|${srcdir}|/usr/share/zrythm|g" {} +
 }
+
+# vim:set ts=2 sw=2 et:
