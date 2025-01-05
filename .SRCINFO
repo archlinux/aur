@@ -1,0 +1,22 @@
+pkgbase = python-kafka-ng
+	pkgdesc = NG fork for Python client for Apache Kafka
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://github.com/wbarnha/kafka-python-ng
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python>=3.8.0
+	depends = python-botocore
+	depends = python-crc32c
+	depends = python-lz4
+	depends = python-snappy
+	depends = python-zstandard
+	source = python-kafka-ng-2.2.3.tar.gz::https://github.com/wbarnha/kafka-python-ng/archive/v2.2.3.tar.gz
+	b2sums = d6fa4dab8d68515f28e9bb036c83e1178eae9a1d7f9fda4e4b93a213174ecc6cd27cb818cfa0dc06d1853fa4aed5971d5f76e6efa0cc4eed87ce1fc033c5fc21
+
+pkgname = python-kafka-ng
