@@ -45,5 +45,5 @@ package() {
 	python -m installer --destdir="$pkgdir" 'dist/'*'.whl'
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dm644 'README.rst' "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 'README.rst' "$pkgdir/usr/share/doc/$pkgname/README.rst"
 }
