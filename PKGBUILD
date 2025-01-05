@@ -24,7 +24,7 @@ build() {
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
-	pytest
+	python -m pytest
 }
 
 package() {
