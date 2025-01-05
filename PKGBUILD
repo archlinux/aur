@@ -2,7 +2,7 @@
 
 _projectname=ezjsonm-encoding
 pkgname=ocaml-$_projectname
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 license=('MPL2')
 arch=('x86_64')
@@ -14,9 +14,7 @@ source=(
   "$pkgname-$pkgver.tbz::https://github.com/lthms/$_projectname/releases/download/$pkgver/$_projectname-$pkgver.tbz"
 )
 options=('!strip')
-sha512sums=(
-  "6ed40eabfc335e4619873dae832c5ce0e35acd425014adc13f47e39d980c5972a2490c3781d4edfb4e4ed829f64a7831890a296ae13c8d0c208f5972e44a48d5"
-)
+sha512sums=('68252b15b8b00a1a97edf0d51b97fd5b3e61a640ce68602ba93473c46576af037453148c16ec3fa3b0af83f2358a863928ce0ec761a9193669632cb76a4d1a0d')
 
 build() {
   cd "${srcdir}/$_projectname-${pkgver}"
