@@ -1,0 +1,5 @@
+[lib32-jbig2dec]
+source = "github"
+github = "ArtifexSoftware/jbig2dec"
+use_latest_release = true
+prefix = "v"
