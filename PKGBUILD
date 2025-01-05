@@ -11,7 +11,7 @@ url="https://github.com/microsoftgraph/$_projectname"
 license=('MIT')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-depends=('python>=3.5.0'  'python-requests>=2.23.0')
+depends=('python>=3.5.0' 'python-requests>=2.23.0')
 makedepends=('python-build' 'python-flit-core>=2.0.0' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-responses')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
