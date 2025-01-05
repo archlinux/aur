@@ -2,7 +2,8 @@
 source="github-graphql"
 github="mltframework/shotcut"
 prefix="v"
-use_latest_release=true
+#use_latest_release=true
+use_max_tag=true
 use_commit_number=true
 use_commit_hash=true
 
