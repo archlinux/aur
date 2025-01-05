@@ -1,6 +1,6 @@
 pkgbase = python-p115tiny302
 	pkgdesc = 115 tiny 302 backend.
-	pkgver = 0.0.6
+	pkgver = 0.0.8.1
 	pkgrel = 1
 	url = https://pypi.org/project/p115tiny302
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-p115tiny302
 	conflicts = python-p115tiny302
 	options = !strip
 	options = !debug
-	source = p115tiny302-0.0.6.tar.gz::https://files.pythonhosted.org/packages/source/p/p115tiny302/p115tiny302-0.0.6.tar.gz
-	sha256sums = a1af88ee884a40a6c0ff48dcc9b26feefa4caf8c0d462e9ba7339d1928075126
+	source = p115tiny302-0.0.8.1.tar.gz::https://files.pythonhosted.org/packages/source/p/p115tiny302/p115tiny302-0.0.8.1.tar.gz
+	sha256sums = bf2f0fdc593a393d599390ac33edefaebda0814972b025a046b91e3bbbf4a3ef
 
 pkgname = python-p115tiny302
