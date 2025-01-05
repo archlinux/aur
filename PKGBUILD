@@ -1,7 +1,7 @@
 # Maintainer: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 
 pkgname=gram-savitzky-golay-git
-pkgver=r40.6c4a34a
+pkgver=r41.7147138
 pkgrel=1
 pkgdesc="C++ Implementation of Savitzky-Golay filtering based on Gram polynomials"
 arch=(x86_64)
@@ -27,7 +27,6 @@ pkgver() {
 prepare() {
     cd gram-savitzky-golay
     git submodule init
-    git config submodule.cmake.url $srcdir/jrl-cmakemodules
     git submodule update
 }
 
