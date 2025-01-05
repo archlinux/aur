@@ -1,0 +1,23 @@
+pkgbase = blipnblup-git
+	pkgdesc = A Bubble Bobble inspired platform game
+	pkgver = r511.60aba61
+	pkgrel = 1
+	url = https://gitlab.com/luckeyproductions/games/blipnblup
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = CC0-1.0
+	license = CC-BY-4.0
+	license = CC-BY-3.0
+	license = CC-BY-SA-4.0
+	license = custom:OFL
+	license = custom:public domain
+	makedepends = git
+	makedepends = qt5-base
+	depends = dry
+	depends = hicolor-icon-theme
+	provides = blipnblup
+	conflicts = blipnblup
+	source = blipnblup-git::git+https://gitlab.com/luckeyproductions/games/blipnblup.git
+	sha512sums = SKIP
+
+pkgname = blipnblup-git
