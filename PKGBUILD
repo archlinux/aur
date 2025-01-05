@@ -13,7 +13,8 @@ license=('BSD-3-Clause')
 depends=('python>=3.7.0')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+# $pkgrel added to make sure our cached source file doesn't get used, as the previous pkgrel used a different upstream archive
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
 b2sums=('aff08b392cb15d00d66833c7fba1147202ef37ff5f0ad9fb2c6e79daf67126cea00caaacfa6945b53f2e31b7d1525f4043aaacc94b34e695e26cf35b90f25259')
 
 _sourcedirectory="$_projectname-$pkgver"
