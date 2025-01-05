@@ -1,0 +1,156 @@
+diff --git a/elasticsearch/serializer.py b/elasticsearch/serializer.py
+index afb0cba2..9333b3f5 100644
+--- a/elasticsearch/serializer.py
++++ b/elasticsearch/serializer.py
+@@ -47,7 +47,6 @@ try:
+         np.uint64,
+     )
+     FLOAT_TYPES += (
+-        np.float_,
+         np.float16,
+         np.float32,
+         np.float64,
+diff --git a/test_elasticsearch/test_async/test_connection.py b/test_elasticsearch/test_async/test_connection.py
+index d0646e1c..1201123a 100644
+--- a/test_elasticsearch/test_async/test_connection.py
++++ b/test_elasticsearch/test_async/test_connection.py
+@@ -25,7 +25,7 @@ from platform import python_version
+ 
+ import aiohttp
+ import pytest
+-from mock import patch
++from unittest.mock import patch
+ from multidict import CIMultiDict
+ 
+ from elasticsearch import AIOHttpConnection, __versionstr__
+diff --git a/test_elasticsearch/test_async/test_server/test_helpers.py b/test_elasticsearch/test_async/test_server/test_helpers.py
+index 46927b9c..8c8a33a3 100644
+--- a/test_elasticsearch/test_async/test_server/test_helpers.py
++++ b/test_elasticsearch/test_async/test_server/test_helpers.py
+@@ -22,7 +22,7 @@
+ import asyncio
+ 
+ import pytest
+-from mock import MagicMock, patch
++from unittest.mock import MagicMock, patch
+ 
+ from elasticsearch import TransportError, helpers
+ from elasticsearch.helpers import ScanError
+diff --git a/test_elasticsearch/test_async/test_transport.py b/test_elasticsearch/test_async/test_transport.py
+index c7ea0c34..9d882c22 100644
+--- a/test_elasticsearch/test_async/test_transport.py
++++ b/test_elasticsearch/test_async/test_transport.py
+@@ -23,7 +23,7 @@ import json
+ import re
+ 
+ import pytest
+-from mock import patch
++from unittest.mock import patch
+ 
+ from elasticsearch import AsyncTransport
+ from elasticsearch.connection import Connection
+diff --git a/test_elasticsearch/test_connection.py b/test_elasticsearch/test_connection.py
+index 2ade950b..01ff0bec 100644
+--- a/test_elasticsearch/test_connection.py
++++ b/test_elasticsearch/test_connection.py
+@@ -27,7 +27,7 @@ from platform import python_version
+ 
+ import pytest
+ import urllib3
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ from requests.auth import AuthBase
+ from urllib3._collections import HTTPHeaderDict
+ 
+diff --git a/test_elasticsearch/test_helpers.py b/test_elasticsearch/test_helpers.py
+index e6aee4fe..06dcf5ed 100644
+--- a/test_elasticsearch/test_helpers.py
++++ b/test_elasticsearch/test_helpers.py
+@@ -19,7 +19,7 @@
+ import threading
+ import time
+ 
+-import mock
++import unittest.mock
+ import pytest
+ 
+ from elasticsearch import Elasticsearch, helpers
+@@ -47,7 +47,7 @@ mock_process_bulk_chunk.call_count = 0
+ 
+ 
+ class TestParallelBulk(TestCase):
+-    @mock.patch(
++    @unittest.mock.patch(
+         "elasticsearch.helpers.actions._process_bulk_chunk",
+         side_effect=mock_process_bulk_chunk,
+     )
+@@ -58,7 +58,7 @@ class TestParallelBulk(TestCase):
+         self.assertEqual(50, mock_process_bulk_chunk.call_count)
+ 
+     @pytest.mark.skip
+-    @mock.patch(
++    @unittest.mock.patch(
+         "elasticsearch.helpers.actions._process_bulk_chunk",
+         # make sure we spend some time in the thread
+         side_effect=lambda *a: [
+diff --git a/test_elasticsearch/test_serializer.py b/test_elasticsearch/test_serializer.py
+index 5f9002d5..b3f2a286 100644
+--- a/test_elasticsearch/test_serializer.py
++++ b/test_elasticsearch/test_serializer.py
+@@ -96,11 +96,10 @@ class TestJSONSerializer(TestCase):
+ 
+         ser = JSONSerializer()
+         for np_type in (
+-            np.float_,
+             np.float32,
+             np.float64,
+         ):
+-            self.assertRegexpMatches(
++            self.assertRegex(
+                 ser.dumps({"d": np_type(1.2)}), r'^\{"d":1\.2[\d]*}$'
+             )
+ 
+diff --git a/test_elasticsearch/test_server/test_helpers.py b/test_elasticsearch/test_server/test_helpers.py
+index d9451062..0267874b 100644
+--- a/test_elasticsearch/test_server/test_helpers.py
++++ b/test_elasticsearch/test_server/test_helpers.py
+@@ -15,7 +15,7 @@
+ #  specific language governing permissions and limitations
+ #  under the License.
+ 
+-from mock import patch
++from unittest.mock import patch
+ 
+ from elasticsearch import TransportError, helpers
+ from elasticsearch.helpers import ScanError
+diff --git a/test_elasticsearch/test_transport.py b/test_elasticsearch/test_transport.py
+index c5cd3f0c..79b9ec88 100644
+--- a/test_elasticsearch/test_transport.py
++++ b/test_elasticsearch/test_transport.py
+@@ -22,7 +22,7 @@ import json
+ import time
+ 
+ import pytest
+-from mock import patch
++from unittest.mock import patch
+ 
+ from elasticsearch.connection import Connection
+ from elasticsearch.connection_pool import DummyConnectionPool
+@@ -191,7 +191,7 @@ class TestTransport(TestCase):
+         t.perform_request("GET", "/", body={})
+         self.assertEqual(1, len(t.get_connection().calls))
+         headers = t.get_connection().calls[0][1]["headers"]
+-        self.assertRegexpMatches(
++        self.assertRegex(
+             headers["x-elastic-client-meta"], r"^es=[0-9.]+p?,py=[0-9.]+p?,t=[0-9.]+p?$"
+         )
+ 
+@@ -203,7 +203,7 @@ class TestTransport(TestCase):
+         t.perform_request("GET", "/", body={}, headers={"Custom": "header"})
+         self.assertEqual(1, len(t.get_connection().calls))
+         headers = t.get_connection().calls[0][1]["headers"]
+-        self.assertRegexpMatches(
++        self.assertRegex(
+             headers["x-elastic-client-meta"],
+             r"^es=[0-9.]+p?,py=[0-9.]+p?,t=[0-9.]+p?,dm=1.2.3$",
+         )

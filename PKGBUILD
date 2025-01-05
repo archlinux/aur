@@ -1,0 +1,49 @@
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Contributor: Arturo Penen <apenen@gmail.com>
+_projectname='elasticsearch-py'
+_pkgname='python-elasticsearch'
+pkgname="${_pkgname}7.13"
+pkgver='7.13.4'
+pkgrel='1'
+pkgdesc="Python client for Elasticsearch (legacy 7.13.* version - before the UnsupportedProductError check)"
+arch=('any')
+url="https://github.com/elastic/$_projectname"
+license=('Apache-2.0')
+provides=("$_pkgname=$pkgver" "${_pkgname}7=$pkgver")
+conflicts=("$_pkgname" "${_pkgname}7")
+depends=('python>=3.4.0' 'python-aiohttp>=3.0.0' 'python-certifi' 'python-requests>=2.4.0' 'python-urllib3>=1.21.1')
+makedepends=('python-build' 'python-setuptools' 'python-installer' 'python-wheel')
+checkdepends=('python-numpy' 'python-pandas' 'python-pytest' 'python-pytest-asyncio' 'python-yaml')
+source=(
+	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+	'fix-deprecations.diff'
+)
+b2sums=('442190229084c39fcfdb20218cd8e2beb63789050fdf64da568c39b34779ee1c95ba7d90da7bd4a5795aa708e9d940f9e202dc8fb52eaef0d8c04b0a16aa754b'
+        'ed42045499adb04a155dcddf3f164ec1696d92f8ca0b9b12f9ff68a3415ab0ef0475aa87a64e97c8dfd25e55e8dc3c0698a54e8ccb7c44de34d3dc39b3fe9562')
+
+_sourcedirectory="$_projectname-$pkgver"
+
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+	patch --forward -p1 < "$srcdir/fix-deprecations.diff"
+}
+
+build() {
+	cd "$srcdir/$_sourcedirectory/"
+	python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# Run tests, but ignore tests that require a running server
+	pytest --ignore test_elasticsearch/test_async/test_server/ --ignore test_elasticsearch/test_server/
+}
+
+package() {
+	cd "$srcdir/$_sourcedirectory/"
+	python -m installer --destdir="$pkgdir" 'dist/'*'.whl'
+
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 'README.rst' "$pkgdir/usr/share/doc/$pkgname/README.md"
+}
