@@ -2,7 +2,7 @@
 
 _pkgname=rism
 pkgname=$_pkgname-bin
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Application-specific browser based on tauri"
 arch=("x86_64")
@@ -13,7 +13,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip')
 source=("$url/releases/download/v$pkgver/rism-x86_64.deb")
-sha256sums=("ab57d5262506e627ef30fcea9d47f8137fc34cba9cd7a8ae5fff32d7418d323a")
+sha256sums=("a587f564a9568e8e789108eeacf94dd6370aa4a63bfbd3b4cfcf2d3d116433f7")
 
 package() {
 	tar -C "$pkgdir" -xf data.tar.gz
