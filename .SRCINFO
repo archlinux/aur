@@ -1,13 +1,13 @@
 pkgbase = python-cons
 	pkgdesc = An implementation of Lisp/Scheme-like cons in Python
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/pythological/python-cons/
 	arch = any
 	license = LGPL3
 	makedepends = python-setuptools
 	depends = python-logical-unification
-	source = https://files.pythonhosted.org/packages/source/c/cons/cons-0.4.5.tar.gz
-	sha256sums = b46b48adb5a5af7f44375da346d926e55a325d4dc12b9add9f20280d3b3742cb
+	source = https://github.com/pythological/python-cons/archive/refs/tags/v0.4.6.tar.gz
+	sha256sums = 86f7729f8c9eb47392b94799d94da6f036847702956c26abc85d070f7dd54cc8
 
 pkgname = python-cons
