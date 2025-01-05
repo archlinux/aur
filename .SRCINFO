@@ -1,7 +1,7 @@
 pkgbase = python-asteval
 	pkgdesc = Minimalistic evaluator of python expression using ast module
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lmfit/asteval
 	arch = any
 	license = MIT
@@ -11,7 +11,6 @@ pkgbase = python-asteval
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python-numpy
-	conflicts = python-qiskit-terra
 	source = asteval-1.0.5.tar.gz::https://github.com/lmfit/asteval/archive/refs/tags/1.0.5.tar.gz
 	b2sums = 159076d1cdcac9ee6d9bf319ccb6ffcdb775fea7a930dce85d1171ede4f3e2b6acf1e9293cfe9d44e8da2762f20507c0781492fa5e6054a4f28fe836581af958
 

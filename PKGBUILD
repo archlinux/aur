@@ -4,12 +4,11 @@
 _pkgname=asteval
 pkgname=python-${_pkgname}
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalistic evaluator of python expression using ast module "
 arch=(any)
 url=https://github.com/lmfit/asteval
 license=(MIT)
-conflicts=(python-qiskit-terra)
 depends=(python-numpy)
 makedepends=(
     python-build
