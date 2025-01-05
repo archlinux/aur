@@ -1,13 +1,13 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=qdigidoc4
-pkgver=4.6.0.4458
-_rls_tag=v4.6.0
+pkgver=4.7.0.4460
+_rls_tag=v4.7.0
 pkgrel=1
 pkgdesc="DigiDoc4 Client is an application for digitally signing and encrypting documents; the software includes functionality to manage Estonian ID-card - change pin codes, update certificates etc."
 arch=('x86_64')
 url="https://www.id.ee/"
 license=('LGPL-2.1-or-later')
-depends=('zlib' 'openssl' 'libdigidocpp>=4.0.0' 'libldap' 'pcsclite' 'opensc' 'qt6-base' 'qt6-svg' 'hicolor-icon-theme')
+depends=('zlib' 'openssl' 'libdigidocpp>=4.1.0' 'libldap' 'pcsclite' 'opensc' 'qt6-base' 'qt6-svg' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'gettext' 'flatbuffers' 'qt6-tools' 'qt6-translations')
 optdepends=('ccid: Smart Card support'
             'python-nautilus: Nautilus Extension')
