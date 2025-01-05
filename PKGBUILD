@@ -2,7 +2,7 @@
 
 pkgname=csky-debugserver-bin
 pkgver=5.18.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="C-Sky Debugger Server"
 arch=('x86_64')
@@ -43,13 +43,14 @@ package() {
 
     install -Dm0644 "${srcdir}"/*.pdf -t "${pkgdir}/opt/t-head/${pkgname%-bin}"
 
-    install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.csh" <<EOF
-setenv PATH "${PATH}:/opt/t-head/${pkgname%-bin}"
-EOF
+    #     install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.csh" <<EOF
+    # setenv PATH "${PATH}:/opt/t-head/${pkgname%-bin}"
+    # EOF
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-bin}" <<EOF
 #!/bin/env bash
-export PATH=/opt/t-head/${pkgname%-bin}
+export PATH=/opt/t-head/${pkgname%-bin}:\$PATH
+cd /opt/t-head/${pkgname%-bin}
 exec DebugServerConsole.elf "\$@"
 EOF
 }

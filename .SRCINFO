@@ -1,7 +1,7 @@
 pkgbase = csky-debugserver-bin
 	pkgdesc = C-Sky Debugger Server
 	pkgver = 5.18.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xrvm.cn/community/download?id=4380347564587814912
 	arch = x86_64
 	license = BSD
