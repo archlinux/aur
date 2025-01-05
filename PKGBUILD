@@ -15,6 +15,11 @@ _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.bz2::${url}/download/${_pkgsrc}.tar.bz2")
 sha256sums=('11a5f5084488c480f3ff5a24d64d7147bb64272bf60a0ba51330a56c5b50cab9')
 
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  sed -i 's|lib/pkgconfig|lib32/pkgconfig|g' 'Makefile.am'
+}
+
 build() {
   export CFLAGS+=" -m32"
   export CXXFLAGS+=" -m32"
@@ -38,9 +43,6 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   make DESTDIR="${pkgdir}" install
 
-  cd "${pkgdir}/usr/lib"
-  find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/lib32/{}" \;
-
   cd "${pkgdir}/usr"
-  rm -rf "bin" "include" "lib" "share"
+  rm -rf "bin" "include" "share"
 }
