@@ -2,8 +2,8 @@
 
 _pkgname=pat-dealloc
 pkgname=$_pkgname-dkms
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Kernel module to allow removal of x86 PAT entries from userspace"
 url="https://github.com/thorio/$_pkgname"
 license=("GPL3")
@@ -12,7 +12,7 @@ depends=("dkms")
 makedepends=("cargo")
 _archive="$_pkgname-$pkgver"
 source=("$_archive.tar.gz::https://github.com/thorio/pat-dealloc/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("a6ebc128d6d85553ec5f9894e05d4ca5f2d0887d630f39a61dc3d355060b87aa")
+sha256sums=("76d83fac6e3ba27dd4a0ba4616a5261c2de7dbecb3d3bd48e4f846df6beed3bd")
 
 build() {
 	cd $_archive
