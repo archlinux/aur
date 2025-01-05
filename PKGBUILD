@@ -3,7 +3,7 @@
 pkgname=('fs2-knossos-dotnet')
 pkgver=v1.2.4
 _extpkgname='Knossos.NET'
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi platform launcher for Freespace 2 Open using .NET 6.0 and AvaloniaUI"
 arch=('x86_64')
 url='https://github.com/KnossosNET/Knossos.NET'
