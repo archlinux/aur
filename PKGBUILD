@@ -2,7 +2,7 @@
 
 _pkgname="python-openai-whisper"
 pkgname="$_pkgname-git"
-pkgver=20240930.r6.g90db0de
+pkgver=20240930.r10.g517a43e
 pkgrel=1
 pkgdesc="Robust speech recognition via large-scale weak supervision"
 url="https://github.com/openai/whisper"
@@ -37,29 +37,8 @@ conflicts=(
 )
 
 _pkgsrc="openai.whisper"
-source=(
-  "$_pkgsrc"::"git+$url.git"
-  "pr2409-python-3.13.patch"::"https://github.com/openai/whisper/pull/2409.diff"
-)
-sha256sums=(
-  'SKIP'
-  '6d40f73edc4dfcdf1fc5a3205170362aa542be721051f7862f9cff8b562f0e55'
-)
-
-prepare() {
-  cd "$_pkgsrc"
-
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    src="${src%.zst}"
-    if [[ $src == *.patch ]]; then
-      printf '\nApplying patch: %s\n' "$src"
-      patch -Np1 -F100 -i "${srcdir:?}/$src"
-    fi
-  done
-}
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
