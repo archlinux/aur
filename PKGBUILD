@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=python-quart-schema
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Quart extension that provides schema validation and auto-generated API documentation"
 arch=(any)
@@ -15,7 +15,7 @@ depends=(
 makedepends=(
   python-build
   python-installer
-  python-poetry-core
+  python-pdm-backend
   python-wheel
 )
 checkdepends=(
@@ -26,7 +26,7 @@ checkdepends=(
   python-pytest-asyncio
 )
 source=("$url/archive/$pkgver/${pkgname#python-}-$pkgver.tar.gz")
-sha256sums=('20f4c4df44b4e33babdc8ba793a56debd1cae595b789e6a620d94f1c2a63dcdf')
+sha256sums=('929c99376f03b5b861638caa0831337ec5409c346f777009022d5ad7650e1c4a')
 
 build() {
   cd "${pkgname#python-}-$pkgver"
