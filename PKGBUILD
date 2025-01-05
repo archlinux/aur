@@ -1,4 +1,5 @@
-# Maintainer: Alex S. <shantanna_at_hotmail_dot_com>
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
+# Contributor: Alex S. <shantanna_at_hotmail_dot_com>
 # Contributor: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
 
 # Hardware support is limited. Nvidia cards should work fine.
@@ -9,33 +10,17 @@
 # It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
 
 pkgname=davinci-resolve-studio
-major_version=19
-minor_version=0
-release_version=3
-pkgver=${major_version}.${minor_version}.${release_version}
+pkgver=19.1.2
 pkgrel=1
 
-if [ "$pkgname" == "davinci-resolve" ]; then
-  # Variables for FREE edition
-  _product="DaVinci Resolve"
-  _referid='ee1da4f13df74d72b6da783ead2ed875'
-  _siteurl="https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve/linux"
-  sha256sums=('ebfd232ba56bf8ef484dcab612a8ff53880aae8c6994f73c28bafeba65c2b125')
-  pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
-  _archive_name=DaVinci_Resolve_${pkgver}_Linux
-  _archive_run_name=DaVinci_Resolve_${pkgver}_Linux
-  conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
-elif [ "$pkgname" == "davinci-resolve-studio" ]; then
-  # Variables for STUDIO edition
-  _product="DaVinci Resolve Studio"
-  _referid='86463718c6d1491d8d95f8b49f75c4db'
-  _siteurl="https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve-studio/linux"
-  sha256sums=('53faec4c738c4941bd1f898020142b57c2112ca8ca3d9ef2c6e89f1d38c732cc')
-  pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
-  _archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
-  _archive_run_name=DaVinci_Resolve_Studio_${pkgver}_Linux
-  conflicts=('davinci-resolve' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
-fi
+_product="DaVinci Resolve Studio"
+_referid='86463718c6d1491d8d95f8b49f75c4db'
+_siteurl="https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve-studio/linux"
+sha256sums=('7361335fb530103e455f6b4b2c5b7a49cfa8288864fb9775173845c7910e28ef')
+pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
+_archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
+_archive_run_name=DaVinci_Resolve_Studio_${pkgver}_Linux
+conflicts=('davinci-resolve' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
@@ -45,12 +30,6 @@ _releaseinfo=$(curl -Ls "$_siteurl")
 
 _downloadId=$(printf "%s" $_releaseinfo | sed -n 's/.*"downloadId":"\([^"]*\).*/\1/p')
 _pkgver=$(printf "%s" $_releaseinfo | awk -F'[,:]' '{for(i=1;i<=NF;i++){if($i~/"major"/){print $(i+1)} if($i~/"minor"/){print $(i+1)} if($i~/"releaseNum"/){print $(i+1)}}}' | sed 'N;s/\n/./;N;s/\n/./')
-
-#if [[ $pkgver != $_pkgver ]]; then
-#  echo "Version mismatch. ($pkgver ≠ $_pkgver)"
-#  echo "It is recommended to wait for the next release."
-#  exit
-#fi
 
 _reqjson="{ \
   \"firstname\": \"Arch\", \
@@ -238,4 +217,3 @@ package()
   popd
 }
 
-# vim: fileencoding=utf-8 sts=4 sw=4 noet
