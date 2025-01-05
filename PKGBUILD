@@ -3,17 +3,18 @@
 
 _name=bash_kernel
 pkgname=jupyter-${_name}
-pkgver=0.9.3
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="A bash kernel for Jupyter"
 arch=(any)
 url="https://github.com/takluyver/bash_kernel"
 license=(BSD-3-Clause)
 depends=(
   bash
-  python-pexpect
-  python-ipykernel
   python-debugpy
+  python-filetype
+  python-ipykernel
+  python-pexpect
 )
 makedepends=(
   python-build
@@ -21,7 +22,7 @@ makedepends=(
   python-flit-core
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('2d1cf609594fc4333d74821b69c5df685c3f8ecf908ad4a0ad7411118a46b4046817ef5c166aac0fbc28c9a54d28ca1fa614f00194d5ad7b7d4c630cdcc92301')
+b2sums=('9be956d3a7f3a22aaffec8f51f805e9409a220e44904cf051be67f61c3fe006811f2b3256ea934eb331bcd64900154e99406799ffef16afc0dc6b7bd9dbf7b06')
 
 build() {
   cd $_name-$pkgver

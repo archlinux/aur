@@ -1,7 +1,7 @@
 pkgbase = jupyter-bash_kernel
 	pkgdesc = A bash kernel for Jupyter
-	pkgver = 0.9.3
-	pkgrel = 2
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = https://github.com/takluyver/bash_kernel
 	arch = any
 	license = BSD-3-Clause
@@ -9,10 +9,11 @@ pkgbase = jupyter-bash_kernel
 	makedepends = python-installer
 	makedepends = python-flit-core
 	depends = bash
-	depends = python-pexpect
-	depends = python-ipykernel
 	depends = python-debugpy
-	source = jupyter-bash_kernel-0.9.3.tar.gz::https://github.com/takluyver/bash_kernel/archive/refs/tags/0.9.3.tar.gz
-	b2sums = 2d1cf609594fc4333d74821b69c5df685c3f8ecf908ad4a0ad7411118a46b4046817ef5c166aac0fbc28c9a54d28ca1fa614f00194d5ad7b7d4c630cdcc92301
+	depends = python-filetype
+	depends = python-ipykernel
+	depends = python-pexpect
+	source = jupyter-bash_kernel-0.10.0.tar.gz::https://github.com/takluyver/bash_kernel/archive/refs/tags/0.10.0.tar.gz
+	b2sums = 9be956d3a7f3a22aaffec8f51f805e9409a220e44904cf051be67f61c3fe006811f2b3256ea934eb331bcd64900154e99406799ffef16afc0dc6b7bd9dbf7b06
 
 pkgname = jupyter-bash_kernel
