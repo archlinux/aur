@@ -1,0 +1,25 @@
+pkgbase = python-elasticsearch-dsl7
+	pkgdesc = High level Python client for Elasticsearch (legacy 7.* version)
+	pkgver = 7.4.1
+	pkgrel = 1
+	url = https://github.com/elastic/elasticsearch-dsl-py
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.4.0
+	depends = python-dateutil
+	depends = python-elasticsearch>=7.0.0
+	depends = python-elasticsearch<8.0.0
+	depends = python-six
+	provides = python-elasticsearch-dsl=7.4.1
+	conflicts = python-elasticsearch-dsl
+	source = python-elasticsearch-dsl7-7.4.1.tar.gz::https://github.com/elastic/elasticsearch-dsl-py/archive/v7.4.1.tar.gz
+	source = fix-deprecations.diff
+	b2sums = 1cd4705e6bfd50fab69c8bc44b77bae975e911822500bfe4624c945d8edee7e1eb4418ee9a7e85c79ddb21ed403377139709d10e0b2b39cd4a0f303e419943df
+	b2sums = 3b760a18f783ab57e4115705f7f56616c1440eda197bdc55804f2dc6d065f69ca7a316265341f6f10c87bede4694b05d11d1a0af5426bf85004bd32c91bb8f50
+
+pkgname = python-elasticsearch-dsl7

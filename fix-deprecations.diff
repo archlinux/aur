@@ -1,0 +1,13 @@
+diff --git a/tests/conftest.py b/tests/conftest.py
+index b7326c3..a5fda5e 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -23,7 +23,7 @@ from datetime import datetime
+ 
+ from elasticsearch.helpers import bulk
+ from elasticsearch.helpers.test import SkipTest, get_test_client
+-from mock import Mock
++from unittest.mock import Mock
+ from pytest import fixture, skip
+ 
+ from elasticsearch_dsl.connections import add_connection, connections
