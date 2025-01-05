@@ -3,7 +3,7 @@
 prj='auror'
 pkgname=($prj)
 pkgdesc='only for developer until software is in first alpha'
-pkgver='0.0.4'
+pkgver='0.0.5'
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/vbextreme/${prj}.git"
