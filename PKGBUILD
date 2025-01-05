@@ -8,7 +8,7 @@ arch=("any")
 url='https://github.com/devHeadset/xClock'
 license=('GPL')
 makedepends=('cargo' 'git')
-source=("git+$url.git")
+source=("$url.git")
 md5sums=('SKIP')
 
 _binname=xClock
