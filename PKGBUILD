@@ -4,10 +4,10 @@
 # Contributor: Ronan Rabouin <darkbaboon@gmail.com>
 
 pkgname=hhexen
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="A Linux port of Raven Game's old shooter, Hexen (aka Hacked Hexen)"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://hhexen.sourceforge.net/hhexen.html"
 license=('GPL2')
 depends=('sdl_mixer' 'glu')
@@ -15,19 +15,19 @@ optdepends=('timidity++: for midi music support'
             'hexen1-wad: data files from shareware version')
 install=$pkgname.install
 changelog=$pkgname.ChangeLog
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-src.tgz")
-sha256sums=('ab88c1df8b2be107beb0fc1f7d6193c0102f731032955bacccc0b6c515668ccb')
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('8a5d8feac4a9db457e8d4474ee0bf038f46494e805a2585a90ccf74374029c69')
 
 build() {
-  cd $pkgname-$pkgver-src
+  cd $pkgname-$pkgver
 
-  ./configure --prefix=/usr --with-audio=sdlmixer
+  ./configure --prefix=/usr --with-audio=sdlmixer --with-datapath=/usr/share/games/hexen/
   make
 }
 
 package() {
-  cd $pkgname-$pkgver-src
+  cd $pkgname-$pkgver
 
   install -Dm755 $pkgname-gl "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 README-1.6 "$pkgdir"/usr/share/docs/$pkgname/README
+  install -Dm644 README "$pkgdir"/usr/share/docs/$pkgname/README
 }
