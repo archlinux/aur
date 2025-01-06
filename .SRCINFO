@@ -1,14 +1,14 @@
 pkgbase = unifi
 	pkgdesc = Centralized management system for Ubiquiti UniFi AP
 	pkgver = 9.0.108
-	pkgrel = 1
+	pkgrel = 2
 	url = https://unifi-network.ui.com
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = custom
 	depends = fontconfig
-	depends = java-runtime-headless=17
+	depends = java-runtime-headless=21
 	depends = mongodb
 	conflicts = tomcat-native
 	source = UniFi-9.0.108.zip::https://dl.ui.com/unifi/9.0.108/UniFi.unix.zip

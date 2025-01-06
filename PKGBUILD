@@ -3,7 +3,7 @@
 
 pkgname=unifi
 pkgver=9.0.108
-pkgrel=1
+pkgrel=2
 pkgdesc='Centralized management system for Ubiquiti UniFi AP'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://unifi-network.ui.com'
@@ -12,7 +12,7 @@ url='https://unifi-network.ui.com'
 license=('custom')
 depends=(
   'fontconfig'
-  'java-runtime-headless=17'
+  'java-runtime-headless=21'
   'mongodb'
 )
 conflicts=('tomcat-native')
