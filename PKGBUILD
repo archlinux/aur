@@ -4,18 +4,18 @@
 
 _pkgname=renpy
 pkgname=${_pkgname}-git
-pkgver=8.3.1.24090601.r124.g916c6cc
+pkgver=8.3.4.24120703.r374.g0a1e694
 pkgrel=1
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs (dev channel)"
 arch=('i686' 'x86_64')
 license=('MIT')
 url='http://www.renpy.org'
 depends=(
-	'glibc' 'ffmpeg6.1' 'fribidi' 'harfbuzz' 'freetype2' 'libpng'
+	'glibc' 'ffmpeg' 'fribidi' 'harfbuzz' 'freetype2' 'libpng'
 	'python-pygame-sdl2' 'sdl2' 'sdl2_image' 'sdl2_mixer'
-	'sdl2_gfx' 'sdl2_ttf' 'python-future' 'python-ecdsa')
+	'sdl2_gfx' 'sdl2_ttf' 'python-ecdsa')
 makedepends=(
-	'cython0' 'python-setuptools-scm' 'python-sphinx_rtd_dark_mode'
+	'cython' 'python-setuptools-scm' 'python-sphinx_rtd_dark_mode'
 	'python-sphinx_rtd_theme' 'git' 'python-build' 'python-installer' 'python-wheel')
 provides=('renpy' 'python-renpy')
 conflicts=('renpy')
@@ -40,8 +40,7 @@ pkgver() {
 build() {
 	cd "$_pkgname"
 
-	export CFLAGS+=' -I/usr/include/ffmpeg6.1 -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration'
-	export RENPY_DEPS_INSTALL='/usr/include/ffmpeg6.1:/usr/lib/ffmpeg6.1:/usr'
+	export CFLAGS+=" $(pkg-config --cflags freetype2)"
 
 	local _version="${pkgver%.*}"
 	_version="${_version%.*}"
@@ -55,13 +54,11 @@ version_name = 'TBD'
 EOF
 	) 'renpy/vc_version.py'
 
-	pushd 'module'
-		python -m build --wheel --no-isolation
-		#rm -rf "$srcdir/tempinstall"
-		#python -m installer --destdir="$srcdir/tempinstall" dist/*.whl
-	popd
+	python -m build --wheel --no-isolation
+	#rm -rf "$srcdir/tempinstall"
+	#python -m installer --destdir="$srcdir/tempinstall" dist/*.whl
 
-	python -m compileall 'renpy'
+	#python -m compileall 'renpy'
 
 	# build docs
 	#cd 'sphinx'
@@ -90,7 +87,5 @@ package() {
 	install -d -m755 "$pkgdir/usr/share/renpy/lib/py3-linux-x86_64"
 	ln -s '/usr/bin/renpy' "$pkgdir/usr/share/renpy/lib/py3-linux-x86_64"
 
-	#pack modules
-	cd 'module'
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
