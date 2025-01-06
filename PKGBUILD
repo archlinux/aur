@@ -3,7 +3,7 @@
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
@@ -75,7 +75,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.
         "open-webui.service"
         "open-webui.conf")
 sha1sums=('4260ae1d411ea547fa280eb80df6b4b18badc981'
-          '1054a3fa2b1b3bec429d77a31e9ef95fb019c016'
+          '3dc37cbf6a962fe16c3f5f740b7100e9ae87fd8e'
           '8a1fad8ffad186f3265e173557eb160c06497435'
           'fc563a2f3e240d76672b09c4627d654248d70186')
 options=(!strip !debug)

@@ -1,8 +1,6 @@
-diff --git a/pyproject.toml b/pyproject.toml
-index de14a9f..55a4a6d 100644
---- a/pyproject.toml
-+++ b/pyproject.toml
-@@ -135,7 +135,7 @@ allow-direct-references = true
+--- pyproject.toml	2025-01-05 15:08:42.000000000 +0530
++++ pyproject.toml	2025-01-06 09:18:18.470071688 +0530
+@@ -135,7 +135,7 @@
  path = "package.json"
  pattern = '"version":\s*"(?P<version>[^"]+)"'
 
@@ -11,10 +9,12 @@ index de14a9f..55a4a6d 100644
 
  [tool.hatch.build.targets.wheel]
  sources = ["backend"]
-@@ -150,4 +150,5 @@ exclude = [
+@@ -150,7 +150,7 @@
      "webui.db",
      "chroma.sqlite3",
  ]
 -force-include = { "CHANGELOG.md" = "open_webui/CHANGELOG.md", build = "open_webui/frontend" }
-+#force-include = { "CHANGELOG.md" = "open_webui/CHANGELOG.md", build = "open_webui/frontend" }
-+force-include = { "CHANGELOG.md" = "open_webui/CHANGELOG.md"}
++force-include = { "CHANGELOG.md" = "open_webui/CHANGELOG.md" }
+
+ [tool.codespell]
+ # Ref: https://github.com/codespell-project/codespell#using-a-config-file
