@@ -4,7 +4,7 @@
 
 pkgname='therion'
 pkgver='6.3.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Cave surveying: processes survey data and generates maps or 3D models of caves"
 arch=('x86_64' 'i686')
 url="http://therion.speleo.sk"
@@ -32,7 +32,6 @@ depends=(
 )
 
 makedepends=(
-	'catch2-v2'
 	'cmake'
 	'perl'
 )
@@ -71,7 +70,7 @@ build() {
   cmake \
     -B "${_builddir}" \
     -S "${_sourcedir}" \
-    -DUSE_BUNDLED_CATCH2=OFF \
+    -DUSE_BUNDLED_CATCH2=ON \
     -DUSE_BUNDLED_SHAPELIB=OFF \
     -DCMAKE_INSTALL_PREFIX='/usr'
 
