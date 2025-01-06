@@ -1,0 +1,5 @@
+*
+!.gitignore
+!netbootxyz.conf
+!PKGBUILD
+!.SRCINFO
