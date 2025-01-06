@@ -1,0 +1,16 @@
+pkgbase = perl-apache-session-browseable
+	pkgdesc = Add index and search methods to Apache::Session
+	pkgver = 1.3.14
+	pkgrel = 1
+	url = https://metacpan.org/dist/Apache-Session-Browseable
+	arch = any
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
+	makedepends = perl-module-build
+	depends = perl-apache-session
+	depends = perl-json
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/C/CO/COUDOT/Apache-Session-Browseable-1.3.14.tar.gz
+	md5sums = 3d5cc01ac9f235d2aff509412c32b1f9
+
+pkgname = perl-apache-session-browseable
