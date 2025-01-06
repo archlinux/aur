@@ -13,6 +13,10 @@ source=("git+${url}")
 provides=("${_pkgname}")
 depends=('dbus' 'gcc-libs' 'libseccomp')
 makedepends=('git' 'dbus-glib' 'libelf' 'pkg-config' 'rust' 'systemd')
+optdepends=(
+  'docker: for docker runtime support'
+  'podman: for podman runtime support'
+)
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
