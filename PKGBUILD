@@ -1,12 +1,12 @@
 # Maintainer: czyt<czytcn@gmail.com>
 
 pkgname=readest-bin
-pkgver=0.8.8
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A reader application for EPUB files (AppImage version)"
 arch=('x86_64')
 url="https://github.com/chrox/readest"
-license=('unknown')
+license=('AGPL-3.0')
 depends=(
     'fuse2'
     'appmenu-gtk-module'
