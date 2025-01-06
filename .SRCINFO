@@ -1,7 +1,7 @@
 pkgbase = ocaml-containers
 	pkgdesc = A lightweight, modular standard library extension, string library, and interfaces to various libraries for OCaml
 	pkgver = 3.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/c-cube/ocaml-containers
 	arch = x86_64
 	arch = aarch64
@@ -17,10 +17,10 @@ pkgbase = ocaml-containers
 	depends = ocaml>=4.12.0
 	depends = dune>=3.0.0
 	options = !strip
-	source = ocaml-containers-3.15::git+https://github.com/c-cube/ocaml-containers#commit=f519986f7f51500cc927dbd26906e17e8d3a3d4f?signed
+	source = ocaml-containers-3.15-2::git+https://github.com/c-cube/ocaml-containers#commit=e1de3da1e32413e8faf32dab58a0be8bbc9be51d?signed
 	source = remove-either-dep.diff
 	validpgpkeys = 1370978BC81E9735DFE727E1EBFFF6F283F3A2B4
-	b2sums = 45dfedecff1aa772f8abcee9fb902ca21913a7fdd905bb933b644544f281c6802ed27c546a743fcbb0b1a639fe086fe8ba573b15a685fed752b5316b93578940
+	b2sums = feee8effb121b9064cf4673e0d9aa882fcfe430eb0cb62d762518d1f55a69f627c26e9e5a24e880878fe61234f9cd534f02b828759506a476705b64dcdd7adac
 	b2sums = 079e0e5257bb8251f45168096bc4f42b259fbdaf44e61d72b3e75cb74a5a48f541c49f1eac4c4eb100302ffa4405d0dedd278b3cc8274d9126789dcbf8255ad4
 
 pkgname = ocaml-containers
