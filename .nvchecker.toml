@@ -1,0 +1,5 @@
+[aaaaxy-bin]
+source = "github"
+github = "divVerent/aaaaxy"
+use_latest_release = true
+prefix = "v"
