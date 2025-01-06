@@ -4,7 +4,7 @@
 pkgname=libsql-sqlite3
 _altname=libsqlite3 #what do we call this to not conflict with core/sqlite ?
 _pkgname=libsql
-pkgver=0.24.30
+pkgver=0.24.31
 pkgrel=1
 pkgdesc='libsql sqlite3 compatibility libraries and executables'
 url='https://turso.tech/libsql'
@@ -16,7 +16,7 @@ makedepends=('cargo')
 #conflicts=(sqlite3)
 arch=('i686' 'x86_64')
 source=("https://github.com/tursodatabase/libsql/archive/refs/tags/libsql-server-v${pkgver}.tar.gz")
-b2sums=('13b3021739bda3c66ab6b395a377b0bb7162909f27492288f7a67d6bf5e1f4a1484da7b10af1544c3188089b24da9b0163ac9662879cc7a76a9c87dc3425a2b1')
+b2sums=('a3afdfd7f219335277da3ce1a73a7589c9f3257e5daa6e342ed7009fcefafe0b8246996aec91a316135bc5423ad3088c5bf1ce3a22e9841d9221392d445ed3ba')
 
 _pkgdir="${_pkgname}-libsql-server-v${pkgver}"
 prepare() {
