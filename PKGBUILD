@@ -3,7 +3,7 @@
 # Contributor: Maxim Baz <$pkgname at maximbaz dot com>
 pkgname=wire-desktop-git
 _pkgname=WireInternal
-pkgver=3.37.3607.r0.g167eb5e
+pkgver=3.37.3607.r31.g4330270
 _electronversion=33
 _nodeversion=18
 pkgrel=1
@@ -46,7 +46,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -64,6 +64,7 @@ build() {
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        sed -i "/registry.npmjs.org/d" .yarnrc.yml
         {
             echo 'npmRegistryServer: "https://registry.npmmirror.com"'
             echo "cacheFolder: "${srcdir}"/.yarn/cache"
@@ -71,9 +72,11 @@ build() {
         } >> .yarnrc.yml
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-        sed "s/github.com/github.moeyy.xyz\/https:\/\/github.com/g" -i app-config/package.json
     fi
     NODE_ENV=development    yarn install --immutable
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
     NODE_ENV=production     yarn run build:prepare
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
 }
