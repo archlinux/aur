@@ -1,5 +1,5 @@
 pkgname=nexttrace
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc='An open source visual route tracking CLI tool'
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/nxtrace/NTrace-core"
 license=('GPL-3.0-or-later')
 makedepends=('go' 'git')
 source=("git+https://github.com/nxtrace/NTrace-core.git#tag=v$pkgver")
-sha256sums=('9a962aa8a00c6fa0fef798d011641a1ecb281ebc3892b1732e6ce076b7861b51')
+sha256sums=('fd3f2f725a5f677d78970a5296fda6bccc11b7a9aea9c329caf46e1ad799a413')
 
 build() {
   cd "NTrace-core"
