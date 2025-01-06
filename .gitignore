@@ -1,0 +1,11 @@
+/AudibleInstruments
+/avr-audio-bootloader
+/avril
+/avrilx
+/pichenettes-eurorack
+/stm-audio-bootloader
+/stmlib
+pkg/
+src/
+*.tar.*
+*.zip

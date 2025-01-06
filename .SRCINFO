@@ -1,33 +1,27 @@
 pkgbase = vcvrack-audible-instruments
-	pkgdesc = Mutable Instruments' VCV modules
-	pkgver = 0.6.0
+	pkgdesc = Mutable Instruments VCV modules
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/VCVRack/AudibleInstruments
-	install = vcvrack-audible-instruments.install
-	arch = i686
+	arch = aarch64
 	arch = x86_64
-	license = BSD
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = GPL-3.0-or-later
+	license = LicenseRef-dist
 	makedepends = git
-	makedepends = zip
-	depends = vcvrack>=0.6
-	source = vcvrack-AudibleInstruments::git+https://github.com/VCVRack/AudibleInstruments.git#tag=v0.6.0
-	source = vcvrack::git+https://github.com/VCVRack/Rack.git#tag=v0.6.0
-	source = AndrewBelt-eurorack::git+https://github.com/AndrewBelt/eurorack.git
-	source = git+https://github.com/AndrewBelt/osdialog.git
-	source = git+https://github.com/AndrewBelt/oui-blendish.git
-	source = git+https://github.com/memononen/nanosvg.git
-	source = git+https://github.com/memononen/nanovg.git
-	source = git+https://github.com/pichenettes/avr-audio-bootloader.git
-	source = git+https://github.com/pichenettes/avril.git
-	source = git+https://github.com/pichenettes/avrilx.git
-	source = git+https://github.com/pichenettes/stm-audio-bootloader.git
-	source = git+https://github.com/pichenettes/stmlib.git
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/VCVRack/AudibleInstruments#commit=a15554e33721c2f8f65bb6b0f59588307fb6e625
+	source = git+https://github.com/VCVRack/pichenettes-eurorack
+	source = git+https://github.com/pichenettes/avr-audio-bootloader
+	source = git+https://github.com/pichenettes/avril
+	source = git+https://github.com/pichenettes/avrilx
+	source = git+https://github.com/pichenettes/stm-audio-bootloader
+	source = git+https://github.com/pichenettes/stmlib
+	sha256sums = a602265d7136fee95ac26b29771ffadae3349412f93ba4e7c21190c45db8e072
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -36,4 +30,3 @@ pkgbase = vcvrack-audible-instruments
 	sha256sums = SKIP
 
 pkgname = vcvrack-audible-instruments
-
