@@ -1,7 +1,7 @@
-# Maintainer: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
+# Maintainer: Bill Sideris <bill88t@bredos.org>
 
 pkgname=nhentai-git
-pkgver=r665.5bde24f
+pkgver=r666.5bde24f
 pkgrel=1
 pkgdesc='CLI tool for downloading doujinshi from nhentai.net'
 arch=(any)
