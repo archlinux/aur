@@ -5,7 +5,7 @@ pkgdesc="Prototype app launchers for Stardust XR"
 
 pkgname="stardust-xr-$_clientname"
 pkgver="0.1.0"
-pkgrel="1"
+pkgrel="2"
 arch=("x86_64" "aarch64")
 url="https://github.com/StardustXR/$_clientname"
 license=("MIT")
