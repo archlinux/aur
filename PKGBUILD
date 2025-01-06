@@ -15,7 +15,7 @@ depends=("${_name}" 'lib32-fontconfig' 'lib32-gcc-libs' 'lib32-glibc'
          'lib32-libcups' 'lib32-libjpeg-turbo' 'lib32-libpaper' 'lib32-libpng'
          'lib32-libtiff' 'lib32-libx11' 'lib32-libxt' 'lib32-openjpeg2'
          'lib32-tesseract>=4.1' 'lib32-zlib')
-makedepends=('lib32-expat' 'lib32-libidn' 'lib32-libxext')
+makedepends=('lib32-expat' 'lib32-libidn' 'lib32-gtk3')
 options=('!lto')
 _pkgsrc="ghostpdl-${pkgver}"
 source=("${_pkgsrc}.tar.xz::https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${pkgver//./}/${_pkgsrc}.tar.xz"
