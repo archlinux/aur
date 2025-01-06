@@ -1,8 +1,8 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname=python-traits
-pkgver=6.4.1
-pkgrel=5
+pkgver=6.4.3
+pkgrel=1
 pkgdesc="Explicitly typed attributes for Python"
 arch=('x86_64')
 url="https://github.com/enthought/traits"
@@ -12,7 +12,7 @@ optdepends=('python-numpy: to support the trait types for arrays'
             'python-traitsui: to support Gui Views')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("traits-${pkgver}.tar.gz::https://github.com/enthought/traits/archive/${pkgver}.tar.gz")
-sha256sums=('974b682d112dfb531136d1185fe8d5f05ffd9e54a76b6dcd9715de85655ee30c')
+sha256sums=('8282d8a958c43758f959b180ce85cb16cc1e04ad822de1dbcd7a6a6f81a33548')
 
 build() {
   cd traits-$pkgver
