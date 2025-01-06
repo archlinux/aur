@@ -1,7 +1,7 @@
 pkgbase = nimo-bin
 	pkgdesc = a Rust CLI tool to fetch files or directories from GitHub with a single command
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/levinion/nimo
 	arch = x86_64
 	license = MIT
