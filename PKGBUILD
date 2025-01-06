@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang
 _pkgname=Mustang
-pkgver=0.7.7
+pkgver=0.7.8
 _electronversion=32
-_nodever=20
+_nodever=18
 pkgrel=1
 pkgdesc="New full-featured desktop email, chat and video conference client.(Use system-wide electron)"
 arch=('any')
@@ -23,7 +23,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('d0d9c8ea52f91ee55a8f7954d73dcb4a2a59760bc958a9701de3530489d7c7df'
+sha256sums=('3f69fdedb5d5dfa8f0e70ffc45209234d067f377b51dfa26f7d3eefe79e607dc'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
