@@ -1,29 +1,37 @@
-# PKGBUILD courtesy of the Arch Wiki	
-# Contributor: sudhip n <sudhip at nashi dot u s>
-# Original creator: abbi@github : https://github.com/abbbi/nullfsvfs
+# -*- sh -*-
 
-_pkgname=nullfsvfs
-pkgname=nullfsvfs-dkms
-pkgver=0.12
+#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: sudhip n <sudhip at nashi dot u s>
+
+_pkgname='nullfsvfs'
+pkgname='nullfsvfs-dkms'
+pkgver=0.17
 pkgrel=1
-pkgdesc="nullfsvfs is a null filesystem that acts like /dev/null but can be mounted"
-arch=(any)
-license=('GPL3')
-depends=('dkms')
-conflicts=('nullfs-dkms')
-source=("https://github.com/abbbi/nullfsvfs/archive/"$pkgver".tar.gz")
-b2sums=('3b27988da111b219e4e2769335ec3d062e42759735c320f7234f6cd1544afe9bbf22247798ea0ea270b50f6c75d57b6780a451c1b87053965f203a0b40e84cb0')
-url="https://github.com/abbbi/nullfsvfs"
+pkgdesc='Virtual black hole file system that behaves like /dev/null'
+arch=('any')
+license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
+depends=('dkms' 'make')
+conflicts=('nullfs' 'nullfs-dkms')
+url='https://github.com/abbbi/nullfsvfs'
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
 package() {
-  cd "$srcdir"/"$_pkgname"-"$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
 
-  install -Dm644 debian/nullfsvfs.dkms "${pkgdir}"/usr/src/${_pkgname}-${pkgver}/dkms.conf
+  install -vDm0644 debian/nullfsvfs.dkms "$pkgdir/usr/src/$_pkgname-$pkgver/dkms.conf"
 
-    echo ${pkgdir}
-    sed -e "s/@_PKGBASE@/${_pkgname}/" \
-      -e "s/@PKGVER@/${pkgver}/" \
-      -i "${pkgdir}"/usr/src/${_pkgname}-${pkgver}/dkms.conf
+  sed -e "s/@_PKGBASE@/$_pkgname/" \
+      -e "s/@PKGVER@/$pkgver/" \
+      -i "$pkgdir/usr/src/$_pkgname-$pkgver/dkms.conf"
 
-  cp -r ./* "${pkgdir}"/usr/src/${_pkgname}-${pkgver}/
+  cp -vr ./* "$pkgdir/usr/src/$_pkgname-$pkgver/"
 }
+
+sha256sums=(
+  'f2f9ba2515704693f7a48d5dd3dc2ca12c45e33419fcf4ec1c3c258571cdd850'
+)
+b2sums=(
+  'f0ff528551b4c160458de8e133fbbc3390d000be217ba42bca522e1d5c78c325e47aebe8cc7e25582000838eaca5d930ad98a5d62809fa9f512334f9a4443baa'
+)
+
+# eof
