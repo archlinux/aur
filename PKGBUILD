@@ -1,7 +1,7 @@
 # Maintainer: MYT1 <MYT1 @ .com>
 
 pkgname=ttf-chillround-nerd-git
-pkgver=3.200.r1.gacbd88b
+pkgver=3.200.r2.g1ccce93
 pkgrel=1
 pkgdesc='寒蝉全圆体半圆体nerd补丁版   '
 arch=('any')
@@ -18,8 +18,8 @@ pkgver() {
 
 package() {
 	cd ttf-nerd-
-	install -Dm644 ChillRoundFBoldNerdFont-Regular.ttf "${pkgdir}/usr/share/fonts/ChillRound/ChillRoundFBoldNerdFont-Regular.ttf"
-	install -Dm644 ChillRoundFRegularNerdFont-Regular.ttf "${pkgdir}/usr/share/fonts/ChillRound/ChillRoundFRegularNerdFont-Regular.ttf"
-	install -Dm644 ChillRoundMNerdFont-Regular.ttf "${pkgdir}/usr/share/fonts/ChillRound/ChillRoundMNerdFont-Regular.ttf"
-	install -Dm644 ChillLICENSE.txt "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 寒蝉半圆体NerdFont-Regular.ttf "${pkgdir}/usr/share/fonts/ChillRound/寒蝉半圆体NerdFont-Regular.ttf"
+	install -Dm644 寒蝉全圆体BoldNerdFontNerdFont-Regular.ttf "${pkgdir}/usr/share/fonts/ChillRound/寒蝉全圆体BoldNerdFontNerdFont-Regular.ttf"
+	install -Dm644 寒蝉全圆体NerdFont-Regular.ttf "${pkgdir}/usr/share/fonts/ChillRound/寒蝉全圆体NerdFont-Regular.ttf"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,6 +1,6 @@
 pkgbase = ttf-chillround-nerd-git
 	pkgdesc = 寒蝉全圆体半圆体nerd补丁版   
-	pkgver = 3.200.r1.gacbd88b
+	pkgver = 3.200.r2.g1ccce93
 	pkgrel = 1
 	url = https://github.com/Warren2060/ChillRound
 	arch = any
