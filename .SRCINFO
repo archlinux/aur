@@ -1,0 +1,15 @@
+pkgbase = bindtointerface-git
+	pkgdesc = With this program you can bind applications to a specific network interface / network adapter.
+	pkgver = r14.d477326
+	pkgrel = 1
+	url = https://github.com/JsBergbau/BindToInterface
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = gcc
+	provides = bindtointerface
+	conflicts = bindtointerface
+	source = git+https://github.com/JsBergbau/BindToInterface.git
+	sha256sums = SKIP
+
+pkgname = bindtointerface-git
