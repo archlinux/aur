@@ -29,6 +29,6 @@ pkgbase = lightworks
 	replaces = lwks
 	options = !strip
 	source = https://cdn.lwks.com/releases/2025.1/lightworks_2025.1_r149111.deb
-	sha256sums = a2961b5b36588a6e70a926b10de1a6735d17c45924139db53c307c3942e1ec97
+	sha256sums = 194f18c76cb49b3d6b13605f60432546c3fa9682bcaa79a28b16136a11c907e7
 
 pkgname = lightworks
