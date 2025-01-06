@@ -1,0 +1,19 @@
+pkgbase = gptm-bin
+	pkgdesc = 🤖A modern AI chat client based on Electron + Vue3 + TypeScript.(Prebuilt version.Use system-wide electron)一个基于 Electron + Vue3 + TypeScript 开发的现代化 AI 聊天客户端
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/Technicalflight/Gptm
+	arch = any
+	license = LicenseRef-custom
+	makedepends = fuse2
+	depends = electron31
+	provides = gptm=1.2
+	conflicts = gptm
+	source = gptm-1.2.zip::https://github.com/Technicalflight/Gptm/releases/download/v1.2/linux-artifacts.zip
+	source = LICENSE-1.2::https://raw.githubusercontent.com/Technicalflight/Gptm/v1.2/LICENSE
+	source = gptm.sh
+	sha256sums = 5fc93e5f0b0347dd6b2dfc1ce38f300c4beda0db8395aa3d967bdf2829085cee
+	sha256sums = 863d4e44c64f7ef837deba40335041d2fca168ae4c939d81484fb4955183494b
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = gptm-bin
