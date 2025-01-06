@@ -1,7 +1,7 @@
 # Maintainer: Jakob (XDjackieXD) <aur at chaosfield dot at>
 
 pkgname=gr-satnogs-git
-pkgver=r627.af9b14d
+pkgver=r726.30ecab7
 pkgrel=1
 pkgdesc="gr-satnogs from librespacefoundation"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gnuradio' 'png++' 'nlohmann-json' 'libvorbis' 'libogg' 'libvolk' 'libp
 makedepends=('git' 'cmake' 'swig')
 provides=('gr-satnogs')
 conflicts=('gr-satnogs')
-source=("git+$url#branch=gnuradio-3.10" "git+https://github.com/d-bahr/CRCpp.git")
+source=("git+$url" "git+https://github.com/d-bahr/CRCpp.git")
 sha256sums=('SKIP'
             'SKIP')
 

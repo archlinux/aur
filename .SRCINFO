@@ -20,7 +20,7 @@ pkgbase = gr-satnogs-git
 	depends = hamlib
 	provides = gr-satnogs
 	conflicts = gr-satnogs
-	source = git+https://gitlab.com/librespacefoundation/satnogs/gr-satnogs.git#branch=gnuradio-3.10
+	source = git+https://gitlab.com/librespacefoundation/satnogs/gr-satnogs.git
 	source = git+https://github.com/d-bahr/CRCpp.git
 	sha256sums = SKIP
 	sha256sums = SKIP
