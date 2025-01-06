@@ -1,0 +1,40 @@
+# Package build files
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+*.pkg.*
+
+# Build directory
+pkg/
+src/
+
+# termsonic git folder if it appears
+termsonic
+
+# Go specific
+*.test
+*.out
+
+# makepkg generated
+termsonic-git/
+
+# Backup files
+*~
+*.bak
+
+# VCS files
+.git/
+
+# Common editor/system files
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
