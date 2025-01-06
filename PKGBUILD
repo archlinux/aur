@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-online-accounts-gtk
-pkgver=3.50.5
+pkgver=3.50.6
 pkgrel=1
 pkgdesc="A GTK Frontend for GNOME Online Accounts"
 arch=('x86_64')
@@ -17,5 +17,5 @@ build() {
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
