@@ -4,7 +4,7 @@
 _hkgname=ShellCheck
 _pkgname=shellcheck
 pkgname=$_pkgname-git
-pkgver=0.10.0.r52.g79e43c4
+pkgver=0.10.0.r68.gd3001f3
 pkgrel=1
 provides=("$_pkgname")
 conflicts=("$_pkgname")
