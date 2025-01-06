@@ -3,7 +3,7 @@ _projectname='Compass-Points'
 _projectauthor='JANUS'
 pkgname="perl-${_projectname,,}"
 pkgver='0.02'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Convert between compass point names, abbreviations and values'
 arch=('any')
 url="https://metacpan.org/dist/$_projectname"
@@ -14,8 +14,8 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/${_projectauthor::1}/${_projectauthor::2}/$_projectauthor/$_projectname-$pkgver.tar.gz"
 	"$pkgname-$pkgver-LICENSE::https://www.gnu.org/licenses/old-licenses/gpl-1.0.txt"
 )
-sha512sums=('92fecbe5868aaae24662b0c856e0a1fed2b80d6bcf9c03fba05cee3bd4117b69c3b79933c0d3b26e145bda589cbafbb44565b0451661b0012cfbd4e38ce070d2'
-            'e239b539f2c46c1ae3da87c4983a0fda67dc8ae622d607b507b5c523af3bdf99e7bea8931e3a7c6007910bfe9e21a761e03e8203de95b5aceea425a97d0a84c9')
+b2sums=('50b2acf7f923dffc99cb9c0f7feecd0b73b853e8e9451587692a2dbe60b4564017304eacf8431534edf832dfbd80f93236c53e10231450c9b8c6977a1e0c0f7e'
+        '3549ac01bd8efa905c1b935b931b67bc2b7cb1286f8730a7481afae4a26518b24424dcb93620ae2e42e0c98033314c50a8799fe3f856d3b4f4f23dd55b4c42e5')
 
 _sourcedirectory="$_projectname-$pkgver"
 
