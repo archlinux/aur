@@ -9,9 +9,9 @@ pkgbase=gmic-pre
 pkgname=(gmic-pre-gimp3
          gimp-plugin-gmic-pre-gimp3)
 pkgver=3.5.0
-_pkgver=prerelease
-__pkgver=3.5.0_pre
-pkgrel=6
+#_pkgver=prerelease
+#__pkgver=3.5.0_pre
+pkgrel=7
 pkgdesc="Prerelease G-MIC for GIMP3"
 arch=(x86_64)
 url='https://gmic.eu/'
@@ -25,12 +25,12 @@ makedepends=(cmake
              qt6-base
              qt6-tools
              gimp)
-source=(https://gmic.eu/files/prerelease/gmic_$_pkgver.tar.gz)
-sha256sums=('07192137c1438134e568c002097e7404e05c807e04b59489231bb6d3605bdede')
+source=(https://gmic.eu/files/source/gmic_$pkgver.tar.gz)
+sha256sums=('SKIP')
 
 
 build() {
-  cmake -B build -S gmic-$__pkgver \
+  cmake -B build -S gmic-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_DYNAMIC_LINKING=ON \
     -DBUILD_LIB_STATIC=OFF \
@@ -40,18 +40,18 @@ build() {
   DESTDIR="tmp-install" cmake --install build
 
   export LDFLAGS="$LDFLAGS -L../build"
-  cmake -B build-qt -S gmic-$__pkgver/gmic-qt \
+  cmake -B build-qt -S gmic-$pkgver/gmic-qt \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_DYNAMIC_LINKING=ON \
-    -DGMIC_PATH="$srcdir"/gmic-$__pkgver/src \
+    -DGMIC_PATH="$srcdir"/gmic-$pkgver/src \
     -DCMAKE_PREFIX_PATH="$srcdir"/tmp-install/usr \
     -DGMIC_QT_HOST=none
   cmake --build build-qt
 
-  cmake -B build-gimp -S gmic-$__pkgver/gmic-qt \
+  cmake -B build-gimp -S gmic-$pkgver/gmic-qt \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_DYNAMIC_LINKING=ON \
-    -DGMIC_PATH="$srcdir"/gmic-$__pkgver/src \
+    -DGMIC_PATH="$srcdir"/gmic-$pkgver/src \
     -DCMAKE_PREFIX_PATH="$srcdir"/tmp-install/usr \
     -DGMIC_QT_HOST=gimp3
   cmake --build build-gimp
@@ -78,13 +78,13 @@ package_gmic-pre-gimp3() {
   replaces=('gmic-pre' 'gimp-plugin-gmic-pre')
 
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm644 gmic-$__pkgver/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 gmic-$pkgver/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 # .cpp is included by .h
-  install -Dm644 gmic-$__pkgver/src/gmic.cpp -t "$pkgdir"/usr/include
+  install -Dm644 gmic-$pkgver/src/gmic.cpp -t "$pkgdir"/usr/include
 
   DESTDIR="$pkgdir" cmake --install build-qt
 
-  install -Dm644 gmic-$__pkgver/resources/gmic_cluts.gmz -t "$pkgdir"/usr/share/gmic
+  install -Dm644 gmic-$pkgver/resources/gmic_cluts.gmz -t "$pkgdir"/usr/share/gmic
 }
 
 package_gimp-plugin-gmic-pre-gimp3() {
@@ -103,5 +103,5 @@ package_gimp-plugin-gmic-pre-gimp3() {
   conflicts=('cimg' 'gmic' 'gimp-plugin-gmic')
   replaces=('gmic-pre' 'gimp-plugin-gmic-pre')
   DESTDIR="$pkgdir" cmake --install build-gimp
-  install -Dm644 gmic-$__pkgver/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 gmic-$pkgver/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
