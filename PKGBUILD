@@ -2,16 +2,17 @@
 # Maintainer: Ian Hartwig <mail at ihartwig dot me>
 # Maintainer: baguette <baguettesabot at gmail dot com>
 pkgname='photonvision-bin'
-pkgver="v2024.3.0"
+pkgver="v2025.0.0beta8"
 pkgrel=1
 pkgdesc="free, fast, and easy-to-use computer vision solution for the FIRST Robotics Competition"
 arch=("x86_64")
 url="https://photonvision.org/"
 license=('GPL3')
-source=("$pkgname-$pkgver.jar::https://github.com/PhotonVision/photonvision/releases/download/$pkgver/photonvision-$pkgver-linuxx64.jar")
-noextract=("$pkgname-$pkgver.jar")
-sha256sums=('1312fc93c7426da6a4f71560e65a5fb9b963daa1e08a0fbede912979e73aea9c')
-depends=('jre11-openjdk-headless' 'avahi' 'networkmanager' 'linux-lts')
+pkgurlver="v2025.0.0-beta-8"
+source=("$pkgname-$pkgurlver.jar::https://github.com/PhotonVision/photonvision/releases/download/$pkgurlver/photonvision-$pkgurlver-linuxx64.jar")
+noextract=("$pkgname-$pkgurlver.jar")
+sha256sums=('cccdb74130bcc9d7ca3ce518e9194a800b2735d0e4d52b90af3ae4e1f4c3b906')
+depends=('jre17-openjdk-headless' 'avahi' 'networkmanager' 'linux-lts')
 install="photonvision-bin.install"
 
 prepare() {
@@ -30,7 +31,7 @@ Nice=-10
 # AllowCPUs=4-7
 
 # modified to use the jre11-openjdk-headless package, instead of whatever java version is configured
-ExecStart=/usr/lib/jvm/java-11-openjdk/bin/java -Xmx512m -jar /opt/$pkgname/photonvision.jar
+ExecStart=/usr/lib/jvm/java-17-openjdk/bin/java -Xmx512m -jar /opt/$pkgname/photonvision.jar
 ExecStop=/bin/systemctl kill photonvision
 Type=simple
 Restart=on-failure
@@ -45,7 +46,7 @@ package() {
 	cd "$srcdir"
 
 	# copy the jar file
-	install -Dm644 "$pkgname-$pkgver.jar" "$pkgdir/opt/$pkgname/photonvision.jar"
+	install -Dm644 "$pkgname-$pkgurlver.jar" "$pkgdir/opt/$pkgname/photonvision.jar"
 
 	# copy the systemd service file
 	install -Dm644 photonvision.service "$pkgdir/etc/systemd/system/photonvision.service"
