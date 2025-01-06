@@ -1,16 +1,15 @@
 pkgbase = termsonic-git
 	pkgdesc = A terminal-based (TUI) client for any Subsonic-compatible server.
-	pkgver = v0.2.r1.g0fa73fe
+	pkgver = 0.2.r2.gf6f61fd
 	pkgrel = 1
 	url = https://git.sixfoisneuf.fr/termsonic
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = go>=1.19
-	makedepends = gcc
 	depends = alsa-lib
-	provides = termsonic
-	source = termsonic-git::git+https://git.sixfoisneuf.fr/termsonic
+	conflicts = termsonic
+	source = git+https://git.sixfoisneuf.fr/termsonic
 	sha256sums = SKIP
 
 pkgname = termsonic-git
