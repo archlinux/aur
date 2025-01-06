@@ -1,15 +1,17 @@
 pkgbase = lib32-benchmark
 	pkgdesc = A microbenchmark support library (32-bit)
-	pkgver = 1.6.1
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/google/benchmark
 	arch = x86_64
-	license = Apache
-	makedepends = cmake
-	makedepends = gcc-multilib
+	license = Apache-2.0
+	makedepends = cmake>=3.13
+	depends = benchmark
 	depends = lib32-gcc-libs
-	source = https://github.com/google/benchmark/archive/v1.6.1/benchmark-1.6.1.tar.gz
-	sha256sums = 6132883bc8c9b0df5375b16ab520fac1a85dc9e4cf5be59480448ece74b278d4
+	depends = lib32-glibc
+	provides = libbenchmark.so
+	provides = libbenchmark_main.so
+	source = benchmark-1.9.1.tar.gz::https://github.com/google/benchmark/archive/refs/tags/v1.9.1/benchmark-1.9.1.tar.gz
+	sha256sums = 32131c08ee31eeff2c8968d7e874f3cb648034377dfc32a4c377fa8796d84981
 
 pkgname = lib32-benchmark
-
