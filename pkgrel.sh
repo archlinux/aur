@@ -3,7 +3,13 @@ function pkgrel {
     for f in $(ls PKGBUILD*)
     do
         PKGREL=$(grep -E "^pkgrel=" $f|cut -f2 -d"=")
-        [[ -z $FLAG ]] && PKGREL=$((${PKGREL}+1)) || PKGREL=1
+        if [[ -z $FLAG ]];then
+            PKGREL=$((${PKGREL}+1))
+        elif [[ "$FLAG" =~ "-" ]];then
+            PKGREL=$((${PKGREL}-1))
+        else
+            PKGREL=1
+        fi
         sed -i 's|^pkgrel=.*$|pkgrel='"${PKGREL}"'|' $f
     done
 }
