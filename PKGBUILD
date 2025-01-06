@@ -8,7 +8,7 @@ arch=("any")
 url='https://github.com/devHeadset/xClock'
 license=('GPL')
 makedepends=('cargo' 'git')
-source=("+git$url.git")
+source=("git+$url.git")
 md5sums=('SKIP')
 
 _binname=xClock
@@ -28,3 +28,4 @@ package() {
 
     install -Dm755 "./target/release/$_binname" "$pkgdir/usr/bin/$_binname"
 }
+

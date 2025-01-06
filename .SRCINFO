@@ -1,13 +1,14 @@
 pkgbase = xclock-git
-        pkgdesc = simple tui clock
-        pkgver = 0.4
-        pkgrel = 1
-        url = https://github.com/devHeadset/xClock
-        arch = any
-        license = GPL
-        makedepends = cargo
-        makedepends = git
-        source = git+https://github.com/devHeadset/xClock.git
-        md5sums = SKIP
+    pkgdesc = simple tui clock
+    pkgver = 0.4
+    pkgrel = 1
+    url = https://github.com/devHeadset/xClock
+    arch = any
+    license = GPL
+    makedepends = cargo
+    makedepends = git
+    source = git+https://github.com/devHeadset/xClock.git
+    md5sums = SKIP
 
 pkgname = xclock-git
+
