@@ -1,6 +1,6 @@
 pkgbase = firefly-luciferin-git
 	pkgdesc = Screen capture software for ambient and bias lighting
-	pkgver = 2.19.3r2.gba765948
+	pkgver = 2.19.3r3.gb96c17c3
 	pkgrel = 1
 	url = https://github.com/sblantipodi/firefly_luciferin
 	arch = any
@@ -10,8 +10,11 @@ pkgbase = firefly-luciferin-git
 	depends = jdk-openjdk>=23
 	depends = jdk-openjdk<24
 	depends = hicolor-icon-theme
-	optdepends = xdg-desktop-portal-wlr: For Wayland screen capture support
-	optdepends = gst-plugin-pipewire: For Wayland screen capture support
+	optdepends = xdg-desktop-portal-wlr: For PipeWire XDG screen capture support (Wayland)
+	optdepends = gst-plugin-pipewire: For PipeWire XDG screen capture support (Wayland)
+	optdepends = gst-plugins-good: For Ximagesrc screen capture support (X11)
+	optdepends = libappindicator-gtk3: For tray icon support (either one)
+	optdepends = libayatana-appindicator: For tray icon support (either one)
 	provides = firefly-luciferin
 	conflicts = firefly-luciferin
 	source = git+https://github.com/sblantipodi/firefly_luciferin.git
