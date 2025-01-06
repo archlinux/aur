@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('gnome-online-accounts')
 makedepends=('meson')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('51e69133fb67dbdb98df2343e6311d19429b485ff4b9d8f195fb1d5dba77ac0e')
+sha256sums=('f050da59fa0ed7727c5aa2b6a26f49aa727095cbbb3d274bd4d998f651ab05f7')
 
 build() {
   arch-meson "$pkgname-$pkgver" build

@@ -8,6 +8,6 @@ pkgbase = gnome-online-accounts-gtk
 	makedepends = meson
 	depends = gnome-online-accounts
 	source = gnome-online-accounts-gtk-3.50.6.tar.gz::https://github.com/xapp-project/gnome-online-accounts-gtk/archive/refs/tags/3.50.6.tar.gz
-	sha256sums = 51e69133fb67dbdb98df2343e6311d19429b485ff4b9d8f195fb1d5dba77ac0e
+	sha256sums = f050da59fa0ed7727c5aa2b6a26f49aa727095cbbb3d274bd4d998f651ab05f7
 
 pkgname = gnome-online-accounts-gtk
