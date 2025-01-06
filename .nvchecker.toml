@@ -1,0 +1,4 @@
+[shadow-tech]
+source = "regex"
+url = "https://update.shadow.tech/launcher/prod/linux/ubuntu_18.04/latest-linux.yml"
+regex = "^version: (.*)"
