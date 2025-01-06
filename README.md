@@ -45,7 +45,7 @@ Please only submit PRs to the `develop` branch. Pull requests to the `master` br
 
 ## License
 The linux-clear package is licensed under the BSD Zero-Clause License.
-I ([JeremyStarTM](https://git.staropensource.de/JeremyStarTM)) negotiated it with [metak](https://aur.archlinux.org/account/metak) (the previous maintainer) and [yarost12](https://git.staropensource.de/yarost12) (contributor and soon co-maintainer).
+I ([JeremyStarTM](https://git.staropensource.de/JeremyStarTM)) negotiated it with [metak](https://aur.archlinux.org/account/metak) (the previous maintainer) and [yarost12](https://git.staropensource.de/yarost12) (co-maintainer).
 
 ## Build tool
 *If you want a dead simple way to compile this package, you can [try out my build tool](https://git.staropensource.de/JeremyStarTM/jstm-optimized). It includes a few no nonsense changes to the kernel configuration and allows you to configure the PKGBUILD in a simple manner to decrease build time. If you don't want that, using `makepkg` as-is works fine too.*

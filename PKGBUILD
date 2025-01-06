@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034 disable=SC2048 disable=SC2086 disable=SC2154
-# Maintainer: JeremyStarTM <jeremystartm@staropensource.de>
-# Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
-# Contributor: yarost12 <yaro330@gmail.com>
+
+# This PKGBUILD is/was authored by:
+# - JeremyStarTM <jeremystartm@staropensource.de>
+# - yarost12 <yaro330@gmail.com>
+# - Josip Ponjavic <josipponjavic at gmail dot com>
+# 
+# For a list of maintainers see MAINTAINERS.md
 
 ### BUILD OPTIONS
 # You can modify these settings by executing "env _<setting>=<value> makepkg"
