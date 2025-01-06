@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altair-bin
 _pkgname="Altair GraphQL Client"
-pkgver=8.1.2
-_electronversion=26
+pkgver=8.1.3
+_electronversion=33
 pkgrel=1
 pkgdesc="A beautiful feature-rich GraphQL Client for all platforms.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/altair-graphql/altair/v${pkgver}/packages/altair-core/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f6b575c8d2f7619a3cf5025ff7e661d0a3f768dba9ffcb7e2eb6d14e79ed6e49'
+sha256sums=('04351d43ae0d065384fc47cb93adff91a356bb97507bc96fdacabe19469abaa6'
             'a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
@@ -28,7 +28,7 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@//g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
