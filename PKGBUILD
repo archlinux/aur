@@ -6,7 +6,7 @@ pkgver=0.2.0.r81.g646c1034
 pkgrel=1
 pkgdesc="A container runtime written in rust"
 arch=('x86_64')
-url='https://github.com/containers/youki'
+url='https://github.com/youki-dev/youki'
 license=('Apache')
 sha512sums=('SKIP')
 source=("git+${url}")
@@ -29,8 +29,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
 
   cargo build --frozen --release --bin youki
 
