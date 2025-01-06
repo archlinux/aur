@@ -3,7 +3,7 @@
 # Contributor: Rodrigo Severo <rsev at protonmail dot com>
 
 pkgname='therion'
-pkgver='6.3.1'
+pkgver='6.3.3'
 pkgrel='1'
 pkgdesc="Cave surveying: processes survey data and generates maps or 3D models of caves"
 arch=('x86_64' 'i686')
@@ -19,6 +19,7 @@ depends=(
 	'imagemagick' 
 	'libjpeg-turbo' 
 	'libpng' 
+	'nlohmann-json' # vtk dependency
 	'python'
 	'shapelib'
 	'texlive-core' 
@@ -31,7 +32,7 @@ depends=(
 )
 
 makedepends=(
-	'catch2'
+	'catch2-v2'
 	'cmake'
 	'perl'
 )
@@ -39,11 +40,13 @@ makedepends=(
 source=(
 	"http://github.com/therion/therion/archive/v${pkgver}.tar.gz"
 	'therion_ini.patch'
+	'add_library-STATIC.patch'
 )
 
 sha256sums=(
-	'3c916ef9a990aa2526535bccce49f43c3537a6370ea83f279e3bd1fe0e280502'
+	'55d5e5bd2f6cf27cd32f9cb096c15ced6939605f1c1754a97456551112481ce5'
 	'0639b0c4c9660af33675bf948ca4678d441167f77f7818cc015b7738a53fb8f3'
+	'54756514e46ede74eb418f7b234d8290cea6b1904bf52109a5d5620900d7ee02'
 )
 
 backup=(
@@ -59,13 +62,15 @@ prepare() {
 
   # patch to get UTF8 and available fonts
   patch -p0 -i ${srcdir}/therion_ini.patch
+
+  # fix static linking
+  patch -p1 -i ${srcdir}/add_library-STATIC.patch
 }
 
 build() {
   cmake \
     -B "${_builddir}" \
     -S "${_sourcedir}" \
-    -DUSE_BUNDLED_FMT=OFF \
     -DUSE_BUNDLED_CATCH2=OFF \
     -DUSE_BUNDLED_SHAPELIB=OFF \
     -DCMAKE_INSTALL_PREFIX='/usr'

@@ -1,0 +1,42 @@
+diff --git a/extern/img/CMakeLists.txt b/extern/img/CMakeLists.txt
+index 3c98ff35..44761c67 100644
+--- a/extern/img/CMakeLists.txt
++++ b/extern/img/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-add_library(img img.h img.c)
++add_library(img STATIC img.h img.c)
+ target_compile_definitions(img PUBLIC IMG_API_VERSION=1)
+ target_include_directories(img SYSTEM PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+ target_link_libraries(img PRIVATE disable-warnings)
+diff --git a/extern/quickhull/CMakeLists.txt b/extern/quickhull/CMakeLists.txt
+index da851a84..f9be8343 100644
+--- a/extern/quickhull/CMakeLists.txt
++++ b/extern/quickhull/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-add_library(QuickHull QuickHull.cpp)
++add_library(QuickHull STATIC QuickHull.cpp)
+ target_include_directories(QuickHull SYSTEM PUBLIC ${CMAKE_SOURCE_DIR}/extern/quickhull)
+ target_link_libraries(QuickHull PRIVATE disable-warnings)
+ set_target_properties(QuickHull PROPERTIES CXX_CLANG_TIDY "")
+diff --git a/loch/CMakeLists.txt b/loch/CMakeLists.txt
+index 7456f925..d9fa2682 100644
+--- a/loch/CMakeLists.txt
++++ b/loch/CMakeLists.txt
+@@ -14,7 +14,7 @@ if (NOT BUILD_LOCH)
+ endif()
+ 
+ # Tiled Rendering library
+-add_library(tr lxTR.h lxTR.cxx)
++add_library(tr STATIC lxTR.h lxTR.cxx)
+ target_compile_definitions(tr PUBLIC ${LOCH_DEFINITIONS})
+ target_link_libraries(tr PUBLIC OpenGL::GL OpenGL::GLU 
+                          PRIVATE enable-warnings)
+@@ -25,7 +25,7 @@ if (WIN32)
+     target_link_libraries(R2 PUBLIC OpenGL::GL PRIVATE enable-warnings)
+     target_compile_definitions(R2 PUBLIC ${LOCH_DEFINITIONS})
+ elseif(${THPLATFORM} STREQUAL LINUX)
+-    add_library(R2 lxR2P.h lxR2P.cxx)
++    add_library(R2 STATIC lxR2P.h lxR2P.cxx)
+     target_link_libraries(R2 PUBLIC OpenGL::GL PRIVATE enable-warnings)
+     target_compile_definitions(R2 PUBLIC ${LOCH_DEFINITIONS})
+ else()
