@@ -5,7 +5,7 @@
 
 pkgname=python-undervolt
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Undervolt Intel CPUs under Linux"
 url="https://github.com/georgewhewell/undervolt"
 arch=('any')
