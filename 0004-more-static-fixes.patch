@@ -1,7 +1,0 @@
---- curl-8.9.1/libcurl.pc.in.orig	2024-09-03 02:03:54.401140994 +0200
-+++ curl-8.9.1/libcurl.pc.in	2024-09-03 02:06:17.099363534 +0200
-@@ -38,3 +38,4 @@
- Libs: -L${libdir} -lcurl @LIBCURL_NO_SHARED@
- Libs.private: @LIBCURL_LIBS@
- Cflags: -I${includedir} @CPPFLAG_CURL_STATICLIB@
-+Cflags.private: -DCURL_STATICLIB

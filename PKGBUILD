@@ -4,7 +4,7 @@
 # Contributor: ant32 <antreimer at gmail dot com>
 
 pkgname=mingw-w64-curl
-pkgver=8.9.1
+pkgver=8.11.1
 pkgrel=1
 pkgdesc="An URL retrival utility and library (mingw-w64)"
 arch=('any')
@@ -22,18 +22,15 @@ depends=('mingw-w64-crt'
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!strip' '!buildflags')
 source=("${url}/download/curl-${pkgver}.tar.xz"
-        "0002-nghttp2-static.patch"
-        "0004-more-static-fixes.patch")
-sha256sums=('f292f6cc051d5bbabf725ef85d432dfeacc8711dd717ea97612ae590643801e5'
-            '9da305e320ea306d0ca634edd73092b404b96d91f5cac681304bb6a9ae49e5ef'
-            '22dcdfd89a1d847ab6bbe1078c6a8ac198cc6c11eb86b00580583492848fd1b1')
+        "0002-nghttp2-static.patch")
+sha256sums=('c7ca7db48b0909743eaef34250da02c19bc61d4f1dcedd6603f109409536ab56'
+            '5be61f52e5d225d000bd9bd6899013240755afde96826b7857166c86ce1f0648')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}"/${pkgname#mingw-w64-}-${pkgver}
   patch -Np1 -i "${srcdir}/0002-nghttp2-static.patch"
-  patch -Np1 -i "${srcdir}/0004-more-static-fixes.patch"
   autoreconf -vfi
 }
 
