@@ -4,7 +4,7 @@ _pkgauthor=JetpackDuba
 _pkgname=Gitnuro
 _execname=${_pkgname,,}
 pkgname=${_execname}-bin
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc='A FOSS Git multiplatform client for newbies and pros'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -23,8 +23,8 @@ sha256sums=('40625c5934897ac2290c0ace5a24b72a7d62ce7cde305cefa92f82b8d5e1ddab'
             'c881f04e9af5eb3ec865656c91880748d503a0ce929d2a09e0a571629e43c240'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '2a389f0259761270df7f59a559c2aec0dea0ea18f2eef6611d6b3e9cabee4ac8')
-sha256sums_x86_64=('d65c2e2cf47a6f5f88d9259a61a56b66431c6154407f547b8ff0308d07f4dd43')
-sha256sums_aarch64=('c271d6d582b814a8b910317f1344becabd2dba0b6fdea56509b4f7fb1f5b33cb')
+sha256sums_x86_64=('b8ac49cb59b764125213b4059f8a5830d6c97df27d8a26c88ca79bddc59eff28')
+sha256sums_aarch64=('297ced86fe034cc58eaf9ec62233384f33377697af0ce9f1b267fb33b140ef6f')
 
 prepare() {
   cd "${srcdir}/" || exit
