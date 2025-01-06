@@ -1,7 +1,7 @@
 # Maintainer: mia <mia@mia.jetzt>
 
 pkgname='swc-js-bin'
-pkgver='1.10.1'
+pkgver='1.10.4'
 pkgrel='1'
 pkgdesc='Super-fast TypeScript / JavaScript compiler written in Rust'
 arch=('x86_64')
