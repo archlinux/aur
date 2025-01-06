@@ -2,13 +2,13 @@
 
 pkgbase=cutelyst
 pkgname=('cutelyst' 'cutelyst-docs')
-pkgver=4.3.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc='A Web Framework built on top of Qt'
 arch=('i686' 'x86_64')
 url="http://cutelyst.org"
 license=('LGPL')
-depends=('qt6-base' 'grantlee')
+depends=('qt6-base')
 makedepends=('pkgconf' 'cmake' 'doxygen' 'graphviz' 'qt6-tools')
 source=("https://github.com/cutelyst/cutelyst/archive/v${pkgver}.tar.gz")
 
@@ -20,7 +20,6 @@ build() {
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DPLUGIN_UWSGI=off \
-    -DPLUGIN_VIEW_GRANTLEE=on \
     -DPLUGIN_CSRFPROTECTION=on \
     -DCMAKE_INSTALL_PREFIX=/usr ".."
   make
@@ -45,4 +44,4 @@ package_cutelyst() {
   install -d -m755 "${pkgdir}/usr/share/qtcreator/templates/wizards/"
   cp -r "${srcdir}/${pkgname}-${pkgver}/qtcreator/cutelyst" "${pkgdir}/usr/share/qtcreator/templates/wizards/"
 }
-sha256sums=('03a893a9659a9ad2fd4f3aab5930cdb15258d675fb3b5c95189709b4bf653a30')
+sha256sums=('f20eed31748a3490a77f7a10d530fd44959888ad83fc1da2046acbab788c19f4')
