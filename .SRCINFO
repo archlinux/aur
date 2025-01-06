@@ -1,7 +1,7 @@
 pkgbase = brickv
 	pkgdesc = testing/flashing tool for tinkerforge brick(let)s
 	pkgver = 2.4.26
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.tinkerforge.com/
 	arch = any
 	license = GPL2
