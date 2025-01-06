@@ -9,7 +9,7 @@
 
 _pkgname=Flexget
 pkgname=${_pkgname,,}
-pkgver=3.13.6
+pkgver=3.13.7
 pkgrel=1
 pkgdesc="FlexGet is a program aimed to automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 arch=(any)
@@ -78,6 +78,7 @@ depends=(
     "python-soupsieve"
     "python-sqlalchemy"
     "python-tempora"
+    "python-time-machine"
     "python-typing_extensions"
     "python-tzdata"
     "python-tzlocal"
@@ -90,13 +91,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=(
-    "flexget-webui-v1: webui v1"
-    "flexget-webui: webui v2"
-    "python-cloudscraper"
-    "python-deluge-client"
-    "python-qbittorrent-api"
-    "python-telegram-bot"
-    "python-transmission-rpc"
+
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.service"
@@ -104,7 +99,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.user.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('96efca015388790305b35dda24fd76a14d1b8e6d8050135bef01f494a8c94be4'
+sha256sums=('640e843ce81fd6bb5826244898720cd3e98ee8a82c37dc63dff96be5e169a4ce'
             'b7578417ab5f671def7021133ae68900d82aaa81b5e80a2fec4d85e46eb1f8e9'
             'b9d354f6095aafe7a29cb8e90239b662a2584903a85fe3770f2b99bb8bdfff4a'
             '799921777b3714f074deaafbdd241ea7b99a0eccd65931708fd81457286f4f49'
