@@ -1,6 +1,6 @@
 pkgbase = ttf-material-design-icons-extended
 	pkgdesc = A Material Design icons font by the guys over at materialdesignicons.com
-	pkgver = 7.2.96
+	pkgver = 7.4.47
 	pkgrel = 1
 	url = https://materialdesignicons.com/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = ttf-material-design-icons-extended
 	conflicts = ttf-material-design-icons
 	noextract = materialdesignicons-webfont.ttf
 	noextract = LICENSE
-	source = https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/fonts/materialdesignicons-webfont.ttf
+	source = https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/fonts/materialdesignicons-webfont.ttf
 	source = https://raw.githubusercontent.com/Templarian/MaterialDesign/master/LICENSE
-	md5sums = d10ac4ee5ebe8c8fff90505150ba2a76
+	md5sums = 6e435534bd35da5fef04168860a9b8fa
 	md5sums = fdfe43d7d0cb0cd53fc1f61411899167
 
 pkgname = ttf-material-design-icons-extended

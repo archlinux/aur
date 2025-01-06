@@ -2,7 +2,7 @@
 # Contributer: Jack Johannesen
 
 pkgname=ttf-material-design-icons-extended
-pkgver=7.2.96
+pkgver=7.4.47
 pkgrel=1
 pkgdesc="A Material Design icons font by the guys over at materialdesignicons.com"
 arch=('any')
@@ -15,7 +15,7 @@ conflicts=('ttf-material-design-icons')
 source=("https://cdn.jsdelivr.net/npm/@mdi/font@${pkgver}/fonts/materialdesignicons-webfont.ttf"
         'https://raw.githubusercontent.com/Templarian/MaterialDesign/master/LICENSE')
 noextract=('materialdesignicons-webfont.ttf' 'LICENSE')
-md5sums=('d10ac4ee5ebe8c8fff90505150ba2a76'
+md5sums=('6e435534bd35da5fef04168860a9b8fa'
          'fdfe43d7d0cb0cd53fc1f61411899167')
 
 build() {
