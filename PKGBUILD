@@ -2,10 +2,10 @@
 pkgname=pimpmyrice-git
 provides=("pimpmyrice")
 conflicts=("pimpmyrice-git" "pimpmyrice")
-pkgdesc="The overkill rice manager (from git)"
+pkgdesc="The overkill theme manager (from git)"
 url="https://github.com/daddodev/pimpmyrice"
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 arch=("any")
 license=("MIT")
 depends=(
@@ -18,8 +18,8 @@ depends=(
     "python-rich"
     "python-jinja"
     "python-pyyaml"
-    "python-scikit-learn"
-    "python-opencv"
+    "python-numpy"
+    "python-pillow"
     "python-typing_extensions"
     "python-pydantic"
     "python-pydantic-extra-types"
