@@ -1,12 +1,12 @@
 pkgbase = katharsis
 	pkgdesc = CLI tool for generating RSS feeds
-	pkgver = 1.0.0.24
+	pkgver = 1.0.0.25
 	pkgrel = 1
 	url = https://github.com/kurosakishigure/katharsis
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = katharsis-1.0.0.24.tar.gz::https://github.com/kurosakishigure/katharsis/archive/v1.0.0-canary.24.tar.gz
-	sha256sums = e12efb1cbec6977765349ee1941e4e2c892e57b24c446b06b61767a66188ed0f
+	source = katharsis-1.0.0.25.tar.gz::https://github.com/kurosakishigure/katharsis/archive/v1.0.0-canary.25.tar.gz
+	sha256sums = 12cbcdab6d0e257e5e589f487521a7db6f852dc1ed7a3c85e4ddd8b4941c2e67
 
 pkgname = katharsis
