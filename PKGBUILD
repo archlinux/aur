@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=witsy-bin
 _pkgname=Witsy
-pkgver=1.32.1
+pkgver=1.34.0
 _electronversion=32
 pkgrel=1
 pkgdesc="Generative AI desktop application.(Prebuilt version.Use system-wide electron)"
-arch=("x86_64")
+arch=('x86_64')
 url="https://github.com/nbonamy/witsy"
 license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('837ffd32f7096b0c0359890834223a04f523e2d1a954c36fe04ea678e493d068'
+sha256sums=('9cf943490dee563f7b0d6ea47cc8e808ed2fb454ff11477ec69f3af25e429830'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
@@ -31,7 +31,7 @@ prepare() {
 package() {
    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-   install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/resources/"*.png -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+   install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/resources/"{*.ico,*.png} -t "${pkgdir}/usr/lib/${pkgname%-bin}"
    install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
