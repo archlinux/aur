@@ -2,7 +2,7 @@
 _pkgname=python-keyring-minimal
 pkgname="$_pkgname-git"
 pkgver=r12.5c266c5
-pkgrel=2
+pkgrel=1
 pkgdesc="A minimal libsecret keyring in python that works with keepassxc."
 arch=(any)
 url="https://github.com/hrehfeld/python-keyring-minimal"
@@ -34,21 +34,10 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	python -m build
-  pip install --no-deps --target="keyring-minimal" "dist/keyring-minimal-${_actual_version}.tar.gz"
+    cd $srcdir/$_pkgname
+    python -m build --wheel --no-isolation
 }
-
 package() {
-  sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
-  _pyver="3.$(python -c 'import sys; print(sys.version_info.minor);')"
-  mkdir -p $pkgdir/"$sitepackages"
-  cp -r $srcdir/${pkgname%-git}/keyring-minimal/* $pkgdir/"$sitepackages"
-	sh -c "rm $pkgdir/usr/lib/python${_pyver}/site-packages/keyring_minimal-*.dist-info/direct_url.json"
-
-	for f in "keyring-minimal-askpass"
-	do
-		install -Dm755 "$srcdir/${pkgname%-git}/$f" "$pkgdir/usr/bin/$f"
-	done
-	ln -sf /usr/lib/python${_pyver}/site-packages/bin/keyring-minimal "$pkgdir/usr/bin/"
+    cd $srcdir/$_pkgname
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
