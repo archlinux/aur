@@ -26,6 +26,8 @@ build() {
     sed -i \
         -e "s|Exec=HexHub|Exec=/opt/$pkgname/AppRun|" \
         -e "s+^Icon=.*+Icon=hexhub-bin+" \
+        -e "s|^Terminal=true|Terminal=false|" \
+        -e "s|^NoDisplay=true|NoDisplay=false|" \
         "squashfs-root/appimagetool.desktop"
 
     # Fix work no so files.
