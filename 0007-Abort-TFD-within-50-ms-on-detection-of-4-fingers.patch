@@ -1,4 +1,4 @@
-From 147b65a7e8784d9fb8f70f6f7cd57a10578d7725 Mon Sep 17 00:00:00 2001
+From c703c263a9aae5df6419abf2ba20e23a061da821 Mon Sep 17 00:00:00 2001
 From: abc def <24701-abcdef@users.noreply.gitlab.freedesktop.org>
 Date: Mon, 14 Feb 2022 13:59:11 +0100
 Subject: [PATCH 7/7] Abort TFD within 50 ms on detection of 4+ fingers
@@ -398,5 +398,5 @@ index ec64b747..5553726d 100644
  	TFD_STATE_POSSIBLE_RESUME,
  };
 -- 
-2.47.0
+2.47.1
 

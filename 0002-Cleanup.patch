@@ -1,4 +1,4 @@
-From 1a0b87d5077cf533f1b913276babd74a22a825dd Mon Sep 17 00:00:00 2001
+From c96a322ad9ceaff0f6d6454b15c1f01810458d23 Mon Sep 17 00:00:00 2001
 From: abc def <24701-abcdef@users.noreply.gitlab.freedesktop.org>
 Date: Tue, 4 Jan 2022 19:07:24 +0100
 Subject: [PATCH 2/7] Cleanup
@@ -983,5 +983,5 @@ index 26593cf7..2b820b41 100644
  tp_tap_dragging_or_double_tapping(const struct tp_dispatch *tp);
  
 -- 
-2.47.0
+2.47.1
 

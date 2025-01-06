@@ -1,6 +1,6 @@
 pkgbase = libinput-three-finger-drag
 	pkgdesc = Input device management and event handling library
-	pkgver = 1.27.0
+	pkgver = 1.27.1
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/libinput/
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = libinput-three-finger-drag
 	optdepends = gtk4: libinput debug-gui
 	optdepends = python-pyudev: libinput measure
 	optdepends = python-libevdev: libinput measure
-	provides = libinput=1.27.0
+	provides = libinput=1.27.1
 	conflicts = libinput
-	source = git+https://gitlab.freedesktop.org/libinput/libinput.git?signed#tag=1.27.0
+	source = git+https://gitlab.freedesktop.org/libinput/libinput.git?signed#tag=1.27.1
 	source = 0001-Three-finger-dragging-TFD-state-machine.patch
 	source = 0002-Cleanup.patch
 	source = 0003-TFD-add-debounce-state-for-touch-count-decrease.patch
@@ -30,12 +30,12 @@ pkgbase = libinput-three-finger-drag
 	source = 0007-Abort-TFD-within-50-ms-on-detection-of-4-fingers.patch
 	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
 	b2sums = SKIP
-	b2sums = 1e098d55144670cb3232b6bdd6554966412b845b0f53f2e73c8d4d3dfed9825fa96348159126628d5aade3c71bbd1db79251e982c1c8b68ba66175019ad754f0
-	b2sums = 8901472e7d86bc3fc1936d3309472651a76d2b24098d1692b00febb1ad0c227ad46e2090813207dc5b25e61edccfb4d6cdc54019509436a86f3ab83ceeca8526
-	b2sums = 49368261c9a893b97a96c22ebb3aa009bb892aeb2011831cc53d22e69b18895301cd1c440c40fedf9f3b3e381c50ad393b39ef4bbf11c851dab5cd80fc18d661
-	b2sums = cab9b5f9a37e675d053bd8919a9950d8f573f4dde49e6e673be515ccc5efa48ec86fc4aaf8fb697e230ce7b643439ecba85038b77e9bc46453c5a190e07a8ab1
-	b2sums = 5bb2c8ca0b1b42cb7421be7a2707aa0c8e0dd0c257ef727dbcf02ef6ed86a70e4d31238c8538015ac5c6bb845be1d0710ba8339b2aa5d09cbea88f9be7d2713e
-	b2sums = 615fa2dd9941162ae5fafeed37063295198899e811372d06e4e64460f3d236a26e0c33e4b5b83677db9f17d17b796c4472dbc3291306409c39723136ce3a2972
-	b2sums = d167d03ac4a72a8439c9dd31cf4b33d8642572decf375f7e9a1d0ad97957527aa7fdfeb8fa683e57078f9dd07d326a60d456ec43d64ae11868060c8e55877b43
+	b2sums = 94fb25e198d9a7d8fa05beb398edc0a384d2062c81ca9dc5131c566b97456461eeb5c277873ccf679456ac62bb5432c85ba21e8c5f24ef12d5aa5f05a8ba32f8
+	b2sums = 1e409a1062464942661002aa4fd1f7603e9e03c70dab182e59e9ea66caf63ee09051fbfadcb71e76068f3b0286ed08abcff8d3678c846ad971705db710e4d071
+	b2sums = ca5f43ee91c732807c4a155b3f7f1e128afa875122302264eef8d63f784f0723fe64754f2ece7dd46a35774798698184e7fdb3ab04ef33da7d1ec39b7c4a69d8
+	b2sums = 89e187b97eb7eb824ef1f65efe0a631663b641a18eadb62ee147dfabea40269311cd2c9e2591648411254a4d665ee41d00357c209d90d10acc7e63e54d6e0c97
+	b2sums = d909898f54d516a22c479f8b7ce7a419071172a092311d1d39aade3d430ec95924f30ecead23f94affddbeaf904f12098631b985f98929cd2e44f1c5e9e075b0
+	b2sums = fce7d335eed9dce132508d35f04835faedf1a73c3910d6542e7e0e537b3ce5acacdf7fc50ef9975f4815bf224879f9284f884d228abef4297c2b8579d7fa74de
+	b2sums = f58be0c19ec9afb087078037f12935526c2a275ce8ce37fdc6c1165a64d3fb4fa78c6458c18f0b51b3cfa21f6260ae21603e13c2d854979a2df58176e2965b1b
 
 pkgname = libinput-three-finger-drag

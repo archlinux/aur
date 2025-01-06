@@ -1,4 +1,4 @@
-From 989182cb75fc80ded5caebf4953bc0a51542e74b Mon Sep 17 00:00:00 2001
+From bd8bfa7d5cbd37a98ef895038b24455435cd6394 Mon Sep 17 00:00:00 2001
 From: abc def <24701-abcdef@users.noreply.gitlab.freedesktop.org>
 Date: Fri, 17 Dec 2021 00:42:50 +0100
 Subject: [PATCH 1/7] Three finger dragging (TFD) state machine
@@ -18,7 +18,7 @@ Signed-off-by: Temp Name <test@example.com>
  create mode 100644 src/evdev-mt-touchpad-tfd.c
 
 diff --git a/meson.build b/meson.build
-index 74fa82a6..d4a9f5e7 100644
+index e2945611..b7cffab7 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -364,6 +364,7 @@ src_libinput = src_libfilter + [
@@ -30,10 +30,10 @@ index 74fa82a6..d4a9f5e7 100644
  	'src/evdev-mt-touchpad-buttons.c',
  	'src/evdev-mt-touchpad-edge-scroll.c',
 diff --git a/src/evdev-mt-touchpad-gestures.c b/src/evdev-mt-touchpad-gestures.c
-index d557353b..d7f04dd1 100644
+index 107d59d7..83bf0393 100644
 --- a/src/evdev-mt-touchpad-gestures.c
 +++ b/src/evdev-mt-touchpad-gestures.c
-@@ -1567,7 +1567,7 @@ tp_gesture_post_events(struct tp_dispatch *tp, uint64_t time,
+@@ -1566,7 +1566,7 @@ tp_gesture_post_events(struct tp_dispatch *tp, uint64_t time,
  	 * physical button is down, don't allow gestures unless the button
  	 * is held down by a *thumb*, specifically.
  	 */
@@ -42,7 +42,7 @@ index d557353b..d7f04dd1 100644
  	    (tp->buttons.is_clickpad && tp->buttons.state &&
  	     tp->thumb.state == THUMB_STATE_FINGER)) {
  		if (tp->gesture.state != GESTURE_STATE_POINTER_MOTION) {
-@@ -1715,7 +1715,8 @@ tp_gesture_update_finger_state(struct tp_dispatch *tp, uint64_t time)
+@@ -1714,7 +1714,8 @@ tp_gesture_update_finger_state(struct tp_dispatch *tp, uint64_t time)
  			active_touches++;
  	}
  
@@ -1384,10 +1384,10 @@ index 00000000..54fca8fe
 +}
 +
 diff --git a/src/evdev-mt-touchpad.c b/src/evdev-mt-touchpad.c
-index 9c219a68..74727a15 100644
+index d92b9eb0..648a5a3a 100644
 --- a/src/evdev-mt-touchpad.c
 +++ b/src/evdev-mt-touchpad.c
-@@ -846,6 +846,10 @@ tp_touch_active_for_gesture(const struct tp_dispatch *tp, const struct tp_touch
+@@ -845,6 +845,10 @@ tp_touch_active_for_gesture(const struct tp_dispatch *tp, const struct tp_touch
  	return (t->state == TOUCH_BEGIN || t->state == TOUCH_UPDATE) &&
  		t->palm.state == PALM_NONE &&
  		!t->pinned.is_pinned &&
@@ -1398,7 +1398,7 @@ index 9c219a68..74727a15 100644
  		!tp_thumb_ignored_for_gesture(tp, t) &&
  		tp_button_touch_active(tp, t) &&
  		tp_edge_scroll_touch_active(tp, t);
-@@ -1863,6 +1867,8 @@ tp_post_events(struct tp_dispatch *tp, uint64_t time)
+@@ -1862,6 +1866,8 @@ tp_post_events(struct tp_dispatch *tp, uint64_t time)
  	ignore_motion |= tp_tap_handle_state(tp, time);
  	ignore_motion |= tp_post_button_events(tp, time);
  
@@ -1407,7 +1407,7 @@ index 9c219a68..74727a15 100644
  	if (tp->palm.trackpoint_active || tp->dwt.keyboard_active) {
  		tp_edge_scroll_stop_events(tp, time);
  		tp_gesture_cancel(tp, time);
-@@ -3777,6 +3783,8 @@ tp_init(struct tp_dispatch *tp,
+@@ -3776,6 +3782,8 @@ tp_init(struct tp_dispatch *tp,
  	if (!tp_init_accel(tp, LIBINPUT_CONFIG_ACCEL_PROFILE_ADAPTIVE))
  		return false;
  
@@ -1501,5 +1501,5 @@ index 48d1b113..26593cf7 100644
  tp_tap_post_process_state(struct tp_dispatch *tp);
  
 -- 
-2.47.0
+2.47.1
 
