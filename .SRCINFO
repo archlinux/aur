@@ -12,6 +12,6 @@ pkgbase = archiso-systemd-boot
 	source = https://geo.mirror.pkgbuild.com/iso/2025.01.01/archlinux-2025.01.01-x86_64.iso
 	source = arch-rescue.conf
 	b2sums = 7f6255146787f45990fbc0882fce025bc53e0fe0eaf57e4685f0e11eba614fdb7fb413a08d3cbe679c4d3f149bcc897aedfe29b195b025e7085f47427cae5920
-	b2sums = 7f1ea3990022ab122b3a70d4ed60f441a3bcc9135202d311dd94a60a43e79e82f5654ff61f72c5cfcaa69632ae3ecfcac37c1ac7142fbbad5f618fcbd3dc5612
+	b2sums = f55abf33fbcb7d462d175c16dbe43e4f3bcb7c3ec60ad19a2d31a733c6f8948792b539c48f85dfc7ebe24e136ff74212a129c61605471ce0009c3b62f081a221
 
 pkgname = archiso-systemd-boot
