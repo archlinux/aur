@@ -20,10 +20,10 @@ source_aarch64=("$pkgname-$pkgver-$pkgrel-aarch64::https://github.com/iffse/pay-
 source_armv7h=("$pkgname-$pkgver-$pkgrel-armv7h::https://github.com/iffse/pay-respects/releases/download/v$pkgver/pay-respects-$pkgver-armv7-unknown-linux-gnueabihf.tar.zst")
 source_i686=("$pkgname-$pkgver-$pkgrel-i686::https://github.com/iffse/pay-respects/releases/download/v$pkgver/pay-respects-$pkgver-i686-unknown-linux-gnu.tar.zst")
 sha1sums=('0f0faf5b196063ce3ebca3dc12ecd963ed4130eb')
-sha1sums_x86_64=('37909a3c7e1c600d6da66ea3c8e73163b9942875')
-sha1sums_aarch64=('5dad69575c1693ea9b14bbbeeb95af2dc3087779')
-sha1sums_armv7h=('1a784b3c610c149cd9176ab41230b138763bf7a7')
-sha1sums_i686=('8cd79143bfdea6948ad6e3fd35a29e8a91fe4090')
+sha1sums_x86_64=('fc8e936aff085b10ddc9e34b9c036abdc4ad4541')
+sha1sums_aarch64=('f061205ee675362899e98ea2d02b61c8139c0597')
+sha1sums_armv7h=('79f19376f5da512f36772639ee30ff98d78e5555')
+sha1sums_i686=('b3c17224f3c9264a0c92aa6395d2e58ecfa85620')
 
 package() {
 	install -Dm755 "${_pkgname}.sh" "$pkgdir/usr/bin/${_pkgname}"
