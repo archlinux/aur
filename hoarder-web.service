@@ -14,6 +14,9 @@ ExecStartPre = /usr/bin/node index.js
 ExecStart = /usr/bin/node /usr/lib/hoarder/apps/web/server.js
 TimeoutStopSec = 5
 SyslogIdentifier = hoarder-web
+ProtectSystem = yes
+PrivateTmp = yes
+NoNewPrivileges = yes
 
 [Install]
 WantedBy = multi-user.target

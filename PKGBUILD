@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=hoarder
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
@@ -22,14 +22,14 @@ source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}-browser.service"
         "${pkgname}-web.service"
         "${pkgname}-workers.service")
-sha256sums=('f40b872fbca547e4ad092f18ef1a51e5372144b41a19e4039bec0bcf4630775d'
+sha256sums=('e045142478637c85b36eac67a3569ec7b511bafa5d3d099f397953d3957860ee'
             '1741afe407c55654462de14b0ec454775668dc42103f20448fc8025f646bf963'
             'bb7cf9d047374376137a9ec5ac5ad653d3569a834de8ccc3e8a6f04a870bc01e'
             '713e248fc61f429a3da627016343d89147dde147f739e51584f7398d11262896'
             'cd2b58e13dd928925db21819a74052b98c4dd82cf6353f6b9181b41cc93e8848'
-            'eabf61d0cc9cf94bc535230160f870bc77437a58657e58cde261f667e35d7496'
-            'b8de940803dc527416edae149c4182126c74b4dec7387c198c7217e4c4e16ef5'
-            '361c24c7d54fe8ff613e52b042d245d321ce0385e53f879230288d2de43bfc01')
+            '0fcaf8b03f475e93fc6d84b9f9cfe4d87c3c60baf294b93bb5c69586971e21b4'
+            '7a4478c4fa6a7b60566d8b8fdb46a4c2f33d094e8fb728e281b204990a210f13'
+            'c83bbf444472b557b20865b8c3c8dc00e59a1c5978f02398d909407ee00efeae')
 
 build() {
     export COREPACK_ENABLE_STRICT=0
@@ -41,6 +41,7 @@ build() {
     # build web
     cd "${pkgname}"
     corepack use $(jq -r '.packageManager' package.json)
+    pnpm install
     cd packages/db
     pnpm dlx @vercel/ncc build migrate.ts -o ../../db_migrations
     cp -R drizzle ../../db_migrations
@@ -50,7 +51,6 @@ build() {
     # build workers
     cd ../..
     rm -rf workers &>/dev/null
-    pnpm install
     pnpm deploy --node-linker=isolated --filter @hoarder/workers --prod workers
 
     # delete musl files, macos/win/android files, map file

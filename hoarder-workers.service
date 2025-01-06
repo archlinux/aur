@@ -12,6 +12,9 @@ WorkingDirectory = /usr/lib/hoarder/apps/workers
 ExecStart = /usr/bin/pnpm run start:prod
 TimeoutStopSec = 5
 SyslogIdentifier = hoarder-workers
+ProtectSystem = yes
+PrivateTmp = yes
+NoNewPrivileges = yes
 
 [Install]
 WantedBy = multi-user.target
