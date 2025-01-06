@@ -4,8 +4,8 @@
 
 pkgname=perl-crypt-urandom
 _cpanname=Crypt-URandom
-pkgver=0.40
-pkgrel=3
+pkgver=0.47
+pkgrel=1
 pkgdesc="Provide non blocking randomness"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -14,8 +14,8 @@ depends=('perl')
 makedepends=('perl-test-pod')
 url="https://metacpan.org/release/$_cpanname"
 source=("http://search.cpan.org/CPAN/authors/id/D/DD/DDICK/$_cpanname-$pkgver.tar.gz")
-md5sums=('4ecfd3776faf0b3eb2bef2a886a88843')
-sha512sums=('2cf332148f46599388438b4aa8d47ec7da1f8cf5b8b59cc6ca41477b39fc0f0b957a643dc0c539b353c4296775ec0faf2a9bb2217ed71b76a476f68520d4cf0f')
+md5sums=('9a3640ef54bdf9c7e16798343177528d')
+sha512sums=('6104ec454682cda53799a7cd3344bee8d2c8f3b4f76342093916ddb80b3b217051d6462ab2c6a0b9098a8805894aa68fb6fdfaca05818d0f6335511322586c69')
 
 build() {
     cd "$srcdir/$_cpanname-$pkgver"
@@ -28,7 +28,7 @@ build() {
 
 check() {
     cd "$srcdir/$_cpanname-$pkgver"
-    PERL_MM_USE_DEFAULT=1 PERL5LIB="" make test
+    LANG=C PERL_MM_USE_DEFAULT=1 PERL5LIB="" make test
 }
 
 package() {
