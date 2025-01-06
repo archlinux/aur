@@ -1,0 +1,4 @@
+[aaaaxy-snap]
+source = "git"
+git = "https://github.com/divVerent/aaaaxy.git"
+prefix = "v"
