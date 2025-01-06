@@ -3,7 +3,7 @@
 _pkgname=lb-planner
 pkgname=${_pkgname}-git
 pkgver=0.0.3.880_d60d068
-pkgrel=1
+pkgrel=2
 pkgdesc='a Planning tool for students at the TGM Vienna (unstable version)'
 provides=('lb-planner')
 arch=('x86_64')
