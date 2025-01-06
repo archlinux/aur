@@ -16,6 +16,6 @@ pkgbase = pay-respects
 	optdepends = curl: AI requests
 	provides = pay-respects
 	source = pay-respects::git+https://github.com/iffse/pay-respects#tag=v0.6.9
-	sha1sums = bbad3d5c7c5df0bd442bada3352cdc20ab8e7347
+	sha1sums = fe811321b031849dfe5e2c4c7d0338514b961b02
 
 pkgname = pay-respects
