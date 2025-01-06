@@ -45,6 +45,7 @@ pkgbase = ultimatevocalremovergui-git
 	depends = soundtouch
 	depends = python-audioop-lts
 	depends = tk
+	depends = python-deadlib
 	source = ultimatevocalremovergui::git+https://github.com/Anjok07/ultimatevocalremovergui.git
 	source = tkinterdnd2::git+https://github.com/Eliav2/tkinterdnd2.git
 	source = UVR.sh
