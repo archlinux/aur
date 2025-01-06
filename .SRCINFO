@@ -1,14 +1,14 @@
 pkgbase = book-git
 	pkgdesc = A simple bookmark manager written in go
-	pkgver = r59.3273264
-	pkgrel = 1
-	url = https://github.com/M4rti21/book
+	pkgver = r61.39d0d1d
+	pkgrel = 2
+	url = https://codeberg.org/Marti/book
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = go
 	options = !debug
-	source = book-git::git+http://github.com/M4rti21/book.git
+	source = book-git::git+https://codeberg.org/Marti/book.git
 	md5sums = SKIP
 
 pkgname = book-git
