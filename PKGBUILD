@@ -1,7 +1,8 @@
 # Maintainer: MYT1 <MYT1 at QQ com>
 pkgname=mailmaster
 pkgver=5.0.2.1011
-pkgrel=2
+epoch=1
+pkgrel=3
 pkgdesc="专业的全平台邮箱客户端。一封邮件，多端同步。手机、Windows、Mac、Linux、网页端，
 所有平台都能给你出色的体验。"
 arch=('x86_64')
@@ -33,10 +34,8 @@ package() {
     bsdtar -xf "${srcdir}/data."* -C "$pkgdir/"
     install -Dm755 "${pkgdir}/opt/mailmaster/launch.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${pkgdir}/opt/mailmaster/logo.ico" "${pkgdir}/usr/share/pixmaps/${pkgname}.ico"
-    sed '9s/.*/Exec=env QT_SCALE_FACTOR=1.15 mailmaster %U/g' -i "${pkgdir}/usr/share/applications/mailmaster.desktop"
-    sed '6s/.*/Icon=mailmaster/g' -i "${pkgdir}/usr/share/applications/mailmaster.desktop"
+    sed '9s/.*/Exec=mailmaster %U/g' -i "${pkgdir}/usr/share/applications/mailmaster.desktop"
     sed '6s/.*/Icon=mailmaster/g' -i "${pkgdir}/usr/share/applications/mailmaster.desktop"
     sed -i '$a\MimeType=message\/rfc822;x-scheme-handler\/mailto;text\/calendar;text\/vcard;text\/x-vcard;x-scheme-handler\/webcal;x-scheme-handler\/webcals;x-scheme-handler\/mid;' "${pkgdir}/usr/share/applications/mailmaster.desktop"
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname%-bin}"
-    ln -s /usr/lib/libsasl2.so.3.0.0 "${pkgdir}/opt/mailmaster/libsasl2.so.2"
 }
