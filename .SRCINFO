@@ -1,8 +1,8 @@
 pkgbase = additional-base-lib
 	pkgdesc = Additional Base Lib 附加基础库，用轻量级容器工具bubblewrap解决GNU/Linux操作系统中常见的glibc不兼容问题。
 	pkgver = 2.40
-	pkgrel = 2
-	epoch = 1
+	pkgrel = 3
+	epoch = 2
 	url = https://gitee.com/deepin-community-store/additional-base-lib
 	arch = x86_64
 	license = custom
