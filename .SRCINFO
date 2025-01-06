@@ -10,6 +10,7 @@ pkgbase = jj-fzf
 	depends = bash
 	depends = shellcheck
 	depends = findutils
+	depends = jujutsu
 	source = git+https://github.com/tim-janik/jj-fzf.git#tag=v0.24.0
 	sha256sums = SKIP
 
