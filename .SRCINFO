@@ -1,0 +1,17 @@
+pkgbase = python-ndjson
+	pkgdesc = JsonDecoder for ndjson
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/rhgrant10/ndjson
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-pytest-runner
+	makedepends = python-wheel
+	depends = python
+	source = ndjson-0.3.1.tar.gz::https://files.pythonhosted.org/packages/source/n/ndjson/ndjson-0.3.1.tar.gz
+	sha256sums = bf9746cb6bb1cb53d172cda7f154c07c786d665ff28341e4e689b796b229e5d6
+
+pkgname = python-ndjson
