@@ -1,5 +1,6 @@
 # Maintainer: Hauke Rehfeld <aur.archlinux.org@haukerehfeld.de>
-pkgname=python-keyring-minimal-git
+_pkgname=python-keyring-minimal
+pkgname="$_pkgname-git"
 pkgver=r12.5c266c5
 pkgrel=2
 pkgdesc="A minimal libsecret keyring in python that works with keepassxc."
@@ -19,14 +20,14 @@ noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${_pkgname}"
 
 	# Git, no tags available
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${_pkgname}"
 	git checkout master
 	sed -r -i "s/^version=([.0-9]*)$/version=\1+$pkgver/" setup.cfg
   _actual_version=$(grep -Po '(?<=^version=)(.*)$' setup.cfg)
