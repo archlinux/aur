@@ -1,4 +1,5 @@
 pkgbase = python-dottorrent
+	pkgdesc = High-level Python 3 library for creating .torrent files
 	pkgver = 1.9.2
 	pkgrel = 2
 	url = https://github.com/kz26/dottorrent

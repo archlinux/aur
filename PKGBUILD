@@ -7,7 +7,7 @@ url='https://github.com/kz26/dottorrent'
 license=('MIT')
 depends=('python' 'python-humanfriendly' 'python-pyqt5' 'python-pyqt5-sip' 'python-bencoder-pyx')
 makedepends=('python-setuptools' 'git')
-description="High-level Python 3 library for creating .torrent files"
+pkgdesc="High-level Python 3 library for creating .torrent files"
 source=("$_pkgname-$pkgver::git+https://github.com/kz26/dottorrent#tag=v$pkgver")
 sha256sums=('12e5569832d4d65ac68f0fb8e13ab79f47e12f846b628b28f0b35f0d73ecd172')
 
