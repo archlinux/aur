@@ -1,7 +1,7 @@
 pkgbase = openfoam
 	pkgdesc = The open source CFD toolbox (www.openfoam.org)
 	pkgver = 12.20250102
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.openfoam.org
 	install = openfoam.install
 	arch = x86_64
