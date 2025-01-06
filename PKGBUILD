@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=megacubo-bin
 _pkgname=Megacubo
-pkgver=17.5.0
+pkgver=17.5.6
 _electronversion=9
 pkgrel=1
 pkgdesc="📺 A intuitive, multi-language and cross-platform IPTV player.(Prebuild version.Use system-wide electron)"
@@ -30,17 +30,17 @@ options=(
 )
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
-source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_x86.tar.gz")
+source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_ia32.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_x64.tar.gz")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('4a6d75ecb12a956dd456bf0a90b1065f63eb2a3f5f7dbd57ad0e4108617d0d93')
-sha256sums_i686=('8838a49b6d2f2ac2b5d6dd4ea261f9542e905b0bbe1eb7fef0bed4002e5bcb15')
-sha256sums_x86_64=('d9754779c0675df54d2aec393d34a51aca369392a776754232c272864383a08e')
-build() {
+sha256sums_aarch64=('31c652cef14df00dbce65af7ef3045d2a9cf6c700a395b6b3ff72f1e42fee892')
+sha256sums_i686=('680cdeffdc25d0d795ee94eb11d968ea1cde6b36c77af2d8d6d5515103d2fecd')
+sha256sums_x86_64=('55666922886a2f19e41cc2224d8fad77050683b424d1aa70494c63efdc2ec4d8')
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app.asar/g
+        s/@runname@/app/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@//g
     " -i "${srcdir}/${pkgname%-bin}.sh"
