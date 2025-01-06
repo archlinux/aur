@@ -15,7 +15,7 @@
 #
 # This defines the dependency package name as well as the target directory
 # for the game files.
-_type='luanti-modern'
+_type='luanti'
 
 
 pkgname=minetest-game-cdb
