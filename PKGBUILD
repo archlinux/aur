@@ -1,7 +1,7 @@
 # Maintainer: yifwon <wyf9661 at gmail dot com>
 pkgname=drawio-desktop-appimage
 _pkgname=drawio
-pkgver=25.0.2
+pkgver=26.0.3
 pkgrel=1
 pkgdesc="Diagram drawing application built on web technology"
 arch=('x86_64' 'aarch64')
