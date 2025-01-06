@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=h7toolpc-wine
-pkgver=2.2.6
+pkgver=2.2.7
 pkgrel=1
 pkgdesc="Wine H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等"
 arch=('x86_64')
@@ -20,10 +20,11 @@ makedepends=(libarchive)
 backup=()
 options=('!strip' '!debug')
 install=${pkgname}.install
-source=("${pkgname/pc-wine/PC_release}-${pkgver}.7z::https://img.anfulai.cn/bbs/95468/${pkgname/pc-wine/PC_release}(V${pkgver}).7z"
-        "icons.tar.gz"
-        "${pkgname}.install")
-sha256sums=('5d59bfcdba39f4abe9bd3abac269291419dde6cb571f804f7341541f97b9c658'
+# https://www.armfly.com/download/H7-TOOL/h7toolPC_release(V2.2.7).7z
+source=("${pkgname/pc-wine/PC_release}-${pkgver}.7z::https://www.armfly.com/download/H7-TOOL/${pkgname/pc-wine/PC_release}(V${pkgver}).7z"
+    "icons.tar.gz"
+    "${pkgname}.install")
+sha256sums=('ab2450e05146daa762bc46263e7af2aa2d5ef1641df879dec0461bafbafc165c'
             '6823224b5699dc17c41efdcbc8465554f007cb62cadea0aad9b67c08c5698142'
             'b7ed44498e84bae5f174fd0a4a56aea0298ce93bc9a5de8b1dfb41c067705d27')
 noextract=("icons.tar.gz")
@@ -39,7 +40,7 @@ package() {
     find "${pkgdir}/${armfly}" -type d -exec chmod 755 "{}" \;
 
     _ftname="wqy-microhei.ttc"
-    install -Dm0644 /dev/stdin "${pkgdir}/${armfly}/${pkgname%-wine}/regpatch.reg" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/${armfly}/${pkgname%-wine}/regpatch.reg" <<EOF
 REGEDIT4
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink]
@@ -119,7 +120,7 @@ REGEDIT4
 
 EOF
 
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-wine}" << EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-wine}" <<EOF
 #!/bin/bash
 export WINEARCH=win64 WINEPREFIX="\$HOME/.${pkgname%-wine}/wine"
 
@@ -155,7 +156,7 @@ fi
 wine "\$HOME"/.${pkgname%-wine}/${pkgname%-wine} -opengl "\$@"
 EOF
 
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname%-wine}.desktop" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname%-wine}.desktop" <<EOF
 [Desktop Entry]
 Name=${pkgname%-wine}
 Name[zh_CN]=${pkgname%-wine}
@@ -169,7 +170,7 @@ Icon=${pkgname%-wine}.png
 Version=${pkgver}
 EOF
 
-    install -Dm0644 /dev/stdin "${pkgdir}/etc/udev/rules.d/10-h7tool.rules" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/udev/rules.d/10-h7tool.rules" <<EOF
 # Copy this file to /etc/udev/rules.d/ or /usr/lib/udev/rules.d/
 # If rules fail to reload automatically, you can refresh udev rules
 # with the command "sudo udevadm control --reload"
@@ -191,5 +192,5 @@ LABEL="h7tool_rules_end"
 EOF
 
     bsdtar -xf "${srcdir}/icons.tar.gz" -C "${pkgdir}/usr/share"
-#     install -Dm0644 "${srcdir}/${pkgname%-wine}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-wine}/LICENSE"
+    #     install -Dm0644 "${srcdir}/${pkgname%-wine}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-wine}/LICENSE"
 }
