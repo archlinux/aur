@@ -1,13 +1,14 @@
-# Maintainer: Cass Midkiff <cass.midkiff.kde@gmail.com>
+# Maintainer: Luis Bañuelos <luiscarlos.banuelos@gmail.com>
+# Contributor: Cass Midkiff <cass.midkiff.kde@gmail.com>
 pkgname=devtunnel-cli-bin
 
 _bin_name=devtunnel
 
 # there's no url versioning, so this will install the latest published version
 # regardless what the `pkgver` is set to
-pkgver='1.0.1249+67b1cd300c'
+pkgver=1.0.1404+0e554806f5
 pkgrel=1
-pkgdesc="Microsoft Dev Tunnels cli client"
+pkgdesc="Microsoft Dev Tunnels CLI client"
 
 # dev, ppe, prod
 _env=dev
@@ -27,16 +28,17 @@ depends=(
 provides=($_bin_name)
 conflicts=($_bin_name)
 
-_source_x86=devtunnel_${pkgver}_x86
-_source_arm=devtunnel_${pkgver}_arm64
+_source_x86_64=devtunnel_x86_64
+_source_aarch64=devtunnel_arm64
 
 source=()
-source_x86_64=($_source_x86::https://tunnelsassets$_env.blob.core.windows.net/cli/linux-x64-devtunnel)
-source_aarch64=($_source_arm::https://tunnelsassets$_env.blob.core.windows.net/cli/linux-arm64-devtunnel)
-noextract=($_source_x86 $_source_arm)
+source_x86_64=($_source_x86_64::https://tunnelsassets$_env.blob.core.windows.net/cli/linux-x64-devtunnel)
+source_aarch64=($_source_aarch64::https://tunnelsassets$_env.blob.core.windows.net/cli/linux-arm64-devtunnel)
+noextract=($_source_x86_64 $_source_aarch64)
 
-sha256sums_aarch64=('d856fee510120e7014ad05af8e37041ff3da6e4dc7533b966a30328a849c69c1')
-sha256sums_x86_64=('1a104a1a166205c1214278326db5a688f811015aaa513c492347c0814cbee6da')
+sha256sums_aarch64=('31e8cfa5f3fac23f707f0b6dda8629b596a616c894ea8e7e5004b40e12b646c4')
+sha256sums_x86_64=('b7e5f085869b0e03a075cd584675bb4feba7dd277ec1c77c168354e8161df9cb')
+
 validpgpkeys=()
 
 # stripping symbols causes an error on execution:
@@ -45,11 +47,23 @@ validpgpkeys=()
 # > A fatal error occured while processing application bundle
 options=(!strip)
 
+pkgver() {
+    cd "${srcdir}"
+
+    _pkg=$_source_x86_64
+    if [ "${CARCH}" = "aarch64" ]; then
+        _pkg=$_source_aarch64
+    fi
+
+    chmod +x ${_pkg}
+    ./${_pkg} --version | sed -n 's/Tunnel CLI version: \(.*\)/\1/p'
+}
+
 package() {
 
-    _pkg=$_source_x86
+    _pkg=$_source_x86_64
     if [ "${CARCH}" = "aarch64" ]; then
-        _pkg=$_source_arm
+        _pkg=$_source_aarch64
     fi
 
     install -d "${pkgdir}/usr/bin"
