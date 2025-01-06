@@ -7,7 +7,7 @@ pkgbase = xclock-git
         license = GPL
         makedepends = cargo
         makedepends = git
-        source = https://github.com/devHeadset/xClock.git
+        source = +githttps://github.com/devHeadset/xClock.git
         md5sums = SKIP
 
 pkgname = xclock-git
