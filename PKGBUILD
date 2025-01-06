@@ -5,7 +5,7 @@
 
 pkgname='mycorrhiza'
 pkgver=1.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Filesystem and git-based wiki engine written in Go using mycomarkup'
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://codeberg.org/bouncepaw/$pkgname"
@@ -18,8 +18,8 @@ options=('lto')
 prepare() {
   cd "$pkgname"
 
-  mkdir -p build \
-  && go mod tidy
+  mkdir -p build
+  go mod tidy
 }
 
 build() {
@@ -56,8 +56,7 @@ check() {
 
   go test ./...
 
-  test -t 1 \
-  && build/mycorrhiza -version
+  build/mycorrhiza -version
 }
 
 package() {
