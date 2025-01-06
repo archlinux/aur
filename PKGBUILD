@@ -1,7 +1,7 @@
 # Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
 pkgname=jj-fzf
 pkgver=0.24.0
-pkgrel=3
+pkgrel=4
 pkgdesc=" Text UI for Jujutsu based on fzf, centering around the jj log with key bindings for common operations"
 arch=('any')
 url="https://github.com/tim-janik/jj-fzf"
@@ -23,7 +23,8 @@ check() {
 
 package() {
   cd "$srcdir/$pkgname"
-  # just copy the jj-fzf script to /usr/bin
-  install -Dm755 jj-fzf "$pkgdir/usr/bin/jj-fzf"
+  # FIXME: make install should take care of this https://github.com/tim-janik/jj-fzf/issues/7
+  mkdir -p "$pkgdir/usr/bin"
+  make prefix="$pkgdir/usr" install
 }
 # vim:set ts=2 sw=2 et:
