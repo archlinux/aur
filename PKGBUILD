@@ -16,8 +16,8 @@ backup=()
 options=()
 install=
 source=("git+${url}.git")
+sha256sums=('SKIP')
 noextract=()
-md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
