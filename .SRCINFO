@@ -1,7 +1,7 @@
 pkgbase = survex
 	pkgdesc = Cave survey software
 	pkgver = 1.4.15
-	pkgrel = 2
+	pkgrel = 3
 	url = http://survex.com/
 	install = survex.install
 	arch = i686

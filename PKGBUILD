@@ -4,7 +4,7 @@
 # Contributor: Martin Lüthi <mluethi@tnoo.net>
 pkgname=survex
 pkgver=1.4.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Cave survey software"
 arch=('i686' 'x86_64')
 url="http://survex.com/"
@@ -29,7 +29,7 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 
-	cd "$srcdir/loser"
+	cd "$srcdir/sample/loser"
 
 	install -m 755 -d "$pkgdir"/usr/share/$pkgname/samples
 	cp -r * "$pkgdir"/usr/share/$pkgname/samples
