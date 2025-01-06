@@ -1,0 +1,21 @@
+pkgbase = openhud-git
+	pkgdesc = Uses the CS2 GSI and a node server with websockets to send data to a react client.(Use system-wide electron)
+	pkgver = 3.0.1.r1.g741af0c
+	pkgrel = 1
+	url = https://github.com/JohnTimmermann/OpenHud
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron33
+	provides = openhud=3.0.1
+	conflicts = openhud
+	source = openhud.git::git+https://github.com/JohnTimmermann/OpenHud.git
+	source = openhud.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = openhud-git
