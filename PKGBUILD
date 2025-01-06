@@ -1,7 +1,8 @@
 # Maintainer: MYT1 <MYT1 @ QQ .com>
 pkgname=additional-base-lib
 pkgver=2.40
-pkgrel=1
+epoch=1
+pkgrel=2
 pkgdesc='Additional Base Lib 附加基础库，用轻量级容器工具bubblewrap解决GNU/Linux操作系统中常见的glibc不兼容问题。'
 arch=('x86_64')
 url="https://gitee.com/deepin-community-store/additional-base-lib"
@@ -13,6 +14,7 @@ depends=(
     'glibc'
     'gcc-libs'
     )
+options=('!strip' '!debug')
 source=(
     "ablrun"
 )
@@ -46,6 +48,8 @@ package() {
     ln -s "/usr/lib/libstdc++.so.6.0.33" "${pkgdir}/usr/lib/additional-base-lib/libstdc++.so.6"
     cp -r "/usr/lib/libthread_db.so.1" "${pkgdir}/usr/lib/additional-base-lib"
     cp -r "/usr/lib/libutil.so.1" "${pkgdir}/usr/lib/additional-base-lib"
+    cp -r "/usr/lib/libsasl2.so.3.0.0" "${pkgdir}/usr/lib/additional-base-lib"
+    ln -s "/usr/lib/libsasl2.so.3.0.0" "${pkgdir}/usr/lib/additional-base-lib/libsasl2.so.2"
     install -Dm755 ablrun "${pkgdir}/usr/bin/ablrun"  
 }
 sha256sums=('d29b3b70b242d2da014bca5eebddfe5cf6291cf728f5f019fdafe5f8a65a37ec')
