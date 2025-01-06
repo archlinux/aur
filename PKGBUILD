@@ -1,7 +1,7 @@
 # Maintainer: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
 
 pkgname=nhentai-git
-pkgver=r441.8452347
+pkgver=r665.5bde24f
 pkgrel=1
 pkgdesc='CLI tool for downloading doujinshi from nhentai.net'
 arch=(any)
@@ -14,8 +14,8 @@ depends=(
   'python-beautifulsoup4>=4.0.0'
   # python-threadpoolctl
   'python-tabulate>=0.7.5'
-  'python-future>=0.15.2'
   'python-iso8601>=0.1'
+  'python-httpx'
 )
 makedepends=(git python-setuptools)
 
