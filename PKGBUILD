@@ -1,7 +1,7 @@
 # Maintainer: wwxiaoqi <tahicoing@gmail.com>
 
 pkgname=hexhub-bin
-pkgver=1.1.6
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="database, docker, ssh, sftp. all in one"
 arch=('x86_64')
@@ -10,10 +10,10 @@ license=('GPL')
 depends=()
 conflicts=()
 options=("!strip" "!debug")
-source=('https://oss.hexhub.cn/plugin/HexHub_amd64.AppImage')
-sha256sums=('417461fad6a4c04b8d18ee5d4e4d4a7f831314e5123bc25886936e78dec59a70')
+source=('https://oss.hexhub.cn/plugin/HexHub-amd64-appimage-1.2.2.AppImage')
+sha256sums=('92bb5ec914e4ddf0e061afc6bad4ec0d952de8204c9fcdd05aa502e05ca86382')
 
-_pkgname=HexHub_amd64.AppImage
+_pkgname=HexHub-amd64-appimage-1.2.2.AppImage
 noextract=("$_pkgname")
 
 prepare() {
