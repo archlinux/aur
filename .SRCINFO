@@ -1,7 +1,7 @@
 pkgbase = qmc2
 	pkgdesc = Qt based UNIX MAME frontend supporting SDLMAME
 	pkgver = 0.243
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/qmc2/qmc2-mame-fe
 	arch = x86_64
 	license = GPL-2.0-only
@@ -9,7 +9,7 @@ pkgbase = qmc2
 	makedepends = rsync
 	depends = gcc-libs
 	depends = glibc
-	depends = minizip-ng-compat
+	depends = minizip-ng
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = qt5-svg
