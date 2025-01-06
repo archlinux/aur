@@ -11,7 +11,7 @@ pkgbase = nhentai-git
 	depends = python-soupsieve
 	depends = python-beautifulsoup4>=4.0.0
 	depends = python-tabulate>=0.7.5
-	depends = python-future>=0.15.2
+	depends = python-httpx
 	depends = python-iso8601>=0.1
 	provides = nhentai
 	provides = python-nhentai
