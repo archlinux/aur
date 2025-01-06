@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=seekr
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="System search util for linux"
 arch=('any')
@@ -18,9 +18,11 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('0f643715572475cbc473f0c3d7299aa5508b55bf37326a7177a2d8c20e8d7f22')
-build() {
+sha256sums=('8319f6f1f97f8960e6b56ceac7997096e4da5e00bfee0f6fe637249096096ec7')
+prepare() {
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname}"
+}
+build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     export CARGO_HOME="${srcdir}/.cargo"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
