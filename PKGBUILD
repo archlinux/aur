@@ -1,40 +1,47 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-lrps2
 pkgname=$_pkgname-git
-pkgver=r13104.f3c8743d6
-pkgrel=2
+pkgver=r19015.bed6b253c
+pkgrel=1
 pkgdesc="Sony PlayStation 2 core (fork of PCSX2)"
 arch=('x86_64')
-url="https://github.com/libretro/LRPS2"
-license=('GPL2' 'GPL3' 'LGPL3')
+url="https://github.com/libretro/ps2"
+license=('GPL-3.0-or-later')
 groups=('libretro')
 depends=(
 	'gcc-libs'
 	'glibc'
 	'libretro-core-info'
-	'wxwidgets'
-	'zlib'
 )
 makedepends=(
 	'cmake'
+	'fast_float'
+	'fmt9'
 	'git'
-	'libaio'
-	'libchdr'
 	'libgl'
-	'xxd'
-	'yaml-cpp'
+	'libzip'
+	'rapidyaml'
+	'xz'
+	'zstd'
 )
 provides=("$_pkgname=${pkgver#r}" 'libretro-pcsx2')
 conflicts=("$_pkgname" 'libretro-pcsx2')
+options=('!lto')
 source=(
 	"$_pkgname::git+$url.git"
-	'fix-lto.patch'
-	'use-system-libs.patch'
+	"glslang::git+https://github.com/KhronosGroup/glslang.git"
+	"granite::git+https://github.com/Themaister/Granite.git"
+	"parallel-gs::git+https://github.com/Arntzen-Software/parallel-gs.git"
+	"volk::git+https://github.com/zeux/volk.git"
+	"vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 )
 b2sums=(
 	'SKIP'
-	'eefc261919281854605e4c9bcab7e53389197650481a2aea693aa0848b874a532acf445231836759c5602c02e7160eb45cfe120d726882e234d6580fcbde12a4'
-	'be061bf85aceb11daf52f78823d3306fef4ff852a3104c19566769bf1706a11c7670cfbd0f743c4fe24f7746c4f430c7df37b1855987be0218bb808b5e3dc07d'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
 )
 
 pkgver() {
@@ -44,30 +51,42 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	patch -Np1 < ../fix-lto.patch
-	patch -Np1 < ../use-system-libs.patch
+	# shellcheck disable=SC2154
+	git config submodule.3rdparty/glslang/glslang.url "$srcdir"/glslang
+	git config submodule.3rdparty/vulkan-headers.url "$srcdir"/vulkan-headers
+	git config submodule.pcsx2/GS/parallel-gs.url "$srcdir"/parallel-gs
+	git -c protocol.file.allow=always submodule update
 	sed -i '/ccache/d' CMakeLists.txt
-	sed -i '/include <vector>/a #include <string>' pcsx2/CDVD/CDVDdiscReader.h
-	sed -i '/include <thread>/a #include <system_error>' pcsx2/CDVD/CDVDdiscThread.cpp
-	sed -i '/include <vector>/a #include <cstdint>' pcsx2/MemoryPatchDatabase.h
+	sed -i '/fmt/s/7\.1\.3/&...<10/' cmake/SearchForStuff.cmake
+	cd pcsx2/GS/parallel-gs
+	git config submodule.Granite.url "$srcdir"/granite
+	git -c protocol.file.allow=always submodule update
+	cd Granite
+	git config submodule.third_party/volk.url "$srcdir"/volk
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
-	cmake -S $_pkgname -B build \
+	# -DDISABLE_ADVANCE_SIMD=ON \
+	cmake -B build -S $_pkgname \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DDISABLE_ADVANCE_SIMD=ON \
-		-DOPTIMIZATION_FLAG="" \
+		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
+		-DLTO_PCSX2_CORE=ON \
+		-DUSE_SYSTEM_FMT=ON \
+		-DUSE_SYSTEM_LIBZIP=ON \
+		-DUSE_SYSTEM_RYML=ON \
+		-DUSE_SYSTEM_ZSTD=ON \
 		-Wno-dev
 	cmake --build build
 }
 
 package() {
 	depends+=(
-		'libaio.so'
-		'libchdr.so'
-		'libOpenGL.so'
-		'libyaml-cpp.so'
+		'libfmt.so'
+		'libryml.so'
+		'libzip.so'
 	)
 	# shellcheck disable=SC2154
-	install -D -t "$pkgdir"/usr/lib/libretro build/pcsx2/pcsx2_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro build/bin/pcsx2_libretro.so
 }
