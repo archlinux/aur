@@ -41,6 +41,7 @@ options=('!makeflags' '!lto')
 _patches=(
   '0000-disable-update-check@rustdesk.patch'
   '0001-extended_text-drop-version-for-flutter.3.22.3@rustdesk.patch' # https://github.com/rustdesk/rustdesk/blob/master/.github/workflows/bridge.yml#L77
+  '0002-screen_retriever@rustdesk.patch'
 )
 install="${pkgname}.install"
 _srcdir="${pkgname}-${_pkgver}"
@@ -80,13 +81,15 @@ fi
 md5sums=('d6a9f5ccce460c08f245696639158bed'
          '6acc4b5b14befec55ef84006b60c7ff5'
          '9b997c2eb989a044704fd7c1d2152d02'
-         'd910c998433bea79e2b3004ac7bc4cda'
+         'a77a4586f30f77de2eed63e160b3a051'
+         '0d902a4829df777ec93d764794bf4ec6'
          '74dc171bf2cfc1ada56b6e284adabca8'
          'cc8e5418ff0c163228aabbe385ba2596')
 sha256sums=('2a8588123e1bc3ffb661dde90c494cab8ba5231ead61d5e17525b764ff9669d0'
             '8f7f1019404ce47dc012ba7c546ad634b973452fc2c57ac64b62cdc7c1f54ea3'
             '17ad644a9987ad2dc8ddaf68e62e026c1825b3ecae46254ea98d985c5d5df582'
-            '1beaad3e3fb9e70dcbcd98f73d356773eea82ab87e23403642d29483e7760ce5'
+            '82757ee1ab6b956a3c601f7db82e2d9ad80dbbcf2ba68c63059f0b529426ccd0'
+            'f8773e2054ee1127b698a80d6e884ef3750bb696d8f3c954ade8a0d731d3ee7e'
             'db6742a20626d0d2a089eb41ad61b9b2138b996679911e9c8268c1f896191f97'
             '5c1494e79024de228a9f383c8e52e45b042cd0cf24f4b0f47ee4d5448938b336')
 _vcs=("${_vcs[@]%%::*}")
