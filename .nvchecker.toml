@@ -1,0 +1,5 @@
+[textext]
+source = "github"
+github = "textext/textext"
+use_max_tag = "true"
+prefix = "v"
