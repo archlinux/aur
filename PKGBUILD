@@ -2,49 +2,66 @@
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
 _crate="lottieconv"
+_cratever="0.3.0"
 pkgname="lottieconv"
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert lottie files to WEBP or GIF'
 url='https://crates.io/crates/lottieconv'
 license=('MIT')
 
 depends=('gcc-libs' 'libwebp' 'rlottie')
-makedepends=('cargo' 'clang')
+makedepends=('cargo' 'cargo-auditable' 'clang')
 conflicts=('lottie2gif' 'lottie2webp')
 replaces=('lottie2gif' 'lottie2webp')
 
-source=("$_crate-0.3.0.tar.gz::https://crates.io/api/v1/crates/lottieconv/0.3.0/download")
+source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/lottieconv/0.3.0/download")
 sha512sums=('aec0d45d2dfdcc70ff062d73780dfd5860bff0180d87797c0fab24b76e9c6fa39a87cbbdcbb51ee1ab25f1c99702a5a10c34f29e10328c6c555177854462bf7d')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
 
 prepare() {
-	cd "$srcdir/$_crate-0.3.0"
+	cd "$srcdir/$_crate-$_cratever"
 
 	export RUSTUP_TOOLCHAIN=stable
 
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$srcdir/$_crate-0.3.0"
+	cd "$srcdir/$_crate-$_cratever"
 	
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	CFLAGS+=" -ffat-lto-objects"
 
-	
-	cargo build \
-		--offline \
-		--locked \
+	cargo auditable build \
+		--frozen \
 		--features 'clap,gif,webp' \
 		--release
 }
 
+_check() {
+	cd "$srcdir/$_crate-$_cratever"
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects"
+
+	cargo test \
+		--frozen \
+		--features 'clap,gif,webp' \
+		--release \
+		"${@}"
+}
+
+check() {
+	_check --lib
+}
+
 package() {
-	cd "$srcdir/$_crate-0.3.0"
+	cd "$srcdir/$_crate-$_cratever"
 	install -Dm755 "target/release/lottie2gif" -t "$pkgdir/usr/bin"
 	install -Dm755 "target/release/lottie2webp" -t "$pkgdir/usr/bin"
 	install -Dm644 'LICENSE' -t "$pkgdir/usr/share/licenses/$pkgname/"

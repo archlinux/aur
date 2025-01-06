@@ -1,5 +1,6 @@
 {
-  ".i": 2,
+  ".i": 4,
   "crate": "lottieconv",
-  "version": "0.3.0"
+  "version": "0.3.0",
+  "pkgrel": 2
 }
