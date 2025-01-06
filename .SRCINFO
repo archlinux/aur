@@ -1,7 +1,7 @@
 pkgbase = cp2k
 	pkgdesc = A quantum chemistry and solid state physics software package
-	pkgver = 2024.3
-	pkgrel = 2
+	pkgver = 2025.1
+	pkgrel = 1
 	url = https://www.cp2k.org
 	arch = x86_64
 	license = GPL-2.0-only
@@ -14,7 +14,12 @@ pkgbase = cp2k
 	depends = dbcsr
 	depends = fftw-openmpi
 	depends = elpa
-	source = cp2k-2024.3.tar.gz::https://github.com/cp2k/cp2k/releases/download/v2024.3/cp2k-2024.3.tar.bz2
-	sha256sums = a6eeee773b6b1fb417def576e4049a89a08a0ed5feffcd7f0b33c7d7b48f19ba
+	depends = spglib
+	depends = cosma
+	depends = spla
+	depends = libxc
+	options = !lto
+	source = cp2k-2025.1.tar.gz::https://github.com/cp2k/cp2k/releases/download/v2025.1/cp2k-2025.1.tar.bz2
+	sha256sums = 65c8ad5488897b0f995919b9fa77f2aba4b61677ba1e3c19bb093d5c08a8ce1d
 
 pkgname = cp2k
