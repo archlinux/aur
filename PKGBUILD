@@ -31,6 +31,14 @@ sha256sums=('e045142478637c85b36eac67a3569ec7b511bafa5d3d099f397953d3957860ee'
             '7a4478c4fa6a7b60566d8b8fdb46a4c2f33d094e8fb728e281b204990a210f13'
             'c83bbf444472b557b20865b8c3c8dc00e59a1c5978f02398d909407ee00efeae')
 
+prepare() {
+    echo "After upgrading 'nodejs', you need to recompile 'hoarder'..."
+    if type yarn &>/dev/null; then
+        echo "Please uninstall 'yarn' first..."
+        exit 1
+    fi
+}
+
 build() {
     export COREPACK_ENABLE_STRICT=0
     export SERVER_VERSION="$pkgver"
