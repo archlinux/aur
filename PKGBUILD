@@ -70,7 +70,7 @@ prepare() {
         } >> .npmrc
         sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" package-lock.json
     fi
-    sed -i "s/, \'create-rpm-installer\'//g" app/build/Gruntfile.js
+    sed -i "s/, 'create-rpm-installer'//g" app/build/Gruntfile.js
     sed -i "s/execstack --clear-execstack//g" app/script/mkdeb
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
