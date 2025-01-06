@@ -1,0 +1,116 @@
+Based on patch at
+
+# https://sourceforge.net/p/mooedit/feature-requests/19/
+medit-python3.diff
+
+That patch made the code python3 only, no longer compatible with
+python2. python2 is always used if available even
+with --with-python==no.
+
+I added a/,b/ to make -p1 then rewrote as a new patch to make th4
+source runtime compatible with both python2 and python3.
+
+diff -pNaru3 a/tools/glade2c.py b/tools/glade2c.py
+--- a/tools/glade2c.py	2012-12-16 18:55:32.000000000 -0500
++++ b/tools/glade2c.py	2025-01-05 03:47:50.903665248 -0500
+@@ -5,7 +5,10 @@ import sys
+ import getopt
+ import xml.dom
+ import xml.dom.minidom as minidom
+-import StringIO
++if sys.version_info.major > 2:
++    import io as StringIO
++else:
++    import StringIO
+ 
+ def name_is_nice(name):
+     return name[-1:] not in "0123456789"
+@@ -210,7 +213,7 @@ G_GNUC_UNUSED static %(XmlStruct)s *
+ 
+     buf = StringIO.StringIO()
+     if gxml.widgets:
+-        print >> buf, ''
++        buf.write('\n')
+         for w in gxml.widgets:
+             name = w.name
+             ct = params.id_map.get(name)
+@@ -218,7 +221,7 @@ G_GNUC_UNUSED static %(XmlStruct)s *
+                 class_name = w.class_name
+             else:
+                 class_name = ct[0]
+-            print >> buf, '    %s *%s;' % (class_name, name)
++            buf.write('    %s *%s;\n' % (class_name, name))
+     glade_xml_widgets_decl = buf.getvalue()
+     buf.close()
+ 
+@@ -230,9 +233,9 @@ G_GNUC_UNUSED static %(XmlStruct)s *
+             class_name = w.class_name
+         else:
+             class_name = ct[0]
+-        print >> buf, """\
++        buf.write("""\
+     xml->%(struct_mem)s = (%(class_name)s*) moo_glade_xml_get_widget (xml->xml, "%(glade_name)s");
+-    g_return_val_if_fail (xml->%(struct_mem)s != NULL, FALSE);""" % { 'struct_mem': w.name, 'glade_name': w.real_name, 'class_name': class_name }
++    g_return_val_if_fail (xml->%(struct_mem)s != NULL, FALSE);\n""" % { 'struct_mem': w.name, 'glade_name': w.real_name, 'class_name': class_name })
+     glade_xml_widgets_defs = buf.getvalue()
+     buf.close()
+ 
+@@ -243,7 +246,7 @@ G_GNUC_UNUSED static %(XmlStruct)s *
+             type_name = ct[1]
+         else:
+             type_name = 'g_type_from_name ("%s")' % (ct[0],)
+-        print >> buf, '    moo_glade_xml_map_id (xml->xml, "%s", %s);' % (id, type_name)
++        buf.write('    moo_glade_xml_map_id (xml->xml, "%s", %s);\n' % (id, type_name))
+     glade_xml_widgets_map = buf.getvalue()
+     buf.close()
+ 
+@@ -300,7 +303,7 @@ def convert_buffer(buf, params, output,
+ 
+         if output is None:
+             output = sys.stdout
+-        elif isinstance(output, str) or isinstance(output, unicode):
++        elif isinstance(output, str) or sys.version_info.major == 2 and isinstance(output, unicode):
+             output = open(output, 'w')
+             close_output = True
+ 
+@@ -317,7 +320,7 @@ def convert_file(filename, params, outpu
+     return ret
+ 
+ def usage():
+-    print "Usage: %s [--map=id,ClassName,CLASS_TYPE...] [--output=outfile] FILE" % (sys.argv[0],)
++    print("Usage: %s [--map=id,ClassName,CLASS_TYPE...] [--output=outfile] FILE" % (sys.argv[0],))
+ 
+ def main(args):
+     params = ConvertParams()
+@@ -325,8 +328,8 @@ def main(args):
+     try:
+         opts, files = getopt.getopt(args[1:], "hm:o:s:S:r:",
+                                     ["help", "map=", "output=", "struct-name=", "StructName=", "root="])
+-    except getopt.GetoptError, err:
+-        print str(err)
++    except getopt.GetoptError as err:
++        print(str(err))
+         usage()
+         return 2
+ 
+diff -pNaru3 a/tools/xml2h.py b/tools/xml2h.py
+--- a/tools/xml2h.py	2012-12-16 18:55:32.000000000 -0500
++++ b/tools/xml2h.py	2025-01-05 03:31:54.551112469 -0500
+@@ -11,13 +11,13 @@ tmp_output = output + '.tmp'
+ varname = sys.argv[3]
+ 
+ outfile = open(tmp_output, 'w')
+-print >> outfile, '/* -*- C -*- */'
+-print >> outfile, 'static const char %s [] = ""' % (varname,)
++outfile.write('/* -*- C -*- */\n')
++outfile.write('static const char %s [] = ""\n' % (varname,))
+ for line in open(input):
+     if line.endswith('\n'):
+         line = line[:-1]
+-    print >> outfile, '"' + line.replace('"', '\\"') + '\\n"'
+-print >> outfile, ';'
++    outfile.write('"' + line.replace('"', '\\"') + '\\n"\n')
++outfile.write(';\n')
+ 
+ outfile.close()
+ 
