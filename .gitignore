@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!.nvchecker.toml
+!LICENSE
+!app_chooser_page.patch
