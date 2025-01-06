@@ -32,7 +32,7 @@ prepare() {
 build() {
     cd $_pkgname
 
-    runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+    runhaskell Setup configure -O --enable-shared --enable-debug-info --enable-executable-dynamic --disable-library-vanilla \
         --prefix=/usr --docdir=/usr/share/doc/$_pkgname --datasubdir=$_pkgname --enable-tests \
         --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
         --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
