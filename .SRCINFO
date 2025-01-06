@@ -16,6 +16,7 @@ pkgbase = hexerator
 	depends = libxcursor
 	depends = libxrandr
 	depends = systemd-libs
+	depends = glu
 	options = !lto
 	source = hexerator-0.3.0.tar.gz::https://github.com/crumblingstatue/hexerator/archive/v0.3.0.tar.gz
 	sha512sums = df6c6f58429a5c52b0ee0d2d485f8ac58c176f18d5fe930a974085a47b72290b13e6f0447e9637ecbd37980d0228164a25f5df1852532c2cd69d4683f5c57323
