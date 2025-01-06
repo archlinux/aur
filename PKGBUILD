@@ -1,5 +1,5 @@
 pkgname=bricscad-fr_fr
-pkgver=25.1.06
+pkgver=25.1.07
 pkgrel=1
 pkgdesc="Logiciel de CAO DWG"
 arch=("x86_64")
@@ -10,7 +10,12 @@ makedepends=(python-requests python-beautifulsoup4 python-progressbar python-typ
 provides=('bricscad')
 _lang=fr_FR
 _os=2
-_version=9090
+_version=9123
+
+### Check rpm dependencies
+#sudo pacman -S rpm-tools
+#rpm -qpR BricsCAD-V25.1.07-1-fr_FR.x86_64.rpm
+###
 
 # To download you must be logged in. The official website has no permanent link.
 DLAGENTS=("https::/usr/bin/python $PWD/dlagent.py %u %o $_os $_version")
@@ -59,4 +64,4 @@ post_remove() {
     if [ -x "`which gtk-update-icon-cache 2>/dev/null`" ] && [ -x /usr/share/icons/gnome/index.theme ]; then gtk-update-icon-cache --force /usr/share/icons/gnome ; fi
 }
 md5sums=('1ed88931cf84e97516a2b1166cc52651'
-         '90966a80c94f342254c161ba51f56502')
+         '165b8005b09022e25fb18483a4c0013d')
