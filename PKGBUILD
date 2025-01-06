@@ -3,12 +3,12 @@
 # Contributor: Spider.007 <archPackage@spider007.net>
 
 pkgname=scamper
-pkgver=20241112
+pkgver=20250106
 pkgrel=1
 pkgdesc="a tool that actively probes the Internet in order to analyze topology and performance"
 url="https://www.caida.org/catalog/software/scamper/"
 source=("https://www.caida.org/catalog/software/scamper/code/$pkgname-cvs-$pkgver.tar.gz")
-sha256sums=('80fe8339b86bbfbf45c80c2a34fe55b92008588af3e541c34ce364ae27de7edc')
+sha256sums=('d746f15d58b0eb6d95f263e8b4062958c1586082ef7e91d31eafb3ca4c38c080')
 depends=('openssl' 'zlib' 'bzip2' 'xz')
 license=('GPL-2.0-or-later')
 arch=('i686' 'x86_64')
