@@ -1,0 +1,15 @@
+diff --unified --recursive --text a/src/Dialogs/Preferences/PreferencesWindow.vala b/src/Dialogs/Preferences/PreferencesWindow.vala
+--- a/src/Dialogs/Preferences/PreferencesWindow.vala	2024-11-05 10:14:42.187168031 -0700
++++ b/src/Dialogs/Preferences/PreferencesWindow.vala	2025-01-06 12:37:38.329606038 -0700
+@@ -1077,10 +1077,7 @@
+ 	private Adw.NavigationPage get_quick_add_page () {
+ 		var settings_header = new Dialogs.Preferences.SettingsHeader (_("Quick Add"));
+     
+-		string quick_add_command = "flatpak run --command=io.github.alainm23.planify.quick-add %s".printf (Build.APPLICATION_ID);
+-		if (GLib.Environment.get_variable ("SNAP") != null) {
+-			quick_add_command = "planify.quick-add";
+-		}
++		string quick_add_command = "planify.quick-add";
+ 		
+ 		var description_label = new Gtk.Label (
+             _("Use Quick Add to create to-dos from anywhere on your desktop with just a few keystrokes. You don’t even have to leave the app you’re currently in.") // vala-lint=line-length

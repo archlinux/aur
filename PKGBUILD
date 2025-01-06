@@ -2,7 +2,7 @@
 pkgname=planify
 _app_id=io.github.alainm23.planify
 pkgver=4.11.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Task manager with Todoist and Nextcloud support"
 arch=('x86_64')
 url="https://github.com/alainm23/planify"
@@ -23,8 +23,17 @@ makedepends=(
   'vala'
 )
 conflicts=('elementary-planner')
-source=("git+https://github.com/alainm23/planify.git#tag=$pkgver")
-sha256sums=('17cf13d0a6b42e81b5408b55bcc97ff283b690bc75846639ce8c66150539be72')
+source=("git+https://github.com/alainm23/planify.git#tag=$pkgver"
+        'quick-add.patch')
+sha256sums=('17cf13d0a6b42e81b5408b55bcc97ff283b690bc75846639ce8c66150539be72'
+            '7dbb298442c04502521835581acc454d3a3085b81161ca0bfb3d04e5f01c69a2')
+
+prepare() {
+  cd "$pkgname"
+
+  # Adjust Quick Add command
+  patch -Np1 -i ../quick-add.patch
+}
 
 build() {
   arch-meson "$pkgname" build -Dprofile=default
@@ -38,7 +47,8 @@ check() {
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 
   ln -s "/usr/bin/${_app_id}" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/usr/bin/${_app_id}.quick-add" "$pkgdir/usr/bin/$pkgname.quick-add"
 }
