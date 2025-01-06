@@ -2,12 +2,12 @@
 
 pkgname=extension-manager
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A native tool for browsing, installing, and managing GNOME Shell Extensions"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mjakeman/extension-manager"
 license=('GPL-3.0-or-later')
-depends=('libadwaita' 'libsoup3' 'json-glib' 'text-engine')
+depends=('libadwaita' 'libsoup3' 'json-glib' 'libxml2')
 makedepends=('meson' 'blueprint-compiler' 'gobject-introspection' 'glib2-devel')
 checkdepends=('appstream-glib')
 optdepends=('libbacktrace-git')
