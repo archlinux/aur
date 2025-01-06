@@ -5,7 +5,7 @@
 pkgname=python-rich-click
 _pkgname=${pkgname#python-}
 pkgver=1.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module to format click help output nicely with Rich."
 arch=(any)
 url="https://github.com/ewels/rich-click"
@@ -37,7 +37,7 @@ build() {
 check() {
   cd "$_archive"
 
-  pytest -vv
+  PYTHONPATH=src pytest -vv
 
   # Deselected tests invoke the program via subprocesses which I wasn't able to
   # get working in the build environment.
