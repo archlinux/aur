@@ -5,7 +5,7 @@
 pkgname=perl-crypt-urandom
 _cpanname=Crypt-URandom
 pkgver=0.40
-pkgrel=2
+pkgrel=3
 pkgdesc="Provide non blocking randomness"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -21,7 +21,7 @@ build() {
     cd "$srcdir/$_cpanname-$pkgver"
     (
         export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-        perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
+        perl Makefile.PL INSTALLDIRS=vendor DESTDIR="$pkgdir" NO_PACKLIST=1 NO_PERLLOCAL=1
         make
     )
 }
