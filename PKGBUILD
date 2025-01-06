@@ -34,23 +34,7 @@ function check() {
 
 function package() {
 	cd "${srcdir}/turnon"
-	#install -Dm755 "${srcdir}/turnon/target/release/turnon" "${pkgdir}/usr/bin/de.swsnr.turnon"
-	make LOCALEDIR="${pkgdir}/usr/share/locale" install-locale
 	make DESTPREFIX="${pkgdir}/usr" install
-	#install -d "${pkgdir}/usr/share/icons/hicolor"
-	#cp -r \
-	#	resources/icons/* \
-	#	"${pkgdir}/usr/share/icons/hicolor"
-	#install -Dm644 \
-	#	de.swsnr.turnon.desktop \
-	#	"${pkgdir}/usr/share/applications/de.swsnr.turnon.desktop"
-	#install -Dm644 resources/de.swsnr.turnon.metainfo.xml \
-	#	"${pkgdir}/usr/share/metainfo/de.swsnr.turnon.metainfo.xml"
-	#install -Dm644 dbus-1/de.swsnr.turnon.service \
-	#	"${pkgdir}/usr/share/dbus-1/services/de.swsnr.turnon.service"
-	#install -Dm644 \
-	#	de.swsnr.turnon.search-provider.ini \
-	#	"${pkgdir}/usr/share/gnome-shell/search-providers/de.swsnr.turnon.search-provider.ini"
 }
 
 
