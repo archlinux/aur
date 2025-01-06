@@ -3,7 +3,7 @@
 _name=flask-crontab
 pkgname=python-flask-crontab
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple Flask scheduled tasks without extra daemons"
 arch=('any')
 url="https://github.com/frostming/flask-crontab"

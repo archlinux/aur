@@ -1,7 +1,7 @@
 pkgbase = python-flask-crontab
 	pkgdesc = Simple Flask scheduled tasks without extra daemons
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/frostming/flask-crontab
 	arch = any
 	license = MIT
