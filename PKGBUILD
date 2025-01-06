@@ -2,12 +2,12 @@
 
 pkgname=xandikos-git
 _name=${pkgname%-git}
-pkgver=0.2.10.r1.g5b98fc8
+pkgver=0.2.12.r44.g7a7e4df
 pkgrel=1
 pkgdesc='Lightweight yet complete CardDAV/CalDAV server that backs onto a Git repository'
 arch=(any)
 url=https://www.xandikos.org
-license=('GPL-3.0-or-later')
+license=(GPL-3.0-or-later)
 depends=(
   python-aiohttp
   python-defusedxml
@@ -15,6 +15,7 @@ depends=(
   python-icalendar
   python-jinja
   python-multidict
+  python-pytz
   python-vobject
 )
 makedepends=(
