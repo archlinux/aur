@@ -1,0 +1,15 @@
+pkgbase = fractal-generator-git
+	pkgdesc = Mandelbrot and Julia fractal generator
+	pkgver = 1.0.0.r0.gfbd0c47
+	pkgrel = 1
+	url = https://github.com/nicolarevelant/fractal-generator
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	depends = ffmpeg
+	source = fractal-generator-git::git+https://github.com/nicolarevelant/fractal-generator.git
+	b2sums = SKIP
+
+pkgname = fractal-generator-git
