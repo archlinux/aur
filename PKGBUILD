@@ -2,7 +2,7 @@
 pkgname=losslesscut-git
 _pkgname=LosslessCut
 _appname="no.mifi.${pkgname%-git}"
-pkgver=3.64.0.r37.g2412118
+pkgver=3.64.0.r47.g8b43485
 _electronversion=33
 _nodeversion=20
 pkgrel=1
