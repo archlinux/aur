@@ -1,6 +1,6 @@
 pkgbase = gmetronome
-	pkgdesc = A GTK metronome and tempo measurement tool
-	pkgver = 0.3.4
+	pkgdesc = A GTK metronome featuring accents, tapping, training function and more
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/dqpb/gmetronome
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = gmetronome
 	depends = gtkmm3
 	depends = libpulse
 	depends = alsa-lib
-	source = https://github.com/dqpb/gmetronome/releases/download/0.3.4/gmetronome-0.3.4.tar.bz2
-	sha256sums = 05dd9c691c888b3316f9ecc15567c40f1bc3f3210d225aa38ea2ff86a418a27b
+	source = https://github.com/dqpb/gmetronome/releases/download/0.4.1/gmetronome-0.4.1.tar.bz2
+	sha256sums = 8be406271c4a34d6fb22521b9a543bf7b46c059f9d359504241adcba5269b54c
 
 pkgname = gmetronome
