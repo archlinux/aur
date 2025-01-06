@@ -2,7 +2,7 @@
 pkgname=wordpress-studio-git
 _appname=Studio
 _pkgname="WordPress ${_appname}"
-pkgver=1.2.2.r0.gf3462c5
+pkgver=1.3.0.r0.g5d1b718
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -46,7 +46,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -76,6 +76,9 @@ build() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
     NODE_ENV=production     npm run package
 }
 package() {
