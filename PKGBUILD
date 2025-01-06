@@ -1,7 +1,7 @@
 # Maintainer: Moabeat <moabeat@berlin.de>
 
 pkgname=beaver-notes
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 epoch=
 pkgdesc="Your Personal Note-Taking Haven for Privacy and Efficiency"
@@ -14,8 +14,8 @@ makedepends=('asar' 'npm' 'yarn' 'nodejs' 'libxcrypt-compat')
 provides=('beaver-notes')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Daniele-rolli/Beaver-Notes/archive/refs/tags/$pkgver.tar.gz"
         "beaver-notes.desktop")
-	b2sums=("3597c8d405a3b7c98b81d43cc2cd7eb065f0149720f90b2a049cfe5e18ce3058a241a53f72848eda659b740b9a39a073350a462d4602655aa1884484ea6fe1a7"
-        "f8aa4e47ede5efc642c97fb30dd483c9e120b58f05964711c0c2bce831c90e0129f5c0ec544a47bcd769159eb1dadd79ccfe34311436e56208ac2af4567cab51")
+b2sums=('79a3086c5c50fee1e2cdad81bb878685cf41bc0a2370983b34fbff6a483ea3b4dd31cec0988c75aa0d4b4462a0c430541b1c1fbfd390b343e3803e6b76c9cdb8'
+        'f8aa4e47ede5efc642c97fb30dd483c9e120b58f05964711c0c2bce831c90e0129f5c0ec544a47bcd769159eb1dadd79ccfe34311436e56208ac2af4567cab51')
 
 prepare() {
     	_ver="$(</usr/lib/${_electron}/version)"
@@ -25,6 +25,9 @@ prepare() {
 
 build() {
 	cd "Beaver-Notes-$pkgver"
+
+	# Set Mac specific environment varibale to dummy value
+	export APPLE_TEAM_ID="none"
 
 	# Build the application
 	yarn build
