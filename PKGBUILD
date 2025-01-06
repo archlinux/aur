@@ -2,8 +2,8 @@
 
 pkgname=scid
 _pkgname=Scid
-pkgver=5.0.2
-_pkgver=5.0.2
+pkgver=5.1.0
+_pkgver=${pkgver}
 pkgrel=1
 pkgdesc="A Free Chess Database Application"
 url="http://scid.sourceforge.net"
@@ -15,16 +15,19 @@ optdepends=('snack: for sound support'
 options=('!emptydirs')
 install="${pkgname}.install"
 source=("https://github.com/benini/scid/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('54b1b3c66810d806464966cafd73f0afa2aa39bd2e17549ebf1d12f659e46301')
+sha256sums=('25bf60b047e7ebc14bc43e569f078fe80d4c2a95dfe4b95cdd5fe184649ade61')
 
 build() {
+  msg "build ()"
   cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure BINDIR=/usr/bin SHAREDIR=/usr/share/$pkgname SCIDFLAGS="$LDFLAGS"
+  ./configure BINDIR='${DESTDIR}'/usr/bin SHAREDIR='${DESTDIR}'/usr/share/${pkgname} SCIDFLAGS="$LDFLAGS"
   sed -i "/LDFLAGS =$/d" engines/phalanx-scid/makefile
   make || return 1
 }
 
 package () {
+  msg "package ()"
+  install -d $pkgdir/usr/share/scid
   cd $srcdir/${pkgname}-${pkgver}
   make DESTDIR=$pkgdir install
   msg "Creating Desktop file"
@@ -43,12 +46,12 @@ Terminal=false
 StartupNotify=false
 EOF
 
-  install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+  install -Dm644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 
   msg "Copying sound files"
-  install -d $pkgdir/usr/share/sounds
-  install -Dm644 $srcdir/$pkgname-${pkgver}/sounds/*.wav $pkgdir/usr/share/sounds
+  install -d ${pkgdir}/usr/share/sounds
+  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/sounds/*.wav ${pkgdir}/usr/share/sounds
 
   msg "Fix world writtable bit in books folder"
-  find $pkgdir/usr/share/scid/books -type f -exec chmod 644 {} \;
+  find ${pkgdir}/usr/share/scid/books -type f -exec chmod 644 {} \;
 }
