@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=warpgui-bin
-pkgver=2.2.1
+pkgver=2.3
 pkgrel=1
-pkgdesc="GUI for Cloudflare ™ WARP.Prebuilt Version."
+pkgdesc="GUI for Cloudflare ™ WARP.(Prebuilt Version)"
 arch=('x86_64')
 url="https://github.com/AKotov-dev/warpgui"
 license=('GPL-3.0-only')
@@ -16,9 +16,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-0.mrx9.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d5bcc2b29c7cd7fa64d9ad9679810afd44ca4f0a2de1e70c1313d6b9304dc52e'
+sha256sums=('f0d8e78b53117f79c95473fdc77e20a6d809219cb66eae85c587042ce65949e1'
             'b046dc662796f382c9300642d94724a97c20baf60de1fe9b34844a6a735aaf7d')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
