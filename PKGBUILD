@@ -2,7 +2,7 @@
 # All config files from (go2rtc)[https://aur.archlinux.org/packages/go2rtc]
 # Thanks the maintainer of go2rtc for providing this package!
 pkgname=go2rtc-bin
-pkgver=1.9.7
+pkgver=1.9.8
 pkgrel=1
 pkgdesc="Ultimate camera streaming application with support RTSP, RTMP, HTTP-FLV, WebRTC, MSE, HLS, MP4, MJPEG, HomeKit, FFmpeg, etc.(Prebuilt version)"
 arch=(
@@ -35,10 +35,10 @@ sha256sums=('b0dcf4855af5a72b4dfbd9117c207b330f4cc35658576a0b5351d6e2becac546'
             'f8caf9965af10be2ca90819898f9124966b69dcb3a477a9436e050cfb6bb5a29'
             'd1e19d906719b847456a11c430a77b4dd0ec73414e60e629df76be65bc372a10'
             '8e6c994be0a3fc65d909d23ead70dbc2b32c8747cc96bb1f5c2a83e93f16f7f5')
-sha256sums_aarch64=('ebec98921433f933cf579e54b9f4d1c55083c9817a352a21e49d9ba6a285185b')
-sha256sums_armv7h=('138e92f001938ed07b16193daffecae993724f23b3ecd22ba62342f8cd70fe12')
-sha256sums_i686=('5302d85940cd8bd1c332cc262804d2115380399e6bb2c241fcc9902c72969dc8')
-sha256sums_x86_64=('ed9afb2da35e0a8eef0efb72f7fd55aeee535b3fb3abff15d7424b847ac86751')
+sha256sums_aarch64=('d3f1f331f8bc7908d82e6577e6f96f80e8ceef38979d945069edda6c1ee9c759')
+sha256sums_armv7h=('12dbc43bdb054401b362060b2783f21eb1bfc4e1267cfd36c858a2db52301ea3')
+sha256sums_i686=('801e345e5c64a56ff32ed795193a3e80f26a98ec92ab479c27008d8b16c881cd')
+sha256sums_x86_64=('ded86a455e712e32283487ebea293c8b6af485dcaafa7eb8919d6d3b9ec088bc')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
