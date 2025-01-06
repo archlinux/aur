@@ -1,6 +1,6 @@
 pkgbase = glues
 	pkgdesc = Vim-inspired TUI note-taking app with Git, MongoDB support
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://github.com/gluesql/glues
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = glues
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = glues-0.5.4.tar.gz::https://github.com/gluesql/glues/archive/v0.5.4.tar.gz
-	sha512sums = 0950ef6837d887180606df3dd25959c6188b307c9928447bdbdfdf160c7e9720d167a144952d11eabb54d4ed9d708b0bd9bcfba616f8dd3a0efafa44ed2a5353
+	source = glues-0.5.5.tar.gz::https://github.com/gluesql/glues/archive/v0.5.5.tar.gz
+	sha512sums = ba4ef221873cba711891cef72eb538b246321529af709036eb565c8e7a95fede6e5bdda9c8a9f57ec85b648ebb75c53b7efa36592c0daf94bfce91f8be2b8c59
 
 pkgname = glues
