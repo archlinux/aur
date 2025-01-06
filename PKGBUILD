@@ -2,7 +2,7 @@
 # Contributor: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
 
 pkgname=nemo-compare
-pkgver=6.2.0
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="Context menu comparison extension for Nemo file manager"
 arch=("x86_64" 'i686' 'armv7h' 'aarch64')
