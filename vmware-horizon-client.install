@@ -1,10 +1,25 @@
 #!/bin/sh
 
+eol_message() {
+  cat <<-EOM
+	 >   _      __              _
+	 >  | | /| / /__ ________  (_)__  ___ __
+	 >  | |/ |/ / _ `/ __/ _ \/ / _ \/ _ `(_)
+	 >  |__/|__/\_,_/_/ /_//_/_/_//_/\_, (_)
+	 >                              /___/
+	 > VMware was aquired by Broadcom, and renamed to Omnissa. Now this package
+	 > is EOL (end of life). Please replace it with new 'omnissa-horizon-client'!
+	EOM
+}
+
 EULA() {
-  echo " > By installing this package you acknowledge that you agree to the End-User"
-  echo " > License Agreement (EULA) found in /usr/share/doc/vmware-horizon-client/."
-  echo " > If you do not agree to VMware EULA remove this package immediately:"
-  echo " >  $ pacman -Rc vmware-horizon-client"
+  cat <<-EOM
+
+	 > By installing this package you acknowledge that you agree to the End-User
+	 > License Agreement (EULA) found in /usr/share/doc/omnissa-horizon-client/.
+	 > If you do not agree to Omnissa EULA remove this package immediately:
+	 >  $ pacman -Rc omnissa-horizon-client
+	EOM
 }
 
 hosts_add() {
@@ -18,11 +33,13 @@ hosts_remove() {
 }
 
 post_install() {
+  eol_message
   EULA
   hosts_add
 }
 
 post_upgrade() {
+  eol_message
   hosts_add
 }
 

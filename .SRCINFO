@@ -1,7 +1,7 @@
 pkgbase = vmware-horizon-client
 	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop
 	pkgver = 2406
-	pkgrel = 2
+	pkgrel = 3
 	url = https://customerconnect.omnissa.com/downloads/info/slug/desktop_end_user_computing/vmware_horizon_clients/horizon_8
 	arch = x86_64
 	license = custom
