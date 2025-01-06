@@ -1,0 +1,6 @@
+post_install() {
+	echo " > To enable USB redirection you have to start/enable"
+	echo " > systemd service omnissa-horizon-usb:"
+	echo " >  $ systemctl enable --now omnissa-horizon-usb.service"
+}
+

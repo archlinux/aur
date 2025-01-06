@@ -1,10 +1,10 @@
 [Unit]
-Description=VMware Horizon USB daemon
+Description=Omnissa Horizon USB daemon
 ConditionPathExists=/sys/bus/usb/devices/usb1
 
 [Service]
 Type=forking
-ExecStart=/usr/lib/systemd/scripts/vmware-horizon-usb
+ExecStart=/usr/lib/omnissa/horizon/usb/horizon-eucusbarbitrator
 
 [Install]
 WantedBy=multi-user.target

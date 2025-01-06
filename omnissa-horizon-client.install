@@ -1,0 +1,33 @@
+#!/bin/sh
+
+EULA() {
+  cat <<-EOM
+	 > By installing this package you acknowledge that you agree to the End-User
+	 > License Agreement (EULA) found in /usr/share/doc/omnissa-horizon-client/.
+	 > If you do not agree to Omnissa EULA remove this package immediately:
+	 >  $ pacman -Rc omnissa-horizon-client
+	EOM
+}
+
+hosts_add() {
+  if ! grep -q 'view-localhost' /etc/hosts; then
+    echo '127.0.0.2 view-localhost # added by omnissa-horizon-client' >> /etc/hosts
+  fi
+}
+
+hosts_remove() {
+  sed -i '/view-localhost/d' /etc/hosts
+}
+
+post_install() {
+  EULA
+  hosts_add
+}
+
+post_upgrade() {
+  hosts_add
+}
+
+post_remove() {
+  hosts_remove
+}
