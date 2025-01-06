@@ -13,15 +13,18 @@ pkgver=2412
 _build1=8.14.0
 _build2=12437214089
 _cart="CART25FQ4_LIN_${pkgver}_TARBALL"
-pkgrel=1
+pkgrel=2
 pkgdesc='Omnissa Horizon Client - connect to Omnissa Horizon virtual desktop'
 arch=('x86_64')
+makedepends=('imagemagick')
 options=('!debug')
 url='https://customerconnect.omnissa.com/downloads/info/slug/desktop_end_user_computing/omnissa_horizon_clients/8'
 license=('custom')
 source=("${pkgbase}-${pkgver}-${_build1}-${_build2}.tar.gz::https://download3.omnissa.com/software/${_cart}/Omnissa-Horizon-Client-Linux-${pkgver}-${_build1}-${_build2}.tar.gz"
+        'Horizon_8_Logo.png'
         'omnissa-horizon-usb.service')
 sha256sums=('b6098f7d9a876ef51f4683a6a94359f94355e4b867cd0b8a5f2117b020993c11'
+            '100b71b82194c8d50e3101d8ac37f47bbf5706a0e49f14607e4a2fc90e2ed9b5'
             '2e9ecddd7cd4d5f65c794065898d3b6ac8e6dd97d05114f7f3775da82263c6d2')
 
 prepare() {
@@ -47,10 +50,18 @@ build() {
 	rm --recursive --force \
 		"Omnissa-Horizon-serialportClient-${pkgver}-${_build1}-${_build2}.x64/usr/lib/omnissa/"{'horizon/scannerSerialPortCommon/','rdpvcbridge'}
 
-	# add a comment to desktop file
-	# BTW... Anybody has a SVG file for that icon?
-	sed -i -e '/Name=/a Comment=Connect to Omnissa Horizon View virtual machines' \
+	# add a comment to desktop file, use proper icons
+	sed -i -e '/Name=/a Comment=Connect to Omnissa Horizon View virtual machines' -e '/^Icon=/c Icon=horizon-client' \
 		"Omnissa-Horizon-Client-${pkgver}-${_build1}-${_build2}.x64/usr/share/applications/horizon-client.desktop"
+
+	# prepare high(er) quality icons
+	# BTW... Anybody has a SVG file for that icon?
+	install -d "${srcdir}/icons"
+	for SIZE in 16 24 32 48 64 96 128; do
+		magick "${srcdir}/Horizon_8_Logo.png" \
+			-scale "${SIZE}" +set date:create +set date:modify \
+			"${srcdir}/icons/horizon-client-${SIZE}.png"
+	done
 }
 
 package_omnissa-horizon-client() {
@@ -90,6 +101,12 @@ package_omnissa-horizon-client() {
 	for LIB in 'vaapi2' 'vaapi2.7' 'vdpau'; do
 		rm -rf "${pkgdir}/usr/lib/omnissa/horizon/${LIB}"
 		ln -s software "${pkgdir}/usr/lib/omnissa/horizon/${LIB}"
+	done
+
+	# install high(er) quality icons
+	for SIZE in 16 24 32 48 64 96 128; do
+		install -D "${srcdir}/icons/horizon-client-${SIZE}.png" \
+			"${pkgdir}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/horizon-client.png"
 	done
 }
 
