@@ -67,5 +67,3 @@ package() {
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname/"
 	install -Dm644 'README.md' "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
-
-# libxml2-dev libxslt-dev
