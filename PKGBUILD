@@ -2,7 +2,7 @@
 # Contributor: Wenxuan <wenxuangm@gmail.com>
 
 pkgname=code-minimap
-pkgver=0.6.7
+pkgver=0.6.8
 pkgrel=1
 pkgdesc='High performance code minimap render'
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=(
   rust
 )
 source=("git+$url.git#tag=v$pkgver")
-b2sums=('bbeda1b573ca22ac1a9e2bc1e792ff9068459d8044f9cba2b42e9d221f1755306134168496b0c0d56731c5ad8140b7fd612b690494de885ef9b353eec9414f74')
+b2sums=('84248f8660ba9ea377823fb71a7c2bbec36398fc7fe51deb8d6e48c4182946e525365463ba9fb6f02847a43d8719ff3040e47655174b399bc38dfc4ec7f00878')
 
 prepare() {
   cd $pkgname
