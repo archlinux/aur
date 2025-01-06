@@ -4,7 +4,7 @@
 pkgbase=plasma6-themes-chromeos-kde-git
 pkgname=(plasma6-themes-chromeos-kde-git)
 _pkgname=ChromeOS-kde
-pkgver=r83.1dd53ec
+pkgver=r92.7aef477
 pkgrel=1
 pkgdesc="ChromeOS theme for kde plasma"
 arch=(any)
@@ -27,7 +27,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/${_pkgname%-git}"
     sed -i "s#/usr/share#$pkgdir/usr/share#" install.sh
-    cd "$srcdir/${_pkgname%-git}/sddm"
+    cd "$srcdir/${_pkgname%-git}/sddm/6.0"
     sed -i "s#/usr/share#$pkgdir/usr/share#" install.sh
 }
 
@@ -38,7 +38,7 @@ package() {
     ./install.sh
 
     # Install SDDM theme
-    cd "$srcdir/${_pkgname%-git}/sddm"
+    cd "$srcdir/${_pkgname%-git}/sddm/6.0"
     install -d "$pkgdir/usr/share/sddm/themes"
     ./install.sh
 }
