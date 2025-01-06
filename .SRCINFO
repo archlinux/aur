@@ -1,33 +1,49 @@
 pkgbase = parsedmarc
 	pkgdesc = Python package and CLI for parsing aggregate and forensic DMARC reports
-	pkgver = 8.6.4
+	pkgver = 8.16.1
 	pkgrel = 1
-	url = https://domainaware.github.io/parsedmarc
+	url = https://github.com/domainaware/parsedmarc
 	arch = any
-	license = Apache
+	license = Apache-2.0
+	checkdepends = python-pytest
 	makedepends = python-build
-	makedepends = python-hatchling
+	makedepends = python-hatchling>=1.27.0
 	makedepends = python-installer
-	depends = mailparser
-	depends = python-xmltodict
-	depends = python-expiringdict
-	depends = python-lxml
-	depends = python-mailsuite
+	makedepends = python-wheel
+	depends = libxml2
+	depends = libxslt
+	depends = python
 	depends = python-azure-core
-	depends = python-azure-identity
-	depends = python-msgraph-core
-	depends = python-google-api-core
-	depends = python-google-auth-oauthlib
-	depends = python-google-api-python-client
+	depends = python-azure-identity>=1.8.0
+	depends = python-azure-monitor-ingestion>=1.0.0
+	depends = python-boto3>=1.16.63
 	depends = python-dateutil
-	depends = python-geoip2
-	depends = python-publicsuffixlist
-	depends = python-tqdm
-	depends = python-elasticsearch-dsl
-	depends = python-kafka
-	depends = python-boto3
-	depends = python-azure-monitor-ingestion
-	source = https://pypi.io/packages/source/p/parsedmarc/parsedmarc-8.6.4.tar.gz
-	sha512sums = 85e46f4478925e4dba67e8d559f89131d1ca1709c11464fc86adcf72497ff0585e45f2cf27d7fe8cf69b095010a48c3fe412da733bc11c16a0d3abb60b69c936
+	depends = python-dnspython>=2.0.0
+	depends = python-elasticsearch7.13
+	depends = python-elasticsearch-dsl7>=7.4.0
+	depends = python-expiringdict>=1.1.4
+	depends = python-geoip2>=3.0.0
+	depends = python-google-api-python-client>=2.35.0
+	depends = python-google-auth-oauthlib>=0.4.6
+	depends = python-google-auth>=2.3.3
+	depends = python-imapclient>=2.1.0
+	depends = python-kafka-ng>=2.2.2
+	depends = python-lxml>=4.4.0
+	depends = mailparser
+	depends = python-mailsuite
+	depends = python-msgraph-core0.2>=0.2.2
+	depends = python-opensearch>=2.4.2
+	depends = python-publicsuffixlist>=0.10.0
+	depends = python-pygelf>=0.4.2
+	depends = python-requests>=2.22.0
+	depends = python-tqdm>=4.31.1
+	depends = python-urllib3>=1.25.7
+	depends = python-xmltodict>=0.12.0
+	optdepends = perl-email-outlook-message: Microsoft Outlook email parsing
+	optdepends = perl-email-address: Microsoft Outlook email parsing
+	source = parsedmarc-8.16.1.tar.gz::https://github.com/domainaware/parsedmarc/archive/8.16.1.tar.gz
+	source = run-tests-offline.diff
+	b2sums = b0deb34bac529b6fedbe21efc0ff7c3d3bfe7c01e1015ae3cce43dcdf3cbc36383233e11afb666720a5673225914b9d092625402acc4fa6649a79ffc03d0a3a3
+	b2sums = 72b3826cb1a61eb4004e4763aefd9996a0c28bee387a36ecd8d4837f1b33a265c1691ff0e11478d10ce30adeb49c277f24eb737067d6ca090bb9967e0895429d
 
 pkgname = parsedmarc

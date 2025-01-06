@@ -1,31 +1,71 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Thomas Heinemann <thomas@nipha.de>
-
-pkgname=parsedmarc
-pkgver=8.6.4
-pkgrel=1
+# Contributor: Jean Lucas < jean at 4ray dot co>
+pkgname='parsedmarc'
+pkgver='8.16.1'
+pkgrel='1'
 pkgdesc='Python package and CLI for parsing aggregate and forensic DMARC reports'
-arch=(any)
-url=https://domainaware.github.io/parsedmarc
-license=(Apache)
-depends=('mailparser' 'python-xmltodict' 'python-expiringdict' 'python-lxml'
-'python-mailsuite' 'python-azure-core' 'python-azure-identity'
-'python-msgraph-core' 'python-google-api-core' 'python-google-auth-oauthlib'
-'python-google-api-python-client' 'python-dateutil' 'python-geoip2'
-'python-publicsuffixlist' 'python-tqdm' 'python-elasticsearch-dsl' 'python-kafka'
-'python-boto3' 'python-azure-monitor-ingestion')
-makedepends=('python-build' 'python-hatchling' 'python-installer')
-source=("https://pypi.io/packages/source/p/parsedmarc/parsedmarc-${pkgver}.tar.gz")
-sha512sums=('85e46f4478925e4dba67e8d559f89131d1ca1709c11464fc86adcf72497ff0585e45f2cf27d7fe8cf69b095010a48c3fe412da733bc11c16a0d3abb60b69c936')
+arch=('any')
+url="https://github.com/domainaware/$pkgname"
+license=('Apache-2.0')
+depends=('libxml2' 'libxslt' 'python' 'python-azure-core' 'python-azure-identity>=1.8.0' 'python-azure-monitor-ingestion>=1.0.0' 'python-boto3>=1.16.63' 'python-dateutil' 'python-dnspython>=2.0.0' 'python-elasticsearch7.13' 'python-elasticsearch-dsl7>=7.4.0' 'python-expiringdict>=1.1.4' 'python-geoip2>=3.0.0' 'python-google-api-python-client>=2.35.0' 'python-google-auth-oauthlib>=0.4.6' 'python-google-auth>=2.3.3' 'python-imapclient>=2.1.0' 'python-kafka-ng>=2.2.2' 'python-lxml>=4.4.0' 'mailparser' 'python-mailsuite' 'python-msgraph-core0.2>=0.2.2' 'python-opensearch>=2.4.2' 'python-publicsuffixlist>=0.10.0' 'python-pygelf>=0.4.2' 'python-requests>=2.22.0' 'python-tqdm>=4.31.1' 'python-urllib3>=1.25.7' 'python-xmltodict>=0.12.0')
+makedepends=('python-build' 'python-hatchling>=1.27.0' 'python-installer' 'python-wheel')
+checkdepends=('python-pytest')
+optdepends=(
+	'perl-email-outlook-message: Microsoft Outlook email parsing'
+	'perl-email-address: Microsoft Outlook email parsing'
+)
+source=(
+	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+	'run-tests-offline.diff'
+)
+b2sums=('b0deb34bac529b6fedbe21efc0ff7c3d3bfe7c01e1015ae3cce43dcdf3cbc36383233e11afb666720a5673225914b9d092625402acc4fa6649a79ffc03d0a3a3'
+        '72b3826cb1a61eb4004e4763aefd9996a0c28bee387a36ecd8d4837f1b33a265c1691ff0e11478d10ce30adeb49c277f24eb737067d6ca090bb9967e0895429d')
+
+_sourcedirectory="$pkgname-$pkgver"
+
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# Force tests to run offline
+	patch --forward -p1 < '../run-tests-offline.diff'
+}
 
 build() {
-  cd $pkgname-$pkgver
-  python -m build --wheel --no-isolation
+	cd "$srcdir/$_sourcedirectory/"
+	python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# Run unit tests
+	pytest 'tests.py' --full-trace
+
+	# Create a config file for testing
+	cat << EOF > 'test.ini'
+[general]
+save_aggregate = True
+save_forensic = True
+save_smtp_tls = True
+debug = True
+offline = True
+EOF
+
+	# Test sample reports
+	python -B -m 'parsedmarc.cli' --config-file 'test.ini' --output 'test_aggregate/' 'samples/aggregate/'*
+	python -B -m 'parsedmarc.cli' --config-file 'test.ini' --output 'test_extract_report/' 'samples/extract_report/'*
+	python -B -m 'parsedmarc.cli' --config-file 'test.ini' --output 'test_forensic/' 'samples/forensic/'*
+	python -B -m 'parsedmarc.cli' --config-file 'test.ini' --output 'test_smtp_tls/' 'samples/smtp_tls/'*
 }
 
 package() {
-  cd $pkgname-$pkgver
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
-  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+	cd "$srcdir/$_sourcedirectory/"
+	python -m installer --destdir="$pkgdir" 'dist/'*'.whl'
+
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 'README.md' "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
+# libxml2-dev libxslt-dev
