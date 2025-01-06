@@ -1,7 +1,7 @@
 pkgbase = 4store
 	pkgdesc = Efficient, scalable and stable RDF database
-	pkgver = 1.1.6
-	pkgrel = 4
+	pkgver = 1.1.7
+	pkgrel = 1
 	url = https://github.com/4store/4store
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = 4store
 	depends = expat
 	depends = zlib
 	options = !emptydirs
-	source = https://github.com/4store/4store/archive/v1.1.6.tar.gz
-	md5sums = 96c1f051ebe2ba799c064f89fc06633f
+	source = https://github.com/4store/4store/archive/v1.1.7.tar.gz
+	md5sums = 0ebe22f9bc7c648081a67fe9b3ad1adf
 
 pkgname = 4store
