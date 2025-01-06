@@ -4,17 +4,17 @@
 pkgname='perl-text-multimarkdown'
 _module='Text-MultiMarkdown'
 _author='B/BR/BRIANDFOY'
-pkgver='1.003'
+pkgver='1.004'
 pkgrel='1'
 pkgdesc='Convert MultiMarkdown syntax to (X)HTML.'
 arch=('any')
 url="https://metacpan.org/dist/$_module"
 license=('BSD')
 depends=('perl-text-markdown' 'perl-html-parser')
-makedepends=('perl-list-moreutils' 'perl-module-install')
+makedepends=('perl-module-install')
 checkdepends=('perl-test-exception' 'perl-test-pod' 'perl-test-pod-coverage' 'perl-text-diff')
 source=("https://cpan.metacpan.org/authors/id/$_author/$_module-$pkgver.tar.gz")
-sha256sums=('6a7710ebf8078f415ebc7a2ee9c6b75e961adeb3a8304a45a799c7ce59218c80')
+sha256sums=('b32b3fa179de0474723b08a63189415c0809bd72b46cc9516a3694b25b2eb3e4')
 
 build() {
    (
