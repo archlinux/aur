@@ -17,7 +17,7 @@ optdepends=('meld: Install at least one file comparison program'
 	        'diffuse: Alternate comparison backend'
 	        'kdiff3: Alternate comparison backend')
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-sha256sums=('b1c7e3d269ed05f472c80c16cf3f12827cbb48cb05406b276be14060225dbbc3')
+sha256sums=('55e8fb43edde09c3ceba197a4359c1e79b1f0ea7007543d26f32532957aabd49')
 
 build() {
   cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
