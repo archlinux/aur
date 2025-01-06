@@ -2,7 +2,7 @@
 _pkgname=python-keyring-minimal
 pkgname="$_pkgname-git"
 pkgver=r12.5c266c5
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal libsecret keyring in python that works with keepassxc."
 arch=(any)
 url="https://github.com/hrehfeld/python-keyring-minimal"
@@ -40,4 +40,9 @@ build() {
 package() {
     cd $srcdir/$_pkgname
     python -m installer --destdir="$pkgdir" dist/*.whl
+
+	  for f in "keyring-minimal-askpass"
+	  do
+		  install -Dm755 "$srcdir/${_pkgname}/$f" "$pkgdir/usr/bin/$f"
+	  done
 }
