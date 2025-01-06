@@ -1,7 +1,7 @@
 pkgbase = gnome-online-accounts-gtk
 	pkgdesc = A GTK Frontend for GNOME Online Accounts
 	pkgver = 3.50.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xapp-project/gnome-online-accounts-gtk
 	arch = x86_64
 	license = GPL-3.0-or-later

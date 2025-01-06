@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-online-accounts-gtk
 pkgver=3.50.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK Frontend for GNOME Online Accounts"
 arch=('x86_64')
 url="https://github.com/xapp-project/gnome-online-accounts-gtk"
