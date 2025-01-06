@@ -1,7 +1,7 @@
 pkgbase = lightworks
 	pkgdesc = Lightworks is a professional video editing suite
 	pkgver = 2025.1.149111
-	pkgrel = 2
+	pkgrel = 1
 	url = http://www.lwks.com/
 	arch = x86_64
 	license = custom
