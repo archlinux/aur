@@ -1,7 +1,7 @@
 pkgbase = parabolic
 	pkgdesc = Download web video and audio
 	pkgver = 2024.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NickvisionApps/Parabolic
 	arch = x86_64
 	license = MIT
@@ -22,6 +22,7 @@ pkgbase = parabolic
 	sha256sums = e92787d6587c722a79a4ab58f4c6638a180fc26a93f0d77c18fe88f6a4556f3a
 
 pkgname = parabolic-gtk
+	depends = aria2
 	depends = bash
 	depends = boost-libs
 	depends = curl
@@ -34,8 +35,10 @@ pkgname = parabolic-gtk
 	depends = libsecret
 	depends = libxml++-5.0
 	depends = openssl
+	depends = yt-dlp
 
 pkgname = parabolic-qt
+	depends = aria2
 	depends = bash
 	depends = boost-libs
 	depends = curl
@@ -46,3 +49,4 @@ pkgname = parabolic-qt
 	depends = libsecret
 	depends = openssl
 	depends = qt6-base
+	depends = yt-dlp

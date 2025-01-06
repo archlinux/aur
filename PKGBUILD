@@ -4,12 +4,21 @@
 pkgbase=parabolic
 pkgname=(parabolic-gtk parabolic-qt)
 pkgver=2024.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Download web video and audio"
 arch=('x86_64')
 url="https://github.com/NickvisionApps/Parabolic"
 license=('MIT')
-makedepends=('blueprint-compiler' 'boost' 'cmake' 'gtk4' 'libadwaita' 'libnick' 'libsecret' 'libxml++-5.0' 'qt6-base' 'qt6-svg')
+makedepends=('blueprint-compiler'
+             'boost'
+             'cmake'
+             'gtk4'
+             'libadwaita'
+             'libnick'
+             'libsecret'
+             'libxml++-5.0'
+             'qt6-base'
+             'qt6-svg')
 provides=('tube-converter')
 conflicts=('tube-converter')
 replaces=('tube-converter')
@@ -33,7 +42,8 @@ build() {
 }
 
 package_parabolic-gtk() {
-    depends=('bash'
+    depends=('aria2'
+             'bash'
              'boost-libs'
              'curl'
              'gcc-libs'
@@ -44,14 +54,16 @@ package_parabolic-gtk() {
              'libadwaita'
              'libsecret'
              'libxml++-5.0'
-             'openssl')
+             'openssl'
+             'yt-dlp')
 
     DESTDIR="${pkgdir}" cmake --install build-gtk
     install -Dm644 "${pkgbase^}-${pkgver}/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_parabolic-qt() {
-    depends=('bash'
+    depends=('aria2'
+             'bash'
              'boost-libs'
              'curl'
              'gcc-libs'
@@ -60,7 +72,8 @@ package_parabolic-qt() {
              'hicolor-icon-theme'
              'libsecret'
              'openssl'
-             'qt6-base')
+             'qt6-base'
+             'yt-dlp')
 
     DESTDIR="${pkgdir}" cmake --install build-qt
     install -Dm644 "${pkgbase^}-${pkgver}/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}"
