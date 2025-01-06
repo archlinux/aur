@@ -16,7 +16,7 @@
 
 pkgname=discord-canary-electron-bin
 _pkgname=discord-canary
-pkgver=0.0.541
+pkgver=0.0.555
 pkgrel=1
 pkgdesc="Discord Canary (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
@@ -38,7 +38,7 @@ source=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkg
         'installed.json'
         )
 # Skip SHA256 of licenses, it fails always for some reason.
-sha256sums=('ba94f5d82db75649be059c9c280b9f4733396078b3a5926d11a2631c6cd8b6fe'
+sha256sums=('d09962f1c97cfd0d544b4a9d33137fc75064adf328dd45b34b85ad789d99c356'
             'SKIP'
             'SKIP'
             '5afdfdcb67493946553cad1255e1084add21392171d8ffb79c0ce76865e71f0a'
