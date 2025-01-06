@@ -2,8 +2,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.28
 
 pkgname='perl-net-cidr'
-pkgver='0.17'
-pkgrel='2'
+pkgver='0.21'
+pkgrel='1'
 pkgdesc="Manipulate IPv4/IPv6 netblocks in CIDR notation"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='http://search.mcpan.org/dist/Net-CIDR'
-source=('http://search.mcpan.org/CPAN/authors/id/M/MR/MRSAM/Net-CIDR-0.17.tar.gz')
-md5sums=('c4632887a13663c7ba769bd6ba1b3c26')
-sha512sums=('bb1ad29f79879e46afc221ddec1d790ea69d470e7363dc90e27ec3fb34e15cf753b457b76a4ea0e70db4afc0aeb11f3e2bbe7c204abb5aae967d13ae9605460f')
-_distdir="Net-CIDR-0.17"
+source=('http://search.mcpan.org/CPAN/authors/id/M/MR/MRSAM/Net-CIDR-0.21.tar.gz')
+md5sums=('31f6679b361ad734d163d3a9f6589c84')
+sha512sums=('28e7c808173d87a403ab6d924763bdeeef61801775167a11b02bf352d70808821f896f7e3dbb1fd3cd2b42c937f9c6175d1522daddf38c53ee9d242d1a3b5fd1')
+_distdir="Net-CIDR-0.21"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
