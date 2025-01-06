@@ -37,7 +37,7 @@ source=(
 sha256sums=('5765c1209aafd48ef4b8d809d8b549fc7fc6242add6263201386b5a31d877f92'
             '8ad598c73ad796e0d8280b082cebd82a630d73e73cd3c70057938a6501bba5d7'
             'cc01a3a05d25e5978c20be7656f14eb8b6fcb120bb1c7e8041e497814fc273cb'
-            'SKIP')
+            '34edb82696aaaca15eba56880d6e6d249131920664ae5805d86e351d13d0723a')
 
 prepare() {
     # TODO: try linking dynamically against system libbpf instead
