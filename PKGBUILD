@@ -9,7 +9,7 @@ url="https://github.com/Faugus/faugus-launcher"
 license=('MIT')
 depends=('python' 'python-gobject' 'python-requests' 'python-pillow' 'python-pynput' 'umu-launcher' 'imagemagick' 'icoextract' 'libayatana-appindicator' 'gamescope')
 provides=('faugus-launcher')
-conflicts=('faugus-launcher')
+conflicts=('faugus-launcher-git')
 source=("https://github.com/Faugus/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
