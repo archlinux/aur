@@ -2,14 +2,14 @@
 
 pkgname=gupaxx-git
 _name=gupaxx
-pkgver=1.5.3
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="GUI Uniting P2Pool And XMRig "
 arch=('x86_64')
 url="https://github.com/Cyrix126/gupaxx"
 license=('GPL-3.0')
-depends=('p2pool' 'xmrig')
-makedepends=('cargo')
+optdepends=('xmrig' 'xmrig-proxy' 'monero' 'p2pool')
+makedepends=('cargo' 'rustup' 'git' 'mold')
 #source=("git+$url#tag=v$pkgver" gupaxx.desktop)
 source=("git+$url" gupaxx.desktop)
 b2sums=(
