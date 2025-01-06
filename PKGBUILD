@@ -6,7 +6,7 @@
 
 _plugin=gitlab
 pkgname=mattermost-plugin-$_plugin
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='a GitLab plugin for Mattermost'
 arch=(x86_64)
@@ -15,9 +15,9 @@ _url="https://github.com/mattermost/$pkgname"
 license=(Apache2)
 makedepends=(jq)
 options=(!strip)
-_archive="com.github.manland.$pkgname"
-source=("$_url/releases/download/v$pkgver/$_archive-$pkgver.tar.gz")
-sha256sums=('2e6fffd6d1a78d7dd014e84b73b8fc7b5a8d4695dc643f708bd143fdb4d91637')
+_app="com.github.manland.$pkgname"
+source=("$_url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
+sha256sums=('c19539ee7483b9ea0615f7789edb1770add8ce8fa2f126befec6d195055acc86')
 
 # BEGIN boilerplate mattermost plugin version clamping, see also other packages in group
 # 1. Call respective function helper in package() *after* cd'ing to the source directory
@@ -34,7 +34,7 @@ _mattermost_plugin_package() {
 package() {
 	local _plugins="$pkgdir/var/lib/mattermost/plugins"
 	install -dm0755 "$_plugins"
-	cp -r "$_archive" "$_plugins"
-	cd "$_archive"
+	cp -r "$_app" "$_plugins"
+	cd "$_app"
 	_mattermost_plugin_package
 }
