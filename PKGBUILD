@@ -3,8 +3,8 @@
 
 pkgname=nessus-agent
 _pkgname=nessus_agent
-pkgver=10.7.3
-pkgrel=2
+pkgver=10.8.2
+pkgrel=1
 pkgdesc="Nessus vulnerability scanner agent"
 arch=('x86_64')
 depends=('gnupg')
@@ -19,7 +19,7 @@ read -r _filename _url _version _dl_id _sha256 <<<$(ruby get_nessus_link.rb all)
 source=("NessusAgent-$pkgver-fc38.$arch.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus-agents/downloads/$_dl_id/download?i_agree_to_tenable_license_agreement=true"
         'LICENSE'
         'get_nessus_link.rb')
-sha256sums=('3da6b05b4aa5ce779bc41eaef3abc80d1e349b66503ab0734acbc87e646d8822'
+sha256sums=("$_sha256"
             'd647aedd39d571faa3f1a9906db561eecbd9c41605ba7f562261ffb04877ba26'
             '191603f44668b2f7dbafde4faef75ace91590d5c07a7a146601834ebe65a4734')
 conflicts=('nessus') # due to /etc/ld.so.conf.d/nessus.conf
