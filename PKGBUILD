@@ -2,13 +2,13 @@
 _appname=qwerty
 pkgname="${_appname}-learner-pake"
 _pkgname=Qwerty
-pkgver=3.0.3
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Use Pake to package Qwerty-Learner.为键盘工作者设计的单词记忆与英语肌肉记忆锻炼软件/Words learning and English muscle memory training software designed for keyboard workers"
 arch=('x86_64')
 url="https://qwerty.kaiyi.cool"
 _ghurl="https://github.com/tw93/Pake"
-license=("MIT")
+license=('MIT')
 conflicts=("${_appname}")
 depends=(
     'gtk3'
