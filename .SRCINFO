@@ -1,6 +1,6 @@
 pkgbase = keyboard-visualizer-git
 	pkgdesc = Turn your OpenRGB-supported RGB setup into a spectacular light show for your music
-	pkgver = release_4.00.r15.g5aed324
+	pkgver = 4.00.r26.gb50cc50
 	pkgrel = 1
 	url = https://gitlab.com/CalcProgrammer1/KeyboardVisualizer
 	arch = x86_64
@@ -11,10 +11,9 @@ pkgbase = keyboard-visualizer-git
 	makedepends = pkgconf
 	depends = openal
 	depends = openrgb
-	optdepends = openrazer-meta: Drivers and utilities for Razer hardware
 	provides = keyboard-visualizer
-	source = keyboard-visualizer-git::git+https://gitlab.com/CalcProgrammer1/KeyboardVisualizer.git
+	conflicts = keyboard-visualizer
+	source = git+https://gitlab.com/CalcProgrammer1/KeyboardVisualizer.git
 	sha256sums = SKIP
 
 pkgname = keyboard-visualizer-git
-
