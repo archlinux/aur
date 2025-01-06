@@ -1,7 +1,7 @@
 # Maintainer: Bill Sideris <bill88t@bredos.org>
 
 pkgname=nhentai-git
-pkgver=r666.5bde24f
+pkgver=r442
 pkgrel=1
 pkgdesc='CLI tool for downloading doujinshi from nhentai.net'
 arch=(any)
