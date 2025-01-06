@@ -3,7 +3,7 @@
 pkgname=python-pingouin
 _name=${pkgname#python-}
 pkgver=0.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Statistical package for Python'
 arch=(any)
 url=https://pingouin-stats.org/build/html/index.html
@@ -34,7 +34,7 @@ build() {
 
 check() {
     cd $_name-$pkgver
-    pytest
+    PYTHONPATH=src pytest
 }
 
 package() {
