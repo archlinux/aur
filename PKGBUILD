@@ -1,7 +1,7 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=tuckr
 _pkgname=Tuckr
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="A super powered replacement for the GNU Stow dotfile manager"
 arch=('x86_64' 'i686' 'arm')
@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 makedepends=('cargo' 'git')
 depends=('glibc' 'gcc-libs')
 source=("$url/archive/refs/tags/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('084b35e54611a25b62d2224db22f0cec7b4cfaab5debfb6d43ceede7d6b4a28f')
+sha256sums=('dc39bda1a09428a370ad6152ecc09e07f89a1b6e8b3628bc6efc1e6db69aba8c')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
