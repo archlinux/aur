@@ -16,9 +16,9 @@ pkgbase = dottorrent-gui
 	depends = hicolor-icon-theme
 	source = dottorrent-gui-1.3.11::git+https://github.com/kz26/dottorrent-gui#tag=v1.3.11
 	source = https://cdn-icons-png.flaticon.com/512/28/28969.png
-	source = dottorrent.desktop
+	source = Dottorrent.desktop
 	sha256sums = 2b9746a4acee9ce01f5169c4337bf0965cc78a5995f3dabc206cd7952b302a7a
 	sha256sums = d52667485a2ca1cdbbad4895f0ca833e25463a9647c67cc1bd0c676733fb3289
-	sha256sums = 07f24a683973797a2595c9b4ae9b5531bb8b3efe72dd2abe089e7ff1ecffab2d
+	sha256sums = fd828781a970d0cf699a957eb69f25f5f7f585d6a0609fd35a587d641e323322
 
 pkgname = dottorrent-gui
