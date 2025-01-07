@@ -2,19 +2,24 @@
 
 _pkgname=iansui
 pkgname=ttf-${_pkgname}-git
-pkgver=v1.000.r6.116d684
+pkgver=v1.003.g41190e8
 pkgrel=1
-pkgdesc="Free font derived from Source Han Serif."
+pkgdesc="An open source Chinese font derived from Klee One (Fontworks)."
 arch=('any')
 license=('OFL')
 url="https://github.com/ButTaiwan/${_pkgname}"
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
+build() {
+  cd "${srcdir}/${_pkgname}"
+  make build
+}
+
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  install -Dm644 -t "${pkgdir}/usr/share/fonts/TTF/" fonts/*.ttf
+  install -Dm644 -t "${pkgdir}/usr/share/fonts/TTF/" fonts/ttf/*.ttf
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname%-git}/README.md"
   install -Dm644 ChangeLog.md "${pkgdir}/usr/share/doc/${pkgname%-git}/CHANGELOG.md"
@@ -23,5 +28,5 @@ package() {
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
-  git describe --tags --always | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+  printf "%s.g%s" "$(grep -m 1 -Eo 'v[0-9].[0-9]{3}' ChangeLog.md)" "$(git rev-parse HEAD | head -c7)"
 }

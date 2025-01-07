@@ -1,6 +1,6 @@
 pkgbase = ttf-iansui-git
-	pkgdesc = Free font derived from Source Han Serif.
-	pkgver = v1.000.r6.116d684
+	pkgdesc = An open source Chinese font derived from Klee One (Fontworks).
+	pkgver = v1.003.g41190e8
 	pkgrel = 1
 	url = https://github.com/ButTaiwan/iansui
 	arch = any
