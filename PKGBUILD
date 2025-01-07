@@ -3,7 +3,7 @@ pkgname=python-asyncclick
 _name=${pkgname#python-}
 pkgver=8.1.8
 _tagname=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="Composable command line interface toolkit, async version"
 arch=(any)
 url="https://github.com/python-trio/asyncclick"
@@ -14,8 +14,8 @@ checkdepends=(python-pytest python-trio)
 optdepends=('python-trio: Alternative async event loop'
             'python-curio: Alternative async event loop')
 options=(!strip)
-source=("$_name-$_tagname.tar.gz::$url/archive/refs/tags/$_tagname.tar.gz")
-sha256sums=('679f1266e7fd1fce2c86af72bac6179571ff82fda3a293c7a955b75c621e08d5')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$_tagname.tar.gz")
+sha256sums=('0f0eb0f280e04919d67cf71b9fcdfb4db2d9ff7203669c40284485c149578e4c')
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
 
