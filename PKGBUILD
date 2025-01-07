@@ -18,10 +18,10 @@ source=("trenchbroom::git+https://github.com/TrenchBroom/TrenchBroom.git#branch=
 
 sha1sums=('SKIP')
 
-#pkgver() {
-#  cd "trenchbroom"
-#  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-#}
+pkgver() {
+  cd "trenchbroom"
+  git describe --long --abbrev | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
   cd trenchbroom
