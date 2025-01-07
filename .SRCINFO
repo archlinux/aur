@@ -1,13 +1,13 @@
 pkgbase = limbo
 	pkgdesc = Limbo is a work-in-progress, in-process OLTP database management system, compatible with SQLite.
-	pkgver = 0.0.10
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://github.com/tursodatabase/limbo
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = mimalloc
-	source = https://github.com/tursodatabase/limbo/releases/download/v0.0.10/source.tar.gz
-	sha256sums = 42ee9869f2f6352a9b3799a5dc81e9aedb1413e9e8fc5a6e4c59fd6c257fbb83
+	source = https://github.com/tursodatabase/limbo/releases/download/v0.0.11/source.tar.gz
+	sha256sums = 4b1b6341e56583867b9021d9565955e2cc600783919f9dee6647f680a7ed86fe
 
 pkgname = limbo
