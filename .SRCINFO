@@ -25,6 +25,7 @@ pkgbase = trenchbroom-bin
 	depends = tinyxml2
 	provides = trenchbroom
 	conflicts = trenchbroom
+	conflicts = trenchbroom-git
 	source = trenchbroom::git+https://github.com/TrenchBroom/TrenchBroom.git#branch=4753-2
 	sha1sums = SKIP
 

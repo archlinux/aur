@@ -11,7 +11,7 @@ license=("GPL3")
 
 makedepends=("git" "pandoc" "qt6-base" "cmake" "ninja" "qt6-svg" "libxcb" "zip" "unzip")
 depends=("freeimage" "freetype2" "mesa" "libgl" "freeglut" "libxxf86vm" "glew" "glm" "tinyxml2")
-conflicts=("trenchbroom")
+conflicts=("trenchbroom" "trenchbroom-git")
 provides=("trenchbroom")
 
 source=("trenchbroom::git+https://github.com/TrenchBroom/TrenchBroom.git#branch=4753-2")
