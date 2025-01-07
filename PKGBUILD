@@ -2,11 +2,11 @@
 
 pkgname="epson-inkjet-printer-filter"
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Epson inkjet printer filter used with CUPS"
 arch=('x86_64' 'i686')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
-license=('LGPL-2.1-or-later' 'custom:Epson Licence Agreement')
+license=('LGPL-2.1-or-later' 'custom:Epson End User Software License Agreement')
 depends=('cups' 'glibc' 'libcups')
 _pkgsrc="${pkgname}-${pkgver}"
 # source bundle chosen arbitrarily, they all ship identical filter sources
@@ -44,8 +44,8 @@ package() {
   # make DESTDIR="${pkgdir}" install
 
   install -vDm644 "AUTHORS"       "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
-  install -vDm644 "ChangeLog"     "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG"
-  install -vDm644 "NEWS"          "${pkgdir}/usr/share/doc/${pkgname}/NEWS"
+  # install -vDm644 "ChangeLog"     "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG"
+  # install -vDm644 "NEWS"          "${pkgdir}/usr/share/doc/${pkgname}/NEWS"
   install -vDm644 "README"        "${pkgdir}/usr/share/doc/${pkgname}/README"
   install -vDm644 "COPYING.EPSON" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.EPSON"
   install -vDm644 "COPYING.LIB"   "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.LIB"
