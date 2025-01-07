@@ -1,0 +1,16 @@
+pkgbase = openrgb-plugin-sample-git
+	pkgdesc = Sample plugin for OpenRGB
+	pkgver = 0.9.r0.g4f2aeb3
+	pkgrel = 1
+	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBSamplePlugin
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = qt5-tools
+	depends = openrgb
+	provides = openrgb-plugin-sample
+	conflicts = openrgb-plugin-sample
+	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBSamplePlugin.git
+	sha256sums = SKIP
+
+pkgname = openrgb-plugin-sample-git
