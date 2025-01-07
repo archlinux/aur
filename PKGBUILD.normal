@@ -188,10 +188,11 @@ package_ibus-mozc() {
   install -D -m 755 bazel-bin/renderer/qt/mozc_renderer      "${pkgdir}/usr/lib/mozc/mozc_renderer"
 
   cd bazel-bin/unix || exit
-  unzip -o icons.zip *.svg mozc.png -d tmp
+  unzip -o icons.zip *.svg *.png -d tmp
   cd tmp || exit
-  find . -type f -name "*.svg" | xargs -I{} install -Dm644 "{}" "${pkgdir}/usr/share/ibus-mozc/{}"
   install -Dm644 mozc.png                         "${pkgdir}"/usr/share/${pkgname}/product_icon.png
+  find . -type f -name "*.svg" | xargs -I{} install -Dm644 "{}" "${pkgdir}/usr/share/ibus-mozc/{}"
+  find . -type f -name "*.png" | xargs -I{} install -Dm644 "{}" "${pkgdir}/usr/share/ibus-mozc/{}"
 }
 
 package_emacs-mozc() {

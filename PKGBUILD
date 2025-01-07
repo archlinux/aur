@@ -259,10 +259,11 @@ package_ibus-mozc-with-jp-dict() {
   install -D -m 755 bazel-bin/renderer/qt/mozc_renderer      "${pkgdir}/usr/lib/mozc/mozc_renderer"
 
   cd bazel-bin/unix || exit
-  unzip -o icons.zip mozc.png *.svg -d tmp
+  unzip -o icons.zip *.png *.svg -d tmp
   cd tmp || exit
   install -Dm644 mozc.png "${pkgdir}/usr/share/ibus-mozc/product_icon.png"
   find . -type f -name "*.svg" | xargs -I{} install -Dm644 "{}" "${pkgdir}/usr/share/ibus-mozc/{}"
+  find . -type f -name "*.png" | xargs -I{} install -Dm644 "{}" "${pkgdir}/usr/share/ibus-mozc/{}"
 }
 
 package_emacs-mozc-with-jp-dict() {
