@@ -9,7 +9,7 @@ license=('MIT')
 arch=('x86_64')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source_x86_64=("${pkgname}-${pkgver}.tar.xz::https://github.com/penberg/limbo/releases/download/v$pkgver/$_pkgname-x86_64-unknown-linux-gnu.tar.xz")
+source_x86_64=("$pkgname-$pkgver.tar.xz::https://github.com/penberg/limbo/releases/download/v$pkgver/$_pkgname-x86_64-unknown-linux-gnu.tar.xz")
 sha256sums_x86_64=('aa75e9a96da753ed04db46cddb1100a9c0c0e2fa46113044b7d078b1cf487968')
 
 package() {
