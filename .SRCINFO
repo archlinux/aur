@@ -1,4 +1,4 @@
-pkgbase = ham-v2.71-linux-bin
+pkgbase = ham-v2.71-linux
 	pkgdesc = Legacy Game Boy Advance development kit based on GCC 3.2.2
 	pkgver = 2.71
 	pkgrel = 5

@@ -1,6 +1,7 @@
 # Maintainer: Sterophonick
 pkgname=ham-v2.71-linux-bin
 _pkgname='ham-v2.71-linux-bin'
+pkgbase=ham-v2.71-linux
 pkgver=2.71
 pkgrel=5
 pkgdesc='Legacy Game Boy Advance development kit based on GCC 3.2.2'
