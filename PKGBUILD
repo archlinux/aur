@@ -3,7 +3,7 @@
 pkgbase=python-photutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.0.2
+pkgver=2.1.0
 #_pkgver=${pkgver/.0}
 pkgrel=1
 pkgdesc="Astropy Affiliated package for image photometry utilities"
@@ -37,7 +37,7 @@ checkdepends=('python-pytest-astropy-header'
               'python-gwcs')    # scipy matplotlib <- scikit-image shapely rasterio already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #source=("https://github.com/astropy/photutils/releases/download/${pkgver}/${_pyname}-${pkgver}.tar.gz")
-#source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${_pkgver}.tar.gz")
+#source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${_pkgver}.tar.gz"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/M6707HH.fits"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/SA112-SF1-001R1.fit.gz"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/SA112-SF1-ra-dec-list.txt"
@@ -49,7 +49,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_catalog.xml"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_image.fits"
 #       'datasets-use-local.patch')
-md5sums=('8185da749187ccee58057bca04ec6500')
+md5sums=('f78c6f9ec19dc79be23085d30fa71ca0')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -80,14 +80,14 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 #   cd ${srcdir}/${_pyname}-${_pkgver}
 
-    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count --remote-data=any -p xdist -n 4
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count --remote-data=any -p xdist -n 4 #
 }
 
 package_python-photutils() {
-    depends=('python>=3.10' 'python-numpy>=1.24' 'python-astropy>=5.3' 'python-scipy>=1.10')
+    depends=('python>=3.11' 'python-numpy>=1.24' 'python-astropy>=5.3' 'python-scipy>=1.10')
     optdepends=('python-scikit-image>=0.20: Required to deblend segmented sources'
                 'python-matplotlib>=3.7: To power a variety of plotting features (e.g. plotting apertures)'
-                'python-gwcs>=0.19: Required in make_gwcs to create a simple celestial gwcs object.'
+                'python-gwcs>=0.20: Required in make_gwcs to create a simple celestial gwcs object.'
                 'python-bottleneck: Improves the performance of sigma clipping and other functionality that may require computing statistics on arrays with NaN values'
                 'python-tqdm: Required to display optional progress bars'
                 'python-rasterio: Required to convert source segments into polygon objects'
