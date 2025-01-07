@@ -1,21 +1,21 @@
 # Maintainer: Wüstengecko <1579756+Wuestengecko@users.noreply.github.com>
 pkgname=python-asyncclick
 _name=${pkgname#python-}
-pkgver=8.1.7.2
+pkgver=8.1.8
 _tagname=$pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc="Composable command line interface toolkit, async version"
 arch=(any)
 url="https://github.com/python-trio/asyncclick"
 license=('BSD')
 depends=(python python-anyio)
-makedepends=(git python-build python-installer python-setuptools python-setuptools-scm python-wheel)
+makedepends=(git python-build python-flit-core python-installer python-wheel)
 checkdepends=(python-pytest python-trio)
 optdepends=('python-trio: Alternative async event loop'
             'python-curio: Alternative async event loop')
 options=(!strip)
 source=("$_name-$_tagname.tar.gz::$url/archive/refs/tags/$_tagname.tar.gz")
-sha256sums=('f5b84b541ec562d20850ea6e4711dbb44dcea1bcffbfa21da55c4460eced02d6')
+sha256sums=('679f1266e7fd1fce2c86af72bac6179571ff82fda3a293c7a955b75c621e08d5')
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
 
@@ -31,6 +31,6 @@ check() {
 
 package() {
   cd "$_name-${_tagname//+/-}"
-  install -Dm644 LICENSE.rst "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
 }
