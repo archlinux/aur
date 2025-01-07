@@ -1,8 +1,8 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=gama-github-actions-manager
 _pkgname=gama
-pkgver=1.1.4
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Manage your GitHub Actions from Terminal with great UI"
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 url="https://github.com/termkit/gama"
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 options=("strip" "buildflags")
 source=("$url/archive/refs/tags/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('bdca58ab25c93a4b13b666d271e36142a9f4b87d7dc3264306e9c8692d252d13')
+sha256sums=('bbab6739c849a7f498334a3305c08a7f1dd2e14f74a7c71fe23085ade8b0e6a3')
 
 prepare(){
     cd "$_pkgname-$pkgver"
