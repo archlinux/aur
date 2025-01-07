@@ -1,10 +1,11 @@
-# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seistrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='python-runtype'
 _pkgname="${pkgname#python-}"
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Python utilities for run-time type validation and multiple dispatch'
 arch=('any')
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -18,7 +19,6 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-recommonmark'
-  'python-sphinx'
   'python-sphinx-markdown-tables'
   'python-wheel'
 )
