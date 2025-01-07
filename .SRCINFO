@@ -1,14 +1,15 @@
 pkgbase = ghostty-git-zen3
 	pkgdesc = Fast, native, feature-rich terminal emulator pushing modern features (Zen 3 optimized)
-	pkgver = r8481.a8e5eef1
+	pkgver = r8959.0065aae6
 	pkgrel = 1
 	url = https://github.com/ghostty-org/ghostty
 	arch = x86_64
-	license = custom
+	license = MIT
 	makedepends = git
 	makedepends = zig>=0.13.0
 	makedepends = zig<0.14.0
 	makedepends = pandoc-cli
+	makedepends = wayland-protocols
 	depends = bzip2
 	depends = fontconfig
 	depends = freetype2
@@ -21,7 +22,6 @@ pkgbase = ghostty-git-zen3
 	depends = zlib
 	provides = ghostty
 	conflicts = ghostty
-	conflicts = ghostty-git
 	source = git+https://git@github.com/ghostty-org/ghostty
 	sha256sums = SKIP
 
