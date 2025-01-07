@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=bottles-git
-pkgver=51.17.r0.g7063d286
+pkgver=51.17.r70.g675ad094
 pkgrel=1
 epoch=2
 pkgdesc="Easily manage wineprefix using environments"
@@ -54,9 +54,8 @@ makedepends=(meson ninja git)
 checkdepends=(appstream-glib)
 provides=(bottles)
 conflicts=(bottles)
-source=("${pkgname%-git}::git+https://github.com/bottlesdevs/Bottles.git" dont-care-about-sandbox.patch)
-sha256sums=('SKIP'
-            '489d16cea77d5acb6c7407c7b0f4f28eb6db478ae2b2a0a951cefde555e44d85')
+source=("${pkgname%-git}::git+https://github.com/bottlesdevs/Bottles.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -70,7 +69,7 @@ prepare() {
   #  patch -Np1 -i ../dont-care-about-sandbox.patch # this is the OpenSUSE patch Fabio referenced
   #  for now let's try bypass so the sourcecode can change without breaking our patch
   sed -i 's/if not fs.is_file.*$/if false/' bottles/frontend/meson.build
-  sed -i '/if not Xdp.Portal.running_under_sandbox()/,/^            return$/s/^/#/' bottles/frontend/windows/main_window.py
+  sed -i '/if not Xdp.Portal.running_under_sandbox()/,/^            return$/s/^/#/' bottles/frontend/windows/window.py
 }
 
 build() {
