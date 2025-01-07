@@ -1,20 +1,19 @@
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
 
 pkgname='perl-html-fillinform'
-pkgver='2.20'
+pkgver='2.22'
 pkgrel='1'
 pkgdesc="Populates HTML Forms with data."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-html-parser>=3.26')
-makedepends=()
+depends=('perl')
+checkdepends=('perl-cgi' 'perl-html-parser' 'perl-test-output')
 url='http://search.cpan.org/dist/HTML-FillInForm'
-source=('http://search.cpan.org/CPAN/authors/id/M/MA/MARKSTOS/HTML-FillInForm-2.20.tar.gz')
-md5sums=('eeae1ef0fb6f7bde4e3db313c7c703a6')
-sha512sums=('d00955fae1d9602ccda79e42e4a2863cb04b7070d72bdfe383b3b68ac56cf0a629bf2cbea35aaa042a379fe1c9679d7905407454d0e6c19433f6821dfbd27ebd')
-_distdir="HTML-FillInForm-2.20"
+source=('https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTML-FillInForm-2.22.tar.gz')
+md5sums=('2c4f8a31670344e573368c2f54c9e20d')
+sha512sums=('ed8c29edd00572fc910487f095c530a4cf5e1e320cab82b171b96e8e490691ef154cb4911c48ffb2d5c726886ec9aca404590e3afd44ca320ad49977822c7db9')
+_distdir="HTML-FillInForm-2.22"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
