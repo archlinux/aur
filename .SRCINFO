@@ -15,8 +15,8 @@ pkgbase = mozc-with-jp-dict
 	makedepends = libibus
 	makedepends = rustup
 	options = !lto
-	source = git+https://github.com/fcitx/mozc.git#commit=4b72547fca6d5a96243f0c3874274169410add5f
-	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=6ca6e91cb9fa2d224f61b8a4a2a7fd6b1211e388
+	source = git+https://github.com/fcitx/mozc.git#commit=aa829eaea09419a5330106b7b60cdf1b82df3009
+	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=d2f5497767841a37098dc96914f554381f610104
 	source = git+https://github.com/abseil/abseil-cpp.git#commit=4447c756
 	source = git+https://github.com/google/breakpad.git#commit=216cea7b
 	source = git+https://github.com/google/googletest.git#commit=b514bdc8
@@ -34,8 +34,8 @@ pkgbase = mozc-with-jp-dict
 	source = https://github.com/phoepsilonix/mecab-ipadic-neologd/raw/refs/heads/master/seed/mecab-user-dict-seed.20200910.csv.xz
 	source = LICENSE-MeCab-ipadic-Neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
 	source = fcitx5-mozc-conf.patch
-	sha512sums = 997efd9eaba887d11487030b577980cd03d978cd19c7eceebeb749768ec976e744ede28e9f1b7b669300bcd772eabf6f86786a68e18fff095044dca5c752a096
-	sha512sums = 14ecb424305bbc606c05e36a257cf50d1e1453e1596d48dbb65293945227cb61c74876488d6898daac82700d87e0a53c022372af3d6c9be36a84d8ba4a3de998
+	sha512sums = 1a97d669c3e3145b5619081ed4ff632951ae0c874cea07aa96e0dcaaba8f5e79dac341f5454304971acd2f74159ed7ac92ec0e14ef438dceb1f8023eaea0f6e7
+	sha512sums = 32447e95f83acfe16cce546dd2077bb3c5b4f366b75d857d760d8ffafb213968613757d07a94de00bf0f3e756aa7163b8315ace6347ce29117a0660d4699a5f5
 	sha512sums = 83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68
 	sha512sums = f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d
 	sha512sums = 44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b
