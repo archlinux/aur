@@ -5,13 +5,13 @@ _crate="hickory-util"
 _cratever="0.24.2"
 pkgname="hickory-util"
 pkgver=0.24.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Utilities that complement Hickory DNS. '
 url='https://hickory-dns.org/'
 license=('Apache-2.0' 'MIT')
 
 depends=('gcc-libs' 'openssl')
-makedepends=('cargo')
+makedepends=('cargo' 'cargo-auditable')
 conflicts=('trust-dns-util')
 replaces=('trust-dns-util')
 
@@ -36,11 +36,30 @@ build() {
 	export CARGO_TARGET_DIR=target
 	CFLAGS+=" -ffat-lto-objects"
 
-	cargo build \
-		--offline \
-		--locked \
+	cargo auditable build \
+		--frozen \
 		--features 'dns-over-https-rustls,dns-over-h3,dns-over-quic,dnssec-openssl' \
 		--release
+}
+
+_check() {
+	cd "$srcdir/$_crate-$_cratever"
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects"
+
+	cargo test \
+		--frozen \
+		--features 'dns-over-https-rustls,dns-over-h3,dns-over-quic,dnssec-openssl' \
+		--release \
+		"${@}" \
+		-- \
+		--skip read_pem_into_key_pair
+}
+
+check() {
+	_check --lib
 }
 
 package() {

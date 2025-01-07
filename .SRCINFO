@@ -1,7 +1,7 @@
 pkgbase = hickory-util
 	pkgdesc = Utilities that complement Hickory DNS. 
 	pkgver = 0.24.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hickory-dns.org/
 	arch = aarch64
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = hickory-util
 	license = Apache-2.0
 	license = MIT
 	makedepends = cargo
+	makedepends = cargo-auditable
 	depends = gcc-libs
 	depends = openssl
 	conflicts = trust-dns-util
