@@ -1,7 +1,7 @@
 pkgbase = vala-panel-git
 	pkgdesc = Gtk3 panel for compositing window managers
 	pkgver = 24.05.r0.g295d892
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/vala-panel-project/vala-panel
 	arch = i686
 	arch = x86_64
