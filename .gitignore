@@ -1,12 +1,9 @@
-# Ignore everything
 *
-
-# But not these files...
 !.gitignore
-!PKGBUILD
 !.nvchecker.toml
+!*.service
+!*.sysusers
+!*.tmpfiles
+!PKGBUILD
 !.SRCINFO
-!openarc.sysusers
-!openarc.tmpfiles
-!openarc.service
 !*.patch
