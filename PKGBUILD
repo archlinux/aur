@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-physics7
-pkgver=7.3.0
+pkgver=7.4.0
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -30,7 +30,7 @@ optdepends=(
 )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('4da34f55ba8a45b56b91f47803e7166edd6555eff7924b50763d87736475846b')
+sha256sums=('2b59921e8867d41e0d23663e376d1cb17ebacdc354ac5a673d03c40c996b52d8')
 
 _build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
 
