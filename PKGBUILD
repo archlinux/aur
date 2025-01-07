@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcppThread
-_pkgver=2.1.7
+_pkgver=2.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="R-Friendly Threading in C++"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('846c28d124e57d8158112db1ab59a909')
-b2sums=('ebe21b7753cde88b5f36b79a9b8cc30946d3fb4cbce54a17ad0f9978080113b9f83706ce58f68d94a67bfb1a08a1178fb0a5eb617bce5fcde18604376ce56f99')
+md5sums=('715d9aacca458116f569a3304ebf504e')
+b2sums=('75bc7c4ca365f1e4b23eccb49b95be4fa37a254b3e962b22c9cbb5bc6d9ca1ae7b7032b95ff81f332a9c0ff968de5163a3792f533706c5684bf9cf410b9c376a')
 
 build() {
   mkdir build
