@@ -1,6 +1,6 @@
 pkgbase = dcmfx
 	pkgdesc = CLI and libraries for working with DICOM
-	pkgver = 0.6.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/dcmfx/dcmfx
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dcmfx
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = dcmfx-0.6.1.tar.gz::https://github.com/dcmfx/dcmfx/archive/v0.6.1.tar.gz
-	sha256sums = 4cdeb7a25c2856c54e2592fa8a958640d0c1ac699c109df440e09892fb321768
+	source = dcmfx-0.6.0.tar.gz::https://github.com/dcmfx/dcmfx/archive/v0.6.0.tar.gz
+	sha256sums = 0e84f1a503accc802d715a35244326312c3f3b0633af2606f1b06db70c81d56c
 
 pkgname = dcmfx
