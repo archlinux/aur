@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-utils3
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Classes and functions for robot applications."
@@ -17,7 +17,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('abb2b9a108c3b752091ddd5b559c0d86f061636e85f24bd547ae91d1554debbf')
+sha256sums=('f7af72b1524f4192e7b7d7aea50ab2ba27b31ef46f4e6be4f6be5a9b0a2bbf21')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
