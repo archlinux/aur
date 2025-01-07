@@ -1,5 +1,6 @@
 # Maintainer: Sterophonick
 pkgname=gba-wav-to-s3m-converter-bin
+pkgbase=gba-wav-to-s3m-converter
 _pkgname='gba-wav-to-s3m-converter'
 pkgver=1.4.0
 pkgrel=1

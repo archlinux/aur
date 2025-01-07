@@ -1,4 +1,4 @@
-pkgbase = gba-wav-to-s3m-converter-bin
+pkgbase = gba-wav-to-s3m-converter
 	pkgdesc = Segment wav music to be played in MaxMod on the GBA
 	pkgver = 1.4.0
 	pkgrel = 1
