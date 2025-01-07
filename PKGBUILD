@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=sdformat15
-pkgver=15.0.0
+pkgver=15.1.1
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -25,7 +25,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('2b21c1efe7c4bb817a5867b80974c7e35cfdd863b4024fe94a3bcb1d6a05a813')
+sha256sums=('9c9b517b390fe6965f76775db67f406b42948ebac433f87fadc680467d45184a')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
