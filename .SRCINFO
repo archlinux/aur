@@ -1,6 +1,6 @@
 pkgbase = cosmic-greeter-git
 	pkgdesc = libcosmic greeter for greetd, which can be run inside cosmic-comp
-	pkgver = 1.0.0.alpha.2.r8.g6ba26db
+	pkgver = 1.0.0.alpha.4.r7.g05b28ae
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-greeter
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = cosmic-greeter-git
 	depends = pam
 	depends = wayland
 	optdepends = fprintd: fingerprint authentication
+	optdepends = xorg-xinit: Xorg session
 	provides = cosmic-greeter
 	conflicts = cosmic-greeter
 	backup = etc/greetd/cosmic-greeter.toml
