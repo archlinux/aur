@@ -7,11 +7,12 @@ url="https://github.com/Lorenzooone/cc3dsfs"
 license=('MIT')
 
 conflicts=('libftd3xx' 'cc3dsfs')
-
+source=('cc3dsfs.desktop')
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::https://github.com/Lorenzooone/cc3dsfs/releases/download/${pkgver}/cc3dsfs_linux_x86_64.zip")
 source_aarch64=("${pkgname%-bin}-${pkgver}-arm64.zip::https://github.com/Lorenzooone/cc3dsfs/releases/download/${pkgver}/cc3dsfs_linux_arm64.zip")
-sha256sums_x86_64=('SKIP')
-sha256sums_aarch64=('SKIP')
+sha512sums=('ea2def9251e9acc8488ba806cde5ef193c0e33feeadca892c4aac586b79e570df518a38f5fe32bfeefd4a9f1aa757940adfbbf020fa485846d0b64d50c865818')
+sha512sums_x86_64=('SKIP')
+sha512sums_aarch64=('SKIP')
 
 
 package() {

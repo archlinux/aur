@@ -7,9 +7,11 @@ pkgbase = cc3dsfs-bin
 	license = MIT
 	conflicts = libftd3xx
 	conflicts = cc3dsfs
+	source = cc3dsfs.desktop
+	sha512sums = ea2def9251e9acc8488ba806cde5ef193c0e33feeadca892c4aac586b79e570df518a38f5fe32bfeefd4a9f1aa757940adfbbf020fa485846d0b64d50c865818
 	source_x86_64 = cc3dsfs-1.2.0-x86_64.zip::https://github.com/Lorenzooone/cc3dsfs/releases/download/1.2.0/cc3dsfs_linux_x86_64.zip
-	sha256sums_x86_64 = SKIP
+	sha512sums_x86_64 = SKIP
 	source_aarch64 = cc3dsfs-1.2.0-arm64.zip::https://github.com/Lorenzooone/cc3dsfs/releases/download/1.2.0/cc3dsfs_linux_arm64.zip
-	sha256sums_aarch64 = SKIP
+	sha512sums_aarch64 = SKIP
 
 pkgname = cc3dsfs-bin
