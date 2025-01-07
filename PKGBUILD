@@ -2,7 +2,7 @@
 # Maintainer: Liberty Raptor <libertyraptor@protonmail.com>
 
 pkgname=xemu-bin
-pkgver=0.7.131
+pkgver=0.7.132
 pkgrel=1
 pkgdesc="Original Xbox Emulator"
 arch=('x86_64')
@@ -13,8 +13,8 @@ conflicts=('xemu' 'xemu-git')
 options=('!strip')
 makedepends=('gendesk')
 noextract=("${pkgname%-bin}-${pkgver}.AppImage")
-source=("${pkgname%-bin}-${pkgver}.AppImage::https://github.com/xemu-project/xemu/releases/download/v0.7.131/xemu-v0.7.131-x86_64.AppImage")
-sha256sums=('73b7114c013856661aaaacd92a916215f71aed8cceae13b320a5356d6092b3c8')
+source=("${pkgname%-bin}-${pkgver}.AppImage::https://github.com/xemu-project/xemu/releases/download/v0.7.132/xemu-v0.7.132-x86_64.AppImage")
+sha256sums=('c11821d6d0632da3c51a354e9101f68e5ab2ae0e2512c6aa6c8453aef56cedba')
 
 package() {
   chmod 755 ./${pkgname%-bin}-${pkgver}.AppImage
@@ -22,7 +22,7 @@ package() {
   install -Dm644 squashfs-root/${pkgname%-bin}.svg "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.svg"
   gendesk -f -n --pkgname "${pkgname%-bin}" \
           --pkgdesc "$pkgdesc" \
-          --name "xemu" \
+          --name "Xemu" \
           --comment "$pkgdesc" \
           --exec "${pkgname%-bin}" \
           --categories 'Utility;Game;Application' \
