@@ -1,7 +1,7 @@
 # Maintainer: mapleafgo <mapleafgo at 163 dot com>
 pkgname=pnpm-bin
 _pkgname=pnpm
-pkgver=9.15.2
+pkgver=9.15.3
 pkgrel=1
 pkgdesc="Fast, disk space efficient package manager (No dependency on nodejs)"
 arch=('x86_64' 'aarch64')
@@ -18,5 +18,5 @@ _app=${_pkgname}-${pkgver}-${CARCH}
 package() {
 	install -Dm755 "${srcdir}/${_app}" "${pkgdir}/usr/bin/pnpm"
 }
-sha256sums_x86_64=('3cea7ada6e703acba25179d80a660a1f18b397a55fb4d721a2a4d04406abe27a')
-sha256sums_aarch64=('e50ec75726fa008691ac138f19ef934ece70b6cf7d8991b8bfcb06c621cc587f')
+sha256sums_x86_64=('0c640742c5df6ec959326fb65a37f0f70a388e4972361600f487383c223c9f6f')
+sha256sums_aarch64=('e56ef3b29d6987d16735528d9db8571a74d2af6da98dfb5d227d2877fab4563d')
