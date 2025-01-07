@@ -7,7 +7,7 @@ url='https://github.com/tursodatabase/limbo'
 license=('MIT')
 arch=('x86_64')
 makedepends=(cargo mimalloc)
-source=("https://github.com/tursodatabase/limbo/releases/download/v$pkgver/source.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/tursodatabase/limbo/releases/download/v$pkgver/source.tar.gz")
 sha256sums=('4b1b6341e56583867b9021d9565955e2cc600783919f9dee6647f680a7ed86fe')
 
 prepare() {

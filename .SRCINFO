@@ -7,7 +7,7 @@ pkgbase = limbo
 	license = MIT
 	makedepends = cargo
 	makedepends = mimalloc
-	source = https://github.com/tursodatabase/limbo/releases/download/v0.0.11/source.tar.gz
+	source = limbo-0.0.11.tar.gz::https://github.com/tursodatabase/limbo/releases/download/v0.0.11/source.tar.gz
 	sha256sums = 4b1b6341e56583867b9021d9565955e2cc600783919f9dee6647f680a7ed86fe
 
 pkgname = limbo
