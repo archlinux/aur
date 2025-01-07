@@ -1,0 +1,17 @@
+pkgbase = openrgb-plugin-fan-sync-git
+	pkgdesc = Fan sync plugin for OpenRGB
+	pkgver = 0.9.r6.g4983f10
+	pkgrel = 1
+	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBFanSyncPlugin
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = qt5-tools
+	depends = openrgb
+	depends = openal
+	provides = openrgb-plugin-fan-sync
+	conflicts = openrgb-plugin-fan-sync
+	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBFanSyncPlugin.git
+	sha256sums = SKIP
+
+pkgname = openrgb-plugin-fan-sync-git
