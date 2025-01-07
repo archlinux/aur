@@ -21,7 +21,5 @@ package() {
 	cd "$srcdir/$pkgname"
 	python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
 
-	install -Dm 755 sleep-scripts/sleep.d/49-sftpman-unmount-all "$pkgdir/etc/pm/sleep.d/49-sftpman-unmount-all"
-	install -Dm 755 sleep-scripts/system-sleep/sftpman-unmount-all.sh "$pkgdir/usr/lib/systemd/system-sleep/sftpman-unmount-all.sh"
 	install -Dm 644 bash_completion.d/sftpman "$pkgdir/usr/share/bash-completion/completions/sftpman"
 }
