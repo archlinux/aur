@@ -1,0 +1,20 @@
+--- contrib/systemd/openarc.service.in	2025-01-07 00:09:10.000000000 +0200
++++ contrib/systemd/openarc.service.in.new	2025-01-07 19:54:34.697754720 +0200
+@@ -8,13 +8,15 @@
+ [Service]
+ Type=simple
+ EnvironmentFile=-@sysconfdir@/sysconfig/openarc
++RuntimeDirectory=openarc
++RuntimeDirectoryMode=0750
+ ExecStart=@sbindir@/openarc -f $OPTIONS
+ ExecReload=/bin/kill -USR1 $MAINPID
+ Restart=on-abnormal
+ User=openarc
+ Group=openarc
+-PermissionsStartOnly=true
+-ExecStartPre=-/usr/bin/install -d -m 0755 -o openarc -g openarc @localstatedir@/run/openarc
++ProtectSystem=strict
++ProtectHome=true
+ 
+ [Install]
+ WantedBy=multi-user.target
