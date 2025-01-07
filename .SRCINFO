@@ -1,6 +1,6 @@
 pkgbase = perl-modern-perl
 	pkgdesc = enable all of the features of Modern Perl with one command
-	pkgver = 1.20240115
+	pkgver = 1.20241001
 	pkgrel = 1
 	url = https://metacpan.org/release/Modern-Perl
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = perl-modern-perl
 	makedepends = make
 	depends = perl>=5.10.0
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/C/CH/CHROMATIC/Modern-Perl-1.20240115.tar.gz
-	sha256sums = 7027280375794633189f86e66b6fc9f96b0aaffeb225f14747fbb26e588bf36e
+	source = https://cpan.metacpan.org/authors/id/C/CH/CHROMATIC/Modern-Perl-1.20241001.tar.gz
+	sha256sums = dba7bee92ecbf2b0a6cf61e3409ab59b0cd25518bbb90fe387230283aa683dc5
 
 pkgname = perl-modern-perl
