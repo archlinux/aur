@@ -3,7 +3,7 @@
 
 pkgname=pcb2gcode-git
 _pkgname=pcb2gcode
-pkgver=r250.250d53a
+pkgver=r1778.8c084afd
 pkgrel=1
 pkgdesc="Gerber to gcode file converter" 
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'boost')
 depends=('gtkmm' 'boost-libs' 'gerbv-git' 'geos')
 provides=('pcb2gcode')
 conflicts=('pcb2gcode')
-source=("$_pkgname"::'git://github.com/pcb2gcode/pcb2gcode.git')
+source=("$_pkgname"::'git+https://github.com/pcb2gcode/pcb2gcode.git')
 md5sums=('SKIP')
 
 pkgver() {
