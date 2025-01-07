@@ -1,8 +1,8 @@
 # Contributor: ordoban <dirk.langer@vvovgonik.de>
 
 pkgname='perl-parse-mime'
-pkgver='1.005'
-pkgrel='2'
+pkgver='1.006'
+pkgrel='1'
 pkgdesc='Parse mime-types, match against media ranges'
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -11,10 +11,10 @@ depends=('perl')
 makedepends=()
 checkdepends=()
 url='https://metacpan.org/pod/Parse::MIME'
-source=('https://cpan.metacpan.org/authors/id/A/AR/ARISTOTLE/Parse-MIME-1.005.tar.gz')
-md5sums=('b767c6eaddaa7402b8810f0ea5c19bc9')
-sha512sums=('e07caf6ada43c24f3db85fa713088214fcd1c8a5fb3dd6e95764291c69060ffc12e3c8053f6950aea1d85bae01bec786ca27172e392d833d6b3335cbc0dd4777')
-_distdir="Parse-MIME-1.005"
+source=("https://cpan.metacpan.org/authors/id/A/AR/ARISTOTLE/Parse-MIME-$pkgver.tar.gz")
+md5sums=('fe7f0542006f17ffa39b11efb561d016')
+sha512sums=('8646668c90649800afa2a4342d8a2993cbb9056aba426238d3b02fb5de4f344e5de4b63a871488dfca116f172ff6c906c20fa4374cb4b169f0f25c2fd92e931f')
+_distdir="Parse-MIME-$pkgver"
 
 build() {
    export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
