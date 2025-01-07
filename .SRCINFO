@@ -1,0 +1,25 @@
+pkgbase = res-downloader
+	pkgdesc = 支持视频号、小程序、抖音、快手、小红书、直播流、酷狗、QQ音乐等常见网络资源!
+	pkgver = 3.0.1
+	pkgrel = 0
+	url = https://github.com/putyy/res-downloader
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = pnpm
+	makedepends = go
+	makedepends = wails
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = webkit2gtk
+	provides = res-downloader
+	conflicts = res-downloader
+	options = !debug
+	options = !strip
+	options = !lto
+	source = res-downloader-3.0.1.tar.gz::https://github.com/putyy/res-downloader/archive/refs/tags/3.0.1.tar.gz
+	sha256sums = 952ba006706972e3464e5da9834c4cc1c04a63ae55823ee3cd4feb3be26e8512
+
+pkgname = res-downloader
