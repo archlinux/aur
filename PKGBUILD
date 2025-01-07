@@ -1,7 +1,9 @@
-# Maintainer: aureolebigben <aureolebigben@gmail.com>
+# Maintainer: luozikuan <luozikuan@gmail.com>
+# Contributor: aureolebigben <aureolebigben@gmail.com>
+# Contributor: Skunnyk <skunnyk@archlinux.fr>
 pkgname=cassandra-cpp-driver
 _pkgname=cpp-driver
-pkgver=2.16.1
+pkgver=2.17.1
 pkgrel=1
 pkgdesc="DataStax C/C++ Driver for Apache Cassandra"
 arch=(i686 x86_64)
@@ -13,7 +15,7 @@ source=("https://codeload.github.com/datastax/${_pkgname}/tar.gz/${pkgver}")
 
 build() {
 	cd "$_pkgname-$pkgver"
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -Wno-error .
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DCMAKE_CXX_FLAGS="-Wno-error" .
 	make
 }
 
@@ -21,4 +23,4 @@ package() {
 	cd "$_pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
-sha256sums=('168d6fe9f3cf61be82cf5817024b92a186d7f944f0d390ed546f521bdabfc32e')
+sha256sums=('53b4123aad59b39f2da0eb0ce7fe0e92559f7bba0770b2e958254f17bffcd7cf')
