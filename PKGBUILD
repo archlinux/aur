@@ -14,7 +14,7 @@ optdepends=(
 )
 source=($pkgname::git+https://github.com/iffse/pay-respects#tag=v$pkgver)
 
-sha1sums=('5c4b54f18522d72cafb2e138c3d90e2bc891aa64')
+sha1sums=('a20366cfd4ee9dcba9496ceec293d04fedb34c07')
 
 prepare() {
 	cd "$pkgname"
