@@ -1,10 +1,10 @@
 pkgbase = nss_wrapper
 	pkgdesc = NSS wrapper library
 	pkgver = 1.1.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cwrap.org/nss_wrapper.html
 	arch = x86_64
-	license = custom:vim
+	license = custom
 	makedepends = git
 	makedepends = cmake
 	depends = glibc

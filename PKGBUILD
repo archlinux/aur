@@ -2,11 +2,11 @@
 
 pkgname=nss_wrapper
 pkgver=1.1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="NSS wrapper library"
 arch=("x86_64")
 url="http://cwrap.org/nss_wrapper.html"
-license=("custom:vim")
+license=("custom")
 makedepends=('git' 'cmake')
 depends=('glibc')
 provides=('nss_wrapper')
