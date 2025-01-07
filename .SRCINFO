@@ -1,6 +1,6 @@
 pkgbase = marimo
 	pkgdesc = A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps
-	pkgver = 0.9.34
+	pkgver = 0.10.9
 	pkgrel = 1
 	url = https://marimo.io/
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = marimo
 	optdepends = python-altair: Plotting in datasource viewer
 	optdepends = python-polars: SQL output back in Python
 	optdepends = python-openai: AI features
-	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.9.34.tar.gz
-	sha256sums = 50968e0906335be54e17873f4ad5893fdf73c970df112e147768ee8fd956084c
+	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.10.9.tar.gz
+	sha256sums = 5a831fc9bbca943f06cb6b1cdff12141954df563e1f1e1153e51b992cca38c67
 
 pkgname = marimo
