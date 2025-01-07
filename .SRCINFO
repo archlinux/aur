@@ -1,12 +1,12 @@
 pkgbase = perl-html-formattext-withlinks
 	pkgdesc = HTML to text conversion with links as footnotes
 	pkgver = 0.15
-	pkgrel = 1
-	url = http://search.cpan.org/dist/HTML-FormatText-WithLinks
+	pkgrel = 2
+	url = https://metacpan.org/release/HTML-FormatText-WithLinks
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl
+	depends = perl-html-formatter>=0
 	depends = perl-html-tree>=0
 	depends = perl-uri>=0
 	options = !emptydirs
@@ -15,4 +15,3 @@ pkgbase = perl-html-formattext-withlinks
 	sha512sums = cdec4ba94c3f9dfd4e9c8b03be0e24068b23b634499bce062e0b281b26ad3a0288c0d4cc35b4db62fd81ad5f0a0f9ce42a59478af10a81ca2f5901ab79cdf550
 
 pkgname = perl-html-formattext-withlinks
-
