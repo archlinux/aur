@@ -13,10 +13,10 @@ pkgbase = pcb2gcode-git
 	depends = gtkmm
 	depends = boost-libs
 	depends = gerbv-git
+	depends = geos
 	provides = pcb2gcode
 	conflicts = pcb2gcode
 	source = pcb2gcode::git://github.com/pcb2gcode/pcb2gcode.git
 	md5sums = SKIP
 
 pkgname = pcb2gcode-git
-
