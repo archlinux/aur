@@ -1,5 +1,4 @@
-*.xz
-*.gz
-pkg
-src
-sftpman
+/pkg
+/src
+/sftpman-rs
+/sftpman-*.pkg*
