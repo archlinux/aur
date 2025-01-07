@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-launch6
-pkgver=6.1.0
-pkgrel=5
+pkgver=6.2.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Run and manage programs and plugins."
@@ -33,7 +33,7 @@ optdepends=(
 )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('ad5356c23b58487f15367a0a60680b3a557b0fb235014e2cb579c49699fc63ed')
+sha256sums=('3d8190d5fccf086e84b9064a327e855fa91299dda9e7b5bcfa416c15facec5ba')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \

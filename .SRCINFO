@@ -1,7 +1,7 @@
 pkgbase = gz-launch6
 	pkgdesc = Run and manage programs and plugins.
-	pkgver = 6.1.0
-	pkgrel = 5
+	pkgver = 6.2.0
+	pkgrel = 1
 	url = https://github.com/gazebosim/gz-launch
 	arch = any
 	license = Apache
@@ -22,7 +22,7 @@ pkgbase = gz-launch6
 	depends = tinyxml2
 	optdepends = libwebsockets: a websocket server for simulation
 	provides = gz-launch=6
-	source = https://github.com/gazebosim/gz-launch/archive/gz-launch6_6.1.0.tar.gz
-	sha256sums = ad5356c23b58487f15367a0a60680b3a557b0fb235014e2cb579c49699fc63ed
+	source = https://github.com/gazebosim/gz-launch/archive/gz-launch6_6.2.0.tar.gz
+	sha256sums = 3d8190d5fccf086e84b9064a327e855fa91299dda9e7b5bcfa416c15facec5ba
 
 pkgname = gz-launch6
