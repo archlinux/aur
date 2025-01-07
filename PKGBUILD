@@ -1,13 +1,14 @@
+# Maintainer: tho <trees@hateorcs.com>
 # Maintainer: Rishabh Das <rdas@tutanota.com>
 pkgname='wmenu-git'
-pkgver=0.1.0
-pkgrel=1
+pkgver=0.1.9+6.ge2542d34ed
+pkgrel=2
 pkgdesc="An efficient dynamic menu for Sway and wlroots based Wayland compositors"
 arch=('x86_64')
-url="https://git.sr.ht/~adnano/wmenu" 
+url="https://codeberg.org/adnano/wmenu/" 
 license=('MIT')
 depends=('cairo' 'pango' 'wayland' 'libxkbcommon')
-makedepends=('git' 'meson' 'ninja' 'scdoc')
+makedepends=('git' 'meson' 'ninja' 'scdoc' 'wayland-protocols')
 provides=('wmenu')
 conflicts=('wmenu')
 source=("git+$url")
