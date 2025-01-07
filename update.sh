@@ -18,6 +18,10 @@ fi
 if [[ "$currentDiscordVersion" != "$latestDiscordVersion" ]]; then
   echo " [*] Updating discord version ${currentDiscordVersion} -> ${latestDiscordVersion}"
 
+  # Clone src/openasar if it doesn't exist
+  mkdir -p "src"
+  test -d "src/openasar" || git clone "https://github.com/goosemod/openasar.git" src/openasar
+
   # Update pkgver
   pushd "src/openasar"
   pkgver=$(printf "%s+%s.%s" "$latestDiscordVersion" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
