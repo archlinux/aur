@@ -1,0 +1,16 @@
+pkgbase = openrgb-plugin-skin-git
+	pkgdesc = Skin plugin for OpenRGB
+	pkgver = 0.9.r6.g882dc49
+	pkgrel = 1
+	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBSkinPlugin
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = qt5-tools
+	depends = openrgb
+	provides = openrgb-plugin-skin
+	conflicts = openrgb-plugin-skin
+	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBSkinPlugin.git
+	sha256sums = SKIP
+
+pkgname = openrgb-plugin-skin-git
