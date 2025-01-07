@@ -2,15 +2,17 @@
 
 pkgname=sftpman-gtk
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="GTK frontend for sftpman (an application for managing and mounting sshfs (SFTP) filesystems)."
 arch=('any')
 url="https://github.com/spantaleev/sftpman-gtk"
 license=('GPL3')
 depends=('gtk3' 'python-gobject' 'sftpman-python>=0.5.0' 'python-setuptools')
 makedepends=('git')
-suggests=('sftpman-iced: GUI frontend for sftpman v2 (rewritten in Rust)')
-optdepends=("openssh-askpass: allows you to enter passwords during mounting [install requires session restart]")
+optdepends=(
+	"openssh-askpass: allows you to enter passwords during mounting [install requires session restart]"
+	"sftpman-iced: GUI frontend for sftpman v2 (rewritten in Rust)"
+)
 install=$pkgname.install
 source=('git+https://github.com/spantaleev/sftpman-gtk.git#tag='$pkgver)
 md5sums=('SKIP')
