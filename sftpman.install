@@ -31,11 +31,3 @@ post_upgrade() {
 		echo "======================"
     fi
 }
-
-pre_remove() {
-	echo "Unmounting any sftpman-mounted filesystems.."
-	# The sleep.d script knows how to unmount sftpman filesystems for all users.
-	# It's usually used during suspend/hibernate.
-	/etc/pm/sleep.d/49-sftpman suspend
-}
-
