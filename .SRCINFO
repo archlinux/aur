@@ -1,6 +1,6 @@
 pkgbase = r-jaspttests
 	pkgdesc = T-Tests Module for JASP
-	pkgver = 0.19.2
+	pkgver = 0.19.3
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspTTests
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-jaspttests
 	depends = r-logspline
 	depends = r-plotrix
 	depends = r-plyr
-	source = jaspTTests_0.19.2.tar.gz::https://github.com/jasp-stats/jaspTTests/archive/refs/tags/v0.19.2.tar.gz
-	sha256sums = 5f374e76f5b7c5cedf7e44bcdebcf7abfaaa5610a3a63dc6dee3c10466d14075
+	source = jaspTTests_0.19.3.tar.gz::https://github.com/jasp-stats/jaspTTests/archive/refs/tags/v0.19.3.tar.gz
+	sha256sums = 47dab9da7566e7ff35a81c61040b0c6db685f0a5faf2620d96b732b869f7cb02
 
 pkgname = r-jaspttests
