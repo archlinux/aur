@@ -1,7 +1,7 @@
 pkgbase = gz-common5
 	pkgdesc = Gazebo Common, a component of Gazebo, provides a set of libraries that cover many different use cases.
-	pkgver = 5.6.0
-	pkgrel = 3
+	pkgver = 5.7.0
+	pkgrel = 1
 	url = https://github.com/gazebosim/gz-common
 	arch = any
 	license = Apache
@@ -19,7 +19,7 @@ pkgbase = gz-common5
 	depends = tinyxml2
 	depends = util-linux-libs
 	provides = gz-common=5
-	source = https://github.com/gazebosim/gz-common/archive/gz-common5_5.6.0.tar.gz
-	sha256sums = 39d02930638c5da35bbdd4925385bfe10180a8166c9c649b8ae67e083a47130e
+	source = https://github.com/gazebosim/gz-common/archive/gz-common5_5.7.0.tar.gz
+	sha256sums = 7ba58963349d9d67ffa91fb6e36bae6d8539dc822b7d05ba0abb237161a7b8d5
 
 pkgname = gz-common5
