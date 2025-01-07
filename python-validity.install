@@ -1,6 +1,4 @@
 post_install() {
-    echo "Updating Firmware..."
-    validity-sensors-firmware || true
     systemctl daemon-reload
     echo "Enabling Services..."
     systemctl enable --now open-fprintd python3-validity python3-validity-suspend-hotfix
@@ -11,11 +9,10 @@ post_install() {
 
 post_upgrade() {
     if (( $(vercmp $2 0.14-4) < 0)); then
-        echo "Updating Firmware..."
-        validity-sensors-firmware || true
         echo "Enabling Services..."
         systemctl enable --now python3-validity-suspend-hotfix
     fi
+    systemctl daemon-reload
 }
 
 pre_remove() {
