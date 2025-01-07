@@ -1,10 +1,10 @@
 # Maintainer: Artem Suprun <efogdev@gmail.com>
 
 pkgname=play-timer
-pkgver=1.6.2
-pkgrel=3
-pkgdesc="Timer app (GUI/CLI) with native DE integration — GNOME, Plasma or any MPRIS compatible setup."
-arch=('x86_64' 'amd64')
+pkgver=2.0.3
+pkgrel=1
+pkgdesc="CLI-friendly easy-to-use timer app with native DE integration."
+arch=('x86_64')
 curarch=$(uname -m)
 url="https://github.com/efogdev/mpris-timer"
 license=('MIT')
@@ -29,6 +29,6 @@ package() {
     "$pkgdir/usr/share/metainfo/$glibname.metainfo.xml"
   install -Dm644 "$srcdir/misc/$glibname.gschema.xml" \
     "$pkgdir/usr/share/glib-2.0/schemas/$glibname.gschema.xml"
-  install -Dm644 "$srcdir//res/icon.svg" \
+  install -Dm644 "$srcdir/res/icon.svg" \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$glibname.svg"
 }
