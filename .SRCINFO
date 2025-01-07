@@ -1,10 +1,19 @@
 pkgbase = trenchbroom-bin
-	pkgdesc = TrenchBroom is a free (GPLv3+), cross platform level editor for Quake-engine based games. This is the Ubuntu Release version of TrenchBroom 2024.1 repackaged for Arch.
-	pkgver = 2024.1
-	pkgrel = 2
+	pkgdesc = TrenchBroom is a free (GPLv3+), cross platform level editor with the main focus on Quake-engine based games. It supports Daikatana, D-DayNormandy, Digital Paintball 2, Half-life, Heretic 2, Hexen 2, Kingpin, Neverball, Quake, Quake 2, Quake 3, Quetoo, and Wrath. For Quake 2 Remaster mappers there is a 3rd party Quake2RE addon https://github.com/eGax/TrenchBroom_xtras_plus/tree/Quake2RE. This is a few commits past the 2024.2 Official release due to some added bug fixes that effected that release that this build fixes. If you always want the bleeding edge TrenchBroom commits you can use the AUR trenchbroom-git entry.
+	pkgver = v2024.2.r26.g1877724f3
+	pkgrel = 1
 	url = https://trenchbroom.github.io/
 	arch = x86_64
 	license = GPL3
+	makedepends = git
+	makedepends = pandoc
+	makedepends = qt6-base
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-svg
+	makedepends = libxcb
+	makedepends = zip
+	makedepends = unzip
 	depends = freeimage
 	depends = freetype2
 	depends = mesa
@@ -16,9 +25,7 @@ pkgbase = trenchbroom-bin
 	depends = tinyxml2
 	provides = trenchbroom
 	conflicts = trenchbroom
-	conflicts = trenchbroom-git
-	noextract = TrenchBroom-Linux-ubuntu-22.04-v2024.1-Release.x86_64.deb
-	source = https://github.com/TrenchBroom/TrenchBroom/releases/download/v2024.1/TrenchBroom-Linux-ubuntu-22.04-v2024.1-Release.x86_64.deb
-	sha256sums = 7e2b59dfcdfc94841d62a29a01581672a47935138f9b21f9faa113fbbf1ca7ce
+	source = trenchbroom::git+https://github.com/TrenchBroom/TrenchBroom.git#branch=4753-2
+	sha1sums = SKIP
 
 pkgname = trenchbroom-bin

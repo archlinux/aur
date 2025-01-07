@@ -1,35 +1,54 @@
-# Maintainer: Retro Gamer <https://github.com/eGax> 
-# Previous Maintainers: Hilton Medeiros & Quentin Aniere
+# Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
+# Contributor: Retro Gamer <https://github.com/eGax>
 
-_pkgname=TrenchBroom
 pkgname=trenchbroom-bin
-pkgver=2024.1
-_pkgver=Linux-ubuntu-22.04-v$pkgver-Release.$CARCH
-pkgrel=2
-pkgdesc="TrenchBroom is a free (GPLv3+), cross platform level editor for Quake-engine based games. This is the Ubuntu Release version of TrenchBroom 2024.1 repackaged for Arch."
+pkgver=v2024.2.r26.g1877724f3
+pkgrel=1
+pkgdesc="TrenchBroom is a free (GPLv3+), cross platform level editor with the main focus on Quake-engine based games.
+It supports Daikatana, D-DayNormandy, Digital Paintball 2, Half-life, Heretic 2, Hexen 2, Kingpin, Neverball, Quake, Quake 2, Quake 3, Quetoo, and Wrath. For Quake 2 Remaster mappers there is a 3rd party Quake2RE addon https://github.com/eGax/TrenchBroom_xtras_plus/tree/Quake2RE.
+This is a few commits past the 2024.2 Official release due to some added bug fixes that effected that release that this build fixes.
+
+If you always want the bleeding edge TrenchBroom commits you can use the AUR trenchbroom-git entry."
 arch=("x86_64")
 url="https://trenchbroom.github.io/"
-license=('GPL3')
-provides=('trenchbroom')
-conflicts=('trenchbroom' 'trenchbroom-git')
+license=("GPL3")
+
+makedepends=("git" "pandoc" "qt6-base" "cmake" "ninja" "qt6-svg" "libxcb" "zip" "unzip")
 depends=("freeimage" "freetype2" "mesa" "libgl" "freeglut" "libxxf86vm" "glew" "glm" "tinyxml2")
-source=("https://github.com/TrenchBroom/TrenchBroom/releases/download/v$pkgver/$_pkgname-$_pkgver.deb")
-noextract=("$_pkgname-$_pkgver.deb")
-sha256sums=('7e2b59dfcdfc94841d62a29a01581672a47935138f9b21f9faa113fbbf1ca7ce')
+conflicts=("trenchbroom")
+provides=("trenchbroom")
+
+source=("trenchbroom::git+https://github.com/TrenchBroom/TrenchBroom.git#branch=4753-2")
+
+sha1sums=('SKIP')
+
+pkgver() {
+  cd "trenchbroom"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-  mkdir -p "$pkgname-$pkgver"
-  mkdir -p "$pkgname-$pkgver-files"
-  bsdtar xvf "$srcdir/$_pkgname-$_pkgver.deb" -C "$pkgname-$pkgver"
-  bsdtar xvf "$pkgname-$pkgver/data.tar.gz" -C "$pkgname-$pkgver-files"
-  # Ubuntu TB2024.1 requires libtinyxml2.so.9 / Arch is on 10, look for a valid symlink of 9, if none, create one from current libtinyxml2.10.0.0
-  if [ ! -e "/usr/lib/libtinyxml2.so.9" ]; then sudo ln -s "/usr/lib/libtinyxml2.so.10.0.0" "/usr/lib/libtinyxml2.so.9"; else echo "complete"; fi
+  cd trenchbroom
+	# cmake requires a CmakeLists.txt from this submodule
+	# -c submodule."lib/BinaryLibs".active=0
+  git -c submodule."lib/freetype/freetype-windows-binaries".active=0 submodule update --init --recursive
+}
+
+_BUILDDIR=build
+
+build() {
+	mkdir -p "$_BUILDDIR"
+	cd "$_BUILDDIR"
+	cmake "$srcdir/trenchbroom" -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="cmake/packages" -DCMAKE_TOOLCHAIN_FILE="vcpkg/scripts/buildsystems/vcpkg.cmake"
+	# we were running into weird xcb errors, which made this necessary to force headless builds
+	# might be useful incase you ARE building on a headless system
+	#QT_QPA_PLATFORM=offscreen cmake --build . --target TrenchBroom
+	cmake --build . --target TrenchBroom
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver-files"
-  install -Dm644 "usr/share/$_pkgname/trenchbroom.desktop" "$pkgdir/usr/share/applications/trenchbroom.desktop"
-  install -Dm644 "usr/share/$_pkgname/icons/icon_512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/trenchbroom.png"
-  cp -rf "." "$pkgdir"
-  rm -f "$pkgdir/usr/share/$_pkgname/trenchbroom.desktop"
+	install -Dm644 "${srcdir}/trenchbroom/app/resources/linux/trenchbroom.desktop" "${pkgdir}/usr/share/applications/trenchbroom.desktop"
+	cd "${srcdir}/$_BUILDDIR"
+	make DESTDIR="${pkgdir}" install
+	install -Dm644 "${srcdir}/trenchbroom/app/resources/linux/icons/icon_256.png" "${pkgdir}/usr/share/pixmaps/trenchbroom.png"
 }
