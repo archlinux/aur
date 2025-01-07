@@ -1,0 +1,6 @@
+#!/bin/sh
+
+: ${QT_IM_MODULE:="fcitx"}
+
+export QT_IM_MODULE
+exec /opt/wechat-appimage/wechat-appimage.AppImage $@
