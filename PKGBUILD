@@ -12,10 +12,9 @@ arch=('x86_64' 'i686')
 url="https://www.librepilot.org"
 _url="https://bitbucket.org/${_pkgname}/${_pkgname}"
 license=('GPL-3.0-or-later')
-depends=('gcc-libs' 'glibc' 'libusb' 'openscenegraph' 'osgearth' 'sdl'
-         'systemd-libs' 'qt6-declarative' 'qt5-declarative' 'qt5-base'
-         'qt5-multimedia' 'qt5-serialport' 'qt5-svg' 'qt5-xmlpatterns')
-         # 'qt5-quick1'
+depends=('gcc-libs' 'glibc' 'libusb' 'openscenegraph' 'osgearth' 'qt5-base'
+         'qt5-declarative' 'qt5-multimedia' 'qt5-serialport' 'qt5-svg'
+         'qt5-xmlpatterns' 'qt6-declarative' 'sdl' 'systemd-libs') # 'qt5-quick1'
 makedepends=('patchelf')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
