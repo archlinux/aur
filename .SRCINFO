@@ -1,6 +1,6 @@
 pkgbase = python-impacket-git
 	pkgdesc = Collection of classes for working with network protocols
-	pkgver = impacket_0_12_0.r1.g65b774de
+	pkgver = impacket_0_12_0.r19.g2d2e5629
 	pkgrel = 1
 	url = https://github.com/fortra/impacket
 	arch = any
@@ -22,8 +22,6 @@ pkgbase = python-impacket-git
 	depends = python-setuptools
 	depends = python-charset-normalizer
 	depends = python-six
-	depends = python-future
-	depends = python-ldapdomaindump
 	provides = impacket
 	conflicts = impacket
 	source = git+https://github.com/SecureAuthCorp/impacket.git
