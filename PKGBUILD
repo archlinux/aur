@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bnlearn
-_pkgver=5.0.1
+_pkgver=5.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-rmpfr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1f0f0b0d13970537d4d470dc8ef7fe52')
-b2sums=('d7e6970d7572cbac9b1e34253b750be03b201f0d594de9daef740602fbcceffd0a9ad54f62a5fcba62085f541312a9c64225bdae88f790c8a3fdb95b6ebcf0cc')
+md5sums=('69c70ea271eaca3162396059e22bdc4b')
+b2sums=('45377d687c42315bf97b574c5615e80493cff7b778c000476797df8031e25521f869fadddef1bcf5535db641d92196c75e7e61b75aed40761917792880e2d0ac')
 
 build() {
   mkdir build
