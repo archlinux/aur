@@ -1,0 +1,18 @@
+pkgbase = nss_wrapper
+	pkgdesc = NSS wrapper library
+	pkgver = 1.1.16
+	pkgrel = 1
+	url = http://cwrap.org/nss_wrapper.html
+	arch = x86_64
+	license = custom:vim
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = nss_wrapper
+	conflicts = libnss-wrapper-bin
+	conflicts = libnss-wrapper
+	conflicts = libnss_wrapper-git
+	source = git+https://git.samba.org/nss_wrapper.git
+	sha256sums = SKIP
+
+pkgname = nss_wrapper
