@@ -1,8 +1,8 @@
 # Maintainer: MYT1 <MYT1 at QQ com>
 pkgname=mailmaster
 pkgver=5.0.2.1011
-epoch=1
-pkgrel=3
+epoch=2
+pkgrel=4
 pkgdesc="专业的全平台邮箱客户端。一封邮件，多端同步。手机、Windows、Mac、Linux、网页端，
 所有平台都能给你出色的体验。"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
     'glibc'
     'libxinerama'
     # aur:
-    'libnss-wrapper-bin' 
+    'nss_wrapper' 
     'additional-base-lib'
 )
 
