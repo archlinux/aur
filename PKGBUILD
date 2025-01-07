@@ -1,22 +1,21 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="wipemychat"
-pkgver=1.1.0
-pkgrel=4
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Delete all your messages in public and private Telegram chats"
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/rusq/${pkgname}"
 license=('GPL-3.0-or-later')
-makedepends=('go')
 depends=('glibc')
+makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e8ac2bd483fc212a951474e6da46216136486c8fe6d8bb1cb7c237ea69502a3c')
+sha256sums=('890a272042104bf927ad6c54fab4eed911dc41136b10ccc68e731082a55cb0bb')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build"
-  go mod download
 }
 
 build() {
@@ -31,7 +30,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENCE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENCE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

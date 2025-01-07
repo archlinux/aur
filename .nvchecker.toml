@@ -1,0 +1,4 @@
+[wipemychat]
+source = "git"
+git = "https://github.com/rusq/wipemychat.git"
+prefix = "v"
