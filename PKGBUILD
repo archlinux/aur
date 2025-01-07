@@ -1,7 +1,7 @@
 # Maintainer: Andrew Lin <andrewlin16 at gmail dot com>
 # Contributor: Simon Thorpe <simon at hivetechnology dot com dot au>
 pkgname=openmpt
-pkgver=1.31.13.00
+pkgver=1.31.14.00
 pkgrel=1
 pkgdesc="Open-source audio module tracker"
 arch=('i686' 'x86_64')
@@ -26,8 +26,8 @@ sha256sums=(
   '602639496997a74fab0914b1cff519dff207524ba0adf516ecc55466a4e83253'
   '44065d91a46203dae1378d6d99e70d882d28f66e3a584236242937856a9a8d56'
 )
-sha256sums_i686=('ddaa8d960be6eae06c46c02383bbfd08facb82b6e1de182ad933be0b0162f529')
-sha256sums_x86_64=('393625bc51d43f7363100692947ea3b723f62523e633d3803edf642d26544888')
+sha256sums_i686=('00db62492bd256c743d68f1b218e6ae83ec340c367ec246d4602733f91128b1c')
+sha256sums_x86_64=('3b1b34822dfba4dd151c460e157173089fee7a12e2448c81ae03e4e734d2effe')
 
 prepare() {
   cd "$srcdir"
