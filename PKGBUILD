@@ -2,10 +2,10 @@
 pkgname=walker-bin
 license=('MIT')
 pkgver=0.11.18
-pkgrel=1
+pkgrel=2
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
-depends=('gtk4-layer-shell' 'libvips')
+depends=('gtk4-layer-shell' 'libvips' 'ffmpeg')
 optdepends=('wl-clipboard: for clipboard module' 'libqalculate: for calculator module')
 source_x86_64=("https://github.com/abenz1267/walker/releases/download/v$pkgver/walker_.${pkgver}_Linux_x86_64.tar.gz")
 arch=('x86_64')
