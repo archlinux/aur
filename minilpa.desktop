@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=MiniLPA
+Exec=/usr/bin/minilpa
+Terminal=false
+Type=Application
+Icon=minilpa
+StartupWMClass=minilpa
+GenericName=LPA Local Profile Manager for eSIMs
+Categories=Utility;TelephonyTools;Java;
+Keywords=esim;euicc;lpa;lpac;
+Comment=MiniLPA allows the management of local profiles on an eSIM, as an UI over lpac.
