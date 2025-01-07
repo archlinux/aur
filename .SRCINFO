@@ -7,7 +7,7 @@ pkgbase = limbo-bin
 	license = MIT
 	provides = limbo
 	conflicts = limbo
-	source_x86_64 = https://github.com/penberg/limbo/releases/download/v0.0.11/limbo-x86_64-unknown-linux-gnu.tar.xz
+	source_x86_64 = limbo-bin-0.0.11.tar.xz::https://github.com/penberg/limbo/releases/download/v0.0.11/limbo-x86_64-unknown-linux-gnu.tar.xz
 	sha256sums_x86_64 = aa75e9a96da753ed04db46cddb1100a9c0c0e2fa46113044b7d078b1cf487968
 
 pkgname = limbo-bin
