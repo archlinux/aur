@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Dottorrent
+Exec=dottorrent-gui
+Comment=
+Terminal=false
+PrefersNonDefaultGPU=false
+Icon=example-torrent
+Type=Application
+Categories=Accessories
+Name[en_US]=Dottorrent
+
