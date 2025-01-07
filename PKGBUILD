@@ -9,7 +9,7 @@ pkgdesc="Google Coral Edge TPU library and headers"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/google-coral/libedgetpu"
 license=('Apache 2.0')
-depends=('libusb' 'flatbuffers' 'abseil-cpp')
+depends=('libusb' 'flatbuffers>=24.3.0' 'flatbuffers<24.4.0' 'abseil-cpp')
 makedepends=('binutils' 'git' 'tar')
 provides=('libedgetpu')
 conflicts=('libedgetpu' 'libedgetpu-std' 'libedgetpu-max')

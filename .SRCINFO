@@ -11,7 +11,8 @@ pkgbase = libedgetpu-git
 	makedepends = git
 	makedepends = tar
 	depends = libusb
-	depends = flatbuffers
+	depends = flatbuffers>=24.3.0
+	depends = flatbuffers<24.4.0
 	depends = abseil-cpp
 	provides = libedgetpu
 	conflicts = libedgetpu
