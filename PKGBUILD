@@ -11,7 +11,7 @@ pkgrel=8
 arch=('i686' 'x86_64')
 url="https://wordnet.princeton.edu/"
 license=("LicenseRef-custom")
-depends=('python' 'tk')
+depends=('python' 'tk' 'bison')
 source=(
   #"https://wordnetcode.princeton.edu/${_srcver}/WordNet-${_srcver}.tar.bz2"
   "http://deb.debian.org/debian/pool/main/w/wordnet/wordnet_${_srcver}-38.debian.tar.xz"

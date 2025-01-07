@@ -7,6 +7,7 @@ pkgbase = wordnet
 	license = LicenseRef-custom
 	depends = python
 	depends = tk
+	depends = bison
 	source = http://deb.debian.org/debian/pool/main/w/wordnet/wordnet_3.0-38.debian.tar.xz
 	source = http://deb.debian.org/debian/pool/main/w/wordnet/wordnet_3.0.orig.tar.gz
 	source = https://wordnetcode.princeton.edu/wn3.1.dict.tar.gz
