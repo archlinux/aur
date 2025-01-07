@@ -2,7 +2,7 @@
 
 pkgname=res-downloader
 pkgver=3.0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="支持视频号、小程序、抖音、快手、小红书、直播流、酷狗、QQ音乐等常见网络资源! "
 arch=($CARCH)
 url="https://github.com/putyy/res-downloader"
@@ -11,6 +11,7 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 # replaces=(${pkgname})
 depends=(
+    ca-certificates-utils
     gdk-pixbuf2
     glib2
     glibc
@@ -40,6 +41,8 @@ build() {
     export GO111MODULE=on
     export GOPROXY=https://goproxy.cn,direct
 
+    sed -i -e 's|/usr/local/share/ca-certificates/|/usr/share/ca-certificates/trust-source/anchors/|g' \
+        -e 's|update-ca-certificates|update-ca-trust|g' core/system_linux.go
     wails build
 }
 
