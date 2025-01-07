@@ -1,0 +1,11 @@
+--- configure	2025-01-07 10:07:25.586204517 +0800
++++ configure_fix	2025-01-07 10:07:13.560447755 +0800
+@@ -21886,7 +21886,7 @@
+ 
+ # Step 6: Extract the major and minor versions from the tcl.h that we found.
+ cat > conftest.awk <<EOF
+-/^# *define *TCL_MAJOR_VERSION[ \t]/ { print \$3 }
++/^# *define *TCL_MAJOR_VERSION[ \t]/ { print \$4 }
+ EOF
+ TCL_MAJOR_VERSION=`${AWK} -f conftest.awk "${TCL_INC_DIR}/tcl.h"`
+ rm -rf conftest*
