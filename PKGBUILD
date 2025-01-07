@@ -6,7 +6,7 @@
 pkgname='python-sphinx-markdown-tables'
 _pkgname="${pkgname##python-}"
 pkgver=0.0.17
-pkgrel=8
+pkgrel=9
 arch=('any')
 license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
 pkgdesc='Sphinx extension for rendering tables written in markdown'
@@ -15,6 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 depends=(
   'python'
   'python-markdown'
+  'python-sphinx'
 )
 makedepends=(
   'python-build'
