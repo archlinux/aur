@@ -2,7 +2,7 @@
 
 pkgname=rusty-psn-bin
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI/CLI tool for downloading PS3 and PS4 game updates"
 provides=("rustypsn")
 arch=('x86_64')
@@ -10,8 +10,8 @@ url="https://github.com/RainbowCookie32/rusty-psn"
 license=("Apache")
 
 source=(
-    "https://github.com/RainbowCookie32/rusty-psn/releases/download/v${pkgver}/rusty-psn-cli-linux.zip"
-    "https://github.com/RainbowCookie32/rusty-psn/releases/download/v${pkgver}/rusty-psn-egui-linux.zip"
+    "${pkgname}-cli-${pkgver}.zip::https://github.com/RainbowCookie32/rusty-psn/releases/download/v${pkgver}/rusty-psn-cli-linux.zip"
+    "${pkgname}-gui-${pkgver}.zip::https://github.com/RainbowCookie32/rusty-psn/releases/download/v${pkgver}/rusty-psn-egui-linux.zip"
     "rusty-psn.desktop"
     "playstation-store.svg"
 )
