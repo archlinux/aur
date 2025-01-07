@@ -1,7 +1,7 @@
 # gd32-isp-console-bin.install
 info() {
     echo -e "It is only for GD32 MCU. please check your device,and make sure BOOT0 is high."
-    echo -e "gd32_isp_console -c --pn /dev/ttyUSB1 --br 57600 --sb 1 -i GD32F450ZKT6 -e --all"
+    echo -e "gd32-isp-cli -c --pn /dev/ttyUSB1 --br 57600 --sb 1 -i GD32F450ZKT6 -e --all"
 }
 post_install() {
     info
