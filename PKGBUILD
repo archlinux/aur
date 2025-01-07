@@ -13,7 +13,7 @@ license=('gplv3')
 options=(!strip)
 
 prepare() {
-  if [ ! -d "/opt/devkitpro/sex" ]; then
+  if [ ! -d "/opt/devkitpro/devkitARM/" ]; then
     echo "devkitARM not installed! HeartLib requires devkitARM to be installed on your system!"
     echo 'https://devkitpro.org/wiki/Getting_Started'
     exit 1
