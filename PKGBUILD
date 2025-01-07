@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspProcess
-_pkgver=0.19.2
+_pkgver=0.19.3
 pkgname=r-${_pkgname,,}
-pkgver=0.19.2
+pkgver=0.19.3
 pkgrel=1
 pkgdesc="Process Module required by JASP"
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
 )
 groups=(r-jasp r-jaspextra)
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('5b49252dde820f75d9b7144828e81b7c6ddbbdad5771a04e73ce3db319332b64')
+sha256sums=('38b4abedecc3d5816fbbb82d66b67d7bca54d1f1fa98b202239fbaacd271cf04')
 
 
 build() {
