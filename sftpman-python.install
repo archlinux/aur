@@ -1,3 +1,7 @@
+# We only ever create this directory and never remove it,
+# because it's not just this package that potentially needs it.
+#
+# Both sftpman and sftpman-iced (as well as this old Python-based sftpman software) may be using it.
 _ensure_mount_path() {
 	mkdir -p -m 775 /mnt/sshfs
 	chown :users /mnt/sshfs
@@ -33,8 +37,4 @@ pre_remove() {
 	# The sleep.d script knows how to unmount sftpman filesystems for all users.
 	# It's usually used during suspend/hibernate.
 	/etc/pm/sleep.d/49-sftpman suspend
-}
-
-post_remove() {
-	rmdir --ignore-fail-on-non-empty /mnt/sshfs
 }
