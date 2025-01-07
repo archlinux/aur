@@ -13,8 +13,8 @@ options=('!lto')
 pkgdesc='A static site generator for audio producers'
 pkgname=faircamp
 pkgrel=1
-pkgver=1.0.0
-sha256sums=('bc26a17aba006b7d2988038ec3bb32e9d4741b384ec74810d0f8be93c4dcdee3')
+pkgver=1.1.0
+sha256sums=('9fb94271d8060a80689e968d906ff486aa54f3aa45165b0c5b4223de8ffc3e3e')
 url='https://simonrepp.com/faircamp'
 
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/simonrepp/faircamp/archive/${pkgver}.tar.gz")
