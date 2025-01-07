@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=mecab-ipadic
 pkgver=2.7.0_20070801
-pkgrel=6
+pkgrel=7
 pkgdesc="IPA dictionary for mecab"
 arch=('any')
 url="https://taku910.github.io/mecab"
@@ -17,9 +17,11 @@ md5sums=('5e33399fd830b3c3f66cd4b5c366c989')
 build() {
   cd "$pkgname/$pkgname"
   ./configure --libexecdir=/usr/lib --prefix=/usr --with-charset=utf-8
-  # change (both) hardcoded mecab installation paths
-  sed -i "s|^MECAB_DICT_INDEX =.*|MECAB_DICT_INDEX = /usr/lib/mecab/mecab-dict-index|" Makefile
-  sed -i "s|^mecab_dict_index =.*|mecab_dict_index = /usr/lib/mecab/mecab-dict-index|" Makefile
+  # change (several) hardcoded mecab installation paths
+  sed -i "s|^MECAB_DICT_INDEX =.*|MECAB_DICT_INDEX = /usr/lib/mecab/mecab-dict-index|g" Makefile
+  sed -i "s|^mecab_dict_index =.*|mecab_dict_index = /usr/lib/mecab/mecab-dict-index|g" Makefile
+  sed -i "s|^MECAB_DICT_INDEX=.*|MECAB_DICT_INDEX=/usr/lib/mecab/mecab-dict-index|g" configure
+  sed -i "s|/usr/libexec|/usr/lib|g" config.status
   make
 }
 
