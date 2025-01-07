@@ -1,6 +1,6 @@
 # Maintainer: alvinshotjuicebo <alvinsh0tjuiceb0x@icloud.com>
 pkgname="hyprsysteminfo"
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A tiny qt6/qml application to display information about the running system"
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=('git' 'cmake' 'gcc')
 source=("https://github.com/hyprwm/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 provides=("hyprsysteminfo")
 conflicts=("${pkgname}-git")
-sha256sums=('a3ee82efa0d40251bf15e052e3c51bcab2f7d43bb77a88e862ff0511c224103e')
+sha256sums=('c0d383487a20bc811a36a17542adf5a91cc877e182504dc4e80ca0f50e890341')
 
 build() {
  	cd "${srcdir}/${pkgname}-${pkgver}"
