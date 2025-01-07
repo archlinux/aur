@@ -1,0 +1,3 @@
+[python-ctranslate2-bin]
+source = "pypi"
+pypi = "ctranslate2"
