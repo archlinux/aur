@@ -1,6 +1,6 @@
 pkgbase = protoc-gen-go-git
 	pkgdesc = Go support for Google's protocol buffers
-	pkgver = 1.35.1.r1.gd340238
+	pkgver = 1.36.2.r1.gad89419
 	pkgrel = 1
 	url = https://github.com/protocolbuffers/protobuf-go
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = protoc-gen-go-git
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	optdepends = protobuf: protoc generator
-	provides = protoc-gen-go=1.35.1
+	depends = protobuf
+	provides = protoc-gen-go=1.36.2
 	conflicts = protoc-gen-go
 	source = protobuf-go::git+https://github.com/protocolbuffers/protobuf-go.git
 	sha256sums = SKIP

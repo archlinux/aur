@@ -3,15 +3,14 @@
 
 _pkgname="protoc-gen-go"
 pkgname="${_pkgname}-git"
-pkgver=1.35.1.r1.gd340238
+pkgver=1.36.2.r1.gad89419
 pkgrel=1
 pkgdesc="Go support for Google's protocol buffers"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/protocolbuffers/protobuf-go"
 license=('BSD-3-Clause')
-depends=('glibc')
+depends=('glibc' 'protobuf')
 makedepends=('git' 'go')
-optdepends=('protobuf: protoc generator')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="protobuf-go"
@@ -19,7 +18,7 @@ source=("${_pkgsrc}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgsrc}"
+  cd "${srcdir}/${_pkgsrc}"
   git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
