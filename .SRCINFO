@@ -1,4 +1,5 @@
 pkgbase = iquecrypt-git
+	pkgdesc = Extracts keys and init vectors from ticket.sys on an iQue Player
 	pkgver = 55a190d
 	pkgrel = 1
 	url = https://github.com/jbop1626/iquecrypt
