@@ -1087,3 +1087,12 @@ Improvements:
 Fixes:
 - An issue that prevented details of a due date slot from being displayed with one click has been rectified.
 - A bug that caused some fields of an event to be erroneously considered editable for non-editable events has been fixed.
+
+
+=== Morgen 3.6.4
+New Features:
+- Morgen's Calendar Propagation workflow, which propagates events from one calendar to another, now supports more customization options out of the box, without the need to write custom code in Nerd mode. For advanced use cases, Nerd mode has been enhanced with improved debugging tools to more easily validate custom logic.
+Fixes:
+- An issue that prevented the synching of entire Outlook and CalDAV calendars triggered by a single malformed event has been rectified. If you experienced this issue, please click on Preferences > Calendars > Resync account after installing this update.
+- We resolved an issue causing high CPU and/or GPU usage due to an animation playing more than necessary.
+- We found an issue with the Microsoft APIs that could prevent the ToDo integration from working properly. We implemented a workaround for this issue.
