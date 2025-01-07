@@ -3,7 +3,7 @@
 # Contributor: Stephanie Wilde-Hobbs <gpg@stephanie.is>
 
 pkgname=go-configure-sw-hub
-_pkgver_major=6.45
+_pkgver_major=6.46
 _pkgver_minor=001
 pkgver=$_pkgver_major.$_pkgver_minor
 
@@ -18,7 +18,7 @@ replaces=('greenpak-designer-dev' 'greenpak-designer')
 options=('!strip')
 
 source=("https://renesasweb-greenpak.s3.us-west-2.amazonaws.com/v${_pkgver_major}/go-configure-sw-hub-v${pkgver}-debian-12-amd64.deb")
-sha256sums=('ee3ef8a1c046e0560ff89946019a9bbb1b330604c18d3a5a17e043472132e576')
+sha256sums=('ab6819404e1ee14e0e1a30ec29e2a02be5f66528500fb210ff33b8cf457de053')
 
 package() {
     # Extract the package data
