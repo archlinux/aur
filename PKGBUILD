@@ -2,10 +2,10 @@
 
 pkgname=play-timer-git
 provides=('play-timer')
-pkgver=1.6.2
-pkgrel=3
-pkgdesc="Timer app (GUI/CLI) with native DE integration — GNOME, Plasma or any MPRIS compatible setup."
-arch=('x86_64' 'amd64')
+pkgver=2.0.3
+pkgrel=1
+pkgdesc="CLI-friendly easy-to-use timer app with native DE integration."
+arch=('x86_64')
 url="https://github.com/efogdev/mpris-timer"
 license=('MIT')
 depends=('glib2' 'gtk3' 'wayland' 'pulse-native-provider')
@@ -19,7 +19,7 @@ build() {
   export GOBIN="$srcdir/.bin"
   export GO111MODULE=on
   cd "$srcdir/$dirname-$pkgver"
-  go build -tags wayland -trimpath -ldflags="-s -w" -o "$GOBIN/play-timer" ./cmd/main.go
+  go build -pgo default.pgo -tags wayland -trimpath -ldflags="-s -w" -o "$GOBIN/play-timer" ./cmd/main.go
 }
 
 package() {
