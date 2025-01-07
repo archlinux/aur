@@ -1,6 +1,6 @@
 pkgbase = crqt-ng
 	pkgdesc = Cross-platform open source e-book reader using crengine-ng.
-	pkgver = 1.0.14
+	pkgver = 1.0.15
 	pkgrel = 2
 	url = https://gitlab.com/coolreader-ng/crqt-ng
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = crqt-ng
 	provides = crqt-ng-git
 	conflicts = coolreader
 	conflicts = crqt-ng-git
-	source = https://gitlab.com/coolreader-ng/crqt-ng/-/archive/1.0.14/crqt-ng-1.0.14.tar.gz
-	sha256sums = e85d842386460ed1c7f51aca3fb355b28f58333c3d12e7ed1538aeaf4134b358
+	source = https://gitlab.com/coolreader-ng/crqt-ng/-/archive/1.0.15/crqt-ng-1.0.15.tar.gz
+	sha256sums = bbcfdece9b72958c3b9d8b894ffcf1e944d39b283d268984774dc32d8c45068d
 
 pkgname = crqt-ng
