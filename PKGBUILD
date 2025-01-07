@@ -4,7 +4,7 @@
 
 pkgname=ticker-bin
 _pkg=ticker
-pkgver=4.7.1
+pkgver=4.8.0
 pkgrel=1
 pkgdesc='Terminal stock ticker with live updates and position tracking'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -19,11 +19,11 @@ source_i686=("$pkgname-$pkgver-i686.tar.gz::$url/releases/download/v$pkgver/$_pk
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkg-$pkgver-linux-arm64.tar.gz")
 source_armv7h=("$pkgname-$pkgver-armv7h.tar.gz::$url/releases/download/v$pkgver/$_pkg-$pkgver-linux-armv6.tar.gz")
 source_armv6h=("$pkgname-$pkgver-armv6h.tar.gz::$url/releases/download/v$pkgver/$_pkg-$pkgver-linux-armv6.tar.gz")
-sha256sums_i686=('76843ace1dfdd85b65afa3571f3269497bda38c2a3d098d89a66df2363ae1f64')
-sha256sums_x86_64=('367da2e60e0cffdad25765dee9ccb1d80aaa3e43822a0f2ce33c206ed9577188')
-sha256sums_armv6h=('030969bd87efbbe84d9e1d192dbc840d6c9cef20878611b3cb0c2f10c6788a12')
-sha256sums_armv7h=('030969bd87efbbe84d9e1d192dbc840d6c9cef20878611b3cb0c2f10c6788a12')
-sha256sums_aarch64=('d18a43dc7915c88622dc475110a02669d4b502674f34aaf3c1964efe8a1bfcb2')
+sha256sums_i686=('f769cc2574426854b8ab57015c8e0bba98e107c687372ab5406acd9676367d43')
+sha256sums_x86_64=('a04fb0458e3a93b026fc577be09645b6095535bfa8f011ddc6a5ec80044d992c')
+sha256sums_armv6h=('3bc8e9724193a8b5c160803e723628f0fc249c903796e2d8458978c4040ccda5')
+sha256sums_armv7h=('3bc8e9724193a8b5c160803e723628f0fc249c903796e2d8458978c4040ccda5')
+sha256sums_aarch64=('d9dcd118af4cf548915ae27566a5548dee31b1096530838281fa9a16d3fcaf6b')
 
 package () {
 	install -Dv "$_pkg" -t "$pkgdir/usr/bin/"
