@@ -1,6 +1,6 @@
 pkgbase = naemon
 	pkgdesc = System and network monitoring application
-	pkgver = 1.4.1
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://www.naemon.io/
 	install = naemon.install
@@ -9,6 +9,7 @@ pkgbase = naemon
 	license = GPL2
 	makedepends = gperf
 	makedepends = help2man
+	makedepends = git
 	depends = icu
 	depends = glib2
 	optdepends = logrotate
@@ -18,13 +19,11 @@ pkgbase = naemon
 	backup = etc/logrotate.d/naemon
 	backup = etc/naemon/naemon.cfg
 	backup = etc/naemon/resource.cfg
-	source = naemon-git::git+https://github.com/naemon/naemon-core.git#commit=b99a43b01f280a9dfaf96c72a75e654b9d5fc4fa
+	source = naemon-git::git+https://github.com/naemon/naemon-core.git#commit=c082729159ba188cc86b1b1298022811c24caa0c
 	source = naemon-tmpfiles.conf
 	source = naemon.service
-	source = 0001_fix-mismatch.patch
 	sha512sums = SKIP
 	sha512sums = 756e61e4da56ce614824c3b289d2ee0f4464bf5bcd868dcadbf31c3320967e0179aa6c5aedc16e4bb40c480ab2da8ab08c43e750168e86963a9cd552db01ea1d
 	sha512sums = 28944f2bd918c0718496ce490d0c2da97a127f71cfb23348620cb6c86fc88e206a07409d32dc8c9a9b5b2d1a8106b400c3e1edf3a6b7aca30ac125a38ebed3b2
-	sha512sums = 7478d6429d436bbdda101a0c2c4e918310fd4a6f94590d8302868e1120853ce66129b3ac55bece88edc7b77c3c5bd6a0ae0451a4ba65771ec45a7b7011890fdd
 
 pkgname = naemon

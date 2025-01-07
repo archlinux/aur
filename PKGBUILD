@@ -1,9 +1,9 @@
-# Maintainer: Immae <ismael.bouya@normalesup.org>
+# Contributor: Immae <ismael.bouya@normalesup.org>
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname=naemon
-pkgver=1.4.1
-_commit=b99a43b01f280a9dfaf96c72a75e654b9d5fc4fa
+pkgver=1.4.3
+_commit=c082729159ba188cc86b1b1298022811c24caa0c
 pkgrel=1
 pkgdesc="System and network monitoring application"
 arch=('i686' 'x86_64')
@@ -14,25 +14,17 @@ optdepends=('logrotate'
             'thruk: Web interface for Naemon'
             'naemon-livestatus: Event broker'
             'monitoring-plugins')
-makedepends=('gperf' 'help2man')
+makedepends=('gperf' 'help2man' 'git')
 source=("naemon-git::git+https://github.com/naemon/naemon-core.git#commit=$_commit"
         $pkgname-tmpfiles.conf
-        $pkgname.service
-        0001_fix-mismatch.patch)
+        $pkgname.service)
 sha512sums=('SKIP'
             '756e61e4da56ce614824c3b289d2ee0f4464bf5bcd868dcadbf31c3320967e0179aa6c5aedc16e4bb40c480ab2da8ab08c43e750168e86963a9cd552db01ea1d'
-            '28944f2bd918c0718496ce490d0c2da97a127f71cfb23348620cb6c86fc88e206a07409d32dc8c9a9b5b2d1a8106b400c3e1edf3a6b7aca30ac125a38ebed3b2'
-            '7478d6429d436bbdda101a0c2c4e918310fd4a6f94590d8302868e1120853ce66129b3ac55bece88edc7b77c3c5bd6a0ae0451a4ba65771ec45a7b7011890fdd')
+	    '28944f2bd918c0718496ce490d0c2da97a127f71cfb23348620cb6c86fc88e206a07409d32dc8c9a9b5b2d1a8106b400c3e1edf3a6b7aca30ac125a38ebed3b2')
 backup=('etc/logrotate.d/naemon'
         'etc/naemon/naemon.cfg'
         'etc/naemon/resource.cfg')
 install=$pkgname.install
-
-
-prepare() {
-  cd "$srcdir/$pkgname-git"
-  patch -Np1 -i "$srcdir"/0001_fix-mismatch.patch
-}
 
 build() {
   cd "$srcdir/$pkgname-git"
