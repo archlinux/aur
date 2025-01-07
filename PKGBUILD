@@ -1,11 +1,12 @@
-# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
-# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # -*- sh -*-
+
+#  Maintainer: Klaus Alexander Seistrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname='python-sphinx-markdown-tables'
 _pkgname="${pkgname##python-}"
 pkgver=0.0.17
-pkgrel=7
+pkgrel=8
 arch=('any')
 license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
 pkgdesc='Sphinx extension for rendering tables written in markdown'
@@ -16,7 +17,6 @@ depends=(
   'python-markdown'
 )
 makedepends=(
-  'debugedit'
   'python-build'
   'python-installer'
   'python-wheel'
@@ -39,7 +39,7 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -vDm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 sha256sums=(
