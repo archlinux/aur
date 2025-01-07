@@ -1,15 +1,15 @@
-# Maintainer: VVL <me@ivvl.ru>
-# Contributor: VVL <me@ivvl.ru>
+# Maintainer: Vladislav Minakov <v@minakov.pro>
+# Contributor: Vladislav Minakov <v@minakov.pro>
 
 pkgname=dehydrated-cloudflare-hook
-pkgver=r80.de5af98
+pkgver=r87.a1e91a7
 pkgrel=1
 pkgdesc="CloudFlare hook for dehydrated"
 arch=(any)
 url="https://github.com/walcony/letsencrypt-cloudflare-hook"
 license=('MIT')
 source=("git+https://github.com/walcony/letsencrypt-cloudflare-hook.git")
-depends=('dehydrated' 'python' 'python-dnspython' 'python-future' 'python-requests' 'python-six' 'python-tld')
+depends=('dehydrated' 'python' 'python-dnspython' 'python-requests' 'python-six' 'python-testresources' 'python-tld')
 makedepends=('git')
 sha256sums=('SKIP')
 pkgver() {
