@@ -1,36 +1,45 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: envolution
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=python-speechrecognition
 _pkg=speechrecognition
-pkgver=3.12.0
-pkgrel=2
+_pkgdir=speech_recognition
+pkgver=3.13.0
+pkgrel=1
 pkgdesc="Google-powered speech recognition for Python"
 arch=('any')
 url="https://github.com/Uberi/speech_recognition"
 license=('MIT')
 depends=('flac' 'python-audioop' 'python-pyaudio' 'python-requests' 'python-standard-aifc')
 optdepends=('pocketsphinx' 'python-vosk' 'python-whisper')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 provides=('python-speech_recognition')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('248b4c585d11b9168708439f026fb2c0fef0d2a5152d18ee8aaf06abffc82032')
-
-prepare() {
-	cd "$_pkg-$pkgver"
-#	sed -i '18,37d;44d' setup.py
-	rm speech_recognition/flac-*
-}
+checkdepends=('python-pocketsphinx')
+source=("git+https://github.com/Uberi/speech_recognition.git#tag=${pkgver}")
+sha256sums=('d562c9cb54fba559076db39659cbe9b49e1f77062706cbbdb7175dab746f6292')
 
 build() {
-	cd "$_pkg-$pkgver"
-	python -m build --wheel --no-isolation
+  cd "$_pkgdir"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  rm -rf test-env
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer "${_pkgdir}/dist/"*.whl
+  test-env/bin/python -m pytest \
+    -k "not test_google_cloud" \
+    --ignore=${_pkgdir}/tests/recognizers/test_google_cloud.py \
+    --ignore=${_pkgdir}/tests/recognizers/test_groq.py \
+    --ignore=${_pkgdir}/tests/test_special_features.py \
+    "${_pkgdir}/tests/" || true
 }
 
 package() {
-	cd "$_pkg-$pkgver"
-	python -m installer --destdir "$pkgdir" dist/*.whl
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -sv "$_site/$_pkg-$pkgver.dist-info/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$_pkgdir"
+  python -m installer --destdir "$pkgdir" dist/*.whl
+  install -Dm644 LICENSE* -t ${pkgdir}/usr/share/doc/$pkgname/
 }
+# vim:set ts=2 sw=2 et:
