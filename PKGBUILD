@@ -24,6 +24,7 @@ package() {
   cp ./build/src/agbplay-gui/agbplay-gui $pkgdir/usr/bin
   cp ./build/src/agbplay-nc/agbplay-nc $pkgdir/usr/bin
 
-  install -Dm644 sappy2006.desktop $pkgdir/usr/share/applications/agbplay-gui.desktop
-  install -Dm644 sappy2006.png $pkgdir/usr/share/pixmaps/agbplay-gui.png
+  cd $srcdir
+  install -Dm644 agbplay-gui.desktop $pkgdir/usr/share/applications/agbplay-gui.desktop
+  install -Dm644 agbplay-gui.png $pkgdir/usr/share/pixmaps/agbplay-gui.png
 }
