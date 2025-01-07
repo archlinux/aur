@@ -13,6 +13,6 @@ pkgbase = chatterino2-bin
 	provides = chatterino
 	conflicts = chatterino
 	source_x86_64 = chatterino2-2.5.2_x64.deb::https://github.com/Chatterino/chatterino2/releases/download/v2.5.2/Chatterino-Ubuntu-22.04.deb
-	sha256sums_x86_64 = 08b4c4ffbe40b26b0e371ae5ded195cbbffef815bfe71abb1601bbcc024531d4
+	sha256sums_x86_64 = 8e812341d719f8c11242fe917f3b7ff611d08c4770094aadb5ebc429e2c1aefd
 
 pkgname = chatterino2-bin
