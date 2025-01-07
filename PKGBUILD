@@ -2,7 +2,7 @@
 
 pkgbase=pdcom
 pkgname=(pdcom python-pdcom)
-pkgver=5.3.1
+pkgver=5.3.2
 pkgrel=1
 pkgdesc="The Data Logging Service (DLS) is a data logging system for EtherLab, that is capable of collecting, compressing and storing high-frequency realtime data. The goal is, to allow the user unlimited and performant access to the stored data."
 arch=($CARCH)
@@ -38,7 +38,7 @@ options=()
 source=(
     "${pkgbase}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${pkgbase}-${pkgver}.tar.gz")
 
-sha256sums=('064c77a6743a550501ad8336e4ae06abb7a2ced8fd10b6c8e81ef84c5b320424')
+sha256sums=('de7b2b4394454cab40cc3665c1614d84fc81da25b7871c77e2accb7ecfd56db1')
 
 build() {
     cd "${srcdir}/${pkgbase}-${pkgver}"
