@@ -4,7 +4,7 @@
 # Contributor: Luna Jernberg <droidbittin@gmail.com>
 
 pkgname=hypnotix
-pkgver=4.8
+pkgver=4.9
 pkgrel=1
 pkgdesc="An IPTV streaming application with support for live TV, movies and series."
 arch=('any')
@@ -26,7 +26,7 @@ depends=(
     'yt-dlp'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('0c20c0c77f1af1c75faf1659dd01a48ecb00cfd58531f78abc8a2b6b6ff8a942')
+sha256sums=('c482202f3f57187be85374927c0d89cba478fa9fa0752dc0b56d261efbe2f0f8')
 
 prepare() {
     cd "$pkgname-$pkgver"
