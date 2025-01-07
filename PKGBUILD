@@ -3,7 +3,7 @@
 
 pkgname="epson-inkjet-printer-201207w"
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Epson inkjet printer driver (L110, L111, L210, L211, L300, L301, L303, L350, L351, L353, L355, L356, L550, L551, L555)"
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -18,12 +18,6 @@ prepare() {
   bsdtar -xzf "${_pkgsrc}.tar.gz"
 }
 
-build() {
-  cd "${srcdir}/${_pkgsrc}"
-  rm -rf "lib"
-  mv -f "lib64" "lib"
-}
-
 package() {
   cd "${srcdir}/${_pkgsrc}"
   install -vDm644 "AUTHORS"       "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
@@ -31,9 +25,13 @@ package() {
   install -vDm644 "README"        "${pkgdir}/usr/share/doc/${pkgname}/README"
   install -vDm644 "COPYING.EPSON" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
-  find "lib" "resource" "watermark" -type f -exec \
+  find "lib64" "resource" "watermark" -type f -exec \
     install -vDm644 "{}" "${pkgdir}/opt/${pkgname}/{}" \;
 
   cd "${srcdir}/${_pkgsrc}/ppds"
   find . -type f -exec install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
+
+  install -d "${pkgdir}/opt/${pkgname}/cups/lib/filter"
+  cd "${pkgdir}/opt/${pkgname}/cups/lib/filter"
+  ln -s '/usr/lib/cups/filter/epson_inkjet_printer_filter' 'epson_inkjet_printer_filter'
 }
