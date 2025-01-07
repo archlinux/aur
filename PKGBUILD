@@ -4,7 +4,7 @@ pkgname=('mmseqs2-sse4' 'mmseqs2-avx2')
 _pkgbase=${pkgbase//mm/MM}
 pkgver=16.747c6
 _pkgver=16-747c6
-pkgrel=1
+pkgrel=3
 pkgdesc="ultra fast and sensitive search and clustering suite. https://doi.org/10.1038/nbt.3988"
 arch=('x86_64')
 url="https://github.com/soedinglab/mmseqs2"
@@ -57,8 +57,8 @@ package_mmseqs2-sse4() {
   cd $_pkgbase-$_pkgver
   DESTDIR="$pkgdir" cmake --install build1
   cd util
-  install -Dm755 bash-completion.sh "${pkgdir}"/etc/profile.d/mmseqs2-completion.sh
-  install -Dm755 format_substitution_matrix.R ${pkgdir}/usr/share/${pkgbase}/format_substitution_matrix.R
+  install -Dm644 bash-completion.sh "${pkgdir}"/etc/profile.d/mmseqs2-completion.sh
+  install -Dm644 format_substitution_matrix.R ${pkgdir}/usr/share/${pkgbase}/format_substitution_matrix.R
   rm -rf "${pkgdir}"/usr/util
 }
 
@@ -71,7 +71,7 @@ package_mmseqs2-avx2() {
   cd $_pkgbase-$_pkgver
   DESTDIR="$pkgdir" cmake --install build2
   cd util
-  install -Dm755 bash-completion.sh "${pkgdir}"/etc/profile.d/mmseqs2-completion.sh
-  install -Dm755 format_substitution_matrix.R ${pkgdir}/usr/share/${pkgbase}/format_substitution_matrix.R
+  install -Dm644 bash-completion.sh "${pkgdir}"/etc/profile.d/mmseqs2-completion.sh
+  install -Dm644 format_substitution_matrix.R ${pkgdir}/usr/share/${pkgbase}/format_substitution_matrix.R
   rm -rf "${pkgdir}"/usr/util
 }
