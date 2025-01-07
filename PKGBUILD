@@ -2,18 +2,18 @@
 _base=skimpy
 pkgname=python-${_base}
 pkgdesc="A light weight tool for creating summary statistics from dataframes"
-pkgver=0.0.17
+pkgver=0.0.18
 pkgrel=1
 arch=(any)
 url="https://github.com/aeturrell/${_base}"
 license=(MIT)
-depends=(python-click python-rich python-pandas python-pygments python-ipykernel python-numpy)
+depends=(python-click python-ipykernel python-pandas-stubs
+  python-pandas python-pygments python-rich python-typeguard)
 makedepends=(python-build python-installer python-poetry-core)
-checkdepends=(python-pytest python-typeguard python-polars python-pyarrow)
-optdepends=('python-polars: for polars data frame support'
-  'python-pyarrow: for columnar memory support')
+checkdepends=(python-pytest python-polars)
+optdepends=('python-polars: for polars data frame support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('1080f86a55458ad8f3844a797bde050c6ef6cbfc5fdf2b1cee1c786bb57df24c223853d417ab756487467c3be4ebb7056d1c16a593ba19589d33578e8cf2bc62')
+sha512sums=('6c2fd0dc985909258593f7cf00926cea5ac6b619558cd777028d9f36230ba3172556c06116e1240713162288dd9322772d640736bd59e4745c949e2f227c4ac4')
 
 build() {
   cd ${_base}-${pkgver}
@@ -30,4 +30,5 @@ check() {
 package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
