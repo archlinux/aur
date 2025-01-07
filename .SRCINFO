@@ -1,7 +1,7 @@
 pkgbase = benben
 	pkgdesc = Multi-format, fast and efficient command line audio player and audio converter
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://chiselapp.com/user/MistressRemilia/repository/benben
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -10,6 +10,8 @@ pkgbase = benben
 	makedepends = fossil
 	makedepends = shards
 	makedepends = tcl
+	makedepends = python-docutils
+	makedepends = texinfo
 	depends = libsidplayfp
 	depends = slang
 	depends = libxmp
