@@ -25,10 +25,10 @@ help:
 	@exit 0
 
 clean:
-	rm -fr pkg src $(NAME)-*.{log,zst}*
+	rm -fr logpipe* pkg src $(NAME)-*.{log,zst}*
 
 mrproper:	clean
-	rm -f pkg src $(NAME)-*.gz
+	rm -f $(NAME)-*.gz
 
 geninteg:
 	sed '/^b2sums=/,/)$$/d' PKGBUILD >.tmp
