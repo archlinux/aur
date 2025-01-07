@@ -1,7 +1,7 @@
 pkgbase = beancount
 	pkgdesc = Double-Entry Accounting from Text Files
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://furius.ca/beancount/
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = beancount
 	makedepends = python-wheel
 	makedepends = meson-python
 	depends = python
+	depends = python-click
 	depends = python-dateutil
 	depends = python-regex
 	conflicts = beancount-hg
