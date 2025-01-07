@@ -1,7 +1,7 @@
 pkgbase = next-rust-release-date
 	pkgdesc = When&#x27;s the next Rust release?
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://crates.io/crates/next-rust-release-date
 	arch = aarch64
 	arch = i686
