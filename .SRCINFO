@@ -1,7 +1,8 @@
 pkgbase = ovpn-dco-dkms-git
 	pkgdesc = Optional Data Channel Offload kernel module for OpenVPN 3
-	pkgver = 0.20230327.r477.git961c60d
+	pkgver = 0.2.20241216.r0.gita08b2fd
 	pkgrel = 1
+	epoch = 0
 	url = https://github.com/OpenVPN/ovpn-dco
 	arch = any
 	license = GPL2
