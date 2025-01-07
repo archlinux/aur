@@ -1,6 +1,6 @@
 pkgbase = guile-ini
 	pkgdesc = A GNU Guile library for working with INI format
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://github.com/artyom-poptsov/guile-ini
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = guile-ini
 	depends = guile
 	depends = guile-lib
 	depends = guile-smc
-	source = https://github.com/artyom-poptsov/guile-ini/archive/v0.5.4/guile-ini-0.5.4.tar.gz
-	sha256sums = 68f7774ad214564caff1955c17ff506f897b3f555e89b942a31e6f64f3c85d87
+	source = https://github.com/artyom-poptsov/guile-ini/archive/v0.5.5/guile-ini-0.5.5.tar.gz
+	sha256sums = a7eeb0cde2364cc4483bd3ba01c669952d024bfe4a63e809baf7f93fc40cf758
 
 pkgname = guile-ini
