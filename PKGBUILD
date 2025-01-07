@@ -30,9 +30,9 @@ prepare() {
 }
 
 build() {
-	cd "${_pkgname}"
+  cd "${_pkgname}"
 
-	make ENABLE_HTTPS_PROXY=true DISABLE_SHADOWSOCKS=true
+  make ENABLE_HTTPS_PROXY=true DISABLE_SHADOWSOCKS=true
 }
 
 package() {
