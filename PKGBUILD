@@ -2,7 +2,7 @@
 
 pkgname=discord-electron-openasar
 _pkgname=discord
-pkgver=0.0.78+832
+pkgver=0.0.79+832
 _pkgver=${pkgver%%+*}
 pkgrel=1
 _electronver=33
