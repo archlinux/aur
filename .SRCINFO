@@ -1,0 +1,15 @@
+pkgbase = cc3dsfs-bin
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Lorenzooone/cc3dsfs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	conflicts = libftd3xx
+	conflicts = cc3dsfs
+	source_x86_64 = cc3dsfs-1.2.0-x86_64.zip::https://github.com/Lorenzooone/cc3dsfs/releases/download/1.2.0/cc3dsfs_linux_x86_64.zip
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = cc3dsfs-1.2.0-arm64.zip::https://github.com/Lorenzooone/cc3dsfs/releases/download/1.2.0/cc3dsfs_linux_arm64.zip
+	sha256sums_aarch64 = SKIP
+
+pkgname = cc3dsfs-bin
