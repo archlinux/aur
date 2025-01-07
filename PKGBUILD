@@ -1,8 +1,7 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-plack-middleware-session'
-pkgver='0.30'
+pkgver='0.34'
 pkgrel='1'
 pkgdesc="Middleware for session management"
 arch=('any')
@@ -12,10 +11,10 @@ depends=('perl-cookie-baker' 'perl-digest-hmac' 'perl-digest-sha1' 'perl-http-co
 makedepends=()
 checkdepends=('perl-test-fatal>=0.006' 'perl-test-requires')
 url='https://metacpan.org/release/Plack-Middleware-Session'
-source=('http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-Middleware-Session-0.30.tar.gz')
-md5sums=('ab0862938cb3141626f0849b035c427a')
-sha512sums=('9de810768096b51e644e2594202b03e681449e8125b74deeeb4363791e22f84498df90b5717495573dea60e907f432f32f8d42c7b335a6c98f8c44df7f96b2e5')
-_distdir="Plack-Middleware-Session-0.30"
+source=('http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-Middleware-Session-0.34.tar.gz')
+md5sums=('77ebd014f7f89979c55f169b3d26c294')
+sha512sums=('8ad53048c887324e3acbac6700c9a5487328b62b722e7a923db7f90ce58cb2312bf332c55904b759afa4750798fc1a8a7bc8384a0eddf4d66bb2a8d92fb9c22f')
+_distdir="Plack-Middleware-Session-0.34"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \

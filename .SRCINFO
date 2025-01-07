@@ -1,6 +1,6 @@
 pkgbase = perl-plack-middleware-session
 	pkgdesc = Middleware for session management
-	pkgver = 0.30
+	pkgver = 0.34
 	pkgrel = 1
 	url = https://metacpan.org/release/Plack-Middleware-Session
 	arch = any
@@ -15,9 +15,8 @@ pkgbase = perl-plack-middleware-session
 	depends = perl-plack>=0.9910
 	depends = perl-libwww
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-Middleware-Session-0.30.tar.gz
-	md5sums = ab0862938cb3141626f0849b035c427a
-	sha512sums = 9de810768096b51e644e2594202b03e681449e8125b74deeeb4363791e22f84498df90b5717495573dea60e907f432f32f8d42c7b335a6c98f8c44df7f96b2e5
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-Middleware-Session-0.34.tar.gz
+	md5sums = 77ebd014f7f89979c55f169b3d26c294
+	sha512sums = 8ad53048c887324e3acbac6700c9a5487328b62b722e7a923db7f90ce58cb2312bf332c55904b759afa4750798fc1a8a7bc8384a0eddf4d66bb2a8d92fb9c22f
 
 pkgname = perl-plack-middleware-session
-
