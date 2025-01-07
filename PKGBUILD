@@ -5,7 +5,7 @@
 
 pkgname=cram
 pkgver=0.7
-pkgrel=4
+pkgrel=5
 pkgdesc="functional testing framework for command line applications"
 arch=('any')
 url="https://bitheap.org/cram/"
@@ -22,7 +22,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 README.rst "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 # vim:set ts=2 sw=2 et:
