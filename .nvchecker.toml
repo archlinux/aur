@@ -1,0 +1,5 @@
+[getparty-bin]
+source = "github"
+github = "vbauerster/getparty"
+use_latest_release = true
+prefix = "v"
