@@ -1,0 +1,25 @@
+post_install() {
+    echo "Updating Firmware..."
+    validity-sensors-firmware || true
+    systemctl daemon-reload
+    echo "Enabling Services..."
+    systemctl enable --now open-fprintd python3-validity python3-validity-suspend-hotfix
+    echo "Reloading Udev Rules..."
+    udevadm control --reload-rules 
+    udevadm trigger
+}
+
+post_upgrade() {
+    if (( $(vercmp $2 0.14-4) < 0)); then
+        echo "Updating Firmware..."
+        validity-sensors-firmware || true
+        echo "Enabling Services..."
+        systemctl enable --now python3-validity-suspend-hotfix
+    fi
+}
+
+pre_remove() {
+    echo "Disabling Services..."
+    systemctl stop python3-validity python3-validity-suspend-hotfix
+    systemctl disable --now python3-validity python3-validity-suspend-hotfix
+}

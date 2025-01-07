@@ -1,7 +1,5 @@
-*
-
-!.gitignore
-!PKGBUILD
-!.SRCINFO
-!*.patch
-!*.diff
+/pkg
+/src
+*.tar.gz
+*.pkg.tar.zst
+*.AppImage
