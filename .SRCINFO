@@ -1,11 +1,12 @@
 pkgbase = agbplay
 	pkgdesc = Music player for the most common GBA sound format
-	pkgver = e685b49
+	pkgver = 7db9434
 	pkgrel = 1
 	url = https://github.com/ipatix/agbplay
 	arch = x86_64
 	arch = i686
 	arch = aarch64
+	license = gplv3
 	makedepends = base-devel
 	depends = boost
 	depends = portaudio
@@ -13,5 +14,6 @@ pkgbase = agbplay
 	depends = libsndfile
 	depends = jsoncpp
 	source = git+https://github.com/ipatix/agbplay
+	md5sums = SKIP
 
-pkgname = agbplay
+pkgname = agbplay-git
