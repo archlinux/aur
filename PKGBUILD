@@ -7,12 +7,16 @@ _pkgver_major=6.46
 _pkgver_minor=001
 pkgver=$_pkgver_major.$_pkgver_minor
 
-pkgrel=1
+pkgrel=2
 pkgdesc="Renesas/Dialog/Silego Go Configure software hub (greenpak designer)"
 arch=('x86_64')
 url="https://www.renesas.com/us/en/software-tool/go-configure-software-hub"
 license=('custom')
-depends=(desktop-file-utils shared-mime-info)
+depends=(
+    desktop-file-utils
+    shared-mime-info
+    graphviz
+)
 conflicts=('greenpak-designer-dev' 'greenpak-designer')
 replaces=('greenpak-designer-dev' 'greenpak-designer')
 options=('!strip')

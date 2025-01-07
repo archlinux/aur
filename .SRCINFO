@@ -1,12 +1,13 @@
 pkgbase = go-configure-sw-hub
 	pkgdesc = Renesas/Dialog/Silego Go Configure software hub (greenpak designer)
 	pkgver = 6.46.001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.renesas.com/us/en/software-tool/go-configure-software-hub
 	arch = x86_64
 	license = custom
 	depends = desktop-file-utils
 	depends = shared-mime-info
+	depends = graphviz
 	conflicts = greenpak-designer-dev
 	conflicts = greenpak-designer
 	replaces = greenpak-designer-dev
