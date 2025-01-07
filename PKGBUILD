@@ -1,6 +1,6 @@
-# Maintainer: 1ridic <i at 8f dot al>
+# Maintainer: Root-Core <aur at root-core dot net>
 pkgname=easylpac
-pkgver=0.7.6.2
+pkgver=0.7.7.2
 pkgrel=1
 pkgdesc="lpac GUI Frontend"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("easylpac")
 source=(
   easylpac-$pkgver.tar.gz::https://github.com/creamlike1024/EasyLPAC/archive/refs/tags/$pkgver.tar.gz
 )
-sha256sums=('09f1016230f1f95e619581e6705140f0191d308e37c1035c448f9ef3c82e67b0')
+sha256sums=('55b602750b7cced00a753c721ad898a88264ff3ddfeff48f80538632c303f019')
 
 build() {
   cd $srcdir/EasyLPAC-$pkgver
@@ -23,7 +23,6 @@ build() {
   sed -i "s/const EUICCDataVersion = \"unknown\"/const EUICCDataVersion = \"$DATE\"/" main.go
   go generate
   go run fyne.io/fyne/v2/cmd/fyne@latest package --icon assets/icon128.png --release
-  
 }
 
 package() {
