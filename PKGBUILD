@@ -4,8 +4,7 @@
 pkgname=trenchbroom-bin
 pkgver=v2024.2.r26.g1877724f3
 pkgrel=1
-pkgdesc="TrenchBroom is a free (GPLv3+), cross platform level editor with the main focus on Quake-engine based games.
-It supports Daikatana, D-DayNormandy, Digital Paintball 2, Half-life, Heretic 2, Hexen 2, Kingpin, Neverball, Quake, Quake 2, Quake 3, Quetoo, and Wrath."
+pkgdesc="TrenchBroom is a free (GPLv3+), cross platform level editor supporting Daikatana, D-DayNormandy, Digital Paintball 2, Half-life, Heretic 2, Hexen 2, Kingpin, Neverball, Quake, Quake 2, Quake 3, Quetoo, and Wrath."
 arch=("x86_64")
 url="https://trenchbroom.github.io/"
 license=("GPL3")
