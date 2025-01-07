@@ -3,7 +3,7 @@
 _pkgbase=curl-impersonate
 pkgbase=${_pkgbase}-lexiforest-bin
 pkgname=("${pkgbase}" "lib${pkgbase}")
-pkgver=0.8.0
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Special build of curl that can impersonate browsers (lexiforest's fork)"
 url="https://github.com/lexiforest/curl-impersonate"
@@ -29,20 +29,20 @@ source_armv7h=(
 )
 
 sha256sums_x86_64=(
-	"0344b24d4dc078ecd98659621ce0bf2b89184f444e1962b85a7a58d3c7bb3cdc"
-	"9df90fd15bb49a1a374eeb56d07018dd89e3d45958efb7166dc8564654cd282d"
+	'49da0fd6c60a2868495ac0bba41e8baa3a42c6f49942b9c96e0672c1af495f45'
+	'0d8370f8735f0ea3a2b84cf4fe682b6983678d6fab3725ff744f0bcd4e8251c5'
 )
 sha256sums_i686=(
-	"36517c47ce0b8b6c95e1313be10199e40720560a89e897db1376c103db90402b"
-	"0caf1a14c456bf85c2409e52933473a46d8b2508dc26f6ebb0337abd14d6b506"
+	'8d9454eb5f6ea86c9f25f030e9322dc59673d25c4ca22f13305ee8eca58d494d'
+	'a8c4bd31d78505f0357ca4e6332d0505555942a4461aa55c0a9691e07e6478f9'
 )
 sha256sums_armv7h=(
-	"7e5d01e277d52a6c064603bbf7a1e45b64267ab9a1bc7ad308c7064552e951e5"
-	"ff53d1f5693978dec3a0a863413819cdb99eaf8a67a8df55f3ca05702c6656f1"
+	'abd5e17be31113287bcac97cd4363de7fb3c33accdbb3f4b60f625a9b60a6ed4'
+	'fd4394babedda31c96de2af93be35179ea72e1d885c886f0cb175fd200794c7b'
 )
 sha256sums_aarch64=(
-	"78757d5607b741b5fa850e411e6b990825420272266d388e15ccb0e067bc2ba9"
-	"d1930207c6f0bdce79963b8dfdfd87189aad2294e200f17d8335a5fc2dbe9ca3"
+	'1d608376aedd58b62d9f6a430da3f18fabfce0fd71d753531dfaef042e0ca0d9'
+	'f1d0623a526ebd474bf7ceea8a4578aa12e15d6d8c677f3017499a0037d02389'
 )
 
 package_libcurl-impersonate-lexiforest-bin() {
