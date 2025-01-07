@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspPredictiveAnalytics
-_pkgver=0.19.2
+_pkgver=0.19.3
 pkgname=r-${_pkgname,,}
-pkgver=0.19.2
+pkgver=0.19.3
 pkgrel=1
 pkgdesc="This module offers analyses for JASP"
 arch=('any')
@@ -27,7 +27,7 @@ depends=(r
 optdepends=(r-testthat)
 groups=(r-jasp r-jaspextra)
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('b9a3f14662edb9aa2cd3e1381bdb85569df0e696c827f4f04117d592863ada85')
+sha256sums=('a89fee3ebd786a9d9e2194f360c1b2f8d9b58f60f1c773b4ffbe5df285aa4c48')
 
 build() {
 
