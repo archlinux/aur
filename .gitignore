@@ -1,4 +1,4 @@
-pytest_subprocess-*.tar.gz
+pytest-subprocess/
 src/
 pkg/
 python-pytest-subprocess-*.pkg.tar*
