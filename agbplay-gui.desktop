@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=agbplay
+Comment=Qt music player for GBA games that use MusicPlayer2000.
+Exec=agbplay-gui
+Icon=agbplay-gui
+Terminal=false
+Categories=AudioVideo;
+MimeType=application/x-gba-rom;
