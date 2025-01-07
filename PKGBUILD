@@ -3,7 +3,7 @@
 pkgname=sftpman
 epoch=1
 pkgver=2.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc='A CLI application for managing and mounting sshfs (SFTP) filesystems'
 url='https://github.com/spantaleev/sftpman-rs'
 license=("GPL-3.0-or-later")
@@ -11,7 +11,7 @@ makedepends=('git' 'cargo')
 depends=('sshfs')
 optdepends=('sftpman-iced: GUI frontend for sftpman v2+')
 conflicts=('sftpman-python')
-replaces=('sftpman')
+replaces=('sftpman-python')
 arch=('any')
 install=$pkgname.install
 source=("git+https://github.com/spantaleev/sftpman-rs.git#tag=v$pkgver")
