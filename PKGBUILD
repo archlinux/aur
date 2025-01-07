@@ -1,5 +1,6 @@
 # Maintainer: Sterophonick
-pkgname=devkitadv
+pkgname=devkitadv-bin
+pkgbase=devkitadv
 _pkgname='devkitadv'
 pkgver=r4linux
 pkgrel=2

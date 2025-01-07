@@ -5,10 +5,13 @@ pkgbase = devkitadv
 	url = https://sourceforge.net/projects/devkitadv/
 	arch = x86_64
 	arch = i686
+	license = nonfree
+	makedepends = p7zip
+	options = !debug
+	options = !strip
 	source = https://master.dl.sourceforge.net/project/devkitadv/Linux/Release%204/devkitadv.tar.bz2
 	source = 10-devkitadv.conf
 	md5sums = 03f107b3decff9238572f90939c4b16b
 	md5sums = 1994d47e35d52f8c55dee5aee78eed9e
 
-pkgname = devkitadv
-
+pkgname = devkitadv-bin
