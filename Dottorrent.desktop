@@ -6,6 +6,6 @@ Terminal=false
 PrefersNonDefaultGPU=false
 Icon=example-torrent
 Type=Application
-Categories=Accessories
+Categories=Utility
 Name[en_US]=Dottorrent
 

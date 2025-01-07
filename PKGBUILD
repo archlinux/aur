@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver::git+https://github.com/kz26/dottorrent-gui#tag=v$pkgv
 		"Dottorrent.desktop")
 sha256sums=('2b9746a4acee9ce01f5169c4337bf0965cc78a5995f3dabc206cd7952b302a7a'
             'd52667485a2ca1cdbbad4895f0ca833e25463a9647c67cc1bd0c676733fb3289'
-            'fd828781a970d0cf699a957eb69f25f5f7f585d6a0609fd35a587d641e323322')
+            'ab28e9fdda418bc03fc2182a9075008a8c21b64612b43f795ad5c2c80c52b6a1')
 
 build() {
 	cd $pkgname-$pkgver
