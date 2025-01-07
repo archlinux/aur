@@ -12,6 +12,7 @@ pkgbase = hyprland-hidpi-xprop-git
 	license = BSD-3-Clause
 	makedepends = cmake
 	makedepends = git
+	makedepends = glaze
 	makedepends = hyprwayland-scanner-git
 	makedepends = python
 	makedepends = xorgproto
