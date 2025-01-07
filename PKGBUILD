@@ -2,11 +2,11 @@
 
 pkgname=sftpman-iced
 epoch=1
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=0
 pkgdesc='A GUI frontend to sftpman (an application for managing and mounting sshfs (SFTP) filesystems)'
 url='https://github.com/spantaleev/sftpman-iced-rs'
-license=("GPL-3.0-or-later")
+license=("AGPL-3.0-or-later")
 makedepends=('git' 'cargo')
 # sftpman-iced requires libsftpman, but pulls it via cargo.
 # There's no runtime dependency on sftpman.
