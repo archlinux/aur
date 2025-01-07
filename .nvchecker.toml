@@ -1,0 +1,8 @@
+[librepilot-bin]
+source = "apt"
+pkg = "librepilot"
+mirror = "https://ppa.launchpadcontent.net/librepilot/next/ubuntu"
+suite = "bionic"
+strip_release = true
+from_pattern = "~"
+to_pattern = "+"
