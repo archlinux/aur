@@ -2,8 +2,8 @@
 
 pkgname=sftpman-iced
 epoch=1
-pkgver=2.0.0
-pkgrel=1
+pkgver=2.0.1
+pkgrel=0
 pkgdesc='A GUI frontend to sftpman (an application for managing and mounting sshfs (SFTP) filesystems)'
 url='https://github.com/spantaleev/sftpman-iced-rs'
 license=("GPL-3.0-or-later")
