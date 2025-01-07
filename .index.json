@@ -1,5 +1,6 @@
 {
-  ".i": 2,
+  ".i": 5,
   "crate": "youtube-tui",
-  "version": "0.8.1"
+  "version": "0.8.1",
+  "pkgrel": 2
 }
