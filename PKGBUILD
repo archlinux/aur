@@ -10,7 +10,7 @@ url="https://github.com/spynetS/ctrisr"
 license=('GPL-2.0')
 groups=()
 depends=()
-makedepends=(gcc)
+makedepends=(gcc,tup)
 checkdepends=()
 optdepends=()
 provides=()
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
     cd ctrisr
-    ./build.sh
+    tup
 }
 
 package() {
