@@ -1,9 +1,10 @@
 # Maintainer: envolution
 # Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
+# shellcheck shell=bash disable=SC2034,SC2154
 pkgname="pa-dlna"
-pkgver=0.14
-pkgrel=2
-pkgdesc="Forwards audio streams to DLNA devices. For PulseAudio or PipeWira (via 'python-libpulse')"
+pkgver=0.15
+pkgrel=1
+pkgdesc="Forwards audio to DLNA devices via PulseAudio or PipeWira (via 'python-libpulse')"
 arch=(
   'any'
 )
@@ -23,7 +24,7 @@ conflicts=(
 )
 depends=(
   'libpulse' # For `parec` executable
-  'python>=3.8'
+  'python'
   'python-psutil'
   'python-libpulse'
 )
@@ -47,7 +48,7 @@ optdepends=(
 source=(
   "git+${url}.git#tag=${pkgver}"
 )
-sha256sums=('1864da0823a42d6a2a2785b7e67386c7fde29d630a1979e1d54dd392504c1cda')
+sha256sums=('3271539db34c76dccfc535462279705d0ea5487cdbe95facdfefd768a092f393')
 
 build() {
   cd "$pkgname"
@@ -59,3 +60,4 @@ package() {
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+# vim:set ts=2 sw=2 et:
