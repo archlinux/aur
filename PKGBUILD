@@ -36,5 +36,5 @@ build() {
 
 package() {
     cd ctrisr
-    install -Dm755 ./ctrisr "$pkgdir/usr/bin/ctrisr"
+    install -Dm755 ./build/ctrisr "$pkgdir/usr/bin/ctrisr"
 }
