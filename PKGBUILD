@@ -2,8 +2,8 @@
 
 pkgname=sftpman-python
 epoch=1
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.3.1
+pkgrel=0
 pkgdesc="A CLI application for managing and mounting sshfs (SFTP) filesystems"
 arch=('any')
 url="https://github.com/spantaleev/sftpman"
