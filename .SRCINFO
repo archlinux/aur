@@ -1,0 +1,16 @@
+pkgbase = openrgb-plugin-razer-extras-git
+	pkgdesc = Razer extras plugin for OpenRGB
+	pkgver = 0.9.r2.g99422e9
+	pkgrel = 1
+	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBRazerExtrasPlugin
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = qt5-tools
+	depends = openrgb
+	provides = openrgb-plugin-razer-extras
+	conflicts = openrgb-plugin-razer-extras
+	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBRazerExtrasPlugin.git
+	sha256sums = SKIP
+
+pkgname = openrgb-plugin-razer-extras-git
