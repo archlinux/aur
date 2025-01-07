@@ -2,7 +2,7 @@
 
 pkgname=joplin-beta-appimage
 pkgver=3.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="The latest beta AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
 url="https://github.com/laurent22/joplin"
@@ -18,7 +18,7 @@ source=(
 sha512sums=('211aff435bb9d493087eb0906d50424d4a4ab740b4ef0a054a34949eb65a49adf45ba4efc1b738fd4d81fc0012d7c7ba1293b36ff3fd213ab64dc6b1323f34dc'
             '2f9d3c5993a0d35c37ca4ae4c638de8009f39aab7d9a5e8721d44abcba21a180bf039a7607954c9ab61ef49ec3e9a4ec96630b60ee16610f6ff4018a1f490edb')
 _filename="Joplin-${pkgver}.AppImage"
-_squashfs_desktop_file="@joplinapp-desktop.desktop"
+_squashfs_desktop_file="joplin.desktop"
 _desktop_file="/usr/share/applications/joplin.desktop"
 _appimage_name=$(echo "${_filename}"|sed -E 's/-[0-9]*.[0-9]*.[0-9]*//')
 _install_path="/opt/appimages/${_appimage_name}"
@@ -27,7 +27,7 @@ package() {
     chmod +x "${_filename}"
     mkdir -p squashfs-root/usr/share/icons/hicolor/{72x72,16x16}/apps
     ./${_filename} --appimage-extract "usr/share/icons/hicolor/*/apps/@joplinapp-desktop.png" > /dev/null 2>&1
-    ./${_filename} --appimage-extract @joplinapp-desktop.desktop > /dev/null 2>&1
+    ./${_filename} --appimage-extract $_squashfs_desktop_file > /dev/null 2>&1
     sed -i -E "s|Exec=AppRun|Exec=${_install_path}|" "squashfs-root/${_squashfs_desktop_file}"
     sed -i -E "s|Icon=joplin|Icon=@joplinapp-desktop|" "squashfs-root/${_squashfs_desktop_file}"
     sed -i -E "s|Comment=Joplin for Desktop|Comment=Joplin beta for Desktop|" "squashfs-root/${_squashfs_desktop_file}"

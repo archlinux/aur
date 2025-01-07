@@ -1,7 +1,7 @@
 pkgbase = joplin-beta-appimage
 	pkgdesc = The latest beta AppImage of Joplin - a cross-platform note taking and to-do app
 	pkgver = 3.2.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/laurent22/joplin
 	arch = x86_64
 	license = MIT
