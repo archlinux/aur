@@ -1,5 +1,6 @@
 {
-  ".i": 2,
+  ".i": 5,
   "crate": "cargo-hf2",
-  "version": "0.3.3"
+  "version": "0.3.3",
+  "pkgrel": 2
 }
