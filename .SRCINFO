@@ -1,6 +1,6 @@
 pkgbase = superfile-bin
 	pkgdesc = Pretty fancy and modern file manager in terminal file manager.Written in Go.(Prebuilt version)
-	pkgver = 1.1.7
+	pkgver = 1.1.7.1
 	pkgrel = 1
 	url = https://github.com/MHNightCat/superfile
 	arch = aarch64
@@ -8,13 +8,13 @@ pkgbase = superfile-bin
 	license = MIT
 	optdepends = perl-archive-zip: Support for zip files, including epub
 	optdepends = perl-io-compress-brotli: Support for brotli-compressed metadata
-	provides = superfile=1.1.7
+	provides = superfile=1.1.7.1
 	conflicts = superfile
-	source = LICENSE-1.1.7::https://raw.githubusercontent.com/MHNightCat/superfile/v1.1.7/LICENSE
+	source = LICENSE-1.1.7.1::https://raw.githubusercontent.com/MHNightCat/superfile/v1.1.7.1/LICENSE
 	sha256sums = 8c20ae0ba48051c642aea028cf0ea6331e49e99a10e57b98bd3e4d8ec0795f1b
-	source_aarch64 = superfile-1.1.7-aarch64.tar.gz::https://github.com/MHNightCat/superfile/releases/download/v1.1.7/superfile-linux-v1.1.7-arm64.tar.gz
-	sha256sums_aarch64 = 647b81e83c9bc77ab0e159dd7af400dc25eb5e62b05adae3b1ddc81bad772004
-	source_x86_64 = superfile-1.1.7-x86-64.tar.gz::https://github.com/MHNightCat/superfile/releases/download/v1.1.7/superfile-linux-v1.1.7-amd64.tar.gz
-	sha256sums_x86_64 = a92685735416f3c5c95790d9433816d1f33d8330548d2a6ec4801988a026adbc
+	source_aarch64 = superfile-1.1.7.1-aarch64.tar.gz::https://github.com/MHNightCat/superfile/releases/download/v1.1.7.1/superfile-linux-v1.1.7.1-arm64.tar.gz
+	sha256sums_aarch64 = 7b4ede02682a3629a79686a4af1fa34543589dd7aba9344d9063be7062a2c173
+	source_x86_64 = superfile-1.1.7.1-x86-64.tar.gz::https://github.com/MHNightCat/superfile/releases/download/v1.1.7.1/superfile-linux-v1.1.7.1-amd64.tar.gz
+	sha256sums_x86_64 = 9358af4dcb3b2365c9dcb4d8c4f98a2bda30ffff1b1872dbd8b3692de752e437
 
 pkgname = superfile-bin
