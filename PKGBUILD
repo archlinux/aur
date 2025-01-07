@@ -13,7 +13,7 @@ md5sums=('SKIP' 'SKIP')
 license=('None')
 
 prepare() {
-  if [ ! -d "/opt/devkitpro/devkitARM" ]; then
+  if [ ! -d "/opt/devkitpro/devkitARM/" ]; then
     echo "devkitARM not installed! gba-auto-batteryless-patcher requires devkitARM to be installed on your system!"
     echo 'https://devkitpro.org/wiki/Getting_Started'
     exit 1
