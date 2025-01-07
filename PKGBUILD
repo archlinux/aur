@@ -16,7 +16,7 @@ depends=('flac' 'python-audioop' 'python-pyaudio' 'python-requests' 'python-stan
 optdepends=('pocketsphinx' 'python-vosk' 'python-whisper')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 provides=('python-speech_recognition')
-checkdepends=('python-pocketsphinx')
+checkdepends=('python-pocketsphinx' 'python-pytest')
 source=("git+https://github.com/Uberi/speech_recognition.git#tag=${pkgver}")
 sha256sums=('d562c9cb54fba559076db39659cbe9b49e1f77062706cbbdb7175dab746f6292')
 
@@ -40,6 +40,6 @@ check() {
 package() {
   cd "$_pkgdir"
   python -m installer --destdir "$pkgdir" dist/*.whl
-  install -Dm644 LICENSE* -t ${pkgdir}/usr/share/doc/$pkgname/
+  install -Dm644 LICENSE* -t ${pkgdir}/usr/share/licenses/$pkgname/
 }
 # vim:set ts=2 sw=2 et:

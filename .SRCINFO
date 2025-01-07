@@ -6,6 +6,7 @@ pkgbase = python-speechrecognition
 	arch = any
 	license = MIT
 	checkdepends = python-pocketsphinx
+	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
