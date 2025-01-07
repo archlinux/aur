@@ -10,6 +10,7 @@ pkgbase = python-wslink
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-aiohttp
+	depends = python-msgpack
 	optdepends = python-cryptography: SSL support
 	optdepends = ipython: jupyter backend support
 	source = wslink-2.2.2.tar.gz::https://github.com/kitware/wslink/archive/v2.2.2.tar.gz

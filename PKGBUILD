@@ -7,7 +7,7 @@ pkgrel=1
 arch=(any)
 url="https://github.com/kitware/${_base}"
 license=(BSD-3-Clause)
-depends=(python-aiohttp)
+depends=(python-aiohttp python-msgpack)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 optdepends=('python-cryptography: SSL support'
   'ipython: jupyter backend support')
