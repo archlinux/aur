@@ -18,11 +18,6 @@ source=("trenchbroom::git+https://github.com/TrenchBroom/TrenchBroom.git#branch=
 
 sha1sums=('SKIP')
 
-pkgver() {
-  cd "trenchbroom"
-  printf "v2024.2.26.g1877724f3"
-}
-
 prepare() {
   cd trenchbroom
 	# cmake requires a CmakeLists.txt from this submodule
