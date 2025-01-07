@@ -1,7 +1,7 @@
-pkgbase = ham-v2.71-linux
+pkgbase = ham-v2.71-linux-bin
 	pkgdesc = Legacy Game Boy Advance development kit based on GCC 3.2.2
 	pkgver = 2.71
-	pkgrel = 4
+	pkgrel = 5
 	url = http://ngine.de
 	arch = x86_64
 	arch = i686
@@ -21,4 +21,4 @@ pkgbase = ham-v2.71-linux
 	md5sums = 300796835173e04a8f8cab11c1f272ac
 	md5sums = a89841ffcfcd14f6d566e9f21ad358cc
 
-pkgname = ham-v2.71-linux
+pkgname = ham-v2.71-linux-bin
