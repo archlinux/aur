@@ -31,7 +31,7 @@ prepare() {
 
 build() {
     cd ctrisr
-    tup
+    tup init && tup
 }
 
 package() {
