@@ -2,19 +2,19 @@
 
 _pkgname="protoc-gen-go"
 pkgname="${_pkgname}-bin"
-pkgver=1.36.1
+pkgver=1.36.2
 pkgrel=1
 pkgdesc="Go support for Google's protocol buffers"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/protocolbuffers/protobuf-go"
 license=('BSD-3-Clause')
-optdepends=('protobuf: protoc generator')
+depends=('protobuf')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("README-${pkgver}.md::${url}/raw/v${pkgver}/README.md"
-        "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE"
-        "PATENTS-${pkgver}::${url}/raw/v${pkgver}/PATENTS")
+source=("README-${pkgver}.md::${url}/raw/refs/tags/v${pkgver}/README.md"
+        "LICENSE-${pkgver}::${url}/raw/refs/tags/v${pkgver}/LICENSE"
+        "PATENTS-${pkgver}::${url}/raw/refs/tags/v${pkgver}/PATENTS")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}.v${pkgver}.linux.amd64.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}.v${pkgver}.linux.arm64.tar.gz")
 source_i686=("${_pkgsrc}-i686.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}.v${pkgver}.linux.386.tar.gz")
