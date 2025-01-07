@@ -1,0 +1,5 @@
+[wipemychat-bin]
+source = "github"
+github = "rusq/wipemychat"
+use_latest_release = true
+prefix = "v"
