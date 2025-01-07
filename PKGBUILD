@@ -18,6 +18,7 @@ depends=(
     'uvicorn'
     'python-starlette'
     'python-websockets'
+    'python-pycrdt'
     'python-docutils'
     'python-psutil'
     'python-itsdangerous'
@@ -31,6 +32,7 @@ optdepends=(
     'python-duckdb: SQL cells support'
     'python-altair: Plotting in datasource viewer'
     'python-polars: SQL output back in Python'
+    'python-sqlglot: SQL cells parsing'
     'python-openai: AI features'
 )
 
