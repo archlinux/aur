@@ -1,43 +1,46 @@
-# Maintainer: nic96 <jeromyreimer at gmail dot com>
+# Maintainer: witt <1989161762 at qq dot com>
 
-PKGEXT=.pkg.tar
 pkgname=shotcut-bin
-pkgver=181008
+pkgver=24.11.17
 pkgrel=1
-pkgdesc="A free, open source, cross-platform video editor."
+pkgdesc="A free, open source(GPLv3), cross-platform (Qt), video editor."
 arch=(x86_64)
 url="https://www.shotcut.org/"
 license=('GPL3')
-depends=('jack' 'libexif' 'desktop-file-utils' 'gstreamer' 'libxslt' 'libwrap')
-provides=('shotcut')
-install="$pkgname.install"
-source=("https://github.com/mltframework/shotcut/releases/download/v${pkgver::2}.${pkgver:2:2}.${pkgver:4:2}/shotcut-linux-x86${CARCH/*86}-$pkgver.tar.bz2"
-       "shotcut.png")
-md5sums=('f3f0d128d4c2bda37d0deb613e8c046a' '457bc6ae5a299dee017521ec058e833b')
-
-
-prepare() {
-  cd Shotcut
-  # fix and modify desktop file
-  sed -i '1d;/Exec/s/sh.*/shotcut-bin/' Shotcut.desktop
-  sed -i 's/Icon=applications-multimedia/Icon=shotcut/g' Shotcut.desktop
-  echo "Categories=Qt;AudioVideo;AudioVideoEditing;" >> Shotcut.desktop
-}
+depends=('qt6-base' 'qt6-declarative' 'qt6-imageformats' 'qt6-multimedia' 'qt6-translations'
+         'mlt' 'movit' 'ffmpeg' 'libx264' 'libvpx' 'lame' 'frei0r-plugins' 'ladspa' 'qt6-charts' 'desktop-file-utils')
+provides=('shotcut' 'shotcut-bin')
+conflicts=("shotcut" "shotcut-git")
+source=("${pkgname}-${pkgver}.txz::https://github.com/mltframework/shotcut/releases/download/v${pkgver}/shotcut-linux-x86_64-${pkgver//./}.txz")
+sha256sums=('a866c0888f8e0580d50d396b670f7d39072277e28c318d48ebc51d400e77bbc5')
 
 package() {
-  cd Shotcut
-
   # bundle
-  install -d "$pkgdir/opt/shotcut"
-  cp -a Shotcut.app/* "$pkgdir/opt/shotcut"
+  install -d "${pkgdir}/opt/shotcut"
+  cp -a "${srcdir}/Shotcut/Shotcut.app/"* "$pkgdir/opt/shotcut/"
 
   # desktop file
-  install -Dm644 Shotcut.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-  
-  # shotcut icon
-  install -Dm644 "$srcdir/shotcut.png" "$pkgdir/usr/share/pixmaps/shotcut.png"
+  install -d "$pkgdir/usr/share/applications"
+  ln -s /opt/shotcut/share/applications/org.shotcut.Shotcut.desktop "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+  ln -s /opt/shotcut/share/applications/org.mattbas.Glaxnimate.desktop "${pkgdir}/usr/share/applications/Glaxnimate.desktop"
 
-  # launcher
+  # binary
   install -d "$pkgdir/usr/bin"
-  ln -s /opt/shotcut/shotcut "$pkgdir/usr/bin/$pkgname"
+  ln -s /opt/shotcut/shotcut "${pkgdir}/usr/bin/${pkgname%-bin}"
+  ln -s /opt/shotcut/glaxnimate "${pkgdir}/usr/bin/glaxnimate"
+
+  # icons
+  find "${pkgdir}/opt/shotcut/share/icons" -type f | while read -r icon_file ; do
+    local icon_src="/opt${icon_file#*/opt}";
+    local icon_target="${pkgdir}/usr/share${icon_file#*/share}";
+    local icon_target_dir=$(dirname "${icon_target}");
+
+    install -dm755 "${icon_target_dir}";
+
+    ln -s "${icon_src}" "${icon_target}"
+  done
+
+  # license
+  install -d "${pkgdir}/usr/share/licenses"
+  ln -s /opt/shotcut/COPYING "${pkgdir}/usr/share/licenses/${pkgname%-bin}"
 }
