@@ -1,14 +1,14 @@
 pkgbase = mocp-themes-git
 	pkgdesc = A collection of themes for the music on console player
-	pkgver = r16.c648a6a
+	pkgver = r18.3578cd9
 	pkgrel = 1
 	url = https://github.com/wimstefan/mocp-themes
 	arch = any
 	license = custom:unknown
+	makedepends = git
 	depends = moc
 	provides = mocp-themes
 	source = mocp-themes::git+https://github.com/wimstefan/mocp-themes
 	sha256sums = SKIP
 
 pkgname = mocp-themes-git
-
