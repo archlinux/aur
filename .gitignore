@@ -1,5 +1,4 @@
-*.xz
-*.gz
-pkg
-src
-sftpman
+/src
+/pkg
+/sftpman-python
+/sftpman-python-*.pkg*
