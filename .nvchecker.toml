@@ -1,0 +1,4 @@
+[chatterino2]
+source = "git"
+git = "https://github.com/Chatterino/chatterino2.git"
+prefix = "v"

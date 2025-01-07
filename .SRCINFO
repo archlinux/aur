@@ -1,7 +1,7 @@
 pkgbase = chatterino2
 	pkgdesc = Second installment of the Twitch chat client series "Chatterino"
-	pkgver = 2.5.1
-	pkgrel = 2
+	pkgver = 2.5.2
+	pkgrel = 1
 	url = https://chatterino.com
 	install = chatterino2.install
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = chatterino2
 	makedepends = git
 	makedepends = qt6-tools
 	makedepends = rapidjson
+	makedepends = websocketpp
 	depends = hicolor-icon-theme
 	depends = openssl
 	depends = qt6-5compat
@@ -25,27 +26,25 @@ pkgbase = chatterino2
 	provides = chatterino
 	conflicts = chatterino
 	options = !lto
-	source = git+https://github.com/Chatterino/chatterino2.git#tag=v2.5.1
-	source = git+https://github.com/Chatterino/libcommuni.git#branch=chatterino-cmake
-	source = git+https://github.com/pajlada/settings.git
-	source = git+https://github.com/pajlada/signals.git
-	source = git+https://github.com/pajlada/serialize.git
-	source = git+https://github.com/zaphoyd/websocketpp.git
-	source = git+https://github.com/Neargye/magic_enum.git
-	source = git+https://github.com/mackron/miniaudio.git
-	source = git+https://github.com/arsenm/sanitizers-cmake.git
-	source = git+https://github.com/lua/lua.git
-	source = git+https://github.com/Chatterino/crash-handler.git
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = git+https://github.com/Chatterino/chatterino2.git#tag=v2.5.2
+	source = git+https://github.com/Chatterino/libcommuni.git#commit=030710ad53dda1541601ccabbad36a12a9e90c78
+	source = git+https://github.com/pajlada/settings.git#tag=v0.2.2
+	source = git+https://github.com/pajlada/signals.git#commit=d06770649a7e83db780865d09c313a876bf0f4eb
+	source = git+https://github.com/pajlada/serialize.git#commit=17946d65a41a72b447da37df6e314cded9650c32
+	source = git+https://github.com/Neargye/magic_enum.git#tag=v0.9.7
+	source = git+https://github.com/mackron/miniaudio.git#tag=0.11.21
+	source = git+https://github.com/ThePhD/sol2.git#tag=v3.3.1
+	source = git+https://github.com/arsenm/sanitizers-cmake.git#commit=9689dd8f05e16deb3f3116916109edf2cce6f29a
+	source = git+https://github.com/lua/lua.git#tag=v5.4.7
+	sha256sums = e514804a96c0badf39c58c6dc89f6ef16cac03586e961e27e116fda808fdecfa
+	sha256sums = c6bcb2b71761349027a20574e70e77d16eacd32438e20dfaeadc7c41fa658f5f
+	sha256sums = d89fdff40577f48a9b8ec67259dbd09e88d92be1054c81118531eaeffa2dc2b4
+	sha256sums = d2c209441de8e5f7043bb5f57f5efb01d9e3affdf3b293d37a8dc236a6d29f06
+	sha256sums = 2720af5b86830c88c3c18f4760ec13fd3135cb57c4052075644d2423ef9a2076
+	sha256sums = 35e3ccee2fe02c2a666680aa00982e1d6593de440b8be04a04d399dd97c3e78c
+	sha256sums = e496eb80ea366a3cf5275479614c302644832f1994fbb109c28d3635d3a7eb79
+	sha256sums = 8bb9a8d32d3ddb6c6aa30daec0c851e7e66758b31cb76c5ba94f334adfc953ba
+	sha256sums = 971b20795b58e27c0f9879fcc3e2a9b578f46d72b25b6f904e7a3149a61f7747
+	sha256sums = 54418e9820f5943c676a8f4be44061c4a9e5e698a5a33c2e856c7b8e1f3735d5
 
 pkgname = chatterino2
