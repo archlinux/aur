@@ -1,8 +1,8 @@
 # Maintainer: Oystein Sture <oysstu at gmail.com>
 
 pkgname=ros2-jazzy-base
-pkgver=2024.09.19
-pkgrel=4
+pkgver=2024.12.23
+pkgrel=1
 _rosdist="Jazzy Jalisco"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -38,7 +38,7 @@ source=(
     "https://github.com/ros2/ros2/archive/release-${_rosdist_short}-${pkgver//.}.tar.gz"
     "ros2-variants-0.11.0.tar.gz::https://github.com/ros2/variants/archive/0.11.0.tar.gz"
 )
-sha256sums=('70dcf5361352acc880220390decacc049f4278ed9c0edeeb430dda0944acc17c'
+sha256sums=('f0bf2fb3988381a35bf28653bb8c0f7cfae3297759b322bad8dccb6b9b45a3c7'
             'e04bf7430ebdc670b4b0ee4722db2966fb1e53d8881e9cb66df6aa381f2448d9')
 
 prepare() {
