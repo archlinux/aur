@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=survPresmooth
-_pkgver=1.1-11
+_pkgver=1.1-12
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Presmoothed Estimation in Survival Analysis"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5ad1dc74295f383c18b8b9d285592c21')
-b2sums=('33fde0607be8ec0437e780a1e1e3141720842640e6bbc2c91fa359df6bda2d1ea5d0b4cd8710fa3c85c99cfd21d6227e4134651997e864cc0ef75cd43c13737e')
+md5sums=('c5a95515225f6aebfd40ae8999dbb34b')
+b2sums=('90cb98bc03eaeb889ee5c6a87b4e7c37d22b8265292bc0b8e74eb5cd8a6e74a6dc8947cb7643e37575309fee58fa5e6e33494494fc491e31b54b80998e4bf634')
 
 build() {
   mkdir build
