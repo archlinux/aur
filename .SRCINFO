@@ -8,7 +8,6 @@ pkgbase = openrgb-plugin-fan-sync-git
 	makedepends = git
 	depends = qt5-tools
 	depends = openrgb
-	depends = openal
 	provides = openrgb-plugin-fan-sync
 	conflicts = openrgb-plugin-fan-sync
 	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBFanSyncPlugin.git
