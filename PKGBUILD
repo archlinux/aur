@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-rendering7
-pkgver=7.4.2
-pkgrel=5
+pkgver=7.5.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="C++ library designed to provide an abstraction for different rendering engines."
@@ -29,7 +29,7 @@ optdepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('b35d41ae611f96bb755aa4dd1f31b389f514220bdae9192d24ba2b17cbcd2def')
+sha256sums=('42e2886c73c56ad1620bebe79cddfb9c29dff74939dfb66faefad61db27fa986')
 
 _build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
 
