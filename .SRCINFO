@@ -1,7 +1,7 @@
 pkgbase = perl-lwp-consolelogger
 	pkgdesc = LWP tracing and debugging
 	pkgver = 1.000001
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/LWP-ConsoleLogger
 	arch = any
 	license = PerlArtistic
@@ -10,6 +10,7 @@ pkgbase = perl-lwp-consolelogger
 	checkdepends = perl-test-fatal>=0
 	checkdepends = perl-test-lwp-useragent>=0
 	checkdepends = perl-test-most>=0
+	checkdepends = perl-mojolicious
 	depends = perl-capture-tiny>=0
 	depends = perl-class-method-modifiers>=0
 	depends = perl-data-printer>=0.36
