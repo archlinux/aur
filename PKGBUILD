@@ -1,7 +1,7 @@
 
 # Maintainer: Alfred Roos alfred@stensatter.se
 pkgname=ctrisr-git
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 epoch=
 pkgdesc="Tetris clone in terminal colorzied"
@@ -10,7 +10,7 @@ url="https://github.com/spynetS/ctrisr"
 license=('GPL-2.0')
 groups=()
 depends=()
-makedepends=(gcc,tup)
+makedepends=(gcc tup)
 checkdepends=()
 optdepends=()
 provides=()
