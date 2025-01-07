@@ -2,16 +2,16 @@
 
 pkgname=gawk-xml
 _project=gawkextlib
-pkgver=1.1.1
-pkgrel=5
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="GAWK extension - interface to Expat for parsing XML"
 arch=('x86_64' 'aarch64')
 url="https://sourceforge.net/projects/gawkextlib/"
 license=('GPL-1.0-or-later AND GPL-3.0-or-later')
 depends=('bash' 'expat' 'gawkextlib' 'glibc')
 source=("https://downloads.sourceforge.net/$_project/$pkgname-$pkgver.tar.gz")
-md5sums=('612ac1eb9745a8da4d37afae769a5ad4')
-sha256sums=('319c03c13f2e23fb399bfbc3de24d140bfc42fce51227212700c1755d41296e4')
+md5sums=('6af9071170051a5d458ccde5a886a471')
+sha256sums=('9ae39935cc5df1aebc805d7c7797c6cf42da5e74e3dfdc35b67ad237f8460f50')
 
 build() {
   cd "$pkgname-$pkgver"
