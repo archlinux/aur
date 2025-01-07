@@ -5,7 +5,7 @@
 
 pkgname="tilt-bin"
 _pkgname="tilt"
-pkgver=0.33.21
+pkgver=0.33.22
 pkgrel=1
 pkgdesc='Local Kubernetes development with no stress'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -17,9 +17,9 @@ conflicts=("$_pkgname")
 source_x86_64=("https://github.com/tilt-dev/tilt/releases/download/v${pkgver}/${_pkgname}.${pkgver}.linux.${CARCH}.tar.gz")
 source_aarch64=("https://github.com/tilt-dev/tilt/releases/download/v${pkgver}/${_pkgname}.${pkgver}.linux.arm64.tar.gz")
 source_armv7h=("https://github.com/tilt-dev/tilt/releases/download/v${pkgver}/${_pkgname}.${pkgver}.linux.arm.tar.gz")
-sha256sums_x86_64=('10696e07eacfee5489f66ed1934b53eddabd3144c36b3533427f528e3a6dce89')
-sha256sums_aarch64=('d76162001028091ca33389ae2f5f3808c8ddcd105204e32d79135494e947fa39')
-sha256sums_armv7h=('c65e281dba46c37e7e04540710b4515453c0cb88c6f2524749d084f429c40668')
+sha256sums_x86_64=('f927dbaf7cabebaa7bc71c111d5f045bf8e46a3f0b97eb8735e4133d30cdc670')
+sha256sums_aarch64=('b79525c30ea319c5fe51ebc3ee408a73467696a444f2985f9f2f569581b44fea')
+sha256sums_armv7h=('b7a9d270d885224188804a1c11bfccd3c736d76eb542822a9859b3470b39fc6f')
 
 package() {
     install -D -m 0644 README.md "$pkgdir/usr/share/doc/tilt/README.md"
