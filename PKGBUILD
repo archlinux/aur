@@ -1,8 +1,8 @@
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 
 pkgname='perl-catalyst-action-renderview'
-pkgver='0.16'
-pkgrel='2'
+pkgver='0.17'
+pkgrel='1'
 pkgdesc="Sensible default end action."
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -10,10 +10,10 @@ options=('!emptydirs')
 depends=('perl-catalyst-runtime' 'perl-data-visitor')
 makedepends=('perl-module-install')
 url='http://search.cpan.org/dist/Catalyst-Action-RenderView'
-source=('http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Action-RenderView-0.16.tar.gz')
-md5sums=('ed0ce5d8e57fef806938bf904862a2cd')
-sha512sums=('eae4fbad6a023a2364de254162e50fddd9fa17f28ba8a5c3fb0f34173d9e18c1189081d76e5d61519d1d398210a4f49b87c6eea11c85cc828f33da4940d5b288')
-_distdir="Catalyst-Action-RenderView-0.16"
+source=('https://cpan.metacpan.org/authors/id/H/HA/HAARG/Catalyst-Action-RenderView-0.17.tar.gz')
+md5sums=('10db546ae9870acd53e43cef21af71ca')
+sha512sums=('d8d8d474dacc528c148ac9402bbf4f6759ac21cf6ce659b5d8ef1f8785812ba970196ad1495c84f5616715d42586d88a41863b89fc428a627c766a4817041b3e')
+_distdir="Catalyst-Action-RenderView-0.17"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
