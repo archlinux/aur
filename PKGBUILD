@@ -1,6 +1,6 @@
 # Maintainer: Lukas Wölfer (domain is thasky) <aur at [domain] dot one>
 pkgname=diaria-git
-pkgver=0.2.3.r0.gd904bf9
+pkgver=0.2.4.r1.g4b23ea1
 pkgrel=1
 pkgdesc='Diary entry manager'
 url='https://github.com/corrodedHash/diaria'
@@ -26,7 +26,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${pkgname}"
 
-  cmake --preset=release-linux -B build/
+  cmake -D BUILD_STATIC_BINARY=OFF --preset=release-linux -B build/
 }
 
 build () {
