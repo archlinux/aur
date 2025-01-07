@@ -7,7 +7,6 @@ currentDiscordVersion="$(pcregrep -o1 '^pkgver=([^+]+)' PKGBUILD)"
 
 latestElectronVersion="$(pacman -qSs electron | pcregrep -o1 '^electron([0-9]{2})' | sort -V | tail -n1)"
 currentElectronVersion="$(pcregrep -o1 '^_electron=([0-9]+)' PKGBUILD)"
-# TODO: Actually do something with the electron version
 
 if [[ "$currentDiscordVersion" = "$latestDiscordVersion" && "$currentElectronVersion" = "$latestElectronVersion" ]]; then
   echo " [*] discord and electron versions are up to date"
