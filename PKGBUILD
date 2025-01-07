@@ -2,7 +2,7 @@
 #Contributor:  	ZorinArch < zorinarch at protonmail dot com >
 
 pkgname=abdownloadmanager-bin
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A Download Manager that speeds up your downloads"
 arch=('x86_64')
@@ -26,7 +26,7 @@ provides=('abdownloadmanager')
 conflicts=('abdownloadmanager')
 options=(!debug)
 source=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux_x64.deb")
-sha256sums=('583828111b3c7fdbae8b4ff58377e05a8c6c478ed341eecd4be8af28f7b6513f')
+sha256sums=('84f0e1e2b54ca7374e934cc06dc07c6f1b0c94c37adcb325460142df853a21e4')
 
 prepare() {
 	bsdtar -xvf "${srcdir}/data.tar.zst" -C "${srcdir}/"
