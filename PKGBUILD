@@ -1,8 +1,9 @@
 # Maintainer: Sterophonick
-pkgname=ham-libhel
+pkgname=ham-libhel-bin
 _pkgname='ham-libhel'
+pkgbase=ham-libhel
 pkgver=v2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Extension library for HAMlib'
 url='http://console-dev.de/project/hel-library-for-gba/'
 arch=(x86_64 i686)
