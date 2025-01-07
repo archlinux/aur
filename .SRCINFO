@@ -1,6 +1,6 @@
 pkgbase = python-tyro
 	pkgdesc = Strongly typed, zero-effort CLI interfaces
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/brentyi/tyro
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-tyro
 	depends = python-shtab
 	depends = python-typeguard
 	depends = python-typing_extensions
-	source = python-tyro-0.9.5.tar.gz::https://github.com/brentyi/tyro/archive/refs/tags/v0.9.5.tar.gz
-	sha256sums = 603394388a0f6240f23bde18b21c98263b9c8afd0e54e8ef70198e874231a13e
+	source = python-tyro-0.9.6.tar.gz::https://github.com/brentyi/tyro/archive/refs/tags/v0.9.6.tar.gz
+	sha256sums = 52cd50f304e99e6042b1c44d7e4facb203243786843184ead58b8460afc1e43f
 
 pkgname = python-tyro
