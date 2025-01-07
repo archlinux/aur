@@ -3,8 +3,8 @@
 
 pkgname=python-markitdown-git
 _pkgname=markitdown
-pkgver=r187+g125e20604
-pkgrel=2
+pkgver=r195+gf58a86495
+pkgrel=1
 pkgdesc="Utility tool for converting various files to Markdown (git)"
 arch=(any)
 url="https://github.com/microsoft/markitdown"
@@ -35,7 +35,9 @@ makedepends=(
   python-hatch
   git
 )
-checkdepends=(python-pytest)
+checkdepends=(python-pytest
+  python-olefile
+)
 source=("git+${url}.git")
 sha256sums=('SKIP')
 provides=("python-${_pkgname}")
@@ -54,8 +56,10 @@ build() {
 }
 
 check() {
-  cd "$_pkgname"
-  python -m pytest tests/ || true #they are modifying tests and many are currently failing
+  rm -rf test-env
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer "${_pkgname}/dist/"*.whl
+  test-env/bin/python -m pytest "${_pkgname}/tests/" || true #they are modifying tests and many are currently failing
 }
 
 package() {
