@@ -1,6 +1,6 @@
 pkgbase = bottles-git
 	pkgdesc = Easily manage wineprefix using environments
-	pkgver = 51.17.r0.g7063d286
+	pkgver = 51.17.r70.g675ad094
 	pkgrel = 1
 	epoch = 2
 	url = https://usebottles.com/
@@ -48,8 +48,6 @@ pkgbase = bottles-git
 	provides = bottles
 	conflicts = bottles
 	source = bottles::git+https://github.com/bottlesdevs/Bottles.git
-	source = dont-care-about-sandbox.patch
 	sha256sums = SKIP
-	sha256sums = 489d16cea77d5acb6c7407c7b0f4f28eb6db478ae2b2a0a951cefde555e44d85
 
 pkgname = bottles-git

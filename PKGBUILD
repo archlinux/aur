@@ -66,7 +66,6 @@ prepare() {
   cd "$srcdir/${pkgname%-git}"
   [ -d build ] && rm -rf build
   mkdir build
-  #  patch -Np1 -i ../dont-care-about-sandbox.patch # this is the OpenSUSE patch Fabio referenced
   #  for now let's try bypass so the sourcecode can change without breaking our patch
   sed -i 's/if not fs.is_file.*$/if false/' bottles/frontend/meson.build
   sed -i '/if not Xdp.Portal.running_under_sandbox()/,/^            return$/s/^/#/' bottles/frontend/windows/window.py
