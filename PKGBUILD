@@ -1,20 +1,39 @@
-# Based on the template by Dave Parrish: https://daveparrish.net/posts/2019-11-07-HowTo-PKGBUILD-for-AppImage.html
+# Maintainer: Pranav Sharma <pranav.sharma.ama@gmail.com>
+# Contributor: nakrule <riedosamuel@gmail.com>
+# Contributor: Laurynas Kerežius <gitlab@kerezius.lt>
+# Contributor: bitdivision <aur@rfwebb.com>
 
-_pkgname=mochi
+# Based on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
+# Based on https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=todoist-appimage
 
-pkgname="${_pkgname}"-appimage
-pkgver=1.17.5
+pkgname=mochi-appimage
+pkgver=1.18.3
 pkgrel=1
 pkgdesc="Flash cards / spaced repetition using markdown"
 arch=('x86_64')
 url="https://mochi.cards"
-license=('custom:Unlicense')
-depends=('zlib' 'hicolor-icon-theme' 'fuse2')
-options=(!strip)
-_appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://mochi.cards/releases/Mochi-${pkgver}.AppImage")
+license=('LicenseRef-MochiTOU')
+depends=(
+    'fuse2'
+    'glibc'
+    'hicolor-icon-theme' 
+    'zlib'
+)
+optdepends=('gearlever: appimage integration')
+options=('!strip' '!debug')
+_appname="Mochi"
+_binname="mochi"
+_appimage="${_appname}-${pkgver}.AppImage"
+
+source=(
+    "https://mochi.cards/releases/${_appimage}"
+    "LICENSE"
+)
+sha512sums=(
+    '09aa076a0715145c5284d815e278752bb06b1b72e37e47f2646ba4db50cef7dc3647dd7dbdb5bbd6767898aed2fcc00a4a863d3a738adbf5ed04b481336f7dea'
+    'SKIP'
+)
 noextract=("${_appimage}")
-sha256sums_x86_64=('8cd1a5c6e98851def1922e0ac97d00e990ddb665c194c43d8b8d4b7c060ef4ed')
 
 prepare() {
     chmod +x "${_appimage}"
@@ -23,19 +42,19 @@ prepare() {
 
 build() {
     # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
-        "squashfs-root/${_pkgname}.desktop"
+    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_binname} %u|"\
+        "squashfs-root/${_binname}.desktop"
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
 }
 
 package() {
     # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appname}.AppImage"
 
     # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop"\
-            "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${_binname}.desktop"\
+            "${pkgdir}/usr/share/applications/${_binname}.desktop"
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/"
@@ -43,5 +62,8 @@ package() {
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -s "/opt/${pkgname}/${_appname}.AppImage" "${pkgdir}/usr/bin/${_binname}"
+
+    # Install LICENSE
+    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
