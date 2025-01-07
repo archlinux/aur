@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=dcmfx
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='CLI and libraries for working with DICOM'
 arch=('x86_64')
 url="https://github.com/$pkgname/$pkgname"
 license=('AGPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e45bffce6fc6461c51f27b36d6a52fddae405994d9f6b00d2b11d01b3739c4a3')
+sha256sums=('4cdeb7a25c2856c54e2592fa8a958640d0c1ac699c109df440e09892fb321768')
 makedepends=('cargo' 'cmake')
 depends=('zlib' 'gcc-libs' 'glibc')
 options=('!lto')
