@@ -2,8 +2,8 @@
 pkgname=gba-auto-batteryless-patcher
 _pkgname='gba-auto-batteryless-patcher'
 pkgver=0.4.1
-pkgrel=1
-pkgdesc='Patches GBA games for saving without an EEPROM for bootleg carts'
+pkgrel=2
+pkgdesc='Tool for Linux that patches GBA games for saving without an EEPROM for bootleg carts'
 url='https://github.com/metroid-maniac/gba-auto-batteryless-patcher'
 arch=(x86_64 i686 aarch64)
 makedepends=(base-devel)
@@ -11,6 +11,14 @@ source=( git+https://github.com/metroid-maniac/gba-auto-batteryless-patcher.git
          git+https://github.com/metroid-maniac/gba-flash-patcher.git )
 md5sums=('SKIP' 'SKIP')
 license=('None')
+
+prepare() {
+  if [ ! -d "/opt/devkitpro/devkitARM" ]; then
+    echo "devkitARM not installed! gba-auto-batteryless-patcher requires devkitARM to be installed on your system!"
+    echo 'https://devkitpro.org/wiki/Getting_Started'
+    exit 1
+  fi
+}
 
 package() {
   mkdir -p $pkgdir/usr/bin
