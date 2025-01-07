@@ -1,0 +1,17 @@
+pkgbase = cloc-git
+	pkgdesc = Count lines of code
+	pkgver = r1174.gcb44139
+	pkgrel = 1
+	url = https://github.com/AlDanial/cloc
+	arch = any
+	license = GPL-2.0-or-later
+	depends = perl
+	depends = perl-algorithm-diff
+	depends = perl-regexp-common
+	depends = perl-parallel-forkmanager
+	provides = cloc
+	conflicts = cloc
+	source = git+https://github.com/AlDanial/cloc.git
+	sha256sums = SKIP
+
+pkgname = cloc-git
