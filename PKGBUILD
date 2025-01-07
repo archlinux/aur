@@ -2,7 +2,7 @@
 # Contributor: Retro Gamer <https://github.com/eGax>
 
 pkgname=trenchbroom-bin
-pkgver=2024.2.r26.g1877724f3
+pkgver=v2024.2.r26.g1877724f3
 pkgrel=2
 pkgdesc="TrenchBroom is a free (GPLv3+), cross platform level editor supporting Daikatana, D-DayNormandy, Digital Paintball 2, Half-life, Heretic 2, Hexen 2, Kingpin, Neverball, Quake, Quake 2, Quake 3, Quetoo, and Wrath."
 arch=("x86_64")
@@ -18,10 +18,10 @@ source=("trenchbroom::git+https://github.com/TrenchBroom/TrenchBroom.git#branch=
 
 sha1sums=('SKIP')
 
-pkgver() {
-  cd "trenchbroom"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+#pkgver() {
+#  cd "trenchbroom"
+#  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+#}
 
 prepare() {
   cd trenchbroom
