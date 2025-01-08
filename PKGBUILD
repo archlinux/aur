@@ -1,7 +1,7 @@
 # Maintainer: hexchain
 
 pkgname=jsonnet-language-server
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='A Language Server Protocol (LSP) server for Jsonnet'
 url='https://github.com/grafana/jsonnet-language-server'
@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/grafana/jsonnet-language-server/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('98d073574dc15fb603cacdc98db4474ec1325e5333a1ae30ef00048cd6fd0aa2f6438f5dfd58e20d35928418f319cf54964be2f735ba604279c90e458858f271')
+sha512sums=('10c994c911d302be3fff8168c1d0f359f3e7fb83500a508f9baa778620b19e29821cdd283db7ab1bc9ee4e2c09011024a2c99df031d41fa90f645cc91cc88090')
 
 prepare() {
     mkdir -p "$srcdir/build"
@@ -27,8 +27,8 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOPATH="$srcdir/build"
-    export GOLDFLAGS="-linkmode=external -s -w"
-    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    export GOLDFLAGS="-compressdwarf=false -linkmode=external"
+    export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
 
     cd "$srcdir/$pkgname-$pkgver"
     go build -v -ldflags="$GOLDFLAGS"
