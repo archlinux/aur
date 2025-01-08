@@ -308,10 +308,6 @@ prepare()
   cd "${srcdir}/${_pkg_name_ident}/"
 
   #patch -p0 < "${startdir}/codelite-fsw-symlink.patch"
-  #patch -p0 < "${startdir}/codelite-linux-on-sigpipe.patch"
-  #patch -p0 < "${startdir}/codelite-DebugAdapterClient-CMakeLists-cxx17.patch"
-  #patch -p0 < "${startdir}/codelite-quickfindbar-focus-tweak.patch"
-  #patch -p0 < "${startdir}/cmake.patch"  # wx-config patch
 
   # dtl-v1.20 cannot compile on gcc >= 14.1.1 and clang >= 17.0.6
   #( cd submodules/dtl && patch -p0 < "${startdir}/dtl-dtl_Diff_hpp.patch" )
@@ -342,7 +338,8 @@ export WX_CONFIG
 mkdir -p "${BUILD_DIR}"
 #cd "${BUILD_DIR}"
 
-cmake -B "${BUILD_DIR}" -S . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DWITH_PCH=0 -DWITH_WX_CONFIG=${WX_CONFIG} -DWITH_NATIVEBOOK=1 -DENABLE_LLDB=1 -DWITH_MYSQL=0 -DCMAKE_INSTALL_LIBDIR=lib
+# -DWITH_NATIVEBOOK=1
+cmake -B "${BUILD_DIR}" -S . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DWITH_PCH=0 -DWITH_WX_CONFIG=${WX_CONFIG} -DENABLE_LLDB=1 -DWITH_MYSQL=0 -DCMAKE_INSTALL_LIBDIR=lib -DCOPY_WX_LIBS=0
 #-DCMAKE_INSTALL_RPATH=/opt/wxgtk-dev/lib
 
 #make -C "${BUILD_DIR}"
