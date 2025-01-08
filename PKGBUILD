@@ -3,7 +3,7 @@
 prj='hestia'
 pkgname=($prj)
 pkgdesc='hestia is a godness protect your root'
-pkgver='0.1.2'
+pkgver='0.1.3'
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/vbextreme/${prj}.git"
