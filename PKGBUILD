@@ -2,7 +2,7 @@
 # Contributor: John Andrews <theunderdog09 at gmail dot com>
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
-pkgver=2025.1
+pkgver=2025.2
 pkgrel=1
 pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_ab_commit}?signed"
         "git+https://github.com/mullvad/wireguard-go.git#commit=${_wg_commit}?signed"
         "git+https://github.com/mullvad/maybenot.git#commit=${_mn_commit}")
-sha256sums=('059cbe68167927d6bf6c5a53eb00db28194fc84ec515e80917de7122acedca3c'
+sha256sums=('3a8220d1724c683d9854118837c4ce12bdb4cfdbe31a09b2ed16bab3a289f761'
             '2f7ff0d5c2c5bab63b9babc6c91d921ef9965413b0b92996be8c9fd5a9c0d862'
             '6e0f55d43fbf016d989ff5571de9c3b8c2f3611e957e807f5ffcbda2c4d274c6'
             '6547c6d7c1d3ffd0b65a025ac5e6f76cd3046059cb10da7f1e99f5e436378bd2')
