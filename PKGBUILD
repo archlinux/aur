@@ -2,7 +2,7 @@
 # Contributor: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=libation
-pkgver=11.6.3
+pkgver=11.6.4
 pkgrel=1
 pkgdesc="Audible audiobook manager: liberate your Library"
 arch=('x86_64')
@@ -11,14 +11,14 @@ license=('GPL-3.0-only')
 depends=('fontconfig' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'lttng-ust2.12')
 makedepends=('dotnet-sdk>=9')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c92d8014d86150fe78b439d8c64a3734a1367e27f0bb49a0ae57277a49598af0')
+sha256sums=('54515c3ef33d18b03904c2007a623dd28668d1a9ad8ddb0acaf96c2d9987074e')
 
 build() {
     cd "${pkgname^}-${pkgver}"
-    dotnet publish Source/LibationCli/LibationCli.csproj -c Release -o build -p:PublishProfile=Source/LibationCli/Properties/PublishProfiles/LinuxProfile.pubxml
-    dotnet publish Source/LibationAvalonia/LibationAvalonia.csproj -c Release -o build -p:PublishProfile=Source/LibationAvalonia/Properties/PublishProfiles/LinuxProfile.pubxml
-    dotnet publish Source/HangoverAvalonia/HangoverAvalonia.csproj -c Release -o build -p:PublishProfile=Source/HangoverAvalonia/Properties/PublishProfiles/LinuxProfile.pubxml
-    dotnet publish Source/LoadByOS/LinuxConfigApp/LinuxConfigApp.csproj -c Release -o build -p:PublishProfile=Source/LoadByOS/LinuxConfigApp/Properties/PublishProfiles/LinuxProfile.pubxml
+    dotnet publish Source/LibationCli/LibationCli.csproj -c Release -o build -r linux-x64 -p:PublishProfile=Source/LibationCli/Properties/PublishProfiles/LinuxProfile.pubxml
+    dotnet publish Source/LibationAvalonia/LibationAvalonia.csproj -c Release -o build -r linux-x64 -p:PublishProfile=Source/LibationAvalonia/Properties/PublishProfiles/LinuxProfile.pubxml
+    dotnet publish Source/HangoverAvalonia/HangoverAvalonia.csproj -c Release -o build -r linux-x64 -p:PublishProfile=Source/HangoverAvalonia/Properties/PublishProfiles/LinuxProfile.pubxml
+    dotnet publish Source/LoadByOS/LinuxConfigApp/LinuxConfigApp.csproj -c Release -o build -r linux-x64 -p:PublishProfile=Source/LoadByOS/LinuxConfigApp/Properties/PublishProfiles/LinuxProfile.pubxml
 }
 
 package() {
