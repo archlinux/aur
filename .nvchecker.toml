@@ -1,0 +1,5 @@
+[python-abjad]
+source = "github"
+github = "Abjad/abjad"
+use_max_tag = true
+prefix = "v"
