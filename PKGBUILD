@@ -2,13 +2,13 @@
 
 pkgname=electron-fiddle-git
 _pkgname=fiddle
-pkgver=r1771.68eaf45
+pkgver=r2073.9eb162c
 pkgrel=1
 pkgdesc="The easiest way to get started with Electron"
 arch=('x86_64')
 url="https://electronjs.org/fiddle"
 license=('MIT')
-depends=('electron')
+depends=('electron33')
 makedepends=('npm' 'git')
 provides=("electron-fiddle")
 conflicts=('electron-fiddle' 'electron-fiddle-bin')
