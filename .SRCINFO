@@ -1,6 +1,6 @@
 pkgbase = julefmt-git
 	pkgdesc = The Jule Programming Language Code Formatter
-	pkgver = 1.r0.ga2dc2be
+	pkgver = 1.r0.gc6149fe
 	pkgrel = 1
 	url = https://github.com/julelang/julefmt
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = julefmt-git
 	arch = i386
 	groups = jule
 	license = BSD-3-Clause
-	makedepends = julec-git
+	makedepends = julec
 	makedepends = git
 	depends = gcc-libs
 	provides = julefmt
