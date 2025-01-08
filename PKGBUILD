@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=bita
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Differential file synchronization over http"
 arch=(x86_64)
@@ -19,7 +19,7 @@ makedepends=(
 )
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ccaf3987e6a2d0489f53ff92833835b288d6acc64b3fc36884234c5d9e061c84')
+sha256sums=('3dcb3577ad38d585cdaa9e832aa24aa078c2f0c686ded70b0b125d021776ae21')
 
 _archive="$pkgname-$pkgver"
 

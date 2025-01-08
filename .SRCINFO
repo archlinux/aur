@@ -1,6 +1,6 @@
 pkgbase = bita
 	pkgdesc = Differential file synchronization over http
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/oll3/bita
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = bita
 	depends = openssl
 	depends = xz
 	options = !lto
-	source = bita-0.12.0.tar.gz::https://github.com/oll3/bita/archive/v0.12.0.tar.gz
-	sha256sums = ccaf3987e6a2d0489f53ff92833835b288d6acc64b3fc36884234c5d9e061c84
+	source = bita-0.13.0.tar.gz::https://github.com/oll3/bita/archive/v0.13.0.tar.gz
+	sha256sums = 3dcb3577ad38d585cdaa9e832aa24aa078c2f0c686ded70b0b125d021776ae21
 
 pkgname = bita
