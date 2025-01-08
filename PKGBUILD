@@ -1,14 +1,14 @@
 pkgname=plask-git
-pkgver=2022.12.12
+pkgver=2022.01.05
 pkgrel=1
 pkgdesc="Photonic LAser Simulation Kit: a comprehensive tool for numerical
 analysis of broad range of physical phenomena in photonic devices"
 url="https://plask.app"
 arch=('x86_64')
 license=('GPL3')
-depends=('boost-libs' 'expat' 'openmp' 'intel-oneapi-mkl' 'lapack' 'qt5-declarative' 'qt5-tools'
+depends=('boost-libs' 'expat' 'fmt' 'openmp' 'intel-oneapi-mkl' 'lapack' 'qt5-declarative' 'qt5-tools'
          'python-numpy' 'python-matplotlib' 'python-lxml' 'python-yaml' 'pyside2' 'libx11')
-makedepends=('git' 'sed' 'gcc' 'cmake' 'eigen' 'boost' 'doxygen' 'python-sphinx')
+makedepends=('git' 'sed' 'gcc' 'cmake' 'eigen' 'boost' 'doxygen' 'python-sphinx' 'fmt')
 optdepends=('python-h5py: for saving results to files'
             'python-scipy: for scientific tools'
             'python-jedi: for Python hints in GUI'
@@ -35,6 +35,8 @@ build() {
         -DINSTALL_PYTHON_PTH=ON \
         -DBLA_VENDOR=Intel10_64_dyn \
         -DZSH_COMPLETIONS_PATH=/usr/share/zsh/site-functions \
+        -DUSE_INTERNAL_FMT=OFF \
+        -DINSTALL_DEV=ON \
         -Wno-dev
     cmake --build build
 }
