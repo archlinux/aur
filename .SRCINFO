@@ -1,6 +1,6 @@
 pkgbase = mesa-amdonly-gaming-git
 	pkgdesc = An open-source implementation of the OpenGL specification
-	pkgver = 25.0.0_devel.197468.dc1fe83aa52.d41d8cd
+	pkgver = 25.0.0_devel.199904.8a55de3338a.d41d8cd
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = x86_64
@@ -120,31 +120,6 @@ pkgname = amdonly-gaming-vulkan-swrast-git
 	conflicts = vulkan-mesa
 	conflicts = vulkan-swrast
 
-pkgname = amdonly-gaming-libva-mesa-driver-git
-	pkgdesc = VA-API drivers
-	depends = expat
-	depends = libdrm
-	depends = libelf
-	depends = libx11
-	depends = libxshmfence
-	depends = llvm-libs
-	depends = zstd
-	provides = libva-driver
-	conflicts = libva-mesa-driver
-
-pkgname = amdonly-gaming-mesa-vdpau-git
-	pkgdesc = VDPAU drivers
-	depends = expat
-	depends = libdrm
-	depends = libelf
-	depends = libx11
-	depends = libxshmfence
-	depends = llvm-libs
-	depends = zstd
-	provides = vdpau-driver
-	provides = mesa-vdpau
-	conflicts = mesa-vdpau
-
 pkgname = amdonly-gaming-mesa-git
 	depends = libdrm
 	depends = libelf
@@ -159,7 +134,11 @@ pkgname = amdonly-gaming-mesa-git
 	depends = zstd
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	provides = mesa
-	provides = mesa-libgl
+	provides = libva-mesa-driver=:25.0.0_devel.199904.8a55de3338a.d41d8cd-1
+	provides = mesa-libgl=:25.0.0_devel.199904.8a55de3338a.d41d8cd-1
+	provides = mesa-vdpau=:25.0.0_devel.199904.8a55de3338a.d41d8cd-1
+	provides = libva-driver
 	provides = opengl-driver
+	provides = vdpau-driver
 	conflicts = mesa
 	conflicts = mesa-libgl

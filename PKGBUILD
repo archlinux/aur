@@ -16,7 +16,7 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=mesa-amdonly-gaming-git
-pkgver=25.0.0_devel.197468.dc1fe83aa52.d41d8cd
+pkgver=25.0.0_devel.199904.8a55de3338a.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 pkgname=(
   'amdonly-gaming-vulkan-mesa-layers-git'
@@ -24,8 +24,6 @@ pkgname=(
   'amdonly-gaming-opencl-rusticl-mesa-git'
   'amdonly-gaming-vulkan-radeon-git'
   'amdonly-gaming-vulkan-swrast-git'
-  'amdonly-gaming-libva-mesa-driver-git'
-  'amdonly-gaming-mesa-vdpau-git'
   'amdonly-gaming-mesa-git'
 )
 pkgrel=1
@@ -128,9 +126,9 @@ build() {
     -D b_ndebug=true
     -D b_lto=false
     -D egl=enabled
-    -D gallium-drivers=radeonsi,llvmpipe,softpipe,zink
+    -D gallium-drivers=radeonsi,softpipe,zink
     -D gallium-extra-hud=true
-    -D gallium-nine=true
+    -D gallium-nine=false
     -D gallium-opencl=icd
     -D gallium-rusticl=true
     -D gallium-va=enabled
@@ -143,7 +141,6 @@ build() {
     -D glx=dri
     -D intel-rt=disabled
     -D libunwind=disabled
-    -D llvm=enabled
     -D lmsensors=enabled
     -D microsoft-clc=disabled
     -D osmesa=true
@@ -162,6 +159,8 @@ build() {
   # Build only minimal debug info to reduce size
   #CFLAGS+=' -g1'
   #CXXFLAGS+=' -g1'
+
+  CFLAGS+=" -march=native "
 
   arch-meson mesa build "${meson_options[@]}"
   meson configure build --no-pager # Print config
@@ -322,47 +321,6 @@ package_amdonly-gaming-vulkan-swrast-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_amdonly-gaming-libva-mesa-driver-git() {
-  pkgdesc="VA-API drivers"
-  depends=(
-    'expat'
-    'libdrm'
-    'libelf'
-    'libx11'
-    'libxshmfence'
-    'llvm-libs'
-    'zstd'
-  )
-  provides=('libva-driver')
-  conflicts=('libva-mesa-driver')
-
-  _install fakeinstall/$_libdir/dri/*_drv_video.so
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
-
-package_amdonly-gaming-mesa-vdpau-git() {
-  pkgdesc="VDPAU drivers"
-  depends=(
-    'expat'
-    'libdrm'
-    'libelf'
-    'libx11'
-    'libxshmfence'
-    'llvm-libs'
-    'zstd'
-  )
-  provides=(
-    'vdpau-driver'
-    'mesa-vdpau'
-  )
-  conflicts=('mesa-vdpau')
-
-  _install fakeinstall/$_libdir/vdpau
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
-
 package_amdonly-gaming-mesa-git() {
   depends=(
     'libdrm'
@@ -381,9 +339,13 @@ package_amdonly-gaming-mesa-git() {
     'opengl-man-pages: for the OpenGL API man pages'
   )
   provides=(
-    'mesa'
-    'mesa-libgl'
-    'opengl-driver'
+    "mesa"
+    "libva-mesa-driver=$epoch:$pkgver-$pkgrel"
+    "mesa-libgl=$epoch:$pkgver-$pkgrel"
+    "mesa-vdpau=$epoch:$pkgver-$pkgrel"
+    "libva-driver"
+    "opengl-driver"
+    "vdpau-driver"
   )
   conflicts=(
     'mesa'
@@ -397,10 +359,15 @@ package_amdonly-gaming-mesa-git() {
   _install fakeinstall/$_libdir/dri/*_dri.so
   _install fakeinstall/$_libdir/gbm/dri_gbm.so*
 
-  _install fakeinstall/$_libdir/d3d
   _install fakeinstall/$_libdir/lib{gbm,glapi}.so*
   _install fakeinstall/$_libdir/libOSMesa.so*
   _install fakeinstall/$_libdir/libgallium*.so*
+
+  # vdpau drivers
+  _install fakeinstall/$_libdir/vdpau/*.so*
+
+  # dri
+  _install fakeinstall/$_libdir/dri/*.so*
 
   # only needed when gallium-xa is enabled
   #_install fakeinstall/$_libdir/libxatracker.so*
