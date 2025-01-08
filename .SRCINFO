@@ -1,13 +1,13 @@
 pkgbase = odoo18-nightly
 	pkgdesc = Odoo. Open Source Apps To Grow Your Business.
 	pkgver = 18.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://odoo.com/
 	install = odoo.install
 	arch = any
 	license = LGPL-3.0-only
 	depends = postgresql>=12.0
-	depends = python>=3.10
+	depends = python312
 	provides = openerp
 	provides = odoo
 	provides = odoo18
