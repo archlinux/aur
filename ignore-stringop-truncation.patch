@@ -1,0 +1,17 @@
+diff --unified --recursive --text linrad-05.02.orig/hid.c linrad-05.02.new/hid.c
+--- linrad-05.02.orig/hid.c	2023-02-27 22:18:59.000000000 +0000
++++ linrad-05.02.new/hid.c	2025-01-08 16:38:02.729689005 +0000
+@@ -1335,10 +1335,13 @@
+ 			cur_dev->next = NULL;
+ 			str = dev_path;
+ 			if (str) {
++				#pragma GCC diagnostic push
++				#pragma GCC diagnostic ignored "-Wstringop-truncation"
+ 				len = strlen(str);
+ 				cur_dev->path = calloc(len+1, sizeof(char));
+ 				strncpy(cur_dev->path, str, len+1);
+ 				cur_dev->path[len] = '\0';
++				#pragma GCC diagnostic pop
+ 			}
+ 			else
+ 				cur_dev->path = NULL;
