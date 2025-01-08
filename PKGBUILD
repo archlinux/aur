@@ -25,7 +25,7 @@ _renderer=gles
 
 pkgbase=kodi-stable-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r65842.7991123decc
+pkgver=r65871.bcb2da55291d
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -82,6 +82,7 @@ source=(
   "https://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
+  fix-libnfs-6-compatibility.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -101,7 +102,8 @@ b2sums=('SKIP'
         '0f78a8ab5a420297f666b3b8156d499a9141ec25c049d4d2bb2ba594dc585abe211a149b83c605cce4f5530207231a065d5f3a87a0c969781de8c6381afa2527'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         'be5e3c8ea81ce4b6f2e2c1b2f22e1172434c435f096fa7dade060578c506cff0310e3e2ef0627e26ce2be44f740652eb9a8e1b63578c18f430f7925820f04e66'
-        '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61')
+        '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
+        'afddcfb4c7dd1f4bb8ae8474878fe591f1fe39ae3ccf86751d497699718065fec86a7e1171f7954d9b4251fc80239940cc8a156eddc2b21fde7ecc1ede50d9a1')
 
 pkgver() {
   cd "$_gitname"
@@ -113,6 +115,8 @@ prepare() {
   mkdir "$srcdir/kodi-build"
 
   cd "$_gitname"
+
+  patch -p1 -i ../fix-libnfs-6-compatibility.patch
 
   rm -rf system/certs # remove not needed cacert
 
