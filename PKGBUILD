@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=cangaroo-hpmicro-canfd-analyzer-git
-pkgver=r3.a87c6a7
+pkgver=r5.bb9963e
 pkgrel=1
 pkgdesc="Four-channel CANFD analyzer based on hpmicro hpm5361"
 arch=($CARCH)
@@ -35,6 +35,12 @@ pkgver() {
 
 prepare() {
 	git -C "${srcdir}/${pkgname}" clean -dfx
+	cd "${srcdir}/${pkgname}"
+	git config --global user.email "admin@taotieren.com"
+	git config --global user.name "taotieren"
+	git remote add taotieren https://github.com/taotieren/cangaroo_hpmicro_canfd_analyzer.git
+	git fetch --all
+	git merge taotieren/fix-build
 }
 
 build() {
@@ -48,10 +54,7 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	# 	make install DESTDIR=${pkgdir} prefix=/usr
-	install -Dm755 "$srcdir/$pkgname/bin/cangaroo" -t "$pkgdir/usr/bin"
-	install -Dm755 "$srcdir/$pkgname/src/scripts/setup_vcan.sh" "$pkgdir/usr/bin/cangaroo-setup-vcan"
-	install -Dm755 "$srcdir/$pkgname/canifconfig/canifconfig" -t "$pkgdir/usr/bin"
-	install -Dm644 "$srcdir/$pkgname/cangaroo.desktop" -t "$pkgdir/usr/share/applications"
-	install -Dm644 "$srcdir/$pkgname/src/assets/cangaroo.png" -t "$pkgdir/usr/share/pixmaps"
+	make install INSTALL_ROOT=${pkgdir}/usr
+	cd canifconfig
+	make install INSTALL_ROOT=${pkgdir}/usr
 }
