@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=stwcs
 pkgname=python-${_pyname}-doc
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="Documentation for STWCS"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=("python-${_pyname}=${pkgver}"
              'texlive-latexextra')  # latex.fmt: -latex; anyfontsize.sty: latexextra
 #source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('ccf8403dbeca13a8dbae238a88d9025f')
+md5sums=('daec58de6921b543ac8d54cd51a60fed')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/doc
