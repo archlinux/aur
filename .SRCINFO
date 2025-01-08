@@ -1,6 +1,6 @@
 pkgbase = wapt-agent
 	pkgdesc = WAPT Agent
-	pkgver = 2.5.4.15342
+	pkgver = 2.6.0.16714
 	pkgrel = 1
 	url = https://www.wapt.fr/en/doc/
 	arch = x86_64

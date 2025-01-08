@@ -1,7 +1,7 @@
 # Maintainer: Matthieu Leboeuf <contact@matthieul.dev>
 
 pkgname=wapt-agent
-pkgver=2.5.4.15342
+pkgver=2.6.0.16714
 pkgrel=1
 pkgdesc="WAPT Agent"
 arch=('x86_64')
