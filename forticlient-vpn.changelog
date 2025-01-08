@@ -1,3 +1,9 @@
+## forticlient-vpn - 7.4.0.1636 - 2025-01-08
+* forticlient-vpn - 7.4.0.1636 - `release 2`
+  + sanitized mkdir and rm commands for directories with spaces
+    note: patch submitted by Henri Heyden
+  + added gnome keyring libs for KDE users
+
 ## forticlient-vpn - 7.4.0.1636 - 2024-06-11
 * forticlient-vpn - 7.4.0.1636 - `release 1`
   + updated `PKGBUILD` to support the new version 7.4.0.1636
