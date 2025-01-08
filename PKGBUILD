@@ -3,13 +3,13 @@
 
 pkgname="supercat"
 pkgver="0.5.8"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A program that colorizes text based on matching regular expressions/strings/characters."
 url="http://supercat.nosredna.net/"
 license=('GPL3')
 arch=('i686' 'x86_64')
 depends=('glibc')
-provides=("${pkgname}")
+provides=("spc")
 source=("http://supercat.nosredna.net/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('3c017bb42d9d599302a78953abfabdd4d4d91e371292507cd44020f0c8cb6b2a')
 

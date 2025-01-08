@@ -1,13 +1,13 @@
 pkgbase = supercat
 	pkgdesc = A program that colorizes text based on matching regular expressions/strings/characters.
 	pkgver = 0.5.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://supercat.nosredna.net/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = glibc
-	provides = supercat
+	provides = spc
 	source = http://supercat.nosredna.net/supercat-0.5.8.tar.gz
 	sha256sums = 3c017bb42d9d599302a78953abfabdd4d4d91e371292507cd44020f0c8cb6b2a
 
