@@ -1,7 +1,7 @@
 pkgbase = sddm
 	pkgdesc = QML based X11 and Wayland display manager
 	pkgver = 0.21.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/sddm/sddm
 	arch = x86_64
 	license = GPL-2.0-only
@@ -31,8 +31,6 @@ pkgbase = sddm
 	backup = etc/pam.d/sddm-autologin
 	backup = etc/pam.d/sddm-greeter
 	source = https://github.com/sddm/sddm/archive/v0.21.0/sddm-0.21.0.tar.gz
-	source = sysusers-fully-locked.patch
 	sha256sums = f895de2683627e969e4849dbfbbb2b500787481ca5ba0de6d6dfdae5f1549abf
-	sha256sums = 810a645fcd966c21f5dce28230a6e6924bd6f4835158718f7f3fbab867a0278a
 
 pkgname = sddm
