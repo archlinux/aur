@@ -1,26 +1,33 @@
 pkgbase = librepilot
 	pkgdesc = A ground control station and firmware for UAV flight controllers
-	pkgver = 15.09
+	pkgver = 16.09+r902+g35e84b7
 	pkgrel = 1
-	url = http://www.librepilot.org
-	arch = i686
+	url = https://www.librepilot.org
 	arch = x86_64
-	license = GPL
+	arch = i686
+	license = GPL-3.0-or-later
 	makedepends = python2
+	makedepends = qt5-script
 	makedepends = qt5-tools
-	makedepends = qt5-quick1
-	depends = qt5-svg
-	depends = qt5-serialport
-	depends = qt5-multimedia
-	depends = qt5-quickcontrols
-	depends = sdl
+	depends = gcc-libs
+	depends = glibc
 	depends = libusb
-	conflicts = librepilot-git
-	replaces = openpilot
-	source = http://download.librepilot.org/source/LibrePilot-15.09.tar.gz
-	source = http://download.librepilot.org/firmware/LibrePilot-15.09_firmware.tar.gz
-	md5sums = 2fd8aa64218cd3bbb3adbb3233f86618
-	md5sums = baf4e96ae060c93ca9c057ee6ff0c835
+	depends = openscenegraph>=3.2
+	depends = osgearth>=2.7
+	depends = qt5-base>=5.5
+	depends = qt5-declarative
+	depends = qt5-multimedia
+	depends = qt5-serialport
+	depends = qt5-svg
+	depends = qt5-xmlpatterns
+	depends = qt6-declarative
+	depends = sdl
+	depends = systemd-libs
+	source = librepilot-librepilot-35e84b704d2e.tar.gz::https://bitbucket.org/librepilot/librepilot/get/35e84b704d2ef7656c7f7ebfcedb67b167788eac.tar.gz
+	source = librepilot_respect_build_flags.patch
+	source = librepilot_osgearth_capabilities.patch
+	b2sums = da3de0f6119eeebab745557f8b8ad49dc04b627cdaa254a4c36bee09348c21f04286090a61999f0ab981520579b947b0062da95876acab7fb76cb44e89f6d18b
+	b2sums = a9857293bd05c22820d6f27cafd4264a0ce7e881f7a07b9c04a1d31cbc910af214598ab0a0896df4dcba28596d651326317d87aacb0bfc7bf16b311967e4892f
+	b2sums = 3b3bc5908b2a08840d692035069b481271ca4d9ab6074d6a090e92d43c788af0dc256f04438d9a9e0f2800680afeb69c4aedb7561a40c2ad7e4444b2fa1182ce
 
 pkgname = librepilot
-

@@ -1,0 +1,36 @@
+--- a/ground/gcs/src/libs/osgearth/utils/utility.cpp
++++ b/ground/gcs/src/libs/osgearth/utils/utility.cpp
+@@ -520,27 +520,18 @@
+ 
+     qDebug().nospace() << "Num Processors : " << caps.getNumProcessors();
+ 
+-    qDebug().nospace() << "MaxFFPTextureUnits : " << caps.getMaxFFPTextureUnits();
+     qDebug().nospace() << "MaxGPUTextureUnits : " << caps.getMaxGPUTextureUnits();
+-    qDebug().nospace() << "MaxGPUAttribs : " << caps.getMaxGPUAttribs();
+     qDebug().nospace() << "MaxTextureSize : " << caps.getMaxTextureSize();
+-    qDebug().nospace() << "MaxLights : " << caps.getMaxLights();
+-    qDebug().nospace() << "DepthBufferBits : " << caps.getDepthBufferBits();
+-    qDebug().nospace() << "TextureArrays : " << caps.supportsTextureArrays();
+-    qDebug().nospace() << "Texture3D : " << caps.supportsTexture3D();
+-    qDebug().nospace() << "MultiTexture : " << caps.supportsMultiTexture();
+-    qDebug().nospace() << "StencilWrap : " << caps.supportsStencilWrap();
+-    qDebug().nospace() << "TwoSidedStencil : " << caps.supportsTwoSidedStencil();
+-    qDebug().nospace() << "Texture2DLod : " << caps.supportsTexture2DLod();
+-    qDebug().nospace() << "MipmappedTextureUpdates : " << caps.supportsMipmappedTextureUpdates();
++    qDebug().nospace() << "MaxFastTextureSize : " << caps.getMaxFastTextureSize();
+     qDebug().nospace() << "DepthPackedStencilBuffer : " << caps.supportsDepthPackedStencilBuffer();
+-    qDebug().nospace() << "OcclusionQuery : " << caps.supportsOcclusionQuery();
+     qDebug().nospace() << "DrawInstanced : " << caps.supportsDrawInstanced();
+-    qDebug().nospace() << "UniformBufferObjects : " << caps.supportsUniformBufferObjects();
+     qDebug().nospace() << "NonPowerOfTwoTextures : " << caps.supportsNonPowerOfTwoTextures();
+-    qDebug().nospace() << "MaxUniformBlockSize : " << caps.getMaxUniformBlockSize();
+-    qDebug().nospace() << "PreferDisplayListsForStaticGeometry : " << caps.preferDisplayListsForStaticGeometry();
+     qDebug().nospace() << "FragDepthWrite : " << caps.supportsFragDepthWrite();
++    qDebug().nospace() << "MaxTextureBufferSize : " << caps.getMaxTextureBufferSize();
++    qDebug().nospace() << "CoreProfile : " << caps.isCoreProfile();
++    qDebug().nospace() << "VertexArrayObjects : " << caps.supportsVertexArrayObjects();
++    qDebug().nospace() << "Int64 : " << caps.supportsInt64();
++    qDebug().nospace() << "NVGL : " << caps.supportsNVGL();
+ }
+ #endif // USE_OSGEARTH
+ 

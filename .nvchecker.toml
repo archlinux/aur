@@ -1,0 +1,4 @@
+[librepilot]
+source = "git"
+git = "https://bitbucket.org/librepilot/librepilot.git"
+prefix = "v"
