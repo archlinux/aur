@@ -4,7 +4,7 @@
 
 pkgname=audiobookshelf
 pkgver=v2.17.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-hosted audiobook server for managing and playing audiobooks"
 arch=("x86_64" "aarch64")
 url="https://github.com/advplyr/${pkgname}"
@@ -13,7 +13,7 @@ depends=("ffmpeg" "libnusqlite3" "nodejs")
 makedepends=("npm")
 backup=("etc/conf.d/${pkgname}")
 options=("!debug")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}.conf"
         "${pkgname}.hook"
         "${pkgname}.service"
