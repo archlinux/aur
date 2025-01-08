@@ -1,14 +1,14 @@
 pkgname=nzportable-bin
 pkgver=2.0.0indev20250102072057
 pkgrel=1
-scriptver=1.0.6
+scriptver=1.0.6.1
 pkgdesc='Nazi Zombies: Portable, a Call of Duty: Zombies "de-make" powered by various enhanced forks of the Quake engine'
 arch=('x86_64' 'i686' 'aarch64' 'armv7l')
 url="https://gitlab.com/linuxbombay/nzp"
 license=('GPL2')
 depends=('sdl2' 'yad')
 makedepends=('unzip')
-sha256sums=('e3999e4ed63715a81d46eaf27108562de50fd53398c4be08136cec192f802071')
+sha256sums=('1e12a4017f50ef12c7bf7b5e9603c7608b83fd3690ede4b88bf62d4ef85bd1c2')
                    
 source=("https://gitlab.com/linuxbombay/nzp/nzp-packaging/-/archive/$scriptver/nzp-packaging-$scriptver.tar.bz2")
 
