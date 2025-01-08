@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-carp-assert-more'
-pkgver='2.5.0'
+pkgver='2.8.0'
 pkgrel='1'
 pkgdesc="Convenience assertions for common situations"
 arch=('any')
@@ -12,10 +12,10 @@ depends=('perl>=5.10.1')
 makedepends=()
 checkdepends=('perl-test-exception>=0')
 url='https://metacpan.org/release/Carp-Assert-More'
-source=('http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/Carp-Assert-More-2.5.0.tar.gz')
-md5sums=('70aa42aa7bea702726078f54a32d1ed7')
-sha512sums=('09388c0d0654b9be12db530a0dfd24b048247cf2026faa5a3f5a7990e3e648174397214fc4adb49332669c1cb70e6d8e305eee6ff6ff8565a8343bc6449fe8ea')
-_distdir="Carp-Assert-More-2.5.0"
+source=('http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/Carp-Assert-More-2.8.0.tar.gz')
+md5sums=('510b66dc482d1af7216934df77aff17d')
+sha512sums=('7d899cb3f2e2a5179885f7e480656c0a20470aa814f27033e902badf4219f2bb3813db013879b2504bd4b0b2a1db15031ca01f3c1f0e5a754797d12021ebc3dd')
+_distdir="Carp-Assert-More-2.8.0"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
