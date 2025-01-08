@@ -3,7 +3,7 @@
 prj='hestia'
 pkgname=($prj)
 pkgdesc='hestia is a godness protect your root'
-pkgver='0.0.2'
+pkgver='0.0.3'
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/vbextreme/${prj}.git"
@@ -11,7 +11,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/vbextreme/${prj}/arch
 license=('GPL3')
 sha256sums=('SKIP')
 makedepends=('meson' 'ninja')
-depends=('curl' 'zlib' 'readline')
+depends=('readline')
 
 prepare() {
     cd "${prj}-${pkgver}"
