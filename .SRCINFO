@@ -10,6 +10,7 @@ pkgbase = python-cryptolyzer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-oscrypto
+	depends = python-beautifulsoup4
 	depends = python-certvalidator
 	depends = python-colorama
 	depends = python-cryptoparser
