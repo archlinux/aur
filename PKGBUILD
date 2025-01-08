@@ -4,14 +4,14 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=gpodder-git
-pkgver=3.11.5+r5413+ga3c46aa31
+pkgver=3.11.5+r5422+g72db9971f
 pkgrel=1
 pkgdesc='A podcast receiver/catcher'
 license=('GPL-3.0-or-later')
 arch=('any')
 url='http://gpodder.github.io/'
 depends=(gtk3 python-cairo dbus-python python-gobject python-mygpoclient python-podcastparser python-requests)
-makedepends=(git intltool python-setuptools)
+makedepends=(git intltool python-build python-installer python-setuptools)
 optdepends=('youtube-dl: for Youtube-dl extension')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")

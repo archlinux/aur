@@ -1,12 +1,14 @@
 pkgbase = gpodder-git
 	pkgdesc = A podcast receiver/catcher
-	pkgver = 3.11.5+r5413+ga3c46aa31
+	pkgver = 3.11.5+r5422+g72db9971f
 	pkgrel = 1
 	url = http://gpodder.github.io/
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = intltool
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = gtk3
 	depends = python-cairo
