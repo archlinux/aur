@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-catalyst-view-tt'
-pkgver='0.45'
+pkgver='0.46'
 pkgrel='1'
 pkgdesc="Template View Class"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-catalyst-runtime>=0' 'perl-class-accessor>=0' 'perl-data-dump>=0' 'perl-mro-compat>=0' 'perl-path-class>=0' 'perl-template-timer>=0' 'perl-template-toolkit>=0' 'perl>=5.8.1')
 makedepends=()
 url='https://metacpan.org/release/Catalyst-View-TT'
-source=('https://cpan.metacpan.org/authors/id/H/HA/HAARG/Catalyst-View-TT-0.45.tar.gz')
-md5sums=('f21269e823fb7a5795a39a261305869e')
-sha512sums=('3c9814c584852c227eaca09d862b9e5519e24c43831d951a4cd7a941adec43a794b39e8ec596f208d56dd7dd42e5fe1a8a3fb40fdd572cff3bebc95bce0cb7ad')
-_distdir="Catalyst-View-TT-0.45"
+source=("http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Catalyst-View-TT-$pkgver.tar.gz")
+md5sums=('7ca95c98aea019e0acadc09cad418dd3')
+sha512sums=('104f1637362d7ecfe0c35fc0457c188045daf9faa91cee826aa18da5bd10a065cadc9d11fe2c272d6d1e1953c2167d2faddef15ef08a85afa596a9ca31efd931')
+_distdir="Catalyst-View-TT-$pkgver"
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
