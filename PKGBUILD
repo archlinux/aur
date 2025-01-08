@@ -1,12 +1,11 @@
 # Maintainer: yifwon <wyf9661 [at] gmail.com>
-pkgbase=wps-office-bin
 pkgname=('wps-office-bin')
 pkgver=12.1.0.17900
-pkgrel=3
+pkgrel=4
 pkgdesc="WPS Office, is an office productivity suite."
 arch=('x86_64')
 url="https://linux.wps.cn"
-_srcurl="https://archive2.kylinos.cn/DEB/KYLIN_DEB/pool/main/deb/wpsoffice"
+_srcurl="https://wps-linux-365.wpscdn.cn"
 license=('LicenseRef-WPS-EULA')
 makedepends=(
   'tar')
@@ -21,12 +20,12 @@ optdepends=(
   'libpng12: PNG image codec support'
   'ttf-wps-fonts: Symbol fonts required by wps-office'
   'ttf-ms-fonts: Microsft Fonts recommended for wps-office')
-conflicts=('wps-office')
-provides=('wps-office')
+conflicts=(${pkgname%-bin})
+provides=(${pkgname%-bin})
 options=(!strip !zipman !debug)
 
-source_x86_64=("wps-office_${pkgver}_amd64.deb::${_srcurl}/wpsoffice_${pkgver}_amd64.deb")
-sha1sums_x86_64=('c7ea086728f7c2a140d1d51c507fc0e6d4f30b18')
+source_x86_64=("${pkgname%-bin}_${pkgver}_amd64.deb::${_srcurl}/wps/download/ep/Linux2023/${pkgver##*.}/${pkgname%-bin}_${pkgver}_amd64.deb")
+sha1sums_x86_64=('a245fe88c25d0992fb6d2b1e37ba99dc15fe2a5f')
 
 package(){
   xz -df data.tar.xz
