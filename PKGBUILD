@@ -4,7 +4,7 @@ _gitname="plutosvg"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=0.0.4.r95.20241226.e0a1ce5
-pkgrel=2
+pkgrel=3
 pkgdesc="A compact and efficient SVG rendering library written in C."
 arch=(
   'x86_64'
@@ -21,10 +21,13 @@ depends=(
   'glibc'
 )
 makedepends=(
+  'freetype2'
   'git'
   'plutovg'
 )
-optdepends=()
+optdepends=(
+  "freetype2: For Freetype integration, and for example '/usr/bin/emoji2png'."
+)
 checkdepends=()
 provides=(
   "${_pkgname}=${pkgver}"
@@ -84,13 +87,19 @@ package() {
 
   make -C build DESTDIR="${pkgdir}" install
 
-  
+  for _exampleexecutable in emoji2png svg2png; do
+    install -Dvm755 -t "${pkgdir}/usr/bin" "build/examples/${_exampleexecutable}"
+  done
+
+  make -C build/examples clean # Remove built executable in examples directory.
 
   _docfiles=(
     "${srcdir}/git.log"
     "${srcdir}/${_pkgname}/README.md"
   )
-  _docdirs=()
+  _docdirs=(
+    "${srcdir}/build/examples"
+  )
   _manfiles=()
   _infofiles=()
   _licensefiles=(
