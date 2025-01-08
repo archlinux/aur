@@ -13,9 +13,9 @@ _devenv=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.0.rc3.w7.sf10d2d0
+pkgver=10.0.rc4.w36.sc263c6f
 pkgrel=1
-eval pkgrel=4
+eval pkgrel=5
 
 ################################################################################################################################
 ################################################################################################################################
@@ -35,7 +35,7 @@ _enabled_staging=()
 _disabled_staging=(eventfd_synchronization) # added manually from proton
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="12-25-2024-e713c348-f10d2d04"
+_patchbase_tag="01-08-2025-5942da6c-c263c6fa"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -46,8 +46,8 @@ _custompatches=false
 ## (custompatches=true) uses wine/staging master if empty, uses given commit or tag if set
 ##                     (if you want to update them to current master, just set them empty)
 ## (custompatches=false) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=e713c3487f9fc9b7ded528f9ce49844facb99a90
-_desired_staging_commit=f10d2d045221c84cb75e9a85919790c2437a647a
+_desired_wine_commit=5942da6c6ca66170d3546016328c4c3e0cf8f1b5
+_desired_staging_commit=c263c6fabba8f952b71bf6ea12a77784b9b43ed2
 
 ## (custompatches=true) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -62,17 +62,17 @@ _install_static=false
 ## strips debug and all other symbols from binaries to reduce size
 _strip_package=true
 
-## for cross compilation
-##   "llvm": llvm-mingw (msvcrt will be preferred if both exist in /opt/llvm-mingw/, but it doesn't matter)
-##   "msvc": clang in msvc-mode
-##   anything else: regular mingw-gcc
-_use_mingw=gcc
-
 ## for native compilation:
 ##   "true": system clang (/usr/bin/clang)
 ##   "bundled": llvm-mingw's clang (requires _use_mingw=llvm)
 ##   anything else: gcc
-_use_clang=false
+_use_clang=bundled
+
+## for cross compilation
+##   "llvm": llvm-mingw (msvcrt will be preferred if both exist in /opt/llvm-mingw/, but it doesn't matter)
+##   "msvc": clang in msvc-mode
+##   anything else: regular mingw-gcc
+_use_mingw=llvm
 
 ## leave empty unless you want to manually change the type of build (true: wow64)
 _wow64build=
@@ -99,7 +99,7 @@ if [ "${_devenv}" != "true" ]; then options+=('!buildflags'); fi
 if [ "${_generic_release}" = "true" ]; then
   PKGEXT='.pkg.tar.xz'
   COMPRESSXZ=(xz -9 -c -z - --threads=0)
-  _cpu_target="-march=nocona -mtune=core-avx2" # same as Proton
+  _cpu_target="-march=nocona -mtune=core-avx2 -mavx" # same as Proton (plus avx for patch compat)
 else
   _cpu_target="-march=native -mtune=native"
 fi
@@ -113,7 +113,7 @@ fi
 if [ "${_custompatches}" != "true" ]; then _custompatches= ; fi
 
 source=(
-  "winestart"
+  "winestart.c"
   "Makefile.single"
   "lto-fixup.patch"
   "buildiswow64"
@@ -122,7 +122,7 @@ source=(
 )
 
 sha512sums=(
-  '2d431b8830f783b9973ef3df50606b3dae705dffe3cd6106a7daa3b5ad89eaecd6b0e7da835ebf18985a6f3c9c1c952866f39126e34fb6503935baa91a9e8189'
+  '18bea2cdbf3a78831598346db9b24e5fe30df0e0de6fd0ac4efe2c49de59c329a9419a63161ce7a82562ce8065019f7055280e52ab70bc71b9f4fae7652a9fea'
   '59920a54e9bd8d1f73c15675f7df29829680b59f4d1c4fc74fe710e4b596fd6a96f3b43994eb5da0fd1e50299b0ada933c6f3796e1d0698febb7870995f7f266'
   'c949136c1dca345ab4e86cb7ac6d0f02595e09a9f0c344dc9ca454cfa3aab8845a2e1f36f27e9357f3a6a3ead0d6b7f1ffb1444246cd3b76aedbe30942d20859'
   'SKIP'
@@ -198,18 +198,18 @@ makedepends=(autoconf bison ccache perl fontforge flex gawk
 )
 
 optdepends=(
+  'NTSYNC-MODULE: ntsync support (in-kernel)'
+  'ntsync-dkms: ntsync support (dkms module)'
   libxinerama
   giflib
   libpng
   libldap
   mpg123
   openal
-  v4l-utils
   alsa-plugins
   alsa-lib
   libjpeg-turbo
   libxcomposite
-  libxinerama
   opencl-icd-loader
   libxslt
   vkd3d
@@ -218,13 +218,12 @@ optdepends=(
   samba
   dosbox
   libusb
-  NTSYNC-MODULE
 )
 
 if [ "${_wow64build}" != "true" ]; then
   depends+=(lib32-libxkbcommon libvulkan.so=1-32 lib32-gst-plugins-good lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
-  makedepends+=(lib32-ffmpeg-minimal-dev lib32-zlib lib32-xz lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2)
-  optdepends+=(lib32-ffmpeg lib32-gst-libav lib32-libusb lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
+  makedepends+=(lib32-ffmpeg-minimal-dev lib32-zlib lib32-xz lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-alsa-lib lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2)
+  optdepends+=(lib32-ffmpeg lib32-gst-libav lib32-libusb lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
   if [ "${_use_clang}" = "true" ]; then makedepends+=(lib32-llvm-libs); fi
 fi
 
@@ -233,7 +232,7 @@ pkgver() {
   _whash=$(git -C "${srcdir}"/"${pkgname}" rev-list --count --cherry-pick wine-"${_pkgver}"...HEAD)
   _shash=${_desired_staging_commit:0:7}
 
-  printf '%s%s%s' "${_pkgver//-/.}" ".w${_whash:?}" "$(if [ "${_apply_staging}" != "false" ]; then echo -n ".s${_shash:?}"; fi)"
+  printf '%s%s%s' "${_pkgver//-/.}" ".w${_whash:?}" "$(if [ "${_use_staging}" = "true" ]; then echo -n ".s${_shash:?}"; fi)"
 }
 
 _fake_gnuc_flag="-fgnuc-version=5.99.99"
@@ -245,7 +244,7 @@ if [ "${_use_clang}" = "true" ]; then
   _cc="/usr/bin/clang" # TODO: remove /usr/bin hardcode
   _cxx="/usr/bin/clang++"
 
-  _extra_native_flags="${_fake_gnuc_flag} -flto=thin -D__LLD_LTO__ --rtlib=compiler-rt --unwindlib=libgcc"
+  _extra_native_flags="${_fake_gnuc_flag} -flto=thin -D__LLD_LTO__"
   _extra_ld_flags="-flto=thin -fuse-ld=lld"
   _lld_lto="true" # will apply _makefile_add_lto_flags() after _configure64(), and the "5000-clang-fixup-lto.patch" from the wine-osu-patches repo
   _use_polly="${_use_polly:-} native"
@@ -288,11 +287,13 @@ if [ "${_use_mingw}" = "llvm" ]; then
     # set so that we don't use fallback code for __GNUC__ <= 4.2.1
     # which may be unnecessarily pessimistic
     # doesn't work with ucrt due to some specific modules failing
+    # TODO: upstream a fix for ucrt breakage (to mingw?)
     _extra_common_flags="${_extra_common_flags:-} ${_fake_gnuc_flag}"
   fi
 
   _cross_path="${_mingw_path}":"${PATH}"
-  _extra_cross_flags="${_extra_cross_flags:-}"
+  _extra_cross_flags="${_extra_cross_flags:-} -ffunction-sections -fdata-sections"
+  _extra_crossld_flags="${_extra_crossld_flags:-} -Wl,--gc-sections"
 else
   # remove llvm-mingw paths from externally set PATH
   if [[ "${PATH}" =~ "llvm-mingw" ]]; then
@@ -310,7 +311,7 @@ else
     _cross32="clang"
     _crossxx32="clang++"
 
-    _extra_cross_flags="${_extra_cross_flags:-}"
+    _extra_cross_flags="${_extra_cross_flags:-} -ffunction-sections -fdata-sections"
     _use_polly="${_use_polly:-} cross"
   else
     makedepends+=(mingw-w64-binutils mingw-w64-gcc mingw-w64-crt mingw-w64-headers mingw-w64-winpthreads)
@@ -325,7 +326,6 @@ else
 fi
 
 makedepends=("${makedepends[@]}" "${depends[@]}")
-#depends+=(NTSYNC-MODULE)
 
 ## exported at the start of every function
 _set_vars() {
@@ -334,17 +334,17 @@ _set_vars() {
 
   export PATH="${_cross_path}"
 
-  _common_cflags="${_cpu_target} ${_extra_common_flags:-} -pipe -O3 -fomit-frame-pointer -fwrapv -fno-strict-aliasing -mfpmath=sse \
+  _common_cflags="${_cpu_target} ${_extra_common_flags:-} -pipe -O3 -fno-strict-aliasing -fwrapv -mfpmath=sse -fno-semantic-interposition \
                  -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -w"
-                 # -Wall -Wno-unknown-attributes -Wno-unused-but-set-variable -Wno-unused-variable -Wunaligned-access"
+                 # -Wall -Wno-unknown-attributes -Wno-unused-but-set-variable -Wno-unused-variable -Wunaligned-access -Watomic-alignment
   _native_common_cflags="${_lto_flags:-} ${_extra_native_flags:-} -ffunction-sections -fdata-sections" # only for the non-mingw side
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
   _GCC_FLAGS="${_common_cflags:-} ${_native_common_cflags:-} ${CPPFLAGS:-}"
   _CROSS_FLAGS="${_common_cflags:-} ${_extra_cross_flags:-} ${CPPFLAGS:-}"
 
-  _LD_FLAGS="${_GCC_FLAGS:-} ${_extra_ld_flags:-} -Wl,-O2,--sort-common,--as-needed,--gc-sections"
-  _CROSS_LD_FLAGS="${_CROSS_FLAGS:-}"
+  _LD_FLAGS="${_GCC_FLAGS:-} ${_extra_ld_flags:-} -static-libgcc -Wl,-O2,--sort-common,--as-needed,--gc-sections"
+  _CROSS_LD_FLAGS="${_CROSS_FLAGS:-} ${_extra_crossld_flags:-}"
 
   if [[ "${_use_polly}" =~ native ]]; then
     _GCC_FLAGS+=" ${_polly_flags}"
@@ -373,10 +373,10 @@ _set_vars() {
   export i386_CFLAGS="${_CROSS_FLAGS} ${_common_32_cflags:-}"
   export i386_CXXFLAGS="${_CROSS_FLAGS} ${_common_32_cflags:-}"
 
-  export CFLAGS="${_GCC_FLAGS} -std=gnu17"
-  export CXXFLAGS="${_GCC_FLAGS//${_fake_gnuc_flag}/} -std=gnu++17" # Beautiful
-  export CROSSCFLAGS="${_CROSS_FLAGS} -std=gnu17"
-  export CROSSCXXFLAGS="${_CROSS_FLAGS//${_fake_gnuc_flag}/} -std=gnu++17"
+  export CFLAGS="${_GCC_FLAGS}"
+  export CXXFLAGS="${_GCC_FLAGS//${_fake_gnuc_flag}/}" # Beautiful
+  export CROSSCFLAGS="${_CROSS_FLAGS}"
+  export CROSSCXXFLAGS="${_CROSS_FLAGS//${_fake_gnuc_flag}/}"
 
   export LDFLAGS="${_LD_FLAGS}"
   export CROSSLDFLAGS="${_CROSS_LD_FLAGS}"
@@ -397,6 +397,7 @@ _set_vars64() {
 
 _set_vars32() {
   ## lib32 fsync doesn't compile with clang due to undefined atomic ops otherwise (ntdll.so)
+  # only with unmodified proton fsync, left here for reference
   # if [ "${_use_clang}" = "true" ] || [ "${_use_clang}" = "bundled" ]; then
   #   export I386_LIBS="-latomic"
   # fi
@@ -418,9 +419,10 @@ prepare() { _set_vars;
   rm -rf "${_where}"/pkg || true
 
   ## Make an alias for the wine source
-  rm -rf "${srcdir:?}/${pkgname:?}" &>/dev/null || true
+  #echo "${srcdir:?}/${pkgname:?}"
+  rm -rf "${srcdir:?}/${pkgname:?}"
   ln -sr "${srcdir}"/wine "${srcdir:?}/${pkgname:?}" || _failure
-  if [ ! -L "${srcdir}/${pkgname}" ]; then _failure "Something weird is going on with your src/ directory paths, try clearing it out first."; fi
+  if [ ! -L "${srcdir}/${pkgname}" ]; then _failure "Something weird is going on with your src/ directory paths, try clearing it out first (e.g. makepkg -Csif)."; fi
 
   ## Source base re-configuration
   _desired_wine_commit=${_desired_wine_commit:-master}
@@ -445,6 +447,7 @@ prepare() { _set_vars;
 
   cd "${srcdir}"/wine-staging || _failure
   git reset --hard "${_desired_staging_commit}" || _failure
+  git clean -ffdx &>/dev/null || true
 
   if [ "${_custompatches}" = "true" ]; then
     _patchbase_staging_commit=$(git rev-parse HEAD)
@@ -464,6 +467,7 @@ prepare() { _set_vars;
 
   cd "${srcdir}"/"${pkgname}" || _failure
   git reset --hard "${_desired_wine_commit}" || _failure
+  git clean -ffdx &>/dev/null || true
 
   if [ "${_custompatches}" = "true" ]; then
     _patchbase_wine_commit=$(git rev-parse HEAD)
@@ -473,6 +477,8 @@ prepare() { _set_vars;
   sed -i "s/^_desired_wine_commit=.*$/_desired_wine_commit=${_desired_wine_commit}/g" "${_where}/PKGBUILD"
 
   msg2 "Wine mainline at: $_patchbase_wine_commit"
+  touch "${_where}"/patchlog.txt || _failure
+  printf "Wine commit: %s\n" "${_patchbase_wine_commit}" > "${_where}"/patchlog.txt
 
   cd "${srcdir}" || _failure
 
@@ -486,22 +492,28 @@ prepare() { _set_vars;
 
   ## Patching setup
 
-  touch "${_where}"/patchlog.txt || _failure
-  printf "Wine commit: %s\nStaging commit: %s\n" "${_patchbase_wine_commit}" "${_patchbase_staging_commit}" > "${_where}"/patchlog.txt
+  if [ "${_use_staging}" = "true" ]; then
+    _staging_args=()
+    printf "Staging commit: %s\n" "${_patchbase_staging_commit}" >> "${_where}"/patchlog.txt
 
-  if [ -f "${srcdir}"/wine-staging/patches/patchinstall.sh ]; then
-    staging_patcher="${srcdir}"/wine-staging/patches/patchinstall.sh
-  else
-    staging_patcher="${srcdir}"/wine-staging/staging/patchinstall.py
-  fi
+    if [ -f "${srcdir}"/wine-staging/patches/patchinstall.sh ]; then
+      staging_patcher="${srcdir}"/wine-staging/patches/patchinstall.sh
+    else
+      staging_patcher="${srcdir}"/wine-staging/staging/patchinstall.py
+    fi
 
-  _enabled_staging=("${_enabled_staging[@]:-"--all"}")
-
-  if [ "${_use_staging}" != "false" ]; then
     msg2 "Applying staging patches"
     printf "\nApplying staging patches\n\n" >> "${_where}"/patchlog.txt
 
-    if [ "${_use_staging_upstream}" != "true" ] && find "${_patchdir}"/staging-overrides -name "*spatch" -print0 -quit | grep . >/dev/null; then
+    # for better git history ("rebase mode", very slow)
+    # if [ "${_devenv}" = "true" ]; then _staging_args+=(-r); fi
+
+    # shellcheck disable=SC2206
+    _staging_args+=(--no-autoconf ${_enabled_staging[@]:-"--all"} ${_disabled_staging[*]/#/-W })
+
+    printf "Staging args: %s\n" "${_staging_args[*]}" >> "${_where}"/patchlog.txt
+
+    if [ -d "${_patchdir}"/staging-overrides ] && find "${_patchdir}"/staging-overrides -name "*spatch" -print0 -quit | grep . >/dev/null; then
       for override in "${_patchdir}"/staging-overrides/*; do
         base=$(basename "${override}")
         dest=$(find "${srcdir}"/wine-staging/patches/ -name "${base%.spatch}*")
@@ -512,19 +524,24 @@ prepare() { _set_vars;
       printf "\nOverrode all staging patches matching those in staging-overrides/*.spatch\n\n" >> "${_where}"/patchlog.txt
     fi
 
-    # if [ "${_wow64build}" = "true" ]; then
-    #   _disabled_staging+=(ntdll-Syscall_Emulation) # known to causes issues on wow64
-    # fi
+    # known to causes issues on wow64 (if seccomp is used on the host)
+    # if [ "${_wow64build}" = "true" ]; then _disabled_staging+=(ntdll-Syscall_Emulation); fi
 
-    # shellcheck disable=SC2048,SC2086
-    "${staging_patcher[@]}" DESTDIR="${srcdir}"/"${pkgname}" --no-autoconf "${_enabled_staging[@]}" ${_disabled_staging[*]/#/-W } &>> "${_where}"/patchlog.txt || \
+    "${staging_patcher[@]}" DESTDIR="${srcdir}"/"${pkgname}" "${_staging_args[@]}" &>> "${_where}"/patchlog.txt || \
         _failure "Error applying staging patches, check patchlog.txt for info."
   fi
 
   ## Apply other patches
+  
+  cd "${srcdir}"/"${pkgname}" || _failure
+
+  git config commit.gpgsign false &>/dev/null || true
+  git config user.email "wine@build.dev" &>/dev/null || true
+  git config user.name "winebuild" &>/dev/null || true
+  git add --all &>/dev/null || true
+  git commit --allow-empty -m "staging" &>/dev/null || true
 
   printf "\nApplying other patches\n\n" >> "${_where}"/patchlog.txt
-  cd "${srcdir}"/"${pkgname}" || _failure
 
   patchlist=()
 
@@ -542,12 +559,12 @@ prepare() { _set_vars;
     shortname="${patch#"${_where}/"}"
     printf "\nApplying %s\n\n" "${shortname}" >> "${_where}"/patchlog.txt
     msg2 "Applying '${shortname}'"
-    git apply --ignore-whitespace --verbose "${patch}" &>> "${_where}"/patchlog.txt || \
+    # git apply --ignore-whitespace --verbose "${patch}" &>> "${_where}"/patchlog.txt || \
     patch -Np1 <"${patch}" &>> "${_where}"/patchlog.txt || \
         _failure "An error occurred applying ${shortname}, check patchlog.txt for info."
   done
 
-  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i "${srcdir}/${pkgname}"/configure*
+  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i "${srcdir}/${pkgname}"/configure* || true
 
   if [ "${_strip_package}" = "true" ]; then
     awk -i inplace '/STRIPPROG=/ { sub(/ %s/, " %s -s") }1' "${srcdir}/${pkgname}/tools/makedep.c"
@@ -556,7 +573,7 @@ prepare() { _set_vars;
   fi
 
   ## clean up .orig files if patches succeeded
-  find "${srcdir}"/"${pkgname}"/ -iregex ".*orig" -execdir rm '{''}' '+'
+  find "${srcdir}"/"${pkgname}"/ -iregex ".*orig" -execdir rm '{''}' '+' || true
 
   # run this if e.g. proton vkd3d is in the wine tree
   # msg2 "Running make_vulkan..."
@@ -571,9 +588,6 @@ prepare() { _set_vars;
   fi
 
   ## make tools/make_makefiles happy
-  git config commit.gpgsign false &>/dev/null || true
-  git config user.email "wine@build.dev" &>/dev/null || true
-  git config user.name "winebuild" &>/dev/null || true
   git add --all &>/dev/null || true
   git commit --allow-empty -m "pre" &>/dev/null || true
 
@@ -693,7 +707,7 @@ build() { _set_vars;
     git -C "${srcdir}"/"${pkgname}"/ config --unset commit.gpgsign &>/dev/null || true
     git -C "${srcdir}"/"${pkgname}"/ config --unset user.email &>/dev/null || true
     git -C "${srcdir}"/"${pkgname}"/ config --unset user.name &>/dev/null || true
-    ln -s "${HOME}/.config/edwkspc/wine/".* "${srcdir}"/"${pkgname}"/ &>/dev/null || true
+    cp -r "${HOME}/.config/edwkspc/wine/".* "${srcdir}"/"${pkgname}"/ &>/dev/null || true
     printf '%s\n%s\n%s' '.vscode' '.gitignore' '*patch' > "${srcdir}"/"${pkgname}"/.gitignore || true # vscode? cringe!
   else
     # was it worth it?
@@ -758,6 +772,10 @@ build() { _set_vars;
     make -f "${_where}"/Makefile.single "${_mjobsflag:-}"
   fi
 
+  ## build launch wrapper to symlink to /usr/bin/ later
+  msg2 "Building launch wrapper..."
+  env cc "${srcdir}"/winestart.c -Wl,-s -Oz -march=x86-64 -static -o "${srcdir}"/winestart
+
   export SOURCE_DATE_EPOCH="$_old_SOURCE_DATE_EPOCH"
 }
 
@@ -799,12 +817,11 @@ package() { _set_vars;
     ln -srf "${pkgdir}"/opt/"${pkgname}"/bin/wine{,64}
   fi
 
-  cp "${srcdir}"/winestart "${pkgdir}"/opt/"${pkgname}"/bin/wine-osu"${_wowname}"
-
-  ## Force our wine to use its own libraries
+  ## Add simple wrapper and link it to /usr/bin/
+  cp "${srcdir}"/winestart "${pkgdir}"/opt/"${pkgname}"/bin/winestart
+  chmod +x "${pkgdir}"/opt/"${pkgname}"/bin/winestart
   install -d "${pkgdir}"/usr/bin
-  ln -sf /opt/"${pkgname}"/bin/wine-osu"${_wowname}" "${pkgdir}"/usr/bin/wine-osu"${_wowname}"
-  chmod +x "${pkgdir}"/opt/"${pkgname}"/bin/wine-osu"${_wowname}"
+  ln -sf /opt/"${pkgname}"/bin/winestart "${pkgdir}"/usr/bin/wine-osu"${_wowname}"
 
   ## Clean patchlog dirnames and add to package
   sed -i "s|${_where}\/||g" "${_where}"/patchlog.txt

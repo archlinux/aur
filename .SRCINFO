@@ -1,7 +1,7 @@
 pkgbase = wine-osu-spectator-wow64
 	pkgdesc = A compatibility layer for running Windows programs, but with osu! specific patches (doesn't conflict with other Wine installations) (WoW64 version)
-	pkgver = 10.0.rc3.w7.sf10d2d0
-	pkgrel = 4
+	pkgver = 10.0.rc4.w36.sc263c6f
+	pkgrel = 5
 	url = http://www.winehq.com
 	install = wine-wow64.install
 	arch = x86_64
@@ -39,11 +39,7 @@ pkgbase = wine-osu-spectator-wow64
 	makedepends = zlib
 	makedepends = xz
 	makedepends = ntsync-header>=6.12.6
-	makedepends = mingw-w64-binutils
-	makedepends = mingw-w64-gcc
-	makedepends = mingw-w64-crt
-	makedepends = mingw-w64-headers
-	makedepends = mingw-w64-winpthreads
+	makedepends = llvm-mingw-w64-toolchain
 	makedepends = fontconfig
 	makedepends = lcms2
 	makedepends = libxml2
@@ -90,18 +86,18 @@ pkgbase = wine-osu-spectator-wow64
 	depends = ffmpeg
 	depends = gst-plugins-good
 	depends = gst-libav
+	optdepends = NTSYNC-MODULE: ntsync support (in-kernel)
+	optdepends = ntsync-dkms: ntsync support (dkms module)
 	optdepends = libxinerama
 	optdepends = giflib
 	optdepends = libpng
 	optdepends = libldap
 	optdepends = mpg123
 	optdepends = openal
-	optdepends = v4l-utils
 	optdepends = alsa-plugins
 	optdepends = alsa-lib
 	optdepends = libjpeg-turbo
 	optdepends = libxcomposite
-	optdepends = libxinerama
 	optdepends = opencl-icd-loader
 	optdepends = libxslt
 	optdepends = vkd3d
@@ -110,20 +106,19 @@ pkgbase = wine-osu-spectator-wow64
 	optdepends = samba
 	optdepends = dosbox
 	optdepends = libusb
-	optdepends = NTSYNC-MODULE
 	options = !staticlibs
 	options = !lto
 	options = !debug
 	options = !strip
 	options = !buildflags
-	source = winestart
+	source = winestart.c
 	source = Makefile.single
 	source = lto-fixup.patch
 	source = buildiswow64
-	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=e713c3487f9fc9b7ded528f9ce49844facb99a90
-	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=f10d2d045221c84cb75e9a85919790c2437a647a
-	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=12-25-2024-e713c348-f10d2d04
-	sha512sums = 2d431b8830f783b9973ef3df50606b3dae705dffe3cd6106a7daa3b5ad89eaecd6b0e7da835ebf18985a6f3c9c1c952866f39126e34fb6503935baa91a9e8189
+	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=5942da6c6ca66170d3546016328c4c3e0cf8f1b5
+	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=c263c6fabba8f952b71bf6ea12a77784b9b43ed2
+	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=01-08-2025-5942da6c-c263c6fa
+	sha512sums = 18bea2cdbf3a78831598346db9b24e5fe30df0e0de6fd0ac4efe2c49de59c329a9419a63161ce7a82562ce8065019f7055280e52ab70bc71b9f4fae7652a9fea
 	sha512sums = 59920a54e9bd8d1f73c15675f7df29829680b59f4d1c4fc74fe710e4b596fd6a96f3b43994eb5da0fd1e50299b0ada933c6f3796e1d0698febb7870995f7f266
 	sha512sums = c949136c1dca345ab4e86cb7ac6d0f02595e09a9f0c344dc9ca454cfa3aab8845a2e1f36f27e9357f3a6a3ead0d6b7f1ffb1444246cd3b76aedbe30942d20859
 	sha512sums = SKIP
