@@ -10,7 +10,7 @@ license=('custom')
 provides=('plask')
 replaces=('plask')
 conflicts=('plask')
-depends=('boost-libs' 'expat' 'openmp' 'intel-oneapi-mkl' 'lapack' 'qt5-declarative' 'qt5-tools'
+depends=('boost-libs' 'expat' 'fmt' 'openmp' 'intel-oneapi-mkl' 'lapack' 'qt5-declarative' 'qt5-tools'
          'python-numpy' 'python-matplotlib' 'python-lxml' 'python-yaml' 'pyside2' 'libx11')
 optdepends=('python-h5py: for saving results to files'
             'python-scipy: for scientific tools'
@@ -18,7 +18,7 @@ optdepends=('python-h5py: for saving results to files'
             'python-paramiko: for remote computation launching'
             'ipython: for interactive shell')
 source=("plask-$pkgver.tar.zst::https://get.plask.app/packages/plask-$pkgver-1-x86_64.pkg.tar.zst")
-sha256sums=('a55bbc65b98c980d289db4620ce644935226fbc67e32b2cd62748b403b9284c8')
+sha256sums=('62199a7cdce253288bc5979cce740e2a2ac2a76fa5ca74bc170d44a966319314')
 noextract=("plask-$pkgver.tar.zst")
 
 package() {
