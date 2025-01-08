@@ -8,9 +8,9 @@ arch=('x86_64')
 url="https://www.wapt.fr/en/doc/"
 license=('custom')
 optdepends=('syslog-ng')
-source=("https://wapt.tranquil.it/debian/wapt-2.5/pool/main/t/tis-waptagent/tis-waptagent_2.5.4.15342-6215c9da-debian-12-amd64_amd64.deb"
+source=("https://wapt.tranquil.it/debian/wapt-2.6/pool/main/t/tis-waptagent/tis-waptagent_2.6.0.16714-bc373938-amd64_amd64.deb"
         "LICENSE")
-b2sums=('167048620d14da9288a4b5a6dad1ea6df12fa8547151381cd326904cd1753e7e83339d1f7cfb535272c25c3179e177f34f303f1615abd5c5248eb0a3280232f7'
+b2sums=('4b2bbe94d01e809c9ec4ef396eb626b43392d0cdd5f08780bb1d9b4b0642019bcc288ae76aba4fa1cfabe10894d68ef4032c24845bb2f721f8dbe58964fed82c'
         'cd5269b8c3c36750904835e589d401e868c808df46ee265aa63b8720a09d066448f03b20c7e45949ae5ef59bf3ca90d73d15a0e18ce786f91ee51193e615c501')
 
 package() {
