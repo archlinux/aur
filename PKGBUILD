@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=draw.io
 pkgname="${_pkgname//./}-desktop-git"
-pkgver=25.0.2.r1.g353a057
+pkgver=26.0.4.r1.gff4b60e
 _electronversion=32
 _nodeversion=20
 pkgrel=1
-pkgdesc="A diagramming and whiteboarding desktop app based on Electron that wraps the core draw.io editor."
+pkgdesc="A diagramming and whiteboarding desktop app based on Electron that wraps the core draw.io editor.(Use system-wide electron)"
 arch=('any')
 url="https://www.diagrams.net/"
 _ghurl="https://github.com/jgraph/drawio-desktop"
@@ -44,7 +44,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -80,7 +80,10 @@ build() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     git submodule update --depth=1 --init --recursive
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
+    NODE_ENV=development    yarn install
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
     NODE_ENV=development    yarn run sync
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder-linux-mac.json
 }
