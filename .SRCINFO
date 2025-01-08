@@ -1,0 +1,19 @@
+pkgbase = python-openvino-telemetry-git
+	pkgdesc = Pythno library for sending statistics data from the OpenVINO toolkit components (git version)
+	pkgver = r58.g4a7e3b6
+	pkgrel = 1
+	url = https://github.com/openvinotoolkit/telemetry/
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = openvino-telemetry
+	conflicts = openvino-telemetry
+	source = openvino-telemetry::git+https://github.com/openvinotoolkit/telemetry.git
+	sha256sums = SKIP
+
+pkgname = python-openvino-telemetry-git
