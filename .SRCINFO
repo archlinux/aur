@@ -23,6 +23,7 @@ pkgbase = librepilot-bin
 	depends = systemd-libs
 	provides = librepilot
 	conflicts = librepilot
+	replaces = librepilot-rpm
 	noextract = librepilot-16.09+r782+g8c101ad-x86_64.deb
 	noextract = librepilot-16.09+r782+g8c101ad-i686.deb
 	options = !strip
