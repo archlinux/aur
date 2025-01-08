@@ -1,8 +1,8 @@
 # Maintainer: Kaiyang Wu <origincode@aosc.io>
 pkgname=ciel
 _pkgname=${pkgname}-rs
-pkgver=3.8.8
-pkgrel=1
+pkgver=3.9.1
+pkgrel=2
 pkgdesc="A tool for controlling multi-layer file systems and containers."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/AOSC-Dev/ciel-rs"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('systemd' 'dbus' 'openssl' 'libssh2' 'libgit2' 'xz' 'squashfs-tools' 'glibc' 'systemd-libs')
 makedepends=('rust' 'make' 'gcc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AOSC-Dev/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('77464876beb86bdb9e4c5238a3423c181a785c27604afdafcf683490192e8258')
+sha256sums=('0386d8c02d6500fadaea214a58639a03438082e8f17d3465f804dc291dbb1328')
 conflicts=('ciel-git')
 
 prepare() {
@@ -24,7 +24,7 @@ build() {
     cd ${_pkgname}-${pkgver}
     export LIBSSH2_SYS_USE_PKG_CONFIG=1
     CFLAGS+=' -ffat-lto-objects'
-    cargo build --workspace --release --frozen --all-features --target-dir=target
+    cargo build --release --frozen --all-features --target-dir=target
 }
 
 check() {
@@ -35,7 +35,10 @@ check() {
 
 package() {
     cd ${_pkgname}-${pkgver}
-    install -Dm755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
+    install -Dm755 target/release/${_pkgname} -t "${pkgdir}/usr/bin"
+
+    # Rename the binary
+    mv "${pkgdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
     # Install assets
     PREFIX="${pkgdir}/usr/" ./install-assets.sh
