@@ -3,7 +3,7 @@
 _pkgname=langchain-chroma
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="An integration package connecting Chroma and LangChain"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=(python-chromadb python-fastapi python-langchain-core python-numpy)
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pipname::1}/${_pipname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('5963a79bf72af0f72019084bbc1e610d03ba33ec2df9a4b47b27c0132aa533fb')
+sha256sums=('611dd5d844388cca0acd99dab230ac8512d79ac8d86ff80a6f82607f497d5930')
 
 build() {
     cd "${_pipname}-${pkgver}"
