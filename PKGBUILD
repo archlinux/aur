@@ -1,4 +1,5 @@
-# Maintainer:  Amber <amber@mail.cyborgtrees.com>
+# Maintainer:  Kenneth Henderick <kenneth@ketronic.be>
+# Contributor:  Amber <amber@mail.cyborgtrees.com>
 # Contributor: Yusuf Aktepe <yusuf@yusufaktepe.com>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Aaron Schaefer <aaron@elasticdog.com>
