@@ -2,9 +2,9 @@
 # https://github.com/adamperkowski/PKGBUILDs
 _pkgname=jule
 pkgname="${_pkgname}c"
-pkgver=0.1.1
+pkgver=0.1.2
 _pkgver="$_pkgname$pkgver"
-pkgrel=4
+pkgrel=1
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
 url="https://github.com/${_pkgname}lang/$_pkgname"
@@ -12,13 +12,13 @@ _url_raw="https://raw.githubusercontent.com/$(echo "$url" | awk -F'/' '{print $4
 license=('BSD-3-Clause')
 groups=('jule')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
-source_x86_64=("$_pkgname-ir-$pkgver-$CARCH.cpp::$_url_raw/9a58e198e2479d0840e3705dd4947e5006c0e44d/src/linux-amd64.cpp")
-source_aarch64=("$_pkgname-ir-$pkgver-aarch64.cpp::$_url_raw/9a58e198e2479d0840e3705dd4947e5006c0e44d/src/linux-arm64.cpp")
-source_i386=("$_pkgname-ir-$pkgver-i386.cpp::$_url_raw/9a58e198e2479d0840e3705dd4947e5006c0e44d/src/linux-i386.cpp")
-sha256sums=('4289447fc62a4466b67b4be87614cee9f424b630164bdc7f7bc810a25431d930')
-sha256sums_x86_64=('b087205f273f3308534befd47ff8f2d01241c3389141f298db3e3a3c39c9b037')
-sha256sums_aarch64=('98b54385c76f1ec46f9c80429be2876f377d1128d1e90deb37f9db758c767e06')
-sha256sums_i386=('d00ef98608f404a51108f4af2e18cab066306478695fe0198e52f944a216f829')
+source_x86_64=("$_pkgname-ir-$pkgver-$CARCH.cpp::$_url_raw/03f3ebe18a79bb8dcb5440f0e6297e1d2e032e19/src/linux-amd64.cpp")
+source_aarch64=("$_pkgname-ir-$pkgver-aarch64.cpp::$_url_raw/03f3ebe18a79bb8dcb5440f0e6297e1d2e032e19/src/linux-arm64.cpp")
+source_i386=("$_pkgname-ir-$pkgver-i386.cpp::$_url_raw/03f3ebe18a79bb8dcb5440f0e6297e1d2e032e19/src/linux-i386.cpp")
+sha256sums=('1f8bc6852669392d912ff80c6b50980ecf7a1d61af5a98ab38f559c7da533a61')
+sha256sums_x86_64=('6226cd899c12d1802be30f497bae18f2ea49e481441c36365b0e9dc5a4112c3e')
+sha256sums_aarch64=('2ac453e3e5e598816a158288876791d5f214aecdef224054f847b1461d17e9c8')
+sha256sums_i386=('96e363a7b48d3c56c56784a3c6c483194db90d704d9dad8213b6ad240b0a44e8')
 depends=('glibc' 'gcc-libs')
 makedepends=('clang')
 optdepends=('clang: clang backend support'
@@ -45,8 +45,9 @@ build() {
 }
 
 check() {
-    cd "$_pkgname-$_pkgver"
-    "./bin/$pkgname" -t "src/$pkgname"
+    cd "$_pkgname-$_pkgver/tests/std"
+    "../../bin/$pkgname" mod init
+    "../../bin/$pkgname" -t .
 }
 
 package() {
