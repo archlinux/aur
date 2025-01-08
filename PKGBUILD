@@ -2,13 +2,13 @@
 
 pkgname=libkrunfw
 _pkgname=libkrunfw
-_kver=6.6.52
-pkgver=4.4.2
+_kver=6.6.63
+pkgver=4.5.1
 pkgrel=1
 pkgdesc="A dynamic library bundling the guest payload consumed by libkrun"
 url="https://github.com/containers/libkrunfw"
 arch=('x86_64')
-license=('GPL2')
+license=('GPL-2.0-only' 'LGPL-2.1-only')
 depends=('glibc')
 makedepends=('bc' 'python-pyelftools')
 source=(
@@ -30,5 +30,5 @@ package() {
     make DESTDIR="$pkgdir" PREFIX=/usr LIBDIR_Linux=lib install
 }
 
-sha256sums=('26a348bcb0a43a56ee98d67178a78fa6c9b6378a64532b2ad0bc9fe1f4cc3297'
-            '1591ab348399d4aa53121158525056a69c8cf0fe0e90935b0095e9a58e37b4b8')
+sha256sums=('2046d185e67ded54260e05dea9eea6f330f31a36f2859ccc26746bf67775d6d0'
+            'd1054ab4803413efe2850f50f1a84349c091631ec50a1cf9e891d1b1f9061835')
