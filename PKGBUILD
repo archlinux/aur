@@ -2,8 +2,8 @@
 
 upstream_name=connexion
 pkgname=python-connexion
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="Connexion is a modern Python web framework that makes spec-first and api-first development easy"
 arch=(any)
 url="https://github.com/spec-first/$upstream_name"
@@ -35,4 +35,4 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha256sums=('4dab2a0e8259666b057ac6d5bf3ece619c4c88a12c567954f09bbfc0aacd1775')
+sha256sums=('e768ee476dc9aff13ffdce340eb45522a8dc3a51d611fd33879c73b014dc7325')
