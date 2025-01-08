@@ -1,7 +1,7 @@
 pkgbase = bilibili-manga-watermark-remover
 	pkgdesc = bilibili漫画 哔哩哔哩漫画 B漫 去水印工具(无痕 无损)，带图形界面
-	pkgver = 0.7.0
-	pkgrel = 0
+	pkgver = 0.8.0
+	pkgrel = 1
 	url = https://github.com/lanyeeee/bilibili-manga-watermark-remover
 	arch = x86_64
 	license = MIT
@@ -22,7 +22,7 @@ pkgbase = bilibili-manga-watermark-remover
 	options = !debug
 	options = !strip
 	options = !lto
-	source = bilibili-manga-watermark-remover-0.7.0.tar.gz::https://github.com/lanyeeee/bilibili-manga-watermark-remover/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = b4a39e12a219ce6f3492ec579ca624f0c05777b3be09c64adb50f052a0da963a
+	source = bilibili-manga-watermark-remover-0.8.0.tar.gz::https://github.com/lanyeeee/bilibili-manga-watermark-remover/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 1fa1bcc6e18e655526ed6f946aa7b70114908531c25b446c5bc5465c96a4a848
 
 pkgname = bilibili-manga-watermark-remover
