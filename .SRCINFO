@@ -1,7 +1,7 @@
 pkgbase = protoc-gen-go-bin
 	pkgdesc = Go support for Google's protocol buffers
 	pkgver = 1.36.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/protocolbuffers/protobuf-go
 	arch = x86_64
 	arch = aarch64
@@ -17,10 +17,10 @@ pkgbase = protoc-gen-go-bin
 	sha256sums = 4835612df0098ca95f8e7d9e3bffcb02358d435dbb38057c844c99d7f725eb20
 	sha256sums = 96f408bfae65bf137fc2525d3ecb030271c50c1e90799f87abf8846d8dd505cc
 	source_x86_64 = protoc-gen-go-1.36.2-x86_64.tar.gz::https://github.com/protocolbuffers/protobuf-go/releases/download/v1.36.2/protoc-gen-go.v1.36.2.linux.amd64.tar.gz
-	sha256sums_x86_64 = 92b02dda358947d196756f4a21adb6265135ae6c9bc92cb2e2583b7be164e6c0
+	sha256sums_x86_64 = 18f27a89f84e1419a476c8f0c34a5de57d77bdc02457714f036f092a03eebe74
 	source_aarch64 = protoc-gen-go-1.36.2-aarch64.tar.gz::https://github.com/protocolbuffers/protobuf-go/releases/download/v1.36.2/protoc-gen-go.v1.36.2.linux.arm64.tar.gz
-	sha256sums_aarch64 = 1919d18b674088d6c403b794e4d84c2ab3e53afe1f6860c05eb04cda658ae0d2
+	sha256sums_aarch64 = 101a9afa71bb3d671e5cda3e7e293944c5f27bba140e75efb1032101f00cf94f
 	source_i686 = protoc-gen-go-1.36.2-i686.tar.gz::https://github.com/protocolbuffers/protobuf-go/releases/download/v1.36.2/protoc-gen-go.v1.36.2.linux.386.tar.gz
-	sha256sums_i686 = abd58468b494b925bb4f99c243edaabe9b7536893d94bcccccc23621b20eb966
+	sha256sums_i686 = d4e8e8787c192ae7f426c893a3419f746c2e019e2cdee208272c7975058b3e80
 
 pkgname = protoc-gen-go-bin
