@@ -2,7 +2,7 @@
 
 _pkgname=twitchmpv
 pkgname="${_pkgname}-git"
-pkgver=0.0.1.r0.db9e97d
+pkgver=0.0.1.r1.c4f9760
 pkgrel=1
 pkgdesc="Wrapper bash script for streamlink in order to more simply watch twitch from the terminal."
 arch=('any')
