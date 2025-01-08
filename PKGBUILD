@@ -1,8 +1,8 @@
 # Maintainer: Faugus <felix.ribeiro@live.com>
 
 pkgname=faugus-launcher
-pkgver=1.2.5
-pkgrel=7
+pkgver=1.2.6
+pkgrel=1
 pkgdesc="A simple and lightweight app for running Windows games using UMU-Launcher"
 arch=('x86_64')
 url="https://github.com/Faugus/faugus-launcher"
@@ -10,12 +10,11 @@ license=('MIT')
 depends=('python' 'python-gobject' 'python-requests' 'python-pillow' 'python-pynput' 'python-filelock' 'umu-launcher' 'imagemagick' 'icoextract' 'libayatana-appindicator' 'gamescope')
 provides=('faugus-launcher')
 conflicts=('faugus-launcher-git')
-
-source=("https://github.com/Faugus/${pkgname}/archive/refs/heads/main.tar.gz")
+source=("https://github.com/Faugus/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 package() {
-    cd "${srcdir}/${pkgname}-main"
+    cd ${pkgname}-${pkgver}
     install -Dm755 faugus-launcher.py "$pkgdir/usr/bin/faugus-launcher"
     install -Dm755 faugus-run.py "$pkgdir/usr/bin/faugus-run"
     install -Dm755 faugus-proton-manager.py "$pkgdir/usr/bin/faugus-proton-manager"
