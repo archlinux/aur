@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="wipemychat"
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Delete all your messages in public and private Telegram chats"
 arch=('x86_64' 'aarch64' 'i686')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('890a272042104bf927ad6c54fab4eed911dc41136b10ccc68e731082a55cb0bb')
+sha256sums=('b309c19e2d394c722a6198a2cca9f7ad5353c837ede12bc94031e1143a5dd600')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
