@@ -5,7 +5,7 @@
 
 pkgname=gnome-session-git
 _pkgname=gnome-session
-pkgver=47.0.1+r6768+g39ef6f6c9
+pkgver=47.0.1+r6770+g195d77a94
 pkgrel=1
 pkgdesc="The GNOME Session Handler - git latest"
 url="https://gitlab.gnome.org/GNOME/gnome-session"

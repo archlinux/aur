@@ -1,6 +1,6 @@
 pkgbase = gnome-session-git
 	pkgdesc = The GNOME Session Handler - git latest
-	pkgver = 47.0.1+r6768+g39ef6f6c9
+	pkgver = 47.0.1+r6770+g195d77a94
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-session
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = gnome-session-git
 	depends = systemd
 	depends = systemd-libs
 	depends = xdg-desktop-portal-gnome
-	provides = gnome-session=47.0.1+r6768+g39ef6f6c9
+	provides = gnome-session=47.0.1+r6770+g195d77a94
 	conflicts = gnome-session
 	source = git+https://gitlab.gnome.org/GNOME/gnome-session.git
 	b2sums = SKIP
