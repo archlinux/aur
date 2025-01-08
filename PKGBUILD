@@ -2,7 +2,7 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=classInt
-_pkgver=0.4-10
+_pkgver=0.4-11
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
 pkgrel=1
@@ -28,7 +28,7 @@ optdepends=(
 )
 makedepends=("gcc-fortran")
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-b2sums=("394f51e137ac8451bdfb0def0662206545d28d487bf77609fc4e0cd7966960d1430c3ecbdd02c08ca7b757083fb62330dd4f598623860eaeba36b5a6d45ad7ad")
+b2sums=("fb63690bd9184a2d08140d485c9d522effec7b571c39cf5ee3d98f60878c6bca3e32e85d65df7f7a30d3d074e3a616361981a673ec29a89883f74912dd2496e8")
 
 build() {
     R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
