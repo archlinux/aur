@@ -1,0 +1,14 @@
+--- src/libwifi/core/frame/tag.c	2024-11-11 19:22:36.381371022 +0100
++++ src/libwifi/core/frame/tag.c.new	2024-11-11 19:22:19.324833442 +0100
+@@ -66,9 +66,9 @@
+             // how many bytes to shrink the tagged parameter list by
+             size_t copy_len = tags->length -
+                               (it.tag_data - tags->parameters) -
+-                              (it.tag_header->tag_len + sizeof(struct libwifi_tag_header));
++                              it.tag_header->tag_len;
+-            memcpy(tags->parameters, it.tag_data + it.tag_header->tag_len, copy_len);
+             size_t new_len = tags->length - it.tag_header->tag_len - sizeof(struct libwifi_tag_header);
++            memcpy(it.tag_data - sizeof(struct libwifi_tag_header), it.tag_data + it.tag_header->tag_len, copy_len);
+             tags->parameters = realloc(tags->parameters, new_len);
+             tags->length = new_len;
+             break;

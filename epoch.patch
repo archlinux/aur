@@ -1,0 +1,14 @@
+--- src/libwifi/core/misc/epoch.c	2023-07-22 05:07:29.000000000 +0200
++++ src/libwifi/core/misc/epoch.c.new	2024-11-04 14:04:22.863995045 +0100
+@@ -15,9 +15,10 @@
+ 
+ #include "epoch.h"
+ #include <time.h>
++#include <math.h>
+ 
+ unsigned long long libwifi_get_epoch(void) {
+     struct timespec spec;
+     clock_gettime(CLOCK_REALTIME, &spec);
+-    return spec.tv_sec * 1000 + spec.tv_nsec / 1000;
++    return spec.tv_sec * 1000 + llround(spec.tv_nsec / 1000000);
+ }
