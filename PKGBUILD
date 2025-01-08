@@ -19,7 +19,7 @@ prepare() {
 
 build() {
 	cmake -B build -S elf2vkp -DCMAKE_BUILD_TYPE=Release
-	cmake --build build
+	cmake --build build -j$(nproc)
 }
 
 package() {
