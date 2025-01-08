@@ -4,7 +4,7 @@ _gitname="plutovg"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=0.0.11.r181.20250107.897ac25
-pkgrel=2
+pkgrel=3
 pkgdesc="A standalone 2D vector graphics library in C."
 arch=(
   'x86_64'
@@ -31,6 +31,7 @@ provides=(
 conflicts=(
   "${_pkgname}"
 )
+options+=('!lto') # Otherwise build of 'plutosvg' throws linking  errors.
 
 source=(
   "${_pkgname}::git+https://${_githost}/${_gituser}/${_gitname}.git"
