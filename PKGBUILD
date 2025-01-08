@@ -11,7 +11,7 @@ depends=("java-runtime")
 
 source=("https://github.com/HiveGamesOSS/Chunker/releases/download/${pkgver}/${pkgname}-${pkgver}.jar"
 		"${pkgname}-${pkgver}-license::https://github.com/HiveGamesOSS/Chunker/raw/refs/heads/main/LICENSE"
-		"chunker-cli.sh")
+		"${pkgname}.sh")
 
 b2sums=("0b4b92db1b4a0d80326da8baffc2d5d20970d923838200ae9963a04138b10098bb2e01acde69ee534b24d64dbbd8ff0b7de0ff26f8e83e6504eb6622054e90f0"
 		"da9186807f66a03130a5443cd3ae2b43e8945f0181495e15b4666167942860f67f73ff62324409f521823054573d604de64b28de832e6b6fd338c5544bed57d7"
@@ -19,6 +19,6 @@ b2sums=("0b4b92db1b4a0d80326da8baffc2d5d20970d923838200ae9963a04138b10098bb2e01a
 
 package() {
 	install -D -m0644 "${srcdir}/${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
-	install -D -m0755 "${srcdir}/chunker-cli.sh" "${pkgdir}/usr/bin/chunker-cli"
+	install -D -m0755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 	install -D -m0644 "${srcdir}/${pkgname}-${pkgver}-license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
