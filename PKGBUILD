@@ -1,6 +1,6 @@
 # Maintainer: Kirill Zhumarin <kirill.zhumarin@gmail.com>
 pkgname=elf2vkp-git
-pkgver=v1.0.0
+pkgver=1.1.5
 pkgrel=1
 pkgdesc='Tool for converting .elf to .vkp patches.'
 arch=(any)
@@ -18,7 +18,7 @@ prepare() {
 }
 
 build() {
-	cmake -B build -S elf2vkp
+	cmake -B build -S elf2vkp -DCMAKE_BUILD_TYPE=Release
 	cmake --build build
 }
 
@@ -28,5 +28,5 @@ package() {
 
 pkgver() {
 	cd "elf2vkp"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | grep -oP '^v\d+\.\d+\.\d+' | sed 's/^v//g'
 }
