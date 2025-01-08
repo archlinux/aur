@@ -1,0 +1,22 @@
+pkgbase = mdremotifier
+	pkgdesc = Remotify local links in Markdown
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/realazthat/mdremotifier
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-mistletoe
+	depends = python-beautifulsoup4
+	depends = python-rich
+	depends = python-rich-argparse
+	depends = python-typing_extensions
+	depends = python-colorama
+	source = mdremotifier-0.5.0.tar.gz::https://github.com/realazthat/mdremotifier/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = deb556f6c93627d15b79feb7f8f943144b9b373e2269981902a3ab42a96b7217
+
+pkgname = mdremotifier
