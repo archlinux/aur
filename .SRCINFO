@@ -1,6 +1,6 @@
 pkgbase = elf2vkp-git
 	pkgdesc = Tool for converting .elf to .vkp patches.
-	pkgver = v1.0.0
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/siemens-mobile-hacks/elf2vkp
 	arch = any
