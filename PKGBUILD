@@ -191,7 +191,6 @@ build() {
     
     export CFLAGS+=' -isystem/opt/cuda/include'
     export LDFLAGS+=' -L/opt/cuda/lib64'
-    export PKG_CONFIG_PATH="/opt/intel/openvino/runtime/lib/intel64/pkgconfig${PKG_CONFIG_PATH:+":${PKG_CONFIG_PATH}"}"
     
     # fix build of libavfilter/asrc_flite.c with gcc 14
     export CFLAGS+=' -Wno-incompatible-pointer-types'
