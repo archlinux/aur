@@ -1,6 +1,6 @@
 pkgbase = python-environs
 	pkgdesc = simplified environment variable parsing
-	pkgver = 13.0.0
+	pkgver = 14.0.0
 	pkgrel = 1
 	url = https://github.com/sloria/environs
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-environs
 	makedepends = python-flit-core
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = environs-13.0.0.tar.gz::https://files.pythonhosted.org/packages/source/e/environs/environs-13.0.0.tar.gz
-	sha256sums = c5c0557c44a3f46769fa5ffc71623a8fd8d4cbe748dd00f3230e55ea0c4c196d
+	source = environs-14.0.0.tar.gz::https://files.pythonhosted.org/packages/source/e/environs/environs-14.0.0.tar.gz
+	sha256sums = 02c50088c459a2b21d6530cacd173c7528c38a723aae2791a863266ca41d9eeb
 
 pkgname = python-environs

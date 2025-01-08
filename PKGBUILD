@@ -3,7 +3,7 @@
 _pkgname=environs
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=13.0.0
+pkgver=14.0.0
 pkgrel=1
 pkgdesc="simplified environment variable parsing"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=(python-marshmallow python-dotenv python-typing-extensions; python_version )
 makedepends=('python-build' 'python-flit-core' 'python-installer' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pipname::1}/${_pipname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('c5c0557c44a3f46769fa5ffc71623a8fd8d4cbe748dd00f3230e55ea0c4c196d')
+sha256sums=('02c50088c459a2b21d6530cacd173c7528c38a723aae2791a863266ca41d9eeb')
 
 build() {
     cd "${_pipname}-${pkgver}"
