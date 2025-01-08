@@ -3,12 +3,12 @@
 
 pkgname=super-mario-4-jugadores
 pkgver=2.0.5_3
-pkgrel=2
+pkgrel=3
 pkgdesc="A fangame of Super Mario Bros."
 arch=('i686' 'x86_64')
 url="https://carlosxdjavgames.altervista.org/archivos/134/"
 license=('custom')
-depends=('desktop-file-utils')
+depends=('desktop-file-utils' 'lib32-openssl-1.0')
 makedepends=('p7zip' 'wget')
 source=("SM4J.zip::https://archive.org/download/infoserver/SM4JLegacy%202.0.5Fixv3_1.zip"
         "${pkgname}.png"

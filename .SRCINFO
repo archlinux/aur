@@ -1,7 +1,7 @@
 pkgbase = super-mario-4-jugadores
 	pkgdesc = A fangame of Super Mario Bros.
 	pkgver = 2.0.5_3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://carlosxdjavgames.altervista.org/archivos/134/
 	install = super-mario-4-jugadores.install
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = super-mario-4-jugadores
 	makedepends = p7zip
 	makedepends = wget
 	depends = desktop-file-utils
+	depends = lib32-openssl-1.0
 	source = SM4J.zip::https://archive.org/download/infoserver/SM4JLegacy%202.0.5Fixv3_1.zip
 	source = super-mario-4-jugadores.png
 	source = super-mario-4-jugadores.desktop
