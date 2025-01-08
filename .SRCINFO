@@ -1,0 +1,16 @@
+pkgbase = sdrpp-mirisdr-source-git
+	pkgdesc = Libmirisdr source plugin for SDR++
+	pkgver = r9.9d2f9dd
+	pkgrel = 1
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = sdrpp-headers-git
+	depends = sdrpp
+	depends = libmirisdr5
+	provides = sdrpp-mirisdr-source
+	conflicts = sdrpp-mirisdr-source
+	source = sdrpp-mirisdr-source::git+https://github.com/cropinghigh/sdrpp-mirisdr-source.git
+	sha256sums = SKIP
+
+pkgname = sdrpp-mirisdr-source-git
