@@ -1,6 +1,6 @@
 pkgname=hyprswitch
 # x-release-please-start-version
-pkgver=3.2.3
+pkgver=3.2.4
 # x-release-please-end
 pkgrel=1
 pkgdesc="A CLI/GUI that allows switching between windows in Hyprland"
@@ -31,4 +31,4 @@ package() {
 post_install() {
     echo "Please restart the hyprswitch daemon"
 }
-sha256sums=('5ace5a7f4e26a68e29b3a7b0ded00648b20ba1f1b8c8c3ba8f5fa4a31ae32e80')
+sha256sums=('896fed1ea43a5a7e7242b11969ff5011576543ded22c62b603f2ffad4b4a7eea')
