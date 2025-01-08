@@ -1,6 +1,6 @@
 pkgbase = python-elasticsearch-dsl
 	pkgdesc = Python client for Elasticsearch
-	pkgver = 8.17.0
+	pkgver = 8.17.1
 	pkgrel = 1
 	url = https://github.com/elastic/elasticsearch-dsl-py
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-elasticsearch-dsl
 	depends = python-elasticsearch
 	depends = python-dateutil
 	depends = python-typing_extensions
-	source = elasticsearch-dsl-py-8.17.0.tar.gz::https://github.com/elastic/elasticsearch-dsl-py/archive/v8.17.0.tar.gz
-	sha512sums = f97014dfff9d12b2b95c04fce68b278405f7cac60c2d9a8f688f401487fefdb63d9f8a5bedfd795f5a92a74a59e88b3fa6d65e0a123fa15cb8caef50ce52488b
+	source = elasticsearch-dsl-py-8.17.1.tar.gz::https://github.com/elastic/elasticsearch-dsl-py/archive/v8.17.1.tar.gz
+	sha512sums = 73f5bed79f7945682df005d305ba28fdefaa1691020df58d696c7deae1e81087437c14a256bb81539600d789ded4e4e20b1c4bce24143d7f367d27fa168ef7bc
 
 pkgname = python-elasticsearch-dsl
