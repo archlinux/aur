@@ -1,14 +1,14 @@
 pkgbase = transset-df
 	pkgdesc = A patched version of X.Org's transset with added functionality.
 	pkgver = 6
-	pkgrel = 8
+	pkgrel = 9
 	url = https://forchheimer.se/transset-df/
 	arch = x86_64
 	license = GPL
 	depends = libxcomposite
 	depends = libxdamage
 	depends = libxrender
-	source = http://forchheimer.se/transset-df/transset-df-6.tar.gz
+	source = https://forchheimer.se/transset-df/transset-df-6.tar.gz
 	sha256sums = 4563c8a9883db354c58dcd63f87dd3d076c4a3ed9c55b85e8cb59c9d399fdeee
 
 pkgname = transset-df
