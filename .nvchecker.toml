@@ -1,0 +1,4 @@
+[quicssh-rs]
+source = "git"
+git = "https://github.com/oowl/quicssh-rs.git"
+prefix = "v"
