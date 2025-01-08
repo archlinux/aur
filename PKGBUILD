@@ -1,7 +1,7 @@
 appname=zen
 pkgname="${appname}-adblocker-git"
 _pkgname=Zen
-pkgver=0.5.0.r31.ga5342db
+pkgver=0.7.0.r0.g3e030d3
 _nodeversion=20
 pkgrel=1
 pkgdesc="An open-source system-wide ad-blocker and privacy guard."
