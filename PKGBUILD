@@ -14,9 +14,7 @@ source=()
 
 
 package() {
-	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir"/usr/lib/nrfutil-bundle --ignore-installed nrfutil==$pkgver
 	install -dm0755 "$pkgdir"/usr/bin
-	echo "#!/bin/bash
-PYTHONPATH=/usr/lib/nrfutil-bundle/usr/lib/python3.8/site-packages/ exec /usr/lib/nrfutil-bundle/usr/bin/nrfutil \$*" >"$pkgdir"/usr/bin/nrfutil
+	echo -e "#!/bin/bash\nexit0" >"$pkgdir"/usr/bin/nrfutil # STUB
 	chmod a+x "$pkgdir"/usr/bin/nrfutil
 }
