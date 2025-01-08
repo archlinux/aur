@@ -1,13 +1,13 @@
-# Maintainer: Birk Birkner <aur at bbirkner.de>
+# Maintainer: Berrit Birkner <aur at bbirkner.de>
 # Contributor: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi-git
-pkgver=3.3.0.r90.g1910c87c
+pkgver=3.3.0.r218.geb89720c
 pkgrel=1
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
 url="http://www.frescobaldi.org/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 makedepends=(
   'git'
   'python-build'
@@ -65,7 +65,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -Dm644 frescobaldi_app/icons/org.frescobaldi.Frescobaldi.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/org.frescobaldi.Frescobaldi.svg
+  install -vDm644 frescobaldi_app/icons/org.frescobaldi.Frescobaldi.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/org.frescobaldi.Frescobaldi.svg
   desktop-file-install --dir $pkgdir/usr/share/applications/ --set-icon /usr/share/icons/hicolor/scalable/apps/org.frescobaldi.Frescobaldi.svg  linux/org.frescobaldi.Frescobaldi.desktop
 }
 
