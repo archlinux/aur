@@ -1,36 +1,35 @@
-# Maintainer:  Sian1468 <sian1468-aur@.39011468.xyz>
-# Contributor: Maxime Gauduin <alucryd@archlinux.org>
-# Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
-# Contributor: dcelasun <dcelasun@gmail.com>
 
-pkgname=plank-git
-pkgver=0.11.89.r20.g396b871
+# Maintainer:  Josh Ellithorpe <quest@mac.com>
+
+pkgname=plank-reloaded-git
+pkgver=0.11.100.r0.ga9d4343
 pkgrel=1
-pkgdesc='Elegant, simple, clean dock'
+pkgdesc='Fork of the original Plank project, focusing on Cinnamon desktop compatibility
+and modernized features'
 arch=('x86_64')
-url='https://launchpad.net/plank'
+url='https://github.com/zquestz/plank-reloaded'
 license=('GPL3')
 depends=('atk' 'bamf' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gnome-menus'
          'gtk3' 'libgee' 'libwnck3' 'libx11' 'libxfixes' 'libxi' 'pango')
 makedepends=('gnome-common' 'git' 'intltool' 'vala')
 provides=('plank')
 conflicts=('plank')
-source=('git+https://github.com/ricotz/plank.git')
+source=('git+https://github.com/zquestz/plank-reloaded.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd plank
+  cd plank-reloaded
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd plank
+  cd plank-reloaded
   sed 's/0.19.6/0.20/' -i configure.ac
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd plank
+  cd plank-reloaded
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -40,7 +39,7 @@ build() {
 }
 
 package() {
-  make DESTDIR="${pkgdir}" -C plank install
+  make DESTDIR="${pkgdir}" -C plank-reloaded install
 }
 
 # vim: ts=2 sw=2 et:
