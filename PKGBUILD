@@ -3,7 +3,7 @@
 pkgbase=mounriver-studio-toolchain-bin
 pkgname=($pkgbase mounriver-studio-toolchain-openocd-bin mounriver-studio-toolchain-riscv-gcc-bin mounriver-studio-toolchain-riscv-gcc12-bin)
 pkgver=1.92.1
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('GPL2' 'GPL3' 'custom')
@@ -52,6 +52,8 @@ package_mounriver-studio-toolchain-openocd-bin() {
     _install 755 bin -name "openocd"
     _install 644 share
 
+    sed -i 's|plugdev|uucp|g' ${srcdir}/beforeinstall/50-wch.rules
+    sed -i 's|plugdev|uucp|g' ${srcdir}/beforeinstall/60-openocd.rules
     install -Dm0644 "${srcdir}/beforeinstall/50-wch.rules" "${pkgdir}/usr/lib/udev/rules.d/50-wch.rules"
     install -Dm0644 "${srcdir}/beforeinstall/60-openocd.rules" "${pkgdir}/usr/lib/udev/rules.d/60-openocd-wch.rules"
 
