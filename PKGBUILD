@@ -1,8 +1,8 @@
-# Maintainer: TwoFinger
+# Contributor: TwoFinger
 
 pkgname=textadept-curses
 _basename=textadept
-pkgver=12.4
+pkgver=12.5
 pkgrel=1
 pkgdesc="Fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=(i686 x86_64 aarch64)
@@ -10,7 +10,7 @@ url="https://github.com/orbitalquark/textadept"
 license=(MIT)
 makedepends=(ncurses wget unzip cmake)
 source=("$url/archive/${_basename}_$pkgver.tar.gz")
-sha256sums=(a9c3952d4055007c3bc9c65d685adb5a8abdb589646623d7141fc709d86464c2)
+sha256sums=('ff59d2240c8169563c9a39eb19b65788dcde0a4f327c7d028b23dafc9d85a8d4')
 
 build() {
 	cd "${_basename}-${_basename}_$pkgver"
