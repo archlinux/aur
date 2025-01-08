@@ -16,14 +16,13 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=mesa-amdonly-gaming-git
-pkgver=25.0.0_devel.199904.8a55de3338a.d41d8cd
+pkgver=25.0.0_devel.199912.731138386a5.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 pkgname=(
   'amdonly-gaming-vulkan-mesa-layers-git'
   'amdonly-gaming-opencl-clover-mesa-git'
   'amdonly-gaming-opencl-rusticl-mesa-git'
   'amdonly-gaming-vulkan-radeon-git'
-  'amdonly-gaming-vulkan-swrast-git'
   'amdonly-gaming-mesa-git'
 )
 pkgrel=1
@@ -128,7 +127,7 @@ build() {
     -D egl=enabled
     -D gallium-drivers=radeonsi,softpipe,zink
     -D gallium-extra-hud=true
-    -D gallium-nine=true
+    -D gallium-nine=false
     -D gallium-opencl=icd
     -D gallium-rusticl=true
     -D gallium-va=enabled
@@ -150,7 +149,7 @@ build() {
     -D shared-glapi=enabled
     -D valgrind=disabled
     -D video-codecs=all
-    -D vulkan-drivers=amd,swrast
+    -D vulkan-drivers=amd
     -D vulkan-layers=device-select,overlay
     -D vulkan-beta=true
     --wrap-mode=nofallback
@@ -290,34 +289,6 @@ package_amdonly-gaming-vulkan-radeon-git() {
   _install fakeinstall/usr/share/drirc.d/00-radv-defaults.conf
   _install fakeinstall/usr/share/vulkan/icd.d/radeon_icd*.json
   _install fakeinstall/$_libdir/libvulkan_radeon.so
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
-
-package_amdonly-gaming-vulkan-swrast-git() {
-  pkgdesc="Vulkan software rasteriser driver"
-  depends=(
-    'libdrm'
-    'libx11'
-    'libxshmfence'
-    'llvm-libs'
-    'systemd'
-    'wayland'
-    'xcb-util-keysyms'
-    'zstd'
-  )
-  optdepends=('vulkan-mesa-layers: additional vulkan layers')
-  conflicts=(
-    'vulkan-mesa'
-    'vulkan-swrast'
-  )
-  provides=(
-    'vulkan-driver'
-    'vulkan-swrast'
-  )
-
-  _install fakeinstall/usr/share/vulkan/icd.d/lvp_icd*.json
-  _install fakeinstall/$_libdir/libvulkan_lvp.so
 
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
