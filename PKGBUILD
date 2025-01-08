@@ -1,8 +1,8 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
 pkgname=python-sdbus-notifications
-_reponame=sdbus-notifications
-pkgver=1.0.2
+_reponame=sdbus_notifications
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Freedesktop Notifications binds for python-sdbus"
 url="https://github.com/python-sdbus/python-sdbus-notifications"
@@ -19,7 +19,7 @@ makedepends=(
 	'python-setuptools'
 )
 source=("https://pypi.org/packages/source/${_reponame::1}/${_reponame}/${_reponame}-${pkgver}.tar.gz")
-sha256sums=('21443de84d218fb0ce01b50fd47d4e84ba4f4ffbc5fcd1be729be7088fd276c2')
+sha256sums=('92c301b8232832efc50c8c1d8789dedf83ce8fd55c1bc52d2befbeedfedfebc3')
 
 build() {
 	cd "${srcdir}/${_reponame}-${pkgver}"

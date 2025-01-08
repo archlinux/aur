@@ -1,6 +1,6 @@
 pkgbase = python-sdbus-notifications
 	pkgdesc = Freedesktop Notifications binds for python-sdbus
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/python-sdbus/python-sdbus-notifications
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-sdbus-notifications
 	makedepends = python-poetry
 	makedepends = python-setuptools
 	depends = python-sdbus
-	source = https://pypi.org/packages/source/s/sdbus-notifications/sdbus-notifications-1.0.2.tar.gz
-	sha256sums = 21443de84d218fb0ce01b50fd47d4e84ba4f4ffbc5fcd1be729be7088fd276c2
+	source = https://pypi.org/packages/source/s/sdbus_notifications/sdbus_notifications-1.0.3.tar.gz
+	sha256sums = 92c301b8232832efc50c8c1d8789dedf83ce8fd55c1bc52d2befbeedfedfebc3
 
 pkgname = python-sdbus-notifications
