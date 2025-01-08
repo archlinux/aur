@@ -1,7 +1,7 @@
 pkgbase = libjaylink-git
 	pkgdesc = Library for accessing SEGGER J-Link and compatible devices
-	pkgver = 0.3.1.r9.g32c5ef7
-	pkgrel = 1
+	pkgver = 0.4.0.r0.gfa52ee2
+	pkgrel = 4
 	url = https://gitlab.zapb.de/libjaylink/libjaylink
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -11,6 +11,7 @@ pkgbase = libjaylink-git
 	depends = libusb
 	optdepends = doxygen: Required for API documentation
 	provides = libjaylink.so
+	provides = libjaylink
 	conflicts = libjaylink
 	source = libjaylink::git+https://gitlab.zapb.de/libjaylink/libjaylink.git
 	sha256sums = SKIP
