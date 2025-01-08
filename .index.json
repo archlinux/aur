@@ -1,5 +1,6 @@
 {
-  ".i": 2,
+  ".i": 5,
   "crate": "mstickereditor",
-  "version": "0.3.6"
+  "version": "0.3.7",
+  "pkgrel": 1
 }
