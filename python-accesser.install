@@ -1,4 +1,20 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
 post_install() {
-    printf "==== Python-accesser Notes ====\n"
-    printf "You must manually trust the SSL certificate manually after the program first runs. \n"
+    printf "${yellow}==== python-accesser 初次安装注意事项 ====${all_off}\n"
+    printf "${blue}==>${all_off} 初次安装时，在首次运行软件后需要手动导入 ssl 证书。\n"
+    printf "${blue}==>${all_off} ${bold}/etc/accesser/${all_off} 下为 systemd 服务的配置文件。如果不想使用 systemd，可以在终端手动\n"
+    printf "    运行 ${bold}accesser${all_off} 命令，程序会在当前的工作目录生产配置文件，不会使用 ${bold}/etc/accesser/${all_off} 下。\n"
+    printf "    的配置文件\n"
+}
+
+post_upgrade() {
+    printf "${yellow}==== python-accesser 更新注意事项 ====${all_off}\n"
+    printf "${blue}==>${all_off} 更新软件后，在重新运行软件后可能需要重新导入 ssl 证书。\n"
+    printf "${blue}==>${all_off} 如果使用 ${bold}trust anchor --store${all_off} 导入，重新导入 ssl 证书前，\n"
+    printf "    请删除 ${bold}/etc/ca-certificates/trust-source${all_off} 和 ${bold}/etc/ssl/certs${all_off}\n"
+    printf "    中旧的 Accesser 证书文件。\n"
 }
