@@ -93,10 +93,10 @@ index 9ac968545..bdaa006f4 100644
                          Q.push_back(fullpath);
                      }
 diff --git LiteEditor/mainbook.cpp LiteEditor/mainbook.cpp
-index 844c970ac..a00c2b452 100644
+index 6db5cb238..b5e7566f0 100644
 --- LiteEditor/mainbook.cpp
 +++ LiteEditor/mainbook.cpp
-@@ -455,7 +455,7 @@ int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
+@@ -451,7 +451,7 @@ int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
  {
  #ifdef __WXGTK__
      // On gtk either fileName or the editor filepath (or both) may be (or their paths contain) symlinks
@@ -105,7 +105,7 @@ index 844c970ac..a00c2b452 100644
  #endif
  
      for (size_t i = 0; i < m_book->GetPageCount(); ++i) {
-@@ -489,7 +489,7 @@ int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
+@@ -485,7 +485,7 @@ int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
  
  #if defined(__WXGTK__)
                  // Try again, dereferencing the editor fpath
@@ -114,7 +114,7 @@ index 844c970ac..a00c2b452 100644
                  if (editorDest.Cmp(fullpath) == 0 || editorDest.Cmp(fileNameDest) == 0) {
                      return i;
                  }
-@@ -517,8 +517,9 @@ wxWindow* MainBook::FindPage(const wxString& text)
+@@ -513,8 +513,9 @@ wxWindow* MainBook::FindPage(const wxString& text)
              return editor;
          }
  
@@ -125,7 +125,7 @@ index 844c970ac..a00c2b452 100644
      }
      return NULL;
  }
-@@ -625,6 +626,13 @@ clEditor* MainBook::OpenFile(const wxString& file_name,
+@@ -621,6 +622,13 @@ clEditor* MainBook::OpenFile(const wxString& file_name,
                               const wxString& tooltip /* wxEmptyString */)
  {
      wxFileName fileName(CLRealPath(file_name));
@@ -139,7 +139,7 @@ index 844c970ac..a00c2b452 100644
      fileName.MakeAbsolute();
  
  #ifdef __WXMSW__
-@@ -1741,7 +1749,7 @@ WelcomePage* MainBook::GetWelcomePage(bool createIfMissing)
+@@ -1737,7 +1745,7 @@ WelcomePage* MainBook::GetWelcomePage(bool createIfMissing)
  
  clEditor* MainBook::OpenFileAsync(const wxString& file_name, std::function<void(IEditor*)>&& callback)
  {
@@ -148,7 +148,7 @@ index 844c970ac..a00c2b452 100644
      auto editor = FindEditor(real_path);
      if (editor) {
          push_callback(std::move(callback), real_path);
-@@ -1752,7 +1760,7 @@ clEditor* MainBook::OpenFileAsync(const wxString& file_name, std::function<void(
+@@ -1748,7 +1756,7 @@ clEditor* MainBook::OpenFileAsync(const wxString& file_name, std::function<void(
              m_book->SetSelection(index);
          }
      } else {
@@ -157,7 +157,7 @@ index 844c970ac..a00c2b452 100644
          if (editor) {
              push_callback(std::move(callback), real_path);
          }
-@@ -1817,11 +1825,12 @@ void MainBook::OnIdle(wxIdleEvent& event)
+@@ -1813,11 +1821,12 @@ void MainBook::OnIdle(wxIdleEvent& event)
      auto editor = GetActiveEditor();
      CHECK_PTR_RET(editor);
  

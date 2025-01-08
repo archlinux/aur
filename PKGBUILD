@@ -95,8 +95,6 @@ prepare() {
 
   #patch -p0 < "${startdir}/codelite-fsw-symlink.patch"
 
-  #patch -p0 < "${startdir}/codelite-DebugAdapterClient-CMakeLists-cxx17.patch"
-
   # dtl-v1.20 cannot compile on gcc >= 14.1.1 and clang >= 17.0.6
   #( cd dtl && patch -p0 < "${startdir}/dtl-dtl_Diff_hpp.patch" )
 
@@ -115,9 +113,7 @@ build() {
 
   # generate
   #  -DWITH_NATIVEBOOK=1 \
-  cmake -G "Unix Makefiles" \
-    -S . \
-    -B "${BUILD_DIR}" \
+  cmake -G "Unix Makefiles" -S . -B "${BUILD_DIR}" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCL_PREFIX=/usr \
@@ -125,6 +121,7 @@ build() {
     -DWITH_WX_CONFIG="${WX_CONFIG}" \
     -DENABLE_LLDB=1 \
     -DWITH_MYSQL=0 \
+    -DCOPY_WX_LIBS=0 \
 
 
   # build
