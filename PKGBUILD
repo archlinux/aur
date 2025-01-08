@@ -2,7 +2,7 @@
 # https://github.com/adamperkowski/PKGBUILDs
 _pkgname=jule
 pkgname="${_pkgname}c-git"
-pkgver=jule0.1.1.r191.gd87ffcd1
+pkgver=jule0.1.2.r0.gec118a40
 pkgrel=1
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
@@ -51,8 +51,9 @@ build() {
 }
 
 check() {
-    cd "$_pkgname"
-    "./bin/${_pkgname}c" -t "src/${_pkgname}c"
+    cd "$_pkgname/tests/std"
+    "../../bin/${_pkgname}c" mod init
+    "../../bin/${_pkgname}c" -t .
 }
 
 package() {
