@@ -2,15 +2,15 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=katharsis
-pkgver=1.0.0.26
-_pkgver=1.0.0-canary.26
+pkgver=1.0.0.27
+_pkgver=1.0.0-canary.27
 pkgrel=1
 pkgdesc='CLI tool for generating RSS feeds'
 arch=('x86_64')
 url="https://github.com/kurosakishigure/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz")
-sha256sums=('bbf53a3d582702c9f2685607ad6ffc00c23ca859bb611ce18600be2e8a404bc3')
+sha256sums=('272dc72f1a314b48371c26ce6fd1a675cb0af73fd16f94f4a6411d908df6582c')
 makedepends=('cargo')
 #depends=('')
 
