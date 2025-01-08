@@ -128,7 +128,7 @@ build() {
     -D egl=enabled
     -D gallium-drivers=radeonsi,softpipe,zink
     -D gallium-extra-hud=true
-    -D gallium-nine=false
+    -D gallium-nine=true
     -D gallium-opencl=icd
     -D gallium-rusticl=true
     -D gallium-va=enabled
@@ -141,6 +141,7 @@ build() {
     -D glx=dri
     -D intel-rt=disabled
     -D libunwind=disabled
+    -D llvm=enabled
     -D lmsensors=enabled
     -D microsoft-clc=disabled
     -D osmesa=true
