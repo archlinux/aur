@@ -2,8 +2,8 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-glib-networking
-pkgver=2.80.0
-pkgrel=3
+pkgver=2.80.1
+pkgrel=1
 epoch=1
 pkgdesc="Network extensions for GLib (32-bit)"
 url="https://gitlab.gnome.org/GNOME/glib-networking"
@@ -24,7 +24,7 @@ makedepends=(
 )
 checkdepends=(ca-certificates)
 source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#tag=${pkgver/[a-z]/.&}")
-b2sums=('819f574bd8e43e24e3e4c2248a44bb4882aa402c0c8c836b1d054b7d7da0d7f17428c64f8192185fa86575cf431ce895071b5ae22f26feea3c19ec7e5b74251d')
+b2sums=('fcaacb1c1d29d38c59fb17f7c8821b6ed7f46f60751d9d6d8484a73b86e0614499aded8e49e27de2e68e775720cb0fc59daf2d995eebb8ac3606d4bb4854a123')
 
 prepare() {
   cd glib-networking
