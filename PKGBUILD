@@ -1,10 +1,10 @@
 # Maintainer: Radiolin <anton.osi2011@gmail.com>
 
 pkgname=mangojuice
-pkgver=0.7.9
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A convenient alternative to GOverlay for configuring MangoHud"
-arch=(x86_64)
+arch=(any)
 url="https://github.com/radiolamp/${pkgname}"
 license=(GPL-3.0-or-later)
 depends=(
@@ -27,7 +27,7 @@ optdepends=(
 
 options=(!debug)
 source=($url/archive/refs/tags/$pkgver.tar.gz)
-b2sums=(0848fc14050acf8673d512eca37793041dbc285f1011f017c6cb4c55d4e425384d97aa885323fc188990a923cfbf1f2b0d85c15b487d62fdc4fa9ac08eb5266c)
+b2sums=(c6363f44e2f1695be4d0f07445f26b81d704fd4f6330bb7fc137973c868ca168eabcdee84e66c90b90f4ace69799cd81219d7b0c06ca48635aa67950c5750eef)
 
 build() {
   arch-meson ${pkgname}-$pkgver build
