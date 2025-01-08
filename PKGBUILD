@@ -4,7 +4,7 @@ _gitname="plutovg"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=0.0.11.r181.20250107.897ac25
-pkgrel=1
+pkgrel=2
 pkgdesc="A standalone 2D vector graphics library in C."
 arch=(
   'x86_64'
@@ -76,13 +76,16 @@ package() {
   cd "${srcdir}"
 
   make -C build DESTDIR="${pkgdir}" install
+  make -C build/examples clean # Remove built executable in examples directory.
 
   _docfiles=(
     "${srcdir}/git.log"
     "${srcdir}/${_pkgname}/README.md"
     "${srcdir}/${_pkgname}/smiley.png"
   )
-  _docdirs=()
+  _docdirs=(
+    "${srcdir}/build/examples"
+  )
   _manfiles=()
   _infofiles=()
   _licensefiles=(
