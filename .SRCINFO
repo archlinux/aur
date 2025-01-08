@@ -1,0 +1,14 @@
+pkgbase = argocd-vault-plugin
+	pkgdesc = An Argo CD plugin to retrieve secrets from various Secret Management tools (HashiCorp Vault, IBM Cloud Secrets Manager, AWS Secrets Manager, etc.) and inject them into Kubernetes resources
+	pkgver = 1.18.1
+	pkgrel = 1
+	url = https://github.com/argoproj-labs/argocd-vault-plugin
+	arch = x86_64
+	license = apache
+	makedepends = go
+	makedepends = make
+	depends = glibc
+	source = https://github.com/argoproj-labs/argocd-vault-plugin/archive/refs/tags/v1.18.1.tar.gz
+	sha256sums = 687141d21c1baaedab6b6d4f5e11e72faf6eec7f7d889be7095a48a888080e32
+
+pkgname = argocd-vault-plugin
