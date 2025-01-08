@@ -4,7 +4,7 @@ pkgbase=mounriverstudio-bin
 pkgname=(${pkgbase})
 pkgdesc="MounRiver Studio Ⅱ(MRS2)为MounRiver Studio的换代版本，从V2.1.0开始，框架更换至更现代的VSCode，并深度定制开发。在工程管理、代码编辑、编译、调试等方面均兼容之前版本，并在效率和功能等方面进行提升，着力将MRS打造为更加轻量化、智能化、高效化的RISC-V IDE。同时，提供Windows/Linux/macOS 以及国产操作系统版本"
 pkgver=210
-pkgrel=2
+pkgrel=4
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('custom: commercial')
@@ -67,7 +67,9 @@ package() {
     find "${pkgdir}/" -type d -exec chmod 755 {} \;
     find ${pkgdir}/usr/share/MRS2 -perm 600 -exec chmod 644 {} \;
 
-    cd ${pkgdir}/usr/share/MRS2
+    cd ${pkgdir}/usr/share/
+    sed -i 's|/usr/share/MRS2/MRS-linux-x64/mounriver-studio\\ 2|mounriverstudio|g' applications/MounRiverStudio2.desktop
+    cd MRS2
     sed -i 's|plugdev|uucp|g' beforeinstall/50-wch.rules
     sed -i 's|plugdev|uucp|g' beforeinstall/60-openocd.rules
     install -Dm0644 "beforeinstall/50-wch.rules" "${pkgdir}/usr/lib/udev/rules.d/50-mrs2.rules"
