@@ -1,7 +1,7 @@
 pkgbase = hidamari
 	pkgdesc = Video wallpaper for Linux. Written in Python.
-	pkgver = 3.5
-	pkgrel = 2
+	pkgver = 3.6
+	pkgrel = 1
 	url = https://github.com/jeffshee/hidamari
 	arch = any
 	license = GPL-3.0-only
@@ -25,7 +25,7 @@ pkgbase = hidamari
 	depends = vdpauinfo
 	depends = libappindicator-gtk3
 	depends = webkit2gtk-4.1
-	source = hidamari-3.5-2.tar.gz::https://github.com/jeffshee/hidamari/archive/refs/tags/v3.5-2.tar.gz
-	sha256sums = 60e9d52ebf578af91e20f5650c0829ab9c3c3b8405917584fd97595d2a48872a
+	source = hidamari-3.6-1.tar.gz::https://github.com/jeffshee/hidamari/archive/refs/tags/v3.6.tar.gz
+	sha256sums = fbfa754db13bb5bad6cecce07375bede047b3cacbc38c503ebe98e02ac418a81
 
 pkgname = hidamari
