@@ -4,7 +4,7 @@ _gitname="plutosvg"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=0.0.4.r95.20241226.e0a1ce5
-pkgrel=4
+pkgrel=5
 pkgdesc="A compact and efficient SVG rendering library written in C."
 arch=(
   'x86_64'
@@ -88,7 +88,7 @@ package() {
   make -C build DESTDIR="${pkgdir}" install
 
   for _exampleexecutable in emoji2png svg2png; do
-    install -Dvm755 -t "${pkgdir}/usr/bin" "build/examples/${_exampleexecutable}-plutosvg"
+    install -Dvm755 "build/examples/${_exampleexecutable}" "${pkgdir}/usr/bin/${_exampleexecutable}-plutosvg"
   done
 
   make -C build/examples clean # Remove built executable in examples directory.
