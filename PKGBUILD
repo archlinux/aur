@@ -2,24 +2,27 @@
 # Maintainer: Benjamin Radel <aur@radel.tk>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=dcpomatic
-pkgver=2.16.99
+pkgbase=dcpomatic
+pkgver=2.18.2
+provides=('dcpomatic')
+conflicts=('dcpomatic')
 pkgrel=1
 pkgdesc="A free, open-source program to generate Digital Cinema Packages (DCPs) from videos or images"
 arch=('i686' 'x86_64')
 url="https://dcpomatic.com/"
 #  CXXFLAGS="$CXXFLAGS  -I/usr/include/openjpeg-1.5/  -std=c++11"
 license=('GPL-2.0-or-later')
-depends=('libsub>=1.6.52' 'libcxml>=0.17.11' 'libdcp>=1.8.113' 'ffmpeg4.4' 'glib2' 'glu' 'icu' 'boost-libs>=1.86.0' 'imagemagick' 'libssh'  'wxwidgets-gtk3' 'wxwidgets-common' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio' 'x264' 'openssl' 'leqm-nrt>=0.0.2.r12.g30dcaea')
-makedepends=('python' 'which' 'boost>=1.86.0' 'git')
-source=("${pkgname}-${pkgver}::git+git://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}"
-)
-sha256sums=('fa8396d3f3c5c4eb2519271a34f4d13fcbbd8cdc63a37e78bfebc63ca4d97417')
+depends=('libsub>=1.6.52' 'libcxml>=0.17.11' 'libdcp>=1.10.1' 'ffmpeg>=7.0' 'glib2' 'glu' 'icu' 'imagemagick' 'libssh'  'wxwidgets-gtk3' 'wxwidgets-common' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio' 'x264' 'openssl' 'leqm-nrt>=0.0.2.r12.g30dcaea' 'xerces-c' 'libxml++2.6' 'gtkmm3' 'cairomm')
+makedepends=('python' 'which' 'boost>=1.86.0' 'git' )
+source=("${pkgname}::git+git://git.carlh.net/git/${pkgbase}.git#tag=v${pkgver}")
+
+sha256sums=('7607c26b41375a4e74ffdcedcfdad329a013bce942f43b96f587a88339bc8acb')
 
 # Pull fixes until new major release is available
 _cherry_picks=() 
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   ## Set Version in Source
   # sed -i "/^\+VERSION/ s/XXXXXX/${pkgver}/" ${srcdir}/0001-set-version.patch
   for p in "${source[@]}"; do
@@ -36,15 +39,13 @@ prepare() {
 
 
  build() {
-   # Current DoM is broken with ffmpeg 7, fallback on ffmpeg 4.4 for now
-   export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
-   cd "${srcdir}/${pkgname}-${pkgver}"
+   cd "${srcdir}/${pkgname}"
    python waf configure --prefix=/usr --disable-tests
    python waf build
  }
 
  package() {
-   cd "${srcdir}/${pkgname}-${pkgver}"
+   cd "${srcdir}/${pkgname}"
    python waf install --destdir="$pkgdir"
    cd "${pkgdir}"
    if [ -d usr/lib64  ]
@@ -53,3 +54,5 @@ prepare() {
    fi
    ln -s "$(which openssl)" usr/bin/dcpomatic2_openssl
  }
+
+# vim:set ts=2 sw=2 et:
