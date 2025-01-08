@@ -2,14 +2,14 @@
 pkgname=webledger
 _pkgname=${pkgname#web}
 provides=(${_pkgname})
-pkgver=2.4.3
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Web based ledger"
 arch=("any")
 url="https://github.com/jnphilipp/ledger"
 license=("GPL3+")
 makedepends=("git" "help2man")
-depends=("python" "python-django" "python-gobject" "python-dbus" "python-django_bootstrap5" "systemd" "uwsgi" "uwsgi-plugin-python")
+depends=("python" "python-django" "python-gobject" "python-dbus" "python-django-html-utils" "systemd" "uwsgi" "uwsgi-plugin-python")
 source=("git+https://github.com/jnphilipp/ledger.git")
 md5sums=(SKIP)
 
