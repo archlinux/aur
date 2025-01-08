@@ -1,4 +1,5 @@
 [monocle-bin]
-source = "git"
-git = "https://github.com/bgpkit/monocle.git"
+source = "github"
+git = "bgpkit/monocle"
+use_latest_release = true
 prefix = "v"
