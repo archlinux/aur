@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=znote-bin
-pkgver=2.7.6
+pkgver=2.7.7
 _electronversion=28
 pkgrel=1
 pkgdesc="A Beautiful markdown editor inspired by Jupyter.(Prebuilt version.Use system-wide electron)"
@@ -25,10 +25,10 @@ source=(
     "LICENSE-${pkgver}.html::${url}/cgu.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('89707f28c92ceca3b47ef9254cc49252943696f92594de5ed07effa2db4de09b'
+sha256sums=('ab91adb6c43b5aa8dd01d8fb5ae2021dde31cc72420b53d0043e3173a36e61a3'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('ff6929428f9c97a93bf522d747498c16837e2708c1a5898e10bb0eba139b73e1')
-sha256sums_x86_64=('6b26f62ca44d9fe63b05cc81bd2261a0ec712ba5af1ddf9f4936294948837860')
+sha256sums_aarch64=('b3123166e96e690d347e23a26c366f166b6bd65048389ec84400ce5c588038de')
+sha256sums_x86_64=('4e093db4617a0d454489701b6eeff42e62de3d46a6f8261aabbc7dfd928297de')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
