@@ -1,0 +1,23 @@
+pkgbase = obsidian-bwrap
+	pkgdesc = A powerful knowledge base that works on top of a local folder of plain text Markdown files. Sandboxed by portable for privacy.
+	pkgver = 1.7.7
+	pkgrel = 1
+	url = https://obsidian.md
+	arch = x86_64
+	license = custom:Commercial
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse
+	depends = electron33
+	options = !strip
+	options = !debug
+	source = obsidian.sh
+	source = portable-config
+	source = obsidian.desktop
+	source = https://github.com/obsidianmd/obsidian-releases/releases/download/v1.7.7/obsidian-1.7.7.tar.gz
+	sha256sums = 46a1f82357a9d2d629c1d27b471569646c3865d5dd68d99687d07730a2c8a328
+	sha256sums = ca2820fd5247a31238f1f2a8e314534fc0a864b7178c66a6f56ffd8be2f432fd
+	sha256sums = 1de88b0000c952214d2dc0945e4d81b79daef98910fb41376cd31baf8acf55fb
+	sha256sums = e881ea06f671db2c5002f0038b73a4e4b7b78a9dbf73aa9a7d0dc54a93d3d29a
+
+pkgname = obsidian-bwrap
