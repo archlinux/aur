@@ -1,7 +1,7 @@
 pkgbase = bluebrick-extras
 	pkgdesc = Extra parts for BlueBrick Lego Layout Planer
 	pkgver = 20241027
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bluebrick.lswproject.com
 	arch = any
 	license = GPL-3.0-only

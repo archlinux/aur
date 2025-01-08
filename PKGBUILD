@@ -3,7 +3,7 @@ pkgname=('bluebrick-extras-official'
 		 'bluebrick-extras-thirdparty')
 pkgbase=bluebrick-extras
 pkgver=20241027
-pkgrel=2
+pkgrel=3
 pkgdesc="Extra parts for BlueBrick Lego Layout Planer"
 arch=('any')
 url="https://bluebrick.lswproject.com"
@@ -32,7 +32,6 @@ package_bluebrick-extras-official() {
 	local item
 	local extras=(
 		Train/
-		Town/
 		Vehicle/
 		Space/
 		Castle/
