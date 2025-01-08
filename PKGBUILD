@@ -9,7 +9,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='2409.r299.gd1ef4d5cc1'
+pkgver='2412.r107.g7133bfbb0e'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -19,10 +19,10 @@ license=('GPL-2.0-or-later')
 depends=(
 	# Based on the repo package
 	'bluez-libs' 'bzip2' 'enet' 'gcc-libs' 'glibc' 'hidapi' 'libavcodec.so'
-	'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so' 'libgl'
-	'libsfml-network.so' 'libsfml-system.so' 'libspng.so' 'libswscale.so'
-	'libusb-1.0.so' 'libx11' 'libxi' 'libxrandr' 'lz4' 'lzo' 'mbedtls2'
-	'pugixml' 'sdl2' 'sfml' 'speexdsp' 'xxhash' 'xz' 'zstd'
+	'libavformat.so' 'libavutil.so' 'libcurl.so' 'libgl' 'libsfml-network.so'
+	'libsfml-system.so' 'libspng.so' 'libswscale.so' 'libusb-1.0.so' 'libx11'
+	'libxi' 'libxrandr' 'lz4' 'lzo' 'mbedtls2' 'pugixml' 'sdl2' 'sfml' 'speexdsp'
+	'xxhash' 'xz' 'zstd'
 	# Additional dependencies to replace vendored deps
 	'cubeb' 'minizip-ng'
 )
@@ -35,6 +35,7 @@ optdepends=('pulseaudio: PulseAudio backend')
 options=('!lto')
 source=(
 	"$pkgbase::git+https://github.com/$_mainpkgname/$_projectname"
+	"$pkgbase-fmt::git+https://github.com/fmtlib/fmt.git"
 	"$pkgbase-implot::git+https://github.com/epezent/implot.git"
 	"$pkgbase-mgba::git+https://github.com/mgba-emu/mgba.git"
 	"$pkgbase-rcheevos::git+https://github.com/RetroAchievements/rcheevos.git"
@@ -45,6 +46,7 @@ source=(
 	'minizip-ng.diff'
 )
 b2sums=('SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -66,6 +68,7 @@ prepare() {
 
 	# Provide submodules
 	declare -A _submodules=(
+		[fmt]='fmt/fmt'
 		[implot]='implot/implot'
 		[mgba]='mGBA/mgba'
 		[rcheevos]='rcheevos/rcheevos'
@@ -97,6 +100,7 @@ build() {
 	# CMAKE_BUILD_TYPE - the dolphin-emu package in the repos uses 'None' for some reason, so we use it as well
 	# CMAKE_SKIP_RPATH - do not add run time path information (the package in the repos does it, presumably because of reproducible builds)
 	# USE_SYSTEM_LIBS - we want to use system libs where possible
+	# USE_SYSTEM_FMT - the current version of fmt in the repos is not compatible with Dolphin
 	# USE_SYSTEM_LIBMGBA - the current version of mgba in the repos is not compatible with Dolphin
 	cmake -S '.' -B 'build/' -G Ninja \
 		-DCMAKE_BUILD_TYPE=None \
@@ -105,6 +109,7 @@ build() {
 		-DDISTRIBUTOR='aur.archlinux.org/packages/dolphin-emu-git' \
 		-DENABLE_AUTOUPDATE=OFF \
 		-DUSE_SYSTEM_LIBS=ON \
+		-DUSE_SYSTEM_FMT=OFF \
 		-DUSE_SYSTEM_LIBMGBA=OFF \
 		-Wno-dev
 	cmake --build 'build/'
