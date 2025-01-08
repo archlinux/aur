@@ -33,7 +33,6 @@ install=$pkgname.install
 options=(!lto)
 source=(
   git+https://github.com/RobertBeckebans/RBDOOM-3-BFG.git
-  rbdoom-3-bfg-extra-args.patch
   rbdoom-3-bfg.png
   rbdoom-3-bfg.desktop
   rbdoom-3-bfg-launcher
