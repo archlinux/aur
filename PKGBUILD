@@ -4,15 +4,29 @@
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn
-pkgver=2025.1
-pkgrel=3
+pkgver=2025.2
+pkgrel=1
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64')
 url="https://www.mullvad.net"
 license=('GPL-3.0-or-later')
-depends=('alsa-lib' 'gtk3' 'iputils' 'libnftnl' 'libnotify' 'nss')
-makedepends=('cargo' 'git' 'go' 'libxcrypt-compat' 'nvm' 'protobuf')
+depends=(
+  'alsa-lib'
+  'gtk3'
+  'iputils'
+  'libnftnl'
+  'libnotify'
+  'nss'
+)
+makedepends=(
+  'cargo'
+  'git'
+  'go'
+  'libxcrypt-compat'
+  'nvm'
+  'protobuf'
+)
 optdepends=('libappindicator-gtk3: tray icon')
 install="$pkgname.install"
 _ab_commit=049d5d3bc0c86c29c20f2073460186a83c1d7094
@@ -25,7 +39,7 @@ source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
         'no-rpm.diff'
         'no-publish.diff'
         "$pkgname.sh")
-sha256sums=('059cbe68167927d6bf6c5a53eb00db28194fc84ec515e80917de7122acedca3c'
+sha256sums=('3a8220d1724c683d9854118837c4ce12bdb4cfdbe31a09b2ed16bab3a289f761'
             '2f7ff0d5c2c5bab63b9babc6c91d921ef9965413b0b92996be8c9fd5a9c0d862'
             '6e0f55d43fbf016d989ff5571de9c3b8c2f3611e957e807f5ffcbda2c4d274c6'
             '6547c6d7c1d3ffd0b65a025ac5e6f76cd3046059cb10da7f1e99f5e436378bd2'
