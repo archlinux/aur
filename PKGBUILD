@@ -38,6 +38,10 @@
 #
 # Set to anything but null to activate.
 : "${_use_current:=""}"
+: "${_reuse_current:=""}"
+[[ -n "${_reuse_current}" ]] && \
+    warning "Please switch to using '_use_current' flag instead of '_reuse_current'" && \
+    _use_current="y"
 
 # Apply selected optimizations chosen by
 # the package maintainers to the config.
@@ -49,6 +53,10 @@
 #
 # Set to anything but null to activate.
 : "${_optimize_defconfig:=""}"
+: "${_update_kconfig_on_reuse:=""}"
+[[ -n "${_update_kconfig_on_reuse}" ]] && \
+    warning "Please switch to using '_update_kconfig_on_reuse' flag instead of '_optimize_defconfig'" && \
+    _optimize_defconfig="y"
 
 # Determines whether the kernel configuration should be
 # copied into the source tree before compilation starts.
