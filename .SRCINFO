@@ -1,7 +1,7 @@
 pkgbase = super-mario-4-jugadores
 	pkgdesc = A fangame of Super Mario Bros.
 	pkgver = 2.0.5_3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://carlosxdjavgames.altervista.org/archivos/134/
 	install = super-mario-4-jugadores.install
 	arch = i686

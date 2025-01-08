@@ -3,7 +3,7 @@
 
 pkgname=super-mario-4-jugadores
 pkgver=2.0.5_3
-pkgrel=1
+pkgrel=2
 pkgdesc="A fangame of Super Mario Bros."
 arch=('i686' 'x86_64')
 url="https://carlosxdjavgames.altervista.org/archivos/134/"
@@ -33,7 +33,7 @@ package() {
   rm "${pkgdir}/usr/share/${pkgname}/assets/SM4JLegacy.exe"
   install -Dm0755 runner "${pkgdir}/usr/share/${pkgname}/SM4JLegacy"
   mkdir "${pkgdir}/usr/bin"
-  ln -s "${pkgdir}/usr/share/${pkgname}/SM4JLegacy" "${pkgdir}/usr/bin/super-mario-4-jugadores"
+  ln -s "/usr/share/${pkgname}/SM4JLegacy" "${pkgdir}/usr/bin/super-mario-4-jugadores"
   install -Dm0644 ${pkgname}.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm0644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
