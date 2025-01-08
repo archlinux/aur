@@ -1,6 +1,6 @@
 # Maintainer: Kirill Zhumarin <kirill.zhumarin@gmail.com>
 pkgname=ptr89-git
-pkgver=v1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Yet another binary pattern finder.'
 arch=(any)
@@ -18,8 +18,8 @@ prepare() {
 }
 
 build() {
-	cmake -B build -S ptr89
-	cmake --build build
+	cmake -B build -S ptr89 -DCMAKE_BUILD_TYPE=Release
+	cmake --build build -j$(nproc)
 }
 
 package() {
@@ -28,5 +28,5 @@ package() {
 
 pkgver() {
 	cd "ptr89"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | grep -oP '^v\d+\.\d+\.\d+' | sed 's/^v//g'
 }
