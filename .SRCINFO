@@ -1,10 +1,10 @@
 pkgbase = arnis
 	pkgdesc = Generate any location from the real world in Minecraft
-	pkgver = 2.1.2
+	pkgver = 2.1.3
 	pkgrel = 1
 	url = https://github.com/louis-e/arnis
 	arch = x86_64
-	license = GPL-3.0-or-later
+	license = Apache-2.0
 	makedepends = cargo
 	depends = gtk3
 	depends = webkit2gtk-4.1
@@ -15,7 +15,8 @@ pkgbase = arnis
 	depends = openssl
 	depends = glib2
 	depends = gdk-pixbuf2
-	source = arnis-2.1.2.tar.gz::https://github.com/louis-e/arnis/archive/refs/tags/v2.1.2.tar.gz
-	md5sums = 91eb8e267b09c6f740debcca1a807c90
+	depends = wayland
+	source = arnis-2.1.3.tar.gz::https://github.com/louis-e/arnis/archive/refs/tags/v2.1.3.tar.gz
+	md5sums = 1b737864afdf010f8b6a67dae79ccdc5
 
 pkgname = arnis
