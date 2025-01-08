@@ -3,7 +3,7 @@
 pkgbase=mounriver-studio-community-bin
 pkgname=(${pkgbase})
 pkgver=190
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('GPL2' 'GPL3' 'custom')
@@ -58,6 +58,8 @@ package_mounriver-studio-community-bin() {
         zlib)
     install -dm0755 "${pkgdir}/opt/wch/${pkgname%-bin}/"
     cp -a "${srcdir}"/MRS_Community/* "${pkgdir}/opt/wch/${pkgname%-bin}"
+    sed -i 's|plugdev|uucp|g' ${srcdir}/beforeinstall/50-wch.rules
+    sed -i 's|plugdev|uucp|g' ${srcdir}/beforeinstall/60-openocd.rules
     install -Dm0644 "${srcdir}/beforeinstall/50-wch.rules" "${pkgdir}/usr/lib/udev/rules.d/50-wch-community.rules"
     install -Dm0644 "${srcdir}/beforeinstall/60-openocd.rules" "${pkgdir}/usr/lib/udev/rules.d/60-openocd-wch-community.rules"
 
