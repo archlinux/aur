@@ -14,7 +14,7 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=lib32-mesa-amdonly-gaming-git
-pkgver=25.0.0_devel.197468.dc1fe83aa52.d41d8cd
+pkgver=25.0.0_devel.199905.8ac4744706b.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 
 pkgname=(
@@ -23,8 +23,6 @@ pkgname=(
   'lib32-amdonly-gaming-opencl-rusticl-mesa-git'
   'lib32-amdonly-gaming-vulkan-radeon-git'
   'lib32-amdonly-gaming-vulkan-swrast-git'
-  'lib32-amdonly-gaming-libva-mesa-driver-git'
-  'lib32-amdonly-gaming-mesa-vdpau-git'
   'lib32-amdonly-gaming-mesa-git'
 )
 pkgrel=1
@@ -125,7 +123,7 @@ build() {
     -D b_ndebug=true
     -D b_lto=false
     -D egl=enabled
-    -D gallium-drivers=radeonsi,llvmpipe,softpipe,zink
+    -D gallium-drivers=radeonsi,softpipe,zink
     -D gallium-extra-hud=true
     -D gallium-nine=true
     -D gallium-opencl=icd
@@ -336,47 +334,6 @@ package_lib32-amdonly-gaming-vulkan-swrast-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_lib32-amdonly-gaming-libva-mesa-driver-git() {
-  pkgdesc="VA-API drivers (32-bit)"
-  depends=(
-    'lib32-expat'
-    'lib32-libdrm'
-    'lib32-libelf'
-    'lib32-libx11'
-    'lib32-libxshmfence'
-    'lib32-llvm-libs'
-    'lib32-zstd'
-  )
-  provides=('lib32-libva-driver')
-  conflicts=('lib32-libva-mesa-driver')
-
-  _install fakeinstall/$_libdir/dri/*_drv_video.so
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
-
-package_lib32-amdonly-gaming-mesa-vdpau-git() {
-  pkgdesc="VDPAU drivers (32-bit)"
-  depends=(
-    'lib32-expat'
-    'lib32-libdrm'
-    'lib32-libelf'
-    'lib32-libx11'
-    'lib32-libxshmfence'
-    'lib32-llvm-libs'
-    'lib32-zstd'
-  )
-  provides=(
-    'lib32-vdpau-driver'
-    'lib32-mesa-vdpau'
-  )
-  conflicts=('lib32-mesa-vdpau')
-
-  _install fakeinstall/$_libdir/vdpau
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
-
 package_lib32-amdonly-gaming-mesa-git() {
   depends=(
     'lib32-libdrm'
@@ -397,9 +354,13 @@ package_lib32-amdonly-gaming-mesa-git() {
     'opengl-man-pages: for the OpenGL API man pages'
   )
   provides=(
-    'lib32-mesa'
-    'lib32-mesa-libgl'
-    'lib32-opengl-driver'
+    "lib32-libva-mesa-driver=$epoch:$pkgver-$pkgrel"
+    "lib32-mesa-libgl=$epoch:$pkgver-$pkgrel"
+    "lib32-mesa-vdpau=$epoch:$pkgver-$pkgrel"
+    "lib32-libva-driver"
+    "lib32-opengl-driver"
+    "lib32-vdpau-driver"
+    "lib32-opengl-driver"
   )
   conflicts=(
     'lib32-mesa'
@@ -420,6 +381,12 @@ package_lib32-amdonly-gaming-mesa-git() {
 
   # only needed when gallium-xa is enabled
   #_install fakeinstall/$_libdir/libxatracker.so*
+
+  # vdpau drivers
+  _install fakeinstall/$_libdir/vdpau/*.so*
+
+  # dri
+  _install fakeinstall/$_libdir/dri/*.so*
 
   rm -rv fakeinstall/usr/include
   _install fakeinstall/$_libdir/pkgconfig
