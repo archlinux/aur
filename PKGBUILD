@@ -14,7 +14,7 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=lib32-mesa-amdonly-gaming-git
-pkgver=25.0.0_devel.199905.8ac4744706b.d41d8cd
+pkgver=25.0.0_devel.199912.731138386a5.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 
 pkgname=(
@@ -22,7 +22,6 @@ pkgname=(
   'lib32-amdonly-gaming-opencl-clover-mesa-git'
   'lib32-amdonly-gaming-opencl-rusticl-mesa-git'
   'lib32-amdonly-gaming-vulkan-radeon-git'
-  'lib32-amdonly-gaming-vulkan-swrast-git'
   'lib32-amdonly-gaming-mesa-git'
 )
 pkgrel=1
@@ -125,7 +124,7 @@ build() {
     -D egl=enabled
     -D gallium-drivers=radeonsi,softpipe,zink
     -D gallium-extra-hud=true
-    -D gallium-nine=true
+    -D gallium-nine=false
     -D gallium-opencl=icd
     -D gallium-rusticl=true
     -D gallium-va=enabled
@@ -147,7 +146,7 @@ build() {
     -D shared-glapi=enabled
     -D valgrind=disabled
     -D video-codecs=all
-    -D vulkan-drivers=amd,swrast
+    -D vulkan-drivers=amd
     -D vulkan-layers=device-select,overlay
     -D vulkan-beta=true
     --wrap-mode=nofallback
@@ -306,34 +305,6 @@ package_lib32-amdonly-gaming-vulkan-radeon-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_lib32-amdonly-gaming-vulkan-swrast-git() {
-  pkgdesc="Vulkan software rasteriser driver (32-bit)"
-  depends=(
-    'lib32-libdrm'
-    'lib32-libx11'
-    'lib32-libxshmfence'
-    'lib32-llvm-libs'
-    'lib32-systemd'
-    'lib32-wayland'
-    'lib32-xcb-util-keysyms'
-    'lib32-zstd'
-  )
-  optdepends=('lib32-vulkan-mesa-layers: additional vulkan layers')
-  conflicts=(
-    'lib32-vulkan-mesa'
-    'lib32-vulkan-swrast'
-  )
-  provides=(
-    'lib32-vulkan-driver'
-    'lib32-vulkan-swrast'
-  )
-
-  _install fakeinstall/usr/share/vulkan/icd.d/lvp_icd*.json
-  _install fakeinstall/$_libdir/libvulkan_lvp.so
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
-
 package_lib32-amdonly-gaming-mesa-git() {
   depends=(
     'lib32-libdrm'
@@ -374,7 +345,6 @@ package_lib32-amdonly-gaming-mesa-git() {
   _install fakeinstall/$_libdir/dri/*_dri.so
   _install fakeinstall/$_libdir/gbm/dri_gbm.so*
 
-  _install fakeinstall/$_libdir/d3d
   _install fakeinstall/$_libdir/lib{gbm,glapi}.so*
   _install fakeinstall/$_libdir/libOSMesa.so*
   _install fakeinstall/$_libdir/libgallium*.so*
