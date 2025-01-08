@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=umu-launcher-git
-pkgver=1.1.4.r41.5442348f
+pkgver=1.1.4.r48.57f9dfce
 pkgrel=1
 pkgdesc="This is the Unified Launcher for Windows Games on Linux, to run Proton with fixes outside of Steam"
 arch=('x86_64')
@@ -78,10 +78,18 @@ pkgver() {
 
 prepare() {
   cd "$srcdir"/umu-launcher
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_HOME="${srcdir}"/umu-cargo
+  cargo update
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$srcdir"/umu-launcher
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target  
+  export CARGO_HOME="${srcdir}"/umu-cargo
+  cargo build --frozen --release --all-features
   ./configure.sh --prefix=/usr
   make
 }
