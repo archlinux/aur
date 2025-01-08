@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.8.5
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=(x86_64)
@@ -53,7 +53,7 @@ source=(
 	'keycodemapdb::git+https://gitlab.com/qemu-project/keycodemapdb.git'
 	'use-system-libs.patch'
 )
-b2sums=('969c15ce4a1cfbc32aa55e4126c5a29d0b187cf27ad220625f82c4167ba150c80a91e9f84f3c16c5e0d56b0ff4b4f67bb19ad9026105b7a636e7c7c264a556a3'
+b2sums=('dc7204ea68ea0f67885c3c6a56c6d662eae1346117b4f598796b99854d4ac42255042d20e5dbcd2dcb35aa5bc54291c0c6d0bb2a90d27b0a869f02e2c2a0cab0'
         'SKIP'
         'SKIP'
         'SKIP'
