@@ -2,17 +2,17 @@
 # Contributor: Arthur Țițeică | arthur dot titeica with gmail
 _pkgname=exchangelib
 pkgname=python-exchangelib
-pkgver=5.4.3
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="Client for Microsoft Exchange Web Services (EWS)"
 arch=(any)
 url="https://github.com/ecederstrand/exchangelib"
 license=('BSD-2-Clause')
-depends=('python-cached-property' 'python-cryptography' 'python-defusedxml' 'python-dnspython' 'python-isodate' 'python-lxml' 'python-requests-kerberos' 'python-requests-ntlm' 'python-requests-oauthlib' 'python-pytz' 'python-future' 'python-tzlocal')
+depends=(python-cached-property python-cryptography python-defusedxml python-dnspython python-isodate python-lxml python-requests-kerberos python-requests-ntlm python-requests-oauthlib python-tzlocal)
 makedepends=(python-build python-installer python-wheel)
-checkdepends=(python-dateutil python-psutil python-pytest python-requests-mock python-yaml)
+checkdepends=(python-dateutil python-psutil python-pytest python-pytz python-requests-mock python-yaml)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ecederstrand/exchangelib/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f3fc47a7d00088056494cdfff98768853bf2ef8f081a2b589458661676d6debd')
+sha256sums=('ea029651b586464929d33ea600e29ef985da42d464913edd8558388399104574')
 
 build() {
     cd "${_pkgname}-$pkgver"
