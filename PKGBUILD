@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.5.0.r123.g86038e6a7
+pkgver=0.5.0.r135.g0eee36cb
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -83,8 +83,6 @@ prepare() {
 }
 
 build() {
-	# https://github.com/shadps4-emu/shadPS4/issues/2061
-	CXXFLAGS+=" -Wno-changes-meaning"
 	cmake -B build -S $_pkgname \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
