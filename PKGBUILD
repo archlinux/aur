@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=slade-git
-pkgver=3.2.7+r3091+gbf00e9f8f
+pkgver=3.2.7+r3092+g3baac1241
 pkgrel=4
 pkgdesc='SLADE3 Doom editor (git version)'
 arch=('i686' 'x86_64')
