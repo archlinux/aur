@@ -22,7 +22,6 @@ depends=(
     "python-pillow"
     "python-typing_extensions"
     "python-pydantic"
-    "python-pydantic-extra-types"
 )
 makedepends=(
    "python-build"
