@@ -1,8 +1,8 @@
 #lskdfj Maintainer: Robert Ulmer <arch.x(at)frontexpers.com>
 pkgname="filius"
-pkgver="2.6.1"
+pkgver="2.7.1"
 _pkgver="${pkgver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Network simulation program"
 arch=('any')
 url="http://www.lernsoftware-filius.de"
@@ -79,5 +79,5 @@ EOF
 }
 
 
-sha256sums=('4e4d4f7d139d8a2a41b33e29f4a8a7f105a07d1627f46cc75200e10108779549')
+sha256sums=('89b0a19b7c3d740a8a35701a197d3b5e157b1ff44dfb0c784ccce1a57127c876')
 
