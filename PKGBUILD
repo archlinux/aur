@@ -2,7 +2,7 @@
 
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend)
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MPL-2.0')
 # penpot is using 19, but archlinux only has 17 and 21. 17 and > 21 doesnt work
 # also jdk is needed and not only jre
 _jdkver="21"
-makedepends=('clojure' 'git' 'curl' 'npm' 'yarn' 'rsync' 'babashka')
+makedepends=('clojure' 'git' 'curl' 'npm' 'yarn' 'rsync' 'babashka' 'rustup' 'emscripten' 'emsdk')
 source=(
   https://github.com/penpot/penpot/archive/refs/tags/$pkgver.tar.gz
   sysusers.conf
@@ -25,7 +25,7 @@ source=(
 )
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=(
-  '5bfd8b21bed1729acbe3fa99044e5ec80c6c205c36b971c71f00df3d9520702e'
+  'fb10d34d3458dbc0b2ad18202b61ac9f7c494a049d70defb0161870671f978c4'
   '4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c'
   'bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523'
   '828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb'
@@ -38,15 +38,29 @@ sha256sums=(
 
 build() {
   export YARN_CACHE_FOLDER="${srcdir}/.yarn-cache"
-  # # build the frontend
+  export RUSTUP_HOME=${srcdir}/.rustup
+  export CARGO_HOME=${srcdir}/.cargo
+  export RUST_VERSION=1.82.0
+  # build the frontend
   echo "==== BULDING frontend"
   cd "${srcdir}/${_pkgbase}-${pkgver}/frontend"
-  # # we dont have yarn @ version 4 as package, so use yarn 1.x
+  # we dont have yarn @ version 4 as package, so use yarn 1.x
   sed -i '/"packageManager":.*,/d' ../package.json
   sed -i '/"packageManager":.*,/d' ./package.json
+  sed -i 's/"portal:/"file:/' ./package.json
+  sed -i 's/npm://' ./package.json
   sed -i 's/yarn install/NODE_ENV=development yarn install/' ./scripts/build
   sed -i 's/\.git#commit=/.git#/' package.json
-  CURRENT_HASH=$(echo $sha256sums[0] | head -c 7) ./scripts/build $pkgver
+  sed -i 's#/usr/local/emsdk/emsdk_env.sh#/usr/bin/emsdk_env.sh#' ../render-wasm/build
+
+  rustup default $RUST_VERSION
+  rustup target add wasm32-unknown-emscripten
+
+  CURRENT_HASH=$(echo $sha256sums[0] | head -c 7) \
+  FORCE_SKIA_BINARIES_DOWNLOAD=yes \
+  SKIA_BINARIES_URL=https://github.com/rust-skia/skia-binaries/releases/download/0.78.2/skia-binaries-ec00cf219c4901d785ed-wasm32-unknown-emscripten-gl.tar.gz \
+  PATH=$PATH:/usr/lib/emscripten \
+    ./scripts/build $pkgver
 
   echo "==== BUILDING EXPORTER"
 
