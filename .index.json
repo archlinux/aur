@@ -1,5 +1,6 @@
 {
-  ".i": 2,
+  ".i": 5,
   "crate": "cargo-readme",
-  "version": "3.3.1"
+  "version": "3.3.1",
+  "pkgrel": 2
 }
