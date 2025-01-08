@@ -1,0 +1,5 @@
+[osdctl-bin]
+source = "github"
+github = "openshift/osdctl"
+use_latest_release = true
+prefix = "v"
