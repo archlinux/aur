@@ -13,7 +13,7 @@ pkgver=2412
 _build1=8.14.0
 _build2=12437214089
 _cart="CART25FQ4_LIN_${pkgver}_TARBALL"
-pkgrel=2
+pkgrel=3
 pkgdesc='Omnissa Horizon Client - connect to Omnissa Horizon virtual desktop'
 arch=('x86_64')
 makedepends=('imagemagick')
@@ -22,7 +22,7 @@ url='https://customerconnect.omnissa.com/downloads/info/slug/desktop_end_user_co
 license=('custom')
 source=("${pkgbase}-${pkgver}-${_build1}-${_build2}.tar.gz::https://download3.omnissa.com/software/${_cart}/Omnissa-Horizon-Client-Linux-${pkgver}-${_build1}-${_build2}.tar.gz"
         'Horizon_8_Logo.png'
-        'omnissa-horizon-usb.service')
+        'horizon-usb.service')
 sha256sums=('b6098f7d9a876ef51f4683a6a94359f94355e4b867cd0b8a5f2117b020993c11'
             '100b71b82194c8d50e3101d8ac37f47bbf5706a0e49f14607e4a2fc90e2ed9b5'
             '2e9ecddd7cd4d5f65c794065898d3b6ac8e6dd97d05114f7f3775da82263c6d2')
@@ -170,5 +170,5 @@ package_omnissa-horizon-usb() {
 
 	cp -a "Omnissa-Horizon-USB-${pkgver}-${_build1}-${_build2}.x64/usr/" "${pkgdir}/"
 
-	install -D -m0644 "${srcdir}/omnissa-horizon-usb.service" "${pkgdir}/usr/lib/systemd/system/omnissa-horizon-usb.service"
+	install -D -m0644 "${srcdir}/horizon-usb.service" "${pkgdir}/usr/lib/systemd/system/horizon-usb.service"
 }
