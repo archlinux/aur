@@ -1,7 +1,7 @@
 pkgbase = pimpmyrice-git
 	pkgdesc = The overkill theme manager (from git)
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/daddodev/pimpmyrice
 	arch = any
 	license = MIT
