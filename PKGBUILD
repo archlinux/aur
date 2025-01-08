@@ -1,7 +1,7 @@
 # Maintainer: Frederik Leonhardt <frederik at leonhardt dot co dot nz>
 pkgname=bluebrick
-pkgver=1.9.1
-pkgrel=2
+pkgver=1.9.2
+pkgrel=1
 pkgdesc="BlueBrick Lego Layout Planer"
 arch=('x86_64')
 url="https://bluebrick.lswproject.com"
@@ -12,7 +12,7 @@ options=(!strip)
 source=("$pkgname-$pkgver.zip::https://bluebrick.lswproject.com/download/BlueBrick.${pkgver}.zip"
         "$pkgname.desktop"
         "$pkgname.xml")
-sha256sums=('2fc69f384a1232d8e33cf3fb91cda0d2b8e876cbcdb072e5acfe4da2153b72c5'
+sha256sums=('4e0682a9083b4026cbf2a03e71dc9e8b3865cc72e3beac65c299197c7e492847'
             '3ef1c6c69ee75a4f4044197c8c38a7a739c5ab3b190aab579f6a29433ef88f5f'
             '881df2737967036622ab829035de0d52e9e65bcba867cd5da69bed5206369072')
 
