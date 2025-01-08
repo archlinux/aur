@@ -3,7 +3,7 @@
 pkgname=electron-fiddle-git
 _pkgname=fiddle
 pkgver=r2073.9eb162c
-pkgrel=1
+pkgrel=2
 pkgdesc="The easiest way to get started with Electron"
 arch=('x86_64')
 url="https://electronjs.org/fiddle"
@@ -46,7 +46,7 @@ package() {
 
 	cd "$srcdir"
 	echo "#!/bin/env sh
-exec electron /usr/lib/electron-fiddle/app.asar \$@
+exec electron33 /usr/lib/electron-fiddle/app.asar \$@
 " > electron-fiddle.sh
 	install -Dm755 electron-fiddle.sh "$pkgdir/usr/bin/electron-fiddle"
 
