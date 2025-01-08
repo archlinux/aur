@@ -1,7 +1,7 @@
 pkgbase = borgreport
 	pkgdesc = Summarize the status of multiple BorgBackup repositories in one report
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bbx0/borgreport
 	install = borgreport.install
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = borgreport
 	makedepends = groff
 	makedepends = help2man
 	makedepends = sed
+	optdepends = smtp-forwarder: send the report via sendmail
 	source = borgreport-0.3.0.tar.gz::https://github.com/bbx0/borgreport//releases/download/v0.3.0/borgreport-0.3.0.tar.gz
 	b2sums = 30304b00a36ebfbc7ea227bbe6a5f85c292ed028faaa7115bb33e485bdec58c65baf646f0b0ab8c81c9aa821ef778f086c260e4ee760c1ff3600af602c865cc3
 

@@ -5,12 +5,13 @@
 
 pkgname=borgreport
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Summarize the status of multiple BorgBackup repositories in one report"
 arch=('x86_64' 'aarch64')
 url="https://github.com/bbx0/${pkgname}"
 license=('GPL-3.0-or-later')
 makedepends=('cargo' 'cargo-about' 'grep' 'groff' 'help2man' 'sed')
+optdepends=('smtp-forwarder: send the report via sendmail')
 install=borgreport.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}//releases/download/v${pkgver}/borgreport-${pkgver}.tar.gz")
 b2sums=('30304b00a36ebfbc7ea227bbe6a5f85c292ed028faaa7115bb33e485bdec58c65baf646f0b0ab8c81c9aa821ef778f086c260e4ee760c1ff3600af602c865cc3')
