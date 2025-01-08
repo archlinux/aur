@@ -1,20 +1,21 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com >
 pkgname=dune-multidomaingrid
-_tarver=2.9
+_tarver=2.10
 _tar="${_tarver}/${pkgname}-releases-${_tarver}.tar.gz"
 pkgver=${_tarver}
 pkgrel=1
 pkgdesc="Meta grid that allows creating multiple subdomains that span only part of the host grid"
 arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
-license=(LGPL3 'custom:GPL2 with runtime exception')
-depends=('dune-grid>=2.9.0')
+license=(LGPL3 LicenseRef-GPL-2.0-only-with-DUNE-exception)
+depends=('dune-grid>=2.10.0')
 makedepends=(doxygen graphviz)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
+options=(!emptydirs)
 source=(https://gitlab.dune-project.org/extensions/${pkgname}/-/archive/releases/${_tar})
-sha512sums=('fb76b54d37529c5a138a84af6f63fab34e43ae34accd33406ddfe7522be556f976af8ec4403169e0c5e77db2297090a582b443d40a5061bd233c94dbfd62d95c')
+sha512sums=('53eaac1affaff4cd06cae0e066cf5e812bb6f00e32586241336c97aa5c8ee9018e3c0357b91a8af6c643db1180ffdb538a914c706701dd3a056335b48e8894f6')
 
 build() {
   cmake \
@@ -36,5 +37,4 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --build build-cmake --target install
   install -Dm644 ${pkgname}-releases-${_tarver}/COPYING.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  find "${pkgdir}" -type d -empty -delete
 }
