@@ -1,7 +1,7 @@
 pkgbase = plutosvg-git
 	pkgdesc = A compact and efficient SVG rendering library written in C.
 	pkgver = 0.0.4.r95.20241226.e0a1ce5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sammycage/plutosvg
 	arch = x86_64
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = plutosvg-git
 	depends = glibc
 	provides = plutosvg=0.0.4.r95.20241226.e0a1ce5
 	conflicts = plutosvg
+	options = !lto
 	source = plutosvg::git+https://github.com/sammycage/plutosvg.git
 	sha256sums = SKIP
 
