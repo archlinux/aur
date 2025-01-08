@@ -4,7 +4,7 @@ pkgbase=mounriverstudio-bin
 pkgname=(${pkgbase})
 pkgdesc="MounRiver Studio Ⅱ(MRS2)为MounRiver Studio的换代版本，从V2.1.0开始，框架更换至更现代的VSCode，并深度定制开发。在工程管理、代码编辑、编译、调试等方面均兼容之前版本，并在效率和功能等方面进行提升，着力将MRS打造为更加轻量化、智能化、高效化的RISC-V IDE。同时，提供Windows/Linux/macOS 以及国产操作系统版本"
 pkgver=210
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('custom: commercial')
@@ -21,9 +21,9 @@ depends=(
     glib2
     glibc
     gtk3
+    hidapi
     libcups
     libdrm
-    libgdm
     libjaylink
     libsecret
     libusb
@@ -36,16 +36,15 @@ depends=(
     libxkbcommon
     libxkbfile
     libxrandr
-    hidapi
     libudev.so
     nspr
     nss
+    mesa
     pango
     python
-    python-pt
     python-pygments
     # AUR
-    ncurses5-compat-libs
+    #     ncurses5-compat-libs
 
 )
 
@@ -65,6 +64,7 @@ options=('!strip' '!debug')
 
 package() {
     tar -xf "${srcdir}//data.tar.xz" -C "${pkgdir}/"
+    find "${pkgdir}/" -type d -exec chmod 755 {} \;
     find ${pkgdir}/usr/share/MRS2 -perm 600 -exec chmod 644 {} \;
 
     cd ${pkgdir}/usr/share/MRS2
