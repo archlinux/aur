@@ -1,13 +1,15 @@
 --- a/src/plugins/intel_gpu/CMakeLists.txt
 +++ b/src/plugins/intel_gpu/CMakeLists.txt
-@@ -63,10 +63,6 @@ set(INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
+@@ -63,9 +63,9 @@ set(INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
  add_subdirectory(thirdparty)
  include(thirdparty/cmake/rapidjson.cmake)
  
 -if(CMAKE_COMPILER_IS_GNUCXX)
 -    ov_add_compiler_flags(-Werror)
 -endif()
--
++#if(CMAKE_COMPILER_IS_GNUCXX)
++#    ov_add_compiler_flags(-Werror)
++#endif()
+ 
  add_subdirectory(src/runtime)
  add_subdirectory(src/kernel_selector)
- add_subdirectory(src/graph)
