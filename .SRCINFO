@@ -1,6 +1,6 @@
 pkgbase = hyprswitch
 	pkgdesc = A CLI/GUI that allows switching between windows in Hyprland
-	pkgver = 3.2.4
+	pkgver = 3.2.5
 	pkgrel = 1
 	url = https://github.com/h3rmt/hyprswitch/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = hyprswitch
 	depends = hyprland
 	depends = gtk4-layer-shell
 	depends = gtk4
-	source = hyprswitch-3.2.4.tar.gz::https://static.crates.io/crates/hyprswitch/hyprswitch-3.2.4.crate
-	sha256sums = 896fed1ea43a5a7e7242b11969ff5011576543ded22c62b603f2ffad4b4a7eea
+	source = hyprswitch-3.2.5.tar.gz::https://static.crates.io/crates/hyprswitch/hyprswitch-3.2.5.crate
+	sha256sums = dfe33cc85cbb4b21ad56a75421093b6c313f1c2d2102c1bf215bf3db8550a195
 
 pkgname = hyprswitch
