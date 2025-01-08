@@ -1,28 +1,23 @@
 # Maintainer: hexchain <i at hexchain dot org>
 
-_pypiname=PyQt5-stubs
+_name=PyQt5-stubs
 pkgname=python-pyqt5-stubs
 pkgver=5.15.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='PEP561 stub files for the PyQt5 framework'
 url="https://github.com/python-qt-tools/PyQt5-stubs"
-makedepends=('python-pip' 'python-setuptools')
-license=('GPL3')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+license=('GPL-3.0-only')
 arch=('any')
-source=("https://pypi.org/packages/source/${_pypiname:0:1}/$_pypiname/$_pypiname-$pkgver.tar.gz")
-sha256sums=('91270ac23ebf38a1dc04cd97aa852cd08af82dc839100e5395af1447e3e99707')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/python-qt-tools/${_name}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('81a2efcbb187b553dbb057d38fa671a130781cbb037b5132d8f4fdb75f3f6eff')
 
 build() {
-    cd "$srcdir/$_pypiname-$pkgver"
-    python setup.py build
-}
-
-check() {
-    cd "$srcdir/$_pypiname-$pkgver"
-    python setup.py test
+    cd "$srcdir/$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$_pypiname-$pkgver"
-    python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1 --skip-build
+    cd "$srcdir/$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
