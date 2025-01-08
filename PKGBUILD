@@ -25,7 +25,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -ldflags "-s -w -X main.Version=${pkgver}-arch" -o build/red-cli ./cmd/red/
+  go build -ldflags "-s -w -X main.version=${pkgver}-arch" -o build/red-cli ./cmd/red/
 }
 
 package() {
