@@ -3,7 +3,7 @@
 # Based on PKGBUILD by Kevin S <aur@eldenring.mozmail.com>
 
 pkgname=audiobookshelf
-pkgver=2.17.7
+pkgver=v2.17.7
 pkgrel=1
 pkgdesc="Self-hosted audiobook server for managing and playing audiobooks"
 arch=("x86_64" "aarch64")

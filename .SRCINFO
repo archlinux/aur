@@ -1,6 +1,6 @@
 pkgbase = audiobookshelf
 	pkgdesc = Self-hosted audiobook server for managing and playing audiobooks
-	pkgver = 2.17.7
+	pkgver = v2.17.7
 	pkgrel = 1
 	url = https://github.com/advplyr/audiobookshelf
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = audiobookshelf
 	depends = nodejs
 	options = !debug
 	backup = etc/conf.d/audiobookshelf
-	source = audiobookshelf-2.17.7.tar.gz::https://github.com/advplyr/audiobookshelf/archive/refs/tags/v2.17.7.tar.gz
+	source = audiobookshelf-v2.17.7.tar.gz::https://github.com/advplyr/audiobookshelf/archive/refs/tags/vv2.17.7.tar.gz
 	source = audiobookshelf.conf
 	source = audiobookshelf.hook
 	source = audiobookshelf.service
