@@ -1,7 +1,7 @@
 pkgbase = nrfutil
 	pkgdesc = nrfutil command line utility and the nordicsemi library
 	pkgver = 6.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NordicSemiconductor/pc-nrfutil
 	arch = any
 	license = BSD

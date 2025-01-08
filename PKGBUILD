@@ -2,7 +2,7 @@
 
 pkgname=nrfutil
 pkgver=6.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="nrfutil command line utility and the nordicsemi library"
 arch=('any')
 url="https://github.com/NordicSemiconductor/pc-nrfutil"
