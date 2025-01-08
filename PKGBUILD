@@ -2,11 +2,11 @@
 
 pkgname=mingw-w64-rhsrvany
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Free equivalent of Windows 'srvany' (mingw-w64)"
 arch=('any')
 url="https://github.com/rwmjones/rhsrvany"
-license=('GPL')
+license=('GPL-2.0-or-later')
 makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 provides=('rhsrvany')
