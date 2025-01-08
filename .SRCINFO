@@ -1,7 +1,7 @@
 pkgbase = hickory-util
 	pkgdesc = Utilities that complement Hickory DNS. 
 	pkgver = 0.24.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://hickory-dns.org/
 	arch = aarch64
 	arch = i686

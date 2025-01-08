@@ -5,7 +5,7 @@ _crate="hickory-util"
 _cratever="0.24.2"
 pkgname="hickory-util"
 pkgver=0.24.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Utilities that complement Hickory DNS. '
 url='https://hickory-dns.org/'
 license=('Apache-2.0' 'MIT')
@@ -59,6 +59,7 @@ _check() {
 }
 
 check() {
+	_check --bins
 	_check --lib
 }
 
