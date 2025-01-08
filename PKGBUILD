@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-auth-googleauth'
-pkgver='1.04'
+pkgver='1.05'
 pkgrel='1'
 pkgdesc="Google Authenticator TBOT Abstraction"
 arch=('any')
@@ -10,12 +10,11 @@ license=('Artistic2.0')
 options=('!emptydirs')
 depends=('perl-class-accessor>=0' 'perl-convert-base32>=0' 'perl-digest-hmac>=0' 'perl-math-random-mt>=0' 'perl-uri>=0' 'perl>=5.008')
 makedepends=()
-checkdepends=('perl-test2-suite>=0')
 url='https://metacpan.org/release/Auth-GoogleAuth'
-source=('http://search.cpan.org/CPAN/authors/id/G/GR/GRYPHON/Auth-GoogleAuth-1.04.tar.gz')
-md5sums=('46a86770bc2bee65e718ee18ab598439')
-sha512sums=('70c02ededb9d44095e99d446e2cd6b1b9d7923895a68693e090d3dfeeb207a948fb5fc783d84b4182488388caa8e0964b484a3b923d1422bc3a3456dee6c463b')
-_distdir="Auth-GoogleAuth-1.04"
+source=('http://search.cpan.org/CPAN/authors/id/G/GR/GRYPHON/Auth-GoogleAuth-1.05.tar.gz')
+md5sums=('cf3b88108af3f8a345873b86e9de0999')
+sha512sums=('361c7916ba9dd9cbf03fbb148166d8eda5769702c57f2e200e659844ce723594d8b6ad076ed9a69635354b24da628219aef88b79ebaf6dfe3e1c3fd6a3fc68e3')
+_distdir="Auth-GoogleAuth-1.05"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
