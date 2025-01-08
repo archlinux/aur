@@ -1,11 +1,11 @@
 pkgbase = beefetch
 	pkgdesc = Neofetch clone written in bash with the ability to display 🐝
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 1.1.2
+	pkgrel = 1
 	url = https://github.com/mirdukkkkk/beefetch
 	arch = any
 	license = GPL-3.0-only
-	source = https://raw.githubusercontent.com/mirdukkkkk/beefetch/1.1.1/beefetch
-	sha512sums = 29181ec364507de6057b043ca46c7a9738e9c7a8c4749514415b3e5c1a50676ab71f6b4ac4b8b2edcbf41b72219b18957776623b49374b3d03730a2014d76cae
+	source = https://raw.githubusercontent.com/mirdukkkkk/beefetch/1.1.2/beefetch
+	sha512sums = 02b5d9a6206b0b6d23a5aaee103fd815232d9bc0c4e86a73dcdcc6a7421c35ee6feda5cffd6ab78670b7942bf83f44f3e4ea62a69618f52062993b6ef3277aa7
 
 pkgname = beefetch
