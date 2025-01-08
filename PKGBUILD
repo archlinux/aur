@@ -345,8 +345,9 @@ update_defconfig() {
         # check if subarch is a number
         if [[ ${_subarch} =~ ^[0-9]+$ ]] && ((_subarch>=1)); then
             if [ "${_subarch}" == "41" ]; then
-                yes "${_subarch}
-${_subarch_microarch}" | make ${BUILD_FLAGS[*]} oldconfig
+                scripts/config -e GENERIC_CPU
+                scripts/config --set-val X86_64_VERSION "${_subarch_microarch}"
+                make ${BUILD_FLAGS[*]} oldconfig
             else
                 yes "${_subarch}" | make ${BUILD_FLAGS[*]} oldconfig
             fi
