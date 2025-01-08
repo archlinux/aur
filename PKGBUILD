@@ -2,7 +2,7 @@
 
 pkgname=mangojuice
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A convenient alternative to GOverlay for configuring MangoHud"
 arch=(any)
 url="https://github.com/radiolamp/${pkgname}"
@@ -23,6 +23,8 @@ makedepends=(
 
 optdepends=(
   vulkan-tools
+  mesa-utils
+  vkbasalt
 )
 
 options=(!debug)
