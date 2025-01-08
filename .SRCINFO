@@ -1,12 +1,15 @@
 pkgbase = relagit
 	pkgdesc = The elegant solution to graphical version control.
 	pkgver = 0.16.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/relagit/relagit
 	arch = x86_64
 	license = GNU Lesser General Public License v3.0
+	depends = nodejs>=18.0
+	depends = pnpm
+	depends = git
 	provides = RelaGit
-	source_x86_64 = relagit-0.16.8.deb::https://github.com/relagit/relagit/releases/download/v0.16.8/RelaGit-linux.deb
-	sha256sums_x86_64 = d6743e0de9d67ccb745802b33e75967f47bac88c43cf1cda62566a4248376391
+	source = git+https://github.com/relagit/relagit.git
+	sha256sums = SKIP
 
 pkgname = relagit

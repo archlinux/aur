@@ -1,20 +1,35 @@
+# Maintainer: Mads Ravn <https://github.com/madsravn>
 # Maintainer: Lenin Garizabalo <https://github.com/IGUNUBLUE/>
 pkgname=relagit
 pkgver=0.16.8
-pkgrel=1
+pkgrel=2
 pkgdesc="The elegant solution to graphical version control."
 arch=("x86_64")
 url="https://github.com/relagit/relagit"
 license=("GNU Lesser General Public License v3.0")
 provides=("RelaGit")
-source_x86_64=("$pkgname-$pkgver.deb::$url/releases/download/v${pkgver}/${provides}-linux.deb")
-sha256sums_x86_64=('d6743e0de9d67ccb745802b33e75967f47bac88c43cf1cda62566a4248376391')
+source=("git+$url.git")
+sha256sums=('SKIP')
+depends=('nodejs>=18.0'
+         'pnpm'
+         'git')
 
-prepare() {
-  bsdtar xf data.tar.xz
+pkgver() {
+	cd "${srcdir}/${pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "${srcdir}/${pkgname}"
+    sed -i "121 c\               target: []," builder.cjs
+    pnpm i
+    pnpm build
+    pnpm make
 }
 
 package() {
-  mv opt "$pkgdir"
-  mv usr "$pkgdir"
+    install -Dm 755 "${srcdir}/${pkgname}/out/linux-unpacked/relagit" "${pkgdir}/opt/relagit/relagit"
+    cp -r "${srcdir}/${pkgname}"/out/linux-unpacked/* "${pkgdir}/opt/relagit"
+    echo "/opt/relagit/relagit" > relagit.sh
+    install -Dm 755 relagit.sh "${pkgdir}/usr/bin/relagit"
 }
