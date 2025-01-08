@@ -1,0 +1,21 @@
+pkgbase = python-arrow-adbc
+	pkgdesc = Database connectivity API standard for Arrow
+	pkgver = 15
+	pkgrel = 1
+	url = https://arrow.apache.org/adbc/current/index.html
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyarrow
+	depends = postgresql-libs
+	depends = python-pandas
+	source = python-arrow-adbc-15.tar.gz::https://github.com/apache/arrow-adbc/archive/refs/tags/apache-arrow-adbc-15.tar.gz
+	sha256sums = a803bfce26e2f462f750464161dbfebbbf2f52d91bdef838d84ab01c93c8b51d
+
+pkgname = python-arrow-adbc
