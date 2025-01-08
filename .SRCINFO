@@ -1,6 +1,6 @@
 pkgbase = jnv
 	pkgdesc = Interactive JSON filter using jq
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/ynqa/jnv
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = jnv
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = jnv-0.4.2.tar.gz::https://github.com/ynqa/jnv/archive/v0.4.2.tar.gz
-	sha256sums = 12f23a6082afbb80e567222ebfb827d71c08fb343473c1f909f5554aa9a4867f
+	source = jnv-0.5.0.tar.gz::https://github.com/ynqa/jnv/archive/v0.5.0.tar.gz
+	sha256sums = 45cf21e6f33ea6c40a52d6d281a4ac4b67bcc02f8de6d615a56ad150a27ed666
 
 pkgname = jnv
