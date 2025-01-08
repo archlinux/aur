@@ -2,7 +2,7 @@
 # Maintainer: Xavier Portilla Edo <xavierportillaedo at gmail dot com>
 
 pkgname='voiceflow-bin'
-pkgver=1.10.3
+pkgver=1.10.4
 pkgrel=1
 pkgdesc='The CLI for your Voiceflow projects'
 url='https://voiceflow.xavidop.me'
@@ -11,17 +11,17 @@ license=('Apache-2.0')
 provides=('voiceflow-cli')
 conflicts=('voiceflow-cli')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/xavidop/voiceflow-cli/releases/download/v1.10.3/voiceflow_Linux_arm64.tar.gz")
-sha256sums_aarch64=('0dc164e0a055862b244153bf105ebc8dd62b39495951a1439ab52e852640dc3a')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/xavidop/voiceflow-cli/releases/download/v1.10.4/voiceflow_Linux_arm64.tar.gz")
+sha256sums_aarch64=('248c02d835c7447d32823ed92fdacdd5ae824c2138e710518b7809b64ece7c53')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/xavidop/voiceflow-cli/releases/download/v1.10.3/voiceflow_Linux_armv7.tar.gz")
-sha256sums_armv7h=('1b5735d16b30e0e0a293c347855119319c08aeaefd2899e7b5abe9707a47bb96')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/xavidop/voiceflow-cli/releases/download/v1.10.4/voiceflow_Linux_armv7.tar.gz")
+sha256sums_armv7h=('3ec7e4ef6a5f0d7166257303ccb102f97242ffa44fe31f1329c01233cd7cf7b0')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/xavidop/voiceflow-cli/releases/download/v1.10.3/voiceflow_Linux_i386.tar.gz")
-sha256sums_i686=('c451d3c7286843c378d6cea378cbb3150185d2ba64863ef61acfb5fe545bd6a8')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/xavidop/voiceflow-cli/releases/download/v1.10.4/voiceflow_Linux_i386.tar.gz")
+sha256sums_i686=('5e3dd3940e2343bdeb2758b246c25554914465f5d0e3a9982f2d085d8eeb1d8f')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/xavidop/voiceflow-cli/releases/download/v1.10.3/voiceflow_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('379b03350178c3d1e7cc60755e8e39a37785a673a1d39c9c7d4b25c5f657ccef')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/xavidop/voiceflow-cli/releases/download/v1.10.4/voiceflow_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('e68016d083bf70e8ad6a74735ca9a98593de2c1869caad1f525de25ecb061c56')
 
 package() {
   # bin
