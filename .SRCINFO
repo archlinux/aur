@@ -1,7 +1,7 @@
 pkgbase = picguard-bin
 	pkgdesc = Your pictures, your signature
-	pkgver = 1.0.10
-	pkgrel = 434
+	pkgver = 1.0.11
+	pkgrel = 435
 	url = https://github.com/picguard/picguard
 	arch = x86_64
 	arch = aarch64
@@ -12,9 +12,9 @@ pkgbase = picguard-bin
 	provides = picguard
 	conflicts = picguard
 	options = !debug
-	source_x86_64 = https://github.com/picguard/picguard/releases/download/v1.0.10%2B434/picguard_1.0.10+434_linux_amd64.deb
-	sha256sums_x86_64 = f72f72129438960f9616eea3e910790bc7532d5ca31b4483549de0413310c045
-	source_aarch64 = https://github.com/picguard/picguard/releases/download/v1.0.10%2B434/picguard_1.0.10+434_linux_aarch64.deb
-	sha256sums_aarch64 = ca5c683915e1466f328d45151f3454dfb64bd7730b8c8a6a87eba9ed4a8ad07f
+	source_x86_64 = https://github.com/picguard/picguard/releases/download/v1.0.11%2B435/picguard_1.0.11+435_linux_amd64.deb
+	sha256sums_x86_64 = e8ed9bb461a906f05e330c53a8fadc097db498027fb33494f2517daacd195e90
+	source_aarch64 = https://github.com/picguard/picguard/releases/download/v1.0.11%2B435/picguard_1.0.11+435_linux_aarch64.deb
+	sha256sums_aarch64 = cb58031bcd10a9048902aa377946b68c7067940d7a80e0396cae8f2531419c16
 
 pkgname = picguard-bin
