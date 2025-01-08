@@ -1,5 +1,5 @@
 pkgname=mingw-w64-sdl_gfx
-pkgver=2.0.26
+pkgver=2.0.27
 pkgrel=1
 pkgdesc="SDL Graphic Primitives (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ makedepends=(mingw-w64-configure)
 depends=(mingw-w64-sdl)
 options=(staticlibs !strip !buildflags)
 source=("http://www.ferzkopp.net/Software/SDL_gfx-2.0/SDL_gfx-${pkgver}.tar.gz")
-md5sums=('0b3b5ab5f9e7d10f1faf14d4255db6ba')
+md5sums=('b577069aca180452ec3847cdc40dc5f8')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
