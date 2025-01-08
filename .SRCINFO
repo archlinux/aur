@@ -1,18 +1,21 @@
 pkgbase = pcre2-git
 	pkgdesc = A library that implements Perl 5-style regular expressions
-	pkgver = 10.40.r45.gdb53e40
+	pkgver = 10.44.r219.gd50aa583
 	pkgrel = 1
 	url = https://www.pcre.org/
 	arch = i686
 	arch = x86_64
-	license = BSD
-	license = custom
+	license = BSD-3-Clause
 	makedepends = git
 	depends = glibc
 	depends = bzip2
 	depends = readline
 	depends = zlib
-	provides = pcre2=10.40.r45.gdb53e40
+	provides = pcre2=10.44.r219.gd50aa583
+	provides = libpcre2-8.so
+	provides = libpcre2-16.so
+	provides = libpcre2-32.so
+	provides = libpcre2-posix.so
 	conflicts = pcre2
 	options = staticlibs
 	source = git+https://github.com/PCRE2Project/pcre2.git
