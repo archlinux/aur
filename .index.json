@@ -1,6 +1,6 @@
 {
-  ".i": 4,
+  ".i": 5,
   "crate": "hf2-cli",
   "version": "0.3.3",
-  "pkgrel": 2
+  "pkgrel": 3
 }
