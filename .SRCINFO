@@ -1,0 +1,19 @@
+pkgbase = libva-intel-driver-hybrid-git
+	pkgdesc = VA-API implementation for Intel G45 and HD Graphics family
+	pkgver = 2.4.1.r10.gfd727a4e
+	pkgrel = 1
+	url = https://github.com/intel/intel-vaapi-driver
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = xorgproto
+	depends = libva
+	depends = libdrm
+	optdepends = intel-hybrid-codec-driver: Provides codecs with partial HW acceleration
+	provides = libva-intel-driver=2.4.1.r10.gfd727a4e
+	conflicts = libva-intel-driver
+	source = libva-intel-driver::git+https://github.com/intel/intel-vaapi-driver.git
+	sha256sums = SKIP
+
+pkgname = libva-intel-driver-hybrid-git
