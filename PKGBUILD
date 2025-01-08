@@ -1,29 +1,36 @@
-# Maintainer: yuioto <yuiotochan@outlook.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-pkgname='erg-bin'
-_pkgname="erg"
-pkgver=0.5.9
+_pkgauthor=erg-lang
+_pkgname=erg
+pkgname=${_pkgname}-bin
+pkgver=0.6.50
 pkgrel=1
-pkgdesc="Statically typed language that can deeply improve the Python ecosystem"
-url="https://github.com/erg-lang/erg"
+pkgdesc='Statically typed language that builds upon the Python ecosystem'
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
+arch=('x86_64' 'aarch64')
 license=('MIT' 'Apache')
-arch=('x86_64')
-conflicts=('erg-git' 'erg')
 depends=('python')
-
-source=("$_pkgname::https://yuioto-onedrive.vercel.app/api/raw/?path=/tmp/erg/bin/erg-v$pkgver-$arch"
-	"https://raw.githubusercontent.com/erg-lang/erg/main/README.md"
-	"https://raw.githubusercontent.com/erg-lang/erg/main/README_JA.md"
-	"https://raw.githubusercontent.com/erg-lang/erg/main/README_zh-CN.md"
-	"https://raw.githubusercontent.com/erg-lang/erg/main/README_zh-TW.md")
-sha256sums=('a7af991fffea8ec1fc5907d016225a941c5cac449e482eb47ac7512dfefe61a4'
-            '4d0d323157176b28eb86e184b8c741fd2c92dbc41b1ba772a577fea5d259bae6'
-            '3035486f4e6f2a9e22c65033899888e4abfb9efed9d6f6b7c69b115de0e2bfc0'
-            'ee2e43dc09eeb73df437eacb213d0ced1ab956319db8ed8446141f8834be0e82'
-            'f4c9fc6724c4a0cac7c579e0b6cd6d6f11e8d62cc18152fd99a5d6d6e7050c13')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+source=("README-${pkgver}.md::${_urlraw}/README.md"
+		"LICENSE-MIT-${pkgver}::${_urlraw}/LICENSE-MIT"
+		"LICENSE-APACHE-${pkgver}::${_urlraw}/LICENSE-APACHE")
+source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[0]}-unknown-linux-gnu.tar.gz")
+source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[1]}-unknown-linux-gnu.tar.gz")
+sha256sums=('c5318119bfa1324d858d75bba3284d2ce39a2f750cd66f01cefcfe37391b8b31'
+            '508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1'
+            '3905892d35c90001cd11101d367d4073b773f30fa7ce868748969f4cc1fb24c2')
+sha256sums_x86_64=('07633cbc4c98f59a6db9036994d0d09fbe2ebd3f329d4ec437a071fd47a53a17')
+sha256sums_aarch64=('9dfc46cbc14c5a79f81d32f79d50e3b7c974e4e2a5e2859744378bfb1fd8e651')
 
 package() {
-	install -Dm755 erg -t "$pkgdir/usr/bin"
-	install -Dm644 README{,_zh-CN,_zh-TW,_JA}.md -t "$pkgdir/usr/share/doc/$pkgname"
-	install -Dm644 $startdir/LICENSE-{MIT,APACHE} -t "$pkgdir/usr/share/licenses/$pkgname"
+	cd "${srcdir}/" || exit
+
+	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+	install -Dm644 "LICENSE-MIT-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
+	install -Dm644 "LICENSE-APACHE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
+
+	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }

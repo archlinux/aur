@@ -1,8 +1,4 @@
-# Only PKGBUILD, .SRCINFO, .gitignore, LICENSE-MIT, LICENSE-APACHE.
-
 *
+!.gitignore
 !PKGBUILD
 !.SRCINFO
-!.gitignore
-!LICENSE-APACHE
-!LICENSE-MIT
