@@ -8,7 +8,7 @@ pkgbase = xde-theme-archlinux
 	license = CCPL:by-nc-nd
 	makedepends = git
 	depends = xde-styles
-	source = xde-theme-archlinux::git://github.com/bbidulock/xde-theme-archlinux.git
+	source = xde-theme-archlinux::git+https://github.com/bbidulock/xde-theme-archlinux.git
 	md5sums = SKIP
 
 pkgname = xde-theme-archlinux
