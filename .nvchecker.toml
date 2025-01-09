@@ -1,0 +1,4 @@
+[packemon]
+source = "git"
+git = "https://github.com/ddddddO/packemon.git"
+prefix = "v"
