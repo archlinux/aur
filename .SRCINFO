@@ -8,7 +8,7 @@ pkgbase = xde-theme-pedestals
 	license = CCPL:by-nc-nd
 	makedepends = git
 	depends = xde-styles
-	source = xde-theme-pedestals::git://github.com/bbidulock/xde-theme-pedestals.git
+	source = xde-theme-pedestals::git+https://github.com/bbidulock/xde-theme-pedestals.git
 	md5sums = SKIP
 
 pkgname = xde-theme-pedestals
