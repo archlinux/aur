@@ -1,21 +1,13 @@
 pkgbase = python-memacs
 	pkgdesc = Visualize your (digital) life in Emacs Org mode by converting data to Org mode format
-	pkgver = 2020.6.5.1
+	pkgver = 2022.8.6
 	pkgrel = 00
 	url = https://github.com/novoid/memacs
 	arch = any
 	license = GPL
 	makedepends = python-pip
-	depends = python
-	depends = python-emoji
-	depends = python-orgformat
-	noextract = memacs-2020.6.5.1-py3-none-any.whl
-	source = PKGBUILD_EXTRAS
-	source = https://files.pythonhosted.org/packages/5e/5c/45ae22f980921a48896be4e87dda83cc82ecc012d77fa8e10f2839ceee3e/memacs-2020.6.5.1-py3-none-any.whl
-	source = LICENSE
-	md5sums = SKIP
-	md5sums = 8f78f2cf33f0436eee3e9b469aff344e
-	md5sums = d32239bcb673463ab874e80d47fae504
+	depends = python>=3.6
+	source = python-memacs-2022.8.6.zip::https://github.com/novoid/memacs/archive/refs/heads/master.zip
+	sha256sums = 4bf40f1cd2f31cfe6fc5cd2898cee901cfb66a1952b64285c30d7d3f3e2f439a
 
 pkgname = python-memacs
-
