@@ -1,8 +1,8 @@
 pkgbase = python-mdv-git
-	pkgdesc = Styled Terminal Markdown Viewer
-	pkgver = 1.6.3.r97.g435b688
-	pkgrel = 2
-	url = https://github.com/axiros/terminal_markdown_viewer
+	pkgdesc = Styled Terminal Markdown Viewer, fixed version
+	pkgver = 1.6.3.r134.g9ce7a67
+	pkgrel = 1
+	url = https://github.com/Felixoid/terminal_markdown_viewer
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
@@ -13,7 +13,7 @@ pkgbase = python-mdv-git
 	depends = python-pygments
 	depends = python-docopt
 	conflicts = terminal_markdown_viewer
-	source = mdv::git+https://github.com/axiros/terminal_markdown_viewer.git
+	source = mdv::git+https://github.com/Felixoid/terminal_markdown_viewer.git
 	sha1sums = SKIP
 
 pkgname = python-mdv-git
