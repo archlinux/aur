@@ -5,7 +5,7 @@ _crate="lottieconv"
 _cratever="0.3.0"
 pkgname="lottieconv"
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Convert lottie files to WEBP or GIF'
 url='https://crates.io/crates/lottieconv'
 license=('MIT')
@@ -57,6 +57,7 @@ _check() {
 }
 
 check() {
+	_check --bins
 	_check --lib
 }
 
