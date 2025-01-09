@@ -8,7 +8,7 @@ pkgbase = xde-theme-blackbirds
 	license = CCPL:by-nc-nd
 	makedepends = git
 	depends = xde-styles
-	source = xde-theme-blackbirds::git://github.com/bbidulock/xde-theme-blackbirds.git
+	source = xde-theme-blackbirds::git+https://github.com/bbidulock/xde-theme-blackbirds.git
 	md5sums = SKIP
 
 pkgname = xde-theme-blackbirds
