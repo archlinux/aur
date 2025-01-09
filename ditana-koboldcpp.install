@@ -5,23 +5,76 @@ pre_install() {
     if ! getent passwd koboldcpp >/dev/null; then
         useradd -r -g koboldcpp -d /usr/share/koboldcpp -s /usr/bin/nologin koboldcpp
     fi
+
+    if ! grep -m1 "flags" /proc/cpuinfo | grep -q "\bavx2\b"; then
+        echo "ERROR: This package requires CPU support for AVX2. Please remove the package ditana-koboldcpp, because pacman will continue to install."
+        exit 1
+    fi
+}
+
+post_install_or_upgrade() {
+    # Download the Gemma model during installation to ensure that koboldcpp is fully functional immediately after installation.
+
+    # Rationale:
+    # - In the Arch User Repository (AUR), packages can specify sources in the PKGBUILD and build the software on the user’s system.
+    #   This approach avoids distributing large binaries, as the build happens locally.
+    # - For Ditana GNU/Linux, we provide a native pre-built package in the Ditana repository to save users from the potentially
+    #   lengthy build process of koboldcpp, which can be time-consuming depending on the system’s CPU cores.
+    # - Including the Gemma model directly within the package would make the package excessively large (over 2 GB), which is impractical
+    #   due to server bandwidth limitations and would cause unnecessary network load for users downloading the package.
+    # - Deferring the model download until the koboldcpp service starts would delay the application’s usability and require implementing
+    #   a progress indicator or similar mechanism, which we want to avoid to enhance user experience.
+    # - Our goal is for the installation process to set up everything needed for immediate use, without additional steps or delays post-installation.
+    #
+    # Therefore, we download the model during the package installation process. This ensures that:
+    # - The package remains reasonably sized, reducing strain on server resources and minimizing initial download times.
+    # - Users have all necessary components ready for use immediately after installation, without further delays or manual interventions.
+    # - The overall user experience is improved by balancing package size, installation time, and readiness of the application.
+    local model_file="gemma-2-2b-it-Q6_K.gguf" # needs to be identical to the name in koboldcpp.service
+    local model_path="/usr/share/koboldcpp/models/$model_file"
+    local expected_sha256="f82c5c2230a8b452221706461eb93203443373625d96a05912d4f96c845c2775"
+
+    if [[ ! -f "$model_path" ]]; then
+        echo "Downloading Gemma model..."
+        curl -L --retry 3 --retry-delay 1 --insecure "https://huggingface.co/bartowski/gemma-2-2b-it-GGUF/resolve/main/$model_file" -o "$model_path"
+
+        # --insecure is necessary within pacstrap as SSL certificates may be unavailable; integrity is ensured via SHA256 verification:
+        echo "Verifying download..."
+        local actual_sha256=$(sha256sum "$model_path" | cut -d' ' -f1)
+
+        if [[ "$actual_sha256" != "$expected_sha256" ]]; then
+            echo "Error: SHA256 checksum verification failed"
+            rm -f "$model_path"
+            return 1
+        fi
+
+        chown koboldcpp:koboldcpp "$model_path"
+        chmod 644 "$model_path"
+    fi
 }
 
 post_install() {
+    post_install_or_upgrade
+
     chown -R koboldcpp:koboldcpp /usr/share/koboldcpp
 
-    systemctl daemon-reload
+    if [[ -d /run/systemd/system ]]; then
+        systemctl daemon-reload
+    fi
+
     systemctl enable koboldcpp.service
 
-    if [ -d /run/systemd/system ]; then
+    if [[ -d /run/systemd/system ]]; then
         systemctl start koboldcpp.service
     fi
 }
 
 post_upgrade() {
+    post_install_or_upgrade
+
     chown -R koboldcpp:koboldcpp /usr/share/koboldcpp
 
-    if [ -d /run/systemd/system ]; then
+    if [[ -d /run/systemd/system ]]; then
         systemctl daemon-reload
         systemctl restart koboldcpp.service
     fi

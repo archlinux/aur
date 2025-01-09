@@ -1,0 +1,88 @@
+.TH DITANA-KOBOLDCPP 1 "October 2024" "Version 1.76" "Ditana KoboldCpp User Manual"
+
+.SH NAME
+ditana-koboldcpp \- local AI chat service using KoboldCpp and Gemma language model
+
+.SH SYNOPSIS
+.B ditana-koboldcpp
+
+.SH DESCRIPTION
+Ditana KoboldCpp is a systemd service that runs KoboldCpp with the Gemma language model locally, providing you with private AI chat capabilities on your PC.
+
+.SH FEATURES
+.IP \[bu] 2
+Installs and configures KoboldCpp with the Gemma 2-2b-it model
+.IP \[bu]
+Includes a custom logical_sampler_gemma_instruct.json for optimal performance
+.IP \[bu]
+Provides a desktop icon for easy access
+.IP \[bu]
+Runs as a background service, eliminating the need for manual management
+.IP \[bu]
+Automatic service management, including updates
+.IP \[bu]
+Low resource usage, suitable for systems without dedicated GPUs
+.IP \[bu]
+Requires SSE4.2 support
+
+.SH INSTALLATION
+This package is available in the Arch User Repository (AUR). You can install it using an AUR helper like pikaur:
+
+.B pikaur -S ditana-koboldcpp
+
+The service will be automatically enabled and started after installation.
+
+.SH USAGE
+After installation, the KoboldCpp service should be running automatically. You can:
+
+.IP 1. 4
+Check the service status:
+.B systemctl status koboldcpp.service
+
+.IP 2. 4
+Access the KoboldCpp interface by opening your web browser and navigating to:
+.B http://localhost:5001
+
+Alternatively, you can use the desktop icon installed in your applications menu.
+
+.SH TECHNICAL DETAILS
+.IP \[bu] 2
+Based on KoboldCpp
+.IP \[bu]
+Uses the Gemma 2-2b-it model (Q6_K quantization)
+.IP \[bu]
+Includes a systemd service for automatic management
+.IP \[bu]
+Desktop entry for easy access
+.IP \[bu]
+Custom icon for better integration with your desktop environment
+.IP \[bu]
+Automatic service management script for handling installation, upgrades, and removal
+
+.SH LICENSE
+This project is licensed under the AGPL-3.0-only License.
+
+.SH ACKNOWLEDGEMENTS
+.IP \[bu] 2
+KoboldCpp by LostRuins Concedo
+.IP \[bu]
+Gemma model by Google, converted by Bartowski (Hugging Face)
+.IP \[bu]
+Systemd service and packaging by Stefan Zipproth
+
+.SH SUPPORT
+For issues, feature requests, or contributions, please use the GitHub issue tracker or submit a pull request.
+
+.SH SEE ALSO
+.BR systemctl (1),
+.BR koboldcpp (1)
+
+.SH AUTHOR
+Stefan Zipproth <s.zipproth@ditana.org>
+
+.SH BUGS
+Report bugs to <https://github.com/acrion/ditana-koboldcpp/issues>
+
+.SH COPYRIGHT
+Copyright \(co 2024 Stefan Zipproth. License AGPLv3+: GNU AGPL version 3 or later <https://www.gnu.org/licenses/agpl-3.0.html>.
+This is free software: you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law.

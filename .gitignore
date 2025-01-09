@@ -1,5 +1,6 @@
 *.gz
 *.gguf
 *.zst
+*.sig
 src
 pkg
