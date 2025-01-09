@@ -1,0 +1,14 @@
+pkgbase = typie
+	pkgdesc = yet another typing test for the terminal.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/qxb3/typie
+	arch = x86_64
+	license = MIT
+	depends = glib2
+	depends = ncurses
+	depends = openssl
+	source = https://github.com/qxb3/fum/releases/download/v0.0.1/typie-x86-64_v0.0.1
+	sha256sums = SKIP
+
+pkgname = typie
