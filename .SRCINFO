@@ -1,12 +1,12 @@
 pkgbase = nrfutil
-	pkgdesc = nrfutil command line utility and the nordicsemi library
-	pkgver = 6.1.2
-	pkgrel = 2
-	url = https://github.com/NordicSemiconductor/pc-nrfutil
-	arch = any
-	license = BSD
-	makedepends = python-pip
-	depends = python
-	options = !emptydirs
+	pkgdesc = unified command line utility for Nordic products
+	pkgver = 7.13.0
+	pkgrel = 1
+	url = https://www.nordicsemi.com/Products/Development-tools/nRF-Util
+	arch = x86_64
+	license = custom
+	depends = jlink-software-and-documentation
+	source = https://files.nordicsemi.com/ui/api/v1/download?repoKey=swtools&path=external/nrfutil/packages/nrfutil/nrfutil-x86_64-unknown-linux-gnu-7.13.0.tar.gz
+	sha256sums = 477385ff7e34c4469bfb4cda99fc2f7a3635e9f8f2ff74ebcccbd0681955c47c
 
 pkgname = nrfutil
