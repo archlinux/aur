@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-ppsspp
 pkgname=$_pkgname-git
-pkgver=1.17.1.r357.g443bdef239
+pkgver=1.18.1.r737.g17f64ce61f
 pkgrel=1
 pkgdesc="Sony PlayStation Portable core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -35,6 +35,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	'ppsspp::git+https://github.com/hrydgard/ppsspp.git'
+	'ppsspp-lua::git+https://github.com/hrydgard/ppsspp-lua.git'
 	'armips::git+https://github.com/Kingcom/armips.git'
 	'cpu_features::git+https://github.com/google/cpu_features.git'
 	'glslang::git+https://github.com/KhronosGroup/glslang.git'
@@ -42,6 +43,7 @@ source=(
 	'SPIRV-Cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git'
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -60,16 +62,18 @@ prepare() {
 	git config submodule.cpu_features.url ../cpu_features
 	git config submodule.ext/armips.url ../armips
 	git config submodule.ext/glslang.url ../glslang
+	git config submodule.ext/lua.url ../ppsspp-lua
 	git config submodule.ext/rcheevos.url ../rcheevos
 	git config submodule.ext/SPIRV-Cross.url ../SPIRV-Cross
 	git -c protocol.file.allow=always submodule update
 	sed -i 's/ext\/rapidjson\/include\/\(rapidjson\/document\.h\)/\1/' Core/RetroAchievements.cpp
+	sed -i 's/\(miniupnpc\)\/include/\1/' Core/Util/PortManager.h
 	sed -i '/libchdr/d' ext/CMakeLists.txt
 }
 
 build() {
 	export FFMPEG_DIR="/usr/include/ffmpeg4.4;/usr/lib/ffmpeg4.4"
-	cmake -S ppsspp -B build \
+	cmake -B build -S ppsspp \
 		-DARMIPS_USE_STD_FILESYSTEM=ON \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
