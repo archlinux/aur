@@ -2,7 +2,7 @@
 
 pkgname=pacana
 pkgver=0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Pacman repository analysis tool"
 arch=('i686' 'x86_64')
 url="https://github.com/bbidulock/pacana"
