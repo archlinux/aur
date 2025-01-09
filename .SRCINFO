@@ -8,7 +8,7 @@ pkgbase = xde-theme-atc
 	license = CCPL:by-nc-nd
 	makedepends = git
 	depends = xde-styles
-	source = xde-theme-atc::git://github.com/bbidulock/xde-theme-atc.git
+	source = xde-theme-atc::git+https://github.com/bbidulock/xde-theme-atc.git
 	md5sums = SKIP
 
 pkgname = xde-theme-atc

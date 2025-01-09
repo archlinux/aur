@@ -9,7 +9,7 @@ arch=('any')
 groups=('xde')
 makedepends=('git')
 depends=('xde-styles')
-source=("$pkgname::git://github.com/bbidulock/$pkgname.git")
+source=("$pkgname::git+https://github.com/bbidulock/$pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
