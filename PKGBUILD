@@ -1,4 +1,4 @@
-pkgname=ugs-platform-bin
+pkgname=universal-gcode-sender-bin
 pkgver=2.1.12
 pkgrel=1
 pkgdesc='Universal G-Code Sender is a Java based, cross platform G-Code sender, compatible with GRBL, TinyG, g2core and Smoothieware.'
@@ -6,6 +6,7 @@ arch=('any')
 url='https://universalgcodesender.com/'
 license=('GPL-3.0-or-later')
 depends=('java-runtime')
+replaces=('ugs-platform-bin')
 source=(
     "https://github.com/winder/Universal-G-Code-Sender/releases/download/v${pkgver}/ugs-platform-app-${pkgver}.zip"
     "ugsplatform.svg::https://raw.githubusercontent.com/winder/Universal-G-Code-Sender/v${pkgver}/ugs-platform/application/src/main/app-resources/icon.svg"
