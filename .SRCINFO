@@ -1,0 +1,16 @@
+pkgbase = retroforth-fossil
+	pkgdesc = A modern, pragmatic Forth
+	pkgver = r1939.56a264e
+	pkgrel = 1
+	url = https://retroforth.org/
+	arch = x86_64
+	license = ISC
+	makedepends = fossil
+	depends = bash
+	depends = glibc
+	provides = retroforth
+	conflicts = retroforth
+	source = retroforth.fossil::fossil+http://fossils.retroforth.org:8000/nga
+	sha256sums = SKIP
+
+pkgname = retroforth-fossil
