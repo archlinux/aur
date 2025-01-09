@@ -8,7 +8,7 @@
 
 pkgname=python-neo4j
 _name=${pkgname#python-}
-pkgver=5.20.0
+pkgver=5.27.0
 pkgrel=1
 pkgdesc="Neo4j Bolt driver for Python"
 url="https://pypi.org/project/neo4j/"
@@ -17,7 +17,7 @@ license=('GPLv3')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('c59e54a0c0fa1f109f1d2fa5293c29c2bb30ba388b4f9dd9656919793c10063a')
+sha256sums=('f82ee807cd15b178898d83f41a66372e11719a25dd487fd7bea48fd4b7323765')
 
 package() {
     cd ${_name}-${pkgver}
