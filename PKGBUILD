@@ -25,7 +25,7 @@ source=("LICENSE" "wechat")
 source_x86_64=("${_Pkgname}-${_last_modified_x86_64}-x86_64.AppImage::${_image_url_x86_64}")
 source_aarch64=("${_Pkgname}-${_last_modified_aarch64}-aarch64.AppImage::${_image_url_aarch64}")
 sha256sums=('4348aee67f0c40bd29ec370fff75e24384907514a76104b43354d395c436f0f2'
-            'f871d58f57d1b50b4e5459c4f9d6fb37e98a6892a4b1407718c5102cd8f96cf4')
+            'e8ba973c1ae8a0e75958cbd1c3b32f1c8fb48d40db15983f6c80d10fde6fae63')
 sha256sums_x86_64=('80159c350d68d4065f36c9aed558b52a296abf761b47ec2a3a87785d801e54aa')
 sha256sums_aarch64=('460f8558d80e3c2d3620b52c910a909a5cf5a8d6fd00c76f2dc456bfb3508469')
 
