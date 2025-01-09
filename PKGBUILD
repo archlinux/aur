@@ -8,6 +8,7 @@ url="http://www.unexicon.com/"
 license=('CCPL:by-nc-nd')
 arch=('any')
 groups=('xde')
+makedepends=('git')
 depends=('xde-styles')
 source=("$pkgname::git+https://github.com/bbidulock/$pkgname.git")
 md5sums=('SKIP')

@@ -6,6 +6,7 @@ pkgbase = xde-theme-blackbirds
 	arch = any
 	groups = xde
 	license = CCPL:by-nc-nd
+	makedepends = git
 	depends = xde-styles
 	source = xde-theme-blackbirds::git+https://github.com/bbidulock/xde-theme-blackbirds.git
 	md5sums = SKIP
