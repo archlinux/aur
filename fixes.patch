@@ -1,0 +1,9 @@
+diff -Naur Reduce-svn6860-src.orig/debianbuild/reduce/debian/reduce-psl.install Reduce-svn6860-src/debianbuild/reduce/debian/reduce-psl.install
+--- Reduce-svn6860-src.orig/debianbuild/reduce/debian/reduce-psl.install	2021-11-29 18:30:09.000000000 +0100
++++ Reduce-svn6860-src/debianbuild/reduce/debian/reduce-psl.install	2025-01-09 02:51:05.803328330 +0100
+@@ -2,4 +2,4 @@
+ usr/lib/reduce/pslbuild
+ usr/share/man/man1/redpsl.1
+ usr/share/reduce/pslbuild
+-/usr/share/applications/redpsl.desktop
++usr/share/applications/redpsl.desktop
