@@ -8,7 +8,6 @@ pkgbase = forgejo-runner
 	license = Expat
 	makedepends = git
 	makedepends = go
-	depends = docker
 	optdepends = docker
 	provides = forgejo-runner
 	backup = etc/forgejo-runner/forgejo-runner.yaml

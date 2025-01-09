@@ -7,7 +7,6 @@ pkgdesc="Continous integration for Forgejo"
 arch=('x86_64' 'aarch64')
 url="https://code.forgejo.org/forgejo/runner"
 license=('Expat')
-depends=('docker')
 provides=('forgejo-runner')
 makedepends=('git' 'go')
 optdepends=('docker')
