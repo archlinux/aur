@@ -7,7 +7,7 @@ _debver=0.17.41+really0.17
 _debrel=5
 epoch=1
 pkgver=${_debver//+/.}.r${_debrel}
-pkgrel=1
+pkgrel=2
 pkgdesc="Telnet client and server with TLS support (Debian Netkit version)"
 arch=('i686' 'x86_64')
 depends=('glibc' 'openssl' 'ncurses')
@@ -26,8 +26,8 @@ sha256sums=('26c545a1575971627f1ec79bd64855b3464c62b77870af0e977320c86173e506'
             '202fbfc51e6f6b92246853342a7ef47a731d64d012c8a8a026f9e9b154b9ade5'
             '25a9cd6c6fd3dd50a20038c05d755c519be1081e42bcb148f71e7a8f182e91a2'
             'a9a14476c43d65a57d50eec7e7d773ff1031cf1c13c12e84a9de5eaa14279434'
-            '6e45cfed7968af48b59f172523934db421964e58fdb624872a831160e2848284'
-            'b4220954373f5431b127509b4344dad32d5c692871c536106507fa8b052ef40a')
+            'ba540d150bba7f9686031c15d5555f8fb0bb15dd3462bc6d28227399197a6724'
+            '963ffcc38309eb718747db5c6583ca0021ecac4c38ae05c4464e76ad022375bc')
 
 prepare() {
   cd $pkgname
