@@ -12,17 +12,17 @@ index 03b233fb..01f2dd15 100644
    (:standard -safe-string)
    -w
 diff --git a/dune-project b/dune-project
-index 2d8104bb..afeea554 100644
+index db8c3d62..ea587672 100644
 --- a/dune-project
 +++ b/dune-project
-@@ -20,7 +20,6 @@
+@@ -21,7 +21,6 @@
    (ppx_derivers (>= 1.0))
    (sexplib0 (>= v0.12))
    (sexplib0 (and :with-test (>= "v0.15"))) ; Printexc.register_printer in sexplib0 changed
 -  stdlib-shims
    (ocamlfind :with-test)
    (re (and :with-test (>= 1.9.0)))
-   (cinaps (and :with-test (>= v0.12.1))))
+   (cinaps (and :with-test (>= v0.12.1)))
 diff --git a/metaquot_lifters/dune b/metaquot_lifters/dune
 index 17563c2e..0cd15393 100644
 --- a/metaquot_lifters/dune
@@ -34,7 +34,7 @@ index 17563c2e..0cd15393 100644
 - (libraries ppxlib ppxlib_traverse_builtins stdppx stdlib-shims))
 + (libraries ppxlib ppxlib_traverse_builtins stdppx))
 diff --git a/ppxlib.opam b/ppxlib.opam
-index 8ab343ee..290d57c2 100644
+index aeba506c..eb1d0aef 100644
 --- a/ppxlib.opam
 +++ b/ppxlib.opam
 @@ -26,7 +26,6 @@ depends: [
