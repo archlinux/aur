@@ -1,6 +1,6 @@
 pkgbase = cervisia
 	pkgdesc = CVS Frontend
-	pkgver = 24.12.0
+	pkgver = 24.12.1
 	pkgrel = 1
 	url = https://apps.kde.org/cervisia/
 	arch = x86_64
@@ -29,12 +29,12 @@ pkgbase = cervisia
 	depends = kwidgetsaddons5
 	depends = kxmlgui5
 	depends = qt5-base
-	source = https://download.kde.org/stable/release-service/24.12.0/src/cervisia-24.12.0.tar.xz
-	source = https://download.kde.org/stable/release-service/24.12.0/src/cervisia-24.12.0.tar.xz.sig
+	source = https://download.kde.org/stable/release-service/24.12.1/src/cervisia-24.12.1.tar.xz
+	source = https://download.kde.org/stable/release-service/24.12.1/src/cervisia-24.12.1.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = a889c7d8c434ff0342fc522c699943f2d9301888aa40e8fe27aacc2fdd23820b
+	sha256sums = 4a4153a2b7ef4955438eedc98aaf5a4dd7db0e9b76aa98940ca2d415f80f0da9
 	sha256sums = SKIP
 
 pkgname = cervisia
