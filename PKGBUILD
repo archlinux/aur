@@ -7,7 +7,7 @@ pkgrel=1
 arch=(x86_64)
 url="https://github.com/materialsvirtuallab/${_base}"
 license=(MIT)
-depends=(python)
+depends=(python-ruamel-yaml python-numpy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-bson python-pandas python-pydantic
   python-ruamel-yaml python-tqdm python-pytorch)

@@ -16,7 +16,8 @@ pkgbase = python-monty
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python
+	depends = python-ruamel-yaml
+	depends = python-numpy
 	source = monty-2025.1.9.tar.gz::https://github.com/materialsvirtuallab/monty/archive/v2025.1.9.tar.gz
 	sha512sums = 6c5315385c24a9338cf110b2b0c94776ec2acc7d414359bfe752ef2c72ec17269be091bc98279510e613edf1496f5f7ac6df692a67de8110f3998042fcc44670
 
