@@ -1,5 +1,6 @@
 {
-  ".i": 2,
+  ".i": 5,
   "crate": "cargo-diet",
-  "version": "1.2.7"
+  "version": "1.2.7",
+  "pkgrel": 2
 }
