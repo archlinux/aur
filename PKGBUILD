@@ -1,4 +1,4 @@
-# Maintainer: George Dietrich <george@dietrich.app>
+# Maintainer: George Dietrich <dev@dietrich.pub>
 pkgname=oq-bin
 pkgver=1.3.5
 pkgrel=1
