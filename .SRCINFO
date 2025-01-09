@@ -1,0 +1,18 @@
+pkgbase = yuma123-git
+	pkgdesc = Open-source YANG API in C, yangcli and netconfd server
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/vlvassilev/yuma123
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = make
+	makedepends = gcc
+	provides = yuma123
+	conflicts = yuma123
+	source = git+https://github.com/vlvassilev/yuma123#commit=4ede28d5ca03c7474b30e57f04da18bb7f6f3f48
+	sha256sums = aeb37e1e19251238de0a4e3f7bfed0adc90e15f92abf1fd6956ea22f2ffee462
+
+pkgname = yuma123-git
