@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=plasma-meta
-pkgver=6.1
+pkgver=6.3
 pkgrel=1
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
@@ -38,6 +38,7 @@ depends=(bluedevil
          powerdevil
          print-manager
          sddm-kcm
+         spectacle
          xdg-desktop-portal-kde
 )
 optdepends=('breeze-grub: Breeze theme for GRUB'
