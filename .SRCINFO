@@ -8,7 +8,7 @@ pkgbase = xde-theme-circuits
 	license = CCPL:by-nc-nd
 	makedepends = git
 	depends = xde-styles
-	source = xde-theme-circuits::git://github.com/bbidulock/xde-theme-circuits.git
+	source = xde-theme-circuits::git+https://github.com/bbidulock/xde-theme-circuits.git
 	md5sums = SKIP
 
 pkgname = xde-theme-circuits
