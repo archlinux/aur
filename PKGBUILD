@@ -1,11 +1,12 @@
 pkgname=plask-git
-pkgver=2022.01.05
+pkgver=2022.01.09
 pkgrel=1
 pkgdesc="Photonic LAser Simulation Kit: a comprehensive tool for numerical
 analysis of broad range of physical phenomena in photonic devices"
 url="https://plask.app"
 arch=('x86_64')
 license=('GPL3')
+conflicts=('plask' 'plask-bin')
 depends=('boost-libs' 'expat' 'fmt' 'openmp' 'intel-oneapi-mkl' 'lapack' 'qt5-declarative' 'qt5-tools'
          'python-numpy' 'python-matplotlib' 'python-lxml' 'python-yaml' 'pyside2' 'libx11')
 makedepends=('git' 'sed' 'gcc' 'cmake' 'eigen' 'boost' 'doxygen' 'python-sphinx' 'fmt')

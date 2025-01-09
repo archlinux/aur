@@ -1,6 +1,6 @@
 pkgbase = plask-git
 	pkgdesc = Photonic LAser Simulation Kit: a comprehensive tool for numerical analysis of broad range of physical phenomena in photonic devices
-	pkgver = 2022.01.05
+	pkgver = 2022.01.09
 	pkgrel = 1
 	url = https://plask.app
 	arch = x86_64
@@ -33,6 +33,8 @@ pkgbase = plask-git
 	optdepends = python-jedi: for Python hints in GUI
 	optdepends = python-paramiko: for remote computation launching
 	optdepends = ipython: for interactive shell
+	conflicts = plask
+	conflicts = plask-bin
 	source = plask::git+https://github.com/PhotonicsTUL/PLaSK.git
 	sha256sums = SKIP
 
