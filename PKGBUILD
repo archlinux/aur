@@ -5,7 +5,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-memacs
 epoch=
-pkgver=2020.6.5.1
+pkgver=2022.8.6
 pkgrel=00
 pkgdesc='Visualize your (digital) life in Emacs Org mode by converting data to Org mode format'
 arch=(any)
