@@ -1,0 +1,11 @@
+diff --git a/avidemux_core/cmake/admCheckGettext.cmake b/avidemux_core/cmake/admCheckGettext.cmake
+index cea18557b..29f5307af 100644
+--- a/avidemux_core/cmake/admCheckGettext.cmake
++++ b/avidemux_core/cmake/admCheckGettext.cmake
+@@ -32,5 +32,6 @@ MACRO(checkGettext)
+       APPEND_SUMMARY_LIST("Miscellaneous" "gettext" "${HAVE_GETTEXT}")
+     ENDIF()
+     SET(GETTEXT_CHECKED 1)
++    MESSAGE("")
+   ENDIF()
+ ENDMACRO()

@@ -7,3 +7,4 @@
 !fix_ugly_slider.patch
 !fix_mpeg-ts_typo.patch
 !opus_check.patch
+!gettext_check.patch
