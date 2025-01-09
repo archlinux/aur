@@ -27,7 +27,7 @@ source=("zotero.desktop"
         "zotero-epub-js::git+https://github.com/zotero/epub.js.git"
         "disable-updater.patch")
 sha256sums=('eab76db7a56a4d9aaa17baaf240b82fcf57944a4ddf8ef1b58cc64182426cedc'
-            'SKIP'
+            '879f7fda0058ee61b886ababda61f548f99fbf5b8c6a9038755d99abd41f84e4'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -56,6 +56,7 @@ prepare() {
   npm i --legacy-peer-deps
 
   git submodule init
+  git submodule deinit --force app/modules/zotero-word-for-mac-integration app/modules/zotero-word-for-windows-integration
   git config submodule.translators.url "$srcdir/zotero-translators"
   git config submodule.styles.url "$srcdir/zotero-styles"
   git config submodule.pdf-worker.url "$srcdir/zotero-pdf-worker"
@@ -85,6 +86,8 @@ prepare() {
 
   cd "$srcdir/zotero-client/pdf-worker"
   git submodule init
+  # Stupid hack because of dangling commit
+  git -C "$srcdir/zotero-pdf-js" fetch "https://github.com/zotero/pdf.js.git" 95d08fe7707553c23ce9f9c90371622a7aeb591f
   git config submodule.pdf.js.url "$srcdir/zotero-pdf-js"
   git -c protocol.file.allow=always submodule update
 }
