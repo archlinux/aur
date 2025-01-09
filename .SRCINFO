@@ -1,7 +1,7 @@
 pkgbase = python-msgcheck
 	pkgdesc = Gettext file checker
-	pkgver = 4.0.0
-	pkgrel = 3
+	pkgver = 4.1.0
+	pkgrel = 1
 	url = https://github.com/flashcode/msgcheck
 	arch = any
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = python-msgcheck
 	makedepends = python-wheel
 	depends = python
 	optdepends = enchant: for check PO files
-	source = msgcheck-4.0.0.tar.gz::https://github.com/flashcode/msgcheck/archive/v4.0.0.tar.gz
-	sha512sums = 4785d97eaa2b22dbb1aba34beb51705b8a6ba5edac5dcb03680d9588147af4b7dc629a7a8dea90b7516228f315a0b4ff0ce852c87a5f05641890ea3703e08716
+	source = msgcheck-4.1.0.tar.gz::https://github.com/flashcode/msgcheck/archive/v4.1.0.tar.gz
+	sha512sums = 3b487ba9b8175614937a188296d726dae8a518ade0e41c5a9cdfc58cb0fcf0cf94bc31255f48b52e2924c365ff58fe4bb66eb50807ece1e0063a3f91798f9448
 
 pkgname = python-msgcheck

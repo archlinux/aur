@@ -4,8 +4,8 @@
 _base=msgcheck
 pkgname=python-${_base}
 pkgdesc="Gettext file checker"
-pkgver=4.0.0
-pkgrel=3
+pkgver=4.1.0
+pkgrel=1
 arch=(any)
 url="https://github.com/flashcode/${_base}"
 license=(GPL3)
@@ -14,7 +14,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-pyenchant aspell-en aspell-fr libxml2)
 optdepends=('enchant: for check PO files')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('4785d97eaa2b22dbb1aba34beb51705b8a6ba5edac5dcb03680d9588147af4b7dc629a7a8dea90b7516228f315a0b4ff0ce852c87a5f05641890ea3703e08716')
+sha512sums=('3b487ba9b8175614937a188296d726dae8a518ade0e41c5a9cdfc58cb0fcf0cf94bc31255f48b52e2924c365ff58fe4bb66eb50807ece1e0063a3f91798f9448')
 
 build() {
   cd ${_base}-${pkgver}
