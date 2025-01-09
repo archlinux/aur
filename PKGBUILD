@@ -1,29 +1,27 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.8.4.r0.g4571967472
+pkgver=0.8.7.r0.g26db3b504f
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
 url="https://xemu.app/"
 license=('GPL-2.0-only')
 depends=(
-	'dtc'
 	'gcc-libs'
 	'glibc'
 	'glslang'
 	'hicolor-icon-theme'
 	'libcpp-httplib.so'
 	'sdl2'
-	'zlib'
 )
 makedepends=(
 	'cmake'
+	'dtc'
 	'git'
 	'glib2'
 	'glu'
 	'gtk3'
-	'keyutils'
 	'libepoxy'
 	'libpcap'
 	'libsamplerate'
@@ -31,35 +29,23 @@ makedepends=(
 	'meson'
 	'nlohmann-json'
 	'openssl'
-	'pixman'
 	'python-yaml'
 	'tomlplusplus>=3.1'
 	'vulkan-headers'
 	'vulkan-icd-loader'
 	'xxhash>=0.8'
+	'zlib'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=$_pkgname.install
 source=(
 	"$_pkgname::git+https://github.com/xemu-project/xemu.git"
-	"$_pkgname-imgui::git+https://github.com/xemu-project/imgui.git"
-	'berkeley-softfloat-3::git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git'
-	'berkeley-testfloat-3::git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'
-	'genconfig::git+https://github.com/mborgerson/genconfig.git'
-	'implot::git+https://github.com/epezent/implot.git'
-	'keycodemapdb::git+https://gitlab.com/qemu-project/keycodemapdb.git'
 	'use-system-libs.patch'
 )
 b2sums=(
 	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'd1d5dc956b31f2c82a0a242a450b3692786a5f4a8e86bc9d670301983762044672bbbe246826227f03b3a86d175e4f4f77b546f8e88b2a84bc67682c88f8cfe8'
+	'917b9eddb0e3d783ff228dfa97a6a0a5662c4451c69d9723938a8a26e83efa127943f6292bb65c18ebdfc05d282b01ae036771ac8f7f3b92e20a524f317fedf1'
 )
 
 pkgver() {
@@ -69,13 +55,6 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	git config submodule.genconfig.url ../genconfig
-	git config submodule.tests/fp/berkeley-softfloat-3.url ../berkeley-softfloat-3
-	git config submodule.tests/fp/berkeley-testfloat-3.url ../berkeley-testfloat-3
-	git config submodule.ui/keycodemapdb.url ../keycodemapdb
-	git config submodule.ui/thirdparty/imgui.url ../$_pkgname-imgui
-	git config submodule.ui/thirdparty/implot.url ../implot
-	git -c protocol.file.allow=always submodule update
 	mkdir -p ../build
 	patch -Np1 < ../use-system-libs.patch
 	python scripts/gen-license.py > XEMU_LICENSE
@@ -85,11 +64,11 @@ build() {
 	cd build
 	../$_pkgname/configure \
 		--audio-drv-list="sdl" \
-		--disable-debug-info \
+		--disable-werror \
 		--extra-cflags="-DXBOX=1" \
 		--ninja="$NINJA" \
 		--target-list="i386-softmmu" \
-		--with-git-submodules=ignore
+		-Dbuildtype=plain
 	make qemu-system-i386
 }
 
@@ -100,13 +79,12 @@ package() {
 		'libglib-2.0.so'
 		'libgobject-2.0.so'
 		'libgtk-3.so'
-		'libkeyutils.so'
 		'libpcap.so'
-		'libpixman-1.so'
 		'libsamplerate.so'
 		'libslirp.so'
 		'libtomlplusplus.so'
 		'libxxhash.so'
+		'libz.so'
 	)
 	cd $_pkgname
 	# shellcheck disable=SC2154

@@ -1,40 +1,30 @@
 diff --git a/configure b/configure
-index e4b5993b6f..b7d3204a05 100755
+index c660bcfbe4..68f0f3c6c8 100755
 --- a/configure
 +++ b/configure
-@@ -574,7 +574,7 @@ case "$cpu" in
-     # ??? Only extremely old AMD cpus do not have cmpxchg16b.
-     # If we truly care, we should simply detect this case at
-     # runtime and generate the fallback to serial emulation.
--    CPU_CFLAGS="-m64 -mcx16" ;;
-+    CPU_CFLAGS="" ;;
+@@ -524,7 +524,6 @@ case "$cpu" in
+     cpu="x86_64"
+     host_arch=x86_64
+     linux_arch=x86
+-    CPU_CFLAGS="-m64"
+     ;;
+ esac
  
-   mips*)
-     cpu="mips" ;;
-@@ -664,7 +664,7 @@ meson_option_build_array() {
- 
- . "$source_path/scripts/meson-buildoptions.sh"
- 
--meson_options=
-+meson_options="--buildtype=plain"
- meson_option_add() {
-   meson_options="$meson_options $(quote_sh "$1")"
- }
 diff --git a/meson.build b/meson.build
-index 53923ee72a..5701709e81 100644
+index 6d6aadd0d7..3cd9c1e970 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -1198,6 +1198,7 @@ if targetos == 'windows'
+@@ -2302,6 +2302,7 @@ if host_os == 'windows'
        ])
- elif targetos == 'linux'
+ elif host_os == 'linux'
    vulkan = dependency('vulkan')
 +  libglslang = dependency('glslang')
  endif
  
  if vulkan.found()
-@@ -2895,11 +2896,9 @@ config_host_data.set('CONFIG_CAPSTONE', capstone.found())
- config_host_data.set('CONFIG_FDT', fdt.found())
- config_host_data.set('CONFIG_SLIRP', slirp.found())
+@@ -3533,11 +3534,9 @@ if have_libvduse
+   libvduse = libvduse_proj.get_variable('libvduse_dep')
+ endif
  
 -tomlplusplus_proj = subproject('tomlplusplus', default_options: ['default_library=static'])
 -tomlplusplus = tomlplusplus_proj.get_variable('tomlplusplus_dep')
@@ -47,10 +37,10 @@ index 53923ee72a..5701709e81 100644
  #####################
  # Generated sources #
 diff --git a/ui/thirdparty/meson.build b/ui/thirdparty/meson.build
-index baa38cb771..847ea81182 100644
+index 2684979282..57799e0e33 100644
 --- a/ui/thirdparty/meson.build
 +++ b/ui/thirdparty/meson.build
-@@ -60,14 +60,9 @@ endif
+@@ -29,14 +29,9 @@ endif
  libfpng = static_library('fpng', sources: 'fpng/fpng.cpp', cpp_args: libfpng_cpp_args)
  fpng = declare_dependency(include_directories: 'fpng', link_with: libfpng)
  
@@ -59,7 +49,7 @@ index baa38cb771..847ea81182 100644
  
 -httplib_proj = subproject('cpp-httplib', default_options: ['cpp-httplib_openssl=enabled'])
 -httplib_deps = [httplib_proj.get_variable('cpp_httplib_dep')]
--if targetos == 'windows'
+-if host_os == 'windows'
 -  httplib_deps += [crypt32]
 -endif
 -httplib = declare_dependency(dependencies: httplib_deps)
