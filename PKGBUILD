@@ -1,38 +1,46 @@
-# Maintainer: Sebastian Baberowski <sebastian@baberowski.com>
+# Maintainer: Blair Bonnett <blair.bonnett@gmail.com>
+# Contributor: Sebastian Baberowski <sebastian@baberowski.com>
 
 pkgname=pololu-tic-software
-pkgver=1.7.0.r4.g488f984
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Pololu Tic software and library"
 url="https://www.pololu.com/category/212/tic-stepper-motor-controllers"
-license=(custom)
+license=(MIT)
 arch=(i686 x86_64)
-depends=(qt5-base libusbp-1)
-makedepends=(cmake)
-source=("git+https://github.com/pololu/pololu-tic-software.git")
-sha256sums=(SKIP)
 
-pkgver() {
-  cd $pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+depends=(
+  gcc-libs
+  glibc
+  libusbp-1
+  qt5-base
+)
+makedepends=(
+  cmake
+  git
+)
 
-prepare() {
-  mkdir -p build
-}
+source=(
+  "git+https://github.com/pololu/pololu-tic-software.git#tag=$pkgver"
+)
+sha256sums=(
+  '117f5ba396daa6753531829038922abd9aba0b8de976e48a6f9ab8f690e4c97f'
+)
 
 build() {
-  cd build
-  cmake 
-  cmake -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    ../$pkgname
-  make
+  # It would be nice to enable USE_SYSTEM_LIBYAML and USE_SYSTEM_LIBTINYXML,
+  # but the vendored versions are old enough to have different APIs.
+  cmake \
+    -B build \
+    -S $pkgname \
+    -D CMAKE_BUILD_TYPE=None \
+    -D CMAKE_INSTALL_PREFIX=/usr
+
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
-  install -Dm644 ../$pkgname/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 -t "$pkgdir/usr/lib/udev/rules.d/" ../$pkgname/udev-rules/99-pololu.rules
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/lib/udev/rules.d/" "$pkgname/udev-rules/99-pololu.rules"
 }

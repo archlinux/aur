@@ -1,0 +1,5 @@
+pololu-tic-software/
+src/
+pkg/
+pololu-tic-software-*.pkg*
+*.log
