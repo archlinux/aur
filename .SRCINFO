@@ -1,0 +1,17 @@
+pkgbase = yyetsbot-bin
+	pkgdesc = 🎬 Renren Film and TV Robot and website, containing all resources of Renren Film and TV as well as many netizens' cloud disk sharing.(Prebuilt version)人人影视 机器人和网站，包含人人影视全部资源以及众多网友的网盘分享
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tgbot-collection/YYeTsBot
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk
+	depends = gtk3
+	provides = yyetsbot=0.1.0
+	conflicts = yyetsbot
+	source = yyetsbot-0.1.0.deb::https://github.com/tgbot-collection/YYeTsBot/releases/download/yyetsbot-app-v0.1.0/yyetsbot_0.1.0_amd64.deb
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/tgbot-collection/YYeTsBot/yyetsbot-app-v0.1.0/LICENSE
+	sha256sums = b798a02f584fd623dd039a4c0897aa903d5709180a09f6b4b717976e81ecf35b
+	sha256sums = 6b80980b9084834f15e201cbce41f505738922b541cda1d524f695252540a71f
+
+pkgname = yyetsbot-bin
