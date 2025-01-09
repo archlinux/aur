@@ -1,7 +1,7 @@
 # Maintainer: Maxime “pep” Buquet <archlinux@bouah.net>
 # Package based on aur/forgejo-runner-bin and aur/act-runner.
 pkgname="forgejo-runner"
-pkgver=3.4.1
+pkgver=5.0.4
 pkgrel=1
 pkgdesc="Continous integration for Forgejo"
 arch=('x86_64' 'aarch64')
