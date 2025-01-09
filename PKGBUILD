@@ -8,19 +8,25 @@ pkgdesc="Web interface for EiskaltDC++ Daemon. (GIT Version)"
 license=('GPL3')
 arch=('any')
 url='https://github.com/eiskaltdcpp/eiskaltdcpp-web'
-depends=('eiskaltdcpp-daemon'
-         'sh'
-         )
-makedepends=('git')
+depends=(
+  'eiskaltdcpp-daemon'
+  'sh'
+)
+makedepends=(
+  'cmake'
+  'git'
+)
 conflicts=('eiskaltdcpp-web')
 provides=('eiskaltdcpp-web')
 options=('!emptydirs')
-source=('git+https://github.com/eiskaltdcpp/eiskaltdcpp-web'
-        'eiskaltdcpp-web.sh'
-        )
-sha256sums=('SKIP'
-            '1bf98f045ee32a021011d82eddba4787198a66b104c3183279ca1c8e71bf321b'
-            )
+source=(
+  'git+https://github.com/eiskaltdcpp/eiskaltdcpp-web'
+  'eiskaltdcpp-web.sh'
+)
+sha256sums=(
+  'SKIP'
+  '1bf98f045ee32a021011d82eddba4787198a66b104c3183279ca1c8e71bf321b'
+)
 backcup=('usr/share/webapps/Eiskaltdcpp-web/config.js')
 
 pkgver() {

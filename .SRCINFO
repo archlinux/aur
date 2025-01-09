@@ -5,6 +5,7 @@ pkgbase = eiskaltdcpp-web-git
 	url = https://github.com/eiskaltdcpp/eiskaltdcpp-web
 	arch = any
 	license = GPL3
+	makedepends = cmake
 	makedepends = git
 	depends = eiskaltdcpp-daemon
 	depends = sh
