@@ -1,3 +1,4 @@
+# Maintainer: Mads Ravn <https://github.com/madsravn>
 # Contributor: Antoni Kepinski <a[at]kepinski[dot]me>
 pkgname=archfetch
 pkgver=1.0.8
