@@ -1,0 +1,5 @@
+[simplex-desktop-bin]
+source = "github"
+github = "simplex-chat/simplex-chat"
+use_latest_release = true
+prefix = "v"

@@ -3,7 +3,7 @@
 # Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname=simplex-desktop-bin
-pkgver=6.2.0
+pkgver=6.2.3
 pkgrel=1
 pkgdesc='SimpleX Chat, the first messaging network operating without user identifiers of any kind (pre-compiled)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ url='https://simplex.chat/'
 license=('AGPL-3.0-or-later')
 source=("$pkgname-$pkgver.deb::https://github.com/simplex-chat/simplex-chat/releases/download/v$pkgver/simplex-desktop-ubuntu-22_04-x86_64.deb")
 # SHA512 digest taken from release page on Microsoft GitHub
-sha512sums=('a389c84149b69025a16bc7f2449380cc72f86ce0c989b9861b875d848d42b778347835227e0de1c69f6cb275eed5d31c38d549312ace56b39f677a2ace7856ad')
+sha512sums=('2fef5a818d87c7f5cd31163afdcfc21e78c2d2817cbe83c6efc829c58d8840a67a6584d27e25a74d01983c670f6f5436ba6e3b8ef0509a8ac6983b68cb5d1772')
 
 package() {
     cd "$srcdir"
@@ -24,5 +24,3 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     ln -s /opt/simplex/bin/simplex "$pkgdir/usr/bin/simplex-desktop"
 }
-sha512sums=('38ff1db76127217aeafe7fc73568be16e28e7ca7825c4dbdfbf7a4a4e2e87801d2ee377bc8dba080115c19d181dce9807d4a30c677ca8fbdbbdb28c2c33a5b23')
-sha512sums=('f2c3b76c8e0197b77f87d8cbf4a57c0fa642d4704e165a080737ebd999d29239f7f3136d7998277248adb2216efc46f3b393caf0db412454d571545d90fe4baa')
