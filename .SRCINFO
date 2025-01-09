@@ -1,0 +1,16 @@
+pkgbase = mathfairy-git
+	pkgdesc = The strongest calculator in gensokyo
+	pkgver = 2024.1.9
+	pkgrel = 1
+	url = https://github.com/System64fumo/mathfairy
+	arch = aarch64
+	arch = riscv64
+	arch = x86_64
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = gtkmm-4.0
+	source = git+https://github.com/System64fumo/mathfairy
+	sha256sums = SKIP
+
+pkgname = mathfairy-git
