@@ -50,7 +50,7 @@ optdepends=(
   'hunspell-en_US: Spell checking, American English'
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
-  'pulse-native-provider: Sound support when using PipeWire' # thanks to @cyberpunkrocker for the suggestion
+  'pulse-native-provider: Sound support when using PipeWire or PulseAudio' # thanks to @cyberpunkrocker for the suggestion
   'speech-dispatcher: Text-to-Speech'
   'xdg-desktop-portal: Screensharing with Wayland'
 )

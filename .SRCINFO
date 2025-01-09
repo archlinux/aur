@@ -43,7 +43,7 @@ pkgbase = mullvad-browser-bin
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = libnotify: Notification integration
 	optdepends = networkmanager: Location detection via available WiFi networks
-	optdepends = pulse-native-provider: Sound support when using PipeWire
+	optdepends = pulse-native-provider: Sound support when using PipeWire or PulseAudio
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
 	provides = mullvad-browser=14.0.4
