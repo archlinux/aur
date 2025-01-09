@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/louwrentius/fio-plot/"
 license=("BSD")
 makedepends=("python-setuptools")
-depends=("python" "python-numpy" "python-matplotlib" "python-pillow" "python-pyparsing")
+depends=("python" "python-numpy" "python-matplotlib" "python-pillow" "python-pyparsing" "python-pyan3")
 provides=('fio-plot' 'bench-fio')
 
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/louwrentius/fio-plot/archive/v.${pkgver}.tar.gz")
@@ -18,7 +18,6 @@ b2sums=('37d7a8b05f1caa0e004c04e0f9f22d5248ee5d7f2cb8d76347fe985e0d285e3b63b48ba
 package() {
   cd "fio-plot-v.${pkgver}"
 
-  python -m pip install -r requirements.txt
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
