@@ -8,7 +8,7 @@ pkgbase = xde-theme-warthogs
 	license = CCPL:by-nc-nd
 	makedepends = git
 	depends = xde-styles
-	source = xde-theme-warthogs::git://github.com/bbidulock/xde-theme-warthogs.git
+	source = xde-theme-warthogs::git+https://github.com/bbidulock/xde-theme-warthogs.git
 	md5sums = SKIP
 
 pkgname = xde-theme-warthogs
