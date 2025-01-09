@@ -1,6 +1,6 @@
 # Maintainer: Leon Mergen <leon@solatis.com>
 pkgname=fio-plot
-pkgver=1.0.11
+pkgver=1.1.16
 pkgrel=1
 pkgdesc="Create charts from FIO storage benchmark tool output"
 arch=('any')
@@ -10,13 +10,13 @@ makedepends=("python-setuptools")
 depends=("python" "python-numpy" "python-matplotlib" "python-pillow" "python-pyparsing" "python-pyan3")
 provides=('fio-plot' 'bench-fio')
 
-source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/louwrentius/fio-plot/archive/v.${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/louwrentius/fio-plot/archive/v${pkgver}.tar.gz")
 
-sha256sums=('4798555f0dc022464f3571ef1ef84ed69d6735250a2bc17f18a3a1f220f8103e')
-b2sums=('37d7a8b05f1caa0e004c04e0f9f22d5248ee5d7f2cb8d76347fe985e0d285e3b63b48badf237a701549fd4157e94d3c8bdb68b2ad9a35b09e35d407fbcb09632')
+sha256sums=('31b23e538c8d2a8a2b373553e01742c171b2b151049253114d93c4f60380a7f9')
+b2sums=('f6e63c3ac9deacd37c96bd86bf867bcc96969a39276d07209f3d4d2b1045e921e1de83c10b2691b112633b9b1ddbe70b165068f0bced9ffbc7f06019dc52d15a')
 
 package() {
-  cd "fio-plot-v.${pkgver}"
+  cd "fio-plot-${pkgver}"
 
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 
