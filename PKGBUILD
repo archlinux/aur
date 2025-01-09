@@ -4,7 +4,7 @@ pkgname=hqplayer-embedded
 _debpkgver=5.10.0-30
 _debpkgverarm=5.10.0-30
 pkgver=5.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
 arch=('x86_64' 'x86_64_v3' 'x86_64_v4' 'aarch64')
@@ -19,8 +19,8 @@ source_x86_64=("https://www.signalyst.eu/bins/hqplayerd/noble/hqplayerd_"$_debpk
 source_x86_64_v3=("https://www.signalyst.eu/bins/hqplayerd/noble/hqplayerd_"$_debpkgver"_amd64.deb")
 source_x86_64_v4=("https://www.signalyst.eu/bins/hqplayerd/noble/hqplayerd_"$_debpkgver"_amd64.deb")
 source_aarch64=("https://www.signalyst.eu/bins/hqplayerd/bookworm/hqplayerd_"$_debpkgverarm"_arm64.deb")
-sha256sums=('7a61af6b213a44003545e7dace4bd2b6cd7e7d5caa053a2d887750ab35a5a2e1'
-            '5d4194a704979b3ff92482e155769460906745a66e759142eba33a2226f9cb3a')
+sha256sums=('ed679026692fd90bb0c30fd66888b5062c3559a9960f86f9eea0c2ee6fdb32d5'
+            'c8e1bc359cf8f2df29e9af4b8b3879779bf1ba724a07aada97ad330fffd774b0')
 sha256sums_x86_64=('96c176194c2778833424f5f3fdb9667d8f71650993f94a1ba9bc14692b802e74')
 sha256sums_x86_64_v3=('96c176194c2778833424f5f3fdb9667d8f71650993f94a1ba9bc14692b802e74')
 sha256sums_x86_64_v4=('96c176194c2778833424f5f3fdb9667d8f71650993f94a1ba9bc14692b802e74')
