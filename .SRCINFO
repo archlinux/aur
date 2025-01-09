@@ -1,6 +1,6 @@
 pkgbase = kdecoration5
 	pkgdesc = Plugin based Qt 5 library to create window decorations
-	pkgver = 5.27.11
+	pkgver = 5.27.12
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = kdecoration5
 	makedepends = extra-cmake-modules
 	makedepends = kcoreaddons5
 	depends = ki18n5
-	source = https://download.kde.org/stable/plasma/5.27.11/kdecoration-5.27.11.tar.xz
-	source = https://download.kde.org/stable/plasma/5.27.11/kdecoration-5.27.11.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/5.27.12/kdecoration-5.27.12.tar.xz
+	source = https://download.kde.org/stable/plasma/5.27.12/kdecoration-5.27.12.tar.xz.sig
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 71c417461993923a2245b6f954ff72fb1737bc10db218ca9595194017cf1f838
+	sha256sums = 867e2169d6e8b8755d4a22f2d48bcf39413e7d9872eab878871fd7a0b03747ec
 	sha256sums = SKIP
 
 pkgname = kdecoration5
