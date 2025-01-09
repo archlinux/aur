@@ -1,10 +1,10 @@
 pkgbase = waterfox-bin
 	pkgdesc = Current/modern generation of customizable privacy-conscious web browser.
 	pkgver = 6.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.waterfox.net
 	arch = x86_64
-	license = MPL
+	license = MPL-2.0
 	depends = gtk3
 	depends = libxt
 	depends = startup-notification
@@ -23,6 +23,6 @@ pkgbase = waterfox-bin
 	source = waterfox.desktop
 	source = https://cdn1.waterfox.net/waterfox/releases/6.5.3/Linux_x86_64/waterfox-6.5.3.tar.bz2
 	sha512sums = d0ff0445021b975d52eee7dac27dfdc0d170da07f8a8dc1676ba53387c2006f0598c163b36b07abdbb411cfb61bf52b8222fc5882bdfa8dfcd13d99cb44c92b6
-	sha512sums = 7c867552129697f3088e3e7590290be66b1df670cd257cd9a9a73af0837d2ba45fec4cb632d064d1c94ec193130597a7ace070f1bdafed4cf65174dd561d35ad
+	sha512sums = 81ddac25bab302583f8d2ed6d81dd1836042598cc5b9c487db48155c35171cd45189e1c99a456649de9ca07faf97cc809e792f47488f7473087cb81d3bb8a913
 
 pkgname = waterfox-bin
