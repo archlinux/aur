@@ -1,5 +1,5 @@
 pkgname=mingw-w64-boost
-pkgver=1.86.0
+pkgver=1.87.0
 _boostver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
@@ -9,19 +9,14 @@ license=('custom')
 depends=('mingw-w64-zstd' 'mingw-w64-bzip2' 'mingw-w64-dlfcn')
 makedepends=('mingw-w64-gcc' 'mingw-w64-wine' 'mingw-w64-environment')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://boostorg.jfrog.io/artifactory/main/release/${pkgver}/source/boost_${_boostver}.tar.bz2")
-sha256sums=('1bed88e40401b2cb7a1f76d4bab499e352fa4d0c5f31c0dbae64e24d34d7513b')
+source=("https://archives.boost.io/release/${pkgver}/source/boost_${_boostver}.tar.bz2")
+sha256sums=('af57be25cb4c4f4b413ed692fe378affb4352ea50fbe294a11ef548f4d527d89')
 
 _architectures="32:i686-w64-mingw32 64:x86_64-w64-mingw32"
 
 prepare() {
-  # process_handle_windows.cpp:(.text+0x25): undefined reference to `_imp__WSACleanup@0'
-  sed -i -e "/if \[ os.name \] = NT/d" -e "/{/d" -e "/}/d" "${srcdir}"/boost_${_boostver}/libs/process/build/Jamfile
-  sed -i -e "46ilib ws2_32 ;" -e "57i<target-os>windows:<library>ws2_32" "${srcdir}"/boost_${_boostver}/libs/process/build/Jamfile
-
-  # from_exception.cpp:333:23: error: 'current_exception' is not a member of 'std'
-  sed -i "160i#include <exception>" "${srcdir}"/boost_${_boostver}/libs/stacktrace/src/from_exception.cpp
-  sed -i "160i\ \ \ \ <target-os>windows:<library>dl" "${srcdir}"/boost_${_boostver}/libs/stacktrace/build/Jamfile.v2
+  # link libdl
+  sed -i "170i\ \ \ \ <target-os>windows:<library>dl" "${srcdir}"/boost_${_boostver}/libs/stacktrace/build/Jamfile.v2
 
   for _arch in ${_architectures}; do
     source mingw-env "${_arch:3}"
