@@ -1,7 +1,7 @@
 # Maintainer: karboncore
 
 pkgname=mealie
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='A self hosted recipe manager'
 arch=(any)
@@ -18,11 +18,17 @@ depends=(python-fastapi python-sqlalchemy python-pyjwt python-text-unidecode pyt
 makedepends=(git python-build python-wheel python-installer yarn nodejs-lts-hydrogen)
 optdepends=('postgresql: for postgresql support'
             'python-psycopg2: for postgresql support')
-source=(https://github.com/mealie-recipes/mealie/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('22a6e81e498199611f65d01b822794ea3b7096475578341d394fb1d43ce7c8ee')
+source=(https://github.com/mealie-recipes/mealie/archive/refs/tags/v${pkgver}.tar.gz
+        mealie.sh
+        mealie.service
+        mealie.sysusers)
+sha256sums=('67c07632851bb59bbd7e4712673d5ce930541402c217d776cfb9d76b58d7b72a'
+            'fbc0583e1019073b05b34a09e52be359939647481e38a5213565172f5fcf2fae'
+            'bf98963b77085e7a1aaf77afab7f2760d6dfe00f3c4dcbf50250eb376dc56487'
+            '1a6b434a125f6940e53f8ba6613426f50c8ca8d5e7a447a80efd57016b917208')
 
 build() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python -m build -wn
   cd frontend
   yarn install \
@@ -35,23 +41,23 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  python -m installer -d "$pkgdir" dist/*.whl
-  rm -f "$pkgdir/usr/bin/start"
-  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
-  mkdir -pm755 "$pkgdir/usr/lib/mealie"
-  cp -r frontend/dist "$pkgdir/usr/lib/mealie/"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python -m installer -d "${pkgdir}" dist/*.whl
+  rm -f "${pkgdir}/usr/bin/start"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  mkdir -pm755 "${pkgdir}/usr/lib/mealie"
+  cp -r frontend/dist "${pkgdir}/usr/lib/mealie/"
+  cd ..
 
-  # Generate startup script
-  pythondir=( "$pkgdir/usr/lib/python"* )
-  cat << EOF > "$pkgdir/usr/bin/mealie"
-#!/bin/sh
+  # Basic startup script
+  install -Dm 755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
 
-STATIC_FILES="\${STATIC_FILES:-/usr/lib/mealie/dist}"                      \\
-PRODUCTION="\${PRODUCTION:-true}"                                          \\
-DATA_DIR="\${DATA_DIR:-\$HOME/.mealie}"                                     \\
-                                                                          \\
-python /usr/lib/${pythondir##*/}/site-packages/mealie/main.py
-EOF
-  chmod 755 "$pkgdir/usr/bin/mealie"
+  # Install systemd files
+  install -Dm 644 ${pkgname}.service "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm 644 ${pkgname}.sysusers "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+
+  # Set python version
+  PYTHONDIR=( "${pkgdir}/usr/lib/python"* )
+  sed -i "s/_PYTHONDIR/${PYTHONDIR##*/}/g" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  sed -i "s/_PYTHONDIR/${PYTHONDIR##*/}/g" "${pkgdir}/usr/bin/${pkgname}"
 }
