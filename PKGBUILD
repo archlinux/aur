@@ -2,7 +2,7 @@
 
 pkgname=gnome-console-alt-shortcuts-git
 _pkgname=console-alt-shortcuts
-pkgver=43.rc.r12.g3df6390
+pkgver=47.0.r53.g1115364
 pkgrel=1
 pkgdesc="A simple user-friendly terminal emulator for the GNOME desktop with Alt-based shortcuts instead of Shift+Ctrl"
 arch=('x86_64')
