@@ -1,12 +1,12 @@
 pkgbase = internxt-drive-bin
 	pkgdesc = Internxt Drive sync client GUI
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://internxt.com
 	arch = x86_64
 	license = AGPL3
 	provides = internxt-drive
-	source = Internxt-Drive-2.4.0.AppImage::https://github.com/internxt/drive-desktop-linux/releases/download/v2.4.0/Internxt-Drive-2.4.0.AppImage
-	sha256sums = d918a6cef5416c17d01ceb18d779277b15a1c5153151c8b2fb4f593ac7514060
+	source = Internxt-Drive-2.4.1.AppImage::https://github.com/internxt/drive-desktop-linux/releases/download/v2.4.1/Internxt-Drive-2.4.1.AppImage
+	sha256sums = ce25601464556a0d1760ad39f98cea97209a7a45f32c591c16c2862b8c033d75
 
 pkgname = internxt-drive-bin
