@@ -1,6 +1,6 @@
 pkgbase = caddy-custom
 	pkgdesc = Caddy web server with plugins
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://github.com/caddyserver/caddy
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = caddy-custom
 	source = plugin-list
 	source = caddy.sysusers
 	source = caddy.tmpfiles
-	source = caddy-dist-v2.9.0.tar.gz::https://github.com/caddyserver/dist/archive/refs/tags/v2.9.0.tar.gz
+	source = caddy-dist-v2.9.1.tar.gz::https://github.com/caddyserver/dist/archive/refs/tags/v2.9.1.tar.gz
 	sha256sums = SKIP
 	sha256sums = 1dbef6bd4a096fcbab353a6bec0f6e34f8b6d2470e422c380642c2bd8ff83c20
 	sha256sums = c3119c98b285c4bf10c0581fba09b87df3999e0e5a335d94f074eae454a99e70
-	sha256sums = ff27ab0f5d7a3a76a68ca75fbdfcc83a0e2725cc2100f4118e1e860da6ce68c8
+	sha256sums = b3763e0397ef71bba7e389144b3de79ba61378a60fbcec2f564966f1851299dc
 
 pkgname = caddy-custom
