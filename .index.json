@@ -1,5 +1,6 @@
 {
-  ".i": 2,
+  ".i": 5,
   "crate": "crab-hole",
-  "version": "0.1.11"
+  "version": "0.1.12",
+  "pkgrel": 1
 }
