@@ -1,9 +1,10 @@
 pkgbase = dcmfx
-	pkgdesc = CLI and libraries for working with DICOM
+	pkgdesc = CLI tool for working with DICOM and DICOM JSON
 	pkgver = 0.6.0
 	pkgrel = 1
-	url = https://github.com/dcmfx/dcmfx
+	url = https://dcmfx.github.io
 	arch = x86_64
+	arch = aarch64
 	license = AGPL-3.0-or-later
 	makedepends = cargo
 	makedepends = cmake

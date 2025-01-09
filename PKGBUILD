@@ -1,14 +1,13 @@
-# Maintainer: Adam Perkowski <adas1per@protonmail.com>
-# https://github.com/adamperkowski/PKGBUILDs
+# Maintainer: DCMfx <https://dcmfx.github.io>
 
 pkgname=dcmfx
 pkgver=0.6.0
 pkgrel=1
-pkgdesc='CLI and libraries for working with DICOM'
-arch=('x86_64')
-url="https://github.com/$pkgname/$pkgname"
+pkgdesc='CLI tool for working with DICOM and DICOM JSON'
+arch=('x86_64' 'aarch64')
+url="https://dcmfx.github.io"
 license=('AGPL-3.0-or-later')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dcmfx/dcmfx/archive/v$pkgver.tar.gz")
 sha256sums=('0e84f1a503accc802d715a35244326312c3f3b0633af2606f1b06db70c81d56c')
 makedepends=('cargo' 'cmake')
 depends=('zlib' 'gcc-libs' 'glibc')
