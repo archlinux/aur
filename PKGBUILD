@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20240805.fac9da1c7
+pkgver=20250109.8e5603875
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=(x86_64 armv7h aarch64)
@@ -13,11 +13,15 @@ license=(AGPL3)
 makedepends=(git glu libxi)
 depends=(gumbo-parser harfbuzz jbig2dec libarchive libgl
          libjpeg-turbo libxrandr mujs openjpeg2)
-source=(git://git.ghostscript.com/mupdf.git
-        git://git.ghostscript.com/thirdparty-{extract,freeglut,lcms2}.git
+source=(git+https://github.com/ArtifexSoftware/mupdf.git
+        git+https://github.com/ArtifexSoftware/extract.git
+        git+https://github.com/ArtifexSoftware/thirdparty-freeglut.git
+        git+https://github.com/ArtifexSoftware/thirdparty-lcms2.git#branch=lcms2mt
         desktop)
 sha256sums=(SKIP
-            SKIP SKIP SKIP
+            SKIP
+            SKIP
+            SKIP
             ccff66979249bd4ab4ba8918660f194eb90eb0ae231b16e36a6cecdcf471883f)
 
 conflicts=(${_pkgname}{,-gl,-tools})
@@ -31,7 +35,7 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 	rm -fr thirdparty/*
-	cp -a ../thirdparty-* thirdparty
+	cp -a ../extract ../thirdparty-* thirdparty
 	rename thirdparty- '' thirdparty/*
 }
 
