@@ -2,7 +2,7 @@
 
 pkgname=mloader
 pkgver=1.1.12
-pkgrel=2
+pkgrel=3
 pkgdesc='Command-line tool to download manga from mangaplus'
 arch=(any)
 url='https://github.com/hurlenko/mloader'
@@ -14,7 +14,7 @@ sha256sums=('24201e8c936e7790ea98b4e2edec4fdb16742851b752a1b95a83550219d2141a')
 
 build() {
     cd ${pkgname}-${pkgver}
-    protoc --proto_path . --python_out ./mloader respanse.proto
+    protoc --proto_path . --python_out ./mloader response.proto
     python -m build --wheel --no-isolation
 }
 

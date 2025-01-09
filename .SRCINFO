@@ -1,7 +1,7 @@
 pkgbase = mloader
 	pkgdesc = Command-line tool to download manga from mangaplus
 	pkgver = 1.1.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hurlenko/mloader
 	arch = any
 	license = GPL3
