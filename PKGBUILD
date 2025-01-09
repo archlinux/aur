@@ -24,8 +24,8 @@ _enable_plasmoid=${SYNCTHING_TRAY_ENABLE_PLASMOID:-0}
 
 _reponame=syncthingtray
 pkgname=syncthingtray
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing'
 license=(GPL-2-or-later)
@@ -43,18 +43,11 @@ checkdepends=('cppunit' 'syncthing' 'iproute2')
 [[ $_enable_kio_plugin ]] && makedepends+=('kio5')
 [[ $_enable_plasmoid ]] && makedepends+=('plasma-framework5' 'extra-cmake-modules')
 url="https://github.com/Martchus/${_reponame}"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz"
-        https://github.com/Martchus/syncthingtray/commit/ce7b85669165d3a3c3d76a5a47ef4dacbef924a6.patch)
-sha256sums=('19e89ab3ecc228d1a5081bc50bf856b684f6336400726c45011ebad4fcde2519'
-            '774208a8920f81dc669e461450e0cdda2a10760ad66c6a49bd1b01b2a8dc1f13')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
+sha256sums=('2c9cc5bef94736688ce2862f987cc6732dee25768b61a33b24ff1258a0a66b7a')
 
 ephemeral_port() {
   comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
-}
-
-prepare() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  patch -p1 -i ../ce7b85669165d3a3c3d76a5a47ef4dacbef924a6.patch
 }
 
 build() {
