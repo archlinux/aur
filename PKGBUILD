@@ -4,7 +4,7 @@
 pkgname=('linux-gpib-dkms')
 _pkgname='linux-gpib'
 pkgver=4.3.6
-pkgrel=2
+pkgrel=3
 pkgdesc='A support package for GPIB (IEEE 488) hardware (DKMS version).'
 arch=('i686' 'x86_64' 'aarch64')
 url='http://linux-gpib.sourceforge.net/'
@@ -36,11 +36,16 @@ prepare() {
     sed -i -e 's/config.slave_id = 0;//g' drivers/gpib/eastwood/fluke_gpib.c
     sed -i -e 's/ioremap_nocache/ioremap/g' drivers/gpib/fmh_gpib/fmh_gpib.c
     sed -i -e 's/config.slave_id = 0;//g' drivers/gpib/fmh_gpib/fmh_gpib.c
+    # remove the GPIO driver as it's failing to compile on x64
+    sed -i -e 's/obj-y += gpio\///g' drivers/gpib/Makefile
 
     msg "Unpacking userland utils source"
     cd "${srcdir}/${_pkgname}-${pkgver}"
     tar xvfz "${_pkgname}-user-${pkgver}.tar.gz"
     cd "${_pkgname}-user-${pkgver}"
+
+    # fix fxload
+    sed -i -e 's/fx2/fx2 -p \$BUSNUM,\$DEVNUM/g' usb/gpib_udev_fxloader.in
 
     echo 'ACTION=="add|change", KERNEL=="gpib[0-9]*", MODE="0660", GROUP="gpib"' >| \
         usb/99-gpib-generic.rules
