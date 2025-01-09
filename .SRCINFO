@@ -1,0 +1,15 @@
+pkgbase = hypr-window-picker-git
+	pkgdesc = Simple middleware for hyprland-toplevel-export-v1
+	pkgver = 20250109.r6.f82f718
+	pkgrel = 1
+	url = https://github.com/yz9551/hypr-window-picker
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = wayland
+	provides = hypr-window-picker
+	conflicts = hypr-window-picker
+	source = git+https://github.com/yz9551/hypr-window-picker
+	sha256sums = SKIP
+
+pkgname = hypr-window-picker-git
