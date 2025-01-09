@@ -1,7 +1,7 @@
 # Maintainer: Ashley Stewart <a.stewart.au@gmail.com>
 
 pkgname=neurodeskapp-bin
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="NeurodeskApp, based on JupyterLab desktop application, based on Electron."
 url="https://github.com/NeuroDesk/neurodesk-app"
@@ -9,7 +9,7 @@ license=("BSD-3-Clause")
 arch=('x86_64')
 depends=('docker')
 source=("https://github.com/NeuroDesk/neurodesk-app/releases/download/v${pkgver}/NeurodeskApp-Setup-Debian.deb")
-sha256sums=('c753425866730dff83d2fe4cfef0786ce5a13dc6440e24943b9f674f79e12d4d')
+sha256sums=('bb708fb234c9151dd436e0b260164d0ec2402a9ae8ffc6aeb3bbf97bffceaa1c')
 
 prepare() {
     cd $srcdir
