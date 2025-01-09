@@ -2,14 +2,16 @@
 
 pkgname=git-monitor-git
 _pkgname=git-monitor
-pkgdesc='Monitor Git repositories for new commits'
 pkgver=r37.a0fa2fe
-pkgrel=2
-url="https://github.com/Kriechi/${_pkgname}"
+pkgrel=3
+pkgdesc='Monitor Git repositories for new commits'
 arch=('x86_64')
+url="https://github.com/Kriechi/${_pkgname}"
 license=('MIT')
 makedepends=('git'
              'go')
+provides=('git-monitor')
+conflicts=('git-monitor')
 source=("git+${url}.git#branch=master")
 sha256sums=('SKIP')
 
