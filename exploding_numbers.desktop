@@ -1,5 +1,5 @@
 [Desktop Entry]
-Version=0.911
+Version=0.992
 Type=Application
 Icon=exploding_numbers
 Exec=exploding_numbers
@@ -7,5 +7,5 @@ Terminal=false
 StartupNotify=false
 Name=Exploding Numbers
 GenericName=Puzzle Game
-Comment=Divide and add numbers in 2D grid
+Comment=Divide and add numbers in a 2D grid
 Categories=Game;LogicGame;

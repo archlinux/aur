@@ -1,18 +1,19 @@
 pkgbase = exploding_numbers
-	pkgdesc = A puzzle game with dividing and adding numbers in 2D grid
-	pkgver = 0.991
+	pkgdesc = A puzzle game with dividing and adding numbers in a 2D grid
+	pkgver = 0.992
 	pkgrel = 1
 	url = http://advokat011.com/games/exploding_numbers
 	arch = any
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = unzip
-	depends = love
-	noextract = exploding_numbers-0.991.love
+	depends = love>=11
+	depends = love<12
+	noextract = exploding_numbers-0.992.love
 	source = exploding_numbers.sh
 	source = exploding_numbers.desktop
-	source = http://advokat011.com/games/exploding_numbers/exploding_numbers-0.991.love
+	source = http://advokat011.com/games/exploding_numbers/exploding_numbers-0.992.love
 	sha256sums = ed08ce09182aa95031b5b69a4fd02d25d32a9853b837a116723d7b40b9b435ab
-	sha256sums = 619fde49df1c773cab3f4f57686b8fe4a0f31aa2a2d0cd9819c846e28847eee2
-	sha256sums = a48d095cb84778347dc74e05b73f3b371488fe006f886a6c83eee8118aa326b6
+	sha256sums = cd0385c25678cba45b55e5bf65e79579aa8728e260ec96644bc80618c66f12e0
+	sha256sums = 914848a852da5a51a8502f492acb863fec8e312ce65e9a6f30c64f44762f749a
 
 pkgname = exploding_numbers
