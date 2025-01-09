@@ -1,48 +1,86 @@
-# Maintainer: Alyxia Sother <nylkvn@evfrhc.arg(rot13)>
+# Maintainer:
 
-_pkgname=Legcord
-pkgname=legcord
-pkgver=1.0.2
+: ${_commit:=29b6c8b750f0d8ab768cd229776e88a57dde7a16}
+
+_pkgname="legcord"
+pkgname="$_pkgname"
+pkgver=1.0.6
 pkgrel=1
-pkgdesc="Discord client with builtin client mod & theme support."
-arch=('x86_64' 'aarch64')
-provides=('legcord')
+pkgdesc="Discord client with builtin client mod & theme support"
 url="https://github.com/Legcord/Legcord"
 license=('OSL-3.0')
-options=(!strip)
+arch=('any')
 
-source_x86_64=(
-    "$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x64.zip"
-    "legcord.desktop"
-    "legcord.png"
+depends=(
+  'electron'
 )
-source_aarch64=(
-    "$url/releases/download/v$pkgver/$_pkgname-$pkgver-linux-arm64.zip"
-    "legcord.desktop"
-    "legcord.png"
+makedepends=(
+  'git'
+  'pnpm'
+  'yarn'
 )
-sha256sums_x86_64=('770257a252d9a031b7b8b1d762e8517272285849b050f03c76530b7950a867f9'
-                   '6591a419965f775e4fceaa3e56bae05268a2427a5e2b8e7331d40d583804a001'
-                   '2ac8985edf862912d42083007d1687cb6679f755b5e27ccd015d8266da51eb81')
-sha256sums_aarch64=('2962030163d0cf91466b52a5ec5de5298d97ec90bd0cc21cd9493bdb260f0d3f'
-                    '6591a419965f775e4fceaa3e56bae05268a2427a5e2b8e7331d40d583804a001'
-                    '2ac8985edf862912d42083007d1687cb6679f755b5e27ccd015d8266da51eb81')
+optdepends=(
+  'libnotify: Notifications'
+  'xdg-utils: Open links, files, etc'
+)
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
+
+build() {
+  cd "$_pkgsrc"
+  pnpm install --frozen-lockfile --ignore-scripts
+  pnpm run packageQuick
+}
 
 package() {
-    rm -rf "$srcdir/$_pkgname-$pkgver-linux*.zip"
+  install -Dm644 "$_pkgsrc/dist/"*"-unpacked/resources/app.asar" "$pkgdir/usr/share/legcord/app.asar"
 
-    # Move files to right directories
-    install -d "$pkgdir"/opt/legcord
-    cp -a "$srcdir"/* "$pkgdir"/opt/legcord
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/legcord" << END
+#!/usr/bin/env bash
 
-    # Set up the executables
-    install -d "$pkgdir"/usr/bin
-    ln -s /opt/legcord/legcord "$pkgdir"/usr/bin/legcord
+set -euo pipefail
 
-    # Correct permissions
-    chmod +x -R "$pkgdir"/opt/legcord/*
-    chmod 755 "$pkgdir"/opt/legcord/legcord
+: \${XDG_CONFIG_HOME:=\$HOME/.config}
 
-    install -Dm644 "${srcdir}/legcord.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm644 "${srcdir}/legcord.png" "${pkgdir}/usr/share/pixmaps/legcord.png"
+name=$_pkgname
+flags_file="\${XDG_CONFIG_HOME}/\${name}-flags.conf"
+fallback_file="\${XDG_CONFIG_HOME}/electron-flags.conf"
+
+lines=()
+if [[ -f "\${flags_file}" ]]; then
+  mapfile -t lines < "\${flags_file}"
+elif [[ -f "\${fallback_file}" ]]; then
+  mapfile -t lines < "\${fallback_file}"
+fi
+
+flags=()
+for line in "\${lines[@]}"; do
+  if [[ ! "\${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "\${line}" ]]; then
+    flags+=("\${line}")
+  fi
+done
+
+: \${ELECTRON_IS_DEV:=0}
+export ELECTRON_IS_DEV
+: \${ELECTRON_FORCE_IS_PACKAGED:=true}
+export ELECTRON_FORCE_IS_PACKAGED
+
+exec electron "/$_install_path/$_pkgname/app.asar" "\${flags[@]}" "\$@"
+END
+
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/legcord.desktop" << END
+[Desktop Entry]
+Type=Application
+Name=${_pkgname^}
+Comment=$pkgdesc
+Exec=$_pkgname
+Icon=$_pkgname
+Categories=Internet;Network;InstantMessaging;
+END
+
+  install -Dm644 "$_pkgsrc/build/icon.png" "$pkgdir/usr/share/pixmaps/legcord.png"
+
+  install -Dm644 "$_pkgsrc/license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

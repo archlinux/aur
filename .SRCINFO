@@ -1,24 +1,17 @@
 pkgbase = legcord
-	pkgdesc = Discord client with builtin client mod & theme support.
-	pkgver = 1.0.2
+	pkgdesc = Discord client with builtin client mod & theme support
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/Legcord/Legcord
-	arch = x86_64
-	arch = aarch64
+	arch = any
 	license = OSL-3.0
-	provides = legcord
-	options = !strip
-	source_x86_64 = https://github.com/Legcord/Legcord/releases/download/v1.0.2/Legcord-1.0.2-linux-x64.zip
-	source_x86_64 = legcord.desktop
-	source_x86_64 = legcord.png
-	sha256sums_x86_64 = 770257a252d9a031b7b8b1d762e8517272285849b050f03c76530b7950a867f9
-	sha256sums_x86_64 = 6591a419965f775e4fceaa3e56bae05268a2427a5e2b8e7331d40d583804a001
-	sha256sums_x86_64 = 2ac8985edf862912d42083007d1687cb6679f755b5e27ccd015d8266da51eb81
-	source_aarch64 = https://github.com/Legcord/Legcord/releases/download/v1.0.2/Legcord-1.0.2-linux-arm64.zip
-	source_aarch64 = legcord.desktop
-	source_aarch64 = legcord.png
-	sha256sums_aarch64 = 2962030163d0cf91466b52a5ec5de5298d97ec90bd0cc21cd9493bdb260f0d3f
-	sha256sums_aarch64 = 6591a419965f775e4fceaa3e56bae05268a2427a5e2b8e7331d40d583804a001
-	sha256sums_aarch64 = 2ac8985edf862912d42083007d1687cb6679f755b5e27ccd015d8266da51eb81
+	makedepends = git
+	makedepends = pnpm
+	makedepends = yarn
+	depends = electron
+	optdepends = libnotify: Notifications
+	optdepends = xdg-utils: Open links, files, etc
+	source = legcord::git+https://github.com/Legcord/Legcord.git#commit=29b6c8b750f0d8ab768cd229776e88a57dde7a16
+	sha256sums = SKIP
 
 pkgname = legcord
