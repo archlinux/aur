@@ -12,7 +12,7 @@ _last_modified_aarch64=1735023075
 
 pkgname="${_pkgname}"-appimage
 pkgver="${_version}"
-pkgrel=4
+pkgrel=5
 pkgdesc="Wechat for Linux"
 arch=('x86_64' 'aarch64')
 url="https://linux.weixin.qq.com"
@@ -25,7 +25,7 @@ source=("LICENSE" "wechat")
 source_x86_64=("${_Pkgname}-${_last_modified_x86_64}-x86_64.AppImage::${_image_url_x86_64}")
 source_aarch64=("${_Pkgname}-${_last_modified_aarch64}-aarch64.AppImage::${_image_url_aarch64}")
 sha256sums=('4348aee67f0c40bd29ec370fff75e24384907514a76104b43354d395c436f0f2'
-            '79c06d2572a6b5e1b8ac444a4d73606bd06937cd80f8d87e68c14be62d6e1ac7')
+            'e580874f56fbb486aef4d2280f6e761ea99f0c113231b06eed5a73de0f1e5899')
 sha256sums_x86_64=('80159c350d68d4065f36c9aed558b52a296abf761b47ec2a3a87785d801e54aa')
 sha256sums_aarch64=('460f8558d80e3c2d3620b52c910a909a5cf5a8d6fd00c76f2dc456bfb3508469')
 
