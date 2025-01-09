@@ -8,7 +8,7 @@ pkgbase = xde-theme-telcom
 	license = CCPL:by-nc-nd
 	makedepends = git
 	depends = xde-styles
-	source = xde-theme-telcom::git://github.com/bbidulock/xde-theme-telcom.git
+	source = xde-theme-telcom::git+https://github.com/bbidulock/xde-theme-telcom.git
 	md5sums = SKIP
 
 pkgname = xde-theme-telcom
