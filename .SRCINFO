@@ -8,7 +8,7 @@ pkgbase = xde-theme-dishes
 	license = CCPL:by-nc-nd
 	makedepends = git
 	depends = xde-styles
-	source = xde-theme-dishes::git://github.com/bbidulock/xde-theme-dishes.git
+	source = xde-theme-dishes::git+https://github.com/bbidulock/xde-theme-dishes.git
 	md5sums = SKIP
 
 pkgname = xde-theme-dishes
