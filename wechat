@@ -1,6 +1,13 @@
 #!/bin/sh
 
-: ${QT_IM_MODULE:="fcitx"}
-
+case "${XMODIFIERS}" in
+    "@im=ibus")
+        : ${QT_IM_MODULE:=ibus}
+        ;;
+    *)
+        : ${QT_IM_MODULE:=fcitx}
+        ;;
+esac
 export QT_IM_MODULE
+
 exec /opt/wechat-appimage/wechat-appimage.AppImage $@
