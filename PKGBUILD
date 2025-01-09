@@ -17,8 +17,10 @@ makedepends=(
   pkgconf
   python
   ninja
-  clang
-  llvm
+  flac #optional
+  libvorbis #optional
+  opus #optional
+  mpg123 #optional
 )
 optdepends=(
   flac
@@ -37,17 +39,16 @@ pkgver() {
 }
 
 build() {
+  export CFLAGS+=" -fPIC" CXXFLAGS+=" -fPIC"
   cmake -S $_pkgname -B build -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_C_FLAGS="$CFLAGS -fPIC" \
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS -fPIC" \
-    -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS"
-  rm -f $_pkgname/go/goohrli/goorhli.a && ninja -C build "$NINJAFLAGS"
+    -DCMAKE_BUILD_TYPE=Release
+  rm -f $_pkgname/go/goohrli/goorhli.a
+  ninja -C build
 }
 
 package() {
-  install -Dm755 build/compare "$pkgdir/usr/bin/zimtohrli_compare"
+  install -Dvm755 build/compare "$pkgdir/usr/bin/zimtohrli_compare"
 
-  install -dm755 "$pkgdir/usr/share/licenses/$_pkgname/"
-  install -Dm644 $_pkgname/LICENSE "$pkgdir/usr/share/licenses/$_pkgname/"
+  install -dvm755 "$pkgdir/usr/share/licenses/$_pkgname/"
+  install -Dvm644 $_pkgname/LICENSE "$pkgdir/usr/share/licenses/$_pkgname/"
 }
