@@ -3,14 +3,13 @@
 # Contributor: chenus <lin.pyw@qq.com>
 
 pkgname=vutronmusic-bin
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="高颜值的第三方网易云播放器，支持本地音乐播放、离线歌单、桌面歌词、Touch Bar歌词、Mac状态栏歌词显示"
 arch=('x86_64')
 url="https://github.com/stark81/VutronMusic"
 license=('MIT')
 depends=(
-  'apparmor.d-git'
   'desktop-file-utils'
   'gtk4'
   'hicolor-icon-theme'
@@ -29,7 +28,7 @@ source=(
   "https://github.com/stark81/VutronMusic/releases/download/v${pkgver}/VutronMusic.${pkgver}_amd64.deb"
 )
 sha256sums=(
-  'e15256737c0b3808cdd2a31a34b8a94365e732afd00abf741a30cecc370884d3'
+  '6029f707d11d5437fbfc2732fd5a531675773f93251262d71043a8ed8bc8b9f7'
 )
 
 package(){
