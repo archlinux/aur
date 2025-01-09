@@ -1,0 +1,18 @@
+pkgbase = python-optype
+	pkgdesc = Building blocks for precise & flexible type hints
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/jorenham/optype
+	arch = x86_64
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	checkdepends = python-beartype
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	optdepends = python-numpy: for Numpy Support
+	source = optype-0.8.0.tar.gz::https://github.com/jorenham/optype/archive/v0.8.0.tar.gz
+	sha512sums = d7c094c8fa0d6619975c7b0d97592616926cbf3c3d896d53f645be0bd936fd009fcc097ecb9ffb1d631ebb3a25f5562488d4136eacde07c41375bd5a21ee7218
+
+pkgname = python-optype

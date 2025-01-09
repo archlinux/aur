@@ -1,0 +1,5 @@
+[python-optype]
+source = "github"
+github = "jorenham/optype"
+use_latest_release = "true"
+prefix = "v"
