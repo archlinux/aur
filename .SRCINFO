@@ -1,0 +1,14 @@
+pkgbase = z180emu-git
+	pkgdesc = A portable full system emulator for Z180 based boards
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/gnarz/z180emu
+	arch = any
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	source = z180emu::git+https://github.com/gnarz/z180emu
+	sha256sums = SKIP
+
+pkgname = z180emu-git
