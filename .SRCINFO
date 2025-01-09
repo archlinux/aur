@@ -1,0 +1,13 @@
+pkgbase = walgot
+	pkgdesc = A wallabag TUI client
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://git.sr.ht/~bacardi55/walgot
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = go
+	depends = glibc
+	source = walgot-0.2.0::https://git.sr.ht/~bacardi55/walgot/archive/v0.2.0.tar.gz
+	sha256sums = c24a6cf56145a7d4742d310bfe53e7ae137e1ad78301a90a17b40ca3adcac81a
+
+pkgname = walgot
