@@ -3,7 +3,7 @@
 
 pkgname=syncthing-bin
 _realname=syncthing
-pkgver=1.29.0
+pkgver=1.29.1
 pkgrel=1
 pkgdesc="Open Source Continuous Replication / Cluster Synchronization Thing: binary."
 url="https://syncthing.net/"
@@ -17,11 +17,11 @@ source_x86_64=("https://github.com/syncthing/${_realname}/releases/download/v${p
 source_aarch64=("https://github.com/syncthing/${_realname}/releases/download/v${pkgver}/${_realname}-linux-arm64-v${pkgver}.tar.gz")
 source_armv7h=("https://github.com/syncthing/${_realname}/releases/download/v${pkgver}/${_realname}-linux-arm-v${pkgver}.tar.gz")
 source_i686=("https://github.com/syncthing/${_realname}/releases/download/v${pkgver}/${_realname}-linux-386-v${pkgver}.tar.gz")
-sha256sums=(2d2ead8ada92e48c9b45a62e1c85b781214579d125bf04c8a95859760c7db71b)
-sha256sums_x86_64=('f7b120a92f0add1736a389e715a22a074e7bcdf96303dbe8229e0a06bfaba81d')
-sha256sums_aarch64=('b463134f986b630f871e990397a292b51ce49ef173aadc7f21ab438ea525c481')
-sha256sums_armv7h=('17872e32790635c9198f1c3509d84f340c4be84a76e77999cbe049f37947c6d6')
-sha256sums_i686=('9b5a4804a8b228be16fe22e51b4653db65c264ef341a966e56d113ce0e9772c8')
+sha256sums=('a9446652ce994ef479e8637b797803c7f53dec65d4cf45dfa6a394ff3475bbaa')
+sha256sums_x86_64=('d8f4bbecdb1b22af57f3b96b8c093c8f26baeb6a53e8ab21e25965885e77febf')
+sha256sums_aarch64=('08c13382609939ba819a3c082f2fe691c943903389f1a6b9eb8aa6ac7479aeb2')
+sha256sums_armv7h=('231bbc7fcd9a1105aeb7d7381099326dec324055e3a8b8bf59cb6ff3871436f0')
+sha256sums_i686=('27f9afa7b3e2007f20391e7130fdd8311aaeab7eec13974bb249ace0e012a590')
 
 package() {
 case "$CARCH" in
