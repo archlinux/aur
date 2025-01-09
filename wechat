@@ -10,4 +10,7 @@ case "${XMODIFIERS}" in
 esac
 export QT_IM_MODULE
 
+: ${QT_AUTO_SCREEN_SCALE_FACTOR:=1}
+export QT_AUTO_SCREEN_SCALE_FACTOR
+
 exec /opt/wechat-appimage/wechat-appimage.AppImage $@
