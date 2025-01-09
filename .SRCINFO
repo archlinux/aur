@@ -1,0 +1,23 @@
+pkgbase = midis2jam2-bin
+	pkgdesc = 🎶 A remaster of MIDIJam, a 3D MIDI file visualizer.
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/wyskoj/midis2jam2
+	arch = aarch64
+	arch = x86_64
+	license = GPL3
+	depends = java-environment-common
+	provides = midis2jam2
+	conflicts = midis2jam2
+	source = https://github.com/wyskoj/midis2jam2/raw/refs/heads/master/.idea/icon.svg
+	source = midis2jam2
+	source = midis2jam2.desktop
+	sha512sums = b2d82ffe943cae60cffa9f89a200f6f33b02e036f564751ce93e51e239e51dbe11279d7b7ac2677875baf76729968328f429b3a67a745e356b2665e46a3818de
+	sha512sums = 77615a9bd4b61c64c0162375be12241b8b69912bcfc6e6af0a6afb95a29cd5b7d07e06c1f889252bdfaa950c09a4471e6705e5a6c6712a030f7c5fa3ee2167ea
+	sha512sums = d362c90ff8d1a3f5dec103b00ef2c81b9eece514f1b7aed3afcf5471f38406ea2d08fc6383d11b59f7ca89812a28452dd2a8e4086b3ca704de537215e6d0c6a7
+	source_aarch64 = https://github.com/wyskoj/midis2jam2/releases/download/v1.9.0/midis2jam2-linuxArm64-1.9.0.jar
+	sha512sums_aarch64 = 4ac2ad0ab3b902c857f56179a2dde51c31b06719a69d32a2621242cfd6de025d69e4c10d210f19a112a1d901ba1f71718cf1f8886e8911485bc38b4af93ca577
+	source_x86_64 = https://github.com/wyskoj/midis2jam2/releases/download/v1.9.0/midis2jam2-linuxX64-1.9.0.jar
+	sha512sums_x86_64 = 409d2bf606e7e7922a2ea1e09e4b75779dbd8378ffa6b6a97ce81e458aed2b6fd907abef65c5b9c5bcc3a8abc29626adabf5bfdb3935539b0fa04e5632ca8999
+
+pkgname = midis2jam2-bin

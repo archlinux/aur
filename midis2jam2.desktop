@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=/usr/bin/midis2jam2
+Icon=midis2jam2
+Name=midis2jam2
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Music;Midi;Audio;
+Keywords=Music;Midi;Audio;
