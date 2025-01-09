@@ -1,0 +1,18 @@
+pkgbase = mmtui
+	pkgdesc = TUI disk mount manager for TUI file managers
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/SL-RU/mmtui
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = clang
+	depends = gcc-libs
+	depends = glibc
+	depends = udisks2
+	options = !debug
+	options = !lto
+	source = https://github.com/SL-RU/mmtui/archive/v0.1.1/mmtui-0.1.1.tar.gz
+	b2sums = 446792cb17b066d8e251d69d018355ef60161438280aef53bbcb13a161248ba1939fc9555cccf619851a5cbf2e42f86e691e7ee169786025b86ae0e93c2fe36e
+
+pkgname = mmtui
