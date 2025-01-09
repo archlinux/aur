@@ -6,7 +6,7 @@
 pkgname="bizhawk-preview-latest-bin"
 _pkgname="bizhawk"
 pkgdesc="A multi-platform emulator with full re-recording support and Lua scripting (Nightly build)"
-pkgver=2.9.1
+pkgver=2.10
 pkgrel=1
 arch=(x86_64)
 url="https://tasvideos.org/BizHawk"

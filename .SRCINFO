@@ -1,6 +1,6 @@
 pkgbase = bizhawk-preview-latest-bin
 	pkgdesc = A multi-platform emulator with full re-recording support and Lua scripting (Nightly build)
-	pkgver = 2.9.1
+	pkgver = 2.10
 	pkgrel = 1
 	url = https://tasvideos.org/BizHawk
 	arch = x86_64
