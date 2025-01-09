@@ -1,6 +1,6 @@
 pkgbase = c++utilities-doc
 	pkgdesc = Common C++ classes and routines such as argument parser, IO and conversion utilities (API documentation)
-	pkgver = 5.27.1
+	pkgver = 5.27.2
 	pkgrel = 1
 	url = https://github.com/Martchus/cpp-utilities
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = c++utilities-doc
 	makedepends = ninja
 	makedepends = doxygen
 	makedepends = graphviz
-	source = c++utilities-5.27.1.tar.gz::https://github.com/Martchus/cpp-utilities/archive/v5.27.1.tar.gz
-	sha256sums = a6c35cda6cee50e053a9bb405e8fa35fd7bf75561f10ee1a4c3fc85de5c5fb97
+	source = c++utilities-5.27.2.tar.gz::https://github.com/Martchus/cpp-utilities/archive/v5.27.2.tar.gz
+	sha256sums = 1fe766c560924e01bbeabf87a7e76c301c1041add0f84f705b2ee7bd64f41944
 
 pkgname = c++utilities-doc
