@@ -5,7 +5,7 @@
 
 pkgname=rr
 pkgver=5.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64 aarch64)
 url='http://rr-project.org/'
