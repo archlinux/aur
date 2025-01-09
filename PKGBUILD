@@ -1,6 +1,6 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Third-party feature rich Discord client, running entirely in terminal."
 arch=('any')
