@@ -1,11 +1,12 @@
 pkgbase = python-ubelt
 	pkgdesc = A Python utility belt containing simple tools
 	pkgver = 1.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Erotemic/ubelt
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-pytest
+	checkdepends = python-requests
 	checkdepends = python-xdoctest
 	makedepends = python-build
 	makedepends = python-installer
@@ -17,6 +18,7 @@ pkgbase = python-ubelt
 	depends = python-dateutil
 	depends = python-pygments
 	depends = python-xxhash
+	optdepends = python-numpy
 	source = https://files.pythonhosted.org/packages/source/u/ubelt/ubelt-1.3.7.tar.gz
 	sha256sums = 41837abc852ce01bbaea8eb3da15f49c4c0d68340f546c6e2ee00fbc5be75f39
 
