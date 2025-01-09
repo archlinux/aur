@@ -2,7 +2,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=tabby
-pkgver=1.0.216
+pkgver=1.0.218
 pkgrel=1
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
@@ -10,19 +10,20 @@ url="https://tabby.sh"
 license=('MIT')
 conflicts=('terminus-terminal')
 replaces=('terminus-terminal')
-_electron=electron29
-depends=('bash' "${_electron}" 'fontconfig' 'gcc-libs' 'glib2'  'glibc' 'hicolor-icon-theme' 'libsecret'  'nodejs')
+_electron=electron32
+depends=('bash' "${_electron}" 'fontconfig' 'gcc-libs' 'glib2' 'glibc' 'hicolor-icon-theme' 'libsecret' 'nodejs')
 makedepends=('gendesk' 'git' 'python' 'yarn')
 source=("git+https://github.com/Eugeny/tabby.git#tag=v${pkgver}"
         "${pkgname}.sh"
         'build.patch')
-sha256sums=('b1c632e5b40b35d35b08fa190fdcc82d6d540ea226c1f56516b15b8808a18e51'
+sha256sums=('7ede24a8b78cb96f741ba98352b5e337e1cbf1ca6797c5100cf516576cd7c57c'
             'e10c3846ec9ffd5d711397cece65d53fb2b81af1d08706442f04328c7bcbbb5a'
             'f5581859b734a2f9199a331540fc9beac0a102705a519f6070858ddd7db8b401')
 
 prepare() {
     cd "${pkgname}"
     patch -Np1 -i "${srcdir}/build.patch"
+
     sed -e "s|@ELECTRON_DIST@|/usr/lib/${_electron}|" \
         -e "s|@ELECTRON_VERSION@|$(cat /usr/lib/${_electron}/version)|" \
         -i scripts/build-linux.mjs
@@ -34,7 +35,7 @@ prepare() {
         --name "${pkgname^}" \
         --exec "${pkgname} %U" \
         --categories 'Utility;TerminalEmulator;System' \
-        --custom StartupWMClass="${pkgname}"
+        --custom "StartupWMClass=${pkgname}"
 
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     yarn install --frozen-lockfile
