@@ -1,0 +1,14 @@
+pkgbase = tyme
+	pkgdesc = A clock for your terminal.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/qxb3/tyme
+	arch = x86_64
+	license = MIT
+	depends = glib2
+	depends = ncurses
+	depends = openssl
+	source = https://github.com/qxb3/tyme/releases/download/v0.0.1/tyme-x86-64_v0.0.1
+	sha256sums = SKIP
+
+pkgname = tyme
