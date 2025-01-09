@@ -7,11 +7,11 @@
 
 pkgname=libwrap
 pkgver=7.6.35
-pkgrel=1
+pkgrel=2
 pkgdesc='Monitors and Controls incoming TCP connections'
 arch=(x86_64)
 url="http://ftp.porcupine.org/pub/security/index.html"
-license=(custom:unknown)
+license=('TCP-wrappers')
 depends=( glibc libnsl)
 provides=(tcp_wrappers-libs)
 conflicts=(tcp_wrappers-libs)
