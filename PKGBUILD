@@ -1,15 +1,14 @@
 # Maintainer: Adam Honse <calcprogrammer1@gmail.com>
 
 pkgname=touchpad-emulator-git
-pkgver=r46.9cf0d0a
+pkgver=0.1.r4.g8edaa67
 pkgrel=1
 pkgdesc="Virtual mouse for Linux phones"
-arch=('aarch64')
+arch=('x86_64' 'aarch64')
 url="https://gitlab.com/CalcProgrammer1/TouchpadEmulator"
 license=('GPL2')
 depends=('dbus' 'dbus-glib')
-makedepends=('git' 'make')
-optdepends=('')
+makedepends=('git')
 provides=('touchpad-emulator')
 conflicts=('touchpad-emulator')
 source=("TouchpadEmulator::git+https://gitlab.com/CalcProgrammer1/TouchpadEmulator.git")
@@ -17,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd TouchpadEmulator
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
