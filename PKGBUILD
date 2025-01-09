@@ -1,15 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-auto-accent-color
 _uuid=auto-accent-colour@Wartybix
-pkgver=12
+pkgver=13
 pkgrel=1
 pkgdesc="GNOME extension to automatically change the desktop accent colour based on the user's wallpaper."
 arch=('any')
 url="https://github.com/Wartybix/GNOME-Auto-Accent-Colour"
 license=('GPL-3.0-or-later')
 depends=('gnome-shell')
+provides=('gnome-shell-extension-auto-accent-colour')
 source=("GNOME-Auto-Accent-Colour-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('1460d5106c04c8f8b20d2ac33428c1893d132e69f3964fc3323368b86e8f0ff5')
+sha256sums=('e4f3ebea5fdd434dbea7a13eb888f06c772afe2249538406ce7d6d7202e559dd')
 
 build() {
   cd "GNOME-Auto-Accent-Colour-$pkgver"
