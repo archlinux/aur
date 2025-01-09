@@ -48,7 +48,7 @@ build() {
   cd RedisInsight-$pkgver
   _ensure_local_nvm
 
-  mkdir electron
+  mkdir -p electron
   VERSION=$(jq -r ".version" redisinsight/package.json)
   cp ./redisinsight/package.json ./electron/package.json
   echo "$VERSION" > electron/version
