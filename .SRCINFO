@@ -1,6 +1,6 @@
 pkgbase = gnome-console-alt-shortcuts-git
 	pkgdesc = A simple user-friendly terminal emulator for the GNOME desktop with Alt-based shortcuts instead of Shift+Ctrl
-	pkgver = 43.rc.r12.g3df6390
+	pkgver = 47.0.r53.g1115364
 	pkgrel = 1
 	url = https://gitlab.gnome.org/hammerill/console-alt-shortcuts
 	arch = x86_64
