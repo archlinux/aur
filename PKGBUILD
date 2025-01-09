@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=veyon-bin
 pkgver=4.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform computer monitoring and classroom management.(Prebuilt version)"
 arch=('x86_64')
 url="https://veyon.io/"
@@ -20,26 +20,24 @@ depends=(
     'libxrandr'
     'libxtst'
     'pam'
-    'qca-qt6'
-    'qt6-base'
-    'procps-ng'
-    'libvncserver'
-    'qt6-httpserver'
-    'libxcursor'
-    'qt6-websockets'
-    'qt6-5compat'
+    'qca-qt5'
+    'qt5-base'
+    'libprocps'
+    'lzo'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.0-fedora.40.${CARCH}.rpm"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}.0-ubuntu.22.04_amd64.deb"
 )
-sha256sums=('9182088cffcf6c03c7f69447fbcb3d3a9cc1c7f9b4f4a39b4dbcca3a074047a4')
+sha256sums=('313596182864f33b3376accec8559d8c3fc4bb277b3795e896a40148f89b0271')
 
-build() {
+prepare() {
+    bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/usr\/bin\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}-"{master,configurator}.desktop
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/"* -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/lib/systemd/system/${pkgname%-bin}.service" -t "${pkgdir}/usr/lib/systemd/system"
-    install -Dm644 "${srcdir}/usr/lib64/${pkgname%-bin}/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    #install -Dm644 "${srcdir}/usr/lib/${CARCH}-linux-gnu/${pkgname%-bin}/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib" "${pkgdir}/usr"
     cp -Pr --no-preserve=ownership "${srcdir}/usr/share" "${pkgdir}/usr"
 }

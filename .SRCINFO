@@ -1,7 +1,7 @@
 pkgbase = veyon-bin
 	pkgdesc = Cross-platform computer monitoring and classroom management.(Prebuilt version)
 	pkgver = 4.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://veyon.io/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -14,17 +14,13 @@ pkgbase = veyon-bin
 	depends = libxrandr
 	depends = libxtst
 	depends = pam
-	depends = qca-qt6
-	depends = qt6-base
-	depends = procps-ng
-	depends = libvncserver
-	depends = qt6-httpserver
-	depends = libxcursor
-	depends = qt6-websockets
-	depends = qt6-5compat
+	depends = qca-qt5
+	depends = qt5-base
+	depends = libprocps
+	depends = lzo
 	provides = veyon=4.9.1
 	conflicts = veyon
-	source = veyon-4.9.1.rpm::https://github.com/veyon/veyon/releases/download/v4.9.1/veyon-4.9.1.0-fedora.40.x86_64.rpm
-	sha256sums = 9182088cffcf6c03c7f69447fbcb3d3a9cc1c7f9b4f4a39b4dbcca3a074047a4
+	source = veyon-4.9.1.deb::https://github.com/veyon/veyon/releases/download/v4.9.1/veyon_4.9.1.0-ubuntu.22.04_amd64.deb
+	sha256sums = 313596182864f33b3376accec8559d8c3fc4bb277b3795e896a40148f89b0271
 
 pkgname = veyon-bin
