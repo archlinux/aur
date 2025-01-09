@@ -4,7 +4,7 @@
 pkgbase=parabolic
 pkgname=(parabolic-gtk parabolic-qt)
 pkgver=2024.12.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Download web video and audio"
 arch=('x86_64')
 url="https://github.com/NickvisionApps/Parabolic"
@@ -18,7 +18,8 @@ makedepends=('blueprint-compiler'
              'libsecret'
              'libxml++-5.0'
              'qt6-base'
-             'qt6-svg')
+             'qt6-svg'
+             'yelp-tools')
 provides=('tube-converter')
 conflicts=('tube-converter')
 replaces=('tube-converter')
@@ -46,6 +47,7 @@ package_parabolic-gtk() {
              'bash'
              'boost-libs'
              'curl'
+             'ffmpeg'
              'gcc-libs'
              'glib2'
              'glibc'
@@ -66,6 +68,7 @@ package_parabolic-qt() {
              'bash'
              'boost-libs'
              'curl'
+             'ffmpeg'
              'gcc-libs'
              'glib2'
              'glibc'
