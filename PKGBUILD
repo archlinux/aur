@@ -2,9 +2,9 @@
 # Contributor: xiretza <xiretza+aur@xiretza.xyz>
 
 _pkgname=amaranth
-_git_commit=212cb2c57c191ef7442a9cb5ded39b6a07278ccd
+_git_commit=8f6ca5ab7870fdf9c994f0d39d99a4a774311f5c
 pkgname="python-$_pkgname"
-pkgver=0.5.1.r0.g212cb2c
+pkgver=0.5.4.r0.g8f6ca5ab
 pkgrel=1
 pkgdesc="A modern hardware definition language and toolchain based on Python (formerly nMigen)"
 arch=(any)

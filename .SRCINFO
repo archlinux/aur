@@ -1,6 +1,6 @@
 pkgbase = python-amaranth
 	pkgdesc = A modern hardware definition language and toolchain based on Python (formerly nMigen)
-	pkgver = 0.5.1.r0.g212cb2c
+	pkgver = 0.5.4.r0.g8f6ca5ab
 	pkgrel = 1
 	url = https://github.com/amaranth-lang/amaranth
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = python-amaranth
 	depends = python-jinja
 	depends = python-pyvcd
 	optdepends = python-paramiko: for remote builds
-	provides = python-nmigen=0.5.1.r0.g212cb2c
-	provides = python-amaranth=0.5.1.r0.g212cb2c
+	provides = python-nmigen=0.5.4.r0.g8f6ca5ab
+	provides = python-amaranth=0.5.4.r0.g8f6ca5ab
 	conflicts = python-nmigen
 	conflicts = python-nmigen-git
 	conflicts = python-amaranth-git
