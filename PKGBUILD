@@ -2,10 +2,10 @@
 # Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=rr-git
-pkgver=5.5.0.r259.g969710ba
+pkgver=5.8.0.r217.g4e7d76ee
 pkgrel=1
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
-arch=(i686 x86_64)
+arch=(i686 x86_64 aarch64)
 url='http://rr-project.org/'
 license=('custom')
 depends=('gdb' 'capnproto')
@@ -36,7 +36,7 @@ build() {
 		-DBUILD_TESTS=OFF \
 		-DWILL_RUN_TESTS=OFF \
 		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DCMAKE_CXX_STANDARD=14 \
+		-DCMAKE_CXX_STANDARD=17 \
 		..
 
 	cmake --build .	 -- -v

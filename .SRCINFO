@@ -1,10 +1,11 @@
 pkgbase = rr-git
 	pkgdesc = Record and Replay framework: lightweight recording and deterministic debugging
-	pkgver = 5.5.0.r259.g969710ba
+	pkgver = 5.8.0.r217.g4e7d76ee
 	pkgrel = 1
 	url = http://rr-project.org/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom
 	makedepends = git
 	makedepends = cmake
