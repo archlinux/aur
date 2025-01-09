@@ -3,6 +3,7 @@
 /vcpkg
 /pkg
 *.pkg.tar.zst
+*.tar.gz
 
 Launcher.cfg
 Launcher.log

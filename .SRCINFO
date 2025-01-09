@@ -1,18 +1,18 @@
 pkgbase = beammp-launcher-git
 	pkgdesc = Multiplayer Launcher/Client for BeamMP, providing multiplayer for BeamNG.drive
-	pkgver = r435.811fe41
+	pkgver = r457.c22ea1e
 	pkgrel = 1
 	url = https://github.com/BeamMP/BeamMP-Launcher
 	arch = x86_64
-	license = proprietary
+	license = AGPL-3.0
 	makedepends = vcpkg
 	makedepends = cmake
 	makedepends = git
 	provides = beammp-launcher
 	conflicts = beammp-launcher
 	source = git+https://github.com/BeamMP/BeamMP-Launcher
-	source = git+https://github.com/microsoft/vcpkg
+	source = https://github.com/microsoft/vcpkg/archive/refs/tags/2024.12.16.tar.gz
 	b2sums = SKIP
-	b2sums = SKIP
+	b2sums = ea33199c37661c88eb054630f54877d742b6434cc44eed2cb20e0b8a14d66fc9eb4726f3281dff4595a9bd813bc497e314a8906663bb8c53dfb1d6da4faa7f5c
 
 pkgname = beammp-launcher-git
