@@ -10,6 +10,10 @@ pkgbase = s7
 	makedepends = rsync
 	depends = glibc
 	source = https://cm-gitlab.stanford.edu/bil/s7/-/archive/f5106f09350af239f84f93c777a33f4adf241367/s7-f5106f09350af239f84f93c777a33f4adf241367.tar.gz
+	source = Makefile
+	source = s7.pc
 	sha256sums = c451b6a3d70d0d6aa7add4595aa4650be8d296418046cd66efd45cd9e5304371
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = s7

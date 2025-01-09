@@ -1,0 +1,10 @@
+prefix=/usr
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: s7
+Description: s7 Scheme
+Version: XX.XX
+Libs: -L${libdir} -ls7
+Libs.private: -lm -ldl
+Cflags: -I${includedir}
