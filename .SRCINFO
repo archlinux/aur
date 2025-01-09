@@ -1,13 +1,13 @@
 pkgbase = php-legacy-xdebug
 	pkgdesc = Xdebug is an extension for PHP, and provides a range of features to improve the PHP development experience. This package provides xdebug for use with php-legacy.
-	pkgver = 3.4.0
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = https://xdebug.org/
 	arch = x86_64
 	license = custom:Xdebug
 	depends = php-legacy
 	backup = etc/php-legacy/conf.d/xdebug.ini
-	source = http://pecl.php.net/get/xdebug-3.4.0.tgz
-	sha256sums = 89667b8d04aaf04c023eb109900e1cce97ca39f97f2f3f24199630cc0e1cc77d
+	source = http://pecl.php.net/get/xdebug-3.4.1.tgz
+	sha256sums = 4d96bcded78dbd271fb344c119171b625a8597cd67fc6899ec5e019549f1bb87
 
 pkgname = php-legacy-xdebug
