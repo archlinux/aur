@@ -1,7 +1,7 @@
 pkgbase = firefox-extension-adguard
 	pkgdesc = AdGuard browser extension.
 	pkgver = 5.0.178
-	pkgrel = 1
+	pkgrel = 2
 	url = https://adguard.com/adguard-browser-extension/overview.html
 	arch = any
 	groups = firefox-addons
