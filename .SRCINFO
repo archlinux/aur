@@ -8,7 +8,7 @@ pkgbase = xde-theme-penguins
 	license = CCPL:by-nc-nd
 	makedepends = git
 	depends = xde-styles
-	source = xde-theme-penguins::git://github.com/bbidulock/xde-theme-penguins.git
+	source = xde-theme-penguins::git+https://github.com/bbidulock/xde-theme-penguins.git
 	md5sums = SKIP
 
 pkgname = xde-theme-penguins
