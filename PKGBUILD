@@ -3,7 +3,7 @@
 # Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname=simplex-desktop-bin
-pkgver=6.1.1
+pkgver=6.2.0
 pkgrel=1
 pkgdesc='SimpleX Chat, the first messaging network operating without user identifiers of any kind (pre-compiled)'
 arch=('x86_64')
@@ -25,3 +25,4 @@ package() {
     ln -s /opt/simplex/bin/simplex "$pkgdir/usr/bin/simplex-desktop"
 }
 sha512sums=('38ff1db76127217aeafe7fc73568be16e28e7ca7825c4dbdfbf7a4a4e2e87801d2ee377bc8dba080115c19d181dce9807d4a30c677ca8fbdbbdb28c2c33a5b23')
+sha512sums=('f2c3b76c8e0197b77f87d8cbf4a57c0fa642d4704e165a080737ebd999d29239f7f3136d7998277248adb2216efc46f3b393caf0db412454d571545d90fe4baa')
