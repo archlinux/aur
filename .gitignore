@@ -1,0 +1,8 @@
+# Exclude everything (force-add files when needed)
+*
+
+# Do not ignore the following files
+!.gitignore
+!PKGBUILD
+!README.md
+!.SRCINFO

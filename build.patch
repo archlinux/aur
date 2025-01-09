@@ -1,0 +1,48 @@
+diff -Naur Reduce-svn6860-src.orig/debianbuild/reduce/debian/rules Reduce-svn6860-src/debianbuild/reduce/debian/rules
+--- Reduce-svn6860-src.orig/debianbuild/reduce/debian/rules	2023-03-07 22:36:03.000000000 +0100
++++ Reduce-svn6860-src/debianbuild/reduce/debian/rules	2025-01-09 04:22:15.586480336 +0100
+@@ -59,8 +59,8 @@
+ RSYNC_CMD=rsync -a --cvs-exclude --delete --delete-excluded
+ 
+ 
+-%:
+-	dh $@ 
++# %:
++# 	dh $@
+ 
+ distclean:
+ 	dh_distclean
+@@ -92,7 +92,7 @@
+ #override_dh_auto_configure:
+ configure: configure-stamp
+ configure-stamp:
+-	dh_testdir
++#	dh_testdir
+ 	cd $(TOPDIR) ; ./configure --prefix=/usr --with-csl
+ ifneq ($(BUILDPSL),)
+ 	cd $(TOPDIR) ; ./configure --with-psl
+@@ -101,13 +101,13 @@
+ 	cd $(REDFRONTSRCDIR) ; autoreconf -f -i -v
+ 	cd $(REDFRONTBUILDDIR) ; ../configure
+ 	mkdir -p $(LIBEDITBUILDDIR)
+-	cd $(LIBEDITBUILDDIR) ; autoreconf -f -i -v; $(LIBEDITSRCDIR)/configure --prefix=$(REDFRONTSRCDIR) --enable-widec
++	cd $(LIBEDITBUILDDIR) ; autoreconf -f -i -v $(LIBEDITSRCDIR); $(LIBEDITSRCDIR)/configure --prefix=$(REDFRONTSRCDIR) --enable-widec
+ 	touch configure-stamp
+ 
+ 
+ build:	configure-stamp build-stamp
+ build-stamp:
+-	dh_testdir
++#	dh_testdir
+ #	cd $(TOPDIR) ; make
+ 	cd $(CSLBUILDDIR) ; make bootstrapreduce.img ; make csl.img ; make
+ ifneq ($(BUILDPSL),)
+@@ -196,7 +196,7 @@
+ 	chmod a-x $(DESKTOPDIR)/*.desktop
+ 
+ # run dh_install to copy the files into the package build dirs
+-	dh_install
++#	dh_install
+ 
+ 	touch install-stamp
+ 
