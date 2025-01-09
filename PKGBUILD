@@ -2,7 +2,7 @@
 # Contributor: Peter <peter@nexoid.at>
 pkgname=s7
 pkgver=11.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A Scheme implementation intended as an extension language for other applications."
 arch=(x86_64 i686)
@@ -36,6 +36,7 @@ pkgver() {
 }
 
 build() {
+  sed -i 's/XX\.X/'${pkgver}'/' s7.pc
   cd s7-$_commit
   cp ${srcdir}/Makefile .
   make -j all

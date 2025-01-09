@@ -1,7 +1,7 @@
 pkgbase = s7
 	pkgdesc = A Scheme implementation intended as an extension language for other applications.
 	pkgver = 11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ccrma.stanford.edu/software/snd/snd/s7.html
 	arch = x86_64
 	arch = i686
