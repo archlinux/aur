@@ -1,0 +1,15 @@
+pkgbase = python-rlottie-python
+	pkgdesc = A ctypes API for rlottie, with additional functions for getting Pillow Image.
+	pkgver = 1.3.6
+	pkgrel = 1
+	url = https://github.com/laggykiller/rlottie-python
+	arch = any
+	license = LGPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/r/rlottie_python/rlottie_python-1.3.6.tar.gz
+	sha256sums = 56ecc192adec3c7184897dbf3134dfa79aea7f59c8bfc2da97d2c8043050ac04
+
+pkgname = python-rlottie-python
