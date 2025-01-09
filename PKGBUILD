@@ -3,7 +3,7 @@
 
 
 pkgname=eddie-cli-git
-pkgver=2.24.5
+pkgver=2.24.6
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - CLI'
 arch=('x86_64' 'aarch64' 'armv7l')
