@@ -8,7 +8,7 @@ pkgbase = xde-theme-airforce
 	license = CCPL:by-nc-nd
 	makedepends = git
 	depends = xde-styles
-	source = xde-theme-airforce::git://github.com/bbidulock/xde-theme-airforce.git
+	source = xde-theme-airforce::git+https://github.com/bbidulock/xde-theme-airforce.git
 	md5sums = SKIP
 
 pkgname = xde-theme-airforce
