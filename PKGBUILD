@@ -6,7 +6,7 @@
 _reponame=cpp-utilities
 pkgname=mingw-w64-c++utilities
 _name=${pkgname#mingw-w64-}
-pkgver=5.27.1
+pkgver=5.27.2
 pkgrel=1
 arch=('any')
 pkgdesc='Common C++ classes and routines such as argument parser, IO and conversion utilities (mingw-w64)'
@@ -17,7 +17,7 @@ checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'ninja')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('a6c35cda6cee50e053a9bb405e8fa35fd7bf75561f10ee1a4c3fc85de5c5fb97')
+sha256sums=('1fe766c560924e01bbeabf87a7e76c301c1041add0f84f705b2ee7bd64f41944')
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
