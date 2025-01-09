@@ -7,9 +7,9 @@
 pkgname=jdk8-dragonwell-extended
 
 _majorver=8
-_minorver=16
-_updatever=17
-_jdk_updatever=382
+_minorver=23
+_updatever=22
+_jdk_updatever=432
 pkgver=${_majorver}.${_minorver}.${_updatever}
 pkgrel=1
 arch=('x86_64')
@@ -25,7 +25,7 @@ install="${pkgname}.install"
 options=(!lto)
 source=("${url}/archive/refs/tags/dragonwell-extended-${pkgver}_jdk${_majorver}u${_jdk_updatever}-ga.tar.gz"
   gcc11.patch)
-b2sums=('a0e9968ccde391365aae323a461980aaca9467818de5b63a7ba032ac38486c3f258a99e4c2581384cb02350596d1300694b094ab91d81aeb3f827746045307ce'
+b2sums=('c056d91eb29d1c3c0c3dd10f4da8dc50d1b4a8006dbe50162883ea5857e01ea1703b933e4c62c60abc7e69d53c332ad7054d28d7634f270762d1f7509e8daec9'
   '9679e4dfb6027a87376081489c09810812d6849573afac4ea96abe3a3e00ca5b6af7d0ffb010c43b93cfa913f9e97fbb9f11e19fcc86a89b4548442671c32da1')
 
 _jdkname='openjdk8'
@@ -45,11 +45,11 @@ build() {
 
   unset JAVA_HOME
   # http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1346
-  export MAKEFLAGS=${MAKEFLAGS/-j*/}
+  export MAKEFLAGS=${MAKEFLAGS/-j*}
 
   # Avoid optimization of HotSpot being lowered from O3 to O2
   # -fno-exceptions for FS#73134
-  export CFLAGS="${CFLAGS//-O2/-O3} -Wno-error=nonnull -Wno-error=deprecated-declarations -Wno-error=stringop-overflow= -Wno-error=return-type -Wno-error=cpp -fno-delete-null-pointer-checks -fcommon -fno-exceptions -Wno-error=format-overflow="
+  export CFLAGS="${CFLAGS//-O2/-O3} -Wno-error=nonnull -Wno-error=deprecated-declarations -Wno-error=stringop-overflow= -Wno-error=return-type -Wno-error=cpp -fno-lifetime-dse -fno-delete-null-pointer-checks -fcommon -fno-exceptions -Wno-error=format-overflow= -Wno-error=int-conversion -Wno-error=incompatible-pointer-types"
   export CXXFLAGS="${CXXFLAGS} -fcommon -fno-exceptions"
 
   install -d -m 755 "${srcdir}/${_prefix}/"
@@ -59,8 +59,8 @@ build() {
     --with-build-number="b${_updatever}" \
     --with-milestone="fcs" \
     --enable-unlimited-crypto \
-    --with-zlib=system \
     --with-giflib=system \
+    --with-zlib=system \
     --with-extra-cflags="${CFLAGS}" \
     --with-extra-cxxflags="${CXXFLAGS}" \
     --with-extra-ldflags="${LDFLAGS}"
