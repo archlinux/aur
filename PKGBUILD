@@ -2,7 +2,7 @@
 _appname=jasper
 pkgname="${_appname}-km-bin"
 _pkgname=Jasper
-pkgver=1.0.63
+pkgver=1.0.64
 _electronversion=33
 pkgrel=1
 pkgdesc="Desktop app for Jasper KM. Uses electron to wrap a docker compose config.(Prebuilt version.Use system-wide electron)"
@@ -26,10 +26,10 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/cjmalloy/jasper-app/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('903c9352a9d203ee6716c1dbe61e9617ed218d14297f0521cfb94acaf3653c6f'
+sha256sums=('d773dafc36cac881d9bf879ac8ef6e1ca94e3625ce468d2d056d1dddffa2702a'
             'b841e587a43cbd61006192ad84d3af66c0344e51b882aa4e7efda427d2f30b73'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
@@ -43,7 +43,7 @@ build() {
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Icon=${_appname}-app/Icon=${pkgname%-bin}/g
     " -i "${srcdir}/squashfs-root/${_appname}-app.desktop"
-    find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} \;
+    find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
