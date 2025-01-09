@@ -20,9 +20,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/5e/5c/45ae22f980921a48896be4e87dda83cc82ecc012d77fa8e10f2839ceee3e/memacs-2020.6.5.1-py3-none-any.whl)
-md5sums+=(8f78f2cf33f0436eee3e9b469aff344e)
-noextract+=(memacs-2020.6.5.1-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/12/f9/05c5dd374274c99565897e090a4646397834c25f751cf2451747e382314e/memacs-2022.8.6-py3-none-any.whl)
+md5sums+=(51eadfb33f4c91ec95d634d9904770aa)
+noextract+=(memacs-2022.8.6-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(d32239bcb673463ab874e80d47fae504)
 
