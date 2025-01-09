@@ -8,7 +8,7 @@ pkgbase = xde-theme-towers
 	license = CCPL:by-nc-nd
 	makedepends = git
 	depends = xde-styles
-	source = xde-theme-towers::git://github.com/bbidulock/xde-theme-towers.git
+	source = xde-theme-towers::git+https://github.com/bbidulock/xde-theme-towers.git
 	md5sums = SKIP
 
 pkgname = xde-theme-towers
