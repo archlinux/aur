@@ -1,0 +1,5 @@
+[python-scipy-stubs]
+source = "github"
+github = "jorenham/scipy-stubs"
+use_latest_release = "true"
+prefix = "v"
