@@ -21,8 +21,7 @@ source_x86_64=("${pkgname}-${pkgver}-${_agentrel}-amd64-Packages::https://apt.da
 source_aarch64=("${pkgname}-${pkgver}-${_agentrel}-arm64-Packages::https://apt.datadoghq.com/dists/stable/7/binary-arm64/Packages"
                 "https://apt.datadoghq.com/pool/d/da/datadog-agent_${pkgver}-${_agentrel}_arm64.deb")
 # Public key is published here: https://s3.amazonaws.com/public-signing-keys/DATADOG_APT_KEY_CURRENT.public
-# New key hash, valid after June 2024 - 5F1E256061D813B125E156E8E6266D4AC0962C7D
-validpgpkeys=('D75CEA17048B9ACBF186794B32637D44F14F620E') # Datadog, Inc. Master key (2020-09-08) <package+masterkey@datadoghq.com>
+validpgpkeys=('5F1E256061D813B125E156E8E6266D4AC0962C7D') # Datadog, Inc. Master Key (2023-04-20) <package+masterkey@datadoghq.com>
 sha512sums=('SKIP'
             'SKIP'
             '20cacea9611af70f3a8802dfd545313cf40fe7784cc44555cfe50602676d624072caf3803193e23d38d9a24f5a2c2a7ee336f9a9ca87562326b21b5ed677032f'
