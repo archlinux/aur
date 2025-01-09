@@ -1,5 +1,6 @@
 [okteto-beta-bin]
-source = "git"
-git = "https://github.com/okteto/okteto.git"
+source = "github"
+github = "okteto/okteto"
+use_latest_release = true
 from_pattern = '(.*)-beta\.(.*)'
 to_pattern = '\1beta\2'
