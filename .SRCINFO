@@ -1,6 +1,6 @@
 pkgbase = fetchfetch
 	pkgdesc = Fetch info about your *fetch tools
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/spenserblack/fetchfetch
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = fetchfetch
 	makedepends = make
 	makedepends = gcc
 	depends = glibc
-	source = fetchfetch-1.0.1.tar.gz::https://github.com/spenserblack/fetchfetch/archive/v1.0.1.tar.gz
-	sha256sums = 5f0ba0ebd68d2c6e83bb33086b96d5e02900876f17caaf21c3b6aa20cf22dc63
+	source = fetchfetch-1.1.0.tar.gz::https://github.com/spenserblack/fetchfetch/archive/v1.1.0.tar.gz
+	sha256sums = ca2ea2bf3d463558828caa4e6c95ee7d5d9b18cccf1ad0390bbfca02b28c9a32
 
 pkgname = fetchfetch

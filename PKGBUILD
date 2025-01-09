@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=fetchfetch
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Fetch info about your *fetch tools'
 arch=('x86_64')
 url="https://github.com/spenserblack/$pkgname"
 license=('GPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5f0ba0ebd68d2c6e83bb33086b96d5e02900876f17caaf21c3b6aa20cf22dc63')
+sha256sums=('ca2ea2bf3d463558828caa4e6c95ee7d5d9b18cccf1ad0390bbfca02b28c9a32')
 makedepends=('make' 'gcc')
 depends=('glibc')
 
