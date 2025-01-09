@@ -1,6 +1,6 @@
 pkgbase = kdeconnect
 	pkgdesc = Adds communication between KDE and your smartphone
-	pkgver = 24.12.0
+	pkgver = 24.12.1
 	pkgrel = 1
 	url = https://kdeconnect.kde.org/
 	arch = x86_64
@@ -52,12 +52,12 @@ pkgbase = kdeconnect
 	optdepends = python-nautilus: Nautilus integration
 	optdepends = qt6-tools: for some runcommand plugin actions
 	optdepends = sshfs: remote filesystem browser
-	source = https://download.kde.org/stable/release-service/24.12.0/src/kdeconnect-kde-24.12.0.tar.xz
-	source = https://download.kde.org/stable/release-service/24.12.0/src/kdeconnect-kde-24.12.0.tar.xz.sig
+	source = https://download.kde.org/stable/release-service/24.12.1/src/kdeconnect-kde-24.12.1.tar.xz
+	source = https://download.kde.org/stable/release-service/24.12.1/src/kdeconnect-kde-24.12.1.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = 33f40c531fa5d3f5398e9020fe8c1f8e49210127d2827ffbcdc3f942a10774d4
+	sha256sums = df2a1ad146ff2fb34e735d141d4cde574eca43cd0f7a7eab259c8703e02ad62c
 	sha256sums = SKIP
 
 pkgname = kdeconnect
