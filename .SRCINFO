@@ -8,7 +8,7 @@ pkgbase = xde-theme-aviation
 	license = CCPL:by-nc-nd
 	makedepends = git
 	depends = xde-styles
-	source = xde-theme-aviation::git://github.com/bbidulock/xde-theme-aviation.git
+	source = xde-theme-aviation::git+https://github.com/bbidulock/xde-theme-aviation.git
 	md5sums = SKIP
 
 pkgname = xde-theme-aviation
