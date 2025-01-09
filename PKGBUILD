@@ -1,4 +1,4 @@
-# Maintainer: Rhys Perry <rhysperry111@gmail.com>
+# Maintainer: Butter Cat <ButteredCats@protonmail.com>
 
 pkgname=pywal-discord-git
 pkgver=r83.5ca587a
@@ -7,6 +7,7 @@ pkgdesc="A script that dynamically generates discord theme based on the current 
 arch=("any")
 url="https://github.com/FilipLitwora/pywal-discord"
 license=("GPL3")
+makedepends=("git")
 conflicts=("pywal-discord")
 provides=("pywal-discord")
 source=("git+https://github.com/FilipLitwora/pywal-discord")
