@@ -4,8 +4,8 @@ pkgbase = zrge
 	pkgrel = 1
 	url = https://github.com/ZerTeam/ZRGE
 	arch = x86_64
-	license = GPL
-	depends = sfml
+	license = GPL3
+	depends = sfml=2.6.2
 	source = git+https://github.com/ZerTeam/ZRGE.git
 	sha256sums = SKIP
 
