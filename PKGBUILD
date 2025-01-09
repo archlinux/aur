@@ -10,7 +10,7 @@ arch=('any')
 url='https://github.com/eiskaltdcpp/eiskaltdcpp-web'
 depends=(
   'eiskaltdcpp-daemon'
-  'sh'
+  'bash'
 )
 makedepends=(
   'cmake'
