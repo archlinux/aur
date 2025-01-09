@@ -8,6 +8,7 @@ license=('custom')
 groups=('coin-or')
 depends=('metis' 'lapack')
 makedepends=('gcc-fortran' 'wget')
+options=('!lto')
 source=("https://github.com/coin-or-tools/ThirdParty-Mumps/archive/releases/$pkgver.tar.gz")
 sha256sums=('f6517ab9c800b731ac9bc1d37d5607ce2bea5af70c728ec7913c92e8ee0180dd')
 

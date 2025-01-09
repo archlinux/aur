@@ -10,6 +10,7 @@ pkgbase = coin-or-coinmumps
 	makedepends = wget
 	depends = metis
 	depends = lapack
+	options = !lto
 	source = https://github.com/coin-or-tools/ThirdParty-Mumps/archive/releases/3.0.9.tar.gz
 	sha256sums = f6517ab9c800b731ac9bc1d37d5607ce2bea5af70c728ec7913c92e8ee0180dd
 
