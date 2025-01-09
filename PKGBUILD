@@ -1,12 +1,12 @@
 pkgname=otb-zevv-peep
 pkgdesc='Monospace bitmap programming font aimed for FullHD displays'
 pkgver=1
-pkgrel=1
+pkgrel=2
 arch=(any)
-license=(custom:MIT)
-url=http://zevv.nl/play/code/zevv-peep/
-makedepends=(fonttosfnt)
-_dlurl=https://github.com/Tecate/bitmap-fonts/raw/5c101c91bf2ed0039aad02f9bf76ddb2018b1f21/bitmap/zevv-peep
+license=(MIT)
+url=https://github.com/Tecate/bitmap-fonts
+makedepends=(xorg-fonttosfnt)
+_dlurl="$url/raw/5c101c91bf2ed0039aad02f9bf76ddb2018b1f21/bitmap/zevv-peep"
 source=("${_dlurl}/zevv-peep-iso8859-15-08x16.bdf"
         "${_dlurl}/zevv-peep-iso8859-15-10x20.bdf"
         "${_dlurl}/zevv-peep-iso8859-15-07x14.bdf")
