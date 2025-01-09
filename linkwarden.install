@@ -1,0 +1,18 @@
+post_install() {
+    mkdir /home/linkwarden
+    echo -e "\033[1;34mINFO\033[0m\033[1m: Final steps to have a working linkwarden instance:"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * initialise postgres and create a database called 'linkwarden' (https://wiki.archlinux.org/title/PostgreSQL)\033[0m"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * Update secret key and db info in /etc/linkwarden\033[0m"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * In /usr/share/webapps/linkwarden run sudo -u linkwarden yarn playwright install\033[0m"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * In /usr/share/webapps/linkwarden run sudo -u linkwarden bash dbinit.sh\033[0m"
+
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * To run, systemctl start linkwarden\033[0m"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * site at localhost:3000/login\033[0m"
+}
+
+post_update() {
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * In /usr/share/webapps/linkwarden run sudo -u linkwarden yarn playwright install\033[0m"
+}
+post_remove() {
+    userdel linkwarden
+}

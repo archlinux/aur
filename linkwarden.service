@@ -1,0 +1,18 @@
+[Unit]
+Description=Linkwarden Server
+After=network.target
+Requires=postgresql.service
+
+[Service]
+User=linkwarden
+Group=linkwarden
+Type=simple
+WorkingDirectory=/usr/share/webapps/linkwarden
+EnvironmentFile=/etc/linkwarden/app.conf
+ExecStart=yarn start
+TimeoutStopSec=20
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
