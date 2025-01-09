@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/um 6.12.2 Kernel Configuration
+# Linux/um 6.12.8 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 14.2.1 20240910"
 CONFIG_CC_IS_GCC=y
@@ -637,6 +637,7 @@ CONFIG_GENERIC_CPU_DEVICES=y
 # end of ARM System Control and Management Interface Protocol
 
 # CONFIG_GOOGLE_FIRMWARE is not set
+# CONFIG_IMX_SCMI_MISC_DRV is not set
 
 #
 # Qualcomm firmware drivers
@@ -1796,8 +1797,6 @@ CONFIG_PANIC_TIMEOUT=0
 #
 # CONFIG_SCHEDSTATS is not set
 # end of Scheduler Debugging
-
-# CONFIG_DEBUG_TIMEKEEPING is not set
 
 #
 # Lock Debugging (spinlocks, mutexes, etc...)
