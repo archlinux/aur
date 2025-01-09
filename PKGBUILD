@@ -7,7 +7,7 @@ pkgname=(
     'openvino-intel-npu-plugin'
     'python-openvino')
 pkgver=2024.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A toolkit for optimizing and deploying deep learning models'
 arch=('x86_64')
 url='https://docs.openvino.ai/'
@@ -57,8 +57,7 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
         '010-openvino-change-install-paths.patch'
         '020-openvino-disable-werror.patch'
         '030-openvino-level-zero-disable-werror.patch'
-        '040-openvino-protobuf23-fix.patch'
-        '050-openvino-fix-for-opencv-prior-to-4.11.patch')
+        '040-openvino-protobuf23-fix.patch')
 sha256sums=('f1c62ed8f8822dd6a4c451b69a14733365635cf92f78badecc0000a7b4bb9048'
             'SKIP'
             'SKIP'
@@ -84,8 +83,7 @@ sha256sums=('f1c62ed8f8822dd6a4c451b69a14733365635cf92f78badecc0000a7b4bb9048'
             'd9d65a752744d324b43033fb223a50ab945090278a801d797c55649587210216'
             '8858496f3e2409d4d72802e9dd6823167309feee35086c591212692883f8bb7f'
             '51dc09683a319f9a939369d47d6752b41fea61737e6886a5814fc75f3dc1cef1'
-            '6a79c1ea85ae76edf9f116ed3b3d1da9d0df0988a7d445cbe7cbc3ca35a7e9ec'
-            '419f98232ed69dcf0497fdc160812adeb1de13e46c905120cb56f6217d1d12b0')
+            '6a79c1ea85ae76edf9f116ed3b3d1da9d0df0988a7d445cbe7cbc3ca35a7e9ec')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -127,7 +125,6 @@ prepare() {
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-disable-werror.patch"
     patch -d openvino/thirdparty/level_zero/level-zero -Np1 -i "${srcdir}/030-openvino-level-zero-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/040-openvino-protobuf23-fix.patch"
-    patch -d openvino -Np1 -i "${srcdir}/050-openvino-fix-for-opencv-prior-to-4.11.patch"
     
     install -d -m755 {benchmark_app,licenses}
     install -d -m755 intel-gpu-plugin/usr/lib/openvino
