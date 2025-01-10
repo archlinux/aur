@@ -1,18 +1,17 @@
 pkgbase = warp-terminal-bin
-	pkgdesc = Warp is a modern, Rust-based terminal with AI built in so teams can build great software, faster. Bringing collaboration to the command line, Warp lets teams save and share commands for streamlined onboarding and incident response.
-	pkgver = 0.2024.02.20.08.01.stable.02
-	pkgrel = 2
-	url = https://www.warp.dev/
-	install = warp-terminal.install
+	pkgdesc = Warp is the intelligent terminal with AI and your dev team's knowledge built-in.
+	pkgver = 0.2025.01.08.08.02.stable_03
+	pkgrel = 1
+	url = https://proxyman.io
 	arch = x86_64
+	arch = aarch64
 	license = custom
-	provides = warp-terminal
+	provides = warp-terminal=0.2025.01.08.08.02.stable_03
 	conflicts = warp-terminal
-	source = https://releases.warp.dev/stable/v0.2024.02.20.08.01.stable_02/warp-terminal_0.2024.02.20.08.01.stable.02_amd64.deb
-	source = https://raw.githubusercontent.com/warpdotdev/Warp/main/LICENSE
-	source = warp-terminal.sh
-	sha256sums = 17409f293b601cea1e2627a7140a2a758295ff4653b02d4687339e405977a039
-	sha256sums = 1057b326e587edf2f81dc35c6c9cdd2e63d9af1c68e331d7ac8a4bc22ff9de49
-	sha256sums = 9ace6327e1eec7d1f3a84889857d61593835695321ce80e56fbdd4ed13247f1a
+	options = !strip
+	source = warp-terminal-x86_64.pkg.tar.zst::https://releases.warp.dev/stable/v0.2025.01.08.08.02.stable_03/warp-terminal-v0.2025.01.08.08.02.stable_03-1-x86_64.pkg.tar.zst
+	source = LICENSE.txt
+	sha256sums = a36263627ce78b430ce14353a0d41c77604b991822143b58e66dc14a5503d693
+	sha256sums = da704590c6bd3a8b0ad179b42961e1feb10faa87f5eb3a3851ba2d940b49ebfa
 
 pkgname = warp-terminal-bin

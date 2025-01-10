@@ -1,0 +1,219 @@
+Warp product and services license agreement
+IMPORTANT - READ CAREFULLY. THIS SOFTWARE AND SERVICES LICENSE AGREEMENT (“AGREEMENT”) SETS FORTH THE LEGAL TERMS AND CONDITIONS WHICH GOVERN RELATIONSHIP BETWEEN DENVER TECHNOLOGIES, INC. D/B/A WARP.DEV (“WARP”) AND THE OTHER PARTY AGREEING TO THE TERMS AND CONDITIONS OF THIS AGREEMENT (“LICENSEE” OR “YOU”). THIS AGREEMENT APPLIES TO ANY WARP PRODUCT YOU DOWNLOAD OR ACCESS. IF YOU DO NOT ACCEPT THE TERMS OF THIS AGREEMENT, THEN YOU SHOULD NOT PROCEED WITH SETTING UP YOUR ACCESS TO WARP. DO NOT CLICK ANY BUTTON TO SET UP ACCESS TO WARP ON ANY PAGE RUN BY WARP OR ITS PAYMENT PROCESSOR (SUCH AS STRIPE) (IF APPLICABLE) UNLESS ( 1) YOU ARE AUTHORIZED TO ACCEPT AND AGREE TO THE TERMS OF THIS AGREEMENT AND ( 2) YOU INTEND TO ENTER INTO AND TO BE BOUND BY THE TERMS OF THIS AGREEMENT. IF YOU CONTINUE TO SET UP ACCESS TO WARP, YOU WILL BE GRANTED ACCESS TO THE PRODUCT, AND THIS AGREEMENT WILL BE EFFECTIVE IMMEDIATELY (THE “EFFECTIVE DATE”). All references in this Agreement to the “sale” or “purchase” of any Product or Service shall mean the sale or purchase of a license to such Product or Service. Terms not otherwise defined in the text of this Agreement shall have the meanings ascribed to them in Exhibit A.
+
+General Terms and Conditions
+1. Subscriptions; Delivery; Support.
+1.1 Ordering Product.
+Licensee may purchase Subscriptions to Products and Support Services by the parties agreeing to Orders that reference this Agreement. Subscriptions will be for the term agreed to in an applicable Order.
+
+1.2 Delivery.
+All Products, Updates and Documentation will be delivered electronically to Licensee by giving Licensee access to such Products, Updates and Documentation. In the case of a renewal of a Subscription, there is no delivery requirement for such renewal. Renewals shall be deemed Delivered on the first day of the then-current renewal term.
+
+1.3 Support.
+Warp will provide technical support (“Support Services”) by email and/or electronic chat from 9:00 a.m. to 5:00 p.m. U.S. Pacific time, excluding weekends and U.S. federal holidays. Warp will use reasonable efforts to respond within one business day to support requests sent to support@warp.dev. Unless otherwise agreed in writing by the parties, all support requests from Licensee will be sent by those Licensee-designated employees, as agreed by Warp, who have the right to contact Supplier via email or phone for technical support and who act as the primary interface between Licensee and Warp technical support (“Named Contact(s)”).
+
+2. Ownership of Intellectual Property; License Grant; Restrictions; Feedback.
+2.1 Warp owns its Product, Documentation, and website.
+Except to the extent licenses are expressly granted hereunder, Warp and its licensors retain all right, title and interest in and to all Intellectual Property Rights in and to the Product, Documentation and Services, and to any additional system software, content, organization, graphics, design, compilation, know-how, concepts, methodologies, procedures, and other matters related to Warp’s website. The use, copying, redistribution, use or publication by Licensee of any part of the website, Product, Documentation or the Services, except as expressly authorized by this Agreement, is prohibited.
+
+2.2 License Grant by Warp: What Licensee Can Do with the Product and Services.
+Subject to and in consideration of timely payment by the Licensee of the license fees hereunder, and of Licensee’s compliance with the other terms and conditions of this Agreement, Warp hereby grants to the Licensee and its Authorized Users, solely during the applicable term specified in an Order, a royalty free, limited, personal, non-exclusive, non-transferable (except as otherwise expressly allowed by this Agreement) license to: (i) access (via the Internet address provided to Licensee by Warp), download and use the Product solely from the Sites designated on the Order, for the number of Authorized Users for which Licensee has a current Subscription, and subject (A) to Section 2.3 of this Agreement and (B) to any limitations provided for on Warp’s product pricing page located at https://warp.dev/pricing, initially effective as of the Effective Date of this Agreement and subsequently as in effect on each renewal date; and (ii) use the Documentation, training materials or other materials supplied by Warp to enable such licensed rights. In addition, to the extent that Warp makes access to via a compatible mobile or desktop device (“Warp Applications”), Warp grants to the Licensee and its Authorized Users, solely during the applicable term specified in an Order, non-exclusive, non-transferable, revocable license to use a compiled code copy of the Warp Applications on one or more mobile or desktop devices owned or leased solely by an Authorized User to exercise the rights granted in this Section, and solely in accordance with this Agreement.
+
+2.3 Restrictions to License Grant by Warp: What Licensee Cannot Do with the Product and Services.
+Licensee agrees that it (and its Authorized Users) will not without express written permission of Warp: (i) reverse compile, disassemble, decompile or engineer, reproduce, modify, adapt or create derivative works of or from the Services or any part thereof; (ii) make the Services or Documentation available to, or use the Services or Documentation for the benefit of, anyone other than Licensee or Licensee’s customers; (iii) assign, transfer, sell, resell, license, sublicense, distribute, rent or lease the Services or Documentation, or include any Services or Documentation in a service bureau or outsourcing offering; (iv) permit direct or indirect access to or use of the Services or Documentation in a way that circumvents any contractual usage limit; (v) reproduce the Services or Documentation or any part, feature, function or user interface thereof (except as expressly otherwise permitted under this Agreement); (vi) use any robot, spider, scraper, data mining tool, data gathering or extraction tool, or any other automated means, to access, collect, copy or record our Services; or (vii) access or use any Services or Documentation in order to build a competitive product or service.
+
+In addition, Licensee and its Authorized Users will not (i) access the Services for, or upload to the Cloud Infrastructure, anything unlawful, misleading, malicious or discriminatory; (ii) intentionally take any action that imposes, or may impose at Warp’s reasonable discretion, an unreasonable or disproportionately large load on the Cloud Infrastructure; or (iii) perform or attempt to perform any actions that would interfere with the proper working of the Cloud Infrastructure, or prevent access to (or use of) the Cloud Infrastructure by Warp’s other licensees or customers (including but not limited to any form of dedicated denial-of-service scheme or over-burdening a targeted server with ping requests, or any device, software or routine that contains viruses, Trojan horses, worms, time bombs, or other computer programming routines that may damage, interfere or attempt to interfere with, or intercept the normal operation of the Cloud Infrastructure).
+
+2.4 Restrictions and Liability Related to Authorized Users: Licensee is Responsible for its Authorized Users and Each of Their Accounts.
+Licensee shall provide accurate, current and complete information required to enable its Authorized Users on the Cloud Infrastructure, and shall maintain the accuracy of such information during the Use of the Product and Services. Licensee shall require Authorized Users to maintain proper password security, and to keep their accounts confidential. Licensee is responsible for the actions of its Authorized Users, of anybody accessing the Cloud Infrastructure using the credentials of any Authorized User (unless such access was due to Warp’s actions), and of any other individuals to Licensee has given access to the Services. In addition, any individual with administrator-level access to a user account can modify that account’s settings, access and billing information. Warp will not be liable for any losses caused by any unauthorized use of any account, or for any changes to an account, including any user’s inability to access their account or Licensee Data, made by any individual with administrator-level access to such account.
+
+2.5 Licensee Owns its Intellectual Property and Licensee Data.
+Except to the extent licenses are expressly granted hereunder, Licensee retains Intellectual Property Rights in and to: (i) its products and services; and (ii) the Licensee Data.
+
+2.6 License Grant by Licensee.
+Licensee hereby grants to Warp a non-exclusive, transferable and sublicensable (solely as set forth herein), worldwide, royalty free license to use, reproduce, modify and perform the Licensee Data solely as reasonably required to operate and provide the Services. In addition, Licensee understands that certain portions of the Services may allow other users to view, edit, share, and/or otherwise interact with Licensee Data. By providing or sharing Licensee Data on or through the Services (either publicly or to specific users), Licensee grants the right and license to each such user to view, edit, share, use and/or otherwise interact with such Licensee Data in accordance with the specific account settings and this Agreement.
+
+2.7 Warp Can Use Data for Product Improvement.
+Warp may collect data with respect to the aggregate response rate and other aggregate measures of the Product’s performance, as well as information about Licensee’s activation, configuration, and use of the Product. Licensee hereby grants to Warp a non-exclusive, transferable and sublicensable (solely as set forth herein), worldwide, royalty free license to use, reproduce, modify and perform such data solely as reasonably required to operate and provide the Services. Warp shall have the right to (i) use such information and data for the purpose of analytics, to improve and enhance the Product and Services, and for other development, diagnostic and corrective purposes in connection with the Warp offerings, and (ii) disclose such data to third party entities who may assist Warp with the activities listed in the foregoing clause “(i)” solely in aggregate or other de-identified form from which neither Licensee nor any Authorized User may be identified.
+
+2.8 Feedback.
+Licensee agrees that submission of any ideas, suggestions, documents, and/or proposals to Warp through its suggestion, feedback, wiki, forum, or similar pages (“Feedback”) is at Licensee’s own risk and that Warp has no obligations (including without limitation obligations of confidentiality or compensation to any person providing such Feedback) with respect to such Feedback. Licensee represents and warrants that Licensee has all rights necessary to submit the Feedback and will not, knowingly provide Feedback that is subject to any third-party intellectual property rights. Licensee hereby grants to Warp a fully paid, royalty-free, perpetual, irrevocable, worldwide, non-exclusive, and fully sublicensable right and license to use, reproduce, perform, display, distribute, adapt, modify, re-format, create derivative works of, and otherwise commercially or non-commercially exploit in any manner, any and all Feedback, and to sublicense the foregoing rights, in connection with the operation and maintenance of the Services and/or Warp’s business.
+
+3. Licensee’s Infrastructure; Third-Party Dependencies.
+3.1 Licensee’s Infrastructure.
+Licensee has sole responsibility for Licensee’s information technology infrastructure and any licenses required for such infrastructure, including computers, software, databases, electronic systems (including database management systems and any conversion servers required to render PLC code in a browser) and networks, whether operated directly by Licensee or through the use of third-party services.
+
+3.2 Interaction with Third-Party Platforms.
+Licensee acknowledges that the Services may interoperate with, and be dependent on, certain third-party platforms. If at any time any such third-party platform ceases to make their features or programs available to Warp on reasonable terms, Warp may cease to provide access to such features or programs without entitling Licensee to a refund, credit, or other compensation.
+
+4. Fees; Payments; Audit.
+4.1 Warp’s Right to be Paid Accrues on Delivery.
+Warp’s right to payment for the Product purchased by Licensee shall accrue on the date the Product is Delivered to Licensee. Except in the case of material breach of this Agreement by Warp, all payments accrued or made under this Agreement are non-cancelable and nonrefundable.
+
+4.2 Invoicing and Payment.
+Unless otherwise indicated in an applicable Order, payment of the License Fee is due within thirty days of Licensee’s receipt of an undisputed invoice. Any amount which is unpaid when due may be subject to interest equal to the lower of 1.5% per month or the highest applicable legal rate. If Licensee’s account is referred to a collection agent due to non-payment, Warp shall be entitled to reimbursement for reasonable costs associated with the collection of any past-due balance.
+
+4.3 Taxes.
+All stated prices are exclusive of any taxes, fees, and duties or other amounts, however designated. Any taxes related to the Product, Documentation, Services or Support Services purchased or licensed pursuant to this Agreement including, but not limited to, withholding taxes, will be paid by Licensee, or Licensee will present an exemption certificate acceptable to the taxing authorities. Licensee will not be liable for taxes imposed on Warp based on Warp’s income.
+
+4.4 Additional Users.
+If the actual number of Authorized Users and/or teams (as applicable) exceeds the number on Licensee’s original Order, then the fees for the applicable Subscription Term will be adjusted accordingly, and Licensee shall pay Warp the adjusted balance based on Warp’s properly issued invoice. The additional per-Registered User and/or team fee will be pro-rated based on the number of months left in the applicable Subscription term. No downward adjustments will be made.
+
+4.5 Audit.
+Upon Warp’s reasonable suspicion of Licensee’s material breach of this Agreement, Warp may audit any relevant records during Licensee’s normal business hours, in a manner that will not unreasonably interfere with normal business operations and subject to the same confidentiality terms as set forth in this Agreement. Warp will give Licensee at least 7 days prior written notice of inspection, and will not conduct audits more than once per year, except in follow-up to the discovery of material discrepancies, in which case the audits may be conducted as reasonably necessary under the circumstances and no later than 30 days after discovery of the material discrepancy. All audits will be at Warp’s expense, unless the audit finds a material error resulting in underpayment by Licensee, in which case Licensee will pay for the audit.
+
+5. Warranties and Disclaimer.
+5.1
+Subject to each of the other provisions hereof, Warp warrants, solely to Licensee, that during any paid Subscription term (the “Warranty Period”), the Product, when installed properly, will be capable of functioning substantially in accordance with the Specifications.
+
+5.2
+The warranty provided in Section 5.1 will not apply if: (i) Licensee fails to notify Warp in writing during the Warranty Period of any such breach; or (ii) Licensee fails to implement all Updates to the Product made available at no charge to Licensee during the Warranty Period.
+
+5.3
+If Warp breaches the warranty set forth in Section 5.1, Licensee’s sole and exclusive remedy, and Warp’s sole obligation, shall be to remedy such breach as set forth in this Section. At the sole discretion of Warp, Warp will, at its expense, either: (i) repair or replace the defective Product to enable it to perform substantially in accordance with the Specifications; or (ii) if the Product as a whole does not function substantially in accordance with the Specifications, terminate this Agreement and refund to Licensee the fees prepaid by Licensee to Warp for the defective Product for any period after the effective date of such termination.
+
+5.4 Licensee Promises that the Licensee Data Doesn’t Violate Anyone’s Rights.
+Licensee represents and warrants that it has all rights that are necessary to grant Warp the rights granted under this Agreement, and that neither Licensee Data, nor the inclusion of Licensee Data in the Services, will infringe, misappropriate or violate a third party’s Intellectual Property Rights, or Applicable Privacy Law. Licensee further agrees that, unless the parties separately agree in writing, Licensee will not upload to the Services any Licensee Data or other information, other than Authorized User log-in credentials, which would qualify as personal information or personally identifiable information under any Applicable Privacy Law.
+
+5.5 ALL OTHER WARRANTIES ARE DISCLAIMED BY BOTH PARTIES. EXCEPT AS MAY OTHERWISE EXPRESSLY SET FORTH IN THIS AGREEMENT, EACH PARTY MAKES NO WARRANTIES OR REPRESENTATIONS WITH RESPECT TO ANY PRODUCTS, SERVICES, DOCUMENTATION, DATA OR OTHER TANGIBLE OR INTANGIBLE MATERIALS PROVIDED UNDER THIS AGREEMENT, AND HEREBY DISCLAIMS ANY OTHER EXPRESS AND ALL IMPLIED WARRANTIES, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WARP DOES NOT WARRANT THAT THE PRODUCT, SERVICES OR DOCUMENTATION PROVIDED UNDER THIS AGREEMENT WILL OPERATE WITHOUT INTERRUPTION OR BE ERROR FREE OR THAT SUCH PRODUCT OR DOCUMENTATION WILL SUCCEED IN RESOLVING ANY PROBLEM.
+
+WARP IS ACTING HEREUNDER SOLELY AS A PASSIVE CONDUIT FOR THE ONLINE DISTRIBUTION AND PUBLICATION OF LICENSEE’S LICENSEE DATA. WARP TAKES NO RESPONSIBILITY, AND ASSUMES NO LIABILITY, FOR ANY OF LICENSEE DATA THAT LICENSEE OR ANY OTHER USER OR THIRD-PARTY POSTS, SENDS, OR OTHERWISE MAKES AVAILABLE THROUGH THE SERVICES. LICENSEE IS SOLELY RESPONSIBLE FOR THE LICENSEE DATA AND THE CONSEQUENCES OF POSTING, PUBLISHING IT, SHARING IT, OR OTHERWISE MAKING IT AVAILABLE THROUGH THE SERVICES. LICENSEE FURTHER UNDERSTANDS AND AGREES THAT LICENSEE MAY BE EXPOSED TO CONTENT POSTED THROUGH THE SERVICES THAT IS INACCURATE, OBJECTIONABLE OR OTHERWISE UNSUITED TO LICENSEE’S PURPOSE, AND LICENSEE AGREE THAT WARP SHALL NOT BE LIABLE FOR ANY DAMAGES LICENSEE MAY ALLEGE TO HAVE INCURRED AS A RESULT OF OR RELATING TO ANY LICENSEE DATA OR OTHER CONTENT ACCESSED ON OR THROUGH THE SERVICES.
+
+6. Indemnities.
+6.1 Indemnification of Licensee by Warp.
+Subject to each of the other provisions hereof, Warp shall (i) defend or (at its option) settle, any claim brought against Licensee by a third party alleging that at the time of Delivery the Warp-Authored Software infringes the copyright, trademark, or US patent of said third party (a “Claim”) and (ii) indemnify Licensee against damages and costs finally awarded against and payable by Licensee in any such Claim.
+
+6.2 Exceptions.
+Warp shall have no liability to Licensee under this Section:
+
+(a) to the extent any Claim is based on or arises from any Product or any portion or component thereof, that is: (A) not provided directly to Licensee by Warp; (B) modified by a party other than Warp and not at Warp’s direction, if the alleged infringement would not have occurred in the absence of such modification; or ( C) combined with other products, processes or materials where the alleged infringement would not have occurred in the absence of such combination;
+(b) to the extent Licensee continues allegedly infringing activity after: (1) being notified thereof; and (2) being provided, at no additional charge, modifications that would have avoided the alleged infringement without significant loss of performance, compatibility or functionality;
+or (c) from any breach of the Licensee’s obligations under this Agreement.
+6.3 Indemnification of Warp by Licensee.
+Licensee will (i) defend or (at its option) settle, any claim brought against Warp by a third party and (ii) indemnify Warp from and against any losses, liabilities, damages, costs or expenses (including court costs and reasonable attorneys' fees) arising out of or relating to a breach of Licensee’s warranty in Section 5.4.
+
+6.4
+Despite any of the foregoing, each party’s obligations under Section 6 shall be valid only if the party requesting indemnification:
+
+(a) gives notice to the indemnifying party of any Claim promptly upon becoming aware of the same;
+(b) gives the indemnifying party the sole control of the defense and settlement of any Claim and does not at any time admit liability or otherwise settle or compromise or attempt to settle or compromise the said claim or action except upon the express instructions of the indemnifying party; and
+(c) acts in accordance with the reasonable instructions of the indemnifying party and gives to the indemnifying party such assistance as it shall reasonably require in respect of the conduct of the said defense.
+6.5
+In the event of any alleged Intellectual Property infringement, Warp shall be entitled at its own expense and in its sole discretion to: (a) procure the right for the Licensee to continue using the Product and Documentation; (b) make such alterations, modifications, or adjustments to the Product so that it becomes non-infringing without incurring a material diminution in performance or function; or (c) replace the Product with non-infringing substitutes provided that such substitutes do not entail a material diminution in performance or function.
+
+7. Limitation of Liability.
+7.1 Indirect Damages Are Limited.
+EXCEPT WITH RESPECT TO CLAIMS BASED UPON EITHER PARTY’S BREACH OF CONFIDENTIALITY OBLIGATIONS HEREUNDER, AND SUBJECT TO SECTION 7.2, NEITHER PARTY WILL BE LIABLE TO THE OTHER PARTY FOR ANY INDIRECT, INCIDENTAL OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION IN CONTRACT OR TORT OR BASED ON A WARRANTY, EVEN IF SUCH OTHER PARTY OR ANY OTHER PERSON HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+7.2 Certain Damages Are Always Prohibited.
+IN NO EVENT WILL EITHER PARTY WILL BE LIABLE TO THE OTHER PARTY FOR (i) ANY SPECIAL OR PUNITIVE DAMAGES, (ii) EXCEPT WITH RESPECT TO CLAIMS BASED UPON LICENSEE’S BREACH OF ITS LICENSED RIGHTS HEREUNDER ANY LOSS OF PROFITS, LOST BUSINESS, OR LOST REVENUE, OR (iii) THE USE OR COST OF PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES, IN EACH CASE WHETHER IN AN ACTION IN CONTRACT OR TORT OR BASED ON A WARRANTY, AND WHETHER OR NOT SUCH DAMAGES ARE CHARACTERIZED AS DIRECT, INDIRECT OR OTHER, EVEN IF SUCH OTHER PARTY OR ANY OTHER PERSON HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+7.3 Maximum Liability.
+EXCEPT IN THE CASES OF (i) BREACH OF CONFIDENTIALITY OBLIGATIONS UNDER THIS AGREEMENT (ii) BREACH OF EITHER PARTY’S INTELLECTUAL PROPERTY RIGHTS, OR (ii) A PARTY’S INDEMNIFICATION OBLIGATIONS UNDER THIS AGREEMENT, IN NO EVENT SHALL EITHER PARTY’S LIABILITY FOR DAMAGES UNDER THIS AGREEMENT EXCEED THE AMOUNTS ACTUALLY PAID BY LICENSEE (OR IN THE CASE OF LICENSEE’S LIABILTY, PAID PLUS OWED BUT UNPAID) TO WARP UNDER THIS AGREEMENT IN THE TWELVE MONTHS PRECEDING ANY CLAIM MADE HEREUNDER. IN THE CASE OF WARP’S BREACH OF ITS INDEMNIFICATION OBLIGATIONS UNDER THIS AGREEMENT, IN NO EVENT SHALL WARP’S LIABILITY FOR DAMAGES UNDER THIS AGREEMENT TWO TIMES (2X) EXCEED THE AGGREGATE AMOUNTS ACTUALLY PAID BY LICENSEE TO WARP UNDER THIS AGREEMENT.
+
+8. Confidentiality.
+8.1 Confidentiality Agreement.
+Each of the parties hereto undertakes to the other to keep confidential all Confidential Information of the other party.
+
+8.2 Exceptions.
+Confidential Information will not include any information which: (a) is already lawfully in the receiving party’s possession without obligation of confidentiality; (b) is or becomes generally available to the public through no fault of the receiving party; or (c) is independently developed by the receiving party without any use of the other party’s Confidential Information.
+
+8.3 Required Disclosures.
+If any Confidential Information of the other party is required to be disclosed by the receiving party as a matter of law, the receiving party will use all reasonable efforts to provide the disclosing party with prior notice of such disclosure and to obtain a protective order therefore.
+
+8.4 Injunctive Relief.
+The parties agree that the disclosing party’s remedies at law for a breach by the receiving party of its obligations hereunder may be inadequate and that the disclosing party shall be entitled to seek equitable relief.
+
+9. Term and Termination of Agreement and Orders.
+9.1 Term of Agreement.
+This Agreement shall begin on the Effective Date and shall continue in force for an initial term of one year unless validly terminated earlier. Thereafter, this Agreement shall automatically renew for additional one-year periods unless either party notifies the other in writing of its intent not to renew at least thirty days prior to the end of the then-current term.
+
+9.2 Term of Orders.
+Orders issued under this Agreement shall begin and end as specified in each such Order. Unless otherwise specified in an Order, Orders shall automatically renew at Warp’s then-current standard fees for additional one-year periods unless either party notifies the other in writing of its intent not to renew at least thirty days prior to the end of the then-current term.
+
+9.3 Termination.
+This Agreement and any Service Order may be terminated by either party upon notice if the other party breaches any material term or condition of this Agreement and fails to remedy the breach within thirty days after being given notice thereof. In addition, and despite any other provision of this Agreement or otherwise, this Agreement, and any license granted thereby, may be suspended or terminated immediately upon notice to Licensee by Warp after Warp’s reasonable determination that (i) Licensee’s use of the Product or Services poses a threat to the secure or reliable provision of Services to other customers, or to the Cloud Infrastructure, or to the data contained therein, or (ii) Licensee breaches any of its obligations in Sections 2.3 of this Agreement.
+
+9.4 Effect of Termination.
+Upon termination of this Agreement, Warp’s obligation to provide the Services will immediately cease, any and all licenses granted by Warp hereunder will immediately terminate, and all unpaid fees and other amounts due from Licensee for Services previously provided by Warp will immediately become due and payable. In addition, Licensee shall immediately uninstall or destroy (or at the sole option of Warp, return) all copies of the Product and Documentation in its possession or control, and a duly authorized officer of the Licensee shall certify in writing to Warp that the Licensee has complied with such obligation. Despite the foregoing, upon any termination or expiration of this Agreement, the terms of this Agreement will continue to apply to any Order with a term that extends beyond the date of expiration or termination of the Agreement. In addition, for up to thirty days after expiration or termination of this Agreement, Licensee shall have the right (provided that Customer has met all of its financial and other obligations under this Agreement) to have Warp furnish Licensee (at no additional cost) with an electronic copy of the Licensee Data, in a format reasonably agreed upon between the parties. Any termination of this Agreement pursuant to this Section shall be without prejudice to any other rights or remedies a party may be entitled to hereunder or at law and shall not affect any accrued rights or liabilities of either party nor the coming into or continuance in force of any provision hereof which is expressly or by implication intended to come into or continue in force on or after such termination.
+
+9.5 Survival.
+Sections 2.1, 2.3, 2.5, 2.7, 2.8, 4, 5.4, 5.5, 6- 8, 9.4, 9.5, 10 and 12, all associated definitions, and all accrued rights to payment shall survive any termination or expiration of this Agreement.
+
+10. Export Regulations.
+The Product is subject to U.S. export controls, including the Export Administration Regulations. Both parties shall comply with all relevant import and export regulations, including those adopted by the Bureau of Industry and Security of the U.S. Department of Commerce. Licensee shall not transfer, export or re-export, directly or indirectly, the Product in violation of any export law or regulation, and Licensee affirms that it is not, and is not acting on behalf of, any person or entity on the Denied Persons List, Entity List, Unverified List or Military End User List as published by the U.S. Department of Commerce, Bureau of Industry and Security.
+
+11. Privacy.
+Each party agrees to abide by all applicable laws and regulations in connection with providing the Services, including, without limitation, all Applicable Privacy Laws.
+
+##12. Miscellaneous.
+
+12.1 Force Majeure.
+Neither party hereto shall be liable for any breach of its obligations hereunder resulting from causes beyond its reasonable control including but not limited to fires, floods, earthquakes, pandemic or epidemic illness, strikes (of its own or other employees), insurrection or riots, embargoes, requirements or regulations of any civil or military authority.
+
+12.2 Waiver.
+The waiver by either party of a breach or default of any of the provisions of this Agreement by the other party shall not be construed as a waiver of any succeeding breach of the same or other provisions.
+
+12.3 Notices.
+All notices must be in writing and in the English language and will be deemed given only when sent by mail (return receipt requested), hand-delivered, sent by documented overnight delivery service to the party to whom the notice is directed, at its address indicated in the signature box to this Agreement (or such other address as to which the other party has been notified), or sent by email to the email address as may be provided by one party to the other from time to time.
+
+12.4. Invalidity and Severability.
+If any provision of this Agreement shall be found by any court or administrative body of competent jurisdiction to be invalid or unenforceable the invalidity or unenforceability of such provision shall not affect the other provisions of this Agreement and all provisions not affected by such invalidity or unenforceability shall remain in full force and effect.
+
+12.5 Assignment and Sublicensing.
+Either may assign this Agreement without such consent to an entity that acquires all or substantially all of the shares of the assigning party, or all or substantially all of its business or assets, whether by merger, reorganization, acquisition, sale, or otherwise. Despite the foregoing, Licensee may not assign, transfer or sublicense this Agreement or any of its rights or obligations hereunder to any competitor of Warp as determined in Warp’s reasonable discretion. In all other cases, neither party shall assign, transfer or sublicense this Agreement or any of its rights or obligations hereunder without the prior written consent of the other party.
+
+12.6 Governing Law; Venue.
+This Agreement shall be governed by and construed in accordance with the laws of the State of New York without regard to the conflict of law provisions thereof. The sole venue for all disputes relating to this Agreement shall be in New York, New York, USA.
+
+12.7 Attorneys’ Fees.
+If any legal action or other proceeding is brought to enforce the provisions of this Agreement, the prevailing party shall be entitled to recover reasonable attorney fees and other costs incurred in the action or proceeding, in addition to any other relief to which the prevailing party may be entitled.
+
+12.8 Independent Contractors.
+The parties agree that each is an independent contractor and neither party has the right or authority to assume or create any obligation or responsibility on behalf of the other party.
+
+12.9 Counterparts.
+This Agreement may be executed in any number of counterparts, each of which shall be considered an original, but all of which together will constitute one and the same instrument.
+
+12.10 Amendments.
+This Agreement may be modified, replaced or rescinded only in writing, and signed by a duly authorized representative of each party.
+
+13. Publicity.
+Either party to this Agreement may publicize the existence of the business relationship established by this Agreement in connection with its products, promotions, or publications. Licensee agrees to consider participating with Warp in a case study, of which Warp may publish the results. Licensee further agrees to reasonably cooperate with Warp to serve as a reference account upon request. Licensee grants Warp permission to use Licensee’s name and logo(s) in connection with promotion of Warp’s products and services. All representations of Licensee’s logo shall be exact copies of those used by Licensee in design, color and other details. Except as expressly set forth in this Section, nothing in this Agreement gives either party any right, title or interest in the other party’s logos, trademarks, service marks or trade names. Despite anything to the contrary, neither party may disclose the specific terms of this Agreement, except as required by applicable law.
+
+THIS AGREEMENT, INCLUDING ALL ATTACHMENTS, SCHEDULES, EXHIBITS AND ALL APPLICABLE LICENSE AGREEMENTS, CONSTITUTES THE COMPLETE AND EXCLUSIVE UNDERSTANDING OF THE PARTIES, AND SUPERSEDES ALL PRIOR AND CONTEMPORANEOUS SALES PROPOSALS, NEGOTIATIONS AND AGREEMENTS, ALL TERMS AND CONDITIONS INCLUDED AS PART OF ORDERS AND ALL OTHER REPRESENTATIONS OR COMMUNICATIONS, WHETHER ORAL OR WRITTEN, WITH RESPECT TO THE SUBJECT MATTER HEREOF. THE PARTIES AGREE THAT ANY ADDITIONAL OR DIFFERENT TERMS AND CONDITIONS CONTAINED ON, REFERENCED BY OR INCORPORATED INTO LICENSEE’S ORDER ARE EXPRESSLY REJECTED AND SHALL NOT BE CONSIDERED AN AMENDMENT TO THIS AGREEMENT.
+
+Exhibit A
+Certain Definitions
+“Applicable Privacy Laws” means, in relation to any personal information that is processed in the provision of the Services, any applicable law, regulation or legislation protecting individual privacy, including without limitation, where applicable, the California Consumer Privacy Act, and the EU Regulation 2016/679 of the European Parliament and of the Council on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (the “GDPR”).
+
+“Authorized User” means any individual (in each case to the extent that Licensee’s license includes, and Licensee pays for, such individual) who is authorized to access the Product, Documentation or Services and exercise the rights licensed by Licensee. Each Authorized User must use a unique identity to access and use the Product unless otherwise licensed, and may access the services only to the extent licensed by Licensee.
+
+“Cloud Infrastructure” means the Product, and the computing, storage, networking, and other hardware and software infrastructure used in providing the Services.
+
+“Confidential Information” means the Product and each party’s product road maps, product development plans, pricing, business plans, customer lists, business and financial information, plus any other information or data which a party discloses in tangible form and conspicuously marks as “confidential,” “proprietary” or with other words generally understood to communicate the confidential nature of the information.
+
+“Delivery” means the availability of the Product and/or Documentation by Warp to the Licensee via electronic or other means, without regard to when Licensee actually installs or uses such Product.
+
+“Documentation” means the instruction manuals, user guides, and other information to be made available from time to time by Warp in either printed or electronic form to the Licensee.
+
+“Intellectual Property Rights” means all inventions, know-how, patents (including originals, divisionals, continuations, continuations-in-part, extensions, utility models and re-issues), patent applications, copyrights (including all related rights and registrations and applications therefor), trade secrets, trademarks, internet domain names, moral rights, and all other proprietary and intellectual property rights.
+
+“Licensee Data” means information, data, and other content, in any form or medium, that is collected, downloaded, or otherwise received, directly or indirectly, from you (or on your behalf) on the Cloud Infrastructure by or through our Service.
+
+“Order” means any document agreed to between the parties which sets forth the Product licensed by the Licensee and any relevant pricing. Multiple Orders may be agreed to under this Agreement.
+
+“Product” means, collectively, the product(s) set forth in any Order (to the extent such product(s) are subsequently made available to Licensee by Warp) (including but not limited to Warp’s Applications, other downloading apps, application programming interfaces (“APIs”) and tools), as well as any Update made available to Licensee by Warp.
+
+“Services” means the Product and related services accessed by Authorized Users in a manner consistent with Warp’s published Documentation and this Agreement.
+
+“Site” means the address, business unit or other geographical location or business identifier indicated on an applicable Order from which the Product may be accessed or used.
+
+“Specifications” means those technical specifications in respect of the Product(s) which are published by Warp and are in effect at the time of Delivery.
+
+“Subscription” means licenses to the Product, Documentation, and Support Services.
+
+“Support Services” means technical support as provided for in Section 1.3.
+
+“Update” means such enhancements, modifications, or additions to the Product or Documentation as may be made available from time to time by Warp to Licensee. Updates includes without limitation upgraded versions of Warp’s Applications which may automatically electronically upgrade the version of Warp’s Applications that Licensee is using on a mobile or desktop device. Licensee consents to such automatic upgrading on mobile or desktop devices and agrees that the terms and conditions of this Agreement will apply to all such upgrades.
+

@@ -1,31 +1,31 @@
-# Maintainer: Glenn O. Larsen <glenn dot larsen at gmail dot com>
-pkgname=warp-terminal-bin
-pkgver=0.2024.02.20.08.01.stable.02
-pkgrel=2
-pkgdesc="Warp is a modern, Rust-based terminal with AI built in so teams can
- build great software, faster. Bringing collaboration to the command line,
- Warp lets teams save and share commands for streamlined onboarding and
- incident response."
-arch=('x86_64')
-url="https://www.warp.dev/"
+# Maintainer: ihipop <ihipop at gmail dot com>
+_pkgname=warp-terminal
+pkgname="${_pkgname}-bin"
+pkgver=0.2025.01.08.08.02.stable_03
+pkgrel=1
+pkgdesc="Warp is the intelligent terminal with AI and your dev team's knowledge built-in."
+arch=('x86_64' 'aarch64')
+url="https://proxyman.io"
 license=('custom')
-provides=("${pkgname%-bin}")
-conflicts=("${pkgname%-bin}")
-install="${pkgname%-bin}.install"
-source=("https://releases.warp.dev/stable/v${pkgver:0:$((${#str} - 3))}_${pkgver:$((${#str} - 2))}/${pkgname%-bin}_${pkgver}_amd64.deb"
-	"https://raw.githubusercontent.com/warpdotdev/Warp/main/LICENSE"
-	"${pkgname%-bin}.sh")
-sha256sums=('17409f293b601cea1e2627a7140a2a758295ff4653b02d4687339e405977a039'
-	'1057b326e587edf2f81dc35c6c9cdd2e63d9af1c68e331d7ac8a4bc22ff9de49'
-	'9ace6327e1eec7d1f3a84889857d61593835695321ce80e56fbdd4ed13247f1a')
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
+options=('!strip')
+depends=()
+source=(
+    "${pkgname%-bin}-x86_64.pkg.tar.zst::https://releases.warp.dev/stable/v${pkgver}/warp-terminal-v${pkgver}-1-$CARCH.pkg.tar.zst"
+    "LICENSE.txt"
+)
+sha256sums=(
+            'a36263627ce78b430ce14353a0d41c77604b991822143b58e66dc14a5503d693'
+            'da704590c6bd3a8b0ad179b42961e1feb10faa87f5eb3a3851ba2d940b49ebfa'
+           )
+
+build() {
+    rm -f *.zst .*
+    install -Dm644 "${srcdir}/LICENSE.txt" "${srcdir}/opt/warpdotdev/warp-terminal/"
+    rm LICENSE.txt
+}
 
 package() {
-	bsdtar xfv data.tar.xz -C "$pkgdir"
-
-	desktop-file-edit --set-key=Exec --set-value="${pkgname%-bin} %U" \
-		"$pkgdir/usr/share/applications/dev.warp.Warp.desktop"
-
-	install -Dm755 "${pkgname%-bin}.sh" "$pkgdir/usr/bin/${pkgname%-bin}"
-
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-bin}"
+    cp -a "${srcdir}/." "${pkgdir}"
 }
