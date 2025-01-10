@@ -1,8 +1,6 @@
 # Maintainer: xiota / aur.chaotic.cx
 
 # options
-: ${_autoupdate:=false}
-
 : ${_pkgtype:=-tabopts}
 
 : ${_commit_patch:=7cce4b12e43b046104bbfc9a6da481e97f4f2f3c}
@@ -11,7 +9,7 @@
 _pkgname="dolphin"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=24.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE File Manager - with extended tab options'
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
 license=('GPL-2.0-or-later')
@@ -40,17 +38,10 @@ optdepends=(
   'purpose: share context menu'
 )
 
-if [[ "${_autoupdate::1}" == "t" ]]; then
-  : ${_pkgver:=$(LANG=C LC_ALL=C pacman -Si extra/dolphin | sed -nE 's@^Version\s+: (.*)-.*$@\1@p' | head -1)}
-  _dl_url="https://invent.kde.org/system/dolphin.git#tag=v$_pkgver"
-else
-  : ${_pkgver:=${pkgver%%.r*}}
-  _dl_url="https://invent.kde.org/system/dolphin.git"
-fi
-
-provides=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 
+_dl_url="https://invent.kde.org/system/dolphin.git#tag=v$pkgver"
 _pkgsrc="$_pkgname"
 source=(
   "$_pkgsrc"::"git+$_dl_url"
@@ -60,10 +51,6 @@ sha256sums=(
   'SKIP'
   'a299037d34c16d8e078e1f751ab6a921bae64f4804755864a5416da2f62db121'
 )
-
-pkgver() {
-  echo "${_pkgver:?}"
-}
 
 prepare() {
   cd "$_pkgsrc"
