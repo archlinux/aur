@@ -1,8 +1,9 @@
 # Author: Martin Stibor <martin.von.reichenberg@proton.me>
 
 pkgname='opera-extras'
-#opera_ver:    115.0.5322.77  (stable)
-#chromium_ver: 130.0.6723.137 (old-stable)
+#opera_ver: 116.0.5366.21 (stable)
+#opera_chromium_ver: 131.0.6778.86 (old-stable/stable)
+#ffmpeg_chromium_ver: 131.0.6778.109 (old-stable/stable)
 _pkgname='nwjs-ffmpeg-prebuilt'
 pkgver=0.94.1
 pkgrel=1
@@ -13,9 +14,8 @@ license=('custom')
 depends=('opera')
 makedepends=('libarchive' 'lsb-release' 'nodejs' 'nodejs-nopt' 'npm')
 optdepends=('chromium-widevine: Complementary codec enabling a premium web video content on Chromium based web browsers')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz"
-        'COPYING')
-md5sums=('SKIP' 'SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz" 'COPYING')
+md5sums=('71aa098a96184866bae54f5fdf77e569' 'c408a301e3407c3803499ce9290515d6')
 
 build() {
        npm i ${srcdir}/${_pkgname}-${pkgver}/
