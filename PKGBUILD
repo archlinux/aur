@@ -1,4 +1,5 @@
 # Maintainer: dequis <dx@dxzone.com.ar>
+# Maintainer: pspacek <pspacek@isc.org>
 # Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=rr-git
