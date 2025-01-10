@@ -1,7 +1,7 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=kavita-bin
 pkgver=0.8.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Self hosted ebook and comic reader"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.kavitareader.com/"
@@ -32,7 +32,6 @@ a7f87615c4991284aa7517b77b5dc412b71db322b9d737b5707e3c5b8a41834f79ca3cd24bf95d38
 build() {
     cd "${srcdir}"
 
-    tar -xvf kavita-linux-*.tar.gz
     cd Kavita
     chmod 755 Kavita
 }
