@@ -1,8 +1,8 @@
 # Maintainer: zt64 <zt@zt64.dev>
 pkgname=jadx-git
 pkgdesc='Command line and GUI tools to produce Java source code from Android Dex and APK files'
-pkgver='r2190.ce527ed'
-pkgrel=3
+pkgver=r2368.29d1144
+pkgrel=2
 
 arch=('any')
 url='https://github.com/skylot/jadx'
@@ -30,15 +30,16 @@ build() {
 }
 
 package() {
-  cd "${pkgname}/build/jadx"
+  cd "$srcdir/$pkgname/build/jadx"
 
   install -Dm 755 bin/{jadx,jadx-gui} -t "${pkgdir}/usr/share/java/${pkgname}/bin"
   install -Dm 644 lib/* -t "${pkgdir}/usr/share/java/${pkgname}/lib"
 
   install -d "${pkgdir}/usr/bin"
-  ln -s /usr/share/java/${pkgname}/bin/jadx "${pkgdir}/usr/bin/jadx"
-  ln -s /usr/share/java/${pkgname}/bin/jadx-gui "${pkgdir}/usr/bin/jadx-gui"
+  ln -s "/usr/share/java/${pkgname}/bin/jadx" "${pkgdir}/usr/bin/jadx"
+  ln -s "/usr/share/java/${pkgname}/bin/jadx-gui" "${pkgdir}/usr/bin/jadx-gui"
 
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 "$srcdir/$pkgname/contrib/jadx-gui.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm 644 "$srcdir/$pkgname/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 "$srcdir/$pkgname/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
