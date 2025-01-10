@@ -2,3 +2,5 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
+!mp3splt_informations_spelling.patch
+!mp3splt_cross_compile_cutter_check.patch

@@ -1,0 +1,26 @@
+Author: Helmut Grohne <helmut@subdivi.de>
+Description: FTCBFS: abuses AC_CHECK_FILE
+Bug-Debian: https://bugs.debian.org/981158
+
+--- mp3splt-2.6.2+20170630.orig/libmp3splt/configure.ac
++++ mp3splt-2.6.2+20170630/libmp3splt/configure.ac
+@@ -252,7 +252,7 @@
+ AC_CHECK_CUTTER
+ 
+ cutter_command="no"
+-AC_CHECK_FILE([$CUTTER], [cutter_command="yes"])
++AS_IF([test -e "$CUTTER"], [cutter_command="yes"])
+ 
+ if test "x$CUTTER" != x;then
+   if test "x$cutter_command" = xyes;then
+--- mp3splt-2.6.2+20170630.orig/mp3splt-gtk/configure.ac
++++ mp3splt-2.6.2+20170630/mp3splt-gtk/configure.ac
+@@ -312,7 +312,7 @@
+ AC_CHECK_CUTTER
+ 
+ cutter_command="no"
+-AC_CHECK_FILE([$CUTTER], [cutter_command="yes"])
++AS_IF([test -e "$CUTTER"], [cutter_command="yes"])
+ 
+ if test "x$CUTTER" != x;then
+   if test "x$cutter_command" = xyes;then
