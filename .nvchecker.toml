@@ -1,6 +1,4 @@
 [zaman]
-source = "github"
-github = "Antiz96/zaman"
+source = "git"
+git = "https://github.com/Antiz96/zaman.git"
 prefix = "v"
-use_max_tag = true
-exclude_regex = ".*(pre|a|alpha|b|beta|r|rc).*"
