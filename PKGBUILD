@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=heynote
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
-_electronversion=31
+_electronversion=33
 pkgdesc="A dedicated scratchpad for developers"
 arch=('x86_64')
 url="https://heynote.com"
@@ -12,7 +12,7 @@ makedepends=('npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/heyman/heynote/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('0fb2f7053e55ed61c784734671606a57e77e7aaec99416717885f5ed7f8db47e'
+sha256sums=('e888d0b8596e6624f8b4d3884780053164fb1a551060702105c4d31fed71f04f'
             '22eca2d471190a5c59d3bfc9d95333071a7f63711e89c11991b12ebe068197ad'
             '01f72b81076197876af162436ce58754ceb35a0f7726f00255bfa55a5936f5ff')
 
