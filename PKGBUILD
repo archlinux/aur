@@ -3,7 +3,7 @@
 pkgname=tencent-docs-electron
 _pkgname=腾讯文档
 _pkgname1=tdappdesktop
-pkgver=3.8.1
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="Electron版腾讯文档 Tencent Docs - 让协作更高效，创作更轻松"
 arch=("x86_64" "aarch64")
@@ -20,8 +20,8 @@ source_aarch64=("${pkgname}-${pkgver}-${pkgrel}-aarch64.deb::https://docs.qq.com
 
 
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_x86_64=('6d08eea5b2938bc6d07be1f6aa0ec618ebed2ce6e7e240f8bb22ed1b4a1f7237')
-sha256sums_aarch64=('7ab7a0fc74aca6b750acb1439478b3477a7121eadd6a66a001cd4b81d2144793')
+sha256sums_x86_64=('a4bfb9521dd125554912d4cd55220731eb1c6ef976b9fab0dcb9fdd23540bbbf')
+sha256sums_aarch64=('e9a3c6a9a5943b6cb6448b3016a37585aff4da6a68af7b33f33e4588ef4ea6a5')
 
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
