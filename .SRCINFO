@@ -1,7 +1,7 @@
 pkgbase = scid
 	pkgdesc = A Free Chess Database Application
 	pkgver = 5.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://scid.sourceforge.net
 	install = scid.install
 	arch = x86_64

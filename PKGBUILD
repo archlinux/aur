@@ -4,7 +4,7 @@ pkgname=scid
 _pkgname=Scid
 pkgver=5.1.0
 _pkgver=${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A Free Chess Database Application"
 url="http://scid.sourceforge.net"
 arch=('x86_64')
@@ -54,4 +54,7 @@ EOF
 
   msg "Fix world writtable bit in books folder"
   find ${pkgdir}/usr/share/scid/books -type f -exec chmod 644 {} \;
+
+  msg "Fix dangling symlink"
+  ln -sf /usr/share/scid/scid ${pkgdir}/usr/bin/scid
 }
