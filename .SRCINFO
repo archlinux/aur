@@ -1,6 +1,6 @@
 pkgbase = etcd-bin
 	pkgdesc = A highly-available key value store for shared configuration and service discovery - binary version
-	pkgver = 3.5.15
+	pkgver = 3.5.17
 	pkgrel = 1
 	url = https://github.com/coreos/etcd
 	install = etcd.install
@@ -10,10 +10,10 @@ pkgbase = etcd-bin
 	conflicts = etcd
 	conflicts = etcd-git
 	backup = etc/etcd/etcd.conf.yml
-	source = https://github.com/coreos/etcd/releases/download/v3.5.15/etcd-v3.5.15-linux-amd64.tar.gz
-	source = https://github.com/coreos/etcd/raw/v3.5.15/contrib/systemd/etcd.service
-	source = https://github.com/coreos/etcd/raw/v3.5.15/etcd.conf.yml.sample
-	sha256sums = 3f6b48d8c2844699f2b19c1880508ecf63e1489769ed37ebb97495d5cd848a89
+	source = https://github.com/coreos/etcd/releases/download/v3.5.17/etcd-v3.5.17-linux-amd64.tar.gz
+	source = https://github.com/coreos/etcd/raw/v3.5.17/contrib/systemd/etcd.service
+	source = https://github.com/coreos/etcd/raw/v3.5.17/etcd.conf.yml.sample
+	sha256sums = eff6ac621d41711085d0f38fab17d8fa3705f6326c3ff11301a1f5a71fc94edd
 	sha256sums = 6b2921568bd96f5bb48ba61d2b9673f42e49eb90fda35a7003fbac469a226a13
 	sha256sums = 933b9cad1b21fe624d6b4a1c7c4a9f695b40719fe0e3cf1f28ddaab31b76ad10
 
