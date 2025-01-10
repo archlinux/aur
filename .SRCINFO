@@ -1,15 +1,15 @@
 pkgbase = phalanx
 	pkgdesc = A chess engine which understands the xboard protocol. It's suitable for beginner and intermediate players
 	pkgver = 25.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://phalanx.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0-or-later
 	optdepends = xboard: to be able to use the xboard graphical frontend
 	source = http://deb.debian.org/debian/pool/main/p/phalanx/phalanx_25.orig.tar.gz
-	source = http://deb.debian.org/debian/pool/main/p/phalanx/phalanx_25-1.debian.tar.xz
+	source = http://deb.debian.org/debian/pool/main/p/phalanx/phalanx_25-1.1.debian.tar.xz
 	sha256sums = b3874d5dcd22c64626b2c955b18b27bcba3aa727855361a91eab57a6324b22dd
-	sha256sums = 861bdc78c6a8b8c0d69f8a830d06076eedf8192ce6b393fd4e02529d279989a0
+	sha256sums = 5f3c7e13054f28760b926bc16dde41538ffce37d66ad59c12671c9ad9d7143b5
 
 pkgname = phalanx

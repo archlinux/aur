@@ -7,19 +7,18 @@
 
 pkgname=phalanx
 pkgver=25.1.1
-_debver=${pkgver%%.*}
-_debrel=${pkgver##*.}
-pkgrel=1
+_debmajor=${pkgver%%.*}
+pkgrel=2
 pkgdesc="A chess engine which understands the xboard protocol. It's suitable for beginner and intermediate players"
 url="http://phalanx.sourceforge.net/"
 license=('GPL-3.0-or-later')
 arch=('i686' 'x86_64')
 optdepends=('xboard: to be able to use the xboard graphical frontend')
 
-source=("http://deb.debian.org/debian/pool/main/p/phalanx/phalanx_${_debver}.orig.tar.gz"
-  "http://deb.debian.org/debian/pool/main/p/phalanx/phalanx_${_debver}-${_debrel}.debian.tar.xz")
+source=("http://deb.debian.org/debian/pool/main/p/phalanx/phalanx_${_debmajor}.orig.tar.gz"
+  "http://deb.debian.org/debian/pool/main/p/phalanx/phalanx_${pkgver/./-}.debian.tar.xz")
 sha256sums=('b3874d5dcd22c64626b2c955b18b27bcba3aa727855361a91eab57a6324b22dd'
-            '861bdc78c6a8b8c0d69f8a830d06076eedf8192ce6b393fd4e02529d279989a0')
+            '5f3c7e13054f28760b926bc16dde41538ffce37d66ad59c12671c9ad9d7143b5')
 
 prepare() {
   rm -rf "$pkgname-$pkgver" && mv Phalanx-* "$pkgname-$pkgver"
