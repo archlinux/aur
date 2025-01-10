@@ -1,6 +1,6 @@
-pkgbase = vim-floaterm-git
-	pkgdesc = 💻 Terminal manager for (neo)vim
-	pkgver = r4e28c8d
+pkgbase = vim-floaterm-with-lf-vim-git
+	pkgdesc = Terminal manager for (neo)vim with the lf.vim plugin added
+	pkgver = r4e28c8d.r80a2ef0
 	pkgrel = 1
 	url = https://github.com/voldikss/vim-floaterm
 	arch = any
@@ -8,7 +8,14 @@ pkgbase = vim-floaterm-git
 	license = MIT
 	makedepends = git
 	depends = vim-plugin-runtime
+	depends = lf
+	provides = vim-floaterm
+	provides = vim-lf
+	conflicts = vim-floaterm-git
+	conflicts = vim-floaterm
 	source = vim-floaterm-git::git+https://github.com/voldikss/vim-floaterm
+	source = vim-lf-git::git+https://github.com/ptzz/lf.vim
+	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = vim-floaterm-git
+pkgname = vim-floaterm-with-lf-vim-git
