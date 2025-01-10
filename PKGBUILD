@@ -4,7 +4,7 @@ pkgbase=windfind-bin
 pkgname=windfind-bin
 _pkgname=WindFind
 pkgver=1.1.0
-pkgrel=0
+pkgrel=1
 arch=('x86_64')
 _name=WindFind_${pkgver}_Linux_Portable_x86_64
 options=(!strip !debug)
@@ -19,14 +19,9 @@ replaces=()
 pkgdesc="A high performace file locator for instantly finding files and folders by name."
 license=('Commercial AND Apache-2.0')
 url="https://github.com/kingToolbox/WindFind"
-source_x86_64=("https://github.com/kingToolbox/WindFind/releases/download/${pkgver}/${_name}.zip")
+source_x86_64=("${url}/releases/download/${pkgver}/${_name}.zip")
 sha256sums_x86_64=('f24270d4ed0ba0ae609b9ca804b588bdc435117dad9460d8a36ed9bed2f25029')
 # noextract=()
-
-# prepare() {
-#     mkdir -pv ${srcdir}/${pkgname}-${pkgver}
-#     bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.deb" --numeric-owner -C "${srcdir}/${pkgname}-${pkgver}"
-# }
 
 package() {
     cd ${srcdir}/${_pkgname}
