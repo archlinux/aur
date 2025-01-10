@@ -1,0 +1,5 @@
+[dnote-server-bin]
+source = "git"
+git = "https://github.com/dnote/dnote" 
+prefix = "server-v"
+include_regex = "server-v.*"
