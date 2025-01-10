@@ -1,0 +1,57 @@
+diff -aur old.infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/gtk/nfo_view_ctrl.h infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/gtk/nfo_view_ctrl.h
+--- old.infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/gtk/nfo_view_ctrl.h	2025-01-10 14:37:35.291825381 +0100
++++ infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/gtk/nfo_view_ctrl.h	2025-01-10 14:40:03.030485806 +0100
+@@ -17,6 +17,7 @@
+ 
+ #include <gtkmm/builder.h>
+ #include <gtkmm/layout.h>
++#include <memory>
+ 
+ #include "nfo_data.h"
+ #include "nfo_renderer.h"
+diff -aur old.infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/lib/nfo_colormap.h infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/lib/nfo_colormap.h
+--- old.infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/lib/nfo_colormap.h	2025-01-10 14:37:35.295158760 +0100
++++ infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/lib/nfo_colormap.h	2025-01-10 14:39:02.546335827 +0100
+@@ -15,6 +15,8 @@
+ #ifndef _NFO_COLORMAP_H
+ #define _NFO_COLORMAP_H
+ 
++#include <memory>
++
+ class CNFOColorMap
+ {
+ public:
+diff -aur old.infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/lib/nfo_renderer.cpp infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/lib/nfo_renderer.cpp
+--- old.infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/lib/nfo_renderer.cpp	2025-01-10 14:37:35.298492137 +0100
++++ infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/lib/nfo_renderer.cpp	2025-01-10 14:38:45.316103284 +0100
+@@ -15,7 +15,7 @@
+ #include "stdafx.h"
+ #include "nfo_renderer.h"
+ #include "cairo_box_blur.h"
+-
++#include <cmath>
+ 
+ CNFORenderer::CNFORenderer(bool a_classicMode) :
+ 	m_classic(a_classicMode),
+diff -aur old.infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/lib/nfo_renderer.h infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/lib/nfo_renderer.h
+--- old.infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/lib/nfo_renderer.h	2025-01-10 14:37:35.298492137 +0100
++++ infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/lib/nfo_renderer.h	2025-01-10 14:39:19.473230987 +0100
+@@ -17,6 +17,7 @@
+ 
+ #include "nfo_data.h"
+ #include "cairo_box_blur.h"
++#include <thread>
+ 
+ // http://www.alanwood.net/unicode/block_elements.html
+ // http://www.alanwood.net/demos/wgl4.html
+diff -aur old.infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/lib/util.h infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/lib/util.h
+--- old.infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/lib/util.h	2025-01-10 14:37:35.301825516 +0100
++++ infekt-8ebd5a826f09c0dfe8cc664984969acca57f4d2d/src/lib/util.h	2025-01-10 14:39:40.590182766 +0100
+@@ -24,6 +24,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <memory>
+ 
+ class CUtil
+ {
