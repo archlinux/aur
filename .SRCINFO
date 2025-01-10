@@ -15,6 +15,7 @@ pkgbase = aom-psy101-git
 	makedepends = vmaf
 	depends = gcc-libs
 	optdepends = aom-docs
+	optdepends = vmaf
 	provides = aom
 	conflicts = aom
 	replaces = aom-psy101-vmaf-git

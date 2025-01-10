@@ -18,7 +18,10 @@ makedepends=(
   yasm
   vmaf
 )
-optdepends=(aom-docs)
+optdepends=(
+  aom-docs
+  vmaf
+)
 provides=(aom)
 conflicts=(aom)
 replaces=(${_pkgname}-vmaf-git)
