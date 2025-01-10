@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Goy <kuon@goyman.com>
 
 pkgname=zrep
-pkgver=1.8.0
+pkgver=2.0.2
 pkgrel=1
 epoch=
 pkgdesc="ZREP ZFS based replication and failover script from bolthole.com"
@@ -12,7 +12,7 @@ groups=()
 depends=(ksh)
 source=("https://raw.githubusercontent.com/bolthole/zrep/v$pkgver/$pkgname"
 "https://raw.githubusercontent.com/bolthole/zrep/v$pkgver/LICENSE.txt")
-md5sums=('60e7424999f0028f95af89fb4339b012' 'c8bab7291304d748f1133dbd43c992df')
+md5sums=('6e207b03fefecd26f4cc19dcf7ed6038' '6b7753e87858504b28aafdd65f5989b1')
 
 package() {
   mkdir -p $pkgdir/usr/bin
