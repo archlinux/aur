@@ -14,7 +14,7 @@
 : ${KOBOLDCPP_NO_PORTABLE:=0}
 
 pkgname=koboldcpp-hipblas
-_pkgver=1.80.3
+_pkgver=1.81.1
 pkgver=$_pkgver.yr0
 _git_pkgver=$pkgver-ROCm
 pkgrel=1
@@ -40,11 +40,9 @@ source=(
   'koboldcpp.desktop'
   'koboldcpp.png'
 )
-sha256sums=(
-  'e995b9db70e9409c8a206e864097839a3c41365989cf31f846919718788fad5d'
-  'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
-  'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
-)
+sha256sums=('1aabb77be5f0db765da7859100a248e69a4e6cf54bb925706b0edc566a888f0b'
+            'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
+            'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54')
 
 build() {
   if [ -f "${KOBOLDCPP_BUILD_CONF}" ]; then
