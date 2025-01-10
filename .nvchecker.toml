@@ -1,0 +1,5 @@
+[dnote-cli-bin]
+source = "git"
+git = "https://github.com/dnote/dnote" 
+prefix = "cli-v"
+include_regex = "cli-v.*"
