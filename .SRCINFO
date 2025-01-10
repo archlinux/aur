@@ -6,6 +6,7 @@ pkgbase = weaver-git
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python
 	depends = python-gobject
 	depends = python-pillow
