@@ -2,12 +2,14 @@
 
 pkgname=bit4id-ipki
 pkgver=1.4.10.542
-pkgrel=2
+pkgrel=3
 pkgdesc="Bit4ID Universal Middleware (Smart Card driver)"
 arch=('i686' 'x86_64')
 license=('unknown')
 url="http://www.bit4id.com/"
 install=$pkgname.install
+# bit4id-xpki also provides /usr/lib/bit4id/libbit4xpki.so
+conflicts=('bit4id-xpki')
 options=('!strip')
 
 if [ "${CARCH}" = 'x86_64' ]; then
