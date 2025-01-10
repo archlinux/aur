@@ -3,7 +3,7 @@
 # Inspired by: FabioLolix, éclairevoyant, ThatOneCalculator <kainoa at t1c dot dev>
 
 pkgname=hyprland-protocols
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Wayland protocol extensions for Hyprland"
 arch=("x86_64" "aarch64")
@@ -18,7 +18,7 @@ makedepends=('make' 'meson' 'ninja')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ab3525d8bad576db911d4ba1b586f303dd988660b3b8980022c1795fd574b165')
+sha256sums=('5bbce79ad924310ebc3df30c5f409791b9c05764dc5268d2e37cbc001e3f9c6b')
 
 build() {
   cd "${pkgname}-${pkgver}"
