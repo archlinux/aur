@@ -1,7 +1,7 @@
 pkgbase = clapboard-git
 	pkgdesc = Clipboard manager for Wayland
-	pkgver = r1.73de0ac
-	pkgrel = 2
+	pkgver = r1.d86a8a2
+	pkgrel = 3
 	url = https://github.com/bjesus/clapboard
 	arch = any
 	license = MIT
