@@ -1,22 +1,33 @@
-# Maintainer: Gustavo Parreira <gustavotcparreira at gmail dot com>
-pkgname=hyprshot
+# Maintainer:
+# Contributor: Gustavo Parreira <gustavotcparreira at gmail dot com>
+
+_pkgname="hyprshot"
+pkgname="$_pkgname"
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/Gustash/Hyprshot"
-pkgdesc="A utility to easily take screenshots in Hyprland using your mouse"
+pkgdesc="A utility to easily take screenshots in Hyprland"
 arch=('any')
 license=('GPL')
-depends=('bash' 'jq' 'grim' 'slurp' 'wl-clipboard' 'libnotify')
-optdepends=('hyprpicker: to freeze the screen while taking the screenshot')
-provides=("$pkgname")
-conflicts=("$pkgname")
-source=("Hyprshot-$pkgver.tar.gz::https://github.com/Gustash/Hyprshot/archive/$pkgver.tar.gz")
-sha512sums=('2177a8de11a728db19156217451f801af22cea6a127ad5629e6dac802c95474175e57c2284c0296814a0202e63bb4ca42a0b8101a67905918f3e198b3ea35598')
+
+depends=(
+  'bash'
+  'grim'
+  'jq'
+  'libnotify'
+  'slurp'
+  'wl-clipboard'
+)
+optdepends=(
+  'hyprpicker: to freeze the screen while taking the screenshot'
+)
+
+_pkgsrc="Hyprshot-$pkgver"
+_pkgext="tar.gz"
+source=("${_pkgsrc,,}.$_pkgext"::"$url/archive/$pkgver.$_pkgext")
+sha256sums=('315bdbe66ee473d811b9af8447bd32124e84d873396ef8ab5ac3f040294f6739')
 
 package() {
-    cd "Hyprshot-$pkgver"
-    mkdir -p "$pkgdir/usr/bin"
-
-    cp hyprshot "$pkgdir/usr/bin/"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$_pkgsrc/hyprshot" -t "$pkgdir/usr/bin/"
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
