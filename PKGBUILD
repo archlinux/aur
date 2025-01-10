@@ -5,7 +5,7 @@ pkgver=0.2025.01.08.08.02.stable_03
 pkgrel=1
 pkgdesc="Warp is the intelligent terminal with AI and your dev team's knowledge built-in."
 arch=('x86_64' 'aarch64')
-url="https://proxyman.io"
+url="https://warp.dev"
 license=('custom')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
