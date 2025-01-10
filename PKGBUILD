@@ -5,13 +5,12 @@
 
 : ${_pkgtype:=-tabopts}
 
-: ${_commit:=0fe6544079a23769e8f19ee2f09b5c149f404d5a} # 24.12.0.1
 : ${_commit_patch:=7cce4b12e43b046104bbfc9a6da481e97f4f2f3c}
 
 # basic info
 _pkgname="dolphin"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=24.12.0.1
+pkgver=24.12.1
 pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
@@ -46,7 +45,7 @@ if [[ "${_autoupdate::1}" == "t" ]]; then
   _dl_url="https://invent.kde.org/system/dolphin.git#tag=v$_pkgver"
 else
   : ${_pkgver:=${pkgver%%.r*}}
-  _dl_url="https://invent.kde.org/system/dolphin.git#commit=$_commit"
+  _dl_url="https://invent.kde.org/system/dolphin.git"
 fi
 
 provides=("$_pkgname=${pkgver%%.r*}")
