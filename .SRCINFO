@@ -1,9 +1,12 @@
 pkgbase = python-rpi-gpio
 	pkgdesc = A Python module to control the GPIO on a Raspberry Pi
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 3
 	url = http://sourceforge.net/projects/raspberry-gpio-python
-	arch = any
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = python
 	makedepends = python-distribute
