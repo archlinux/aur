@@ -7,9 +7,9 @@
 
 pkgbase=linux-mainline-um5606
 epoch=1
-_tag='v6.13-rc5'
+_tag='v6.13-rc6'
 # _id='7eef7e306d3c40a0c5b9ff6adc9b273cc894dbd5'
-pkgver=6.13rc5
+pkgver=6.13rc6
 pkgrel=1
 pkgdesc="Linux Mainline with patches for the Asus UM5606(WA) laptop"
 arch=(x86_64)
