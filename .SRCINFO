@@ -1,0 +1,22 @@
+pkgbase = zoraxy-bin
+	pkgdesc = A general purpose HTTP reverse proxy and forwarding tool. Now written in Go!(Precompiled version)
+	pkgver = 3.1.6
+	pkgrel = 1
+	url = https://zoraxy.aroz.org/
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = AGPL-3.0-only
+	provides = zoraxy=3.1.6
+	conflicts = zoraxy
+	source_aarch64 = zoraxy-3.1.6-aarch64::https://github.com/tobychui/zoraxy/releases/download/v3.1.6/zoraxy_linux_arm64
+	sha256sums_aarch64 = 065961f709db3c213018c7105d8d81310a654ebd4d26dedee675116d92dddbdf
+	source_armv7h = zoraxy-3.1.6-armv7h::https://github.com/tobychui/zoraxy/releases/download/v3.1.6/zoraxy_linux_arm
+	sha256sums_armv7h = 9f310edad6786925c925a9c1a1e330683f14700ac5d9eec4e693c72b818b513f
+	source_i686 = zoraxy-3.1.6-i686::https://github.com/tobychui/zoraxy/releases/download/v3.1.6/zoraxy_linux_386
+	sha256sums_i686 = 37752545e2686510ac93e753711358bd435253e5449c63470f70cc073feccc4d
+	source_x86_64 = zoraxy-3.1.6-x86_64::https://github.com/tobychui/zoraxy/releases/download/v3.1.6/zoraxy_linux_amd64
+	sha256sums_x86_64 = 2213a61cc3344f03e37fb161132a84da6cc60c1ac9b9054e143b544c7342b3bd
+
+pkgname = zoraxy-bin
