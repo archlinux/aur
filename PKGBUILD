@@ -1,0 +1,26 @@
+# Maintainer: laggykiller <chaudominic2 at gmail dot com>
+pkgname=python-apngasm-python
+_name=apngasm_python
+pkgver=1.3.1
+pkgrel=1
+pkgdesc='A nanobind python API for apngasm, a tool/library for APNG assembly & disassembly with compression support.'
+arch=('any')
+url="https://github.com/laggykiller/apngasm-python"
+license=('LGPL')
+depends=('python')
+makedepends=(python-build python-installer python-wheel)
+optdepends=(
+    'python-pillow: allow pillow related functions'
+    'python-numpy: allow pillow and numpy related functions')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('9f801237c2865832fab223c432149cb0f6062746b46683db76aecb951c34f731')
+
+build() {
+    cd $_name-$pkgver
+    python -m build --wheel
+}
+
+package() {
+    cd $_name-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
+}
