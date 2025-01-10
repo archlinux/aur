@@ -1,20 +1,23 @@
-# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Maintainer:    Eric Engestrom <aur [at] engestrom [dot] ch>
+# Co-Maintainer: Michael (https://aur.archlinux.org/account/michael_wzq)
 
 pkgname=igt-gpu-tools
-pkgver=1.28
+pkgver=1.30
 pkgrel=1
 pkgdesc="Collection of tools for development and testing of the DRM drivers."
 url="https://gitlab.freedesktop.org/drm/igt-gpu-tools"
 arch=(x86_64 aarch64)
-license=(custom)
+license=(MIT)
 makedepends=(
   meson
   ninja
 )
 depends=(
   alsa-lib
+  bash
   cairo
   glib2
+  glibc
   gsl
   gtk-doc
   json-c
@@ -25,23 +28,27 @@ depends=(
   libpciaccess
   libprocps
   libunwind
+  libx11
+  libxext
   libxmlrpc
   libxrandr
   libxv
   peg
+  perl
   pixman
   procps-ng
+  python
   python-docutils
   systemd-libs
   valgrind
   zlib
 )
 source=("$url/-/archive/v$pkgver/igt-gpu-tools-v$pkgver.tar.gz")
-sha256sums=('ba15b321c5a90da629baf326912c9c0406a903719040eb4959e0af1197935133')
+b2sums=('d917c69475a4fc723719feca7db4a93bb84c6a58f14ef2a6904b1dda699135bb7d4c69491bd1dd21a100dac5e2ad118d9baecedfca5d30fb3de5f8ae801310a1')
 
 prepare() {
   MESON_OPTS=()
-  if [ $CARCH != x86_64 ]
+  if [ "$CARCH" != x86_64 ]
   then
     # overlay is x86-only
     MESON_OPTS+=(-D overlay=disabled)
@@ -54,8 +61,6 @@ build() {
   ninja -C build igt-gpu-tools-doc
 }
 
-# several tests are timing out
-# false &&
 check() {
   ninja -C build test
 }
@@ -63,5 +68,5 @@ check() {
 package() {
   DESTDIR="$pkgdir" ninja -C build install
 
-  install -Dm644 "$pkgname-v$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$pkgname-v$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
