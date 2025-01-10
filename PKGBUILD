@@ -1,29 +1,59 @@
 #Maintainer: Lunatic <lunaticzy9527 at gmail dot com>
+# Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=iflyime
-pkgver=0.9.972
-pkgrel=2
+pkgver=2.0.51
+pkgrel=1
 pkgdesc="XunFei for Linux (iflyime)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://srf.xunfei.cn/"
-license=(custom)
-depends=("fcitx" "dtkwidget")
+license=("custom AND LGPL-3.0-or-later")
+depends=(
+        sh
+        curl
+        #         fcitx
+        gcc-libs
+        glibc
+        hicolor-icon-theme
+        # "dtkwidget"
+        libx11
+        sqlite
+        zlib
+)
+makedepends=()
+optdepends=(
+        'fcitx: Flexible Context-aware Input Tool with eXtension'
+        'fcitx5: Next generation of fcitx'
+        'ibus: Intelligent input bus for Linux/Unix')
+options=(!strip !debug)
+source_x86_64=(
+        "iflyime_${pkgver}_amd64.deb::https://srf.xunfei.cn/sp1/com.iflytek.iflyime_${pkgver}_amd64_kylin_sp1.deb")
+# soucre_aarch64=(
+#         "iflyime_${pkgver}_arm64.deb::https://srf.xunfei.cn/sp1/com.iflytek.iflyime_${pkgver}_arm64_kylin_sp1.deb")
 source=(
-        "iflyime_${pkgver}_amd64.deb::http://packages.deepin.com/deepin/pool/non-free/i/iflyime/iflyime_${pkgver}_amd64.deb"
+        #         "iflyime_${pkgver}_amd64.deb::http://packages.deepin.com/deepin/pool/non-free/i/iflyime/iflyime_${pkgver}_amd64.deb"
         "https://srf.xunfei.cn/linux/help/agreement.html"
 )
-md5sums=(
-        'ff2bf9d1852b94faa19825eaae83475d'
-        'SKIP'
-)
+sha256sums=('13256d2fe7ace56e536b550423ecced93ac5882a297bf7c4b09db189dc383a4a')
+sha256sums_x86_64=('12d84d5b50985d42cb50854c7e3d941a559eb650113118940363ecdb9bee6ac0')
 
 package() {
         cd ${srcdir}
-	tar -xvf data.tar.xz -C "${pkgdir}"
+        tar -xvf data.tar.gz -C "${pkgdir}"
 
-        mv "${pkgdir}"/usr/lib/*-linux-gnu/fcitx "${pkgdir}"/usr/lib/
-        rmdir "${pkgdir}"/usr/lib/*-linux-gnu
+        mkdir ${pkgdir}/opt/${pkgname}
         chown -R root:root "${pkgdir}"
-        chmod -R 755 "${pkgdir}"
-        install -D -m644 agreement.html ${pkgdir}/usr/share/licenses/$pkgname/license.html
+        install -Dvm644 agreement.html ${pkgdir}/usr/share/licenses/$pkgname/license.html
+
+        cd ${pkgdir}
+        rm -rf usr/lib
+        rm -rf usr/share/fcitx
+        rm -rf usr/share/applications
+
+        mv opt/apps/com.iflytek.iflyime/entries/{applications,icons} usr/share
+        mv opt/apps/com.iflytek.iflyime/files/{bin,iflyime-qimpanel,res} opt/${pkgname}
+        rm -rf opt/apps
+        sed -i -e 's|apps/com.iflytek.iflyime/files|iflyime|g' \
+                -e 's|/opt/apps/com.iflytek.iflyime/entries|/usr/share|g' usr/share/applications/iflyime-setting-wizard.desktop
+        sed -i -e 's|/usr/bin/iflyime-qimpanel|/opt/iflyime/bin/iflyime-qimpanel|g' opt/${pkgname}/bin/iflyime-daemon.sh
 }

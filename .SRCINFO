@@ -1,17 +1,26 @@
 pkgbase = iflyime
 	pkgdesc = XunFei for Linux (iflyime)
-	pkgver = 0.9.972
-	pkgrel = 2
+	pkgver = 2.0.51
+	pkgrel = 1
 	url = http://srf.xunfei.cn/
-	arch = i686
 	arch = x86_64
-	license = custom
-	depends = fcitx
-	depends = dtkwidget
-	source = iflyime_0.9.972_amd64.deb::http://packages.deepin.com/deepin/pool/non-free/i/iflyime/iflyime_0.9.972_amd64.deb
+	license = custom AND LGPL-3.0-or-later
+	depends = sh
+	depends = curl
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libx11
+	depends = sqlite
+	depends = zlib
+	optdepends = fcitx: Flexible Context-aware Input Tool with eXtension
+	optdepends = fcitx5: Next generation of fcitx
+	optdepends = ibus: Intelligent input bus for Linux/Unix
+	options = !strip
+	options = !debug
 	source = https://srf.xunfei.cn/linux/help/agreement.html
-	md5sums = ff2bf9d1852b94faa19825eaae83475d
-	md5sums = SKIP
+	sha256sums = 13256d2fe7ace56e536b550423ecced93ac5882a297bf7c4b09db189dc383a4a
+	source_x86_64 = iflyime_2.0.51_amd64.deb::https://srf.xunfei.cn/sp1/com.iflytek.iflyime_2.0.51_amd64_kylin_sp1.deb
+	sha256sums_x86_64 = 12d84d5b50985d42cb50854c7e3d941a559eb650113118940363ecdb9bee6ac0
 
 pkgname = iflyime
-
