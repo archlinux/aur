@@ -1,14 +1,14 @@
 # Maintainer: witt <1989161762 at qq dot com>
 
 pkgname=eco-paste-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="🎉跨平台的剪贴板管理工具 | Cross-platform clipboard management tool ."
 arch=('any')
 url="https://github.com/EcoPasteHub/EcoPaste"
 license=('Apache-2.0')
-provides=("eco-paste" "EcoPaste" "eco-paste")
-conflicts=("eco-paste" "eco-paste-git" "eco-paste-appimage" "eco-paste-beta" "eco-paste-beta-bin")
+provides=("ecopaste" "eco-paste" "EcoPaste" "eco-paste")
+conflicts=("ecopaste" "eco-paste" "eco-paste-git" "eco-paste-appimage" "eco-paste-beta" "eco-paste-beta-bin")
 depends=("webkit2gtk-4.1")
 optdepends=()
 _ocr_languages=(afr amh ara asm aze_cyrl aze bel ben bod bos bre bul cat ceb ces chi_sim chi_sim_vert
@@ -26,7 +26,7 @@ source=(
   "${pkgname%-bin}-${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/EcoPaste_${pkgver}_amd64.deb"
   "LICENSE::https://raw.githubusercontent.com/EcoPasteHub/EcoPaste/refs/heads/master/LICENSE"
 )
-sha256sums=('3973874e5d2cb2d8fa4720b8970b5edebb074d709211ca08c61d4fd001d73e3a'
+sha256sums=('fba410c5be10f0a00fa1a7ea0e1ff88b2174ebc1b626901884aec0c1fc0f70c6'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
 
 build() {
