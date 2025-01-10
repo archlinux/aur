@@ -1,32 +1,33 @@
-# Maintainer: MidAutumnMoon <mid.autumn0moon@gmail.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: MidAutumnMoon <mid.autumn0moon@gmail.com>
 
-pkgname=dnslookup-bin
-pkgver=1.10.0
+
+_pkgauthor=ameshkov
+_pkgname=dnslookup
+pkgname=${_pkgname}-bin
+pkgver=1.11.1
 pkgrel=1
-pkgdesc="Simple command line utility to make DNS lookups to the specified server"
-arch=( 'x86_64' 'i686' 'aarch64' 'armv7h' )
-url="https://github.com/ameshkov/dnslookup"
-license=( 'MIT' )
-
-source_x86_64=( "https://github.com/ameshkov/dnslookup/releases/download/v${pkgver}/dnslookup-linux-amd64-v${pkgver}.tar.gz" )
-source_i686=( "https://github.com/ameshkov/dnslookup/releases/download/v${pkgver}/dnslookup-linux-386-v${pkgver}.tar.gz" )
-source_aarch64=( "https://github.com/ameshkov/dnslookup/releases/download/v${pkgver}/dnslookup-linux-arm64-v${pkgver}.tar.gz" )
-source_armv7h=( "https://github.com/ameshkov/dnslookup/releases/download/v${pkgver}/dnslookup-linux-arm-v${pkgver}.tar.gz" )
-
-sha256sums_x86_64=('cd05c6f7a5950b83bc51a5448c0f86b1d116e051b50db0768cf0007f8ba2d2f7')
-sha256sums_i686=('76a0e1322062dbceaf1d9efd4a186da0cd0fb9dfb7ac803a199f8c7fd7a7d019')
-sha256sums_aarch64=('4d93f222a8c4cee387c41757a91f81d543bcd008fc2b3d7d76b0da80d2ea3087')
-sha256sums_armv7h=('93e41d25c8a54ac0cd2ffc167df29c72d1f211fd5532dbe00e94f32047b930e3')
-
-provides=( 'dnslookup' )
-conflicts=( 'dnslookup-git' 'dnslookup' )
+pkgdesc='Simple command line utility to make DNS lookups to the specified server'
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
+arch=('x86_64' 'i686' 'aarch64')
+license=('MIT')
+depends=('glibc')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-git")
+source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-v${pkgver}.tar.gz")
+source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-386-v${pkgver}.tar.gz")
+source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64-v${pkgver}.tar.gz")
+sha256sums_x86_64=('daf7b40d498d8ac8a94672b5f95e94d3efac53641a51fa72a5ad776e2cd532f1')
+sha256sums_i686=('ccd60af022c3cbe72b731a12e58764ede5dcf8a53bc33c87c2477576b1a6141b')
+sha256sums_aarch64=('9127073368d2dc4a58efc350cc2f43f680b1417ad35f2f1a3632fabb1ce61263')
 
 
 package() {
+  cd "${srcdir}/linux-"* || exit
 
-    find "${srcdir}" \
-        -type f \
-        -iname 'dnslookup' \
-        -exec install -Dm755 '{}' "${pkgdir}/usr/bin/dnslookup" \;
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
