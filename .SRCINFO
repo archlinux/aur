@@ -1,0 +1,20 @@
+pkgbase = hyprland-qt-support
+	pkgdesc = QML style provider for Hypr* QT apps
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hyprwm/hyprland-qt-support
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = pkgconf
+	depends = qt6-wayland>=6.6.0
+	depends = hyprlang>=0.6.0
+	depends = gcc-libs
+	depends = qt6-declarative
+	depends = qt6-base
+	depends = glibc
+	source = hyprland-qt-support-0.1.0.tar.gz::https://github.com/hyprwm/hyprland-qt-support/archive/v0.1.0.tar.gz
+	sha256sums = cac1f980bd088b890097f3f999cfdf03e73ee94c53f3c92d0b3bc23baa9e7b2c
+
+pkgname = hyprland-qt-support
