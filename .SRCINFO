@@ -1,7 +1,7 @@
 pkgbase = libaegis
 	pkgdesc = Portable C implementations of the AEGIS family of high-performance authenticated encryption algorithms.
-	pkgver = 0.3.0
-	pkgrel = 3
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/aegis-aead/libaegis.git
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = libaegis
 	provides = libaegis
 	conflicts = libaegis
 	options = !lto
-	source = git+https://github.com/aegis-aead/libaegis.git#commit=ac5eaa3f154a4a4deaf436308dad61fdd39f13c8?signed/
-	sha256sums = 8327e584770cf56cdc7ac42d876a2e53271eba78330b560ecbc2a76d4a6dca00
+	source = git+https://github.com/aegis-aead/libaegis.git#commit=98655078e7b17b4689e1b9ffc1a1087bc7ac436d?signed/
+	sha256sums = 2f97ce29e31c91eadcd3b331696596f480e307c2b8a0ddb96c36d773eb7be6af
 
 pkgname = libaegis
