@@ -1,0 +1,15 @@
+pkgbase = python-sphinx-documatt-theme
+	pkgdesc = Documatt Theme for Sphinx documentation projects
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://documatt.com/sphinx-themes/themes/documatt.html
+	arch = any
+	license = MIT
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_documatt_theme/sphinx_documatt_theme-0.0.6.tar.gz
+	md5sums = c36625d6ea1e2f7f3522ee7ff9ce8df3
+
+pkgname = python-sphinx-documatt-theme
+	depends = python-sphinx
+	optdepends = python-sphinx-documatt-theme-doc: Documentation for Documat Sphinx Theme
