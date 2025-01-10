@@ -4,7 +4,7 @@ pkgname=openeb3
 _pkgname=openeb
 pkgdesc="Open source SDK for event based cameras by Prophesee with support for EVK1"
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=(custom)
 url="https://github.com/prophesee-ai/openeb"
@@ -18,7 +18,7 @@ source=("${_pkgname}::git+https://github.com/prophesee-ai/openeb#tag=${pkgver}"
   "python-version.patch")
 sha256sums=('2f977d673ae345747d04cd224f8263e6b7f1cde58d46aa43a1bf0425fa548ab7'
             'c6c341a17aab158179d741720fe7b175a9991514ac5d9030ea4b2f1344de55c4'
-            'bf2109e7df3e9d77735458d991b27a89fc99d7fae9721c1cffe6330c48045acc')
+            'd0bf8a9878c509fe8a0154c2f30db2c6cf99f3b61ed6e8131e03e5ddd697a1a7')
 
 prepare() {
 	cd "${_pkgname}"
