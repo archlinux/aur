@@ -3,7 +3,7 @@
 _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname="Nuclear Player"
-pkgver=0.6.40
+pkgver=0.6.41
 _electronversion=12
 _nodeversion=20
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('2343530f7c6ed405bd07d2a14fc7d5cfcf2452fbde99498f6cec41d0f03f44eb'
+sha256sums=('109043ba26d5cc29b6a8e8188a8577f7418268e187cd1e9758895f502492bd70'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -35,7 +35,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -69,6 +69,9 @@ build() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm ci
+}
+build() {
+    cd "${srcdir}/${_appname}-${pkgver}"
     NODE_ENV=production     npx shx rm -rf dist
     NODE_ENV=production     npx lerna run build
     NODE_ENV=production NODE_OPTIONS='--max-old-space-size=8192' npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} -c.extraMetadata.main=dist/main.js" 
