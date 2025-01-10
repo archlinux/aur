@@ -10,7 +10,7 @@ depends=("glibc")
 makedepends=("git" "rust")
 url="https://github.com/meclondrej/rsrcon"
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('90d8d065809cfd1c28741185cd980edc9a43e96a7480c691106df80a4b774f32')
+sha256sums=('14c04e89935e50bbcf72c285b7c9256a9ce16a8e168230099621cbb3018ffe00')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
