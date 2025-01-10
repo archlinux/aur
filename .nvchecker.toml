@@ -1,0 +1,7 @@
+[stabilitymatrix-git]
+source="github-graphql"
+github="LykosAI/StabilityMatrix"
+use_latest_release=true
+use_commit_number=true
+use_commit_hash=true
+prefix='v'
