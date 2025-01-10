@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=passepartui
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A TUI for pass"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'pass')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('6552f363b445d7f1ed71ed77bea40afc2c67c06c26fe72739baed7a6103cb58bf24dd1d0fa8afba34e46931f171eadba935f52c1e91c4c1e142bf69962d9b05f')
+sha512sums=('2b5dc7e9067cc13a8ca3a6c4be7aaff117b1cceadbf5fcd074bfaa937b0652dbe6c0c2451426b2fc4aae7fa11097fe00e9743f27197a6e5e9cf0ad610e698af5')
 
 prepare() {
   cd "$pkgname-$pkgver"
