@@ -32,12 +32,6 @@ package() {
     # Perform the installation
     make -C "$srcdir/weaver" prefix="/usr" install DESTDIR="$pkgdir"
 
-    # Copy the icon to the appropriate directory
-    cp $srcdir/weaver/data/icons/hicolor/scalable/apps/org.twilight.weaver.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/
-
-    # Copy the desktop file
-    cp $srcdir/weaver/data/applications/org.twilight.weaver.desktop $pkgdir/usr/share/applications/
-
     # Create a symbolic link (for executables) inside the bin directory
     # We avoid using 'ln -sf' directly on the original location since fakeroot might simulate different paths
     ln -sf /usr/lib/weaver/main.py $pkgdir/usr/bin/weaver
