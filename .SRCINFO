@@ -1,0 +1,20 @@
+pkgbase = python-donfig
+	pkgdesc = Python package for configuring a python package
+	pkgver = 0.8.1.post1
+	pkgrel = 1
+	url = https://donfig.readthedocs.io
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-cloudpickle
+	checkdepends = python-yaml
+	makedepends = python-setuptools
+	makedepends = python-versioneer
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/d/donfig/donfig-0.8.1.post1.tar.gz
+	md5sums = 316ee7f6403887ddf7121aa93576fb5a
+
+pkgname = python-donfig
+	depends = python>=3.8
+	depends = python-yaml
