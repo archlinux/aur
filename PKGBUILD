@@ -3,7 +3,7 @@
 _rockname=tl
 pkgbase=teal
 pkgname=(teal "lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
-pkgver=0.24.1
+pkgver=0.24.2
 pkgrel=1
 pkgdesc='The compiler for Teal, a typed dialect of Lua'
 arch=(any)
@@ -16,15 +16,16 @@ makedepends=(lua
              lua52
              lua53
              luarocks)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a9e4a5b9fb2bfd3bce55b9e5389d5d0df1d2c568db58c83fdc2128d1cb8803a6')
+_archive="$_rockname-$pkgver"
+source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
+sha256sums=('3a2e55aa92f9615f37edff8554c0b0d40ed9e48ceea56b938f926960ec431d25')
 
 _package() {
-	cd "$_rockname-$pkgver"
+	cd "$_archive"
 	depends=("${pkgname%-*}" "${_luadeps[@]/#/${pkgname%-*}-}")
 	luarocks --lua-version $1 --tree "$pkgdir/usr/" \
 		make --deps-mode none --no-manifest -- "$_rockname-dev-1.rockspec"
-	find "$pkgdir/usr/bin" -type f -execdir sed -i -e "s#$pkgdir##" {} \;
+	find "$pkgdir/usr/bin" -type f -execdir sed -i -e "s#$pkgdir##g" {} \;
 	[[ -v 2 ]] &&
 		rm -rf "$pkgdir/usr/"{lib,share} ||
 		rm -rf "$pkgdir/usr/bin"
