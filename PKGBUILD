@@ -2,7 +2,7 @@
 # Maintainer: Liberty Raptor <libertyraptor@protonmail.com>
 
 pkgname=xemu-bin
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc="Original Xbox Emulator"
 arch=('x86_64')
@@ -13,8 +13,8 @@ conflicts=('xemu' 'xemu-git')
 options=('!strip')
 makedepends=('gendesk')
 noextract=("${pkgname%-bin}-${pkgver}.AppImage")
-source=("${pkgname%-bin}-${pkgver}.AppImage::https://github.com/xemu-project/xemu/releases/download/v0.8.7/xemu-v0.8.7-x86_64.AppImage")
-sha256sums=('b2998aaf48105d8e6a3ce01ef697c80ab1d6403b24b04bbabbfaf08fc7a68b8d')
+source=("${pkgname%-bin}-${pkgver}.AppImage::https://github.com/xemu-project/xemu/releases/download/v0.8.8/xemu-v0.8.8-x86_64.AppImage")
+sha256sums=('166f336be60b4a6ae38f2faf0683c30c4e672bb6cc5234afdd1a75a9c3207cf0')
 
 package() {
   chmod 755 ./${pkgname%-bin}-${pkgver}.AppImage
@@ -31,9 +31,6 @@ package() {
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/opt"
   cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname%-bin}"
-  echo "#!/usr/bin/env bash
-  cd /opt/${pkgname%-bin}
-  ./AppRun \"\$@\"" > ${pkgname%-bin}.sh
-  install -Dm755 ${pkgname%-bin}.sh "${pkgdir}/usr/bin/${pkgname%-bin}"
+  ln -s "/opt/${pkgname%-bin}/AppRun" "${pkgdir}/usr/bin/${pkgname%-bin}"
   find "${pkgdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} +
 }
