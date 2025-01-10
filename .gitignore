@@ -1,0 +1,18 @@
+# Ignore downloaded source
+*.zip
+
+# Ignore built packages
+*.pkg.tar.zst
+
+# Ignore build directories
+src/
+pkg/
+
+# Ignore any backup files
+*~
+
+# Ignore user-specific files
+.directory
+.idea/
+.vscode/
+*.code-workspace
