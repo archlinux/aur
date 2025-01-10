@@ -1,24 +1,25 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname="mp3splt-gtk"
+_basename="mp3splt"
+_pkgname="${_basename}-gtk"
 pkgname="${_pkgname}-bin"
 pkgver=0.9.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Split mp3, ogg, and flac files without decoding - GTK3 GUI"
 arch=('x86_64' 'i686')
-url="https://mp3splt.sourceforge.net"
+url="https://${_basename}.sourceforge.net"
 license=('GPL-2.0-or-later')
-depends=('cairo' 'dbus-glib' 'gdk-pixbuf2' 'glib2' 'glibc' 'gstreamer>=1.0'
-         'gtk3>=3.4.2' 'libaudclient>=3.0' "libmp3splt=${pkgver}")
+depends=('cairo' 'dbus-glib' 'gdk-pixbuf2' 'glib2' 'glibc' 'gstreamer>=1'
+         'gtk3>=3.4.2' 'libaudclient>=3' "libmp3splt>=${pkgver}")
 makedepends=('gzip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 noextract=("${_pkgsrc}-"{x86_64,i686}".deb")
-source_x86_64=("${_pkgsrc}-x86_64.deb::https://downloads.sourceforge.net/sourceforge/mp3splt/${_pkgname}_${pkgver}.jessie_amd64.deb")
-source_i686=("${_pkgsrc}-i686.deb::https://downloads.sourceforge.net/sourceforge/mp3splt/${_pkgname}_${pkgver}.jessie_i386.deb")
-sha256sums_x86_64=('a02e0474f5466246decca28afba518ffd0590f999835ecc0924ccc30ba6f1c42')
-sha256sums_i686=('706cb2d315c49a709e163ba1842dbb6c0d8723991c0de9df88d8e7808dfc3bd3')
+source_x86_64=("${_pkgsrc}-x86_64.deb::https://downloads.sourceforge.net/sourceforge/${_basename}/${_pkgname}_${pkgver}.unstable_amd64.deb")
+source_i686=("${_pkgsrc}-i686.deb::https://downloads.sourceforge.net/sourceforge/${_basename}/${_pkgname}_${pkgver}.unstable_i386.deb")
+sha256sums_x86_64=('b6045267021019a6d2347d51792b3d7520e4094509bcfd1d1881d0b0060358b0')
+sha256sums_i686=('afbb629eae7ad07fcac8794fb2c90336a80398b1a166e714ad429b4153f93fd7')
 
 prepare() {
   cd "${srcdir}"
@@ -38,6 +39,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"
-  cp -r --no-preserve=ownership "${_pkgsrc}-${CARCH}"/* "${pkgdir}"
+  cd "${srcdir}/${_pkgsrc}-${CARCH}"
+  cp -vr --no-preserve=ownership * "${pkgdir}"
 }
