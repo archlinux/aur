@@ -1,58 +1,86 @@
-# Maintainer: Michal Donat <donny579@gmail.com>
+# Maintainer:
+# Contributor: Michal Donat <donny579@gmail.com>
 
-pkgname=supertuxkart-git
-pkgver=22805+18484
-pkgrel=2
-pkgdesc="A kart racing game featuring Tux and his friends - development version"
-url="http://supertuxkart.sourceforge.net/"
-license=("cc-by-sa-3.0")
+_pkgname="supertuxkart"
+pkgname="$_pkgname-git"
+pkgver=1.4.r384.ge2b2a1c
+pkgrel=1
+pkgdesc="A kart racing game featuring Tux and his friends"
+url="https://github.com/supertuxkart/stk-code"
+license=('GPL-3.0-or-later')
 arch=('i686' 'x86_64')
 
-makedepends=("git" "subversion" "cmake" "bluez-libs" "libvpx" "python")
-
-depends=("libvorbis" "freealut" "libgl" "glut" "fribidi" "glew" "libopenglrecorder" "libjpeg-turbo" "libpng" "freetype2" "sdl2")
-
-conflicts=("supertuxkart")
-
-source=(
-    "stk-code::git+https://github.com/supertuxkart/stk-code.git"
-
-    # Use this source for the network alpha testing branch
-    #"stk-code::git+https://github.com/supertuxkart/stk-code.git#branch=network"
-
-    # assets reside in subversion repository
-    "stk-assets::svn+https://svn.code.sf.net/p/supertuxkart/code/stk-assets"
+depends=(
+  'bluez-libs'
+  'freetype2'
+  'hicolor-icon-theme'
+  'libgl'
+  'libjpeg-turbo'
+  'libopenglrecorder' # AUR
+  'libpng'
+  'libvorbis'
+  'openal'
+  'sdl2'
+  'shaderc'
 )
-md5sums=('SKIP' 'SKIP')
+
+makedepends=(
+  'bluez-libs'
+  'cmake'
+  'git'
+  'libvpx'
+  'ninja'
+  'python'
+)
+
+options=('!emptydirs')
+
+_pkgsrc="stk-code"
+source=("$_pkgsrc"::"git+https://github.com/supertuxkart/stk-code.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/stk-code"
-    local _git_rev="$(git rev-list --count HEAD)"
-
-    cd "${srcdir}/stk-assets"
-    local _assets_rev="$(svnversion)"
-
-    printf "%s+%s" "${_git_rev}" "${_assets_rev}"
+  cd "$_pkgsrc"
+  _tag=$(git tag -l '[0-9]*' | grep -Ev '[a-z][a-z]' | sort -rV | head -1)
+  _version="${_tag:?}"
+  _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
+  _hash=$(git rev-parse --short=7 HEAD)
+  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
 build() {
-    cd "${srcdir}/stk-code"
-    if [ -d "cmake_build" ]; then
-        rm -rf cmake_build
-    fi
-    mkdir cmake_build
-    cd cmake_build
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DBUILD_RECORDER=ON
+    -DCHECK_ASSETS=OFF
+    -Wno-dev
+  )
 
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-    # -DBUILD_RECORDER=off     - disable in-game recorder (then you can remove the dependency `libopenglrecorder`)
-    make
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-    cd "stk-code/cmake_build"
-    make DESTDIR=${pkgdir} install
+  depends+=('supertuxkart-assets')
 
-    if [ -d "${pkgdir}/usr/lib64" ]; then
-      mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
-    fi
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$_pkgsrc/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  local _unwanted=(
+    'optimize_data.sh'
+    'po/update_translation.py'
+    'po/update_desktop_file_appdata.py'
+  )
+
+  local _f
+  for _f in ${_unwanted[@]}; do
+    rm -f "$pkgdir/usr/share/supertuxkart/data/$_f"
+  done
+
+  rm -rf "$pkgdir"/usr/lib
+  rm -rf "$pkgdir"/usr/include
 }
