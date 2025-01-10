@@ -2,7 +2,7 @@
 # Modified based on libcava and cava-git
 
 pkgname=libcava-git
-pkgver=r965.ca02eef
+pkgver=r1017.5a34709
 pkgrel=1
 pkgdesc='Fork to provide cava as a shared library, e.g. used by waybar. Cava is not provided as executable. (GIT)'
 arch=('x86_64')
@@ -31,7 +31,7 @@ makedepends=(
 )
 source=("${pkgname}::git+https://github.com/LukashonakV/cava.git")
 sha1sums=('SKIP')
-options=('!buildflags')
+options=('!lto')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -43,14 +43,19 @@ build() {
 
     meson setup \
           --prefix=/usr \
-          -Dbuild_target=lib \
           build
 
-    ninja -C build
+    meson compile \
+          -C \
+          build
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
-    DESTDIR="$pkgdir" ninja -C build install
+
+    DESTDIR="$pkgdir" meson install \
+          -C \
+          build
+
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
