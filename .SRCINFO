@@ -1,6 +1,6 @@
 pkgbase = gto
 	pkgdesc = Git Tag Ops. Turn your Git repository into Artifact Registry or Model Registry.
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/iterative/gto
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = gto
 	depends = python-tabulate
 	depends = python-funcy
 	depends = python-shortuuid
-	source = gto-1.7.1::git+https://github.com/iterative/gto.git#tag=1.7.1
+	source = gto-1.7.2::git+https://github.com/iterative/gto.git#tag=1.7.2
 	sha256sums = SKIP
 
 pkgname = gto
