@@ -3,7 +3,7 @@
 pkgname=windterm-bin
 _pkgname=WindTerm
 pkgver=2.6.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A Quicker and better SSH/Telnet/Serial/Shell/Sftp client for DevOps.(Prebuilt version)"
 arch=('x86_64')
 license=('Apache-2.0')
@@ -44,7 +44,7 @@ prepare() {
     find "${srcdir}/${_pkgname}_${pkgver}/terminal/protocols" -type f -exec chmod 644 {} \;
     find "${srcdir}/${_pkgname}_${pkgver}/terminal/schemes" -type f -exec chmod 644 {} \;
     find "${srcdir}/${_pkgname}_${pkgver}/terminal/terms" -type f -exec chmod 644 {} \;
-    find "${srcdir}/${_pkgname}_${pkgver}/vendors" -type f -exec chmod 644 {} \;
+    find "${srcdir}/${_pkgname}_${pkgver}/vendors" -type f -exec chmod 755 {} \;
     chmod 644 "${srcdir}/${_pkgname}_${pkgver}/"{license.txt,qt.conf,"${pkgname%-bin}".desktop,"${pkgname%-bin}.png"}
     chmod 755 "${srcdir}/${_pkgname}_${pkgver}/${_pkgname}"
 }
