@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Raffin <theelectronwill@gmail.com>
 # Maintainer: David Barri <japgolly@gmail.com>
 pkgname=bloop
-pkgver=2.0.3
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="Bloop gives you fast edit/compile/test workflows for Scala."
 arch=(any)
@@ -12,7 +12,7 @@ source=("bloop-coursier-channel-$pkgver::https://github.com/scalacenter/bloop/re
         "bloop-bash-$pkgver::https://github.com/scalacenter/bloop/releases/download/v$pkgver/bash-completions"
         "bloop-zsh-$pkgver::https://github.com/scalacenter/bloop/releases/download/v$pkgver/zsh-completions"
         "bloop-fish-$pkgver::https://github.com/scalacenter/bloop/releases/download/v$pkgver/fish-completions")
-sha256sums=('32734dfc422716cf5d11d7c01a7a312d6fdacf2a0183fdac077c73fe1ea0b3ce'
+sha256sums=('c483d45997980a2d0e181b98c6d6c47789a72d7d0ca4ba3343d03136ea46edb3'
             'da6b7ecd4109bd0ff98b1c452d9dd9d26eee0d28ff604f6c83fb8d3236a6bdd1'
             '58d32c3f005f7791237916d1b5cd3a942115236155a0b7eba8bf36391d06eff7'
             '5bcf306e7092f78a9aac9cae07f3eac51ada665343e2c97f6f0a6731ca4c3220')
