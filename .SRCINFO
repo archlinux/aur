@@ -1,0 +1,22 @@
+pkgbase = weaver-git
+	pkgdesc = A simple web browser written in Python, GTK4, libadwaita, and WebKitGTK
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://rvc11.is-a.dev
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-gobject
+	depends = python-pillow
+	depends = python-requests
+	depends = sqlite
+	depends = gtk4
+	depends = webkitgtk-6.0
+	depends = libadwaita
+	depends = python-gobject
+	depends = git
+	source = git+https://github.com/TwilightInc/weaver.git
+	sha256sums = SKIP
+
+pkgname = weaver-git
