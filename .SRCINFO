@@ -1,7 +1,7 @@
 pkgbase = open-usp-tukubai
 	pkgdesc = An open source version of shell commands usp Tukubai.
 	pkgver = 20231122
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.uni-tama.com/html/
 	arch = any
 	license = MIT

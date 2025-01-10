@@ -6,7 +6,7 @@ DLAGENTS='https::/usr/bin/curl --insecure -fLC - --retry 3 --retry-delay 3 -o %o
 
 pkgname=open-usp-tukubai
 pkgver=20231122
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source version of shell commands usp Tukubai."
 arch=('any')
 url="https://www.uni-tama.com/html/"
@@ -31,13 +31,15 @@ build() {
 
   mv COMMANDS/tcat COMMANDS/tukubai-tcat
   mv COMMANDS/uconv COMMANDS/tukubai-uconv
+  mv COMMANDS/count COMMANDS/tukubai-count
+  mv man/uconv.1 man/tukubai-uconv.1
 
-  make man
+  mv MANUAL/uconv.txt MANUAL/tukubai-uconv.txt
 }
 
 check () {
   cd "$srcdir"
-  commands="1bai block_getlast calclock calsed cap cgi-name check_attr_name check_cmp_name check_date_name check_dble_name check_inlist_name check_need_name cjoin0 cjoin1 cjoin1x cjoin2 cjoin2x comma count ctail dayslash delf delr divsen exist extname filehame formhame fromcsv fsed getfirst getlast gyo haba han isdate itouch join0 join1 join1x join2 join2x joinx juni kasan keta keycut loopj loopx maezero map marume mdate mime-read mojihame msort nameread numchar plus rank ratio retu rjson self selr sm2 sm4 sm5 tarr tateyoko tukubai-tcat tocsv tukubai-uconv ulock unmap up3 uriencode wjson xmldir yarr ycat yobi ysum zen"
+  commands="1bai block_getlast calclock calsed cap cgi-name check_attr_name check_cmp_name check_date_name check_dble_name check_inlist_name check_need_name cjoin0 cjoin1 cjoin1x cjoin2 cjoin2x comma tukubai-count ctail dayslash delf delr divsen exist extname filehame formhame fromcsv fsed getfirst getlast gyo haba han isdate itouch join0 join1 join1x join2 join2x joinx juni kasan keta keycut loopj loopx maezero map marume mdate mime-read mojihame msort nameread numchar plus rank ratio retu rjson self selr sm2 sm4 sm5 tarr tateyoko tukubai-tcat tocsv tukubai-uconv ulock unmap up3 uriencode wjson xmldir yarr ycat yobi ysum zen"
 
   for cmd in $commands; do
     if ! [ -f "./COMMANDS/$cmd" ]; then
@@ -53,6 +55,6 @@ package() {
   make PREFIX="${pkgdir}/usr" LOCALBASE="$pkgdir/usr" install
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  mkdir -p "${pkgdir}/usr/share/man"
-  install -D -m644 man/*.1 "${pkgdir}/usr/share/man"
+  mkdir -p "${pkgdir}/usr/share/man/man1"
+  install -D -m644 man/*.1 "${pkgdir}/usr/share/man/man1"
 }
