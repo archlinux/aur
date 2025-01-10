@@ -3,12 +3,30 @@
 
 pkgname=fire-tool
 pkgver=1.0.1.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Embedfire Tool support Serial communication, TCP/UDP communication, camera and PID debuggingVisit https://www.embedfire.com for more information."
 arch=('x86_64')
 url="https://www.embedfire.com"
 license=('unknown')
-depends=('qt5-serialport' 'qt5-networkauth' 'qt5-svg' 'qt5-xcb-private-headers')
+depends=(
+    gcc-libs
+    glib2
+    glibc
+    freetype2
+    fontconfig
+    libglvnd
+    libx11
+    libxext
+    libxcb
+    libxkbcommon
+    libxkbcommon-x11
+    qt5-base
+    qt5-networkauth
+    qt5-serialport
+    qt5-svg
+    qt5-xcb-private-headers
+    zlib
+)
 makedepends=()
 # groups=()
 options=('!strip' '!emptydirs')
