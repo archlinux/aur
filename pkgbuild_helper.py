@@ -174,6 +174,24 @@ def generate_srcinfo():
         print(f"Unexpected error generating .SRCINFO: {e}")
         return 1
 
+def commit_git(version):
+    """将版本号更新记录到 Git 日志"""
+    try:
+        # 确保当前目录是 Git 仓库
+        subprocess.run(["git", "status"], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+        # 将更改添加到 Git 暂存区
+        subprocess.run(["git", "add", "*"], check=True)
+
+        # 提交更改
+        commit_message = f"update to version {version}"
+        subprocess.run(["git", "commit", "-m", commit_message], check=True)
+
+        return True
+    except subprocess.CalledProcessError as e:
+        print(f"Error during git operation: {e}")
+        return False
+
 def main():
     parser = argparse.ArgumentParser(description="Update PKGBUILD, sums or generate .SRCINFO.")
     
@@ -196,6 +214,7 @@ def main():
 
     # 如果更新版本，则更新 pkgver
     version_updated = False
+    latest_version = None
     if args.version:
         latest_version = fetch_latest_version()
         if not latest_version:
@@ -216,6 +235,10 @@ def main():
     # 如果需要生成 .SRCINFO 文件
     if args.info:
         generate_srcinfo()
+
+    # 如果版本已更新，则提交到 Git
+    if version_updated:
+        commit_git(latest_version)
 
     return 0
 
