@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-sonar
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Produce Sonar-compatible format from different Rust tools"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('29953f7a0f7712fd393176f4d89cdc613980b1c59b7603a8c2068f277b7a8053')
+sha256sums=('d2b6e0a35e324b295fdecf6624c0ff3bf24697c679d4cb6392f9db7a7d160932')
 
 prepare() {
   cd "$pkgname-$pkgver"
