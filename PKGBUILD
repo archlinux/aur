@@ -7,9 +7,9 @@ pkgdesc="A simple web browser written in Python, GTK4, libadwaita, and WebKitGTK
 arch=('any')
 url="https://rvc11.is-a.dev"
 license=('GPL')
-depends=('python' 'python-gobject' 'python-pillow' 'python-requests' 'sqlite' 'python-configparser'
+depends=('python' 'python-gobject' 'python-pillow' 'python-requests' 'sqlite'
          'gtk4' 'webkitgtk-6.0' 'libadwaita' 'python-gobject' 'git')
-makedepends=('python-setuptools')  # If you need to build from source
+makedepends=('python-setuptools' 'python-configparser')  # If you need to build from source
 source=('git+https://github.com/TwilightInc/weaver.git')    # Add your source file or path
 sha256sums=('SKIP')  # Replace with actual checksum for source file if necessary
 
