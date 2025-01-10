@@ -1,22 +1,20 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sunbible
 _pkgname=SunBible
-pkgver=2.0.001_beta
+pkgver=2.0.02
 _electronversion=23
 _nodeversion=18
-pkgrel=8
-pkgdesc="Bible Desktop App.Use system-wide electron."
+pkgrel=1
+pkgdesc="A simply beautiful place to read, study, and memorize the Bible.(Use system-wide electron)"
 arch=('any')
 url="https://sunbible-dev.github.io/SunBible/"
 _ghurl="https://github.com/SunBible-dev/SunBible"
 license=('MIT')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'npm'
+    'pnpm'
     'nvm'
     'gendesk'
     'curl'
@@ -25,7 +23,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver//_/-}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('20f6415de9e17d2dc39c7c61b75d1e4c0b672e538b351433bb616284fbcb074f'
+sha256sums=('517b5a077c10a24b9b760990ae1f83428007ecb138573d2908cfa76a98dd4813'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -33,7 +31,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -43,7 +41,7 @@ build() {
     " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${_pkgname}-${pkgver//_/-}"
+    cd "${srcdir}/${_pkgname}-${pkgver}/electron"
     electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -66,12 +64,12 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/electron/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/build/icons/${_icons}.png" \
+        install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/electron/build/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver//_/-}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }

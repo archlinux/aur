@@ -1,20 +1,18 @@
 pkgbase = sunbible
-	pkgdesc = Bible Desktop App.Use system-wide electron.
-	pkgver = 2.0.001_beta
-	pkgrel = 8
+	pkgdesc = A simply beautiful place to read, study, and memorize the Bible.(Use system-wide electron)
+	pkgver = 2.0.02
+	pkgrel = 1
 	url = https://sunbible-dev.github.io/SunBible/
 	arch = any
 	license = MIT
-	makedepends = npm
+	makedepends = pnpm
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
 	depends = electron23
-	provides = sunbible
-	conflicts = sunbible
-	source = sunbible-2.0.001_beta.tar.gz::https://github.com/SunBible-dev/SunBible/archive/refs/tags/2.0.001-beta.tar.gz
+	source = sunbible-2.0.02.tar.gz::https://github.com/SunBible-dev/SunBible/archive/refs/tags/2.0.02.tar.gz
 	source = sunbible.sh
-	sha256sums = 20f6415de9e17d2dc39c7c61b75d1e4c0b672e538b351433bb616284fbcb074f
+	sha256sums = 517b5a077c10a24b9b760990ae1f83428007ecb138573d2908cfa76a98dd4813
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = sunbible
