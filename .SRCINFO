@@ -1,0 +1,25 @@
+pkgbase = treesheets-qt5-git
+	pkgdesc = A "hierarchical spreadsheet" as a replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases.
+	pkgver = r854.11ce76f
+	pkgrel = 1
+	url = https://strlen.com/treesheets/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = Zlib
+	makedepends = cmake
+	makedepends = git
+	depends = wxwidgets-qt5
+	depends = wxwidgets-common
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	provides = treesheets
+	conflicts = treesheets
+	source = git+https://github.com/aardappel/treesheets.git
+	source = myframe.patch
+	sha512sums = SKIP
+	sha512sums = 8fc4872d8e430899d21e95d6009dea8dde50ba5854a245b4b78901cebf82e3275b23b92f5afe9c5e2f11c34e1d73cd1657d48a3f8aa937eedfc576f2e62bcd77
+
+pkgname = treesheets-qt5-git
