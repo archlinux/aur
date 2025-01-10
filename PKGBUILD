@@ -1,7 +1,7 @@
 # Maintainer: linkfrg
 pkgname=ignis-git
 _pkgname=ignis
-pkgver=0.4.r0.g68793e0
+pkgver=0.4.r13.g88cacc4
 pkgrel=1
 pkgdesc="A modern widget system"
 arch=('x86_64')
@@ -28,7 +28,7 @@ pkgver(){
 
 prepare() {
   cd $srcdir/$_pkgname
-  git submodule update --init --recursive
+  meson subprojects download
 }
 
 build() {
