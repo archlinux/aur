@@ -1,0 +1,23 @@
+pkgbase = vapoursynth-plugin-rife-ncnn-vulkan-less-models-git
+	pkgdesc = Plugin for Vapoursynth: rife-ncnn-vulkan (GIT version)
+	pkgver = 9.mod.v33.0.g5a647e9
+	pkgrel = 1
+	url = https://github.com/Hzqkii/VapourSynth-RIFE-ncnn-Vulkan
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = cmake
+	makedepends = vulkan-headers
+	depends = vapoursynth
+	provides = vapoursynth-plugin-rife-ncnn-vulkan
+	conflicts = vapoursynth-plugin-rife-ncnn-vulkan
+	options = debug
+	source = rife-ncnn-vulkan::git+https://github.com/Hzqkii/VapourSynth-RIFE-ncnn-Vulkan.git
+	source = git+https://github.com/Tencent/ncnn.git
+	source = git+https://github.com/KhronosGroup/glslang.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-rife-ncnn-vulkan-less-models-git
