@@ -1,0 +1,4 @@
+[malachite]
+source = "git"
+git = "https://gitlab.com/crystal-linux/software/malachite.git"
+prefix = "v"
