@@ -34,7 +34,6 @@ build() {
     # https://github.com/microsoft/playwright/issues/2621#issuecomment-931530175
     cd "${srcdir}"
 
-    tar -xvf v$pkgver.tar.gz
     cd linkwarden-$pkgver
     yarn install
     yarn build
