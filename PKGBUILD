@@ -1,7 +1,7 @@
 # Maintainer: MareDevi <maredevi at foxmail dot com>
 
 pkgname=readest
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='Modern, feature-rich ebook reader designed for avid readers offering seamless cross-platform access, powerful tools, and an intuitive interface'
 arch=('x86_64')
@@ -23,7 +23,7 @@ depends=(
 )
 install="$pkgname.install"
 source=("$url/releases/download/v$pkgver/Readest_${pkgver}_amd64.deb")
-sha256sums=('120ed9c9d4037a53b789facc751cca0231cb746acf206317e067c9f3621e083b')
+sha256sums=('82d94d7b0fa26a496707699ca584c37611c94ebc448a5a3bf80a1c181923e737')
 
 package() {
 
