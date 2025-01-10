@@ -17,7 +17,7 @@ depends=(
     'gst-plugins-base-libs'
     'xcb-util'
     'libpulse'
-    'openssl-1.1'
+    'openssl'
 )
 options=(
     '!strip'
