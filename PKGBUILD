@@ -9,22 +9,33 @@ url="https://${_base,,}.io"
 license=(MIT)
 depends=(python-filelock
   python-platformdirs
+  python-fasteners
+  python-pdbp
   python-parse-type
+  python-colorama
+  python-yaml
+  python-pygments
+  python-idna
   python-charset-normalizer
+  python-urllib3
   python-requests
+  python-sniffio
+  python-h11
+  python-outcome
+  python-trio
+  python-trio-websocket
+  python-wsproto
+  python-websocket-client
   python-selenium
   python-cssselect
-  python-fasteners
+  python-sortedcontainers
   python-execnet
-  python-pytest-html
+  python-iniconfig
+  python-pluggy
   python-parameterized
   python-behave
+  python-soupsieve
   python-beautifulsoup4
-  python-yaml
-  python-websocket-client
-  python-sortedcontainers
-  python-pdbp
-  python-colorama
   python-pyotp
   python-xlib
   python-markdown-it-py
