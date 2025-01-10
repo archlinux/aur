@@ -1,7 +1,7 @@
 pkgbase = libmp3splt
 	pkgdesc = Split mp3, ogg, and flac files without decoding - Library
-	pkgver = 0.9.2
-	pkgrel = 11
+	pkgver = 0.9.3.1519+r5+g4b48268
+	pkgrel = 1
 	url = https://mp3splt.sourceforge.net
 	arch = x86_64
 	arch = i686
@@ -14,16 +14,18 @@ pkgbase = libmp3splt
 	makedepends = libogg
 	makedepends = libvorbis
 	makedepends = pcre
-	source = libmp3splt-0.9.2.tar.gz::https://downloads.sourceforge.net/sourceforge/mp3splt/libmp3splt-0.9.2.tar.gz
-	source = libmp3splt_fix_informations_spelling.patch::https://sources.debian.org/data/main/libm/libmp3splt/0.9.2-0.1/debian/patches/fix-informations-spelling
-	source = libmp3splt_fix_ogg_and_vorbis_state_structs_init.patch::https://github.com/mp3splt/mp3splt/pull/359.patch?full_index=1
-	source = libmp3splt_fix_snprintf_overflow.patch::https://github.com/mp3splt/mp3splt/pull/368.patch?full_index=1
-	source = libmp3splt_fix_flac_slience_trimming.patch::https://github.com/mp3splt/mp3splt/pull/369.patch?full_index=1
-	sha256sums = 30eed64fce58cb379b7cc6a0d8e545579cb99d0f0f31eb00b9acc8aaa1b035dc
-	sha256sums = f6f730a6fc1231571368a3b984b24273bddbe1d9cc902111909ddd1221cca517
-	sha256sums = bc3559e67f359da07c38cef57655950d7ebad5861671b98c92724f0fb3ff2580
-	sha256sums = fe7e6e021ef80dce21782e35c8b6febb10432d4b9eee8757d3c8498ff94f6fad
-	sha256sums = c9f2529f143c6b5cf7faeffe15a34b9690873925004105b6e601b3f18a36fcc3
+	source = mp3splt-4b48268258c478993bd43703c0cdb0962b79f85f.tar.gz::https://github.com/mp3splt/mp3splt/archive/4b48268258c478993bd43703c0cdb0962b79f85f.tar.gz
+	source = mp3splt_init_ogg_and_vorbis_state_structs_init.patch::https://github.com/mp3splt/mp3splt/pull/359.patch?full_index=1
+	source = mp3splt_year_var_output_pattern.patch::https://github.com/mp3splt/mp3splt/pull/365.patch?full_index=1
+	source = mp3splt_oformat_parser_snprintf_overflow.patch::https://github.com/mp3splt/mp3splt/pull/368.patch?full_index=1
+	source = mp3splt_flac_slience_trimming.patch::https://github.com/mp3splt/mp3splt/pull/369.patch?full_index=1
+	source = mp3splt_informations_spelling.patch
+	b2sums = 39a816d6fecb3ae15dc4a36dc2a93c8b9f695800f4366465581e3cc8e77a4b1052a7fed0e02421d549e7100bb5014b16f3ce965c2c9e37d2abb7fc2079d590fd
+	b2sums = ffceb5f0171eb6e11b02fb1fdf4a54ec38ac242a2ad19f552fc8fe81f0d276123480e59a9e687b2da6f036d48b8b7e88a149579f94a1b9c2edca7302e46315c9
+	b2sums = 8739e4ad962af3ddd9c10736199f3ca43640e647098881872f3d490a89a030cd6da574269be0146a0e632813f84670d8a590bdeb2f99fef175d8f21a1582f9da
+	b2sums = 2049015a20a27318c8122e507447540f966a8d0699b873513fc0e561041f80510912b03ee3fab20de556a90d8a88e57efcf6ee0c8b915f55f960197fb406cb11
+	b2sums = 406ecb1c5cdbc507cd74dab8b0e42dafd5938a6f73b48133ab26edbf69768a2cdde1b1453178940f65165b49e93a36b0517597d2ea7c7b48d1d6ec1ce4155a3c
+	b2sums = 4cc4d17eff23e64e6c7721ae70032d0718c5b8f3460195557432938c81528a3b930f0d61b931ab31a14d4cd2c00392fa81fdac65bf391f8b21430aeb4de303de
 
 pkgname = libmp3splt
 	depends = flac>=1.2.1

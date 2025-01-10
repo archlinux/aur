@@ -1,0 +1,211 @@
+Description: fix spelling of informations to be information
+Author: Ryan Niebur <ryan@debian.org>
+Forwarded: no
+
+--- a/libmp3splt/po/cs.po
++++ b/libmp3splt/po/cs.po
+@@ -36,7 +36,7 @@
+ 
+ #: src/cue.c:518
+ #, c-format
+-msgid " reading informations from CUE file %s ...\n"
++msgid " reading information from CUE file %s ...\n"
+ msgstr " Čtou se informace ze souboru CUE %s …\n"
+ 
+ #: src/cue.c:592 src/cddb.c:133
+@@ -521,7 +521,7 @@
+ 
+ #: src/cddb.c:63
+ #, c-format
+-msgid " reading informations from CDDB file %s ...\n"
++msgid " reading information from CDDB file %s ...\n"
+ msgstr " Čtou se informace ze souboru CDDB %s …\n"
+ 
+ #: src/string_utils.c:659 src/string_utils.c:680
+@@ -530,7 +530,7 @@
+ 
+ #: src/audacity.c:237
+ #, c-format
+-msgid " reading informations from audacity labels file '%s' ...\n"
++msgid " reading information from audacity labels file '%s' ...\n"
+ msgstr " Čtou se informace ze souboru se štítky Audacity '%s …\n"
+ 
+ #: src/filename_regex.c:90
+--- a/libmp3splt/po/de_DE.po
++++ b/libmp3splt/po/de_DE.po
+@@ -34,7 +34,7 @@
+ 
+ #: src/cue.c:518
+ #, c-format
+-msgid " reading informations from CUE file %s ...\n"
++msgid " reading information from CUE file %s ...\n"
+ msgstr " Informationen aus CUE-Datei %s werden gelesen …\n"
+ 
+ #: src/cue.c:592 src/cddb.c:133
+@@ -509,7 +509,7 @@
+ 
+ #: src/cddb.c:63
+ #, c-format
+-msgid " reading informations from CDDB file %s ...\n"
++msgid " reading information from CDDB file %s ...\n"
+ msgstr " Informationen aus CDDB-Datei %s werden gelesen …\n"
+ 
+ #: src/string_utils.c:659 src/string_utils.c:680
+@@ -518,7 +518,7 @@
+ 
+ #: src/audacity.c:237
+ #, c-format
+-msgid " reading informations from audacity labels file '%s' ...\n"
++msgid " reading information from audacity labels file '%s' ...\n"
+ msgstr ""
+ 
+ #: src/filename_regex.c:90
+--- a/libmp3splt/po/es.po
++++ b/libmp3splt/po/es.po
+@@ -32,7 +32,7 @@
+ 
+ #: src/cue.c:518
+ #, c-format
+-msgid " reading informations from CUE file %s ...\n"
++msgid " reading information from CUE file %s ...\n"
+ msgstr ""
+ 
+ #: src/cue.c:592 src/cddb.c:133
+@@ -505,7 +505,7 @@
+ 
+ #: src/cddb.c:63
+ #, c-format
+-msgid " reading informations from CDDB file %s ...\n"
++msgid " reading information from CDDB file %s ...\n"
+ msgstr ""
+ 
+ #: src/string_utils.c:659 src/string_utils.c:680
+@@ -514,7 +514,7 @@
+ 
+ #: src/audacity.c:237
+ #, c-format
+-msgid " reading informations from audacity labels file '%s' ...\n"
++msgid " reading information from audacity labels file '%s' ...\n"
+ msgstr ""
+ 
+ #: src/filename_regex.c:90
+--- a/libmp3splt/po/fr_FR.po
++++ b/libmp3splt/po/fr_FR.po
+@@ -35,7 +35,7 @@
+ 
+ #: src/cue.c:518
+ #, c-format
+-msgid " reading informations from CUE file %s ...\n"
++msgid " reading information from CUE file %s ...\n"
+ msgstr " lecture des informations du fichier CUE %s ...\n"
+ 
+ #: src/cue.c:592 src/cddb.c:133
+@@ -518,7 +518,7 @@
+ 
+ #: src/cddb.c:63
+ #, c-format
+-msgid " reading informations from CDDB file %s ...\n"
++msgid " reading information from CDDB file %s ...\n"
+ msgstr " lecture des informations du fichier CDDB %s ...\n"
+ 
+ #: src/string_utils.c:659 src/string_utils.c:680
+@@ -527,7 +527,7 @@
+ 
+ #: src/audacity.c:237
+ #, c-format
+-msgid " reading informations from audacity labels file '%s' ...\n"
++msgid " reading information from audacity labels file '%s' ...\n"
+ msgstr ""
+ " Lecture des informations dans le fichier marqueurs audacity '%s' ...\n"
+ 
+--- a/libmp3splt/po/hr.po
++++ b/libmp3splt/po/hr.po
+@@ -35,7 +35,7 @@
+ 
+ #: src/cue.c:518
+ #, c-format
+-msgid " reading informations from CUE file %s ...\n"
++msgid " reading information from CUE file %s ...\n"
+ msgstr ""
+ 
+ #: src/cue.c:592 src/cddb.c:133
+@@ -510,7 +510,7 @@
+ 
+ #: src/cddb.c:63
+ #, c-format
+-msgid " reading informations from CDDB file %s ...\n"
++msgid " reading information from CDDB file %s ...\n"
+ msgstr " čitanje informacija iz CDDB datoteke %s ...\n"
+ 
+ #: src/string_utils.c:659 src/string_utils.c:680
+@@ -519,7 +519,7 @@
+ 
+ #: src/audacity.c:237
+ #, c-format
+-msgid " reading informations from audacity labels file '%s' ...\n"
++msgid " reading information from audacity labels file '%s' ...\n"
+ msgstr ""
+ 
+ #: src/filename_regex.c:90
+--- a/libmp3splt/po/libmp3splt0.pot
++++ b/libmp3splt/po/libmp3splt0.pot
+@@ -31,7 +31,7 @@
+ 
+ #: src/cue.c:518
+ #, c-format
+-msgid " reading informations from CUE file %s ...\n"
++msgid " reading information from CUE file %s ...\n"
+ msgstr ""
+ 
+ #: src/cue.c:592 src/cddb.c:133
+@@ -504,7 +504,7 @@
+ 
+ #: src/cddb.c:63
+ #, c-format
+-msgid " reading informations from CDDB file %s ...\n"
++msgid " reading information from CDDB file %s ...\n"
+ msgstr ""
+ 
+ #: src/string_utils.c:659 src/string_utils.c:680
+@@ -513,7 +513,7 @@
+ 
+ #: src/audacity.c:237
+ #, c-format
+-msgid " reading informations from audacity labels file '%s' ...\n"
++msgid " reading information from audacity labels file '%s' ...\n"
+ msgstr ""
+ 
+ #: src/filename_regex.c:90
+--- a/libmp3splt/src/audacity.c
++++ b/libmp3splt/src/audacity.c
+@@ -234,7 +234,7 @@
+   *error = SPLT_AUDACITY_OK;
+ 
+   splt_c_put_info_message_to_client(state, 
+-      _(" reading informations from audacity labels file '%s' ...\n"), file);
++      _(" reading information from audacity labels file '%s' ...\n"), file);
+ 
+ 	FILE *file_input = NULL;
+ 
+--- a/libmp3splt/src/cddb.c
++++ b/libmp3splt/src/cddb.c
+@@ -60,7 +60,7 @@
+   }
+ 
+   splt_c_put_info_message_to_client(state, 
+-      _(" reading informations from CDDB file %s ...\n"),file);
++      _(" reading information from CDDB file %s ...\n"),file);
+ 
+   splt_t_free_splitpoints_tags(state);
+ 
+--- a/libmp3splt/src/cue.c
++++ b/libmp3splt/src/cue.c
+@@ -515,7 +515,7 @@
+   }
+ 
+   splt_c_put_info_message_to_client(state, 
+-      _(" reading informations from CUE file %s ...\n"), file);
++      _(" reading information from CUE file %s ...\n"), file);
+ 
+   splt_t_free_splitpoints_tags(state);
+ 
