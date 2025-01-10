@@ -15,7 +15,7 @@ provides=("$_pkgname")
 depends=(aspnet-runtime)
 makedepends=(git dotnet-sdk nodejs npm)
 source=(git+https://github.com/BililiveRecorder/BililiveRecorder#tag=v${pkgver})
-sha256sums=('5db8fc7609010acb3371edc59c773179679fb3852954c9796747a0c9e5a75aad')
+sha256sums=('9f1ecb343ef5a06ec0a3d9ffc04f0803bdcdcd6dc65f0aea5305cea8ae337eec')
 
 prepare() {
 	cd ${srcdir}/BililiveRecorder
