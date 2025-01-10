@@ -1,0 +1,23 @@
+pkgbase = linux-wechat
+	pkgdesc = linux wechat from Tencent
+	pkgver = 4.0.1.11
+	pkgrel = 1
+	url = https://linux.weixin.qq.com/
+	arch = x86_64
+	arch = aarch64
+	arch = loongarch64
+	license = custom: commercial
+	depends = noto-fonts-cjk
+	depends = noto-fonts-emoji
+	provides = wechat
+	conflicts = wechat
+	conflicts = wechat-bin
+	conflicts = wechat-appimage
+	source_x86_64 = WeChatLinux_x86_64.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.deb
+	sha256sums_x86_64 = 16410e0ca7895e5aa375282de5e48b2d5fcb958b063de6b2dcfd02bed190cc01
+	source_aarch64 = WeChatLinux_arm64.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_arm64.deb
+	sha256sums_aarch64 = 59805ad7335de5ebb1fd5748d19b2f39761a085a45be30906810756d066277bc
+	source_loongarch64 = WeChatLinux_LoongArch.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_LoongArch.deb
+	sha256sums_loongarch64 = f6df1547bf93f6f0817ae4845227cd2917fda414f3255088bb6961e064c7b112
+
+pkgname = linux-wechat
