@@ -12,6 +12,8 @@ depends=(gcc-libs)
 makedepends=(
   git
   cmake
+  clang
+  lld
   perl
   yasm
   vmaf
@@ -29,20 +31,19 @@ pkgver() {
 }
 
 build() {
-  cmake -S $_pkgname -B aom_build \
+  export CC=clang CXX=clang++
+  export LDFLAGS+=" -fuse-ld=lld"
+  cmake -S $_pkgname -B build \
     -DENABLE_TESTS=OFF \
     -DENABLE_DOCS=OFF \
     -DCONFIG_TUNE_VMAF=1 \
-    -DCMAKE_C_FLAGS="$CFLAGS" \
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
-    -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_SHARED_LIBS=ON
-  make -C aom_build "$MAKEFLAGS"
+    -DBUILD_SHARED_LIBS=ON \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  make -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" make -C aom_build install
-  install -Dm644 $_pkgname/{LICENSE,PATENTS} \
+  DESTDIR="$pkgdir" make -C build install
+  install -Dvm644 $_pkgname/{LICENSE,PATENTS} \
     -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
