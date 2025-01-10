@@ -1,0 +1,4 @@
+[lowcharts-bin]
+source = "git"
+git = "https://github.com/juan-leon/lowcharts.git"
+prefix = "v"
