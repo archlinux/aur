@@ -1,15 +1,18 @@
 pkgbase = mp3splt
 	pkgdesc = Split mp3, ogg, and flac files without decoding - CLI
-	pkgver = 2.6.2
-	pkgrel = 4
+	pkgver = 2.6.3.1519+r2+g4b48268
+	pkgrel = 1
 	url = https://mp3splt.sourceforge.net
 	arch = x86_64
+	arch = i686
 	license = GPL-2.0-or-later
 	depends = glibc
-	depends = libmp3splt>=0.9.2
+	depends = libmp3splt>=0.9.3.1519
 	provides = flacsplt
 	provides = oggsplt
-	source = mp3splt-2.6.2.tar.gz::https://downloads.sourceforge.net/sourceforge/mp3splt/mp3splt-2.6.2.tar.gz
-	sha512sums = c1cbdc905d4f19e8e20afeadf02a2967049d86e69613312c8855e03afc5b190a569ac63f970171384853961cbe6bf248fae47e5116c4fe9deb7a0787f299918b
+	source = mp3splt-4b48268258c478993bd43703c0cdb0962b79f85f.tar.gz::https://github.com/mp3splt/mp3splt/archive/4b48268258c478993bd43703c0cdb0962b79f85f.tar.gz
+	source = mp3splt_year_var_output_pattern.patch::https://github.com/mp3splt/mp3splt/pull/365.patch?full_index=1
+	b2sums = 39a816d6fecb3ae15dc4a36dc2a93c8b9f695800f4366465581e3cc8e77a4b1052a7fed0e02421d549e7100bb5014b16f3ce965c2c9e37d2abb7fc2079d590fd
+	b2sums = 8739e4ad962af3ddd9c10736199f3ca43640e647098881872f3d490a89a030cd6da574269be0146a0e632813f84670d8a590bdeb2f99fef175d8f21a1582f9da
 
 pkgname = mp3splt
