@@ -1,7 +1,7 @@
 pkgbase = linutil
-	pkgdesc = Distro-agnostic toolbox designed to simplify everyday Linux tasks.
-	pkgver = 2024.10.31
-	pkgrel = 2
+	pkgdesc = Distro-agnostic toolbox designed to simplify everyday Linux tasks
+	pkgver = 2025.01.10
+	pkgrel = 1
 	url = https://github.com/ChrisTitusTech/linutil
 	arch = x86_64
 	arch = aarch64
@@ -12,8 +12,9 @@ pkgbase = linutil
 	depends = tree-sitter
 	depends = tree-sitter-bash
 	depends = gcc-libs
+	depends = glibc
 	optdepends = ttf-nerd-fonts-symbols: symbols and icons
-	source = linutil-2024.10.31.tar.gz::https://github.com/ChrisTitusTech/linutil/archive/refs/tags/2024.10.31.tar.gz
-	sha256sums = fb7a15723d6b481c743201051457c3c92dca51d3a293f849397dddf626f7de25
+	source = linutil-2025.01.10.tar.gz::https://github.com/ChrisTitusTech/linutil/archive/refs/tags/2025.01.10.tar.gz
+	sha256sums = 18ccdf3463ddd7e542a6d314487956347f5faaafa7db6b652758837012d167aa
 
 pkgname = linutil
