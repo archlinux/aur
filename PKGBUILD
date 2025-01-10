@@ -4,7 +4,7 @@
 
 _pkgname=gwenview
 pkgname=gwenview-no-purpose
-pkgver=24.12.0
+pkgver=24.12.1
 pkgrel=1
 pkgdesc='A fast and easy to use image viewer, without the dependency on purpose. This disables the share menu'
 url='https://apps.kde.org/gwenview/'
@@ -57,7 +57,7 @@ makedepends=(extra-cmake-modules
              kdoctools5
              wayland-protocols)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('74971003952d966252e5b84d4f8e592fec4784e32fad2fb998aaa37338564adc'
+sha256sums=('29a8d2aced460b735a310fee22c717e652c1929a88ee999b21cd488eb19e4523'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
