@@ -1,11 +1,11 @@
 pkgbase = libsvg
 	pkgdesc = A library for rendering SVG documents
 	pkgver = 0.1.4
-	pkgrel = 7
+	pkgrel = 8
 	url = https://cairographics.org/
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-only
 	depends = glibc
 	depends = libxml2
 	options = strip
