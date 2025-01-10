@@ -12,13 +12,13 @@ pkgname='ssl-mgr'
 pkgdesc='Manage (re)new certificates and handle DANE TLSA key rollover'
 _gitname='ssl-mgr'
 
-pkgver=5.2.0
+pkgver=5.4.0
 pkgrel=1
 url="https://github.com/gene-git/ssl-mgr"
 
 arch=(any)
 license=(MIT)
-depends=('python>=3.13' 'python-dnspython' 'python-tomli-w' 'python-cryptography' 
+depends=('python>=3.13' 'python-dnspython' 'python-tomli-w' 'python-cryptography>=42' 
         'python-dateutil' 'lockmgr' 'certbot')
 optdepends=('dns_tools: dnssec and dns server manager')
 
