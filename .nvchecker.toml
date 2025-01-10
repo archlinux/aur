@@ -1,0 +1,4 @@
+[gitmux-bin]
+source = "git"
+git = "https://github.com/arl/gitmux.git"
+prefix = "v"
