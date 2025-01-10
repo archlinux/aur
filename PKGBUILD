@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=mbQTL
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,8 +26,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('76f011a9671be4ccd8cb3b8025cba66e')
-b2sums=('d40e6291eca2c5af1d60128563d64c0fd34c9f213a6772b0cd1a078b6168b576816a658481417e2fdb5d0d3bf2442e64f83676f517286b6d180c2d10bd6151a0')
+md5sums=('6aeec2af56b99fd2fde4778b36fd4af7')
+b2sums=('d506f8be2efc443b94c78f5306f1974735b3461847c254d4126cf8d45f105a993993886779c239268278433acbf95972c1e2c9950d18e4178e4336f459f6e6be')
 
 build() {
   mkdir build
