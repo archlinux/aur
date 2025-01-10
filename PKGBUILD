@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mratios
-_pkgver=1.4.2
+_pkgver=1.4.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Ratios of Coefficients in the General Linear Model"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -15,8 +15,8 @@ depends=(
   r-survpresmooth
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d149775b424e2540090aa039867effe2')
-b2sums=('d87fa86adcd63d131d0c0008b7e10491d0b3b0b27ae889c29073602ea19de5b5c31a25129c267b0e1733e56423d3ec90604de8d1d0cf93b8b240f4d6a3ab0637')
+md5sums=('61f63772d72066769091964b063d31ea')
+b2sums=('5a095726ea179a73db4d535bd4b9335efc284b13ac127f13423b6cb288951ebe299cb84251e934a82780b70cb0c3f12b72c3d389b0eec4dc6f1aa4897863e664')
 
 build() {
   mkdir build
