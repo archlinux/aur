@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=hf
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Cross-platform hidden file library and utility"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache-2.0' 'CC-BY-4.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('3eba16b6d7b5741bec8af81011a7e64e190b76ae36815afdcb39e6d8e1b382c786c256569d8fc4154de81f0e8befd8ce2c09fac92b884e324a93edd525dbac04')
+sha512sums=('9f326fe5bd05bcdc4ea705b256ad41b3093286f668bbe27a0b45995f71309acdb4b1c3e654ac1461b4f32ffdebc2e6f93a9eef8bd2ce99e25a69348dcb0fe3e1')
 
 prepare() {
   cd "$pkgname-$pkgver"
