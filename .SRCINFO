@@ -2,7 +2,7 @@ pkgbase = warp-terminal-bin
 	pkgdesc = Warp is the intelligent terminal with AI and your dev team's knowledge built-in.
 	pkgver = 0.2025.01.08.08.02.stable_03
 	pkgrel = 1
-	url = https://proxyman.io
+	url = https://warp.dev
 	arch = x86_64
 	arch = aarch64
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = warp-terminal-bin
 	source = warp-terminal-x86_64.pkg.tar.zst::https://releases.warp.dev/stable/v0.2025.01.08.08.02.stable_03/warp-terminal-v0.2025.01.08.08.02.stable_03-1-x86_64.pkg.tar.zst
 	source = LICENSE.txt
 	sha256sums = a36263627ce78b430ce14353a0d41c77604b991822143b58e66dc14a5503d693
-	sha256sums = da704590c6bd3a8b0ad179b42961e1feb10faa87f5eb3a3851ba2d940b49ebfa
+	sha256sums = 341bc0f8670640fab789d19f4e6e8e9da0fc282531fddae976c52f431798641d
 
 pkgname = warp-terminal-bin
