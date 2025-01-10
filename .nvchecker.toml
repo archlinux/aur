@@ -1,3 +1,4 @@
 [python-cx-freeze]
 source="pypi"
 pypi="cx-freeze"
+use_max_tag=true

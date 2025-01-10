@@ -1,7 +1,7 @@
 pkgbase = python-cx-freeze
 	pkgdesc = Create standalone executables from Python scripts
-	pkgver = 7.2.7
-	pkgrel = 2
+	pkgver = 7.3.0.pre
+	pkgrel = 1
 	url = https://marcelotduarte.github.io/cx_Freeze
 	arch = x86_64
 	license = PSF-2.0
@@ -9,6 +9,7 @@ pkgbase = python-cx-freeze
 	checkdepends = python-pytest-xdist
 	checkdepends = python-pytest-datafiles
 	checkdepends = python-pytest
+	makedepends = git
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
@@ -24,7 +25,7 @@ pkgbase = python-cx-freeze
 	provides = python-cx_freeze
 	conflicts = python-cx_freeze
 	replaces = python-cx_freeze
-	source = https://github.com/marcelotduarte/cx_Freeze/archive/7.2.7/python-cx-freeze-7.2.7.tar.gz
-	sha512sums = 0c6a1173eae6e25309491282f156aac4a9dd8163f45f7508f9c220ac5152b167ec9b32a7180886f9e545f3c549b4f2074e917dc0a3ab1ad334c5d0fcb0f0f923
+	source = git+https://github.com/marcelotduarte/cx_Freeze.git#commit=10cea64a8efa3550cafabc3e312c2aae200e0e66
+	sha512sums = ce5c42155d7a12ff16a127c1c42d4f5a6ef1182f37df1574416f781ebb556b7b9c244fcd150fa4982f8d45cefd87f5667682fae7bf7bbd6b582dda7d3bf7dde0
 
 pkgname = python-cx-freeze
