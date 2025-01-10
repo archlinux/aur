@@ -2,7 +2,7 @@
 pkgname=flclash-bin
 _pkgname=flclash
 pkgver=0.8.72
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free."
 arch=('x86_64')
 url="https://github.com/chen08209/FlClash"
@@ -26,10 +26,8 @@ depends=(
   'glibc'
   'gcc-libs'
   'zlib'
-)
-optdepends=(
-  'libayatana-appindicator: Display tray icon'
-  'libkeybinder3: Multimedia key support under non Gnome setups'
+  'libayatana-appindicator'
+  'libkeybinder3'
 )
 makedepends=(
   'patchelf'
