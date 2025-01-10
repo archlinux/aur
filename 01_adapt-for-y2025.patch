@@ -1,0 +1,77 @@
+diff -rU1 isdnutils-3.25.orig/isdnlog/tools/cdb/freecdb.h isdnutils-3.25/isdnlog/tools/cdb/freecdb.h
+--- isdnutils-3.25.orig/isdnlog/tools/cdb/freecdb.h	2025-01-10 22:13:36.664167094 +0100
++++ isdnutils-3.25/isdnlog/tools/cdb/freecdb.h	2025-01-10 22:35:08.040885187 +0100
+@@ -5,9 +5,5 @@
+ #include "config.h"
+-#if SIZEOF_INT==4
+-typedef unsigned int uint32 ;
+-#elif SIZEOF_LONG==4
+-typedef unsigned long uint32 ;
+-#else
+-#error "No uint32"
+-#endif
++#include <stdbool.h>
++#include <stdint.h>
++typedef uint32_t uint32 ;
+ extern uint32 cdb_hash();
+diff -rU1 isdnutils-3.25.orig/isdnlog/tools/cdb/freecdbmake.h isdnutils-3.25/isdnlog/tools/cdb/freecdbmake.h
+--- isdnutils-3.25.orig/isdnlog/tools/cdb/freecdbmake.h	2025-01-10 22:13:36.664167094 +0100
++++ isdnutils-3.25/isdnlog/tools/cdb/freecdbmake.h	2025-01-10 22:34:46.624217672 +0100
+@@ -6,9 +6,4 @@
+ #include "config.h"
+-#if SIZEOF_INT==4
+-typedef unsigned int uint32 ;
+-#elif SIZEOF_LONG==4
+-typedef unsigned long uint32 ;
+-#else
+-#error "No uint32"
+-#endif
++#include <stdint.h>
++typedef uint32_t uint32 ;
+ #endif
+diff -rU1 isdnutils-3.25.orig/isdnlog/tools/zone/common.h isdnutils-3.25/isdnlog/tools/zone/common.h
+--- isdnutils-3.25.orig/isdnlog/tools/zone/common.h	2025-01-10 22:13:36.670833761 +0100
++++ isdnutils-3.25/isdnlog/tools/zone/common.h	2025-01-10 23:01:01.210947039 +0100
+@@ -52,24 +52,7 @@
+ /* dest.c doesn't need this */
+-
+-/* if the following doesn't - how can we find datatypes with len 1,2,4 ? */
+-#if SIZEOF_CHAR != 1
+-	Something is wrong sizeof(char) != 1
+-#else
+-	typedef unsigned char  UC;
+-#endif
+-#if SIZEOF_SHORT != 2
+-	Something is wrong sizeof(short) != 2
+-#else
+-	typedef unsigned short US; /* len 2 */
+-#endif
+-#if SIZEOF_LONG != 4
+-	#if SIZEOF_INT != 4
+-		Something is wrong sizeof(long/int) != 4
+-	#else
+-		typedef unsigned int  UL; /* len 4 */
+-	#endif
+-#else
+-	typedef unsigned long  UL; /* len 4 */
+-#endif
++#include <stdint.h>
++typedef uint8_t  UC; /* len 1 */
++typedef uint16_t US; /* len 2 */
++typedef uint32_t  UL; /* len 4 */
+ #endif /* _DEST_C_ */
+-typedef enum {false,true} bool;
++// typedef enum {false,true} bool;
+diff -rU1 isdnutils-3.25.orig/vbox/src/vbox.c isdnutils-3.25/vbox/src/vbox.c
+--- isdnutils-3.25.orig/vbox/src/vbox.c	2025-01-10 22:13:36.677500428 +0100
++++ isdnutils-3.25/vbox/src/vbox.c	2025-01-10 23:15:02.120980558 +0100
+@@ -1803,5 +1803,7 @@
+ 
+-	for (y = 0; y < (win->_maxy + 1); y++)
++	// for (y = 0; y < (win->_maxy + 1); y++)
++	for (y = 0; y < (getmaxy + 1); y++)
+ 	{
+-		mvwhline(win, y, 0, ' ', (win->_maxx + 1));
++		// mvwhline(win, y, 0, ' ', (win->_maxx + 1));
++		mvwhline(win, y, 0, ' ', (getmaxx + 1));
+ 	}
