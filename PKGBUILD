@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-flash-attention
 _pkgname=${pkgname#python-}
-pkgver=2.7.2
+pkgver=2.7.3
 pkgrel=1
 pkgdesc='Fast and memory-efficient exact attention'
 arch=('any')
@@ -17,7 +17,7 @@ cutlass_commit=${cutlass_commit_full:0:8}
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/HazyResearch/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
         "cutlass-${cutlass_commit}.tar.gz::https://github.com/NVIDIA/cutlass/archive/${cutlass_commit_full}.tar.gz"
         'flash-attention.diff')
-sha256sums=('eb4e4a2ecc17392b4414da5b42adea864c99ef0b7d6101ea3d28ab11667ab00c'
+sha256sums=('21a7b82f787d2a33905c45ba10c3275d504c408b744520f7691d9501b7b4c009'
             'd9f1831aef8913fc281429c426ee46d992f69e4afea4c78a0d975f6ad649f994'
             'SKIP')
 
