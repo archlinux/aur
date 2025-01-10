@@ -1,6 +1,5 @@
 *
 !PKGBUILD
-!*.patch
-mp3splt-gtk_fix_gcc10_-fno-common.patch
 !.SRCINFO
 !.gitignore
+!*.patch

@@ -1,24 +1,23 @@
 pkgbase = mp3splt-gtk
 	pkgdesc = Split mp3, ogg, and flac files without decoding - GTK3 GUI
-	pkgver = 0.9.2
-	pkgrel = 7
+	pkgver = 0.9.3.1519+r4+g4b48268
+	pkgrel = 1
 	url = https://mp3splt.sourceforge.net
-	arch = any
+	arch = x86_64
+	arch = i686
 	license = GPL-2.0-or-later
 	makedepends = doxygen
 	makedepends = graphviz
-	makedepends = gstreamer>=1.0
+	makedepends = gstreamer>=1
 	makedepends = gtk3>=3.4.2
-	makedepends = libaudclient>=3.0
-	makedepends = libmp3splt=0.9.2
-	source = mp3splt-gtk-0.9.2.tar.gz::https://downloads.sourceforge.net/sourceforge/mp3splt/mp3splt-gtk-0.9.2.tar.gz
-	source = mp3splt-gtk_fix_gcc10_-fno-common.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/media-sound/mp3splt-gtk/files/mp3splt-gtk-0.9.2-fno-common.patch?id=500f9cbf8e5c576c893077ca6b3952cbee1b728d
-	source = mp3splt-gtk_fix_ui_manager_c.patch
-	source = mp3splt-gtk_fix_doxyfile_in.patch
-	b2sums = b49a246eeb03d11ec8d4c8968323c62e200439af5d2cb52321442365615b20444908f4c33e6bddeec4051fc320f303b98a1d341bc834ec768bc4d803d2fb5be8
-	b2sums = 2a2368bab0d06b3c347bdce2a7c19a4b1707f405716dfa7c603b65ad085a001ecd29727c4ff8ca5c4c21c2371cab5b377a106a60f396850128d753f76d6a43d1
-	b2sums = cf782225ba28eef2d7cf4317856a51f77517546e112c96ff3faf38003255ff79673b46f16ef24c7a5df50586e6709161e9456ffd29ccb25dac2ab4428100ffaa
-	b2sums = de6898021a80d10d533674767833c33de4d62d2fb22c35c6311b44d232981e27960b4b80f8c464bbf92e44f630d6bacea7490d180ed241e859a6a473947da4eb
+	makedepends = libaudclient>=3
+	makedepends = libmp3splt>=0.9.3.1519
+	source = mp3splt-4b48268258c478993bd43703c0cdb0962b79f85f.tar.gz::https://github.com/mp3splt/mp3splt/archive/4b48268258c478993bd43703c0cdb0962b79f85f.tar.gz
+	source = mp3splt_gcc10_no_common.patch
+	source = mp3splt_doxyfile_enable_search.patch
+	b2sums = 39a816d6fecb3ae15dc4a36dc2a93c8b9f695800f4366465581e3cc8e77a4b1052a7fed0e02421d549e7100bb5014b16f3ce965c2c9e37d2abb7fc2079d590fd
+	b2sums = ebd400ca67cd862daa149cec08b7a82cb47993d726845c6e87edce7e8c718dc49da299047eff37621305adda6c423d56394b22453880bc81e93f32ffe1cf5852
+	b2sums = b5e791f379716aaf7edd17b21f098526399c7d227dc87e48fef300e1122a7f291b8a5e52c8bac7ca26972c125cd471e7bf7f3840590f580d76d91ae3e61c5cff
 
 pkgname = mp3splt-gtk
 	arch = x86_64
@@ -27,10 +26,11 @@ pkgname = mp3splt-gtk
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = glibc
-	depends = gstreamer>=1.0
+	depends = gstreamer>=1
 	depends = gtk3>=3.4.2
-	depends = libaudclient>=3.0
-	depends = libmp3splt=0.9.2
+	depends = libaudclient>=3
+	depends = libmp3splt>=0.9.3.1519
 
 pkgname = mp3splt-gtk-docs
-	pkgdesc = HTML documentation for mp3splt-gtk
+	pkgdesc = Split mp3, ogg, and flac files without decoding - GTK3 GUI (documentation)
+	arch = any

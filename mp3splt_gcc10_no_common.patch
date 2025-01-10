@@ -1,0 +1,19 @@
+Description: Fix build error with gcc10
+Author: David Seifert <soap@gentoo.org>
+Origin: other, https://gitweb.gentoo.org/repo/gentoo.git/commit/?id=500f9cbf8e5c576c893077ca6b3952cbee1b728d 
+Bug-Gentoo: https://bugs.gentoo.org/707126
+Bug-Debian: https://bugs.debian.org/957561
+Forwarded: no
+Last-Update: 2021-01-06
+
+--- mp3splt-2.6.2+20170630.orig/mp3splt-gtk/src/splitpoints_window.h
++++ mp3splt-2.6.2+20170630/mp3splt-gtk/src/splitpoints_window.h
+@@ -41,7 +41,7 @@
+ #include "all_includes.h"
+ 
+ //!The enum telling which item is kept in which column of the splitpoint tree
+-enum {
++typedef enum {
+   COL_CHECK = 0,
+   COL_DESCRIPTION = 1,
+   COL_MINUTES = 2,

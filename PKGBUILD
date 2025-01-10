@@ -1,40 +1,44 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-pkgbase="mp3splt-gtk"
-pkgname=("${pkgbase}" "${pkgbase}-docs")
-pkgver=0.9.2
-pkgrel=7
+_basename="mp3splt"
+pkgbase="${_basename}-gtk"
+pkgname=("${pkgbase}"{,'-docs'})
+_commit_rel="00b0f6298827678591e682543f12b02fca4c7075" # 0.9.3.1519
+_commit="4b48268258c478993bd43703c0cdb0962b79f85f" # r4
+pkgver="0.9.3.1519+r4+g${_commit::7}"
+pkgrel=1
 pkgdesc="Split mp3, ogg, and flac files without decoding - GTK3 GUI"
-arch=('any')
-url="https://mp3splt.sourceforge.net"
+arch=('x86_64' 'i686')
+url="https://${_basename}.sourceforge.net"
+_url="https://github.com/${_basename}/${_basename}"
 license=('GPL-2.0-or-later')
-makedepends=('doxygen' 'graphviz' 'gstreamer>=1.0' 'gtk3>=3.4.2'
-             'libaudclient>=3.0' "libmp3splt=${pkgver}") # 'gnome-doc-utils'
-# checkdepends=('cutter-test')
-_pkgsrc="${pkgbase}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::https://downloads.sourceforge.net/sourceforge/mp3splt/${_pkgsrc}.tar.gz"
-        "${pkgbase}_fix_gcc10_-fno-common.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/media-sound/${pkgbase}/files/${_pkgsrc}-fno-common.patch?id=500f9cbf8e5c576c893077ca6b3952cbee1b728d"
-        "${pkgbase}_fix_ui_manager_c.patch"
-        "${pkgbase}_fix_doxyfile_in.patch")
-b2sums=('b49a246eeb03d11ec8d4c8968323c62e200439af5d2cb52321442365615b20444908f4c33e6bddeec4051fc320f303b98a1d341bc834ec768bc4d803d2fb5be8'
-        '2a2368bab0d06b3c347bdce2a7c19a4b1707f405716dfa7c603b65ad085a001ecd29727c4ff8ca5c4c21c2371cab5b377a106a60f396850128d753f76d6a43d1'
-        'cf782225ba28eef2d7cf4317856a51f77517546e112c96ff3faf38003255ff79673b46f16ef24c7a5df50586e6709161e9456ffd29ccb25dac2ab4428100ffaa'
-        'de6898021a80d10d533674767833c33de4d62d2fb22c35c6311b44d232981e27960b4b80f8c464bbf92e44f630d6bacea7490d180ed241e859a6a473947da4eb')
+makedepends=('doxygen' 'graphviz' 'gstreamer>=1' 'gtk3>=3.4.2'
+             'libaudclient>=3' 'libmp3splt>=0.9.3.1519') # 'gnome-doc-utils'
+# checkdepends=('cutter-test_framework')
+_pkgsrc="${_basename}-${_commit}"
+source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz"
+        "${_basename}_gcc10_no_common.patch"
+        "${_basename}_doxyfile_enable_search.patch")
+b2sums=('39a816d6fecb3ae15dc4a36dc2a93c8b9f695800f4366465581e3cc8e77a4b1052a7fed0e02421d549e7100bb5014b16f3ce965c2c9e37d2abb7fc2079d590fd'
+        'ebd400ca67cd862daa149cec08b7a82cb47993d726845c6e87edce7e8c718dc49da299047eff37621305adda6c423d56394b22453880bc81e93f32ffe1cf5852'
+        'b5e791f379716aaf7edd17b21f098526399c7d227dc87e48fef300e1122a7f291b8a5e52c8bac7ca26972c125cd471e7bf7f3840590f580d76d91ae3e61c5cff')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  for _patch in "${srcdir}/${pkgbase}"*".patch"; do
-    patch -p1 -i "${_patch}"
-  done
+  # https://bugs.gentoo.org/707126, https://bugs.debian.org/957561
+  patch -Np1 -i "${srcdir}/${_basename}_gcc10_no_common.patch"
+  patch -Np1 -i "${srcdir}/${_basename}_doxyfile_enable_search.patch"
+
+  cd "${pkgbase}"
+  sed -i 's/1518/1519/g' 'configure.ac' 'README'
 
   cd "doc"
   sed -i 's/#//g' "Makefile.am"
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
+  cd "${srcdir}/${_pkgsrc}/${pkgbase}"
   ./autogen.sh
-  autoupdate
   ./configure \
     --prefix='/usr' \
     --enable-gstreamer \
@@ -45,30 +49,31 @@ build() {
 }
 
 # check() {
-#   cd "${srcdir}/${_pkgsrc}/test"
+#   cd "${srcdir}/${_pkgsrc}/${pkgbase}/test"
 #   ./run-tests.sh
 # }
 
 package_mp3splt-gtk() {
   arch=('x86_64')
-  depends=('cairo' 'dbus-glib' 'gdk-pixbuf2' 'glib2' 'glibc' 'gstreamer>=1.0'
-           'gtk3>=3.4.2' 'libaudclient>=3.0' "libmp3splt=${pkgver}")
+  depends=('cairo' 'dbus-glib' 'gdk-pixbuf2' 'glib2' 'glibc' 'gstreamer>=1'
+           'gtk3>=3.4.2' 'libaudclient>=3' "libmp3splt>=0.9.3.1519")
 
-  cd "${srcdir}/${_pkgsrc}"
+  cd "${srcdir}/${_pkgsrc}/${pkgbase}"
   make DESTDIR="${pkgdir}" install
 
   rm -rf "${pkgdir}/usr/share/doc"
 
-  install -Dm644 "README"    "${pkgdir}/usr/share/doc/${pkgbase}/README"
-  # install -Dm644 "NEWS"      "${pkgdir}/usr/share/doc/${pkgbase}/NEWS"
-  install -Dm644 "ChangeLog" "${pkgdir}/usr/share/doc/${pkgbase}/CHANGELOG"
-  install -Dm644 "COPYING"   "${pkgdir}/usr/share/licenses/${pkgbase}/COPYING"
-  install -Dm644 "AUTHORS"   "${pkgdir}/usr/share/licenses/${pkgbase}/AUTHORS"
+  install -vDm644 "AUTHORS"   "${pkgdir}/usr/share/doc/${pkgbase}/AUTHORS"
+  install -vDm644 "ChangeLog" "${pkgdir}/usr/share/doc/${pkgbase}/CHANGELOG"
+  # install -vDm644 "NEWS"      "${pkgdir}/usr/share/doc/${pkgbase}/NEWS"
+  install -vDm644 "README"    "${pkgdir}/usr/share/doc/${pkgbase}/README"
+  # install -vDm644 "COPYING"   "${pkgdir}/usr/share/licenses/${pkgbase}/COPYING"
 }
 
 package_mp3splt-gtk-docs() {
-  pkgdesc="HTML documentation for ${pkgbase}"
+  pkgdesc+=" (documentation)"
+  arch=('any')
 
-  cd "${srcdir}/${_pkgsrc}/doc"
+  cd "${srcdir}/${_pkgsrc}/${pkgbase}/doc"
   make DESTDIR="${pkgdir}" install-data-local
 }

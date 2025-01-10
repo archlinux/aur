@@ -1,5 +1,5 @@
---- a/doc/Doxyfile_all.in
-+++ b/doc/Doxyfile_all.in
+--- a/mp3splt-gtk/doc/Doxyfile_all.in
++++ b/mp3splt-gtk/doc/Doxyfile_all.in
 @@ -31,7 +31,7 @@
  # This could be handy for archiving the generated documentation or
  # if some version control system is used.
