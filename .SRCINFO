@@ -1,7 +1,7 @@
 pkgbase = python-setuptools-git-versioning
 	pkgdesc = Use Git repo data for building a version number according to PEP 440.
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/dolfinus/setuptools-git-versioning
 	arch = any
 	license = MIT
@@ -10,10 +10,9 @@ pkgbase = python-setuptools-git-versioning
 	makedepends = python-wheel
 	depends = python
 	depends = python-setuptools
-	depends = python-toml
 	provides = python-setuptools-git-versioning
 	conflicts = python-setuptools-git-versioning
-	source = https://pypi.io/packages/source/s/setuptools-git-versioning/setuptools-git-versioning-2.0.0.tar.gz
-	sha256sums = 85b5fbe7bda8e9c24bbd9e587a9d4b91129417f4dd3e11e3c0d5f3f835fc4d4d
+	source = https://pypi.io/packages/source/s/setuptools_git_versioning/setuptools_git_versioning-2.1.0.tar.gz
+	sha256sums = 6aef5b8bb1cfb953b6b343d27cbfc561d96cf2a2ee23c2e0dd3591042a059921
 
 pkgname = python-setuptools-git-versioning
