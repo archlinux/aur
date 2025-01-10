@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zenshin-git
-pkgver=2.1.1.r15.gd073ad2
+pkgver=2.1.4.r18.ga372ac2
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -16,6 +16,7 @@ makedepends=(
     'nvm'
     'git'
     'curl'
+    'gendesk'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
@@ -35,7 +36,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -47,8 +48,7 @@ build() {
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}/Electron/${pkgname%-git}-electron"
     electronDist="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export SYSTEM_ELECTRON_VERSION=31.7.2
     HOME="${srcdir}/.electron-gyp"
     {
@@ -66,6 +66,9 @@ build() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}/Electron/${pkgname%-git}-electron"
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.yml"
 }
