@@ -1,17 +1,18 @@
 # Maintainer: Kevin MacMartin <prurigro at gmail dot com>
 # Maintainer: SanskritFritz (gmail)
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 # Contributor: Hawath <hawath at 163 dot com>
 
 _pkgname=treesheets
 pkgname=$_pkgname-git
-pkgver=r663.4e91999
-pkgrel=1
+pkgver=r854.11ce76f
+pkgrel=2
 pkgdesc='A "hierarchical spreadsheet" as a replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases.'
 url="https://strlen.com/treesheets/"
-license=('ZLIB')
-depends=('wxwidgets-qt5')
+license=('Zlib')
+depends=('wxwidgets-gtk3' wxwidgets-common glibc gcc-libs hicolor-icon-theme)
 makedepends=('cmake' 'git')
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 provides=('treesheets')
 conflicts=('treesheets')
 
@@ -37,21 +38,20 @@ prepare() {
 }
 
 build() {
-  cd $_pkgname
+  local _flags=(
+    -DGIT_WXWIDGETS_SUBMODULES=OFF
+    -DTREESHEETS_WITH_STATIC_WXWIDGETS=OFF
+  )
 
-  cmake -S . -B _build \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_PROGRAM_PATH=wx-config-qt
+  cmake -B build -S "$_pkgname" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
 
-  make -C _build
+  cmake --build build
 }
 
 package() {
-  cd $_pkgname
-
-  # install using default configuration
-  make -C _build DESTDIR="${pkgdir}/" install
-
-  # install license
-  install -Dm644 ZLIB_LICENSE.txt "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  DESTDIR="${pkgdir}" cmake --install build
+  install -Dm644 treesheets/ZLIB_LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
