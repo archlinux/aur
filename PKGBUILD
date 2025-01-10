@@ -2,7 +2,7 @@
 pkgname=ignis-git
 _pkgname=ignis
 pkgver=0.4.r13.g88cacc4
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern widget system"
 arch=('x86_64')
 url="https://github.com/linkfrg/ignis"

@@ -1,7 +1,7 @@
 pkgbase = ignis-git
 	pkgdesc = A modern widget system
 	pkgver = 0.4.r13.g88cacc4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linkfrg/ignis
 	arch = x86_64
 	license = GPL-3.0-only
