@@ -1,12 +1,12 @@
 pkgbase = harmony2
 	pkgdesc = Dream Sounds: Harmony 2 sound theme for KDE Plasma
-	pkgver = 2.0.3
-	pkgrel = 4
+	pkgver = 2.0.4
+	pkgrel = 5
 	url = https://gianmarco.gg/other/harmony2/
 	arch = any
 	license = CC-BY-SA-4.0
 	optdepends = plasma-desktop: the desktop this theme was intended for
-	source = https://git.gianmarco.gg/gianmarco/harmony2/releases/download/2.0.3/ds-harmony2-2.0.3.tar.gz
-	sha256sums = fea2579dab7aec83aa2dac483e1388549c56e67e071f8935f37ede906ca77b6d
+	source = https://git.gianmarco.gg/gianmarco/harmony2/releases/download/2.0.4/ds-harmony2-2.0.4.tar.gz
+	sha256sums = 008cf4641f315ff459084906da5a986d2a30c5d65226e2d169310173885ce771
 
 pkgname = harmony2
