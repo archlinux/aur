@@ -4,7 +4,7 @@ pkgname='opera-extras'
 #opera_ver:    115.0.5322.77  (stable)
 #chromium_ver: 130.0.6723.137 (old-stable)
 _pkgname='nwjs-ffmpeg-prebuilt'
-pkgver=0.93.0
+pkgver=0.94.1
 pkgrel=1
 pkgdesc="Full-featured DRM playback support of FFmpeg for Opera web browser"
 arch=('x86_64')
