@@ -1,15 +1,15 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 
 pkgname=buildifier
-pkgver=7.3.1
-pkgrel=6
+pkgver=8.0.0
+pkgrel=1
 pkgdesc='A command line tool to format Bazel BUILD files'
 arch=('x86_64' 'aarch64')
 license=('Apache')
 url='https://github.com/bazelbuild/buildtools'
 makedepends=('git' 'python')
 conflicts=('buildifier-bin')
-_commit='45b7ddb516e521e68794bf409d73ff8a32641de3'
+_commit='a9c248f4b6847cf04e5ec12c6fbe1af085d4193d'
 source=("${pkgname}::git+$url.git#commit=$_commit")
 _bazelisk_pkgver="1.25.0"
 source_x86_64=(
