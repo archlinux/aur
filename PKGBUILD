@@ -1,5 +1,5 @@
 # Mantainer: Aldo Eliacim <aur@aldo.pw>
-# Controbutor: Filipe Bertelli <filipebertelli@tutanota.com>
+# Contributor: Filipe Bertelli <filipebertelli@tutanota.com>
 # Contributor: scrouthtv <scrouthtv 0x40 gmail 0x2e com>
 # Contributor: LinRs <LinRs at users.noreply.github.com>
 # Contributor: Gavin Lloyd <gavinhungry@gmail.com>
@@ -7,7 +7,7 @@
 pkgname=androidscreencast-bin
 _pkgname=androidscreencast
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Desktop app to control an android device remotely using mouse and keyboard'
 arch=('any')
 url='https://github.com/xSAVIKx/AndroidScreencast'
@@ -17,8 +17,8 @@ source=("${pkgname}-${pkgver}.tgz"::"https://github.com/xSAVIKx/AndroidScreencas
         'androidscreencast'
         "${_pkgname}.desktop")
 sha256sums=('07e5982d430a431e55528ef7d7b385fbf9d634adbc53249e4d97b72ca1128253'
-            'd23fed270ea172c39ee849a3a7b074f6667746f350dce7afbd0c8e6ff234f060'
-            '9473bbce985bfbe926f5e40393b1ac0054c4dda4e1e25efe1e65fa6decd9341c')
+            '0746179cd97a7f2b17bff51f6e810c6fd5f22f9b0f671b8df1ac89705034436b'
+            'd0cb97ddb4482710b8c0c54bc8c78cc2ca24c52f721cca9a13f0f99e4bd7252e')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"

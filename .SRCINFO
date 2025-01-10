@@ -11,7 +11,7 @@ pkgbase = androidscreencast-bin
 	source = androidscreencast
 	source = androidscreencast.desktop
 	sha256sums = 07e5982d430a431e55528ef7d7b385fbf9d634adbc53249e4d97b72ca1128253
-	sha256sums = d23fed270ea172c39ee849a3a7b074f6667746f350dce7afbd0c8e6ff234f060
-	sha256sums = 9473bbce985bfbe926f5e40393b1ac0054c4dda4e1e25efe1e65fa6decd9341c
+	sha256sums = 0746179cd97a7f2b17bff51f6e810c6fd5f22f9b0f671b8df1ac89705034436b
+	sha256sums = d0cb97ddb4482710b8c0c54bc8c78cc2ca24c52f721cca9a13f0f99e4bd7252e
 
 pkgname = androidscreencast-bin

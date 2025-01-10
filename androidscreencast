@@ -1,10 +1,41 @@
 #!/bin/sh
 
-# ADB reset
+# Function to show informational dialog
+show_dialog() {
+    if command -v zenity >/dev/null 2>&1; then
+        zenity --info --title="Android Screencast" --text="$1"
+    elif command -v kdialog >/dev/null 2>&1; then
+        kdialog --title "Android Screencast" --msgbox "$1"
+    else
+        echo "$1"
+    fi
+}
+
+# Function to show error dialog
+show_error() {
+    if command -v zenity >/dev/null 2>&1; then
+        zenity --error --title="Android Screencast Error" --text="$1"
+    elif command -v kdialog >/dev/null 2>&1; then
+        kdialog --title "Android Screencast Error" --error "$1"
+    else
+        echo "Error: $1" >&2
+    fi
+}
+
+# Prompt user to connect the phone
+show_dialog "Please connect your phone with USB debugging enabled before proceeding."
+
+# Restart ADB server
 adb kill-server
 adb wait-for-device
 
-# Launch
+# Check if the device is connected
+if ! adb get-state 1>/dev/null 2>/dev/null; then
+    show_error "No device detected. Please check your USB connection and ensure USB debugging is enabled."
+    exit 1
+fi
+
+# Launch the application
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     # Wayland
     exec /usr/bin/java -jar \

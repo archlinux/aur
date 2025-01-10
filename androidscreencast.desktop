@@ -1,7 +1,12 @@
 [Desktop Entry]
 Type=Application
 Name=Android Screencast
+GenericName=Screen Mirroring for Android
+Comment=View and control your Android device screen
 Exec=/usr/bin/androidscreencast
 TryExec=/usr/bin/adb
 Icon=android-sdk
 Terminal=false
+Categories=Utility;Development;Mobile;
+StartupNotify=true
+Keywords=Android;Screencast;Screen Mirroring;Debugging;
