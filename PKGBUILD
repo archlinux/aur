@@ -1,7 +1,7 @@
 # Maintainer: naether.markus[at]gmail.com
 
 pkgname=python-sqltrie
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="SQL-based prefix tree implementation inspired by pygtrie and python-diskcache."
 arch=('any')
