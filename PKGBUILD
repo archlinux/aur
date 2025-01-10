@@ -1,25 +1,40 @@
-# Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
+# Maintainer:  Michael (https://aur.archlinux.org/account/michael_wzq)
+# Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=zxpy
-pkgver=1.6.1
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="Shell scripts made simple"
 arch=('any')
 url="https://github.com/tusharsadhwani/zxpy"
 license=("MIT")
 depends=("python")
-makedepends=('python-setuptools')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+)
+checkdepends=(
+  'python-pytest'
+  # 'zxpy'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('78bd1d7f56fb6a0fd330e4065f2676ad05ce7343deaa0101f02ba05db3ec04b5ed622d6beae2eb4f7addd07ec3ca4c5e525cbf6c9b60188cbfb7b5f5029b85cc')
+b2sums=('f29ecff2aaab7296dcd06e8af3b3532699f9e9bcdf498294f52d3a880e80d8afefc852116d44176f13a1f9ed32bb52d9653a2c7ef8faa3410024bd168594daef')
 
 build() {
-  cd "$pkgname-$pkgver"
-  python setup.py build
+  cd "$pkgname-$pkgver" || exit
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$pkgname-$pkgver" || exit
+  # pytest requires installation first
+  true || pytest
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver" || exit
   export PYTHONHASHSEED=0
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
