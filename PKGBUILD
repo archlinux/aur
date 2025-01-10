@@ -1,17 +1,20 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=iron
 pkgname="srware-${_pkgname}-bin"
-pkgver=129.6550.0
+pkgver=131.6650.1
 pkgrel=1
-pkgdesc="SRWare Iron Browser is a light-weight browser,based on Chromium.Prebuilt version."
+pkgdesc="SRWare Iron Browser is a light-weight browser,based on Chromium.(Prebuilt version)"
 arch=(
-    "aarch64"
-    "x86_64"
+    'aarch64'
+    'x86_64'
 )
 url="https://www.srware.net"
 license=('GPL-2.0-only')
-conflicts=("${pkgname%-bin}")
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}")
+conflicts=(
+    "${pkgname%-bin}"
+    "${_pkgname}"
+)
 depends=(
     'gtk2'
     'alsa-lib'
@@ -25,9 +28,9 @@ source=(
     "LICENSE-${pkgver}.txt::${url}/license.txt"
 )
 sha256sums=('a29953afc386e2a9a95906cfa0de4bf58a332260d7199a5f99d3e15db9381022')
-sha256sums_aarch64=('c005f8272babe0ca61ea5f572109360d2aa1d335f6cb83a98b2c2f685c1696a4')
-sha256sums_x86_64=('10e0d319f73fae140beba0022fa2fb305cc05d7e40ff341d5e3b6d4c26b2cd88')
-build() {
+sha256sums_aarch64=('b5333d28a6c9417da26ef00923e32e1272de10e5ff7da406e5f7fc59a756f171')
+sha256sums_x86_64=('7f6ebea18f8e65c07357081d94bfcd4da2aa6ed1e1a414ad95ad1ad877132e6e')
+prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -e "
         s/\/usr\/share\/${_pkgname}\/chrome-wrapper/${pkgname%-bin}/g
