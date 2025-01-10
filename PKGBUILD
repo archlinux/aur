@@ -1,9 +1,10 @@
 # Maintainer: CloverGit <clovergit@hotmail.com>
 # Contributor: Michel Zou
+
 pkgname=mingw-w64-cfitsio
 pkgver=4.5.0
-pkgrel=1
-pkgdesc="'A library of C and Fortran subroutines for reading and writing data files in FITS (Flexible Image Transport System) data format (mingw-w64)"
+pkgrel=2
+pkgdesc="A library of C and Fortran subroutines for reading and writing data files in FITS (Flexible Image Transport System) data format (mingw-w64)"
 arch=('any')
 url="https://heasarc.gsfc.nasa.gov/fitsio/"
 license=(custom)

@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-cfitsio
-	pkgdesc = 'A library of C and Fortran subroutines for reading and writing data files in FITS (Flexible Image Transport System) data format (mingw-w64)
+	pkgdesc = A library of C and Fortran subroutines for reading and writing data files in FITS (Flexible Image Transport System) data format (mingw-w64)
 	pkgver = 4.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://heasarc.gsfc.nasa.gov/fitsio/
 	arch = any
 	license = custom
