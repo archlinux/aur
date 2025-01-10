@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <public@arne.beer>
 
 pkgname=pueue-git
-pkgver=3.4.1.r56.gafcd28d
+pkgver=4.0.0.rc.1.r10.g1ff5ce4
 pkgrel=1
 arch=('any')
 pkgdesc='A task manager and scheduler for shell commands'
@@ -49,5 +49,6 @@ package() {
     install -Dm644 "utils/completions/pueue.fish" "${pkgdir}/usr/share/fish/completions/pueue.fish"
 
     # Install License
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/pueue/LICENSE"
+    install -Dm644 "LICENSE.APACHE" "${pkgdir}/usr/share/licenses/pueue/LICENSE.APACHE"
+    install -Dm644 "LICENSE.MIT" "${pkgdir}/usr/share/licenses/pueue/LICENSE.MIT"
 }
