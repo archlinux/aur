@@ -1,6 +1,6 @@
 pkgbase = eiskaltdcpp-git
 	pkgdesc = EiskaltDC++: DC and ADC client based on dcpp core. (GIT version)
-	pkgver = 2.4.2.15.g10b1a9b6
+	pkgver = 2.4.2.82.g697db4b0
 	pkgrel = 1
 	url = https://github.com/eiskaltdcpp/eiskaltdcpp
 	arch = x86_64
@@ -12,43 +12,71 @@ pkgbase = eiskaltdcpp-git
 	makedepends = aspell
 	makedepends = attr
 	makedepends = wget
-	makedepends = boost
-	makedepends = pcre
+	makedepends = pcre2
 	makedepends = bash
 	makedepends = miniupnpc
 	makedepends = jsoncpp
+	makedepends = qt5-base
 	makedepends = qt5-multimedia
 	makedepends = qt5-tools
 	makedepends = qt5-script
 	makedepends = qt5-xmlpatterns
 	makedepends = gtk3
+	makedepends = gdk-pixbuf2
+	makedepends = glib2
+	makedepends = pango
 	makedepends = libnotify
 	makedepends = perl-json-rpc
+	makedepends = perl-term-shellui
+	makedepends = bzip2
+	makedepends = openssl
+	makedepends = zlib
 	conflicts = eiskaltdcpp
 	options = debug
 	source = git+https://github.com/eiskaltdcpp/eiskaltdcpp.git
 	sha256sums = SKIP
 
-pkgname = eiskaltdcpp-core-git
+pkgname = eiskaltdcpp-common-git
 	pkgdesc = EiskaltDC++ Core. (GIT Version)
+	depends = gcc-libs
+	depends = glibc
 	depends = openssl
+	depends = libcrypto.so
+	depends = libssl.so
 	depends = lua
 	depends = libidn2
+	depends = libidn2.so
 	depends = attr
-	depends = boost-libs
 	depends = miniupnpc
-	depends = pcre
-	provides = eiskaltdcpp-core=2.4.2.15.g10b1a9b6
+	depends = libminiupnpc.so
+	depends = pcre2
+	depends = libpcre2-8.so
+	depends = libbz2.so
+	depends = bzip2
+	depends = bzip2
+	depends = libbz2.so
+	depends = zlib
+	depends = libz.so
+	depends = bash
+	depends = hicolor-icon-theme
+	provides = eiskaltdcpp-common=2.4.2.82.g697db4b0
 	provides = eiskaltdcpp-git
+	provides = libeiskaltdcpp.so
+	conflicts = eiskaltdcpp-common
 	conflicts = eiskaltdcpp-core
+	conflicts = eiskaltdcpp-data
 
 pkgname = eiskaltdcpp-qt-git
 	pkgdesc = Qt5-based DC and ADC client for EiskaltDC++ core. (GIT Version)
-	depends = eiskaltdcpp-core-git=2.4.2.15.g10b1a9b6
-	depends = eiskaltdcpp-data-git=2.4.2.15.g10b1a9b6
+	depends = eiskaltdcpp-common-git=2.4.2.82.g697db4b0
+	depends = libeiskaltdcpp.so
+	depends = gcc-libs
+	depends = glibc
 	depends = aspell
+	depends = libaspell.so
+	depends = qt5-base
 	depends = qt5-multimedia
-	depends = desktop-file-utils
+	depends = qt5-script
 	optdepends = php: needed for some scripts
 	provides = eiskaltdcpp-qt
 	conflicts = eiskaltdcpp-qt
@@ -57,10 +85,22 @@ pkgname = eiskaltdcpp-qt-git
 
 pkgname = eiskaltdcpp-gtk-git
 	pkgdesc = Gtk-based DC and ADC client for EiskaltDC++ core. (GIT Version)
-	depends = eiskaltdcpp-core-git=2.4.2.15.g10b1a9b6
-	depends = eiskaltdcpp-data-git=2.4.2.15.g10b1a9b6
+	depends = eiskaltdcpp-common-git=2.4.2.82.g697db4b0
+	depends = libeiskaltdcpp.so
+	depends = gcc-libs
+	depends = glibc
 	depends = gtk3
+	depends = libgdk-3.so
+	depends = libgtk-3.so
+	depends = gdk-pixbuf2
+	depends = libgdk_pixbuf-2.0.so
+	depends = glib2
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
 	depends = libnotify
+	depends = libnotify.so
+	depends = pango
+	depends = libpango-1.0.so
 	provides = eiskaltdcpp-gtk
 	conflicts = eiskaltdcpp-gtk
 	conflicts = eiskaltdcpp-gtk2
@@ -68,26 +108,21 @@ pkgname = eiskaltdcpp-gtk-git
 
 pkgname = eiskaltdcpp-daemon-git
 	pkgdesc = DC and ADC daemon for EiskaltDC++ core. (GIT Version)
-	depends = eiskaltdcpp-core-git=2.4.2.15.g10b1a9b6
+	depends = eiskaltdcpp-common-git=2.4.2.82.g697db4b0
+	depends = libeiskaltdcpp.so
+	depends = gcc-libs
+	depends = glibc
 	depends = jsoncpp
+	depends = libjsoncpp.so
 	provides = eiskaltdcpp-daemon
 	conflicts = eiskaltdcpp-daemon
 
 pkgname = eiskaltdcpp-cli-git
 	pkgdesc = CLI interface for EiskaltDC++ Daemon. (GIT Version)
 	arch = any
-	depends = eiskaltdcpp-daemon-git=2.4.2.15.g10b1a9b6
+	depends = eiskaltdcpp-daemon-git=2.4.2.82.g697db4b0
 	depends = perl-json
 	depends = perl-json-rpc
+	depends = perl-term-shellui
 	provides = eiskaltdcpp-cli
 	conflicts = eiskaltdcpp-cli
-
-pkgname = eiskaltdcpp-data-git
-	pkgdesc = EiskaltDC++ common data files. (GIT Version)
-	arch = any
-	depends = bash
-	depends = hicolor-icon-theme
-	optdepends = php: needed for some scripts
-	optdepends = python: test http server
-	provides = eiskaltdcpp-data
-	conflicts = eiskaltdcpp-data

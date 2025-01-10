@@ -1,15 +1,15 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: dhamp <dhamp@ya.ru>
 
-pkgbase="eiskaltdcpp-git"
-pkgname=('eiskaltdcpp-core-git'
-         'eiskaltdcpp-qt-git'
-         'eiskaltdcpp-gtk-git'
-         'eiskaltdcpp-daemon-git'
-         'eiskaltdcpp-cli-git'
-         'eiskaltdcpp-data-git'
-         )
-pkgver=2.4.2.15.g10b1a9b6
+pkgbase=eiskaltdcpp-git
+pkgname=(
+  'eiskaltdcpp-common-git'
+  'eiskaltdcpp-qt-git'
+  'eiskaltdcpp-gtk-git' # https://github.com/eiskaltdcpp/eiskaltdcpp/issues/437
+  'eiskaltdcpp-daemon-git'
+  'eiskaltdcpp-cli-git'
+)
+pkgver=2.4.2.82.g697db4b0
 pkgrel=1
 pkgdesc="EiskaltDC++: DC and ADC client based on dcpp core. (GIT version)"
 license=('GPL3')
@@ -17,29 +17,36 @@ arch=('x86_64')
 url='https://github.com/eiskaltdcpp/eiskaltdcpp'
 conflicts=('eiskaltdcpp')
 options=('!emptydirs')
-makedepends=('git'
-             'cmake'
-             'lua'
-             'libidn2'
-             'aspell'
-             'attr'
-             'wget'
-             'boost'
-             'pcre'
-             'bash'
-             'miniupnpc'
-             'jsoncpp'
-             'qt5-multimedia'
-             'qt5-tools'
-             'qt5-script'
-#              'qt5-quick1'
-             'qt5-xmlpatterns'
-             'gtk3'
-             'libnotify'
-             'perl-json-rpc'
-#              'perl-rpc-xml'
-#              'perl-term-shellui'
-             )
+makedepends=(
+  'git'
+  'cmake'
+  'lua'
+  'libidn2'
+  'aspell'
+  'attr'
+  'wget'
+  'pcre2'
+  'bash'
+  'miniupnpc'
+  'jsoncpp'
+  'qt5-base'
+  'qt5-multimedia'
+  'qt5-tools'
+  'qt5-script'
+#  'qt5-quick1'
+  'qt5-xmlpatterns'
+  'gtk3'
+  'gdk-pixbuf2'
+  'glib2'
+  'pango'
+  'libnotify'
+  'perl-json-rpc'
+  'perl-term-shellui'
+#  'perl-rpc-xml'
+  'bzip2'
+  'openssl'
+  'zlib'
+)
 source=('git+https://github.com/eiskaltdcpp/eiskaltdcpp.git')
 sha256sums=('SKIP')
 options=('debug')
@@ -63,116 +70,131 @@ build() {
     -DUSE_ASPELL=ON \
     -DUSE_LIBNOTIFY=ON \
     -DUSE_JS=ON \
+    -DXMLRPC_DAEMON=OFF \
+    -DJSONRPC_DAEMON=ON \
+    -DLOCAL_JSONCPP=OFF \
     -DUSE_CLI_XMLRPC=OFF \
     -DUSE_CLI_JSONRPC=ON \
     -DWITH_LUASCRIPTS=ON \
     -DWITH_SOUNDS=ON \
     -DWITH_DEV_FILES=ON \
-    -DXMLRPC_DAEMON=OFF \
     -DPERL_REGEX=ON \
     -DENABLE_STACKTRACE=ON \
-    -DJSONRPC_DAEMON=ON \
-    -DLOCAL_JSONCPP=OFF \
     -DINSTALL_QT_TRANSLATIONS=ON
 
   cmake --build build
 }
 
-package_eiskaltdcpp-core-git() {
+package_eiskaltdcpp-common-git() {
   pkgdesc="EiskaltDC++ Core. (GIT Version)"
-  depends=('openssl'
-           'lua'
-           'libidn2'
-           'attr'
-           'boost-libs'
-           'miniupnpc'
-           'pcre'
-           )
-  provides=("eiskaltdcpp-core=${pkgver}"
-            'eiskaltdcpp-git'
-            )
-  conflicts=('eiskaltdcpp-core')
-  opdepends=('eiskaltdcpp-qt-git: EiskaltDC++ Qt interface'
-             'eiskaltdcpp-gtk-git: EiskaltDC++ GTK interface'
-             'eiskaltdcpp-cli-git: EiskaltDC++ CLI interface'
-             'eiskaltdcpp-daemon-git: EiskaltDC++ Daemon'
-             )
+  depends=(
+    'gcc-libs' # libgcc_s.so libstdc++.so
+    'glibc' # libc.so
+    'openssl' 'libcrypto.so' 'libssl.so'
+    'lua' # liblua.so
+    'libidn2' 'libidn2.so'
+    'attr'
+    'miniupnpc' 'libminiupnpc.so'
+    'pcre2' 'libpcre2-8.so'
+    'libbz2.so' 'bzip2'
+    'bzip2' 'libbz2.so'
+    'zlib' 'libz.so'
+    'bash'
+    'hicolor-icon-theme'
+  )
+  provides=(
+    "eiskaltdcpp-common=${pkgver}"
+    'eiskaltdcpp-git'
+    'libeiskaltdcpp.so'
+  )
+  conflicts=(
+    'eiskaltdcpp-common'
+    'eiskaltdcpp-core'
+    'eiskaltdcpp-data'
+  )
+  opdepends=(
+    'eiskaltdcpp-qt-git: EiskaltDC++ Qt interface'
+    'eiskaltdcpp-gtk-git: EiskaltDC++ GTK interface'
+    'eiskaltdcpp-cli-git: EiskaltDC++ CLI interface'
+    'eiskaltdcpp-daemon-git: EiskaltDC++ Daemon'
+    'php: needed for some scripts'
+  )
 
-  DESTDIR="${pkgdir}" cmake --build build/dcpp --target install
+  DESTDIR="${pkgdir}" cmake --install build/dcpp
+  make -C build/data DESTDIR="${pkgdir}" install
 }
 
 package_eiskaltdcpp-qt-git() {
   pkgdesc="Qt5-based DC and ADC client for EiskaltDC++ core. (GIT Version)"
-  depends=("eiskaltdcpp-core-git=${pkgver}"
-           "eiskaltdcpp-data-git=${pkgver}"
-           'aspell'
-           'qt5-multimedia'
-#            'qt5-quick1'
-           'desktop-file-utils'
-           )
+  depends=(
+    "eiskaltdcpp-common-git=${pkgver}" 'libeiskaltdcpp.so'
+    'gcc-libs' # libgcc_s.so libstdc++.so
+    'glibc' # libc.so libm.so
+    'aspell' 'libaspell.so'
+    'qt5-base' # libQt5Concurrent.so libQt5Core.so libQt5DBus.so libQt5Gui.so libQt5Sql.so libQt5Widgets.so libQt5Xml.so
+    'qt5-multimedia' # libQt5Multimedia.so
+    'qt5-script' # libQt5Script.so
+#    'qt5-quick1'
+  )
   optdepends=('php: needed for some scripts')
   provides=('eiskaltdcpp-qt')
-  conflicts=('eiskaltdcpp-qt'
-             'eiskaltdcpp-qt4'
-             'eiskaltdcpp-qt5'
-             )
+  conflicts=(
+    'eiskaltdcpp-qt'
+    'eiskaltdcpp-qt4'
+    'eiskaltdcpp-qt5'
+  )
 
-  DESTDIR="${pkgdir}" cmake --build build/eiskaltdcpp-qt --target install
+  DESTDIR="${pkgdir}" cmake --install build/eiskaltdcpp-qt
 }
 
 package_eiskaltdcpp-gtk-git() {
   pkgdesc="Gtk-based DC and ADC client for EiskaltDC++ core. (GIT Version)"
-  depends=("eiskaltdcpp-core-git=${pkgver}"
-           "eiskaltdcpp-data-git=${pkgver}"
-           'gtk3'
-           'libnotify'
-           )
+  depends=(
+    "eiskaltdcpp-common-git=${pkgver}" 'libeiskaltdcpp.so'
+    'gcc-libs' # libgcc_s.so libstdc++.so
+    'glibc' # libc.so libm.so
+    'gtk3' 'libgdk-3.so' 'libgtk-3.so'
+    'gdk-pixbuf2' 'libgdk_pixbuf-2.0.so'
+    'glib2' 'libglib-2.0.so' 'libgobject-2.0.so'
+    'libnotify' 'libnotify.so'
+    'pango' 'libpango-1.0.so'
+  )
   provides=('eiskaltdcpp-gtk')
-  conflicts=('eiskaltdcpp-gtk'
-             'eiskaltdcpp-gtk2'
-             'eiskaltdcpp-gtk3'
-             )
+  conflicts=(
+    'eiskaltdcpp-gtk'
+    'eiskaltdcpp-gtk2'
+    'eiskaltdcpp-gtk3'
+  )
 
-  DESTDIR="${pkgdir}" cmake --build build/eiskaltdcpp-gtk --target install
+  DESTDIR="${pkgdir}" cmake --install build/eiskaltdcpp-gtk
 }
 
 package_eiskaltdcpp-daemon-git() {
   pkgdesc="DC and ADC daemon for EiskaltDC++ core. (GIT Version)"
-  depends=("eiskaltdcpp-core-git=${pkgver}"
-           'jsoncpp'
-           )
+  depends=(
+    "eiskaltdcpp-common-git=${pkgver}" 'libeiskaltdcpp.so'
+    'gcc-libs' # libgcc_s.so libstdc++.so
+    'glibc' # libc.so
+    'jsoncpp' 'libjsoncpp.so'
+  )
   provides=('eiskaltdcpp-daemon')
   conflicts=('eiskaltdcpp-daemon')
 
-  DESTDIR="${pkgdir}" cmake --build build/eiskaltdcpp-daemon --target install
+  DESTDIR="${pkgdir}" cmake --install build/eiskaltdcpp-daemon
 }
 
 package_eiskaltdcpp-cli-git() {
   arch=('any')
   pkgdesc="CLI interface for EiskaltDC++ Daemon. (GIT Version)"
-  depends=("eiskaltdcpp-daemon-git=${pkgver}"
-           'perl-json'
-           'perl-json-rpc'
-#            'perl-rpc-xml'
-#            'perl-term-shellui'
-           )
+  depends=(
+    "eiskaltdcpp-daemon-git=${pkgver}"
+    'perl-json'
+    'perl-json-rpc'
+    'perl-term-shellui'
+#    'perl-rpc-xml'
+  )
   provides=('eiskaltdcpp-cli')
   conflicts=('eiskaltdcpp-cli')
 
-  DESTDIR="${pkgdir}" cmake --build build/eiskaltdcpp-cli --target install
-}
-
-package_eiskaltdcpp-data-git() {
-  arch=('any')
-  pkgdesc="EiskaltDC++ common data files. (GIT Version)"
-  depends=('bash'
-           'hicolor-icon-theme'
-           )
-  optdepends=('php: needed for some scripts'
-              'python: test http server'
-              )
-  provides=('eiskaltdcpp-data')
-  conflicts=('eiskaltdcpp-data')
-
-  make -C build/data DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build/eiskaltdcpp-cli
 }
