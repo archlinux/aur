@@ -2,15 +2,15 @@
 # Contributor: Benjamin Denhartog <ben@sudoforge.com>
 
 pkgname=buildozer
-pkgver=7.3.1
-pkgrel=2
+pkgver=8.0.0
+pkgrel=1
 pkgdesc='A command line tool to rewrite Bazel BUILD files using standard conventions'
 arch=('x86_64' 'aarch64')
 license=('Apache')
 url='https://github.com/bazelbuild/buildtools'
 makedepends=('git' 'python')
 conflicts=('buildozer-bin')
-_commit='45b7ddb516e521e68794bf409d73ff8a32641de3'
+_commit='a9c248f4b6847cf04e5ec12c6fbe1af085d4193d'
 source=("${pkgname}::git+$url.git#commit=$_commit")
 _bazelisk_pkgver="1.25.0"
 source_x86_64=(
