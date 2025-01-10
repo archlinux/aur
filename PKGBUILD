@@ -4,17 +4,18 @@ pkgname=linux-wechat
 _pkgname=wechat
 pkgver=4.0.1.11
 pkgrel=1
-pkgdesc="linux wechat from Tencent"
+pkgdesc='linux wechat from Tencent'
 arch=('x86_64' 'aarch64' 'loongarch64')
-conflicts=('wechat' 'wechat-bin' 'wechat-appimage')
+conflicts=("${_pkgname}" "${_pkgname}-bin" "${_pkgname}-appimage")
 provides=("${_pkgname}")
-url="https://linux.weixin.qq.com/"
+url='https://linux.weixin.qq.com/'
 license=('custom: commercial')
 depends=('noto-fonts-cjk' 'noto-fonts-emoji')
 
-source_x86_64=("WeChatLinux_x86_64.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.deb")
-source_aarch64=("WeChatLinux_arm64.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_arm64.deb")
-source_loongarch64=("WeChatLinux_LoongArch.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_LoongArch.deb")
+_base_url='https://dldir1v6.qq.com/weixin/Universal/Linux'
+source_x86_64=("WeChatLinux_x86_64.deb::${_base_url}/WeChatLinux_x86_64.deb")
+source_aarch64=("WeChatLinux_arm64.deb::${_base_url}/WeChatLinux_arm64.deb")
+source_loongarch64=("WeChatLinux_LoongArch.deb::${_base_url}/WeChatLinux_LoongArch.deb")
 
 package() {
   tar -xf data.tar.xz -C "${pkgdir}"
