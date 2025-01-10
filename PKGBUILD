@@ -6,8 +6,8 @@
 # source and patches from debian sid
 
 pkgname=phalanx
-pkgver=25.1
-_debver=${pkgver%.*}
+pkgver=25.1.1
+_debver=${pkgver%%.*}
 _debrel=${pkgver##*.}
 pkgrel=1
 pkgdesc="A chess engine which understands the xboard protocol. It's suitable for beginner and intermediate players"
