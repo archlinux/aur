@@ -1,0 +1,16 @@
+pkgbase = supertuxkart-assets-svn
+	pkgdesc = A kart racing game featuring Tux and his friends - assets
+	pkgver = r18593
+	pkgrel = 1
+	url = https://sf.net/projects/supertuxkart
+	arch = any
+	license = LicenseRef-Various
+	makedepends = subversion
+	provides = supertuxkart-assets
+	conflicts = supertuxkart-assets
+	conflicts = supertuxkart
+	options = !strip
+	source = stk-assets::svn+https://svn.code.sf.net/p/supertuxkart/code/stk-assets
+	sha256sums = SKIP
+
+pkgname = supertuxkart-assets-svn
