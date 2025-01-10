@@ -9,7 +9,7 @@ pkgdesc="C++ wrapper for the ZIP/UNZIP C package (mingw-w64)"
 url="https://stachenov.github.io/quazip/"
 license=(LGPL)
 arch=(any)
-makedepends=(mingw-w64-cmake mingw-w64-qt5-base mingw-w64-qt6-5compat)
+makedepends=(mingw-w64-cmake)
 #options=("!strip" "!buildflags" "staticlibs")
 options=("!buildflags")
 groups=('mingw-w64')
@@ -23,14 +23,18 @@ prepare() {
 	mkdir build
 }
 
-build() {
+build_mingw-w64-quazip-qt5() {
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -B build-qt5-${_arch} -S $_pkgname-$pkgver \
+		${_arch}-cmake -B build6-${_arch} -S $_pkgname-$pkgver \
 			-DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
-			-DQUAZIP_QT_MAJOR_VERSION=5 \
+			-DQUAZIP_QT_MAJOR_VERSION=6 \
 			-DCMAKE_CXX_FLAGS="${CFLAGS} -fPIC"
-		${_arch}-cmake --build build-qt5-${_arch}
+		${_arch}-cmake --build build-qt6-${_arch}
+	done
+}
 
+build_mingw-w64-quazip-qt6() {
+	for _arch in ${_architectures}; do
 		${_arch}-cmake -B build6-${_arch} -S $_pkgname-$pkgver \
 			-DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
 			-DQUAZIP_QT_MAJOR_VERSION=6 \
