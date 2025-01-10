@@ -3,27 +3,27 @@
 
 pkgname=fire-tool
 pkgver=1.0.1.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Embedfire Tool support Serial communication, TCP/UDP communication, camera and PID debuggingVisit https://www.embedfire.com for more information."
 arch=('x86_64')
 url="https://www.embedfire.com"
 license=('unknown')
 depends=('qt5-serialport' 'qt5-networkauth' 'qt5-svg' 'qt5-xcb-private-headers')
 makedepends=()
-groups=('')
+# groups=()
 options=('!strip' '!emptydirs')
 source_x86_64=("https://cloud.embedfire.com/software/FireTools/fireTools.deb")
 sha512sums_x86_64=('b6ea80999c5f440aa7b080b4fb535d446a1150f7fd538658921a2112e1d3e4a5ccb363dc4e20ca58ceb6784db337add10312f217b177ada93a383948e6b232a6')
 
-package(){
+package() {
 
-	# Extract package data
-	tar xf data.tar.xz -C "${pkgdir}"
+    # Extract package data
+    tar xf data.tar.xz -C "${pkgdir}"
     install -dm755 "${pkgdir}/usr/share/applications/" \
-                   "${pkgdir}/usr/bin/"
-	install -Dm644 "${pkgdir}/opt/fireTools/icon/icon.png" "${pkgdir}/usr/share/pixmaps/firetools.png"
-	ln -sf "/opt/fireTools/bin/fireTools" "${pkgdir}/usr/bin/firetools"
-    cat > "${pkgdir}/usr/share/applications/firetools.desktop" << EOF
+        "${pkgdir}/usr/bin/"
+    install -Dm644 "${pkgdir}/opt/fireTools/icon/icon.png" "${pkgdir}/usr/share/pixmaps/firetools.png"
+    ln -sf "/opt/fireTools/bin/fireTools" "${pkgdir}/usr/bin/firetools"
+    cat >"${pkgdir}/usr/share/applications/firetools.desktop" <<EOF
 [Desktop Entry]
 Type=Application
 Exec=/usr/bin/firetools
