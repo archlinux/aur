@@ -1,6 +1,6 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 pkgname=ossia-score
-pkgver=3.3.2
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
@@ -8,12 +8,12 @@ url="https://ossia.io"
 license=('GPLv3')
 depends=('clang' 'qt6-base' 'qt6-imageformats' 'qt6-svg' 'qt6-websockets' 'qt6-serialport' 'qt6-declarative' 'qt6-scxml' 'qt6-shadertools' 'ffmpeg' 'portaudio' 'jack')
 makedepends=('git' 'cmake' 'lld' 'boost')
-optdepends=('pipewire' 'faust' 'lilv' 'suil' 'lv2' 'sdl2' 'libfreenect2' 'ysfx' 'ultraleap-hand-tracking-service' 'gpsd' 'bluez' 'ndi-sdk' 'libcoap' 'avahi')
+optdepends=('pipewire' 'faust' 'lilv' 'suil' 'lv2' 'sdl2' 'libfreenect2' 'ysfx' 'ultraleap-hand-tracking-service' 'gpsd' 'bluez' 'ndi-sdk' 'libcoap' 'avahi' 'onnxruntime' 'hdf5')
 provides=("$pkgname=$pkgver")
 conflicts=('ossia-score-git')
 replaces=('i-score')
 source=("https://github.com/ossia/score/releases/download/v${pkgver}/ossia.score-${pkgver}-src.tar.xz")
-sha512sums=('a2123644d1f249415acc244b1de7478491c6e3191170c023959791115e1114d8acadc648bc7245cbdcffb98b6fa6aa9e2a94234faff57323a2d8146f243dcec2')
+sha512sums=('06bf6df7666c0341f874a14f9ce7da4756bb44e1343d741a97a2524318e43c7c8c07f785db86ec2e0d5b4ea71a248ec81855cac79a04225549f4c149b0228d7c')
 build() {
   cmake \
   -S "$srcdir/ossia-score-$pkgver" \
