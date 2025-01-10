@@ -1,0 +1,20 @@
+pkgbase = vapoursynth-plugin-rife-ncnn-vulkan-bin
+	pkgdesc = Plugin for Vapoursynth: rife-ncnn-vulkan (GIT version)
+	pkgver = r9_mod_v32
+	pkgrel = 1
+	url = https://github.com/styler00dollar/VapourSynth-RIFE-ncnn-Vulkan/releases/tag/r9_mod_v32
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = cmake
+	makedepends = vulkan-headers
+	depends = vapoursynth
+	provides = vapoursynth-plugin-rife-ncnn-vulkan
+	conflicts = vapoursynth-plugin-rife-ncnn-vulkan
+	source = https://github.com/styler00dollar/VapourSynth-RIFE-ncnn-Vulkan/releases/download/r9_mod_v32/librife_linux_x86-64.so
+	source = https://github.com/styler00dollar/VapourSynth-RIFE-ncnn-Vulkan/raw/refs/heads/master/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-rife-ncnn-vulkan-bin
