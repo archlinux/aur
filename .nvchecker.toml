@@ -1,0 +1,4 @@
+[malias]
+source = "git"
+git = "https://github.com/Antiz96/malias.git"
+prefix = "v"
