@@ -1,7 +1,7 @@
 # Maintainer: Julian Raufelder <arch@raufelder.com>
 
 pkgname=cryptomator-cli
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="CLI Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('any')
@@ -15,7 +15,7 @@ source=("cryptomator-cli-${pkgver//_/-}.tar.gz::https://github.com/cryptomator/c
 source_x86_64=("jdk.tar.gz::https://github.com/adoptium/temurin23-binaries/releases/download/jdk-${_jdkver//\+/%2B}/OpenJDK23U-jdk_x64_linux_hotspot_${_jdkver//\+/_}.tar.gz")
 source_aarch64=("jdk.tar.gz::https://github.com/adoptium/temurin23-binaries/releases/download/jdk-${_jdkver//\+/%2B}/OpenJDK23U-jdk_aarch64_linux_hotspot_${_jdkver//\+/_}.tar.gz")
 noextract=('jdk.tar.gz')
-sha256sums=('e293557aa33d9cb8168207c009b8194d380a5280abd2c05902001f6247884649'
+sha256sums=('0b0f09bbf6e597b481f45be18f5b7b23eaa46061b9f8a1e4ad1ef8eb79293139'
             'SKIP')
 sha256sums_x86_64=('2400267e4e9c0f6ae880a4d763af6caf18c673714bdee5debf8388b0b5d52886')
 sha256sums_aarch64=('808e3843293e50515bf02ad2f956e543da65e32dac82ae7a266a147b3485c61a')
