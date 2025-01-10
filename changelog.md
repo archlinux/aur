@@ -1,13 +1,13 @@
-# Name: v11.0.17 
-### URL: https://github.com/webtorrent/parse-torrent/releases/tag/v11.0.17
-### published at '2024-06-29T10:50:37Z' by webtorrent-bot
+# Name: v11.0.18 
+### URL: https://github.com/webtorrent/parse-torrent/releases/tag/v11.0.18
+### published at '2025-01-04T16:16:25Z' by webtorrent-bot
 ---
-## [11.0.17](https://github.com/webtorrent/parse-torrent/compare/v11.0.16...v11.0.17) (2024-06-29)
+## [11.0.18](https://github.com/webtorrent/parse-torrent/compare/v11.0.17...v11.0.18) (2025-01-04)
 
 
 ### Bug Fixes
 
-* **deps:** update dependency uint8-util to ^2.2.5 ([#185](https://github.com/webtorrent/parse-torrent/issues/185)) ([c0c72ce](https://github.com/webtorrent/parse-torrent/commit/c0c72ceb2ca7484434cf4c25563191697febf12a))
+* **deps:** update dependency magnet-uri to ^7.0.7 ([#192](https://github.com/webtorrent/parse-torrent/issues/192)) ([aaeb8d5](https://github.com/webtorrent/parse-torrent/commit/aaeb8d59be09c29ed740a679e4f14c54a4bfbd28))
 
 
 
