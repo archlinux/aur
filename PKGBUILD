@@ -21,7 +21,7 @@ source=(
   zone.lykos.stabilitymatrix.desktop)
 sha256sums=('SKIP'
             '79865c79c2e7cfaf7b11c17b1d5a95683f114cd8208b13d7ec62533e03586d63'
-            '736dec3257202139042554b6fe5000bdf3eb335a68962356667a529f14f99b3c')
+            '03c37b3ac476740cf2163849532996816a738b722e5d0a752f3364b9b790803a')
 
 pkgver() {
   cd $_pkgname
