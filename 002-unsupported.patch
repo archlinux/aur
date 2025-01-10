@@ -1,0 +1,14 @@
+diff --git a/steps/04-install-extras.sh b/steps/04-install-extras.sh
+index cc577e5..e449931 100755
+--- a/steps/04-install-extras.sh
++++ b/steps/04-install-extras.sh
+@@ -8,7 +8,8 @@ pushd "$SOURCE"
+ 
+ case "$OS" in
+   linux)
+-    build/install-build-deps.sh
++    patch ../pdfium/build/install-build-deps.py < ../003-apt-update.patch
++    build/install-build-deps.sh --unsupported
+     gclient runhooks
+     build/linux/sysroot_scripts/install-sysroot.py "--arch=$CPU"
+     ;;

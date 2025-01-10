@@ -1,0 +1,21 @@
+--- pdfium/build/install-build-deps.py	2025-01-10 05:23:06.493026683 +0100
++++ pdfium/build/install-build-deps.py.tmp	2025-01-10 05:22:51.213036686 +0100
+@@ -910,6 +910,7 @@
+       "da_DK.UTF-8", "en_US.UTF-8", "fr_FR.UTF-8", "he_IL.UTF-8", "zh_TW.UTF-8"
+   ]
+   LOCALE_GEN = "/etc/locale.gen"
++  return
+   if os.path.exists(LOCALE_GEN):
+     old_locale_gen = open(LOCALE_GEN).read()
+     for locale in CHROMIUM_LOCALES:
+@@ -935,8 +936,8 @@
+   check_architecture()
+   quick_check(options)
+   check_root()
+-  apt_update(options)
+-  install_packages(options)
++  #apt_update(options)
++  #install_packages(options)
+   install_chromeos_fonts(options)
+   install_locales()
+   return 0

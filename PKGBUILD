@@ -1,32 +1,37 @@
 # Maintainer:
 pkgname=pdfium-binaries-v8
-pkgver=6309
+pkgver=6941
 pkgrel=1
 pkgdesc='PDFium binaries with V8 and XFA built with scripts from pdfium-binaries'
 arch=('x86_64')
 url='https://github.com/bblanchon/pdfium-binaries'
 license=('Apache')
-makedepends=('git' 'ninja' 'cmake' 'pkgconf' 'python' 'procps-ng')
+makedepends=('git' 'ninja' 'cmake' 'pkgconf' 'python' 'procps-ng' 'lsb-release')
 provides=('libpdfium')
 conflicts=('libpdfium-nojs' 'pdfium-binaries')
 
 source=(
 	"https://github.com/bblanchon/pdfium-binaries/archive/refs/tags/chromium/${pkgver}.tar.gz"
 	"001-apt-get.patch"
+	"002-unsupported.patch"
+	"003-apt-update.patch"
 )
 
 sha512sums=(
-	"139a95347a697d2a616e70f70d430bebda345c7b6936541f2f4f53d86ff7393ffc322521270cec2d7faba60262b22094da967d74417b94b497c9271e874843ee"
-	"195ba1bc0faf933343b753bc8cb3b54b73f02b8400202d461807a8aecc1b06cfe2bff200c614b7bd851650a2eb83b1bdcb54fc6cf49c250b605fb61cbe3c5008"
+	"42800e4b14e646c8ab521cc5828290c086bbb66b6b3e401e4df3707ffebd3f461fdc6667d619bbdcad73ecca495b989f55f7a4b108c6db7c834dcdaacde1417a"
+	"14d6ee2c8b00f8a9e9c56eaa0190cee3975ff64b0e98ae407aab27350cec86ae836b3f8b011331b5added9b67638896f9db4b189a1f28192b2954f259c816baa"
+	"b70c5285219fb06eb84b06448f150f9356b740054845592af7aa7953214965d48557f55d2291517d75fde55a9e67f3b9c783b3f63accd22975dff815e5e21d3e"
+	"38077b36c88bee8ecc6f4c5433c6805d0df15cf6d23d832d09af52a8f55a51cbe8adab0ddf827a6bc7ef7365e8ad21b0423f993c6240dacfa995b72ade834b8c"
 )
-
 
 prepare() {
 	cd "${srcdir}"/pdfium-binaries-chromium-${pkgver}
 	patch --forward --strip=1 --input="${srcdir}/001-apt-get.patch"
+	patch --forward --strip=1 --input="${srcdir}/002-unsupported.patch"
 }
 
 build() {
+	cp 003-apt-update.patch "${srcdir}"/pdfium-binaries-chromium-${pkgver}
 	cd "${srcdir}"/pdfium-binaries-chromium-${pkgver}
 	./build.sh -b chromium/${pkgver} -j linux x64
 }
