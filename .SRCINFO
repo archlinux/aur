@@ -1,7 +1,7 @@
 pkgbase = setroot
 	pkgdesc = simple program that sets your (X11) wallpaper. inspired by the *setroots and feh.
-	pkgver = 2.0.2
-	pkgrel = 1
+  pkgver = 2.0.3.r0.g3c1227e
+  pkgrel = 1
 	url = https://github.com/ttzhou/setroot
 	install = setroot.install
 	arch = i686
