@@ -1,15 +1,16 @@
 pkgbase = checkupdatify
 	pkgdesc = A collection of scripts that notify you of pending updates to your Arch Linux system
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://gitlab.com/protist/checkupdatify
 	arch = any
 	license = GPL3
+	depends = gawk
 	depends = yay
 	optdepends = terminator: the update command is sent to this terminal emulator by default
 	optdepends = libnotify: provides a notification for completion of upgrade(s)
 	optdepends = archlinux-artwork: provides icon for notifications
-	source = https://gitlab.com/protist/checkupdatify/-/archive/v1.0.0/checkupdatify-v1.0.0.tar.gz
-	sha256sums = 6063430cf7dc69b01fd7db258fb2a4d1c2fac91199d6597b7af508a906735345
+	source = https://gitlab.com/protist/checkupdatify/-/archive/v1.1.0/checkupdatify-v1.1.0.tar.gz
+	sha256sums = b2a8e18bb9cd2ce3d7a7fff34ec5edf56ded6acb7349dc34c0dc5fc208254500
 
 pkgname = checkupdatify

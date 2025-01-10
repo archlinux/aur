@@ -1,18 +1,18 @@
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=checkupdatify
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A collection of scripts that notify you of pending updates to your Arch Linux system'
 url='https://gitlab.com/protist/checkupdatify'
 arch=('any')
 license=('GPL3')
-depends=('yay')
+depends=('gawk' 'yay')
 optdepends=('terminator: the update command is sent to this terminal emulator by default'
             'libnotify: provides a notification for completion of upgrade(s)'
             'archlinux-artwork: provides icon for notifications')
 source=("https://gitlab.com/protist/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('6063430cf7dc69b01fd7db258fb2a4d1c2fac91199d6597b7af508a906735345')
+sha256sums=('b2a8e18bb9cd2ce3d7a7fff34ec5edf56ded6acb7349dc34c0dc5fc208254500')
 
 package() {
   cd "$pkgname-v$pkgver"
