@@ -5,8 +5,8 @@
 _pkgname="legcord"
 pkgname="$_pkgname"
 pkgver=1.0.6
-pkgrel=1
-pkgdesc="Discord client with builtin client mod & theme support"
+pkgrel=2
+pkgdesc="Discord client with builtin client mod and theme support"
 url="https://github.com/Legcord/Legcord"
 license=('OSL-3.0')
 arch=('any')
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  install -Dm644 "$_pkgsrc/dist/"*"-unpacked/resources/app.asar" "$pkgdir/usr/share/legcord/app.asar"
+  install -Dm644 "$_pkgsrc/dist/"*"-unpacked/resources/app.asar" "$pkgdir/usr/share/$_pkgname/app.asar"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/legcord" << END
 #!/usr/bin/env bash
@@ -67,7 +67,7 @@ export ELECTRON_IS_DEV
 : \${ELECTRON_FORCE_IS_PACKAGED:=true}
 export ELECTRON_FORCE_IS_PACKAGED
 
-exec electron "/$_install_path/$_pkgname/app.asar" "\${flags[@]}" "\$@"
+exec electron "/usr/share/$_pkgname/app.asar" "\${flags[@]}" "\$@"
 END
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/legcord.desktop" << END
