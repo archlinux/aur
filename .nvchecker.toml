@@ -1,0 +1,4 @@
+[bd]
+source = "git"
+git = "https://github.com/vigneshwaranr/bd.git"
+prefix = "v"
