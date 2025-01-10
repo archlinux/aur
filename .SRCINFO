@@ -4,15 +4,15 @@ pkgbase = nhentai-git
 	pkgrel = 1
 	url = https://github.com/RicterZ/nhentai
 	arch = any
-	license = custom:MIT
+	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python-requests>=2.5.0
+	depends = python-requests
 	depends = python-soupsieve
-	depends = python-beautifulsoup4>=4.0.0
-	depends = python-tabulate>=0.7.5
+	depends = python-beautifulsoup4
+	depends = python-tabulate
 	depends = python-httpx
-	depends = python-iso8601>=0.1
+	depends = python-iso8601
 	provides = nhentai
 	provides = python-nhentai
 	conflicts = nhentai
