@@ -1,0 +1,18 @@
+pkgbase = windfind-bin
+	pkgdesc = A high performace file locator for instantly finding files and folders by name.
+	pkgver = 1.1.0
+	pkgrel = 0
+	url = https://github.com/kingToolbox/WindFind
+	arch = x86_64
+	license = Commercial AND Apache-2.0
+	makedepends = libarchive
+	depends = sh
+	depends = glibc
+	provides = windfind
+	conflicts = windfind
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/kingToolbox/WindFind/releases/download/1.1.0/WindFind_1.1.0_Linux_Portable_x86_64.zip
+	sha256sums_x86_64 = f24270d4ed0ba0ae609b9ca804b588bdc435117dad9460d8a36ed9bed2f25029
+
+pkgname = windfind-bin
