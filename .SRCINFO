@@ -1,19 +1,19 @@
 pkgbase = gsh-bin
 	pkgdesc = The Generative Shell
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/atinylittleshell/gsh
 	license = GPL-3.0
 	conflicts = gsh
 	provides = gsh
 	arch = aarch64
-	source_aarch64 = https://github.com/atinylittleshell/gsh/releases/download/v0.8.0/gsh_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 468947f68c88dc8d5f294871526afcafe6aeedf98251412b99b0aa57f43d6b89
+	source_aarch64 = https://github.com/atinylittleshell/gsh/releases/download/v0.8.1/gsh_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 3412d7c76ce6bfc0bebf8d275fe0a575be728a73dea5064a08fae961b88d2a32
 	arch = i686
-	source_i686 = https://github.com/atinylittleshell/gsh/releases/download/v0.8.0/gsh_Linux_i386.tar.gz
-	sha256sums_i686 = 59791d69a4959d1865274c6fd9109e767ce9e5b51e74eaf4355696c079faf8d9
+	source_i686 = https://github.com/atinylittleshell/gsh/releases/download/v0.8.1/gsh_Linux_i386.tar.gz
+	sha256sums_i686 = d2458ed66c579b201d48400cab3fb9b265b3f6b82fcf79e430cbed9faf27cb6e
 	arch = x86_64
-	source_x86_64 = https://github.com/atinylittleshell/gsh/releases/download/v0.8.0/gsh_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 6fd12e2280f59f7c8dc5383597e265b37db909410753fa9bf260504aae9f9196
+	source_x86_64 = https://github.com/atinylittleshell/gsh/releases/download/v0.8.1/gsh_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = b7786a48592588b5f169bc62c1355306eba38c1b2215e2216960ed2a81eb1a4e
 	
 pkgname = gsh-bin
