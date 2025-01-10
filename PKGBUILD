@@ -8,7 +8,7 @@
 
 _pkgname=ardour
 pkgname=$_pkgname-git
-pkgver=8.6.r406.g35cb60c2dc
+pkgver=9.0.pre0.r675.ge273ec06bb
 pkgrel=1
 pkgdesc='Professional-grade digital audio workstation (git version)'
 arch=(x86_64)
@@ -122,7 +122,7 @@ build() {
   python waf configure \
     --prefix=/usr \
     --configdir=/etc \
-    --cxx11 \
+    --cxx17 \
     --freedesktop \
     --no-phone-home \
     --optimize \
