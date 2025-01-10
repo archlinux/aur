@@ -11,7 +11,7 @@
 
 pkgname=python-cx-freeze
 _pkgname=cx_Freeze
-pkgver=7.2.8
+pkgver=7.3.0.pre
 pkgrel=1
 pkgdesc='Create standalone executables from Python scripts'
 arch=('x86_64')
