@@ -27,7 +27,7 @@ pkgbase = mintstick
 	depends = util-linux
 	depends = xapp
 	conflicts = mintstick-git
-	source = mintstick-1.6.3.tar.xz::https://github.com/linuxmint/mintstick/mintstick_1.6.3.tar.xz
+	source = mintstick-1.6.3.tar.xz::http://packages.linuxmint.com/pool/main/m/mintstick/mintstick_1.6.3.tar.xz
 	sha256sums = 3aebd6927c62e4bbc8ccb48c6978999e40391cfe70048807586070044a1314ac
 
 pkgname = mintstick

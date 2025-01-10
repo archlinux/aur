@@ -36,7 +36,7 @@ makedepends=(
 conflicts=(
     'mintstick-git'
 )
-source=("${pkgname}-${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
+source=("${pkgname}-${pkgver}.tar.xz::${_url}/${pkgname}_${pkgver}.tar.xz")
 sha256sums=('3aebd6927c62e4bbc8ccb48c6978999e40391cfe70048807586070044a1314ac')
 
 package() {
