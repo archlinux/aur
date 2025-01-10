@@ -1,11 +1,12 @@
 # Maintainer: Erik Hedlund <erikcghedlund at outlook dot com>
-# This projcet is adapted from Mill Haruto's <mill4134[at]outlook[dot]com>
+# Contributor: Mill Haruto <mill4134[at]outlook[dot]com>
+# This project is adapted from Mill Haruto's
 # vim-floatterm-git PKGBUILD: https://aur.archlinux.org/packages/vim-floaterm-git
 
 pkgname=vim-floaterm-with-lf-vim-git
 pkgver=r4e28c8d.
 pkgrel=1
-pkgdesc='💻 Terminal manager for (neo)vim'
+pkgdesc='Terminal manager for (neo)vim with the lf.vim plugin added'
 arch=('any')
 url='https://github.com/voldikss/vim-floaterm'
 license=('MIT')
