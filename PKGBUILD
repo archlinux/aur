@@ -2,7 +2,7 @@
 # Modified based on waybar-git and waybar-cava
 
 pkgname=waybar-cava-git
-pkgver=r3293.4c46d7d2
+pkgver=r3746.369c81d6
 pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with module cava (GIT)'
 arch=('x86_64')
@@ -42,6 +42,8 @@ makedepends=(
     'meson'
     'scdoc' # For generating manpages
     'wayland-protocols'
+    'python-setuptools'
+    'glib2-devel'
 )
 backup=(
     etc/xdg/waybar/config
@@ -58,11 +60,14 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "${srcdir}/${pkgname}"
+}
+
 build() {
     cd "${srcdir}/${pkgname}"
     rm -rf "${srcdir}/build"
-    meson setup \
-          --prefix=/usr \
+    meson --prefix=/usr \
           --buildtype=plain \
           --auto-features=enabled \
           -Dexperimental=true \
