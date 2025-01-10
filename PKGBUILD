@@ -16,8 +16,8 @@
 #
 _pkg_user="eranif"
 _pkg_name="codelite"
-_pkg_ver="18.0.0"
-#_commit="16470d74c038b5c5c17756e78bd04ae6e00c2007"
+_pkg_ver="18.1.0"
+#_commit="15aff6f1b7bac11572190407a533d83a59d12aee"
 
 # pkg
 pkgname="${_pkg_name}-unstable"
@@ -42,7 +42,29 @@ _pkg_name_ident="${_pkg_name}-${_pkg_ident}"
 
 _pkg_src_res="${_pkg_name_ident}.tar.gz::https://github.com/${_pkg_user}/${_pkg_name}/archive/${_pkg_ident}.tar.gz"
 
-# NOTE: submodules/libssh + submodules/zlib are currenly only used by macos builds - ignore them for now
+#
+# submodules
+#
+
+# b73dc1d2c0ecb9452a87c26544d7f71e24342df6 submodules/asio (asio-1-12-0-54-gb73dc1d2c)
+# fd1ac4f1791b403af1f7350b1195ac114f9b792b submodules/cJSON (v0.0.0~50^2^2~16)
+# 67713440e867493e74ce5c7ce0352b81eb4b726b submodules/cc-wrapper (remotes/origin/HEAD)
+# 930be27ea34f28bea45a2af76b974734de8fbcc5 submodules/ctags (p6.1.20240728.0)
+# f2651ff29d42abd036980e42d6ee26e598720508 submodules/dtl (v1.20-1-gf2651ff)
+# 1d9a9ca8841ac0cd591c95b162301d2502641901 submodules/hunspell (v1.7.2-92-g1d9a9ca)
+# 8502988a5eb83fcd281ee5a38533a9f170e6b2bf submodules/lexilla (remotes/origin/HEAD)
+# f3fe85f45ef1158c3f97a6abe804df2bcb0df352 submodules/libssh (libssh-0.8.0-2187-gf3fe85f4)
+# c3776cacabce2ee35f172fb72be7a519752125fa submodules/llama.cpp (gguf-v0.4.0-2118-gc3776cac)
+# da217f13d734fe51ccc2d9b986d5f16ccba14bdd submodules/openssl-cmake (1.1.1k-20210430-12-gda217f1)
+# c6d7e295bf5a0ab9b5f896720cc1a0e0fdc397a7 submodules/websocketpp (0.3.0-395-gc6d7e29)
+# fe65daf2a49e2a1f218ea3106a26d5ae7c4235fb submodules/wx-config-msys2 (heads/main)
+# c5ee34742728f97fa30d0877b925b260466057ba submodules/wxdap (heads/master-21-gc5ee347)
+# b5dc09a9b94b9955ef98111d0f311cb43f32f649 submodules/wxsf-code (heads/main-2-gb5dc09a)
+# 1b50109f7bea60bd382d8ea7befce3d2bd67da5f submodules/yaml-cpp (yaml-cpp-0.7.0-41-g1b50109)
+# 0f51fb4933fc9ce18199cb2554dacea8033e7fd3 submodules/zlib (v1.3.1-50-g0f51fb4)
+
+# NOTE these submodules are currenly only used by macos builds - ignore them for now:
+# NOTE: submodules/hunspell, submodules/libssh, submodules/openssl-cmake, submodules/zlib
 
 # asio submodule: https://github.com/chriskohlhoff/asio.git
 _asio_pkg_user="chriskohlhoff"
@@ -82,7 +104,7 @@ _dtl_pkg_src_res="${_dtl_pkg_name_ident}.tar.gz::https://github.com/${_dtl_pkg_u
 # lexilla submodule: https://github.com/eranif/lexilla.git
 _lexilla_pkg_user="eranif"
 _lexilla_pkg_name="lexilla"
-_lexilla_pkg_ident="0bf9a408cbe9fc484afd8ff68c4f57726d81a46a"
+_lexilla_pkg_ident="8502988a5eb83fcd281ee5a38533a9f170e6b2bf"
 _lexilla_pkg_name_ident="${_lexilla_pkg_user}-${_lexilla_pkg_name}-${_lexilla_pkg_ident:0:7}"
 _lexilla_pkg_src_res="${_lexilla_pkg_name_ident}.tar.gz::https://github.com/${_lexilla_pkg_user}/${_lexilla_pkg_name}/tarball/${_lexilla_pkg_ident}"
 
@@ -193,13 +215,13 @@ source=(
     "http://repos.codelite.org/wxCrafterLibs/wxgui.zip"
   )
 
-sha256sums=('6d951bd7b2400671806c1647db8d13f523ff27d6fac012a563247e68d14d0d4f'
+sha256sums=('81b839e3544e9bb0119f0a76688ebc69ac828fd254232b0b423aa027bbbc9fb8'
             '31103eceeeee2a8119b0a4c9a5e5752ea94329941b9e9beaf67595c985aa3794'
             '9343c1f05956308c7f3c4b6ad33d68c08d95ef0ffcdce0ec6c883ccd21bd5f71'
             '70518c1b8203359c19b0313e05639568d8089cf9ffa9c9784970fdd69ab6eaad'
             '43b3fae85b398ccca8b4a1ce3308fdec64e9ee2f5ee8a2c4524f6c18f80ca911'
             'bfdcec8f15e3d7aa4206c14baa8132f5f77c9198f5993114666404f97bd5075c'
-            'f5faddf6ce981b7082e35df14e57f54dcf784cd9f1311315110b799463a7d593'
+            '34b9a38f2b5e789a0d0aefa91df0fc4f18b1876589a78004e31b834e32821d98'
             'd32b6dc3dcff3c7b8aac93989ba439ed9483bc69f97ca8449740dfde98722200'
             'd5e2d3c9091dc3db660aaa1fb0c0c10dec95dabbeb42066d9bddc78491606e10'
             '70aca36b95e2245740c17fc9a164fd6edabfd9c631184ea66cc5ee03ff54c028'
@@ -300,10 +322,6 @@ prepare()
   cd "${srcdir}/${_pkg_name_ident}/"
 
   #patch -p0 < "${startdir}/codelite-fsw-symlink.patch"
-  #patch -p0 < "${startdir}/codelite-linux-on-sigpipe.patch"
-  #patch -p0 < "${startdir}/codelite-DebugAdapterClient-CMakeLists-cxx17.patch"
-  #patch -p0 < "${startdir}/codelite-quickfindbar-focus-tweak.patch"
-  #patch -p0 < "${startdir}/cmake.patch"  # wx-config patch
 
   # dtl-v1.20 cannot compile on gcc >= 14.1.1 and clang >= 17.0.6
   #( cd submodules/dtl && patch -p0 < "${startdir}/dtl-dtl_Diff_hpp.patch" )
@@ -334,7 +352,8 @@ export WX_CONFIG
 mkdir -p "${BUILD_DIR}"
 #cd "${BUILD_DIR}"
 
-cmake -B "${BUILD_DIR}" -S . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DWITH_PCH=0 -DWITH_WX_CONFIG=${WX_CONFIG} -DWITH_NATIVEBOOK=1 -DENABLE_LLDB=1 -DWITH_MYSQL=0 -DCMAKE_INSTALL_LIBDIR=lib
+# -DWITH_NATIVEBOOK=1
+cmake -B "${BUILD_DIR}" -S . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DWITH_PCH=0 -DWITH_WX_CONFIG=${WX_CONFIG} -DENABLE_LLDB=1 -DWITH_MYSQL=0 -DCMAKE_INSTALL_LIBDIR=lib -DCOPY_WX_LIBS=0
 #-DCMAKE_INSTALL_RPATH=/opt/wxgtk-dev/lib
 
 #make -C "${BUILD_DIR}"
