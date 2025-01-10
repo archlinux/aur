@@ -1,6 +1,6 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 pkgname=netpad-player
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="网络画板，用核心技术赋能智慧数学教育"
 arch=(any)
@@ -12,8 +12,8 @@ source=(
 	$pkgname.desktop
 	"https://www.netpad.net.cn/download/NetpadPlayer-${pkgver}.exe")
 sha256sums=('6dbdb46f4ed3388b2ec5b7c90ca566c59a39bbef15e9cad5e1e9884df178d1be'
-            '875f87a5845990c63e802fc7ac6c1d946ae2e693134d0155a8b816e9b123dc7c')
-
+            '7b53d020786843c71e13b260fb7d5d60c483b6eed0271fb9b1a5a1aeda1f2092')
+options=(!emptydirs)
 prepare() {
 	find $srcdir -name app.asar -exec asar e {} ./app \;
 	find . -type f -path "*/darwin/*" -printf "rm %p\n" -delete
@@ -25,10 +25,10 @@ prepare() {
 package() {
 	install -d $pkgdir/opt/$pkgname/
 	cp -av app $pkgdir/opt/$pkgname/
-	printf "#!/bin/sh
+	printf "#!/bin/bash
+set -eux -o pipefail
 exec electron /opt/$pkgname/app \"\$@\"
 " | install -Dm755 /dev/stdin $pkgdir/usr/bin/netpad-player
 	find $srcdir -name icon.png -print -exec install -Dm644 {} $pkgdir/usr/share/pixmaps/$pkgname.png \;
 	install -vDm644 $pkgname.desktop -t $pkgdir/usr/share/applications/
-	find $pkgdir -type d -empty -delete
 }
