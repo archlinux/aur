@@ -1,6 +1,6 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 pkgname=zmusic
-pkgver=1.1.14.r2.g3944bbc
+pkgver=1.1.14.r5.g4cc05f7
 pkgrel=1
 pkgdesc="GZDoom's music system as a standalone library"
 arch=('x86_64' 'aarch64')
