@@ -9,6 +9,7 @@ url="https://github.com/laggykiller/rlottie-python"
 license=('LGPL')
 depends=('python')
 makedepends=(python-build python-installer python-wheel)
+optdepends=('python-pillow: allow pillow related functions')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
 sha256sums=('56ecc192adec3c7184897dbf3134dfa79aea7f59c8bfc2da97d2c8043050ac04')
 
