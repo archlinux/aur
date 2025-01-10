@@ -7,8 +7,8 @@ pkgver=1.3.0
 pkgrel=2
 url="https://github.com/Gustash/Hyprshot"
 pkgdesc="A utility to easily take screenshots in Hyprland"
+license=('GPL-3.0-only')
 arch=('any')
-license=('GPL')
 
 depends=(
   'bash'
