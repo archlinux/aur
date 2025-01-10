@@ -4,13 +4,13 @@
 
 pkgname=rr-git
 pkgver=5.8.0.r217.g4e7d76ee
-pkgrel=1
+pkgrel=2
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64 aarch64)
 url='http://rr-project.org/'
 license=('custom')
 depends=('gdb' 'capnproto')
-makedepends=('git' 'cmake' 'gdb' 'ninja')
+makedepends=('git' 'cmake' 'gdb' 'ninja' 'python-pexpect')
 source=("git+https://github.com/rr-debugger/rr.git")
 sha1sums=('SKIP')
 provides=('rr')
