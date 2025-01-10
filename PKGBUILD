@@ -2,7 +2,7 @@
 _appname=hugin
 pkgname="${_appname}-messenger"
 _pkgname="Hugin Messenger"
-pkgver=0.7.7
+pkgver=0.7.8
 _electronversion=19
 _nodeversion=18
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('f2b4ece280b6ea182bb078e46557bedfa40b09222e3614abf0d3b12efd82a5c5'
+sha256sums=('6a05967641bd1e82af0762c3bf6003db0c7bb24c5f6f1fc9288c5a5f467212e7'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
