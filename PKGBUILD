@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=follow-git
 _pkgname=Follow
-pkgver=0.0.1.alpha.4.r1971.g68b5547
+pkgver=0.0.1.alpha.4.r2100.g6a88f05
 _electronversion=33
 _nodeversion=22
 pkgrel=1
