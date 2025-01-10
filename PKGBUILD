@@ -2,10 +2,10 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=pkgsearch
-_pkgver=3.1.3
+_pkgver=3.1.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Search and Query CRAN R Packages"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -35,9 +35,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-tests.patch")
-md5sums=('5506c33a6c44075c92b56d27eb68aabf'
+md5sums=('92c5529afb1e1373e6c120ba9c02d561'
          'b107e365dd7f7e32cc1e21b4d0cb3db9')
-b2sums=('2021907562f44165304dbb762b6561e58d935f2d7c2822cec12545bf169a4379d49a76006aa65a64e2f164cadafb8120c9712813b8068b9f6c6a6de0fe9eaa6c'
+b2sums=('782b5dd1265b2a5137ce9efcb70949955fbaf01b7ce7ee5d9860207f709669697087354056001713acc6c2515c3f89faa4ee1e63afea30d4b6870614be94fbd4'
         '940785dd4867c9c823c76b0ef8123c61b2404b0ba69a6f67380c9684840e6ae98fe68c58f74ea8c5bf64a2e924292e45bd528baf521eed988419a43306f3dddf')
 
 prepare() {
