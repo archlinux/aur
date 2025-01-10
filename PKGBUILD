@@ -4,9 +4,9 @@
 # Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl3
-pkgver=3.1.6
+pkgver=3.1.8
 epoch=1
-pkgrel=3
+pkgrel=1
 pkgdesc="Simple Directmedia Layer (Version 3)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.libsdl.org"
@@ -22,7 +22,7 @@ optdepends=('alsa-lib: ALSA audio driver'
 	    'sndio: MIDI audio driver'
 	    'libdecor: Wayland client decorations')
 source=("https://github.com/libsdl-org/SDL/archive/refs/tags/preview-${pkgver}.tar.gz")
-sha256sums=('5da5e265c150b954d007bf1465b155d9df1d0d52f10115a49bb918dc8fe2826a')
+sha256sums=('6fae3080e9d13ac4fe62432835b1e979bfba1a59ee9cce0ffb03a2fbcf9b46cd')
 
 build() {
 	cd "$srcdir"
