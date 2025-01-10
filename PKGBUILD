@@ -2,7 +2,7 @@
 _base=trame-simput
 pkgname=python-${_base}
 pkgdesc="Simput implementation for trame"
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
@@ -11,7 +11,7 @@ depends=(python-trame-client python-yaml)
 makedepends=(python-build python-installer python-setuptools python-wheel nodejs-lts-hydrogen npm)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('7671cc957d2487c5355cc027afe799fd6fadb9ce459efd92b9709403b36a8cb2a1ed74fb199b68c3a079b5ea6778c184e8e06c8145faeddac3966e1383fd684d')
+sha512sums=('807526febd03db8150c417779e6a9cf6bcd7a50c12d6d61e01a531beb7c7edf328d0098f58aa658db2501d049c504bca668f7bb3c242f7ec3852287a89685305')
 
 build() {
   # Workaround: https://stackoverflow.com/a/69746937/9302545
