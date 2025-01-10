@@ -2,7 +2,7 @@
 
 pkgbase=mfgtools-git
 pkgname=(mfgtools{,-doc}-git)
-pkgver=1.5.191.r4.g64a5a8f
+pkgver=1.5.197.r3.gb3163b7
 pkgrel=1
 epoch=
 pkgdesc="uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools."
@@ -54,6 +54,7 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgbase}" clean -dfx
+    git -C "${srcdir}/mfgtools-doc-git" clean -dfx
     #     cd "${srcdir}/${pkgbase}"
     #     git submodule update --init --recursive
 }
@@ -62,7 +63,8 @@ build() {
     cd "${srcdir}/${pkgbase}"
     cmake -Bbuild -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=None \
-        -GNinja
+        -GNinja \
+        -Wno-dev
 
     ninja -C build
 }
@@ -99,7 +101,7 @@ package_mfgtools-doc-git() {
     cd "${srcdir}/${pkgname}/"
     find . -type f -name "*.asciidoc" -exec sh -c 'mv "$0" "${0%.asciidoc}"' {} \;
     sed -i 's|=====|====|g' Release-Notes
-    sed -i '$ a ....' cmdhelp
+    #     sed -i '$ a ....' cmdhelp
     echo "<revhistory>" >UUU-docinfo.xml
     git log -n25 --reverse --format="format:<revision><revnumber>%h</revnumber><date>%cd</date><authorinitials>%an</authorinitials><revremark>%s</revremark></revision>" >>UUU-docinfo.xml
     echo "</revhistory>" >>UUU-docinfo.xml
