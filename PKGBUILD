@@ -1,12 +1,13 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname="mp3splt"
+_basename="mp3splt"
+_pkgname="${_basename}"
 pkgname="${_pkgname}-bin"
 pkgver=2.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Split mp3, ogg, and flac files without decoding - CLI"
 arch=('x86_64' 'i686')
-url="https://mp3splt.sourceforge.net"
+url="https://${_basename}.sourceforge.net"
 license=('GPL-2.0-or-later')
 depends=('glibc' 'libmp3splt>=0.9.2')
 makedepends=('gzip')
@@ -14,10 +15,10 @@ provides=("${_pkgname}" 'oggsplt' 'flacsplt')
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 noextract=("${_pkgsrc}-"{x86_64,i686}".deb")
-source_x86_64=("${_pkgsrc}-x86_64.deb::https://downloads.sourceforge.net/sourceforge/mp3splt/${_pkgname}_${pkgver}.jessie_amd64.deb")
-source_i686=("${_pkgsrc}-i686.deb::https://downloads.sourceforge.net/sourceforge/mp3splt/${_pkgname}_${pkgver}.jessie_i386.deb")
-sha256sums_x86_64=('a36f6b13790238ff5f793c88920c0e43d0f3e04e584f6714ab2543510ca49386')
-sha256sums_i686=('cb8d797d8d6ecd3f0cf33f555ded5dc84f0e19b22a61a181b0cd37a09b9a4035')
+source_x86_64=("${_pkgsrc}-x86_64.deb::https://downloads.sourceforge.net/sourceforge/${_basename}/${_pkgname}_${pkgver}.unstable_amd64.deb")
+source_i686=("${_pkgsrc}-i686.deb::https://downloads.sourceforge.net/sourceforge/${_basename}/${_pkgname}_${pkgver}.unstable_i386.deb")
+sha256sums_x86_64=('0b85c2ca53b955fa1098f0595d49cdb696b4d1f2f38ec349a648480a2ca58e62')
+sha256sums_i686=('820d7d6f61954f80e5e6b5d1d2f83c6a817a8cc38b853b885ecb65129f35b80f')
 
 prepare() {
   cd "${srcdir}"
@@ -37,6 +38,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"
-  cp -r --no-preserve=ownership "${_pkgsrc}-${CARCH}"/* "${pkgdir}"
+  cd "${srcdir}/${_pkgsrc}-${CARCH}"
+  cp -vr --no-preserve=ownership * "${pkgdir}"
 }
