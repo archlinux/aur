@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontbakery
-pkgver=0.12.10
-pkgrel=2
+pkgver=0.13.0
+pkgrel=1
 pkgdesc='A command-line tool for checking the quality of font projects'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
@@ -39,7 +39,7 @@ makedepends=(python-{build,installer,wheel}
 _archive="$pkgname-$pkgver"
 # source=("$url/archive/v$pkgver/$_archive.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('fbd3bb70013a094013bf26c6db6a942cd3478bde33486a94f548e1beb17d47c9')
+sha256sums=('b0e79236bee3b643e58f966432ab28dd276935a38028fb47909aac9e0f799810')
 
 build() {
 	cd "$_archive"
