@@ -8,7 +8,7 @@
 
 pkgname=ollama-nogpu-git
 _pkgname=ollama
-pkgver=0.5.5.rc0+r3770+g6ae2adc1a
+pkgver=0.5.5.rc0+r3771+g8bccae4f9
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs)'
 arch=(x86_64)
