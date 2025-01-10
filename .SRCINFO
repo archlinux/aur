@@ -1,0 +1,18 @@
+pkgbase = richclip
+	pkgver = 0.2.1
+	pkgrel = 0
+	url = https://github.com/beeender/richclip
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/beeender/richclip.git#tag=v0.2.1
+	sha256sums = 1d819ce6203179522436d16ef3aca8362410f9a3d847726e3898e8a937ba3ebf
+
+pkgname = richclip
+	pkgdesc = Command line clipboard utility for multiple platforms.
+	depends = 
+	optdepends = 
+	provides = richclip
