@@ -1,8 +1,8 @@
 # Maintainer: Yo'av Moshe <archlinux@yoavmoshe.com>
 _pkgname=clapboard
 pkgname=clapboard-git
-pkgver=r1.d86a8a2
-pkgrel=3
+pkgver=r2.d86a8a2
+pkgrel=2
 pkgdesc="Clipboard manager for Wayland"
 url="https://github.com/bjesus/clapboard"
 arch=("any")
