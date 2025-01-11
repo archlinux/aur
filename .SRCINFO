@@ -34,7 +34,6 @@ pkgbase = hydra-launcher
 	depends = nss
 	depends = pango
 	depends = zlib
-	provides = hydra-launcher
 	options = !strip
 	source = https://github.com/hydralauncher/hydra/releases/download/v3.1.5/hydralauncher_3.1.5_amd64.deb
 	source = hydra-launcher-LICENSE::https://github.com/hydralauncher/hydra/raw/refs/tags/v3.1.5/LICENSE
