@@ -1,0 +1,23 @@
+From edad715429343717dc8ac532e227f41fc5a1b304 Mon Sep 17 00:00:00 2001
+From: orbitalquark <70453897+orbitalquark@users.noreply.github.com>
+Date: Thu, 9 Jan 2025 09:38:55 -0500
+Subject: [PATCH] Fixed build for Gtk 2.
+
+---
+ src/textadept_gtk.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/textadept_gtk.c b/src/textadept_gtk.c
+index 1aabf695..70daeb07 100644
+--- a/src/textadept_gtk.c
++++ b/src/textadept_gtk.c
+@@ -172,7 +172,8 @@ void new_window(SciObject *(*get_view)(void)) {
+ 	gtk_box_pack_start(GTK_BOX(editors), get_view(), true, true, 0);
+ 	gtk_paned_add1(GTK_PANED(paned), editors);
+ 	command_entry_box = gtk_hbox_new(false, 0);
+-	command_entry_label = gtk_label_new(""), gtk_label_set_yalign(GTK_LABEL(command_entry_label), 0);
++	command_entry_label = gtk_label_new("");
++	gtk_misc_set_alignment(GTK_MISC(command_entry_label), 0, 0);
+ 	gtk_box_pack_start(GTK_BOX(command_entry_box), command_entry_label, false, false, 5);
+ 	gtk_box_pack_start(GTK_BOX(command_entry_box), command_entry, true, true, 5);
+ 	gtk_paned_add2(GTK_PANED(paned), command_entry_box);
