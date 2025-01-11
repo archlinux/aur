@@ -1,13 +1,13 @@
 pkgbase = gradle-language-server
 	pkgdesc = Microsoft's Gradle language server
-	pkgver = 3.13.5
+	pkgver = 3.16.4
 	pkgrel = 1
 	url = https://github.com/microsoft/vscode-gradle
 	arch = any
-	license = custom:MIT
+	license = MIT
+	makedepends = java-environment
 	depends = java-runtime
-	depends = bash
-	source = vscode-gradle-3.13.5.tar.gz::https://github.com/microsoft/vscode-gradle/archive/refs/tags/3.13.5.tar.gz
-	md5sums = ad0d5f0e0337f6a1305deb010f6724b4
+	source = git+https://github.com/microsoft/vscode-gradle#tag=3.16.4
+	b2sums = 1dafabf901b53153616a49fdaf519e86fd4059acf5d13e40729b2fa2ffaac55b292429fbda38ab35c235d8dd64d73c126be0196f1ccab55031d4067ca2dfc909
 
 pkgname = gradle-language-server
