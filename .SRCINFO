@@ -1,7 +1,7 @@
 pkgbase = clipit-git
 	pkgdesc = Lightweight GTK+ clipboard manager
 	pkgver = 0.259.f35db54
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CristianHenzel/ClipIt
 	arch = x86_64
 	license = GPL3
@@ -11,8 +11,6 @@ pkgbase = clipit-git
 	optdepends = xdotool: for automatic paste
 	conflicts = clipit
 	source = clipit::git+https://github.com/CristianHenzel/ClipIt.git
-	source = fix-casts.patch
 	sha256sums = SKIP
-	sha256sums = 91879dcbdf2dfa0f9a3c718c05b79834abcc1669d4a59d3801b7d09185873e06
 
 pkgname = clipit-git
