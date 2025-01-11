@@ -1,6 +1,6 @@
 # Maintainer:
 pkgname=dr42-time-scheduler-client
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="A simple time management app"
 arch=('any')
@@ -25,15 +25,15 @@ package() {
 
   install -Dm755 usr/bin/time-scheduler-client "$pkgdir"/usr/bin/time-scheduler-client
 
-    # Install desktop file
-    install -Dm644 usr/share/applications/time-scheduler-client.desktop "$pkgdir"/usr/share/applications/time-scheduler-client.desktop
+  # Install desktop file
+  install -Dm644 usr/share/applications/time-scheduler-client.desktop "$pkgdir"/usr/share/applications/time-scheduler-client.desktop
 
-    # Install icons
-    # Manually copy icons from src-tauri/icons
-    cd "$srcdir"/time-scheduler-client/src-tauri/icons
+  # Install icons
+  # Manually copy icons from src-tauri/icons
+  cd "$srcdir"/time-scheduler-client/src-tauri/icons
 
-    install -Dm644 128x128.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/time-scheduler-client.png
-    install -Dm644 128x128@2x.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/time-scheduler-client.png
-    install -Dm644 32x32.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/time-scheduler-client.png
+  install -Dm644 128x128.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/time-scheduler-client.png
+  install -Dm644 128x128@2x.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/time-scheduler-client.png
+  install -Dm644 32x32.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/time-scheduler-client.png
   # Extract package data
 }
