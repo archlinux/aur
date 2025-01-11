@@ -12,7 +12,7 @@ depends=(
   brotli
   highway
   libpng
-  libjpeg-turbo
+  libjpeg
   giflib
   openexr
   gperftools
