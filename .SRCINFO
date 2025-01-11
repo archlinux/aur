@@ -8,6 +8,7 @@ pkgbase = mingw-w64-cairomm
 	makedepends = mingw-w64-meson>=0.55
 	makedepends = mm-common
 	depends = mingw-w64-cairo
+	depends = mingw-w64-crt
 	depends = mingw-w64-libsigc++
 	options = !strip
 	options = !buildflags

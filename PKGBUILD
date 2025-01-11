@@ -10,7 +10,7 @@ arch=('any')
 url="https://www.cairographics.org/cairomm"
 _url="https://gitlab.freedesktop.org/cairo/${_name}"
 license=('LGPL-2.0-or-later AND MPL-1.1')
-depends=('mingw-w64-cairo' 'mingw-w64-libsigc++')
+depends=('mingw-w64-cairo' 'mingw-w64-crt' 'mingw-w64-libsigc++')
 makedepends=('mingw-w64-meson>=0.55' 'mm-common')
 options=('!strip' '!buildflags' 'staticlibs')
 _pkgsrc="${_name}-${pkgver}"
