@@ -8,17 +8,17 @@
 ## options
 : ${_commit=4b284ad1f22b3b7f8b1c51921442ff54599b12ef} # 1.6.0
 
-## basic info
 _pkgname="gyroflow"
 pkgname="$_pkgname"
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Video stabilization using gyroscope data"
 url="https://github.com/gyroflow/gyroflow"
 license=("GPL-3.0-or-later")
 arch=("x86_64")
 
 depends=(
+  'blas-openblas'
   'ffmpeg'
   'libc++'
   'ocl-icd'
@@ -26,11 +26,11 @@ depends=(
   'qt6-declarative'
 )
 makedepends=(
+  '7zip'
   'cargo'
   'clang'
   'git'
   'opencl-headers'
-  'p7zip'
 )
 optdepends=(
   'opencl-driver: OpenCL driver for GPU accelerated stabilization'
