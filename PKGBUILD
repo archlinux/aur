@@ -13,7 +13,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-react-console-view python-buildbot-react-grid-view
          python-buildbot-react-wsgi-dashboards)
 # https://github.com/buildbot/buildbot/releases
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=2
 arch=(any)
 url='https://buildbot.net'
@@ -36,9 +36,11 @@ makedepends=(python-build python-installer python-wheel
              python-sphinx_rtd_theme
              git yarn)
 source=("git+https://github.com/buildbot/buildbot.git?signed#tag=v$pkgver"
-        "disable-flaky-tests.diff")
-sha256sums=('d90b27127bdfab136549c2e762aca21d28a762d2f2a9d31f85743cf57651a430'
-            '175cb41a707a278b0a7c0864304a00459d6e2dee16cd5ddbc28a6dc90abfd3fc')
+        "disable-flaky-tests.diff"
+        "fully-locked-system-accounts.diff")
+sha256sums=('687e860d0e78df499e297c3781a49751066127719023cf9538b954dd7889d5ca'
+            '175cb41a707a278b0a7c0864304a00459d6e2dee16cd5ddbc28a6dc90abfd3fc'
+            'eb88c48ede01ee4d2fcbde83f2141b92387b4fb584e092bfd7374e2ac8929845')
 validpgpkeys=(
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # https://github.com/p12tic.gpg
 )
@@ -66,6 +68,9 @@ prepare() {
 
   # See https://github.com/buildbot/buildbot/issues/6776 for an earlier report about those flaky tests
   patch -Np1 -i ../disable-flaky-tests.diff
+
+  # https://archlinux.org/todo/change-sysusers-to-fully-locked-system-accounts/
+  patch -Np1 -i ../fully-locked-system-accounts.diff
 }
 
 get_pyver() {

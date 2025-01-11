@@ -1,0 +1,5 @@
+--- a/common/contrib/systemd/sysusers.d/buildbot.conf	2025-01-11 18:33:36.369784124 +0800
++++ b/common/contrib/systemd/sysusers.d/buildbot.conf	2025-01-11 18:33:42.696381719 +0800
+@@ -1 +1 @@
+-u buildbot - "Buildbot daemon" /var/lib/buildbot
++u! buildbot - "Buildbot daemon" /var/lib/buildbot
