@@ -2,7 +2,7 @@
 # Maintainer: I Al Istannen <aur@ialistannen.de>
 pkgname=pferd
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for fast and easily downloading data from KIT Ilias'
 arch=('any')
 url='https://github.com/Garmelon/PFERD'
