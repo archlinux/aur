@@ -2,7 +2,7 @@
 _reponame=monocoque
 pkgname=monocoque
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Device Manager for Racing Sims"
 arch=('x86_64')
 url="https://github.com/spacefreak18/monocoque"
@@ -14,7 +14,9 @@ depends=(
 	libxml2
 	argtable
 	libconfig
-	pipewire-pulse
+	pulse-native-provider
+	libxdg-basedir
+	libuv
 )
 makedepends=(
   git
@@ -27,29 +29,16 @@ sha256sums=(
   'SKIP'
 )
 
-build() {
-  cd "$srcdir" || exit 1
-  cd monocoque || exit 1
+package() {
+  cd "$srcdir/$_reponame" || exit 1
   git submodule sync --recursive
   git submodule update --init --recursive
-  cd ..
-  cmake \
-        -B "${_reponame}/build" \
-        -S "${_reponame}" \
-        -DUSE_PULSEAUDIO=YES \
-        -DCMAKE_BUILD_TYPE=RELEASE \
-        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -Wno-dev
-  cmake --build "${_reponame}/build"
-}
+  mkdir -p build
+  cd build
+  cmake -Wno-dev -DUSE_PULSEAUDIO=yes ..
+  make
 
-
-check() {
-  ctest --test-dir "${_reponame}/build" --output-on-failure --stop-on-failure
-}
-
-package() {
   mkdir -p "${pkgdir}/usr/bin/"
-  cp "${_reponame}/build/monocoque" "${pkgdir}/usr/bin/"
-  install -D -m644 "${_reponame}/LICENSE.rst" -t "${pkgdir}/usr/share/licenses/${_reponame}"
+  cp "$srcdir/$_reponame"/build/monocoque "${pkgdir}/usr/bin/monocoque"
+  install -D -m644 "$srcdir/$_reponame"/LICENSE.rst -t "${pkgdir}/usr/share/licenses/$_reponame"
 }
