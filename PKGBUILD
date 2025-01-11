@@ -5,7 +5,7 @@
 _pkgname='audio-offset-finder'
 pkgname="${_pkgname}-git"
 pkgver=0.5.5.r195.20240626.a99f981
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple tool for finding the offset of an audio file within another file."
 arch=('any')
 _githost='github.com'
@@ -15,13 +15,14 @@ url="https://${_githost}/${_gituser}/${_pkgname}"
 license=("Apache-2.0")
 depends=(
   'ffmpeg'
+  'python>=3'
   'python-librosa'
   'python-matplotlib'
-  'python-numba' # Might actually not be needed.
+  'python-numba'  # Might actually not be needed.
   'python-numpy'
   'python-pytest' # Yes!, this is also a real dependency (usr/lib/python*/site-packages/tests/audio_offset_finder_test.py).
   'python-scipy>=0.12.0'
-  'python-soxr'  # Might actually not be needed.
+  'python-soxr'   # Might actually not be needed.
 )
 makedepends=(
   'git'
@@ -29,11 +30,12 @@ makedepends=(
   'python-installer'
   'python-lazy-loader'
   'python-wheel'
-  # 'python-setuptools'
+  'python-setuptools'
 )
 checkdepends=(
   'python-librosa'
   'python-nose'
+  'python-pluggy'
   'python-pytest'
   'python-soxr'
 )
