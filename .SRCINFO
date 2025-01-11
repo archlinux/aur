@@ -1,0 +1,22 @@
+pkgbase = macbook-12-1-linux-fixes
+	pkgdesc = Custom fixes for MacBook 12,1 (2015 Pro 13 inch)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Chamal1120/macbookpro-12-1-linux-fix-files
+	install = macbook-12-1-linux-fixes.install
+	arch = any
+	license = MIT
+	depends = networkmanager
+	depends = mbpfan
+	depends = wpa_supplicant
+	backup = etc/mbpfan.conf
+	source = mbpfan.conf
+	source = disable-wakeup.service
+	source = wifi_rand_mac.conf
+	source = macbook-12-1-linux-fixes.install
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = macbook-12-1-linux-fixes
