@@ -30,7 +30,7 @@ package() {
     install -Dm755 obsidian.sh "$pkgdir"/usr/bin/obsidian
 
     # Install desktop file
-    install -Dm644 obsidian.desktop -t "$pkgdir"/usr/share/applications/
+    install -Dm644 obsidian.desktop -t "$pkgdir"/usr/share/applications/md.obsidian.app
 
     # Most of the release package is electron, but we use system's default one
     # So strip away asar packages and put them to /usr/lib/
