@@ -16,16 +16,26 @@ prepare() {
 
 build() {
   # No necesitamos compilar nada, solo instalar
+  cp frases.pr "$pkgdir/usr/share/redondo/"
+  cp redondo "$pkgdir/usr/bin/"
+  chmod +x "$pkgdir/usr/bin/redondo"
   return 0
 }
 
 package() {
-  # Instala el archivo redondo en /usr/bin/
+  # Verifica el contenido del directorio de instalación
+  echo "Archivos a instalar: $(ls -l $srcdir)"
+  
+
+  # Instala el archivo redondo
   install -Dm755 "$srcdir/redondo" "$pkgdir/usr/bin/redondo"
   
-  # Asegúrate de que el archivo redondo tenga permisos de ejecución
   chmod +x "$pkgdir/usr/bin/redondo"
+
+  # Verifica que el archivo se haya copiado correctamente
+  echo "Archivos en \$pkgdir/usr/bin: $(ls -l $pkgdir/usr/bin)"
   
-  # Instala el archivo frases.pr
+  # Instala frases.pr
   install -Dm644 "$srcdir/frases.pr" "$pkgdir/usr/share/redondo/frases.pr"
 }
+
