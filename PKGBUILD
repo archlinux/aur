@@ -24,7 +24,7 @@ makedepends=(
 )
 
 provides=("brux")
-conflicts=("brux" "supertux-advance") # TODO: remove if supertux-advance AUR package begins depending on brux-gdk(-git)
+conflicts=("brux")
 
 source=("$_pkgname::git+$url.git#branch=unstable")
 sha256sums=('SKIP')

@@ -14,7 +14,6 @@ pkgbase = brux-gdk-git
 	depends = sdl2_net
 	provides = brux
 	conflicts = brux
-	conflicts = supertux-advance
 	source = brux-gdk::git+https://github.com/KelvinShadewing/brux-gdk.git#branch=unstable
 	sha256sums = SKIP
 
