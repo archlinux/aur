@@ -16,8 +16,8 @@ pkgbase = qtox-toktok
 	depends = qrencode
 	depends = sqlcipher
 	depends = openal
-	optdepends = sonnet: for spell checks
-	optdepends = xscreensaver: screensaver support for Xorg
+	optdepends = sonnet>=6.0: spell checking support
+	optdepends = xscreensaver>=1.2: auto-away status support
 	source = git+https://github.com/TokTok/qTox.git
 	sha512sums = SKIP
 

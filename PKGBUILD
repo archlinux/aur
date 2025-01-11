@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/TokTok/qTox'
 license=('GPL3')
 depends=('qt6-svg' 'tox' 'libexif' 'ffmpeg' 'qrencode' 'sqlcipher' 'openal')
-optdepends=('sonnet: for spell checks' 'xscreensaver: screensaver support for Xorg')
+optdepends=('sonnet>=6.0: spell checking support' 'xscreensaver>=1.2: auto-away status support')
 makedepends=('base-devel' 'git' 'cmake' 'qt6-tools')
 source=("git+https://github.com/TokTok/${_pkgname}.git")
 sha512sums=('SKIP')
