@@ -1,7 +1,7 @@
 # Maintainer: Artem Suprun <efogdev@gmail.com>
 
 pkgname=play-timer
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="CLI-friendly easy-to-use timer app with native DE integration."
 arch=('x86_64')
