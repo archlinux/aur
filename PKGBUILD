@@ -1,6 +1,6 @@
 # Maintainer: hybridkernel <admin@hzqki.me>
 pkgname=smoothie-rs-linux-git
-pkgver=Nightly_2025.01.09_18.08.r0.g4d41007
+pkgver=Nightly_2025.01.11_12.34.r0.g25cec11
 pkgrel=1
 pkgdesc="Linux-Tested version of smoothie-rs"
 arch=('x86_64')
