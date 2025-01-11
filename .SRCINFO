@@ -1,0 +1,16 @@
+pkgbase = ssh-ggh
+	pkgdesc = Recall your SSH sessions (also search your SSH config file)
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/byawitz/ggh
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	conflicts = ssh-ggh-bin
+	conflicts = ssh-ggh-git
+	source = ggh-v0.1.4.tar.gz::https://github.com/byawitz/ggh/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 4692a306792444950f45472a01dcef478a5780203d7aaf1b7b959065a190fe64
+
+pkgname = ssh-ggh
