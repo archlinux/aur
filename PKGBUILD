@@ -8,7 +8,7 @@
 
 pkgname=clamav-git
 _pkgname=clamav
-pkgver=1.4.1+r11251+gd6d25c33d
+pkgver=1.4.1+r11253+gde3be9e89
 pkgrel=1
 pkgdesc='Anti-virus toolkit for Unix - Git latest'
 url='https://www.clamav.net/'
