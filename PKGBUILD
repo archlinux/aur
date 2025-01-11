@@ -10,10 +10,10 @@
 # Contributor: Jomar Milan <jomarm@jomarm.com>
 
 pkgname=aseprite
-pkgver=1.3.10.1
+pkgver=1.3.11
 _skiaver=m102
 _skiahash=861e4743af
-pkgrel=7
+pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -56,7 +56,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         shared-libwebp-found.patch)
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
-sha256sums=('8eea1db7f3465c5d1442c19599de53ab6d69431767ffa320459f5c3ff8cc80b4'
+sha256sums=('e608b7a77a1d77a50394323759ba12cf3543e1d05745e1d907fe9818157f2d4c'
             '8d76c1ad3693e1fc019eb14d806082148eb4ed7d601474aeeaae601b05a9b3ad'
             'a0090d46824bdbd79a83ec9ad83e4d09680471e442569ab16f753c62ef0d0e3c'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
