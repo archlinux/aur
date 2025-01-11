@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=res-downloader
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
-pkgdesc="支持视频号、小程序、抖音、快手、小红书、直播流、酷狗、QQ音乐等常见网络资源! "
+pkgdesc="This is a high-value and high-performance and diverse resource downloader called res-downloader"
 arch=($CARCH)
 url="https://github.com/putyy/res-downloader"
 license=('Apache-2.0')
@@ -24,11 +24,17 @@ makedepends=(
     go
     wails
 )
+optdepends=(
+    'motrix: A full-featured download manager (release version)'
+    'gopeed: High speed downloader that supports all platforms.(Prebuilt version)'
+)
 backup=()
 options=(!debug !strip !lto)
-#install=${pkgname}.install
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('952ba006706972e3464e5da9834c4cc1c04a63ae55823ee3cd4feb3be26e8512')
+install=${pkgname}.install
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+    ${pkgname}.install)
+sha256sums=('a4312e1e1cdb8e814c715dada939566376e77f1a0d9f5161a2dbc50445cfe503'
+            '23a4cbb1eb388d0a847bbc9918a103769b15ad22d462840fe5d9d6bd6a720cbe')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
@@ -41,7 +47,7 @@ build() {
     export GO111MODULE=on
     export GOPROXY=https://goproxy.cn,direct
 
-    sed -i -e 's|/usr/local/share/ca-certificates/|/usr/share/ca-certificates/trust-source/anchors/|g' \
+    sed -i -e 's|/usr/local/share/ca-certificates/|/usr/share/ca-certificates/trust-source/|g' \
         -e 's|update-ca-certificates|update-ca-trust|g' core/system_linux.go
     wails build
 }
@@ -51,15 +57,5 @@ package() {
 
     install -Dvm755 build/bin/${pkgname} -t ${pkgdir}/usr/bin
     install -Dvm644 build/appicon.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png
-    install -Dvm644 /dev/stdin ${pkgdir}/usr/share/applications/${pkgname}.desktop <<EOF
-[Desktop Entry]
-Categories=
-Comment=${pkgdesc}
-Exec=${pkgname}
-Icon=${pkgname}.png
-Name=${pkgname}
-Terminal=false
-Type=Application
-
-EOF
+    install -Dvm644 build/linux/Debian/usr/share/applications/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
