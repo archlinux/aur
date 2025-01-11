@@ -1,13 +1,16 @@
 pkgbase = gpp
 	pkgdesc = A general-purpose preprocessor with customizable syntax, suitable for a wide range of preprocessing tasks
 	pkgver = 2.28
-	pkgrel = 1
+	pkgrel = 2
 	url = http://en.nothingisreal.com/wiki/GPP
 	arch = x86_64
 	arch = i686
 	arch = armv7
 	arch = mips64el
-	license = LGPL2.1
+	license = LGPL-2.1-or-later
+	license = FSFAP
+	license = GPL-2.0-or-later
+	license = X11
 	depends = glibc
 	source = gpp::git+https://github.com/logological/gpp.git#tag=2.28
 	validpgpkeys = 28F47A15AB82C216D278DEB92B119C3AEFBF4915

@@ -1,12 +1,14 @@
 # Maintainer: Joshua Haase <hahj87@gmail.com>
 # Contributor: Jonas Weber <contact@jonasw.de>
+# Maintainer: Leandro Cunha <leandrocunha016@gmail.com>
+
 pkgname=gpp
 pkgver=2.28
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose preprocessor with customizable syntax, suitable for a wide range of preprocessing tasks"
 arch=('x86_64' 'i686' 'armv7' 'mips64el')
 url="http://en.nothingisreal.com/wiki/GPP"
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later' 'FSFAP' 'GPL-2.0-or-later' 'X11')
 depends=('glibc')
 source=(
   "gpp::git+https://github.com/logological/gpp.git#tag=$pkgver"
