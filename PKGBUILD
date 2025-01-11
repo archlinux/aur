@@ -3,7 +3,7 @@
 pkgbase=pdcom-gateway
 pkgname=(python-pdcom-gateway)
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="PdCom Gateway - This is a tiny python application to implement protocol adaptors."
 arch=(any)
 url="https://gitlab.com/etherlab.org/pdcom-gateway"
@@ -12,9 +12,9 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
 depends=(
+    pdcom
     python
     python-libconf
-    python-pdcom
 )
 makedepends=(
     python-build
