@@ -1,0 +1,20 @@
+pkgbase = pixfetch-bin
+	pkgdesc = Another fetch program with pixelized images written in Rust
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/RubixDev/pixfetch
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL2
+	depends = glibc
+	provides = pixfetch
+	conflicts = pixfetch
+	source_x86_64 = https://github.com/RubixDev/pixfetch/releases/download/v1.0.0/pixfetch-1.0.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 6237818a4d9ddc29be67a21084290cdf865e443c6988d9030238dfe9e087ac00
+	source_i686 = https://github.com/RubixDev/pixfetch/releases/download/v1.0.0/pixfetch-1.0.0-i686-unknown-linux-musl.tar.gz
+	sha256sums_i686 = 847e204f68c661a455817e96c2127e48919f2d7e0b4a72f1c5c584983af11da0
+	source_aarch64 = https://github.com/RubixDev/pixfetch/releases/download/v1.0.0/pixfetch-1.0.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 18d959c5046a1a148d38a276ff956f98d8c0896f9b618567e0ff715bfe457f8f
+
+pkgname = pixfetch-bin
