@@ -2,7 +2,7 @@
 
 pkgname=singularity-ce
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source container platform designed to be simple, fast, and secure.'
 arch=(x86_64)
 url='https://github.com/sylabs/singularity'
@@ -36,6 +36,7 @@ b2sums=('c8f8edbad4cfddb9dc3aecd281e1fccfdb378ee3554dd2fed1c714324806b107f90cd71
 build() {
     cd $pkgname-$pkgver
 
+    export CFLAGS=$(echo $CFLAGS | sed 's/-D_FORTIFY_SOURCE=3//g') # fix redefinition of _FORTIFY_SOURCE
     export CGO_ENABLED="1"
     export CGO_CPPFLAGS="$CPPFLAGS"
     export CGO_CFLAGS="$CFLAGS"
