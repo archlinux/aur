@@ -4,10 +4,10 @@
 
 pkgname=gpp
 pkgver=2.28
-pkgrel=2
+pkgrel=3
 pkgdesc="A general-purpose preprocessor with customizable syntax, suitable for a wide range of preprocessing tasks"
 arch=('x86_64' 'i686' 'armv7' 'mips64el')
-url="http://en.nothingisreal.com/wiki/GPP"
+url="https://logological.org/gpp"
 license=('LGPL-2.1-or-later' 'FSFAP' 'GPL-2.0-or-later' 'X11')
 depends=('glibc')
 source=(
