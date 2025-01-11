@@ -2,7 +2,7 @@
 
 pkgname=res-downloader
 pkgver=3.0.2
-pkgrel=1
+pkgrel=3
 pkgdesc="This is a high-value and high-performance and diverse resource downloader called res-downloader"
 arch=($CARCH)
 url="https://github.com/putyy/res-downloader"
@@ -47,8 +47,6 @@ build() {
     export GO111MODULE=on
     export GOPROXY=https://goproxy.cn,direct
 
-    sed -i -e 's|/usr/local/share/ca-certificates/|/usr/share/ca-certificates/trust-source/|g' \
-        -e 's|update-ca-certificates|update-ca-trust|g' core/system_linux.go
     wails build
 }
 
@@ -57,5 +55,16 @@ package() {
 
     install -Dvm755 build/bin/${pkgname} -t ${pkgdir}/usr/bin
     install -Dvm644 build/appicon.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png
-    install -Dvm644 build/linux/Debian/usr/share/applications/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+    #     install -Dvm644 build/linux/Arch/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+    install -Dvm644 /dev/stdin ${pkgdir}/usr/share/applications/${pkgname}.desktop <<EOF
+[Desktop Entry]
+Type=Application
+Name=res-downloader
+Comment=This is a high-value and high-performance and diverse resource downloader called res-downloader
+Exec=/usr/bin/res-downloader
+Icon=/usr/share/icons/hicolor/256x256/apps/res-downloader.png
+Terminal=false
+Categories=Utility
+
+EOF
 }

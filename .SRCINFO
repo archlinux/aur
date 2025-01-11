@@ -1,7 +1,7 @@
 pkgbase = res-downloader
 	pkgdesc = This is a high-value and high-performance and diverse resource downloader called res-downloader
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/putyy/res-downloader
 	install = res-downloader.install
 	arch = x86_64
