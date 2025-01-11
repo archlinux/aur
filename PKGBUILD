@@ -2,9 +2,9 @@
 
 pkgname=nvhpc
 _REL_YEAR=2024
-_CUDA_VER=12.5
-pkgver=24.7
-pkgrel=3
+_CUDA_VER=12.6
+pkgver=24.11
+pkgrel=1
 pkgdesc='NVIDIA HPC SDK'
 arch=('x86_64')
 url="https://gitlab.com/badwaik/archlinux/aur/nvhpc"
@@ -18,8 +18,8 @@ _pkgname="nvhpc_${_REL_YEAR}_${pkgver//.}_Linux_${arch}_cuda_${_CUDA_VER}"
 source=("https://developer.download.nvidia.com/hpc-sdk/$pkgver/$_pkgname.tar.gz"
         "nvhpc.sh")
 sha256sums=(
-  'baf20427c0057938a04bf2139429c6e9e1bb819de797636244c9696c2dcaf5b0'
-  '8bcf26d02c92882d91b0bb1e025f004a1a161ce5d788636662a6c478df5a62bc')
+  '39408ac062573936e0d41f34530ab065998ef4b85b6bcccb59287d71135a1920'
+  '959661b8eb83a238cab3fd4c68ac6c1459a070297de660d9f1a262fcbc51dcbb')
 
 options=(!strip)
 
