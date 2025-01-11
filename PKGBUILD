@@ -14,7 +14,7 @@ depends=('mingw-w64-cairo' 'mingw-w64-libsigc++')
 makedepends=('mingw-w64-meson>=0.55' 'mm-common')
 options=('!strip' '!buildflags' 'staticlibs')
 _pkgsrc="${_name}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/-/archive/${pkgver}/${_pkgsrc}.gz")
+source=("${_pkgsrc}.tar.gz::${_url}/-/archive/${pkgver}/${_pkgsrc}.tar.gz")
 sha256sums=('80c10611888e84c3a660eea0dafc81b6a9faf3e1d1cc31f950c51b3f7d384fc2')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
