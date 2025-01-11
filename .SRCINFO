@@ -1,0 +1,17 @@
+pkgbase = python-aiohttp-client-cache
+	pkgdesc = An async persistent cache for aiohttp requests
+	pkgver = 0.12.4
+	pkgrel = 1
+	url = https://github.com/requests-cache/aiohttp-client-cache
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python
+	depends = python-url-normalize
+	source = https://files.pythonhosted.org/packages/source/a/aiohttp_client_cache/aiohttp_client_cache-0.12.4.tar.gz
+	sha256sums = e60fe816136b5b1d66f3bb6b272ab81d97854ea1e4d9b57085a360426967d265
+
+pkgname = python-aiohttp-client-cache
