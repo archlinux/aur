@@ -8,7 +8,7 @@
 
 pkgname=ollama-cuda-git
 _pkgname=ollama
-pkgver=0.5.5.rc0+r3772+g9aa141d02
+pkgver=0.5.5+r3775+g32bd37adf
 pkgrel=3
 pkgdesc='Create, run and share large language models (LLMs)'
 arch=(x86_64)
