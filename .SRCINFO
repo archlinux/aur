@@ -1,0 +1,17 @@
+pkgbase = lib32-libsigc++-3.0
+	pkgdesc = Callback Framework for C++ (32-bit)
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = https://libsigcplusplus.github.io/libsigcplusplus
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = meson>=0.55
+	makedepends = mm-common
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = libsigc++-3.0
+	provides = libsigc-3.0.so
+	source = libsigc++-3.6.0.tar.xz::https://download.gnome.org/sources/libsigc++/3.6/libsigc++-3.6.0.tar.xz
+	sha256sums = c3d23b37dfd6e39f2e09f091b77b1541fbfa17c4f0b6bf5c89baef7229080e17
+
+pkgname = lib32-libsigc++-3.0
