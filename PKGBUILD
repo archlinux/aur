@@ -1,6 +1,6 @@
 # Maintainer: witt <1989161762 at qq dot com>
-pkgname=('otf-apple-pingfang' 'otf-apple-pingfang-relaxed')
-pkgver=v2.12fa9ed
+pkgname=('otf-apple-pingfang' 'otf-apple-pingfang-relaxed' 'otf-apple-pingfang-ui')
+pkgver=v3.0.0
 pkgrel=1
 pkgdesc='Apple公司的苹方字体合集，由网友二次修改，收集自网络.'
 arch=('any')
@@ -12,7 +12,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd applePingFangFonts/;
-    printf "v%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "v%s.%s" "$(git describe --tags --abbrev=7)" "$(git rev-parse --short HEAD)"
 }
 
 package_otf-apple-pingfang(){
@@ -33,4 +33,14 @@ package_otf-apple-pingfang-relaxed(){
     cd "${srcdir}/applePingFangFonts/pingFangRelaxed";
     find . -type d -exec install -d -m 0755 {} "${pkgdir}/usr/share/fonts/pingFangRelaxed/" \;
     find . -type f -exec install -m644 {} -D "${pkgdir}/usr/share/fonts/pingFangRelaxed/{}" \;
+}
+
+package_otf-apple-pingfang-ui(){
+    pkgdesc="苹方UI字体"
+    arch=('any')
+    conflicts=('ttf-pingfang-ui' 'ttf-pingfang-ui-git')
+    provides=('otf-apple-pingfang-ui')
+    cd "${srcdir}/applePingFangFonts/pingFangUI";
+    find . -type d -exec install -d -m 0755 {} "${pkgdir}/usr/share/fonts/pingFangUI/" \;
+    find . -type f -exec install -m644 {} -D "${pkgdir}/usr/share/fonts/pingFangUI/{}" \;
 }

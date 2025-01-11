@@ -1,6 +1,6 @@
 pkgbase = otf-apple-pingfang
 	pkgdesc = Apple公司的苹方字体合集，由网友二次修改，收集自网络.
-	pkgver = v2.12fa9ed
+	pkgver = v3.0.0
 	pkgrel = 1
 	url = https://developer.apple.com/fonts/
 	arch = any
@@ -22,3 +22,10 @@ pkgname = otf-apple-pingfang-relaxed
 	provides = otf-apple-pingfang-relaxed
 	conflicts = ttf-pingfang-relaxed
 	conflicts = ttf-pingfang-relaxed-git
+
+pkgname = otf-apple-pingfang-ui
+	pkgdesc = 苹方UI字体
+	arch = any
+	provides = otf-apple-pingfang-ui
+	conflicts = ttf-pingfang-ui
+	conflicts = ttf-pingfang-ui-git
