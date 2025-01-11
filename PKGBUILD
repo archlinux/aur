@@ -9,7 +9,7 @@ url="https://github.com/oconnor663/blake3-py"
 license=('Apache-2.0' 'CC0-1.0')
 
 depends=('python')
-makedepends=('python-pip' 'rust')
+makedepends=('python-build' 'python-installer' 'python-maturin' 'rust')
 
 source=("blake3-py-${pkgver}.tar.gz"::"https://github.com/oconnor663/blake3-py/archive/${pkgver}.tar.gz")
 sha512sums=('54d2b0b3aef48dfde6f15d3cfb7a4ebd4549ca8bedbb8b4a95fc882e4a08ed1beb1ad53f62042f0de3792fa1a9177f287e6c8f6c65aa4e7414210549bc67ec77')
@@ -30,8 +30,14 @@ prepare() {
     fi
 }
 
+build() {
+    cd "blake3-py-${pkgver}"
+    [[ -d dist/ ]] && rm -f dist/*.whl
+    python -m build --wheel --no-isolation
+}
+
 package() {
     cd "blake3-py-${pkgver}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    PIP_CONFIG_FILE=/dev/null pip install --root="$pkgdir/" --isolated --ignore-installed --no-deps --no-binary=blake3 --use-pep517 .
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
