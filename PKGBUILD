@@ -2,7 +2,7 @@
 # Thanks to https://aur.archlinux.org/packages/factorio/ for authentication code
 
 pkgname=fmodengine
-pkgver=2.02.25
+pkgver=2.02.26
 pkgrel=1
 pkgdesc="FMOD Engine API and tools - Audio engine and toolset for games."
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('jq'
 depends=('glibc')
 options=('!strip')
 _filename="fmodstudioapi${pkgver//./}linux.tar.gz"
-_sha256="ccb333c9f87920fd91f82977988ae11d36c901c49fca781ca56dd39d804768d7"
+_sha256="4852e29e953a492d5c316b4ce999aee5df3f3c8cd32db3a8281bec95dadcde8c"
 source=('LICENSE.html')
 sha256sums=('6288db3085c1d1dbefaa3a4c93cd0e8f5a3f589849cc6f5b8812c80fafac474c')
 noextract=("$_filename")
