@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-git
 	pkgdesc = Next generation desktop shell - git latest
-	pkgver = 47.2+r19298+g038b06d86
+	pkgver = 47.2+r19299+g7780d6848
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-shell
 	arch = x86_64
