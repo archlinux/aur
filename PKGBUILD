@@ -9,7 +9,7 @@ pkgrel=7
 pkgdesc='Text-based addressbook designed for use with Mutt'
 url='http://abook.sourceforge.net/'
 arch=('x86_64')
-license=('GPL2')
+license=('GPL-2.0-only')
 makedepends=('git')
 depends=('readline')
 source=("http://abook.sourceforge.net/devel/${pkgname}-${pkgver}.tar.gz"
@@ -20,7 +20,7 @@ sha256sums=('f0a90df8694fb34685ecdd45d97db28b88046c15c95e7b0700596028bd8bc0f9'
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	aclocal && automake --add-missing && autoconf
-	sed 's/0.18/0.20/g' -i po/Makefile.in.in
+	sed 's/0.18/0.22/g' -i po/Makefile.in.in
 	patch -p1 -i ../gcc5.patch
 }
 
