@@ -1,0 +1,38 @@
+From fe4f0a506e94544e1fa4ffcca9e457048f8c0cbe Mon Sep 17 00:00:00 2001
+From: oldherl <oldherl@gmail.com>
+Date: Wed, 3 Jul 2024 01:07:10 +1000
+Subject: [PATCH] Don't disable wayland. From meganz/MEGAsync#566
+
+---
+ src/MEGASync/gui/InfoDialog.cpp                       |  2 +-
+ src/MEGASync/main.cpp                                 | 11 -----------
+ .../platform/linux/PlatformImplementation.cpp         |  5 +++++
+ 3 files changed, 6 insertions(+), 12 deletions(-)
+
+diff --git a/src/MEGASync/gui/InfoDialog.cpp b/src/MEGASync/gui/InfoDialog.cpp
+index fe6b65cf6..f3fa0fd05 100644
+--- a/src/MEGASync/gui/InfoDialog.cpp
++++ b/src/MEGASync/gui/InfoDialog.cpp
+@@ -148,7 +148,7 @@ InfoDialog::InfoDialog(MegaApplication *app, QWidget *parent, InfoDialog* olddia
+         // To avoid issues with text input we implement a popup ourselves
+         // instead of using Qt::Popup by listening to the WindowDeactivate
+         // event.
+-        Qt::WindowFlags flags = Qt::FramelessWindowHint;
++        Qt::WindowFlags flags = Qt::FramelessWindowHint  | Qt::WindowStaysOnTopHint;
+ 
+         if (Platform::getInstance()->isTilingWindowManager())
+         {
+diff --git a/src/MEGASync/platform/linux/PlatformImplementation.cpp b/src/MEGASync/platform/linux/PlatformImplementation.cpp
+index d4fede6bc..34a89fc18 100644
+--- a/src/MEGASync/platform/linux/PlatformImplementation.cpp
++++ b/src/MEGASync/platform/linux/PlatformImplementation.cpp
+@@ -308,6 +310,9 @@ QString PlatformImplementation::getWindowManagerName()
+ {
+     static QString wmName;
+     static bool cached = false;
++    if (qgetenv("XDG_SESSION_TYPE") == "wayland") {
++        return QString::fromLocal8Bit(qgetenv("XDG_CURRENT_DESKTOP"));
++    }
+ 
+     if (!cached)
+     {

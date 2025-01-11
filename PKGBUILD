@@ -3,7 +3,7 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=megasync-git
-pkgver=4.10.0.0.4.gf718e54ba
+pkgver=5.7.0.0.502.g499ca1353
 pkgrel=1
 pkgdesc="MEGASync Desktop App. (GIT Version)"
 arch=('x86_64')
@@ -15,25 +15,22 @@ depends=(
   'qt5-base' # libQt5Core.so libQt5DBus.so libQt5Gui.so libQt5Network.so libQt5Widgets.so
   'qt5-svg' # libQt5Svg.so
   'qt5-x11extras' # libQt5X11Extras.so
+  'qt5-declarative' # libQt5Quick.so libQt5Qml.so
   'libuv' # libuv.so
   'crypto++' # libcryptopp.so
   'libsodium' 'libsodium.so'
+#   'libpdfium'
   'freeimage' # libfreeimage.so
   'libmediainfo' # libmediainfo.so
-  'libraw' # libraw.so
   'libxcb' # libxcb.so
   'libzen' # libzen.so
   'c-ares' 'libcares.so'
   'openssl' 'libcrypto.so' 'libssl.so'
-  'libglvnd' 'libGL.so'
   'curl' 'libcurl.so'
   'sqlite' 'libsqlite3.so'
-  'libsystemd' 'libudev.so'
-  'ffmpeg' 'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswresample.so' 'libswscale.so'
-  'icu' 'libicudata.so' 'libicuuc.so'
+  'ffmpeg' 'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswscale.so'
+  'icu' 'libicuuc.so'
   'zlib' 'libz.so'
-  'xz' 'liblzma.so'
-  'bzip2' 'libbz2.so'
 )
 makedepends=(
   'git'
@@ -45,15 +42,19 @@ source=(
   'git+https://github.com/meganz/MEGAsync.git'
   'git+https://github.com/meganz/sdk.git'
   'mega.svg'
-  'esee'
+  'fix_wayland.patch' # https://github.com/meganz/MEGAsync/pull/992.patch
   'ffmpeg6.diff'
+  '020-megasync-sdk-fix-cmake-dependencies-detection.patch::https://aur.archlinux.org/cgit/aur.git/plain/020-megasync-sdk-fix-cmake-dependencies-detection.patch?h=megasync'
+  '030-megasync-app-fix-cmake-dependencies-detection.patch::https://aur.archlinux.org/cgit/aur.git/plain/030-megasync-app-fix-cmake-dependencies-detection.patch?h=megasync'
 )
 sha256sums=(
   'SKIP'
   'SKIP'
   'c0abfeafb541509923c85d253f6f64dae8a49e9ae4b067f5c0c484ff1d924403'
-  '66b5f481081157eee82653b3774d22edb5aa2007cf93142fd73cc0c4d577d59f'
+  'dfe02ed9462996afad65a44faf78902ae1f20138ce96954ab3ca01a314a52ac9'
   'a5f1d784a0a548965c939a74da101ff436796490a7d3f4efbaa8c22d639ab8fc'
+  'a2d4c9040282f51e81a9d37d9875d4a9febb1ff1f6af452210be581f0eaa63a7'
+  'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171'
 )
 options=('debug')
 
@@ -68,37 +69,42 @@ prepare() {
   git -c protocol.file.allow=always submodule update --init \
     src/MEGASync/mega
 
+  # wayland(?)
+  patch -p1 -i "${srcdir}/fix_wayland.patch"
+
   # FFmpeg6
   patch -d src/MEGASync/mega -p1 -i "${srcdir}/ffmpeg6.diff"
 
-  # Disable PDFium
-  patch -p1 -i "${srcdir}/esee"
+  # fix cmake calls
+  patch -d src/MEGASync/mega -p1 -i "${srcdir}/020-megasync-sdk-fix-cmake-dependencies-detection.patch"
+  patch -p1 -i "${srcdir}/030-megasync-app-fix-cmake-dependencies-detection.patch"
+
 }
 
 build() {
 
-  cd "${srcdir}/MEGAsync/src/MEGASync/mega"
-  ./autogen.sh
-  ./configure \
-    --prefix=/usr \
-    --without-freeimage \
-    --disable-examples
+#   export CXXFLAGS+=' -DNDEBUG -isystem/usr/include/pdfium'
+  cmake -B build -S "${srcdir}/MEGAsync" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/ \
+    -DCMAKE_MODULE_PATH="${srcdir}/MEGAsync/src/MEGASync/mega/cmake/modules/packages" \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DENABLE_SDKLIB_EXAMPLES=OFF \
+    -DENABLE_SDKLIB_TESTS=OFF \
+    -DENABLE_DESKTOP_UPDATE_GEN=OFF \
+    -DENABLE_DESIGN_TOKENS_IMPORTER=OFF \
+    -DUSE_PDFIUM=OFF
 
-  cd "${srcdir}/MEGAsync/src/MEGASync"
-  lrelease-qt5 MEGASync.pro
-  qmake-qt5 CONFIG+=debug MEGASync.pro
-
-  make
+  cmake --build build
 }
 
 package() {
-  install -Dm755 MEGAsync/src/MEGASync/megasync "${pkgdir}/usr/bin/megasync"
-  install -Dm644 MEGAsync/src/MEGASync/platform/linux/data/megasync.desktop "${pkgdir}/usr/share/applications/megasync.desktop"
-  # not works in wayland, so launch in xwayland
-  sed -e 's|System;||g' \
-      -e 's|Exec=megasync|Exec=env QT_QPA_PLATFORM=xcb megasync|g' \
-      -i "${pkgdir}/usr/share/applications/megasync.desktop"
+
+  DESTDIR="${pkgdir}" cmake --install build
+
   install -Dm644 "${srcdir}/mega.svg" "${pkgdir}/usr/share/pixmaps/mega.svg"
+
+  rm -fr "${pkgdir}/usr/opt"
 
   install -Dm644 MEGAsync/LICENCE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
