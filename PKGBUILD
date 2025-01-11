@@ -1,4 +1,4 @@
-pkgname=hydra-launcher
+pkgname=hydra-launcher-test
 pkgver=3.1.5
 pkgrel=1
 pkgdesc="A game launcher with its own embedded bittorrent client"

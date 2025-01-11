@@ -36,8 +36,8 @@ pkgbase = hydra-launcher-test
 	provides = hydra-launcher
 	options = !strip
 	source = https://github.com/hydralauncher/hydra/releases/download/v3.1.5/hydralauncher_3.1.5_amd64.deb
-	source = hydra-launcher-bin-LICENSE::https://github.com/hydralauncher/hydra/raw/refs/tags/v3.1.5/LICENSE
+	source = hydra-launcher-test-LICENSE::https://github.com/hydralauncher/hydra/raw/refs/tags/v3.1.5/LICENSE
 	sha256sums = 0e557aa8bd122ddb884d0d79cb7e837e6e976c26cf0b56cbd218ed7eb16db59e
 	sha256sums = 32619612c2e0223e86c4908747ec14bef64c3c423fee80910c1aa944769b66f9
 
-pkgname = hydra-launcher
+pkgname = hydra-launcher-test
