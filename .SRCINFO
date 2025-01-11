@@ -1,7 +1,7 @@
 pkgbase = gimp-plugin-gmic-git
 	pkgdesc = Gimp plugin for the G'MIC image processing framework
-	pkgver = 3.4.2.r14.g3b7a6fa
-	pkgrel = 1
+	pkgver = 3.5.0.r0.g41e86b9
+	pkgrel = 2
 	url = https://github.com/GreycLab/gmic-qt
 	arch = x86_64
 	license = CECILL-C
@@ -9,6 +9,7 @@ pkgbase = gimp-plugin-gmic-git
 	makedepends = git
 	makedepends = ninja
 	makedepends = qt6-tools
+	depends = blas-openblas
 	depends = fftw
 	depends = gimp-git
 	depends = glib2

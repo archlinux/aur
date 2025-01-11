@@ -2,14 +2,15 @@
 
 _pkgname="gimp-plugin-gmic"
 pkgname="$_pkgname-git"
-pkgver=3.4.2.r14.g3b7a6fa
-pkgrel=1
+pkgver=3.5.0.r0.g41e86b9
+pkgrel=2
 pkgdesc="Gimp plugin for the G'MIC image processing framework"
 url="https://github.com/GreycLab/gmic-qt"
 license=('CECILL-C')
 arch=('x86_64')
 
 depends=(
+  'blas-openblas'
   'fftw'
   'gimp-git' # AUR
   'glib2'
@@ -38,16 +39,12 @@ pkgver() {
 
 prepare() {
   # Allow build type None
-  sed -E -e '/CMAKE_BUILD_TYPE/s&FATAL_ERROR&WARNING&' -i "$_pkgsrc/CMakeLists.txt"
+  sed -E -e '/CMAKE_BUILD_TYPE/s&FATAL_ERROR&STATUS&' -i "$_pkgsrc/CMakeLists.txt"
 }
 
-build() {
-  pushd "$_pkgsrc/translations"
-  for i in *.ts; do
-    /usr/lib/qt6/bin/lrelease -compress "$i"
-  done
-  cp *.qm filters/
-  popd
+build() (
+  # lrelease
+  export PATH="/usr/lib/qt6/bin:$PATH"
 
   local _cmake_options=(
     -B build
@@ -62,7 +59,7 @@ build() {
 
   cmake "${_cmake_options[@]}"
   cmake --build build
-}
+)
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
