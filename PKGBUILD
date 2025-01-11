@@ -4,13 +4,13 @@
 
 set -u
 pkgname='bytecode-viewer'
-pkgver='2.12'
+pkgver='2.13.0'
 pkgrel='1'
 pkgdesc='A Java decompiler, editor, debugger, and more'
 url='https://bytecodeviewer.com'
 arch=('any')
-license=('GPL3')
-depends=('java-runtime>=8')
+license=('GPL-3.0-only')
+depends=('java-runtime>=8' 'bash')
 optdepends=('graal')
 source=(
   "https://github.com/Konloch/bytecode-viewer/releases/download/v${pkgver}/Bytecode-Viewer-${pkgver}.jar"
@@ -19,11 +19,11 @@ source=(
   'bytecodeviewer.desktop'
 )
 noextract=("${source[0]##*/}")
-md5sums=('faffe4e8b8831c268438332897732b76'
+md5sums=('58b5fa76129adb6f118d40ccd593f751'
          '86f6d2d12561d7098343954b5e73f0c3'
          'a3d3b9e14f92bdd44febe05d9981a685'
          'bb4cf22a28611b6b3a684ad1d0567c08')
-sha256sums=('dc5f6669409d7d0bbba40c735875a39960c1777f11bb13a1819bb12917808c5c'
+sha256sums=('ea82b3e7ea3149fbe467cbb9a5fd8d69f907ccbe32437fcba577149f9c858960'
             'fd1d7b95daaff6221904e76663fdb629ac15fe3737add0016729afeb07a19acd'
             '380fbc2d958fc5e0c3f7c05b21de83e3d7e956b00ab476439f893f1d10a61a3e'
             '24a537c7e5e727457007d75b49d731ae41ad2d355a806553a52cc111f80ecd53')
