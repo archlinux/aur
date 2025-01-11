@@ -14,6 +14,8 @@ depends=(
 	argtable
 	libconfig
 	pulse-native-provider
+	libxdg-basedir
+	libuv
 )
 makedepends=(
   git

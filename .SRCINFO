@@ -13,6 +13,8 @@ pkgbase = monocoque-git
 	depends = argtable
 	depends = libconfig
 	depends = pulse-native-provider
+	depends = libxdg-basedir
+	depends = libuv
 	source = git+https://github.com/spacefreak18/monocoque
 	sha256sums = SKIP
 
