@@ -2,7 +2,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r6347.d2bf4f70
+pkgver=r6393.58a671bd
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64' 'aarch64')
@@ -49,9 +49,11 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/grumpycoders/nanosvg.git'
         'git+https://github.com/lunarmodules/luafilesystem.git'
         'git+https://github.com/uriparser/uriparser.git'
+        'git+https://github.com/taocpp/PEGTL.git'
         'pcsx-redux.sh'
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -113,6 +115,7 @@ prepare() {
   git config submodule.third_party/nanosvg.url "$srcdir/nanosvg"
   git config submodule.third_party/luafilesystem.url "$srcdir/luafilesystem"
   git config submodule.third_party/uriparser.url "$srcdir/uriparser"
+  git config submodule.third_party/PEGTL.url "$srcdir/PEGTL"
 
   git -c protocol.file.allow=always submodule update third_party/imgui \
                        third_party/uC-sdk \
@@ -138,7 +141,8 @@ prepare() {
                        third_party/nanovg \
                        third_party/nanosvg \
                        third_party/luafilesystem \
-                       third_party/uriparser
+                       third_party/uriparser \
+                       third_party/PEGTL
 
   cd third_party/luv
   git submodule init
