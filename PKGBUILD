@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/arokzZz/redondo.git"
 license=('GPL')
 depends=()
-source=("redondo" "frases.pr")
+source=("redondo.sh" "frases.pr")
 sha256sums=('SKIP' 'SKIP')  # Se puede calcular el hash si es necesario
 
 prepare() {
