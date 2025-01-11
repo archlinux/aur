@@ -1,12 +1,12 @@
 pkgname=hydra-launcher
 pkgver=3.1.5
-pkgrel=1
 pkgdesc="A game launcher with its own embedded bittorrent client"
 arch=('x86_64')
 url="https://github.com/hydralauncher/hydra"
 license=('MIT')
 provides=("${pkgname%-bin}")
 depends=('alsa-lib'
+         'aria2'
          'at-spi2-core'
          'bash'
          'cairo'

@@ -5,6 +5,7 @@ pkgbase = hydra-launcher
 	url = https://github.com/hydralauncher/hydra
 	arch = x86_64
 	license = MIT
+	depends = aria2
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = bash
