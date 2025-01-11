@@ -8,14 +8,15 @@
 
 _pkgname="gyroflow"
 pkgname="$_pkgname-git"
-pkgver=1.5.4.r283.gd6622f2
-pkgrel=3
+pkgver=1.6.0.r71.g52fcd02
+pkgrel=1
 pkgdesc="Video stabilization using gyroscope data"
 url="https://github.com/gyroflow/gyroflow"
 license=("GPL-3.0-or-later")
 arch=("x86_64")
 
 depends=(
+  'blas-openblas'
   'ffmpeg'
   'libc++'
   'ocl-icd'
@@ -23,11 +24,11 @@ depends=(
   'qt6-declarative'
 )
 makedepends=(
+  '7zip'
   'cargo'
   'clang'
   'git'
   'opencl-headers'
-  'p7zip'
 )
 optdepends=(
   'opencl-driver: OpenCL driver for GPU accelerated stabilization'
@@ -38,7 +39,7 @@ optdepends=(
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
-options=(!lto)
+options=('!lto')
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")

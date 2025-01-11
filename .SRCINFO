@@ -1,15 +1,16 @@
 pkgbase = gyroflow-git
 	pkgdesc = Video stabilization using gyroscope data
-	pkgver = 1.5.4.r283.gd6622f2
-	pkgrel = 3
+	pkgver = 1.6.0.r71.g52fcd02
+	pkgrel = 1
 	url = https://github.com/gyroflow/gyroflow
 	arch = x86_64
 	license = GPL-3.0-or-later
+	makedepends = 7zip
 	makedepends = cargo
 	makedepends = clang
 	makedepends = git
 	makedepends = opencl-headers
-	makedepends = p7zip
+	depends = blas-openblas
 	depends = ffmpeg
 	depends = libc++
 	depends = ocl-icd
@@ -18,7 +19,7 @@ pkgbase = gyroflow-git
 	optdepends = opencl-driver: OpenCL driver for GPU accelerated stabilization
 	optdepends = libva-mesa-driver: VAAPI video acceleration for NVIDIA and AMD GPU
 	optdepends = intel-media-driver: VAAPI video acceleration for Intel GPU
-	provides = gyroflow=1.5.4
+	provides = gyroflow=1.6.0
 	conflicts = gyroflow
 	options = !lto
 	source = gyroflow::git+https://github.com/gyroflow/gyroflow.git
