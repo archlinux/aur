@@ -2,7 +2,7 @@
 # Maintainer: Neko_Rikka <yjzyl9008 at gmail dot com>
 
 pkgname=python-unitypy-git
-pkgver=r514.4f14a38
+pkgver=r599.aec2552
 pkgrel=1
 pkgdesc="A unity asset extractor based on unitypack and AssetStudio."
 arch=('x86_64')
@@ -41,7 +41,8 @@ check() {
 
 package() {
   cd UnityPy
-  python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
+  python -m build --wheel --no-isolation
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm0644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
