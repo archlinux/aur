@@ -10,7 +10,7 @@ url='https://tox.chat'
 license=('GPL3')
 depends=('systemd' 'libconfig' 'libsodium' 'libvpx' 'opus')
 makedepends=('base-devel' 'git' 'cmake' 'gtest')
-provides=('tox=0.2.20')
+provides=('tox')
 backup=('etc/tox-bootstrapd.conf')
 source=("git+https://github.com/TokTok/${_pkgname}.git")
 sha512sums=('SKIP')

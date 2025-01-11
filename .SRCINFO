@@ -14,7 +14,7 @@ pkgbase = toxcore-c
 	depends = libsodium
 	depends = libvpx
 	depends = opus
-	provides = tox=0.2.20
+	provides = tox
 	backup = etc/tox-bootstrapd.conf
 	source = git+https://github.com/TokTok/c-toxcore.git
 	sha512sums = SKIP
