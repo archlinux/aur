@@ -4,12 +4,11 @@
 
 _name="libsigc++"
 pkgname="lib32-${_name}"
-_commit="6bef4e0005f00f0844d917866aec7e3b2d829fdf" # 2.12.1
 pkgver=2.12.1
 pkgrel=1
 pkgdesc="Callback Framework for C++ (32-bit)"
 url="https://libsigcplusplus.github.io/libsigcplusplus"
-_url="https://github.com/libsigcplusplus/libsigcplusplus"
+# _url="https://github.com/libsigcplusplus/libsigcplusplus"
 arch=('x86_64')
 license=('LGPL-3.0-or-later')
 depends=('lib32-gcc-libs' 'lib32-glibc' "${_name}")
@@ -17,9 +16,9 @@ makedepends=('meson>=0.55' 'mm-common')
 provides=('lib32-libsigc++2.0' 'libsigc-2.0.so')
 conflicts=('lib32-libsigc++2.0')
 replaces=('lib32-libsigc++2.0')
-_pkgsrc="libsigcplusplus-${_commit}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz")
-sha256sums=('8ab92f83a6f396a748d1eb908837c28d99e2647194a0867a25f7b3f09678f02d')
+_pkgsrc="${_name}-${pkgver}"
+source=("${_pkgsrc}.tar.xz::https://download.gnome.org/sources/${_name}/${pkgver%.*}/${_pkgsrc}.tar.xz")
+sha256sums=('a9dbee323351d109b7aee074a9cb89ca3e7bcf8ad8edef1851f4cf359bd50843')
 
 build() {
   export CFLAGS+=" -m32"

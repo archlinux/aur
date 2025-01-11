@@ -14,7 +14,7 @@ pkgbase = lib32-libsigc++
 	provides = libsigc-2.0.so
 	conflicts = lib32-libsigc++2.0
 	replaces = lib32-libsigc++2.0
-	source = libsigcplusplus-6bef4e0005f00f0844d917866aec7e3b2d829fdf.tar.gz::https://github.com/libsigcplusplus/libsigcplusplus/archive/6bef4e0005f00f0844d917866aec7e3b2d829fdf.tar.gz
-	sha256sums = 8ab92f83a6f396a748d1eb908837c28d99e2647194a0867a25f7b3f09678f02d
+	source = libsigc++-2.12.1.tar.xz::https://download.gnome.org/sources/libsigc++/2.12/libsigc++-2.12.1.tar.xz
+	sha256sums = a9dbee323351d109b7aee074a9cb89ca3e7bcf8ad8edef1851f4cf359bd50843
 
 pkgname = lib32-libsigc++
