@@ -3,19 +3,30 @@
 
 pkgbase=parabolic
 pkgname=(parabolic-gtk parabolic-qt)
-pkgver=2024.12.2
-pkgrel=3
+pkgver=2025.1.0
+pkgrel=1
 pkgdesc="Download web video and audio"
 arch=('x86_64')
 url="https://github.com/NickvisionApps/Parabolic"
 license=('MIT')
+depends=('aria2'
+         'bash'
+         'boost-libs'
+         'curl'
+         'ffmpeg'
+         'gcc-libs'
+         'glib2'
+         'glibc'
+         'hicolor-icon-theme'
+         'libsecret'
+         'openssl'
+         'yt-dlp')
 makedepends=('blueprint-compiler'
              'boost'
              'cmake'
              'gtk4'
              'libadwaita'
              'libnick'
-             'libsecret'
              'libxml++-5.0'
              'qt6-base'
              'qt6-svg'
@@ -24,7 +35,7 @@ provides=('tube-converter')
 conflicts=('tube-converter')
 replaces=('tube-converter')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e92787d6587c722a79a4ab58f4c6638a180fc26a93f0d77c18fe88f6a4556f3a')
+sha256sums=('256440436038c72d5c126bd0159a4dee279e0fc2c6a0f52e756732eaccc0c7ec')
 
 build() {
     cmake -B build-gtk -S "${pkgbase^}-${pkgver}" \
@@ -43,40 +54,14 @@ build() {
 }
 
 package_parabolic-gtk() {
-    depends=('aria2'
-             'bash'
-             'boost-libs'
-             'curl'
-             'ffmpeg'
-             'gcc-libs'
-             'glib2'
-             'glibc'
-             'gtk4'
-             'hicolor-icon-theme'
-             'libadwaita'
-             'libsecret'
-             'libxml++-5.0'
-             'openssl'
-             'yt-dlp')
+    depends+=('gtk4' 'libadwaita' 'libxml++-5.0')
 
     DESTDIR="${pkgdir}" cmake --install build-gtk
     install -Dm644 "${pkgbase^}-${pkgver}/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_parabolic-qt() {
-    depends=('aria2'
-             'bash'
-             'boost-libs'
-             'curl'
-             'ffmpeg'
-             'gcc-libs'
-             'glib2'
-             'glibc'
-             'hicolor-icon-theme'
-             'libsecret'
-             'openssl'
-             'qt6-base'
-             'yt-dlp')
+    depends+=('qt6-base')
 
     DESTDIR="${pkgdir}" cmake --install build-qt
     install -Dm644 "${pkgbase^}-${pkgver}/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}"
