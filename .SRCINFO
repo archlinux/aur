@@ -1,18 +1,19 @@
 pkgbase = mingw-w64-glibmm
 	pkgdesc = C++ bindings for GLib (mingw-w64)
-	pkgver = 2.64.2
+	pkgver = 2.66.7
 	pkgrel = 1
-	url = https://www.gtkmm.org/
+	url = https://www.gtkmm.org
 	arch = any
-	license = GPL
-	makedepends = mingw-w64-configure
-	depends = mingw-w64-libsigc++
-	depends = mingw-w64-glib2
+	license = LGPL-2.1-or-later
+	makedepends = mingw-w64-meson>=0.55
+	makedepends = mm-common
+	depends = mingw-w64-crt
+	depends = mingw-w64-glib2>=2.61.2
+	depends = mingw-w64-libsigc++>=2.9.1
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.gnome.org/sources/glibmm/2.64/glibmm-2.64.2.tar.xz
-	sha256sums = a75282e58d556d9b2bb44262b6f5fb76c824ac46a25a06f527108bec86b8d4ec
+	source = glibmm-2.66.7.tar.xz::https://download.gnome.org/sources/glibmm/2.66/glibmm-2.66.7.tar.xz
+	sha256sums = fe02c1e5f5825940d82b56b6ec31a12c06c05c1583cfe62f934d0763e1e542b3
 
 pkgname = mingw-w64-glibmm
-
