@@ -1,0 +1,18 @@
+pkgbase = ssh-ggh-bin
+	pkgdesc = Recall your SSH sessions (also search your SSH config file)
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/byawitz/ggh
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = openssh
+	provides = ssh-ggh
+	conflicts = ssh-ggh
+	conflicts = ssh-ggh-git
+	source_x86_64 = ggh-x86_64::https://github.com/byawitz/ggh/releases/download/v0.1.4/ggh_linux_x86_64
+	sha256sums_x86_64 = ae5675d6833c4c6ff558413599f53a6e248935aa96725d18029ecf763ee01909
+	source_aarch64 = ggh-aarch64::https://github.com/byawitz/ggh/releases/download/v0.1.4/ggh_linux_arm64
+	sha256sums_aarch64 = ffba529da2bfe08f457f27feb12d5a720cb078de9b4badb55db74eaad866259a
+
+pkgname = ssh-ggh-bin
