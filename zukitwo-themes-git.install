@@ -1,0 +1,17 @@
+# Maintainer: Chiku < chirantan dot mitra at gmail dot com >
+
+deprecation_notice() {
+  cat <<MSG
+=================================================
+This package has been deprecated by the upstream.
+=================================================
+MSG
+}
+
+pre_install() {
+  deprecation_notice
+}
+
+pre_upgrade() {
+  deprecation_notice
+}

@@ -1,0 +1,5 @@
+# Maintainer: Chiku < chirantan dot mitra at gmail dot com >
+
+echo "================================================="
+echo "This package has been deprecated by the upstream."
+echo "================================================="
