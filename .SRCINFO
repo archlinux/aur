@@ -10,7 +10,6 @@ pkgbase = python-baidubce
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-pycryptodome
-	depends = python-future
 	depends = python-six
 	source = https://pypi.org/packages/source/b/bce-python-sdk/bce_python_sdk-0.9.25.tar.gz
 	sha512sums = 3d737851c1a6996a54747977e91d535e05657326b44425245d4068f46a3a338d8aa9e05332a7c90b8bbd6825d635bbe360eff66adb1d802d2a485e9b1292326d
