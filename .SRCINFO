@@ -1,0 +1,13 @@
+pkgbase = redondo
+	pkgdesc = Programa que muestra una frase aleatoria de Los Redondos
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/arokzZz/redondo.git
+	arch = any
+	license = GPL
+	source = redondo
+	source = frases.pr
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = redondo
