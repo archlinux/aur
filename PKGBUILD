@@ -4,7 +4,7 @@
 
 pkgname=megasync-git
 pkgver=5.7.0.0.502.g499ca1353
-pkgrel=1
+pkgrel=2
 pkgdesc="MEGASync Desktop App. (GIT Version)"
 arch=('x86_64')
 url='https://mega.co.nz/#sync'
@@ -42,7 +42,7 @@ source=(
   'git+https://github.com/meganz/MEGAsync.git'
   'git+https://github.com/meganz/sdk.git'
   'mega.svg'
-  'fix_wayland.patch' # https://github.com/meganz/MEGAsync/pull/992.patch
+  'fix_wayland.patch' # based on ::https://github.com/meganz/MEGAsync/pull/992.patch'
   'ffmpeg6.diff'
   '020-megasync-sdk-fix-cmake-dependencies-detection.patch::https://aur.archlinux.org/cgit/aur.git/plain/020-megasync-sdk-fix-cmake-dependencies-detection.patch?h=megasync'
   '030-megasync-app-fix-cmake-dependencies-detection.patch::https://aur.archlinux.org/cgit/aur.git/plain/030-megasync-app-fix-cmake-dependencies-detection.patch?h=megasync'
@@ -51,7 +51,7 @@ sha256sums=(
   'SKIP'
   'SKIP'
   'c0abfeafb541509923c85d253f6f64dae8a49e9ae4b067f5c0c484ff1d924403'
-  'dfe02ed9462996afad65a44faf78902ae1f20138ce96954ab3ca01a314a52ac9'
+  '3414065bc732a63e66bb2b21373dc371c23d25f8ce86069073f8ca8c4bd9c74c'
   'a5f1d784a0a548965c939a74da101ff436796490a7d3f4efbaa8c22d639ab8fc'
   'a2d4c9040282f51e81a9d37d9875d4a9febb1ff1f6af452210be581f0eaa63a7'
   'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171'

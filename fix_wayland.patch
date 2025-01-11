@@ -10,10 +10,10 @@ Subject: [PATCH] Don't disable wayland. From meganz/MEGAsync#566
  3 files changed, 6 insertions(+), 12 deletions(-)
 
 diff --git a/src/MEGASync/gui/InfoDialog.cpp b/src/MEGASync/gui/InfoDialog.cpp
-index fe6b65cf6..f3fa0fd05 100644
+index ae68f6c5e..625e7bf29 100644
 --- a/src/MEGASync/gui/InfoDialog.cpp
 +++ b/src/MEGASync/gui/InfoDialog.cpp
-@@ -148,7 +148,7 @@ InfoDialog::InfoDialog(MegaApplication *app, QWidget *parent, InfoDialog* olddia
+@@ -149,7 +149,7 @@ InfoDialog::InfoDialog(MegaApplication *app, QWidget *parent, InfoDialog* olddia
          // To avoid issues with text input we implement a popup ourselves
          // instead of using Qt::Popup by listening to the WindowDeactivate
          // event.
@@ -22,11 +22,44 @@ index fe6b65cf6..f3fa0fd05 100644
  
          if (Platform::getInstance()->isTilingWindowManager())
          {
+diff --git a/src/MEGASync/main.cpp b/src/MEGASync/main.cpp
+index 99d089b78..3e75b7e6c 100644
+--- a/src/MEGASync/main.cpp
++++ b/src/MEGASync/main.cpp
+@@ -401,18 +401,6 @@ int main(int argc, char *argv[])
+     }
+ #endif
+ 
+-#if defined(Q_OS_LINUX)
+-    if (!qEnvironmentVariableIsSet("DO_NOT_UNSET_XDG_SESSION_TYPE"))
+-    {
+-        QString sessionType = qEnvironmentVariable("XDG_SESSION_TYPE");
+-        if (!sessionType.isEmpty() && sessionType == QString::fromUtf8("wayland"))
+-        {
+-            std::cerr << "Avoiding wayland" << std::endl;
+-            qunsetenv("XDG_SESSION_TYPE");
+-        }
+-    }
+-#endif
+-
+ #ifndef Q_OS_MACX
+ #if defined(WIN32)
+     ScaleFactorManager scaleFactorManager(OsType::WIN);
 diff --git a/src/MEGASync/platform/linux/PlatformImplementation.cpp b/src/MEGASync/platform/linux/PlatformImplementation.cpp
-index d4fede6bc..34a89fc18 100644
+index 80a49f318..bc2a0e3d3 100644
 --- a/src/MEGASync/platform/linux/PlatformImplementation.cpp
 +++ b/src/MEGASync/platform/linux/PlatformImplementation.cpp
-@@ -308,6 +310,9 @@ QString PlatformImplementation::getWindowManagerName()
+@@ -108,7 +108,8 @@ bool PlatformImplementation::isTilingWindowManager()
+     static const QSet<QString> tiling_wms = {
+         QLatin1String("i3"),
+         QLatin1String("Hyprland"),
+-        QLatin1String("sway")
++        QLatin1String("sway"),
++        QLatin1String("wayfire")
+     };
+ 
+     return getValue("MEGASYNC_ASSUME_TILING_WM", false)
+@@ -330,6 +331,9 @@ QString PlatformImplementation::getWindowManagerName()
  {
      static QString wmName;
      static bool cached = false;
