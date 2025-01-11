@@ -1,6 +1,8 @@
---- xxHash.orig/Makefile	2023-07-27 13:34:32.183333333 +0200
-+++ xxHash/Makefile	2023-07-27 13:42:43.283333333 +0200
-@@ -49,11 +49,7 @@
+diff --git a/Makefile b/Makefile
+index 5b7b8ff..f294d55 100644
+--- a/Makefile
++++ b/Makefile
+@@ -49,11 +49,7 @@ XXHSUM_VERSION = $(LIBVER)
  UNAME := $(shell uname)
  
  # Define *.exe as extension for Windows systems
@@ -10,9 +12,9 @@
 -EXT =
 -endif
  
- ifeq ($(NODE_JS),1)
-     # Link in unrestricted filesystem support
-@@ -70,8 +66,8 @@
+ # automatically enable runtime vector dispatch on x86/64 targets
+ detect_x86_arch = $(shell $(CC) -dumpmachine | grep -E 'i[3-6]86|x86_64')
+@@ -77,8 +73,8 @@ ifeq ($(UNAME), Darwin)
  	SHARED_EXT_VER = $(LIBVER).$(SHARED_EXT)
  	SONAME_FLAGS = -install_name $(LIBDIR)/libxxhash.$(SHARED_EXT_MAJOR) -compatibility_version $(LIBVER_MAJOR) -current_version $(LIBVER)
  else
@@ -23,22 +25,22 @@
  	SHARED_EXT_MAJOR = $(SHARED_EXT).$(LIBVER_MAJOR)
  	SHARED_EXT_VER = $(SHARED_EXT).$(LIBVER)
  endif
-@@ -140,9 +136,7 @@
+@@ -148,9 +144,7 @@ libxxhash.a: xxhash.o
  	$(AR) $(ARFLAGS) $@ $^
  
  $(LIBXXH): LDFLAGS += -shared
 -ifeq (,$(filter Windows%,$(OS)))
  $(LIBXXH): CFLAGS += -fPIC
 -endif
- ifeq ($(DISPATCH),1)
+ ifeq ($(LIBXXH_DISPATCH),1)
  $(LIBXXH): xxh_x86dispatch.c
  endif
-@@ -579,10 +573,12 @@
+@@ -623,10 +617,12 @@ install_libxxhash.a: libxxhash.a
  
  install_libxxhash: libxxhash
  	@echo Installing libxxhash
-+	$(Q)$(INSTALL_DIR) $(DESTDIR)$(BINDIR)
- 	$(Q)$(INSTALL_DIR) $(DESTDIR)$(LIBDIR)
++	$(Q)$(MAKE_DIR) $(DESTDIR)$(BINDIR)
+ 	$(Q)$(MAKE_DIR) $(DESTDIR)$(LIBDIR)
 -	$(Q)$(INSTALL_PROGRAM) $(LIBXXH) $(DESTDIR)$(LIBDIR)
 -	$(Q)ln -sf $(LIBXXH) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT_MAJOR)
 -	$(Q)ln -sf $(LIBXXH) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT)
@@ -49,22 +51,24 @@
  
  install_libxxhash.includes:
  	$(Q)$(INSTALL) -d -m 755 $(DESTDIR)$(INCLUDEDIR)   # includes
-@@ -600,10 +596,10 @@
+@@ -644,11 +640,11 @@ install_libxxhash.pc: libxxhash.pc
  install_xxhsum: xxhsum
  	@echo Installing xxhsum
- 	$(Q)$(INSTALL_DIR) $(DESTDIR)$(BINDIR)/
+ 	$(Q)$(MAKE_DIR) $(DESTDIR)$(BINDIR)/
 -	$(Q)$(INSTALL_PROGRAM) xxhsum $(DESTDIR)$(BINDIR)/xxhsum
 -	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh32sum
 -	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh64sum
 -	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh128sum
+-	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh3sum
 +	$(Q)$(INSTALL_PROGRAM) xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxhsum$(EXT)
 +	$(Q)ln -sf xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxh32sum$(EXT)
 +	$(Q)ln -sf xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxh64sum$(EXT)
 +	$(Q)ln -sf xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxh128sum$(EXT)
++	$(Q)ln -sf xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxh3sum$(EXT)
  
  install_man:
  	@echo Installing man pages
-@@ -620,17 +616,18 @@
+@@ -667,18 +663,19 @@ install: install_libxxhash.a install_libxxhash install_libxxhash.includes instal
  .PHONY: uninstall
  uninstall:  ## uninstall libraries, CLI, links and man page
  	$(Q)$(RM) $(DESTDIR)$(LIBDIR)/libxxhash.a
@@ -82,10 +86,12 @@
 -	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh32sum
 -	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh64sum
 -	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh128sum
+-	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh3sum
 -	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxhsum
 +	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh32sum$(EXT)
 +	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh64sum$(EXT)
 +	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh128sum$(EXT)
++	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh3sum$(EXT)
 +	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxhsum$(EXT)
  	$(Q)$(RM) $(DESTDIR)$(MANDIR)/xxh32sum.1
  	$(Q)$(RM) $(DESTDIR)$(MANDIR)/xxh64sum.1
