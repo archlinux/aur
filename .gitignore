@@ -1,0 +1,8 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!LICENSE
+
+!supertux-advance.desktop
+!supertux-advance-exec

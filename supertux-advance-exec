@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+brux /opt/supertux-advance/game.brx
