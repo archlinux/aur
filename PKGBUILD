@@ -1,8 +1,8 @@
 # Maintainer: Paul Jones <paul@spacefreak18.xyz>
 _reponame=monocoque
 pkgname=monocoque-git
-pkgver=0.1.0r3
-pkgrel=3
+pkgver=0.1.0r94
+pkgrel=1
 pkgdesc="Device Manager for Racing Sims"
 arch=('x86_64')
 url="https://github.com/spacefreak18/monocoque"
@@ -13,10 +13,11 @@ depends=(
 	libxml2
 	argtable
 	libconfig
-	pipewire-pulse
+	pulse-native-provider
 )
 makedepends=(
   git
+  cmake
 )
 source=(
   git+https://github.com/spacefreak18/monocoque
@@ -40,6 +41,5 @@ package() {
   make
 
   mkdir -p "${pkgdir}/usr/bin/"
-  cp "$srcdir/$_reponame"/build/monocoque "${pkgdir}/usr/bin/monocoque"
+  cp "$srcdir/$_reponame"/build/$_reponame "${pkgdir}/usr/bin/$_reponame"
 }
-
