@@ -1,0 +1,17 @@
+pkgbase = minidlna-scrobble
+	pkgdesc = Scrobble minidlna plays to last.fm
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dusnm/minidlna-scrobble
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = GPL3
+	makedepends = go>=1.23
+	source = minidlna-scrobble-1.0.0.tar.gz::https://packages.t0.rs/minidlna-scrobble/v1.0.0.tar.gz
+	source = minidlna-scrobble-1.0.0.tar.gz.sig::https://packages.t0.rs/minidlna-scrobble/v1.0.0.tar.gz.sig
+	validpgpkeys = 31086781B8FA9BA0EBDA9914C303EE480C188527
+	sha256sums = 2d0d4f2f5f70f80c31ee8a7285b1763c9db2f011c7426cda839de2f648ebcaeb
+	sha256sums = 834866828d8938a330e04f7006f2dbb82b3a4774912615514523204bcf785106
+
+pkgname = minidlna-scrobble
