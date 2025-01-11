@@ -16,9 +16,7 @@ prepare() {
 
 build() {
   # No necesitamos compilar nada, solo instalar
-  cp frases.pr "$pkgdir/usr/share/redondo/"
-  cp redondo "$pkgdir/usr/bin/"
-  chmod +x "$pkgdir/usr/bin/redondo"
+
   return 0
 }
 
