@@ -10,4 +10,4 @@ MimeType=x-scheme-handler/obsidian;
 Categories=Office;
 X-Flatpak-Tags=Office;
 X-Flatpak=md.obsidian.app;
-X-Flatpak-RenamedFrom=Obsidian.desktop;
+X-Flatpak-RenamedFrom=obsidian.desktop;
