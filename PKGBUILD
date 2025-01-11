@@ -31,6 +31,12 @@ pkgver() {
   echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
 }
 
+prepare() {
+  # excessive debugging toasts in the UI - see CHANGELOG.md in reference to Unobserved Exceptions
+  sed -i '/Logger\.Error(ex, "Unobserved Task Exception");/s/^/\/\//g' "$_pkgname"/StabilityMatrix.Avalonia/Program.cs
+  sed -i '/originException.Message");/s/^/\/\//g' "$_pkgname"/StabilityMatrix.Avalonia/App.axaml.cs
+}
+
 build() {
   dotnet publish "$_pkgname/StabilityMatrix.Avalonia/StabilityMatrix.Avalonia.csproj" --no-self-contained -p:DebugSymbols=true -o out -c Release -r linux-x64 -p:Version=${_pkgver}
 }
