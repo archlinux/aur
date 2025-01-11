@@ -36,7 +36,7 @@ source=(
   partial-rog.config::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.12/partial-rog.config"
   choose-gcc-optimization.sh
   more-uarches-for-kernel-6.8+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/lite-more-x86-64-ISA-levels-for-kernel-6.8-rc4%2B.patch"
-  
+
   # actual kernel patch series
   0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.12/asus-patch-series.patch"
   # asus-patch-series.patch
@@ -64,7 +64,7 @@ sha256sums=('87be0360df0931b340d2bac35161a548070fbc3a8c352c49e21e96666c26aeb4'
             'a8afb5f75dde2eb038bdd2ec4cd2f8c600d6357ae64960c0df5f2c6c168514ce'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'a6045647f030f2686b2c42075569a40ca9833f559dcd2cdebd01b1964e7388cd'
-            '4127c2471a6e416ce6ebfe1b57f23940164d0c548c1bbad943bf1e853c5ecc38'
+            '4aba28f7b84d00fcb7344afacf44c24c234da8fbf40369835678c0caaec6a160'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             'ed242f4be3f8eaade2a1d42157c5c6c86281917a08ae43221b088fafdc775ee7'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
@@ -148,6 +148,22 @@ prepare() {
   #                --disable CONFIG_INTEL_WMI \
   #                --disable CONFIG_INTEL_IOMMU
 
+  # Disable NUMA (from CachyOS)
+  scripts/config  -d NUMA \
+                  -d AMD_NUMA \
+                  -d X86_64_ACPI_NUMA \
+                  -d NODES_SPAN_OTHER_NODES \
+                  -d NUMA_EMU \
+                  -d USE_PERCPU_NUMA_NODE_ID \
+                  -d ACPI_NUMA \
+                  -d ARCH_SUPPORTS_NUMA_BALANCING \
+                  -d NODES_SHIFT \
+                  -u NODES_SHIFT \
+                  -d NEED_MULTIPLE_NODES \
+                  -d NUMA_BALANCING \
+                  -d NUMA_BALANCING_DEFAULT_ENABLED
+
+  
   # Stuff from Fedora
   scripts/config --enable CONFIG_ASUS_WMI_DEPRECATED_ATTRS \
                  --module CONFIG_HID_ASUS_ALLY \
