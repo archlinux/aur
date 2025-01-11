@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=dstp-git
-pkgver=r85.f331945
+pkgver=r119.51b3e84
 pkgrel=1
 pkgdesc="Run common networking tests against your site"
 arch=('any')
@@ -32,7 +32,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build cmd/dstp/main.go
+  go build -o build cmd/dstp/dstp.go
 }
 
 check() {
@@ -42,5 +42,5 @@ check() {
 
 package() {
   cd "${pkgname/-git/}"
-  install -Dm755 build/main "$pkgdir"/usr/bin/${pkgname/-git/}
+  install -Dm755 build/dstp "$pkgdir"/usr/bin/${pkgname/-git/}
 }
