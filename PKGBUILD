@@ -4,7 +4,7 @@ pkgbase=nuclei-dlink-gdbserver
 pkgname=(nuclei-dlink-gdbserver{,-console})
 _name=nuclei-dlink_gdbserver
 pkgver=0.9.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Nuclei DLink GDB Server Tool"
 arch=($CARCH)
 license=('Apache-2.0')
@@ -19,6 +19,12 @@ depends=(
 makedepends=(
 	libglvnd
 	qt6-tools)
+optdepends=(
+	'nuclei-qemu: nuclei-qemu 是 Nuclei Studio IDE 的仿真工具。'
+	'nuclei-gcc: nuclei-gcc 是 Nuclei Studio IDE 的编译工具。'
+	'nuclei-openocd: nuclei-openocd 是 Nuclei Studio IDE 的调试工具。'
+	'nucleistudioide: Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发的一款针对芯来公司处理器核产品的集成开发环境工具，用于 RISC-V 开发继承了 Eclipse IDE 平台的各种优势。'
+)
 url="https://github.com/Nuclei-Software/nuclei-dlink_gdbserver"
 
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
@@ -47,7 +53,7 @@ package_nuclei-dlink-gdbserver() {
 	install -Dvm644 /dev/stdin ${pkgdir}/usr/share/applications/${pkgname}.desktop <<EOF
 [Desktop Entry]
 Type=Application
-Name=${pkgname}
+Name=Nuclei DLink GDB Server
 Comment=${pkgdesc}
 Exec=dlink_gdbserver
 Icon=${pkgname}.ico
