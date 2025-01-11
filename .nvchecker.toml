@@ -1,0 +1,5 @@
+[vinecopulib]
+source = "github"
+github = "vinecopulib/vinecopulib"
+use_latest_release = "true"
+prefix = "v"
