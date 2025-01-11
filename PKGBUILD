@@ -47,17 +47,17 @@ optdepends=(
 )
 options=(!lto) #Disabling pacman's LTO, as ThinLTO is enforced
 source=(
-  $_pkgname::git+https://github.com/libjxl/libjxl.git#tag=v${pkgver}
-  brotli::git+https://github.com/google/brotli.git#tag=v1.1.0
-  Little-CMS::git+https://github.com/mm2/Little-CMS.git#tag=lcms2.16
-  googletest::git+https://github.com/google/googletest.git#tag=v1.15.2
-  sjpeg::git+https://github.com/webmproject/sjpeg.git
-  skcms::git+https://skia.googlesource.com/skcms.git
-  highway::git+https://github.com/google/highway.git#tag=1.2.0
-  libpng::git+https://github.com/glennrp/libpng.git#tag=v1.6.45
-  zlib::git+https://github.com/madler/zlib.git#tag=v1.3.1
+  git+https://github.com/libjxl/libjxl.git#tag=v${pkgver}
+  git+https://github.com/google/brotli.git#tag=v1.1.0
+  git+https://github.com/mm2/Little-CMS.git#tag=lcms2.16
+  git+https://github.com/google/googletest.git#tag=v1.15.2
+  git+https://github.com/webmproject/sjpeg.git
+  git+https://skia.googlesource.com/skcms.git
+  git+https://github.com/google/highway.git#tag=1.2.0
+  git+https://github.com/glennrp/libpng.git#tag=v1.6.45
+  git+https://github.com/madler/zlib.git#tag=v1.3.1
   libjxl-testdata::git+https://github.com/libjxl/testdata.git
-  libjpeg-turbo::git+https://github.com/libjpeg-turbo/libjpeg-turbo.git#tag=3.1.0
+  git+https://github.com/libjpeg-turbo/libjpeg-turbo.git#tag=3.1.0
 )
 sha256sums=(
   SKIP
