@@ -3,7 +3,7 @@
 pkgname=fetch-github-hosts-git
 pkgver=2.8.r58.16630c
 pkgrel=1
-pkgdesc='A command-line tool for create SylixOS container written in go.'
+pkgdesc='Synchronize GitHub hosts tool, support multi-platform graphical and command line, built-in client and server modes.'
 arch=(any)
 url='https://github.com/Licoy/fetch-github-hosts'
 license=(MIT)
