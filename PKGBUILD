@@ -7,12 +7,13 @@
 
 set -u
 pkgname='joomla'
-pkgver='5.2.2'
+pkgver='5.2.3'
 pkgrel='1'
 pkgdesc='a php Content Management System (CMS) which enables you to build websites and powerful online applications.'
 arch=('any')
 url='https://www.joomla.org/'
-license=('GPL')
+license=('GPL-2.0-only')
+depends=('python')
 #depends=('php<6')
 optdepends=(
   'apache: Web server'
@@ -26,18 +27,28 @@ install="${pkgname}.install"
 #source=("http://joomlacode.org/gf/download/frsrelease/20086/162538/Joomla_${pkgver}-Stable-Full_Package.tar.bz2")
 _giturl="https://github.com/joomla/${pkgname}-cms"
 #_verwatch=("${_giturl}/releases" "${_giturl}/releases/download/[0-9\.]\+/Joomla_\([0-9\.]\+\)-Stable-Full_Package\.tar\.bz2" 'l')
-_verwatch=("${_giturl}/releases.atom" '\s\+<title>Joomla! \([0-9.]\+\)<.*' 'f')
-source=("${_giturl}/releases/download/${pkgver}/Joomla_${pkgver}-Stable-Full_Package.tar.gz")
-md5sums=('521fafd9566e7bdb7663ae21f7ec4386')
-sha256sums=('139213aed82025b6d2ae421ec3f3c71ac84d373056e8518fa79e1d285f411eff')
+#_verwatch=("${_giturl}/releases.atom" '\s\+<title>Joomla! \([0-9.]\+\)<.*' 'f')
+_srcdir="Joomla_${pkgver}-Stable-Full_Package"
+source=("${_giturl}/releases/download/${pkgver}/${_srcdir}.tar.gz")
+md5sums=('9cf7b5303556eed6ea6a48bf460e0b54')
+sha256sums=('8fca93a0f3f1a8bbb1464bc276aad524d0cedf8d4f5437b1fd587df995791c00')
+noextract=("${source[0]##*/}")
+
+prepare() {
+  set -u
+  mkdir "${_srcdir}"
+  bsdtar -C "${_srcdir}" -xf "${noextract[0]}"
+  set +u
+}
 
 package() {
   set -u
+  cd "${_srcdir}"
   install -dm755 "${pkgdir}/usr/share/webapps"
-  cp -pr "${srcdir}" "${pkgdir}/usr/share/webapps/joomla"
-  find "${pkgdir}/usr/share/webapps/joomla" -maxdepth 1 -type 'l' -iname '*.bz2' -delete
-  find "${pkgdir}/usr/share/webapps/joomla" -type 'f' -exec chmod 0664 '{}' ';'
-  find "${pkgdir}/usr/share/webapps/joomla" -type 'd' -exec chmod 0775 '{}' ';'
+  cp -pr . "${pkgdir}/usr/share/webapps/joomla"
+  find "${pkgdir}/usr/share/webapps/joomla" -maxdepth '1' -type 'l' -iname '*.bz2' -delete
+  find "${pkgdir}/usr/share/webapps/joomla" -type 'f' -exec chmod 0664 '{}' '+'
+  find "${pkgdir}/usr/share/webapps/joomla" -type 'd' -exec chmod 0775 '{}' '+'
   chown -R 'root:root' "${pkgdir}/usr/share/webapps/joomla"
   install -D 'LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   set +u
