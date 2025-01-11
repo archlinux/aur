@@ -1,0 +1,16 @@
+pkgbase = spd5118-dkms-git
+	pkgdesc = René Rebe's driver for the SPD-5118 DDR5 Temperature sensor, with a DKMS config added.
+	pkgver = r3.3beaed5
+	pkgrel = 1
+	url = https://github.com/Steve-Tech/SPD5118-DKMS
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = dkms
+	optdepends = linux-headers: Build the module for Arch kernel
+	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
+	conflicts = spd5118-dkms
+	source = spd5118-dkms-git::git+https://github.com/Steve-Tech/SPD5118-DKMS.git
+	sha256sums = SKIP
+
+pkgname = spd5118-dkms-git
