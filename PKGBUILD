@@ -3,7 +3,7 @@
 pkgname=toxcore-c
 _pkgname=c-toxcore
 pkgver=0.2.20
-pkgrel=2
+pkgrel=3
 pkgdesc='C backend implementation of the Tox communication protocol'
 arch=('x86_64')
 url='https://tox.chat'
@@ -22,8 +22,8 @@ prepare() {
   git submodule update --init --recursive
   sed -i "s|/usr/local|/usr|" "other/bootstrap_daemon/tox-bootstrapd.service"
 
-  echo 'u tox-bootstrapd 199 "Tox bootstrapd"\ng tox-bootstrapd 199\n' > "$srcdir/toxcore.conf"
-  echo 'd /var/lib/tox-bootstrapd 0750 tox-bootstrapd tox-bootstrapd - -\n' > "$srcdir/toxcore.tmpfiles"
+  echo "u tox-bootstrapd 199 \"Tox bootstrapd\"\ng tox-bootstrapd 199\n" > "$srcdir/toxcore.conf"
+  echo "d /var/lib/tox-bootstrapd 0750 tox-bootstrapd tox-bootstrapd - -\n" > "$srcdir/toxcore.tmpfiles"
 }
 
 build() {
