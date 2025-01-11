@@ -1,7 +1,7 @@
 # Maintainer: Neko_Rikka <yjzyl9008 at gmail dot com>
 
 pkgname=python-sssekai-git
-pkgver=r129.40fa4b9
+pkgver=r164.6477cc4
 pkgrel=1
 pkgdesc="About Project SEKAI Asset Utility."
 arch=('x86_64')
@@ -10,29 +10,16 @@ license=('MIT')
 provides=('sssekai')
 conflicts=('python-sssekai')
 depends=(
-  'python-attrs'
-  'python-brotli'
-  'python-certifi'
-  'python-charset-normalizer'
+  'python-astc-encoder-py'
   'python-coloredlogs'
-  'python-etcpak-git'
-  'python-python-ffmpeg'
-  'python-fsspec'
-  'python-future'
-  'python-humanfriendly'
-  'python-idna'
-  'python-lz4'
   'python-msgpack'
-  'python-pillow'
+  'python-pyaxmlparser'
   'python-pycryptodome'
-  'python-pyfmodex-git'
   'python-json-logger'
   'python-requests'
-  'python-tabulate'
-  'python-texture2ddecoder'
+  'python-rich'
   'python-tqdm'
   'python-unitypy'
-  'python-urllib3'
   'python-wannacri-git'
 )
 checkdepends=('python-pytest' 'python-pytest-cov')
