@@ -22,7 +22,7 @@ build() {
 
 package() {
   # Definir la instalación de los archivos en el directorio del paquete
-  install -Dm755 "$srcdir/redondo.sh" "$pkgdir/usr/bin/redondo"
+  install -Dm755 "$srcdir/redondo.sh" "$pkgdir/usr/bin/redondo.sh"
   install -Dm644 "$srcdir/frases.pr" "$pkgdir/usr/share/redondo/frases.pr"
 }
 
