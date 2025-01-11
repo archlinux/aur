@@ -1,12 +1,13 @@
 pkgbase = gd32-dfu-utils
 	pkgdesc = Dfu-utils GD32 fork. Dfu-util - Device Firmware Upgrade Utilities
 	pkgver = 0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/riscv-mcu/gd32-dfu-utils
 	arch = x86_64
-	license = GPLv2
+	license = GPL-2.0-only
+	depends = glibc
 	depends = libusb
-	optdepends = python: dfuse-pack tool support
+	depends = python
 	optdepends = python-intelhex: Intel HEX file format support
 	provides = GD32-dfu-util
 	options = !strip
