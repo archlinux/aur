@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/oh-brother/
+
+*.tar.xz
+*.tar.zst
