@@ -1,7 +1,7 @@
 pkgbase = isdnutils
 	pkgdesc = Some utilities from the 'ISDN4Linux' project.
 	pkgver = 3.25+dfsg1.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.isdn4linux.de/
 	arch = x86_64
 	arch = i686
@@ -42,6 +42,16 @@ pkgbase = isdnutils
 	provides = isdnutils-doc=3.25+dfsg1.10
 	provides = isdnvboxclient=3.25+dfsg1.10
 	provides = isdnvboxserver=3.25+dfsg1.10
+	conflicts = capifax
+	conflicts = capiinfo
+	conflicts = divertctrl
+	conflicts = iprovd
+	conflicts = ipppstats
+	conflicts = isdn_cause
+	conflicts = isdnctrl
+	conflicts = isdnutils-doc
+	conflicts = isdnvboxclient
+	conflicts = isdnvboxserver
 	options = !lto
 	options = emptydirs
 	backup = etc/isdn/caller.conf

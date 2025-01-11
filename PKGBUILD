@@ -8,7 +8,7 @@ _debianver=dfsg1
 _debianrel=10
 _upstreamver=3.25
 pkgver="${_upstreamver}+${_debianver}.${_debianrel}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Some utilities from the 'ISDN4Linux' project."
 url="https://www.isdn4linux.de/"
 arch=(
@@ -61,6 +61,18 @@ provides=(
   "isdnutils-doc=${pkgver}"
   "isdnvboxclient=${pkgver}"
   "isdnvboxserver=${pkgver}"
+)
+conflicts=(
+  "capifax"
+  "capiinfo"
+  "divertctrl"
+  "iprovd"
+  "ipppstats"
+  "isdn_cause"
+  "isdnctrl"
+  "isdnutils-doc"
+  "isdnvboxclient"
+  "isdnvboxserver"
 )
 source=(
   "http://deb.debian.org/debian/pool/main/i/isdnutils/isdnutils_${_upstreamver}+${_debianver}.orig.tar.bz2"
