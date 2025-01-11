@@ -47,17 +47,17 @@ optdepends=(
 )
 options=(!lto) #Disabling pacman's LTO, as ThinLTO is enforced
 source=(
-  $_pkgname::git+https://github.com/libjxl/libjxl.git
-  brotli::git+https://github.com/google/brotli.git
-  Little-CMS::git+https://github.com/mm2/Little-CMS.git
-  googletest::git+https://github.com/google/googletest.git
-  sjpeg::git+https://github.com/webmproject/sjpeg.git
-  skcms::git+https://skia.googlesource.com/skcms.git
-  highway::git+https://github.com/google/highway.git
-  libpng::git+https://github.com/glennrp/libpng.git
-  zlib::git+https://github.com/madler/zlib.git
+  git+https://github.com/libjxl/libjxl.git
+  git+https://github.com/google/brotli.git
+  git+https://github.com/mm2/Little-CMS.git
+  git+https://github.com/google/googletest.git
+  git+https://github.com/webmproject/sjpeg.git
+  git+https://skia.googlesource.com/skcms.git
+  git+https://github.com/google/highway.git
+  git+https://github.com/glennrp/libpng.git
+  git+https://github.com/madler/zlib.git
   libjxl-testdata::git+https://github.com/libjxl/testdata.git
-  libjpeg-turbo::git+https://github.com/libjpeg-turbo/libjpeg-turbo.git
+  git+https://github.com/libjpeg-turbo/libjpeg-turbo.git
 )
 sha256sums=(
   SKIP
