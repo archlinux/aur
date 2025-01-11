@@ -1,7 +1,7 @@
 pkgbase = rusty-psn-bin
 	pkgdesc = A GUI/CLI tool for downloading PS3 and PS4 game updates
 	pkgver = 0.5.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RainbowCookie32/rusty-psn
 	arch = x86_64
 	license = Apache

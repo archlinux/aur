@@ -2,7 +2,7 @@
 
 pkgname=rusty-psn-bin
 pkgver=0.5.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A GUI/CLI tool for downloading PS3 and PS4 game updates"
 provides=("rustypsn")
 arch=('x86_64')
@@ -28,7 +28,7 @@ package() {
     install -o root -g root -m 755 -d "${pkgdir}/usr/share/applications"
     install -o root -g root -m 755 -d "${pkgdir}/usr/share/pixmaps"
 
-    unzip rusty-psn-cli-linux.zip -d "${pkgdir}/usr/bin"
+    unzip "${pkgname}-cli-${pkgver}.zip" -d "${pkgdir}/usr/bin"
     chmod 0755 "${pkgdir}/usr/bin/rusty-psn"
 
     install -o root -g root -m 755 "${srcdir}/rusty-psn" "${pkgdir}/usr/bin/rusty-psn-gui"
