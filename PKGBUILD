@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-liberty
 pkgver=31.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc."
 arch=('x86_64')
 url="https://github.com/obsproject/obs-studio"
@@ -71,8 +71,6 @@ makedepends=(
   "v4l-utils" # Deps of V4L2 plugin
   "websocketpp" # Deps of Websocket plugin (headers-only lib)
 
-  # Deps of obs-browser
-  #"cef-minimal-obs=1:127.3.4+ge9e2e14+chromium_127.0.6533.100_1"
 )
 optdepends=(
   "jack: JACK support"
@@ -94,38 +92,30 @@ optdepends=(
   "libajantv2>=$_libajantv2ver: AJA support"
 )
 provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket" "obs-browser")
-conflicts=("obs-studio" "obs-websocket" "obs-browser" "obs-linuxbrowser" "obs-studio-tytan652" "obs-studio-git" "obs-studio-amf" "obs-studio-browser" "obs-vst" "obs-linuxbrowser")
+conflicts=("obs-studio" "obs-websocket" "obs-browser" "obs-linuxbrowser" "obs-studio-tytan652" "obs-studio-git" "obs-studio-amf" "obs-studio-browser" "obs-vst")
 source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
   "https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64.tar.xz"
-  #"0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch"
 )
 sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
   "fab66dfc9cfd2e26fb87798f855aef30c2004edc8e19570d37af555644ae1655"
-  #"c397a8da291547c757a42f7727a5e6650aa70e6e531f2ef150356eb9eb1fb49c"
 )
 
 prepare() {
   cd "$srcdir/obs-studio"
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
-  git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
+
   git -c protocol.file.allow=always submodule update
 
-  # MbedTLS 3.6.0 broke stuff with TLS v1.3 (Thanks tytan652)
-  # patch -Np1 -i "$srcdir/0004-Max_tls_v1_2_mbedtls_3_6_0_workaround.patch"
-
-  #cd "$srcdir"
-  #make PREFIX="$srcdir/nv-prefix" -C supported-nv-codec-headers install
 }
 
 build() {
-  export PKG_CONFIG_PATH="${srcdir}/nv-prefix/lib/pkgconfig"
 
   cmake -B build -S obs-studio \
     -DCMAKE_BUILD_TYPE=None \
@@ -135,11 +125,12 @@ build() {
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=ON \
-    -DCEF_ROOT_DIR="$srcdir/cef_binary_6533_linux_x86_64/" \
+    -DENABLE_FFMPEG_NVENC=ON \
+    -DCEF_ROOT_DIR="$srcdir/cef_binary_6533_linux_x86_64" \
     -DOBS_VERSION_OVERRIDE="$pkgver" \
     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
-    -Wno-dev \
-    #-DCMAKE_INCLUDE_PATH="${srcdir}/nv-prefix/include:/usr/include"
+    -Wno-dev
+
   cmake --build build
 }
 
