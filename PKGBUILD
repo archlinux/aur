@@ -3,7 +3,7 @@
 # Contributor: Genki Sky <alt+archlinux.org@genki.is>
 
 pkgname=tla-toolbox
-pkgver=1.7.1
+pkgver=1.7.4
 pkgrel=1
 pkgdesc='IDE for the TLA+ tools'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('java-runtime')
 source=("https://github.com/tlaplus/tlaplus/releases/download/v$pkgver/TLAToolbox-$pkgver-linux.gtk.x86_64.zip"
         tla-toolbox.desktop
         icon.png)
-sha256sums=('108af33356211ec276864877aed83be953099f08bb09c6aea27778113f80fefa'
+sha256sums=('7982b671726f2c841f90afa89eba26c2135f026cd64b20995c2b04391c648da5'
             '900b0d2e03a7254faa108653aee50f1107b249c41e40d66655f7fdb12d4a5c82'
             '51dbb6724fa7ff5167067dce68dd6b577a2401a47a37120a9879f0afd85ff7c9')
 
