@@ -75,7 +75,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  make
+  make -j1 #reported failures https://aur.archlinux.org/packages/gforth#comment-1006294 - possibly means we don't need options=(!lto)
   make doc
   make more
 }
