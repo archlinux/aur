@@ -8,7 +8,7 @@ url="https://github.com/MonadicSpell/vala-rofi-polkit"
 license=('MIT')
 depends=('polkit')
 optdepends=('bash')
-makedepends=('git' 'meson' 'ninja')
+makedepends=('git' 'meson' 'ninja' 'vala')
 source=("${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}")
 options=('!debug')
 sha256sums=('SKIP')
