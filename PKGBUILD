@@ -2,13 +2,13 @@
 _pkgname=supertux-advance
 pkgname=supertux-advance-git
 pkgver=0.2.1.r573.g98706aa7
-pkgrel=1
+pkgrel=2
 pkgdesc="A SuperTux game made in Brux GDK with 16bit-style graphics."
 
 arch=(any)
 
 url="https://github.com/KelvinShadewing/supertux-advance"
-license=('AGPL-v3')
+license=('AGPL-3.0-only')
 
 depends=('brux-gdk-git')
 makedepends=('git')
