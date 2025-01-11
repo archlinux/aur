@@ -7,6 +7,7 @@ pkgbase = npth-git
 	license = LGPL-2.1-or-later
 	depends = glibc
 	depends = sh
+	depends = git
 	provides = libnpth.so
 	provides = npth
 	conflicts = npth
