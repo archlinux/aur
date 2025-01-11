@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/arokzZz/redondo.git"
 license=('GPL')
 depends=()
-source=("redondo.sh" "frases.pr")
+source=("redondo" "frases.pr")
 sha256sums=('SKIP' 'SKIP')  # Se puede calcular el hash si es necesario
 
 prepare() {
@@ -22,7 +22,7 @@ build() {
 
 package() {
   # Definir la instalación de los archivos en el directorio del paquete
-  install -Dm755 "$srcdir/redondo.sh" "$pkgdir/usr/bin/redondo.sh"
+  install -Dm755 "$srcdir/redondo" "$pkgdir/usr/bin/redondo"
   install -Dm644 "$srcdir/frases.pr" "$pkgdir/usr/share/redondo/frases.pr"
 }
 
