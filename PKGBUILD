@@ -1,4 +1,4 @@
-# Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain with is .cloud>
+# Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
 _pkgname=brux-gdk
 pkgname=brux-gdk-git
 pkgver=0.2.11.r210.g70ce705
