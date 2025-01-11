@@ -23,8 +23,8 @@ makedepends=(
 	'cmake'
 )
 
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname" "supertux-advance") # TODO: remove if supertux-advance AUR package begins depending on brux-gdk(-git)
+provides=("brux")
+conflicts=("brux" "supertux-advance") # TODO: remove if supertux-advance AUR package begins depending on brux-gdk(-git)
 
 source=("$_pkgname::git+$url.git#branch=unstable")
 sha256sums=('SKIP')
