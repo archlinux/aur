@@ -35,12 +35,14 @@ provides=(
   butteraugli
   ssimulacra
   ssimulacra2
+  jpegli
 )
 conflicts=(
   libjxl
   butteraugli
   ssimulacra
   ssimulacra2
+  jpegli
 )
 optdepends=(
   'libjxl-doc: for documentation'
