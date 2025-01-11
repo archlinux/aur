@@ -3,7 +3,7 @@
 _pkgauthor=walles
 _pkgname=riff
 pkgname=${_pkgname}-bin
-pkgver=3.3.7
+pkgver=3.3.8
 pkgrel=1
 pkgdesc='A diff filter highlighting which line parts have changed'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -15,7 +15,7 @@ provides=("${_pkgname}")
 source=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64-linux"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}::${_urlraw}/README.md")
-sha256sums=('a7fefc2f7f030adf4e045e9b55a5672d3547278ce6255cd179c8f1df80ff1c7c'
+sha256sums=('fe4be634efa13adcb8c19374681d9c684737fad8722c2e336715a2137fa78307'
             '8fe11bd57802035aa8be7cb7382edd1e5f7e53cc6d2ca078271b59b1f94bde26'
             '9d9d78d18ca3aac694d162a2a3f3a719c74f6ba105a33ffc0170c8ad0719a8f6')
 
