@@ -50,5 +50,5 @@ build() {
 package() {
   cd $_pkgname
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dvm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
