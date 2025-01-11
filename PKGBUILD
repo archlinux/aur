@@ -36,5 +36,5 @@ package() {
 }
 
 # Point to the .install script
-install="$pkgname.install"
+install="macbook-12-1-linux-fixes.install"
 
