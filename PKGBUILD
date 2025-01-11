@@ -43,7 +43,7 @@ makedepends=(# "Meta" dependencies
 source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
         "skia-$_skiaver.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/$_skiaver-$_skiahash.tar.gz"
-        aseprite-strings::git+https://github.com/aseprite/strings.git#commit=f9cf9f95f46d78dcdfc4c9b8835306bd9728c8be
+        aseprite-strings::git+https://github.com/aseprite/strings.git#commit=7b0af61dec1d98242d7eb2e9cab835d442d21235
         desktop.patch
         shared-fmt.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2535.patch
@@ -58,7 +58,7 @@ noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
 sha256sums=('e608b7a77a1d77a50394323759ba12cf3543e1d05745e1d907fe9818157f2d4c'
             '8d76c1ad3693e1fc019eb14d806082148eb4ed7d601474aeeaae601b05a9b3ad'
-            'a0090d46824bdbd79a83ec9ad83e4d09680471e442569ab16f753c62ef0d0e3c'
+            '36b329f23429670bf473472a6b64ca5156d2707599eaabdd69ef424dd6ad5635'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'c3591d376180d99ff8001c3d549c0bd18ef5e4d95f1755ccaa8e2fd65dd5d2b3'
             '89cd28a5a90ee9dd42e85866b6f954bde526068d94311b0730a62f00f9cfffdb'

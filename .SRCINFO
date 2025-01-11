@@ -36,7 +36,7 @@ pkgbase = aseprite
 	noextract = skia-m102.tar.gz
 	source = https://github.com/aseprite/aseprite/releases/download/v1.3.11/Aseprite-v1.3.11-Source.zip
 	source = skia-m102.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/m102-861e4743af.tar.gz
-	source = aseprite-strings::git+https://github.com/aseprite/strings.git#commit=f9cf9f95f46d78dcdfc4c9b8835306bd9728c8be
+	source = aseprite-strings::git+https://github.com/aseprite/strings.git#commit=7b0af61dec1d98242d7eb2e9cab835d442d21235
 	source = desktop.patch
 	source = shared-fmt.patch
 	source = shared-libarchive.patch
@@ -47,7 +47,7 @@ pkgbase = aseprite
 	source = shared-libwebp-found.patch
 	sha256sums = e608b7a77a1d77a50394323759ba12cf3543e1d05745e1d907fe9818157f2d4c
 	sha256sums = 8d76c1ad3693e1fc019eb14d806082148eb4ed7d601474aeeaae601b05a9b3ad
-	sha256sums = a0090d46824bdbd79a83ec9ad83e4d09680471e442569ab16f753c62ef0d0e3c
+	sha256sums = 36b329f23429670bf473472a6b64ca5156d2707599eaabdd69ef424dd6ad5635
 	sha256sums = 8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9
 	sha256sums = c3591d376180d99ff8001c3d549c0bd18ef5e4d95f1755ccaa8e2fd65dd5d2b3
 	sha256sums = 89cd28a5a90ee9dd42e85866b6f954bde526068d94311b0730a62f00f9cfffdb
