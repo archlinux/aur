@@ -6,7 +6,7 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=amarok
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="The powerful music player for KDE"
 arch=(x86_64)
@@ -21,12 +21,12 @@ depends=(kcmutils5 kdnssd5 kirigami2 kirigami-addons5 ktexteditor5 liblastfm-qt5
          knotifications5 fftw kcodecs5  kxmlgui5 kcoreaddons5 ki18n5 ktextwidgets5 hicolor-icon-theme
          kwindowsystem5 kconfigwidgets5 kwidgetsaddons5  kconfig5 kiconthemes5 kcrash5 solid5)
 makedepends=(extra-cmake-modules git qt5-tools loudmouth qt5-webengine kdoctools5)
-optdepends=(
-    "qt5-webengine: wikipedia"
-    "loudmouth: backend needed by mp3tunes for syncing"
-)
+optdepends=("libmtp: support for portable media devices"
+            "loudmouth: backend needed by mp3tunes for syncing"
+            #"taglib-extras: taglib plugins for Audible and RealMedia files"
+            )
 source=("https://invent.kde.org/multimedia/amarok/-/archive/v${pkgver}/amarok-v${pkgver}.tar.gz")
-sha256sums=('3fc2168ba770479bcb24a5a07ece8cc2bdde0132cf518456dc8036c739ca3fa8')
+sha256sums=('20128ce6585bcc0ebadd04cee563d2d66c6f802774d61832cfae6fdae30def6d')
 
 build() {
   cmake -B build -S "amarok-v${pkgver}" -Wno-dev \
