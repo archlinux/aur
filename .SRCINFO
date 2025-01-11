@@ -1,0 +1,34 @@
+pkgbase = nuclei-dlink-gdbserver
+	pkgdesc = Nuclei DLink GDB Server Tool
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/Nuclei-Software/nuclei-dlink_gdbserver
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = libglvnd
+	makedepends = qt6-tools
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = qt6-serialport
+	source = nuclei-dlink_gdbserver-0.9.1.tar.gz::https://github.com/Nuclei-Software/nuclei-dlink_gdbserver/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = af87281a557dac5e0240fe7db33e924a96a0ef0dc9735478a886af151c152bbb
+
+pkgname = nuclei-dlink-gdbserver
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = qt6-serialport
+	depends = libglvnd
+	provides = nuclei-dlink-gdbserver
+	conflicts = nuclei-dlink-gdbserver
+
+pkgname = nuclei-dlink-gdbserver-console
+	pkgdesc = Nuclei DLink GDB Server Tool Console
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = qt6-serialport
+	depends = nuclei-dlink-gdbserver
+	provides = nuclei-dlink-gdbserver-console
+	conflicts = nuclei-dlink-gdbserver-console
