@@ -3,7 +3,7 @@
 # Contributor: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
 # Contributor: Sander van Kasteel <info at sandervankasteel dot nl>
 pkgname=gtg-git
-pkgver=0.6.r511.g95e33bcd
+pkgver=0.6.r515.g6ea94b99
 pkgrel=1
 pkgdesc="Getting Things GNOME! is a personal tasks and TODO-list items organizer for GNOME"
 arch=('any')
@@ -12,12 +12,14 @@ license=('GPL-3.0-or-later')
 depends=(
   'gtk4'
   'gtksourceview5'
+  'libportal-gtk4'
   'libsecret'
   'python-caldav'
   'python-dbus'
   'python-gobject'
   'python-liblarch-git'
   'python-lxml'
+  'python-typing_extensions'
 )
 makedepends=(
   'git'
@@ -26,6 +28,7 @@ makedepends=(
 )
 #checkdepends=(
 #  'python-pytest'
+#  'xorg-server-xvfb'
 #)
 optdepends=(
   'hamster-time-tracker: send a task to the Hamster time tracking applet'
@@ -46,6 +49,13 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+
+  # Correct required GtkSourceView version
+  sed -i 's/gtksourceview-4/gtksourceview-5/g' meson.build
+}
+
 build() {
   arch-meson "${pkgname%-git}" build
   meson compile -C build
@@ -53,9 +63,9 @@ build() {
 
 #check() {
 #  cd "${pkgname%-git}"
-#  python run-tests
+#  PYTHONPATH=. xvfb-run pytest
 #}
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
