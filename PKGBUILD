@@ -1,26 +1,49 @@
-# Maintainer: Fhilipe Coelho <fhilipecoelho.dev@gmail.com>
-
 pkgname=hydra-launcher
-_pkgname=hydra-launcher
-pkgver=1.1.0
-pkgrel=3
-pkgdesc="No bullshit, just play"
+pkgver=3.1.5
+pkgrel=1
+pkgdesc="A game launcher with its own embedded bittorrent client"
 arch=('x86_64')
 url="https://github.com/hydralauncher/hydra"
 license=('MIT')
-provides=('hydra-launcher')
-options=(debug !strip)
-
-source=()
-
-source_x86_64=("https://github.com/hydralauncher/hydra/releases/download/v${pkgver}/hydra-launcher_${pkgver}_amd64.deb")
-sha256sums_x86_64=('66ef041728020388b84ddf10e34207377d370101e2244e613fac1bbb65e0272c')
+provides=("${pkgname%-bin}")
+depends=('alsa-lib'
+         'at-spi2-core'
+         'bash'
+         'cairo'
+         'dbus'
+         'expat'
+         'gcc-libs'
+         'gdk-pixbuf2'
+         'glib2'
+         'glibc'
+         'gtk3'
+         'hicolor-icon-theme'
+         'libcups'
+         'libdrm'
+         'libx11'
+         'libxcb'
+         'libxcomposite'
+         'libxdamage'
+         'libxext'
+         'libxfixes'
+         'libxkbcommon'
+         'libxrandr'
+         'libxrender'
+         'mesa'
+         'nspr'
+         'nss'
+         'pango'
+         'zlib')
+options=('!strip')
+source=("${url}/releases/download/v${pkgver}/hydralauncher_${pkgver}_amd64.deb"
+        "${pkgname}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
+sha256sums=('0e557aa8bd122ddb884d0d79cb7e837e6e976c26cf0b56cbd218ed7eb16db59e'
+            '32619612c2e0223e86c4908747ec14bef64c3c423fee80910c1aa944769b66f9')
 
 package() {
-  tar -xvf 'data.tar.zst' -C "${pkgdir}"
-  install -dv "${pkgdir}/usr/bin"
-  ln -sfv "/usr/lib/hydra-launcher/Hydra" -t "${pkgdir}/usr/bin"
-  install -Dvm644 "${pkgdir}/usr/lib/hydra-launcher/"LICENSES.chromium.html \
-    -t "${pkgdir}/usr/share/licenses/hydra-launcher"
+    bsdtar -xf data.tar.xz -C "${pkgdir}" --no-same-permissions
+    install -d "${pkgdir}/usr/bin"
+    ln -s /opt/Hydra/hydralauncher -t "${pkgdir}/usr/bin"
+    install -Dm644 "${pkgname}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
