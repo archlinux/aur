@@ -120,6 +120,7 @@ pkgname = lib32-amdonly-gaming-mesa-git
 	depends = lib32-zstd
 	depends = amdonly-gaming-mesa-git
 	optdepends = opengl-man-pages: for the OpenGL API man pages
+	provides = lib32-mesa
 	provides = lib32-libva-mesa-driver=:25.0.0_devel.199912.731138386a5.d41d8cd-1
 	provides = lib32-mesa-libgl=:25.0.0_devel.199912.731138386a5.d41d8cd-1
 	provides = lib32-mesa-vdpau=:25.0.0_devel.199912.731138386a5.d41d8cd-1

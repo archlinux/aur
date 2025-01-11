@@ -325,6 +325,7 @@ package_lib32-amdonly-gaming-mesa-git() {
     'opengl-man-pages: for the OpenGL API man pages'
   )
   provides=(
+    "lib32-mesa"
     "lib32-libva-mesa-driver=$epoch:$pkgver-$pkgrel"
     "lib32-mesa-libgl=$epoch:$pkgver-$pkgrel"
     "lib32-mesa-vdpau=$epoch:$pkgver-$pkgrel"
