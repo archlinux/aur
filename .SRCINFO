@@ -1,7 +1,7 @@
 pkgbase = vtm
 	pkgdesc = Terminal multiplexer with window manager and session sharing
 	pkgver = 0.9.99.61
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/directvt/vtm
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,9 @@ pkgbase = vtm
 	makedepends = cmake>=3.8
 	depends = gcc-libs
 	depends = glibc
-	source = vtm-0.9.99.61.tar.gz::https://github.com/directvt/vtm/archive/v0.9.99.61.tar.gz
+	source = vtm-0.9.99.61.tar.gz::https://github.com/directvt/vtm/archive/refs/tags/v0.9.99.61.tar.gz
+	source = vtm_cmake_build_type.patch
 	b2sums = 177cdd94c67466a93dbf7363b664c2ed4de30b068ef18d701d3dc7490ac4b2ffd873aa5666fb31d9a71f84ae1f3b4199a8b79554db1ef4f56c02d7449f376326
+	b2sums = 36a4f06ecad5fb6d038932725471f5672e5695aba09abc304f9860a49d53a43ecb2341b545d73077770ff1dd2f125e661e3d02bd0ad3f1bdadc3a2ea174f3c15
 
 pkgname = vtm
