@@ -1,40 +1,53 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: David Schury <dasc at posteo dot de>
 
-pkgname=mingw-w64-libsigc++
-_pkgname=libsigc++
-pkgver=2.10.3
+_name="libsigc++"
+pkgname="mingw-w64-${_name}"
+pkgver=2.12.1
 pkgrel=1
 epoch=1
-pkgdesc="Libsigc++ implements a full callback system for use in widget libraries - V2 (mingw-w64)"
+pkgdesc="Callback Framework for C++ (mingw-w64)"
 arch=('any')
-url="https://libsigcplusplus.github.io/libsigcplusplus/"
-license=('LGPL')
-makedepends=('mingw-w64-gcc' 'mingw-w64-configure')
+url="https://libsigcplusplus.github.io/libsigcplusplus"
+# _url="https://github.com/libsigcplusplus/libsigcplusplus"
+license=('LGPL-3.0-or-later')
 depends=('mingw-w64-crt')
+makedepends=('mingw-w64-meson>=0.55' 'mm-common')
+provides=('mingw-w64-libsigc++2.0')
+conflicts=('mingw-w64-libsigc++2.0')
+replaces=('mingw-w64-libsigc++2.0')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://ftp.gnome.org/pub/GNOME/sources/$_pkgname/${pkgver%.*}/$_pkgname-${pkgver}.tar.xz")
-sha256sums=('0b68dfc6313c6cc90ac989c6d722a1bf0585ad13846e79746aa87cb265904786')
+_pkgsrc="${_name}-${pkgver}"
+source=("${_pkgsrc}.tar.xz::https://download.gnome.org/sources/${_name}/${pkgver%.*}/${_pkgsrc}.tar.xz")
+sha256sums=('a9dbee323351d109b7aee074a9cb89ca3e7bcf8ad8edef1851f4cf359bd50843')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-  cd "${srcdir}/$_pkgname-$pkgver/"
+  cd "${srcdir}"
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure \
-      --disable-documentation \
-      ..
-    make
-    popd
+    mkdir -p "build-${_arch}"
+    ${_arch}-meson "${_pkgsrc}" "build-${_arch}" \
+      -D maintainer-mode=true \
+      -D build-documentation=false \
+      -D build-pdf=false \
+      -D build-examples=false \
+      -D build-tests=false \
+      -D validation=false \
+      -D benchmark=false
+    meson compile -C build-${_arch}
   done
 }
 
 package() {
+  cd "${srcdir}"
   for _arch in ${_architectures}; do
-    cd "${srcdir}/$_pkgname-$pkgver/build-${_arch}"
-    make DESTDIR="${pkgdir}" install
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    meson install -C "build-${_arch}" --destdir "${pkgdir}"
+    find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec "${_arch}-strip" "{}" \;
+    find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec "${_arch}-strip" --strip-unneeded "{}" \;
+    find "${pkgdir}/usr/${_arch}" \( -name '*.a' -o -name '*.dll' \) -exec "${_arch}-strip" -g '{}' ';'
   done
 }
+
+# vim: ts=2 sw=2 et:
