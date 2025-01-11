@@ -1,0 +1,13 @@
+diff --git a/util/CMakeLists.txt b/util/CMakeLists.txt
+index b1bc6f14..5a0a52f4 100644
+--- a/util/CMakeLists.txt
++++ b/util/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-install(PROGRAMS
+-        bash-completion.sh
+-        DESTINATION util
+-        )
++#install(PROGRAMS
++#        bash-completion.sh
++#        DESTINATION util
++#        )

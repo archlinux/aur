@@ -4,14 +4,27 @@ pkgname=('mmseqs2-sse4' 'mmseqs2-avx2')
 _pkgbase=${pkgbase//mm/MM}
 pkgver=16.747c6
 _pkgver=16-747c6
-pkgrel=3
+pkgrel=5
 pkgdesc="ultra fast and sensitive search and clustering suite. https://doi.org/10.1038/nbt.3988"
 arch=('x86_64')
 url="https://github.com/soedinglab/mmseqs2"
-license=('GPL3')
-makedepends=('cmake' 'zlib' 'openmp' 'vim')
-source=("$_pkgbase-$_pkgver.tar.gz::https://github.com/soedinglab/MMseqs2/archive/refs/tags/${_pkgver}.tar.gz")
-sha256sums=('faeb6841feb8e028651c2391de1346c55c2091a96520b625525d27b99d07ef1d')
+license=('MIT')
+makedepends=('cmake' 'zlib' 'openmp' 'vim' 'perl')
+source=("$_pkgbase-$_pkgver.tar.gz::https://github.com/soedinglab/MMseqs2/archive/refs/tags/${_pkgver}.tar.gz"
+        "bash-completion.patch"
+        "fix_util_installation.patch"
+        )
+install=bash-completion.install
+sha256sums=('faeb6841feb8e028651c2391de1346c55c2091a96520b625525d27b99d07ef1d'
+            '39432896625dca6240e7f4f6dffebd05f40a1d0de2c724d7123cb63e2464e791'
+            'ca25afde5447ec6b72e0a6ca9874eb6b5b93c2ec52ff3f10e4b3929d1aea1e71')
+prepare() {
+  cd $_pkgbase-$_pkgver
+  # add package specific information needed to enable bash autocompletion
+  patch -p1 < ${srcdir}/bash-completion.patch
+  # Prevent CMake from installing util/ contents to nonstandard /usr/util location.
+  patch -p1 < ${srcdir}/fix_util_installation.patch
+}
 
 build() {
   cd $_pkgbase-$_pkgver
@@ -50,28 +63,30 @@ build() {
 
 package_mmseqs2-sse4() {
   depends=('gcc-libs' 'glibc' 'zlib' 'zstd' 'openmp' 'bzip2' 'bash')
+  optdepends=('r: For running bundled rscript file')
   provides=('mmseqs2')
   conflicts=('mmseqs2-avx2')
   pkgdesc="ultra fast and sensitive search and clustering suite optimised for SSE4 instructions. https://doi.org/10.1038/nbt.3988"
 
   cd $_pkgbase-$_pkgver
   DESTDIR="$pkgdir" cmake --install build1
+  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/${pkgname}"
   cd util
-  install -Dm644 bash-completion.sh "${pkgdir}"/etc/profile.d/mmseqs2-completion.sh
-  install -Dm644 format_substitution_matrix.R ${pkgdir}/usr/share/${pkgbase}/format_substitution_matrix.R
-  rm -rf "${pkgdir}"/usr/util
+  install -Dm755 bash-completion.sh "${pkgdir}"/usr/share/${pkgbase}/bash-completion.sh
+  install -Dm644 format_substitution_matrix.R "${pkgdir}"/usr/share/${pkgbase}/format_substitution_matrix.R
 }
 
 package_mmseqs2-avx2() {
   depends=('gcc-libs' 'glibc' 'zlib' 'zstd' 'openmp' 'bzip2' 'bash')
+  optdepends=('r: For running bundled rscript file')
   provides=('mmseqs2')
   conflicts=('mmseqs2-sse4')
   pkgdesc="ultra fast and sensitive search and clustering suite optimised for AVX2 instructions. https://doi.org/10.1038/nbt.3988"
 
   cd $_pkgbase-$_pkgver
   DESTDIR="$pkgdir" cmake --install build2
+  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/${pkgname}"
   cd util
-  install -Dm644 bash-completion.sh "${pkgdir}"/etc/profile.d/mmseqs2-completion.sh
-  install -Dm644 format_substitution_matrix.R ${pkgdir}/usr/share/${pkgbase}/format_substitution_matrix.R
-  rm -rf "${pkgdir}"/usr/util
+  install -Dm755 bash-completion.sh "${pkgdir}"/usr/share/${pkgbase}/bash-completion.sh
+  install -Dm644 format_substitution_matrix.R "${pkgdir}"/usr/share/${pkgbase}/format_substitution_matrix.R
 }

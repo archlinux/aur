@@ -1,0 +1,7 @@
+post_install() {
+	echo "Enable bash autocompletion by running  [echo \"source /usr/share/mmseqs2/bash-completion.sh\" >> ~/.bashrc] in a terminal  and reopen the shell"
+}
+
+post_remove() {
+	echo "to prevent error messages during bash startup remove  \"source /usr/share/mmseqs2/bash-completion.sh\" line from ~/.bashrc"
+}
