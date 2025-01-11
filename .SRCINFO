@@ -1,11 +1,11 @@
 pkgbase = intel-compute-runtime-bin
 	pkgdesc = Intel Graphics Compute Runtime for oneAPI Level Zero and OpenCL Driver (pre-compiled binaries)
-	pkgver = 24.48.31907.7
+	pkgver = 24.52.32224.5
 	pkgrel = 1
 	url = https://github.com/intel/compute-runtime/
 	arch = x86_64
 	license = MIT
-	depends = intel-graphics-compiler-bin=1:2.2.3
+	depends = intel-graphics-compiler-bin=1:2.5.6
 	optdepends = libva: for cl_intel_va_api_media_sharing
 	optdepends = libdrm: for cl_intel_va_api_media_sharing
 	provides = intel-compute-runtime
@@ -14,18 +14,18 @@ pkgbase = intel-compute-runtime-bin
 	provides = opencl-driver
 	conflicts = intel-compute-runtime
 	conflicts = intel-gmmlib
-	noextract = intel-opencl-icd_24.48.31907.7_amd64.deb
-	noextract = intel-level-zero-gpu_1.6.31907.7_amd64.deb
-	noextract = intel-compute-runtime-bin-24.48.31907.7-gmmlib-22.5.4_amd64.deb
+	noextract = intel-opencl-icd_24.52.32224.5_amd64.deb
+	noextract = intel-level-zero-gpu_1.6.32224.5_amd64.deb
+	noextract = intel-compute-runtime-bin-24.52.32224.5-gmmlib-22.5.5_amd64.deb
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/intel/compute-runtime/releases/download/24.48.31907.7/intel-opencl-icd_24.48.31907.7_amd64.deb
-	source = https://github.com/intel/compute-runtime/releases/download/24.48.31907.7/intel-level-zero-gpu_1.6.31907.7_amd64.deb
-	source = intel-compute-runtime-bin-24.48.31907.7-gmmlib-22.5.4_amd64.deb::https://github.com/intel/compute-runtime/releases/download/24.48.31907.7/libigdgmm12_22.5.4_amd64.deb
+	source = https://github.com/intel/compute-runtime/releases/download/24.52.32224.5/intel-opencl-icd_24.52.32224.5_amd64.deb
+	source = https://github.com/intel/compute-runtime/releases/download/24.52.32224.5/intel-level-zero-gpu_1.6.32224.5_amd64.deb
+	source = intel-compute-runtime-bin-24.52.32224.5-gmmlib-22.5.5_amd64.deb::https://github.com/intel/compute-runtime/releases/download/24.52.32224.5/libigdgmm12_22.5.5_amd64.deb
 	source = LICENSE
-	sha256sums = a3d0cf66868838951174918c61ee75e34537859309c79486e0b2a7b44cfe13a5
-	sha256sums = 585de2bc881eaef17207449f2a6d5d7efb2b1680a6293546fcd01fc4a869812c
-	sha256sums = a6adb750d17c8eb3c50a5b063115c762ffe57724cfbd45cc38e5abe823c49bd2
+	sha256sums = 9a93bca10c4baafc9601142542784298cb40b2b5dbe62ed50352fc75ab90b9a4
+	sha256sums = f653c4f76d532a5a4cc94212a1e4daa6f444c51a5b8b88d217bfd84731931295
+	sha256sums = dc9a2db05b066bdad2a9208af6f59bc8bb5ffddb1b0fc298d21797c3e034b64a
 	sha256sums = 987a002c6c9eb75290d9937735641ef4f4b670591ee79e1ac8edebe16a81872e
 
 pkgname = intel-compute-runtime-bin
