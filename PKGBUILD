@@ -27,6 +27,7 @@ depends=(
   'librsvg'
   'libwebp'
   'libtiff'
+  'libsixel'
   'libexif'
   'openexr'
   )
@@ -53,6 +54,7 @@ build() {
     -D jxl=enabled
     -D svg=enabled
     -D tiff=enabled
+    -D sixel=enabled
     -D webp=enabled
     -D man=true
     -D desktop=true
