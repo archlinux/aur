@@ -1,6 +1,6 @@
 pkgbase = ruby-ceedling
 	pkgdesc = Build system for C projects
-	pkgver = 0.31.1.r917.g13d0e3d
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://www.throwtheswitch.org/ceedling/
 	arch = any
@@ -14,14 +14,12 @@ pkgbase = ruby-ceedling
 	depends = ruby-thor
 	depends = ruby-unicode-display_width
 	options = !emptydirs
-	source = git+https://github.com/ThrowTheSwitch/Ceedling.git#commit=13d0e3d3a22b77276409a76b15cb2c4704982277
+	source = git+https://github.com/ThrowTheSwitch/Ceedling.git#tag=v1.0.0
 	source = ThrowTheSwitch-CException::git+https://github.com/ThrowTheSwitch/CException.git
 	source = ThrowTheSwitch-Unity::git+https://github.com/ThrowTheSwitch/Unity.git
 	source = ThrowTheSwitch-CMock::git+https://github.com/ThrowTheSwitch/CMock.git
-	source = git+https://github.com/ElectronVector/fake_function_framework.git
 	source = 010-ruby-ceedling-change-version-requirements.patch
-	sha256sums = b4a6d173480cab63aa33117dba1b4c1cf1f52c944dc21b86fedacab6d5e8e577
-	sha256sums = SKIP
+	sha256sums = 56dc609983c7b863c0601389b60ff54002e628cc4ee61b2d5c18c016a74eea0e
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

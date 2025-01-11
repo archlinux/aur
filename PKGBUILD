@@ -2,28 +2,29 @@
 
 _name=ceedling
 pkgname="ruby-${_name}"
-# need to use a pre-release version due to compatibility with ruby 3.2 and later, see:
-# https://github.com/ThrowTheSwitch/Ceedling/issues/782
-pkgver=0.31.1.r917.g13d0e3d
+pkgver=1.0.0
 pkgrel=1
-_stable_ver=0.31.1
-_prerel_ver=1.0.0
-_commit=13d0e3d3a22b77276409a76b15cb2c4704982277
 pkgdesc='Build system for C projects'
 arch=('any')
 url='https://www.throwtheswitch.org/ceedling/'
 license=('MIT')
-depends=('ruby' 'ruby-constructor' 'ruby-deep_merge' 'ruby-rake' 'ruby-thor' 'ruby-unicode-display_width')
-makedepends=('git' 'ruby-rdoc')
+depends=(
+    'ruby'
+    'ruby-constructor'
+    'ruby-deep_merge'
+    'ruby-rake'
+    'ruby-thor'
+    'ruby-unicode-display_width')
+makedepends=(
+    'git'
+    'ruby-rdoc')
 options=('!emptydirs')
-source=("git+https://github.com/ThrowTheSwitch/Ceedling.git#commit=${_commit}"
+source=("git+https://github.com/ThrowTheSwitch/Ceedling.git#tag=v${pkgver}"
         'ThrowTheSwitch-CException'::'git+https://github.com/ThrowTheSwitch/CException.git'
         'ThrowTheSwitch-Unity'::'git+https://github.com/ThrowTheSwitch/Unity.git'
         'ThrowTheSwitch-CMock'::'git+https://github.com/ThrowTheSwitch/CMock.git'
-        'git+https://github.com/ElectronVector/fake_function_framework.git'
         '010-ruby-ceedling-change-version-requirements.patch')
-sha256sums=('b4a6d173480cab63aa33117dba1b4c1cf1f52c944dc21b86fedacab6d5e8e577'
-            'SKIP'
+sha256sums=('56dc609983c7b863c0601389b60ff54002e628cc4ee61b2d5c18c016a74eea0e'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -34,19 +35,10 @@ prepare() {
     git -C Ceedling config --local submodule.vendor/c_exception.url "${srcdir}/ThrowTheSwitch-CException"
     git -C Ceedling config --local submodule.vendor/unity.url "${srcdir}/ThrowTheSwitch-Unity"
     git -C Ceedling config --local submodule.vendor/cmock.url "${srcdir}/ThrowTheSwitch-CMock"
-    git -C Ceedling config --local submodule.plugins/fake_function_framework.url "${srcdir}/fake_function_framework"
     git -C Ceedling -c protocol.file.allow='always' submodule update
     
     #sed --in-place --regexp-extended 's|~>|>=|g' "Ceedling/${_name}.gemspec"
     patch -d Ceedling -Np1 -i "${srcdir}/010-ruby-ceedling-change-version-requirements.patch"
-}
-
-pkgver() {
-    local _revision
-    local _shorthash
-    _revision="$(git -C Ceedling rev-list --count "v${_stable_ver}..${_prerel_ver}-${_commit:0:7}")"
-    _shorthash="$(git -C Ceedling rev-parse --short HEAD)"
-    printf '%s.r%s.g%s' "$_stable_ver" "$_revision" "$_shorthash"
 }
 
 build() {
@@ -62,13 +54,13 @@ build() {
         --verbose \
         --ignore-dependencies \
         --build-root "tmp_install" \
-    "${_name}-${_prerel_ver}.gem"
+    "${_name}-${pkgver}.gem"
     
     # remove unrepreducible files
     rm --force --recursive --verbose \
         "tmp_install/${_gemdir}/cache/" \
-        "tmp_install/${_gemdir}/gems/${_name}-${_prerel_ver}/vendor/" \
-        "tmp_install/${_gemdir}/doc/${_name}-${_prerel_ver}/ri/ext/"
+        "tmp_install/${_gemdir}/gems/${_name}-${pkgver}/vendor/" \
+        "tmp_install/${_gemdir}/doc/${_name}-${pkgver}/ri/ext/"
     
     find "tmp_install/${_gemdir}/gems/" \
         -type f \
@@ -97,6 +89,6 @@ package() {
     
     cp -dr --no-preserve='ownership' Ceedling/tmp_install/* "$pkgdir"
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s "../../..${_gemdir#/usr}/gems/${_name}-${_prerel_ver}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    ln -s "../../..${_gemdir#/usr}/gems/${_name}-${pkgver}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     rm "${pkgdir}/usr/bin/ceedling.lock"
 }
