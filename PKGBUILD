@@ -5,8 +5,8 @@
 
 _pkgname=upower
 pkgname="${_pkgname}-nosystemd-git"
-pkgver=1.90.6+17.r1762.20250108.7d64c23
-pkgrel=1
+pkgver=1.90.7+1.r1765.20250109.08bfb29
+pkgrel=2
 pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics. Built without systemd dependencies. Latest Git checkout."
 arch=(
   'i686'
@@ -21,7 +21,9 @@ depends=(
   'glibc'
   'libgudev'
   'libimobiledevice'
+  'libplist'
   'libusb'
+  'polkit'
 )
 makedepends=(
   'pacman' # for 'vercmp' in "$install"
@@ -40,7 +42,7 @@ optdepends=(
   'python-dbusmock: For /usr/lib/upower/integration-test.py.'
   'python-gobject: For  For /usr/lib/upower/integration-test.py.'
   'python-packaging: For /usr/lib/upower/integration-test.py.'
-  'umockdev: For  For /usr/lib/upower/integration-test.py.'
+  'umockdev: For /usr/lib/upower/integration-test.py.'
 )
 # ## 2023-10-14: Checks disabled since it fails on my machine because battery temperature cannot be read out.
 # checkdepends=(
@@ -129,7 +131,7 @@ package() {
   meson install -C build --destdir "${pkgdir}"
 
   cd "${srcdir}/${_pkgname}"
-  for _docfile in "${srcdir}/git.log" AUTHORS code-of-conduct.md COMMITMENT HACKING NEWS README RELEASE; do
+  for _docfile in "${srcdir}/git.log" AUTHORS code-of-conduct.md COMMITMENT HACKING.md NEWS README.md RELEASE; do
     install -Dvm644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_docfile}")"
   done
   for _licensefile in COPYING; do
