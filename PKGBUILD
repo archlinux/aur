@@ -2,7 +2,7 @@
 
 _basename="libsigc++"
 _name="${_basename}-3.0"
-pkgname="mingw-w64-${_basename}"
+pkgname="mingw-w64-${_name}"
 pkgver=3.6.0
 pkgrel=1
 pkgdesc="Callback Framework for C++ (mingw-w64)"

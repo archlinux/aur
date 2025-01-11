@@ -1,4 +1,4 @@
-pkgbase = mingw-w64-libsigc++
+pkgbase = mingw-w64-libsigc++-3.0
 	pkgdesc = Callback Framework for C++ (mingw-w64)
 	pkgver = 3.6.0
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = mingw-w64-libsigc++
 	source = libsigc++-3.6.0.tar.xz::https://download.gnome.org/sources/libsigc++/3.6/libsigc++-3.6.0.tar.xz
 	sha256sums = c3d23b37dfd6e39f2e09f091b77b1541fbfa17c4f0b6bf5c89baef7229080e17
 
-pkgname = mingw-w64-libsigc++
+pkgname = mingw-w64-libsigc++-3.0
