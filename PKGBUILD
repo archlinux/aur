@@ -2,13 +2,13 @@
 _pkgname=brux-gdk
 pkgname=brux-gdk-git
 pkgver=0.2.11.r210.g70ce705
-pkgrel=2
+pkgrel=3
 pkgdesc="A free runtime and development kit using SDL and Squirrel"
 
 arch=(any)
 
 url="https://github.com/KelvinShadewing/brux-gdk"
-license=('AGPL-v3')
+license=('AGPL-3.0-only')
 
 depends=(
 	'physfs'
