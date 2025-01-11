@@ -13,13 +13,13 @@ license=("BSD")
 conflicts=('nvi' 'nvi-multibyte-upstream')
 provides=('nvi')
 
-_COMMIT="ec6c4a2d8889319a21893cbaf2cc63d11598fba2"
+_COMMIT="957906b0e3bcc0f795cf8c6b7313fcc4ec338784"
 source=("http://repo.or.cz/nvi.git/snapshot/$_COMMIT.tar.gz")
-sha512sums=('a3505e209277c6f634176583be8d475b9e9733ba2ecece53c04abd79ef0975f9c458eec1ad7391e0e3ae9610e0348ac398c76156805dbc35bf32d49d3dd190ce')
+sha512sums=('f49ffca6a58669f08ebd11bc141509f190389f74cb1670f30550a40b4d5b7350e144e72daf425682b4d032bcb95a3ec78ce595a9a533eaabda5e5c8d5a780565')
 
 # The last official release was 1.81.6, but there have been commits since then.
 # Append timestamp (yyyymmdd) of latest commit.
-pkgver=1.81.6_20240912
+pkgver=1.81.6_20241228
 pkgrel=1
 _COMMIT_HASH="${_COMMIT:0:7}"
 
