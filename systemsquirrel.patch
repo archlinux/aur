@@ -1,0 +1,21 @@
+--- rte/main.h	2022-11-28 19:35:43.000000000 +0100
++++ rte/main.h	2025-01-11 16:02:23.962593919 +0100
+@@ -45,12 +45,12 @@
+ #include <SDL2/SDL_net.h>
+ #include <SDL2/SDL_mixer.h>
+ #include <SDL2/SDL2_gfxPrimitives.h>
+-#include <squirrel3/squirrel.h>
+-#include <squirrel3/sqstdio.h>
+-#include <squirrel3/sqstdaux.h>
+-#include <squirrel3/sqstdmath.h>
+-#include <squirrel3/sqstdstring.h>
+-#include <squirrel3/sqstdsystem.h>
++#include <squirrel.h>
++#include <sqstdio.h>
++#include <sqstdaux.h>
++#include <sqstdmath.h>
++#include <sqstdstring.h>
++#include <sqstdsystem.h>
+ 
+ using namespace std;
+ 
