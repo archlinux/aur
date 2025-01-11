@@ -1,13 +1,14 @@
 pkgbase = brux-gdk-git
 	pkgdesc = A free runtime and development kit using SDL and Squirrel
 	pkgver = 0.2.11.r210.g70ce705
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KelvinShadewing/brux-gdk
 	arch = any
 	license = AGPL-v3
 	makedepends = base-devel
 	makedepends = git
 	makedepends = cmake
+	depends = physfs
 	depends = sdl2
 	depends = sdl2_gfx
 	depends = sdl2_image
