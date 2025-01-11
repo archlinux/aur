@@ -1,7 +1,7 @@
 pkgbase = toxcore-c
 	pkgdesc = C backend implementation of the Tox communication protocol
 	pkgver = 0.2.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tox.chat
 	arch = x86_64
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = toxcore-c
 	depends = libsodium
 	depends = libvpx
 	depends = opus
-	provides = tox
+	provides = tox=0.2.20
 	backup = etc/tox-bootstrapd.conf
 	source = git+https://github.com/TokTok/c-toxcore.git
 	sha512sums = SKIP

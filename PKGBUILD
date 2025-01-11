@@ -3,14 +3,14 @@
 pkgname=toxcore-c
 _pkgname=c-toxcore
 pkgver=0.2.20
-pkgrel=1
+pkgrel=2
 pkgdesc='C backend implementation of the Tox communication protocol'
 arch=('x86_64')
 url='https://tox.chat'
 license=('GPL3')
 depends=('systemd' 'libconfig' 'libsodium' 'libvpx' 'opus')
 makedepends=('base-devel' 'git' 'cmake' 'gtest')
-provides=("tox")
+provides=('tox=0.2.20')
 backup=('etc/tox-bootstrapd.conf')
 source=("git+https://github.com/TokTok/${_pkgname}.git")
 sha512sums=('SKIP')
