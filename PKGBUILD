@@ -5,7 +5,7 @@
 
 pkgname=dogecoin-qt
 _binname=dogecoin
-pkgver=1.14.8
+pkgver=1.14.9
 pkgrel=1
 pkgdesc="Cryptocurrency"
 arch=('x86_64' 'i686')
@@ -18,9 +18,9 @@ source=("https://github.com/$_binname/$_binname/archive/v${pkgver}.tar.gz"
         "$_binname.desktop"
 	"${pkgname}.patch")
 install=$_binname.install
-sha256sums=('f88dc488535f02b98012c83a824002d0879fd2796443c6218dfd647aaec7cf61'
+sha256sums=('0ea009b62034a9fe966140dff641daa1426423f734352ac179a2b23af03c032a'
             '04d41773462ad6609658e291d22b15cd8d58b8eb5e4391a80cd1dae75e7df0e6'
-            'e45fb9f27d1e091a04c77aa7594b100531bc631b44de116474ccc5ed655650fa')
+            'dbdc4812447f0aad9d3dbb8ee81d6fe18129af1dcccd7e930eddb5640540d764')
 options=(!lto)
 
 prepare() {
