@@ -1,7 +1,7 @@
 pkgbase = pdcom
 	pkgdesc = The Data Logging Service (DLS) is a data logging system for EtherLab, that is capable of collecting, compressing and storing high-frequency realtime data. The goal is, to allow the user unlimited and performant access to the stored data.
 	pkgver = 5.3.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gitlab.com/etherlab.org/pdcom
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -22,24 +22,9 @@ pkgbase = pdcom
 	depends = gnutls
 	depends = libsasl
 	depends = python
+	provides = pdcom
+	conflicts = pdcom
 	source = pdcom-5.3.2.tar.gz::https://gitlab.com/etherlab.org/pdcom/-/archive/5.3.2/pdcom-5.3.2.tar.gz
 	sha256sums = de7b2b4394454cab40cc3665c1614d84fc81da25b7871c77e2accb7ecfd56db1
 
 pkgname = pdcom
-	depends = expat
-	depends = gcc-libs
-	depends = glibc
-	depends = gnutls
-	depends = libsasl
-	provides = pdcom
-	conflicts = pdcom
-
-pkgname = python-pdcom
-	pkgdesc = The Data Logging Service (DLS) is a data logging system for EtherLab, that is capable of collecting, compressing and storing high-frequency realtime data. The goal is, to allow the user unlimited and performant access to the stored data. -- python
-	depends = pdcom
-	depends = glibc
-	depends = gcc-libs
-	depends = python
-	depends = python-numpy
-	provides = python-pdcom
-	conflicts = python-pdcom

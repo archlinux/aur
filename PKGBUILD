@@ -1,13 +1,15 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=pdcom
-pkgname=(pdcom python-pdcom)
+pkgname=(pdcom)
 pkgver=5.3.2
-pkgrel=1
+pkgrel=3
 pkgdesc="The Data Logging Service (DLS) is a data logging system for EtherLab, that is capable of collecting, compressing and storing high-frequency realtime data. The goal is, to allow the user unlimited and performant access to the stored data."
 arch=($CARCH)
 url="https://gitlab.com/etherlab.org/pdcom"
 license=('GPL-3.0-or-later')
+provides=(${pkgname})
+conflicts=(${pkgname})
 replaces=()
 depends=(
     expat
@@ -53,32 +55,8 @@ build() {
     python -m build --wheel --no-isolation
 }
 
-package_pdcom() {
-    provides=(${pkgname})
-    conflicts=(${pkgname})
-    depends=(
-        expat
-        gcc-libs
-        glibc
-        gnutls
-        libsasl
-    )
-
+package() {
     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgbase}-${pkgver}/build install
-}
-
-package_python-pdcom() {
-    pkgdesc+=" -- python"
-    provides=(${pkgname})
-    conflicts=(${pkgname})
-    depends=(
-        pdcom
-
-        glibc
-        gcc-libs
-        python
-        python-numpy
-    )
 
     cd "${srcdir}"/${pkgbase}-${pkgver}/python
     python -m installer --destdir="${pkgdir}" dist/*.whl
