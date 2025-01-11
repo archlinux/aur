@@ -8,6 +8,7 @@ pkgbase = ssh-ggh
 	license = Apache-2.0
 	makedepends = go
 	depends = glibc
+	depends = openssh
 	conflicts = ssh-ggh-bin
 	conflicts = ssh-ggh-git
 	source = ggh-v0.1.4.tar.gz::https://github.com/byawitz/ggh/archive/refs/tags/v0.1.4.tar.gz
