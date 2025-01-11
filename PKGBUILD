@@ -16,7 +16,7 @@ depends=("${_name}" 'lib32-cairo' 'lib32-gcc-libs' 'lib32-glibc' 'lib32-libsigc+
 makedepends=('meson>=0.55' 'mm-common')
 provides=('libcairomm-1.0.so')
 _pkgsrc="${_name}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/-/archive/${pkgver}/${_pkgsrc}.gz")
+source=("${_pkgsrc}.tar.gz::${_url}/-/archive/${pkgver}/${_pkgsrc}.tar.gz")
 sha256sums=('80c10611888e84c3a660eea0dafc81b6a9faf3e1d1cc31f950c51b3f7d384fc2')
 
 build() {

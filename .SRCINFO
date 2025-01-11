@@ -13,7 +13,7 @@ pkgbase = lib32-cairomm
 	depends = lib32-glibc
 	depends = lib32-libsigc++
 	provides = libcairomm-1.0.so
-	source = cairomm-1.14.5.tar.gz::https://gitlab.freedesktop.org/cairo/cairomm/-/archive/1.14.5/cairomm-1.14.5.gz
+	source = cairomm-1.14.5.tar.gz::https://gitlab.freedesktop.org/cairo/cairomm/-/archive/1.14.5/cairomm-1.14.5.tar.gz
 	sha256sums = 80c10611888e84c3a660eea0dafc81b6a9faf3e1d1cc31f950c51b3f7d384fc2
 
 pkgname = lib32-cairomm
