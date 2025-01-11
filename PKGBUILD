@@ -4,13 +4,12 @@
 
 pkgname=heynote-bin
 _pkgname=Heynote
-pkgver=2.0.0
-_electronversion=31
+pkgver=2.1.0
+_electronversion=33
 pkgrel=1
 pkgdesc="A dedicated scratchpad for developers"
 arch=('x86_64')
-url="https://heynote.com/"
-_ghurl="https://github.com/heyman/heynote"
+url="https://github.com/heyman/heynote"
 license=('LicenseRef-Commons-Clause-1.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -18,11 +17,11 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_${CARCH}.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_${CARCH}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/heyman/heynote/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c0ca4e104589a6466dbb2abc3fc5fe685b94171f87c8a6e198f05a0bcd18c48a'
+sha256sums=('f824f3b8aed0aea118a40d1a9a171b0f73042c7e66e28a866595ebd96a5ebfb6'
             'd78b14a03247374515264208d64b975e100af8a2fd0464afa07f76ca199700a7'
             '0fb7b939a071f4a08476bdd5aa143d2aa8cd335c83309f9919be16cd5c3e2014')
 build() {
