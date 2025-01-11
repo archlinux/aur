@@ -2,7 +2,7 @@
 
 pkgname=django-template-lsp
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Django Template Language Server (LSP)'
 arch=(any)
 url=https://github.com/fourdigits/django-template-lsp

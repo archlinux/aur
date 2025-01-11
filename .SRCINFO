@@ -1,7 +1,7 @@
 pkgbase = django-template-lsp
 	pkgdesc = Django Template Language Server (LSP)
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fourdigits/django-template-lsp
 	arch = any
 	license = MIT
