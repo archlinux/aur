@@ -1,6 +1,6 @@
 pkgbase = gpp
 	pkgdesc = A general-purpose preprocessor with customizable syntax, suitable for a wide range of preprocessing tasks
-	pkgver = 2.27
+	pkgver = 2.28
 	pkgrel = 1
 	url = http://en.nothingisreal.com/wiki/GPP
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = gpp
 	arch = mips64el
 	license = LGPL2.1
 	depends = glibc
-	source = gpp::git+https://github.com/logological/gpp.git#tag=2.27
+	source = gpp::git+https://github.com/logological/gpp.git#tag=2.28
 	validpgpkeys = 28F47A15AB82C216D278DEB92B119C3AEFBF4915
-	sha256sums = SKIP
+	sha256sums = b75e2a19d22fa8cbc2649edb99fc0f57fac1b3e990fd775f1fd123c35b63c7da
 
 pkgname = gpp
