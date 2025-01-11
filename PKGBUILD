@@ -2,7 +2,7 @@
 
 pkgname=lyricsfinder
 pkgver=1.5.6
-pkgrel=6
+pkgrel=7
 pkgdesc="A cross-platform lyrics fetcher by Mediahuman"
 arch=('x86_64')
 options=('!emptydirs')
@@ -11,7 +11,7 @@ license=('custom')
 depends=( taglib1 qt5-multimedia qt5-quickcontrols qt5-declarative qt5-base glibc gcc-libs zlib libglvnd libpng harfbuzz md4c krb5 openssl double-conversion icu pcre2 zstd glib2 freetype2 graphite e2fsprogs keyutils xz lz4 libcap libgcrypt pcre libx11 bzip2 libgpg-error libxcb libxau libxdmcp )
 
 source=('https://www.mediahuman.com/download/LyricsFinder.amd64.deb')
-sha512sums=('788e50c0d9d83dcd5eee3c9b6fc6cb30e70e38a8ddfa0ce9aa23a5bb976c515be87d0cbe967af6d26055b23de479cfd39bf9431774ce34ddcb253f9adb3fb6d1')
+sha512sums=('27d0581e517a8d13d31e6245a81db9216d7bd4a5983bc11cf6839f73ec5f222682c9423b3e3036c1673776701216ee6b490b9ca7b43bfcd04f35e2d58ac3ee69')
 
 package() {
 
