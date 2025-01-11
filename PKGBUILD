@@ -1,7 +1,8 @@
 # Maintainer: Your Name <tjmcgrew@gmail.com>
 pkgname=famistudio
 _pkgname=FamiStudio
-pkgver=4.2.1
+_NETver=8.0
+pkgver=4.3.1
 pkgrel=2
 epoch=
 pkgdesc="A very simple music editor for the Nintendo Entertainment System or Famicom"
@@ -9,7 +10,7 @@ arch=(x86_64)
 url="https://famistudio.org/"
 license=('MIT')
 groups=()
-depends=(dotnet-runtime dotnet-runtime-7.0 openal libcanberra rtmidi libvorbis ffmpeg glfw)
+depends=(dotnet-runtime dotnet-runtime openal libcanberra rtmidi libvorbis ffmpeg glfw)
 makedepends=(dotnet-sdk)
 checkdepends=()
 optdepends=()
@@ -24,10 +25,10 @@ source=("https://github.com/BleuBleu/${_pkgname}/archive/refs/tags/${pkgver}.tar
     "${pkgname}.desktop" "${_pkgname}.svg")
 noextract=()
 
-md5sums=('674f62bd882874e08c7dc2d3364c1487'
+md5sums=('267b13389f9eadfde094c899f96f87e9'
          '7cecbef97612ec8cf56a84e966382c87'
          'a1156aa440fcc359acc3d43dbfd2d6f9')
-sha256sums=('412c4e4dfa4008ab751cac124dd2d836fc2a5cd428db1f81bac7ba25a5a7095e'
+sha256sums=('078c33a2c8cae75fcf49fcbc2717a0fe001da2f9d24a244aef3121f57aab5cf2'
             '2c25b53b8a287ef5c29a1f32c32ad8cc56f093cb08f02cf0d09550a1bcd19537'
             'f8c86d1a851dd1321d3bf3ac3f704abc398d5297b620ef444d2eea0de5e58bf8')
 
@@ -74,11 +75,11 @@ package() {
     cp ${_pkgname}.svg "$pkgdir/usr/share/${pkgname}"
     cd ${_pkgname}-${pkgver}
 
-    rm ${_pkgname}/bin/Release/net7.0/libopenal32.so
-    rm ${_pkgname}/bin/Release/net7.0/libglfw.so
-    rm ${_pkgname}/bin/Release/net7.0/librtmidi.so
+    rm ${_pkgname}/bin/Release/net$_NETver/libopenal32.so
+    rm ${_pkgname}/bin/Release/net$_NETver/libglfw.so
+    rm ${_pkgname}/bin/Release/net$_NETver/librtmidi.so
 
-    cp -r "Setup/Demo Songs" ${_pkgname}/bin/Release/net7.0/* \
+    cp -r "Setup/Demo Songs" ${_pkgname}/bin/Release/net$_NETver/* \
         "$pkgdir/usr/share/${pkgname}"
 
     cp LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
