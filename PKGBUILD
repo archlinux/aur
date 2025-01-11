@@ -1,16 +1,23 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=freedom-devicetree-tools
-pkgver=20.08.00.00
+pkgver=201908
 pkgrel=1
 epoch=
 pkgdesc="This project contains a handful of tools that are designed to aid embedded software developers to generate statically parameterized designs from Freedom platform device trees."
-arch=('any')
+arch=($CARCH)
 url="https://github.com/sifive/freedom-devicetree-tools"
-license=('Apache' 'MIT')
+license=('Apache-2.0 AND MIT')
 groups=()
-depends=('dtc')
-makedepends=('autoconf' 'automake' 'gcc-libs')
+depends=(
+    gcc-libs
+    glibc
+    dtc
+)
+makedepends=(
+    autoconf
+    automake
+)
 checkdepends=()
 optdepends=()
 provides=()
@@ -20,9 +27,9 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("${pkgname}-${pkgver}.tar.gz::https://download.fastgit.org/sifive/freedom-devicetree-tools/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('4a28d6d1f530f1ef913fac8f6ce55d7661799cefebe871db842799f2be216db4')
+sha256sums=('f4810b2cbbcec35c9a846f370cfe014098523ad1975582e6daa8955320495773')
 #validpgpkeys=()
 
 build() {

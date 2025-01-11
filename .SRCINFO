@@ -1,17 +1,17 @@
 pkgbase = freedom-devicetree-tools
 	pkgdesc = This project contains a handful of tools that are designed to aid embedded software developers to generate statically parameterized designs from Freedom platform device trees.
-	pkgver = 20.08.00.00
+	pkgver = 201908
 	pkgrel = 1
 	url = https://github.com/sifive/freedom-devicetree-tools
-	arch = any
-	license = Apache
-	license = MIT
+	arch = x86_64
+	license = Apache-2.0 AND MIT
 	makedepends = autoconf
 	makedepends = automake
-	makedepends = gcc-libs
+	depends = gcc-libs
+	depends = glibc
 	depends = dtc
 	options = !strip
-	source = freedom-devicetree-tools-20.08.00.00.tar.gz::https://download.fastgit.org/sifive/freedom-devicetree-tools/archive/refs/tags/v20.08.00.00.tar.gz
-	sha256sums = 4a28d6d1f530f1ef913fac8f6ce55d7661799cefebe871db842799f2be216db4
+	source = freedom-devicetree-tools-201908.tar.gz::https://github.com/sifive/freedom-devicetree-tools/archive/refs/tags/v201908.tar.gz
+	sha256sums = f4810b2cbbcec35c9a846f370cfe014098523ad1975582e6daa8955320495773
 
 pkgname = freedom-devicetree-tools
