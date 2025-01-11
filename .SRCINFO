@@ -1,0 +1,24 @@
+pkgbase = qtox-toktok
+	pkgdesc = Powerful Tox client written in C++/Qt (TokTok fork)
+	pkgver = 1.18.1
+	pkgrel = 1
+	url = https://github.com/TokTok/qTox
+	arch = x86_64
+	license = GPL3
+	makedepends = base-devel
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = qt6-svg
+	depends = tox
+	depends = libexif
+	depends = ffmpeg
+	depends = qrencode
+	depends = sqlcipher
+	depends = openal
+	optdepends = sonnet: for spell checks
+	optdepends = xscreensaver: screensaver support for Xorg
+	source = git+https://github.com/TokTok/qTox.git
+	sha512sums = SKIP
+
+pkgname = qtox-toktok
