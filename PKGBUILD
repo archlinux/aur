@@ -18,8 +18,8 @@ source=("obsidian.sh"
         "https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/obsidian-${pkgver}.tar.gz"
 )
 sha256sums=('46a1f82357a9d2d629c1d27b471569646c3865d5dd68d99687d07730a2c8a328'
-            'ca2820fd5247a31238f1f2a8e314534fc0a864b7178c66a6f56ffd8be2f432fd'
-            '461dc7510d3ee6617f3ac65fece8b8cc1120c499621af40a6bf8c9238c2b0738'
+            'f323046d9024b5bcba858cdddc481b3aac4d93ccf0da3ca11a53d7a18a40c256'
+            '05882d42311d182d69e645caafbbdc0f09f103536390c9090c66f14b31f176cc'
             'e881ea06f671db2c5002f0038b73a4e4b7b78a9dbf73aa9a7d0dc54a93d3d29a')
 
 package() {
@@ -30,7 +30,7 @@ package() {
     install -Dm755 obsidian.sh "$pkgdir"/usr/bin/obsidian
 
     # Install desktop file
-    install -Dm644 obsidian.desktop -t "$pkgdir"/usr/share/applications/obsidian.desktop
+    install -Dm644 obsidian.desktop "$pkgdir"/usr/share/applications/md.obsidian.Obsidian.desktop
 
     # Most of the release package is electron, but we use system's default one
     # So strip away asar packages and put them to /usr/lib/

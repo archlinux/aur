@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # This is your Application ID, avoid conflict
-appID="md.obsidian.app"
+appID="md.obsidian.Obsidian"
 
 # This is a friendly name of an application. It should only contain ASCII characters and not spaces.
 friendlyName="Obsidian"
@@ -13,7 +13,7 @@ stateDirectory="Obsidian_Data"
 #launchTarget="gtk4-demo"
 
 # Takes boolean value. When enabled, do not process XAuth files and forces wayland input method. Generally this should be true when possible.
-waylandOnly="false"
+waylandOnly="true"
 
 # Takes boolean value.
 bindInputDevices="false"
