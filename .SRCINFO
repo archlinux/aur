@@ -1,0 +1,21 @@
+pkgbase = brux-gdk-git
+	pkgdesc = A free runtime and development kit using SDL and Squirrel
+	pkgver = 0.2.11.r210.g70ce705
+	pkgrel = 1
+	url = https://github.com/KelvinShadewing/brux-gdk
+	arch = any
+	license = AGPL-v3
+	makedepends = base-devel
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	depends = sdl2_gfx
+	depends = sdl2_image
+	depends = sdl2_net
+	provides = brux-gdk=0.2.11.r210.g70ce705
+	conflicts = brux-gdk
+	conflicts = supertux-advance
+	source = brux-gdk::git+https://github.com/KelvinShadewing/brux-gdk.git#branch=unstable
+	sha256sums = SKIP
+
+pkgname = brux-gdk-git
