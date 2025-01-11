@@ -1,31 +1,34 @@
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Federico Di Pierro, prash
+
 pkgname=qarma-git
-pkgver=72.605ea42
+pkgver=r92.c623e06
 pkgrel=1
 pkgdesc="A drop-in replacement clone for zenity, written in Qt, Qt5 build"
-arch=('i686' 'x86_64')
+arch=(x86_64 i686)
 url="https://github.com/luebking/qarma"
-license=('GPL')
-depends=('qt5-base' 'qt5-x11extras')
-makedepends=('git')
-provides=('qarma' 'zenity')
-conflicts=('qarma' 'zenity')
+license=(GPL-2.0-only)
+depends=(qt6-base)
+makedepends=(git)
+provides=(qarma zenity)
+conflicts=(qarma zenity)
 source=("git+https://github.com/luebking/qarma")
-md5sums=("SKIP")
+sha256sums=("SKIP")
 
 pkgver() {
-    cd "${srcdir}/${pkgname/-git/}"
-    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd qarma
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${srcdir}/${pkgname/-git/}"
-    qmake-qt5
-    make
+  cd qarma
+  qmake6
+  make
 }
 
 package() {
-    cd "${srcdir}/${pkgname/-git/}"
-    install -Dm755 qarma -t "$pkgdir/usr/bin"
-    ln -s /usr/bin/qarma "$pkgdir/usr/bin/qarma-askpass"
-    ln -s /usr/bin/qarma "$pkgdir/usr/bin/zenity"
+  cd qarma
+  install -Dm755 qarma -t "$pkgdir/usr/bin"
+  ln -s /usr/bin/qarma "$pkgdir/usr/bin/qarma-askpass"
+  ln -s /usr/bin/qarma "$pkgdir/usr/bin/zenity"
 }
