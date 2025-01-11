@@ -3,7 +3,7 @@
 
 pkgname=python-mitmproxy-rs-git
 _pyname=mitmproxy_rs
-pkgver=0.11.r3.g6028f0b
+pkgver=0.11.4.r2.g07e4935
 pkgrel=1
 pkgdesc="Python bindings for mitmproxy's Rust code"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=(
   'gcc-libs'
   'glibc'
-  'python'
+  'python-mitmproxy-linux-git'
 )
 makedepends=(
   'cargo'
@@ -24,6 +24,14 @@ conflicts=("${pkgname%-git}")
 options=(!lto)
 source=("git+${url}")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd mitmproxy_rs
+  # git-describe does not work :(
+  local _tag=$(git tag -l --sort=-v:refname --merged | head -1)
+  local _rev=$(git rev-list --count ${_tag}..HEAD)
+  printf "%s.r%s.g%s" ${_tag#v} ${_rev} $(git rev-parse --short HEAD)
+}
 
 build() {
   cd mitmproxy_rs/mitmproxy-rs
@@ -43,11 +51,6 @@ package() {
   cd mitmproxy_rs
   python -m installer --destdir="${pkgdir}" target/wheels/*.whl
   install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-pkgver() {
-  cd mitmproxy_rs
-  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 # vim: ts=2 sw=2 et:
