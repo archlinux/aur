@@ -1,4 +1,5 @@
-# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Maintainer:  HoleHolo <hola0_o@qq.com>
+# Contributor: Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: carstene1ns <url/mail: arch carsten-teibes de>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 # Contributor: Josef Lusticky <evramp@gmail.com>
@@ -6,26 +7,25 @@
 # Contributor: Moses Miller <Majora320@gmail.com>
 
 pkgname=counter-strike-2d
-pkgver=1.0.1.3
+pkgver=1.0.1.4
 _ver=${pkgver//./}
-pkgrel=1
+pkgrel=4
 pkgdesc="More than just a freeware clone of the well known game Counter-Strike"
 arch=('i686' 'x86_64')
 url="https://www.unrealsoftware.de"
 license=('custom')
+install=cs2d.install
 if [ "$CARCH" == "x86_64" ]; then
-  depends=('lib32-freetype2' 'lib32-libtxc_dxtn' 'lib32-glu')
-  optdepends=('lib32-openal: audio output')
+  depends=('wine') # Since this game requires an older environment and cannot run natively on Arch Linux, using Wine could be a better choice.
+  optdepends=('lib32-nvidia-utils: video acceleration for NVIDIA GPUs'
+              'lib32-mesa: video acceleration')
 elif [ "$CARCH" == "i686" ]; then
-  #depends=('freetype2' 'libtxc_dxtn' 'glu')
-  optdepends=('openal: audio output'
-              'ati-dri: video acceleration'
+  optdepends=('ati-dri: video acceleration'
               'intel-dri: video acceleration'
               'nouveau-dri: video acceleration')
 fi
 
 makedepends=('curl')
-install=cs2d.install
 backup=(opt/cs2d/sys/autobuy.cfg    opt/cs2d/sys/autoexec.cfg
         opt/cs2d/sys/config.cfg     opt/cs2d/sys/controls.cfg
         opt/cs2d/sys/editor.cfg     opt/cs2d/sys/filters.cfg
@@ -33,33 +33,40 @@ backup=(opt/cs2d/sys/autobuy.cfg    opt/cs2d/sys/autoexec.cfg
         opt/cs2d/sys/more.cfg       opt/cs2d/sys/server.cfg 
         opt/cs2d/sys/weapons.cfg    opt/cs2d/sys/weapons_recoil.cfg
         opt/cs2d/sys/favorites.lst  opt/cs2d/sys/bans.lst 
-        opt/cs2d/sys/serverinfo.txt opt/cs2d/sys/servertransfer.lst)
-sha512sums=('113c0b890df01c14934db8bc860c0c3c0f040ce88fc27b88766c0c89d1d6a1a410f46e81a5ff1c7d71d08da8b2dd0e865e51ca110dcf3f954ca2cd7fd528a219'
-            'd7d452fa4a2310ec2ac68c2c500e2a66f3a6df2291ad6615f9a957cbc6cb4ccd7f00f9578ccebeb1367aa21205e3743b16463d841c63c73f9b0bfbbf37bd6992'
-            'dfe79598af30797195fad38461119f7d611021577a1e1e624567adeceade8f9bc4c97cd110515e492d612d09b740f78faf7dce55448f64a9a698e7748f121a80')
-_url=http://www.unrealsoftware.de/get.php?get
+        opt/cs2d/sys/serverinfo.txt opt/cs2d/sys/servertransfer.lst
+        opt/cs2d/sys/usgn_upw       opt/cs2d/sys/core/dls.cache)
+sha512sums=('c89b74392a5da2a007509c0a72a0c6a47a6e79d6819fb62ec04e597d6abc03d7146900c149dc6b4e0b535f2d28e400371331cdbaad4c7b1d80f013660c0c8547'
+            'b31b14cb97fcfef718dd2e15fe3d50cecbf875d1d71c794f0568491e497ddc7efad56749d5d4fc34ec1c645e670b9a6a72e4f893b50f0b5e01d5e3baeb0803db'
+            '0c7c91ad4050543635e56ce0ecd9b55e5dc917c87655c69e0dc7e4252655223b7346106f54f2a550e09952cb0ec8afaedfab8dd3b18324b545485ba4fd4b07a4')
+_url="https://www.unrealsoftware.de/get.php?get"
 
 grabcid() {
-  local file=cs2d_${_ver}_linux.zip
-  echo "$(curl -Ss "$_url=${file}&p=1" | grep -o '"get.php[^"]\+"' | cut -d'"' -f2 | sed 's/&amp;/\&/g')"
+  local file=cs2d_${_ver}_win.zip
+  echo "$(curl -Ss "$_url=${file}&p=1" | sed -n 's/.*cid=\([0-9]\+\).*/\1/p' | head -n 1)"
 }
 
 _cid=$(grabcid) # this will hide the cmd line above from AUR interface
-source=(cs2d_${_ver}_linux.zip::"$_url=cs2d_${_ver}_linux.zip&p=1&cid=12675"
+source=(cs2d_${_ver}_win.zip::"${_url}=cs2d_${_ver}_win.zip&p=1&cid=${_cid}"
         "cs2d.desktop"
         "cs2d.png")
 options=(emptydirs)
 
 package() {
   # create folders
-  install -d "$pkgdir"/{opt/cs2d,usr/{share/{doc,licenses}/$pkgname,bin}}
+  install -d "$pkgdir"/{opt/cs2d/wineprefix,usr/{share/{doc,licenses}/$pkgname,bin}}
 
   # data
   cp -R bots gfx help logos maps mods screens sfx sys "$pkgdir"/opt/cs2d
 
   # executable
-  install -m755 CS2D "$pkgdir"/opt/cs2d
-  ln -s /opt/cs2d/CS2D "$pkgdir"/usr/bin/cs2d
+  install CS2D.exe *.dll "$pkgdir"/opt/cs2d
+  cat > "$pkgdir/usr/bin/cs2d" <<EOF
+#!/bin/bash
+USERDIR="/opt/cs2d/wineprefix/\$(whoami)"
+mkdir -p \$USERDIR
+WINEPREFIX=\$USERDIR wine /opt/cs2d/CS2D.exe
+EOF
+  chmod +x $pkgdir/usr/bin/cs2d $pkgdir/opt/cs2d/wineprefix
 
   # desktop launcher
   install -Dm644 cs2d.png "$pkgdir"/usr/share/pixmaps/cs2d.png
@@ -71,15 +78,16 @@ package() {
   # doc
   install -m644 *.txt "$pkgdir"/usr/share/doc/$pkgname
 
-  # allow editing of configs
-  chmod g+w "$pkgdir"/opt/cs2d/sys/*.{cfg,dat}
-  chgrp games "$pkgdir"/opt/cs2d/sys/*.{cfg,dat}
+  # custom
+  chmod g+w -R "$pkgdir"/opt/cs2d/{maps,mods,gfx,sys}
+  chgrp games -R "$pkgdir"/opt/cs2d/{maps,mods,gfx,sys}
 
-  # allow saving maps
-  chmod g+w "$pkgdir"/opt/cs2d/maps
-  chgrp games "$pkgdir"/opt/cs2d/maps 
+  # allow updating wine runtime directory
+  chmod g+w "$pkgdir"/opt/cs2d/wineprefix
+  chgrp games -R "$pkgdir"/opt/cs2d/wineprefix
 
-  # allow logging and caching
-  chmod -R g+w "$pkgdir"/opt/cs2d/sys/{logs,core}
-  chgrp games -R "$pkgdir"/opt/cs2d/sys/{logs,core}
+  # allow saving u.s.g.n. password
+  touch "$pkgdir"/opt/cs2d/sys/usgn_upw
+  chmod g+w "$pkgdir"/opt/cs2d/sys/usgn_upw
+  chgrp games "$pkgdir"/opt/cs2d/sys/usgn_upw
 }
