@@ -70,6 +70,7 @@ build() {
   export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/lib/sodium-1.0.18/pkgconfig/"
   export LIBRARY_PATH="${LIBRARY_PATH}:/usr/lib/sodium-1.0.18/"
   flutter config --no-analytics
+  dart --disable-analytics
   dart pub global activate \
     --source git https://github.com/prateekmedia/flutter_distributor \
     --git-ref develop \
