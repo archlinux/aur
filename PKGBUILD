@@ -11,22 +11,16 @@ license=(Apache-2.0)
 depends=(
   glfw
   alsa-lib
+  flac
+  libvorbis
+  opus
+  mpg123
 )
 makedepends=(
   cmake
   pkgconf
   python
   ninja
-  flac #optional
-  libvorbis #optional
-  opus #optional
-  mpg123 #optional
-)
-optdepends=(
-  flac
-  libvorbis
-  opus
-  mpg123
 )
 provides=($_pkgname)
 conflicts=($_pkgname)
