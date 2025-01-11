@@ -2,7 +2,7 @@
 
 pkgname=whoogle-git
 pkgver=0.8.4.r6.g7313edf
-pkgrel=1
+pkgrel=2
 pkgdesc='A self-hosted, ad-free, privacy-respecting metasearch engine'
 arch=(x86_64 aarch64)
 url="https://github.com/benbusby/whoogle-search"
@@ -32,6 +32,10 @@ build() {
 	cd whoogle-search
 	python3 -m venv venv
 	source venv/bin/activate
+
+	# Workaround Python 3.13 breakage
+    sed -i 's/^cssutils==2\.6\.0$/cssutils==2\.7\.0/' requirements.txt
+
 	pip install -r requirements.txt
 
 	# Cleanup unsed
