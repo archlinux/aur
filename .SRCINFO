@@ -1,0 +1,16 @@
+pkgbase = fetch-github-hosts-git
+	pkgdesc = A command-line tool for create SylixOS container written in go.
+	pkgver = 2.8.r58.16630c
+	pkgrel = 1
+	url = https://github.com/Licoy/fetch-github-hosts
+	arch = any
+	license = MIT
+	provides = fetch-github-hosts
+	source = git+https://github.com/Licoy/fetch-github-hosts.git
+	source = fetch-github-hosts-server.service
+	source = fetch-github-hosts-client.service
+	sha1sums = SKIP
+	sha1sums = dc25f40b181a13edd23d19200350390c18e95b1a
+	sha1sums = a436c7ec95713ac811564e1b590e1e5e628c772f
+
+pkgname = fetch-github-hosts-git

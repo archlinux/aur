@@ -1,0 +1,14 @@
+[Unit]
+Description=fetch-github-hosts Server Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Restart=on-failure
+RestartSec=5s
+ExecStart=/usr/bin/fetch-github-hosts -m=server
+
+[Install]
+WantedBy=multi-user.target
