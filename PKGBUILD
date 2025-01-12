@@ -1,4 +1,4 @@
-# Maintainer: Luis Batalha <lfrb25 at gmail dot com>
+# Maintainer: Laura Batalha <lfrb25 at gmail dot com>
 
 source_dir='qoi'
 
@@ -7,13 +7,15 @@ pkgname=(qoi-headers-git
          qoibench-git
         )
 pkgbase=qoi-git
-pkgver=r335.d4fc9d1
+pkgver=r346.b0b926e
 pkgrel=1
 pkgdesc="The 'Quite OK Image' format for fast, lossless image compression"
 arch=('x86_64')
 url='https://qoiformat.org/'
 license=('MIT')
 source=("$source_dir::git+https://github.com/phoboslab/qoi.git")
+provides=("qoi-headers")
+conflicts=("qoi-headers")
 makedepends=('git'
              'gcc-libs'
              'stb'
