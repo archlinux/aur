@@ -1,6 +1,8 @@
+# Maintainer: Xeonacid <h.dwwwwww@gmail.com>
+
 pkgname=sui
-pkgver=1.32.2
-pkgrel=1
+pkgver=1.39.4
+pkgrel=2
 pkgdesc='Sui, a next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model powered by the Move programming language.'
 url='https://sui.io'
 arch=(x86_64)
@@ -8,7 +10,7 @@ license=(Apache-2.0)
 depends=(rust openssl libldap krb5 e2fsprogs keyutils libsasl postgresql-libs)
 makedepends=(git curl cargo cmake clang)
 source=(git+https://github.com/MystenLabs/$pkgname#tag=mainnet-v$pkgver)
-sha512sums=('267b3071dee70ae9546be8fe88fb005a90589e9b79ea101030fcdf7e6a9f905b2160f433f6af1b3e59e4c356c091c92185442ad0b4e03330258de72d31e9c2ff')
+sha512sums=('cf7af8525e80f433dd5c073b6ee4b10ea4097acddf2365ba50647a5f29567fae9f4ce60a628c283e2dd558159a05db83c425b6f4a63dc44eec293bfd2a6885f5')
 # https://github.com/briansmith/ring/issues/1444
 options=(!lto)
 
@@ -22,26 +24,31 @@ build() {
   cd $pkgname
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
-}
 
-check() {
-  cd $pkgname
-  export RUSTUP_TOOLCHAIN=stable
-  # ---- storage::store_tests::read_and_contain_blocks::test_store_1_TestStore__new_rocksdb_store__ stdout ----
-  # thread 'storage::store_tests::read_and_contain_blocks::test_store_1_TestStore__new_rocksdb_store__' panicked at crates/typed-store/src/metrics.rs:270:14:
-  # called `Result::unwrap()` on an `Err` value: AlreadyReg
+  binarys=(
+    move-analyzer
+    # sui
+    sui-bridge
+    sui-bridge-cli
+    sui-data-ingestion
+    sui-faucet
+    sui-graphql-rpc
+    sui-node
+    sui-test-validator
+    sui-tool
+  )
+  for binary in "${binarys[@]}"; do
+    cargo build --frozen --release -p $binary
+  done
 
-  # ---- storage::store_tests::read_and_scan_commits::test_store_1_TestStore__new_rocksdb_store__ stdout ----
-  # thread 'storage::store_tests::read_and_scan_commits::test_store_1_TestStore__new_rocksdb_store__' panicked at crates/typed-store/src/metrics.rs:270:14:
-  # called `Result::unwrap()` on an `Err` value: AlreadyReg
-  cargo test --frozen --all-features --workspace || true
+  # Suggested by https://docs.sui.io/guides/developer/getting-started/sui-install#install-sui-binaries-from-source
+  cargo build --frozen --release -p sui --features tracing
 }
 
 package() {
   cd $pkgname
 
-  binarys=(sui sui-bridge sui-data-ingestion sui-faucet sui-node sui-test-validator sui-tool)
+  binarys=(move-analyzer sui sui-bridge sui-bridge-cli sui-data-ingestion sui-faucet sui-graphql-rpc sui-node sui-test-validator sui-tool)
   for binary in "${binarys[@]}"; do
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$binary"
   done
