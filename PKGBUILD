@@ -7,19 +7,19 @@
 # Then copy PKGBUILD from ~/.cpanplus/$cpanplus_ver/pacman/build/perl-compress-raw-lzma-$pkgver/PKGBUILD
 
 pkgname='perl-compress-raw-lzma'
-pkgver='2.212'
+pkgver='2.213'
 pkgrel='1'
 pkgdesc="Low-Level Perl Interface to lzma compression library"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl' 'perl-pod-markdown' 'xz>=5.6.2')
+depends=('perl' 'perl-pod-markdown' 'xz>=5.6.3')
 makedepends=()
 url='https://metacpan.org/release/Compress-Raw-Lzma'
-source=('http://search.cpan.org/CPAN/authors/id/P/PM/PMQS/Compress-Raw-Lzma-2.212.tar.gz')
-md5sums=('dd5e1b2d76ad20c69843d1419fde09ca')
-sha512sums=('4b94577a4fb7504698e7e4a01283cace8569221e1873ed8dd7670363530abb2f93bdb611cf17b1baa189fd1d6c1de884a695d1295e4e09be73422ba5753da612')
-_distdir="Compress-Raw-Lzma-2.212"
+source=('http://search.cpan.org/CPAN/authors/id/P/PM/PMQS/Compress-Raw-Lzma-2.213.tar.gz')
+md5sums=('f3bb656d9524b1d8ac4a47707dcd1f1d')
+sha512sums=('7e41eaaf8a244a2e2e06f8c7b23bd88d7afd83daf44022d03f650c3990a7ffe5d39bb153fe4583711fd860e7e8e6eb19b7397fcb93d56b6df3c7f95bcdb5ad75')
+_distdir="Compress-Raw-Lzma-2.213"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
