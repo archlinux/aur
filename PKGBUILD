@@ -3,7 +3,7 @@
 _pkgname=jule
 __pkgname="${_pkgname}fmt"
 pkgname="$__pkgname-git"
-pkgver=1.r0.gc6149fe
+pkgver=0+c6149fe
 pkgrel=1
 pkgdesc='The Jule Programming Language Code Formatter'
 arch=('x86_64' 'aarch64' 'i386')
@@ -19,7 +19,7 @@ conflicts=("$__pkgname")
 
 pkgver() {
     cd "$__pkgname"
-    echo "1.r$(git describe --all --long | sed 's/-/./g' | cut -d '.' -f 2-)"
+    echo "0+$(git rev-parse --short HEAD)"
 }
 
 build() {
