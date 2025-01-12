@@ -1,4 +1,6 @@
 # Maintainer: Kai Korla <kai@korla.cloud>
+# Contributor: MrHacker <kmunoz@condorbs.net>
+
 pkgname=mssql-server-fts
 pkgver=16.0.4165.4
 _remRevision=7
