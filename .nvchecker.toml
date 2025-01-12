@@ -1,0 +1,4 @@
+[updatecli]
+source = "git"
+git = "https://github.com/updatecli/updatecli.git"
+prefix = "v"
