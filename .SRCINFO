@@ -1,6 +1,6 @@
 pkgbase = helm-ls-bin
 	pkgdesc = Language server for Helm
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/mrjosh/helm-ls
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = helm-ls-bin
 	conflicts = helm-ls
 	options = !strip
 	options = !debug
-	source = LICENSE-0.1.0::https://raw.githubusercontent.com/mrjosh/helm-ls/v0.1.0/LICENSE
+	source = LICENSE-0.1.1::https://raw.githubusercontent.com/mrjosh/helm-ls/v0.1.1/LICENSE
 	sha256sums = 69fcf81ef258076793149979fba61e50f6fc64273c8192472ba7ab18f1616d71
-	source_x86_64 = helm_ls-0.1.0::https://github.com/mrjosh/helm-ls/releases/download/v0.1.0/helm_ls_linux_amd64
-	sha256sums_x86_64 = f52a23175bde03d467e44a3d8b87793ae4daec526db8b5c1ab1832eed81a584b
+	source_x86_64 = helm_ls-0.1.1::https://github.com/mrjosh/helm-ls/releases/download/v0.1.1/helm_ls_linux_amd64
+	sha256sums_x86_64 = 78745c6e0b1377a75eb2839bcb804a7cdf750ad0a2c8e1865a1d6e3f9efc314d
 
 pkgname = helm-ls-bin
