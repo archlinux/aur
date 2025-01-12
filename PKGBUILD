@@ -7,7 +7,7 @@
 pkgname=simulide-git
 pkgver=r250113
 #_realver=${pkgver//.r*/}
-pkgrel=3
+pkgrel=4
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers). Development version."
 arch=("x86_64")
 url="https://github.com/eeTools/SimulIDE-dev"
@@ -19,7 +19,7 @@ source=(
   "simulide.desktop")
 sha256sums=(
   SKIP
-  'da1a1812404ba64006f85e4b2c2b51cf8a11ab6949e20c1487a1b7738cc7e1ba')
+  '7e9d4a7a40c45a1aaea2b96dc01af628df3356b0e2b2ced1425cf3ecea22ff19')
 
 depends=(
   "qt5-base>=5.15.1"
@@ -50,13 +50,10 @@ package() {
   mkdir -p "${pkgdir}/usr/share/simulide"
   cp -r ./ "${pkgdir}/usr/share/simulide"
   rm ${pkgdir}/usr/share/simulide/simulide
- 
   # icon
-  mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256"
-  cp -r ${srcdir}/${pkgname}/resources/icons/simulide.png "${pkgdir}/usr/share/icons/hicolor/256x256/simulide.png"
+  install -D -m644 "${srcdir}/${pkgname}/resources/icons/simulide.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/simulide.png"
   # mime-type
-  mkdir -p "${pkgdir}/usr/share/mime/packages"
-  cp -r ${srcdir}/${pkgname}/resources/simulide-mime.xml "${pkgdir}/usr/share/mime/packages/simulide.xml"
+  install -D -m644 "${srcdir}/${pkgname}/resources/simulide-mime.xml" "${pkgdir}/usr/share/mime/packages/simulide.xml"
 
 }
 
