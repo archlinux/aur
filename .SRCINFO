@@ -1,16 +1,16 @@
 pkgbase = ipsw-bin
 	pkgdesc = iOS/macOS Research Swiss Army Knife
-	pkgver = 3.1.563
+	pkgver = 3.1.564
 	pkgrel = 1
 	url = https://github.com/blacktop/ipsw
 	license = MIT
 	conflicts = ipsw
 	provides = ipsw
 	arch = aarch64
-	source_aarch64 = https://github.com/blacktop/ipsw/releases/download/v3.1.563/ipsw_3.1.563_linux_arm64.tar.gz
-	sha256sums_aarch64 = b68a45f2578dc177af6095802dc86f8a4443e27e0ba05ef64b7f83911d970b5f
+	source_aarch64 = https://github.com/blacktop/ipsw/releases/download/v3.1.564/ipsw_3.1.564_linux_arm64.tar.gz
+	sha256sums_aarch64 = ace3d150af2c13f70c18e422f4f1e2687db7de2ee48435840f51ed56819a6c60
 	arch = x86_64
-	source_x86_64 = https://github.com/blacktop/ipsw/releases/download/v3.1.563/ipsw_3.1.563_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 4bde6dc2f6ebfdde0e9693aa434f63882c7f2279eeefb7dff1b836960e77003d
+	source_x86_64 = https://github.com/blacktop/ipsw/releases/download/v3.1.564/ipsw_3.1.564_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 7e25cfb3a22d26af835b9ebece7c536d24e7b439214205ddb7359eb3031d448f
 	
 pkgname = ipsw-bin
