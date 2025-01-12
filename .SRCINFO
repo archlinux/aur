@@ -1,4 +1,4 @@
-pkgbase = WHY2
+pkgbase = why2-development-git
 	pkgdesc = Symmetric Encryption System Written in C.
 	pkgver = r1491.d3aa932
 	pkgrel = 1
@@ -19,4 +19,4 @@ pkgbase = WHY2
 	source = why2-development::git//github.com/ENGO150/WHY2.git
 	md5sums = SKIP
 
-pkgname = WHY2
+pkgname = why2-development-git

@@ -1,6 +1,6 @@
 # Maintainer: Václav Šmejkal <business.engo150@gmail.com>
 
-pkgname='WHY2'
+pkgname='why2-development-git'
 pkgver='r1491.d3aa932'
 pkgrel=1
 epoch=
@@ -26,14 +26,14 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-	cd "$pkgname"
+	cd "WHY2"
 	git checkout development
 
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$pkgname"
+	cd "WHY2"
 	git checkout development
 
 	make install
