@@ -1,13 +1,13 @@
 pkgbase = pocketbase-bin
 	pkgdesc = Open source backend for your next project in 1 file
-	pkgver = 0.24.2
+	pkgver = 0.24.3
 	pkgrel = 1
 	url = https://github.com/pocketbase/pocketbase
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	conflicts = pocketbase-git
-	source = https://github.com/pocketbase/pocketbase/releases/download/v0.24.2/pocketbase_0.24.2_linux_amd64.zip
-	sha256sums = 8d634caf9f8d83a36ef09261a727bf610e7de17ef58070321f4f7562ba2c1646
+	source = https://github.com/pocketbase/pocketbase/releases/download/v0.24.3/pocketbase_0.24.3_linux_amd64.zip
+	sha256sums = a6ff701241fc84e5c5fca2b79362ecfc83c429fb2d0afb1fd56a5148064a572a
 
 pkgname = pocketbase-bin
