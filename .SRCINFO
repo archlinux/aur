@@ -1,6 +1,6 @@
 pkgbase = hacompanion
 	pkgdesc = Daemon that sends local hardware information to Home Assistant
-	pkgver = 1.0.15
+	pkgver = 1.0.17
 	pkgrel = 1
 	url = https://github.com/tobias-kuendig/hacompanion
 	install = hacompanion.install
@@ -10,14 +10,14 @@ pkgbase = hacompanion
 	makedepends = go
 	conflicts = hacompanion-git
 	backup = etc/hacompanion/config.toml
-	source = hacompanion::git+https://github.com/tobias-kuendig/hacompanion.git#tag=v1.0.15
+	source = hacompanion::git+https://github.com/tobias-kuendig/hacompanion.git#tag=v1.0.17
 	source = hacompanion.install
 	source = hacompanion.service
 	source = hacompanion.service-user
 	source = hacompanion.sysusers
 	source = hacompanion.tmpfiles
 	source = 0001-Save-registration-file-to-var-lib-hacompanion.patch
-	sha256sums = 0968f7ae5ba6e1f7231e3ecced0193a258293c38a87c3ac1d95ca38cbfdca7b7
+	sha256sums = 9ad6414e5fb2c1a214cad1296fce4c5a6e0c12cce58815a19cc3f1a6c58d2ac6
 	sha256sums = 8d0bdc24a666302edb64759dcc82ba10f70de2fa06e489cd663362907aaf7c92
 	sha256sums = 08ab69caf1b10f00b05942821e09c49a6223392ea7e35d685ecf243e7831436b
 	sha256sums = 6f7df02bc2b8ef1b7b53d66018360b319596225c15a65c347c3cf6617094ec45

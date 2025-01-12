@@ -7,7 +7,7 @@ pkgdesc="Daemon that sends local hardware information to Home Assistant"
 url="https://github.com/${_reponame}"
 license=('MIT')
 
-pkgver=1.0.15
+pkgver=1.0.17
 pkgrel=1
 arch=('any')
 
