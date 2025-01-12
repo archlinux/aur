@@ -16,16 +16,9 @@ _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
 b2sums=('96f91039a6244eb0c9028722f72440c3437cdc38b4c463eaa5d07534650b39ef263683be2f20d10383e7d9795cf137476985033a7f6c827fdedb9ce87a43d4e7')
 
-prepare() {
-  cd "${srcdir}/${_pkgsrc}"
-  sed -e 's/^CFLAGS=.*/CFLAGS='"${CFLAGS}/g" \
-      -e 's/${LDFLAGS}/'"${LDFLAGS}/g" \
-      -i Makefile
-}
-
 build() {
   cd "${srcdir}/${_pkgsrc}"
-  make
+  make CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 package() {
