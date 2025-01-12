@@ -1,6 +1,6 @@
 pkgbase = r-hmisc
 	pkgdesc = Harrell Miscellaneous
-	pkgver = 5.2.1
+	pkgver = 5.2.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=Hmisc
 	arch = x86_64
@@ -49,7 +49,7 @@ pkgbase = r-hmisc
 	optdepends = r-survival
 	optdepends = r-tables
 	optdepends = r-vgam
-	source = https://cran.r-project.org/src/contrib/Hmisc_5.2-1.tar.gz
-	sha256sums = 77329ef9696f0532b7c723452eac70a3cdcb2f96e02f2d57a1b71a9000babcee
+	source = https://cran.r-project.org/src/contrib/Hmisc_5.2-2.tar.gz
+	sha256sums = c55221af4fe0add8f2b9a112a6205833772bd1d2786fcb13f72ae0d06d58097c
 
 pkgname = r-hmisc
