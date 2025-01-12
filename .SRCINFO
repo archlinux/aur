@@ -1,0 +1,17 @@
+pkgbase = jpu
+	pkgdesc = JuleProtonUp is a fast and lightweight ProtonUp alternative
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/adamperkowski/jpu
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = julec
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	depends = curl
+	source = jpu-0.0.1::git+https://github.com/adamperkowski/jpu.git#tag=v0.0.1
+	sha256sums = 231ba539d1160723e557f967f7986fb5f7884ff012e76fbe4631803dae908f76
+
+pkgname = jpu
