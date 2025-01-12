@@ -5,11 +5,11 @@
 pkgname=wayst-wayland-git
 pkgver=r291.df032d7
 pkgrel=1
-pkgdesc='Simple terminal emulator for Wayland and X11 with OpenGL rendering and minimal dependencies.'
+pkgdesc='Simple terminal emulator for Wayland with OpenGL rendering and minimal dependencies.'
 arch=('x86_64')
 url='https://github.com/91861/wayst'
 license=('MIT')
-depends=('mesa' 'freetype2' 'fontconfig' 'libxkbcommon' 'libxrandr' 'libutf8proc')
+depends=('mesa' 'freetype2' 'fontconfig' 'libxkbcommon' 'libxrandr' 'libutf8proc' 'libegl' 'libgl' 'libxkbcommon')
 makedepends=('git') 
 provides=('wayst')
 conflicts=('wayst')

@@ -1,5 +1,5 @@
 pkgbase = wayst-wayland-git
-	pkgdesc = Simple terminal emulator for Wayland and X11 with OpenGL rendering and minimal dependencies.
+	pkgdesc = Simple terminal emulator for Wayland with OpenGL rendering and minimal dependencies.
 	pkgver = r291.df032d7
 	pkgrel = 1
 	url = https://github.com/91861/wayst
@@ -12,6 +12,9 @@ pkgbase = wayst-wayland-git
 	depends = libxkbcommon
 	depends = libxrandr
 	depends = libutf8proc
+	depends = libegl
+	depends = libgl
+	depends = libxkbcommon
 	provides = wayst
 	conflicts = wayst
 	source = git+https://github.com/91861/wayst.git#branch=master
