@@ -6,41 +6,145 @@
 # Contributor: Philipp Wolfer <ph.wolfer (at) gmail.com>
 # Contributor: Jens Rudolf <jens.rudolf (at) gmx.net>
 
-pkgname=librm-git
 _pkgname=librm
-pkgver=2.3.4.r0.g4ebbae3
+pkgname="${_pkgname}"-git
+pkgver=2.3.4.r152.20230128.4ebbae3
 pkgrel=1
-pkgdesc="Router Manager library"
-arch=('x86_64')
+pkgdesc="Offers FRITZ!Box related core functionality for Roger Router (GUI), Roger CLI (CLI) and Roger Rabbit (ncurses) interfaces."
+arch=(
+  'aarch64'
+  'x86_64'
+  'i686'
+  'pentium4'
+  'armv5h'
+  'armv6h'
+  'armv7h'
+)
 url="https://gitlab.com/tabos/librm"
 license=('LGPL-2.1-only')
 
-depends=(glib2 gdk-pixbuf2 libsoup speex libxml2 libtiff spandsp json-glib libsndfile gupnp-1.2 gssdp-1.2 gstreamer gst-plugins-base libsecret libcapi)
-makedepends=(meson ninja ccache git)
+depends=(
+  'gdk-pixbuf2'
+  'gcc-libs'
+  'glib2'
+  'glibc'
+  'gst-plugins-base-libs'
+  'gstreamer'
+  'json-glib'
+  'libcapi'
+  'libgssdp-1.2.so'
+  'libgupnp-1.2.so'
+  'libsecret'
+  'libsndfile'
+  'libsoup'
+  'libtiff'
+  'libxml2'
+  'spandsp'
+  'speex'
+)
+makedepends=(
+  'git'
+  'gdk-pixbuf2'
+  'gettext'
+  'gtk-doc'   # To build GTK documentation.
+  'gssdp-1.2'
+  'gupnp-1.2'
+  'meson'
+  'ninja'
+  'speex'
+)
+optdepends=(
+  "dconf: For provided glib schemas."
+)
+options+=('!emptydirs')
+provides=(
+  "${_pkgname}=${pkgver}"
+  "librm.so"
+  "${_pkgname}-doc=${pkgver}"
+)
+conflicts=(
+  "${_pkgname}"
+  "librm.so"
+  "${_pkgname}-doc"
+)
+source=(
+  "${_pkgname}::git+https://gitlab.com/tabos/librm.git"
+)
+sha256sums=(
+  'SKIP'
+)
 
-options=('!emptydirs')
-provides=('librm')
-conflicts=('librm')
-source=("git+https://gitlab.com/tabos/librm.git")
-sha512sums=('SKIP')
+_CFLAGSADDITIONS="-w"
+
+prepare() {
+  CFLAGS+=" ${_CFLAGSADDITIONS}"
+  CXXFLAGS+=" ${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
+
+  cd "${srcdir}"
+
+  arch-meson "${_pkgname}" build --reconfigure \
+    -Denable-documentation=true \
+    -Denable-secret=true
+
+  cd "${srcdir}/${_pkgname}"
+  git log > git.log
+}
 
 pkgver() {
-  cd $_pkgname
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/${_pkgname}"
+
+  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
+
+  if [ -z "${_ver}" ]; then
+    error "Version could not be determined."
+    return 1
+  else
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+  fi
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  meson --prefix /usr --buildtype=plain "builddir"
-  ninja -v -C "builddir"
+  CFLAGS+=" ${_CFLAGSADDITIONS}"
+  CXXFLAGS+=" ${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
+
+  cd "${srcdir}"
+
+  ninja -v -j1 -C "build"
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}"
-  ninja -C "builddir" test
+  CFLAGS+=" ${_CFLAGSADDITIONS}"
+  CXXFLAGS+=" ${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
+
+  cd "${srcdir}"
+
+  ninja -v -C "build" test
 }
 
 package() {
+  CFLAGS+=" ${_CFLAGSADDITIONS}"
+  CXXFLAGS+=" ${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
+
+  cd "${srcdir}"
+
+  DESTDIR="${pkgdir}" ninja -v -C "build" install
+
+  install -dvm755 "${pkgdir}/usr/share/doc/${_pkgname}"
+  ln -svr "${pkgdir}/usr/share/gtk-doc/html/rm"  "${pkgdir}/usr/share/doc/${_pkgname}/html"
+
   cd "${srcdir}/${_pkgname}"
-  DESTDIR="$pkgdir" ninja -C "builddir" install
+
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"      git.log README.md TODO
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  LICENSE
 }
