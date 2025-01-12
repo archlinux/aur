@@ -1,15 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-caio
 _name=${pkgname#python-}
-pkgver=0.9.19
+pkgver=0.9.21
 pkgrel=1
 pkgdesc="Linux AIO c python bindings"
 arch=('x86_64')
 url="https://github.com/mosquito/caio"
 license=('Apache-2.0')
-depends=(
-  'python'
-)
+depends=('python')
 makedepends=(
   'python-build'
   'python-installer'
@@ -23,7 +21,7 @@ makedepends=(
 #  'python-pytest-asyncio'
 #)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('1f0f5a0df777d3771b92d2b47e0a78d3abcff9634f9fc89c540781424ab63918')
+sha256sums=('f16390dd70d2432351aee783eb2d7be796e2879ac4cd1cf8e75bd1901b148060')
 
 build() {
   cd "$_name-$pkgver"
