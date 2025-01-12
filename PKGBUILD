@@ -3,7 +3,7 @@
 
 _pkgname=ReGreet
 pkgname=greetd-${_pkgname,,}-git
-pkgver=0.1.3.r10.9118383
+pkgver=0.2.0.r0.c75486b
 pkgrel=1
 pkgdesc='Clean and customizable greeter for greetd'
 url="https://github.com/rharish101/$_pkgname"
@@ -11,13 +11,9 @@ license=(GPL-3.0-or-later)
 arch=(x86_64)
 depends=(wayland-compositor
          greetd
-         cairo
          gcc-libs
-         gdk-pixbuf2
-         glib2
          glibc
-         gtk4
-         pango)
+         gtk4)
 provides=(greetd-greeter)
 backup=("etc/greetd/${_pkgname,,}.toml")
 makedepends=(cargo git)
