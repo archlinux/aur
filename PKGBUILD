@@ -4,34 +4,30 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=nethack-git
-_pkgname=NetHack
-pkgver=3.6.7_Released+r17542+g55561da63
+pkgver=3.6.7_Released+r9120+g55561da63
 pkgrel=1
 pkgdesc='A single player dungeon exploration game'
 arch=('i686' 'x86_64')
 url='https://github.com/NetHack/NetHack'
-license=('LicenseRef-custom')
+license=('custom')
 depends=('ncurses' 'gzip' 'gdb')
 makedepends=(git)
-_branch=NetHack-3.6 #3.7 is not ready yet
-source=("git+https://github.com/NetHack/NetHack.git#branch=${_branch}" nethack.tmpfiles)
+source=('git+https://github.com/NetHack/NetHack.git#branch=NetHack-3.6' nethack.tmpfiles)
 sha256sums=('SKIP'
             '5c68417ff1cf76705a2bf7dc9fa1900156792808cb528d62f53e337030c40ea4')
 conflicts=('nethack')
 provides=('nethack')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd "NetHack"
   _version=$(git describe --tags --abbrev=0 | tr - .)
-  #we need to source commit counts from the default branch to match our version checker
-  local _defaultbranch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
-  _commits=$(git rev-list --count $_defaultbranch)
+  _commits=$(git rev-list --count HEAD)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
   echo "${_version#'NetHack.'}+r${_commits}+g${_short_commit_hash}"
 }
 
 prepare() {
-  cd "${_pkgname}"
+  cd "NetHack"
 
   sed -e 's|^/\* \(#define LINUX\) \*/|\1|' \
     -e 's|^/\* \(#define TIMED_DELAY\) \*/|\1|' \
@@ -70,12 +66,12 @@ prepare() {
 build() {
   cd "NetHack/sys/unix"
   sh setup.sh hints/linux
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/NetHack"
   make
 }
 
 package() {
-  cd "${_pkgname}"
+  cd "NetHack"
 
   install -dm755 "$pkgdir"/usr/share/{man/man6,doc/nethack}
   install -dm775 "$pkgdir"/var/games/
