@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A Lua bindings generator written in Lua"
 arch=(any)
 url=https://github.com/Neopallium/LuaNativeObjects
-license=(GPL3)
+license=(MIT)
 makedepends=(luarocks)
 source=("https://luarocks.org/manifests/neopallium/luanativeobjects-$pkgver-1.src.rock")
 sha256sums=('86fa6f7e2608800946a171eb809334affdf85a38bad8b7ab505fb618e9f932c4')
@@ -16,7 +16,9 @@ _lua_version=5.4
 _package() {
 	optdepends=("lua${1/./}-$_pkgname")
 	luarocks install --lua-version=$1 --tree="$pkgdir/usr/" --deps-mode=none ./*.rockspec
-	rm $pkgdir/usr/lib/luarocks/rocks-*/manifest
+	rm "$pkgdir"/usr/lib/luarocks/rocks-*/manifest
+	[[ "$1" == "$_lua_version" ]] ||
+		mv "$pkgdir/usr/bin/native_objects" "$pkgdir/usr/bin/native_objects$1"
 }
 
 package_lua51-native-objects() {
