@@ -22,7 +22,6 @@ arch=(
 )
 url="https://gitlab.com/tabos/librm"
 license=('LGPL-2.1-only')
-
 depends=(
   'gdk-pixbuf2'
   'gcc-libs'
@@ -56,7 +55,6 @@ makedepends=(
 optdepends=(
   "dconf: For provided glib schemas."
 )
-options+=('!emptydirs')
 provides=(
   "${_pkgname}=${pkgver}"
   "librm.so"
@@ -73,6 +71,8 @@ source=(
 sha256sums=(
   'SKIP'
 )
+options+=('!emptydirs')
+# options+=('debug')
 
 _CFLAGSADDITIONS="-w"
 
