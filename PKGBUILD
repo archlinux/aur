@@ -3,14 +3,13 @@
 _pkgname="gimp-plugin-gmic"
 pkgname="$_pkgname-git"
 pkgver=3.5.0.r0.g41e86b9
-pkgrel=2
+pkgrel=3
 pkgdesc="Gimp plugin for the G'MIC image processing framework"
 url="https://github.com/GreycLab/gmic-qt"
 license=('CECILL-C')
 arch=('x86_64')
 
 depends=(
-  'blas-openblas'
   'fftw'
   'gimp-git' # AUR
   'glib2'
