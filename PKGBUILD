@@ -8,13 +8,12 @@ pkgname=(qoi-headers-git
         )
 pkgbase=qoi-git
 pkgver=r346.b0b926e
-pkgrel=1
+pkgrel=2
 pkgdesc="The 'Quite OK Image' format for fast, lossless image compression"
 arch=('x86_64')
 url='https://qoiformat.org/'
 license=('MIT')
 source=("$source_dir::git+https://github.com/phoboslab/qoi.git")
-provides=("qoi-headers")
 conflicts=("qoi-headers")
 makedepends=('git'
              'gcc-libs'
