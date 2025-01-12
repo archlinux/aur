@@ -1,0 +1,19 @@
+diff -rU1 evolution-data-server.orig/CMakeLists.txt evolution-data-server.icu76/CMakeLists.txt
+--- evolution-data-server.orig/CMakeLists.txt	2025-01-12 16:06:23.712104466 +0100
++++ evolution-data-server.icu76/CMakeLists.txt	2025-01-12 19:13:13.019218279 +0100
+@@ -360,3 +360,3 @@
+ # file then let's fallback on a manual check
+-pkg_check_modules(ICU icu-i18n)
++pkg_check_modules(ICU icu-i18n icu-uc)
+ 
+@@ -366,3 +366,3 @@
+ 		message(FATAL_ERROR "ICU unicode/ucol.h not found; icu-i18n is required")
+-	endif(HAVE_UNICODE_UCOL_H)
++	endif(NOT HAVE_UNICODE_UCOL_H)
+ 
+@@ -377,3 +377,3 @@
+ 	else(HAVE_UCOL_OPEN)
+-		message(FATAL_ERROR "Failed to find icu-i18n, install its development files or build them first")
++		message(FATAL_ERROR "Failed to find icui18n, icuuc and icudata, install its development files or build them first")
+ 	endif(HAVE_UCOL_OPEN)
+Binary files evolution-data-server.orig/.git/index and evolution-data-server.icu76/.git/index differ

@@ -1,0 +1,9 @@
+diff -rU1 evolution-data-server.orig/CMakeLists.txt evolution-data-server.cxx17/CMakeLists.txt
+--- evolution-data-server.orig/CMakeLists.txt	2025-01-12 16:06:23.712104466 +0100
++++ evolution-data-server.cxx17/CMakeLists.txt	2025-01-12 19:55:41.922653223 +0100
+@@ -8,3 +8,3 @@
+ 	LANGUAGES C CXX)
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
+ set(PROJECT_BUGREPORT "https://gitlab.gnome.org/GNOME/evolution-data-server/issues/")
+Binary files evolution-data-server.orig/.git/index and evolution-data-server.cxx17/.git/index differ
