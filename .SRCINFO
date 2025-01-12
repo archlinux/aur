@@ -13,7 +13,6 @@ pkgbase = ical2orgpy-git
 	depends = python-pytz
 	depends = python-icalendar
 	depends = python-recurring-ical-events
-	depends = python-future
 	depends = python-click
 	source = git+https://github.com/ical2org-py/ical2org.py.git
 	md5sums = SKIP
