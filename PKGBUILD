@@ -27,14 +27,14 @@ validpgpkeys=()
 
 pkgver() {
 	cd "WHY2"
-	git checkout development
+    git checkout development &>/dev/null
 
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
 	cd "WHY2"
-	git checkout development
+    git checkout development &>/dev/null
 
 	make install
 
