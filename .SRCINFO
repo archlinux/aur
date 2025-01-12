@@ -7,7 +7,7 @@ pkgbase = lib32-cairomm-1.16
 	license = LGPL-2.0-or-later AND MPL-1.1
 	makedepends = meson>=0.55
 	makedepends = mm-common
-	depends = cairomm
+	depends = cairomm-1.16
 	depends = lib32-cairo
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
