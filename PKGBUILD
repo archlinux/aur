@@ -2,7 +2,7 @@
 # Contributor: Gergely Imreh <gergely@imreh.net>
 
 pkgname=abctl
-pkgver=0.18.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Airbyte's CLI for managing local Airbyte installations"
 arch=(x86_64 aarch64)
@@ -11,8 +11,8 @@ license=(MIT)
 source_x86_64=("https://github.com/airbytehq/abctl/releases/download/v${pkgver}/abctl-v${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("https://github.com/airbytehq/abctl/releases/download/v${pkgver}/abctl-v${pkgver}-linux-arm64.tar.gz")
 
-sha256sums_x86_64=('1320ecb61359630a346a06fd2641b343d8869853278f7ba3b72f7851669f452b')
-sha256sums_aarch64=('42631ad9a3d5cdd89761b71775568a22491f64d5c690fa9c47efa5eea0a10a1c')
+sha256sums_x86_64=('46feb4de5f1568047ea7fc227f986bcf2e3a781f32f236dc552d9685fc2fd3c5')
+sha256sums_aarch64=('0d3cc361dd8350e94a9167e78f51b05eaae7682cbc2679902a802d76d139315c')
 
 package() {
   sourcename="source_${CARCH}"
