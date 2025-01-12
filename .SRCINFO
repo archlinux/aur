@@ -1,7 +1,7 @@
 pkgbase = gssdp-1.2
 	pkgdesc = GObject-based API for handling resource discovery and announcement over SSDP. Legacy 1.2.x version for compatibility with old software.
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/GUPnP
 	arch = aarch64
 	arch = x86_64
@@ -18,7 +18,8 @@ pkgbase = gssdp-1.2
 	makedepends = vala
 	depends = glib2
 	depends = glibc
-	depends = libsoup
+	depends = libsoup>=2
+	depends = libsoup<3
 	optdepends = gtk3: For gssdp-1.2-device-sniffer
 	source = gssdp-1.2.3.tar.bz2::https://gitlab.gnome.org/GNOME/gssdp/-/archive/gssdp-1.2.3/gssdp-gssdp-1.2.3.tar.bz2
 	validpgpkeys = AC9CD4E32D7C7F6357BA8ADD10F6E970175D29E1

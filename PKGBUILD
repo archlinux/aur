@@ -8,7 +8,7 @@ pkgname=(
   "${_pkgbase}-1.2"
 )
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject-based API for handling resource discovery and announcement over SSDP. Legacy 1.2.x version for compatibility with old software."
 url="https://wiki.gnome.org/Projects/GUPnP"
 arch=(
@@ -24,7 +24,8 @@ license=(LGPL-2.1-or-later)
 depends=(
   'glib2'
   'glibc'
-  'libsoup'
+  'libsoup>=2'
+  'libsoup<3'
 )
 makedepends=(
   'glib2-devel'
