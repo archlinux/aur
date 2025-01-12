@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=pshash
-pkgver=0.1.11.0
+pkgver=0.1.13.1
 pkgrel=1
 epoch=
 pkgdesc="A functional pseudo-hash password generator"
@@ -35,16 +35,10 @@ build() {
 }
 
 package() {
-	# cd "$pkgname-$pkgver"
-	# make DESTDIR="$pkgdir/" install
-	# echo "$pkgdir/"
-	# mv ./pshash "$pkgdir/"
-	
 	install -Dm755 ./$pkgname "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-sha256sums=('1653556de0f26d223348fb5bc61e9074dbbf8d61226d6885e9157be93f6089cc'
-            '51bb38350ead1f2fc71169b932c95531d60f6133e8872bc582f4e5ec77dfe24c'
+sha256sums=('5e683b0e46d49ea96ac56247e60abb9b397cd389a47e7a03dd9959cca0418cf4'
+            '8c6ecab033182455e5b9d04c9b2b4fd40b55cec565567fff8957481e73879d27'
             '92e498dfdf4478c5d306c11af29b375797420464964efda7329d27a8025af6bb')
