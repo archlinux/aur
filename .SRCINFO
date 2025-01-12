@@ -13,6 +13,7 @@ pkgbase = vapoursynth-plugin-removelogo-git
 	provides = vapoursynth-plugin-removelogo-hg
 	conflicts = vapoursynth-plugin-removelogo
 	conflicts = vapoursynth-plugin-removelogo-hg
+	options = debug
 	source = removelogo::git+https://github.com/Noctem/vapoursynth-removelogo.git
 	sha256sums = SKIP
 

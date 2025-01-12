@@ -27,6 +27,7 @@ conflicts=(
 )
 source=("${_plug}::git+https://github.com/Noctem/vapoursynth-removelogo.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
