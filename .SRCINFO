@@ -1,6 +1,6 @@
 pkgbase = python-kornia
 	pkgdesc = Open Source Differentiable Computer Vision Library for PyTorch
-	pkgver = 0.7.4
+	pkgver = 0.8.0
 	pkgrel = 3
 	url = https://github.com/kornia/kornia
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-kornia
 	optdepends = python-onnxruntime: To use onnx runtime
 	optdepends = python-kornia-rs: Low-level Computer Vision library - rust bindings
 	options = !emptydirs
-	source = kornia-0.7.4.zip::https://github.com/kornia/kornia/archive/refs/tags/v0.7.4.zip
-	sha256sums = 9d9840f0940e277086b8bd183355762ccf25e4e7bc8d87497d2b0d9857938c1a
+	source = kornia-0.8.0.zip::https://github.com/kornia/kornia/archive/refs/tags/v0.8.0.zip
+	sha256sums = c2b28c96845406ff9f63c309a31ffaa47c665477f0a49467e88f8fa8644d8426
 
 pkgname = python-kornia
