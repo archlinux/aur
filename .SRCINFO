@@ -1,0 +1,20 @@
+pkgbase = reddcoin-bin
+	pkgdesc = Reddcoin - The Original Social Cryptocurrency (Binary Version)
+	pkgver = 4.22.8
+	pkgrel = 1
+	url = https://www.reddcoin.com/
+	arch = x86_64
+	license = MIT
+	depends = qt5-base
+	depends = boost-libs
+	depends = miniupnpc
+	depends = libevent
+	depends = openssl
+	provides = reddcoin
+	conflicts = reddcoin
+	source = reddcoin-4.22.8-x86_64-linux-gnu.tar.gz::https://download.reddcoin.com/bin/reddcoin-core-4.22.8/x86_64-linux-gnu/reddcoin-1d0e612e3f0c-x86_64-linux-gnu.tar.gz
+	source = reddcoin-icon.svg
+	sha256sums = 5fa7907a1cc9564c7b5c1240a4495c49265aac37dd0fcfa8fd20a600bb17cf09
+	sha256sums = 9f1128822e93b1c9815e07fee9bb0db9adc4200c4f6bed0e8ba35a0a512300b0
+
+pkgname = reddcoin-bin
