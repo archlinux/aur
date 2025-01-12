@@ -1,0 +1,5 @@
+[servo-nightly-bin]
+source="cmd"
+cmd="""
+curl -sLI -o /dev/null -w %{url_effective} https://github.com/servo/servo-nightly-builds/releases/latest | rev | cut -d/ -f1 | rev | tr -d -
+"""

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Servo
+Comment=The embeddable, independent, memory-safe, modular, parallel web rendering engine
+Path=/usr/bin/servo
+Exec=servo
+Icon=Servo
+Terminal=false
+StartupNotify=false
+Categories=Application;Network;
