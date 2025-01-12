@@ -1,7 +1,7 @@
 # Maintainer: SysAdm <sysadm.archlinux@proton.me>
 # Contributor: Asuka Minato
 pkgname=caido-desktop
-pkgver=0.44.1
+pkgver=0.45.0
 pkgrel=1
 pkgdesc="A lightweight web security auditing toolkit."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('private')
 depends=(glibc gcc-libs)
 provides=(caido)
 source=("https://caido.download/releases/v${pkgver}/caido-desktop-v${pkgver}-linux-x86_64.AppImage")
-sha256sums=('18a8634d33d7b59ee330574a28352c4f5a59b23dbe2a69f702efbeb00b15e94f')
+sha256sums=('85752694f8f0c58824a20a25bcb4f91648ac6ddf4a2a285ae5fd35755115594a')
 
 prepare() {
 	chmod +x *.AppImage
