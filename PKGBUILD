@@ -1,12 +1,10 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=wlink-git
-pkgver=0.1.0.r0.g42127dc
+pkgver=0.1.1.r3.g217f0e5
 pkgrel=1
 pkgdesc="wlink - WCH-Link(RV) command line tool"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/ch32-rs/wlink"
 license=('Apache-2.0' 'MIT')
 provides=(${pkgname%-git})
@@ -22,21 +20,23 @@ makedepends=(
     git
     rust)
 backup=()
-options=()
+options=('!strip' '!debug')
 install=
 source=("${pkgname}::git+$url.git")
 sha256sums=('SKIP')
 
 prepare() {
-    cd "${srcdir}/${pkgname}/"
-    git tag --delete nightly
+    git -C "${srcdir}/${pkgname}" clean -dfx
+    #     cd "${srcdir}/${pkgname}/"
+    #     git tag --delete nightly
 }
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
-        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    (
+        set -o pipefail
+        git describe --exclude=nightly --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
@@ -46,9 +46,9 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${pkgname}/"
-  # Tests need nightly features
-  RUSTC_BOOTSTRAP=1 cargo test --release
+    cd "${srcdir}/${pkgname}/"
+    # Tests need nightly features
+    RUSTC_BOOTSTRAP=1 cargo test --release
 }
 
 package() {
