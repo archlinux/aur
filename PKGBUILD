@@ -6,15 +6,15 @@
 # Contributor: DeepChirp <DeepChirp@outlook.com>
 
 pkgname=rime-pinyin-moegirl
-pkgver=20241211
-pkgrel=3
+pkgver=20250111
+pkgrel=1
 pkgdesc="Rime Pinyin Dictionary from moegirl.org wiki"
 arch=('any')
 url="https://github.com/outloudvi/mw2fcitx"
 license=('Unlicense' 'cc-by-nc-sa-3.0')
 source=("moegirl-${pkgver}.dict.yaml::${url}/releases/download/${pkgver}/moegirl.dict.yaml"
         "${url}/raw/master/LICENSE")
-sha256sums=('9806b6b1e22a07312023032891f53797203f1b0c03541be35dac778b697eaa6f'
+sha256sums=('b0cac4295587e8399c0e25dd60471c3aea50d6402234b69ce3cf2392bc80d2dc'
             '7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c')
 
 package() {
