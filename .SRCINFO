@@ -13,7 +13,8 @@ pkgbase = wfuzz
 	depends = python-chardet
 	depends = python-six
 	source = https://github.com/xmendez/wfuzz/archive/v3.1.0.tar.gz
+	source = setup.py.diff
 	sha256sums = 60798e56274a377f8770d162935a040d4d6e27919bfbb46cf13a7a0a34896be9
+	sha256sums = 275e9811517da830ac923ca8bbb55732930b6a264d27cfbc6df5b26d5c9ba377
 
 pkgname = wfuzz
-

@@ -1,9 +1,9 @@
-# Maintainer: Cedric Girard <cgirard.archlinux@valinor.fr>
 # Maintainer: Denis Kasak <dkasak AT termina DOT org DOT uk>
-#Contributor: Olivier Le Moal <mail at olivierlemoal dot fr>
-#Contributor: Dawid Wrobel <cromo@klej.net>
-#Contributor: Sébastien Duquette <ekse.0x@gmail.com>
-#Contributor: onny <onny@project-insanity.org>
+# Maintainer: Cedric Girard <cgirard.archlinux@valinor.fr>
+# Contributor: Olivier Le Moal <mail at olivierlemoal dot fr>
+# Contributor: Dawid Wrobel <cromo@klej.net>
+# Contributor: Sébastien Duquette <ekse.0x@gmail.com>
+# Contributor: onny <onny@project-insanity.org>
 
 pkgname=wfuzz
 pkgver=3.1.0
@@ -14,8 +14,16 @@ arch=('any')
 license=('GPL')
 depends=('python-pycurl' 'python-pyparsing' 'python-future' 'python-chardet' 'python-six')
 makedepends=('python-setuptools' 'python-sphinx')
-source=("https://github.com/xmendez/wfuzz/archive/v$pkgver.tar.gz")
-sha256sums=('60798e56274a377f8770d162935a040d4d6e27919bfbb46cf13a7a0a34896be9')
+source=("https://github.com/xmendez/wfuzz/archive/v$pkgver.tar.gz"
+        setup.py.diff)
+sha256sums=('60798e56274a377f8770d162935a040d4d6e27919bfbb46cf13a7a0a34896be9'
+            '275e9811517da830ac923ca8bbb55732930b6a264d27cfbc6df5b26d5c9ba377')
+
+prepare() {
+  cp "$srcdir/setup.py.diff" "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p0 < "setup.py.diff"
+}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/docs"
