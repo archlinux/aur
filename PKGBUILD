@@ -6,13 +6,17 @@
 pkgname=python-tmdbsimple
 _name=${pkgname#python-}
 pkgver=2.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A wrapper for The Movie Database API v3"
 arch=('any')
 url="https://github.com/celiao/tmdbsimple"
-license=('GPL3')
-depends=('python' 'python-requests')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+license=('GPL-3.0-or-later')
+depends=('python'
+         'python-requests')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('5aca27030b9fd4af4df00c4850d0843729b0c3603fe1315d1c58635d185c222c')
 
