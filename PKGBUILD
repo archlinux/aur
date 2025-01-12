@@ -1,43 +1,50 @@
 # Maintainer: Vincent Grande <shoober420@gmail.com>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
-# Contributor: Jan de Groot
 
 pkgname=libinput-git
-pkgver=1.12.3.r8.g51ffff36
+pkgver=1.27.1
 pkgrel=1
 pkgdesc="Input device management and event handling library"
-url="https://www.freedesktop.org/wiki/Software/libinput/"
+url="https://gitlab.freedesktop.org/libinput/libinput"
 arch=(x86_64)
-license=(custom:X11)
-depends=('mtdev' 'libevdev' 'libwacom')
-provides=('libinput')
-conflicts=('libinput')
+license=(MIT)
+depends=('mtdev' 'libevdev' 'libwacom' 'systemd-libs' 'glibc')
 # upstream doesn't recommend building docs
-makedepends=('gtk3' 'meson') # 'doxygen' 'python-sphinx' 'python-recommonmark'
-optdepends=('gtk3: libinput debug-gui'
+makedepends=('git' 'gtk4' 'meson' 'wayland-protocols' 'check') # 'doxygen' 'graphviz' 'python-sphinx' 'python-recommonmark'
+checkdepends=('python-pytest')
+optdepends=('gtk4: libinput debug-gui'
             'python-pyudev: libinput measure'
-            'python-evdev: libinput measure'
-            'xorg-xinput: input configuration for X')
-source=(git+https://gitlab.freedesktop.org/libinput/libinput)
-sha512sums=('SKIP')
-validpgpkeys=('SKIP') # Peter Hutterer (Who-T) <office@who-t.net>
+            'python-libevdev: libinput measure'
+            'python-yaml: used by various tools')
+provides=(libinput)
+conflicts=(libinput)
+source=(git://https://gitlab.freedesktop.org/libinput/libinput.git)
+sha256sums=('SKIP')
+#validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
 
 pkgver() {
-	cd libinput
-	git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd libinput
+  git describe --long | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson libinput build \
-    -Dudev-dir=/usr/lib/udev \
-    -Dtests=false \
-    -Ddocumentation=false
-  ninja $NINJAFLAGS -C build
+  arch-meson $pkgname-$pkgver build \
+    -D udev-dir=/usr/lib/udev \
+    -D documentation=false
+
+  # Print config
+  meson configure build
+
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja $NINJAFLAGS -C build install
+  meson install -C build --destdir "$pkgdir"
 
-  install -Dvm644 libinput/COPYING \
-    "$pkgdir/usr/share/licenses/libinput/LICENSE"
+  install -Dvm644 $pkgname-$pkgver/COPYING \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
