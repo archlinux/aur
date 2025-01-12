@@ -1,7 +1,7 @@
 pkgbase = simulide-git
 	pkgdesc = Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers). Development version.
 	pkgver = r250113
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eeTools/SimulIDE-dev
 	arch = x86_64
 	license = GPL3
@@ -16,6 +16,6 @@ pkgbase = simulide-git
 	source = simulide-git::git+https://github.com/eeTools/SimulIDE-dev.git
 	source = simulide.desktop
 	sha256sums = SKIP
-	sha256sums = 64c5b136dc8ea1c625f19ad3827b7f79f8eda039302387f441ca45ab184345b6
+	sha256sums = da1a1812404ba64006f85e4b2c2b51cf8a11ab6949e20c1487a1b7738cc7e1ba
 
 pkgname = simulide-git
