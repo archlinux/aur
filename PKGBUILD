@@ -10,7 +10,7 @@ url="https://www.cairographics.org/cairomm"
 _url="https://gitlab.freedesktop.org/cairo/${_basename}"
 arch=('x86_64')
 license=('LGPL-2.0-or-later AND MPL-1.1')
-depends=("${_name}" 'lib32-cairo' 'lib32-gcc-libs' 'lib32-glibc'
+depends=("${_name}" 'lib32-cairo>=1.14' 'lib32-gcc-libs' 'lib32-glibc'
          'lib32-libsigc++-3.0')
 makedepends=('meson>=0.55' 'mm-common')
 provides=("lib${_name}.so")

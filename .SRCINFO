@@ -8,7 +8,7 @@ pkgbase = lib32-cairomm-1.16
 	makedepends = meson>=0.55
 	makedepends = mm-common
 	depends = cairomm-1.16
-	depends = lib32-cairo
+	depends = lib32-cairo>=1.14
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
 	depends = lib32-libsigc++-3.0
