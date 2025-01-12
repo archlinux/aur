@@ -9,14 +9,13 @@
 _pkgname="gyroflow"
 pkgname="$_pkgname-git"
 pkgver=1.6.0.r71.g52fcd02
-pkgrel=1
+pkgrel=2
 pkgdesc="Video stabilization using gyroscope data"
 url="https://github.com/gyroflow/gyroflow"
 license=("GPL-3.0-or-later")
 arch=("x86_64")
 
 depends=(
-  'blas-openblas'
   'ffmpeg'
   'libc++'
   'ocl-icd'
@@ -51,7 +50,7 @@ pkgver() {
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-prepare() {
+prepare() (
   [ ! -e "$_pkgsrc/.cargo/config.toml" ] \
     && [ -e "$_pkgsrc/.cargo/config" ] \
     && mv "$_pkgsrc/.cargo/config" "$_pkgsrc/.cargo/config.toml"
@@ -60,9 +59,9 @@ prepare() {
 
   cd "$_pkgsrc"
   cargo fetch --target "${CARCH}-unknown-linux-gnu"
-}
+)
 
-build() {
+build() (
   export QMAKE="/usr/bin/qmake6"
 
   # Use system libraries
@@ -75,7 +74,7 @@ build() {
 
   cd "$_pkgsrc"
   cargo build --frozen --release --all-features
-}
+)
 
 package() {
   # program files
