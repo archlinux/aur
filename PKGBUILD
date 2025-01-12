@@ -6,7 +6,7 @@
 # Contributor : Patrick McCarty  <pnorcks at gmail dot com>
 
 pkgname=osc
-pkgver=1.10.1
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
@@ -15,7 +15,8 @@ license=('GPL2')
 depends=('python'
          'python-cryptography'
          'python-urllib3'
-         'python-distro')
+         'python-distro'
+         'python-ruamel-yam')
 makedepends=('python-setuptools')
 optdepends=('obs-build: required to run local builds'
             'obs-service-format_spec_file: for running the format_spec_file source service'
@@ -36,20 +37,19 @@ source=("https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz"
         0008-Fix-hdrmd5-check-of-downloaded-packages-from-DoD-rep.patch
         0009-Add-buildlog-option-to-fetch-buildlog-not-relative-t.patch
        )
-sha256sums=('20ee481f7ed9b3355cbdee5f590819b491e9c08992f3f7da0d96ca4495bc68db'
-            '9ce6cf5cff4168a1b6df99c9a9684812934872f6da84407f70ec26b65e7c0de0'
-            '353f4059fac5a423bfba47763e7b9acb4963131d4be24a6e8b6890e3d311d4ba'
-            '157f35d2707b1282f59382727f778aa81f3b7a251dbefcc5b1621b28469079d6'
-            '4ce2727df761460ecbc9ff75883c3799ed07f9c123f616b04516139c9eb15f97'
-            '03a67b38363e1e51a79db9806f83d2a063a8c90f105939e59684453c56289532'
+sha256sums=('58d568a571b2182aa697934ca0af7dde645b1f8c69b83b7be5fb8358ea475802'
+            '1331821721b5afa1655b2878efdddc25f5fb37c2ade4d4ebbdb9595a3d0bd911'
+            'cc29e0faad37cbf79586239eb92aac4bafe21a57126833492999e50f1b56871a'
+            'b8711d3fc3dbf16ecf87e3029f58f25ea81f769931f77a6c4e27b960597ab3d9'
+            '94db49446d92fd6e8f99619d4c1b53bea9f437d7427710e870ac9be4ce2a9728'
+            '7c807791db13a940d3724ba9a81362fe8ebf376ddc6f0d61dce1b9b35371ebe2'
             '579b110f3dc03001b7eac3581264200612dac66c2186e6841eda3573f455daf1'
-            'fb647150bc061cea192f0d0616373ffa34ac68643011a2a7a8c3fc282b4d8591'
+            'c169aeea912c2aa96a1977daed153597af7110d62e3bdb15d4a96237f9215091'
             'f01d7d59bebe114f6031f297f78456bef96b7003f55fe7ac48827e1eca7138c1'
-            'a41248a119a1b952eb47cf9a7127e09974313c0624ad1a1f90c1e3eb112a48b9')
+            '77e8ce91b65ed9f3816141354af37ee4f752cc9de793e0818d5777df09151ee6')
 
 
 prepare() {
-  # Add 'Arch_Core' and 'Arch_Extra' as osc build targets
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   for patch in "$srcdir"/*.patch; do

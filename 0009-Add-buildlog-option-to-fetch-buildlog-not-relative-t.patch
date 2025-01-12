@@ -12,10 +12,10 @@ Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
  1 file changed, 68 insertions(+), 9 deletions(-)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 8d046122dfeea90255fb25348f5281c41b227294..d96c197a72255a8d2d9a442a9405d7accba0e844 100644
+index acec45390d207eb87c50cd6eaf6a4f2a586f02f0..c1255a9c073578ced03d653a4caed8257ead0bc1 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -6132,6 +6132,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -6638,6 +6638,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                    help='get log start or end from the offset')
      @cmdln.option('-s', '--strip-time', action='store_true',
                          help='strip leading build time from the log')
@@ -26,7 +26,7 @@ index 8d046122dfeea90255fb25348f5281c41b227294..d96c197a72255a8d2d9a442a9405d7ac
      def do_buildlog(self, subcmd, opts, *args):
          """
          Shows the build log of a package
-@@ -6147,31 +6151,54 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -6653,6 +6657,9 @@ Please submit there instead, or use --nodevelproject to force direct submission.
          results' output. If the buildlog url is used buildlog command has the
          same behavior as remotebuildlog.
  
@@ -35,6 +35,8 @@ index 8d046122dfeea90255fb25348f5281c41b227294..d96c197a72255a8d2d9a442a9405d7ac
 +        buildlog PACKAGE [REPOSITORY] [ARCH]
          buildlog [REPOSITORY ARCH | BUILDLOGURL]
          """
+ 
+@@ -6669,26 +6676,46 @@ Please submit there instead, or use --nodevelproject to force direct submission.
          project = package = repository = arch = None
  
          apiurl = self.get_api_url()
@@ -89,7 +91,7 @@ index 8d046122dfeea90255fb25348f5281c41b227294..d96c197a72255a8d2d9a442a9405d7ac
  
          if opts.multibuild_package:
              package = package + ":" + opts.multibuild_package
-@@ -6196,7 +6223,39 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -6713,7 +6740,39 @@ Please submit there instead, or use --nodevelproject to force direct submission.
          elif opts.offset:
              offset = int(opts.offset)
          strip_time = opts.strip_time or conf.config['buildlog_strip_time']
@@ -129,4 +131,4 @@ index 8d046122dfeea90255fb25348f5281c41b227294..d96c197a72255a8d2d9a442a9405d7ac
 +                               offset, strip_time, None, None, pkg_log_file)
  
      def print_repos(self, repos_only=False, exc_class=oscerr.WrongArgs, exc_msg='Missing arguments', project=None):
-         wd = Path.cwd()
+         from .core import is_package_dir
