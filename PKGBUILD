@@ -5,7 +5,7 @@
 
 pkgname=nethack-git
 _pkgname=NetHack
-pkgver=3.6.7_Released+r17953+g55561da63
+pkgver=3.6.7_Released+r17542+g55561da63
 pkgrel=1
 pkgdesc='A single player dungeon exploration game'
 arch=('i686' 'x86_64')
@@ -23,7 +23,9 @@ provides=('nethack')
 pkgver() {
   cd "${_pkgname}"
   _version=$(git describe --tags --abbrev=0 | tr - .)
-  _commits=$(git rev-list --all --count)
+  #we need to source commit counts from the default branch to match our version checker
+  local _defaultbranch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+  _commits=$(git rev-list --count $_defaultbranch)
   _short_commit_hash=$(git rev-parse --short=9 HEAD)
   echo "${_version#'NetHack.'}+r${_commits}+g${_short_commit_hash}"
 }
