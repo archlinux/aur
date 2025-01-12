@@ -2,12 +2,12 @@
 
 pkgname=python-debianbts
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for querying Debian's Bug Tracking System"
 arch=('any')
 url="https://github.com/venthur/python-debianbts"
 license=('MIT')
-depends=('python' 'python-pysimplesoap')
+depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-xdist')
 source=("https://github.com/venthur/$pkgname/archive/refs/tags/$pkgver.tar.gz")
