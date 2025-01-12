@@ -1,0 +1,4 @@
+["mingw-w64-pangomm-2.48"]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/pangomm.git"
+include_regex = '\d+\.\d*[02468]\.\d+'
