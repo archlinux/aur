@@ -2,8 +2,8 @@
 
 pkgname=wasabi-wallet-bin
 _pkgname=wasabi-wallet
-pkgver=2.3.1.0
-_pkgtag=2.3.1
+pkgver=2.4.0.0
+_pkgtag=2.4.0
 _pkgver=$_pkgtag
 pkgrel=1
 pkgdesc="Open-source, non-custodial, privacy-focused Bitcoin wallet for desktop"
@@ -19,7 +19,7 @@ source=(
     "https://github.com/zkSNACKs/WalletWasabi/releases/download/v${_pkgtag}/Wasabi-${_pkgver}.deb.asc"
     "https://raw.githubusercontent.com/zkSNACKs/WalletWasabi/v${_pkgtag}/LICENSE.md"
 )
-sha256sums=('11cdffc3133fc8b40a4b0cf6f9abd336d558db8d35c002f7ee3daed1a0b3991b'
+sha256sums=('db193cfc9c2347dd30b555d7d65c3fcf9e2031b11dc905f288fb2cb2743f2184'
             'SKIP'
             '4ae416e0372ca4b8f0dd46353edc9d46f4125aa4ac00b29f913642a0c8a031a4')
 # Run curl https://raw.githubusercontent.com/zkSNACKs/WalletWasabi/master/PGP.txt | gpg --import
