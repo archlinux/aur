@@ -8,7 +8,6 @@ pkgbase = openbox-menu
 	license = GPL3
 	depends = gtk3
 	depends = menu-cache
-	depends = lxterminal
 	optdepends = lxmenu-data: LXDE menus
 	optdepends = gnome-menus: GNOME menus
 	source = git+https://github.com/fabriceT/openbox-menu
