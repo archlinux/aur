@@ -1,13 +1,13 @@
 pkgbase = rblog-bin
 	pkgdesc = Blog app
-	pkgver = 0.271.0
+	pkgver = 0.273.0
 	pkgrel = 1
 	url = https://github.com/prabirshrestha/rblog
 	arch = x86_64
 	license = MIT
 	provides = rblog-bin
 	conflicts = rblog
-	source = https://github.com/prabirshrestha/rblog/releases/download/v0.271.0/rblog-v0.271.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums = 18302f70a3425e6422ebb23315bace365e45364129eb86a905a8b81d8b21f086
+	source = https://github.com/prabirshrestha/rblog/releases/download/v0.273.0/rblog-v0.273.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 795923775e4e54a4a25a188c9d884420fc11a96f8dfc35dab8fa1b0ca5b6bb16
 
 pkgname = rblog-bin
