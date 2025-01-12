@@ -3,10 +3,10 @@
 pkgname='python-ompython'
 _name=OMPython
 pkgver='3.6.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenModelica-Python API Interface"
 url="https://openmodelica.org/"
-depends=('openmodelica-omc' 'python' 'python-future' 'python-numpy' 'python-psutil' 'python-pyparsing')
+depends=('openmodelica-omc' 'python' 'python-numpy' 'python-psutil' 'python-pyparsing')
 makedepends=('python-setuptools')
 optdepends=('python-pyzmq')
 license=('LicenseRef-OSMC-PL')

@@ -1,14 +1,13 @@
 pkgbase = python-ompython
 	pkgdesc = OpenModelica-Python API Interface
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openmodelica.org/
 	arch = any
 	license = LicenseRef-OSMC-PL
 	makedepends = python-setuptools
 	depends = openmodelica-omc
 	depends = python
-	depends = python-future
 	depends = python-numpy
 	depends = python-psutil
 	depends = python-pyparsing
