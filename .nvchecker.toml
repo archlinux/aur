@@ -1,0 +1,5 @@
+[gotz-bin]
+source = "github"
+github = "merschformann/gotz"
+use_latest_release = true
+prefix = "v"
