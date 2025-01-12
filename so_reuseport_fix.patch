@@ -1,0 +1,123 @@
+Submodule cellframe-sdk contains modified content
+Submodule dap-sdk contains modified content
+diff --git a/cellframe-sdk/dap-sdk/io/dap_server.c b/cellframe-sdk/dap-sdk/io/dap_server.c
+index abf37f29..a1c9cb8a 100644
+--- a/cellframe-sdk/dap-sdk/io/dap_server.c
++++ b/cellframe-sdk/dap-sdk/io/dap_server.c
+@@ -115,7 +115,7 @@ dap_server_t* dap_server_get_default()
+  * @param a_callbacks - pointer to callbacks
+  * @return
+  */
+-int dap_server_listen_addr_add( dap_server_t *a_server, const char *a_addr, uint16_t a_port, 
++int dap_server_listen_addr_add( dap_server_t *a_server, const char *a_addr, uint16_t a_port,
+                                 dap_events_desc_type_t a_type, dap_events_socket_callbacks_t *a_callbacks )
+ {
+     dap_return_val_if_fail_err(a_server && a_addr, -1, "Invalid argument");
+@@ -188,10 +188,12 @@ int dap_server_listen_addr_add( dap_server_t *a_server, const char *a_addr, uint
+     }
+ 
+ #ifdef SO_REUSEPORT
+-    l_option = 1;
+-    if ( setsockopt(l_socket, SOL_SOCKET, SO_REUSEPORT, (const char*)&l_option, sizeof(int)) < 0 ) {
+-        close_socket_due_to_fail("setsockopt(SO_REUSEPORT)");
+-        return 5;
++    if (l_fam == AF_INET || l_fam == AF_INET6) {
++        l_option = 1;
++        if ( setsockopt(l_socket, SOL_SOCKET, SO_REUSEPORT, (const char*)&l_option, sizeof(int)) < 0 ) {
++            close_socket_due_to_fail("setsockopt(SO_REUSEPORT)");
++            return 5;
++        }
+     }
+ #endif
+ 
+@@ -361,7 +363,7 @@ static void s_es_server_accept(dap_events_socket_t *a_es_listener, SOCKET a_remo
+ #endif
+             log_it(L_ERROR, "getnameinfo() error %d: %s", errno, dap_strerror(errno));
+             return;
+-        } 
++        }
+         l_es_new->remote_port = strtol(l_port_str, NULL, 10);
+         debug_if(l_server->ext_log, L_INFO, "Connection accepted from %s : %hu, socket %"DAP_FORMAT_SOCKET,
+                                             l_es_new->remote_addr_str, l_es_new->remote_port, a_remote_socket);
+Submodule dap-sdk contains modified content
+diff --git a/dap-sdk/io/dap_server.c b/dap-sdk/io/dap_server.c
+index abf37f29..a1c9cb8a 100644
+--- a/dap-sdk/io/dap_server.c
++++ b/dap-sdk/io/dap_server.c
+@@ -115,7 +115,7 @@ dap_server_t* dap_server_get_default()
+  * @param a_callbacks - pointer to callbacks
+  * @return
+  */
+-int dap_server_listen_addr_add( dap_server_t *a_server, const char *a_addr, uint16_t a_port, 
++int dap_server_listen_addr_add( dap_server_t *a_server, const char *a_addr, uint16_t a_port,
+                                 dap_events_desc_type_t a_type, dap_events_socket_callbacks_t *a_callbacks )
+ {
+     dap_return_val_if_fail_err(a_server && a_addr, -1, "Invalid argument");
+@@ -188,10 +188,12 @@ int dap_server_listen_addr_add( dap_server_t *a_server, const char *a_addr, uint
+     }
+ 
+ #ifdef SO_REUSEPORT
+-    l_option = 1;
+-    if ( setsockopt(l_socket, SOL_SOCKET, SO_REUSEPORT, (const char*)&l_option, sizeof(int)) < 0 ) {
+-        close_socket_due_to_fail("setsockopt(SO_REUSEPORT)");
+-        return 5;
++    if (l_fam == AF_INET || l_fam == AF_INET6) {
++        l_option = 1;
++        if ( setsockopt(l_socket, SOL_SOCKET, SO_REUSEPORT, (const char*)&l_option, sizeof(int)) < 0 ) {
++            close_socket_due_to_fail("setsockopt(SO_REUSEPORT)");
++            return 5;
++        }
+     }
+ #endif
+ 
+@@ -361,7 +363,7 @@ static void s_es_server_accept(dap_events_socket_t *a_es_listener, SOCKET a_remo
+ #endif
+             log_it(L_ERROR, "getnameinfo() error %d: %s", errno, dap_strerror(errno));
+             return;
+-        } 
++        }
+         l_es_new->remote_port = strtol(l_port_str, NULL, 10);
+         debug_if(l_server->ext_log, L_INFO, "Connection accepted from %s : %hu, socket %"DAP_FORMAT_SOCKET,
+                                             l_es_new->remote_addr_str, l_es_new->remote_port, a_remote_socket);
+Submodule python-cellframe contains modified content
+Submodule cellframe-sdk contains modified content
+Submodule dap-sdk contains modified content
+diff --git a/python-cellframe/cellframe-sdk/dap-sdk/io/dap_server.c b/python-cellframe/cellframe-sdk/dap-sdk/io/dap_server.c
+index abf37f29..a1c9cb8a 100644
+--- a/python-cellframe/cellframe-sdk/dap-sdk/io/dap_server.c
++++ b/python-cellframe/cellframe-sdk/dap-sdk/io/dap_server.c
+@@ -115,7 +115,7 @@ dap_server_t* dap_server_get_default()
+  * @param a_callbacks - pointer to callbacks
+  * @return
+  */
+-int dap_server_listen_addr_add( dap_server_t *a_server, const char *a_addr, uint16_t a_port, 
++int dap_server_listen_addr_add( dap_server_t *a_server, const char *a_addr, uint16_t a_port,
+                                 dap_events_desc_type_t a_type, dap_events_socket_callbacks_t *a_callbacks )
+ {
+     dap_return_val_if_fail_err(a_server && a_addr, -1, "Invalid argument");
+@@ -188,10 +188,12 @@ int dap_server_listen_addr_add( dap_server_t *a_server, const char *a_addr, uint
+     }
+ 
+ #ifdef SO_REUSEPORT
+-    l_option = 1;
+-    if ( setsockopt(l_socket, SOL_SOCKET, SO_REUSEPORT, (const char*)&l_option, sizeof(int)) < 0 ) {
+-        close_socket_due_to_fail("setsockopt(SO_REUSEPORT)");
+-        return 5;
++    if (l_fam == AF_INET || l_fam == AF_INET6) {
++        l_option = 1;
++        if ( setsockopt(l_socket, SOL_SOCKET, SO_REUSEPORT, (const char*)&l_option, sizeof(int)) < 0 ) {
++            close_socket_due_to_fail("setsockopt(SO_REUSEPORT)");
++            return 5;
++        }
+     }
+ #endif
+ 
+@@ -361,7 +363,7 @@ static void s_es_server_accept(dap_events_socket_t *a_es_listener, SOCKET a_remo
+ #endif
+             log_it(L_ERROR, "getnameinfo() error %d: %s", errno, dap_strerror(errno));
+             return;
+-        } 
++        }
+         l_es_new->remote_port = strtol(l_port_str, NULL, 10);
+         debug_if(l_server->ext_log, L_INFO, "Connection accepted from %s : %hu, socket %"DAP_FORMAT_SOCKET,
+                                             l_es_new->remote_addr_str, l_es_new->remote_port, a_remote_socket);

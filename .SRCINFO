@@ -1,7 +1,7 @@
 pkgbase = cellframe-node
 	pkgdesc = Cellframe blockchain node with a powerful SDK
 	pkgver = 5.3.r3184.83b5448
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cellframe.net
 	install = cellframe-node.install
 	arch = x86_64
@@ -33,6 +33,7 @@ pkgbase = cellframe-node
 	source = cellframe-node-asan.service
 	source = cellframe-node-tmpfiles.conf
 	source = cellframe-node-sysusers.conf
+	source = so_reuseport_fix.patch
 	md5sums = SKIP
 	md5sums = a10650eb138f6fe0c4bbefa6557ffb4f
 	md5sums = 4bf9cc7596903ffa5aba7fa7922d9016
@@ -40,5 +41,6 @@ pkgbase = cellframe-node
 	md5sums = 3962e50d7c9c1c2b42876fa376457a44
 	md5sums = e334310bf6cd6c4bbe612733eee928e0
 	md5sums = ecead745d3492224d2a5a2f7d9d561b0
+	md5sums = 1fd0d507162fa8f79afeb2f71f7d6419
 
 pkgname = cellframe-node

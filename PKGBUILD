@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
 pkgver=5.3.r3184.83b5448
-pkgrel=1
+pkgrel=2
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
 url='https://cellframe.net'
@@ -17,14 +17,16 @@ source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=83b5448a7ea
 		cellframe-diagtool.service
 		cellframe-node-asan.service
 		cellframe-node-tmpfiles.conf
-		cellframe-node-sysusers.conf)
+		cellframe-node-sysusers.conf
+		so_reuseport_fix.patch)
 md5sums=('SKIP'
-		'a10650eb138f6fe0c4bbefa6557ffb4f'
-        '4bf9cc7596903ffa5aba7fa7922d9016'
-        'ee2424d674f7806a0a6caaff7cc5fa26'
-        '3962e50d7c9c1c2b42876fa376457a44'
-        'e334310bf6cd6c4bbe612733eee928e0'
-        'ecead745d3492224d2a5a2f7d9d561b0')
+         'a10650eb138f6fe0c4bbefa6557ffb4f'
+         '4bf9cc7596903ffa5aba7fa7922d9016'
+         'ee2424d674f7806a0a6caaff7cc5fa26'
+         '3962e50d7c9c1c2b42876fa376457a44'
+         'e334310bf6cd6c4bbe612733eee928e0'
+         'ecead745d3492224d2a5a2f7d9d561b0'
+         '1fd0d507162fa8f79afeb2f71f7d6419')
 options=(!debug !strip)
 install=$pkgname.install
 
@@ -38,6 +40,7 @@ prepare() {
 	sed -i "s|^VERSION_MAJOR=.*|VERSION_MAJOR=$VERSION_MAJOR|" "$srcdir/$pkgname/version.mk"
 	sed -i "s|^VERSION_MINOR=.*|VERSION_MINOR=$VERSION_MINOR|" "$srcdir/$pkgname/version.mk"
 	sed -i "s|^VERSION_PATCH=.*|VERSION_PATCH=$VERSION_PATCH|" "$srcdir/$pkgname/version.mk"
+	patch -p1 < "$srcdir/so_reuseport_fix.patch"
 }
 
 build() {
