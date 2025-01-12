@@ -1,0 +1,20 @@
+pkgbase = imgui-git
+	pkgdesc = Bloat-free Graphical User interface for C++
+	pkgver = 1.91.6+57.r8580.20250109.0b8ff4b23
+	pkgrel = 1
+	url = https://github.com/ocornut/imgui
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	provides = imgui=1.91.6+57.r8580.20250109.0b8ff4b23
+	conflicts = imgui
+	source = imgui::git+https://github.com/ocornut/imgui.git
+	source = imgui_CMakeLists.txt::https://github.com/microsoft/vcpkg/raw/refs/heads/master/ports/imgui/CMakeLists.txt
+	source = imgui_imgui-config.cmake.in::https://github.com/microsoft/vcpkg/raw/refs/heads/master/ports/imgui/imgui-config.cmake.in
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = imgui-git
