@@ -1,7 +1,7 @@
 pkgbase = python-kinet2pcb
 	pkgdesc = Convert KiCad netlist into a PCBNEW .kicad_pcb file.
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 7
 	url = https://pypi.org/project/kinet2pcb
 	arch = any
 	license = MIT
@@ -12,7 +12,6 @@ pkgbase = python-kinet2pcb
 	makedepends = python-pytest-runner
 	depends = kicad
 	depends = python
-	depends = python-future
 	depends = python-kinparse
 	depends = python-hierplace
 	provides = kinet2pcb

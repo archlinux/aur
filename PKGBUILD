@@ -3,7 +3,7 @@
 pkgname=python-kinet2pcb
 _name=${pkgname#python-}
 pkgver=1.1.2
-pkgrel=2
+pkgrel=7
 epoch=
 pkgdesc="Convert KiCad netlist into a PCBNEW .kicad_pcb file."
 arch=('any')
@@ -15,7 +15,6 @@ conflicts=(${_name})
 depends=(
     kicad
     python
-    python-future
     python-kinparse
     python-hierplace)
 makedepends=(python-build
