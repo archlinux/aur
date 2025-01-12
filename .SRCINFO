@@ -1,7 +1,7 @@
 pkgbase = imgui-git
 	pkgdesc = Dear ImGui: Bloat-free Graphical User interface for C++ with minimal dependencies.
 	pkgver = 1.91.6+57.r8580.20250109.0b8ff4b23
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ocornut/imgui
 	arch = x86_64
 	arch = i686

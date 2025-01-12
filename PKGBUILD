@@ -3,7 +3,7 @@
 _pkgname=imgui
 pkgname="${_pkgname}-git"
 pkgver=1.91.6+57.r8580.20250109.0b8ff4b23
-pkgrel=2
+pkgrel=3
 pkgdesc="Dear ImGui: Bloat-free Graphical User interface for C++ with minimal dependencies."
 license=('MIT')
 arch=(
@@ -36,8 +36,13 @@ sha256sums=(
 )
 
 prepare () {
+  cd "${srcdir}"
+
   cp "${_pkgname}_CMakeLists.txt"        "${_pkgname}/CMakeLists.txt"
   cp "${_pkgname}_imgui-config.cmake.in" "${_pkgname}/imgui-config.cmake.in"
+
+  cd "${srcdir}/${_pkgname}"
+  git log > git.log
 }
 
 pkgver() {
@@ -70,7 +75,7 @@ package() {
   cd "${_pkgname}"
   make -C cmake-build-shared DESTDIR="$pkgdir" install
 
-  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"     docs/*
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"     git.log docs/*
   install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt
 }
 
