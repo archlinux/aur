@@ -2,9 +2,9 @@
 # Maintainer: Elias Elwyn <a@jthv.ai>
 
 pkgname=helm-ls
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
-_commit=5b1dcc4e9b1ec3bbf6ec630cb43d3253fe624766
+_commit=de13261e36288586ae278fca5378604eed382903
 pkgdesc='Language server for Helm'
 license=(MIT)
 
