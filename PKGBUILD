@@ -71,20 +71,20 @@ package() {
 
     install -Dm 644 "data/io.github.brunofin.Cohesion.desktop" "${pkgdir}/usr/share/applications/cohesion.desktop"
 
-	install -Dm 644 "data/icons/hicolor/128x128/apps/io.github.brunofin.Cohesion-greyscale.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/io.github.brunofin.Cohesion-greyscale.png"
-	install -Dm 644 "data/icons/hicolor/128x128/apps/io.github.brunofin.Cohesion-greyscale-unread.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/io.github.brunofin.Cohesion-greyscale-unread.png"
-	install -Dm 644 "data/icons/hicolor/128x128/apps/io.github.brunofin.Cohesion.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/io.github.brunofin.Cohesion.png"
-	install -Dm 644 "data/icons/hicolor/128x128/apps/io.github.brunofin.Cohesion-unread.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/io.github.brunofin.Cohesion-unread.png"
+    install -Dm 644 "data/icons/hicolor/128x128/apps/io.github.brunofin.Cohesion-greyscale.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/io.github.brunofin.Cohesion-greyscale.png"
+    install -Dm 644 "data/icons/hicolor/128x128/apps/io.github.brunofin.Cohesion-greyscale-unread.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/io.github.brunofin.Cohesion-greyscale-unread.png"
+    install -Dm 644 "data/icons/hicolor/128x128/apps/io.github.brunofin.Cohesion.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/io.github.brunofin.Cohesion.png"
+    install -Dm 644 "data/icons/hicolor/128x128/apps/io.github.brunofin.Cohesion-unread.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/io.github.brunofin.Cohesion-unread.png"
 
-	install -Dm 644 "data/icons/hicolor/512x512/apps/io.github.brunofin.Cohesion-greyscale.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/io.github.brunofin.Cohesion-greyscale.png"
-	install -Dm 644 "data/icons/hicolor/512x512/apps/io.github.brunofin.Cohesion-greyscale-unread.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/io.github.brunofin.Cohesion-greyscale-unread.png"
-	install -Dm 644 "data/icons/hicolor/512x512/apps/io.github.brunofin.Cohesion.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/io.github.brunofin.Cohesion.png"
-	install -Dm 644 "data/icons/hicolor/512x512/apps/io.github.brunofin.Cohesion-unread.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/io.github.brunofin.Cohesion-unread.png"
+    install -Dm 644 "data/icons/hicolor/512x512/apps/io.github.brunofin.Cohesion-greyscale.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/io.github.brunofin.Cohesion-greyscale.png"
+    install -Dm 644 "data/icons/hicolor/512x512/apps/io.github.brunofin.Cohesion-greyscale-unread.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/io.github.brunofin.Cohesion-greyscale-unread.png"
+    install -Dm 644 "data/icons/hicolor/512x512/apps/io.github.brunofin.Cohesion.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/io.github.brunofin.Cohesion.png"
+    install -Dm 644 "data/icons/hicolor/512x512/apps/io.github.brunofin.Cohesion-unread.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/io.github.brunofin.Cohesion-unread.png"
 	
-	install -Dm 644 "data/icons/hicolor/scalable/apps/io.github.brunofin.Cohesion-greyscale.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.brunofin.Cohesion-greyscale.svg"
-	install -Dm 644 "data/icons/hicolor/scalable/apps/io.github.brunofin.Cohesion-greyscale-unread.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.brunofin.Cohesion-greyscale-unread.svg"
-	install -Dm 644 "data/icons/hicolor/scalable/apps/io.github.brunofin.Cohesion.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.brunofin.Cohesion.svg"
-	install -Dm 644 "data/icons/hicolor/scalable/apps/io.github.brunofin.Cohesion-unread.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.brunofin.Cohesion-unread.svg"
+    install -Dm 644 "data/icons/hicolor/scalable/apps/io.github.brunofin.Cohesion-greyscale.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.brunofin.Cohesion-greyscale.svg"
+    install -Dm 644 "data/icons/hicolor/scalable/apps/io.github.brunofin.Cohesion-greyscale-unread.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.brunofin.Cohesion-greyscale-unread.svg"
+    install -Dm 644 "data/icons/hicolor/scalable/apps/io.github.brunofin.Cohesion.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.brunofin.Cohesion.svg"
+    install -Dm 644 "data/icons/hicolor/scalable/apps/io.github.brunofin.Cohesion-unread.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.brunofin.Cohesion-unread.svg"
 	
     install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
