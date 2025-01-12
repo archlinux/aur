@@ -1,59 +1,163 @@
-# Maintainer: Alex S. <shantanna_at_hotmail_dot_com>
-# Contributor: Philipp Wolfer <ph.wolfer@gmail.com>
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: Alex S. <shantanna_at_hotmail_dot_com>
+# Contributor: Philipp Wolfer <ph.wolfer (at) gmail.com>
 
-_name=rogerrouter
-pkgname=roger-router-git
-pkgver=v2.1.5.r12.gbaa7274
+_gitname=rogerrouter
+_pkgname=roger-router
+pkgname="${_pkgname}-git"
+pkgver=2.4.90+1.r1426.20230428.f33129a
 pkgrel=1
-pkgdesc="Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible"
-arch=('i686' 'x86_64')
-url="https://www.tabos.org/"
-license=('GPL2')
+pkgdesc="A utility to control and monitor AVM Fritz!Box Routers. E.g. Journal, fax software and call monitor."
+arch=(
+  'aarch64'
+  'x86_64'
+  'i686'
+  'pentium4'
+  'armv5h'
+  'armv6h'
+  'armv7h'
+)
+url="https://tabos.org/projects/rogerrouter/"
+license=('GPL-2.0-only')
 
-# depends=(curl dbus glib2 libsndfile spandsp speex libxml2 gtk3 isdn4k-utils libpeas libsoup gupnp)
-depends=(gtk3 libsoup ghostscript librm poppler-glib libgdata libappindicator-gtk3 evolution-data-server)
-makedepends=(intltool gobject-introspection meson git)
+depends=(
+  "gcc-libs"
+  "ghostscript"
+  "glib2"
+  "glibc"
+  "gtk3"
+  "libcairo.so"
+  "librm.so"
+  "libgdk_pixbuf-2.0.so"
+  "libhandy-1.so"
+  "libpango-1.0.so"
+  "libpangocairo-1.0.so"
+  "libsoup-2.4.so"
+  "libtiff.so"
+)
+makedepends=(
+  "appstream-glib"  # For 'appstream-util'
+  "cairo"
+  "cups"            # To have 'lp' group to create spool directory owned by that group in the '$install' script.
+  "desktop-file-utils"
+  "gdk-pixbuf2"
+  "gettext"
+  "git"
+  "glib2-devel"
+  "gobject-introspection"
+  "intltool"
+  "librm"
+  "libhandy"
+  "libsoup>=2"
+  "libsoup<3"
+  "libtiff"
+  "meson"
+  "ninja"
+  "pango"
+  "pkgconf"
+)
 optdepends=(
-	# 'cups: FAX printer'
-	# 'evolution-data-server: Address book integration'
-	# 'libpulse: Pulse Audio support'
-	'portaudio: PortAudio support'
-	# 'libsecret: Store passwords in keyring (requires a compatible keyring application like gnome-keyring)'
-	# 'libnotify: Desktop notifications'
-	# 'libappindicator-gtk3: App indicator support'
+  'cups:               FAX printer'
+  'dconf:              for glib schemas'
+  'hicolor-icon-theme: hicolor theme hierarchy'
 )
 
-conflicts=("${_name}" "roger" "roger-router")
-provides=("${_name}=${pkgver}" "roger=${pkgver}")
-options=('!emptydirs')
-install=roger-router.install
-source=("git+https://gitlab.com/tabos/rogerrouter.git"
-		"open-hiden.patch")
-sha1sums=('SKIP'
-		  'SKIP')
+conflicts=(
+  "${_gitname}"
+  "${_pkgname}"
+  #"roger"
+)
+provides=(
+  "${_gitname}=${pkgver}"
+  "${_pkgname}=${pkgver}"
+  #"roger=${pkgver}"
+)
+replaces=(
+  "${_gitname}"
+)
+install="roger-router.install"
+source=(
+  "${_gitname}::git+https://gitlab.com/tabos/rogerrouter.git"
+  "disable-evolution-plugin.patch"
+  "address-book.svg"
+  "${install}"
+)
+sha256sums=(
+  'SKIP'  # Upstream source
+  '723b426e766612f7c3888d98bfe306b9643d97c3f5097398c7dc3feed2ec8b9a'  # disable-evolution-plugin.patch
+  '575b01dc0e68fd2f0b3d3c10afdec6fd4d61b570ec3d093e722c9fec35e6f82d'  # address-book.svg
+  '7a32640a30cd73eb4e50af04b30fdcce93bd0b263577ad941037253608e86cfc'  # $install
+)
 
-pkgver() {
-	cd "${srcdir}/${_name}"
-	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
+_CFLAGSADDITIONS="-w -Wno-error=incompatible-pointer-types"
 
 prepare() {
-	echo "==> Applying patch"
-	patch -Np1 -i "$srcdir"/open-hiden.patch "${srcdir}/${_name}"/roger/org.tabos.roger.desktop.in
+  CFLAGS+=" ${_CFLAGSADDITIONS}"
+  CXXFLAGS+=" ${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
+
+  cd "${srcdir}/${_gitname}"
+
+  for _patch in "${srcdir}"/disable-evolution-plugin.patch; do
+    printf '%s\n' "   > Applying patch '$(basename "${_patch}")' ..."
+    patch -N -p1 --follow-symlinks -i "${_patch}"
+  done
+
+  git log > git.log
+
+  cd "${srcdir}"
+  arch-meson "${_gitname}" build --reconfigure
+}
+
+pkgver() {
+  cd "${srcdir}/${_gitname}"
+
+  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
+
+  if [ -z "${_ver}" ]; then
+    error "Version could not be determined."
+    return 1
+  else
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+  fi
 }
 
 build() {
-	cd "${srcdir}/${_name}"
-	meson --prefix /usr --buildtype=plain "builddir"
-	ninja -v -C "builddir"
+  CFLAGS+=" ${_CFLAGSADDITIONS}"
+  CXXFLAGS+=" ${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
+
+  cd "${srcdir}"
+  ninja -v -j1 -C "build"
 }
 
 check() {
-	cd "${srcdir}/${_name}"
-	ninja -C "builddir" test
+  CFLAGS+=" ${_CFLAGSADDITIONS}"
+  CXXFLAGS+=" ${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
+
+  cd "${srcdir}"
+  ninja -v -C "build" test
 }
 
 package() {
-	cd "${srcdir}/${_name}"
-	DESTDIR="$pkgdir" ninja -C "builddir" install
+  CFLAGS+=" ${_CFLAGSADDITIONS}"
+  CXXFLAGS+=" ${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
+
+  cd "${srcdir}"
+  DESTDIR="${pkgdir}" ninja -v -C "build" install
+  install -Dvm644 -t "${pkgdir}/usr/share/icons/hicolor/symbolic" "address-book.svg"
+
+  cd "${srcdir}/${_gitname}"
+
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"      git.log README.md
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  COPYING
 }
