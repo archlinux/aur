@@ -1,10 +1,11 @@
 pkgbase = isdnutils
 	pkgdesc = Some utilities from the 'ISDN4Linux' project.
 	pkgver = 3.25+dfsg1.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.isdn4linux.de/
 	arch = x86_64
 	arch = i686
+	groups = isdn4linux
 	license = GPL-2.0-only
 	license = LGPL-2.1-only
 	makedepends = autoconf

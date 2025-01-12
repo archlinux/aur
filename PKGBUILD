@@ -4,11 +4,12 @@ pkgbase=isdnutils
 pkgname=(
   "isdnutils"
 )
+groups=("isdn4linux")
 _debianver=dfsg1
 _debianrel=10
 _upstreamver=3.25
 pkgver="${_upstreamver}+${_debianver}.${_debianrel}"
-pkgrel=3
+pkgrel=4
 pkgdesc="Some utilities from the 'ISDN4Linux' project."
 url="https://www.isdn4linux.de/"
 arch=(
