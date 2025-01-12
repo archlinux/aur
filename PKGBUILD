@@ -1,6 +1,3 @@
-### FIXME: Currently broken!, upstream installs executable to `/usr/HDRview`. Moving it to `/usr/bin/HDRview` results in segmentation fault since it does not find anymore the assets at `/usr/assets/`. Otherwise, setting `-DCMAKE_INSTALL_PREFIX=/usr/bin` must also not be done because otherwise fonts and images end up in `/usr/bin/`. See https://github.com/wkjarosz/hdrview/issues/130.
-### TODO: If upstream does not fix it, change to installation into `/opt/hdrview/`.
-
 # Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
 # Maintainer:  Afnan Enayet <afnan at afnan.io>
 # Contributor: Eric Engestrom (https://aur.archlinux.org/account/1ace)
