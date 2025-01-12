@@ -4,7 +4,7 @@
 
 pkgname=openbox-menu
 pkgver=0.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Dynamic XDG menu for openbox"
 arch=('i686' 'x86_64')
 url="http://fabrice.thiroux.free.fr/openbox-menu_en.html"
