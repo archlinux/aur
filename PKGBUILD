@@ -18,7 +18,7 @@ optdepends=('gtk4: libinput debug-gui'
             'python-yaml: used by various tools')
 provides=(libinput)
 conflicts=(libinput)
-source=(git://https://gitlab.freedesktop.org/libinput/libinput.git)
+source=(git+https://gitlab.freedesktop.org/libinput/libinput)
 sha256sums=('SKIP')
 #validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
 
@@ -28,7 +28,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson $pkgname-$pkgver build \
+  arch-meson libinput build \
     -D udev-dir=/usr/lib/udev \
     -D documentation=false
 
@@ -45,6 +45,6 @@ check() {
 package() {
   meson install -C build --destdir "$pkgdir"
 
-  install -Dvm644 $pkgname-$pkgver/COPYING \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dvm644 libinput/COPYING \
+    "$pkgdir/usr/share/licenses/libinput/LICENSE"
 }

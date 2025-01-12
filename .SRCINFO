@@ -22,7 +22,7 @@ pkgbase = libinput-git
 	optdepends = python-yaml: used by various tools
 	provides = libinput
 	conflicts = libinput
-	source = git://https://gitlab.freedesktop.org/libinput/libinput.git
+	source = git+https://gitlab.freedesktop.org/libinput/libinput
 	sha256sums = SKIP
 
 pkgname = libinput-git
