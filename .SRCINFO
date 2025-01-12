@@ -1,6 +1,6 @@
 pkgbase = mihomo-party-bin
 	pkgdesc = Another Mihomo GUI.
-	pkgver = 1.5.13
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/mihomo-party-org/mihomo-party
 	install = mihomo-party.install
@@ -21,9 +21,9 @@ pkgbase = mihomo-party-bin
 	conflicts = mihomo-party
 	source = mihomo-party.sh
 	sha256sums = f8049c1f26d5a92fbcebd7bebbdedbb3eab53422b21cf6127418251ccd061282
-	source_x86_64 = mihomo-party-1.5.13-x86_64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.5.13/mihomo-party-linux-1.5.13-amd64.deb
-	sha256sums_x86_64 = b453628cec025b66205bcab501754c1f5de950b9163fe60b067df0d6dde31208
-	source_aarch64 = mihomo-party-1.5.13-aarch64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.5.13/mihomo-party-linux-1.5.13-arm64.deb
-	sha256sums_aarch64 = 2340253d5593f2233fd85161f090cb1afc88c34ff6d20133f31da2a1c19b1b2f
+	source_x86_64 = mihomo-party-1.6.0-x86_64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.6.0/mihomo-party-linux-1.6.0-amd64.deb
+	sha256sums_x86_64 = 75c8f0e2a1ace90d382f36367102c1f03acbc9b5c51fca851997cb1b3d9a04cd
+	source_aarch64 = mihomo-party-1.6.0-aarch64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.6.0/mihomo-party-linux-1.6.0-arm64.deb
+	sha256sums_aarch64 = 6eb0d6984c116910b399556a2ab5f8356848202119ba59dea56a4633193680f1
 
 pkgname = mihomo-party-bin
