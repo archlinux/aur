@@ -1,8 +1,9 @@
 # Maintainer: Nicola Pagliuca <nicola.pagliuca at pm dot me>
+# Co-Maintainer: Aethar <elliott.ashby88@gmail.com>
 _basename='hyprfreeze'
 pkgname="$_basename-git"
 pkgver=1.1.1.r1.0ccbc63
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to suspend a game process (and other programs) in Hyprland"
 arch=('any')
 url="https://github.com/Zerodya/hyprfreeze"
