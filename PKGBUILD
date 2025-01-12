@@ -7,7 +7,7 @@ pkgbase="${_pkgbase}-1.2"
 pkgname=(
   "${_pkgbase}-1.2"
 )
-pkgver=1.4.1 # YES!, even though version is "1.4.x", it is still gssdp-1.2.
+pkgver=1.4.1 # YES!, even though version is '1.4.x', it is still 'gssdp-1.2'.
 pkgrel=1
 pkgdesc="GObject-based API for handling resource discovery and announcement over SSDP. Legacy 1.2 variant for compatibility with old software."
 url="https://wiki.gnome.org/Projects/GUPnP"
