@@ -1,7 +1,7 @@
 # Maintainer: Václav Šmejkal <business.engo150@gmail.com>
 
 pkgname='why2-stable-git'
-pkgver='r1491.d3aa932'
+pkgver='r1376.3fa15f5'
 pkgrel=1
 epoch=
 pkgdesc="Symmetric Encryption System Written in C."

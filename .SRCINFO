@@ -1,6 +1,6 @@
 pkgbase = why2-stable-git
 	pkgdesc = Symmetric Encryption System Written in C.
-	pkgver = r1491.d3aa932
+	pkgver = r1376.3fa15f5
 	pkgrel = 1
 	url = https://gitea.coquette.baby/ENGO150/WHY2
 	arch = x86_64
