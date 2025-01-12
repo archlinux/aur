@@ -16,7 +16,7 @@ depends=('python'
          'python-cryptography'
          'python-urllib3'
          'python-distro'
-         'python-ruamel-yam')
+         'python-ruamel-yaml')
 makedepends=('python-setuptools')
 optdepends=('obs-build: required to run local builds'
             'obs-service-format_spec_file: for running the format_spec_file source service'
