@@ -9,7 +9,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='2412.r130.g93fc5c02ac'
+pkgver='2412.r139.gede963d4db'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -42,7 +42,6 @@ source=(
 	"$pkgbase-vh::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 	"$pkgbase-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 	"$pkgbase-zlibng::git+https://github.com/zlib-ng/zlib-ng.git"
-	"$pkgbase-fix-line-endings.diff::https://github.com/$_mainpkgname/$_projectname/commit/f28e134c88ecbd30eed89606bca3c348047a3009.diff"
 	'fix-minizip-ng-compat-headers.diff'
 	'minizip-ng.diff'
 )
@@ -54,8 +53,7 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '43b59f3546973c840b26ee5fc13fd40542e433ab5fad36134dafa365e2cac0f20c43fb2fb47831a34a5596d8f88fe3adaac02f5963e987d7884c964013fe3059'
-        '132f890b6d9f5375cc19a78a9efffbfb612b8e04a238d417ed82af827796748b659cca45cc2fe0c78aa8c409a91719f9eca70e7932dd61769f0f5e069b4899a9'
+        '58628e2784eaad3bd8d7318412e4f316801172a9cdf4c91ea106177d9466fcad3b11f20c6ab1570a730a7ffd84913ced5c356ae3dbc073d6b948786c67320fc7'
         '504a23ab4cce2be8f114263ebfcbcd468fd183187443c2e0d994d4e090fe037d5c2b3fddd2095ddb1ae12009eaa83e08b7d2fecb67f8b40d8b9862c91d0bbc59')
 
 _sourcedirectory="$pkgbase"
@@ -64,9 +62,6 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 	if [ -d 'build/' ]; then rm -rf 'build/'; fi
 	mkdir 'build/'
-
-	# Fix CRLF line endings (see https://github.com/dolphin-emu/dolphin/pull/13274)
-	patch --forward -p1 < "$srcdir/$pkgbase-fix-line-endings.diff"
 
 	# Use correct renamed minizip-ng compat header files (based on https://github.com/dolphin-emu/dolphin/pull/13273)
 	patch --forward -p1 < "$srcdir/fix-minizip-ng-compat-headers.diff"
