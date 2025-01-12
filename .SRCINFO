@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-fmt
 	pkgdesc = Open-source formatting library for C++ (mingw-w64)
-	pkgver = 11.1.1
+	pkgver = 11.1.2
 	pkgrel = 1
 	url = https://fmt.dev/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mingw-w64-fmt
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = fmt-11.1.1.tar.gz::https://github.com/fmtlib/fmt/archive/11.1.1.tar.gz
-	sha256sums = 482eed9efbc98388dbaee5cb5f368be5eca4893456bb358c18b7ff71f835ae43
+	source = fmt-11.1.2.tar.gz::https://github.com/fmtlib/fmt/archive/11.1.2.tar.gz
+	sha256sums = d8773cf062cc806d4dd4df658111f15ba7a2c9c65db5084d2491696828b1eb97
 
 pkgname = mingw-w64-fmt
