@@ -6,7 +6,7 @@ _pkgname=hdrview
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=2.1.0+8.r427.20250111.dfedb14
-pkgrel=4
+pkgrel=5
 pkgdesc='High dynamic range (HDR) image viewer and comparison tool'
 url='https://github.com/wkjarosz/hdrview'
 # url='https://wkjarosz.github.io/hdrview/' # This actually is an online version of the software, not a website about the software.
@@ -32,6 +32,7 @@ makedepends=(
   'imath'
   'nasm'
   'ninja'
+  'nlohmann-json'
   'plutosvg'
   'sdl2'
   'spdlog'

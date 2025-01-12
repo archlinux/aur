@@ -1,7 +1,7 @@
 pkgbase = hdrview-git
 	pkgdesc = High dynamic range (HDR) image viewer and comparison tool
 	pkgver = 2.1.0+8.r427.20250111.dfedb14
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 0
 	url = https://github.com/wkjarosz/hdrview
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = hdrview-git
 	makedepends = imath
 	makedepends = nasm
 	makedepends = ninja
+	makedepends = nlohmann-json
 	makedepends = plutosvg
 	makedepends = sdl2
 	makedepends = spdlog
