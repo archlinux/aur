@@ -1,6 +1,6 @@
 pkgbase = rtl8xxxu-dkms-git
 	pkgdesc = Driver for Realtek 802.11n USB wireless chips
-	pkgver = r27.972686d
+	pkgver = r65.087209b
 	pkgrel = 1
 	url = https://github.com/a5a5aa555oo/rtl8xxxu
 	arch = any

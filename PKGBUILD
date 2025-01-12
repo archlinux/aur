@@ -2,7 +2,7 @@
 
 _pkgbase=rtl8xxxu
 pkgname=rtl8xxxu-dkms-git
-pkgver=r27.972686d
+pkgver=r65.087209b
 pkgrel=1
 pkgdesc="Driver for Realtek 802.11n USB wireless chips"
 arch=('any')
@@ -18,8 +18,6 @@ prepare() {
     cd "${srcdir}"/${_pkgbase}
     sed -e "/POST_INSTALL/d" -e "/PACKAGE_VERSION/d" -i dkms.conf
     printf "PACKAGE_VERSION=\"@PKGVER@\"\n" >> dkms.conf
-    echo "blacklist rtl8xxxu" > blacklist-rtl8xxxu.conf
-    echo "options rtl8xxxu_git ht40_2g=1" > rtl8xxxu_git.conf
 }
 
 pkgver() {
@@ -29,7 +27,7 @@ pkgver() {
 
 package() {
     cd "${srcdir}"/${_pkgbase}
-    install -Dm 644 -t "${pkgdir}"/etc/modprobe.d blacklist-rtl8xxxu.conf rtl8xxxu_git.conf
+    install -Dm 644 -t "${pkgdir}"/etc/modprobe.d rtl8xxxu_git.conf
     install -Dm 644 -t "${pkgdir}"/usr/src/${_pkgbase}-${pkgver} *.c *.h Makefile dkms.conf
     sed -e "s/@PKGVER@/${pkgver}/" -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 }
