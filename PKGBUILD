@@ -6,7 +6,7 @@ pkgdesc="Dove is a suite of configurations & advanced modifications for Mozilla 
 arch=(any)
 license=('GPL3')
 url="https://dove.celenity.dev"
-source=("https://codeberg.org/celenity/Dove/src/commit/5d91a7c4de8a9b06195ced38ae8d3d8fd9eb4151/archives/dove.zip")
+source=("https://codeberg.org/celenity/Dove/raw/commit/5d91a7c4de8a9b06195ced38ae8d3d8fd9eb4151/archives/dove.zip")
 sha512sums=('06d324e572265ba69a648229f0da1086f11739c45b5af73a6590a3a0c22d854aa08b88fabed19a76b3d8845353ac66df7287db69d5fc6c1ea12ce17154c7f62a')
 
 pkgver() {
