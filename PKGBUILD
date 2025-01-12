@@ -6,29 +6,31 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=glances-git
-pkgver=4.0.7.r0.gb1b8ea6
+pkgver=4.3.0.7.r0.g372380b
 pkgrel=1
 pkgdesc='CLI curses-based monitoring tool'
 arch=(any)
 url=https://github.com/nicolargo/glances
 license=(LGPL-3.0-or-later)
 makedepends=(git python-setuptools python-build python-installer python-wheel)
-depends=(python-defusedxml python-future python-packaging python-orjson python-psutil python-ujson python-pydantic)
-optdepends=('hddtemp: HDD temperature monitoring support'
-            'python-docker: for the Docker monitoring support'
-            'python-fastapi: for WebUI / RestFull API'
-            'python-jinja: for WebUI / RestFull API'
-            'python-matplotlib: for graphical/chart support'
-            'python-netifaces: for the IP plugin'
-            'python-prometheus_client: for the Prometheus export module'
-            'python-pystache: templating engine'
-            'python-zeroconf: for the autodiscover mode'
-            'uvicorn: for WebUI / RestFull API')
+depends=(python-psutil python-defusedxml python-orjson python-packaging python-pydantic)
+optdepends=(
+  'hddtemp: HDD temperature monitoring support'
+  'uvicorn: for WebUI / RestFull API'
+  'python-jinja: for WebUI / RestFull API'
+  'python-fastapi: for WebUI / RestFull API'
+  'python-docker: for the Docker monitoring support'
+  'python-matplotlib: for graphical/chart support'
+  'python-netifaces2: for the IP plugin'
+  'python-zeroconf: for the autodiscover mode'
+  'python-pystache: templating engine'
+  'python-prometheus_client: for the Prometheus export module')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 #source=("$pkgname::git+$url.git"
-source=("$pkgname::git+$url.git#branch=master"
-        glances.service)
+source=(
+  "$pkgname::git+$url.git#branch=master"
+  glances.service)
 sha512sums=('SKIP'
             '49f0d185a37a5c5837e5beb463770c943ede40b2f1b8405e338129e897e97d9fc58373a8586fabc506266e6343cfea3c91b9787ac6832cc97a1ab63d6ad058d4')
 
