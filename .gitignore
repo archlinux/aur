@@ -1,4 +1,4 @@
 /src/
 /pkg/
+/*.pkg.tar.*
 /*tar.bz2
-/*.pkg.tar.xz

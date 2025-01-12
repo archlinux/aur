@@ -1,38 +1,29 @@
+# Maintainer: Maximilian Stahlberg <maximilian.stahlberg tuhh de>
 # Maintainer: Ido Rosen <ido@kernel.org>
-# Co-Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
-#
-# NOTE: To request changes to this package, you can submit a pull request
-#       to the GitHub repository at https://github.com/ido/packages-archlinux
-#       Otherwise, open a GitHub issue.  Thank you! -Ido
 
-pkgname='mosek'
+pkgname=mosek
 pkgdesc="A commercial solver for mathematical optimization problems."
+pkgver=10.2.13
+pkgrel=2
 epoch=1
-_majver=10
-_minver=2
-_ver=${_majver}.${_minver}
-_tnyver=13
-pkgver="${_ver}.${_tnyver}"
-pkgrel=1
 arch=('x86_64')
+_ver=${pkgver%.*}
 _mosekarch=linux64x86
-url='http://mosek.com/'
+url='https://www.mosek.com'
 license=('custom')
 depends=('gcc-libs' 'openmp')
 makedepends=('python-setuptools')
 optdepends=('python: Python bindings')
 options=('!strip')
-
 source=("mosek-${pkgver}.tar.bz2::https://download.mosek.com/stable/${pkgver}/mosektools${_mosekarch}.tar.bz2")
-
-sha512sums=('2cfeed261e3bbd81aa69741466edc7903022cb0f48ce1befadab388cf64fb36e7fd10b37d6f50afaa16017a1564daa5fc7b5801bd6574d6b8a416398715dee81')
+sha256sums=('27c6c753e1e463681eabdce58cfb28573a28280e910296937e6320ff9a33fc36')
 
 package() {
 	# Install shared libraries.
 	cd "${srcdir}/mosek/${_ver}/tools/platform/${_mosekarch}/bin"
 	install -dm755 "${pkgdir}/usr/lib"
 	install -m755 "libmosek64.so.${_ver}" "${pkgdir}/usr/lib/"
-	install -m755 "libmosekxx${_majver}_${_minver}.so" "${pkgdir}/usr/lib/"
+	install -m755 "libmosekxx${_ver/./_}.so" "${pkgdir}/usr/lib/"
 	ln -rs "${pkgdir}/usr/lib/libmosek64.so.${_ver}" "${pkgdir}/usr/lib/libmosek64.so"
 
 	# Install command line utilities.
