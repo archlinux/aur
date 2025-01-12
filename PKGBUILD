@@ -1,16 +1,16 @@
 # Maintainer:
 
+: ${_commit:=2c0540285e823e996a5276223807e2175515daae}
+
 _fontname="gelasio"
 _pkgname="ttf-$_fontname"
 pkgbase="$_pkgname"
 pkgver=1.008
-pkgrel=1
+pkgrel=2
 pkgdesc="A serif font family metric-compatible with Georgia font family"
 url="https://github.com/SorkinType/Gelasio"
 license=('OFL-1.1-RFN')
 arch=('any')
-
-_commit='2c0540285e823e996a5276223807e2175515daae'
 
 source=("Gelasio-LICENSE-${_commit::7}.txt"::"$url/raw/$_commit/OFL.txt")
 sha256sums=('b393cb01867c919b44381512120dc3e4c954c7b47e2035c405f3a324799a4d29')
@@ -32,6 +32,10 @@ for i in "${_files[@]}"; do
   _dl_path="${i%::*}"
   _file="${_dl_path##*/}"
   _hash="${i#*::}"
+
+  _dl_path="${_dl_path//[/%5B}"
+  _dl_path="${_dl_path//]/%5D}"
+
   source+=("${_file%.ttf}-${_commit::7}.ttf"::"$url/raw/$_commit/$_dl_path")
   sha256sums+=("$_hash")
 done
