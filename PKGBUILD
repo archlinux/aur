@@ -2,15 +2,20 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 
 pkgname=cinelerra-gg-git
-pkgver=2023.03.r3.g3a4fc0d9
-pkgrel=2
+pkgver=2024.12.r0.gc92ff914
+pkgrel=1
 pkgdesc="Professional video editing and compositing environment"
 arch=(x86_64)
 url="https://www.cinelerra-gg.org"
-license=(GPL2)
+license=(GPL-2.0-only)
 depends=(alsa-lib aom dav1d fftw flac glu gtk2 libavc1394
          libdv libiec61883 libpulse libtheora libusb libva libvdpau
-         libvorbis libvpx libwebp libxv numactl openexr opus)
+         libvorbis libvpx libwebp libxv numactl openexr opus
+
+         # namcap implicit depends
+         perl libogg libxext freetype2 glib2 at-spi2-core libxft libglvnd libxfixes libsndfile harfbuzz zlib glibc
+         libxinerama cairo libx11 fontconfig gdk-pixbuf2 imath pango jbigkit xz bzip2 libjpeg-turbo libpng gcc-libs
+         libtiff)
 makedepends=(cmake ctags git libxml2 nasm perl-xml-libxml
              perl-xml-parser python xorg-mkfontdir
              xorg-mkfontscale yasm)
@@ -35,6 +40,7 @@ build() {
     --prefix=/usr \
     --disable-static-build \
     --with-exec-name=cinelerra-gg
+
   make -j1
 }
 
