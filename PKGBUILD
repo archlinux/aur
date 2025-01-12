@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-indexer
-pkgver=4.9.2
+pkgver=4.10.0
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
@@ -16,8 +16,6 @@ depends=(
 optdepends=(
 );
 validpgpkeys=(
-  '9E646BB0630C8FD18ACD15541B93E6A766CD229D' #madara125 GPGKey
-  '2B9D22B41F2AF1042BFCE73A3CA0B9DF1BE7CE09' #MrHacker GPGKey
 )
 
 source=(
@@ -30,7 +28,7 @@ backup=(
   'etc/wazuh-indexer/opensearch.keystore'
   )
 
-sha512sums=('da9206909a10abae389a06be9e9656df52a1aa78b48003eec81f8ccef89c7d27445d11c3709023a0c1b0722db46d1c445d7987296efd0d6cba69161a2a28f3f4')
+sha512sums=('adb0159ed7add022e49dcd108b5bc080da643c6919f6a80ac3b4302261489fe95c69dacbc9791090237a8b8c0dd53b02b785a5e1b2e1685ccb432c281b46efb5')
 
 install=$pkgname.install
 
