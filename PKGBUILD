@@ -3,7 +3,7 @@
 pkgname=english-wordnet
 pkgdesc="A fork of the Princeton Wordnet developed under an open source methodology."
 pkgver=2024
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 conflicts=(wordnet-common)
 provides=(wordnet-common)
