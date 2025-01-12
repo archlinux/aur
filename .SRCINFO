@@ -7,16 +7,16 @@ pkgbase = lib32-gtkmm
 	license = LGPL-2.1-or-later
 	makedepends = mm-common
 	depends = gtkmm
-	depends = lib32-atkmm
+	depends = lib32-atkmm>=2.22.2
 	depends = lib32-cairomm
 	depends = lib32-gcc-libs
 	depends = lib32-gdk-pixbuf2
 	depends = lib32-glib2
 	depends = lib32-glibc
-	depends = lib32-glibmm
-	depends = lib32-gtk2
+	depends = lib32-glibmm>=2.27.93
+	depends = lib32-gtk2>=2.24
 	depends = lib32-libsigc++
-	depends = lib32-pangomm
+	depends = lib32-pangomm>=2.27.1
 	provides = libgdkmm-2.4.so
 	provides = libgtkmm-2.4.so
 	source = gtkmm-2.24.5.tar.xz::https://download.gnome.org/sources/gtkmm/2.24/gtkmm-2.24.5.tar.xz
