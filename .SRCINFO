@@ -6,11 +6,11 @@ pkgbase = lib32-glibmm-2.68
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	checkdepends = lib32-glib-networking
-	makedepends = meson>=0.55
+	makedepends = meson>=0.62
 	makedepends = mm-common
 	depends = glibmm-2.68
 	depends = lib32-gcc-libs
-	depends = lib32-glib2
+	depends = lib32-glib2>=2.81
 	depends = lib32-glibc
 	depends = lib32-libsigc++-3.0
 	provides = libgiomm-2.68.so

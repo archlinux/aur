@@ -9,9 +9,9 @@ pkgdesc="C++ bindings for GLib (32-bit)"
 url="https://www.gtkmm.org"
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
-depends=("${_name}" 'lib32-gcc-libs' 'lib32-glib2' 'lib32-glibc'
+depends=("${_name}" 'lib32-gcc-libs' 'lib32-glib2>=2.81' 'lib32-glibc'
          'lib32-libsigc++-3.0')
-makedepends=('meson>=0.55' 'mm-common')
+makedepends=('meson>=0.62' 'mm-common')
 checkdepends=('lib32-glib-networking')
 provides=('lib'{'giomm','glibmm'{,_generate_extra_defs}}'-2.68.so')
 _pkgsrc="${_basename}-${pkgver}"
