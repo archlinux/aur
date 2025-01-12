@@ -1,0 +1,19 @@
+pkgbase = quickosdl
+	pkgdesc = TUI for quick finding and downloading images of various operating systems
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/lj3954/quickosdl
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = zlib
+	depends = glibc
+	depends = gcc-libs
+	depends = bzip2
+	depends = openssl
+	depends = xz
+	options = !lto
+	source = quickosdl-0.2.0.tar.gz::https://github.com/lj3954/quickosdl/archive/v0.2.0.tar.gz
+	sha256sums = 97cb353e2a42955e2b9420d847cdf7a050e623b8d293081dd45233fb338b2a55
+
+pkgname = quickosdl
