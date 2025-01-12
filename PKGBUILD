@@ -3,13 +3,25 @@
 _pkgname=imgui
 pkgname="${_pkgname}-git"
 pkgver=1.91.6+57.r8580.20250109.0b8ff4b23
-pkgrel=1
-pkgdesc="Bloat-free Graphical User interface for C++"
+pkgrel=2
+pkgdesc="Dear ImGui: Bloat-free Graphical User interface for C++ with minimal dependencies."
 license=('MIT')
-arch=('x86_64')
+arch=(
+  'x86_64'
+  'i686'
+  'aarch64'
+  'armv6h'
+  'armv7h'
+)
 url="https://github.com/ocornut/imgui"
-depends=('gcc-libs' 'glibc')
-makedepends=('cmake')
+depends=(
+  'gcc-libs'
+  'glibc'
+)
+makedepends=(
+  'cmake'
+  'git'
+)
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=(
