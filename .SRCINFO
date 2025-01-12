@@ -8,10 +8,10 @@ pkgbase = lib32-cairomm
 	makedepends = meson>=0.55
 	makedepends = mm-common
 	depends = cairomm
-	depends = lib32-cairo
+	depends = lib32-cairo>=1.12
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = lib32-libsigc++
+	depends = lib32-libsigc++>=2.6
 	provides = libcairomm-1.0.so
 	source = cairomm-1.14.5.tar.gz::https://gitlab.freedesktop.org/cairo/cairomm/-/archive/1.14.5/cairomm-1.14.5.tar.gz
 	sha256sums = 80c10611888e84c3a660eea0dafc81b6a9faf3e1d1cc31f950c51b3f7d384fc2

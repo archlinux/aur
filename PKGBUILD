@@ -12,9 +12,10 @@ url="https://www.cairographics.org/cairomm"
 _url="https://gitlab.freedesktop.org/cairo/${_name}"
 arch=('x86_64')
 license=('LGPL-2.0-or-later AND MPL-1.1')
-depends=("${_name}" 'lib32-cairo' 'lib32-gcc-libs' 'lib32-glibc' 'lib32-libsigc++')
+depends=("${_name}" 'lib32-cairo>=1.12' 'lib32-gcc-libs' 'lib32-glibc'
+         'lib32-libsigc++>=2.6')
 makedepends=('meson>=0.55' 'mm-common')
-provides=('libcairomm-1.0.so')
+provides=("lib${_name}-1.0.so")
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/-/archive/${pkgver}/${_pkgsrc}.tar.gz")
 sha256sums=('80c10611888e84c3a660eea0dafc81b6a9faf3e1d1cc31f950c51b3f7d384fc2')
@@ -26,23 +27,23 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   cd "${srcdir}"
-  arch-meson "${_pkgsrc}" build \
+  arch-meson "${_pkgsrc}" "${_pkgsrc}/build" \
     --cross-file lib32 \
     -D maintainer-mode=true \
     -D build-documentation=false \
     -D build-examples=false \
     -D build-tests=false
-  meson compile -C build
+  meson compile -C "${_pkgsrc}/build"
 }
 
 # check() {
 #   cd "${srcdir}"
-#   meson test -C build --print-errorlogs
+#   meson test -C "${_pkgsrc}/build" --print-errorlogs
 # }
 
 package() {
   cd "${srcdir}"
-  meson install -C build --destdir "${pkgdir}"
+  meson install -C "${_pkgsrc}/build" --destdir "${pkgdir}"
 
   cd "${pkgdir}/usr"
   rm -rf "include"
