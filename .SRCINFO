@@ -1,6 +1,6 @@
 pkgbase = qmmp-svn
 	pkgdesc = A Qt based audio-player. (SVN Version)
-	pkgver = 2.1.6.svn.r11196
+	pkgver = 2.3.0.svn.r12155
 	pkgrel = 1
 	url = http://qmmp.ylsoftware.com
 	arch = x86_64
@@ -87,14 +87,14 @@ pkgbase = qmmp-svn
 	optdepends = mpg123: alternative Mpeg-1-2-3 support
 	optdepends = libxmp: XMP input support
 	optdepends = libpipewire: Pipewire output support
-	provides = qmmp=2.1.6.svn.r11196
+	provides = qmmp=2.3.0.svn.r12155
 	provides = libqmmp.so
 	provides = libqmmpui.so
 	conflicts = qmmp
 	options = debug
-	source = qmmp::svn+http://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-2.1/
+	source = qmmp::svn+http://svn.code.sf.net/p/qmmp-dev/code/trunk/qmmp
 	source = pkgconfig_fix.diff
 	sha256sums = SKIP
-	sha256sums = cdc27a35edd99635fdcc912c987479fd2fb4265b8ef55f908307afb5d6ae2978
+	sha256sums = 40625618c2ea7aaabbb270f6aa2a464101856e21f5bb056ae520e9a292c62475
 
 pkgname = qmmp-svn

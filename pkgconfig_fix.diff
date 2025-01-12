@@ -1,23 +1,23 @@
 Index: src/qmmp/CMakeLists.txt
 ===================================================================
---- src/qmmp/CMakeLists.txt	(revisión: 9311)
+--- src/qmmp/CMakeLists.txt	(revisión: 12155)
 +++ src/qmmp/CMakeLists.txt	(copia de trabajo)
-@@ -146,10 +146,10 @@
+@@ -118,10 +118,10 @@
  
- IF(APP_NAME_SUFFIX)
+ if(APP_NAME_SUFFIX)
      install(FILES ${libqmmp_DEVEL_HDRS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qmmp${APP_NAME_SUFFIX}/qmmp)
 -    SET(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_FULL_INCLUDEDIR}/qmmp${APP_NAME_SUFFIX})
 +    SET(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_INCLUDEDIR}/qmmp${APP_NAME_SUFFIX})
- ELSE()
+ else()
      install(FILES ${libqmmp_DEVEL_HDRS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qmmp)
 -    SET(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_FULL_INCLUDEDIR})
 +    SET(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_INCLUDEDIR})
- ENDIF()
+ endif()
  
  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/qmmp.pc.in ${CMAKE_CURRENT_BINARY_DIR}/qmmp${APP_NAME_SUFFIX}.pc @ONLY)
 Index: src/qmmp/qmmp.pc.in
 ===================================================================
---- src/qmmp/qmmp.pc.in	(revisión: 9311)
+--- src/qmmp/qmmp.pc.in	(revisión: 12155)
 +++ src/qmmp/qmmp.pc.in	(copia de trabajo)
 @@ -1,8 +1,8 @@
  prefix=@CMAKE_INSTALL_PREFIX@
@@ -33,24 +33,24 @@ Index: src/qmmp/qmmp.pc.in
  Description: qmmp core library
 Index: src/qmmpui/CMakeLists.txt
 ===================================================================
---- src/qmmpui/CMakeLists.txt	(revisión: 9311)
+--- src/qmmpui/CMakeLists.txt	(revisión: 12155)
 +++ src/qmmpui/CMakeLists.txt	(copia de trabajo)
-@@ -146,10 +146,10 @@
+@@ -117,10 +117,10 @@
  
- IF(APP_NAME_SUFFIX)
+ if(APP_NAME_SUFFIX)
      install(FILES ${libqmmpui_DEVEL_HDRS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qmmp${APP_NAME_SUFFIX}/qmmpui)
--    SET(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_FULL_INCLUDEDIR}/qmmp${APP_NAME_SUFFIX})
-+    SET(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_INCLUDEDIR}/qmmp${APP_NAME_SUFFIX})
- ELSE()
+-    set(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_FULL_INCLUDEDIR}/qmmp${APP_NAME_SUFFIX})
++    set(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_INCLUDEDIR}/qmmp${APP_NAME_SUFFIX})
+ else()
      install(FILES ${libqmmpui_DEVEL_HDRS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qmmpui)
--    SET(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_FULL_INCLUDEDIR})
-+    SET(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_INCLUDEDIR})
- ENDIF()
+-    set(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_FULL_INCLUDEDIR})
++    set(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_INCLUDEDIR})
+ endif()
  
  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/qmmpui.pc.in ${CMAKE_CURRENT_BINARY_DIR}/qmmpui${APP_NAME_SUFFIX}.pc @ONLY)
 Index: src/qmmpui/qmmpui.pc.in
 ===================================================================
---- src/qmmpui/qmmpui.pc.in	(revisión: 9311)
+--- src/qmmpui/qmmpui.pc.in	(revisión: 12155)
 +++ src/qmmpui/qmmpui.pc.in	(copia de trabajo)
 @@ -1,7 +1,7 @@
  prefix=@CMAKE_INSTALL_PREFIX@

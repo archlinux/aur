@@ -3,7 +3,7 @@
 # Contributor: Andrew Panchenko <panchenkoac at gmail>
 
 pkgname=qmmp-svn
-pkgver=2.1.6.svn.r11196
+pkgver=2.3.0.svn.r12155
 pkgrel=1
 pkgdesc="A Qt based audio-player. (SVN Version)"
 arch=('x86_64')
@@ -101,18 +101,19 @@ provides=(
 )
 conflicts=('qmmp')
 source=(
-  'qmmp::svn+http://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-2.1/'
+  'qmmp::svn+http://svn.code.sf.net/p/qmmp-dev/code/trunk/qmmp'
   'pkgconfig_fix.diff'
 )
 sha256sums=(
   'SKIP'
-  'cdc27a35edd99635fdcc912c987479fd2fb4265b8ef55f908307afb5d6ae2978'
+  '40625618c2ea7aaabbb270f6aa2a464101856e21f5bb056ae520e9a292c62475'
 )
 options=('debug')
 
 pkgver() {
   cd qmmp
-  echo "$(cat qmmp.pri | grep -m1 QMMP_VERSION | cut -d ' ' -f3).svn.r$(svnversion | tr -d M | tr : .)"
+  _ver="$(cat src/qmmp/qmmp.h | grep -m3 -e "define QMMP_VERSION_MAJOR" -e "define QMMP_VERSION_MINOR" -e "define QMMP_VERSION_PATCH" | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo "${_ver}.svn.r$(svnversion | tr -d M | tr : .)"
 }
 
 prepare() {
