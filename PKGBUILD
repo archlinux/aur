@@ -14,7 +14,7 @@ makedepends=('sudo')
 checkdepends=()
 optdepends=()
 provides=('why2')
-conflicts=('why2')
+conflicts=('why2' 'why2-stable-git')
 replaces=()
 backup=()
 options=()
@@ -36,7 +36,7 @@ package() {
 	cd "WHY2"
     git checkout development &>/dev/null
 
-	make install
+	make install BYPASS_CHECK=true
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
