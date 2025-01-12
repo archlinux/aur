@@ -1,0 +1,3 @@
+[lief]
+source = "git"
+git = "https://github.com/lief-project/lief.git"
