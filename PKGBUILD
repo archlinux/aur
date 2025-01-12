@@ -8,16 +8,21 @@
 
 pkgname=amarok-qt6
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The powerful music player for KDE"
 arch=(x86_64)
 url="https://apps.kde.org/amarok/"
 license=(GPL-2.0-or-later)
 depends=(threadweaver qt6-webengine phonon-qt6 qt6-declarative
          kcmutils knewstuff ktexteditor kdnssd kirigami2 kstatusnotifieritem ktextwidgets
-         mariadb libmariadbclient fftw ffmpeg taglib libofa)
+         mariadb libmariadbclient fftw ffmpeg taglib libofa qt6-tools
+
+         # namcap implicit depends
+         qt6-5compat kiconthemes ki18n qt6-svg gcc-libs kcompletion kitemviews kwidgetsaddons solid karchive kcrash
+         kdbusaddons kconfigwidgets kpackage kcodecs knotifications hicolor-icon-theme kxmlgui qt6-base kconfig
+         kcoreaddons kglobalaccel kirigami kwindowsystem kguiaddons glibc kio kcolorscheme)
 makedepends=(git extra-cmake-modules kdoctools gdk-pixbuf2 knotifyconfig
-             libmtp loudmouth qt6-tools)
+             libmtp loudmouth )
 optdepends=("libmtp: support for portable media devices"
             "loudmouth: backend needed by mp3tunes for syncing"
             #"taglib-extras: taglib plugins for Audible and RealMedia files"
