@@ -7,10 +7,6 @@ pkgbase = sshs
 	license = MIT
 	makedepends = cargo
 	depends = openssh
-	provides = sshs
-	conflicts = sshs
-	conflicts = sshs-git
-	conflicts = sshs-bin
 	source = sshs-4.5.1.tar.gz::https://github.com/quantumsheep/sshs/archive/refs/tags/4.5.1.tar.gz
 	sha256sums = c5383138114262fd49ac91c77830f9c6a09f02c5650e5e5cfa8ede1fa3383d96
 

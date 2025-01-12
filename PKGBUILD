@@ -1,4 +1,5 @@
 # Maintainer: Hossam Mostafa <hossamdash2@gmail.com>
+# Contributor: Nathanael Demacon <nathanael.dmc[at]outlook[dot]fr>
 pkgname=sshs
 pkgver=4.5.1
 pkgrel=1
@@ -6,8 +7,6 @@ pkgdesc="Terminal user interface for SSH"
 arch=('x86_64')
 url="https://github.com/quantumsheep/sshs"
 license=('MIT')
-provides=("$pkgname")
-conflicts=("$pkgname" "${pkgname}-git" "${pkgname}-bin")
 
 depends=('openssh')
 makedepends=('cargo')
