@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-manager
-pkgver=4.9.2
+pkgver=4.10.0
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
@@ -30,7 +30,7 @@ backup=(
   'var/ossec/etc/ossec.conf'
 )
 
-sha512sums=('5d883e324191b6d9a419a792f03a1288971dc71ac74f970a033109d983fd5246d9c60e3beaa5cb6973b2c4c33bd6e1f149ed40deabfa3a54f925e1b71bfc5434')
+sha512sums=('5fea7e8eaa1c120285baa63983186a64d47138baac1bbe5e5b5940f0d680fa56efc4f87163106f77e328d63c858b81ac342c0c56b258b62fca4efbd5a2ec034d')
 
 install=$pkgname.install
 
