@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=VRCX
+Exec=vrcx --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=vrcx
+StartupWMClass=VRCX
+Comment=Friendship management tool for VRChat
+Categories=Network;Utility;Game;
