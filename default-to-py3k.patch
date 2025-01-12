@@ -1,0 +1,8 @@
+--- a/manlifter
++++ b/manlifter
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python2
++#!/usr/bin/env python3
+ #
+ # Note: this code is Python 3 ready, but trips over Debian bug 764848.
+ # In Python 3.4.3, subprocess.getstatusoutput() returns an incorrect

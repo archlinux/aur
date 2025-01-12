@@ -1,0 +1,12 @@
+Index: doclifter/manlifter
+===================================================================
+--- doclifter.orig/manlifter
++++ doclifter/manlifter
+@@ -837,6 +837,6 @@ if __name__ == "__main__":
+         sys.stderr.write("manlifter: can't find doclifter!\n")
+         sys.exit(1)
+     # Gather options
+-    (options, arguments) = getopt.getopt(sys.argv[1:], "d:ef:hI:mMp:Pqs:SvwX:")
++    (options, arguments) = getopt.getopt(sys.argv[1:], "d:ef:hI:mMop:Pqs:SvwX:")
+     doclifter_driver(options, arguments)
+ # End
