@@ -1,0 +1,4 @@
+["mingw-w64-cairomm-1.16"]
+source = "git"
+git = "https://gitlab.freedesktop.org/cairo/cairomm.git"
+prefix = "v"

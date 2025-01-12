@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-cairomm-1.16
+	pkgdesc = C++ bindings for Cairo (mingw-w64)
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://www.cairographics.org/cairomm
+	arch = any
+	license = LGPL-2.0-or-later AND MPL-1.1
+	makedepends = mingw-w64-meson>=0.55
+	makedepends = mm-common
+	depends = mingw-w64-cairo
+	depends = mingw-w64-crt
+	depends = mingw-w64-libsigc++-3.0
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = cairomm-1.18.0.tar.gz::https://gitlab.freedesktop.org/cairo/cairomm/-/archive/1.18.0/cairomm-1.18.0.tar.gz
+	sha256sums = aec941f5b1c25392fec2b079edbd322d54520efc7c6a7a48eef111e14a67ca64
+
+pkgname = mingw-w64-cairomm-1.16
