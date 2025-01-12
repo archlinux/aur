@@ -1,18 +1,17 @@
 pkgbase = sftpman-iced
 	pkgdesc = A GUI frontend to sftpman (an application for managing and mounting sshfs (SFTP) filesystems)
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 0
 	epoch = 1
 	url = https://github.com/spantaleev/sftpman-iced-rs
 	install = sftpman-iced.install
-	arch = any
+	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = git
 	makedepends = cargo
 	depends = sshfs
 	optdepends = sftpman: CLI version
-	replaces = sftpman-gtk
-	source = git+https://github.com/spantaleev/sftpman-iced-rs.git#tag=v2.0.3
+	source = git+https://github.com/spantaleev/sftpman-iced-rs.git#tag=v2.0.4
 	b2sums = SKIP
 
 pkgname = sftpman-iced
