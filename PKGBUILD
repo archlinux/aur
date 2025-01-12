@@ -4,7 +4,7 @@
 # Author: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 # Maintainer: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 pkgname=oscam-git
-pkgver=11847
+pkgver=11866
 pkgrel=1
 pkgdesc="Open Source Conditional Access Module software"
 url="http://www.streamboard.tv/oscam"
@@ -32,6 +32,8 @@ build() {
   cd "$pkgname"
 
   make allyesconfig
+
+  ./config.sh --disable WITH_SIGNING
 
   make -j$(getconf _NPROCESSORS_ONLN) \
        CONF_DIR=/var/lib/oscam \
