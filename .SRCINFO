@@ -9,7 +9,6 @@ pkgbase = wfuzz
 	makedepends = python-sphinx
 	depends = python-pycurl
 	depends = python-pyparsing
-	depends = python-future
 	depends = python-chardet
 	depends = python-six
 	source = https://github.com/xmendez/wfuzz/archive/v3.1.0.tar.gz
