@@ -9,7 +9,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='2412.r107.g7133bfbb0e'
+pkgver='2412.r130.g93fc5c02ac'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -19,10 +19,10 @@ license=('GPL-2.0-or-later')
 depends=(
 	# Based on the repo package
 	'bluez-libs' 'bzip2' 'enet' 'gcc-libs' 'glibc' 'hidapi' 'libavcodec.so'
-	'libavformat.so' 'libavutil.so' 'libcurl.so' 'libgl' 'libsfml-network.so'
-	'libsfml-system.so' 'libspng.so' 'libswscale.so' 'libusb-1.0.so' 'libx11'
-	'libxi' 'libxrandr' 'lz4' 'lzo' 'mbedtls2' 'pugixml' 'sdl2' 'sfml' 'speexdsp'
-	'xxhash' 'xz' 'zstd'
+	'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so' 'libgl'
+	'libsfml-network.so' 'libsfml-system.so' 'libspng.so' 'libswscale.so'
+	'libusb-1.0.so' 'libx11' 'libxi' 'libxrandr' 'lz4' 'lzo' 'mbedtls2' 'pugixml'
+	'sdl2' 'sfml' 'speexdsp' 'xxhash' 'xz' 'zstd'
 	# Additional dependencies to replace vendored deps
 	'cubeb' 'minizip-ng'
 )
@@ -35,7 +35,6 @@ optdepends=('pulseaudio: PulseAudio backend')
 options=('!lto')
 source=(
 	"$pkgbase::git+https://github.com/$_mainpkgname/$_projectname"
-	"$pkgbase-fmt::git+https://github.com/fmtlib/fmt.git"
 	"$pkgbase-implot::git+https://github.com/epezent/implot.git"
 	"$pkgbase-mgba::git+https://github.com/mgba-emu/mgba.git"
 	"$pkgbase-rcheevos::git+https://github.com/RetroAchievements/rcheevos.git"
@@ -43,6 +42,8 @@ source=(
 	"$pkgbase-vh::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 	"$pkgbase-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 	"$pkgbase-zlibng::git+https://github.com/zlib-ng/zlib-ng.git"
+	"$pkgbase-fix-line-endings.diff::https://github.com/$_mainpkgname/$_projectname/commit/f28e134c88ecbd30eed89606bca3c348047a3009.diff"
+	'fix-minizip-ng-compat-headers.diff'
 	'minizip-ng.diff'
 )
 b2sums=('SKIP'
@@ -53,8 +54,9 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'SKIP'
-        'c9906e52582a3d4af72f96c03b5cbfd29022f9378ed5d454b1a90e2aeec9ea05962fbe47cc24f7f08ee73a98c1a0987b5cbeb28d802355b51a9fe6908d4b062e')
+        '43b59f3546973c840b26ee5fc13fd40542e433ab5fad36134dafa365e2cac0f20c43fb2fb47831a34a5596d8f88fe3adaac02f5963e987d7884c964013fe3059'
+        '132f890b6d9f5375cc19a78a9efffbfb612b8e04a238d417ed82af827796748b659cca45cc2fe0c78aa8c409a91719f9eca70e7932dd61769f0f5e069b4899a9'
+        '504a23ab4cce2be8f114263ebfcbcd468fd183187443c2e0d994d4e090fe037d5c2b3fddd2095ddb1ae12009eaa83e08b7d2fecb67f8b40d8b9862c91d0bbc59')
 
 _sourcedirectory="$pkgbase"
 
@@ -63,12 +65,17 @@ prepare() {
 	if [ -d 'build/' ]; then rm -rf 'build/'; fi
 	mkdir 'build/'
 
+	# Fix CRLF line endings (see https://github.com/dolphin-emu/dolphin/pull/13274)
+	patch --forward -p1 < "$srcdir/$pkgbase-fix-line-endings.diff"
+
+	# Use correct renamed minizip-ng compat header files (based on https://github.com/dolphin-emu/dolphin/pull/13273)
+	patch --forward -p1 < "$srcdir/fix-minizip-ng-compat-headers.diff"
+
 	# Fix minizip-ng check for Arch (see https://github.com/dolphin-emu/dolphin/pull/12910#issuecomment-2249001387)
 	patch --forward -p1 < "$srcdir/minizip-ng.diff"
 
 	# Provide submodules
 	declare -A _submodules=(
-		[fmt]='fmt/fmt'
 		[implot]='implot/implot'
 		[mgba]='mGBA/mgba'
 		[rcheevos]='rcheevos/rcheevos'
@@ -100,7 +107,6 @@ build() {
 	# CMAKE_BUILD_TYPE - the dolphin-emu package in the repos uses 'None' for some reason, so we use it as well
 	# CMAKE_SKIP_RPATH - do not add run time path information (the package in the repos does it, presumably because of reproducible builds)
 	# USE_SYSTEM_LIBS - we want to use system libs where possible
-	# USE_SYSTEM_FMT - the current version of fmt in the repos is not compatible with Dolphin
 	# USE_SYSTEM_LIBMGBA - the current version of mgba in the repos is not compatible with Dolphin
 	cmake -S '.' -B 'build/' -G Ninja \
 		-DCMAKE_BUILD_TYPE=None \
@@ -109,7 +115,6 @@ build() {
 		-DDISTRIBUTOR='aur.archlinux.org/packages/dolphin-emu-git' \
 		-DENABLE_AUTOUPDATE=OFF \
 		-DUSE_SYSTEM_LIBS=ON \
-		-DUSE_SYSTEM_FMT=OFF \
 		-DUSE_SYSTEM_LIBMGBA=OFF \
 		-Wno-dev
 	cmake --build 'build/'

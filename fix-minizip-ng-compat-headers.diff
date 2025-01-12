@@ -1,0 +1,54 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 819ea04409..3c47f4ff3a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -675,7 +675,7 @@ dolphin_find_optional_system_library_pkgconfig(ZSTD libzstd>=1.4.0 zstd::zstd Ex
+ add_subdirectory(Externals/zlib-ng)
+ 
+ dolphin_find_optional_system_library_pkgconfig(MINIZIP
+-  "minizip>=4.0.4" minizip::minizip Externals/minizip-ng
++  "minizip>=4.0.8" minizip::minizip Externals/minizip-ng
+ )
+ 
+ dolphin_find_optional_system_library(LZO Externals/LZO)
+diff --git a/Source/Core/Common/MinizipUtil.h b/Source/Core/Common/MinizipUtil.h
+index 87c6231fa0..bf681cb8cf 100644
+--- a/Source/Core/Common/MinizipUtil.h
++++ b/Source/Core/Common/MinizipUtil.h
+@@ -5,7 +5,7 @@
+ 
+ #include <algorithm>
+ 
+-#include <mz_compat.h>
++#include <unzip.h>
+ 
+ #include "Common/CommonTypes.h"
+ #include "Common/ScopeGuard.h"
+diff --git a/Source/Core/DiscIO/VolumeVerifier.cpp b/Source/Core/DiscIO/VolumeVerifier.cpp
+index a4725cbbe2..93614f88d0 100644
+--- a/Source/Core/DiscIO/VolumeVerifier.cpp
++++ b/Source/Core/DiscIO/VolumeVerifier.cpp
+@@ -13,7 +13,7 @@
+ #include <unordered_set>
+ 
+ #include <mbedtls/md5.h>
+-#include <mz_compat.h>
++#include <unzip.h>
+ #include <pugixml.hpp>
+ 
+ #include "Common/Align.h"
+diff --git a/Source/Core/UICommon/ResourcePack/ResourcePack.cpp b/Source/Core/UICommon/ResourcePack/ResourcePack.cpp
+index 117c3cc31c..6937e8eba6 100644
+--- a/Source/Core/UICommon/ResourcePack/ResourcePack.cpp
++++ b/Source/Core/UICommon/ResourcePack/ResourcePack.cpp
+@@ -6,7 +6,9 @@
+ #include <algorithm>
+ #include <memory>
+ 
+-#include <mz_compat.h>
++#include <unzip.h>
++#include <mz.h>
++
+ #include <mz_os.h>
+ 
+ #include "Common/CommonPaths.h"
