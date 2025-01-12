@@ -9,7 +9,10 @@ pkgver=2.1.0+8.r427.20250111.dfedb14
 pkgrel=1
 pkgdesc='High dynamic range (HDR) image viewer and comparison tool'
 url='https://github.com/wkjarosz/hdrview'
-arch=('x86_64' 'i686')
+arch=(
+  'x86_64'
+  'i686'
+)
 license=('BSD-3-Clause')
 makedepends=(
   'cmake'

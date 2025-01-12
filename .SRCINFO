@@ -37,7 +37,6 @@ pkgbase = hdrview-git
 	depends = vulkan-icd-loader
 	provides = hdrview=2.1.0+8.r427.20250111.dfedb14
 	conflicts = hdrview
-	options = ccache
 	source = hdrview::git+https://github.com/wkjarosz/hdrview.git
 	sha256sums = SKIP
 
