@@ -1,0 +1,12 @@
+diff --git a/src/examples/list_tags_omron.c b/src/examples/list_tags_omron.c
+index bdb9dfa..fa6dd71 100644
+--- a/src/examples/list_tags_omron.c
++++ b/src/examples/list_tags_omron.c
+@@ -37,6 +37,7 @@
+ #include <inttypes.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include "../lib/libplctag.h"
+ #include "utils.h"
+ 

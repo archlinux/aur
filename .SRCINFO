@@ -1,12 +1,14 @@
 pkgbase = libplctag
 	pkgdesc = Portable and simple API for accessing Allen-Bradley and Modbus PLC data over Ethernet.
-	pkgver = 2.5.5
+	pkgver = 2.6.3
 	pkgrel = 1
 	url = https://github.com/kyle-github/libplctag
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	source = https://github.com/kyle-github/libplctag/archive/v2.5.5.tar.gz
-	sha256sums = ff9aee851c75fca28dc8a1e500d456d48fe34ba7046860a951be9d47a2e2afa2
+	source = https://github.com/kyle-github/libplctag/archive/v2.6.3.tar.gz
+	source = missing-string-header.patch
+	sha256sums = ebbcd659d5137d1299780e49b139d1e991b5a731df6dca0d7130b58555673a6d
+	sha256sums = 198d18d5f97dbfcb3672465d30a0783e9fc9045233cc9be7a1d677346bde513b
 
 pkgname = libplctag
