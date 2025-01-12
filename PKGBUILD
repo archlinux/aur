@@ -4,14 +4,14 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgbase=wordnet
-pkgname=(wordnet-common)
+pkgname=(wordnet-common wordnet-progs)
 pkgver=3.1
 _srcver=3.0
-pkgrel=8
+pkgrel=9
 arch=('i686' 'x86_64')
 url="https://wordnet.princeton.edu/"
 license=("LicenseRef-custom")
-depends=('python' 'tk' 'bison')
+depends=('python' 'tk')
 source=(
   #"https://wordnetcode.princeton.edu/${_srcver}/WordNet-${_srcver}.tar.bz2"
   "http://deb.debian.org/debian/pool/main/w/wordnet/wordnet_${_srcver}-38.debian.tar.xz"
@@ -32,7 +32,6 @@ prepare() {
     patch -Np1 -i "../debian/patches/$_patch"
   done
   #remove invalid dict flag caused by debian patches
-  pwd
   #sed -i '/dictzip -n wn.dict/s/ -n//' contrib/wordnet_structures/Makefile
   sed -i '/dictzip -n wn.dict/s/ -n//' contrib/wordnet_structures/Makefile*
   find dict -type d -exec chmod 755 {} + && find dict -type f -exec chmod 644 {} +
@@ -48,16 +47,30 @@ build() {
 }
 
 package_wordnet-common() {
+  depends+=('wordnet-progs')
   pkgdesc="An Electronic Lexical Database from Princeton University"
 
   cd "${srcdir}/WordNet-${_srcver}"
   make DESTDIR="$pkgdir" install
+  # Replace dictionary files
+  cp -ar "${pkgdir}/usr/dict/"* "${pkgdir}/usr/share/wordnet/"
+  rm -fr "${pkgdir}/usr/dict" #clean this default directory
+  rm -rf "${pkgdir}/usr/"{lib,include,bin,dict}
+  rm -rf "${pkgdir}/usr/share/man"
+  ln -s /usr/share/wordnet "${pkgdir}/usr/share/wordnet/dict" #support some old scripts
+
+  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/$pkgname/COPYING"
+}
+package_wordnet-progs() {
+  pkgdesc="An Electronic Lexical Database from Princeton University (CLI and GUI tools)"
+
+  cd "${srcdir}/WordNet-${_srcver}"
+  make DESTDIR="$pkgdir" install
+  rm -rf "${pkgdir}/usr/dict"
+  rm -rf "${pkgdir}/usr/share/dictd"
+  rm -rf "${pkgdir}/usr/share/wordnet/"*
 
   mv "${pkgdir}/usr/lib/wnres" "${pkgdir}/usr/share/wordnet/wnres"
-
-  # Replace dictionary files
-  cp -ar "${srcdir}/dict/"* "${pkgdir}/usr/share/wordnet/"
-  rm -fr "${pkgdir}/usr/dict" #clean this default directory
 
   install -D -m644 "${srcdir}/wordnet.desktop" "${pkgdir}/usr/share/applications/wordnet.desktop"
   install -D -m644 "${srcdir}/wordnet.png" "${pkgdir}/usr/share/pixmaps/wordnet.png"

@@ -1,13 +1,12 @@
 pkgbase = wordnet
 	pkgver = 3.1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://wordnet.princeton.edu/
 	arch = i686
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = python
 	depends = tk
-	depends = bison
 	source = http://deb.debian.org/debian/pool/main/w/wordnet/wordnet_3.0-38.debian.tar.xz
 	source = http://deb.debian.org/debian/pool/main/w/wordnet/wordnet_3.0.orig.tar.gz
 	source = https://wordnetcode.princeton.edu/wn3.1.dict.tar.gz
@@ -21,3 +20,9 @@ pkgbase = wordnet
 
 pkgname = wordnet-common
 	pkgdesc = An Electronic Lexical Database from Princeton University
+	depends = python
+	depends = tk
+	depends = wordnet-progs
+
+pkgname = wordnet-progs
+	pkgdesc = An Electronic Lexical Database from Princeton University (CLI and GUI tools)
