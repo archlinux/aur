@@ -3,11 +3,11 @@
 pkgname=gpu-viewer
 _pkgname=GPU-Viewer
 pkgver=3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A frontend to glxinfo and vulkaninfo."
 arch=('i686' 'x86_64' 'aarch64')
-url="https://github.com/arunsivaramanneo/GPU-Viewer/"
-license=('GPL3')
+url="https://github.com/arunsivaramanneo/$_pkgname/"
+license=('GPL3-or-later')
 depends=('gtk4'
         'libadwaita>=1.4'
         'python'
@@ -27,7 +27,7 @@ optdepends=('nvidia: Vulkan nvidia driver'
             'orchis-theme: Preferred GTK theme'
             'vulkan-radeon: Vulkan AMD drivers'
             'vulkan-intel: Vulkan Intel drivers')
-source=("https://github.com/arunsivaramanneo/$_pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver::https://github.com/arunsivaramanneo/$_pkgname/archive/v$pkgver.tar.gz")
 
 build() {
     cd "$_pkgname-$pkgver"
@@ -35,7 +35,7 @@ build() {
 }
 
 check() {
-    cd GPU-Viewer-$pkgver
+    cd $_pkgname-$pkgver
     appstream-util validate-relax --nonet data/*.metainfo.xml
     desktop-file-validate data/*.desktop
 }
