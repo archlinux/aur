@@ -1,12 +1,12 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=6.0.280
+pkgver=6.0.290
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
-license=('custom:"Copyright (c) 2006-2024 Deezer S.A."')
+license=('custom:"Copyright (c) 2006-2025 Deezer S.A."')
 depends=('electron13-bin')
 provides=('deezer')
 makedepends=('p7zip' 'asar' 'prettier>=3.0.0' 'imagemagick')
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
     avoid-change-default-texthtml-mime-type.patch
     start-hidden-in-tray.patch
     quit.patch)
-sha256sums=('0363cd07af4af5b2f712f269238784385ca17e63628245ae470919f28d64e5ca'
+sha256sums=('a7016ae10449be73deab0fecc7e4cd301558d505953c6754e5af9584652031dc'
             'c16cf96707c6c047e5f2ec336ce3c639ecf2fc207ff9db365b17363d13380d2c'
             'b464dbfc0d426730259ce2abc660960ecc6a73bbef838b8fbbd15deb2f5dce53'
             '8eddebb9274e66051b55728e3b73263c0a2d288f70fc6c15917a604a08f7f705'
