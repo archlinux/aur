@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-jbig2dec
+	pkgdesc = Decoder implementation of the JBIG2 image compression format (mingw-w64)
+	pkgver = 0.20
+	pkgrel = 1
+	url = https://jbig2dec.com
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	depends = mingw-w64-libpng
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = jbig2dec-0.20.tar.gz::https://github.com/ArtifexSoftware/jbig2dec/releases/download/0.20/jbig2dec-0.20.tar.gz
+	source = jbig2dec_autogen_noconfigure.patch
+	sha256sums = 7b63ff6470289547e7a3a0f145cb8ea6c2afffdd65645b7d87d3b7febc96fb3a
+	sha256sums = 2b8873c1986ef900a84cecb58f7b6807da5161a7fdb4e48360daa51b2b780e0e
+
+pkgname = mingw-w64-jbig2dec
