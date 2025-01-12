@@ -4,7 +4,7 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname=perl-getopt-long-descriptive
-pkgver=0.115
+pkgver=0.116
 pkgrel=1
 pkgdesc="Getopt::Long, but simpler and more powerful"
 arch=('any')
@@ -13,7 +13,7 @@ license=('PerlArtistic' 'GPL')
 depends=('perl' 'perl-params-validate' 'perl-sub-exporter' 'perl-getopt-long>=2.55')
 checkdepends=('perl-cpan-meta-check' 'perl-test-fatal' 'perl-test-warnings')
 source=("https://backpan.cpan.org/modules/by-authors/id/R/RJ/RJBS/Getopt-Long-Descriptive-${pkgver}.tar.gz")
-sha512sums=('259cff1d85f79d851683ff6b1ad70751a3799434260098a20c3ef03ee3c5c20bb59b48d839236757af60abf45b6b0d894c83d7648f89b5aa7537c854178139db')
+sha512sums=('6c31592b98d8f594fd0d3bcc750120479fa3bd663211ef28ea6607a555c51717cda32679b463e404543392c68fcf289c2a6e51cf93200ec9ea5a43535e5ec438')
 
 build() {
   cd "${srcdir}/Getopt-Long-Descriptive-${pkgver}"
