@@ -1,0 +1,4 @@
+["mingw-w64-glibmm-2.68"]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/glibmm.git"
+include_regex = '\d+\.\d*[02468]\.\d+'
