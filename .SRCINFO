@@ -1,0 +1,14 @@
+pkgbase = firefox-debugadapter
+	pkgdesc = Debug Adapter for Firefox
+	pkgver = 2.13.0
+	pkgrel = 1
+	url = https://www.npmjs.com/package/firefox-debugadapter
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = firefox-debugadapter-2.13.0.tgz
+	source = https://registry.npmjs.org/firefox-debugadapter/-/firefox-debugadapter-2.13.0.tgz
+	b2sums = 11e0532d0ae46d25713a643f48356ce7abcb82addec1d16dd2c6521416811e03d1f234beaef1547ac437bb3c1ea131ac4427ee236566c47c13260a5e6f22600f
+
+pkgname = firefox-debugadapter
