@@ -4,7 +4,7 @@
 # Contributor: Nick Bair <njbair at gmail dot com>
 
 pkgname=bubbleupnpserver
-pkgver=0.9.49
+pkgver=0.9.50
 pkgrel=1
 pkgdesc="Stream content to Android devices over the Internet, requires UPNP/DNLA backend e.g. miniDLNA, Gerbera, Mediatomb"
 arch=(any)
@@ -30,7 +30,7 @@ sha256sums=('7df801995e65a79eb5140814ca80c4caeee7e1282b69acff9e74201cbaafdaf3'
             '61bf63a84b839b85c0fdf0210310c94242bbb6e1aa69bf0d6c46efa013b52ae5'
             'fd764bb4c785ab0e2481d26f4f30656ba756949afa8ed949234e722ded87bf04'
             '105bfe44a43d141457bf87ef89c76a5be57f54cdb3493ae3af99c8ad6a938c36'
-            '499a2e89cb1eb2247ab01ce34f50c157ae16291a4f78019a8ffb2754cc6e52af'
+            'fd032eecd350c9d17d33e64c5ee2c2ba9dfd16270bc30fc811e112dcaea3ca9c'
             'ceb8ba5042568cd04e7c47f4e4416278bbbd1e63fe30124b0646fc90614843ba')
 backup=("etc/conf.d/bubbleupnpserver.config"
         "var/lib/bubbleupnp/configuration.xml")
