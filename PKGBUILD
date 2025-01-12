@@ -7,9 +7,9 @@ pkgbase="${_pkgbase}-1.2"
 pkgname=(
   "${_pkgbase}-1.2"
 )
-pkgver=1.2.3
-pkgrel=2
-pkgdesc="GObject-based API for handling resource discovery and announcement over SSDP. Legacy 1.2.x version for compatibility with old software."
+pkgver=1.4.1 # YES!, even though version is "1.4.x", it is still gssdp-1.2.
+pkgrel=1
+pkgdesc="GObject-based API for handling resource discovery and announcement over SSDP. Legacy 1.2 variant for compatibility with old software."
 url="https://wiki.gnome.org/Projects/GUPnP"
 arch=(
   'aarch64'
@@ -30,22 +30,24 @@ depends=(
 makedepends=(
   'glib2-devel'
   'gobject-introspection'
-  'gtk3'
+  'gtk4'
   'meson'
   'vala'
 )
 optdepends=(
-  'gtk3: For gssdp-1.2-device-sniffer'
+  'gtk4: For gssdp-1.2-device-sniffer'
 )
 source=(
   "${_pkgbase}-${pkgver}.tar.bz2::https://gitlab.gnome.org/GNOME/${_pkgbase}/-/archive/${_pkgbase}-${pkgver}/${_pkgbase}-${_pkgbase}-${pkgver}.tar.bz2"
 )
 sha256sums=(
-  '6c03826b1da006347dc0c8b2207c902326ca433dcaecab593ef55b38574a327c'  # Upstream source
+  '62c28d6a346c2254fbd026ad994d34109b06288dac1750629a127e8cf7ecdfa8'  # Upstream source.
 )
 validpgpkeys=(
   'AC9CD4E32D7C7F6357BA8ADD10F6E970175D29E1'  # Jens Georg <mail@jensge.org>
 )
+
+_CFLAGSADDITIONS="-w -Wno-error=deprecated-declarations"
 
 prepare() {
   CFLAGS+=" ${_CFLAGSADDITIONS}"
@@ -71,8 +73,8 @@ prepare() {
 
   # meson subprojects download --sourcedir="${_pkgname}"
 
-  meson setup --prefix /usr --libexecdir lib --sbindir bin --buildtype plain --auto-features enabled --wrap-mode nodownload -D b_pie=true -D python.bytecompile=1 "${_pkgbase}" build --reconfigure "${meson_options[@]}"
-  # arch-meson "${_pkgbase}" build --reconfigure "${meson_options[@]}"
+  # meson setup --prefix /usr --libexecdir lib --sbindir bin --buildtype plain --auto-features enabled --wrap-mode nodownload -D b_pie=true -D python.bytecompile=1 "${_pkgbase}" build --reconfigure "${meson_options[@]}"
+  arch-meson "${_pkgbase}" build --reconfigure "${meson_options[@]}"
 
 }
 
@@ -111,6 +113,6 @@ package_gssdp-1.2() {
   mv -v "${pkgdir}/usr/bin/gssdp-device-sniffer"  "${pkgdir}/usr/bin/gssdp-1.2-device-sniffer"
 
   cd "${srcdir}/${_pkgbase}"
-  install -Dvm644 -t "${pkgdir}/usr/share/doc/${pkgbase}"  AUTHORS NEWS README
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${pkgbase}"       AUTHORS NEWS README.md
   install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  "COPYING"
 }

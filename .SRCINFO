@@ -1,7 +1,7 @@
 pkgbase = gssdp-1.2
-	pkgdesc = GObject-based API for handling resource discovery and announcement over SSDP. Legacy 1.2.x version for compatibility with old software.
-	pkgver = 1.2.3
-	pkgrel = 2
+	pkgdesc = GObject-based API for handling resource discovery and announcement over SSDP. Legacy 1.2 variant for compatibility with old software.
+	pkgver = 1.4.1
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GUPnP
 	arch = aarch64
 	arch = x86_64
@@ -13,17 +13,17 @@ pkgbase = gssdp-1.2
 	license = LGPL-2.1-or-later
 	makedepends = glib2-devel
 	makedepends = gobject-introspection
-	makedepends = gtk3
+	makedepends = gtk4
 	makedepends = meson
 	makedepends = vala
 	depends = glib2
 	depends = glibc
 	depends = libsoup>=2
 	depends = libsoup<3
-	optdepends = gtk3: For gssdp-1.2-device-sniffer
-	source = gssdp-1.2.3.tar.bz2::https://gitlab.gnome.org/GNOME/gssdp/-/archive/gssdp-1.2.3/gssdp-gssdp-1.2.3.tar.bz2
+	optdepends = gtk4: For gssdp-1.2-device-sniffer
+	source = gssdp-1.4.1.tar.bz2::https://gitlab.gnome.org/GNOME/gssdp/-/archive/gssdp-1.4.1/gssdp-gssdp-1.4.1.tar.bz2
 	validpgpkeys = AC9CD4E32D7C7F6357BA8ADD10F6E970175D29E1
-	sha256sums = 6c03826b1da006347dc0c8b2207c902326ca433dcaecab593ef55b38574a327c
+	sha256sums = 62c28d6a346c2254fbd026ad994d34109b06288dac1750629a127e8cf7ecdfa8
 
 pkgname = gssdp-1.2
 	provides = libgssdp-1.2.so
