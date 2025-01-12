@@ -19,7 +19,6 @@ arch=(
 )
 url="https://tabos.org/projects/rogerrouter/"
 license=('GPL-2.0-only')
-
 depends=(
   "gcc-libs"
   "ghostscript"
@@ -61,7 +60,6 @@ optdepends=(
   'dconf:              for glib schemas'
   'hicolor-icon-theme: hicolor theme hierarchy'
 )
-
 conflicts=(
   "${_gitname}"
   "${_pkgname}"
@@ -88,6 +86,8 @@ sha256sums=(
   '575b01dc0e68fd2f0b3d3c10afdec6fd4d61b570ec3d093e722c9fec35e6f82d'  # address-book.svg
   '7a32640a30cd73eb4e50af04b30fdcce93bd0b263577ad941037253608e86cfc'  # $install
 )
+options+=('emptydirs')
+#options+=(debug)
 
 _CFLAGSADDITIONS="-w -Wno-error=incompatible-pointer-types"
 

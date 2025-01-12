@@ -52,6 +52,7 @@ pkgbase = roger-router-git
 	conflicts = rogerrouter
 	conflicts = roger-router
 	replaces = rogerrouter
+	options = emptydirs
 	source = rogerrouter::git+https://gitlab.com/tabos/rogerrouter.git
 	source = disable-evolution-plugin.patch
 	source = address-book.svg
