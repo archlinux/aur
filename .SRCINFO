@@ -11,6 +11,6 @@ pkgbase = english-wordnet
 	source = https://en-word.net/static/english-wordnet-2024.zip
 	source = https://raw.githubusercontent.com/globalwordnet/english-wordnet/master/LICENSE.md
 	sha256sums = 12ce54dd051b9420353f6c4ea74b34c736e23c8233d6d0bbd75407526f1fc732
-	sha256sums = e7b867b3c3e8910315b3386cb0e17d4b57b2bc9f251213deeb02571a7ac2610a
+	sha256sums = 5d02a553699c4841d8b33cc5a1313cff1f96264e36e9dc98be829dfc94a6cc73
 
 pkgname = english-wordnet
