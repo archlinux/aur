@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 pkgname=ezra-bible-app
-pkgver=1.16.1
+pkgver=1.16.2
 pkgrel=1
 pkgdesc="A modern and user-friendly Bible app for desktops, tablets and mobiles focussing on topical study"
 arch=('x86_64')
@@ -25,7 +25,7 @@ conflicts=('ezra-project')
 options=('!lto')
 source=("git+https://github.com/ezra-bible-app/ezra-bible-app.git#tag=$pkgver"
         'git+https://github.com/ezra-project/apidocs.ezrabibleapp.net.git')
-sha256sums=('c04907f7600fc83677e68fcc006b32dab01e649b4e9d947766f225288771d11a'
+sha256sums=('096c1fa09d2f2db1f995cb38fb9241d27b833439886ec2ec10fc3af243b8437d'
             'SKIP')
 
 prepare() {
