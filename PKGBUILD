@@ -8,12 +8,19 @@ pkgrel=1
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
 url="https://github.com/${__pkgname}lang/$__pkgname"
+_url_raw="https://raw.githubusercontent.com/$(echo "$url" | awk -F'/' '{print $4 "/" $5}')c-ir"
 license=('BSD-3-Clause')
 groups=('jule')
 source=("git+$url.git")
+source_x86_64=("$__pkgname-ir-$pkgver-$CARCH.cpp::$_url_raw/main/src/linux-amd64.cpp")
+source_aarch64=("$__pkgname-ir-$pkgver-aarch64.cpp::$_url_raw/main/src/linux-arm64.cpp")
+source_i386=("$__pkgname-ir-$pkgver-i386.cpp::$_url_raw/main/src/linux-i386.cpp")
 sha256sums=('SKIP')
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
+sha256sums_i386=('SKIP')
 depends=('glibc' 'gcc-libs')
-makedepends=('julec' 'git')
+makedepends=('git' 'clang')
 optdepends=('clang: clang backend support'
     'gcc: gcc backend support')
 provides=("$_pkgname")
@@ -26,15 +33,23 @@ pkgver() {
 
 prepare() {
     cd "$__pkgname"
+    cp "$srcdir/$__pkgname-ir-$pkgver-$CARCH.cpp" ir.cpp
     find ./*/* -type f -name '*.md' -exec rm -f {} +
 }
 
 build() {
     cd "$__pkgname"
-    
+
     mkdir -p bin
+    echo "Building $_pkgname-dev for $CARCH..."
+    clang++ ir.cpp \
+        -O0 \
+        --std=c++17 \
+        -Wno-everything \
+        -o "bin/$_pkgname-dev"
+
     echo "Building $_pkgname for $CARCH..."
-    julec --opt-deadcode -o "bin/$_pkgname" "src/$_pkgname"
+    "./bin/$_pkgname-dev" -o "bin/$_pkgname" "src/$_pkgname"
 }
 
 package() {
