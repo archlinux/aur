@@ -1,6 +1,6 @@
 pkgbase = clamav-git
 	pkgdesc = Anti-virus toolkit for Unix - Git latest
-	pkgver = 1.4.1+r11253+gde3be9e89
+	pkgver = 1.4.1+r11257+g7f60cc799
 	pkgrel = 1
 	url = https://www.clamav.net/
 	arch = x86_64
