@@ -16,7 +16,7 @@ pkgbase = why2-development-git
 	depends = openssl
 	provides = why2
 	conflicts = why2
-	source = WHY2::git//github.com/ENGO150/WHY2.git
+	source = git+https://gitea.coquette.baby/ENGO150/WHY2
 	md5sums = SKIP
 
 pkgname = why2-development-git
