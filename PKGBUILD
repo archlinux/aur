@@ -1,9 +1,9 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 # shellcheck disable=2034,2154,2164
 pkgname=signal-monochrome-tray
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
-pkgdesc="changes the tray icon of Signal to monochrome"
+pkgdesc="changes the tray icon of Signal to monochrome (dark theme only)"
 url="https://github.com/doppelhelix/signal-monochrome-tray-hook"
 arch=(any)
 license=(
@@ -19,7 +19,7 @@ depends=(
     signal-desktop
 )
 source=("$pkgname-$pkgver::git+$url.git#tag=v${pkgver}?signed")
-sha256sums=('1832102951dedbc65321b145e45dc078829e2e97239628e93d63297bdd508b9b')
+sha256sums=('2cc0a7240fd05169510437b197f54cf3aca9d2363dedd41168126b04a3fbdce7')
 validpgpkeys=(
     '47D15FC0F6AD8433CD06B4DF5874D2437CD5BBB3' # Christian Schendel <doppelhelix@gmail.com>
 )
