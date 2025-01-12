@@ -3,7 +3,7 @@
 # Contributor: robertfoster
 
 pkgname=rtpengine
-pkgver=13.1.1.1
+pkgver=13.1.1.2
 pkgrel=1
 pkgdesc="A media relay for RTP sessions"
 arch=('x86_64')
@@ -58,14 +58,14 @@ backup=('etc/rtpengine/rtpengine.conf'
         'etc/rtpengine/rtpengine-recording.conf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/mr${pkgver}.tar.gz"
         "${pkgname}.sysusers")
-sha256sums=('4d6297851508a5eb6681c76c13f0c20f9b2ad28476541080bc0b55b2049fe3b6'
+sha256sums=('d8b84de01e3ad8d5d2569d5cda51a065abb7d8e6a5ecfb83e9ad86c53fe77a1f'
             '9ee6664c7368cc0466d813c199c997ac4889eb0e72f7f0b51149510cf0ae0b3e')
 
 build() {
   cd "${pkgname}-mr${pkgver}"
 
   # Build the project with transcoding support
-  make all with_transcoding=yes PREFIX=/usr
+  make with_transcoding=yes PREFIX=/usr all
 }
 
 package() {
