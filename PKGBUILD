@@ -3,7 +3,7 @@
 
 pkgname=go-musicfox-bin
 _pkgname=go-musicfox
-pkgver=4.5.7
+pkgver=4.6.0
 pkgrel=1
 pkgdesc='Command-line Netease Cloud Music written in Go. (Precompiled version)'
 url='https://github.com/go-musicfox/go-musicfox'
@@ -19,9 +19,9 @@ source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux
 source_armv7h=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm.zip")
 
 sha256sums=('20535828272932407c2f5172aeb714ac7b374a34e5ecb1825af509f2902cde54')
-sha256sums_x86_64=('a18edfdfc873c2cd4f296f87ec61ea7cf993a4bb006de922b57aabd0eab63901')
-sha256sums_aarch64=('cd3d5136f390757a29698ee8befc3d54fb9266d0ef78fdc5b1569beebe0da94b')
-sha256sums_armv7h=('bd20ca0c70bbfa26ee400cd7d5469659880d6be1f4a7764a3b1f17947e9b3fff')
+sha256sums_x86_64=('d6c3d9959fc76a16c42e147633660b6d29d03e3159bc787c0aef8acd84e098e4')
+sha256sums_aarch64=('58ff6cf27ccbb0f15aeb298889eb8fbbfc2c4ddab5d6b856abd1caefc7227644')
+sha256sums_armv7h=('3005e94489d87a97e29dde28267985a479ede494183c670775cc19d4846b4af6')
 
 declare -A _archmap=(
     ['x86_64']='amd64'
