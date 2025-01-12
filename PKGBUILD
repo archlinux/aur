@@ -1,48 +1,36 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Det <nimetonmaili g-mail>
 # Contributor: Matt Parnell /ilikenwf <parwok@gmail.com>
 # Contributor: Jonathan <eyeswide@gmail.com>
 
 pkgname=libpciaccess-git
-_srcname=libpciaccess
-pkgver=0.14.r1.g44f3dd0
+pkgver=0.18.1.r1.gf73f4ca
 pkgrel=1
 pkgdesc='X11 PCI access library (git version)'
-arch=('i686' 'x86_64')
-url='https://cgit.freedesktop.org/xorg/lib/libpciaccess/'
-license=('custom')
-depends=('glibc')
-makedepends=('git' 'xorg-util-macros')
+arch=('x86_64')
+url='https://gitlab.freedesktop.org/xorg/lib/libpciaccess/'
+license=('LicenseRef-libpciaccess')
+depends=('glibc' 'zlib')
+makedepends=('git' 'meson' 'ninja' 'xorg-util-macros')
 provides=('libpciaccess')
 conflicts=('libpciaccess')
-source=('git+https://anongit.freedesktop.org/git/xorg/lib/libpciaccess.git')
+source=('git+https://gitlab.freedesktop.org/xorg/lib/libpciaccess.git')
 sha256sums=('SKIP')
 
-prepare() {
-    cd "$_srcname"
-    
-    autoreconf -fiv
-}
-
 pkgver() {
-    cd "$_srcname"
-    
-    # git, tags available
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^libpciaccess\.//;s/^v//'
+    git -C libpciaccess describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^libpciaccess\.//;s/^v//'
 }
 
 build() {
-    cd "$_srcname"
-    
-    ./configure --prefix='/usr' --sysconfdir='/etc'
-    
-    make
+    arch-meson libpciaccess build
+    meson compile -C build
+}
+
+check() {
+    meson test -C build
 }
 
 package() {
-    cd "$_srcname"
-    
-    make DESTDIR="$pkgdir" install
-    
-    install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    meson install -C build --destdir "$pkgdir"
+    install -D -m644 libpciaccess/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
