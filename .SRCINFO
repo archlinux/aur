@@ -1,7 +1,7 @@
 pkgbase = nrf-command-line-tools-bin
 	pkgdesc = The nRF Command Line Tools is used for development, programming and debugging of Nordic Semiconductor's nRF51, nRF52, nRF53 and nRF91 Series devices.
 	pkgver = 10.24.2
-	pkgrel = 0
+	pkgrel = 5
 	url = https://www.nordicsemi.com/Products/Development-tools/nrf-command-line-tools/download
 	arch = x86_64
 	arch = aarch64
@@ -30,7 +30,6 @@ pkgname = python-nrf-command-line-tools
 	pkgdesc = The nRF Command Line Tools is used for development, programming and debugging of Nordic Semiconductor's nRF51, nRF52, nRF53 and nRF91 Series devices. (Python)
 	depends = jlink-software-and-documentation
 	depends = python
-	depends = python-future
 	depends = python-tomli-w
 	provides = python-pynrfjprog
 	conflicts = python-pynrfjprog

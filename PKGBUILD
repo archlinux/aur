@@ -4,7 +4,7 @@ pkgbase=nrf-command-line-tools-bin
 pkgname=(nrf-command-line-tools python-nrf-command-line-tools)
 _pkgname=${pkgbase%-bin}
 pkgver=10.24.2
-pkgrel=0
+pkgrel=5
 arch=('x86_64' 'aarch64')
 makedepends=(python-wheel
     python-setuptools-scm
@@ -24,7 +24,7 @@ sha256sums_aarch64=('568d1b7bac35fbcaa0320ef50dfc4fa94d672441636284ab532a05d74bc
 optdepends=("nrf-udev: udev rules for nRF (Nordic Semiconductor) development kits"
     "pc-nrfconnect-programmer: Programmer app for nRF Connect for Desktop")
 
-build () {
+build() {
     cd "${srcdir}"/${_pkgname}/python
     python -m build --wheel --no-isolation
 }
@@ -48,9 +48,8 @@ package_python-nrf-command-line-tools() {
     pkgdesc+=" (Python)"
 
     depends=(jlink-software-and-documentation
-    python
-    python-future
-    python-tomli-w)
+        python
+        python-tomli-w)
 
     provides=(python-pynrfjprog)
     conflicts=(python-pynrfjprog)
