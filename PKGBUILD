@@ -6,7 +6,7 @@ pkgbase=lib32-libsoup3
 pkgname=(
   lib32-libsoup3
 )
-pkgver=3.6.1
+pkgver=3.6.3
 pkgrel=1
 pkgdesc="HTTP client/server library for GNOME (32-bit)"
 url="https://wiki.gnome.org/Projects/libsoup"
@@ -36,7 +36,7 @@ checkdepends=(
   php-apache
 )
 source=("git+https://gitlab.gnome.org/GNOME/libsoup.git#tag=$pkgver")
-b2sums=('9e82ca2107ccb6b76e7551678c61a5cf61402d422020e7341dbfd57a7c81f69bea467603e906413d6fb17a0d4621cfedbe8b498d29c7aee6f491cc7f3a7def3a')
+b2sums=('570dd2f6116961b6c60d0b6a5a94d8d9b3170c49592474624f3318685bdd048ff641d4bc00642038cb7f0b393083b8012f83d21f4911e61026213b80cdda288a')
 
 prepare() {
   cd libsoup
