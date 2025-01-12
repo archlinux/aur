@@ -1,0 +1,5 @@
+[tty-share-bin]
+source = "github"
+github = "elisescu/tty-share"
+use_latest_release = true
+prefix = "v"
