@@ -1,0 +1,24 @@
+pkgbase = readest
+	pkgdesc = Modern, feature-rich ebook reader designed for avid readers offering seamless cross-platform access, powerful tools, and an intuitive interface
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/readest/readest
+	install = readest.install
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = openssl
+	depends = pango
+	depends = webkit2gtk-4.1
+	source = https://github.com/readest/readest/releases/download/v0.9.3/Readest_0.9.3_amd64.deb
+	sha256sums = f4f4915e93ef5173f97043b2e57568f968c4e88eed3c5d9fa4017d5a2b0a7bcd
+
+pkgname = readest
