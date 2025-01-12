@@ -1,0 +1,42 @@
+pkgbase = gupnp-1.2
+	pkgdesc = GObject-based UPNP framework. Legacy 1.2 variant for compatibility with old software.
+	pkgver = 1.4.3
+	pkgrel = 1
+	epoch = 0
+	url = https://wiki.gnome.org/Projects/GUPnP
+	arch = aarch64
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	license = LGPL-2.1-or-later
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = gssdp-1.2>=1.3.0
+	makedepends = util-linux-libs
+	makedepends = meson
+	makedepends = vala
+	depends = glib2
+	depends = glibc
+	depends = libgssdp-1.2.so
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	depends = libgio-2.0.so
+	depends = libgmodule-2.0.so
+	depends = libsoup>=2
+	depends = libsoup<3
+	depends = libxml2
+	depends = libutil-linux
+	depends = libuuid.so
+	source = gupnp-1.4.3.tar.bz2::https://gitlab.gnome.org/GNOME/gupnp/-/archive/gupnp-1.4.3/gupnp-gupnp-1.4.3.tar.bz2
+	source = fix_meson_1.2_provides.patch
+	validpgpkeys = AC9CD4E32D7C7F6357BA8ADD10F6E970175D29E1
+	sha256sums = a4cedaa39e865f849816d7e641523f746db9835c8dc63fffda1d7664caa79c20
+	sha256sums = cd56920ab63594933ac3ea9f8bb84f5c21e4417a7f4827eebeb4a19537c0dad9
+
+pkgname = gupnp-1.2
+	optdepends = python: For gupnp-binding-tool-1.2
+	optdepends = gupnp-1.2-docs: Documentation.
+	provides = libgupnp-1.2.so

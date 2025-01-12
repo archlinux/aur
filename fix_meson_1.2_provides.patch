@@ -1,0 +1,8 @@
+diff -rU1 gupnp-gupnp-1.4.3.orig/subprojects/gssdp-1.2.wrap gupnp-gupnp-1.4.3/subprojects/gssdp-1.2.wrap
+--- gupnp-gupnp-1.4.3.orig/subprojects/gssdp-1.2.wrap	2025-01-12 13:53:01.205118491 +0100
++++ gupnp-gupnp-1.4.3/subprojects/gssdp-1.2.wrap	2025-01-12 13:53:27.981786239 +0100
+@@ -5,3 +5,3 @@
+  
+-[provides]
++[provide]
+ dependency_name = gssdp-1.2
