@@ -1,19 +1,27 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=tinyserial-git
-pkgver=1.4.r0.g73e6933
-pkgrel=1
+pkgver=1.4.r2.g3c6cda7
+pkgrel=2
 epoch=
 pkgdesc="A GUI Serial Debug Tool for Linux/Mac OS."
-arch=('any')
+arch=($CARCH)
 url="https://github.com/carloscn/tinyserial"
-license=('GPL3')
+license=('MPL-2.0')
 groups=()
-depends=('qt5-base')
-makedepends=("gcc" "git")
+depends=(
+  gcc-libs
+  glibc
+  qt5-base
+  qt5-serialport
+)
+makedepends=(
+  git
+  qt5-tools
+)
 checkdepends=()
 optdepends=()
-provides=()
+provides=(tinyserial)
 conflicts=(tinyserial)
 replaces=()
 backup=()
@@ -26,21 +34,21 @@ sha256sums=('SKIP')
 #validpgpkeys=()
 
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}"
-    git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${pkgname%-git}"
-    qmake
-    make
+  cd "${srcdir}/${pkgname%-git}"
+  qmake
+  make
 }
 
 package() {
-    install -Dm0755 "${srcdir}/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm0755 "${srcdir}/${pkgname%-git}/img/appmain-ubuntu.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm0644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/metainfo/io.github.carloscn.tinyserial.metainfo.xml" << EOF
+  install -Dm0755 "${srcdir}/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+  install -Dm0755 "${srcdir}/${pkgname%-git}/img/appmain-ubuntu.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+  install -Dm0644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+  install -Dm0644 /dev/stdin "${pkgdir}/usr/share/metainfo/io.github.carloscn.tinyserial.metainfo.xml" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>io.github.carloscn.tinyserial</id>
@@ -61,7 +69,7 @@ package() {
 </component>
 EOF
 
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/io.github.carloscn.tinyserial.desktop" << EOF
+  install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/io.github.carloscn.tinyserial.desktop" <<EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
