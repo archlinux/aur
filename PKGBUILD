@@ -5,12 +5,12 @@ pkgdesc="Turn on devices in your local network"
 url="https://github.com/swsnr/turnon"
 license=("MPL-2.0")
 arch=("x86_64" "aarch64")
-pkgver=2.2.3
+pkgver=2.3.0
 pkgrel=1
 makedepends=("rust" "cargo" "git" "blueprint-compiler")
 depends=(libadwaita gtk4 hicolor-icon-theme graphene dconf gcc-libs glib2 glibc)
 source=("git+https://github.com/swsnr/turnon.git#tag=v${pkgver}")
-md5sums=('e8064b5ffc4b3b084279118f482e9e98')
+md5sums=('86e6abc73c4d45df1b041e129492744d')
 
 function prepare() {
 	cd "${srcdir}/turnon"
