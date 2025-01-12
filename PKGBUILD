@@ -1,5 +1,5 @@
 pkgname=els_dap
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='The Erlang LS DAP Debugger'
 arch=(any)
@@ -9,6 +9,12 @@ depends=(erlang-nox)
 makedepends=(rebar3)
 source=(git+https://github.com/erlang-ls/els_dap.git#tag=$pkgver)
 b2sums=('SKIP')
+
+prepare() {
+  cd $pkgname
+
+  sed -i 's/rebar3_lint, "1\.0\.2"/rebar3_lint, "3.2.6"/' rebar.config
+}
 
 build() {
   cd $pkgname
