@@ -9,7 +9,7 @@ pkgdesc="C++ bindings for ATK (32-bit)"
 url="https://www.gtkmm.org"
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
-depends=("${_name}" 'lib32-at-spi2-core' 'lib32-glib2' 'lib32-gcc-libs'
+depends=("${_name}" 'lib32-at-spi2-core>=2.33.3' 'lib32-glib2' 'lib32-gcc-libs'
          'lib32-glibc' 'lib32-glibmm-2.68' 'lib32-libsigc++-3.0')
 makedepends=('meson>=0.55' 'mm-common')
 provides=("lib${_name}.so")

@@ -8,7 +8,7 @@ pkgbase = lib32-atkmm-2.36
 	makedepends = meson>=0.55
 	makedepends = mm-common
 	depends = atkmm-2.36
-	depends = lib32-at-spi2-core
+	depends = lib32-at-spi2-core>=2.33.3
 	depends = lib32-glib2
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
