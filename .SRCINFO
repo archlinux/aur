@@ -1,0 +1,23 @@
+pkgbase = why2-stable-git
+	pkgdesc = Symmetric Encryption System Written in C.
+	pkgver = r1491.d3aa932
+	pkgrel = 1
+	url = https://gitea.coquette.baby/ENGO150/WHY2
+	arch = x86_64
+	license = GPLv3
+	makedepends = sudo
+	depends = git
+	depends = make
+	depends = tmux
+	depends = curl
+	depends = json-c
+	depends = libgit2
+	depends = gmp
+	depends = openssl
+	provides = why2
+	conflicts = why2
+	conflicts = why2-development-git
+	source = git+https://gitea.coquette.baby/ENGO150/WHY2
+	md5sums = SKIP
+
+pkgname = why2-stable-git
