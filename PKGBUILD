@@ -1,4 +1,3 @@
-# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
 # Maintainer:  Robert Falkenberg <robert.falkenberg (at) tu-dortmund.de>
 # Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 # Contributor: Robert Falkenberg <robert.falkenberg (at) tu-dortmund.de>
@@ -6,34 +5,127 @@
 # Contributor: Philipp Wolfer <ph.wolfer (at) gmail.com>
 # Contributor: Jens Rudolf <jens.rudolf (at) gmx.net>
 
-pkgname=librm
-pkgver=2.2.3
+_pkgname=librm
+pkgname="${_pkgname}"
+pkgver=2.3.4
 pkgrel=1
-pkgdesc="Router Manager library"
-arch=('x86_64')
+pkgdesc="Offers FRITZ!Box related core functionality for Roger Router (GUI), Roger CLI (CLI) and Roger Rabbit (ncurses) interfaces."
+arch=(
+  'aarch64'
+  'x86_64'
+  'i686'
+  'pentium4'
+  'armv5h'
+  'armv6h'
+  'armv7h'
+)
 url="https://gitlab.com/tabos/librm"
 license=('LGPL-2.1-only')
 
-depends=(glib2 gdk-pixbuf2 libsoup speex libxml2 libtiff spandsp json-glib libsndfile gupnp-1.2 gssdp-1.2 gstreamer gst-plugins-base libsecret libcapi)
-makedepends=(meson ninja ccache)
+depends=(
+  'gdk-pixbuf2'
+  'gcc-libs'
+  'glib2'
+  'glibc'
+  'gst-plugins-base-libs'
+  'gstreamer'
+  'json-glib'
+  'libcapi'
+  'libgssdp-1.2.so'
+  'libgupnp-1.2.so'
+  'libsecret'
+  'libsndfile'
+  'libsoup'
+  'libtiff'
+  'libxml2'
+  'spandsp'
+  'speex'
+)
+makedepends=(
+  'git'
+  'gdk-pixbuf2'
+  'gettext'
+  'gtk-doc'   # To build GTK documentation.
+  'gssdp-1.2'
+  'gupnp-1.2'
+  'meson'
+  'ninja'
+  'speex'
+)
+optdepends=(
+  "dconf: For provided glib schemas."
+)
+provides=(
+  "librm.so"
+  "${_pkgname}-doc=${pkgver}"
+)
+conflicts=(
+  "librm.so"
+  "${_pkgname}-doc"
+)
+source=(
+  "${_pkgname}::git+https://gitlab.com/tabos/librm.git#tag=${pkgver}"
+)
+sha256sums=(
+  '5421586f7e4f03f95cb147bb02287543522650996efbee4a580c211b1347cfb6'
+)
+options+=('!emptydirs')
 
-options=('!emptydirs')
-source=("https://gitlab.com/tabos/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('db7232be83d9a6d98e8d995950c0fdb21557b2e93218823ab9afa39c475a443dd18d5741b9e681cdbe0de8f5cd323419f5ce1ed42c2e8d23752f5574684fd85f')
+_CFLAGSADDITIONS="-w"
+
+prepare() {
+  CFLAGS+=" ${_CFLAGSADDITIONS}"
+  CXXFLAGS+=" ${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
+
+  cd "${srcdir}"
+
+  arch-meson "${_pkgname}" build --reconfigure \
+    -Denable-documentation=true \
+    -Denable-secret=true
+
+  cd "${srcdir}/${_pkgname}"
+  git log > git.log
+}
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    meson --prefix /usr --buildtype=plain "builddir"
-    ninja -v -C "builddir"
+  CFLAGS+=" ${_CFLAGSADDITIONS}"
+  CXXFLAGS+=" ${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
+
+  cd "${srcdir}"
+
+  ninja -v -j1 -C "build"
 }
 
 check() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    ninja -C "builddir" test
+  CFLAGS+=" ${_CFLAGSADDITIONS}"
+  CXXFLAGS+=" ${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
+
+  cd "${srcdir}"
+
+  ninja -v -C "build" test
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    DESTDIR="$pkgdir" ninja -C "builddir" install
-}
+  CFLAGS+=" ${_CFLAGSADDITIONS}"
+  CXXFLAGS+=" ${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
 
+  cd "${srcdir}"
+
+  DESTDIR="${pkgdir}" ninja -v -C "build" install
+
+  install -dvm755 "${pkgdir}/usr/share/doc/${_pkgname}"
+  ln -svr "${pkgdir}/usr/share/gtk-doc/html/rm"  "${pkgdir}/usr/share/doc/${_pkgname}/html"
+
+  cd "${srcdir}/${_pkgname}"
+
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"      git.log README.md TODO
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  LICENSE
+}
