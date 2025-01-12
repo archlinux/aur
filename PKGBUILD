@@ -2,7 +2,7 @@
 
 pkgname="posting"
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The modern API client that lives in your terminal"
 arch=('any')
 url="https://github.com/darrenburns/${pkgname}"
@@ -10,9 +10,9 @@ license=('MIT')
 makedepends=('python-build' 'python-hatchling' 'python-installer')
 # checkdepends=('python-pytest>=8.3.1' 'python-pytest-cov>=5' 'python-pytest-xdist>=3.6.1')
 depends=('python>=3.11' 'python-click>=8.1.7' 'python-click-default-group>=1.2.4'
-         'python-dotenv>=1.0.1' 'python-httpx>=0.27.2' 'python-pydantic>=2.9.2' 
-         'python-pydantic-settings>=2.4' 'python-pyperclip>=1.9' 'python-rich'
-         'python-textual' 'python-textual-autocomplete' 'python-typing_extensions'
+         'python-dotenv>=1.0.1' 'python-httpx>=0.27.2' 'python-linkify-it-py'
+         'python-pydantic>=2.9.2' 'python-pydantic-settings>=2.4' 'python-pyperclip>=1.9'
+         'python-rich' 'python-textual' 'python-textual-autocomplete' 'python-typing_extensions'
          'python-watchfiles>=0.24' 'python-xdg-base-dirs>=6.0.1' 'python-yaml>=6.0.2')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz")
