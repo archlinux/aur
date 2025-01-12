@@ -1,0 +1,19 @@
+pkgbase = lib32-cairomm-1.16
+	pkgdesc = C++ bindings for Cairo (32-bit)
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://www.cairographics.org/cairomm
+	arch = x86_64
+	license = LGPL-2.0-or-later AND MPL-1.1
+	makedepends = meson>=0.55
+	makedepends = mm-common
+	depends = cairomm
+	depends = lib32-cairo
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-libsigc++-3.0
+	provides = libcairomm-1.16.so
+	source = cairomm-1.18.0.tar.gz::https://gitlab.freedesktop.org/cairo/cairomm/-/archive/1.18.0/cairomm-1.18.0.tar.gz
+	sha256sums = aec941f5b1c25392fec2b079edbd322d54520efc7c6a7a48eef111e14a67ca64
+
+pkgname = lib32-cairomm-1.16
