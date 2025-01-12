@@ -24,9 +24,9 @@ makedepends=(
   lld
   python
   asciidoc
-  gdk-pixbuf2 #optional, for building gdk-pixbuf loader
-  gimp #optional, for building GIMP plugin
-  java-environment #optional, for building JNI bindings
+  gdk-pixbuf2 #for building gdk-pixbuf loader
+  gimp #for building GIMP plugin
+  java-environment #for building JNI bindings
 )
 provides=(
   libjxl
@@ -35,14 +35,12 @@ provides=(
   butteraugli
   ssimulacra
   ssimulacra2
-  jpegli
 )
 conflicts=(
   libjxl
   butteraugli
   ssimulacra
   ssimulacra2
-  jpegli
 )
 optdepends=(
   'libjxl-doc: for documentation'
@@ -102,13 +100,14 @@ build() {
   export CFLAGS+=" -flto=thin" CXXFLAGS+=" -flto=thin"
   export LDFLAGS+=" -fuse-ld=lld"
   cmake -S $_pkgname -B build \
-    -DBUILD_TESTING=0 \
+    -DBUILD_TESTING=OFF \
     -DJPEGXL_ENABLE_DEVTOOLS=ON \
     -DJPEGXL_ENABLE_DOXYGEN=OFF \
     -DJPEGXL_ENABLE_EXAMPLES=OFF \
+    -DJPEGXL_ENABLE_JPEGLI=OFF \ #jpegli moved to https://github.com/google/jpegli.git
     -DJPEGXL_ENABLE_PLUGINS=ON \
-    -DJPEGXL_FORCE_SYSTEM_BROTLI=TRUE \
-    -DJPEGXL_FORCE_SYSTEM_HWY=TRUE \
+    -DJPEGXL_FORCE_SYSTEM_BROTLI=ON \
+    -DJPEGXL_FORCE_SYSTEM_HWY=ON \
     -DCMAKE_INSTALL_PREFIX=/usr
   make -C build
 }
