@@ -1,0 +1,20 @@
+keys:
+# The below configuration will allow to use the following VPN access key in your Outline VPN client:
+#   ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpJMGFTQVQ5elNJOUo@<host>:57483/?outline=1&prefix=POST%20
+#
+# In order to generate this key you can the following JavaScipt code:
+# (() => {
+#     const cipher = "chacha20-ietf-poly1305"
+#     const key = "I0aSAT9zSI9J"
+#     const host = "<host>"
+#     const port = "57483"
+#     const credentials = btoa(cipher + ":" + key)
+#     console.log(`ss://${credentials.substr(0, credentials.length - 1)}@${host}:${port}/?outline=1&prefix=POST%20`)
+# })()
+#
+# You can add more users by adding more elements to the `keys` array.
+#
+#  - id: example
+#    port: 57483
+#    cipher: chacha20-ietf-poly1305
+#    secret: I0aSAT9zSI9J

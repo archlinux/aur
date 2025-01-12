@@ -1,0 +1,9 @@
+*
+!.gitignore
+!.SRCINFO
+!outline-ss-server.conf
+!outline-ss-server.service
+!outline-ss-server.sysusers
+!outline-ss-server.tmpfiles
+!outline-ss-server.yml
+!PKGBUILD
