@@ -1,8 +1,8 @@
 # Maintainer: Ben Westover <me@benthetechguy.net>
 
 pkgname=rust2rpm-helper
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.6
+pkgrel=1
 pkgdesc="Helper functionality for rust2rpm"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://pagure.io/fedora-rust/rust2rpm-helper"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("https://pagure.io/fedora-rust/rust2rpm-helper/archive/$pkgver/rust2rpm-helper-$pkgver.tar.gz")
-sha256sums=('2be2fd2cfbf674b20fd6560fb8a7e7bcb4a4e739efadf617f7f7e2ad98567127')
+sha256sums=('19247ba195aed9aaceb83a6361bae67e8402fb5479f44007eda481737aec5db7')
 
 prepare() {
 	cd "$pkgname-$pkgver"

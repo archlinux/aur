@@ -1,7 +1,7 @@
 pkgbase = rust2rpm-helper
 	pkgdesc = Helper functionality for rust2rpm
-	pkgver = 0.1.3
-	pkgrel = 2
+	pkgver = 0.1.6
+	pkgrel = 1
 	url = https://pagure.io/fedora-rust/rust2rpm-helper
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = rust2rpm-helper
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = https://pagure.io/fedora-rust/rust2rpm-helper/archive/0.1.3/rust2rpm-helper-0.1.3.tar.gz
-	sha256sums = 2be2fd2cfbf674b20fd6560fb8a7e7bcb4a4e739efadf617f7f7e2ad98567127
+	source = https://pagure.io/fedora-rust/rust2rpm-helper/archive/0.1.6/rust2rpm-helper-0.1.6.tar.gz
+	sha256sums = 19247ba195aed9aaceb83a6361bae67e8402fb5479f44007eda481737aec5db7
 
 pkgname = rust2rpm-helper
