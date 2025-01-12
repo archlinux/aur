@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="A frontend to glxinfo and vulkaninfo."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/arunsivaramanneo/$_pkgname/"
-license=('GPL3-or-later')
+license=('GPL-3.0-or-later')
 depends=('gtk4'
         'libadwaita>=1.4'
         'python'
