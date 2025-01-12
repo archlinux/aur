@@ -1,6 +1,6 @@
 pkgbase = python-rust2rpm
 	pkgdesc = Tool for automatically generating RPM spec files for Rust crates
-	pkgver = 25.0.1
+	pkgver = 27.0.1
 	pkgrel = 1
 	url = https://pagure.io/fedora-rust/rust2rpm
 	arch = any
@@ -20,7 +20,8 @@ pkgbase = python-rust2rpm
 	depends = python-requests
 	depends = python-termcolor
 	depends = python-tqdm
-	source = https://pagure.io/fedora-rust/rust2rpm/archive/v25.0.1/rust2rpm-v25.0.1.tar.gz
-	sha256sums = 41db725fa1a1409e0421d273b2b587f0d7c60d80681b230bed806d2a798b528c
+	depends = rust2rpm-helper
+	source = https://pagure.io/fedora-rust/rust2rpm/archive/v27.0.1/rust2rpm-v27.0.1.tar.gz
+	sha256sums = 388f5c522f020de504d76c2ca409ecff29d8f4bfb7b537422570778543d7ed49
 
 pkgname = python-rust2rpm
