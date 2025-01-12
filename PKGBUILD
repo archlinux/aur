@@ -2,7 +2,7 @@
 # https://github.com/adamperkowski/PKGBUILDs
 _pkgname=jule
 pkgname="${_pkgname}c-git"
-pkgver=jule0.1.2.r0.gec118a40
+pkgver=jule0.1.2+297a369b
 pkgrel=1
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
@@ -27,7 +27,7 @@ conflicts=("${_pkgname}c")
 
 pkgver() {
     cd "$_pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    echo "$(git describe --tags --abbrev=0 | cut -c 5-)+$(git rev-parse --short HEAD)"
 }
 
 prepare() {
