@@ -44,7 +44,7 @@ package() {
 
     # Create symlink in /usr/bin
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s /usr/share/windsurf/windsurf "${pkgdir}/usr/bin/windsurf"
+    ln -s /usr/share/windsurf/bin/windsurf "${pkgdir}/usr/bin/windsurf"
     
     # Add desktop entry
     install -dm755 "${pkgdir}/usr/share/applications"
