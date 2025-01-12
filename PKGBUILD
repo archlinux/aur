@@ -11,11 +11,12 @@ pkgrel=1
 pkgdesc="C++ bindings for GLib (32-bit)"
 url="https://www.gtkmm.org"
 arch=('x86_64')
-license=(LGPL-2.1-or-later)
-depends=("${_name}" 'lib32-gcc-libs' 'lib32-glib2' 'lib32-glibc' 'lib32-libsigc++')
+license=('LGPL-2.1-or-later')
+depends=("${_name}" 'lib32-gcc-libs' 'lib32-glib2>=2.61.2' 'lib32-glibc'
+         'lib32-libsigc++>=2.9.1')
 makedepends=('meson>=0.55' 'mm-common')
 checkdepends=('lib32-glib-networking')
-provides=('libgiomm-2.4.so' 'libglibmm-2.4.so' 'libglibmm_generate_extra_defs-2.4.so')
+provides=('lib'{'giomm','glibmm'{,'_generate_extra_defs'}}'-2.4.so')
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.xz::https://download.gnome.org/sources/${_name}/${pkgver%.*}/${_pkgsrc}.tar.xz")
 sha256sums=('fe02c1e5f5825940d82b56b6ec31a12c06c05c1583cfe62f934d0763e1e542b3')
@@ -27,22 +28,22 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   cd "${srcdir}"
-  arch-meson "${_pkgsrc}" build \
+  arch-meson "${_pkgsrc}" "${_pkgsrc}/build" \
     --cross-file lib32 \
     -D maintainer-mode=true \
     -D build-documentation=false \
     -D build-examples=false
-  meson compile -C build
+  meson compile -C "${_pkgsrc}/build"
 }
 
 check() {
   cd "${srcdir}"
-  meson test -C build --print-errorlogs
+  meson test -C "${_pkgsrc}/build" --print-errorlogs
 }
 
 package() {
   cd "${srcdir}"
-  meson install -C build --destdir "${pkgdir}"
+  meson install -C "${_pkgsrc}/build" --destdir "${pkgdir}"
 
   cd "${pkgdir}/usr"
   rm -rf "include"

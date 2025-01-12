@@ -10,9 +10,9 @@ pkgbase = lib32-glibmm
 	makedepends = mm-common
 	depends = glibmm
 	depends = lib32-gcc-libs
-	depends = lib32-glib2
+	depends = lib32-glib2>=2.61.2
 	depends = lib32-glibc
-	depends = lib32-libsigc++
+	depends = lib32-libsigc++>=2.9.1
 	provides = libgiomm-2.4.so
 	provides = libglibmm-2.4.so
 	provides = libglibmm_generate_extra_defs-2.4.so
