@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics'
 arch=(x86_64)
 url=https://jpeg.org/jpegxl/
-license=(BSD)
+license=(BSD-3-Clause)
 depends=(
   brotli
   highway
