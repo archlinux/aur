@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=nethack-git
-pkgver=3.6.7_Released+r17541+gcba032d18
+pkgver=3.6.7_Released+r9120+g55561da63
 pkgrel=1
 pkgdesc='A single player dungeon exploration game'
 arch=('i686' 'x86_64')
