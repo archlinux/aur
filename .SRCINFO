@@ -1,7 +1,7 @@
 pkgbase = gyroflow
 	pkgdesc = Video stabilization using gyroscope data
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gyroflow/gyroflow
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,7 +10,6 @@ pkgbase = gyroflow
 	makedepends = clang
 	makedepends = git
 	makedepends = opencl-headers
-	depends = blas-openblas
 	depends = ffmpeg
 	depends = libc++
 	depends = ocl-icd
