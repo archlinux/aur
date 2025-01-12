@@ -15,7 +15,11 @@ sha256sums=('12ce54dd051b9420353f6c4ea74b34c736e23c8233d6d0bbd75407526f1fc732'
             '5d02a553699c4841d8b33cc5a1313cff1f96264e36e9dc98be829dfc94a6cc73')
 
 package() {
-  install -d -m755 "${pkgdir}/usr/share/wordnet/dict"
-  install -m644 "${srcdir}"/oewn2024/* "${pkgdir}/usr/share/wordnet/dict"
+  install -d -m755 "${pkgdir}/usr/share/wordnet"
+  install -m644 "${srcdir}"/oewn2024/* "${pkgdir}/usr/share/wordnet"
+
+  # Support programs expecting old data location
+  ln -s /usr/share/wordnet "${pkgdir}/usr/share/wordnet/dict"
+
   install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
