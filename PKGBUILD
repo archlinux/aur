@@ -3,7 +3,7 @@
 pkgbase=cloud-fs-bin
 pkgname=clouddrive
 pkgver=0.8.6
-pkgrel=1
+pkgrel=3
 epoch=2
 pkgdesc="CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage"
 arch=('x86_64')
@@ -31,15 +31,16 @@ install=${pkgname}.install
 source=(
     "LICENSE.html::https://raw.githubusercontent.com/cloud-fs/cloud-fs.github.io/gh-pages/eula.html"
     "${pkgname}.install"
-)
-source_x86_64=(
     "${pkgname}-${epoch}-x86_64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${pkgname}-${epoch}-linux-x86_64-${pkgver}.tgz"
+    "${pkgname}-${epoch}-aarch64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${pkgname}-${epoch}-linux-aarch64-${pkgver}.tgz"
 )
 sha256sums=('c336f41e259916212c7fdd3e21a26a2faf94d725b5daf686bca501978efbf17e'
-            'f2d0bffedcfcb542ee07eef4f797dc848703f6d63f0d7b837a89a190dcc09780')
-sha256sums_x86_64=('efd3f7e7a1dc84d4e988577b57f5de3ae1724bbc694bf4804724bb5fb6b72a8e')
+            'f2d0bffedcfcb542ee07eef4f797dc848703f6d63f0d7b837a89a190dcc09780'
+            'efd3f7e7a1dc84d4e988577b57f5de3ae1724bbc694bf4804724bb5fb6b72a8e'
+            '1978ebe11642444fa8cfe95da49e2580de4bc4f0ff054d79e3802936a50b1d37')
 noextract=(
-    ${pkgname}-${epoch}-x86_64-${pkgver}.tgz)
+    ${pkgname}-${epoch}-x86_64-${pkgver}.tgz
+    ${pkgname}-${epoch}-aarch64-${pkgver}.tgz)
 
 _install_path="opt/${pkgname}"
 
@@ -98,7 +99,7 @@ RemainAfterExit=true
 [Install]
 WantedBy=multi-user.target
 EOF
-    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/system/rclone-${pkgname}-cd2-dav\@.service" <<EOF
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/system/rclone-${pkgname}-cd2-dav@.service" <<EOF
 [Unit]
 Description=Rclone mount for CloudDrive2 WebDAV for user %i
 After=network.target
