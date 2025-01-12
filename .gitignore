@@ -1,4 +1,1 @@
-/pkg/
-/src/
-*.zip
-*.pkg.tar.*
+*.tar*

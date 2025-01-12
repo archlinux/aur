@@ -1,36 +1,28 @@
-# Maintainer: Matthew Gamble <git@matthewgamble.net>
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor: Matthew Gamble <git@matthewgamble.net>
 # Contributor: Nathan Owens <ndowens @ artixlinux.org>
 # Contributor: carstene1ns <arch carsten-teibes de>
 
 pkgname=python-tatsu
-pkgver=5.7.3
+_name="tatsu"
+pkgver=5.13.1
 pkgrel=1
-pkgdesc="TatSu takes a grammar in a variation of EBNF as input, and outputs a memoizing PEG/Packrat parser in Python."
+pkgdesc="TatSu takes a grammar in a variation of EBNF as input, and outputs a memoizing PEG/Packrat parser in Python"
 arch=("any")
 url="https://github.com/neogeny/TatSu"
 license=("BSD")
 depends=("python")
-optdepends=("python-regex")
-makedepends=("python-setuptools")
-source=("https://pypi.io/packages/source/T/TatSu/TatSu-${pkgver}.zip")
-sha256sums=("cf1f3b16fc4f8c8f4d0135749407dc01c10051c34ce1f6c7e859867d89b5ac69")
+optdepends=("python-colorama" "python-rich")
+makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+b2sums=('c5542b536abfb21a925b62296a1885334d41d6f79871883a5f19724644c8244f7fba783a4274685268cc4b3bd6ed943d35c301ad9a1a1ccbffc81ee8b51699b6')
 
-build() {
-    cd "TatSu-${pkgver}"
-
-    python setup.py build
+build(){
+ cd "$_name-$pkgver"
+ python -m build --wheel --no-isolation
 }
 
-package() {
-    cd "TatSu-${pkgver}"
-
-    local _site_packages=$(python -c "import site; print(site.getsitepackages()[0], end='')")
-
-    PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    rm -r "${pkgdir}${_site_packages}/test"
-    chmod -R o+r "${pkgdir}${_site_packages}/"*.egg-info
-
-    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-tatsu/LICENSE.txt"
-    install -Dm644 README.rst "${pkgdir}/usr/share/doc/python-tatsu/README.rst"
-    install -Dm644 CHANGELOG.rst "${pkgdir}/usr/share/doc/python-tatsu/CHANGELOG.rst"
+package(){
+ cd "$_name-$pkgver"
+ python -m installer --destdir="$pkgdir" dist/*.whl
 }
