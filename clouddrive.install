@@ -3,10 +3,8 @@ cat << EOF
 ----------------------------------------------
 1. Set up start and enable on boot using systemd:
   Root privileges: systemctl enable --now clouddrive.service
-  User privileges: systemctl --user enable --now clouddrive.service
 2. Check the status using systemd:
   Root privileges: systemctl status clouddrive.service
-  User privileges: systemctl --user status clouddrive.service
 3. Open in default browser:
   Recommended: xdg-open http://localhost:19798
   IPv4: xdg-open http://127.0.0.1:19798
@@ -30,7 +28,11 @@ Note: If the browser opens slowly or lags, please try using the browser's incogn
   Use systemd to set clouddrive-dav to start and enable it at boot time:
   Root privileges: systemctl enable --now media-clouddrive-dav
   Root privileges: systemctl status media-clouddrive-dav
-7. Purchase recommendation code: 7jp9Aajq
+7. Use rclone to mount the cd2 dav service, the default location is: /meadia/rclone-cd2-dav
+
+  sudo systemctl enable --now rclone-example-cd2-dav@username.service
+  sudo systemctl status rclone-example-cd2-dav@username.service
+8. Purchase recommendation code: 7jp9Aajq
 -----------------------------------------------
 EOF
 

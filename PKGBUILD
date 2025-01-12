@@ -2,11 +2,11 @@
 
 pkgbase=cloud-fs-bin
 pkgname=clouddrive
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 epoch=2
 pkgdesc="CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/cloud-fs/cloud-fs.github.io"
 license=('custom' 'Commercial')
 provides=(${pkgbase%-bin} ${pkgname} ${pkgname}2)
@@ -15,25 +15,31 @@ replaces=()
 depends=(
     bash
     fuse
-    systemd-libs)
-makedepends=(libarchive)
+    rclone
+    systemd-libs
+)
+makedepends=(
+    libarchive
+)
 optdepends=('docker: Pack, ship and run any application as a lightweight container'
     'davfs2: File system driver that allows you to mount a WebDAV folder'
-    'clouddrive-decrypt: clouddrive-decrypt is a standalone tool designed to demo how to decrypt files encrypted by CloudDrive2.')
+    'clouddrive-decrypt: clouddrive-decrypt is a standalone tool designed to demo how to decrypt files encrypted by CloudDrive2.'
+    'rclone-browser: Simple cross-platform GUI for rclone')
 backup=()
 options=('!strip' '!debug' '!lto')
 install=${pkgname}.install
-source=("LICENSE.html::https://raw.githubusercontent.com/cloud-fs/cloud-fs.github.io/gh-pages/eula.html"
+source=(
+    "LICENSE.html::https://raw.githubusercontent.com/cloud-fs/cloud-fs.github.io/gh-pages/eula.html"
     "${pkgname}.install"
+)
+source_x86_64=(
     "${pkgname}-${epoch}-x86_64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${pkgname}-${epoch}-linux-x86_64-${pkgver}.tgz"
-    "${pkgname}-${epoch}-aarch64-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${pkgname}-${epoch}-linux-aarch64-${pkgver}.tgz")
+)
 sha256sums=('c336f41e259916212c7fdd3e21a26a2faf94d725b5daf686bca501978efbf17e'
-            '32d37f9ab2f20170c8938a7bf3349eac152f4ee663f2c630be3ca966f50300bc'
-            'eb374fd1de57c81606efe486a9bd8349a0faac9ac19fc3a31abf415df3f50ad7'
-            'eeefc029918bfc0914b1a9197b10bfa31823a1ac9ac47ece89113ec671fe1aeb')
+            'f2d0bffedcfcb542ee07eef4f797dc848703f6d63f0d7b837a89a190dcc09780')
+sha256sums_x86_64=('efd3f7e7a1dc84d4e988577b57f5de3ae1724bbc694bf4804724bb5fb6b72a8e')
 noextract=(
-    ${pkgname}-${epoch}-x86_64-${pkgver}.tgz
-    ${pkgname}-${epoch}-aarch64-${pkgver}.tgz)
+    ${pkgname}-${epoch}-x86_64-${pkgver}.tgz)
 
 _install_path="opt/${pkgname}"
 
@@ -54,8 +60,6 @@ package() {
 export LD_LIBRARY_PATH=/opt/clouddrive:\$LD_LIBRARY_PATH
 
 LOCAL_ROOT_PATH="/media/clouddrive"
-# The current test can be set 0.9~0.5 which is more stable, there is also test 0.1 available. Adjust the value by yourself.
-MAX_QSP_115=0.9
 
 cd /opt/clouddrive
 ./clouddrive
@@ -94,12 +98,32 @@ RemainAfterExit=true
 [Install]
 WantedBy=multi-user.target
 EOF
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/system/rclone-${pkgname}-cd2-dav\@.service" <<EOF
+[Unit]
+Description=Rclone mount for CloudDrive2 WebDAV for user %i
+After=network.target
+
+[Service]
+User=%i
+PermissionsStartOnly=true
+ExecStartPre=-/bin/mkdir -p /media/rclone-cd2-dav/%i
+ExecStartPre=/bin/chown %i:%i /media/rclone-cd2-dav/%i
+ExecStartPre=/bin/touch /var/log/rclone-cd2-dav-%i.log
+ExecStartPre=/bin/chmod 644 /var/log/rclone-cd2-dav-%i.log
+ExecStartPre=/bin/chown %i:%i /var/log/rclone-cd2-dav-%i.log
+ExecStart=/usr/bin/rclone mount --allow-other --log-file=/var/log/rclone-cd2-dav-%i.log --verbose --umask 002 rclone-cd2-dav: /media/rclone-cd2-dav/%i
+Restart=on-abort
+TimeoutStopSec=60
+Environment="RCLONE_CONFIG=/home/%i/.config/rclone/rclone.conf"
+
+[Install]
+WantedBy=multi-user.target
+EOF
 
     install -Dm644 /dev/stdin "${pkgdir}/etc/systemd/system/docker.service.d/clear_mount_propagation_flags_clouddrive.conf" <<EOF
 [Service]
 MountFlags=shared
 EOF
 
-    install -Dm644 "${pkgdir}/usr/lib/systemd/system/${pkgname}.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
     install -Dm644 "${srcdir}"/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
