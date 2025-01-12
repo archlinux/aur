@@ -8,7 +8,7 @@
 
 pkgname=python-stdnum
 pkgver=1.20
-pkgrel=5
+pkgrel=6
 pkgdesc='Handle, parse and validate more than 200 different standard numbers (EAN, IBAN, ISBN, etc.)'
 arch=('any')
 url='https://arthurdejong.org/python-stdnum'
@@ -25,7 +25,7 @@ makedepends=(
   'python-wheel'
 )
 optdepends=(
-  'python-pysimplesoap: fallback SOAP implementation'
+  #'python-pysimplesoap: fallback SOAP implementation'
   'python-suds: second recommended SOAP implementation'
   'python-zeep: recommended SOAP implementation'
 )
