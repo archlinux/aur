@@ -2,12 +2,12 @@
 # Contributor: Agustin Carrasco <asermax at gmail dot com>
 
 pkgname=plasma6-runners-nordvpn
-reponame=NordVPNKrunner
+_reponame=NordVPNKrunner
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Nordvpn plasma 6 runner"
 arch=("any")
-url="https://github.com/alex1701c/${reponame}"
+url="https://github.com/alex1701c/${_reponame}"
 license=("MIT")
 depends=("nordvpn"
         "krunner"
@@ -19,24 +19,22 @@ makedepends=("cmake"
             "qt6-tools")
 conflicts=('plasma5-runners-nordvpn')
 replaces=('plasma-runners-nordvpn')
-source=("https://github.com/alex1701c/${reponame}/archive/${pkgver}.tar.gz"
+source=("$pkgname-$pkgver::https://github.com/alex1701c/${_reponame}/archive/${pkgver}.tar.gz"
         "https://s1.nordcdn.com/nordvpn/media/1.170.0/images/global/favicon/apple-touch-icon-57x57.png")
-md5sums=('35c9f5673e4df0a4a4bbe283efc7fe91'
-         '45c79777d364ca2cc1665165aca77ea6')
+sha256sums=('da3e14cc997085c7d786288cd695ce5856141298b9954c9d19dbeb3600ed5a46'
+            'd0431d5a6bfc82e8a9945c4da263afb5e99ed874bf92764f185ab4c11bf691b0')
 
 build () {
-  cd "${reponame}-${pkgver}"
+  cd "${_reponame}-${pkgver}"
     mkdir -p build
     cd build
-
     cmake -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_USE_QT_SYS_PATHS=ON -DBUILD_WITH_QT6=ON ..
     make -j$(nproc)
 }
 
 package() {
-  cd "${reponame}-${pkgver}/build"
+  cd "${_reponame}-${pkgver}/build"
     make DESTDIR=${pkgdir} install
-
     cd ../..
     mkdir ${pkgdir}/usr/share/pixmaps
     cp -p apple-touch-icon-57x57.png ${pkgdir}/usr/share/pixmaps/nordvpn.png

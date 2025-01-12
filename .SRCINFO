@@ -1,7 +1,7 @@
 pkgbase = plasma6-runners-nordvpn
 	pkgdesc = Nordvpn plasma 6 runner
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alex1701c/NordVPNKrunner
 	arch = any
 	license = MIT
@@ -15,9 +15,9 @@ pkgbase = plasma6-runners-nordvpn
 	depends = knotifications
 	conflicts = plasma5-runners-nordvpn
 	replaces = plasma-runners-nordvpn
-	source = https://github.com/alex1701c/NordVPNKrunner/archive/3.2.0.tar.gz
+	source = plasma6-runners-nordvpn-3.2.0::https://github.com/alex1701c/NordVPNKrunner/archive/3.2.0.tar.gz
 	source = https://s1.nordcdn.com/nordvpn/media/1.170.0/images/global/favicon/apple-touch-icon-57x57.png
-	md5sums = 35c9f5673e4df0a4a4bbe283efc7fe91
-	md5sums = 45c79777d364ca2cc1665165aca77ea6
+	sha256sums = da3e14cc997085c7d786288cd695ce5856141298b9954c9d19dbeb3600ed5a46
+	sha256sums = d0431d5a6bfc82e8a9945c4da263afb5e99ed874bf92764f185ab4c11bf691b0
 
 pkgname = plasma6-runners-nordvpn
