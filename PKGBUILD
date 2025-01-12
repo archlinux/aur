@@ -12,12 +12,11 @@
 
 : ${_ver_clang=}
 : ${RUSTUP_TOOLCHAIN:=stable}
-: ${_commit:=d770713c9b6678229bb6231ee2562edfa5e83f31} # 11.21.0
+: ${_commit:=0e84375faa97c5de4dd2d2b35b8826f98197ca34}
 
-## basic info
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.21.0
+pkgver=11.22.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -117,7 +116,19 @@ _source_floorp() {
   )
 }
 
+_source_patches() {
+  source+=(
+    "50d41051085b.patch"::"https://hg.mozilla.org/mozilla-central/raw-rev/50d41051085b"
+    "d12754638c68.patch"::"https://hg.mozilla.org/mozilla-central/raw-rev/d12754638c68"
+  )
+  sha256sums+=(
+    'f68c5fd889288726fa6deff0aec6d30c60c0864e1ba9318cb3186af6a771748d'
+    'd01d3b692db818dab1f15035b73ad27894c7b2b80431b9eb7ca80194765c91a9'
+  )
+}
+
 _source_floorp
+_source_patches
 
 prepare() {
   _submodule_update() {
@@ -167,6 +178,7 @@ ac_add_options --enable-wasm-simd
 ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
+ac_add_options --disable-tests
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 # Branding
