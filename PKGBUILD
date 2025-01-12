@@ -18,8 +18,6 @@ source=("https://gitlab.com/portmod/portmod/-/archive/v$pkgver/$pkgname-v$pkgver
 sha512sums=('2dcfa37976fcaa523a0f43a8291e6dc18227dd85c6256189231f08462bfeaa1e1cc182293c409b021b09aead08c756c8317171d04d141e2d2443e779242661b4')
 
 build() {
-  cd "$srcdir/$pkgname-v$pkgver"
-
   # zstd-rs fails to compile with gcc if lto is enabled (makepkg sets -flto=auto by default)
   # Alternatively, gcc works if lto is disabled
   # export CFLAGS+=" -fno-lto"
@@ -27,6 +25,7 @@ build() {
   export CC=clang
   export RUSTFLAGS+=" -Clinker=clang -Clink-arg=-fuse-ld=lld"
 
+  cd "$srcdir/$pkgname-v$pkgver"
   python setup.py build_rust --inplace --release
   make -C doc man
 }
@@ -37,6 +36,11 @@ check() {
 }
 
 package() {
+  # Duplicate the above since it sometimes doesn't stay exported
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+  export CC=clang
+  export RUSTFLAGS+=" -Clinker=clang -Clink-arg=-fuse-ld=lld"
+
   cd "$srcdir/$pkgname-v$pkgver"
   python setup.py install --root $pkgdir --optimize=1
 }
