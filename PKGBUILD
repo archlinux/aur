@@ -3,12 +3,12 @@
 
 pkgname=passepartui
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI for pass"
 arch=('x86_64')
 url="https://github.com/kardwen/passepartui"
 license=('MIT')
-depends=('gcc-libs' 'pass')
+depends=('gcc-libs' 'gpgme')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('2b5dc7e9067cc13a8ca3a6c4be7aaff117b1cceadbf5fcd074bfaa937b0652dbe6c0c2451426b2fc4aae7fa11097fe00e9743f27197a6e5e9cf0ad610e698af5')
