@@ -2,7 +2,7 @@
 _pkgbase="dragon-tea"
 pkgname=${_pkgbase}
 pkgver=1.0.6
-pkgrel=0
+pkgrel=1
 url="https://github.com/badcast/${_pkgbase}"
 pkgdesc="Dragon Tea. Free Messenger"
 arch=('any')
@@ -30,5 +30,5 @@ package(){
     install -Dm755 "${BUILD_DIR}/dragontea" -t "${pkgdir}/usr/bin"
     install -Dm644 "${BUILD_DIR}/libteauilib.so" -t "${pkgdir}/usr/lib"
     cp -rv "${LOCALE_DIR}" "${pkgdir}/usr/share"
-    chmod 644 -R "${pkgdir}/usr/share"
+    chmod 755 -R "${pkgdir}/usr/share"
 }

@@ -1,7 +1,7 @@
 pkgbase = dragon-tea
 	pkgdesc = Dragon Tea. Free Messenger
 	pkgver = 1.0.6
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/badcast/dragon-tea
 	arch = any
 	license = GPL3
