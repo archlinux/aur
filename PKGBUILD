@@ -4,12 +4,13 @@
 pkgname=watchmate
 _app_id=io.gitlab.azymohliad.WatchMate
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="PineTime smart watch companion app for Linux phone and desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/azymohliad/watchmate"
-license=('GPL3')
-depends=('bluez' 'libadwaita')
+license=('GPL-3.0-or-later')
+depends=('bluez'
+         'libadwaita')
 makedepends=('cargo')
 checkdepends=('appstream-glib')
 options=('!lto')
