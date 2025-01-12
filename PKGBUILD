@@ -8,13 +8,12 @@ pkgname=(qoi-headers-git
         )
 pkgbase=qoi-git
 pkgver=r346.b0b926e
-pkgrel=2
+pkgrel=3
 pkgdesc="The 'Quite OK Image' format for fast, lossless image compression"
 arch=('x86_64')
 url='https://qoiformat.org/'
 license=('MIT')
 source=("$source_dir::git+https://github.com/phoboslab/qoi.git")
-conflicts=("qoi-headers")
 makedepends=('git'
              'gcc-libs'
              'stb'
@@ -33,18 +32,21 @@ build() {
 }
 
 package_qoi-headers-git() {
+  conflicts=("qoi-headers")
   provides=('qoi-headers')
   pkgdesc+=" - headers"
   install -Dm644 $source_dir/qoi.h $pkgdir/usr/include/qoi.h
 }
 package_qoiconv-git() {
   provides=('qoiconv')
+  conflicts=('qoiconv')
   pkgdesc+=" - PNG<>QOI conversion utility" 
   install -Dm755 $source_dir/qoiconv "$pkgdir"/usr/bin/qoiconv
 }
 
 package_qoibench-git() {
   provides=('qoibench')
+  conflicts=('qoibench')
   depends=('libpng')
   pkgdesc+=" - Benchmark qoi against various png libraries" 
   install -Dm755 $source_dir/qoibench "$pkgdir"/usr/bin/qoibench
