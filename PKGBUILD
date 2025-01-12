@@ -17,10 +17,13 @@ depends=(
     'python-coverage'
     'python-editorconfig'
     'python-isort'
+    'python-jedi'
+    'python-parso'
     'python-pyqt6-charts'
     'python-pyqt6-webengine'
     'python-qscintilla-qt6'
     'python-semver'
+    'python-trove-classifiers'
     'python-watchdog'
     'python-tomlkit'
     'qt6-serialport'
@@ -29,6 +32,12 @@ depends=(
     'qt6-websockets'
     )
 makedepends=('python-pip')
+optdepends=(
+    'python-docutils'
+    'python-fido2'
+    'python-pyusb'
+    'python-pyenchant'
+    )
 conflicts=(${pkgname}-common)
 replaces=(${pkgname}-common)
 source=("https://downloads.sourceforge.net/${pkgname}-ide/${pkgname}7-${pkgver}.tar.gz")
