@@ -1,13 +1,13 @@
 pkgbase = ta-lib
 	pkgdesc = A library providing common functions for the technical analysis of financial market data
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/TA-Lib/ta-lib
 	arch = x86_64
 	arch = i686
 	license = BSD-3-Clause
 	depends = glibc
-	source = ta-lib-0.6.3.tar.gz::https://github.com/TA-Lib/ta-lib/archive/refs/tags/v0.6.3.tar.gz
-	sha256sums = 50114d27c1031069d11915178a44dd2fde14d235233c0f78d6e61cd7bc3bbfa7
+	source = ta-lib-0.6.4.tar.gz::https://github.com/TA-Lib/ta-lib/archive/refs/tags/v0.6.4.tar.gz
+	sha256sums = a2fac51f4f1d4804dd2edd1701d52bb9728a5c2ec936d0c5d9a222c49f57d77b
 
 pkgname = ta-lib
