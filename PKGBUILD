@@ -3,14 +3,14 @@
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
 pkgname=wine-stable-next
-_pkgver=10.0-rc4
+_pkgver=10.0-rc5
 pkgver=${_pkgver/-/}  # Useful for wine-stable-next
 pkgrel=1
 
 source=(https://dl.winehq.org/wine/source/10.0/wine-$_pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
         wine-binfmt.conf)
-b2sums=('16bb8eb1d840afe35d4a831e93c83b66f28c4e3827b652aa5049b759888b056cbcc0293b7e1fc54ccca88b79e11968b9adf580063c5bacb52a524afe1ccc3fe6'
+b2sums=('9906d5c4149d79422000cbe0c8fb101c4e23c3966020ab7eed782e85005c0096f3f61951bdb70933015010eaaf5319c212e48ee0996438d853e7d904b1c41c63'
         'SKIP'
         '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
         'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
