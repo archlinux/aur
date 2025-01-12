@@ -1,28 +1,8 @@
 pkgbase = whisper-git
-	pkgdesc = General-purpose speech-recognition model by OpenAI
-	pkgver = 2024.09.30.r6.g90db0de1
-	pkgrel = 2
-	url = https://github.com/openai/whisper
+	pkgdesc = metapackage - migrate to python-openai-whisper-git
+	pkgver = 1
+	pkgrel = 1
 	arch = any
-	license = MIT
-	makedepends = git
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-setuptools
-	makedepends = python-wheel
-	depends = ffmpeg
-	depends = python
-	depends = python-more-itertools
-	depends = python-numba
-	depends = python-pytorch
-	depends = python-tiktoken
-	depends = python-tqdm
-	optdepends = triton: CUDA accelerated filters
-	provides = whisper=2024.09.30
-	conflicts = whisper
-	source = whisper::git+https://github.com/openai/whisper.git
-	source = pr2409.patch::https://github.com/openai/whisper/pull/2409.diff
-	sha256sums = SKIP
-	sha256sums = 6d40f73edc4dfcdf1fc5a3205170362aa542be721051f7862f9cff8b562f0e55
 
 pkgname = whisper-git
+	depends = python-openai-whisper-git
