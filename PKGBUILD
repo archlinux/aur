@@ -7,7 +7,7 @@
 pkgname=simulide-git
 pkgver=r250113
 #_realver=${pkgver//.r*/}
-pkgrel=2
+pkgrel=3
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers). Development version."
 arch=("x86_64")
 url="https://github.com/eeTools/SimulIDE-dev"
@@ -53,7 +53,7 @@ package() {
  
   # icon
   mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256"
-  cp -r ${srcdir}/${pkgname}/resources/ "${pkgdir}/usr/share/icons/hicolor/256x256/simulide.png"
+  cp -r ${srcdir}/${pkgname}/resources/icons/simulide.png "${pkgdir}/usr/share/icons/hicolor/256x256/simulide.png"
   # mime-type
   mkdir -p "${pkgdir}/usr/share/mime/packages"
   cp -r ${srcdir}/${pkgname}/resources/simulide-mime.xml "${pkgdir}/usr/share/mime/packages/simulide.xml"
