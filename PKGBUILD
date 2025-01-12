@@ -27,25 +27,26 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   cd "${srcdir}"
-  arch-meson "${_pkgsrc}" build \
+  arch-meson "${_pkgsrc}" "${_pkgsrc}/build" \
     --cross-file lib32 \
     -D maintainer-mode=true \
-    -D benchmark=false \
-    -D build-examples=false \
     -D build-documentation=false \
+    -D validation=false \
     -D build-pdf=false \
-    -D validation=false
-  meson compile -C build
+    -D build-examples=false \
+    -D build-tests=true \
+    -D benchmark=false
+  meson compile -C "${_pkgsrc}/build"
 }
 
 check() {
   cd "${srcdir}"
-  meson test -C build --print-errorlogs
+  meson test -C "${_pkgsrc}/build" --print-errorlogs
 }
 
 package() {
   cd "${srcdir}"
-  meson install -C build --destdir "${pkgdir}"
+  meson install -C "${_pkgsrc}/build" --destdir "${pkgdir}"
 
   cd "${pkgdir}/usr"
   rm -rf "include"
