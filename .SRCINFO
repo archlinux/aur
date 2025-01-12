@@ -1,12 +1,14 @@
 pkgbase = meshoptimizer
 	pkgdesc = Mesh optimization library that makes meshes smaller and faster to render
 	pkgver = 0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zeux/meshoptimizer
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = ninja
+	provides = gltfpack
+	conflicts = gltfpack
 	source = https://github.com/zeux/meshoptimizer/archive/v0.22.tar.gz
 	sha256sums = e296cf0685b6421f84bd8a44d0a3cca82a219500f11c793dfbb6087ec86bb1a3
 
