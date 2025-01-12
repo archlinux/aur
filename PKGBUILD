@@ -1,44 +1,147 @@
-# Maintainer: sgar <swhaat at github>
-# Contributor: Philipp Wolfer <ph.wolfer@gmail.com>
-# Contributor: Jens Rudolf <jens.rudolf@gmx.net>
+# Maintainer:  <currently none>
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: sgar <swhaat at github>
+# Contributor: Philipp Wolfer <ph.wolfer at gmail.com>
+# Contributor: Jens Rudolf <jens.rudolf at gmx.net>
 
-_name=rogerrouter
-pkgname=roger-router
-pkgver=2.4.2
-pkgrel=4
-pkgdesc="Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible"
-arch=('i686' 'x86_64')
-url="https://www.tabos.org/"
-license=('GPL2')
-depends=(gtk3 libsoup ghostscript librm poppler-glib libhandy)
-makedepends=(meson ninja cmake)
-optdepends=(
-	'cups: FAX printer'
-	'evolution-data-server: Evolution address book support'
-	'libappindicator-gtk3: App indicator support'
-	'libgdata: Google address book support'
+_gitname=rogerrouter
+_pkgname=roger-router
+pkgname="${_pkgname}"
+pkgver=2.4.90
+pkgrel=1
+pkgdesc="A utility to control and monitor AVM Fritz!Box Routers. E.g. Journal, fax software and call monitor."
+arch=(
+  'aarch64'
+  'x86_64'
+  'i686'
+  'pentium4'
+  'armv5h'
+  'armv6h'
+  'armv7h'
 )
+url="https://tabos.org/projects/rogerrouter/"
+license=('GPL-2.0-only')
+depends=(
+  "gcc-libs"
+  "ghostscript"
+  "glib2"
+  "glibc"
+  "gtk3"
+  "libcairo.so"
+  "librm.so"
+  "libgdk_pixbuf-2.0.so"
+  "libhandy-1.so"
+  "libpango-1.0.so"
+  "libpangocairo-1.0.so"
+  "libsoup-2.4.so"
+  "libtiff.so"
+)
+makedepends=(
+  "appstream-glib"  # For 'appstream-util'
+  "cairo"
+  "cups"            # To have 'lp' group to create spool directory owned by that group in the '$install' script.
+  "desktop-file-utils"
+  "gdk-pixbuf2"
+  "gettext"
+  "git"
+  "glib2-devel"
+  "gobject-introspection"
+  "intltool"
+  "librm"
+  "libhandy"
+  "libsoup>=2"
+  "libsoup<3"
+  "libtiff"
+  "meson"
+  "ninja"
+  "pango"
+  "pkgconf"
+)
+optdepends=(
+  'cups:               FAX printer'
+  'dconf:              for glib schemas'
+  'hicolor-icon-theme: hicolor theme hierarchy'
+)
+conflicts=(
+  "${_gitname}"
+  #"roger"
+)
+provides=(
+  "${_gitname}=${pkgver}"
+  #"roger=${pkgver}"
+)
+replaces=(
+  "${_gitname}"
+)
+install="roger-router.install"
+source=(
+  "${_gitname}::git+https://gitlab.com/tabos/rogerrouter.git#tag=${pkgver}"
+  "disable-evolution-plugin.patch"
+  "address-book.svg"
+  "${install}"
+)
+sha256sums=(
+  '03d5d9484fc06865afef247478e0cb7eec6ae11f11c2cec10a6060c592cc2b3f'  # Upstream source
+  '723b426e766612f7c3888d98bfe306b9643d97c3f5097398c7dc3feed2ec8b9a'  # disable-evolution-plugin.patch
+  '575b01dc0e68fd2f0b3d3c10afdec6fd4d61b570ec3d093e722c9fec35e6f82d'  # address-book.svg
+  '7a32640a30cd73eb4e50af04b30fdcce93bd0b263577ad941037253608e86cfc'  # $install
+)
+options+=('emptydirs')
+#options+=(debug)
 
-conflicts=("${_name}" "roger")
-provides=("${_name}=${pkgver}" "roger=${pkgver}")
-options=('!emptydirs')
-install=roger-router.install
+_CFLAGSADDITIONS="-w -Wno-error=incompatible-pointer-types"
 
-source=("https://gitlab.com/tabos/${_name}/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
-sha512sums=('5fe17dc7edf1830a968f9cbd7844b2a552b9fc8b7755b7d23143c9d03adc7b29dcfb2d98c62c08a3095b1f59c212a0895b3f50ef60a4be788b523fb3aeebc0a2')
+prepare() {
+  CFLAGS+=" ${_CFLAGSADDITIONS}"
+  CXXFLAGS+=" ${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
+
+  cd "${srcdir}/${_gitname}"
+
+  for _patch in "${srcdir}"/disable-evolution-plugin.patch; do
+    printf '%s\n' "   > Applying patch '$(basename "${_patch}")' ..."
+    patch -N -p1 --follow-symlinks -i "${_patch}"
+  done
+
+  git log > git.log
+
+  cd "${srcdir}"
+  arch-meson "${_gitname}" build --reconfigure
+}
 
 build() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    meson --prefix /usr --buildtype=plain "builddir"
-    ninja -v -C "builddir"
+  CFLAGS+=" ${_CFLAGSADDITIONS}"
+  CXXFLAGS+=" ${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
+
+  cd "${srcdir}"
+  ninja -v -j1 -C "build"
 }
 
 check() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    ninja -C "builddir" test
+  CFLAGS+=" ${_CFLAGSADDITIONS}"
+  CXXFLAGS+=" ${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
+
+  cd "${srcdir}"
+  ninja -v -C "build" test
 }
 
 package() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    DESTDIR="$pkgdir" ninja -C "builddir" install
+  CFLAGS+=" ${_CFLAGSADDITIONS}"
+  CXXFLAGS+=" ${_CFLAGSADDITIONS}"
+  export CFLAGS
+  export CXXFLAGS
+
+  cd "${srcdir}"
+  DESTDIR="${pkgdir}" ninja -v -C "build" install
+  install -Dvm644 -t "${pkgdir}/usr/share/icons/hicolor/symbolic" "address-book.svg"
+
+  cd "${srcdir}/${_gitname}"
+
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"      git.log README.md
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  COPYING
 }
