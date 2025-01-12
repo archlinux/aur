@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=131.0.6778.264
+pkgver=132.0.6834.83
 pkgrel=1
 _manual_clone=0
 _system_abseil=1
@@ -18,7 +18,6 @@ depends=('nss' 'libffi')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'rust' 'rust-bindgen' 'git')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
-        unbundle-icu-target.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         abseil-fix-missing-algorithm.patch
@@ -28,8 +27,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-numeric_limits.patch
         fix-trust-store-segfault.patch
         fix-undeclared-isnan.patch)
-sha256sums=('7e02c65865a3095180d60838d2d7a912873d8d4f582c27c2afb9ef876152f2a5'
-            '67de7744b92cbfa6fcbf43a71ba531eb5a7b00381d96703d8dc3dfdadaebf67d'
+sha256sums=('f98315eacbf3be106feca37f8243d8c4092d4fd832c918aa36dc229eb6ab39e0'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             SKIP
@@ -186,9 +184,6 @@ prepare() {
 
   # Upstream fixes
 
-  # Fixes from Gentoo
-  patch -Np1 -i ../unbundle-icu-target.patch
-
   if (( _system_clang )); then
     # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
     patch -Np1 -i ../compiler-rt-adjust-paths.patch
@@ -286,7 +281,7 @@ build() {
       'clang_base_path="/usr"'
       'clang_use_chrome_plugins=false'
       "clang_version=\"$_clang_version\""
-      'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+      #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
     )
 
     # Allow the use of nightly features with stable Rust compiler
