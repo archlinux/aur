@@ -1,0 +1,4 @@
+[lunzip]
+source = "regex"
+url = "https://download.savannah.gnu.org/releases/lzip/lunzip/"
+regex = 'lunzip-([\d.]+)\.tar\.gz'
