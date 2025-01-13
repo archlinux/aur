@@ -1,4 +1,16 @@
 post_install() {
-  echo "Before starting the hostd.service, make sure to fill the configuration file /etc/hostd.yml"
-  echo "You can do it interactively with the following command : \`pushd /etc && sudo -u hostd hostd -dir /var/lib/hostd config; popd\`"
+  echo "Before starting the hostd.service, make sure to fill the configuration file /etc/hostd/hostd.yml"
+  echo "You can do it interactively with the following command : \`sudo -u hostd hostd config\`"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  # hostd changed the default configuration location with version 2.0.0.
+  # This moves existing configuration to the new location.
+  if [ $(vercmp $2 2.0.0) -lt 0 ]; then
+    if [ -f /etc/hostd.yml.pacsave ]; then
+      mv /etc/hostd.yml.pacsave /etc/hostd/hostd.yml
+    fi
+  fi
 }

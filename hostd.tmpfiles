@@ -1,2 +1,3 @@
 d /var/lib/hostd 0750 hostd hostd - -
-z /etc/hostd.yml - hostd hostd - -
+d /etc/hostd 0755 root root - -
+z /etc/hostd/hostd.yml - hostd hostd - -

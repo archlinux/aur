@@ -1,6 +1,6 @@
 pkgbase = hostd
 	pkgdesc = An advanced host solution, designed to enhance the experience for storage providers within the Sia network.
-	pkgver = 1.1.2
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://sia.tech/software/hostd
 	install = hostd.install
@@ -10,19 +10,18 @@ pkgbase = hostd
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	backup = etc/conf.d/hostd
-	backup = etc/hostd.yml
-	source = git+https://github.com/SiaFoundation/hostd.git#tag=4ec13d681554e50c54c3437f4565921fbfac75f4
+	backup = etc/hostd/hostd.yml
+	source = git+https://github.com/SiaFoundation/hostd.git#tag=990c44dbae519197aa17556c990b7a871f88a694
 	source = hostd.sysusers
 	source = hostd.tmpfiles
 	source = hostd.service
 	source = hostd.install
 	source = hostd.yml
-	sha256sums = SKIP
+	sha256sums = f811f365ce01702babadd2806ab2eb2346b48d2837936df21e5d19250d4e55e8
 	sha256sums = d65ccb7decc6b266a64f51ab30d43912a6d8dcdc3aa67ccd703ee3d187f16c74
-	sha256sums = 23917e6034280d9891069a24d9069c46ba70cc52fb7515896edb4ade8614862f
-	sha256sums = 1dd23f6dd6ae61bbad1034dc4afd752cb6c957f08a6c0dc8175b75243ce5625c
-	sha256sums = b578ed3b767e7e41e1725b2213bf62586fadc0ea9031c63063cb063311a023c8
-	sha256sums = 653ffb17f23ce1cbf2a12c4e67e0b33d48118197b6ccb89cc3ced0f25d77bc62
+	sha256sums = 14cdb76c39de37037b712a051e81b231164be6a1a1a021b1a2d0da490fb048eb
+	sha256sums = a3237f0859becc05bf30809dc8dcac198fea22d893c38ba9514bd50e558b4bc9
+	sha256sums = d219d4ca9d22c268b9823d9138d265a54ae4067df6b57a8e951e050659731191
+	sha256sums = 2dd1ed217b72bc8f5ca08c3bb14eb4725f8a0c0dcb33ed9cfaf21bb79ba3a83d
 
 pkgname = hostd
