@@ -1,0 +1,73 @@
+diff --git a/generator/mavgen_c.py b/generator/mavgen_c.py
+index e7f01c2e..92fa5caf 100644
+--- a/generator/mavgen_c.py
++++ b/generator/mavgen_c.py
+@@ -6,7 +6,6 @@ Copyright Andrew Tridgell 2011
+ Released under GNU GPL version 3 or later
+ '''
+ from __future__ import print_function
+-from future.utils import iteritems
+ 
+ from builtins import range
+ from builtins import object
+@@ -675,7 +674,7 @@ def generate_one(basename, xml):
+     # form message name array
+     xml.message_name_array = ''
+     # sort by names
+-    for msgid, name in sorted(iteritems(xml.message_names), key=lambda k_v: (k_v[1], k_v[0])):
++    for msgid, name in sorted(xml.message_names.items(), key=lambda k_v: (k_v[1], k_v[0])):
+         xml.message_name_array += '{ "%s", %u }, ' % (name, msgid)
+     xml.message_name_array = xml.message_name_array[:-2]
+ 
+diff --git a/setup.py b/setup.py
+index 6ccec166..fe3cfe3f 100644
+--- a/setup.py
++++ b/setup.py
+@@ -156,7 +156,7 @@ setup (name = 'pymavlink',
+                    'tools/magfit_WMM.py',
+        ],
+        install_requires=[
+-            'future',
++            'future; python_version < "3.11"',
+             'lxml',
+        ],
+        cmdclass={'build_py': custom_build_py},
+diff --git a/tools/mavplayback.py b/tools/mavplayback.py
+index 73f9d833..d46a5062 100755
+--- a/tools/mavplayback.py
++++ b/tools/mavplayback.py
+@@ -7,13 +7,14 @@ realtime mavlink stream
+ Useful for visualising flights
+ '''
+ from __future__ import print_function
+-from future import standard_library
+-standard_library.install_aliases()
++import sys
++if sys.version_info <= (3,10):
++    from future import standard_library
++    standard_library.install_aliases()
+ 
+ from builtins import object
+ 
+ import os
+-import sys
+ import time
+ import tkinter
+ 
+diff --git a/tools/mavtelemetry_datarates.py b/tools/mavtelemetry_datarates.py
+index 053c89b7..811bdc71 100644
+--- a/tools/mavtelemetry_datarates.py
++++ b/tools/mavtelemetry_datarates.py
+@@ -9,8 +9,10 @@ Copyright IAV GmbH 2017
+ Released under GNU GPL version 3 or later
+ '''
+ 
+-from future import standard_library
+-standard_library.install_aliases()
++import sys
++if sys.version_info <= (3,10):
++    from future import standard_library
++    standard_library.install_aliases()
+ from builtins import str
+ 
+ ## Generate window for calculating the datasize
