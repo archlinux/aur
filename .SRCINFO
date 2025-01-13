@@ -1,7 +1,7 @@
 pkgbase = capacities-appimage
 	pkgdesc = Personal Knowledge Management app - A studio for your mind
 	pkgver = 1.44.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://capacities.io/
 	arch = x86_64
 	arch = aarch64

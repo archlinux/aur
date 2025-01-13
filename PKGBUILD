@@ -7,7 +7,7 @@ _image_url_aarch64="https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.c
 
 pkgname="${_pkgname}"-appimage
 pkgver="${_version}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Personal Knowledge Management app - A studio for your mind"
 arch=('x86_64' 'aarch64')
 url="https://capacities.io/"
@@ -30,6 +30,7 @@ noextract=(
 prepare() {
     chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract ${_pkgname}.desktop
+    ./"${_appimage}" --appimage-extract ${_pkgname}.png
     ./"${_appimage}" --appimage-extract LICENSE.electron.txt
     ./"${_appimage}" --appimage-extract LICENSES.chromium.html
 }
@@ -58,7 +59,6 @@ package() {
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
-    #install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
     ln -s "/opt/${_pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 
     # Symlink license
