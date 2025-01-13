@@ -1,18 +1,19 @@
 pkgbase = python-dialite
 	pkgdesc = Lightweight pure-Python package to show simple dialogs
-	pkgver = 0.5.3
-	pkgrel = 5
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/flexxui/dialite
 	arch = any
-	license = BSD
+	license = BSD-2-Clause
 	checkdepends = python-pytest
+	makedepends = python-flit-core
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	makedepends = python-wheel
 	depends = python
-	source = python-dialite-0.5.3.tar.gz::https://github.com/flexxui/dialite/archive/v0.5.3.tar.gz
-	sha256sums = 327b172a722b05b63d1427d110cf431c4de260c7d48bcac8fa312369ab1e79c2
+	source = python-dialite-0.6.0.tar.gz::https://github.com/flexxui/dialite/archive/v0.6.0.tar.gz
+	sha256sums = 2689c9da2f561899261dffebda21742bf7e7aeb2bf8a89536a81731afa15d11a
 
 pkgname = python-dialite
