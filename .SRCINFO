@@ -1,6 +1,6 @@
 pkgbase = fum
 	pkgdesc = A tui-based mpris music client.
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/qxb3/fum
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = fum
 	depends = libpng
 	depends = openssl
 	depends = zlib
-	source = https://github.com/qxb3/fum/releases/download/v0.2.1/fum-x86-64_v0.2.1
+	source = https://github.com/qxb3/fum/releases/download/v0.3.0/fum-x86-64_v0.3.0
 	sha256sums = SKIP
 
 pkgname = fum
