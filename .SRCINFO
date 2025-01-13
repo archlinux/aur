@@ -1,0 +1,15 @@
+pkgbase = ztatusbar
+	pkgdesc = Configurable statusbar for Xorg server using xsetroot. Made in Zig with toml file configuation.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/javiorfo/ztatusbar
+	arch = x86_64
+	license = MIT
+	depends = curl
+	depends = xorg-xsetroot
+	provides = ztatusbar
+	conflicts = ztatusbar
+	source = ztatusbar-0.1.0.tar.gz::https://github.com/javiorfo/ztatusbar/releases/download/0.1.0/ztatusbar-0.1.0.tar.gz
+	sha512sums = f94d403d331f67f709ffd4050f1ef154fe3a028a81dff0e9bde73d0e04f8a0c40f69ccea2f11a92e8aa60ae1ed74d655de6605fa76fda8b78d14d35aa57edb07
+
+pkgname = ztatusbar
