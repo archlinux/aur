@@ -1,13 +1,13 @@
 pkgbase = zfs-linux
-	pkgver = 2.2.7_6.12.8.arch1.1
+	pkgver = 2.2.7_6.12.9.arch1.1
 	pkgrel = 1
 	url = https://openzfs.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-headers=6.12.8.arch1-1
+	makedepends = linux-headers=6.12.9.arch1-1
 	depends = kmod
 	depends = zfs-utils=2.2.7
-	depends = linux=6.12.8.arch1-1
+	depends = linux=6.12.9.arch1-1
 	source = https://github.com/openzfs/zfs/releases/download/zfs-2.2.7/zfs-2.2.7.tar.gz
 	sha256sums = b2b8e3bfabf2a6407a0132243726cb6762547a5bd095b1b1f37eaf2a9d8f7672
 
