@@ -1,0 +1,15 @@
+pkgbase = gradualizer-git
+	pkgdesc = A Gradual type system for Erlang
+	pkgver = 112646d
+	pkgrel = 1
+	url = https://github.com/josefs/Gradualizer
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = erlang-nox
+	provides = gradualizer
+	source = gradualizer::git+https://github.com/josefs/Gradualizer.git
+	sha256sums = SKIP
+
+pkgname = gradualizer-git
