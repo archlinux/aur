@@ -26,6 +26,6 @@ package() {
 
   cd src
 
-  find std -type f -exec install -Dm 644 "{}" "${pkgdir}/usr/lib/mirth/{}" \;
-  find arg-parser -type f -exec install -Dm 644 "{}" "${pkgdir}/usr/lib/mirth/{}" \;
+  find lib/std -type f -exec install -Dm 644 "{}" "${pkgdir}/usr/lib/mirth/{}" \;
+  find lib/arg-parser -type f -exec install -Dm 644 "{}" "${pkgdir}/usr/lib/mirth/{}" \;
 }
