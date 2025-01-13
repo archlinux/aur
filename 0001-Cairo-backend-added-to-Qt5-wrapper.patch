@@ -1,4 +1,4 @@
-From 22e910672666ec2cbcceccc425c16369835e380d Mon Sep 17 00:00:00 2001
+From 4cb862374000ecf7826baf473a3e24165cb2ea39 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 4 Apr 2018 16:36:56 +0100
 Subject: [PATCH 1/2] Cairo backend added to Qt5 wrapper
@@ -52,10 +52,10 @@ index 5b15cfb2..795784df 100644
      target_include_directories(poppler-qt5 SYSTEM PRIVATE ${NSS3_INCLUDE_DIRS})
  endif()
 diff --git a/qt5/src/poppler-document.cc b/qt5/src/poppler-document.cc
-index ffa93fde..439c54e1 100644
+index e2b335e2..8ec941ee 100644
 --- a/qt5/src/poppler-document.cc
 +++ b/qt5/src/poppler-document.cc
-@@ -712,6 +712,9 @@ QSet<Document::RenderBackend> Document::availableRenderBackends()
+@@ -711,6 +711,9 @@ QSet<Document::RenderBackend> Document::availableRenderBackends()
      ret << Document::SplashBackend;
      ret << Document::QPainterBackend;
      ret << Document::ArthurBackend; // For backward compatibility
@@ -66,10 +66,10 @@ index ffa93fde..439c54e1 100644
  }
  
 diff --git a/qt5/src/poppler-page.cc b/qt5/src/poppler-page.cc
-index 7c206f57..721f5ed8 100644
+index 14249018..685cf79d 100644
 --- a/qt5/src/poppler-page.cc
 +++ b/qt5/src/poppler-page.cc
-@@ -58,6 +58,7 @@
+@@ -59,6 +59,7 @@
  #include <config.h>
  #include <cfloat>
  #include <poppler-config.h>
@@ -77,7 +77,7 @@ index 7c206f57..721f5ed8 100644
  #include <PDFDoc.h>
  #include <Catalog.h>
  #include <Form.h>
-@@ -69,6 +70,9 @@
+@@ -70,6 +71,9 @@
  #include <Rendition.h>
  #include <SplashOutputDev.h>
  #include <splash/SplashBitmap.h>
@@ -87,7 +87,7 @@ index 7c206f57..721f5ed8 100644
  
  #include "poppler-private.h"
  #include "poppler-page-transition-private.h"
-@@ -629,6 +633,69 @@ QImage Page::renderToImage(double xres, double yres, int xPos, int yPos, int w,
+@@ -630,6 +634,69 @@ QImage Page::renderToImage(double xres, double yres, int xPos, int yPos, int w,
          img = tmpimg;
          break;
      }
@@ -157,7 +157,7 @@ index 7c206f57..721f5ed8 100644
      }
  
      if (shouldAbortRenderCallback && shouldAbortRenderCallback(payload)) {
-@@ -654,6 +721,9 @@ bool Page::renderToPainter(QPainter *painter, double xres, double yres, int x, i
+@@ -655,6 +722,9 @@ bool Page::renderToPainter(QPainter *painter, double xres, double yres, int x, i
  
          return renderToQPainter(&qpainter_output, painter, m_page, xres, yres, x, y, w, h, rotate, flags);
      }
@@ -198,5 +198,5 @@ index e610413a..26c45088 100644
    string(REPLACE "-" "" test_name ${exe})
    set(${test_name}_SOURCES
 -- 
-2.47.0
+2.48.0
 
