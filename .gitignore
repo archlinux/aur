@@ -1,5 +1,7 @@
-/pkg
-/src
+/pkg/
+/src/
 /*.pkg.*
 /*.ZIP
-.vscode-ctags
+/.vscode*
+/*.patch
+/ch9344/
