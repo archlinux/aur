@@ -46,16 +46,7 @@ filters:
 processors: ~
 pipeline:
   - type: Filter
-    channel: 0
+    channels: [ 0, 1 ]
     names:
       - Bass
       - Treble
-    description: ~
-    bypassed: ~
-  - type: Filter
-    channel: 1
-    names:
-      - Bass
-      - Treble
-    description: ~
-    bypassed: ~
