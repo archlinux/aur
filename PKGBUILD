@@ -4,7 +4,7 @@
 _model="201207w"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Epson inkjet printer driver (L110, L111, L210, L211, L300, L301, L303, L350, L351, L353, L355, L356, L550, L551, L555)"
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -34,8 +34,6 @@ package() {
 
   find "resource" -type f -exec \
     install -vDm644 "{}" "${pkgdir}/usr/share/epson-inkjet-printer-filter/{}" \;
-  find "watermark" -type f -exec \
-    install -vDm644 "{}" "${pkgdir}/usr/share/${pkgname}/{}" \;
 
   cd "${srcdir}/${_pkgsrc}/ppds"
   find . -type f -exec \
