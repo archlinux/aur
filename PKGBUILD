@@ -5,12 +5,12 @@
 _pkgname=ltex-ls-plus
 pkgname="${_pkgname}-bin"
 pkgver=18.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LTeX Language Server: LSP language server for LanguageTool with support for LaTeX, Markdown, and others (fork of ltex-ls)"
 arch=('any')
 url="https://github.com/ltex-plus/ltex-ls-plus"
 license=('MPL2')
-depends=('java-runtime>=11' 'bash')
+depends=('java-runtime>=21' 'bash')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
