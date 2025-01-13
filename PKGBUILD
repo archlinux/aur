@@ -72,7 +72,7 @@ sha256sums=(
   'SKIP'
 )
 options+=('!emptydirs')
-# options+=('debug')
+# options+=('!lto' 'debug')
 
 _CFLAGSADDITIONS="-w"
 
