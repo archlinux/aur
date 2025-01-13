@@ -1,6 +1,6 @@
 pkgbase = clues-git
 	pkgdesc = A beautiful sticky notes app with connections.(Use system-wide electron)
-	pkgver = 1.0.0.r0.gd17b648
+	pkgver = 1.0.2.r0.g7b3062e
 	pkgrel = 1
 	url = https://github.com/mucahit-sahin/CluesApp
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = clues-git
 	makedepends = curl
 	makedepends = gendesk
 	depends = electron27
-	provides = clues=1.0.0
+	provides = clues=1.0.2
 	conflicts = clues
 	source = clues.git::git+https://github.com/mucahit-sahin/CluesApp.git
 	source = clues.sh

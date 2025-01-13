@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clues-git
 _pkgname=Clues
-pkgver=1.0.0.r0.gd17b648
+pkgver=1.0.2.r0.g7b3062e
 _electronversion=27
 _nodeversion=20
 pkgrel=1
