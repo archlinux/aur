@@ -1,7 +1,7 @@
 # Maintainer: Hadi Chokr <hadichokr@icloud.com>
 pkgname=arch-update-helper
 pkgbase=arch-update-helper
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A Systray Utility for Checking Arch Linux Updates and Installing Them"
 arch=('any')
