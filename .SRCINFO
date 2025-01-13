@@ -1,7 +1,7 @@
 pkgbase = wsdd-native
 	pkgdesc = WS-Discovery Host Daemon. Makes your machine visible in Network view of Windows Explorer
-	pkgver = 1.15
-	pkgrel = 2
+	pkgver = 1.16
+	pkgrel = 1
 	url = https://github.com/gershnik/wsdd-native
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = wsdd-native
 	depends = gcc-libs
 	conflicts = wsdd
 	backup = etc/wsddn.conf
-	source = wsdd-native-1.15.tar.gz::https://github.com/gershnik/wsdd-native/archive/v1.15.tar.gz
-	sha256sums = d7939b70507ee521d090fd733407f45685d29e01ea70baab41d0e6668ede5e4d
+	source = wsdd-native-1.16.tar.gz::https://github.com/gershnik/wsdd-native/archive/v1.16.tar.gz
+	sha256sums = 648b1be0ff3412926d277953e5e87a4747ea502f815ac33a947c89cd0c096997
 
 pkgname = wsdd-native
