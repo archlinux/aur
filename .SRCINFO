@@ -5,15 +5,15 @@ pkgbase = lib32-pangomm-2.48
 	url = https://www.gtkmm.org
 	arch = x86_64
 	license = LGPL-2.1-or-later
-	makedepends = meson>=0.55
+	makedepends = meson>=0.62
 	makedepends = mm-common
 	depends = lib32-cairomm-1.16
 	depends = lib32-gcc-libs
-	depends = lib32-glib2
+	depends = lib32-glib2>=2.68
 	depends = lib32-glibc
 	depends = lib32-glibmm-2.68
 	depends = lib32-libsigc++-3.0
-	depends = lib32-pango
+	depends = lib32-pango>=1.54
 	depends = pangomm-2.48
 	provides = libpangomm-2.48.so
 	source = pangomm-2.54.0.tar.xz::https://download.gnome.org/sources/pangomm/2.54/pangomm-2.54.0.tar.xz
