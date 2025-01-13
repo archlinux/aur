@@ -1,0 +1,6 @@
+[gfxstream]
+source='git'
+git='https://android.googlesource.com/platform/hardware/google/gfxstream'
+from_pattern='-gfxstream-release'
+to_pattern=''
+prefix='v'
