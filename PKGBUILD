@@ -1,7 +1,7 @@
 # Maintainer: Trey Blancher $(base64 -d <<< dHJleUBibGFuY2hlci5uZXQK)
 pkgname=nri-docker-bin
 _pkg=nri-docker
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=2
 pkgdesc="Docker integration for New Relic"
 arch=(aarch64 armv7h x86_64)
@@ -15,9 +15,9 @@ conflicts=( ${_pkg} )
 source_aarch64=(https://github.com/newrelic/nri-docker/releases/download/v${pkgver}/${_pkg}_linux_${pkgver}_arm64.tar.gz)
 source_armv7h=(https://github.com/newrelic/nri-docker/releases/download/v${pkgver}/${_pkg}_linux_${pkgver}_arm.tar.gz)
 source_x86_64=(https://github.com/newrelic/nri-docker/releases/download/v${pkgver}/${_pkg}_linux_${pkgver}_amd64.tar.gz)
-sha256sums_aarch64=('8f02c11b9ab380440843d469b233d6405ad715b9c000ca3b30f1e1dab964b21d')
-sha256sums_armv7h=('399f04438cffb8f32f2dbe0d140029daada32ef8123dd46657d97bccae831863')
-sha256sums_x86_64=('9b3b28cdc62abdb3d9aac274bd974e9d564a5cca6333a44a386c71d489e9d9ba')
+sha256sums_aarch64=('33e2b0fb148a0bea8280a31cf52fe5c451b819f8159b896701d8fc10c8f0419d')
+sha256sums_armv7h=('084f87ebb1ca77d35b44f27722d49b8fb753c38eebcbb90167c4bb35360114b6')
+sha256sums_x86_64=('448d14907e05e9ab3525da3c12b3aa7e9ee9ed3cc492714fa0bcd0e6af1b2bc2')
 
 package() {
     mkdir -p ${pkgdir}/etc/newrelic-infra/integrations.d
