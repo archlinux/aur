@@ -1,5 +1,5 @@
 pkgbase = tusk-launcher-git
-	pkgdesc = A launcher for Tusk with advanced features (Git version)
+	pkgdesc = A Rust written gui app launcher for wlroots tiling wms
 	pkgver = 0.1.0.r76.g969b819
 	pkgrel = 1
 	url = https://github.com/padoruuuu/Tusk-Launcher

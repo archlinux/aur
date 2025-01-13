@@ -2,7 +2,7 @@
 pkgname=tusk-launcher-git
 pkgver=0.1.0.r76.g969b819  # Example version, it will update dynamically
 pkgrel=1
-pkgdesc="A launcher for Tusk with advanced features (Git version)"
+pkgdesc="A Rust written gui app launcher for wlroots tiling wms"
 arch=('any')
 url="https://github.com/padoruuuu/Tusk-Launcher"
 license=('GPL-3')  # Confirm license type
