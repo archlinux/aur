@@ -1,8 +1,8 @@
 pkgbase = pamac-gtk3
 	pkgdesc = A Package Manager based on libalpm with AUR and Appstream support (GTK3)
-	pkgver = 10.6.0
-	pkgrel = 5
-	url = https://gitlab.manjaro.org/applications/pamac
+	pkgver = 10.7.0
+	pkgrel = 1
+	url = https://github.com/manjaro/pamac
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
@@ -15,14 +15,13 @@ pkgbase = pamac-gtk3
 	depends = gtk3
 	depends = libhandy
 	depends = libnotify
-	depends = libpamac-aur>=11.6.4
-	depends = pamac-cli>=11.6.0
-	optdepends = libpamac-flatpak-plugin: for Flatpak support
+	depends = libpamac-aur>=11.7.0
+	depends = pamac-cli>=11.7.0
 	provides = pamac
 	provides = pamac-gtk
 	conflicts = pamac-gtk
 	options = debug
-	source = git+https://gitlab.manjaro.org/applications/pamac.git#commit=9dca256b8cc581a262be09355662829742127efe
+	source = git+https://github.com/manjaro/pamac.git#commit=036cf36deaa1bdb22d4edbb37919bbe583113bb7
 	sha256sums = SKIP
 
 pkgname = pamac-gtk3

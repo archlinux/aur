@@ -5,19 +5,19 @@
 # https://gitlab.manjaro.org/packages/extra/pamac
 
 pkgname=pamac-gtk3
-pkgver=10.6.0
-pkgrel=5
+pkgver=10.7.0
+pkgrel=1
 pkgdesc="A Package Manager based on libalpm with AUR and Appstream support (GTK3)"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.manjaro.org/applications/pamac"
+url="https://github.com/manjaro/pamac"
 license=('GPL-3.0-or-later')
 depends=(
   'archlinux-appstream-data'
   'gtk3'
   'libhandy'
   'libnotify'
-  'libpamac-aur>=11.6.4'
-  'pamac-cli>=11.6.0'
+  'libpamac-aur>=11.7.0'
+  'pamac-cli>=11.7.0'
 )
 makedepends=(
   'asciidoc'
@@ -27,7 +27,7 @@ makedepends=(
   'vala'
 )
 optdepends=(
-  'libpamac-flatpak-plugin: for Flatpak support'
+#  'libpamac-flatpak-plugin: for Flatpak support'
 # 'libpamac-snap-plugin: for Snap support'
 #  'libpamac-aur-plugin: for AUR support'
 #  'libpamac-appstream-plugin: for Appstream support'
@@ -35,8 +35,8 @@ optdepends=(
 provides=('pamac' 'pamac-gtk')
 conflicts=('pamac-gtk')
 options=('debug')
-_commit=9dca256b8cc581a262be09355662829742127efe  # tags/v10.6.0^0
-source=("git+https://gitlab.manjaro.org/applications/pamac.git#commit=$_commit")
+_commit=036cf36deaa1bdb22d4edbb37919bbe583113bb7  # tags/v10.7.0^0
+source=("git+https://github.com/manjaro/pamac.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {
