@@ -6,7 +6,7 @@ _gitname=rogerrouter
 _pkgname=roger-router
 pkgname="${_pkgname}-git"
 pkgver=2.4.90+1.r1426.20230428.f33129a
-pkgrel=2
+pkgrel=3
 pkgdesc="A utility to control and monitor AVM Fritz!Box Routers. E.g. Journal, fax software and call monitor."
 arch=(
   'aarch64'
@@ -31,6 +31,7 @@ depends=(
   "libhandy-1.so"
   "libpango-1.0.so"
   "libpangocairo-1.0.so"
+  "libsoup-2.4.so"
   "libtiff.so"
 )
 makedepends=(
@@ -38,7 +39,6 @@ makedepends=(
   "cairo"
   "cups"            # To have 'lp' group to create spool directory owned by that group in the '$install' script.
   "desktop-file-utils"
-  "evolution-data-server"
   "gdk-pixbuf2"
   "gettext"
   "git"
@@ -47,7 +47,8 @@ makedepends=(
   "intltool"
   "librm"
   "libhandy"
-  "libsoup3"
+  "libsoup>=2"
+  "libsoup<3"
   "libtiff"
   "meson"
   "ninja"
@@ -55,13 +56,9 @@ makedepends=(
   "pkgconf"
 )
 optdepends=(
-  'cups:                     FAX printer.'
-  'dconf:                    for glib schemas.'
-  'hicolor-icon-theme:       hicolor theme hierarchy.'
-  'libebook-1.2.so:          evolution address book plugin.'
-  'libedataserver-1.2.so:    evolution address book plugin.'
-  'libebook-contacts-1.2.so: evolution address book plugin.'
-  'libsoup-3.0.so:           thunderbird and vcard plugins.'
+  'cups:               FAX printer'
+  'dconf:              for glib schemas'
+  'hicolor-icon-theme: hicolor theme hierarchy'
 )
 conflicts=(
   "${_gitname}"
@@ -79,13 +76,13 @@ replaces=(
 install="roger-router.install"
 source=(
   "${_gitname}::git+https://gitlab.com/tabos/rogerrouter.git"
-  "https://salsa.debian.org/debian/roger-router/-/raw/debian/master/debian/patches/0001-Trivial-port-to-Soup-3.0.patch"  # 
+  "disable-evolution-plugin.patch"
   "address-book.svg"
   "${install}"
 )
 sha256sums=(
   'SKIP'  # Upstream source
-  '351c7c8948872323df859cb457719d59926ea3aff59dfe2f3627add522a993f6'  # 0001-Trivial-port-to-Soup-3.0.patch
+  '723b426e766612f7c3888d98bfe306b9643d97c3f5097398c7dc3feed2ec8b9a'  # disable-evolution-plugin.patch
   '575b01dc0e68fd2f0b3d3c10afdec6fd4d61b570ec3d093e722c9fec35e6f82d'  # address-book.svg
   '7a32640a30cd73eb4e50af04b30fdcce93bd0b263577ad941037253608e86cfc'  # $install
 )
@@ -102,7 +99,7 @@ prepare() {
 
   cd "${srcdir}/${_gitname}"
 
-  for _patch in "${srcdir}"/0001-Trivial-port-to-Soup-3.0.patch; do
+  for _patch in "${srcdir}"/disable-evolution-plugin.patch; do
     printf '%s\n' "   > Applying patch '$(basename "${_patch}")' ..."
     patch -N -p1 --follow-symlinks -i "${_patch}"
   done
