@@ -1,31 +1,39 @@
-# Maintainer: Sergey Balabanov <sergey dot balabanov at gmail dot com>
-pkgname=aqua-bin
-pkgver=2.30.0
-pkgrel=2
-pkgdesc="Declarative CLI Version manager written in Go. Pre-compiled."
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Sergey Balabanov <sergey dot balabanov at gmail dot com>
+
+_pkgauthor=aquaproj
+_pkgname=aqua
+pkgname=${_pkgname}-bin
+pkgver=2.42.2
+pkgrel=1
+pkgdesc="Declarative CLI Version manager written in Go"
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64' 'aarch64')
-url="https://github.com/aquaproj/aqua"
 license=('MIT')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 depends=()
 optdepends=()
-provides=('aqua')
+
 install=aqua-bin.install
 
-source_x86_64=("https://github.com/aquaproj/aqua/releases/download/v${pkgver}/aqua_linux_amd64.tar.gz")
-source_aarch64=("https://github.com/aquaproj/aqua/releases/download/v${pkgver}/aqua_linux_arm64.tar.gz")
+source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64.tar.gz")
+source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('933f4eff665f268b461e9897098c9ebbd10ca3b9277a901670e129226f434ec0')
-sha256sums_aarch64=('18fc75c57300c42144c4262bb807277d0c5f32685a0e49489da31c46fc8e03e0')
+sha256sums_x86_64=('1261c8a5fdb1d6f27b473151085b35f03ac63e3a38e6dcdb64fcf220afe8a1d9')
+sha256sums_aarch64=('b8b4212f750de3d04bc2b515b4d246d99bd5bed9be97580a2e887a52b9079087')
 
 package() {
-  install -Dm755 "${srcdir}/aqua" "${pkgdir}/usr/bin/aqua"
+  install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   _output="${srcdir}/output"
   mkdir -p "${_output}"
-  "${srcdir}/aqua" completion bash > "${_output}/bash"
-  "${srcdir}/aqua" completion zsh > "${_output}/zsh"
-  "${srcdir}/aqua" completion fish > "${_output}/fish"
+
+  "${srcdir}/${_pkgname}" completion bash > "${_output}/bash"
+  "${srcdir}/${_pkgname}" completion zsh > "${_output}/zsh"
+  "${srcdir}/${_pkgname}" completion fish > "${_output}/fish"
 
   # Shell autocompletion script
   install -Dm644 "${_output}/bash" "${pkgdir}/usr/share/bash-completion/completions/aqua"
