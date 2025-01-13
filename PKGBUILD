@@ -1,6 +1,7 @@
-# Maintainer:  dreieck
+# Maintainer:  andreas_baumann (https://aur.archlinux.org/account/andreas_baumann)
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 # Contributor: Ujhhgtg (https://aur.archlinux.org/account/Ujhhgtg)
-
+ 
 ## Based on `PKGBUILD` for package `icu71`, version 71.1-1, by Ujhhgtg (https://aur.archlinux.org/account/Ujhhgtg).
 
 _pkgname=icu
@@ -8,7 +9,7 @@ _pkgmainver=74
 _pkgminorver=2
 pkgname="${_pkgname}${_pkgmainver}"
 pkgver="${_pkgmainver}.${_pkgminorver}"
-pkgrel=7
+pkgrel=8
 pkgdesc="International Components for Unicode library (legacy version ${_pkgmainver})."
 arch=(
   'i486'
@@ -20,7 +21,7 @@ arch=(
   'aarch64'
 )
 url="http://www.icu-project.org/"
-license=('custom:icu')
+license=('Unicode-3.0')
 depends=(
   'gcc-libs'
   'glibc'
@@ -64,7 +65,7 @@ source=(
   #"https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz.asc"
   "ICU-22132.patch"
   "icudata-stdlibs.patch"
-  "https://github.com/unicode-org/icu/raw/main/LICENSE"
+  "${pkgname}-LICENSE::https://github.com/unicode-org/icu/raw/main/LICENSE"
 )
 md5sums=('94c0b370f43123ea92b146ebea9c709d'
          '7e501a2e7d14ce94b843e6853d96e4c2'
@@ -142,5 +143,5 @@ package()
   rm -rf "${pkgdir}"/usr/{bin,include,share,lib/{pkgconfig,*.so,icu/{current,Makefile.inc,pkgdata.inc}}}
 
   ## Install license
-  install -Dvm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dvm644 "${srcdir}/${pkgname}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
