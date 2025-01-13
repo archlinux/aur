@@ -1,6 +1,6 @@
 pkgbase = kylin-virtual-keyboard-git
 	pkgdesc = 麒麟虚拟键盘输入法UI工程，该工程适配fcitx5最新的虚拟键盘支持机制。
-	pkgver = 3.0.0.0.r0.gcad3675
+	pkgver = 3.0.1.0.r26.g5031395
 	pkgrel = 1
 	url = https://gitee.com/openkylin/kylin-virtual-keyboard
 	arch = x86_64

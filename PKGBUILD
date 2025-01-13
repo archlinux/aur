@@ -1,7 +1,7 @@
 # Maintainer: icepie <icepie.dev [at] gmail dot com>
 pkgname=kylin-virtual-keyboard-git
 _pkgname=kylin-virtual-keyboard
-pkgver=3.0.0.0.r0.gcad3675
+pkgver=3.0.1.0.r26.g5031395
 pkgrel=1
 pkgdesc="麒麟虚拟键盘输入法UI工程，该工程适配fcitx5最新的虚拟键盘支持机制。"
 arch=("x86_64")
@@ -29,12 +29,13 @@ depends=(
 
 build() {
     cd ${srcdir}/${_pkgname}
-    qmake .
+    cmake -DCMAKE_INSTALL_PREFIX=/usr .
+    make
 }
 
 package() {
     cd ${srcdir}/${_pkgname}
-    make install INSTALL_ROOT=${pkgdir}
+    make DESTDIR=${pkgdir} install
 }
 
 pkgver() {
