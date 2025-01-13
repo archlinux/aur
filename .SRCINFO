@@ -1,7 +1,7 @@
 pkgbase = qtox-toktok
 	pkgdesc = Powerful Tox client written in C++/Qt (TokTok fork)
 	pkgver = 1.18.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TokTok/qTox
 	arch = x86_64
 	license = GPL3

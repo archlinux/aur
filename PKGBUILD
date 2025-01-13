@@ -3,7 +3,7 @@
 pkgname=qtox-toktok
 _pkgname=qTox
 pkgver=1.18.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful Tox client written in C++/Qt (TokTok fork)'
 arch=('x86_64')
 url='https://github.com/TokTok/qTox'
@@ -17,13 +17,6 @@ sha512sums=('SKIP')
 prepare() {
   cd $_pkgname
   git checkout -q tags/v${pkgver}
-
-  mv io.github.qtox.qTox.desktop qtox.desktop
-  mv res/io.github.qtox.qTox.appdata.xml res/qtox.appdata.xml
-
-  sed -i 's/io.github.qtox.qTox/qtox/g' res/qtox.appdata.xml cmake/Installation.cmake
-  sed -i 's/<\/summary>/ (TokTok fork)<\/summary>/g' res/qtox.appdata.xml
-  sed -i 's/qtox.github.io/github.com\/TokTok\/qTox/g' res/qtox.appdata.xml src/widget/form/settings/aboutform.cpp
 }
 
 build() {
