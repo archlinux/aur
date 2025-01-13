@@ -2,7 +2,6 @@
 # Contributor: Richard Tucker <rtucker@mookins.com>
 
 pkgname=python-statemachine
-provides=('python-statemachine')
 pkgdesc="Python finite-state machines made easy"
 url="https://github.com/fgmacedo/$pkgname"
 pkgver=2.4.0

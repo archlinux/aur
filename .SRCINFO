@@ -7,7 +7,7 @@ pkgbase = python-statemachine
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	provides = python-statemachine
+	depends = python-pydot
 	source = python-statemachine-2.4.0.tar.gz::https://github.com/fgmacedo/python-statemachine/archive/v2.4.0.tar.gz
 	sha512sums = fc51668efee69a2a59c5f3a5bbb08e6a6647a819175bbd02305e6eac51d0f8ef31c4e89f85dcb7451c24681ee76f0534e676995e134c0cbbed4d680c5418c612
 
