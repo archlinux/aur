@@ -4,7 +4,7 @@
 pkgname=astroimagej
 pkgver=5.4.0
 pkgrel=1
-pkgdesc="a simple and powerful tool for astronomical image analysis and precise photometry"
+pkgdesc="A simple and powerful tool for astronomical image analysis and precise photometry"
 arch=('x86_64')
 url="http://www.astro.louisville.edu/software/astroimagej/"
 depends=('java-runtime')
