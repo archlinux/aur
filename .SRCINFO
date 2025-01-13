@@ -1,20 +1,39 @@
 pkgbase = gupnp-1.0
-	pkgdesc = An object-oriented UPNP framework
-	pkgver = 1.0.3
+	pkgdesc = GObject-based UPNP framework. Legacy 1.0 variant for compatibility with old software.
+	pkgver = 1.0.7
 	pkgrel = 1
+	epoch = 0
 	url = https://wiki.gnome.org/Projects/GUPnP
+	arch = aarch64
 	arch = x86_64
-	license = LGPL
+	arch = i686
+	arch = pentium4
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	license = LGPL-2.1-or-later
+	makedepends = glib2-devel
 	makedepends = gobject-introspection
-	makedepends = gtk-doc
+	makedepends = gssdp-1.0>=1.0.4
+	makedepends = util-linux-libs
+	makedepends = meson
 	makedepends = vala
-	makedepends = autoconf-archive
-	makedepends = git
-	depends = gssdp-1.0
-	depends = util-linux
-	optdepends = python: gupnp-binding-tool
-	source = git+https://gitlab.gnome.org/GNOME/gupnp.git#commit=0e4f31cfc489a2c21f052885695902ae5ba98c8a
-	sha256sums = SKIP
+	depends = glib2>=2.44
+	depends = glibc
+	depends = libgssdp-1.0.so
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	depends = libgio-2.0.so
+	depends = libgmodule-2.0.so
+	depends = libsoup>=2.48.0
+	depends = libsoup<3
+	depends = libxml2
+	depends = libutil-linux
+	depends = libuuid.so
+	source = gupnp-1.0.7.tar.bz2::https://gitlab.gnome.org/GNOME/gupnp/-/archive/gupnp-1.0.7/gupnp-gupnp-1.0.7.tar.bz2
+	sha256sums = ffb54f7914a2f7514762693f4ef6604395d759db93bf1f45059184efd60eb345
 
 pkgname = gupnp-1.0
-
+	optdepends = python: For gupnp-binding-tool-1.0
+	optdepends = gupnp-1.0-docs: Documentation.
+	provides = libgupnp-1.0.so
