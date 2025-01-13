@@ -3,7 +3,7 @@
 
 pkgname='picat'
 pkgver='3.7'
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, and yet powerful, logic-based multi-paradigm programming language aimed for general-purpose applications.'
 arch=('x86_64')
 groups=()
@@ -22,7 +22,9 @@ b2sums=('fb455c018d6ac76240f1a4ff5b8676b0eefe5d0ae714c7b8e790fa22d2832b9e56dcc6a
 
 build() {
   cd "$srcdir/Picat/emu"
-  echo 'LFLAGS += -Wl,-z,relro,-z,now,-z,shstk' >> Makefile.linux64
+  # Inherit system-wide CFLAGS and LDFLAGS (/etc/makepkg.conf):
+  sed -i 's/CFLAGS = /CFLAGS += /' Makefile.linux64
+  sed -i 's/LFLAGS = /&$(LDFLAGS) -Wl,-z,shstk /' Makefile.linux64
   make -f Makefile.linux64
 }
 
