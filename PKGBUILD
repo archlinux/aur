@@ -1,12 +1,12 @@
 pkgname=pgvecto.rs-immich-bin
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="pgvecto.rs is a Postgres extension that provides vector similarity search functions. It is written in Rust and based on pgrx"
 arch=('x86_64')
 url="https://github.com/tensorchord/pgvecto.rs"
 license=('Apache')
-depends=('postgresql')
+depends=('postgresql>=17' 'postgresql<18')
 conflicts=(pgvector pgvecto.rs-bin pgvecto.rs pgvecto.rs-immich)
 provides=("pgvecto.rs=0.2.0")
 install=install
