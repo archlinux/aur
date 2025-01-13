@@ -10,10 +10,32 @@ diff --color --unified --recursive --text --color usr/share/applications/eparaks
  MimeType=application/pdf;application/lv.eme.edoc;application/vnd.etsi.asic-e+zip;
  StartupWMClass=lv.euso.signanywhere.SignAnywhere
  
-diff --color --unified --recursive --text --color usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py.orig usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py
---- usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py.orig        2022-07-07 10:18:32.064051467 +0300
-+++ usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py     2022-07-07 10:46:57.945442317 +0300
-@@ -11,11 +11,14 @@
+diff --color --unified --recursive --text --color usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu-nautilus3.py.orig usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu-nautilus3.py
+--- usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu-nautilus3.py.orig      2025-01-13 14:46:04.664432087 +0200
++++ usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu-nautilus3.py   2025-01-13 14:52:01.088662211 +0200
+@@ -14,11 +14,14 @@
+ 
+    def open_eparakstitajs(self, menu, command, files):
+       #print "menu_activate_cb", command
+-      bash_string=["eparakstitajs3", command]
++      bash_string = ["/usr/bin/eparakstitajs3", command]
+       for file in files:
+          bash_string.append(file.get_location().get_path())
+-      subprocess.Popen(bash_string)
+-    
++      modified_env = os.environ.copy()
++      modified_env['PATH'] = '/usr/lib/eparakstitajs3/bin:' + \
++         modified_env['PATH']
++      subprocess.Popen(bash_string, env=modified_env)
++
+    def dir_count(self, files):
+       dirCount = 0
+       for file in files:
+
+diff --color --unified --recursive --text --color usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu-nautilus4.py.orig usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu-nautilus4.py
+--- usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu-nautilus4.py.orig      2025-01-13 14:46:20.010706608 +0200
++++ usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu-nautilus4.py   2025-01-13 14:54:23.331697933 +0200
+@@ -14,11 +14,14 @@
  
     def open_eparakstitajs(self, menu, command, files):
        #print "menu_activate_cb", command
