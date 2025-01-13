@@ -103,7 +103,7 @@ options+=('!lto' 'emptydirs')
 #options+=('debug') # 2025-01-12: Adding 'debug' options results in linking failure: '/usr/bin/ld: /tmp/ccZgFu9a.o: in function `getDest': ../dest.c:238:(.text+0x772): undefined reference to `formatNumber'' in 'isdnlog/tools/dest'. So, for debugging, add '!strip' instead and '-fno-stack-protector -fno-omit-frame-pointer -D_FORTIFY_SOURCE=0 -Og -fno-lto -gdwarf-5 -ggdb3 -gno-strict-dwarf -g3 -gpubnames -grecord-gcc-switches -fno-eliminate-unused-debug-symbols -fvar-tracking -fvar-tracking-assignments -fdebug-types-section' to the CFLAGS below.
 
 _CFLAGSADDITIONS="-std=gnu11 -w -Wno-error=implicit-int -Wno-error=implicit-function-declaration -Wno-error=int-to-pointer-cast -Wno-error=int-conversion -Wno-error=incompatible-pointer-types"
-#   -fdebug-types-section
+#_CFLAGSADDITIONS+=" -fno-omit-frame-pointer -D_FORTIFY_SOURCE=0 -Og -fno-lto -gdwarf-5 -ggdb3 -gno-strict-dwarf -g3 -gpubnames -grecord-gcc-switches -fno-eliminate-unused-debug-symbols -fvar-tracking -fvar-tracking-assignments -fdebug-types-section"
 ACLOCAL_PATH="`aclocal --print-ac-dir`"
 export ACLOCAL_PATH
 PERL_USE_UNSAFE_INC=1
