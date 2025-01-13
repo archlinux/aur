@@ -1,7 +1,7 @@
 pkgbase = python-azure-core
 	pkgdesc = Microsoft Azure Core Shared Client Library for Python
 	pkgver = 1.32.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Azure/azure-sdk-for-python
 	arch = any
 	license = MIT
@@ -9,7 +9,6 @@ pkgbase = python-azure-core
 	depends = python>=3.8.0
 	depends = python-aiohttp>=3.0.0
 	depends = python-requests>=2.21.0
-	depends = python-six>=1.11.0
 	depends = python-typing_extensions>=4.6.0
 	source = python-azure-core-1.32.0.tar.gz::https://github.com/Azure/azure-sdk-for-python/archive/azure-core_1.32.0.tar.gz
 	b2sums = b8405451072bc578e0861640eb5a3c07ccebaa8d583cf2b11d1c688e4e1f81d5c032ef288ded9deb297c4a0838cd75d9d7cf8f15750796116db4b3e17e6064d3
