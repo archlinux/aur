@@ -9,7 +9,7 @@
 
 _pkg=asterisk
 pkgname=${_pkg}-lts-22
-pkgver=22.0.0
+pkgver=22.1.1
 pkgrel=1
 pkgdesc='A complete PBX solution - LTS release 22 version'
 arch=(x86_64 i686 aarch64 armv7h)
