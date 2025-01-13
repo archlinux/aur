@@ -4,7 +4,7 @@
 _pkgname="overlayfs-tools"
 pkgname="$_pkgname-git"
 pkgver=2024.07.r7.gd1636eb
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for overlay filesystem"
 url="https://github.com/kmxz/overlayfs-tools"
 license=('WTFPL')
@@ -18,6 +18,9 @@ makedepends=(
   'git'
   'meson'
 )
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
