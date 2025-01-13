@@ -1,10 +1,10 @@
 pkgbase = screencast
 	pkgdesc = Command line interface to record a X11 desktop
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dbermond/screencast/
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	checkdepends = xorg-server-xvfb
 	checkdepends = imagemagick
 	checkdepends = ttf-dejavu
@@ -17,16 +17,21 @@ pkgbase = screencast
 	optdepends = sound-theme-freedesktop: sound notification support
 	optdepends = optipng: watermark optimization support
 	optdepends = oxipng: watermark optimization support
-	optdepends = littleutils-full: watermark optimization support
+	optdepends = littleutils: watermark optimization support
 	optdepends = truepng: watermark optimization support
 	optdepends = pingo: watermark optimization support
 	optdepends = advancecomp: watermark optimization support
 	optdepends = bash-completion: bash-completion support
 	source = https://github.com/dbermond/screencast/archive/v1.6.0/screencast-1.6.0.tar.gz
 	source = https://github.com/dbermond/screencast/releases/download/v1.6.0/screencast-1.6.0.tar.gz.asc
+	source = 010-screencast-fix-for-posix-shells.patch::https://github.com/dbermond/screencast/commit/3aca088565edce7d011f61f4278835c374d07b66.patch
+	source = 020-screencast-fix-muxer-and-demuxer-checks.patch::https://github.com/dbermond/screencast/commit/6081308bf6014c543b22f4750e944bb6d5ce10e0.patch
+	source = 030-screencast-fix-stream-mapping.patch::https://github.com/dbermond/screencast/commit/8855559fd84b56b63419fe69ea7b1a22f4124b28.patch
 	validpgpkeys = 3FFA6AB7B69AAE6CCA263DDE019A7474297D8577
 	sha256sums = 10a283372bf76753bdcbdc60661e0efe48bc579c3191f7c3495e14d65ad527e3
 	sha256sums = SKIP
+	sha256sums = fb068ac2ad623fb0a760d68cc542c62c580f6a08a761a203152ff6f01b4d34e6
+	sha256sums = 540c358e31e48562830442030ab1d26f9704d0886771d10b20df07ae49d8d58f
+	sha256sums = e85b47f077b617102c72390a0e2a41c8d722331dacdd88c7a96bbecf98752774
 
 pkgname = screencast
-
