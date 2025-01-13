@@ -1,0 +1,6 @@
+[rutabaga-ffi]
+source='git'
+git='https://chromium.googlesource.com/crosvm/crosvm'
+from_pattern='-rutabaga-release'
+to_pattern=''
+prefix='v'
