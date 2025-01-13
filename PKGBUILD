@@ -1,7 +1,7 @@
 # Maintainer: Lukas Pöschl <lukas@smart-ies.de>
 
 pkgbase=linux-morphius
-pkgver=6.11.1
+pkgver=6.12.8
 pkgrel=1
 pkgdesc='Linux-morphius'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -37,8 +37,8 @@ validpgpkeys=(
   C7E7849466FE2358343588377258734B41C31549  # David Runge <dvzrv@archlinux.org>
 )
 
-b2sums=('ecc34758ffdb61266592cb4bd33ea26b1ab60c4ba21e5fea3bd9516e9b574ae1d1155bee7864bd1b2ea8e784c16bd801369d397f719ef133d043e1399f135016'
-        '29e5747255b9a41460d63c85bea1667ecec0e0a00092ac7fd4cc014fa01c32cfa487b7e71cc81662a754b374b79359dd3d22be67d68446a66bcb530987a979d2'
+b2sums=('fded786d9e531456843841a6ccbc80ec3e74a79d7f289bffb38a83bdd9c8be0168f2ef0c7937e492d3ace8e403a393e302fe5e96855c5d66f464b67389a7fd53'
+        'd9605d3ce64f7886a7f6068147bb32b1980cc77d1ebc1d351b9421f01e565f34fb4964feaad5347bb52e87a3c1164ff68b0b9b87989ca3e86ca58d14c2742f69'
         '1b443c48efe98e5090b0eac3f0bb7e381a0b1f9bc5e1b24929c736bbed6a29c9efa842ad64dd65b75d6ee3a505d92ff365e2557b5dbf3ce714bb0e10a38a52f3')
 
 export KBUILD_BUILD_HOST=archlinux
