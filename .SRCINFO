@@ -1,0 +1,26 @@
+pkgbase = nitrocid-27-git
+	pkgdesc = Simulates our future-planned kernel
+	pkgver = v0.1.0.r715.ff5375cab
+	pkgrel = 1
+	url = https://aptivi.github.io
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = dotnet-sdk-8.0
+	makedepends = make
+	makedepends = which
+	depends = dotnet-runtime-8.0
+	depends = tzdata
+	optdepends = jack2: Jack support for BassBoom addon
+	optdepends = portaudio: PortAudio support for BassBoom addon
+	optdepends = openal: OpenAL support for BassBoom addon
+	optdepends = sdl2: SDL support for BassBoom addon
+	optdepends = libpulse: PulseAudio support for BassBoom addon
+	provides = nitrocid-27
+	conflicts = nitrocid-27
+	options = !strip
+	source = nitrocid-27-git::git+https://github.com/Aptivi/Nitrocid#branch=main
+	sha256sums = SKIP
+
+pkgname = nitrocid-27-git
