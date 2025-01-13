@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jet-pilot-bin
 _pkgname='JET Pilot'
-pkgver=1.32.0
+pkgver=1.33.0
 pkgrel=1
 pkgdesc="An open-source Kubernetes desktop client that focuses on less clutter, speed and good looks.(Prebuilt version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/unxsist/jet-pilot/v${pkgver}/LICENSE"
 )
-sha256sums=('22334fde6130ad570ad70bb683ca62b4c8f46d790ca57689826fb8f2c4a5d608'
+sha256sums=('d505610054a5d66eb9b1f6f2bd4db835ca593862e121634003bc9ddb861f4788'
             '508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1')
 prepare() {
     sed -e "
