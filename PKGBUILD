@@ -1,6 +1,6 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=slack-export-viewer
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A Slack Export archive viewer"
 arch=(any)
@@ -21,7 +21,7 @@ makedepends=(
 optdepends=('python-frozen-flask: support static HTML output')
 checkdepends=(python-pytest)
 source=($pkgname-$pkgver.tar.gz::https://github.com/hfaran/$pkgname/archive/refs/tags/$pkgver.tar.gz)
-b2sums=('66b60da1d7a6994112cc7df74581da893b8747792b64f07b88264dc2fa53824fb96132c762808a6e20603259683f3ea84e07ebdf6b881199654e1ca06de31ce7')
+b2sums=('d152b88f9df8dd5c40141aebd480b293e404e0296081f2c4853e16fddd6901f3fbe716f557255a57ff515f0d294a1a93e2bfa4c4ca17c16ed142c93aed2cc591')
 
 build() {
     cd $pkgname-$pkgver
