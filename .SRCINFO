@@ -1,7 +1,7 @@
 pkgbase = hikvision-mvs
 	pkgdesc = Machine Vision Software by Hikvision, for their industrial cameras.
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hikrobotics.com/
 	arch = x86_64
 	arch = i686

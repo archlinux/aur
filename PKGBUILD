@@ -4,7 +4,7 @@
 pkgname='hikvision-mvs'
 pkgver=3.0.1
 _pkgdate=241128
-pkgrel=1
+pkgrel=2
 pkgdesc="Machine Vision Software by Hikvision, for their industrial cameras."
 arch=('x86_64' 'i686')
 url="https://www.hikrobotics.com/"
@@ -33,7 +33,7 @@ package() {
 		['i686']='i386'
 	)
 	export FILENAME=MVS-${pkgver}_${arch_in_filename[$CARCH]}_20${_pkgdate}.tar.gz #why paru cant do this?
-	OPT=${pkgdir}/opt
+	OPT=${pkgdir}/opt/MVS
 	install -Dm644 logo.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
 	install -Dm644 hikvision-mvs.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 	echo "Install MVS,Please wait..."
