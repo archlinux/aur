@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=259.241223.0
+pkgver=259.250108.1
 pkgrel=1
 pkgdesc="The desktop client for Tutanota, the secure e-mail service."
 arch=('x86_64')
@@ -15,6 +15,7 @@ depends=(
   'nss'
 )
 makedepends=(
+  'cargo'
   'emscripten'
   'git'
   'nvm'
@@ -24,7 +25,7 @@ source=("git+https://github.com/tutao/tutanota.git#tag=$pkgname-release-$pkgver"
         'git+https://github.com/P-H-C/phc-winner-argon2.git'
         'git+https://github.com/open-quantum-safe/liboqs.git'
         "$pkgname.desktop")
-sha256sums=('28594f43c4e63eed34d241dcb3027c5cd5e962237f7ef7208d54645f1525fd86'
+sha256sums=('be71c1f1bf66505037d57753be233917d8a80375c4592896f7010d9c95b2aa6a'
             'SKIP'
             'SKIP'
             'd6fef99f41fe18008e44b5930aee26dc2f79ef753d770cbdb946d9e17ac9b7d7')
@@ -46,15 +47,25 @@ prepare() {
   git config submodule.libs/webassembly/liboqs.url "$srcdir/liboqs"
   git -c protocol.file.allow=always submodule update
 
+  export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   nvm install
+  npm ci
+
+  export RUSTUP_TOOLCHAIN=stable
+  for dir in packages/node-mimimi tuta-sdk/rust tuta-sdk/rust/sdk tuta-sdk/rust/uniffi-bindgen; do
+    pushd "${dir}"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+    popd
+  done
 }
 
 build() {
   cd "${pkgname%-*}"
+  CFLAGS+=" -ffat-lto-objects"
   export npm_config_cache="$srcdir/npm_cache"
+  export RUSTUP_TOOLCHAIN=stable
   _ensure_local_nvm
-  npm ci
   npm run build-packages
   node desktop --custom-desktop-release --unpacked
 }
