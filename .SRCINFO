@@ -1,0 +1,20 @@
+pkgbase = tusk-launcher-git
+	pkgdesc = A launcher for Tusk with advanced features (Git version)
+	pkgver = 0.1.0.r76.g969b819
+	pkgrel = 1
+	url = https://github.com/padoruuuu/Tusk-Launcher
+	arch = any
+	license = GPL-3
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	provides = tusk-launcher
+	conflicts = tusk-launcher
+	options = !strip
+	options = !debug
+	options = staticlibs
+	source = git+https://github.com/padoruuuu/Tusk-Launcher.git
+	sha256sums = SKIP
+
+pkgname = tusk-launcher-git
