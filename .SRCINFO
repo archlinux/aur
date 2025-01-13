@@ -1,6 +1,6 @@
 pkgbase = sdl2_sound
 	pkgdesc = An abstract soundfile decoder
-	pkgver = 2.0.2
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://icculus.org/SDL_sound/
 	arch = i686
@@ -9,10 +9,7 @@ pkgbase = sdl2_sound
 	makedepends = cmake
 	makedepends = ninja
 	depends = sdl2
-	source = https://github.com/icculus/SDL_sound/releases/download/v2.0.2/SDL2_sound-2.0.2.tar.gz
-	source = https://github.com/icculus/SDL_sound/releases/download/v2.0.2/SDL2_sound-2.0.2.tar.gz.sig
-	validpgpkeys = 50F91FB550EC32AB4A710286FA148B892AB48044
-	sha256sums = 465a81d6004af731768b881b2f50383150cc58a8d346653bad85e2375829cc3a
-	sha256sums = SKIP
+	source = sdl2_sound-2.0.4.tar.gz::https://github.com/icculus/SDL_sound/archive/refs/tags/v2.0.4.tar.gz
+	sha256sums = 6f8b324ce23382929ab90ded7fcd6e303b66cb22b4e15b4e3c3a99f500a4eec1
 
 pkgname = sdl2_sound

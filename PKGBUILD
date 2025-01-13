@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=sdl2_sound
-pkgver=2.0.2
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="An abstract soundfile decoder"
 arch=('i686' 'x86_64')
@@ -9,12 +9,10 @@ url="https://icculus.org/SDL_sound/"
 license=('zlib')
 depends=('sdl2')
 makedepends=('cmake' 'ninja')
-source=("https://github.com/icculus/SDL_sound/releases/download/v${pkgver}/SDL2_sound-${pkgver}.tar.gz"{,.sig})
-sha256sums=('465a81d6004af731768b881b2f50383150cc58a8d346653bad85e2375829cc3a'
-            'SKIP')
-validpgpkeys=('50F91FB550EC32AB4A710286FA148B892AB48044')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/icculus/SDL_sound/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('6f8b324ce23382929ab90ded7fcd6e303b66cb22b4e15b4e3c3a99f500a4eec1')
 
-_srcdir="SDL2_sound-${pkgver}"
+_srcdir="SDL_sound-${pkgver}"
 
 build() {
 	cmake -S "${_srcdir}" -Bbuild -GNinja \
