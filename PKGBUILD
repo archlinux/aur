@@ -1,6 +1,6 @@
 pkgname=flecli-git
 _pkgname=flecli
-pkgver=0.1.5.r18.g9f0664d
+pkgver=0.1.7.r15.gc5846fb
 pkgrel=1
 pkgdesc='Multi-platform "Fast Log Entry"(FLE) processing tool'
 arch=('x86_64')
@@ -18,8 +18,18 @@ prepare() {
     perl -0777 -i -pe 's/  goos:\s+- linux\s+- windows\s+- darwin/  goos:\n    - linux/' .goreleaser.yml
     # Only build x86_64
     perl -0777 -i -pe "s/  goarch:\s+- '386'\s+- amd64\s+- arm\s+- arm64/  goarch:\n    - amd64/" .goreleaser.yml
+    # Remove ARM spec
+    perl -0777 -i -pe "s/  goarm:\s+- '6' +\n//" .goreleaser.yml
     # Do not build Docker images
     perl -0777 -i -pe "s/dockers:\s+(?:.|\s)+?archives:/archives:/" .goreleaser.yml
+
+    ### Update manifest for recent goreleaser versions
+    # Add manifest version if missing
+    grep -qE '^version: [0-9]+$' .goreleaser.yml || sed -i '1s/^/version: 2\n\n/' .goreleaser.yml
+    # Update changelog disabling flag
+    perl -0777 -i -pe "s/changelog:\s+skip: true/changelog:\n  disable: true/" .goreleaser.yml
+    # Update Homebrew formula folder flag
+    perl -0777 -i -pe "s/    folder: Formula/    directory: Formula/" .goreleaser.yml
 }
 
 pkgver() {
@@ -31,7 +41,7 @@ build() {
   export GOPATH="$srcdir"/gopath
   export GOFLAGS="-trimpath -mod=readonly -modcacherw"
   cd "$srcdir/FLEcli"
-  goreleaser --snapshot --skip-publish --clean
+  goreleaser --snapshot --skip=publish --clean
 }
 
 package() {
