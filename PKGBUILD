@@ -2,8 +2,8 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-rosettasciio
 pkgshort=rosettasciio
-pkgver=0.7
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="Rosetta Scientific Input Output library"
 arch=('any')
 url="http://hyperspy.org/rosettasciio"
@@ -29,7 +29,7 @@ optdepends=(
          'python-sparse: eds-stream'
          'python-tifffile>=2022.7.28: tiff'
          'python-imagecodecs: tiff'
-         'python-zarr: zspy'
+         'python-zarr<3: zspy'
          'python-msgpack: zspy'
          )
 
@@ -45,4 +45,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('3d5da5db72466cd986928898f8abb442')
+md5sums=('983f2fb9e8798f90a557579e47cdd7b7')
