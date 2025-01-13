@@ -1,7 +1,7 @@
 pkgbase = nuclei-dlink-bin
 	pkgdesc = DLink: RISC-V Debugger Firmware based on rvlink
 	pkgver = 0.9.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/Nuclei-Software/nuclei-dlink
 	arch = any
 	license = MulanPSL-1.0
