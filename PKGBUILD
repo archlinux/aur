@@ -2,12 +2,12 @@
 # Maintainer: Sylvain Chiron <chironsylvain@orange.fr>
 
 pkgname=gengraph
-pkgver=v6.1
+pkgver=v6.2
 pkgrel=1
 pkgdesc='Graph Generator coded in C: graph classes, graph algorithms and output formats'
 arch=('x86_64' 'pentium4' 'i686' 'armv7h' 'aarch64')
 url="https://gitub.u-bordeaux.fr/cygavoil/${pkgname}"
-license=('custom:CeCILL-C')
+license=('CECILL-C')
 
 optdepends=(
   'less: pager for help within the terminal'
@@ -15,7 +15,7 @@ optdepends=(
 )
 
 source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('421e6674c8c9efaef428d10d50188b0cdb68925b91dbee1a503f095d56fafc77')
+sha256sums=('c5b01e3efaee6471dfd42edcff70112cdcb7fce70b35d998c285cbe5dd02d976')
 
 build() {
   make -C "${pkgname}-${pkgver}" -j9
