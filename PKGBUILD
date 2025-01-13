@@ -20,11 +20,15 @@ _pkgver=$(echo ${pkgver} | sed 's/\.//;s/#//')
 source=("http://picat-lang.org/download/${pkgname}${pkgver/\./}_src.tar.gz")
 b2sums=('fb455c018d6ac76240f1a4ff5b8676b0eefe5d0ae714c7b8e790fa22d2832b9e56dcc6af888c817361346e210dd50b673f48ea09aee462f0903ebc2598a702bd')
 
-build() {
-  cd "$srcdir/Picat/emu"
+prepare() {
   # Inherit system-wide CFLAGS and LDFLAGS (/etc/makepkg.conf):
+  cd "$srcdir/Picat/emu"
   sed -i 's/CFLAGS = /CFLAGS += /' Makefile.linux64
   sed -i 's/LFLAGS = /&$(LDFLAGS) -Wl,-z,shstk /' Makefile.linux64
+}
+
+build() {
+  cd "$srcdir/Picat/emu"
   make -f Makefile.linux64
 }
 
