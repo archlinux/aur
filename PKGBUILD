@@ -1,37 +1,44 @@
-# Maintainer: Marcel <aur-feedback [ät] marehr.dialup.fu-berlin.de>
+# Maintainer:
+# Contributor: Marcel <aur-feedback [ät] marehr.dialup.fu-berlin.de>
 
-_pkgname='sde'
-pkgname='intel-sde'
-_pkgver="8.69.1-2021-07-18-lin"
-pkgver=${_pkgver%%-*} # strip everything after first '-'
-pkgrel='1'
-pkgdesc='Intel Software Development Emulator'
+: ${_pkgver:=9.48.0-2024-11-25}
+
+_pkgname="intel-sde"
+pkgname="$_pkgname"
+pkgver=${_pkgver%%-*}
+pkgrel=1
+pkgdesc="Intel Software Development Emulator"
+url="https://software.intel.com/en-us/articles/intel-software-development-emulator/"
+license=('LicenseRef-Intel-Simplified')
 arch=('x86_64')
-url='https://software.intel.com/en-us/articles/intel-software-development-emulator/'
-license=('custom')
-depends=('lib32-glibc')
-makedepends=()
-optdepends=()
 
-_source="${_pkgname}-external-${_pkgver}.tar.bz2"
-source=(
-  "https://software.intel.com/content/dam/develop/external/us/en/documents/downloads/${_source}")
-sha256sums=(
-  "e41ab2e72e61a10b998f77ccbc30f7262fe5d8715f8da919144ce22380338d18")
+depends=(
+  'glibc'
+)
+optdepends=(
+  'bash'
+  'lib32-glibc'
+  'python'
+)
+
+provides=("intelxed")
+conflicts=("intelxed")
+
+options=('!debug' '!strip')
+
+_pkgsrc="sde-external-$_pkgver-lin"
+_pkgext="tar.xz"
+source=("https://downloadmirror.intel.com/843185/$_pkgsrc.$_pkgext")
+sha256sums=("3173d2a5369e3385226b488d8b75403951bc14af601435fe707d9f83e0b533e6")
 
 package() {
-  cd "${srcdir}/${_pkgname}-external-${_pkgver}"
+  install -dm755 "$pkgdir/opt/$_pkgname"
+  mv "$_pkgsrc"/* "$pkgdir/opt/$_pkgname/"
 
-  # fix permissions: 8.59 shipped with 750 we want 755
-  chmod -R a+r .
-  chmod -R o+X .
+  install -dm755 "$pkgdir/usr/bin"
+  ln -srf "$pkgdir/opt/$_pkgname/sde64" "$pkgdir/usr/bin/intel-sde"
+  ln -srf "$pkgdir/opt/$_pkgname/xed64" "$pkgdir/usr/bin/intel-xed"
 
-  mkdir -p "$pkgdir"/usr/{bin,share/$_pkgname/,share/licenses}
-
-  cp -r * "$pkgdir"/usr/share/$_pkgname/
-  ln -s /usr/share/$_pkgname/sde "$pkgdir"/usr/bin/sde
-  ln -s /usr/share/$_pkgname/sde64 "$pkgdir"/usr/bin/sde64
-
-  # symlink licenses
-  ln -s /usr/share/$_pkgname/Licenses "$pkgdir"/usr/share/licenses/$_pkgname
+  install -dm755 "$pkgdir/usr/share/licenses"
+  ln -srf "$pkgdir/opt/$_pkgname/Licenses" "$pkgdir/usr/share/licenses/$pkgname"
 }

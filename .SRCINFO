@@ -1,12 +1,19 @@
 pkgbase = intel-sde
 	pkgdesc = Intel Software Development Emulator
-	pkgver = 8.69.1
+	pkgver = 9.48.0
 	pkgrel = 1
 	url = https://software.intel.com/en-us/articles/intel-software-development-emulator/
 	arch = x86_64
-	license = custom
-	depends = lib32-glibc
-	source = https://software.intel.com/content/dam/develop/external/us/en/documents/downloads/sde-external-8.69.1-2021-07-18-lin.tar.bz2
-	sha256sums = e41ab2e72e61a10b998f77ccbc30f7262fe5d8715f8da919144ce22380338d18
+	license = LicenseRef-Intel-Simplified
+	depends = glibc
+	optdepends = bash
+	optdepends = lib32-glibc
+	optdepends = python
+	provides = intelxed
+	conflicts = intelxed
+	options = !debug
+	options = !strip
+	source = https://downloadmirror.intel.com/843185/sde-external-9.48.0-2024-11-25-lin.tar.xz
+	sha256sums = 3173d2a5369e3385226b488d8b75403951bc14af601435fe707d9f83e0b533e6
 
 pkgname = intel-sde
