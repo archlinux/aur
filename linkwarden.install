@@ -10,7 +10,7 @@ post_install() {
     echo -e "\033[1;34mINFO\033[0m\033[1m:     * site at localhost:3000/login\033[0m"
 }
 
-post_update() {
+post_upgrade() {
     echo -e "\033[1;34mINFO\033[0m\033[1m:     * In /usr/share/webapps/linkwarden run sudo -u linkwarden yarn playwright install\033[0m"
 }
 post_remove() {
