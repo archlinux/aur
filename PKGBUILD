@@ -1,6 +1,6 @@
 # Maintainer: Snd <snd.scrape (at) gmail dot com>
 pkgname=komelia
-pkgver=0.12.2
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Komga media client"
 arch=('x86_64')
@@ -12,15 +12,17 @@ optdepends=(
 	'webkit2gtk-4.1: epub reader support'
 )
 source=(
-	'git+https://github.com/Snd-R/Komelia.git#commit=4ff4406736014a63ec61728fd46419c92491fc9b'
-	'git+https://github.com/Snd-R/ChipTextField.git#commit=2d6293d4e2089a045261494d098d76160a491d64'
-	'git+https://github.com/Snd-R/compose-sonner.git#commit=f827159c13ca09e15ffbbce8a12d967c0423dc6e'
+	'git+https://github.com/Snd-R/Komelia.git#commit=36df5b16c2b084f5de70febf5e62f88f1b0c1b4c'
+	'git+https://github.com/Snd-R/cache4k.git#commit=fe2210ea0b0d818a6faee75a3d0a2d67fcb9df17'
+	'git+https://github.com/Snd-R/ChipTextField.git#commit=a06f5f356cd0daa698404808100eade87d2614d8'
+	'git+https://github.com/Snd-R/compose-sonner.git#commit=d26da9044e03b604bbc7fd0c76426c493b751779'
 	'git+https://github.com/Snd-R/secret-service.git#commit=efca0226a444fc7ca4be06858a457c50f63cd7b8'
 	'git+https://github.com/Snd-R/hkdf.git#commit=1d42fc2def0fcc7c04b7617678ee943d65e62197'
 	
 )
 
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -33,6 +35,7 @@ prepare() {
     git -C Komelia config --local submodule.third_party/secret-service.url "${srcdir}/secret-service"
     git -C Komelia config --local submodule.third_party/compose-sonner.url "${srcdir}/compose-sonner"
     git -C Komelia config --local submodule.third_party/ChipTextField.url "${srcdir}/ChipTextField"
+    git -C Komelia config --local submodule.third_party/cache4k.url "${srcdir}/cache4k"
     git -C Komelia -c protocol.file.allow='always' submodule update
 
     git -C Komelia/third_party/secret-service submodule init

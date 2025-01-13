@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/bin/java -jar /opt/komelia/komelia.jar "$@"
+MALLOC_ARENA_MAX=4 exec /usr/bin/java -XX:+UnlockExperimentalVMOptions -XX:+UseShenandoahGC -XX:ShenandoahGCHeuristics=compact -XX:ConcGCThreads=1 -XX:TrimNativeHeapInterval=60000 -jar /opt/komelia/komelia.jar "$@"
