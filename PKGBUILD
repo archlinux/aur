@@ -19,7 +19,7 @@ source=("${pkgname}::git+git://git.carlh.net/git/${pkgbase}.git#tag=v${pkgver}")
 sha256sums=('4b611d2881bc0127254dd13a4f3f3805bc40fe4df25d14597c15e7ccd5e0cd42')
 
 # Pull fixes until new major release is available
-_cherry_picks=() 
+_cherry_picks=('16484d60808cee08f08318166fba5147ec81559c') 
 
 prepare() {
   cd "${srcdir}/${pkgname}"
