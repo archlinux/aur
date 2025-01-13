@@ -1,14 +1,16 @@
 pkgbase = libaemu
 	pkgdesc = This is an utility library for common functions used in the Android Emulator.
 	pkgver = 0.1.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://android.googlesource.com/platform/hardware/google/aemu/
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cmake
 	makedepends = git
 	makedepends = clang
+	makedepends = gcc-libs
+	makedepends = glibc
 	source = git+https://android.googlesource.com/platform/hardware/google/aemu#tag=v0.1.2-aemu-release
-	sha256sums = SKIP
+	sha256sums = a971602ce7397fa13587a0c9d9cc38e4c0725110881d4a8520bed48f014da019
 
 pkgname = libaemu

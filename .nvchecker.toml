@@ -1,0 +1,6 @@
+[libaemu]
+source='git'
+git='https://android.googlesource.com/platform/hardware/google/aemu'
+from_pattern='-aemu-release'
+to_pattern=''
+prefix='v'
