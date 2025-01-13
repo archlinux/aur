@@ -1,6 +1,6 @@
 pkgbase = paho-mqtt-cpp
 	pkgdesc = Eclipse Paho MQTT C++ client library
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/eclipse/paho.mqtt.cpp
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = paho-mqtt-cpp
 	depends = gcc-libs
 	depends = glibc
 	conflicts = paho-mqtt-cpp-git
-	source = paho-mqtt-cpp-1.4.1::https://github.com/eclipse/paho.mqtt.cpp/archive/refs/tags/v1.4.1.tar.gz
-	sha256sums = 48e7ba6e1032aa73e4d985a7387e02a77cc5807a8420d16790b84b941d86374e
+	source = paho-mqtt-cpp-1.5.0::https://github.com/eclipse/paho.mqtt.cpp/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 31e50128bfb78066c0fa20e65ff193ea4e881938b9b58c6b3f4685e6bfd34b5a
 
 pkgname = paho-mqtt-cpp
