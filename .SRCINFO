@@ -1,0 +1,16 @@
+pkgbase = dofigen
+	pkgdesc = Generate Dockerfiles using simplified descriptions in YAML
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/lenra-io/dofigen
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	options = !lto
+	source = dofigen-2.3.0.tar.gz::https://github.com/lenra-io/dofigen/archive/v2.3.0.tar.gz
+	sha256sums = c0d4580742697f9b0f5b008574e213d560933a59f0b9cd320b1499c41e960ced
+
+pkgname = dofigen
