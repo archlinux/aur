@@ -1,0 +1,24 @@
+pkgbase = bpfix-git
+	pkgdesc = A tool for fixing AOSP soong blueprint build files
+	pkgver = 20240617.r63.ba48366
+	pkgrel = 1
+	url = https://android.googlesource.com/platform/build/soong
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	provides = bpfix
+	source = git+https://android.googlesource.com/platform/build/blueprint
+	source = git+https://android.googlesource.com/platform/build/soong
+	source = git+https://android.googlesource.com/platform/external/go-cmp
+	source = git+https://android.googlesource.com/platform/external/golang-protobuf
+	source = git+https://android.googlesource.com/platform/external/starlark-go
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+
+pkgname = bpfix-git
