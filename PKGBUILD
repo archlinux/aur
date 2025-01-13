@@ -17,7 +17,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 build() {
   cd "$srcdir"/muparser-${pkgver}
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -DENABLE_SAMPLES=OFF -B build-${_arch} .
+    ${_arch}-cmake -DENABLE_SAMPLES=OFF -DBUILD_TESTING=OFF -B build-${_arch} .
     make -C build-${_arch}
   done
 }
