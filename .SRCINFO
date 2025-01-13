@@ -1,7 +1,7 @@
 pkgbase = godsvg-bin
 	pkgdesc = An editor for Scalable Vector Graphics (SVG) files. Built with Godot
 	pkgver = 1.0_alpha7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://godsvg.com
 	arch = x86_64
 	license = MIT
