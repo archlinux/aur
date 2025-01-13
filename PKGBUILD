@@ -9,7 +9,7 @@
 _pkgname=discord
 _electron=electron
 pkgname=${_pkgname}_arch_electron
-pkgver=0.0.79
+pkgver=0.0.80
 pkgrel=1
 pkgdesc="Discord using system provided ${_electron} for increased security and performance"
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=('libpulse: Pulseaudio support'
 source=("https://dl.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'discord-launcher.sh'
         'krisp-patcher.py') # original: https://github.com/sersorrel/sys/blob/main/hm/discord/krisp-patcher.py
-sha512sums=('48a82d7f3cfdc1c5ba2f621450320c25e1ed92608c381d7bd22cdb7dbd134456589d39cee0d55557bce9346f4dfed0fc487b9dddeb8ac7b053b116427cc4cae0'
+sha512sums=('c23cc93c91986e619113a8e772b67904ad72240897527e538174353ede805abe4c3fd9a1376cd1cef192bb0c6c49e29f80f735a8590319412d3297e2a4d220a9'
             'e11a60419c6ee5944aefc1ac16a5b496518fae626627d37a5bf636975bd21b1d9b6118ec3f44e7f4283befe5fa14737ad28dc38d975967789247ac0e66c352f3'
             '42cef68c1f7d574b4fbe859a4dc616e8994c7d16f62bcae3ff1f88e1edc58ac37b39c238d7defa9c97ceda417fcd6224cf0a0fd2608b8d18d0877e3c1befa59c')
 
