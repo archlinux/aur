@@ -1,7 +1,7 @@
 pkgbase = pgvecto.rs-bin
 	pkgdesc = Scalable, Low-latency and Hybrid-enabled Vector Search in Postgres. Revolutionize Vector Search, not Database.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tensorchord/pgvecto.rs
 	arch = x86_64
 	arch = aarch64
@@ -9,9 +9,9 @@ pkgbase = pgvecto.rs-bin
 	depends = postgresql
 	provides = pgvecto.rs
 	conflicts = pgvecto.rs
-	source_x86_64 = pgvecto.rs-0.4.0-x86_64.zip::https://github.com/tensorchord/pgvecto.rs/releases/download/v0.4.0/vectors-pg16_x86_64-unknown-linux-gnu_0.4.0.zip
+	source_x86_64 = pgvecto.rs-0.4.0-x86_64.zip::https://github.com/tensorchord/pgvecto.rs/releases/download/v0.4.0/vectors-pg17_x86_64-unknown-linux-gnu_0.4.0.zip
 	sha256sums_x86_64 = 7cb22249dde61e7da266280986f71f179b220a771385f2d9a2aa78fc02439386
-	source_aarch64 = pgvecto.rs-0.4.0-aarch64.zip::https://github.com/tensorchord/pgvecto.rs/releases/download/v0.4.0/vectors-pg16_aarch64-unknown-linux-gnu_0.4.0.zip
+	source_aarch64 = pgvecto.rs-0.4.0-aarch64.zip::https://github.com/tensorchord/pgvecto.rs/releases/download/v0.4.0/vectors-pg17_aarch64-unknown-linux-gnu_0.4.0.zip
 	sha256sums_aarch64 = 0c179799ee6bdae611da687e016e884c8155e16039813101eb4cf5236c90fd76
 
 pkgname = pgvecto.rs-bin

@@ -2,10 +2,10 @@
 # Contributer: Daniel Hillenbrand <codeworkx at bbqlinux dot org>
 
 _pkgname=pgvecto.rs
-_pg_mver=16
+_pg_mver=17
 pkgname="${_pkgname}-bin"
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scalable, Low-latency and Hybrid-enabled Vector Search in Postgres. Revolutionize Vector Search, not Database."
 arch=('x86_64' 'aarch64')
 url="https://github.com/tensorchord/${_pkgname}"
