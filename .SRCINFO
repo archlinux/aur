@@ -1,6 +1,6 @@
 pkgbase = python-p115updatedb
 	pkgdesc = 把 115 网盘的文件列表导出到数据库
-	pkgver = 0.0.9.4.5
+	pkgver = 0.0.9.4.6
 	pkgrel = 1
 	url = https://pypi.org/project/p115updatedb
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-p115updatedb
 	conflicts = python-p115updatedb
 	options = !strip
 	options = !debug
-	source = p115updatedb-0.0.9.4.5.tar.gz::https://files.pythonhosted.org/packages/source/p/p115updatedb/p115updatedb-0.0.9.4.5.tar.gz
-	sha256sums = ce8bd6d8d13b787569133cbf59db5678e491ce139e839940af33f6b78a88b5c3
+	source = p115updatedb-0.0.9.4.6.tar.gz::https://files.pythonhosted.org/packages/source/p/p115updatedb/p115updatedb-0.0.9.4.6.tar.gz
+	sha256sums = c11fe7f25aff2b1e4d8057626de2362e1a9f6209ea67334422429183835157d8
 
 pkgname = python-p115updatedb
