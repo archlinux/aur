@@ -1,8 +1,7 @@
-# Maintainer: masutu subric <masutu dot arch at googlemail dot com>
 # Contributor: masutu subric <masutu dot arch at googlemail dot com>
 pkgname=aseqview
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="An ALSA sequencer user-client which works as event viewer."
 arch=('i686' 'x86_64')
 url="http://www.alsa-project.org/~tiwai/alsa.html"
@@ -13,6 +12,7 @@ md5sums=('5f75e1b6fc5eab6b40ae2c7a74216a7b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  export CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration"
   ./configure --prefix=/usr/ || return 1
   make || return 1
 }
