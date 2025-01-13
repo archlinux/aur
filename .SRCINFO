@@ -1,6 +1,6 @@
 pkgbase = mongo-cxx-driver
 	pkgdesc = C++ driver for MongoDB
-	pkgver = 3.10.2
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = http://mongocxx.org/
 	arch = i686
@@ -8,13 +8,14 @@ pkgbase = mongo-cxx-driver
 	license = Apache-2.0
 	makedepends = cmake
 	makedepends = gcc
-	makedepends = mongo-c-driver>=1.27.0
 	depends = mongo-c-driver>=1.27.0
+	depends = glibc
+	depends = gcc-libs
 	provides = libbsoncxx
 	provides = libmongocxx
 	conflicts = libbsoncxx
 	conflicts = libmongocxx
-	source = https://github.com/mongodb/mongo-cxx-driver/releases/download/r3.10.2/mongo-cxx-driver-r3.10.2.tar.gz
-	sha256sums = 52b99b2866019b5ea25d15c5a39e2a88c70fe1259c40f1091deff8bfae0194be
+	source = https://github.com/mongodb/mongo-cxx-driver/releases/download/r4.0.0/mongo-cxx-driver-r4.0.0.tar.gz
+	sha256sums = d8a254bde203d0fe2df14243ef2c3bab7f12381dc9206d0c1b450f6ae02da7cf
 
 pkgname = mongo-cxx-driver

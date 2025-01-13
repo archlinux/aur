@@ -2,7 +2,7 @@
 # Contributors: Aleksandr Matuzok <sherilynhope@gmail.com>, Patryk Jaworski <regalis@regalis.tech>, John Chen <john.chen@10gen.com>
 
 pkgname=mongo-cxx-driver
-pkgver=3.10.2
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="C++ driver for MongoDB"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=(cmake gcc)
 provides=(libbsoncxx libmongocxx)
 conflicts=(libbsoncxx libmongocxx)
 source=(https://github.com/mongodb/mongo-cxx-driver/releases/download/r${pkgver}/mongo-cxx-driver-r${pkgver}.tar.gz)
-sha256sums=('52b99b2866019b5ea25d15c5a39e2a88c70fe1259c40f1091deff8bfae0194be')
+sha256sums=('d8a254bde203d0fe2df14243ef2c3bab7f12381dc9206d0c1b450f6ae02da7cf')
 
 build() {
     if [ -z "$CMAKE_GENERATOR" ]; then
