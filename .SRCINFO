@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201207w
 	pkgdesc = Epson inkjet printer driver (L110, L111, L210, L211, L300, L301, L303, L350, L351, L353, L355, L356, L550, L551, L555)
 	pkgver = 1.0.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = x86_64
 	license = custom:Epson End User Software License Agreement

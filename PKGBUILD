@@ -4,7 +4,7 @@
 _model="201207w"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Epson inkjet printer driver (L110, L111, L210, L211, L300, L301, L303, L350, L351, L353, L355, L356, L550, L551, L555)"
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -22,7 +22,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgsrc}/ppds"
   find . -type f -name '*.ppd' -exec \
-    sed -i "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}|/usr/share/${pkgname}|g" "{}" +
+    sed -i "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}|/usr/share/epson-inkjet-printer-filter|g" "{}" +
 }
 
 package() {
