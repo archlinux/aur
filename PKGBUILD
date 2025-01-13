@@ -37,13 +37,10 @@ package() {
   # Install other files such as LICENSE and README
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-
-  # Ensure the directory for configuration is created near the binary
-  install -dm755 "$pkgdir/usr/bin/tusk-launcher-config"
 }
 
 post_install() {
-  echo "Tusk Launcher has been installed. Configuration files (config.toml and app_cache.toml) will be generated in /usr/bin/tusk-launcher-config upon first use."
+  echo "Tusk Launcher has been installed. Configuration files (config.toml and app_cache.toml) will be generated in the same directory as the binary (/usr/bin) upon first use."
 }
 
 post_upgrade() {
@@ -51,6 +48,5 @@ post_upgrade() {
 }
 
 post_remove() {
-  # Optionally remove the configuration files when the package is removed
-  rm -rf /usr/bin/tusk-launcher-config
+  echo "Tusk Launcher has been removed. If needed, manually delete any configuration files in /usr/bin (config.toml and app_cache.toml)."
 }
