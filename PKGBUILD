@@ -2,7 +2,7 @@
 # Contributor: Julian Daube <joposter at gmail dot com>
 pkgname=kikit-git
 pkgdesc="Automation for KiCAD boards"
-pkgver=r702.ec75c91
+pkgver=r714.f972993
 pkgrel=1
 
 url="https://github.com/yaqwsx/KiKit.git"
