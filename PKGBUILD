@@ -3,8 +3,8 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=seamonkey
-pkgver=2.53.19
-pkgrel=2
+pkgver=2.53.20
+pkgrel=1
 pkgdesc="SeaMonkey internet suite"
 arch=(x86_64)
 url="https://www.seamonkey-project.org"
@@ -73,8 +73,8 @@ source=(
 )
 validpgpkeys=('A035C8C19219BA821ECEA86B64E628F8D684696D')  # Pablo Galindo Salgado <pablogsal@gmail.com>
 sha256sums=(
-  'a6c9a44d2a167f04fff5d4175ad61e934c6177852ab8ab56c319f242a73146e2'
-  '9554b2823d05c7d406325daec629c8b3f64e7d6a32db1bae5683c57d41de529f'
+  'c64a3e8e9082c71ed46a962a96c6a937932a466a6487ffc575a9ba9688f66c5b'
+  '2858ea3b53a79d5f7c18d301932ac2cd709b86255312fcdfe6c4935ca33f5823'
   '07a4356e912900e61a15cb0949a06c4a05012e213ecd6b4e84d0f67aabbee372'
   'SKIP'
 )
@@ -127,6 +127,7 @@ build() {
   LDFLAGS=$(printf '%s' "$LDFLAGS" | sed 's/-fuse-ld=[^[:space:]]*//')
   export LDFLAGS
   export MACH_USE_SYSTEM_PYTHON=1
+  export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   # Fix build on non utf-8 charsets
   LC_ALL=C.UTF-8 \
   ./mach build

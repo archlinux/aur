@@ -1,7 +1,7 @@
 pkgbase = seamonkey
 	pkgdesc = SeaMonkey internet suite
-	pkgver = 2.53.19
-	pkgrel = 2
+	pkgver = 2.53.20
+	pkgrel = 1
 	url = https://www.seamonkey-project.org
 	install = seamonkey.install
 	arch = x86_64
@@ -54,13 +54,13 @@ pkgbase = seamonkey
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = pulseaudio: Audio support
 	options = !lto
-	source = https://archive.seamonkey-project.org/releases/2.53.19/source/seamonkey-2.53.19.source.tar.xz
+	source = https://archive.seamonkey-project.org/releases/2.53.20/source/seamonkey-2.53.20.source.tar.xz
 	source = mozconfig
 	source = https://www.python.org/ftp/python/3.11.10/Python-3.11.10.tar.xz
 	source = https://www.python.org/ftp/python/3.11.10/Python-3.11.10.tar.xz.asc
 	validpgpkeys = A035C8C19219BA821ECEA86B64E628F8D684696D
-	sha256sums = a6c9a44d2a167f04fff5d4175ad61e934c6177852ab8ab56c319f242a73146e2
-	sha256sums = 9554b2823d05c7d406325daec629c8b3f64e7d6a32db1bae5683c57d41de529f
+	sha256sums = c64a3e8e9082c71ed46a962a96c6a937932a466a6487ffc575a9ba9688f66c5b
+	sha256sums = 2858ea3b53a79d5f7c18d301932ac2cd709b86255312fcdfe6c4935ca33f5823
 	sha256sums = 07a4356e912900e61a15cb0949a06c4a05012e213ecd6b4e84d0f67aabbee372
 	sha256sums = SKIP
 
