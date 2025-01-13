@@ -1,6 +1,6 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 pkgname=zmusic
-pkgver=1.1.14.r5.g4cc05f7
+pkgver=1.1.14.r7.gf6facda
 pkgrel=1
 pkgdesc="GZDoom's music system as a standalone library"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url='https://github.com/ZDoom/ZMusic'
 license=('BSD' 'GPL3' 'LGPL2.1' 'LGPL3' 'custom:dumb')
 depends=('alsa-lib' 'libsndfile' 'mpg123')
 optdepends=('soundfont-fluid: default soundfont for FluidSynth')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 source=("${pkgname}::git+https://github.com/ZDoom/ZMusic"
         '0001-Use-correct-soundfont-path.patch')
 sha256sums=('SKIP'
