@@ -1,0 +1,18 @@
+pkgbase = c3-lsp
+	pkgdesc = Client side ColdFusion RDS protocol.
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/pherrymason/c3-lsp
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = make
+	makedepends = go
+	depends = glibc
+	source = c3-lsp-0.3.3.tar.gz::https://github.com/pherrymason/c3-lsp/archive/refs/tags/v0.3.3.tar.gz
+	sha512sums = d199317859e16c3c63e3b7e142fa7d86495e1b9cb2937a2ab2a4c29427cfd87fda1ee834af35525f9ceb4e8c332671791b83b24201fbc0efb2faa8afbc287edb
+
+pkgname = c3-lsp
