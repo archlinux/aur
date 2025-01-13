@@ -1,11 +1,11 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkg=qsv
 pkgname=qsv-bin
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='CSVs sliced, diced & analyzed. Quicksilver (qsv) is a fork of the popular xsv utility'
 arch=(x86_64)
-url='https://github.com/jqnatividad/qsv'
+url='https://github.com/dathere/qsv'
 license=('MIT' 'UNLICENSE')
 provides=('qsv')
 conflicts=('qsv')
@@ -22,7 +22,7 @@ sha256sums=('08579b91a9557dcf2ec5085c2f4e01766c489e18f65128f854427796ad31acb4'
             'bfcc6b71278b6d2c8f5e540eb46d3a82386c74e3302b0df78b90b6a0a368119e'
             'c880ed193af565fcf044a33f45ae1c1e92f9f2c2ad2409a00389e30dbcae1043'
             'eda5c6f4bb4a5b417460caa0eddc28db37e37f233f860741df12db7a2dd3fb3a')
-sha256sums_x86_64=('919182d45ac7a7e46c73d34bdd0abfa0fd84abf562c102cacc0496f03f06608f')
+sha256sums_x86_64=('10231a522f250a0badbdaef9b2a5bd381357bc733df32a31c0a958612b7a2c0b')
 
 package() {
     install -Dm0755 "qsv" -t "$pkgdir/usr/bin/"
