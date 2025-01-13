@@ -6,7 +6,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=polkit-consolekit
-pkgver=125
+pkgver=126
 pkgrel=1
 pkgdesc="PolicyKit with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ options=('!libtool')
 source=($url/archive/refs/tags/$pkgver.tar.gz
         polkit.conf
         99-consolekit.rules)
-sha256sums=('ea5cd6e6e2afa6bad938ee770bf0c2cd9317910f37956faeba2869adcf3747d1'
+sha256sums=('2814a7281989f6baa9e57bd33bbc5e148827e2721ccef22aaf28ab2b376068e8'
             'f12f590cf5ad621710f75a40b5af88e186d3a0a17d682a8bbe03b833525a3a39'
             'c7f887e1a8429106b43e8e81849c731e18b3055ef5e9ce0d44706ec23e9ef99e')
 
@@ -36,7 +36,7 @@ build() {
 package() {
   meson install -C build --destdir "$pkgdir"
 
-    install -Dm644 "${srcdir}"/polkit-$pkgver/src/polkitbackend/50-default.rules \
+    install -Dm644 "${srcdir}"/build/src/polkitbackend/50-default.rules \
         "${pkgdir}"/etc/polkit-1/rules.d
 
     install -Dm644 "${srcdir}"/polkit.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
