@@ -1,6 +1,6 @@
 pkgbase = r-ff
 	pkgdesc = Memory-Efficient Storage of Large Data on Disk and Fast Access Functions
-	pkgver = 4.5.0
+	pkgver = 4.5.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ff
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-ff
 	depends = r-bit
 	optdepends = r-biglm
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/ff_4.5.0.tar.gz
-	sha256sums = 2aed9052a93ca81af4c8cc7defce0f7aa0206b442b4795b6219f6e56b341188e
+	source = https://cran.r-project.org/src/contrib/ff_4.5.2.tar.gz
+	sha256sums = 0551f57cfcc7b05f3ed85b4b9570b3a96597e687db0c67fb3f26e38d92c6352c
 
 pkgname = r-ff
