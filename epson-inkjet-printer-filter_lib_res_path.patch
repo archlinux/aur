@@ -1,0 +1,13 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -55,8 +55,8 @@
+ AC_SUBST(DL_LIBS)
+ AC_SUBST(STDCPP_LIBS)
+ 
+-CORE_LIBRARY_PATH=${prefix}/lib"$LSB_ARCH"
+-CORE_RESOURCE_PATH=${prefix}/resource
++CORE_LIBRARY_PATH=${prefix}/lib
++CORE_RESOURCE_PATH=${prefix}/share/epson-inkjet-printer-filter/resource
+ 
+ AC_SUBST(CORE_LIBRARY_PATH)
+ AC_SUBST(CORE_RESOURCE_PATH)

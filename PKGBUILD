@@ -2,7 +2,7 @@
 
 pkgname="epson-inkjet-printer-filter"
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Epson inkjet printer filter used with CUPS"
 arch=('x86_64' 'i686')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -11,9 +11,11 @@ depends=('cups' 'glibc' 'libcups')
 _pkgsrc="${pkgname}-${pkgver}"
 # source bundle chosen arbitrarily, they all ship identical filter sources
 source=("https://download3.ebz.epson.net/dsc/f/03/00/15/64/87/25d34a13841e5e95d80266e6fd8dfcdf67c95634/epson-inkjet-printer-201207w-1.0.1-1.src.rpm"
-        "${pkgname}_release_build_flags.patch")
+        "${pkgname}_release_build_flags.patch"
+        "${pkgname}_lib_res_path.patch")
 sha256sums=('ac757bb6d392b6662779228e518bb3e9b4de02d275235c4afd41465447d38b45'
-            '94a18c4839ebb3bbd8224c02075fe3489dd7dfe873b683adf3149250c6a8ad16')
+            '94a18c4839ebb3bbd8224c02075fe3489dd7dfe873b683adf3149250c6a8ad16'
+            '496ec60ac0d324bf9ebc652b0b1cbe73a98651d408f8903d41aa049bbc53807b')
 
 prepare() {
   cd "${srcdir}"
@@ -21,6 +23,7 @@ prepare() {
 
   cd "${_pkgsrc}"
   patch -Np1 -i "${srcdir}/${pkgname}_release_build_flags.patch"
+  patch -Np1 -i "${srcdir}/${pkgname}_lib_res_path.patch"
 }
 
 pkgver() {

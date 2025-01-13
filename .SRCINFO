@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-filter
 	pkgdesc = Epson inkjet printer filter used with CUPS
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,9 @@ pkgbase = epson-inkjet-printer-filter
 	depends = libcups
 	source = https://download3.ebz.epson.net/dsc/f/03/00/15/64/87/25d34a13841e5e95d80266e6fd8dfcdf67c95634/epson-inkjet-printer-201207w-1.0.1-1.src.rpm
 	source = epson-inkjet-printer-filter_release_build_flags.patch
+	source = epson-inkjet-printer-filter_lib_res_path.patch
 	sha256sums = ac757bb6d392b6662779228e518bb3e9b4de02d275235c4afd41465447d38b45
 	sha256sums = 94a18c4839ebb3bbd8224c02075fe3489dd7dfe873b683adf3149250c6a8ad16
+	sha256sums = 496ec60ac0d324bf9ebc652b0b1cbe73a98651d408f8903d41aa049bbc53807b
 
 pkgname = epson-inkjet-printer-filter
