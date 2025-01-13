@@ -4,7 +4,7 @@ pkgname=godsvg-bin
 _pkgbase=godsvg
 _pkgname=GodSVG
 
-_pkgver=1.0-alpha6
+_pkgver=1.0-alpha7
 pkgver=${_pkgver//-/_}
 pkgrel=1
 
@@ -31,13 +31,15 @@ conflicts=(
 source=(
     "GodSVG-${_pkgver}.zip::${_url}/releases/download/v${_pkgver}/GodSVG.Linux.zip"
     "LICENSE::${_url}/raw/main/LICENSE"
-    "godsvg.png::https://raw.githubusercontent.com/MewPurPur/GodSVG/main/visual/icon.png"
-    "godsvg.desktop"
+    "godsvg.png::${_url}/raw/refs/heads/main/assets/logos/icon.png"
+    "godsvg.svg::${_url}/raw/refs/heads/main/assets/logos/icon.svg"
+    "godsvg.desktop::${_url}/raw/main/assets/GodSVG.desktop"
 )
-sha256sums=('dde0968cb47abf6b026315a85aedec083ddaf8d990a9c0c7ecee51da7393d5e2'
+sha256sums=('af67bfa3ecaaa93ee9f1c1fa2f7d5dd3d868a6b71f9fd0ea3606c9ec13db2874'
             'a2e1a9795671794be3a25bd921a16f0fa9819ede1ead54a13da6edb34bfc0ee1'
             'c809390a25c9a922a1f122d48492dac8ed32c288df827c5605e86358d84cd1c1'
-            '8d138c2307d7ff1ad0a9a04495578a372f7e1bdd50d547c200f423ab57c6e22c')
+            '856be8b9a058cb35e1a75d50408d21498b127d68d47836787336cad740593f18'
+            '9352b05a21eb2ee440236610341591bffec46a14c92263ad0a229965f696c71a')
 
 options=(
     !strip
@@ -49,4 +51,5 @@ package() {
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 "godsvg.desktop" -t "${pkgdir}/usr/share/applications/"
     install -Dm644 "godsvg.png" -t "${pkgdir}/usr/share/pixmaps/"
+    install -Dm644 "godsvg.svg" -t "${pkgdir}/usr/share/pixmaps/"
 }
