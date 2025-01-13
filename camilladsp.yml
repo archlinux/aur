@@ -10,12 +10,12 @@ devices:
   capture:
     type: Alsa
     channels: 2
-    device: "hw:Loopback,0"
+    device: hw:Loopback,0
     format: S32LE
   playback:
     type: Alsa
     channels: 2
-    device: "hw:0,0"
+    device: hw:0,0
     format: S16LE
   enable_rate_adjust: false
   target_level: 2048
