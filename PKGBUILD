@@ -2,7 +2,7 @@
 pkgname='c3-lsp'
 pkgver='0.3.3'
 pkgrel=1
-pkgdesc='Client side ColdFusion RDS protocol.'
+pkgdesc='Language Server for the C3 language.'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url='https://github.com/pherrymason/c3-lsp'
 
