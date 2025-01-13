@@ -3,7 +3,7 @@
 
 _pkgname=amaranth-boards
 pkgname="python-$_pkgname-git"
-pkgver=r250.19b9732
+pkgver=r253.9d97c48
 pkgrel=1
 pkgdesc="Board definitions for Amaranth HDL"
 arch=(any)
