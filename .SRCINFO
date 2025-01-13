@@ -1,18 +1,14 @@
 pkgbase = epson-inkjet-printer-201212w
-	pkgdesc = Epson printer driver (WF-3010, WF-3520, WF-3530, WF-3540)
-	pkgver = 1.0.0
-	pkgrel = 10
-	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
-	arch = i686
+	pkgdesc = Epson inkjet printer driver (WF-3010, WF-3011, WF-3012, WF-3520, WF-3521, WF-3530, WF-3531, WF-3540, WF-3541)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = x86_64
-	license = LGPL
-	license = custom:Epson Licence Agreement
-	depends = cups
-	depends = ghostscript
-	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201212w-1.0.0-1lsb3.2.src.rpm
-	source = fixbuild.patch
-	sha256sums = 822d659ce1c15183a257b0a88b90b3e7ded43071fb7b98cbb5d433be6e298e02
-	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/65/30/e36d680e400910682e7d9c1e67d0e328739effe4/epson-inkjet-printer-201212w-1.0.1-1.src.rpm
+	sha256sums = 75fec25b203d98c6f76492bb7eca790fcf6136796e567fcc6302108f3ec3d17b
 
 pkgname = epson-inkjet-printer-201212w
-
