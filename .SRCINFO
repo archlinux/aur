@@ -14,7 +14,7 @@ pkgbase = electerm-git
 	makedepends = python-setuptools
 	makedepends = gcc
 	makedepends = curl
-	depends = electron26
+	depends = electron30
 	provides = electerm=1.51.0
 	conflicts = electerm
 	source = electerm.git::git+https://github.com/electerm/electerm.git
