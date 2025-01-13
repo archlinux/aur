@@ -4,8 +4,8 @@
 
 _pkgname=pandoc
 pkgname=$_pkgname-sile-git
-_pkgver=3.6
-pkgver=3.6.r12.g965d47655
+_pkgver=3.6.2
+pkgver=3.6.2.r12.gceab47820
 pkgrel=1
 pkgdesc='Conversion between markup formats (sile fork, static build)'
 url='https://pandoc.org'
@@ -32,11 +32,6 @@ conflicts=("$_pkgname-cli"
            "haskell-$_pkgname") # binary and man page are in different arch packages
 source=("$pkgname::git+https://github.com/alerque/$_pkgname.git#branch=sile-$_pkgver")
 sha256sums=('SKIP')
-
-prepare() {
-	cd "$pkgname"
-	# stack config set resolver lts-22.22 # ghc-9.6.5
-}
 
 pkgver() {
 	cd "$pkgname"
