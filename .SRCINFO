@@ -1,6 +1,6 @@
 pkgbase = python-langfuse
 	pkgdesc = A client library for accessing langfuse
-	pkgver = 2.57.5
+	pkgver = 2.57.6
 	pkgrel = 1
 	url = https://github.com/langfuse/langfuse-python
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-langfuse
 	optdepends = python-langchain
 	optdepends = python-llama-index
 	optdepends = python-openai
-	source = langfuse-2.57.5.tar.gz::https://files.pythonhosted.org/packages/source/l/langfuse/langfuse-2.57.5.tar.gz
-	sha256sums = 48b4db5d4e86824153ad6f1e10d14c2c7994bcbf67578c2bdd6786bf3896c3e8
+	source = langfuse-2.57.6.tar.gz::https://files.pythonhosted.org/packages/source/l/langfuse/langfuse-2.57.6.tar.gz
+	sha256sums = bc36ffb711f3014f9f5390da25fd71c6105a31ca8d454bc9f303042510de0ae1
 
 pkgname = python-langfuse
