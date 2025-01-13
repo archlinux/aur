@@ -1,7 +1,7 @@
 # Maintainer: Hadi Chokr <hadichokr@icloud.com>
 pkgname=arch-update-helper
 pkgbase=arch-update-helper
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A Systray Utility for Checking Arch Linux Updates and Installing Them"
 arch=('any')
@@ -29,7 +29,10 @@ package() {
 
     # Install the configuration file
     install -Dm644 "config/arch-update-helper" "$pkgdir/etc/skel/.config/arch-update-helper"
-
+    
+    # Install the Man Page 
+    install -Dm 644 "/man/arch-update-helper.1.gz" "$pkgdir/usr/share/man/man1/arch-update-helper.1.gz"
+    
     # Install the .desktop file
     install -Dm644 "arch-update-helper.desktop" "$pkgdir/etc/xdg/autostart/arch-update-helper.desktop"
 }
