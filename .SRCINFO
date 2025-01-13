@@ -1,11 +1,11 @@
 pkgbase = nethack-git
 	pkgdesc = A single player dungeon exploration game
-	pkgver = 3.6.7_Released+r9120+g55561da63
+	pkgver = 3.6.7_Released+r17548+g55561da63
 	pkgrel = 1
 	url = https://github.com/NetHack/NetHack
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	makedepends = git
 	depends = ncurses
 	depends = gzip
