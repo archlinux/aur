@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=OpenAudible
-Comment=OpenAudible helps manage your Audible audiobooks
-Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 openaudible
-StartupWMClass=install4j-org-openaudible-desktop-Application
-Icon=openaudible
-Categories=Utility;
