@@ -1,13 +1,12 @@
 pkgbase = python-kicadmodtree
 	pkgdesc = This repository contains scripts to generate custom KiCAD footprints using python, and a framework which allows us to create custom KiCAD footprint. A big bunch of footprints of the KiCad library was developed using this framework.
-	pkgver = 1.1.2.r2434.g0613c29
+	pkgver = 1.1.2.r2435.gac7fce3
 	pkgrel = 1
 	url = https://gitlab.com/kicad/libraries/kicad-footprint-generator
 	arch = any
 	license = GPL-3.0-or-later
 	checkdepends = python-pytest
 	makedepends = git
-	makedepends = python-future
 	makedepends = python-pycodestyle
 	makedepends = python-build
 	makedepends = python-installer
