@@ -1,7 +1,7 @@
 pkgbase = quicssh-rs
 	pkgdesc = A simple ssh server based on quic protocol
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oowl/quicssh-rs
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,8 @@ pkgbase = quicssh-rs
 	options = !debug
 	options = !lto
 	source = quicssh-rs-0.1.5.tar.gz::https://github.com/oowl/quicssh-rs/archive/v0.1.5.tar.gz
+	source = quicssh-rs.service
 	b2sums = c512cdf06c557a94fa41ac334d2cf5a12af6bdf34da08152fac5a1020f18e19690b8c588f54904073928e6c79c7860fe84d38219bb8495e365f07b3df33e8a5d
+	b2sums = SKIP
 
 pkgname = quicssh-rs

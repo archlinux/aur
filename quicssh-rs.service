@@ -1,0 +1,31 @@
+[Unit]
+Description=ssh QUIC proxy server
+After=network.target
+
+[Service]
+DynamicUser=yes
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+PrivateDevices=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectProc=invisible
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@resources @privileged
+
+Restart=always
+ExecStart=/usr/bin/quicssh-rs server
+
+[Install]
+WantedBy=multi-user.target
