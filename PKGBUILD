@@ -1,7 +1,7 @@
 # Maintainer: JakobDev<jakobdev at gmx dot de>
 
 pkgname=mdremotifier
-pkgver=0.5.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Remotify local links in Markdown"
 arch=("any")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("python" "python-mistletoe" "python-beautifulsoup4" "python-rich" "python-rich-argparse" "python-typing_extensions" "python-colorama")
 makedepends=("python-setuptools" "python-build" "python-installer" "python-wheel")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/realazthat/mdremotifier/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("deb556f6c93627d15b79feb7f8f943144b9b373e2269981902a3ab42a96b7217")
+sha256sums=("6060f903054c9c56b6975b498d1cbcee60745129ef5d277bbe357af9c41fa178")
 
 build() {
     cd "mdremotifier-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = mdremotifier
 	pkgdesc = Remotify local links in Markdown
-	pkgver = 0.5.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/realazthat/mdremotifier
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = mdremotifier
 	depends = python-rich-argparse
 	depends = python-typing_extensions
 	depends = python-colorama
-	source = mdremotifier-0.5.0.tar.gz::https://github.com/realazthat/mdremotifier/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = deb556f6c93627d15b79feb7f8f943144b9b373e2269981902a3ab42a96b7217
+	source = mdremotifier-1.0.0.tar.gz::https://github.com/realazthat/mdremotifier/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 6060f903054c9c56b6975b498d1cbcee60745129ef5d277bbe357af9c41fa178
 
 pkgname = mdremotifier
