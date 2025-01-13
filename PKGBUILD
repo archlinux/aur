@@ -1,13 +1,13 @@
 # Maintainer: Dinamyc <dinamycdinamyc at gmail dot com>
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=oblivion-desktop-bin
-pkgver=2.40.0
+pkgver=2.42.0
 pkgrel=1
 pkgdesc="Unofficial Warp Client for Windows/Mac/Linux (Pre-compiled version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/bepass-org/oblivion-desktop"
 license=("custom:${pkgname%-bin}")
-depends=('at-spi2-core' 'gtk3' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nss' 'util-linux-libs' 'xdg-utils')
+depends=('at-spi2-core' 'gtk3' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nss' 'util-linux-libs' 'xdg-utils' 'polkit')
 optdepends=('libappindicator-gtk3: systray and indicator support')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
@@ -27,10 +27,10 @@ source=(
 
 # Initialize the sha256sums array
 if [[ "$CARCH" == "x86_64" ]]; then
-    sha256sums=('fb1bdf3a4e71165a8bf1b8f74d26cac5e9d0c2f4e553953c7683241ec123dc04'
+    sha256sums=('4179eeef833a87fdb45cc232e4e8d2d1d0a30dbc5f91f399943f7529d3633806'
                 '1c13293911a8d0cf50858ed9e2c4f9d0eb8df7ae5f1760f192604cb0f1abd6e8')
 elif [[ "$CARCH" == "aarch64" ]]; then
-    sha256sums=('4d0cd21c8bce8c62865d9ff508ce9ae895e92cf611a25ac82993b3d8bb4ab7c1'
+    sha256sums=('a1e2580fc283552d9586bbcd2e9dfed4f005f1f0d42a87b3895ca49d7e23c85a'
                 '1c13293911a8d0cf50858ed9e2c4f9d0eb8df7ae5f1760f192604cb0f1abd6e8')
 else
     echo "Unsupported architecture: $CARCH"
