@@ -1,11 +1,13 @@
 pkgbase = browsers-bin
 	pkgdesc = Open the right browser at the right time
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://browsers.software
 	arch = x86_64
 	license = Apache
 	license = MIT
+	makedepends = desktop-file-utils
+	makedepends = xdg-utils
 	provides = browsers=0.6.0
 	conflicts = browsers-git
 	source = browsers_linux-0.6.0.tar.xz::https://github.com/Browsers-software/browsers/releases/download/0.6.0/browsers_linux.tar.xz

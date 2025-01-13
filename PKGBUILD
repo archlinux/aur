@@ -1,11 +1,12 @@
 # Maintainer: mpsijm
 pkgname=browsers-bin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open the right browser at the right time"
 arch=("x86_64")
 url="https://browsers.software"
 license=("Apache" "MIT")
+makedepends=("desktop-file-utils" "xdg-utils")
 provides=("browsers=$pkgver")
 conflicts=("browsers-git")
 # Make source file name unique: https://wiki.archlinux.org/title/PKGBUILD#source
