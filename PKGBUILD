@@ -3,12 +3,12 @@
 _projectname='azure-monitor-ingestion'
 pkgname="python-$_projectname"
 pkgver='1.0.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Microsoft Azure Monitor Ingestion Client Library for Python'
 arch=('any')
 url='https://github.com/Azure/azure-sdk-for-python'
 license=('MIT')
-depends=('python>=3.8.0' 'python-azure-core>=1.28.0' 'python-isodate>=0.6.0' 'python-typing_extensions>=4.0.1')
+depends=('python>=3.8.0' 'python-azure-core>=1.28.0' 'python-isodate>=0.6.0')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${_projectname}_$pkgver.tar.gz")
 b2sums=('85513b1f2620321b3fce8d38c92065f4de155599592faf589d958e81be549c68b5e4714ce0a1a5b33740c6322d76d6ebc8972b6810727e42b310bccb56f3fd57')
