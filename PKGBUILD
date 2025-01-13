@@ -5,7 +5,7 @@
 pkgname=porter-cli
 pkgver=0.57.4
 pkgrel=1
-pkgdesc="Porter-dev CLI"
+pkgdesc="CLI for Porter.dev, a Kubernetes powered PaaS that runs in your own cloud."
 arch=('x86_64')
 url="https://www.porter.run/"
 license=('custom:porter')
