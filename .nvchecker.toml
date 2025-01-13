@@ -1,0 +1,4 @@
+[fuse-archive]
+source="git"
+git="https://github.com/google/fuse-archive.git"
+prefix="v"
