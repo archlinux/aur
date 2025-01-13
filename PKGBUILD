@@ -7,7 +7,7 @@ pkgbase=wordnet
 pkgname=(wordnet-common wordnet-progs)
 pkgver=3.1
 _srcver=3.0
-pkgrel=9
+pkgrel=10
 arch=('i686' 'x86_64')
 url="https://wordnet.princeton.edu/"
 license=("LicenseRef-custom")
@@ -54,7 +54,8 @@ package_wordnet-common() {
   make DESTDIR="$pkgdir" install
   # Replace dictionary files
   cp -ar "${pkgdir}/usr/dict/"* "${pkgdir}/usr/share/wordnet/"
-  rm -fr "${pkgdir}/usr/dict" #clean this default directory
+  cp -ar "${srcdir}/dict/"* "${pkgdir}/usr/share/wordnet/" #add 3.1 dict files
+  rm -fr "${pkgdir}/usr/dict"                              #clean this default directory
   rm -rf "${pkgdir}/usr/"{lib,include,bin,dict}
   rm -rf "${pkgdir}/usr/share/man"
   ln -s /usr/share/wordnet "${pkgdir}/usr/share/wordnet/dict" #support some old scripts
