@@ -1,7 +1,7 @@
 pkgbase = nri-nginx-bin
 	pkgdesc = nginx integration for New Relic
-	pkgver = 3.5.0
-	pkgrel = 2
+	pkgver = 3.5.1
+	pkgrel = 1
 	url = https://github.com/newrelic/nri-nginx
 	arch = aarch64
 	arch = armv7h
@@ -11,11 +11,11 @@ pkgbase = nri-nginx-bin
 	depends = newrelic-infra
 	provides = nri-nginx
 	conflicts = nri-nginx
-	source_aarch64 = https://github.com/newrelic/nri-nginx/releases/download/v3.5.0/nri-nginx_linux_3.5.0_arm64.tar.gz
-	sha256sums_aarch64 = ec8c129398eaa8a9a7c06a0581f61ac7d63f3a2fcbafc1ad359b893320ef9466
-	source_armv7h = https://github.com/newrelic/nri-nginx/releases/download/v3.5.0/nri-nginx_linux_3.5.0_arm.tar.gz
-	sha256sums_armv7h = 4e6d691bea5de5664ee69324b8de3875197080c34098de3ea5366a6f77a25739
-	source_x86_64 = https://github.com/newrelic/nri-nginx/releases/download/v3.5.0/nri-nginx_linux_3.5.0_amd64.tar.gz
-	sha256sums_x86_64 = bcdeef3a20be618f1a8ffe886df294ee9d21c43b99b905f876d7a78d1affcd78
+	source_aarch64 = https://github.com/newrelic/nri-nginx/releases/download/v3.5.1/nri-nginx_linux_3.5.1_arm64.tar.gz
+	sha256sums_aarch64 = 0511c9a1208381ab7db319fd41fb47ef6667587fa17a5a474ccde3613cf60de7
+	source_armv7h = https://github.com/newrelic/nri-nginx/releases/download/v3.5.1/nri-nginx_linux_3.5.1_arm.tar.gz
+	sha256sums_armv7h = 83d5a4c2eb1a4023291ce129a92986306017e61ca111d91dc1a5cb80d338749c
+	source_x86_64 = https://github.com/newrelic/nri-nginx/releases/download/v3.5.1/nri-nginx_linux_3.5.1_amd64.tar.gz
+	sha256sums_x86_64 = 195836821f5b6367390dfc3c833de27d299cf0e3b336a2fdaec711e14c9122e6
 
 pkgname = nri-nginx-bin

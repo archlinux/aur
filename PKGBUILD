@@ -1,8 +1,8 @@
 # Maintainer: Trey Blancher $(base64 -d <<< dHJleUBibGFuY2hlci5uZXQK)
 pkgname=nri-nginx-bin
 _pkg=${pkgname/-bin/}
-pkgver=3.5.0
-pkgrel=2
+pkgver=3.5.1
+pkgrel=1
 pkgdesc="nginx integration for New Relic"
 arch=(aarch64 armv7h x86_64)
 url="https://github.com/newrelic/${_pkg}"
@@ -15,9 +15,9 @@ conflicts=( ${_pkg} )
 source_aarch64=(https://github.com/newrelic/${_pkg}/releases/download/v${pkgver}/${_pkg}_linux_${pkgver}_arm64.tar.gz)
 source_armv7h=(https://github.com/newrelic/${_pkg}/releases/download/v${pkgver}/${_pkg}_linux_${pkgver}_arm.tar.gz)
 source_x86_64=(https://github.com/newrelic/${_pkg}/releases/download/v${pkgver}/${_pkg}_linux_${pkgver}_amd64.tar.gz)
-sha256sums_aarch64=('ec8c129398eaa8a9a7c06a0581f61ac7d63f3a2fcbafc1ad359b893320ef9466')
-sha256sums_armv7h=('4e6d691bea5de5664ee69324b8de3875197080c34098de3ea5366a6f77a25739')
-sha256sums_x86_64=('bcdeef3a20be618f1a8ffe886df294ee9d21c43b99b905f876d7a78d1affcd78')
+sha256sums_aarch64=('0511c9a1208381ab7db319fd41fb47ef6667587fa17a5a474ccde3613cf60de7')
+sha256sums_armv7h=('83d5a4c2eb1a4023291ce129a92986306017e61ca111d91dc1a5cb80d338749c')
+sha256sums_x86_64=('195836821f5b6367390dfc3c833de27d299cf0e3b336a2fdaec711e14c9122e6')
 
 package() {
     mkdir -p ${pkgdir}/etc/newrelic-infra/integrations.d
