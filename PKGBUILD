@@ -2,7 +2,7 @@
 pkgname=ttf-lxgw-wenkai-tc-mono
 pkgver=1.501
 pkgrel=1
-pkgdesc="the traditional chinese mono version of LXGW WenKai"
+pkgdesc="The traditional chinese mono version of LXGW WenKai"
 arch=('any')
 url='https://github.com/lxgw/LxgwWenkaiTC'
 license=('OFL-1.1')

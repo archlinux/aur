@@ -1,5 +1,5 @@
 pkgbase = ttf-lxgw-wenkai-tc-mono
-	pkgdesc = the traditional chinese mono version of LXGW WenKai
+	pkgdesc = The traditional chinese mono version of LXGW WenKai
 	pkgver = 1.501
 	pkgrel = 1
 	url = https://github.com/lxgw/LxgwWenkaiTC
