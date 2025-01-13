@@ -1,7 +1,7 @@
 pkgbase = mirth
 	pkgdesc = Compiler for the Mirth programming language
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mirth-lang/mirth
 	arch = i686
 	arch = x86_64
