@@ -1,0 +1,21 @@
+pkgbase = er-editor-git
+	pkgdesc = A game editor for Pokemon Elite Redux made with Electron js.(Use system-wide electron)
+	pkgver = 0.5.4.r1.g0dad819
+	pkgrel = 1
+	url = https://github.com/ForwardFeed/er-editor
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron28
+	provides = er-editor=0.5.4
+	conflicts = er-editor
+	source = er-editor.git::git+https://github.com/ForwardFeed/er-editor
+	source = er-editor.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = er-editor-git
