@@ -10,7 +10,7 @@ pkgbase = jitsi-meet-desktop-git
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
-	depends = electron32
+	depends = electron33
 	provides = jitsi-meet-desktop=2024.10.0
 	conflicts = jitsi-meet-desktop
 	source = jitsi-meet-desktop.git::git+https://github.com/jitsi/jitsi-meet-electron
