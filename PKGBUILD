@@ -1,7 +1,8 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: Andre Klitzing <andre () incubo () de>
 
-pkgname="epson-inkjet-printer-201207w"
+_model="201207w"
+pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.1
 pkgrel=5
 pkgdesc="Epson inkjet printer driver (L110, L111, L210, L211, L300, L301, L303, L350, L351, L353, L355, L356, L550, L551, L555)"
