@@ -30,8 +30,10 @@ build() {
 
 package() {
   cd "$srcdir/Tusk-Launcher"
-  # Install the binary
+  # Install the binary globally to /usr/bin
   install -Dm755 "target/release/Tusk-Launcher" "$pkgdir/usr/bin/tusk-launcher"
+  
+  # Optionally, install a man page or completion scripts here if applicable
   
   # Install other files such as LICENSE and README
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
