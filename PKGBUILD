@@ -3,7 +3,7 @@
 
 pkgname=python-mitmproxy-rs-git
 _pyname=mitmproxy_rs
-pkgver=0.11.4.r2.g07e4935
+pkgver=0.11.4.r3.g8e09914
 pkgrel=1
 pkgdesc="Python bindings for mitmproxy's Rust code"
 arch=('x86_64')
@@ -12,15 +12,18 @@ license=('MIT')
 depends=(
   'gcc-libs'
   'glibc'
-  'python-mitmproxy-linux-git'
+  'python'
 )
 makedepends=(
+  'bpf-linker'
   'cargo'
   'git'
   'maturin'
   'python-installer'
+  'rust-src'
 )
 conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 options=(!lto)
 source=("git+${url}")
 sha256sums=('SKIP')
@@ -36,20 +39,26 @@ pkgver() {
 build() {
   cd mitmproxy_rs/mitmproxy-rs
   maturin build --release --strip
+  cd ../mitmproxy-linux
+  RUSTC_BOOTSTRAP=1 maturin build --release --strip
 }
 
 check() {
   local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
   cd mitmproxy_rs
-  python -m installer --destdir=test_dir target/wheels/*.whl
+  for wheel in target/wheels/*.whl ; do
+    python -m installer --destdir=test_dir "$wheel"
+  done
   export PYTHONPATH="test_dir/${_site_packages}:${PYTHONPATH}"
   python -c 'import mitmproxy_rs'
 }
 
 package() {
   cd mitmproxy_rs
-  python -m installer --destdir="${pkgdir}" target/wheels/*.whl
+  for wheel in target/wheels/*.whl ; do
+    python -m installer --destdir="${pkgdir}" "$wheel"
+  done
   install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
