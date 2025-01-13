@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-filter
 	pkgdesc = Epson inkjet printer filter used with CUPS
 	pkgver = 1.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = x86_64
 	arch = i686

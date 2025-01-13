@@ -2,15 +2,16 @@
 
 pkgname="epson-inkjet-printer-filter"
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Epson inkjet printer filter used with CUPS"
 arch=('x86_64' 'i686')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('LGPL-2.1-or-later' 'custom:Epson End User Software License Agreement')
 depends=('cups' 'glibc' 'libcups')
 _pkgsrc="${pkgname}-${pkgver}"
-# source bundle chosen arbitrarily, they all ship identical filter sources
-source=("https://download3.ebz.epson.net/dsc/f/03/00/15/64/87/25d34a13841e5e95d80266e6fd8dfcdf67c95634/epson-inkjet-printer-201207w-1.0.1-1.src.rpm"
+_bundlesrc="epson-inkjet-printer-201207w-1.0.1"
+# source bundle chosen arbitrarily; all of them ship identical filter sources
+source=("https://download3.ebz.epson.net/dsc/f/03/00/15/64/87/25d34a13841e5e95d80266e6fd8dfcdf67c95634/${_bundlesrc}-1.src.rpm"
         "${pkgname}_release_build_flags.patch"
         "${pkgname}_lib_res_path.patch")
 sha256sums=('ac757bb6d392b6662779228e518bb3e9b4de02d275235c4afd41465447d38b45'
@@ -20,6 +21,7 @@ sha256sums=('ac757bb6d392b6662779228e518bb3e9b4de02d275235c4afd41465447d38b45'
 prepare() {
   cd "${srcdir}"
   bsdtar -xzf "${_pkgsrc}.tar.gz"
+  bsdtar -xzf "${_bundlesrc}.tar.gz"
 
   cd "${_pkgsrc}"
   patch -Np1 -i "${srcdir}/${pkgname}_release_build_flags.patch"
@@ -55,4 +57,8 @@ package() {
 
   cd "src"
   install -vDm755 "${pkgname//-/_}" "${pkgdir}/usr/lib/cups/filter/${pkgname//-/_}"
+
+  cd "${srcdir}/${_bundlesrc}"
+  find "watermark" -type f -exec \
+    install -vDm644 "{}" "${pkgdir}/usr/share/${pkgname}/{}" \;
 }
