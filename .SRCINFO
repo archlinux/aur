@@ -1,6 +1,6 @@
 pkgbase = bpfmt-git
 	pkgdesc = A tool for formatting AOSP soong blueprint build files
-	pkgver = 20240612.r9.b46c67c
+	pkgver = 20241021.r32.5753849
 	pkgrel = 1
 	url = https://android.googlesource.com/platform/build/blueprint
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = bpfmt-git
 	makedepends = git
 	makedepends = go
 	provides = bpfmt
+	provides = bpmodify
 	source = git+https://android.googlesource.com/platform/build/blueprint
 	sha256sums = SKIP
 
