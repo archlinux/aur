@@ -1,0 +1,21 @@
+pkgbase = jollyson
+	pkgdesc = Decodes Balatro files (profile, settings, saved games) to JSON
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/claui/jollyson
+	arch = any
+	license = Apache-2.0
+	makedepends = python-myst-parser
+	makedepends = python-sphinx
+	depends = bash
+	depends = gzip
+	depends = jq
+	depends = lua
+	depends = lua-cjson
+	depends = xxd
+	options = !debug
+	options = !strip
+	source = jollyson-0.1.0.tar.gz::https://github.com/claui/jollyson/archive/v0.1.0.tar.gz
+	sha512sums = 4b33ccc0f8ce03a3475d83d7991af044ff1c3796bab96e60844180ccc895ba666e296c1c13251f19ebaf1ffa7dd678739d14ccbb521710a02811ef2b7ccc5133
+
+pkgname = jollyson

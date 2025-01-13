@@ -1,0 +1,5 @@
+[jollyson]
+source = "github"
+github = "claui/jollyson"
+prefix = "v"
+use_latest_release = true
