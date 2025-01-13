@@ -1,14 +1,14 @@
 pkgbase = rimsort-bin
 	pkgdesc = A Mod Manager For Rimworld game
-	pkgver = v1.0.10
+	pkgver = v1.0.11
 	pkgrel = 1
-	url = https://github.com/oceancabbage/RimSort
+	url = https://github.com/RimSort/RimSort
 	arch = x86_64
 	license = GPL3
-	source = rimsort-bin-v1.0.10.zip::https://github.com/oceancabbage/RimSort/releases/download/v1.0.10/RimSort-v1.0.10-Ubuntu-24.04_x86_64.zip
+	source = rimsort-bin-v1.0.11.zip::https://github.com/oceancabbage/RimSort/releases/download/v1.0.11/RimSort-v1.0.11-Ubuntu-24.04_x86_64.zip
 	source = RimSort.desktop
 	source = launch-script.sh
-	sha512sums = 9c92a0a8753467d18c2b031eb43c0ca2ed75e3a72f7010897b31c55a7f4f882169a85756170d8b23ae9bdae1b379d8a675fab53c04a047a19e87846d77cb9f9f
+	sha512sums = 9a22dd1a1e5c67fab80261558f3ce42f30686f232646672f152e7b75616a7eed8c9c0c56a6f1629db7e9155971f8be42ceee220fe947c7cc629c8dcf53de1201
 	sha512sums = 43aa5e5d28ec832f3a54434d66e4724c9a8fdde5098b2910911faf62a80823896a9b6d455dbe749150adf11e44126f6851bcd4cd937a3e00bb9b7f95699ca96e
 	sha512sums = b737900aa332b202ae7cf48bd2f345b8e2af7fecaf0bd606768d26d8c632843b325f173f9c39879ef8ff0e1dafebd0bbdcb28d4be6d35c3532fba807b0ac86fd
 
