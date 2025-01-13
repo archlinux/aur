@@ -2,7 +2,7 @@
 
 pkgname=qtox-toktok
 _pkgname=qTox
-pkgver=1.18.1
+pkgver=1.18.2
 pkgrel=1
 pkgdesc='Powerful Tox client written in C++/Qt (TokTok fork)'
 arch=('x86_64')
