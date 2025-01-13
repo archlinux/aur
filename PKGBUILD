@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qtscrcpy-bin
 _pkgname=QtScrcpy
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Android real-time display control software.(Prebuilt version)"
 arch=('x86_64')
@@ -26,10 +26,10 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/barry-ran/QtScrcpy/v${pkgver}/backup/logo.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('080cab9a3b2220d65799cd4debb4fa7a1cc6dcbc674da01cfd0bd9611dc07a48'
+sha256sums=('c39d31766224ca24f29a257ac9277dcd14c311acf77fd7571ae8912dc54f0e0e'
             'a96a81cee07375eaed07d927e67dbeb1f2d3c9e0c3791d5d14156bd03bf73371'
             'db1db4c15024a45337e7e7190046e6414184603321be058797422a54ed5fc85d')
-build() {
+prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
