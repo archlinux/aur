@@ -3,7 +3,7 @@
 
 pkgname=python-lttb-git
 _pkgname=lttb-numpy
-pkgver=v0.3.1.r3.g9463159
+pkgver=v0.3.2.r0.g3ccc3a9
 pkgrel=1
 pkgdesc="Numpy implementation of Steinarsson’s Largest-Triangle-Three-Buckets algorithm"
 arch=('x86_64' 'armv7h')
@@ -22,10 +22,10 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  python setup.py build
+  python -m build
 }
 
 package() {
   cd "$_pkgname"
-  python setup.py install --root=$pkgdir/
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
