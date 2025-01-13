@@ -3,7 +3,7 @@
 _basename="telnetlib-313-and-up"
 pkgname="python-${_basename}"
 pkgver=3.13.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A copy of telnetlib for python 3.13+"
 arch=('any')
 url="https://pypi.org/project/telnetlib-313-and-up/"
@@ -15,6 +15,7 @@ makedepends=(
     'python-build'
     'python-installer'
     'python-wheel'
+    'python-setuptools'
 )
 
 build() {

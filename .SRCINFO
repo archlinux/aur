@@ -1,13 +1,14 @@
 pkgbase = python-telnetlib-313-and-up
 	pkgdesc = A copy of telnetlib for python 3.13+
 	pkgver = 3.13.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/telnetlib-313-and-up/
 	arch = any
 	license = PSF-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python>=3.13.1
 	source = https://files.pythonhosted.org/packages/source/t/telnetlib_313_and_up/telnetlib_313_and_up-3.13.1.tar.gz
 	sha256sums = 93cdf0a35e8b6463853e5bfa134288a9695c7b69b9e6f4bcfb71c0888470288a
