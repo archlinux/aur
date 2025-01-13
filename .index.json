@@ -1,5 +1,6 @@
 {
-  ".i": 2,
+  ".i": 5,
   "crate": "faketty",
-  "version": "1.0.18"
+  "version": "1.0.18",
+  "pkgrel": 2
 }
