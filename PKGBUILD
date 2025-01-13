@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=algermusicplayer-bin
 _pkgname=AlgerMusicPlayer
-pkgver=3.3.0
+pkgver=3.5.0
 _electronversion=31
 pkgrel=1
 pkgdesc="An music player based on Electron, TypeScript, and Vue 3.(Prebuilt version.Use system-wide electron)支持网易云音乐"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('60099a99ed6a0614c7879c64beab5289bd49a05b04b1de2f0ec5c553bd4b58f1'
+sha256sums=('b1db468c34333e9de3e2bf0c153da48d4a3622b34933c44e81ad6c87226ba28f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
