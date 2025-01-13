@@ -13,7 +13,7 @@ source=("https://www.hikrobotics.com/cn2/source/support/software/MVS_STD_V${pkgv
 	'logo.svg'
 	'hikvision-mvs.desktop')
 noextract=("${source[0]##*/}")
-sha256sums=('cf41b14b4fb776e6aa7270ac9b6a1c0d7a3766d162a101ca20f14e72f361851c'
+sha256sums=('1d1c056ed19c2d3aa4ee75821030eeaba0072d4b466c7db4bf09c0b5766308d1'
 	'6be7b478c87b26e562ee385c91039b8b5d4927eb3d34a27089201edb2b2182fb'
 	'SKIP')
 
