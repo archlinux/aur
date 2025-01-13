@@ -3,7 +3,7 @@
 
 pkgname="epson-inkjet-printer-201207w"
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Epson inkjet printer driver (L110, L111, L210, L211, L300, L301, L303, L350, L351, L353, L355, L356, L550, L551, L555)"
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -16,6 +16,12 @@ sha256sums=('ac757bb6d392b6662779228e518bb3e9b4de02d275235c4afd41465447d38b45')
 prepare() {
   cd "${srcdir}"
   bsdtar -xzf "${_pkgsrc}.tar.gz"
+}
+
+build() {
+  cd "${srcdir}/${_pkgsrc}/ppds"
+  find . -type f -name '*.ppd' -exec \
+    sed -i "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}|/opt/${pkgname}|g" "{}" +
 }
 
 package() {
@@ -31,7 +37,7 @@ package() {
   cd "${srcdir}/${_pkgsrc}/ppds"
   find . -type f -exec install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
 
-  install -d "${pkgdir}/opt/${pkgname}/cups/lib/filter"
-  cd "${pkgdir}/opt/${pkgname}/cups/lib/filter"
+  install -d "${pkgdir}/opt/${pkgname}/usr/lib/cups/filter"
+  cd "${pkgdir}/opt/${pkgname}/usr/lib/cups/filter"
   ln -s '/usr/lib/cups/filter/epson_inkjet_printer_filter' 'epson_inkjet_printer_filter'
 }
