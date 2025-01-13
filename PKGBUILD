@@ -3,7 +3,7 @@
 
 pkgname="epson-inkjet-printer-201207w"
 pkgver=1.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Epson inkjet printer driver (L110, L111, L210, L211, L300, L301, L303, L350, L351, L353, L355, L356, L550, L551, L555)"
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -21,7 +21,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgsrc}/ppds"
   find . -type f -name '*.ppd' -exec \
-    sed -i "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}|/opt/${pkgname}|g" "{}" +
+    sed -i "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}|/usr/share/${pkgname}|g" "{}" +
 }
 
 package() {
@@ -31,13 +31,23 @@ package() {
   install -vDm644 "README"        "${pkgdir}/usr/share/doc/${pkgname}/README"
   install -vDm644 "COPYING.EPSON" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
-  find "lib64" "resource" "watermark" -type f -exec \
-    install -vDm644 "{}" "${pkgdir}/opt/${pkgname}/{}" \;
+  find "resource" -type f -exec \
+    install -vDm644 "{}" "${pkgdir}/usr/share/epson-inkjet-printer-filter/{}" \;
+  find "watermark" -type f -exec \
+    install -vDm644 "{}" "${pkgdir}/usr/share/${pkgname}/{}" \;
 
   cd "${srcdir}/${_pkgsrc}/ppds"
-  find . -type f -exec install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
+  find . -type f -exec \
+    install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
 
-  install -d "${pkgdir}/opt/${pkgname}/usr/lib/cups/filter"
-  cd "${pkgdir}/opt/${pkgname}/usr/lib/cups/filter"
-  ln -s '/usr/lib/cups/filter/epson_inkjet_printer_filter' 'epson_inkjet_printer_filter'
+  cd "${srcdir}/${_pkgsrc}/lib64"
+  find . -type f -exec \
+    install -vDm644 "{}" "${pkgdir}/usr/lib/{}" \;
+
+  cd "${pkgdir}/usr/lib"
+  for lib in *".so.${pkgver}"; do
+    base="${lib%.${pkgver}}"
+    ln -vsf "${lib}" "${base}"
+    ln -vsf "${lib}" "${base}.${pkgver%%.*}"
+  done
 }
