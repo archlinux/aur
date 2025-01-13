@@ -1,8 +1,8 @@
 pkgbase = cubicsdr
 	pkgdesc = Cross-Platform Software-Defined Radio Application
 	pkgver = 0.2.7
-	pkgrel = 2
-	url = https://github.com/cjcliffe/CubicSDR
+	pkgrel = 3
+	url = https://cubicsdr.com
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
@@ -29,8 +29,6 @@ pkgbase = cubicsdr
 	optdepends = soapyrtlsdr: support for RTL-SDR (RTL2832U) dongles
 	optdepends = soapysdrplay: support for SDRplay RSP
 	source = cubicsdr-0.2.7.tar.gz::https://github.com/cjcliffe/CubicSDR/archive/0.2.7.tar.gz
-	source = cubicsdr.desktop
 	sha256sums = 790f851e08f1068081a8593dfd4a149c7414e7d70c1f5cafd287331df493b811
-	sha256sums = 64b4afff640126786e12305b1be7fe7a2fdb715fd4a7f587bb426c2e19c27f1d
 
 pkgname = cubicsdr
