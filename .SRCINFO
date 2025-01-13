@@ -1,18 +1,14 @@
 pkgbase = epson-inkjet-printer-201211w
-	pkgdesc = Epson printer driver (WF-2010, WF-2510, WF-2520, WF-2530, WF-2540)
-	pkgver = 1.0.0
-	pkgrel = 10
-	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
-	arch = i686
+	pkgdesc = Epson inkjet printer driver (WF-2010, WF-2510, WF-2520, WF-2521, WF-2528, WF-2530, WF-2531, WF-2532, WF-2538, WF-2540, WF-2541, WF-2548)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = x86_64
-	license = LGPL
-	license = custom:Epson Licence Agreement
-	depends = cups
-	depends = ghostscript
-	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201211w-1.0.0-1lsb3.2.src.rpm
-	source = fixbuild.patch
-	sha256sums = 3fddf1f42d867182af991894c1f361d34b23f47f28af2490a987231111272170
-	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/69/60/2cad8d0db8d552bec202f055b0b9a9ef7a4609ba/epson-inkjet-printer-201211w-1.0.1-1.src.rpm
+	sha256sums = 2be69ad9ccca5e97b4bfd5d1a26d7f3d5c191792e57ccadf7fa3df7ff7b5ef76
 
 pkgname = epson-inkjet-printer-201211w
-
