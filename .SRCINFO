@@ -1,11 +1,12 @@
 pkgbase = dofigen
 	pkgdesc = Generate Dockerfiles using simplified descriptions in YAML
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lenra-io/dofigen
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = cargo-edit
 	depends = glibc
 	depends = gcc-libs
 	depends = openssl
