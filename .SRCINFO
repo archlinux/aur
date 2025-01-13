@@ -1,6 +1,6 @@
 pkgbase = muzik-offline-bin
 	pkgdesc = A cross platform, local music player.(Prebuilt version)
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://muzik-apps.github.io/muzik-web/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = muzik-offline-bin
 	depends = gtk3
 	depends = alsa-lib
 	depends = webkit2gtk-4.1
-	provides = muzik-offline=0.7.1
+	provides = muzik-offline=0.8.0
 	conflicts = muzik-offline
-	source = muzik-offline-0.7.1.rpm::https://github.com/muzik-apps/muzik-offline/releases/download/v0.7.1/muzik-offline-0.7.1-1.x86_64.rpm
-	source = LICENSE-0.7.1::https://raw.githubusercontent.com/muzik-apps/muzik-offline/v0.7.1/LICENSE
-	sha256sums = a7b3e7e245c42198a45a2371e0f87f97a9e1676034abf1f4704d8781e51312b2
+	source = muzik-offline-0.8.0.rpm::https://github.com/muzik-apps/muzik-offline/releases/download/v0.8.0/muzik-offline-0.8.0-1.x86_64.rpm
+	source = LICENSE-0.8.0::https://raw.githubusercontent.com/muzik-apps/muzik-offline/v0.8.0/LICENSE
+	sha256sums = 4e491cc7708a0d123fc369b309afda991e449622d4df3a8579d23bc77d0fb679
 	sha256sums = 6974cb23d06cf028e37ffbb2a90b608606b1cac5ba44de6b6d9198d83ae7591a
 
 pkgname = muzik-offline-bin
