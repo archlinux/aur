@@ -1,5 +1,5 @@
 # Maintainer: Harish Rusum <harish.rusum@gmail.com>
-pkgname='todo-manager'
+pkgname=todo-manager
 pkgver=1
 pkgrel=1
 pkgdesc="A simple task management tui using gum cli"
