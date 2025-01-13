@@ -1,8 +1,9 @@
-# Maintainer: Qirui Wang <wqr.prg@gmail.com>
+# Maintainer: Donald Carr <d _at_ chaos-reins.com>
+# Contributer: Qirui Wang <wqr.prg@gmail.com>
 
 _name=openrsync
 pkgname="$_name-git"
-pkgver=0.5.0.r111.g8b61216
+pkgver=0.5.0.r129.gf50d0f8
 pkgrel=1
 pkgdesc="BSD-licensed implementation of rsync"
 arch=('x86_64')
@@ -17,6 +18,8 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$_name"
+
+  sed -i '1i #include <stdint.h>' extern.h
 
   # Remove forced debug
   sed -i 's/CFLAGS="${CFLAGS} -g /CFLAGS="${CFLAGS} /' configure
