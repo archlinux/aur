@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://carlh.net/libdcp"
 license=('GPL-2.0-or-later')
 depends=('libxml++2.6' 'xmlsec' 'imagemagick' 'openjpeg2>=2.5' 'libcxml>=0.17.11' 'libsigc++>=2.0' 'boost-libs>=1.86.0' 'xerces-c'  'libasdcp-cth>=1.0.5')
-makedepends=('git' 'python' 'boost>=1.86.0' 'gcc' 'pkg-config')
+makedepends=('git' 'python' 'boost>=1.86.0' 'gcc' 'pkg-config' 'fast_float>=7.0')
 _cherrypicks=()
 source=("${pkgname}-${pkgver}::git+git://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('c01916902cb076cb37b3e363da9a73a06a7e1d11354049c6c7db2d5348f6f5b9')

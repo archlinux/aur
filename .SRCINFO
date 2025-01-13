@@ -11,6 +11,7 @@ pkgbase = libdcp
 	makedepends = boost>=1.86.0
 	makedepends = gcc
 	makedepends = pkg-config
+	makedepends = fast_float>=7.0
 	depends = libxml++2.6
 	depends = xmlsec
 	depends = imagemagick
