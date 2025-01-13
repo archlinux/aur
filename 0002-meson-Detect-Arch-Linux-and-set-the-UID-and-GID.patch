@@ -1,0 +1,91 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Mon, 13 Jan 2025 23:55:38 +0100
+Subject: [PATCH] meson: Detect Arch Linux and set the UID and GID
+
+---
+ meson.build       | 26 ++++++++++++++++++++++----
+ meson_options.txt |  4 ++--
+ 2 files changed, 24 insertions(+), 6 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 0605bf975e4c..4e5b2ff0c31b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -231,9 +231,6 @@ endif
+ polkitd_user = get_option('polkitd_user')
+ config_data.set_quoted('POLKITD_USER', polkitd_user)
+ 
+-polkitd_uid = get_option('polkitd_uid')
+-polkitd_gid = get_option('polkitd_gid')
+-
+ # Select which authentication framework to use
+ auth_deps = []
+ 
+@@ -299,21 +296,42 @@ if os_type == ''
+     ['debian', '/etc/debian_version'],
+     ['gentoo', '/etc/gentoo-release'],
+     ['pardus', '/etc/pardus-release'],
++    ['arch', '/etc/arch-release'],
+     ['lfs', '/etc/lfs-release'],
+   ]
+ 
+   foreach os_path: os_paths
+     if run_command('test', '-e', os_path[1], check: false).returncode() == 0
+       os_type = os_path[0]
+       break
+     endif
+   endforeach
+ 
+   if os_type == ''
+     message('Linux distribution autodetection failed, specify the distribution to target using -Dos_type=')
+   endif
+ endif
+ 
++# The default UID differs between distributions, set it accordingly if not specified
++polkitd_uid = get_option('polkitd_uid')
++if polkitd_uid == ''
++  if os_type == 'arch'
++    polkitd_uid = '102'
++  else
++    polkitd_uid = '-'
++  endif
++endif
++
++# The default GID differs between distributions, set it accordingly if not specified
++polkitd_gid = get_option('polkitd_gid')
++if polkitd_gid == ''
++  if os_type == 'arch'
++    polkitd_gid = '102'
++  else
++    polkitd_gid = '-'
++  endif
++endif
++
+ # The default privileged group differs between distributions, set it accordingly if not specified
+ privileged_group = get_option('privileged_group')
+ if privileged_group == ''
+@@ -347,7 +365,7 @@ if pam_include == ''
+       'PAM_FILE_INCLUDE_PASSWORD': 'system-password',
+       'PAM_FILE_INCLUDE_SESSION': 'system-session',
+     }
+-  #if ['redhat', 'gentoo', 'pardus'].contains(os_type)
++  #if ['redhat', 'gentoo', 'pardus', 'arch'].contains(os_type)
+   else
+     pam_conf = {
+       'PAM_FILE_INCLUDE_AUTH': 'system-auth',
+diff --git a/meson_options.txt b/meson_options.txt
+index 916f365ddeab..a889406ed515 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -3,8 +3,8 @@ option('systemdsystemunitdir', type: 'string', value: '', description: 'custom d
+ 
+ option('libs-only', type: 'boolean', value: false, description: 'Only build libraries (skips building polkitd)')
+ option('polkitd_user', type: 'string', value: 'polkitd', description: 'User for running polkitd (polkitd)')
+-option('polkitd_uid', type: 'string', value: '-', description: 'Fixed UID for user running polkitd (polkitd)')
+-option('polkitd_gid', type: 'string', value: '-', description: 'Fixed GID for user running polkitd (polkitd)')
++option('polkitd_uid', type: 'string', value: '', description: 'Fixed UID for user running polkitd (polkitd)')
++option('polkitd_gid', type: 'string', value: '', description: 'Fixed GID for user running polkitd (polkitd)')
+ option('privileged_group', type: 'string', value: '', description: 'Group to use for default privileged access (default: wheel)')
+ 
+ option('authfw', type: 'combo', choices: ['pam', 'shadow', 'bsdauth'], value: 'pam', description: 'Authentication framework (pam/shadow)')

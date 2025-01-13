@@ -1,0 +1,98 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Mon, 13 Jan 2025 23:54:13 +0100
+Subject: [PATCH] meson: Support explicit GID
+
+On Arch Linux, the polkitd user is not available during packaging, and
+files must be created with a numeric UID and GID.
+---
+ data/meson.build      |  8 +++++++-
+ meson.build           |  6 +++++-
+ meson_options.txt     |  1 +
+ meson_post_install.py | 11 +++++++----
+ 4 files changed, 20 insertions(+), 6 deletions(-)
+
+diff --git a/data/meson.build b/data/meson.build
+index e3776fb8319e..a504dbaca900 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -1,7 +1,13 @@
++if polkitd_gid != '-'
++  polkitd_sysusers_uid = '@0@:@1@'.format(polkitd_uid, polkitd_gid)
++else
++  polkitd_sysusers_uid = polkitd_uid
++endif
++
+ service_conf = {
+   'libprivdir': pk_prefix / pk_libprivdir,
+   'polkitd_user': polkitd_user,
+-  'polkitd_uid': polkitd_uid,
++  'polkitd_uid': polkitd_sysusers_uid,
+ }
+ 
+ configure_file(
+diff --git a/meson.build b/meson.build
+index cf494c2f1158..0605bf975e4c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -232,7 +232,7 @@ polkitd_user = get_option('polkitd_user')
+ config_data.set_quoted('POLKITD_USER', polkitd_user)
+ 
+ polkitd_uid = get_option('polkitd_uid')
+-config_data.set('POLKITD_UID', polkitd_uid)
++polkitd_gid = get_option('polkitd_gid')
+ 
+ # Select which authentication framework to use
+ auth_deps = []
+@@ -405,6 +405,7 @@ if not libs_only
+     pk_libprivdir,
+     pk_pkgsysconfdir,
+     polkitd_user,
++    polkitd_gid,
+   )
+ endif
+ 
+@@ -433,6 +434,9 @@ output += '        polkitd user:             ' + polkitd_user + ' \n'
+ if polkitd_uid != '-'
+   output += '        polkitd UID:              ' + polkitd_uid + ' \n'
+ endif
++if polkitd_gid != '-'
++  output += '        polkitd GID:              ' + polkitd_gid + ' \n'
++endif
+ output += '        PAM support:              ' + enable_pam.to_string() + '\n\n'
+ if libs_only
+   output += '    !!! Only building polkit libraries, not polkitd !!!\n\n'
+diff --git a/meson_options.txt b/meson_options.txt
+index 31b7a2b0300d..916f365ddeab 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -4,6 +4,7 @@ option('systemdsystemunitdir', type: 'string', value: '', description: 'custom d
+ option('libs-only', type: 'boolean', value: false, description: 'Only build libraries (skips building polkitd)')
+ option('polkitd_user', type: 'string', value: 'polkitd', description: 'User for running polkitd (polkitd)')
+ option('polkitd_uid', type: 'string', value: '-', description: 'Fixed UID for user running polkitd (polkitd)')
++option('polkitd_gid', type: 'string', value: '-', description: 'Fixed GID for user running polkitd (polkitd)')
+ option('privileged_group', type: 'string', value: '', description: 'Group to use for default privileged access (default: wheel)')
+ 
+ option('authfw', type: 'combo', choices: ['pam', 'shadow', 'bsdauth'], value: 'pam', description: 'Authentication framework (pam/shadow)')
+diff --git a/meson_post_install.py b/meson_post_install.py
+index efb75a1de69b..95a741ef70d0 100644
+--- a/meson_post_install.py
++++ b/meson_post_install.py
+@@ -21,10 +21,13 @@ pkglibdir = destdir_path(sys.argv[2])
+ pkgsysconfdir = destdir_path(sys.argv[3])
+ polkitd_user = sys.argv[4]
+ 
+-try:
+-    polkitd_gid = pwd.getpwnam(polkitd_user).pw_gid
+-except KeyError:
+-    polkitd_gid = None
++if sys.argv[5] != '-':
++    polkitd_gid = int(sys.argv[5])
++else:
++    try:
++        polkitd_gid = pwd.getpwnam(polkitd_user).pw_gid
++    except KeyError:
++        polkitd_gid = None
+ 
+ dst = os.path.join(bindir, 'pkexec')
+ 
