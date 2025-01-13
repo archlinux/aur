@@ -1,5 +1,5 @@
 pkgbase = c3-lsp
-	pkgdesc = Client side ColdFusion RDS protocol.
+	pkgdesc = Language Server for the C3 language.
 	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/pherrymason/c3-lsp
