@@ -1,0 +1,20 @@
+pkgbase = brother-hl1202
+	pkgdesc = LPR and CUPS driver for the Brother HL-1202
+	pkgver = 3.0.1_1
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-hl1202.install
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	depends = ghostscript
+	depends = foomatic-db
+	depends = foomatic-db-engine
+	depends = foomatic-db-nonfree
+	depends = lib32-glibc
+	source = https://download.brother.com/welcome/dlf101870/hl1200cupswrapper-3.0.1-1.i386.rpm
+	source = https://download.brother.com/welcome/dlf101869/hl1200lpr-3.0.1-1.i386.rpm
+	md5sums = 79a5b0119985bc89c6dc16dfee6e9c1b
+	md5sums = de895b93a9cdb562c5b8be633ae6c0ad
+
+pkgname = brother-hl1202
