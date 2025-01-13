@@ -1,6 +1,6 @@
 pkgbase = imeye
 	pkgdesc = A simple image viewer
-	pkgver = r32.6dfcb97
+	pkgver = r33.6952f6b
 	pkgrel = 1
 	url = https://github.com/Dr-42/imeye
 	arch = x86_64

@@ -1,6 +1,6 @@
 # Maintainer: Dr-42 <royspandan1@gmail.com>
 pkgname=imeye
-pkgver=r32.6dfcb97
+pkgver=r33.6952f6b
 pkgrel=1
 pkgdesc="A simple image viewer"
 arch=('x86_64')
