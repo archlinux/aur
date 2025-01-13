@@ -3,7 +3,7 @@ pkgname=todoist-wrapper-bin
 _pkgname=Todoist
 pkgver=3.20250107014150
 _electronversion=33
-pkgrel=3
+pkgrel=1
 pkgdesc="Electron Wrapper for Todoist on Linux.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/conjfrnk/todoist-wrapper"
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}.ico::https://todoist.com/static/favicon.ico"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('09ab67591a54fbe9bfa0d3c8d4db16c8a21a1a4404d0e36572c6b4143b19dbd2'
+sha256sums=('721f60d3e37e98f8af3abec74fa46bdfbf15ce4446b139367a956d26e16b7d52'
             'b2e0854d044a1ed01b395ea582eb86b675aecbbfd6cbceec0e40b73966a222d0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
