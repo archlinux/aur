@@ -1,6 +1,6 @@
 pkgbase = flecli-git
 	pkgdesc = Multi-platform "Fast Log Entry"(FLE) processing tool
-	pkgver = 0.1.5.r18.g9f0664d
+	pkgver = 0.1.7.r15.gc5846fb
 	pkgrel = 1
 	url = https://github.com/on4kjm/FLEcli
 	arch = x86_64
