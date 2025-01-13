@@ -2,8 +2,8 @@
 
 pkgbase=deepin-unioncode-git
 pkgname=deepin-unioncode-git
-pkgver=1.3.17.r20.g7d53433
-pkgrel=2
+pkgver=1.4.0.r22.g2b9621c
+pkgrel=1
 pkgdesc="IDE authored by deepin"
 arch=($CARCH)
 url="https://github.com/linuxdeepin/deepin-unioncode"
@@ -60,13 +60,16 @@ makedepends=(
     libmicrohttpd
     libutf8proc
     libxi
+    lxqt-build-tools
     lxqt-build-tools-qt5
+    qt5-networkauth
     qt5-tools
     qtermwidget
     openssl
     systemd
     pkgconf
     python-onnxruntime
+    python-pip
     python-pyjsparser
 )
 checkdepends=()
@@ -100,7 +103,8 @@ build() {
         -DCMAKE_C_COMPILER=clang \
         -Wno-dev \
         -B build \
-        -G Ninja
+        -G Ninja \
+        -Wno-dev
 
     ninja -C build
 }
