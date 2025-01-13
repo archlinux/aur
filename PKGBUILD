@@ -47,4 +47,5 @@ build() {
 package() {
   cd "$srcdir/FLEcli"
   install -Dm755 dist/FLEcli_linux_amd64_v1/FLEcli "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
