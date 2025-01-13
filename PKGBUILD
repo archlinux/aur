@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tinytotp-bin
 _pkgname=TinyTotp
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="A Totp Client.(Prebuilt version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.deb"
 )
-sha256sums=('a4a661a5322760a1fcad301489076b5cc645f121bb3c54bdab0afc2c0d0a5d6c')
+sha256sums=('8eddeab00392bb8d613be65adedd6fd093524a3955168b35ff2d95bbb2f6bce0')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -e "
