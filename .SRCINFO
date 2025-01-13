@@ -1,6 +1,6 @@
 pkgbase = heretek
 	pkgdesc = Yet Another GDB TUI Frontend
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/wcampbell0x2a/heretek
 	arch = x86_64
@@ -9,11 +9,9 @@ pkgbase = heretek
 	makedepends = mold
 	makedepends = openssl
 	depends = gdb
-	source = heretek-0.2.0.tar.gz::https://github.com/wcampbell0x2a/heretek/archive/refs/tags/v0.2.0.tar.gz
+	source = heretek-0.3.0.tar.gz::https://github.com/wcampbell0x2a/heretek/archive/refs/tags/v0.3.0.tar.gz
 	source = heretek.fish
-	source = test-render-app-update-version.patch
-	sha256sums = e60a85d64e447682455d028c7d857415cf56def8d6320f5853e986af8474ca25
+	sha256sums = 6a882d39a2d7d8cd73641530651502ebf61863f297ad2931ac666d1e6164e163
 	sha256sums = f96f17efd5fa2bcbc585661001426c367cf3d2a4e52f8cf6ac1e53ee21c2d1f4
-	sha256sums = b5a93723dcb7fbf915a8f70f7443fd6481a8809ff388fbdbabf10a57cfb1fac4
 
 pkgname = heretek

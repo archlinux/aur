@@ -1,7 +1,7 @@
 # Maintainer: Blair Noctis <ncts@nightsail.net>
 pkgname=heretek
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='Yet Another GDB TUI Frontend'
 arch=('x86_64')
 url='https://github.com/wcampbell0x2a/heretek'
@@ -9,11 +9,9 @@ license=('Apache-2.0 OR MIT')
 depends=('gdb')
 makedepends=('rust' 'mold' 'openssl')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wcampbell0x2a/heretek/archive/refs/tags/v${pkgver}.tar.gz"
-        ${pkgname}.fish
-        test-render-app-update-version.patch)
-sha256sums=('e60a85d64e447682455d028c7d857415cf56def8d6320f5853e986af8474ca25'
-            'f96f17efd5fa2bcbc585661001426c367cf3d2a4e52f8cf6ac1e53ee21c2d1f4'
-            'b5a93723dcb7fbf915a8f70f7443fd6481a8809ff388fbdbabf10a57cfb1fac4')
+        ${pkgname}.fish)
+sha256sums=('6a882d39a2d7d8cd73641530651502ebf61863f297ad2931ac666d1e6164e163'
+            'f96f17efd5fa2bcbc585661001426c367cf3d2a4e52f8cf6ac1e53ee21c2d1f4')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -27,7 +25,6 @@ build() {
 
 check() {
 	cd "$srcdir/$pkgname-$pkgver"
-	patch -p1 < $srcdir/test-render-app-update-version.patch
 	RUSTFLAGS='-Clink-arg=-fuse-ld=mold' cargo test --release --locked
 }
 
@@ -38,5 +35,5 @@ package() {
 	mkdir -p "$bin" "$fish_comp"
 	# cargo install seems to install some unwanted hidden files.
 	install -m755 target/release/heretek "$bin/"
-	install -m755 ../heretek.fish "$fish_comp/"
+	install -m755 $srcdir/heretek.fish "$fish_comp/"
 }
