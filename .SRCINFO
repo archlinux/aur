@@ -1,13 +1,13 @@
 pkgbase = firefox-sponsorblock-for-youtube-skip-sponsorships-bin
 	pkgdesc = Easily skip YouTube video sponsors.
-	pkgver = 5.10.3
+	pkgver = 5.10.5
 	pkgrel = 1
 	url = https://addons.mozilla.org/en-US/firefox/addon/sponsorblock/
 	arch = any
 	license = GPL-3.0
 	depends = firefox
 	noextract = sponsorblock.xpi
-	source = sponsorblock.xpi::https://addons.mozilla.org/firefox/downloads/file/4404647/sponsorblock-5.10.3.xpi
-	sha256sums = 8d670559ae17adc808ed061188822e5112728ba70eda0a3133dcc4abc3857bdc
+	source = sponsorblock.xpi::https://addons.mozilla.org/firefox/downloads/file/4410322/sponsorblock-5.10.5.xpi
+	sha256sums = 219e58141efd775fe0c549e3a225d7897616de5880cacc1b21e460f81042b1cb
 
 pkgname = firefox-sponsorblock-for-youtube-skip-sponsorships-bin
