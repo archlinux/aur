@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note-git
 _pkgname='Yank Note'
-pkgver=3.76.1.r151.g723faa0
-_electronversion=30
+pkgver=3.next.01.r0.ge4c15a5
+_electronversion=33
 _nodeversion=18
 pkgrel=1
 pkgdesc="A highly extensible Markdown editor. Version control, AI completion, mind map, documents encryption, code snippet running, integrated terminal, chart embedding, HTML applets, Reveal.js, plug-in, and macro replacement.(Use system-wide electron)"
