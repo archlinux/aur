@@ -14,13 +14,13 @@ source_armv6h=("$pkgname-$pkgver"::"$url/releases/download/v$pkgver/${pkgname%-b
 source_armv7h=("$pkgname-$pkgver"::"$url/releases/download/v$pkgver/${pkgname%-bin}-v$pkgver-linux-arm")
 source_aarch64=("$pkgname-$pkgver"::"$url/releases/download/v$pkgver/${pkgname%-bin}-v$pkgver-linux-arm")
 noextract=($pkgname-$pkgver.tar.gz)
-sha256sums=('741505c48342778a4312b35f75b2c87e6d6149e4909f2e6a29d80e9e86c4e91c')
-sha256sums_x86_64=('cb10855a8a3fbe3d76d034faa87763916d71e6b167deee3692b11a365a9aed18')
-sha256sums_i686=('1ca42152b618337f2959af522903232419cebf787f1eda735d443d092bcf8538')
-sha256sums_pentium4=('1ca42152b618337f2959af522903232419cebf787f1eda735d443d092bcf8538')
-sha256sums_armv6h=('7890b7452b1be9279103d6c1ec4890389db895a5eb856799e9a573322d81cd9f')
-sha256sums_armv7h=('7890b7452b1be9279103d6c1ec4890389db895a5eb856799e9a573322d81cd9f')
-sha256sums_aarch64=('7890b7452b1be9279103d6c1ec4890389db895a5eb856799e9a573322d81cd9f')
+sha256sums=('f88f244c18ee1a8ba1428bc195f9140d53a551124cc8b54c0c7942ba6433e2d7')
+sha256sums_x86_64=('b09a27b07ac4eaf7bdec42c9f6a460d5212c6652022d39c6987a410dd8562f20')
+sha256sums_i686=('20fd916fb1b04738c51c6f124c8f5be89dd561acf2bfe2256ffc3f0950b56ad5')
+sha256sums_pentium4=('20fd916fb1b04738c51c6f124c8f5be89dd561acf2bfe2256ffc3f0950b56ad5')
+sha256sums_armv6h=('aed4c4d2cf32bc58bc42a984a9e0913989dbe761010c622e9ada13466850d234')
+sha256sums_armv7h=('aed4c4d2cf32bc58bc42a984a9e0913989dbe761010c622e9ada13466850d234')
+sha256sums_aarch64=('aed4c4d2cf32bc58bc42a984a9e0913989dbe761010c622e9ada13466850d234')
 
 prepare() {
 	bsdtar -xvf $pkgname-$pkgver.tar.gz \
