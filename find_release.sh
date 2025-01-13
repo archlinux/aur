@@ -16,7 +16,6 @@ rm taskade.html
 if [ "$current_version" != "$version" ]; then
     echo "Build the thing"
     echo "pkgver=$version" > build.env
-else 
+else
     echo "No new version"
 fi
-

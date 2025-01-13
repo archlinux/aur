@@ -21,7 +21,7 @@ stages:
 
 find_release_job:
   stage: find_release
-  script: 
+  script:
     - rm -f build.env > /dev/null 2>&1 # clean build.env
     - su -c "cd ${CI_PROJECT_DIR} && ./find_release.sh" - builduser
   artifacts:
@@ -58,7 +58,7 @@ release_job:
     - if [ -z "$pkgver" ]; then echo "version variable does not exist, skipping job"; exit 0; fi
     - git config --global user.email "zomundo@gmail.com"
     - git config --global user.name "Mundo"
-    - git remote add aur ssh://aur@aur.archlinux.org/taskade-appimage.g 
+    - git remote add aur ssh://aur@aur.archlinux.org/taskade-appimage.git
     - git fetch aur master
     - git checkout master
     - git stash
@@ -72,7 +72,7 @@ release_job:
     - git commit -m "$commit_msg"
     - git stash clear
     - git push aur master
-  
+
   dependencies:
     - test_job
   artifacts:

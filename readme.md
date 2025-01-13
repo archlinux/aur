@@ -8,7 +8,7 @@ Generate .SRCINFO
 
 ## release package
 
-``` bash
+```bash
 
 makepkg --printsrcinfo > .SRCINFO
 git add PKGBUILD .SRCINFO
