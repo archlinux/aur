@@ -1,13 +1,12 @@
-pkgbase = todo
-	pkgdesc = A simple task management tui using gum cli
+pkgbase = todo-manager
+	pkgdesc = A simple task management TUI using gum CLI
 	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/Harish-Rusum/todo.git
-	install = todo.install
 	arch = x86_64
 	license = MIT
 	depends = gum
 	source = todo::https://raw.githubusercontent.com/Harish-Rusum/todo/main/todo.sh
 	sha256sums = SKIP
 
-pkgname = todo
+pkgname = todo-manager
