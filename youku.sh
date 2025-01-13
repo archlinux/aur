@@ -1,7 +1,7 @@
 #!/bin/bash
 set -o pipefail
 _APPDIR="/usr/lib/@appname@"
-_RUNNAME="${_APPDIR}/@runname@"
+_RUNNAME="${_APPDIR}/resources/@runname@"
 _CFGDIR="@cfgdirname@/"
 _OPTIONS="@options@"
 export PATH="${_APPDIR}:${PATH}"
@@ -21,7 +21,7 @@ if [[ -f "${_FLAGS_FILE}" ]]; then
         fi
     done < "${_FLAGS_FILE}"
 fi
-cd "${_APPDIR}"
+cd "${_APPDIR}" || { echo "Failed to change directory to ${_APPDIR}"; exit 1; }
 if [[ "${EUID}" -ne 0 ]] || [[ "${ELECTRON_RUN_AS_NODE}" ]]; then
     exec electron@electronversion@ "${_RUNNAME}" ${_OPTIONS} "${_USER_FLAGS[@]}" "$@"
 else
