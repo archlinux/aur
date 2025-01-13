@@ -1,6 +1,6 @@
 pkgbase = oscar-bin
 	pkgdesc = Open Source CPAP Analysis Reporter
-	pkgver = 1.5.3
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://www.sleepfiles.com/OSCAR/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = oscar-bin
 	depends = qt5-serialport
 	provides = oscar
 	conflicts = oscar-git
-	source = https://www.apneaboard.com/OSCAR/1.5.2/oscar_1.5.2-Debian12_amd64.deb
-	sha256sums = bd9db7f8c68e24132b11edcebfa104b059a41daea3526f01abf3df678012b1e3
+	source = https://www.apneaboard.com/OSCAR/1.6.0/oscar_1.6.0-Debian12_amd64.deb
+	sha256sums = b2e08f67b6b4928459035debf8b4c9909cb07ae71b70b7d932ca5b910454c41b
 
 pkgname = oscar-bin
