@@ -1,0 +1,21 @@
+pkgbase = imeye
+	pkgdesc = A simple image viewer
+	pkgver = r32.6dfcb97
+	pkgrel = 1
+	url = https://github.com/Dr-42/imeye
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = stb
+	depends = glew
+	depends = glfw
+	depends = glibc
+	depends = libglvnd
+	depends = libx11
+	depends = libxcb
+	depends = libxau
+	depends = libxdmcp
+	source = imeye::git+https://github.com/Dr-42/imeye.git
+	sha256sums = SKIP
+
+pkgname = imeye
