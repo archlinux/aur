@@ -1,4 +1,4 @@
-# Maintainer: adamanteye <yzh_0@outlook.com>
+# Maintainer: adamanteye <ada@adamanteye.cc>
 # Contributor: Yigit Dallilar <yigit.dallilar@gmail.com>
 
 pkgname=astroimagej
