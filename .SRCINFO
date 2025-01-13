@@ -1,0 +1,17 @@
+pkgbase = udp-over-tcp-git
+	pkgdesc = Proxy UDP traffic over a TCP stream
+	pkgver = 0.4.0.r28.g089491a
+	pkgrel = 1
+	url = https://github.com/mullvad/udp-over-tcp
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0 AND MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	provides = udp-over-tcp
+	conflicts = udp-over-tcp
+	source = git+https://github.com/mullvad/udp-over-tcp.git
+	sha256sums = SKIP
+
+pkgname = udp-over-tcp-git
