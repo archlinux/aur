@@ -1,0 +1,15 @@
+pkgbase = wireman
+	pkgdesc = A gRPC client for the terminal
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://preiter93.github.io/wireman/
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = mold
+	source = wireman-0.2.5.tar.gz::https://github.com/preiter93/wireman/archive/refs/tags/v0.2.5.tar.gz
+	source = wireman.fish
+	sha256sums = 4b8159fa86b93f71cf84e53a6ecb47d7695cf4de2427cbc20dc5fa10f754aa1c
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+pkgname = wireman
