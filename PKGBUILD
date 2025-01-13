@@ -37,6 +37,7 @@ conflicts=(
   "libcapi20.so"
 )
 options+=('!emptydirs')
+# options+=('!lto' 'debug')
 
 source=(
   "git+https://gitlab.com/tabos/${_pkgname}.git"
