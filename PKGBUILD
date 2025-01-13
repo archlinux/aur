@@ -33,6 +33,12 @@ build() {
   cargo build --frozen --release -p aptos
 }
 
+check() {
+  cd aptos-core
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen -p aptos
+}
+
 package() {
   cd aptos-core
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
