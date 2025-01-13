@@ -1,12 +1,12 @@
 pkgbase = mingw-w64-llvm
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (mingw-w64)
-	pkgver = 18.1.8
+	pkgver = 19.1.6
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = any
 	license = custom:Apache 2.0 with LLVM Exception
 	makedepends = mingw-w64-cmake
-	makedepends = llvm>=18
+	makedepends = llvm>=19
 	makedepends = python
 	depends = mingw-w64-zlib
 	depends = mingw-w64-libxml2
@@ -15,14 +15,15 @@ pkgbase = mingw-w64-llvm
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/llvm-18.1.8.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/llvm-18.1.8.src.tar.xz.sig
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/cmake-18.1.8.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/cmake-18.1.8.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/llvm-19.1.6.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/llvm-19.1.6.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/cmake-19.1.6.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/cmake-19.1.6.src.tar.xz.sig
 	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
-	sha256sums = f68cf90f369bc7d0158ba70d860b0cb34dbc163d6ff0ebc6cfa5e515b9b2e28d
+	validpgpkeys = D574BD5D1D0E98895E3BF90044F2485E45D59042
+	sha256sums = ad1a3b125ff014ded290094088de40efb9193ce81a24278184230b7d401f8a3e
 	sha256sums = SKIP
-	sha256sums = 59badef592dd34893cd319d42b323aaa990b452d05c7180ff20f23ab1b41e837
+	sha256sums = 9c7ec82d9a240dc2287b8de89d6881bb64ceea0dcd6ce133c34ef65bda22d99e
 	sha256sums = SKIP
 
 pkgname = mingw-w64-llvm
