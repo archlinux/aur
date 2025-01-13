@@ -1,0 +1,6 @@
+[fopnu]
+source="regex"
+url="https://www.fopnu.com/download/linux.html"
+regex="fopnu-([0-9.-]+).x86_64.manualinstall.tar.gz"
+from_pattern="-"
+to_pattern="+"
