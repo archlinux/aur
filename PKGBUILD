@@ -1,9 +1,9 @@
 # Maintainer: Scott Alfter <scott@alfter.us>
 
 _pkgname=amaranth-soc
-_git_commit=9d6bd2c54b4ca28ea4c96cae38edb4c9c3bfdf51
+_git_commit=5c43cf58f15d9cd9c69ff83c97997708d386b2dc
 pkgname="python-$_pkgname"
-pkgver=0.1a.r20.g9d6bd2c
+pkgver=0.1a.r24.g5c43cf5
 pkgrel=1
 pkgdesc="System on Chip toolkit for Amaranth"
 arch=(any)
