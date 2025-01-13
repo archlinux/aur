@@ -30,12 +30,36 @@ build() {
 
 package() {
   cd "$srcdir/Tusk-Launcher"
+  
   # Install the binary globally to /usr/bin
   install -Dm755 "target/release/Tusk-Launcher" "$pkgdir/usr/bin/tusk-launcher"
-  
-  # Optionally, install a man page or completion scripts here if applicable
   
   # Install other files such as LICENSE and README
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  
+  # Create the necessary directory for user configuration in ~/.config/tusk-launcher
+  install -dm755 "$pkgdir/usr/share/tusk-launcher"
+
+  # Create directory for the user config if it doesn't exist
+  install -dm755 "$pkgdir/etc/xdg/tusk-launcher"  # This will be used for default config
+}
+
+post_install() {
+  # Create a default configuration directory for the user
+  mkdir -p "$HOME/.config/tusk-launcher"
+  
+  # Tell the user that config files will be generated the first time the app is run
+  echo "Tusk Launcher has been installed. The config files (config.toml and app_cache.toml) will be generated after the first run."
+}
+
+post_upgrade() {
+  # Nothing extra to do here
+  post_install
+}
+
+post_remove() {
+  # Optionally, you can remove the configuration files when the package is removed
+  rm -f "$HOME/.config/tusk-launcher/config.toml"
+  rm -f "$HOME/.config/tusk-launcher/app_cache.toml"
 }
