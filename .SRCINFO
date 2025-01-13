@@ -14,6 +14,7 @@ pkgbase = vesc-tool-all-firmwares
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-wayland
+	depends = qt5-quickcontrols2
 	source = vesc-tool-all-firmwares::git+https://github.com/vedderb/vesc_tool.git#branch=release_6_05
 	source = vesc-tool-all-firmwares_bldc::git+https://github.com/vedderb/bldc.git#branch=release_6_05
 	source = vesc-tool.desktop

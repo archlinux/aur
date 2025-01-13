@@ -16,6 +16,7 @@ depends=(
     "qt5-base"
     "qt5-declarative"
     "qt5-wayland"
+    "qt5-quickcontrols2"
 )
 makedepends=(
 	"git"
