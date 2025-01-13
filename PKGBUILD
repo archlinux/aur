@@ -1,7 +1,7 @@
 # Maintainer: S e r g i o  S c h  n e i d e r <s p s f 6 4 at msn dot com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=thingy
-pkgver=1.1.9
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Quickly access recent and favorite documents.XApp, works with many DE's"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL-3.0 or later')
 depends=('libgsf' 'python-gobject' 'python-setproctitle' 'xapp')
 optdepends=('libreoffice' 'xreader')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('faba76e42d63af518f1b2c7b5b033ba06d209e5f5d7f08f4887a5411f72dd7c6')
+sha256sums=('27cd39a8389edb0053eaf755e40445e9fc0d5600f4f8ec1354bdecfc900522ec')
 
 prepare() {
   cd "$pkgname-$pkgver"
