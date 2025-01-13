@@ -1,18 +1,14 @@
 pkgbase = epson-inkjet-printer-201212j
-	pkgdesc = Epson printer driver (PX-205, PX-605F, PX-675F)
-	pkgver = 1.0.0
-	pkgrel = 10
-	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
-	arch = i686
+	pkgdesc = Epson inkjet printer driver (PX-205, PX-605F, PX-675F)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = x86_64
-	license = LGPL
-	license = custom:Epson Licence Agreement
-	depends = cups
-	depends = ghostscript
-	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201212j-1.0.0-1lsb3.2.src.rpm
-	source = fixbuild.patch
-	sha256sums = 1eff3d43e1d8001a66ea3b214c2326670a8ca82135b6c31244a1e342cb9a9607
-	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/64/83/6305b0cff99103ac127be90c59911a3ececb983d/epson-inkjet-printer-201212j-1.0.1-1.src.rpm
+	sha256sums = 67f62f30f0173ccf9e4e3639748487184d4b198e9d95297e415ec2bc23a4fd8c
 
 pkgname = epson-inkjet-printer-201212j
-
