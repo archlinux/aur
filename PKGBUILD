@@ -15,9 +15,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
-makedepends=(
-    'asar'
-)
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_uosurl}/u/uos-${_appname}-app/uos-${_appname}-app_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"

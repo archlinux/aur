@@ -5,7 +5,6 @@ pkgbase = youku-bin
 	url = http://gitlab.alibaba-inc.com/youku-node/uos-youku-app/blob/master/README.md
 	arch = x86_64
 	license = LicenseRef-custom
-	makedepends = asar
 	depends = electron9
 	provides = youku=1.0.0
 	conflicts = youku
