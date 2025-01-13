@@ -1,10 +1,10 @@
 pkgbase = screencast-git
 	pkgdesc = Command line interface to record a X11 desktop (git version)
-	pkgver = 1.6.0.r0.gec79d20
+	pkgver = 1.6.0.r10.gbb16744
 	pkgrel = 1
 	url = https://github.com/dbermond/screencast/
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	checkdepends = xorg-server-xvfb
 	checkdepends = imagemagick
 	checkdepends = ttf-dejavu
@@ -18,7 +18,7 @@ pkgbase = screencast-git
 	optdepends = sound-theme-freedesktop: sound notification support
 	optdepends = optipng: watermark optimization support
 	optdepends = oxipng: watermark optimization support
-	optdepends = littleutils-full: watermark optimization support
+	optdepends = littleutils: watermark optimization support
 	optdepends = truepng: watermark optimization support
 	optdepends = pingo: watermark optimization support
 	optdepends = advancecomp: watermark optimization support
@@ -29,4 +29,3 @@ pkgbase = screencast-git
 	sha256sums = SKIP
 
 pkgname = screencast-git
-

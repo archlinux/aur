@@ -1,19 +1,19 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=screencast-git
-pkgver=1.6.0.r0.gec79d20
+pkgver=1.6.0.r10.gbb16744
 pkgrel=1
 pkgdesc='Command line interface to record a X11 desktop (git version)'
 arch=('any')
 url='https://github.com/dbermond/screencast/'
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('ffmpeg' 'xorg-xdpyinfo' 'libnotify' 'oxygen-icons')
 optdepends=('imagemagick: watermark effect support'
             'slop: graphical screen region selection support'
             'sound-theme-freedesktop: sound notification support'
             'optipng: watermark optimization support'
             'oxipng: watermark optimization support'
-            'littleutils-full: watermark optimization support'
+            'littleutils: watermark optimization support'
             'truepng: watermark optimization support'
             'pingo: watermark optimization support'
             'advancecomp: watermark optimization support'
