@@ -1,1 +1,1 @@
-u linkwarden - "linkwarden daemon user" /home/linkwarden -
+u linkwarden - "linkwarden daemon user" /var/lib/linkwarden /usr/bin/nologin
