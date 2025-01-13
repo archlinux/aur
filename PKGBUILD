@@ -2,14 +2,14 @@
 # Contributor: Reese Wang <thuwrx10 at gmail dot com>
 
 pkgname='hikvision-mvs'
-pkgver=2.1.2
-_pkgdate=231225
-pkgrel=3
+pkgver=3.0.1
+_pkgdate=241128
+pkgrel=1
 pkgdesc="Machine Vision Software by Hikvision, for their industrial cameras."
 arch=('x86_64' 'i686')
 url="https://www.hikrobotics.com/"
 license=('LGPL2.1' 'LGPL3' 'custom')
-source=("https://www.hikrobotics.com/cn2/source/support/software/MVS_STD_GML_V${pkgver}_${_pkgdate}.zip"
+source=("https://www.hikrobotics.com/cn2/source/support/software/MVS_STD_V${pkgver}_${_pkgdate}.zip"
 	'logo.svg'
 	'hikvision-mvs.desktop')
 noextract=("${source[0]##*/}")
@@ -63,5 +63,4 @@ __END__
 	mv ${pkgdir}/opt/MVS/bin/*.pdf ${pkgdir}/usr/share/doc/${pkgname}/
 	mkdir -p ${pkgdir}/usr/share/licenses
 	mv ${pkgdir}/opt/MVS/license ${pkgdir}/usr/share/licenses/${pkgname}
-	sed -i '1a export QT_AUTO_SCREEN_SCALE_FACTOR=1' ${pkgdir}/opt/MVS/bin/MVS.sh 
 }
