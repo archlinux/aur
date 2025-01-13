@@ -1,7 +1,7 @@
 # Maintainer: Andrew Grigorev <andrew@ei-grad.ru>
 
 pkgname=usb-hid-brightness
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Utility to control brightness for USB and Thunderbolt monitors with HID brightness interface (e.g. LG UltraFine 5K)"
 arch=('x86_64')
@@ -13,8 +13,8 @@ source=(
     "$url/archive/v$pkgver.tar.gz"
     "90-usb-hid-brightness.rules"
 )
-sha256sums=('14329cd05699f02692b5c3b46cf3514b57a823855d055e465ff9136dac46c765'
-            'ac514c6b21ada5ef3c15ccdab1a4516c791c4f473d46dd764456506b149c8583')
+sha256sums=('9fdf730ceff48fd8fbcc906818df3a95f89684afd5ad18ec7791db86f8df6ab8'
+            'd29eacf98e2d4da969aa8c32a7bb80d676280a6869400e19823d77243e4176bb')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
