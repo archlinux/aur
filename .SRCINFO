@@ -1,6 +1,6 @@
 pkgbase = pandoc-bin
 	pkgdesc = Conversion between documentation formats
-	pkgver = 3.6.1
+	pkgver = 3.6.2
 	pkgrel = 1
 	url = https://pandoc.org
 	arch = x86_64
@@ -15,14 +15,14 @@ pkgbase = pandoc-bin
 	optdepends = texlive-fontsrecommended: for pdf output using latex or xelatex engines
 	optdepends = texlive-latex: for pdf output using pdflatex engine
 	optdepends = texlive-xetex: for pdf output using xelatex engine
-	provides = pandoc=3.6.1
-	provides = pandoc-cli=3.6.1
+	provides = pandoc=3.6.2
+	provides = pandoc-cli=3.6.2
 	conflicts = pandoc-cli
-	source = pandoc-bin-3.6.1.tar.gz::https://github.com/jgm/pandoc/archive/3.6.1.tar.gz
-	sha256sums = 85e685ee8c8407ea40844145df3cbc1e8469e861dc3454f86dbfd23122aa27e6
-	source_x86_64 = https://github.com/jgm/pandoc/releases/download/3.6.1/pandoc-3.6.1-linux-amd64.tar.gz
-	sha256sums_x86_64 = 70241a3e8f0c2a30103d7954480025e547ed4f40b8cdce674cdf0be9f02bd5a3
-	source_aarch64 = https://github.com/jgm/pandoc/releases/download/3.6.1/pandoc-3.6.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = edd278c6f5937a5e9088f3d78fc039abc0d87348264ad3f7c51ba124bf580e8d
+	source = pandoc-bin-3.6.2.tar.gz::https://github.com/jgm/pandoc/archive/3.6.2.tar.gz
+	sha256sums = 068a0fd99dcd34e99aec0cd039d8d7cdb6b16bf20e338549cc562717c8bcb21f
+	source_x86_64 = https://github.com/jgm/pandoc/releases/download/3.6.2/pandoc-3.6.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = f11b3f21549f23e3d5b99dfacb96560c04c2f76027edb787c4d6551849acf54a
+	source_aarch64 = https://github.com/jgm/pandoc/releases/download/3.6.2/pandoc-3.6.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = eeaf4e6449794b7819de52c1ac6c55a1d4b49faa6edd3243d93013469f70ae00
 
 pkgname = pandoc-bin
