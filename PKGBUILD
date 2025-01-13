@@ -87,7 +87,7 @@ sha256sums=(
   '7a32640a30cd73eb4e50af04b30fdcce93bd0b263577ad941037253608e86cfc'  # $install
 )
 options+=('emptydirs')
-#options+=(debug)
+#options+=('!lto' 'debug')
 
 _CFLAGSADDITIONS="-w -Wno-error=incompatible-pointer-types"
 
