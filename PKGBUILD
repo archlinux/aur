@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=distrEx
-_pkgver=2.9.5
+_pkgver=2.9.6
 pkgname=r-${_pkgname,,}
-pkgver=2.9.5
+pkgver=2.9.6
 pkgrel=1
 pkgdesc="Extensions of Package 'distr'"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-tcltk
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e02179915dcbea363df13066f70d593258dfe0001b76fd870de7e89c6805bcff')
+sha256sums=('e4f0f245ebbe19f5c98cc7a562d1facad455ccd7c4f260281c36cc800b67a061')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
