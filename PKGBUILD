@@ -4,7 +4,7 @@
 _model="201115w"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.1
-pkgrel=11
+pkgrel=12
 pkgdesc="Epson inkjet printer driver (WF-7010, WF-7011, WF-7012, WF-7015, WF-7520, WF-7521, WF-7525)" # WF-7018,
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -23,7 +23,10 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgsrc}/ppds"
   find . -type f -name '*.ppd' -exec \
-    sed -i "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}|/usr/share/epson-inkjet-printer-filter|g" "{}" +
+    sed -e "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}|/usr/share/epson-inkjet-printer-filter|g" \
+        -e "s|/opt/${pkgname}/watermark|/usr/share/epson-inkjet-printer-filter/watermark|g" \
+        -e "s|/opt/${pkgname}/cups/lib/filter/epson_inkjet_printer_filter|/usr/lib/cups/filter/epson_inkjet_printer_filter|g" \
+        -i "{}" +
 }
 
 package() {

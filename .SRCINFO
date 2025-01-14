@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-201115w
 	pkgdesc = Epson inkjet printer driver (WF-7010, WF-7011, WF-7012, WF-7015, WF-7520, WF-7521, WF-7525)
 	pkgver = 1.0.1
-	pkgrel = 11
+	pkgrel = 12
 	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = x86_64
 	license = custom:Epson End User Software License Agreement
