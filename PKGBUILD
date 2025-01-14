@@ -1,10 +1,11 @@
-# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seistrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 epoch=1
-pkgver=6.2.3
+pkgver=6.2.4
 pkgrel=1
 pkgdesc='A 100% private-by-design chat platform for the command-line (pre-compiled)'
 arch=('x86_64')
@@ -22,7 +23,7 @@ source=(
   'simplex-chat.desktop'
 )
 sha512sums=(
-  '0acebd294f6fa8f6cacde533248b73e2d6dd2608939ec950adc93370aae89b5e47346e0313faea3006e2117b751d1714f0cc4aeb4031efa0d42d52a89b6bdc26'
+  '3033744136b7c0b17c7d735f14cbaff7c031ee21096bf40068beaddce64f864c85c096693a6895f67eee34f896a102869de2b2436ad82c6d878d3fc8da6232e8'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
