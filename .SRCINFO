@@ -1,0 +1,15 @@
+pkgbase = psh
+	pkgdesc = A small minimalistic shell
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/proh14/psh
+	arch = x86_64
+	license = Unlicense
+	makedepends = make
+	makedepends = clang
+	depends = glibc
+	depends = readline
+	source = psh-1.0.tar.gz::https://github.com/proh14/psh/archive/1.0.tar.gz
+	sha256sums = a3bb226c59292a257b86b68f248b2182a99732763dff7760f0c2d8998f7a5cb6
+
+pkgname = psh
