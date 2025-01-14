@@ -4,7 +4,7 @@
 _model="n10-nx127"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.1
-pkgrel=12
+pkgrel=13
 pkgdesc="Epson inkjet printer driver (ME 10, 32, 33, 35, 320, 330, 350; Stylus N10, N11, NX125, NX127, S22, SX125, T12, T13, T22, T22E, T25, TX120, TX121, TX123, TX125, TX129)"
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -24,6 +24,7 @@ build() {
   cd "${srcdir}/${_pkgsrc}/ppds"
   find . -type f -name '*.ppd' -exec \
     sed -e "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}|/usr/share/epson-inkjet-printer-filter|g" \
+        -e "s|/opt/${pkgname}/watermark|/usr/share/epson-inkjet-printer-filter/watermark|g" \
         -e "s|/opt/${pkgname}/cups/lib/filter/epson_inkjet_printer_filter|/usr/lib/cups/filter/epson_inkjet_printer_filter|g" \
         -i "{}" +
 }
