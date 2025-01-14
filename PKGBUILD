@@ -1,7 +1,7 @@
 # Maintainer: Jesin <Jesin00@gmail.com>
 pkgname=advancecomp-git
 _name="${pkgname%-git}"
-pkgver=2.1
+pkgver=2.6.r3.ge17d498
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Recompression tools for gz, mng, png, and zip files using Zopfli and 7-Zip DEFLATE algorithms'
@@ -16,9 +16,7 @@ sha256sums=(SKIP)
 
 pkgver() {
 	cd "$_name"
-	local v="$(git describe --tags)"
-	v="${v#v}"
-	printf %s "${v//-/+}"
+	git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
