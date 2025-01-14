@@ -1,7 +1,7 @@
 #Maintainer: Erwin-Iosef erwiniosef@gmail.com
 #PKGBUILD stolen from https://aur.archlinux.org/pkgbase/papirus-icon-theme-git(Thanks!)
 #NOTE: First time AUR package, do not install.
-
+pkgbase=('papirus-icon-theme-plasma-fork')
 pkgname=('papirus-icon-theme-plasma-fork-git')
 pkgver=20250114
 pkgrel=2
