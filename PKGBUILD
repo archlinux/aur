@@ -1,41 +1,35 @@
-# Maintainer: Oliver Nordbjerg <hi@notbjerg.me>
+# Maintainer: Xeonacid <h.dwwwwww@gmail.com>
+# Contributor: Oliver Nordbjerg <hi@notbjerg.me>
 
 pkgname=foundry
-pkgver=v1.0.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A blazing fast, portable and modular toolkit for Ethereum application development written in Rust."
-arch=('x86_64' 'aarch64')
+arch=(x86_64)
 url="https://getfoundry.sh"
-license=('MIT' 'APACHE')
-depends=(libusb)
-makedepends=('git' 'cargo')
+license=(MIT Apache-2.0)
+depends=(bzip2 gcc-libs glibc libusb)
+makedepends=(git cargo)
 provides=(forge cast anvil chisel)
-source=("git+https://github.com/foundry-rs/foundry.git#tag=${pkgver}")
-sha512sums=('SKIP')
+source=("git+https://github.com/foundry-rs/foundry.git#tag=v$pkgver")
+sha256sums=('6d4a698ac3d49dc48c2958f8a0a27afb953ea3391ff73367b5a18ff4c57497fb')
+options=(!lto)
 
 prepare() {
-    cd ${pkgname}
-
+    cd $pkgname
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd ${pkgname}
-
+    cd $pkgname
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --bins --frozen --release
+    cargo build --frozen --release --bin anvil --bin cast --bin chisel --bin forge
 }
 
 package() {
-  cd ${pkgname}
-
-  install -Dm755 "target/release/forge" "$pkgdir/usr/bin/forge"
-  install -Dm755 "target/release/cast" "$pkgdir/usr/bin/cast"
-  install -Dm755 "target/release/anvil" "$pkgdir/usr/bin/anvil"
-  install -Dm755 "target/release/chisel" "$pkgdir/usr/bin/chisel"
-
-  install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-MIT"
-  install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-APACHE"
+    cd $pkgname
+    install -Dm755 target/release/{anvil,cast,chisel,forge} -t $pkgdir/usr/bin
+    install -Dm644 LICENSE-MIT LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
