@@ -16,7 +16,7 @@ license=(MPL-2.0)
 
 # prepare download URL from stored pkgver
 _datecode=$(echo "$pkgver" | sed 's/\(....\)\(..\)\(..\)/\1-\2-\3/')
-_url="https://github.com/servo/servo-nightly-builds/releases/download/$_datecode/"
+_url="https://github.com/servo/servo-nightly-builds/releases/download/$_datecode"
 
 provides=($_pkgname)
 conflicts=($_pkgname)
