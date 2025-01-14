@@ -10,8 +10,6 @@ pkgbase = python-typing-validation
 	makedepends = python-setuptools-scm>=6.2
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
 	makedepends = python-typing_extensions
 	source = https://files.pythonhosted.org/packages/source/t/typing_validation/typing_validation-1.2.11.post4.tar.gz
 	md5sums = 2c7a8d1cf6b220f95ad941df36ed1e6c
@@ -22,6 +20,3 @@ pkgname = python-typing-validation
 	optdepends = python-typing-validation-doc: Documentation for typing-validation
 	provides = python-typing_validation
 	conflicts = python-typing_validation
-
-pkgname = python-typing-validation-doc
-	pkgdesc = Documentation for Python typing-validation

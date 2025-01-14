@@ -3,7 +3,8 @@
 pkgbase=python-typing-validation
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
-pkgname=("python-${_pname}" "python-${_pname}-doc")
+pkgname=("python-${_pname}")
+# "python-${_pname}-doc")
 pkgver=1.2.11.post4
 pkgrel=1
 pkgdesc="A simple library for runtime type-checking"
@@ -13,8 +14,8 @@ license=('MIT')
 makedepends=('python-setuptools-scm>=6.2'
              'python-build'
              'python-installer'
-             'python-sphinx'
-             'python-sphinx_rtd_theme'
+#            'python-sphinx'
+#            'python-sphinx_rtd_theme'
              'python-typing_extensions')  # wheel required by new setuptools
 checkdepends=('python-pytest'
 #             'python-pytest-xdist'
@@ -27,7 +28,7 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    PYTHONPATH="../build/lib" make -C docs html
+#   PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
@@ -48,11 +49,11 @@ package_python-typing-validation() {
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
-package_python-typing-validation-doc() {
-    pkgdesc="Documentation for Python typing-validation"
-    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
-
-    install -D -m644 ../../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
-    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
-}
+#package_python-typing-validation-doc() {
+#    pkgdesc="Documentation for Python typing-validation"
+#    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
+#
+#    install -D -m644 ../../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+#    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+#    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
+#}
