@@ -5,7 +5,7 @@ _model="201113j"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.3
 pkgrel=11
-pkgdesc="Epson inkjet printer driver (Artisan 635)"
+pkgdesc="Epson inkjet printer driver (PX-B700, PX-B750F)"
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:Epson End User Software License Agreement')

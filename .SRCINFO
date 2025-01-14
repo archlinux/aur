@@ -1,5 +1,5 @@
 pkgbase = epson-inkjet-printer-201113j
-	pkgdesc = Epson inkjet printer driver (Artisan 635)
+	pkgdesc = Epson inkjet printer driver (PX-B700, PX-B750F)
 	pkgver = 1.0.3
 	pkgrel = 11
 	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
