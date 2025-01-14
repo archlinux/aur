@@ -29,21 +29,24 @@ build() {
     fi
 }
 
-# Post-installation hook for# Install function for both packages
 package_sherlock-launcher-git() {
-    conflicts=("sherlock-launcher-bin")
-    cd "$srcdir"
-    install -Dm755 "$srcdir/target/release/sherlock" "$pkgdir/usr/bin/sherlock"
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/sherlock-launcher/LICENSE"
+    if [[ "$pkgname" == "sherlock-launcher-git" ]]; then
+        conflicts=("sherlock-launcher-bin")
+        cd "$srcdir"
+        install -Dm755 "$srcdir/target/release/sherlock" "$pkgdir/usr/bin/sherlock"
+        install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/sherlock-launcher/LICENSE"
+    fi
 }
 
 package_sherlock-launcher-bin() {
-    conflicts=("sherlock-launcher-git")
-    cd "$srcdir"
-    tar -xzf "$srcdir/sherlock-v${pkgver}-linux-x86_64.tar.gz" -C "$pkgdir"
+    if [[ "$pkgname" == "sherlock-launcher-git" ]]; then
+        conflicts=("sherlock-launcher-git")
+        cd "$srcdir"
+        tar -xzf "$srcdir/sherlock-v${pkgver}-linux-x86_64.tar.gz" -C "$pkgdir"
 
-    install -Dm644 "$pkgdir/LICENSE" "$pkgdir/usr/share/licenses/sherlock-launcher/LICENSE"
-    install -Dm755 "$pkgdir/sherlock" "$pkgdir/usr/bin/sherlock"
+        install -Dm644 "$pkgdir/LICENSE" "$pkgdir/usr/share/licenses/sherlock-launcher/LICENSE"
+        install -Dm755 "$pkgdir/sherlock" "$pkgdir/usr/bin/sherlock"
+    fi
 }
 
 post_install() {
