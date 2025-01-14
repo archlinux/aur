@@ -6,6 +6,7 @@ pkgbase = zrge
 	arch = x86_64
 	license = GPL3
 	depends = sfml=2.6.2
+	depends = gcc
 	source = git+https://github.com/ZerTeam/ZRGE.git
 	sha256sums = SKIP
 

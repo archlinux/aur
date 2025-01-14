@@ -5,7 +5,10 @@ pkgdesc="Zer Graphic Editor (zrge) is a simple raster graphic editor designed to
 arch=('x86_64')
 url="https://github.com/ZerTeam/ZRGE"
 license=('GPL3')
-depends=('sfml=2.6.2') # Зависимости пакета
+depends=(
+ 'sfml=2.6.2'
+ 'gcc'
+)
 source=("git+https://github.com/ZerTeam/ZRGE.git")
 sha256sums=('SKIP')
 
