@@ -33,7 +33,7 @@ build() {
 package_sherlock-launcher-git() {
     conflicts=("sherlock-launcher-bin")
     cd "$srcdir"
-    install -Dm755 target/release/sherlock "$pkgdir/usr/bin/sherlock"
+    install -Dm755 "$srcdir/target/release/sherlock" "$pkgdir/usr/bin/sherlock"
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/sherlock-launcher/LICENSE"
 }
 
