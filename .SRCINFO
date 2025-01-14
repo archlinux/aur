@@ -1,13 +1,13 @@
 pkgbase = exabgp
 	pkgdesc = The BGP swiss army knife of networking
-	pkgver = 4.2.21
+	pkgver = 4.2.22
 	pkgrel = 1
 	url = https://github.com/Exa-Networks/exabgp
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = exabgp-4.2.21.tar.gz::https://github.com/Exa-Networks/exabgp/archive/4.2.21.tar.gz
-	sha256sums = 5d5ce6e973fc966fa6aed4a1033b63722d95c8f8ba7bb44659694d659c3f7b7b
+	source = exabgp-4.2.22.tar.gz::https://github.com/Exa-Networks/exabgp/archive/4.2.22.tar.gz
+	sha256sums = d5e3aaddb6445b430ee640272e4598be01d7ae132e1e76a201321c20d6d2d86b
 
 pkgname = exabgp
