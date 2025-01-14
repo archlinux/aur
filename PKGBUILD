@@ -6,7 +6,7 @@ _npmname=meshcentral
 _npmver=1.1.38
 pkgname=meshcentral
 pkgver=1.1.38
-pkgrel=2
+pkgrel=3
 pkgdesc="The open source, multi-platform, self-hosted, feature packed web site for remote device management"
 arch=(any)
 url="https://meshcentral.com/info/"
@@ -33,28 +33,28 @@ package() {
 	local _npmdir="$pkgdir/usr/lib/node_modules/"
 	mkdir -p "$_npmdir"
 	cd "$_npmdir"
-	npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
-#		archiver@5.3.2 \
-#		body-parser@1.20.2 \
-#		cbor@5.2.0 \
-#		compression@1.7.4 \
-#		cookie-session@2.0.0 \
-#		express@4.18.2 \
-#		express-handlebars@5.3.5 \
-#		express-ws@4.0.0 \
-#		ipcheck@0.1.0 \
-#		minimist@1.2.8 \
-#		multiparty@4.2.3 \
-#		@yetzt/nedb \
-#		node-forge@1.3.1 \
-#		ua-parser-js@1.0.36 \
-#		ws@8.14.2 \
-#		yauzl@2.10.0 \
-#		passport \
-#		passport-saml \
-#		nodemailer@6.9.8 \
-#		otplib@10.2.3 \
-#		keygrip
+	npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver \
+		archiver@5.3.2 \
+		body-parser@1.20.2 \
+		cbor@5.2.0 \
+		compression@1.7.4 \
+		cookie-session@2.0.0 \
+		express@4.18.2 \
+		express-handlebars@5.3.5 \
+		express-ws@4.0.0 \
+		ipcheck@0.1.0 \
+		minimist@1.2.8 \
+		multiparty@4.2.3 \
+		@yetzt/nedb \
+		node-forge@1.3.1 \
+		ua-parser-js@1.0.36 \
+		ws@8.14.2 \
+		yauzl@2.10.0 \
+		passport \
+		passport-saml \
+		nodemailer@6.9.8 \
+		otplib@10.2.3 \
+		keygrip
 
 	# Non-deterministic race in npm gives 777 permissions to random directories.
 	# See https://github.com/npm/npm/issues/9359 for details.
