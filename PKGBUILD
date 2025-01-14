@@ -8,13 +8,13 @@ pkgver=1.1.0_SR1
 _version_branch=1.1.0
 _realver=${pkgver//_/-}
 _rev=2019
-pkgrel=2
+pkgrel=3
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)."
 arch=("x86_64")
 url="https://launchpad.net/simulide"
 provides=('simulide')
 conflicts=('simulide')
-license=("GPL3")
+license=("AGPL3")
 source=(
   "${pkgname}::bzr+https://code.launchpad.net/~arcachofo/simulide/${_version_branch}#revision=revno:${_rev}"
   "simulide.desktop")
