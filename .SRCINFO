@@ -6,13 +6,11 @@ pkgbase = python-bases
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	checkdepends = python-typing-validation
 	checkdepends = python-base58
 	makedepends = python-setuptools-scm>=6.2
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
-	makedepends = python-typing-validation
 	source = https://files.pythonhosted.org/packages/source/b/bases/bases-0.3.0.tar.gz
 	md5sums = 86b873d2ba179967319a82e6ff73dac8
 
@@ -21,6 +19,3 @@ pkgname = python-bases
 	depends = python-typing_extensions>=4.6.0
 	depends = python-typing-validation>=1.1.0
 	optdepends = python-bases-doc: Documentation for python bases
-
-pkgname = python-bases-doc
-	pkgdesc = Documentation for Python bases
