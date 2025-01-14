@@ -1,6 +1,6 @@
 pkgbase = dumbpipe-bin
 	pkgdesc = Unix pipes between devices
-	pkgver = 0.22.0
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://github.com/n0-computer/dumbpipe
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = dumbpipe-bin
 	depends = glibc
 	provides = dumbpipe
 	conflicts = dumbpipe
-	source = README-0.22.0.md::https://raw.githubusercontent.com/n0-computer/dumbpipe/v0.22.0/README.md
-	source = LICENSE-MIT-0.22.0::https://raw.githubusercontent.com/n0-computer/dumbpipe/v0.22.0/LICENSE-MIT
-	source = LICENSE-APACHE-0.22.0::https://raw.githubusercontent.com/n0-computer/dumbpipe/v0.22.0/LICENSE-APACHE
+	source = README-0.23.0.md::https://raw.githubusercontent.com/n0-computer/dumbpipe/v0.23.0/README.md
+	source = LICENSE-MIT-0.23.0::https://raw.githubusercontent.com/n0-computer/dumbpipe/v0.23.0/LICENSE-MIT
+	source = LICENSE-APACHE-0.23.0::https://raw.githubusercontent.com/n0-computer/dumbpipe/v0.23.0/LICENSE-APACHE
 	sha256sums = 1960622fdff7ab211ad6a5d48e1f23e91d7dde82774f443fa16faac2a4d8c666
 	sha256sums = b801c8d677ef9701149e05cf98f28b82a56832dd67c94d96d36d25d063b1b353
 	sha256sums = 7ee92352fcac2b427c4754822087d0aeb3afc99951b71bd15cc4c2e5c61c1b60
-	source_x86_64 = https://github.com/n0-computer/dumbpipe/releases/download/v0.22.0/dumbpipe-v0.22.0-linux-aarch64.tar.gz
-	sha256sums_x86_64 = 9f0e38c7574058dd95a0eb2ef78e0015cad1300fac61c3f8c523d066ed16759e
+	source_x86_64 = https://github.com/n0-computer/dumbpipe/releases/download/v0.23.0/dumbpipe-v0.23.0-linux-aarch64.tar.gz
+	sha256sums_x86_64 = 4966d23f907d4d3ca16ed7403a429d93f88346406f3fee6988747a57e6a9b779
 
 pkgname = dumbpipe-bin
