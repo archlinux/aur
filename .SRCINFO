@@ -1,0 +1,14 @@
+pkgbase = epson-inkjet-printer-sc-p5300
+	pkgdesc = Epson inkjet printer driver (SC-P5300 Series)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/40/22/a65df614acb0f8315ffdec9526c947b753f5962d/epson-sc-p5300-ww-1.0.0-1.src.rpm
+	sha256sums = 3e91018c8a968709daec22c1b6a21254eea59f7077b87890bc3bf2eb19bd60bc
+
+pkgname = epson-inkjet-printer-sc-p5300
