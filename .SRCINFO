@@ -1,14 +1,15 @@
 pkgbase = libodb-qt
 	pkgdesc = The ODB Qt profile library
-	pkgver = 2.5.0b27
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://www.codesynthesis.com/products/odb/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = build2
-	depends = qt5-base
 	depends = libodb
 	options = !libtool
+	source = https://www.codesynthesis.com/download/odb/2.5.0/libodb-qt-2.5.0.tar.gz
+	sha256sums = 9456c6afdd966b189ece0e0e3486317fe2506a2590da24fbdf81e71b8d5ed130
 
 pkgname = libodb-qt
