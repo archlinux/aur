@@ -1,7 +1,7 @@
 # Maintainer: dqpb <dqpb@mailbox.org>
 
 pkgname=gmetronome
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A GTK metronome featuring accents, tapping, training function and more"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=(
     "https://github.com/dqpb/gmetronome/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2"
 )
 sha256sums=(
-    '8be406271c4a34d6fb22521b9a543bf7b46c059f9d359504241adcba5269b54c'
+    'ae2d112b62e256d9ce9dc725fb70cbfff8108d48a4aff04837bb945c685c1392'
 )
 
 build() {
