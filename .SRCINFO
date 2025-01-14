@@ -4,11 +4,13 @@ pkgbase = python-sphinx-py3doc-enhanced-theme
 	pkgrel = 1
 	url = https://github.com/ionelmc/sphinx-py3doc-enhanced-theme
 	arch = any
-	license = BSD
+	license = BSD-2-Clause
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	source = https://files.pythonhosted.org/packages/source/s/sphinx-py3doc-enhanced-theme/sphinx-py3doc-enhanced-theme-2.4.0.tar.gz
+	source = fix-pytest.patch
 	md5sums = 38af7b770835cca10a6034abdcc58989
+	md5sums = 533ea306393e5f871e74b19056338f35
 
 pkgname = python-sphinx-py3doc-enhanced-theme
 	depends = python

@@ -1,0 +1,33 @@
+--- a/setup.cfg	2016-12-17 09:51:53.000000000 +0800
++++ b/setup.cfg	2025-01-14 21:34:27.147959687 +0800
+@@ -8,7 +8,7 @@
+ max-line-length = 140
+ exclude = tests/*,*/migrations/*,*/south_migrations/*
+ 
+-[pytest]
++[tool:pytest]
+ norecursedirs = 
+ 	.git
+ 	.tox
+--- a/tests/reference/foobar.rst	2015-08-28 06:42:57.000000000 +0800
++++ b/tests/reference/foobar.rst	2025-01-14 21:39:48.099398746 +0800
+@@ -8,13 +8,13 @@
+ .. sourcecode:: pycon
+ 
+     >>> def fib(n):
+-    >>>     a, b = 0, 1
+-    >>>     while a < n:
+-    >>>         print(a, end=' ')
+-    >>>         a, b = b, a+b
+-    >>>     print()
++    ...     a, b = 0, 1
++    ...     while a < n:
++    ...         print(a, end=' ')
++    ...         a, b = b, a+b
++    ...     print()
+     >>> fib(1000)
+-    0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
++    0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 
+ 
+ .. sourcecode:: python
+ 

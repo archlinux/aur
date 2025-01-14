@@ -1,4 +1,5 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-sphinx-py3doc-enhanced-theme
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
@@ -8,20 +9,22 @@ pkgrel=1
 pkgdesc="Theme based on https://docs.python.org/3/ with some responsive enhancements"
 arch=('any')
 url="https://github.com/ionelmc/sphinx-py3doc-enhanced-theme"
-license=('BSD')
+license=('BSD-2-Clause')
 makedepends=('python-setuptools')
 #            'python-wheel'
 #            'python-build'
 #            'python-installer')
 #            'python-sphinx')
 checkdepends=('python-pytest')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('38af7b770835cca10a6034abdcc58989')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        'fix-pytest.patch')
+md5sums=('38af7b770835cca10a6034abdcc58989'
+         '533ea306393e5f871e74b19056338f35')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    sed -i -e '/[pytest]/s/pytest/tool:pytest/' setup.cfg
+    patch -Np1 -i "${srcdir}/fix-pytest.patch"
 }
 
 build() {
@@ -37,7 +40,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    EXTRASTYLING="true" pytest || warning "Tests failed"
+    EXTRASTYLING="true" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
 
 package_python-sphinx-py3doc-enhanced-theme() {
