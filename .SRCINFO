@@ -1,15 +1,13 @@
 pkgbase = antiwuolah
 	pkgdesc = Script para eliminar páginas y anuncios de archivos PDF de Wuolah.
-	pkgver = 1.0.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/cesardelarosa/antiWuolah
 	arch = any
 	license = MIT
 	depends = qpdf
 	depends = texlive-bin
-	source = antiwuolah-1.0.0.tar.gz::https://github.com/cesardelarosa/antiWuolah/archive/refs/tags/v1.0.0.tar.gz
-	source = antiwuolah-1.0.0.tar.gz.asc::https://github.com/cesardelarosa/antiWuolah/releases/download/v1.0.0/antiwuolah-1.0.0.tar.gz.asc
-	sha256sums = 0ccb2dce3591a2ebfdf10dab161e361f2a916d74ba36ccba1f7b3d228d9c6a3f
-	sha256sums = SKIP
+	source = antiwuolah-1.1.1.tar.gz::https://github.com/cesardelarosa/antiWuolah/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 7d430e257334a3a3c829e991ba9c71ca82a844c3b677d6d6ecb7b0a9d98eda30
 
 pkgname = antiwuolah
