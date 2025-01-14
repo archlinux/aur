@@ -1,18 +1,18 @@
 pkgbase = compasscad-bin
 	pkgdesc = very good CAD software. plan out buildings, and show it off to your boss.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/zeankundev/CompassCAD
 	arch = x86_64
 	license = LicenseRef-UFOL-2.0
 	makedepends = asar
 	depends = electron33
-	provides = compasscad=1.6.1
+	provides = compasscad=1.6.2
 	conflicts = compasscad
-	source = compasscad-1.6.1.rpm::https://github.com/zeankundev/CompassCAD/releases/download/1.6.1/compasscad-1.6.1.x86_64.rpm
-	source = LICENSE-1.6.1::https://raw.githubusercontent.com/zeankundev/CompassCAD/1.6.1/LICENSE
+	source = compasscad-1.6.2.rpm::https://github.com/zeankundev/CompassCAD/releases/download/1.6.2/compasscad-1.6.2.x86_64.rpm
+	source = LICENSE-1.6.2::https://raw.githubusercontent.com/zeankundev/CompassCAD/1.6.2/LICENSE
 	source = compasscad.sh
-	sha256sums = 3f7d55890b2a76a89680e9dbe6db7f837aa312888031c274b0ec3e51514e36f5
+	sha256sums = 2b0edc6163fb42b7f7d4609d56e3aab6923df053a990d8422485f5e855097fc7
 	sha256sums = 2d59799d08c811b91b35bc6d0615c7b8b3e27f3e2dc676daa9abc1de4bc97c40
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
