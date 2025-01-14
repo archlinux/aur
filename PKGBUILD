@@ -13,7 +13,7 @@ arch=("x86_64")
 url="https://github.com/eeTools/SimulIDE-dev"
 provides=('simulide')
 conflicts=('simulide')
-license=("AGPL3")
+license=("AGPL-3.0-or-later")
 source=(
   "${pkgname}::git+https://github.com/eeTools/SimulIDE-dev.git"
   "simulide.desktop")

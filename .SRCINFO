@@ -4,7 +4,7 @@ pkgbase = simulide-git
 	pkgrel = 5
 	url = https://github.com/eeTools/SimulIDE-dev
 	arch = x86_64
-	license = AGPL3
+	license = AGPL-3.0-or-later
 	depends = qt5-base>=5.15.1
 	depends = qt5-multimedia
 	depends = qt5-serialport
