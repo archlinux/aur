@@ -1,14 +1,15 @@
 pkgbase = floc-git
 	pkgdesc = Flo Compiler
-	pkgver = r113.9ed6490
+	pkgver = r144.8e6e9b6
 	pkgrel = 1
 	url = https://github.com/romch007/floc
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = cargo
+	makedepends = rust
 	makedepends = llvm
 	depends = llvm-libs
+	depends = gcc-libs
 	optdepends = clang: linking support
 	provides = floc
 	source = git+https://github.com/romch007/floc.git
