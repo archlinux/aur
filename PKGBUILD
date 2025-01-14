@@ -25,7 +25,7 @@ sha256sums=('SKIP')
 build() {
     if [[ "$pkgname" == "sherlock-launcher-git" ]]; then
         cd "$srcdir/sherlock"
-        cargo build --release --quiet
+        cargo build --release
     fi
 }
 
@@ -33,8 +33,8 @@ package_sherlock-launcher-git() {
     if [[ "$pkgname" == "sherlock-launcher-git" ]]; then
         conflicts=("sherlock-launcher-bin")
         cd "$srcdir"
-        install -Dm755 "$srcdir/target/release/sherlock" "$pkgdir/usr/bin/sherlock"
-        install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/sherlock-launcher/LICENSE"
+        install -Dm755 "$srcdir/sherlock/target/release/sherlock" "$pkgdir/usr/bin/sherlock"
+        install -Dm644 "$srcdir/sherlock/LICENSE" "$pkgdir/usr/share/licenses/sherlock-launcher/LICENSE"
     fi
 }
 
