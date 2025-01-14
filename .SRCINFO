@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-stylus-photo-t50-series
 	pkgdesc = Epson inkjet printer driver (Artisan 50; Stylus Photo P50, R330, T50, T59, T60)
 	pkgver = 1.0.1
-	pkgrel = 11
+	pkgrel = 12
 	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = x86_64
 	license = custom:Epson End User Software License Agreement
