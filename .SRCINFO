@@ -1,6 +1,6 @@
 pkgbase = lyricistant-bin
 	pkgdesc = A helpful writing assistant for lyricists!(Prebuilt version.Use system-wide electron)
-	pkgver = 3.4.5
+	pkgver = 3.4.7
 	pkgrel = 1
 	url = https://github.com/wardellbagby/lyricistant
 	arch = aarch64
@@ -8,13 +8,13 @@ pkgbase = lyricistant-bin
 	license = GPL-3.0-only
 	makedepends = fuse2
 	depends = electron30
-	provides = lyricistant=3.4.5
+	provides = lyricistant=3.4.7
 	conflicts = lyricistant
 	source = lyricistant.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = lyricistant-3.4.5-aarch64.AppImage::https://github.com/wardellbagby/lyricistant/releases/download/v3.4.5/lyricistant-linux_arm64.AppImage
-	sha256sums_aarch64 = 9198211d570c32eb0b4e4296415aa38909c8a57d677bea933b2d99f1e1ebde38
-	source_x86_64 = lyricistant-3.4.5-x86_64.AppImage::https://github.com/wardellbagby/lyricistant/releases/download/v3.4.5/lyricistant-linux_x86_64.AppImage
-	sha256sums_x86_64 = f5ec25a5a6e4d238fe199d02704162f7bd150fd66515bb9f82cd5c16a246a2a3
+	source_aarch64 = lyricistant-3.4.7-aarch64.AppImage::https://github.com/wardellbagby/lyricistant/releases/download/v3.4.7/lyricistant-linux_arm64.AppImage
+	sha256sums_aarch64 = 4d1018973df0119ed6b94856aec5015a484f07fde0140e8bd629ac57821959a3
+	source_x86_64 = lyricistant-3.4.7-x86_64.AppImage::https://github.com/wardellbagby/lyricistant/releases/download/v3.4.7/lyricistant-linux_x86_64.AppImage
+	sha256sums_x86_64 = 8f91c6df156ab2c24e96dd8d978bce9210144fd65beedcc2523788d06dc309a8
 
 pkgname = lyricistant-bin

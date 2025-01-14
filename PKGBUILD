@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lyricistant-bin
-pkgver=3.4.5
+pkgver=3.4.7
 _electronversion=30
 pkgrel=1
 pkgdesc="A helpful writing assistant for lyricists!(Prebuilt version.Use system-wide electron)"
@@ -22,9 +22,9 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/dow
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux_x86_64.AppImage")
 source=("${pkgname%-bin}.sh")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('9198211d570c32eb0b4e4296415aa38909c8a57d677bea933b2d99f1e1ebde38')
-sha256sums_x86_64=('f5ec25a5a6e4d238fe199d02704162f7bd150fd66515bb9f82cd5c16a246a2a3')
-build() {
+sha256sums_aarch64=('4d1018973df0119ed6b94856aec5015a484f07fde0140e8bd629ac57821959a3')
+sha256sums_x86_64=('8f91c6df156ab2c24e96dd8d978bce9210144fd65beedcc2523788d06dc309a8')
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
