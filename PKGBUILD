@@ -7,8 +7,14 @@ arch=('any')
 url="https://github.com/cesardelarosa/antiWuolah"
 license=('MIT')
 depends=('qpdf' 'texlive-bin')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/cesardelarosa/antiWuolah/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7d430e257334a3a3c829e991ba9c71ca82a844c3b677d6d6ecb7b0a9d98eda30')
+source=(
+	"$pkgname-$pkgver.tar.gz::https://github.com/cesardelarosa/antiWuolah/archive/refs/tags/v$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz.asc::https://github.com/cesardelarosa/antiWuolah/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
+)
+sha256sums=(
+	'7d430e257334a3a3c829e991ba9c71ca82a844c3b677d6d6ecb7b0a9d98eda30'
+	'SKIP'
+)
 
 package() {
     install -Dm755 "$srcdir/antiWuolah-$pkgver/antiwuolah.sh" "$pkgdir/usr/bin/antiwuolah"
