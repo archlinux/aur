@@ -1,7 +1,7 @@
 # Maintainer: Hadi Chokr <hadichokr@icloud.com>
-pkgname=arch-update-helper-git
-pkgver=a10afd2
-pkgrel=2
+pkgname=arch-update-helper
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="A Systray Utility for Checking Arch Linux Updates and Installing Them"
 arch=('x86_64')
 url="https://github.com/silverhadch/arch-update-helper"
