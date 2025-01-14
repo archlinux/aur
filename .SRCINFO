@@ -1,0 +1,21 @@
+pkgbase = pkgx-bin
+	pkgdesc = Run Anything
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/pkgxdev/pkgx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = pkgx
+	conflicts = pkgx
+	source = LICENSE-2.0.0::https://raw.githubusercontent.com/pkgxdev/pkgx/v2.0.0/LICENSE.txt
+	source = README-2.0.0.md::https://raw.githubusercontent.com/pkgxdev/pkgx/v2.0.0/README.md
+	sha256sums = f9e73cf0b1182acbe4d2c623f9970c131c0be0d955bb0609cd98551eabf9f118
+	sha256sums = 218a6a856a30266c77540ff974de2a153dcdf2186f1e66054751c62ddc185d4a
+	source_x86_64 = https://github.com/pkgxdev/pkgx/releases/download/v2.0.0/pkgx-2.0.0+linux+x86-64.tar.xz
+	sha256sums_x86_64 = 2e1de69c250284f4147e51b1bacb06049ef447f13fe23373dd3b708789762328
+	source_aarch64 = https://github.com/pkgxdev/pkgx/releases/download/v2.0.0/pkgx-2.0.0+linux+aarch64.tar.xz
+	sha256sums_aarch64 = c300b45178d759d57d2972375ad320164653bf7bedc65ed44a0f9896b73ae968
+
+pkgname = pkgx-bin
