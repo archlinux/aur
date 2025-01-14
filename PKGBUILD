@@ -37,5 +37,5 @@ check() {
 
 package() {
 	cd "${_srcdir}"
-	DESTDIR="$pkgdir" make install
+	DESTDIR="$pkgdir" make -j1 install
 }
