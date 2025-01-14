@@ -1,5 +1,6 @@
 # Maintainer: Sebastian Kootz - skxxtz@gmail.com
 
+pkgbase="sherlock-launcher" 
 pkgname="sherlock-launcher-bin" 
 pkgver=0.1.0
 pkgrel=1

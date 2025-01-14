@@ -1,4 +1,4 @@
-pkgbase = sherlock-launcher-bin
+pkgbase = sherlock-launcher
 	pkgdesc = Application launcher for Wayland.
 	pkgver = 0.1.0
 	pkgrel = 1
