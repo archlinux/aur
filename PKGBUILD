@@ -73,7 +73,7 @@ build() {
     --dest . \
     --name cryptomator-cli \
     --vendor "Skymatic GmbH" \
-    --copyright "(C) 2016 - 2024 Skymatic GmbH" \
+    --copyright "(C) 2016 - 2025 Skymatic GmbH" \
     --app-version "0.0.1.0" \
     --java-options "-Dorg.cryptomator.cli.version=${pkgver//_*/}-aur" \
     --java-options "--enable-preview" \
