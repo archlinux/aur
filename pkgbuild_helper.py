@@ -183,7 +183,7 @@ def commit_git(version):
 
         # 提交更改
         commit_message = f"update to version {version}"
-        subprocess.run(["git", "commit", "-a", "-m", commit_message], check=True)
+        subprocess.run(["git", "commit", "-m", commit_message], check=True)
 
         return True
     except subprocess.CalledProcessError as e:
