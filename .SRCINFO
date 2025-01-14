@@ -1,0 +1,19 @@
+pkgbase = 10play
+	pkgdesc = Unofficial 10 Play desktop app.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/linuxbombay/10play
+	arch = x86_64
+	arch = arm7h
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = libelectron
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	depends = git
+	source = https://gitlab.com/linuxbombay/10play/application/-/archive/1.0.0/application-1.0.0.tar.bz2
+	sha256sums = e65508efe627abfd0aa2a41281c90341b78eb5139a903277f8282ca9efe6aab6
+
+pkgname = 10play
