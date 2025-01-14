@@ -1,0 +1,18 @@
+pkgbase = python-rusty-rlp
+	pkgdesc = Python bindings for rust rlp
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/cburgdorf/rusty-rlp
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = maturin
+	makedepends = python-installer
+	depends = gcc-libs
+	depends = glibc
+	depends = python
+	source = git+https://github.com/cburgdorf/rusty-rlp.git#tag=0.4.0
+	sha512sums = da7b2153ab89287c03f727c0ed1f3fd5d1d2e535ddc1f51ff38b1b75da0f9907aec67573479e28e1cf8bdd716dd08fe0b8ba3d734c43f461653c782a175f4a79
+
+pkgname = python-rusty-rlp
