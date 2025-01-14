@@ -6,13 +6,11 @@ pkgbase = python-dag-cbor
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	checkdepends = python-multiformats
 	checkdepends = python-cbor2
 	makedepends = python-setuptools-scm>=6.2
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
-	makedepends = python-multiformats
 	source = https://files.pythonhosted.org/packages/source/d/dag-cbor/dag-cbor-0.3.3.tar.gz
 	md5sums = 32a7531eb152018a0dd3941e4e5e2d94
 
@@ -22,6 +20,3 @@ pkgname = python-dag-cbor
 	depends = python-typing-validation>=1.1.0
 	depends = python-multiformats>=0.3.1
 	optdepends = python-dag-cbor-doc: Documentation for dag-cbor
-
-pkgname = python-dag-cbor-doc
-	pkgdesc = Documentation for Python dag-cbor
