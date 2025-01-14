@@ -2,7 +2,7 @@
 pkgname=varchiver
 pkgver=0.3.6
 pkgrel=1
-pkgdesc="A simple archive manager for Linux"
+pkgdesc="A variable archiver and github/aur release manager (serialize your variables first)"
 arch=('x86_64')
 url="https://github.com/instancer-kirik/varchiver"
 license=('GPL3')

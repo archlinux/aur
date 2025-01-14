@@ -1,5 +1,5 @@
 pkgbase = varchiver
-	pkgdesc = A simple archive manager for Linux
+	pkgdesc = A variable archiver and github/aur release manager (serialize your variables first)
 	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/instancer-kirik/varchiver
