@@ -51,7 +51,7 @@ package() {
 
 # Get version from PKGBUILD
 get_version() {
-    grep '^pkgver= 
+    grep '^pkgver=' PKGBUILD | cut -d'=' -f2
 }
 
 # Force rebuild during release
