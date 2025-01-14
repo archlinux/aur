@@ -8,6 +8,7 @@ pkgbase = syncevolution
 	license = LGPL
 	makedepends = intltool
 	makedepends = boost
+	makedepends = glib2-devel
 	depends = evolution-data-server
 	depends = libgnome-keyring
 	depends = neon

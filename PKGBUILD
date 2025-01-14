@@ -1,4 +1,5 @@
-# Maintainer: Justus Piater <Justus-dev at Piater dot name>
+# Maintainer: A Frederick Christensen <aur at ivories d.ot org>
+# Contributor: Justus Piater <Justus-dev at Piater dot name>
 pkgname=('syncevolution')
 pkgver=2.0.0
 pkgrel=1
@@ -7,7 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://syncevolution.org/"
 license=('LGPL')
 depends=('evolution-data-server' 'libgnome-keyring' 'neon' 'python' 'python-pygments')
-makedepends=('intltool' 'boost')
+makedepends=('intltool' 'boost' 'glib2-devel')
 source=("https://downloads.syncevolution.org/syncevolution/sources/syncevolution-2.0.0.tar.gz")
 
 sha256sums=('2c5912e6b9a5064710deb8bf059e5058eae26114f6065de79be586ac4c89513e')
