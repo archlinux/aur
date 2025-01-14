@@ -3,10 +3,10 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=MatrixGenerics
-_pkgver=1.18.0
+_pkgver=1.18.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="S4 Generic Summary Statistic Functions that Operate on Matrix-Like Objects"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('be0b5a464be94a86963f7c1c30c8c3da')
-b2sums=('faa963f2471bbb7a0d274246de9a667d8648f08d7921b3d236ffedfb9936ff601feeba5e5ac988d6ef7d115bd9a97aeac49849514762c7fc546383bf168a1991')
+md5sums=('6b7ad7b1cb868b6d1d4926a064f92dba')
+b2sums=('06dcd4082bb83fa3c2e0bd3559d11441fc93e38232384681fbce71cb3abafc70147e5ae2a98d7fcc8a67d5f4c38bcd25e92afa82dc9f737499ce37099ce29085')
 
 build() {
   mkdir build
