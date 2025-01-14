@@ -2,10 +2,10 @@
 pkgdesc='DWARF optimization and duplicate removal tool'
 pkgname=dwz
 pkgver=0.15
-pkgrel=1
+pkgrel=2
 url=https://sourceware.org/git/dwz.git
 arch=(x86_64)
-license=(GPL)
+license=(GPL-2.0-or-later GPL-3.0-or-later)
 depends=(libelf)
 makedepends=(git make xxhash)
 source=("${pkgname}::git+${url}#tag=dwz-${pkgver}")
