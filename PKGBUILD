@@ -26,7 +26,6 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release -p $pkgname-cli
-    mkdir $srcdir/completions
 }
 
 check() {
