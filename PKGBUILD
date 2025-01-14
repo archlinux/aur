@@ -8,7 +8,7 @@
 
 _pkgname=libtorrent
 pkgname=libtorrent-ipv6
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc='BitTorrent library with a focus on high performance and good code, with ipv6 support'
 url='https://github.com/rakshasa/libtorrent'
@@ -18,9 +18,9 @@ depends=('openssl' 'zlib')
 makedepends=('git')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("$_pkgname::git+https://github.com/rakshasa/libtorrent.git#tag=v0.15.0"
+source=("$_pkgname::git+https://github.com/rakshasa/libtorrent.git#tag=v$pkgver"
         tracker-ipv6.patch)
-sha256sums=('aa465ac92c2ff573c7b760bad13ca8d39c158f9d33878b293889c7bb0ebb874a'
+sha256sums=('8a8395a8a7042f4b3ec5b1b08f02cc44921bd1b10296f9cc5e7f17209d686cde'
             '9d4d3a0e0a5a128d5a28cbff097aba731c78b90113260612dd646c7747f4f844')
 
 prepare() {
@@ -36,7 +36,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    export CXXFLAGS="${CXXFLAGS} -std=c++14 -fno-strict-aliasing"
+    export CXXFLAGS="${CXXFLAGS} -std=c++17 -fno-strict-aliasing"
     ./configure \
         --prefix=/usr \
         --disable-debug
