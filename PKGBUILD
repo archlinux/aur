@@ -1,7 +1,7 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
+# Maintainer: Managor <antti.savo@gmail.com>
 pkgname=speaker-keepalive
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Keep speakers with a shutdown timer alive"
 arch=('any')
 url="https://gitlab.com/Managor/speaker-keepalive"
