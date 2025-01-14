@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='pwrate'
-pkgver='1.7.0'
-pkgrel='2'
+pkgver='1.7.1'
+pkgrel='1'
 pkgdesc='Primitive sample rate chooser for PipeWire'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/pkunk/$pkgname"
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('gtk4' 'pipewire')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('66192c76d8267e2a34932d78259845c1717e1185cf6ba87420f574693cd3704cd97d27fff33b5cd99a0df288447c0b309b35e4d25a8e52e031e21d4310b0a79f')
+b2sums=('825920fa7ac1a475c2fed2e4e9dc563555f4049c6b5373ce119d7ea80be64e8fea42c3b558fd9397c9d19f6346bbac54fe72b26a8304508e620dfde8adf7a1fd')
 
 _sourcedirectory="$pkgname-$pkgver"
 
