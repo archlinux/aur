@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dartsmate-git
 _pkgname=DartsMate
-pkgver=0.2.0.r0.gc85934f
-_electronversion=29
+pkgver=0.2.1.r3.g4b111b0
+_electronversion=33
 _nodeversion=20
 pkgrel=1
-pkgdesc="Analyze, compare and track your darts games with DartsMate"
+pkgdesc="Analyze, compare and track your darts games with DartsMate.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/derechtenap/dartsmate"
 license=('LicenseRef-unknown')
@@ -68,7 +68,10 @@ prepare() {
         } >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
-    sed -i "s/--linux/--linux dir/g;s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    sed -e "
+        s/win/linux/g
+        s/nsis/dir/g
+    " -i electron-builder.yml
     NODE_ENV=development    npm install
 }
 build() {
