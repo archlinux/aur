@@ -8,6 +8,7 @@ pkgbase = aptakube
 	makedepends = binutils
 	depends = zlib
 	depends = hicolor-icon-theme
+	depends = webkit2gtk-4.1
 	optdepends = gnome-terminal
 	noextract = aptakube-1.9.1.deb
 	options = !strip
