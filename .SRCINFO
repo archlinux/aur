@@ -1,6 +1,6 @@
 pkgbase = llvm-mingw-w64-toolchain-ucrt-bin
 	pkgdesc = LLVM/Clang/LLD based mingw-w64 toolchain (UCRT) targeting i686, x86-64, armv7, and aarch64
-	pkgver = 20241030
+	pkgver = 20250114
 	pkgrel = 1
 	url = https://github.com/mstorsjo/llvm-mingw
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = llvm-mingw-w64-toolchain-ucrt-bin
 	provides = mingw-w64-headers
 	provides = mingw-w64-winpthreads
 	options = !strip
-	source = https://github.com/mstorsjo/llvm-mingw/releases/download/20241030/llvm-mingw-20241030-ucrt-ubuntu-20.04-x86_64.tar.xz
-	sha256sums = 05c55108e9b400bda1d4cef8e22c0e5f9495f1316c072e92b9f7965114a30b66
+	source = https://github.com/mstorsjo/llvm-mingw/releases/download/20250114/llvm-mingw-20250114-ucrt-ubuntu-20.04-x86_64.tar.xz
+	sha256sums = a16f52dee819797248e6c7d63b8b1e50a92119f45767ecd8e9633d1733b896e2
 
 pkgname = llvm-mingw-w64-toolchain-ucrt-bin
