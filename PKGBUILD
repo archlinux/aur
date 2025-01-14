@@ -1,7 +1,7 @@
 # Maintainer: Lukasz Michalski <lm@zork.pl>
 
 pkgname=python-nagiosplugin
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="a Python class library which helps writing Nagios (or Icinga) compatible plugins easily in Python"
 arch=('any')
