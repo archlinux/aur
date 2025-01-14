@@ -1,6 +1,6 @@
 pkgbase = sblg
 	pkgdesc = simple off-line blog utility
-	pkgver = 0.5.12
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://kristaps.bsd.lv/sblg
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = sblg
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = custom:ISC
+	license = ISC
 	depends = expat
-	source = https://kristaps.bsd.lv/sblg/snapshots/sblg-0.5.12.tar.gz
-	sha512sums = 2d88dc59949e818977c6e8b7ee090984571b8813d7fd81fba8e705025c604734828b997bfc72d69164f295e9ad2cee0df633acbbbbe3cfda53be7b3a93f3f903
+	source = https://kristaps.bsd.lv/sblg/snapshots/sblg-0.6.1.tar.gz
+	sha512sums = 07de1388853614ec338353a7eee7dd11e33714f05e77ca503052a8c0530048076c1b0b6aa9fea65e32e6f061071a0522d6aa5aeeb8466bab82c24e9e8dcbb5b1
 
 pkgname = sblg

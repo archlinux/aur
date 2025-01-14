@@ -2,14 +2,14 @@
 # Contributor: KingofToasters <dev at sgregoratto dot me>
 pkgname=sblg
 pkgdesc='simple off-line blog utility'
-pkgver=0.5.12
+pkgver=0.6.1
 pkgrel=1
 url=https://kristaps.bsd.lv/sblg
 source=("${url}/snapshots/${pkgname}-${pkgver}.tar.gz")
 depends=(expat)
-license=(custom:ISC)
+license=(ISC)
 arch=(x86_64 i686 armv6h armv7h aarch64)
-sha512sums=('2d88dc59949e818977c6e8b7ee090984571b8813d7fd81fba8e705025c604734828b997bfc72d69164f295e9ad2cee0df633acbbbbe3cfda53be7b3a93f3f903')
+sha512sums=('07de1388853614ec338353a7eee7dd11e33714f05e77ca503052a8c0530048076c1b0b6aa9fea65e32e6f061071a0522d6aa5aeeb8466bab82c24e9e8dcbb5b1')
 
 build () {
 	cd "${pkgname}-${pkgver}"
@@ -20,6 +20,4 @@ build () {
 package () {
 	cd "${pkgname}-${pkgver}"
 	DESTDIR="${pkgdir}" make install
-	sed -n 3,15p main.c | cut -c4- > COPYING
-	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
