@@ -5,7 +5,7 @@ _model="stylus-office-tx610fw-series"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.0
 pkgrel=11
-pkgdesc="Epson inkjet printer driver (Stylus Office BX610FW, TX610FW; Stylus SX610FW; WorkForce 610, 615)"
+pkgdesc="Epson inkjet printer driver (Stylus SX610FW; Stylus Office BX610FW, TX610FW; WorkForce 610, 615)"
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:Epson End User Software License Agreement')
