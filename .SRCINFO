@@ -1,5 +1,5 @@
 pkgbase = epson-inkjet-printer-k100-k200-series
-	pkgdesc = Epson inkjet printer driver (K100, K200, WorkForce K101)
+	pkgdesc = Epson inkjet printer driver (K100, K200; WorkForce K101)
 	pkgver = 1.0.0
 	pkgrel = 11
 	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX

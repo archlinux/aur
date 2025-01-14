@@ -5,7 +5,7 @@ _model="k100-k200-series"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.0
 pkgrel=11
-pkgdesc="Epson inkjet printer driver (K100, K200, WorkForce K101)"
+pkgdesc="Epson inkjet printer driver (K100, K200; WorkForce K101)"
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:Epson End User Software License Agreement')
