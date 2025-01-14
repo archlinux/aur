@@ -19,7 +19,7 @@ fi
 
 pkgname=${_pkgname}-dkms-staging-git
 pkgver=2.3.0.r0.gbc06d8164b
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
 url="https://zfsonlinux.org/"
@@ -33,7 +33,7 @@ source=("${_pkgname}::git+${_git_repo}#${_git_branch}"
         "69-zfs-dkms-check.hook"
         "zfs-dkms-check")
 sha256sums=('SKIP'
-            '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5'
+            '3039da5ecb6fe5f7dbaab8492f73d59bcafb8b22bd267f9d72a3ce5e70f82113'
             '6c793cdbcf0c758b7bc78dcac85d116052b7a66416e4c54179cb0955687b3875'
             '59656435058e41620f15b5691ef1f753355fe81c01a562d92b7c8028aa527b1f')
 
