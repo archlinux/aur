@@ -7,7 +7,7 @@
 
 _pkgname="pyinfra"
 pkgname="$_pkgname"
-pkgver=3.1.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="automate infrastructure super fast at massive scale"
 url="https://github.com/pyinfra-dev/pyinfra"
@@ -20,12 +20,10 @@ depends=(
   'python-dateutil'
   'python-distro'
   'python-gevent'
-  'python-importlib-metadata'
   'python-jinja'
   'python-packaging'
   'python-paramiko'
   'python-typeguard'
-  'python-typing_extensions'
 )
 makedepends=(
   'python-build'
@@ -37,13 +35,11 @@ makedepends=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"https://github.com/pyinfra-dev/pyinfra/archive/v$pkgver.$_pkgext")
-sha256sums=('d3eea5304a51fdc2fd14062569af880db3f5deb87d97dd6dd5f98ecaab66dea9')
+sha256sums=('7da8d0dc2a5fba37b221c26de2510167d32db8aa0ff1fe4417ee2266c007e285')
 
 prepare() {
   cd "$_pkgsrc"
   rm -rf tests
-
-  sed -E -e '/configparser/d' -i setup.py
 }
 
 build() {
