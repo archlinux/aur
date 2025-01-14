@@ -1,0 +1,15 @@
+pkgbase = epson-inkjet-printer-stylus-pro-4450-series
+	pkgdesc = Epson inkjet printer driver (Stylus Pro 4450)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
+	source = https://download.ebz.epson.net/dsc/f/01/00/01/70/47/71e196ee7032acef57cfd4e32b398d325f1490c4/epson-stylus-pro-4450-series-1.0.0-1lsb3.2.src.rpm
+	md5sums = 35a34b0692c8bcf17494aa7eb4fe6f3f
+	sha256sums = 539477a62440e9fad1d9a1f7d6223ef5f8eddc3d2826c6852555d1167cff4db1
+
+pkgname = epson-inkjet-printer-stylus-pro-4450-series
