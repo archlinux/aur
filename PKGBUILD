@@ -3,7 +3,7 @@
 
 _pkgname=linutil
 pkgname="$_pkgname-git"
-pkgver=2025.01.10.r0.gd91a44ef
+pkgver=2025.01.10+rd91a44ef
 pkgrel=1
 pkgdesc="Distro-agnostic toolbox designed to simplify everyday Linux tasks"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ provides=("$_pkgname")
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  echo "$(git describe --tags --abbrev=0)+r$(git rev-parse --short HEAD)"
 }
 
 prepare() {
