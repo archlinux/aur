@@ -1,0 +1,14 @@
+pkgbase = epson-inkjet-printer-sc-t2100
+	pkgdesc = Epson inkjet printer driver (SC-T2100)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/66/75/12e85c3a01670b4aef94ceab7ac578b05b4172d3/epson-sc-t2100-ww-1.0.1-1.src.rpm
+	sha256sums = 822d702a74bf81ce4cdbd7f78764880c13fad123c260490b5f2da57e77c040a2
+
+pkgname = epson-inkjet-printer-sc-t2100
