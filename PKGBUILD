@@ -1,7 +1,7 @@
 # Maintainer: Karl Ludwig Brennan <karlludwigbrennan@outlook.com>
 
 pkgname=llvm-mingw-w64-toolchain-msvcrt-bin
-pkgver=20241030
+pkgver=20250114
 pkgrel=1
 pkgdesc="LLVM/Clang/LLD based mingw-w64 toolchain (MSVCRT) targeting i686, x86-64, armv7, and aarch64"
 _crt=msvcrt
@@ -14,7 +14,7 @@ source=("https://github.com/mstorsjo/llvm-mingw/releases/download/${pkgver}/llvm
 if [ "$CARCH" = "aarch64" ]; then
   sha256sums=('0000000000000000000000000000000000000000000000000000000000000000') # No aarch64 build for MSVCRT target.
 else
-  sha256sums=('909e451ee507f82e9ced75388c3388a60358914ab5b082519e97cb4604a201b8')
+  sha256sums=('07bc29c2401fd6422ea362061662786a47b52a9fd07d0afb7da1aa1dc96b92c2')
 fi
 
 options=(!strip)
