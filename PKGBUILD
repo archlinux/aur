@@ -40,4 +40,6 @@ package() {
 	cd "${srcdir}/odb-gcc-${GPPVER}"
 
 	bpkg install libstudxml
+
+	rm ${pkgdir}/usr/lib/pkgconfig/libstudxml.static.pc
 }
