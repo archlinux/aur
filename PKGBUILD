@@ -5,7 +5,7 @@ _model="nx420"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.0
 pkgrel=11
-pkgdesc="Epson inkjet printer driver (ME OFFICE 560W, Stylus NX420, SX420W, SX425W, TX420W)"
+pkgdesc="Epson inkjet printer driver (ME OFFICE 560W; Stylus NX420, SX420W, SX425W, TX420W)"
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:Epson End User Software License Agreement')
