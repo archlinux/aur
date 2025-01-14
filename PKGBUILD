@@ -3,14 +3,14 @@
 pkgbase=monado
 pkgname=('monado' 'monado-doc')
 pkgver=24.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source OpenXR runtime'
 arch=('x86_64')
 url='https://monado.dev/'
 license=('BSL-1.0')
 makedepends=('git' 'cmake' 'doxygen' 'graphviz' 'cnmatrix' 'eigen' 'glslang' 'qt6-base'
              'python-setuptools' 'v4l-utils' 'vulkan-headers'
-             'dbus' 'bluez-libs' 'cjson' 'glib2' 'gstreamer' 'gst-plugins-base-libs' 'hidapi'
+             'dbus' 'bluez-libs' 'glib2' 'gstreamer' 'gst-plugins-base-libs' 'hidapi'
              'libdrm' 'libgl' 'libjpeg-turbo' 'librealsense' 'libsurvive' 'libusb' 'libuvc'
              'libx11' 'libxcb' 'opencv' 'openhmd' 'sdl2' 'systemd-libs' 'vulkan-icd-loader'
              'wayland' 'wayland-protocols' 'zlib')
@@ -23,6 +23,7 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DBUILD_DOC:BOOL='ON' \
+        -DXRT_HAVE_SYSTEM_CJSON:BOOL='OFF' \
         -Wno-dev
     cmake --build build
 }
@@ -32,7 +33,7 @@ check() {
 }
 
 package_monado() {
-    depends=('dbus' 'bluez-libs' 'cjson' 'glib2' 'gstreamer' 'gst-plugins-base-libs' 'hidapi'
+    depends=('dbus' 'bluez-libs' 'glib2' 'gstreamer' 'gst-plugins-base-libs' 'hidapi'
              'libdrm' 'libgl' 'libjpeg-turbo' 'librealsense' 'libsurvive' 'libusb' 'libuvc'
              'libx11' 'libxcb' 'opencv' 'openhmd' 'sdl2' 'systemd-libs' 'vulkan-icd-loader'
              'wayland' 'zlib')
