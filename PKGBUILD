@@ -4,7 +4,7 @@
 _model="stylus-nx110-series"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.0
-pkgrel=11
+pkgrel=12
 pkgdesc="Epson inkjet printer driver (Stylus NX110, NX115, SX110, SX115, TX110, TX111, TX112, TX113, TX115, TX117, TX119)"
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -23,7 +23,10 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgsrc}/ppds"
   find . -type f -name '*.ppd' -exec \
-    sed -i "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}|/usr/share/epson-inkjet-printer-filter|g" "{}" +
+    sed -e "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}|/usr/share/epson-inkjet-printer-filter|g" \
+        -e "s|/opt/${pkgname}/watermark|/usr/share/epson-inkjet-printer-filter/watermark|g" \
+        -e "s|/opt/${pkgname}/cups/lib/filter/epson_inkjet_printer_filter|/usr/lib/cups/filter/epson_inkjet_printer_filter|g" \
+        -i "{}" +
 }
 
 package() {
