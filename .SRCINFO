@@ -1,6 +1,6 @@
 pkgbase = memos-git
 	pkgdesc = A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts.
-	pkgver = 0.23.0+r3201+gcde058c72
+	pkgver = 0.23.0+r3203+g8b65d248b
 	pkgrel = 2
 	url = https://github.com/usememos/memos
 	arch = any
