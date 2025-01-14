@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ente-auth
 pkgdesc="Open source 2FA authenticator, with end-to-end encrypted backups"
-pkgver=4.2.4
+pkgver=4.2.7
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://ente.io/auth"
@@ -28,7 +28,7 @@ source=("git+https://github.com/ente-io/ente.git#tag=auth-v$pkgver"
         'git+https://github.com/ente-io/PhotoSwipe.git'
         'git+https://github.com/prateekmedia/flutter_distributor.git#branch=develop'
         'enteauth.desktop')
-sha256sums=('3a72643a201ba7a9b48eacf36fdb099c1c6a309086fc54e782ce84ab81a4174c'
+sha256sums=('0623e89bf167dd5c760078b639212cfd016d6b78d9ccc9c07da051c478c7e591'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -65,7 +65,7 @@ build() {
   export FLUTTER_HOME="$srcdir/ente/auth/flutter"
   export HOME="${FLUTTER_HOME}"
   export PATH="${FLUTTER_HOME}/bin:${PATH}"
-  export PATH="$PATH":"$HOME/.pub-cache/bin"
+  export PATH="${PATH}":"${HOME}/.pub-cache/bin"
   export LIBSODIUM_USE_PKGCONFIG=1
   export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/lib/sodium-1.0.18/pkgconfig/"
   export LIBRARY_PATH="${LIBRARY_PATH}:/usr/lib/sodium-1.0.18/"
