@@ -1,0 +1,5 @@
+d /etc/searxng 0750 root searxng
+f /etc/searxng/settings.yml 0640 root searxng
+f /etc/searxng/limiter.toml 0640 root searxng
+d /var/lib/searxng 0700 searxng searxng
+Z /var/lib/searxng - searxng searxng
