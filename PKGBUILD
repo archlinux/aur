@@ -2,7 +2,8 @@
 _pkgname=qiskit-aer
 pkgname=python-$_pkgname
 pkgver=0.16
-pkgrel=1
+pkgver_nlohmann_json=3.10.2
+pkgrel=2
 pkgdesc="A high performance simulator for quantum circuits that includes noise models"
 arch=(x86_64)
 url="https://github.com/Qiskit/qiskit-aer"
@@ -25,8 +26,8 @@ optdepends=(
 makedepends=(
     cmake
     gcc-fortran
+    ipython
     ninja
-    nlohmann-json
     pybind11
     python-build
     python-installer
@@ -36,11 +37,18 @@ makedepends=(
 )
 # checkdepends=(
 #     python-ddt
+#     python-matplotlib
 #     python-pytest
+#     python-qiskit-qasm3-import
+#     python-seaborn
 #     python-stestr
 # )
-source=($_pkgname-$pkgver.tar.gz::https://github.com/Qiskit/$_pkgname/archive/$pkgver.tar.gz)
-b2sums=('ddbad1c1c8be51806c5de524327312f8c56fb46f686b3c61b2059770485ff0022fab45faae55f22f2ac37e4cd6e71fd2d2b9c27c945639dc785b6dbb3a33492f')
+source=(
+    $_pkgname-$pkgver.tar.gz::https://github.com/Qiskit/$_pkgname/archive/$pkgver.tar.gz
+    nlohmann-json-$pkgver_nlohmann_json.tar.gz::https://github.com/nlohmann/json/archive/refs/tags/v$pkgver_nlohmann_json.tar.gz
+)
+b2sums=('ddbad1c1c8be51806c5de524327312f8c56fb46f686b3c61b2059770485ff0022fab45faae55f22f2ac37e4cd6e71fd2d2b9c27c945639dc785b6dbb3a33492f'
+        'e7da213fb75d528b1f5425822f5b598e882f232a67670aaae2d8f89c76e72ee23fa3344d1acfef2b0338a6a423d17b231b7e047ff064c984c2ec7783b721a22c')
 
 prepare() {
     cd $_pkgname-$pkgver
@@ -48,8 +56,27 @@ prepare() {
 }
 
 build() {
+    # We cannot use the header-only library from [extra] because of this issue:
+    # https://github.com/Qiskit/qiskit-aer/issues/1742
+    local cmake_options=(
+        -B build
+        -D JSON_BuildTests=OFF
+        -D CMAKE_BUILD_TYPE=None
+        -D CMAKE_INSTALL_PREFIX=/usr
+        -D CMAKE_INSTALL_LIBDIR=/usr
+        -D JSON_MultipleHeaders=OFF
+        -S json-$pkgver_nlohmann_json
+        -W no-dev
+    )
+    cmake "${cmake_options[@]}"
+    cmake --build build --verbose
+    DESTDIR=tmp cmake --install build
+
     cd $_pkgname-$pkgver
-    DISABLE_CONAN=ON python -m build --wheel --no-isolation
+    export DISABLE_CONAN=ON
+    export CPATH="$srcdir/tmp/usr/include:$CPATH"
+    export nlohmann_json_DIR="$srcdir"/tmp/usr/cmake/nlohmann_json
+    python -m build --wheel --no-isolation
 }
 
 # check() {
