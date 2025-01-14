@@ -1,28 +1,27 @@
 # Maintainer: Nocifer <apmichalopoulos at gmail dot com>
 
 pkgname=zmeventnotification
-pkgver=6.1.29
+pkgver=6.1.29.ga306ad2
 pkgrel=1
 pkgdesc='A machine learning powered, secure websocket & MQTT based event notification server for ZoneMinder'
 arch=('any')
 url='https://github.com/ZoneMinder/zmeventnotification'
-license=('GPL')
+license=('GPL-2.0-only')
 depends=('opencv' 'perl-config-inifiles' 'perl-crypt-eksblowfish' 'perl-json' 'perl-lwp-protocol-https' 'perl-net-mqtt-simple'
-         'perl-net-websocket-server' 'python-face_recognition' 'python-gifsicle' 'python-future' 'python-imageio' 'python-imageio-ffmpeg'
+         'perl-net-websocket-server' 'python-face_recognition' 'python-gifsicle' 'python-imageio' 'python-imageio-ffmpeg'
          'python-imutils' 'python-pyzm-git' 'python-requests' 'python-scikit-learn' 'python-shapely'
          # ¯\_(ツ)_/¯
          'python-mysql-connector' 'python-psutil' 'python-sqlalchemy' 'qt5-base'
          # Uncomment the next line to enable support for the Google Coral Edge TPU
          #'edgetpu_api'
          )
-makedepends=('git')
 replaces=('zmeventnotification-git')
 backup=('etc/zoneminder/zmeventnotification.ini'
         'etc/zoneminder/secrets.ini'
         'etc/zoneminder/objectconfig.ini'
         'etc/zoneminder/es_rules.json')
 install=${pkgname}.install
-source=("${pkgname}-git::git+https://github.com/ZoneMinder/${pkgname}.git#tag=v${pkgver}"
+source=("https://github.com/ZoneMinder/${pkgname}/archive/a306ad2dbe87c5ace3d0ba89d9d4235fd489424b.zip"
         # YOLOv3
         'https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3.cfg'
         'https://raw.githubusercontent.com/pjreddie/darknet/master/data/coco.names'
@@ -45,7 +44,7 @@ source=("${pkgname}-git::git+https://github.com/ZoneMinder/${pkgname}.git#tag=v$
         'https://github.com/google-coral/edgetpu/raw/master/test_data/ssd_mobilenet_v2_face_quant_postprocess_edgetpu.tflite'
         'https://github.com/google-coral/test_data/raw/master/ssdlite_mobiledet_coco_qat_postprocess_edgetpu.tflite'
         )
-sha256sums=('SKIP'
+sha256sums=('7522c9dad4cceac65934dabe64195ccd94e73301888713c7d4f19c186e853586'
             '22489ea38575dfa36c67a90048e8759576416a79d32dc11e15d2217777b9a953'
             '634a1132eb33f8091d60f2c346ababe8b905ae08387037aed883953b7329af84'
             '523e4e69e1d015393a1b0a441cef1d9c7659e3eb2d7e15f793f060a21b32f297'
@@ -59,10 +58,10 @@ sha256sums=('SKIP'
             '232775917b5e0162b25c07bb1502ec3bbdeb5d0f1a835aba3097d5a2f4fc11e1'
             'cce17f7c3c5bb8cbb885db916edbeb273240a7e58348aa0f9c07dbebdbd31fd9'
             'b69e508ef2a670e06b80bd3e5559a827d5cd8d557c95d5e332cbf1d31d434a2e')
-     
+
 prepare() {
-    cd ${pkgname}-git
-    
+    cd ${pkgname}-a306ad2dbe87c5ace3d0ba89d9d4235fd489424b
+
     # Change the default upstream ZM address to match the one used by the ZoneMinder package
     sed -i 's|https://portal/zm|http://localhost:8095|g' secrets.ini
 }
@@ -85,50 +84,50 @@ package() {
     install -dm755 -o http -g http                                          ${pkgdir}/var/lib/${pkgname}/models/tinyyolov4
     install -dm755 -o http -g http                                          ${pkgdir}/var/lib/${pkgname}/models/coral_edgetpu
     install -dm755 -o http -g http                                          ${pkgdir}/var/lib/${pkgname}/misc
-    
+
     # Move the object recognition model files into place
     install -m644 yolov3.cfg                                                ${pkgdir}/var/lib/${pkgname}/models/yolov3
     install -m644 coco.names                                                ${pkgdir}/var/lib/${pkgname}/models/yolov3
     install -m644 yolov3.weights                                            ${pkgdir}/var/lib/${pkgname}/models/yolov3
-    
+
     install -m644 yolov3-tiny.cfg                                           ${pkgdir}/var/lib/${pkgname}/models/tinyyolov3
     install -m644 coco.names                                                ${pkgdir}/var/lib/${pkgname}/models/tinyyolov3
     install -m644 yolov3-tiny.weights                                       ${pkgdir}/var/lib/${pkgname}/models/tinyyolov3
-    
+
     install -m644 yolov4.cfg                                                ${pkgdir}/var/lib/${pkgname}/models/yolov4
     install -m644 coco.names                                                ${pkgdir}/var/lib/${pkgname}/models/yolov4
     install -m644 yolov4.weights                                            ${pkgdir}/var/lib/${pkgname}/models/yolov4
-    
+
     install -m644 yolov4-tiny.cfg                                           ${pkgdir}/var/lib/${pkgname}/models/tinyyolov4
     install -m644 coco.names                                                ${pkgdir}/var/lib/${pkgname}/models/tinyyolov4
     install -m644 yolov4-tiny.weights                                       ${pkgdir}/var/lib/${pkgname}/models/tinyyolov4
-    
+
     install -m644 coco_labels.txt                                           ${pkgdir}/var/lib/${pkgname}/models/coral_edgetpu/coco_indexed.names
     install -m644 ssd_mobilenet_v2_coco_quant_postprocess_edgetpu.tflite    ${pkgdir}/var/lib/${pkgname}/models/coral_edgetpu
-    
+
     # Move the rest of the files into place
-    cd ${pkgname}-git
-    
+    cd ${pkgname}-a306ad2dbe87c5ace3d0ba89d9d4235fd489424b
+
     install -m755 -o http -g http zmeventnotification.pl                    ${pkgdir}/usr/bin
-    
+
     install -m755 -o http -g http pushapi_plugins/pushapi_pushover.py       ${pkgdir}/var/lib/${pkgname}/bin
-    
+
     install -m755 -o http -g http hook/zm_event_start.sh                    ${pkgdir}/var/lib/${pkgname}/bin
     install -m755 -o http -g http hook/zm_event_end.sh                      ${pkgdir}/var/lib/${pkgname}/bin
     install -m755 -o http -g http hook/zm_detect.py                         ${pkgdir}/var/lib/${pkgname}/bin
     install -m755 -o http -g http hook/zm_train_faces.py                    ${pkgdir}/var/lib/${pkgname}/bin
-    
+
     install -m644 -o http -g http docs/guides/contrib_guidelines.rst        ${pkgdir}/var/lib/${pkgname}/contrib
     install -m755 -o http -g http contrib/*                                 ${pkgdir}/var/lib/${pkgname}/contrib
-    
+
     install -m644 zmeventnotification.ini                                   ${pkgdir}/etc/zoneminder/
     install -m644 secrets.ini                                               ${pkgdir}/etc/zoneminder/
     install -m644 hook/objectconfig.ini                                     ${pkgdir}/etc/zoneminder/
     install -m644 es_rules.json                                             ${pkgdir}/etc/zoneminder/
-    
+
     # Temp fix for hardcoded /zm/ links in the configuration files
     ln -sf /etc/zoneminder                                                  ${pkgdir}/etc/zm
-    
+
     # Install the accompanying Python package zmes_hooks
     cd hook
     python setup.py install --root="${pkgdir}/" --optimize=1
