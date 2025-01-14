@@ -4,7 +4,7 @@ set -x
 pkgname=searxng-git
 _pkgname=searxng
 pkgver=1.0.0.r4210.g09cce1851
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://searxng.github.io/searxng/"
