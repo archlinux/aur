@@ -2,7 +2,7 @@
 
 _name=qics
 pkgname="python-${_name}"
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='The quantum information conic solver'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python-numpy python-scipy python-numba)
 makedepends=(python-setuptools python-build python-installer python-wheel)
 checkdepends=(python-pytest)
 source=("https://github.com/kerry-he/qics/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b1c4974bed57cae94ce84928abe6fc1d426a2a3901155bbbd79b7c5803aaa0c3')
+sha256sums=('fa2730d44a42818a3d3d34690a64bc8e68ae79da3020233e1835dbc9809944dc')
 
 build() {
     cd "${_name}-${pkgver}"
