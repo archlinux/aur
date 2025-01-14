@@ -3,7 +3,7 @@
 pkgname=verso-git
 _pkgname=verso
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A web browser that plays old world blues to build new world hope"
 arch=('x86_64')
 url="https://github.com/versotile-org/$_pkgname"
@@ -30,4 +30,5 @@ package() {
     ln -s "$pkgdir/opt/$_pkgname/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
     install -Dm644 "$_pkgname/icons/icon256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/org.versotile.verso.png"
     install -Dm644 "$_pkgname/org.versotile.verso.desktop" "$pkgdir/usr/share/applications/verso.desktop"
+    echo "Path=/opt/$_pkgname" >> "$pkgdir/usr/share/applications/verso.desktop"
 }
