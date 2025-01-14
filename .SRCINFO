@@ -1,6 +1,6 @@
 pkgbase = sdc-git
 	pkgdesc = C port of SD, a very efficient flash cards app
-	pkgver = r35.85337a5
+	pkgver = r39.b85c3ea
 	pkgrel = 1
 	url = https://git.unnamed.website/sdc
 	arch = any

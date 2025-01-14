@@ -2,7 +2,7 @@
 
 _pkgname=sdc
 pkgname="$_pkgname-git"
-pkgver=r35.85337a5
+pkgver=r39.b85c3ea
 pkgrel=1
 pkgdesc="C port of SD, a very efficient flash cards app"
 arch=(any)
@@ -22,14 +22,14 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname"
-	gcc $CFLAGS sd.c segmenttree.c -o sd -lsqlite3
+	gcc $CFLAGS sd.c fenwick.c -o sd -lsqlite3
 }
 
 package() {
 	cd "$srcdir/$_pkgname"
 	install -Dm755 sd "$pkgdir/usr/bin/sd"
-	install -Dm755 main.py "$pkgdir/usr/bin/sd-qt"
-	install -Dm755 tkinter.py "$pkgdir/usr/bin/sd-tk"
+	install -Dm755 sd-qt.py "$pkgdir/usr/bin/sd-qt"
+	install -Dm755 sd-tk.py "$pkgdir/usr/bin/sd-tk"
 	install -Dm644 sd-add.fish "$pkgdir/usr/share/fish/vendor_functions.d/sd-add.fish"
 	install -Dm644 sqlitevi.fish "$pkgdir/usr/share/fish/vendor_functions.d/sqlitevi.fish"
 }
