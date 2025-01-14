@@ -1,16 +1,20 @@
-#Based on https://gitlab.archlinux.org/archlinux/packaging/packages/gnome-shell/-/raw/main/PKGBUILD
 # Maintainer: envolution
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Fabian Bornschein <fabiscafe@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Flamelab <panosfilip@gmail.com
+# shellcheck shell=bash disable=SC2034,SC2154
+#Based on https://gitlab.archlinux.org/archlinux/packaging/packages/gnome-shell/-/raw/main/PKGBUILD
 
 pkgbase=gnome-shell-git
 pkgname=(
   gnome-shell-git
   gnome-shell-docs-git
 )
-pkgver=47.3+r19301+g67c5be9c5
+pkgver=48.alpha+r19307+gb426119a7
+_pkgver=${pkgver%%+*}                                               #strip off git +part
+_pkgver=$(echo "$_pkgver" | sed -E 's/(\.|^)[^0-9]+(\.|$)/\10\2/g') #replace non-numeric characters (rc, beta, alpha) with 0
+
 pkgrel=1
 pkgdesc="Next generation desktop shell - git latest"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
@@ -33,7 +37,7 @@ depends=(
   gnome-session
   gnome-settings-daemon
   graphene
-  gsettings-desktop-schemas
+  gsettings-desktop-schemas-git
   gtk4
   hicolor-icon-theme
   json-glib
@@ -92,7 +96,6 @@ pkgver() {
   echo "${_version}+r${_commits}+g${_short_commit_hash}"
 }
 
-
 prepare() {
   # Inject gvc
   ln -s libgnome-volume-control gvc
@@ -116,7 +119,7 @@ build() {
 }
 
 package_gnome-shell-git() {
-  provides=(gnome-shell)
+  provides=("gnome-shell=$_pkgver")
   conflicts=(gnome-shell)
   depends+=(libmutter-16.so)
   optdepends=(
@@ -140,7 +143,7 @@ package_gnome-shell-git() {
 }
 
 package_gnome-shell-docs-git() {
-  provides=(gnome-shell-docs)
+  provides=("gnome-shell-docs=$_pkgver")
   conflicts=(gnome-shell-docs)
   pkgdesc+=" (API documentation)"
   depends=()
@@ -149,3 +152,4 @@ package_gnome-shell-docs-git() {
 }
 
 # vim: ts=2 sw=2 et:
+# vim:set ts=2 sw=2 et:
