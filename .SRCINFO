@@ -1,6 +1,6 @@
 pkgbase = julec-git
 	pkgdesc = The Jule Programming Language Compiler
-	pkgver = 0.1.2+407df725
+	pkgver = 0.1.2+ba2d8067
 	pkgrel = 1
 	url = https://github.com/julelang/jule
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = julec-git
 	conflicts = julec
 	source = git+https://github.com/julelang/jule.git
 	sha256sums = SKIP
-	source_x86_64 = jule-ir-0.1.2+407df725-x86_64.cpp::https://raw.githubusercontent.com/julelang/julec-ir/main/src/linux-amd64.cpp
+	source_x86_64 = jule-ir-0.1.2+ba2d8067-x86_64.cpp::https://raw.githubusercontent.com/julelang/julec-ir/main/src/linux-amd64.cpp
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = jule-ir-0.1.2+407df725-aarch64.cpp::https://raw.githubusercontent.com/julelang/julec-ir/main/src/linux-arm64.cpp
+	source_aarch64 = jule-ir-0.1.2+ba2d8067-aarch64.cpp::https://raw.githubusercontent.com/julelang/julec-ir/main/src/linux-arm64.cpp
 	sha256sums_aarch64 = SKIP
-	source_i386 = jule-ir-0.1.2+407df725-i386.cpp::https://raw.githubusercontent.com/julelang/julec-ir/main/src/linux-i386.cpp
+	source_i386 = jule-ir-0.1.2+ba2d8067-i386.cpp::https://raw.githubusercontent.com/julelang/julec-ir/main/src/linux-i386.cpp
 	sha256sums_i386 = SKIP
 
 pkgname = julec-git
