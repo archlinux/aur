@@ -66,7 +66,7 @@ package_gsettings-desktop-schemas-git() {
   provides+=(
     gsettings-desktop-schemas=$_pkgver
   )
-  conflicts=(
+  conflicts+=(
     gsettings-desktop-schemas
   )
   pkgdesc+=" desktop components"
@@ -85,10 +85,10 @@ package_gsettings-desktop-schemas-git() {
 }
 
 package_gsettings-system-schemas-git() {
-  provides=(
+  provides+=(
     gsettings-system-schemas=$_pkgver
   )
-  conflicts=(
+  conflicts+=(
     gsettings-system-schemas
   )
   pkgdesc+=" system components"
