@@ -1,7 +1,7 @@
 pkgbase = benben
 	pkgdesc = Multi-format, fast and efficient command line audio player and audio converter
-	pkgver = 0.6.1
-	pkgrel = 3
+	pkgver = 0.6.2
+	pkgrel = 1
 	url = https://chiselapp.com/user/MistressRemilia/repository/benben
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -22,7 +22,7 @@ pkgbase = benben
 	depends = libpulse
 	depends = libao
 	depends = portaudio
-	source = benben-0.6.1::fossil+https://chiselapp.com/user/MistressRemilia/repository/benben#tag=v0.6.1
+	source = fossil+https://chiselapp.com/user/MistressRemilia/repository/benben#tag=v0.6.2
 	b2sums = SKIP
 
 pkgname = benben
