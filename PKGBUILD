@@ -3,8 +3,8 @@
 _pkgauthor=n0-computer
 _pkgname=sendme
 pkgname=${_pkgname}-bin
-pkgver=0.21.0
-pkgrel=3
+pkgver=0.22.0
+pkgrel=1
 pkgdesc='A tool to send files and directories'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
@@ -20,11 +20,11 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-APACHE-${pkgver}::${_urlraw}/LICENSE-APACHE")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${arch[0]}.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${arch[1]}.tar.gz")
-sha256sums=('744ac29212a7ce796a00d35d11c473490589e7326b9a5b5c05e6ba70a6b641f7'
+sha256sums=('be33b9331f42bfdd966a26d065829d21428401ac478ad848eb63e7d5b5f72f61'
             'b801c8d677ef9701149e05cf98f28b82a56832dd67c94d96d36d25d063b1b353'
             '7ee92352fcac2b427c4754822087d0aeb3afc99951b71bd15cc4c2e5c61c1b60')
-sha256sums_x86_64=('f327f7bda373ae9e082d92a58f79ef9f03d8fd416ea8d10d9a64666c9917c240')
-sha256sums_aarch64=('944a3f6190b4786078f988fc315470a070ed24cfcc0a45117775d13801a56ab7')
+sha256sums_x86_64=('76eefa6628c7aafd039c97c978eb8ae0ed83152758e0472ef4c19507a47ab243')
+sha256sums_aarch64=('f7ec9367669945a6274d50336ab272228f7382a5913b9f086ff471cbd5b51b25')
 
 package() {
   cd "${srcdir}/" || exit
