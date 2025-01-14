@@ -2,7 +2,7 @@
 
 pkgname=cjvs-bin
 pkgver=v0.0.10
-pkgrel=1
+pkgrel=0
 epoch=
 pkgdesc="仓颉Cangjie版本切换工具"
 arch=('x86_64')
