@@ -2,7 +2,7 @@
 # Contributor: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=furtherance
-pkgver=24.12.0
+pkgver=25.1.2
 pkgrel=1
 pkgdesc="Track your time without being tracked"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libx1
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9e40e3fb5187c603ee5bb7ccd054697414257b8344ab8c80ec4429ac0ce869be')
+sha256sums=('caab296f9e23f8ad89dd75c3272d60b8255907b1185499575ff4dc40d71c960a')
 
 prepare() {
     cd "${pkgname^}-${pkgver}"
@@ -30,7 +30,6 @@ build() {
 package() {
     cd "${pkgname^}-${pkgver}"
     install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
-    install -Dm644 assets/linux/io.unobserved.furtherance.appdata.xml -t "${pkgdir}/usr/share/metainfo"
     install -Dm644 assets/linux/io.unobserved.furtherance.desktop -t "${pkgdir}/usr/share/applications"
     install -Dm644 assets/icon/io.unobserved.furtherance.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
 }
