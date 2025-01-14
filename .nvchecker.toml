@@ -1,0 +1,7 @@
+[gsettings-desktop-schemas-git]
+source="github-graphql"
+github="GNOME/gsettings-desktop-schemas"
+use_max_tag=true
+use_commit_number=true
+use_commit_hash=true
+
