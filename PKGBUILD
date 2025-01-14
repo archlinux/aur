@@ -4,7 +4,7 @@
 _model="workforce-635-nx625-series"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.1
-pkgrel=11
+pkgrel=12
 pkgdesc="Epson inkjet printer driver (ME OFFICE 82WD, 85ND, 900WD, 960FWD; Stylus NX625, SX525WD, SX620FW, TX560WD; Stylus Office B42WD, BX525WD, BX625FWD, TX620FWD; WorkForce 60, 625, 630, 633, 635, T42WD)"
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -23,7 +23,10 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgsrc}/ppds"
   find . -type f -name '*.ppd' -exec \
-    sed -i "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}|/usr/share/epson-inkjet-printer-filter|g" "{}" +
+    sed -e "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}|/usr/share/epson-inkjet-printer-filter|g" \
+        -e "s|/opt/${pkgname}/watermark|/usr/share/epson-inkjet-printer-filter/watermark|g" \
+        -e "s|/opt/${pkgname}/cups/lib/filter/epson_inkjet_printer_filter|/usr/lib/cups/filter/epson_inkjet_printer_filter|g" \
+        -i "{}" +
 }
 
 package() {
