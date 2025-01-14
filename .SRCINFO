@@ -11,7 +11,6 @@ pkgbase = sherlock-launcher
 	depends = gtk4-layer-shell
 	source = git+https://github.com/skxxtz/sherlock.git
 	sha256sums = SKIP
-	sha256sums = SKIP
 
 pkgname = sherlock-launcher-git
 	conflicts = sherlock-launcher-bin
