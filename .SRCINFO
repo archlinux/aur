@@ -1,0 +1,20 @@
+pkgbase = python-ckzg
+	pkgdesc = A minimal implementation of the Polynomial Commitments API for EIP-4844 and EIP-7594, written in C.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/ethereum/c-kzg-4844
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = glibc
+	depends = python
+	source = git+https://github.com/ethereum/c-kzg-4844.git#tag=v2.0.1
+	source = git+https://github.com/supranational/blst.git
+	sha512sums = 8267263ef93cee47669651cdb499028ed8f58e3174ae197f02e7e1f05680ce927cc5c8d3629143c7ef9ba562baa3e3ef719242113b00f4b349121bbcd7045f2e
+	sha512sums = SKIP
+
+pkgname = python-ckzg
