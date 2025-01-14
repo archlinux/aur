@@ -5,7 +5,7 @@ _model="stylus-tx550w-series"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.0
 pkgrel=12
-pkgdesc="Epson inkjet printer driver (Epson Stylus NX510, NX515, SX510W, SX515W, TX550W)"
+pkgdesc="Epson inkjet printer driver (Stylus NX510, NX515, SX510W, SX515W, TX550W)"
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:Epson End User Software License Agreement')
