@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="supabase"
-pkgver=2.2.1
+pkgver=2.6.8
 pkgrel=1
 pkgdesc="A CLI for Supabase, an open source Firebase alternative"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('go')
 # checkdepends=('docker')
 _pkgsrc="cli-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('e6e48460a0b4cc34dcc1199701f1fc92ed921f6d122d2f72a5bd52b179ce96ef646ed44c25cac48292231cdea4cfb0a7facc18edf1139288354a94b2313a7896')
+b2sums=('75a88dcb8a84a690eb1f1c1e95a4d46747c16f1211e81c3168b04f1804a6d9ba305ff2c1930b0ee9ba51bddd203ddca71ecebd056d141cf5f035dfe7e5246f20')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
