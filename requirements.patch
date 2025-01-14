@@ -2,28 +2,10 @@
 +++ requirements.txt	2024-12-23 13:16:01.278375967 +0100
 @@ -9,7 +9,7 @@
  celery[redis]==5.4.0; python_version >= '3.8'
- certifi==2024.8.30; python_version >= '3.6'
+ certifi==2024.12.14; python_version >= '3.6'
  cffi==1.17.1; platform_python_implementation != 'PyPy'
--channels==4.1.0; python_version >= '3.8'
+-channels==4.2.0; python_version >= '3.8'
 +channels==4.0.0; python_version >= '3.8'
- channels-redis==4.2.0; python_version >= '3.8'
- charset-normalizer==3.3.2; python_full_version >= '3.7.0'
+ channels-redis==4.2.1; python_version >= '3.8'
+ charset-normalizer==3.4.1; python_full_version >= '3.8'
  click==8.1.7; python_version >= '3.7'
-@@ -45,7 +45,7 @@
- hiredis==3.0.0
- hpack==4.0.0; python_full_version >= '3.6.1'
- httpcore==1.0.6; python_version >= '3.8'
--httptools==0.6.1
-+httptools==0.6.4
- httpx[http2]==0.27.2; python_version >= '3.8'
- httpx-oauth==0.15.1; python_version >= '3.8'
- humanize==4.10.0; python_version >= '3.8'
-@@ -114,7 +114,7 @@
- tzlocal==5.2; python_version >= '3.8'
- urllib3==2.2.3; python_version >= '3.8'
- uvicorn[standard]==0.25.0; python_version >= '3.8'
--uvloop==0.20.0
-+uvloop==0.21.0
- vine==5.1.0; python_version >= '3.6'
- watchdog==4.0.2; python_version >= '3.8'
- watchfiles==0.24.0
