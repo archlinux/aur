@@ -1,14 +1,14 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 # https://github.com/adamperkowski/PKGBUILDs
 pkgname=gh-skyline
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Generate 3D models of your GitHub contribution history'
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 url="https://github.com/github/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d675902202fe6e95afcdb08ec21b0568f0e978ccda403f09d71e8b0011c47912')
+sha256sums=('39a8046b6fe5c700b5f611e09853a85e69c2275fadc3b1b212b3bf3e0b18f4b3')
 depends=('github-cli' 'openssl' 'glibc' 'ttf-mona-sans')
 makedepends=('go')
 
