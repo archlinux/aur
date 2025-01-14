@@ -1,0 +1,15 @@
+pkgbase = cli
+	pkgdesc = Command Line Interface definition language for C++
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = www.codesynthesis.com/projects/cli/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = build2
+	depends = libcutl
+	options = !libtool
+	source = https://pkg.cppget.org/1/stable/cli/cli-1.2.0.tar.gz
+	sha256sums = 86f79382b61269915b204e30b8e13d66634eb1dd4034c42bf7015d18ab50b572
+
+pkgname = cli
