@@ -2,7 +2,7 @@
 # Maintainer: Goldy <goldy@devgoldy.xyz>
 _pkgname=mov-cli-jellyplex
 pkgname=python-mov-cli-jellyplex
-pkgver="1.1.2"
+pkgver="1.1.3"
 pkgrel=1
 pkgdesc="A mov-cli v4 plugin for watching content from a media server hosting jellyfin or plex."
 arch=("x86_64" "i686")
