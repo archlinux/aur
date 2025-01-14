@@ -13,6 +13,7 @@ depends=('gtk-update-icon-cache')
 makedepends=('git')
 source=("git+https://github.com/Erwin-Iosef/papirus-icon-theme-plasma-fork.git")
 options+=(!strip)
+provides=('papirus-icon-theme')
 conflicts=('papirus-icon-theme')
 sha256sums=('SKIP')
 
