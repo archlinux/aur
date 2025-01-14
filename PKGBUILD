@@ -19,7 +19,7 @@ fi
 
 pkgname=${_pkgname}-dkms-staging-git
 pkgver=2.3.0.r0.gbc06d8164b
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
 url="https://zfsonlinux.org/"
@@ -29,9 +29,13 @@ provides=("ZFS-MODULE" "SPL-MODULE" "zfs-dkms" "zfs")
 conflicts=("zfs-dkms")
 makedepends=("git")
 source=("${_pkgname}::git+${_git_repo}#${_git_branch}"
-        "0001-only-build-the-module-in-dkms.conf.patch")
+        "0001-only-build-the-module-in-dkms.conf.patch"
+        "69-zfs-dkms-check.hook"
+        "zfs-dkms-check")
 sha256sums=('SKIP'
-            '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5')
+            '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5'
+            '6c793cdbcf0c758b7bc78dcac85d116052b7a66416e4c54179cb0955687b3875'
+            '59656435058e41620f15b5691ef1f753355fe81c01a562d92b7c8028aa527b1f')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
@@ -93,4 +97,7 @@ package() {
     cp -a configure dkms.conf Makefile.in META ${_pkgname}_config.h.in ${_pkgname}.release.in include/ module/ "${dkmsdir}"/
     cp config/compile config/config.* config/missing config/*sh "${dkmsdir}"/config/
     cp scripts/dkms.postbuild "${dkmsdir}"/scripts/
+
+    install -D -m755 -t "${pkgdir}/usr/share/libalpm/scripts" ../zfs-dkms-check
+    install -D -m644 -t "${pkgdir}/usr/share/libalpm/hooks" ../69-zfs-dkms-check.hook
 }

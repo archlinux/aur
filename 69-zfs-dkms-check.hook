@@ -1,0 +1,13 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/src/zfs-*/META
+Target = usr/lib/modules/*/build/include/
+Target = usr/lib/modules/*/modules.order
+
+[Action]
+Description = Check that ZFS is supported by all installed kernel versions
+Depends = pacman
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/zfs-dkms-check
