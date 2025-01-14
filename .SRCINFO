@@ -1,7 +1,7 @@
 pkgbase = sendme-bin
 	pkgdesc = A tool to send files and directories
 	pkgver = 0.21.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/n0-computer/sendme
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,7 @@ pkgbase = sendme-bin
 	depends = glibc
 	provides = sendme
 	conflicts = sendme
+	options = !strip
 	source = README-0.21.0.md::https://raw.githubusercontent.com/n0-computer/sendme/v0.21.0/README.md
 	source = LICENSE-MIT-0.21.0::https://raw.githubusercontent.com/n0-computer/sendme/v0.21.0/LICENSE-MIT
 	source = LICENSE-APACHE-0.21.0::https://raw.githubusercontent.com/n0-computer/sendme/v0.21.0/LICENSE-APACHE

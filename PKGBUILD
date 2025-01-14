@@ -4,7 +4,7 @@ _pkgauthor=n0-computer
 _pkgname=sendme
 pkgname=${_pkgname}-bin
 pkgver=0.21.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A tool to send files and directories'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
@@ -14,6 +14,7 @@ depends=('glibc')
 makedepends=('tar')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
+options=('!strip')
 source=("README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-MIT-${pkgver}::${_urlraw}/LICENSE-MIT"
         "LICENSE-APACHE-${pkgver}::${_urlraw}/LICENSE-APACHE")
