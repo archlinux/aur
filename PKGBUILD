@@ -25,7 +25,7 @@ unset _pkgtype
 # basic info
 _pkgname="dolphin-emu"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2412.r80.g9b3b6be
+pkgver=2412.r141.g3ea870e
 pkgrel=1
 pkgdesc='A Gamecube and Wii emulator'
 url="https://github.com/dolphin-emu/dolphin"
@@ -37,8 +37,6 @@ depends=(
   bluez-libs
   curl
   ffmpeg
-  gcc-libs
-  glibc
   libevdev
   libgl
   libpulse
@@ -51,7 +49,6 @@ depends=(
 
   ## optional
   bzip2
-  cubeb # AUR
   curl
   hidapi
   libiconv
@@ -64,13 +61,14 @@ depends=(
   miniupnpc
   pugixml
   sdl2
-  sfml
   zstd
 
-  ## broken
+  ## broken/static
+  #cubeb # AUR
   #enet
   #libmgba
   #minizip-ng
+  #sfml
   #xxhash
   #zlib-ng
 )
@@ -142,7 +140,7 @@ _source_dolphin_emu() {
     'lsalzman.enet'::'git+https://github.com/lsalzman/enet.git'
     #'lz4'::'git+https://github.com/lz4/lz4.git'
     'mgba-emu.mgba'::'git+https://github.com/mgba-emu/mgba.git'
-    #'mozilla.cubeb'::'git+https://github.com/mozilla/cubeb.git'
+    'mozilla.cubeb'::'git+https://github.com/mozilla/cubeb.git'
     #'randy408.libspng'::'git+https://github.com/randy408/libspng.git'
     'retroachievements.rcheevos'::'git+https://github.com/RetroAchievements/rcheevos.git'
     'syoyo.tinygltf'::'git+https://github.com/syoyo/tinygltf.git'
@@ -150,6 +148,7 @@ _source_dolphin_emu() {
     'zlib-ng.minizip-ng'::'git+https://github.com/zlib-ng/minizip-ng.git'
   )
   sha256sums+=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -184,7 +183,7 @@ _prepare_dolphin_emu() (
     'lsalzman.enet'::'Externals/enet/enet'
     #'lz4'::'Externals/lz4/lz4'
     'mgba-emu.mgba'::'Externals/mGBA/mgba'
-    #'mozilla.cubeb'::'Externals/cubeb/cubeb'
+    'mozilla.cubeb'::'Externals/cubeb/cubeb'
     #'randy408.libspng'::'Externals/libspng/libspng'
     'retroachievements.rcheevos'::'Externals/rcheevos/rcheevos'
     'syoyo.tinygltf'::'Externals/tinygltf/tinygltf'
@@ -235,6 +234,8 @@ END
     -DENABLE_AUTOUPDATE=OFF
     # -DENABLE_ANALYTICS=OFF # default:Opt-in
     # -DUSE_SYSTEM_LIBS=ON # default:AUTO
+
+    -DUSE_SANITIZERS=OFF
 
     -DUSE_SYSTEM_ENET=OFF
     -DUSE_SYSTEM_FMT=OFF
