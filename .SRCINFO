@@ -1,7 +1,7 @@
 pkgbase = plex-desktop
 	pkgdesc = Plex desktop client for linux
 	pkgver = 1.106.0.276
-	pkgrel = 1
+	pkgrel = 2
 	url = http://plex.tv
 	arch = x86_64
 	license = unknown
@@ -58,9 +58,11 @@ pkgbase = plex-desktop
 	source = http://ftp.us.debian.org/debian/pool/main/libw/libwebp/libwebp6_0.6.1-2.1+deb11u2_amd64.deb
 	source = https://github.com/flathub/tv.plex.PlexDesktop/raw/master/tv.plex.PlexDesktop.desktop
 	source = https://github.com/flathub/tv.plex.PlexDesktop/raw/master/tv.plex.PlexDesktop.png
+	source = iconpatch.patch
 	sha256sums = b8d1d0eba9cf5e84ca9c605da2b78b0b2be285d245d78e0e228fd578d15ba79f
 	sha256sums = 8abc2b1ca77a458bbbcdeb6af5d85316260977370fa2518d017222b3584d9653
 	sha256sums = 2215f6bb3a2bbe50ceb3bedcb93f53d11f6a51ec7512f08f68af91da8253261b
 	sha256sums = 565178841c318fb4926acf65a68df6dae484c0b705be6dd736858e7408a261d5
+	sha256sums = fdd03ee53402df3691ce4d278e1f233721e16042a30d1875c0f285a65b890d97
 
 pkgname = plex-desktop

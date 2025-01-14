@@ -1,0 +1,8 @@
+--- tv.plex.PlexDesktop.desktop	2025-01-13 21:14:40.673881120 -0500
++++ new.desktop	2025-01-13 21:27:59.567623852 -0500
+@@ -7,3 +7,5 @@
+ Terminal=false
+ Categories=AudioVideo;Player;X-Media;
+ X-Flatpak=tv.plex.PlexDesktop
++Name[en_US]=new.desktop
++StartupWMClass=Plex
