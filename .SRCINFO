@@ -1,0 +1,15 @@
+pkgbase = lib32-sdl2_sound
+	pkgdesc = Library to decode several popular sound file formats, such as .WAV and .MP3 (32 bit)
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = http://icculus.org/SDL_sound/
+	arch = x86_64
+	arch = i686
+	license = Zlib
+	makedepends = cmake
+	depends = lib32-sdl2
+	depends = sdl2_sound
+	source = lib32-sdl2_sound-2.0.4.tar.gz::https://github.com/icculus/SDL_sound/archive/refs/tags/v2.0.4.tar.gz
+	sha256sums = 6f8b324ce23382929ab90ded7fcd6e303b66cb22b4e15b4e3c3a99f500a4eec1
+
+pkgname = lib32-sdl2_sound
