@@ -1,7 +1,7 @@
 # Maintainer: Erik Hedlund <erikcghedlund at outlook dot com>
 _pkgname=erlfmt
 pkgname=${_pkgname}-git
-pkgver=525.32b2f06
+pkgver=1.4.0.r8.g4b1d58c
 pkgrel=1
 pkgdesc="An automated code formatter for Erlang"
 arch=('any')
@@ -16,8 +16,8 @@ source=("$_pkgname::git+https://github.com/WhatsApp/erlfmt.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "$_pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
