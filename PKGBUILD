@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=origami-waves
-pkgver=1.16
+pkgver=1.19
 pkgrel=1
 pkgdesc="Origami Waves: translate your pptx using ollama"
 #arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('jdk-openjdk>=21')
 #makedepends=('clojure' 'deps-edn')
 #source=("https://github.com/yourusername/my-clojure-project/releases/download/v${pkgver}/my-clojure-project-${pkgver}.jar")
 source=("https://repository.hellonico.info/repository/hellonico/origami/wave/${pkgver}/wave-${pkgver}.jar")
-sha256sums=('35e07a51950492080ee9dec8fd680d6d5dc756db616e28d061b3a795947cbeee')
+sha256sums=('2d560220d599888594647c5a8cc49499a596e6be6612fde89bdef72e880606da')
 
 build() {
   echo "No additional build step required. Uberjar provided."
