@@ -2,7 +2,7 @@
 # Contributor: Fabio Zanini <fabio.zanini _at_ fastmail.fm>
 
 pkgname=python-scikit-bio
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Python package providing data structures, algorithms, and educational resources for bioinformatics"
 arch=('x86_64')
@@ -24,7 +24,7 @@ depends=(
 makedepends=('python-setuptools' 'cython')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/scikit-bio/scikit-bio/archive/${pkgver}.tar.gz")
-sha256sums=('c996ce6f0203c9db67f041131e024d2aba1319b6adfc7450e4f417cc52e4300a')
+sha256sums=('e7c2727d0bc84fb46eeeebdd38e5c98287407a8fa6a7e6be4c73f9134b934ce8')
 
 prepare(){
   cd scikit-bio-${pkgver}
