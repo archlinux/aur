@@ -1,0 +1,18 @@
+Description: allow fdclone remove strips in makefile
+ This allows install fdlclone binary without strips
+ Originally 10_bts436823_remove_strip_makefile.dpatch
+Author: Sandro Tosi <matrixhasu@gmail.com>
+
+Index: fdclone/Makefile.in
+===================================================================
+--- fdclone.orig/Makefile.in
++++ fdclone/Makefile.in
+@@ -470,7 +470,7 @@ install: install-bin install-runcom inst
+ 
+ install-bin: $(PROGRAM)$(EXE) mkdir_p$(EXE) install-table
+ 	[ -d $(BINDIR) ] || ./mkdir_p$(EXE) $(BINDIR)
+-	$(INSTALL) __INSTSTRIP__ $(PROGRAM)$(EXE) $(BINDIR)
++	$(INSTALL) $(PROGRAM)$(EXE) $(BINDIR)
+ 	$(CHMOD) a+rx $(BINDIR)/$(PROGRAM)$(EXE)
+ 	-$(RM) $(BINDIR)/$(ALIAS)$(EXE)
+ 	$(LN) $(BINDIR)/$(PROGRAM)$(EXE) $(BINDIR)/$(ALIAS)$(EXE)

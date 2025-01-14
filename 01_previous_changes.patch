@@ -1,0 +1,85 @@
+Description: configure fdclone for works properly under Debian
+ This allows for customize fdclone configuration for works 
+ properly under Debian. Originally 01_previous_changes.dpatch
+Author: Sandro Tosi <matrixhasu@gmail.com>
+
+Index: fdclone/Configur
+===================================================================
+--- fdclone.orig/Configur
++++ fdclone/Configur
+@@ -679,12 +679,7 @@ fi
+ if isexist "sysconf(0)"; then
+ 	echo "#define	USESYSCONF"
+ fi
+-if isexist "_llseek(0,0,0,0,0)" linux/unistd "static _syscall5(int, _llseek,
+-	unsigned int, fd,
+-	unsigned long, ofs_h,
+-	unsigned long, ofs_l,
+-	long long *, result,
+-	unsigned int, whence);
++if isexist "_llseek(0,0,0,0,0)" "sys/syscall" "#define _llseek(fd, ofs_h, ofs_l, result, whence) syscall(SYS__llseek, fd, ofs_h, ofs_l, result, whence)
+ "; then
+ 	echo "#define	USELLSEEK"
+ fi
+Index: fdclone/config.hin
+===================================================================
+--- fdclone.orig/config.hin
++++ fdclone/config.hin
+@@ -3,4 +3,4 @@
+  *
+  *	definitions for each OS
+  */
+-
++#define USEDATADIR
+Index: fdclone/dosdisk.c
+===================================================================
+--- fdclone.orig/dosdisk.c
++++ fdclone/dosdisk.c
+@@ -23,6 +23,7 @@
+ #include "mntinfo.h"
+ #include <sys/mount.h>
+ #include <linux/unistd.h>
++#include <sys/syscall.h>
+ # ifndef	BLKFLSBUF
+ # include <linux/fs.h>
+ # endif
+@@ -378,12 +379,7 @@ static CONST char *inhibitname[] = INHIB
+ #ifdef	USELLSEEK
+ # ifdef	_syscall5
+ # undef	_llseek
+-static _syscall5(int, _llseek,
+-	u_int, fd,
+-	u_long, ofs_h,
+-	u_long, ofs_l,
+-	l_off_t *, result,
+-	u_int, whence);
++#define _llseek(fd, ofs_h, ofs_l, result, whence) syscall(SYS__llseek, fd, ofs_h, ofs_l, result, whence)
+ # endif
+ 
+ static l_off_t NEAR Xllseek(fd, offset, whence)
+Index: fdclone/fd.h
+===================================================================
+--- fdclone.orig/fd.h
++++ fdclone/fd.h
+@@ -95,8 +95,8 @@ extern char *_mtrace_file;
+  *	If you don't like the following tools as each uses,	*
+  *	you should rewrite another suitable command name.	*
+  ****************************************************************/
+-#define	PAGER			"more%K"	/* to view file */
+-#define	EDITOR			"vi"		/* to edit file */
++#define	PAGER			"/usr/bin/pager"	/* to view file */
++#define	EDITOR			"/usr/bin/editor"	/* to edit file */
+ 
+ 
+ /****************************************************************
+Index: fdclone/version.h
+===================================================================
+--- fdclone.orig/version.h
++++ fdclone/version.h
+@@ -4,5 +4,5 @@
+  *	version number
+  */
+ 
+-char *distributor = NULL;
++char *distributor = "sano@debian.org (Taketoshi Sano)";
+ static char version[] = "@(#)fd.c  3.01j 07/27/19";

@@ -1,0 +1,53 @@
+Description: install files in the correctly Debian's path
+ This setting values to install files in the correctly Debian's path.
+
+Index: fdclone/Makefile.in
+===================================================================
+--- fdclone.orig/Makefile.in
++++ fdclone/Makefile.in
+@@ -12,7 +12,7 @@ MANSEC	= 1
+ BINTOP	= $(PREFIX)/bin
+ BINDIR	= $(BUILD)$(BINTOP)
+ DATATOP	= $(PREFIX)/share
+-DATADIR	= $(BUILD)$(DATATOP)/fd
++DATADIR	= $(BUILD)$(DATATOP)/fdclone
+ MANTOP	= $(PREFIX)/man
+ MANDIR	= $(BUILD)$(MANTOP)/man$(MANSEC)
+ CATDIR	= $(BUILD)$(MANTOP)/cat$(MANSEC)
+@@ -484,24 +484,24 @@ install-runcom:
+ 
+ install-table: $(TABLE) mkdir_p$(EXE)
+ 	-if [ -f $(UNITBL) ]; then \
+-		[ -d __DATADIR__ ] || ./mkdir_p$(EXE) __DATADIR__; \
+-		$(INSTALL) $(UNITBL) __DATADIR__; \
+-		$(CHMOD) a+r-x __DATADIR__/$(UNITBL); \
++		[ -d $(DATADIR) ] || ./mkdir_p$(EXE) $(DATADIR); \
++		$(INSTALL) $(UNITBL) $(DATADIR); \
++		$(CHMOD) a+r-x $(DATADIR)/$(UNITBL); \
+ 	fi
+ 	-if [ -f $(DICTTBL) ]; then \
+-		[ -d __DATADIR__ ] || ./mkdir_p$(EXE) __DATADIR__; \
+-		$(INSTALL) $(DICTTBL) __DATADIR__; \
+-		$(CHMOD) a+r-x __DATADIR__/$(DICTTBL); \
++		[ -d $(DATADIR) ] || ./mkdir_p$(EXE) $(DATADIR); \
++		$(INSTALL) $(DICTTBL) $(DATADIR); \
++		$(CHMOD) a+r-x $(DATADIR)/$(DICTTBL); \
+ 	fi
+ 	-if [ -f $(CATTBL) ]; then \
+-		[ -d __DATADIR2__ ] || ./mkdir_p$(EXE) __DATADIR2__; \
+-		$(INSTALL) $(CATTBL) __DATADIR2__; \
+-		$(CHMOD) a+r-x __DATADIR2__/$(CATTBL); \
++		[ -d $(DATADIR)/$(VERSION) ] || ./mkdir_p$(EXE) $(DATADIR)/$(VERSION); \
++		$(INSTALL) $(CATTBL) $(DATADIR)/$(VERSION); \
++		$(CHMOD) a+r-x $(DATADIR)/$(VERSION)/$(CATTBL); \
+ 	fi
+ 	-if [ -f $(ECATTBL) ]; then \
+-		[ -d __DATADIR2__ ] || ./mkdir_p$(EXE) __DATADIR2__; \
+-		$(INSTALL) $(ECATTBL) __DATADIR2__; \
+-		$(CHMOD) a+r-x __DATADIR2__/$(ECATTBL); \
++		[ -d $(DATADIR)/$(VERSION) ] || ./mkdir_p$(EXE) $(DATADIR)/$(VERSION); \
++		$(INSTALL) $(ECATTBL) $(DATADIR)/$(VERSION) ; \
++		$(CHMOD) a+r-x $(DATADIR)/$(VERSION)/$(ECATTBL); \
+ 	fi
+ 
+ install-man: $(MANSRC) mkdir_p$(EXE)

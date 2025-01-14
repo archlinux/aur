@@ -1,7 +1,7 @@
 pkgbase = fdclone
 	pkgdesc = Ncurses file and directory management tool
 	pkgver = 3.01j
-	pkgrel = 1
+	pkgrel = 2
 	url = https://musashien.sourceforge.net/userdoc/fd.shtml
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,12 @@ pkgbase = fdclone
 	options = !emptydirs
 	backup = etc/fdclone/fd2rc
 	source = http://www.unixusers.net/src/fdclone/FD-3.01j.tar.gz
+	source = 01_previous_changes.patch
+	source = 10_bts436823_remove_strip_makefile.patch
+	source = 30_makefilein_setting.patch
 	sha256sums = fe5bb67eb670dcdb1f7368698641c928523e2269b9bee3d13b3b77565d22a121
+	sha256sums = f26a79673d2b2d5c861c097cf64af588c8e1a6e52a8ed8b71f62a7ae44a9fa88
+	sha256sums = 7229d17d244afeb9a6eaff5fa3016c2e5814d6c90f59d126ecfe483b81b0369c
+	sha256sums = e2094de049233b85fd419ba3989025fbed9b58869f4ea6dbe25fbd32c6de1f1b
 
 pkgname = fdclone
