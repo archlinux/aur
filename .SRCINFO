@@ -5,8 +5,8 @@ pkgbase = pestfmt
 	url = https://github.com/pest-parser/pest-fmt
 	arch = any
 	license = MPL-2.0
-	makedepends = cargo
-	depends = glibc
+	makedepends = rust
+	depends = gcc-libs
 	source = https://github.com/pest-parser/pest-fmt/archive/refs/tags/v0.2.5.tar.gz
 	sha256sums = df925fc8fb43c75e385169d49db93199606b9777464d474cf07c45af99194382
 
