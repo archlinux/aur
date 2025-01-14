@@ -1,0 +1,13 @@
+pkgbase = bskyid
+	pkgdesc = Unofficial application to fetch your BlueSky ID
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://aptivi.github.io
+	arch = any
+	license = GPL-3.0-or-later
+	depends = bash
+	options = !strip
+	source = bskyid::git+https://github.com/Aptivi/BskyId#tag=v1.0.1
+	sha256sums = SKIP
+
+pkgname = bskyid
