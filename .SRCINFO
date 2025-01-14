@@ -1,0 +1,14 @@
+pkgbase = epson-inkjet-printer-sc-t7700d
+	pkgdesc = Epson inkjet printer driver (SC-T7700D)
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
+	source = https://download3.ebz.epson.net/dsc/f/03/00/16/03/73/24d138fd6c643aae839e48b999e5a702ca387225/epson-sc-t7700d-ww-1.0.8-1.src.rpm
+	sha256sums = d69b299aaa6f11221b03135f039d02a1f9870190a00e7f6eee05cf13d79c8906
+
+pkgname = epson-inkjet-printer-sc-t7700d
