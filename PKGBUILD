@@ -5,7 +5,7 @@ _model="n10-nx127"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.1
 pkgrel=11
-pkgdesc="Epson inkjet printer driver (ME 10, ME 32, ME 33, ME 35, ME 320, ME 330, ME 350, Stylus N10, Stylus N11, Stylus NX125, Stylus NX127, Stylus S22, Stylus SX125, Stylus T12, Stylus T13, Stylus T22, Stylus T22E, Stylus T25, Stylus TX120, Stylus TX121, Stylus TX123, Stylus TX125, Stylus TX129)"
+pkgdesc="Epson inkjet printer driver (ME 10, 32, 33, 35, 320, 330, 350; Stylus N10, N11, NX125, NX127, S22, SX125, T12, T13, T22, T22E, T25, TX120, TX121, TX123, TX125, TX129)"
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:Epson End User Software License Agreement')
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgsrc}/ppds"
-  find . -type f -name '*.ppd' -exec \
+  find . -type f -na'*.ppd' -exec \
     sed -i "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}|/usr/share/epson-inkjet-printer-filter|g" "{}" +
 }
 
