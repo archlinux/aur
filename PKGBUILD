@@ -5,7 +5,7 @@
 
 # Maintainer: aureumapes <auruemapes@duck.com>
 pkgname=candlelang-git
-pkgver=candle1.1.1
+pkgver=v1.2.0
 pkgrel=1
 pkgdesc="The latest git vcersion of Candlelang"
 arch=("x86_64" "aarch64")
@@ -29,9 +29,13 @@ build() {
 	cd $srcdir/$pkgname
 	go generate
 	go build
+	cd highlight
+	go build
+	mv highlight cndlh
 }
 
 package() {
 	cd $srcdir/$pkgname
 	install -vDm777 -t $pkgdir/usr/bin candle
+	install -vDm777 -t $pkgdir/usr/bin highlight/cndlh
 }
