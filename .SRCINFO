@@ -1,0 +1,13 @@
+pkgbase = servoshell-bin
+	pkgdesc = These pre-built nightly snapshots allow developers to try Servo and report issues without building Servo locally.
+	pkgver = 2025.01.14
+	pkgrel = 1
+	url = https://github.com/versotile-org/servo
+	arch = x86_64
+	license = MPL-2.0
+	source = https://download.servo.org/nightly/linux/servo-latest.tar.gz
+	source = servoshell.desktop
+	sha256sums = 339cb1a190f41913398ff28f50b48847142dad069ecfd3189f983436bcfa5724
+	sha256sums = 5bf7a51a34df54ce99776ee01e796e086b85d5b7575193ed0c5586d046929e88
+
+pkgname = servoshell-bin

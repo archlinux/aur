@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Servo
+StartupWMClass=servo
+Comment=Servo, the embeddable, independent, memory-safe, modular, parallel web rendering engine
+GenericName=Web Browser
+Type=Application
+Categories=Network
+Exec=/opt/servoshell/servo
