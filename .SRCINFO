@@ -1,18 +1,14 @@
 pkgbase = epson-inkjet-printer-201111w
-	pkgdesc = Epson printer driver (Artisan 630)
+	pkgdesc = Epson inkjet printer driver (Artisan 635)
 	pkgver = 1.0.0
-	pkgrel = 10
-	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
-	arch = i686
+	pkgrel = 11
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = x86_64
-	license = LGPL
-	license = custom:Epson Licence Agreement
-	depends = cups
-	depends = ghostscript
-	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201111w-1.0.0-1lsb3.2.src.rpm
-	source = fixbuild.patch
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
+	source = https://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201111w-1.0.0-1lsb3.2.src.rpm
 	sha256sums = e2798b815708ab6fcd77613fefe016c4dd2280e598ee4e7a7b57c12233762212
-	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
 
 pkgname = epson-inkjet-printer-201111w
-
