@@ -3,7 +3,7 @@
 
 pkgname=maltego
 
-pkgver=4.8.0
+pkgver=4.8.1
 pkgrel=1
 
 pkgdesc='An open source intelligence and forensics application'
@@ -17,7 +17,7 @@ install="$pkgname.install"
 source=("https://downloads.maltego.com/maltego-v4/linux/Maltego.v$pkgver.linux.zip"
         "LICENSE.pdf"
 	"maltego.png")
-sha256sums=('780219ab03d947ffe019d237696ebfb76f9a092a293d5a5473e192206003529c'
+sha256sums=('875a7ee49dea17f1e144eee831cf107ffa532f45946b251b749ea3981357ccf2'
             'b06d49dae3ded95e2c01b4ec26210492add658ee02c32d4950985276e5f5fffa'
             'bb59ca792e86a544117d33a78024d30035650a39aa1f02e7c5aee6a57e239be5')
 

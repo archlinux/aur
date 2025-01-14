@@ -1,6 +1,6 @@
 pkgbase = maltego
 	pkgdesc = An open source intelligence and forensics application
-	pkgver = 4.8.0
+	pkgver = 4.8.1
 	pkgrel = 1
 	url = https://www.maltego.com
 	install = maltego.install
@@ -8,9 +8,9 @@ pkgbase = maltego
 	license = custom
 	depends = java-environment=17
 	options = !emptydirs
-	source = https://downloads.maltego.com/maltego-v4/linux/Maltego.v4.8.0.linux.zip
+	source = https://downloads.maltego.com/maltego-v4/linux/Maltego.v4.8.1.linux.zip
 	source = LICENSE.pdf::https://www.maltego.com/pdf/legal/2022-09_Maltego%20Technologies_TermsandConditions.pdf
-	sha256sums = 780219ab03d947ffe019d237696ebfb76f9a092a293d5a5473e192206003529c
+	sha256sums = 875a7ee49dea17f1e144eee831cf107ffa532f45946b251b749ea3981357ccf2
 	sha256sums = b06d49dae3ded95e2c01b4ec26210492add658ee02c32d4950985276e5f5fffa
 
 pkgname = maltego
