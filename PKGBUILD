@@ -1,24 +1,36 @@
-# Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
+# Maintainer: Xeonacid <h.dwwwwww@gmail.com>
 
-pkgname='python-eth-rlp'
-_pkgname=${pkgname#python-}
-pkgver=0.3.0
+_name=eth-rlp
+pkgname=python-${_name}
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="RLP definitions for common Ethereum objects in Python"
-arch=('any')
-depends=('python-rlp' 'python-eth-utils' 'python-hexbytes')
-makedepends=('python-setuptools')
-url="https://github.com/ethereum/$_pkgname"
-license=('GPL3')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('f3263b548df718855d9a8dbd754473f383c0efc82914b0b849572ce3e06e71a6')
+arch=(any)
+url="https://github.com/ethereum/${_name}"
+license=(MIT)
+depends=(python python-eth-utils python-hexbytes python-rlp)
+makedepends=(python-build python-installer python-setuptools python-wheel python-sphinx python-sphinx_rtd_theme)
+checkdepends=(python-pytest)
+source=(${_name}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('c55490aadc80d5b5aba6f53c7230ba5caaae94ed0850f0be59d39589e1df3c97085a65d967601c7f99d03910b8f8b526d2aebf4966e10d50cfe2a559d37aa066')
 
 build() {
-  cd $_pkgname-$pkgver
-  python setup.py build
+  cd $_name-$pkgver
+  python -m build --wheel --no-isolation
+  make -C docs man
+}
+
+check(){
+  cd $_name-$pkgver
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest -vv --showlocals tests/
 }
 
 package() {
-  cd $_pkgname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd $_name-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 docs/_build/man/eth_rlp.1 -t "$pkgdir/usr/share/man/man1"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }

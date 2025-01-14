@@ -1,15 +1,22 @@
 pkgbase = python-eth-rlp
 	pkgdesc = RLP definitions for common Ethereum objects in Python
-	pkgver = 0.3.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/ethereum/eth-rlp
 	arch = any
-	license = GPL3
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python-rlp
+	makedepends = python-wheel
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	depends = python
 	depends = python-eth-utils
 	depends = python-hexbytes
-	source = https://files.pythonhosted.org/packages/source/e/eth-rlp/eth-rlp-0.3.0.tar.gz
-	sha256sums = f3263b548df718855d9a8dbd754473f383c0efc82914b0b849572ce3e06e71a6
+	depends = python-rlp
+	source = eth-rlp-2.1.0.tar.gz::https://github.com/ethereum/eth-rlp/archive/v2.1.0.tar.gz
+	sha512sums = c55490aadc80d5b5aba6f53c7230ba5caaae94ed0850f0be59d39589e1df3c97085a65d967601c7f99d03910b8f8b526d2aebf4966e10d50cfe2a559d37aa066
 
 pkgname = python-eth-rlp
