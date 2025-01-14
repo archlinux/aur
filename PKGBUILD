@@ -1,7 +1,7 @@
 # Maintainer: Filipe Fernandes <fernandes.fd at gmail dot com>
 
 pkgname=xssproxy
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Forward freedesktop.org idle inhibition service calls to Xss."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/vincentbernat/xssproxy"
 license=('GPL3')
 depends=('libxss' 'glib2' 'dbus')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vincentbernat/xssproxy/archive/v${pkgver}.tar.gz")
-sha512sums=('4c195d161ce5d16e62e3482dbd7b78cfa9505aaee09f5532916ba8f32aef9be83ce5a3b454362ef04288f2c2237eb74e3f3106225227584c706230b2e3022397')
+sha512sums=('15061d7eeabebfb582afd845b0c970c1aa15e1edfc8ac97b249597ae9f8c3ea0e9891dd2921eafadf7869e868f71eb101943d93fddf88e0df7693c1bcf994cbb')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
