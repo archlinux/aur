@@ -2,7 +2,7 @@
 # Contributor: Zion Nimchuk <zionnimchuk@gmail.com>
 _pkgname=cubeb
 pkgname=$_pkgname-git
-pkgver=0.2.r1543.g9a9d034
+pkgver=0.2.r1548.g048f4a0
 pkgrel=1
 pkgdesc="Cross platform audio library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -24,7 +24,6 @@ checkdepends=('gtest')
 optdepends=(
 	'alsa-lib: for ALSA backend'
 	'jack: for JACK backend'
-	'libpulse: for PulseAudio backend'
 	'sndio: for sndio backend'
 )
 provides=("$_pkgname=$pkgver" 'libcubeb.so')
@@ -71,7 +70,7 @@ check() {
 }
 
 package() {
-	depends+=('libspeexdsp.so')
+	depends+=('libpulse.so' 'libspeexdsp.so')
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/LICENSE
