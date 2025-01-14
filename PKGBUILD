@@ -3,7 +3,7 @@
 pkgbase='sherlock-launcher'
 pkgname=('sherlock-launcher-git'
          'sherlock-launcher-bin')
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Application launcher for Wayland."
 arch=('x86_64')
