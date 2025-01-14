@@ -3,8 +3,9 @@
 # Based on PKGBUILD by Kevin S <aur@eldenring.mozmail.com>
 
 pkgname=audiobookshelf
-pkgver=v2.17.7
+pkgver=2.17.7
 pkgrel=3
+epoch=1
 pkgdesc="Self-hosted audiobook server for managing and playing audiobooks"
 arch=("x86_64" "aarch64")
 url="https://github.com/advplyr/${pkgname}"
@@ -13,7 +14,7 @@ depends=("ffmpeg" "libnusqlite3" "nodejs")
 makedepends=("npm")
 backup=("etc/conf.d/${pkgname}")
 options=("!debug")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.conf"
         "${pkgname}.hook"
         "${pkgname}.service"
@@ -27,7 +28,7 @@ sha256sums=('f889909ecd2324fa355ccc02b72c21da592afa07c70f56b82c2da9cff72993ad'
             'ec04988b13dd049fbd021a51275c92120179f74f1e71fd9141bd720633e5f99f')
 
 build() {
-    cd "${pkgname}-${pkgver#v}"
+    cd "${pkgname}-${pkgver}"
     npm run client
     npm ci --only=production
     find {client/dist,node_modules,server} -type f -name "*.map" | xargs rm -rf
@@ -41,7 +42,7 @@ package() {
     install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -Dm644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
-    cd "${pkgname}-${pkgver#v}"
+    cd "${pkgname}-${pkgver}"
     install -Dm644 readme.md             "${pkgdir}/usr/share/doc/${pkgname}/readme.md"
     install -Dm644 *.json             -t "${pkgdir}/usr/lib/${pkgname}"
     install -Dm755 prod.js            -t "${pkgdir}/usr/lib/${pkgname}"
