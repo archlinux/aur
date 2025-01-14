@@ -5,7 +5,7 @@
 
 # Maintainer: Buck Yeh <buck.yeh at gmail dot com>
 pkgname=bux
-pkgver=1.10.1
+pkgver=1.10.3
 pkgrel=1
 epoch=
 pkgdesc='A supplemental C++ library with functionalities not directly supported from Modern C++ standard.'
