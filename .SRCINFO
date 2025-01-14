@@ -1,10 +1,10 @@
 pkgbase = python-habanero
 	pkgdesc = A low level client for Crossref's Search API
 	pkgver = 1.2.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/sckott/habanero
 	arch = any
-	license = LicenseRef-MIT
+	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
