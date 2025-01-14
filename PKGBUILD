@@ -2,7 +2,7 @@
 
 pkgname=python-imblearn
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python Package to Tackle the Curse of Imbalanced Datasets in Machine Learning'
 arch=(any)
 license=('MIT')

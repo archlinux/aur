@@ -1,7 +1,7 @@
 pkgbase = python-imblearn
 	pkgdesc = A Python Package to Tackle the Curse of Imbalanced Datasets in Machine Learning
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://imbalanced-learn.org/
 	arch = any
 	license = MIT
