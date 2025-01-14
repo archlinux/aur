@@ -6,7 +6,7 @@
 
 _pkgname=cool-retro-term
 pkgname=$_pkgname-git
-pkgver=1.2.0.r3.gf157648
+pkgver=1.2.0+rf157648
 pkgrel=1
 pkgdesc='A good looking terminal emulator which mimics the old cathode display - git version'
 arch=('i686' 'x86_64')
@@ -19,14 +19,14 @@ conflicts=("$_pkgname")
 source=("git+https://github.com/Swordfish90/$_pkgname")
 sha256sums=(SKIP)
 
+pkgver () {
+  cd $_pkgname
+  echo "$(git describe --tags --abbrev=0)+r$(git rev-parse --short HEAD)"
+}
+
 prepare() {
   cd $_pkgname
   sed -i '/qmltermwidget/d' cool-retro-term.pro
-}
-
-pkgver () {
-  cd $_pkgname
-  git describe --long --tags | sed -r 's/^v//;s/-RC/RC/;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
