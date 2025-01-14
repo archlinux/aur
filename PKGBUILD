@@ -5,7 +5,7 @@
 _module="glean_parser"
 _pkgname="python-${_module//_/-}"
 pkgname="$_pkgname"
-pkgver=16.1.0
+pkgver=16.2.0
 pkgrel=1
 pkgdesc="Tools for parsing the metadata for Mozilla's glean telemetry SDK"
 url="https://github.com/mozilla/glean_parser"
@@ -37,12 +37,8 @@ conflicts=("python-$_module")
 _pkgsrc="$_module-$pkgver"
 _pkgext="tar.gz"
 _dl_url="https://files.pythonhosted.org/packages/source"
-source=(
-  "$_pkgsrc.$_pkgext"::"$_dl_url/${_module::1}/$_module/$_pkgsrc.$_pkgext"
-)
-sha256sums=(
-  '25d430a9e126767dae72f73c983724978b119ebb75611fc98f9bb8d36491016e'
-)
+source=("$_pkgsrc.$_pkgext"::"$_dl_url/${_module::1}/$_module/$_pkgsrc.$_pkgext")
+sha256sums=('4f6794b41b6e69cbceaee2a5b835a74cdfe443d1fbf4e2656ac40ba72cc27458')
 
 build() {
   cd "$_pkgsrc"
