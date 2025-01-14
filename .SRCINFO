@@ -1,6 +1,6 @@
 pkgbase = libodb
 	pkgdesc = The ODB common runtime library
-	pkgver = 2.5.0b27
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://www.codesynthesis.com/products/odb/
 	arch = i686
@@ -8,5 +8,7 @@ pkgbase = libodb
 	license = GPL3
 	depends = build2
 	options = !libtool
+	source = https://www.codesynthesis.com/download/odb/2.5.0/libodb-2.5.0.tar.gz
+	sha256sums = 700038a73c6cbead011129b15030b7cdd3f73510b687f2c4504808df4230441b
 
 pkgname = libodb
