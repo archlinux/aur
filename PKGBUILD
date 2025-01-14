@@ -2,7 +2,7 @@
 
 pkgname=tagstudio
 pkgver=alpha9.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A User-Focused Photo & File Management System "
 _pkgver=${pkgver#alpha}
 
@@ -11,7 +11,7 @@ url="https://github.com/TagStudioDev/TagStudio"
 license=("GPL-3.0-only")
 
 depends=(
-	"python"
+	"python>=3.13"
 	"python-humanfriendly>=10.0"
 	"python-opencv>=4.8"
 	"python-pillow>=10.3"
@@ -28,6 +28,8 @@ depends=(
 	"python-vtf2img>=0.1.0"
 	"python-pydub>=0.25.1"
 	"qt6-tools"
+	"qt6-multimedia"
+	"qt6-svg"
 )
 
 makedepends=(
@@ -48,7 +50,7 @@ source=(
 sha256sums=(
 	"000220955118e679eceb0abb3c59a7c5a57b5410a0d05a04de0f9e6c0a966ac2"
 	"75ef43dcb45445544daf48c002e5de8878c4e4a84408e607c817f582f7fa19d3"
-	"6e4292bff864f059f5835d258c013bbee2d6397932c31efb127757fd1c4ea128"
+	"7a611755db416558c892b083ce7c802c115f68bca86facfdb66cca29cf0ff36f"
 	"3d39b447f47ed9d7dcf7974b587e6a99541bb15dbd82dcfcf4831ee4a0d28330"
 	"ef8f9aa04aadb340d662197e74ba03c1bd0e1f14182c85653d537ee94babedeb"
 )
