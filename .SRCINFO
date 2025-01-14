@@ -1,14 +1,17 @@
 pkgbase = odb
 	pkgdesc = C++ Object-Relational Mapping compiler
-	pkgver = 2.5.0b27
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://www.codesynthesis.com/products/odb/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = build2
-	conflicts = libcutl
-	conflicts = libstudxml
+	depends = libcutl
+	depends = libstudxml
+	depends = cli
 	options = !libtool
+	source = https://www.codesynthesis.com/download/odb/2.5.0/odb-2.5.0.tar.gz
+	sha256sums = 9151172907f8d0116a6429b259dcc900ced0a2992a5eb6144b8e4ca0525fc648
 
 pkgname = odb

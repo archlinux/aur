@@ -1,21 +1,18 @@
 # Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
 
 pkgname=odb
-pkgver=2.5.0b27
-_pkgver=2.5.0-b.27
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="C++ Object-Relational Mapping compiler"
 url="https://www.codesynthesis.com/products/odb/"
 arch=('i686' 'x86_64')
-depends=('build2')
-conflicts=('libcutl' 'libstudxml')
+depends=('build2' 'libcutl' 'libstudxml' 'cli')
 options=('!libtool')
 license=('GPL3')
+source=("https://www.codesynthesis.com/download/odb/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('9151172907f8d0116a6429b259dcc900ced0a2992a5eb6144b8e4ca0525fc648')
 
-build() {
-	cd "${srcdir}"
-	mkdir -p "${srcdir}/${pkgname}-${pkgver}"
-	cd "${srcdir}/${pkgname}-${pkgver}"
+prepare() {
 
 	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //' | sed 's/\s.*$//')"
 
@@ -26,14 +23,21 @@ build() {
 	config.install.root=${pkgdir}/usr \
 	config.install.relocatable=true
 
-	cd odb-gcc-${GPPVER}
-	yes | bpkg build --trust-yes odb/${_pkgver}@https://pkg.cppget.org/1/beta
+	mv ${pkgname}-${pkgver}.tar.gz odb-gcc-${GPPVER}
+}
+
+build() {
+
+	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //' | sed 's/\s.*$//')"
+	cd "${srcdir}/odb-gcc-${GPPVER}"
+
+	bpkg build ${pkgname}-${pkgver}.tar.gz ?sys:libcutl/* ?sys:libstudxml/* ?sys:cli/*
 }
 
 package() {
 
 	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //' | sed 's/\s.*$//')"
-	cd "${srcdir}/${pkgname}-${pkgver}/odb-gcc-${GPPVER}"
+	cd "${srcdir}/odb-gcc-${GPPVER}"
 
 	bpkg install odb
 
