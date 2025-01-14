@@ -1,5 +1,5 @@
 pkgbase = epson-inkjet-printer-201204w
-	pkgdesc = Epson inkjet printer driver (XP-100, XP-101, XP-104, XP-200, XP-201, XP-204, ME-301)
+	pkgdesc = Epson inkjet printer driver (ME-301, XP-100, XP-101, XP-104, XP-200, XP-201, XP-204)
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX

@@ -5,7 +5,7 @@ _model="201204w"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="Epson inkjet printer driver (XP-100, XP-101, XP-104, XP-200, XP-201, XP-204, ME-301)"
+pkgdesc="Epson inkjet printer driver (ME-301, XP-100, XP-101, XP-104, XP-200, XP-201, XP-204)"
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:Epson End User Software License Agreement')
