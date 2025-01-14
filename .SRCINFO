@@ -1,6 +1,6 @@
 pkgbase = python-pyviz_comms
 	pkgdesc = Bidirectional communication for the PyViz ecosystem
-	pkgver = 3.0.3
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://github.com/pyviz/pyviz_comms
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-pyviz_comms
 	makedepends = python-wheel
 	depends = python-param
 	depends = jupyterlab
-	source = https://pypi.org/packages/source/p/pyviz_comms/pyviz_comms-3.0.3.tar.gz
-	sha512sums = e65d1d8fcd41d855d519bf58904628e93507ef183a2af370c450fcaf3bd9cd17168891e8e7d8d2965b61fe333868d6a8eda4153fbe066d69a1ff9dca250c7add
+	source = https://pypi.org/packages/source/p/pyviz_comms/pyviz_comms-3.0.4.tar.gz
+	sha512sums = 94fb3bae7fefb01f22ceea73636dc9c0423d62ba60dee4eaa34c72512c1b9fdf34e056e50862d12fa8748ba5b2d46b55ecd8378219941e8ac65dac169e888c80
 
 pkgname = python-pyviz_comms
