@@ -1,6 +1,6 @@
 # Maintainer: instancer-kirik
 pkgname=varchiver
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="A variable archiver and github/aur release manager (serialize your variables first)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
     'python-pip'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=("fd3a2f2b09fe83e62a32ca2315acd8dd3f29332d645cdd2b84b8b49abf5c16e9")
+sha256sums=("c79cbae2964794c6936e1af1ed58179cfa5a02e67cd834a5f6d6cbc469814c74")
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
