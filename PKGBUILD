@@ -1,7 +1,7 @@
-# Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 # Maintainer: Allen Zhong <pdev@zhoal.pw>
+# Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 pkgname=tikv-pd
-pkgver=8.4.0
+pkgver=8.5.0
 pkgrel=1
 pkgdesc='Manage and schedule the TiKV cluster.'
 depends=('glibc')
@@ -17,7 +17,7 @@ source=(pd-${pkgver}.tar.gz::https://github.com/tikv/pd/archive/v${pkgver}.tar.g
         pd-sysusers.conf
         pd-tmpfiles.conf
         pd.toml)
-sha256sums=('9d80cd69c75ead84b2c36ab1ab8d1f5ed7fc5fed729f6207142216b93d1931f9'
+sha256sums=('859d0d56f0d2fb0586faf14d8262a183205f60b1061d0bd55cf1066b9a7e5fd8'
             'b03d12f2f8d6eb2e9d654d6258ca39000225cdf1418840f7e35081631bc4d924'
             '5edd250ba9e70a4f8d27581ed658f0fbfeca58ca62429dec12bb5fffc0919b67'
             '15633aaa2d7726375112a1b5af88105878f09c176a542cde6d0e5f0c4eee4495'
