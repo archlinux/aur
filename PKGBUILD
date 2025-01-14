@@ -5,7 +5,7 @@ pkgdesc="AmneziaWG is a contemporary version of the popular VPN protocol, WireGu
 url="https://github.com/amnezia-vpn/amneziawg-linux-kernel-module"
 arch=("x86_64")
 pkgver=1.0.20241112
-pkgrel=1
+pkgrel=2
 license=('GPLv2')
 provides=("AMNEZIAWG-MODULE=${pkgver}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/archive/refs/tags/v${pkgver}.tar.gz")
@@ -22,5 +22,6 @@ wget "https://cdn.kernel.org/pub/linux/kernel/v${kernel_major}.x/linux-${kernel}
 ln -sf linux-${kernel} kernel;
 EOF
 cd ${srcdir}/amneziawg-linux-kernel-module-${pkgver}/src
+sed -i 's/MODERN_KERNEL_SOURCES_NOT_FOUND_ERROR/KERNEL_SRC_ABSENT_ERR/g' Makefile
 make DESTDIR=${pkgdir} dkms-install
 }
