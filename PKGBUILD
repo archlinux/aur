@@ -4,7 +4,7 @@ _pkgauthor=n0-computer
 _pkgname=dumbpipe
 pkgname=${_pkgname}-bin
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Unix pipes between devices'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
@@ -14,6 +14,7 @@ depends=('glibc')
 makedepends=('tar')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
+options=('!strip')
 source=("README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-MIT-${pkgver}::${_urlraw}/LICENSE-MIT"
         "LICENSE-APACHE-${pkgver}::${_urlraw}/LICENSE-APACHE")
