@@ -1,8 +1,8 @@
 # Maintainer: Mathieu Clabaut <mathieu[at]clabaut.net>
 
 pkgname=prometheus-process-exporter-bin
-pkgver=0.7.10
-pkgrel=2
+pkgver=0.8.5
+pkgrel=1
 pkgdesc="Prometheus exporter that mines /proc to report on selected processes"
 
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'arm')
@@ -43,8 +43,8 @@ package() {
 }
 sha256sums=('70a8611709a0ec52f7157d9488f1e6632fa5ff360871c2591407b3604da21eb4'
             '5473359eb2eb8c17698a5c3d3c9e1836f74a1fdc83c3b6a45c9869920919abe1')
-sha256sums_x86_64=('52503649649c0be00e74e8347c504574582b95ad428ff13172d658e82b3da1b5')
-sha256sums_aarch64=('b377e673558bd0d51f5f771c2b3b3be44b60fcac0689709f47d8c7ca8136f6f5')
-sha256sums_armv7h=('a92d5444be7e93dbf41db2ce20dfd2694130be94b5647b35c4ec43e6c46f774a')
-sha256sums_armv6h=('5c33050db3540bc56e3fd69433ca1294f52b06e03ebd7c19e8e71bd12cc8258e')
-sha256sums_arm=('5c33050db3540bc56e3fd69433ca1294f52b06e03ebd7c19e8e71bd12cc8258e')
+sha256sums_x86_64=('30b20325adc4542cf1a3bba85c1135921b7a07b39061bcab298a498b4737aeda')
+sha256sums_aarch64=('8792c2453c52c521846caca382acb940b96e0c09777fee349dae340ac66362ad')
+sha256sums_armv7h=('b7f362eb987a7af90c276bf8fef8df4020b7285a9594e7975ebb61f1343a1736')
+sha256sums_armv6h=('bfbd73ff67980d45294b57a726972a02654fd913b4796baa3ab990c96084c5ec')
+sha256sums_arm=('bfbd73ff67980d45294b57a726972a02654fd913b4796baa3ab990c96084c5ec')
