@@ -1,0 +1,14 @@
+pkgbase = epson-inkjet-printer-sc-tx200-jp
+	pkgdesc = Epson inkjet printer driver (SC-T3200, SC-T5200, SC-T7200, SC-T5200D, SC-T7200D)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/30/81/0809eb91dee8295250b49a98abea92c24f8a2034/epson-sc-tx200-jp-1.0.1-1.src.rpm
+	sha256sums = 4ac454b06d299f2f7fcb6543cdd717f09c78a16bf72673ed8b68baeeae775cfb
+
+pkgname = epson-inkjet-printer-sc-tx200-jp
