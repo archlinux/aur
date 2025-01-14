@@ -1,0 +1,13 @@
+pkgbase = verso-git
+	pkgdesc = A web browser that plays old world blues to build new world hope
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/versotile-org/verso
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	source = git+https://github.com/versotile-org/verso
+	b2sums = SKIP
+
+pkgname = verso-git
