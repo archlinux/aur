@@ -1,0 +1,15 @@
+pkgbase = epson-inkjet-printer-stylus-pro-7700-9700-series
+	pkgdesc = Epson inkjet printer driver (Stylus Pro 7700, 7710, 9700, 9710)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
+	source = https://download.ebz.epson.net/dsc/f/01/00/01/58/25/1de036d7908a5b0ed2866c2d133b62fd54a53f53/epson-stylus-pro-7700-9700-series-1.0.0-1lsb3.2.src.rpm
+	md5sums = c727e4ab5b5324055090cd92d6b8d9d5
+	sha256sums = 267fc2a87ceb6f79a113800c42d4334548bd4b316219c39390d995ddd55c5128
+
+pkgname = epson-inkjet-printer-stylus-pro-7700-9700-series
