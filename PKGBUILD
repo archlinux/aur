@@ -14,13 +14,16 @@ arch=(x86_64)
 url=https://servo.org
 license=(MPL-2.0)
 
-_url=https://github.com/servo/servo-nightly-builds/releases/latest
+# prepare download URL from stored pkgver
+_datecode=$(echo "$pkgver" | sed 's/\(....\)\(..\)\(..\)/\1-\2-\3/')
+_url="https://github.com/servo/servo-nightly-builds/releases/download/$_datecode/"
+
 provides=($_pkgname)
 conflicts=($_pkgname)
 depends=(gst-plugins-bad libunwind)
 source=(
-  $_pkgname-$pkgver.tar.gz::$_url/download/$_pkgname-latest.tar.gz
-  $_pkgname-$pkgver.tar.gz.sha256::$_url/download/$_pkgname-latest.tar.gz.sha256
+  "$_pkgname-$pkgver.tar.gz"::"$_url/$_pkgname-latest.tar.gz"
+  "$_pkgname-$pkgver.tar.gz.sha256"::"$_url/$_pkgname-latest.tar.gz.sha256"
   https://raw.githubusercontent.com/servo/servo/main/LICENSE
   servo.desktop
 )
@@ -28,11 +31,6 @@ sha256sums=('339cb1a190f41913398ff28f50b48847142dad069ecfd3189f983436bcfa5724'
             '25cc0eb9016c65b0fef01de039b412014c810f4af0e5df5dd31f88e309ba4be5'
             '1af2d2b02d9c86030d29ed77117ca7a1b0e4b6ff35bcf8eeb124867d0f5cb59e'
             '7a6cd816c35b9b42a27d83efbe72b3ac6bc79f2044153410fa434d7625f442ad')
-
-pkgver() {
-  curl -sLI -o /dev/null -w %{url_effective} $_url |
-    rev | cut -d/ -f1 | rev | tr -d -
-}
 
 prepare() {
   sha256sum $_pkgname-$pkgver.tar.gz | sha256sum -c
