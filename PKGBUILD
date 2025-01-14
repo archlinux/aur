@@ -1,6 +1,8 @@
-# Maintainer: kompowiec2 <diasp@o2.pl>
+# Maintainer: NatureCat <therealnatcat@pm.me>
+# Contributor:kompowiec2 <diasp@o2.pl>
 pkgname=ai-horde-worker-regen-git
-pkgver=7.0.1
+pkgver=10.0.2
+pkgrel=1
 pkgdesc="generating images and text using your GPU and earning kudos."
 arch=('x86_64')
 url="https://github.com/Haidra-Org/horde-worker-reGen"
@@ -11,14 +13,12 @@ source=("git+https://github.com/Haidra-Org/horde-worker-reGen.git")
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/horde-worker-reGen"
-    python -m venv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
+    cd "$srcdir/horde-worker-reGen" || exit
+    $srcdir/horde-worker-reGen/update-runtime.sh
 }
 
 package() {
-    cd "$srcdir/horde-worker-reGen"
+    cd "$srcdir/horde-worker-reGen" || exit
     install -d "$pkgdir/usr/share/$pkgname"
     cp -r . "$pkgdir/usr/share/$pkgname"
     install -Dm755 "$srcdir/horde-worker-reGen/horde-bridge.sh" "$pkgdir/usr/bin/ai-horde-worker-regen"
