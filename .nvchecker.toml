@@ -1,0 +1,4 @@
+[vala-panel-appmenu]
+source = "git"
+git = "https://gitlab.com/vala-panel-project/vala-panel-appmenu.git"
+prefix = "v"

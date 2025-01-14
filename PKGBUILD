@@ -3,8 +3,6 @@
 # Contributer: rilian-la-te <ria.freelander@gmail.com>
 
 ## options
-: ${_autoupdate:=false}
-
 : ${_build_mate:=true}
 : ${_build_xfce:=true}
 : ${_build_vala:=true}
@@ -13,63 +11,27 @@
 : ${_build_registrar:=true}
 : ${_build_translator:=true}
 
-: ${_build_git:=false}
-
-unset _pkgtype
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
-## basic info
 _pkgname="vala-panel-appmenu"
-pkgbase="$_pkgname${_pkgtype:-}"
+pkgbase="$_pkgname"
 pkgver=24.05
-pkgrel=3
+pkgrel=4
 pkgdesc="Global Menu plugin"
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 license=('LGPL-3.0-or-later')
 arch=('i686' 'x86_64')
 
-_main_package() {
-  makedepends+=(
-    'git'
-    'meson'
-    'vala'
-    'gobject-introspection'
-  )
+makedepends=(
+  'git'
+  'glib2-devel'
+  'gobject-introspection'
+  'meson'
+  'vala'
+)
 
-  if [ "${_build_git::1}" != "t" ]; then
-    _update_version
-    _main_stable
-  else
-    _main_git
-  fi
-}
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git#tag=$pkgver")
+sha256sums=('SKIP')
 
-# stable package
-_main_stable() {
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git#tag=$_pkgver")
-  sha256sums+=('SKIP')
-
-  pkgver() {
-    echo "${_pkgver:?}"
-  }
-}
-
-# git package
-_main_git() {
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-
-    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
-  }
-}
-
-# common functions
 prepare() {
   sed -e 's&^.*if mate_found or vala_panel_found or budgie_found.*$&if true&' \
     -i "$_pkgsrc/data/meson.build"
@@ -122,7 +84,7 @@ _package_vala-panel-appmenu() {
   arch=('any')
   depends=(
     "${_depends_meta[@]}"
-    "vala-panel-appmenu-locale${_pkgtype:-}"
+    "vala-panel-appmenu-locale"
   )
 }
 
@@ -139,7 +101,7 @@ _package_vala-panel-appmenu-locale() {
 _package_vala-panel-appmenu-budgie() {
   pkgdesc+=" for budgie-panel"
   depends=(
-    "appmenu-glib-translator${_pkgtype:-}"
+    "appmenu-glib-translator"
     'budgie-desktop'
   )
 
@@ -150,7 +112,7 @@ _package_vala-panel-appmenu-budgie() {
 _package_vala-panel-appmenu-mate() {
   pkgdesc+=" for mate-panel"
   depends=(
-    "appmenu-glib-translator${_pkgtype:-}"
+    "appmenu-glib-translator"
     'mate-panel'
   )
 
@@ -162,8 +124,8 @@ _package_vala-panel-appmenu-mate() {
 _package_vala-panel-appmenu-valapanel() {
   pkgdesc+=" for vala-panel"
   depends=(
-    "appmenu-glib-translator${_pkgtype:-}"
-    'vala-panel'
+    "appmenu-glib-translator"
+    'vala-panel' # AUR
   )
 
   install -dm755 "$pkgdir"/{usr/lib,usr/share}
@@ -174,7 +136,7 @@ _package_vala-panel-appmenu-valapanel() {
 _package_vala-panel-appmenu-xfce() {
   pkgdesc+=" for xfce4-panel"
   depends=(
-    "appmenu-glib-translator${_pkgtype:-}"
+    "appmenu-glib-translator"
     'xfce4-panel'
     'xfconf'
   )
@@ -193,108 +155,67 @@ _opts=(
 )
 
 pkgname=(
-  "vala-panel-appmenu${_pkgtype:-}"
-  "vala-panel-appmenu-locale${_pkgtype:-}"
+  "vala-panel-appmenu"
+  "vala-panel-appmenu-locale"
 )
 
 if [[ "${_build_registrar::1}" == "t" ]]; then
-  pkgname+=("vala-panel-appmenu-registrar${_pkgtype:-}")
-  _depends_meta+=("vala-panel-appmenu-registrar${_pkgtype:-}")
+  pkgname+=("vala-panel-appmenu-registrar")
+  _depends_meta+=("vala-panel-appmenu-registrar")
 fi
 
 if [[ "${_build_translator::1}" == "t" ]]; then
-  pkgname+=("appmenu-glib-translator${_pkgtype:-}")
-  _depends_meta+=("appmenu-glib-translator${_pkgtype:-}")
+  pkgname+=("appmenu-glib-translator")
+  _depends_meta+=("appmenu-glib-translator")
 fi
 
 if [[ "${_build_mate::1}" == "t" ]]; then
   _opts+=(-Dmate=enabled)
-  pkgname+=("vala-panel-appmenu-mate${_pkgtype:-}")
+  pkgname+=("vala-panel-appmenu-mate")
   depends+=('mate-panel')
-  _depends_meta+=("vala-panel-appmenu-mate${_pkgtype:-}")
+  _depends_meta+=("vala-panel-appmenu-mate")
 fi
 
 if [[ "${_build_xfce::1}" == "t" ]]; then
   _opts+=(-Dxfce=enabled)
-  pkgname+=("vala-panel-appmenu-xfce${_pkgtype:-}")
+  pkgname+=("vala-panel-appmenu-xfce")
   depends+=('xfce4-panel' 'xfconf')
-  _depends_meta+=("vala-panel-appmenu-xfce${_pkgtype:-}")
+  _depends_meta+=("vala-panel-appmenu-xfce")
 fi
 
 if [[ "${_build_vala::1}" == "t" ]]; then
   _opts+=(-Dvalapanel=enabled)
-  pkgname+=("vala-panel-appmenu-valapanel${_pkgtype:-}")
-  depends+=("vala-panel${_pkgtype:-}")
-  _depends_meta+=("vala-panel-appmenu-valapanel${_pkgtype:-}")
+  pkgname+=("vala-panel-appmenu-valapanel")
+  depends+=("vala-panel")
+  _depends_meta+=("vala-panel-appmenu-valapanel")
 fi
 
 if [[ "${_build_budgie::1}" == "t" ]]; then
   _opts+=(-Dbudgie=enabled)
-  pkgname+=("vala-panel-appmenu-budgie${_pkgtype:-}")
+  pkgname+=("vala-panel-appmenu-budgie")
   depends+=('budgie-desktop')
-  _depends_meta+=("vala-panel-appmenu-budgie${_pkgtype:-}")
+  _depends_meta+=("vala-panel-appmenu-budgie")
 fi
 
-for _p in "${pkgname[@]}"; do
-  if [ -z "${_pkgtype:-}" ]; then
-    _conflicts=(
-      'appmenu-glib-translator-git'
-      'vala-panel-git'
-      'vala-panel-appmenu-budgie-git'
-      'vala-panel-appmenu-common-git'
-      'vala-panel-appmenu-jayatana-git'
-      'vala-panel-appmenu-locale-git'
-      'vala-panel-appmenu-mate-git'
-      'vala-panel-appmenu-registrar-git'
-      'vala-panel-appmenu-valapanel-git'
-      'vala-panel-appmenu-xfce-git'
-    )
-  else
-    _conflicts=(
-      'appmenu-glib-translator'
-      'vala-panel'
-      'vala-panel-appmenu-budgie'
-      'vala-panel-appmenu-common'
-      'vala-panel-appmenu-jayatana'
-      'vala-panel-appmenu-locale'
-      'vala-panel-appmenu-mate'
-      'vala-panel-appmenu-registrar'
-      'vala-panel-appmenu-valapanel'
-      'vala-panel-appmenu-xfce'
-    )
-  fi
+_conflicts=(
+  'appmenu-glib-translator-git'
+  'vala-panel-git'
+  'vala-panel-appmenu-budgie-git'
+  'vala-panel-appmenu-common-git'
+  'vala-panel-appmenu-jayatana-git'
+  'vala-panel-appmenu-locale-git'
+  'vala-panel-appmenu-mate-git'
+  'vala-panel-appmenu-registrar-git'
+  'vala-panel-appmenu-valapanel-git'
+  'vala-panel-appmenu-xfce-git'
+)
 
-  eval "package_$_p() {
-    $(declare -f "_package_${_p#${_pkgtype:-}}")
-    _package_${_p#${_pkgtype:-}}
+for _p in "${pkgname[@]}"; do
+  eval "package_${_p}() {
+    $(declare -f "_package_${_p}")
+    _package_${_p}
     conflicts+=(${_conflicts[@]})
 
     chmod -R u+rwX,go+rX,go-w \"\$pkgdir\"
   }"
 done
-
-# update version
-_update_version() {
-  : ${_pkgver:=${pkgver%%.r*}}
-
-  if [[ "${_autoupdate::1}" != "t" ]]; then
-    return
-  fi
-
-  local _response=$(curl -Ssf "$url/-/tags?format=atom")
-  local _tag=$(
-    printf '%s' "$_response" \
-      | grep '"https://.*/tags/.*"' \
-      | sed -E 's@^.*/tags/(.*)".*$@\1@' \
-      | grep -Ev '[a-z]{2}' | sort -rV | head -1
-  )
-  local _pkgver_new="${_tag#v}"
-
-  # update _pkgver
-  if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
-    _pkgver="${_pkgver_new:?}"
-  fi
-}
-
-# execute
-_main_package
