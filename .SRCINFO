@@ -1,15 +1,15 @@
 pkgbase = optivorbis
 	pkgdesc = Application for lossless, format-preserving, two-pass optimization and repair of Vorbis data
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://optivorbis.github.io/OptiVorbis/
 	arch = i686
 	arch = x86_64
-	license = AGPL3
-	license = BSD
-	makedepends = rust
+	license = AGPL-3.0-or-later
+	license = BSD-2-Clause
+	makedepends = cargo
 	depends = gcc-libs
-	source = optivorbis-0.2.0-src.tar.gz::https://github.com/OptiVorbis/OptiVorbis/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 9ed5f9ff40cdadaa6fbacc4f357f3b5db76f65f34d51e6ac71b01be63135bf96
+	source = optivorbis-0.3.0-src.tar.gz::https://github.com/OptiVorbis/OptiVorbis/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = f1069b35fa24c9b73abb9a28859b84ad0accf968b8892b7a7825decc6c316cd3
 
 pkgname = optivorbis
