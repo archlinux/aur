@@ -1,16 +1,16 @@
 # Maintainer: Your Name <your.email@example.com>
-pkgname=waves
+pkgname=origami-waves
 pkgver=1.16
 pkgrel=1
-pkgdesc="Waves: translate your pptx using ollama"
+pkgdesc="Origami Waves: translate your pptx using ollama"
 #arch=('x86_64')
 arch=('any')
-url="https://github.com/yourusername/my-clojure-project"
+url="https://github.com/hellonico/ocean-waves"
 license=('MIT')
 depends=('jdk-openjdk>=21')
 #makedepends=('clojure' 'deps-edn')
 #source=("https://github.com/yourusername/my-clojure-project/releases/download/v${pkgver}/my-clojure-project-${pkgver}.jar")
-source=("https://repository.hellonico.info/repository/hellonico/origami/wave/1.16/wave-1.16.jar")
+source=("https://repository.hellonico.info/repository/hellonico/origami/wave/${pkgver}/wave-${pkgver}.jar")
 sha256sums=('35e07a51950492080ee9dec8fd680d6d5dc756db616e28d061b3a795947cbeee')
 
 build() {
