@@ -1,6 +1,6 @@
 # Maintainer: instancer-kirik
 pkgname=varchiver
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="A variable archiver and github/aur release manager (serialize your variables first)"
 arch=('x86_64')
@@ -19,10 +19,10 @@ makedepends=(
     'python-pip'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=("ba85d826b5bb37679aa2a71ef25110166d9920203053a306192b322830a690a1")
+sha256sums=("fd3a2f2b09fe83e62a32ca2315acd8dd3f29332d645cdd2b84b8b49abf5c16e9")
 
 build() {
-    cd ..
+    cd "$srcdir/$pkgname-$pkgver"
     # Create and activate virtual environment
     python -m venv .venv
     source .venv/bin/activate
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-    cd ..
+    cd "$srcdir/$pkgname-$pkgver"
     # Install executable
     install -Dm755 dist/varchiver "$pkgdir/usr/bin/varchiver"
     
