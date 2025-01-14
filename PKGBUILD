@@ -1,64 +1,79 @@
+# Maintainer: envolution
+# Contributor: ferreum <code at ferreum de>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Ben <contrasutra@myrealbox.com>
-# Maintainer: ferreum <code at ferreum de>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 _pkgname=elinks
 pkgname=${_pkgname}-git
-pkgver=v0.17.0.r167.gdcc5d378
-pkgrel=2
+pkgver=0.18.0+r7367+g4b979b47e
+pkgrel=1
 pkgdesc="An advanced and well-established feature-rich text mode web browser. Git version, JavaScript disabled."
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url="https://github.com/rkd77/elinks"
 provides=(${_pkgname})
-license=('GPL')
 conflicts=(${_pkgname})
-depends=('bzip2' 'expat>=2.0' 'gpm>=1.20.4' 'openssl' 'curl' 'lua' 'libidn2' 'libsixel' 'tre' 'zlib')
-makedepends=('git')
-source=("git+https://github.com/rkd77/elinks#branch=master")
+source=("git+https://github.com/rkd77/elinks.git")
 md5sums=('SKIP')
+license=('GPL-2.0-only')
+depends=(
+  'glibc'
+  'brotli'
+  'bzip2'
+  'gpm'
+  'openssl'
+  'lua'
+  'libdom'
+  'libcss'
+  'libidn2'
+  'xz'
+  'libwapcaplet'
+  'expat'
+  'zlib'
+  'curl'
+  'tre'
+)
+makedepends=(
+  'git'
+  'meson'
+  'dblatex'
+  'xmlto'
+  'libiconv'
+  'gc'
+  'cmake'
+)
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_pkgname}"
+  _version=$(git tag --sort=-v:refname --list | grep '^v[0-9.]*$' | head -n1)
+  _commits=$(git rev-list --count HEAD)
+  _short_commit_hash=$(git rev-parse --short=9 HEAD)
+  echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
 }
 
 build() {
-  cd "${_pkgname}"
+  arch-meson \
+    "$_pkgname" \
+    build \
+    -D cgi=true \
+    -D true-color=true \
+    -D html-highlight=true \
+    -D bzlib=true \
+    -D brotli=true \
+    -D lzma=true \
+    -D luapkg=lua54 \
+    -D tre=true \
+    -D gemini=true \
+    -D reproducible=true \
+    -D source-date-epoch="$SOURCE_DATE_EPOCH"
 
-  # not needed when using autoreconf
-  #[ -x configure ] || sh autogen.sh
-
-  # autoreconf to allow compiling on arm (project's config is outdated (updated 2004)?)
-  autoreconf -ifv
-
-  ./configure --prefix=/usr --mandir=/usr/share/man \
-              --sysconfdir=/etc \
-              --with-luapkg=lua54 \
-              --with-zlib \
-              --without-x \
-              --without-spidermonkey \
-              --with-libcurl \
-              --with-libsixel \
-              --enable-cgi \
-              --enable-gemini \
-              --enable-leds \
-              --disable-smb \
-              --disable-sm-scripting \
-              --enable-256-colors \
-              --enable-html-highlight \
-              --enable-exmode
-  # need -j1 to disable parallelism, which fixes "ld: no input files" error
-  # see https://github.com/rkd77/elinks/issues/209
-  make -j1
+  meson compile -C build
 }
 
 package() {
-  cd "${_pkgname}"
-  make DESTDIR="$pkgdir" install
-  rm -f "$pkgdir/usr/share/locale/locale.alias"
+  meson install -C build --destdir="$pkgdir"
 }
-
-# vim:set sw=2 et:
+# vim:set ts=2 sw=2 et:

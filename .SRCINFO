@@ -1,28 +1,39 @@
 pkgbase = elinks-git
 	pkgdesc = An advanced and well-established feature-rich text mode web browser. Git version, JavaScript disabled.
-	pkgver = v0.17.0.r167.gdcc5d378
-	pkgrel = 2
+	pkgver = 0.18.0+r7367+g4b979b47e
+	pkgrel = 1
 	url = https://github.com/rkd77/elinks
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = git
+	makedepends = meson
+	makedepends = dblatex
+	makedepends = xmlto
+	makedepends = libiconv
+	makedepends = gc
+	makedepends = cmake
+	depends = glibc
+	depends = brotli
 	depends = bzip2
-	depends = expat>=2.0
-	depends = gpm>=1.20.4
+	depends = gpm
 	depends = openssl
-	depends = curl
 	depends = lua
+	depends = libdom
+	depends = libcss
 	depends = libidn2
-	depends = libsixel
-	depends = tre
+	depends = xz
+	depends = libwapcaplet
+	depends = expat
 	depends = zlib
+	depends = curl
+	depends = tre
 	provides = elinks
 	conflicts = elinks
-	source = git+https://github.com/rkd77/elinks#branch=master
+	source = git+https://github.com/rkd77/elinks.git
 	md5sums = SKIP
 
 pkgname = elinks-git

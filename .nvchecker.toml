@@ -1,0 +1,8 @@
+[elinks-git]
+source="github-graphql"
+github="rkd77/elinks"
+prefix="v"
+use_latest_release=true
+use_commit_number=true
+use_commit_hash=true
+
