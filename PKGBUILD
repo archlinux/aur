@@ -2,8 +2,8 @@
 # https://github.com/adamperkowski/PKGBUILDs
 _pkgname=memegen
 pkgname=memegen-git
-pkgver=1.r0.g8cd7c18
-pkgrel=2
+pkgver=r8cd7c18
+pkgrel=1
 pkgdesc='A posix shell script to generate memes from the command line'
 arch=('any')
 url="https://github.com/Vendicated/$_pkgname"
@@ -15,7 +15,7 @@ depends=('bash' 'imagemagick' 'ttf-ms-fonts')
 
 pkgver() {
     cd "$_pkgname"
-    echo "1.r$(git describe --all --long | sed 's/-/./g' | cut -d '.' -f 2-)"
+    echo "r$(git rev-parse --short HEAD)"
 }
 
 package() {
