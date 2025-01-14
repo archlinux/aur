@@ -5,10 +5,10 @@ pkgrel=1
 pkgdesc="A Systray Utility for Checking Arch Linux Updates and Installing Them"
 arch=('x86_64')
 url="https://github.com/silverhadch/arch-update-helper"
-license=('GPL-3.0-or-later')  # Korrigierter Lizenz-String
+license=('GPL-3.0-or-later')  # Corrected license string
 depends=('qt6-base')          # Add runtime dependencies here
 makedepends=('git' 'cmake')   # Dependencies needed at build time
-source=("git+${url}.git")
+source=("git+${url}.git#tag=v.2.0.0")  # Reference to specific tag
 sha256sums=('SKIP')
 
 build() {
@@ -16,7 +16,7 @@ build() {
 
     # Create the build directory and build the binary
     mkdir -p build
-    cmake -Bbuild -H. 
+    cmake -Bbuild -H.
     cmake --build build
 }
 

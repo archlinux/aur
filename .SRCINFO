@@ -8,7 +8,7 @@ pkgbase = arch-update-helper
 	makedepends = git
 	makedepends = cmake
 	depends = qt6-base
-	source = git+https://github.com/silverhadch/arch-update-helper.git
+	source = git+https://github.com/silverhadch/arch-update-helper.git#tag=v.2.0.0
 	sha256sums = SKIP
 
 pkgname = arch-update-helper
