@@ -1,0 +1,15 @@
+pkgbase = singletask
+	pkgdesc = A compact, single-task-focused application for managing tasks and thoughts.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://topheim.com
+	arch = any
+	license = MIT
+	depends = python
+	depends = tk
+	source = singletask.py
+	source = singletask.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = singletask
