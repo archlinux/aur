@@ -1,14 +1,14 @@
-pkgbase = arch-update-helper
+pkgbase = arch-update-helper-git
 	pkgdesc = A Systray Utility for Checking Arch Linux Updates and Installing Them
-	pkgver = 1.0.3
+	pkgver = 9661de6
 	pkgrel = 1
 	url = https://github.com/silverhadch/arch-update-helper
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = cmake
 	depends = qt6-base
-	depends = cmake
 	source = git+https://github.com/silverhadch/arch-update-helper.git
 	sha256sums = SKIP
 
-pkgname = arch-update-helper
+pkgname = arch-update-helper-git
