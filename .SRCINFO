@@ -18,7 +18,6 @@ pkgbase = python-faraday-client-git
 	depends = python-tqdm
 	depends = pygobject-devel
 	depends = python-html2text
-	depends = python-future
 	depends = python-xlsxwriter
 	depends = python-cairocffi
 	depends = python-cairo
@@ -27,4 +26,3 @@ pkgbase = python-faraday-client-git
 	sha256sums = SKIP
 
 pkgname = python-faraday-client-git
-
