@@ -1,5 +1,6 @@
 # Contributor: Andrew Panchenko <panchenkoac at gmail>
-# Maintainer: ava1ar <mail(at)ava1ar(dot)me>
+# Contributor: ava1ar <mail(at)ava1ar(dot)me>
+# Maintainer: Self Denial <selfdenial@pm.me>
 
 pkgname=qmmp-plugin-pack
 pkgver=2.2.1
