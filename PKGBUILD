@@ -13,11 +13,12 @@ depends=('gtk4' 'gtk4-layer-shell')
 makedepends=('cargo' 'rust')
 
 # Define sources and checksums for both bin and git versions
-source=(
-    "git+https://github.com/skxxtz/sherlock.git"
-    "https://github.com/skxxtz/sherlock/releases/download/v${pkgver}/sherlock-v${pkgver}-bin-linux-x86_64.tar.gz"
-)
-
+source=()
+if [[ "$pkgname" == "sherlock-launcher-git" ]]; then
+    source+=("git+https://github.com/skxxtz/sherlock.git")
+elif [[ "$pkgname" == "sherlock-launcher-bin" ]]; then
+    source+=("https://github.com/skxxtz/sherlock/releases/download/v${pkgver}/sherlock-v${pkgver}-bin-linux-x86_64.tar.gz")
+fi
 sha256sums=('SKIP' 
             'SKIP') 
 

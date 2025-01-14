@@ -10,7 +10,6 @@ pkgbase = sherlock-launcher
 	depends = gtk4
 	depends = gtk4-layer-shell
 	source = git+https://github.com/skxxtz/sherlock.git
-	source = https://github.com/skxxtz/sherlock/releases/download/v0.1.0/sherlock-v0.1.0-bin-linux-x86_64.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
 
