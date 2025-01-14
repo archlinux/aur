@@ -1,0 +1,27 @@
+pkgbase = python-trie
+	pkgdesc = Python library which implements the Ethereum Trie structure.
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/ethereum/py-trie
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-hypothesis
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-eth-hash
+	depends = python-eth-typing
+	depends = python-eth-utils
+	depends = python-hexbytes
+	depends = python-rlp
+	depends = python-sortedcontainers
+	source = git+https://github.com/ethereum/py-trie.git#tag=v3.0.1
+	source = git+https://github.com/ethereum/tests.git
+	sha512sums = d1eed182f24ffadd05f725278f395841f9fa84cad92e3375511771afeffa97d5abdb29de4af1cbc20cd9fbc9ada56d5256f808ebfcfdae1a25ffcb600b83c3a1
+	sha512sums = SKIP
+
+pkgname = python-trie

@@ -1,0 +1,44 @@
+# Maintainer: Xeonacid <h.dwwwwww@gmail.com>
+
+_name=trie
+pkgname=python-${_name}
+pkgver=3.0.1
+pkgrel=1
+pkgdesc="Python library which implements the Ethereum Trie structure."
+arch=(any)
+url="https://github.com/ethereum/py-trie"
+license=(MIT)
+depends=(python python-eth-hash python-eth-typing python-eth-utils python-hexbytes python-rlp python-sortedcontainers)
+makedepends=(git python-build python-installer python-setuptools python-wheel)
+checkdepends=(python-pytest python-hypothesis)
+source=(git+$url.git#tag=v$pkgver
+        git+https://github.com/ethereum/tests.git)
+sha512sums=('d1eed182f24ffadd05f725278f395841f9fa84cad92e3375511771afeffa97d5abdb29de4af1cbc20cd9fbc9ada56d5256f808ebfcfdae1a25ffcb600b83c3a1'
+            'SKIP')
+
+prepare() {
+  cd py-trie
+  git config --global protocol.file.allow always
+  git submodule init fixtures
+  git config submodule.fixtures.url ../tests
+  git submodule update fixtures
+}
+
+build() {
+  cd py-trie
+  python -m build --wheel --no-isolation
+}
+
+check(){
+  cd py-trie
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest -vv --showlocals tests/
+}
+
+package() {
+  cd py-trie
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+}
