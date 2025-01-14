@@ -4,7 +4,7 @@ _model="sc-p5300" # -ww
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Epson inkjet printer driver (SC-P5300 Series)"
+pkgdesc="Epson inkjet printer driver (SC-P5300)" # Series
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:Epson End User Software License Agreement')
