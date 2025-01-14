@@ -1,0 +1,14 @@
+pkgbase = epson-inkjet-printer-sc-t3400t5400
+	pkgdesc = Epson inkjet printer driver (SC-T3400, SC-T5400)
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/30/78/de8fcc8a3bcfbaff470970d21f227a71583cb923/epson-sc-t3400t5400-ww-1.0.3-1.src.rpm
+	sha256sums = b9ae96b23af0f0cd49fd6ac595ca2b7b725aa6290bd45f2d136268c6803a8049
+
+pkgname = epson-inkjet-printer-sc-t3400t5400
