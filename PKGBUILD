@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-chailove
 pkgname=$_pkgname-git
-pkgver=1.3.0.r0.gfecf7da
+pkgver=1.3.0.r5.g2cb3cab
 pkgrel=1
 pkgdesc="ChaiScript core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -17,7 +17,7 @@ source=(
 	'ChaiScript_Extras::git+https://github.com/ChaiScript/ChaiScript_Extras.git'
 	'libretro-common::git+https://github.com/libretro/libretro-common.git'
 	'libretro-deps::git+https://github.com/libretro/libretro-deps.git'
-	'physfs::git+https://github.com/icculus/physfs.git'
+	'libretro-physfs::git+https://github.com/RobLoach/physfs.git'
 	'random::git+https://github.com/effolkronium/random.git'
 	'sdl-libretro::git+https://github.com/libretro/sdl-libretro.git'
 	'SDL_tty::git+https://github.com/Grumbel/SDL_tty.git'
@@ -49,7 +49,7 @@ prepare() {
 	git config submodule.vendor/ChaiScript_Extras.url ../ChaiScript_Extras
 	git config submodule.vendor/libretro-common.url ../libretro-common
 	git config submodule.vendor/libretro-deps.url ../libretro-deps
-	git config submodule.vendor/physfs.url ../physfs
+	git config submodule.vendor/physfs-libretro.url ../libretro-physfs
 	git config submodule.vendor/random.url ../random
 	git config submodule.vendor/sdl-libretro.url ../sdl-libretro
 	git config submodule.vendor/SDL_tty.url ../SDL_tty
