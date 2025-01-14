@@ -1,13 +1,13 @@
 # Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=n2-git
-pkgver=0.1.0.r488.668d9ab
+pkgver=0.1.0.r533.9c83053
 pkgrel=1
 pkgdesc='n2 ("into"), a ninja compatible build system'
 arch=('x86_64' 'aarch64')
 url="https://github.com/evmar/n2"
 license=("Apache-2.0")
-makedepends=(git rust coreutils sed gcc)
+makedepends=(git cargo coreutils sed gcc)
 options=(!lto)
 depends=(gcc-libs glibc)
 conflicts=("${pkgname%-git}")
@@ -18,7 +18,7 @@ sha256sums=(SKIP)
 
 prepare() {
   cd "${_git_folder}"
-  cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 pkgver() {
@@ -31,12 +31,12 @@ pkgver() {
 build() {
   cd "${_git_folder}"
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 check() {
   cd "${_git_folder}"
-  cargo test --frozen --all-features
+  cargo test --frozen
 }
 
 package() {
