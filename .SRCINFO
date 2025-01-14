@@ -7,7 +7,7 @@ pkgbase = yaml2json
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = yaml2json::git+https://github.com/bronze1man/yaml2json.git#tag=v1.3.2
-	sha256sums = 60cde1335a51366b3d4f24b3e8fea258cdbbda323e41f206e8b4c9875ec1138d
+	source = yaml2json::git+https://github.com/bronze1man/yaml2json.git#tag=v1.3.4
+	sha256sums = b09254eb06fee748db9251f7169e6c6ba887fb543a04b68d7a2e4d10472a2f37
 
 pkgname = yaml2json

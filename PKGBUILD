@@ -1,15 +1,15 @@
 # Maintainer: Allen Zhong <pdev@zhoal.pw>
 pkgname=yaml2json
-pkgver=1.3.2
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Transform yaml string to json string without the type infomation."
 url="https://github.com/bronze1man/yaml2json"
 license=('MIT')
 arch=('x86_64')
 makedepends=('go' 'git')
-sha256sums=('60cde1335a51366b3d4f24b3e8fea258cdbbda323e41f206e8b4c9875ec1138d')
+sha256sums=('b09254eb06fee748db9251f7169e6c6ba887fb543a04b68d7a2e4d10472a2f37')
 source=(
-    $pkgname::git+https://github.com/bronze1man/yaml2json.git#tag=v1.3.2
+    $pkgname::git+https://github.com/bronze1man/yaml2json.git#tag=v1.3.4
 )
 
 pkgver() {
