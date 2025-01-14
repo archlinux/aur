@@ -1,11 +1,11 @@
 pkgbase = ed-odyssey-materials-helper-bin
 	pkgdesc = Elite Dangerous Odyssey Materials Helper
-	pkgver = 2.133
+	pkgver = 2.134
 	pkgrel = 1
 	url = https://github.com/jixxed/ed-odyssey-materials-helper
 	arch = x86_64
 	license = GPL-3.0
-	source = https://github.com/jixxed/ed-odyssey-materials-helper/releases/download/2.133/Elite.Dangerous.Odyssey.Materials.Helper-2.133.portable.linux.zip
+	source = https://github.com/jixxed/ed-odyssey-materials-helper/releases/download/2.134/Elite.Dangerous.Odyssey.Materials.Helper-2.134.portable.linux.zip
 	source = ed-odyssey-materials-helper-bin.desktop
 	source = icon.png
 	sha256sums = SKIP
