@@ -1,0 +1,12 @@
+pkgbase = waves
+	pkgdesc = Waves: translate your pptx using ollama
+	pkgver = 1.16
+	pkgrel = 1
+	url = https://github.com/yourusername/my-clojure-project
+	arch = any
+	license = MIT
+	depends = jdk-openjdk>=21
+	source = https://repository.hellonico.info/repository/hellonico/origami/wave/1.16/wave-1.16.jar
+	sha256sums = 35e07a51950492080ee9dec8fd680d6d5dc756db616e28d061b3a795947cbeee
+
+pkgname = waves
