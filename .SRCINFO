@@ -1,6 +1,6 @@
 pkgbase = libodb-mssql
 	pkgdesc = The ODB mssql runtime library
-	pkgver = 2.5.0b27
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://www.codesynthesis.com/products/odb/
 	arch = i686
@@ -10,5 +10,7 @@ pkgbase = libodb-mssql
 	depends = unixodbc
 	depends = libodb
 	options = !libtool
+	source = https://www.codesynthesis.com/download/odb/2.5.0/libodb-mssql-2.5.0.tar.gz
+	sha256sums = eefa34f8b174629b06fced38c9b5b5da7545c03bcb56e328e98bd79b325bb43f
 
 pkgname = libodb-mssql
