@@ -19,7 +19,7 @@ makedepends=(
     'python-pip'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=()
+sha256sums=("dd66c4602b9da670333d2355e4e47c28e9a64da722b0a2dbb31b500ed87fc43a")
 
 build() {
     cd ..

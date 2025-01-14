@@ -14,5 +14,6 @@ pkgbase = varchiver
 	depends = python-pyqt6-webengine
 	depends = python-uv
 	source = varchiver-0.3.6.tar.gz::https://github.com/instancer-kirik/varchiver/archive/v0.3.6.tar.gz
+	sha256sums = dd66c4602b9da670333d2355e4e47c28e9a64da722b0a2dbb31b500ed87fc43a
 
 pkgname = varchiver
