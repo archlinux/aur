@@ -1,6 +1,6 @@
 pkgbase = emu80-qt5
 	pkgdesc = Emulator for bunch of Soviet PCs
-	pkgver = 4.0.498
+	pkgver = 4.0.501
 	pkgrel = 1
 	url = https://emu80.org/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = emu80-qt5
 	depends = emu80-base
 	depends = qt5-base
 	depends = qt5-multimedia
-	source = https://github.com/vpyk/emu80v4/archive/refs/tags/v4.0.498.tar.gz
+	source = https://github.com/vpyk/emu80v4/archive/refs/tags/v4.0.501.tar.gz
 	source = shortcut.desktop
-	sha256sums = dc9eb0ba994be04d85ec7fb3f4bdc37569437762c3757ee3a6b3fcaad1df91b7
+	sha256sums = e6c2f7477ba0a407a4f8fa1e63c8975a70634f0ac3b2bfe5aa6808ea1da197d8
 	sha256sums = e155ef2e380953f6b50b4b93240546e503c429a714fdb30cddb012c7cf5cac27
 
 pkgname = emu80-qt5
