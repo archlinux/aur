@@ -1,6 +1,6 @@
 pkgbase = libodb-mysql
 	pkgdesc = The ODB MySQL runtime library
-	pkgver = 2.5.0b27
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://www.codesynthesis.com/products/odb/
 	arch = i686
@@ -10,5 +10,7 @@ pkgbase = libodb-mysql
 	depends = mariadb-libs
 	depends = libodb
 	options = !libtool
+	source = https://www.codesynthesis.com/download/odb/2.5.0/libodb-mysql-2.5.0.tar.gz
+	sha256sums = 456bc2624b232a1066cc22503a19b0492d17b5bd42eef3b0dba7ea85c78e705f
 
 pkgname = libodb-mysql
