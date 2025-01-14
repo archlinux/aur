@@ -1,18 +1,33 @@
-# Maintainer: Travis Jacobs <traviswjacobs@gmail.com>
+# Maintainer: Xeonacid <h.dwwwwww@gmail.com>
+
 pkgname=vyper
-pkgver=0.1.0_beta.4
-_vername=0.1.0-beta.4
+pkgver=0.4.0
 pkgrel=2
 pkgdesc="Pythonic Smart Contract Language for the EVM"
-arch=('x86_64')
-url="https://github.com/ethereum/vyper"
-license=('MIT')
-depends=('python' 'python-pycryptodome' 'python-setuptools')
-makedepends=('python-setuptools')
-source=("https://github.com/ethereum/$pkgname/archive/v$_vername.tar.gz")
-md5sums=('d74171e4ed78a1482320f3a8158e5eaa')
+arch=(any)
+url="https://github.com/vyperlang/$pkgname"
+license=(Apache-2.0)
+depends=(python python-cbor2 python-asttokens python-pycryptodome python-lark-parser python-packaging python-importlib-metadata)
+makedepends=(git python-build python-installer python-setuptools python-wheel python-pytest-runner python-setuptools-scm python-sphinx python-sphinx-copybutton)
+source=(git+https://github.com/vyperlang/vyper.git#tag=v$pkgver)
+sha512sums=('3ad87fcf32d27b78d48dc6748d6efdf790960ff5f183005d58cdb36e87fb53cb4f76ee8e2a7571a1c2b51add52a8ddbd865386fc71c7760f7ea9caf061e8c761')
+
+prepare() {
+  cd $pkgname
+  sed -i 's/setuptools_scm>=7.1.0,<8.0.0/setuptools_scm/' setup.py
+}
+
+build() {
+  cd $pkgname
+  python -m build --wheel --no-isolation
+  make -C docs man
+}
 
 package() {
-    cd "$pkgname-$_vername"
-    python setup.py install --root="$pkgdir/" --optimize=1
+  cd $pkgname
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  rm -f "$pkgdir/usr/vyper_git_commithash.txt"
+  install -Dm644 docs/_build/man/vyper.1 -t "$pkgdir/usr/share/man/man1"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
