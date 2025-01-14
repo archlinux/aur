@@ -1,7 +1,7 @@
 pkgbase = walker-bin
 license = MIT
 pkgdesc = wayland application runner
-pkgver = 0.12.0
+pkgver = 0.12.1
 pkgrel = 1
 depends = gtk4-layer-shell
 depends = libvips
@@ -12,7 +12,7 @@ url = https://github.com/abenz1267/walker
 arch = x86_64
 provides = walker
 conflicts = walker
-source_x86_64 = https://github.com/abenz1267/walker/releases/download/v0.12.0/walker_.0.12.0_Linux_x86_64.tar.gz
-sha256sums_x86_64 = 61c617cc6f5a905041454f7ca235ee0d818a10634629d16f1ec73c03a8a47d90
+source_x86_64 = https://github.com/abenz1267/walker/releases/download/v0.12.1/walker_.0.12.1_Linux_x86_64.tar.gz
+sha256sums_x86_64 = 5f585b0452924e20bf75141078524720324c5531a20a3ce922706b9233adde33
 
 pkgname = walker-bin
