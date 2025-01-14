@@ -2,8 +2,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-spacy-bin
 _pkgname=html2image
-pkgver=3.8.3
-pkgrel=2
+pkgver=3.8.4
+pkgrel=1
 pkgdesc="Industrial-strength Natural Language Processing (NLP) in Python"
 arch=('x86_64')
 url="https://github.com/explosion/spaCy"
@@ -29,7 +29,7 @@ depends=(
   'python-wasabi'
   'python-weasel')
 source=("https://github.com/explosion/spaCy/releases/download/release-v${pkgver}/spacy-${pkgver}-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl")
-md5sums=('5a1107cd6688653cbf74458cd1540a01')
+md5sums=('6d54fb4a11753224c5de5927716ac376')
 
 package() {
   python -m installer --destdir="$pkgdir" "spacy-${pkgver}-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
