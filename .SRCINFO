@@ -1,0 +1,14 @@
+pkgbase = epson-inkjet-printer-sc-tx200-ww
+	pkgdesc = Epson inkjet printer driver (SC-T3200, SC-T3270, SC-T3280, SC-T5200, SC-T5270, SC-T5280, SC-T7200, SC-T7270, SC-T7280, SC-T5200D, SC-T5270D, SC-T5280D, SC-T7200D, SC-T7270D, SC-T7280D)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/30/81/163c2e861578be3a92657f2063296ede51c683fc/epson-sc-tx200-ww-1.0.1-1.src.rpm
+	sha256sums = 843858a716822ee3f04f7a69ebd75733b488469732d4f340ef724b96b7690a6b
+
+pkgname = epson-inkjet-printer-sc-tx200-ww
