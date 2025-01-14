@@ -1,7 +1,7 @@
 pkgbase = gsettings-desktop-schemas-git
 	pkgdesc = GSettings schemas for GNOME - git latest
 	pkgver = 48.alpha+r1770+gcc8c6237a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas
 	arch = any
 	license = LGPL-2.1-or-later
@@ -12,10 +12,6 @@ pkgbase = gsettings-desktop-schemas-git
 	makedepends = glib2-devel
 	makedepends = gobject-introspection
 	makedepends = meson
-	provides = gsettings-desktop-schemas=48.0
-	provides = gsettings-system-schemas=48.0
-	conflicts = gsettings-desktop-schemas
-	conflicts = gsettings-system-schemas
 	source = git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git
 	b2sums = SKIP
 
@@ -25,7 +21,11 @@ pkgname = gsettings-desktop-schemas-git
 	depends = adobe-source-code-pro-fonts
 	depends = cantarell-fonts
 	depends = dconf
+	provides = gsettings-desktop-schemas=48.0
+	conflicts = gsettings-desktop-schemas
 
 pkgname = gsettings-system-schemas-git
 	pkgdesc = GSettings schemas for GNOME - git latest system components
 	depends = dconf
+	provides = gsettings-system-schemas=48.0
+	conflicts = gsettings-system-schemas

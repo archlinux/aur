@@ -15,17 +15,7 @@ _pkgbase=gsettings-desktop-schemas
 pkgver=48.alpha+r1770+gcc8c6237a
 _pkgver=${pkgver%%+*}                                               #strip off git +part
 _pkgver=$(echo "$_pkgver" | sed -E 's/(\.|^)[^0-9]+(\.|$)/\10\2/g') #replace non-numeric characters (rc, beta, alpha) with 0
-pkgrel=1
-
-provides=(
-  gsettings-desktop-schemas=$_pkgver
-  gsettings-system-schemas=$_pkgver
-)
-
-conflicts=(
-  gsettings-desktop-schemas
-  gsettings-system-schemas
-)
+pkgrel=2
 
 pkgdesc="GSettings schemas for GNOME - git latest"
 url="https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas"
@@ -73,6 +63,12 @@ _pick() {
 }
 
 package_gsettings-desktop-schemas-git() {
+  provides+=(
+    gsettings-desktop-schemas=$_pkgver
+  )
+  conflicts=(
+    gsettings-desktop-schemas
+  )
   pkgdesc+=" desktop components"
   depends=(
     "gsettings-system-schemas=$_pkgver"
@@ -89,6 +85,12 @@ package_gsettings-desktop-schemas-git() {
 }
 
 package_gsettings-system-schemas-git() {
+  provides=(
+    gsettings-system-schemas=$_pkgver
+  )
+  conflicts=(
+    gsettings-system-schemas
+  )
   pkgdesc+=" system components"
   depends=(dconf)
 
