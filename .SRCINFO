@@ -1,0 +1,18 @@
+pkgbase = khiops-covisualization-bin
+	pkgdesc = The Electron application that encapsulates Khiops Covisualization.(Prebuilt version.Use system-wide electron)
+	pkgver = 11.1.2
+	pkgrel = 1
+	url = https://github.com/KhiopsML/kc-electron
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = electron33
+	conflicts = khiops-covisualization
+	options = !emptydirs
+	source = khiops-covisualization-11.1.2.deb::https://github.com/KhiopsML/kc-electron/releases/download/v11.1.2/khiops-covisualization_11.1.2_amd64.deb
+	source = LICENSE-11.1.2::https://raw.githubusercontent.com/KhiopsML/kc-electron/v11.1.2/LICENSE
+	source = khiops-covisualization.sh
+	sha256sums = dd05f831092ee06e883b21617201454be97abb8cf98a088d39b11e1d9f408403
+	sha256sums = 21c50cd52b1dc529cad93ad16720ab453012c21f01d85d3761da9e709e57dc00
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = khiops-covisualization-bin
