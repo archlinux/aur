@@ -1,7 +1,7 @@
 pkgbase = jdmacroplayer
 	pkgdesc = Wayland compatible macro player for Linux
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jakobdev.codeberg.page/work/app/jdMacroPlayer
 	arch = any
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = jdmacroplayer
 	makedepends = python-wheel
 	depends = python
 	depends = python-pyqt6
+	depends = python-jeepney
 	depends = polkit
 	depends = ydotool
 	optdepends = python-setproctitle: Use correct process name

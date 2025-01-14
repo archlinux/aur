@@ -1,11 +1,11 @@
 pkgname=jdmacroplayer
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland compatible macro player for Linux"
 arch=("any")
 url="https://jakobdev.codeberg.page/work/app/jdMacroPlayer"
 license=("GPL3")
-depends=("python" "python-pyqt6" "polkit" "ydotool")
+depends=("python" "python-pyqt6" "python-jeepney" "polkit" "ydotool")
 makedepends=("qt5-tools" "python-build" "python-setuptools" "python-installer" "python-wheel")
 optdepends=("python-setproctitle: Use correct process name")
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/JakobDev/jdMacroPlayer/archive/${pkgver}.tar.gz")
