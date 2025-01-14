@@ -1,7 +1,7 @@
 pkgbase = servo-nightly-bin
 	pkgdesc = embeddable, independent, memory-safe, modular, parallel web rendering engine
 	pkgver = 20250114
-	pkgrel = 1
+	pkgrel = 2
 	url = https://servo.org
 	arch = x86_64
 	license = MPL-2.0

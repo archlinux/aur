@@ -8,7 +8,7 @@
 pkgname=servo-nightly-bin
 _pkgname=servo
 pkgver=20250114
-pkgrel=1
+pkgrel=2
 pkgdesc='embeddable, independent, memory-safe, modular, parallel web rendering engine'
 arch=(x86_64)
 url=https://servo.org
