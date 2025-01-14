@@ -2,7 +2,7 @@
 pkgname=varchiver
 pkgver=0.3.6
 pkgrel=1
-pkgdesc="Advanced Archive Management And Git/AUR Release Tool with modern UI"
+pkgdesc="A simple archive manager for Linux"
 arch=('x86_64')
 url="https://github.com/instancer-kirik/varchiver"
 license=('GPL3')
