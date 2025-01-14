@@ -42,4 +42,5 @@ package() {
 	bpkg install libstudxml
 
 	rm ${pkgdir}/usr/lib/pkgconfig/libstudxml.static.pc
+	install -Dm644 "$srcdir"/$pkgname-$pkgver/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
