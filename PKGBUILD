@@ -19,8 +19,7 @@ if [[ "$pkgname" == "sherlock-launcher-git" ]]; then
 elif [[ "$pkgname" == "sherlock-launcher-bin" ]]; then
     source+=("https://github.com/skxxtz/sherlock/releases/download/v${pkgver}/sherlock-v${pkgver}-bin-linux-x86_64.tar.gz")
 fi
-sha256sums=('SKIP' 
-            'SKIP') 
+sha256sums=('SKIP') 
 
 # Build function for Git version
 build() {
