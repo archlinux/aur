@@ -6,18 +6,18 @@
 
 _pkgname=rtorrent
 pkgname=rtorrent-ipv6
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc='Ncurses BitTorrent client based on libTorrent, with IPv6 patch'
 url='http://rakshasa.github.io/rtorrent/'
 license=('GPL-2.0-only')
 arch=('x86_64')
-depends=('libtorrent-ipv6=0.15.0' 'tinyxml2')
+depends=("libtorrent-ipv6=$pkgver" "tinyxml2")
 makedepends=('git')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("$_pkgname::git+https://github.com/rakshasa/${_pkgname}.git#tag=v0.15.0")
-sha256sums=('e59e8fdb70acad0b94dc5fcaff88533e9e42cd68c0d077b90b8508c5dbccac46')
+source=("$_pkgname::git+https://github.com/rakshasa/${_pkgname}.git#tag=v$pkgver")
+sha256sums=('6d09484a12dc8699749daf29e2461990e0a1134e41e741e90aca39ed720cad3f')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    export CXXFLAGS="${CXXFLAGS} -std=c++14 -fno-strict-aliasing"
+    export CXXFLAGS="${CXXFLAGS} -std=c++17 -fno-strict-aliasing"
     ./configure \
         --prefix=/usr \
         --disable-debug \
