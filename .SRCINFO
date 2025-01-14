@@ -1,0 +1,15 @@
+pkgbase = epson-inkjet-printer-stylus-pro-7890-9890-series
+	pkgdesc = Epson inkjet printer driver (Stylus Pro 7890, 7908, 9890, 9908)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
+	source = https://download.ebz.epson.net/dsc/f/01/00/01/78/81/93325244c86bb1f7510265599bb9faa8d1fbccec/epson-stylus-pro-7890-9890-series-1.1.0-1lsb3.2.src.rpm
+	md5sums = acf925a01aa08b1790b5b55ea463e554
+	sha256sums = 5c7704fb3f42014cb38db70013132056be33dad3831f1dfcc385f1fcb24f2e61
+
+pkgname = epson-inkjet-printer-stylus-pro-7890-9890-series
