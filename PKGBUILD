@@ -5,23 +5,23 @@ pkgrel=1
 pkgdesc="A Systray Utility for Checking Arch Linux Updates and Installing Them"
 arch=('x86_64')
 url="https://github.com/silverhadch/arch-update-helper"
-license=('GPL3')
-depends=('qt6-base')  # Add dependencies like 'cmake' if needed
-makedepends=('git' 'cmake')
+license=('GPL-3.0-or-later')  # Korrigierter Lizenz-String
+depends=('qt6-base')          # Add runtime dependencies here
+makedepends=('git' 'cmake')   # Dependencies needed at build time
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname"
+    cd "$srcdir/arch-update-helper"
 
     # Create the build directory and build the binary
     mkdir -p build
-    cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release
+    cmake -Bbuild -H. 
     cmake --build build
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/arch-update-helper"
 
     # Install the binary
     install -Dm755 "build/Arch-Update-Helper" "$pkgdir/usr/bin/Arch-Update-Helper"
