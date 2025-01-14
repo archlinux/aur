@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=angular-electron-bin
 _pkgname="Angular Electron"
-pkgver=4.5.0
+pkgver=4.5.1
 _pkgver=12.0.0
 _electronversion=23
 pkgrel=1
-pkgdesc="Project intended to be used with SAP Service"
+pkgdesc="Project intended to be used with SAP Service.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/malacration/sap-front"
 license=('MIT')
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/malacration/sap-front/v${pkgver}/src/assets/icons/favicon.512x512.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0f1885638038d9f69fe2e6e7bf9a85c39322280082e2732e7ad6d23f41dd2ad0'
+sha256sums=('a9e09d257fec3945db56a47a46229ab17cb05a4f8562a3d56a46e658a750ea1a'
             'e88e5f0dc9ca423464c686e2100c7ff48e88474401f099086151a3b13be52c4b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
