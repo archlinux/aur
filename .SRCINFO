@@ -1,7 +1,7 @@
 pkgbase = speaker-keepalive
 	pkgdesc = Keep speakers with a shutdown timer alive
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Managor/speaker-keepalive
 	arch = any
 	license = MIT
