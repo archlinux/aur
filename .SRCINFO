@@ -1,6 +1,6 @@
 pkgbase = kicad-hq
 	pkgdesc = Electronic schematic and printed circuit board (PCB) design tools
-	pkgver = 8.0.7
+	pkgver = 8.0.8
 	pkgrel = 1
 	url = https://gitlab.com/kicad-hq/kicad
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = kicad-hq
 	makedepends = ngspice
 	makedepends = ninja
 	makedepends = protobuf
+	depends = cairo
 	depends = curl
 	depends = freetype2
 	depends = fontconfig
@@ -43,7 +44,7 @@ pkgbase = kicad-hq
 	conflicts = kicad-hq
 	conflicts = kicad
 	conflicts = kicad-bzr
-	source = kicad-8.0.7.tar.gz::https://gitlab.com/kicad-hq/kicad/-/archive/8.0.7/kicad-8.0.7.tar.gz
-	sha256sums = a306703b7c5deb23341b71f72a34102175b3f741fe472e152d8fdd9f4c778ef7
+	source = kicad-8.0.8.tar.gz::https://gitlab.com/kicad-hq/kicad/-/archive/8.0.8/kicad-8.0.8.tar.gz
+	sha256sums = 2b0fd8f18d380244c84a55ec7edbf04557c1bce468ad3cb162e4fb63ab90f453
 
 pkgname = kicad-hq
