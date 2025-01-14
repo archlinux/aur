@@ -1,6 +1,6 @@
 pkgbase = r-cvms
 	pkgdesc = Cross-Validation for Model Selection
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=cvms
 	arch = any
@@ -38,7 +38,7 @@ pkgbase = r-cvms
 	optdepends = r-rsvg
 	optdepends = r-testthat
 	optdepends = r-xpectr
-	source = https://cran.r-project.org/src/contrib/cvms_1.6.2.tar.gz
-	sha256sums = 0b938e836627e138daad57e8df3408d742851929dad7e27b9ba761abe21e8322
+	source = https://cran.r-project.org/src/contrib/cvms_1.6.3.tar.gz
+	sha256sums = 676f85777c639d38d9827dd68a89e75a77a64ce17e2745322f6d0db1431df419
 
 pkgname = r-cvms
