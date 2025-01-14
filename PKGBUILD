@@ -1,16 +1,22 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=stylelint-config-standard
-pkgver=36.0.0
+pkgver=37.0.0
 pkgrel=1
 pkgdesc='Standard shareable config for stylelint'
-arch=('any')
+arch=(any)
 url=https://github.com/stylelint/stylelint-config-standard
-license=('MIT')
-depends=('stylelint' 'stylelint-config-recommended')
-makedepends=('git' 'npm')
+license=(MIT)
+depends=(
+  stylelint
+  stylelint-config-recommended
+)
+makedepends=(
+  git
+  npm
+)
 source=("git+$url.git#tag=$pkgver")
-b2sums=('d1002f1e2ee514188b716686ce785a9b15b59a5956c16b34ee1606ff381db19278458bf844acad328d3b7b4627d8ffee12f2d3fb9b9357a1014c1cd3d33b1e40')
+b2sums=('e55a0fe0c60421ec82ed5eff92cfb51319a147db5e89341405138aa2ce2d0d29f7bdf42f6ee4b5618a2f12f1415fa13cba4a56990c54b5e5b9233f6a8e82a05a')
 
 prepare() {
   cd $pkgname
