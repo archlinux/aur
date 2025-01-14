@@ -1,0 +1,15 @@
+pkgbase = epson-inkjet-printer-stylus-pro-4880-series
+	pkgdesc = Epson inkjet printer driver (Stylus Pro 4880, 4880C)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
+	source = https://download.ebz.epson.net/dsc/f/01/00/01/58/24/5c4f48d4191dbd7ae8e26ca00782352929dbff94/epson-stylus-pro-4880-series-1.0.0-1lsb3.2.src.rpm
+	md5sums = b7ef3755ec4560ed8a75bcfca3677439
+	sha256sums = 00af057e56bdbfaf44547d0c65c11e280eecda45ec1c216a369a08fe3dc665c0
+
+pkgname = epson-inkjet-printer-stylus-pro-4880-series
