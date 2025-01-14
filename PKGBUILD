@@ -1,29 +1,43 @@
-# Maintainer: Aaron Bishop <erroneous@gmail.com>
+# Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
 
 pkgname=libstudxml
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
-depends=('gcc-libs')
-makedepends=('')
-pkgdesc="A streaming XML pull parser and streaming XML serializer implementation for modern, standard C++"
-arch=('x86_64')
+pkgdesc="Streaming XML pull parser and streaming XML serializer"
+url="www.codesynthesis.com/projects/libstudxml/"
+arch=('i686' 'x86_64')
+depends=('build2')
+options=('!libtool')
 license=('MIT')
-url="https://www.codesynthesis.com/projects/libstudxml/"
-source=("https://www.codesynthesis.com/download/${pkgname}/1.0/${pkgname}-${pkgver}.tar.bz2")
-sha1sums=('59e40dd960e202648dca6a93b491dbe8823499c7')
+source=("https://pkg.cppget.org/1/stable/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('bcf8d86b137c1660b0e8684403fbb14376d0b106fa2089fd8646ebd65f01c956')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
+
+	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //' | sed 's/\s.*$//')"
+
+	bpkg create -d odb-gcc-${GPPVER} cc \
+	config.cxx=${CXX:-g++} \
+	config.cc.coptions="-O3 -DODB_GCC_PLUGIN_DIR $CXXFLAGS" \
+	config.bin.rpath=${pkgdir}/usr/lib \
+	config.install.root=${pkgdir}/usr \
+	config.install.relocatable=true
+
+	mv ${pkgname}-${pkgver}.tar.gz odb-gcc-${GPPVER}
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make
+
+	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //' | sed 's/\s.*$//')"
+	cd "${srcdir}/odb-gcc-${GPPVER}"
+
+	bpkg build ${pkgname}-${pkgver}.tar.gz
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //' | sed 's/\s.*$//')"
+	cd "${srcdir}/odb-gcc-${GPPVER}"
+
+	bpkg install libstudxml
 }
