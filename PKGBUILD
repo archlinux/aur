@@ -7,12 +7,11 @@
 
 ## options
 : ${_install_path:=opt}
-: ${_commit=ec5f413a3893b14f6af35b8a7f1edf6f17c41c09} # 3.0.1
+: ${_commit=7d1fdf496545e1629bc72d2eac2814380978187d}
 
-# basic info
 _pkgname=qtscrcpy
 pkgname="$_pkgname"
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 url="https://github.com/barry-ran/QtScrcpy"
