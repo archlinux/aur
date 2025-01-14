@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="10.4.4.392"
+pkgver="10.5.0.393"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -19,7 +19,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('cba2b13a67cb51b418b8bf4a83fb862fc24ad4816d5499cec2f2f08f1bc8caac')
+sha256sums=('7bf720876fe0f1420d4fac68efffd222fe7d26a80321fd54fe4b69f698310a4c')
 
 prepare()
 {
@@ -339,11 +339,15 @@ package()
  install -Dm644 "$srcdir/FID_GD_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.zh-TW.xcl"
  install -Dm644 "$srcdir/FID_HTML_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.az-Latn-AZ.xcl"
  install -Dm644 "$srcdir/FID_HTML_ca_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.ca-ES.xcl"
+ install -Dm644 "$srcdir/FID_HTML_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.cs-CZ.xcl"
  install -Dm644 "$srcdir/FID_HTML_da_DK" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.da-DK.xcl"
  install -Dm644 "$srcdir/FID_HTML_de_DE" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.de-DE.xcl"
  install -Dm644 "$srcdir/FID_HTML_fi_FI" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.fi-FI.xcl"
  install -Dm644 "$srcdir/FID_HTML_fr_FR" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.fr-FR.xcl"
+ install -Dm644 "$srcdir/FID_HTML_gl_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.gl-ES.xcl"
+ install -Dm644 "$srcdir/FID_HTML_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_HTML_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.hu-HU.xcl"
+ install -Dm644 "$srcdir/FID_HTML_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.ja-JP.xcl"
  install -Dm644 "$srcdir/FID_HTML_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_HTML_lt_LT" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.lt-LT.xcl"
  install -Dm644 "$srcdir/FID_HTML_nl_NL" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.nl-NL.xcl"
@@ -359,6 +363,7 @@ package()
  install -Dm644 "$srcdir/FID_IF_es_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.es-ES.xcl"
  install -Dm644 "$srcdir/FID_IF_fi_FI" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.fi-FI.xcl"
  install -Dm644 "$srcdir/FID_IF_fr_FR" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.fr-FR.xcl"
+ install -Dm644 "$srcdir/FID_IF_gl_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.gl-ES.xcl"
  install -Dm644 "$srcdir/FID_IF_he_IL" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.he-IL.xcl"
  install -Dm644 "$srcdir/FID_IF_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_IF_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.hu-HU.xcl"
@@ -753,7 +758,6 @@ package()
  install -Dm644 "$srcdir/FID_U3D_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_U3D_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_U3D_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.zh-TW.xcl"
- install -Dm644 "$srcdir/FID_ImageProcessDLL" "$pkgdir${_installdir}/$pkgname/${_commonfiles}/PXC/OCV/x64/ImageProcess.dll"
  install -Dm644 "$srcdir/FID_REDACT_PAT_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_redactpatterns}/cs_CZ.json"
  install -Dm644 "$srcdir/FID_REDACT_PAT_en_CA" "$pkgdir${_installdir}/$pkgname/${_redactpatterns}/en_CA.json"
  install -Dm644 "$srcdir/FID_REDACT_PAT_en_GB" "$pkgdir${_installdir}/$pkgname/${_redactpatterns}/en_GB.json"
@@ -788,8 +792,10 @@ package()
  echo '#!/bin/bash' > "$pkgdir/usr/bin/$pkgname"
  echo "pkgname=\"${pkgname}\"" >> "$pkgdir/usr/bin/$pkgname"
  echo 'program="$pkgname/'"$_programname"'"' >> "$pkgdir/usr/bin/$pkgname"
+ echo 'installdir='\""$_installdir"\" >> "$pkgdir/usr/bin/$pkgname"
 
  cat >> "$pkgdir/usr/bin/$pkgname" << 'EOF'
+
 if [ -z "$XDG_DATA_HOME" ]; then
    XDG_DATA_HOME="$HOME/.local/share"
 fi
@@ -816,7 +822,7 @@ if [ ! -f "$prefix/system.reg" ] || [ ! -f "$prefix/user.reg" ]; then
    done
 fi
 
-sed -i s/'"CommonFilesDir"="C:\\\\Program Files\\\\Common Files"'/'"CommonFilesDir"="Z:\\\\usr\\\\lib\\\\'"${pkgname}"'\\\\Common Files\"'/g "$prefix/system.reg"
+sed -i s/'"CommonFilesDir"="C:\\\\Program Files\\\\Common Files"'/'"CommonFilesDir"="Z:'"$(printf '%s' "$installdir" | sed s_'/'_'\\\\\\\\'_g)"'\\\\'"${pkgname}"'\\\\Common Files\"'/g "$prefix/system.reg"
 
 if ! grep -q '"Decorated"="N"' "$prefix/user.reg"; then
    echo -e "\n[Software\\\\\Wine\\\\\X11 Driver]" >> "$prefix/user.reg"
