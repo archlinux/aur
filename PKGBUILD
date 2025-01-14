@@ -18,7 +18,7 @@ else
 fi
 
 pkgname=${_pkgname}-dkms-staging-git
-pkgver=2.2.7.r0.ge269af1b3c
+pkgver=2.3.0.r0.gbc06d8164b
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
@@ -79,6 +79,8 @@ build() {
     ./scripts/dkms.mkconf -n ${_pkgname} -v "${pkgver}" -f dkms.conf
     printf '#define\tZFS_META_GITREV "zfs-%s"\n' "${pkgver}" >include/zfs_gitrev.h
 
+    # ignore "Linux-Maximum" section in META file
+    sed -i '/^PRE_BUILD=/a\  --enable-linux-experimental' dkms.conf
 }
 
 package() {
