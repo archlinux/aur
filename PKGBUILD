@@ -41,6 +41,8 @@ package() {
 
         bpkg install ${pkgname}
 
+		rm ${pkgdir}/usr/lib/pkgconfig/${pkgname}.static.pc
+
         mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
         mv ${pkgdir}/usr/share/doc/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
 }
