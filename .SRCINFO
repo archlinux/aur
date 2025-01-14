@@ -1,0 +1,14 @@
+pkgbase = epson-inkjet-printer-sc-t3100m
+	pkgdesc = Epson inkjet printer driver (SC-T3100M)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/23/46/cfbbda5a6f084a87ea1aeed09ff64dbbfe70cc80/epson-sc-t3100m-ww-1.0.1-1.src.rpm
+	sha256sums = 62ac738256344fe84f374eb827ecb5aafc2b8fcbff1aff29442f0f150392763e
+
+pkgname = epson-inkjet-printer-sc-t3100m
