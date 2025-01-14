@@ -2,7 +2,8 @@
 
 _pkgname=flood
 pkgname=${_pkgname}-bin
-provides=("${_pkgname}")
+provides=("nodejs-${_pkgname}")
+conflicts=("nodejs-${_pkgname}")
 pkgver=4.8.5
 pkgrel=1
 pkgdesc="A modern web UI for various torrent clients with a Node.js backend and React frontend"
