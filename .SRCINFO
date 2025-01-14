@@ -1,6 +1,6 @@
 pkgbase = holland
 	pkgver = 1.2.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hollandbackup.org
 	arch = any
 	license = BSD
@@ -20,11 +20,8 @@ pkgname = holland
 	license = BSD
 	depends = python
 	depends = python-setuptools
-	depends = python-six
-	depends = python-future
 	depends = python-configobj
 	depends = python-sphinx
-	depends = python-pymysql
 	backup = etc/holland/holland.conf
 	backup = etc/holland/backupsets/default.conf
 
@@ -43,7 +40,7 @@ pkgname = holland-mysql
 	pkgdesc = MySQL library functionality for Holland Plugins
 	license = GPL2
 	depends = holland-common=1.2.12
-	depends = python-mysqlclient
+	depends = python-pymysql
 
 pkgname = holland-mysqldump
 	pkgdesc = Holland Backup Provider for MySQL mysqldump

@@ -9,7 +9,7 @@ pkgname=('holland' 'holland-common' 'holland-lvm' 'holland-mysql'
          'holland-xtrabackup' 'holland-mariabackup' 'holland-mongodump')
 pkgver=1.2.12
 docs_pkgver=1.2.10
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="http://hollandbackup.org"
 license=('BSD' 'GPL2')
@@ -65,7 +65,7 @@ build() {
 package_holland() {
   pkgdesc="Pluggable backup framework focusing on databases"
   license=('BSD')
-  depends=('python' 'python-setuptools' 'python-six' 'python-future' 'python-configobj' 'python-sphinx' 'python-pymysql')
+  depends=('python' 'python-setuptools' 'python-configobj' 'python-sphinx')
   backup=('etc/holland/holland.conf'
           'etc/holland/backupsets/default.conf')
 
@@ -133,7 +133,7 @@ package_holland-lvm() {
 package_holland-mysql() {
   pkgdesc="MySQL library functionality for Holland Plugins"
   license=('GPL2')
-  depends=("holland-common=${pkgver}" 'python-mysqlclient')
+  depends=("holland-common=${pkgver}" 'python-pymysql')
 
   cd "${srcdir}/${pkgbase}-${pkgver}/plugins/holland.lib.mysql"
   python setup.py install -O1 --skip-build --root "${pkgdir}"
