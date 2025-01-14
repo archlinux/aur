@@ -1,19 +1,23 @@
 pkgbase = inkscape-silhouette-git
 	pkgdesc = inkscape plugin to control Silhouette vinyl cutters
-	pkgver = r663.8128b6c
+	pkgver = r685.7eac606
 	pkgrel = 1
 	url = https://github.com/fablabnbg/inkscape-silhouette
 	arch = any
 	license = GPLv2
 	makedepends = git
 	depends = inkscape
-	depends = python
 	depends = python-lxml
 	depends = python-pyusb
-	depends = python-numpy
+	depends = python-tinycss2
+	depends = python-matplotlib
 	provides = inkscape-silhouette
 	conflicts = inkscape-silhouette
 	source = git+https://github.com/fablabnbg/inkscape-silhouette
-	md5sums = SKIP
+	source = Vinyl Full Sheet 12x24.svg
+	source = Vinyl Half Sheet 12x12.svg
+	sha256sums = SKIP
+	sha256sums = b74f9b112d01eb722e434b98ca7a4b8dd053c706a25af7e9372ef73ca24b2819
+	sha256sums = 46816dc07cfd637e73738fd9f3675d3222277e43a8ecd8e9bc63fd20078945a7
 
 pkgname = inkscape-silhouette-git

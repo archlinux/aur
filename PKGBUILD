@@ -1,13 +1,13 @@
 # Maintainer: Matthew Hiles <matthew.hiles@gmail.com>
 pkgname=inkscape-silhouette-git
-pkgver=r663.8128b6c
+pkgver=r685.7eac606
 pkgrel=1
 pkgdesc="inkscape plugin to control Silhouette vinyl cutters"
 arch=(any)
 url="https://github.com/fablabnbg/inkscape-silhouette"
 license=('GPLv2')
 groups=()
-depends=(inkscape python python-lxml python-pyusb python-numpy)
+depends=(inkscape python-lxml python-pyusb python-tinycss2 python-matplotlib)
 makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -15,9 +15,16 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/fablabnbg/inkscape-silhouette')
+source=(
+	'git+https://github.com/fablabnbg/inkscape-silhouette'
+	'Vinyl Full Sheet 12x24.svg'
+	'Vinyl Half Sheet 12x12.svg')
 noextract=()
-md5sums=('SKIP')
+sha256sums=(
+	'SKIP'
+    'b74f9b112d01eb722e434b98ca7a4b8dd053c706a25af7e9372ef73ca24b2819'
+    '46816dc07cfd637e73738fd9f3675d3222277e43a8ecd8e9bc63fd20078945a7')
+
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -26,18 +33,11 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	#git apply -p1 ../../py3fix.patch
-	#python setup.py build
 }
 
 package() {
+	set > /tmp/env
 	cd "$srcdir/${pkgname%-git}"
 	make DESTDIR="$pkgdir/" install
-	cp ../../*.svg "$pkgdir/usr/share/inkscape/templates/"
-	mkdir -p "$pkgdir/usr/share/inkscape/extensions/"
-	cp sendto_silhouette.* "$pkgdir/usr/share/inkscape/extensions/"
-	cp -R silhouette "$pkgdir/usr/share/inkscape/extensions/"
-	mkdir -p "$pkgdir/etc/udev/rules.d/"
-	cp silhouette-udev.rules "$pkgdir/etc/udev/rules.d/"
-	mv "$pkgdir/lib/" "$pkgdir/usr/"
+	cp "${startdir}"/*.svg "$pkgdir/usr/share/inkscape/templates/"
 }
