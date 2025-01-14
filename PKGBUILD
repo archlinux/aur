@@ -3,10 +3,10 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=terra
-_pkgver=1.8-5
+_pkgver=1.8-10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Spatial Data Analysis"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -30,8 +30,8 @@ optdepends=(
   r-xml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d320610ce15d8f232619e06fdd2867c5')
-b2sums=('bf4e44e3c344ccf1767128d5874f227914b69698852849279055dcdcdd64f8b2ba0625e43777b402c48e591339fcabe9ce283b6712a8e73578c4d877c240fc79')
+md5sums=('98ba52e4981b1b49d1c184b4facfa632')
+b2sums=('d62205474ed6ca350704a1040bbe871b8998c749febc62b19fd0da79c822d8801041664e918532ebf7eb46abfd56c7561522916a5d24335af9ce32b58f3e9441')
 
 build() {
   mkdir build
