@@ -7,13 +7,13 @@
 pkgname=simulide-git
 pkgver=r250113
 #_realver=${pkgver//.r*/}
-pkgrel=4
+pkgrel=5
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers). Development version."
 arch=("x86_64")
 url="https://github.com/eeTools/SimulIDE-dev"
 provides=('simulide')
 conflicts=('simulide')
-license=("GPL3")
+license=("AGPL3")
 source=(
   "${pkgname}::git+https://github.com/eeTools/SimulIDE-dev.git"
   "simulide.desktop")
