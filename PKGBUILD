@@ -4,8 +4,8 @@
 __pkgname=jule
 _pkgname="tree-sitter-$__pkgname"
 pkgname="$_pkgname-git"
-pkgver=1.r0.gea815c0
-pkgrel=2
+pkgver=rd7655da
+pkgrel=1
 pkgdesc='Jule syntax tree for the Tree-sitter parsing library'
 groups=('jule' 'tree-sitter-grammars')
 arch=('any')
@@ -13,13 +13,13 @@ url="https://github.com/TheLooped/$_pkgname"
 license=('BSD-3-Clause')
 source=("git+$url.git")
 sha256sums=('SKIP')
-makedepends=('tree-sitter' 'git')
+makedepends=('tree-sitter' 'git' 'tree-sitter-cli')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 pkgver() {
   cd "$_pkgname"
-  echo "1.r$(git describe --all --long | sed 's/-/./g' | cut -d '.' -f 2-)"
+  echo "r$(git rev-parse --short HEAD)"
 }
 
 prepare() {
