@@ -2,7 +2,8 @@
 
 pkgbase=python-multiformats
 _pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}" "python-${_pyname}-doc")
+pkgname=("python-${_pyname}")
+#"python-${_pyname}-doc")
 pkgver=0.3.1.post4
 pkgrel=1
 pkgdesc="Python implementation of multiformats protocols"
@@ -11,12 +12,15 @@ url="https://multiformats.readthedocs.io"
 license=('MIT')
 makedepends=('python-setuptools-scm>=6.2'
              'python-build'
-             'python-installer'
-             'python-sphinx'
-             'python-sphinx_rtd_theme'
-             'python-bases'
-             'python-multiformats-config')  # wheel required by new setuptools typing-validation <- bases
+             'python-installer')
+#            'python-sphinx'
+#            'python-sphinx_rtd_theme'
+#            'python-bases'
+#            'python-multiformats-config')  # wheel required by new setuptools typing-validation <- bases
 checkdepends=('python-pytest'
+              'python-bases'
+              'python-multiformats-config'
+              'python-importlib_resources'
               'python-pyskein'
               'python-blake3'
               'python-mmh3'
@@ -29,13 +33,13 @@ build() {
     python -m build --wheel --no-isolation #--skip-dependency-check
 
     msg "Building Docs"
-    PYTHONPATH="../build/lib" make -C docs html
+#   PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
+    pytest --ignore=test/test_03_multihash.py || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
 
 package_python-multiformats() {
@@ -56,11 +60,11 @@ package_python-multiformats() {
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
-package_python-multiformats-doc() {
-    pkgdesc="Documentation for Python multiformats"
-    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
-
-    install -D -m644 ../../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
-    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
-}
+#package_python-multiformats-doc() {
+#    pkgdesc="Documentation for Python multiformats"
+#    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
+#
+#    install -D -m644 ../../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+#    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+#    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
+#}

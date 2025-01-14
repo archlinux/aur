@@ -6,6 +6,9 @@ pkgbase = python-multiformats
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	checkdepends = python-bases
+	checkdepends = python-multiformats-config
+	checkdepends = python-importlib_resources
 	checkdepends = python-pyskein
 	checkdepends = python-blake3
 	checkdepends = python-mmh3
@@ -13,10 +16,6 @@ pkgbase = python-multiformats
 	makedepends = python-setuptools-scm>=6.2
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
-	makedepends = python-bases
-	makedepends = python-multiformats-config
 	source = https://files.pythonhosted.org/packages/source/m/multiformats/multiformats-0.3.1.post4.tar.gz
 	md5sums = 63c9331d1ed581b2b6a8026abb5e0f12
 
@@ -31,6 +30,3 @@ pkgname = python-multiformats
 	optdepends = python-mmh3: for the murmur3 hash functions
 	optdepends = python-pycryptodomex: for the ripemd-160 hash function, the kangarootwelve hash function, the keccak hash functions and the sha2-512-224/sha2-512-256 hash functions.
 	optdepends = python-multiformats-doc: Documentation for multiformats
-
-pkgname = python-multiformats-doc
-	pkgdesc = Documentation for Python multiformats
