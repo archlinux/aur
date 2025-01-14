@@ -1,0 +1,18 @@
+pkgbase = advanced-rest-client-bin
+	pkgdesc = A developer tool to test a HTTP request. The Advanced REST Client desktop application.
+	pkgver = 17.0.9
+	pkgrel = 1
+	url = https://github.com/advanced-rest-client/arc-electron
+	install = advanced-rest-client.install
+	arch = x86_64
+	license = Apache
+	depends = libnotify
+	depends = libappindicator-gtk3
+	depends = libxtst
+	depends = nss
+	depends = libxss
+	options = !strip
+	source_x86_64 = https://github.com/advanced-rest-client/arc-electron/releases/download/v17.0.9/arc-linux-17.0.9-amd64.deb
+	sha256sums_x86_64 = 0a7df49097829306953e3073e974bc0af5626673d29ff773a263175759d37bef
+
+pkgname = advanced-rest-client-bin
