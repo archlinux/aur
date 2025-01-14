@@ -1,7 +1,7 @@
 # Maintainer: Russi <ixaxaar@mailbox.org> <aur@ixaxaar.in>
 
 pkgname=perftest
-pkgver=24.04.0.0.41
+pkgver=24.10.0.0.66
 pkgrel=1
 pkgdesc="OpenFabrics Alliance InfiniBand verbs performance testing and benchmarking tools"
 arch=('x86_64')
