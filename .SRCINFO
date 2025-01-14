@@ -1,7 +1,7 @@
 pkgbase = python-flake8-polyfill
 	pkgdesc = Polyfill package for Flake8 plugins
 	pkgver = 1.0.2.r18.gb98e6f4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/PyCQA/flake8-polyfill
 	arch = any
 	license = MIT
