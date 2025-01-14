@@ -1,5 +1,4 @@
 [lib32-sdl_sound]
-source="github-graphql"
-github="icculus/SDL_sound"
-use_latest_release=true
-prefix="v"
+source="regex"
+url="https://icculus.org/SDL_sound/downloads/"
+regex="SDL_sound-(1.[0-9.]+).tar.gz"
