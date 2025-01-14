@@ -1,4 +1,4 @@
-pkgbase = sherlock-launcher
+pkgbase = sherlock-launcher-bin
 	pkgdesc = Application launcher for Wayland.
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = sherlock-launcher
 	source = https://github.com/skxxtz/sherlock/releases/download/v0.1.0/sherlock-v0.1.0-bin-linux-x86_64.tar.gz
 	sha256sums = SKIP
 
-pkgname = sherlock-launcher
+pkgname = sherlock-launcher-bin
 	conflicts = sherlock-launcher-git
