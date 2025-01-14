@@ -1,13 +1,13 @@
 pkgbase = cmake-init
 	pkgdesc = The missing CMake project initializer
-	pkgver = 0.40.9
+	pkgver = 0.41.0
 	pkgrel = 1
 	url = https://github.com/friendlyanon/cmake-init
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python3
-	source = cmake-init-0.40.9.tar.gz::https://github.com/friendlyanon/cmake-init/archive/refs/tags/v0.40.9.tar.gz
-	sha256sums = 5949808ebbeb9ef58ebcd5f35d595e8e7f04c67413e387e200004ca1fc6f27dc
+	source = cmake-init-0.41.0.tar.gz::https://github.com/friendlyanon/cmake-init/archive/refs/tags/v0.41.0.tar.gz
+	sha256sums = 141e5bb2a70a3f66c45929940e963a31fe42888a6c173014c691555bb0a1ae0f
 
 pkgname = cmake-init
