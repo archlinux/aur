@@ -1,6 +1,6 @@
 pkgbase = mediaconch
 	pkgdesc = Implementation checker and policy checker for video and audio files (CLI)
-	pkgver = 22.09
+	pkgver = 24.06
 	pkgrel = 1
 	url = http://mediaarea.net
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = mediaconch
 	depends = sqlite
 	depends = jansson
 	depends = libxslt
-	source = https://mediaarea.net/download/source/mediaconch/22.09/mediaconch_22.09.tar.bz2
-	sha256sums = ce20b135d870a8e35f916ee7a7e229302a5ac7a9ffa6455c5e5c70d8e3515676
+	source = https://mediaarea.net/download/binary/mediaconch/24.06/MediaConch_CLI_24.06_GNU_FromSource.tar.bz2
+	sha256sums = 2dd68a260ea84fe23031c2caa121ede850f34a8c733e53237205bd018af0b9d9
 
 pkgname = mediaconch
