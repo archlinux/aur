@@ -3,7 +3,7 @@
 __pkgname=jule
 _pkgname="${__pkgname}c"
 pkgname="$_pkgname-git"
-pkgver=0.1.2+ba2d8067
+pkgver=0.1.2+rc42e5d17
 pkgrel=1
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
@@ -28,7 +28,7 @@ conflicts=("$_pkgname")
 
 pkgver() {
     cd "$__pkgname"
-    echo "$(git describe --tags --abbrev=0 | cut -c 5-)+$(git rev-parse --short HEAD)"
+    echo "$(git describe --tags --abbrev=0 | cut -c 5-)+r$(git rev-parse --short HEAD)"
 }
 
 prepare() {
