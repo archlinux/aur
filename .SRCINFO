@@ -1,0 +1,14 @@
+pkgbase = end-rs-bin
+	pkgdesc = Eww notification daemon in rust
+	pkgver = 0.1.22
+	pkgrel = 1
+	url = https://github.com/Dr-42/end-rs
+	arch = x86_64
+	license = BSD-2-Clause
+	depends = glibc
+	provides = end-rs
+	conflicts = end-rs
+	source = https://github.com/Dr-42/end-rs/releases/download/v0.1.22/end-rs-0.1.22-x86_64.tar.gz
+	sha256sums = b0603bc24f2e68b90eae4c5a1aca85ce4fe278fbd5bb7b43e3f4b7b9c582103a
+
+pkgname = end-rs-bin
