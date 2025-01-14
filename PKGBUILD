@@ -2,12 +2,11 @@
 _pkgname=openqasm
 pkgname=python-${_pkgname}3
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Reference OpenQASM AST in Python"
 arch=(any)
 url=https://github.com/openqasm/openqasm
 license=(Apache-2.0)
-conflicts=(python-qiskit-terra)
 depends=(
     python-antlr4
     python-importlib-metadata
