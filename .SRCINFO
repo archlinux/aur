@@ -21,7 +21,7 @@ pkgbase = gsettings-desktop-schemas-git
 
 pkgname = gsettings-desktop-schemas-git
 	pkgdesc = GSettings schemas for GNOME - git latest desktop components
-	depends = gsettings-system-schemas=48.alpha+r1770+gcc8c6237a-1
+	depends = gsettings-system-schemas=48.0
 	depends = adobe-source-code-pro-fonts
 	depends = cantarell-fonts
 	depends = dconf

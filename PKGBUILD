@@ -75,7 +75,7 @@ _pick() {
 package_gsettings-desktop-schemas-git() {
   pkgdesc+=" desktop components"
   depends=(
-    "gsettings-system-schemas=$pkgver-$pkgrel"
+    "gsettings-system-schemas=$_pkgver"
     adobe-source-code-pro-fonts
     cantarell-fonts
     dconf
