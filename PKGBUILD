@@ -1,6 +1,6 @@
 # Maintainer: Luis Pérez <luis dot perez at protonmail dot com>
 pkgname=typioca
-pkgver=2.4.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Tapioca (/ˌtæpiˈoʊkə/) is a starch extracted from the storage roots of the cassava plant. Pearl tapioca is a common ingredient in Asian desserts...and sweet drinks such as bubble tea."
 arch=(any)
@@ -10,7 +10,7 @@ makedepends=('go' 'make')
 provides=(typioca)
 conflicts=()
 source=("https://github.com/bloznelis/typioca/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('57246b9f13b8f4f34a93eed7b2ac3efa871dd49714f44b9b85bbc82c4700b9a2')
+sha256sums=('b58dfd36e9f23054b96cbd5859d1a93bc8d3f22b4ce4fd16546c9f19fc4a003c')
 
 build() {
 	cd "$pkgname-$pkgver"
