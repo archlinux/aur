@@ -6,8 +6,8 @@ pkgdesc="Tool to format Pest grammar files"
 arch=("any")
 url="https://github.com/pest-parser/pest-fmt"
 license=('MPL-2.0')
-depends=("glibc")
-makedepends=('cargo')
+depends=("gcc-libs")
+makedepends=('rust')
 source=(https://github.com/pest-parser/pest-fmt/archive/refs/tags/v${pkgver}.tar.gz)
 sha256sums=('df925fc8fb43c75e385169d49db93199606b9777464d474cf07c45af99194382')
 
