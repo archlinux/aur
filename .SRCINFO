@@ -1,7 +1,7 @@
 pkgbase = python-textblob
 	pkgdesc = Simple, Pythonic, text processing--Sentiment analysis, part-of-speech tagging, noun phrase extraction, translation, and more.
-	pkgver = 0.18.0
-	pkgrel = 2
+	pkgver = 0.19.0
+	pkgrel = 1
 	url = https://github.com/sloria/textblob
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-textblob
 	makedepends = python-flit-core
 	depends = python-nltk
 	depends = nltk-data
-	source = python-textblob-0.18.0.tar.gz::https://github.com/sloria/textblob/archive/refs/tags/0.18.0.tar.gz
-	sha256sums = 2261b8cdacb04217dcd1704827f44913835241179932a7e6d926ce70ea9f99cc
+	source = python-textblob-0.19.0.tar.gz::https://github.com/sloria/textblob/archive/refs/tags/0.19.0.tar.gz
+	sha256sums = 0fb422e903d8b640dc0d955ac79421b0a536d9c79ece11dbe238b9a60d8f48c3
 
 pkgname = python-textblob
