@@ -1,7 +1,7 @@
 pkgbase = aptos
 	pkgdesc = Aptos is a layer 1 blockchain built to support the widespread use of blockchain through better technology and user experience.
 	pkgver = 5.1.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://aptos.dev
 	arch = x86_64
 	license = Apache-2.0
