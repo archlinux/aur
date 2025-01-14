@@ -25,7 +25,7 @@ sha256sums=('SKIP')
 build() {
     if [[ "$pkgname" == "sherlock-launcher-git" ]]; then
         cd "$srcdir/sherlock"
-        cargo build --release
+        cargo build --release --quiet
     fi
 }
 
