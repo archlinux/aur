@@ -1,0 +1,14 @@
+pkgbase = epson-inkjet-printer-sc-p9k8k7k6k-jp
+	pkgdesc = Epson inkjet printer driver (SC-P6000, SC-P7000, SC-P8000, SC-P9000)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/52/63/9b4c099cc2b224370fa70f51a694367c3d87453a/epson-sc-p9k8k7k6k-jp-1.0.1-1.src.rpm
+	sha256sums = 2e1aac1fbaadb30036401fc0b09b7d167ff24df6404dc1f55a7fc3fd695bcbd3
+
+pkgname = epson-inkjet-printer-sc-p9k8k7k6k-jp
