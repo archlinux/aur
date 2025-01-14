@@ -1,0 +1,14 @@
+pkgbase = epson-inkjet-printer-sc-p9k8k7k6k-ww
+	pkgdesc = Epson inkjet printer driver (SC-T3200, SC-T3270, SC-T3280, SC-T5200, SC-T5270, SC-T5280, SC-T7200, SC-T7270, SC-T7280, SC-T5200D, SC-T5270D, SC-T5280D, SC-T7200D, SC-T7270D, SC-T7280D)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/52/63/a8a27cac529f990929fc1af7df52983c31cca53e/epson-sc-p9k8k7k6k-ww-1.0.1-1.src.rpm
+	sha256sums = 95bae230d7819af8d7110b5e1a2fd2c6dc0687932c8341dbf89421620af34af7
+
+pkgname = epson-inkjet-printer-sc-p9k8k7k6k-ww
