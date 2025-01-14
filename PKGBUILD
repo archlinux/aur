@@ -12,6 +12,7 @@ depends=('epson-inkjet-printer-filter' 'gcc-libs' 'glibc')
 _pkgsrc="epson-${_model}-${pkgver}"
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 source=("https://download.ebz.epson.net/dsc/f/01/00/01/58/22/0db89d5da282bd9c16914b95aa1dd202e9822e89/${_pkgsrc}-1lsb3.2.src.rpm")
+md5sums=('3f019856bec67341e55550717c3e6086')
 sha256sums=('05e6333a4ba72f0450255fa6c388a74066e0c4b857e2622ab0e574088c18c29b')
 
 prepare() {

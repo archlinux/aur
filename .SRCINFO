@@ -9,6 +9,7 @@ pkgbase = epson-inkjet-printer-px-f8000-f10000-series
 	depends = gcc-libs
 	depends = glibc
 	source = https://download.ebz.epson.net/dsc/f/01/00/01/58/22/0db89d5da282bd9c16914b95aa1dd202e9822e89/epson-px-f8000-f10000-series-1.0.0-1lsb3.2.src.rpm
+	md5sums = 3f019856bec67341e55550717c3e6086
 	sha256sums = 05e6333a4ba72f0450255fa6c388a74066e0c4b857e2622ab0e574088c18c29b
 
 pkgname = epson-inkjet-printer-px-f8000-f10000-series
