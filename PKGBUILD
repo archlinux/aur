@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.5.r0.gdd0af0a5
+pkgver=2.5.r14.geab1b243
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -66,10 +66,15 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	sed -i '/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' CMakeLists.txt
 	sed -i '/FMT_HEADER_ONLY/d' src/Common/precompiled.h
+	# https://github.com/cemu-project/Cemu/pull/1436
+	sed -i '/set/s/"glslang"/"glslang::glslang"/' src/Cafe/CMakeLists.txt
+	# https://github.com/cemu-project/Cemu/pull/1474
+	sed -i 's/fmt::format("{}", v)/fmt::format("{}", fmt::underlying(v))/' src/Cafe/GameProfile/GameProfile.cpp
 }
 
 build() {
 	cmake -S $_pkgname -B build \
+		-DALLOW_PORTABLE=OFF \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
