@@ -13,7 +13,7 @@ url="https://github.com/TheLooped/$_pkgname"
 license=('BSD-3-Clause')
 source=("git+$url.git")
 sha256sums=('SKIP')
-makedepends=('tree-sitter' 'git' 'tree-sitter-cli')
+makedepends=('tree-sitter' 'git' 'tree-sitter-cli' 'nodejs')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
