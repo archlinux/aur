@@ -3,9 +3,9 @@
 # Contributor: Carlos Galindo <carlos.s.galindo (at) gmail.com>
 
 _npmname=meshcentral
-_npmver=1.1.35
+_npmver=1.1.38
 pkgname=meshcentral
-pkgver=1.1.35
+pkgver=1.1.38
 pkgrel=2
 pkgdesc="The open source, multi-platform, self-hosted, feature packed web site for remote device management"
 arch=(any)
@@ -23,7 +23,7 @@ source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz"
 	"$_npmname.sysusers"
 	"$_npmname.tmpfiles")
 noextract=("$_npmname-$_npmver.tgz")
-sha256sums=('c3fd220fe46e31bd135e16cca2676066f5b8b15b13ebdecbacc3eb52c715a9c3'
+sha256sums=('add062b809a53955e614dbc3d3b60df8c742fa9c9b9456b645f8c5f8a62091ab'
             'd88ad4d11395bd13a4aa64829bf03977ac3511134be2dbe875b95c7243e5bf92'
             'd907415d1be94568c92d3a05e70dd855f004ebed2c4170f5c2d2f36c0dfd5199'
             'ba5d7e33bc3ce9ce33d20b23e8632af8f1e1507908bba3e91dae1a0cf460ddcc')
@@ -33,28 +33,28 @@ package() {
 	local _npmdir="$pkgdir/usr/lib/node_modules/"
 	mkdir -p "$_npmdir"
 	cd "$_npmdir"
-	npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver \
-		archiver@5.3.2 \
-		body-parser@1.20.2 \
-		cbor@5.2.0 \
-		compression@1.7.4 \
-		cookie-session@2.0.0 \
-		express@4.18.2 \
-		express-handlebars@5.3.5 \
-		express-ws@4.0.0 \
-		ipcheck@0.1.0 \
-		minimist@1.2.8 \
-		multiparty@4.2.3 \
-		@yetzt/nedb \
-		node-forge@1.3.1 \
-		ua-parser-js@1.0.36 \
-		ws@8.14.2 \
-		yauzl@2.10.0 \
-		passport \
-		passport-saml \
-		nodemailer@6.9.8 \
-		otplib@10.2.3 \
-		keygrip
+	npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+#		archiver@5.3.2 \
+#		body-parser@1.20.2 \
+#		cbor@5.2.0 \
+#		compression@1.7.4 \
+#		cookie-session@2.0.0 \
+#		express@4.18.2 \
+#		express-handlebars@5.3.5 \
+#		express-ws@4.0.0 \
+#		ipcheck@0.1.0 \
+#		minimist@1.2.8 \
+#		multiparty@4.2.3 \
+#		@yetzt/nedb \
+#		node-forge@1.3.1 \
+#		ua-parser-js@1.0.36 \
+#		ws@8.14.2 \
+#		yauzl@2.10.0 \
+#		passport \
+#		passport-saml \
+#		nodemailer@6.9.8 \
+#		otplib@10.2.3 \
+#		keygrip
 
 	# Non-deterministic race in npm gives 777 permissions to random directories.
 	# See https://github.com/npm/npm/issues/9359 for details.
