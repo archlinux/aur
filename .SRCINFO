@@ -1,0 +1,14 @@
+pkgbase = epson-inkjet-printer-sc-p5000-jp
+	pkgdesc = Epson inkjet printer driver (SC-P5000)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/16/61/8d1a05464b50f457bb10a2a3710c2ea3face623f/epson-sc-p5000-jp-1.0.1-1.src.rpm
+	sha256sums = 33ed984dffd6ba9730aec189fb0e7983adfe6357aa124f43f37c8cca8e9983da
+
+pkgname = epson-inkjet-printer-sc-p5000-jp
