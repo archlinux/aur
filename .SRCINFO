@@ -1,6 +1,6 @@
 pkgbase = nextdns-bin
 	pkgdesc = NextDNS DNS/53 to DoH Proxy
-	pkgver = 1.44.3
+	pkgver = 1.44.5
 	pkgrel = 1
 	url = https://github.com/nextdns/nextdns
 	install = nextdns.install
@@ -12,13 +12,9 @@ pkgbase = nextdns-bin
 	provides = nextdns
 	conflicts = nextdns
 	backup = etc/nextdns.conf
-	source_x86_64 = https://github.com/nextdns/nextdns/releases/download/v1.44.3/nextdns_1.44.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1307e6ab8a66e2fc8401047b21a6fb84be3c32802b2d9db06956c57309bd2b0d
-	source_i686 = https://github.com/nextdns/nextdns/releases/download/v1.44.3/nextdns_1.44.3_linux_386.tar.gz
-	sha256sums_i686 = 36460c947c958cc249d1ff131e577114aeeafcf11944340eb9954daa50b25d39
-	source_aarch64 = https://github.com/nextdns/nextdns/releases/download/v1.44.3/nextdns_1.44.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2f99025b8b1e9026b9a372c9fc140aa5eba4b81ec4609f5acc0b1462775de834
-	source_armv7h = https://github.com/nextdns/nextdns/releases/download/v1.44.3/nextdns_1.44.3_linux_armv7.tar.gz
-	sha256sums_armv7h = c04ae4397770b8669f5892d1a6c220c2ae34a65b82266b2a569b835bb71997cf
+	source_x86_64 = https://github.com/nextdns/nextdns/releases/download/v1.44.5/nextdns_1.44.5_linux_amd64.tar.gz
+	source_i686 = https://github.com/nextdns/nextdns/releases/download/v1.44.5/nextdns_1.44.5_linux_386.tar.gz
+	source_aarch64 = https://github.com/nextdns/nextdns/releases/download/v1.44.5/nextdns_1.44.5_linux_arm64.tar.gz
+	source_armv7h = https://github.com/nextdns/nextdns/releases/download/v1.44.5/nextdns_1.44.5_linux_armv7.tar.gz
 
 pkgname = nextdns-bin
