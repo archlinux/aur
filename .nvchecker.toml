@@ -1,0 +1,4 @@
+[iriunwebcam-bin]
+source = "regex"
+url = "https://iriun.com/"
+regex = '-([0-9\.]+)\.deb'
