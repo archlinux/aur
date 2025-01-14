@@ -8,7 +8,6 @@ pkgbase = python-multiformats
 	checkdepends = python-pytest
 	checkdepends = python-bases
 	checkdepends = python-multiformats-config
-	checkdepends = python-importlib_resources
 	checkdepends = python-pyskein
 	checkdepends = python-blake3
 	checkdepends = python-mmh3

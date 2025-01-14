@@ -20,13 +20,18 @@ makedepends=('python-setuptools-scm>=6.2'
 checkdepends=('python-pytest'
               'python-bases'
               'python-multiformats-config'
-              'python-importlib_resources'
               'python-pyskein'
               'python-blake3'
               'python-mmh3'
               'python-pycryptodomex') # bases, multiformats-config already in makedepends, no xdist
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('63c9331d1ed581b2b6a8026abb5e0f12')
+
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    sed -i "/Resource/c \        resource," test/test_03_multihash.py
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -39,7 +44,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest --ignore=test/test_03_multihash.py || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
 
 package_python-multiformats() {
