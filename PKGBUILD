@@ -1,6 +1,6 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-engine-git
-pkgver=rev.15447
+pkgver=rev.15607
 pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe"
 arch=('i686' 'x86_64')
@@ -16,10 +16,8 @@ conflicts=('vegastrike-engine')
 #options=(!makeflags debug !strip)
 
 source=('git+https://github.com/vegastrike/Vega-Strike-Engine-Source'
-#	'https://github.com/vegastrike/Vega-Strike-Engine-Source/pull/889.patch'
 )
 sha1sums=('SKIP'
-#	'SKIP'
 )
 
 pkgver() {
@@ -29,21 +27,24 @@ pkgver() {
 
 prepare(){
 echo "Prepare section"
-cd "${srcdir}"/Vega-Strike-Engine-Source
-#git revert --no-commit 04f99ab64535fc0146a90ac9e226d71cbbac0095
-#git revert -m 2 --no-commit 59deb3002e69a9f443d6d7ba1bb61c31f898fa7f
-#git apply ../../889.patch
-cd ..
-pwd
-
-mkdir -p build
-#patch -Np1 -i ../mesh_tool_install.patch
+  cd "${srcdir}"/Vega-Strike-Engine-Source
+### Git operations for testing various branches
+#git checkout -b stephengtuggy-fix/index_out_of_bounds_2025-01-11 master
+#git pull https://github.com/stephengtuggy/Vega-Strike-Engine-Source.git fix/index_out_of_bounds_2025-01-11
+#git checkout master
+#git merge --no-ff stephengtuggy-fix/index_out_of_bounds_2025-01-11
+##
+#    git pull origin master
+#    git checkout master
+#    git merge origin/task_fix_969	
+  cd ..
+  mkdir -p build
 }
 
 build(){
 #        export CC=gcc-12 CXX=g++-12
 	cd build
-	cmake ../Vega-Strike-Engine-Source/engine/ \
+	cmake ../Vega-Strike-Engine-Source/ \
 	-DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DINSTALL_GTEST=OFF \
