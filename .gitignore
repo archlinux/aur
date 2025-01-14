@@ -1,1 +1,4 @@
-cJSON
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

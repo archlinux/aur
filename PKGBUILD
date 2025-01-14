@@ -1,53 +1,41 @@
-# Maintainer: Romain Porte <microjoe@mailoo.org>
-# Comaintainer: Max Bruckner <max at maxbruckner dot de>
-# Creator: chefpeyo <pierre-olivier.huguet@asp64.com>
+# Maintainer: a821 at (nospam) mail de
+# Contributor: Jelle van der Waa (arch maintainer)
+# Contributor: Romain Porte <microjoe@mailoo.org>
+# Contributor: Max Bruckner <max at maxbruckner dot de>
+# Contributor: chefpeyo <pierre-olivier.huguet@asp64.com>
 # Contributor: kuri <sysegv@gmail.com>
 
 pkgname=cjson-git
-pkgver=v1.7.14.r10.g324a6ac
+pkgver=1.7.18.r11.g12c4bf1
 pkgrel=1
-pkgdesc="Dave Gamble's cJSON library. Easily handle JSON data in C (git version)."
-arch=('i686' 'x86_64')
+pkgdesc="Ultralightweight JSON parser in ANSI C"
+arch=('x86_64')
 url="https://github.com/DaveGamble/cJSON"
 license=('MIT')
+depends=('glibc')
 makedepends=('git' 'cmake')
-conflicts=()
+conflicts=('cjson')
 provides=('cjson')
-options=('!libtool')
-source=('git://github.com/DaveGamble/cJSON.git')
-md5sums=('SKIP')
-
-_gitname="cJSON"
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_gitname" || return 1
-	( set -o pipefail
-		git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+    cd cJSON
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd $_gitname || return 1
-
-	rm -rf build
-	mkdir build
-	cd build || return 1
-	cmake .. -DENABLE_CJSON_UTILS=On -DCMAKE_INSTALL_PREFIX=/usr
-	make || return 1
+    cmake -B build -S cJSON -DENABLE_CJSON_UTILS=On -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
+    make -C build
 }
 
 check() {
-	cd $_gitname/build || return 1
-	make check || return 1
+    make -C build check
 }
 
 package() {
-	cd $_gitname/build || return 1
-
-	make DESTDIR="$pkgdir" install || return 1
-
-	# install license files
-	install -Dm644 "$srcdir/$_gitname/LICENSE" \
-		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    make -C build DESTDIR="$pkgdir" install
+    install -Dm644 "cJSON/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim: set ts=4 sw=4 et:
