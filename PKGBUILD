@@ -4,7 +4,7 @@ _model="sc-t3100t5100" # -ww
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.2
 pkgrel=1
-pkgdesc="Epson inkjet printer driver SC-T3100, SC-T5100)"
+pkgdesc="Epson inkjet printer driver (SC-T3100, SC-T5100)"
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:Epson End User Software License Agreement')

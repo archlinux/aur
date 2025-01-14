@@ -1,5 +1,5 @@
 pkgbase = epson-inkjet-printer-sc-t3100t5100
-	pkgdesc = Epson inkjet printer driver SC-T3100, SC-T5100)
+	pkgdesc = Epson inkjet printer driver (SC-T3100, SC-T5100)
 	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
