@@ -20,7 +20,7 @@
 # 'perl-xml-libxml' 'perl-xml-sax-expat' in makedepends
 
 pkgname=conky-cairo
-pkgver=1.21.8
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Lightweight system monitor for X, Wayland, console, or file/HTTP output (with Cairo/Cairo-Lua support)'
 url='https://github.com/brndnmtthws/conky'
