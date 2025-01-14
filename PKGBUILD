@@ -6,8 +6,8 @@
 pkgname=simple-live-app
 _pkgname=dart_simple_live
 _appname=simple_live_app
-pkgver=1.7.5
-pkgrel=2
+pkgver=1.7.6
+pkgrel=1
 pkgdesc='An app for watching live'
 arch=('x86_64' 'aarch64')
 url='https://github.com/xiaoyaocz/dart_simple_live'
@@ -21,7 +21,7 @@ source=(
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/xiaoyaocz/dart_simple_live/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=('a7c82f551a9eae018e078f6bb186171e5a77920d35a3d75a61d9a593d0a9e4ae'
-            '8cbe9f0b1fe16759139c2c3c77bd6bdbaca2e1dafb8f9dccb3e334c8d1e56a4d')
+            'b7baf050ef362098a528354e63073ee15b5cf5b3c51832c37c8e35baabea71bb')
 case "${CARCH}" in
   "x86_64")
     export _dartarch="x64"
