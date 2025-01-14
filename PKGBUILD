@@ -2,37 +2,28 @@
 # Contributor: Joseph R. Prostko <joe dot prostko at gmail dot com>
 
 pkgname=aptly
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A Swiss Army knife for Debian repository management."
 url="https://www.aptly.info"
 license=('MIT')
-options=('!strip')
 arch=('i686' 'x86_64')
 makedepends=('go')
 source=("https://github.com/aptly-dev/aptly/archive/refs/tags/v${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  export GO11MODULE=on
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOPATH="$srcdir"
-  export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readonly -modcacherw"
-  go build -o aptly_build
+  make build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  install -Dm755 "${pkgname}_build" \
+  install -Dm755 "build/${pkgname}" \
     "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 LICENSE \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "${pkgname}.service" \
+  install -Dm644 "debian/${pkgname}-api.service" \
     -t "${pkgdir}/usr/lib/systemd/system"
 
   install -Dm644 completion.d/aptly \
@@ -43,4 +34,4 @@ package() {
     "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 }
 
-sha256sums=('07e18ce606feb8c86a1f79f7f5dd724079ac27196faa61a2cefa5b599bbb5bb1')
+sha256sums=('4748d722f66859f24096f21c750f5d0961b906f81524ca3542dd1f206698f120')
