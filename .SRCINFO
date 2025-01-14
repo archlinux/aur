@@ -1,6 +1,6 @@
 pkgbase = mondoo
 	pkgdesc = Mondoo Client CLI for the Mondoo Policy as Code Platform
-	pkgver = 11.36.1
+	pkgver = 11.36.2
 	pkgrel = 1
 	url = https://mondoo.com
 	arch = x86_64
