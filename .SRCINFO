@@ -8,6 +8,7 @@ pkgbase = rtthost
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = cargo-auditable
 	depends = gcc-libs
 	depends = systemd-libs
 	optdepends = probe-rs: Other probe-rs binaries

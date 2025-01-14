@@ -1,5 +1,6 @@
 {
-  ".i": 2,
+  ".i": 5,
   "crate": "rtthost",
-  "version": "0.25.0"
+  "version": "0.25.0",
+  "pkgrel": 1
 }

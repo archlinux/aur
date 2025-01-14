@@ -11,7 +11,7 @@ url='https://crates.io/crates/rtthost'
 license=('MIT')
 
 depends=('gcc-libs' 'systemd-libs')
-makedepends=('cargo')
+makedepends=('cargo' 'cargo-auditable')
 optdepends=('probe-rs: Other probe-rs binaries')
 
 source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/rtthost/0.25.0/download")
@@ -35,9 +35,8 @@ build() {
 	export CARGO_TARGET_DIR=target
 	CFLAGS+=" -ffat-lto-objects"
 
-	cargo build \
-		--offline \
-		--locked \
+	cargo auditable build \
+		--frozen \
 		--release
 }
 
