@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=youki
-pkgver=0.4.1
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='A container runtime written in Rust'
 arch=('x86_64')
@@ -16,16 +16,13 @@ optdepends=(
 )
 options=('!lto')
 source=("git+https://github.com/containers/youki.git#tag=v$pkgver")
-sha256sums=('b48a40b11551837fb99e30a9fbc2d06db4e540139aef946e5ea3de2c2da50a41')
+sha256sums=('462b0270c3f67cef279c5eefe2b79432130b992be1132c67b2feacaeda2108c5')
 
 prepare() {
   cd youki
 
   # create directory for build artifacts
   mkdir build
-
-  # v0.3.2 lock file is out of sync
-  cargo update
 
   # download dependencies
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
