@@ -6,6 +6,8 @@ pkgbase = belle-cpu
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = tar
+	provides = belle-cpu
+	conflicts = belle-cpu
 	source = https://github.com/BlueGummi/belle/releases/download/0.2.0/belle.tar.gz
 	md5sums = f8678ce64a72f293b19dfea8de105734
 
