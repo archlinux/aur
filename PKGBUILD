@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ollama/ollama-python/archiv
 
 build() {
 	cd "ollama-python-$pkgver" || exit
-	# Remove poetry plugin dependancies
+	# Remove poetry plugin dependencies
 	sed -i '16,17d' pyproject.toml
 	poetry build -f wheel
 }
