@@ -1,17 +1,17 @@
 pkgbase = dfl-utils
 	pkgdesc = Some utilities for DFL
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/desktop-frameworks/utils
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = meson
 	makedepends = ninja
 	makedepends = qt5-base
 	makedepends = qt6-base
 	source = https://gitlab.com/desktop-frameworks/utils/-/archive/v0.2.0/utils-v0.2.0.tar.gz
-	md5sums = 72851a9dc222e63621a87b1551b77367
+	sha256sums = f6d076ab16d01497f54b2ce5753fca6b39a9a14afa560ad3688f88791282d2b8
 
 pkgname = dfl-utils
 	depends = qt5-base

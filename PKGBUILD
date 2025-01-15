@@ -2,16 +2,24 @@
 
 _pkgname=utils
 pkgbase=dfl-utils
-pkgname=('dfl-utils' 'dfl-utils-qt6')
+pkgname=(
+        'dfl-utils'
+        'dfl-utils-qt6'
+)
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Some utilities for DFL"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
-license=('GPL3')
-makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base')
+license=('GPL-3.0-only')
+makedepends=(
+            'meson'
+            'ninja'
+            'qt5-base'
+            'qt6-base'
+)
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('72851a9dc222e63621a87b1551b77367')
+sha256sums=('f6d076ab16d01497f54b2ce5753fca6b39a9a14afa560ad3688f88791282d2b8')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
