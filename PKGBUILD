@@ -5,11 +5,11 @@
 pkgname="paperless-ngx-venv"
 _pkgname="paperless-ngx"
 pkgver=2.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents (version with bundled dependencies)"
 url="https://docs.paperless-ngx.com/"
 license=("GPL-3.0-or-later")
-arch=("any")
+arch=("x86_64" "aarch64")
 provides=("paperless" "$pkgname")
 conflicts=("paperless" "paperless-ng" "paperless-ngx")
 replaces=("paperless-ngx")
@@ -85,7 +85,6 @@ prepare(){
 
  # workaround for:
  # 	- https://github.com/paperless-ngx/paperless-ngx/issues/6862
- # 	- python3.13
  patch "$srcdir/$_pkgname/requirements.txt" < "$srcdir/requirements.patch"
 
  # create venv
@@ -93,11 +92,12 @@ prepare(){
  python -m venv "$srcdir/venv"
  source "$srcdir/venv/bin/activate"
  pip install -r "$srcdir/$_pkgname/requirements.txt"
+ site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
  deactivate
 
  # fix regex warnings
  for whoosh in filters intraword; do
-	patch "$srcdir/venv/lib/python3.13/site-packages/whoosh/analysis/$whoosh.py" < "$srcdir/whoosh-$whoosh.patch"
+	patch "$site_packages/whoosh/analysis/$whoosh.py" < "$srcdir/whoosh-$whoosh.patch"
  done
 }
 

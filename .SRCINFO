@@ -1,10 +1,11 @@
 pkgbase = paperless-ngx-venv
 	pkgdesc = A supercharged version of paperless: scan, index and archive all your physical documents (version with bundled dependencies)
 	pkgver = 2.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.paperless-ngx.com/
 	install = paperless.install
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = findutils
 	makedepends = mariadb
