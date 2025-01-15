@@ -1,11 +1,11 @@
 pkgbase = dfl-config-parser
 	pkgdesc = A Collection of Config Parsers for DFL
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/desktop-frameworks/config-parser
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = meson
 	makedepends = ninja
 	makedepends = qt5-base
@@ -16,7 +16,7 @@ pkgbase = dfl-config-parser
 	makedepends = glm
 	makedepends = wlroots
 	source = https://gitlab.com/desktop-frameworks/config-parser/-/archive/v0.2.0/config-parser-v0.2.0.tar.gz
-	md5sums = 1eda121f76171f7ad798b4038938bb9b
+	sha256sums = 9732b2aad84b1f7a7d47e5e1549ce427d7f3fbbd0be4d581bb5ccb946321dc7f
 
 pkgname = dfl-colorschemeparser
 	depends = qt5-base

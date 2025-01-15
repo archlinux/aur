@@ -5,16 +5,33 @@
 
 _pkgname=config-parser
 pkgbase=dfl-config-parser
-pkgname=('dfl-colorschemeparser' 'dfl-colorschemeparser-qt6' 'dfl-hjsonparser' 'dfl-hjsonparser-qt6' 'dfl-wayfireparser' 'dfl-wayfireparser-qt6')
+pkgname=(
+        'dfl-colorschemeparser'
+        'dfl-colorschemeparser-qt6'
+        'dfl-hjsonparser'
+        'dfl-hjsonparser-qt6'
+        'dfl-wayfireparser'
+        'dfl-wayfireparser-qt6'
+)
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Collection of Config Parsers for DFL"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
-license=('GPL3')
-makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base' 'dfl-color-utils' 'dfl-color-utils-qt6' 'wayfire>=0.9.0' 'glm' 'wlroots')
+license=('GPL-3.0-only')
+makedepends=(
+            'meson'
+            'ninja'
+            'qt5-base'
+            'qt6-base'
+            'dfl-color-utils'
+            'dfl-color-utils-qt6'
+            'wayfire>=0.9.0'
+            'glm'
+            'wlroots'
+)
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('1eda121f76171f7ad798b4038938bb9b')
+sha256sums=('9732b2aad84b1f7a7d47e5e1549ce427d7f3fbbd0be4d581bb5ccb946321dc7f')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
@@ -30,7 +47,10 @@ build() {
 }
 
 package_dfl-colorschemeparser() {
-  depends=('qt5-base' 'dfl-color-utils')
+  depends=(
+          'qt5-base'
+          'dfl-color-utils'
+  )
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build install
   rm "$pkgdir"/usr/lib/libdf5hjson* "$pkgdir"/usr/lib/libdf5wayfire*
@@ -39,7 +59,10 @@ package_dfl-colorschemeparser() {
 }
 
 package_dfl-colorschemeparser-qt6() {
-  depends=('qt6-base' 'dfl-color-utils-qt6')
+  depends=(
+          'qt6-base'
+          'dfl-color-utils-qt6'
+  )
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build-qt6 install
   rm "$pkgdir"/usr/lib/libdf6hjson* "$pkgdir"/usr/lib/libdf6wayfire*
@@ -66,7 +89,12 @@ package_dfl-hjsonparser-qt6() {
 }
 
 package_dfl-wayfireparser() {
-  depends=('qt5-base' 'wayfire>=0.8.0' 'glm' 'wlroots')
+  depends=(
+          'qt5-base'
+          'wayfire>=0.8.0'
+          'glm'
+          'wlroots'
+  )
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build install
   rm "$pkgdir"/usr/lib/libdf5hjson* "$pkgdir"/usr/lib/libdf5colorschemeparser*
@@ -75,7 +103,12 @@ package_dfl-wayfireparser() {
 }
 
 package_dfl-wayfireparser-qt6() {
-  depends=('qt6-base' 'wayfire>=0.8.0' 'glm' 'wlroots')
+  depends=(
+          'qt6-base'
+          'wayfire>=0.8.0'
+          'glm'
+          'wlroots'
+  )
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build-qt6 install
   rm "$pkgdir"/usr/lib/libdf6hjson* "$pkgdir"/usr/lib/libdf6colorschemeparser*
