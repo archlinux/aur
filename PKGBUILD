@@ -4,11 +4,11 @@
 pkgname=hlint-static-git
 _pkgname="${pkgname%-static-git}"
 pkgver=3.8.r68.g7dfba720
-pkgrel=1
+pkgrel=2
 pkgdesc='Haskell source code suggestions'
 arch=('i686' 'x86_64')
 url="https://github.com/ndmitchell/${_pkgname}"
-license=('LicenseRef-BSD-3-Clause')
+license=('BSD-3-Clause')
 provides=('hlint')
 conflicts=('hlint' 'hlint-bin')
 depends=('gmp')
