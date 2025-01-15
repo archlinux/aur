@@ -1,0 +1,17 @@
+pkgbase = pbgopy-bin
+	pkgdesc = Copy and paste between devices
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/nakabonne/pbgopy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = pbgopy
+	conflicts = pbgopy
+	source_x86_64 = https://github.com/nakabonne/pbgopy/releases/download/v0.3.0/pbgopy_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 10e4912497415d3f87812d8d967337210ea8d1d1a2824f7178ccfade576a3cc5
+	source_aarch64 = https://github.com/nakabonne/pbgopy/releases/download/v0.3.0/pbgopy_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5204a1e79ef30c46bcf5f7a02274141b3cc6f3395aef9c8957ab4d90c97fe4c0
+
+pkgname = pbgopy-bin
