@@ -2,7 +2,7 @@
 
 pkgname=tt-flash-git
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tenstorrent Firmware Update Utility"
 arch=('any')
 url='https://github.com/tenstorrent/tt-flash'
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd tt-flash
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
 }
 
 build() {
