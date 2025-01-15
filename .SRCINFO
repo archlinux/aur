@@ -1,7 +1,7 @@
 pkgbase = 2s2h-bin
 	pkgdesc = An unofficial port of The Legend of Zelda Majora's Mask Binary package
-	pkgver = 1.1.1.2
-	pkgrel = 1
+	pkgver = 1.1.2
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/2s2h
 	arch = x86_64
 	arch = aarch64
@@ -18,11 +18,11 @@ pkgbase = 2s2h-bin
 	depends = spdlog
 	source = https://gitlab.com/linuxbombay/2s2h/2s2h/-/archive/1.0.4/2s2h-1.0.4.tar.bz2
 	sha256sums = 097756d12a430c7dfb1a00037bb82de4f7b346fdfa6138c298223cb3b134e4e2
-	source_x86_64 = https://gitlab.com/linuxbombay/2s2h/binaries/1.1.1.2/-/raw/main/2s2h-linux-x64.tar.xz
+	source_x86_64 = 2s2h-1.1.2-linux-x64.tar.xz::https://gitlab.com/linuxbombay/2s2h/binaries/1.1.2/-/raw/main/2s2h-linux-x64.tar.xz
 	sha256sums_x86_64 = c4fbe761b355138526df526f3d2f5edb1236baaff5958f73a906f9d127051f3a
-	source_aarch64 = https://gitlab.com/linuxbombay/2s2h/binaries/1.1.1.2/-/raw/main/2s2h-linux-arm64.tar.xz
-	sha256sums_aarch64 = cb5d3bf99c53eb86cb9c5578af9a46cf7d4ff8e160daf8d2ba84a7cf01fbbcd2
-	source_i686 = https://gitlab.com/linuxbombay/2s2h/binaries/1.1.1.2/-/raw/main/2s2h-linux-i686.tar.xz
+	source_aarch64 = 2s2h-1.1.2-linux-arm64.tar.xz::https://gitlab.com/linuxbombay/2s2h/binaries/1.1.2/-/raw/main/2s2h-linux-arm64.tar.xz
+	sha256sums_aarch64 = 8e5a80fe4b2793b419311eb0eea72111f3e4a4efa1c9a922a0a4ea9c0df175a9
+	source_i686 = 2s2h-1.1.2-linux-i686.tar.xz::https://gitlab.com/linuxbombay/2s2h/binaries/1.1.2/-/raw/main/2s2h-linux-i686.tar.xz
 	sha256sums_i686 = ff3930264b5d32fa5c4770df1fa2f28ac9196c29cb4013c0853e0c419d7ff774
 
 pkgname = 2s2h-bin
