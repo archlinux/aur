@@ -2,7 +2,7 @@
 
 pkgname=tt-topology-git
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Tenstorrent Topology (TT-Topology) is a command line utility used to flash multiple NB cards on a system to use specific eth routing configurations."
 arch=('any')
 url='https://github.com/tenstorrent/tt-topology'
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd tt-topology
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
 }
 
 build() {

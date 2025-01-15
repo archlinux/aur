@@ -1,7 +1,7 @@
 pkgbase = tt-topology-git
 	pkgdesc = Tenstorrent Topology (TT-Topology) is a command line utility used to flash multiple NB cards on a system to use specific eth routing configurations.
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tenstorrent/tt-topology
 	arch = any
 	license = Apache
