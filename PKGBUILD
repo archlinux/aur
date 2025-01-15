@@ -1,7 +1,7 @@
 # Maintainer: Paul Jones <paul@spacefreak18.xyz>
 _reponame=monocoque
 pkgname=monocoque-git
-pkgver=0.1.0r94
+pkgver=0.1.0r104
 pkgrel=1
 pkgdesc="Device Manager for Racing Sims"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
 	libxml2
 	argtable
 	libconfig
-	pulse-native-provider
+	libpulse
 	libxdg-basedir
 	libuv
 )
