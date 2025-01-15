@@ -2,12 +2,12 @@
 
 pkgname=anchor
 pkgver=0.30.1
-pkgrel=2
+pkgrel=4
 pkgdesc='⚓ Solana Sealevel Framework'
 arch=(x86_64)
 url='https://www.anchor-lang.com'
 license=(Apache-2.0)
-depends=(cargo gcc-libs glibc nodejs)
+depends=(cargo gcc-libs glibc nodejs yarn)
 makedepends=(git)
 source=("git+https://github.com/coral-xyz/$pkgname.git#tag=v$pkgver")
 sha256sums=('f8f0b5c97041470e2a601dc0cc6f4765660028c2f3009813eda9caeb9fcba625')
