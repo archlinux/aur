@@ -3,9 +3,9 @@
 _model="stylus-pro-4880-series"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Epson inkjet printer driver (Stylus Pro 4880, 4880C)"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:Epson End User Software License Agreement')
 depends=('epson-inkjet-printer-filter' 'gcc-libs' 'glibc')
@@ -14,6 +14,15 @@ DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o
 source=("https://download.ebz.epson.net/dsc/f/01/00/01/58/24/5c4f48d4191dbd7ae8e26ca00782352929dbff94/${_pkgsrc}-1lsb3.2.src.rpm")
 md5sums=('b7ef3755ec4560ed8a75bcfca3677439')
 sha256sums=('00af057e56bdbfaf44547d0c65c11e280eecda45ec1c216a369a08fe3dc665c0')
+
+case "${CARCH}" in
+  x86_64)
+    _bit="64"
+    ;;
+  i686)
+    _bit=""
+    ;;
+esac
 
 prepare() {
   cd "${srcdir}"
@@ -44,7 +53,7 @@ package() {
   find . -type f -exec \
     install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
 
-  cd "${srcdir}/${_pkgsrc}/lib64"
+  cd "${srcdir}/${_pkgsrc}/lib${_bit}"
   find . -type f -exec \
     install -vDm644 "{}" "${pkgdir}/usr/lib/{}" \;
 
