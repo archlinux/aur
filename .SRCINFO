@@ -1,6 +1,6 @@
 pkgbase = libtiff-lerc
 	pkgdesc = Library for manipulation of TIFF images
-	pkgver = 4.6.0
+	pkgver = 4.7.0
 	pkgrel = 1
 	url = http://www.simplesystems.org/libtiff/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = libtiff-lerc
 	provides = libtiff.so
 	provides = libtiffxx.so
 	conflicts = libtiff
-	source = https://download.osgeo.org/libtiff/tiff-4.6.0.tar.gz
-	b2sums = aa3d51ffb7d800424a05e6a12e2eaad41adfe7d676650d2857bcc073a25627be88372410a27126e9c067692060c26bd2dec80a42a2188197f6f3ff9d8507fc8f
+	source = https://download.osgeo.org/libtiff/tiff-4.7.0.tar.gz
+	b2sums = 156ad8a9058363885dc0607ab4538fba4cc802041c4b04ea1ac540191168c98c0caa8f2c5b07e6327d5b2ccec1bef3e08dbe70b6be7329738da8f93b76fb3994
 
 pkgname = libtiff-lerc
