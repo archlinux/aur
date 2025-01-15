@@ -1,12 +1,12 @@
 pkgbase = amiberry
 	pkgdesc = Amiga Emulator for various ARM, ARM64, AMD64 and RISC-V platforms
-	pkgver = 7.0.0.rc3
-	pkgrel = 1
+	pkgver = 7.0.0
+	pkgrel = 0
 	url = https://github.com/BlitterStudio/amiberry
 	arch = x86_64
 	arch = armv7
 	arch = aarch64
-	license = GPL-3.0-only
+	license = GPL3
 	makedepends = glibc
 	makedepends = git
 	makedepends = cmake
@@ -20,14 +20,12 @@ pkgbase = amiberry
 	depends = libserialport
 	depends = portmidi
 	depends = hicolor-icon-theme
-	depends = zlib
-	depends = gcc-libs
-	depends = libpng
-	provides = amiberry=7.0.0.rc3
+	depends = enet
+	provides = amiberry=7.0.0
 	conflicts = amiberry-git
 	conflicts = amiberry-lite
 	options = !lto
-	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#commit=203c6cdf33ab3e825a537eea588fa3c2b52f02fb
+	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#commit=8196671d573c07d45fa90f9d3d55d3e67d4ad959
 	sha256sums = SKIP
 
 pkgname = amiberry

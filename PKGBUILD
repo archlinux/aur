@@ -2,17 +2,17 @@
 # Maintainer: Chandler Klüser <chandler.kluser@gmail.com>
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 pkgname=amiberry
-pkgver=7.0.0.rc3
-pkgrel=1
+pkgver=7.0.0
+pkgrel=0
 pkgdesc="Amiga Emulator for various ARM, ARM64, AMD64 and RISC-V platforms"
 arch=('x86_64' 'armv7' 'aarch64')
 url="https://github.com/BlitterStudio/amiberry"
-license=('GPL-3.0-only')
-depends=('flac' 'sdl2' 'sdl2_image' 'sdl2_ttf' 'mpg123' 'libmpeg2' 'libserialport' 'portmidi' 'hicolor-icon-theme' 'zlib' 'gcc-libs' 'libpng')
+license=('GPL3')
+depends=('flac' 'sdl2' 'sdl2_image' 'sdl2_ttf' 'mpg123' 'libmpeg2' 'libserialport' 'portmidi' 'hicolor-icon-theme' 'enet')
 makedepends=('glibc' 'git' 'cmake' 'ninja')
 provides=("amiberry=${pkgver}")
 conflicts=('amiberry-git' 'amiberry-lite')
-source=(${pkgname%-git}::'git+https://github.com/BlitterStudio/amiberry.git#commit=203c6cdf33ab3e825a537eea588fa3c2b52f02fb')
+source=(${pkgname%-git}::'git+https://github.com/BlitterStudio/amiberry.git#commit=8196671d573c07d45fa90f9d3d55d3e67d4ad959')
 sha256sums=('SKIP')
 options=('!lto')
 
@@ -21,8 +21,9 @@ build() {
   cmake \
   -B build \
   -DCMAKE_BUILD_TYPE=Release \
-  -DCMAKE_INSTALL_PREFIX=/usr
-  cmake --build build
+  -G Ninja \
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  && cmake --build build
 }
 
 package() {
