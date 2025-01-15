@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-web-server
 _pkgname="Simple Web Server"
-pkgver=1.2.14
+pkgver=1.2.15
 _electronversion=33
 _nodeversion=22
 pkgrel=1
@@ -24,7 +24,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('c610eb97d3fd9df503cca095cc6e0ea5c61c39439fc75cdd55cdf82e2676280e'
+sha256sums=('ae25d6deff03c9369b98cba2d05c10112f6a60f567a984a0977f74642a82a3fb'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
