@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio-git
 _pkgname="Cherry Studio"
-pkgver=0.9.6.r0.g53d5ea4
+pkgver=0.9.10.r3.g3ef0a0a
 _electronversion=31
 _nodeversion=20
 pkgrel=1
 pkgdesc="🍒 Cherry Studio is a desktop client that supports for multiple LLM providers.(Use system-wide electron)"
 arch=('any')
 url="https://cherry-ai.com/"
-_ghurl="https://github.com/kangfenmao/cherry-studio"
+_ghurl="https://github.com/CherryHQ/cherry-studio"
 license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
