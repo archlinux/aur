@@ -1,18 +1,12 @@
 pkgbase = jq-git
 	pkgdesc = Command-line JSON processor
-	pkgver = 1.6rc2.3.g0c845aa
+	pkgver = 1.7.1.r83.g588ff187
 	pkgrel = 1
 	url = http://stedolan.github.io/jq/
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = python2
 	makedepends = git
-	makedepends = autoconf
-	makedepends = automake
-	makedepends = bison
-	makedepends = flex
-	makedepends = glibc
 	depends = oniguruma
 	provides = jq
 	conflicts = jq
@@ -20,4 +14,3 @@ pkgbase = jq-git
 	sha512sums = SKIP
 
 pkgname = jq-git
-
