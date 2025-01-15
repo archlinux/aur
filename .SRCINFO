@@ -11,7 +11,7 @@ pkgbase = stack-clean-old-static-git
 	depends = gmp
 	depends = ncurses
 	provides = stack-clean-old
-	source = git+https://github.com/juhp/stack-clean-old.git
+	source = stack-clean-old-static-git::git+https://github.com/juhp/stack-clean-old.git
 	sha256sums = SKIP
 
 pkgname = stack-clean-old-static-git
