@@ -36,6 +36,6 @@ build() {
 
 package() {
 	cd $srcdir/$pkgname
-	install -vDm777 -t $pkgdir/usr/bin candle
-	install -vDm777 -t $pkgdir/usr/bin highlight/cndlh
+	install -vDm751 -t $pkgdir/usr/bin candle
+	install -vDm751 -t $pkgdir/usr/bin highlight/cndlh
 }
