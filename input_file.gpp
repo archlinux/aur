@@ -1,0 +1,9 @@
+#define FOO This is
+#define BAR a message.
+#define concat #1 #2
+concat(FOO,BAR)
+#ifeq (concat(foo,bar)) (foo bar)
+This is output.
+#else
+This is not output.
+#endif

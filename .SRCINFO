@@ -1,7 +1,7 @@
 pkgbase = gpp
 	pkgdesc = A general-purpose preprocessor with customizable syntax, suitable for a wide range of preprocessing tasks
 	pkgver = 2.28
-	pkgrel = 3
+	pkgrel = 4
 	url = https://logological.org/gpp
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,11 @@ pkgbase = gpp
 	license = X11
 	depends = glibc
 	source = gpp::git+https://github.com/logological/gpp.git#tag=2.28
+	source = expected_output.txt
+	source = input_file.gpp
 	validpgpkeys = 28F47A15AB82C216D278DEB92B119C3AEFBF4915
 	sha256sums = b75e2a19d22fa8cbc2649edb99fc0f57fac1b3e990fd775f1fd123c35b63c7da
+	sha256sums = 5b19c6214d45454d937f7a115967fd769f5438185319b176f9f7e98558bda736
+	sha256sums = b5cbd0a32fafa5792bdcda80b6156b3339629836c7bda6ae6a7c0a21e3805bf2
 
 pkgname = gpp
