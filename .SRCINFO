@@ -1,8 +1,9 @@
 pkgbase = hlint-static-git
 	pkgdesc = Haskell source code suggestions
-	pkgver = 3.8.r57.g2a789a94
+	pkgver = 3.8.r68.g7dfba720
 	pkgrel = 1
 	url = https://github.com/ndmitchell/hlint
+	arch = i686
 	arch = x86_64
 	license = LicenseRef-BSD-3-Clause
 	makedepends = git
@@ -12,7 +13,7 @@ pkgbase = hlint-static-git
 	provides = hlint
 	conflicts = hlint
 	conflicts = hlint-bin
-	source = hlint-static-git::git+https://github.com/ndmitchell/hlint
+	source = hlint-static-git::git+https://github.com/ndmitchell/hlint.git
 	sha256sums = SKIP
 
 pkgname = hlint-static-git

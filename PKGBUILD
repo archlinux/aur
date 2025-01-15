@@ -2,45 +2,50 @@
 # Contributor: Dino Morelli <dino@ui3.info>
 
 pkgname=hlint-static-git
-pkgver=3.8.r57.g2a789a94
+_pkgname="${pkgname%-static-git}"
+pkgver=3.8.r68.g7dfba720
 pkgrel=1
 pkgdesc='Haskell source code suggestions'
-arch=('x86_64')
-url="https://github.com/ndmitchell/hlint"
+arch=('i686' 'x86_64')
+url="https://github.com/ndmitchell/${_pkgname}"
 license=('LicenseRef-BSD-3-Clause')
-makedepends=('git' 'cabal-install')
-optdepends=('haskell-apply-refact: automatically apply suggested refactorings')
-depends=('gmp')
 provides=('hlint')
 conflicts=('hlint' 'hlint-bin')
-source=("${pkgname}::git+${url}")
+depends=('gmp')
+makedepends=('git' 'cabal-install')
+optdepends=('haskell-apply-refact: automatically apply suggested refactorings')
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$pkgname"
+  git describe --tags --long \
+    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$pkgname"
-    cabal update
-    cabal build --only-dependencies
+  cd "$pkgname"
+  cabal update
+  cabal configure --prefix=/usr --docdir=/usr/share/doc/"$pkgname" \
+    --enable-tests
+  cabal build --only-dependencies
 }
 
 build() {
-    cd "$pkgname"
-    cabal configure --prefix=/usr --docdir=/usr/share/doc/$pkgname
-    cabal build --offline
+  cd "$pkgname"
+  cabal build --offline
 }
 
 check() {
-    cd "$pkgname"
-    cabal run -- hlint --test
+  cd "$pkgname"
+  cabal run -- hlint --test
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    mkdir -p "${pkgdir}/usr/bin"
-    cabal install --install-method=copy --installdir "${pkgdir}/usr/bin"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$pkgname"
+  mkdir -p "$pkgdir/usr/bin"
+  cabal install --install-method=copy --installdir "$pkgdir/usr/bin"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim:set ts=2 sw=2 et
