@@ -18,12 +18,13 @@ source_aarch64=("https://gitlab.com/linuxbombay/planetblupi/binaries/$pkgver/-/r
 
 package() {
     install -dm755 "$pkgdir/usr/share/planetblupi"
+    install -dm755 "$pkgdir/usr/lib"
     install -dm644 "$pkgdir/usr/share/icons"
     install -dm755 "$pkgdir/usr/share/applications"
     install -dm755 "$pkgdir/usr/bin"
     
     #Lib fix only applies for Arm64
-    if [ ! -e /usr/lib/libminiupnpc.so.17 ]; then
+    if [ ! -e /usr/lib/libjxl.so.0.10 ]; then
       ln -s /usr/lib/libjxl.so $pkgdir/usr/lib/libjxl.so.0.10
     fi
     cp -r "$srcdir/planetblupi/share/planetblupi" "$pkgdir/usr/share"
