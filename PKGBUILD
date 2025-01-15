@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-tilingshell
 _uuid=tilingshell@ferrarodomenico.com
-pkgver=16.0
+pkgver=16.1
 pkgrel=1
 _nodeversion=20
 pkgdesc="Extend GNOME Shell with advanced tiling window management."
@@ -9,9 +9,12 @@ arch=('any')
 url="https://github.com/domferr/tilingshell"
 license=('GPL-2.0-or-later')
 depends=('gnome-shell')
-makedepends=('nvm' 'zip')
+makedepends=(
+  'nvm'
+  'zip'
+)
 source=("tilingshell-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('85460bedc1799fd3ad3f6e55c6520ed03385f3a6ad68f4cf048c663ba5d98c22')
+sha256sums=('e5d4364f0b85f94a2c8c6dc0bcad988bf1e6c3fd6ce14466f05cf5e7664fd25e')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
