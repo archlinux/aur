@@ -1,6 +1,6 @@
 pkgbase = fishing-funds-git
 	pkgdesc = 基金,大盘,股票,虚拟货币状态栏显示小应用,基于Electron开发.
-	pkgver = 8.3.0.r1.gf27f95d
+	pkgver = 8.4.0.r0.gd7d3b49
 	pkgrel = 1
 	url = https://ff.1zilc.top/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = fishing-funds-git
 	makedepends = curl
 	makedepends = git
 	makedepends = pnpm
-	depends = electron33
-	provides = fishing-funds=8.3.0
+	depends = electron34
+	provides = fishing-funds=8.4.0
 	conflicts = fishing-funds
 	source = fishing-funds.git::git+https://github.com/1zilc/fishing-funds.git
 	source = fishing-funds.sh
