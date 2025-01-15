@@ -1,0 +1,14 @@
+pkgbase = python-mkdocs-autolinks-plugin
+	pkgdesc = An MkDocs plugin that automagically generates relative links between markdown pages
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/zachhannum/mkdocs-autolinks-plugin
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = mkdocs
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs-autolinks-plugin/mkdocs-autolinks-plugin-0.7.1.tar.gz
+	sha256sums = 445ddb9b417b7795856c30801bb430773186c1daf210bdeecf8305f55a47d151
+
+pkgname = python-mkdocs-autolinks-plugin
