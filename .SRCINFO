@@ -1,6 +1,6 @@
 pkgbase = varchiver
 	pkgdesc = A variable archiver and github/aur release manager (serialize your variables first)
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://github.com/instancer-kirik/varchiver
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = varchiver
 	depends = python-pyqt6
 	depends = python-pyqt6-webengine
 	depends = python-uv
-	source = varchiver-0.4.6.tar.gz::https://github.com/instancer-kirik/varchiver/archive/v0.4.6.tar.gz
-	sha256sums = 4879a6fc65a0a3e933e81cec22d9d147de216a935f393cdeff7e2b649aff354c
+	source = varchiver-0.4.7.tar.gz::https://github.com/instancer-kirik/varchiver/archive/v0.4.7.tar.gz
+	sha256sums = f81da596091baf3c572b8969b9ab1a3923f506001142723d90c3652b24d3e773
 
 pkgname = varchiver
