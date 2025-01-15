@@ -1,12 +1,11 @@
 pkgbase = procps-ng-git
 	pkgdesc = Utilities for monitoring your system and its processes
-	pkgver = 4.0.1.r3.g474e22eb
+	pkgver = 4.0.5.r6.g4740a0ef
 	pkgrel = 1
 	url = https://gitlab.com/procps-ng/procps
-	arch = i686
 	arch = x86_64
-	license = GPL2
-	license = LGPL2
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
 	makedepends = git
 	makedepends = m4
 	makedepends = autoconf

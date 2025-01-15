@@ -1,15 +1,16 @@
-# Maintainer: UnicornDarkness
+# Maintainer: a821 at (nospam) mail de
+# Contributor: UnicornDarkness
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 _realname=procps
 pkgname=procps-ng-git
-pkgver=4.0.1.r3.g474e22eb
+pkgver=4.0.5.r6.g4740a0ef
 pkgrel=1
 pkgdesc='Utilities for monitoring your system and its processes'
 url='https://gitlab.com/procps-ng/procps'
-license=('GPL2' 'LGPL2')
-arch=('i686' 'x86_64')
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
+arch=('x86_64')
 depends=('glibc' 'ncurses' 'libncursesw.so' 'systemd-libs')
 makedepends=('git' 'm4' 'autoconf' 'libtool' 'systemd')
 conflicts=('procps' 'procps-ng' 'sysvinit-tools')
@@ -22,11 +23,6 @@ sha512sums=('SKIP')
 pkgver() {
 	cd "$_realname"
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd "$_realname"
-	sed 's:<ncursesw/:<:g' -i src/watch.c
 }
 
 build() {
