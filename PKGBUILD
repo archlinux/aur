@@ -2,7 +2,7 @@
 
 pkgname=dislocker
 pkgver=0.7.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Read/write BitLocker-encrypted volumes"
 arch=('i686' 'x86_64')
 url="https://github.com/Aorimn/dislocker"
@@ -22,7 +22,7 @@ build() {
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -Dlibdir=/usr/lib \
-        -DC_INCLUDE_PATH="$C_INCLUDE_PATH:/usr/include/ruby-3.0.0/" \
+        -DC_INCLUDE_PATH="$C_INCLUDE_PATH:/usr/include/ruby-3.3.5/" \
         -D WARN_FLAGS:STRING="-Wall -Wextra" \
 
   # Fix mbedtls3 incompatibility
