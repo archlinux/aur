@@ -3,12 +3,13 @@
 pkgname=ghcid-static-git
 _pkgname="${pkgname%-static-git}"
 pkgver=0.8.9.r1.gb7dc5c4
-pkgrel=2
+pkgrel=3
 pkgdesc='GHCi based bare bones IDE'
 arch=('i686' 'x86_64')
 url="https://github.com/ndmitchell/${_pkgname}"
 license=('BSD-3-Clause')
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 depends=('gmp')
 makedepends=('git' 'cabal-install')
 source=("$pkgname::git+$url.git")
