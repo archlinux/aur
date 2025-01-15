@@ -1,0 +1,6 @@
+/pkg
+/src
+/*.pkg.tar
+/*.tar.gz
+/btrfs-data-recovery
+
