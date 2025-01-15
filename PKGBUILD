@@ -1,14 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-screenshot-git
-pkgver=1.0.0.alpha.1.r0.g031eb66
-pkgrel=5
+pkgver=1.0.0.alpha.5.1.r0.g10a564d
+pkgrel=1
 pkgdesc="Utility for capturing screenshots via XDG Desktop Portal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-screenshot"
 license=('GPL-3.0-or-later')
-depends=(
-  'xdg-desktop-portal-cosmic-git'
-)
+depends=('xdg-desktop-portal-cosmic-git')
 makedepends=(
   'cargo'
   'git'
@@ -17,10 +15,8 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/pop-os/cosmic-screenshot.git'
-        'lto.patch')
-sha256sums=('SKIP'
-            '8d28dda22fe8cff909bdb9dfc241ba2e426c835800a4f63c7ee5cab3f3b72743')
+source=('git+https://github.com/pop-os/cosmic-screenshot.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -29,10 +25,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-
-  # Use thin LTO
-  patch -Np1 -i ../lto.patch
-
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
