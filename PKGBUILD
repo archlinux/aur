@@ -10,14 +10,13 @@ _pandoc_type=stock
 _pandoc_ver=3.6.2
 _pandoc_lua_ver=0.4.1
 _pandoc_commit=fd496848d8a9799edc5095ed3134522a9c14ad11
-pkgrel=1
+pkgrel=2
 pkgdesc='Pandoc filter for cross-references (static build)'
 arch=('i686' 'x86_64')
 url="https://github.com/lierdakil/${_pkgname}"
 license=('GPL-2.0-or-later')
-conflicts=("pandoc-crossref")
 provides=("$_pkgname=${pkgver%%.r*}")
-replaces=('pandoc-crossref-bin' 'pandoc-crossref-static' 'pandoc-crossref-lite')
+conflicts=("$_pkgname")
 depends=('gmp' "pandoc=$_pandoc_ver" 'zlib')
 makedepends=('git' 'stack' 'pandoc' 'yq')
 source=("$pkgname::git+$url.git")
