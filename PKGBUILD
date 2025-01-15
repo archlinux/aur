@@ -1,17 +1,16 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
-
+# Maintainer: Dan Johansen <strit@strits.dk>
 
 pkgname=lifx-onboard-git
-pkgver=4.abf83cd
+pkgver=5.ea3754c
 pkgrel=1
 pkgdesc='Onboard your LIFX bulbs to your network'
 arch=('any')
 url="https://github.com/tserong/lifx-hacks"
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 depends=('python')
 makedepends=('git')
 source=("git+https://github.com/tserong/lifx-hacks.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd lifx-hacks
@@ -23,4 +22,3 @@ package() {
   install -d "${pkgdir}/usr/bin/"
   install -Dm755 onboard.py "${pkgdir}/usr/bin/onboard"
 }
-

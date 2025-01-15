@@ -1,14 +1,13 @@
 pkgbase = lifx-onboard-git
 	pkgdesc = Onboard your LIFX bulbs to your network
-	pkgver = 4.abf83cd
+	pkgver = 5.ea3754c
 	pkgrel = 1
 	url = https://github.com/tserong/lifx-hacks
 	arch = any
-	license = AGPL3
+	license = AGPL-3.0-or-later
 	makedepends = git
 	depends = python
 	source = git+https://github.com/tserong/lifx-hacks.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = lifx-onboard-git
-
