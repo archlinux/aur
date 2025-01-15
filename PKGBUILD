@@ -7,13 +7,14 @@ arch=('any')
 url="https://github.com/Dr-42/time-scheduler-client"
 license=('bsd-2-clause')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
-makedepends=('git' 'file' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rustup' 'npm' 'nodejs' 'dpkg' 'pnpm')
+makedepends=('git' 'file' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'cargo' 'nodejs' 'dpkg' 'pnpm')
 provides=('time-scheduler-client')
 conflicts=('time-scheduler-client' 'time-scheduler-client')
 options=('!strip' '!emptydirs')
 source=('git+https://github.com/Dr-42/time-scheduler-client.git')
 sha256sums=('SKIP')
 prepare() {
+  export RUSTUP_TOOLCHAIN=stable
   cd time-scheduler-client
   pnpm install
   pnpm tauri build
