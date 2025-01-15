@@ -14,6 +14,7 @@ pkgbase = soh-bin
 	depends = libzip
 	depends = zenity
 	depends = tinyxml2
+	depends = spdlog
 	source = https://gitlab.com/linuxbombay/soh/shipwright/-/archive/1.0.0/shipwright-1.0.0.tar.bz2
 	sha256sums = 59dabfcc0744b2b727d704d4ec5fb63f68f874d2db3a5600495f7d6f3b75c6d4
 	source_i686 = soh-8.0.6-linux-i686.tar.xz::https://gitlab.com/linuxbombay/soh/binaries/8.0.6/-/raw/main/soh-linux-i686.tar.xz

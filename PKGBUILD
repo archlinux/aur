@@ -6,7 +6,7 @@ pkgdesc="Ship of Harkinian Reimplimentation engine"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/soh"
 license=('GPL')
-depends=('sdl2' 'sdl2_net' 'libpng' 'libzip' 'zenity' 'tinyxml2')
+depends=('sdl2' 'sdl2_net' 'libpng' 'libzip' 'zenity' 'tinyxml2' 'spdlog')
 makedepends=('unzip')
 sha256sums=('59dabfcc0744b2b727d704d4ec5fb63f68f874d2db3a5600495f7d6f3b75c6d4')
 sha256sums_i686=('05d489e704334046e6f192557078747cdb5ac8bcb715cc6b97d60d21e621e90b')
@@ -25,7 +25,10 @@ package() {
     install -dm644 "$pkgdir/usr/share/pixmaps"
     
     find "$srcdir" -type f \( -name "soh" -o -name "*.ini" -o -name "*.json" -o -name "*.otr" \) -exec cp -r {} "$pkgdir/usr/share/games/Shipwright" \;
-    find "$srcdir/usr/lib" -type f \(  -name "*.so.10" -o -name "*.so.10.2.0" -o -name "*.libspdlog.so.1.13" -o -name "*.libspdlog.so.1.13.0" \) -exec bash -c 'test ! -e /usr/lib/$(basename {}) && cp -r {} "$pkgdir/usr/lib"' \;
+    #Lib fix only applies for Arm64
+    if [ -d "$srcdir/usr/lib" ]; then
+     find "$srcdir/usr/lib" -type f \( -name "*.so.10" -o -name "*.so.10.2.0" -o -name "*.libspdlog.so.1.13" -o -name "*.libspdlog.so.1.13.0" \) -exec bash -c 'test ! -e /usr/lib/$(basename {}) && cp -r {} "$pkgdir/usr/lib"' \;
+    fi
     cp -r "$srcdir/assets" "$pkgdir/usr/share/games/Shipwright"
     install -Dm755 "$srcdir/shipwright-$scriptver/soh.sh" "$pkgdir/usr/bin/soh"
     install -Dm644 "$srcdir/shipwright-$scriptver/soh.png" "$pkgdir/usr/share/pixmaps"
