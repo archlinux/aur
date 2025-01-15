@@ -5,7 +5,7 @@ _subver=1
 pkgver="${_pkgver}_${_subver}"
 _electronversion=33
 _nodeversion=18
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux version based on Beilai official client porting supports roaming.(Use system-wide electron).基于哔哩哔哩官方客户端移植的Linux版本,支持漫游"
 arch=(
     'aarch64'
@@ -75,7 +75,7 @@ prepare() {
         echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
         echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
-        sed -i "s/mkdir tmp/mkdir tmp \&\& cp .npmrc tmp/g" tools/fix-other.sh
+        sed -i "s/mkdir tmp/mkdir tmp \&\& cp ..\/..\/..\/.npmrc tmp/g" tools/fix-other.sh
     fi
     sed -i "s/\"electronVersion\": \"[^\"]*\"/\"electronVersion\": \"${SYSTEM_ELECTRON_VERSION}\"/g" conf/build.json
     NODE_ENV=development    pnpm install
