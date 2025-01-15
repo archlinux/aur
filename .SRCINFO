@@ -1,7 +1,7 @@
 pkgbase = python-mmengine
 	pkgdesc = OpenMMLab Foundational Library for Training Deep Learning Models
-	pkgver = 0.10.5
-	pkgrel = 3
+	pkgver = 0.10.6
+	pkgrel = 1
 	url = https://github.com/open-mmlab/mmengine
 	arch = any
 	license = Apache-2.0
@@ -15,9 +15,9 @@ pkgbase = python-mmengine
 	depends = python-termcolor
 	depends = python-yaml
 	depends = yapf
-	source = mmengine-0.10.5.tar.gz::https://github.com/open-mmlab/mmengine/archive/refs/tags/v0.10.5.tar.gz
+	source = mmengine-0.10.6.tar.gz::https://github.com/open-mmlab/mmengine/archive/refs/tags/v0.10.6.tar.gz
 	source = https://github.com/open-mmlab/mmengine/pull/1610.patch
-	sha512sums = 76bb9c6dd4d9755a7105410a1c2ca9771364c08f495058dac746a99053b2533acaf714d7246b9904140e1c9985aa1d97c201035d0a0b925e2fae7cb3ad1d3c2f
+	sha512sums = 2df55a56737cbf8df3ee5c322cca09c9d2c78a01ee1d9fb78079a9db5ea703a41b8d7b682422f52f4681101efdcf976b3d235edea2b639999275d7596ed13f80
 	sha512sums = fbb36fdd3715f41ce5cefe4fbc8deaccf2a125d72d69acf5574fb09f0f5fadef7b874a52623bd38656c25577d0573e2ee31729e8217b5f9e4c5d1a83e6eb9719
 
 pkgname = python-mmengine
