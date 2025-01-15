@@ -1,0 +1,3 @@
+[python-llama-cpp-cuda]
+source = "pypi"
+pypi = "llama-cpp-python"
