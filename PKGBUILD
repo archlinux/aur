@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wallet-recovery-wizard-bin
 _pkgname=Wallet.Recovery.Wizard
-pkgver=4.33.1
+pkgver=4.34.0
 _electronversion=22
 pkgrel=1
 pkgdesc="Electron-based home for all BitGo recovery tools ⛓️🔮.(Prebuilt version.Use system-wide electron)"
@@ -20,15 +20,15 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-Linux-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('184bc58d0b4318ad1c6dde5aaba66f3ccbb59dcc8e86e195ff76c26165c48d70'
+sha256sums=('04b8de0a170f79675c59cce761440655870482faeca3fd517a996b30cbc58b47'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+        s/@options@//g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
