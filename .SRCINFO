@@ -1,11 +1,12 @@
 pkgbase = python-posthog
 	pkgdesc = Integrate PostHog into any python application.
-	pkgver = 3.7.5
+	pkgver = 3.8.3
 	pkgrel = 1
 	url = https://posthog.com/docs/libraries/python
 	arch = any
 	license = MIT
 	checkdepends = python-freezegun
+	checkdepends = python-openai
 	checkdepends = python-pytest
 	checkdepends = python-pytest-timeout
 	makedepends = python-build
@@ -17,7 +18,8 @@ pkgbase = python-posthog
 	depends = python-monotonic
 	depends = python-requests
 	depends = python-six
-	source = posthog-python-3.7.5.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v3.7.5.tar.gz
-	sha256sums = 2a88d2837c36aa327e198d0c0cc7042e6a74f207a0862bd0abeddf4ddc585f14
+	optdepends = python-openai: OpenAI SDK support
+	source = posthog-python-3.8.3.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v3.8.3.tar.gz
+	sha256sums = 4c080f9910a44d0f7bd4fcfc6f51f40a5aabb75b5e9f197ac946aa8e43a1648e
 
 pkgname = python-posthog
