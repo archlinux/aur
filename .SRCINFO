@@ -1,7 +1,7 @@
 pkgbase = vnrez
 pkgdesc = All-in-one Linux tool for recording, screenshots to share your files online.
-pkgver = 2.2
-pkgrel = 1
+pkgver = 2.1
+pkgrel = 2
 url = https://github.com/verysillycat/vnrez
 arch = any
 license = AGPL-3.0
