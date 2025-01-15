@@ -9,8 +9,8 @@
 
 _pkgname=hyprland
 pkgname=$_pkgname-hidpi-xprop-git
-pkgver=0.46.0.r40.c600e1aa
-pkgrel=3
+pkgver=0.47.0.r81.g897ee276
+pkgrel=1
 pkgdesc="Hyprland is an independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/hyprwm/Hyprland"
@@ -76,7 +76,7 @@ optdepends=(
   'glaze: to build and install plugins using hyprpm'
   'uwsm: the recommended way to start Hyprland'
 )
-provides=("hyprland=${pkgver%%.r*}")
+provides=("hyprland=${pkgver%%.r*}" "wayland-compositor")
 conflicts=(hyprland)
 source=(
   "git+https://github.com/hyprwm/Hyprland.git"
@@ -91,7 +91,7 @@ b2sums=(
 options=(debug)
 
 pick_mr() {
-  cd Hyprland
+  cd "$srcdir/Hyprland"
   git pull origin pull/$1/head --no-ff --no-commit
 }
 
@@ -111,20 +111,20 @@ prepare() {
 }
 
 pkgver() {
-	cd Hyprland
+	cd "$srcdir/Hyprland"
   git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd Hyprland
+  cd "$srcdir/Hyprland"
 
   cmake --no-warn-unused-cli -DCMAKE_INSTALL_PREFIX=/usr -S . -B ./build
   cmake --build ./build --target all
 }
 
 package() {
-  cd Hyprland
+  cd "$srcdir/Hyprland"
 
   DESTDIR="${pkgdir}" cmake --install build
 
