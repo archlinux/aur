@@ -1,7 +1,7 @@
 pkgbase = gitify-git
 	pkgdesc = GitHub tray icon and notifications
 	pkgver = 5.18.0.r1.ga0a96bf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gitify-app/gitify
 	arch = any
 	license = MIT
@@ -9,7 +9,6 @@ pkgbase = gitify-git
 	makedepends = libicns
 	makedepends = npm
 	makedepends = pnpm
-	makedepends = yarn
 	depends = electron
 	provides = gitify
 	conflicts = gitify

@@ -1,12 +1,13 @@
 # Maintainer:
 # Contributor: Brad Johnson <bradsk88@gmail.com>
 
-: ${electronDist:=/usr/lib/electron}
+: ${_electron_dist:=/usr/lib/electron}
+: ${_install_path:=usr/share}
 
 _pkgname="gitify"
 pkgname="$_pkgname-git"
 pkgver=5.18.0.r1.ga0a96bf
-pkgrel=1
+pkgrel=2
 pkgdesc="GitHub tray icon and notifications"
 url="https://github.com/gitify-app/gitify"
 license=('MIT')
@@ -20,7 +21,6 @@ makedepends=(
   'libicns'
   'npm'
   'pnpm'
-  'yarn'
 )
 
 provides=("$_pkgname")
@@ -43,35 +43,56 @@ prepare() {
   icns2png -x "$_pkgsrc/assets/images/app-icon.icns"
   mv app-icon_512x512x32.png "$_pkgname.png"
 
-  cd "$_pkgsrc"
-  pnpm install
+  local _electron_version="$(cat $_electron_dist/version)"
+  sed -E -e 's#("electron"): "[^"]+",#\1: "'${_electron_version}'",#' \
+    -i "$_pkgsrc/package.json"
 }
 
-build() {
+build() (
+  export HOME="$srcdir/tmp_home"
+  export XDG_CACHE_HOME="$srcdir/tmp_cache"
+  export XDG_CONFIG_HOME="$srcdir/tmp_config"
+  export XDG_DATA_HOME="$srcdir/tmp_data"
+  export XDG_STATE_HOME="$srcdir/tmp_state"
+
+  export NODE_ENV=production
+
   cd "$_pkgsrc"
-  NODE_ENV=production pnpm run build
-  NODE_ENV=production pnpm run prepare:remove-source-maps
-  NODE_ENV=production pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} -c.electronVersion=$(cat /usr/lib/electron/version)"
-}
+  NODE_ENV=development pnpm install
+
+  pnpm run build
+  pnpm run prepare:remove-source-maps
+  pnpm -c exec "electron-builder --linux dir --publish never -c.electronDist=${_electron_dist} -c.electronVersion=$(cat $_electron_dist/version)"
+)
 
 package() {
-  install -Dm644 "$_pkgsrc/dist/linux-unpacked/resources/app.asar" -t "$pkgdir/usr/share/$_pkgname/"
-  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "$_pkgsrc/dist/linux-unpacked/resources/app.asar" -t "$pkgdir/$_install_path/$_pkgname/"
 
-  install -Dm644 "$_pkgname.png" -t "$pkgdir/usr/share/pixmaps/"
+  install -Dm644 "$_pkgname.png" -t "$pkgdir/$_install_path/pixmaps/"
+
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/$_install_path/licenses/$pkgname/"
+
+  install -Dm755 /dev/stdin "$pkgdir/$_install_path/applications/$_pkgname.desktop" << END
+[Desktop Entry]
+Type=Application
+Name=${_pkgname^}
+Comment=$pkgdesc
+Exec=$_pkgname %U
+Icon=$_pkgname
+Terminal=false
+StartupWMClass=${_pkgname^}
+Categories=Development;
+END
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/usr/bin/env bash
 
 name=$_pkgname
 flags_file="\${XDG_CONFIG_HOME:-\$HOME/.config}/\${name}-flags.conf"
-fallback_file="\${XDG_CONFIG_HOME:-\$HOME/.config}/electron-flags.conf"
 
 lines=()
 if [[ -f "\${flags_file}" ]]; then
   mapfile -t lines < "\${flags_file}"
-elif [[ -f "\${fallback_file}" ]]; then
-  mapfile -t lines < "\${fallback_file}"
 fi
 
 flags=()
@@ -86,18 +107,6 @@ export ELECTRON_IS_DEV
 : \${ELECTRON_FORCE_IS_PACKAGED:=true}
 export ELECTRON_FORCE_IS_PACKAGED
 
-exec /usr/bin/electron "/usr/share/\${name}/app.asar" "\${flags[@]}" "\$@"
-END
-
-  install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
-[Desktop Entry]
-Type=Application
-Name=${_pkgname^}
-Comment=$pkgdesc
-Exec=$_pkgname %U
-Icon=$_pkgname
-Terminal=false
-StartupWMClass=${_pkgname^}
-Categories=Development;
+exec electron "/$_install_path/\${name}/app.asar" "\${flags[@]}" "\$@"
 END
 }
