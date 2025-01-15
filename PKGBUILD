@@ -5,7 +5,7 @@
 # http://www.simpleitk.org/
 # https://github.com/SimpleITK/SimpleITK
 
-: ${_commit:=a3e11cbc09ed78427aa215f3875b0ea7ea285b58}
+: ${_commit:=cf120d6471195771881794519ea2077867499fe7}
 
 _pkgname="simpleitk"
 pkgbase="$_pkgname"
@@ -19,34 +19,44 @@ pkgname=(
   'ruby-simpleitk'
   'tcl-simpleitk'
 )
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="A simplified layer built on top of ITK"
 arch=('x86_64')
 url="https://github.com/SimpleITK/SimpleITK"
 license=('Apache-2.0')
 
+_depends_base=('insight-toolkit') # AUR
+_depends_common=('simpleitk')
+_depends_java=('java-runtime')
+_depends_lua=('lua')
+_depends_mono=('mono')
+_depends_python=('python' 'python-numpy')
+_depends_r=('r')
+_depends_ruby=('ruby')
+_depends_tk=('tcl' 'tk')
+
+_makedeps_common=('eigen' 'openjpeg2' 'swig')
+_makedeps_java=('java-environment')
+_makedeps_python=('python-installer' 'python-virtualenv' 'python-wheel')
+
 depends=(
-  'insight-toolkit'
+  ${_depends_base[@]}
+  ${_depends_lua[@]}
+  ${_depends_mono[@]}
+  ${_depends_python[@]}
+  ${_depends_r[@]}
+  ${_depends_ruby[@]}
+  ${_depends_tk[@]}
 )
 makedepends=(
+  ${_makedeps_common[@]}
+  ${_makedeps_java[@]}
+  ${_makedeps_python[@]}
+
   'cmake'
-  'eigen'
   'git'
-  'java-environment'
-  'lua'
-  'mono'
   'ninja'
-  'openjpeg2'
-  'python-installer'
-  'python-numpy'
-  'python-virtualenv'
-  'python-wheel'
-  'r'
-  'ruby'
-  'swig'
-  'tcl'
-  'tk'
 )
 
 _pkgsrc="$_pkgname"
@@ -92,11 +102,16 @@ build() {
 }
 
 package_simpleitk() {
+  depends=(${_depends_base[@]})
+
   DESTDIR="$pkgdir/" cmake --install build
 }
 
 package_python-simpleitk() {
-  depends=('simpleitk' 'python' 'python-numpy')
+  depends=(
+    ${_depends_common[@]}
+    ${_depends_python[@]}
+  )
 
   python -m installer \
     --destdir="$pkgdir" \
@@ -104,7 +119,10 @@ package_python-simpleitk() {
 }
 
 package_lua-simpleitk() {
-  depends=('simpleitk' 'lua')
+  depends=(
+    ${_depends_common[@]}
+    ${_depends_lua[@]}
+  )
 
   local _lua_version_maj_min=$(lua -v | grep -Eo '[0-9]+\.[0-9]+')
 
@@ -114,7 +132,10 @@ package_lua-simpleitk() {
 }
 
 package_tcl-simpleitk() {
-  depends=('simpleitk' 'tcl' 'tk')
+  depends=(
+    ${_depends_common[@]}
+    ${_depends_tk[@]}
+  )
 
   install -Dm755 \
     "build/Wrapping/Tcl/bin/SimpleITKTclsh" \
@@ -122,7 +143,10 @@ package_tcl-simpleitk() {
 }
 
 package_mono-simpleitk() {
-  depends=('simpleitk' 'mono')
+  depends=(
+    ${_depends_common[@]}
+    ${_depends_mono[@]}
+  )
 
   install -Dm755 \
     "build/Wrapping/CSharp/CSharpBinaries/libSimpleITKCSharpNative.so" \
@@ -134,7 +158,10 @@ package_mono-simpleitk() {
 }
 
 package_r-simpleitk() {
-  depends=('simpleitk' 'r')
+  depends=(
+    ${_depends_common[@]}
+    ${_depends_r[@]}
+  )
 
   install -dm755 "$pkgdir/usr/lib/R/library/"
 
@@ -144,7 +171,10 @@ package_r-simpleitk() {
 }
 
 package_java-simpleitk() {
-  depends=('simpleitk' 'java-runtime')
+  depends=(
+    ${_depends_common[@]}
+    ${_depends_java[@]}
+  )
 
   install -dm755 "$pkgdir/usr/share/java/SimpleITK/"
 
@@ -154,7 +184,10 @@ package_java-simpleitk() {
 }
 
 package_ruby-simpleitk() {
-  depends=('simpleitk' 'ruby')
+  depends=(
+    ${_depends_common[@]}
+    ${_depends_ruby[@]}
+  )
 
   local _lua_version
   _lua_version=$(lua -v | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')

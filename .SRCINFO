@@ -1,32 +1,34 @@
 pkgbase = simpleitk
 	pkgdesc = A simplified layer built on top of ITK
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/SimpleITK/SimpleITK
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = cmake
 	makedepends = eigen
-	makedepends = git
-	makedepends = java-environment
-	makedepends = lua
-	makedepends = mono
-	makedepends = ninja
 	makedepends = openjpeg2
+	makedepends = swig
+	makedepends = java-environment
 	makedepends = python-installer
-	makedepends = python-numpy
 	makedepends = python-virtualenv
 	makedepends = python-wheel
-	makedepends = r
-	makedepends = ruby
-	makedepends = swig
-	makedepends = tcl
-	makedepends = tk
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
 	depends = insight-toolkit
-	source = simpleitk::git+https://github.com/SimpleITK/SimpleITK.git#commit=a3e11cbc09ed78427aa215f3875b0ea7ea285b58
+	depends = lua
+	depends = mono
+	depends = python
+	depends = python-numpy
+	depends = r
+	depends = ruby
+	depends = tcl
+	depends = tk
+	source = simpleitk::git+https://github.com/SimpleITK/SimpleITK.git#commit=cf120d6471195771881794519ea2077867499fe7
 	sha256sums = SKIP
 
 pkgname = simpleitk
+	depends = insight-toolkit
 
 pkgname = java-simpleitk
 	depends = simpleitk
