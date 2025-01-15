@@ -2,7 +2,7 @@
 # Contributor: Kiri <kiri@vern.cc>
 
 _pkgname=RProtoBuf
-_pkgver=0.4.22
+_pkgver=0.4.23
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5dba20d2aa24bdae9d9eef72b71fdc92')
-b2sums=('9a6850e95e9964968e1978b07e9fd1242e6e995b99e4cc37dfecfd216f3e4e34b574680c6f70f2d2df39bb63a9df0183ec2e2a428524fcb8ffe46904e7505783')
+md5sums=('02d14296c87b0a73ca8b988da459f48c')
+b2sums=('16db97d24df02e9c36e3f7d6e78d716794864cfea3dd28e3fda732bbcd4261f64af1a5469183a2d7c84d8fabfb63c398a9c4a49ef329b0dbae424eea016e30fd')
 
 build() {
   mkdir build
