@@ -3,7 +3,7 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=openage
-pkgver=0.5.3
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A free (as in freedom) clone of the Age of Empires II engine"
 arch=(x86_64 i686 pentium4 armv7h aarch64)
@@ -18,11 +18,14 @@ depends=(libepoxy opusfile ttf-dejavu
          # namcap implicit depends
          glibc gcc-libs python gperftools harfbuzz fontconfig freetype2
          qt6-base libglvnd opus ncurses)
-makedepends=(git cmake cython  vulkan-headers  eigen toml11) #doxygen  python-graphviz
+makedepends=(git cmake cython vulkan-headers eigen toml11 python-setuptools mold) #doxygen  python-graphviz
 source=("git+https://github.com/SFTtech/openage.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('af8a664cb9a5983a1889c0ba56b389dabbb776927472444916bc0acc9c43268e')
 
 build() {
+  export LD="/usr/bin/mold"
+  export LDFLAGS="-fuse-ld=mold"
+
   cmake -B build -S "openage" -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
