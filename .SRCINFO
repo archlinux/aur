@@ -1,0 +1,17 @@
+pkgbase = belle-cpu-git
+	pkgdesc = The Big Endian, Low Level Emulator
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://belle-cpu.xyz/
+	arch = any
+	license = BSD-3-Clause
+	makedepends = make
+	makedepends = cargo
+	makedepends = git
+	makedepends = bash
+	provides = belle-cpu
+	conflicts = belle-cpu
+	source = git+https://github.com/BlueGummi/belle.git
+	sha256sums = SKIP
+
+pkgname = belle-cpu-git
