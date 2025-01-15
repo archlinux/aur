@@ -21,7 +21,7 @@ install=$pkgname.install
 source=("https://archive.mozilla.org/pub/thunderbird/releases/135.0b1/linux-x86_64/en-US/thunderbird-135.0b1.tar.xz"
         'org.mozilla.thunderbird-beta-bin.desktop'
         'vendor.js')
-sha512sums=('f4075496bb5b075c7f881e7bf5f0293a14e2e28465e72d72df3e8c9c49bca4fde634db663541578a9baf88f72171f7b0deface52951cd853d4e083feee909975'
+sha512sums=('04b44dad9c8b2853dbc6ef5063bfa4885a2551f47524596a8855bf4c023d2444db7bfb2c0779b9658da5984445b6d865ce1da888028c172a59fb0bb42a396541'
             'b42b4b86aa072dca7f9e401c1f0c593396cda45fe56326af997db4042549cf895f1f0682c0d007647cda5200f11c06cef13e006a5973eae2bfa31b86d4d32f79'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
 # RC
