@@ -1,9 +1,10 @@
 pkgbase = plasma6-runners-nordvpn
 	pkgdesc = Nordvpn plasma 6 runner
 	pkgver = 3.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alex1701c/NordVPNKrunner
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = cmake
 	makedepends = extra-cmake-modules

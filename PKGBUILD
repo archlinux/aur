@@ -1,22 +1,26 @@
-# Maintainer: Dan Johansen <strit at strits dot dk>
+# Maintainer: Dan Johansen <strit@strits.dk>
 # Contributor: Agustin Carrasco <asermax at gmail dot com>
 
 pkgname=plasma6-runners-nordvpn
 _reponame=NordVPNKrunner
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Nordvpn plasma 6 runner"
-arch=("any")
+arch=('x86_64' 'aarch64')
 url="https://github.com/alex1701c/${_reponame}"
 license=("MIT")
-depends=("nordvpn"
-        "krunner"
-        "kcmutils"
-        "knotifications")
-makedepends=("cmake"
-            "extra-cmake-modules"
-            "gettext"
-            "qt6-tools")
+depends=(
+        'nordvpn'
+        'krunner'
+        'kcmutils'
+        'knotifications'
+)
+makedepends=(
+            'cmake'
+            'extra-cmake-modules'
+            'gettext'
+            'qt6-tools'
+)
 conflicts=('plasma5-runners-nordvpn')
 replaces=('plasma-runners-nordvpn')
 source=("$pkgname-$pkgver::https://github.com/alex1701c/${_reponame}/archive/${pkgver}.tar.gz"
