@@ -1,7 +1,7 @@
 # Maintainer: Guillermo Duran < gds506 at gmail dot com >
 # Previous Maintainer: Baudouin Feildel <baudouin_aur@feildel.fr>
 pkgname=pgsql-ogr-fdw
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="PostgreSQL foreign data wrapper for OGR"
 arch=('i686' 'x86_64')
@@ -10,19 +10,19 @@ license=('MIT')
 depends=('gdal')
 #optdepends=()
 makedepends=('postgresql' 'llvm')
-source=(
-	"https://github.com/pramsey/$pkgname/archive/v$pkgver.tar.gz"
+source=("https://github.com/pramsey/$pkgname/archive/v$pkgver.tar.gz"
 	"$pkgname-$pkgver-fix-bin-install-path.patch"
-	"$pkgname-$pkgver-use-cflags-from-env.patch")
-sha256sums=(
-	'7bacb28ace465773544d76d8ad7b7bfb95245c6ad68aa2c58f785b54da93234a'
+#	"$pkgname-$pkgver-use-cflags-from-env.patch"
+)
+sha256sums=('820842a4bd3889d82e767f4eea49954daa894f315e24614650022154446a55d0'
 	'bbde8139a04293d0c51ed13a4baedddfe206a19f34b27084776032d715847822'
-	'bf052972161e4b5317d747dca15bccd7538daf6441722ee74b2fb068a72fd0e3')
+#	'bf052972161e4b5317d747dca15bccd7538daf6441722ee74b2fb068a72fd0e3'
+)
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	patch -p1 -i "$srcdir/$pkgname-$pkgver-fix-bin-install-path.patch"
-	patch -p1 -i "$srcdir/$pkgname-$pkgver-use-cflags-from-env.patch"
+#	patch -p1 -i "$srcdir/$pkgname-$pkgver-use-cflags-from-env.patch"
 }
 
 build() {
