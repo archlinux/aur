@@ -1,12 +1,12 @@
-# Maintainer: gesh <gesh AT gesh DOT uni DOT cx>
+# Maintainer: Gesh <gesh@gesh.uni.cx>
 
 pkgname=ghcid-static-git
 _pkgname="${pkgname%-static-git}"
 pkgver=0.8.9.r1.gb7dc5c4
 pkgrel=2
-pkgdesc="GHCi based bare bones IDE"
+pkgdesc='GHCi based bare bones IDE'
 arch=('i686' 'x86_64')
-url="https://github.com/ndmitchell/$_pkgname"
+url="https://github.com/ndmitchell/${_pkgname}"
 license=('BSD-3-Clause')
 provides=("$_pkgname")
 depends=('gmp')
@@ -16,19 +16,20 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long \
+    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$pkgname"
   cabal update
+  cabal configure --prefix=/usr --docdir=/usr/share/doc/"$pkgname" \
+    --enable-tests
   cabal build --only-dependencies
 }
 
 build() {
   cd "$pkgname"
-  cabal configure \
-    -O --jobs --prefix=/usr --docdir=/usr/share/doc/$pkgname --enable-tests
   cabal build --offline
 }
 
@@ -43,3 +44,5 @@ package() {
   cabal install --install-method=copy --installdir "$pkgdir/usr/bin"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim:set ts=2 sw=2 et
