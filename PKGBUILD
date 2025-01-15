@@ -3,7 +3,7 @@
 
 pkgname=python-box
 pypiPkgName=python_box
-pkgver=7.3.0
+pkgver=7.3.1
 pkgrel=1
 pkgdesc="Advanced Python dictionaries with dot notation access"
 arch=('x86_64')
@@ -16,8 +16,8 @@ optdepends=(
 	'python-toml: TOML support'
 	'python-yaml: YAML support')
 makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/79/8d/ed12ca8b90b2fce966fdaad7de40f0980f1e9dababb9c963738326687c6a/python_box-7.3.0.tar.gz")
-sha256sums=('39a85ba457d07122226ca60597882d763549713ab56ac7d55da41c4ad0e89a05')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/bb/35/911965b97acf8f7813caa49487eb4c14c5de527d47d9b9ef0a5b16016834/python_box-7.3.1.tar.gz")
+sha256sums=('a0bd9dbb4ddd2842f8d0143b8aa0c87d0e82e39093dd4698a5cbbb2d2ac71361')
 
 build() {
 	cd "$pypiPkgName-$pkgver"
