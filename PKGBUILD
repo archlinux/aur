@@ -1,11 +1,11 @@
 # Maintainer:
 pkgname=dr42-time-scheduler-client
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="A simple time management app"
 arch=('any')
 url="https://github.com/Dr-42/time-scheduler-client"
-license=('bsd-2-clause')
+license=('BSD-2-CLAUSE')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 makedepends=('git' 'file' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'cargo' 'nodejs' 'dpkg' 'pnpm')
 provides=('time-scheduler-client')

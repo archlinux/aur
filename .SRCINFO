@@ -1,10 +1,10 @@
 pkgbase = dr42-time-scheduler-client
 	pkgdesc = A simple time management app
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/Dr-42/time-scheduler-client
 	arch = any
-	license = bsd-2-clause
+	license = BSD-2-CLAUSE
 	makedepends = git
 	makedepends = file
 	makedepends = openssl
