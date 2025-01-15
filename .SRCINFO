@@ -1,17 +1,23 @@
 pkgbase = csview-bin
 	pkgdesc = High performance CSV viewer with CJK/emoji support
-	pkgver = 1.2.4
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://github.com/wfxr/csview
-	arch = i686
 	arch = x86_64
+	arch = i686
+	arch = aarch64
 	license = Apache
 	license = MIT
+	makedepends = help2man
 	depends = glibc
 	depends = gcc-libs
-	provides = csview=1.2.4
+	provides = csview
 	conflicts = csview
-	source = https://github.com/wfxr/csview/releases/download/v1.2.4/csview-v1.2.4-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 623383158409577e638e38b742b68051d584b6aeed9dc30ec497293e4c8f31e7
+	source_x86_64 = https://github.com/wfxr/csview/releases/download/v1.3.4/csview-v1.3.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1d9f0683fb9332c77cd96a71b6d80dea88cfe81630316c32c9b5faa562db33dc
+	source_i686 = https://github.com/wfxr/csview/releases/download/v1.3.4/csview-v1.3.4-i686-unknown-linux-gnu.tar.gz
+	sha256sums_i686 = 039952c21c75454d8e83fa5ec51ebc642abab258134eaffec2e6496fb03917d9
+	source_aarch64 = https://github.com/wfxr/csview/releases/download/v1.3.4/csview-v1.3.4-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4283fa89e795e20aa8a83ac10d63b3dfd2cc7371edd7530a0a0b691c568b5ea3
 
 pkgname = csview-bin
