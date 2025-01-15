@@ -11,7 +11,7 @@ pkgname=pandoc-static-git
 _pkgname="${pkgname%-static-git}-cli"
 __pkgname="${_pkgname%-cli}"
 pkgver=3.6.2.r5.g96d4f5be5
-pkgrel=2
+pkgrel=3
 pkgdesc='Conversion between markup formats (static build, dynamic Lua support)'
 arch=('i686' 'x86_64')
 url='https://pandoc.org'
@@ -55,6 +55,7 @@ build() {
       --ghc-options='-fdiagnostics-color=always' \
       --flag 'pandoc:embed_data_files' \
         --fast
+  stack run -- --bash-completion > pandoc.bash
 }
 
 check() {
@@ -68,6 +69,8 @@ package() {
       -execdir install -Dm755 -t "$pkgdir/usr/bin/" {} \;
   install -Dm644 pandoc-cli/man/pandoc.1 \
       "$pkgdir"/usr/share/man/man1/pandoc.1
+  install -Dm644 pandoc.bash \
+      "$pkgdir"/usr/share/bash-completion/completions/pandoc
 }
 
 # vim:set ts=2 sw=2 et
