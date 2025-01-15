@@ -1,18 +1,18 @@
 pkgbase = mediago-bin
 	pkgdesc = Video online extraction tool streaming media download, video download,m3u8 download,Bilibili video download.视频在线提取工具,流媒体下载,视频下载,m3u8下载,B站视频下载.
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://downloader.caorushizi.cn/
 	arch = x86_64
 	license = MIT
 	depends = electron30
 	depends = python
-	provides = mediago=3.0.0
+	provides = mediago=3.0.1
 	conflicts = mediago
-	source = mediago-3.0.0.deb::https://github.com/caorushizi/mediago/releases/download/v3.0.0/mediago-setup-linux-amd64-3.0.0.deb
-	source = LICENSE-3.0.0::https://raw.githubusercontent.com/caorushizi/mediago/v3.0.0/LICENSE
+	source = mediago-3.0.1.deb::https://github.com/caorushizi/mediago/releases/download/v3.0.1/mediago-setup-linux-amd64-3.0.1.deb
+	source = LICENSE-3.0.1::https://raw.githubusercontent.com/caorushizi/mediago/v3.0.1/LICENSE
 	source = mediago.sh
-	sha256sums = 6c91ee0f9db8c6a5220bbaa7ac46a4cf7e6805df92082a8d8c033cf6fd60fcc6
+	sha256sums = 6f8b2fcb70bac299a4ad02b7c41ca0d6b3f3fef978b229206fdf3fd68e485a67
 	sha256sums = 029419e98f7e94359d2b8e96db62d1482242d51af55bc5c5b5ac3e2448edb4ee
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
