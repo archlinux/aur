@@ -1,6 +1,6 @@
 # Maintainer: Blair Noctis <ncts@nightsail.net>
 pkgname=heretek
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Yet Another GDB TUI Frontend'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gdb')
 makedepends=('rust' 'mold' 'openssl')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wcampbell0x2a/heretek/archive/refs/tags/v${pkgver}.tar.gz"
         ${pkgname}.fish)
-sha256sums=('6a882d39a2d7d8cd73641530651502ebf61863f297ad2931ac666d1e6164e163'
+sha256sums=('bdd24c83530d276e2c79e546813099cf9a473e6eff65c595e73d12975cf4ab63'
             'f96f17efd5fa2bcbc585661001426c367cf3d2a4e52f8cf6ac1e53ee21c2d1f4')
 
 prepare() {
