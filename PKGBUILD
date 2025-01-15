@@ -3,7 +3,7 @@
 # All my PKGBUILDs are managed at https://github.com/tmn505/AUR
 
 pkgname=python-kankakee
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Server/Client python module for Onvif GUI'
 url='https://github.com/sr99622/kankakee'
@@ -17,8 +17,8 @@ makedepends=('cmake'
              'python-installer'
              'python-setuptools'
              'python-wheel')
-source=("git+${url}.git#commit=1e12980c32fc6d3bd2b8652cd30a11252035ad46")
-sha256sums=('3ae985ba79ca1aba4de05a11403ecb28570257fb295208c2261fc1b87c293211')
+source=("git+${url}.git#commit=c9d3135577c85567cb03419479645bd470f60729")
+sha256sums=('a9ce3719dc3a873a6d796489fad037dfb85812e046a1c199eb65217013c25d4f')
 
 prepare() {
 	cd ${srcdir}/${pkgname#*-}
