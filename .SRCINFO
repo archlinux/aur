@@ -1,0 +1,14 @@
+pkgbase = komac
+	pkgdesc = A manifest creator for winget-pkgs
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = https://github.com/russellbanks/Komac
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = bzip2
+	depends = gcc-libs
+	source = komac-2.8.0.tar.gz::https://github.com/russellbanks/Komac/archive/refs/tags/v2.8.0.tar.gz
+	sha256sums = 53ab5a3e84c7ae9616cd7ff7d3e533629a1487a14ceb2c4147c07e98a4ce900e
+
+pkgname = komac
