@@ -3,7 +3,7 @@
 # Contributor: kewl
 _base=eth-hash
 pkgname=python-${_base}
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="The Ethereum hashing function, keccak256, sometimes (erroneously) called sha256 or sha3"
 arch=(any)
@@ -13,7 +13,7 @@ depends=(python-pycryptodome)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('8e3821be3a646f4eb6d76b844693ac0db742b6361cd3a8641e3441bb04bd5bee7a96b09aa5cc2077bf868387bb8f5f8e3f56952cc11006eeb8c379bed9805add')
+sha512sums=('06da00ec4d73c67525c9eeabac98e6fce99fe8a5d6dbd2e7a2fdcfd8d9b72c8914782129cc120d07ad3918750a2f18bd7a44ea3b4c3f347fcc2486c35e5ab9b8')
 
 build() {
   cd ${_base}-${pkgver}
