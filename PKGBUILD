@@ -22,7 +22,7 @@ depends=(
   'wayland'
   'cli11'
   'libdrm'
-  'libgdm'
+  'mesa'
   'google-breakpad'
 )
 makedepends=(
