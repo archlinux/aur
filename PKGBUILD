@@ -1,7 +1,7 @@
 # Maintainer: Daniel Chesters <archlinux@coin-coin.xyz>
 
 pkgname=python-ollama-git
-pkgver=0.3.3.r9.gebe332b
+pkgver=0.4.6.r2.g89e719a
 pkgrel=1
 pkgdesc="Ollama Python library"
 arch=('any')
@@ -30,6 +30,8 @@ pkgver() {
 
 build() {
 	cd "$pkgname" || exit
+	# Remove poetry plugin dependencies
+	sed -i '16,17d' pyproject.toml
 	poetry build -f wheel
 }
 
