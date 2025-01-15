@@ -2,7 +2,7 @@
 
 pkgname=cider
 pkgver=1.6.3
-pkgrel=8
+pkgrel=9
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Build from tar file on GitHub releases."
 arch=(x86_64)
 url="https://github.com/ciderapp/${pkgname}.git"
