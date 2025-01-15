@@ -1,6 +1,6 @@
 pkgbase = bchwallet
 	pkgdesc = bchwallet is a daemon handling bitcoin cash wallet functionality for a single user.
-	pkgver = 0.11.0_rc2
+	pkgver = 0.11.0
 	pkgrel = 0
 	url = http://github.com/gcash/bchwallet
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = bchwallet
 	provides = bchwallet
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/gcash/bchwallet/archive/v0.11.0-rc2.tar.gz
-	sha256sums = ed68ab561d546db07194673a49e0e30f85a5ffcc5c3e5aea142783f62ab17f64
+	source = https://github.com/gcash/bchwallet/archive/v0.11.0.tar.gz
+	sha256sums = 405bfe1bca561522f7e34d6fa59aff9bd0d872cb9cd0bc678d0e5f5b333a3103
 
 pkgname = bchwallet

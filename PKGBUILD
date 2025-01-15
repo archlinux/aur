@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest at mac dot com>
 
 pkgname=bchwallet
-pkgver=0.11.0_rc2
+pkgver=0.11.0
 pkgrel=0
 pkgdesc="bchwallet is a daemon handling bitcoin cash wallet functionality for a single user."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 provides=("${pkgname}")
 source=("https://github.com/gcash/${pkgname}/archive/v${pkgver//_/-}.tar.gz")
-sha256sums=('ed68ab561d546db07194673a49e0e30f85a5ffcc5c3e5aea142783f62ab17f64')
+sha256sums=('405bfe1bca561522f7e34d6fa59aff9bd0d872cb9cd0bc678d0e5f5b333a3103')
 
 build() {
   mkdir -p "${srcdir}/go/src/github.com/gcash"
