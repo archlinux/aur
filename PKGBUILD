@@ -2,16 +2,24 @@
 
 _pkgname=notification
 pkgbase=dfl-notification
-pkgname=('dfl-notification' 'dfl-notification-qt6')
+pkgname=(
+        'dfl-notification'
+        'dfl-notification-qt6'
+)
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of the XDG Desktop Notification Spec"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
-license=('GPL3')
-makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base')
+license=('GPL-3.0-only')
+makedepends=(
+            'meson'
+            'ninja'
+            'qt5-base'
+            'qt6-base'
+)
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('a52d1d80ae6eb1eac86ad33b6c14d761')
+sha256sums=('b8336c719dad5be75493f8cd00efc0e390db4b72eb7be7ad59a8daf217e29169')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
