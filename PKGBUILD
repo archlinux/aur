@@ -2,7 +2,7 @@
 # Contributor: Thomas Gatzweiler <thomas.gatzweiler@gmail.com> wsjtx-svn maintainer
 
 pkgname=wsjtx-git
-pkgver=r9504.c3579831b
+pkgver=r10961.942a70bb0
 pkgrel=1
 pkgdesc='Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)'
 # change _wsjtx_tag to other versions such as wsjtx-2.5.0-rc1
@@ -16,7 +16,7 @@ provides=('wsjtx')
 conflicts=('wsjtx')
 source=("git+https://git.code.sf.net/p/wsjt/wsjtx/#tag=$_wsjtx_tag")
 md5sums=('SKIP')
-
+options=(!lto)
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
