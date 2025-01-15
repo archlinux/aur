@@ -1,13 +1,13 @@
 # Maintainer:
 
-## useful links
+## links
 # https://rsync.samba.org/
 # https://github.com/RsyncProject/rsync
 # https://github.com/RsyncProject/rsync-patches
 
 _pkgname="rsync"
 pkgname="$_pkgname-reflink-git"
-pkgver=3.3.0.r6.g85c906f
+pkgver=3.4.0.r6.g68e9add
 pkgrel=1
 pkgdesc='A fast and versatile file copying tool for remote and local files - with reflink support'
 url='https://github.com/RsyncProject/rsync'
@@ -15,20 +15,15 @@ license=('GPL-3.0-or-later')
 arch=('x86_64')
 
 depends=(
-  'libacl.so' # acl
+  'libacl.so'    # acl
   'libxxhash.so' # xxhash
   'openssl'
   'popt'
   'zstd'
-
-  ## implicit
-  #bash
-  #lz4
-  #zlib
 )
 optdepends=(
-  ## AUR
-  'python-braceexpand: for rrsync'
+  'python: for rrsync'
+  'python-braceexpand: for rrsync' # AUR
 )
 makedepends=(
   'git'
@@ -44,28 +39,22 @@ backup=(
 )
 
 _pkgsrc="rsyncproject.rsync"
-source+=("$_pkgsrc"::"git+$url.git")
-sha256sums+=('SKIP')
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 _patch_id() {
-  local _url="https://github.com/RsyncProject/rsync-patches"
-  local _response=$(curl -LSsf "$_url/commits.atom")
-
-  local _date=$(
-    printf '%s' "$_response" \
-      | grep '<updated>' \
-      | sed -E 's&^.*<updated>(.*)</updated>.*$&\1&;s&[-:Z]&&g;s&T&-&' \
-      | sort -rV | head -1
-  )
-  echo "$_date"
+  local _url _response _commit
+  _url="https://github.com/RsyncProject/rsync-patches"
+  _response=$(curl -LSsf "$_url/commits.atom")
+  _commit=$(grep -Pom1 '::Commit/\K([a-f0-9]+)' <<< "$_response")
+  printf '%s' "${_commit:?}"
 }
 _patch_id=$(_patch_id)
-_patch_branch="master"
 
 source+=(
-  "reflink-${_patch_id}-clone-dest.patch"::"$url-patches/raw/${_patch_branch}/clone-dest.diff"
-  "reflink-${_patch_id}-detect-renamed.patch"::"$url-patches/raw/${_patch_branch}/detect-renamed.diff"
-  "reflink-${_patch_id}-detect-renamed-lax.patch"::"$url-patches/raw/${_patch_branch}/detect-renamed-lax.diff"
+  "reflink-${_patch_id::7}-clone-dest.patch"::"$url-patches/raw/${_patch_id}/clone-dest.diff"
+  "reflink-${_patch_id::7}-detect-renamed.patch"::"$url-patches/raw/${_patch_id}/detect-renamed.diff"
+  "reflink-${_patch_id::7}-detect-renamed-lax.patch"::"$url-patches/raw/${_patch_id}/detect-renamed-lax.diff"
   'rsyncd.conf'
 )
 sha256sums+=(
@@ -83,23 +72,21 @@ pkgver() (
 
 prepare() {
   cd "$_pkgsrc"
-
-  # Apply patches from source array
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
     src="${src%.zst}"
-    if [[ $src == *.patch ]] ; then
+    if [[ $src == *.patch ]]; then
       printf '\nApplying patch: %s\n' "$src"
       patch -Np1 -F100 -i "$srcdir/$src"
+      echo
     fi
   done
 }
 
 build() {
   cd "$_pkgsrc"
-
   local _configure_options=(
     --prefix=/usr
     --enable-ipv6

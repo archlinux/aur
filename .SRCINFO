@@ -1,6 +1,6 @@
 pkgbase = rsync-reflink-git
 	pkgdesc = A fast and versatile file copying tool for remote and local files - with reflink support
-	pkgver = 3.3.0.r6.g85c906f
+	pkgver = 3.4.0.r6.g68e9add
 	pkgrel = 1
 	url = https://github.com/RsyncProject/rsync
 	arch = x86_64
@@ -12,15 +12,16 @@ pkgbase = rsync-reflink-git
 	depends = openssl
 	depends = popt
 	depends = zstd
+	optdepends = python: for rrsync
 	optdepends = python-braceexpand: for rrsync
-	provides = rsync=3.3.0
+	provides = rsync=3.4.0
 	conflicts = rsync
 	backup = etc/rsyncd.conf
 	backup = etc/xinetd.d/rsync
 	source = rsyncproject.rsync::git+https://github.com/RsyncProject/rsync.git
-	source = reflink-20240406-163813-clone-dest.patch::https://github.com/RsyncProject/rsync-patches/raw/master/clone-dest.diff
-	source = reflink-20240406-163813-detect-renamed.patch::https://github.com/RsyncProject/rsync-patches/raw/master/detect-renamed.diff
-	source = reflink-20240406-163813-detect-renamed-lax.patch::https://github.com/RsyncProject/rsync-patches/raw/master/detect-renamed-lax.diff
+	source = reflink-10ab5e5-clone-dest.patch::https://github.com/RsyncProject/rsync-patches/raw/10ab5e57446d10ef641ceb045ef3094e7d2bd439/clone-dest.diff
+	source = reflink-10ab5e5-detect-renamed.patch::https://github.com/RsyncProject/rsync-patches/raw/10ab5e57446d10ef641ceb045ef3094e7d2bd439/detect-renamed.diff
+	source = reflink-10ab5e5-detect-renamed-lax.patch::https://github.com/RsyncProject/rsync-patches/raw/10ab5e57446d10ef641ceb045ef3094e7d2bd439/detect-renamed-lax.diff
 	source = rsyncd.conf
 	sha256sums = SKIP
 	sha256sums = SKIP
