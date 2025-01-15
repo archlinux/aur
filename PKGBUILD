@@ -3,11 +3,12 @@ pkgname=belle-cpu
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="BELLE - The Big Endian, Low Level Emulator"
+makedepends=('tar')
 arch=('x86_64')
 url="https://belle-cpu.xyz"
 license=('BSD-3-Clause')
 source=("https://github.com/BlueGummi/belle/releases/download/0.2.0/belle.tar.gz")
-sha256sums=('SKIP')
+md5sums=('f8678ce64a72f293b19dfea8de105734')
 
 package() {
     cd "$srcdir"
