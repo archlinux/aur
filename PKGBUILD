@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-web-server-bin
 _pkgname=Simple-Web-Server
-pkgver=1.2.14
+pkgver=1.2.15
 _electronversion=33
 pkgrel=1
 pkgdesc="Create a local web server in just a few clicks with an easy to use interface. A continuation of Web Server for Chrome, built with Electron.(Prebuilt version.Use system-wide electron)"
 arch=(
-    "aarch64"
-    "x86_64"
+    'aarch64'
+    'x86_64'
 )
 url="https://simplewebserver.org/"
 _ghurl="https://github.com/terreng/simple-web-server"
@@ -25,9 +25,9 @@ source=(
 )
 sha256sums=('57e19cef8140644e1f4ac091f5bb90dc20e65f26232a756233cba336c2dbd85b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('da203ce90159e43baf318cf377ef4e426e294d9b9dbf3c62554f8c376f610494')
-sha256sums_x86_64=('087d5223b1cc294e6518ee60d3c7ce80220829deac77abac5b649172f9a3c5e5')
-build() {
+sha256sums_aarch64=('8e153f6e0b980e7e17ab004bd3693a68977363338ca5c8d0b023e09330c60707')
+sha256sums_x86_64=('1b9bedc5cfc59edf8bb546dbcae3c92daf1f13c5225c3bb0a884fe7366df3836')
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
