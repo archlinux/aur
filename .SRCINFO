@@ -1,6 +1,6 @@
 pkgbase = mihomo-party-xs-bin
 	pkgdesc = Another Mihomo GUI. (XiShang distribution)
-	pkgver = 1.5.13
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/xishang0128/mihomo-party
 	install = mihomo-party.install
@@ -24,9 +24,9 @@ pkgbase = mihomo-party-xs-bin
 	conflicts = mihomo-party-electron-bin
 	source = mihomo-party.sh
 	sha256sums = 36fc5d388f326ec2304c24c10301bfb80ad194607f7ab692a087f31cc0bfc1e5
-	source_x86_64 = mihomo-party-1.5.13-x86_64.deb::https://github.com/xishang0128/mihomo-party/releases/download/v1.5.13/mihomo-party-linux-1.5.13-amd64.deb
-	sha256sums_x86_64 = 5cc7056a19d5165c653ad64db2cdb61ebf9363748ace707a0b24919f883a1576
-	source_aarch64 = mihomo-party-1.5.13-aarch64.deb::https://github.com/xishang0128/mihomo-party/releases/download/v1.5.13/mihomo-party-linux-1.5.13-arm64.deb
-	sha256sums_aarch64 = f367fee6f1ef00df1ed78607bb3d9b139e5828aaf70a296eafc9e1c683d7379e
+	source_x86_64 = mihomo-party-1.6.0-x86_64.deb::https://github.com/xishang0128/mihomo-party/releases/download/v1.6.0/mihomo-party-linux-1.6.0-amd64.deb
+	sha256sums_x86_64 = 15432d4d2e3cb1933c493b18a69178630f3af8637063d6e3f3dc728fa5892f29
+	source_aarch64 = mihomo-party-1.6.0-aarch64.deb::https://github.com/xishang0128/mihomo-party/releases/download/v1.6.0/mihomo-party-linux-1.6.0-arm64.deb
+	sha256sums_aarch64 = b1584168e1b3b3708ff6b5731720f2da2229885daacc7d5fb79d375e9a734503
 
 pkgname = mihomo-party-xs-bin
