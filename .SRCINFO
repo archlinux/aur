@@ -1,0 +1,14 @@
+pkgbase = genromfs-git
+	pkgdesc = tool for creating romfs images
+	pkgver = 0.5.7.r89.e4225b
+	pkgrel = 1
+	url = http://romfs.sf.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	conflicts = genromfs
+	source = git+https://github.com/chexum/genromfs.git
+	md5sums = SKIP
+
+pkgname = genromfs-git
