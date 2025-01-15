@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mesa
-pkgver=24.2.1
+pkgver=24.3.3
 pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
 arch=('any')
@@ -8,14 +8,16 @@ license=("custom")
 makedepends=('mingw-w64-meson' 'mingw-w64-cmake' 'mingw-w64-directx-headers' 'python-mako' 'python-packaging' 'python-yaml')
 depends=('mingw-w64-llvm' 'mingw-w64-vulkan-icd-loader' 'mingw-w64-dlfcn')
 options=('staticlibs' '!strip' '!buildflags')
-validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l.velikov@gmail.com>
-              '946D09B5E4C9845E63075FF1D961C596A7203456'  # Andres Gomez <tanty@igalia.com>
-              'E3E8F480C52ADD73B278EE78E1ECBE07D7D70895'  # Juan Antonio Suárez Romero (Igalia, S.L.) <jasuarez@igalia.com>
-              'A5CC9FEC93F2F837CB044912336909B6B25FADFA'  # Juan A. Suarez Romero <jasuarez@igalia.com>
-              '71C4B75620BC75708B4BDB254C95FAAB3EB073EC'  # Dylan Baker <dylan@pnwbakers.com>
-              '57551DE15B968F6341C248F68D8E31AFC32428A6') # Eric Engestrom <eric@engestrom.ch>
+validpgpkeys=(
+  946D09B5E4C9845E63075FF1D961C596A7203456 # Andres Gomez <tanty@igalia.com>
+  71C4B75620BC75708B4BDB254C95FAAB3EB073EC # Dylan Baker <dylan@pnwbakers.com>
+  8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D # Emil Velikov <emil.l.velikov@gmail.com>
+  57551DE15B968F6341C248F68D8E31AFC32428A6 # Eric Engestrom <eric@engestrom.ch>
+  A5CC9FEC93F2F837CB044912336909B6B25FADFA # Juan A. Suarez Romero <jasuarez@igalia.com>
+  E3E8F480C52ADD73B278EE78E1ECBE07D7D70895 # Juan Antonio Suárez Romero (Igalia, S.L.) <jasuarez@igalia.com>
+)
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig})
-sha256sums=('fc9a495f3a9af906838be89367564e10ef335e058f88965ad49ccc3e9a3b420b'
+sha256sums=('105afc00a4496fa4d29da74e227085544919ec7c86bd92b0b6e7fcc32c7125f4'
             'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
