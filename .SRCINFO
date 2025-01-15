@@ -1,0 +1,23 @@
+pkgbase = rescribe-ocr-wayland-bin
+	pkgdesc = An easy-to-use desktop tool for performing OCR on image files, PDFs and Google Books (Wayland Build)
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://rescribe.xyz/
+	arch = x86_64
+	license = GPL-3.0
+	depends = leptonica
+	depends = tesseract
+	conflicts = rescribe-ocr
+	conflicts = rescribe-ocr-wayland-bin
+	noextract = rescribe
+	options = !strip
+	source = rescribe::https://rescribe.xyz/rescribe/1.3.0/linux/wayland/rescribe
+	source = https://raw.githubusercontent.com/rescribe/bookpipeline/refs/heads/master/cmd/rescribe/xyz.rescribe.rescribe.desktop
+	source = https://raw.githubusercontent.com/rescribe/bookpipeline/refs/heads/master/cmd/rescribe/icon.256.png
+	source = https://raw.githubusercontent.com/rescribe/bookpipeline/refs/heads/master/cmd/rescribe/icon.svg
+	sha256sums = 2bbb6bd5207f484dc10b790681babadaa2c6a148209912856525a9d3d29a9272
+	sha256sums = 3ec44d736f4bbaaabb760d61d2aeea2997d5e4ba1c47d3b252788472a53ef531
+	sha256sums = 38d2fa56b8f950df3b5653a9cfe949aea846327aa16165bb1c495294deee41d7
+	sha256sums = df0b29c72b3d0b4041c882d45c4f7895966c7d6acd307dc4e0e939036a959316
+
+pkgname = rescribe-ocr-wayland-bin
