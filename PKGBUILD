@@ -1,5 +1,5 @@
 pkgname=vibe-bin
-pkgver=2.6.9
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Transcribe audio / video offline using OpenAI Whisper"
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://thewh1teagle.github.io/vibe/"
 license=('MIT')
 depends=('ffmpeg' 'openblas' 'vulkan-icd-loader' 'libwebkit2gtk-4.1.so' 'gtk3')
 source=("https://github.com/thewh1teagle/vibe/releases/download/v${pkgver}/vibe_${pkgver}_amd64.deb")
-sha256sums=('f69185043b21667ecc9ae7ffc60ba689575f7f724b8355ad45fa2518c3471478')
+sha256sums=('e5633eadabc8c64f8a2fced92695845007a95a4593db58314e1e7c1dbb3e13ee')
 
 package() {
     tar -xf data.tar.* -C "${srcdir}"
