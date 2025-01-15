@@ -6,8 +6,8 @@
 pkgname=python-speechrecognition
 _pkg=speechrecognition
 _pkgdir=speech_recognition
-pkgver=3.13.0
-pkgrel=2
+pkgver=3.14.0
+pkgrel=1
 pkgdesc="Google-powered speech recognition for Python"
 arch=('any')
 url="https://github.com/Uberi/speech_recognition"
@@ -18,7 +18,7 @@ makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python
 provides=('python-speech_recognition')
 checkdepends=('python-pocketsphinx' 'python-pytest')
 source=("git+https://github.com/Uberi/speech_recognition.git#tag=${pkgver}")
-sha256sums=('d562c9cb54fba559076db39659cbe9b49e1f77062706cbbdb7175dab746f6292')
+sha256sums=('6e8e95b22a12cab9b03531ccffc5f18d056e0132cc2ed6a2304485102d4ff817')
 
 build() {
   cd "$_pkgdir"
@@ -34,6 +34,7 @@ check() {
     --ignore=${_pkgdir}/tests/recognizers/test_google_cloud.py \
     --ignore=${_pkgdir}/tests/recognizers/test_groq.py \
     --ignore=${_pkgdir}/tests/test_special_features.py \
+    --ignore=${_pkgdir}/tests/recognizers/whisper_api/test_groq.py \
     "${_pkgdir}/tests/" || true
 }
 
