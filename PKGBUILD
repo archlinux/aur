@@ -1,11 +1,12 @@
 # Maintainer: jrdn <r7Iq7R1c@protonmail.com>
 
 pkgname=openlinkhub
+pkgbase="${pkgname}"
 _upstreamname=OpenLinkHub
 _binlocation=/usr/bin/"${pkgname%-*}"
 _applocation=/opt/"${pkgname%-*}"
-_tag=0.4.5
-pkgver=0.4.5
+_tag=0.4.8
+pkgver=0.4.8
 pkgrel=5
 pkgdesc="Open source Linux interface for iCUE LINK Hub and other Corsair AIOs, Hubs. [Latest Release - source]"
 arch=('x86_64')
@@ -29,7 +30,7 @@ source=(
 	"${pkgname%-*}".service
 )
 noextract=()			
-sha256sums=('74e1f297542c7dbd224f71ae94651e40420fb4ce4a037cda888ec2441ed8599a'
+sha256sums=('c6441b576c7f5eb5a09fb506d4ee371efe3b98a0db1ac4a4509737fe3bb031e8'
             '1a023584de46d7c8c7bb353ceec762f837ae96fe7c41fac4e49f7da86e1e1d1c'
             '5aab700df0d7791722c2723ece369df916e07184407e4778d25a2dd934f12681'
             '430d8196074127257b6b823d7ae72eaa9fedf90f55c70bc121a9467e7648dcc5')

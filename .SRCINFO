@@ -1,6 +1,6 @@
 pkgbase = openlinkhub
 	pkgdesc = Open source Linux interface for iCUE LINK Hub and other Corsair AIOs, Hubs. [Latest Release - source]
-	pkgver = 0.4.5
+	pkgver = 0.4.8
 	pkgrel = 5
 	url = https://github.com/jurkovic-nikola/OpenLinkHub
 	install = openlinkhub.install
@@ -15,11 +15,11 @@ pkgbase = openlinkhub
 	provides = openlinkhub
 	conflicts = openlinkhub
 	backup = etc/udev/rules.d/99-openlinkhub.rules
-	source = openlinkhub::git+https://github.com/jurkovic-nikola/OpenLinkHub.git#tag=0.4.5
+	source = openlinkhub::git+https://github.com/jurkovic-nikola/OpenLinkHub.git#tag=0.4.8
 	source = openlinkhub.install
 	source = openlinkhub.sysusers
 	source = openlinkhub.service
-	sha256sums = 74e1f297542c7dbd224f71ae94651e40420fb4ce4a037cda888ec2441ed8599a
+	sha256sums = c6441b576c7f5eb5a09fb506d4ee371efe3b98a0db1ac4a4509737fe3bb031e8
 	sha256sums = 1a023584de46d7c8c7bb353ceec762f837ae96fe7c41fac4e49f7da86e1e1d1c
 	sha256sums = 5aab700df0d7791722c2723ece369df916e07184407e4778d25a2dd934f12681
 	sha256sums = 430d8196074127257b6b823d7ae72eaa9fedf90f55c70bc121a9467e7648dcc5
