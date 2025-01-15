@@ -1,7 +1,7 @@
 pkgbase = kahip
 	pkgdesc = Karlsruhe HIGH Quality Partitioning
-	pkgver = 3.17
-	pkgrel = 2
+	pkgver = 3.18
+	pkgrel = 1
 	url = https://github.com/KaHIP/KaHIP
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = kahip
 	depends = openmpi
 	depends = python
 	optdepends = gurobi: for ILP solver in ilp_improve
-	source = KaHIP-3.17.tar.gz::https://github.com/KaHIP/KaHIP/archive/v3.17.tar.gz
-	sha512sums = 5ef655cfa56c466a75739e071f237a8dc915b98f2d066a547691bdd1f871b9233b4d5433df253e78405be63c64a33a3e02feb1fdc17f87b21604a282204bef3d
+	source = KaHIP-3.18.tar.gz::https://github.com/KaHIP/KaHIP/archive/v3.18.tar.gz
+	sha512sums = 20be12754cae835fe76243f704e0e50c70620186c549de1b45a8a957e75317713925a0d00c9360fc5dd1e9f679f92f8d797ccf8d7005f7fbe740089890da7126
 
 pkgname = kahip
