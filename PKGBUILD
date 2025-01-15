@@ -2,16 +2,24 @@
 
 _pkgname=xdg
 pkgbase=dfl-xdg
-pkgname=('dfl-xdg' 'dfl-xdg-qt6')
+pkgname=(
+        'dfl-xdg'
+        'dfl-xdg-qt6'
+)
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="XDG Specifications implementation for Qt"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
-license=('GPL3')
-makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base')
+license=('GPL-3.0-only')
+makedepends=(
+            'meson'
+            'ninja'
+            'qt5-base'
+            'qt6-base'
+)
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('5f7f689007872cf14b261ba3e7404e3c')
+sha256sums=('5c180a4f4e7c344159cbd4dae7844ac84342119ee499703b28746760f016acf8')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
