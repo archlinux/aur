@@ -1,7 +1,7 @@
 pkgbase = fdclone
 	pkgdesc = Ncurses file and directory management tool
 	pkgver = 3.01j
-	pkgrel = 2
+	pkgrel = 3
 	url = https://musashien.sourceforge.net/userdoc/fd.shtml
 	arch = i686
 	arch = x86_64

@@ -8,7 +8,7 @@
 
 pkgname=fdclone
 pkgver=3.01j
-pkgrel=2
+pkgrel=3
 pkgdesc="Ncurses file and directory management tool"
 arch=('i686' 'x86_64')
 url="https://musashien.sourceforge.net/userdoc/fd.shtml"
