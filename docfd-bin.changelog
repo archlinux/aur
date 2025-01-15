@@ -1,4 +1,99 @@
 
-## 8.0.3
+## 9.0.0
 
-- Fixed single file view crash
+- Swapped over to using SQLite for index
+
+    - Memory usage is much slimmer/stays flat
+
+        - For the sample of 1.4GB worth of PDFs used, after indexing, 9.0.0-rc1 uses
+          1.9GB of memory, while 9.0.0-rc2 uses 39MB
+
+    - Search is a bit slower
+
+    - Added token length limit of 500 bytes to accommodate word table limit in index DB
+
+        - This means during indexing, if Docfd encounters a very long token,
+          e.g. serial number, long hex string, it will be split into chunks of
+          up to 500 bytes
+
+- Added `Ctrl`+`C` exit key binding to key binding info on screen
+
+- Updated exit keys
+
+    - To exit Docfd: `q`, `Ctrl`+`Q` or `Ctrl`+`C`
+
+    - To exit other modes: `Esc`
+
+- Now defaults to not scanning hidden files and directories
+
+    - This behaviour is now enabled via the `--hidden` flag
+
+- Changed to allow `--add-exts` and `--single-line-add-exts` to be specified multiple times
+
+- Changed return code to be 1 when there are no results for `--sample` or `--search`
+
+- Added `--no-pdftotext` and `--no-pandoc` flags
+
+    - Docfd also notes the presence of these flags in error message if there
+      are PDF files but no pdftotext command is available, and same with files
+      relying on pandoc
+
+- Renamed `drop path` command to just `drop`
+
+- Added drop unselected key binding, and the associated command `drop all except`
+
+- Various key binding help info grid adjustments
+
+## 9.0.0-rc1
+
+- Changed default cache size from 100 to 10000
+
+    - Index after compression doesn't take up that much space, and storage is
+      generally cheap enough these days
+
+- Adjusted cache eviction behaviour to be less strict on when eviction happens
+  and thus less expensive
+
+- Renamed `--cache-size` to `--cache-soft-limit`
+
+- Removed periodic GC compact call to avoid freezes when working with many
+  files
+
+- Removed GC compact call during file indexing core loops to reduce overhead
+
+- Added progress bars to initial document processing stage
+
+- Swapped to using C backend for BLAKE2B hashing, this gives >20x speedup depending on CPU
+
+- Swapped from JSON+GZIP to CBOR+GZIP serialization for indices
+
+- Changed help info rotation key from `h` to `?`
+
+- Renamed discard mode to drop mode
+
+- Added command history editing functionality
+
+- Added `--commands-from` command line argument
+
+- Added `--tokens-per-search-scope-level` command line argument
+
+- Concurrency related bug fixes
+
+    - Unlikely to encounter in normal workflows with human input speed
+
+    - https://github.com/darrenldl/docfd/commit/14fcc45b746e6156f29eb989d70700476977a3d7
+
+    - https://github.com/darrenldl/docfd/commit/bfd63d93562f8785ecad8152005aa0f823185699
+
+    - https://github.com/darrenldl/docfd/commit/4e0aa6785ce80630d0cd3cda6e316b7b15a4fb4b
+
+- Replaced print mode with copy mode
+
+- Replaced single file view with key binding to change screen split ratio
+  to remove feature discrepencies
+
+- Added narrow mode for search scope narrowing
+
+- Renamed `--index-chunk-token-count` to `--index-chunk-size`
+
+- Renamed `--sample-count-per-doc` to `--samples-per-doc`
