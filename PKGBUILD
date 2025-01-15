@@ -7,16 +7,20 @@
 shopt -s extglob
 
 pkgname=pandoc-static-git
-_pkgname="${pkgname%-static-git}"
+# convention: _^{n+1}pkgname is the vanilla pkgname, n renamings ago
+_pkgname="${pkgname%-static-git}-cli"
+__pkgname="${_pkgname%-cli}"
 pkgver=3.6.2.r5.g96d4f5be5
-pkgrel=1
+pkgrel=2
 pkgdesc='Conversion between markup formats (static build, dynamic Lua support)'
 arch=('i686' 'x86_64')
 url='https://pandoc.org'
 license=('GPL-2.0-or-later')
-conflicts=('haskell-pandoc' 'pandoc' 'pandoc-bin')
-replaces=('haskell-pandoc' 'pandoc' 'pandoc-bin')
-provides=("pandoc=${pkgver%%*([a-z]).r*}")
+provides=(
+    "$_pkgname=${pkgver%%*([a-z]).r*}"
+    "$__pkgname=${pkgver%%*([a-z]).r*}"
+)
+conflicts=("$_pkgname" "$__pkgname")
 depends=('gmp' 'zlib')
 makedepends=('git' 'stack')
 optdepends=('texlive-core: for pdf output')
