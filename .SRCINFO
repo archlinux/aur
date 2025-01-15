@@ -1,10 +1,10 @@
 pkgbase = gfxreconstruct-git
 	pkgdesc = Graphics API capture and replay tools for reconstructing graphics application behavior
-	pkgver = 1.0.1.r1.gc988668d
-	pkgrel = 3
+	pkgver = 1.4.304.0.r39.g79e09199
+	pkgrel = 1
 	url = https://github.com/LunarG/gfxreconstruct
 	arch = x86_64
-	license = Apache
+	license = MIT
 	makedepends = git
 	makedepends = cmake
 	makedepends = libx11
@@ -21,6 +21,10 @@ pkgbase = gfxreconstruct-git
 	conflicts = gfxreconstruct
 	source = git+https://github.com/LunarG/gfxreconstruct.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
+	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
+	source = git+https://github.com/KhronosGroup/SPIRV-Reflect.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

@@ -2,31 +2,36 @@
 # Contributor: Yevhenii Kolesnikov <sigexp.acc at gmail dot com>
 
 pkgname=gfxreconstruct-git
-pkgver=1.0.1.r1.gc988668d
-pkgrel=3
+pkgver=1.4.304.0.r39.g79e09199
+pkgrel=1
 pkgdesc="Graphics API capture and replay tools for reconstructing graphics application behavior"
 arch=(x86_64)
 url="https://github.com/LunarG/gfxreconstruct"
-license=(Apache)
+license=(MIT)
 depends=(glibc gcc-libs python zlib lz4 zstd)
-#depends=(python  xcb-util-keysyms  libxrandr zlib lz4 zstd)
 makedepends=(git cmake libx11 libxcb wayland xcb-util-keysyms)
 provides=(gfxreconstruct)
 conflicts=(gfxreconstruct)
 source=("git+https://github.com/LunarG/gfxreconstruct.git"
-        "git+https://github.com/KhronosGroup/Vulkan-Headers.git")
+        "git+https://github.com/KhronosGroup/Vulkan-Headers.git"
+        "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+        "git+https://github.com/KhronosGroup/SPIRV-Reflect.git")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
   cd gfxreconstruct
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^vulkan-sdk-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd gfxreconstruct
   git submodule init
-  git config submodule.'external/Vulkan-Headers'.url "$srcdir/Vulkan-Headers"
+  git config submodule.external/Vulkan-Headers.url "$srcdir/Vulkan-Headers"
+  git config submodule.external/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
+  git config submodule.external/SPIRV-Reflect.url "$srcdir/SPIRV-Reflect"
   git -c protocol.file.allow=always submodule update
 }
 
@@ -40,12 +45,10 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
-
-  cd gfxreconstruct
-  #DESTDIR="$pkgdir" make -C build_$arch install
+  install -D gfxreconstruct/LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # Remove .py file extension from files that are going to /usr/bin/
-  for f in $pkgdir/usr/bin/*.py; do
+  for f in ${pkgdir}/usr/bin/*.py; do
     mv -v $f `echo $f | sed 's/\.py//'`
   done
 }
