@@ -1,6 +1,6 @@
 pkgbase = python-mne
 	pkgdesc = Python package for exploring, visualizing, and analyzing human neurophysiological data: MEG, EEG, sEEG, ECoG, and more
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://mne.tools/stable/index.html
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-mne
 	depends = python-lazy-loader
 	optdepends = python-scikit-learn
 	optdepends = python-pandas
-	source = https://files.pythonhosted.org/packages/source/m/mne/mne-1.8.0.tar.gz
-	sha1sums = ecf3b8555a00e47ff367f9bc203621a5a45f67c7
+	source = https://files.pythonhosted.org/packages/source/m/mne/mne-1.9.0.tar.gz
+	sha1sums = 6dac9a7821a26a12fd947555181371021649526e
 
 pkgname = python-mne
