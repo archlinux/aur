@@ -5,16 +5,26 @@
 
 _pkgname=clipboard
 pkgbase=dfl-clipboard
-pkgname=('dfl-clipboard' 'dfl-clipboard-qt6')
+pkgname=(
+        'dfl-clipboard'
+        'dfl-clipboard-qt6'
+)
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Clipboard Manager based on wlroots data control protocol"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
-license=('GPL3')
-makedepends=('meson' 'ninja' 'dfl-wayqt' 'dfl-wayqt-qt6')
+license=('GPL-3.0-only')
+makedepends=(
+            'meson'
+            'ninja'
+            'qt5-base'
+            'qt6-base'
+            'dfl-wayqt'
+            'dfl-wayqt-qt6'
+)
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('c5516a6b78116d0b3ceac0e4de136a0a')
+sha256sums=('0303c7c041ba9a97d798a980dba854e9969e7fb072b3aaf508c813d50dd6e0a2')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
@@ -28,13 +38,19 @@ build() {
 }
 
 package_dfl-clipboard() {
-  depends=('qt5-base' 'dfl-wayqt')
+  depends=(
+          'qt5-base'
+          'dfl-wayqt'
+)
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build install
 }
 
 package_dfl-clipboard-qt6() {
-  depends=('qt6-base' 'dfl-wayqt-qt6')
+  depends=(
+          'qt6-base'
+          'dfl-wayqt-qt6'
+)
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build-qt6 install
 }
