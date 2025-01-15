@@ -1,6 +1,6 @@
 # Maintainer: LigoLang <infra at trili dot tech>
 pkgname=ligo-bin
-pkgver=1.9.0
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="High Level Smart Contract Language for Tezos (binary)"
 url="https://gitlab.com/ligolang/ligo"
