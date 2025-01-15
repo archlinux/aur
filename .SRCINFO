@@ -1,7 +1,7 @@
 pkgbase = rescribe-ocr-bin
 	pkgdesc = An easy-to-use desktop tool for performing OCR on image files, PDFs and Google Books (X11 Build)
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rescribe.xyz/
 	arch = x86_64
 	license = GPL-3.0
@@ -11,7 +11,7 @@ pkgbase = rescribe-ocr-bin
 	conflicts = rescribe-ocr-wayland-bin
 	noextract = rescribe
 	options = !strip
-	source = rescribe::https://rescribe.xyz/rescribe/1.3.0/linux/wayland/rescribe
+	source = rescribe::https://rescribe.xyz/rescribe/1.3.0/linux/rescribe
 	source = https://raw.githubusercontent.com/rescribe/bookpipeline/refs/heads/master/cmd/rescribe/xyz.rescribe.rescribe.desktop
 	source = https://raw.githubusercontent.com/rescribe/bookpipeline/refs/heads/master/cmd/rescribe/icon.256.png
 	source = https://raw.githubusercontent.com/rescribe/bookpipeline/refs/heads/master/cmd/rescribe/icon.svg

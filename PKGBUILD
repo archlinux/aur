@@ -6,14 +6,14 @@ conflicts=(
     "$_pkgname-wayland-bin"
 )
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use desktop tool for performing OCR on image files, PDFs and Google Books (X11 Build)"
 arch=('x86_64')
 url="https://rescribe.xyz/"
 license=('GPL-3.0')
 depends=('leptonica' 'tesseract')
 source=(
-	"rescribe::https://rescribe.xyz/rescribe/1.3.0/linux/wayland/rescribe"
+	"rescribe::https://rescribe.xyz/rescribe/1.3.0/linux/rescribe"
 	"https://raw.githubusercontent.com/rescribe/bookpipeline/refs/heads/master/cmd/rescribe/xyz.rescribe.rescribe.desktop"
 	"https://raw.githubusercontent.com/rescribe/bookpipeline/refs/heads/master/cmd/rescribe/icon.256.png"
 	"https://raw.githubusercontent.com/rescribe/bookpipeline/refs/heads/master/cmd/rescribe/icon.svg"
