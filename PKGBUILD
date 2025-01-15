@@ -8,7 +8,7 @@
 pkgname=servo-nightly-bin
 _pkgname=servo
 pkgver=20250115
-pkgrel=2
+pkgrel=3
 pkgdesc='embeddable, independent, memory-safe, modular, parallel web rendering engine'
 arch=(x86_64)
 url=https://servo.org
@@ -25,19 +25,19 @@ source=(
   "$_pkgname-$pkgver.tar.gz"::"$_url/$_pkgname-latest.tar.gz"
   "$_pkgname-$pkgver.tar.gz.sha256"::"$_url/$_pkgname-latest.tar.gz.sha256"
   https://raw.githubusercontent.com/servo/servo/main/LICENSE
-  servo.desktop
+  org.servo.Servo.desktop
 )
 sha256sums=('965684e103117808fe2e21ef9d6f3e134083277fd2d133b760f29cbbb377ac71'
             '5f641214d2c0a01f38295f4b381213f8fcaeddb560e0a27c2d94bf4bb84c91b2'
             '1af2d2b02d9c86030d29ed77117ca7a1b0e4b6ff35bcf8eeb124867d0f5cb59e'
-            '7a6cd816c35b9b42a27d83efbe72b3ac6bc79f2044153410fa434d7625f442ad')
+            'cb5fe124efa3db92ed298cd67d597ef26e35afa448d4e9fdcb31bb67a961047d')
 
 prepare() {
   sha256sum $_pkgname-$pkgver.tar.gz | sha256sum -c
 }
 
 package() {
-  install -Dm644 -t "$pkgdir"/usr/share/applications $_pkgname.desktop
+  install -Dm644 -t "$pkgdir"/usr/share/applications "org.servo.${_pkgname^}.desktop"
   install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname LICENSE
   install -Dm755 /dev/stdin "$pkgdir"/usr/bin/$_pkgname <<END
 #!/bin/sh
@@ -46,6 +46,7 @@ END
 
   install -Dm755 "$_pkgname/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname"
   cp -r "$_pkgname/resources" "$pkgdir/usr/lib/$_pkgname"
+  install -Dm644 "$_pkgname/resources/servo_64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/org.servo.${_pkgname^}.png"
   find "$pkgdir/usr/lib/$_pkgname/resources" -type d -exec chmod 755 {} +
   find "$pkgdir/usr/lib/$_pkgname/resources" -type f -exec chmod 644 {} +
 }
