@@ -11,7 +11,7 @@ _libressl_ver=4.0.0
 pkgbase=nginx-quic-libressl
 pkgname=($pkgbase $pkgbase-src)
 pkgver=1.27.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -140,7 +140,7 @@ build() {
     ${_quic_flags[@]}
 
   #touch ${srcdir}/boringssl/.openssl/include/openssl/ssl.h
-  make
+  make -j$(nproc)
 }
 
 package_nginx-quic-libressl() {
