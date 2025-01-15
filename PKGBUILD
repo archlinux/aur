@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle
 _app_id="de.philippun1.$pkgname"
-pkgver=0.11
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
 )
 conflicts=('turtlegit')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('152ff3d3fe039762c37a5fa562e088b84ac890c6db2e1072c3c1aa3fab03ff39')
+sha256sums=('362dc3f833fd0c61c9c5ae3e060b7bffde7552bdc400ea6b6de01b53a4fc84b2')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -66,6 +66,7 @@ package() {
   install -Dm644 "data/${_app_id}.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas/"
   install -Dm644 "data/${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
   install -Dm644 "data/${_app_id}.service" -t "$pkgdir/usr/share/dbus-1/services/"
+  install -Dm644 data/man/"${pkgname}"{_cli,_service}.1 -t "$pkgdir/usr/share/man/man1/"
   install -Dm644 "plugins/${pkgname}"{_nautilus.py,_nautilus_compare.py} -t \
     "$pkgdir/usr/share/nautilus-python/extensions/"
   install -Dm644 "plugins/${pkgname}_thunar.py" -t \

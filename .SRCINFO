@@ -1,6 +1,6 @@
 pkgbase = turtle
 	pkgdesc = Manage your git repositories with easy-to-use dialogs in Nautilus.
-	pkgver = 0.11
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/philippun1/turtle
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = turtle
 	optdepends = thunarx-python: Thunar plugin
 	optdepends = seahorse: sign commits
 	conflicts = turtlegit
-	source = https://gitlab.gnome.org/philippun1/turtle/-/archive/0.11/turtle-0.11.tar.gz
-	sha256sums = 152ff3d3fe039762c37a5fa562e088b84ac890c6db2e1072c3c1aa3fab03ff39
+	source = https://gitlab.gnome.org/philippun1/turtle/-/archive/0.11.1/turtle-0.11.1.tar.gz
+	sha256sums = 362dc3f833fd0c61c9c5ae3e060b7bffde7552bdc400ea6b6de01b53a4fc84b2
 
 pkgname = turtle
