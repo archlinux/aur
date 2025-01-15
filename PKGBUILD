@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bilibili
 _pkgver=1.16.2
-_subver=1
+_subver=2
 pkgver="${_pkgver}_${_subver}"
 _electronversion=33
 _nodeversion=18
-pkgrel=2
+pkgrel=1
 pkgdesc="Linux version based on Beilai official client porting supports roaming.(Use system-wide electron).基于哔哩哔哩官方客户端移植的Linux版本,支持漫游"
 arch=(
     'aarch64'
@@ -37,7 +37,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}-${_subver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('6a089b1f6373c2a1a06115a14dd99711064686c53821955a42b0272f7e4dab19'
+sha256sums=('00ddfac20f47625f6feb5c4db2b8577f397fdbc89ee060d62751041fbed4bd77'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
