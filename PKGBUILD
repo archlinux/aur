@@ -2,16 +2,24 @@
 
 _pkgname=keyring
 pkgbase=dfl-keyring
-pkgname=('dfl-keyring' 'dfl-keyring-qt6')
+pkgname=(
+        'dfl-keyring'
+        'dfl-keyring-qt6'
+)
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and easy to use implementation of Keyring"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
-license=('GPL3')
-makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base')
+license=('GPL-3.0-only')
+makedepends=(
+            'meson'
+            'ninja'
+            'qt5-base'
+            'qt6-base'
+)
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('3f20ad1a5b5da8c5846dd4a275b89bfa')
+sha256sums=('c872b84724c13ea056fb8a54d95da170f7fe0d0bea525947feb24009c21e69ed')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
@@ -25,7 +33,7 @@ build() {
 }
 
 package_dfl-keyring() {
-  depends=('qt5-base' 'libsecret')
+  depends=('qt5-base')
   optdepends=('gnome-keyring: For Gnome integration'
               'kwallet5: For Plasma integration')
   cd "${_pkgname}-v${pkgver}"
@@ -33,7 +41,7 @@ package_dfl-keyring() {
 }
 
 package_dfl-keyring-qt6() {
-  depends=('qt6-base' 'libsecret')
+  depends=('qt6-base')
   optdepends=('gnome-keyring: For Gnome integration'
               'kwallet: For Plasma integration')
   cd "${_pkgname}-v${pkgver}"

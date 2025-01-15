@@ -1,26 +1,24 @@
 pkgbase = dfl-keyring
 	pkgdesc = A simple and easy to use implementation of Keyring
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/desktop-frameworks/keyring
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = meson
 	makedepends = ninja
 	makedepends = qt5-base
 	makedepends = qt6-base
 	source = https://gitlab.com/desktop-frameworks/keyring/-/archive/v0.2.0/keyring-v0.2.0.tar.gz
-	md5sums = 3f20ad1a5b5da8c5846dd4a275b89bfa
+	sha256sums = c872b84724c13ea056fb8a54d95da170f7fe0d0bea525947feb24009c21e69ed
 
 pkgname = dfl-keyring
 	depends = qt5-base
-	depends = libsecret
 	optdepends = gnome-keyring: For Gnome integration
 	optdepends = kwallet5: For Plasma integration
 
 pkgname = dfl-keyring-qt6
 	depends = qt6-base
-	depends = libsecret
 	optdepends = gnome-keyring: For Gnome integration
 	optdepends = kwallet: For Plasma integration
