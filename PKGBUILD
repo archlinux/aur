@@ -46,6 +46,7 @@ build() {
 
 package() {
   cd $srcdir/$_pkgname-$pkgver
+  install -dm755 "$pkgdir"/usr/share/man/man1
   make install PREFIX="$pkgdir"/usr DESTDIR="$pkgdir/" MANTOP=$pkgdir/usr/share/man JMANDIR=$pkgdir/usr/share/man/ja/man1
   install -m755 ./fd{,b,n}sh "$pkgdir"/usr/bin
   install -DTm644 ./LICENSES.eng "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
