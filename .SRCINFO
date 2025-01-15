@@ -1,14 +1,14 @@
 pkgbase = squiid
 	pkgdesc = Advanced calculator written in Rust, featuring a terminal user interface supporting both RPN and algebraic input.
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://gitlab.com/ImaginaryInfinity/squiid-calculator/squiid
 	arch = any
 	license = GPLv3
 	makedepends = cargo
 	options = strip
 	options = !debug
-	source = https://gitlab.com/ImaginaryInfinity/squiid-calculator/squiid/-/archive/1.2.0/squiid-1.2.0.tar.gz
-	sha512sums = ba7477b8592c036d04b2487b49603fa9dd109a9175e801609dee557ddf39a6d3647ee4b47552665a2cca1b9b1b46c83e2a3d8f993d8306164c8d45c4ac19093c
+	source = https://gitlab.com/ImaginaryInfinity/squiid-calculator/squiid/-/archive/1.2.1/squiid-1.2.1.tar.gz
+	sha512sums = ebe5bae7f6dfcb8d494009a82348ec23be5b9e1761fbfd8844c922c5fceddde3397b8fd4c3e21b142fa9c0db0c6819d66bc47477c475596fe53b09921fe39bd9
 
 pkgname = squiid
