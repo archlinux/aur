@@ -1,8 +1,9 @@
 pkgbase = epson-inkjet-printer-201101w
 	pkgdesc = Epson inkjet printer driver (ME 340; Stylus NX130, SX130, TX130, TX133, TX135)
 	pkgver = 1.0.0
-	pkgrel = 11
+	pkgrel = 12
 	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
 	arch = x86_64
 	license = custom:Epson End User Software License Agreement
 	depends = epson-inkjet-printer-filter
