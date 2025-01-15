@@ -2,7 +2,7 @@
 
 set -u
 pkgname='dj64-git'
-pkgver=0.0.r4137.9e835ac
+pkgver=0.0.r4160.e5db293
 pkgrel=1
 pkgdesc='djgpp 64 bit compiler'
 arch=('x86_64')
@@ -10,6 +10,7 @@ url='https://github.com/stsp/dj64dev'
 license=('GPL-3.0-or-later')
 depends=('glibc' 'libelf' 'bash')
 makedepends=('djstub' 'git' 'thunk_gen' 'ctags')
+makedepends+=('autoconf-archive')
 provides=("${pkgname%-git}=${pkgver%.r*}")
 conflicts=("${pkgname%-git}")
 _srcdir='dj64dev'

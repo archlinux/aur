@@ -1,6 +1,6 @@
 pkgbase = dj64-git
 	pkgdesc = djgpp 64 bit compiler
-	pkgver = 0.0.r4137.9e835ac
+	pkgver = 0.0.r4160.e5db293
 	pkgrel = 1
 	url = https://github.com/stsp/dj64dev
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = dj64-git
 	makedepends = git
 	makedepends = thunk_gen
 	makedepends = ctags
+	makedepends = autoconf-archive
 	depends = glibc
 	depends = libelf
 	depends = bash
