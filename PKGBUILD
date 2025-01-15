@@ -2,7 +2,7 @@
 
 pkgname=python-tt-tools-common-git
 pkgver=1.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Common utilities shared across Tentorrent tools."
 arch=('any')
 url='https://github.com/tenstorrent/tt-tools-common'
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd tt-tools-common
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
 }
 
 build() {
