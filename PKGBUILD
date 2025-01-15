@@ -2,16 +2,24 @@
 
 _pkgname=settings
 pkgbase=dfl-settings
-pkgname=('dfl-settings' 'dfl-settings-qt6')
+pkgname=(
+        'dfl-settings'
+        'dfl-settings-qt6'
+)
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A class that extends QSettings"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
-license=('GPL3')
-makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base')
+license=('GPL-3.0-only')
+makedepends=(
+            'meson'
+            'ninja'
+            'qt5-base'
+            'qt6-base'
+)
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('06806618ad42243ceed7297fc3963533')
+sha256sums=('991408354f86006995310734303dda8c09602d99cd1e1448303ed2cd919d5df8')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
