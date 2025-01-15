@@ -1,0 +1,15 @@
+pkgbase = ruby-xxhash
+	pkgdesc = Ruby wrapper for xxHash lib
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/nashby/xxhash
+	arch = x86_64
+	license = MIT
+	makedepends = rubygems
+	makedepends = ruby-rake
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/nashby/xxhash/archive/v0.6.0/xxhash-0.6.0.tar.gz
+	sha256sums = 0139e882fa934aab85f4e2b51bd5a4486d575ea15ede1e598ac6d617266f704b
+
+pkgname = ruby-xxhash
