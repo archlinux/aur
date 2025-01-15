@@ -8,7 +8,9 @@
 # Contributor: wxt1221 <3264117476@qq.com>
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
-pkgver=1.16.2_1
+_pkgver=1.16.2
+_subver=2
+pkgver="${_pkgver}_${subver}"
 _electronversion=33
 epoch=5
 pkgrel=1
@@ -26,16 +28,16 @@ depends=(
     "electron${_electronversion}"
     'libappindicator-gtk3'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-${pkgver%_1}.aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-${pkgver%_1}.x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${_pkgver}-${_subver}/${pkgname%-bin}-${_pkgver}.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${_pkgver}-${_subver}/${pkgname%-bin}-${_pkgver}.x86_64.rpm")
 source=(
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/msojocs/bilibili-linux/v${pkgver//_/-}/license"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/msojocs/bilibili-linux/v${_pkgver}-${_subver}/license"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('1f173d1c11965a0e6382bcb63d5451bc0ac9d64e4780cde971ad4b65c2ddba8a')
-sha256sums_x86_64=('908453cb1325d49ff9560b5bf9282c8cd486ff26c7e58a20be4eb7d05fe6a0c6')
+sha256sums_aarch64=('018e1c51060eb8ac0192dc45701993dc744e5a5d9faa4555951940e23ea6deac')
+sha256sums_x86_64=('3540e142fa48b54eb7db9094140900e5779b2a224d31237a0f52a9f56fb29f31')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
