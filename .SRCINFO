@@ -1,10 +1,10 @@
 pkgbase = sra-tools
 	pkgdesc = A collection of tools and libraries for using data in the INSDC Sequence Read Archives
-	pkgver = 3.1.1
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/ncbi/sra-tools
 	arch = x86_64
-	license = custom: Public Domain
+	license = NCBI-PD
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = java-runtime
@@ -16,9 +16,9 @@ pkgbase = sra-tools
 	depends = gcc-libs
 	optdepends = python-ngs: python module for ncbi sra-tools
 	provides = ncbi-vdb
-	source = sra-tools-3.1.1.tar.gz::https://github.com/ncbi/sra-tools/archive/refs/tags/3.1.1.tar.gz
-	source = ncbi-vdb-3.1.1.tar.gz::https://github.com/ncbi/ncbi-vdb/archive/refs/tags/3.1.1.tar.gz
-	sha256sums = 96b110bd5a30ad312e2f02552062b48a77d40c763e6aba5bb84e83662a505cf1
-	sha256sums = e9766f259853c696be48e289b08cb5ae6e198d82d7ffee79f09ce7f720487991
+	source = sra-tools-3.2.0.tar.gz::https://github.com/ncbi/sra-tools/archive/refs/tags/3.2.0.tar.gz
+	source = ncbi-vdb-3.2.0.tar.gz::https://github.com/ncbi/ncbi-vdb/archive/refs/tags/3.2.0.tar.gz
+	sha256sums = 5ed9d0a61aa72c55566fb80b8b9293ad9006f528e7e11cba875d9377a0fc7b09
+	sha256sums = 49fea92d9ec5ab38a5c06d1bcb057d1e7c9d4d39adcb7f31a3485ecc35bd5b77
 
 pkgname = sra-tools
