@@ -1,0 +1,17 @@
+pkgbase = gitsign-credential-cache-bin
+	pkgdesc = Helper binary that allows users to cache signing credentials
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/sigstore/gitsign/
+	arch = any
+	license = Apache-2.0
+	provides = gitsign-credential-cache
+	conflicts = gitsign-credential-cache
+	source = gitsign-credential-cache::https://github.com/sigstore/gitsign/releases/download/v0.12.0/gitsign-credential-cache_0.12.0_linux_amd64
+	source = gitsign-credential-cache.service
+	source = gitsign-credential-cache.socket
+	sha256sums = 7f1823ca18201ea26ffd973c439195c11c42774e15e5a8a1b9cc23ae9b566ccf
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gitsign-credential-cache-bin
