@@ -5,12 +5,13 @@
 pkgname=ormolu-static-git
 _pkgname="${pkgname%-static-git}"
 pkgver=0.7.7.0.r16.g096b72d
-pkgrel=2
+pkgrel=3
 pkgdesc='A formatter for Haskell source code'
 arch=('i686' 'x86_64')
 url="https://github.com/tweag/${_pkgname}"
 license=('BSD-3-Clause')
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 depends=('gmp')
 makedepends=('git' 'stack' 'yq')
 source=("$pkgname::git+$url.git")
