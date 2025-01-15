@@ -2,8 +2,8 @@
 
 pkgname=komac
 pkgver=2.8.0
-pkgrel=1
-pkgdesc="A manifest creator for winget-pkgs"
+pkgrel=2
+pkgdesc="The Community Manifest Creator for WinGet"
 arch=('x86_64')
 url="https://github.com/russellbanks/Komac"
 license=('GPL-3.0-or-later')

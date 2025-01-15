@@ -1,7 +1,7 @@
 pkgbase = komac
-	pkgdesc = A manifest creator for winget-pkgs
+	pkgdesc = The Community Manifest Creator for WinGet
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/russellbanks/Komac
 	arch = x86_64
 	license = GPL-3.0-or-later
