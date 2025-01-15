@@ -1,14 +1,13 @@
 pkgbase = sonix-flasher-git
 	pkgdesc = Sonix Keyboard Flasher
 	pkgver = v0.2.5.r8.g7ded3d4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SonixQMK/sonix-flasher
 	arch = any
 	license = unknown
 	makedepends = git
 	depends = python-altgraph
 	depends = python-fbs
-	depends = python-future
 	depends = python-hidapi
 	depends = python-macholib
 	depends = python-pefile

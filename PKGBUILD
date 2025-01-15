@@ -3,14 +3,13 @@
 pkgname=sonix-flasher-git
 _name=${pkgname%-git}
 pkgver=v0.2.5.r8.g7ded3d4
-pkgrel=1
+pkgrel=2
 pkgdesc="Sonix Keyboard Flasher"
 arch=('any')
 url="https://github.com/SonixQMK/sonix-flasher"
 license=('unknown')
 depends=('python-altgraph'
          'python-fbs'
-         'python-future'
          'python-hidapi'
          'python-macholib'
          'python-pefile'
