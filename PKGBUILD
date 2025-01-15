@@ -1,10 +1,10 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=ollama-rocm-git
-pkgver=0.5.3.git+2cde4b88
+pkgver=0.5.6.git+2539f2db
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
-arch=(aarch64 x86_64)
+arch=(x86_64)
 url='https://github.com/ollama/ollama'
 license=(MIT)
 provides=(ollama)
@@ -13,11 +13,13 @@ depends=(comgr gcc-libs "hip-runtime-amd>=6.2.4" hipblas hsa-rocr libdrm libelf 
 optdepends=('rocm-smi-lib: monitor GPU usage with rocm-smi')
 makedepends=(git gcc-libs "go>=1.23" "hip-runtime-amd>=6.2.4" hipblas hsa-rocr libdrm libelf numactl rocblas rocm-hip-sdk rocm-opencl-sdk rocsolver rocsparse)
 source=(git+$url#branch=main
+        fix-missing-includes.patch
         ollama.service
         sysusers.conf
         tmpfiles.d)
 b2sums=('SKIP'
-        '564c355048079c72b0f052bf669dd8c5eb43921efa25fba5b425e29306815886eded52b7032bec67c6b0c2308d31a8ba13cd084b4a4bac5b329f471294a348d7'
+        'c24d9064c84cd21ac57f9edab53575768c339eb805a8287b5489d7855b0229f9bab3a7791140fa4aa0399035b9fc0d38e9c7d6391ced194ce4df73c70f9ec44d'
+        'e8e2e91d59d1aed0e2e8627cbca86969549578cdfde60be658e79ff42923f4b9784b4628a83ad810178abda4086be3fffb7495b91f94838e52e5f94772024363'
         '3aabf135c4f18e1ad745ae8800db782b25b15305dfeaaa031b4501408ab7e7d01f66e8ebb5be59fc813cfbff6788d08d2e48dcf24ecc480a40ec9db8dbce9fec'
         'e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed')
 
@@ -27,6 +29,12 @@ pkgver() {
   local _hash="$(git rev-parse --short HEAD)"
   _tag="${_tag%-*}"
   echo "${_tag##v}.git+${_hash}"
+}
+
+prepare() {
+  cd ollama
+
+  patch -Np1 -i ${srcdir}/fix-missing-includes.patch
 }
 
 build() {
