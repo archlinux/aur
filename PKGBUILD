@@ -26,7 +26,9 @@ package() {
     
     find "$srcdir" -type f \( -name "2s2h" -o -name "*.o2r" \) -exec cp -r {} "$pkgdir/usr/share/games/2s2h" \;
     #Lib fix only applies for Arm64
-    find "$srcdir/usr/lib" -type f \(  -name "*.so.10" -o -name "*.so.10.2.0" -o -name "*.libspdlog.so.1.13" -o -name "*.libspdlog.so.1.13.0" \) -exec bash -c 'test ! -e /usr/lib/$(basename {}) && cp -r {} "$pkgdir/usr/lib"' \;
+    if [ -d "$srcdir/usr/lib" ]; then
+     find "$srcdir/usr/lib" -type f \( -name "*.so.10" -o -name "*.so.10.2.0" -o -name "*.libspdlog.so.1.13" -o -name "*.libspdlog.so.1.13.0" \) -exec bash -c 'test ! -e /usr/lib/$(basename {}) && cp -r {} "$pkgdir/usr/lib"' \;
+    fi
     cp -r "$srcdir/assets" "$pkgdir/usr/share/games/2s2h"
     install -Dm755 "$srcdir/2s2h-$scriptver/2s2h.sh" "$pkgdir/usr/bin/2s2h"
     install -Dm644 "$srcdir/2s2h-$scriptver/2s2h.png" "$pkgdir/usr/share/pixmaps"
