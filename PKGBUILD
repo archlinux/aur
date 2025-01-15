@@ -5,7 +5,7 @@ pkgbase=python-glymur
 _pyname=${pkgbase#python-}
 #_pyname=Glymur
 pkgname=('python-glymur' 'python-glymur-doc')
-pkgver=0.13.6
+pkgver=0.13.7
 #_commit="d0134123978678d33573d53a144ce1634e770e10"
 pkgrel=1
 pkgdesc="Tools for accessing JPEG2000 files"
@@ -27,6 +27,7 @@ checkdepends=('python-pytest'
               'python-scikit-image'
               'python-gdal')
 #              'python-imagecodecs')
+#source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
 source=("https://github.com/quintusdias/glymur/archive/refs/tags/v${pkgver}.tar.gz"
         'fix-sphinx8-intersphinx.patch')
 #source=("https://github.com/quintusdias/glymur/archive/refs/tags/v${pkgver/.p/p}.tar.gz")
@@ -42,7 +43,7 @@ source=("https://github.com/quintusdias/glymur/archive/refs/tags/v${pkgver}.tar.
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.10.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.11.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.12.rst")
-md5sums=('68ce97d344a389b7dc63a4cc87f5c128'
+md5sums=('64cbaf82dcdb3d246d7fa996e07f6381'
          'c95fe75b7d3b0e8d1de91a7d9dfc2c2a')
 #        'SKIP'
 #        'SKIP'
@@ -88,7 +89,7 @@ check() {
 #   cd ${srcdir}/${_pyname}-${pkgver/.p/p}
 #   cd ${srcdir}/${_pyname}-${_commit}
 
-    pytest || warning "Tests failed" # -vv -ra --color=yes -o console_output_style=count -p xdist -n 4
+    pytest || warning "Tests failed" # -vv -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 #       tests/test_tiff2jp2.py::TestSuite::test_rgba_interface_big_endian
 #       tests/test_tiff2jp2.py::TestSuite::test_rgba_interface_big_endian_stripped
 #       tests/test_tiff2jp2.py::TestSuite::test_rgba_interface_big_endian_tiled
