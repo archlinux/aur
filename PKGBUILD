@@ -5,7 +5,7 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
 #pkgname=("${_pname}" "${_pname}-doc")
-pkgver=7.7.2
+pkgver=7.7.3
 pkgrel=1
 pkgdesc="Easy building of TUIs in Python"
 arch=('any')
@@ -22,7 +22,7 @@ checkdepends=('python-pytest'
               'python-yaml')
 #source=("https://github.com/oprypin/mkdocs-section-index/archive/refs/tags/v${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('2bf245ce0f7fe39ca4b37ec58246ef1a8fa5283bfe4a7c7d63ce09ea4bcc4643')
+sha256sums=('a79bc2b858424051c9a640a3353d57fd854c7d7073a0cae1989eb4196a4380e7')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -35,7 +35,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
 
 package_python-pytermgui() {

@@ -1,6 +1,6 @@
 pkgbase = python-pytermgui
 	pkgdesc = Easy building of TUIs in Python
-	pkgver = 7.7.2
+	pkgver = 7.7.3
 	pkgrel = 1
 	url = https://ptg.bczsalba.com/
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-pytermgui
 	makedepends = python-hatch-fancy-pypi-readme
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/p/pytermgui/pytermgui-7.7.2.tar.gz
-	sha256sums = 2bf245ce0f7fe39ca4b37ec58246ef1a8fa5283bfe4a7c7d63ce09ea4bcc4643
+	source = https://files.pythonhosted.org/packages/source/p/pytermgui/pytermgui-7.7.3.tar.gz
+	sha256sums = a79bc2b858424051c9a640a3353d57fd854c7d7073a0cae1989eb4196a4380e7
 
 pkgname = python-pytermgui
 	depends = python>=3.8
