@@ -4,7 +4,7 @@
 
 pkgname=mnamer
 pkgver=2.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A media organization tool'
 arch=('any')
 url='https://github.com/jkwill87/mnamer'
@@ -19,8 +19,16 @@ depends=(
   'python-teletype'
   'python-typing_extensions')
 makedepends=('python-build' 'python-setuptools-scm' 'python-wheel')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('1054c65164aef1815e8bd7b305d68fd69d583249b7fda939f12515cdc264958e')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+  "sessioncache.patch")
+sha256sums=(
+  '1054c65164aef1815e8bd7b305d68fd69d583249b7fda939f12515cdc264958e'
+  '26b3cbbc09772974ff15795db9dd0a60260af1b25ab0c98597fd758c61ed2bc5')
+
+prepare() {
+  patch -d "${pkgname}-${pkgver}" -p1 -i ../sessioncache.patch
+}
 
 build() {
   cd "${pkgname}-${pkgver}"

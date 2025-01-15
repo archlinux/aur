@@ -1,7 +1,7 @@
 pkgbase = mnamer
 	pkgdesc = A media organization tool
 	pkgver = 2.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jkwill87/mnamer
 	arch = any
 	license = MIT
@@ -17,6 +17,8 @@ pkgbase = mnamer
 	depends = python-teletype
 	depends = python-typing_extensions
 	source = mnamer-2.5.5.tar.gz::https://github.com/jkwill87/mnamer/archive/2.5.5.tar.gz
+	source = sessioncache.patch
 	sha256sums = 1054c65164aef1815e8bd7b305d68fd69d583249b7fda939f12515cdc264958e
+	sha256sums = 26b3cbbc09772974ff15795db9dd0a60260af1b25ab0c98597fd758c61ed2bc5
 
 pkgname = mnamer
