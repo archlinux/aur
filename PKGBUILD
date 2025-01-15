@@ -80,13 +80,15 @@ prepare() {
 
   cd "$srcdir/zotero-client/reader"
   git submodule init
+  # Stupid hack because of dangling commit
+  git -C "$srcdir/zotero-pdf-js" fetch "https://github.com/zotero/pdf.js.git" cb447cb9182cc027e536893535e73ad1bc0816b1
   git config submodule.pdfjs/pdf.js.url "$srcdir/zotero-pdf-js"
   git config submodule.epubjs/epub.js.url "$srcdir/zotero-epub-js"
   git -c protocol.file.allow=always submodule update
 
   cd "$srcdir/zotero-client/pdf-worker"
   git submodule init
-  # Stupid hack because of dangling commit
+  # Ditto
   git -C "$srcdir/zotero-pdf-js" fetch "https://github.com/zotero/pdf.js.git" 95d08fe7707553c23ce9f9c90371622a7aeb591f
   git config submodule.pdf.js.url "$srcdir/zotero-pdf-js"
   git -c protocol.file.allow=always submodule update
