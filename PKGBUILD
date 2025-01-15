@@ -1,6 +1,6 @@
 # Maintainer:
 pkgname=dr42-time-scheduler-client
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="A simple time management app"
 arch=('any')
@@ -13,6 +13,10 @@ conflicts=('time-scheduler-client' 'time-scheduler-client')
 options=('!strip' '!emptydirs')
 source=('git+https://github.com/Dr-42/time-scheduler-client.git')
 sha256sums=('SKIP')
+pkgver() {
+  cd "$srcdir"/time-scheduler-client
+  printf $(pnpm ver | tail -n 1)
+}
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
   cd time-scheduler-client
