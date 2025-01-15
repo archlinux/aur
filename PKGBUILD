@@ -29,7 +29,7 @@ prepare () {
 build() {
   cd "${srcdir}"/mesa-${pkgver}
   for _arch in ${_architectures}; do
-    ${_arch}-meson build-${_arch} -Dgallium-drivers=swrast,zink -Dvulkan-drivers=swrast -Db_lto=false -Degl=disabled -Dshared-glapi=enabled -Dgles1=enabled -Dgles2=enabled -Dosmesa=true -Dvulkan-icd-dir=bin --includedir=include/mesa
+    ${_arch}-meson build-${_arch} -Dgallium-drivers=softpipe,llvmpipe,zink -Dvulkan-drivers=swrast -Db_lto=false -Degl=disabled -Dshared-glapi=enabled -Dgles1=enabled -Dgles2=enabled -Dosmesa=true -Dvulkan-icd-dir=bin --includedir=include/mesa
     ninja -C build-${_arch} ${MAKEFLAGS}
   done
 }
