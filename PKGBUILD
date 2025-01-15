@@ -3,19 +3,17 @@ pkgname=belle-cpu
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="BELLE - The Big Endian, Low Level Emulator"
-arch=('any')
-url="https://github.com/BlueGummi/belle.git"
+arch=('x86_64')
+url="https://belle-cpu.xyz"
 license=('BSD-3-Clause')
-depends=('make' 'cargo')
-source=("git+https://github.com/BlueGummi/belle.git")
+source=("https://github.com/BlueGummi/belle/releases/download/0.2.0/belle.tar.gz")
 sha256sums=('SKIP')
 
-build() {
-    cd "$srcdir/belle"
-    ./build.sh -w
-}
-
 package() {
-    cd "$srcdir/belle"
-    ./install.sh -c
+    cd "$srcdir"
+    tar -xf belle.tar.gz
+    install -Dm755 "$srcdir/bin/basm" "$pkgdir/usr/bin/basm"
+    install -Dm755 "$srcdir/bin/belle" "$pkgdir/usr/bin/belle"
+    install -Dm755 "$srcdir/bin/bdump" "$pkgdir/usr/bin/bdump"
+    install -Dm755 "$srcdir/bin/bfmt" "$pkgdir/usr/bin/bfmt"
 }

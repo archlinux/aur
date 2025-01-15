@@ -2,12 +2,10 @@ pkgbase = belle-cpu
 	pkgdesc = BELLE - The Big Endian, Low Level Emulator
 	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://github.com/BlueGummi/belle.git
-	arch = any
+	url = https://belle-cpu.xyz
+	arch = x86_64
 	license = BSD-3-Clause
-	depends = make
-	depends = cargo
-	source = git+https://github.com/BlueGummi/belle.git
+	source = https://github.com/BlueGummi/belle/releases/download/0.2.0/belle.tar.gz
 	sha256sums = SKIP
 
 pkgname = belle-cpu
