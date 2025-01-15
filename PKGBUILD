@@ -11,52 +11,54 @@ provides=("quickshell")
 options=(!strip)
 license=('GPL')
 depends=(
-	'qt6-declarative'
-	'qt6-base'
-	'jemalloc'
-	'qt6-svg'
-	'libpipewire'
-	'qt6-wayland'
-	'wayland-protocols'
-	'libxcb'
-	'wayland'
-	'cli11'
-	'google-breakpad'
+  'qt6-declarative'
+  'qt6-base'
+  'jemalloc'
+  'qt6-svg'
+  'libpipewire'
+  'qt6-wayland'
+  'wayland-protocols'
+  'libxcb'
+  'wayland'
+  'cli11'
+  'libdrm'
+  'libgbm'
+  'google-breakpad'
 )
 makedepends=(
-	'ninja'
-	'cmake'
-	'pkgconf'
+  'ninja'
+  'cmake'
+  'pkgconf'
 )
 
 source=(
-	"git+https://github.com/outfoxxed/quickshell.git"
+  "git+https://github.com/outfoxxed/quickshell.git"
 
 )
 sha256sums=(
-	'SKIP'
+  'SKIP'
 )
 
 pkgver() {
-	cd "$srcdir/quickshell"
-	printf "0.1.%s" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/quickshell"
+  printf "0.1.%s" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${pkgname}"
-	cmake -GNinja -B build \
-		-DCMAKE_BUILD_TYPE="RelWithDebInfo" \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DDISTRIBUTOR="AUR (package: quickshell)" \
-		-DDISTRIBUTOR_DEBUGINFO_AVAILABLE=NO \
-		-DINSTALL_QML_PREFIX=/lib/qt6/qml
+  cd "${pkgname}"
+  cmake -GNinja -B build \
+    -DCMAKE_BUILD_TYPE="RelWithDebInfo" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DDISTRIBUTOR="AUR (package: quickshell)" \
+    -DDISTRIBUTOR_DEBUGINFO_AVAILABLE=NO \
+    -DINSTALL_QML_PREFIX=/lib/qt6/qml
 
-	cmake --build build
+  cmake --build build
 }
 
 package() {
-	cd "${pkgname}"
-	DESTDIR=$pkgdir cmake --install build
-	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 "../../quickshell-check.hook" "$pkgdir/usr/share/libalpm/hooks/quickshell-check.hook"
+  cd "${pkgname}"
+  DESTDIR=$pkgdir cmake --install build
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "../../quickshell-check.hook" "$pkgdir/usr/share/libalpm/hooks/quickshell-check.hook"
 }
