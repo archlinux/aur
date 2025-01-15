@@ -1,0 +1,4 @@
+[gitify-git]
+source = "git"
+git = "https://github.com/gitify-app/gitify.git"
+prefix = "v"

@@ -1,4 +1,4 @@
-*.tar.zst
-gitify
-pkg
-src
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
