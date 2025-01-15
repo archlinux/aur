@@ -1,7 +1,7 @@
 pkgbase = openlinkhub-git
 	pkgdesc = Open source Linux interface for iCUE LINK Hub and other Corsair AIOs, Hubs. [Latest Commit - source]
-	pkgver = 0.4.5.r2.g4937d66
-	pkgrel = 2
+	pkgver = 0.4.8.r1.g7108bb5
+	pkgrel = 1
 	url = https://github.com/jurkovic-nikola/OpenLinkHub
 	install = openlinkhub.install
 	arch = x86_64
