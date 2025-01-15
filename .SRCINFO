@@ -1,6 +1,6 @@
 pkgbase = lact-bin
 	pkgdesc = Linux GPU Configuration Tool (binary release)
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/ilya-zlobintsev/LACT
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lact-bin
 	depends = hwdata
 	provides = lact
 	conflicts = lact
-	source = https://github.com/ilya-zlobintsev/LACT/releases/download/v0.6.0/lact-0.6.0-0.amd64.ubuntu-2404.deb
-	sha256sums = 891417f110fe0ad61846af06d15c7054d2a5e32d7fef76bb0c5b94426911f1a3
+	source = https://github.com/ilya-zlobintsev/LACT/releases/download/v0.7.0/lact-0.7.0-0.amd64.ubuntu-2404.deb
+	sha256sums = 167ecf9d74720fadd8de0555b3b28ca421ddbd41de3ca4449cbbb9310b3cf8bb
 
 pkgname = lact-bin
