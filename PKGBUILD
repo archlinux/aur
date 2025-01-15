@@ -6,7 +6,7 @@
 # Contributor: joel schaerer <joel.schaerer@laposte.net>
 
 pkgname=insight-toolkit
-pkgver=5.4.0
+pkgver=5.4.2
 pkgrel=1
 pkgdesc="Cross-platform system that provides developers with an extensive suite of software tools for image analysis"
 arch=(x86_64)
@@ -17,7 +17,7 @@ makedepends=(cmake git eigen gtest)
 options=(!lto)
 source=(#"https://github.com/InsightSoftwareConsortium/ITK/releases/download/v${pkgver}/InsightToolkit-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz::https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('3a98ececf258aac545f094dd3e97918c93cc82bc623ddf793c4bf0162ab06c83fbfd4d08130bdec6e617bda85dd17225488bc1394bc91b17f1232126a5d990db')
+sha512sums=('4d7626f4ea694a7276ce5588c0aa69cac4e9c87697beb257942c18031c439ab88e4846d8950f5ab5b8c554dc621782a3ed48a36c8a27e4253f6a22947e2c9154')
 
 build() {
   cmake -B build -S "ITK-${pkgver}" -Wno-dev \
