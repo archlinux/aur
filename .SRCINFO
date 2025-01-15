@@ -1,7 +1,7 @@
 pkgbase = hlint-static-git
 	pkgdesc = Haskell source code suggestions
 	pkgver = 3.8.r68.g7dfba720
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ndmitchell/hlint
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = hlint-static-git
 	optdepends = haskell-apply-refact: automatically apply suggested refactorings
 	provides = hlint
 	conflicts = hlint
-	conflicts = hlint-bin
 	source = hlint-static-git::git+https://github.com/ndmitchell/hlint.git
 	sha256sums = SKIP
 
