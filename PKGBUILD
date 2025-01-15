@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
-pkgver=0.10.r0.g735fd1d
+pkgver=0.11.1.r0.g59037c7
 pkgrel=1
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
@@ -69,10 +69,10 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
   install -Dm644 "data/icons/hicolor/symbolic/apps/${_app_id}-symbolic.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/"
-  install -Dm644 "data/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "data/${_app_id}.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas/"
   install -Dm644 "data/${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
   install -Dm644 "data/${_app_id}.service" -t "$pkgdir/usr/share/dbus-1/services/"
+  install -Dm644 data/man/"${pkgname%-git}"{_cli,_service}.1 -t "$pkgdir/usr/share/man/man1/"
   install -Dm644 "plugins/${pkgname%-git}"{_nautilus.py,_nautilus_compare.py} -t \
     "$pkgdir/usr/share/nautilus-python/extensions/"
   install -Dm644 "plugins/${pkgname%-git}_thunar.py" -t \
