@@ -2,17 +2,25 @@
 
 _pkgname=volume
 pkgbase=dfl-volume
-pkgname=('dfl-volume' 'dfl-volume-qt6')
+pkgname=(
+        'dfl-volume'
+        'dfl-volume-qt6'
+)
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Volume control to allow users to choose devices and control the volume"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('libpulse')
-makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base')
+makedepends=(
+            'meson'
+            'ninja'
+            'qt5-base'
+            'qt6-base'
+)
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('4a1c90159f407dbd1fcf2865937db653')
+sha256sums=('8ab959385e987a86f9c1500bbf08a0d3a25680e2d599a27cfd735f9fdadf9439')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
