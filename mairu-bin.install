@@ -1,0 +1,7 @@
+post_install() {
+  setcap cap_ipc_lock=+ep /usr/bin/mairu
+}
+
+post_upgrade() {
+  setcap cap_ipc_lock=+ep /usr/bin/mairu
+}
