@@ -2,7 +2,7 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=rust-docs
 epoch=1
-pkgver=1.83.0
+pkgver=1.84.0
 pkgrel=1
 pkgdesc="Rust documentations."
 arch=('x86_64' 'i686' 'aarch64')
@@ -12,9 +12,9 @@ options=('docs' '!strip' '!debug')
 source_x86_64=("https://static.rust-lang.org/dist/rust-docs-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_i686=("https://static.rust-lang.org/dist/rust-docs-${pkgver}-i686-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://static.rust-lang.org/dist/rust-docs-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('76040ee9873267a643fa2831fcc322c7e7ca4216f78d68f3b6a61252a7b35f80')
-sha256sums_i686=('19c2df320fd52a6aa47e45bf50755c0238bada837ffb58b06ea152243a16e2f6')
-sha256sums_aarch64=('288f84e9a024192bc3c30be31a689b8ff428908331b9d77dffe58f7f50e75b7e')
+sha256sums_x86_64=('22d9881458e0f2d60b44b2e882f4eaf37488769d82dffa49d2173889c822e52b')
+sha256sums_i686=('dc61f6efc50c3660ae93a8d4f3f76dd09d5dc3427a12c3cee5191c9f31eafbee')
+sha256sums_aarch64=('a5a000a67120089bf43e289ba088ae0a9bc41796b89413ea54c7e7131a72c921')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}-${CARCH}-unknown-linux-gnu"
