@@ -1,7 +1,15 @@
 post_install() {
-    mkdir /home/mediatracker
+    mkdir /var/lib/mediatracker
     echo "To run, systemctl start mediatracker"
     echo "site at localhost:7481"
+}
+
+post_upgrade() {
+    systemctl stop mediatracker
+    if [ -d "/home/mediatracker" ]; then
+       usermod -m -d /var/lib/mediatracker mediatracker 
+    fi
+
 }
 
 post_remove() {

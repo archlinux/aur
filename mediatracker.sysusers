@@ -1,1 +1,1 @@
-u mediatracker - "Mediatracker daemon user" /home/mediatracker -
+u mediatracker - "Mediatracker daemon user" /var/lib/mediatracker /usr/bin/nologin

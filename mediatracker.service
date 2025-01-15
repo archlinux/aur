@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 User=mediatracker
-ExecStart=npm run start --prefix /srv/MediaTracker
+ExecStart=npm run start --prefix /usr/share/webapps/MediaTracker
 Restart=on-failure
 
 [Install]

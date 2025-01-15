@@ -1,2 +1,2 @@
-Z /srv/MediaTracker/ 0755 mediatracker mediatracker
-Z /home/mediatracker/ 0755 mediatracker mediatracker
+Z /usr/share/webapps/MediaTracker/ 0755 mediatracker mediatracker
+Z /var/lib/mediatracker/ 0755 mediatracker mediatracker
