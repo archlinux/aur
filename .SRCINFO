@@ -1,17 +1,17 @@
 pkgbase = qdocumentview
 	pkgdesc = Simple widget to display paged documents, like PDF and DjVu
 	pkgver = 0.2.0
-	pkgrel = 1
-	url = https://gitlab.com/marcusbritanicus/qdocumentview
+	pkgrel = 2
+	url = https://gitlab.com/extraqt/qdocumentview
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-2.0-or-later
 	makedepends = meson
 	makedepends = ninja
 	depends = qt5-base
 	depends = poppler-qt5
 	depends = djvulibre
-	source = https://gitlab.com/marcusbritanicus/qdocumentview/-/archive/v0.2.0/qdocumentview-v0.2.0.tar.gz
-	md5sums = 8783980e13d80897e3836ac798f6f365
+	source = https://gitlab.com/extraqt/qdocumentview/-/archive/v0.2.0/qdocumentview-v0.2.0.tar.gz
+	sha256sums = fefad8697d41dc0dc518356351e528d1f46be7f26816b6045624142a23975ea8
 
 pkgname = qdocumentview
