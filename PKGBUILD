@@ -1,10 +1,12 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# TODO: Wrong pkgdesc?
 
 _model="sc-p20k10k-jp"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="Epson inkjet printer driver (SC-P6000, SC-P7000, SC-P8000, SC-P9000)"
+# pkgdesc="Epson inkjet printer driver (SC-P6000, SC-P7000, SC-P8000, SC-P9000)"
+pkgdesc="Epson inkjet printer driver (SC-P10000, SC-P20000)"
 arch=('x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:Epson End User Software License Agreement')
@@ -19,11 +21,12 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}/ppds"
-  find . -type f -name '*.ppd' -exec \
-    sed -e "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}|/usr/share/epson-inkjet-printer-filter|g" \
+  cd "${srcdir}/${_pkgsrc}"
+  find "ppds" -type f -name '*.ppd' -exec \
+    sed -e "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}/watermark|/usr/share/epson-inkjet-printer-filter/watermark|g" \
         -e "s|/opt/${pkgname}/watermark|/usr/share/epson-inkjet-printer-filter/watermark|g" \
         -e "s|/opt/${pkgname}/cups/lib/filter/epson_inkjet_printer_filter|/usr/lib/cups/filter/epson_inkjet_printer_filter|g" \
+        -e "s|/opt/epson-${_model}/cups/lib/filter/epson_inkjet_printer_filter|/usr/lib/cups/filter/epson_inkjet_printer_filter|g" \
         -i "{}" +
 }
 
@@ -35,20 +38,14 @@ package() {
   find . -maxdepth 1 -type f -name '*.txt' -exec \
     install -vDm644 "{}" "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
 
-  find "resource" -type f -exec \
-    install -vDm644 "{}" "${pkgdir}/usr/share/epson-inkjet-printer-filter/{}" \;
-
-  cd "${srcdir}/${_pkgsrc}/ppds"
-  find . -type f -exec \
-    install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
-
-  cd "${srcdir}/${_pkgsrc}/lib64"
-  find . -type f -exec \
-    install -vDm644 "{}" "${pkgdir}/usr/lib/{}" \;
-
-  cd "${srcdir}/${_pkgsrc}/doc"
-  find . -type f -exec \
+  find "doc" -type f -execdir \
     install -vDm644 "{}" "${pkgdir}/usr/share/doc/${pkgname}/html/{}" \;
+  find "lib64" -type f -execdir \
+    install -vDm644 "{}" "${pkgdir}/usr/lib/{}" \;
+  find "ppds"       -type f -execdir \
+    install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
+  find "resource"   -type f -exec    \
+    install -vDm644 "{}" "${pkgdir}/usr/share/epson-inkjet-printer-filter/{}" \;
 
   cd "${pkgdir}/usr/lib"
   for lib in *".so.${pkgver}"; do

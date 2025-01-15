@@ -1,5 +1,5 @@
 pkgbase = epson-inkjet-printer-sc-p20k10k-jp
-	pkgdesc = Epson inkjet printer driver (SC-P6000, SC-P7000, SC-P8000, SC-P9000)
+	pkgdesc = Epson inkjet printer driver (SC-P10000, SC-P20000)
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
