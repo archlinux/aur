@@ -1,6 +1,6 @@
 pkgbase = chitubox-free-bin
 	pkgdesc = All-in-one SLA/DLP/LCD Slicer
-	pkgver = 2.1.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://www.chitubox.com/download.html
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = chitubox-free-bin
 	makedepends = xcb-util-renderutil
 	makedepends = xcb-util-wm
 	options = !strip
-	source = chitubox-free-bin-2.1.0.tar.gz::https://sac.chitubox.com/software/download.do?softwareId=17839&softwareVersionId=v2.1.0&fileName=CHITUBOX_V2.1.0.tar.gz
+	source = chitubox-free-bin-2.3.0.tar.gz::https://sac.chitubox.com/software/download.do?installerUrl=https%3A%2F%2Fdownload.chitubox.com%2F17839%2Fv2.3.0%2FCHITUBOX_Basic_Linux_Installer_V2.3.tar.gz&softwareId=17839&softwareVersionId=v2.3.0
 	source = local://chitubox-basic.desktop
 	source = local://chitubox-basic.xml
-	sha256sums = 9b14dce266132a08c0534076e1c93b5f7186b35885e96746a6b1836285071743
+	sha256sums = 44cf18f8468fbcab69179d9622232b187a263d9fa25c539b5d6bc209794ec93b
 	sha256sums = f3cb140e804119201d7efff6f23558eaa48278c213cb37848fb3ff1afc30deac
 	sha256sums = fede9c1383063dbfade24289c1adeda505f2333b1206865a6696f0a9f6c7390b
 

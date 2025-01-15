@@ -1,4 +1,4 @@
-# Maintainer: Martin Rys <rys.rs/contact>
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
 # Previous maintainers:
 #   Brian Li <brian14708@gmail.com>
@@ -13,14 +13,19 @@
 #urlPath:https://sac.chitubox.com/PCVersionUpdate/getInfo.do6?softwareType=17839&platform=4&majorVersion=2.0.0&silentVersion=0.0.0&login=0&customerMail=0startOpt 172 QSqlError("1555", "Unable to fetch row", "UNIQUE constraint failed: AdnormalTable.pid")
 
 pkgname=chitubox-free-bin
-pkgver=2.1.0
-RUNFILE='CHITUBOX_Basic_Linux_Installer_V2.1.run'
+pkgver=2.3.0
+RUNFILE='CHITUBOX_Basic_Linux_Installer_V2.3.run'
 
 pkgrel=1
 pkgdesc='All-in-one SLA/DLP/LCD Slicer'
 
-makedepends=(
+depends=(
 	'dbus'
+	'glib2'
+	'hicolor-icon-theme'
+	'zlib'
+)
+makedepends=(
 	'fontconfig'
 	'freetype2'
 	'icoutils'
@@ -38,13 +43,25 @@ license=('LicenseRef-CHITUBOX')
 
 options=(!strip)
 
+# Free - https://sac.chitubox.com/getSoftwareBySoftwareId.do2?softwareId=17839
+#    "stableVersion":  "v2.3.0",
+#    "bateVersion":    "v2.2.0",
+#    "stableLinuxUrl": "https://download.chitubox.com/17839/v2.3.0/CHITUBOX_Basic_Linux_Installer_V2.3.tar.gz",
+#    "betaLinuxUrl":   "https://download.chitubox.com/17839/v2.2.0/CHITUBOX_Basic_Linux_Installer_V2.2_Beta.tar.gz",
+
+# Pro - https://sac.chitubox.com/getSoftwareBySoftwareId.do2?softwareId=17842
+#    "stableVersion": "v2.0.8",
+#    "bateVersion":   "v2.0.7",
+
 source=(
-	"${pkgname}-${pkgver}.tar.gz::https://sac.chitubox.com/software/download.do?softwareId=17839&softwareVersionId=v${pkgver}&fileName=CHITUBOX_V${pkgver}.tar.gz"
+	# Annoying to get when new URL when it changes due to using window.open, just hog the connection and quickly CTRL+L & CTRL+C when the tab opens before it closes
+	# Smarter solutions welcome
+	"${pkgname}-${pkgver}.tar.gz::https://sac.chitubox.com/software/download.do?installerUrl=https%3A%2F%2Fdownload.chitubox.com%2F17839%2Fv2.3.0%2FCHITUBOX_Basic_Linux_Installer_V2.3.tar.gz&softwareId=17839&softwareVersionId=v2.3.0"
 	'local://chitubox-basic.desktop'
 	'local://chitubox-basic.xml'
 )
 
-sha256sums=('9b14dce266132a08c0534076e1c93b5f7186b35885e96746a6b1836285071743'
+sha256sums=('44cf18f8468fbcab69179d9622232b187a263d9fa25c539b5d6bc209794ec93b'
             'f3cb140e804119201d7efff6f23558eaa48278c213cb37848fb3ff1afc30deac'
             'fede9c1383063dbfade24289c1adeda505f2333b1206865a6696f0a9f6c7390b')
 
