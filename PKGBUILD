@@ -1,11 +1,11 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=poedit-git
-pkgver=3.5.1.r1.gd4b007054
+pkgver=3.5.2.r5.gb70c65eba
 pkgrel=1
 epoch=
 pkgdesc="Translations editor for Mac, Windows and Unix"
-arch=('x86_64')
+arch=($CARCH)
 url="https://github.com/vslavik/poedit"
 license=('MIT')
 groups=()
