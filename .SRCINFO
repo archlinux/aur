@@ -1,8 +1,9 @@
 pkgbase = pandoc-static-git
 	pkgdesc = Conversion between markup formats (static build, dynamic Lua support)
-	pkgver = 3.2.r112.g2b60b1a1b
+	pkgver = 3.6.2.r5.g96d4f5be5
 	pkgrel = 1
 	url = https://pandoc.org
+	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
@@ -10,14 +11,14 @@ pkgbase = pandoc-static-git
 	depends = gmp
 	depends = zlib
 	optdepends = texlive-core: for pdf output
-	provides = pandoc=3.2
+	provides = pandoc=3.6.2
 	conflicts = haskell-pandoc
 	conflicts = pandoc
 	conflicts = pandoc-bin
 	replaces = haskell-pandoc
 	replaces = pandoc
 	replaces = pandoc-bin
-	source = git+https://github.com/jgm/pandoc.git
-	sha512sums = SKIP
+	source = pandoc-static-git::git+https://github.com/jgm/pandoc.git
+	sha256sums = SKIP
 
 pkgname = pandoc-static-git
