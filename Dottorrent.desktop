@@ -8,4 +8,4 @@ Icon=example-torrent
 Type=Application
 Categories=Utility
 Name[en_US]=Dottorrent
-
+StartupWMClass=dottorrent-gui
