@@ -1,15 +1,15 @@
-# Maintainer: Darius Niminenn <root@dnim.dev>
+# Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=tidal-dl-ng
 _pkgname=${pkgname//-/_}
-pkgver=0.15.6
-pkgrel=1
+pkgver=0.24.4
+pkgrel=3
 pkgdesc='A tool for downloading music and albums from TIDAL'
 arch=(any)
 url='https://pypi.org/project/tidal-dl-ng/'
 license=(AGPL-3.0-only)
 depends=(
-    'python>=3.11'
+    'python>=3.13'
     'python-requests'
     'python-mutagen'
     'python-pycryptodome'
@@ -21,7 +21,7 @@ depends=(
     'python-rich'
     'python-toml'
     'python-typer'
-    'python-ffmpeg-python'
+    'python-python-ffmpeg'
     'pyside6'
     'python-pyqtdarktheme'
     'python-darkdetect'
@@ -35,14 +35,17 @@ source=(
     "https://files.pythonhosted.org/packages/source/t/$_pkgname/$_pkgname-$pkgver.tar.gz"
     "tidal-dl-ng"
     "tidal-dl-ng-gui"
+    "python313.patch"
 )
-sha256sums=('da638672088130a18aa6f3af0f181f96739af5a8d90b19e26c835f72cfc3de80'
+sha256sums=('c0ea3a8c3d9b7a7c5b8db46ecc20712a24517486b346dac36141ec248b109ad0'
             '1d2f9b06b7bba762f9a8770b163e001e5044a38b9d5befa8ea44fa3c98bcf172'
-            'ecdc2868d0df9fa41e3bca50f3f0bcfede7543b54700f45b2095b9662da6dd9c')
+            'ecdc2868d0df9fa41e3bca50f3f0bcfede7543b54700f45b2095b9662da6dd9c'
+            '64ff19bdd6b7ae294ca79b67f92fa8bf843e9c1941c29911d94dafda30e4a12d')
 
 prepare() {
     cd "$_pkgname-$pkgver"
     rm -rf dist
+    cat ../python313.patch | patch -p1
 }
 
 build() {
