@@ -2,7 +2,7 @@
 
 pkgname=tt-smi-git
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tenstorrent console based hardware information program"
 arch=('any')
 url='https://github.com/tenstorrent/tt-smi'
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd tt-smi
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
 }
 
 build() {
