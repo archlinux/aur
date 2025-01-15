@@ -1,13 +1,13 @@
 pkgbase = led_matrix_monitoring
 	pkgdesc = A daemon that renders metrics on a LED matrix connected to a Framework 16 Laptop using led_matrix_daemon
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/night-crawler/led_matrix_monitoring
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = clang
-	source = led_matrix_monitoring-0.3.0.tar.gz::https://github.com/night-crawler/led_matrix_monitoring/archive/0.3.0.tar.gz
+	source = led_matrix_monitoring-0.3.1.tar.gz::https://github.com/night-crawler/led_matrix_monitoring/archive/0.3.1.tar.gz
 	sha512sums = SKIP
 
 pkgname = led_matrix_monitoring
