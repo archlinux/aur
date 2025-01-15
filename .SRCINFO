@@ -1,6 +1,6 @@
 pkgbase = peazip-gtk2-bin
 	pkgdesc = Cross-platform file and archive manager (GTK2)
-	pkgver = 10.1.0
+	pkgver = 10.2.0
 	pkgrel = 1
 	url = https://github.com/peazip/PeaZip
 	arch = x86_64
@@ -16,8 +16,10 @@ pkgbase = peazip-gtk2-bin
 	optdepends = zpaq: Programmable file compressor, library and utilities
 	provides = peazip
 	conflicts = peazip
+	conflicts = peazip-debug
+	options = !debug
 	options = !emptydirs
-	source = https://github.com/peazip/PeaZip/releases/download/10.1.0/peazip-10.1.0.LINUX.GTK2-1.x86_64.rpm
-	sha256sums = 94a59f62b4936512971d3d7f83600649d0ed7933bc578876334d57538bfc016b
+	source = https://github.com/peazip/PeaZip/releases/download/10.2.0/peazip-10.2.0.LINUX.GTK2-1.x86_64.rpm
+	sha256sums = 25eeb581ec5ee08e068c50751479d3465e399581938f773a9ab9029a1c736b7e
 
 pkgname = peazip-gtk2-bin

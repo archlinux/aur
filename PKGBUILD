@@ -6,7 +6,7 @@
 
 _pkgname="peazip"
 pkgname="$_pkgname-gtk2-bin"
-pkgver=10.1.0
+pkgver=10.2.0
 pkgrel=1
 pkgdesc="Cross-platform file and archive manager (GTK2)"
 url="https://github.com/peazip/PeaZip"
@@ -27,13 +27,13 @@ optdepends=(
   'zpaq: Programmable file compressor, library and utilities'
 )
 
-options=('!emptydirs')
+options=('!debug' '!emptydirs')
 
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("$_pkgname" "$_pkgname-debug")
 
 source=("$url/releases/download/$pkgver/peazip-$pkgver.LINUX.GTK2-1.$CARCH.rpm")
-sha256sums=('94a59f62b4936512971d3d7f83600649d0ed7933bc578876334d57538bfc016b')
+sha256sums=('25eeb581ec5ee08e068c50751479d3465e399581938f773a9ab9029a1c736b7e')
 
 prepare() {
   cd usr/share/peazip
