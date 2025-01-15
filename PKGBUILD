@@ -6,8 +6,8 @@ pkgdesc="BELLE - The Big Endian, Low Level Emulator"
 arch=('x86_64')
 url="https://belle-cpu.xyz"
 license=('BSD-3-Clause')
-source=("https://github.com/BlueGummi/belle/releases/download/nightly/belle.tar.gz")
-md5sums=('f8678ce64a72f293b19dfea8de105734')
+source=("https://github.com/BlueGummi/belle/releases/download/nightly/belle-nightly-linux-x86_64.tar.gz")
+md5sums=('e5479c09a84243a2649b0367eed91820')
 
 package() {
     cd "$srcdir"
