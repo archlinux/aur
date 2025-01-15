@@ -1,38 +1,37 @@
+# Maintainer: a821 at mail de
 # Contributor: Dave Reisner <d@falconindy.com>
 
 pkgname=expac-git
-pkgver=9.2.g6be7fe1
+pkgver=10.r1.gab14fef
 pkgrel=1
 pkgdesc="pacman database extraction utility"
-arch=('i686' 'x86_64')
-url="http://github.com/falconindy/expac"
+arch=('x86_64')
+url="https://github.com/falconindy/expac"
 license=('MIT')
 depends=('pacman')
 makedepends=('git' 'meson' 'perl')
 conflicts=('expac')
 provides=('expac')
-source=('git://github.com/falconindy/expac.git')
-md5sums=('SKIP')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd expac
+  git describe | sed 's/-/.r/;s/-/./g'
+}
 
-  git describe | sed 's/-/./g'
+prepare() {
+  sed 's/^.\*.\?//;/DEALINGS/q' expac/src/expac.c > LICENSE
 }
 
 build() {
-  cd expac
-
-  [[ -d build ]] && meson_args+=(--wipe)
-
-  meson build "${meson_args[@]}"
-  ninja -C build
+  arch-meson expac build
+  meson compile -C build
 }
 
 package() {
-  cd expac
-
-  DESTDIR=$pkgdir ninja -C build install
+  meson install -C build --destdir "$pkgdir"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: ft=sh syn=sh et
