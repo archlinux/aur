@@ -9,7 +9,7 @@ url="https://github.com/ciderapp/${pkgname}.git"
 license=(AGPL3)
 depends=(gtk3 nss alsa-lib libxcrypt-compat)
 optdepends=('libnotify: Playback notifications')
-makedepends=(nvm fontconfig git rpm-tools)
+makedepends=(nvm fontconfig git)
 provides=(${pkgname})
 conflicts=(${pkgname})
 source_x86_64=("https://github.com/ciderapp/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
@@ -29,6 +29,7 @@ _ensure_local_nvm() {
 prepare() {
 	cd "${srcdir}/${pkgname^}-${pkgver}"
 	_ensure_local_nvm
+	echo "20.18.1" > .nvmrc # fix https://github.com/nodejs/node/issues/47822
 	nvm install
 	corepack enable
 	corepack prepare yarn@stable --activate
@@ -37,7 +38,7 @@ prepare() {
 build() {
 	cd "${srcdir}/${pkgname^}-${pkgver}"
 	_ensure_local_nvm
-	npx -y check-engine && yarn install && yarn dist && mv dist/*.deb "${srcdir}/" && cd "${srcdir}"
+	npx -y check-engine && yarn install && yarn dist --linux deb && mv dist/*.deb "${srcdir}/" && cd "${srcdir}"
 	ar x ${pkgname}_${pkgver}_amd64.deb data.tar.xz
 }
 

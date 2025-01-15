@@ -8,7 +8,6 @@ pkgbase = cider
 	makedepends = nvm
 	makedepends = fontconfig
 	makedepends = git
-	makedepends = rpm-tools
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
