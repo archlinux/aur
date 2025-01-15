@@ -1,10 +1,9 @@
-set -x
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=searxng-git
 _pkgname=searxng
-pkgver=1.0.0.r4210.g09cce1851
-pkgrel=2
+pkgver=1.0.0.r4221.ge4f8f0483
+pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://searxng.github.io/searxng/"
@@ -44,6 +43,7 @@ build() {
   # Generate a random secret key
   sed -i -e "s/ultrasecretkey\"  # change this\!/`openssl rand -hex 32`\"/g" "../settings.yml"
 
+  local SEARXNG_SETTINGS_PATH="../settings.yml"
   python -m searx.version freeze
   sed -i "s|GIT_URL =.*|GIT_URL = \"${_giturl}\"|g" searx/version_frozen.py
   sed -i "s|GIT_BRANCH =.*|GIT_BRANCH = \"${_gitbranch}\"|g" searx/version_frozen.py
