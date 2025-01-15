@@ -22,6 +22,10 @@ package() {
     install -dm755 "$pkgdir/usr/share/applications"
     install -dm755 "$pkgdir/usr/bin"
     
+    #Lib fix only applies for Arm64
+    if [ ! -e /usr/lib/libminiupnpc.so.17 ]; then
+      ln -s /usr/lib/libjxl.so $pkgdir/usr/lib/libjxl.so.0.10
+    fi
     cp -r "$srcdir/planetblupi/share/planetblupi" "$pkgdir/usr/share"
     cp -r "$srcdir/planetblupi/share/icons/hicolor" "$pkgdir/usr/share/icons"
     install -Dm755 "planetblupi.desktop" "$pkgdir/usr/share/applications"
