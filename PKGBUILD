@@ -12,14 +12,14 @@ license=('proprietary')
 provides=('tuna')
 conflicts=('tuna')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://releases.tuna.am/tuna/beta/v0.22.0-rc5/tuna_0.22.0-rc5_linux_arm64.tar.gz")
-sha256sums_aarch64=('9057d5a4a74cd8306daf4304aabdb7c72024b96543d2ee24c048460b6c875820')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://releases.tuna.am/tuna/beta/v0.22.0-rc6/tuna_0.22.0-rc6_linux_arm64.tar.gz")
+sha256sums_aarch64=('5e648ee246473b42419cd77593efb753af1e8f0270973ed469aba2c6691252f6')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://releases.tuna.am/tuna/beta/v0.22.0-rc5/tuna_0.22.0-rc5_linux_arm.tar.gz")
-sha256sums_armv7h=('048859c5851166b6c51ae32f4b0b26dabf2ce2e84955b44cfeac10671f149f10')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://releases.tuna.am/tuna/beta/v0.22.0-rc6/tuna_0.22.0-rc6_linux_arm.tar.gz")
+sha256sums_armv7h=('eed591fdb7fc60be0668229c256399a663dc2b3930ad0d0bc5c116184a22b878')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://releases.tuna.am/tuna/beta/v0.22.0-rc5/tuna_0.22.0-rc5_linux_amd64.tar.gz")
-sha256sums_x86_64=('b0683a0274a7e6c28e9dc9f1600535b4e2ec6f064a49c478b093920ef6a7eda1')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://releases.tuna.am/tuna/beta/v0.22.0-rc6/tuna_0.22.0-rc6_linux_amd64.tar.gz")
+sha256sums_x86_64=('4514221ab1ed64c3aaf18cf4467e4a27b3587ab281c466921806314e8011d3af')
 
 package() {
   # bin
