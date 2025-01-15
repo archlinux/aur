@@ -1,5 +1,5 @@
 # Maintainer: Hauke Mettendorf hauke@mettendorf.it
-pkgname=smee
+pkgname=smee-git
 pkgver=0.0.1
 pkgrel=1
 pkgdesc="A package which provides smee a container ships captian best friend"

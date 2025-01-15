@@ -1,4 +1,4 @@
-pkgbase = smee
+pkgbase = smee-git
 	pkgdesc = A package which provides smee a container ships captian best friend
 	pkgver = 0.0.1
 	pkgrel = 1
@@ -8,4 +8,4 @@ pkgbase = smee
 	source = https://github.com/hauke-cloud/smee/archive/refs/tags/0.0.1.zip
 	sha256sums = SKIP
 
-pkgname = smee
+pkgname = smee-git
