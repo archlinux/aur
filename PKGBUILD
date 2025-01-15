@@ -2,25 +2,25 @@
 
 _pkgname=dendrite
 pkgname=$_pkgname-libvips
-pkgver=0.13.8
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="A second-generation Matrix homeserver written in Go"
 arch=('x86_64' 'aarch64')
-url="https://github.com/matrix-org/$_pkgname"
-license=('Apache-2.0')
+url="https://github.com/element-hq/$_pkgname"
+license=('AGPL-3.0-or-later')
 depends=('libvips')
-makedepends=('go')
+makedepends=('git' 'go')
 optdepends=('postgresql: recommended database for large instances')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/matrix-org/$_pkgname/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz"
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/element-hq/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
         "$_pkgname.sysusers"
         "$_pkgname.tmpfiles"
         "$_pkgname.service")
-sha256sums=('b0f04539f0894bc1ea5153a4b52ebed2d813ea6a5172d1de1cd0a4bb6e67dcfd'
-            'aba328d7a7244e82f866f9d0ead0a53e79e1590b9c449ad6d18ff2659cb5e035'
-            '620b634419e94cb09423d39ecd7edf859bf458e9d72c35be30610b37acc1e8bf'
-            '7d33160209ed11f0ed6de84b0891becf175887a679eb5a3e01b672884fdf0c1d')
+b2sums=('52360f62e24293579c398702211e15ef33b3806d91c2a929fea5f2879191b7d9764a83414792c348c9a32725c5006eb5cf2810e25fb5c82386a1d5f7023a55ab'
+        'bd0cf2ee02603340cb0066a6786896ee5dec048e665516ad4e66913969175876e480470503093dff274377cabf7d9fe5fbe70ded605c9e6d05531a6298a634bc'
+        'b35856b8d5a289f5333b0a20658b602da588676cbbc12f543044b014d8b9a244053763bae39acf7ec54387eb738cd518e460996fc687787592c63fd2d7bbd69b'
+        'c129643657e2f8d97235e7eff48d33925439b8e07cd8631410fbc84082bf0e0131e7a5d64675d9d0f450e0c79bf48055a8fef2420256d85187ebee2d998c2481')
 install="$_pkgname.install"
 
 build() {
