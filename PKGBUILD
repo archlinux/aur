@@ -2,10 +2,10 @@
 _appname=anythingllm
 pkgname="${_appname}-desktop-bin"
 _pkgname=Anything-LLM-Desktop
-pkgver=1.7.1
+pkgver=1.7.2
 _electronversion=26
 pkgrel=1
-pkgdesc="The all-in-one AI application, tool suite, and API for RAG & Agents for Docker & Desktop.Prebuilt version.Use system-wide electron."
+pkgdesc="The all-in-one AI application, tool suite, and API for RAG & Agents for Docker & Desktop.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://useanything.com/"
 _ghurl="https://github.com/Mintplex-Labs/anything-llm"
@@ -32,9 +32,14 @@ source=(
     "LICENSE::https://raw.githubusercontent.com/Mintplex-Labs/anything-llm/master/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('fd3d8478682904905a1989816f3fa9549ea1f38ecd01fb3e4d996549daf100fd'
+sha256sums=('856087e024e4a58d01f28c96fd1039b97d0e0216b65f629c50439de15b17d767'
             '782d2dc18a1ed9028ca992520f42b2e0b6187807da0d14455b8ae608e2e5692e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+pkgver() {
+    cd "${srcdir}/squashfs-root"
+    set -o pipefail
+    grep "X-AppImage-Version" "${pkgname%-bin}.desktop" | sed "s/X-AppImage-Version=//"
+}
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g

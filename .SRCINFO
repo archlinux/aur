@@ -1,6 +1,6 @@
 pkgbase = anythingllm-desktop-bin
-	pkgdesc = The all-in-one AI application, tool suite, and API for RAG & Agents for Docker & Desktop.Prebuilt version.Use system-wide electron.
-	pkgver = 1.7.1
+	pkgdesc = The all-in-one AI application, tool suite, and API for RAG & Agents for Docker & Desktop.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://useanything.com/
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = anythingllm-desktop-bin
 	depends = electron26
 	depends = nodejs
 	depends = ollama
-	provides = anythingllm-desktop=1.7.1
+	provides = anythingllm-desktop=1.7.2
 	conflicts = anythingllm-desktop
 	conflicts = anythingllm
 	options = !strip
-	source = anythingllm-desktop-1.7.1.AppImage::https://s3.us-west-1.amazonaws.com/public.useanything.com/latest/AnythingLLMDesktop.AppImage
+	source = anythingllm-desktop-1.7.2.AppImage::https://s3.us-west-1.amazonaws.com/public.useanything.com/latest/AnythingLLMDesktop.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/Mintplex-Labs/anything-llm/master/LICENSE
 	source = anythingllm-desktop.sh
-	sha256sums = fd3d8478682904905a1989816f3fa9549ea1f38ecd01fb3e4d996549daf100fd
+	sha256sums = 856087e024e4a58d01f28c96fd1039b97d0e0216b65f629c50439de15b17d767
 	sha256sums = 782d2dc18a1ed9028ca992520f42b2e0b6187807da0d14455b8ae608e2e5692e
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
