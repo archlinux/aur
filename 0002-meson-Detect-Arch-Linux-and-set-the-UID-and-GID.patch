@@ -9,7 +9,7 @@ Subject: [PATCH] meson: Detect Arch Linux and set the UID and GID
  2 files changed, 24 insertions(+), 6 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index 0605bf975e4c..4e5b2ff0c31b 100644
+index 07a662f241b1..94b208cfc527 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -231,9 +231,6 @@ endif
