@@ -1,6 +1,6 @@
 pkgbase = protoc-gen-go
 	pkgdesc = Go support for Google's protocol buffers
-	pkgver = 1.36.2
+	pkgver = 1.36.3
 	pkgrel = 1
 	url = https://github.com/protocolbuffers/protobuf-go
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = protoc-gen-go
 	makedepends = go
 	depends = glibc
 	depends = protobuf
-	source = protobuf-go-1.36.2.tar.gz::https://github.com/protocolbuffers/protobuf-go/archive/refs/tags/v1.36.2.tar.gz
-	sha256sums = 360ccbd38d9ad429535847bdddb57827b599fcd67f1bd03dd26a28103e87cf91
+	replaces = protobuf-go
+	source = protobuf-go-1.36.3.tar.gz::https://github.com/protocolbuffers/protobuf-go/archive/refs/tags/v1.36.3.tar.gz
+	sha256sums = d15b5c42786fa47d716b1572e5ba21979dc3163121854ece5101f072d4fa95bb
 
 pkgname = protoc-gen-go
