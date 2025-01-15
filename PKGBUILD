@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chat2db-bin
 _pkgname=Chat2DB
-pkgver=0.3.6
+pkgver=0.3.7
 _electronversion=22
 pkgrel=1
 pkgdesc="🔥🔥🔥AI-driven database tool and SQL client, The hottest GUI client, supporting MySQL, Oracle, PostgreSQL, DB2, SQL Server, DB2, SQLite, H2, ClickHouse, and more.(Prebuilt version.Use system-wide electron)"
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c9c1a6ea690055246eed1fdbd550fb23600f01aa969655d272e36b435e01da46'
+sha256sums=('6740005b94521216b9718ea24e9d9abbb5ec2e697d77f807e1a6ca686370f7fc'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
