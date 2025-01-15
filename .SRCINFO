@@ -1,7 +1,7 @@
 pkgbase = vk-messenger-appimage
 	pkgdesc = VK Messenger for Linux in the appimage package format
-	pkgver = 6.0.49.308
-	pkgrel = 0
+	pkgver = 6.0.51.318
+	pkgrel = 1
 	url = https://vk.me/app
 	arch = x86_64
 	license = custom
@@ -9,6 +9,6 @@ pkgbase = vk-messenger-appimage
 	noextract = vk-messenger.AppImage
 	options = !strip
 	source = https://upload.object2.vk-apps.com/vk-me-desktop-dev-5837a06d-5f28-484a-ac22-045903cb1b1a/latest/vk-messenger.AppImage
-	sha256sums = 0e83a4bec568760780c10240dca055e55542881b9f811e54422ecbf263515739
+	sha256sums = 01b4b67a7320a8c405d5aecd324ffe73a4e27b0fd7173e27a2d5ec2d75a44cd5
 
 pkgname = vk-messenger-appimage
