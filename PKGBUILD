@@ -1,13 +1,32 @@
+# Maintainer: envolution
+# shellcheck shell=bash disable=SC2034,SC2154
 pkgname=sttr
-pkgver=0.2.14
+pkgver=0.2.24
 pkgrel=1
 pkgdesc='cli app to perform various operations on string'
-arch=('x86_64')
+license=('MIT')
+arch=(i686 x86_64 aarch64)
 url="https://github.com/abhimanyu003/sttr"
-makedepends=()
-source=("$url/releases/download/v$pkgver/sttr_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('832e2eaec253be4d4ea1b7bdabef34632989cc0527b8d3f58da7211f89410ec3')
+depends=(glibc)
+makedepends=(go)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/abhimanyu003/sttr/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('e9340c65c22d3016f9e4fe0a7f414bd1a8d8463203806c28b09a79889c805d76')
+
+build() {
+  cd "$pkgname-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o sttr
+}
 
 package() {
-  install -Dm755 ./sttr "${pkgdir}/usr/bin/sttr"
+  cd "$pkgname-$pkgver"
+  install -Dm755 sttr "${pkgdir}/usr/bin/sttr"
+  install -Dm755 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
+
+# vim:set ts=2 sw=2 et:

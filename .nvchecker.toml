@@ -1,0 +1,5 @@
+[sttr]
+source="github"
+github="abhimanyu003/sttr"
+use_latest_tag=true
+prefix='v'
