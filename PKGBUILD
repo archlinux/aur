@@ -1,7 +1,7 @@
 # Maintainer: Antony Jordan <antony.r.jorda at gmail dot com>
 # Co-Maintainer: Stephanie Wilde-Hobbs <arch at stephanie dot is>
 pkgname=nanovna-saver
-pkgver=0.6.5
+pkgver=0.6.8
 pkgrel=1
 pkgdesc="PC control for the NanoVNA."
 arch=(any)
@@ -13,7 +13,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/NanoVNA-Saver/nanovna-saver/archive/v$pkgver.tar.gz"
   "$pkgname.desktop"
 )
-sha256sums=('99416aeec52b41dccedfe91541b6d1972205ba902cce002593d5c0ee986b6506'
+sha256sums=('3c9a45184d12da13440e22f77829956e875dfc7f864dcdd7369dd8832df31fd8'
             'b67fb284bc6a8ece865df8c117acd84f87141ab543fdd2959754250cf0b06b9e')
 
 build() {
