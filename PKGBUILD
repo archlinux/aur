@@ -1,24 +1,22 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=imgbrd-grabber
-pkgver=7.12.2
-pkgrel=5
+pkgver=7.13.0
+pkgrel=1
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('x86_64')
 url="https://github.com/Bionus/imgbrd-grabber"
 license=('Apache-2.0')
 depends=('qt6-multimedia' 'qt6-declarative' 'nodejs' 'qt6-networkauth' 'hicolor-icon-theme' 'gcc-libs' 'glibc' 'qt6-base'
 	 'qt6-webengine')
-makedepends=('git' 'cmake' 'qt6-tools' 'npm' 'qt6-shadertools' 'clang' 'jq' 'ninja')
+makedepends=('git' 'cmake' 'qt6-tools' 'npm' 'qt6-shadertools' 'jq' 'ninja')
 optdepends=('openssl: Access HTTPS sources')
 conflicts=("imgbrd-grabber-git" 'imgbrd-grabber-bin' 'imgbrd-grabber-appimage')
 source=('git+https://github.com/Bionus/imgbrd-grabber.git#tag=v'${pkgver}''
-	'networkauth.patch'
         'git+https://github.com/LaurentGomila/qt-android-cmake.git'
         'git+https://github.com/sakra/cotire.git'
         'git+https://github.com/lexbor/lexbor.git'
         'git+https://github.com/catchorg/Catch2.git')
-sha256sums=('47d682e0496439ca1c193a32288f4031142c6780cb3469e66479e46750483a36'
-            'ae6bc47ed6d7e16f4400f6ed9ed0446b6c8df5e322901e9103ed8b4b83771a22'
+sha256sums=('175f41d63ec78f8d13c9584853ec511030a30ca41b25b9aefd000bf1cc937cf0'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -32,8 +30,6 @@ prepare() {
     git config submodule.tests/src/vendor/catch.url "$srcdir/Catch2"
     git config submodule.lib/vendor/lexbor.url "$srcdir/lexbor"
     git -c protocol.file.allow=always submodule update
-
-    patch -p1 < "$srcdir/networkauth.patch"
 }
 
 build() {

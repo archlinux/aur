@@ -1,7 +1,7 @@
 pkgbase = imgbrd-grabber
 	pkgdesc = Very customizable imageboard/booru downloader with powerful filenaming features.
-	pkgver = 7.12.2
-	pkgrel = 5
+	pkgver = 7.13.0
+	pkgrel = 1
 	url = https://github.com/Bionus/imgbrd-grabber
 	arch = x86_64
 	license = Apache-2.0
@@ -10,7 +10,6 @@ pkgbase = imgbrd-grabber
 	makedepends = qt6-tools
 	makedepends = npm
 	makedepends = qt6-shadertools
-	makedepends = clang
 	makedepends = jq
 	makedepends = ninja
 	depends = qt6-multimedia
@@ -26,14 +25,12 @@ pkgbase = imgbrd-grabber
 	conflicts = imgbrd-grabber-git
 	conflicts = imgbrd-grabber-bin
 	conflicts = imgbrd-grabber-appimage
-	source = git+https://github.com/Bionus/imgbrd-grabber.git#tag=v7.12.2
-	source = networkauth.patch
+	source = git+https://github.com/Bionus/imgbrd-grabber.git#tag=v7.13.0
 	source = git+https://github.com/LaurentGomila/qt-android-cmake.git
 	source = git+https://github.com/sakra/cotire.git
 	source = git+https://github.com/lexbor/lexbor.git
 	source = git+https://github.com/catchorg/Catch2.git
-	sha256sums = 47d682e0496439ca1c193a32288f4031142c6780cb3469e66479e46750483a36
-	sha256sums = ae6bc47ed6d7e16f4400f6ed9ed0446b6c8df5e322901e9103ed8b4b83771a22
+	sha256sums = 175f41d63ec78f8d13c9584853ec511030a30ca41b25b9aefd000bf1cc937cf0
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
