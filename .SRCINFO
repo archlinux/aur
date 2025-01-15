@@ -1,6 +1,6 @@
 pkgbase = verible
 	pkgdesc = Suite of SystemVerilog developer tools. Including a style-linter, indexer, formatter, and language server
-	pkgver = 0.0.r3902.g26188e7a
+	pkgver = 0.0.r3908.gf1f3f468
 	pkgrel = 2
 	url = https://github.com/chipsalliance/verible
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = verible
 	provides = verible
 	conflicts = verible-git
 	conflicts = verible-bin
-	source = verible-0.0.r3902.g26188e7a.tar.gz::https://github.com/chipsalliance/verible/archive/refs/tags/v0.0-3902-g26188e7a.tar.gz
-	sha256sums = d8ba014c93914cc10b17585eff974b8c0829fffe14a5b6f4d5e24f1385981c55
+	source = verible-0.0.r3908.gf1f3f468.tar.gz::https://github.com/chipsalliance/verible/archive/refs/tags/v0.0-3908-gf1f3f468.tar.gz
+	sha256sums = c4a22b49624e8d91839a273071ac5e56b789e1e3247bd90f71c5721db81063ef
 
 pkgname = verible
