@@ -1,7 +1,7 @@
 pkgbase = plex-desktop
 	pkgdesc = Plex desktop client for linux
 	pkgver = 1.106.0.276
-	pkgrel = 2
+	pkgrel = 3
 	url = http://plex.tv
 	arch = x86_64
 	license = unknown
@@ -54,6 +54,7 @@ pkgbase = plex-desktop
 	depends = wayland
 	depends = qt6-base
 	noextract = Plex-$pkgver-$_pkghash-linux-x86_64.tar.bz2
+	options = !debug
 	source = https://artifacts.plex.tv/plex-desktop-stable/1.106.0.276-fe8d1d20/linux/Plex-1.106.0.276-fe8d1d20-linux-x86_64.tar.bz2
 	source = http://ftp.us.debian.org/debian/pool/main/libw/libwebp/libwebp6_0.6.1-2.1+deb11u2_amd64.deb
 	source = https://github.com/flathub/tv.plex.PlexDesktop/raw/master/tv.plex.PlexDesktop.desktop
@@ -63,6 +64,6 @@ pkgbase = plex-desktop
 	sha256sums = 8abc2b1ca77a458bbbcdeb6af5d85316260977370fa2518d017222b3584d9653
 	sha256sums = 2215f6bb3a2bbe50ceb3bedcb93f53d11f6a51ec7512f08f68af91da8253261b
 	sha256sums = 565178841c318fb4926acf65a68df6dae484c0b705be6dd736858e7408a261d5
-	sha256sums = fdd03ee53402df3691ce4d278e1f233721e16042a30d1875c0f285a65b890d97
+	sha256sums = ba597b7083d64e3ffbcd610aec269a53cc404e4e6ec2a4d31064b5dbe75afb8b
 
 pkgname = plex-desktop
