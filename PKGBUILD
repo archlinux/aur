@@ -10,15 +10,15 @@ _pandoc_type=stock
 _pandoc_ver=3.6.2
 _pandoc_lua_ver=0.4.1
 _pandoc_commit=fd496848d8a9799edc5095ed3134522a9c14ad11
-pkgrel=2
+pkgrel=3
 pkgdesc='Pandoc filter for cross-references (static build)'
 arch=('i686' 'x86_64')
 url="https://github.com/lierdakil/${_pkgname}"
 license=('GPL-2.0-or-later')
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
-depends=('gmp' "pandoc=$_pandoc_ver" 'zlib')
-makedepends=('git' 'stack' 'pandoc' 'yq')
+depends=('gmp' "pandoc-cli=$_pandoc_ver" 'zlib')
+makedepends=('git' 'stack' 'pandoc-cli' 'yq')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
