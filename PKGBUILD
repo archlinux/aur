@@ -5,16 +5,26 @@
 
 _pkgname=applications
 pkgbase=dfl-applications
-pkgname=('dfl-applications' 'dfl-applications-qt6')
+pkgname=(
+        'dfl-applications'
+        'dfl-applications-qt6'
+)
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A class that extends QApplications"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
-license=('GPL3')
-makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base' 'dfl-ipc' 'dfl-ipc-qt6')
+license=('GPL-3.0-only')
+makedepends=(
+            'meson'
+            'ninja'
+            'qt5-base'
+            'qt6-base'
+            'dfl-ipc'
+            'dfl-ipc-qt6'
+)
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('f987f17f5cea3696e1d91171974295de')
+sha256sums=('617fcff64e1e726f7c1c52795eb985774528a55a028a432099a8736fef705e7e')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
@@ -28,13 +38,19 @@ build() {
 }
 
 package_dfl-applications() {
-  depends=('qt5-base' 'dfl-ipc')
+  depends=(
+          'qt5-base'
+          'dfl-ipc'
+  )
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build install
 }
 
 package_dfl-applications-qt6() {
-  depends=('qt6-base' 'dfl-ipc-qt6')
+  depends=(
+          'qt6-base'
+          'dfl-ipc-qt6'
+  )
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build-qt6 install
 }
