@@ -1,0 +1,22 @@
+pkgbase = ultra-tracker-bin
+	pkgdesc = Track athlete times in ultra marathons.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/barcradio/ultra-tracker
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = MIT
+	depends = electron28
+	conflicts = ultra-tracker
+	options = !emptydirs
+	source = ultra-tracker.sh
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_aarch64 = ultra-tracker-1.0.2-aarch64.deb::https://github.com/barcradio/ultra-tracker/releases/download/v1.0.2/ultra-tracker_1.0.2_arm64.deb
+	sha256sums_aarch64 = 3af284e4888cce049cd60df1789ef2f0e28cc0c36f61d4d17d8f787d999dd0aa
+	source_armv7h = ultra-tracker-1.0.2-armv7h::https://github.com/barcradio/ultra-tracker/releases/download/v1.0.2/ultra-tracker_1.0.2_armv7l.deb
+	sha256sums_armv7h = 8b028c00523e369d246ad4c7b7b658bee8055936125e4d5e62077dc33636f3c1
+	source_x86_64 = ultra-tracker-1.0.2-x86_64.deb::https://github.com/barcradio/ultra-tracker/releases/download/v1.0.2/ultra-tracker_1.0.2_amd64.deb
+	sha256sums_x86_64 = b354f608ff2a25a0ec13c2b897cbcff39c11f3a83abd7da21a46884cea57cc1b
+
+pkgname = ultra-tracker-bin
