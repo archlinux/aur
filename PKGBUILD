@@ -4,7 +4,7 @@
 
 pkgname=xdg-desktop-portal
 pkgver=1.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://flatpak.github.io/xdg-desktop-portal/"
 arch=(x86_64)
@@ -15,14 +15,15 @@ depends=(
   gdk-pixbuf2
   glib2
   glibc
+  gstreamer
   gst-plugins-base-libs
   json-glib
+  libgudev
   libpipewire
   pipewire
   rtkit
   systemd
   systemd-libs
-  umockdev
 )
 makedepends=(
   docbook-xsl
@@ -42,6 +43,7 @@ makedepends=(
   python-sphinx-copybutton
   python-sphinxext-opengraph
   python-sphinx-furo
+  umockdev
   xmlto
 )
 optdepends=(
