@@ -5,10 +5,12 @@ pkgbase = python-pyspeckit
 	url = https://pyspeckit.readthedocs.io
 	arch = any
 	license = MIT
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = python-setuptools
 	makedepends = python-sphinx-astropy
+	makedepends = python-matplotlib
 	makedepends = python-astropy
+	makedepends = python-six
 	source = https://files.pythonhosted.org/packages/source/p/pyspeckit/pyspeckit-1.0.3.tar.gz
 	md5sums = 6d6930970e5555f8a5499d78571ec734
 

@@ -8,10 +8,12 @@ pkgrel=1
 pkgdesc="Toolkit for fitting and manipulating spectroscopic data in python"
 arch=('any')
 url="https://pyspeckit.readthedocs.io"
-license=('MIT' 'BSD')
+license=('MIT' 'BSD-3-Clause')
 makedepends=('python-setuptools'
              'python-sphinx-astropy'
-             'python-astropy')
+             'python-matplotlib'
+             'python-astropy'
+             'python-six')
 #            'python-sphinx-astropy')
 #checkdepends=('python-pytest'
 ##             'tk'
@@ -25,8 +27,8 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 md5sums=('6d6930970e5555f8a5499d78571ec734')
 
 get_pyinfo() {
-     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
-             python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+    [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
+        python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
 prepare() {
