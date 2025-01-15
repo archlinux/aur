@@ -50,11 +50,20 @@ prepare() {
   _bumpVer parsec 3.1.17.0
   _bumpVer text 2.1.1
   _bumpVer text-iso8601 0.1.1
+
+  # enable tests
+  yq -i --yaml-output \
+      '.build."test-arguments"."no-run-tests" = false' stack.yaml
 }
 
 build() {
   cd "$pkgname"
   stack build
+}
+
+check() {
+  cd "$pkgname"
+  stack test
 }
 
 package() {
