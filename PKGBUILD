@@ -3,9 +3,9 @@
 _model="stylus-pro-7890-9890-series"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Epson inkjet printer driver (Stylus Pro 7890, 7908, 9890, 9908)"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:Epson End User Software License Agreement')
 depends=('epson-inkjet-printer-filter' 'gcc-libs' 'glibc')
@@ -14,6 +14,15 @@ DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o
 source=("https://download.ebz.epson.net/dsc/f/01/00/01/78/81/93325244c86bb1f7510265599bb9faa8d1fbccec/${_pkgsrc}-1lsb3.2.src.rpm")
 md5sums=('acf925a01aa08b1790b5b55ea463e554')
 sha256sums=('5c7704fb3f42014cb38db70013132056be33dad3831f1dfcc385f1fcb24f2e61')
+
+case "${CARCH}" in
+  x86_64)
+    _bit="64"
+    ;;
+  i686)
+    _bit=""
+    ;;
+esac
 
 prepare() {
   cd "${srcdir}"
@@ -44,7 +53,7 @@ package() {
   find . -type f -exec \
     install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
 
-  cd "${srcdir}/${_pkgsrc}/lib64"
+  cd "${srcdir}/${_pkgsrc}/lib${_bit}"
   find . -type f -exec \
     install -vDm644 "{}" "${pkgdir}/usr/lib/{}" \;
 
