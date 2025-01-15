@@ -1,0 +1,19 @@
+pkgbase = epson-pc-fax2
+	pkgdesc = Epson PC-FAX driver used with CUPS
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	depends = cups
+	depends = glibc
+	depends = libcups
+	noextract = epson-pc-fax2-1.0.0-i686.deb
+	noextract = epson-pc-fax2-1.0.0-x86_64.deb
+	source_i686 = epson-pc-fax2-1.0.0-i686.deb::https://download3.ebz.epson.net/dsc/f/03/00/15/14/03/75cca41028d85de671a802d8a5c6d36b3945dc0f/epson-pc-fax2-1.0.0i386.deb
+	sha256sums_i686 = bd100fb0be5b1b72120d6d232e866322de9b067e2ca984433d841f263ebd938f
+	source_x86_64 = epson-pc-fax2-1.0.0-x86_64.deb::https://download3.ebz.epson.net/dsc/f/03/00/15/14/02/23d720c4f51c39c9012f607fce736063b1815c88/epson-pc-fax2-1.0.0x86_64.deb
+	sha256sums_x86_64 = 74d2dc3c0eeac490f4551daa4a0dac37c110a3101dd47e75e49feaa142c86236
+
+pkgname = epson-pc-fax2
