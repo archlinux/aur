@@ -3,6 +3,7 @@ pkgbase = pandoc-crossref-static-git
 	pkgver = 0.3.18.1.r2.g357b101c
 	pkgrel = 1
 	url = https://github.com/lierdakil/pandoc-crossref
+	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
