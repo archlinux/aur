@@ -2,17 +2,17 @@
 # Co-maintainer: Nebulosa <nebulosa2007 at yandex dot ru>
 
 pkgname=byedpi
-pkgver=0.15
-pkgrel=2
+pkgver=0.16
+pkgrel=1
 pkgdesc="A simple and fast software designed to bypass Deep Packet Inspection"
-arch=(aarch64 armv6h armv7h x86_64)
+arch=(aarch64 armv6 armv7l i686 x86_64)
 url="https://github.com/hufrea/$pkgname"
 license=(MIT)
 depends=(glibc)
 options=(!debug)
 backup=(etc/$pkgname.conf)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('adceb3106c16d8aefe2040d8f12d9118107b23d2eac57f4a295f7800b655e889e6507f8800d1f0cc46e1365df2c987c764c68f6ab3df9a0dee3a226746e195c7')
+b2sums=('7a80864864a736d68824596dbe086bb4a6f90661fd02a2231c7c023ab7b098e5b38f73fa8acb8adc5f73de16d328875d42bdd3fd5f4dd34f40d9d51fd8b22e5e')
 
 prepare() {
   sed -i 's|ExecStart=ciadpi|ExecStart=/usr/bin/ciadpi|' $pkgname-$pkgver/dist/linux/$pkgname.service
