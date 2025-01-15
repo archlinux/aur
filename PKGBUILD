@@ -1,7 +1,7 @@
 # Maintainer: Daniel Chesters <archlinux@coin-coin.xyz>
 
 pkgname=python-ollama
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Ollama Python library"
 arch=('any')
@@ -18,6 +18,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ollama/ollama-python/archiv
 
 build() {
 	cd "ollama-python-$pkgver" || exit
+	# Remove poetry plugin dependancies
+	sed -i '16,17d' pyproject.toml
 	poetry build -f wheel
 }
 
@@ -26,4 +28,4 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
-b2sums=('48af2cf1faf98235dee402b09501ed23162bfab651134b20e3543a2130b6e6604b5d2cf831fccb06d12d61bb502a0be4e3fbe6eb4971c65dfe6cc98dc04253b5')
+b2sums=('4e46c0123181dbbab25a223f9895238c4d44bf6bc0a594cee40ac1b69a976a09303c7084d2178ea1ee09937d762b671bd830d34453f913e6891c0ae18e997d92')
