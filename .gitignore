@@ -1,8 +1,9 @@
 \#*#
 .#*
 *~
-dethrace-*.pkg.tar.zst
-dethrace-*.pkg.tar.xz
+*.tar.gz
+*.tar.zst
+*.tar.xz
 src/
 pkg/
 .BUILDINFO

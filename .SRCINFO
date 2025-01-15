@@ -1,6 +1,6 @@
 pkgbase = dethrace
 	pkgdesc = Reverse engineering the 1997 game "Carmageddon"
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/dethrace-labs/dethrace
 	install = dethrace.install
@@ -10,9 +10,12 @@ pkgbase = dethrace
 	makedepends = cmake
 	depends = libgl
 	depends = sdl2
-	source = dethrace-0.7.1.tar.gz::https://github.com/dethrace-labs/dethrace/archive/refs/tags/v0.7.1.tar.gz
+	noextract = BRender-9c34086300f4f0bbb3a55206380f25b17dad6c12.tar.gz
+	source = dethrace-0.8.0.tar.gz::https://github.com/dethrace-labs/dethrace/archive/refs/tags/v0.8.0.tar.gz
+	source = BRender-9c34086300f4f0bbb3a55206380f25b17dad6c12.tar.gz::https://github.com/dethrace-labs/BRender-v1.3.2/archive/9c34086300f4f0bbb3a55206380f25b17dad6c12.tar.gz
 	source = fix_install_dirs.patch
-	sha256sums = 3bf5fba5e8847ae041e71a2c16364e71b5619e36e94a0873d707733dff694647
-	sha256sums = ad1d8a4178fdc529c7b8f675ceb99d9245de674c80f20c1ff8378493b8ae258b
+	sha256sums = 5e636da490e2c14594d5842a6b888218bd40c188744ad509ec87a65a384ad350
+	sha256sums = 48002c6b6779150490084d63649c1afb559c24683f32dc00a32be604f4b73ecb
+	sha256sums = fea3f9d9c4847df201bef875ab68d9a8fa1ecbffb4155466646f329b85dbb1ce
 
 pkgname = dethrace

@@ -1,7 +1,7 @@
-diff --color -ura dethrace-0.7.1/CMakeLists.txt dethrace-0.7.1.new/CMakeLists.txt
---- dethrace-0.7.1/CMakeLists.txt	2024-06-14 00:31:54.000000000 +0200
-+++ dethrace-0.7.1.new/CMakeLists.txt	2024-08-04 13:51:10.043596815 +0200
-@@ -89,7 +89,7 @@
+diff --color -ura dethrace-0.8.0.orig/CMakeLists.txt dethrace-0.8.0.new/CMakeLists.txt
+--- dethrace-0.8.0.orig/CMakeLists.txt	2024-09-19 21:35:37.000000000 +0200
++++ dethrace-0.8.0.new/CMakeLists.txt	2025-01-15 14:44:56.250408420 +0100
+@@ -92,7 +92,7 @@
  
  if(DETHRACE_INSTALL)
      install(FILES LICENSE
@@ -10,15 +10,15 @@ diff --color -ura dethrace-0.7.1/CMakeLists.txt dethrace-0.7.1.new/CMakeLists.tx
      )
  
      set(DETHRACE_PACKAGE_PLATFORM "" CACHE STRING "Dethrace binary package platform")
-diff --color -ura dethrace-0.7.1/src/DETHRACE/CMakeLists.txt dethrace-0.7.1.new/src/DETHRACE/CMakeLists.txt
---- dethrace-0.7.1/src/DETHRACE/CMakeLists.txt	2024-06-14 00:31:54.000000000 +0200
-+++ dethrace-0.7.1.new/src/DETHRACE/CMakeLists.txt	2024-08-04 13:49:37.719888706 +0200
-@@ -205,7 +205,7 @@
- 
- if (DETHRACE_INSTALL)
+diff --color -ura dethrace-0.8.0.orig/src/DETHRACE/CMakeLists.txt dethrace-0.8.0.new/src/DETHRACE/CMakeLists.txt
+--- dethrace-0.8.0.orig/src/DETHRACE/CMakeLists.txt	2024-09-19 21:35:37.000000000 +0200
++++ dethrace-0.8.0.new/src/DETHRACE/CMakeLists.txt	2025-01-15 15:25:56.276044925 +0100
+@@ -200,7 +200,7 @@
+ if(DETHRACE_INSTALL)
      install(TARGETS dethrace
--        RUNTIME DESTINATION "."
-+        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
+         BUNDLE DESTINATION . COMPONENT Runtime
+-        RUNTIME DESTINATION . COMPONENT Runtime
++        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT Runtime
      )
-     if(MSVC)
-         INSTALL(FILES $<TARGET_PDB_FILE:dethrace>
+ 
+     if(APPLE)
