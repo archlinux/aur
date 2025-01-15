@@ -1,7 +1,7 @@
 pkgbase = openvpn
 	pkgdesc = An easy-to-use, robust and highly configurable VPN (Virtual Private Network)
-	pkgver = 2.6.12
-	pkgrel = 3
+	pkgver = 2.6.13
+	pkgrel = 1
 	url = https://openvpn.net/index.php/open-source.html
 	install = openvpn.install
 	arch = x86_64
@@ -26,14 +26,14 @@ pkgbase = openvpn
 	depends = libsystemd.so
 	optdepends = easy-rsa: easy CA and certificate handling
 	optdepends = pam: authenticate via PAM
-	source = git+https://github.com/OpenVPN/openvpn.git#tag=v2.6.12?signed
+	source = git+https://github.com/OpenVPN/openvpn.git#tag=v2.6.13?signed
 	source = 0001-unprivileged.patch
 	source = sysusers.conf
 	source = tmpfiles.conf
 	validpgpkeys = F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7
 	validpgpkeys = B62E6A2B4E56570B7BDC6BE01D829EFECA562812
-	sha256sums = 0d91a85307b2d7da104bc1fa45be47fb0a20f346b2b25050747423130ba9a8c8
-	sha256sums = a081d40a1785db94378aee6223240f2d01550507b69ca401838477bcf764088e
+	sha256sums = 3673c6f52b6ab988c0db556582a68efdc7cd81fe2ea744f3b6cc9e377c7a3087
+	sha256sums = bb47b298b59300a4282fc4d0b69dcdd8dcfb72d2ff2f702f96ea369a8381456a
 	sha256sums = 15669f82ac8b412eb3840ba9b39de20ca9b04bf082516c229577a5cb4e1a9610
 	sha256sums = b1436f953a4f1be7083711d11928a9924993f940ff56ff92d288d6100df673fc
 
