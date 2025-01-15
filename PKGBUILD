@@ -1,6 +1,6 @@
 # Maintainer: Ariadna Ardere arxofari@proton.me
 pkgname=openshock-tui-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A terminal UI for OpenShock written in Rust"
 arch=('x86_64')
