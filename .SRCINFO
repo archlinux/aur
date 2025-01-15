@@ -1,17 +1,17 @@
 pkgbase = dfl-storage
 	pkgdesc = A class that extends QApplications
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/desktop-frameworks/storage
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = meson
 	makedepends = ninja
 	makedepends = qt5-base
 	makedepends = qt6-base
 	source = https://gitlab.com/desktop-frameworks/storage/-/archive/v0.2.0/storage-v0.2.0.tar.gz
-	md5sums = 473155dffbf14c8c31c76011ce52d009
+	sha256sums = ee23b3afa761a16c557bc54a420fb877b206e169a7f289362ca629e6abc194ed
 
 pkgname = dfl-storage
 	depends = qt5-base
