@@ -1,19 +1,19 @@
 pkgbase = pipelab-bin
 	pkgdesc = A visual tool to create task automation workflows.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.6.1
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://pipelab.app/
 	arch = x86_64
 	license = LicenseRef-FSL-1.1-MIT
 	makedepends = gendesk
 	depends = electron32
-	provides = pipelab=1.6.1
+	provides = pipelab=1.7.1
 	conflicts = pipelab
 	options = !emptydirs
-	source = pipelab-1.6.1.zip::https://github.com/CynToolkit/pipelab/releases/download/v1.6.1/Pipelab-linux-x64-1.6.1.zip
-	source = LICENSE-1.6.1.md::https://raw.githubusercontent.com/CynToolkit/pipelab/v1.6.1/LICENSE.md
+	source = pipelab-1.7.1.zip::https://github.com/CynToolkit/pipelab/releases/download/v1.7.1/Pipelab-linux-x64-1.7.1.zip
+	source = LICENSE-1.7.1.md::https://raw.githubusercontent.com/CynToolkit/pipelab/v1.7.1/LICENSE.md
 	source = pipelab.sh
-	sha256sums = 7911f201656e73391bfc8fec990b8b1ae877829bc4aec5b67eeaa695a57a3da4
+	sha256sums = 359dba4ec740ef707b43ace1164d0bac74e4b668bc09f9537a91e63f42f2f24a
 	sha256sums = 92ddb84a1531980e4142c76f4936b1ff8ea132777df206d4bf6da123c094f8f4
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
