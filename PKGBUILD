@@ -4,8 +4,8 @@
 pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=Tauon
-pkgver=7.8.3
-pkgrel=2
+pkgver=7.9.0
+pkgrel=1
 _kissfftver=131.1.0
 _miniaudiocommit=4a5b74bef029b3592c54b6048650ee5f972c1a48
 pkgdesc="A modern music player"
@@ -60,7 +60,7 @@ optdepends=(
 	'python-pychromecast: Chromecast stream support'
 	'python-jxlpy: JPEG XL image support'    # AUR
 	'python-tekore: Spotify feature support' # AUR
-# 7.9.0+	'python-tidalapi: Tidal feature support' # AUR
+	'python-tidalapi: Tidal feature support' # AUR
 	'librespot: Spotify audio playback'      # AUR
 )
 
@@ -70,7 +70,7 @@ source=(
 	"miniaudio-${_miniaudiocommit}.tar.gz::https://github.com/mackron/miniaudio/archive/${_miniaudiocommit}.tar.gz"
 )
 
-sha256sums=('1370cf714412287b25d1554f41ad99eb5ab5801c72d758c613d0fbec4e57e9cb'
+sha256sums=('c8da5237e8f2ba994b2ca5fc625446fc67fa5914b591fdd32d9dc3c9fccb18bc'
             '76c1aac87ddb7258f34b08a13f0eebf9e53afa299857568346aa5c82bcafaf1a'
             'aacb63f571608210e69c5562eb8a9e3d1cb936bdee7a2eb8ffbc40f63888d8e8')
 
@@ -81,20 +81,20 @@ prepare() {
 
 build() {
 	cd "${_gitname}-${pkgver}"
-	python compile-translations.py
-	bash compile-phazor.sh
-	bash compile-phazor-pipewire.sh
+	python -m compile_translations
+	python -m build --wheel
+#	bash compile-phazor.sh
+#	bash compile-phazor-pipewire.sh
 }
 
 package() {
 	cd "${_gitname}-${pkgver}"
-	install -Dm755 tauon.py -t "${pkgdir}/opt/${pkgname}"
-	install -Dm644 input.txt -t "${pkgdir}/opt/${pkgname}"
-
-	cp -r assets templates theme t_modules lib "${pkgdir}/opt/${pkgname}"
+	python -m installer --destdir="${pkgdir}" dist/*.whl
+	ls locale
+	#cp -r assets templates theme t_modules lib "${pkgdir}/opt/${pkgname}"
 
 	for t in cs de es fr_FR fi hu id ja_JP nb_NO pl pt pt_BR pt_PT ru sv tr zh_CN; do
-		install -Dm644 locale/${t}/LC_MESSAGES/*.mo -t "${pkgdir}/usr/share/locale/${t}/LC_MESSAGES"
+		install -Dm644 src/tauon/locale/${t}/LC_MESSAGES/*.mo -t "${pkgdir}/usr/share/locale/${t}/LC_MESSAGES"
 	done
 
 	install -Dm644 "extra/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"

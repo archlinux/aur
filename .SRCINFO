@@ -1,7 +1,7 @@
 pkgbase = tauon-music-box
 	pkgdesc = A modern music player
-	pkgver = 7.8.3
-	pkgrel = 2
+	pkgver = 7.9.0
+	pkgrel = 1
 	url = https://tauonmusicbox.rocks
 	arch = x86_64
 	arch = aarch64
@@ -48,11 +48,12 @@ pkgbase = tauon-music-box
 	optdepends = python-pychromecast: Chromecast stream support
 	optdepends = python-jxlpy: JPEG XL image support
 	optdepends = python-tekore: Spotify feature support
+	optdepends = python-tidalapi: Tidal feature support
 	optdepends = librespot: Spotify audio playback
-	source = Tauon-7.8.3.tar.gz::https://github.com/Taiko2k/Tauon/archive/v7.8.3.tar.gz
+	source = Tauon-7.9.0.tar.gz::https://github.com/Taiko2k/Tauon/archive/v7.9.0.tar.gz
 	source = kissfft-131.1.0.tar.gz::https://github.com/mborgerding/kissfft/archive/refs/tags/131.1.0.tar.gz
 	source = miniaudio-4a5b74bef029b3592c54b6048650ee5f972c1a48.tar.gz::https://github.com/mackron/miniaudio/archive/4a5b74bef029b3592c54b6048650ee5f972c1a48.tar.gz
-	sha256sums = 1370cf714412287b25d1554f41ad99eb5ab5801c72d758c613d0fbec4e57e9cb
+	sha256sums = c8da5237e8f2ba994b2ca5fc625446fc67fa5914b591fdd32d9dc3c9fccb18bc
 	sha256sums = 76c1aac87ddb7258f34b08a13f0eebf9e53afa299857568346aa5c82bcafaf1a
 	sha256sums = aacb63f571608210e69c5562eb8a9e3d1cb936bdee7a2eb8ffbc40f63888d8e8
 
