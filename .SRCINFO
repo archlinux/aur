@@ -1,7 +1,7 @@
 pkgbase = python-eth-abi
 	pkgdesc = Ethereum ABI utilities for python
-	pkgver = 5.1.0
-	pkgrel = 2
+	pkgver = 5.2.0
+	pkgrel = 1
 	url = https://github.com/ethereum/eth-abi
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = python-eth-abi
 	depends = python-eth-typing
 	depends = python-parsimonious
 	optdepends = python-hypothesis: eth_abi.tools module
-	source = eth-abi-5.1.0.tar.gz::https://github.com/ethereum/eth-abi/archive/v5.1.0.tar.gz
-	sha512sums = dee2f8b3c5b5ffaaf2d4e52b6fb711d49456d5d5ec9a152d9e891489f093caa193f52eaa34d14c1fe4907578ff3207bba131af6fd249ecad1ac6ba27431c59ca
+	source = eth-abi-5.2.0.tar.gz::https://github.com/ethereum/eth-abi/archive/v5.2.0.tar.gz
+	sha512sums = f14ed97af2a04f9201763064f4e993d9c25283432adad6d9ada7716fb563d44bf3830003dfddc38c7ffa16edcdcdc01cbd59e7c23b4a1e872dfaa58a98ca7c75
 
 pkgname = python-eth-abi
