@@ -2,17 +2,30 @@
 
 _pkgname=wayqt
 pkgbase=dfl-wayqt
-pkgname=('dfl-wayqt' 'dfl-wayqt-qt6')
+pkgname=(
+        'dfl-wayqt'
+        'dfl-wayqt-qt6'
+)
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Qt-based wrapper for various wayland protocols"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
-license=('GPL3')
-depends=('wayland-protocols')
-makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base' 'qt5-wayland' 'qt6-wayland')
+license=('GPL-3.0-only')
+depends=(
+        'wayland-protocols'
+        'wayland'
+)
+makedepends=(
+            'meson'
+            'ninja'
+            'qt5-base'
+            'qt6-base'
+            'qt5-wayland'
+            'qt6-wayland'
+)
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('b7f15524bd1b017a50b672e821ca8716')
+sha256sums=('0636d666d5ca09448336bf3eda42a016832a20bb82e4b7dc09bf79e428b02fef')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
@@ -26,13 +39,19 @@ build() {
 }
 
 package_dfl-wayqt() {
-  depends+=('qt5-base' 'qt5-wayland')
+  depends+=(
+           'qt5-base'
+           'qt5-wayland'
+  )
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build install
 }
 
 package_dfl-wayqt-qt6() {
-  depends+=('qt6-base' 'qt6-wayland')
+  depends+=(
+           'qt6-base'
+           'qt6-wayland'
+  )
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build-qt6 install
 }
