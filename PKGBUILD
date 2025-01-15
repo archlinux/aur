@@ -1,6 +1,6 @@
 pkgname=srb2-bin
 pkgver=2.2.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D Sonic fan game based off of Doom Legacy aka Sonic Robo Blast 2."
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL')
@@ -21,9 +21,14 @@ source_aarch64=("git+$url" "https://gitlab.com/linuxbombay/srb2-bin/binaries/$pk
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
+    install -dm755 "$pkgdir/usr/lib"
     install -dm755 "$pkgdir/usr/share/pixmaps"
     install -dm755 "$pkgdir/usr/share/applications"
     
+    #Lib fix only applies for Arm64
+    if [ ! -e /usr/lib/libminiupnpc.so.17 ]; then
+      ln -s /usr/lib/libminiupnpc.so $pkgdir/usr/lib/libminiupnpc.so.17
+    fi
     install -Dm655 "$srcdir/sonic-robo-blast-2/srb2.png" "$pkgdir/usr/share/pixmaps"
     install -Dm755 "$srcdir/sonic-robo-blast-2/srb2.desktop" "$pkgdir/usr/share/applications"
     install -m775 "$srcdir/srb2" "$pkgdir/usr/bin"

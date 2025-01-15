@@ -1,7 +1,7 @@
 pkgbase = srb2-bin
 	pkgdesc = A 3D Sonic fan game based off of Doom Legacy aka Sonic Robo Blast 2.
 	pkgver = 2.2.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/srb2-bin/sonic-robo-blast-2
 	arch = i686
 	arch = x86_64
