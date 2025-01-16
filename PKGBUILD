@@ -115,6 +115,8 @@ build() {
       --with-tune='generic'
       --prefix='/usr'
       #CXX='g++-4.9' CC='gcc-4.9'
+      CXX='g++ -Wno-implicit-function-declaration'
+      CC='gcc -Wno-implicit-function-declaration'
     )
     ../configure "${_conf[@]}"
 
