@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if test "$1" = "--system-information"
+then
+  cmake "$@"
+else
+
 . /usr/bin/mingw-env @TRIPLE@
 
 mingw_prefix=/usr/@TRIPLE@
@@ -14,3 +19,5 @@ PATH=${mingw_prefix}/bin:$PATH cmake \
     -DCMAKE_TOOLCHAIN_FILE=/usr/share/mingw/toolchain-@TRIPLE@.cmake \
     -DCMAKE_CROSSCOMPILING_EMULATOR=/usr/bin/@TRIPLE@-wine \
     "$@"
+
+fi
