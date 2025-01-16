@@ -1,12 +1,12 @@
-# Maintainer: joel almeida <aullidolunar at gm_ai1 dot c0m>
-# Maintainer: 2ion <dev@2ion.de>
+# Contributor: joel almeida <aullidolunar at gm_ai1 dot c0m>
+# Contributor: 2ion <dev@2ion.de>
 pkgname=bunsen-themes-git
-pkgver=r81.01b7cdb
+pkgver=r202.281e8aa
 pkgrel=1
 pkgdesc="BunsenLabs GTK/Openbox/Lightdm Themes"
 arch=('any')
 url="https://github.com/BunsenLabs/bunsen-themes"
-license=('GPL3' 'CCPL:by-sa')
+license=('GPL-3.0-or-later')
 depends=('gtk-engine-murrine')
 makedepends=('git')
 optdepends=('lib32-gtk-engine-murrine: required for multilib (GTK2)' 'gtk3: required for the GTK3 themes')
