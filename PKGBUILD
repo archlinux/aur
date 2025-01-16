@@ -2,7 +2,7 @@
 
 pkgname=android-cmake
 pkgver=1
-pkgrel=3
+pkgrel=4
 arch=('any')
 pkgdesc="CMake wrapper for Android"
 depends=('cmake'
@@ -12,7 +12,7 @@ license=("custom")
 url="https://cmake.org/"
 source=("android-cmake.sh"
         "android-cmake-py.sh")
-md5sums=('585a84fbeebb622208c3ec602abb6663'
+md5sums=('0899aac2eaac372d074b4c4acec0df87'
          '8e068ffe8d39fea8f7f0c03bf62ab074')
 _architectures="aarch64 armv7a-eabi x86 x86-64"
 _python_versions="27 35 36 37"
