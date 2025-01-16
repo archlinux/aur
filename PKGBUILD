@@ -12,5 +12,4 @@ sha256sums=('b4b3be084bf94c07ee25530dc30258ba1f9d748c652dd73186d4315754457b29')
 package() {
 	cd "$srcdir"
 	install -Dm755 getquotes-x86_64-unknown-linux-gnu "$pkgdir/usr/bin/getquotes"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
