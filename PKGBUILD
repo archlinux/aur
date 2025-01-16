@@ -3,7 +3,7 @@
 
 _srcname=virtme-ng
 pkgname=$_srcname-git
-pkgver=1.31.r45.ga721287
+pkgver=1.32.r115.g07b109d
 pkgrel=1
 pkgdesc="A tool that allows to easily and quickly recompile and test a Linux kernel, starting from the source code."
 arch=('x86_64')
@@ -31,7 +31,7 @@ makedepends=(
   python-wheel
 )
 provides=('virtme=$pkgver')
-conflicts=('virtme-ng')
+conflicts=('virtme-ng' 'virtme-git')
 source=("git+${url}.git"
         "git+https://github.com/arighi/virtme-ng-init.git")
 b2sums=('SKIP'
