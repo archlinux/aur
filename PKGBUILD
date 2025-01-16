@@ -1,7 +1,7 @@
 # Maintainer: Piroro-hs
 
 pkgname=dano
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='A hashdeep/md5tree (but much more) for media files'
 arch=('x86_64')
@@ -19,7 +19,7 @@ conflicts=()
 replaces=()
 backup=()
 source=("$pkgname::git+$url#tag=$pkgver")
-sha256sums=('853411a71c92720aa92cceed75a1ee54cb305aa1bf113da47585d535270cc323')
+sha256sums=('c9c094869c7c7f2666aca4872564497956a0a09c38b6dde1cbb612acb72cfaf1')
 
 prepare() {
   cd "$srcdir/$pkgname"
