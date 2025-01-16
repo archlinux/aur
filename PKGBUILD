@@ -5,7 +5,7 @@
 
 pkgname=obsidian-bwrap
 pkgver=1.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful knowledge base that works on top of a local folder of plain text Markdown files. Sandboxed by portable for privacy."
 arch=('x86_64')
 url="https://obsidian.md"
@@ -17,9 +17,9 @@ source=("obsidian.sh"
         "obsidian.desktop"
         "https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/obsidian-${pkgver}.tar.gz"
 )
-sha256sums=('ea46078cb9535767040979337957693512e97fcc8810cb6bd56a720bff3377ae'
+sha256sums=('369188cbb9d9d2826757d48e013f711d8c9a243245bbd11cb1ef75c95572690d'
             'f323046d9024b5bcba858cdddc481b3aac4d93ccf0da3ca11a53d7a18a40c256'
-            '05882d42311d182d69e645caafbbdc0f09f103536390c9090c66f14b31f176cc'
+            '96a25eefe6c2b854dd85f057f05d23fedba3e6a1380b15327dabac24dcc35ed0'
             'e881ea06f671db2c5002f0038b73a4e4b7b78a9dbf73aa9a7d0dc54a93d3d29a')
 
 package() {

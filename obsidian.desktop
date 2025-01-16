@@ -11,3 +11,22 @@ Categories=Office;
 X-Flatpak-Tags=proprietary;
 X-Flatpak=md.obsidian.Obsidian
 X-Flatpak-RenamedFrom=obsidian.desktop;
+Actions=opendir;share;quit;
+
+[Desktop Action opendir]
+Name=Open Obsidian Home
+Name[zh_CN]=打开数据目录
+Exec=/usr/bin/wechat.sh --actions opendir
+Icon=go-home-symbolic
+
+[Desktop Action share]
+Name=Share files with Obsidian
+Name[zh_CN]=向 Obsidian 传输文件
+Exec=/usr/bin/wechat.sh --actions share-files
+Icon=insert-image-symbolic
+
+[Desktop Action quit]
+Name=Quit Obsidian
+Name[zh_CN]=退出 Obsidian
+Exec=/usr/bin/wechat.sh --actions quit
+Icon=system-log-out-symbolic
