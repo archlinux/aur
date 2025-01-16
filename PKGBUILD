@@ -2,7 +2,7 @@
 # Maintainer: Benjamin Radel <aur@radel.tk>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libdcp
-pkgver=1.10.4
+pkgver=1.10.6
 pkgrel=1
 pkgdesc="A small C++ library which can create and read Digital Cinema Packages using JPEG2000 and WAV files"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('libxml++2.6' 'xmlsec' 'imagemagick' 'openjpeg2>=2.5' 'libcxml>=0.17.11
 makedepends=('git' 'python' 'boost>=1.86.0' 'gcc' 'pkg-config' 'fast_float>=7.0')
 _cherrypicks=()
 source=("${pkgname}-${pkgver}::git+git://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}")
-sha256sums=('c01916902cb076cb37b3e363da9a73a06a7e1d11354049c6c7db2d5348f6f5b9')
+sha256sums=('be5be60121605c7e1f21abfe74258f2728aa22cf4af1c9e65eb206845fe34e02')
 
 prepare() {
   cd $srcdir/${pkgname}-${pkgver}
