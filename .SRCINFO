@@ -1,6 +1,6 @@
 pkgbase = chromium-extension-ublock-origin-lite
 	pkgdesc = uBO Lite (uBOL), a permission-less MV3 API-based content blocker, for chromium
-	pkgver = 2024.11.11.1298
+	pkgver = 2025.1.14.952
 	pkgrel = 1
 	url = https://github.com/uBlockOrigin/uBOL-home
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = chromium-extension-ublock-origin-lite
 	makedepends = unzip
 	provides = chromium-extension-ublock-origin
 	conflicts = chromium-extension-ublock-origin
-	noextract = chromium-extension-ublock-origin-lite-2024.11.11.1298.zip
-	source = chromium-extension-ublock-origin-lite-2024.11.11.1298.zip::https://github.com/uBlockOrigin/uBOL-home/releases/download/uBOLite_2024.11.11.1298/uBOLite_2024.11.11.1298.chromium.mv3.zip
+	noextract = chromium-extension-ublock-origin-lite-2025.1.14.952.zip
+	source = chromium-extension-ublock-origin-lite-2025.1.14.952.zip::https://github.com/uBlockOrigin/uBOL-home/releases/download/uBOLite_2025.1.14.952/uBOLite_2025.1.14.952.chromium.mv3.zip
 	source = uBlock0.chromium.pem
-	sha256sums = 260ea790d2a545ec6bc782816b0b5a843269dcfad3f142c266515f21e319d951
+	sha256sums = 31716a353876e5226142ad334fedf5215143f6b3d840265d413da829ce4a032d
 	sha256sums = 804e431b5601a5d0bd9d7e1d27ea8396c6cc87f2523d6d857f1abf368df3a06f
 
 pkgname = chromium-extension-ublock-origin-lite
