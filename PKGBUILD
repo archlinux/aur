@@ -14,15 +14,17 @@ makedepends=(ffmpeg rsync unzip zip)
 _tag=v.1.17
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LDinos/Dijeweled/archive/refs/tags/$_tag.tar.gz")
 # https://github.com/bscotch/igor-setup
+# https://help.gamemaker.io/hc/en-us/articles/235186168-Setting-Up-For-Ubuntu
+_steam_runtime_code=scout
 _steam_runtime=0.20241024.105847 # latest-steam-client-general-availability
 source_x86_64=("igor-x86_64.zip::https://gms.yoyogames.com/igor_linux-x64.zip"
-               "steam-runtime-x86_64.tar.gz::https://repo.steampowered.com/steamrt-images-scout/snapshots/$_steam_runtime/com.valvesoftware.SteamRuntime.Sdk-amd64%2Ci386-scout-sysroot.tar.gz")
+               "steam-runtime-sdk-$_steam_runtime_code-$_steam_runtime-x86_64.tar.gz::https://repo.steampowered.com/steamrt-images-$_steam_runtime_code/snapshots/$_steam_runtime/com.valvesoftware.SteamRuntime.Sdk-amd64%2Ci386-$_steam_runtime_code-sysroot.tar.gz")
 source_aarch64=("igor-aarch64.zip::https://gms.yoyogames.com/igor_linux-arm64.zip")
 sha256sums=('93e7d3bdfd312212f4b6b3505550f560a5575d43ff837f0825bfc5747e06faf4')
 sha256sums_x86_64=('da9b2fdb225dd764babfb5d922b8de7dd215cd21481795ab2242c650ddcd53cd'
                    'd79f2f1c1ad42c76ae46aa75c4a9641655fbe9b928b1fc645cbff45467d77359')
 noextract=("igor-$CARCH.zip"
-           "steam-runtime-$CARCH.tar.gz")
+           "steam-runtime-sdk-$_steam_runtime_code-$_steam_runtime-$CARCH.tar.gz")
 
 _runtime=2022.9.1.66 # nearest to 2022.9.1.51
 
@@ -44,11 +46,11 @@ prepare() {
         -lf="$srcdir/license.plist" \
         -rp="$srcdir/runtimes" \
         -m="base,linux,linuxYYC"
-    if [[ -f "steam-runtime-$CARCH.tar.gz" ]]
+    if [[ -f "steam-runtime-sdk-$_steam_runtime_code-$_steam_runtime-$CARCH.tar.gz" ]]
     then
         echo "Preparing steam runtime..."
         mkdir -p steam-runtime
-        bsdtar -x -p -C steam-runtime -f "./steam-runtime-$CARCH.tar.gz" \
+        bsdtar -x -p -C steam-runtime -f "./steam-runtime-sdk-$_steam_runtime_code-$_steam_runtime-$CARCH.tar.gz" \
             --exclude 'dev/*'
         {
             echo "{"

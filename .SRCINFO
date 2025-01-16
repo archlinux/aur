@@ -10,11 +10,11 @@ pkgbase = dijeweled
 	makedepends = unzip
 	makedepends = zip
 	noextract = igor-x86_64.zip
-	noextract = steam-runtime-x86_64.tar.gz
+	noextract = steam-runtime-sdk-scout-0.20241024.105847-x86_64.tar.gz
 	source = dijeweled-1.17.tar.gz::https://github.com/LDinos/Dijeweled/archive/refs/tags/v.1.17.tar.gz
 	sha256sums = 93e7d3bdfd312212f4b6b3505550f560a5575d43ff837f0825bfc5747e06faf4
 	source_x86_64 = igor-x86_64.zip::https://gms.yoyogames.com/igor_linux-x64.zip
-	source_x86_64 = steam-runtime-x86_64.tar.gz::https://repo.steampowered.com/steamrt-images-scout/snapshots/0.20241024.105847/com.valvesoftware.SteamRuntime.Sdk-amd64%2Ci386-scout-sysroot.tar.gz
+	source_x86_64 = steam-runtime-sdk-scout-0.20241024.105847-x86_64.tar.gz::https://repo.steampowered.com/steamrt-images-scout/snapshots/0.20241024.105847/com.valvesoftware.SteamRuntime.Sdk-amd64%2Ci386-scout-sysroot.tar.gz
 	sha256sums_x86_64 = da9b2fdb225dd764babfb5d922b8de7dd215cd21481795ab2242c650ddcd53cd
 	sha256sums_x86_64 = d79f2f1c1ad42c76ae46aa75c4a9641655fbe9b928b1fc645cbff45467d77359
 
