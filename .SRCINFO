@@ -1,0 +1,22 @@
+pkgbase = lua-flock
+	pkgdesc = A Lua wrapper for the BSD-ish flock(2) system call.
+	pkgver = 1.0.1_1
+	pkgrel = 1
+	url = https://github.com/SolraBizna/luaflock
+	arch = x86_64
+	license = Zlib
+	makedepends = lua
+	makedepends = lua53
+	makedepends = lua52
+	makedepends = lua51
+	makedepends = luarocks
+	source = https://github.com/SolraBizna/luaflock/archive/refs/tags/v1.0.1-1.zip
+	sha256sums = 867ad57f1c4d7a2c0302bd9cb1ed7329ce3d010a3e5d424c238e1b73debd02bf
+
+pkgname = lua-flock
+
+pkgname = lua53-flock
+
+pkgname = lua52-flock
+
+pkgname = lua51-flock
