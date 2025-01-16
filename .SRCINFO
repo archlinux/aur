@@ -1,14 +1,13 @@
 pkgbase = clash-verge-rev-bin
 	pkgdesc = Continuation of Clash Verge | A Clash Meta GUI based on Tauri
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clash-verge-rev/clash-verge-rev
 	install = .install
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = GPL3
-	depends = webkit2gtk
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libayatana-appindicator
