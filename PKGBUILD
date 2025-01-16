@@ -6,7 +6,7 @@
 pkgname=mingw-w64-sqlite
 _amalgamationver=3480000
 pkgver=3.48.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library that implements an SQL database engine (mingw-w64)"
 arch=('any')
 groups=(mingw-w64)
@@ -15,7 +15,7 @@ makedepends=('mingw-w64-configure' 'mingw-w64-pdcurses' 'mingw-w64-readline')
 options=('!buildflags' '!strip' 'staticlibs')
 license=('custom:Public Domain')
 url="https://www.sqlite.org/"
-source=("https://www.sqlite.org/2024/sqlite-autoconf-${_amalgamationver}.tar.gz")
+source=("https://www.sqlite.org/2025/sqlite-autoconf-${_amalgamationver}.tar.gz")
 sha256sums=('ac992f7fca3989de7ed1fe99c16363f848794c8c32a158dafd4eb927a2e02fd5')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
