@@ -1,0 +1,100 @@
+#!/usr/bin/env python3
+
+import argparse
+import os
+import re
+import subprocess
+import sys
+import time
+
+def parse_config(file_path):
+    workspaces = {}    
+    current_desktop = None
+    current_workspace = None    
+    with open(file_path, 'r') as file:
+        for line in file:
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            
+            if line.endswith(";"):
+                current_workspace = line[:-1]
+                workspaces[current_workspace] = {}
+            elif line.endswith(":"):
+                if not current_workspace: 
+                    print("ConfigError: Create a workspace!")
+                    sys.exit(1)
+                current_desktop = line[:-1]
+                workspaces[current_workspace][current_desktop] = []
+            else:
+                if not current_desktop:
+                    print("ConfigError: Assign a desktop!")
+                    sys.exit(1)
+                workspaces[current_workspace][current_desktop].append(line)
+
+    return workspaces
+
+def get_desktop_environment():
+    return os.environ.get("XDG_CURRENT_DESKTOP") or os.environ.get("DESKTOP_SESSION")
+
+def extract_delay(string):
+    match = re.fullmatch(r"\[(\d+)\]", string)
+    if match:
+        return int(match.group(1))    
+
+def launch_in_desktop(desktop, apps):    
+    desktop_env = get_desktop_environment()    
+    if desktop_env in ["GNOME", "KDE"]:        
+        subprocess.run(["wmctrl", "-s", desktop])
+    elif "dwm" in desktop_env.lower():        
+        # TODO DWM support
+        pass
+    else:
+        print(f"Error: Unsupported environment: {desktop_env}")
+        return
+        
+    app_priority_map = {}
+    for app in apps:
+        app_command = app.split()
+        delay = extract_delay(app_command[-1])
+        if delay:
+            app_command.pop(-1)
+        delay = delay or 2
+        app_priority_map[delay] = app_priority_map.get(delay , []) + [app_command]
+    for delay in sorted(app_priority_map.keys()):
+        for app_command in app_priority_map[delay]:
+            try:
+                with open(os.devnull, 'w') as devnull:
+                    subprocess.Popen(app_command, stdout=devnull, stderr=devnull)
+                time.sleep(delay)           
+            except Exception as e:
+                print(f"Error: Failed to launch {app}: {e}")
+
+def main(config_file, workspace):
+    workspaces = parse_config(config_file)    
+    if workspace not in workspaces:
+        print("Error: Workspace doesn't exist!")
+        return    
+    for desktop, apps in workspaces[workspace].items():
+        launch_in_desktop(desktop, apps)
+
+if __name__ == "__main__":
+    default_config = os.path.expanduser("~/.config/alwo/config")
+
+    parser = argparse.ArgumentParser(description="ALWO: An application launcher and workspace organizer")
+    parser.add_argument(
+        "-c", "--config-file",
+        type=str,
+        default=default_config,
+        help=f"Path to the configuration file (default: {default_config})"
+    )
+    parser.add_argument("workspace", type=str, help="Name of the workspace")
+
+    args = parser.parse_args()
+
+    if not os.path.exists(args.config_file) or not os.path.isfile(args.config_file):
+        print(f"Error: Config file '{args.config_file}' is not a file")
+        sys.exit(1)
+
+    main(args.config_file, args.workspace)
+
