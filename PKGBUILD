@@ -8,7 +8,7 @@ pkgname=(
   sqlitestudio-plugins
 )
 _pkgname=SQLiteStudio
-pkgver=3.4.13
+pkgver=3.4.14
 pkgrel=1
 pkgdesc='Database manager for SQLite'
 arch=(i686 x86_64)
@@ -33,7 +33,7 @@ source=(
 noextract=(
   ${pkgver}.tar.gz
 )
-sha256sums=('5f829540d28a3960de62b980766576f65a462add97b59962796e40eefb0605b6'
+sha256sums=('b0ff0d21cb0d121d6799aa476118401860cce520b48e2f34e43f7cd1fce8118d'
             'c5a26a9b9003b04274887a0e0febda13eea49bb46c618eaad0b5b5c88b1cc1d2')
 
 prepare(){
@@ -54,8 +54,8 @@ build(){
   msg2 "Making sqlitestudio3-plugins"
   cd "$srcdir"/output/build/Plugins
   ver="$(python -c"import sys;print(sys.version_info.major,sys.version_info.minor,sep='.')")"
-  sed -i "s|python3.*9|python$ver|" "$srcdir"/Plugins/ScriptingPython/ScriptingPython.pro
   qmake ../../../Plugins \
+  	"PYTHON_VERSION = $ver" \
     "INCLUDEPATH += $srcdir/SQLiteStudio3/coreSQLiteStudio" \
     "INCLUDEPATH += /usr/include/python$ver"
   (
