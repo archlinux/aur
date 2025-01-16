@@ -10,7 +10,7 @@ depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 conflicts=("messages-bin")
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('13b2c2511150962e49a9cbab00ce13cf0a320a66059f93a1abb08cff00b21e88')
+sha256sums=('72aa3bebb112a680c994e051a5f73737101a35f9f6a60ad55cadecfc9718e452')
 
 package() {
     for dir in application-$pkgver ; do mv "${dir}" "$_pkgname" ;done
