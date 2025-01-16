@@ -1,6 +1,6 @@
 pkgbase = ssh-openpgp-auth
 	pkgdesc = Verify identity of remote SSH hosts based on OpenPGP trust anchors
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://codeberg.org/wiktor/ssh-openpgp-auth/src/branch/main/ssh-openpgp-auth
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = ssh-openpgp-auth
 	depends = gcc-libs
 	depends = glibc
 	optdepends = openssh: for working with a local sshd
-	source = ssh-openpgp-auth-0.2.2.tar.gz::https://codeberg.org/wiktor/ssh-openpgp-auth/archive/ssh-openpgp-auth/0.2.2.tar.gz
-	sha512sums = d28a110b3d35bb8841d3b2ac451d923ac2d6fd00d30746d0f171648e065e2e8a7b799cd50d6e34654885df6b6409a74fa396332cbd70d4917661dabb1504699b
-	b2sums = 05fcd0c86e780df2fe136d5ce1b71002ab9875d4ca19362c66f40ce81ca31042900a3f2c00a484383358b0f01743d1ce207cbc2423adce233c2982696b40ae1c
+	source = ssh-openpgp-auth-0.2.3.tar.gz::https://codeberg.org/wiktor/ssh-openpgp-auth/archive/ssh-openpgp-auth/0.2.3.tar.gz
+	sha512sums = 15af8a94b0751b438b5f6588a3cee00b542643920f1fe57af45c3c599d129efe344a839c652d611bc84e273900acefba5ef920190c31c4abfa0c58205faba8d2
+	b2sums = c955cac7e31f773385fc154f86b5dd0806e2462abdfe0aa60ca5ea4bf0f4cc1226264e0708db5f06f8e74623efbb5c008d1dfc5c0d7b917634d8064c2a9ce9d6
 
 pkgname = ssh-openpgp-auth
 	depends = gcc-libs
