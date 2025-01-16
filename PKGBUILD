@@ -2,7 +2,7 @@
 
 pkgname=heroic-games-launcher-git
 pkgver=2.15.2.r44.ged52e163d
-pkgrel=2
+pkgrel=3
 pkgdesc="Native GOG, Epic Games and Amazon games launcher for Linux"
 arch=(x86_64)
 url="https://heroicgameslauncher.com/"
@@ -39,9 +39,8 @@ package() {
 exec $_electron /usr/lib/heroic/app.asar "\$@"
 EOF
 
-  install -d "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps"
-  ln -s /usr/lib/heroic/app.asar.unpacked/build/icon.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/heroic.png"
-  install -Dm644 flatpak/com.heroicgameslauncher.hgl.desktop "${pkgdir}/usr/share/applications/heroic.desktop"
-  sed -i 's|Exec=.*|Exec=/usr/bin/heroic|' "${pkgdir}/usr/share/applications/heroic.desktop"
-  sed -i 's|Icon=.*|Icon=heroic|' "${pkgdir}/usr/share/applications/heroic.desktop"
+  install -Dm644 flatpak/com.heroicgameslauncher.hgl.png -t "${pkgdir}/usr/share/pixmaps"
+  install -Dm644 flatpak/templates/com.heroicgameslauncher.hgl.metainfo.xml.template "${pkgdir}"/usr/share/metainfo/com.heroicgameslauncher.hgl.metainfo.xml
+  install -Dm644 flatpak/com.heroicgameslauncher.hgl.desktop -t "${pkgdir}/usr/share/applications"
+  sed -i 's|Exec=.*|Exec=/usr/bin/heroic|' "${pkgdir}/usr/share/applications/com.heroicgameslauncher.hgl.desktop"
 }
