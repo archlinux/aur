@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-bin
 	pkgver = 9.0.1.sdk102
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -56,7 +56,6 @@ pkgname = dotnet-sdk-bin
 	depends = netstandard-targeting-pack-bin
 	depends = aspnet-runtime-bin
 	depends = aspnet-targeting-pack-bin
-	optdepends = aspnet-targeting-pack-bin: Build ASP.NET Core applications
 	provides = dotnet-sdk-bin
 	provides = dotnet-sdk=9.0.1.sdk102
 	provides = dotnet-sdk-9.0=9.0.1.sdk102
