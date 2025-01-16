@@ -4,14 +4,13 @@ _pkgauthor=sachaos
 _pkgname=todoist
 pkgname=${_pkgname}-bin
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Todoist CLI Client, written in Golang.'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64' 'i686' 'aarch64')
 license=('MIT')
 depends=('glibc')
-makedepends=('help2man')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
@@ -25,12 +24,6 @@ sha256sums_x86_64=('9980c4aa5c0d6c587b4ad4c40a536b2a39c65feff5afc095642a30820517
 sha256sums_i686=('f6a03124a413fe00b6f7888d6de88ebafb1edd872e16ff2aa82123e54e02e6f2')
 sha256sums_aarch64=('0d310c1d0a28a91c7d6b138c8d43f9252635972b44ee49ecf9d6d50298e0dcc6')
 
-build() {
-  cd "${srcdir}/" || exit
-
-  help2man ./${_pkgname} --output "MAN-${pkgver}.1" --no-info
-  gzip "MAN-${pkgver}.1"
-}
 
 package() {
   cd "${srcdir}/" || exit
@@ -39,6 +32,4 @@ package() {
 
   install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-  install -Dm644 "MAN-${pkgver}.1.gz" "${pkgdir}/usr/share/man/man1/${_pkgname}.1.gz"
 }
