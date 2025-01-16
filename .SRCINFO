@@ -1,7 +1,7 @@
 pkgbase = magicq
 	pkgdesc = Lighting control software from ChamSys
 	pkgver = 1.9.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chamsyslighting.com/products/magicq
 	arch = x86_64
 	license = custom
@@ -12,15 +12,13 @@ pkgbase = magicq
 
 pkgname = magicq
 	depends = alsa-lib
-	depends = ffmpeg
-	depends = glu
+	depends = jack
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = libarchive
 	depends = libcups
-	depends = libusb
+	depends = libgl
 	depends = libx11
 	depends = libxcb
-	depends = qt5-multimedia
-	depends = qt5-webkit
+	depends = udev
 	depends = zlib
