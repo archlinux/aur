@@ -23,7 +23,7 @@ package() {
 
 	# Start script
 	echo """#!/usr/bin/env bash
-electron ./resources/app
+electron /opt/$pkgname/resources/app
 """ > "$pkgdir/opt/$pkgname/alipay-keytool"
 	chmod +x "$pkgdir/opt/$pkgname/alipay-keytool"
 	mkdir -p "$pkgdir/usr/bin"
