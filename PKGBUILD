@@ -61,7 +61,7 @@ package_python-ccdproc() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" licenses/*
+#   install -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" licenses/*
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
