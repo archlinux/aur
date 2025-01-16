@@ -9,7 +9,7 @@ url="https://github.com/kaushik-kalesh/alwo-linux"
 license=('MIT')
 depends=('python' 'wmctrl')
 makedepends=()
-source=('alwo' 'config' 'LICENSE')
+source=('alwo-1.0.0.tar.xz')
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 package() {
