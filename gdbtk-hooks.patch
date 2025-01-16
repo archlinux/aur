@@ -1,0 +1,14 @@
+--- gdbtk/generic/gdbtk-hooks.c	2025-01-15 23:42:22.493501557 +0800
++++ ../gdbtk-hooks.c	2025-01-15 23:39:47.104145020 +0800
+@@ -759,9 +759,9 @@
+ static void
+ gdbtk_executable_changed (program_space *pspace, bool reload_p)
+ {
+-  if (pspace->exec_filename () != nullptr)
++  if (pspace->exec_filename.get () != nullptr)
+     gdbtk_two_elem_cmd ("gdbtk_tcl_exec_file_display",
+-                        pspace->exec_filename ());
++                        pspace->exec_filename.get ());
+ }
+ 
+ /* Called from error_begin, this hook is used to warn the gui

@@ -1,0 +1,63 @@
+--- gdbtk/generic/gdbtk-cmds.c	2025-01-15 23:42:22.493501557 +0800
++++ ../gdbtk-cmds.c	2025-01-15 23:40:07.106537361 +0800
+@@ -1170,7 +1170,7 @@
+ 	}
+ 
+       fullname =
+-	(st->fullname () == NULL ? symtab_to_filename (st) : st->fullname ());
++	(st->fullname  == NULL ? symtab_to_filename (st) : st->fullname );
+     }
+ 
+   /* We may not be able to open the file (not available). */
+@@ -1408,12 +1408,8 @@
+ 	    try
+               {
+ 		for (i = 0; i < nfiles; i++)
+-		  {
+-		    gdb::unique_xmalloc_ptr<char> file_name =
+-			make_unique_xstrdup (Tcl_GetStringFromObj (file_list[i],
+-                                                                   NULL));
+-		    spec.add_filename (std::move (file_name));
+-		  }
++		  spec.filenames.push_back (Tcl_GetStringFromObj (file_list[i],
++                                                                  NULL));
+ 	      }
+ 	    catch (...)
+               {
+@@ -2224,7 +2220,7 @@
+          program */
+       if (!target_has_registers ())
+         {
+-          pc = entry_point_address (current_program_space);
++          pc = entry_point_address ();
+           sal = find_pc_line (pc, 0);
+         }
+       else
+@@ -2338,7 +2334,7 @@
+   if ((int) current_inferior ()->top_target ()->stratum () >
+       (int) dummy_stratum)
+     {
+-      addrstr = (char *)core_addr_to_string (entry_point_address (current_program_space));
++      addrstr = (char *)core_addr_to_string (entry_point_address ());
+       Tcl_SetStringObj (result_ptr->obj_ptr, addrstr, -1);
+     }
+   else
+@@ -2699,7 +2695,7 @@
+ line_can_have_breakpoint (struct symtab *symtab, int line)
+ {
+   const struct linetable_entry *best_entry = NULL;
+-  program_space *pspace = symtab->compunit ()->objfile ()->pspace ();
++  program_space *pspace = symtab->compunit ()->objfile ()->pspace;
+   struct symtab_and_line sal;
+   std::vector<CORE_ADDR> pcs;
+ 
+@@ -3137,7 +3133,7 @@
+      deleted/moved/..., look for it again */
+   open_source_file (s);
+ 
+-  if (s->fullname () && *s->fullname ())
+-      return s->fullname ();
++  if (s->fullname  && *s->fullname )
++      return s->fullname ;
+   return s->filename;
+ }
