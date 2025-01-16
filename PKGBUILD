@@ -10,14 +10,14 @@ pkgdesc="A powerful knowledge base that works on top of a local folder of plain 
 arch=('x86_64')
 url="https://obsidian.md"
 license=('custom:Commercial')
-depends=('zlib' 'hicolor-icon-theme' 'fuse' 'electron33')
+depends=('zlib' 'hicolor-icon-theme' 'fuse' 'electron34' 'portable')
 options=(!strip !debug)
 source=("obsidian.sh"
 	"portable-config"
         "obsidian.desktop"
         "https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/obsidian-${pkgver}.tar.gz"
 )
-sha256sums=('46a1f82357a9d2d629c1d27b471569646c3865d5dd68d99687d07730a2c8a328'
+sha256sums=('ea46078cb9535767040979337957693512e97fcc8810cb6bd56a720bff3377ae'
             'f323046d9024b5bcba858cdddc481b3aac4d93ccf0da3ca11a53d7a18a40c256'
             '05882d42311d182d69e645caafbbdc0f09f103536390c9090c66f14b31f176cc'
             'e881ea06f671db2c5002f0038b73a4e4b7b78a9dbf73aa9a7d0dc54a93d3d29a')
