@@ -1,12 +1,12 @@
 pkgbase = clio-bin
 	pkgdesc = Your friendly and safe CLI Copilot
-	pkgver = 0.1.6
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/gptscript-ai/clio
 	arch = x86_64
 	license = Apache
 	conflicts = clio-git
-	source = clio_v0.1.6_linux_amd64.tar.gz::https://github.com/gptscript-ai/clio/releases/download/v0.1.6/clio_v0.1.6_linux_amd64.tar.gz
-	md5sums = d385481cd583e311fccaaa86dfe8de52
+	source = clio_v0.2.0_linux_amd64.tar.gz::https://github.com/gptscript-ai/clio/releases/download/v0.2.0/clio_v0.2.0_linux_amd64.tar.gz
+	md5sums = f033ed17e1c8a8eabc4c3ec9fbdefa56
 
 pkgname = clio-bin
