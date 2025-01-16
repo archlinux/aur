@@ -1,6 +1,6 @@
 pkgname=messages
 _pkgname=Messages
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Unnofficial Android messages desktop app"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 conflicts=("messages-bin")
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('50947fb63ad3b1e1fa190e39c4d42dbf854c6c2143c6a2b55436bd1f9d337a5d')
+sha256sums=('13b2c2511150962e49a9cbab00ce13cf0a320a66059f93a1abb08cff00b21e88')
 
 package() {
     for dir in application-$pkgver ; do mv "${dir}" "$_pkgname" ;done

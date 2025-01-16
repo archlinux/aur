@@ -1,6 +1,6 @@
 pkgbase = messages
 	pkgdesc = Unnofficial Android messages desktop app
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/androidmessages
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = messages
 	depends = libxss
 	depends = git
 	conflicts = messages-bin
-	source = https://gitlab.com/linuxbombay/androidmessages/application/-/archive/1.0.6/application-1.0.6.tar.bz2
-	sha256sums = 50947fb63ad3b1e1fa190e39c4d42dbf854c6c2143c6a2b55436bd1f9d337a5d
+	source = https://gitlab.com/linuxbombay/androidmessages/application/-/archive/1.0.7/application-1.0.7.tar.bz2
+	sha256sums = 13b2c2511150962e49a9cbab00ce13cf0a320a66059f93a1abb08cff00b21e88
 
 pkgname = messages
