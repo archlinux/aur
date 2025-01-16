@@ -1,7 +1,7 @@
 pkgbase = insight
 	pkgdesc = Insight is a graphical user interface to GDB, the GNU Debugger written in Tcl/Tk.
 	pkgver = 15.2.r719.f487d9c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceware.org/git/?p=insight.git
 	arch = x86_64
 	arch = i686

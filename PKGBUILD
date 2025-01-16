@@ -2,7 +2,7 @@
 # Contributor: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=insight
 pkgver=15.2.r719.f487d9c
-pkgrel=1
+pkgrel=2
 pkgdesc="Insight is a graphical user interface to GDB, the GNU Debugger written in Tcl/Tk."
 url="https://sourceware.org/git/?p=insight.git"
 arch=('x86_64' 'i686')
@@ -16,8 +16,9 @@ backup=()
 options=('!buildflags')
 install=
 _commit="f487d9c304d42f5253fe81c274c0b8e4a1556060"
+_gdb_ver=15.2
 source=(git+https://sourceware.org/git/insight.git#commit=$_commit
-        gdb-15.2.tar.gz::https://sourceware.org/pub/gdb/releases/gdb-15.2.tar.gz
+        gdb-$_gdb_ver.tar.gz::https://sourceware.org/pub/gdb/releases/gdb-$_gdb_ver.tar.gz
 	build.sh
 	gdb_acinclude.m4.patch
 	libgui_acinclude.m4.patch
@@ -37,7 +38,7 @@ md5sums=('SKIP'
 	'0629ff69bdd940fd482f68792a7c85ac')
 
 pkgver() {
-  cp -r gdb-15.2/* insight/binutils-gdb/
+  cp -r gdb-$_gdb_ver/* insight/binutils-gdb/
   cd insight/
   _ver="$(sed -E -e "s|DATE|$(git log -1 --date=format:'%Y%m%d' --format='%ad')|" binutils-gdb/gdb/version.in | tr '-' '_')"
   _rev="$(git rev-list --count HEAD)"
