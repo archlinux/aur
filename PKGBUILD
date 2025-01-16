@@ -2,7 +2,7 @@
 
 pkgname=obs-plugin-waveform-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Waveform is an audio spectral analysis plugin for OBS Studio"
 arch=("x86_64")
@@ -13,7 +13,7 @@ makedepends=("tar")
 conflicts=("${_pkgname}-git")
 options=("!strip" "emptydirs")
 source=("${url}/releases/download/v${pkgver}/Waveform_v${pkgver}_Ubuntu_x86_64.deb")
-sha256sums=('71e67a96dd5986aea4c433d10811119aa7939fa6851d30b09248c56aea34a11d')
+sha256sums=('32fa2543b6c5f8265a210aaee3153538b2feeec8ef48865dab02201874eda025')
 
 _install() {
   find ${@: 2} -type f -exec install -Dm$1 {} ${pkgdir}/{} \;
