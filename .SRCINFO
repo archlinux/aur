@@ -1,11 +1,10 @@
-pkgbase = tango-cpp
-	pkgdesc = TANGO distributed control system - shared library
+pkgbase = tango95-cpp
+	pkgdesc = TANGO distributed control system - shared library (Legacy version)
 	pkgver = 9.5.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://gitlab.com/tango-controls/cppTango
 	arch = x86_64
 	arch = armv7h
-	groups = tango-controls
 	license = GPL3
 	makedepends = doxygen
 	makedepends = cmake
@@ -15,7 +14,8 @@ pkgbase = tango-cpp
 	depends = cppzmq
 	depends = libjpeg-turbo
 	conflicts = tango
+	conflicts = tango-cpp
 	source = https://gitlab.com/tango-controls/cppTango/-/archive/9.5.0/cppTango-9.5.0.tar.gz
 	sha256sums = 8f8cd49d5287f66f84088a1cf2fa427c98a4a567fb81cce8479e1b14c4307b16
 
-pkgname = tango-cpp
+pkgname = tango95-cpp
