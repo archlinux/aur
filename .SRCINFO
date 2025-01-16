@@ -8,6 +8,7 @@ pkgbase = flang
 	makedepends = cmake
 	makedepends = python
 	makedepends = clang
+	makedepends = llvm
 	depends = mlir>=19
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/flang-19.1.6.src.tar.xz
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/flang-19.1.6.src.tar.xz.sig

@@ -6,7 +6,7 @@ arch=('x86_64')
 url="http://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 depends=("mlir>=${pkgver%%.*}")
-makedepends=('cmake' 'python' 'clang')
+makedepends=('cmake' 'python' 'clang' 'llvm')
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/flang-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig}
