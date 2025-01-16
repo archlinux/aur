@@ -1,11 +1,10 @@
 pkgbase = toggl-bin
 	pkgdesc = Toggl CLI Client, written in Golang.
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sachaos/toggl
 	arch = x86_64
 	license = MIT
-	makedepends = help2man
 	depends = glibc
 	provides = toggl
 	conflicts = toggl
