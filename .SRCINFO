@@ -1,10 +1,10 @@
 pkgbase = redmine-cli-go
 	pkgdesc = A CLI tool to interact with the Redmine project management system.
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MrJeffLarry/redmine-cli
 	arch = x86_64
-	license = Custom
+	license = MIT
 	makedepends = go
 	source = redmine-cli-0.1.4.tar.gz::https://github.com/MrJeffLarry/redmine-cli/archive/v0.1.4.tar.gz
 	sha256sums = 66551810e1636aa07a8bf149c611beaaa98fc572773300ff1df8d9857a673241
