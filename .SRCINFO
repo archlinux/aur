@@ -1,6 +1,6 @@
 pkgbase = hurrican-git
 	pkgdesc = Freeware jump and shoot game based on the Turrican game series (development version)
-	pkgver = 1.0.9.3.r371.g8babd61
+	pkgver = 1.0.9.3.r382.g72d808c
 	pkgrel = 1
 	url = http://hurrican.sourceforge.net
 	arch = i686
