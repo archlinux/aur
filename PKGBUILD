@@ -5,7 +5,7 @@
 _pkgname='tootik'
 pkgname="${_pkgname}-git"
 pkgver=0.15.1.r1.g6ec6cac
-pkgrel=1
+pkgrel=2
 pkgdesc='A federated nanoblogging service with a Gemini frontend (latest commit)'
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/dimkr/tootik'
