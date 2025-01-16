@@ -6,12 +6,12 @@ pkgname=grok-cli
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Grok in the terminal"
-url="https://github.com/haydenzeller/grok-cli.git"
+url="https://github.com/haydenzeller/grok-cli"
 license=("mit")
 arch=("x86_64")
 provides=("grok-cli")
 conflicts=("grok-cli")
-source=("https://github.com/haydenzeller/grok-cli.git/releases/download/v$pkgver/grok-cli-$pkgver-x86_64.tar.gz")
+source=("https://github.com/haydenzeller/grok-cli/releases/download/v$pkgver/grok-cli-$pkgver-x86_64.tar.gz")
 sha256sums=("1e05b0781e5df8f4f67c63eef11665fae3dfe7af3989b5919e8e632dc7392673")
 
 package() {
