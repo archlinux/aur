@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python' 'tk')
 makedepends=('python-setuptools')
 # We are not pulling any external sources; we use our local source tree.
-source=("https://github.com/atopheim/python-singletask/releases/tag/v${pkgver}.tar.gz")
+source=("https://github.com/atopheim/python-singletask/archive/refs/tags/v${pkgver}.tar.gz")
 md5sums=()
 
 prepare() {

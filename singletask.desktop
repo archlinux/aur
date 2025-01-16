@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=SingleTask
+Comment=A compact, single-task-focused application
+Exec=python3 /usr/bin/singletask
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=Utility;
