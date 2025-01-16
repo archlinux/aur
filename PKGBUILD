@@ -1,17 +1,17 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=heroic-games-launcher-git
-pkgver=2.15.1.r0.g47d3075ca
+pkgver=2.15.2.r44.ged52e163d
 pkgrel=2
 pkgdesc="Native GOG, Epic Games and Amazon games launcher for Linux"
 arch=(x86_64)
 url="https://heroicgameslauncher.com/"
-license=(GPL3)
-depends=(alsa-lib gtk3 nss)
-makedepends=(git pnpm)
+license=(GPL-3.0-only)
+_electron=electron34
+depends=(alsa-lib gtk3 nss which $_electron)
+makedepends=(git pnpm npm python)
 provides=(heroic-games-launcher)
 conflicts=(heroic-games-launcher)
-options=(!strip)
 source=("git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git")
 sha256sums=('SKIP')
 
@@ -22,32 +22,26 @@ pkgver() {
 
 build() {
   cd HeroicGamesLauncher
-  pnpm install
+  HOME="${srcdir}/.electron-gyp" pnpm install
+
   pnpm run download-helper-binaries
-  pnpm dist:linux tar.xz
+  ./node_modules/.bin/electron-vite build
+  ./node_modules/.bin/electron-builder --linux --x64 --dir -c.electronDist=/usr/lib/$_electron/ -c.electronVersion=$(cat /usr/lib/$_electron/version)
 }
 
 package() {
-  cd HeroicGamesLauncher
-  install -d "${pkgdir}/opt/heroic"
-  cp -r dist/linux-unpacked/* "${pkgdir}/opt/heroic"
+  cd "HeroicGamesLauncher"
+  install -d "${pkgdir}/usr/lib/heroic"
+  cp -rf dist/linux-unpacked/resources/app.asar{,.unpacked} "${pkgdir}/usr/lib/heroic/"
+  rm -rf "${pkgdir}/usr/lib/heroic-games-launcher/app.asar.unpacked/build/bin/x64/win32"
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/heroic" <<EOF
+#!/usr/bin/bash
+exec $_electron /usr/lib/heroic/app.asar "\$@"
+EOF
 
-  install -d "${pkgdir}/usr/bin"
-  ln -s /opt/heroic/heroic "${pkgdir}/usr/bin/heroic"
-
-  install -D public/icon.png "${pkgdir}/usr/share/pixmaps/heroic.png"
-
-  install -d "${pkgdir}/usr/share/applications/"
-  cat > ${pkgdir}/usr/share/applications/heroic.desktop << _EOD
-[Desktop Entry]
-Name=Heroic Games Launcher
-Exec=/opt/heroic/heroic %U
-Terminal=false
-Type=Application
-Icon=heroic
-StartupWMClass=Heroic
-Comment=Open Source GOG and Epic Games launcher
-MimeType=x-scheme-handler/heroic;
-Categories=Game;
-_EOD
+  install -d "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps"
+  ln -s /usr/lib/heroic/app.asar.unpacked/build/icon.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/heroic.png"
+  install -Dm644 flatpak/com.heroicgameslauncher.hgl.desktop "${pkgdir}/usr/share/applications/heroic.desktop"
+  sed -i 's|Exec=.*|Exec=/usr/bin/heroic|' "${pkgdir}/usr/share/applications/heroic.desktop"
+  sed -i 's|Icon=.*|Icon=heroic|' "${pkgdir}/usr/share/applications/heroic.desktop"
 }

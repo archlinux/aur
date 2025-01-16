@@ -1,18 +1,21 @@
 pkgbase = heroic-games-launcher-git
 	pkgdesc = Native GOG, Epic Games and Amazon games launcher for Linux
-	pkgver = 2.15.1.r0.g47d3075ca
+	pkgver = 2.15.2.r44.ged52e163d
 	pkgrel = 2
 	url = https://heroicgameslauncher.com/
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = pnpm
+	makedepends = npm
+	makedepends = python
 	depends = alsa-lib
 	depends = gtk3
 	depends = nss
+	depends = which
+	depends = electron34
 	provides = heroic-games-launcher
 	conflicts = heroic-games-launcher
-	options = !strip
 	source = git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git
 	sha256sums = SKIP
 
