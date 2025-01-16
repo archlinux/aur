@@ -1,6 +1,6 @@
 pkgbase = pwman3
 	pkgdesc = A console based password management application written in Python
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/pwman3/pwman3
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = pwman3
 	optdepends = python-psycopg2: PostgreSQL support,
 	optdepends = python-pymysql: MySQL support,
 	optdepends = python-pymongo: MongoDB support
-	source = https://files.pythonhosted.org/packages/source/p/pwman3/pwman3-0.13.0.tar.gz
-	sha256sums = 07602c5d68a8fd873503f81e85a0d6b8a2a65d7d35a804742eb15353cd9d2749
+	source = https://files.pythonhosted.org/packages/source/p/pwman3/pwman3-0.13.1.tar.gz
+	sha256sums = c35ed11e845fd575b7fdbe6e3ac1a7483fd46c8d24b8a076730465f812da9462
 
 pkgname = pwman3
