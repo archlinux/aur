@@ -1,4 +1,4 @@
-# Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
 _pkgauthor=sachaos
 _pkgname=todoist
