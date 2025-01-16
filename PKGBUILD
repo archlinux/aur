@@ -4,9 +4,9 @@
 pkgname='hikvision-mvs'
 pkgver=3.0.1
 _pkgdate=241128
-pkgrel=3
+pkgrel=4
 pkgdesc="Machine Vision Software by Hikvision, for their industrial cameras."
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://www.hikrobotics.com/"
 license=('LGPL2.1' 'LGPL3' 'custom')
 source=("https://www.hikrobotics.com/cn2/source/support/software/MVS_STD_V${pkgver}_${_pkgdate}.zip"
@@ -21,6 +21,8 @@ prepare() {
 	declare -A arch_in_filename=(
 		['x86_64']='x86_64'
 		['i686']='i386'
+		['aarch64']='aarch64'
+		['armv7h']='armhf'
 	)
 	export FILENAME=MVS-${pkgver}_${arch_in_filename[$CARCH]}_20${_pkgdate}.tar.gz
 	unzip -o ${noextract[0]} $FILENAME
