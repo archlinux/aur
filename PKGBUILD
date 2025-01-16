@@ -1,8 +1,9 @@
-# Maintainer: James An <james@jamesan.ca>
+# Maintainer: Donald Webster <fryfrog@gmail.com>
+# Contributor: James An <james@jamesan.ca>
 
 pkgname=python-bencodepy
-_pkgname=BencodePy
-pkgver=0.9.5.r5.ga9c145b
+_name=bencode.py
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='A small Python 3 library for encoding and decoding Bencode data'
 arch=('any')
@@ -10,10 +11,15 @@ url="https://github.com/eweast/$_pkgname"
 license=('GPL')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://github.com/eweast/$_pkgname/archive/master.zip")
-md5sums=('d04fb70c690bd5025e1c6444f37797b8')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('2a24ccda1725a51a650893d0b63260138359eaa299bb6e7a09961350a2a6e05c')
+
+build() {
+  cd "$_name-$pkgver"
+  GIT_DIR='.' python -m build --wheel --no-isolation
+}
 
 package() {
-    cd "$_pkgname-master"
-    python setup.py install --root="$pkgdir" --optimize=1
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }

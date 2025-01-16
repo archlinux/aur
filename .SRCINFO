@@ -1,14 +1,13 @@
 pkgbase = python-bencodepy
 	pkgdesc = A small Python 3 library for encoding and decoding Bencode data
-	pkgver = 0.9.5.r5.ga9c145b
+	pkgver = 4.0.0
 	pkgrel = 1
-	url = https://github.com/eweast/BencodePy
+	url = https://github.com/eweast/
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/eweast/BencodePy/archive/master.zip
-	md5sums = d04fb70c690bd5025e1c6444f37797b8
+	source = https://files.pythonhosted.org/packages/source/b/bencode.py/bencode.py-4.0.0.tar.gz
+	sha256sums = 2a24ccda1725a51a650893d0b63260138359eaa299bb6e7a09961350a2a6e05c
 
 pkgname = python-bencodepy
-
