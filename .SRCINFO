@@ -1,12 +1,12 @@
 pkgbase = ttf-juliamono
 	pkgdesc = JuliaMono is a monospace typeface designed for programming in Julia.
-	pkgver = 0.058
+	pkgver = 0.059
 	pkgrel = 1
 	url = https://juliamono.netlify.app/
 	arch = any
 	license = custom:SIL Open Font License v1.1
 	depends = xorg-fonts-encodings
-	source = JuliaMono-0.058.tar.gz::https://github.com/cormullion/juliamono/releases/download/v0.058/JuliaMono.tar.gz
-	sha256sums = c03cf93e05faf8fda4bbb9581ad7e81012253dfc5f49ce411015257976c978f4
+	source = JuliaMono-0.059.tar.gz::https://github.com/cormullion/juliamono/releases/download/v0.059/JuliaMono.tar.gz
+	sha256sums = 7aa634aa4a212509a23e2ffae3ff707c8df867d3b3a26752e4d1e2441003aa1c
 
 pkgname = ttf-juliamono
