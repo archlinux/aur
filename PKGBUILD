@@ -1,7 +1,7 @@
 # Maintainer: xiliuya <xiliuya@aliyun.com>
 # Contributor: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=insight
-pkgver=13.2.r629.8caaa96
+pkgver=15.2.r719.f487d9c
 pkgrel=1
 pkgdesc="Insight is a graphical user interface to GDB, the GNU Debugger written in Tcl/Tk."
 url="https://sourceware.org/git/?p=insight.git"
@@ -15,25 +15,29 @@ replaces=()
 backup=()
 options=('!buildflags')
 install=
-_commit="8caaa968ad0c640c03c5107d8fd87ccecc37057a"
+_commit="f487d9c304d42f5253fe81c274c0b8e4a1556060"
 source=(git+https://sourceware.org/git/insight.git#commit=$_commit
-        gdb-13.2.tar.gz::https://sourceware.org/pub/gdb/releases/gdb-13.2.tar.gz
+        gdb-15.2.tar.gz::https://sourceware.org/pub/gdb/releases/gdb-15.2.tar.gz
 	build.sh
 	gdb_acinclude.m4.patch
 	libgui_acinclude.m4.patch
 	configure.ac.patch
-	binutils-gdb_config_override.m4.patch)
+	binutils-gdb_config_override.m4.patch
+	gdbtk-cmds.patch
+	gdbtk-hooks.patch)
 
 md5sums=('SKIP'
-        '2e9e9a5345d047c8c8829087d777068f'
+        'e50e995c8c0b76be73c68bed6e747037'
 	'4817d3935ad0815c3a76cbbc11cd0b1c'
 	'a4a50d98e6cfdc38bc8187b34ce451fa'
 	'67588c209da7505a07c44532f6e973ae'
 	'a657612d67bc37b53b874b07aaf68873'
-	'3f329bccc0724dd689143c45c583f876')
+	'3f329bccc0724dd689143c45c583f876'
+	'487b543074709df95ee5b0f5175c0ac4'
+	'0629ff69bdd940fd482f68792a7c85ac')
 
 pkgver() {
-  cp -r gdb-13.2/* insight/binutils-gdb/
+  cp -r gdb-15.2/* insight/binutils-gdb/
   cd insight/
   _ver="$(sed -E -e "s|DATE|$(git log -1 --date=format:'%Y%m%d' --format='%ad')|" binutils-gdb/gdb/version.in | tr '-' '_')"
   _rev="$(git rev-list --count HEAD)"
@@ -57,6 +61,8 @@ build() {
   patch -u binutils-gdb/gdb/acinclude.m4 -i ../gdb_acinclude.m4.patch
   patch -u binutils-gdb/config/override.m4 -i ../binutils-gdb_config_override.m4.patch
   patch -u configure.ac -i ../configure.ac.patch
+  patch -u gdbtk/generic/gdbtk-cmds.c -i ../gdbtk-cmds.patch
+  patch -u gdbtk/generic/gdbtk-hooks.c -i ../gdbtk-hooks.patch
   aclocal
   autoconf
   sh ../build.sh
