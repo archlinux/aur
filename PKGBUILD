@@ -1,8 +1,9 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=sshd-openpgp-auth
 _name=ssh-openpgp-auth
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Create and manage OpenPGP certificates that serve as trust anchors for SSH host keys"
 arch=(x86_64)
@@ -26,8 +27,8 @@ checkdepends=(
 )
 optdepends=('openssh: for working with a local sshd')
 source=($pkgname-$pkgver.tar.gz::https://codeberg.org/wiktor/ssh-openpgp-auth/archive/$pkgname/$pkgver.tar.gz)
-sha512sums=('84510f31f1ee6342c7f393c915a44f9647526cf3fe924497e92ef65cc2f676e9d2fff788843d1e2f44cdfce16c1ca42af983a3870c4f1a06207707a35e8e8ced')
-b2sums=('ecf5ab9819551dd65cacf123802b40c551b53b665c1288e3792642839b08ac800f19c69e2cf868e4ae7257bf8b50b5905a36106f662057b0e5e0c9f9de96552a')
+sha512sums=('15af8a94b0751b438b5f6588a3cee00b542643920f1fe57af45c3c599d129efe344a839c652d611bc84e273900acefba5ef920190c31c4abfa0c58205faba8d2')
+b2sums=('c955cac7e31f773385fc154f86b5dd0806e2462abdfe0aa60ca5ea4bf0f4cc1226264e0708db5f06f8e74623efbb5c008d1dfc5c0d7b917634d8064c2a9ce9d6')
 validpgpkeys=()
 
 prepare() {
