@@ -1,6 +1,6 @@
 pkgbase = mozc-with-jp-dict
-	pkgver = 2.30.5618.102
-	pkgrel = 39
+	pkgver = 2.31.5712.102
+	pkgrel = 1
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
 	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary
@@ -15,8 +15,8 @@ pkgbase = mozc-with-jp-dict
 	makedepends = libibus
 	makedepends = rustup
 	options = !lto
-	source = git+https://github.com/fcitx/mozc.git#commit=ba70ee30b664b79b1268a9839268734d330a9ed7
-	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=a23aad4ccaffae8667989c9ef499321d1d1ba862
+	source = git+https://github.com/fcitx/mozc.git#commit=9dc82478fb74ffbb5ea4ddde84350db68ee89754
+	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=97be491d98df9b0b768ce9e3942a28e07c2bface
 	source = git+https://github.com/abseil/abseil-cpp.git#commit=4447c756
 	source = git+https://github.com/google/breakpad.git#commit=216cea7b
 	source = git+https://github.com/google/googletest.git#commit=b514bdc8
@@ -34,8 +34,8 @@ pkgbase = mozc-with-jp-dict
 	source = https://github.com/phoepsilonix/mecab-ipadic-neologd/raw/refs/heads/master/seed/mecab-user-dict-seed.20200910.csv.xz
 	source = LICENSE-MeCab-ipadic-Neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
 	source = fcitx5-mozc-conf.patch
-	sha512sums = 4be4c72bffd8498f0235a64314931db7fba6f0d9f53232d01365216d12150128ee547b0a84beec7098bf3f1135b1d7991a95dff9aaecbc16b35c0d35cd5b02d9
-	sha512sums = e77afbf1560f9ed9debf6a26dc706bb8bdae5ecc9b5f542fd8f12b6507754c2674f8b8ba46d91bbc28e8789e94e0e145091b3c20388a51e69c8c50256c46dc9f
+	sha512sums = dad55aac4edd699b792f488de682c4ffd54b03e3f41bddbdb98b3df1f60deaa38a74300419104075974d91f0207c0f329a9bd1f755f4d133012ed72e559dc023
+	sha512sums = 2f11f0153c42485ee789412504d3616e38fc7a8518ac9aa401a4602edcc94d223970ee42abf4bae43751b314326e81464a6a26b2fbc69badc12d50bcc1a01006
 	sha512sums = 83a6fa68645d138af64ddddcfd15da567c4c46f92fb69be6c10bc5989c3aa6ab85776dfb3fcccdc9e7c32ca9f8260be121ceb7d329792d28ec9a66417a903a68
 	sha512sums = f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d
 	sha512sums = 44db7d4a09aa7d36f1fb5a89be2234834a58834c76e445f8e9f7bc5685f6a76005b19fc758842c63641e476fa97c10eb968fa13965312fafca25843181fd025b
@@ -59,7 +59,7 @@ pkgname = ibus-mozc-with-jp-dict
 	depends = ibus>=1.4.1
 	depends = qt6-base
 	depends = libibus
-	provides = ibus-mozc=2.30.5618.102
+	provides = ibus-mozc=2.31.5712.102
 	conflicts = fcitx
 	conflicts = fcitx-configtool
 	conflicts = fcitx-qt5
@@ -77,7 +77,7 @@ pkgname = fcitx5-mozc-with-jp-dict
 	depends = fcitx5-qt
 	depends = hicolor-icon-theme
 	optdepends = fcitx5-configtool
-	provides = fcitx5-mozc=2.30.5618.102
+	provides = fcitx5-mozc=2.31.5712.102
 	conflicts = fcitx-mozc
 	conflicts = fcitx
 	conflicts = fcitx-qt5
@@ -90,4 +90,4 @@ pkgname = emacs-mozc-with-jp-dict
 	depends = emacs
 	depends = glibc
 	depends = gcc-libs
-	provides = emacs-mozc=2.30.5618.102
+	provides = emacs-mozc=2.31.5712.102
