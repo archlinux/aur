@@ -17,6 +17,6 @@ pkgbase = conduwuit
 	options = !lto
 	backup = etc/conduwuit/conduwuit.toml
 	source = git+https://github.com/girlbossceo/conduwuit#tag=v0.4.6
-	md5sums = bfaf42a864f88965b59da25abf9b6762
+	md5sums = 4fe26c4b143b6789a4615d8c67913da9
 
 pkgname = conduwuit

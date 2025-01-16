@@ -34,7 +34,7 @@ function build() {
 function check() {
 	cd "${srcdir}/conduwuit"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --release --frozen --locked --all-features
+	cargo test --frozen --locked --all-features
 }
 
 function package() {
