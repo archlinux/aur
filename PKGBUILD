@@ -4,8 +4,8 @@
 pkgname=openvpn-mbedtls
 _pkgname=openvpn
 crypto_library=mbedtls
-pkgver=2.6.12
-pkgrel=2
+pkgver=2.6.13
+pkgrel=1
 pkgdesc="An easy-to-use, robust and highly configurable VPN (Virtual Private Network), linked against the ${crypto_library} library for crypto support."
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://openvpn.net/index.php/open-source.html'
@@ -23,9 +23,9 @@ source=("git+https://github.com/OpenVPN/openvpn.git#tag=v${pkgver}?signed"
         '0001-unprivileged.patch'
         'sysusers.conf'
         'tmpfiles.conf')
-sha256sums=('0d91a85307b2d7da104bc1fa45be47fb0a20f346b2b25050747423130ba9a8c8'
-            'a081d40a1785db94378aee6223240f2d01550507b69ca401838477bcf764088e'
-            '3646b865ac67783fafc6652589cfe2a3105ecef06f3907f33de5135815f6a621'
+sha256sums=('3673c6f52b6ab988c0db556582a68efdc7cd81fe2ea744f3b6cc9e377c7a3087'
+            'bb47b298b59300a4282fc4d0b69dcdd8dcfb72d2ff2f702f96ea369a8381456a'
+            '15669f82ac8b412eb3840ba9b39de20ca9b04bf082516c229577a5cb4e1a9610'
             'b1436f953a4f1be7083711d11928a9924993f940ff56ff92d288d6100df673fc')
 
 prepare() {

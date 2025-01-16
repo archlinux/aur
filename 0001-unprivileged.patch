@@ -31,9 +31,9 @@ index 6e8e7d94..b2814e4b 100644
 --- a/src/openvpn/console_systemd.c
 +++ b/src/openvpn/console_systemd.c
 @@ -71,6 +71,7 @@ get_console_input_systemd(const char *pr
-     }
  #endif
      argv_printf_cat(&argv, "--icon network-vpn");
+     argv_printf_cat(&argv, "--timeout=0");
 +    argv_printf_cat(&argv, "--system");
      argv_printf_cat(&argv, "%s", prompt);
 
