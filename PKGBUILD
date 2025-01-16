@@ -5,8 +5,8 @@
 _pkgname='tootik'
 pkgname="${_pkgname}-git"
 pkgver=0.15.1.r1.g6ec6cac
-pkgrel=2
-pkgdesc='A federated nanoblogging service with a Gemini frontend (latest commit)'
+pkgrel=3
+pkgdesc='A federated nanoblogging service with a gemini/gopher/finger/guppy frontend (latest commit)'
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/dimkr/tootik'
 license=('Apache-2.0')  # SPDX-License-Identifier: Apache-2.0

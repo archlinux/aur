@@ -1,7 +1,7 @@
 pkgbase = tootik-git
-	pkgdesc = A federated nanoblogging service with a Gemini frontend (latest commit)
+	pkgdesc = A federated nanoblogging service with a gemini/gopher/finger/guppy frontend (latest commit)
 	pkgver = 0.15.1.r1.g6ec6cac
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dimkr/tootik
 	arch = aarch64
 	arch = armv6h
