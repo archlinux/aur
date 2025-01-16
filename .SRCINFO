@@ -1,6 +1,6 @@
 pkgbase = python-wandb
 	pkgdesc = A tool for visualizing and tracking your machine learning experiments
-	pkgver = 0.19.1
+	pkgver = 0.19.2
 	pkgrel = 1
 	url = https://wandb.ai
 	install = python-wandb.install
@@ -32,7 +32,7 @@ pkgbase = python-wandb
 	provides = python-wandb
 	conflicts = python-wandb-git
 	options = !lto
-	source = python-wandb-0.19.1.tar.gz::https://github.com/wandb/wandb/archive/refs/tags/v0.19.1.tar.gz
-	sha256sums = c6a1e477b778f77d6c81ef8607fbd54fad5d8ce1b447a79b483ca090b9d926fe
+	source = python-wandb-0.19.2.tar.gz::https://github.com/wandb/wandb/archive/refs/tags/v0.19.2.tar.gz
+	sha256sums = 8969c9a941ee85f3c5175b8707cbbc0910d0f6de8fab63733f3346ca177e02b3
 
 pkgname = python-wandb
