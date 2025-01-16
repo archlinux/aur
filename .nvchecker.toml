@@ -1,0 +1,5 @@
+[webstorm]
+source = 'regex'
+url = 'https://data.services.jetbrains.com/products?code=WS&release.type=release'
+encoding = 'utf8'
+regex = 'WebStorm-([\d.]+).tar.gz'
