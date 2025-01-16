@@ -1,6 +1,6 @@
 pkgbase = naga-cli
 	pkgdesc = Shader translation command line tool
-	pkgver = 23.0.0
+	pkgver = 24.0.0
 	pkgrel = 1
 	url = https://github.com/gfx-rs/wgpu/tree/trunk/naga-cli
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = naga-cli
 	makedepends = cargo
 	provides = naga
 	conflicts = naga
-	source = naga-cli-23.0.0.tar.gz::https://static.crates.io/crates/naga-cli/naga-cli-23.0.0.crate
-	b2sums = 9433f8b96a63943fdf29636fee1c30bd2c256167aa4e20423baf18a16d99786d4b68ad1603b03b51a956badb80923eef0f06232e3b463de39326bfc5dd0126a9
+	source = naga-cli-24.0.0.tar.gz::https://static.crates.io/crates/naga-cli/naga-cli-24.0.0.crate
+	b2sums = 77be7350b46f25941118deb7b9c76affcb96a561799d42faef02d27c813947fafbe176002fc7e9e8aeb598ea78fa9bb870c4131b89b677f4ac27151b06291996
 
 pkgname = naga-cli
