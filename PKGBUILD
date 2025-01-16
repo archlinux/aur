@@ -1,15 +1,14 @@
 pkgname=python-singletask
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A compact, single-task-focused application for managing tasks and thoughts."
 arch=('any')
 url="https://topheim.com"
 license=('MIT')
 depends=('python' 'tk')
 makedepends=('python-setuptools')
-# We are not pulling any external sources; we use our local source tree.
-source=("https://github.com/atopheim/python-singletask/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=()
+source=("https://codeload.github.com/atopheim/python-singletask/tar.gz/refs/tags/v${pkgver}")
+sha256sums=("bd287b9edddc21e67d48fc655886aa191ee5a121ad0748c52fcb09b74a6cc300")
 
 prepare() {
     echo "No sources to download. Using local code."
