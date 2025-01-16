@@ -8,6 +8,8 @@ pkgbase = python-bencodepy
 	makedepends = python-setuptools
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/b/bencode.py/bencode.py-4.0.0.tar.gz
+	source = small_fixes.patch
 	sha256sums = 2a24ccda1725a51a650893d0b63260138359eaa299bb6e7a09961350a2a6e05c
+	sha256sums = 09673b21c54864ad746e8af7f729d2a314a4665e78be9aa4f21f078d33b3e465
 
 pkgname = python-bencodepy
