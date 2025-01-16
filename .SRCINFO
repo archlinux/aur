@@ -1,10 +1,17 @@
 pkgbase = corepacker
 	pkgdesc = Remove npm, yarn and pnpm using corepack
 	pkgver = 0.0.0
+<<<<<<< HEAD
 	pkgrel = 8
 	url = https://github.com/nodejs/corepack/
 	arch = any
 	license = CC0 1.0
+=======
+	pkgrel = 7
+	url = https://github.com/nodejs/corepack/
+	arch = any
+	license = MIT
+>>>>>>> 8d8f4f81dc937e696150fb86baf3a9f3904a0c14
 	depends = nodejs
 	provides = npm
 	provides = yarn
