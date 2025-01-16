@@ -1,0 +1,25 @@
+pkgbase = todoist-bin
+	pkgdesc = Todoist CLI Client, written in Golang.
+	pkgver = 0.22.0
+	pkgrel = 1
+	url = https://github.com/sachaos/todoist
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = help2man
+	depends = glibc
+	provides = todoist
+	conflicts = todoist
+	source = LICENSE-0.22.0::https://raw.githubusercontent.com/sachaos/todoist/v0.22.0/LICENSE
+	source = README-0.22.0.md::https://raw.githubusercontent.com/sachaos/todoist/v0.22.0/README.md
+	sha256sums = d570f605a0fcedf7c47c390807dc37a0ffbbce5e291c8ce4c684044ede428c6f
+	sha256sums = c3a670fec633f1d9ef4b9cfd1c124495b26dd9b29c7247656d91fe250933b00d
+	source_x86_64 = https://github.com/sachaos/todoist/releases/download/v0.22.0/todoist_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 9980c4aa5c0d6c587b4ad4c40a536b2a39c65feff5afc095642a308205174f93
+	source_i686 = https://github.com/sachaos/todoist/releases/download/v0.22.0/todoist_Linux_i386.tar.gz
+	sha256sums_i686 = f6a03124a413fe00b6f7888d6de88ebafb1edd872e16ff2aa82123e54e02e6f2
+	source_aarch64 = https://github.com/sachaos/todoist/releases/download/v0.22.0/todoist_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 0d310c1d0a28a91c7d6b138c8d43f9252635972b44ee49ecf9d6d50298e0dcc6
+
+pkgname = todoist-bin
