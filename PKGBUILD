@@ -2,8 +2,8 @@
 
 pkgname=astrofox
 pkgver=1.4.0
-pkgrel=4
-_electron=electron33
+pkgrel=5
+_electron=electron34
 pkgdesc="A motion graphics program that lets turn audio into amazing videos"
 arch=('any')
 url="https://astrofox.io"
