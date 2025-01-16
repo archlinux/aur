@@ -19,7 +19,7 @@ pkgver() {
 }
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
-  cd time-scheduler-client
+  cd "$srcdir"/time-scheduler-client
   pnpm install
   pnpm tauri build
 }
