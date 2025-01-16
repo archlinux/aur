@@ -1,0 +1,18 @@
+pkgbase = shiroa
+	pkgdesc = shiroa is a simple tool for creating modern online books in pure typst
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Myriad-Dreamin/shiroa
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	makedepends = yarn
+	depends = gcc-libs
+	options = !lto
+	source = shiroa::git+https://github.com/Myriad-Dreamin/shiroa#tag=v0.2.0
+	source = myriad-dreamin-typst::git+https://github.com/Myriad-Dreamin/typst
+	b2sums = ac0262159cc29dcbae0d76d0d59267c7567f1cc434a81b41fee3ab89e8c9e6b44294cf82df26fed4c6f416ecda301d997f14e77081bb6161a3994a4eb55ff44f
+	b2sums = SKIP
+
+pkgname = shiroa
