@@ -403,7 +403,7 @@ prepare() {
 # Build kernel
 build() {
     cd "${_src_linux}" || exit 1
-    make ${BUILD_FLAGS[*]} all
+    make ${BUILD_FLAGS[*]} all | pv -l -F "Elapsed time: %t, targets per sec: %a" > /dev/null
 }
 
 # Packages the kernel package
