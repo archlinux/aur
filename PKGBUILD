@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'wmctrl')
 makedepends=()
 source=('alwo-1.0.0.tar.xz')
-sha256sums=('cd4278748d0a9e8509d1bc364bf2b8bff4359608b6d1544e313a6ef1d171bdc3')
+sha256sums=('9c6fb29632ff76a0f992b0994144198c4e4382b233b16815ed2b169d0c2c84d6')
 
 package() {
     bsdtar -xvf "$srcdir/alwo-1.0.0.tar.xz" -C "$srcdir"
