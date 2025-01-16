@@ -135,7 +135,7 @@ export PKG_CONFIG_LIBDIR="${ANDROID_PREFIX_LIB}/pkgconfig:${ANDROID_PREFIX_SHARE
 export ANDROID_CFLAGS="${ANDROID_CFLAGS} -O2 -pipe -fno-plt -fexceptions -I${ANDROID_PREFIX_INCLUDE}"
 export ANDROID_CPPFLAGS="${ANDROID_CPPFLAGS} -D_FORTIFY_SOURCE=2 -D__USE_FORTIFY_LEVEL=2 -I${ANDROID_PREFIX_INCLUDE}"
 export ANDROID_CXXFLAGS="${ANDROID_CXXFLAGS} -O2 -pipe -fno-plt -fexceptions -I${ANDROID_PREFIX_INCLUDE}"
-export ANDROID_LDFLAGS="${ANDROID_LDFLAGS} -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -L${ANDROID_PREFIX_LIB}"
+export ANDROID_LDFLAGS="${ANDROID_LDFLAGS} -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now,-z,max-page-size=16384 -L${ANDROID_PREFIX_LIB}"
 
 if [ -z "${ANDROID_WHITHOUT_CENV}" ]; then
     export CC="${ANDROID_CC}"
