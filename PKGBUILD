@@ -44,7 +44,7 @@ pkgname=("bareos-bconsole"
 #         "bareos-vadp-dumper"
 #         "bareos-vmware-vix-disklib"
 
-pkgver=23.1.1
+pkgver=24.0.0
 pkgmajor=${pkgver%%.*}
 pkgrel=1
 arch=(i686 x86_64 armv7h aarch64)
@@ -52,14 +52,14 @@ groups=('bareos')
 pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
 url="http://www.bareos.org"
 license=('AGPL3')
-makedepends=('cmake' 'gcc' 'libmariadbclient' 'postgresql-libs' 'python' 'python-setuptools' 'rpcsvc-proto' 'git' 'lsb-release' 'qt5-base' 'glusterfs' 'jansson' 'pam_wrapper')
+makedepends=('cmake' 'gcc' 'libmariadbclient' 'postgresql' 'python' 'python-setuptools' 'python-build' 'python-installer' 'rpcsvc-proto' 'git' 'lsb-release' 'qt5-base' 'glusterfs' 'jansson' 'pam_wrapper')
 source=("git+https://github.com/bareos/bareos.git#tag=Release/${pkgver}"
         "0001-distver.patch"
         "0003-version.patch"
         "0004-sqlspam.patch"
         "0005-httpd.patch")
 
-md5sums=('8144e300df3ab7e004fec86007f45851'
+md5sums=('acd0d5eaa5c6046d1d833e0f55d195c8'
          '419b0c64af750aa3e8ea668edf464d3e'
          '5bf1233d94dfecc9060746bfb39b9d2b'
          'ca4c929a2462cafaead8d0b49e3cebed'
@@ -131,7 +131,7 @@ build() {
   make DESTDIR="${srcdir}/install" install
 
   cd "${srcdir}/${pkgbase}/python-bareos"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 #=========================================
@@ -216,7 +216,6 @@ package_bareos-common() {
      usr/lib/bareos/libbareossd.so* \
      usr/lib/bareos/scripts/bareos-config \
      usr/lib/bareos/scripts/bareos-config-lib.sh \
-     usr/lib/bareos/scripts/bareos-explorer \
      usr/lib/bareos/scripts/btraceback.gdb \
      usr/bin/bsmtp \
      usr/bin/btraceback \
@@ -227,10 +226,12 @@ package_bareos-common() {
      +var/log/bareos \
      +run/bareos \
      +usr/share/licenses/${pkgname} \
+     +usr/share/doc/${pkgname} \
   ; do
     cp_pkgdir "$f" "$srcdir/install"
   done
-  install -Dm644 ${srcdir}/bareos/core/{AGPL-3.0.txt,LICENSE,README.*} "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 ${srcdir}/bareos/{AGPL-3.0.txt,core/LICENSE} "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 ${srcdir}/bareos/core/README.* "${pkgdir}/usr/share/doc/${pkgname}/"
 }
 
 #=========================================
@@ -368,13 +369,14 @@ package_bareos-director() {
      usr/bin/bareos-dir \
      usr/share/man/man8/bareos-dir.8* \
      usr/share/man/man8/bareos.8* \
-     usr/lib/systemd/system/bareos-dir.service \
   ; do
     cp_pkgdir "$f" "$srcdir/install"
   done
 
+  install -Dm644 ${srcdir}/bareos/build/debian/bareos-director.service "${pkgdir}/usr/lib/systemd/system/bareos-director.service"
+
   # Currently upstream systemd file does not automatically create run directory
-  sed -i '/\[Service\]/a RuntimeDirectory=bareos' ${pkgdir}/usr/lib/systemd/system/bareos-dir.service
+  sed -i '/\[Service\]/a RuntimeDirectory=bareos' ${pkgdir}/usr/lib/systemd/system/bareos-director.service
 }
 
 #=========================================
@@ -422,12 +424,14 @@ package_bareos-filedaemon() {
      usr/bin/bareos-fd \
      usr/lib/bareos/plugins/bpipe-fd.so \
      usr/share/man/man8/bareos-fd.8* \
-     usr/lib/systemd/system/bareos-fd.service \
   ; do
     cp_pkgdir "$f" "$srcdir/install"
   done
+
+  install -Dm644 ${srcdir}/bareos/build/debian/bareos-filedaemon.service "${pkgdir}/usr/lib/systemd/system/bareos-filedaemon.service"
+
   # Currently upstream systemd file does not automatically create run directory
-  sed -i '/\[Service\]/a RuntimeDirectory=bareos' ${pkgdir}/usr/lib/systemd/system/bareos-fd.service
+  sed -i '/\[Service\]/a RuntimeDirectory=bareos' "${pkgdir}/usr/lib/systemd/system/bareos-filedaemon.service"
 }
 
 #=========================================
@@ -514,7 +518,6 @@ package_bareos-filedaemon-postgresql-python-plugin() {
   depends=("bareos-filedaemon=${pkgver}"
            "postgresql")
   for f in \
-     usr/lib/bareos/plugins/bareos-fd-postgres.py* \
      usr/lib/bareos/plugins/bareos-fd-postgresql.py* \
   ; do
     cp_pkgdir "$f" "$srcdir/install"
@@ -569,14 +572,15 @@ package_bareos-storage() {
      usr/share/bareos/config/tray-monitor.d/storage/StorageDaemon-local*.conf \
      usr/bin/bareos-sd \
      usr/share/man/man8/bareos-sd.8* \
-     usr/lib/systemd/system/bareos-sd.service \
      +var/lib/bareos/storage \
   ; do
     cp_pkgdir "$f" "$srcdir/install"
   done
 
+  install -Dm644 ${srcdir}/bareos/build/debian/bareos-storage.service "${pkgdir}/usr/lib/systemd/system/bareos-storage.service"
+
   # Currently upstream systemd file does not automatically create run directory
-  sed -i '/\[Service\]/a RuntimeDirectory=bareos' ${pkgdir}/usr/lib/systemd/system/bareos-sd.service
+  sed -i '/\[Service\]/a RuntimeDirectory=bareos' "${pkgdir}/usr/lib/systemd/system/bareos-storage.service"
 }
 
 #=========================================
@@ -683,10 +687,12 @@ package_bareos-tools() {
      usr/bin/bwild \
      usr/bin/bcopy \
      usr/bin/bextract \
+     usr/bin/testfind \
      usr/bin/bls \
      usr/bin/bregex \
      usr/bin/bwild \
      usr/bin/bpluginfo \
+     usr/bin/bdedupestimate \
      usr/share/man/man1/bwild.1* \
      usr/share/man/man1/bregex.1* \
      usr/share/man/man8/bcopy.8* \
@@ -781,10 +787,12 @@ package_bareos-webui() {
      etc/bareos-webui/configuration.ini \
      usr/share/bareos-webui \
      +usr/share/licenses/${pkgname} \
+     +usr/share/doc/${pkgname} \
   ; do
     cp_pkgdir "$f" "$srcdir/install"
   done
-  install -Dm644 ${srcdir}/bareos/webui/{README.md,LICENSE,doc/README-TRANSLATION.md} "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 ${srcdir}/bareos/webui/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 ${srcdir}/bareos/webui/{README.md,doc/README-TRANSLATION.md} "${pkgdir}/usr/share/doc/${pkgname}/"
 }
 
 #=========================================
@@ -818,5 +826,5 @@ package_python-bareos() {
   depends=('python' 'python-sslpsk' 'jansson')
 
   cd "${srcdir}/${pkgbase}/python-bareos"
-  python setup.py install --skip-build --root="${pkgdir}" --optimize='1'
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
