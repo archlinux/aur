@@ -219,7 +219,7 @@ package_fcitx-mozc-with-jp-dict() {
   depends=('fcitx' 'fcitx-qt6')
   optdepends=('fcitx-configtool')
   provides=("fcitx-mozc=${pkgver}")
-  conflicts=('fcitx5-mozc' 'ibus-mozc' fcitx5 fcitx5-qt fcitx5-configtool)
+  conflicts=('fcitx5-mozc' 'fcitx-mozc' 'ibus-mozc' fcitx5 fcitx5-qt fcitx5-configtool)
 
   export PREFIX="$pkgdir/usr"
   export _bldtype
