@@ -1,7 +1,7 @@
 # Maintainer: icxes <dev.null@need.moe>
 pkgname=copyparty
 pkgver="1.16.8"
-pkgrel=1
+pkgrel=2
 pkgdesc="File server with accelerated resumable uploads, dedup, WebDAV, FTP, TFTP, zeroconf, media indexer, thumbnails++"
 arch=("any")
 url="https://github.com/9001/${pkgname}"
