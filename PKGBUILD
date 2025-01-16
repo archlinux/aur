@@ -11,7 +11,7 @@
 pkgname=cubicsdr
 _pkgname=CubicSDR
 pkgver=0.2.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-Platform Software-Defined Radio Application"
 arch=(x86_64 aarch64 armv7h i686)
 url="https://cubicsdr.com"
@@ -26,9 +26,12 @@ depends=(
   liquid-dsp
   soapysdr
   wxwidgets-common
-  wxwidgets-gtk3)
+  wxwidgets-gtk3
+  alsa-lib
+)
 makedepends=(cmake)
 optdepends=(
+  'pulseaudio: Pulseaudio support'
   'fftw: FFTW support'
   'limesuite: support for LimeSDR'
   'soapyairspy: support for Airspy R2 and Airspy Mini'
@@ -43,13 +46,17 @@ sha256sums=('790f851e08f1068081a8593dfd4a149c7414e7d70c1f5cafd287331df493b811')
 
 build() {
   cd "$_pkgname-$pkgver"
+
+  # Set USE_AUDIO_PULSE based on libpulse availability
   cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_HAMLIB=ON \
     -DENABLE_DIGITAL_LAB=ON \
-    -DUSE_AUDIO_PULSE=ON \
+    -DUSE_AUDIO_PULSE=$(pacman -Qo /usr/lib/libpulse.so &>/dev/null && echo ON || echo OFF) \
+    -DUSE_AUDIO_ALSA=ON \
     -Wno-dev
+
   cmake --build build
 }
 

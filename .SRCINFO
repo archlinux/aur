@@ -1,7 +1,7 @@
 pkgbase = cubicsdr
 	pkgdesc = Cross-Platform Software-Defined Radio Application
 	pkgver = 0.2.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cubicsdr.com
 	arch = x86_64
 	arch = aarch64
@@ -19,6 +19,8 @@ pkgbase = cubicsdr
 	depends = soapysdr
 	depends = wxwidgets-common
 	depends = wxwidgets-gtk3
+	depends = alsa-lib
+	optdepends = pulseaudio: Pulseaudio support
 	optdepends = fftw: FFTW support
 	optdepends = limesuite: support for LimeSDR
 	optdepends = soapyairspy: support for Airspy R2 and Airspy Mini
