@@ -1,7 +1,7 @@
 # Maintainer: Ben Cooper <contactme@bengcooper.co.uk>
 # Contributor: Johan Förberg <johan@forberg.se>
 pkgname=magicq
-pkgver=1.9.5.5
+pkgver=1.9.6.4
 pkgrel=1
 pkgdesc='Lighting control software from ChamSys'
 arch=(x86_64)
@@ -11,7 +11,7 @@ options=('!strip') # Binaries are already stripped.
 
 _pkgver="${pkgver//[^[:alnum:]]/_}"
 source=("http://files.magicq.co.uk/v${_pkgver}/magicq_ubuntu_v${_pkgver}.deb")
-sha256sums=('4f1b3b1d53c4250bc0ddd5340c31690206e2057dd723584b12f4d35ca251a69e')
+sha256sums=('25912d996bcd48a68327a768eb90f3c5dd93503ef1833b1f5c5a7f5fadaf5766')
 
 # I've been unable to find any formal license for Magicq. The website only
 # states that it's available free of charge. There don't seem to be any
