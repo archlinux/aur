@@ -1,6 +1,6 @@
 # Maintainer: Gilbert Gilb's <gilbsgilbert@gmail.com>
 pkgname=riscv64-gnu-toolchain-glibc-llvm-bin
-pkgver=2024.12.16
+pkgver=2025.01.16
 pkgrel=1
 pkgdesc="GNU toolchain for riscv64 Linux, including GCC and clang."
 arch=('x86_64')
@@ -16,10 +16,10 @@ optdepends=()
 makedepends=()
 options=(!strip)
 source=(
-  "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2024.12.16/riscv64-glibc-ubuntu-24.04-llvm-nightly-2024.12.16-nightly.tar.xz"
+  "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2025.01.16/riscv64-glibc-ubuntu-24.04-llvm-nightly-2025.01.16-nightly.tar.xz"
 )
 sha512sums=(
-  "51005d35fe36e8cae9105f2876d244a97b785ea493d270463dd1786c2906c96836ce0b3e2dfe9121a62594fa380060ce1b1dcbcec4ab506bf8cd58c86ff69f71"
+  "9e2270ba5d0aaebbdaf5099f7a93a052f19ab97c784bec96a662e23d191349a0b3c74f6ec6d026b7393f6bb79340790d7fa5b6653f48e77bee41d1b9cc7244fd"
 )
 
 package() {
