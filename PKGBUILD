@@ -31,10 +31,10 @@ package() {
   yarn run build:unpack
 
   msg2 "Moving files"
-  install -Dm644 "dist/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname.asar"
+  install -Dm644 "./dist/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname.asar"
   install -d -Dm644 "${pkgdir}/usr/share"
   chmod 755 "${pkgdir}/usr/share"
-  cp -r "dist/linux-unpacked/${pkgname}" "${pkgdir}/usr/share"
+  cp -r "./dist/linux-unpacked/${pkgname}" "${pkgdir}/usr/share"
 
   msg2 "Installing LICENSE"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
@@ -45,7 +45,7 @@ package() {
 
   msg2 "Installing icons"
   for size in 22 24 32 48 64 128 256 512; do
-    install -Dm644 "assets/icons/${size}x${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
+    install -Dm644 "./build/${size}x${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
   done
-  install -Dm644 "assets/icons/512x512.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.png"
+  install -Dm644 "./build/512x512.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.png"
 }
