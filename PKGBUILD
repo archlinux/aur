@@ -1,6 +1,6 @@
 # Maintainer: mendes <ourodoroger@gmail.com>
 pkgname=amandadb
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Simple Rust database inspired by Redis"
 arch=(x86_64)
