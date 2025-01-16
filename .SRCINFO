@@ -1,6 +1,6 @@
 pkgbase = python-p115dav
 	pkgdesc = 115 网盘 WebDAV 和 302 直链程序.
-	pkgver = 0.0.9.3.7
+	pkgver = 0.0.9.3.8
 	pkgrel = 1
 	url = https://pypi.org/project/p115dav
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = python-p115dav
 	conflicts = python-p115dav
 	options = !strip
 	options = !debug
-	source = p115dav-0.0.9.3.7.tar.gz::https://files.pythonhosted.org/packages/source/p/p115dav/p115dav-0.0.9.3.7.tar.gz
-	sha256sums = aa95739b9669143a99b7cff64bcf363618044b731793aa5f220d1b0825dda28b
+	source = p115dav-0.0.9.3.8.tar.gz::https://files.pythonhosted.org/packages/source/p/p115dav/p115dav-0.0.9.3.8.tar.gz
+	sha256sums = 0027d75030b8d800cab24676e27438f48580719edf17569c6ea5c24d4c637a72
 
 pkgname = python-p115dav
