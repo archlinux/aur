@@ -1,0 +1,4 @@
+['arpack++']
+source="git"
+git="https://github.com/m-reuter/arpackpp.git"
+
