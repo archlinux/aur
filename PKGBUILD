@@ -349,7 +349,13 @@ update_defconfig() {
                 scripts/config --set-val X86_64_VERSION "${_subarch_microarch}"
                 make ${BUILD_FLAGS[*]} oldconfig
             else
-                yes "${_subarch}" | make ${BUILD_FLAGS[*]} oldconfig
+                # taken from: https://stackoverflow.com/questions/962255/how-to-store-standard-error-in-a-variable
+                { local __ERROR=$(echo "${_subarch}" | make ${BUILD_FLAGS[*]} oldconfig 2>&1 1>&$out); } {out}>/dev/null
+                # echo $__ERROR
+                if [[ -n "$(echo $__ERROR)" ]]; then
+                    warning "Selected subarch: ${_subarch} is not supported"
+                    exit
+                fi
             fi
         # check that this option is present in the .config
         elif [[ $(grep -c "${_subarch}" .config) -eq 1 ]]; then
