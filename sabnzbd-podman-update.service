@@ -1,0 +1,12 @@
+[Unit]
+Description=Convenience update service for sabnzbd-podman.service
+After=network.target
+Before=sabnzbd-podman.service
+
+[Service]
+EnvironmentFile=/opt/docker-sabnzbd/default.env
+EnvironmentFile=%h/.docker-sabnzbd.env
+Environment="PUID=%U"
+Environment="PGID=%G"
+Type=oneshot
+ExecStart=podman-compose -f /opt/docker-sabnzbd/docker-compose.yaml pull

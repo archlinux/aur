@@ -1,0 +1,9 @@
+[Unit]
+Description=Run sabnzbd-podman-update.service daily and on boot
+
+[Timer]
+OnBootSec=15min
+OnUnitActiveSec=1d
+
+[Install]
+WantedBy=timers.target
