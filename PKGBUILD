@@ -1,8 +1,8 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
-_fullver="13.4.4"
+_fullver="14.0"
 pkgname="xpipe"
-pkgver="13.4.4"
+pkgver="14.0"
 pkgrel="1"
 epoch=1
 pkgdesc="Your entire server infrastructure at your fingertips"
