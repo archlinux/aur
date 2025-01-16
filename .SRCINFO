@@ -1,13 +1,12 @@
 pkgbase = warp-terminal-pacman-repo
 	pkgdesc = This is a bootstrap script for official wap-terminal pacman repo. Please run pacman -Sy warp-terminal after install this package.
-	pkgver = 0.1.stable
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://warp.dev
 	install = warp-terminal-pacman-repo-install
 	arch = x86_64
 	arch = aarch64
 	license = custom
-	provides = warp-terminal-pacman-repo=0.1.stable
 	provides = warp-terminal-bin
 	conflicts = warp-terminal-bin
 	replaces = warp-terminal-bin
