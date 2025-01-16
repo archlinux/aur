@@ -3,7 +3,7 @@
 pkgname=v2rayn
 _pkgname=v2rayN
 pkgver=7.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI client supporting Xray core, sing-box core and other cores"
 arch=('x86_64')
 url="https://github.com/2dust/v2rayN"
@@ -20,14 +20,13 @@ sha256sums=('6c5dccdeab395e987ddd0281f1f58c98bc36ccc30cdc94764c4a47080a25a62c'
             'f68ccb83fb112e3e745efbbd9dbcfe50c4611c9cdb470854934a33ec2cd561f2')
 conflicts=('v2rayn-bin')
 install=${pkgname}.install
+options=('!strip')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}"
     dotnet publish ./v2rayN.Desktop/v2rayN.Desktop.csproj \
         -p:DebugType=None \
-        --framework net8.0 \
         --configuration Release \
-        --use-current-runtime \
         --no-self-contained \
         --output output
 }
@@ -38,6 +37,6 @@ package() {
     cp -r output/* "${pkgdir}/opt/${_pkgname}"
     install -Dvm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/v2rayn"
     install -Dvm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/v2rayN.desktop"
-    install -Dvm644 "v2rayN.Desktop/v2rayN.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/v2rayN.png"
+    install -Dvm644 "v2rayN.Desktop/v2rayN.png" "$pkgdir/usr/share/pixmaps/v2rayN.png"
     install -Dvm644 ../LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
