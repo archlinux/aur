@@ -1,4 +1,5 @@
 # Maintainer: Ben Cooper <contactme@bengcooper.co.uk>
+# Contributor: Andreas Kling <arch@akling.org>
 # Contributor: Johan Förberg <johan@forberg.se>
 pkgname=magicq
 pkgver=1.9.6.4
@@ -6,18 +7,13 @@ pkgrel=1
 pkgdesc='Lighting control software from ChamSys'
 arch=(x86_64)
 url='https://chamsyslighting.com/products/magicq'
+license=(custom)
 groups=()
 options=('!strip') # Binaries are already stripped.
 
 _pkgver="${pkgver//[^[:alnum:]]/_}"
 source=("http://files.magicq.co.uk/v${_pkgver}/magicq_ubuntu_v${_pkgver}.deb")
 sha256sums=('25912d996bcd48a68327a768eb90f3c5dd93503ef1833b1f5c5a7f5fadaf5766')
-
-# I've been unable to find any formal license for Magicq. The website only
-# states that it's available free of charge. There don't seem to be any
-# restrictions on use, except that some features are disabled unless Chamsys
-# hardware is detected.
-license=(unknown)
 
 package() {
     depends=(alsa-lib ffmpeg glu gst-plugins-base gst-plugins-good
@@ -29,6 +25,8 @@ package() {
 
     # We use the system libraries instead of the bundled binaries.
     rm -rf opt/magicq/lib*.so*
+    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+    ln -s /opt/magicq/License_Conditions.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Magicq expects to be able to write these directories.
     # The directory list comes from the debian package postinst.
