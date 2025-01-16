@@ -5,7 +5,7 @@ pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=Tauon
 pkgver=7.9.0
-pkgrel=1
+pkgrel=2
 _kissfftver=131.1.0
 _miniaudiocommit=4a5b74bef029b3592c54b6048650ee5f972c1a48
 pkgdesc="A modern music player"
@@ -48,7 +48,12 @@ depends=(
 	'libpipewire'
 )
 
-makedepends=('pkg-config')
+makedepends=(
+	'pkg-config'
+	'git'
+	'pkg-config'
+	'python-build'
+	'python-installer')
 
 optdepends=(
 	'noto-fonts-cjk: Matching font for CJK characters'
@@ -90,7 +95,7 @@ build() {
 package() {
 	cd "${_gitname}-${pkgver}"
 	python -m installer --destdir="${pkgdir}" dist/*.whl
-	ls locale
+
 	#cp -r assets templates theme t_modules lib "${pkgdir}/opt/${pkgname}"
 
 	for t in cs de es fr_FR fi hu id ja_JP nb_NO pl pt pt_BR pt_PT ru sv tr zh_CN; do
