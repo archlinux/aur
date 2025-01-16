@@ -1,6 +1,6 @@
 pkgbase = python-inscriptis
 	pkgdesc = HTML to text conversion library
-	pkgver = 2.5.1
+	pkgver = 2.5.3
 	pkgrel = 1
 	url = https://github.com/weblyzard/inscriptis
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-inscriptis
 	makedepends = python-poetry-core
 	depends = python-lxml
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/i/inscriptis/inscriptis-2.5.1.tar.gz
-	sha256sums = 3ebccaa0fca3d860ff8943d22f10c8ade8adbf481a0f81eb150c7b911db6f3c9
+	source = https://files.pythonhosted.org/packages/source/i/inscriptis/inscriptis-2.5.3.tar.gz
+	sha256sums = 256043caa13e4995c71fafdeadec4ac42b57f3914cb41023ecbee8bc27ca1cc0
 
 pkgname = python-inscriptis
