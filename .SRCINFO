@@ -1,0 +1,15 @@
+pkgbase = peanutbutter
+	pkgdesc = Wayland screen locker for touchscreen devices
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://git.sr.ht/~anjan/peanutbutter
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = cargo
+	makedepends = scdoc
+	depends = pango
+	depends = cairo
+	source = peanutbutter-0.5.1.tar.gz::https://git.sr.ht/~anjan/peanutbutter/archive/0.5.1.tar.gz
+	sha512sums = 2abf4599eb6e53584c49c4b3d0d548b60e9b5793d2fbf94542f09fa1e27e60d7aa110502ba18f5a8bc6b0afb601eb8a4d89045b93283072c4327583381e4a0b3
+
+pkgname = peanutbutter
