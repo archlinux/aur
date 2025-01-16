@@ -1,0 +1,13 @@
+pkgbase = tikz2pdf-git
+	pkgdesc = Script to help convert TikZ code to PDF
+	pkgver = 12+c58f831
+	pkgrel = 1
+	url = https://github.com/ablondin/tikz2pdf
+	arch = x86_64
+	license = BSD-3
+	makedepends = git
+	depends = python
+	source = git+https://github.com/ablondin/tikz2pdf.git
+	sha256sums = SKIP
+
+pkgname = tikz2pdf-git
