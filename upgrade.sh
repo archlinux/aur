@@ -34,6 +34,10 @@ if [ -z "$checksum" ]; then
 	exit 1
 fi
 
+# clean temp file
+rm -f "sqlite-autoconf-${url_version}.tar.gz"
+
+# show checksum
 echo "$checksum"
 
 # update PKGBUILD
