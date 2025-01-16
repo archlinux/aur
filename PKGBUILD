@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-workspaces-git
-pkgver=1.0.0.alpha.2.r0.g70d6c41
-pkgrel=2
+pkgver=1.0.0.alpha.5.1.r4.g5cb9f6e
+pkgrel=1
 pkgdesc="Cosmic workspaces"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-workspaces-epoch"
@@ -19,8 +19,10 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/pop-os/cosmic-workspaces-epoch.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/pop-os/cosmic-workspaces-epoch.git'
+        'lto.patch')
+sha256sums=('SKIP'
+            '5fb1f22d8d5a02a63f910db294edc78395f6426507196c88102a98e4378c073e')
 
 pkgver() {
   cd "${pkgname%-git}-epoch"
@@ -29,6 +31,10 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}-epoch"
+
+  # use thin LTO profile
+  patch -Np1 -i ../lto.patch
+
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }

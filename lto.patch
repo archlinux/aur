@@ -1,0 +1,11 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 57224a8..67becea 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -45,3 +45,6 @@ mock-backend = []
+ [profile.dev]
+ # Not usable at opt-level 0, at least with software renderer
+ opt-level = 1
++
++[profile.release]
++lto = "thin"

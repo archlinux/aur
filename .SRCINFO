@@ -1,7 +1,7 @@
 pkgbase = cosmic-workspaces-git
 	pkgdesc = Cosmic workspaces
-	pkgver = 1.0.0.alpha.2.r0.g70d6c41
-	pkgrel = 2
+	pkgver = 1.0.0.alpha.5.1.r4.g5cb9f6e
+	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-workspaces-epoch
 	arch = x86_64
 	arch = aarch64
@@ -16,6 +16,8 @@ pkgbase = cosmic-workspaces-git
 	provides = cosmic-workspaces
 	conflicts = cosmic-workspaces
 	source = git+https://github.com/pop-os/cosmic-workspaces-epoch.git
+	source = lto.patch
 	sha256sums = SKIP
+	sha256sums = 5fb1f22d8d5a02a63f910db294edc78395f6426507196c88102a98e4378c073e
 
 pkgname = cosmic-workspaces-git
