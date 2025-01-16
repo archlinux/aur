@@ -7,11 +7,7 @@ pkgbase = alwo
 	license = MIT
 	depends = python
 	depends = wmctrl
-	source = alwo
-	source = config
-	source = LICENSE
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = alwo-1.0.0.tar.xz
+	sha256sums = cd4278748d0a9e8509d1bc364bf2b8bff4359608b6d1544e313a6ef1d171bdc3
 
 pkgname = alwo
