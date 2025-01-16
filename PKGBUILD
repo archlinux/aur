@@ -22,7 +22,7 @@ package() {
 	ln -s /usr/bin/java "$pkgdir/opt/$pkgname/pack/jre/mac/bin/java"
 
 	# Start script
-	echo """!/usr/bin/env bash
+	echo """#!/usr/bin/env bash
 electron ./resources/app
 """ > "$pkgdir/opt/$pkgname/alipay-keytool"
 	chmod +x "$pkgdir/opt/$pkgname/alipay-keytool"
