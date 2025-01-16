@@ -1,0 +1,21 @@
+pkgbase = brother-mfc-6490cw
+	pkgdesc = LPR and CUPS drivers for Brother MFC-6400CW
+	pkgver = 20250115
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadlist.aspx?c=us&lang=en&prod=mfc6490cw_all&os=128
+	install = brother-mfc-6490cw.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = perl
+	makedepends = a2ps
+	makedepends = gcc
+	depends = lib32-libcups
+	depends = ghostscript
+	optdepends = brscan3: Scanner support
+	source = https://download.brother.com/welcome/dlf006180/mfc6490cwlpr-1.1.2-2.i386.deb
+	source = https://download.brother.com/welcome/dlf006182/mfc6490cwcupswrapper-1.1.2-2.i386.deb
+	sha512sums = 8e98bc8db5e87cb3698580eac9339c2c980a1bc578a1faf58b87a0a7692a61edd75a025f6405a8bbd3da8548ef5a07aac2dd5b6c48b7d025a770fb7a4e46a1c0
+	sha512sums = 7e9888de7ef00697dd914c75e403f1c87d43377241d0f7828220a7d3e5af54ae4cd7d3c0a7bf15ca37376293797e4de75018b158920530bb2bdc96615d75e71d
+
+pkgname = brother-mfc-6490cw
