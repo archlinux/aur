@@ -1,35 +1,47 @@
-# Maintainer: Maxime Vincent <maxime.vince@gmail.com>
+# Maintainer: a821 at (nospam) mail de
+# Contributor: David Runge <dvzrv@archlinux.org>
+# Contributor: Maxime Vincent <maxime.vince@gmail.com>
 
-_pkgname=wolfssl
-pkgname=${_pkgname}-git
-pkgver=20170824.73b8be8f
-pkgrel=2
-pkgdesc='A small, fast, portable implementation of TLS/SSL for embedded devices to the cloud. (formerly CyaSSL) '
-arch=(i686 x86_64)
-license=(GPL)
-depends=('bash')
-makedepends=('git')
+pkgname=wolfssl-git
+pkgver=5.7.6.r44.ge76186f06
+pkgrel=1
+pkgdesc='Lightweight, portable, C-language-based SSL/TLS library'
+arch=('x86_64')
+license=('GPL-2.0-or-later')
+depends=('glibc')
+makedepends=('cmake' 'git')
 url='https://www.wolfssl.com/'
 source=(git+https://github.com/wolfSSL/wolfssl.git)
 sha256sums=('SKIP')
+provides=("${pkgname%-git}" "libwolfssl.so")
+conflicts=("${pkgname%-git}")
 
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+pkgver() {
+  cd wolfssl
+  git describe --long --tags | sed 's/^v//;s/-stable//;s/-/.r/;s/-/./g'
+}
 
 build() {
-  cd $_pkgname
-  ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc --disable-fastmath \
-              --disable-fasthugemath --disable-bump \
-              --enable-opensslextra --enable-fortress \
-              --enable-keygen --enable-certgen \
-              --disable-debug --disable-ntru --disable-examples --enable-distro
-  make
+  cmake -B build -S wolfssl \
+    -D CMAKE_BUILD_TYPE=None \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D WOLFSSL_CURVE25519=ON \
+    -D WOLFSSL_CURVE448=ON \
+    -D WOLFSSL_ED25519=ON \
+    -D WOLFSSL_ED448=ON \
+    -D WOLFSSL_REPRODUCIBLE_BUILD=ON \
+    -D WOLFSSL_SNI=ON \
+    -D WARNING_C_FLAGS="$CFLAGS" \
+    -W no-dev
+
+  cmake --build build
+}
+
+check() {
+  ./build/wolfcrypt/test/testwolfcrypt
 }
 
 package() {
-  cd $_pkgname
-  make install DESTDIR="$pkgdir"
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$_pkgname/COPYING
-  libtool --finish /usr/lib
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 wolfssl/COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }

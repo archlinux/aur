@@ -1,17 +1,17 @@
 pkgbase = wolfssl-git
-	pkgdesc = A small, fast, portable implementation of TLS/SSL for embedded devices to the cloud. (formerly CyaSSL)
-	pkgver = 20170824.73b8be8f
-	pkgrel = 2
+	pkgdesc = Lightweight, portable, C-language-based SSL/TLS library
+	pkgver = 5.7.6.r44.ge76186f06
+	pkgrel = 1
 	url = https://www.wolfssl.com/
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
+	makedepends = cmake
 	makedepends = git
-	depends = bash
+	depends = glibc
 	provides = wolfssl
+	provides = libwolfssl.so
 	conflicts = wolfssl
 	source = git+https://github.com/wolfSSL/wolfssl.git
 	sha256sums = SKIP
 
 pkgname = wolfssl-git
-
