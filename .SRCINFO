@@ -1,14 +1,16 @@
 pkgbase = re2c-git
-	pkgdesc = lexer generator for C/C++ http://re2c.org
-	pkgver = 1.1.1_253_ga6cde618
+	pkgdesc = Lexer generator for C, C++, D, Go, Haskell, Java, JS, OCaml, Python, Rust, V and Zig
+	pkgver = 4.0.2.r19.ggb8406137d
 	pkgrel = 1
-	url = http://re2c.org
+	url = https://re2c.org
 	arch = x86_64
-	license = custom
+	license = custom:PublicDomain
+	makedepends = git
+	makedepends = python
+	depends = gcc-libs
 	provides = re2c
 	conflicts = re2c
-	source = git://github.com/skvadrik/re2c
+	source = git+https://github.com/skvadrik/re2c
 	sha1sums = SKIP
 
 pkgname = re2c-git
-

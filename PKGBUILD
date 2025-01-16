@@ -1,34 +1,39 @@
-# Maintainer: mwberry <matt@comp.uter.science>
+# Maintainer: a821 at (nospam) mail de
+# Contributor: mwberry <matt@comp.uter.science>
 
 pkgname=re2c-git
-pkgver=1.1.1_253_ga6cde618
+pkgver=4.0.2.r19.ggb8406137d
 pkgrel=1
-pkgdesc='lexer generator for C/C++ http://re2c.org'
+pkgdesc='Lexer generator for C, C++, D, Go, Haskell, Java, JS, OCaml, Python, Rust, V and Zig'
 arch=(x86_64)
-url='http://re2c.org'
-license=(custom)
-makedepends=() # base-devel is sufficient
-depends=()
-source=(git://github.com/skvadrik/re2c)
+url='https://re2c.org'
+license=('custom:PublicDomain')
+depends=('gcc-libs')
+makedepends=('git' 'python')
+source=(git+https://github.com/skvadrik/re2c)
 sha1sums=('SKIP')
 provides=('re2c')
 conflicts=('re2c')
 
 pkgver() {
-  cd "$srcdir/re2c"
-  git describe --long --tags | tr '-' '_'
+  cd "re2c"
+  git describe --long --tags | sed 's/-/.r/;s/-/.g/'
 }
 
 build() {
-  cd "$srcdir/re2c"
+  cd "re2c"
   ./autogen.sh
-  ./configure --prefix="$pkgdir/usr/"
+  ./configure --prefix=/usr
   make
 }
 
+check() {
+  make -C "re2c" check
+}
+
 package() {
-  cd "$srcdir/re2c"
-  make install
-  install -Dm644 "$srcdir/re2c/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "re2c"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
