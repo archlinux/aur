@@ -2,17 +2,17 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-compressed-tensors
 _pkgname=compressed-tensors
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="extends the safetensors format, providing a versatile and efficient way to store and manage compressed tensor data"
-arch=('x86_64')
+arch=('any')
 url='https://github.com/neuralmagic/compressed-tensors'
 license=(Apache-2.0)
-depends=(python python-pytorch python-safetensors)
+depends=(python python-pytorch python-safetensors python-pydantic python-accelerate python-numpy python-tqdm python-transformers)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 checkdepends=(jupyter-nbformat python-transformers)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/neuralmagic/compressed-tensors/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e707fcdf0b7e91691d1e5295cc237a1ba67e77de283b8e166308b3675497792c')
+sha256sums=('029499a58c48f8f289d4e951b70f4b8d3fecd2574f816c053f57fe7f1eb148cf')
 
 build() {
   cd $_pkgname-$pkgver
