@@ -19,7 +19,6 @@ _steam_runtime_code=scout
 _steam_runtime=0.20241024.105847 # latest-steam-client-general-availability
 source_x86_64=("igor-x86_64.zip::https://gms.yoyogames.com/igor_linux-x64.zip"
                "steam-runtime-sdk-$_steam_runtime_code-$_steam_runtime-x86_64.tar.gz::https://repo.steampowered.com/steamrt-images-$_steam_runtime_code/snapshots/$_steam_runtime/com.valvesoftware.SteamRuntime.Sdk-amd64%2Ci386-$_steam_runtime_code-sysroot.tar.gz")
-source_aarch64=("igor-aarch64.zip::https://gms.yoyogames.com/igor_linux-arm64.zip")
 sha256sums=('93e7d3bdfd312212f4b6b3505550f560a5575d43ff837f0825bfc5747e06faf4')
 sha256sums_x86_64=('da9b2fdb225dd764babfb5d922b8de7dd215cd21481795ab2242c650ddcd53cd'
                    'd79f2f1c1ad42c76ae46aa75c4a9641655fbe9b928b1fc645cbff45467d77359')
