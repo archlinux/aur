@@ -1,13 +1,13 @@
 pkgbase = nodejs-configurable-http-proxy
 	pkgdesc = node-http-proxy plus a REST API
-	pkgver = 4.6.2
+	pkgver = 4.6.3
 	pkgrel = 1
 	url = https://github.com/jupyterhub/configurable-http-proxy
 	arch = any
 	license = BSD
 	makedepends = npm
 	depends = nodejs
-	source = https://github.com/jupyterhub/configurable-http-proxy/archive/4.6.2.tar.gz
-	sha256sums = 85bcfa65064449e262f3289bfd8f6d3658671666e6def537a4e1cddc011baa7e
+	source = https://github.com/jupyterhub/configurable-http-proxy/archive/4.6.3.tar.gz
+	sha256sums = 770edc3a12f96f1cbdb2eda66ffbb66ccf189c61d4193e14fde38bc2010c6222
 
 pkgname = nodejs-configurable-http-proxy
