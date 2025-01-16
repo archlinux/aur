@@ -23,7 +23,7 @@ optdepends=(
 )
 conflicts=('pi-hole-standalone')
 install=$pkgname.install
-backup=('etc/pihole/adlists.list' 'etc/dnsmasq.conf' 'etc/sudoers.d/pihole')
+backup=('etc/dnsmasq.d/01-pihole.conf' 'etc/pihole/adlists.list' 'etc/dnsmasq.conf' 'etc/sudoers.d/pihole')
 
 source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/refs/tags/v$pkgver.tar.gz
 	    $pkgname-admin-$_wwwpkgver.tar.gz::https://github.com/$_pkgname/$_wwwpkgname/archive/refs/tags/v$_wwwpkgver.tar.gz
