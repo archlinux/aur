@@ -1,7 +1,7 @@
 pkgbase = translate-toolkit
 	pkgdesc = A toolkit to convert between various different translation formats, help process and validate localisations
 	pkgver = 3.14.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://toolkit.translatehouse.org/
 	arch = any
 	license = GPL-2.0-or-later
@@ -12,6 +12,7 @@ pkgbase = translate-toolkit
 	depends = bash
 	depends = python-lxml
 	depends = python-ruamel-yaml
+	depends = python-cwcwidth
 	optdepends = gaupol: for po2sub
 	optdepends = python-chardet: encoding detector
 	optdepends = python-cheroot: for TM Server

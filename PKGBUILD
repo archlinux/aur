@@ -5,12 +5,12 @@
 
 pkgname=translate-toolkit
 pkgver=3.14.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A toolkit to convert between various different translation formats, help process and validate localisations"
 arch=('any')
 url="https://toolkit.translatehouse.org/"
 license=('GPL-2.0-or-later')
-depends=('bash' 'python-lxml' 'python-ruamel-yaml')
+depends=('bash' 'python-lxml' 'python-ruamel-yaml' 'python-cwcwidth')
 makedepends=('python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('gaupol: for po2sub'
             'python-chardet: encoding detector'
