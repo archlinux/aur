@@ -1,6 +1,6 @@
 pkgbase = mimic-bpf-git
 	pkgdesc = eBPF UDP -> TCP obfuscator
-	pkgver = 0.6.0.r2.d851ddf
+	pkgver = 0.6.3.r2.5c8cf13
 	pkgrel = 1
 	url = https://github.com/hack3ric/mimic
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = mimic-bpf-git
 	makedepends = ruby-ronn-ng
 	makedepends = libbpf
 	makedepends = libffi
+	makedepends = libxdp
 	source = git+https://github.com/hack3ric/mimic#branch=master
 	b2sums = SKIP
 
@@ -21,14 +22,15 @@ pkgname = mimic-bpf-git
 	depends = gcc-libs
 	depends = libbpf
 	depends = libffi
-	depends = mimic-bpf-modules=0.6.0.r2.d851ddf
+	depends = mimic-bpf-modules=0.6.3.r2.5c8cf13
+	optdepends = libxdp: Load multiple XDP programs on one network interface
 	provides = mimic-bpf
 	conflicts = mimic-bpf
 
 pkgname = mimic-bpf-dkms-git
 	pkgdesc = eBPF UDP -> TCP obfuscator - DKMS module
 	depends = dkms
-	provides = mimic-bpf-modules=0.6.0.r2.d851ddf
+	provides = mimic-bpf-modules=0.6.3.r2.5c8cf13
 	provides = mimic-bpf-dkms
-	conflicts = mimic-bpf-modules=0.6.0.r2.d851ddf
+	conflicts = mimic-bpf-modules=0.6.3.r2.5c8cf13
 	conflicts = mimic-bpf-dkms

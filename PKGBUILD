@@ -3,13 +3,13 @@
 _pkgname=mimic
 _pkgbase=$_pkgname-bpf
 pkgname=($_pkgbase-git $_pkgbase-dkms-git)
-pkgver=0.6.0.r2.d851ddf
+pkgver=0.6.3.r2.5c8cf13
 pkgrel=1
 pkgdesc="eBPF UDP -> TCP obfuscator"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/hack3ric/$_pkgname"
 license=('GPL-2.0-only')
-makedepends=('git' 'clang' 'bpf' 'ruby-ronn-ng' 'libbpf' 'libffi')
+makedepends=('git' 'clang' 'bpf' 'ruby-ronn-ng' 'libbpf' 'libffi' 'libxdp')
 source=("git+https://github.com/hack3ric/$_pkgname#branch=master")
 b2sums=('SKIP')
 
@@ -21,10 +21,10 @@ pkgver() {
 prepare() {
   cd $_pkgname
   sed install/mimic@.service.in \
-		-e 's|@@MIMIC_EXEC@@|/usr/bin/mimic|' \
-		-e 's|@@MIMIC_CONFIG_PATH@@|/etc/mimic|' \
+    -e 's|@@MIMIC_EXEC@@|/usr/bin/mimic|' \
+    -e 's|@@MIMIC_CONFIG_PATH@@|/etc/mimic|' \
     -e 's|@@MIMIC_RUNTIME_DIR@@|mimic|' \
-		> install/mimic@.service
+    > install/mimic@.service
   sed kmod/dkms.conf.in \
     -e 's|@@EXTRA_OPTS@@||' \
     > kmod/dkms.conf
@@ -32,17 +32,17 @@ prepare() {
 
 build() {
   cd $_pkgname
-  make MODE=release build-cli generate-manpage
+  make MODE= build-cli generate-manpage
 }
 
 package_mimic-bpf-git() {
   depends=('glibc' 'gcc-libs' 'libbpf' 'libffi' $_pkgbase-modules=$pkgver)
+  optdepends=('libxdp: Load multiple XDP programs on one network interface')
   provides=($_pkgbase)
   conflicts=($_pkgbase)
 
   install -Dm755 "$srcdir/$_pkgname/out/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 "$srcdir/$_pkgname/out/$_pkgname.1.gz" "$pkgdir/usr/share/man/man1/$_pkgname.1.gz"
-  install -Dm644 "$srcdir/$_pkgname/install/eth0.conf.example" "$pkgdir/etc/mimic/eth0.conf.example"
   install -Dm644 "$srcdir/$_pkgname/install/$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
   install -Dm644 "$srcdir/$_pkgname/install/$_pkgname@.service" "$pkgdir/usr/lib/systemd/system/$_pkgname@.service"
 }
