@@ -1,12 +1,16 @@
 pkgbase = tauon-music-box
 	pkgdesc = A modern music player
 	pkgver = 7.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tauonmusicbox.rocks
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = pkg-config
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-pillow
 	depends = python-pylast
 	depends = python-pysdl2
