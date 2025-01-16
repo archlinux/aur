@@ -1,34 +1,40 @@
-# Maintainer: Claudio d'Angelis <claudiodangelis at gmail dot com>
-pkgname=toggl-bin
-pkgver=7.4.7
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+
+_pkgauthor=sachaos
+_pkgname=toggl
+pkgname=${_pkgname}-bin
+pkgver=0.6.1
 pkgrel=1
-pkgdesc="Free Time Tracking Software which is insanely easy to use. (Unofficial Binary)"
+pkgdesc='Toggl CLI Client, written in Golang.'
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64')
-url="https://toggl.com"
-license=('BSD')
-install=${pkgname}.install
-source=(
-	"https://github.com/toggl/toggldesktop/releases/download/v7.4.7/toggldesktop_linux_x86_64-7_4_7.tar.gz"
-	"toggl.desktop"
-)
-md5sums=(
-	"7bba5662b5fae80d32fee8a8fbb63bcf"
-	"8c12ccdabee1dac4d6bec24cc5b9f5d5"
-)
+license=('MIT')
+depends=('glibc')
+makedepends=('help2man')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
+        "README-${pkgver}.md::${_urlraw}/README.md")
+source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64.tar.gz")
+sha256sums=('d570f605a0fcedf7c47c390807dc37a0ffbbce5e291c8ce4c684044ede428c6f'
+            '7bcd6b3e37d36b8b4f19f24f728c36e474e1b6640bb73b29e636165d85cc86a0')
+sha256sums_x86_64=('5340563b946763bed7f4145171396519721adb7dda654bce4788d013396aebae')
+
+build() {
+  cd "${srcdir}/" || exit
+
+  help2man ./${_pkgname} --output "MAN-${pkgver}.1" --no-info
+  gzip "MAN-${pkgver}.1"
+}
 
 package() {
-	cd "${srcdir}"
-	install -dm755 "${pkgdir}/opt/"
-	chmod -R 755 "toggldesktop"
-	chmod +x "toggldesktop/TogglDesktop.sh"
-	cp -r "toggldesktop" "${pkgdir}/opt/toggldesktop"
-	chmod -R 755 "${pkgdir}/opt/toggldesktop"
-	for res in 1024x1024 256x256 128x128 96x96 64x64 48x48 32x32 24x24 16x16; do
-    	install -dm755 "${pkgdir}/usr/share/icons/hicolor/${res}/apps"
-    	ln -s "/opt/toggldesktop/icons/${res}/toggldesktop.png" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/toggldesktop.png"
-  	done
-  	install -dm755 "${pkgdir}/usr/share/applications"
-  	install -Dm644 "toggl.desktop" "${pkgdir}/usr/share/applications/toggl.desktop"
-  	install -dm755 "${pkgdir}/usr/bin"
-  	ln -s "/opt/toggldesktop/TogglDesktop.sh" "${pkgdir}/usr/bin/toggl"
+  cd "${srcdir}/" || exit
+
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+  install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+  install -Dm644 "MAN-${pkgver}.1.gz" "${pkgdir}/usr/share/man/man1/${_pkgname}.1.gz"
 }
