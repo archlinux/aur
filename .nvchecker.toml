@@ -1,0 +1,5 @@
+[dataspell-eap]
+source = 'regex'
+url = 'https://data.services.jetbrains.com/products?code=DS&release.type=eap'
+encoding = 'utf8'
+regex = 'dataspell-([\d.]+).tar.gz'
