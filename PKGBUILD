@@ -16,7 +16,7 @@ source=(
     "warp-terminal-pacman-repo-install"
 )
 sha256sums=(
-            '82dceb7a370d4de5a6c3bea45522ff544577aa2a5d935d787fc63e341bd379e5'
+            'b9666f8d73eca113e081eb0939c528df45223060c6a8f067be4f7b4f342f0c69'
            )
 
 install="warp-terminal-pacman-repo-install"

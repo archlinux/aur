@@ -9,8 +9,8 @@ _pgp_key_name="linux-maintainers@warp.dev"
 
 _do_install() {
     _do_remove && \
-    pacman-key -r "linux-maintainers@warp.dev" --keyserver hkp://keys.openpgp.org:80 && \
-    pacman-key --lsign-key "linux-maintainers@warp.dev" && \
+    pacman-key -r "${_pgp_key_name}" --keyserver hkp://keys.openpgp.org:80 && \
+    pacman-key --lsign-key "${_pgp_key_name}" && \
     echo '[warpdotdev]
 Server = https://releases.warp.dev/linux/pacman/\$repo/\$arch' >> /etc/pacman.conf && \
     pacman -Sy --noconfirm warp-terminal ||  echo '
