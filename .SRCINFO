@@ -1,6 +1,6 @@
 pkgbase = python-langchain-core
 	pkgdesc = Building applications with LLMs through composability
-	pkgver = 0.3.29
+	pkgver = 0.3.30
 	pkgrel = 1
 	url = https://github.com/langchain-ai/langchain/tree/master/libs/core
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-langchain-core
 	depends = python-pyyaml
 	depends = python-tenacity
 	depends = python-typing_extensions
-	source = langchain-core-0.3.29.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain_core/langchain_core-0.3.29.tar.gz
-	sha256sums = 773d6aeeb612e7ce3d996c0be403433d8c6a91e77bbb7a7461c13e15cfbe5b06
+	source = langchain-core-0.3.30.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain_core/langchain_core-0.3.30.tar.gz
+	sha256sums = 0f1281b4416977df43baf366633ad18e96c5dcaaeae6fcb8a799f9889c853243
 
 pkgname = python-langchain-core
