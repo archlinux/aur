@@ -1,0 +1,12 @@
+pkgbase = terraform1
+	pkgdesc = HashiCorp tool for building and updating infrastructure as code idempotently
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.terraform.io/
+	arch = x86_64
+	license = MPL
+	makedepends = go
+	source = terraform-1.0.0.tar.gz::https://github.com/hashicorp/terraform/archive/refs/tags/v1.0.0.tar.gz
+	sha512sums = 93fd3a00b2d016d45abe1cf82acbf7065bef5c3216c36d3e04079b681aca9515f9f3a589aedff3284ee62a97f43bbbf806584f2427ed87679a0daa40502d50bd
+
+pkgname = terraform1
