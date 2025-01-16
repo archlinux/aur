@@ -3,7 +3,7 @@
 # Contributor: The Tango Controls community
 #              (https://tango-controls.org) <info@tango-controls.org>
 
-pkgname=tango95-cpp
+pkgname=tango9-cpp
 _pkgname=cppTango
 _pkgver="9.5.0"
 pkgver="9.5.0"
