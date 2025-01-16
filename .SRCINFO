@@ -11,6 +11,6 @@ pkgbase = obs-plugin-waveform-bin
 	options = !strip
 	options = emptydirs
 	source = https://github.com/phandasm/waveform/releases/download/v1.8.1/Waveform_v1.8.1_Ubuntu_x86_64.deb
-	sha256sums = 71e67a96dd5986aea4c433d10811119aa7939fa6851d30b09248c56aea34a11d
+	sha256sums = 32fa2543b6c5f8265a210aaee3153538b2feeec8ef48865dab02201874eda025
 
 pkgname = obs-plugin-waveform-bin
