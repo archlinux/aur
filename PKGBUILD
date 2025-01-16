@@ -2,7 +2,7 @@
 
 pkgname=terraform1
 _pkgname=terraform
-pkgver=1.0.0
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="HashiCorp tool for building and updating infrastructure as code idempotently"
 url="https://www.terraform.io/"
@@ -10,7 +10,7 @@ arch=("x86_64")
 license=("MPL")
 makedepends=("go")
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/hashicorp/terraform/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('93fd3a00b2d016d45abe1cf82acbf7065bef5c3216c36d3e04079b681aca9515f9f3a589aedff3284ee62a97f43bbbf806584f2427ed87679a0daa40502d50bd')
+sha512sums=('c69489c22625e94dca3e523a4da11e854523a4e5d1fa46951388eff2f5c391fef4437cb77f67acb1a5851f4a3a662640ad33cd3e6cde9853c4b7089945be8226')
 
 build() {
 	cd "$_pkgname-$pkgver"
