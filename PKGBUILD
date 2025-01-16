@@ -11,7 +11,7 @@
 _bldtype=Release
 _mozc_commit=ba70ee30b664b79b1268a9839268734d330a9ed7
 _bcr_commit=a23aad4ccaffae8667989c9ef499321d1d1ba862
-_dict_to_mozc_commit=c6cf7fabc0500931dc55526d74830d1d52314f02
+_dict_to_mozc_commit=23226fd43650c2822b85e3c36142b486ef9dc147
 _branch=fcitx
 # Sudachi Dictionary
 _sudachidict_date=20241021
@@ -67,7 +67,7 @@ sha512sums=('4be4c72bffd8498f0235a64314931db7fba6f0d9f53232d01365216d12150128ee5
             '91b878735e767ddf6f1fe3de61486c1e78936a0f683855e7c34a21c711f405899d3de369d2ff0a1910d65b1afc8c225d8d8b9398cf98d760f3afcfe42644fca2'
             'e0b5744660f195daae952bb505965d811517aaed9d0838fdbe19dd9b3beddb0c2c003689e46773005d66c7a72f482063853353ba061c76f2bd5bf61cfa4a63e4'
             '504066a457f77b510f492626c919b6fd7b61f77948bdddef0f7e43ae09bb4bf03cea7000fba91ae0123a94d3b39cac6dfac2010126849afe0a183727fe7b0fc1'
-            'a3832e7b980d70a27edc8a7b3d128b1165d484c11d607ca7ac5a2f662c013df20285859544cff9e44356d5fe3325c7ec1185c50f9e764622ec0d64449a5a26aa'
+            'dbdcd5fe2c63897242dbe71a7ad378c6d348f64432b04346e3e91a5127628063f1fd9933ffcde05f7f774f2fd89fe28ea99d09dbabd9dc31e9e9cc2864ab52d4'
             '807b68f18e0f9093ccca368fcd4a209a0723167be7aa48e04217f053bc0911399f3bb86b95cb118e64bb9f53f5242c9c51bcff14f81d94ed68db2448c9386b32'
             'f3ea37e785d604d614b8fa27bf03d1b669240b7c28c293d953a3ac40b6faff56893b42f8e082ccc7723edb5b27a4613a99343477a34fc76afd458912025555e9'
             '384a8c55e928323a4a6b3f83a6845199c67cd3766ca586ea936c41aeb6728020b2430daeb88de3cc19413b6111db5971552f8a538826d3718ab33b7281226ff8'
@@ -154,9 +154,9 @@ build() {
 
   export USE_BAZEL_VERSION=8.0.0
   LDFLAGS="${LDFLAGS} -fuse-ld=mold"
-  
+
   # The bazel rules have changed, so the cache will be deleted.
-  #bazel clean --expunge
+  bazel clean --expunge
 
   ../scripts/build_fcitx5_bazel \
       --config release_build \
