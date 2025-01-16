@@ -8,7 +8,7 @@ pkgver="20250115"
 pkgrel=1
 lprver="1.1.2-2"
 cwver="1.1.2-2"
-pkgdesc="LPR and CUPS drivers for Brother MFC-6400CW"
+pkgdesc="LPR and CUPS drivers for Brother MFC-6490CW printer"
 url="https://support.brother.com/g/b/downloadlist.aspx?c=us&lang=en&prod=mfc${model}_all&os=128"
 arch=('i686' 'x86_64')
 license=('GPL2')

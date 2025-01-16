@@ -1,5 +1,5 @@
 pkgbase = brother-mfc-6490cw
-	pkgdesc = LPR and CUPS drivers for Brother MFC-6400CW
+	pkgdesc = LPR and CUPS drivers for Brother MFC-6490CW printer
 	pkgver = 20250115
 	pkgrel = 1
 	url = https://support.brother.com/g/b/downloadlist.aspx?c=us&lang=en&prod=mfc6490cw_all&os=128
