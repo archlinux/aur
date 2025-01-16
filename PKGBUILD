@@ -9,6 +9,7 @@ arch=(x86_64)
 url='https://chamsyslighting.com/products/magicq'
 license=(custom)
 groups=()
+conflicts=(magicq-beta)
 options=('!strip') # Binaries are already stripped.
 
 _pkgver="${pkgver//[^[:alnum:]]/_}"

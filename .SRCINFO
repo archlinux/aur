@@ -5,6 +5,7 @@ pkgbase = magicq
 	url = https://chamsyslighting.com/products/magicq
 	arch = x86_64
 	license = custom
+	conflicts = magicq-beta
 	options = !strip
 	source = http://files.magicq.co.uk/v1_9_6_4/magicq_ubuntu_v1_9_6_4.deb
 	sha256sums = 25912d996bcd48a68327a768eb90f3c5dd93503ef1833b1f5c5a7f5fadaf5766
