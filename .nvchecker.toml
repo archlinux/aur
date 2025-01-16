@@ -1,0 +1,5 @@
+[goland-eap]
+source = 'regex'
+url = 'https://data.services.jetbrains.com/products?code=GO&release.type=eap'
+encoding = 'utf8'
+regex = 'goland-([\d.]+).tar.gz'
