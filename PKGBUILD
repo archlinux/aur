@@ -1,16 +1,16 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=jxl-oxide
-pkgver=0.8.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Pure Rust implementation of JPEG XL decoder"
 arch=('x86_64')
 url="https://github.com/tirr-c/jxl-oxide"
 license=('Apache-2.0 AND MIT')
-depends=('glibc' 'gcc-libs' 'lcms2')
+depends=('glibc' 'gcc-libs' 'lcms2' 'ffmpeg')
 makedepends=('cargo')
 provides=()
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('7f412ffa507492cafd1f861150037b3e31decdcf4a6b53b4d37353defee1ded8')
+sha256sums=('035ebefb13e7dce5cc9517ada36b5e677df0d5da7c613695ab82983f9be96f0f')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver/crates/${pkgname}-cli"
@@ -28,4 +28,5 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver/crates/${pkgname}-cli"
 	install -Dm755 "target/release/${pkgname}" "$pkgdir/usr/bin/${pkgname}"
+	install -Dm655 "$srcdir/$pkgname-$pkgver"/LICENSE-{MIT,APACHE} -t "$pkgdir/usr/share/licenses/$pkgname"
 }
