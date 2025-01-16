@@ -62,6 +62,7 @@ pkgname = ibus-mozc-with-jp-dict
 	provides = ibus-mozc=2.31.5712.102
 	conflicts = fcitx
 	conflicts = fcitx-configtool
+	conflicts = ibus-mozc
 	conflicts = fcitx-qt5
 	conflicts = fcitx-qt6
 	conflicts = fcitx-mozc
@@ -79,6 +80,7 @@ pkgname = fcitx5-mozc-with-jp-dict
 	optdepends = fcitx5-configtool
 	provides = fcitx5-mozc=2.31.5712.102
 	conflicts = fcitx-mozc
+	conflicts = fcitx5-mozc
 	conflicts = fcitx
 	conflicts = fcitx-qt5
 	conflicts = fcitx-qt6
@@ -91,3 +93,4 @@ pkgname = emacs-mozc-with-jp-dict
 	depends = glibc
 	depends = gcc-libs
 	provides = emacs-mozc=2.31.5712.102
+	conflicts = emacs-mozc

@@ -226,7 +226,7 @@ package_fcitx5-mozc-with-jp-dict() {
   depends=('fcitx5' 'fcitx5-qt' 'hicolor-icon-theme')
   optdepends=('fcitx5-configtool')
   provides=("fcitx5-mozc=${pkgver}")
-  conflicts=('fcitx-mozc' 'fcitx' 'fcitx-qt5' 'fcitx-qt6' 'ibus-mozc')
+  conflicts=('fcitx-mozc' 'fcitx5-mozc' 'fcitx' 'fcitx-qt5' 'fcitx-qt6' 'ibus-mozc')
   install=fcitx5-mozc.install
 
   export PREFIX="$pkgdir/usr"
@@ -245,7 +245,7 @@ package_ibus-mozc-with-jp-dict() {
   pkgdesc="Ibus engine module for Mozc(the Open Source Edition of Google Japanese Input) with SudachiDict and MeCab UniDic Neologd and MeCab IpaDic Neologd"
   depends=('ibus>=1.4.1' "qt6-base" 'libibus')
   provides=("ibus-mozc=${pkgver}")
-  conflicts=('fcitx' 'fcitx-configtool' 'fcitx-qt5' 'fcitx-qt6' 'fcitx-mozc' 'fcitx5' 'fcitx5-configtool' 'fcitx5-qt' 'fcitx5-mozc')
+  conflicts=('fcitx' 'fcitx-configtool' 'ibus-mozc' 'fcitx-qt5' 'fcitx-qt6' 'fcitx-mozc' 'fcitx5' 'fcitx5-configtool' 'fcitx5-qt' 'fcitx5-mozc')
 
   export _bldtype
   cd "${srcdir}/mozc/src" || exit
@@ -269,6 +269,7 @@ package_emacs-mozc-with-jp-dict() {
   license=('BSD-3-Clause')
   depends=("emacs" glibc gcc-libs)
   provides=("emacs-mozc=${pkgver}")
+  conflicts=('emacs-mozc')
 
   export _bldtype
   cd "${srcdir}/mozc/src" || exit
