@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=rtpengine-kernel-dkms
-pkgver=13.1.1.2
+pkgver=13.1.1.4
 pkgrel=1
 pkgdesc="Kernel module for rtpengine media proxy"
 url="https://github.com/sipwise/rtpengine"
@@ -11,7 +11,7 @@ depends=('dkms')
 optdepends=('linux: The Linux kernel'
             'linux-headers: Header files and scripts for building modules for Linux kernel')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/mr${pkgver}.tar.gz")
-sha256sums=('d8b84de01e3ad8d5d2569d5cda51a065abb7d8e6a5ecfb83e9ad86c53fe77a1f')
+sha256sums=('21dd40ee7a18d5df904e821f475d55ac2eb51b993576876084784a56c9479bc2')
 
 prepare() {
   cd "rtpengine-mr${pkgver}"
