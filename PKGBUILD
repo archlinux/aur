@@ -1,6 +1,6 @@
 pkgname=nzportable-bin
-pkgver=2.0.0indev20250102072057
-pkgrel=2
+pkgver=2.0.0indev20250115072021
+pkgrel=1
 scriptver=1.0.6.1
 pkgdesc='Nazi Zombies: Portable, a Call of Duty: Zombies "de-make" powered by various enhanced forks of the Quake engine'
 arch=('x86_64' 'i686' 'aarch64' 'armv7l')

@@ -1,7 +1,7 @@
 pkgbase = nzportable-bin
 	pkgdesc = Nazi Zombies: Portable, a Call of Duty: Zombies "de-make" powered by various enhanced forks of the Quake engine
-	pkgver = 2.0.0indev20250102072057
-	pkgrel = 2
+	pkgver = 2.0.0indev20250115072021
+	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/nzp
 	arch = x86_64
 	arch = i686
@@ -15,4 +15,4 @@ pkgbase = nzportable-bin
 	sha256sums = 1e12a4017f50ef12c7bf7b5e9603c7608b83fd3690ede4b88bf62d4ef85bd1c2
 
 pkgname = nzportable-bin
-	url = https://gitlab.com/linuxbombay/nzp/binaries/2.0.0indev20250102072057/-/raw/main/
+	url = https://gitlab.com/linuxbombay/nzp/binaries/2.0.0indev20250115072021/-/raw/main/
