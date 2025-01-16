@@ -4,7 +4,7 @@
 # Contributor: ant32 < antreimer at gmail dot com >
 # Contributor: Filip Brcic < brcha at gna dot org >
 
-_pkgver=1.1.1v
+_pkgver=1.1.1w
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-openssl-1.1
@@ -21,7 +21,7 @@ makedepends=('mingw-w64-gcc'
 conflicts=('mingw-w64-openssl<3')
 options=('!strip' 'staticlibs' '!buildflags' '!lto')
 source=("https://www.openssl.org/source/openssl-${_pkgver}.tar.gz"{,.asc})
-sha256sums=('d6697e2871e77238460402e9362d47d18382b15ef9f246aba6c7bd780d38a6b0'
+sha256sums=('cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8'
             'SKIP')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
               '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C'
