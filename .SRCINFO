@@ -1,0 +1,20 @@
+pkgbase = juledoc-git
+	pkgdesc = Jule code documentation generator
+	pkgver = rdfd441e
+	pkgrel = 1
+	url = https://github.com/julelang/juledoc
+	arch = x86_64
+	arch = aarch64
+	arch = i386
+	groups = jule
+	license = BSD-3-Clause
+	makedepends = julec
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	provides = juledoc
+	conflicts = juledoc
+	source = git+https://github.com/julelang/juledoc.git
+	sha256sums = SKIP
+
+pkgname = juledoc-git
