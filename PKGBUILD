@@ -5,27 +5,26 @@
 
 pkgname=python-biopython
 _pkgname=biopython
-pkgver=1.84
-pkgrel=5
+pkgver=1.85
+pkgrel=1
 pkgdesc="Freely available Python tools for computational molecular biology"
 arch=('x86_64')
 url="http://www.biopython.org"
-license=('custom')
+license=('LicenseRef-Biopython License')
 makedepends=('python-setuptools')
 checkdepends=('python-scipy' 'python-rdflib' 'python-igraph' 'python-reportlab' 'python-networkx' 'python-mmtf' 'python-matplotlib' 'python-coverage')
-depends=('python-numpy')
-optdepends=('python-mysql-connector: for BioSQL module')
+depends=('python-numpy' 'glibc' 'python' 'python-scipy' 'python-pillow')
+# optdepends from https://github.com/biopython/biopython?tab=readme-ov-file#optional-dependencies
+optdepends=('python-mysql-connector: for BioSQL module'
+            'python-reportlab: for graph generation'
+            'python-networkx: for certain niche functions in Bio.Phylo module'
+            'python-matplotlib: to plot phylogenetic trees.'
+            'python-rdflib: CDAO parser under Bio.Phylo module'
+           )
 source=("http://www.biopython.org/DIST/${_pkgname}-${pkgver}.tar.gz"
-        "compat.patch::https://patch-diff.githubusercontent.com/raw/biopython/biopython/pull/4706.patch")
-sha512sums=('cadf82959626b2b9f4482757d95d7c4db262d3e1e4a007567a2ed7f1f4114a0d6543886a4971dffbe0ff43579aa7e0c3b7132d8b5e58022e8ddf0b13dbf07f52'
-            '8bd596602458a07857f4bbaf27dab71c6fc563417c68cefb98de2cbb9607eca5748546ae34c94e84a9f2620f31d6a93ffb80e7477c97fc324e01fdbd005f9352')
+       )
+sha512sums=('a9bff4fdf34f71f74f35a9bbf25887d6fcf84622d77854e11b0da418b6ff88c7d6e49474d82ca2e4da782ea07cc28f03b43b219b798a806ab02e11af21cd9dab')
 options=(!debug)
-
-prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  # python 3.13 compability patch until biopython 1.85 is released
-  patch -p1 < $srcdir/compat.patch
-}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
