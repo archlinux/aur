@@ -1,13 +1,13 @@
 pkgbase = r-bit64
 	pkgdesc = A S3 Class for Vectors of 64bit Integers
-	pkgver = 4.5.2
+	pkgver = 4.6.0.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=bit64
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = r-bit
-	source = https://cran.r-project.org/src/contrib/bit64_4.5.2.tar.gz
-	sha256sums = a321563fd8830800ad51697055a2e580cda4fb84102420e4caeae44a5b6ac72e
+	source = https://cran.r-project.org/src/contrib/bit64_4.6.0-1.tar.gz
+	sha256sums = fbc0ce142fc22c9a9fdcbac930a814dfb648563d4b6a77dff739c23cc81319b7
 
 pkgname = r-bit64
