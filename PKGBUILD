@@ -18,8 +18,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 pkgver() {
-    cd "$_pkgname"
-    echo "r$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+  echo "r$(git rev-parse --short HEAD)"
 }
 
 build() {
