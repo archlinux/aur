@@ -1,0 +1,14 @@
+pkgbase = getquotes-git
+	pkgdesc = A simple command-line tool to fetch random quotes (built from source).
+	pkgver = r1.0
+	pkgrel = 1
+	url = https://github.com/MuntasirSZN/getquotes
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = cargo
+	source = git+https://github.com/MuntasirSZN/getquotes.git
+	sha256sums = SKIP
+
+pkgname = getquotes-git
