@@ -151,9 +151,8 @@ package_fcitx-mozc() {
   pkgdesc="Fcitx Module for Mozc(the Open Source Edition of Google Japanese Input)"
   depends=('fcitx' 'fcitx-qt6')
   optdepends=('fcitx-configtool')
-  replaces=('fcitx-mozc')
   provides=("fcitx-mozc=${pkgver}")
-  conflicts=('fcitx-mozc' 'fcitx5-mozc' 'ibus-mozc' fcitx5 fcitx5-qt fcitx5-configtool)
+  conflicts=('fcitx5-mozc' 'ibus-mozc' fcitx5 fcitx5-qt fcitx5-configtool)
 
   export PREFIX="$pkgdir/usr"
   export _bldtype
