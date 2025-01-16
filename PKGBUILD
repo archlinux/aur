@@ -8,7 +8,7 @@
 
 pkgname=xar
 _sourcetag='417.1'
-pkgver=1.8.${_sourcetag}
+pkgver=1.8.0.${_sourcetag}
 pkgrel=1
 pkgdesc='eXtensible ARchive format - apple fork'
 arch=('i686' 'x86_64')

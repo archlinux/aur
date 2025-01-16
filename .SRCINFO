@@ -1,6 +1,6 @@
 pkgbase = xar
 	pkgdesc = eXtensible ARchive format - apple fork
-	pkgver = 1.8.417.1
+	pkgver = 1.8.0.417.1
 	pkgrel = 1
 	url = http://mackyle.github.io/xar/
 	arch = i686
