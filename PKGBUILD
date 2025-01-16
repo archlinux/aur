@@ -10,9 +10,11 @@ license=('MIT')
 depends=('python' 'wmctrl')
 makedepends=()
 source=('alwo-1.0.0.tar.xz')
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('cd4278748d0a9e8509d1bc364bf2b8bff4359608b6d1544e313a6ef1d171bdc3')
 
 package() {
+    bsdtar -xvf "$srcdir/alwo-1.0.0.tar.xz" -C "$srcdir"
+    
     install -Dm755 "$srcdir/alwo" "$pkgdir/usr/bin/alwo"
     mkdir -p "$pkgdir/usr/share/alwo"
     install -Dm755 "$srcdir/config" "$pkgdir/usr/share/alwo/config"
