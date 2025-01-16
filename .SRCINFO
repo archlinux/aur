@@ -1,6 +1,6 @@
 pkgbase = qtkeychain
 	pkgdesc = Provides support for secure credentials storage
-	pkgver = 0.14.3
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/frankosterfeld/qtkeychain
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = qtkeychain
 	depends = glib2
 	depends = glibc
 	depends = org.freedesktop.secrets
-	source = git+https://github.com/frankosterfeld/qtkeychain#tag=0.14.3
-	sha256sums = 81ebbe5c9635ea144bf1f4ed47daedaaa61548fee801e487aeceec4a0c66d4f1
+	source = git+https://github.com/frankosterfeld/qtkeychain#tag=0.15.0
+	sha256sums = 0ffe67e46fa4a99da93c1f13090a7e153dfe1cee25b9ef269f85a504834360db
 
 pkgname = qtkeychain-qt5
 	depends = gcc-libs
