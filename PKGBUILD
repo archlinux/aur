@@ -28,4 +28,16 @@ electron /opt/$pkgname/resources/app
 	chmod +x "$pkgdir/opt/$pkgname/alipay-keytool"
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s /opt/$pkgname/alipay-keytool "$pkgdir/usr/bin/alipay-keytool"
+
+	# Desktop entry
+	mkdir -p "$pkgdir/usr/share/applications"
+	echo """[Desktop Entry]
+Name=支付宝开放平台密钥工具
+Comment=支付宝开放平台密钥工具
+Exec=alipay-keytool %U
+Icon=/opt/$pkgname/resources/app/static/keyToolLogo.7d74dc81.png
+Terminal=false
+Type=Application
+Categories=Development;
+""" > "$pkgdir/usr/share/applications/alipay-keytool.desktop"
 }
