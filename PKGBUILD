@@ -156,7 +156,7 @@ build() {
   LDFLAGS="${LDFLAGS} -fuse-ld=mold"
 
   # The bazel rules have changed, so the cache will be deleted.
-  bazel clean --expunge
+  #bazel clean --expunge
 
   ../scripts/build_fcitx5_bazel \
       --config release_build \
