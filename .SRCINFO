@@ -5,7 +5,7 @@ pkgbase = getquotes
 	url = https://github.com/MuntasirSZN/getquotes
 	arch = x86_64
 	license = MIT
-	source = https://github.com/MuntasirSZN/getquotes/releases/download/v0.1.0/getquotes-x86_64-unknown-linux-gnu
-	sha256sums = b4b3be084bf94c07ee25530dc30258ba1f9d748c652dd73186d4315754457b29
+	source = https://github.com/MuntasirSZN/getquotes/releases/download/v0.1.0/getquotes-x86_64-unknown-linux-gnu,https://raw.githubusercontent.com/MuntasirSZN/getquotes/refs/heads/main/LICENSE,https://raw.githubusercontent.com/MuntasirSZN/getquotes/refs/heads/main/man/getquotes.1
+	sha256sums = b4b3be084bf94c07ee25530dc30258ba1f9d748c652dd73186d4315754457b29,87f2cb73fde60ac0cfb5f572dd813a1199d542400e0e256299be5c51e3ca910f,f06280ea00ff505eafdc7eb77d9e0719875348463a604d882884efc278f98c0d
 
 pkgname = getquotes
