@@ -1,12 +1,12 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=godot3-as-bin
-pkgver=3.5.3
-pkgrel=2
+pkgver=3.6
+pkgrel=1
 pkgdesc="Advanced cross-platform 2D and 3D game engine (3.X Branch), utilize godot3-bin"
 arch=("x86_64")
 url='https://godotengine.org'
 license=('MIT')
-depends=(libglvnd libxcursor libxi libxinerama libxrandr godot3-bin) # Depends() is small due to godot binary static linking libraries
+depends=(godot3-bin)
 provides=(godot3)
 conflicts=(godot3)
 optdepends=(pipewire-alsa pipewire-pulse)
