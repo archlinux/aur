@@ -1,12 +1,12 @@
 pkgbase = megasync
 	pkgdesc = Official MEGA desktop application for syncing with MEGA Cloud Drive
-	pkgver = 5.7.0.0
+	pkgver = 5.7.1.0
 	pkgrel = 1
 	url = https://github.com/meganz/MEGAsync/
 	arch = x86_64
 	license = LicenseRef-Mega-Limited-Code-License
-	makedepends = git
 	makedepends = cmake
+	makedepends = git
 	makedepends = qt5-tools
 	depends = c-ares
 	depends = crypto++
@@ -31,12 +31,12 @@ pkgbase = megasync
 	depends = qt5-x11extras
 	depends = sqlite
 	depends = zlib
-	source = git+https://github.com/meganz/MEGAsync.git#tag=v5.7.0.0_OSX
+	source = git+https://github.com/meganz/MEGAsync.git#tag=v5.7.1.0_OSX
 	source = meganz-sdk::git+https://github.com/meganz/sdk.git
 	source = 010-megasync-freeimage-remove-obsolete-ffmpeg-macros.patch
 	source = 020-megasync-sdk-fix-cmake-dependencies-detection.patch
 	source = 030-megasync-app-fix-cmake-dependencies-detection.patch
-	sha256sums = a9741ea6051c69e1d62359d06f4d0025401002d44f1edcc43e5793a2b2418abe
+	sha256sums = 5e606c528ea02e4ee9b6a0c1d79bf9366f0396c6400cfa6a7627709e5391ebdb
 	sha256sums = SKIP
 	sha256sums = ed191eba0bf731827d546fd93383267429a8e911faf30b98bf022ad1f9ce0bcb
 	sha256sums = a2d4c9040282f51e81a9d37d9875d4a9febb1ff1f6af452210be581f0eaa63a7
