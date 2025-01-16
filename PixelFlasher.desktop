@@ -8,3 +8,4 @@ Type=Application
 StartupNotify=false
 Hidden=false
 Categories=Utility
+StartupWMClass=PixelFlasher.py
