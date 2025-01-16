@@ -1,0 +1,42 @@
+#!/bin/bash
+
+if [[ $EUID -ne 0 ]]; then
+    echo "This script requires root privileges. Re-running with sudo..."
+    exec sudo "$0" "$@"
+fi
+
+_pgp_key_name="linux-maintainers@warp.dev"
+
+_do_install() {
+    _do_remove && \
+    pacman-key -r "linux-maintainers@warp.dev" --keyserver hkp://keys.openpgp.org:80 && \
+    pacman-key --lsign-key "linux-maintainers@warp.dev" && \
+    echo '[warpdotdev]
+Server = https://releases.warp.dev/linux/pacman/\$repo/\$arch' >> /etc/pacman.conf && \
+    pacman -Sy --noconfirm warp-terminal ||  echo '
+############DONE############
+Repo configureed, please run
+    pacman -Sy warp-terminal
+to install the warp-terminal
+############DONE############
+'
+}
+
+_do_remove() {
+    awk '/^\[warpdotdev\]/ {flag=1} /^\[.*\]/ && !/\[warpdotdev\]/ {flag=0} !flag' /etc/pacman.conf > /etc/pacman.conf.new && \
+    mv /etc/pacman.conf.new /etc/pacman.conf && \
+    pacman-key -d "${_pgp_key_name}"
+}
+
+post_install() {
+    _do_install
+}
+
+post_upgrade() {
+    _do_install
+}
+
+post_remove() {
+    _do_remove
+}
+
