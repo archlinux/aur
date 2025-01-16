@@ -34,7 +34,7 @@ package() {
   install -Dm644 "dist/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname.asar"
   install -d -Dm644 "${pkgdir}/usr/share"
   chmod 755 "${pkgdir}/usr/share"
-  cp -r "release/build/linux-unpacked/${pkgname}" "${pkgdir}/usr/share"
+  cp -r "dist/linux-unpacked/${pkgname}" "${pkgdir}/usr/share"
 
   msg2 "Installing LICENSE"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
