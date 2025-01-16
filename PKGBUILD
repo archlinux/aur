@@ -25,4 +25,5 @@ package() {
 	cd "$srcdir/getquotes"
 	install -Dm755 target/release/getquotes "$pkgdir/usr/bin/getquotes"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "man/getquotes.1" "$pkgdir/usr/share/man/man1/getquotes.1"
 }
