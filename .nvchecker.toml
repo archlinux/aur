@@ -1,0 +1,5 @@
+[datagrip]
+source = 'regex'
+url = 'https://data.services.jetbrains.com/products?code=DG&release.type=release'
+encoding = 'utf8'
+regex = 'datagrip-([\d.]+).tar.gz'
