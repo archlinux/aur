@@ -1,11 +1,11 @@
 pkgbase = dida-bin
 	pkgdesc = Official Dida client, a todo list.
 	pkgver = 6.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dida365.com/home
 	arch = any
 	license = LicenseRef-Proprietary
-	depends = electron33
+	depends = electron34
 	optdepends = noto-fonts-emoji: for emoji support
 	provides = dida
 	source = dida_6.0.20.deb::https://cdn.dida365.cn/download/linux/linux_deb_x64/dida-6.0.20-amd64.deb
