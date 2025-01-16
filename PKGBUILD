@@ -3,9 +3,9 @@
 pkgname="epson-pc-fax2"
 pkgver=1.0.0
 pkgrel=2
-pkgdesc="Epson PC-FAX driver used with CUPS"
+pkgdesc="Epson PC-FAX driver 2 used with CUPS"
 arch=('i686' 'x86_64')
-url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
+url="https://download.ebz.epson.net/man/linux/pc-fax2_e.html"
 license=('custom:Epson End User Software License Agreement')
 depends=('cups' 'glibc' 'libcups')
 _pkgsrc="${pkgname}-${pkgver}"
