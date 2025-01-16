@@ -186,7 +186,6 @@ source=(
 )
 
 [[ -n "${_use_llvm_lto}" ]] && BUILD_FLAGS=("LLVM=1" "LLVM_IAS=1")
-[[ -z "${_debug_script}" ]] && BUILD_FLAGS+=("-s")
 
 export "KBUILD_BUILD_HOST=archlinux"
 export "KBUILD_BUILD_USER=${pkgbase}"
