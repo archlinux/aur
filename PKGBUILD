@@ -4,7 +4,7 @@
 pkgname='hikvision-mvs'
 pkgver=3.0.1
 _pkgdate=241128
-pkgrel=2
+pkgrel=3
 pkgdesc="Machine Vision Software by Hikvision, for their industrial cameras."
 arch=('x86_64' 'i686')
 url="https://www.hikrobotics.com/"
@@ -45,7 +45,7 @@ package() {
 	echo "Set up the SDK environment..."
 	mkdir -p ${pkgdir}/etc/udev/rules.d
 	cat > ${pkgdir}/etc/udev/rules.d/80-drivers-SDK-2bdf.rules <<__END__
-ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="2bdf", MODE="0666", GROUP="plugdev"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="2bdf", MODE="0660", TAG+="uaccess"
 __END__
 
 	echo "Create ld.so.conf"
