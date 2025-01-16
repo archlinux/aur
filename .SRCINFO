@@ -1,0 +1,19 @@
+pkgbase = d0phamine-music-player-bin
+	pkgdesc = Simple desktop music app.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/d0phamine/d0phamine-music-player
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = asar
+	depends = electron22
+	conflicts = d0phamine-music-player
+	source = d0phamine-music-player.sh
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_aarch64 = d0phamine-music-player-1.0.0-aarch64.deb::https://github.com/d0phamine/d0phamine-music-player/releases/download/1.0.0/d0phamine-music-player_1.0.0_arm64.deb
+	sha256sums_aarch64 = bfe842ce300ea7d5eedcc449653608484dff6f8c9ad77745588a0e9676911193
+	source_x86_64 = d0phamine-music-player-1.0.0-aarch64.deb::https://github.com/d0phamine/d0phamine-music-player/releases/download/1.0.0/d0phamine-music-player_1.0.0_amd64.deb
+	sha256sums_x86_64 = bfe842ce300ea7d5eedcc449653608484dff6f8c9ad77745588a0e9676911193
+
+pkgname = d0phamine-music-player-bin
