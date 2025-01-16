@@ -1,13 +1,13 @@
 pkgbase = mingw-w64-quazip-qt5
 	pkgdesc = C++ wrapper for the ZIP/UNZIP C package, Qt5 version (mingw-w64)
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stachenov.github.io/quazip/
 	arch = any
 	groups = mingw-w64-quazip
 	license = LGPL
 	makedepends = mingw-w64-cmake
-	makedepends = mingw-w64-qt5-base
+	depends = mingw-w64-qt5-base
 	options = !buildflags
 	source = https://github.com/stachenov/quazip/archive/v1.4/quazip-1.4.tar.gz
 	sha256sums = 79633fd3a18e2d11a7d5c40c4c79c1786ba0c74b59ad752e8429746fe1781dd6
