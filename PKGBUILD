@@ -2,7 +2,7 @@
 
 _pkgname="warp-terminal-pacman-repo"
 pkgname=${_pkgname}
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="This is a bootstrap script for official wap-terminal pacman repo. Please run pacman -Sy warp-terminal after install this package."
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ source=(
     "warp-terminal-pacman-repo-install"
 )
 sha256sums=(
-            'b9666f8d73eca113e081eb0939c528df45223060c6a8f067be4f7b4f342f0c69'
+            'f568f96badac08be20d9545e6e693da52accae4ff1a6ee6ffa0ef5e0b78e7e7e'
            )
 
 install="warp-terminal-pacman-repo-install"
