@@ -32,8 +32,10 @@ electron /opt/$pkgname/resources/app
 	# Desktop entry
 	mkdir -p "$pkgdir/usr/share/applications"
 	echo """[Desktop Entry]
-Name=支付宝开放平台密钥工具
-Comment=支付宝开放平台密钥工具
+Name=Alipay Key Tool
+Comment=Alipay open platform key tool
+Name[zh_CN]=支付宝开放平台密钥工具
+Comment[zh_CN]=支付宝开放平台密钥工具
 Exec=alipay-keytool %U
 Icon=/opt/$pkgname/resources/app/static/keyToolLogo.7d74dc81.png
 Terminal=false
