@@ -25,7 +25,7 @@ to install the warp-terminal
 _do_remove() {
     awk '/^\[warpdotdev\]/ {flag=1} /^\[.*\]/ && !/\[warpdotdev\]/ {flag=0} !flag' /etc/pacman.conf > /etc/pacman.conf.new && \
     mv /etc/pacman.conf.new /etc/pacman.conf && \
-    pacman-key -d "${_pgp_key_name}"
+    pacman-key -d "${_pgp_key_name}" || true
 }
 
 post_install() {

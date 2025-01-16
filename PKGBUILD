@@ -1,13 +1,14 @@
 # Maintainer: ihipop <ihipop at gmail dot com>
+
 _pkgname="warp-terminal-pacman-repo"
 pkgname=${_pkgname}
 pkgver=0.1.stable
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a bootstrap script for official wap-terminal pacman repo. Please run pacman -Sy warp-terminal after install this package."
 arch=('x86_64' 'aarch64')
 url="https://warp.dev"
 license=('custom')
-provides=("${_pkgname}=${pkgver}" 'warp-terminal-bin')
+provides=('warp-terminal-bin')
 conflicts=('warp-terminal-bin')
 replaces=('warp-terminal-bin')
 options=('!strip')
