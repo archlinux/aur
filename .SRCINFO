@@ -1,6 +1,6 @@
 pkgbase = inputplumber-git
 	pkgdesc = Open source input router and remapper daemon for Linux
-	pkgver = v0.40.0.r0.g90d65b2
+	pkgver = v0.40.1.r0.g72bf1f4
 	pkgrel = 1
 	url = https://github.com/ShadowBlip/InputPlumber
 	arch = x86_64
