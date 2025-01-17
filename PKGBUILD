@@ -1,9 +1,9 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
 pkgname=proto
-pkgdesc='Pluggable multi-language version manager'
-pkgver=0.44.6
+pkgver=0.44.7
 pkgrel=1
+pkgdesc='Pluggable multi-language version manager'
 arch=('x86_64' 'aarch64')
 url='https://github.com/moonrepo/proto'
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('git' 'gcc-libs' 'xz')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('071da45b006c92be6187c40025526c4d67ae8a4f1b2a113212221bec35a371c7')
+sha256sums=('28914d4f250f834d6b05c1b6f54550a60c474daaf871727faedca175e030087f')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
