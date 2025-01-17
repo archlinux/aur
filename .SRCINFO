@@ -1,0 +1,21 @@
+pkgbase = lazyjournal-bin
+	pkgdesc = TUI for journalctl, file system logs, as well Docker and Podman containers for quick viewing and filtering with fuzzy find and regex support
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/Lifailon/lazyjournal
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = lazyjournal
+	conflicts = lazyjournal
+	source = LICENSE-0.7.0::https://raw.githubusercontent.com/Lifailon/lazyjournal/0.7.0/LICENSE
+	source = README-0.7.0.md::https://raw.githubusercontent.com/Lifailon/lazyjournal/0.7.0/README.md
+	sha256sums = 003691f02cd7daac075ce43b0934ee248498ad462a22c38a2e7eb1a0ff48393b
+	sha256sums = 12369e9fd3e6b4b6caeedbc2472e1e9f326776a691d670e15420b2a1ce374ced
+	source_x86_64 = lazyjournal-x86_64-0.7.0::https://github.com/Lifailon/lazyjournal/releases/download/0.7.0/lazyjournal-0.7.0-linux-amd64
+	sha256sums_x86_64 = 0b540ea8a549778503d5f2cf6bcfe358244df9826cafd8a4445502744019cc46
+	source_aarch64 = lazyjournal-aarch64-0.7.0::https://github.com/Lifailon/lazyjournal/releases/download/0.7.0/lazyjournal-0.7.0-linux-arm64
+	sha256sums_aarch64 = 9202844e0a4aba7beccedaf9dfbefe068f1ac859f6b118862f9dfd2007c85713
+
+pkgname = lazyjournal-bin
