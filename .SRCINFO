@@ -1,7 +1,7 @@
 pkgbase = insight
 	pkgdesc = Insight is a graphical user interface to GDB, the GNU Debugger written in Tcl/Tk.
 	pkgver = 15.2.r719.f487d9c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceware.org/git/?p=insight.git
 	arch = x86_64
 	arch = i686
@@ -17,7 +17,6 @@ pkgbase = insight
 	options = !buildflags
 	source = git+https://sourceware.org/git/insight.git#commit=f487d9c304d42f5253fe81c274c0b8e4a1556060
 	source = gdb-15.2.tar.gz::https://sourceware.org/pub/gdb/releases/gdb-15.2.tar.gz
-	source = build.sh
 	source = gdb_acinclude.m4.patch
 	source = libgui_acinclude.m4.patch
 	source = configure.ac.patch
@@ -26,7 +25,6 @@ pkgbase = insight
 	source = gdbtk-hooks.patch
 	md5sums = SKIP
 	md5sums = e50e995c8c0b76be73c68bed6e747037
-	md5sums = 4817d3935ad0815c3a76cbbc11cd0b1c
 	md5sums = a4a50d98e6cfdc38bc8187b34ce451fa
 	md5sums = 67588c209da7505a07c44532f6e973ae
 	md5sums = a657612d67bc37b53b874b07aaf68873

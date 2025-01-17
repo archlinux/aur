@@ -2,7 +2,7 @@
 # Contributor: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=insight
 pkgver=15.2.r719.f487d9c
-pkgrel=2
+pkgrel=3
 pkgdesc="Insight is a graphical user interface to GDB, the GNU Debugger written in Tcl/Tk."
 url="https://sourceware.org/git/?p=insight.git"
 arch=('x86_64' 'i686')
@@ -19,7 +19,6 @@ _commit="f487d9c304d42f5253fe81c274c0b8e4a1556060"
 _gdb_ver=15.2
 source=(git+https://sourceware.org/git/insight.git#commit=$_commit
         gdb-$_gdb_ver.tar.gz::https://sourceware.org/pub/gdb/releases/gdb-$_gdb_ver.tar.gz
-	build.sh
 	gdb_acinclude.m4.patch
 	libgui_acinclude.m4.patch
 	configure.ac.patch
@@ -29,7 +28,6 @@ source=(git+https://sourceware.org/git/insight.git#commit=$_commit
 
 md5sums=('SKIP'
         'e50e995c8c0b76be73c68bed6e747037'
-	'4817d3935ad0815c3a76cbbc11cd0b1c'
 	'a4a50d98e6cfdc38bc8187b34ce451fa'
 	'67588c209da7505a07c44532f6e973ae'
 	'a657612d67bc37b53b874b07aaf68873'
@@ -66,7 +64,23 @@ build() {
   patch -u gdbtk/generic/gdbtk-hooks.c -i ../gdbtk-hooks.patch
   aclocal
   autoconf
-  sh ../build.sh
+  ./configure	--prefix=/usr \
+		--libdir=/usr/lib64 \
+		--disable-binutils \
+		--disable-elfcpp \
+		--disable-gas \
+		--disable-gold \
+		--disable-gprof \
+		--disable-ld \
+		--disable-rpath \
+		--disable-zlib \
+		--enable-sim \
+		--with-gdb-datadir=/usr/share/insight \
+		--with-jit-reader-dir=/usr/lib64/insight \
+		--with-separate-debug-dir='/usr/lib/debug' \
+		--with-expat \
+		--with-python \
+		--without-libunwind
   make
   }
 
