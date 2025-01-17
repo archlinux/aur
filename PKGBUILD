@@ -5,7 +5,7 @@
 _pkgname=siyuan
 pkgname="${_pkgname}-note-bin"
 _appname=SiYuan
-pkgver=3.1.19
+pkgver=3.1.20
 _electronversion=32
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system.(Prebuilt version.Use system-wide electron)"
@@ -16,7 +16,7 @@ arch=(
 url="https://b3log.org/siyuan/"
 _ghurl="https://github.com/siyuan-note/siyuan"
 license=('AGPL-3.0-only')
-provides=("${pkgname%-bin}=${pkgver}")
+provides=("${_pkgname}=${pkgver}")
 conflicts=(
     "${pkgname%-bin}"
     "${_pkgname}"
@@ -33,8 +33,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('1e1db1e5a7af718bbe609cf9c124d465fa2d493baeff2832b5661c50e34d9a83')
-sha256sums_x86_64=('e9af3f2eed3b196dedfa1650baa95bf9a3dde7e28807afc9f386e13a4cfa982a')
+sha256sums_aarch64=('7742dd44d6bee77b1c35d75e03f8f0c4eadefc65434f8c1059f27458e4e2e577')
+sha256sums_x86_64=('36c96ec2e04665d879fc63a1e131abb4264104a605d3505221eba178b5c447fa')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
