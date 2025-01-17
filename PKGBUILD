@@ -4,7 +4,7 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='mozc'
-pkgver=2.30.5618.102
+pkgver=2.31.5712.102
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'emacs-mozc: Emacs integration')
 conflicts=('mozc-ut')
 options=(!distcc !ccache)
-source=('git+https://github.com/google/mozc.git#commit=1d74ac4a0f569aaa99838df861997f3e882add3c'
+source=('git+https://github.com/google/mozc.git#commit=58ebfadae04bc46c46e70edc9662347a29d8b7bc'
         'git+https://github.com/abseil/abseil-cpp.git#commit=4447c7562e3bc702ade25105912dce503f0c4010'
         'git+https://github.com/google/breakpad.git#commit=216cea7bca53fa441a3ee0d0f5fd339a3a894224'
         'git+https://github.com/google/googletest.git#commit=b514bdc898e2951020cbdca1304b75f5950d1f59'
@@ -25,7 +25,7 @@ source=('git+https://github.com/google/mozc.git#commit=1d74ac4a0f569aaa99838df86
         'git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=e5b3425575734c323e1d947009dd74709437b684'
         'git+https://github.com/protocolbuffers/protobuf.git#commit=7cc670c1809e704ebeba90fb430d50e009f36727'
         'git+https://github.com/microsoft/wil.git#commit=fc5dbf55989fe20351c71d038a8d12de4b397a6d')
-sha256sums=('6510cf464223d46042d446652a4f7e4bafc3be89ca5aa3990223d73a0df70089'
+sha256sums=('62df60053b087f4636f1c60bf4fca42abe95f77a2d73274ad9a0f29c891661af'
             'e131bbdd4e207d6cc2930bca9db82d6da9e347175c1125d9d1f2e09a36652278'
             '5168bb8ea19e2f696eeecbdee991f28e496aea206a473fd7cb49b547f5d0c5af'
             'c081295f2c22705e07fc430e152a30b36f949a179075d47d3e12ff3109d43c6a'
@@ -55,7 +55,7 @@ build() {
     unset ANDROID_HOME
     export JAVA_HOME='/usr/lib/jvm/java-21-openjdk/'
 
-    bazel build server:mozc_server gui/tool:mozc_tool --config oss_linux --compilation_mode opt --copt='-Wno-maybe-uninitialized' --host_copt='-Wno-maybe-uninitialized'
+    bazel build server:mozc_server gui/tool:mozc_tool --config oss_linux --compilation_mode opt
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = mozc
 	pkgdesc = The Open Source edition of Google Japanese Input
-	pkgver = 2.30.5618.102
+	pkgver = 2.31.5712.102
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = mozc
 	conflicts = mozc-ut
 	options = !distcc
 	options = !ccache
-	source = git+https://github.com/google/mozc.git#commit=1d74ac4a0f569aaa99838df861997f3e882add3c
+	source = git+https://github.com/google/mozc.git#commit=58ebfadae04bc46c46e70edc9662347a29d8b7bc
 	source = git+https://github.com/abseil/abseil-cpp.git#commit=4447c7562e3bc702ade25105912dce503f0c4010
 	source = git+https://github.com/google/breakpad.git#commit=216cea7bca53fa441a3ee0d0f5fd339a3a894224
 	source = git+https://github.com/google/googletest.git#commit=b514bdc898e2951020cbdca1304b75f5950d1f59
@@ -24,7 +24,7 @@ pkgbase = mozc
 	source = git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=e5b3425575734c323e1d947009dd74709437b684
 	source = git+https://github.com/protocolbuffers/protobuf.git#commit=7cc670c1809e704ebeba90fb430d50e009f36727
 	source = git+https://github.com/microsoft/wil.git#commit=fc5dbf55989fe20351c71d038a8d12de4b397a6d
-	sha256sums = 6510cf464223d46042d446652a4f7e4bafc3be89ca5aa3990223d73a0df70089
+	sha256sums = 62df60053b087f4636f1c60bf4fca42abe95f77a2d73274ad9a0f29c891661af
 	sha256sums = e131bbdd4e207d6cc2930bca9db82d6da9e347175c1125d9d1f2e09a36652278
 	sha256sums = 5168bb8ea19e2f696eeecbdee991f28e496aea206a473fd7cb49b547f5d0c5af
 	sha256sums = c081295f2c22705e07fc430e152a30b36f949a179075d47d3e12ff3109d43c6a
