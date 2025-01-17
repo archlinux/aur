@@ -8,6 +8,6 @@ pkgbase = grok-cli
 	provides = grok-cli
 	conflicts = grok-cli
 	source = https://github.com/haydenzeller/grok-cli/releases/download/v1.0.0/grok-cli-1.0.0-x86_64.tar.gz
-	sha256sums = 1e05b0781e5df8f4f67c63eef11665fae3dfe7af3989b5919e8e632dc7392673
+	sha256sums = 26c36153923d19d76fb155f79d0b1304f38cd1322ba1b488d6fa89f923156a15
 
 pkgname = grok-cli
