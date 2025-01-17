@@ -1,4 +1,4 @@
-pkgbase = grok-cli-bin
+pkgbase = grok-cli
 	pkgdesc = Grok in the terminal
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = grok-cli-bin
 	source = https://github.com/haydenzeller/grok-cli/releases/download/v1.0.0/grok-cli-1.0.0-x86_64.tar.gz
 	sha256sums = 06c8217c044c650f251393d328068aed05250aded593f20e139ae0da8de7eb56
 
-pkgname = grok-cli-bin
+pkgname = grok-cli
