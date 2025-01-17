@@ -1,6 +1,6 @@
 pkgbase = tern
 	pkgdesc = A standalone migration tool for PostgreSQL
-	pkgver = 2.2.3
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/jackc/tern
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = tern
 	depends = glibc
 	optdepends = postgresql: for local instance of PostgreSQL
 	options = !lto
-	source = tern::git+https://github.com/jackc/tern.git#commit=5e38057652b28acbdaafdb2e6604b1e856f31aad
+	source = tern::git+https://github.com/jackc/tern.git#commit=264a5156033e46a937907458bebdcc4091bb70f4
 	sha256sums = SKIP
 
 pkgname = tern
