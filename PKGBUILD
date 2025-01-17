@@ -2,7 +2,7 @@
 # Maintainer: fenuks
 pkgname=hg-fast-export
 _pkgname=fast-export
-pkgver=210917
+pkgver=231118
 pkgrel=1
 pkgdesc="Mercurial to git converter using git-fast-import"
 arch=('any')
@@ -10,8 +10,8 @@ url="https://repo.or.cz/fast-export.git"
 license=('MIT' 'GPL2')
 depends=('python')
 changelog=$pkgname.changelog
-source=("https://github.com/frej/fast-export/archive/v$pkgver.tar.gz")
-md5sums=('d4cb1bfc5c43ee61b0350adaae848845')
+source=("https://github.com/frej/fast-export/archive/refs/tags/v${pkgver}.tar.gz")
+md5sums=('3f9e32691790a24896879c899c996c49')
 
 prepare() {
        sed -i '1s/python2$/python/' "$srcdir/$_pkgname-$pkgver/"{hg-fast-export.py,hg2git.py}
