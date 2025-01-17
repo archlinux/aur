@@ -12,7 +12,7 @@ makedepends=(git)
 url="https://codeberg.org/tuxnix/$pkgname.git"
 license=('LicenseRef-FAFBL')
 install="$pkgname.install"
-source=("$pkgname" "$pkgname.mo" "$pkgname.service" "$pkgname.timer" )
+source=("git+$url" "$pkgname" "$pkgname.mo" "$pkgname.service" "$pkgname.timer" )
 
 
 package() {
