@@ -1,0 +1,15 @@
+pkgbase = vapoursynth-plugin-vstools
+	pkgdesc = Plugin for Vapoursynth: vstools
+	pkgver = 3.3.4
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-tools
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = vapoursynth
+	depends = python-rich
+	depends = python-stgpytools
+	source = https://files.pythonhosted.org/packages/88/d6/0c7602dab6d39a8a483327becde2f4df9b18684f9176d77ef3a29c387226/vstools-3.3.4-py3-none-any.whl
+	sha256sums = e53da14e8566526c8b59e6e5a9d95efd6947e4006c7ae8c1acb1036278200c49
+
+pkgname = vapoursynth-plugin-vstools
