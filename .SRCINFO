@@ -1,15 +1,17 @@
 pkgbase = epson-inkjet-printer-filter-lsb
 	pkgdesc = Epson inkjet printer filter used with CUPS (legacy LSB version)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	license = custom:Epson End User Software License Agreement
 	depends = cups
+	depends = gcc-libs
 	depends = glibc
 	depends = libcups
+	depends = libjpeg
 	source = https://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-workforce-635-nx625-series-1.0.1-1lsb3.2.src.rpm
 	source = epson-inkjet-printer-filter-lsb_release_build_flags.patch
 	source = epson-inkjet-printer-filter-lsb_lib_res_path.patch

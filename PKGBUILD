@@ -3,12 +3,12 @@
 _name="epson-inkjet-printer-filter"
 pkgname="${_name}-lsb"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Epson inkjet printer filter used with CUPS (legacy LSB version)"
 arch=('i686' 'x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('LGPL-2.1-or-later' 'custom:Epson End User Software License Agreement')
-depends=('cups' 'glibc' 'libcups')
+depends=('cups' 'gcc-libs' 'glibc' 'libcups' 'libjpeg')
 # source bundle chosen arbitrarily; all of them ship identical filter sources
 _pkgsrc="${_name}-${pkgver}"
 _bundlesrc="epson-inkjet-printer-workforce-635-nx625-series-1.0.1"
@@ -25,7 +25,7 @@ sha256sums=('c2fdb47e0a1bf0f0a4ed3ad689fe96335d853572c208795e367be7e40114cba6'
 prepare() {
   cd "${srcdir}"
   bsdtar -xzf "${_pkgsrc}.tar.gz"
-  bsdtar -xzf "${_bundlesrc}.tar.gz"
+  bsdtar -xzf "${_bundlesrc}.tar.gz" "${_bundlesrc}/watermark"
 
   cd "${_pkgsrc}"
   patch -Np1 -i "${srcdir}/${pkgname}_release_build_flags.patch"
@@ -39,6 +39,8 @@ pkgver() {
 }
 
 build() {
+  export LDFLAGS+=" -Wl,--no-as-needed"
+
   cd "${srcdir}/${_pkgsrc}"
   libtoolize
   autoreconf -vfi
