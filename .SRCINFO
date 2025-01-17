@@ -1,6 +1,6 @@
 pkgbase = trackaudio-git
 	pkgdesc = Next-generation cross-platform Audio-For-VATSIM ATC Client
-	pkgver = 1.3.0.beta.3.r9.g5ba0441
+	pkgver = 1.3.0.beta.5.r3.g72f0323
 	pkgrel = 1
 	url = https://github.com/pierr3/TrackAudio
 	arch = x86_64
