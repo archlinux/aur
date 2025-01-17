@@ -8,7 +8,7 @@ url="https://github.com/Zweih/yaylog"
 license=("MIT")
 depends=("expac")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zweih/yaylog/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("7b652388798c8a8e91654ec938d8df8808bf0adf27b4b6b6d18be9e047c949b")
+sha256sums=("7b652388798c8a8e91654ec938d8df8808bf0adf27b4b6b6d18be9e047c949b9")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
