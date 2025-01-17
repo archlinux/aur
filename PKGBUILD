@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-sim8
-pkgver=8.7.0
+pkgver=8.8.0
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -37,7 +37,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('6fe5200e46778759ad9943b71105927327fb0743e092200e1c8b6c840a1ee27a')
+sha256sums=('558bd555a6114c3c40c4ee41a600619e1c077976001873ed8ec4cc75fb8c5794')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
