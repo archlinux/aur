@@ -1,7 +1,7 @@
 pkgbase = papirus-icon-theme-plasma-fork-git
 	pkgdesc = Custom fork for Plasma to use Breeze colourable icons with the non-recolourable Papirus ones removed and added missing icons. Use at your own risk.
-	pkgver = r7355.aff9f95
-	pkgrel = 1
+	pkgver = r7368.e55ae37
+	pkgrel = 2
 	url = https://github.com/Erwin-Iosef/papirus-icon-theme-plasma-fork.git
 	arch = any
 	license = GPL-3.0-or-later
@@ -10,10 +10,20 @@ pkgbase = papirus-icon-theme-plasma-fork-git
 	optdepends = hardcode-fixer-git: To deal with hardcoded application icons
 	optdepends = hardcode-tray-git: To fix hardcoded tray icons
 	optdepends = sif-git: To fix icons of running Steam games
-	provides = papirus-icon-theme
-	conflicts = papirus-icon-theme
 	options = !strip
 	source = git+https://github.com/Erwin-Iosef/papirus-icon-theme-plasma-fork.git
 	sha256sums = SKIP
 
 pkgname = papirus-icon-theme-plasma-fork-git
+	optdepends = hardcode-fixer-git: To deal with hardcoded application icons
+	optdepends = hardcode-tray-git: To fix hardcoded tray icons
+	optdepends = sif-git: To fix icons of running Steam games
+	provides = papirus-icon-theme
+	conflicts = papirus-icon-theme
+
+pkgname = epapirus-icon-theme-plasma-fork-git
+	pkgdesc = Custom fork for Plasma to use Breeze colourable icons with the non-recolourable Papirus ones removed and added missing icons. Use at your own risk. (for elementary OS and Pantheon Desktop only)
+	depends = gtk-update-icon-cache
+	depends = papirus-icon-theme-plasma-fork-git
+	provides = epapirus-icon-theme
+	conflicts = epapirus-icon-theme
