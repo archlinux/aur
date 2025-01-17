@@ -1,7 +1,7 @@
 pkgbase = tp_smapi-lts
 	pkgdesc = Modules for ThinkPad's SMAPI functionality
 	pkgver = 0.44
-	pkgrel = 77
+	pkgrel = 78
 	url = https://github.com/evgeni/tp_smapi
 	arch = x86_64
 	license = GPL-2.0-only
