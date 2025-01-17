@@ -1,13 +1,13 @@
 pkgbase = grok-cli
 	pkgdesc = Grok in the terminal
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/haydenzeller/grok-cli
 	arch = x86_64
 	license = mit
 	provides = grok-cli
 	conflicts = grok-cli
-	source = https://github.com/haydenzeller/grok-cli/releases/download/v1.0.0/grok-cli-1.0.0-x86_64.tar.gz
-	sha256sums = 26c36153923d19d76fb155f79d0b1304f38cd1322ba1b488d6fa89f923156a15
+	source = https://github.com/haydenzeller/grok-cli/releases/download/v1.1.0/grok-cli-1.1.0-x86_64.tar.gz
+	sha256sums = 4aa9d835814e9224aa15b1cbe69ad1b058b48d4ec5e12db9a7f79e5dea82c457
 
 pkgname = grok-cli
