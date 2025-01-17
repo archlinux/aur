@@ -1,6 +1,6 @@
 # Maintainer: Simon <simon at gamersi dot at>
 pkgname=lrcget-bin
-pkgver=0.9.0
+pkgver=0.9.2
 pkgrel=1
 options=(!debug)
 pkgdesc="Utility for mass-downloading LRC synced lyrics for your offline music library."
