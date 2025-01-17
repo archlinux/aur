@@ -3,19 +3,22 @@
 
 pkgname=remarkable
 pkgver=1.95
-pkgrel=2
+pkgrel=3
 pkgdesc="A free fully featured markdown editor for Linux."
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://remarkableapp.github.io"
 license=('MIT')
-depends=('python'
-         'python-cairo'
-         'python-gobject'
-         'python-markdown'
-         'python-beautifulsoup4'
-         'python-gtkspellcheck'
-         'webkitgtk-6.0'
-         'wkhtmltopdf')
+depends=(
+  'gtksourceview3'
+  'python'
+  'python-cairo'
+  'python-gobject'
+  'python-markdown'
+  'python-gtkspellcheck'
+  'python-beautifulsoup4'
+  'python-gtkspellcheck'
+  'webkit2gtk-4.1'
+  'wkhtmltopdf')
 options=('!emptydirs' '!strip')
 install="${pkgname}.install"
 source=(
@@ -26,39 +29,38 @@ md5sums=('206c28415fddc594cb6162cbe51cb793'
          '4230de2876e8789bcd5a7cdc84b2a30b')
 
 package() {
-    cd "$srcdir/${pkgname^}-${pkgver}"
+  cd "$srcdir/${pkgname^}-${pkgver}"
 
-    # Install the main binary
-    install -Dm755 bin/remarkable "$pkgdir/usr/share/$pkgname/$pkgname.bin"
-    install -Dm755 /dev/stdin "$pkgdir/usr/bin/${pkgname}" << EOF
+  # Install the main binary
+  install -Dm755 bin/remarkable "$pkgdir/usr/share/$pkgname/$pkgname.bin"
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/${pkgname}" <<EOF
 #!/bin/bash
 export PYTHONPATH="/usr/share/${pkgname}:/usr/share/${pkgname}/${pkgname}:\$PYTHONPATH"
 exec /usr/share/${pkgname}/remarkable.bin "\$@"
 EOF
 
-    # Install desktop entry
-    install -Dm644 ${pkgname}.desktop "$pkgdir/usr/share/applications/${pkgname}.desktop"
+  # Install desktop entry
+  install -Dm644 ${pkgname}.desktop "$pkgdir/usr/share/applications/${pkgname}.desktop"
 
-    # Install icons
-    install -Dm644 data/media/remarkable.png "$pkgdir/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 data/media/remarkable.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+  # Install icons
+  install -Dm644 data/media/remarkable.png "$pkgdir/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 data/media/remarkable.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 
-    # Install glib schema
-    install -Dm644 data/glib-2.0/schemas/net.launchpad.remarkable.gschema.xml \
-        "$pkgdir/usr/share/glib-2.0/schemas/net.launchpad.remarkable.gschema.xml"
+  # Install glib schema
+  install -Dm644 data/glib-2.0/schemas/net.launchpad.remarkable.gschema.xml \
+    "$pkgdir/usr/share/glib-2.0/schemas/net.launchpad.remarkable.gschema.xml"
 
-    # Recursively copy all necessary directories and files
-    for dir in data remarkable remarkable_lib pdfkit; do
-        if [[ -d $dir ]]; then
-            cp -r "$dir" "$pkgdir/usr/share/${pkgname}/"
-        fi
-    done
+  # Recursively copy all necessary directories and files
+  for dir in data remarkable remarkable_lib pdfkit; do
+    if [[ -d $dir ]]; then
+      cp -r "$dir" "$pkgdir/usr/share/${pkgname}/"
+    fi
+  done
 
-    # Install additional scripts if present
-    [[ -f run.sh ]] && install -Dm755 run.sh "$pkgdir/usr/share/${pkgname}/run.sh"
+  # Install additional scripts if present
+  [[ -f run.sh ]] && install -Dm755 run.sh "$pkgdir/usr/share/${pkgname}/run.sh"
 
-    # License and documentation
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
+  # License and documentation
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
 }
-
