@@ -1,0 +1,12 @@
+pkgbase = mcstatus-cli
+	pkgdesc = A command-line tool for viewing the current status of a Minecraft server
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/ReimarPB/MCStatus
+	arch = x86_64
+	license = GPL
+	depends = cjson
+	source = mcstatus-cli-1.0.1.tar.gz::https://github.com/ReimarPB/MCStatus/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 597d8110b02318123019dee9e27a0f159f9bbdbd79c11f4f67da350a6454f011
+
+pkgname = mcstatus-cli
