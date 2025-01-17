@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=alspotron-bin
 _pkgname=Alspotron
-pkgver=0.24.0
-_electronversion=33
+pkgver=0.24.1
+_electronversion=34
 pkgrel=1
-pkgdesc="Shows the egg lyrics of the track, playing on Spotify / YouTube Music.Prebuilt version.Use system-wide electron."
+pkgdesc="Shows the egg lyrics of the track, playing on Spotify / YouTube Music.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/organization/alspotron"
 license=('Apache-2.0')
@@ -18,10 +18,10 @@ makedepends=(
     'asar'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ef5da773e98f5f5d1137e6f3de7c06392b19415c5d585e94cc97c20dfb9baae6'
+sha256sums=('192efdcaefb2e17616ff7c493d6dc8819d246dfce89433bb4aea63f52d9f7e8f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
@@ -31,7 +31,6 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
@@ -42,5 +41,5 @@ package() {
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/"{app.asar.unpacked,assets} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 }
