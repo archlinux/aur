@@ -1,7 +1,7 @@
 # Maintainer: Braden Mars <bradenmars@bradenmars.me>
 
 pkgname=tesla_auth
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Tesla token generator"
@@ -10,7 +10,7 @@ license=('MIT OR Apache-2.0')
 makedepends=('rust' 'cargo')
 depends=('webkit2gtk-4.1' 'xdotool')
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('88587285bce793342865eb23ad128a7a88d8cf575281af4e87c772ffb283db34')
+sha256sums=('212b05fe860b21608f38987abe7d3a3c2a3e393c638b28483c26d5aefb01d2de')
 provides=('tesla_auth')
 conflicts=('tesla_auth')
 
