@@ -3,7 +3,7 @@
 _binname="ghfs"
 _pkgname="go-http-file-server"
 pkgname="${_pkgname}-bin"
-pkgver=1.20.1
+pkgver=1.20.2
 pkgrel=1
 pkgdesc="Simple command line based HTTP file server to share local file system"
 arch=('x86_64' 'aarch64' 'riscv64' 'loong64' 'i686' 'armv7h')
@@ -19,13 +19,13 @@ source_riscv64=("${_pkgsrc}-riscv64.zip::${url}/releases/download/v${pkgver}/${_
 source_loong64=("${_pkgsrc}-loong64.zip::${url}/releases/download/v${pkgver}/${_binname}-${pkgver}-linux-loong64.zip")
 source_i686=("${_pkgsrc}-i686.zip::${url}/releases/download/v${pkgver}/${_binname}-${pkgver}-linux-386.zip")
 source_armv7h=("${_pkgsrc}-armv7h.zip::${url}/releases/download/v${pkgver}/${_binname}-${pkgver}-linux-arm.zip")
-sha256sums=('4fe36fd9dcee9c99fa5bcef7f5d49a87b7b8383a257ce415cfbde7e37e1d25e7')
-sha256sums_x86_64=('58b2f3f6e714c465718279de48b20b314477d269cb04072c0644e6eb1b713b3f')
-sha256sums_aarch64=('a717921c0c70c1bc50cfa5be00a7292ace001337fca61ae29b4c335a1ece46b0')
-sha256sums_riscv64=('b02b85e106a6237412e697d506c4c89540192d65192e1bbbffecb5605c420704')
-sha256sums_loong64=('e39e44bd01ea667387ab7452490c649d1cb5cdfa1c22d997237a7d26b340ba84')
-sha256sums_i686=('79f92dc9f6add32534f79ced9f195ea370f5d1f18c7ca8dcf2c0ac702d4697fa')
-sha256sums_armv7h=('5a0c844b50b008f9dcb853b706d3c9b94b71a6b9174c12240fec8a85dbf9b060')
+sha256sums=('1cdba1538e86e2017cdadcc53e17a353ae08a3f4a07a08859574c67edfbdfd8c')
+sha256sums_x86_64=('dce0e5f66443867fd39000185865a96a744f9dd1fa4688b560cd469bb96a17da')
+sha256sums_aarch64=('77e3d623141e626b2962bf90b621b5455e2a6e602aebeed011967c88c2f1de3d')
+sha256sums_riscv64=('76cd038962f9565c2f840b255f11ccbf84b6cf816c324eb5221a246ccfeb1902')
+sha256sums_loong64=('76eb9129f70870eb17f6f04eea715c9befc312ec5626e95254593b7bc2d71e21')
+sha256sums_i686=('9e7f8df7b8da59bbc7b32c59e9c79d42aa7446013721a0e98382362f3260ce9f')
+sha256sums_armv7h=('8a3f68f59c005a7b0149eb54938e8f3a37e3dc099e712def8257336051c12a38')
 
 package() {
   cd "${srcdir}"
