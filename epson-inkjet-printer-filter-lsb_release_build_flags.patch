@@ -1,0 +1,14 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -26,11 +26,6 @@
+         [RELEASE_BUILD=yes]
+ )
+ 
+-if test "x$RELEASE_BUILD" = "xyes" ; then
+-        CFLAGS=-O2
+-        CXXFLAGS=-O2
+-fi
+-
+ if test "x${prefix}" = "xNONE"; then
+ 	AC_MSG_ERROR([*** '--prefix=/PATH' missing, please specify a prefix PATH ***])
+ fi
