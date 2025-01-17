@@ -1,14 +1,16 @@
 pkgbase = plzip
 	pkgdesc = A massively parallel lossless data compressor based on the lzlib compression library
-	pkgver = 1.12.rc1
+	pkgver = 1.12
 	pkgrel = 1
 	url = https://www.nongnu.org/lzip/plzip.html
 	arch = x86_64
 	arch = i686
 	license = GPL-2.0-or-later
 	depends = lzlib
-	source = https://download.savannah.gnu.org/releases/lzip/plzip/plzip-1.12-rc1.tar.gz
+	source = https://download.savannah.gnu.org/releases/lzip/plzip/plzip-1.12.tar.gz
+	source = https://download.savannah.gnu.org/releases/lzip/plzip/plzip-1.12.tar.gz.sig
 	validpgpkeys = 1D41C14B272A2219A739FA4F8FE99503132D7742
-	sha512sums = 0f6d8fe7e7c5e6cc8a6432e4c6f2e15310e84abf098e43c662a00ed3c10c4ea94e6472d2a0a6439a2ee43b972ffddca55b242d58a39375210386ca41d3543373
+	sha512sums = b6fa75e30aba33f98b91683f4dbd2ec274b2c2b881bc31fc1841614d69aa1e5ca70dacf664efeefb3378deecc715a93000a27dc29e0103d7ce205168e81c27ae
+	sha512sums = SKIP
 
 pkgname = plzip
