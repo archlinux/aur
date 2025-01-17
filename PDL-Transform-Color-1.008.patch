@@ -1,0 +1,20 @@
+diff -ura PDL-Transform-Color-1.008.orig/Makefile.PL PDL-Transform-Color-1.008.new/Makefile.PL
+--- PDL-Transform-Color-1.008.orig/Makefile.PL	2025-01-17 19:49:07.122009674 +1100
++++ PDL-Transform-Color-1.008.new/Makefile.PL	2025-01-17 19:50:44.049478892 +1100
+@@ -14,16 +14,6 @@
+ }
+ 
+ 
+-sub MY::postamble {
+-    my $text = <<'FOO';
+-install ::
+-	@echo "Updating PDL documentation database...";
+-	@$(PERL) -e "exit if $$ENV{DESTDIR}; use PDL::Doc; eval { PDL::Doc::add_module(q{PDL::Trasform::Color}); }; ";
+-
+-FOO
+-    return $text;
+-}
+-
+ WriteMakefile(
+     NAME                      => 'PDL::Transform::Color',
+     AUTHOR                    => 'Craig DeForest <craig@deforest.org>',
