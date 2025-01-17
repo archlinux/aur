@@ -5,14 +5,14 @@
 
 pkgname=slack-electron
 pkgver=4.41.105
-pkgrel=1
+pkgrel=2
 pkgdesc="Slack Desktop (Beta) for Linux, using the system Electron package"
 arch=(x86_64)
 url="https://slack.com/downloads/linux"
 license=(LicenseRef-SlackProprietary)
-_electron_version=31
+_electronver=33
 depends=(
-  "electron$_electron_version"
+  "electron$_electronver"
   gcc-libs
   glibc
   libx11
@@ -34,13 +34,19 @@ sha256sums=(
 _archive="$pkgname-$pkgver"
 
 prepare() {
-  sed -i "s/@ELECTRON_VERSION@/$_electron_version/" slack.sh
+  sed -i "s/@ELECTRON_VERSION@/$_electronver/" slack.sh
 
   mkdir -p "$_archive"
   bsdtar -xf "$pkgname-$pkgver.deb" -C "$_archive"
   bsdtar -xf "$_archive/data.tar.xz" -C "$_archive"
 
   cd "$_archive"
+
+  grep -q "^$_electronver" usr/lib/slack/version \
+    || (
+      echo "Electron version mismatch"
+      exit 1
+    )
 
   # Enable slack silent mode and fix icon
   sed -ri \
