@@ -4,13 +4,14 @@ pkgname="epson-inkjet-printer-filter"
 pkgver=1.0.2
 pkgrel=4
 pkgdesc="Epson inkjet printer filter used with CUPS"
-arch=('x86_64' 'i686')
+arch=('i686' 'x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('LGPL-2.1-or-later' 'custom:Epson End User Software License Agreement')
-depends=('cups' 'glibc' 'libcups')
+depends=('cups' 'glibc' 'libcups') # 'gcc-libs' 'libjpeg'
+# source bundle chosen arbitrarily; all of them ship identical filter sources
 _pkgsrc="${pkgname}-${pkgver}"
 _bundlesrc="epson-inkjet-printer-201207w-1.0.1"
-# source bundle chosen arbitrarily; all of them ship identical filter sources
+# DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 source=("https://download3.ebz.epson.net/dsc/f/03/00/15/64/87/25d34a13841e5e95d80266e6fd8dfcdf67c95634/${_bundlesrc}-1.src.rpm"
         "${pkgname}_release_build_flags.patch"
         "${pkgname}_lib_res_path.patch")
@@ -21,7 +22,7 @@ sha256sums=('ac757bb6d392b6662779228e518bb3e9b4de02d275235c4afd41465447d38b45'
 prepare() {
   cd "${srcdir}"
   bsdtar -xzf "${_pkgsrc}.tar.gz"
-  bsdtar -xzf "${_bundlesrc}.tar.gz"
+  bsdtar -xzf "${_bundlesrc}.tar.gz" "${_bundlesrc}/watermark"
 
   cd "${_pkgsrc}"
   patch -Np1 -i "${srcdir}/${pkgname}_release_build_flags.patch"
@@ -34,6 +35,10 @@ pkgver() {
 }
 
 build() {
+  # this was required for older filter versions,
+  # but it is reported to work without overlinking now
+  # export LDFLAGS+=" -Wl,--no-as-needed"
+
   cd "${srcdir}/${_pkgsrc}"
   libtoolize
   autoreconf -vfi

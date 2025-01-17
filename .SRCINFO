@@ -3,8 +3,8 @@ pkgbase = epson-inkjet-printer-filter
 	pkgver = 1.0.2
 	pkgrel = 4
 	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
-	arch = x86_64
 	arch = i686
+	arch = x86_64
 	license = LGPL-2.1-or-later
 	license = custom:Epson End User Software License Agreement
 	depends = cups
