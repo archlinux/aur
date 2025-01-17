@@ -19,9 +19,9 @@ pkgrel='4'
 pkgdesc="The GNU Compiler Collection (${_pkgver}.x)"
 arch=('i686' 'x86_64')
 url='http://gcc.gnu.org'
-license=('GPL' 'LGPL' 'FDL' 'custom')
-depends=('glibc' 'zlib' 'gmp' 'mpfr' 'elfutils')
-makedepends=('binutils>=2.24' 'libmpc' 'texinfo')
+license=('GPL-2.0-only' 'LGPL-2.1-only' 'GPL-3.0-only' 'LGPL-3.0-only' 'GFDL-1.3-only' 'custom')
+depends=('glibc' 'gcc-libs' 'bash' 'zlib' 'gmp' 'mpfr')
+makedepends=('binutils>=2.24' 'libmpc' 'texinfo' 'elfutils')
 #makedepends+=('ppl') # cloog
 makedepends+=('flex' 'bison' 'aria2')
 provides=("gcc-${_pkgver//\./}") # no version as it is completely contained in the name
@@ -38,16 +38,22 @@ source=(
   'gcc-hash-style-both.patch'
   'gcc_pure64.patch'
   'gcc.texi.49.patch'
+  '0000-sourcebuild.texi-itemx.patch'
+  '0001-tm.texi-end-deftypevr.patch'
 )
 
 md5sums=('b407a3d1480c11667f293bfb1f17d1a4'
-         '4df25b623799b148a0703eaeec8fdf3f'
-         '00b105ff3bc237381169d476c7f50cfb'
-         'f3c42a9cfa840a062897da0468102771')
+         '9266231597c48aa83bf78abc755fe373'
+         'ed6ff49fc98c529ca1bc158e82bf1ea3'
+         '1fb9648fbc183982542490cf8d5a9c58'
+         '031d8f46e75b22771317d2fc9967953b'
+         '731b9d288a80460059810bcc4f39f5d8')
 sha256sums=('35af16afa0b67af9b8eb15cafb76d2bc5f568540552522f5dc2c88dd45d977e8'
-            '3492332fa78b545ff46c2b5293d17c63c122be6f8f6fa4798864b7d4572b0024'
-            '0a6d182d91371d40820031b92e9aaca04e04afe48d89744d7b4fcac363f1f1b8'
-            '9f8c50a715a921d3d2c9d5809ac9592ca66f682b2cc496606ff6eb4de79d46b6')
+            'ad5261225e7fe94ed590ad8ef98251a6fa5c15ee2f49f60fbac1c61b5735fee4'
+            'c488d9154f5345547e4c4775ba06758c7cd79f335fb2b019d79d6562f46a1431'
+            '728cb6e732408eb9675eea793b55c0b073357dcd533c6fa9fc4acd8547650362'
+            'b6c00e4dadf3a0180fc1db110b275768a8e0490a65182dc8e42fbcb639a28141'
+            'e6f553c1dae9fab0ab586ebf91f497cc02ef1a5ed35001ac50ec5a63b7736af4')
 
 if [ -n "${_snapshot:-}" ]; then
   _basedir="gcc-${_snapshot}"
@@ -74,12 +80,17 @@ prepare() {
 
   # Update gcc.texi to gcc49 version, needed as of texinfo>=6.3 and possibly texinfo=6.2
   # diff -pNau5 gcc/doc/gcc.texi{,.49} > 'gcc.texi.49.patch'
-  patch -Nup0 -i "${srcdir}/gcc.texi.49.patch"
+  patch -Nup1 -i "${srcdir}/gcc.texi.49.patch"
 
   #if [ "${CARCH}" = "x86_64" ]; then
   #  : patch -Np1 -i "${srcdir}/gcc_pure64.patch"
   #fi
-  patch -Np0 -i "${srcdir}/gcc-hash-style-both.patch"
+  patch -Np1 -i "${srcdir}/gcc-hash-style-both.patch"
+  patch -Np1 -i "${srcdir}/0000-sourcebuild.texi-itemx.patch"
+  patch -Np1 -i "${srcdir}/0001-tm.texi-end-deftypevr.patch"
+
+  #cd ..; cp -pr "${_basedir}" 'a'; ln -s "${_basedir}" 'b'; false
+  #diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
 
   # fix build with glibc 2.26
   sed -e 's:\bstruct ucontext\b:ucontext_t:g' -i $(grep --include '*.[ch]' --include '*.cc' -lre '\bstruct ucontext\b')
@@ -133,6 +144,8 @@ build() {
       --with-system-zlib
       --prefix='/usr'
       #CXX='g++-4.9' CC='gcc-4.9'
+      CXX='g++ -Wno-implicit-function-declaration -Wno-incompatible-pointer-types'
+      CC='gcc -Wno-implicit-function-declaration -Wno-incompatible-pointer-types'
     )
     ../configure "${_conf[@]}"
 
