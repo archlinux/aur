@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=weakauras-companion-git
 _pkgname=WeakAuras-Companion
-pkgver=5.2.7.r41.g63c7e01
-_electronversion=32
+pkgver=5.2.9.r0.geeedef5
+_electronversion=33
 _nodeversion=22
 pkgrel=1
 pkgdesc="A cross-platform application built to provide the missing link between Wago.io and World of Warcraft.(Use system-wide electron)"
@@ -42,7 +42,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -78,6 +78,9 @@ build() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/\/\${version}//g" electron-builder.json
     NODE_ENV=development    pnpm install
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
     NODE_ENV=production     pnpm run lint:fix
     NODE_ENV=production     pnpm vue-tsc
     NODE_ENV=production     pnpm vite build

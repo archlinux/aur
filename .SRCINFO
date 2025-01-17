@@ -1,6 +1,6 @@
 pkgbase = weakauras-companion-git
 	pkgdesc = A cross-platform application built to provide the missing link between Wago.io and World of Warcraft.(Use system-wide electron)
-	pkgver = 5.2.7.r41.g63c7e01
+	pkgver = 5.2.9.r0.geeedef5
 	pkgrel = 1
 	url = https://weakauras.wtf/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = weakauras-companion-git
 	makedepends = curl
 	makedepends = pnpm
 	makedepends = git
-	depends = electron32
-	provides = weakauras-companion=5.2.7
+	depends = electron33
+	provides = weakauras-companion=5.2.9
 	conflicts = weakauras-companion
 	source = weakauras-companion.git::git+https://github.com/WeakAuras/WeakAuras-Companion
 	source = weakauras-companion.sh
