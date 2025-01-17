@@ -25,8 +25,6 @@ optdepends=('vapoursynth-plugin-bm3dcuda: BM3D support, GPU version'
 makedepends=('git'
   'python-pip'
 )
-provides=("vapoursynth-plugin-${_plug}")
-conflicts=("vapoursynth-plugin-${_plug}")
 source=("https://files.pythonhosted.org/packages/e0/84/9f9e604609b3c70196e9955e73e3011e0644a721a99e6f9729c8f737464e/soifunc-0.8.1-py3-none-any.whl")
 sha256sums=('09a9af54d852e278a535c481daf16aeb5105f3735f3423cfd4ac6427f6c11188')
 
