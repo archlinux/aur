@@ -12,9 +12,9 @@ pkgrel='8'
 pkgdesc="The GNU Compiler Collection (${_pkgver}.x)"
 arch=('i686' 'x86_64')
 url='http://gcc.gnu.org'
-license=('GPL' 'LGPL')
-depends=('glibc' 'gmp' 'binutils' 'mpfr' 'cloog' 'zlib' 'elfutils')
-makedepends=('flex' 'bison' 'setconf')
+license=('GPL-2.0-only' 'LGPL-2.1-only' 'GPL-3.0-only' 'LGPL-3.0-only')
+depends=('glibc' 'gcc-libs' 'bash' 'gmp' 'binutils' 'mpfr' 'zlib')
+makedepends=('flex' 'bison' 'setconf' 'cloog' 'elfutils')
 #makedepends+=('gcc49')
 conflicts=("gcc${_pkgver//\./}-multilib")
 options=('!libtool' 'staticlibs' '!buildflags') # libiberty builds with all flags removed
@@ -115,8 +115,8 @@ build() {
       --with-tune='generic'
       --prefix='/usr'
       #CXX='g++-4.9' CC='gcc-4.9'
-      CXX='g++ -Wno-implicit-function-declaration'
-      CC='gcc -Wno-implicit-function-declaration'
+      CXX='g++ -Wno-implicit-function-declaration -Wno-incompatible-pointer-types'
+      CC='gcc -Wno-implicit-function-declaration -Wno-incompatible-pointer-types'
     )
     ../configure "${_conf[@]}"
 
