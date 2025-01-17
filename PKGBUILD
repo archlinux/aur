@@ -4,12 +4,12 @@
 _model="workforce-635-nx625-series"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.1
-pkgrel=15
+pkgrel=16
 pkgdesc="Epson inkjet printer driver (ME OFFICE 82WD, 85ND, 900WD, 960FWD; Stylus NX625, SX525WD, SX620FW, TX560WD; Stylus Office B42WD, BX525WD, BX625FWD, TX620FWD; WorkForce 60, 625, 630, 633, 635, T42WD)"
 arch=('i686' 'x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:Epson End User Software License Agreement')
-depends=('epson-inkjet-printer-filter' 'glibc')
+depends=('epson-inkjet-printer-filter-lsb' 'glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 source=("https://download.ebz.epson.net/dsc/op/stable/SRPMS/${_pkgsrc}-1lsb3.2.src.rpm")
