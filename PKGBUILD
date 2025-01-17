@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=ktailctl
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 arch=(x86_64 aarch64)
 url='https://github.com/f-koehler/KTailctl'
@@ -44,7 +44,7 @@ validpgpkeys=(
 
 # git tag is used by the cmake script to determine app version
 source=(git+$url.git#tag=v$pkgver?signed)
-sha256sums=('953993026582d9c665c3fd3a962b9d84aa7cd45421c403043837b4ec280a13c1')
+sha256sums=('edde7e2412e70758703147149d8bd068312b1a609e31e42f67a174d3d2b16745')
 
 prepare() {
   cd KTailctl/src/wrapper
