@@ -3,7 +3,7 @@
 pkgname=distrohoop
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A CLI Tool written in Rust that determines your next Distro :D!"
+pkgdesc="A CLI Tool written in Rust that determines your next Distro"
 arch=('x86_64')
 url="https://github.com/br0sinski/distrohoop"
 license=('MIT')
