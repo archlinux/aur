@@ -18,7 +18,7 @@ check-for-update:
   - ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts
   - git checkout master
   - git remote rm origin
-  - git remote add origin git@jonasled.dev:jonasled/aptakube.git
+  - git remote add origin git@jonasled.dev:jonasled/aptakube-deb-aur.git
   script:
   - latest_version=$(curl https://api.github.com/repos/aptakube/aptakube/releases | jq -r '.[0].tag_name')
   - source PKGBUILD
