@@ -3,13 +3,13 @@
 pkgname=oama-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.16
-pkgrel=4
+pkgrel=5
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
 arch=(x86_64 aarch64)
 url="https://github.com/pdobsan/${_pkgname}"
-license=('BSD')
+license=('BSD-3-Clause')
 groups=()
-depends=()
+depends=('libsecret' 'libgirepository')
 makedepends=()
 optdepends=(
             'gnome-keyring: Stores passwords and encryption keys'
