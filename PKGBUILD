@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.12.9.arch1
+pkgver=6.12.10.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -56,9 +56,9 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('87be0360df0931b340d2bac35161a548070fbc3a8c352c49e21e96666c26aeb4'
+sha256sums=('4a516e5ed748537a73cb42ec47fbbeb6df8b1298e8892c29c0e91de79095b297'
             'SKIP'
-            'f57e541d26eb3971b3e587d418825c50612d75684f5ad6dd36b8084846751b5a'
+            '4b8c223bba9b89337b7085b24810b9b6027d95d931b2daedd43e2c5a50477f60'
             'SKIP'
             '6c30ff2a55331cc63a7c3d46f292f1aec63acbdf7218b309e2b9d03a5bc4743e'
             'a8afb5f75dde2eb038bdd2ec4cd2f8c600d6357ae64960c0df5f2c6c168514ce'
@@ -170,7 +170,7 @@ prepare() {
                  --module CONFIG_ASUS_ARMOURY \
                  --enable CONFIG_CRYPTO_LZ4 \
                  --enable CONFIG_CRYPTO_LZO \
-                 --module CONFIG_DRM_PRIVACY_SCREEN
+                 --enable CONFIG_DRM_PRIVACY_SCREEN
 
   scripts/config --enable CONFIG_PINCTRL_AMD
   scripts/config --enable CONFIG_X86_AMD_PSTATE
