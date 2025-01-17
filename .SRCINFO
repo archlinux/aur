@@ -5,7 +5,6 @@ pkgbase = vapoursynth-plugin-soifunc
 	url = https://github.com/shssoichiro/soifunc
 	arch = any
 	license = MIT
-	makedepends = git
 	makedepends = python-pip
 	depends = vapoursynth
 	depends = vapoursynth-plugin-znedi3
