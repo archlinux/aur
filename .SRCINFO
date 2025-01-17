@@ -1,0 +1,26 @@
+pkgbase = wp-downloader-electron-bin
+	pkgdesc = Wattpad Downloader (A website to download wp stories) -> Wrapped in Electron.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://wpdl.us/desktop
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = electron33
+	conflicts = wp-downloader-electron
+	options = !emptydirs
+	source = LICENSE-1.0.1.md::https://raw.githubusercontent.com/sipsuru/wp-downloader-electron/1.0.1/LICENSE.md
+	source = LICENSE-ORIGINAL-1.0.1.md::https://raw.githubusercontent.com/sipsuru/wp-downloader-electron/1.0.1/ORIGINAL-LICESE.md
+	source = wp-downloader-electron.sh
+	sha256sums = f518e3c019c0c961bb7e30889a7a380706829b796d696864d144cea285c5439a
+	sha256sums = 6569e851f36dbfc2ca03c369e4722582eed9affa09d6af1b76ec3db148219a2a
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_aarch64 = wp-downloader-electron-1.0.1-aarch64.rpm::https://github.com/sipsuru/wp-downloader-electron/releases/download/1.0.1/wp-downloader-electron-1.0.1.aarch64.rpm
+	sha256sums_aarch64 = f419a7c3a9fcae0ed0ed57f3de5e0b1748f37ed840f2c36546fd2aaadfc1553a
+	source_armv7h = wp-downloader-electron-1.0.1-armv7h.rpm::https://github.com/sipsuru/wp-downloader-electron/releases/download/1.0.1/wp-downloader-electron-1.0.1.armv7l.rpm
+	sha256sums_armv7h = f0d5148855ed954adf394875a1f2bf13e5cf73195a81644dca328ee73b18fd8f
+	source_x86_64 = wp-downloader-electron-1.0.1-x86_64.rpm::https://github.com/sipsuru/wp-downloader-electron/releases/download/1.0.1/wp-downloader-electron-1.0.1.x86_64.rpm
+	sha256sums_x86_64 = 4aeabbad148052ff2b1a1b350d9af050a52510fe406436821c2401e6b636e076
+
+pkgname = wp-downloader-electron-bin
