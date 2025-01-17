@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bench
-_pkgver=1.1.3
+_pkgver=1.1.4
 pkgname=r-${_pkgname,,}
-pkgver=1.1.3
-pkgrel=3
+pkgver=1.1.4
+pkgrel=1
 pkgdesc='High Precision Timing of R Expressions'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -32,7 +32,7 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bfae6320ad8c0c84fa6832519fac0e783e8d3ac5e3019ff6526f8060e8f1f317')
+sha256sums=('b822f5b7648deecc6b516dcca4e932ce92e65eb166b997b04355218aceb1d083')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
