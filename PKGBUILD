@@ -1,6 +1,6 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=piknik
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Copy/paste anything over the network."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/jedisct1/${pkgname}"
 license=('ISC')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-md5sums=('964ae408ff8b0e254695205f9d978f61')
+sha256sums=('937e98cc80569e4e295baa0ad7fa998da593af137eb33e191b12b23d2ca3a666')
 
 build() {
   cd "${pkgname}-${pkgver}"
