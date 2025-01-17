@@ -1,0 +1,27 @@
+pkgbase = vapoursynth-plugin-soifunc
+	pkgdesc = Plugin for Vapoursynth: soifunc
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/shssoichiro/soifunc
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-pip
+	depends = vapoursynth
+	depends = vapoursynth-plugin-znedi3
+	depends = vapoursynth-plugin-vstools
+	depends = vapoursynth-plugin-vsscale
+	depends = vapoursynth-plugin-vsdeband
+	depends = vapoursynth-plugin-vsdenoise
+	depends = vapoursynth-plugin-vsmasktools
+	depends = vapoursynth-plugin-vskernels
+	optdepends = vapoursynth-plugin-bm3dcuda: BM3D support, GPU version
+	optdepends = vapoursynth-plugin-bm3dcuda-cpu: BM3D support, CPU version
+	optdepends = vapoursynth-plugin-dfttest2: dfttest support, GPU version
+	optdepends = vapoursynth-plugin-dfttest2-cpu: dfttest support, CPU version
+	provides = vapoursynth-plugin-soifunc
+	conflicts = vapoursynth-plugin-soifunc
+	source = https://files.pythonhosted.org/packages/e0/84/9f9e604609b3c70196e9955e73e3011e0644a721a99e6f9729c8f737464e/soifunc-0.8.1-py3-none-any.whl
+	sha256sums = 09a9af54d852e278a535c481daf16aeb5105f3735f3423cfd4ac6427f6c11188
+
+pkgname = vapoursynth-plugin-soifunc
