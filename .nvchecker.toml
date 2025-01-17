@@ -1,0 +1,4 @@
+[euporie]
+source = "git"
+git = "https://github.com/joouha/euporie.git"
+prefix = "v"

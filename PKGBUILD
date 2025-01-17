@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="euporie"
-pkgver=2.8.2
+pkgver=2.8.5
 pkgrel=1
 pkgdesc="Jupyter notebooks in the terminal"
 arch=('any')
@@ -27,7 +27,7 @@ depends=(
 optdepends=('python-asyncssh: for Euporie hub support')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3a3c67bb3a998189b7b738158878eb2e31acda5e7d8063a4e90380207b0f3946')
+sha256sums=('51f4d039b9e6b5b07dc58e7b68d69dd105234eeaba514fbe73d339b019928640')
 
 build () {
   cd "${srcdir}/${_pkgsrc}"
@@ -45,8 +45,8 @@ package () {
   cd "${srcdir}/${_pkgsrc}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  install -Dm644 "README.rst"   "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "${pkgdir}${site_packages}/${_pkgsrc}.dist-info/licenses/LICENSE" \
+  install -vDm644 "README.rst"   "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+  install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -vs "${site_packages}/${_pkgsrc}.dist-info/licenses/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
