@@ -4,8 +4,8 @@
 # Contributor: Maxime Arthaud <maxime@arthaud.me>
 
 pkgname=zxing-cpp-tools
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Tools from the repo examples of ZXing-C++ (zxing-cpp)"
 arch=('x86_64')
 url="https://github.com/zxing-cpp/zxing-cpp"
@@ -15,7 +15,7 @@ depends=('zxing-cpp')
 makedepends=('git' 'cmake')
 checkdepends=('gtest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('02078ae15f19f9d423a441f205b1d1bee32349ddda7467e2c84e8f08876f8635')
+sha256sums=('64e4139103fdbc57752698ee15b5f0b0f7af9a0331ecbdc492047e0772c417ba')
 
 build() {
 	cmake -B build -S "zxing-cpp-$pkgver" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=None -DBUILD_EXAMPLES=ON -DBUILD_UNIT_TESTS=ON
