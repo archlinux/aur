@@ -1,0 +1,14 @@
+pkgbase = qrrs-bin
+	pkgdesc = QRrs is a simple, cross-platform, command-line utility written in rust for working with qr codes (what actually follows from the name).
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://github.com/Lenivaya/qrrs
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = qrrs
+	conflicts = qrrs
+	source = https://github.com/Lenivaya/qrrs/releases/download/v0.1.10/qrrs-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 4f26de442e47bd498f4f75757547bab5d969f32cf99bb5d1b024cbc2fb491ec0
+
+pkgname = qrrs-bin
