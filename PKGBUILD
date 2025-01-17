@@ -4,7 +4,7 @@
 _pkgname=bypass-paywalls-chrome-clean
 _archive="${_pkgname}-master"
 pkgname=chromium-bypass-paywalls-clean
-pkgver=4.0.0.4
+pkgver=4.0.0.5
 pkgrel=1
 pkgdesc="Chromium extension to bypass paywalls"
 url="https://gitflic.ru/project/magnolia1234/bpc_uploads"
