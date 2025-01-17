@@ -1,6 +1,6 @@
 pkgbase = refine-git
 	pkgdesc = Tweak various aspects of GNOME
-	pkgver = 0
+	pkgver = 0.4.0.r0.g4f6ec44
 	pkgrel = 1
 	url = https://gitlab.gnome.org/TheEvilSkeleton/Refine
 	arch = any

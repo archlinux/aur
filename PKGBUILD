@@ -1,6 +1,6 @@
 # Maintainer: Yuki Sireneva <yuki dot utk8g at gmail dot com>
 pkgname=refine-git
-pkgver=r91.371932b
+pkgver=0.4.0.r0.g4f6ec44
 pkgrel=1
 pkgdesc="Tweak various aspects of GNOME"
 arch=('any')
@@ -15,10 +15,7 @@ b2sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
+  git describe --tags --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
