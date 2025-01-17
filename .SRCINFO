@@ -1,0 +1,19 @@
+pkgbase = flashorama-bin
+	pkgdesc = Heaventy's Flashorama Electron App (Based on NewCP-App).(Prebuilt version.Use system-wide electron)
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://flashorama.heaventy-projects.fr/
+	arch = x86_64
+	license = MIT
+	depends = electron11
+	depends = python-setuptools
+	depends = nodejs
+	conflicts = flashorama
+	options = !strip
+	options = !emptydirs
+	source = flashorama-1.1.5.rpm::https://github.com/DarkShoro/HeaventyFlashorama/releases/download/v1.1.5/flashorama-1.1.5-1.x86_64.rpm
+	source = flashorama.sh
+	sha256sums = 6dd40e3180f92933dc6ba54d1f905b64145e5e1c2d4d6b8e104de0a54092e124
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = flashorama-bin
