@@ -9,9 +9,6 @@ arch=('any')
 url="https://github.com/Erwin-Iosef/papirus-icon-theme-plasma-fork.git"
 license=("GPL-3.0-or-later")
 depends=('gtk-update-icon-cache')
-optdepends=('hardcode-fixer-git: To deal with hardcoded application icons'
-            'hardcode-tray-git: To fix hardcoded tray icons'
-            'sif-git: To fix icons of running Steam games')
 makedepends=('git')
 source=("git+https://github.com/Erwin-Iosef/papirus-icon-theme-plasma-fork.git")
 options+=(!strip)
