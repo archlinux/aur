@@ -1,11 +1,11 @@
 pkgbase = getquotes
 	pkgdesc = A simple command-line tool to fetch random quotes (pre-built binary).
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/MuntasirSZN/getquotes
 	arch = x86_64
 	license = MIT
-	source = https://github.com/MuntasirSZN/getquotes/releases/download/v0.2.2/getquotes-x86_64-unknown-linux-gnu
+	source = https://github.com/MuntasirSZN/getquotes/releases/download/v0.2.3/getquotes-x86_64-unknown-linux-gnu
 	source = https://raw.githubusercontent.com/MuntasirSZN/getquotes/refs/heads/main/LICENSE
 	source = https://raw.githubusercontent.com/MuntasirSZN/getquotes/refs/heads/main/man/getquotes.1
 	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
