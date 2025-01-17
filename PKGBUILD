@@ -2,23 +2,23 @@
 
 _plug=soifunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=97.ddfc7b7
-pkgrel=2
+pkgver=124.0fc49d3
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/shssoichiro/soifunc'
 license=('MIT')
 depends=('vapoursynth'
-  'vapoursynth-plugin-znedi3-git'
-  'vapoursynth-plugin-vstools-git'
-  'vapoursynth-plugin-vsscale-git'
-  'vapoursynth-plugin-vsdeband-git'
-  'vapoursynth-plugin-vsdenoise-git'
-  'vapoursynth-plugin-vsrgtools-git'
-  'vapoursynth-plugin-vsmasktools-git'
+  'vapoursynth-plugin-znedi3'
+  'vapoursynth-plugin-vstools'
+  'vapoursynth-plugin-vsscale'
+  'vapoursynth-plugin-vsdeband'
+  'vapoursynth-plugin-vsdenoise'
+  'vapoursynth-plugin-vsmasktools'
+  'vapoursynth-plugin-vskernels'
 )
-optdepends=('vapoursynth-plugin-bm3dcuda-git: BM3D cuda/cuda_rtc + fast cpu support'
-  'vapoursynth-plugin-bm3dcuda-cpu-git: BM3D fast cpu support, without cuda'
+optdepends=('vapoursynth-plugin-bm3dcuda: BM3D cuda/cuda_rtc + fast cpu support'
+  'vapoursynth-plugin-bm3dcuda-cpu: BM3D fast cpu support, without cuda'
 )
 makedepends=('git'
   'python-poetry'
