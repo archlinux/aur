@@ -1,6 +1,7 @@
-# Maintainer: Rowan Decker <rowan@rowandecker.com>
+# Maintainer: Scott Panton <panton.scott@gmail.com>
+
 pkgname=vban-git
-pkgver=5c5d1118dcb99fb53f9c69b46794877b25d80d28
+pkgver=r97.4f69e5a
 pkgrel=1
 pkgdesc="An open-source implementation of a VBAN audio protocol receiver"
 arch=('any')
@@ -9,7 +10,7 @@ depends=('alsa-lib' 'libpulse' 'jack')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git://github.com/quiniouben/vban.git')
+source=('git+https://github.com/quiniouben/vban.git')
 md5sums=('SKIP')
 
 pkgver() {

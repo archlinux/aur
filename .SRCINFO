@@ -1,6 +1,6 @@
 pkgbase = vban-git
 	pkgdesc = An open-source implementation of a VBAN audio protocol receiver
-	pkgver = 5c5d1118dcb99fb53f9c69b46794877b25d80d28
+	pkgver = 4f69e5a
 	pkgrel = 1
 	url = https://github.com/quiniouben/vban
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = vban-git
 	depends = jack
 	provides = vban
 	conflicts = vban
-	source = git://github.com/quiniouben/vban.git
+	source = git+https://github.com/quiniouben/vban.git
 	md5sums = SKIP
 
 pkgname = vban-git
-
