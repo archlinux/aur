@@ -6,7 +6,7 @@ pkgname="${_pkgname}-client-bin"
 _appname=com.hunterwittenborn.Celeste
 pkgver=0.8.3
 _snap="a9zAmHVl4doDwIGkptVyA7VI7fMlPPpE_36"
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI file synchronization client that can sync with any cloud provider "
 arch=('x86_64')
 url="https://github.com/hwittenborn/celeste"
@@ -30,14 +30,16 @@ source=()
 
 source=("${pkgname%-bin}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/${_snap}.snap")
 sha256sums=('b8dc5d75c795930529018096523ade359aff22543a18c9eaeff8b20bbf0d7f38')
-build() {
+prepare() {
     unsquashfs -f "${srcdir}/${pkgname%-bin}-${pkgver}.snap"
-    sed "s|Exec=${_pkgname}|Exec=${pkgname%-bin}|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
-        -i "${srcdir}/squashfs-root/usr/share/applications/${_appname}.desktop"
-    sed "s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/usr/share/metainfo/${_appname}.metainfo.xml"
+    sed -e "
+        s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
+        s/Icon=${_appname}/Icon=${pkgname%-bin}/g
+    " -i "${srcdir}/squashfs-root/usr/share/applications/${_appname}.desktop"
+    sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/squashfs-root/usr/share/metainfo/${_appname}.metainfo.xml"
 }
 package() {
     install -Dm755 "${srcdir}/squashfs-root/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -D "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/apps/${_appname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/app/${pkgname%-bin}.svg"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/apps/${_appname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/app/${pkgname%-bin}.svg"
 }
