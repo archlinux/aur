@@ -5,7 +5,7 @@ _name=${pkgname#python-}
 pkgdesc="Using SQLAlchemy with Spatial Databases"
 url="https://geoalchemy-2.readthedocs.io/"
 
-pkgver=0.15.2
+pkgver=0.17.0
 pkgrel=1
 
 arch=("any")
@@ -35,7 +35,7 @@ checkdepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=("7650349dc6c8c9e61e6f66787a0f764c6573c6a9a3dbbedea2d87c476f9308b9693f6f8f4d88f5263abe7c9a1fd76d37718d64154cf0618c008bf03d087727f7")
+b2sums=("8ca0b15592371a88b3aa2cbff7a3bb45a46086a0e601958a588f10aa2154504fffd6ab3fecb856a120fc76d072d5f5afb3d38b5201c4a2b2040e97db7e5ec7e3")
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
@@ -44,7 +44,7 @@ build() {
 
 check() {
     cd "${srcdir}"/${_name}-${pkgver}
-    python -m pytest --exitfirst -k "not mysql and not postgresql"
+    python -m pytest --exitfirst -k "not mysql and not postgresql and not mariadb"
 }
 
 package() {
