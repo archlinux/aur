@@ -6,10 +6,10 @@ pkgdesc="Encode spatial data as topology in Python"
 url="https://mattijn.github.io/topojson/"
 
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 
 arch=("any")
-license=("BSD")
+license=("BSD-3-Clause")
 
 depends=(
     "python"
