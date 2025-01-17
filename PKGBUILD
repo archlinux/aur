@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=13.4.25
+pkgver=13.4.49
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -30,7 +30,7 @@ sha256sums=('SKIP'
             'efb37bd706e6535abfa20c77bb16597253391619dae275627312d00ee7332fa3'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
             '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0'
-            'cb7eb20b6b0558a75a1862e6b9eb2414f1c2b981afca2e9e5208b23748849688')
+            '8429c19062bff535e5af1399e9a40383dd7b6421f395abad5879fe92be99ae66')
 
 OUTFLD=x64.release
 

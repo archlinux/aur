@@ -1,16 +1,16 @@
 diff --git a/BUILD.gn b/BUILD.gn
-index 7f333889e0c..c4a0c495226 100644
+index e03e85d2ad7..5d5869a6c7d 100644
 --- a/BUILD.gn
 +++ b/BUILD.gn
-@@ -1528,6 +1528,7 @@ config("toolchain") {
-       # implementation defined (rather than UB), and our supported compilers
-       # have the expected reasonable behaviour.
-       "-Wno-invalid-offsetof",
-+      "-Wno-deprecated",
-     ]
-   }
+@@ -1633,6 +1633,7 @@ config("toolchain") {
+     # on non-standard-layout types is implementation defined (rather than UB),
+     # and our supported compilers have the expected reasonable behaviour.
+     "-Wno-invalid-offsetof",
++    "-Wno-deprecated",
+   ]
  
-@@ -1735,6 +1736,11 @@ config("toolchain") {
+   if (!is_clang) {
+@@ -1676,6 +1677,11 @@ config("toolchain") {
        # Disable dangling pointer warnings, which are often false positives when
        # using scopes.
        "-Wno-dangling-pointer",
