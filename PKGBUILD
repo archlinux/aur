@@ -152,6 +152,14 @@
 # Set to anything but null to activate.
 : "${_debug:=""}"
 
+# Show full compilation output
+# Enabling this will cause 'make' to display
+# all targets currently compiling instead of
+# the 'pv' magic we're doing.
+#
+# Set to anything but null to activate.
+: "${_show_compile:=""}"
+
 ### BUILD OPTIONS END
 
 # Kernel version
@@ -175,6 +183,7 @@ url="https://git.staropensource.de/JeremyStarTM/aur-linux-clear"
 license=(GPL-2.0-only)
 makedepends=("bc" "cpio" "gettext" "git" "libelf" "pahole" "perl" "python" "tar" "xz" "zstd")
 [[ -n "${_use_llvm_to}" ]] && makedepends+=("clang" "llvm" "lld")
+[[ -n "${_show_compile}" ]] && makedepends+=("pv")
 options=("!strip" "!debug")
 [[ "${_debug}" == "y" ]] && options=("!strip")
 source=(
@@ -403,7 +412,11 @@ prepare() {
 # Build kernel
 build() {
     cd "${_src_linux}" || exit 1
-    make ${BUILD_FLAGS[*]} all | pv -l -F "Elapsed time: %t, targets per sec: %a" > /dev/null
+    if [ -n "${_show_compile}" ]; then
+        make ${BUILD_FLAGS[*]} all
+    else
+        make ${BUILD_FLAGS[*]} all | pv -l -F "Elapsed time: %t, targets per sec: %a" > /dev/null
+    fi
 }
 
 # Packages the kernel package
