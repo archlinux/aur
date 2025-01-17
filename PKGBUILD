@@ -16,8 +16,8 @@ pkgrel='1'
 pkgdesc="The GNU Compiler Collection - C and C++ frontends (${_pkgver}.x)"
 arch=('i686' 'x86_64')
 url='http://gcc.gnu.org'
-license=('GPL' 'LGPL' 'FDL' 'custom')
-depends=('zlib')
+license=('GPL-2.0-only' 'LGPL-2.1-only' 'GPL-3.0-only' 'LGPL-3.0-only' 'GFDL-1.3-or-later' 'custom')
+depends=('glibc' 'gcc-libs' 'bash' 'zlib')
 makedepends=('binutils>=2.24' 'libmpc' 'doxygen')
 makedepends+=('cloog' 'texinfo')
 checkdepends=('dejagnu' 'inetutils')
