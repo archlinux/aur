@@ -1,0 +1,11 @@
+pkgbase = distrohoop-bin
+	pkgdesc = A CLI Tool written in Rust that determines your next Distro :D! (Precompiled binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/br0sinski/distrohoop
+	arch = x86_64
+	license = MIT
+	source = https://github.com/br0sinski/distrohoop/releases/download/1.0.0/distrohoop-linux-x64
+	sha256sums = SKIP
+
+pkgname = distrohoop-bin
