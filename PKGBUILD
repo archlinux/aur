@@ -15,7 +15,7 @@ makedepends=('git')
 prepare() {
     cd "${pkgname}"
 
-    git revert --no-commit 9b2ee7439ee66a1ba71a47aadfa933f5f955be3c
+    git revert --no-commit c6f8af335188d583b1f78b814afe4632cfc642a3
 }
 
 build() {
