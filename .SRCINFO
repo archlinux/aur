@@ -1,7 +1,7 @@
 pkgbase = fum
-	pkgdesc = A tui-based mpris music client.
+	pkgdesc = A fully ricable tui-based music client.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qxb3/fum
 	arch = x86_64
 	license = MIT
