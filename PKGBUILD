@@ -10,7 +10,7 @@ _deps_gui=('libgtk-4.so' 'libadwaita-1.so')
 
 pkgbase=openscq30
 pkgname=("$pkgbase"-{cli,gui}) 
-pkgver=1.17.0
+pkgver=1.19.1
 pkgrel=1
 pkgdesc="Cross platform application for controlling settings of Soundcore headphones"
 arch=(x86_64 aarch64 armv7l)
@@ -20,9 +20,9 @@ groups=("$pkgbase")
 makedepends=('cargo')
 depends=("${_deps_common[@]}" "${_deps_gui[@]}")
 source=("$_pname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('be177a312639463d71cb95343ee99511')
-sha512sums=('a55198d47a65481f6e2d4c1d21e130e228a5451c9824874254b988a17a77c1a47a8172c0f7af7dbedb0078791398c02ec15bc5b7a47537b3996d82cb9874f8f0')
-b2sums=('55d04b6b0c32ebf23cdfc547438860e8c0c0f29dd7c2c04c92d37ad33031b9df7f995ce81b2475809a016bfd95af1124a2322b92c48eb1a652269fd292209271')
+md5sums=('f8eece86a53bd56c83e4a7fd225d3755')
+sha512sums=('57af82d887f322d2299c694cb6b25819b58ff467e1d6578b75068418101049a97a15c771bf3641660e8a920a9e753f35cfa0fac8adebbd95b59f1255f9339af9')
+b2sums=('8252aef942d1ad4dbe16cc2c0b563d534cb3fa9d41d4f0ecdddb73c63da432b3c206a34866f0dcd4450eb968b47ae2474ca88790d595cce1d94a61558aa40741')
 
 prepare() {
 	cd "$srcdir/$_pname-$pkgver"
