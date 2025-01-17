@@ -1,7 +1,7 @@
 # Maintainer: Daniel Chesters <archlinux@coin-coin.xyz>
 
 pkgname=python-ollama-git
-pkgver=0.4.6.r2.g89e719a
+pkgver=0.4.6.r6.g967fd65
 pkgrel=1
 pkgdesc="Ollama Python library"
 arch=('any')
@@ -14,6 +14,7 @@ depends=(
 	'python'
 	'python-httpx'
 	'python-typing_extensions'
+	'python-pydantic'
 )
 makedepends=(
 	'python-poetry'
