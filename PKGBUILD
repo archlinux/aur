@@ -1,7 +1,7 @@
 # Maintainer: Erik Hedlund <erikcghedlund at outlook dot com>
 _pkgname=gradualizer
 pkgname=${_pkgname}-git
-pkgver=112646d
+pkgver=0.3.0.r49.g112646d
 pkgrel=1
 pkgdesc="A Gradual type system for Erlang"
 arch=('any')
@@ -16,8 +16,8 @@ source=("$_pkgname::git+https://github.com/josefs/Gradualizer.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  echo $(git rev-parse --short HEAD)
+  cd "$_pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
