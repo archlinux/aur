@@ -4,7 +4,7 @@
 _model="workforce-635-nx625-series"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.1
-pkgrel=14
+pkgrel=15
 pkgdesc="Epson inkjet printer driver (ME OFFICE 82WD, 85ND, 900WD, 960FWD; Stylus NX625, SX525WD, SX620FW, TX560WD; Stylus Office B42WD, BX525WD, BX625FWD, TX620FWD; WorkForce 60, 625, 630, 633, 635, T42WD)"
 arch=('i686' 'x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -32,11 +32,11 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgsrc}"
   find "ppds" -type f -name '*.ppd' -exec \
-    sed -e "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}/watermark|/usr/share/epson-inkjet-printer-filter/watermark|g" \
-        -e "s|/opt/${pkgname}/watermark|/usr/share/epson-inkjet-printer-filter/watermark|g" \
-        -e "s|/opt/${pkgname}/cups/lib/filter/epson_inkjet_printer_filter|/usr/lib/cups/filter/epson_inkjet_printer_filter|g" \
-        -e "s|/opt/epson-${_model}/cups/lib/filter/epson_inkjet_printer_filter|/usr/lib/cups/filter/epson_inkjet_printer_filter|g" \
-        -e 's|"\([^"]*\.data\)"|"/usr/share/epson-inkjet-printer-filter/resource/\1"|g' \
+    sed -e "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}/watermark|/usr/share/epson-inkjet-printer-filter-lsb/watermark|g" \
+        -e "s|/opt/${pkgname}/watermark|/usr/share/epson-inkjet-printer-filter-lsb/watermark|g" \
+        -e "s|/opt/${pkgname}/cups/lib/filter/epson_inkjet_printer_filter|/usr/lib/cups/filter/epson_inkjet_printer_filter_lsb|g" \
+        -e "s|/opt/epson-${_model}/cups/lib/filter/epson_inkjet_printer_filter|/usr/lib/cups/filter/epson_inkjet_printer_filter_lsb|g" \
+        -e 's|"\([^"]*\.data\)"|"/usr/share/epson-inkjet-printer-filter-lsb/resource/\1"|g' \
         -i "{}" +
 }
 
@@ -52,7 +52,7 @@ package() {
   find "ppds"       -type f -execdir \
     install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
   find "resource"   -type f -exec    \
-    install -vDm644 "{}" "${pkgdir}/usr/share/epson-inkjet-printer-filter/{}" \;
+    install -vDm644 "{}" "${pkgdir}/usr/share/epson-inkjet-printer-filter-lsb/{}" \;
 
   cd "${pkgdir}/usr/lib"
   for lib in *.so.*; do
