@@ -1,7 +1,7 @@
 # Maintainer: Artem Suprun <efogdev@gmail.com>
 
 pkgname=play-timer
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="CLI-friendly easy-to-use timer app with native DE integration."
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("$pkgname-$curarch::$url/releases/download/$pkgver/$pkgname-$curarch"
         "$pkgname-$curarch.sha256::$url/releases/download/$pkgver/$pkgname-$curarch.sha256")
 sha256sums=('SKIP' 'SKIP')
 glibname="io.github.efogdev.mpris-timer"
-
+ 
 prepare() {
   sha256sum -c "$srcdir/$pkgname-$curarch.sha256"
   git clone "$url" "$srcdir/repo"
