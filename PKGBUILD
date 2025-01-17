@@ -1,12 +1,12 @@
 # Maintainer: Alexander Daum <alexander.daum at mailbox dot org>
 
 pkgname='fantasia-archive-appimage'
-pkgver=0.1.13
+pkgver=0.1.15
 pkgrel=1
 pkgdesc='A database manager for world building'
-url='https://github.com/Elvanos/fantasia-archive-v1'
-basename="Fantasia.Archive-${pkgver}-linux-appimage"
-zipname="${basename}.zip"
+url='https://github.com/vishiri/fantasia-archive-v1'
+basename="Fantasia.Archive-${pkgver}-linux"
+zipname="${basename}-appImage.zip"
 appimgname="${basename}.AppImage"
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
 
@@ -20,11 +20,9 @@ license=(
     'GPL3'
 )
 source=(
-    "https://github.com/Elvanos/fantasia-archive/releases/download/v${pkgver}/${zipname}"
+    "https://github.com/vishiri/fantasia-archive-v1/releases/download/v${pkgver}/${zipname}"
 )
-sha512sums=(
-    '5de6637012337a9799e327d244824e5352271b760f329a4dff040be6effce1b25efff93442e60b8cfdf27563829ae90e9e8198e824e5a5a0fa7593ca1d139cd0'
-)
+sha512sums=('8fc5d42e714147fc6b405e5af814e81a739aa3e740ec8cb665d931ece48fc7def9cb119684908f21189f9ad51fb1bf1818a4bfc1a0270803798a1941527b5259')
 arch=(
     'x86_64'
 )
