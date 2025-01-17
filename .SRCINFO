@@ -1,8 +1,8 @@
 pkgbase = cinnamon-sounds
 	pkgdesc = Cinnamon desktop sounds extracted from Linuxmint (mint-artwork)
-	pkgver = 1.8.4
+	pkgver = 1.8.9
 	pkgrel = 1
-	url = http://packages.linuxmint.com
+	url = https://github.com/linuxmint/
 	arch = any
 	license = GPL
 	depends = cinnamon
@@ -10,8 +10,10 @@ pkgbase = cinnamon-sounds
 	conflicts = mint-sounds
 	conflicts = cinnamon-sound-effects
 	conflicts = mint-artwork-cinnamon
-	source = http://packages.linuxmint.com/pool/main/m/mint-artwork/mint-artwork_1.8.4.tar.xz
-	sha256sums = 0e9468193541d6f6a27f850d88211a54efe9c9063c1dcfd01b5be662456bdc8c
+	source = http://packages.linuxmint.com/pool/main/m/mint-artwork/mint-artwork_1.8.9.tar.xz
+	source = cinnamon-sounds.install
+	sha256sums = 30a5ca9dedf0ab17c8aa639ac299996d7fcd455480e5f05eb69484fa6aff7aa0
+	sha256sums = d74b6c04f500c3c1c705c4f490801b669c8ee3a7612dea840a575aaa2d7961dc
 
 pkgname = cinnamon-sounds
 	install = cinnamon-sounds.install
