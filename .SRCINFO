@@ -1,0 +1,16 @@
+pkgbase = python-brokenaxes
+	pkgdesc = Create broken axes
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/bendichter/brokenaxes
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-matplotlib>3.6
+	noextract = brokenaxes-0.6.2-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/b/brokenaxes/brokenaxes-0.6.2-py3-none-any.whl
+	sha256sums = bc0a269c4a9a9a643504fbb7d734a279629cc2cada5ee90c57645e75c89f38ad
+
+pkgname = python-brokenaxes
