@@ -1,6 +1,6 @@
 pkgbase = gz-msgs11
 	pkgdesc = Messages for Gazebo robot simulation.
-	pkgver = 11.0.1
+	pkgver = 11.0.2
 	pkgrel = 1
 	url = https://github.com/gazebosim/gz-msgs
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = gz-msgs11
 	depends = python
 	depends = tinyxml2
 	provides = gz-msgs=11
-	source = https://github.com/gazebosim/gz-msgs/archive/gz-msgs11_11.0.1.tar.gz
-	sha256sums = f83ba8d7db4bc5593a27832f97a9a5c04b70cffdb62e072c1a352de774225f37
+	source = https://github.com/gazebosim/gz-msgs/archive/gz-msgs11_11.0.2.tar.gz
+	sha256sums = db893c7ae6587de510d3111ca2fd2fcb9e4af5bba248529232c38cfd8b1f1ef4
 
 pkgname = gz-msgs11
