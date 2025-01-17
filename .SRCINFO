@@ -1,7 +1,7 @@
 pkgbase = python-dhash
 	pkgdesc = Calculate the difference hash (perceptual hash) for an image
 	pkgver = 1.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Jetsetter/dhash
 	arch = any
 	license = MIT
