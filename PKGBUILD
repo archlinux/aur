@@ -19,8 +19,8 @@ pkgrel='2'
 pkgdesc="The GNU Compiler Collection for multilib (${_pkgver}.x)"
 arch=('x86_64')
 url='http://gcc.gnu.org'
-license=('GPL' 'LGPL' 'FDL' 'custom')
-depends=('zlib')
+license=('GPL-2.0-only' 'LGPL-2.1-only' 'GPL-3.0-only' 'LGPL-3.0-only' 'GFDL-1.3-only' 'custom')
+depends=('glibc' 'lib32-glibc' 'gcc-libs' 'lib32-gcc-libs' 'bash' 'zlib')
 makedepends=('binutils>=2.25' 'libmpc' 'doxygen')
 makedepends+=('lib32-glibc>=2.20' 'texinfo')
 checkdepends=('dejagnu' 'inetutils')
