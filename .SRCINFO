@@ -1,10 +1,10 @@
 pkgbase = getmail6
 	pkgdesc = mail retriever with support for POP3, IMAP4, SDPS; fork of getmail 5.14 modified to support python3
 	pkgver = 6.19.05
-	pkgrel = 1
+	pkgrel = 2
 	url = http://getmail6.org/
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = python-setuptools
 	depends = python
 	optdepends = python-keyring: secure password store
