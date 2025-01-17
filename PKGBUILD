@@ -15,9 +15,9 @@ pkgrel='2'
 pkgdesc="The GNU Compiler Collection (${_pkgver}.x)"
 arch=('i686' 'x86_64')
 url='http://gcc.gnu.org'
-license=('GPL' 'LGPL' 'FDL' 'custom')
+license=('GPL-2.0-only' 'LGPL-2.1-only' 'GPL-3.0-only' 'LGPL-3.0-only' 'GFDL-1.3-only' 'custom')
 #groups=('base-devel')
-depends=('glibc>=2.17' 'binutils>=2.23' 'libmpc' 'cloog' 'ppl')
+depends=('glibc>=2.17' 'gcc-libs' 'bash' 'mpfr' 'binutils>=2.23' 'libmpc' 'cloog' 'ppl' 'zlib' 'libisl')
 makedepends=('flex' 'bison' 'setconf')
 #makedepends+=('gcc49')
 checkdepends=('dejagnu')
