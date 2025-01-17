@@ -1,0 +1,19 @@
+pkgbase = forgetools-bin
+	pkgdesc = A comprehensive desktop application built with Electron that provides a suite of essential development tools for software engineers.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.13
+	pkgrel = 1
+	url = https://github.com/tengfone/forgetools
+	arch = x86_64
+	license = MIT
+	makedepends = fuse2
+	depends = electron27
+	provides = forgetools=1.0.13
+	conflicts = forgetools
+	source = forgetools-1.0.13.AppImage::https://github.com/tengfone/forgetools/releases/download/v1.0.13/ForgeTools-1.0.13.AppImage
+	source = LICENSE-1.0.13::https://raw.githubusercontent.com/tengfone/forgetools/v1.0.13/LICENSE
+	source = forgetools.sh
+	sha256sums = 152d5980885d44b8b3a00ed9a346b65591aee5e2397992c6aa82dd0456c6e5cc
+	sha256sums = 6c445b2badf237bfe389eabd89702c8c2639bf8c3d2b302c021af85bb0f7937c
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = forgetools-bin
