@@ -1,0 +1,17 @@
+pkgbase = bundletool-git
+	pkgdesc = A command-line tool to manipulate Android App Bundles
+	pkgver = 1.18.0.r0.ge5819d7
+	pkgrel = 1
+	url = https://g.co/androidappbundle
+	arch = any
+	license = Apache-2.0
+	makedepends = gradle
+	depends = java-runtime
+	provides = bundletool
+	conflicts = bundletool
+	source = git+https://github.com/google/bundletool.git
+	source = bundletool.sh
+	sha256sums = SKIP
+	sha256sums = 3e00767959cb7cb78b76856ae76b61f37b481ca77f28b50a27acdc4c1820891e
+
+pkgname = bundletool-git
