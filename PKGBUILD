@@ -2,20 +2,20 @@
 
 pkgname=zmeventnotification
 pkgver=6.1.29.ga306ad2
-pkgrel=1
+pkgrel=2
 pkgdesc='A machine learning powered, secure websocket & MQTT based event notification server for ZoneMinder'
 arch=('any')
 url='https://github.com/ZoneMinder/zmeventnotification'
 license=('GPL-2.0-only')
 depends=('opencv' 'perl-config-inifiles' 'perl-crypt-eksblowfish' 'perl-json' 'perl-lwp-protocol-https' 'perl-net-mqtt-simple'
          'perl-net-websocket-server' 'python-face_recognition' 'python-gifsicle' 'python-imageio' 'python-imageio-ffmpeg'
-         'python-imutils' 'python-pyzm-git' 'python-requests' 'python-scikit-learn' 'python-shapely'
+         'python-imutils' 'python-pyzm' 'python-requests' 'python-scikit-learn' 'python-shapely'
          # ¯\_(ツ)_/¯
          'python-mysql-connector' 'python-psutil' 'python-sqlalchemy' 'qt5-base'
          # Uncomment the next line to enable support for the Google Coral Edge TPU
          #'edgetpu_api'
          )
-replaces=('zmeventnotification-git')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 backup=('etc/zoneminder/zmeventnotification.ini'
         'etc/zoneminder/secrets.ini'
         'etc/zoneminder/objectconfig.ini'
@@ -64,6 +64,13 @@ prepare() {
 
     # Change the default upstream ZM address to match the one used by the ZoneMinder package
     sed -i 's|https://portal/zm|http://localhost:8095|g' secrets.ini
+}
+
+build() {
+    cd ${pkgname}-a306ad2dbe87c5ace3d0ba89d9d4235fd489424b/hook
+
+    # Build the accompanying Python package zmes_hooks
+    python -m build --wheel --no-isolation
 }
 
 package() {
@@ -130,5 +137,5 @@ package() {
 
     # Install the accompanying Python package zmes_hooks
     cd hook
-    python setup.py install --root="${pkgdir}/" --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
