@@ -2,8 +2,8 @@
 
 _pkgname=scenefx
 pkgname="$_pkgname-git"
-pkgver=r213.e1f4bc5
-pkgrel=2
+pkgver=r251.ab17e38
+pkgrel=1
 license=("MIT")
 pkgdesc="A drop-in replacement for the wlroots scene API that allows wayland compositors to render surfaces with eye-candy effects"
 url="https://github.com/wlrfx/scenefx"
@@ -13,7 +13,7 @@ depends=(
 	"wayland"
 	"libdrm"
 	"libpixman-1.so"
-	"wlroots0.17"
+	"libwlroots-0.18.so"
 )
 makedepends=(
 	"git"
