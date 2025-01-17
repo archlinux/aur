@@ -1,0 +1,25 @@
+pkgbase = yubioauth-flutter-bin
+	pkgdesc = Flutter-version of the Yubikey Authenticator for Desktop
+	pkgver = 7.1.1
+	pkgrel = 1
+	url = https://github.com/Yubico/yubioath-flutter
+	arch = x86_64
+	license = Apache-2.0
+	depends = pcsclite
+	depends = libbsd
+	depends = openssl-1.1
+	depends = cairo
+	depends = libxext
+	depends = libnotify
+	depends = libxrender
+	depends = gtk3
+	depends = pango
+	depends = libepoxy
+	provides = yubico-authenticator
+	source = https://github.com/Yubico/yubioath-flutter/releases/download/7.1.1/yubico-authenticator-7.1.1-linux.tar.gz
+	source = https://github.com/Yubico/yubioath-flutter/releases/download/7.1.1/yubico-authenticator-7.1.1-linux.tar.gz.sig
+	validpgpkeys = 20EE325B86A81BCBD3E56798F04367096FBA95E8
+	sha256sums = f553503a810ded105254d4b537434d4870657c5240bf43c1a47afae798ace3f2
+	sha256sums = SKIP
+
+pkgname = yubioauth-flutter-bin
