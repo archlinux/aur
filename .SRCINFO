@@ -1,10 +1,10 @@
 pkgbase = python-pyzm-git
-	pkgdesc = Python API, Log, Event Server and Memory wrapper for ZoneMinder
-	pkgver = 0.3.56.r333.ff914ce
+	pkgdesc = Python API, Log, Event Server and Memory wrapper for ZoneMinder (git version)
+	pkgver = 0.3.64.r392.043e304
 	pkgrel = 1
 	url = https://github.com/ZoneMinder/pyzm
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
@@ -23,7 +23,9 @@ pkgbase = python-pyzm-git
 	depends = python-shapely
 	depends = python-sqlalchemy
 	depends = python-websocket-client
-	source = git+https://github.com/ZoneMinder/pyzm.git
+	provides = python-pyzm
+	conflicts = python-pyzm
+	source = python-pyzm-git::git+https://github.com/ZoneMinder/pyzm.git
 	sha256sums = SKIP
 
 pkgname = python-pyzm-git
