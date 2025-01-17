@@ -5,6 +5,7 @@ pkgbase = syslock
 	url = https://github.com/System64fumo/syslock
 	arch = aarch64
 	arch = x86_64
+	makedepends = wayland-protocols
 	depends = gtkmm-4.0
 	depends = gtk4-layer-shell
 	source = git+https://github.com/System64fumo/syslock
