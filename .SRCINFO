@@ -1,0 +1,12 @@
+pkgbase = kcl-lang
+	pkgdesc = KCL Programming Language
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/kcl-lang/cli
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	source = https://github.com/kcl-lang/cli/archive/refs/tags/v0.11.0.tar.gz
+	sha256sums = cab864ab3641ad9bacba5e13c0241a2ae495682d2b2a9327c7c4804213c97a1b
+
+pkgname = kcl-lang
