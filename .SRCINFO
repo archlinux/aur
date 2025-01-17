@@ -1,10 +1,10 @@
 pkgbase = python-segno
 	pkgdesc = Python QR Code and Micro QR Code encoder
 	pkgver = 1.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://segno.readthedocs.io/
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-flit-core
 	makedepends = python-installer
