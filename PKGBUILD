@@ -25,8 +25,8 @@ pkgrel='1'
 pkgdesc="The GNU Compiler Collection for multilib (${_pkgver%%.*}.x)"
 arch=('x86_64')
 url='http://gcc.gnu.org'
-license=('GPL' 'LGPL' 'FDL' 'custom')
-depends=('zlib' 'lib32-zlib' 'libmpc>=0.8.1' 'glibc' 'lib32-glibc')
+license=('GPL-2.0-only' 'LGPL-2.1-only' 'GPL-3.0-only' 'LGPL-3.0-only' 'GFDL-1.3-only' 'custom')
+depends=('glibc' 'gcc-libs' 'zlib' 'lib32-zlib' 'libmpc>=0.8.1' 'lib32-glibc')
 makedepends=( # https://gcc.gnu.org/install/prerequisites.html
   'binutils>=2.28'
   'gcc-libs-multilib'
