@@ -27,5 +27,5 @@ source=("https://files.pythonhosted.org/packages/e0/84/9f9e604609b3c70196e9955e7
 sha256sums=('09a9af54d852e278a535c481daf16aeb5105f3735f3423cfd4ac6427f6c11188')
 
 package() {
-  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps "soifunc-${pkgver}-py3-none-any.whl"
+  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps "${_plug}-${pkgver}-py3-none-any.whl"
 }
