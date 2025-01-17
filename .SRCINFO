@@ -1,6 +1,6 @@
 pkgbase = java-hotswapagent
 	pkgdesc = Java unlimited redefinition of classes at runtime.
-	pkgver = 1.4.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/HotswapProjects/HotswapAgent
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = java-hotswapagent
 	depends = java-runtime
 	provides = java-hotswapagent
 	conflicts = java-hotswapagent
-	source = java-hotswapagent-1.4.1.jar::https://github.com/HotswapProjects/HotswapAgent/releases/download/master/hotswap-agent-1.4.1.jar
-	sha256sums = b95217e6420c4170911e689729c09b28933bf942d1d1292200a46a48c1cb37b0
+	source = java-hotswapagent-2.0.0.jar::https://github.com/HotswapProjects/HotswapAgent/releases/download/RELEASE-2.0.0/hotswap-agent-2.0.0.jar
+	sha256sums = f91447e8ca8a457aa81e5239c921df9cf3acdef762bc27cf8acfafaf1005d860
 
 pkgname = java-hotswapagent
-
