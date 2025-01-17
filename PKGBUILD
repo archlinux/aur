@@ -17,7 +17,7 @@ makedepends=(
   'libicns'
 )
 
-_build="${pkgver##.r*}"
+_build="${pkgver%%.r*}"
 _pkgsrc="Mindustry-$_build"
 _pkgsrc_arc="Arc-$_build"
 _pkgext="tar.gz"
@@ -56,38 +56,38 @@ _package_common() {
     'java-runtime'
   )
 
-  install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/${pkgname#$_pkgtype}.desktop" << END
+  install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/${pkgname%$_pkgtype}.desktop" << END
 [Desktop Entry]
 Type=Application
-Name=$(sed -E -e "s/-/ /g;s/\b(.)/\u\1/g" <<< "${pkgname#$_pkgtype}")
+Name=$(sed -E -e "s/-/ /g;s/\b(.)/\u\1/g" <<< "${pkgname%$_pkgtype}")
 Comment=$pkgdesc
-Exec=${pkgname#$_pkgtype}
-Icon=${pkgname#$_pkgtype}
+Exec=${pkgname%$_pkgtype}
+Icon=${pkgname%$_pkgtype}
 Categories=Game;
 Terminal=false
 END
 
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/${pkgname#$_pkgtype}" << END
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/${pkgname%$_pkgtype}" << END
 #!/usr/bin/env sh
-exec /usr/bin/java -jar /usr/share/java/$_pkgname/${pkgname#$_pkgtype}.jar "\$@"
+exec /usr/bin/java -jar /usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar "\$@"
 END
 
   cd "$_pkgsrc"
   local icon_size
   for icon_size in 256 512 1024; do
     install -Dm644 "core/assets/icons/icon_${icon_size}x${icon_size}x32.png" \
-      "$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/${pkgname#$_pkgtype}.png"
+      "$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/${pkgname%$_pkgtype}.png"
   done
 }
 
 _package_mindustry() {
-  install -Dm755 "desktop/build/libs/Mindustry.jar" "$pkgdir/usr/share/java/$_pkgname/${pkgname#$_pkgtype}.jar"
+  install -Dm755 "desktop/build/libs/Mindustry.jar" "$pkgdir/usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar"
 }
 
 _package_mindustry-server() {
   pkgdesc+=" - server"
 
-  install -Dm755 "server/build/libs/server-release.jar" "$pkgdir/usr/share/java/$_pkgname/${pkgname#$_pkgtype}.jar"
+  install -Dm755 "server/build/libs/server-release.jar" "$pkgdir/usr/share/java/$_pkgname/${pkgname%$_pkgtype}.jar"
 }
 
 pkgname=("$_pkgname${_pkgtype:-}" "$_pkgname-server${_pkgtype:-}")
@@ -95,6 +95,6 @@ pkgname=("$_pkgname${_pkgtype:-}" "$_pkgname-server${_pkgtype:-}")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package_common" | tail -n +2)
-    $(declare -f "_package_${_p#$_pkgtype}" | tail -n +2)
+    $(declare -f "_package_${_p%$_pkgtype}" | tail -n +2)
   }"
 done
