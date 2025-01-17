@@ -2,7 +2,7 @@
 _appname=codius
 pkgname="vs${_appname}-bin"
 _pkgname=VSCodius
-pkgver=1.96.2
+pkgver=1.96.3
 _electronversion=32
 pkgrel=1
 pkgdesc="Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements.(Prebuilt version)"
@@ -29,7 +29,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-el8.${CARCH}.rpm"
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/RubisetCie/vscodius/v${pkgver}/LICENSE.txt"
 )
-sha256sums=('28e42fc2af7e593cf9065b65d0b4974dbb068dc8ba21bedf673362dade6385b0'
+sha256sums=('751ea45150b1de9b228d3855d58ab1892e1c3562251dfc58c0208f40cc79dafb'
             '9480271317925265e806a9a196aaa33410a962fa9d4d1e248a4a5187bc8c9df9')
 prepare() {
     sed -i "s/\/usr\/share\/${_appname}\/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/"*.desktop
