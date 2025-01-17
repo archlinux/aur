@@ -2,7 +2,7 @@
 
 pkgname=bumgr
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Bumgr Backup Manager for Restic'
 arch=('any')
 url='https://pypi.org/project/bumgr/'
@@ -18,8 +18,8 @@ build() {
 }
 
 package() {
-    install -Dm644 "${pkgname}-@.service" -t "${pkgdir}/usr/lib/systemd/system"
-    install -Dm644 "${pkgname}-@.timer" -t "${pkgdir}/usr/lib/systemd/system"
+    install -Dm644 "${pkgname}-@.service" -t "${pkgdir}/usr/lib/systemd/user"
+    install -Dm644 "${pkgname}-@.timer" -t "${pkgdir}/usr/lib/systemd/user"
 
     cd "${pkgname}-${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
