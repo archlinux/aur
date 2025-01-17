@@ -2,7 +2,7 @@
 # Maintainer: Amirhossein Banavi <ahbanavi at gmail dot com>
 
 pkgname=tinkerwell
-pkgver=4.21.2
+pkgver=4.21.5
 pkgrel=1
 pkgdesc="The code runner for PHP"
 _appimage_name="Tinkerwell-${pkgver}.AppImage"
@@ -11,7 +11,7 @@ url="https://tinkerwell.app"
 arch=("x86_64")
 license=("custom")
 source=("https://download.tinkerwell.app/tinkerwell/${_appimage_name}")
-sha256sums=("f98f0967fe4581aa3e21f70f1a8ba26e0530b9d82d86f868ac5f81c17a54209b")
+sha256sums=("8af6243a96c84dda9641b5ac0c8ffdc6df0868e7d54c9c182dfd6e467fa97cc5")
 
 prepare() {
 	chmod +x ${_appimage_name}
