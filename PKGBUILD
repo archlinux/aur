@@ -11,9 +11,9 @@ _cloogver='0.18.1'
 pkgrel='3'
 pkgdesc="The GNU Compiler Collection (${_pkgver}.x)"
 arch=('i686' 'x86_64')
-url='http://gcc.gnu.org'
-license=('GPL-3.0-or-later' 'LGPL-3.0+' 'GFDL-1.3' 'LicenseRef-custom')
-depends=('zlib')
+url='https://gcc.gnu.org'
+license=('GPL-2.0-only' 'LGPL-2.1-only' 'GPL-3.0-only' 'LGPL-3.0-only' 'GFDL-1.3-only' 'LicenseRef-custom')
+depends=('gcc-libs' 'glibc' 'bash' 'zlib')
 makedepends=('binutils>=2.25' 'libmpc' 'doxygen')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs' '!strip' '!buildflags')
