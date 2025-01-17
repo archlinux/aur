@@ -1,6 +1,6 @@
 pkgbase = openacs
 	pkgdesc = a toolkit for building scalable, community-oriented web applications.
-	pkgver = 5.10.0
+	pkgver = 5.10.1
 	pkgrel = 1
 	url = http://www.openacs.org
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = openacs
 	depends = naviserver-postgres-connector>=4.99.22
 	depends = naviserver-tclthread>=2.7.2
 	depends = systemd
-	source = https://openacs.org/projects/openacs/download/download/openacs-full-5.10.0.tar.gz?revision_id=5537440
+	source = https://openacs.org/projects/openacs/download/download/openacs-full-5.10.1.tar.gz
 	source = openacs.service
-	source = config-oacs-5.10.0.tcl
-	md5sums = 9f87a173ee633ece699fe45bfa9ad457
+	source = config-oacs-5.10.1.tcl
+	md5sums = aa1def27d449e909bc8482235ea2b900
 	md5sums = 3aed4279d9ed730c8c591f00a6dbca45
 	md5sums = 4c4d7fa8782187c6852e17aff2b2dd3b
 
