@@ -7,8 +7,8 @@ diff -Naur gcc-4.2.0.orig/gcc/config/i386/linux64.h gcc-4.2.0/gcc/config/i386/li
  
 -#define GLIBC_DYNAMIC_LINKER32 "/lib/ld-linux.so.2"
 -#define GLIBC_DYNAMIC_LINKER64 "/lib64/ld-linux-x86-64.so.2"
-+#define GLIBC_DYNAMIC_LINKER32 "/lib32/ld-linux.so.2"
-+#define GLIBC_DYNAMIC_LINKER64 "/lib/ld-linux-x86-64.so.2"
++#define GLIBC_DYNAMIC_LINKER32 "/usr/lib32/ld-linux.so.2"
++#define GLIBC_DYNAMIC_LINKER64 "/usr/lib/ld-linux-x86-64.so.2"
  
  #undef	LINK_SPEC
  #define LINK_SPEC "%{!m32:-m elf_x86_64} %{m32:-m elf_i386} \

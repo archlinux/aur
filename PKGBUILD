@@ -12,9 +12,9 @@ pkgrel='6'
 pkgdesc="The GNU Compiler Collection for multilib (${_pkgver}.x)"
 arch=('x86_64')
 url='http://gcc.gnu.org'
-license=('GPL' 'LGPL')
-depends=('glibc' 'gmp' 'binutils' 'mpfr' 'cloog' 'zlib' 'elfutils')
-makedepends=('flex' 'bison' 'setconf')
+license=('GPL-2.0-only' 'LGPL-2.1-only' 'GPL-3.0-only' 'LGPL-3.0-only')
+depends=('glibc' 'lib32-glibc' 'gcc-libs' 'lib32-gcc-libs' 'bash' 'gmp' 'binutils' 'mpfr' 'zlib')
+makedepends=('flex' 'bison' 'setconf' 'cloog' 'elfutils')
 #makedepends+=('gcc49')
 provides=("gcc${_pkgver//\./}") # no version as it is completely contained in the name
 conflicts=("gcc${_pkgver//\./}")
@@ -30,7 +30,7 @@ md5sums=('43df9ad8b4bb314a46bac12f5aefaec2'
          'c6eeee73007015c52043716fbe8ffdc7'
          '3fdb8158eabb765d1711f894bf71f7f5'
          'b5c12ad38048c354686747d640f5d621'
-         '4030ee1c08dd1e843c0225b772360e76'
+         '10460c7905ca508b1b51c89e30b9078b'
          'edce21b2ce295478d14d5dd988eb3287'
          'ea3bba5ee50ba043b992eaa22161e141')
 sha256sums=('86af1703be5cc7f40270a66ac15ebcf6088706a789ae1bf18488dc070777f979'
@@ -38,7 +38,7 @@ sha256sums=('86af1703be5cc7f40270a66ac15ebcf6088706a789ae1bf18488dc070777f979'
             '21dee6ef25fac3df42704465865266e895955db23b8000ade4196e388adb7889'
             '0c3c552320d5e052eec8471bd3bf89b3fd10f2ed129ae89861828b24d10c21ce'
             'da1d5fa9431457d39841991465f1825fc49f09a7999ca31309bbd5972c95860f'
-            '2d369cf93c6e15c3559c3560bce581e0ae5f1f34dc86bca013ac67ef1c1a9ff9'
+            '2083bb24b2924a74cdc1a908a1eb9bb6702d0fac79f5d5fcd1c8a72fe25e1455'
             '24cb033fa363148952b5ed7cdff635fbee0ae55ecafe5dfa32206e97cb0c4af3'
             'aa81059bc71f335c962db6bbb8c5857a5cc76e2eb33b82ce1ccd6cb536b2bc31')
 
@@ -94,7 +94,7 @@ build() {
       --enable-clocale='gnu'
       --enable-languages='c,c++'
       --enable-libgomp
-      --disable-multilib # to be enabled when multilib compile errors are fixed
+      --enable-multilib
       --enable-shared
       --enable-threads='posix'
       --enable-version-specific-runtime-libs
@@ -109,6 +109,8 @@ build() {
       --with-tune='generic'
       --prefix='/usr'
       #CXX='g++-4.9' CC='gcc-4.9'
+      CXX='g++ -Wno-implicit-function-declaration -Wno-incompatible-pointer-types'
+      CC='gcc -Wno-implicit-function-declaration -Wno-incompatible-pointer-types'
     )
     ../configure "${_conf[@]}"
 
