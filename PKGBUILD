@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname='densify'
-pkgver=0.3.1
-pkgrel=3
+pkgver=0.3.2
+pkgrel=1
 pkgdesc='GTK+ application to easily compress pdf files using Ghostscript'
 arch=('any')
 url='https://github.com/hkdb/Densify'
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('ghostscript' 'hicolor-icon-theme' 'python-gobject' 'xorg-xrandr')
 makedepends=('gendesk' 'imagemagick')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('593108c30551efc82db7e3931714e3b2571e86ab93b4aef4a711ac610ce67ae0')
+sha256sums=('f7baeb266a267c40fb0a289674786155b8c126108cc2297c3292c6e931b9f6ff')
 
 prepare() {
   echo -e "#!/bin/sh\ncd /usr/share/${pkgname} && exec python ${pkgname}" > "${pkgname}"
