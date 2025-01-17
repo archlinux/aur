@@ -1,6 +1,6 @@
 pkgbase = linux-mainline-um5606
 	pkgdesc = Linux Mainline with patches for the Asus UM5606(WA) laptop
-	pkgver = 6.13rc6
+	pkgver = 6.13rc7
 	pkgrel = 1
 	epoch = 1
 	url = https://kernel.org/
@@ -18,17 +18,15 @@ pkgbase = linux-mainline-um5606
 	makedepends = xz
 	options = !debug
 	options = !strip
-	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v6.13-rc6
+	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v6.13-rc7
 	source = config
 	source = npu.patch
-	source = https://gitlab.freedesktop.org/-/project/4522/uploads/4604ac254dab0ced331911eaab900bde/ENGG-drm-amd-display-Add-check-for-granularity-in-dml-cei.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 83BC8889351B5DEBBB68416EB8AC08600F108CDF
-	sha256sums = SKIP
+	sha256sums = 0764fff7c3eace3fcc343987d866c8d22dcb2c73429c8c32a56b82785e9ef2f8
 	sha256sums = 5e9788160ed19f177ebb556e0620634ba5cebb2d9c9f0e6c5997d4f5ddf4eaf3
 	sha256sums = 336cababc5df7d557b65b6bc7b7e92cc99513941e275657697e6e26f43873fc4
-	sha256sums = b3c8944386ffba132c837113374a543b8fe8d85cb1c22059c38b59703c2cb49d
 
 pkgname = linux-mainline-um5606
 	pkgdesc = The Linux Mainline with patches for the Asus UM5606(WA) laptop kernel and modules
