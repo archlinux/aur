@@ -1,15 +1,15 @@
 # Maintainer: BrLi <brli@chakralinux.org>
 _pkgname=plugin-wingmenu
 pkgname=lxqt-$_pkgname-git
-pkgver=r29.5609864
+pkgver=r57.70b9b80
 pkgrel=1
 pkgdesc="alternative menu plugin for lxqt-panel"
 arch=(x86_64)
 url="https://github.com/slidinghotdog/plugin-wingmenu"
-license=('GPL')
+license=('LGPL-2.1-or-later')
 groups=(lxqt)
 depends=(liblxqt lxqt-panel)
-makedepends=(lxqt-build-tools)
+makedepends=(lxqt-build-tools clang)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+$url")
@@ -21,12 +21,10 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	cmake -B build -S .
+	cmake -B build -S "$srcdir/${pkgname%-git}"
 	cmake --build build
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	DESTDIR="$pkgdir/" cmake --install build
+	DESTDIR="$pkgdir" cmake --install build
 }
