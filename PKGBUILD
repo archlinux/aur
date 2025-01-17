@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=weakauras-companion
 _pkgname=WeakAuras-Companion
-pkgver=5.2.8
+pkgver=5.2.9
 _electronversion=33
 _nodeversion=22
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('10d1a5ccbbf52c71aa01b223c06851032c86646d0dbb4ac94e02d95b9a26073f'
+sha256sums=('04018daddb86f5ddc229aa53fa254c67ff565069ec8eae75c40ea169678f27a0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
