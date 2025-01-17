@@ -1,15 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=weakauras-companion
 _pkgname=WeakAuras-Companion
-pkgver=5.2.7
-_electronversion=32
+pkgver=5.2.8
+_electronversion=33
 _nodeversion=22
 pkgrel=1
 pkgdesc="A cross-platform application built to provide the missing link between Wago.io and World of Warcraft.(Use system-wide electron)"
 arch=('any')
 url="https://weakauras.wtf/"
 _ghurl="https://github.com/WeakAuras/WeakAuras-Companion"
-license=('GPL-2.0-only')
+license=('GPL-2.0-or-later')
 depends=(
     "electron${_electronversion}"
 )
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('d5b9337328cdc57e55791031458cbc229ce882804cf396619321e15388f8688e'
+sha256sums=('10d1a5ccbbf52c71aa01b223c06851032c86646d0dbb4ac94e02d95b9a26073f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -33,7 +33,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -70,6 +70,9 @@ build() {
     sed -i "s/\/\${version}//g" electron-builder.json
     install -Dm755 -d .git
     NODE_ENV=development    pnpm install
+}
+build() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     NODE_ENV=production     pnpm run lint:fix
     NODE_ENV=production     pnpm vue-tsc
     NODE_ENV=production     pnpm vite build
