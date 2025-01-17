@@ -1,0 +1,9 @@
+[Unit]
+Description=Periodic Bumgr Backup Manager
+
+[Timer]
+OnCalendar=hourly
+OnBootSec=5min
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Bumgr Backup Manager for Restic
+After=nss=user-lookup.target
+
+[Service]
+Restart=no
+Type=simple
+ExecStart=/usr/bin/bumgr --no-cli backup %i
+StandardError=journal
+StandardOutpu=journal
+StandardInput=null
