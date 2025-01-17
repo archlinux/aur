@@ -5,16 +5,17 @@ _name=${pkgname#python-}
 pkgdesc="A Python library for network analysis"
 url="http://udst.github.io/pandana/"
 
-pkgver=0.6.1
-pkgrel=8
+pkgver=0.7
+pkgrel=1
 
-arch=("any")
+arch=("x86_64")
 license=("AGPL-3.0-only")
 
 makedepends=(
     "cython"
     "python-build"
     "python-installer"
+    "python-oldest-supported-numpy"
     "python-setuptools"
     "python-wheel"
 )
@@ -32,22 +33,16 @@ optdepends=(
 
 source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-    "${pkgname}-language-level-3.patch"
 )
 b2sums=(
-    "707512889661289e470ad1a9ec815258cc055d9ac5f4247e0d44a3f33e2b2995df8c69c45ec4a92e276339b8e6f0ce3615f1da2592ae81943857bc15f1420757"
-    "07782d7b23c719a0957f6680defbfa1a374419d9306fb7dc4f72169470e3c082392d6f91c665f3193254e6921d427846fb5bbe24929e40e6192eb749687fc3c4"
+    "2635470bd610b419d5a518a341379c4faab9c89fcbbd22184d4e484aa52ba14d4f676004e27eff078b5d9e4f2986f0e824cdcc60400e70436f699680bf360458"
 )
-
-prepare() {
-    cd "${srcdir}"/${_name}-${pkgver}
-    patch --forward --strip=1 --input "${srcdir}/${pkgname}-language-level-3.patch"
-}
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
     python -m build --wheel --no-isolation
 }
+
 
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
