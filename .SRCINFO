@@ -1,12 +1,14 @@
 pkgbase = oama-bin
 	pkgdesc = Provide OAuth2 renewal and authorization capabilities
 	pkgver = 0.16
-	pkgrel = 4
+	pkgrel = 6
 	url = https://github.com/pdobsan/oama
 	install = .INSTALL
 	arch = x86_64
 	arch = aarch64
-	license = BSD
+	license = BSD-3-Clause
+	depends = libsecret
+	depends = libgirepository
 	optdepends = gnome-keyring: Stores passwords and encryption keys
 	optdepends = kwallet: Secure and unified container for user passwords
 	optdepends = keepassxc: Cross-platform community-driven port of Keepass password manager
