@@ -1,6 +1,6 @@
 pkgbase = outerbase-studio-desktop-bin
 	pkgdesc = A lightweight Electron wrapper for the Outerbase Studio web version.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.1.22
+	pkgver = 0.1.24
 	pkgrel = 1
 	url = https://github.com/outerbase/studio-desktop
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = outerbase-studio-desktop-bin
 	makedepends = fuse2
 	depends = electron30
 	depends = docker
-	provides = outerbase-studio-desktop=0.1.22
+	provides = outerbase-studio-desktop=0.1.24
 	conflicts = outerbase-studio-desktop
-	source = outerbase-studio-desktop-0.1.22.AppImage::https://github.com/outerbase/studio-desktop/releases/download/v0.1.22/Outerbase-Studio-Linux-0.1.22.AppImage
+	source = outerbase-studio-desktop-0.1.24.AppImage::https://github.com/outerbase/studio-desktop/releases/download/v0.1.24/Outerbase-Studio-Linux-0.1.24.AppImage
 	source = outerbase-studio-desktop.sh
-	sha256sums = 01a11fd07e8fa44ba842a560793731498ec4ce7cec126799940f6c02047d3bf0
+	sha256sums = bca20b4531d9c98a2bede7af45957ac7d50c9a894929c0d01175cb09aa640aa7
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = outerbase-studio-desktop-bin
