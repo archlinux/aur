@@ -1,0 +1,22 @@
+pkgbase = phonotate-git
+	pkgdesc = A local, open-source Electron app built with React designed to simplify creating training data for StyleTTS 2 and voice cloning models.(Use system-wide electron)
+	pkgver = 1.0.5.r1.gb2aaf13
+	pkgrel = 1
+	url = https://github.com/LoganRickert/Phonotate.App
+	arch = any
+	license = Apache-2.0
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	makedepends = gcc
+	depends = electron34
+	provides = phonotate=1.0.5
+	conflicts = phonotate
+	source = phonotate.git::git+https://github.com/LoganRickert/Phonotate.App.git
+	source = phonotate.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = phonotate-git
