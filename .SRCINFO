@@ -1,6 +1,6 @@
 pkgbase = deepcool-ak620-digital-linux-git
 	pkgdesc = Python script to control Deepcool AK620 and AK500S CPU coolers on Linux
-	pkgver = r28.9fe8878
+	pkgver = r31.df56ec0
 	pkgrel = 1
 	url = https://github.com/hikyae/deepcool-ak620-digital-linux
 	arch = x86_64

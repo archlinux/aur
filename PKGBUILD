@@ -1,6 +1,6 @@
 # Maintainer: hikyae <h1ky43@gmail.com>
 pkgname=deepcool-ak620-digital-linux-git
-pkgver=r28.9fe8878
+pkgver=r31.df56ec0
 pkgrel=1
 pkgdesc="Python script to control Deepcool AK620 and AK500S CPU coolers on Linux"
 arch=('x86_64')
