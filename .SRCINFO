@@ -1,12 +1,14 @@
 pkgbase = gcc44-multilib
-	pkgdesc = The GNU Compiler Collection, version 4.4.7 - multilib version
+	pkgdesc = The GNU Compiler Collection (4.4.x) - multilib version
 	pkgver = 4.4.7
 	pkgrel = 4
-	url = http://gcc.gnu.org
-	arch = i686
+	url = http://gcc.gnu.org/
 	arch = x86_64
-	license = GPL
-	license = LGPL
+	arch = i686
+	license = GPL-2.0-only
+	license = LGPL-2.1-only
+	license = GPL-3.0-only
+	license = LGPL-3.0-only
 	license = custom
 	makedepends = binutils>=2.21
 	makedepends = libmpc
@@ -15,28 +17,32 @@ pkgbase = gcc44-multilib
 	makedepends = dejagnu
 	makedepends = glibc>=2.11.1-2
 	makedepends = lib32-glibc>=2.12.1
-	provides = gcc44
+	depends = glibc
+	depends = lib32-glibc
+	depends = gcc-libs
+	depends = lib32-gcc-libs
+	depends = gmp
+	depends = bash
+	depends = binutils
+	depends = mpfr
+	depends = zlib
+	provides = gcc44=4.4.7
 	conflicts = gcc44
+	options = staticlibs
 	options = !libtool
 	options = !buildflags
 	options = !emptydirs
-	options = staticlibs
-	source = http://ftpmirror.gnu.org/gcc/gcc-4.4.7/gcc-core-4.4.7.tar.bz2
-	source = http://ftpmirror.gnu.org/gcc/gcc-4.4.7/gcc-g++-4.4.7.tar.bz2
-	source = ftp://gcc.gnu.org/pub/gcc/libstdc++/doxygen/libstdc++-api-4.5.2.man.tar.bz2
+	source = http://www.mirrorservice.org/sites/sourceware.org/pub/gcc/releases/gcc-4.4.7/gcc-4.4.7.tar.bz2
 	source = gcc_pure64.patch
 	source = gcc-hash-style-both.patch
 	source = siginfo_t_fix.patch
 	source = texinfo_5_fix.patch
 	source = gcc-fix_toplevel_inlines.patch
-	sha256sums = c4663b7023909a4a075d3c2b2e17f6e082a9625aebfd0ce7f1d7817e44bf5542
-	sha256sums = 1882ff29be51eeb3fb349cbcda9df200a5c3cd20c97dd1d593101e0998b3c469
-	sha256sums = 3298757bedcf8b60f6e9b2d9aea75aac527199c6866d1b6218f706f20563b9e2
+	sha256sums = 5ff75116b8f763fa0fb5621af80fc6fb3ea0f1b1a57520874982f03f26cd607f
 	sha256sums = 59d7a0b897e0a6e4e126319d2c4db770fe4531e5700bb7c320f0075935078204
 	sha256sums = a600550d3d2b2fb8ee6a547c68c3a08a2af7579290b340c35ee5598c9bb305a5
 	sha256sums = 24cb033fa363148952b5ed7cdff635fbee0ae55ecafe5dfa32206e97cb0c4af3
 	sha256sums = 4f4d16d98d72c29ebccdda6a89d65fcd9357703c97c3fca65080ae3e7add762c
-	sha256sums = b6fa9ca644f9dc55e17d7696078fcf38ce29e6600778249d169b8dd572b01d4c
+	sha256sums = 9a43d0dfb398dc0dd42f05059718dc5ee9ab8bcf7eaf5234e420f5d3ceb8c8c5
 
 pkgname = gcc44-multilib
-
