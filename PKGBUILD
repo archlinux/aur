@@ -4,13 +4,13 @@
 
 ################################################################################
 # First, you should install mps following the igc-readme here:
-# https://github.com/emacs-mirror/emacs/blob/scratch/igc/README-IGC
+# https://github.com/emacs-mirror/emacs/blob/feature/igc/README-IGC
 # Or you could install the AUR package mps-git.
 ################################################################################
 
 ################################################################################
 # This PKGBUILD features:
-# - use the scratch/igc branch: emacs is never as smooth as it is!
+# - use the feature/igc branch: emacs is never as smooth as it is!
 # - the pure GTK3 rendering backend is enabled.
 # - the xwidgets is enabled (you can surf the Internet via
 #   a modern browser(webkit) in Emacs!).
@@ -135,9 +135,9 @@ makedepends=('git' 'mold')
 provides=('emacs')
 conflicts=('emacs')
 replaces=('emacs')
-source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git#branch=scratch/igc")
+source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git#branch=feature/igc")
 # If Savannah fails for reasons, use Github's mirror
-#source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git#branch=scratch/igc")
+#source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git#branch=feature/igc")
 
 options=(!strip)
 install=emacs-git.install
