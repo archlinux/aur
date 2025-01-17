@@ -3,7 +3,6 @@
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
 pkgname="ureminder"
-URL="https://codeberg.org/tuxnix/ureminder"
 pkgver="0.8.1"
 pkgrel="1"
 pkgdesc="Remind user upgrade packages and keeps package cache clean"
@@ -14,7 +13,10 @@ url="https://codeberg.org/tuxnix/$pkgname.git"
 license=('LicenseRef-FAFBL')
 install="$pkgname.install"
 #local-source=("$pkgname" "$pkgname.mo" "$pkgname.service" "$pkgname.timer" )
-source=("git+$URL/$pkgname.git" "git+$URL/$pkgname.mo.git" "git+$URL/$pkgname.service.git" "git+$URL/$pkgname.timer.git")
+source=("git+$url" "$pkgname" "$pkgname.mo" "$pkgname.service" "$pkgname.timer")
+#source=("git+https://codeberg.org/tuxnix/$pkgname.git}" ........)
+#source=("git+https://codeberg.org/tuxnix/$pkgname.git" $pkgname.install)
+
 
 package() {
     cd "$srcdir"
