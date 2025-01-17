@@ -1,0 +1,13 @@
+pkgbase = vapoursynth-plugin-vspyplugin
+	pkgdesc = Plugin for Vapoursynth: vspyplugin
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-pyplugin
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = vapoursynth-plugin-vstools
+	source = https://files.pythonhosted.org/packages/d8/94/2c129d22cbd2892a422604734091dba96f7e3aba51d5ac57b9fd7d3d38ca/vspyplugin-1.4.3-py3-none-any.whl
+	sha256sums = 44dab08aa0f8924b9c8f12a1e2617aeba5b619e916e54750be6a154457c9b50d
+
+pkgname = vapoursynth-plugin-vspyplugin
