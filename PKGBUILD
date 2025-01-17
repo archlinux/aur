@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=commas
 _pkgname=Commas
-pkgver=0.36.0
-_electronversion=33
+pkgver=0.37.0
+_electronversion=34
 _nodever=20
 pkgrel=1
 pkgdesc="A hackable, pluggable terminal, and also a command runner.(Use system-wide electron)"
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('a722ea358f649b5e545524cc4191baf4dcad778a5f09fcbeb503c7fbc99512ac'
+sha256sums=('1024f327bf2a301a056db6cf3c1c5f35137bfb0d6465ad9ad3118af7c96c8fc8'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -33,7 +33,7 @@ _ensure_local_nvm() {
     nvm install "${_nodever}"
     nvm use "${_nodever}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-git}/
@@ -68,11 +68,14 @@ build() {
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     sed -e "
         s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
-        /electron-clipboard-ex/d
-        96i\    \"clipboard\": \"\^2.0.8\",
+        s/\^9.0.0/\^10.0.0/g
+        s/\"electron-clipboard-ex\": \"\^1.3.3\"/\"clipboard\": \"\^2.0.8\"/g
     " -i package.json
     sed -i "s/electron-clipboard-ex/clipboard/g" src/main/lib/message.ts
     NODE_ENV=development    pnpm install
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     pnpm run build
 }
 package() {
