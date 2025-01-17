@@ -35,7 +35,7 @@ check-for-update:
   - git add .
   - git commit -m "Update to ${latest_version}"
   - git push --set-upstream origin master
-  - git remote add aur ssh://aur@aur.archlinux.org/aptakube-appimage.git
+  - git remote add aur ssh://aur@aur.archlinux.org/aptakube.git
   - GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa_aur' git push --set-upstream aur master
   only:
   - schedules
