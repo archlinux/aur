@@ -1,6 +1,6 @@
 pkgbase = mutt-git
 	pkgdesc = A small but very powerful text-based mail client
-	pkgver = 2.2.13.r77.g9dc98409
+	pkgver = 2.2.13.r81.g423f5002
 	pkgrel = 1
 	epoch = 1
 	url = http://www.mutt.org/

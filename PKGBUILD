@@ -2,7 +2,7 @@
 # Contributor: louipc <base64:bG91aXBjQGdteC5jb20=>
 
 pkgname=mutt-git
-pkgver=2.2.13.r77.g9dc98409
+pkgver=2.2.13.r81.g423f5002
 pkgrel=1
 epoch=1
 pkgdesc="A small but very powerful text-based mail client"
@@ -46,6 +46,7 @@ build() {
         --enable-pop
         --enable-sidebar
         --enable-smtp
+        --with-gdbm
         --with-curses=/usr
         --with-gss=/usr
         --with-idn2
