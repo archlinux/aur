@@ -2,7 +2,7 @@
 
 pkgname=python-ollama
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Ollama Python library"
 arch=('any')
 url="https://github.com/ollama/ollama-python"
@@ -12,6 +12,7 @@ depends=(
 	'python'
 	'python-httpx'
 	'python-typing_extensions'
+	'python-pydantic'
 )
 makedepends=('python-poetry')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ollama/ollama-python/archive/refs/tags/v$pkgver.tar.gz")
