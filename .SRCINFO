@@ -8,6 +8,7 @@ pkgbase = python-gurobipy
 	license = custom:Gurobi EULA
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = xxd
 	depends = glibc
 	depends = gurobi
 	depends = python>=3.12

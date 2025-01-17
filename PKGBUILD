@@ -10,7 +10,7 @@ arch=('x86_64' 'aarch64')
 url="https://www.gurobi.com/products/gurobi-optimizer"
 license=('custom:Gurobi EULA')
 depends=('glibc' 'gurobi' 'python>=3.12' 'python-numpy' 'python-scipy')
-makedepends=('python-installer' 'python-wheel')
+makedepends=('python-installer' 'python-wheel' 'xxd')
 source_x86_64=("https://files.pythonhosted.org/packages/${_py}/${_name::1}/${_name}/${_name//-/_}-${pkgver}-${_py}-${_py}-manylinux2014_x86_64.manylinux_2_17_x86_64.whl")
 source_aarch64=("https://files.pythonhosted.org/packages/${_py}/${_name::1}/${_name}/${_name//-/_}-${pkgver}-${_py}-${_py}-manylinux2014_aarch64.manylinux_2_17_aarch64.whl")
 noextract=("${source_x86_64[@]##*/}"
