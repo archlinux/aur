@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sqlitestudio-bin
 _pkgname=SQLiteStudio
-pkgver=3.4.13
+pkgver=3.4.15
 pkgrel=1
 pkgdesc="A free, open source, multi-platform SQLite database manager.(Prebuilt version)"
 arch=('x86_64')
@@ -20,10 +20,10 @@ makedepends=(
 )
 options=('!strip')
 source=(
-    "${pkgname%-bin}-${pkgver}.tar.xz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}.tar.xz"
+    "${pkgname%-bin}-${pkgver}.tar.xz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.tar.xz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e39f30e520abbc57ffe5122958c3e5eee5b059b17ac5678272b25673cf0fd986'
+sha256sums=('ac261ff51f2b123cc159f23f00d6fecd022ca7187f9cef485b4bc6c4b39bc917'
             '20628dc9251146409d2631a161d7e7e24d40e5c2555a5d170914c44420b40aea')
 prepare() {
     sed -e "
@@ -31,6 +31,11 @@ prepare() {
         s/@runname@/${pkgname%-bin}/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -f -n -q --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    cd "${srcdir}/${_pkgname}/lib"
+    unlink libsqlite3.so.0.8.6
+    unlink libsqlite3.so.0
+    ln -sf libsqlite3.so libsqlite3.so.0
+    ln -sf libsqlite3.so.0 libsqlite3.so.0.8.6
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
