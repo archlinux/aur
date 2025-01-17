@@ -1,4 +1,5 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer:
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Whemoon Jang <palindrom615@gmail.com>
 # Contributor: Bumsik Kim <k.bumsik@gmail.com>
 # Contributor: Hodong Kim <https://gitlab.com/hodong>
