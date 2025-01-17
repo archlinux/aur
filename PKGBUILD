@@ -6,8 +6,8 @@ pkgver=1.8.9
 pkgrel=1
 pkgdesc="Cinnamon desktop sounds extracted from Linuxmint (mint-artwork)"
 arch=('any')
-url="https://github.com/linuxmint/"
-#url="http://packages.linuxmint.com"
+#url="https://github.com/linuxmint/"
+url="http://packages.linuxmint.com"
 
 license=('GPL')
 depends=('cinnamon')
