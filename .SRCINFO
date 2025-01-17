@@ -1,7 +1,7 @@
 pkgbase = jabref
 	pkgdesc = Graphical Java application for managing BibTeX and biblatex (.bib) databases
 	pkgver = 5.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.jabref.org/
 	arch = any
 	license = MIT
@@ -18,6 +18,7 @@ pkgbase = jabref
 	source = jabref.sh
 	source = jabref.desktop
 	source = https://patch-diff.githubusercontent.com/raw/JabRef/jabref/pull/11517.patch
+	source = https://patch-diff.githubusercontent.com/raw/JabRef/jabref/pull/11544.patch
 	sha256sums = 2bf75d7f96aa1f5c74b675e3e0b4dda703027b3c3d8ede0616dd2218f5a74259
 	sha256sums = 902c30710bdd46bcafa954b174dc3e080d9902d8dc43f40602c357155e894312
 	sha256sums = 5b1a86d2d9eb2ffd40e62d72d06ec9fce9b1b048961529f1e596dfedd6322b17
@@ -25,5 +26,6 @@ pkgbase = jabref
 	sha256sums = f466d2cbf88d4d37c0e39cb3aa3fb5bb2f0ac486d617591b2b47817c762317b0
 	sha256sums = aebafd8955b35d440c233f6e9d7cfa68bec17f58418320920b52c334e965db3a
 	sha256sums = ecf10a20e009f0801cd885f7c32842d14320957446d07d3f69300a85a1dfb8d0
+	sha256sums = 779df4e0eeb1bbc5467f0de0eeaf0c075af50c5c2db00cbdd6ea133e36952905
 
 pkgname = jabref
