@@ -1,0 +1,25 @@
+pkgbase = python-osmnet
+	pkgdesc = Tools for the extraction of OpenStreetMap street network data
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = http://udst.github.io/osmnet/
+	arch = any
+	license = AGPL-3.0-only
+	checkdepends = python-coveralls
+	checkdepends = python-pycodestyle
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-geopandas
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-requests
+	depends = python-shapely
+	source = osmnet-0.1.7.tar.gz::https://github.com/UDST/osmnet/archive/refs/tags/v0.1.7.tar.gz
+	b2sums = 5e047107f4836737e373da1aed549eb4227d67b5de196bda8a3de1d575e34f88c3fa7bbbf3aea15fb6cdbadadabfa8b3fe3ccc6196329ceafc7f6a05bb6e17dd
+
+pkgname = python-osmnet
