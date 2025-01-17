@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-liboqs
 _name=liboqs-python
-pkgver=0.10.0
-pkgrel=4
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="Python 3 bindings for liboqs"
 arch=(any)
 url=https://github.com/open-quantum-safe/liboqs-python
@@ -19,7 +19,7 @@ makedepends=(
 )
 checkdepends=(python-nose2)
 source=($_name-$pkgver.tar.gz::https://github.com/open-quantum-safe/$_name/archive/refs/tags/$pkgver.tar.gz)
-b2sums=('2a23080616f2699db45fd62f641892dba7a11ed456a7eaa7c1ffe29523f0e5544590e9491eb06736ca589b521ddc2fb248b721eca2293f8cf45d91f93a492c4b')
+b2sums=('efeaf5454eef143a746af308fe2649cba5ddf32e2d5535beffacc0783bc03956f046a2c2f51e08f4af8122d063b3946c2c6746ff4d938cb5708a3bd90674f26c')
 
 build() {
     cd $_name-$pkgver
@@ -31,6 +31,7 @@ check() {
     python -m installer --destdir=../test dist/*.whl
     local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
     export PYTHONPATH=../test/usr/lib/python$python_version/site-packages
+    rm -r oqs
     python -m nose2 --verbose
 }
 
