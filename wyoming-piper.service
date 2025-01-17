@@ -6,7 +6,6 @@ Wants=network.target
 Restart=on-failure
 User=wyoming-piper
 Group=wyoming-piper
-DynamicUser=true
 StateDirectory=wyoming-piper
 WorkingDirectory=/var/lib/wyoming-piper
 
