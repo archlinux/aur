@@ -1,0 +1,14 @@
+pkgbase = distrohoop
+	pkgdesc = A CLI Tool written in Rust that determines your next Distro :D!
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/br0sinski/distrohoop
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = cargo
+	source = git+https://github.com/br0sinski/distrohoop.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = distrohoop
