@@ -1,8 +1,8 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Alexey Trifonov <otaku [at] rambler dot ru>
 pkgname=zesarux-bin
-pkgver=11.0
-pkgrel=2
+pkgver=12.0
+pkgrel=1
 pkgdesc="Emulator of different Z80-based computers, including ZX Spectrum. Precompiled binary." 
 arch=('x86_64')
 url="https://github.com/chernandezba/zesarux"
