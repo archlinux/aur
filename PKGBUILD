@@ -1,4 +1,8 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: PhrozenByte
+
+# if you have problems, read more about the voodoo magic in these comments:
+# https://aur.archlinux.org/packages/epson-inkjet-printer-workforce-635-nx625-series
 
 _name="epson-inkjet-printer-filter"
 pkgname="${_name}-lsb"
@@ -7,11 +11,13 @@ pkgrel=2
 pkgdesc="Epson inkjet printer filter used with CUPS (legacy LSB version)"
 arch=('i686' 'x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
-license=('LGPL-2.1-or-later' 'custom:Epson End User Software License Agreement')
+license=('LGPL-2.1-or-later'                                 # filter itself
+         'custom:Epson End User Software License Agreement') # watermark .EIDs
 depends=('cups' 'gcc-libs' 'glibc' 'libcups' 'libjpeg')
 # source bundle chosen arbitrarily; all of them ship identical filter sources
 _pkgsrc="${_name}-${pkgver}"
 _bundlesrc="epson-inkjet-printer-workforce-635-nx625-series-1.0.1"
+# download.ebz.epson.net blocks some user-agents and returns 403
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 source=("https://download.ebz.epson.net/dsc/op/stable/SRPMS/${_bundlesrc}-1lsb3.2.src.rpm"
         "${pkgname}_release_build_flags.patch"
@@ -28,8 +34,11 @@ prepare() {
   bsdtar -xzf "${_bundlesrc}.tar.gz" "${_bundlesrc}/watermark"
 
   cd "${_pkgsrc}"
+  # release builds disrespect user build flags and replace them with '-O2'
   patch -Np1 -i "${srcdir}/${pkgname}_release_build_flags.patch"
+  # we will install with the prefix '/usr' instead of "/opt/epson-inkjet-printer-${_model}"
   patch -Np1 -i "${srcdir}/${pkgname}_lib_res_path.patch"
+  # build errors related to 'raster-helper.h'
   patch -Np1 -i "${srcdir}/${pkgname}_raster_helper.patch"
 }
 
@@ -39,15 +48,28 @@ pkgver() {
 }
 
 build() {
+  # this will cause overlinking to 'gcc-libs' and 'libjpeg'
+  # the filter itself doesn't depend on them,
+  # but the .so libraries shipped with every driver do (at least to 'gcc-libs')
+  # for some reason, the .so libraries aren't linked to them,
+  # which causes missing symbol errors:
+  # undefined symbol: _ZTVN10__cxxabiv117__class_type_infoE
+  # this symbol is from 'libstdc++.so', which is provided by 'gcc-libs'
+  # it is not known whether 'libjpeg' is actually needed
+  # knowing that the filter is called ahead of the libraries,
+  # we overlink the required dependencies here to load them into memory
+  # this trick is reportedly not needed for the newer models with newer libraries
   export LDFLAGS+=" -Wl,--no-as-needed"
 
   cd "${srcdir}/${_pkgsrc}"
   libtoolize
   autoreconf -vfi
-  # if you have runtime problems: add "--enable-debug" 
+  # if you have runtime problems: add '--enable-debug'
   # and look into /tmp/epson-inkjet-printer-filter.txt
+  # /var/log/cups/error_log may sometimes be helpful too
   ./configure \
     --prefix='/usr'
+    # --prefix="/opt/epson-inkjet-printer-${_model}"
   make
 }
 
@@ -66,6 +88,8 @@ package() {
   install -vDm755 "${_name//-/_}" "${pkgdir}/usr/lib/cups/filter/${pkgname//-/_}"
 
   cd "${srcdir}/${_bundlesrc}"
+  # all drivers ship the same watermark files,
+  # so we install them once to a common location
   find "watermark" -type f -exec \
     install -vDm644 "{}" "${pkgdir}/usr/share/${pkgname}/{}" \;
 }
