@@ -3,7 +3,7 @@
 pkgbase=cloud-chromium
 pkgname=cloud-chromium
 _pkgname=115br
-pkgver=27.0.7.5
+pkgver=35.1.0.5
 pkgrel=1
 arch=('x86_64')
 options=(!strip !debug)
@@ -25,7 +25,7 @@ pkgdesc="Chromium 115 Browser"
 license=('Commercial')
 url="https://115.com/product_browser"
 source_x86_64=("${pkgname}-${pkgver}.deb::https://down.115.com/client/115pc/lin/115br_v${pkgver}.deb")
-sha256sums_x86_64=('5839cde63c90fd1b598d17992cadc481aa5f53bff86ea322a47c3987426b3c2d')
+sha256sums_x86_64=('e11bccb33290e589f0ecf161d5f1a3fc5a2e61298d29e200acd8420f71d58bd1')
 noextract=("${pkgname}-${pkgver}.deb")
 
 prepare() {
