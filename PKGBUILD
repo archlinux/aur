@@ -70,6 +70,8 @@
 # for example MCORE2 or MZEN4.
 # Leaving it blank will require user interaction during the build.
 # Note that the default option is empty.
+# IMPORTANT: keep the last value here in sync with the switch case
+# statement in the _subarch section of update_defconfig()
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
@@ -364,35 +366,48 @@ update_defconfig() {
     # For a slim chance that someone is building X86_32
     sed -i '/CONFIG_M686/d' .config || :
 
-    if [ -n "${_subarch}" ]; then
-        # check if subarch is a number
-        if [[ ${_subarch} =~ ^[0-9]+$ ]] && ((_subarch>=1)); then
-            if [ "${_subarch}" == "41" ]; then
-                scripts/config -e GENERIC_CPU
-                scripts/config --set-val X86_64_VERSION "${_subarch_microarch}"
-                make ${BUILD_FLAGS[*]} oldconfig
-            else
-                # taken from: https://stackoverflow.com/questions/962255/how-to-store-standard-error-in-a-variable
-                { local __ERROR=$(echo "${_subarch}" | make ${BUILD_FLAGS[*]} oldconfig 2>&1 1>&$out); } {out}>/dev/null
-                # $(echo $__ERROR) is required here or the script will break.
-                # Do not change.
-                if [[ -n "$(echo $__ERROR)" ]]; then
-                    warning "Selected subarch: ${_subarch} is not supported"
-                    exit
-                fi
+    case ${_subarch} in
+        "")
+            # Ask for subarch if none provided
+            make "${BUILD_FLAGS[@]}" oldconfig
+            ;;
+        "41" | "GENERIC_CPU")
+            scripts/config -e GENERIC_CPU
+            scripts/config --set-val X86_64_VERSION "${_subarch_microarch}"
+            make "${BUILD_FLAGS[@]}" oldconfig
+            ;;
+        [1-9]|[1-3][0-9]|[4][0-3])
+            # 43 is the last supported value here, refer to the _subarch
+            # documentation above and keep the last section of this check
+            # in sync with the supported value.
+            # stderr checks below shouldn't be needed with the above check in place,
+            # but will be left in-place regardless in case of future updates
+            # breaking something
+
+            # We're only interested in stderr
+            {
+                local __ERROR=$(echo "${_subarch}" | make "${BUILD_FLAGS[@]}" oldconfig 2>&1 1>&$out)
+            } {out}>/dev/null
+
+            # Invoke echo to sanitize the __ERROR, it can contain a newline or a \r
+            # symbol, thus breaking the script
+            if [[ -n "$(echo $__ERROR)" ]]; then
+                warning "Selected subarch: ${_subarch} is not supported"
+                exit
             fi
-        # check that this option is present in the .config
-        elif [[ $(grep -c "${_subarch}" .config) -eq 1 ]]; then
-            scripts/config -e "${_subarch}"
-            make ${BUILD_FLAGS[*]} olddefconfig
-        else
-            warning "Unrecognized subarch value: ${_subarch}"
-            exit 1
-        fi
-    else
-        # Ask for subarch
-        make ${BUILD_FLAGS[*]} oldconfig
-    fi
+            ;;
+        *)
+            # String - check if it exists in .config and if it does - set it
+            if grep -q -e "${_subarch}[[:space:]]" -e "${_subarch}=" .config; then
+                # Check if option exists in .config
+                scripts/config -e "${_subarch}"
+                make "${BUILD_FLAGS[@]}" olddefconfig
+            else
+                warning "Unrecognized subarch value: ${_subarch}"
+                exit
+            fi
+            ;;
+    esac
 }
 
 # Prepares the installation
