@@ -1,0 +1,10 @@
+--- a/common/src/CCUPSAPI.cpp
++++ b/common/src/CCUPSAPI.cpp
+@@ -13,6 +13,7 @@
+ #include "CCUPSAPI.h"
+ #include "CException.h"
+ #include <cups/cups.h>
++#include <cups/ppd.h>
+ 
+ CCUPSAPI::CCUPSAPI()
+ {

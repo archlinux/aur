@@ -1,0 +1,19 @@
+pkgbase = epson-pc-fax
+	pkgdesc = Epson PC-FAX driver filter used with CUPS
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/man/linux/pc-fax_e.html
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	license = MIT
+	depends = cups
+	depends = gcc-libs
+	depends = glibc
+	depends = libcups
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/39/04/a3b02d240a7e2d771302753a0d95aca5ae33c170/epson-pc-fax-1.1.1-1.src.rpm
+	source = epson-pc-fax_cups_deprecated_ppd_api.patch
+	sha256sums = ceb42c81f0f56d5c8847b80a326427fe0ed374e256f905705f935358c1f01993
+	sha256sums = 97bea9de793faed5607ff660ea5647d89d1d5d588772b5380d74e824a6613c39
+
+pkgname = epson-pc-fax
