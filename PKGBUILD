@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=auth-thu-bin
-pkgver=2.3
+pkgver=2.3.3
 pkgrel=1
 provides=('auth-thu')
 conflicts=('auth-thu')
@@ -13,8 +13,8 @@ source=(
   "$pkgname-$pkgver::$url/releases/download/v$pkgver/auth-thu.linux.$CARCH"
   "$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('5585c980cf1ba94e8494c2f22a3eaf98009a784317c5036acf22cf0454a89c5e'
-            '56b7daa31b961cfb1b5db3769bd02ad87ff965aa274adeee0ceaf8b091625d37')
+sha256sums=('75c90c7e1bde1ccad5bfb98752f3511a4d87741de9c19b5b1420c86e5660bbb1'
+            '76773940aa14cc490bfa1eaaf05330bfdd84b189b7f3e5a75d31947588b0a84e')
 
 package() {
     install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/auth-thu"
