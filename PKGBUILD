@@ -1,15 +1,15 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 # Contributor: Nick Cao <nickcao@nichi.co>
 pkgname=auth-thu
-pkgver=2.3
-pkgrel=2
+pkgver=2.3.3
+pkgrel=1
 pkgdesc='A commandline Tunet (auth4/6.tsinghua.edu.cn, Tsinghua-IPv4) authentication tool'
 arch=('x86_64')
 url='https://github.com/z4yx/GoAuthing'
 license=('GPL-3.0-only')
 makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('56b7daa31b961cfb1b5db3769bd02ad87ff965aa274adeee0ceaf8b091625d37')
+sha256sums=('76773940aa14cc490bfa1eaaf05330bfdd84b189b7f3e5a75d31947588b0a84e')
 
 build() {
     cd "GoAuthing-$pkgver"
