@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zaoqi
 pkgname=electerm
-pkgver=1.60.6
+pkgver=1.60.16
 _electronversion=30
-_nodeversion=20
+_nodeversion=22
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client.(Use system-wide electron)"
 arch=(
@@ -31,7 +31,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('ca6f3cdd2b0342c1017426c68d9a8cc8adf4a7fbd2895a3de7462f09b18e7aa0'
+sha256sums=('bd43ce15bcd40f89e949ef1e90a70da469eb9cdf703d6978fd2f20e405732038'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
