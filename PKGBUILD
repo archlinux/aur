@@ -34,6 +34,8 @@ build() {
     -DIMGUI_BUILD_SDL2_BINDING=ON \
     -DIMGUI_BUILD_SDL2_RENDERER_BINDING=ON \
     -DIMGUI_BUILD_VULKAN_BINDING=ON \
+    -DIMGUI_BUILD_OPENGL2_BINDING=ON \
+    -DIMGUI_BUILD_OPENGL3_BINDING=ON \
     -S. \
     -B cmake-build-shared
   cmake --build cmake-build-shared
