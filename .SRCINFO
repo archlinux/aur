@@ -1,6 +1,6 @@
 pkgbase = go-http-file-server
 	pkgdesc = Simple command line based HTTP file server to share local file system
-	pkgver = 1.20.1
+	pkgver = 1.20.2
 	pkgrel = 1
 	url = https://github.com/mjpclab/go-http-file-server
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = go-http-file-server
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = go-http-file-server-1.20.1.tar.gz::https://github.com/mjpclab/go-http-file-server/archive/refs/tags/v1.20.1.tar.gz
-	sha256sums = 063e1ff38697af94b9fe2f9cfa543536ae6e0f6e0e42160117ea73982a1c4765
+	source = go-http-file-server-1.20.2.tar.gz::https://github.com/mjpclab/go-http-file-server/archive/refs/tags/v1.20.2.tar.gz
+	sha256sums = c6d7e3557996bb4b36c3dc8c2e5bbb90ae794b3faede61493d3d7522dfe7e9de
 
 pkgname = go-http-file-server

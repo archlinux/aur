@@ -2,7 +2,7 @@
 
 _binname="ghfs"
 pkgname="go-http-file-server"
-pkgver=1.20.1
+pkgver=1.20.2
 pkgrel=1
 pkgdesc="Simple command line based HTTP file server to share local file system"
 arch=('x86_64' 'aarch64' 'riscv64' 'loong64' 'i686' 'armv7h')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('063e1ff38697af94b9fe2f9cfa543536ae6e0f6e0e42160117ea73982a1c4765')
+sha256sums=('c6d7e3557996bb4b36c3dc8c2e5bbb90ae794b3faede61493d3d7522dfe7e9de')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
