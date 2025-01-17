@@ -5,8 +5,8 @@ post_install() {
 }
 
 post_upgrade() {
-    systemctl stop mediatracker
     if [ -d "/home/mediatracker" ]; then
+       systemctl stop mediatracker
        usermod -m -d /var/lib/mediatracker mediatracker 
     fi
 
