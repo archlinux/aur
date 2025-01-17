@@ -1,12 +1,12 @@
 pkgbase = yaylog
         pkgdesc = A CLI util to list recently installed packages with filtering, written in Go.
-        pkgver = 2.0.3
+        pkgver = 2.1.0
         pkgrel = 1
         url = https://github.com/Zweih/yaylog
         arch = any
         license = MIT
         depends = expac
-        source = yaylog-2.0.3.tar.gz::https://github.com/zweih/yaylog/archive/refs/tags/v2.0.3.tar.gz
-        sha256sums = 14aeee47c2b079a8498f63da25b5182fd23ae4a7baddb51a7205266e4e41ba82
+        source = yaylog-2.1.0.tar.gz::https://github.com/zweih/yaylog/archive/refs/tags/v2.1.0.tar.gz
+        sha256sums = 7b652388798c8a8e91654ec938d8df8808bf0adf27b4b6b6d18be9e047c949b
 
 pkgname = yaylog
