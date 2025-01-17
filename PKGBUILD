@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx@protonmail.com>
 pkgname=vsv
 pkgver=2.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Runit service manager CLI'
 arch=('x86_64')
 url="https://github.com/bahamas10/$pkgname"

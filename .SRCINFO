@@ -1,7 +1,7 @@
 pkgbase = vsv
 	pkgdesc = Runit service manager CLI
 	pkgver = 2.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/bahamas10/vsv
 	arch = x86_64
 	license = MIT
