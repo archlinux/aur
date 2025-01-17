@@ -18,8 +18,8 @@ url='https://github.com/AmusementClub/vs-dfttest2'
 license=('GPL2')
 depends=('vapoursynth')
 makedepends=('git' 'cmake' 'ninja' 'gcc')
-provides=("vapoursynth-plugin-dfttest2" "vapoursynth-plugin-dfttest2-git")
-conflicts=("vapoursynth-plugin-dfttest2" "vapoursynth-plugin-dfttest2-git")
+provides=("vapoursynth-plugin-dfttest2" "vapoursynth-plugin-dfttest2-git" "vapoursynth-plugin-dfttest2-cpu")
+conflicts=("vapoursynth-plugin-dfttest2" "vapoursynth-plugin-dfttest2-git" "vapoursynth-plugin-dfttest2-cpu")
 source=("${_plug}::git+https://github.com/AmusementClub/vs-dfttest2")
 sha256sums=('SKIP')
 

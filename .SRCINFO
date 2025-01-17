@@ -12,8 +12,10 @@ pkgbase = vapoursynth-plugin-dfttest2-cpu-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-dfttest2
 	provides = vapoursynth-plugin-dfttest2-git
+	provides = vapoursynth-plugin-dfttest2-cpu
 	conflicts = vapoursynth-plugin-dfttest2
 	conflicts = vapoursynth-plugin-dfttest2-git
+	conflicts = vapoursynth-plugin-dfttest2-cpu
 	source = dfttest2::git+https://github.com/AmusementClub/vs-dfttest2
 	sha256sums = SKIP
 
