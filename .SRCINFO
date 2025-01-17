@@ -1,13 +1,13 @@
 pkgbase = floskell
 	pkgdesc = Floskell is flexible Haskell source code pretty printer.
-	pkgver = 0.10.8
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/ennocramer/floskell
 	arch = x86_64
 	license = BSD
 	makedepends = stack
 	conflicts = floskell
-	source = https://github.com/ennocramer/floskell/archive/floskell-0.10.8.tar.gz
-	sha256sums = 6e312f9ab13bf224550f9ffd77ee5d03eb27a7165d1fdc20339dbb228daa82e5
+	source = https://github.com/ennocramer/floskell/archive/floskell-0.11.1.tar.gz
+	sha256sums = ad039fc93c818d1c61613ab8543d3347f19fa33e19eda52e71a6fedc99193b46
 
 pkgname = floskell

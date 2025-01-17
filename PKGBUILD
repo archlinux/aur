@@ -1,16 +1,16 @@
 # Maintainer: fenuks
 
 pkgname=floskell
-pkgver=0.10.8
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='Floskell is flexible Haskell source code pretty printer.'
 arch=(x86_64)
 url="https://github.com/ennocramer/${pkgname}"
 license=("BSD")
-makedepends=(stack)  
+makedepends=(stack)
 conflicts=("${pkgname}")
 source=("${url}/archive/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('6e312f9ab13bf224550f9ffd77ee5d03eb27a7165d1fdc20339dbb228daa82e5')
+sha256sums=('ad039fc93c818d1c61613ab8543d3347f19fa33e19eda52e71a6fedc99193b46')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
