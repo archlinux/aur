@@ -8,7 +8,7 @@ pkgname=(
   sqlitestudio-plugins
 )
 _pkgname=SQLiteStudio
-pkgver=3.4.14
+pkgver=3.4.15
 pkgrel=1
 pkgdesc='Database manager for SQLite'
 arch=(i686 x86_64)
@@ -33,7 +33,7 @@ source=(
 noextract=(
   ${pkgver}.tar.gz
 )
-sha256sums=('b0ff0d21cb0d121d6799aa476118401860cce520b48e2f34e43f7cd1fce8118d'
+sha256sums=('585279f83705c453c723b4100ba251fe5542e2066c6e4f7a143ab1a71fd9c62e'
             'c5a26a9b9003b04274887a0e0febda13eea49bb46c618eaad0b5b5c88b1cc1d2')
 
 prepare(){
