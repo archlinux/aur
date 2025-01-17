@@ -1,28 +1,26 @@
 # Maintainer: fenuks
 
 pkgname=bstone
-pkgver=1.2.12
-pkgrel=4
+pkgver=1.2.13
+pkgrel=1
 pkgdesc="Unofficial source port for Blake Stone series (Aliens Of Gold and Planet Strike)."
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/bibendovsky/bstone"
 license=('GPL2')
 depends=("sdl2")
-makedepends=('cmake' 'gcc12')
+makedepends=('cmake' 'gcc')
 optdepends=()
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-install="$pkgname.install"
-source=("$pkgname::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d5c4075d8f7b4866541006bff8c7b79ffc1f4fb543544616f57a44dec7f4a7da')
+install="${pkgname}.install"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('602b97834df492d77a8aec06af15fb31001ee6e4a036c5db27c0bf17db17bd01')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p build && cd build
   cmake -B. -H.. \
     -DCMAKE_INSTALL_PREFIX='/usr/bin' \
-    -DCMAKE_C_COMPILER=gcc-12 \
-    -DCMAKE_CXX_COMPILER=g++-12 \
     -DCMAKE_BUILD_TYPE='RelWithDebInfo'
   make
 }
