@@ -1,6 +1,6 @@
 pkgbase = perl-pdl-graphics-colorspace
 	pkgdesc = Image color space conversions
-	pkgver = 0.204
+	pkgver = 0.205
 	pkgrel = 1
 	url = https://metacpan.org/release/PDL-Graphics-ColorSpace
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = perl-pdl-graphics-colorspace
 	depends = perl-pdl
 	depends = glibc
 	options = !emptydirs
-	source = perl-pdl-graphics-colorspace-0.204.tar.gz::https://cpan.metacpan.org/authors/id/E/ET/ETJ/PDL-Graphics-ColorSpace-0.204.tar.gz
-	sha256sums = 86348dc8c2a6869ab8b42429a9e8ac979bb2d5ea0a1005a7eb60cd7900a204c9
+	source = perl-pdl-graphics-colorspace-0.205.tar.gz::https://cpan.metacpan.org/authors/id/E/ET/ETJ/PDL-Graphics-ColorSpace-0.205.tar.gz
+	sha256sums = f8f60940e895e8d18e0dcc19bb12155bb6c1a100fe974c9137ec922a9f31d020
 
 pkgname = perl-pdl-graphics-colorspace

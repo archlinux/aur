@@ -2,14 +2,14 @@
 
 pkgname=perl-pdl-graphics-colorspace
 _dist=PDL-Graphics-ColorSpace
-pkgver=0.204
+pkgver=0.205
 pkgrel=1
 pkgdesc='Image color space conversions'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
 url="https://metacpan.org/release/$_dist"
 source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz")
-sha256sums=('86348dc8c2a6869ab8b42429a9e8ac979bb2d5ea0a1005a7eb60cd7900a204c9')
+sha256sums=('f8f60940e895e8d18e0dcc19bb12155bb6c1a100fe974c9137ec922a9f31d020')
 
 arch=(i686 x86_64)
 depends=(perl perl-pdl glibc)
