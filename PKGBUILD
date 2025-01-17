@@ -1,7 +1,7 @@
 # Maintainer: Daurnimator <quae@daurnimator.com>
 
 pkgname=pllua
-pkgver=2.0.9
+pkgver=2.0.12
 pkgrel=1
 replaces=('pllua-ng')
 pkgdesc='PL/Lua is a procedural language module for the PostgreSQL database that allows server-side functions to be written in Lua'
@@ -9,8 +9,9 @@ arch=('x86_64')
 url='https://pllua.github.io/pllua/'
 license=('MIT')
 depends=('lua' 'postgresql')
+makedepends=('clang' 'llvm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RhodiumToad/pllua-ng/archive/REL_${pkgver//./_}.tar.gz")
-sha256sums=('1fb97de4ba6f4d8811b683d8bcf7b00aae4f87e327a518cd21b8629722f57e72')
+sha256sums=('7d7ce7cb6443644f5448a5c943a52b33a264ba80f737701c43cdec1dc67b2965')
 
 build() {
 	cd "pllua-ng-REL_${pkgver//./_}"
