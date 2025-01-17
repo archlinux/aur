@@ -4,7 +4,7 @@
 
 pkgbase=pango-git
 pkgname=(pango-git pango-docs-git)
-pkgver=1.54.0
+pkgver=1.56.0.r12.gc5899494
 pkgrel=1
 epoch=1
 pkgdesc="A library for layout and rendering of text"
@@ -25,7 +25,7 @@ depends=(
   libxft
   libxrender
 )
-makedepends=(gobject-introspection help2man git meson gi-docgen glib2-devel)
+makedepends=(gobject-introspection help2man git meson gi-docgen glib2-devel python-docutils)
 source=("git+https://gitlab.gnome.org/GNOME/pango.git")
 sha256sums=('SKIP')
 
