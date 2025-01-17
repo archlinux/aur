@@ -10,6 +10,13 @@ _appdata="${_appdataprefix}/${_appname}"
 pre_install() {
     echo "Creaing user open-webui..."
     getent passwd $_appuser >/dev/null || useradd -r -s /bin/false -d "$_apphome" "$_appuser"
+    echo "Cleaning up virtual environment for $_appname... if found"
+    rm -rf "${_apphome}/venv"
+}
+
+pre_upgrade() {
+    echo "Cleaning up virtual environment for $_appname..."
+    rm -rf "${_apphome}/venv"
 }
 
 _install() {
