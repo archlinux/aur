@@ -30,7 +30,7 @@ pkgbase = emacs-igc-git
 	conflicts = emacs
 	replaces = emacs
 	options = !strip
-	source = emacs-git::git+https://git.savannah.gnu.org/git/emacs.git#branch=scratch/igc
+	source = emacs-git::git+https://git.savannah.gnu.org/git/emacs.git#branch=feature/igc
 	b2sums = SKIP
 
 pkgname = emacs-igc-git
