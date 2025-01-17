@@ -2,7 +2,7 @@
 # Contributor: Mark Pustjens <pustjens@dds.nl>
 
 pkgname=quill
-pkgver=7.5.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Asynchronous Low Latency C++ Logging Library"
 arch=("any")
@@ -10,7 +10,7 @@ url="https://github.com/odygrd/quill"
 license=("MIT")
 makedepends=("cmake")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/odygrd/quill/archive/v${pkgver}.tar.gz")
-b2sums=("aa5b83845440fd09fb612f3334b60c45699b986010b5087fd605c5eeb5a03c5f0b70f4b08c1a6e76b02e0345cdbb1db70c8cbe26be3b9a1911618909b7d7a48d")
+b2sums=("67fdbe9accbea45ae11492050a948a957c3804433208bd56313b2cc7b4d2b57c405eaf2ea1e8bc20e1873853483750985adbe9ae292367dcc2c445bdec7dd847")
 
 build() {
   cmake -B "build/" -S "${pkgname}-${pkgver}" \
