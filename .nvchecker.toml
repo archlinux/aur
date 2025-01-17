@@ -1,0 +1,5 @@
+[tutanota-desktop]
+source = "git"
+git = "https://github.com/tutao/tutanota.git"
+prefix = "tutanota-desktop-release-"
+include_regex = "tutanota-desktop.*"
