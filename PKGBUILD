@@ -68,10 +68,15 @@
 
 # Optionally select a sub architecture by number or its Kconfig name,
 # for example MCORE2 or MZEN4.
+# 
 # Leaving it blank will require user interaction during the build.
 # Note that the default option is empty.
-# IMPORTANT: keep the last value here in sync with the switch case
-# statement in the _subarch section of update_defconfig()
+# 
+# Important notice for maintainers:
+# Make sure to update the '_subarch'
+# section inside update_defconfig()
+# if this list is updated on updating
+# the kernel compiler patchset.
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
