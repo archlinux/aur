@@ -3,7 +3,7 @@
 # Contributor: Conor Anderson <conor@conr.ca>
 
 pkgname=wire-desktop
-pkgver=3.37.3607
+pkgver=3.38.3638
 pkgrel=1
 pkgdesc="End-to-end encrypted messenger with file sharing, voice calls and video conferences"
 arch=(any)
@@ -28,7 +28,7 @@ source=(
   "$pkgname.desktop"
   "$pkgname.sh"
 )
-sha256sums=('8c272fb347d9238995df1afa6bdfc989fc2fb5a0362e7f7ade3dd065dd633e2b'
+sha256sums=('9d9940d91c1231a8af4a554fc72e071c91848187c6c138f88aed323c245009fb'
             'SKIP'
             '53f37e99d4c2f41a3e31fd70154d82ba06a4af578c68df86af4906f7f37ec787'
             'e443d426819fb647b7fb4a2db36e3f03589c990bd443a0d3d0ff05e5485ea39e')
@@ -37,6 +37,13 @@ validpgpkeys=('ABBA007D6E14E2DB5B283C45D599C1AA126762B1') # Wire Releases Signin
 prepare() {
   cd $pkgname-linux-$pkgver
   sed -i "s/@_electronver@/$_electronver/" "$srcdir/wire-desktop.sh"
+
+  # Inject the correct version into the package.json file
+  sed -i "s/\"version\": \".*\"/\"version\": \"$pkgver\"/" package.json
+
+  grep -q "\"electron\": \"$_electronver\." package.json \
+    || ( echo "Electron version mismatch in package.json"; exit 1 )
+
   yarn install --immutable
 }
 
