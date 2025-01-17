@@ -3,9 +3,9 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=gld
-_pkgver=2.6.6
+_pkgver=2.6.7
 pkgname=r-${_pkgname,,}
-pkgver=2.6.6
+pkgver=2.6.7
 pkgrel=1
 pkgdesc='Estimation and Use of the Generalised (Tukey) Lambda Distribution'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
   r-lmom
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ea23e9781207b5d47ed04e4d5758d9652cab5d1eedcf9fbc9c2ee4d3babffdc4')
+sha256sums=('cc6ff7a4b8980ad04ed215295ea6053f0e7720ae7e00826e97bfa2cb82b5a070')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
