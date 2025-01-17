@@ -1,0 +1,16 @@
+pkgbase = upupup-bin
+	pkgdesc = A small application that regularly reminds you to get up and stretch.(Prebuilt version.Use system-wide electron)一个定期提醒你起来活动筋骨的小应用
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/unclemcz/upupup
+	arch = x86_64
+	license = CC0-1.0
+	depends = electron32
+	conflicts = upupup
+	options = !emptydirs
+	source = upupup-0.0.5.deb::https://github.com/unclemcz/upupup/releases/download/0.0.5/upupup_0.0.5_amd64.deb
+	source = upupup.sh
+	sha256sums = 6cba08ce3042821b66701db0f9676157e881f2136f235c61c98608bdb829a17d
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = upupup-bin
