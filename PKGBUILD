@@ -14,8 +14,8 @@ pkgdesc="The GNU Compiler Collection (${_pkgver}.x)"
 arch=('x86_64')
 arch+=('i686')
 url='https://gcc.gnu.org/gcc-5/'
-license=('GPL' 'LGPL' 'FDL' 'custom')
-depends=('glibc' 'binutils' 'libmpc')
+license=('GPL-2.0-only' 'LGPL-2.1-only' 'GPL-3.0-only' 'LGPL-3.0-only' 'GFDL-1.3-only' 'custom')
+depends=('glibc' 'gcc-libs' 'bash' 'binutils' 'libmpc' 'zlib')
 options=('!emptydirs' '!strip' '!buildflags')
 source=(
   "http://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
