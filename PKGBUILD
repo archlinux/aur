@@ -351,7 +351,9 @@ update_defconfig() {
             else
                 # taken from: https://stackoverflow.com/questions/962255/how-to-store-standard-error-in-a-variable
                 { local __ERROR=$(echo "${_subarch}" | make ${BUILD_FLAGS[*]} oldconfig 2>&1 1>&$out); } {out}>/dev/null
-                if [[ -n "${__ERROR}" ]]; then
+                # $(echo $__ERROR) is required here or the script will break.
+                # Do not change.
+                if [[ -n "$(echo $__ERROR)" ]]; then
                     warning "Selected subarch: ${_subarch} is not supported"
                     exit
                 fi
