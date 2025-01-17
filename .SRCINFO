@@ -1,11 +1,11 @@
 pkgbase = smee-git
 	pkgdesc = A package which provides smee. A captians best friend!
-	pkgver = 0.0.1
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/hauke-cloud/smee
 	arch = x86_64
 	license = GPLv2
-	source = https://github.com/hauke-cloud/smee/archive/refs/tags/0.0.1.zip
+	source = https://github.com/hauke-cloud/smee/archive/refs/tags/0.0.17.zip
 	sha256sums = SKIP
 
 pkgname = smee-git

@@ -1,6 +1,6 @@
 # Maintainer: Hauke Mettendorf hauke@mettendorf.it
 pkgname=smee-git
-pkgver=0.0.1
+pkgver=0.0.17
 pkgrel=1
 pkgdesc="A package which provides smee. A captians best friend!"
 arch=('x86_64')
