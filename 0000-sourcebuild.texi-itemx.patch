@@ -1,0 +1,16 @@
+diff -pNaru5 a/gcc/doc/sourcebuild.texi b/gcc/doc/sourcebuild.texi
+--- a/gcc/doc/sourcebuild.texi	2011-02-11 05:01:29.000000000 -0500
++++ b/gcc/doc/sourcebuild.texi	2025-01-16 22:48:25.361810964 -0500
+@@ -674,11 +674,11 @@ specified in @code{outputs} in @file{con
+ deprecated).  It also adds any testsuite targets that can use the
+ standard rule in @file{gcc/Makefile.in} to the variable
+ @code{lang_checks}.
+ 
+ @table @code
+-@itemx all.cross
++@item all.cross
+ @itemx start.encap
+ @itemx rest.encap
+ FIXME: exactly what goes in each of these targets?
+ @item tags
+ Build an @command{etags} @file{TAGS} file in the language subdirectory
