@@ -1,16 +1,15 @@
 pkgbase = piknik-bin
 	pkgdesc = Copy/paste anything over the network.
-	pkgver = 0.10.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/jedisct1/piknik
 	arch = x86_64
 	license = ISC
 	provides = piknik
 	conflicts = piknik
-	source = piknik-0.10.1.tar.gz::https://github.com/jedisct1/piknik/releases/download/0.10.1/piknik-linux_x86_64-0.10.1.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/jedisct1/piknik/0.10.1/LICENSE
-	sha256sums = b429f333dd3b0849b40237e522a2f1db4b3b69c64023b7a9e8150664df39bb95
-	sha256sums = 07d61be5b330f032cc7c2e384c5800ea9e931e60a9b2630935bd19fed36fc4cf
+	source = piknik-0.10.2.tar.gz::https://github.com/jedisct1/piknik/releases/download/0.10.2/piknik-linux_x86_64-0.10.2.tar.gz
+	source = LICENSE-0.10.2::https://raw.githubusercontent.com/jedisct1/piknik/0.10.2/LICENSE
+	sha256sums = 205e93cd4cd5c4bbde25288d54f94a386c4a6daf32a644946a32012a2128d257
+	sha256sums = b36a77e68dfbe29d38ac6bb1c07ab4d61fdac81593456b14cc3e9e2d6fa3f91a
 
 pkgname = piknik-bin
-
