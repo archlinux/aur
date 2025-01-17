@@ -38,10 +38,6 @@
 #
 # Set to anything but null to activate.
 : "${_use_current:=""}"
-: "${_reuse_current:=""}"
-[[ -n "${_reuse_current}" ]] && \
-    warning "Please switch to using '_use_current' flag instead of '_reuse_current'" && \
-    _use_current="y"
 
 # Apply selected optimizations chosen by
 # the package maintainers to the config.
@@ -53,10 +49,6 @@
 #
 # Set to anything but null to activate.
 : "${_optimize_defconfig:=""}"
-: "${_update_kconfig_on_reuse:=""}"
-[[ -n "${_update_kconfig_on_reuse}" ]] && \
-    warning "Please switch to using '_update_kconfig_on_reuse' flag instead of '_optimize_defconfig'" && \
-    _optimize_defconfig="y"
 
 # Determines whether the kernel configuration should be
 # copied into the source tree before compilation starts.
@@ -162,6 +154,17 @@
 
 ### BUILD OPTIONS END
 
+### DEPRECATED BUILD OPTIONS START
+
+# See '_use_current'
+: "${_reuse_current:=""}"
+
+# See '_optimize_defconfig'
+: "${_update_kconfig_on_reuse:=""}"
+
+### DEPRECATED BUILD OPTIONS END
+
+
 # Kernel version
 _kernel_major=6.12
 _kernel_minor=6
@@ -199,6 +202,18 @@ source=(
 export "KBUILD_BUILD_HOST=archlinux"
 export "KBUILD_BUILD_USER=${pkgbase}"
 export "KBUILD_BUILD_TIMESTAMP=$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
+
+# Check for deprecated settings
+check_deprecated_settings() {
+    if [ -n "${_update_kconfig_on_reuse}" ]; then
+        warning "Please switch to using '_update_kconfig_on_reuse' flag instead of '_optimize_defconfig'"
+        _optimize_defconfig="y"
+    fi
+    if [ -n "${_reuse_current}" ]; then
+        warning "Please switch to using '_use_current' flag instead of '_reuse_current'"
+        _use_current="y"
+    fi
+}
 
 # Applies all patches
 apply_patches() {
@@ -384,6 +399,7 @@ update_defconfig() {
 prepare() {
     cd "${_src_linux}" || exit 1
 
+    check_deprecated_settings
     apply_patches
 
     [[ -n "${_use_current}" ]] && copy_defconfig
