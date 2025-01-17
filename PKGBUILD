@@ -376,7 +376,8 @@ update_defconfig() {
             scripts/config --set-val X86_64_VERSION "${_subarch_microarch}"
             make "${BUILD_FLAGS[@]}" oldconfig
             ;;
-        [1-9]|[1-3][0-9]|[4][0-3])
+        [1-9]|[1-3][0-9]|[4][0-3]|43)
+            # 1 to 9, 10 to 39, 40 to 43
             # 43 is the last supported value here, refer to the _subarch
             # documentation above and keep the last section of this check
             # in sync with the supported value.
@@ -398,7 +399,7 @@ update_defconfig() {
             ;;
         *)
             # String - check if it exists in .config and if it does - set it
-            if grep -q -e "${_subarch}[[:space:]]" -e "${_subarch}=" .config; then
+            if grep -q -e "CONFIG_${_subarch}[[:space:]]" -e "CONFIG_${_subarch}=" .config; then
                 # Check if option exists in .config
                 scripts/config -e "${_subarch}"
                 make "${BUILD_FLAGS[@]}" olddefconfig
