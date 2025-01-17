@@ -2,7 +2,7 @@
 
 _pkgname=goby
 pkgname=goby-community
-pkgver=2.9.11
+pkgver=2.9.12
 pkgrel=1
 pkgdesc="Goby 社区版 | Goby Community Edition"
 arch=("x86_64")
@@ -17,7 +17,7 @@ source=(
 	"$pkgname.png"
 )
 sha256sums=(
-	'9129eeaa23391750a1525d1201c4c64470503a08bf1afa003fbf04e965c72aa6'
+	'b14f66284fd5eefb2744f5400e023b12a2d4249c98a73ceb51e823208f7dde8b'
 	'0624f9c1aa7377ccb5bd6b6a54a3dbea3cdd1a1e838a154c73bd01d22ff5fc3f'
 	'11e10dc114bd6cd8ecfe018b277798f1c7727f113c15ebc09090682f8575bb1f'
 )
@@ -37,4 +37,7 @@ package() {
 	install -Dm644 $srcdir/$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
 	chmod -R ugo+rwX $pkgdir/opt/$pkgname
 	setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' $pkgdir/opt/$pkgname/golib/goby-cmd-linux
+
+	echo '可使用goby-community-cmd启动goby-cmd'
+	echo 'Use goby-cmd by running goby-community-cmd'
 }

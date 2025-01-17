@@ -1,6 +1,6 @@
 pkgbase = goby-community
 	pkgdesc = Goby 社区版 | Goby Community Edition
-	pkgver = 2.9.11
+	pkgver = 2.9.12
 	pkgrel = 1
 	url = https://gobies.org/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = goby-community
 	depends = libpcap
 	options = !strip
 	options = !debug
-	source = https://goby-storage-public.oss-cn-beijing.aliyuncs.com/2.9.11/goby-linux-x64-2.9.11-Community.zip
+	source = https://goby-storage-public.oss-cn-beijing.aliyuncs.com/2.9.12/goby-linux-x64-2.9.12-Community.zip
 	source = goby-community.desktop
 	source = goby-community.png
-	sha256sums = 9129eeaa23391750a1525d1201c4c64470503a08bf1afa003fbf04e965c72aa6
+	sha256sums = b14f66284fd5eefb2744f5400e023b12a2d4249c98a73ceb51e823208f7dde8b
 	sha256sums = 0624f9c1aa7377ccb5bd6b6a54a3dbea3cdd1a1e838a154c73bd01d22ff5fc3f
 	sha256sums = 11e10dc114bd6cd8ecfe018b277798f1c7727f113c15ebc09090682f8575bb1f
 
