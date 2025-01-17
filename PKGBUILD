@@ -211,7 +211,7 @@ export "KBUILD_BUILD_USER=${pkgbase}"
 export "KBUILD_BUILD_TIMESTAMP=$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 # Check for deprecated settings
-check_deprecated_settings() {
+_check_deprecated_settings() {
     if [ -n "${_update_kconfig_on_reuse}" ]; then
         warning "Please switch to using '_update_kconfig_on_reuse' flag instead of '_optimize_defconfig'"
         _optimize_defconfig="y"
@@ -223,7 +223,7 @@ check_deprecated_settings() {
 }
 
 # Applies all patches
-apply_patches() {
+_apply_patches() {
     # Patch with kernel version patches
     patch -Np1 -i ../patch-${_kernel_major}.${_kernel_minor} || true
 
@@ -249,7 +249,7 @@ apply_patches() {
 }
 
 # Allows user to modify the kernel config
-modify_defconfig() {
+_modify_defconfig() {
     [[ -n "$_makemenuconfig" ]] && make ${BUILD_FLAGS[*]} menuconfig
     [[ -n "$_makexconfig" ]] && make ${BUILD_FLAGS[*]} xconfig
     [[ -n "$_makenconfig" ]] && make ${BUILD_FLAGS[*]} nconfig
@@ -259,7 +259,7 @@ modify_defconfig() {
 }
 
 # Copies the kernel config
-copy_defconfig() {
+_copy_defconfig() {
     local _cur_major_ver="$(uname -r | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
     [[ "${_cur_major_ver}" != "${_kernel_major}" ]] &&
         warning "Major version was updated, you should regen the defconfig"
@@ -276,7 +276,7 @@ copy_defconfig() {
 }
 
 # Updates the kernel config
-update_defconfig() {
+_update_defconfig() {
     # Copy configuration file (if found)
     if [ -f "${startdir}/kconfig" ]; then
         echo ":: Using configuration file \"${startdir}/kconfig\""
@@ -420,11 +420,11 @@ update_defconfig() {
 prepare() {
     cd "${_src_linux}" || exit 1
 
-    check_deprecated_settings
-    apply_patches
+    _check_deprecated_settings
+    _apply_patches
 
-    [[ -n "${_use_current}" ]] && copy_defconfig
-    [[ -n "${_optimize_defconfig}" ]] || [[ -z "${_use_current}" ]] && update_defconfig
+    [[ -n "${_use_current}" ]] && _copy_defconfig
+    [[ -n "${_optimize_defconfig}" ]] || [[ -z "${_use_current}" ]] && _update_defconfig
 
     # Read and apply modprobed database
     # See https://aur.archlinux.org/packages/modprobed-db
@@ -436,7 +436,7 @@ prepare() {
         fi
 
     # Open configuration editors
-    modify_defconfig
+    _modify_defconfig
 
     # Save configuration
     # shellcheck disable=SC2015
