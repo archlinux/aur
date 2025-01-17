@@ -1,7 +1,7 @@
 pkgbase = python-gurobipy
 	pkgdesc = Python interface to Gurobi
 	pkgver = 12.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gurobi.com/products/gurobi-optimizer
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = python-gurobipy
 	makedepends = python-wheel
 	depends = glibc
 	depends = gurobi
-	depends = python>=3.8
+	depends = python>=3.12
 	depends = python-numpy
 	depends = python-scipy
 	noextract = gurobipy-12.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
