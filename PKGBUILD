@@ -1,6 +1,6 @@
 # Maintainer: instancer-kirik
 pkgname=varchiver
-pkgver=0.4.7
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A variable archiver and github/aur release manager (serialize your variables first)"
 arch=('x86_64')
@@ -11,15 +11,24 @@ depends=(
     'python-pyqt6'
     'python-pyqt6-webengine'
     'python-uv'
+    'python-psutil'
+    'git'  # Required for git operations
+    'github-cli'  # Required for GitHub releases
+    'ttf-dejavu'  # Required for icons/glyphs
+    'libnotify'   # Required for notifications
 )
 makedepends=(
     'python-build'
     'python-installer'
     'python-wheel'
     'python-pip'
+    'python-installer'
 )
-source=("varchiver-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=("f81da596091baf3c572b8969b9ab1a3923f506001142723d90c3652b24d3e773")  # Will be updated by release manager
+optdepends=(
+    'python-rarfile: for RAR archive support'
+)
+source=("$pkgname-0.5.1.tar.gz::$url/archive/v0.5.1.tar.gz")
+sha256sums=("790a1690c2a84c406f4020298a93db1b0e29c0cf81fdf2226d0a016e5a6d99ce")  # Will be updated by release manager
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -31,29 +40,18 @@ build() {
     python -m venv .venv
     source .venv/bin/activate
     
-    # Install dependencies and build
-    if [ -f "pyproject.toml" ]; then
-        # Use pip/uv if pyproject.toml exists
-        if command -v uv &> /dev/null; then
-            uv pip install .
-            uv pip install pyinstaller
-        else
-            pip install .
-            pip install pyinstaller
-        fi
-    elif [ -f "setup.py" ]; then
-        # Use setup.py if it exists
-        pip install .
-        pip install pyinstaller
-    elif [ -f "requirements.txt" ]; then
-        # Fall back to requirements.txt
-        pip install -r requirements.txt
-        pip install .
-        pip install pyinstaller
-    fi
+    # Install dependencies
+    pip install --no-cache-dir -e .
     
-    # Build executable
-    python -m PyInstaller --clean --onefile --name varchiver bootstrap.py
+    # Build executable with explicit module includes
+    pyinstaller --clean --onefile --name varchiver \
+        --hidden-import varchiver \
+        --hidden-import varchiver.utils \
+        --hidden-import varchiver.threads \
+        --hidden-import varchiver.widgets \
+        --add-data "$pkgname:$pkgname" \
+        --collect-all PyQt6 \
+        bootstrap.py
     
     # Deactivate virtual environment
     deactivate
@@ -61,6 +59,9 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
+    
+    # Create necessary directories
+    install -dm755 "$pkgdir/usr/share/$pkgname"
     
     # Install executable
     install -Dm755 dist/varchiver "$pkgdir/usr/bin/varchiver"
@@ -72,6 +73,10 @@ package() {
     # Install license and readme
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    
+    # Set correct permissions
+    chmod -R 755 "$pkgdir/usr/share/$pkgname"
+    find "$pkgdir/usr/share/$pkgname" -type f -exec chmod 644 {} \;
 }
 
 # Get version from PKGBUILD
