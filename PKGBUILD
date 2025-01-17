@@ -17,8 +17,10 @@ depends=('vapoursynth'
   'vapoursynth-plugin-vsmasktools'
   'vapoursynth-plugin-vskernels'
 )
-optdepends=('vapoursynth-plugin-bm3dcuda: BM3D cuda/cuda_rtc + fast cpu support'
-  'vapoursynth-plugin-bm3dcuda-cpu: BM3D fast cpu support, without cuda'
+optdepends=('vapoursynth-plugin-bm3dcuda: BM3D support, GPU version'
+  'vapoursynth-plugin-bm3dcuda-cpu: BM3D support, CPU version'
+  'vapoursynth-plugin-dfttest2: dfttest support, GPU version'
+  'vapoursynth-plugin-dfttest2-cpu: dfttest support, CPU version'
 )
 makedepends=('git'
   'python-poetry'
