@@ -1,6 +1,6 @@
 pkgbase = play-timer-git
 	pkgdesc = CLI-friendly easy-to-use timer app with native DE integration.
-	pkgver = 2.0.5
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://github.com/efogdev/mpris-timer
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = play-timer-git
 	depends = wayland
 	depends = pulse-native-provider
 	provides = play-timer
-	source = play-timer-git-2.0.5.tar.gz::https://github.com/efogdev/mpris-timer/archive/refs/tags/2.0.5.tar.gz
+	source = play-timer-git-2.0.6.tar.gz::https://github.com/efogdev/mpris-timer/archive/refs/tags/2.0.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = play-timer-git
