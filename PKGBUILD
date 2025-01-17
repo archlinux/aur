@@ -8,12 +8,12 @@
 
 _basename=deskflow
 pkgname=${_basename}-git
-pkgver=1.17.2.51.g0349c06
+pkgver=1.18.0.86.g3f3116d
 pkgrel=1
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers"
-arch=('x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://deskflow.org/"
-license=('GPL-2.0')
+license=(LicenseRef-GPL-2.0-only-WITH-OpenSSL-Exception)
 depends=(
 	'libxtst'
 	'libxkbcommon'
@@ -45,7 +45,7 @@ optdepends=(
 	'libxrandr: X11 support'
 )
 provides=("$_basename")
-conflicts=("$_basename")
+conflicts=('synergy-git' 'synergy-1.6' 'synergy1-bin' 'synergy2-bin' 'synergy3-bin' 'synergy3-beta-bin' 'synergy3-stable-bin' 'barrier' 'barrier-git' 'barrier-headless' 'barrier-headless-git' 'input-leap' 'input-leap-git' 'input-leap-headless-git' 'input-leap-headless' 'waynergy' 'waynergy-git' 'qsynergy' 'slim-synergy' 'quicksynergy' 'deskflow')
 source=("$_basename::git+https://github.com/deskflow/deskflow.git")
 sha256sums=('SKIP')
 
