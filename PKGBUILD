@@ -1,6 +1,6 @@
 # Maintainer: snafu
 pkgname=env-modules
-pkgver=5.4.0
+pkgver=5.5.0
 pkgrel=1
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
@@ -20,7 +20,7 @@ install=env-modules.install
 changelog=
 source=("https://sourceforge.net/projects/modules/files/Modules/modules-$pkgver/modules-$pkgver.tar.gz")
 noextract=()
-sha256sums=('586245cbf9420866078d8c28fce8ef4f192530c69a0f368f51e848340dcf3b90')
+sha256sums=('ad0e360c7adc2515a99836863d98499b3ad89cd7548625499b20293845b040cb')
 validpgpkeys=()
 
 # Install locations:
