@@ -3,10 +3,10 @@
 
 pkgbase=linux-amd-znver3
 _srcname=linux
-gitver=v6.12.5
+gitver=v6.12.9
 patchver=20240221.2
 patchname=more-uarches-for-kernel-6.8-rc4+.patch
-pkgver=6.12.v.5
+pkgver=6.12.v.9
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -155,7 +155,7 @@ _package-headers() {
   # Add objtool for CONFIG_STACK_VALIDATION
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
   cp -a tools/objtool "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
-
+  cp -a tools/bpf "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
   chown -R root:root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
 
@@ -176,6 +176,32 @@ _package-headers() {
    rm -rf $modarch
   done <<< $(find "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/ -maxdepth 1 -mindepth 1 -type d | grep -v /x86$)
 
+  echo "Removing documentation..."
+  rm -r "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation"
+
+  echo "Removing broken symlinks..."
+  find -L "${pkgdir}/usr/lib/modules/${_kernver}/build" -type l -printf 'Removing %P\n' -delete
+
+  echo "Removing loose objects..."
+  find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type f -name '*.o' -printf 'Removing %P\n' -delete
+
+#  echo "Stripping build tools..."
+#  local file
+#  while read -rd '' file; do
+#    case "$(file -Sib "$file")" in
+#      application/x-sharedlib\;*)      # Libraries (.so)
+#        strip -v $STRIP_SHARED "$file" ;;
+#      application/x-archive\;*)        # Libraries (.a)
+#        strip -v $STRIP_STATIC "$file" ;;
+#      application/x-executable\;*)     # Binaries
+#        strip -v $STRIP_BINARIES "$file" ;;
+#      application/x-pie-executable\;*) # Relocatable binaries
+#        strip -v $STRIP_SHARED "$file" ;;
+#    esac
+#  done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+#  echo "Stripping vmlinux..."
+#  strip -v $STRIP_STATIC "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers")
