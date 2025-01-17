@@ -124,7 +124,7 @@ else
   pkgname="emacs-pgtk-igc-git"
 fi
 pkgver=31.0.50.175856
-pkgrel=3
+pkgrel=4
 pkgdesc="GNU Emacs. Development branch, with PGTK and IGC enabled."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
