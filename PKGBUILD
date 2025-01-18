@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc='Graphical viewer of phylogenetic trees'
 arch=('any')
 url='http://tree.bio.ed.ac.uk/software/figtree'
-license=('GPL2')  # as stated in http://code.google.com/p/figtree/
+license=('GPL-2.0-or-later')
 depends=('java-runtime')
 conflicts=('figtree')
 provides=('figtree')
@@ -25,12 +25,12 @@ prepare() {
 
 package() {
   _figdir="${srcdir}/FigTree_v${pkgver}"
-  
+
   install -Dm755 "${_figdir}/bin/figtree" "${pkgdir}/usr/bin/figtree"
   install -Dm755 "${_figdir}/lib/figtree.jar" "${pkgdir}/usr/share/figtree/lib/figtree.jar"
   install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm644 "${_figdir}/images/figtree.png" "${pkgdir}/usr/share/pixmaps/figtree.png"
-  
+
   # Install doc and examples
   install -Dm644 "${_figdir}/README.txt"     "${pkgdir}/usr/share/doc/figtree/README.txt"
   install -Dm644 "${_figdir}/carnivore.tree" "${pkgdir}/usr/share/doc/figtree/examples/carnivore.tree"
