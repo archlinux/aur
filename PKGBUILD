@@ -2,13 +2,13 @@
 
 pkgname=hoarder
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
 url="https://github.com/${pkgname}-app/${pkgname}"
 license=('AGPL-3.0-or-later')
 backup=("etc/${pkgname}/${pkgname}.env")
-depends=("chromium" "nodejs>=22" "pnpm" "redis")
+depends=("chromium" "nodejs>=22" "pnpm")
 makedepends=("git" "jq" "pnpm")
 optdepends=("${pkgname}-cli: ${pkgname} cli tool"
             "meilisearch: for full text search"
@@ -25,11 +25,11 @@ source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
 sha256sums=('e045142478637c85b36eac67a3569ec7b511bafa5d3d099f397953d3957860ee'
             '1741afe407c55654462de14b0ec454775668dc42103f20448fc8025f646bf963'
             'bb7cf9d047374376137a9ec5ac5ad653d3569a834de8ccc3e8a6f04a870bc01e'
-            '713e248fc61f429a3da627016343d89147dde147f739e51584f7398d11262896'
+            '8a1e00f2d7472a2e3c1613992f2dbc5f1b1d3fe3fd830d985211eff0ad044676'
             'cd2b58e13dd928925db21819a74052b98c4dd82cf6353f6b9181b41cc93e8848'
-            '0fcaf8b03f475e93fc6d84b9f9cfe4d87c3c60baf294b93bb5c69586971e21b4'
-            '7a4478c4fa6a7b60566d8b8fdb46a4c2f33d094e8fb728e281b204990a210f13'
-            'c83bbf444472b557b20865b8c3c8dc00e59a1c5978f02398d909407ee00efeae')
+            'fb543b04362e224f6f10b7e32cea60abef986525d13df4f3d4aa27f1f52807ff'
+            '6d2aeef65a1b2e5915c00190329a827b2440271b130129f2ea4f79878169a0c1'
+            'f800c1dea05dcd44e6105cb02b3a8e224353e360d5a997b3a90a5c5b90aa8c39')
 
 prepare() {
     echo "After upgrading 'nodejs', you need to recompile 'hoarder'..."

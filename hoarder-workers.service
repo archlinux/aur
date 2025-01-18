@@ -1,13 +1,13 @@
 [Unit]
-Description = Hoarder workers
-Wants = network-online.target redis.service hoarder-browser.service ollama.service
-After = network-online.target redis.service hoarder-browser.service ollama.service
+Description = Hoarder Workers
+Wants = network-online.target hoarder-browser.service ollama.service
+After = network-online.target hoarder-browser.service ollama.service
 
 [Service]
 User = hoarder
 Restart = on-failure
-Environment = DATA_DIR=/var/lib/hoarder
 EnvironmentFile = -/etc/hoarder/hoarder.env
+Environment = DATA_DIR=/var/lib/hoarder
 WorkingDirectory = /usr/lib/hoarder/apps/workers
 ExecStart = /usr/bin/pnpm run start:prod
 TimeoutStopSec = 5

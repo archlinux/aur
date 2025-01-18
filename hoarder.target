@@ -2,7 +2,6 @@
 Description = Hoarder services
 After = network-online.target
 Wants = hoarder-web.service hoarder-workers.service hoarder-browser.service
-Requires = redis.service
 
 [Install]
 WantedBy = multi-user.target

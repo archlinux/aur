@@ -1,14 +1,14 @@
 [Unit]
-Description = Hoarder web
-Wants = network-online.target redis.service hoarder-workers.service meilisearch.service
-After = network-online.target redis.service hoarder-workers.service meilisearch.service
+Description = Hoarder WebUI
+Wants = network-online.target hoarder-workers.service meilisearch.service
+After = network-online.target hoarder-workers.service meilisearch.service
 
 [Service]
 User = hoarder
 Restart = on-failure
-Environment = DATA_DIR=/var/lib/hoarder
 EnvironmentFile = -/etc/hoarder/hoarder.env
 EnvironmentFile = -/usr/lib/hoarder/version
+Environment = DATA_DIR=/var/lib/hoarder
 WorkingDirectory = /usr/lib/hoarder/db_migrations
 ExecStartPre = /usr/bin/node index.js
 ExecStart = /usr/bin/node /usr/lib/hoarder/apps/web/server.js

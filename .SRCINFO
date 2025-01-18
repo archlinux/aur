@@ -1,7 +1,7 @@
 pkgbase = hoarder
 	pkgdesc = A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search
 	pkgver = 0.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hoarder-app/hoarder
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,6 @@ pkgbase = hoarder
 	depends = chromium
 	depends = nodejs>=22
 	depends = pnpm
-	depends = redis
 	optdepends = hoarder-cli: hoarder cli tool
 	optdepends = meilisearch: for full text search
 	optdepends = ollama: for automatic tagging
@@ -29,10 +28,10 @@ pkgbase = hoarder
 	sha256sums = e045142478637c85b36eac67a3569ec7b511bafa5d3d099f397953d3957860ee
 	sha256sums = 1741afe407c55654462de14b0ec454775668dc42103f20448fc8025f646bf963
 	sha256sums = bb7cf9d047374376137a9ec5ac5ad653d3569a834de8ccc3e8a6f04a870bc01e
-	sha256sums = 713e248fc61f429a3da627016343d89147dde147f739e51584f7398d11262896
+	sha256sums = 8a1e00f2d7472a2e3c1613992f2dbc5f1b1d3fe3fd830d985211eff0ad044676
 	sha256sums = cd2b58e13dd928925db21819a74052b98c4dd82cf6353f6b9181b41cc93e8848
-	sha256sums = 0fcaf8b03f475e93fc6d84b9f9cfe4d87c3c60baf294b93bb5c69586971e21b4
-	sha256sums = 7a4478c4fa6a7b60566d8b8fdb46a4c2f33d094e8fb728e281b204990a210f13
-	sha256sums = c83bbf444472b557b20865b8c3c8dc00e59a1c5978f02398d909407ee00efeae
+	sha256sums = fb543b04362e224f6f10b7e32cea60abef986525d13df4f3d4aa27f1f52807ff
+	sha256sums = 6d2aeef65a1b2e5915c00190329a827b2440271b130129f2ea4f79878169a0c1
+	sha256sums = f800c1dea05dcd44e6105cb02b3a8e224353e360d5a997b3a90a5c5b90aa8c39
 
 pkgname = hoarder
