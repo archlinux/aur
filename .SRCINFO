@@ -1,0 +1,22 @@
+pkgbase = epson-thermal-printer-driver
+	pkgdesc = Epson thermal printer driver
+	pkgver = 3.0.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = cups
+	depends = glibc
+	depends = libcups
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/35/42/b1a708bb8b21d7a68ae7394287db440974b68a0e/tmx-cups-src-ImpactReceipt-3.0.0.0_pck_e.zip
+	sha256sums = 94bdc542274ff9b2291781d8a6b0daad19178b1eb9ae9c2e751ce0f250caa1e2
+
+pkgname = epson-thermal-printer-impact-receipt
+	pkgdesc = Epson thermal printer driver (TM-U220)
+
+pkgname = epson-thermal-printer-impact-slip
+	pkgdesc = Epson thermal printer driver (TM-H6000IV)
+
+pkgname = epson-thermal-printer-thermal-receipt
+	pkgdesc = Epson thermal printer driver (TM-m30, TM-T88VI, TM-H6000V)
