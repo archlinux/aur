@@ -12,7 +12,7 @@ optdepends=('terminator: the update command is sent to this terminal emulator by
             'libnotify: provides a notification for completion of upgrade(s)'
             'archlinux-artwork: provides icon for notifications')
 source=("https://gitlab.com/protist/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('b2a8e18bb9cd2ce3d7a7fff34ec5edf56ded6acb7349dc34c0dc5fc208254500')
+sha256sums=('c57daddb414342d7e193ce2d2c837bac84f43ea877848d36c9959d4a944cdcbf')
 
 package() {
   cd "$pkgname-v$pkgver"
