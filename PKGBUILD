@@ -15,6 +15,7 @@ options=(!debug !strip)
 makedepends+=(git)
 
 depends=(
+	"pipewire-v4l2"
 	"procps-ng"
 	"coreutils"
 	"awk"
@@ -22,12 +23,10 @@ depends=(
 	"xorg-xauth"
 	"xdg-user-dirs"
 	"xorg-xhost"
-	"findutils"
 	"zenity"
 	"xdg-dbus-proxy"
 	"nss"
 	"bubblewrap"
-	"xcb-util-renderutil"
 	"xcb-util-keysyms"
 	"xcb-util-image"
 	"xcb-util-wm"
