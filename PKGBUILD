@@ -9,7 +9,7 @@ pkgrel=3
 pkgdesc='Control the behaviour of your Linux cdrom player'
 arch=('i686' 'x86_64')
 url='https://packages.debian.org/bullseye/setcd'
-license=('GPL')
+license=('GPL-2.0-or-later')
 source=("http://ftp.de.debian.org/debian/pool/main/s/${pkgname}/${pkgname}_${_basever}.orig.tar.gz"
         "http://ftp.de.debian.org/debian/pool/main/s/${pkgname}/${pkgname}_${_basever}-${_extver}.diff.gz")
 sha256sums=('66187e4b0774467c7316ed12ae168f928520ce4497ea16df0b799d98d8488156'
