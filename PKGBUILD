@@ -3,7 +3,7 @@
 
 _pkgname='fission'
 pkgname='fission-bin'
-pkgver='v1.20.1'
+pkgver='v1.20.5'
 pkgrel=1
 pkgdesc="Fast and Simple Serverless Functions for Kubernetes"
 url="https://github.com/fission/fission"
