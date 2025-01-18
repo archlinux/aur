@@ -11,7 +11,7 @@ depends=('kubectl')
 license=('Apache')
 arch=('x86_64')
 source=("$_pkgname::https://github.com/fission/fission/releases/download/$pkgver/$_pkgname-$pkgver-linux-amd64")
-sha256sums=('4ba4cf38e320ff3845a397d574bc598b2889f5e9fcb859c540a46149bffe79de')
+sha256sums=('72b6e4289af11f644dcc263df1fcacae831fe1bb80564e6a5276af40b487d27d')
 
 package() {
   install -Dm755 fission "$pkgdir/usr/bin/fission"
