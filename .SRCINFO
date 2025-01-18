@@ -1,6 +1,6 @@
-pkgbase = odilia
-	pkgdesc = Building a better screen reader for the Linux desktop, one step at a time.
-	pkgver = 0.1.4
+pkgbase = odilia-git
+	pkgdesc = Main branch of Odilia.
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://odilia.app/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = odilia
 	depends = at-spi2-core
 	depends = at-spi2-atk
 	provides = odilia
-	source = odilia-0.1.4.tar.gz::https://github.com/odilia-app/odilia/archive/refs/tags/v0.1.4.tar.gz
-	sha256sums = 4a35c7c949e8da919403d3e8a095ca44036e222af9d8d9ebcf5b28bb586f298e
+	source = odilia-git-0.2::git+https://github.com/odilia-app/odilia.git
+	sha256sums = SKIP
 
-pkgname = odilia
+pkgname = odilia-git

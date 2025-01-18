@@ -1,9 +1,9 @@
 # Maintainer Tait Hoyem <tait+odilia_aur@tait.tech>
 
-pkgname=odilia
-pkgver=0.1.4
+pkgname=odilia-git
+pkgver=0.2
 pkgrel=1
-pkgdesc="Building a better screen reader for the Linux desktop, one step at a time. "
+pkgdesc="Main branch of Odilia."
 url="https://odilia.app/"
 license=('GPL3')
 arch=('x86_64' 'aarch64')
@@ -17,13 +17,14 @@ depends=(
 provides=( odilia )
 
 source=(
-  odilia-$pkgver.tar.gz::https://github.com/odilia-app/odilia/archive/refs/tags/v$pkgver.tar.gz
+  $pkgname-$pkgver::git+https://github.com/odilia-app/odilia.git
 )
 sha256sums=(
-  4a35c7c949e8da919403d3e8a095ca44036e222af9d8d9ebcf5b28bb586f298e
+  'SKIP'
 )
 
 prepare() {
+	ls
   cd "$pkgname-$pkgver"
   cargo fetch
 }
@@ -35,9 +36,9 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -vDm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
+  install -vDm755 -t "$pkgdir/usr/bin" "target/release/odilia"
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-  install -vDm644 -t "$pkgdir/etc/$pkgname" "odilia/config.toml"
+  install -vDm644 -t "$pkgdir/etc/odilia" "odilia/config.toml"
 }
 
 #vim: syntax=sh
