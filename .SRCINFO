@@ -1,0 +1,21 @@
+pkgbase = vapoursynth-plugin-vsdeband
+	pkgdesc = Plugin for Vapoursynth: vsdeband
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-deband
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = vapoursynth-plugin-vstools
+	depends = vapoursynth-plugin-vskernels
+	depends = vapoursynth-plugin-vsexprtools
+	depends = vapoursynth-plugin-vsrgtools
+	depends = vapoursynth-plugin-vsmasktools
+	depends = vapoursynth-plugin-vsaa
+	depends = vapoursynth-plugin-vsscale
+	depends = vapoursynth-plugin-vsdenoise
+	optdepends = vapoursynth-plugin-neo_f3kdb
+	source = https://files.pythonhosted.org/packages/c5/2e/8c7e39ca89ea9a1b4cff597599debd215839132f038c2354d3634be25a92/vsdeband-1.2.2-py3-none-any.whl
+	sha256sums = dec2c52365c95b8fb21bc836d5372353b1f9ff25e98f45c512dd134598ab37ec
+
+pkgname = vapoursynth-plugin-vsdeband
