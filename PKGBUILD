@@ -1,6 +1,6 @@
 # Maintainer: Eldred Habert <arch@eldred.fr>
 pkgname=hugetracker
-pkgver=1.0.9
+pkgver=1.0.11
 pkgrel=1
 pkgdesc='The music composition suite for the Nintendo Game Boy'
 arch=('x86_64')
@@ -13,18 +13,18 @@ makedepends=('fpc' 'git' 'lazarus')
 # The program also explicitly makes calls to `fontconfig` and `pango`, so mark them
 # explicitly, despite namcap's complaints.
 depends=(fontconfig gdk-pixbuf2 glib2 gtk2 pango 'rgbds>=0.5.0' sdl2
-	 libatk-1.0.so libcairo.so)
+	 libatk-1.0.so libcairo.so glibc libx11)
 optdepends=('ffmpeg: "Export song" functionality')
 source=("hUGETracker-${pkgver}.tar.gz::https://github.com/SuperDisk/hUGETracker/archive/refs/tags/v${pkgver}.tar.gz"
         'Pascal-SDL-2-Headers.tar.gz::https://github.com/ev1313/Pascal-SDL-2-Headers/archive/088eeb3af8b680898d9fcaff390eddce9744ee51.tar.gz'
         'bgrabitmap.tar.gz::https://github.com/bgrabitmap/bgrabitmap/archive/2814b069d55f726b9f3b4774d85d00dd72be9c05.tar.gz'
-        'hUGEDriver.tar.gz::https://github.com/SuperDisk/hUGEDriver/archive/df5a07ba1d684bf25b1de949ac0d9521a8937c32.tar.gz'
+        'hUGEDriver.tar.gz::https://github.com/SuperDisk/hUGEDriver/archive/a3cbd0cea48e6784d7f625066d0300f7cb075926.tar.gz'
         'rackctls.tar.gz::https://github.com/olivluca/rackctls/archive/15c50fb5dd398875a274b3aa2c36aa769d145a11.tar.gz'
         'default_runtime_dir.patch')
-sha256sums=('d09c7d20ee644167b65008a53338a56060c3aa49654e5e5063a01c16e918c5a2'
+sha256sums=('00c42903bf5fb7cd9302c12c0a66a6cfff51a743984bc1cc15ef758ec1ea95bc'
             '70a6b029365b9cb3c52628ea1419c5f2e379a2d960510560e6e730c8c5f907dc'
             'd9daea6027be28f6b2c30ee0fdd1c7fca8cc715d1bbb972403e844a42fa0f07c'
-            'a2f19f1ec957c5ba17f981c277687098cc874002874533a0b2c461a5a9c6c819'
+            '809a05d60fe3c81f50e497aeb83c32f43ffcde54f489388172086ad1579f91a6'
             'f069ba10fa267564a0bd88488e4d4ad31d013b07edadbf760f8b1197fba04042'
             '59e64986a039fc6dece071b94930f5855ff2d0c1a9a5740ad7af13d9d74b023f')
 
@@ -69,9 +69,9 @@ build() {
 	lazbuild --lazarusdir="${_lazdir}" --add-package-link src/bgrabitmap/bgrabitmap/bgrabitmappack.lpk
 	lazbuild --lazarusdir="${_lazdir}" src/hUGETracker.lpi --build-mode="Production Linux" --ws=gtk2
 
-	rgblink <(rgbasm -E -i src/hUGEDriver src/hUGEDriver/hUGEDriver.asm -o -) \
-	        <(rgbasm -i src/hUGEDriver/include src/halt.asm -o -) \
-	        -n halt.sym -o - | rgbfix -vp 0xFF - >halt.gb
+	rgbasm -E -i src/hUGEDriver src/hUGEDriver/hUGEDriver.asm -o hUGEDriver.o
+	rgbasm -i src/hUGEDriver/include src/halt.asm -o halt.o
+	rgblink hUGEDriver.o halt.o -n halt.sym -o - | rgbfix -vp 0xFF - >halt.gb
 
 	lazbuild --lazarusdir="${_lazdir}" src/uge2source/uge2source.lpi --build-mode="Default"
 }
