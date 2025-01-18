@@ -1,13 +1,12 @@
 pkgbase = apache-ant-contrib
 	pkgdesc = Extra task definitions for apache ant.
 	pkgver = 1.0b3
-	pkgrel = 4
+	pkgrel = 5
 	url = http://ant-contrib.sourceforge.net
 	arch = any
 	license = apache
 	depends = apache-ant
-	source = http://downloads.sourceforge.net/project/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3-bin.tar.gz
-	md5sums = ee06ff88da133dce3acc3248aee0ad83
+	source = https://repo1.maven.org/maven2/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3.jar
+	md5sums = a6495d687a143cbaefa2ab812c69b42e
 
 pkgname = apache-ant-contrib
-
