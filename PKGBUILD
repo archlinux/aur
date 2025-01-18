@@ -5,7 +5,7 @@
 _name="ureminder"
 
 pkgrel=1
-pkgver=0.8.1
+pkgver=xyz
 pkgname="$_name"
 pkgdesc='Remind user upgrade packages and keeps package cache clean'
 
@@ -22,7 +22,7 @@ install="$_name.install"
 
 pkgver() {
     cd "${srcdir}/$_name"
-    echo "$(git rev-parse --short HEAD)"
+    pkgver="$(git rev-parse --short HEAD)"
 }
 
 package() {
