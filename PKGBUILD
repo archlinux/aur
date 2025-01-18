@@ -24,11 +24,12 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}/target/release"
+	cd "${srcdir}/${_pkgname}"
 
 	mkdir -p ${pkgdir}/usr/bin/
-	mkdir -p ${pkgdir}/usr/share/licenses/clockem/
 
-	mv clockem ${pkgdir}/usr/bin/
+	mv target/release/clockem ${pkgdir}/usr/bin/
+	
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"	
 }
 
