@@ -1,0 +1,13 @@
+pkgbase = clockem-git
+	pkgdesc = Clock & other desktop widgets for wayland.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/justbechill/clockem
+	arch = any
+	license = MIT
+	makedepends = rust
+	depends = gtk4-layer-shell
+	source = clockem::git+https://github.com/justbechill/clockem.git
+	sha256sums = SKIP
+
+pkgname = clockem-git
