@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc='Show HTML messages in an external browser, including embedded images'
 url='https://github.com/akkana/scripts'
 arch=('any')
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('python')
 
 source=(${pkgname}.py-${pkgver}::"https://raw.githubusercontent.com/akkana/scripts/${_git_SHA}/${pkgname}.py"
