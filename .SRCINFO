@@ -1,6 +1,6 @@
 pkgbase = pay-respects
 	pkgdesc = Command suggestions, command-not-found and thefuck replacement written in Rust (All modules)
-	pkgver = 0.6.10
+	pkgver = 0.6.11
 	pkgrel = 1
 	url = https://github.com/iffse/pay-respects
 	install = pay-respects.install
@@ -15,7 +15,7 @@ pkgbase = pay-respects
 	makedepends = pkg-config
 	optdepends = curl: AI requests
 	provides = pay-respects
-	source = pay-respects::git+https://github.com/iffse/pay-respects#tag=v0.6.10
-	sha1sums = a20366cfd4ee9dcba9496ceec293d04fedb34c07
+	source = pay-respects::git+https://github.com/iffse/pay-respects#tag=v0.6.11
+	sha1sums = 50489080297bf9c961a558b07ed28a1f012be727
 
 pkgname = pay-respects
