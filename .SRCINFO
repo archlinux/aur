@@ -1,7 +1,7 @@
 pkgbase = python-iterutils
 	pkgdesc = Python another itertools.
-	pkgver = 0.0.8
-	pkgrel = 2
+	pkgver = 0.0.9
+	pkgrel = 1
 	url = https://pypi.org/project/python-iterutils
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = python-iterutils
 	conflicts = python-iterutils
 	options = !strip
 	options = !debug
-	source = python_iterutils-0.0.8.tar.gz::https://files.pythonhosted.org/packages/source/p/python_iterutils/python_iterutils-0.0.8.tar.gz
-	sha256sums = b02828b7640245254b95a1d0c117f498501a4977c6243633ab8ad75a07fb35d3
+	source = python_iterutils-0.0.9.tar.gz::https://files.pythonhosted.org/packages/source/p/python_iterutils/python_iterutils-0.0.9.tar.gz
+	sha256sums = faf1e1fc251db2383f1f52cd7a9ea241b04b74577e02e3cedc9d243716af3516
 
 pkgname = python-iterutils
