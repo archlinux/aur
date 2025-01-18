@@ -1,4 +1,4 @@
-pkgbase = ureminder.git
+pkgbase = ureminder
 	pkgdesc = Remind user upgrade packages and keeps package cache clean
 	pkgver = a08bc73
 	pkgrel = 1
@@ -19,4 +19,4 @@ pkgbase = ureminder.git
 	sha512sums = SKIP
 	sha512sums = 48a82d85b679abddb558eb1e303a0998cc6f6e61ae8ad667a73bae9fed6c0e529625dab0b37af7d4c3720888e368682e8912d185a3eb08ed0c252981b9241bec
 
-pkgname = ureminder.git
+pkgname = ureminder
