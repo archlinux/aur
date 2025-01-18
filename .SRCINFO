@@ -1,12 +1,12 @@
 pkgbase = epson-inkjet-printer-201112w
 	pkgdesc = Epson inkjet printer driver (Artisan 730, 837; Stylus Photo PX730WD, PX830FWD, TX730WD)
 	pkgver = 1.0.0
-	pkgrel = 11
+	pkgrel = 12
 	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
 	arch = x86_64
 	license = custom:Epson End User Software License Agreement
 	depends = epson-inkjet-printer-filter
-	depends = gcc-libs
 	depends = glibc
 	source = https://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201112w-1.0.0-1lsb3.2.src.rpm
 	sha256sums = d87092038c0479bef2c5d27ab6617edabdab11d30df1c420bf2bf0251c978be2
