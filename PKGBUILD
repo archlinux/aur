@@ -1,7 +1,7 @@
 # Maintainer: Faugus <felix.ribeiro@live.com>
 
 pkgname=faugus-launcher-git
-pkgver=r319.3e313ce
+pkgver=r330.8ba7724
 pkgrel=1
 pkgdesc="A simple and lightweight app for running Windows games using UMU-Launcher"
 arch=('x86_64')
@@ -29,6 +29,8 @@ package() {
     install -Dm755 faugus-session "$pkgdir/usr/bin/faugus-session"
     install -Dm644 faugus-launcher.desktop "$pkgdir/usr/share/applications/faugus-launcher.desktop"
     install -Dm644 faugus-shortcut.desktop "$pkgdir/usr/share/applications/faugus-shortcut.desktop"
+    install -Dm644 faugus-run.desktop "$pkgdir/usr/share/applications/faugus-run.desktop"
+    install -Dm644 faugus-proton-manager.desktop "$pkgdir/usr/share/applications/faugus-proton-manager.desktop"
     install -Dm644 faugus-session.desktop "$pkgdir/usr/share/wayland-sessions/faugus-session.desktop"
     install -Dm644 assets/faugus-launcher.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/faugus-launcher.png"
     install -Dm644 assets/faugus-battlenet.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/faugus-battlenet.png"
