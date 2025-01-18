@@ -5,7 +5,7 @@ pkgbase = clustal-omega
 	url = http://www.clustal.org/omega/
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = GPL-2.0-or-later
 	depends = glib2
 	depends = argtable
 	options = libtool
@@ -14,4 +14,3 @@ pkgbase = clustal-omega
 	sha1sums = 9ff2c88df0f488de61f80d997198700407ac6c04
 
 pkgname = clustal-omega
-

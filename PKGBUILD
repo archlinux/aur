@@ -1,13 +1,14 @@
-# Maintainer: talavis <aur at talavis eu>
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Contributor: talavis <aur at talavis eu>
 # Contributor: Kevin Dodd <jesin00 at gmail dot com>
 
 pkgname=clustal-omega
 pkgver=1.2.4
 pkgrel=1
-pkgdesc="Protein sequence alignment program"
+pkgdesc='Protein sequence alignment program'
 arch=('i686' 'x86_64')
-url="http://www.clustal.org/omega/"
-license=('LGPL')
+url='http://www.clustal.org/omega/'
+license=('GPL-2.0-or-later')
 depends=('glib2' 'argtable')
 source=("http://www.clustal.org/omega/${pkgname}-${pkgver}.tar.gz")
 options=(libtool staticlibs)
@@ -17,7 +18,7 @@ build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	./configure --prefix=/usr || return
 	make
-} 
+}
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
