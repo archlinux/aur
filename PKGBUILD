@@ -4,7 +4,7 @@
 
 pkgname=perl-cddb
 pkgver=1.222
-pkgrel=4
+pkgrel=5
 pkgdesc='A high-level interface to cddb protocol servers (freedb and CDDB)'
 _dist=CDDB
 arch=('any')

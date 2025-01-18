@@ -1,7 +1,7 @@
 pkgbase = perl-cddb
 	pkgdesc = A high-level interface to cddb protocol servers (freedb and CDDB)
 	pkgver = 1.222
-	pkgrel = 4
+	pkgrel = 5
 	url = https://metacpan.org/release/CDDB/
 	arch = any
 	license = GPL
