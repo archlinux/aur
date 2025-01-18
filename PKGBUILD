@@ -2,14 +2,14 @@
 
 pkgname=heroic-games-launcher-git
 pkgver=2.15.2.r44.ged52e163d
-pkgrel=3
+pkgrel=4
 pkgdesc="Native GOG, Epic Games and Amazon games launcher for Linux"
 arch=(x86_64)
 url="https://heroicgameslauncher.com/"
 license=(GPL-3.0-only)
 _electron=electron34
 depends=(alsa-lib gtk3 nss which $_electron)
-makedepends=(git pnpm npm python)
+makedepends=(git pnpm npm python desktop-file-utils)
 provides=(heroic-games-launcher)
 conflicts=(heroic-games-launcher)
 source=("git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git")
@@ -41,6 +41,8 @@ EOF
 
   install -Dm644 flatpak/com.heroicgameslauncher.hgl.png -t "${pkgdir}/usr/share/pixmaps"
   install -Dm644 flatpak/templates/com.heroicgameslauncher.hgl.metainfo.xml.template "${pkgdir}"/usr/share/metainfo/com.heroicgameslauncher.hgl.metainfo.xml
+
+  # fix icon on Gnome dock
+  desktop-file-edit --set-key=Exec --set-value=heroic --set-key=StartupWMClass --set-value=heroic flatpak/com.heroicgameslauncher.hgl.desktop
   install -Dm644 flatpak/com.heroicgameslauncher.hgl.desktop -t "${pkgdir}/usr/share/applications"
-  sed -i 's|Exec=.*|Exec=/usr/bin/heroic|' "${pkgdir}/usr/share/applications/com.heroicgameslauncher.hgl.desktop"
 }
