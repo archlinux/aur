@@ -22,7 +22,7 @@ install="$_name.install"
 
 pkgver() {
     cd "${srcdir}/$_name"
-    pkgver="$(git rev-parse --short HEAD)"
+    pkgver="$(echo $(git rev-parse --short HEAD)"
 }
 
 package() {
