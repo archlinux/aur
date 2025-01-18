@@ -10,7 +10,8 @@ pkgname='oregano-wallet'
 pkgdesc='Lightweight Ergon wallet'
 pkgver=4.4.2
 secp256k1ver=0.20.9
-pkgrel=1
+pkgrel=2
+commit=1d6f0459ed3d8e3a39c86e4facaec6a01d234718
 url='https://github.com/Ergon-moe/Oregano'
 arch=('any')
 license=('MIT')
@@ -57,27 +58,35 @@ optdepends=(
 )
 provides=('oregano')
 conflicts=("${pkgname}" 'oregano')
-source=("Oregano-${pkgver}.tar.gz::https://github.com/Ergon-moe/Oregano/archive/v${pkgver}.tar.gz"
+#source=("Oregano-${pkgver}-${pkgrel}.tar.gz::https://github.com/Ergon-moe/Oregano/archive/v${pkgver}.tar.gz"
+source=("Oregano-${pkgver}-${pkgrel}.tar.gz::https://github.com/Ergon-moe/Oregano/archive/${commit}.tar.gz"
         "secp256k1-${secp256k1ver}.tar.gz::https://github.com/Bitcoin-ABC/secp256k1/archive/v${secp256k1ver}.tar.gz")
-sha256sums=('f6a549da5000301d241a6537c1d5ba9e167e1b1867c18e912c8403365902ab17'
+sha256sums=('60184a8ce3b4c4e8ca4f80c4bbdb45ce4c8c513a22a3fd67fd70f2fc048a55fc'
             '68e84775e57da77e19ccb6b0dde6ca0882377bdd48ecc6da0047a70201ec64c8')
 
 prepare() {
-  rmdir "$srcdir/Oregano-$pkgver/contrib/secp256k1"
-  ln -s "$srcdir/secp256k1-$secp256k1ver" "$srcdir/Oregano-$pkgver/contrib/secp256k1"
+  #rmdir "$srcdir/Oregano-$pkgver/contrib/secp256k1"
+  rmdir "$srcdir/Oregano-$commit/contrib/secp256k1"
+  #ln -s "$srcdir/secp256k1-$secp256k1ver" "$srcdir/Oregano-$pkgver/contrib/secp256k1"
+  ln -s "$srcdir/secp256k1-$secp256k1ver" "$srcdir/Oregano-$commit/contrib/secp256k1"
 }
 
 build() {
   export GIT_SUBMODULE_SKIP=1;
-  cd "Oregano-$pkgver"
+  #cd "Oregano-$pkgver"
+  cd "Oregano-$commit"
 
   # python2-pyqt5 and qt5-base are needed for _only_ the icons...
   # Compile the icons file for Qt:
   pyrcc5 icons.qrc -o oregano_gui/qt/icons_rc.py
   # Compile the protobuf description file:
   protoc --proto_path=oregano/ --python_out=oregano/ oregano/paymentrequest.proto
+  protoc --proto_path=oregano_plugins/fusion/protobuf/ --python_out=oregano_plugins/fusion/ oregano_plugins/fusion/protobuf/fusion.proto
   # Create translations (optional):
-  python contrib/make_locale
+  # TODO electron-cash has a new version of this because apparently the service
+  # they use for the translations doesn't allow downloads anymore. We need to
+  # update oregano to support translations again
+  #python contrib/make_locale
   # Use libsecp
   bash contrib/make_secp
   # Build
@@ -95,7 +104,8 @@ build() {
 #}
 
 package() {
-  cd "Oregano-$pkgver"
+  #cd "Oregano-$pkgver"
+  cd "Oregano-$commit"
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
