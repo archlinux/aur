@@ -1,0 +1,21 @@
+pkgbase = solkit-bin
+	pkgdesc = A solitaire collection and solitaire construction kit for terminal.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/VladimirMarkelov/solkit
+	arch = x86_64
+	license = Apache
+	license = MIT
+	depends = glibc
+	provides = solkit
+	conflicts = solkit
+	source = LICENSE-APACHE-1.0.1::https://raw.githubusercontent.com/VladimirMarkelov/solkit/1.0.1/LICENSE-APACHE
+	source = LICENSE-MIT-1.0.1::https://raw.githubusercontent.com/VladimirMarkelov/solkit/1.0.1/LICENSE-MIT
+	source = README-1.0.1.md::https://raw.githubusercontent.com/VladimirMarkelov/solkit/1.0.1/README.md
+	sha256sums = 1978dbbfa7d2527202eb1ef421a0f4c38ffc60c74e5091174a380036b2b08042
+	sha256sums = 12fd218920e3a29f063943bb0f5f01259ee26d38da8e0b65227291c0d91c5213
+	sha256sums = 5ee40f6a84da2088c1e9d752896682c94fb3bcdafd0d822ec52d3619bdf59654
+	source_x86_64 = https://github.com/VladimirMarkelov/solkit/releases/download/1.0.1/solkit-1.0.1-linux64-musl.tar.gz
+	sha256sums_x86_64 = ba5d4e00ff1b1b46b1b9648b0c03a59c00333129c92bc8e4cedc268ce3847bfe
+
+pkgname = solkit-bin
