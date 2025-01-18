@@ -1,4 +1,4 @@
-pkgbase = code-writer-git
+pkgbase = code-writer
 	pkgdesc = first build of code writer
 	pkgver = 1.0
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = code-writer-git
 	source = git+https://github.com/Student-Team-Projects/Code-Writer.git
 	sha256sums = SKIP
 
-pkgname = code-writer-git
+pkgname = code-writer
