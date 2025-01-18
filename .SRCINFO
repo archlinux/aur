@@ -13,7 +13,7 @@ pkgbase = asciigen-bin
 	source = LICENSE-1.0.6::https://github.com/seatedro/asciigen/raw/refs/tags/v1.0.6/LICENSE
 	sha256sums = 3e7dd0d446fc47105962709ca8ea1ae4ca6bf2f90cbe0e13a3aa3eefa7efebc0
 	sha256sums = 0e524e617c46da5a37455d17e4bf573b955e4c1dab1b1f657a27aa0c29f4cd15
-	source_x86_64 = asciigen-1.0.6-x86_64::https://github.com/seatedro/asciigen/releases/download/v1.0.6/asciigen-x86_64-linux.tar.gz
+	source_x86_64 = asciigen-1.0.6-x86_64.tar.gz::https://github.com/seatedro/asciigen/releases/download/v1.0.6/asciigen-x86_64-linux.tar.gz
 	sha256sums_x86_64 = 23c256647c0cfbf479bfa349972ceec03537c7da9e0626ff1f7f6dcaf6943ffe
 
 pkgname = asciigen-bin
