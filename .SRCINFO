@@ -1,7 +1,7 @@
 pkgbase = oregano-wallet
 	pkgdesc = Lightweight Ergon wallet
 	pkgver = 4.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ergon-moe/Oregano
 	arch = any
 	license = MIT
@@ -43,9 +43,9 @@ pkgbase = oregano-wallet
 	provides = oregano
 	conflicts = oregano-wallet
 	conflicts = oregano
-	source = Oregano-4.4.2.tar.gz::https://github.com/Ergon-moe/Oregano/archive/v4.4.2.tar.gz
+	source = Oregano-4.4.2-2.tar.gz::https://github.com/Ergon-moe/Oregano/archive/1d6f0459ed3d8e3a39c86e4facaec6a01d234718.tar.gz
 	source = secp256k1-0.20.9.tar.gz::https://github.com/Bitcoin-ABC/secp256k1/archive/v0.20.9.tar.gz
-	sha256sums = f6a549da5000301d241a6537c1d5ba9e167e1b1867c18e912c8403365902ab17
+	sha256sums = 60184a8ce3b4c4e8ca4f80c4bbdb45ce4c8c513a22a3fd67fd70f2fc048a55fc
 	sha256sums = 68e84775e57da77e19ccb6b0dde6ca0882377bdd48ecc6da0047a70201ec64c8
 
 pkgname = oregano-wallet
