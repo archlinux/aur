@@ -1,7 +1,7 @@
 # Maintainer : Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=python-stgpytools-git
-pkgver=1.1.1.9.g69e544b
+pkgver=1.2.2.0.g1cfcf8b
 pkgrel=1
 pkgdesc="Collection of stuff that's useful in general python programming. (GIT version)"
 url="https://github.com/Setsugennoao/stgpytools"
@@ -15,6 +15,8 @@ makedepends=(
   'python-installer'
   'python-setuptools'
 )
+provides=('python-stgpytools')
+conflicts=('python-stgpytools')
 source=('git+https://github.com/Setsugennoao/stgpytools.git')
 sha256sums=('SKIP')
 
