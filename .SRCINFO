@@ -11,6 +11,7 @@ pkgbase = python-openlibrary-client-git
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = git
 	depends = python
 	depends = python-jsonschema
 	depends = python-jsonpickle
