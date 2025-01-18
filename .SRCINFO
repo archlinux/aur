@@ -1,5 +1,5 @@
 pkgbase = phyml-mpi
-	pkgdesc = Builds phylogenies from DNA or protein sequences using a maximum likelihood approach, using multiple proccessors
+	pkgdesc = Builds phylogenies from DNA or protein sequences using a maximum likelihood approach, using multiple processors
 	pkgver = 3.3.20220408
 	pkgrel = 1
 	epoch = 1
