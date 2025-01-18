@@ -1,12 +1,12 @@
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=mutt-vid
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=3
 pkgdesc='Manage multiple sender accounts in mutt'
 url='https://gitlab.com/protist/mutt-vid'
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-only')
 optdepends=('mutt: either mutt or neomutt'
             'neomutt: either neomutt or mutt')
 source=("https://gitlab.com/protist/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
