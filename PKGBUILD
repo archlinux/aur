@@ -12,10 +12,10 @@ source=('mbpfan.conf'
         'disable-wakeup.service'
         'wifi_backend.conf'
         "$pkgname.install")
-md5sums=('SKIP'  # mbpfan.conf
-         'SKIP'  # disable-wakeup.service
-         'SKIP'  # wifi_backend.conf
-         'SKIP') # .install file
+md5sums=('c24e63efb6d1badfcc58bdf1ec50bacd'
+         'f75d5e136021310f88eb368b3025e761'
+         '77c4b38beda1c88ab18b22c4b234ac15'
+         '687ef180f3abc4e7bc22efb8b0f966a2')
 backup=('etc/mbpfan.conf')
 
 package() {
