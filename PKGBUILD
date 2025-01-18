@@ -3,7 +3,7 @@
 _pkgauthor=wcampbell0x2a
 _pkgname=heretek
 pkgname=${_pkgname}-bin
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Yet Another GDB TUI Frontend'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -20,8 +20,8 @@ source=("LICENSE-APACHE-${pkgver}::${_urlraw}/LICENSE-APACHE"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${arch[0]}-unknown-linux-musl.tar.gz")
 sha256sums=('fd26644b0118c8ae84a8770bdbbe18f7db14387b5cc19d1de670ad2d98a7ad42'
             '23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3'
-            '0e8f001211525b6bf2f548b904390d34e4d14576910c103e16a5d2323424ed1c')
-sha256sums_x86_64=('aa61fcc0c30ea38084c897ffc6cb5527f46dd0c09f3c17be421aa274ed7b1ad7')
+            '99b351f32748f51b08e6557606c3653ed06879dcffdc88cc7c3ead0783e076b2')
+sha256sums_x86_64=('4e0b18415d55ac28224a401805b88517692b74b8dbbd17d2e6ddd4f4a81f261f')
 
 build() {
   cd "${srcdir}/" || exit
