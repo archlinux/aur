@@ -1,0 +1,20 @@
+pkgbase = vapoursynth-plugin-vsdeinterlace
+	pkgdesc = Plugin for Vapoursynth: vsdeinterlace
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-deinterlace
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = vapoursynth-plugin-vstools
+	depends = vapoursynth-plugin-vskernels
+	depends = vapoursynth-plugin-vsexprtools
+	depends = vapoursynth-plugin-vsrgtools
+	depends = vapoursynth-plugin-vsmasktools
+	depends = vapoursynth-plugin-vsaa
+	depends = vapoursynth-plugin-vsscale
+	depends = vapoursynth-plugin-vsdenoise
+	source = https://files.pythonhosted.org/packages/e1/a9/5e358ab3759e54885e16452e955adb8771277fa0c61deaaaba9718e7f60d/vsdeinterlace-0.8.1-py3-none-any.whl
+	sha256sums = 604219eb93e62f207d5740d75b634574aec8dfe2d10e7ee2d1f0c47f5e2016bf
+
+pkgname = vapoursynth-plugin-vsdeinterlace
