@@ -9,12 +9,11 @@ post_install() {
         echo "Service disable-wakeup.service was already enabled."
     fi
 
-    echo "Post-installation complete! To finalize:"
-    echo "1. Downgrade wpa_supplicant to version 2:2.10-8 manually."
-    echo "   * Get package: curl -O https://archive.archlinux.org/packages/w/wpa_supplicant/wpa_supplicant-2:2.10-8-x86_64.pkg.tar.zst"
-    echo "   * Install: sudo pacman -U wpa_supplicant-2:2.10-8-x86_64.pkg.tar.zst"
-    echo "2. Add 'IgnorePkg = wpa_supplicant' to your /etc/pacman.conf."
-    echo "NOTE: If you had a mbfan config before, this package replaces that."
+    echo "Installation complete!"
+    echo "To finalize:"
+    echo "1. Disable and stop wpa_supplicant systemd service."
+    echo "1. Enable and start iwd systemd service."
+    echo "NOTE: If you had a mbfan config before, this package will replace that and restore on uninstall."
     echo "NOTE: The disable-wakeup.service will disable LID0 and XHC1 from /proc/acpi/wakeup"
 }
 
