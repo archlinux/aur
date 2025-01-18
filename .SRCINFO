@@ -1,11 +1,11 @@
 pkgbase = paperde
 	pkgdesc = An awesome Desktop Environment built on top of Qt/Wayland and Wayfire.
 	pkgver = 0.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/cubocore/paper/paperde
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = meson
 	makedepends = ninja
 	depends = qt5-base
@@ -37,7 +37,7 @@ pkgbase = paperde
 	optdepends = clipman: a clipboard manager for wayland
 	source = https://gitlab.com/cubocore/paper/paperde/-/archive/v0.2.1/paperde-v0.2.1.tar.gz
 	source = DFL-v0.2.0.patch
-	md5sums = 008511fd0274ffdb3dca05d4aafd6569
-	md5sums = 8e075b81e67e50c94935760553d2a173
+	sha256sums = 40a1ca455869f6e55592579359530f5ce0031694d6f87b28c2956fb00d6bd8e5
+	sha256sums = fc3f215e296230424eda8bf23c41d455e550412e72fb77c1524d4acf017c3b63
 
 pkgname = paperde
