@@ -1,0 +1,22 @@
+pkgbase = python-cppyy
+	pkgdesc = Python-C++ bindings interface based on Cling/LLVM
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://cppyy.readthedocs.io/en/latest/index.html
+	arch = any
+	license = BSD-3-Clause-LBNL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-cppyy-backend=1.15.3
+	depends = python-cppyy-cling=6.32.8
+	depends = python-cpycppyy=1.13.0
+	optdepends = python-numba: Numba support
+	provides = cppyy
+	replaces = cppyy
+	source = https://github.com/wlav/cppyy/archive/refs/tags/cppyy-3.5.0.tar.gz
+	b2sums = 3751a33ce49246ac16e785c3ef768fc762cccc60c00edba9c4539c0d0a1becf03ab23cebd5efee5aa196c7c0240a7808a49d0998ed0d40f6377a2525792ed5bf
+
+pkgname = python-cppyy
