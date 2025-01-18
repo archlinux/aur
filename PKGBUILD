@@ -2,8 +2,8 @@
 
 pkgname=vend
 pkgver=0.1.2
-pkgrel=1
-pkgdesc="Simple Common Lisp gependency manager"
+pkgrel=2
+pkgdesc="Simple Common Lisp dependency manager"
 arch=('x86_64')
 url="https://github.com/fosskers/vend"
 license=("MPL-2.0")

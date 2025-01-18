@@ -1,7 +1,7 @@
 pkgbase = vend
-	pkgdesc = Simple Common Lisp gependency manager
+	pkgdesc = Simple Common Lisp dependency manager
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fosskers/vend
 	arch = x86_64
 	license = MPL-2.0
