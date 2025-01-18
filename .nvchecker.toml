@@ -1,0 +1,3 @@
+[python-stdl]
+source = "pypi"
+pypi = "stdl"
