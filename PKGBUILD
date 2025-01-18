@@ -3,14 +3,14 @@
 
 _pkgname=auth
 pkgname="$_pkgname-tui"
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='Authenticator TUI. Generate totps on the fly.'
 arch=('x86_64')
 url="https://github.com/nnyyxxxx/$_pkgname"
 license=('GPL-2.0-only')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d837173ace7d43c44823713498fbd58c6db189f5a893c249d02dcbe6514fdd6b')
+sha256sums=('c8173710de68102286104add55939a75e222171a2ad405db5124ef4bc1379dd8')
 makedepends=('cargo')
 depends=('gcc-libs' 'glibc')
 
