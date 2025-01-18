@@ -5,7 +5,7 @@ _exeName="AssetRipper.GUI.Free"
 
 pkgname=asset-ripper-bin
 pkgver=1.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI Application to work with engine assets, asset bundles, and serialized files"
 arch=(x86_64 aarch64)
 url="https://github.com/AssetRipper/AssetRipper"
@@ -18,10 +18,11 @@ source_aarch64=("$_sourceName-aarch64.tar.gz::https://github.com/AssetRipper/Ass
 
 sha256sums=('8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b'
             '223a74636902eeed55ad13a44e7292ff9f532df24c706dd8d566b33d00246757')
-sha256sums_x86_64=('f8c4968ac3fdc16a675ce6773d77333f2a81ff21b37ff3870d7edcf0bfe62100')
-sha256sums_aarch64=('fa12c1b67decd0c104ab4eea3f00e3fb8523c5981b47a168fe2913fb3c7fbe6d')
+sha256sums_x86_64=('0507a78a99931825c3660316d3efd431719aae3ab608f652f5e926278588daad')
+sha256sums_aarch64=('5ed311a33cac42b49f739196b22765f7581e5ca79c2bc091f073bf711a092b21')
 
 license=("GPL-3.0-only")
+options=("!debug")
 
 package() {
   install -d "$pkgdir/usr/bin/"
