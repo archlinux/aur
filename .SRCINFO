@@ -1,0 +1,18 @@
+pkgbase = vapoursynth-plugin-vsscale
+	pkgdesc = Plugin for Vapoursynth: vsscale
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-scale
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = vapoursynth-plugin-vstools
+	depends = vapoursynth-plugin-vskernels
+	depends = vapoursynth-plugin-vsexprtools
+	depends = vapoursynth-plugin-vsrgtools
+	depends = vapoursynth-plugin-vsmasktools
+	depends = vapoursynth-plugin-vsaa
+	source = https://files.pythonhosted.org/packages/49/16/f79e83868faf0fc0e78ea50c7fd5003916bde47d57376f97b611e80748a0/vsscale-2.2.1-py3-none-any.whl
+	sha256sums = 813782bd384ec652f3a8dfd96d0d71df5d88769c4d254268336382633b0bb264
+
+pkgname = vapoursynth-plugin-vsscale
