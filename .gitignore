@@ -1,0 +1,21 @@
+# Ignore build artifacts
+pkg/
+src/
+*.pkg.tar.zst
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs and temporary files
+*.log
+*.lock
+
+# App state and runtime files
+app_state.json
+tasks.db
+
+# Backup files
+*.bak
+*~
