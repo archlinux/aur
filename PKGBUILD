@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 # Contributor: archtem
 
 _pkgname=qtodotxt2
@@ -7,8 +7,8 @@ pkgver=20220704
 pkgrel=1
 pkgdesc="Cross-platform UI client for todo.txt files"
 arch=('any')
-url="https://github.com/QTodoTxt/QTodoTxt2"
-license=('GPL3')
+url='https://github.com/QTodoTxt/QTodoTxt2'
+license=('GPL-3.0-or-later')
 depends=('python-dateutil' 'python-pyqt5' 'qt5-declarative' 'qt5-quickcontrols'
          'python-setuptools' 'hicolor-icon-theme')
 makedepends=('git')
