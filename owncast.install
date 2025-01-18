@@ -1,4 +1,54 @@
+note() {
+  all_off="$(tput sgr0)"
+  bold="${all_off}$(tput bold)"
+  blue="${bold}$(tput setaf 4)"
+  yellow="${bold}$(tput setaf 3)"
+  echo "${blue}==>${yellow} NOTE:${bold} ${1}${all_off}"
+}
+
 post_install() {
-	echo 'Default admin login is at localhost:8080/admin with user = admin and password = abc123.'
-	echo 'It is highly recommended to change this from the default.'
+  # Update owncast permissions
+  # Check if /var/lib/owncast exists
+  if [ -d /var/lib/owncast ]; then
+    sudo chown owncast:owncast /var/lib/owncast
+    sudo chmod 755 /var/lib/owncast
+  fi
+  # Check if /var/lib/owncast/data exists
+  if [ -d /var/lib/owncast/data ]; then
+    sudo chown owncast:owncast /var/lib/owncast
+    sudo chmod -R 700 /var/lib/owncast/data
+    sudo chown -R owncast:owncast /var/lib/owncast/data
+  fi
+
+  note '****************************************************************************************'
+  note 'Default admin login is at localhost:8080/admin with user = admin and password = abc123.'
+  note 'It is highly recommended to change this from the default.'
+  note ''
+  note "Owncast's webroot (front-end) is /var/lib/owncast/web"
+  note "The backend service can be enabled (and started) by: systemctl enable --now start owncast"
+  note "The frontend can be tested by running: "
+  note 'cd /var/lib/owncast/web && sudo -u owncast npm run dev'
+  note ''
+  note 'for production environments use a proper webserver for the front-end (ie. apache/nginx)'
+  note ''
+  note 'for documentation, visit https://owncast.online/docs/'
+  note '****************************************************************************************'
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  # Check if the /var/lib/owncast/web directory exists
+  if [ -d /var/lib/owncast/web ]; then
+    note 'automatically removing /var/lib/owncast/web files'
+    rm -r /var/lib/owncast/web # remove some stray npm files
+  fi
+
+  # Check if the /var/lib/owncast directory exists
+  if [ -d /var/lib/owncast ]; then
+    note 'owncast configuration remains in /var/lib/owncast/data'
+    note 'to remove all remaining owncast files, run: sudo rm -rf /var/lib/owncast'
+  fi
 }
