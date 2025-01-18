@@ -6,6 +6,7 @@ pkgbase = libiec61850
 	arch = x86_64
 	arch = i686
 	license = GPLv3
+	makedepends = cmake
 	makedepends = mbedtls
 	source = https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/v3.6.0.tar.gz
 	source = https://github.com/mz-automation/libiec61850/archive/refs/tags/v1.6.0.tar.gz
