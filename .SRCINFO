@@ -1,0 +1,14 @@
+pkgbase = python-ueml
+	pkgdesc = UEML Python Module
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://juanvel4000.serv00.net/ueml
+	arch = any
+	license = MIT
+	checkdepends = python-setuptools
+	depends = python
+	depends = python-pip
+	source = https://files.pythonhosted.org/packages/d1/f2/34d98585c6035abf4a575908834b7b6bd6593dd3cb669ba4b0b3380e66e7/ueml-0.3.tar.gz
+	sha256sums = 98b11226c3c3486e6acaa4882b2e4c782cc18d287741c4cf73c44f51eab697ec
+
+pkgname = python-ueml
