@@ -1,12 +1,12 @@
 pkgbase = epson-inkjet-printer-201114j
 	pkgdesc = Epson inkjet printer driver (EP-4004)
 	pkgver = 1.0.0
-	pkgrel = 11
+	pkgrel = 12
 	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
 	arch = x86_64
 	license = custom:Epson End User Software License Agreement
 	depends = epson-inkjet-printer-filter
-	depends = gcc-libs
 	depends = glibc
 	source = https://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201114j-1.0.0-1lsb3.2.src.rpm
 	sha256sums = a9d5c65a8caba1ff1b53ba2277852c835883e0b11296292315aa0a91b78564c2
