@@ -1,20 +1,20 @@
 # Maintainer: kausban <mail at kausban com>
 pkgname=openaudible-bin
-pkgver=4.5
-pkgrel=2
+pkgver=4.5.1
+pkgrel=1
 pkgdesc="a cross-platform audiobook manager designed for Audible users. Manage all your audiobooks with this easy-to-use desktop application"
 arch=('x86_64')
 url="https://openaudible.org"
 license=('Apache')
 depends=("desktop-file-utils" "webkit2gtk")
-source=("https://github.com/openaudible/openaudible/releases/download/v"$pkgver"/OpenAudible_"$pkgver"_x86_64.deb")
-sha512sums=('a6bcc36116cda10848b59e77418cc977a73d020daa2e8dad49a508966892872ed7c5bd11319f621b55150b1af2a48c1d7035bb2624abb6df671ce3e66042d7bc')
+source=("https://github.com/openaudible/openaudible/releases/download/v4.5.1/OpenAudible_4.5.1_x86_64.deb")
+sha512sums=('29717382c9b6540e8e64fcfa2993a4b3771d78f449eec99aa6699a3f6e8c925f4c98ad792b2608cbb04b05f8eef035319b0857860e0010b95d97696969113ae3')
 
-package(){	
-	# Extract package data
-	tar xzf data.tar.gz -C "${pkgdir}"
+package(){
+    # Extract package data
+    tar xzf data.tar.gz -C "${pkgdir}"
 
-	I4J_INSTALL_LOCATION="/opt/OpenAudible"
+    I4J_INSTALL_LOCATION="/opt/OpenAudible"
 
 	# symlink main binary
 	install -d "${pkgdir}/usr/bin"
