@@ -2,11 +2,12 @@
 
 pkgname="epson-pc-fax"
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Epson PC-FAX driver filter used with CUPS"
 arch=('i686' 'x86_64')
 url="https://download.ebz.epson.net/man/linux/pc-fax_e.html"
-license=('LGPL-2.1-or-later' 'MIT')
+license=('LGPL-2.1-or-later' # source for binaries
+         'MIT')              # .ppd's
 depends=('cups' 'gcc-libs' 'glibc' 'libcups')
 _pkgsrc="${pkgname}-${pkgver}"
 # DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
@@ -37,6 +38,9 @@ build() {
     --prefix='/usr'
     # --prefix="/opt/${pkgname}"
   make
+
+  find "ppd" -type f -name '*.ppd' -exec \
+    sed -i "s|/opt/${pkgname}/cups/lib/filter/pcfax_filter|/usr/lib/cups/filter/pcfax_filter|g" "{}" +
 }
 
 package() {
@@ -50,11 +54,10 @@ package() {
   # install -vDm644 "COPYING.EPSON" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.EPSON"
   install -vDm644 "COPYING.LIB"   "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
-  cd "ppd"
-  install -vDm644 "Epson-PC-Fax-epson-en.ppd" \
-    "${pkgdir}/usr/share/cups/model/Epson/Epson-PC-Fax-epson-en.ppd"
+  find "ppd" -type f -name '*.ppd' -execdir \
+    install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
 
   cd "${pkgdir}/usr/lib"
   install -vDm755 "epfax" "${pkgdir}/usr/bin/epfax"
-  rm -f "epfx"
+  rm -f "epfax"
 }
