@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=tomlq-git
-pkgver=r18.666e48f
+pkgver=r21.3595292
 pkgrel=1
 pkgdesc='Tool for getting data from TOML files'
 arch=(x86_64)
@@ -39,6 +39,6 @@ check() {
 }
 
 package() {
-  install -Dm755 "$pkgname/target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
+  install -Dm755 "$pkgname/target/release/tq" -t "$pkgdir/usr/bin"
   install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }
