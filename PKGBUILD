@@ -1,7 +1,7 @@
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=checkupdatify
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A collection of scripts that notify you of pending updates to your Arch Linux system'
 url='https://gitlab.com/protist/checkupdatify'
