@@ -2,17 +2,17 @@
 # Contributor: xantares
 
 pkgname=mingw-w64-libzip
-pkgver=1.10.1
+pkgver=1.11.2
 pkgrel=1
 pkgdesc="A C library for reading, creating, and modifying zip archives (mingw-w64)"
 url="http://www.nih.at/libzip/index.html"
-license=('BSD')
+license=('BSD-3-Clause')
 arch=(any)
 depends=('mingw-w64-xz' 'mingw-w64-zlib' 'mingw-w64-bzip2' 'mingw-w64-openssl' 'mingw-w64-gnutls')
 makedepends=('mingw-w64-cmake' 'ninja')
-options=('staticlibs' '!buildflags' '!strip')
+options=('staticlibs' '!buildflags' '!debug' '!strip')
 source=("http://www.nih.at/libzip/libzip-${pkgver}.tar.xz")
-sha256sums=('dc3c8d5b4c8bbd09626864f6bcf93de701540f761d76b85d7c7d710f4bd90318')
+sha256sums=('5d471308cef4c4752bbcf973d9cd37ba4cb53739116c30349d4764ba1410dfc1')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 _pkgname="libzip"
@@ -46,4 +46,6 @@ package() {
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
   done
+
+  install -Dm644 ${_pkgname}-${pkgver}/LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
