@@ -1,7 +1,7 @@
 # Maintainer: Maarten Bezemer <maarten.bezemer@gmail.com>
 
 pkgname=plasma6-runners-emojirunner
-pkgver=3.0.0
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Search for emojis in Krunner and copy/paste them"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=(GLP3)
 depends=(xdotool krunner)
 makedepends=(cmake extra-cmake-modules ki18n kcmutils)
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=(121b9adebe5fe0af408f6abe9ba48d2ba1c1091e26c676a7eb99290810c4fddf)
+sha256sums=('e2af1b6de1ec21770739263e3936eab54b623e191325733c282e8a25da3245a9')
 install=plasma6-runners-emojirunner.install
 
 build() {
