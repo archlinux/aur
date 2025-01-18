@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 depends=('w3m')
 
 source=("https://gitlab.com/protist/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('d6fe9fdee43efef10ab1c1cf50ae0a6e9fa041078b6bf409fe41c1a3ba052094')
+sha256sums=('9980b1ead56bdfdecf4f863b85591c56ee6aa5d699bfd9b1876e8daee3b4f899')
 
 package() {
   cd "$pkgname-v$pkgver"
