@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-vsaa
+	pkgdesc = Plugin for Vapoursynth: vsaa
+	pkgver = 1.11.2
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-aa
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = vapoursynth-plugin-vstools
+	depends = vapoursynth-plugin-vskernels
+	depends = vapoursynth-plugin-vsexprtools
+	depends = vapoursynth-plugin-vsrgtools
+	depends = vapoursynth-plugin-vsmasktools
+	source = https://files.pythonhosted.org/packages/04/98/edcafb11b8f2ca9649a08bb14837e52ef59d7040e69b2bd24bea37ca563c/vsaa-1.11.2-py3-none-any.whl
+	sha256sums = 1c970b993eb536a9e2801ec82fb8b3ced621cda7429efae3cbeb9a423359098c
+
+pkgname = vapoursynth-plugin-vsaa
