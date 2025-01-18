@@ -1,0 +1,5 @@
+[python-cppyy-backend]
+source = "git"
+git = "https://github.com/wlav/cppyy-backend.git"
+prefix = "clingwrapper-"
+include_regex = "clingwrapper-.*"

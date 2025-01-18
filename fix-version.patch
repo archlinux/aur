@@ -1,0 +1,17 @@
+From a6ae3545e6d553939ba45e4f64f16385bfbf0f6f Mon Sep 17 00:00:00 2001
+From: Wim Lavrijsen <WLavrijsen@lbl.gov>
+Date: Thu, 16 Jan 2025 11:33:52 -0800
+Subject: [PATCH] update version in .toml to match setup.py
+
+---
+ clingwrapper/pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/clingwrapper/pyproject.toml b/clingwrapper/pyproject.toml
+index e38fb697..d89eff41 100644
+--- a/clingwrapper/pyproject.toml
++++ b/clingwrapper/pyproject.toml
+@@ -1,2 +1,2 @@
+ [build-system]
+-requires = ["cppyy-cling==6.30.0", "setuptools", "wheel"]
++requires = ["cppyy-cling==6.32.8", "setuptools", "wheel"]

@@ -1,0 +1,25 @@
+pkgbase = python-cppyy-backend
+	pkgdesc = C/C++ wrapper around Cling for use by cppyy
+	pkgver = 1.15.3
+	pkgrel = 1
+	url = https://github.com/wlav/cppyy-backend
+	arch = x86_64
+	license = BSD-3-Clause-LBNL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = gcc-libs
+	depends = glibc
+	depends = python
+	depends = python-cppyy-cling=6.32.8
+	provides = cppyy-backend
+	replaces = cppyy-backend
+	source = https://github.com/wlav/cppyy-backend/archive/refs/tags/clingwrapper-1.15.3.tar.gz
+	source = fix-version.patch
+	source = fix-wheel.patch
+	b2sums = 5a8cef0f1490a8c8fc2feebca9f22df5ff3edc5c010a611c198a50d7869990a594ea042ae578ff61015695a4a3084285af82ae1f3484f75e99f5eb53c3c706e0
+	b2sums = 6d67a4dc0eed31513d1fe126c17c4ea1be7f3b8b57792ec8c149f4a7d6d97426874d2870c3a0424496394923d81e0f6b32341ab1ab1b3be6e7659a5fe47c2891
+	b2sums = d99214a0e6dedd75f268e0f3fbc68743828ef443a5990829ac83e6a8fe6cd665043a2fd04b12599be849cb885a88cdeedcb9fc649ecc53aeb97b80dc2a738120
+
+pkgname = python-cppyy-backend
