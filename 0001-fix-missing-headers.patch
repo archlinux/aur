@@ -1,0 +1,27 @@
+From 07b31b3cf9bc62d04797c104cdaffa32ef6703b8 Mon Sep 17 00:00:00 2001
+From: a821 <a821@localhost>
+Date: Sat, 18 Jan 2025 08:10:11 +0100
+Subject: [PATCH] fix: missing headers
+
+Compile fails due to several missing headers in sandbox.c
+---
+ src/common/sandbox.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/common/sandbox.c b/src/common/sandbox.c
+index 06853fe..2bd7d9a 100644
+--- a/src/common/sandbox.c
++++ b/src/common/sandbox.c
+@@ -1,4 +1,9 @@
+ #include "config.h"
++#include <stdlib.h>
++#include <stdio.h>
++#include <time.h>
++#include <sys/types.h>
++#include <grp.h>
+ #include <syslog.h>
+ #include <unistd.h>
+ #include <pwd.h>
+-- 
+2.48.1
+
