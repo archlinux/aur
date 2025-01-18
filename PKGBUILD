@@ -1,3 +1,5 @@
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+
 pkgname=pidgin-indicator
 pkgver=1.0.2
 pkgrel=1
