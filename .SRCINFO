@@ -6,6 +6,7 @@ pkgbase = lib60870
 	arch = x86_64
 	arch = i686
 	license = GPLv3
+	makedepends = cmake
 	makedepends = mbedtls
 	source = https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-3.6.2/mbedtls-3.6.2.tar.bz2
 	source = https://github.com/mz-automation/lib60870/archive/refs/tags/v2.3.3.tar.gz
