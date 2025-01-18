@@ -9,7 +9,7 @@ depends=('python' 'tk')
 makedepends=('python-setuptools')
 reponame=("singletask")
 source=("https://codeload.github.com/atopheim/${reponame}/tar.gz/refs/tags/v${pkgver}")
-sha256sums=("bd287b9edddc21e67d48fc655886aa191ee5a121ad0748c52fcb09b74a6cc300")
+sha256sums=('1')
 
 build() {
     cd "$srcdir/${reponame}-${pkgver}"
