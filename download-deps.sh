@@ -5,8 +5,14 @@
 
 getsemverspec() {
   local dep="$1"
-  local semverspec="$(echo "$dep" | gawk -F'@' '{ print $NF }')"
-  echo "$semverspec"
+  case "$dep" in
+    *@npm:*@*)
+      echo "$dep" | gawk -F'@npm:' '{ print "npm:"$2 }'
+      ;;
+    *)
+      echo "$dep" | gawk -F'@' '{ print $NF }'
+      ;;
+  esac
 }
 
 getpackagename() {
@@ -22,7 +28,8 @@ onlinebestmatch() {
   local package="$1";
   local semverspec="$2";
 
-  if echo "$semverspec" | grep -q '/'; then
+  case "$semverspec" in
+  */*)
     local fullname="${package}-$(echo "$semverspec" | cut -d/ -f1 | gawk -F'github:' '{ print $2; }').zip"
     if [ -f "$depspath/$fullname" ]; then
       mv "$depspath/$fullname" "$targetdepspath/"
@@ -31,10 +38,17 @@ onlinebestmatch() {
       exit -1;
     fi
     echo "$fullname"
-  else
+    ;;
+  npm:*)
+    local alias_target="${semverspec#npm:}"
+    local alias_semverspec="$(getsemverspec "$alias_target")"
+    local alias_package="$(getpackagename "$alias_target" "$alias_semverspec")"
+    onlinebestmatch "$alias_package" "$alias_semverspec"
+    ;;
+  *)
     local json="$(npm view --json "$package@$semverspec")"
-    if [ $(echo "$json" | jq -r '.version? // "INVALID"') = "INVALID" ]; then
-      json=$(echo "$json" | jq '.[0]')
+    if [ "$(echo "$json" | jq -r '.version? // "INVALID"')" = "INVALID" ]; then
+      json="$(echo "$json" | jq '.[0]')"
     fi
     local version="$(echo "$json" | jq -r '.version' | head -n1)"
     local latestversion
@@ -47,8 +61,8 @@ onlinebestmatch() {
       json="$(npm view --json "$package@$latestversion")"
     fi
 
-    local url=$(echo $json | jq -r '.dist.tarball');
-    local shasum=$(echo $json | jq -r '.dist.shasum');
+    local url="$(echo $json | jq -r '.dist.tarball')";
+    local shasum="$(echo $json | jq -r '.dist.shasum')";
     local name="${package/\//\#}-${latestversion}.tgz"
 
     if ! grep -q "$shasum" "$targetdepspath/sha1sumslist"; then
@@ -67,7 +81,8 @@ onlinebestmatch() {
       fi
     fi
     echo "$name"
-  fi
+    ;;
+  esac
 }
 
 recursivedownloaddeps() {
@@ -83,7 +98,8 @@ recursivedownloaddeps() {
     else
       bsdtar xzf "$targetdepspath/${target}"
     fi
-    folder=$(ls)
+    folder="$(ls)"
+    chmod 755 "$folder"
     find "$folder" -mindepth 1 -maxdepth 1 -print0 | xargs -0 mv -t .;
     rm -r "$folder"
     cat package.json | jq -r '.dependencies | to_entries? | map(.key + "@" + .value) | .[]' | while read dep; do
