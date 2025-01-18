@@ -4,7 +4,7 @@
 
 pkgname="huenicorn"
 arch=('i686' 'x86_64')
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=4
 pkgdesc="Free bias lighting driver for Philips Hue™ devices"
 url='https://gitlab.com/openjowelsofts/huenicorn'
