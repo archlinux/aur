@@ -1,7 +1,7 @@
 # Maintainer: Tobias Borgert <tobias (dot) borgert (at) gmail (dot) com>
 
 pkgname=ecal
-pkgver=5.13.2
+pkgver=5.13.3
 pkgrel=1
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64' 'armv7h')
@@ -11,7 +11,7 @@ depends=('curl' 'protobuf' 'python' 'python-protobuf' 'qt5-base' 'qwt' 'hdf5' 'y
 makedepends=('cmake' 'doxygen' 'git' 'graphviz' 'patchelf' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eclipse-ecal/ecal/releases/download/v${pkgver}/ecal-fat-source.tar.gz")
-sha256sums=('3532b1db5779197c0a53f098540addb6b66cc67e4aaf82a12a289142e3c0a3bd')
+sha256sums=('4b8ab72ee66b5b19506f66c52a03f3523fea9bfccbf3fa3747fab4ea5c5b000f')
 backup=('etc/ecal/ecal.ini' 'etc/ecal/ecaltime.ini')
 
 prepare() {
