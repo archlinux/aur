@@ -1,0 +1,22 @@
+pkgbase = python-openlibrary-client-git
+	pkgdesc = Python Client Library for the Archive.org OpenLibrary API
+	pkgver = 0.0.17.r409.g7e45d51
+	pkgrel = 1
+	url = https://github.com/internetarchive/openlibrary-client
+	arch = any
+	license = AGPL-3.0-or-later
+	checkdepends = python-pytest
+	checkdepends = python-responses
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-jsonschema
+	depends = python-jsonpickle
+	depends = python-internetarchive
+	depends = python-backoff
+	source = git+https://github.com/internetarchive/openlibrary-client.git
+	sha512sums = SKIP
+
+pkgname = python-openlibrary-client-git
