@@ -2,7 +2,7 @@
 # Description: Terminal üzerinden Türkçe anime izleme aracı
 
 pkgname=anitr-cli
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Terminal üzerinden Türkçe anime izleme aracı"
 arch=('x86_64')
