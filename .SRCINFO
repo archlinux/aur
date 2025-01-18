@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libwebp
 	pkgdesc = WebP library and conversion tools (mingw-w64)
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://developers.google.com/speed/webp/
 	arch = any
 	license = BSD-3-Clause
@@ -15,10 +15,10 @@ pkgbase = mingw-w64-libwebp
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.4.0.tar.gz
-	source = https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.4.0.tar.gz.asc
+	source = https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.5.0.tar.gz
+	source = https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.5.0.tar.gz.asc
 	validpgpkeys = 6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D
-	sha256sums = 61f873ec69e3be1b99535634340d5bde750b2e4447caa1db9f61be3fd49ab1e5
+	sha256sums = 7d6fab70cf844bf6769077bd5d7a74893f8ffd4dfb42861745750c63c2a5c92c
 	sha256sums = SKIP
 
 pkgname = mingw-w64-libwebp
