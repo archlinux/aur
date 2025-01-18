@@ -1,4 +1,5 @@
-# Maintainer: SelfRef <arch@selfref.dev>
+# Maintainer Chris Rizzitello <sithlord48@gmail.com>
+# Contributor: Previous Maintainer: SelfRef <arch@selfref.dev>
 
 # INFO: By default this package is configured to use Wayland only.
 #       In order to complile version for use with X11, install optional dependencies for that case.
@@ -26,6 +27,7 @@ depends=(
 	'gdk-pixbuf2'
 	'pugixml'
 	'tomlplusplus'
+	'openssl'
 )
 makedepends=(
 	'git'
@@ -36,7 +38,6 @@ makedepends=(
 	'cli11'
 )
 optdepends=(
-	'openssl: TLS encryption'
 	'gtk3: GTK file/dir picker'
 	# 'libx11: X11 support' # dependency of libxtst
 	# 'libxext: X11 support' # dependency of libxtst
@@ -54,18 +55,20 @@ pkgver() {
 	git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/\1/;s/-/./g;s/^v//'
 }
 
-prepare() {
-	cd "$_basename"
-	cmake -B build \
-		-DCMAKE_INSTALL_PREFIX='/usr' \
-		-DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations" \
-		-DCMAKE_BUILD_TYPE=Release \
-		-Wno-dev
-}
-
 build() {
 	cd "$_basename"
-	cmake --build build
+	cmake \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_BUILD_TYPE=None \
+	-DCMAKE_C_FLAGS="${CFLAGS}" \
+	-DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
+	-DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS}" \
+	-DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS}" \
+	-Wno-dev \
+	-G Ninja \
+	-B build \
+	-S .
+  cmake --build build --verbose
 }
 
 check() {
