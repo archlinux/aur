@@ -3,16 +3,23 @@
 
 pkgname=coreimage
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An image viewer from the C Suite"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
-license=('GPL3')
-depends=('qt5-base' 'libcprime>=2.7.1')
-makedepends=('cmake' 'ninja')
+license=('GPL-3.0-or-later')
+depends=(
+        'qt5-base'
+        'hicolor-icon-theme'
+        'libcprime>=2.7.1'
+)
+makedepends=(
+            'cmake'
+            'ninja'
+)
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('efac4188861cd8c3868daefb26e26066')
+sha256sums=('2f4b863fc5bae71bd0db70ecbc3881eeac7474783e85df44ab81e499450cfa16')
 
 prepare() {
   mkdir -p build
