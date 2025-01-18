@@ -5,7 +5,7 @@
 _name="ureminder"
 
 pkgrel=1
-pkgver=a08bc73
+pkgver=0.8.1
 pkgname="$_name"
 pkgdesc='Remind user upgrade packages and keeps package cache clean'
 
