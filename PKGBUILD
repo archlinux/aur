@@ -1,7 +1,7 @@
 # Maintainer: Felipe Contreras <felipe.contreras@gmail.com>
 
 pkgname=git-completion
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc='Git completions for zsh and bash'
 url="https://github.com/felipec/$pkgname"
@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL2')
 makedepends=('git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha1sums=('fa9fc5edfb52fb3f9b1de54a7b5207b3d8769faf')
+sha1sums=('bc5997ad5df64326569de566c1ae8f745be5a90b')
 
 check() {
 	cd "$pkgname-$pkgver" || exit 1
