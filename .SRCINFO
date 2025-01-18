@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-obs
 	pkgdesc = Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD
 	pkgver = 7.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://ffmpeg.org/
 	arch = x86_64
 	arch = aarch64
@@ -29,7 +29,7 @@ pkgbase = ffmpeg-obs
 	depends = fribidi
 	depends = glib2
 	depends = glibc
-	depends = glslang>=15
+	depends = glslang>=15.1
 	depends = gmp
 	depends = gnutls
 	depends = gsm
@@ -107,8 +107,10 @@ pkgbase = ffmpeg-obs
 	source = ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=b08d7969c550a804a59511c7b83f2dd8cc0499b8
 	source = obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=2024-09-12
 	source = add-av_stream_get_first_dts-for-chromium.patch
+	source = fix_build_with_texinfo-7.2.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 1027369d704834588f09f1854541584444dda4f8c6407f83fec090d80e6e6ad2
+	sha256sums = 158eab13960865693da666dd0c41f7691eb6fc3148e5dcad239a6b17b0bf24ae
 
 pkgname = ffmpeg-obs

@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=7.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -62,7 +62,7 @@ license=(GPL-3.0-only)
 _aomver=3
 _dav1dver=1.3.0
 _ffnvcodecver=12.2
-_glslangver=15
+_glslangver=15.1
 _libjxlver=0.11.0
 _libplacebover=7
 _libristver=0.2.7
@@ -185,11 +185,13 @@ source=(
   "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
   "obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=${_deps_tag}"
   "add-av_stream_get_first_dts-for-chromium.patch"
+  "fix_build_with_texinfo-7.2.patch"
 )
 sha256sums=(
   'SKIP'
   'SKIP'
   '1027369d704834588f09f1854541584444dda4f8c6407f83fec090d80e6e6ad2'
+  '158eab13960865693da666dd0c41f7691eb6fc3148e5dcad239a6b17b0bf24ae'
 )
 
 if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
@@ -424,6 +426,11 @@ prepare() {
   sed -i 's/RTLD_LOCAL/RTLD_DEEPBIND/g' libavformat/avisynth.c
 
   ### Arch Linux changes
+
+  # Fix build with texinfo-7.2
+  # See https://www.linuxquestions.org/questions/slackware-14/texinfo-7-2-looks-to-have-broken-texinfo-convert-html-4175745581/
+  # Patch taken from LSF: https://www.linuxfromscratch.org/patches/blfs/svn/ffmpeg-7.1-texinfo_fix-1.patch
+  patch -Np1 -i "${srcdir}"/fix_build_with_texinfo-7.2.patch
 
   ## https://crbug.com/1251779
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch
