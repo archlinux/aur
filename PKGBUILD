@@ -1,6 +1,6 @@
 # Maintainer: William Belanger <echo d2lsbGlhbS5iZWxyQGdtYWlsLmNvbQ== | base64 -d>
 
-pkgver=r806.cdcaf29
+pkgver=r807
 pkgrel=1
 pkgname=primenote-git
 pkgdesc="Fanciest sticky note-taking application"
@@ -17,12 +17,6 @@ optdepends=("qtermwidget: support for console and Vim modes"
 
 prepare() {
   git clone https://gitlab.com/william.belanger/${pkgname%-git}.git --single-branch -b python313-hotfix
-}
-
-pkgver()
-{
-  cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package()
