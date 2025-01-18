@@ -1,49 +1,49 @@
-# Maintainer: Adam Harvey <adam@adamharvey.name>
-pkgname=tuc
-pkgver=1.0.0
+# Maintainer:
+# Contributor: Adam Harvey <adam@adamharvey.name>
+
+: ${RUSTUP_TOOLCHAIN:=stable}
+: ${CARGO_TARGET_DIR:=target}
+export CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
+
+_pkgname="tuc"
+pkgname="$_pkgname"
+pkgver=1.2.0
 pkgrel=1
-epoch=
 pkgdesc="A more powerful alternative to cut"
-arch=("x86_64" "aarch64")
 url="https://github.com/riquito/tuc"
-license=('GPL3')
-groups=()
-depends=()
-makedepends=("cargo")
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/riquito/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-noextract=()
-sha256sums=('ea4d1adb1949b8f564c375cbd7e0569de5dcc1fcabd57d56174748091102eec2')
-validpgpkeys=()
+license=('GPL-3.0-or-later')
+arch=("x86_64" "aarch64")
+
+depends=(
+  'gcc-libs'
+  'glibc'
+)
+makedepends=(
+  'cargo'
+)
+
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
+sha256sums=('bb6d16772ed0728f396d32066d391206420497a4f902071b0229790a8c844307')
 
 prepare() {
-	cd "$pkgname-$pkgver"
+  cd "$_pkgsrc"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
+  cd "$_pkgsrc"
   cargo build --frozen --release --all-features
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-  export RUSTUP_TOOLCHAIN=stable
+  cd "$_pkgsrc"
   cargo test --frozen --all-features
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-  install -Dm0644 -t "$pkgdir/usr/share/man/man1/" "doc/tuc.1"
+  cd "$_pkgsrc"
+  install -Dm755 "target/release/$_pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 "doc/tuc.1" -t "$pkgdir/usr/share/man/man1/"
 }
