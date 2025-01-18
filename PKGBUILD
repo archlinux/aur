@@ -9,7 +9,7 @@
 
 _pkgname="wings3d"
 pkgname="$_pkgname"
-pkgver=2.4
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='3D modeler using the winged edge data structure'
 url="https://www.wings3d.com/"
@@ -29,15 +29,11 @@ optdepends=(
 
 _pkgsrc="wings-$pkgver"
 _pkgext="tar.gz"
-source=(
-  "$_pkgname-$pkgver.$_pkgext"::"https://github.com/dgud/wings/archive/refs/tags/v$pkgver.$_pkgext"
-)
-sha256sums=(
-  '266e016ae5d1705e41c3f33c1a94ee345354f1429b6f35c5dd470f85fb55c4a1'
-)
+source=("$_pkgname-$pkgver.$_pkgext"::"https://github.com/dgud/wings/archive/refs/tags/v$pkgver.$_pkgext")
+sha256sums=('2a1c0dd340a994e81710b739a12db272b6aac2585127a5cc5f9eba2ed225774f')
 
 prepare() {
-  sed -e "/desktop-id/ s/com.wings3d.WINGS.desktop/$pkgname.desktop/" -i "$_pkgsrc/unix/wings.appdata.xml"
+  sed -e "/desktop-id/s&com.wings3d.WINGS.desktop&$pkgname.desktop&" -i "$_pkgsrc/unix/wings.appdata.xml"
 }
 
 build() {
@@ -53,7 +49,7 @@ package() {
 
   cd build
   install -dm755 "$pkgdir/usr/lib/$_pkgname"
-  cp --reflink=auto -r wings-*-linux/lib/"$_pkgsrc"/* "$pkgdir/usr/lib/$_pkgname/"
+  cp --reflink=auto -a wings-*-linux/lib/"$_pkgsrc"/* "$pkgdir/usr/lib/$_pkgname/"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << 'END'
 #!/usr/bin/env bash
@@ -75,6 +71,5 @@ StartupNotify=false
 Categories=Graphics;3DGraphics;
 END
 
-  # fix permissions
   chmod -R u=rwX,go=rX,go-w "$pkgdir"
 }

@@ -1,0 +1,4 @@
+[wings3d]
+source = "git"
+git = "https://github.com/dgud/wings.git"
+prefix = "v"
