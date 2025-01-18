@@ -1,14 +1,15 @@
 pkgbase = desq-utils-powermanager
 	pkgdesc = Power manager for DesQ
 	pkgver = 0.0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/DesQ/DesQUtils/PowerManager
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = meson
 	makedepends = ninja
 	depends = qt5-base
+	depends = hicolor-icon-theme
 	depends = libdesq
 	depends = dfl-wayqt
 	depends = dfl-settings
@@ -18,6 +19,6 @@ pkgbase = desq-utils-powermanager
 	depends = dfl-xdg
 	depends = dfl-applications
 	source = https://gitlab.com/DesQ/DesQUtils/PowerManager/-/archive/v0.0.8/PowerManager-v0.0.8.tar.gz
-	md5sums = 635e46b9d30582be52ad2d5a07bdc597
+	sha256sums = 37003c2ead8b07d6d89b3adf64debd2cc257f95db4ac988d9a37f4be18b2a0ee
 
 pkgname = desq-utils-powermanager
