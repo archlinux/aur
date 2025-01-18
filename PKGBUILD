@@ -1,8 +1,8 @@
 #Maintainer: Shakakibara <aryan.1843@disroot.org>
 
 pkgname='codetantra-sea'
-pkgver=3.0.5
-pkgrel=2
+pkgver=3.0.8
+pkgrel=1
 pkgdesc='Platform for online teaching.'
 arch=('x86_64')
 url='https://www.codetantra.com'
@@ -12,7 +12,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/ct-code/sea/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb"
         "sea.sh")
-sha256sums=('a9637e1cdf84b0692814fae64719d99263f13abbae2b758b9f9163b3b32729c7'
+sha256sums=('81104c00320a227d6f02b088eb45277d728eba549d1ec19dd671f78682f820be'
             '2aeb4451e650a3cd3b69d4154c14795acd1ad9e2683e476e3452e721e25a0979')
 
 package() {
