@@ -1,6 +1,6 @@
 pkgbase = calamares-git
 	pkgdesc = Distribution-independent installer framework
-	pkgver = 3.3.5.r19.g10acebf
+	pkgver = 3.3.13.r1.gbabaddf
 	pkgrel = 1
 	url = https://github.com/calamares/calamares
 	arch = i686
@@ -29,7 +29,7 @@ pkgbase = calamares-git
 	depends = solid
 	depends = squashfs-tools
 	depends = yaml-cpp
-	provides = calamares=3.3.5
+	provides = calamares=3.3.13
 	conflicts = calamares
 	source = calamares::git+https://github.com/calamares/calamares.git
 	source = yay-support.patch
