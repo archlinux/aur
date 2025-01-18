@@ -10,3 +10,4 @@ NoDisplay=false
 Categories=Game;
 StartupNotify=false
 Terminal=false
+StartupWMClass=Vintage Story
