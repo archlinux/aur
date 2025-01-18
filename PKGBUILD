@@ -10,12 +10,11 @@ arch=('any')
 depends=('bash' 'curl' 'pup' 'systemd' 'libnotify' 'reflector' 'pacman-contrib')
 makedepends=(git)
 url="https://codeberg.org/tuxnix/$pkgname.git"
-license=('LicenseRef-FAFBL')
+license=('GPL2-only')
 install="$pkgname.install"
 source=("$pkgname::git+https://codeberg.org/tuxnix/$pkgname")
 #source=('directory::sourceurl#fragment?query')
 #sourceurl=git+https://....
-
 
 package() {
     cd "$srcdir"
