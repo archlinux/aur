@@ -15,6 +15,7 @@ pkgbase = project-graph-bin
 	depends = libsoup
 	depends = pango
 	depends = webkit2gtk
+	provides = project-graph
 	conflicts = project-graph-nightly-bin
 	conflicts = project-graph-git
 	options = !strip
