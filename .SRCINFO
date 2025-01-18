@@ -1,0 +1,18 @@
+pkgbase = vapoursynth-plugin-vssource
+	pkgdesc = Plugin for Vapoursynth: vssource
+	pkgver = 0.11.2
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-source
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = vapoursynth-plugin-vstools
+	optdepends = vapoursynth-plugin-bestsource
+	optdepends = vapoursynth-plugin-lsmashsource
+	optdepends = vapoursynth-plugin-d2vsource
+	optdepends = vapoursynth-plugin-dgdecodenv
+	optdepends = vapoursynth-plugin-imwri
+	source = https://files.pythonhosted.org/packages/79/24/bd2a5bac8bc2baad5833eb346ccc3bb1ff25c4057b52c7f5bd652ab4b374/vssource-0.11.2-py3-none-any.whl
+	sha256sums = a6f1f4ae856d38fa8876dfef7d8cf4fe97494ae5f680de5c8fece088650b5452
+
+pkgname = vapoursynth-plugin-vssource
