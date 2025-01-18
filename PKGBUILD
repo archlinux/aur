@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qeda
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="The tool for easy creating electronic component libraries"
 arch=('any')
@@ -29,7 +29,7 @@ backup=()
 options=()
 install=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('588f823031687eca29e61e287d00c50466d8963340ddec85503c38ead41bd3c5')
+sha256sums=('03288f30bccbab7cb2c49285d40b1ee9c87308b25a34cd2a0d292c49acdf5dd6')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 
 package() {

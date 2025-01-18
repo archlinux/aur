@@ -1,6 +1,6 @@
 pkgbase = qeda
 	pkgdesc = The tool for easy creating electronic component libraries
-	pkgver = 0.4.1
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/qeda/qeda
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = qeda
 	optdepends = pcb-rnd: free/open source, flexible, modular Printed Circuit Board editor
 	provides = qeda
 	conflicts = qeda
-	noextract = qeda-0.4.1.tar.gz
-	source = qeda-0.4.1.tar.gz::https://github.com/qeda/qeda/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = 588f823031687eca29e61e287d00c50466d8963340ddec85503c38ead41bd3c5
+	noextract = qeda-0.4.3.tar.gz
+	source = qeda-0.4.3.tar.gz::https://github.com/qeda/qeda/archive/refs/tags/v0.4.3.tar.gz
+	sha256sums = 03288f30bccbab7cb2c49285d40b1ee9c87308b25a34cd2a0d292c49acdf5dd6
 
 pkgname = qeda
