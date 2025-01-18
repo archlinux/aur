@@ -27,7 +27,6 @@ sha256sums_aarch64=('fd2bfcf387dc4ad824f9fbeb369393f18885a5a42ce3ff12f330336f441
 
 package() {
         install -dm755 "$pkgdir/usr/share/games/Sonic3Air"
-        install -dm755 "$pkgdir/usr/lib"
         install -Dm755 "$srcdir/sonic3air-$scriptver/sonic3air.png" "$pkgdir/usr/share/pixmaps/sonic3air.png"
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/sonic3air/LICENSE.md"
 	install -Dm644 "$srcdir/sonic3air-$scriptver/sonic3air.desktop" "$pkgdir/usr/share/applications/sonic3air.desktop"
@@ -44,5 +43,5 @@ package() {
 	find "$srcdir/sonic3air_game" -type f -name "*.so" -exec cp {} "$pkgdir/usr/share/games/Sonic3Air" \;
 	#x64 libs for Arm64
 	find "$srcdir" -type f -name "*.so.*" -exec cp -r {} "$pkgdir/usr/share/games/Sonic3Air" \;
-	ln -s "$pkgdir/usr/share/games/Sonic3Air/libstdc++.so.6.0.33" "$pkgdir/usr/share/games/Sonic3Air/libstdc++.so.6"
+	ln -s "/usr/share/games/Sonic3Air/libstdc++.so.6.0.33" "$pkgdir/usr/share/games/Sonic3Air/libstdc++.so.6"
 }
