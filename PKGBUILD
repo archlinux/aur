@@ -1,7 +1,7 @@
 # Maintainer: Zenn <mine.minefis@gmail.com>
 pkgname=wl_shimeji-git
 _pkgname=wl_shimeji
-pkgver=0.0.1.r0.9690835
+pkgver=0.0.1.r60.9690835
 pkgrel=1
 pkgdesc="Shimeji reimplementation for Wayland in C"
 arch=('x86_64')
@@ -11,6 +11,11 @@ depends=('python' 'wayland' 'wayland-protocols' 'wlr-protocols' 'libspng')
 makedepends=('make' 'gcc' 'git')
 source=("$_pkgname::git+https://github.com/CluelessCatBurger/wl_shimeji.git")
 sha256sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/$_pkgname"
+    printf "0.0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
 	cd "$srcdir/$_pkgname"
