@@ -1,4 +1,5 @@
 [asciigen-bin]
-source = "git"
-git = "https://github.com/seatedro/asciigen.git"
+source = "github"
+github = "seatedro/asciigen"
+use_latest_release = true
 prefix = "v"
