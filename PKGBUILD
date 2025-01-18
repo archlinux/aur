@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=youtube-music
-pkgver=3.7.1
-pkgrel=2
-_electronversion=33
+pkgver=3.7.2
+pkgrel=1
+_electronversion=34
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('x86_64')
 url="https://th-ch.github.io/youtube-music"
@@ -13,7 +13,7 @@ install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/th-ch/youtube-music/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('fda8d0076c1475d58df75f6c6cffa863343b0e1ac5bda4c79b0fac9e43216e8b'
+sha256sums=('bda10e0bc3eb01f0959a3622096a838a8226f5e547997a6696860e943d50b1f6'
             'e00aee0592b3b759fc055815c75326063348bcdf6e05b7632396592b05614637'
             '534337968b3443ff2911a951f8ec6a777cad22a270826dfbe61b0caf2741c654')
 
@@ -27,7 +27,7 @@ build() {
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   export PNPM_HOME="$srcdir/pnpm-home"
-  pnpm install --frozen-lockfile
+  pnpm install
   pnpm clean
   pnpm build
   pnpm electron-builder --linux dir \
