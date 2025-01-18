@@ -2,7 +2,7 @@
 
 pkgname=signal-cli-native
 _pkgname=signal-cli
-pkgver=0.13.11
+pkgver=0.13.12
 pkgrel=1
 pkgdesc="Provides a commandline for secure Signal messaging (graalvm native build)."
 arch=('any')
@@ -14,7 +14,7 @@ depends=('libsignal-client')
 makedepends=('jdk21-graalvm-bin' 'gradle' 'asciidoc')
 source=("https://github.com/AsamK/${_pkgname}/archive/v${pkgver}.tar.gz"
         "https://github.com/AsamK/${_pkgname}/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc")
-sha512sums=('c71f079c31d36ae5af756088544898df5bff98ea0f23fe5379942b5e3a74c8df24b139cd8c849eb276e4a1ade0e71221ceaa4b5c7cc4063a6c0f07d30b51e7d8'
+sha512sums=('2f5b6fd7cac98aac945a31e242014d9db2571564250db3902299c0acac1b6dd54355f2d5e87ab5b7f3d72cca7fdde702ddb5074aa32bf48bc493e607eb917905'
             'SKIP')
 validpgpkeys=('FA10826A74907F9EC6BBB7FC2BA2CD21B5B09570')
 
