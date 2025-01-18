@@ -12,6 +12,7 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/LiRenTech/project-graph/releases/download/v$pkgver/Project.Graph_1.2.6_amd64.deb")
 sha256sums_x86_64=('13eb74c6f422d3feb826ab51fa51d129dbdc1055361d8377fad31c29bb6956b5')
+provides=('project-graph')
 conflicts=('project-graph-nightly-bin' 'project-graph-git')
 package() {
 
@@ -19,4 +20,3 @@ package() {
   tar -xz -f data.tar.gz -C "${pkgdir}"
 
 }
-
