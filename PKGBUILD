@@ -9,10 +9,12 @@ pkgdesc="Remind user upgrade packages and keeps package cache clean"
 arch=('any')
 depends=('bash' 'curl' 'pup' 'systemd' 'libnotify' 'reflector' 'pacman-contrib')
 makedepends=(git)
-url="https://codeberg.org/tuxnix/$pkgname.git"
+url="https://codeberg.org/tuxnix.git"
 license=('LicenseRef-FAFBL')
 install="$pkgname.install"
-source=("$pkgname" "$pkgname.mo" "$pkgname.service" "$pkgname.timer" )
+source=("$pkgname::git+https://codeberg.org/tuxnix/$pkgname")
+#source=('directory::sourceurl#fragment?query')
+#sourceurl=git+https://....
 
 
 package() {
