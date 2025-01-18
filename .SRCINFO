@@ -4,7 +4,7 @@ pkgbase = zsh-manydots-magic
 	pkgrel = 2
 	url = https://github.com/knu/zsh-manydots-magic
 	arch = any
-	license = custom:BSD 2-clause
+	license = BSD-2-Clause
 	makedepends = git
 	depends = zsh
 	source = git+https://github.com/knu/zsh-manydots-magic.git#commit=4372de0718714046f0c7ef87b43fc0a598896af6

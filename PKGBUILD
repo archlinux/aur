@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="zsh zle tweak for emulating \`...'==\`../..', etc."
 arch=('any')
 url='https://github.com/knu/zsh-manydots-magic'
-license=('custom:BSD 2-clause')
+license=('BSD-2-Clause')
 depends=('zsh')
 makedepends=('git')
 source=("git+https://github.com/knu/${pkgname%-git}.git#commit=$_commit"
