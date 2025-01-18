@@ -10,14 +10,13 @@ post_install() {
   # Update owncast permissions
   # Check if /var/lib/owncast exists
   if [ -d /var/lib/owncast ]; then
-    sudo chown owncast:owncast /var/lib/owncast
-    sudo chmod 755 /var/lib/owncast
+    chown owncast:owncast /var/lib/owncast
+    chmod 755 /var/lib/owncast
   fi
   # Check if /var/lib/owncast/data exists
   if [ -d /var/lib/owncast/data ]; then
-    sudo chown owncast:owncast /var/lib/owncast
-    sudo chmod -R 700 /var/lib/owncast/data
-    sudo chown -R owncast:owncast /var/lib/owncast/data
+    chmod -R 700 /var/lib/owncast/data
+    chown -R owncast:owncast /var/lib/owncast/data
   fi
 
   note '****************************************************************************************'
