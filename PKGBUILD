@@ -8,7 +8,7 @@ pkgrel=5
 pkgdesc="Monospace Courier font alternative. It’s Courier, just better"
 arch=('any')
 url='https://quoteunquoteapps.com/courierprime/'
-license=('OFL')
+license=('OFL-1.1-RFN')
 source=('https://quoteunquoteapps.com/courierprime/downloads/courier-prime.zip'
         'https://quoteunquoteapps.com/courierprime/downloads/courier-prime-sans.zip'
         'https://quoteunquoteapps.com/courierprime/downloads/courier-prime-code.zip'
@@ -30,7 +30,7 @@ package() {
   install -m644 {Courier\ Prime/,CourierPrimeSans-master/ttf/,ttf/,}*.ttf "$pkgdir/usr/share/fonts/TTF"
 
   # Install licences
-  # Courier Prime has two files, Sans has different license, last two have none
+  # Courier Prime has two files, Sans has different license, last two have none. All are OFL-1.1-RFN
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   install -m644 Courier\ Prime/LICENSE/* "$pkgdir/usr/share/licenses/$pkgname"
   install -m644 CourierPrimeSans-master/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/CourierPrimeSans_LICENSE.md"

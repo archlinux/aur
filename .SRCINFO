@@ -4,7 +4,7 @@ pkgbase = ttf-courier-prime
 	pkgrel = 5
 	url = https://quoteunquoteapps.com/courierprime/
 	arch = any
-	license = OFL
+	license = OFL-1.1-RFN
 	source = https://quoteunquoteapps.com/courierprime/downloads/courier-prime.zip
 	source = https://quoteunquoteapps.com/courierprime/downloads/courier-prime-sans.zip
 	source = https://quoteunquoteapps.com/courierprime/downloads/courier-prime-code.zip
@@ -15,4 +15,3 @@ pkgbase = ttf-courier-prime
 	sha256sums = b1ec844f4fcdff58cf532e942ec74766bcf38e9c75fc06e1a99a24afedd41ecb
 
 pkgname = ttf-courier-prime
-
