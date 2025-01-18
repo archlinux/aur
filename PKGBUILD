@@ -2,7 +2,8 @@
 
 pkgname=dracula-gtk-theme-full
 _pkgname=${pkgname%-full}
-pkgver=v4.0.0
+pkgver=4.0.0.r104.gf77cf5c
+_commit=f77cf5c
 pkgrel=1
 pkgdesc="Dark theme for GTK"
 arch=("any")
@@ -12,7 +13,7 @@ makedepends=(git)
 optdepends=('ttf-roboto: primary font face defined'
 	'ttf-ubuntu-font-family: secondary font face defined'
 	'cantarell-fonts: tertiary font face defined')
-source=("$_pkgname::git+$url.git#tag=$pkgver")
+source=("$_pkgname::git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -31,6 +32,11 @@ _filenames=(
     README.md
     index.theme
 )
+
+pkgver() {
+    cd $srcdir/$_pkgname
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
     cd $srcdir/$_pkgname
