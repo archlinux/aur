@@ -1,5 +1,5 @@
 # Maintainer: Piotr Szczepaniak <piotr21.szczepaniak@student.uj.edu.pl>
-pkgname=code-writer-git
+pkgname=code-writer
 pkgver=1.0
 pkgrel=1
 pkgdesc="first build of code writer"
