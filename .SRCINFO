@@ -1,12 +1,12 @@
 pkgbase = epson-inkjet-printer-201110j
 	pkgdesc = Epson inkjet printer driver (PX-1600F)
 	pkgver = 1.0.0
-	pkgrel = 11
+	pkgrel = 12
 	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
 	arch = x86_64
 	license = custom:Epson End User Software License Agreement
 	depends = epson-inkjet-printer-filter
-	depends = gcc-libs
 	depends = glibc
 	source = https://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201110j-1.0.0-1lsb3.2.src.rpm
 	sha256sums = 2e31fde58e06e82f23017443be824e370baec851d1d3fb5d37356bc9dee916e8
