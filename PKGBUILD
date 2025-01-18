@@ -3,16 +3,25 @@
 
 pkgname=corestats
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A system resource viewer from the C Suite"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
-license=('GPL3')
-depends=('qt5-base' 'libcprime>=2.7.1' 'libcsys>=2.7.1' 'lm_sensors')
-makedepends=('cmake' 'ninja')
+license=('GPL-3.0-or-later')
+depends=(
+        'qt5-base'
+        'hicolor-icon-theme'
+        'libcprime>=2.7.1'
+        'libcsys>=2.7.1'
+        'lm_sensors'
+)
+makedepends=(
+            'cmake'
+            'ninja'
+)
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('ad4a9f3e297a598b72039efab02e8c11')
+sha256sums=('a474d5890eca310895a568a2f7f328539a83b012696b74541c15504e893ee3a4')
 
 prepare() {
   mkdir -p build
