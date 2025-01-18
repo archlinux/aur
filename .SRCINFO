@@ -1,15 +1,15 @@
 pkgbase = python-iclips
 	pkgdesc = CLIPS Jupyter console
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/noxdafox/iclips
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-setuptools
 	depends = jupyter-console
 	depends = python-clipspy
 	depends = python-regex
-	source = https://files.pythonhosted.org/packages/source/i/iCLIPS/iCLIPS-0.2.3.tar.gz
-	sha256sums = 793b19da99071ee4b02180d1089168adb45ec23b9fc7076f7a6809201af315ec
+	source = https://files.pythonhosted.org/packages/source/i/iCLIPS/iCLIPS-0.3.0.tar.gz
+	sha256sums = 9d46155d68c9ac6e4684e0e62c5ede24a4629e8a7a7d714d5fc1432eb531f109
 
 pkgname = python-iclips
