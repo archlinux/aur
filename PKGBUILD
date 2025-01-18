@@ -1,12 +1,11 @@
-
-major=22.10.1
-minor=1401426
+major=23.20
+minor=1664988
 ubuntu_ver=20.04
 
 pkgbase=opencl_legacy_amdgpu-pro
 pkgname=(
-opencl-legacy-amdgpu-pro
-lib32-opencl-legacy-amdgpu-pro
+    opencl-legacy-amdgpu-pro
+    lib32-opencl-legacy-amdgpu-pro
 )
 
 pkgver=${major}_${minor}
@@ -16,6 +15,7 @@ url=https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-21-5
 license=('custom: multiple')
 groups=('opencl_legacy_amdgpu-pro')
 makedepends=('wget')
+options=('!debug')
 
 DLAGENTS='https::/usr/bin/wget --referer https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-21-50 -N %u'
 
@@ -27,11 +27,11 @@ sha256sums=("SKIP"
             "SKIP")
 
 get_debs_64() {
-         bash ./GET-64DEBS.sh
+    bash ./GET-64DEBS.sh
 }
 
 get_debs_32() {
-         bash ./GET-32DEBS.sh
+    bash ./GET-32DEBS.sh
 }
 
 # extracts a debian package
@@ -44,6 +44,7 @@ extract_deb() {
     ar x "$1"
     tar -C "${pkgdir}" -xf data.tar.xz
 }
+
 # move ubuntu specific /usr/lib/x86_64-linux-gnu to /usr/lib
 # $1: debian package library dir (goes from opt/amdgpu or opt/amdgpu-pro and from x86_64 or i386)
 # $2: arch package library dir (goes to usr/lib or usr/lib32)
@@ -59,6 +60,7 @@ move_libdir() {
         find ${pkgdir} -type d -empty -delete
     fi
 }
+
 # move copyright file to proper place and remove debian changelog
 move_copyright() {
     find ${pkgdir}/usr/share/doc -name "changelog.Debian.gz" -delete
@@ -90,7 +92,7 @@ package_opencl-legacy-amdgpu-pro () {
 	optdepends=('clinfo' 'rocm-opencl-runtime')
     
 	get_debs_64
-    extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/opencl-legacy-amdgpu-pro-icd_${major}-${minor}_amd64.deb
+    extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/amd64.deb
     move_libdir "opt/amdgpu-pro/lib/x86_64-linux-gnu" "usr/lib"
     move_copyright
     patch64
@@ -104,7 +106,7 @@ package_lib32-opencl-legacy-amdgpu-pro () {
 	provides=("lib32-opencl-orca-amdgpu-pro-icd" "lib32-opencl-driver")
 
     get_debs_32
-    extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/opencl-legacy-amdgpu-pro-icd_${major}-${minor}_i386.deb
+    extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}/i386.deb
     move_libdir "opt/amdgpu-pro/lib/i386-linux-gnu" "usr/lib32"
     move_copyright
     patch32

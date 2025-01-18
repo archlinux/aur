@@ -7,10 +7,10 @@
 
 ### Creating Archive ###
 
-mkdir amdgpu-pro-$pkgver_base-$pkgver_build-ubuntu-$ubuntu_ver
-ARCHIVE=amdgpu-pro-$pkgver_base-$pkgver_build-ubuntu-$ubuntu_ver
+ARCHIVE=amdgpu-pro-$amdgpu_pro_ver-$pkgver_build
+[[ -d $ARCHIVE ]] || mkdir ${ARCHIVE}
 cd ${ARCHIVE}
 
 ### Getting Debs ###
 
-wget http://repo.radeon.com/amdgpu/${pkgver_base}/ubuntu/pool/proprietary/o/opencl-legacy-amdgpu-pro/opencl-legacy-amdgpu-pro-icd_${pkgver_base}-${pkgver_build}_amd64.deb
+wget http://repo.radeon.com/amdgpu/${pkgver_base}/ubuntu/pool/proprietary/o/opencl-legacy-amdgpu-pro/opencl-legacy-amdgpu-pro-icd_${amdgpu_pro_ver}-${pkgver_build}.${ubuntu_ver}_amd64.deb -O amd64.deb

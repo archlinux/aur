@@ -1,6 +1,7 @@
 # This file is interpreted by both python and bash
 # Old version is specified for use in extract_transaction_scripts_and_triggers.sh
 
-pkgver_base="22.10.1"
-pkgver_build="1401426"
+pkgver_base="5.7.1"
+amdgpu_pro_ver="23.20"
+pkgver_build="1664988"
 ubuntu_ver="20.04"

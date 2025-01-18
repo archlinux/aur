@@ -1,11 +1,12 @@
 pkgbase = opencl_legacy_amdgpu-pro
-	pkgver = 22.10.1_1401426
+	pkgver = 23.20_1664988
 	pkgrel = 1
 	url = https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-21-50
 	arch = x86_64
 	groups = opencl_legacy_amdgpu-pro
 	license = custom: multiple
 	makedepends = wget
+	options = !debug
 	source = GET-32DEBS.sh
 	source = GET-64DEBS.sh
 	source = versions
