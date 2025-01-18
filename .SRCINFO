@@ -1,6 +1,6 @@
 pkgbase = xemu
 	pkgdesc = Original Xbox emulator (fork of XQEMU)
-	pkgver = 0.8.7
+	pkgver = 0.8.10
 	pkgrel = 1
 	url = https://xemu.app/
 	install = xemu.install
@@ -34,22 +34,10 @@ pkgbase = xemu
 	depends = sdl2
 	depends = zlib
 	optdepends = fancy-mouse-boot-rom: first-stage xbox bootrom
-	source = xemu::git+https://github.com/xemu-project/xemu.git#tag=v0.8.7
-	source = xemu-imgui::git+https://github.com/xemu-project/imgui.git
-	source = berkeley-softfloat-3::git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git
-	source = berkeley-testfloat-3::git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git
-	source = genconfig::git+https://github.com/mborgerson/genconfig.git
-	source = implot::git+https://github.com/epezent/implot.git
-	source = keycodemapdb::git+https://gitlab.com/qemu-project/keycodemapdb.git
+	source = xemu::git+https://github.com/xemu-project/xemu.git#tag=v0.8.10
 	source = use-system-libs.patch
-	b2sums = dc7204ea68ea0f67885c3c6a56c6d662eae1346117b4f598796b99854d4ac42255042d20e5dbcd2dcb35aa5bc54291c0c6d0bb2a90d27b0a869f02e2c2a0cab0
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = edb812cf4c5162d71fa4d53828c12667bb12526b5b23cf97e244a5f107599a797fdcb8e53e27b10b95caf101ad324bb4679d7f309c9437fe0c227c2602fc3b56
+	b2sums = 150d5af35714040a99b00be9f0aca6329cf9e82d455b473ca057e375686a203e01821c15c2f98ab15a272d5597e31f154a83a0b035b1a0d3acb299c3e6d7196e
+	b2sums = 7fcaa84ca21edc825404aefe9915cce97c6907421e35674b041f6c3b4fa40a1950da218cd3cec23c6d8ac5e4ef85605c104bf5744ed32fcea7a0f3c0f0cd53d6
 
 pkgname = xemu
 	depends = dtc
@@ -65,10 +53,9 @@ pkgname = xemu
 	depends = libglib-2.0.so
 	depends = libgobject-2.0.so
 	depends = libgtk-3.so
-	depends = libkeyutils.so
 	depends = libpcap.so
-	depends = libpixman-1.so
 	depends = libsamplerate.so
 	depends = libslirp.so
 	depends = libtomlplusplus.so
 	depends = libxxhash.so
+	depends = libz.so

@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.8.7
+pkgver=0.8.10
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=(x86_64)
@@ -45,32 +45,13 @@ optdepends=(
 install=$pkgname.install
 source=(
 	"$pkgname::git+https://github.com/xemu-project/xemu.git#tag=v$pkgver"
-	"$pkgname-imgui::git+https://github.com/xemu-project/imgui.git"
-	'berkeley-softfloat-3::git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git'
-	'berkeley-testfloat-3::git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'
-	'genconfig::git+https://github.com/mborgerson/genconfig.git'
-	'implot::git+https://github.com/epezent/implot.git'
-	'keycodemapdb::git+https://gitlab.com/qemu-project/keycodemapdb.git'
 	'use-system-libs.patch'
 )
-b2sums=('dc7204ea68ea0f67885c3c6a56c6d662eae1346117b4f598796b99854d4ac42255042d20e5dbcd2dcb35aa5bc54291c0c6d0bb2a90d27b0a869f02e2c2a0cab0'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'edb812cf4c5162d71fa4d53828c12667bb12526b5b23cf97e244a5f107599a797fdcb8e53e27b10b95caf101ad324bb4679d7f309c9437fe0c227c2602fc3b56')
+b2sums=('150d5af35714040a99b00be9f0aca6329cf9e82d455b473ca057e375686a203e01821c15c2f98ab15a272d5597e31f154a83a0b035b1a0d3acb299c3e6d7196e'
+        '7fcaa84ca21edc825404aefe9915cce97c6907421e35674b041f6c3b4fa40a1950da218cd3cec23c6d8ac5e4ef85605c104bf5744ed32fcea7a0f3c0f0cd53d6')
 
 prepare() {
 	cd $pkgname
-	git config submodule.genconfig.url ../genconfig
-	git config submodule.tests/fp/berkeley-softfloat-3.url ../berkeley-softfloat-3
-	git config submodule.tests/fp/berkeley-testfloat-3.url ../berkeley-testfloat-3
-	git config submodule.ui/keycodemapdb.url ../keycodemapdb
-	git config submodule.ui/thirdparty/imgui.url ../$pkgname-imgui
-	git config submodule.ui/thirdparty/implot.url ../implot
-	git -c protocol.file.allow=always submodule update
 	mkdir -p ../build
 	patch -Np1 < ../use-system-libs.patch
 	python scripts/gen-license.py > XEMU_LICENSE
@@ -80,12 +61,12 @@ build() {
 	cd build
 	../$pkgname/configure \
 		--audio-drv-list="sdl" \
-		--disable-debug-info \
+		--disable-werror \
 		--extra-cflags="-DXBOX=1" \
 		--ninja="$NINJA" \
 		--target-list="i386-softmmu" \
-		--with-git-submodules=ignore \
-		--disable-fortify-source
+		--disable-fortify-source \
+		-Dbuildtype=plain
 	make qemu-system-i386
 }
 
@@ -96,13 +77,12 @@ package() {
 		'libglib-2.0.so'
 		'libgobject-2.0.so'
 		'libgtk-3.so'
-		'libkeyutils.so'
 		'libpcap.so'
-		'libpixman-1.so'
 		'libsamplerate.so'
 		'libslirp.so'
 		'libtomlplusplus.so'
 		'libxxhash.so'
+		'libz.so'
 	)
 	cd $pkgname
 	# shellcheck disable=SC2154
