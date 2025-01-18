@@ -1,6 +1,6 @@
 # Maintainer: MuntasirSZN <muntasir.joypurhat@gmail.com>
 pkgname=getquotes
-pkgver=0.2.4
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="A simple command-line tool to fetch random quotes (pre-built binary)."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
 sha256sums=(
 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
 "87f2cb73fde60ac0cfb5f572dd813a1199d542400e0e256299be5c51e3ca910f"
-"f06280ea00ff505eafdc7eb77d9e0719875348463a604d882884efc278f98c0d"
+"863c1f303344aa3c6abe2af1a3968e5d811d3b646d65e68ac185f10511daa63a"
 )
 
 package() {
