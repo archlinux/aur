@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='The Next Generation GoldenDict (supports Qt WebEngine & Qt6).'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/xiaoyifang/goldendict-ng'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(hunspell
          libvorbis
          libxtst
