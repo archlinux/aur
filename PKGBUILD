@@ -1,6 +1,6 @@
 # Maintainer: zty012 <me@zty012.de>
 # Contributor: Littlefean <2385190373@qq.com>
-pkgname=project-graph
+pkgname=project-graph-bin
 pkgver=1.2.6
 pkgrel=1
 pkgdesc="A simple tool to create topology diagrams."
@@ -12,10 +12,11 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/LiRenTech/project-graph/releases/download/v$pkgver/Project.Graph_1.2.6_amd64.deb")
 sha256sums_x86_64=('13eb74c6f422d3feb826ab51fa51d129dbdc1055361d8377fad31c29bb6956b5')
-conflicts=('project-graph-nightly' 'project-graph-git')
+conflicts=('project-graph-nightly-bin' 'project-graph-git')
 package() {
 
   # Extract package data
   tar -xz -f data.tar.gz -C "${pkgdir}"
 
 }
+
