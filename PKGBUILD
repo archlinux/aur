@@ -20,9 +20,13 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}/ppds"
-  find . -type f -name '*.ppd' -exec \
-    sed -i "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}|/usr/share/epson-inkjet-printer-filter|g" "{}" +
+  cd "${srcdir}/${_pkgsrc}"
+  find "ppds" -type f -name '*.ppd' -exec \
+    sed -e "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}/watermark|/usr/share/epson-inkjet-printer-filter/watermark|g" \
+        -e "s|/opt/${pkgname}/watermark|/usr/share/epson-inkjet-printer-filter/watermark|g" \
+        -e "s|/opt/${pkgname}/cups/lib/filter/epson_inkjet_printer_filter|/usr/lib/cups/filter/epson_inkjet_printer_filter|g" \
+        -e "s|/opt/epson-${_model}/cups/lib/filter/epson_inkjet_printer_filter|/usr/lib/cups/filter/epson_inkjet_printer_filter|g" \
+        -i "{}" +
 }
 
 package() {
@@ -32,21 +36,16 @@ package() {
   install -vDm644 "README"        "${pkgdir}/usr/share/doc/${pkgname}/README"
   install -vDm644 "COPYING.EPSON" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
-  find "resource" -type f -exec \
+  find "lib64"    -type f -execdir \
+    install -vDm644 "{}" "${pkgdir}/usr/lib/{}" \;
+  find "ppds"     -type f -execdir \
+    install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
+  find "resource" -type f -exec    \
     install -vDm644 "{}" "${pkgdir}/usr/share/epson-inkjet-printer-filter/{}" \;
 
-  cd "${srcdir}/${_pkgsrc}/ppds"
-  find . -type f -exec \
-    install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
-
-  cd "${srcdir}/${_pkgsrc}/lib64"
-  find . -type f -exec \
-    install -vDm644 "{}" "${pkgdir}/usr/lib/{}" \;
-
   cd "${pkgdir}/usr/lib"
-  for lib in *".so.${pkgver}"; do
-    base="${lib%.${pkgver}}"
-    ln -vsf "${lib}" "${base}"
-    ln -vsf "${lib}" "${base}.${pkgver%%.*}"
+  for lib in *.so.*; do
+    ln -vsf "${lib}" "${lib%.[0-9]*.[0-9]*.[0-9]*}"
+    ln -vsf "${lib}" "${lib%.[0-9]*.[0-9]*}"
   done
 }
