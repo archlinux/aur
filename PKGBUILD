@@ -12,9 +12,7 @@ makedepends=(git)
 url="https://codeberg.org/tuxnix/$pkgname.git"
 license=('GPL2-only')
 install="$pkgname.install"
-source=('$pkgname::git+https://codeberg.org/tuxnix/$pkgname')
-#source=('directory::sourceurl#fragment?query')
-#sourceurl=git+https://....
+source=('$pkgname' '$pkgname.mo' '$pkgname.server' '$pkgname.timer' 'LICENSE')
 
 package() {
     cd "$srcdir"
@@ -22,7 +20,7 @@ package() {
     install -Dm644 $pkgname.mo "$pkgdir/usr/share/locale/de_DE/LC_MESSAGES/$pkgname.mo"
     install -Dm644 $pkgname.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
     install -Dm644 $pkgname.timer "$pkgdir/usr/lib/systemd/system/$pkgname.timer"
-    #install -Dm644 LicenseRef-FAFBL "$pkgdir/usr/share/licenses/$pkgname/LicenseRef-FAFBL"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 }
 
