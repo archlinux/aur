@@ -1,11 +1,11 @@
 pkgbase = desq-utils-volume
 	pkgdesc = Volume control for DesQ
 	pkgver = 0.0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/DesQ/DesQUtils/Volume
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = meson
 	makedepends = ninja
 	depends = qt5-base
@@ -21,6 +21,6 @@ pkgbase = desq-utils-volume
 	depends = dfl-applications
 	depends = dfl-volume
 	source = https://gitlab.com/DesQ/DesQUtils/Volume/-/archive/v0.0.8/Volume-v0.0.8.tar.gz
-	md5sums = 48e1e050268ebd48c0eec884b1a03fe3
+	sha256sums = 2c0d8c1261fe2ec0e1f6abebfd1df8246e369265092c5fe2e6d8b0ebd0c659c6
 
 pkgname = desq-utils-volume
