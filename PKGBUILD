@@ -1,12 +1,12 @@
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=pacolog
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='List recent commits for Arch Linux packages'
 url='https://gitlab.com/protist/pacolog'
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('w3m')
 
 source=("https://gitlab.com/protist/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
