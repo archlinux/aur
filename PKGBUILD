@@ -1,5 +1,5 @@
 pkgname=jdpixelupscaler
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Upscale Images per Pixel"
 arch=(x86_64)
@@ -8,7 +8,7 @@ license=("GPL3")
 depends=("qt6-base")
 makedepends=("cmake")
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/JakobDev/jdPixelUpscaler/archive/${pkgver}.tar.gz")
-sha256sums=("f26231938c2fb0960f0acb808813911ee6c06cada9c8029ca23b2846b86f21a8")
+sha256sums=("e1a7eb547cd62bce82dd267ece64bf74a2caadb6454b9089e5c95b4de29d7ee8")
 
 build() {
     cd jdpixelupscaler
