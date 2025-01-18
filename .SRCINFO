@@ -1,0 +1,18 @@
+pkgbase = optimizer
+	pkgdesc = A command-line system optimizer for Arch Linux.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/bishnoipk01/cli-sys-optimizer
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-click
+	depends = python-psutil
+	source = optimizer-1.0.0.tar.gz::https://github.com/bishnoipk01/cli-sys-optimizer/releases/download/1.0.0/optimizer-1.0.0.tar.gz
+	sha256sums = 5f1bf1f5d581c219b1f8798726d037099db737a41815a21beb8796734faea667
+
+pkgname = optimizer
