@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Vim plugin to work with R"
 arch=('any')
 url="https://github.com/jalvesaq/${pkgname}"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 optdepends=('vim>=8.2.84: either vim or neovim'
             'tmux>=2.0: if using vim and running R in an external terminal emulator, necessary for sending commands to R'
             'neovim>=0.6.0: either neovim or vim'
