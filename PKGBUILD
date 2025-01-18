@@ -3,7 +3,7 @@
 # Contributor: mod24 <bruenker(at)sintro(dot)de>
 
 pkgname=airtame-application
-pkgver=4.11.0
+pkgver=4.12.0
 pkgrel=1
 pkgdesc="Airtame official screen streaming application."
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('custom')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libutil-linux' 'libappindicator-gtk3' 'libsecret' 'libpulse' 'opus')
 makedepends=('patchelf')
 source=("https://downloads.airtame.com/app/latest/linux/Airtame-${pkgver}.deb")
-sha1sums=('c907aaa03c9fe55fd58ae445606e80258c173c76')
+sha1sums=('f661031d41a4ea6d43592a0f9e7329d8ad73252c')
 package() {
   # Extract package data
   tar xf data.tar.xz -C "${pkgdir}"
