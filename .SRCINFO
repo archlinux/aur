@@ -1,6 +1,6 @@
 pkgbase = varchiver
 	pkgdesc = A variable archiver and github/aur release manager (serialize your variables first)
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/instancer-kirik/varchiver
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = varchiver
 	depends = ttf-dejavu
 	depends = libnotify
 	optdepends = python-rarfile: for RAR archive support
-	source = varchiver-0.5.3.tar.gz::https://github.com/instancer-kirik/varchiver/archive/v0.5.3.tar.gz
-	sha256sums = 855b2da2392bbb7b93feb683aad3c4c0d462348c12d7531eff2c478d7fb6c6ed
+	source = varchiver-0.5.4.tar.gz::https://github.com/instancer-kirik/varchiver/archive/v0.5.4.tar.gz
+	sha256sums = 74f0341119bd7ee58fd79d63129b690b96bb6f03c7cb6cb7b3013ecdfe63d77c
 
 pkgname = varchiver
