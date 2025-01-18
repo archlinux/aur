@@ -6,7 +6,7 @@ _setFullLibdir="${_setPrefix}/${_setLibdir}"
 _pkgbasename=glslang
 
 pkgname=lib32-$_pkgbasename
-pkgver=15.0.0
+pkgver=15.1.0
 pkgrel=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (32bit)'
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
   ${pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz
 )
 sha256sums=(
-  'c31c8c2e89af907507c0631273989526ee7d5cdf7df95ececd628fd7b811e064'
+  '4bdcd8cdb330313f0d4deed7be527b0ac1c115ff272e492853a6e98add61b4bc'
 )
 
 prepare() {

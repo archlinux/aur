@@ -1,6 +1,6 @@
 pkgbase = lib32-glslang
 	pkgdesc = OpenGL and OpenGL ES shader front end and validator (32bit)
-	pkgver = 15.0.0
+	pkgver = 15.1.0
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/glslang
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = lib32-glslang
 	makedepends = ninja
 	makedepends = python
 	makedepends = spirv-headers
-	depends = glslang>=15.0.0
+	depends = glslang>=15.1.0
 	depends = lib32-glibc
 	depends = lib32-gcc-libs
 	depends = lib32-spirv-tools
 	options = staticlibs
-	source = lib32-glslang-15.0.0.tar.gz::https://github.com/KhronosGroup/glslang/archive/15.0.0.tar.gz
-	sha256sums = c31c8c2e89af907507c0631273989526ee7d5cdf7df95ececd628fd7b811e064
+	source = lib32-glslang-15.1.0.tar.gz::https://github.com/KhronosGroup/glslang/archive/15.1.0.tar.gz
+	sha256sums = 4bdcd8cdb330313f0d4deed7be527b0ac1c115ff272e492853a6e98add61b4bc
 
 pkgname = lib32-glslang
