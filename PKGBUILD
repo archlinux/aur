@@ -3,7 +3,7 @@
 
 pkgname=pgagent
 _pkg=pgAgent
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
 pkgdesc="Job scheduler for PostgreSQL which may be managed using pgAdmin"
 url="https://www.pgadmin.org/docs/pgadmin4/latest/pgagent.html"
@@ -14,7 +14,7 @@ makedepends=('cmake')
 source=(https://github.com/pgadmin-org/pgagent/archive/refs/tags/${pkgname}-${pkgver}.tar.gz
         ${pkgname}@localhost
         ${pkgname}@.service)
-sha256sums=('6eb6c96eafaeb996b510b8ea683c1612e8120f5b33a1ec428eeb7360a4803f70'
+sha256sums=('d4af82e8b4063aa1ca9c407562a3bbc9c9951353538f83d82a7e523f40276388'
             '27621bcd7b0f9c5ce5a3680e3df5b7696c3573add25a5ae5730ee6cdbd57e759'
             '4bded1fb970358ff7c98d38b28be1568967f22055bc98cb23f9ae4e3385e3610')
 backup=('etc/conf.d/pgagent@localhost')
