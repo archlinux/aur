@@ -1,7 +1,7 @@
 # Maintainer: archblux <archblux@126.coml>
 
 pkgname=ttf-lxgw-wenkai-screen
-pkgver=1.501
+pkgver=1.510
 pkgrel=1
 pkgdesc="本字体是霞鹜文楷的屏幕舒适阅读版本,增强了字重，包括LXGWWenKaiScreen（使用文楷完整版字库，不以其他任何字体打底）和LXGWWenKaiScreenR（在文楷完整版字库基础上，使用Roboto补全缺失字符，可能有文字形态不统一）。另外带 GB 的表示 GB 2312、通用规范汉字表范围内汉字为陆标字形，不带 GB 的为原版文楷的半陆标字形。"
 arch=('any')
@@ -14,10 +14,10 @@ source=("$url/releases/download/v$pkgver/LXGWWenKaiGBScreen.ttf"
         "$url/releases/download/v$pkgver/LXGWWenKaiMonoScreen.ttf"
 	)
 
-sha256sums=("ee8e1867e25124e7d7266c671c71316a17f0f1ae87c2841a5a32accca14f90cf"
-             "7a6dee879de778df2fd6e7a2c35ad656d0b46ed783ec81b75f583db648c14490"
-             "b012104b5b5ad49d6ce899dd47cefe486fb14bca828c5e45dac33063e0587bc4"
-             "bcefb96518484ada48f4ff52193dacdc7a67213101769025a16b2459b44e8f96"
+sha256sums=("496adb8e9b3906f9cf98a80e12ec7e6b72f31db6bd422aabf971f0eef75b17a4"
+             "24053cec96f782a4b5997629ad6298b79c67ccc565651f7dd8f366b2a9d31775"
+             "db0f0a6714787afa5e842e7a2a786466c8043bc397d2d7361d5f126277e06d8d"
+             "884b114d55ab4c1ac73f651dc631a820d99320eac0b058de14684c3727be9f58"
            )
 
 package() {
