@@ -12,8 +12,7 @@ makedepends=(git)
 url="https://codeberg.org/tuxnix/$pkgname.git"
 license=('GPL2-only')
 install="$pkgname.install"
-URL="git+https://codeberg.org/tuxnix/$pkgname/"
-source=('$pkgname::$URL')
+source=('$pkgname::git+https://codeberg.org/tuxnix/$pkgname')
 #source=('directory::sourceurl#fragment?query')
 #sourceurl=git+https://....
 
