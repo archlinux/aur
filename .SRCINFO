@@ -1,11 +1,11 @@
 pkgbase = opera-developer-ffmpeg-codecs-bin
 	pkgdesc = additional support for proprietary codecs for opera-developer, extracted directly from the chromium-ffmpeg snap
 	pkgver = 118356
-	pkgrel = 1
+	pkgrel = 2
 	url = https://snapcraft.io/chromium-ffmpeg/
 	arch = x86_64
 	license = LGPL2.1
-	makedepends = p7zip
+	makedepends = 7zip
 	depends = opera-developer
 	provides = opera-developer-ffmpeg-codecs
 	conflicts = opera-developer-ffmpeg-codecs
