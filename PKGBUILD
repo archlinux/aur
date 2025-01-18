@@ -16,7 +16,7 @@ conflicts=()
 provides=()
 #options=()
 install="PKGBUILD"
-sha256sums=('21975425aae9fd861e93324110cb434d0758b54e994fc874d4e3982f152a46e7')
+sha256sums=('83c51feb0d0a1e68e7f443665a68c8dab1fb41c72ec993c045ee465f839dd2ff')
 
 package()
 {
