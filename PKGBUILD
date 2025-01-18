@@ -1,28 +1,34 @@
+# Maintainer: a821
+
 pkgname=json-glib-git
-pkgver=r1155.b4ede88
-pkgrel=3
+pkgver=1.10.6.r5.g94a3109
+pkgrel=1
 pkgdesc="JSON library built on GLib"
 url="https://wiki.gnome.org/Projects/JsonGlib"
 arch=(x86_64)
-license=(GPL)
-depends=(glib2)
+license=('LGPL-2.1-or-later')
+depends=('glib2')
+makedepends=(
+  docbook-xsl
+  gi-docgen
+  git
+  glib2-devel
+  gobject-introspection
+  meson
+  python-docutils
+)
 conflicts=('json-glib')
-provides=('json-glib')
-makedepends=(gobject-introspection git gtk-doc meson)
+provides=('json-glib' 'libjson-glib-1.0.so')
 source=("git+https://gitlab.gnome.org/GNOME/json-glib.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd ${pkgname%-git}
+  git describe --long --tags | sed 's/-/.r/;s/-/./g'
 }
 
 build() {
-  meson --prefix /usr ${pkgname%-git} build -D docs=true -D man=true
+  arch-meson -D man=true -D installed_tests=false build json-glib
   ninja -C build
 }
 
@@ -32,6 +38,4 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
-  rm -r "$pkgdir"/usr/share/installed-tests
 }
-
