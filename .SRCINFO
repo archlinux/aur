@@ -1,6 +1,6 @@
 pkgbase = lpm
 	pkgdesc = A lite-xl plugin manager.
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/lite-xl/lite-xl-plugin-manager
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = lpm
 	depends = libgit2
 	depends = mbedtls2
 	depends = xz
-	source = lite-xl-plugin-manager-1.3.1.tar.gz::https://github.com/lite-xl/lite-xl-plugin-manager/archive/refs/tags/v1.3.1.tar.gz
-	sha256sums = dd7f8b2ab107ec389db95b93a51b5d7c801f85014e941a76e6a0545e9b6826c8
+	source = lite-xl-plugin-manager-1.4.0.tar.gz::https://github.com/lite-xl/lite-xl-plugin-manager/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = 1f85a223e58412f6ca6e4a0610c28af1d73a079374cae178058374f92dc2a559
 
 pkgname = lpm
