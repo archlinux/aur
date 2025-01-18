@@ -193,7 +193,7 @@ url="https://git.staropensource.de/JeremyStarTM/aur-linux-clear"
 license=(GPL-2.0-only)
 makedepends=("bc" "cpio" "gettext" "git" "libelf" "pahole" "perl" "python" "tar" "xz" "zstd")
 [[ -n "${_use_llvm_to}" ]] && makedepends+=("clang" "llvm" "lld")
-[[ -n "${_show_compile}" ]] && makedepends+=("pv")
+[[ -z "${_show_compile}" ]] && makedepends+=("pv")
 options=("!strip" "!debug")
 [[ "${_debug}" == "y" ]] && options=("!strip")
 source=(
