@@ -2,7 +2,7 @@
 
 pkgname='swc-js-bin'
 pkgver='1.10.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Super-fast TypeScript / JavaScript compiler written in Rust'
 arch=('x86_64')
 url='https://swc.rs'
