@@ -1,0 +1,24 @@
+pkgbase = vapoursynth-plugin-vsdenoise
+	pkgdesc = Plugin for Vapoursynth: vsdenoise
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-denoise
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = vapoursynth-plugin-vstools
+	depends = vapoursynth-plugin-vskernels
+	depends = vapoursynth-plugin-vsexprtools
+	depends = vapoursynth-plugin-vsrgtools
+	depends = vapoursynth-plugin-vsmasktools
+	depends = vapoursynth-plugin-vsaa
+	depends = vapoursynth-plugin-vsscale
+	optdepends = vapoursynth-plugin-nlm-cuda
+	optdepends = vapoursynth-plugin-knlmeanscl
+	optdepends = vapoursynth-plugin-bm3d
+	optdepends = vapoursynth-plugin-bm3dcuda
+	optdepends = vapoursynth-plugin-reconstruct
+	source = https://files.pythonhosted.org/packages/0e/4c/b09ec5ee49038ccbda19c245b75a1f10e54ad10b05eb66ef19f46a650371/vsdenoise-2.7.1-py3-none-any.whl
+	sha256sums = 2c01eb8fe7bccd90560473d5eaf6137732744979853cd371bdefb92bc3e9f466
+
+pkgname = vapoursynth-plugin-vsdenoise
