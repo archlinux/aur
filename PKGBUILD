@@ -13,7 +13,8 @@ url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('LGPL-2.1-or-later'                                 # filter itself
          'custom:Epson End User Software License Agreement') # watermark .EIDs
 depends=('cups' 'gcc-libs' 'glibc' 'libcups' 'libjpeg')
-# there is no standalone filter source, so we download the whole printer bundle
+# there are no standalone filter or driver sources, both are shipped together
+# so we download some driver bundle and extract the filter sources from there
 # source bundle chosen arbitrarily; all of them ship identical filter sources
 _pkgsrc="${pkgname}-${pkgver}"
 _bundlesrc="epson-inkjet-printer-201207w-1.0.1"
@@ -41,6 +42,7 @@ prepare() {
 
 pkgver() {
   cd "${srcdir}/${_pkgsrc}"
+  # AC_INIT(epson-inkjet-printer-filter, ${pkgver}, epson@localdomain)
   sed -n -E 's/AC_INIT\([^,]+,\s*([^,]+).*/\1/p' 'configure.ac'
 }
 
@@ -56,9 +58,9 @@ build() {
   # knowing that the filter is called ahead of the libraries,
   # we overlink the required dependencies here to load them into memory
   # this trick is reportedly not needed for the newer models with newer libraries
-  # but is required for older 'LSB-dependent' drivers
+  # but is required for older 'LSB-dependent' drivers with 'lsb3.2' postfix
   # these were released in ~2012, mostly at v1.0.0, and come from download.ebz.epson.net
-  export LDFLAGS+=" -Wl,--no-as-needed"
+  export LDFLAGS="${LDFLAGS//-Wl,--as-needed/-Wl,--no-as-needed}"
 
   cd "${srcdir}/${_pkgsrc}"
   libtoolize
