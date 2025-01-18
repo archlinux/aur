@@ -5,7 +5,7 @@ pkgbase = lingot
 	url = http://www.nongnu.org/lingot/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = perl-xml-parser
 	makedepends = intltool
 	depends = gtk3
@@ -17,4 +17,3 @@ pkgbase = lingot
 	sha256sums = f728003d62a4943dd00842b6cfbb27d5b61e9c7b4db97238046022fb3e915c79
 
 pkgname = lingot
-
