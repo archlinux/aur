@@ -1,3 +1,4 @@
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 # Contributor: Alexander Epaneshnikov <alex19ep@archlinux.org>
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Pierre Neidhardt <ambrevar@gmail.com>
@@ -13,7 +14,7 @@ epoch=1
 pkgdesc='Command line trashcan (recycle bin) interface'
 arch=('any')
 url="https://github.com/andreafrancia/${_pkgname}"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('python-psutil' 'python-six')
 makedepends=('python-setuptools' 'python-shtab' 'git')
 checkdepends=('python-pytest' 'python-flexmock' 'python-parameterized')
