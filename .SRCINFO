@@ -1,14 +1,15 @@
 pkgbase = desq-utils-disks
 	pkgdesc = Disks Auto Mounter for DesQ
 	pkgver = 0.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/DesQ/DesQUtils/Disks
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = meson
 	makedepends = ninja
 	depends = qt5-base
+	depends = hicolor-icon-theme
 	depends = libdesqui
 	depends = dfl-settings
 	depends = dfl-utils
@@ -16,6 +17,6 @@ pkgbase = desq-utils-disks
 	depends = dfl-xdg
 	depends = dfl-storage
 	source = https://gitlab.com/DesQ/DesQUtils/Disks/-/archive/v0.0.8/Disks-v0.0.8.tar.gz
-	md5sums = 304df6c59bd2d2b6ab32ce5b0dbcc59a
+	sha256sums = e80e1a748b3c88383e1693f069826c923970b23120f4b288bf46a019b763963e
 
 pkgname = desq-utils-disks
