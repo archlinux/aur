@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc='Display unicode character properties on the command line'
 url='https://github.com/garabik/unicode'
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('python')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/garabik/${pkgname}/archive/v${pkgver}.tar.gz"
         UnicodeData-${pkgver}-${pkgrel}.txt::'https://www.unicode.org/Public/UNIDATA/UnicodeData.txt'
