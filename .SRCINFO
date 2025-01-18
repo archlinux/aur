@@ -1,17 +1,18 @@
 pkgbase = corehunt
 	pkgdesc = A file finder utility from the C Suite
 	pkgver = 4.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cubocore/coreapps/corehunt
 	arch = x86_64
 	arch = aarch64
 	groups = coreapps
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = ninja
 	depends = qt5-base
+	depends = hicolor-icon-theme
 	depends = libcprime>=2.7.1
 	source = https://gitlab.com/cubocore/coreapps/corehunt/-/archive/v4.5.0/corehunt-v4.5.0.tar.gz
-	md5sums = 6295e7f3a0971aeebfa106715c1dc526
+	sha256sums = 570b13db14b198f7e33a28c7820a8d9e3031cc319d596eae3281bceb0320ebcf
 
 pkgname = corehunt
