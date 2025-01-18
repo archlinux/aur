@@ -1,6 +1,6 @@
 # Maintainer: Eldred Habert <arch@eldred.fr>
 pkgname=hugetracker-bin
-pkgver=1.0.9
+pkgver=1.0.11
 pkgrel=1
 pkgdesc='The music composition suite for the Nintendo Game Boy'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(fontconfig gdk-pixbuf2 glib2 glibc gtk2 libx11 pango 'rgbds>=0.5.0' sdl
 optdepends=('ffmpeg: "Export song" functionality')
 source=("hUGETracker-$pkgver.zip::https://github.com/SuperDisk/hUGETracker/releases/download/v$pkgver/hUGETracker-$pkgver-linux.zip"
         LICENSE)
-sha256sums=('e806ef0f356f948bb670aff3981c8d32c74b4926b4378226912eb1a3b58c077d'
+sha256sums=('9e2e21d50d2ebbeb5653168c483279b188ff1b01b908b685172b0b353e506e24'
             '89e3f0dbfb531db8d9ba1b20865407b35a0aad5b3f5468bd8527a17a5026e836')
 noextract=('hUGETracker-$pkgver.zip')
 
