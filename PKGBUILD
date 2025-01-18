@@ -1,7 +1,8 @@
-# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Daenyth <Daenyth+Arch [at] gmail [dot] com>
 # Contributor: Hugo Doria <hugodoria@gmail.com>
-# Contributor pidgin-libnotify: 3ED <kas1987@o2.pl>
+# Contributor: 3ED <kas1987@o2.pl>
 
 pkgname=pidgin-libnotify
 pkgver=0.14
@@ -9,7 +10,7 @@ pkgrel=15
 arch=('x86_64')
 pkgdesc='Pidgin plugin that enables popups when someone logs in or messages you'
 url='http://gaim-libnotify.sourceforge.net/'
-license=('GPL')
+license=('GPL-2.0-or-later') # some files (e.g. src/pidgin-libnotify.c) say 2 or later. COPYING says 3
 depends=('pidgin' 'libnotify')
 makedepends=('intltool')
 source=("https://downloads.sourceforge.net/gaim-libnotify/$pkgname-$pkgver.tar.gz"
