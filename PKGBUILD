@@ -5,7 +5,7 @@
 _name="ureminder"
 
 pkgrel=1
-pkgver=xyz
+pkgver=0.8.1
 pkgname="$_name"
 pkgdesc='Remind user upgrade packages and keeps package cache clean'
 
@@ -19,11 +19,6 @@ makedepends=('git')
 source=('git+https://codeberg.org/tuxnix/ureminder' $_name.install)
 sha512sums=('SKIP' '48a82d85b679abddb558eb1e303a0998cc6f6e61ae8ad667a73bae9fed6c0e529625dab0b37af7d4c3720888e368682e8912d185a3eb08ed0c252981b9241bec')
 install="$_name.install"
-
-pkgver() {
-    cd "${srcdir}/$_name"
-    pkgver="$(echo $(git rev-parse --short HEAD))"
-}
 
 package() {
     cd "$srcdir/$_name"
