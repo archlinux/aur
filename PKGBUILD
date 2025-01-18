@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgdesc='Alternative terminfo files for the foot terminal emulator, with additional non-standard capabilities'
 pkgname=foot-terminfo-git
-pkgver=1.20.0
+pkgver=1.20.2
 pkgrel=1
 conflicts=('foot-terminfo')
 provides=('foot-terminfo')
