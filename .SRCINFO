@@ -1,7 +1,7 @@
 pkgbase = dracula-gtk-theme-full
 	pkgdesc = Dark theme for GTK
-	pkgver = 4.0.0
-	pkgrel = 1
+	pkgver = 4.0.0.r104.gf77cf5c
+	pkgrel = 2
 	url = https://github.com/dracula/gtk
 	arch = any
 	license = GPL
