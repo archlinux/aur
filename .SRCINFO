@@ -1,0 +1,17 @@
+pkgbase = jextract-bin
+	pkgdesc = A tool which mechanically generates Java bindings from native library headers
+	pkgver = 22.6.47
+	pkgrel = 1
+	url = https://jdk.java.net/jextract/
+	arch = x86_64
+	license = GPL-2.0-or-later WITH Classpath-exception-2.0
+	depends = glibc
+	depends = zlib
+	provides = jextract
+	conflicts = jextract
+	source = https://download.java.net/java/early_access/jextract/22/6/openjdk-22-jextract+6-47_linux-x64_bin.tar.gz
+	source = https://raw.githubusercontent.com/openjdk/jextract/77ccb48/LICENSE
+	b2sums = 1a293f2feaf3293f77090d0b1cf7ef7f3969ca5b2341e18e2d8d80b284950c501edd1b03ed2f42a1de13c5d2a202c64025c9c29cc150bf8015fe3abf3dc466e1
+	b2sums = 32647f81f19b29ff05b8909cdf7690086d0f91748513105967dc0dbeacca7bd051b5d14ec1aec1d3857b158f225311ff52ee1c4d7fb1416f1020d14d92a23858
+
+pkgname = jextract-bin
