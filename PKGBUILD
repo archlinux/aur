@@ -1,9 +1,9 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Dustin Falgout <dustin@falgout.us>
 pkgname='ttf-google-fonts-typewolf'
-pkgver='20240105'
-_commit='e10dd01507a2a015ddbe8140aae06354dce94889'
-pkgrel='2'
+pkgver='20250116'
+_commit='2cb2f66207b904608e0e85870d8f18f2a65f69f3'
+pkgrel='1'
 pkgdesc="Typewolf's curated collection of the 40 best fonts from the Google Fonts project"
 arch=('any')
 url='https://www.typewolf.com/google-fonts'
@@ -22,6 +22,13 @@ provides=(
 	'ttf-fira-sans' # OFL-1.1-no-RFN
 	'ttf-fraunces' # OFL-1.1-no-RFN
 	'ttf-ibm-plex-sans' # OFL-1.1-RFN
+	'ttf-ibm-plex-sans-arabic' # OFL-1.1-RFN
+	'ttf-ibm-plex-sans-devanagari' # OFL-1.1-RFN
+	'ttf-ibm-plex-sans-hebrew' # OFL-1.1-RFN
+	'ttf-ibm-plex-sans-jp' # OFL-1.1-RFN
+	'ttf-ibm-plex-sans-kr' # OFL-1.1-RFN
+	'ttf-ibm-plex-sans-thai' # OFL-1.1-RFN
+	'ttf-ibm-plex-sans-thai-looped' # OFL-1.1-RFN
 	'ttf-inconsolata' # OFL-1.1-no-RFN
 	'ttf-inknut-antiqua' # OFL-1.1-no-RFN
 	'ttf-inter' # OFL-1.1-no-RFN
@@ -70,16 +77,16 @@ conflicts=(
 	'ttf-adobe-source-serif-fonts'
 	'ttf-dm-fonts'
 	'ttf-google-fonts-git'
-	'ttf-ibm-plex-git'
 	'ttf-ibm-plex'
 	# These packages don't use correct provides, so we have to conflict
 	'lora-font-git'
+	'ttf-ibm-plex-git'
 )
 _ignore=(
 	'Inconsolata[wdth,wght].ttf'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/google/fonts/archive/$_commit.tar.gz")
-b2sums=('ca5d7cd8d7bcb66a9ea70ed932cbff18f5359a118a27d76a085536161abd946c3f32ae36e7e549e5f08e717fbd0e69ac9dc42cac5503d6ca48cbc9cdb7e4fd0a')
+b2sums=('6efbefa7e3729c5f20f4e0faee7ab6fbba6d5ecad49b15912bf4cd28a12225ab21fc758409ad34b72939f1cfb3fd67203b7186bcbca8f7d5d3221cd7eaab4538')
 
 _sourcedirectory="fonts-$_commit"
 
@@ -107,6 +114,7 @@ package() {
 	_ignore="${_ignore[@]//[/\\[}"
 	_ignore="${_ignore[@]//]/\\]}"
 	_ignore="${_ignore[@]//./\\.}"
+
 	# Replace spaces with pipe symbols
 	_ignoreregex="${_ignore[*]// /|}"
 
