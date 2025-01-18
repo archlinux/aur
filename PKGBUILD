@@ -1,8 +1,8 @@
-# Maintainer: Your Name <your.email@domain.com>
-pkgname=nvidia-all-builder
+# Maintainer: zeakz <zeakz@protonmail.com>
+pkgname=nvidia-all-git
 pkgver=1.0.0.r349.6c4ad5b
 pkgrel=1
-pkgdesc="Automated builder package for nvidia-all drivers"
+pkgdesc="TKG nvidia-all"
 arch=('x86_64')
 url="https://github.com/Frogging-Family/nvidia-all"
 license=('MIT')

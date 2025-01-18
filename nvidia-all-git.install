@@ -1,6 +1,6 @@
 post_install() {
     echo "Installing NVIDIA drivers..."
-    cd "/usr/share/nvidia-all-builder"
+    cd "/usr/share/nvidia-all-git"
     # Install all built packages
     /usr/bin/pacman -U --noconfirm *.pkg.tar.zst
 }
