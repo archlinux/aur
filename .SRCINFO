@@ -1,6 +1,6 @@
 pkgbase = python-clipspy
 	pkgdesc = CLIPS Python bindings
-	pkgver = 1.0.0
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/noxdafox/clipspy
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = python-clipspy
 	makedepends = python-setuptools
 	depends = clips-lib
 	depends = python-cffi
-	source = https://files.pythonhosted.org/packages/source/c/clipspy/clipspy-1.0.0.tar.gz
-	sha256sums = c1744577cbd2ab1e2b05004be6409604d7a70841197f6b4737ad9ef9dd1d949c
+	source = https://files.pythonhosted.org/packages/source/c/clipspy/clipspy-1.0.4.tar.gz
+	sha256sums = 25bf864e01f35c2ed4d0e3f3963e0a800e2e773f428dce8fd565028f46116d26
 
 pkgname = python-clipspy
