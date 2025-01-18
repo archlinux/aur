@@ -1,0 +1,21 @@
+pkgbase = vapoursynth-plugin-vsdehalo
+	pkgdesc = Plugin for Vapoursynth: vsdehalo
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-dehalo
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = vapoursynth-plugin-vstools
+	depends = vapoursynth-plugin-vskernels
+	depends = vapoursynth-plugin-vsexprtools
+	depends = vapoursynth-plugin-vsrgtools
+	depends = vapoursynth-plugin-vsmasktools
+	depends = vapoursynth-plugin-vsaa
+	depends = vapoursynth-plugin-vsscale
+	depends = vapoursynth-plugin-vsdenoise
+	optdepends = vapoursynth-plugin-misc
+	source = https://files.pythonhosted.org/packages/3c/65/aa666b3a33c773386c80d8fc6ef17eb1a9f9f4881a75b8b333a48a05d873/vsdehalo-1.9.2-py3-none-any.whl
+	sha256sums = 9bd5d4297fbc980f7fd8de2c2eb4e7e473a8c7cbda8704b45fbdb6f83d5412ab
+
+pkgname = vapoursynth-plugin-vsdehalo
