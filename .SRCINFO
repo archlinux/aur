@@ -1,0 +1,22 @@
+pkgbase = vapoursynth-plugin-vsmasktools
+	pkgdesc = Plugin for Vapoursynth: vsmasktools
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-masktools
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = vapoursynth-plugin-vstools
+	depends = vapoursynth-plugin-vskernels
+	depends = vapoursynth-plugin-vsexprtools
+	depends = vapoursynth-plugin-vsrgtools
+	depends = vapoursynth-plugin-tcanny
+	depends = vapoursynth-plugin-tedgemask
+	depends = vapoursynth-plugin-awarpsharp2
+	depends = vapoursynth-plugin-retinex
+	depends = vapoursynth-plugin-planestatsmod
+	depends = vapoursynth-plugin-vssource
+	source = https://files.pythonhosted.org/packages/30/8a/a670c0d110c85f47bb64932837a805a2149870faafcff5eeea2c8a546f25/vsmasktools-1.3.2-py3-none-any.whl
+	sha256sums = 5c0e84e9ad616e8a4f6b78af78afbf32738d607435b1e75b55b0f7a7545b03bd
+
+pkgname = vapoursynth-plugin-vsmasktools
