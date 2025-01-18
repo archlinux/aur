@@ -1,4 +1,4 @@
-pkgbase = optimizer
+pkgbase = cli_sys_optimizer
 	pkgdesc = A command-line system optimizer for Arch Linux.
 	pkgver = 1.0.0
 	pkgrel = 1
