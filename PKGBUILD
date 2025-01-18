@@ -1,6 +1,6 @@
 pkgname=singletask
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A compact, single-task-focused application for managing tasks and thoughts."
 arch=('any')
 url="https://topheim.com"
