@@ -1,19 +1,19 @@
 pkgbase = moreutils-go-bin
 	pkgdesc = A Go rewrite of moreutils: A collection of the Unix tools that nobody thought to write long ago when Unix was young.
-	pkgver = 0.4.3
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/gabe565/moreutils
 	license = GPL-3.0
 	conflicts = moreutils-go
 	provides = moreutils
 	arch = aarch64
-	source_aarch64 = https://github.com/gabe565/moreutils-go/releases/download/v0.4.3/moreutils-go_0.4.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = a5b6d2647c55a2e88b1d5912430bf340d9dfd4f4239ed14914d89b4bef31dc11
+	source_aarch64 = https://github.com/gabe565/moreutils-go/releases/download/v0.5.0/moreutils-go_0.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = af3fa92d373d4b740b4f4b29b547260d1dab42883c884521c4efe79a6c1cb4b1
 	arch = armv7h
-	source_armv7h = https://github.com/gabe565/moreutils-go/releases/download/v0.4.3/moreutils-go_0.4.3_linux_armv7.tar.gz
-	sha256sums_armv7h = d9bac56273ec8b0f84e10526639a2f1f19faa22dc1ca497cc10c1120c3b46dd0
+	source_armv7h = https://github.com/gabe565/moreutils-go/releases/download/v0.5.0/moreutils-go_0.5.0_linux_armv7.tar.gz
+	sha256sums_armv7h = 75189393923168e739a00f3291f2176cea45a4692b1834e5cbaa2fa849a69556
 	arch = x86_64
-	source_x86_64 = https://github.com/gabe565/moreutils-go/releases/download/v0.4.3/moreutils-go_0.4.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = d07db7d195884fd9fd08c927df1058f173831d5bdfafa8437763bce60de23090
+	source_x86_64 = https://github.com/gabe565/moreutils-go/releases/download/v0.5.0/moreutils-go_0.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d89090d3f33e3eaff16995de9e88137c5cfe8137a499cdb51eb719a4d03f8513
 	
 pkgname = moreutils-go-bin
