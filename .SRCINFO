@@ -1,0 +1,13 @@
+pkgbase = scrcpy-wrapper
+	pkgdesc = A simple wrapper for scrcpy
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/Bluemangoo/scrcpy-wrapper
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = scrcpy
+	source = scrcpy-wrapper-0.1.3.tar.gz::https://github.com/Bluemangoo/scrcpy-wrapper/archive/refs/tags/0.1.3.tar.gz
+	b2sums = f02f05ee6d8e20a569191bfb490ecdfc3fafa8ad3f229350a05053ef752c58812930775be85c8ee01e24fb9aa8eb4ec167b8f6e7b7b833d83e01f25feaf43333
+
+pkgname = scrcpy-wrapper
