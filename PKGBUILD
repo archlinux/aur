@@ -9,7 +9,7 @@ url='https://swc.rs'
 license=('Apache-2.0')
 provides=('swc-js')
 source=("https://github.com/swc-project/swc/releases/download/v$pkgver/swc-linux-x64-gnu")
-sha256sums=('05fcfd9f3ebd2a15bcf7b024c122f762841bd72cce38543ae5cc4d1578813642')
+sha256sums=('3af249c6f94ea389b878091285e75649defa743ab462bb74fb9991af8a998088')
 
 package() {
   install -Dm 755 "$srcdir/swc-linux-x64-gnu" "$pkgdir/usr/bin/swc"
