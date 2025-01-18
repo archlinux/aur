@@ -9,7 +9,7 @@ pkgdesc="Epson inkjet printer driver (ME 340; Stylus NX130, SX130, TX130, TX133,
 arch=('i686' 'x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:Epson End User Software License Agreement')
-depends=('epson-inkjet-printer-filter' 'gcc-libs' 'glibc')
+depends=('epson-inkjet-printer-filter' 'glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 source=("https://download.ebz.epson.net/dsc/op/stable/SRPMS/${_pkgsrc}-1lsb3.2.src.rpm")
@@ -54,9 +54,8 @@ package() {
     install -vDm644 "{}" "${pkgdir}/usr/share/epson-inkjet-printer-filter/{}" \;
 
   cd "${pkgdir}/usr/lib"
-  for lib in *".so.${pkgver}"; do
-    base="${lib%.${pkgver}}"
-    ln -vsf "${lib}" "${base}"
-    ln -vsf "${lib}" "${base}.${pkgver%%.*}"
+  for lib in *.so.*; do
+    ln -vsf "${lib}" "${lib%.[0-9]*.[0-9]*.[0-9]*}"
+    ln -vsf "${lib}" "${lib%.[0-9]*.[0-9]*}"
   done
 }

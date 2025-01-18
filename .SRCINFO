@@ -7,7 +7,6 @@ pkgbase = epson-inkjet-printer-201101w
 	arch = x86_64
 	license = custom:Epson End User Software License Agreement
 	depends = epson-inkjet-printer-filter
-	depends = gcc-libs
 	depends = glibc
 	source = https://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201101w-1.0.0-1lsb3.2.src.rpm
 	sha256sums = 1843795e0a32e3e92de73807afa89961440b74c02bd8a97f16b795fe7ec72820
