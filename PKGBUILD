@@ -2,7 +2,7 @@
 # Contributor: Gökçe Aydos <aydos.de>
 _base=nbgrader
 pkgname=jupyter-${_base}
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="A system for assigning and grading notebooks"
 arch=(any)
@@ -25,7 +25,7 @@ depends=(python-alembic
   python-pyaml)
 makedepends=(python-build python-installer python-hatch-jupyter-builder python-wheel npm)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('4284a37e9092f5d1d306da200021458ea09b276c828141ca0c1acef1a2496af7427cc254e4d67d2f892c417d17c750b9be32d824bc50729d5e551e76affc3f29')
+sha512sums=('538a34f48666654d7dc16fe4d97ceeb636693dc3025483dcaea5fdb6a3917b86fa291f10b9aedce5e419621af8b533adebe69224b02e6473a90ad98f4d26f5a0')
 
 build() {
   cd ${_base}-${pkgver}
