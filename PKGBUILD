@@ -3,16 +3,23 @@
 
 pkgname=corepaint
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A paint app from the C Suite"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
-license=('GPL3')
-depends=('qt5-base' 'libcprime>=3.0.1')
-makedepends=('cmake' 'ninja')
+license=('GPL-3.0-or-later')
+depends=(
+        'qt5-base'
+        'hicolor-icon-theme'
+        'libcprime>=3.0.1'
+)
+makedepends=(
+            'cmake'
+            'ninja'
+)
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('4cc4cd11d0b7a5b341a79503dd6b2fc5')
+sha256sums=('7476667be787cc648c32ed5473663eae36101d7b3d1885788de087b234adfe80')
 
 prepare() {
   mkdir -p build
