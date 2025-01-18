@@ -1,0 +1,212 @@
+#!/bin/bash
+#file-> /usr/local/bin/ureminder
+
+TEXTDOMAIN=ureminder
+TEXTDOMAINDIR=/usr/share/locale
+version="ureminder version 0.8.1"
+
+# Send user a notify-send message from root
+send() {
+TUSER=$(who -T | awk '/+/{print $1}' | head -1)
+sudo -u $TUSER DISPLAY=$DISPLAY DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u $TUSER)/bus notify-send "$@"
+}
+
+# Display Help
+Help() {
+echo $"Reminds to package upgrades"
+echo
+echo $"Usage: ureminder [-a|b|h|v|d <num>]"
+echo $"Options:"
+echo $" a        - Display message: What's to do after upgrading"
+echo $" b        - Debug mode"
+echo $" h        - Print this help"
+#echo $" n       - Display message: Last Arch Linux News"
+echo $" v        - Print version"
+echo $" d <num>  - Auto upgrades all <num> days"
+echo
+echo $"Example: ureminder -ad 7"
+echo ""
+}
+
+# Get options
+while getopts ":abd:hv" option; do
+   case $option in
+      a) do=1
+         echo $"Display message: What's to do after upgrade - ON";;
+      b) set -vx
+         echo $"Debug mode activated";;
+      d) re='^[0-9]+$'
+         if ! [[ $OPTARG =~ $re ]]; then
+            echo $"Error: $OPTARG is not a number!" >&2; exit 1
+         elif [ $OPTARG -lt 1 ]; then
+            echo $"d needs a positiv number as argument!"; exit 1
+         else
+            days=$OPTARG
+            echo $"Display message:Auto upgrade all $days days - ON"
+         fi;;
+      h) Help
+         exit 0;;
+      v) echo $version
+         exit 0;;
+      ?) echo $"Usage: ureminder [-a|b|h|v|d <num>]"
+         echo $"Display help: ureminder -h"
+         exit 1;;
+   esac
+done
+
+# error db.lck
+if [ $(pgrep pacman) ]; then
+    send $"Error: Pacman is busy" "Is there another app upgrading your system?" -t 0 -u critical
+    exit 1
+elif [ -f /var/lib/pacman/db.lck ] && [ ! $(pgrep pacman) ]; then
+    send $"Error: Pacman database locked" "<a href='https://wiki.archlinux.org/title/Pacman#%22Failed_to_init_transaction_(unable_to_lock_database)%22_error'>How to solve the problem</a>" -t 0 -u critical
+    exit 1
+fi
+
+# update mirrors
+reflector --age 5 --delay 0.25 --protocol https --latest 5 --save /etc/pacman.d/mirrorlist || Error="reflector --age 5 --delay 0.25 --protocol https --latest 5"
+
+# del PKGS from cache which are not installed anymore
+paccache -ruk0 || Error="paccache -ruk0"
+
+# keep current package and last for downgrade purpose
+paccache -rk2 || Error="paccache -rk2"
+
+# list all installed packages
+pacman -Qqe > /var/pkg.lst || Error="pacman -Qqe"
+
+# download new packages
+pacman -Syuw --noconfirm || Error="# pacman -Syuw"
+
+# check for PKGS upgrades available
+PKGS=($(pacman -Qu | awk '{print $1}')) || Error="pacman -Qu"
+
+Nr=0
+for PKG in ${PKGS[@]}; do
+  Nr=$(($Nr+1))
+  PK+=("$Nr.$PKG")
+done
+
+# KERNEL upgrade
+KERNEL=$(cat /proc/version | awk '{ print $4}'| sed -e 's/(//' -e 's/@.*//')
+for i in ${PKGS[*]}; do
+  if [[ $KERNEL == $i ]]; then
+    RKERNEL=$i
+  fi
+done
+
+# GUI upgrade
+GUIs=('awesome' 'budgie-session' 'cinnamon-desktop' 'deepin-daemon' 'gnome-shell' 'i3' 'lxsession' 'lxqt-session' 'mate-desktop' 'plasma-desktop' 'sway' 'xfce4-session')
+for j in ${GUIs[@]}; do
+  if [ $(pgrep -fc $j) -gt "0" ]; then
+    for l in ${PKGS[@]}; do
+      if [[ $l == $j ]]; then
+        GUI=$j
+      fi
+    done
+  fi
+done
+
+# wich of these often used applications is runnig now
+APPS=('firefox' 'librewolf' 'chromium' 'dolphin' 'nautilus' 'kmail' 'kontact' 'kate' 'vim' 'libreoffice' 'gimp' 'inkscape' 'kdenlive' 'openssh')
+for k in ${APPS[@]}; do
+  if [ $(pgrep -fc $k) -eq "0" ]; then
+    APPS=("${APPS[@]/$k}")
+  fi
+done
+
+# Exchange app-name with pkg-name
+if [[ "${APPS[@]/libreoffice/}" != "${APPS[@]}" ]]; then
+    APPS=("${APPS[@]/libreoffice}")
+    APPS+=("libreoffice-fresh")
+    APPS+=("libreoffice-still")
+fi
+
+# wich of these runnig applicatins get's upgrades
+for m in ${PKGS[*]}; do
+  for n in ${APPS[*]};do
+    if [[ "$m" == "$n" ]]; then
+      UAPPS+=($n)
+    fi
+  done
+done
+
+# Exchange pkg-name with app-name
+if [[ "${UAPPS[@]/libreoffice-still/}" != "${UAPPS[@]}" ]]; then
+    UAPPS=("${UAPPS[@]/libreoffice-still}")
+    UAPPS+=("libreoffice")
+elif [[ "${UAPPS[@]/libreoffice-fresh/}" != "${UAPPS[@]}" ]]; then
+    UAPPS=("${UAPPS[@]/libreoffice-fresh}")
+    UAPPS+=("libreoffice")
+fi
+
+# Days, hours and minutes till next auto upgrade
+NOW=$(date --date='now' +%s)
+LPUU=$(date -d $(awk '/upgraded/ { print $1 }' /var/log/pacman.log | tail -1 | sed -e 's/\[//' -e 's/\]//') +%s)
+LPU=$((NOW-LPUU))
+NPU=$((days*86400-LPU))
+TIMER=( $(journalctl -u ureminder.service -g Started -o short-unix | tail -2 | awk '{print substr($1, 1, length($1) -7)}') )
+PERIOD=$((${TIMER[1]}-${TIMER[0]}))
+COUNT=$((NPU/PERIOD))
+CREST=$((NPU%PERIOD))
+NTU=$((COUNT*PERIOD))
+if [ $CREST -eq 0 ]; then
+    NU=$NPU
+else
+    NU=$(($NPU+PERIOD))
+fi
+DAYS=$((NU/86400))
+DREST=$((NU%86400))
+HOURS=$((DREST/3600))
+HREST=$((DREST%3600))
+MINUTES=$((HREST/60))
+
+# Messages
+SAVE=$"Save new documents!\n"
+SYU=$"Run '# pacman -Syu' on terminal!\n"
+
+if [ $NU -ge 172800 ];  then UPGRADE=$"Next auto upgrade in $DAYS days\n"
+elif [ $NU -ge 7200 ]; then UPGRADE=$"Next auto upgrade in $HOURS hours\n"
+else UPGRADE=$"Next auto upgrade in $MINUTES minutes\n"
+fi
+
+if [ ${#PKGS[*]} -eq 1 ]; then
+PKMESS=$"One new package: ${PK[*]}"
+elif [ ${#PKGS[*]} -ge 2 ]; then
+PKMESS=$"${#PKGS[*]} new packages: ${PK[*]}"
+fi
+
+if [[ "$RKERNEL" != "" ]]; then
+    MESS=$"GUI and kernel upgrade:"
+    DO=$"New kernel will run after reboot!"
+elif [[ $GUI != "" ]]; then
+    MESS=$"$GUI upgrade:"
+    DO=$"Restart your usersesson!\n"
+elif [ ${#UAPPS[*]} -gt "0" ]; then
+    MESS=$"Application upgrade:"
+    DO=$"Restart ${UAPPS[*]} and running applications!\n"
+else
+    MESS=$"Upgrade successfull:"
+    DO=$"Restart your applications\n"
+fi
+
+# Auto upgrade (86400sec-600sec=85600sec=23 hours and 50 minutes)
+if [ $days ] && [ "$(((LPU)/days))" -ge "85600" ] && [ "${#PKGS[*]}" -gt "0" ]; then
+  NID=$(send  $"Upgrade starts in 1 minute:" $"$SAVE" -t 0 -u normal -p)
+  sleep 60
+  NID=$(send $"Upgrading:" $"Keep system running!" -t 0  -u critical -r $NID -p)
+  pacman -Syu --noconfirm || Error="# pacman -Syu"
+  send "$MESS" "$DO" -t 0 -u normal -r $NID
+
+elif [ "${#PKGS[*]}" -gt "0" ]; then
+    if [ $do ] && [ $days ]; then  NID=$(send "$PKMESS" "$SAVE$UPGRADE" -t 0 -u normal $NID -p)
+  elif [ $days ]; then  NID=$(send "$PKMESS" "$UPGRADE" -t 0 -u normal $NID -p)
+  elif [ $do ] && [ $do ]; then  NID=$(send "$PKMESS" "$SAVE$SYU$DO" -t 0 -u normal $NID -p)
+  else  NID=$(send "$PKMESS" -t 0 -u normal $NID -p)
+  fi
+fi
+
+# error message
+if  [ "$Error" != "" ]; then
+  send $"Error: $Error" $"To analyse run this command on terminal!" -t 0 -u critical
+fi
