@@ -1,34 +1,44 @@
 # Maintainer: Timo S. Prinz <t.prinz@coliza.de>
 # Contributor: Dan Nixon <dan@dan-nixon.com>
 pkgname=qdmr
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="A GUI application for configuring and programming cheap DMR radios"
 arch=('x86_64' 'i686')
 url="https://github.com/hmatuschek/qdmr"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('libusb' 'qt5-tools' 'qt5-serialport' 'qt5-location' 'yaml-cpp')
 makedepends=('cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("qdmr-$pkgver.tar.gz::https://github.com/hmatuschek/qdmr/archive/refs/tags/v$pkgver.tar.gz"
         'udev-rules.patch')
-sha256sums=('309854ba81c7b59a748e42958eb0acbd4b5efbd956790ffdf04886c9abc6c588'
-            '3d1b388dd534a6ecb7039f3248f2c570b31ab198add4ce6dfd4da828884f0a99')
+sha256sums=('80eaadc6f817894fde6773d1b021e7a8ec051cbb774f63e6a097e21d8a56d8b5'
+            '4d8aa8ac860fb988be3753ba2a2fe65d3d9c14861eec5d2686f497bfc20e82bf')
 
 prepare() {
 	cd "$srcdir/${pkgname}-${pkgver}"
-	sed -i "s#DESTINATION \"/etc#DESTINATION \"${pkgdir}/etc#" lib/CMakeLists.txt
-	patch --forward --strip=1 --input="${srcdir}/udev-rules.patch"
+	patch --forward --strip=2 --input="${srcdir}/udev-rules.patch"
 }
 
 build() {
-	cd "$srcdir/${pkgname}-${pkgver}"
-	cmake . -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/"
-	make
+  local cmake_options=(
+    -B build
+    -S $pkgname-$pkgver
+    -W no-dev
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+	-D INSTALL_UDEV_RULES=ON
+	-D INSTALL_UDEV_PATH=/etc/udev/rules.d
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-	cd "$srcdir/${pkgname}-${pkgver}"
-	make install
+  DESTDIR="$pkgdir" cmake --install build
 }
+sha256sums=('80eaadc6f817894fde6773d1b021e7a8ec051cbb774f63e6a097e21d8a56d8b5'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('80eaadc6f817894fde6773d1b021e7a8ec051cbb774f63e6a097e21d8a56d8b5'
+            'f9bc5366df6186e475d010e79d002bf1d495220f269535c526b1faaf14fa1997')
