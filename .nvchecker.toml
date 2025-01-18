@@ -1,0 +1,5 @@
+[python-cppyy-cling]
+source = "git"
+git = "https://github.com/wlav/cppyy-backend.git"
+prefix = "cppyy-cling-"
+include_regex = "cppyy-cling-.*"
