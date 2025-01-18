@@ -1,3 +1,90 @@
+diff --git a/build/pkgs/cypari/checksums.ini b/build/pkgs/cypari/checksums.ini
+index 1ead9490d1a..3794d83334f 100644
+--- a/build/pkgs/cypari/checksums.ini
++++ b/build/pkgs/cypari/checksums.ini
+@@ -1,4 +1,4 @@
+ tarball=cypari2-VERSION.tar.gz
+-sha1=4e9f14d218bc1cea29e03a2ceec9bf3dfbfd5eb3
+-sha256=817606bf661b71d33e1d012421907a4f8fb09dd81b7d3e3ae179b3978020bbf1
++sha1=556d1a16818663ba6e6a3c9d2b14cc907a7eef4c
++sha256=aaa017a6a280581902f73cf5ce1695712b6598a032be14cfab81f97c475f83b8
+ upstream_url=https://files.pythonhosted.org/packages/source/c/cypari2/cypari2-VERSION.tar.gz
+diff --git a/build/pkgs/cypari/package-version.txt b/build/pkgs/cypari/package-version.txt
+index ccbccc3dc62..c043eea7767 100644
+--- a/build/pkgs/cypari/package-version.txt
++++ b/build/pkgs/cypari/package-version.txt
+@@ -1 +1 @@
+-2.2.0
++2.2.1
+diff --git a/build/pkgs/pari/checksums.ini b/build/pkgs/pari/checksums.ini
+index d56c437a2ee..cfb35617995 100644
+--- a/build/pkgs/pari/checksums.ini
++++ b/build/pkgs/pari/checksums.ini
+@@ -1,4 +1,4 @@
+ tarball=pari-VERSION.tar.gz
+-sha1=377593dfe72df13578ea0a517fcb0f81cc9758d4
+-sha256=0efdda7515d9d954f63324c34b34c560e60f73a81c3924a71260a2cc91d5f981
+-upstream_url=https://pari.math.u-bordeaux.fr/pub/pari/OLD/${VERSION_MAJOR}.${VERSION_MINOR}/pari-VERSION.tar.gz
++sha1=f5f5656a68947ef6a4841d40dd09a72fe96762a5
++sha256=67ba6f3071233725258541e4f174b5efbc64c65ae5115bade9edfc45f1fde5dc
++upstream_url=https://pari.math.u-bordeaux.fr/pub/pari/unix/pari-VERSION.tar.gz
+diff --git a/build/pkgs/pari/package-version.txt b/build/pkgs/pari/package-version.txt
+index 7a561821071..3f8eb714d02 100644
+--- a/build/pkgs/pari/package-version.txt
++++ b/build/pkgs/pari/package-version.txt
+@@ -1 +1 @@
+-2.15.5
++2.17.1
+diff --git a/build/pkgs/pari/spkg-configure.m4 b/build/pkgs/pari/spkg-configure.m4
+index 207487119a6..d9d90e0d421 100644
+--- a/build/pkgs/pari/spkg-configure.m4
++++ b/build/pkgs/pari/spkg-configure.m4
+@@ -1,8 +1,7 @@
+ SAGE_SPKG_CONFIGURE([pari], [
+   dnl See gp_version below on how the version is computed from MAJV.MINV.PATCHV
+-  m4_pushdef([SAGE_PARI_MINVER],["134916"])dnl this version and higher allowed
+-  dnl Do not allow Pari 2.17 or later, see #38769:
+-  m4_pushdef([SAGE_PARI_MAXVER],["135424"])dnl this version and higher not allowed
++  m4_pushdef([SAGE_PARI_MINVER],["135245"])dnl this version and higher allowed
++  m4_pushdef([SAGE_PARI_MAXVER],["999999"])dnl this version and higher not allowed
+   SAGE_SPKG_DEPCHECK([gmp readline], [
+     AC_PATH_PROG([GP], [gp])
+     if test x$GP = x; then dnl GP test
+diff --git a/pyproject.toml b/pyproject.toml
+index a1febc07917..d2b3374575e 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -3,7 +3,7 @@ build-backend = 'mesonpy'
+ # Minimum requirements for the build system to execute.
+ requires = [
+     'meson-python',
+-    'cypari2 >=2.1.1',
++    'cypari2 >=2.2.1',
+     # Exclude 1.12.0 because of https://github.com/sagemath/cysignals/issues/212
+     'cysignals >=1.11.2, != 1.12.0',
+     # Exclude 3.0.3 because of https://github.com/cython/cython/issues/5748
+@@ -19,7 +19,7 @@ description = "Sage: Open Source Mathematics Software: Standard Python Library"
+ dependencies = [
+     'six >=1.15.0',
+     'conway-polynomials >=0.8',
+-    'cypari2 >=2.1.1',
++    'cypari2 >=2.2.1',
+     # Exclude 1.12.0 because of https://github.com/sagemath/cysignals/issues/212
+     'cysignals >=1.11.2, != 1.12.0',
+     'cython >=3.0, != 3.0.3',
+diff --git a/src/pyproject.toml b/src/pyproject.toml
+index 4b70dc133d1..625b08afd7a 100644
+--- a/src/pyproject.toml
++++ b/src/pyproject.toml
+@@ -6,7 +6,7 @@ requires = [
+     'setuptools >= 68.1.1',
+     # version constraint for macOS Big Sur support (see https://github.com/sagemath/sage/issues/31050)
+     'wheel >=0.36.2',
+-    'cypari2 >=2.1.1',
++    'cypari2 >=2.2.1',
+     'cysignals >=1.10.2',
+     # Exclude 3.0.3 because of https://github.com/cython/cython/issues/5748
+     'cython >=3.0, != 3.0.3, <4.0',
 diff --git a/src/sage/arith/misc.py b/src/sage/arith/misc.py
 index 637ed9192bd..12f1760b67f 100644
 --- a/src/sage/arith/misc.py
@@ -423,7 +510,7 @@ index 1ed571cd4b9..38fee89202b 100644
      sage: pari = Pari()
  
 diff --git a/src/sage/matrix/matrix2.pyx b/src/sage/matrix/matrix2.pyx
-index 92599206166..aee825cb531 100644
+index 852d749e1e6..9f8a33adeb6 100644
 --- a/src/sage/matrix/matrix2.pyx
 +++ b/src/sage/matrix/matrix2.pyx
 @@ -16575,7 +16575,7 @@ cdef class Matrix(Matrix1):
@@ -436,7 +523,7 @@ index 92599206166..aee825cb531 100644
              True
  
 diff --git a/src/sage/modular/cusps_nf.py b/src/sage/modular/cusps_nf.py
-index 4d120c075da..f3a3ff7e65b 100644
+index 2fdfc7cdc02..ef86da65c12 100644
 --- a/src/sage/modular/cusps_nf.py
 +++ b/src/sage/modular/cusps_nf.py
 @@ -1184,9 +1184,9 @@ def NFCusps_ideal_reps_for_levelN(N, nlists=1):
@@ -462,10 +549,10 @@ index 4d120c075da..f3a3ff7e65b 100644
  
      ::
 diff --git a/src/sage/modular/dirichlet.py b/src/sage/modular/dirichlet.py
-index f3a778b6766..d6ce5e32f63 100644
+index f93984335bd..ddbfa6371ba 100644
 --- a/src/sage/modular/dirichlet.py
 +++ b/src/sage/modular/dirichlet.py
-@@ -2396,13 +2396,13 @@ class DirichletGroupFactory(UniqueFactory):
+@@ -2394,13 +2394,13 @@ class DirichletGroupFactory(UniqueFactory):
          sage: parent(val)
          Gaussian Integers generated by zeta4 in Cyclotomic Field of order 4 and degree 2
          sage: r4_29_0 = r4.residue_field(K(29).factor()[0][0]); r4_29_0(val)
@@ -860,7 +947,7 @@ index 45f08aa4711..b88b315fd01 100644
      ::
  
 diff --git a/src/sage/rings/number_field/class_group.py b/src/sage/rings/number_field/class_group.py
-index 34a48931f8e..046209ad314 100644
+index e1185a499bb..a9832527ce2 100644
 --- a/src/sage/rings/number_field/class_group.py
 +++ b/src/sage/rings/number_field/class_group.py
 @@ -524,9 +524,9 @@ class ClassGroup(AbelianGroupWithValues_class):
@@ -895,7 +982,7 @@ index bb4e453c650..ac7f14da21d 100644
              Traceback (most recent call last):
              ...
 diff --git a/src/sage/rings/number_field/number_field.py b/src/sage/rings/number_field/number_field.py
-index 5d3d38449ff..43dbb3b2ab5 100644
+index fa9c452c961..8f2ee9a50fb 100644
 --- a/src/sage/rings/number_field/number_field.py
 +++ b/src/sage/rings/number_field/number_field.py
 @@ -3621,7 +3621,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
@@ -1222,66 +1309,33 @@ index 5d3d38449ff..43dbb3b2ab5 100644
          """
          from .S_unit_solver import solve_S_unit_equation
          return solve_S_unit_equation(self, S, prec, include_exponents, include_bound, proof)
-@@ -8781,39 +8789,29 @@ class NumberField_absolute(NumberField_generic):
- 
-             sage: K.<a> = NumberField(2*x^4 + 6*x^2 + 1/2)
-             sage: K.subfields()
--            [(Number Field in a0 with defining polynomial x,
--              Ring morphism:
--                From: Number Field in a0 with defining polynomial x
--                To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
--                Defn: 0 |--> 0,
--              None),
--             (Number Field in a1 with defining polynomial x^2 - 2,
--              Ring morphism:
--                From: Number Field in a1 with defining polynomial x^2 - 2
--                To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
--                Defn: a1 |--> a^2 + 3/2,
--              None),
--             (Number Field in a2 with defining polynomial x^2 + 4,
--              Ring morphism:
--                From: Number Field in a2 with defining polynomial x^2 + 4
--                To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
--                Defn: a2 |--> 2*a^3 + 7*a,
--              None),
--             (Number Field in a3 with defining polynomial x^2 + 2,
--              Ring morphism:
--                From: Number Field in a3 with defining polynomial x^2 + 2
--                To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
+@@ -8785,7 +8793,7 @@ class NumberField_absolute(NumberField_generic):
+               Ring morphism:
+                 From: Number Field in a3 with defining polynomial x^2 + 2
+                 To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
 -                Defn: a3 |--> 2*a^3 + 5*a,
--              None),
--             (Number Field in a4 with defining polynomial x^4 + 1,
--              Ring morphism:
--                From: Number Field in a4 with defining polynomial x^4 + 1
--                To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
++                Defn: a3 |--> -2*a^3 - 5*a,
+               None),
+              (Number Field in a2 with defining polynomial x^2 + 4,
+               Ring morphism:
+@@ -8803,17 +8811,17 @@ class NumberField_absolute(NumberField_generic):
+               Ring morphism:
+                 From: Number Field in a1 with defining polynomial x^2 - 2
+                 To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
+-                Defn: a1 |--> a^2 + 3/2,
++                Defn: a1 |--> -a^2 - 3/2,
+               None),
+              (Number Field in a4 with defining polynomial x^4 + 1,
+               Ring morphism:
+                 From: Number Field in a4 with defining polynomial x^4 + 1
+                 To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
 -                Defn: a4 |--> a^3 + 1/2*a^2 + 5/2*a + 3/4,
--              Ring morphism:
--                From: Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
--                To:   Number Field in a4 with defining polynomial x^4 + 1
++                Defn: a4 |--> -a^3 - 1/2*a^2 - 5/2*a - 3/4,
+               Ring morphism:
+                 From: Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
+                 To:   Number Field in a4 with defining polynomial x^4 + 1
 -                Defn: a |--> -1/2*a4^3 + a4^2 - 1/2*a4)]
-+            [(Number Field in a0 with defining polynomial x, Ring morphism:
-+              From: Number Field in a0 with defining polynomial x
-+              To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
-+              Defn: 0 |--> 0, None),
-+            (Number Field in a1 with defining polynomial x^2 - 2, Ring morphism:
-+              From: Number Field in a1 with defining polynomial x^2 - 2
-+              To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
-+              Defn: a1 |--> -a^2 - 3/2, None),
-+            (Number Field in a2 with defining polynomial x^2 + 4, Ring morphism:
-+              From: Number Field in a2 with defining polynomial x^2 + 4
-+              To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
-+              Defn: a2 |--> 2*a^3 + 7*a, None),
-+            (Number Field in a3 with defining polynomial x^2 + 2, Ring morphism:
-+              From: Number Field in a3 with defining polynomial x^2 + 2
-+              To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
-+              Defn: a3 |--> -2*a^3 - 5*a, None),
-+            (Number Field in a4 with defining polynomial x^4 + 1, Ring morphism:
-+              From: Number Field in a4 with defining polynomial x^4 + 1
-+              To:   Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
-+              Defn: a4 |--> -a^3 - 1/2*a^2 - 5/2*a - 3/4, Ring morphism:
-+              From: Number Field in a with defining polynomial 2*x^4 + 6*x^2 + 1/2
-+              To:   Number Field in a4 with defining polynomial x^4 + 1
-+              Defn: a |--> 1/2*a4^3 + a4^2 + 1/2*a4)]
++                Defn: a |--> 1/2*a4^3 + a4^2 + 1/2*a4)]
          """
          return self._subfields_helper(degree=degree, name=name,
                                        both_maps=True, optimize=False)
@@ -1334,7 +1388,7 @@ index 27432813b2b..a22b68e6093 100644
          An absolute example::
  
 diff --git a/src/sage/rings/number_field/number_field_ideal.py b/src/sage/rings/number_field/number_field_ideal.py
-index 71374297177..49810bab831 100644
+index 30fc8326917..60ac76e1ddc 100644
 --- a/src/sage/rings/number_field/number_field_ideal.py
 +++ b/src/sage/rings/number_field/number_field_ideal.py
 @@ -75,7 +75,7 @@ class NumberFieldIdeal(Ideal_generic):
@@ -1519,7 +1573,7 @@ index 7f6cfd9b1b7..129d0288024 100644
              sage: PQ.<X> = QQ[]
              sage: F.<a, b> = NumberFieldTower([X^2 - 2, X^2 - 3])
 diff --git a/src/sage/rings/number_field/number_field_rel.py b/src/sage/rings/number_field/number_field_rel.py
-index 861375b0fb7..f3f12983992 100644
+index ea81834f56c..71e42675ff3 100644
 --- a/src/sage/rings/number_field/number_field_rel.py
 +++ b/src/sage/rings/number_field/number_field_rel.py
 @@ -233,21 +233,21 @@ class NumberField_relative(NumberField_generic):
@@ -1750,7 +1804,7 @@ index 115647adadf..edd6a957363 100644
          fields, isos, iso_classes = self._S_decomposition(tuple(S))
          n = len(fields)
 diff --git a/src/sage/rings/qqbar.py b/src/sage/rings/qqbar.py
-index 3806663eaf0..b7dbede3f97 100644
+index 050ab750117..4b6980c9143 100644
 --- a/src/sage/rings/qqbar.py
 +++ b/src/sage/rings/qqbar.py
 @@ -2777,11 +2777,12 @@ def number_field_elements_from_algebraics(numbers, minimal=False,
@@ -1874,7 +1928,7 @@ index 7434659b5a2..df076ed62b6 100644
          sage: check_prime(K, L.ideal(5))
          Traceback (most recent call last):
 diff --git a/src/sage/schemes/elliptic_curves/ell_number_field.py b/src/sage/schemes/elliptic_curves/ell_number_field.py
-index 8af221880b6..62bbd71e809 100644
+index 518fda03481..e36bf28499f 100644
 --- a/src/sage/schemes/elliptic_curves/ell_number_field.py
 +++ b/src/sage/schemes/elliptic_curves/ell_number_field.py
 @@ -229,9 +229,9 @@ class EllipticCurve_number_field(EllipticCurve_field):
@@ -1898,7 +1952,7 @@ index 8af221880b6..62bbd71e809 100644
                (0 : 0 : 1)])
          """
          verbose = int(verbose)
-@@ -872,7 +872,7 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -873,7 +873,7 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: K.<i> = NumberField(x^2 + 1)
              sage: E = EllipticCurve([1 + i, 0, 1, 0, 0])
              sage: E.local_data()
@@ -1907,7 +1961,7 @@ index 8af221880b6..62bbd71e809 100644
                 Reduction type: bad non-split multiplicative
                 Local minimal model: Elliptic Curve defined by y^2 + (i+1)*x*y + y = x^3
                                      over Number Field in i with defining polynomial x^2 + 1
-@@ -880,7 +880,7 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -881,7 +881,7 @@ class EllipticCurve_number_field(EllipticCurve_field):
                 Conductor exponent: 1
                 Kodaira Symbol: I1
                 Tamagawa Number: 1,
@@ -1916,7 +1970,7 @@ index 8af221880b6..62bbd71e809 100644
                 Reduction type: bad split multiplicative
                 Local minimal model: Elliptic Curve defined by y^2 + (i+1)*x*y + y = x^3
                                      over Number Field in i with defining polynomial x^2 + 1
-@@ -898,7 +898,7 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -899,7 +899,7 @@ class EllipticCurve_number_field(EllipticCurve_field):
                Kodaira Symbol: I0
                Tamagawa Number: 1
              sage: E.local_data(2*i + 1)
@@ -1925,7 +1979,7 @@ index 8af221880b6..62bbd71e809 100644
                Reduction type: bad non-split multiplicative
                Local minimal model: Elliptic Curve defined by y^2 + (i+1)*x*y + y = x^3
                                     over Number Field in i with defining polynomial x^2 + 1
-@@ -1456,8 +1456,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -1457,8 +1457,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: K.<a> = NumberField(x^2 - 5)
              sage: E = EllipticCurve([20, 225, 750, 625*a + 6875, 31250*a + 46875])
              sage: bad_primes = E.discriminant().support(); bad_primes
@@ -1938,7 +1992,7 @@ index 8af221880b6..62bbd71e809 100644
              sage: [E.kodaira_symbol(P) for P in bad_primes]
              [I0, I1, I1, II]
              sage: K.<a> = QuadraticField(-11)
-@@ -1483,10 +1485,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -1484,10 +1486,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
  
              sage: K.<i> = NumberField(x^2 + 1)
              sage: EllipticCurve([i, i - 1, i + 1, 24*i + 15, 14*i + 35]).conductor()
@@ -1951,7 +2005,7 @@ index 8af221880b6..62bbd71e809 100644
  
          A not so well known curve with everywhere good reduction::
  
-@@ -2584,8 +2586,8 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -2585,8 +2587,8 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: [E1.ainvs() for E1 in C]
              [(0, 0, 0, 0, -27),
              (0, 0, 0, 0, 1),
@@ -1962,7 +2016,7 @@ index 8af221880b6..62bbd71e809 100644
  
          The matrix of degrees of cyclic isogenies between curves::
  
-@@ -2616,13 +2618,13 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -2617,13 +2619,13 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: [((i,j), isogs[i][j].x_rational_map())
              ....:  for i in range(4) for j in range(4) if isogs[i][j] != 0]
              [((0, 1), (1/9*x^3 - 12)/x^2),
@@ -1982,7 +2036,7 @@ index 8af221880b6..62bbd71e809 100644
  
          The isogeny class may be visualized by obtaining its graph and
          plotting it::
-@@ -3103,10 +3105,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -3104,10 +3106,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: K.<i> = QuadraticField(-1)
              sage: E1 = EllipticCurve([i + 1, 0, 1, -240*i - 400, -2869*i - 2627])
              sage: E1.conductor()
@@ -1995,7 +2049,7 @@ index 8af221880b6..62bbd71e809 100644
              sage: E1.is_isogenous(E2) # long time
              True
              sage: E1.is_isogenous(E2, proof=False) # faster  (~170ms)
-@@ -3433,8 +3435,8 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -3434,8 +3436,8 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: Q = E(0,-1)
              sage: E.lll_reduce([P,Q])
              (
@@ -2006,7 +2060,7 @@ index 8af221880b6..62bbd71e809 100644
              )
  
          ::
-@@ -3445,9 +3447,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
+@@ -3446,9 +3448,10 @@ class EllipticCurve_number_field(EllipticCurve_field):
              ....:           E.point([-17/18*a - 1/9, -109/108*a - 277/108])]
              sage: E.lll_reduce(points)
              (
@@ -2021,10 +2075,10 @@ index 8af221880b6..62bbd71e809 100644
          """
          r = len(points)
 diff --git a/src/sage/schemes/elliptic_curves/ell_point.py b/src/sage/schemes/elliptic_curves/ell_point.py
-index d05196240a1..5b4cdab67e9 100644
+index 1d980d60666..7c18a464559 100644
 --- a/src/sage/schemes/elliptic_curves/ell_point.py
 +++ b/src/sage/schemes/elliptic_curves/ell_point.py
-@@ -3054,9 +3054,9 @@ class EllipticCurvePoint_number_field(EllipticCurvePoint_field):
+@@ -3052,9 +3052,9 @@ class EllipticCurvePoint_number_field(EllipticCurvePoint_field):
              sage: E = EllipticCurve(K, [0,1,0,-160,308])
              sage: P = E(26, -120)
              sage: E.discriminant().support()
