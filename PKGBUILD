@@ -10,7 +10,7 @@ depends=('git' 'base-devel')
 makedepends=('git')
 install=${pkgname}.install
 
-source=("git+https://github.com/Frogging-Family/nvidia-all.git")
+source=("git+https://github.com/Frogging-Family/nvidia-all.git#branch=master")
 
 sha256sums=('SKIP')
 
@@ -21,13 +21,13 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/nvidia-all"
-    # No need to copy files manually, just ensure the repo is up to date
+    # Ensure the repository is up to date
     git pull --rebase || true
 }
 
 build() {
     cd "${srcdir}/nvidia-all"
-    # Simply run makepkg in the directory where the PKGBUILD is
+    # Run makepkg within the cloned repository
     makepkg -f
 }
 

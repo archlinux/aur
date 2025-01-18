@@ -9,7 +9,7 @@ pkgbase = nvidia-all-git
 	makedepends = git
 	depends = git
 	depends = base-devel
-	source = git+https://github.com/Frogging-Family/nvidia-all.git
+	source = git+https://github.com/Frogging-Family/nvidia-all.git#branch=master
 	sha256sums = SKIP
 
 pkgname = nvidia-all-git
