@@ -1,17 +1,18 @@
 pkgbase = corerenamer
 	pkgdesc = A batch file renamer from the C Suite
 	pkgver = 4.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cubocore/coreapps/corerenamer
 	arch = x86_64
 	arch = aarch64
 	groups = coreapps
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = ninja
 	depends = qt5-base
+	depends = hicolor-icon-theme
 	depends = libcprime>=2.7.1
 	source = https://gitlab.com/cubocore/coreapps/corerenamer/-/archive/v4.5.0/corerenamer-v4.5.0.tar.gz
-	md5sums = 735c8c8b43974288de2969707e59d2aa
+	sha256sums = 5bb36e4714a3aef4aa8385bddcaa728d8eab264177927e607050f969bec7652f
 
 pkgname = corerenamer
