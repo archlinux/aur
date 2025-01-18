@@ -3,7 +3,7 @@
 _name=CPyCppyy
 pkgname=python-cpycppyy
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python-C++ bindings interface based on Cling/LLVM (CPython intermediate)"
 arch=(x86_64)
 url="https://github.com/wlav/CPyCppyy"
@@ -22,6 +22,8 @@ makedepends=(
   python-setuptools
   python-wheel
 )
+provides=(${_name,,})
+replaces=(${_name,,})
 source=(
   $url/archive/refs/tags/$_name-$pkgver.tar.gz
   fix-versions.patch

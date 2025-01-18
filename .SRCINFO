@@ -1,7 +1,7 @@
 pkgbase = python-cpycppyy
 	pkgdesc = Python-C++ bindings interface based on Cling/LLVM (CPython intermediate)
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wlav/CPyCppyy
 	arch = x86_64
 	license = BSD-3-Clause-LBNL
@@ -14,6 +14,8 @@ pkgbase = python-cpycppyy
 	depends = python
 	depends = python-cppyy-cling=6.32.8
 	depends = python-cppyy-backend=1.15.3
+	provides = cpycppyy
+	replaces = cpycppyy
 	source = https://github.com/wlav/CPyCppyy/archive/refs/tags/CPyCppyy-1.13.0.tar.gz
 	source = fix-versions.patch
 	b2sums = ff52a5803f5c5ca0b0f9a8c88f3df7a14f537f3c7dae7cf5230a44196d703dcef587b2a4eeb73a3f9671fdfc7ba3bd9a6b88c129a34d733f8706c739e428fc27
