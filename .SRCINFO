@@ -1,6 +1,6 @@
 pkgbase = python-cambd
 	pkgdesc = Cambridge dictionary cli app
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/rocktimsaikia/cambd
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-cambd
 	depends = python-rich
 	depends = python-simple-term-menu
 	options = !emptydirs
-	source = https://github.com/rocktimsaikia/cambd/archive/refs/tags/1.0.0.zip
-	sha256sums = a6205514b237cdb773bf2892d3a71a7a57236011761f7a2c491b878060386b5c
+	source = https://github.com/rocktimsaikia/cambd/archive/refs/tags/v1.0.2.zip
+	sha256sums = 8bf444780e68f6c93358b25f22a3d9c1acd62c870a950077e1b6349729d72902
 
 pkgname = python-cambd
