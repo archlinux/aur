@@ -1,0 +1,4 @@
+[python-cppyy]
+source = "git"
+git = "https://github.com/wlav/cppyy.git"
+prefix = "cppyy-"
