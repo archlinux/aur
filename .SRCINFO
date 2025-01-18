@@ -1,0 +1,15 @@
+pkgbase = nvidia-all-git
+	pkgdesc = Automated builder package for nvidia-all drivers
+	pkgver = 1.0.0.r349.6c4ad5b
+	pkgrel = 1
+	url = https://github.com/Frogging-Family/nvidia-all
+	install = nvidia-all-builder.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = git
+	depends = base-devel
+	source = git+https://github.com/Frogging-Family/nvidia-all.git
+	sha256sums = SKIP
+
+pkgname = nvidia-all-builder

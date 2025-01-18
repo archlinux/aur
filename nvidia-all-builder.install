@@ -1,0 +1,10 @@
+post_install() {
+    echo "Installing NVIDIA drivers..."
+    cd "/usr/share/nvidia-all-builder"
+    # Install all built packages
+    /usr/bin/pacman -U --noconfirm *.pkg.tar.zst
+}
+
+post_upgrade() {
+    post_install
+}
