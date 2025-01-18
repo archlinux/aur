@@ -12,7 +12,7 @@ pkgname='py-cidr'
 pkgdesc='python module providing network / CIDR tools'
 _gitname='py-cidr'
 
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 url="https://github.com/gene-git/py-cidr"
 
@@ -21,7 +21,7 @@ license=(MIT)
 
 # To build docs uncommont sphinx/texlive
 depends=('python>=3.13' 'lockmgr')
-makedepends=('git' 'python-build' 'python-wheel' 'python-hatch' 'rsync'
+makedepends=('git' 'python-build' 'python-wheel' 'python-installer' 'python-hatch' 'rsync'
              #'python-sphinx' 'python-myst-parser' 'texlive-latexextra' 'python-sphinx-autoapi'
             )
 
