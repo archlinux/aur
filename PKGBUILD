@@ -1,6 +1,6 @@
 # Maintainer: MuntasirSZN <muntasir.joypurhat@gmail.com>
 pkgname=getquotes
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A simple command-line tool to fetch random quotes (pre-built binary)."
 arch=('x86_64')
