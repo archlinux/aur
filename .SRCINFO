@@ -1,11 +1,11 @@
 pkgbase = desq-utils-sni
 	pkgdesc = System tray for DesQ
 	pkgver = 0.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/DesQ/DesQUtils/SNI
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = meson
 	makedepends = ninja
 	depends = qt5-base
@@ -18,6 +18,6 @@ pkgbase = desq-utils-sni
 	depends = dfl-xdg
 	depends = dfl-wayqt
 	source = https://gitlab.com/DesQ/DesQUtils/SNI/-/archive/v0.0.8/SNI-v0.0.8.tar.gz
-	md5sums = 39d534a4cd964388dfef831f6a1f6776
+	sha256sums = 3b3d9b5abe5308724817f1600a05843e69a837858e67d4e26d2f4da77c99c953
 
 pkgname = desq-utils-sni
