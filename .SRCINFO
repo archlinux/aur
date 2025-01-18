@@ -1,6 +1,6 @@
 pkgbase = pamac-gtk3
 	pkgdesc = A Package Manager based on libalpm with AUR and Appstream support (GTK3)
-	pkgver = 10.7.0
+	pkgver = 10.6.0+2+g036cf36d
 	pkgrel = 1
 	url = https://github.com/manjaro/pamac
 	arch = x86_64

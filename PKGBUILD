@@ -5,7 +5,7 @@
 # https://gitlab.manjaro.org/packages/extra/pamac
 
 pkgname=pamac-gtk3
-pkgver=10.7.0
+pkgver=10.6.0+2+g036cf36d
 pkgrel=1
 pkgdesc="A Package Manager based on libalpm with AUR and Appstream support (GTK3)"
 arch=('x86_64' 'aarch64')
