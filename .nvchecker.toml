@@ -1,0 +1,5 @@
+[gomi-bin]
+source = "github"
+github = "b4b4r07/gomi"
+use_latest_release = "true"
+prefix = "v"
