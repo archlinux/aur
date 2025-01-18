@@ -1,42 +1,42 @@
 # Maintainer: cmuench / torben
 
-# Default language is english
-# Languages to choose from: en, de
-# Export the environment variable ECODMS_LANG to select a non-default value.
-# for example: export ECODMS_LANG=de
+# Default language is english Languages to choose from: en, de The script tries
+# to infer the langauge from the LANG environment variable. If it starts with
+# de, it will use german, otherwise english. To override this, export the
+# environment variable ECODMS_LANG to select a non-default value. for example:
+# export ECODMS_LANG=de
 
 pkgname=ecodms-client
-pkgver=23.02
+pkgver=24.02
 pkgrel=1
 pkgdesc="Document Management Software"
 arch=('x86_64')
 url="http://www.ecodms.de/index.php/de/"
-license=('custom')
-depends=('apr' 'bash' 'libappindicator-gtk2' 'libgcrypt' 'libpng' 'libjpeg-turbo' 'libtiff5' 'openjpeg2' 'pcre' 'qt5-webengine' 'qt5-svg' 'qt5-x11extras' )
-options=('!strip')
+license=('LicenseRef-ecodms')
+depends=('apr' 'bash' 'fontconfig' 'freetype2' 'glib2' 'gtk3' 'libayatana-appindicator' 'libidn' 'libjpeg-turbo' 'libpng' 'libtiff' 'libwebp' 'libx11' 'openjpeg2' 'openssl' 'qt5-base' 'qt5-svg' 'qt5-webchannel' 'qt5-webengine'  'qt5-x11extras' 'sane' 'zlib')
+optdepends=('gnome-shell-extension-appindicator')
+options=(!strip !debug)
 install=${pkgname}.install
 
-source_x86_64=("ecodmsclient-23.02-1_amd64.deb::https://www.ecodms.de/ecodms_230264/jammy/ecodmsclient-23.02-1_amd64.deb")
-sha256sums_x86_64=("a67d62bff4050605a6fb54b1e7b4991652af73142f92bf5031531645d47d2988")
+source_x86_64=("ecodmsclient-24.02-1_amd64.deb::http://www.ecodms.de/ecodms_240264/noble/ecodmsclient-24.02-1_amd64.deb"
+  'LICENSE')
+sha256sums_x86_64=(
+  '82d90e4adaf57f6ef3f514a83aae632bf39a95e61e38efaae6d3176b914735ce'
+  '0f8c7ffe3e43c20b8dbf01370c55013b0c1ba18fa8e9a9caa657f1dc98135cb3')
 
 package() {
-  cd "${srcdir}"
-  tar -xf data.tar.gz
-
-  ln -sf /usr/lib/libpcre.so opt/ecodms/ecodmsclient/libpcre.so.3
-  ln -sf /usr/lib/libappindicator.so opt/ecodms/ecodmsclient/libayatana-appindicator.so.1
-
-  sed -i '1 i #!/bin/sh' opt/ecodms/ecodmsclient/ecodmsclient.sh
-  sed -i '1 i #!/bin/sh' opt/ecodms/ecodmsclient/ecodmsconmgr.sh
-
-  if [[ -z "${ECODMS_LANG}" ]]; then
-    _LANG='en'
-  else
+  if [[ -n "${ECODMS_LANG}" ]]; then
     _LANG="${ECODMS_LANG}"
+  elif [[ "${LANG,,}" == de* ]]; then
+    _LANG='de'
+  else
+    _LANG='en'
   fi
 
-  # Set client language
-  ln -sf language_${_LANG}.qm opt/ecodms/ecodmsclient/language.qm
+  tar -x --no-same-owner -f "${srcdir}/data.tar.gz" -C "${pkgdir}"
 
-  cp -dr --no-preserve=ownership etc opt usr "${pkgdir}"/
+  # Set client language
+  ln -sf language_${_LANG}.qm "${pkgdir}/opt/ecodms/ecodmsclient/language.qm"
+
+  install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
