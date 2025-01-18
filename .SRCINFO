@@ -1,6 +1,6 @@
 pkgbase = ureminder
 	pkgdesc = Remind user upgrade packages and keeps package cache clean
-	pkgver = 0.8.1
+	pkgver = xyz
 	pkgrel = 1
 	url = https://codeberg.org/tuxnix/ureminder
 	install = ureminder.install
