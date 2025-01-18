@@ -2,14 +2,15 @@
 
 _pkgbasename=openjpeg2
 pkgname="lib32-${_pkgbasename}"
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.5.3
+pkgrel=1
 pkgdesc="An open source JPEG 2000 codec, version ${pkgver}"
 arch=('x86_64')
-license=('BSD')
+license=('BSD-2-Clause' 'MIT')
 url="http://www.openjpeg.org"
 makedepends=(
   'cmake'
+  'graphviz'
 )
 depends=(
   "${_pkgbasename}>=${pkgver}"
@@ -21,10 +22,13 @@ depends=(
   'lib32-zlib'
 )
 source=("$_pkgbasename-$pkgver.tar.gz::https://github.com/uclouvain/openjpeg/archive/v${pkgver}.tar.gz")
-sha256sums=('0333806d6adecc6f7a91243b2b839ff4d2053823634d4f6ed7a59bc87409122a')
+sha256sums=('368fe0468228e767433c9ebdea82ad9d801a3ad1e4234421f352c8b06e7aa707')
 
 prepare() {
   mkdir -p build
+
+  # Remove all third party libraries just to be sure
+  find openjpeg-"${pkgver}"/thirdparty/ -mindepth 1 -maxdepth 1 -type d -exec rm -rf {} \;
 
   # Patching if needed
 }
@@ -33,9 +37,7 @@ build() {
   export CXXFLAGS="-m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  cd build
-
-  cmake "../openjpeg-$pkgver" \
+  cmake -B build -S openjpeg-"${pkgver}" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DOPENJPEG_INSTALL_LIB_DIR=lib32 \
@@ -43,11 +45,11 @@ build() {
     -DBUILD_STATIC_LIBS=OFF \
     -DBUILD_DOC=off
 
-  make
+  VERBOSE=1 cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 
   # removing unneeded files and folders
   rm -rf "${pkgdir}/usr/"{bin,include}
