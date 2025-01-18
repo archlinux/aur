@@ -3,12 +3,13 @@
 _pkgname=Notifier
 pkgname=desq-utils-notifier
 pkgver=0.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Notification daemon for DesQ"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/DesQ/DesQUtils/${_pkgname}"
-license=('GPL3')
-depends=('qt5-base'
+license=('GPL-3.0-or-later')
+depends=(
+        'qt5-base'
         'libdesq'
         'qt5-svg'
         'dfl-applications'
@@ -16,11 +17,14 @@ depends=('qt5-base'
         'dfl-utils'
         'dfl-notification'
         'dfl-xdg'
-        'dfl-wayqt')
-makedepends=('meson'
-            'ninja')
+        'dfl-wayqt'
+)
+makedepends=(
+            'meson'
+            'ninja'
+)
 source=("https://gitlab.com/DesQ/DesQUtils/${_pkgname}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('3888347860d14eda40ea87ce69e40cbf')
+sha256sums=('5cd38e1f1b8193a0c72d3fbc9ea6c57f00abad2567e079fe100b2976855500db')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
