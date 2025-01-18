@@ -3,7 +3,7 @@
 
 pkgname=opera-ffmpeg-codecs-bin
 pkgver=116575
-pkgrel=1
+pkgrel=2
 pkgdesc="additional support for proprietary codecs for opera, extracted directly from the chromium-ffmpeg snap"
 arch=('x86_64')
 url="https://snapcraft.io/chromium-ffmpeg/"
@@ -12,7 +12,7 @@ license=('LGPL2.1')
 depends=('opera')
 provides=('opera-ffmpeg-codecs')
 conflicts=('opera-ffmpeg-codecs')
-makedepends=('p7zip')
+makedepends=('7zip')
 source=(
   "https://api.snapcraft.io/api/v1/snaps/download/XXzVIXswXKHqlUATPqGCj2w2l7BxosS8_63.snap"
 )
