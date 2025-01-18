@@ -3,15 +3,26 @@
 _pkgname=Integration
 pkgname=desq-integration
 pkgver=0.0.8
-pkgrel=1
-pkgdesc="Volume control for DesQ"
+pkgrel=2
+pkgdesc="Qt Platform and Style Integration Plugins for DesQ"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/DesQ/${_pkgname}"
-license=('GPL3')
-depends=('qt5-base' 'libdesqui' 'dfl-settings' 'dfl-utils' 'dfl-applications' 'dfl-xdg' 'dfl-colorschemeparser')
-makedepends=('meson' 'ninja')
+license=('GPL-3.0-or-later')
+depends=(
+        'qt5-base'
+        'libdesqui'
+        'dfl-settings'
+        'dfl-utils'
+        'dfl-applications'
+        'dfl-xdg'
+        'dfl-colorschemeparser'
+)
+makedepends=(
+            'meson'
+            'ninja'
+)
 source=("https://gitlab.com/DesQ/${_pkgname}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-md5sums=('a75ec89d358c5eb2c1a03830cecd2fb7')
+sha256sums=('c3185555c3d67ba211405a9f7f20cf6ef83b3b7799947acf919a36aadfaa6bfd')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
