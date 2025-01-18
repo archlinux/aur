@@ -6,7 +6,7 @@ _name="ureminder"
 
 pkgrel=1
 pkgver=a08bc73
-pkgname="$_name-git"
+pkgname="$_name.git"
 pkgdesc='Remind user upgrade packages and keeps package cache clean'
 
 url='https://codeberg.org/tuxnix/ureminder'
