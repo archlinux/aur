@@ -64,15 +64,15 @@ prepare() {
 
     local cross_ldflags="$LDFLAGS"
 
-    local cross_cflags="$CFLAGS -mcmodel=small -mprefer-avx128"
-    local cross_cxxflags="$CXXFLAGS -mcmodel=small -mprefer-avx128"
+    local cross_cflags="$CFLAGS -mcmodel=small"
+    local cross_cxxflags="$CXXFLAGS -mcmodel=small"
     sed -i build-win64.txt \
         -e "s|@CARGS@|\'${cross_cflags// /\',\'}\'|g" \
         -e "s|@CXXARGS@|\'${cross_cxxflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${cross_ldflags// /\',\'}\'|g"
 
-    local cross_cflags="$CFLAGS -mstackrealign -mprefer-avx128 -mpreferred-stack-boundary=2"
-    local cross_cxxflags="$CXXFLAGS -mstackrealign -mprefer-avx128 -mpreferred-stack-boundary=2"
+    local cross_cflags="$CFLAGS -mstackrealign -mpreferred-stack-boundary=2"
+    local cross_cxxflags="$CXXFLAGS -mstackrealign -mpreferred-stack-boundary=2"
     sed -i build-win32.txt \
         -e "s|@CARGS@|\'${cross_cflags// /\',\'}\'|g" \
         -e "s|@CXXARGS@|\'${cross_cxxflags// /\',\'}\'|g" \
