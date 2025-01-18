@@ -1,11 +1,12 @@
-# Maintainer: Rafał Kozdrój <kozeid2@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Rafał Kozdrój <kozeid2@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Jason Chu <jchu@xentac.net>
 
 pkgbase=openal-git
 pkgname=(openal-git openal-examples-git)
-pkgver=1.23.1.r242.g340a22be
+pkgver=1.24.2.r0.gb621b5fc
 pkgrel=1
 pkgdesc="Cross-platform 3D audio library, software implementation"
 arch=(i686 x86_64)
@@ -43,7 +44,7 @@ package_openal-git() {
 ### Split openal-examples
   mkdir -p examples/usr/bin
   for f in \
-    alffplay alhrtf allatency alloopback almultireverb alplay alrecord \
+    alhrtf allatency almultireverb alplay alrecord \
     alreverb alstream altonegen
   do
     mv -v "$pkgdir/usr/bin/$f" examples/usr/bin/$f

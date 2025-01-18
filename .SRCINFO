@@ -1,6 +1,6 @@
 pkgbase = openal-git
 	pkgdesc = Cross-platform 3D audio library, software implementation
-	pkgver = 1.23.1.r242.g340a22be
+	pkgver = 1.24.2.r0.gb621b5fc
 	pkgrel = 1
 	url = https://github.com/kcat/openal-soft
 	arch = i686
@@ -26,15 +26,15 @@ pkgbase = openal-git
 	md5sums = SKIP
 
 pkgname = openal-git
-	provides = openal=1.23.1.r242.g340a22be
+	provides = openal=1.24.2.r0.gb621b5fc
 	provides = libopenal.so
 	conflicts = openal
 
 pkgname = openal-examples-git
 	pkgdesc = Cross-platform 3D audio library, software implementation (example programs)
-	depends = openal-git=1.23.1.r242.g340a22be-1
+	depends = openal-git=1.24.2.r0.gb621b5fc-1
 	depends = sdl2
 	depends = libsndfile
 	depends = ffmpeg
-	provides = openal-examples=1.23.1.r242.g340a22be
+	provides = openal-examples=1.24.2.r0.gb621b5fc
 	conflicts = openal-examples
