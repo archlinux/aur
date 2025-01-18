@@ -1,0 +1,5 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!nl.dvdgiessen.dbusapplauncher.service

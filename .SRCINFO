@@ -1,0 +1,17 @@
+pkgbase = dbus-app-launcher-bin
+	pkgdesc = Simple app launcher for D-Bus
+	pkgver = 0.1.1.0
+	pkgrel = 1
+	url = https://github.com/DvdGiessen/dbus-app-launcher
+	arch = x86_64
+	license = MIT
+	provides = dbus-app-launcher
+	conflicts = dbus-app-launcher
+	source = dbus-app-launcher::https://github.com/DvdGiessen/dbus-app-launcher/releases/download/v0.1.1.0/dbus-app-launcher-linux-x86_64-static
+	source = https://raw.githubusercontent.com/DvdGiessen/dbus-app-launcher/refs/tags/v0.1.1.0/LICENSE
+	source = nl.dvdgiessen.dbusapplauncher.service
+	sha256sums = c194b3fdd1e25a12f7ebf1c7e27349c04ec7fa506dd799588c2907df7f2df658
+	sha256sums = a3d51f53d30e110dc655f88d5afe7757e13fa81cdce12cff4ba35c5003cd8dc1
+	sha256sums = bdf13de2547f626ff797070f493999577b9f499d72e904b5d7801e92d11b0387
+
+pkgname = dbus-app-launcher-bin
