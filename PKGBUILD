@@ -9,11 +9,11 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=rider-eap
-pkgver=243.21565.112
+pkgver=251.14649.64
 pkgrel=1
-_eapver=2024.3
-# _eaprelease=EAP5
-_eaprelease=RC1
+_eapver=2025.1
+_eaprelease=EAP1
+# _eaprelease=RC1
 epoch=1
 pkgdesc="A cross-platform .NET IDE by JetBrains."
 arch=('any')
@@ -21,9 +21,9 @@ options=('!strip')
 url="https://www.jetbrains.com/rider/eap/"
 license=("custom")
 optdepends=('mono: .NET runtime' 'msbuild: build .NET Core projects')
-source=("https://download-cdn.jetbrains.com/rider/JetBrains.Rider-${_eapver}-${_eaprelease}-${pkgver}.tar.gz"
+source=("https://download-cdn.jetbrains.com/rider/JetBrains.Rider-${_eapver}-${_eaprelease}-${pkgver}.Checked.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('147aa9f4d057053d604f8c88f17a957353fc7c6499c635ca577ea71b4c365a54'
+sha256sums=('2998709d27f032766ae0d5a99db77a95b0c5aad9f5fa35b78d9a615d2e4b0b92'
             'cbb7c9b847c92c95403be237ab01183eb0516b4a9b46c8ba27c87243fed8cbb8')
 
 package() {
