@@ -1,19 +1,20 @@
 pkgbase = coreinfo
 	pkgdesc = A file information tool from the C Suite
 	pkgver = 4.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cubocore/coreapps/coreinfo
 	arch = x86_64
 	arch = aarch64
 	groups = coreapps
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = ninja
 	depends = qt5-base
+	depends = hicolor-icon-theme
 	depends = libcprime>=2.7.1
 	depends = libmediainfo
 	depends = zlib
 	source = https://gitlab.com/cubocore/coreapps/coreinfo/-/archive/v4.5.0/coreinfo-v4.5.0.tar.gz
-	md5sums = a588e890405a19065cd4cf7cf8656214
+	sha256sums = 9996973f63df70d50f327a64fe4686f2272bd59d117a15104269ba564f735deb
 
 pkgname = coreinfo
