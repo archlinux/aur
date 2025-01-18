@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc='Vim plugin to visualize your Vim undo tree'
 arch=('any')
 url='http://www.vim.org/scripts/script.php?script_id=3304'
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('vim>=7.3')
 groups=('vim-plugins')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sjl/${pkgname#vim-}.vim/archive/v$pkgver.tar.gz")

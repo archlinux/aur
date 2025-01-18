@@ -5,10 +5,9 @@ pkgbase = vim-gundo
 	url = http://www.vim.org/scripts/script.php?script_id=3304
 	arch = any
 	groups = vim-plugins
-	license = GPL2
+	license = GPL-2.0-or-later
 	depends = vim>=7.3
 	source = vim-gundo-2.6.2.tar.gz::https://github.com/sjl/gundo.vim/archive/v2.6.2.tar.gz
 	sha256sums = eeb279f41ea3651bccced8a3f609d40e8cf914eb8ebdf403acac21af68e1b4a0
 
 pkgname = vim-gundo
-
