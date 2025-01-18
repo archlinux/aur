@@ -9,7 +9,7 @@ provides=("libindi_3rdparty")
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(LGPL2.1)
 arch=(i686 x86_64 aarch64)
-depends=(libvorbis libusb openal libnova libjpeg libindi libftdi-compat cfitsio libftdi rtl-sdr)
+depends=(libvorbis libusb openal libnova libjpeg libindi libftdi-compat cfitsio libftdi rtl-sdr ffmpeg limesuite)
 makedepends=(cmake boost)
 conflicts=()
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz" "celestronaux-auxproto.diff")
@@ -25,6 +25,8 @@ prepare() {
 
 build() {
   disabled_libs=(
+    -DWITH_AHP_XC=Off
+    -DWITH_APOGEE=Off
     -DWITH_ASICAM=Off
     -DWITH_QHY=Off
     -DWITH_GPSD=Off
@@ -37,27 +39,26 @@ build() {
   )
   export CFLAGS="-fPIC"
   export CXXFLAGS="${CFLAGS}"
+  TMP_INSTALL_PATH="/tmp/${pkgname}_${pkgver}"
 
   cd build
   cmake -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_LIBS=1 \
     ${disabled_libs[@]} \
     ../indi-3rdparty-${pkgver}
-  make DESTDIR="/tmp/${pkgname}_${pkgver}" install                                                   # Install libraries to temp directory for use in INDI driver build
+  make DESTDIR="${TMP_INSTALL_PATH}" install                                                   # Install libraries to temp directory for use in INDI driver build
 
-#  cp ../${pkgname}_${pkgver}/CMakeLists.txt.bak ../${pkgname}_${pkgver}/CMakeLists.txt               # Restore original CMakeLists.txt for INDI driver build
+  cd ..
+  rm -rf build
+  mkdir -p build
+  cd build
   cmake -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DFISHCAMP_LIBRARIES=/tmp/${pkgname}_${pkgver}/usr/lib/libfishcamp.so \
-    -DFISHCAMP_INCLUDE_DIR:PATH=/tmp/${pkgname}_${pkgver}/usr/include/libfishcamp \
-    -DAPOGEE_LIBRARY=/tmp/${pkgname}_${pkgver}/usr/lib/libapogee.so \
-    -DAPOGEE_INCLUDE_DIR:PATH="/tmp/${pkgname}_${pkgver}/usr/include/libapogee;/tmp/${pkgname}_${pkgver}/usr/include" \
-    -DFLI_LIBRARIES=/tmp/${pkgname}_${pkgver}/usr/lib/libfli.so \
-    -DFLI_INCLUDE_DIR:PATH=/tmp/${pkgname}_${pkgver}/usr/include \
-    -DSBIG_LIBRARIES=/tmp/${pkgname}_${pkgver}/usr/lib/libsbig.so \
-    -DSBIG_INCLUDE_DIR:PATH=/tmp/${pkgname}_${pkgver}/usr/include/libsbig \
+    -DCMAKE_LIBRARY_PATH="${TMP_INSTALL_PATH}/usr/lib" \
+    -DCMAKE_INCLUDE_PATH="${TMP_INSTALL_PATH}/usr/include" \
     ${disabled_libs[@]} \
     ../indi-3rdparty-${pkgver}
 }
