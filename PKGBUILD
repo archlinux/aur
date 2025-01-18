@@ -2,7 +2,7 @@
 
 pkgname=sonic3air-bin
 pkgver=v24.02.02.1
-pkgrel=3
+pkgrel=4
 scriptver=1.0.1
 arm64libver=1.0.0
 pkgdesc='A fan-made widescreen remaster of Sonic 3 & Knuckles.'
@@ -32,6 +32,7 @@ package() {
 	install -Dm644 "$srcdir/sonic3air-$scriptver/sonic3air.desktop" "$pkgdir/usr/share/applications/sonic3air.desktop"
 	install -Dm755 "$srcdir/sonic3air-$scriptver/sonic3air" "$pkgdir/usr/bin/sonic3air"
 	
+	chmod -R 775 "$srcdir/sonic3air_game"
 	mkdir -p "$pkgdir/usr/share/games/Sonic3Air/data" "$pkgdir/usr/share/games/Sonic3Air/bonus" "$pkgdir/usr/share/games/Sonic3Air/doc"
 	cp -r "$srcdir/sonic3air_game/data"/* "$pkgdir/usr/share/games/Sonic3Air/data"
 	cp -r "$srcdir/sonic3air_game/bonus"/* "$pkgdir/usr/share/games/Sonic3Air/bonus"
