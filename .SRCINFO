@@ -1,7 +1,7 @@
 pkgbase = python-pysmart
 	pkgdesc = Wrapper for smartctl (smartmontools) - FreeNAS fork
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.4.1
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/freenas/py-SMART
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = python-pysmart
 	depends = python-chardet
 	depends = python-humanfriendly
 	depends = smartmontools
-	source = python-pysmart-1.4.0::git+https://github.com/freenas/py-SMART#commit=aaffe589f2638f201ab307e85519f6b74198116d?signed
+	source = python-pysmart-1.4.1::git+https://github.com/freenas/py-SMART#commit=d1db1071d9732d088fa64f3cff2f6223e1cdc830?signed
 	validpgpkeys = 5F6761715FB2876BF2355A72195598EC98A1C1DF
-	b2sums = 21d6f710e1564215beac6810ac87263a665d54d6d383b7f43fbd2236e6cf5ea07cc62a85af6611741c6be81da7556165ea07e29b7cf2a7afef68c65a373c9b78
+	b2sums = ef1515a26f86895d8ec026bf45eb85bf2abe913aee056791db1aacfe12fd8b5d48a68274f787db7b8c55b7a24d545ea7c2b426612fdd61fd8d80f43d1b11357f
 
 pkgname = python-pysmart
