@@ -1,6 +1,6 @@
 # Maintainer: PanNNN <cool.panjianhao@gmail.com>
 pkgname=frame0
-pkgver=1.0.0~beta.4
+pkgver=1.0.0~beta.8
 pkgrel=1
 pkgdesc="A Balsamiq-alternative wireframming tool for modern apps"
 arch=('x86_64')
