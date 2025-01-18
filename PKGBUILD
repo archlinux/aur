@@ -11,6 +11,7 @@ makedepends=('git')
 install=${pkgname}.install
 
 source=("git+https://github.com/Frogging-Family/nvidia-all.git")
+
 sha256sums=('SKIP')
 
 pkgver() {
@@ -20,34 +21,19 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/nvidia-all"
-    # Ensure we have a clean build environment
-    if [[ -f "PKGBUILD" ]]; then
-        cp PKGBUILD "${srcdir}/nvidia-all-PKGBUILD"
-        cp -r ./patches "${srcdir}/" 2>/dev/null || true
-        cp -r ./*.install "${srcdir}/" 2>/dev/null || true
-    fi
+    # No need to copy files manually, just ensure the repo is up to date
+    git pull --rebase || true
 }
 
 build() {
-    # Create a clean build directory
-    cd "${srcdir}"
-    rm -rf build
-    mkdir -p build
-    cd build
-
-    # Copy the necessary files
-    cp "${srcdir}/nvidia-all-PKGBUILD" PKGBUILD
-    [[ -d "${srcdir}/patches" ]] && cp -r "${srcdir}/patches" .
-    cp -r "${srcdir}"/*.install . 2>/dev/null || true
-
-    # Build the package without installing
+    cd "${srcdir}/nvidia-all"
+    # Simply run makepkg in the directory where the PKGBUILD is
     makepkg -f
 }
 
 package() {
-    cd "${srcdir}/build"
-    
-    # Create package directory structure
+    cd "${srcdir}/nvidia-all"
+    # Package the resulting files after build
     install -dm755 "${pkgdir}/usr/share/${pkgname}"
     
     # Copy the built packages and build files
