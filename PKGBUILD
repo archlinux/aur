@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='A collection of scripts that notify you of pending updates to your Arch Linux system'
 url='https://gitlab.com/protist/checkupdatify'
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('gawk' 'yay')
 optdepends=('terminator: the update command is sent to this terminal emulator by default'
             'libnotify: provides a notification for completion of upgrade(s)'
