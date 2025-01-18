@@ -1,0 +1,17 @@
+From 7b31a6b525897f6309b358a06b2e43d3df428c2d Mon Sep 17 00:00:00 2001
+From: Wim Lavrijsen <WLavrijsen@lbl.gov>
+Date: Thu, 16 Jan 2025 11:34:36 -0800
+Subject: [PATCH] update versions in .toml to match setup.py
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 76e5722..4aa8dbe 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,2 +1,2 @@
+ [build-system]
+-requires = ["cppyy-cling==6.30.0", "cppyy-backend==1.15.2", "setuptools", "wheel"]
++requires = ["cppyy-cling==6.32.8", "cppyy-backend==1.15.3", "setuptools", "wheel"]
