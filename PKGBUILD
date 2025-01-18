@@ -4,7 +4,7 @@ provides=(librewolf)
 conflicts=(librewolf)
 __pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=133.0.3
+pkgver=134.0
 pkgrel=1
 pkgdesc="Librewolf with the privacy.override_rfp_for_color_scheme about:config option added, which (if enabled) let's you change the color scheme even if rfp is turned on"
 url="https://librewolf.net/"
@@ -96,10 +96,10 @@ source=(
   allow_dark.patch
 )
 
-sha256sums=('f3ed5c73c6e07fcff42d5006746aa3cb285b86014004f138b11f891d38878142'
+sha256sums=('875297fe4093a70536f4b67448682246ad6dac0bca9d9432f6cf312bdaddaeab'
             '7d01d317b7db7416783febc18ee1237ade2ec86c1567e2c2dd628a94cbf2f25d'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
-            '07ce0c05f0df3c66d4a70e5d836d70ab6a708eca85e3b75256dca02120a3a928')
+            'f1353e234ddb5c002c9f5ac629bed374c50b5ae79015d30b6d10f17ab27751b5')
 validpgpkeys=('034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3') # maltej(?)
 
 # change this to false if you do not want to run a PGO build for aarch64 or x86_64
