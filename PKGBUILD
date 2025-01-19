@@ -12,8 +12,8 @@ url="https://github.com/mkrueger/icy_tools"
 license=('Apache-2.0')
 optdepends=()
 source=("$url/releases/download/IcyDraw$pkgver/icy_draw_linux_$pkgver.zip")
-sha256sums=('eddf47457158fff260a4bea97a2d215b658b421797e6a29e9c9ed03b5a7e0f74')
-sha512sums=('8000c56adafc361c1a340811dead32e4248498d0525249b4285807e7a27ece782d598d5e55aebd8874f911d18bef5d54f01a26161103f32473d5a196fb6247f2')
+sha256sums=('60f0537a33a4603482f5880f3fae53b2aed9fc60f69abe7b2cce2d4a3003dfc2')
+sha512sums=('7436c89732667ea5e609989556edb8ad29e75c07b6fc141563cd7809cf25b7b03d772ffc78d1d385fb7c7f6e73b52de898cd6c50e4d3156591714cd0b1960e5a')
 
 prepare() {
 	cd "${srcdir}/"
