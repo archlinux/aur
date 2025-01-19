@@ -3,7 +3,7 @@
 
 pkgname=helm-ls
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 _commit=0c3d346843e36e106ff263c071e638f956966c91
 pkgdesc='Language server for Helm'
 license=(MIT)
@@ -17,6 +17,7 @@ arch=(x86_64)
 depends=(glibc)
 makedepends=(git go)
 checkdepends=(yaml-language-server)
+optdepends=('yaml-language-server: yamlls integration')
 options=('!debug')
 
 verify() {

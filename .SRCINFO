@@ -1,7 +1,7 @@
 pkgbase = helm-ls
 	pkgdesc = Language server for Helm
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mrjosh/helm-ls
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = helm-ls
 	makedepends = git
 	makedepends = go
 	depends = glibc
+	optdepends = yaml-language-server: yamlls integration
 	options = !debug
 	source = helm-ls::git+https://github.com/mrjosh/helm-ls.git#tag=v0.2.0
 	md5sums = SKIP
