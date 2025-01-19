@@ -1,0 +1,15 @@
+pkgbase = nodejs-all-the-package-names
+	pkgdesc = 🔤 A list of all the public package names on npm. Updated daily.
+	pkgver = 2.0.1989
+	pkgrel = 1
+	url = https://github.com/nice-registry/all-the-package-names
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = all-the-package-names-2.0.1989.tgz
+	options = !emptydirs
+	source = https://registry.npmjs.org/all-the-package-names/-/all-the-package-names-2.0.1989.tgz
+	sha256sums = 6b72c83fcfe1c2de098dc2701a49f08ac4f60b41d00426135a9690f638fbb327
+
+pkgname = nodejs-all-the-package-names
