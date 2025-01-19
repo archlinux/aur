@@ -1,0 +1,24 @@
+pkgbase = vapoursynth-plugin-mlrt-ort-runtime-git
+	pkgdesc = Plugin for VapourSynth: mlrt (ONNX runtime)
+	pkgver = 673.b3d6425
+	pkgrel = 1
+	url = https://github.com/AmusementClub/vs-mlrt
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = jq
+	depends = vapoursynth
+	depends = cuda
+	depends = onnx
+	depends = onnxruntime
+	depends = protobuf
+	provides = vapoursynth-plugin-mlrt
+	conflicts = vapoursynth-plugin-mlrt
+	source = mlrt::git+https://github.com/AmusementClub/vs-mlrt.git
+	source = models-v15.7.7z::https://github.com/AmusementClub/vs-mlrt/releases/download/v15.7/models.v15.7.7z
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-mlrt-ort-runtime-git
