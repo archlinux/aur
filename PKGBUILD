@@ -20,7 +20,7 @@ makedepends=('dos2unix' 'recode')
 #https://github.com/cinderblocks/radegast/releases/download/v2.41/Radegast_x64-2.41.357.tbz
 source=(https://github.com/cinderblocks/radegast/releases/download/v${pkgver}/Radegast_x64-${pkgver}.${pkgrel}.tbz
         radegast.desktop radegast)
-sha256sums=('f9b963db3a9042fa0634d4461bafdbce8651890aa1ee4e00dfa8ea410f0df4d7'
+sha256sums=('294dd0ec636103141c4343e73ccbaac9ca92c1a66830611efd19ff3657340036'
             '8f599f04f263361cd45f7af53cfae633881bfa92ba3f806a0ca675d1ee131567'
             '73cdc80cc4abeb6ba368b09285ff5120ffeb6052a0a5e5ac0febf08c38bb0e96')
 package() {
