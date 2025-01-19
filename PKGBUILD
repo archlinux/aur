@@ -2,7 +2,7 @@
 
 pkgname=python-runlike
 _pkgname=runlike
-pkgver=1.4.15
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Given an existing docker container, prints the command line necessary to run a copy of it"
 arch=("any")
@@ -11,7 +11,7 @@ license=('BSD-2-Clause-Views')
 depends=(python python-click)
 makedepends=(python-build python-installer python-poetry-core)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('e3af0869759e22c0fa11de8689820ab598d01e9b8ca244210573fac985d734e6c1e6d47fe52be8cbeeeddf5751384a405af0cde56e418792f44a2749d787a780')
+b2sums=('dd7b7d2479005f716a737e8d4555dbe9e887cafd7394b668b01373bd9639fcfe85afb3a30fb60774adfb2fda759f9c03bb7284f055079f8713ca4ae90dec54f7')
 
 build() {
   cd ${_pkgname}-${pkgver}
