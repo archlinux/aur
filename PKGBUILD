@@ -1,14 +1,15 @@
 _pkgname=kdiff3
 pkgname=${_pkgname}-git
-pkgver=1.10.70.r2628.47bc0721
-pkgrel=2
+pkgver=1.12.70.r3124.6ab20841
+pkgrel=1
 pkgdesc='A KDE file comparator/merge tool'
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url='https://invent.kde.org/sdk/kdiff3'
 license=('GPLv2')
-depends=('kparts5' 'hicolor-icon-theme')
-conflicts=("${_pkgname}" "${_pkgname}-kf5-git" "${_pkgname}-qt")
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'kdoctools5' 'boost')
+depends=('kparts' 'hicolor-icon-theme')
+provides=(kdiff3)
+conflicts=("${_pkgname}")
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'kdoctools' 'boost')
 source=("git+${url}.git")
 sha512sums=('SKIP')
 

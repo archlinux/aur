@@ -1,7 +1,7 @@
 pkgbase = kdiff3-git
 	pkgdesc = A KDE file comparator/merge tool
-	pkgver = 1.10.70.r2628.47bc0721
-	pkgrel = 2
+	pkgver = 1.12.70.r3124.6ab20841
+	pkgrel = 1
 	url = https://invent.kde.org/sdk/kdiff3
 	arch = i686
 	arch = x86_64
@@ -13,13 +13,12 @@ pkgbase = kdiff3-git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = git
-	makedepends = kdoctools5
+	makedepends = kdoctools
 	makedepends = boost
-	depends = kparts5
+	depends = kparts
 	depends = hicolor-icon-theme
+	provides = kdiff3
 	conflicts = kdiff3
-	conflicts = kdiff3-kf5-git
-	conflicts = kdiff3-qt
 	source = git+https://invent.kde.org/sdk/kdiff3.git
 	sha512sums = SKIP
 
