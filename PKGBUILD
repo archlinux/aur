@@ -6,11 +6,11 @@ pkgdesc="moeOS RIME 全拼方案"
 arch=('any')
 url="https://github.com/Kimiblock/moeOS-pinyin"
 license=('GPL-3.0-or-later')
-depends=("fcitx5-pinyin-moegirl-rime" "rime-pinyin-zhwiki")
+depends=("rime-pinyin-moegirl" "rime-pinyin-zhwiki")
 provides=('rime-moe-pinyin')
 source=("git+https://github.com/Kimiblock/moeOS-pinyin.git#tag=${pkgver}")
 sha256sums=("SKIP")
-makedepends=("git")
+makedepends=("git" "git-lfs")
 
 function prepare() {
 	cd moeOS-pinyin
