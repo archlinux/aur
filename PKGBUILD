@@ -38,19 +38,18 @@ package() {
   find . -maxdepth 1 -type f -name '*.txt' -exec \
     install -vDm644 "{}" "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
 
-  find "doc" -type f -execdir \
+  find "doc"      -type f -execdir \
     install -vDm644 "{}" "${pkgdir}/usr/share/doc/${pkgname}/html/{}" \;
-  find "lib64" -type f -execdir \
+  find "lib64"    -type f -execdir \
     install -vDm644 "{}" "${pkgdir}/usr/lib/{}" \;
-  find "ppds"       -type f -execdir \
+  find "ppds"     -type f -execdir \
     install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
-  find "resource"   -type f -exec    \
+  find "resource" -type f -exec    \
     install -vDm644 "{}" "${pkgdir}/usr/share/epson-inkjet-printer-filter/{}" \;
 
   cd "${pkgdir}/usr/lib"
-  for lib in *".so.${pkgver}"; do
-    base="${lib%.${pkgver}}"
-    ln -vsf "${lib}" "${base}"
-    ln -vsf "${lib}" "${base}.${pkgver%%.*}"
+  for lib in *.so.*; do
+    ln -vsf "${lib}" "${lib%.[0-9]*.[0-9]*.[0-9]*}"
+    ln -vsf "${lib}" "${lib%.[0-9]*.[0-9]*}"
   done
 }
