@@ -5,6 +5,7 @@ pkgbase = xash3d-fwgs-bin
 	url = https://gitlab.com/linuxbombay/xash3d-fwgs
 	arch = x86_64
 	arch = aarch64
+	arch = i686
 	license = GPL
 	makedepends = unzip
 	depends = sdl2
@@ -13,5 +14,7 @@ pkgbase = xash3d-fwgs-bin
 	sha256sums_x86_64 = 3819093f2ffabbd2fa930fcd628a557d83cf8a1c91a96ce229df07d82770640f
 	source_aarch64 = xash3d-linux-arm64-98ff33d-x64.tar.xz::https://gitlab.com/linuxbombay/xash3d-fwgs/98ff33d/-/raw/main/xash3d-fwgs-linux-arm64.tar.xz
 	sha256sums_aarch64 = 86a9295bfe1b9221b6a70b156e45018e517bc8a59b6a4709c338e6011bc9b689
+	source_i686 = xash3d-linux-i686-98ff33d-x64.tar.xz::https://gitlab.com/linuxbombay/xash3d-fwgs/98ff33d/-/raw/main/xash3d-fwgs-linux-i686.tar.xz
+	sha256sums_i686 = 3819093f2ffabbd2fa930fcd628a557d83cf8a1c91a96ce229df07d82770640f
 
 pkgname = xash3d-fwgs-bin
