@@ -1,4 +1,4 @@
-pkgbase = piratebay-bin
+pkgbase = piratebay
         pkgdesc = Search torrents from The Pirate Bay
         pkgver = 0.1.9
         pkgrel = 1
@@ -7,4 +7,5 @@ pkgbase = piratebay-bin
         source = https://github.com/tsirysndr/piratebay/releases/download/v0.1.9/piratebay_v0.1.9_x86_64-unknown-linux-gnu.tar.gz
         sha256sums = d9eff29fc3b20a2a82f7a2ae93be3be8f623dd14d86ec836dc8df4dd39cfc2e0
 
-pkgname = piratebay-bin
+pkgname = piratebay
+

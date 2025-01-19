@@ -1,6 +1,6 @@
 # Maintainer: Tsiry Sandratraina <tsiry.sndr@fluentci.io>
 
-pkgname=piratebay-bin
+pkgname=piratebay
 pkgver=0.1.9
 pkgrel=1
 pkgdesc="Search torrents from The Pirate Bay"
