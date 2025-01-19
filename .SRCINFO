@@ -1,7 +1,7 @@
 pkgbase = owncast
 	pkgdesc = Self-hosted live video streaming (chat included)
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	install = owncast.install
 	arch = x86_64
 	license = MIT

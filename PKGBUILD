@@ -4,7 +4,7 @@
 
 pkgname=owncast
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Self-hosted live video streaming (chat included)'
 arch=(x86_64)
 license=(MIT)
@@ -57,7 +57,6 @@ package() {
   install -vdm755 "$pkgdir/var/lib/$pkgname"
   cp -R web "$pkgdir/var/lib/$pkgname/"
   echo "lts/iron" >"$pkgdir"/var/lib/"$pkgname"/web/.nvmrc
-  chown -R owncast:owncast "$pkgdir/var/lib/$pkgname/web"
   install -vDm755 $pkgname -t "$pkgdir/usr/bin/"
   install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
