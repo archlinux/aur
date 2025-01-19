@@ -1,0 +1,5 @@
+[oxigraph-bin]
+source = "github"
+github = "oxigraph/oxigraph"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,26 @@
+pkgbase = oxigraph-bin
+	pkgdesc = SPARQL graph database and RDF toolkit
+	pkgver = 0.4.7
+	pkgrel = 1
+	url = https://github.com/oxigraph/oxigraph
+	arch = aarch64
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = oxigraph
+	conflicts = oxigraph
+	source = CHANGELOG-0.4.7.md::https://github.com/oxigraph/oxigraph/raw/refs/tags/v0.4.7/CHANGELOG.md
+	source = README-0.4.7.md::https://github.com/oxigraph/oxigraph/raw/refs/tags/v0.4.7/README.md
+	source = LICENSE-APACHE-2.0-0.4.7::https://github.com/oxigraph/oxigraph/raw/refs/tags/v0.4.7/LICENSE-APACHE
+	source = LICENSE-MIT-0.4.7::https://github.com/oxigraph/oxigraph/raw/refs/tags/v0.4.7/LICENSE-MIT
+	sha256sums = 2c62f217b74beea3043cf17fd3f0d578941a0be9bcb80a3a0197c73054028e3c
+	sha256sums = eb8ed92ced12d45f90544631fd20e72b016268d8ae82690ea85cc3643e29dd3f
+	sha256sums = a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2
+	sha256sums = 1f4f6736adc52ebfda18bb84947e0ef492bd86a408c0e83872efb75ed5e02838
+	source_aarch64 = oxigraph-0.4.7-aarch64::https://github.com/oxigraph/oxigraph/releases/download/v0.4.7/oxigraph_v0.4.7_aarch64_linux_gnu
+	sha256sums_aarch64 = 998ca76d3c2c25d02404fe8e808f8cab6119ee894653d48958fd8a01e8cfb5e7
+	source_x86_64 = oxigraph-0.4.7-x86_64::https://github.com/oxigraph/oxigraph/releases/download/v0.4.7/oxigraph_v0.4.7_x86_64_linux_gnu
+	sha256sums_x86_64 = d34c1011339ad9337225f64943dbca8f439b495041ba38a1d40f440dd1d28a4b
+
+pkgname = oxigraph-bin
