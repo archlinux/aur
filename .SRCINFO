@@ -1,12 +1,12 @@
 pkgbase = jameica-nightly
 	pkgdesc = Free Java application platform
 	pkgver = 2.11.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.willuhn.de/products/jameica/
 	arch = x86_64
 	license = GPL2
 	makedepends = unzip
-	depends = java-runtime>=11
+	depends = java-runtime>=17
 	depends = gtk3
 	optdepends = webkit2gtk-4.1: Required for mashup plugin used as new scripting platform for non-HBCI accounts (credit cards etc)
 	optdepends = java-jce_ustrength: Required for mashup plugin used as new scripting platform for non-HBCI accounts (credit cards etc)

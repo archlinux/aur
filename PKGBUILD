@@ -6,12 +6,12 @@
 
 pkgname=jameica-nightly
 pkgver=2.11.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Free Java application platform"
 arch=('x86_64')
 url="http://www.willuhn.de/products/jameica/"
 license=('GPL2')
-depends=('java-runtime>=11' 'gtk3')
+depends=('java-runtime>=17' 'gtk3')
 optdepends=('webkit2gtk-4.1: Required for mashup plugin used as new scripting platform for non-HBCI accounts (credit cards etc)'
 			'java-jce_ustrength: Required for mashup plugin used as new scripting platform for non-HBCI accounts (credit cards etc)')
 makedepends=('unzip')
