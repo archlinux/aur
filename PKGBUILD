@@ -1,7 +1,7 @@
 # Maintainer: fenuks
 
 pkgname=findbugs-contrib
-pkgver=7.4.2
+pkgver=7.6.9
 pkgrel=1
 pkgdesc="A FindBugs/SpotBugs plugin for doing static code analysis for java code bases"
 arch=("any")
@@ -16,11 +16,11 @@ conflicts=("${pkgname}")
 _findbugs_jar=${pkgname}-${pkgver}.jar
 _spotbugs_jar=${pkgname}-${pkgver}.sb.jar
 source=("${_findbugs_jar}::http://search.maven.org/remotecontent?filepath=com/mebigfatguy/fb-contrib/fb-contrib/${pkgver}/fb-contrib-${pkgver}.jar"
-"${_spotbugs_jar}::http://search.maven.org/remotecontent?filepath=com/mebigfatguy/fb-contrib/fb-contrib/${pkgver}.sb/fb-contrib-${pkgver}.sb.jar"
+"${_spotbugs_jar}::http://search.maven.org/remotecontent?filepath=com/mebigfatguy/sb-contrib/sb-contrib/${pkgver}/sb-contrib-${pkgver}.jar"
 )
 
-sha256sums=('000ce56cfc593295a3874d76f78da0e5aff85057ff0f2f8eb008827fc9e12791'
-            '2d7f0613f6addccc11c26c7b73797abf600c3cf92445351d49b3cda5faf2f526')
+sha256sums=('7163f0f271a0544445d823864a2c126ae4ce3b6a2cd20f18cdd9c242f87f0579'
+            '9203f1af681600039a316f2fa6ca9d8ce52bbe3b4253aaf7321a3dfae914ab2b')
 
 package() {
     cd "${srcdir}"
