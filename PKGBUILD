@@ -2,7 +2,7 @@
 
 pkgname=python-medpy
 _appname=medpy
-pkgver=0.4.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='Medical image processing in Python'
 arch=('x86_64')
