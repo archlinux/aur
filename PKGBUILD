@@ -11,9 +11,7 @@ license=('LGPL')
 depends=('vapoursynth' 'cuda' 'tensorrt')
 makedepends=('git' 'ninja' 'cmake' 'jq')
 provides=("vapoursynth-plugin-${_plug}")
-conflicts=("vapoursynth-plugin-${_plug}-ov-runtime-git"
-  "vapoursynth-plugin-${_plug}-ort-runtime-git"
-  "vapoursynth-plugin-${_plug}-ncnn-runtime-git")
+conflicts=("vapoursynth-plugin-${_plug}")
 
 # Function to fetch the latest release version
 get_latest_release_version() {
