@@ -39,6 +39,10 @@ prepare() {
     echo "Applying patch ${_patch}..."
     patch -Np1 -i "${srcdir}/${_patch}"
   fi; done
+  # Fix "test" syntax for POSIX envs in configure.ac
+  sed -Ei 's/(test +"?x?\$[a-z0-9_]+"?+ +=)=/\1/g;' configure.ac
+  # Auto-update configure.ac and fix some deprecations/obsoletes.
+  autoupdate
   autoreconf -i
 }
 
