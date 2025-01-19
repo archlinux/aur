@@ -4,7 +4,7 @@ pkgname=pdfcropmargins
 PkgName=pdfCropMargins
 CodeChemin="ca/35/a10ed48bbec00f46504e4e6e8ef1487bcf02d91560cbce40ebb5f3556746"
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically crops the margins of PDF files"
 url="https://pypi.org/project/pdfCropMargins/"
 arch=('any')
@@ -19,5 +19,5 @@ md5sums=('2f4d97017e95470da2c6aba118568b19')
 
 package() {
   cd ${srcdir}
-  pip install --root="$pkgdir" $PkgName-$pkgver-py3-none-any.whl
+  sudo pip install --root="$pkgdir" $PkgName-$pkgver-py3-none-any.whl
 }
