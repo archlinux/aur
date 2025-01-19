@@ -6,7 +6,8 @@ pkgbase = rime-moe-pinyin
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
-	depends = fcitx5-pinyin-moegirl-rime
+	makedepends = git-lfs
+	depends = rime-pinyin-moegirl
 	depends = rime-pinyin-zhwiki
 	provides = rime-moe-pinyin
 	source = git+https://github.com/Kimiblock/moeOS-pinyin.git#tag=3.5
