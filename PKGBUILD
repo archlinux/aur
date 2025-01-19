@@ -9,7 +9,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='2412.r139.gede963d4db'
+pkgver='2412.r166.g90eba2b1a0'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -42,7 +42,6 @@ source=(
 	"$pkgbase-vh::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 	"$pkgbase-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 	"$pkgbase-zlibng::git+https://github.com/zlib-ng/zlib-ng.git"
-	'fix-minizip-ng-compat-headers.diff'
 	'minizip-ng.diff'
 )
 b2sums=('SKIP'
@@ -53,8 +52,7 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '58628e2784eaad3bd8d7318412e4f316801172a9cdf4c91ea106177d9466fcad3b11f20c6ab1570a730a7ffd84913ced5c356ae3dbc073d6b948786c67320fc7'
-        '504a23ab4cce2be8f114263ebfcbcd468fd183187443c2e0d994d4e090fe037d5c2b3fddd2095ddb1ae12009eaa83e08b7d2fecb67f8b40d8b9862c91d0bbc59')
+        'e90d1cd324d8c317afecaedfc3cc1074c9284d5416299c06dede2bbe61e034065c47eb89badc9bb52092472d384641fa3bcac5a7e70e743a65fcbf75569501fe')
 
 _sourcedirectory="$pkgbase"
 
@@ -62,9 +60,6 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 	if [ -d 'build/' ]; then rm -rf 'build/'; fi
 	mkdir 'build/'
-
-	# Use correct renamed minizip-ng compat header files (based on https://github.com/dolphin-emu/dolphin/pull/13273)
-	patch --forward -p1 < "$srcdir/fix-minizip-ng-compat-headers.diff"
 
 	# Fix minizip-ng check for Arch (see https://github.com/dolphin-emu/dolphin/pull/12910#issuecomment-2249001387)
 	patch --forward -p1 < "$srcdir/minizip-ng.diff"
