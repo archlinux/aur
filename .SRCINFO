@@ -1,14 +1,14 @@
 pkgbase = epson-inkjet-printer-stylus-s21-series
 	pkgdesc = Epson inkjet printer driver (Stylus S21, T21, T24, T27)
 	pkgver = 1.0.0
-	pkgrel = 12
+	pkgrel = 13
 	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
 	arch = x86_64
 	license = custom:Epson End User Software License Agreement
 	depends = epson-inkjet-printer-filter
-	depends = gcc-libs
 	depends = glibc
 	source = https://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-stylus-s21-series-1.0.0-1lsb3.2.src.rpm
-	sha256sums = 3c3723f67b7b8aef20f5096501e30a8467222effefe341b3ac49fed1a0873e72
+	sha256sums = 0c9d975206bac0687bcec297f959a2c495845077c8e6cd0fc817fdfab4d1528a
 
 pkgname = epson-inkjet-printer-stylus-s21-series
