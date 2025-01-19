@@ -48,9 +48,8 @@ package() {
     install -vDm644 "{}" "${pkgdir}/usr/share/epson-inkjet-printer-filter/{}" \;
 
   cd "${pkgdir}/usr/lib"
-  for lib in *".so.${pkgver}"; do
-    base="${lib%.${pkgver}}"
-    ln -vsf "${lib}" "${base}"
-    ln -vsf "${lib}" "${base}.${pkgver%%.*}"
+  for lib in *.so.*; do
+    ln -vsf "${lib}" "${lib%.[0-9]*.[0-9]*.[0-9]*}"
+    ln -vsf "${lib}" "${lib%.[0-9]*.[0-9]*}"
   done
 }
