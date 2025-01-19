@@ -8,5 +8,7 @@ pkgbase = rockbox-zig-bin
         depends = sdl2
         depends = libunwind
         depends = alsa-lib
-        source_x86_64 = https://github.com/tsirysndr/rockbox-zig/releases/download/2025.01.18/rockbox-zig-2025.01.18-1-x86_64.pkg.tar.zst
-        sha256sums_x86_64 = 8866975ab0120184f1a648064beb2610650f0fd0f815bf8d3609a98fff419787
+        source = https://github.com/tsirysndr/rockbox-zig/releases/download/2025.01.18/rockbox-zig-2025.01.18-1-x86_64.pkg.tar.zst
+        sha256sums = 8866975ab0120184f1a648064beb2610650f0fd0f815bf8d3609a98fff419787
+
+pkgname = rockbox-zig-bin
