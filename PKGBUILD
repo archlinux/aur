@@ -3,19 +3,19 @@
 _basename="pangomm"
 _name="${_basename}-2.48"
 pkgname="mingw-w64-${_name}"
-pkgver=2.54.0
+pkgver=2.56.1
 pkgrel=1
 pkgdesc="C++ bindings for Pango (mingw-w64)"
 arch=('any')
 url="https://www.gtkmm.org"
 license=('LGPL-2.1-or-later')
-depends=('mingw-w64-cairomm-1.16' 'mingw-w64-glib2' 'mingw-w64-glibmm-2.68'
-         'mingw-w64-libsigc++-3.0' 'mingw-w64-pango')
+depends=('mingw-w64-cairomm-1.16' 'mingw-w64-glib2>=2.68' 'mingw-w64-glibmm-2.68'
+         'mingw-w64-libsigc++-3.0' 'mingw-w64-pango>=1.56')
 makedepends=('mingw-w64-meson>=0.62' 'mm-common')
 options=('!strip' '!buildflags' 'staticlibs')
 _pkgsrc="${_basename}-${pkgver}"
 source=("${_pkgsrc}.tar.xz::https://download.gnome.org/sources/${_basename}/${pkgver%.*}/${_pkgsrc}.tar.xz")
-sha256sums=('4a5b1fd1b7c47a1af45277ea82b5abeaca8e08fb10a27daa6394cf88d74e7acf')
+sha256sums=('539f5aa60e9bdc6b955bb448e2a62cc14562744df690258040fbb74bf885755d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
