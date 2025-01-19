@@ -3,19 +3,19 @@
 _basename="pangomm"
 _name="${_basename}-2.48"
 pkgname="lib32-${_name}"
-pkgver=2.54.0
+pkgver=2.56.1
 pkgrel=1
 pkgdesc="C++ bindings for Pango (32-bit)"
 url="https://www.gtkmm.org"
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
 depends=('lib32-cairomm-1.16' 'lib32-gcc-libs' 'lib32-glib2>=2.68' 'lib32-glibc'
-         'lib32-glibmm-2.68' 'lib32-libsigc++-3.0' 'lib32-pango>=1.54' "${_name}")
+         'lib32-glibmm-2.68' 'lib32-libsigc++-3.0' 'lib32-pango>=1.56' "${_name}")
 makedepends=('meson>=0.62' 'mm-common')
 provides=("lib${_name}.so")
 _pkgsrc="${_basename}-${pkgver}"
 source=("${_pkgsrc}.tar.xz::https://download.gnome.org/sources/${_basename}/${pkgver%.*}/${_pkgsrc}.tar.xz")
-sha256sums=('4a5b1fd1b7c47a1af45277ea82b5abeaca8e08fb10a27daa6394cf88d74e7acf')
+sha256sums=('539f5aa60e9bdc6b955bb448e2a62cc14562744df690258040fbb74bf885755d')
 
 build() {
   export CFLAGS+=" -m32"
