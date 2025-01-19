@@ -1,8 +1,9 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
+# Maintainer: Hoel Kervadec <hoel@kervadec.bzh>
 
 _pkgname=pyScss
 pkgname=python-pyscss
-pkgver=1.3.7
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A SCSS compiler for Python"
 arch=("any")
@@ -10,16 +11,16 @@ license=("GPL")
 url="https://github.com/Kronuz/pyScss"
 depends=("python")
 makedepends=("python-setuptools")
-source=("https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=("f1df571569021a23941a538eb154405dde80bed35dc1ea7c5f3e18e0144746bf")
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=("e2df85288ab5424df8748167c81dd7cca4578a06b47d3e0df4d56fdf2314b71ca9e56634d71daec316a1f492c02018dec78ad421a2251bab5bfdf6fceb1058cd")
 
 
 build() {
-	cd "$srcdir/$_pkgname-$pkgver"
+	cd "$srcdir/$_pkgname"
 	python setup.py build
 }
 
 package() {
-	cd "$srcdir/$_pkgname-$pkgver"
+	cd "$srcdir/$_pkgname"
 	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
 }

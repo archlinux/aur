@@ -1,14 +1,13 @@
 pkgbase = python-pyscss
 	pkgdesc = A SCSS compiler for Python
-	pkgver = 1.3.7
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/Kronuz/pyScss
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.python.org/packages/source/p/pyScss/pyScss-1.3.7.tar.gz
-	sha256sums = f1df571569021a23941a538eb154405dde80bed35dc1ea7c5f3e18e0144746bf
+	source = https://github.com/Kronuz/pyScss/archive/refs/tags/v1.4.0.tar.gz
+	b2sums = e2df85288ab5424df8748167c81dd7cca4578a06b47d3e0df4d56fdf2314b71ca9e56634d71daec316a1f492c02018dec78ad421a2251bab5bfdf6fceb1058cd
 
 pkgname = python-pyscss
-
