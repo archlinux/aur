@@ -1,4 +1,4 @@
-# Maintainer: Leonidas P. Papadakos <papadakospan@gmail.com>
+# Maintainer: Holly A. Law <lilithl@ladair.org>
 # Contributor: Oirio Joshi <joshirio@protonmail.com>
 
 pkgname=megacmd-bin
