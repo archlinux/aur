@@ -60,7 +60,7 @@ build() {
   # this trick is reportedly not needed for the newer models with newer libraries
   # but is required for older 'LSB-dependent' drivers with 'lsb3.2' postfix
   # these were released in ~2012, mostly at v1.0.0, and come from download.ebz.epson.net
-  export LDFLAGS="${LDFLAGS//-Wl,--as-needed/-Wl,--no-as-needed}"
+  export LDFLAGS="${LDFLAGS//-Wl,--as-needed/} -Wl,--no-as-needed"
 
   cd "${srcdir}/${_pkgsrc}"
   libtoolize
