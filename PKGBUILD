@@ -1,10 +1,11 @@
-# Maintainer: dude <brrtsm@gmail.com>
+# Maintainer: Gesh <gesh@gesh.uni.cx>
+# Contributor: dude <brrtsm@gmail.com>
 
-pkgver=1.41
 pkgname=(hledger-bin hledger-ui-bin hledger-web-bin)
+pkgver=1.41
 pkgrel=1
 pkgdesc='Easy-to-use command-line/curses/web plaintext accounting tool'
-arch=(x86_64)
+arch=('x86_64')
 url='http://hledger.org'
 license=('GPL-3.0-or-later')
 optdepends=('asciinema: hledger demo support')
