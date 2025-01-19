@@ -1,0 +1,11 @@
+pkgbase = neuralnote-bin
+	pkgdesc = https://github.com/DamRsn/NeuralNote
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/DamRsn/NeuralNote
+	arch = x86_64
+	license = Apache-2.0
+	source = https://github.com/DamRsn/NeuralNote/releases/download/v1.1.0/NeuralNote_Standalone_Linux.zip
+	sha256sums = d74166ed126fe583275578c5e7331c4823ffb8c3fe4bc6f2c7ca56ac93ef3841
+
+pkgname = neuralnote-bin
