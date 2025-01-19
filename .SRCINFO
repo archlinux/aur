@@ -17,7 +17,7 @@ pkgbase = libsignal-client
 	makedepends = protobuf
 	makedepends = cmake
 	makedepends = clang
-	makedepends = java-environment
+	makedepends = java-environment=17
 	depends = gcc-libs
 	options = !lto
 	source = libsignal-0.65.2.tar.gz::https://github.com/signalapp/libsignal/archive/refs/tags/v0.65.2.tar.gz
