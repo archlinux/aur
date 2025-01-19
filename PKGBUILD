@@ -3,7 +3,7 @@
 
 pkgname="mysh-git"
 pkgver="1.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc=" This is My Shell"
 arch=("any")
 url="https://github.com/AImixAE/mysh"
