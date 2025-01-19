@@ -42,9 +42,10 @@ build() {
 package() {
   cd "${srcdir}/${_pkgsrc}"
   install -vDm644 "AUTHORS"       "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
-  install -vDm644 "Manual.txt"    "${pkgdir}/usr/share/doc/${pkgname}/MANUAL"
   install -vDm644 "README"        "${pkgdir}/usr/share/doc/${pkgname}/README"
   install -vDm644 "COPYING.EPSON" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  find . -maxdepth 1 -type f -name '*.txt' -exec \
+    install -vDm644 "{}" "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
 
   find "lib${_bit}" -type f -execdir \
     install -vDm644 "{}" "${pkgdir}/usr/lib/{}" \;
