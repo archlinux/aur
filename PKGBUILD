@@ -7,8 +7,8 @@ pkgname="${_pkgname}-git"
 _pkgver='latest'
 epoch=1
 pkgver=3.06+r316.20250105.g5dd37a6
-pkgrel=1
-pkgdesc='Interface to the efa.vrr.de departure monitor'
+pkgrel=2
+pkgdesc='Commandline client and Perl module for EFA-based public transit routing interfaces provided by e.g. VRR or VVO. It can request itineraries for train/tram/bus/ferry connections throughout most of Germany, as well as parts of Austria, Switzerland and UK.'
 url='http://finalrewind.org/projects/Travel-Status-DE-VRR/'
 license=(
   'Artistic-1.0-Perl'
@@ -16,20 +16,32 @@ license=(
 )
 arch=('any')
 depends=(
+  'perl>=5.10.1'
   'perl-class-accessor'
-  'perl-libwww'
+  'perl-datetime'
+  'perl-datetime-format-strptime'
+  'perl-getopt-long'
+  'perl-json'
   'perl-lwp-protocol-https'
-  'perl-xml-libxml'
 )
 makedepends=(
   'curl>8.7.1' # Because of https://bugs.gentoo.org/930633 / https://github.com/curl/curl/issues/13474
   'git'
   'perl-module-build'
+)
+checkdepends=(
   'perl-file-slurp'
   'perl-test-pod'
 )
-provides=("${_pkgname}=${pkgver}")
-conflicts=("${_pkgname}")
+provides=(
+  "${_pkgname}=${pkgver}"
+  "perl-travel-status-de-efa-git=${pkgver}"
+  "perl-travel-status-de-efa=${pkgver}"
+)
+conflicts=(
+  "${_pkgname}"
+  "perl-travel-status-de-efa"
+)
 options=('!emptydirs')
 # source=("http://finalrewind.org/projects/${_perlmod}/${_perlmod}-${pkgver}.tar.gz"{,.asc})
 source=(

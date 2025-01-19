@@ -1,23 +1,29 @@
 pkgbase = perl-travel-status-de-vrr-git
-	pkgdesc = Interface to the efa.vrr.de departure monitor
+	pkgdesc = Commandline client and Perl module for EFA-based public transit routing interfaces provided by e.g. VRR or VVO. It can request itineraries for train/tram/bus/ferry connections throughout most of Germany, as well as parts of Austria, Switzerland and UK.
 	pkgver = 3.06+r316.20250105.g5dd37a6
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://finalrewind.org/projects/Travel-Status-DE-VRR/
 	arch = any
 	license = Artistic-1.0-Perl
 	license = CC0-1.0
+	checkdepends = perl-file-slurp
+	checkdepends = perl-test-pod
 	makedepends = curl>8.7.1
 	makedepends = git
 	makedepends = perl-module-build
-	makedepends = perl-file-slurp
-	makedepends = perl-test-pod
+	depends = perl>=5.10.1
 	depends = perl-class-accessor
-	depends = perl-libwww
+	depends = perl-datetime
+	depends = perl-datetime-format-strptime
+	depends = perl-getopt-long
+	depends = perl-json
 	depends = perl-lwp-protocol-https
-	depends = perl-xml-libxml
 	provides = perl-travel-status-de-vrr=3.06+r316.20250105.g5dd37a6
+	provides = perl-travel-status-de-efa-git=3.06+r316.20250105.g5dd37a6
+	provides = perl-travel-status-de-efa=3.06+r316.20250105.g5dd37a6
 	conflicts = perl-travel-status-de-vrr
+	conflicts = perl-travel-status-de-efa
 	options = !emptydirs
 	source = Travel-Status-DE-VRR::git+http://git.finalrewind.org/Travel-Status-DE-VRR
 	source = transport-apis::git+https://github.com/public-transport/transport-apis.git
