@@ -4,16 +4,25 @@
 _model="k100-k200-series"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.0
-pkgrel=12
+pkgrel=13
 pkgdesc="Epson inkjet printer driver (K100, K200; WorkForce K101)"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:Epson End User Software License Agreement')
-depends=('epson-inkjet-printer-filter' 'gcc-libs' 'glibc')
+depends=('epson-inkjet-printer-filter' 'glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 source=("https://download.ebz.epson.net/dsc/op/stable/SRPMS/${_pkgsrc}-1lsb3.2.src.rpm")
 sha256sums=('6a37879a403b4d4da576ddbc7736dc110eec589d362b4280bf61342c0df97e48')
+
+case "${CARCH}" in
+  x86_64)
+    _bit="64"
+    ;;
+  i686)
+    _bit=""
+    ;;
+esac
 
 prepare() {
   cd "${srcdir}"
@@ -37,11 +46,11 @@ package() {
   install -vDm644 "README"        "${pkgdir}/usr/share/doc/${pkgname}/README"
   install -vDm644 "COPYING.EPSON" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
-  find "lib64"    -type f -execdir \
+  find "lib${_bit}" -type f -execdir \
     install -vDm644 "{}" "${pkgdir}/usr/lib/{}" \;
-  find "ppds"     -type f -execdir \
+  find "ppds"       -type f -execdir \
     install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
-  find "resource" -type f -exec    \
+  find "resource"   -type f -exec    \
     install -vDm644 "{}" "${pkgdir}/usr/share/epson-inkjet-printer-filter/{}" \;
 
   cd "${pkgdir}/usr/lib"
