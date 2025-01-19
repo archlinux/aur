@@ -1,14 +1,13 @@
 pkgbase = pyzor
-	pkgdesc = Detect and block spam using identifying digests of messages.
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgdesc = Spam-blocking networked system that uses spam signatures to identify spam
+	pkgver = 1.1.3b
+	pkgrel = 1
 	url = https://github.com/SpamExperts/pyzor
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pyzor/pyzor-1.0.0.tar.gz
-	sha256sums = 10ea114bdee2eee5edd6afe8eeddaaf605620445977ae019a3e9b1cbb6bc3b27
+	source = pyzor-1.1.3b-0c44c6f.tar.gz::https://github.com/SpamExperts/pyzor/archive/0c44c6f.tar.gz
+	sha256sums = 3ccaa0827684e83ea708bab096dee2e76fa291ac954ea4275535025ac13a8d8c
 
 pkgname = pyzor
-

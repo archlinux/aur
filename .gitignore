@@ -1,5 +1,4 @@
-*.un~
-*.swp
-pkg/
-src/
-*.tar.*
+src
+pkg
+*any.pkg.tar.zst
+pyzor-*.tar.gz

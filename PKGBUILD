@@ -1,20 +1,25 @@
-# Maintainer: John Lane <archlinux at jelmail dot com>
+# Maintainer: Amish <contact at via dot aur>
+# Contributor: John Lane <archlinux at jelmail dot com>
 # Contributor: Rich Li <rich@dranek.com>
-
 pkgname=pyzor
-pkgver=1.0.0
-pkgrel=2
-pkgdesc="Detect and block spam using identifying digests of messages."
+pkgver=1.1.3b
+pkgrel=1
+_gitrev=0c44c6f
+pkgdesc='Spam-blocking networked system that uses spam signatures to identify spam'
 arch=('any')
-url="https://github.com/SpamExperts/pyzor"
+url='https://github.com/SpamExperts/pyzor'
 license=('GPL')
 makedepends=('python-setuptools')
 depends=('python')
-#source=(https://pypi.python.org/packages/source/p/pyzor/${pkgname}-${pkgver}.tar.gz)
-source=(https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('10ea114bdee2eee5edd6afe8eeddaaf605620445977ae019a3e9b1cbb6bc3b27')
+source=("${pkgname}-${pkgver}-${_gitrev}.tar.gz::https://github.com/SpamExperts/${pkgname}/archive/${_gitrev}.tar.gz")
+sha256sums=('3ccaa0827684e83ea708bab096dee2e76fa291ac954ea4275535025ac13a8d8c')
+
+build() {
+  cd "${srcdir}/${pkgname}-${_gitrev}"*
+  python setup.py build
+}
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd "${srcdir}/${pkgname}-${_gitrev}"*
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
