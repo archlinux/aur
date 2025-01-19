@@ -1,0 +1,18 @@
+pkgbase = cosh-git
+	pkgdesc = Concatenative command-line shell
+	pkgver = v0.3.0.r0.a5357f9
+	pkgrel = 1
+	url = https://github.com/tomhrr/cosh
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = rust
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	provides = cosh
+	conflicts = cosh
+	source = git+https://github.com/tomhrr/cosh.git
+	sha256sums = SKIP
+
+pkgname = cosh-git
