@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=vkd3d-proton-mingw
-pkgver=2.14
+pkgver=2.14.1
 pkgrel=1
 pkgdesc='Fork of VKD3D. Development branches for Protons Direct3D 12 implementation'
 arch=('x86_64')
@@ -38,7 +38,7 @@ prepare() {
     local -A flags
     for opt in "${split[@]}"; do flags["${opt%%=*}"]="${opt##*=}"; done
     local march="${flags["-march"]:-nocona}"
-    local mtune="generic" #"${flags["-mtune"]:-core-avx2}"
+    local mtune="${flags["-mtune"]:-core-avx2}"
 
     CFLAGS="-O3 -march=$march -mtune=$mtune -pipe"
     CXXFLAGS="-O3 -march=$march -mtune=$mtune -pipe"
@@ -49,25 +49,19 @@ prepare() {
     CXXFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing -std=c++17"
     LDFLAGS+=" -Wl,--file-alignment,4096"
 
-    # AVX is "hard" disabled for 32bit in any case.
-    # AVX/AVX2 for 64bit is disabled below.
-    # Seems unnecessery for 64bit if -mtune=generic is used
-    #CFLAGS+=" -mno-avx2 -mno-avx"
-    #CXXFLAGS+=" -mno-avx2 -mno-avx"
-
     export CFLAGS CXXFLAGS LDFLAGS
 
     local cross_ldflags="$LDFLAGS"
 
-    local cross_cflags="$CFLAGS -mcmodel=small"
-    local cross_cxxflags="$CXXFLAGS -mcmodel=small"
+    local cross_cflags="$CFLAGS -mcmodel=small -mprefer-avx128"
+    local cross_cxxflags="$CXXFLAGS -mcmodel=small -mprefer-avx128"
     sed -i build-win64.txt \
         -e "s|@CARGS@|\'${cross_cflags// /\',\'}\'|g" \
         -e "s|@CXXARGS@|\'${cross_cxxflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${cross_ldflags// /\',\'}\'|g"
 
-    local cross_cflags="$CFLAGS -mstackrealign -mno-avx"
-    local cross_cxxflags="$CXXFLAGS -mstackrealign -mno-avx"
+    local cross_cflags="$CFLAGS -mstackrealign -mprefer-avx128 -mpreferred-stack-boundary=2"
+    local cross_cxxflags="$CXXFLAGS -mstackrealign -mprefer-avx128 -mpreferred-stack-boundary=2"
     sed -i build-win32.txt \
         -e "s|@CARGS@|\'${cross_cflags// /\',\'}\'|g" \
         -e "s|@CXXARGS@|\'${cross_cxxflags// /\',\'}\'|g" \
@@ -81,6 +75,7 @@ build() {
         --bindir "" --libdir "" \
         --buildtype "plain" \
         -Denable_tests=false \
+        -Db_ndebug=true \
         --strip
     ninja -C "build/x64" -v
 
@@ -89,8 +84,9 @@ build() {
         --prefix "/usr/share/vkd3d-proton/x86" \
         --bindir "" --libdir "" \
         --buildtype "plain" \
-        --strip \
-        -Denable_tests=false
+        -Denable_tests=false \
+        -Db_ndebug=true \
+        --strip
     ninja -C "build/x86" -v
 }
 
@@ -105,7 +101,7 @@ package() {
     install -Dm 755 -t "$pkgdir/usr/bin" setup_vkd3d_proton
 }
 
-sha256sums=('c576f8d7015efc6e98d77df93bfa96faf1edec7389dfb95c303fd6af11b9d8f5'
+sha256sums=('2b45dced482fa02f26ffac3d1e450b0ed4e5b81415c18337a4db38bce3b08938'
             'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362'
             '5a72af2395f7bc700d566add343b8742ebd6facc0d682f1386be44cce1d19c5b'
             '67815eed9d47bbf610e23c6a1e4954c11371886c2ca73555dd9f1d6fbebb1323')
