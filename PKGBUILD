@@ -35,12 +35,14 @@ package() {
   install -vDm644 "COPYING.EPSON" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
   find . -maxdepth 1 -type f -name '*.txt' -exec \
     install -vDm644 "{}" "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
-
-  find "lib${_bit}" -type f -execdir \
+  
+  find "doc"      -type f -execdir \
+    install -vDm644 "{}" "${pkgdir}/usr/share/doc/${pkgname}/html/{}"
+  find "lib64"    -type f -execdir \
     install -vDm644 "{}" "${pkgdir}/usr/lib/{}" \;
-  find "ppds"       -type f -execdir \
+  find "ppds"     -type f -execdir \
     install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
-  find "resource"   -type f -exec    \
+  find "resource" -type f -exec    \
     install -vDm644 "{}" "${pkgdir}/usr/share/epson-inkjet-printer-filter/{}" \;
 
   cd "${pkgdir}/usr/lib"
