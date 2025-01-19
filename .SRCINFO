@@ -1,0 +1,13 @@
+pkgbase = gcc-kawaii-plugin-zh
+	pkgdesc = a gcc plugin and make your gcc kawaii :)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Bill-Haku/kawaii-gcc
+	arch = any
+	license = GPL-3.0-or-later
+	depends = gcc
+	depends = gettext
+	source = gcc-kawaii-plugin-zh::git+https://github.com/Bill-Haku/kawaii-gcc
+	sha256sums = SKIP
+
+pkgname = gcc-kawaii-plugin-zh
