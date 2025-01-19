@@ -1,46 +1,26 @@
 # Maintainer: fenuks
 
-pkgbase=ropemode
-pkgname=(python-${pkgbase} python2-${pkgbase})
-pkgver=0.4
+pkgname=ropemode
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Ropemode, a helper for using rope refactoring library in IDEs"
 arch=("any")
-url="https://pypi.python.org/pypi/${pkgbase}"
+url="https://pypi.python.org/pypi/${pkgname}"
 license=("GPL")
 depends=()
 optdepends=()
-makedepends=("python-setuptools" "python2-setuptools")
+makedepends=("python-setuptools")
 conflicts=()
 # install=$pkgname.install
-source=("https://pypi.python.org/packages/f2/a4/9901c33b32f2d4c2f3bfdc656ec1fe5b7914fcfcfc2f783ff17c070a77e3/ropemode-0.4.tar.gz")
-md5sums=('54c52d19e43cae5ab06f49c6404f734f')
-sha256sums=('66cdae6bc63baac894f8d26583c193ee86ad48c72b3da59fb4a77d9973cf4393')
+source=("https://files.pythonhosted.org/packages/c3/d8/d4121e7b04fe8539faf4d600e6bb6a7630800b110a7ae6b5b2f8e7dfb205/ropemode-0.6.1.tar.gz")
+sha256sums=('99b8d22df71be358e10cc435fb97140e57a50c42b846bd4a72491c5744dd0470')
 
-build_python-ropemode() {
-    cd "${srcdir}/${pkgbase}-${pkgver}"
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py build
 }
 
-build_python2-ropemode() {
-    cd "${srcdir}/${pkgbase}-${pkgver}"
-    python2 setup.py build
-}
-
-package_python-ropemode() {
-    depends=(python-rope)
-    provides=(python-${pkgbase})
-    conflicts=(python-${pkgbase})
-
-    cd "${srcdir}/${pkgbase}-${pkgver}"
+package() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}/" --optimize=1
-}
-
-package_python2-ropemode() {
-    depends=(python2-rope)
-    provides=(python2-${pkgbase})
-    conflicts=(python2-${pkgbase})
-
-    cd "${srcdir}/${pkgbase}-${pkgver}"
-    python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
