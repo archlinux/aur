@@ -14,7 +14,7 @@
 _pkgname='beeper'
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=3.110.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A unified messaging app"
 url="https://beeper.com/"
 license=('LicenseRef-beeper')
@@ -57,22 +57,29 @@ _package_beeper() {
 _package_asar() {
   # script
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
-#!/usr/bin/env sh
-XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-\$HOME/.config}"
+#!/usr/bin/env bash
 
-_ELECTRON=/usr/bin/electron${_electron_version:-}
-_ASAR="/${_install_path}/$_pkgname/resources/app.asar"
-_FLAGS_FILE="\$XDG_CONFIG_HOME/$_pkgname-flags.conf"
+name=$_pkgname
+flags_file="\${XDG_CONFIG_HOME:-\$HOME/.config}/\${name}-flags.conf"
 
-if [ -r "\$_FLAGS_FILE" ]; then
-  _USER_FLAGS="\$(cat "\$_FLAGS_FILE")"
+lines=()
+if [[ -f "\${flags_file}" ]]; then
+  mapfile -t lines < "\${flags_file}"
 fi
 
-if [[ \$EUID -ne 0 ]] || [[ \$ELECTRON_RUN_AS_NODE ]]; then
-    exec \${_ELECTRON} \${_ASAR} \$_USER_FLAGS "\$@"
-else
-    exec \${_ELECTRON} \${_ASAR} --no-sandbox \$_USER_FLAGS "\$@"
-fi
+flags=()
+for line in "\${lines[@]}"; do
+  if [[ ! "\${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "\${line}" ]]; then
+    flags+=("\${line}")
+  fi
+done
+
+: \${ELECTRON_IS_DEV:=0}
+export ELECTRON_IS_DEV
+: \${ELECTRON_FORCE_IS_PACKAGED:=true}
+export ELECTRON_FORCE_IS_PACKAGED
+
+exec electron "/${_install_path}/\${name}/resources/app.asar" "\${flags[@]}" "\$@"
 END
 
   # app.asar
@@ -90,7 +97,7 @@ Type=Application
 Name=${_pkgname^}
 GenericName=Unified Messenger
 Comment=$pkgdesc
-Exec=$_pkgname --no-sandbox %U
+Exec=$_pkgname %U
 Icon=$_pkgname
 Terminal=false
 StartupWMClass=Beeper
