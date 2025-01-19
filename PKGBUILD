@@ -26,7 +26,7 @@ prepare() {
 
 package_hledger-bin() {
     pkgdesc='Command-line interface for the hledger accounting system'
-    provides=(hledger)
+    provides=(hledger="$pkgver")
     conflicts=(hledger)
     _pkgname="${pkgname%-bin}"
 
@@ -38,7 +38,7 @@ package_hledger-bin() {
 
 package_hledger-ui-bin() {
     pkgdesc='Curses-style terminal interface for the hledger accounting system'
-    provides=(hledger-ui)
+    provides=(hledger-ui="$pkgver")
     conflicts=(hledger-ui)
     _pkgname="${pkgname%-bin}"
 
@@ -50,7 +50,7 @@ package_hledger-ui-bin() {
 
 package_hledger-web-bin() {
     pkgdesc='Web-based user interface for the hledger accounting system'
-    provides=(hledger-web)
+    provides=(hledger-web="$pkgver")
     conflicts=(hledger-web)
     _pkgname="${pkgname%-bin}"
 

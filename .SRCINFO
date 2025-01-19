@@ -17,15 +17,15 @@ pkgbase = hledger-bin
 
 pkgname = hledger-bin
 	pkgdesc = Command-line interface for the hledger accounting system
-	provides = hledger
+	provides = hledger=1.41
 	conflicts = hledger
 
 pkgname = hledger-ui-bin
 	pkgdesc = Curses-style terminal interface for the hledger accounting system
-	provides = hledger-ui
+	provides = hledger-ui=1.41
 	conflicts = hledger-ui
 
 pkgname = hledger-web-bin
 	pkgdesc = Web-based user interface for the hledger accounting system
-	provides = hledger-web
+	provides = hledger-web=1.41
 	conflicts = hledger-web
