@@ -3,8 +3,8 @@
 _gitname="pass-secret-service"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
-pkgver=0.2+1.r46.20240720.f9dbcbb
-pkgrel=5
+pkgver=0.2.1.r48.20250108.dbcd9ac
+pkgrel=1
 pkgdesc="An org.freedesktop.secrets provider with a pass backend."
 arch=(
   'aarch64'
