@@ -1,11 +1,14 @@
 pkgbase = python-sparse
 	pkgdesc = Sparse n-dimensional arrays for the PyData ecosystem
 	pkgver = 0.15.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sparse.pydata.org
 	arch = any
 	license = BSD-3-clause
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python>=3.8
 	depends = python-numpy>=1.17
 	depends = python-scipy>=0.19
