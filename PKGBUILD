@@ -10,7 +10,7 @@
 _pkgname="wings3d"
 pkgname="$_pkgname"
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='3D modeler using the winged edge data structure'
 url="https://www.wings3d.com/"
 license=('GPL-2.0-or-later')
@@ -34,6 +34,7 @@ sha256sums=('2a1c0dd340a994e81710b739a12db272b6aac2585127a5cc5f9eba2ed225774f')
 
 prepare() {
   sed -e "/desktop-id/s&com.wings3d.WINGS.desktop&$pkgname.desktop&" -i "$_pkgsrc/unix/wings.appdata.xml"
+  printf '%s' "v$pkgver" > "$_pkgsrc/version"
 }
 
 build() {
