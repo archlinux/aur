@@ -5,12 +5,12 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.18.1.r0.g9f97195
-_pandoc_type=version
+pkgver=0.3.18.1.r2.g357b101c
+_pandoc_type=stock
 _pandoc_ver=3.6.2
 _pandoc_lua_ver=0.4.1
 _pandoc_commit=fd496848d8a9799edc5095ed3134522a9c14ad11
-pkgrel=2
+pkgrel=1
 pkgdesc="Pandoc filter for cross-references (static build)"
 url="https://github.com/lierdakil/pandoc-crossref"
 license=("GPL-2.0-or-later")
@@ -76,9 +76,6 @@ prepare() {
     _pandoc_bound=$(awk -F. '/[0-9]+\./{$NF++;print}' OFS=. <<<"${_pandoc_ver}")
     sed -i "/pandoc.*< \?$_pandoc_ver/s#< \?[0-9.]*#<$_pandoc_bound#" \
         pandoc-crossref.cabal package.yaml
-
-    _bumpVer skylighting 0.14.5
-    _bumpVer skylighting-core 0.14.5
 }
 
 build() {
