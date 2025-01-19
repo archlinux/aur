@@ -1,6 +1,6 @@
 # Maintainer:
 pkgname=dr42-time-scheduler-client
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="A simple time management app"
 arch=('any')
