@@ -3,12 +3,12 @@
 pkgname=graphmod-git
 _pkgname="${pkgname%-git}"
 pkgver=1.4.r53.g983c38f
-pkgrel=5
+pkgrel=6
 pkgdesc="Present the module dependencies of a program as a 'dot' graph"
 arch=('i686' 'x86_64')
 url="https://github.com/yav/${_pkgname}"
 license=('BSD-3-Clause')
-provides=("$_pkgname")
+provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 depends=('gmp')
 makedepends=('git' 'stack')
