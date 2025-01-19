@@ -10,6 +10,9 @@ url='https://github.com/AmusementClub/vs-mlrt'
 license=('LGPL')
 depends=('vapoursynth' 'cuda' 'onnx' 'onnxruntime' 'protobuf')
 makedepends=('git' 'ninja' 'cmake' 'jq')
+optdepends=(
+  "onnxruntime-opt: AVX2-optimized onnxruntime"
+)
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 
