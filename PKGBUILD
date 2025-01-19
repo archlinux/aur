@@ -10,7 +10,7 @@
 
 pkgver=34.0.0
 _gcc_patches=132
-pkgrel=1
+pkgrel=2
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
@@ -477,7 +477,6 @@ prepare() {
     -s src/third_party/skia --header src/skia/ext/skia_commit_hash.h
   src/build/util/lastchange.py \
     -s src/third_party/dawn --revision src/gpu/webgpu/DAWN_VERSION
-  # needs newer clang to read the bundled PGO profile
   src/tools/update_pgo_profiles.py --target=linux update \
     --gs-url-base=chromium-optimization-profiles/pgo_profiles
 
@@ -587,7 +586,7 @@ build() {
     'clang_base_path="/usr"'
     'clang_use_chrome_plugins=false'
     "clang_version=\"$_clang_version\""
-    #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+    'chrome_pgo_phase=1'
   )
 
   # Allow the use of nightly features with stable Rust compiler

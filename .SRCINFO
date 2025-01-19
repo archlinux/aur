@@ -1,7 +1,7 @@
 pkgbase = electron34
 	pkgdesc = Build cross platform desktop apps with web technologies
 	pkgver = 34.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://electronjs.org
 	arch = x86_64
 	license = MIT
