@@ -1,54 +1,41 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=texinfo-git
-pkgver=6.8.r10343.beb67a5f97
+pkgver=7.2.r315.geff4fc14cc
 pkgrel=1
 epoch=1
 pkgdesc="GNU documentation system for on-line information and printed output"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/texinfo/"
-license=('GPL')
-groups=('base' 'base-devel')
-depends=('coreutils')
+license=('GPL-3.0-or-later')
+depends=('ncurses' 'gzip' 'perl' 'sh')
 makedepends=('git' 'help2man')
-provides=('texinfo' 'texinfo-js')
-conflicts=('texinfo' 'texinfo-js')
-source=("$pkgname::git://git.savannah.gnu.org/texinfo.git" "git://git.sv.gnu.org/gnulib"
-	texinfo-install.hook::https://git.archlinux.org/svntogit/packages.git/plain/trunk/texinfo-install.hook?h=packages/texinfo
-	texinfo-remove.hook::https://git.archlinux.org/svntogit/packages.git/plain/trunk/texinfo-remove.hook?h=packages/texinfo)
+provides=('texinfo')
+conflicts=('texinfo')
+source=("$pkgname::git+https://git.savannah.gnu.org/git/texinfo.git"
+	texinfo-install.hook
+	texinfo-remove.hook)
 sha256sums=('SKIP'
-            'SKIP'
-            '66ab7eab5ecdd7757081a743f94e6f4d2e783b61db5024344450748bf1bf8eb9'
-            '7300f03ac56e32564fb508b0dd07839d2428a422dcf13fd3246863f7ccb1965e')
-options=('libtool')
+            'beb0ff50bd8e8ca1d6e1c01e6a50352f9d25937c62822cf767a7b3d8f7374a9d'
+            '913ca8aac84386399b0a83ed0f6b04b5e6322da62f5c1d7ed31e1050ed37c1a9')
 
 pkgver() {
   cd $pkgname
-  printf "%s.r%s.%s" \
-    $(awk -F\[ '/AC_INIT/ {print $3}' configure.ac |cut -c 1-3) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
-}
-
-prepare() {
-  cd $pkgname
-  git submodule init
-  git config submodule.gnulib.url gnulib
-  git submodule update
+  git describe --long --tags | sed -r 's/texinfo-//;s/-/.r/;s/-/./g'
 }
 
 build() {
   cd $pkgname
-  ./autogen.sh || true
+  ./autogen.sh
   ./configure --prefix=/usr --libexecdir=/usr/lib
   make
 }
 
+check() {
+  make -C $pkgname check
+}
+
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir/" install
-  cd js
-  make DESTDIR="$pkgdir/" install
-  install -dm755 "$pkgdir"/usr/share/libalpm/hooks/
-  cd "$srcdir"
-  install -m644 texinfo-{install,remove}.hook \
-	  "$pkgdir"/usr/share/libalpm/hooks/
+  make -C $pkgname DESTDIR="$pkgdir/" install
+  install -Dm644 texinfo-{install,remove}.hook -t "$pkgdir"/usr/share/libalpm/hooks/
 }

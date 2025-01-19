@@ -1,5 +1,5 @@
 [Trigger]
-Type = File
+Type = Path
 Operation = Remove
 Target = usr/share/info/*
 
