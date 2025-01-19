@@ -31,8 +31,8 @@ optdepends=(
   'xdg-desktop-portal: File picker portal')
 # template end;
 pkgname=alchemy-viewer-git
-pkgver=7.1.9.57091.d3b9714206
-pkgrel=2
+pkgver=7.1.9.57706.62533287a9
+pkgrel=1
 replaces=('alchemy-next-viewer-git')
 provides=('alchemy-viewer')
 # template start; name=source; version=1.0;
@@ -40,7 +40,7 @@ source=("${pkgname}"::'git+https://github.com/AlchemyViewer/Alchemy.git#branch='
 sha256sums=('SKIP')
 # template end;
 depends+=('dbus-glib' 'systemd-libs')
-conflicts+=("alchemy-next-viewer-nosystemd-git")
+conflicts+=("alchemy-viewer-nosystemd-git")
 
 # template start; name=pkgver; version=1.0;
 pkgver() {
