@@ -1,32 +1,39 @@
-# Maintainer: Alexander Fasching <fasching.a91@gmail.com>
+# Maintainer: Nathan Chere <git at nathanchere dot com dot au>
+# Contributor: Alexander Fasching <fasching.a91@gmail.com>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=python-pyxel
-pkgver=2.2.8
-pkgrel=1
+pkgver=2.3.0
+pkgrel=2
 pkgdesc='Retro game development environment'
 arch=('i686' 'x86_64')
 url='https://github.com/kitao/pyxel'
 license=('MIT')
-depends=('portaudio' 'python-glfw' 'python-opengl'
-         'python-pillow' 'python-sounddevice' 'sdl2_image')
+depends=('gcc-libs' 'glibc' 'python' 'sdl2')
 optdepends=('pyinstaller')
-makedepends=('python-setuptools')
-source=("https://github.com/kitao/pyxel/archive/v$pkgver.tar.gz")
-md5sums=('b1ef165292f42f90395e5761338904ec')
+makedepends=('cargo-nightly' 'clang' 'python-build' 'python-installer' 'python-maturin')
+source=("pyxel-$pkgver::https://github.com/kitao/pyxel/archive/v$pkgver.tar.gz")
+md5sums=('9e3ba22aa116e313e0a89a5c5da95922')
+
+options=('!debug')
+
+prepare() {
+  cd pyxel-$pkgver
+  sed -i -e 's-/usr/local/include-/usr/include/SDL2-' rust/pyxel-platform/build.rs
+}
 
 build() {
-  cd pyxel-$pkgver
+  cd pyxel-$pkgver/python
 
-  #patch -i "$srcdir"/0001-optional-pyinstaller.patch
-  python setup.py build
+  export RUSTUP_TOOLCHAIN=nightly
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd pyxel-$pkgver
+  cd pyxel-$pkgver/python
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
