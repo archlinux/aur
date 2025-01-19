@@ -2,8 +2,8 @@
 
 pkgname="coqui-tts"
 _pkgname="${pkgname/-/_}"
-pkgver=0.24.3
-pkgrel=2
+pkgver=0.25.3
+pkgrel=1
 pkgdesc="Deep learning for Text to Speech"
 url="https://github.com/idiap/coqui-ai-TTS"
 license=("MPL2")
@@ -56,7 +56,7 @@ optdepends=("python-umap-learn: for notebooks"
 )
 options=("!strip")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-b2sums=('137478561940c01f83b14176a8a03a52e0508880d0cf255cff14b516d9eee71724481f872c57c7de3cb57cd926fcb869f8959f4c073050b1f8f76c247f63d82e')
+b2sums=('98e4b5fe2fd6026889a6dad79b3826bc46964bccfadb7552210a682d710d0d9353b4e21d623516c0458638985cfede724f2b01cbf8c22f9e299e9b77e6d0789a')
 
 build(){
  cd "$_pkgname-$pkgver"
