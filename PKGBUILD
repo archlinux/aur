@@ -48,43 +48,19 @@ optdepends=(
 options=(!lto) #Disabling pacman's LTO, as ThinLTO is enforced
 source=(
   git+https://github.com/libjxl/libjxl.git#tag=v${pkgver}
-  git+https://github.com/google/brotli.git#tag=v1.1.0
-  git+https://github.com/mm2/Little-CMS.git#tag=lcms2.16
-  git+https://github.com/google/googletest.git#tag=v1.15.2
-  git+https://github.com/webmproject/sjpeg.git
-  git+https://skia.googlesource.com/skcms.git
-  git+https://github.com/google/highway.git#tag=1.2.0
-  git+https://github.com/glennrp/libpng.git#tag=v1.6.45
-  git+https://github.com/madler/zlib.git#tag=v1.3.1
-  libjxl-testdata::git+https://github.com/libjxl/testdata.git
-  git+https://github.com/libjpeg-turbo/libjpeg-turbo.git#tag=3.1.0
+  git+https://skia.googlesource.com/skcms.git#commit=b2e692629c1fb19342517d7fb61f1cf83d075492
+  git+https://github.com/webmproject/sjpeg.git#commit=e5ab13008bb214deb66d5f3e17ca2f8dbff150bf
 )
 sha256sums=(
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
   SKIP
   SKIP
   SKIP
 )
 
 prepare() {
-  git -C libjxl submodule init
-  git -C libjxl config --local submodule.third_party/brotli.url "${srcdir}/brotli"
-  git -C libjxl config --local submodule.third_party/lcms.url "${srcdir}/Little-CMS"
-  git -C libjxl config --local submodule.third_party/googletest.url "${srcdir}/googletest"
-  git -C libjxl config --local submodule.third_party/sjpeg.url "${srcdir}/sjpeg"
+  git -C libjxl submodule init third_party/{skcms,sjpeg}
   git -C libjxl config --local submodule.third_party/skcms.url "${srcdir}/skcms"
-  git -C libjxl config --local submodule.third_party/highway.url "${srcdir}/highway"
-  git -C libjxl config --local submodule.third_party/libpng.url "${srcdir}/libpng"
-  git -C libjxl config --local submodule.third_party/zlib.url "${srcdir}/zlib"
-  git -C libjxl config --local submodule.third_party/testdata.url "${srcdir}/libjxl-testdata"
-  git -C libjxl config --local submodule.third_party/libjpeg-turbo.url "${srcdir}/libjpeg-turbo"
+  git -C libjxl config --local submodule.third_party/sjpeg.url "${srcdir}/sjpeg"
   git -C libjxl -c protocol.file.allow=always submodule update
 }
 

@@ -34,24 +34,8 @@ pkgbase = libjxl-metrics
 	conflicts = ssimulacra2
 	options = !lto
 	source = git+https://github.com/libjxl/libjxl.git#tag=v0.11.1
-	source = git+https://github.com/google/brotli.git#tag=v1.1.0
-	source = git+https://github.com/mm2/Little-CMS.git#tag=lcms2.16
-	source = git+https://github.com/google/googletest.git#tag=v1.15.2
-	source = git+https://github.com/webmproject/sjpeg.git
-	source = git+https://skia.googlesource.com/skcms.git
-	source = git+https://github.com/google/highway.git#tag=1.2.0
-	source = git+https://github.com/glennrp/libpng.git#tag=v1.6.45
-	source = git+https://github.com/madler/zlib.git#tag=v1.3.1
-	source = libjxl-testdata::git+https://github.com/libjxl/testdata.git
-	source = git+https://github.com/libjpeg-turbo/libjpeg-turbo.git#tag=3.1.0
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = git+https://skia.googlesource.com/skcms.git#commit=b2e692629c1fb19342517d7fb61f1cf83d075492
+	source = git+https://github.com/webmproject/sjpeg.git#commit=e5ab13008bb214deb66d5f3e17ca2f8dbff150bf
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
