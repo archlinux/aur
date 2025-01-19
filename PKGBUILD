@@ -5,7 +5,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=2.3.35.r0.g4eae1b7127
+pkgver=2.3.119.r1.g9e21ee1bc4
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -49,11 +49,15 @@ makedepends=(
     libjpeg-turbo
     qt6-tools
     qt6-wayland
+    alsa-utils
+    gstreamer
 )
 optdepends=(
     'qt6-wayland: Wayland support'
     'libpulse: Pulseaudio support'
     'libpipewire: Pipewire support'
+    'alsa-utils: Alsa/Aplay support'
+    'gstreamer: Backup sound for RetroAchievements'
 )
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
