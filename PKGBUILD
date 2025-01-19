@@ -9,8 +9,10 @@ pkgdesc='A tool to manage the building of packages'
 url=https://releng.io/
 arch=(any)
 license=(BSD-2-Clause)
-makedepends=(
+depends=(
   python
+)
+makedepends=(
   python-build
   python-installer
   python-setuptools
@@ -22,17 +24,26 @@ optdepends=(
   'bzr: support for Bazaar cloning'
   'cmake: support for CMake package management'
   'cvs: support for CVS checkouts'
+  'dropbear-scp: support for secure-copy fetching of sources'
   'fish: shell completion for fish'
   'git: support for Git cloning'
   'gnupg: support for GPG verification of downloaded packages'
   'make: support for building make-dependent packages'
-  'meson: support for building meson-dependent packages'
   'mercurial: support for Mercurial cloning'
+  'meson: support for building meson-dependent packages'
   'openssh: support for secure-copy fetching of sources'
   'patch: support for patching package sources'
+  'python-build: support for Python packages using build frontend'
   'python-certifi: support using Mozilla'\''s CA Bundle for Bazaar cloning'
+  'python-flit: support for Python packages using Flit'
+  'python-hatch: support for Python packages using Hatch'
+  'python-installer: support for installing Python into a sysroot'
   'python-matplotlib: support for PDF generation of build statistics'
   'python-numpy: support for PDF generation of build statistics'
+  'python-pdm: support for Python packages using PDM'
+  'python-poetry: support for Python packages using Poetry'
+  'python-setuptools: support for Python packages using Setuptools'
+  'rsync: support for rsync fetching'
   'rust: support for Cargo package management'
   'scons: support for building SCons-dependent packages'
   'subversion: support for Subversion checkouts'
