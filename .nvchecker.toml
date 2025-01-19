@@ -1,0 +1,4 @@
+[ruby-liquid]
+source = "gems"
+gems = "liquid"
+include_regex = "^4\\..*"
