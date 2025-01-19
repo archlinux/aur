@@ -1,7 +1,7 @@
 # Maintainer: ArcticLampyrid <ArcticLampyrid@outlook.com>
 
 pkgname=netmount
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Unified management and mounting of cloud storage facilities"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ makedepends=('moreutils'
              'jq')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	    "${pkgname}.desktop")
-sha512sums=('e6ced51081200efa519fd791595a84666cbe5ac0f08f01f4bf0c3dc5d7d914410ae190836d178c3d191eaed8eb37cce91528b77137c7778ec1c59dd854ade7fe'
+sha512sums=('18afac55e22da152bbb0e70b34f1d8ad32b7030547772f125f4628af07d242db92b0cf7547fb1e4fcbfeb95b17368395ab986ad9f17a501348a0981a2b85074a'
             '84b20dc4ce7d56889f899fdc0966159c2eac6f6e322476e86c046f0df1c245c33d48c0238e6aaad3ac50cd0c08d11f094c5232a51c11ad42e694f9f86bb59179')
 options=(!lto)
 prepare() {
