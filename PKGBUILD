@@ -12,7 +12,7 @@ depends=('python' 'python-numpy' 'python-scipy')
 optdepends=('python-simpleitk')
 makedepends=('python-setuptools' 'boost')
 source=("https://github.com/loli/medpy/archive/$pkgver.tar.gz")
-sha256sums=('2a309ad7aaf80c1a46a56a1e3b8f19b981313cf2011bc901cfc3020c9ffa720d')
+b2sums=('837a78e6116eff11140566a9da6703f28ce5eccb69f873d70099abef106ea06fd75ca9a23342a68f40632cbf985525d57f798a8ddc58a5e6fe702b1bafe3c5c3')
 
 prepare() {
 	cd $srcdir/$_appname-$pkgver
