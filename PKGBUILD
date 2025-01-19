@@ -3,8 +3,8 @@
 _pkgauthor=VHSgunzo
 _pkgname=ssrv
 pkgname=${_pkgname}-bin
-pkgver=0.3.2
-_pkgstr=gfebc9d3
+pkgver=0.3.3
+_pkgstr=ga5de203
 pkgrel=1
 pkgdesc='Shell server/client'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -21,9 +21,9 @@ source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}-i386-v${pkgver}.r0
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-aarch64-v${pkgver}.r0.${_pkgstr}-tls.tar.zst")
 sha256sums=('39f388e52094ccc94bf793a75c8021fb673fcff2b8e10c316501c9d09ad8cd1a'
             '74161ac6404007c250caf8ec1556ddb6bbee99b0ac3e18d8616419ca7d7c1d6a')
-sha256sums_x86_64=('16e7b0018cfa36a2ac5702fae5d0d17f5cdb0278a1c77d1020f4be4d8e8b0351')
-sha256sums_i686=('f375f0e0a370cb2bc4ad69103e1f009685534669fdd37a1572124b8e7e15ee1b')
-sha256sums_aarch64=('96d9c3f0e18bc00224a74607e2417d9fdd88ef9fc73909c0f90e83ec40138238')
+sha256sums_x86_64=('a7b19837d62528fe1ef723ec408058cf315c9ce1ce589b99e0147c7992856f11')
+sha256sums_i686=('61fe266d26563bcd5e320e7fd1934f55c831a3299ea2788447b250068f21d8bb')
+sha256sums_aarch64=('5dca536d6cc0127f726c6bc0aa82610a0d16ac68242cd00994e5002ea7dce36e')
 
 
 package() {
