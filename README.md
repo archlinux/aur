@@ -5,6 +5,13 @@
 - Commit, with meaningful message. Make sure .SRCINFO is commited 
 - Push
 
+OR 
+
+Run: 
+```bash
+./update-to-latest.sh
+```
+
 # To build package
 
 Run: `makepkg`
