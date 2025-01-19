@@ -13,13 +13,13 @@ pkgname=(
  dotnet-source-built-artifacts-6.0
 )
 pkgver=6.0.36.sdk136
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url=https://www.microsoft.com/net/core
 license=(MIT)
 makedepends=(
   bash
-  clang
+  clang18
   cmake
   dotnet-sdk-6.0
   dotnet-source-built-artifacts-6.0
@@ -30,7 +30,7 @@ makedepends=(
   libunwind
   libxml2
   lldb
-  llvm
+  llvm18
   lttng-ust2.12
   nodejs
   openssl
@@ -85,6 +85,8 @@ build() {
   export COMPlus_LTTng=0
   export VERBOSE=1
   export OPENSSL_ENABLE_SHA1_SIGNATURES=1
+
+  export PATH="/usr/lib/llvm18/bin:$PATH"
 
   # this uses malloc_usable_size, which is incompatible with fortification level 3
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
