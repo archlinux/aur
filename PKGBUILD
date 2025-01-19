@@ -4,7 +4,7 @@
 
 pkgname=forgit-git
 _pkgname=${pkgname%-git}
-pkgver=24.02.0.r6.g00ed721
+pkgver=25.01.0.r0.gdf51911
 pkgrel=1
 pkgdesc="Utility tool powered by fzf for using git interactively"
 arch=('any')
@@ -18,7 +18,8 @@ optdepends=(
 	'git-delta: human readable diffs'
 	'diff-so-fancy: human readable diffs'
 	'bat: syntax highlighting for .gitignore'
-	'emoji-cli: emoji support for git log')
+	'emoji-cli: emoji support for git log'
+	'tree: directory tree view for gclean')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "forgit")
