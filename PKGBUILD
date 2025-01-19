@@ -48,43 +48,19 @@ optdepends=(
 options=(!lto) #Disabling pacman's LTO, as ThinLTO is enforced
 source=(
   git+https://github.com/libjxl/libjxl.git
-  git+https://github.com/google/brotli.git
-  git+https://github.com/mm2/Little-CMS.git
-  git+https://github.com/google/googletest.git
-  git+https://github.com/webmproject/sjpeg.git
   git+https://skia.googlesource.com/skcms.git
-  git+https://github.com/google/highway.git
-  git+https://github.com/glennrp/libpng.git
-  git+https://github.com/madler/zlib.git
-  libjxl-testdata::git+https://github.com/libjxl/testdata.git
-  git+https://github.com/libjpeg-turbo/libjpeg-turbo.git
+  git+https://github.com/webmproject/sjpeg.git
 )
 sha256sums=(
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
   SKIP
   SKIP
   SKIP
 )
 
 prepare() {
-  git -C libjxl submodule init
-  git -C libjxl config --local submodule.third_party/brotli.url "${srcdir}/brotli"
-  git -C libjxl config --local submodule.third_party/lcms.url "${srcdir}/Little-CMS"
-  git -C libjxl config --local submodule.third_party/googletest.url "${srcdir}/googletest"
-  git -C libjxl config --local submodule.third_party/sjpeg.url "${srcdir}/sjpeg"
+  git -C libjxl submodule init third_party/{skcms,sjpeg}
   git -C libjxl config --local submodule.third_party/skcms.url "${srcdir}/skcms"
-  git -C libjxl config --local submodule.third_party/highway.url "${srcdir}/highway"
-  git -C libjxl config --local submodule.third_party/libpng.url "${srcdir}/libpng"
-  git -C libjxl config --local submodule.third_party/zlib.url "${srcdir}/zlib"
-  git -C libjxl config --local submodule.third_party/testdata.url "${srcdir}/libjxl-testdata"
-  git -C libjxl config --local submodule.third_party/libjpeg-turbo.url "${srcdir}/libjpeg-turbo"
+  git -C libjxl config --local submodule.third_party/sjpeg.url "${srcdir}/sjpeg"
   git -C libjxl -c protocol.file.allow=always submodule update
 }
 
