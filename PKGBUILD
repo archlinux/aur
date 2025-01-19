@@ -10,7 +10,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=132.0.6834.83
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _manual_clone=0
 _system_clang=1
@@ -48,7 +48,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         0001-ozone-wayland-implement-text_input_manager-fixes.patch
         0001-vaapi-flag-ozone-wayland.patch)
 sha256sums=('f98315eacbf3be106feca37f8243d8c4092d4fd832c918aa36dc229eb6ab39e0'
-            '3f801dc8357f5c2d5480b5f6957999fa364173e7fb02e5fea960c5cfce70fff8'
+            '408911812d09614fe5c47760eab96c16f7624b2885e6b735ccca31af746a7586'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
