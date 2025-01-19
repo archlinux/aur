@@ -1,5 +1,5 @@
 pkgbase = neuralnote-bin
-	pkgdesc = https://github.com/DamRsn/NeuralNote
+	pkgdesc = Neural Note standalone release. Audio Plugin for Audio to MIDI transcription using deep learning.
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/DamRsn/NeuralNote
