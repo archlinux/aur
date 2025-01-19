@@ -1,7 +1,7 @@
 pkgbase = python-huggingface-hub
 	pkgdesc = All the open source things related to the Hugging Face Hub
 	pkgver = 0.27.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/huggingface/huggingface_hub
 	arch = any
