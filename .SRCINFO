@@ -1,7 +1,7 @@
 pkgbase = cabal-fmt-static-git
 	pkgdesc = Format .cabal files
 	pkgver = 0.1.12.r0.g86d59df
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/phadej/cabal-fmt
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = cabal-fmt-static-git
 	makedepends = git
 	makedepends = cabal-install
 	depends = gmp
-	provides = cabal-fmt
+	provides = cabal-fmt=0.1.12
 	conflicts = cabal-fmt
 	source = cabal-fmt-static-git::git+https://github.com/phadej/cabal-fmt.git
 	sha256sums = SKIP

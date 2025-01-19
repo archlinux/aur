@@ -3,12 +3,12 @@
 pkgname=cabal-fmt-static-git
 _pkgname="${pkgname%-static-git}"
 pkgver=0.1.12.r0.g86d59df
-pkgrel=2
+pkgrel=3
 pkgdesc='Format .cabal files'
 arch=('i686' 'x86_64')
 url="https://github.com/phadej/${_pkgname}"
 license=('GPL-3.0-or-later' 'BSD-3-Clause')
-provides=("$_pkgname")
+provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 depends=('gmp')
 makedepends=('git' 'cabal-install')
