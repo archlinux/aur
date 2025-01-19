@@ -1,12 +1,12 @@
 # Maintainer: Timo S. Prinz <t.prinz@coliza.de>
 # Contributor: Dan Nixon <dan@dan-nixon.com>
 pkgname=qdmr-git
-pkgver=r1327.c557f84
-pkgrel=2
+pkgver=r1419.a6c72eb1
+pkgrel=1
 pkgdesc="A GUI application for configuring and programming cheap DMR radios"
 arch=('x86_64' 'i686')
 url="https://github.com/hmatuschek/qdmr"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('libusb' 'qt5-tools' 'qt5-serialport' 'qt5-location' 'yaml-cpp')
 makedepends=('cmake' 'git')
 provides=("${pkgname%-git}")
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 source=('qdmr::git+https://github.com/hmatuschek/qdmr.git'
         'udev-rules.patch')
 sha256sums=('SKIP'
-         '3d1b388dd534a6ecb7039f3248f2c570b31ab198add4ce6dfd4da828884f0a99')
+            'f9bc5366df6186e475d010e79d002bf1d495220f269535c526b1faaf14fa1997')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -23,17 +23,23 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-	sed -i "s#DESTINATION \"/etc#DESTINATION \"${pkgdir}/etc#" lib/CMakeLists.txt
-	patch --forward --strip=1 --input="${srcdir}/udev-rules.patch"
+	patch --forward --strip=2 --input="${srcdir}/udev-rules.patch"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	cmake . -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/"
-	make
+  local cmake_options=(
+    -B build
+    -S ${pkgname%-git}
+    -W no-dev
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+	-D INSTALL_UDEV_RULES=ON
+	-D INSTALL_UDEV_PATH=/etc/udev/rules.d
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make install
+  DESTDIR="$pkgdir" cmake --install build
 }

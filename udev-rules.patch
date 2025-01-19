@@ -1,7 +1,10 @@
-diff '--color=auto' --unified --recursive --text qdmr-0.11.3/dist/99-qdmr.rules qdmr-0.11.3.new/dist/99-qdmr.rules
---- qdmr-0.11.3/dist/99-qdmr.rules	2023-08-15 22:17:01.000000000 +0200
-+++ qdmr-0.11.3.new/dist/99-qdmr.rules	2024-02-29 18:15:55.639349904 +0100
-@@ -1,9 +1,9 @@
+--- src/qdmr-0.12.1/dist/99-qdmr.rules.orig	2025-01-03 12:22:29.000000000 +0100
++++ src/qdmr-0.12.1/dist/99-qdmr.rules	2025-01-18 21:27:28.486921809 +0100
+@@ -1,12 +1,12 @@
+ # Radioddity RD-73
+-SUBSYSTEM=="usb", ATTRS{idVendor}=="1206", ATTRS{idProduct}=="0227", MODE="660", GROUP="dialout"
++SUBSYSTEM=="usb", ATTRS{idVendor}=="1206", ATTRS{idProduct}=="0227", MODE="660", GROUP="uucp"
+ 
  # TYT MD-UV380
 -SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE="660", GROUP="dialout"
 +SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE="660", GROUP="uucp"
