@@ -1,7 +1,7 @@
 pkgbase = walker
 license = MIT
 pkgdesc = extensible and fast wayland application runner
-pkgver = 0.12.6
+pkgver = 0.12.7
 pkgrel = 1
 url = https://github.com/abenz1267/walker
 arch = x86_64
@@ -14,8 +14,8 @@ depends = libvips
 depends = ffmpeg
 optdepends = wl-clipboard: for clipboard module
 optdepends = libqalculate: for calculator module
-source = https://github.com/abenz1267/walker/archive/refs/tags/v0.12.6.gz
-sha256sums = b9c4db9ea16aff8a4c07a1c345b1e3f70f972dface8412dc43bbaefe81bcd817
-b2sums = 4be60faa3623f5e5f1eb6955dc88c6b947e17b3e018abb8b7aa4dd50bb90b5e322fdc43f025a6e535375405acb16f31541f01604fa6064ece24fa6be8bbbe048
+source = https://github.com/abenz1267/walker/archive/refs/tags/v0.12.7.gz
+sha256sums = a5b1312bddaeff11ad74afae966a92fde0821e40f64836123ec4f49850af49ad
+b2sums = 6e6ad46953ee74d8ccb4a02d808cab49f055c6d9ed6214d9226fe734b548733961001c77beb8fd0d3e4ef0bd731277a22c37d04aa4e2a08e1473dde24efb2b83
 
 pkgname = walker
