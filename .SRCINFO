@@ -1,0 +1,35 @@
+pkgbase = perl-travel-status-de-hafas-git
+	pkgdesc = A commandline client for HAFAS-based arrival/departure monitors, e.g. ones provided by VRN or ÖBB. It shows arrivals or departures of trains as well as local transit services.
+	pkgver = 6.17+r531.20250119.gdc87974
+	pkgrel = 1
+	epoch = 1
+	url = https://finalrewind.org/projects/Travel-Status-DE-HAFAS/
+	arch = any
+	license = Artistic-1.0-Perl
+	license = CC0-1.0
+	checkdepends = perl-file-slurp
+	checkdepends = perl-test-compile
+	checkdepends = perl-test-pod
+	makedepends = curl>8.7.1
+	makedepends = git
+	makedepends = perl-class-accessor>=0.16
+	makedepends = perl-module-build
+	depends = perl>=5.14.0
+	depends = perl-class-accessor
+	depends = perl-datetime
+	depends = perl-datetime-format-strptime
+	depends = perl-getopt-long
+	depends = perl-json
+	depends = perl-list-moreutils
+	depends = perl-lwp-protocol-https
+	provides = perl-travel-status-de-hafas=6.17+r531.20250119.gdc87974
+	conflicts = perl-travel-status-de-hafas
+	conflicts = perl-travel-status-de-deutschebahn
+	replaces = perl-travel-status-de-deutschebahn-git
+	options = !emptydirs
+	source = Travel-Status-DE-HAFAS::git+https://git.finalrewind.org/Travel-Status-DE-HAFAS
+	source = transport-apis::git+https://github.com/public-transport/transport-apis.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = perl-travel-status-de-hafas-git
