@@ -1,6 +1,6 @@
 pkgname=nexttrace
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source visual route tracking CLI tool'
 arch=('x86_64')
 url="https://github.com/nxtrace/NTrace-core"
@@ -12,12 +12,13 @@ sha256sums=('94f8893f80b6b0a8d02b2fe709a62557034f3e32879a55807c38cb6ee2f8ab01')
 
 build() {
   cd "$_archive"
+  BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
   go build \
     -trimpath \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags '${LDFLAGS}' -X 'github.com/nxtrace/NTrace-core/config.Version=${pkgver}' -checklinkname=0" \
+    -ldflags "-linkmode external -extldflags '${LDFLAGS}' -X 'github.com/nxtrace/NTrace-core/config.Version=${pkgver}' -X 'github.com/nxtrace/NTrace-core/config.BuildDate=${BUILD_DATE}' -checklinkname=0" \
     .
 }
 
