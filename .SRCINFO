@@ -1,7 +1,7 @@
 pkgbase = icy_draw-bin
 	pkgdesc = IcyDraw is a full features ansi drawing tool doing things a bit different than other tools.
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mkrueger/icy_tools
 	arch = x86_64
 	groups = icy_tools-bin

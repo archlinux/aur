@@ -3,7 +3,7 @@
 _pkgname=icy_draw
 pkgname=${_pkgname}-bin
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 groups=("icy_tools-bin")
 provides=("icy_draw")
 pkgdesc="IcyDraw is a full features ansi drawing tool doing things a bit different than other tools."
