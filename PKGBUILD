@@ -54,12 +54,6 @@ prepare() {
     CXXFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing -std=c++17"
     LDFLAGS+=" -Wl,--file-alignment,4096"
 
-    # AVX is "hard" disabled for 32bit in any case.
-    # AVX/AVX2 for 64bit is disabled below.
-    # Seems unnecessery for 64bit if -mtune=generic is used
-    #CFLAGS+=" -mno-avx2 -mno-avx"
-    #CXXFLAGS+=" -mno-avx2 -mno-avx"
-
     export CFLAGS CXXFLAGS LDFLAGS
 
     local cross_ldflags="$LDFLAGS"
@@ -86,6 +80,7 @@ build() {
         --bindir "" --libdir "" \
         --buildtype "plain" \
         -Denable_tests=false \
+        -Db_ndebug=true \
         --strip
     ninja -C "build/x64" -v
 
@@ -94,8 +89,9 @@ build() {
         --prefix "/usr/share/vkd3d-proton/x86" \
         --bindir "" --libdir "" \
         --buildtype "plain" \
-        --strip \
-        -Denable_tests=false
+        -Denable_tests=false \
+        -Db_ndebug=true \
+        --strip
     ninja -C "build/x86" -v
 }
 
