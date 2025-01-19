@@ -10,7 +10,7 @@ pkgbase = hlint-static-git
 	makedepends = cabal-install
 	depends = gmp
 	optdepends = haskell-apply-refact: automatically apply suggested refactorings
-	provides = hlint
+	provides = hlint=3.8
 	conflicts = hlint
 	source = hlint-static-git::git+https://github.com/ndmitchell/hlint.git
 	sha256sums = SKIP

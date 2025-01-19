@@ -9,7 +9,7 @@ pkgdesc='Haskell source code suggestions'
 arch=('i686' 'x86_64')
 url="https://github.com/ndmitchell/${_pkgname}"
 license=('BSD-3-Clause')
-provides=("$_pkgname")
+provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 depends=('gmp')
 makedepends=('git' 'cabal-install')
