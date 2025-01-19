@@ -1,6 +1,6 @@
 # Maintainer: Dušan Mitrović <dusan@dusanmitrovic.xyz>
 pkgname=bas-celik
-pkgver=2.0.0
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="A desktop application for reading ID cards issued by the government of Serbia"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    "435a7bb6bd4ef56c02fecf0c81e2109e5f5aef3fb7944af938d925e0c8e01849"
+    "5847f8666dc96be56976384fd6822ac471bbf9d5cec147e3bfd5380273af5ba1"
 )
 
 build() {
