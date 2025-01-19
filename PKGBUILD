@@ -28,8 +28,8 @@ sha256sums=('e045142478637c85b36eac67a3569ec7b511bafa5d3d099f397953d3957860ee'
             '8a1e00f2d7472a2e3c1613992f2dbc5f1b1d3fe3fd830d985211eff0ad044676'
             'cd2b58e13dd928925db21819a74052b98c4dd82cf6353f6b9181b41cc93e8848'
             'fb543b04362e224f6f10b7e32cea60abef986525d13df4f3d4aa27f1f52807ff'
-            '6d2aeef65a1b2e5915c00190329a827b2440271b130129f2ea4f79878169a0c1'
-            'f800c1dea05dcd44e6105cb02b3a8e224353e360d5a997b3a90a5c5b90aa8c39')
+            'a370b0dc24d86c50829fa64c5c2e383eb2142539a663faa84f1473ba7bb498e9'
+            'ed47ba3f321d43cffc7a84d7da0b3ac5362f41a4de6b0a0af7510afac1d8e6ae')
 
 prepare() {
     echo "After upgrading 'nodejs', you need to recompile 'hoarder'..."
@@ -72,8 +72,8 @@ build() {
 
     # fix path
     while read file; do
-        sed -i "s|${srcdir}/${pkgname}/workers|/usr/share/${pkgname}/apps/workers|g" "$file"
-        sed -i "s|${srcdir}/${pkgname}|/usr/share/${pkgname}|g" "$file"
+        sed -i "s|${srcdir}/${pkgname}/workers|/usr/lib/${pkgname}/apps/workers|g" "$file"
+        sed -i "s|${srcdir}/${pkgname}|/usr/lib/${pkgname}|g" "$file"
     done <<< $(grep -rl "${srcdir}/${pkgname}" .)
 }
 
