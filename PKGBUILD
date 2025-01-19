@@ -3,7 +3,7 @@
 pkgname=neuralnote-bin
 pkgver=1.1.0
 pkgrel=1
-pkgdesc="https://github.com/DamRsn/NeuralNote"
+pkgdesc="Neural Note standalone release. Audio Plugin for Audio to MIDI transcription using deep learning."
 arch=('x86_64')
 url="https://github.com/DamRsn/NeuralNote"
 license=('Apache-2.0')
