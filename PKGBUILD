@@ -1,5 +1,4 @@
 # Maintainer: Jun Yan <jerrysteve1101 at gmail dot com>
-# Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
 
 pkgname=csdr-git
