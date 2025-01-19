@@ -10,7 +10,7 @@
 
 pkgver=34.0.0
 _gcc_patches=132
-pkgrel=2
+pkgrel=3
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
@@ -586,7 +586,7 @@ build() {
     'clang_base_path="/usr"'
     'clang_use_chrome_plugins=false'
     "clang_version=\"$_clang_version\""
-    'chrome_pgo_phase=1'
+    'chrome_pgo_phase=2'
   )
 
   # Allow the use of nightly features with stable Rust compiler
