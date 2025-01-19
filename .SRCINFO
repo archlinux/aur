@@ -1,6 +1,6 @@
 pkgbase = python-xyzservices
 	pkgdesc = Provides a repository of available XYZ services offering raster basemap tiles
-	pkgver = 2024.9.0
+	pkgver = 2025.1.0
 	pkgrel = 1
 	url = https://github.com/geopandas/xyzservices
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-xyzservices
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	source = python-xyzservices-2024.9.0.tar.gz::https://github.com/geopandas/xyzservices/releases/download/2024.9.0/xyzservices-2024.9.0.tar.gz
-	b2sums = aec2048c9f276a2ec6d5a9f66997ee73d02a0d961f7b2a6193bb151f4f7d181eb1d87291aab94dcfa1568b966cdbc96608a3f5ba073d2f71149a12bd22141afc
+	source = python-xyzservices-2025.1.0.tar.gz::https://github.com/geopandas/xyzservices/releases/download/2025.1.0/xyzservices-2025.1.0.tar.gz
+	b2sums = 44d31ed59e3c68db9022b27fad0c373f04d94937adf65d016acda474658c4e86aecee98b78d5663a56484d31df8c5025e6110bfffb7f1704c19417d19dec5b28
 
 pkgname = python-xyzservices
