@@ -7,7 +7,7 @@ _pkgver='latest'
 epoch=1
 pkgver=0.01+r40.20250119.g4d617f8
 pkgrel=1
-pkgdesc='dbris-m is a commandline client and Perl module for bahn.de public transit interfaces. It can show the arrivals/departures at a specific public transit stop, give details on individual journeys, and look up stops by name or geo coordinates. It supports text and JSON output.'
+pkgdesc='dbris-m is a commandline client and Perl module for bahn.de public transit interfaces. It can show the arrivals/departures at a specific public transit stop, give details on individual journeys, and look up stops by name or geo coordinates.'
 url='https://finalrewind.org/projects/Travel-Status-DE-DBRIS'
 license=(
   'Artistic-1.0-Perl'
