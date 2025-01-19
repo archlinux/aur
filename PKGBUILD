@@ -4,7 +4,7 @@
 _model="l100l200"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.0
-pkgrel=13
+pkgrel=14
 pkgdesc="Epson inkjet printer driver (L100, L101, L200, L201)"
 arch=('i686' 'x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -13,7 +13,7 @@ depends=('epson-inkjet-printer-filter' 'glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 source=("https://download.ebz.epson.net/dsc/op/stable/SRPMS/${_pkgsrc}-1lsb3.2.src.rpm")
-sha256sums=('f4a0c116b8646b6b7843b2863e1cdd07910d26c25f4a67b63edd94e41c6b6280')
+sha256sums=('6acf28a25e4af7e62b0d12d7f4a570dfd284ed61b6d0d28aa7be50f71ed600c6')
 
 case "${CARCH}" in
   x86_64)
