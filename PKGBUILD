@@ -2,8 +2,8 @@
 
 pkgname=releng-tool
 _pkgpyname=releng_tool
-pkgver=1.3.0
-_pkgtarget=v1.3
+pkgver=1.4.0
+_pkgtarget=v1.4
 pkgrel=1
 pkgdesc='A tool to manage the building of packages'
 url=https://releng.io/
@@ -21,6 +21,7 @@ makedepends=(
 optdepends=(
   'autoconf: support for autotools package management'
   'bash-completion: shell completion for bash'
+  'breezy: support for Bazaar cloning'
   'bzr: support for Bazaar cloning'
   'cmake: support for CMake package management'
   'cvs: support for CVS checkouts'
@@ -55,8 +56,8 @@ source=(
   $_base_url/$_pkgtarget/$_pkgpyname-$pkgver.tar.gz.asc
 )
 sha512sums=(
-  6c9c0e57321a586dd1a8cee206ed4eaf03aa8b86f3e9bf9bada3d24b8e712708b4cfe5fd282f134b1ef6fa7248bb07f8a3bd31d638fa853a70391abf441506f2
-  af4bd3e6f4af34b255d67456f02c6ef0754558e4517b9a53a3ba1999beb450ec8c7684d896a68c52ebe4856ab01a9db0c72f9846b785ab8644020317bd29db3d
+  df0a28e82fb1c4ea3bc70556900720514d94341cc6b59854115b20ca50232e335e327eef706f0dc78e45f7a00500b3a86f38380b704c29ec1d2693656d2cfa5e
+  e7c17ef162203ef4b692f5e0b08f96292e1682ef381ec97a96eeb8962b4e3484bc629d410637168b1a9fe6546d10b618e592a2c42e75af358eb2215c594dbb32
 )
 validpgpkeys=(D04A27BA9305DBBD354E653902D3C27B922CCC13)
 
