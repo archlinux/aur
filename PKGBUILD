@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 # Contributor: Liviu Cristian Mirea-Ghiban <liviu dot mirea at wecodepixels dot com>
-heidisqlrelease=6908
-shortpkgver=12.8
+heidisqlrelease=6999
+shortpkgver=12.9
 pkgname=heidisql
 pkgver=${shortpkgver}.0.${heidisqlrelease}
 pkgrel=3
@@ -16,8 +16,8 @@ source=("http://www.heidisql.com/downloads/releases/HeidiSQL_${shortpkgver}_64_P
         "${pkgname}.png"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('f45964d922d82ce904b4030d8f2479e8045ae7a18ee48670e45efe18797f97e0'
-            '7e7f88f111b798f6848da9ac0a8262bc2e02e2fa5899517fc2a6068362c52e03'
+sha256sums=('ce6e2fda10e4e7ce9f45e4672e3b30a600c8db2e39c9215dd86c41434da43242'
+            '4e512b1996484327e57bb88a8e972ba4b68eaab0614aa0b9c7f274901171a89e'
             'd0f6c19b7aa4b7a6daa00b658a852f97d35dd98d2c31a2f4ea267527bf5cda15'
             'a0ae92dbc64ab6faac06c28f24bfef8d8efc18810bb876cf1fff8b69f89cfea1'
             'b139c6f0cfc7d8aeacc2c7dd04df833fbb8c77d288e6fa53bf6845aa1e892c54')
