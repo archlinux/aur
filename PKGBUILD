@@ -3,12 +3,12 @@
 pkgname=stack-clean-old-static-git
 _pkgname="${pkgname%-static-git}"
 pkgver=0.5.1.r1.g899235a
-pkgrel=3
+pkgrel=4
 pkgdesc='Manage Haskell stack snapshot builds and ghc versions (static build)'
 arch=('i686' 'x86_64')
 url="https://github.com/juhp/${_pkgname}"
 license=('BSD-3-Clause')
-provides=("$_pkgname")
+provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 depends=('gmp' 'ncurses')
 makedepends=('git' 'stack')
