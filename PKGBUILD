@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 source=("qdmr-$pkgver.tar.gz::https://github.com/hmatuschek/qdmr/archive/refs/tags/v$pkgver.tar.gz"
         'udev-rules.patch')
 sha256sums=('80eaadc6f817894fde6773d1b021e7a8ec051cbb774f63e6a097e21d8a56d8b5'
-            '4d8aa8ac860fb988be3753ba2a2fe65d3d9c14861eec5d2686f497bfc20e82bf')
+            'f9bc5366df6186e475d010e79d002bf1d495220f269535c526b1faaf14fa1997')
 
 prepare() {
 	cd "$srcdir/${pkgname}-${pkgver}"
@@ -38,7 +38,3 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 }
-sha256sums=('80eaadc6f817894fde6773d1b021e7a8ec051cbb774f63e6a097e21d8a56d8b5'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
-sha256sums=('80eaadc6f817894fde6773d1b021e7a8ec051cbb774f63e6a097e21d8a56d8b5'
-            'f9bc5366df6186e475d010e79d002bf1d495220f269535c526b1faaf14fa1997')
