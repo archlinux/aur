@@ -1,6 +1,6 @@
 # Maintainer: Axel Navarro <navarroaxel gmail>
 pkgname=dum
-pkgver=0.1.19
+pkgver=0.1.20
 pkgrel=1
 pkgdesc='An npm scripts runner written in Rust.'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/egoist/$pkgname"
 license=('MIT')
 makedepends=('rust')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/egoist/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('94af37a8f9a0689ea27d7f338b495793349b75f56b516c17cd207e7c47c52c4f')
+sha256sums=('a1f4890f7edec4b5a376d3d6a30986b13ef8818593732f4a577a35c3c7145503')
 
 prepare() {
   # Assist chroot builds with a persistent cargo cache (hat tip @ccorn for this patch)
