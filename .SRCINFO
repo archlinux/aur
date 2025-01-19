@@ -1,11 +1,11 @@
 pkgbase = f41-backgrounds
 	pkgdesc = Desktop backgrounds of the Fedora 41 default theme for GNOME, KDE, Mate and Xfce desktops
-	pkgver = 41.0.1
+	pkgver = 41.0.2
 	pkgrel = 1
 	url = https://github.com/fedoradesign/backgrounds
 	arch = any
 	license = CC-BY-SA-4.0
-	source = https://github.com/fedoradesign/backgrounds/releases/download/v41.0.1/f41-backgrounds-41.0.1.tar.xz
-	b2sums = 6b40707b4b8fd675e4a8f7f5a9155c8117d861bc25c16bb6d68123a0b072f6dfb1a9ec446fca66dd60035d974a2e76e1e371949aef72455a5a189f7455c53e1a
+	source = https://github.com/fedoradesign/backgrounds/releases/download/v41.0.2/f41-backgrounds-41.0.2.tar.xz
+	b2sums = b28e225f8787d22967c025880a7690008bdbb771ef6663b6498f9026aff96922aa2c40c77e9c54e73897ed96904a14475f2cbf6ee95fc18e0f3e094d395922b4
 
 pkgname = f41-backgrounds
