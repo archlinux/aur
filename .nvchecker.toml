@@ -1,0 +1,4 @@
+[obconf]
+source = "regex"
+url = "https://openbox.org/download"
+regex = 'obconf-(\d+\.\d+\.\d+).tar.gz'
