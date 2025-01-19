@@ -1,8 +1,7 @@
 # Maintainer: Sebastian Kootz - skxxtz@gmail.com
-
 pkgbase="sherlock-launcher" 
 pkgname="sherlock-launcher-bin" 
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Application launcher for Wayland."
 arch=('x86_64')
@@ -23,7 +22,6 @@ prepare() {
         git reset --hard HEAD
     fi
 }
-
 
 package() {
     conflicts=("sherlock-launcher-git")
