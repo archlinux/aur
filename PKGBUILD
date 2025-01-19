@@ -2,7 +2,7 @@
 
 pkgname=alvr-launcher-bin
 _pkgname=${pkgname%-bin}
-pkgver=20.11.1
+pkgver=20.12.0
 pkgrel=3
 pkgdesc="Launcher for ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=("${pkgname%-bin}")
 source=("https://github.com/alvr-org/ALVR/releases/download/v$pkgver/${_pkgname%-launcher}_launcher_linux.tar.gz"
 		"${_pkgname}.png"
 		"${_pkgname}.desktop")
-md5sums=('50eca1495c67f30a3ae7447a86dbef92'
+md5sums=('eb20a6fb91e1e5412d927c01e85c4f61'
          'cd2c37fd286efad87b679d50631ca3d7'
          '7467d29e1ea2a23a27f5608c7f62afb9')
 
