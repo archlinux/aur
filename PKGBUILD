@@ -3,20 +3,18 @@
 pkgname="libcorecrypto"
 # when apple breaks the checksum, run 
 #    curl -s https://developer.apple.com/security/ | grep 'rel="/file/?file=security&agree=Yes"' | cut -d "(" -f2 | cut -d ")" -f1 | grep -o '[0-9]\+'
-pkgver=2022
-pkgrel=4
+pkgver=2023
+pkgrel=1
 pkgdesc="Library implementing Apple low-level cryptographic primitives"
 url="https://developer.apple.com/security/"
 license=("custom")
 arch=("x86_64" "armv7h" "aarch64")
 makedepends=("clang" "cmake" "curl" "python")
 source=("LICENSE"
-        "corecrypto.zip.b2"
+        #"corecrypto.zip.b2"
         #"code-coverage.cmake"
         )
-b2sums=('571233903371c819e99b2e39f4b32013b37e3c8a618d54ee27d98b0c61bfb50f702780f597e096df9d8e8e4d0ad0a4e3fcaf6949b7035796ecb5be274c1894d0'
-        '97e9b6d5e586bdd53ed81db49af3da6dee10ca3e2007f2043555eaebab8aa6136d5679b1f4c30132bdbb87f869c3f27b7283a24bad0c6b610c04be8f13930a2b')
-        #'d934a8493da900214c10781bfdf58e6a4c776ac15030ba8ab6b4ab51ab505acffc4eb9050482471f347e2efae1118824aa52d32af2fc6bcad67475ab4e0d2cd2')
+b2sums=('571233903371c819e99b2e39f4b32013b37e3c8a618d54ee27d98b0c61bfb50f702780f597e096df9d8e8e4d0ad0a4e3fcaf6949b7035796ecb5be274c1894d0')
 provides=("libcorecrypto")
 conflicts=("libcorecrypto-git")
 
@@ -44,13 +42,21 @@ prepare(){
        -H 'Cache-Control: no-cache' \
        -o "corecrypto.zip" 
  fi
- echo "  -> Found corecrypto.zip"
- echo "==> Validating corecrypto.zip with b2sums..."
- b2sum --check --quiet "corecrypto.zip.b2" || return 1
- echo "    corecrypto.zip. ... Passed"
- bsdtar --extract --file "corecrypto.zip"
- cd "corecrypto"
+ if [ -e "corecrypto.zip" ]; then
+  echo "  -> Found corecrypto.zip"
+ else
+  echo "  [KO] Could not find corecrypto.zip"
+  exit 1
+ fi
+ # removing because checksum changes often
+ #echo "==> Validating corecrypto.zip with b2sums..."
+ #b2sum --check --quiet "corecrypto.zip.b2" || return 1
+ #echo "    corecrypto.zip. ... Passed"
+ bsdtar --extract --file "corecrypto.zip" || exit
+ cd "corecrypto-2023"
  install -d "scripts"
+ # missing comment character
+ sed 's| Copyright|# Copyright|' -i "CMakeLists.txt"
  # not needed if removing all coverage entries
  #install -D "$srcdir/code-coverage.cmake" "scripts/code-coverage.cmake"
  sed '/coverage/d' -i "CMakeLists.txt"
