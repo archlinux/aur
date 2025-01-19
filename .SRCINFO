@@ -1,7 +1,7 @@
 pkgbase = ghcup-hs-static-git
 	pkgdesc = GHC toolchain installer
 	pkgver = 0.1.40.0.r24.gecd41e0a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.haskell.org/ghcup/
 	install = ghcup-hs.install
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = ghcup-hs-static-git
 	optdepends = wget
 	optdepends = ncurses: for the TUI
 	optdepends = ncurses5-compat-libs: using older ghc's linking against libtinfo.so.5
-	provides = ghcup-hs
+	provides = ghcup-hs=0.1.40.0
 	conflicts = ghcup-hs
 	source = ghcup-hs-static-git::git+https://github.com/haskell/ghcup-hs.git
 	sha256sums = SKIP

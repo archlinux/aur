@@ -5,12 +5,12 @@
 pkgname=ghcup-hs-static-git
 _pkgname="${pkgname%-static-git}"
 pkgver=0.1.40.0.r24.gecd41e0a
-pkgrel=2
+pkgrel=3
 pkgdesc='GHC toolchain installer'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url='https://www.haskell.org/ghcup/'
 license=('LGPL-3.0-only')
-provides=("$_pkgname")
+provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 depends=('gmp' 'bzip2' 'zlib')
 makedepends=('git' 'stack' 'yq')
