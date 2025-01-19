@@ -4,7 +4,7 @@
 
 pkgname=forgit
 pkgver=25.01.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility tool powered by fzf for using git interactively"
 arch=('any')
 url="https://github.com/wfxr/forgit"
@@ -17,7 +17,8 @@ optdepends=(
 	'git-delta: human readable diffs'
 	'diff-so-fancy: human readable diffs'
 	'bat: syntax highlighting for .gitignore'
-	'emoji-cli: emoji support for git log')
+	'emoji-cli: emoji support for git log'
+	'tree: directory tree view for gclean')
 provides=("$pkgname")
 conflicts=("forgit-git")
 install="$pkgname.install"

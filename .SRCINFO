@@ -1,7 +1,7 @@
 pkgbase = forgit
 	pkgdesc = Utility tool powered by fzf for using git interactively
 	pkgver = 25.01.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wfxr/forgit
 	install = forgit.install
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = forgit
 	optdepends = diff-so-fancy: human readable diffs
 	optdepends = bat: syntax highlighting for .gitignore
 	optdepends = emoji-cli: emoji support for git log
+	optdepends = tree: directory tree view for gclean
 	provides = forgit
 	conflicts = forgit-git
 	source = forgit-25.01.0.tar.gz::https://github.com/wfxr/forgit/archive/25.01.0.tar.gz
