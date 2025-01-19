@@ -1,13 +1,16 @@
 # Maintainer:
 
-## useful links
+## links
 # https://rsync.samba.org/
 # https://github.com/RsyncProject/rsync
 # https://github.com/RsyncProject/rsync-patches
 
+: ${_commit:=3305a7a063ab0167cab5bf7029da53abaa9fdb6e}       # 3.4.1
+: ${_commit_patch:=10ab5e57446d10ef641ceb045ef3094e7d2bd439} # 3.3.0
+
 _pkgname="rsync"
 pkgname="$_pkgname-reflink"
-pkgver=3.3.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc='A fast and versatile file copying tool for remote and local files - with reflink support'
 url='https://github.com/RsyncProject/rsync'
@@ -15,20 +18,14 @@ license=('GPL-3.0-or-later')
 arch=('x86_64')
 
 depends=(
-  'libacl.so' # acl
+  'libacl.so'    # acl
   'libxxhash.so' # xxhash
   'openssl'
   'popt'
   'zstd'
-
-  ## implicit
-  #bash
-  #lz4
-  #zlib
 )
 optdepends=(
-  ## AUR
-  'python-braceexpand: for rrsync'
+  'python: for rrsync'
 )
 makedepends=(
   'git'
@@ -44,16 +41,15 @@ backup=(
 )
 
 _pkgsrc="rsyncproject.rsync"
-source+=("$_pkgsrc"::"git+$url.git#tag=v${pkgver%%.r*}")
-sha256sums+=('SKIP')
+source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
 
-_patch_id="$pkgver"
-_patch_branch="v$pkgver"
+_patch_id="${_commit_patch}"
 
 source+=(
-  "reflink-${_patch_id}-clone-dest.patch"::"$url-patches/raw/${_patch_branch}/clone-dest.diff"
-  "reflink-${_patch_id}-detect-renamed.patch"::"$url-patches/raw/${_patch_branch}/detect-renamed.diff"
-  "reflink-${_patch_id}-detect-renamed-lax.patch"::"$url-patches/raw/${_patch_branch}/detect-renamed-lax.diff"
+  "reflink-${_patch_id::7}-clone-dest.patch"::"$url-patches/raw/${_patch_id}/clone-dest.diff"
+  "reflink-${_patch_id::7}-detect-renamed.patch"::"$url-patches/raw/${_patch_id}/detect-renamed.diff"
+  "reflink-${_patch_id::7}-detect-renamed-lax.patch"::"$url-patches/raw/${_patch_id}/detect-renamed-lax.diff"
   'rsyncd.conf'
 )
 sha256sums+=(
@@ -65,23 +61,21 @@ sha256sums+=(
 
 prepare() {
   cd "$_pkgsrc"
-
-  # Apply patches from source array
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
     src="${src%.zst}"
-    if [[ $src == *.patch ]] ; then
+    if [[ $src == *.patch ]]; then
       printf '\nApplying patch: %s\n' "$src"
       patch -Np1 -F100 -i "$srcdir/$src"
+      echo
     fi
   done
 }
 
 build() {
   cd "$_pkgsrc"
-
   local _configure_options=(
     --prefix=/usr
     --enable-ipv6

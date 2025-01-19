@@ -1,0 +1,4 @@
+[rsync-reflink]
+source = "git"
+git = "https://github.com/RsyncProject/rsync.git"
+prefix = "v"
