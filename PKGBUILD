@@ -1,5 +1,4 @@
-# Maintainer: JeremyStarTM <jeremystartm@staropensource.de>
-# Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
+# Maintainer: ayaya_neko <a15355447898a@outlook.com>
 
 ### BUILD OPTIONS
 # You can modify these settings by executing "env _<setting>=<value> makepkg"
@@ -59,9 +58,17 @@
 # Set to anything but null to activate.
 : "${_localmodcfg:=""}"
 
-# Optionally select a sub architecture by number or
-# leave blank, which will require user interaction during the build.
-# Note that the default option is 41.
+# Optionally select a sub architecture by number or its Kconfig name,
+# for example MCORE2 or MZEN4.
+# 
+# Leaving it blank will require user interaction during the build.
+# Note that the default option is empty.
+# 
+# Important notice for maintainers:
+# Make sure to update the '_subarch'
+# section inside update_defconfig()
+# if this list is updated on updating
+# the kernel compiler patchset.
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
@@ -136,13 +143,32 @@
 # Set to anything but null to activate.
 : "${_debug:=""}"
 
+# Show full compilation output
+# Enabling this will cause 'make' to display
+# all targets currently compiling instead of
+# the 'pv' magic we're doing.
+#
+# Set to anything but null to activate.
+: "${_show_compile:=""}"
+
 ### BUILD OPTIONS END
+
+### DEPRECATED BUILD OPTIONS START
+
+# See '_use_current'
+: "${_reuse_current:=""}"
+
+# See '_optimize_defconfig'
+: "${_update_kconfig_on_reuse:=""}"
+
+### DEPRECATED BUILD OPTIONS END
+
 
 # Kernel version
 _kernel_major=6.12
-_kernel_minor=4
+_kernel_minor=10
 # Clear Linux patches version
-_clr=4-1518
+_clr=9-1535
 # kernel_compiler_patch version
 _kernelcompilerpatch="20241018"
 # Source directory names
@@ -152,25 +178,23 @@ _src_clr=${_kernel_major}.${_clr}
 # Package information
 pkgbase=linux-clear-cjktty-zfs
 pkgver=${_kernel_major}.${_kernel_minor}
-pkgrel=0
+pkgrel=1
 pkgdesc="Clear Linux内核,带有zfs和cjktty并开启kexec"
 arch=("x86_64")
 url="https://git.staropensource.de/JeremyStarTM/aur-linux-clear"
 license=(GPL-2.0-only)
 makedepends=("bc" "cpio" "gettext" "git" "libelf" "pahole" "perl" "python" "tar" "xz" "zstd")
 [[ -n "${_use_llvm_to}" ]] && makedepends+=("clang" "llvm" "lld")
+[[ -z "${_show_compile}" ]] && makedepends+=("pv")
 options=("!strip" "!debug")
 [[ "${_debug}" == "y" ]] && options=("!strip")
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.xz"
-  #"https://github.com/a15355447898a/linux-acer/releases/download/6.10/linux-6.10.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
   "cl-linux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_src_clr}"
   "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
-  #"git+https://github.com/openzfs/zfs.git#branch=zfs-2.2-release"
-  #"git+https://github.com/openzfs/zfs.git"
-  "git+https://github.com/openzfs/zfs.git#tag=zfs-2.2.7"
+  "git+https://github.com/openzfs/zfs.git#tag=zfs-2.3.0"
   "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v6.x/cjktty-6.9.patch"
   "0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
 )
@@ -181,8 +205,20 @@ export "KBUILD_BUILD_HOST=archlinux"
 export "KBUILD_BUILD_USER=${pkgbase}"
 export "KBUILD_BUILD_TIMESTAMP=$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
+# Check for deprecated settings
+_check_deprecated_settings() {
+    if [ -n "${_update_kconfig_on_reuse}" ]; then
+        warning "Please switch to using '_update_kconfig_on_reuse' flag instead of '_optimize_defconfig'"
+        _optimize_defconfig="y"
+    fi
+    if [ -n "${_reuse_current}" ]; then
+        warning "Please switch to using '_use_current' flag instead of '_reuse_current'"
+        _use_current="y"
+    fi
+}
+
 # Applies all patches
-apply_patches() {
+_apply_patches() {
     # Patch with kernel version patches
     patch -Np1 -i ../patch-${_kernel_major}.${_kernel_minor} || true
     
@@ -200,10 +236,15 @@ apply_patches() {
         
         patch -Np1 -i "${srcdir}/cl-linux/${i}" || true
     done
+
+    # Patch with kernel_compiler_patch patches.
+    # Do this before any defconfig invocations so we
+    # have all of the extra selectable uarches ready and selectable
+    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_kernelcompilerpatch/more-ISA-levels-and-uarches-for-kernel-6.1.79+.patch"
 }
 
 # Allows user to modify the kernel config
-modify_defconfig() {
+_modify_defconfig() {
     [[ -n "$_makemenuconfig" ]] && make ${BUILD_FLAGS[*]} menuconfig
     [[ -n "$_makexconfig" ]] && make ${BUILD_FLAGS[*]} xconfig
     [[ -n "$_makenconfig" ]] && make ${BUILD_FLAGS[*]} nconfig
@@ -213,8 +254,8 @@ modify_defconfig() {
 }
 
 # Copies the kernel config
-copy_defconfig() {
-    local "_cur_major_ver=$(zcat /proc/config.gz | grep Linux | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
+_copy_defconfig() {
+    local _cur_major_ver="$(uname -r | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
     [[ "${_cur_major_ver}" != "${_kernel_major}" ]] &&
         warning "Major version was updated, you should regen the defconfig"
 
@@ -230,7 +271,7 @@ copy_defconfig() {
 }
 
 # Updates the kernel config
-update_defconfig() {    
+_update_defconfig() {   
     # Copy configuration file (if found)
     if [ -f "${startdir}/kconfig" ]; then
         echo ":: Using configuration file \"${startdir}/kconfig\""
@@ -367,34 +408,68 @@ update_defconfig() {
     # Run olddefconfig
     make ${BUILD_FLAGS[*]} olddefconfig
     diff -u $srcdir/cl-linux/config .config || :
-    
-    # Patch with kernel_compiler_patch patches
-    # This must be executed after olddefconfig
-    # to allow for the next section to run.
-    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_kernelcompilerpatch/more-ISA-levels-and-uarches-for-kernel-6.1.79+.patch"
-    
-    # Set subarch automatically
-    if [ -n "${_subarch}" ]; then
-        if [ "${_subarch}" == "41" ]; then
-            yes "${_subarch}
-${_subarch_microarch}" | make ${BUILD_FLAGS[*]} oldconfig
-        else
-            yes "${_subarch}" | make ${BUILD_FLAGS[*]} oldconfig
-        fi
-    else
-        # Ask for subarch
-        make ${BUILD_FLAGS[*]} oldconfig
-    fi
+
+    # Here we slightly break the config by removing one of the
+    # members of the 'Processor family' selection.
+    # This causes oldconfig to always invoke that selection.
+    sed -i '/CONFIG_GENERIC_CPU/d' .config || :
+    # For a slim chance that someone is building X86_32
+    sed -i '/CONFIG_M686/d' .config || :
+
+    case ${_subarch} in
+        "")
+            # Ask for subarch if none provided
+            make "${BUILD_FLAGS[@]}" oldconfig
+            ;;
+        "41" | "GENERIC_CPU")
+            scripts/config -e GENERIC_CPU
+            scripts/config --set-val X86_64_VERSION "${_subarch_microarch}"
+            make "${BUILD_FLAGS[@]}" oldconfig
+            ;;
+        [1-9]|[1-3][0-9]|[4][0-3]|43)
+            # 1 to 9, 10 to 39, 40 to 43
+            # 43 is the last supported value here, refer to the _subarch
+            # documentation above and keep the last section of this check
+            # in sync with the supported value.
+            # stderr checks below shouldn't be needed with the above check in place,
+            # but will be left in-place regardless in case of future updates
+            # breaking something
+
+            # We're only interested in stderr
+            {
+                local __ERROR=$(echo "${_subarch}" | make "${BUILD_FLAGS[@]}" oldconfig 2>&1 1>&$out)
+            } {out}>/dev/null
+
+            # Invoke echo to sanitize the __ERROR, it can contain a newline or a \r
+            # symbol, thus breaking the script
+            if [[ -n "$(echo $__ERROR)" ]]; then
+                warning "Selected subarch: ${_subarch} is not supported"
+                exit
+            fi
+            ;;
+        *)
+            # String - check if it exists in .config and if it does - set it
+            if grep -q -e "CONFIG_${_subarch}[[:space:]]" -e "CONFIG_${_subarch}=" .config; then
+                # Check if option exists in .config
+                scripts/config -e "${_subarch}"
+                make "${BUILD_FLAGS[@]}" olddefconfig
+            else
+                warning "Unrecognized subarch value: ${_subarch}"
+                exit
+            fi
+            ;;
+    esac
 }
 
 # Prepares the installation
 prepare() {
     cd "${_src_linux}" || exit 1
 
-    apply_patches
+    _check_deprecated_settings
+    _apply_patches
 
-    [[ -n "${_use_current}" ]] && copy_defconfig
-    [[ -n "${_optimize_defconfig}" ]] || [[ -z "${_use_current}" ]] && update_defconfig
+    [[ -n "${_use_current}" ]] && _copy_defconfig
+    [[ -n "${_optimize_defconfig}" ]] || [[ -z "${_use_current}" ]] && _update_defconfig
     
     # Read and apply modprobed database
     # See https://aur.archlinux.org/packages/modprobed-db
@@ -406,7 +481,7 @@ prepare() {
         fi
 
     # Open configuration editors
-    modify_defconfig
+    _modify_defconfig
 
     # Save configuration
     # shellcheck disable=SC2015
@@ -419,7 +494,11 @@ prepare() {
 # Build kernel
 build() {
     cd "${_src_linux}" || exit 1
-    make ${BUILD_FLAGS[*]} all
+    if [ -n "${_show_compile}" ]; then
+        make ${BUILD_FLAGS[*]} all
+    else
+        make ${BUILD_FLAGS[*]} all | pv -l -F "Elapsed time: %t, targets per sec: %a" > /dev/null
+    fi
 }
 
 # Packages the kernel package
@@ -547,7 +626,7 @@ validpgpkeys=(
 )
 sha256sums=("b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb"
             "SKIP"
-            "ba790766fca3eadade5cf74f0c181a8e42a77556f71d9af4b2bd4a53c8b98641"
+            "99168905b0a1eccd88205e85d982c762fe84dc268806e851ba80828c120852a1"
             "SKIP"
             "b3fd8b1c5bbd39a577afcccf6f1119fdf83f6d72119f4c0811801bdd51d1bc61"
             'SKIP'
