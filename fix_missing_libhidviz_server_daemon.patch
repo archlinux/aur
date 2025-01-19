@@ -1,0 +1,29 @@
+---
+diff --git a/libhidx/libhidx/include/libhidx/Interface.hh b/libhidx/libhidx/include/libhidx/Interface.hh
+index a23cca9..ff4a501 100644
+--- a/libhidx/libhidx/include/libhidx/Interface.hh
++++ b/libhidx/libhidx/include/libhidx/Interface.hh
+@@ -25,6 +25,7 @@
+ #include <thread>
+ #include <functional>
+ #include <vector>
++#include <memory>
+ #include <string>
+ #include <memory>
+ 
+diff --git a/libhidx/libhidx/src/Connector.cc b/libhidx/libhidx/src/Connector.cc
+index 0db85c7..8e7c58c 100644
+--- a/libhidx/libhidx/src/Connector.cc
++++ b/libhidx/libhidx/src/Connector.cc
+@@ -87,6 +87,7 @@ namespace libhidx {
+             getExecutablePath() + "/../libhidx/libhidx_server_daemon",
+             getExecutablePath() + "/../libexec",
+             "/usr/local/libexec",
++            "/usr/lib/hidviz",
+             "/usr/libexec"
+         };
+         const static std::string executableName{"libhidx_server_daemon"};
+
+-- 
+2.48.1
+

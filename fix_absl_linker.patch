@@ -1,0 +1,26 @@
+---
+diff --git a/libhidx/libhidx_server/CMakeLists.txt b/libhidx/libhidx_server/CMakeLists.txt
+index 3b10e2b..3fdb61b 100644
+--- a/libhidx/libhidx_server/CMakeLists.txt
++++ b/libhidx/libhidx_server/CMakeLists.txt
+@@ -9,6 +9,7 @@ set_property(TARGET libusb-1.0 PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${LIBUSB_1
+ set_property(TARGET libusb-1.0 PROPERTY IMPORTED_LOCATION ${LIBUSB_1_LIBRARY})
+ 
+ find_package(Protobuf REQUIRED)
++find_package(absl REQUIRED)
+ 
+ protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS src/Buffer.proto)
+ 
+@@ -28,6 +29,9 @@ target_include_directories(hidx_server PUBLIC
+ target_link_libraries(hidx_server
+         libusb-1.0
+         asio
++        absl_log_internal_message
++        absl_log_internal_check_op
++        absl_log_internal_nullguard
+         ${PROTOBUF_LIBRARIES}
+         )
+ 
+-- 
+2.48.1
+
