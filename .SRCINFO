@@ -1,0 +1,20 @@
+pkgbase = python-zotero
+	pkgdesc = A Python client for the Zotero API.
+	pkgver = 1.6.4
+	pkgrel = 1
+	url = https://github.com/urschrei/pyzotero
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python-feedparser
+	depends = pyhton-pytz
+	depends = python-bibtexparser
+	depends = python-httpx
+	source = python-zotero-1.6.4.tar.gz::https://github.com/urschrei/pyzotero/archive/refs/tags/v1.6.4.tar.gz
+	sha256sums = 90d3b26f9962f84a4515954b1e909139f631f942569375c0b4c061491a26cc39
+
+pkgname = python-zotero
