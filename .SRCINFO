@@ -1,0 +1,38 @@
+pkgbase = perl-travel-routing-de-efa-git
+	pkgdesc = Commandline client and Perl module for EFA-based public transit routing interfaces provided by e.g. VRR or VVO. It can request itineraries for train/tram/bus/ferry connections throughout most of Germany, as well as parts of Austria, Switzerland and UK.
+	pkgver = 2.24+r410.20240921.gf67c404
+	pkgrel = 1
+	epoch = 1
+	url = http://finalrewind.org/projects/Travel-Routing-DE-VRR/
+	arch = any
+	license = Artistic-1.0-Perl
+	checkdepends = perl-file-slurp
+	checkdepends = perl-test-compile
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-pod
+	makedepends = curl>8.7.1
+	makedepends = git
+	makedepends = perl-module-build
+	makedepends = perl-file-slurp
+	makedepends = perl-test-compile
+	makedepends = perl-test-fatal
+	makedepends = perl-test-pod
+	depends = perl>=5.10.1
+	depends = perl-class-accessor
+	depends = perl-exception-class
+	depends = perl-getopt-long
+	depends = perl-lwp-protocol-https
+	depends = perl-xml-libxml
+	provides = perl-travel-routing-de-efa=2.24+r410.20240921.gf67c404
+	provides = perl-travel-routing-de-vrr-git=2.24+r410.20240921.gf67c404
+	provides = perl-travel-routing-de-vrr=2.24+r410.20240921.gf67c404
+	provides = perl-travel-routing-de-efa-zsh-completion=2.24+r410.20240921.gf67c404
+	conflicts = perl-travel-routing-de-efa
+	conflicts = perl-travel-routing-de-vrr
+	conflicts = perl-travel-routing-de-efa-zsh-completion
+	replaces = perl-travel-routing-de-vrr
+	options = !emptydirs
+	source = Travel-Routing-DE-VRR::git+https://git.finalrewind.org/Travel-Routing-DE-VRR
+	sha256sums = SKIP
+
+pkgname = perl-travel-routing-de-efa-git
