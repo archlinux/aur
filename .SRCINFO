@@ -1,6 +1,6 @@
 pkgbase = gauntlet-bin
 	pkgdesc = Open-source cross-platform application launcher with React-based plugins
-	pkgver = 13
+	pkgver = 14
 	pkgrel = 1
 	url = https://github.com/project-gauntlet/gauntlet
 	install = gauntlet.install
@@ -16,7 +16,7 @@ pkgbase = gauntlet-bin
 	optdepends = libxkbcommon-x11: for X11
 	optdepends = libxrandr: for X11
 	optdepends = wayland: for Wayland
-	source = https://github.com/project-gauntlet/gauntlet/releases/download/v13/gauntlet-x86_64-linux.tar.gz
-	sha256sums = 61a2f3fec5254f9deed67e2ce52a02d57979de78b4c1a4cf550d2052bf9937bd
+	source = https://github.com/project-gauntlet/gauntlet/releases/download/v14/gauntlet-x86_64-linux.tar.gz
+	sha256sums = 3740244c074f8940455cc57f7b3eb5e513f8f5c1e50e8d833410bf1f6a6d68cc
 
 pkgname = gauntlet-bin
