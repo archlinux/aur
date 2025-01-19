@@ -1,0 +1,24 @@
+pkgbase = vapoursynth-plugin-vsjet-meta
+	pkgdesc = Meta package to install vs-jet python libraries for VapourSynth
+	pkgver = 3.4.2
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-jet
+	arch = any
+	license = MIT
+	depends = python-stgpytools
+	depends = vapoursynth-plugin-vstools
+	depends = vapoursynth-plugin-vspyplugin
+	depends = vapoursynth-plugin-vskernels
+	depends = vapoursynth-plugin-vsexprtools
+	depends = vapoursynth-plugin-vsrgtools
+	depends = vapoursynth-plugin-vsmasktools
+	depends = vapoursynth-plugin-vsaa
+	depends = vapoursynth-plugin-vsscale
+	depends = vapoursynth-plugin-vsdenoise
+	depends = vapoursynth-plugin-vsdehalo
+	depends = vapoursynth-plugin-vsdeband
+	depends = vapoursynth-plugin-vsdeinterlace
+	depends = vapoursynth-plugin-vssource
+	depends = vapoursynth-preview
+
+pkgname = vapoursynth-plugin-vsjet-meta
