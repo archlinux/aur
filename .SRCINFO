@@ -1,0 +1,11 @@
+pkgbase = neuralnote-vst3
+	pkgdesc = Neuralnote vst3 release. Audio Plugin for Audio to MIDI transcription using deep learning.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/DamRsn/NeuralNote
+	arch = x86_64
+	license = Apache-2.0
+	source = https://github.com/DamRsn/NeuralNote/releases/download/v1.1.0/NeuralNote_VST3_Linux.zip
+	sha256sums = 0c2c1fa2a407d69a0151bb5f16187f0626867c1c2f97a456567eb24faa60951c
+
+pkgname = neuralnote-vst3
