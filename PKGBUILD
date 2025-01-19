@@ -8,7 +8,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=v3.11.4.r2.g7560d21a8
+pkgver=v3.13.17.r1.gc2641dc60
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -56,6 +56,7 @@ optdepends=(
             )
 makedepends=('python-paver'
              'python-setuptools'
+             'python-hatch-requirements-txt'
              )
              #'yarn'
              #'bower'
