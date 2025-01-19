@@ -1,0 +1,32 @@
+pkgbase = perl-travel-status-de-dbris-git
+	pkgdesc = dbris-m is a commandline client and Perl module for bahn.de public transit interfaces. It can show the arrivals/departures at a specific public transit stop, give details on individual journeys, and look up stops by name or geo coordinates. It supports text and JSON output.
+	pkgver = 0.01+r40.20250119.g4d617f8
+	pkgrel = 1
+	epoch = 1
+	url = https://finalrewind.org/projects/Travel-Status-DE-DBRIS
+	arch = any
+	license = Artistic-1.0-Perl
+	license = CC0-1.0
+	checkdepends = perl-file-slurp
+	checkdepends = perl-test-compile
+	checkdepends = perl-test-pod
+	makedepends = curl>8.7.1
+	makedepends = git
+	makedepends = perl-module-build>=0.40
+	makedepends = perl-test-compile
+	makedepends = perl-test-pod
+	depends = perl>=5.20.0
+	depends = perl-class-accessor>=0.16
+	depends = perl-datetime
+	depends = perl-datetime-format-strptime
+	depends = perl-getopt-long
+	depends = perl-json
+	depends = perl-list-moreutils
+	depends = perl-lwp-protocol-https
+	provides = perl-travel-status-de-dbris=0.01+r40.20250119.g4d617f8
+	conflicts = perl-travel-status-de-dbris
+	options = !emptydirs
+	source = Travel-Status-DE-DBRIS::git+https://git.finalrewind.org/Travel-Status-DE-DBRIS
+	sha256sums = SKIP
+
+pkgname = perl-travel-status-de-dbris-git
