@@ -1,7 +1,8 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: staphon7 <staphon7 at orange dot fr>
 pkgname="advene"
-pkgver=3.14
-pkgrel=2
+pkgver=3.15
+pkgrel=1
 pkgdesc="Video annotation and hypervideo authoring"
 arch=('any')
 url="https://github.com/oaubert/advene"
@@ -38,7 +39,7 @@ optdepends=('espeak: TTS support'
 provides=('python-simpletal=5.2')
 conflicts=('python-simpletal=5.2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/oaubert/advene/archive/refs/tags/release/${pkgver}.tar.gz")
-sha256sums=('6104d68d3f07623c931ae1b887668cd36e7e6d9343dcc9c404cf21de9c884754')
+sha256sums=('dfdf45268b5cd7aacfe41ddabd7c7d8339b4acda034f8389a1ae2972edc1c61e')
 
 package() {
     cd "$pkgname-release-$pkgver"
