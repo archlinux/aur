@@ -1,7 +1,7 @@
 [Unit]
 Description = Hoarder Workers
-Wants = network-online.target hoarder-browser.service ollama.service
-After = network-online.target hoarder-browser.service ollama.service
+Wants = network-online.target hoarder-browser.service meilisearch.service ollama.service
+After = network-online.target hoarder-browser.service meilisearch.service ollama.service
 
 [Service]
 User = hoarder

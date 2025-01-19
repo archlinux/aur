@@ -1,7 +1,7 @@
 [Unit]
 Description = Hoarder WebUI
-Wants = network-online.target hoarder-workers.service meilisearch.service
-After = network-online.target hoarder-workers.service meilisearch.service
+Wants = network-online.target hoarder-workers.service
+After = network-online.target hoarder-workers.service
 
 [Service]
 User = hoarder
