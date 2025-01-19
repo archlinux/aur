@@ -27,7 +27,7 @@ prepare() {
 build() {
   cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr --mandir=/usr/share/man
-  make
+  make CFLAGS="$CFLAGS -Wno-error=int-conversion -Wno-error=incompatible-pointer-types"
 }
 
 package() {
