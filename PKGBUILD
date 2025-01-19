@@ -5,7 +5,7 @@
 
 _gemname=jekyll
 pkgname=$_gemname
-pkgver=4.3.3
+pkgver=4.3.4
 pkgrel=1
 pkgdesc='A simple, blog aware, static site generator.'
 arch=('any')
@@ -17,7 +17,7 @@ depends=('ruby>=2.1.0'
     'ruby-jekyll-sass-converter>=2.0'
     'ruby-jekyll-watch>=2.0'
     'ruby-kramdown>=2.1.0'
-    'ruby-liquid>=4.0'
+    'ruby-liquid-4'
     'ruby-mercenary>=0.3.3'
     'ruby-pathutil>=0.9'
     'ruby-rouge>1.7'
@@ -38,13 +38,14 @@ provides=("$pkgname=$pkgver" "ruby-jekyll")
 conflicts=('ruby-jekyll')
 replaces=('ruby-jekyll')
 options=(!emptydirs)
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/jekyll/jekyll/archive/v${pkgver}.tar.gz)
-sha256sums=('61903b4c731557cdca489e381e509ea113258a2b88426b8c20b3bc4c7145d507')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/jekyll/jekyll/archive/v${pkgver}.tar.gz
+        dependencies.patch)
+sha256sums=('573034f7d8bff27fe98c79e4c1d6a424b307483dc8b4d38867bdd3fd76d4dc98'
+            '4bc5c17e36e89115a7ed7cfb676042c2ada74a0eb66ee6baaae2675f42abd47b')
 
 prepare() {
   cd ${_gemname}-${pkgver}
-  sed -r 's|~>|>=|g' -i ${_gemname}.gemspec # don't give a fuck about rubys bla bla
-  sed 's|git ls-files|find -type f\|sed "s,\\\\./,,g"|' -i ${_gemname}.gemspec
+  patch -p1 -i  ../dependencies.patch
 }
 
 build() {
