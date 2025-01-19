@@ -3,7 +3,7 @@
 pkgname=helm-ls-bin
 _binname=helm_ls
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Language server for Helm'
 license=(MIT)
 
@@ -15,6 +15,7 @@ sha256sums_x86_64=('ef3a8e7597c6be9d1226b5d2977711d445d5232b0421884e127b844c79b7
 
 arch=(x86_64)
 depends=(glibc)
+optdepends=('yaml-language-server: yamlls integration')
 conflicts=(helm-ls)
 provides=(helm-ls)
 options=('!strip' '!debug')
