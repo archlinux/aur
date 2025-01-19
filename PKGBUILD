@@ -5,8 +5,8 @@
 _pkgname=hdrview
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=2.1.0+8.r427.20250111.dfedb14
-pkgrel=5
+pkgver=2.1.0+22.r441.20250118.8430cb3
+pkgrel=1
 pkgdesc='High dynamic range (HDR) image viewer and comparison tool'
 url='https://github.com/wkjarosz/hdrview'
 # url='https://wkjarosz.github.io/hdrview/' # This actually is an online version of the software, not a website about the software.
@@ -21,7 +21,9 @@ license=('BSD-3-Clause')
 makedepends=(
   'cmake'
   'freetype2>=2.12'
+  'gcc-libs'
   'git'
+  'glibc'
   'glfw'
   # 'imgui-git' # Fails to build when 'imgui' is installed.
   'libdeflate'
