@@ -2,19 +2,19 @@
 # Contributor: Oirio Joshi <joshirio@protonmail.com>
 
 pkgname=megacmd-bin
-pkgver=1.4.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 arch=('x86_64')
 url="http://mega.nz/cmd"
 license=('custom')
-depends=('glibc' 'gcc-libs' 'openssl' 'sqlite' 'zlib' 'libpsl' 'icu' 'bash-completion' 'pcre' 'bzip2' 'xz')
+depends=('glibc' 'gcc-libs' 'openssl' 'sqlite' 'zlib' 'libpsl' 'icu' 'bash-completion' 'pcre' 'bzip2' 'xz' 'freeimage')
 provides=('megacmd' 'ffmpeg-mega')
 source=('LICENSE'
-	"https://mega.nz/linux/MEGAsync/Arch_Extra/x86_64/megacmd-${pkgver}-11-x86_64.pkg.tar.zst"
-	"https://mega.nz/linux/MEGAsync/Arch_Extra/x86_64/megacmd-${pkgver}-11-x86_64.pkg.tar.zst.sig")
+	"https://mega.nz/linux/repo/Arch_Extra/x86_64/megacmd-x86_64.pkg.tar.zst"
+	"https://mega.nz/linux/repo/Arch_Extra/x86_64/megacmd-x86_64.pkg.tar.zst.sig")
 sha256sums=('SKIP' 'SKIP' 'SKIP')
-validpgpkeys=('8F208FBF12FEE766AA32AEAF03C3AD3A7F068E5D')
+validpgpkeys=('B01C811880480C854C73EC7E1A664B787094A482')
 
 package() {
 	cd "$srcdir"
