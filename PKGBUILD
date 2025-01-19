@@ -4,12 +4,11 @@
 pkgname='python-sparse'
 _pkgname=sparse
 pkgver=0.15.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Sparse n-dimensional arrays for the PyData ecosystem"
 arch=('any')
 url="https://sparse.pydata.org"
 license=('BSD-3-clause')
-checkdepends=('python-dask' 'python-pytest' 'python-pytest-black' 'python-pytest-cov' 'python-pytest-flake8' 'python-toolz')
 depends=('python>=3.8' 'python-numpy>=1.17' 'python-scipy>=0.19' 'python-numba>=0.49')
 optdepends=()
 makedepends=('python-setuptools')
