@@ -2,41 +2,53 @@
 
 pkgname=dektec-utilities
 pkgver=17.06.24
-pkgrel=5
+pkgrel=6
 pkgdesc="DekTec utilities DtEpc, DtPlay, DtRecord and DtInfoCL"
 arch=('x86_64')
 url="https://www.dektec.com/downloads/utilities/"
 license=('LicenseRef-custom')
 depends=('gcc-libs' 'glibc')
-makedepends=('unzip')
+makedepends=('make')
 _dtepc=2.13.1
 _dtplay=4.18.0
 _dtrecord=4.15.1
 _dtinfocl=1.5.2
-_sdk=2024.11.0
+_sdk=2025.01.0
 source=("https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdk}.tar.gz"
         "https://www.dektec.com/products/applications/DtEpc/downloads/DtEpc-${_dtepc}.zip"
         "https://www.dektec.com/products/applications/DtInfoCL/downloads/DtInfoCL_v${_dtinfocl}.zip"
         "https://www.dektec.com/products/applications/DtPlay/downloads/DtPlay_v${_dtplay}.zip"
         "https://www.dektec.com/products/applications/DtRecord/downloads/DtRecord_v${_dtrecord}.zip")
-noextract=("DtPlay_v${_dtplay}.zip" "DtRecord_v${_dtrecord}.zip")
-sha256sums=('4f33e0ea6ded407f026c1e6cd4a3f17601adef23181f268fc53d67d2098e1c87'
+sha256sums=('47ee7d8ef0bea6c6e57723608af22b499eb9d2f790b45609015c853c7b9f7e15'
             '4fbbfe09d55b3528a6a45bc6a2effce3ba0431d7ac141bf190423accc7c4a435'
             'd93fd5372e3ae09942a6d21c363f3eb4c527d2ae631a103df81487942dbdfbce'
             '5ddeff15b4a425c85b07fec14773adde88330326c601a7393f4337b8bb73bd00'
             '25da742364317b797182a02da4a323e0be8e7ae1577bfaa0e2fd5d109e49621c')
 
 prepare() {
-  unzip -o "DtEpc_Linux_v${_dtepc}.zip" -d "Linux"
-  unzip -o "DtPlay_v${_dtplay}.zip" -d "dtplay"
-  unzip -o "DtRecord_v${_dtrecord}.zip" -d "dtrecord"
-  mkdir -p "dtplay/Import/DTAPI" "dtrecord/Import/DTAPI"
-  # Include DTAPI (SDK) for DtPlay
-  cp "LinuxSDK/DTAPI/Include/DTAPI.h" "dtplay/Import/DTAPI"
-  cp -r "LinuxSDK/DTAPI/Lib/GCC7.5.0/"* "dtplay/Import/DTAPI"
-  # Include DTAPI (SDK) for DtRecord
-  cp "LinuxSDK/DTAPI/Include/DTAPI.h" "dtrecord/Import/DTAPI"
-  cp -r "LinuxSDK/DTAPI/Lib/GCC7.5.0/"* "dtrecord/Import/DTAPI"
+  # Define directories
+  local dtplay_dir="${srcdir}/dtplay"
+  local dtrecord_dir="${srcdir}/dtrecord"
+  local linux_dir="${srcdir}/Linux"
+  local sdk_include_dir="${srcdir}/LinuxSDK/DTAPI/Include"
+  local sdk_lib_dir="${srcdir}/LinuxSDK/DTAPI/Lib/GCC7.5.0"
+
+  # Create necessary directories before extraction
+  install -d "${dtplay_dir}" "${dtrecord_dir}" "${linux_dir}"
+
+  # Extract archives
+  bsdtar -xf "DtEpc_Linux_v${_dtepc}.zip" -C "${linux_dir}"
+  bsdtar -xf "DtPlay_v${_dtplay}.zip" -C "${dtplay_dir}"
+  bsdtar -xf "DtRecord_v${_dtrecord}.zip" -C "${dtrecord_dir}"
+
+  # Create necessary directories for DTAPI
+  install -d "${dtplay_dir}/Import/DTAPI" "${dtrecord_dir}/Import/DTAPI"
+
+  # Include DTAPI (SDK) for DtPlay and DtRecord
+  cp "${sdk_include_dir}/DTAPI.h" "${dtplay_dir}/Import/DTAPI"
+  cp -r "${sdk_lib_dir}/"* "${dtplay_dir}/Import/DTAPI"
+  cp "${sdk_include_dir}/DTAPI.h" "${dtrecord_dir}/Import/DTAPI"
+  cp -r "${sdk_lib_dir}/"* "${dtrecord_dir}/Import/DTAPI"
 }
 
 build() {
@@ -44,6 +56,7 @@ build() {
   cd "${srcdir}/dtplay"
   make
   cp "DtPlay" "${srcdir}/Linux"
+
   # Build DtRecord
   cd "${srcdir}/dtrecord"
   make
@@ -51,10 +64,13 @@ build() {
 }
 
 package() {
+  # Install binaries
   install -Dm755 "${srcdir}/Linux/DtEpc64" "${pkgdir}/usr/bin/DtEpc"
   install -Dm755 "${srcdir}/Linux/DtInfoCL64" "${pkgdir}/usr/bin/DtInfoCL"
   install -Dm755 "${srcdir}/Linux/DtPlay" "${pkgdir}/usr/bin/DtPlay"
   install -Dm755 "${srcdir}/Linux/DtRecord" "${pkgdir}/usr/bin/DtRecord"
+
+  # Install license
   install -Dm644 "${srcdir}/LinuxSDK/License" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
