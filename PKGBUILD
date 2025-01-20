@@ -13,7 +13,7 @@
 #urlPath:https://sac.chitubox.com/PCVersionUpdate/getInfo.do6?softwareType=17839&platform=4&majorVersion=2.0.0&silentVersion=0.0.0&login=0&customerMail=0startOpt 172 QSqlError("1555", "Unable to fetch row", "UNIQUE constraint failed: AdnormalTable.pid")
 
 pkgname=chitubox-free-bin
-pkgver=2.3.0
+pkgver=2.3.1
 RUNFILE='CHITUBOX_Basic_Linux_Installer_V2.3.run'
 
 pkgrel=1
