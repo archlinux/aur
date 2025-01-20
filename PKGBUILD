@@ -1,7 +1,7 @@
 # Maintainer: LunarEclipse <luna@lunareclipse.zone>
 # Contributor: Songtronix <contact@songtronix.com>
 pkgname=airshipper
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="The official launcher for Veloren - an open-world, open-source multiplayer voxel RPG"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     'veloren.png'
 )
 noextract=('airshipper.desktop' 'veloren.png')
-sha512sums=('31d09b8d48e3461ac24b942b78953e4937518ad867c0034e70cd637285c712ba6b47b78d480ea909be4856f2ee3961481584f4acb7bebccf33eb6e34b1f4713e'
+sha512sums=('45ea4848d0de9d75a08e7375e7dc1b439fd3f1090c9d782c0092fea3b51b158b30cb2880d6f23af7a84b7830cb0a6184e866de6c23e8ec0f7f5b3923e766dd3d'
             '4937c26f412c07946ccadacb5a6951e5f42af46b5e44e05a38a6628c09c2a1dbaf98ceec846f5487632a06f38fb8d7453928315ab952908b606716d7370ce606'
             'ce561587113480c8485892983eed16aca6979afa024cc8e7842fd349896696e3bee825ca0214cbdcc8fb972f432957a172df9adc7daa8bf2a7bc2b2828c09928'
             'b5e5cbf28ab0e335f5a0fc93511fc9936360432a36e35cc876761601abacf257299deb0af6b3d9081143b700f6663c4f603970155dd4dacedb7a9672cde1dc94')
