@@ -2,8 +2,8 @@
 # Contributor: JP-Ellis <josh@jpellis.me>
 
 pkgname='python-habanero'
-pkgver='1.2.6'
-pkgrel=5
+pkgver='2.0.0'
+pkgrel=1
 _name=${pkgname#python-}
 _name="${_name//-/_}"
 _src_folder="${_name}-${pkgver}"
@@ -11,15 +11,23 @@ pkgdesc="A low level client for Crossref's Search API"
 url="https://github.com/sckott/habanero"
 depends=(
   'python'
-  'python-requests'
+  'python-httpx'
+  'python-packaging'
+  'python-pyyaml'
   'python-tqdm'
+  'python-urllib3'
 )
 makedepends=(
   'python-build'
   'python-installer'
   'python-wheel'
-  'python-setuptools'
-  'python-setuptools-scm'
+  'python-hatchling'
+)
+checkdepends=(
+  'python-bibtexparser>=2.0.0b5'
+  'python-pytest'
+  'python-pytest-cov'
+  'python-pytest-recording'
 )
 optdepends=(
   'python-bibtexparser: attempt to fix misformatted bibtex'
@@ -27,17 +35,22 @@ optdepends=(
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('b206d49f44f41c2289f0ad731f259a50d4376c747d8ecbb219a73874d45309d4')
+sha256sums=('346561bdac9c985b0b2b1309559eec826a03fc77382030a1e9ddd861e5684e5f')
 
 build() {
     cd "${srcdir}/${_src_folder}"
     python -m build --wheel --no-isolation
 }
 
+check() {
+    cd "${srcdir}/${_src_folder}"
+    python -m pytest -k 'not test_content_negotiation_bad_bibtex'
+}
+
 package() {
     cd "${srcdir}/${_src_folder}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+    install -Dm644 LICENSE.md -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
 
 # vim:set ts=2 sw=2 et:
