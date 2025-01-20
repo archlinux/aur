@@ -1,6 +1,6 @@
 pkgbase = restic-launcher
 	pkgdesc = A very simple restic launcher to make full system backups every hour.
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://codeberg.org/ivan.zaera/restic-launcher
 	install = install.sh
@@ -17,7 +17,7 @@ pkgbase = restic-launcher
 	backup = etc/restic-launcher/config
 	backup = etc/restic-launcher/includes
 	backup = etc/restic-launcher/excludes
-	source = restic-launcher-0.0.1.tar.gz::https://codeberg.org/ivan.zaera/restic-launcher/archive/0.0.1.tar.gz
-	sha256sums = 812f005f270afe9bbb6cb13b608139af1311404f49447b7d0efbb1b9c1bc5bb9
+	source = restic-launcher-0.0.2.tar.gz::https://codeberg.org/ivan.zaera/restic-launcher/archive/0.0.2.tar.gz
+	sha256sums = ffb02e6317f6580aa66301e55f1c7536a057b688f923c76e929e4c438be9075b
 
 pkgname = restic-launcher

@@ -1,6 +1,6 @@
 # Maintainer: Iván Zaera Avellón <ivan.zaera@posteo.net>
 pkgname=restic-launcher
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='A very simple restic launcher to make full system backups every hour.'
 arch=('pentium4' 'x86_64')
@@ -27,7 +27,7 @@ install='install.sh'
 source=(
 	"$pkgname-$pkgver.tar.gz::https://codeberg.org/ivan.zaera/$pkgname/archive/$pkgver.tar.gz"
 )
-sha256sums=("812f005f270afe9bbb6cb13b608139af1311404f49447b7d0efbb1b9c1bc5bb9")
+sha256sums=("ffb02e6317f6580aa66301e55f1c7536a057b688f923c76e929e4c438be9075b")
 
 build() {
 	cd $srcdir/$pkgname
