@@ -1,7 +1,7 @@
 # Maintainer:  Orhun Parmaksız <orhun@archlinux.org>
 
 pkgname=rio-git
-pkgver=0.1.17.r177.g29484e7a2
+pkgver=0.2.4.r8.g66257aa23
 pkgrel=1
 pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU (git)"
 arch=('x86_64')
@@ -42,11 +42,15 @@ prepare() {
 
 build() {
   cd "$pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
 check() {
   cd "$pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo test --frozen --workspace
 }
 
