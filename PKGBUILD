@@ -8,6 +8,7 @@ _pkgname=cppTango
 _pkgver="9.5.0"
 pkgver="9.5.0"
 pkgrel=1
+groups=('tango9-controls')
 pkgdesc="TANGO distributed control system - shared library (Legacy version)"
 arch=('x86_64' 'armv7h')
 url="https://gitlab.com/tango-controls/${_pkgname}"

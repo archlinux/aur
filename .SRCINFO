@@ -5,6 +5,7 @@ pkgbase = tango9-cpp
 	url = https://gitlab.com/tango-controls/cppTango
 	arch = x86_64
 	arch = armv7h
+	groups = tango9-controls
 	license = GPL3
 	makedepends = doxygen
 	makedepends = cmake
