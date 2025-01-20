@@ -1,14 +1,14 @@
 pkgbase = mysh-git
 	pkgdesc = This is My Shell
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/AImixAE/mysh
-	arch = x86_64
+	arch = any
 	makedepends = patchelf
 	makedepends = gcc
 	makedepends = cmake
 	makedepends = ninja
-	source = https://github.com/AImixAE/mysh/archive/refs/heads/main.zip
+	source = git+https://github.com/AImixAE/mysh.git
 	sha512sums = SKIP
 
 pkgname = mysh-git
