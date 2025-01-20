@@ -1,8 +1,8 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=hurrycurry-client
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="A game about cooking (client)"
 arch=('any')
 url="https://codeberg.org/hurrycurry/hurrycurry"
@@ -12,7 +12,7 @@ makedepends=('godot' 'ffmpeg')
 source=("hurrycurry-$pkgver.tar.gz::https://codeberg.org/hurrycurry/hurrycurry/archive/v$pkgver.tar.gz"
         "hurrycurry-client"
         "hurrycurry-client.desktop")
-sha256sums=('55612d9d7fa10af650582dcaf4d5f03bc227b5b279c2b62aea754fa9fabeefc6'
+sha256sums=('d26d7b4fc6966e597f7d374235bbf7664eb8e8d833803b2b52f32e4f48b8a7f2'
             '2853345b64837352f576397aac7659aa0306e03ca7de4cdd04bb64bab9c8706c'
             '2607233a774b1f74f10deb0ef1c594e418554c4b5701d0e700016368e6d59718')
 
