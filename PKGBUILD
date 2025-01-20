@@ -5,8 +5,8 @@
 
 _pkgname=fatrace
 pkgname=${_pkgname}-minimal
-pkgver=0.17.0
-pkgrel=2
+pkgver=0.18.0
+pkgrel=1
 pkgdesc="Reports file access events from all running processes. Without powertop and python dependency; i.e. without the 'power-usage-report' script."
 arch=('x86_64' 'aarch64' 'armv6l')
 url="https://github.com/martinpitt/fatrace"
@@ -16,7 +16,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=(fatrace.tar.gz::https://github.com/martinpitt/fatrace/archive/${pkgver}.tar.gz
         Makefile.patch)
-sha256sums=('38f23014be5c2d5f7d40560931ae8bf24161db311d1795631bfaba02845eed90'
+sha256sums=('f2ca2623c7b3744d01827e0301df315e8b428c9a479081469ee6d21d0889de51'
             '4b4c974c24d2ba9928ff578952656fa3383f6d5142b98b86aecb051668c43896')
 
 prepare() {
