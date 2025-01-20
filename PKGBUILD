@@ -3,7 +3,7 @@
 pkgbase=python-rad
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Nancy Grace Roman Space Telescope shared attributes for processing and archive"
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=('python-setuptools-scm>=3.4'
 #              'python-roman-datamodels>=0.22.0'
 #)
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('ebec25932380396569ad87e64e189725')
+md5sums=('6794d12a3d31797edcfa5ef5f7912a1c')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -45,7 +45,7 @@ build() {
 #}
 
 package_python-rad() {
-    depends=('python>=3.10' 'python-asdf-astropy>=0.5.0')
+    depends=('python>=3.11' 'python-asdf-astropy>=0.5.0')
     optdepends=('python-rad-doc: Documentation for RAD')
     cd ${srcdir}/${_pyname}-${pkgver}
 
