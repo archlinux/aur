@@ -9,7 +9,7 @@ depends=('python' 'tk')
 makedepends=('python-setuptools')
 reponame=("singletask")
 source=("https://codeload.github.com/atopheim/${reponame}/tar.gz/refs/tags/v${pkgver}")
-# sha256sums=('67b602d79aee563e10d8a403efee9b0cdf8e63c77dd4a791031c2bae4d51f187')
+sha256sums=('67b602d79aee563e10d8a403efee9b0cdf8e63c77dd4a791031c2bae4d51f187')
 
 build() {
     cd "$srcdir/${reponame}-${pkgver}"
@@ -26,4 +26,3 @@ package() {
 exec python -m singletask "\$@"
 EOF
 }
-sha256sums=('67b602d79aee563e10d8a403efee9b0cdf8e63c77dd4a791031c2bae4d51f187')
