@@ -8,13 +8,8 @@ url="https://github.com/AntoninoAdornetto/file-warden"
 license=('GPL3')
 depends=('libnotify>=0.8.0')
 makedepends=('gcc' 'pkg-config' 'git')
-source=("git+${url}.git#tag=${pkgver}")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd $pkgname
-    git describe --tags | sed 's/^v//'
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('c50b55217d8ccab4187ae569d871f180f4199d2c2a04e6089666540704789b37')
 
 build() {
     cd $pkgname
