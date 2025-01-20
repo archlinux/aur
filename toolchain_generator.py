@@ -39,6 +39,7 @@ class CrossFileGenerator:
 				'strip':"'{}-strip'".format(self.arch),
 				'windres':"'{}-windres'".format(self.arch),
 				'dlltool':"'{}-dlltool'".format(self.arch),
+				'cmake':"'{}-cmake'".format(self.arch),
 				}
 		if self.need_exe_wrapper:
 			binaries.update({'exe_wrapper':"'{}-wine'".format(self.arch)})
