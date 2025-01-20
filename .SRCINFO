@@ -1,6 +1,6 @@
 pkgbase = nitrocid-25-git
 	pkgdesc = Simulates our future-planned kernel
-	pkgver = v0.1.0.r328.c259b8a5b
+	pkgver = v0.1.0.r334.1200d7d53
 	pkgrel = 1
 	url = https://aptivi.github.io
 	arch = x86_64
