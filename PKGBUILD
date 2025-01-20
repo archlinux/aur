@@ -13,8 +13,10 @@ license=('GPLv2')
 
 source=(
   'git+https://github.com/shenmintao/aic8800d80.git'
+  'dkms.conf'
 )
 sha512sums=(
+  'SKIP'
   'SKIP'
 )
 
