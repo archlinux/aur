@@ -1,15 +1,14 @@
 pkgbase = dektec-dtapiservice-bin
 	pkgdesc = DTAPI daemon that manages a range of DekTec demodulator boards
-	pkgver = 5.2.2.130
+	pkgver = 5.2.3.131
 	pkgrel = 1
 	url = https://www.dektec.com/downloads/SDK/#linux
-	arch = i686
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = gcc-libs
 	depends = glibc
 	depends = dektec-drivers-dkms
-	source = https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v2024.11.0.tar.gz
-	sha256sums = 4f33e0ea6ded407f026c1e6cd4a3f17601adef23181f268fc53d67d2098e1c87
+	source = https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v2025.01.0.tar.gz
+	sha256sums = 47ee7d8ef0bea6c6e57723608af22b499eb9d2f790b45609015c853c7b9f7e15
 
 pkgname = dektec-dtapiservice-bin
