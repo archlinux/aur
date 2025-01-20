@@ -14,7 +14,7 @@ provides=('gdal=3.10.0')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
 pkgver=3.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A translator library for raster and vector geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=(x86_64)
 url="https://gdal.org/"
@@ -37,7 +37,7 @@ b2sums=('edb4ad94ef22de0dbcffb64b0009b7f771d8a6a7288457e414518c741c375097bf5f6d8
 
 build() {
   opt_libs=""
-  [[ "$(ldconfig -p | grep libkml.so)" ]] && { echo "Found libkml.so"; opt_libs+=" -DGDAL_USE_LIBKML=ON"; }
+  [[ "$(ldconfig -p | grep kml)" ]] && { echo "Found libkml"; opt_libs+=" -DGDAL_USE_LIBKML=ON"; }
 
   cmake -B build -S $_pkgbase-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -86,7 +86,7 @@ build() {
     -DGDAL_USE_WEBP=ON \
     -DGDAL_USE_XERCESC=ON \
     -DGDAL_USE_ZLIB=ON \
-    -DGDAL_USE_ZSTD=ON
+    -DGDAL_USE_ZSTD=ON \
     $opt_libs
   make -C build
 }
