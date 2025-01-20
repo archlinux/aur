@@ -2,7 +2,7 @@
 
 _pkgname='Breeze-Plus'
 pkgname=${_pkgname@L}
-pkgver=5.107.0
+pkgver=6.2.5
 pkgrel=1
 pkgdesc="Breeze Styled extra icon theme for KDE"
 arch=('any')
