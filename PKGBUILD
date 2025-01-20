@@ -6,7 +6,7 @@
 
 pkgname="epson-inkjet-printer-filter"
 pkgver=1.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Epson inkjet printer filter used with CUPS"
 arch=('i686' 'x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
