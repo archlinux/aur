@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=lenovo-wwan-unlock
 pkgver=2.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="FCC and DPR unlock for Lenovo PCs"
 arch=(x86_64)
 url=https://github.com/lenovo/lenovo-wwan-unlock
@@ -13,6 +13,7 @@ depends=(
 )
 makedepends=(git)
 source=($pkgname::git+https://github.com/lenovo/$pkgname#tag=v$pkgver)
+install=$pkgname.install
 b2sums=('cc7f08f44940d7e8fef0e87c6c613cf6b0bbc0c7bced4131c1469bbfb7128dd7f953ce8a2399b38c4d664b281ba6aa83cd565dbdd27d69112543751d10eb463e')
 
 prepare() {
@@ -48,8 +49,6 @@ package() {
     # Executables
     install -D -m755 DPR_Fcc_unlock_service "$pkgdir"/opt/fcc_lenovo/DPR_Fcc_unlock_service
     install -D -m755 configservice_lenovo "$pkgdir"/opt/fcc_lenovo/configservice_lenovo
-    mkdir -p "$pkgdir"/usr/bin
-    ln -s -t "$pkgdir"/usr/bin /opt/fcc_lenovo/{DPR_Fcc_unlock_service,configservice_lenovo}
 
     # Systemd service
     install -D -m644 lenovo-cfgservice.service "$pkgdir"/usr/lib/systemd/system/lenovo-cfgservice.service
@@ -59,6 +58,7 @@ package() {
     install -D -m644 suspend-fix/apply-test-option.conf "$pkgdir"/opt/fcc_lenovo/suspend-fix/apply-test-option.conf
     install -D -m755 suspend-fix/mm-wrapper.sh "$pkgdir"/opt/fcc_lenovo/suspend-fix/mm-wrapper.sh
     install -D -m755 suspend-fix/install.sh "$pkgdir"/opt/fcc_lenovo/suspend-fix/install.sh
+    mkdir -p "$pkgdir"/usr/bin
     ln -s /opt/fcc_lenovo/suspend-fix/install.sh "$pkgdir"/usr/bin/lenovo-wwan-fix-resume.sh
 
     # Lenovo license and agreement
