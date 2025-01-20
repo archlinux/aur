@@ -1,0 +1,13 @@
+pkgbase = mpris-discord-rpc
+	pkgdesc = MPRIS Discord music rich presence status with support for album covers and progress bar.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/patryk-ku/mpris-discord-rpc
+	arch = x86_64
+	license = MIT
+	source = https://github.com/patryk-ku/mpris-discord-rpc/releases/download/v0.2.0/mpris-discord-rpc
+	source = https://raw.githubusercontent.com/patryk-ku/mpris-discord-rpc/main/LICENSE
+	sha512sums = 389dcd0227658ae5e38a20ba4263e934c95f7666382d0cbc6539c3b8ee43c3937506205d8d3267c2c1c4b2528d28be6a0340d80c9c51a0f3e6b30228be4ef1bc
+	sha512sums = c2b16df74d9a4a258961ae1d9b67bd222bf3133a36e0e8425b83163b9fd8c68e9c5df7f23c41067e80ae2639e0d3d1b0235708cb097f2213a6e80882aebd14d2
+
+pkgname = mpris-discord-rpc
