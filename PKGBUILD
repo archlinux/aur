@@ -4,7 +4,7 @@
 
 pkgbase=libonvif
 pkgname=('libonvif' 'python-libonvif')
-pkgver=3.2.4
+pkgver=3.2.5
 pkgrel=1
 url='https://github.com/sr99622/libonvif'
 license=('LGPL-2.1-or-later')
@@ -17,9 +17,9 @@ makedepends=('cmake'
              'python-installer'
              'python-setuptools'
              'python-wheel')
-# _prjrel=2.4.2
-source=("git+${url}.git#commit=3ba5cf6a8e81abd90e77f3d138799e42fcb38254")
-sha256sums=('00cbebb19fa9f1a4135ee288bb09f8ea5166d80391c02a2c16a1553d70ce7639')
+# _prjrel=2.4.4
+source=("git+${url}.git#commit=e5c01df0849495b98c62acad3837fde72dda654c")
+sha256sums=('249110e4fd52059fd64274efac024f141ba67af3a661466fa4831ec4ad8bc98d')
 
 prepare() {
 	cd ${srcdir}/${pkgbase}/libonvif
