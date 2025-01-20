@@ -32,7 +32,7 @@ optdepends=(
 # template end;
 pkgname=alchemy-viewer-git
 pkgver=7.1.9.57706.62533287a9
-pkgrel=1
+pkgrel=2
 replaces=('alchemy-next-viewer-git')
 provides=('alchemy-viewer')
 # template start; name=source; version=1.0;

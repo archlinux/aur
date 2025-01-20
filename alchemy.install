@@ -1,7 +1,8 @@
 #!/bin/bash
 post_install() {
-  bash /opt/alchemy-next-viewer-git/etc/refresh_desktop_app_entry.sh "/opt/alchemy-next-viewer-git" "/usr/local/share/applications/"
-  bash /opt/alchemy-next-viewer-git/etc/register_secondlifeprotocol.sh
+  bash /opt/alchemy-viewer-git/etc/refresh_desktop_app_entry.sh "/opt/alchemy-viewer-git" "/usr/local/share/applications/"
+  # This is currently broken upstream, so disable it
+  # bash /opt/alchemy-viewer-git/etc/register_secondlifeprotocol.sh
 }
 post_upgrade() {
   post_install "$1"
