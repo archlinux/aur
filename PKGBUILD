@@ -1,26 +1,21 @@
 # Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=dektec-drivers-dkms
-pkgver=2024.11.0
+pkgver=2025.01.0
 pkgrel=1
 pkgdesc='Linux DKMS for Dektec device drivers'
 arch=('x86_64')
 url="https://www.dektec.com/downloads/SDK/#linux"
 license=('LicenseRef-custom')
-depends=('dkms')
-optdepends=('linux-headers: build modules against the Arch kernel'
-            'linux-lts-headers: build modules against the LTS kernel'
-            'linux-zen-headers: build modules against the ZEN kernel'
-            'linux-hardened-headers: build modules against the HARDENED kernel')
+depends=('dkms' 'linux-headers')
 provides=('dektec-drivers-dkms')
 conflicts=('dektec-drivers-dkms' 'dektec-dkms')
 source=("https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${pkgver}.tar.gz"
         'dkms.conf'
         'Makefile')
-sha256sums=('4f33e0ea6ded407f026c1e6cd4a3f17601adef23181f268fc53d67d2098e1c87'
+sha256sums=('47ee7d8ef0bea6c6e57723608af22b499eb9d2f790b45609015c853c7b9f7e15'
             '3ab98092aad33786c1766b8d0b29636c5bb1ccdb116cbfe32608c972b99d4d47'
-            '3ee9f2b8836d3e68451c3c29f343295f6ceaca52e84e18d040205b245473d314'
-            '2f97f611df8aa77dfb710f192f016b12337015dc747327a4bb5977c052e4c9b2')
+            '3ee9f2b8836d3e68451c3c29f343295f6ceaca52e84e18d040205b245473d314')
 
 prepare() {
   # Set version
@@ -31,7 +26,7 @@ prepare() {
 package() {
   # Install drivers
   install -d "${pkgdir}/usr/src/${pkgname}-${pkgver}/Drivers"
-  cp -a --no-preserve='mode,ownership' \
+  cp -Pr --no-preserve=ownership \
     LinuxSDK/Drivers/{Dta,DtaNw,DtDrvCommon,DtPcie,DtPcieNw,DtSal,Dtu} \
     "${pkgdir}/usr/src/${pkgname}-${pkgver}/Drivers"
   install -Dm644 LinuxSDK/Common/Source/*.h -t "${pkgdir}/usr/src/${pkgname}-${pkgver}/Common/Source"
